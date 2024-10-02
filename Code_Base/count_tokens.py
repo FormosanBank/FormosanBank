@@ -16,11 +16,15 @@ def count_words_in_lang(dir_path):
         for file_path in xml_files:
             tree = ET.parse(file_path)
             root = tree.getroot()
-
+            
             # Iterate over all <S> elements
             for s in root.findall('.//S'):
                 # Find the <FORM> element within the <S> element
                 form = s.find('FORM')
+
+                #temp until wikipedia structures are fixed
+                if folder == "Wikipedia":
+                    form = s
 
                 if form is not None and form.text is not None:
                     # Split the text of the <FORM> element into words
