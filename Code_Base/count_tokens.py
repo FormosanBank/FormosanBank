@@ -1,6 +1,8 @@
 import xml.etree.ElementTree as ET
 import os
 import glob
+import json
+
 
 def count_words_in_lang(dir_path):
     # Get a list of all folders in the directory
@@ -37,27 +39,39 @@ def count_words_in_lang(dir_path):
     return lang_total, len(type_set)
 
 
-xml_dir = "../XML_Final"
-langs = os.listdir(xml_dir)
+def get_counts():
+    xml_dir = "../XML_Final"
+    langs = os.listdir(xml_dir)
 
-token_count = dict()
-type_count = dict()
+    token_count = dict()
+    type_count = dict()
 
-for lang in langs:
-    if lang.startswith("."):
-        continue
-    lang_dir = os.path.join(xml_dir, lang)
-    print(f"\n====={lang}======")
-    token_count[lang], type_count[lang] = count_words_in_lang(lang_dir)
+    for lang in langs:
+        if lang.startswith("."):
+            continue
+        lang_dir = os.path.join(xml_dir, lang)
+        print(f"\n====={lang}======")
+        token_count[lang], type_count[lang] = count_words_in_lang(lang_dir)
 
-token_total = sum(token_count.values())
-type_total = sum(type_count.values())
+    token_total = sum(token_count.values())
+    type_total = sum(type_count.values())
 
-print("\n=====token count per language======")
-print(token_count)
-print("\n=====token count across languages======")
-print(token_total)
-print("\n=====type count per language======")
-print(type_count)
-print("\n=====type count across languages======")
-print(type_total)
+    return token_count, token_total, type_count, type_total
+
+def main():
+
+    token_count, token_total, type_count, type_total = get_counts()
+
+    print("\n=====token count per language======")
+    print(token_count)
+    print("\n=====token count across languages======")
+    print(token_total)
+    print("\n=====type count per language======")
+    print(type_count)
+    print("\n=====type count across languages======")
+    print(type_total)
+
+    with open('current_counts.txt', 'w') as file:
+        json.dump(token_count, file)
+if __name__ == "__main__":
+    main()
