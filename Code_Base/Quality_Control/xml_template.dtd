@@ -3,13 +3,14 @@
 <!ATTLIST TEXT 
     id CDATA #REQUIRED
     citation CDATA #REQUIRED
+    BibTeX_citation CDATA #REQUIRED
     copyright CDATA #REQUIRED
     xml:lang CDATA #REQUIRED
     source CDATA #IMPLIED
     audio CDATA #IMPLIED
     glotto CDATA #IMPLIED>
 
-<!ELEMENT S (FORM, AUDIO?, TRANSL*, W*)>
+<!ELEMENT S (FORM, TRANSL*, AUDIO?, W*)>
 <!ATTLIST S 
     id CDATA #REQUIRED>
 
@@ -37,5 +38,8 @@
 
 <!ELEMENT AUDIO EMPTY>
 <!ATTLIST AUDIO 
-    start CDATA #REQUIRED
-    end CDATA #REQUIRED>
+    start CDATA #IMPLIED
+    end CDATA #IMPLIED
+    file CDATA #IMPLIED
+    url CDATA #IMPLIED>
+    
