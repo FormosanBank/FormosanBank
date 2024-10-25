@@ -51,19 +51,30 @@ def prettify(xml_file):
         f.write(temp_xml)
     
 def main():
-    
     curr_dir = os.path.dirname(os.path.abspath(__file__))
-    print(curr_dir)
+    parent_dire = os.path.join(curr_dir, "..")
+
+    corpora = os.listdir(os.path.join(parent_dire, "Corpora"))
     iso6393_3 = pd.read_csv(os.path.join(curr_dir, 'iso-639-3.txt'), sep='\t')
     langs_codes = set(iso6393_3['Id'])
-
-
-    xml_file = os.path.join(curr_dir, "temp.xml")
     dtd_file = os.path.join(curr_dir, "xml_template.dtd")
-    xml_valid = validate_xml_against_dtd(xml_file, dtd_file)
-    lang_code_valid = validate_lang_code(xml_file, langs_codes)
-    if xml_valid and lang_code_valid:
-        prettify(xml_file)
+
+
+    for corpus in corpora:
+        to_check = list()
+        for root, dirs, files in os.walk(os.path.join(parent_dire, "Corpora", corpus)):
+            for file in files:
+                if file.endswith(".xml"):
+                    to_check.append(os.path.join(root, file))
+        
+        for file in to_check:
+            print(f"\nchecking {file}...")
+            xml_valid = validate_xml_against_dtd(file, dtd_file)
+            lang_code_valid = validate_lang_code(file, langs_codes)
+            if xml_valid and lang_code_valid:
+                prettify(file)
+            else:
+                break
 
 
 if __name__ == "__main__":
