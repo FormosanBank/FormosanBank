@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT TEXT (S+)>
+<!ATTLIST TEXT 
+    id CDATA #REQUIRED
+    citation CDATA #REQUIRED
+    BibTeX_citation CDATA #REQUIRED
+    copyright CDATA #REQUIRED
+    xml:lang CDATA #REQUIRED
+    source CDATA #IMPLIED
+    audio CDATA #IMPLIED
+    glotto CDATA #IMPLIED>
+
+<!ELEMENT S (FORM, TRANSL*, AUDIO?, W*)>
+<!ATTLIST S 
+    id CDATA #REQUIRED>
+
+<!ELEMENT W (FORM, AUDIO?, TRANSL*, M*)>
+<!ATTLIST W 
+    id CDATA #REQUIRED
+    class CDATA #IMPLIED
+    sclass CDATA #IMPLIED>
+
+<!ELEMENT M (FORM, TRANSL*)>
+<!ATTLIST M 
+    id CDATA #REQUIRED
+    class CDATA #IMPLIED
+    sclass CDATA #IMPLIED>
+
+<!ELEMENT FORM (#PCDATA)>
+<!ATTLIST FORM 
+    kindOf CDATA #IMPLIED>
+
+<!ELEMENT TRANSL (#PCDATA)>
+<!ATTLIST TRANSL 
+    xml:lang CDATA #REQUIRED
+    kindOf CDATA #IMPLIED
+    ver CDATA #IMPLIED>
+
+<!ELEMENT AUDIO EMPTY>
+<!ATTLIST AUDIO 
+    start CDATA #IMPLIED
+    end CDATA #IMPLIED
+    file CDATA #IMPLIED
+    url CDATA #IMPLIED>
+    
