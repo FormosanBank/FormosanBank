@@ -14,10 +14,10 @@ def validate_xml_against_dtd(xml_file, dtd_file):
         is_valid = dtd.validate(tree)
 
         if is_valid:
-            print("XML is valid according to the DTD.")
+            # print("XML is valid according to the DTD.")
             return True
         else:
-            print("XML is not valid according to the DTD.")
+            # print("XML is not valid according to the DTD.")
             print(dtd.error_log.filter_from_errors())  # Print validation errors
             return False
 
@@ -34,10 +34,10 @@ def validate_lang_code(xml_file, lang_codes):
     lang = root.get("{http://www.w3.org/XML/1998/namespace}lang")
 
     if lang not in lang_codes:
-        print("xml:lang attr of TEXT tag isn't using ISO 639-3")
+        # print("xml:lang attr of TEXT tag isn't using ISO 639-3")
         return False
     else:
-        print("xml:lang attr of TEXT tag is using ISO 639-3")
+        # print("xml:lang attr of TEXT tag is using ISO 639-3")
         return True
     
 def prettify(xml_file):
@@ -72,8 +72,9 @@ def main():
             xml_valid = validate_xml_against_dtd(file, dtd_file)
             lang_code_valid = validate_lang_code(file, langs_codes)
             if xml_valid and lang_code_valid:
-                prettify(file)
+                continue
             else:
+                print(file)
                 break
 
 
