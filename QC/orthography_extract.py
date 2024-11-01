@@ -12,12 +12,17 @@ import pandas as pd
 import numpy as np
 import pickle
 
-def generate_corpus(lang):
+def generate_corpus(lang, to_check = "all"):
 
     curr_dir = os.path.dirname(os.path.abspath(__file__))
     corp_path = os.path.join(curr_dir, "..", "Corpora")
     lang_dirs, corpus = list(), ""
-        
+    
+    if to_check != "all":
+        corp_path = os.path.join(corp_path, to_check)
+
+    if not os.path.exists(corp_path):
+        raise ValueError(f"corpus {to_check} doesn't exist")
 
     for dirpath, dirnames, filenames in os.walk(corp_path):
         if lang in dirnames:
@@ -390,9 +395,9 @@ def main():
     orthograpy_dir = os.path.join(curr_dir, "orthograpy")
     os.makedirs(orthograpy_dir, exist_ok=True)
     
-    amis_corpus = generate_corpus("Amis")
+    amis_corpus = generate_corpus("Amis", to_check = "ILRDF_Dicts")
     o_info = extract_orthographic_info(amis_corpus)
-    visualize(o_info, os.path.join(orthograpy_dir, "Amis_all"))
+    visualize(o_info, os.path.join(orthograpy_dir, "ILRDF_Dicts"))
 
 if __name__ == "__main__":
     main()

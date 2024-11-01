@@ -74,7 +74,7 @@ def main():
             if xml_valid and lang_code_valid:
                 continue
             else:
-                print(file)
+                print("failed at: ", file)
                 break
 
 
