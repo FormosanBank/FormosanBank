@@ -1,8 +1,10 @@
 import xml.etree.ElementTree as ET
 import os
-import glob
-import json
 
+def get_lang(path, langs):
+    for lang in langs:
+        if lang in path:
+            return lang
 
 def read_file(file_path):
 
@@ -23,12 +25,12 @@ def read_file(file_path):
 
     return num_words
 
-def count_source(path, tokens_by_lang):
+def count_source(path, tokens_by_lang, langs):
     source_total = 0
     for root, dirs, files in os.walk(path):
         for file in files:
             if file.endswith(".xml"):
-                lang = os.path.join(root, file).split("/")[-2]
+                lang = get_lang(os.path.join(root, file), langs)
                 tokens_in_file = read_file(os.path.join(root, file))
                 tokens_by_lang[lang] += tokens_in_file
                 source_total += tokens_in_file
@@ -45,9 +47,11 @@ def get_counts():
     tokens_by_lang = {lang: 0 for lang in langs}
     tokens_by_source = dict()
     for source in os.listdir(corpora):
+        if source.startswith('.'):
+            continue
         tokens_by_source[source] = 0
         print(f"\n=====counting in {source}======")
-        tokens_by_source[source] = count_source(os.path.join(corpora, source), tokens_by_lang)
+        tokens_by_source[source] = count_source(os.path.join(corpora, source), tokens_by_lang, langs)
 
     return tokens_by_lang, tokens_by_source
 def main():
