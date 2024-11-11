@@ -7,6 +7,7 @@ def process_punctuation(text):
     text = re.sub(r'‘([^’]*)’', r'"\1"', text)  # Replace paired single quotes with double quotes
     text = text.replace("‘", "'").replace("’", "'")  # Replace remaining single quotes with apostrophes
     text = text.replace("ˈ", "'")  # Replace special mark with apostrophe
+    text = text.replace('“', '"').replace('”', '"') #replace left and right double quotes with standard double quotes
     return text
 
 def normalize_whitespace(text):
@@ -15,14 +16,37 @@ def normalize_whitespace(text):
     return text
 
 def remove_imbalanced_parentheses(text):
-    # Remove open parentheses without a closing pair
-    open_parens = text.count("(")
-    close_parens = text.count(")")
-    if open_parens > close_parens:
-        text = text.replace("(", "")
-    elif close_parens > open_parens:
-        text = text.replace(")", "")
-    return text
+    """
+    Remove unmatched parentheses from the input string.
+
+    :param s: The input string containing parentheses and other characters.
+    :return: A new string with unmatched parentheses removed.
+    """
+    # Stack to keep track of indices of '(' characters
+    stack = []
+    # Set to keep track of indices to remove
+    indices_to_remove = set()
+
+    # First pass to identify unmatched parentheses
+    for i, char in enumerate(text):
+        if char == '(':
+            # Push the index onto the stack
+            stack.append(i)
+        elif char == ')':
+            if stack:
+                # Pop the matching '(' index from the stack
+                stack.pop()
+            else:
+                # Unmatched ')', mark index for removal
+                indices_to_remove.add(i)
+
+    # Add any remaining '(' indices in the stack to the removal set
+    indices_to_remove.update(stack)
+
+    # Build the result string without the unmatched parentheses
+    result = ''.join(
+        [char for i, char in enumerate(s) if i not in indices_to_remove]
+    )
 
 def clean_text(text, lang):
     # Apply general cleaning functions
