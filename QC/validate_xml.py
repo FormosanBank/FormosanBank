@@ -81,12 +81,12 @@ def get_files(path, to_check, lang):
     if lang:
         for root, dirs, files in os.walk(path):
             for file in files:
-                if file.endswith(".xml") and get_lang(os.path.join(root, file), langs) == args.language:
+                if file.endswith(".xml") and get_lang(os.path.join(root, file), langs) == args.language and 'Final_XML' in os.path.join(root, file):
                     to_check.append(os.path.join(root, file))
         return to_check
     for root, dirs, files in os.walk(path):
         for file in files:
-            if file.endswith(".xml"):
+            if file.endswith(".xml") and 'Final_XML' in os.path.join(root, file):
                 to_check.append(os.path.join(root, file))
 
 def main(args, langs):
