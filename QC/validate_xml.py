@@ -4,6 +4,15 @@ import pandas as pd
 import argparse
 import logging
 
+'''
+The validate XML script: 
+- Validates the XML file against the xml template DTD file
+- Checks if the xml:lang attribute uses an ISO 639-3 code
+- Prettifies the XML file by replacing double spaces with tabs
+- Parses the XML file and logs any errors that occur
+'''
+
+# Generate the name for the log file based on the search method
 def get_log_file_name(args):
     if args.search_by == 'by_language':
         log_file_name = f"validation_log_by_language_{args.language.replace(' ', '_')}.txt"
@@ -19,11 +28,13 @@ def get_log_file_name(args):
         log_file_name = "validation_log.txt"
     return log_file_name
 
+# Get the language being analyzed from the path
 def get_lang(path, langs):
     for lang in langs:
         if lang in path:
             return lang
 
+# Compare the XML to the DTD
 def validate_xml_against_dtd(xml_file, dtd_file):
     try:
         # Parse the DTD file
@@ -49,6 +60,7 @@ def validate_xml_against_dtd(xml_file, dtd_file):
         logging.error(error_message)
         return False
 
+# Ensure lang code complies with ISO 639-3
 def validate_lang_code(xml_file, lang_codes):
     try:
         tree = etree.parse(xml_file)
@@ -68,6 +80,7 @@ def validate_lang_code(xml_file, lang_codes):
         logging.error(error_message)
         return False
 
+# Prettify the XML file by replacing double spaces with tabs
 def prettify(xml_file):
     parser = etree.XMLParser(remove_blank_text=True)
     tree = etree.parse(xml_file, parser)
@@ -77,6 +90,7 @@ def prettify(xml_file):
         temp_xml = temp_xml.replace('  ', '\t')
         f.write(temp_xml)
 
+# Get all XML files in the specified path
 def get_files(path, to_check, lang):
     if lang:
         for root, dirs, files in os.walk(path):
@@ -89,6 +103,7 @@ def get_files(path, to_check, lang):
             if file.endswith(".xml") and 'Final_XML' in os.path.join(root, file):
                 to_check.append(os.path.join(root, file))
 
+# Main process call subfunctions, log issues, and print summary
 def main(args, langs):
     curr_dir = os.path.dirname(os.path.abspath(__file__))
     iso6393_3 = pd.read_csv(os.path.join(curr_dir, 'iso-639-3.txt'), sep='\t')
@@ -140,6 +155,7 @@ def main(args, langs):
     if args.verbose:
         logging.info(summary_message)
 
+# Main function to parse arguments and call main process
 if __name__ == "__main__":
     langs = ['Amis', 'Atayal', 'Paiwan', 'Bunun', 'Puyuma', 'Rukai', 'Tsou', 'Saisiyat', 'Yami',
              'Thao', 'Kavalan', 'Truku', 'Sakizaya', 'Seediq', 'Saaroa', 'Kanakanavu']

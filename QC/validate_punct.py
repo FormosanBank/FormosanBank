@@ -52,7 +52,20 @@ def analyze_punctuation(text, lang):
     results['unmatched_left_quotes'] += unmatched_left_quotes
     results['unmatched_right_quotes'] += unmatched_right_quotes
     
+    # New Check 1: Repeated Punctuation
+    if re.search(r'([?!])\1+', text):
+        results['repeated_punctuation'] += len(re.findall(r'([?!])\1+', text))
+    
+    # New Check 2: Mismatched Quotes
+    if (text.count('‘') != text.count('’')) or (text.count('“') != text.count('”')):
+        results['mismatched_quotes'] += 1
+    
+    # New Check 3: Consecutive Dashes
+    if re.search(r'--+', text):
+        results['consecutive_dashes'] += len(re.findall(r'--+', text))
+    
     return results
+
 
 def analyze_xml_file(xml_file, non_ascii, lang_codes):
     lang = get_lang(xml_file, lang_codes)
@@ -72,6 +85,7 @@ def analyze_xml_file(xml_file, non_ascii, lang_codes):
             
             # Count non-ASCII characters
             temp = [(char, xml_file) for char in form_text if ord(char) > 127]
+            print(temp)
             non_ascii[lang]['items'] += temp
             non_ascii[lang]['count'] += len(temp)
     
@@ -111,6 +125,9 @@ def generate_report(language_issues, structure):
         print(f"Imbalanced parentheses: {issues['imbalanced_parentheses']}")
         print(f"Unmatched left quotes: {issues['unmatched_left_quotes']}")
         print(f"Unmatched right quotes: {issues['unmatched_right_quotes']}")
+        print(f"Repeated punctuation (e.g., !!, ??): {issues['repeated_punctuation']}")
+        print(f"Mismatched quotes: {issues['mismatched_quotes']}")
+        print(f"Consecutive dashes (e.g., --, ---): {issues['consecutive_dashes']}")
         print("="*50 + "\n")
 
 def main():
