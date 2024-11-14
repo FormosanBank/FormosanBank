@@ -5,6 +5,15 @@ import argparse
 import logging
 from collections import defaultdict
 
+'''
+The validate punctuation script:
+- Analyzes the punctuation in the XML files
+- Detects common punctuation issues
+- Generates an aggregate report of punctuation issues
+- Logs the issues found in each file
+- Logs the aggregate report for each language
+'''
+
 # Determine the language of the file based on the path
 def get_lang(path, langs):
     for lang in langs:
