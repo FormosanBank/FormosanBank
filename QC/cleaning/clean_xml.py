@@ -1,7 +1,7 @@
 from lxml import etree
 import os
 import re
-from QC.cleaning.replace_non_ascii import fix_non_ascii_chars
+from replace_non_ascii import fix_non_ascii_chars
 
 def process_punctuation(text):
     # 1. Replace paired single quotes with double quotes (true quotes)
@@ -120,7 +120,7 @@ def process_directory(xml_dir):
 
 def main():
     curr_dir = os.path.dirname(os.path.abspath(__file__))
-    parent_dir = os.path.join(curr_dir, "..")
+    parent_dir = os.path.join(curr_dir, "../..")
     corpora_dir = os.path.join(parent_dir, "Corpora")
 
     # Iterate through each subdirectory and process XML files
