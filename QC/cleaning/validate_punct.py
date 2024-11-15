@@ -65,8 +65,8 @@ def analyze_punctuation(text, lang):
     # Consecutive Dashes
     results['consecutive_dashes'] += len(re.findall(r'--+', text))
 
-    # Non-ASCII Characters
-    non_ascii_count = sum(1 for char in text if ord(char) > 127)
+    # Non-ASCII Characters (excluding Chinese characters)
+    non_ascii_count = sum(1 for char in text if ord(char) > 127 and not re.match(r'[\u4E00-\u9FFF]', char))
     results['non_ascii_characters'] += non_ascii_count
 
     return results

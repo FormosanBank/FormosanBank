@@ -1,66 +1,86 @@
 from lxml import etree
 import os
 import re
+from QC.cleaning.replace_non_ascii import fix_non_ascii_chars
 
 def process_punctuation(text):
-    # Standardize punctuation marks
-    text = re.sub(r'‘([^’]*)’', r'"\1"', text)  # Replace paired single quotes with double quotes
-    text = text.replace("‘", "'").replace("’", "'")  # Replace remaining single quotes with apostrophes
-    text = text.replace("ˈ", "'")  # Replace special mark with apostrophe
-    text = text.replace('“', '"').replace('”', '"') #replace left and right double quotes with standard double quotes
+    # 1. Replace paired single quotes with double quotes (true quotes)
+    text = re.sub(r'‘([^’]*)’', r'"\1"', text)
+    
+    # 2. Replace any remaining left and right single quotes with apostrophes (punctuation)
+    text = text.replace("‘", "'").replace("’", "'")
+
+    # 3. Replace paired double left and right quotes with standard double quotes
+    text = re.sub(r'“([^”]*)”', r'"\1"', text)
+
+    # 4. Standardize any remaining double quotes
+    text = text.replace('“', '"').replace('”', '"')
+
+    # 5. Handle specific mark replacements (e.g., replace ˈ with apostrophe)
+    text = text.replace("ˈ", "'")
+
     return text
 
 def normalize_whitespace(text):
-    # Normalize whitespace by replacing multiple spaces with a single space
+    # 1. Remove extra spaces
+    text = re.sub(r' {2,}', ' ', text)
+
+    # 2. Fix any other multiple whitespace issues (e.g., tabs or newlines)
     text = re.sub(r'\s+', ' ', text).strip()
+
     return text
 
-def remove_imbalanced_parentheses(text):
+def fix_parentheses(text):
     """
-    Remove unmatched parentheses from the input string.
-
-    :param s: The input string containing parentheses and other characters.
-    :return: A new string with unmatched parentheses removed.
+    Fix imbalanced parentheses by removing unmatched ones.
     """
-    # Stack to keep track of indices of '(' characters
     stack = []
-    # Set to keep track of indices to remove
     indices_to_remove = set()
 
-    # First pass to identify unmatched parentheses
+    # First pass: Identify unmatched parentheses
     for i, char in enumerate(text):
         if char == '(':
-            # Push the index onto the stack
             stack.append(i)
         elif char == ')':
             if stack:
-                # Pop the matching '(' index from the stack
                 stack.pop()
             else:
-                # Unmatched ')', mark index for removal
                 indices_to_remove.add(i)
 
-    # Add any remaining '(' indices in the stack to the removal set
+    # Add unmatched '(' indices from the stack
     indices_to_remove.update(stack)
 
-    # Build the result string without the unmatched parentheses
+    # Build a new string without the unmatched parentheses
     result = ''.join(
-        [char for i, char in enumerate(s) if i not in indices_to_remove]
+        [char for i, char in enumerate(text) if i not in indices_to_remove]
     )
+
+    return result
+
+def trim_repeated_punctuation(text):
+    # 1. Replace repeated punctuation (e.g., !!, ??) with a single mark
+    text = re.sub(r'([?!])\1+', r'\1', text)
+
+    # 2. Replace consecutive dashes with a single dash
+    text = re.sub(r'--+', '-', text)
+
+    return text
 
 def clean_text(text, lang):
     # Apply general cleaning functions
     text = process_punctuation(text)
     text = normalize_whitespace(text)
-    text = remove_imbalanced_parentheses(text)
+    text = fix_parentheses(text)
+    text = trim_repeated_punctuation(text)
 
-    # Additional cleaning for Chinese text
+    # Additional cleaning for Chinese text (remove all extra spaces)
     if lang == "zho":
-        text = re.sub(r'\s+', '', text)  # Remove extra spaces in Chinese text
+        text = re.sub(r'\s+', '', text)
 
     return text
 
 def analyze_and_modify_xml_file(xml_file):
+    fix_non_ascii_chars(xml_file)
     tree = etree.parse(xml_file)
     root = tree.getroot()
     modified = False
@@ -98,12 +118,11 @@ def process_directory(xml_dir):
                 xml_path = os.path.join(root, file)
                 analyze_and_modify_xml_file(xml_path)
 
-
 def main():
     curr_dir = os.path.dirname(os.path.abspath(__file__))
     parent_dir = os.path.join(curr_dir, "..")
     corpora_dir = os.path.join(parent_dir, "Corpora")
-    
+
     # Iterate through each subdirectory and process XML files
     for subdir in os.listdir(corpora_dir):
         xml_dir = os.path.join(corpora_dir, subdir)
