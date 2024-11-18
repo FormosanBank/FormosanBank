@@ -1,4 +1,3 @@
-import glob
 import xml.etree.ElementTree as ET
 import os
 import unicodedata
@@ -7,15 +6,10 @@ import regex as re
 import string
 import matplotlib.pyplot as plt
 import seaborn as sns
-from wordcloud import WordCloud
 import pandas as pd
 import numpy as np
 import pickle
-from sklearn.metrics.pairwise import cosine_similarity
-from scipy.spatial.distance import euclidean
-from scipy.special import rel_entr
 import argparse
-from tqdm import tqdm
 
 plt.rcParams['font.sans-serif'] = ['Arial Unicode MS']
 
@@ -33,7 +27,7 @@ def generate_corpus(lang, langs, to_check_path):
 
     for root, dirs, files in os.walk(to_check_path):
         for file in files:
-            if file.endswith(".xml") and get_lang(os.path.join(root, file), langs) == lang and 'Final_XML' in os.path.join(root, file):       
+            if file.endswith(".xml") and get_lang(os.path.join(root, file), langs) == lang: # and 'Final_XML' in os.path.join(root, file)       
                 tree = ET.parse(os.path.join(root, file))
                 root_to_read = tree.getroot()
                 
@@ -354,24 +348,9 @@ def visualize(o_info, output_folder):
     """
     Visualize Word Frequency Distribution
     """
-    # First method: Word Cloud
     word_freq = o_info['word_frequency']
 
-    # Generate a word cloud
-    wordcloud = WordCloud(width=800, height=400, background_color='white').generate_from_frequencies(word_freq)
-
-    # Display the generated image
-    plt.figure(figsize=(15, 7.5))
-    plt.imshow(wordcloud, interpolation='bilinear')
-    plt.axis('off')
-    plt.title('Word Cloud of Word Frequencies')
-
-    # Save the figure
-    plt.tight_layout()
-    plt.savefig(os.path.join(output_folder, 'word_cloud.png'))
-    plt.close()
-
-    # Second method: Bar Chart of Top Words
+    # Bar Chart of Top Words
     sorted_word_freq = word_freq.most_common(20)
     words, frequencies = zip(*sorted_word_freq)
 
@@ -389,127 +368,17 @@ def visualize(o_info, output_folder):
 
 
 
-def jaccard_similarity(set1, set2):
-    intersection = set1.intersection(set2)
-    union = set1.union(set2)
-    similarity = len(intersection) / len(union)
-    return similarity
+def main(args, langs):
 
-def overlap_coefficient(set1, set2):
-    intersection = set1.intersection(set2)
-    smaller_set_size = min(len(set1), len(set2))
-    coefficient = len(intersection) / smaller_set_size
-    return coefficient
-
-def normalize_vector(vector):
-    total = np.sum(vector)
-    if total > 0:
-        return vector / total
-    else:
-        return vector
-    
-def kl_divergence(p, q):
-    # Add a small epsilon to avoid division by zero
-    epsilon = 1e-10
-    p = p + epsilon
-    q = q + epsilon
-    return np.sum(rel_entr(p, q))
-
-def vis_diff(all_chars, c1_char_freq, c2_char_freq):
-    
-    # Get the sorted list of characters
-    sorted_chars = sorted(all_chars)
-
-    # Compute the total number of characters in each corpus
-    total_corpus1_chars = sum(c1_char_freq.values())
-    total_corpus2_chars = sum(c2_char_freq.values())
-
-    # Calculate relative frequencies (ratios) for plotting
-    corpus1_freqs = [
-        c1_char_freq.get(char, 0) / total_corpus1_chars for char in sorted_chars
-    ]
-    corpus2_freqs = [
-        c2_char_freq.get(char, 0) / total_corpus2_chars for char in sorted_chars
-    ]
-
-    # Optionally, convert ratios to percentages
-    # corpus1_freqs = [freq * 100 for freq in corpus1_freqs]
-    # corpus2_freqs = [freq * 100 for freq in corpus2_freqs]
-
-    # Plotting
-    x = np.arange(len(sorted_chars))  # label locations
-    width = 0.35  # width of the bars
-
-    fig, ax = plt.subplots(figsize=(15, 5))
-    rects1 = ax.bar(x - width / 2, corpus1_freqs, width, label='ePark')
-    rects2 = ax.bar(x + width / 2, corpus2_freqs, width, label='Dicts')
-
-    # Add labels and title
-    ax.set_ylabel('Relative Frequency')
-    ax.set_title('Character Relative Frequencies in Corpus 1 and Corpus 2')
-    ax.set_xticks(x)
-    ax.set_xticklabels(sorted_chars)
-    ax.legend()
-
-    # Rotate x-axis labels for better readability
-    plt.xticks(rotation=90)
-    plt.tight_layout()
-    plt.show()
-
-def compare_corpora(c1_info, c2_info):
-    char_jaccard_similarity = jaccard_similarity(set(c1_info['unique_characters']), set(c2_info['unique_characters']))
-    print(f"Jaccard Similarity of unique characters: {char_jaccard_similarity:.2f}")
-
-    char_overlap_coefficient = overlap_coefficient(set(c1_info['unique_characters']), set(c2_info['unique_characters']))
-    print(f"Overlap Coefficient of unique characters: {char_overlap_coefficient:.2f}")
-
-    all_chars = set(c1_info['unique_characters']).union(set(c2_info['unique_characters']))
-
-    c1_freq_vector = np.array([c1_info['character_frequency'].get(char, 0) for char in all_chars])
-    c2_freq_vector = np.array([c2_info['character_frequency'].get(char, 0) for char in all_chars])
-    c1_freq_vector = normalize_vector(c1_freq_vector)
-    c2_freq_vector = normalize_vector(c2_freq_vector)
-
-    cosine_sim = cosine_similarity([c1_freq_vector], [c2_freq_vector])[0][0]
-    print(f"Cosine Similarity of character frequencies: {cosine_sim:.2f}")
-
-    euclidean_dist = euclidean(c1_freq_vector, c2_freq_vector)
-    print(f"Euclidean Distance of character frequencies: {euclidean_dist:.2f}")
-
-    kl_div = kl_divergence(c1_freq_vector, c2_freq_vector)
-    print(f"KL Divergence of character frequencies: {kl_div:.2f}")
-
-    c1_bigrams = c1_info['2-grams']
-    c2_bigrams = c2_info['2-grams']
-
-    # Create a set of all bigrams
-    all_bigrams = set(c1_bigrams.keys()).union(set(c2_bigrams.keys()))
-
-    c1_bigram_vector = np.array([c1_bigrams.get(bigram, 0) for bigram in all_bigrams])
-    c2_bigram_vector = np.array([c2_bigrams.get(bigram, 0) for bigram in all_bigrams])
-    # Normalize and compute similarity measures as before
-    c1_bigram_vector = normalize_vector(c1_bigram_vector)
-    c2_bigram_vector = normalize_vector(c2_bigram_vector)
-
-    # Compute cosine similarity
-    bigram_cosine_sim = cosine_similarity([c1_bigram_vector], [c2_bigram_vector])[0][0]
-    print(f"Cosine Similarity of bigram frequencies: {bigram_cosine_sim:.2f}")
-
-    bigram_euclidean_dist = euclidean(c1_bigram_vector, c2_bigram_vector)
-    print(f"Euclidean Distance of bigram frequencies: {bigram_euclidean_dist:.2f}")
-
-    vis_diff(all_chars, c1_info['character_frequency'], c2_info['character_frequency'])
-
-def extract_o_info(args, langs):
     curr_dir = os.path.dirname(os.path.abspath(__file__))
-    orthograpy_dir = os.path.join(curr_dir, "orthography")
-    os.makedirs(orthograpy_dir, exist_ok=True)
+    logs_dir = os.path.join(curr_dir, "logs")
+    os.makedirs(logs_dir, exist_ok=True)
 
     if args.corpus == 'All':
-        output_folder = os.path.join(orthograpy_dir, f"{args.language}_All")
+        output_folder = os.path.join(logs_dir, f"{args.language}_All")
     else:
         corpus = os.path.basename(os.path.normpath(args.corpus))
-        output_folder = os.path.join(orthograpy_dir, f"{args.language}_{corpus}")
+        output_folder = os.path.join(logs_dir, f"{args.language}_{corpus}")
     os.makedirs(output_folder, exist_ok=True)
 
     corpus_path = args.corpus
@@ -528,56 +397,28 @@ def extract_o_info(args, langs):
     else:
         print("there has been an error extracting the orthographic information. generate_corpus function didn't return any corpus")
 
-def main(args, langs, curr_dir):
-
-    if args.task == "extract":
-        extract_o_info(args, langs)
-    
-    elif args.task == "compare":
-        
-        with open(os.path.join(curr_dir, "orthography", args.orthographic_info_1, "orthographic_info"), 'rb') as f:
-            c1_info = pickle.load(f)
-        with open(os.path.join(curr_dir, "orthography", args.orthographic_info_2, "orthographic_info"), 'rb') as f:
-            c2_info = pickle.load(f)
-            
-        compare_corpora(c1_info, c2_info)
     
 if __name__ == "__main__":
 
-    curr_dir = os.path.dirname(os.path.abspath(__file__))
     langs = ['Amis', 'Atayal', 'Paiwan', 'Bunun', 'Puyuma', 'Rukai', 'Tsou', 'Saisiyat', 'Yami',
              'Thao', 'Kavalan', 'Truku', 'Sakizaya', 'Seediq', 'Saaroa', 'Kanakanavu']
     
-    parser = argparse.ArgumentParser(description="Extract and compare orthographic info")
+    parser = argparse.ArgumentParser(description="Extract orthographic info")
     #parser.add_argument('--verbose', action='store_true', help='increase output verbosity')
-    parser.add_argument('task', choices=['extract', 'compare'],
-                        help='Specify whether you want to extract orthographic info of a corpus or compare orthographic info of two corpora')
-    parser.add_argument('--language', help='Language code (required for extract)')
-    parser.add_argument('--corpus', help='the corpus path out of which orthographic info will be extracted. Could be set to "All" (required for extract)')
-    parser.add_argument('--corpora_path', help='corpora path if corpus is set to "All" (required for extract if corpus is "All")')
-    parser.add_argument('--orthographic_info_1', help='extracted orthographic info that will be used in comparison. Should be in the orthography folder. format is Lang_Corpus (required for compare)')
-    parser.add_argument('--orthographic_info_2', help='extracted orthographic info that will be used in comparison. Should be in the orthography folder. format is Lang_Corpus (required for compare)')
+    parser.add_argument('--language', help='Language code')
+    parser.add_argument('--corpus', help='the corpus path out of which orthographic info will be extracted. Could be set to "All"')
+    parser.add_argument('--corpora_path', help='corpora path if corpus is set to "All" (required if corpus is "All")')
     args = parser.parse_args()
 
-    # Validate required arguments based on 'search_by'
-    if args.task == 'extract':
-        if not args.language or not args.corpus:
-            parser.error("For 'extract', --language and --corpus are required.")
-        if args.language not in langs:
-            parser.error(f"Enter a valid Formosan language from the list: {langs}")
-        if args.corpus != "All" and not os.path.exists(args.corpus):
-            parser.error(f"The entered corpus path, {args.corpus}, doesn't exist")
-        if args.corpus == "All" and not args.corpora_path:
-            parser.error("if --corpus is set to 'All', --corpora_path is required")
-        if args.corpus == "All" and not os.path.exists(args.corpora_path):
-            parser.error(f"The entered corpora path, {args.corpora_path}, doesn't exist")
-    
-    elif args.task == 'compare':
-        if not args.orthographic_info_1 or not args.orthographic_info_2:
-            parser.error("For 'compare', --orthographic_info_1 and orthographic_info_2 are required.")
-        if not os.path.exists(os.path.join(curr_dir, "orthography", args.orthographic_info_1, "orthographic_info")):
-            parser.error(f"The entered orthographic info, {args.orthographic_info_1}, doesn't exist")
-        if not os.path.exists(os.path.join(curr_dir, "orthography", args.orthographic_info_2, "orthographic_info")):
-            parser.error(f"The entered orthographic info, {args.orthographic_info_2}, doesn't exist")
-
-    main(args, langs, curr_dir)
+    # Validate required arguments
+    if not args.language or not args.corpus:
+        parser.error("--language and --corpus are required.")
+    if args.language not in langs:
+        parser.error(f"Enter a valid Formosan language from the list: {langs}")
+    if args.corpus != "All" and not os.path.exists(args.corpus):
+        parser.error(f"The entered corpus path, {args.corpus}, doesn't exist")
+    if args.corpus == "All" and not args.corpora_path:
+        parser.error("if --corpus is set to 'All', --corpora_path is required")
+    if args.corpus == "All" and not os.path.exists(args.corpora_path):
+        parser.error(f"The entered corpora path, {args.corpora_path}, doesn't exist")
+    main(args, langs)
