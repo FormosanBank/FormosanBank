@@ -43,8 +43,7 @@ QC/
 │   ├── logs/
 │   ├── iso-639-3.txt
 │   ├── validate_xml.py
-│   ├── xml_template.dtd
-│   └── count_tokens.py
+│   └── xml_template.dtd
 ├── count_tokens.py
 ```
 
@@ -106,14 +105,43 @@ pip install -r requirements.txt
 ### Validation Scripts
 
 1. **`validate_xml.py`**
-   - **Purpose**: Validates XML files against a predefined structure (see `xml_template.dtd`).
-   - **Usage**: `python3 QC/validation/validate_xml.py [arguments]`
-   - **Arguments**: _(Placeholder for specific arguments and examples)_
+   - **Purpose**: Validates XML files by ensuring they conform to a predefined structure, checking ISO language codes, and reformatting XML content.
+   - **Usage**:
+     ```bash
+     python3 QC/validation/validate_xml.py <search_method> --language <language_code> --corpus <corpus_name> --path <file_path>
+     ```
+   - **Arguments**:
+     - `--search_by`: Defines the method to search for validation (`by_language`, `by_corpus`, or `by_path`). Always required
+     - `--language`: Specifies the language to be validated (required when searching `by_language`).
+     - `--corpus`: Specifies the corpus name for validation (required when using `by_corpus`).
+     - `--path`: Path to the XML file (or directory; if directory is provided, all XML files within will be checked) to be validated (required when using `by_path`).
+     - `--corpora_path` Path to the directory containing all the corpora. (required when using `by_language` and `by_corpus`)
+     - `--verbose` when used, Detailed logs will be saved in a log file. Log will include which files have been checked and a detailed record if whether there has been any issues or not. The search mood is indicated by the log file name. A summary of issues can be found the buttom of the log file
 
-2. **`count_tokens.py`**
-   - **Purpose**: Counts tokens in the text data for linguistic analysis.
-   - **Usage**: `python3 QC/validation/count_tokens.py [arguments]`
-   - **Arguments**: _(Placeholder for specific arguments and examples)_
+   - **Examples**:
+     - Validate by language:
+       ```bash
+       python3 QC/validation/validate_xml.py by_language --language "Amis" --corpora_path "./Corpora"
+       ```
+     - Validate by corpus and use verbose:
+       ```bash
+       python3 QC/validation/validate_xml.py by_corpus --corpus "ePark" --corpora_path "./Corpora" --verbose
+       ```
+     - Validate by path:
+       ```bash
+       python3 QC/validation/validate_xml.py by_path --path "./Corpora/ePark/ep1_九階教材"
+       ```
+   - **Associated Files**:
+     - `iso-639-3.txt`: A text file containing ISO 639-3 language codes used to verify that the `xml:lang` attribute in XML files contains a valid code.
+     - `xml_template.dtd`: A Document Type Definition (DTD) file specifying the required structure of the XML files. The script validates XML files against this template to ensure consistency.
+
+### Aditional Scripts
+
+1. **`count_tokens.py`**
+   - **Purpose**: Counts the current number of tokens in the corpora both by language and by source
+   - **Usage**: `python3 QC/validation/count_tokens.py <corpora_path>`
+   - **Example**: `python3 QC/validation/count_tokens.py ./Corpora`
+   - **Output** The code will output the count for each language as well as the count per resource then will print the total token count across the corpora
 
 ---
 
