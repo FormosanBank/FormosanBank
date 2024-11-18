@@ -17,6 +17,7 @@ This directory contains a set of Python scripts and resources for quality contro
     - [Cleaning Scripts](#cleaning-scripts)
     - [Orthography Scripts](#orthography-scripts)
     - [Validation Scripts](#validation-scripts)
+    - [Additional Scripts](#additional-scripts)
 5. [Logs](#logs)
 
 ---
@@ -91,16 +92,58 @@ pip install -r requirements.txt
 ### Orthography Scripts
 
 1. **`orthography_compare.py`**
-   - **Purpose**: Compares orthography variations within datasets.
-   - **Usage**: `python3 QC/orthography/orthography_compare.py [arguments]`
-   - **Arguments**: _(Placeholder for specific arguments and examples)_
+   - **Purpose**: Compares orthographic features between two corpora using various similarity and distance metrics to determine if the two corpora use the same orthography or not.
+   - **Usage**:
+     ```bash
+     python3 QC/orthography/orthography_compare.py --o_info_1 <orthographi_info_path1> --o_info_2 <orthographi_info_path2>
+     ```
+   - **Arguments**:
+     - `--o_info_1`: Specifies the path to the first log folder containing the orthograpihc info. Should be in the format `Language_Corpus`.
+     - `--o_info_2`: Specifies the path to the second log folder containing the orthograpihc info. Should be in the format `Language_Corpus`.
+
+   - **Analysis Metrics Used**:
+     - **Jaccard Similarity**: Measures the overlap between sets of characters in the two corpora.
+     - **Overlap Coefficient**: Compares the intersection of character sets, normalized by the smaller set size.
+     - **Cosine Similarity**: Computes similarity based on the angle between character frequency vectors.
+     - **Euclidean Distance**: Measures the straight-line distance between frequency vectors, indicating overall difference.
+     - **Kullback-Leibler (KL) Divergence**: Measures the difference in information between character distributions.
+
+   - **Output**:
+     - This script generates comparison visuals for each similarity and distance metric, helping users understand the differences in orthography between corpora.
 
 2. **`orthography_extract.py`**
-   - **Purpose**: Extracts orthographic features from text data for analysis.
-   - **Usage**: `python3 QC/orthography/orthography_extract.py --language <language> --corpus <corpus>`
+   - **Purpose**: Extracts and analyzes orthographic features, such as character frequencies, from XML files for specific languages and corpus.
+   - **Usage**:
+     ```bash
+     python3 QC/orthography/orthography_extract.py --language <language> --corpus <corpus> --corpora_path <corpora_path>
+     ```
    - **Arguments**:
      - `--language`: Specifies the language to process (e.g., `Amis`).
-     - `--corpus`: Specifies the corpus to use (e.g., `ePark`).
+     - `--corpus`: Specifies the corpus directory containing XML files (e.g., `./Corpora/ePark`). Can be set to `All` if all corpora of the specified language desired to be used.
+     - `--corpora_path` Path to the directory containing all the corpora. (required only when `--corpus` is set to `All`)
+
+   - **Examples**:
+     - Analyze the Amis language in the `ePark` corpus:
+       ```bash
+       python3 QC/orthography/orthography_extract.py --language Amis --corpus ./Corpora/ePark
+       ```
+    - Analyze all corpora of the Amis language:
+       ```bash
+       python3 QC/orthography/orthography_extract.py --language Amis --corpus All --copora_path ./Corpora
+       ```
+
+   - **Output**:
+     - The code will generate the following orthographic info and save them in addition to creating visuals:
+        - unique_characters
+        - character_frequency
+        - character_classes
+        - diacritics
+        - bigram_frequency
+        - punctuation
+        - word_frequency
+     -  Logs are stored in the corresponding language-specific directory under `orthography/logs/`.
+     -  in the logs directory, a folder will be created with the format `language_corpus`. Inside of it, a pickle with the orhtographic info named orthographic_info will be saved in addition to unique_characters txt file and the png of the visuals.
+
 
 ### Validation Scripts
 
@@ -108,7 +151,7 @@ pip install -r requirements.txt
    - **Purpose**: Validates XML files by ensuring they conform to a predefined structure, checking ISO language codes, and reformatting XML content.
    - **Usage**:
      ```bash
-     python3 QC/validation/validate_xml.py <search_method> --language <language_code> --corpus <corpus_name> --path <file_path>
+     python3 QC/validation/validate_xml.py <search_method> --language <language_code> --corpus <corpus_name> --path <file_path> --corpora_path <corpora_path> --verbose
      ```
    - **Arguments**:
      - `--search_by`: Defines the method to search for validation (`by_language`, `by_corpus`, or `by_path`). Always required
@@ -135,7 +178,7 @@ pip install -r requirements.txt
      - `iso-639-3.txt`: A text file containing ISO 639-3 language codes used to verify that the `xml:lang` attribute in XML files contains a valid code.
      - `xml_template.dtd`: A Document Type Definition (DTD) file specifying the required structure of the XML files. The script validates XML files against this template to ensure consistency.
 
-### Aditional Scripts
+### Additional Scripts
 
 1. **`count_tokens.py`**
    - **Purpose**: Counts the current number of tokens in the corpora both by language and by source

@@ -81,9 +81,9 @@ def vis_diff(all_chars, c1_char_freq, c2_char_freq, source_1, source_2):
 def main(args, curr_dir):
 
 
-    with open(os.path.join(curr_dir, "logs", args.orthographic_info_1, "orthographic_info"), 'rb') as f:
+    with open(os.path.join(curr_dir, "logs", args.o_info_1, "orthographic_info"), 'rb') as f:
         c1_info = pickle.load(f)
-    with open(os.path.join(curr_dir, "logs", args.orthographic_info_2, "orthographic_info"), 'rb') as f:
+    with open(os.path.join(curr_dir, "logs", args.o_info_2, "orthographic_info"), 'rb') as f:
         c2_info = pickle.load(f)
 
 
@@ -128,7 +128,7 @@ def main(args, curr_dir):
     bigram_euclidean_dist = euclidean(c1_bigram_vector, c2_bigram_vector)
     print(f"Euclidean Distance of bigram frequencies: {bigram_euclidean_dist:.2f}")
 
-    vis_diff(all_chars, c1_info['character_frequency'], c2_info['character_frequency'], "_".join(args.orthographic_info_1.split('_')[1:]), "_".join(args.orthographic_info_2.split('_')[1:]))
+    vis_diff(all_chars, c1_info['character_frequency'], c2_info['character_frequency'], "_".join(args.o_info_1.split('_')[1:]), "_".join(args.o_info_2.split('_')[1:]))
 
             
     
@@ -138,16 +138,16 @@ if __name__ == "__main__":
     
     parser = argparse.ArgumentParser(description="Compare orthographic info")
     #parser.add_argument('--verbose', action='store_true', help='increase output verbosity')
-    parser.add_argument('--orthographic_info_1', help='extracted orthographic info that will be used in comparison. Should be in the orthography folder. format is Lang_Corpus')
-    parser.add_argument('--orthographic_info_2', help='extracted orthographic info that will be used in comparison. Should be in the orthography folder. format is Lang_Corpus')
+    parser.add_argument('--o_info_1', help='extracted orthographic info that will be used in comparison. Should be in the orthography folder. format is Lang_Corpus')
+    parser.add_argument('--o_info_2', help='extracted orthographic info that will be used in comparison. Should be in the orthography folder. format is Lang_Corpus')
     args = parser.parse_args()
 
     # Validate required arguments
-    if not args.orthographic_info_1 or not args.orthographic_info_2:
-        parser.error("--orthographic_info_1 and orthographic_info_2 are required.")
-    if not os.path.exists(os.path.join(curr_dir, "logs", args.orthographic_info_1, "orthographic_info")):
-        parser.error(f"The entered orthographic info, {args.orthographic_info_1}, doesn't exist")
-    if not os.path.exists(os.path.join(curr_dir, "logs", args.orthographic_info_2, "orthographic_info")):
-        parser.error(f"The entered orthographic info, {args.orthographic_info_2}, doesn't exist")
+    if not args.o_info_1 or not args.o_info_2:
+        parser.error("--o_info_1 and o_info_2 are required.")
+    if not os.path.exists(os.path.join(curr_dir, "logs", args.o_info_1, "orthographic_info")):
+        parser.error(f"The entered orthographic info, {args.o_info_1}, doesn't exist")
+    if not os.path.exists(os.path.join(curr_dir, "logs", args.o_info_2, "orthographic_info")):
+        parser.error(f"The entered orthographic info, {args.o_info_2}, doesn't exist")
 
     main(args, curr_dir)
