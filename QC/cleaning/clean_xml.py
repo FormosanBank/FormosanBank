@@ -8,15 +8,14 @@ def remove_nonlatin(text):
     - Latin script (including accented characters)
     - IPA Extensions (e.g., ʉ, ɨ)
     - Digits (0-9)
-    - Common punctuation marks
+    - Common punctuation marks, including the caret (^)
     """
     # Define the regex pattern
-    pattern = '[^A-Za-zÀ-ÖØ-öø-ÿʉɨɑɪɾθðŋʃʒʔɔɛæœɑəɯʌʊɜɵɒɲχϕ 0-9.,;:!?`\'\"()\[\]{}<>]'
+    pattern = '[^A-Za-zÀ-ÖØ-öø-ÿʉɨɑɪɾθðŋʃʒʔɔɛæœɑəɯʌʊɜɵɒɲχϕ 0-9.,;:!?`\'\"()\[\]{}<>^]'
     
     # Replace non-matching characters with a space
     cleaned_text = re.sub(pattern, ' ', text)
     return cleaned_text
-
 
 def swap_punctuation(input_text):
     """
@@ -99,7 +98,7 @@ def clean_text(text, lang):
     text = normalize_whitespace(text)  # Normalize whitespace
     text = fix_parentheses(text)  # Fix parentheses
     text = trim_repeated_punctuation(text)  # Trim repeated punctuation
-    if lang not in ["zho"]:  # Apply only for non-Chinese languages
+    if lang not in ["zho", "zh"]:  # Apply only for non-Chinese languages
         text = remove_nonlatin(text)
     return text
 
