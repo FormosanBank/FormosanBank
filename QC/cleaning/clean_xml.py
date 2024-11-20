@@ -4,11 +4,19 @@ from lxml import etree
 
 def remove_nonlatin(text):
     """
-    Removes non-Latin characters, digits, and common punctuation marks.
+    Removes characters that are not part of:
+    - Latin script (including accented characters)
+    - IPA Extensions (e.g., ʉ, ɨ)
+    - Digits (0-9)
+    - Common punctuation marks
     """
-    pattern = '[^A-Za-zÀ-ÖØ-öø-ÿ0-9 \.,;:!?`\'\"()\[\]{}<>]'
+    # Define the regex pattern
+    pattern = '[^A-Za-zÀ-ÖØ-öø-ÿʉɨɑɪɾθðŋʃʒʔɔɛæœɑəɯʌʊɜɵɒɲχϕ 0-9.,;:!?`\'\"()\[\]{}<>]'
+    
+    # Replace non-matching characters with a space
     cleaned_text = re.sub(pattern, ' ', text)
     return cleaned_text
+
 
 def swap_punctuation(input_text):
     """
