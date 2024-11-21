@@ -37,7 +37,7 @@ def main(args):
         c2_info = pickle.load(f)
 
     vocab1 = [word for word, freq in c1_info['word_frequency'].most_common(100)]
-    vocab2 = [word for word, freq in c1_info['word_frequency'].most_common(100)]
+    vocab2 = [word for word, freq in c2_info['word_frequency'].most_common(100)]
 
 
     warns = False # flag to check if any warnings were raised
@@ -56,9 +56,9 @@ def main(args):
     
     if warns:
         unique_to_vocab1 = set(vocab1) - set(vocab2)
-        warnings.warn("High-frequency words in corpus but not in reference:" + unique_to_vocab1)
+        warnings.warn(f"High-frequency words in corpus but not in reference: {unique_to_vocab1}")
         unique_to_vocab2 = set(vocab2) - set(vocab1)
-        warnings.warn("High-frequency words in reference but not in corpus:" + unique_to_vocab2)
+        warnings.warn(f"High-frequency words in reference but not in corpus: {unique_to_vocab2}")
 
 if __name__ == "__main__":
 
