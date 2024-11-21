@@ -152,7 +152,6 @@ pip install -r requirements.txt
    - **Expected Output**
      - Console output with several metrics of similarity. Warnings will be issued for worrisome numbers.
      
-     
 ### Cleaning Scripts
 
 1. **`clean_xml.py`**
