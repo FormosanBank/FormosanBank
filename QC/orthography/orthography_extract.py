@@ -19,7 +19,7 @@ def get_lang(path, langs):
         if lang in path:
             return lang
 
-def generate_corpus(lang, langs, to_check_path):
+def generate_corpus(lang, langs, to_check_path, kindOf):
 
     corpus = ""
     if not os.path.exists(to_check_path):
@@ -36,7 +36,10 @@ def generate_corpus(lang, langs, to_check_path):
                     # Find the <FORM> element within the <S> element
                     form = s.find('FORM')
                     if form.text is not None:
-                        corpus += " " + form.text
+                        #if the kindOf attribute is not specified, add the form text to the corpus
+                        #if the kindOf attribute is specified, make sure this is of the right type
+                        if kindOf is None or ('kindOf' in form.attrib and form.attrib['kindOf'] == kindOf):
+                            corpus += " " + form.text
     return corpus
 
 def remove_chinese_characters(text):
@@ -384,12 +387,15 @@ def main(args, langs):
         else:
             corpus = os.path.basename(os.path.normpath(args.corpus))
             output_folder = os.path.join(logs_dir, f"{language}_{corpus}")
+        #if we are looking at a specific FORM tier, add it to the output folder name
+        if args.kindOf is not None:
+            output_older = output_folder + "_" + args.kindOf
 
         corpus_path = args.corpus
         if args.corpus == "All":
             corpus_path = args.corpora_path
 
-        corpus = generate_corpus(language, langs, corpus_path)
+        corpus = generate_corpus(language, langs, corpus_path, args.kindOf)
         if corpus:
             os.makedirs(output_folder, exist_ok=True) #only make the folder if the corpus is not empty
             o_info = extract_orthographic_info(corpus)
@@ -413,6 +419,7 @@ if __name__ == "__main__":
     parser.add_argument('--language', help='Language code')
     parser.add_argument('--corpus', help='the corpus path out of which orthographic info will be extracted. Could be set to "All"')
     parser.add_argument('--corpora_path', help='corpora path if corpus is set to "All" (required if corpus is "All")')
+    parser.add_argument('--kindOf', help='which XML tier to consider. Defaults to all, which is a problem if there is both an original and standard tier.')
     args = parser.parse_args()
 
     # Validate required arguments
