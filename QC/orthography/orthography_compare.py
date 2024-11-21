@@ -48,10 +48,10 @@ def vis_diff(all_chars, c1_char_freq, c2_char_freq, source_1, source_2):
 
     # Calculate relative frequencies (ratios) for plotting
     corpus1_freqs = [
-        c1_char_freq.get(char, 0) / total_corpus1_chars for char in sorted_chars
+        np.log((c1_char_freq.get(char, 0)+1) / (total_corpus1_chars - c1_char_freq.get(char, 0) + 1)) for char in sorted_chars
     ]
     corpus2_freqs = [
-        c2_char_freq.get(char, 0) / total_corpus2_chars for char in sorted_chars
+       np.log((c2_char_freq.get(char, 0)+1) / (total_corpus2_chars - c2_char_freq.get(char, 0) + 1)) for char in sorted_chars
     ]
 
     # Optionally, convert ratios to percentages
@@ -67,7 +67,7 @@ def vis_diff(all_chars, c1_char_freq, c2_char_freq, source_1, source_2):
     rects2 = ax.bar(x + width / 2, corpus2_freqs, width, label=source_2)
 
     # Add labels and title
-    ax.set_ylabel('Relative Frequency')
+    ax.set_ylabel('Relative Frequency on log-odds scale')
     ax.set_title(f'Character Relative Frequencies in {source_1} and {source_2}')
     ax.set_xticks(x)
     ax.set_xticklabels(sorted_chars)
@@ -76,7 +76,8 @@ def vis_diff(all_chars, c1_char_freq, c2_char_freq, source_1, source_2):
     # Rotate x-axis labels for better readability
     plt.xticks(rotation=90)
     plt.tight_layout()
-    plt.show()
+    plt.savefig(f'character_frequency_comparison_{source_1}_{source_2}.png')
+    plt.close()
 
 
 def main(args):
