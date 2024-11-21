@@ -55,7 +55,24 @@ Each subfolder and script serves a specific purpose related to the quality contr
 ## Prerequisites
 
 - Python 3.6+
+- Tkinter (for GUI-based scripts)
 - Required libraries can be installed using `pip install -r requirements.txt` (see the [Installation](#installation) section for more details).
+
+### Installing Tkinter
+
+#### macOS
+```bash
+brew install python-tk
+```
+
+#### Ubuntu
+```bash
+sudo apt-get install python3-tk
+```
+
+#### Windows
+Tkinter is included with the standard Python distribution for Windows. No additional installation is required.
+
 ---
 
 ## Installation
