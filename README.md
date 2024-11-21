@@ -121,8 +121,8 @@ pip install -r requirements.txt
 
 1. **`count_tokens.py`**
    - **Purpose**: Counts the current number of tokens in the corpora both by language and by source
-   - **Usage**: `python3 QC/validation/count_tokens.py <corpora_path>`
-   - **Example**: `python3 QC/validation/count_tokens.py ./Corpora`
+   - **Usage**: `python3 QC/count_tokens.py <corpora_path>`
+   - **Example**: `python3 QC/count_tokens.py ./Corpora`
    - **Output** The code will output the count for each language as well as the count per resource then will print the total token count across the corpora
 
 2. **`orthography_compare.py`**
