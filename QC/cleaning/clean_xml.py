@@ -62,6 +62,7 @@ def normalize_whitespace(text):
     text = re.sub(r'\s+', ' ', text).strip()  # Normalize whitespace
     return text
 
+'''
 def fix_parentheses(text):
     """
     Fixes imbalanced parentheses by removing unmatched ones.
@@ -80,6 +81,7 @@ def fix_parentheses(text):
     return ''.join(
         [char for i, char in enumerate(text) if i not in indices_to_remove]
     )
+'''
 
 def trim_repeated_punctuation(text):
     """
@@ -96,7 +98,7 @@ def clean_text(text, lang):
     text = swap_punctuation(text)  # Replace non-ASCII punctuation
     text = process_punctuation(text)  # Standardize punctuation
     text = normalize_whitespace(text)  # Normalize whitespace
-    text = fix_parentheses(text)  # Fix parentheses
+    # text = fix_parentheses(text), Fix parentheses currently not being used
     text = trim_repeated_punctuation(text)  # Trim repeated punctuation
     if lang not in ["zho", "zh"]:  # Apply only for non-Chinese languages
         text = remove_nonlatin(text)
