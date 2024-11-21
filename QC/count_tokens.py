@@ -44,7 +44,7 @@ def count_source(path, tokens_by_lang, langs):
 def get_counts(corpora_path):
     
     langs = ['Amis', 'Atayal', 'Paiwan', 'Bunun','Puyuma', 'Rukai', 'Tsou', 'Saisiyat', 'Yami',
-        'Thao', 'Kavalan', 'Truku', 'Sakizaya','Seediq','Saaroa', 'Kanakanavu']
+        'Thao', 'Kavalan', 'Truku', 'Sakizaya','Seediq','Saaroa', 'Kanakanavu', 'Siraya']
 
     tokens_by_lang = {lang: 0 for lang in langs}
     tokens_by_source = dict()
