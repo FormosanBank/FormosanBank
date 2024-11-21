@@ -163,7 +163,7 @@ pip install -r requirements.txt
        ```
     - Analyze all corpora of the Amis language:
        ```bash
-       python3 QC/orthography/orthography_extract.py --language Amis --corpus All --copora_path ./Corpora
+       python3 QC/orthography/orthography_extract.py --language Amis --corpus All --corpora_path ./Corpora
        ```
 
    - **Output**:
