@@ -7,6 +7,7 @@ from scipy.spatial.distance import euclidean
 from scipy.special import rel_entr
 import argparse
 
+plt.switch_backend('Agg')  # Use a non-GUI backend
 plt.rcParams['font.sans-serif'] = ['Arial Unicode MS']
 
 
@@ -78,12 +79,12 @@ def vis_diff(all_chars, c1_char_freq, c2_char_freq, source_1, source_2):
     plt.show()
 
 
-def main(args, curr_dir):
+def main(args):
 
 
-    with open(os.path.join(curr_dir, "logs", args.o_info_1, "orthographic_info"), 'rb') as f:
+    with open(os.path.join(args.o_info_1, "orthographic_info"), 'rb') as f:
         c1_info = pickle.load(f)
-    with open(os.path.join(curr_dir, "logs", args.o_info_2, "orthographic_info"), 'rb') as f:
+    with open(os.path.join(args.o_info_2, "orthographic_info"), 'rb') as f:
         c2_info = pickle.load(f)
 
 
@@ -133,8 +134,6 @@ def main(args, curr_dir):
             
     
 if __name__ == "__main__":
-
-    curr_dir = os.path.dirname(os.path.abspath(__file__))
     
     parser = argparse.ArgumentParser(description="Compare orthographic info")
     #parser.add_argument('--verbose', action='store_true', help='increase output verbosity')
@@ -145,9 +144,9 @@ if __name__ == "__main__":
     # Validate required arguments
     if not args.o_info_1 or not args.o_info_2:
         parser.error("--o_info_1 and o_info_2 are required.")
-    if not os.path.exists(os.path.join(curr_dir, "logs", args.o_info_1, "orthographic_info")):
-        parser.error(f"The entered orthographic info, {args.o_info_1}, doesn't exist")
-    if not os.path.exists(os.path.join(curr_dir, "logs", args.o_info_2, "orthographic_info")):
-        parser.error(f"The entered orthographic info, {args.o_info_2}, doesn't exist")
+    if not os.path.exists(os.path.join(args.o_info_1, "orthographic_info")):
+        parser.error(f"The entered orthographic info, {os.path.join(args.o_info_1, "orthographic_info")}, doesn't exist")
+    if not os.path.exists(os.path.join(args.o_info_2, "orthographic_info")):
+        parser.error(f"The entered orthographic info, {os.path.join(args.o_info_2, "orthographic_info")}, doesn't exist")
 
-    main(args, curr_dir)
+    main(args)
