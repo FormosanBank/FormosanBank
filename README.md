@@ -57,7 +57,24 @@ Each subfolder and script serves a specific purpose related to the quality contr
 ## Prerequisites
 
 - Python 3.6+
+- Tkinter (for GUI-based scripts)
 - Required libraries can be installed using `pip install -r requirements.txt` (see the [Installation](#installation) section for more details).
+
+### Installing Tkinter
+
+#### macOS
+```bash
+brew install python-tk
+```
+
+#### Ubuntu
+```bash
+sudo apt-get install python3-tk
+```
+
+#### Windows
+Tkinter is included with the standard Python distribution for Windows. No additional installation is required.
+
 ---
 
 ## Installation
@@ -132,6 +149,31 @@ pip install -r requirements.txt
      - `iso-639-3.txt`: A text file containing ISO 639-3 language codes used to verify that the `xml:lang` attribute in XML files contains a valid code.
      - `xml_template.dtd`: A Document Type Definition (DTD) file specifying the required structure of the XML files. The script validates XML files against this template to ensure consistency.
 
+3. **`validate_orthography.py`**
+   - **Purpose**: Compares the orthographic information of a target corpus with a reference corpus for a specified Formosan language.
+   - **Usage**:
+     ```bash
+     python3 path-to-FormosanBank/QC/validation/validate_orthography.py --o_info <log_folder_name> --language <language>
+     ```
+   - **Arguments**:
+     - `--o_info`: Name of the log folder containing orthographic information that will be analyzed. You must be in the root directory of the corpus repository.
+     - `--language`: Name of Formosan language to be analyzed.
+   - **Expected Output**
+     - Console output with several metrics of orthographic similarity. Warnings will be issued for worrisome numbers.
+     - A png named `character_frequency_comparison_...` that visualizes the character distributions, saved in folder the script was run from.
+
+4. **`validate_vocabulary.py`**
+   - **Purpose**: Compares the 100 most common words in the target corpus with a reference corpus for a specified Formosan language.
+   - **Usage**:
+     ```bash
+     python3 path-to-FormosanBank/QC/validation/validate_vocabulary.py --o_info <log_folder_name> --language <language_code>
+     ```
+   - **Arguments**:
+     - `--o_info`: Name of the log folder containing vocabulary information that will be analyzed. You must be in the root directory of the corpus repository.
+     - `--language`: Name of Formosan language to be analyzed.
+   - **Expected Output**
+     - Console output with several metrics of similarity. Warnings will be issued for worrisome numbers.
+     
 ### Cleaning Scripts
 
 1. **`clean_xml.py`**
@@ -192,6 +234,7 @@ pip install -r requirements.txt
      - `--language`: Specifies the language to process (e.g., `Amis`).
      - `--corpus`: Specifies the corpus directory containing XML files (e.g., `./Corpora/ePark`). Can be set to `All` if all corpora of the specified language desired to be used.
      - `--corpora_path` Path to the directory containing all the corpora. (required only when `--corpus` is set to `All`)
+     - `--kindOf` Specify if you want to look at a particular type of FORM (e.g., `original` or `standard`).
 
    - **Examples**:
      - Analyze the Amis language in the `ePark` corpus:

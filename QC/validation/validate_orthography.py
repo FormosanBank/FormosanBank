@@ -2,6 +2,8 @@ import os
 import matplotlib.pyplot as plt
 import numpy as np
 import pickle
+import string
+import warnings
 from sklearn.metrics.pairwise import cosine_similarity
 from scipy.spatial.distance import euclidean
 from scipy.special import rel_entr
@@ -48,10 +50,10 @@ def vis_diff(all_chars, c1_char_freq, c2_char_freq, source_1, source_2):
 
     # Calculate relative frequencies (ratios) for plotting
     corpus1_freqs = [
-        np.log((c1_char_freq.get(char, 0)+1) / (total_corpus1_chars - c1_char_freq.get(char, 0) + 1)) for char in sorted_chars
+        0 if c1_char_freq.get(char, 0) == 0 else np.log((c1_char_freq.get(char, 0)+1) / (total_corpus1_chars - c1_char_freq.get(char, 0) + 1)) for char in sorted_chars
     ]
     corpus2_freqs = [
-       np.log((c2_char_freq.get(char, 0)+1) / (total_corpus2_chars - c2_char_freq.get(char, 0) + 1)) for char in sorted_chars
+       0 if c2_char_freq.get(char, 0) == 0 else np.log((c2_char_freq.get(char, 0)+1) / (total_corpus2_chars - c2_char_freq.get(char, 0) + 1)) for char in sorted_chars
     ]
 
     # Optionally, convert ratios to percentages
@@ -82,15 +84,25 @@ def vis_diff(all_chars, c1_char_freq, c2_char_freq, source_1, source_2):
 
 def main(args):
 
-
-    with open(os.path.join(args.o_info_1, "orthographic_info"), 'rb') as f:
+    # get the orthographic info for the target corpus
+    with open(os.path.join(os.getcwd(),'QC/orthography/logs',args.o_info, "orthographic_info"), 'rb') as f:
         c1_info = pickle.load(f)
-    with open(os.path.join(args.o_info_2, "orthographic_info"), 'rb') as f:
+
+    # get the reference orthographic info for that language
+    file_path = os.path.dirname(__file__)
+    with open(os.path.join(file_path, "reference", args.language,'orthographic_info'), 'rb') as f:
         c2_info = pickle.load(f)
 
+    # Filter unique_chars to exclude punctuation and numerals
+    exclude_chars = set(string.punctuation + string.digits)
+    c1_info['unique_characters'] = [char for char in c1_info['unique_characters'] if char not in exclude_chars]
+    c2_info['unique_characters'] = [char for char in c2_info['unique_characters'] if char not in exclude_chars]
 
+    
     char_jaccard_similarity = jaccard_similarity(set(c1_info['unique_characters']), set(c2_info['unique_characters']))
     print(f"Jaccard Similarity of unique characters: {char_jaccard_similarity:.2f}")
+    if char_jaccard_similarity < .95:
+        warnings.warn("The disjunction of character sets should be close to 0. It is recommended to check the unique characters in the orthographic info for the target corpus and the reference corpus.")
 
     char_overlap_coefficient = overlap_coefficient(set(c1_info['unique_characters']), set(c2_info['unique_characters']))
     print(f"Overlap Coefficient of unique characters: {char_overlap_coefficient:.2f}")
@@ -104,12 +116,18 @@ def main(args):
 
     cosine_sim = cosine_similarity([c1_freq_vector], [c2_freq_vector])[0][0]
     print(f"Cosine Similarity of character frequencies: {cosine_sim:.2f}")
+    if char_jaccard_similarity < .975:
+        warnings.warn("Even when different orthographies are being used, cosine similarity is usually >.975.")
 
     euclidean_dist = euclidean(c1_freq_vector, c2_freq_vector)
     print(f"Euclidean Distance of character frequencies: {euclidean_dist:.2f}")
+    if euclidean_dist > .03:
+        warnings.warn("Even when different orthographies are being used, Euclidean distance is usually <.03.")
 
     kl_div = kl_divergence(c1_freq_vector, c2_freq_vector)
     print(f"KL Divergence of character frequencies: {kl_div:.2f}")
+    if kl_div > .03:
+        warnings.warn("Even when different orthographies are being used, KL divergence is usually <.03.")
 
     c1_bigrams = c1_info['2-grams']
     c2_bigrams = c2_info['2-grams']
@@ -126,28 +144,33 @@ def main(args):
     # Compute cosine similarity
     bigram_cosine_sim = cosine_similarity([c1_bigram_vector], [c2_bigram_vector])[0][0]
     print(f"Cosine Similarity of bigram frequencies: {bigram_cosine_sim:.2f}")
+    if bigram_cosine_sim < .95:
+        warnings.warn("Even when different orthographies are being used, bigram cosine similarities are usually >.95.")
 
     bigram_euclidean_dist = euclidean(c1_bigram_vector, c2_bigram_vector)
     print(f"Euclidean Distance of bigram frequencies: {bigram_euclidean_dist:.2f}")
+    if bigram_euclidean_dist < .04:
+        warnings.warn("Even when different orthographies are being used, bigram Euclidean distance is usually <.04.")
 
-    vis_diff(all_chars, c1_info['character_frequency'], c2_info['character_frequency'], "_".join(args.o_info_1.split('_')[1:]), "_".join(args.o_info_2.split('_')[1:]))
-
-            
+    vis_diff(all_chars, c1_info['character_frequency'], c2_info['character_frequency'], "_".join(args.o_info.split('_')[1:]), "reference")         
     
 if __name__ == "__main__":
+
+    langs = ['Amis', 'Atayal', 'Paiwan', 'Bunun', 'Puyuma', 'Rukai', 'Tsou', 'Saisiyat', 'Yami',
+             'Thao', 'Kavalan', 'Truku', 'Sakizaya', 'Seediq', 'Saaroa', 'Siraya', 'Kanakanavu']    
     
     parser = argparse.ArgumentParser(description="Compare orthographic info")
     #parser.add_argument('--verbose', action='store_true', help='increase output verbosity')
-    parser.add_argument('--o_info_1', help='extracted orthographic info that will be used in comparison. Should be in the orthography folder. format is Lang_Corpus')
-    parser.add_argument('--o_info_2', help='extracted orthographic info that will be used in comparison. Should be in the orthography folder. format is Lang_Corpus')
+    parser.add_argument('--o_info', help='Name of log folder containing orthographic info that will be analyzed. You must be in root directory of corpus repo.')
+    parser.add_argument('--language', help='Language code')
     args = parser.parse_args()
 
     # Validate required arguments
-    if not args.o_info_1 or not args.o_info_2:
-        parser.error("--o_info_1 and o_info_2 are required.")
-    if not os.path.exists(os.path.join(args.o_info_1, "orthographic_info")):
-        parser.error(f"The entered orthographic info, {os.path.join(args.o_info_1, "orthographic_info")}, doesn't exist")
-    if not os.path.exists(os.path.join(args.o_info_2, "orthographic_info")):
-        parser.error(f"The entered orthographic info, {os.path.join(args.o_info_2, "orthographic_info")}, doesn't exist")
+    if not args.o_info:
+        parser.error("--o_info is required.")
+    if not os.path.exists(os.path.join(os.getcwd(),'QC/orthography/logs',args.o_info, "orthographic_info")):
+        parser.error(f"The entered orthographic info, {os.path.join(os.getcwd(),'QC/orthography/logs',args.o_info, "orthographic_info")}, doesn't exist")
+    if not args.language in langs:
+        parser.error(f"Enter a valid Formosan language from the list: {langs}")
 
     main(args)

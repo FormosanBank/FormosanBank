@@ -11,6 +11,7 @@ import numpy as np
 import pickle
 import argparse
 
+plt.switch_backend('Agg')  # Use a non-GUI backend
 plt.rcParams['font.sans-serif'] = ['Arial Unicode MS']
 
 def get_lang(path, langs):
@@ -18,16 +19,15 @@ def get_lang(path, langs):
         if lang in path:
             return lang
 
-def generate_corpus(lang, langs, to_check_path):
+def generate_corpus(lang, langs, to_check_path, kindOf):
 
     corpus = ""
-    
     if not os.path.exists(to_check_path):
         raise ValueError(f"corpus {to_check_path} doesn't exist")
 
     for root, dirs, files in os.walk(to_check_path):
         for file in files:
-            if file.endswith(".xml") and get_lang(os.path.join(root, file), langs) == lang: # and 'Final_XML' in os.path.join(root, file)       
+            if file.endswith(".xml") and get_lang(os.path.join(root), langs) == lang: # and 'Final_XML' in os.path.join(root, file)       
                 tree = ET.parse(os.path.join(root, file))
                 root_to_read = tree.getroot()
                 
@@ -36,7 +36,10 @@ def generate_corpus(lang, langs, to_check_path):
                     # Find the <FORM> element within the <S> element
                     form = s.find('FORM')
                     if form.text is not None:
-                        corpus += " " + form.text
+                        #if the kindOf attribute is not specified, add the form text to the corpus
+                        #if the kindOf attribute is specified, make sure this is of the right type
+                        if kindOf is None or ('kindOf' in form.attrib and form.attrib['kindOf'] == kindOf):
+                            corpus += " " + form.text
     return corpus
 
 def remove_chinese_characters(text):
@@ -369,51 +372,60 @@ def visualize(o_info, output_folder):
 
 
 def main(args, langs):
-
     curr_dir = os.path.dirname(os.path.abspath(__file__))
     logs_dir = os.path.join(curr_dir, "logs")
     os.makedirs(logs_dir, exist_ok=True)
 
-    if args.corpus == 'All':
-        output_folder = os.path.join(logs_dir, f"{args.language}_All")
+    if args.language == 'All':
+        languages_to_process = langs
     else:
-        corpus = os.path.basename(os.path.normpath(args.corpus))
-        output_folder = os.path.join(logs_dir, f"{args.language}_{corpus}")
-    os.makedirs(output_folder, exist_ok=True)
+        languages_to_process = [args.language]
 
-    corpus_path = args.corpus
-    if args.corpus == "All":
-        corpus_path = args.corpora_path
-    
-    corpus = generate_corpus(args.language, langs, corpus_path)
-    if corpus:
-        o_info = extract_orthographic_info(corpus)
+    for language in languages_to_process:
+        if args.corpus == 'All':
+            output_folder = os.path.join(logs_dir, f"{language}_All")
+        else:
+            corpus = os.path.basename(os.path.normpath(args.corpus))
+            output_folder = os.path.join(logs_dir, f"{language}_{corpus}")
+        #if we are looking at a specific FORM tier, add it to the output folder name
+        if args.kindOf is not None:
+            output_older = output_folder + "_" + args.kindOf
 
-        with open(os.path.join(output_folder, "orthographic_info"), 'wb') as fp:
-            pickle.dump(o_info, fp)
-        
-        visualize(o_info, output_folder)
-        print(f"Successfully extracted orthographic information for {args.language} using {args.corpus}")
-    else:
-        print("there has been an error extracting the orthographic information. generate_corpus function didn't return any corpus")
+        corpus_path = args.corpus
+        if args.corpus == "All":
+            corpus_path = args.corpora_path
+
+        corpus = generate_corpus(language, langs, corpus_path, args.kindOf)
+        if corpus:
+            os.makedirs(output_folder, exist_ok=True) #only make the folder if the corpus is not empty
+            o_info = extract_orthographic_info(corpus)
+
+            with open(os.path.join(output_folder, "orthographic_info"), 'wb') as fp:
+                pickle.dump(o_info, fp)
+
+            visualize(o_info, output_folder)
+            print(f"Successfully extracted orthographic information for {language} using {args.corpus}")
+        else:
+            print(f"Warning: Unable to extract the orthographic information for {language}. generate_corpus function didn't return any corpus")
 
     
 if __name__ == "__main__":
 
     langs = ['Amis', 'Atayal', 'Paiwan', 'Bunun', 'Puyuma', 'Rukai', 'Tsou', 'Saisiyat', 'Yami',
-             'Thao', 'Kavalan', 'Truku', 'Sakizaya', 'Seediq', 'Saaroa', 'Kanakanavu']
+             'Thao', 'Kavalan', 'Truku', 'Sakizaya', 'Seediq', 'Saaroa', 'Siraya', 'Kanakanavu']
     
     parser = argparse.ArgumentParser(description="Extract orthographic info")
     #parser.add_argument('--verbose', action='store_true', help='increase output verbosity')
     parser.add_argument('--language', help='Language code')
     parser.add_argument('--corpus', help='the corpus path out of which orthographic info will be extracted. Could be set to "All"')
     parser.add_argument('--corpora_path', help='corpora path if corpus is set to "All" (required if corpus is "All")')
+    parser.add_argument('--kindOf', help='which XML tier to consider. Defaults to all, which is a problem if there is both an original and standard tier.')
     args = parser.parse_args()
 
     # Validate required arguments
     if not args.language or not args.corpus:
         parser.error("--language and --corpus are required.")
-    if args.language not in langs:
+    if args.language != "All" and not args.language in langs:
         parser.error(f"Enter a valid Formosan language from the list: {langs}")
     if args.corpus != "All" and not os.path.exists(args.corpus):
         parser.error(f"The entered corpus path, {args.corpus}, doesn't exist")
