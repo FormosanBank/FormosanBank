@@ -82,15 +82,14 @@ def vis_diff(all_chars, c1_char_freq, c2_char_freq, source_1, source_2):
     plt.close()
 
 
-def main(args):
+def main(args, curr_dir):
 
     # get the orthographic info for the target corpus
-    with open(os.path.join(os.getcwd(),'QC/orthography/logs',args.o_info, "orthographic_info"), 'rb') as f:
+    with open(os.path.join(curr_dir, '..', 'orthography', 'extract_logs', args.o_info, 'orthographic_info'), 'rb') as f:
         c1_info = pickle.load(f)
 
     # get the reference orthographic info for that language
-    file_path = os.path.dirname(__file__)
-    with open(os.path.join(file_path, "reference", args.language,'orthographic_info'), 'rb') as f:
+    with open(os.path.join(curr_dir, "reference", args.language, 'orthographic_info'), 'rb') as f:
         c2_info = pickle.load(f)
 
     # Filter unique_chars to exclude punctuation and numerals
@@ -155,7 +154,7 @@ def main(args):
     vis_diff(all_chars, c1_info['character_frequency'], c2_info['character_frequency'], "_".join(args.o_info.split('_')[1:]), "reference")         
     
 if __name__ == "__main__":
-
+    curr_dir = os.path.dirname(os.path.abspath(__file__))
     langs = ['Amis', 'Atayal', 'Paiwan', 'Bunun', 'Puyuma', 'Rukai', 'Tsou', 'Saisiyat', 'Yami',
              'Thao', 'Kavalan', 'Truku', 'Sakizaya', 'Seediq', 'Saaroa', 'Siraya', 'Kanakanavu']    
     
@@ -168,9 +167,9 @@ if __name__ == "__main__":
     # Validate required arguments
     if not args.o_info:
         parser.error("--o_info is required.")
-    if not os.path.exists(os.path.join(os.getcwd(),'QC/orthography/logs',args.o_info, "orthographic_info")):
-        parser.error(f"The entered orthographic info, {os.path.join(os.getcwd(),'QC/orthography/logs',args.o_info, "orthographic_info")}, doesn't exist")
+    if not os.path.exists(os.path.join(curr_dir, '..', 'orthography', 'extract_logs', args.o_info, 'orthographic_info')):
+        parser.error(f"The entered orthographic info, {os.path.join(curr_dir, '..', 'orthography', 'extract_logs', args.o_info, 'orthographic_info')}, doesn't exist")
     if not args.language in langs:
         parser.error(f"Enter a valid Formosan language from the list: {langs}")
 
-    main(args)
+    main(args, curr_dir)
