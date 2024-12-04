@@ -10,12 +10,8 @@ def remove_nonlatin(text):
     - Digits (0-9)
     - Common punctuation marks, including the caret (^)
     """
-    # Define the regex pattern
     pattern = '[^A-Za-zÀ-ÖØ-öø-ÿʉɨɑɪɾθðŋʃʒʔɔɛæœɑəɯʌʊɜɵɒɲχϕ 0-9.,;:!?`\'\"()\[\]{}<>^]'
-    
-    # Replace non-matching characters with a space
-    cleaned_text = re.sub(pattern, ' ', text)
-    return cleaned_text
+    return re.sub(pattern, ' ', text)
 
 def swap_punctuation(input_text):
     """
@@ -62,27 +58,6 @@ def normalize_whitespace(text):
     text = re.sub(r'\s+', ' ', text).strip()  # Normalize whitespace
     return text
 
-'''
-def fix_parentheses(text):
-    """
-    Fixes imbalanced parentheses by removing unmatched ones.
-    """
-    stack = []
-    indices_to_remove = set()
-    for i, char in enumerate(text):
-        if char == '(':
-            stack.append(i)
-        elif char == ')':
-            if stack:
-                stack.pop()
-            else:
-                indices_to_remove.add(i)
-    indices_to_remove.update(stack)
-    return ''.join(
-        [char for i, char in enumerate(text) if i not in indices_to_remove]
-    )
-'''
-
 def trim_repeated_punctuation(text):
     """
     Replaces repeated punctuation with single marks.
@@ -95,31 +70,45 @@ def clean_text(text, lang):
     """
     Applies a sequence of cleaning functions to the text.
     """
-    text = swap_punctuation(text)  # Replace non-ASCII punctuation
-    text = process_punctuation(text)  # Standardize punctuation
-    text = normalize_whitespace(text)  # Normalize whitespace
-    # text = fix_parentheses(text), Fix parentheses currently not being used
-    text = trim_repeated_punctuation(text)  # Trim repeated punctuation
+    text = swap_punctuation(text)
+    text = process_punctuation(text)
+    text = normalize_whitespace(text)
+    text = trim_repeated_punctuation(text)
     if lang not in ["zho", "zh"]:  # Apply only for non-Chinese languages
         text = remove_nonlatin(text)
     return text
 
 def analyze_and_modify_xml_file(xml_file):
     """
-    Analyzes and modifies an XML file by cleaning text in <FORM> and <TRANSL> elements.
+    Analyzes and modifies an XML file by cleaning text and handling specific cases in <FORM>.
     """
     tree = etree.parse(xml_file)
     root = tree.getroot()
     modified = False
 
     for sentence in root.findall('.//S'):
-        form_text = sentence.findtext('FORM')
-        if form_text:
-            cleaned_form_text = clean_text(form_text, lang="ami")
-            if cleaned_form_text != form_text:
-                sentence.find('FORM').text = cleaned_form_text
-                modified = True
+        form_element = sentence.find('FORM')
+        
+        if form_element is not None:
+            form_text = form_element.text
 
+            # Handle specific <FORM> cases
+            if not form_text:  # Remove <S> if <FORM> is empty
+                root.remove(sentence)
+                modified = True
+            elif "&rsquo;" in form_text:  # Replace &rsquo;
+                form_element.text = form_text.replace("&rsquo;", "’")
+                modified = True
+            elif "456otca" in form_text:  # Remove <S> if text contains 456otca
+                root.remove(sentence)
+                modified = True
+            else:
+                cleaned_form_text = clean_text(form_text, lang="ami")
+                if cleaned_form_text != form_text:
+                    form_element.text = cleaned_form_text
+                    modified = True
+
+        # Clean <TRANSL> elements
         for transl in sentence.findall('TRANSL'):
             lang = transl.get('{http://www.w3.org/XML/1998/namespace}lang')
             transl_text = transl.text
