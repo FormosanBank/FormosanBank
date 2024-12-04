@@ -373,8 +373,10 @@ def visualize(o_info, output_folder):
 
 def main(args, langs):
     curr_dir = os.path.dirname(os.path.abspath(__file__))
-    logs_dir = os.path.join(curr_dir, "logs")
+    logs_dir = os.path.join(curr_dir, "extract_logs")
     os.makedirs(logs_dir, exist_ok=True)
+
+    args.corpus = os.path.join(args.corpora_path, args.corpus)
 
     if args.language == 'All':
         languages_to_process = langs
@@ -426,11 +428,12 @@ if __name__ == "__main__":
     if not args.language or not args.corpus:
         parser.error("--language and --corpus are required.")
     if args.language != "All" and not args.language in langs:
+        print(args.language)
         parser.error(f"Enter a valid Formosan language from the list: {langs}")
-    if args.corpus != "All" and not os.path.exists(args.corpus):
-        parser.error(f"The entered corpus path, {args.corpus}, doesn't exist")
     if args.corpus == "All" and not args.corpora_path:
         parser.error("if --corpus is set to 'All', --corpora_path is required")
+    if args.corpus != "All" and not os.path.exists(os.path.join(args.corpora_path, args.corpus)):
+        parser.error(f"The entered corpus path, {os.path.join(args.corpora_path, args.corpus)}, doesn't exist")
     if args.corpus == "All" and not os.path.exists(args.corpora_path):
         parser.error(f"The entered corpora path, {args.corpora_path}, doesn't exist")
     main(args, langs)
