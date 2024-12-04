@@ -2,6 +2,27 @@ import os
 import re
 from lxml import etree
 
+'''
+def fix_parentheses(text):
+    """
+    Fixes imbalanced parentheses by removing unmatched ones.
+    """
+    stack = []
+    indices_to_remove = set()
+    for i, char in enumerate(text):
+        if char == '(':
+            stack.append(i)
+        elif char == ')':
+            if stack:
+                stack.pop()
+            else:
+                indices_to_remove.add(i)
+    indices_to_remove.update(stack)
+    return ''.join(
+        [char for i, char in enumerate(text) if i not in indices_to_remove]
+    )
+'''
+
 def remove_nonlatin(text):
     """
     Removes characters that are not part of:
