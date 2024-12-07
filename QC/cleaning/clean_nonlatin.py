@@ -35,7 +35,7 @@ def analyze_and_modify_xml_file(xml_file):
             tree.write(xml_file, pretty_print=True, encoding="utf-8")
             print(f"File cleaned: {xml_file}")
 
-def process_directory(xml_dir):
+def process_directory(xml_dir, corpora_dir):
     """
     Processes all XML files in a directory.
     """
@@ -44,17 +44,24 @@ def process_directory(xml_dir):
             if file.endswith(".xml"):
                 analyze_and_modify_xml_file(os.path.join(root, file))
 
-def main():
+def main(args):
     """
     Main function to process XML files in the corpora directory.
     """
-    curr_dir = os.path.dirname(os.path.abspath(__file__))
-    corpora_dir = os.path.join(curr_dir, "../..", "Corpora")
-
     for subdir in os.listdir(corpora_dir):
-        xml_dir = os.path.join(corpora_dir, subdir)
+        xml_dir = os.path.join(args.corpora_path, subdir)
         if os.path.isdir(xml_dir):
-            process_directory(xml_dir)
+            process_directory(xml_dir, args.corpora_path)
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="Extract orthographic info")
+    #parser.add_argument('--verbose', action='store_true', help='increase output verbosity')
+    parser.add_argument('--corpora_path', help='the path to the corpus')
+    args = parser.parse_args()
+
+    if not args.corpora_path:
+        parser.error("--corpora_path is required.")    
+    if not os.path.exists(os.path.join(args.corpora_path)):
+        parser.error(f"The entered path, {args.corpora_path}, doesn't exist")
+
+    main(args)
