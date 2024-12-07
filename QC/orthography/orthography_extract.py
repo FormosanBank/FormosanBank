@@ -17,18 +17,19 @@ plt.switch_backend('Agg')  # Use a non-GUI backend
 plt.rcParams['font.sans-serif'] = ['Arial Unicode MS']
 
 def get_lang(path, langs):
+    InPath = False
     for lang in langs:
-        return lang in path
+        if lang in path:
+            InPath = True
+    return InPath
 
 def generate_corpus(language_to_process, to_check_path, kindOf):
-    print(to_check_path)
     corpus = ""
     if not os.path.exists(to_check_path):
         raise ValueError(f"corpus {to_check_path} doesn't exist")
-
     for root, dirs, files in os.walk(to_check_path):
         for file in files:
-            if file.endswith(".xml") and get_lang(os.path.join(root), language_to_process): # and 'Final_XML' in os.path.join(root, file)       
+            if file.endswith(".xml") and re.findall(language_to_process, os.path.join(root)): # and 'Final_XML' in os.path.join(root, file) 
                 tree = ET.parse(os.path.join(root, file))
                 root_to_read = tree.getroot()
                 
@@ -39,8 +40,6 @@ def generate_corpus(language_to_process, to_check_path, kindOf):
                     if form.text is not None:
                         #if the kindOf attribute is not specified, add the form text to the corpus
                         #if the kindOf attribute is specified, make sure this is of the right type
-                        if re.search(r'‘|’|“|”', form.text) is not None:
-                            print(file)
                         if kindOf is None or ('kindOf' in form.attrib and form.attrib['kindOf'] == kindOf):
                             corpus += " " + form.text
     return corpus
@@ -65,18 +64,6 @@ def extract_orthographic_info(text):
     unique_chars = list(set(text_nfc))
     unique_chars.sort()
     unique_chars.remove(" ")
-    if " " in unique_chars:
-        print("space in unique_chars")
-    #do same for smart quotes
-    if '‘' in unique_chars:
-        print("smart quote in unique_chars")
-    if '’' in unique_chars:
-        print("smart quote in unique_chars")
-    if '“' in unique_chars:
-        print("smart quote in unique_chars")
-    if '”' in unique_chars:
-        print("smart quote in unique_chars")
-
     char_freq = collections.Counter(text_nfc)
     del char_freq[" "]
     
@@ -168,19 +155,6 @@ def visualize(o_info, output_folder):
     """
     unique_chars = o_info['unique_characters']
 
-    if " " in unique_chars:
-        print("space in unique_chars")
-    #do same for smart quotes
-    if '‘' in unique_chars:
-        print("smart quote in unique_chars")
-    if '’' in unique_chars:
-        print("smart quote in unique_chars")
-    if '“' in unique_chars:
-        print("smart quote in unique_chars")
-    if '”' in unique_chars:
-        print("smart quote in unique_chars")
-    print(unique_chars)
-
     # Sort characters for display
     sorted_chars = sorted(unique_chars)
 
@@ -228,7 +202,7 @@ def visualize(o_info, output_folder):
         row_characters = characters[start:end]
         row_frequencies = frequencies[start:end]
 
-        sns.barplot(ax=axes[i], x=list(row_characters), y=list(row_frequencies), palette="viridis", dodge=False)
+        sns.barplot(ax=axes[i], hue=list(row_characters), y=list(row_frequencies), palette="viridis", dodge=False, legend=False)
         axes[i].set_xlabel('Characters', fontproperties=font_properties)
         axes[i].set_ylabel('Frequency', fontproperties=font_properties)
         axes[i].set_title(f'Character Frequencies (Row {i + 1})', fontproperties=font_properties)
@@ -428,11 +402,8 @@ def main(args, langs):
 
     for language in languages_to_process:
         corpus = None
-        if args.corpus == 'All':
-            output_folder = os.path.join(logs_dir, f"{language}_All")
-        else:
-            corpusname = os.path.basename(os.path.normpath(args.corpora_path))
-            output_folder = os.path.join(logs_dir, f"{language}_{corpusname}")
+        output_folder = os.path.join(logs_dir, f"{language}_{args.corpus}")
+
         #if we are looking at a specific FORM tier, add it to the output folder name
         if args.kindOf is not None:
             output_folder = output_folder + "_" + args.kindOf
@@ -458,14 +429,14 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Extract orthographic info")
     #parser.add_argument('--verbose', action='store_true', help='increase output verbosity')
     parser.add_argument('--corpora_path', help='the path to the corpus')
-    parser.add_argument('--corpus', help='Set to "all" to process all corpora in the corpora_path')
+    parser.add_argument('--corpus', help='Set to "all" to process all corpora in the corpora_path. Otherwise, provide name of corpus.')
     parser.add_argument('--language', help='Language code')
     parser.add_argument('--kindOf', help='which XML tier to consider. Defaults to all, which is a problem if there is both an original and standard tier.')
     args = parser.parse_args()
 
     # Validate required arguments
-    if not args.language or not args.corpora_path:
-        parser.error("--language and --corpora_path are required.")
+    if not args.language or not args.corpora_path or not args.corpus:
+        parser.error("--language and --corpora_path and --corpus are required.")
     if not os.path.exists(os.path.join(args.corpora_path)):
         parser.error(f"The entered path, {args.corpora_path}, doesn't exist")
     if args.language != "All" and not args.language in langs:
