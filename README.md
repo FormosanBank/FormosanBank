@@ -197,6 +197,36 @@ pip install -r requirements.txt
 
   A log will be generated in --corpora_path for any adjustments of HTML entities. Nothing else is currently logged.
 
+  The following punctuation transformations are instituted:
+
+```
+  {
+        '（': '(',
+        '）': ')',
+        '：': ':',
+        '，': ',',
+        '？': '?',
+        '。': '.',
+        '》': '"',
+        '《': '"',
+        '」': '"',
+        '「': '"',
+        '、': ',',
+        '】': ')',
+        '【': '(',
+        ']': ')',
+        '[': '(',
+        '〔': '(',
+        '〕': ')',
+        '“': '"',  # Left double quotation mark
+        '”': '"',  # Right double quotation mark
+        '‘': "'",  # Left single quotation mark
+        '’': "'",   # Right single quotation mark
+        'ˈ': "'",
+        'ʻ': "'"
+    }
+```
+
 **`clean_nonlatin.py`**
   - **Purpose**:  
     Cleans XML files by standardizing removing non-latin characters (with the exceptions of some specific characters known to be used in Formosan). The script modifies `<FORM>` only. It is not ideal if there is known code-switching between orthographies and should be used with abundant caution.

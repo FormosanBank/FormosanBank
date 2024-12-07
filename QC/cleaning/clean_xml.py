@@ -65,7 +65,8 @@ def swap_punctuation(text):
         '”': '"',  # Right double quotation mark
         '‘': "'",  # Left single quotation mark
         '’': "'",   # Right single quotation mark
-        'ˈ': "'"
+        'ˈ': "'",
+        'ʻ': "'"
     }
     
     # Create a regular expression pattern to match any of the full-width punctuation characters
@@ -125,7 +126,6 @@ def analyze_and_modify_xml_file(xml_dir, corpora_dir):
     for droot, dirs, files in os.walk(xml_dir):
         for file in files:
             if file.endswith(".xml"):
-                print(file)
                 xml_file = os.path.join(droot, file)
                 tree = etree.parse(xml_file)
                 root = tree.getroot()

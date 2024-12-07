@@ -5,29 +5,30 @@ import collections
 import regex as re
 import string
 import matplotlib.pyplot as plt
+from matplotlib import font_manager
 import seaborn as sns
 import pandas as pd
 import numpy as np
 import pickle
 import argparse
+import math
 
 plt.switch_backend('Agg')  # Use a non-GUI backend
 plt.rcParams['font.sans-serif'] = ['Arial Unicode MS']
 
 def get_lang(path, langs):
     for lang in langs:
-        if lang in path:
-            return lang
+        return lang in path
 
-def generate_corpus(lang, langs, to_check_path, kindOf):
-
+def generate_corpus(language_to_process, to_check_path, kindOf):
+    print(to_check_path)
     corpus = ""
     if not os.path.exists(to_check_path):
         raise ValueError(f"corpus {to_check_path} doesn't exist")
 
     for root, dirs, files in os.walk(to_check_path):
         for file in files:
-            if file.endswith(".xml") and get_lang(os.path.join(root), langs) == lang: # and 'Final_XML' in os.path.join(root, file)       
+            if file.endswith(".xml") and get_lang(os.path.join(root), language_to_process): # and 'Final_XML' in os.path.join(root, file)       
                 tree = ET.parse(os.path.join(root, file))
                 root_to_read = tree.getroot()
                 
@@ -38,6 +39,8 @@ def generate_corpus(lang, langs, to_check_path, kindOf):
                     if form.text is not None:
                         #if the kindOf attribute is not specified, add the form text to the corpus
                         #if the kindOf attribute is specified, make sure this is of the right type
+                        if re.search(r'‘|’|“|”', form.text) is not None:
+                            print(file)
                         if kindOf is None or ('kindOf' in form.attrib and form.attrib['kindOf'] == kindOf):
                             corpus += " " + form.text
     return corpus
@@ -52,7 +55,7 @@ def remove_chinese_characters(text):
 def extract_orthographic_info(text):
     
     text = text.lower()
-    text = remove_chinese_characters(text)
+    #text = remove_chinese_characters(text)
     # Normalize text to NFC form (canonical decomposition followed by canonical composition)
     text_nfc = unicodedata.normalize('NFC', text)
 
@@ -62,6 +65,17 @@ def extract_orthographic_info(text):
     unique_chars = list(set(text_nfc))
     unique_chars.sort()
     unique_chars.remove(" ")
+    if " " in unique_chars:
+        print("space in unique_chars")
+    #do same for smart quotes
+    if '‘' in unique_chars:
+        print("smart quote in unique_chars")
+    if '’' in unique_chars:
+        print("smart quote in unique_chars")
+    if '“' in unique_chars:
+        print("smart quote in unique_chars")
+    if '”' in unique_chars:
+        print("smart quote in unique_chars")
 
     char_freq = collections.Counter(text_nfc)
     del char_freq[" "]
@@ -154,6 +168,19 @@ def visualize(o_info, output_folder):
     """
     unique_chars = o_info['unique_characters']
 
+    if " " in unique_chars:
+        print("space in unique_chars")
+    #do same for smart quotes
+    if '‘' in unique_chars:
+        print("smart quote in unique_chars")
+    if '’' in unique_chars:
+        print("smart quote in unique_chars")
+    if '“' in unique_chars:
+        print("smart quote in unique_chars")
+    if '”' in unique_chars:
+        print("smart quote in unique_chars")
+    print(unique_chars)
+
     # Sort characters for display
     sorted_chars = sorted(unique_chars)
 
@@ -170,6 +197,9 @@ def visualize(o_info, output_folder):
     """
     Visualize Character Frequency
     """
+    # Set the font properties
+    font_properties = font_manager.FontProperties(family='DejaVu Sans', size=12)
+
     char_freq = o_info['character_frequency']
 
     # Convert to a sorted list
@@ -178,16 +208,33 @@ def visualize(o_info, output_folder):
     # Separate characters and frequencies
     characters, frequencies = zip(*sorted_char_freq)
 
-    # Limit to top N characters to avoid clutter
-    N = 30
-    characters = characters[:N]
-    frequencies = frequencies[:N]
+    # Number of characters per row
+    N = 35
 
-    plt.figure(figsize=(12, 6))
-    sns.barplot(x=list(characters), y=list(frequencies), palette="viridis", legend=False, dodge=False, hue=list(characters))
-    plt.xlabel('Characters')
-    plt.ylabel('Frequency')
-    plt.title('Top Character Frequencies')
+    # Calculate the number of rows needed
+    num_rows = math.ceil(len(characters) / N)
+
+    fig, axes = plt.subplots(num_rows, 1, figsize=(12, 6 * num_rows))
+
+    if num_rows == 1:
+        axes = [axes]
+
+    # Determine the maximum frequency for consistent y-axis range
+    max_frequency = max(frequencies)
+
+    for i in range(num_rows):
+        start = i * N
+        end = start + N
+        row_characters = characters[start:end]
+        row_frequencies = frequencies[start:end]
+
+        sns.barplot(ax=axes[i], x=list(row_characters), y=list(row_frequencies), palette="viridis", dodge=False)
+        axes[i].set_xlabel('Characters', fontproperties=font_properties)
+        axes[i].set_ylabel('Frequency', fontproperties=font_properties)
+        axes[i].set_title(f'Character Frequencies (Row {i + 1})', fontproperties=font_properties)
+        axes[i].set_ylim(0, max_frequency)  # Set consistent y-axis range
+        axes[i].tick_params(axis='x', labelsize=10)
+        axes[i].tick_params(axis='y', labelsize=10)
 
     # Save the figure
     plt.tight_layout()
@@ -369,14 +416,10 @@ def visualize(o_info, output_folder):
     plt.savefig(os.path.join(output_folder, 'top_words.png'))
     plt.close()
 
-
-
 def main(args, langs):
     curr_dir = os.path.dirname(os.path.abspath(__file__))
     logs_dir = os.path.join(curr_dir, "extract_logs")
     os.makedirs(logs_dir, exist_ok=True)
-
-    args.corpus = os.path.join(args.corpora_path, args.corpus)
 
     if args.language == 'All':
         languages_to_process = langs
@@ -384,20 +427,17 @@ def main(args, langs):
         languages_to_process = [args.language]
 
     for language in languages_to_process:
+        corpus = None
         if args.corpus == 'All':
             output_folder = os.path.join(logs_dir, f"{language}_All")
         else:
-            corpus = os.path.basename(os.path.normpath(args.corpus))
-            output_folder = os.path.join(logs_dir, f"{language}_{corpus}")
+            corpusname = os.path.basename(os.path.normpath(args.corpora_path))
+            output_folder = os.path.join(logs_dir, f"{language}_{corpusname}")
         #if we are looking at a specific FORM tier, add it to the output folder name
         if args.kindOf is not None:
-            output_older = output_folder + "_" + args.kindOf
+            output_folder = output_folder + "_" + args.kindOf
 
-        corpus_path = args.corpus
-        if args.corpus == "All":
-            corpus_path = args.corpora_path
-
-        corpus = generate_corpus(language, langs, corpus_path, args.kindOf)
+        corpus = generate_corpus(language, args.corpora_path, args.kindOf)
         if corpus:
             os.makedirs(output_folder, exist_ok=True) #only make the folder if the corpus is not empty
             o_info = extract_orthographic_info(corpus)
@@ -406,10 +446,9 @@ def main(args, langs):
                 pickle.dump(o_info, fp)
 
             visualize(o_info, output_folder)
-            print(f"Successfully extracted orthographic information for {language} using {args.corpus}")
+            print(f"Successfully extracted orthographic information for {language} using {args.corpora_path}")
         else:
             print(f"Warning: Unable to extract the orthographic information for {language}. generate_corpus function didn't return any corpus")
-
     
 if __name__ == "__main__":
 
@@ -418,22 +457,18 @@ if __name__ == "__main__":
     
     parser = argparse.ArgumentParser(description="Extract orthographic info")
     #parser.add_argument('--verbose', action='store_true', help='increase output verbosity')
+    parser.add_argument('--corpora_path', help='the path to the corpus')
+    parser.add_argument('--corpus', help='Set to "all" to process all corpora in the corpora_path')
     parser.add_argument('--language', help='Language code')
-    parser.add_argument('--corpus', help='the corpus path out of which orthographic info will be extracted. Could be set to "All"')
-    parser.add_argument('--corpora_path', help='corpora path if corpus is set to "All" (required if corpus is "All")')
     parser.add_argument('--kindOf', help='which XML tier to consider. Defaults to all, which is a problem if there is both an original and standard tier.')
     args = parser.parse_args()
 
     # Validate required arguments
-    if not args.language or not args.corpus:
-        parser.error("--language and --corpus are required.")
+    if not args.language or not args.corpora_path:
+        parser.error("--language and --corpora_path are required.")
+    if not os.path.exists(os.path.join(args.corpora_path)):
+        parser.error(f"The entered path, {args.corpora_path}, doesn't exist")
     if args.language != "All" and not args.language in langs:
         print(args.language)
         parser.error(f"Enter a valid Formosan language from the list: {langs}")
-    if args.corpus == "All" and not args.corpora_path:
-        parser.error("if --corpus is set to 'All', --corpora_path is required")
-    if args.corpus != "All" and not os.path.exists(os.path.join(args.corpora_path, args.corpus)):
-        parser.error(f"The entered corpus path, {os.path.join(args.corpora_path, args.corpus)}, doesn't exist")
-    if args.corpus == "All" and not os.path.exists(args.corpora_path):
-        parser.error(f"The entered corpora path, {args.corpora_path}, doesn't exist")
     main(args, langs)
