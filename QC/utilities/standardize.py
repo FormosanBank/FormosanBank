@@ -64,9 +64,6 @@ def create_standard(s_element):
     new_form.text = form.text
     s_element.insert(1, new_form)
 
-        
-
-
 def main(args):
     if args.corpus:
         to_explore = [os.path.join(args.corpora_path, args.corpus)]
@@ -89,8 +86,6 @@ def main(args):
                     create_standard(s_element)
                     replace_u_with_o(s_element)
                     
-                tree.write(file, encoding='utf-8', xml_declaration=True)
-                print(f"file: {file} standardized successfully")
                 try:
                     xml_string = prettify(root)
                     xml_string = '\n'.join([line for line in xml_string.split('\n') if line.strip() != ''])
@@ -100,6 +95,7 @@ def main(args):
 
                 with open(file, "w", encoding="utf-8") as xmlfile:
                     xmlfile.write(xml_string)
+                    print(f"file: {file} standardized successfully")
                         
             except ET.ParseError:
                 print(f"Error parsing file: {file}")

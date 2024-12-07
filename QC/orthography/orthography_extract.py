@@ -29,12 +29,17 @@ def generate_corpus(language_to_process, to_check_path, kindOf):
                 # Iterate over all <S> elements
                 for s in root_to_read.findall('.//S'):
                     # Find the <FORM> element within the <S> element
-                    form = s.find('FORM')
-                    if form.text is not None:
+                    if kindOf:
+                        form = s.find(f"FORM[@kindOf='{kindOf}']")
+                        if form is not None:
+                            if form.text:
+                                corpus += " " + form.text
+                    else:
                         #if the kindOf attribute is not specified, add the form text to the corpus
-                        #if the kindOf attribute is specified, make sure this is of the right type
-                        if kindOf is None or ('kindOf' in form.attrib and form.attrib['kindOf'] == kindOf):
-                            corpus += " " + form.text
+                        forms = s.findall('FORM')
+                        for form in forms:
+                            if form.text:
+                                corpus += " " + form.text
     return corpus
 
 def remove_chinese_characters(text):
