@@ -1,6 +1,7 @@
 import os
 import re
 from lxml import etree
+import html
 
 '''
 def fix_parentheses(text):
@@ -117,8 +118,13 @@ def analyze_and_modify_xml_file(xml_file):
             if not form_text:  # Remove <S> if <FORM> is empty
                 root.remove(sentence)
                 modified = True
-            elif "&rsquo;" in form_text:  # Replace &rsquo;
-                form_element.text = form_text.replace("&rsquo;", "’")
+            if html.unescape(form_text) != form_text:  # Replace HTML entities
+                # log the change
+                with open("html_entities.log", "a") as f:
+                    f.write(f"{xml_file}:\n")
+                    f.write(f"Original: {form_text}\n")
+                    f.write(f"Modified: {html.unescape(form_text)}\n\n")
+                form_element.text = html.unescape(form_text)
                 modified = True
             elif "456otca" in form_text:  # Remove <S> if text contains 456otca
                 root.remove(sentence)
