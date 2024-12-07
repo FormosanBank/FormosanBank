@@ -1,7 +1,7 @@
 import os
 import re
 from lxml import etree
-import html
+import argparse
 
 def remove_nonlatin(text):
     """

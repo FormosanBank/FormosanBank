@@ -2,6 +2,7 @@ import os
 import re
 from lxml import etree
 import html
+import argparse
 
 '''
 def fix_parentheses(text):
@@ -32,7 +33,7 @@ def remove_nonlatin(text):
     - Digits (0-9)
     - Common punctuation marks, including the caret (^)
     """
-    pattern = '[^A-Za-zÀ-ÖØ-öø-ÿʉɨɑɪɾθðŋʃʒʔɔɛæœɑəɯʌʊɜɵɒɲχϕ 0-9.,;:!?`\'\"()\[\]{}<>^]'
+    pattern = r'[^A-Za-zÀ-ÖØ-öø-ÿʉɨɑɪɾθðŋʃʒʔɔɛæœɑəɯʌʊɜɵɒɲχϕ 0-9.,;:!?`\'\"()\[\]{}<>^]'
     return re.sub(pattern, ' ', text)
 
 def swap_punctuation(text):
@@ -120,10 +121,11 @@ def analyze_and_modify_xml_file(xml_dir, corpora_dir):
     """
     Analyzes and modifies an XML file by cleaning text and handling specific cases in <FORM>.
     """
-    for root, dirs, files in os.walk(xml_dir):
+    for droot, dirs, files in os.walk(xml_dir):
         for file in files:
             if file.endswith(".xml"):
-                xml_file = os.path.join(root, file)
+                print(file)
+                xml_file = os.path.join(droot, file)
                 tree = etree.parse(xml_file)
                 root = tree.getroot()
                 modified = False
@@ -138,18 +140,19 @@ def analyze_and_modify_xml_file(xml_dir, corpora_dir):
                         if not form_text:  # Remove <S> if <FORM> is empty
                             root.remove(sentence)
                             modified = True
-                        if html.unescape(form_text) != form_text:  # Replace HTML entities
-                            # log the change
-                            with open(os.path.join(corpora_dir,"html_entities.log"), "a") as f:
-                                f.write(f"{xml_file}:\n")
-                                f.write(f"Original: {form_text}\n")
-                                f.write(f"Modified: {html.unescape(form_text)}\n\n")
-                            form_element.text = html.unescape(form_text)
-                            modified = True
                         elif "456otca" in form_text:  # Remove <S> if text contains 456otca
                             root.remove(sentence)
                             modified = True
                         else:
+                            if html.unescape(form_text) != form_text:  # Replace HTML entities
+                                print('HTML entities found')
+                                # log the change
+                                with open(os.path.join(corpora_dir,"html_entities.log"), "a") as f:
+                                    f.write(f"{xml_file}:\n")
+                                    f.write(f"Original: {form_text}\n")
+                                    f.write(f"Modified: {html.unescape(form_text)}\n\n")
+                                form_element.text = html.unescape(form_text)
+                                modified = True
                             cleaned_form_text = clean_text(form_text, lang="na")
                             if cleaned_form_text != form_text:
                                 form_element.text = cleaned_form_text
@@ -174,12 +177,13 @@ def main(args):
     Main function to process XML files in the corpora directory.
     """
 
-    for subdir in os.listdir(corpora_dir):
+    for subdir in os.listdir(args.corpora_path):
         xml_dir = os.path.join(args.corpora_path, subdir)
         if os.path.isdir(xml_dir):
-            process_directory(xml_dir, args.corpora_path)
+            analyze_and_modify_xml_file(xml_dir, args.corpora_path)
 
 if __name__ == "__main__":
+
     parser = argparse.ArgumentParser(description="Extract orthographic info")
     #parser.add_argument('--verbose', action='store_true', help='increase output verbosity')
     parser.add_argument('--corpora_path', help='the path to the corpus')
