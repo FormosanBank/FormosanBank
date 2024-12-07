@@ -202,7 +202,7 @@ def visualize(o_info, output_folder):
         row_characters = characters[start:end]
         row_frequencies = frequencies[start:end]
 
-        sns.barplot(ax=axes[i], hue=list(row_characters), y=list(row_frequencies), palette="viridis", dodge=False, legend=False)
+        sns.barplot(ax=axes[i], x=list(row_characters), y=list(row_frequencies), palette="viridis", hue=list(row_characters), dodge=False, legend=False)
         axes[i].set_xlabel('Characters', fontproperties=font_properties)
         axes[i].set_ylabel('Frequency', fontproperties=font_properties)
         axes[i].set_title(f'Character Frequencies (Row {i + 1})', fontproperties=font_properties)
