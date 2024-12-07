@@ -46,6 +46,28 @@ def get_files(path, to_check, lang):
             if file.endswith(".xml"): # and 'Final_XML' in os.path.join(root, file)
                 to_check.append(os.path.join(root, file))
 
+
+def replace_u_with_o(s_element):
+    form = s_element.find("FORM[@kindOf='standard']")
+    form.text = form.text.replace("u", "o")
+
+def create_standard(s_element):
+    # Find the <FORM> child within each <S> element
+    tmp = s_element.find("FORM[@kindOf='standard']")
+    if tmp is not None:
+        return
+
+    form = s_element.find('FORM')
+    form.set("kindOf", "original")
+    
+    new_form = ET.Element("FORM")
+    new_form.set("kindOf", "standard")
+    new_form.text = form.text
+    s_element.insert(1, new_form)
+
+        
+
+
 def main(args, curr_dir, langs):
     if args.corpus:
         to_explore = [os.path.join(args.corpora, args.corpus)]
@@ -57,7 +79,6 @@ def main(args, curr_dir, langs):
     for corpus in to_explore:
         if ".DS_Store" in corpus:
             continue
-        
         get_files(corpus, files, args.language)
         for file in files:
             try:
@@ -67,22 +88,14 @@ def main(args, curr_dir, langs):
 
                 # Iterate over all <S> elements
                 for s_element in root.findall('.//S'):
+                    create_standard(s_element)
+                    replace_u_with_o(s_element)
                     
-                    # Find the <FORM> child within each <S> element
-                    form = s_element.find('FORM')
-                    text = form.text
-                    form.set("kindOf", "original")
-
-                    text = text.replace("u", "o")
-                    if text != form.text:
-                        new_form = ET.SubElement(s_element, "FORM")
-                        new_form.set("kindOf", "standard")
-                        new_form.text = text
-                   
                 tree.write(file, encoding='utf-8', xml_declaration=True)
                 print(f"file: {file} standardized successfully")
                 try:
                     xml_string = prettify(root)
+                    xml_string = '\n'.join([line for line in xml_string.split('\n') if line.strip() != ''])
                 except Exception as e:
                     xml_string = ""
                     print(f"Failed to format file: {file}, Error: {e}")
@@ -94,7 +107,6 @@ def main(args, curr_dir, langs):
                 print(f"Error parsing file: {file}")
             except Exception as e:
                 print(f"Unexpected error with file {file}: {e}")
-
 
 
   
