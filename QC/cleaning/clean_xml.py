@@ -3,6 +3,7 @@ import re
 from lxml import etree
 import html
 import argparse
+import unicodedata
 
 '''
 def fix_parentheses(text):
@@ -135,6 +136,9 @@ def analyze_and_modify_xml_file(xml_dir, corpora_dir):
                     
                     if form_element is not None:
                         form_text = form_element.text
+                        if form_text != unicodedata.normalize("NFC", form_text):
+                            form_element.text = unicodedata.normalize("NFC", form_text)
+                            modified = True
 
                         # Handle specific <FORM> cases
                         if not form_text:  # Remove <S> if <FORM> is empty
