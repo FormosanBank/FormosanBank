@@ -62,7 +62,8 @@ def swap_punctuation(text):
         '“': '"',  # Left double quotation mark
         '”': '"',  # Right double quotation mark
         '‘': "'",  # Left single quotation mark
-        '’': "'"   # Right single quotation mark
+        '’': "'",   # Right single quotation mark
+        'ˈ': "'"
     }
     
     # Create a regular expression pattern to match any of the full-width punctuation characters
@@ -75,6 +76,7 @@ def swap_punctuation(text):
     # Use re.sub to replace all full-width punctuation with regular punctuation
     return pattern.sub(replace, text)
 
+'''
 def process_punctuation(text):
     """
     Cleans and standardizes punctuation in the text.
@@ -85,6 +87,7 @@ def process_punctuation(text):
     text = text.replace('“', '"').replace('”', '"')  # Double quotes
     text = text.replace("ˈ", "'")  # Specific mark replacements
     return text
+'''
 
 def normalize_whitespace(text):
     """
@@ -107,11 +110,10 @@ def clean_text(text, lang):
     Applies a sequence of cleaning functions to the text.
     """
     text = swap_punctuation(text)
-    text = process_punctuation(text)
     text = normalize_whitespace(text)
     text = trim_repeated_punctuation(text)
-    if lang not in ["zho", "zh"]:  # Apply only for non-Chinese languages
-        text = remove_nonlatin(text)
+    #if lang not in ["zho", "zh"]:  # Apply only for non-Chinese languages
+    #    text = remove_nonlatin(text)
     return text
 
 def analyze_and_modify_xml_file(xml_file):
