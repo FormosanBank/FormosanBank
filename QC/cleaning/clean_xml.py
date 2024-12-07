@@ -35,31 +35,45 @@ def remove_nonlatin(text):
     pattern = '[^A-Za-zÀ-ÖØ-öø-ÿʉɨɑɪɾθðŋʃʒʔɔɛæœɑəɯʌʊɜɵɒɲχϕ 0-9.,;:!?`\'\"()\[\]{}<>^]'
     return re.sub(pattern, ' ', text)
 
-def swap_punctuation(input_text):
+def swap_punctuation(text):
     """
     Replaces specific non-ASCII punctuation with their ASCII equivalents.
     """
-    output_text = ""
-    for char in input_text:
-        if ord(char) < 127:
-            output_text += char
-        elif ord(char) in (8217, 8216):  # Single quotes
-            output_text += "'"
-        elif ord(char) in (8221, 8220):  # Double quotes
-            output_text += '"'
-        elif ord(char) == 65288:  # Full-width (
-            output_text += "("
-        elif ord(char) == 65289:  # Full-width )
-            output_text += ")"
-        elif ord(char) == 65306:  # Full-width :
-            output_text += ":"
-        elif ord(char) == 12289:  # Ideographic comma
-            output_text += ","
-        elif ord(char) == 12290:  # Ideographic period
-            output_text += "."
-        else:
-            output_text += char
-    return output_text
+    # Define the mapping of full-width punctuation to regular punctuation
+    # Also convert square brackets to parentheses    
+    fullwidth_to_regular = {
+        '（': '(',
+        '）': ')',
+        '：': ':',
+        '，': ',',
+        '？': '?',
+        '。': '.',
+        '》': '"',
+        '《': '"',
+        '」': '"',
+        '「': '"',
+        '、': ',',
+        '】': ')',
+        '【': '(',
+        ']': ')',
+        '[': '(',
+        '〔': '(',
+        '〕': ')',
+        '“': '"',  # Left double quotation mark
+        '”': '"',  # Right double quotation mark
+        '‘': "'",  # Left single quotation mark
+        '’': "'"   # Right single quotation mark
+    }
+    
+    # Create a regular expression pattern to match any of the full-width punctuation characters
+    pattern = re.compile('|'.join(map(re.escape, fullwidth_to_regular.keys())))
+    
+    # Define a function to replace each match with the corresponding regular punctuation
+    def replace(match):
+        return fullwidth_to_regular[match.group(0)]
+    
+    # Use re.sub to replace all full-width punctuation with regular punctuation
+    return pattern.sub(replace, text)
 
 def process_punctuation(text):
     """
@@ -130,7 +144,7 @@ def analyze_and_modify_xml_file(xml_file):
                 root.remove(sentence)
                 modified = True
             else:
-                cleaned_form_text = clean_text(form_text, lang="ami")
+                cleaned_form_text = clean_text(form_text, lang="na")
                 if cleaned_form_text != form_text:
                     form_element.text = cleaned_form_text
                     modified = True
