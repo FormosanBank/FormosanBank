@@ -16,13 +16,6 @@ import math
 plt.switch_backend('Agg')  # Use a non-GUI backend
 plt.rcParams['font.sans-serif'] = ['Arial Unicode MS']
 
-def get_lang(path, langs):
-    InPath = False
-    for lang in langs:
-        if lang in path:
-            InPath = True
-    return InPath
-
 def generate_corpus(language_to_process, to_check_path, kindOf):
     corpus = ""
     if not os.path.exists(to_check_path):
