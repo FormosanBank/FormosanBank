@@ -12,9 +12,17 @@ import numpy as np
 import pickle
 import argparse
 import math
+import warnings
+
+# Suppress specific warnings about missing glyphs
+warnings.filterwarnings("ignore", message="Glyph .* missing from font")
 
 plt.switch_backend('Agg')  # Use a non-GUI backend
 plt.rcParams['font.sans-serif'] = ['Arial Unicode MS']
+# Set the font properties globally
+#plt.rcParams['font.family'] = 'Noto Sans'
+
+
 
 def generate_corpus(language_to_process, to_check_path, kindOf):
     corpus = ""
@@ -169,8 +177,6 @@ def visualize(o_info, output_folder):
     """
     Visualize Character Frequency
     """
-    # Set the font properties
-    font_properties = font_manager.FontProperties(family='DejaVu Sans', size=12)
 
     char_freq = o_info['character_frequency']
 
@@ -201,9 +207,9 @@ def visualize(o_info, output_folder):
         row_frequencies = frequencies[start:end]
 
         sns.barplot(ax=axes[i], x=list(row_characters), y=list(row_frequencies), palette="viridis", hue=list(row_characters), dodge=False, legend=False)
-        axes[i].set_xlabel('Characters', fontproperties=font_properties)
-        axes[i].set_ylabel('Frequency', fontproperties=font_properties)
-        axes[i].set_title(f'Character Frequencies (Row {i + 1})', fontproperties=font_properties)
+        axes[i].set_xlabel('Characters')
+        axes[i].set_ylabel('Frequency')
+        axes[i].set_title(f'Character Frequencies (Row {i + 1})')
         axes[i].set_ylim(0, max_frequency)  # Set consistent y-axis range
         axes[i].tick_params(axis='x', labelsize=10)
         axes[i].tick_params(axis='y', labelsize=10)
@@ -390,17 +396,17 @@ def visualize(o_info, output_folder):
 
 def main(args, langs):
     curr_dir = os.path.dirname(os.path.abspath(__file__))
-    logs_dir = os.path.join(curr_dir, "extract_logs")
+    logs_dir = os.path.join(args.corpora_path, "extract_logs")
     os.makedirs(logs_dir, exist_ok=True)
 
     if args.language == 'All':
-        languages_to_process = langs
+        languages_to_process = [lang for lang in os.listdir(args.corpora_path) if lang != ".DS_Store"]
     else:
         languages_to_process = [args.language]
 
     for language in languages_to_process:
         corpus = None
-        output_folder = os.path.join(logs_dir, f"{language}_{args.corpus}")
+        output_folder = os.path.join(logs_dir, language)
 
         #if we are looking at a specific FORM tier, add it to the output folder name
         if args.kindOf is not None:

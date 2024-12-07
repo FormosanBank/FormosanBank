@@ -82,94 +82,104 @@ def vis_diff(all_chars, c1_char_freq, c2_char_freq, source_1, source_2):
     plt.close()
 
 
-def main(args, curr_dir):
+def main(args, curr_dir, possiblelangs):
 
-    # get the orthographic info for the target corpus
-    with open(os.path.join(curr_dir, '..', 'orthography', 'extract_logs', args.o_info, 'orthographic_info'), 'rb') as f:
-        c1_info = pickle.load(f)
+    if args.language:
+        langs = [args.language]
+    else:
+        langs = os.listdir(args.o_info)
+        langs = [lang for lang in langs if lang in possiblelangs]
 
-    # get the reference orthographic info for that language
-    with open(os.path.join(curr_dir, "reference", args.language, 'orthographic_info'), 'rb') as f:
-        c2_info = pickle.load(f)
+    for lang in langs:
+        # get the orthographic info for the target corpus
+        with open(os.path.join(args.o_info, lang, 'orthographic_info'), 'rb') as f:
+            c1_info = pickle.load(f)
 
-    # Filter unique_chars to exclude punctuation and numerals
-    exclude_chars = set(string.punctuation + string.digits)
-    c1_info['unique_characters'] = [char for char in c1_info['unique_characters'] if char not in exclude_chars]
-    c2_info['unique_characters'] = [char for char in c2_info['unique_characters'] if char not in exclude_chars]
+        # get the reference orthographic info for that language
+        with open(os.path.join(args.reference, lang, 'orthographic_info'), 'rb') as f:
+            c2_info = pickle.load(f)
 
-    
-    char_jaccard_similarity = jaccard_similarity(set(c1_info['unique_characters']), set(c2_info['unique_characters']))
-    print(f"Jaccard Similarity of unique characters: {char_jaccard_similarity:.2f}")
-    if char_jaccard_similarity < .95:
-        warnings.warn("The disjunction of character sets should be close to 0. It is recommended to check the unique characters in the orthographic info for the target corpus and the reference corpus.")
+        # Filter unique_chars to exclude punctuation and numerals
+        exclude_chars = set(string.punctuation + string.digits)
+        c1_info['unique_characters'] = [char for char in c1_info['unique_characters'] if char not in exclude_chars]
+        c2_info['unique_characters'] = [char for char in c2_info['unique_characters'] if char not in exclude_chars]
 
-    char_overlap_coefficient = overlap_coefficient(set(c1_info['unique_characters']), set(c2_info['unique_characters']))
-    print(f"Overlap Coefficient of unique characters: {char_overlap_coefficient:.2f}")
+        
+        char_jaccard_similarity = jaccard_similarity(set(c1_info['unique_characters']), set(c2_info['unique_characters']))
+        print(f"Jaccard Similarity of unique characters: {char_jaccard_similarity:.2f}")
+        if char_jaccard_similarity < .95:
+            warnings.warn("The disjunction of character sets should be close to 0. It is recommended to check the unique characters in the orthographic info for the target corpus and the reference corpus.")
 
-    all_chars = set(c1_info['unique_characters']).union(set(c2_info['unique_characters']))
+        char_overlap_coefficient = overlap_coefficient(set(c1_info['unique_characters']), set(c2_info['unique_characters']))
+        print(f"Overlap Coefficient of unique characters: {char_overlap_coefficient:.2f}")
 
-    c1_freq_vector = np.array([c1_info['character_frequency'].get(char, 0) for char in all_chars])
-    c2_freq_vector = np.array([c2_info['character_frequency'].get(char, 0) for char in all_chars])
-    c1_freq_vector = normalize_vector(c1_freq_vector)
-    c2_freq_vector = normalize_vector(c2_freq_vector)
+        all_chars = set(c1_info['unique_characters']).union(set(c2_info['unique_characters']))
 
-    cosine_sim = cosine_similarity([c1_freq_vector], [c2_freq_vector])[0][0]
-    print(f"Cosine Similarity of character frequencies: {cosine_sim:.2f}")
-    if char_jaccard_similarity < .975:
-        warnings.warn("Even when different orthographies are being used, cosine similarity is usually >.975.")
+        c1_freq_vector = np.array([c1_info['character_frequency'].get(char, 0) for char in all_chars])
+        c2_freq_vector = np.array([c2_info['character_frequency'].get(char, 0) for char in all_chars])
+        c1_freq_vector = normalize_vector(c1_freq_vector)
+        c2_freq_vector = normalize_vector(c2_freq_vector)
 
-    euclidean_dist = euclidean(c1_freq_vector, c2_freq_vector)
-    print(f"Euclidean Distance of character frequencies: {euclidean_dist:.2f}")
-    if euclidean_dist > .03:
-        warnings.warn("Even when different orthographies are being used, Euclidean distance is usually <.03.")
+        cosine_sim = cosine_similarity([c1_freq_vector], [c2_freq_vector])[0][0]
+        print(f"Cosine Similarity of character frequencies: {cosine_sim:.2f}")
+        if char_jaccard_similarity < .975:
+            warnings.warn("Even when different orthographies are being used, cosine similarity is usually >.975.")
 
-    kl_div = kl_divergence(c1_freq_vector, c2_freq_vector)
-    print(f"KL Divergence of character frequencies: {kl_div:.2f}")
-    if kl_div > .03:
-        warnings.warn("Even when different orthographies are being used, KL divergence is usually <.03.")
+        euclidean_dist = euclidean(c1_freq_vector, c2_freq_vector)
+        print(f"Euclidean Distance of character frequencies: {euclidean_dist:.2f}")
+        if euclidean_dist > .03:
+            warnings.warn("Even when different orthographies are being used, Euclidean distance is usually <.03.")
 
-    c1_bigrams = c1_info['2-grams']
-    c2_bigrams = c2_info['2-grams']
+        kl_div = kl_divergence(c1_freq_vector, c2_freq_vector)
+        print(f"KL Divergence of character frequencies: {kl_div:.2f}")
+        if kl_div > .03:
+            warnings.warn("Even when different orthographies are being used, KL divergence is usually <.03.")
 
-    # Create a set of all bigrams
-    all_bigrams = set(c1_bigrams.keys()).union(set(c2_bigrams.keys()))
+        c1_bigrams = c1_info['2-grams']
+        c2_bigrams = c2_info['2-grams']
 
-    c1_bigram_vector = np.array([c1_bigrams.get(bigram, 0) for bigram in all_bigrams])
-    c2_bigram_vector = np.array([c2_bigrams.get(bigram, 0) for bigram in all_bigrams])
-    # Normalize and compute similarity measures as before
-    c1_bigram_vector = normalize_vector(c1_bigram_vector)
-    c2_bigram_vector = normalize_vector(c2_bigram_vector)
+        # Create a set of all bigrams
+        all_bigrams = set(c1_bigrams.keys()).union(set(c2_bigrams.keys()))
 
-    # Compute cosine similarity
-    bigram_cosine_sim = cosine_similarity([c1_bigram_vector], [c2_bigram_vector])[0][0]
-    print(f"Cosine Similarity of bigram frequencies: {bigram_cosine_sim:.2f}")
-    if bigram_cosine_sim < .95:
-        warnings.warn("Even when different orthographies are being used, bigram cosine similarities are usually >.95.")
+        c1_bigram_vector = np.array([c1_bigrams.get(bigram, 0) for bigram in all_bigrams])
+        c2_bigram_vector = np.array([c2_bigrams.get(bigram, 0) for bigram in all_bigrams])
+        # Normalize and compute similarity measures as before
+        c1_bigram_vector = normalize_vector(c1_bigram_vector)
+        c2_bigram_vector = normalize_vector(c2_bigram_vector)
 
-    bigram_euclidean_dist = euclidean(c1_bigram_vector, c2_bigram_vector)
-    print(f"Euclidean Distance of bigram frequencies: {bigram_euclidean_dist:.2f}")
-    if bigram_euclidean_dist < .04:
-        warnings.warn("Even when different orthographies are being used, bigram Euclidean distance is usually <.04.")
+        # Compute cosine similarity
+        bigram_cosine_sim = cosine_similarity([c1_bigram_vector], [c2_bigram_vector])[0][0]
+        print(f"Cosine Similarity of bigram frequencies: {bigram_cosine_sim:.2f}")
+        if bigram_cosine_sim < .95:
+            warnings.warn("Even when different orthographies are being used, bigram cosine similarities are usually >.95.")
 
-    vis_diff(all_chars, c1_info['character_frequency'], c2_info['character_frequency'], "_".join(args.o_info.split('_')[1:]), "reference")         
-    
+        bigram_euclidean_dist = euclidean(c1_bigram_vector, c2_bigram_vector)
+        print(f"Euclidean Distance of bigram frequencies: {bigram_euclidean_dist:.2f}")
+        if bigram_euclidean_dist < .04:
+            warnings.warn("Even when different orthographies are being used, bigram Euclidean distance is usually <.04.")
+
+        vis_diff(all_chars, c1_info['character_frequency'], c2_info['character_frequency'], "_".join(args.o_info.split('_')[1:]), "reference")         
+        
 if __name__ == "__main__":
-    curr_dir = os.path.dirname(os.path.abspath(__file__))
-    langs = ['Amis', 'Atayal', 'Paiwan', 'Bunun', 'Puyuma', 'Rukai', 'Tsou', 'Saisiyat', 'Yami',
+    # Code requires that orthographic info is stored in a folder with the name of a language from this list
+    possiblelangs = ['Amis', 'Atayal', 'Paiwan', 'Bunun', 'Puyuma', 'Rukai', 'Tsou', 'Saisiyat', 'Yami',
              'Thao', 'Kavalan', 'Truku', 'Sakizaya', 'Seediq', 'Saaroa', 'Siraya', 'Kanakanavu']    
     
     parser = argparse.ArgumentParser(description="Compare orthographic info")
     #parser.add_argument('--verbose', action='store_true', help='increase output verbosity')
-    parser.add_argument('--o_info', help='Name of log folder containing orthographic info that will be analyzed. You must be in root directory of corpus repo.')
-    parser.add_argument('--language', help='Language code')
+    parser.add_argument('--o_info', help='Path to log folder containing orthographic info that will be analyzed.')
+    parser.add_argument('--reference', help='Path to reference orthographic info.')
+    parser.add_argument('--language', help='Language code. If blank, all languages in o_info will be analyzed.')
     args = parser.parse_args()
 
     # Validate required arguments
     if not args.o_info:
         parser.error("--o_info is required.")
-    if not os.path.exists(os.path.join(curr_dir, '..', 'orthography', 'extract_logs', args.o_info, 'orthographic_info')):
-        parser.error(f"The entered orthographic info, {os.path.join(curr_dir, '..', 'orthography', 'extract_logs', args.o_info, 'orthographic_info')}, doesn't exist")
-    if not args.language in langs:
-        parser.error(f"Enter a valid Formosan language from the list: {langs}")
+    if not args.reference:
+        parser.error("--reference is required.")
+    if not os.path.exists(os.path.join(args.o_info)):
+        parser.error(f"The entered orthographic info, {os.path.join(args.o_info)}, doesn't exist")
+    if not os.path.exists(os.path.join(args.reference)):
+        parser.error(f"The path to reference orthographic info, {os.path.join(args.reference)}, doesn't exist")
 
-    main(args, curr_dir)
+    main(args, possiblelangs)
