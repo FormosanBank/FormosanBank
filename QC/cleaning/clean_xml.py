@@ -116,75 +116,78 @@ def clean_text(text, lang):
     #    text = remove_nonlatin(text)
     return text
 
-def analyze_and_modify_xml_file(xml_file):
+def analyze_and_modify_xml_file(xml_dir, corpora_dir):
     """
     Analyzes and modifies an XML file by cleaning text and handling specific cases in <FORM>.
-    """
-    tree = etree.parse(xml_file)
-    root = tree.getroot()
-    modified = False
-
-    for sentence in root.findall('.//S'):
-        form_element = sentence.find('FORM')
-        
-        if form_element is not None:
-            form_text = form_element.text
-
-            # Handle specific <FORM> cases
-            if not form_text:  # Remove <S> if <FORM> is empty
-                root.remove(sentence)
-                modified = True
-            if html.unescape(form_text) != form_text:  # Replace HTML entities
-                # log the change
-                with open("html_entities.log", "a") as f:
-                    f.write(f"{xml_file}:\n")
-                    f.write(f"Original: {form_text}\n")
-                    f.write(f"Modified: {html.unescape(form_text)}\n\n")
-                form_element.text = html.unescape(form_text)
-                modified = True
-            elif "456otca" in form_text:  # Remove <S> if text contains 456otca
-                root.remove(sentence)
-                modified = True
-            else:
-                cleaned_form_text = clean_text(form_text, lang="na")
-                if cleaned_form_text != form_text:
-                    form_element.text = cleaned_form_text
-                    modified = True
-
-        # Clean <TRANSL> elements
-        for transl in sentence.findall('TRANSL'):
-            lang = transl.get('{http://www.w3.org/XML/1998/namespace}lang')
-            transl_text = transl.text
-            if transl_text:
-                cleaned_transl_text = clean_text(transl_text, lang)
-                if cleaned_transl_text != transl_text:
-                    transl.text = cleaned_transl_text
-                    modified = True
-
-    if modified:
-        tree.write(xml_file, pretty_print=True, encoding="utf-8")
-        print(f"File cleaned: {xml_file}")
-
-def process_directory(xml_dir):
-    """
-    Processes all XML files in a directory.
     """
     for root, dirs, files in os.walk(xml_dir):
         for file in files:
             if file.endswith(".xml"):
-                analyze_and_modify_xml_file(os.path.join(root, file))
+                xml_file = os.path.join(root, file)
+                tree = etree.parse(xml_file)
+                root = tree.getroot()
+                modified = False
 
-def main():
+                for sentence in root.findall('.//S'):
+                    form_element = sentence.find('FORM')
+                    
+                    if form_element is not None:
+                        form_text = form_element.text
+
+                        # Handle specific <FORM> cases
+                        if not form_text:  # Remove <S> if <FORM> is empty
+                            root.remove(sentence)
+                            modified = True
+                        if html.unescape(form_text) != form_text:  # Replace HTML entities
+                            # log the change
+                            with open(os.path.join(corpora_dir,"html_entities.log"), "a") as f:
+                                f.write(f"{xml_file}:\n")
+                                f.write(f"Original: {form_text}\n")
+                                f.write(f"Modified: {html.unescape(form_text)}\n\n")
+                            form_element.text = html.unescape(form_text)
+                            modified = True
+                        elif "456otca" in form_text:  # Remove <S> if text contains 456otca
+                            root.remove(sentence)
+                            modified = True
+                        else:
+                            cleaned_form_text = clean_text(form_text, lang="na")
+                            if cleaned_form_text != form_text:
+                                form_element.text = cleaned_form_text
+                                modified = True
+
+                    # Clean <TRANSL> elements
+                    for transl in sentence.findall('TRANSL'):
+                        lang = transl.get('{http://www.w3.org/XML/1998/namespace}lang')
+                        transl_text = transl.text
+                        if transl_text:
+                            cleaned_transl_text = clean_text(transl_text, lang)
+                            if cleaned_transl_text != transl_text:
+                                transl.text = cleaned_transl_text
+                                modified = True
+
+                if modified:
+                    tree.write(xml_file, pretty_print=True, encoding="utf-8")
+                    print(f"File cleaned: {xml_file}")
+
+def main(args):
     """
     Main function to process XML files in the corpora directory.
     """
-    curr_dir = os.path.dirname(os.path.abspath(__file__))
-    corpora_dir = os.path.join(curr_dir, "../..", "Corpora")
 
     for subdir in os.listdir(corpora_dir):
-        xml_dir = os.path.join(corpora_dir, subdir)
+        xml_dir = os.path.join(args.corpora_path, subdir)
         if os.path.isdir(xml_dir):
-            process_directory(xml_dir)
+            process_directory(xml_dir, args.corpora_path)
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="Extract orthographic info")
+    #parser.add_argument('--verbose', action='store_true', help='increase output verbosity')
+    parser.add_argument('--corpora_path', help='the path to the corpus')
+    args = parser.parse_args()
+
+    if not args.corpora_path:
+        parser.error("--corpora_path is required.")    
+    if not os.path.exists(os.path.join(args.corpora_path)):
+        parser.error(f"The entered path, {args.corpora_path}, doesn't exist")
+
+    main(args)
