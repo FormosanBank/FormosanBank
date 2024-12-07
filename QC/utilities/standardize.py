@@ -3,6 +3,7 @@ import xml.etree.ElementTree as ET
 from xml.dom import minidom
 import argparse
 from lxml import etree
+import re
 
 
 '''
@@ -36,19 +37,20 @@ def get_files(path, language):
             for file in files:
                 if file.endswith(".xml") and re.findall(language, os.path.join(root)): # and 'Final_XML' in os.path.join(root, file)
                     to_check.append(os.path.join(root, file))
-        return
+        return to_check
     
     for root, dirs, files in os.walk(path):
         for file in files:
             if file.endswith(".xml"): # and 'Final_XML' in os.path.join(root, file)
                 to_check.append(os.path.join(root, file))
-    
+
     return to_check
 
 
 def replace_u_with_o(s_element):
     form = s_element.find("FORM[@kindOf='standard']")
-    form.text = form.text.replace("u", "o")
+    if form.text:
+        form.text = form.text.replace("u", "o")
 
 def create_standard(s_element):
     # Find the <FORM> child within each <S> element
@@ -75,32 +77,34 @@ def main(args):
         print(f"Processing corpus: {corpus}")
         if ".DS_Store" in corpus:
             continue
-        for file in get_files(corpus, args.language):
-            try:
-                # Parse the XML file
-                tree = ET.parse(file)
-                root = tree.getroot()
-
-                # Iterate over all <S> elements
-                for s_element in root.findall('.//S'):
-                    create_standard(s_element)
-                    replace_u_with_o(s_element)
-                    
+        files = get_files(corpus, args.language)
+        if files:
+            for file in files:
                 try:
-                    xml_string = prettify(root)
-                    xml_string = '\n'.join([line for line in xml_string.split('\n') if line.strip() != ''])
-                except Exception as e:
-                    xml_string = ""
-                    print(f"Failed to format file: {file}, Error: {e}")
+                    # Parse the XML file
+                    tree = ET.parse(file)
+                    root = tree.getroot()
 
-                with open(file, "w", encoding="utf-8") as xmlfile:
-                    xmlfile.write(xml_string)
-                    print(f"file: {file} standardized successfully")
+                    # Iterate over all <S> elements
+                    for s_element in root.findall('.//S'):
+                        create_standard(s_element)
+                        replace_u_with_o(s_element)
                         
-            except ET.ParseError:
-                print(f"Error parsing file: {file}")
-            except Exception as e:
-                print(f"Unexpected error with file {file}: {e}")
+                    try:
+                        xml_string = prettify(root)
+                        xml_string = '\n'.join([line for line in xml_string.split('\n') if line.strip() != ''])
+                    except Exception as e:
+                        xml_string = ""
+                        print(f"Failed to format file: {file}, Error: {e}")
+
+                    with open(file, "w", encoding="utf-8") as xmlfile:
+                        xmlfile.write(xml_string)
+                        print(f"file: {file} standardized successfully")
+                            
+                except ET.ParseError:
+                    print(f"Error parsing file: {file}")
+                except Exception as e:
+                    print(f"Unexpected error with file {file}: {e}")
                     
 if __name__ == "__main__":
     langs = ['Amis', 'Atayal', 'Paiwan', 'Bunun', 'Puyuma', 'Rukai', 'Tsou', 'Saisiyat', 'Yami',
