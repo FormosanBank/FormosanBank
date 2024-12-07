@@ -136,6 +136,8 @@ def analyze_and_modify_xml_file(xml_dir, corpora_dir):
                     
                     if form_element is not None:
                         form_text = form_element.text
+                        if form_text is None or form_text == "":
+                            continue
                         if form_text != unicodedata.normalize("NFC", form_text):
                             form_element.text = unicodedata.normalize("NFC", form_text)
                             modified = True
