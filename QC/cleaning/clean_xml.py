@@ -26,6 +26,9 @@ def fix_parentheses(text):
     )
 '''
 
+def remove_non_breaking_spaces(text):
+    return re.sub(r'\xa0', '', text)
+
 def remove_nonlatin(text):
     """
     Removes characters that are not part of:
@@ -115,6 +118,18 @@ def clean_text(text, lang):
     text = swap_punctuation(text)
     text = normalize_whitespace(text)
     text = trim_repeated_punctuation(text)
+    text = remove_non_breaking_spaces(text) # An issue for ILRDF Dictionaries
+    #if lang not in ["zho", "zh"]:  # Apply only for non-Chinese languages
+    #    text = remove_nonlatin(text)
+    return text
+
+def clean_trans(text, lang):
+    """
+    Applies a sequence of cleaning functions to the text.
+    """
+    text = normalize_whitespace(text)
+    text = trim_repeated_punctuation(text)
+    text = remove_non_breaking_spaces(text) # An issue for ILRDF Dictionaries
     #if lang not in ["zho", "zh"]:  # Apply only for non-Chinese languages
     #    text = remove_nonlatin(text)
     return text
@@ -169,7 +184,7 @@ def analyze_and_modify_xml_file(xml_dir, corpora_dir):
                         lang = transl.get('{http://www.w3.org/XML/1998/namespace}lang')
                         transl_text = transl.text
                         if transl_text:
-                            cleaned_transl_text = clean_text(transl_text, lang)
+                            cleaned_transl_text = clean_trans(transl_text, lang)
                             if cleaned_transl_text != transl_text:
                                 transl.text = cleaned_transl_text
                                 modified = True

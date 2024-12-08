@@ -408,10 +408,6 @@ def main(args, langs):
         corpus = None
         output_folder = os.path.join(logs_dir, language)
 
-        #if we are looking at a specific FORM tier, add it to the output folder name
-        if args.kindOf is not None:
-            output_folder = output_folder + "_" + args.kindOf
-
         corpus = generate_corpus(language, args.corpora_path, args.kindOf)
         if corpus:
             os.makedirs(output_folder, exist_ok=True) #only make the folder if the corpus is not empty
