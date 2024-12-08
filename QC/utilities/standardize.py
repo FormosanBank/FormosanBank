@@ -52,10 +52,6 @@ def replace_u_with_o(s_element):
     if form.text:
         form.text = form.text.replace("u", "o")
 
-def homogenize_e(s_element):
-    form = s_element.find("FORM[@kindOf='standard']")
-    if form.text:
-        form.text = form.text.replace("ē", "e")
 
 def create_standard(s_element):
     # Find the <FORM> child within each <S> element
@@ -94,7 +90,6 @@ def main(args):
                     for s_element in root.findall('.//S'):
                         create_standard(s_element)
                         replace_u_with_o(s_element)
-                        homogenize_e(s_element)
                         
                     try:
                         xml_string = prettify(root)
