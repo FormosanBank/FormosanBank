@@ -95,6 +95,7 @@ def main(args, possiblelangs):
         langs = [lang for lang in langs if lang in possiblelangs]
 
     for lang in langs:
+        print(f"========== Analyzing {lang} ==========\n")
         # get the orthographic info for the target corpus
         with open(os.path.join(args.o_info, lang, 'orthographic_info'), 'rb') as f:
             c1_info = pickle.load(f)

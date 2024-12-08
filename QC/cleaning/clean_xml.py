@@ -66,7 +66,9 @@ def swap_punctuation(text):
         '‘': "'",  # Left single quotation mark
         '’': "'",   # Right single quotation mark
         'ˈ': "'",
-        'ʻ': "'"
+        'ʻ': "'",
+        '『': '"',
+        '』': '"'
     }
     
     # Create a regular expression pattern to match any of the full-width punctuation characters
