@@ -102,7 +102,7 @@ def main(args, possiblelangs):
         # get the reference orthographic info for that language
         with open(os.path.join(args.reference, lang, 'orthographic_info'), 'rb') as f:
             c2_info = pickle.load(f)
-
+        print(c2_info.keys())
         # Filter unique_chars to exclude punctuation and numerals
         exclude_chars = set(string.punctuation + string.digits)
         c1_use_chars = [char for char in c1_info['unique_characters'] if char not in exclude_chars]

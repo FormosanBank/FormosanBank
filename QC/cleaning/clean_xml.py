@@ -26,9 +26,6 @@ def fix_parentheses(text):
     )
 '''
 
-def remove_non_breaking_spaces(text):
-    return re.sub(r'\xa0', '', text)
-
 def remove_nonlatin(text):
     """
     Removes characters that are not part of:
@@ -118,7 +115,6 @@ def clean_text(text, lang):
     text = swap_punctuation(text)
     text = normalize_whitespace(text)
     text = trim_repeated_punctuation(text)
-    text = remove_non_breaking_spaces(text) # An issue for ILRDF Dictionaries
     #if lang not in ["zho", "zh"]:  # Apply only for non-Chinese languages
     #    text = remove_nonlatin(text)
     return text
@@ -129,7 +125,6 @@ def clean_trans(text, lang):
     """
     text = normalize_whitespace(text)
     text = trim_repeated_punctuation(text)
-    text = remove_non_breaking_spaces(text) # An issue for ILRDF Dictionaries
     #if lang not in ["zho", "zh"]:  # Apply only for non-Chinese languages
     #    text = remove_nonlatin(text)
     return text
@@ -141,7 +136,20 @@ def analyze_and_modify_xml_file(xml_dir, corpora_dir):
     for droot, dirs, files in os.walk(xml_dir):
         for file in files:
             if file.endswith(".xml"):
+
                 xml_file = os.path.join(droot, file)
+                # Read the content of the XML file
+                with open(xml_file, 'r', encoding='utf-8') as file:
+                    content = file.read()
+
+                # Replace all non-breaking spaces with regular spaces
+                content = re.sub('\u00A0', ' ', content)
+
+                # Write the modified content back to the XML file
+                with open(xml_file, 'w', encoding='utf-8') as file:
+                    file.write(content)
+
+                # Silling to re-open the file, but such are the times we live in.
                 tree = etree.parse(xml_file)
                 root = tree.getroot()
                 modified = False
