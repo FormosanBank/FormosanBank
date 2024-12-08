@@ -107,7 +107,7 @@ def main(args, possiblelangs):
         print(c2_info.keys())
 
         # Filter unique_chars to exclude punctuation and numerals
-        exclude_chars = set(string.punctuation + string.digits)
+        exclude_chars = set(string.digits)
         c1_use_chars = [char for char in c1_info['unique_characters'] if char not in exclude_chars]
         c2_use_chars = [char for char in c2_info['unique_characters'] if char not in exclude_chars]
 
