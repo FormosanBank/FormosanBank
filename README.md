@@ -161,6 +161,9 @@ pip install -r requirements.txt
    - **Expected Output**
      - Console output with several metrics of orthographic similarity. Warnings will be issued for worrisome numbers.
      - A png named `character_frequency_comparison_...` that visualizes the character distributions, saved in folder the script was run from.
+   - **Notes**
+     - The reference orthography for Bunun does not use `e`, probably because it is (presumably) based on the Isbukun dialect.
+     - The reference orthography for Kanakanavu does not use `h` or `f`.
 
 4. **`validate_vocabulary.py`**
    - **Purpose**: Compares the 100 most common words in the target corpus with a reference corpus for a specified Formosan language.
