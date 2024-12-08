@@ -81,6 +81,27 @@ def swap_punctuation(text):
     # Use re.sub to replace all full-width punctuation with regular punctuation
     return pattern.sub(replace, text)
 
+def remove_junk_chars(text):
+    """
+    Replaces specific non-ASCII punctuation with their ASCII equivalents.
+    """
+    # Define the mapping of full-width punctuation to regular punctuation
+    # Also convert square brackets to parentheses    
+    to_remove = {
+        'ㄇ': ''
+    }
+    
+    # Create a regular expression pattern to match any of the full-width punctuation characters
+    pattern = re.compile('|'.join(map(re.escape, to_remove.keys())))
+    
+    # Define a function to replace each match with the corresponding regular punctuation
+    def replace(match):
+        return to_remove[match.group(0)]
+    
+    # Use re.sub to replace all full-width punctuation with regular punctuation
+    return pattern.sub(replace, text)
+
+
 '''
 def process_punctuation(text):
     """
@@ -117,6 +138,7 @@ def clean_text(text, lang):
     text = swap_punctuation(text)
     text = normalize_whitespace(text)
     text = trim_repeated_punctuation(text)
+    text = remove_junk_chars(text)
     #if lang not in ["zho", "zh"]:  # Apply only for non-Chinese languages
     #    text = remove_nonlatin(text)
     return text
