@@ -1,9 +1,11 @@
 
 # Presidential Apologies Data
 
-This repository contains code and data for processing and structuring translations of the Presidential Apology issued by the President of Taiwan towards Indigenous communities. The apology is available in the 16 official Formosan languages, as well as in Chinese and English translations. The data is organized to facilitate linguistic analysis and cultural preservation.
+This repository contains code and data for processing and structuring translations of the Presidential Apology issued by the President of Taiwan towards Indigenous communities. The apology is available in the 16 official Formosan languages, as well as in Chinese and English translations. To ensure consistent alignment, the corpus was divided into 33 sections, with each section corresponding to paragraph divisions in the official release. While sentence-level alignment was considered, it was impractical due to differing sentence counts across languages. Instead, paragraphs were used as the unit of alignment, with some sections merged or split manually to match across all languages. This approach ensured that English and Chinese translations could be reliably mapped to Formosan languages, even when structural discrepancies existed. The final dataset enables accurate cross-linguistic comparison and preserves the cultural integrity of the apologies. 
 
 ## Notes
+
+*Amis* The presidential apology in Amis has a couple of occurances of the letter 'b' which isn't part of the standard orthography of the language. all the occurances can be found in two words: Balay and Sbalay. Both of these words are Atayal words that are quoted in the original apology, and they were used in the same form in the Amis translation. 
 
 *Kanakanavu* This corpus uses a small number of h's and f's, which are controversial. None of the words involving h's or f's appear in the reference ILRDF Dictionary corpus, with or without the h's and f's. Thus, we have chosen to leave them in.
 
@@ -21,7 +23,7 @@ This repository contains code and data for processing and structuring translatio
 
 - **Chinese.txt** and **English.txt**: TXT files containing the apology in Chinese and English, respectively. Like the other languages, these are also divided into 33 sections.
 
-- **Final_XML**: Directory for storing the processed XML files, structured according to the FormosanBank XML format.
+- **XML**: Directory for storing the processed XML files, structured according to the FormosanBank XML format.
 
 - **main.py**: The main script that processes the text files in each language folder and converts them into XML format, organizing sections to match across translations.
 
@@ -57,14 +59,7 @@ This repository contains code and data for processing and structuring translatio
 
 The processed XML files will be saved in the `Final_XML` directory.
 
-2. **Clean the XML**
-
-## Code Breakdown
-
-This document provides an in-depth code breakdown for the `main.py` script, which processes the Presidential Apology translations and structures them into the FormosanBank XML format.
-
-
-3. **Clean XML and standardize punctuation**
+2. **Clean XML and standardize punctuation**
 
    ```bash
    python path/to/FormosanBankRepo/QC/cleaning/clean_xml.py --corpora_path path/to/Apologies/Final_XML
@@ -79,7 +74,7 @@ This document provides an in-depth code breakdown for the `main.py` script, whic
    - Unicode is flattened so that diacritics are merged with the characters they modify
    - HTML escape codes are replaced with the corresponding characters
 
-4. **Standardize XML, Part 2**
+3. **Standardize XML**
 
    ```bash
    python path/to/FormosanBankRepo/QC/utilities/add_original.py --corpora_path path/to/FormosanWikipedias/Final_XML
@@ -91,7 +86,8 @@ This document provides an in-depth code breakdown for the `main.py` script, whic
 **Notes**
    - Adds kindOf="original" attribute to all <FORM> elements. (This should normally be done in an earlier step, but wasn't for this corpus.)
 
-5. **Standardize orthography**
+
+4. **Standardize orthography**
 
    ```bash
    python path/to/FormosanBankRepo/QC/utilities/standardize.py --corpora_path path/to/FormosanWikipedias/Final_XML
@@ -104,7 +100,9 @@ This document provides an in-depth code breakdown for the `main.py` script, whic
    - Creates a copy of every <FORM> element with kindOf="standard" attribute
    - All u's are converted to o's.
 
+## Code Breakdown
 
+This document provides an in-depth code breakdown for the `main.py` script, which processes the Presidential Apology translations and structures them into the FormosanBank XML format.
 
 ---
 
@@ -160,4 +158,4 @@ This document provides an in-depth code breakdown for the `main.py` script, whic
 
 ## Output Explaination
 
-All the output will be in the Final_XML folder. There will be a file for each of the languages in the FormosanBank XML format.
+All the output will be in the XML folder. There will be a file for each of the languages in the FormosanBank XML format.
