@@ -70,7 +70,7 @@ def validated_form(xml_file):
     # Iterate over all <S> elements
     for s in root.findall('.//S'):
         forms = s.findall('.//FORM')
-        if forms[0].attrib.get('kindOf') != 'original':
+        if 'kindOf' not in forms[0].attrib or forms[0].attrib.get('kindOf') != 'original':
             return False
         if len(forms) > 1 and forms[1].attrib.get('kindOf') != 'standard':
             return False
