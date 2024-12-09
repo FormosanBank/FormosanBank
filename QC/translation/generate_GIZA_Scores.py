@@ -17,11 +17,11 @@ def read_files(to_check):
             form = s.find('FORM').text
             en_trans = s.find('TRANSL[@xml:lang="en"]', namespaces=namespace).text
             zh_trans = s.find('TRANSL[@xml:lang="zh"]', namespaces=namespace).text
-            to_return.append([file, s_id, form, en_trans, zh_trans])
+            to_return.append([file, file_path, s_id, form, en_trans, zh_trans])
     
     return to_return
             
-def tokenize(data):
+def tokenize(data, corpus):
     source_tokenizer = MosesTokenizer(lang="en")  # Replace "en" with source language code if different
     english_tokenizer = MosesTokenizer(lang="en")
     chinese_tokenizer = MosesTokenizer(lang="zh")
@@ -32,12 +32,13 @@ def tokenize(data):
     metadata = []
 
     for entry in data:
-        file_name, s_id, source_sent, english_trans, chinese_trans = entry
-        metadata.append((file_name, s_id))
+        file_name, file_path, s_id, source_sent, english_trans, chinese_trans = entry
         # Tokenize sentences
         source_tokenized = source_tokenizer.tokenize(source_sent)
         english_tokenized = english_tokenizer.tokenize(english_trans)
         chinese_tokenized = chinese_tokenizer.tokenize(chinese_trans)
+        metadata.append({"corpus":corpus, "file_name":file_name, "file_path":file_path, "s_id": s_id,
+                         "tokenized_sent": " ".join(source_tokenized), "tokenized_trans": " ".join(english_tokenized)})
         
         # Join tokens back into strings
         source_sentences_tokenized.append(" ".join(source_tokenized))
@@ -66,7 +67,9 @@ def parse_giza_output(giza_file, metadata):
         meta = lines[i].strip()
         alignment_data = lines[i + 2].strip()
         score = meta.split()[-1]  # Extract the alignment score
-        alignments.append((*metadata_entry, alignment_data, score))
+        metadata_entry["giza_score"] = score
+        metadata_entry["giza_sent"] = alignment_data
+        alignments.append(metadata_entry)
     return alignments
 
 def main(corpus_path, lang):
@@ -78,8 +81,9 @@ def main(corpus_path, lang):
                 to_check.append((file, os.path.join(root, file)))
     
     data = read_files(to_check)
-    metadata = tokenize(data)
+    metadata = tokenize(data, "Presidential_Apologies")
     alignments = parse_giza_output("tmp/alignments_en.AA3.final", metadata)
+    print(alignments[0])
     with open("tmp/alignement_results.pkl", mode="wb") as pfile:
         pickle.dump(alignments, pfile)
 

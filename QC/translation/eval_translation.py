@@ -35,58 +35,55 @@ def strToDict(alignStr):
 
     return result_dict
 
-with open("tmp/alignement_results.pkl", mode="rb") as pfile:
-    align = pickle.load(pfile)
-with open("tmp/amis_lex.pkl", mode="rb") as pfile:
-    lexicon = pickle.load(pfile)
 
-with open("EvalAlign.csv", mode="w", encoding="utf-8") as cfile:
-    # gizascore is the likelihood score output by giza, alignSTD is the standard deviation of something output by giza, 
-    # lexcheck is a score based on lexicon check and sizediff is a score based on the difference of size of the source
-    #and target utterance.
-    cfile.write("collection, xml, id, gizaScore, alignSTD, lexCheck, sizeDiff\n")
-    for collection in align:
-        print(collection)
-        
-        for i, sent in enumerate(align[collection]):
-            tree = ET.parse("MT-xml-part-one/{}/{}".format(collection, sent["xml"]))
-            root = tree.getroot()
-            target_id = sent["id"]
-            target_s_element = root.find(f'.//S[@id="{target_id}"]')
-            print(sent)
-            form_content = target_s_element.find('FORM').text
-            translation_content = target_s_element.find('TRANSL[@xml:lang="en"]', namespaces=namespace).text
+def main():
+
+    with open("tmp/alignement_results.pkl", mode="rb") as pfile:
+        align = pickle.load(pfile)
+    with open("tmp/amis_lex.pkl", mode="rb") as pfile:
+        lexicon = pickle.load(pfile)
+
+    with open("tmp/EvalAlign.csv", mode="w", encoding="utf-8") as cfile:
+        # gizascore is the likelihood score output by giza, alignSTD is the standard deviation of something output by giza, 
+        # lexcheck is a score based on lexicon check and sizediff is a score based on the difference of size of the source
+        # and target utterance
+        cfile.write("corpus, xml_file, id, gizaScore, alignSTD, lexCheck, sizeDiff\n")
+        for entry in align:
+            print(entry)
+            
+            
             terms = []
             knownTerms = 0
-            amis_sent = re.sub(r'\([^()]*\)', '', sent["align"])
+            amis_sent = re.sub(r'\([^()]*\)', '', entry['giza_sent'])
             amis_sent = amis_sent.replace("NULL", "")
             yesWord = 0
             small_set = {}
-            aling_dict = strToDict(sent["align"])
+            aling_dict = strToDict(entry['giza_sent'])
             alignChaos = [len(aling_dict[x]) for x in aling_dict]
             print(aling_dict)
             print(np.std(alignChaos))
             print(alignChaos)
             Warning = ""
             # Check score based on punctuations.
-            qutMarkEN = translation_content.count("?")
-            qutMarkAM = form_content.count("?")
-            exkMarkEN = translation_content.count("!")
-            exkMarkAM = form_content.count("!")
+            qutMarkEN = entry['tokenized_sent'].count("?")
+            qutMarkAM = entry['tokenized_sent'].count("?")
+            exkMarkEN = entry['tokenized_trans'].count("!")
+            exkMarkAM = entry['tokenized_trans'].count("!")
 
             if qutMarkAM!=qutMarkEN or exkMarkEN!= exkMarkAM:
                 Warning = True
             refs = []
-            for elt in sent["english"].split():
+            for elt in entry['tokenized_trans'].split():
                 if elt in lexicon:
                     refs.append(elt)
 
                     knownTerms+=1
-                    terms = terms+[x.replace("o", "u").lower() for x in lexicon[elt]]
+                    terms = terms+[x.replace("u", "o").lower() for x in lexicon[elt]]
                     small_set[elt] = lexicon[elt]
+            
             terms = set(terms)
             for word in set(amis_sent.split()):
-                if word.replace("o", "u").lower() in terms:
+                if word.replace("u", "o").lower() in terms:
                     yesWord+=1
             if knownTerms!=0:
                 lex_check = yesWord/knownTerms
@@ -100,5 +97,8 @@ with open("EvalAlign.csv", mode="w", encoding="utf-8") as cfile:
             else:
                 lex_check = -1
 
-            size_diff = len(amis_sent.split())/len(sent["english"].split())*100
-            cfile.write("{},{},{},{},{},{},{},{}\n".format(collection, sent["xml"], sent["id"], float(sent["score"]), float(np.std(alignChaos)),float(lex_check), float(size_diff), Warning))
+            size_diff = len(amis_sent.split())/len(entry['tokenized_trans'].split())*100
+            cfile.write("{},{},{},{},{},{},{},{}\n".format(entry['corpus'], entry['file_name'], entry["s_id"], float(entry["giza_score"]), float(np.std(alignChaos)),float(lex_check), float(size_diff), Warning))
+
+if __name__ == "__main__":
+    main()
