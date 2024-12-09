@@ -400,7 +400,7 @@ def main(args, langs):
     os.makedirs(logs_dir, exist_ok=True)
 
     if args.language == 'All':
-        languages_to_process = [lang for lang in os.listdir(args.corpora_path) if lang != ".DS_Store"]
+        languages_to_process = langs
     else:
         languages_to_process = [args.language]
 
