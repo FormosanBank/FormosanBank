@@ -3,6 +3,8 @@ import os
 import pandas as pd
 import argparse
 import logging
+import xml.etree.ElementTree as ET
+
 
 '''
 The validate XML script: 
@@ -59,6 +61,42 @@ def validate_xml_against_dtd(xml_file, dtd_file):
         error_message = f"An error occurred while validating {xml_file}: {e}"
         logging.error(error_message)
         return False
+
+
+def validated_form(xml_file):
+    tree = ET.parse(xml_file)
+    root = tree.getroot()
+    
+    # Iterate over all <S> elements
+    for s in root.findall('.//S'):
+        forms = s.findall('.//FORM')
+        if forms[0].attrib.get('kindOf') != 'original':
+            return False
+        if len(forms) > 1 and forms[1].attrib.get('kindOf') != 'standard':
+            return False
+
+    return True
+
+# Ensure that if audio is set to "diarized", at least file attr is set for every Audio tag.
+# if audio is set to anything else, check that start and end exist
+def validate_audio_attr(xml_file):
+    tree = ET.parse(xml_file)
+    root = tree.getroot()
+    if "audio" in root.attrib:
+        audio_type = root.attrib["audio"]
+    else:
+        return True
+    
+    # Iterate over all <Audio> elements
+    for audio in root.findall('.//Audio'):
+        # If audio is diarized, all audio tages need to have the at least the file attribute
+        if audio_type == "diarized" and "file" not in audio.attrib:
+            return False
+        # if audio isn't diarized, all audio tages need to have a start and end
+        elif audio_type != "diarized" and ("start" not in audio.attrib or "end" not in audio.attrib):
+            return False
+
+    return True
 
 # Ensure lang code complies with ISO 639-3
 def validate_lang_code(xml_file, lang_codes):
@@ -132,8 +170,10 @@ def main(args, langs):
 
         xml_valid = validate_xml_against_dtd(file, dtd_file)
         lang_code_valid = validate_lang_code(file, langs_codes)
+        audio_attr_valid = validate_audio_attr(file)
+        check_form_valid = validated_form(file)
 
-        if not xml_valid or not lang_code_valid:
+        if not xml_valid or not lang_code_valid or not audio_attr_valid:
             issues_found += 1
             files_with_issues.append(file)
             if not args.verbose:
