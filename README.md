@@ -161,6 +161,9 @@ pip install -r requirements.txt
    - **Expected Output**
      - Console output with several metrics of orthographic similarity. Warnings will be issued for worrisome numbers.
      - A png named `character_frequency_comparison_...` that visualizes the character distributions, saved in folder the script was run from.
+   - **Notes**
+     - The reference orthography for Bunun does not use `e`, probably because it is (presumably) based on the Isbukun dialect.
+     - The reference orthography for Kanakanavu does not use `h` or `f`.
 
 4. **`validate_vocabulary.py`**
    - **Purpose**: Compares the 100 most common words in the target corpus with a reference corpus for a specified Formosan language.
@@ -176,25 +179,77 @@ pip install -r requirements.txt
      
 ### Cleaning Scripts
 
-1. **`clean_xml.py`**
+**`clean_xml.py`**
   - **Purpose**:  
     Cleans XML files by standardizing punctuation, removing unnecessary characters, and normalizing text. The script modifies `<FORM>` and `<TRANSL>` elements in XML files to ensure consistency and readability.
 
   - **Usage**:  
     Run the script from the command line as follows:  
     ```bash
-    python3 QC/cleaning/clean_xml.py [arguments]
+    python3 QC/cleaning/clean_xml.py --corpora_path
     ```  
     Example to clean all XML files in a specific directory:  
     ```bash
-    python3 QC/cleaning/clean_xml.py --path /path/to/corpora
+    python3 QC/cleaning/clean_xml.py --corpora_path /path/to/corpora
     ```
 
   - **Arguments**:  
-    - `--path`: Path to the directory containing XML files to process. (Required)  
-    - `--verbose`: Enables detailed logs of cleaning actions performed on files. Logs will include filenames and issues fixed.
+    - `--corpora_path`: Path to the directory containing XML files to process. (Required)  
 
   This script modifies the XML files in place, ensuring clean and consistent text formatting across the corpora. Use this as a follow-up to `validate_punct.py` for automated cleaning.
+
+  A log will be generated in --corpora_path for any adjustments of HTML entities. Nothing else is currently logged.
+
+  The following punctuation transformations are instituted:
+
+```
+  {
+        '（': '(',
+        '）': ')',
+        '：': ':',
+        '，': ',',
+        '？': '?',
+        '。': '.',
+        '》': '"',
+        '《': '"',
+        '」': '"',
+        '「': '"',
+        '、': ',',
+        '】': ')',
+        '【': '(',
+        ']': ')',
+        '[': '(',
+        '〔': '(',
+        '〕': ')',
+        '“': '"',  # Left double quotation mark
+        '”': '"',  # Right double quotation mark
+        '‘': "'",  # Left single quotation mark
+        '’': "'",   # Right single quotation mark
+        'ˈ': "'",
+        'ʻ': "'"
+    }
+```
+
+**`clean_nonlatin.py`**
+  - **Purpose**:  
+    Cleans XML files by standardizing removing non-latin characters (with the exceptions of some specific characters known to be used in Formosan). The script modifies `<FORM>` only. It is not ideal if there is known code-switching between orthographies and should be used with abundant caution.
+
+  - **Usage**:  
+    Run the script from the command line as follows:  
+    ```bash
+    python3 QC/cleaning/clean_nonlatin.py --corpora_path
+    ```  
+    Example to clean all XML files in a specific directory:  
+    ```bash
+    python3 QC/cleaning/clean_nonlatin.py --corpora_path /path/to/corpora
+    ```
+
+  - **Arguments**:  
+    - `--corpora_path`: Path to the directory containing XML files to process. (Required)  
+
+  This script modifies the XML files in place, ensuring clean and consistent text formatting across the corpora.
+
+  A log will be generated in --corpora_path for any <S /> elements that are changed.
 
 ### Analysis Scripts
 

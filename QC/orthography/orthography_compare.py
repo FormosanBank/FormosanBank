@@ -11,6 +11,11 @@ plt.switch_backend('Agg')  # Use a non-GUI backend
 plt.rcParams['font.sans-serif'] = ['Arial Unicode MS']
 
 
+def get_lang(path, langs):
+    for lang in langs:
+        if lang in path:
+            return lang
+
 def jaccard_similarity(set1, set2):
     intersection = set1.intersection(set2)
     union = set1.union(set2)
@@ -37,9 +42,13 @@ def kl_divergence(p, q):
     q = q + epsilon
     return np.sum(rel_entr(p, q))
 
-def vis_diff(all_chars, c1_char_freq, c2_char_freq, source_1, source_2):
+def vis_diff(all_chars, c1_char_freq, c2_char_freq, source_1, source_2, logs_dir, lang):
     
+    output_path = os.path.join(logs_dir, lang)
+    os.makedirs(output_path, exist_ok=True)
+
     # Get the sorted list of characters
+    all_chars = [c for c in all_chars if c.isalpha() or c == "'" or c == "’"]
     sorted_chars = sorted(all_chars)
 
     # Compute the total number of characters in each corpus
@@ -47,11 +56,23 @@ def vis_diff(all_chars, c1_char_freq, c2_char_freq, source_1, source_2):
     total_corpus2_chars = sum(c2_char_freq.values())
 
     # Calculate relative frequencies (ratios) for plotting
+    # corpus1_freqs = [
+    #     np.log((c1_char_freq.get(char, 0)+0.0001) / (total_corpus1_chars - c1_char_freq.get(char, 0) + 1)) for char in sorted_chars
+    # ]
+    # corpus2_freqs = [
+    #    np.log((c2_char_freq.get(char, 0)+0.0001) / (total_corpus2_chars - c2_char_freq.get(char, 0) + 1)) for char in sorted_chars
+    # ]
+
     corpus1_freqs = [
-        np.log((c1_char_freq.get(char, 0)+1) / (total_corpus1_chars - c1_char_freq.get(char, 0) + 1)) for char in sorted_chars
+    np.log((c1_char_freq.get(char, 0) + 1) / (total_corpus1_chars - c1_char_freq.get(char, 0) + 1))
+    if c1_char_freq.get(char, 0) > 0 else None
+    for char in sorted_chars
     ]
+
     corpus2_freqs = [
-       np.log((c2_char_freq.get(char, 0)+1) / (total_corpus2_chars - c2_char_freq.get(char, 0) + 1)) for char in sorted_chars
+        np.log((c2_char_freq.get(char, 0) + 1) / (total_corpus2_chars - c2_char_freq.get(char, 0) + 1))
+        if c2_char_freq.get(char, 0) > 0 else None
+        for char in sorted_chars
     ]
 
     # Optionally, convert ratios to percentages
@@ -63,8 +84,23 @@ def vis_diff(all_chars, c1_char_freq, c2_char_freq, source_1, source_2):
     width = 0.35  # width of the bars
 
     fig, ax = plt.subplots(figsize=(15, 5))
-    rects1 = ax.bar(x - width / 2, corpus1_freqs, width, label=source_1)
-    rects2 = ax.bar(x + width / 2, corpus2_freqs, width, label=source_2)
+    
+    #rects1 = ax.bar(x - width / 2, corpus1_freqs, width, label=source_1)
+    #rects2 = ax.bar(x + width / 2, corpus2_freqs, width, label=source_2)
+
+    rects1 = ax.bar(
+    x - width / 2,
+    [freq if freq is not None else 0 for freq in corpus1_freqs],  # Replace `None` with 0 for plotting
+    width,
+    label=source_1,
+    alpha=0.7)
+
+    rects2 = ax.bar(
+        x + width / 2,
+        [freq if freq is not None else 0 for freq in corpus2_freqs],  # Replace `None` with 0 for plotting
+        width,
+        label=source_2,
+        alpha=0.7)
 
     # Add labels and title
     ax.set_ylabel('Relative Frequency on log-odds scale')
@@ -72,16 +108,24 @@ def vis_diff(all_chars, c1_char_freq, c2_char_freq, source_1, source_2):
     ax.set_xticks(x)
     ax.set_xticklabels(sorted_chars)
     ax.legend()
-
+    print(source_1, source_2)
     # Rotate x-axis labels for better readability
     plt.xticks(rotation=90)
     plt.tight_layout()
-    plt.savefig(f'character_frequency_comparison_{source_1}_{source_2}.png')
+    plt.savefig(os.path.join(output_path, f'character_frequency_comparison_{source_1}_{source_2}.png'))
     plt.close()
 
 
 def main(args):
 
+    curr_dir = os.path.dirname(os.path.abspath(__file__))
+    logs_dir = os.path.join(curr_dir, "compare_logs")
+    os.makedirs(logs_dir, exist_ok=True)
+
+    langs = ['Amis', 'Atayal', 'Paiwan', 'Bunun','Puyuma', 'Rukai', 'Tsou', 'Saisiyat', 'Yami',
+        'Thao', 'Kavalan', 'Truku', 'Sakizaya','Seediq','Saaroa', 'Kanakanavu', 'Siraya']
+    
+    lang = get_lang(args.o_info_1, langs)
 
     with open(os.path.join(args.o_info_1, "orthographic_info"), 'rb') as f:
         c1_info = pickle.load(f)
@@ -130,7 +174,7 @@ def main(args):
     bigram_euclidean_dist = euclidean(c1_bigram_vector, c2_bigram_vector)
     print(f"Euclidean Distance of bigram frequencies: {bigram_euclidean_dist:.2f}")
 
-    vis_diff(all_chars, c1_info['character_frequency'], c2_info['character_frequency'], "_".join(args.o_info_1.split('_')[1:]), "_".join(args.o_info_2.split('_')[1:]))
+    vis_diff(all_chars, c1_info['character_frequency'], c2_info['character_frequency'], "_".join(args.o_info_1.split('_')[2:]), "_".join(args.o_info_2.split('_')[2:]), logs_dir, lang)
 
             
     
@@ -146,8 +190,8 @@ if __name__ == "__main__":
     if not args.o_info_1 or not args.o_info_2:
         parser.error("--o_info_1 and o_info_2 are required.")
     if not os.path.exists(os.path.join(args.o_info_1, "orthographic_info")):
-        parser.error(f"The entered orthographic info, {os.path.join(args.o_info_1, "orthographic_info")}, doesn't exist")
+        parser.error(f"The entered orthographic info, {os.path.join(args.o_info_1, 'orthographic_info')}, doesn't exist")
     if not os.path.exists(os.path.join(args.o_info_2, "orthographic_info")):
-        parser.error(f"The entered orthographic info, {os.path.join(args.o_info_2, "orthographic_info")}, doesn't exist")
+        parser.error(f"The entered orthographic info, {os.path.join(args.o_info_2, 'orthographic_info')}, doesn't exist")
 
     main(args)
