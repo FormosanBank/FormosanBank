@@ -8,7 +8,7 @@ This repository contains code and data for retrieving, processing and structurin
 - **Articles**: Directory containing subdirectories for each Formosan language with available Wikipedia articles. Each language folder includes:
   - TXT files representing individual articles in that language.
 
-- **Final_XML**: Directory for storing the processed XML files, structured according to the FormosanBank XML format.
+- **XML**: Directory for storing the processed XML files, structured according to the FormosanBank XML format.
 
 - **Titles**: Directory containing pickle files. Each pickle file corresponds to a language and contains a list of articles available in that language's Wikipedia.
 
@@ -17,7 +17,7 @@ This repository contains code and data for retrieving, processing and structurin
 - **main.py**: The main script that:
   - Uses the Wikipedia API to retrieve a list of articles for each language and stores this data in the `Titles` folder.
   - Scrapes the articles from Wikipedia, saves them as text files in the `Articles` folder.
-  - Processes the articles into XML format for the `Final_XML` directory.
+  - Processes the articles into XML format for the `XML` directory.
 
 ## Installation
 
@@ -47,9 +47,9 @@ This repository contains code and data for retrieving, processing and structurin
    python download.py
    ```
 
-**Outputs**:
-   - The unmodified scraped article text files are saved in the `Articles` directory.
-   - The list of article titles (per language) is saved as pickles in the `Titles` directory.
+   **Outputs**:
+      - The unmodified scraped article text files are saved in the `Articles` directory.
+      - The list of article titles (per language) is saved as pickles in the `Titles` directory.
 
 2. **Basic cleaning and creation of XML files**:
    Run `clean_articles.py` to use the Wikipedia API to scrape articles.
@@ -58,14 +58,14 @@ This repository contains code and data for retrieving, processing and structurin
    python clean_articles.py
    ```
 
-**Outputs**:
-   - The processed XML files are stored in the `Final_XML` directory.
-   - There are several log files that are useful for ensuring proper functioning
-      - *link_removal.log*: Logs details of URLs removed from the text, including file path, line number, original line, and modified line.
-      - *citations_remove.log*: Code automatically detects (mostly accurately) reference sections of wikipedia articles and removes them. This lists every file that had something removed and what was removed. 
-      - *remove_possible_citations.log*: Some citations squeak through the above. The code finds sequences consisting of a new line that starts with a number, followed by a period. These are almost always citations. The log lists every file that had something removed and what was removed. 
-      - *encoding_detection.log*: Logs the detected encoding of each file that couldn't be opened, including the file path and detected encoding.
-      - *citation_removal.log*: Logs details of citation markers removed from the text, including file path, line number, original line, and modified line.
+   **Outputs**:
+      - The processed XML files are stored in the `XML` directory.
+      - There are several log files that are useful for ensuring proper functioning
+         - *link_removal.log*: Logs details of URLs removed from the text, including file path, line number, original line, and modified line.
+         - *citations_remove.log*: Code automatically detects (mostly accurately) reference sections of wikipedia articles and removes them. This lists every file that had something removed and what was removed. 
+         - *remove_possible_citations.log*: Some citations squeak through the above. The code finds sequences consisting of a new line that starts with a number, followed by a period. These are almost always citations. The log lists every file that had something removed and what was removed. 
+         - *encoding_detection.log*: Logs the detected encoding of each file that couldn't be opened, including the file path and detected encoding.
+         - *citation_marker_removal.log*: Logs details of citation markers removed from the text, including file path, line number, original line, and modified line.
 
 3. **Delete non-Formosan Text**:
    Run `remove_other_langs.py` to use the Wikipedia API to scrape articles.
@@ -74,43 +74,43 @@ This repository contains code and data for retrieving, processing and structurin
    python remove_other_langs.py
    ```
 
-**Outputs**:
-   - This will update the XML files.
+   **Outputs**:
+      - This will update the XML files.
 
-**Notes**:
-   - Everything that is removed is recorded in a log file.
-      - *remove_Annotations.log*: There is a lot of commentary in non-Formosan languages, enclosed on parentheses. Often these are translations.Parentheses that contain mostly suspected non-Formosan text are removed. Every edit is logged with the file path and the section of text modified, with the part that was removed set aside within |||triple lines|||.
-      - *remove_large_blocks.log*: Lines that contain mostly non-latin text are removed. The log lists the file path and the entire line that was removed. Note that this text sometimes contains a small amount of Formosan text, usually names of individuals.
-      - *remove_character_strings.log*: Longish continuous segments of non-latin text are removed. Every edit is logged with the file path and the section of text modified, with the part that was removed set aside within |||triple lines|||.
-      - *remove_empty_parentheses.log*: Does what is sounds like.
+   **Notes**:
+      - Everything that is removed is recorded in a log file.
+         - *remove_Annotations.log*: There is a lot of commentary in non-Formosan languages, enclosed on parentheses. Often these are translations. Parentheses that contain mostly suspected non-Formosan text are removed. Every edit is logged with the file path and the section of text modified, with the part that was removed set aside within |||triple lines|||.
+         - *remove_large_blocks.log*: Lines that contain mostly non-latin text are removed. The log lists the file path and the entire line that was removed. Note that this text sometimes contains a small amount of Formosan text, usually names of individuals.
+         - *remove_character_strings.log*: Longish continuous segments of non-latin text are removed. Every edit is logged with the file path and the section of text modified, with the part that was removed set aside within |||triple lines|||.
+         - *remove_empty_parentheses.log*: Does what is sounds like.
 
 4. **Clean XML and standardize punctuation**
 
    ```bash
-   python path/to/FormosanBankRepo/QC/cleaning/clean_xml.py --corpora_path path/to/FormosanWikipedias/Final_XML
+   python path/to/FormosanBankRepo/QC/cleaning/clean_xml.py --corpora_path path/to/FormosanWikipedias/XML
    ```
 
-**Outputs**
-   - This will update the XML files.
+   **Outputs**
+      - This will update the XML files.
 
-**Notes**
-   - This removes empty XML elements
-   - It also standardizes orthography (more-or-less), though a lot of this was done in previous steps (not documented above)
-   - Unicode is flattened so that diacritics are merged with the characters they modify
-   - HTML escape codes are replaced with the corresponding characters
+   **Notes**
+      - This removes empty XML elements
+      - It also standardizes orthography (more-or-less), though a lot of this was done in previous steps (not documented above)
+      - Unicode is flattened so that diacritics are merged with the characters they modify
+      - HTML escape codes are replaced with the corresponding characters
 
 5. **Standardize orthography**
 
    ```bash
-   python path/to/FormosanBankRepo/QC/utilities/standardize.py --corpora_path path/to/FormosanWikipedias/Final_XML
+   python path/to/FormosanBankRepo/QC/utilities/standardize.py --corpora_path path/to/FormosanWikipedias/XML
    ```
    
-**Outputs**
-   - Updates XML files
+   **Outputs**
+      - Updates XML files
 
-**Notes**
-   - Creates a copy of every <FORM> element with kindOf="standard" attribute
-   - All u's are converted to o's.
+   **Notes**
+      - Creates a copy of every <FORM> element with kindOf="standard" attribute
+      - All u's are converted to o's.
 
 ## Developer Notes and Tools
 

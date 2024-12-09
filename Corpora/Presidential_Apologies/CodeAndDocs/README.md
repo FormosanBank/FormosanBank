@@ -63,7 +63,7 @@ This repository contains code and data for processing and structuring translatio
 2. **Clean XML and standardize punctuation**
 
    ```bash
-   python path/to/FormosanBankRepo/QC/cleaning/clean_xml.py --corpora_path path/to/Apologies/Final_XML
+   python path/to/FormosanBankRepo/QC/cleaning/clean_xml.py --corpora_path path/to/Apologies/XML
    ```
 
    **Outputs**
@@ -78,7 +78,7 @@ This repository contains code and data for processing and structuring translatio
 3. **Standardize XML**
 
    ```bash
-   python path/to/FormosanBankRepo/QC/utilities/add_original.py --corpora_path path/to/FormosanWikipedias/Final_XML
+   python path/to/FormosanBankRepo/QC/utilities/add_original.py --corpora_path path/to/FormosanWikipedias/XML
    ```
 
    **Outputs**
@@ -91,7 +91,7 @@ This repository contains code and data for processing and structuring translatio
 4. **Standardize orthography**
 
    ```bash
-   python path/to/FormosanBankRepo/QC/utilities/standardize.py --corpora_path path/to/FormosanWikipedias/Final_XML
+   python path/to/FormosanBankRepo/QC/utilities/standardize.py --corpora_path path/to/FormosanWikipedias/XML
    ```
 
    **Outputs**
@@ -147,7 +147,7 @@ This document provides an in-depth code breakdown for the `main.py` script, whic
 
 ### 5. `__main__` Block
    - Sets up the environment for script execution by defining paths and calling `main`.
-   - Ensures the `Final_XML` directory exists for storing processed XML files.
+   - Ensures the `XML` directory exists for storing processed XML files.
 
 ---
 
