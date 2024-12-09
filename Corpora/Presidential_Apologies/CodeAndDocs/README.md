@@ -55,9 +55,10 @@ This repository contains code and data for processing and structuring translatio
    python main.py
    ```
 
-***Output***
+   **Output**
 
-The processed XML files will be saved in the `Final_XML` directory.
+   The processed XML files will be saved in the `XML` directory.
+
 
 2. **Clean XML and standardize punctuation**
 
@@ -65,14 +66,14 @@ The processed XML files will be saved in the `Final_XML` directory.
    python path/to/FormosanBankRepo/QC/cleaning/clean_xml.py --corpora_path path/to/Apologies/Final_XML
    ```
 
-**Outputs**
+   **Outputs**
    - This will update the XML files.
 
-**Notes**
-   - This removes empty XML elements
-   - It also standardizes orthography (more-or-less), though a lot of this was done in previous steps (not documented above)
-   - Unicode is flattened so that diacritics are merged with the characters they modify
-   - HTML escape codes are replaced with the corresponding characters
+   **Notes**
+      - This removes empty XML elements
+      - It also standardizes orthography (more-or-less), though a lot of this was done in previous steps (not documented above)
+      - Unicode is flattened so that diacritics are merged with the characters they modify
+      - HTML escape codes are replaced with the corresponding characters
 
 3. **Standardize XML**
 
@@ -80,11 +81,11 @@ The processed XML files will be saved in the `Final_XML` directory.
    python path/to/FormosanBankRepo/QC/utilities/add_original.py --corpora_path path/to/FormosanWikipedias/Final_XML
    ```
 
-**Outputs**
-   - Updates XML files
+   **Outputs**
+      - Updates XML files
 
-**Notes**
-   - Adds kindOf="original" attribute to all <FORM> elements. (This should normally be done in an earlier step, but wasn't for this corpus.)
+   **Notes**
+      - Adds kindOf="original" attribute to all <FORM> elements. (This should normally be done in an earlier step, but wasn't for this corpus.)
 
 
 4. **Standardize orthography**
@@ -93,12 +94,12 @@ The processed XML files will be saved in the `Final_XML` directory.
    python path/to/FormosanBankRepo/QC/utilities/standardize.py --corpora_path path/to/FormosanWikipedias/Final_XML
    ```
 
-**Outputs**
-   - Updates XML files
+   **Outputs**
+      - Updates XML files
 
-**Notes**
-   - Creates a copy of every <FORM> element with kindOf="standard" attribute
-   - All u's are converted to o's.
+   **Notes**
+      - Creates a copy of every <FORM> element with kindOf="standard" attribute
+      - All u's are converted to o's.
 
 ## Code Breakdown
 
