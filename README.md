@@ -290,6 +290,7 @@ pip install -r requirements.txt
      - `--corpus`: Specifies the corpus directory containing XML files (e.g., `./Corpora/ePark`). Can be set to `All` if all corpora of the specified language desired to be used.
      - `--corpora_path` Path to the directory containing all the corpora. (required only when `--corpus` is set to `All`)
      - `--kindOf` Specify if you want to look at a particular type of FORM (e.g., `original` or `standard`).
+     - `--by_dialect` If any value is given, will extract orthography separately for each dialect (as specified in the `dialect` attribute of the XML file.)
 
    - **Examples**:
      - Analyze the Amis language in the `ePark` corpus:

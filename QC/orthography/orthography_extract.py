@@ -22,10 +22,10 @@ plt.rcParams['font.sans-serif'] = ['Arial Unicode MS']
 # Set the font properties globally
 #plt.rcParams['font.family'] = 'Noto Sans'
 
-
-
-def generate_corpus(language_to_process, to_check_path, kindOf):
-    corpus = ""
+def generate_corpus(language_to_process, to_check_path, kindOf, by_dialect=False):
+    corpus = {}
+    if not by_dialect:
+        corpus["corpus"] = ""
     if not os.path.exists(to_check_path):
         raise ValueError(f"corpus {to_check_path} doesn't exist")
     for root, dirs, files in os.walk(to_check_path):
@@ -34,6 +34,8 @@ def generate_corpus(language_to_process, to_check_path, kindOf):
                 tree = ET.parse(os.path.join(root, file))
                 root_to_read = tree.getroot()
                 
+                text = ""        
+
                 # Iterate over all <S> elements
                 for s in root_to_read.findall('.//S'):
                     # Find the <FORM> element within the <S> element
@@ -41,13 +43,28 @@ def generate_corpus(language_to_process, to_check_path, kindOf):
                         form = s.find(f"FORM[@kindOf='{kindOf}']")
                         if form is not None:
                             if form.text:
-                                corpus += " " + form.text
+                                text += " " + form.text
                     else:
                         #if the kindOf attribute is not specified, add the form text to the corpus
                         forms = s.findall('FORM')
                         for form in forms:
                             if form.text:
-                                corpus += " " + form.text
+                                text += " " + form.text
+
+                # Now store
+                if by_dialect:                
+                    if not 'dialect' in root_to_read.attrib:
+                        print(f"WARNING: No dialect found in the corpus for {file}")  
+                        current_dialect = "corpus"
+                    else:
+                        current_dialect = root_to_read.attrib['dialect']
+                    if current_dialect in corpus.keys():
+                        corpus[current_dialect] += text
+                    else:
+                        corpus[current_dialect] = text
+                else:
+                    corpus["corpus"] += text
+
     return corpus
 
 def remove_chinese_characters(text):
@@ -395,7 +412,6 @@ def visualize(o_info, output_folder):
     plt.close()
 
 def main(args, langs):
-    curr_dir = os.path.dirname(os.path.abspath(__file__))
     logs_dir = os.path.join(args.corpora_path, "extract_logs")
     os.makedirs(logs_dir, exist_ok=True)
 
@@ -406,20 +422,22 @@ def main(args, langs):
 
     for language in languages_to_process:
         corpus = None
-        output_folder = os.path.join(logs_dir, language)
 
-        corpus = generate_corpus(language, args.corpora_path, args.kindOf)
-        if corpus:
-            os.makedirs(output_folder, exist_ok=True) #only make the folder if the corpus is not empty
-            o_info = extract_orthographic_info(corpus)
-
-            with open(os.path.join(output_folder, "orthographic_info"), 'wb') as fp:
-                pickle.dump(o_info, fp)
-
-            visualize(o_info, output_folder)
-            print(f"Successfully extracted orthographic information for {language} using {args.corpora_path}")
-        else:
-            print(f"Warning: Unable to extract the orthographic information for {language}. generate_corpus function didn't return any corpus")
+        corpus = generate_corpus(language, args.corpora_path, args.kindOf, args.by_dialect)
+        for corp in corpus.keys():
+            if corpus[corp]:
+                o_info = extract_orthographic_info(corpus[corp])
+                if args.by_dialect:
+                    output_folder = os.path.join(logs_dir, corp, language)
+                else:
+                    output_folder = os.path.join(logs_dir, language)
+                os.makedirs(output_folder, exist_ok=True) #make the folder if needed. Doesn't overwrite.
+                with open(os.path.join(output_folder, "orthographic_info"), 'wb') as fp:
+                    pickle.dump(o_info, fp)
+                visualize(o_info, output_folder)
+                print(f"Successfully extracted orthographic information for {corp} from {language} using {args.corpora_path}")
+            else:
+                print(f"Warning: Unable to extract the orthographic information for {corp} from {language}. generate_corpus function didn't return any corpus")
     
 if __name__ == "__main__":
 
@@ -432,6 +450,7 @@ if __name__ == "__main__":
     parser.add_argument('--corpus', help='Set to "all" to process all corpora in the corpora_path. Otherwise, provide name of corpus.')
     parser.add_argument('--language', help='Language code')
     parser.add_argument('--kindOf', help='which XML tier to consider. Defaults to all, which is a problem if there is both an original and standard tier.')
+    parser.add_argument('--by_dialect', help='If set to True, will process corpora by dialect')
     args = parser.parse_args()
 
     # Validate required arguments
@@ -440,6 +459,7 @@ if __name__ == "__main__":
     if not os.path.exists(os.path.join(args.corpora_path)):
         parser.error(f"The entered path, {args.corpora_path}, doesn't exist")
     if args.language != "All" and not args.language in langs:
-        print(args.language)
         parser.error(f"Enter a valid Formosan language from the list: {langs}")
+    if not args.by_dialect:
+        args.by_dialect = False
     main(args, langs)
