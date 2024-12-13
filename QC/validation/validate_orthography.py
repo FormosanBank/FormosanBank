@@ -179,7 +179,7 @@ def main(args, possiblelangs):
 
         bigram_euclidean_dist = euclidean(c1_bigram_vector, c2_bigram_vector)
         print(f"Euclidean Distance of bigram frequencies: {bigram_euclidean_dist:.2f}")
-        if bigram_euclidean_dist < .04:
+        if bigram_euclidean_dist > .04:
             print("WARNING: Even when different orthographies are being used, bigram Euclidean distance is usually <.04.")
 
         vis_diff(all_chars, c1_info['character_frequency'], c2_info['character_frequency'], args.o_info, lang)         
