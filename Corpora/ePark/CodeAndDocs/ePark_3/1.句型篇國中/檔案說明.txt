@@ -1,0 +1,10 @@
+class.xml各題型類別的表
+<typeId>是題型 對應音檔的資料夾
+<classId>是類別 對應xml
+<classNo>是排序 對應音檔
+
+xml/ 包含各類別的xml
+先以方言別分資料夾，再以classId為檔名
+
+sound/ 包含各題型的音檔
+先以方言別分資料夾，再以typeId分類資料夾，檔名會以classNo開頭 底線做分隔 接著order 如果有多句會再加上A~E

@@ -1,0 +1,35 @@
+klokah_PBC_sentence.csv
+autoId 為句子編號
+textId 為文本編號
+dialectId 為方言編號
+sentenceAb 為族語句子
+sentenceCh 為中文句子
+sentenceOrder 為句子排序
+
+klokah_picture_book.csv
+aid 為繪本編號
+title_ch 為繪本名稱
+
+textId.json
+此為標記文本是哪一繪本
+繪本只分成16語言
+key值為繪本編號，陣列中第一個值為阿美語繪本的文本編號，語言順序如下：
+
+阿美語
+泰雅語
+賽夏語
+邵語
+賽德克語
+布農語
+排灣語
+魯凱語
+太魯閣語
+噶瑪蘭語
+鄒語
+卑南語
+雅美語
+撒奇萊雅語
+卡那卡那富語
+拉阿魯哇語
+
+句子音檔位於 https://web.klokah.tw/text/sound/[文本編號]/[句子編號].mp3
