@@ -159,9 +159,9 @@ def extract_orthographic_info(text):
     # orthographic_info['numerals'] = numerals
     
     #word freq
-    translator = str.maketrans('', '', string.punctuation)
+    punctuation_without_apostrophe = string.punctuation.replace("'", "")
+    translator = str.maketrans('', '', punctuation_without_apostrophe)
     text_no_punct = text_nfc.translate(translator)
-    text_no_punct = re.sub(r'\p{P}+', '', text_no_punct)
     words = text_no_punct.split()
     word_freq = collections.Counter(words)
     orthographic_info['word_frequency'] = word_freq
