@@ -73,7 +73,7 @@ This repository contains code and data for processing and structuring Formosan l
 4. **Clean XML and standardize punctuation**
 
    ```bash
-   python path/to/FormosanBankRepo/QC/cleaning/clean_xml.py --corpora_path path/to/FormosanWikipedias/Final_XML
+   python path/to/FormosanBankRepo/QC/cleaning/clean_xml.py --corpora_path path/to/repo/Final_XML
    ```
 
 **Outputs**
@@ -88,7 +88,7 @@ This repository contains code and data for processing and structuring Formosan l
 5. **Standardize orthography**
 
    ```bash
-   python path/to/FormosanBankRepo/QC/utilities/add_original.py --corpora_path path/to/FormosanWikipedias/Final_XML
+   python path/to/FormosanBankRepo/QC/utilities/add_original.py --corpora_path path/to/repo/Final_XML
    ```
 
 **Outputs**
@@ -100,7 +100,7 @@ This repository contains code and data for processing and structuring Formosan l
 6. **Standardize orthography**
 
    ```bash
-   python path/to/FormosanBankRepo/QC/utilities/standardize.py --corpora_path path/to/FormosanWikipedias/Final_XML
+   python path/to/FormosanBankRepo/QC/utilities/standardize.py --corpora_path path/to/repo/Final_XML
    ```
 
 **Outputs**

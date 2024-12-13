@@ -78,7 +78,7 @@ This repository contains code and data for processing and structuring translatio
 3. **Standardize XML**
 
    ```bash
-   python path/to/FormosanBankRepo/QC/utilities/add_original.py --corpora_path path/to/FormosanWikipedias/XML
+   python path/to/FormosanBankRepo/QC/utilities/add_original.py --corpora_path path/to/repo/XML
    ```
 
    **Outputs**
@@ -91,7 +91,7 @@ This repository contains code and data for processing and structuring translatio
 4. **Standardize orthography**
 
    ```bash
-   python path/to/FormosanBankRepo/QC/utilities/standardize.py --corpora_path path/to/FormosanWikipedias/XML
+   python path/to/FormosanBankRepo/QC/utilities/standardize.py --corpora_path path/to/repo/XML
    ```
 
    **Outputs**

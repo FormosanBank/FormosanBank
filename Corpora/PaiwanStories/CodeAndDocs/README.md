@@ -10,11 +10,7 @@ This repository contains code and data for processing and structuring the Paiwan
 
 ## Installation
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/yourusername/ePark.git
-   cd ePark
-   ```
+1. Clone this repository
 
 2. Set up a virtual environment (optional but recommended):
    ```bash
@@ -36,7 +32,7 @@ The XMLs were created by hand from the PDF. No automatic processing.
 This isn't necessary because everything was already standardized. It is listed just to make it clear that we didn't forget to do it.
 
    ```bash
-   python path/to/FormosanBankRepo/QC/cleaning/clean_xml.py --corpora_path path/to/FormosanePark/Final_XML
+   python path/to/FormosanBankRepo/QC/cleaning/clean_xml.py --corpora_path path/to/repo/Final_XML
    ```
 
 **Outputs**
@@ -51,7 +47,7 @@ This isn't necessary because everything was already standardized. It is listed j
 2. **Standardize XML, Part 2**
 
    ```bash
-   python path/to/FormosanBankRepo/QC/utilities/add_original.py --corpora_path path/to/Formosan-ePark/Final_XML
+   python path/to/FormosanBankRepo/QC/utilities/add_original.py --corpora_path path/to/repo/Final_XML
    ```
 
 3. **Standardize orthography**
