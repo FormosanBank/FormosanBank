@@ -1,6 +1,6 @@
 # Formosan-VirginiaFey
 
-This repository contains code and data for processing and structuring the Paiwan Stories dataset into the [FormosanBank XML format](https://app.gitbook.com/o/tZF822XPLvjWkTiqbQyF/s/VETgkt5DVZWXBIolTyjW/the-bank-architecture/xml-standardize-format). The dataset includes various Formosan dialects and is organized to assist in linguistic research and language preservation.
+This repository contains code and data for processing and structuring the Virginia Fey's Amis Dictionary dataset into the [FormosanBank XML format](https://app.gitbook.com/o/tZF822XPLvjWkTiqbQyF/s/VETgkt5DVZWXBIolTyjW/the-bank-architecture/xml-standardize-format).
 
 ## Notes
 
@@ -88,7 +88,7 @@ Li, P. J. K., Joby, C., & Zeitoun, E. (2024). Word Lists and Dictionaries of For
 
 ## License
 
-According to [https://github.com/miaoski/amis-data](the github repo we sourced this from), permission for a CC-BY-NC license was provided by the Taipei Bible Society:
+According to [https://github.com/miaoski/amis-data](https://github.com/miaoski/amis-data)(the github repo we sourced this from), permission for a CC-BY-NC license was provided by the Taipei Bible Society:
 
 >謹感謝 台灣聖經公會 授權電子化。商業使用之授權，請洽[台灣聖經公會]。
 
