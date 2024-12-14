@@ -5,7 +5,6 @@ This repository contains code and data for processing and structuring the Paiwan
 ## Project Structure
 
 - **Final_XML**: Directory containing the processed data structured into FormosanBank XML format.
-- **Original**: Original files received by source.
 - **requirements.txt**: Lists the Python libraries required to run the processing scripts.
 
 ## Installation
