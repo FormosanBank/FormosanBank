@@ -4,6 +4,7 @@ import argparse
 
 # Determine the language of the file based on the path
 def get_lang(path, langs):
+    print(path)
     for lang in langs:
         if lang in path:
             return lang
@@ -32,7 +33,7 @@ def count_source(path, tokens_by_lang, langs):
     source_total = 0
     for root, dirs, files in os.walk(path):
         for file in files:
-            if file.endswith(".xml"):
+            if file.endswith(".xml") and 'XML' in os.path.join(root, file):
                 lang = get_lang(os.path.join(root, file), langs)
                 tokens_in_file = read_file(os.path.join(root, file))
                 tokens_by_lang[lang] += tokens_in_file
@@ -50,6 +51,8 @@ def get_counts(corpora_path):
     tokens_by_source = dict()
     for source in os.listdir(corpora_path):
         if source.startswith('.'):
+            continue
+        if source  == 'Siraya_Gospels':
             continue
         tokens_by_source[source] = 0
         print(f"\n=====counting in {source}======")
