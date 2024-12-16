@@ -1,67 +1,83 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TEXT id="Li-May_PwnNira_02SN111-3" xml:lang="pwn" source="Li-May Paiwan Data, Participant Nira, file 02SN111-3" audio="02SN111-3 Nira.wav" copyright="CC-BY" citation="Le Ferrand, É., Prud'hommeaux, E., Hartshorne, J. K., &amp; Sung, L.-M. (2024). NTU Paiwan ASR Corpus. Electronic Resource." BibTeX_citation="@electronic{leferrand2024ntu, author = {Le Ferrand, {'E}ric and Prud'hommeaux, Emily and Hartshorne, Joshua K. and Sung, Li-May}, year = {2024}, title = {{NTU} {Paiwan} {ASR} Corpus},type = {Electronic Resource}}">
+<TEXT id="NTU_Pwn_Nira_02SN111-3 Nira" xml:lang="pwn" source="NTU Paiwan Data, Participant Nira, file 02SN111-3 Nira" audio="02SN111-3 Nira.wav" copyright="CC-BY" citation="Le Ferrand, É., Prud'hommeaux, E., Hartshorne, J. K., &amp; Sung, L.-M. (2024). NTU Paiwan ASR Corpus. Electronic Resource." BibTeX_citation="@electronic{leferrand2024ntu, author = {Le Ferrand, {'E}ric and Prud'hommeaux, Emily and Hartshorne, Joshua K. and Sung, Li-May}, year = {2024}, title = {{NTU} {Paiwan} {ASR} Corpus},type = {Electronic Resource}}" dialect="Northern">
     <S id="a1">
-        <FORM>aicu a kinive’acan nua sepaiwan a tjawcikel liav aravac, a tjaljamalangdan izua a nakive’ac a kemasi ta ’au kata nakive’ac a kemasi ta ’aciljay aya,</FORM>
+        <FORM kindOf="original">aicu a kinive'acan nua sepaiwan a tjawcikel liav aravac, a tjaljamalangdan izua a nakive'ac a kemasi ta 'au kata nakive'ac a kemasi ta 'aciljay aya,</FORM>
+        <FORM kindOf="standard">aico a kinive'acan noa sepaiwan a tjawcikel liav aravac, a tjaljamalangdan izoa a nakive'ac a kemasi ta 'ao kata nakive'ac a kemasi ta 'aciljay aya,</FORM>
         <AUDIO start="15.529" end="31.852" />
     </S>
     <S id="a3">
-        <FORM>izua sini’ecilu na ’adav kata sini’ecilu na ’atjuvi aya, izua cemas a na’emati aya, maretimaljimalji aicu a tawcikel a pakatua kinive’acan na sepaiwan zuku.</FORM>
+        <FORM kindOf="original">izua sini'ecilu na 'adav kata sini'ecilu na 'atjuvi aya, izua cemas a na'emati aya, maretimaljimalji aicu a tawcikel a pakatua kinive'acan na sepaiwan zuku.</FORM>
+        <FORM kindOf="standard">izoa sini'ecilo na 'adav kata sini'ecilo na 'atjovi aya, izoa cemas a na'emati aya, maretimaljimalji aico a tawcikel a pakatoa kinive'acan na sepaiwan zoko.</FORM>
         <AUDIO start="32.499" end="51.205" />
     </S>
     <S id="a5">
-        <FORM>aza nakive’ac a kemasi ta ’au kata ’acilja aya tjawcikel, namayatucu, kasicuayan izua aza macidilj a cemas</FORM>
+        <FORM kindOf="original">aza nakive'ac a kemasi ta 'au kata 'acilja aya tjawcikel, namayatucu, kasicuayan izua aza macidilj a cemas</FORM>
+        <FORM kindOf="standard">aza nakive'ac a kemasi ta 'ao kata 'acilja aya tjawcikel, namayatoco, kasicoayan izoa aza macidilj a cemas</FORM>
         <AUDIO start="52.411" end="65.558" />
     </S>
     <S id="a6">
-        <FORM>natemalem tu ita ta ’au itjaivavav ta kudrakudral a ’aciljay,</FORM>
+        <FORM kindOf="original">natemalem tu ita ta 'au itjaivavav ta kudrakudral a 'aciljay,</FORM>
+        <FORM kindOf="standard">natemalem to ita ta 'ao itjaivavav ta kodrakodral a 'aciljay,</FORM>
         <AUDIO start="81.588" end="89.411" />
     </S>
     <S id="a7">
-        <FORM>’aw aza ’au namezangal aravac, manu izua ka ita ’adav ’emudjalj a palje’aca saka zemuzung uta, ka zemung tazua, mapecerak aza ’au,</FORM>
+        <FORM kindOf="original">'aw aza 'au namezangal aravac, manu izua ka ita 'adav 'emudjalj a palje'aca saka zemuzung uta, ka zemung tazua, mapecerak aza 'au,</FORM>
+        <FORM kindOf="standard">'aw aza 'ao namezangal aravac, mano izoa ka ita 'adav 'emodjalj a palje'aca saka zemozong ota, ka zemong tazoa, mapecerak aza 'ao,</FORM>
         <AUDIO start="89.500" end="108.882" />
     </S>
     <S id="a10">
-        <FORM>manu izua aza vavayan a tevuta kemasi tjaladj ta ’au aya. izua uta izua uta ka ita ’adav, namaya a ’emudja’udjalj sa zemuzung, tucu mavan aza kudrakudral a ’aciljay a namapecerak, </FORM>
+        <FORM kindOf="original">manu izua aza vavayan a tevuta kemasi tjaladj ta 'au aya. izua uta izua uta ka ita 'adav, namaya a 'emudja'udjalj sa zemuzung, tucu mavan aza kudrakudral a 'aciljay a namapecerak,</FORM>
+        <FORM kindOf="standard">mano izoa aza vavayan a tevota kemasi tjaladj ta 'ao aya. izoa ota izoa ota ka ita 'adav, namaya a 'emodja'odjalj sa zemozong, toco mavan aza kodrakodral a 'aciljay a namapecerak,</FORM>
         <AUDIO start="109.265" end="132.382" />
     </S>
     <S id="a12">
-        <FORM>sa tevuta kemasitjaladj ta ’aciljay aza ita kudrakudral a ’atjuvi, kapacunan na vavayan aza ’atjuvi, pakirimu sa tamu’ulji a pasatjaladj ta tjialj nimadju,</FORM>
+        <FORM kindOf="original">sa tevuta kemasitjaladj ta 'aciljay aza ita kudrakudral a 'atjuvi, kapacunan na vavayan aza 'atjuvi, pakirimu sa tamu'ulji a pasatjaladj ta tjialj nimadju,</FORM>
+        <FORM kindOf="standard">sa tevota kemasitjaladj ta 'aciljay aza ita kodrakodral a 'atjovi, kapaconan na vavayan aza 'atjovi, pakirimo sa tamo'olji a pasatjaladj ta tjialj nimadjo,</FORM>
         <AUDIO start="132.647" end="147.735" />
     </S>
     <S id="a13">
-        <FORM>ini ka cuay pualjak ta ’aida a macidilj a u’aljay a macidilj a vavayan, tiamadju mavan a sevalitan na sepaiwan zuku aya.</FORM>
+        <FORM kindOf="original">ini ka cuay pualjak ta 'aida a macidilj a u'aljay a macidilj a vavayan, tiamadju mavan a sevalitan na sepaiwan zuku aya.</FORM>
+        <FORM kindOf="standard">ini ka coay poaljak ta 'aida a macidilj a o'aljay a macidilj a vavayan, tiamadjo mavan a sevalitan na sepaiwan zoko aya.</FORM>
         <AUDIO start="148.676" end="162.088" />
     </S>
     <S id="a14">
-        <FORM>izua masanitalj a pakatua nakive’ac a kemasi ta ’au aya tjawcikel namayatucu, kasicuacuayan a i kavulungan, liav a ’au aya.</FORM>
+        <FORM kindOf="original">izua masanitalj a pakatua nakive'ac a kemasi ta 'au aya tjawcikel namayatucu, kasicuacuayan a i kavulungan, liav a 'au aya.</FORM>
+        <FORM kindOf="standard">izoa masanitalj a pakatoa nakive'ac a kemasi ta 'ao aya tjawcikel namayatoco, kasicoacoayan a i kavolongan, liav a 'ao aya.</FORM>
         <AUDIO start="163.146" end="180.440" />
     </S>
     <S id="a18">
-        <FORM>izua ka ita ’adav, aza ita ’au tu ki kemuda, mapecerak a kisumadju, manu liav a kakedrikedrian a ’atjuvi i tjaladj, aicu a kakedrikedrian a ’atjuvi ka mekudralanga merecawcau, pai aicu mavan a sevalitan na sepaiwan zuku aya a tjawcikel.</FORM>
+        <FORM kindOf="original">izua ka ita 'adav, aza ita 'au tu ki kemuda, mapecerak a kisumadju, manu liav a kakedrikedrian a 'atjuvi i tjaladj, aicu a kakedrikedrian a 'atjuvi ka mekudralanga merecawcau, pai aicu mavan a sevalitan na sepaiwan zuku aya a tjawcikel.</FORM>
+        <FORM kindOf="standard">izoa ka ita 'adav, aza ita 'ao to ki kemoda, mapecerak a kisomadjo, mano liav a kakedrikedrian a 'atjovi i tjaladj, aico a kakedrikedrian a 'atjovi ka mekodralanga merecawcao, pai aico mavan a sevalitan na sepaiwan zoko aya a tjawcikel.</FORM>
         <AUDIO start="181.000" end="208.088" />
     </S>
     <S id="a20">
-        <FORM>aza sini’ecilu na ’adav aya tawcikel, namayatucu, kasicuayan aza ’adav a cemas namangetjez i kacauan, sa ’emecilu tu drusa, vuravuravan a ita liljualjuas a ita, sa ’ivu ta kamavanan a ljemakev taza drusa ’ecilu,</FORM>
+        <FORM kindOf="original">aza sini'ecilu na 'adav aya tawcikel, namayatucu, kasicuayan aza 'adav a cemas namangetjez i kacauan, sa 'emecilu tu drusa, vuravuravan a ita liljualjuas a ita, sa 'ivu ta kamavanan a ljemakev taza drusa 'ecilu,</FORM>
+        <FORM kindOf="standard">aza sini'ecilo na 'adav aya tawcikel, namayatoco, kasicoayan aza 'adav a cemas namangetjez i kacaoan, sa 'emecilo to drosa, voravoravan a ita liljoaljoas a ita, sa 'ivo ta kamavanan a ljemakev taza drosa 'ecilo,</FORM>
         <AUDIO start="209.588" end="235.911" />
     </S>
     <S id="a21">
-        <FORM>manu aza vuravuravan a ’ecilu venuak ta macidilj a u’aljay, aza liljualjuas a ’ecilu venuak ta macidilj a vavayan, aicu a u’aljay kata vavayan mavan a sevalitan na sepaiwan zuku aya.</FORM>
+        <FORM kindOf="original">manu aza vuravuravan a 'ecilu venuak ta macidilj a u'aljay, aza liljualjuas a 'ecilu venuak ta macidilj a vavayan, aicu a u'aljay kata vavayan mavan a sevalitan na sepaiwan zuku aya.</FORM>
+        <FORM kindOf="standard">mano aza voravoravan a 'ecilo venoak ta macidilj a o'aljay, aza liljoaljoas a 'ecilo venoak ta macidilj a vavayan, aico a o'aljay kata vavayan mavan a sevalitan na sepaiwan zoko aya.</FORM>
         <AUDIO start="236.117" end="256.941" />
     </S>
     <S id="a22">
-        <FORM>izua masanitaljanga tawcikel a pakatua sini’ecilu na ’adav aya namayatucu, ka limakuzulj a cavilj kasicuayan, na’emcilu tu sepatj a ’adav aya,</FORM>
+        <FORM kindOf="original">izua masanitaljanga tawcikel a pakatua sini'ecilu na 'adav aya namayatucu, ka limakuzulj a cavilj kasicuayan, na'emcilu tu sepatj a 'adav aya,</FORM>
+        <FORM kindOf="standard">izoa masanitaljanga tawcikel a pakatoa sini'ecilo na 'adav aya namayatoco, ka limakozolj a cavilj kasicoayan, na'emcilo to sepatj a 'adav aya,</FORM>
         <AUDIO start="258.176" end="274.323" />
     </S>
     <S id="a25">
-        <FORM>aza drusa ’ecilu vinuak na ita kudrakudral a liljaljuas a ’atjuvi sa tevuta za vavayan kata u’aljay a madrusa,</FORM>
+        <FORM kindOf="original">aza drusa 'ecilu vinuak na ita kudrakudral a liljaljuas a 'atjuvi sa tevuta za vavayan kata u'aljay a madrusa,</FORM>
+        <FORM kindOf="standard">aza drosa 'ecilo vinoak na ita kodrakodral a liljaljoas a 'atjovi sa tevota za vavayan kata o'aljay a madrosa,</FORM>
         <AUDIO start="274.882" end="288.294" />
     </S>
     <S id="a27">
-        <FORM>aicu mavan a sevalitan na tjalja ljaljaljak aya, aza drusa ’ecilu vinuak na kamavanan, sa tevuta za macidilj a vavayan kata macidilj a u’aljay, azua mavan a sevalitan na mamazangiljan aya.</FORM>
+        <FORM kindOf="original">aicu mavan a sevalitan na tjalja ljaljaljak aya, aza drusa 'ecilu vinuak na kamavanan, sa tevuta za macidilj a vavayan kata macidilj a u'aljay, azua mavan a sevalitan na mamazangiljan aya.</FORM>
+        <FORM kindOf="standard">aico mavan a sevalitan na tjalja ljaljaljak aya, aza drosa 'ecilo vinoak na kamavanan, sa tevota za macidilj a vavayan kata macidilj a o'aljay, azoa mavan a sevalitan na mamazangiljan aya.</FORM>
         <AUDIO start="288.353" end="310.823" />
     </S>
     <S id="a30">
-        <FORM>aicu a pakatua kinive’acan na sepaiwan a tjawcikel maretimaljimalji, ’aw tjaljaliavan a pakatua sini’ecilu na ’adav kata sini’ecilu na ’atjuvi, ’aw tjaljaliavan a pakatua sini’ecilu na ’adav kata sini’ecilu na ’atjuvi aya tjawcikel.</FORM>
+        <FORM kindOf="original">aicu a pakatua kinive'acan na sepaiwan a tjawcikel maretimaljimalji, 'aw tjaljaliavan a pakatua sini'ecilu na 'adav kata sini'ecilu na 'atjuvi, 'aw tjaljaliavan a pakatua sini'ecilu na 'adav kata sini'ecilu na 'atjuvi aya tjawcikel.</FORM>
+        <FORM kindOf="standard">aico a pakatoa kinive'acan na sepaiwan a tjawcikel maretimaljimalji, 'aw tjaljaliavan a pakatoa sini'ecilo na 'adav kata sini'ecilo na 'atjovi, 'aw tjaljaliavan a pakatoa sini'ecilo na 'adav kata sini'ecilo na 'atjovi aya tjawcikel.</FORM>
         <AUDIO start="312.088" end="337.735" />
     </S>
 </TEXT>

@@ -1,67 +1,83 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TEXT id="Li-May_PwnZendar_02JN105-2" xml:lang="pwn" source="Li-May Paiwan Data, Participant Zendar, file 02JN105-2" audio="02JN105-2 Zendar.wav" copyright="CC-BY" citation="Le Ferrand, É., Prud'hommeaux, E., Hartshorne, J. K., &amp; Sung, L.-M. (2024). NTU Paiwan ASR Corpus. Electronic Resource." BibTeX_citation="@electronic{leferrand2024ntu, author = {Le Ferrand, {'E}ric and Prud'hommeaux, Emily and Hartshorne, Joshua K. and Sung, Li-May}, year = {2024}, title = {{NTU} {Paiwan} {ASR} Corpus},type = {Electronic Resource}}">
+<TEXT id="NTU_Pwn_Zendar_02JN105-2 Zendar" xml:lang="pwn" source="NTU Paiwan Data, Participant Zendar, file 02JN105-2 Zendar" audio="02JN105-2 Zendar.wav" copyright="CC-BY" citation="Le Ferrand, É., Prud'hommeaux, E., Hartshorne, J. K., &amp; Sung, L.-M. (2024). NTU Paiwan ASR Corpus. Electronic Resource." BibTeX_citation="@electronic{leferrand2024ntu, author = {Le Ferrand, {'E}ric and Prud'hommeaux, Emily and Hartshorne, Joshua K. and Sung, Li-May}, year = {2024}, title = {{NTU} {Paiwan} {ASR} Corpus},type = {Electronic Resource}}" dialect="Northern">
     <S id="a1">
-        <FORM>“tisun a na’emati, pay! ulja su’inati a kualjak a u’aljay tu nacalje’il a sikudan a patje kemeljang tua lumeljakan a sikudan nimadju, </FORM>
+        <FORM kindOf="original">"tisun a na'emati, pay! ulja su'inati a kualjak a u'aljay tu nacalje'il a sikudan a patje kemeljang tua lumeljakan a sikudan nimadju,</FORM>
+        <FORM kindOf="standard">"tison a na'emati, pay! olja so'inati a koaljak a o'aljay to nacalje'il a sikodan a patje kemeljang toa lomeljakan a sikodan nimadjo,</FORM>
         <AUDIO start="2.205" end="17.588" />
     </S>
     <S id="a2">
-        <FORM>ulja narakac a kicevungan tua rekutjan, nu nakipa’ulid sa seljekuya kinipusengesengan, tjara ika uri masuram, nu namalaing namasusu a sinikarakudan, ulja kamayan a naki a nakinangua’ a nakitatekuan.”</FORM>
+        <FORM kindOf="original">ulja narakac a kicevungan tua rekutjan, nu nakipa'ulid sa seljekuya kinipusengesengan, tjara ika uri masuram, nu namalaing namasusu a sinikarakudan, ulja kamayan a naki a nakinangua' a nakitatekuan."</FORM>
+        <FORM kindOf="standard">olja narakac a kicevongan toa rekotjan, no nakipa'olid sa seljekoya kiniposengesengan, tjara ika ori masoram, no namalaing namasoso a sinikarakodan, olja kamayan a naki a nakinangoa' a nakitatekoan."</FORM>
         <AUDIO start="17.676" end="47.529" />
     </S>
     <S id="a3">
-        <FORM>ki’aungaken tjanusun, ulja sutjiniak a cemiur timadju tu ini ka kika kikavulj tua nasa nasala naseljengua’ tu nasace’alj.</FORM>
+        <FORM kindOf="original">ki'aungaken tjanusun, ulja sutjiniak a cemiur timadju tu ini ka kika kikavulj tua nasa nasala naseljengua' tu nasace'alj.</FORM>
+        <FORM kindOf="standard">ki'aongaken tjanoson, olja sotjiniak a cemior timadjo to ini ka kika kikavolj toa nasa nasala naseljengoa' to nasace'alj.</FORM>
         <AUDIO start="48.176" end="67.382" />
     </S>
     <S id="a4">
-        <FORM>nu tjacepeliven a kinemenem, nu uri secevung tua naseme semadjelung, napenazangal a paljavakan, ulja kica’uan a migacalj nu kicacevung nu kicevungan tua maru raljiz a selapayan,</FORM>
+        <FORM kindOf="original">nu tjacepeliven a kinemenem, nu uri secevung tua naseme semadjelung, napenazangal a paljavakan, ulja kica'uan a migacalj nu kicacevung nu kicevungan tua maru raljiz a selapayan,</FORM>
+        <FORM kindOf="standard">no tjacepeliven a kinemenem, no ori secevong toa naseme semadjelong, napenazangal a paljavakan, olja kica'oan a migacalj no kicacevong no kicevongan toa maro raljiz a selapayan,</FORM>
         <AUDIO start="67.382" end="89.970" />
     </S>
     <S id="a5">
-        <FORM>ulja sa ulja izua salimsim katua kipavala tua tiamadju a namai namitemezengan a ki'adi ki’adi’adilj tua selapayan a cawcau.</FORM>
+        <FORM kindOf="original">ulja sa ulja izua salimsim katua kipavala tua tiamadju a namai namitemezengan a ki'adi ki'adi'adilj tua selapayan a cawcau.</FORM>
+        <FORM kindOf="standard">olja sa olja izoa salimsim katoa kipavala toa tiamadjo a namai namitemezengan a ki'adi ki'adi'adilj toa selapayan a cawcao.</FORM>
         <AUDIO start="90.029" end="109.117" />
     </S>
     <S id="a6">
-        <FORM>pay! ’atiyu a kualjak a u’aljay, tu namasenav a vinarungan, na maljiacadja sa tjemalji’aca a kininemeneman,</FORM>
+        <FORM kindOf="original">pay! 'atiyu a kualjak a u'aljay, tu namasenav a vinarungan, na maljiacadja sa tjemalji'aca a kininemeneman,</FORM>
+        <FORM kindOf="standard">pay! 'atiyo a koaljak a o'aljay, to namasenav a vinarongan, na maljiacadja sa tjemalji'aca a kininemeneman,</FORM>
         <AUDIO start="109.206" end="127.588" />
     </S>
     <S id="a7">
-        <FORM>sa nu uri semekaulj ta ’ali’ali, ulja napakasangas a kemeljang tu kemuda a nangua’ a sivaikan nimadju a menacidjiljan; sa inika angata a dremaudrav tua pinacalivalivat a pinasalivan, </FORM>
+        <FORM kindOf="original">sa nu uri semekaulj ta 'ali'ali, ulja napakasangas a kemeljang tu kemuda a nangua' a sivaikan nimadju a menacidjiljan; sa inika angata a dremaudrav tua pinacalivalivat a pinasalivan,</FORM>
+        <FORM kindOf="standard">sa no ori semekaolj ta 'ali'ali, olja napakasangas a kemeljang to kemoda a nangoa' a sivaikan nimadjo a menacidjiljan; sa inika angata a dremaodrav toa pinacalivalivat a pinasalivan,</FORM>
         <AUDIO start="127.705" end="149.352" />
     </S>
     <S id="a8">
-        <FORM>ulja namakaya auta a tjemi tjemi tjemilji’aca sa lema sa lemadru’an tua djalan nutiav nusikatjelu nimadju.</FORM>
+        <FORM kindOf="original">ulja namakaya auta a tjemi tjemi tjemilji'aca sa lema sa lemadru'an tua djalan nutiav nusikatjelu nimadju.</FORM>
+        <FORM kindOf="standard">olja namakaya aota a tjemi tjemi tjemilji'aca sa lema sa lemadro'an toa djalan notiav nosikatjelo nimadjo.</FORM>
         <AUDIO start="149.617" end="165.941" />
     </S>
     <S id="a9">
-        <FORM>nu napasusu a kini’aung a penuljat nimadju, uri kikavuljananaken, tu pavayan ta ca’uan a ljemikayan,</FORM>
+        <FORM kindOf="original">nu napasusu a kini'aung a penuljat nimadju, uri kikavuljananaken, tu pavayan ta ca'uan a ljemikayan,</FORM>
+        <FORM kindOf="standard">no napasoso a kini'aong a penoljat nimadjo, ori kikavoljananaken, to pavayan ta ca'oan a ljemikayan,</FORM>
         <AUDIO start="166.058" end="180.147" />
     </S>
     <S id="a10">
-        <FORM>ulja makarekaya a kitjumaljiyan sa nazemangal a sikipua sikipakakudan, sa ika napalangtjav a ki’aung tjaymadju a macidjilj.</FORM>
+        <FORM kindOf="original">ulja makarekaya a kitjumaljiyan sa nazemangal a sikipua sikipakakudan, sa ika napalangtjav a ki'aung tjaymadju a macidjilj.</FORM>
+        <FORM kindOf="standard">olja makarekaya a kitjomaljiyan sa nazemangal a sikipoa sikipakakodan, sa ika napalangtjav a ki'aong tjaymadjo a macidjilj.</FORM>
         <AUDIO start="180.205" end="195.676" />
     </S>
     <S id="a11">
-        <FORM>pay lja! ulja supagaugavan ta tjaiteku kitatekuan, ulja napa’enetj a palalau, a pita ka’ulidan nua puvaruvarung i tua sikarakudan,</FORM>
+        <FORM kindOf="original">pay lja! ulja supagaugavan ta tjaiteku kitatekuan, ulja napa'enetj a palalau, a pita ka'ulidan nua puvaruvarung i tua sikarakudan,</FORM>
+        <FORM kindOf="standard">pay lja! olja sopagaogavan ta tjaiteko kitatekoan, olja napa'enetj a palalao, a pita ka'olidan noa povarovarong i toa sikarakodan,</FORM>
         <AUDIO start="196.293" end="214.617" />
     </S>
     <S id="a12">
-        <FORM>a pitua ka’ulidan a ca’uan i tua namacelak a kinemeneman, a pitua ka’ulidan a pupicul i tua su sulapeljan a vinarungan. </FORM>
+        <FORM kindOf="original">a pitua ka'ulidan a ca'uan i tua namacelak a kinemeneman, a pitua ka'ulidan a pupicul i tua su sulapeljan a vinarungan.</FORM>
+        <FORM kindOf="standard">a pitoa ka'olidan a ca'oan i toa namacelak a kinemeneman, a pitoa ka'olidan a popicol i toa so solapeljan a vinarongan.</FORM>
         <AUDIO start="214.706" end="231.059" />
     </S>
     <S id="a13">
-        <FORM>nu maitazuanga, tiaken a namasan kama, temu temuluangaken a pagalju a ’ivu tu “mapu’ata a kunika a kukinaikacauwanan.”  </FORM>
+        <FORM kindOf="original">nu maitazuanga, tiaken a namasan kama, temu temuluangaken a pagalju a 'ivu tu "mapu'ata a kunika a kukinaikacauwanan."</FORM>
+        <FORM kindOf="standard">no maitazoanga, tiaken a namasan kama, temo temoloangaken a pagaljo a 'ivo to "mapo'ata a konika a kokinaikacaowanan."</FORM>
         <AUDIO start="231.059" end="248.117" />
     </S>
     <S id="a14">
-        <FORM>nu tjasupuin a gemalju satje kinemenem kinemenemi a pivarung, aicu a sinan vecik ta aljak, makeljang aravac a kiljivak katua puzangalan tua aljak a u’aljay. </FORM>
+        <FORM kindOf="original">nu tjasupuin a gemalju satje kinemenem kinemenemi a pivarung, aicu a sinan vecik ta aljak, makeljang aravac a kiljivak katua puzangalan tua aljak a u'aljay.</FORM>
+        <FORM kindOf="standard">no tjasopoin a gemaljo satje kinemenem kinemenemi a pivarong, aico a sinan vecik ta aljak, makeljang aravac a kiljivak katoa pozangalan toa aljak a o'aljay.</FORM>
         <AUDIO start="248.205" end="266.794" />
     </S>
     <S id="a15">
-        <FORM>sa timadju a tjaljavavavan a kinisan sivitayan a namaligu i kacauan, lima vitju’an a na galiljegilj i ta ’avan, ’aw siki’eljing ta cem cemas a aljak a papupicul a papuvarung. </FORM>
+        <FORM kindOf="original">sa timadju a tjaljavavavan a kinisan sivitayan a namaligu i kacauan, lima vitju'an a na galiljegilj i ta 'avan, 'aw siki'eljing ta cem cemas a aljak a papupicul a papuvarung.</FORM>
+        <FORM kindOf="standard">sa timadjo a tjaljavavavan a kinisan sivitayan a namaligo i kacaoan, lima vitjo'an a na galiljegilj i ta 'avan, 'aw siki'eljing ta cem cemas a aljak a papopicol a papovarong.</FORM>
         <AUDIO start="266.941" end="288.588" />
     </S>
     <S id="a16">
-        <FORM>ulja tjapacuali a kiljivak ta tjaljak, palemek a tjakisamulja sa tjanangua’ a tjaljak a mapuljat.</FORM>
+        <FORM kindOf="original">ulja tjapacuali a kiljivak ta tjaljak, palemek a tjakisamulja sa tjanangua' a tjaljak a mapuljat.</FORM>
+        <FORM kindOf="standard">olja tjapacoali a kiljivak ta tjaljak, palemek a tjakisamolja sa tjanangoa' a tjaljak a mapoljat.</FORM>
         <AUDIO start="288.764" end="301.323" />
     </S>
 </TEXT>

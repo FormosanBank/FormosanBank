@@ -1,63 +1,78 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TEXT id="Li-May_PwnNira_02JN110-1" xml:lang="pwn" source="Li-May Paiwan Data, Participant Nira, file 02JN110-1" audio="02JN110-1 Nira.wav" copyright="CC-BY" citation="Le Ferrand, É., Prud'hommeaux, E., Hartshorne, J. K., &amp; Sung, L.-M. (2024). NTU Paiwan ASR Corpus. Electronic Resource." BibTeX_citation="@electronic{leferrand2024ntu, author = {Le Ferrand, {'E}ric and Prud'hommeaux, Emily and Hartshorne, Joshua K. and Sung, Li-May}, year = {2024}, title = {{NTU} {Paiwan} {ASR} Corpus},type = {Electronic Resource}}">
+<TEXT id="NTU_Pwn_Nira_02JN110-1 Nira" xml:lang="pwn" source="NTU Paiwan Data, Participant Nira, file 02JN110-1 Nira" audio="02JN110-1 Nira.wav" copyright="CC-BY" citation="Le Ferrand, É., Prud'hommeaux, E., Hartshorne, J. K., &amp; Sung, L.-M. (2024). NTU Paiwan ASR Corpus. Electronic Resource." BibTeX_citation="@electronic{leferrand2024ntu, author = {Le Ferrand, {'E}ric and Prud'hommeaux, Emily and Hartshorne, Joshua K. and Sung, Li-May}, year = {2024}, title = {{NTU} {Paiwan} {ASR} Corpus},type = {Electronic Resource}}" dialect="Northern">
     <S id="a1">
-        <FORM>naseminamalji a kaljuala’</FORM>
+        <FORM kindOf="original">naseminamalji a kaljuala'</FORM>
+        <FORM kindOf="standard">naseminamalji a kaljoala'</FORM>
         <AUDIO start="6.882" end="10.117" />
     </S>
     <S id="a2">
-        <FORM>aicu a kaljuala’ liav a sikudan, tin’uljan na cacagalj kata a kumakuma, namasan uma’ niamadju, namasan turivecan niamadju.</FORM>
+        <FORM kindOf="original">aicu a kaljuala' liav a sikudan, tin'uljan na cacagalj kata a kumakuma, namasan uma' niamadju, namasan turivecan niamadju.</FORM>
+        <FORM kindOf="standard">aico a kaljoala' liav a sikodan, tin'oljan na cacagalj kata a komakoma, namasan oma' niamadjo, namasan torivecan niamadjo.</FORM>
         <AUDIO start="13.352" end="25.411" />
     </S>
     <S id="a5">
-        <FORM>a tja secevungan, palemek tu i gidigidi ta djeljep, i putuputung ta ljivek, i vavav tua ricing, i zaleman tua supung, i tjaiteku tua ’aljiv, na kipakelay ta sialangan i tjuma’.</FORM>
+        <FORM kindOf="original">a tja secevungan, palemek tu i gidigidi ta djeljep, i putuputung ta ljivek, i vavav tua ricing, i zaleman tua supung, i tjaiteku tua 'aljiv, na kipakelay ta sialangan i tjuma'.</FORM>
+        <FORM kindOf="standard">a tja secevongan, palemek to i gidigidi ta djeljep, i potopotong ta ljivek, i vavav toa ricing, i zaleman toa sopong, i tjaiteko toa 'aljiv, na kipakelay ta sialangan i tjoma'.</FORM>
         <AUDIO start="25.470" end="43.646" />
     </S>
     <S id="a6">
-        <FORM>i pasaliljililjing, malaing a kinaizuanan a seman kaljualjuala’ tua uri segetjer aza mareka miperperper a ’uljipepe a kalabiabi a ’uljicacingelav a ’aivaveng a ’aya’ayam, kata ’atjuvitjuvi.</FORM>
+        <FORM kindOf="original">i pasaliljililjing, malaing a kinaizuanan a seman kaljualjuala' tua uri segetjer aza mareka miperperper a 'uljipepe a kalabiabi a 'uljicacingelav a 'aivaveng a 'aya'ayam, kata 'atjuvitjuvi.</FORM>
+        <FORM kindOf="standard">i pasaliljililjing, malaing a kinaizoanan a seman kaljoaljoala' toa ori segetjer aza mareka miperperper a 'oljipepe a kalabiabi a 'oljicacingelav a 'aivaveng a 'aya'ayam, kata 'atjovitjovi.</FORM>
         <AUDIO start="43.646" end="63.529" />
     </S>
     <S id="a9">
-        <FORM>sa matazuazua a masepesepelj ika semekez, ika puvengin puma’adav a seman kaljuala’, nu sikasekez metad a kaljuala’, pazangalanga a segetjer a uri san kakanen nimadju.</FORM>
+        <FORM kindOf="original">sa matazuazua a masepesepelj ika semekez, ika puvengin puma'adav a seman kaljuala', nu sikasekez metad a kaljuala', pazangalanga a segetjer a uri san kakanen nimadju.</FORM>
+        <FORM kindOf="standard">sa matazoazoa a masepesepelj ika semekez, ika povengin poma'adav a seman kaljoala', no sikasekez metad a kaljoala', pazangalanga a segetjer a ori san kakanen nimadjo.</FORM>
         <AUDIO start="64.088" end="81.912" />
     </S>
     <S id="a10">
-        <FORM>pai nu neka a kanen, uri selapay timadju! sika setangalitjen tua setukezan nimadju!</FORM>
+        <FORM kindOf="original">pai nu neka a kanen, uri selapay timadju! sika setangalitjen tua setukezan nimadju!</FORM>
+        <FORM kindOf="standard">pai no neka a kanen, ori selapay timadjo! sika setangalitjen toa setokezan nimadjo!</FORM>
         <AUDIO start="81.912" end="92.059" />
     </S>
     <S id="a13">
-        <FORM>pai ini ka amin azua tja sinipatanema tasawni, izua uta a salapeljan, a lalangav, madjeluitjen a sepacun tua nasegetjer a pangac, a tjainan, a sasi’, saka timadju naki’ilja a puraung, nakitjakaray i tua patekuteku ta kaljaula’ nimadju.</FORM>
+        <FORM kindOf="original">pai ini ka amin azua tja sinipatanema tasawni, izua uta a salapeljan, a lalangav, madjeluitjen a sepacun tua nasegetjer a pangac, a tjainan, a sasi', saka timadju naki'ilja a puraung, nakitjakaray i tua patekuteku ta kaljaula' nimadju.</FORM>
+        <FORM kindOf="standard">pai ini ka amin azoa tja sinipatanema tasawni, izoa ota a salapeljan, a lalangav, madjeloitjen a sepacon toa nasegetjer a pangac, a tjainan, a sasi', saka timadjo naki'ilja a poraong, nakitjakaray i toa patekoteko ta kaljaola' nimadjo.</FORM>
         <AUDIO start="92.705" end="117.941" />
     </S>
     <S id="a14">
-        <FORM>saka ika malavut angata aza nu secelcel nu ljiadedetj a miperper, madjame’ saka sedjekecanga sakamaya tua kaljuala’, sika liav a ’alja nimadju, maca’u a ’emeci ru, maca’u a ’emeci tua uri kanen nimadju.</FORM>
+        <FORM kindOf="original">saka ika malavut angata aza nu secelcel nu ljiadedetj a miperper, madjame' saka sedjekecanga sakamaya tua kaljuala', sika liav a 'alja nimadju, maca'u a 'emeci ru, maca'u a 'emeci tua uri kanen nimadju.</FORM>
+        <FORM kindOf="standard">saka ika malavot angata aza no secelcel no ljiadedetj a miperper, madjame' saka sedjekecanga sakamaya toa kaljoala', sika liav a 'alja nimadjo, maca'o a 'emeci ro, maca'o a 'emeci toa ori kanen nimadjo.</FORM>
         <AUDIO start="118.587" end="140.264" />
     </S>
     <S id="a16">
-        <FORM>izua ka makatalj, ika namakinemenem, sedjumakaken taza cacagalj a seman kaljualjuala’, manu pangetezan nua vali, sa sivali aza tjauka’acuvung a kaljuala’ sa mabuanganga.</FORM>
+        <FORM kindOf="original">izua ka makatalj, ika namakinemenem, sedjumakaken taza cacagalj a seman kaljualjuala', manu pangetezan nua vali, sa sivali aza tjauka'acuvung a kaljuala' sa mabuanganga.</FORM>
+        <FORM kindOf="standard">izoa ka makatalj, ika namakinemenem, sedjomakaken taza cacagalj a seman kaljoaljoala', mano pangetezan noa vali, sa sivali aza tjaoka'acovong a kaljoala' sa maboanganga.</FORM>
         <AUDIO start="141.293" end="159.087" />
     </S>
     <S id="a18">
-        <FORM>ka pacunaken, aicu tjara masuram sa setavat ayaken, manu ika mavala mumalj auta a seman kaljuala’.</FORM>
+        <FORM kindOf="original">ka pacunaken, aicu tjara masuram sa setavat ayaken, manu ika mavala mumalj auta a seman kaljuala'.</FORM>
+        <FORM kindOf="standard">ka paconaken, aico tjara masoram sa setavat ayaken, mano ika mavala momalj aota a seman kaljoala'.</FORM>
         <AUDIO start="159.117" end="170.059" />
     </S>
     <S id="a19">
-        <FORM>ki kinpidapidalj a mumal ini ka semekez, nekangata a supilan setja’emitjen tua namakaki’adilj!</FORM>
+        <FORM kindOf="original">ki kinpidapidalj a mumal ini ka semekez, nekangata a supilan setja'emitjen tua namakaki'adilj!</FORM>
+        <FORM kindOf="standard">ki kinpidapidalj a momal ini ka semekez, nekangata a sopilan setja'emitjen toa namakaki'adilj!</FORM>
         <AUDIO start="170.088" end="182.647" />
     </S>
     <S id="a23">
-        <FORM>aicu a makacemecemel a makavavua a djalan a cacalivatan nua cawcau, mavan nu tja sikeljakeljang tu cinalivatan tu ini, nu kamayan a namaljengua’ a kaljuala’, tjara nekanan a napasamaza pacacikel a cawcau, saka aza uri kipakikim tjara vaik a cemikel.</FORM>
+        <FORM kindOf="original">aicu a makacemecemel a makavavua a djalan a cacalivatan nua cawcau, mavan nu tja sikeljakeljang tu cinalivatan tu ini, nu kamayan a namaljengua' a kaljuala', tjara nekanan a napasamaza pacacikel a cawcau, saka aza uri kipakikim tjara vaik a cemikel.</FORM>
+        <FORM kindOf="standard">aico a makacemecemel a makavavoa a djalan a cacalivatan noa cawcao, mavan no tja sikeljakeljang to cinalivatan to ini, no kamayan a namaljengoa' a kaljoala', tjara nekanan a napasamaza pacacikel a cawcao, saka aza ori kipakikim tjara vaik a cemikel.</FORM>
         <AUDIO start="182.764" end="209.617" />
     </S>
     <S id="a24">
-        <FORM>nu secevungitjen tua marucinpu a kaljuala’, a namarasudj a kinavecikan a namalitjuku a kinipakelay, selingacitjen nu pacunitjen tua ca’uan a kinasengeseng!</FORM>
+        <FORM kindOf="original">nu secevungitjen tua marucinpu a kaljuala', a namarasudj a kinavecikan a namalitjuku a kinipakelay, selingacitjen nu pacunitjen tua ca'uan a kinasengeseng!</FORM>
+        <FORM kindOf="standard">no secevongitjen toa marocinpo a kaljoala', a namarasodj a kinavecikan a namalitjoko a kinipakelay, selingacitjen no paconitjen toa ca'oan a kinasengeseng!</FORM>
         <AUDIO start="210.235" end="229.440" />
     </S>
     <S id="a27">
-        <FORM>’aki kinuda saka makaya a mamamav a cinulis a inalang, a namacacurucuru a pasavavav a pasateku, a pasakinivalidian a penalingulj, namapamapamav, matu sinialap ta ’acepang ta ’inpic a zinugan, maljian tu maljian, naseminamalji angata!</FORM>
+        <FORM kindOf="original">'aki kinuda saka makaya a mamamav a cinulis a inalang, a namacacurucuru a pasavavav a pasateku, a pasakinivalidian a penalingulj, namapamapamav, matu sinialap ta 'acepang ta 'inpic a zinugan, maljian tu maljian, naseminamalji angata!</FORM>
+        <FORM kindOf="standard">'aki kinoda saka makaya a mamamav a cinolis a inalang, a namacacorocoro a pasavavav a pasateko, a pasakinivalidian a penalingolj, namapamapamav, mato sinialap ta 'acepang ta 'inpic a zinogan, maljian to maljian, naseminamalji angata!</FORM>
         <AUDIO start="229.735" end="255.706" />
     </S>
     <S id="a28">
-        <FORM>manasika ta sicaucauyan, izua tja sikudan, azua a mamaca’uan ta cempu ta tjemenun ta seman lalang, makaya sisalu a kivecik ta lima tua pinarucacagalj a vecik, sipapuliguligu tua ca’uan nimadju a vavayan!</FORM>
+        <FORM kindOf="original">manasika ta sicaucauyan, izua tja sikudan, azua a mamaca'uan ta cempu ta tjemenun ta seman lalang, makaya sisalu a kivecik ta lima tua pinarucacagalj a vecik, sipapuliguligu tua ca'uan nimadju a vavayan!</FORM>
+        <FORM kindOf="standard">manasika ta sicaocaoyan, izoa tja sikodan, azoa a mamaca'oan ta cempo ta tjemenon ta seman lalang, makaya sisalo a kivecik ta lima toa pinarocacagalj a vecik, sipapoligoligo toa ca'oan nimadjo a vavayan!</FORM>
         <AUDIO start="255.911" end="278.117" />
     </S>
 </TEXT>
