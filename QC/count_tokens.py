@@ -74,7 +74,7 @@ def main(corpora_path):
     # with open('current_counts.txt', 'w') as file:
     #     json.dump(token_count, file)
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Validate XML files.")
+    parser = argparse.ArgumentParser(description="count tokens per corpus and per language.")
     parser.add_argument('corpora_path', help='Specify the path of the corpora')
     args = parser.parse_args()
     main(args.corpora_path)
