@@ -36,24 +36,21 @@ def get_lang(path, langs):
         if lang in path:
             return lang
 
-# Compare the XML to the DTD
-def validate_xml_against_dtd(xml_file, dtd_file):
+# Compare the XML to the XSD
+def validate_xml_against_xsd(xml_file, schema):
     try:
-        # Parse the DTD file
-        dtd = etree.DTD(open(dtd_file))
-
         # Parse the XML file
         tree = etree.parse(xml_file)
 
-        # Validate the XML against the DTD
-        is_valid = dtd.validate(tree)
+        # Validate the XML against the XSD
+        is_valid = schema.validate(tree)
 
         if is_valid:
-            message = f"{xml_file}: XML is valid against the DTD."
+            message = f"{xml_file}: XML is valid against the XSD."
             logging.info(message)
             return True
         else:
-            error_message = f"{xml_file}: Validation errors:\n{dtd.error_log.filter_from_errors()}"
+            error_message = f"{xml_file}: Validation errors:\n{schema.error_log}"
             logging.error(error_message)
             return False
 
@@ -63,19 +60,48 @@ def validate_xml_against_dtd(xml_file, dtd_file):
         return False
 
 
-def validated_form(xml_file):
-    tree = ET.parse(xml_file)
-    root = tree.getroot()
+# def validated_form(xml_file):
+#     tree = ET.parse(xml_file)
+#     root = tree.getroot()
     
-    # Iterate over all <S> elements
-    for s in root.findall('.//S'):
-        forms = s.findall('.//FORM')
-        if 'kindOf' not in forms[0].attrib or forms[0].attrib.get('kindOf') != 'original':
-            return False
-        if len(forms) > 1 and forms[1].attrib.get('kindOf') != 'standard':
-            return False
+#     # Iterate over all <S> elements
+#     for s in root.findall('.//S'):
+#         forms = s.findall('.//FORM')
+#         if 'kindOf' not in forms[0].attrib or forms[0].attrib.get('kindOf') != 'original':
+#             error_message = f"{xml_file}: Either kindOf attribute isn't set for first FORM element in sentence with id {s.attrib['id']} or it's not set to 'original'"
+#             logging.error(error_message)
+#             return False
+#         if len(forms) > 1 and forms[1].attrib.get('kindOf') != 'standard':
+#             error_message = f"{xml_file}: A second FORM element is used in the sentence with id {s.attrib['id']} but its kindOf attribute isn't set to 'standard'"
+#             logging.error(error_message)
+#             return False
 
-    return True
+#         for w in s.findall('.//W'):
+#             forms = w.findall('.//FORM')
+#             if 'kindOf' not in forms[0].attrib or forms[0].attrib.get('kindOf') != 'original':
+#                 error_message = f"{xml_file}: Either kindOf attribute isn't set for first FORM element in word with id {w.attrib['id']} or it's not set to 'original'"
+#                 logging.error(error_message)
+#                 return False
+#             if len(forms) > 1 and forms[1].attrib.get('kindOf') != 'standard':
+#                 error_message = f"{xml_file}: A second FORM element is used in the word with id {w.attrib['id']} but its kindOf attribute isn't set to 'standard'"
+#                 logging.error(error_message)
+#                 return False
+
+#             for m in root.findall('.//M'):
+#                 forms = w.findall('.//FORM')
+#                 if 'kindOf' not in forms[0].attrib or forms[0].attrib.get('kindOf') != 'original':
+#                     error_message = f"{xml_file}: Either kindOf attribute isn't set for first FORM element in morpheme with id {m.attrib['id']} or it's not set to 'original'"
+#                     logging.error(error_message)
+#                     return False
+#                 if len(forms) > 1 and forms[1].attrib.get('kindOf') != 'standard':
+#                     error_message = f"{xml_file}: A second FORM element is used in the morpheme with id {m.attrib['id']} but its kindOf attribute isn't set to 'standard'"
+#                     logging.error(error_message)
+#                     return False
+
+
+#     message = f"{xml_file}: FORMs are following the rules fine"
+#     logging.info(message)
+#     return True
 
 # Ensure that if audio is set to "diarized", at least file attr is set for every Audio tag.
 # if audio is set to anything else, check that start and end exist
@@ -85,17 +111,27 @@ def validate_audio_attr(xml_file):
     if "audio" in root.attrib:
         audio_type = root.attrib["audio"]
     else:
-        return True
+        audio_type = None
     
     # Iterate over all <Audio> elements
-    for audio in root.findall('.//Audio'):
+    for audio in root.findall('.//AUDIO'):
+        if audio_type is None:
+            error_message = f"{xml_file}: if the audio attribute isn't set for the TEXT tag, it's not allowed to have any AUDIO tags"
+            logging.error(error_message)
+            return False
         # If audio is diarized, all audio tages need to have the at least the file attribute
         if audio_type == "diarized" and "file" not in audio.attrib:
+            error_message = f"{xml_file}: if the audio attribute is set to diarized, file name must be set for the AUDIO tag"
+            logging.error(error_message)
             return False
         # if audio isn't diarized, all audio tages need to have a start and end
         elif audio_type != "diarized" and ("start" not in audio.attrib or "end" not in audio.attrib):
+            error_message = f"{xml_file}: if the audio attribute isn't set to diarized, start and end time stamps must be specified for the AUDIO tag"
+            logging.error(error_message)
             return False
-
+        
+    message = f"{xml_file}: audio attribute is set appropriately"
+    logging.info(message)
     return True
 
 # Ensure lang code complies with ISO 639-3
@@ -129,16 +165,16 @@ def prettify(xml_file):
         f.write(temp_xml)
 
 # Get all XML files in the specified path
-def get_files(path, to_check, lang):
+def get_files(path, to_check, lang, langs):
     if lang:
         for root, dirs, files in os.walk(path):
             for file in files:
-                if file.endswith(".xml") and get_lang(os.path.join(root, file), langs) == args.language: # and 'Final_XML' in os.path.join(root, file)
+                if file.endswith(".xml") and get_lang(os.path.join(root, file), langs) == args.language and 'XML' in os.path.join(root, file):
                     to_check.append(os.path.join(root, file))
         return to_check
     for root, dirs, files in os.walk(path):
         for file in files:
-            if file.endswith(".xml"): # and 'Final_XML' in os.path.join(root, file)
+            if file.endswith(".xml") and 'XML' in os.path.join(root, file):
                 to_check.append(os.path.join(root, file))
 
 # Main process call subfunctions, log issues, and print summary
@@ -146,7 +182,11 @@ def main(args, langs):
     curr_dir = os.path.dirname(os.path.abspath(__file__))
     iso6393_3 = pd.read_csv(os.path.join(curr_dir, 'iso-639-3.txt'), sep='\t')
     langs_codes = set(iso6393_3['Id'])
-    dtd_file = os.path.join(curr_dir, "xml_template.dtd")
+    xsd_file = os.path.join(curr_dir, "xml_template.xsd")
+    # Parse the XSD file
+    with open(xsd_file, 'r') as schema_file:
+        schema_root = etree.parse(schema_file)
+    schema = etree.XMLSchema(schema_root)
     
     to_check = list()
     path_to_check = None
@@ -163,17 +203,17 @@ def main(args, langs):
     elif args.search_by == "by_path":
         path_to_check = args.path
 
-    get_files(path_to_check, to_check, lang)
+    get_files(path_to_check, to_check, lang, langs)
     for file in to_check:
         if args.verbose:
             logging.info(f"\nChecking {file}...")
 
-        xml_valid = validate_xml_against_dtd(file, dtd_file)
+        xml_valid = validate_xml_against_xsd(file, schema)
         lang_code_valid = validate_lang_code(file, langs_codes)
         audio_attr_valid = validate_audio_attr(file)
-        check_form_valid = validated_form(file)
+        # check_form_valid = validated_form(file)
 
-        if not xml_valid or not lang_code_valid or not audio_attr_valid:
+        if not (xml_valid and lang_code_valid and audio_attr_valid):
             issues_found += 1
             files_with_issues.append(file)
             if not args.verbose:
