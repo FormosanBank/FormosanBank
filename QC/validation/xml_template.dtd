@@ -8,7 +8,8 @@
     xml:lang CDATA #REQUIRED
     source CDATA #IMPLIED
     audio CDATA #IMPLIED
-    glotto CDATA #IMPLIED>
+    glottocode CDATA #IMPLIED
+    dialect CDATA #IMPLIED>
 
 <!ELEMENT S (FORM, FORM?, TRANSL*, AUDIO?, W*)>
 <!ATTLIST S 

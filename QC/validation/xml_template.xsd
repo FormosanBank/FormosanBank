@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace"
+             schemaLocation="http://www.w3.org/2001/xml.xsd"/>
+
+
+  <!-- nonEmpty Element -->
+  <xs:simpleType name="nonEmptyString">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- TEXT Element -->
+  <xs:element name="TEXT">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="S" type="S_Type" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute ref="xml:lang" use="required"/>
+      <xs:attribute name="id" type="nonEmptyString" use="required"/>
+      <xs:attribute name="citation" type="nonEmptyString" use="required"/>
+      <xs:attribute name="BibTeX_citation" type="nonEmptyString" use="required"/>
+      <xs:attribute name="copyright" type="nonEmptyString" use="required"/>
+      <xs:attribute name="source" type="xs:string"/>
+      <xs:attribute name="audio" type="xs:string"/>
+      <xs:attribute name="glottocode" type="xs:string"/>
+      <xs:attribute name="dialect" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- S Element -->
+  <xs:complexType name="S_Type">
+    <xs:sequence>
+      <xs:element name="FORM" type="FORM_Type" minOccurs="1" maxOccurs="2"/>
+      <xs:element name="TRANSL" type="TRANSL_Type" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="AUDIO" type="AUDIO_Type" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="W" type="W_Type" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="nonEmptyString" use="required"/>
+  </xs:complexType>
+
+  <!-- W Element -->
+  <xs:complexType name="W_Type">
+    <xs:sequence>
+      <xs:element name="FORM" type="FORM_Type" maxOccurs="2"/>
+      <xs:element name="TRANSL" type="TRANSL_Type" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="AUDIO" type="AUDIO_Type" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="M" type="M_Type" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="nonEmptyString" use="required"/>
+    <xs:attribute name="class" type="xs:string"/>
+    <xs:attribute name="sclass" type="xs:string"/>
+  </xs:complexType>
+
+  <!-- M Element -->
+  <xs:complexType name="M_Type">
+    <xs:sequence>
+      <xs:element name="FORM" type="FORM_Type" maxOccurs="2"/>
+      <xs:element name="TRANSL" type="TRANSL_Type" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="AUDIO" type="AUDIO_Type" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="nonEmptyString" use="required"/>
+    <xs:attribute name="class" type="xs:string"/>
+    <xs:attribute name="sclass" type="xs:string"/>
+  </xs:complexType>
+
+  <!-- FORM Element -->
+  <xs:complexType name="FORM_Type">
+  <xs:simpleContent>
+    <xs:extension base="xs:string">
+      <!-- Restrict kindOf to valid values -->
+      <xs:attribute name="kindOf" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="original"/>
+            <xs:enumeration value="standard"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:extension>
+  </xs:simpleContent>
+  </xs:complexType>
+
+  <!-- TRANSL Element -->
+  <xs:complexType name="TRANSL_Type">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute ref="xml:lang"/>
+        <xs:attribute name="kindOf" type="xs:string"/>
+        <xs:attribute name="ver" type="xs:string"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <!-- AUDIO Element -->
+  <xs:complexType name="AUDIO_Type">
+    <xs:attribute name="start" type="xs:string"/>
+    <xs:attribute name="end" type="xs:string"/>
+    <xs:attribute name="file" type="xs:string"/>
+    <xs:attribute name="url" type="xs:string"/>
+  </xs:complexType>
+
+</xs:schema>
