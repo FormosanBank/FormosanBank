@@ -13,6 +13,8 @@ This repository contains code and data for processing and structuring the ePark 
 - **failed_audio.csv**: A record of audio files that could not be downloaded during the data collection process.
 - **requirements.txt**: Lists the Python libraries required to run the processing scripts.
 
+Please note that ePark is a collection of educational material that is split into topics. The Final_XML folder will have subfolders and their names would start with the ePark version (e.g. ep1) followed by the topic name in Chinese (e.g. 九階教材). These topics could be something like "9th Period Teaching Materials" or "Cultural Topics." Unless you are interested in differentiating between the specific type of the educational materials in your research, the topic names shouldn't be relevant.
+
 ## Installation
 
 1. Clone this repository:
