@@ -1,11 +1,10 @@
 import xml.etree.ElementTree as ET
 import os
 import argparse
-from pydub import AudioSegment
 from tqdm import tqdm
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from mutagen.mp3 import MP3
-from mutagen.wave import WAVE
+import wave
 from datetime import timedelta
 
 # Determine the language of the file based on the path
@@ -16,20 +15,24 @@ def get_lang(path, file, langs):
 
 def process_file(path, file, langs):
     """Process a single file: determine language and duration."""
-    try:
-        lang = get_lang(path, file, langs)
-        file_path = os.path.join(path, file)
-        # audio = AudioSegment.from_file(file_path)
-        # length_in_sec = len(audio) // 1000
-        if file_path.endswith('.mp3'):
+    lang = get_lang(path, file, langs)
+    file_path = os.path.join(path, file)
+    # audio = AudioSegment.from_file(file_path)
+    # length_in_sec = len(audio) // 1000
+    if file_path.endswith('.mp3'):
+        try:
             audio = MP3(file_path)
             length_in_sec = int(audio.info.length)
-        elif file_path.endswith('.wav'):
-            audio = WAVE(file_path)
-            length_in_sec = int(audio.info.length)
-        return (file_path, lang, length_in_sec, None)
-    except Exception as e:
-        return (file_path, None, None, e)
+        except Exception as e:
+            return (file_path, None, None, e)
+    elif file_path.endswith('.wav'):
+        try:
+            with wave.open(file_path, "rb") as wav_file:  # Use correct extension if renamed
+                length_in_sec = wav_file.getnframes() / wav_file.getframerate()
+        except Exception as e:
+            print(file)
+            return (file_path, None, None, e)
+    return (file_path, lang, length_in_sec, None)
 
 def count_source_diarized(corpus, path, durations_by_lang, langs):
     source_total = 0
