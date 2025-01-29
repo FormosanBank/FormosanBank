@@ -7,30 +7,41 @@ import wave
 import csv
 import sndhdr
 
+# Determine the language of the file based on the path
+def get_lang(path, file):
+    langs = ['Amis', 'Atayal', 'Paiwan', 'Bunun','Puyuma', 'Rukai', 'Tsou', 'Saisiyat', 'Yami',
+        'Thao', 'Kavalan', 'Truku', 'Sakizaya','Seediq','Saaroa', 'Kanakanavu', 'Siraya']
+    for lang in langs:
+        if lang in path or (file.split('.')[0] == lang and file.split('.')[1:] == ['xml']):
+            return lang
 
-def process_file(path, file, failed_audio):
+def process_file(path, file_name, failed_audio):
     """Process a single file"""
-    file_path = os.path.join(path, file)
+    file_path = os.path.join(path, file_name)
     if file_path.endswith('.mp3'):
         # filetype = sndhdr.what(file_path)
         # if filetype and filetype.filetype == 'wav':
         #     print(file_path)
+        lang = get_lang(path, file_name)
         try:
             audio = MP3(file_path)
-            length_in_sec = int(audio.info.length)
+            length_in_sec = audio.info.length
+            if audio is None or length_in_sec is None or length_in_sec == 0:
+                raise Exception("problem iwth audio file")
         except Exception as e:
-            print(file, e)
             with open(failed_audio, mode='a', newline='') as file:
                 writer = csv.writer(file)
-                writer.writerow([file_path])
+                writer.writerow([path, lang, file_name])
     elif file_path.endswith('.wav'):
         try:
             with wave.open(file_path, "rb") as wav_file:  # Use correct extension if renamed
                 length_in_sec = wav_file.getnframes() / wav_file.getframerate()
+                if length_in_sec == 0:
+                    raise Exception("problem iwth audio file")
         except:
             with open(failed_audio, mode='a', newline='') as file:
                 writer = csv.writer(file)
-                writer.writerow([file_path])
+                writer.writerow([path, lang, file_name])
 
 def check_source(path, failed_audio):
     to_process = list()
@@ -49,19 +60,14 @@ def main(corpora_path):
     
     with open(failed_audio, mode='w', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow(["file_name"])
+        writer.writerow(["path", "lang", "file_name"])
     
-    flag = True
     for source in os.listdir(corpora_path):
         if source.startswith('.'):
             continue
         if os.path.isdir(os.path.join(corpora_path, source)):
-            flag = False
             check_source(os.path.join(corpora_path, source), failed_audio)
-    if flag:
-        check_source(corpora_path, failed_audio)
-    
-    
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Get durations of audio per corpus and per language.")
     parser.add_argument('corpora_path', help='Specify the path of the corpora')
