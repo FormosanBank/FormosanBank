@@ -66,7 +66,9 @@ def read_file(file_path):
     for audio in root.findall('.//AUDIO'):
         # Find the <FORM> element within the <S> element
         if 'start' not in audio.attrib or 'end' not in audio.attrib:
-            raise ValueError("start and end must be set to all audio tags if the audio isn't diarized")
+            continue
+            #raise ValueError("start and end must be set to all audio tags")
+            
         # print(audio.attrib['end'])
         # print(audio.attrib['start'])
         duration += (float(audio.attrib['end']) - float(audio.attrib['start']))

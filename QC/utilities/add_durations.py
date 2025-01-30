@@ -8,8 +8,9 @@ import xml.etree.ElementTree as ET
 import os
 from xml.dom import minidom
 from collections import defaultdict
+from tqdm import tqdm
 
-to_process = defaultdict(list)
+to_process_dict = defaultdict(list)
 
 def prettify(elem):
     """
@@ -27,16 +28,16 @@ def prettify(elem):
 
 
 def add_durations():
-    
-    for file in to_process:
+    print(to_process_dict.keys())
+    for file in to_process_dict.keys():
+        # print(file)
+        if not os.path.exists(file):
+            return
         tree = ET.parse(file)
         root = tree.getroot()
 
-        for s_id, duration in to_process[file]:
-            sentence = root.find(f".//S[@id='{s_id}']")
-            if sentence is None:
-                print(s_id, file)
-            audio_element = sentence.find("AUDIO")
+        for audio_id, duration in to_process_dict[file]:
+            audio_element = root.find(f".//AUDIO[@file='{audio_id}']")
             audio_element.set("start", "0")
             audio_element.set("end", str(round(duration, 2)))
               
@@ -69,33 +70,29 @@ def process_file(path, file_name):
                 if length_in_sec == 0:
                     raise Exception("problem iwth audio file")
     except Exception as e:
-        print(e, file_path)
+        # print(e, file_path)
         return
-    xml_file = os.path.join(path.replace('Final_audio', 'Final_XML'), file_name.split('_')[0] + ".xml")
-    to_process[xml_file].append([file_name.split(".")[0], length_in_sec])
+    xml_file = path.replace("Final_audio", "Final_XML")+".xml"
+    to_process_dict[xml_file].append([file_name, length_in_sec])
 
-def check_source(path):
+
+def main(corpus_path):
     to_process = list()
-    for root, dirs, files in os.walk(path):
+    for root, dirs, files in os.walk(corpus_path):
         for file in files:
-            if (file.endswith(".wav") or file.endswith('.mp3')) and 'audio' in os.path.join(root, file):
+            if (file.endswith(".wav") or file.endswith('.mp3')):
                 to_process.append([root, file])
     
     with ThreadPoolExecutor() as executor:
         futures = [executor.submit(process_file, path, file) for path, file in to_process]
-        for f in as_completed(futures): f.result()
-                
-    
-def main(corpora_path):
-    for source in os.listdir(corpora_path):
-        if source.startswith('.'):
-            continue
-        if os.path.isdir(os.path.join(corpora_path, source)):
-            check_source(os.path.join(corpora_path, source))
+        for f in tqdm(as_completed(futures), total=len(futures), desc=f"Processing {corpus_path}"): 
+            f.result()
+    for file in to_process_dict:
+        print(file)
     add_durations()
     
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Get durations of audio per corpus and per language.")
-    parser.add_argument('corpora_path', help='Specify the path of the corpora')
+    parser = argparse.ArgumentParser(description="add the start and end attribute to AUDIO tags in a corpus with segmented audio")
+    parser.add_argument('--path', help='the path to the Final_audio folder containing the audio files associated with a corpus')
     args = parser.parse_args()
-    main(args.corpora_path)
+    main(args.path)

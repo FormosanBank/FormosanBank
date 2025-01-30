@@ -3,6 +3,13 @@ import csv
 from lxml import etree
 from xml.dom import minidom
 
+"""
+the main use of this utility is to remove the AUDIO tags associated with faulty
+audio files that were detected by the validate_audio script. It's assumed that the data
+about the faulty audios is listed here non_working_audio.csv in the validation logs.
+"""
+
+
 def prettify(elem):
     """
     Return a pretty-printed XML string for the Element.
@@ -23,7 +30,7 @@ def main():
     audios_to_remove = list()
 
     if not os.path.exists(to_remove):
-        print(f"mp3_to_wav.csv doesn't exist in {curr_dir}")
+        print(f"non_working_audio.csv doesn't exist in {curr_dir}")
         return
 
     with open(to_remove, mode='r', encoding='utf-8') as csvfile:
@@ -33,7 +40,7 @@ def main():
 
     for item in audios_to_remove:
         path, lang, audio_id = item
-        xml_file = os.path.join(path.replace('Final_audio', 'Final_XML'), audio_id.split('_')[0] + ".xml")
+        xml_file = path.replace("Final_audio", "Final_XML")+".xml"
 
         if not os.path.exists(xml_file):
             print(f"XML file does not exist: {xml_file}")
@@ -45,10 +52,10 @@ def main():
         audio_element = root.xpath(f".//AUDIO[@file='{audio_id}']")  # Use XPath to find the element
         if audio_element:
             audio_element = audio_element[0]  # XPath returns a list, take the first element
-            sentence = audio_element.getparent()
+            audio_parent = audio_element.getparent()
 
-            if sentence is not None:
-                sentence.remove(audio_element)  # Remove the AUDIO element
+            if audio_parent is not None:
+                audio_parent.remove(audio_element)  # Remove the AUDIO element
 
                 try:
                     xml_string = prettify(root)
