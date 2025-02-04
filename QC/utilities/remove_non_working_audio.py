@@ -2,7 +2,6 @@ import os
 import csv
 from lxml import etree
 from xml.dom import minidom
-
 """
 the main use of this utility is to remove the AUDIO tags associated with faulty
 audio files that were detected by the validate_audio script. It's assumed that the data
@@ -40,6 +39,8 @@ def main():
 
     for item in audios_to_remove:
         path, lang, audio_id = item
+        # os.remove(os.path.join(path, audio_id))
+        
         xml_file = path.replace("Final_audio", "Final_XML")+".xml"
 
         if not os.path.exists(xml_file):
@@ -57,16 +58,8 @@ def main():
             if audio_parent is not None:
                 audio_parent.remove(audio_element)  # Remove the AUDIO element
 
-                try:
-                    xml_string = prettify(root)
-                    xml_string = '\n'.join([line for line in xml_string.split('\n') if line.strip() != ''])
-                except Exception as e:
-                    xml_string = ""
-                    print(f"Failed to format file: {xml_file}, Error: {e}")
-
-                with open(xml_file, "w", encoding="utf-8") as xmlfile:
-                    xmlfile.write(xml_string)
-                    print(f"File: {xml_file} modified successfully")
+                tree.write(xml_file, encoding='utf-8', xml_declaration=True)
+                print(f"Updated file: {xml_file}")
             else:
                 print(f"Parent element not found for AUDIO: {audio_id} in file: {xml_file}")
 

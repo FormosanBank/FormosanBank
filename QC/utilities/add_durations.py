@@ -10,7 +10,6 @@ from xml.dom import minidom
 from collections import defaultdict
 from tqdm import tqdm
 
-to_process_dict = defaultdict(list)
 
 def prettify(elem):
     """
@@ -27,31 +26,26 @@ def prettify(elem):
     return reparsed.toprettyxml(indent="    ")  # Return the pretty-printed XML string
 
 
-def add_durations():
-    print(to_process_dict.keys())
-    for file in to_process_dict.keys():
-        # print(file)
-        if not os.path.exists(file):
+def add_durations(path, xml_file, durations):
+        xml_file_path = os.path.join(path, xml_file)
+        if not os.path.exists(xml_file_path):
             return
-        tree = ET.parse(file)
+        tree = ET.parse(xml_file_path)
         root = tree.getroot()
 
-        for audio_id, duration in to_process_dict[file]:
-            audio_element = root.find(f".//AUDIO[@file='{audio_id}']")
-            audio_element.set("start", "0")
-            audio_element.set("end", str(round(duration, 2)))
+        for audio in root.findall('.//AUDIO'):
+            audio_file = audio.attrib["file"]
+            audio_path = xml_file_path.replace("Final_XML", "Final_audio").replace(".xml", "")
+            audio_path = os.path.join(audio_path, audio_file)
+            if audio_path not in durations:
+                print(f"couldn't find durations for file: {audio_path}")
+                continue
+            audio.set("start", "0")
+            audio.set("end", str(round(durations[audio_path], 2)))
               
             
-        try:
-            xml_string = prettify(root)
-            xml_string = '\n'.join([line for line in xml_string.split('\n') if line.strip() != ''])
-        except Exception as e:
-            xml_string = ""
-            print(f"Failed to format file: {file}, Error: {e}")
-
-        with open(file, "w", encoding="utf-8") as xmlfile:
-            xmlfile.write(xml_string)
-            print(f"file: {file} modified successfully")
+        tree.write(xml_file_path, encoding='utf-8', xml_declaration=True)
+        print(f"Updated file: {xml_file_path}")
         
 
 def process_file(path, file_name):
@@ -62,37 +56,45 @@ def process_file(path, file_name):
             audio = MP3(file_path)
             length_in_sec = audio.info.length
             if audio is None or length_in_sec is None or length_in_sec == 0:
-                raise Exception("problem iwth audio file")
+                raise Exception("problem with audio file")
             
         elif file_path.endswith('.wav'):
             with wave.open(file_path, "rb") as wav_file:  # Use correct extension if renamed
                 length_in_sec = wav_file.getnframes() / wav_file.getframerate()
                 if length_in_sec == 0:
-                    raise Exception("problem iwth audio file")
+                    raise Exception("problem with audio file")
     except Exception as e:
         # print(e, file_path)
         return
-    xml_file = path.replace("Final_audio", "Final_XML")+".xml"
-    to_process_dict[xml_file].append([file_name, length_in_sec])
+    return length_in_sec
 
 
 def main(corpus_path):
     to_process = list()
     for root, dirs, files in os.walk(corpus_path):
         for file in files:
-            if (file.endswith(".wav") or file.endswith('.mp3')):
+            if (file.endswith(".xml")):
                 to_process.append([root, file])
     
-    with ThreadPoolExecutor() as executor:
-        futures = [executor.submit(process_file, path, file) for path, file in to_process]
-        for f in tqdm(as_completed(futures), total=len(futures), desc=f"Processing {corpus_path}"): 
-            f.result()
-    for file in to_process_dict:
-        print(file)
-    add_durations()
+    for root, xmlfile in to_process:
+        audio_dir = os.path.join(root.replace("Final_XML", "Final_audio"), xmlfile.split('.')[0])
+        audio_to_process = list()
+        for audio_file in os.listdir(audio_dir):
+            if audio_file.endswith(".mp3") or audio_file.endswith(".wav"):
+                audio_to_process.append([audio_dir, audio_file])
+        
+        res = dict()
+        with ThreadPoolExecutor() as executor:
+            futures = {executor.submit(process_file, path, file): (path, file) for path, file in audio_to_process}
+            for f in tqdm(as_completed(futures), total=len(futures), desc=f"Processing {os.path.join(root, xmlfile)}"): 
+                path, file = futures[f]
+                tmp = f.result()
+                if tmp: res[os.path.join(path, file)] = tmp
+        add_durations(root, xmlfile, res)
+        # exit()
     
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="add the start and end attribute to AUDIO tags in a corpus with segmented audio")
-    parser.add_argument('--path', help='the path to the Final_audio folder containing the audio files associated with a corpus')
+    parser.add_argument('--path', help='the path to the Final_XML folder containing the xml files associated with a corpus')
     args = parser.parse_args()
     main(args.path)
