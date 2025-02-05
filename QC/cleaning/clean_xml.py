@@ -66,6 +66,7 @@ def swap_punctuation(text):
         '‘': "'",  # Left single quotation mark
         '’': "'",   # Right single quotation mark
         'ˈ': "'",
+        'ʼ': "'",  # Modifier Letter Apostrophe (U+02BC)
         'ʻ': "'",
         '『': '"',
         '』': '"'
