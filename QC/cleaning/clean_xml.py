@@ -69,7 +69,8 @@ def swap_punctuation(text):
         'ʼ': "'",  # Modifier Letter Apostrophe (U+02BC)
         'ʻ': "'",
         '『': '"',
-        '』': '"'
+        '』': '"',
+        '⌃': '^', # Caret
     }
     
     # Create a regular expression pattern to match any of the full-width punctuation characters
