@@ -4,10 +4,8 @@ import argparse
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from mutagen.mp3 import MP3
 import wave
-import xml.etree.ElementTree as ET
 import os
 from xml.dom import minidom
-from collections import defaultdict
 from tqdm import tqdm
 
 
@@ -27,25 +25,29 @@ def prettify(elem):
 
 
 def add_durations(path, xml_file, durations):
-        xml_file_path = os.path.join(path, xml_file)
-        if not os.path.exists(xml_file_path):
-            return
-        tree = ET.parse(xml_file_path)
-        root = tree.getroot()
-
-        for audio in root.findall('.//AUDIO'):
-            audio_file = audio.attrib["file"]
-            audio_path = xml_file_path.replace("Final_XML", "Final_audio").replace(".xml", "")
-            audio_path = os.path.join(audio_path, audio_file)
-            if audio_path not in durations:
-                print(f"couldn't find durations for file: {audio_path}")
-                continue
+    xml_file_path = os.path.join(path, xml_file)
+    if not os.path.exists(xml_file_path):
+        return
+    
+    tree = ET.parse(xml_file_path)
+    root = tree.getroot()
+    
+    # Find all parent elements that contain AUDIO elements
+    for parent in root.findall('.//AUDIO/..'):
+        audio = parent.findall('.//AUDIO')[0]
+        audio_file = audio.attrib.get("file", "")
+        audio_path = xml_file_path.replace("Final_XML", "Final_audio").replace(".xml", "")
+        audio_path = os.path.join(audio_path, audio_file)
+        
+        if audio_path not in durations:
+            print(f"Removing AUDIO element for missing duration: {audio_path}")
+            parent.remove(audio)  # Remove the AUDIO element
+        else:
             audio.set("start", "0")
             audio.set("end", str(round(durations[audio_path], 2)))
-              
-            
-        tree.write(xml_file_path, encoding='utf-8', xml_declaration=True)
-        print(f"Updated file: {xml_file_path}")
+    
+    tree.write(xml_file_path, encoding='utf-8', xml_declaration=True)
+    print(f"Updated file: {xml_file_path}")
         
 
 def process_file(path, file_name):

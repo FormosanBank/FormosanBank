@@ -7,7 +7,7 @@ from tqdm import tqdm
 def get_audios(root, file):
     tree = ET.parse(os.path.join(root, file))
     root = tree.getroot()
-    if "audio" not in root.attrib or root.attrib["audio"] != "diarized":
+    if "audio" not in root.attrib or root.attrib["audio"] != "segmented":
         return None
     to_return = list()
     # Iterate over all <AUDIO> elements
