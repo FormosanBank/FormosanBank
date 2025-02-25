@@ -181,37 +181,37 @@ def analyze_and_modify_xml_file(xml_dir, corpora_dir):
                 modified = False
 
                 for sentence in root.findall('.//S'):
-                    form_element = sentence.find('FORM')
-                    
-                    if form_element is not None:
-                        form_text = form_element.text
-                        if form_text is None or form_text == "":
-                            continue
-                        if form_text != unicodedata.normalize("NFC", form_text):
-                            form_element.text = unicodedata.normalize("NFC", form_text)
-                            modified = True
+                    form_elements = sentence.findall('.//FORM')
+                    for form_element in form_elements:
+                        if form_element is not None:
+                            form_text = form_element.text
+                            if form_text is None or form_text == "":
+                                continue
+                            if form_text != unicodedata.normalize("NFC", form_text):
+                                form_element.text = unicodedata.normalize("NFC", form_text)
+                                modified = True
 
-                        # Handle specific <FORM> cases
-                        if not form_text:  # Remove <S> if <FORM> is empty
-                            root.remove(sentence)
-                            modified = True
-                        elif "456otca" in form_text:  # Remove <S> if text contains 456otca
-                            root.remove(sentence)
-                            modified = True
-                        else:
-                            if html.unescape(form_text) != form_text:  # Replace HTML entities
-                                print('HTML entities found')
-                                # log the change
-                                with open(os.path.join(corpora_dir,"html_entities.log"), "a") as f:
-                                    f.write(f"{xml_file}:\n")
-                                    f.write(f"Original: {form_text}\n")
-                                    f.write(f"Modified: {html.unescape(form_text)}\n\n")
-                                form_element.text = html.unescape(form_text)
+                            # Handle specific <FORM> cases
+                            if not form_text:  # Remove <S> if <FORM> is empty
+                                root.remove(sentence)
                                 modified = True
-                            cleaned_form_text = clean_text(form_text, lang="na")
-                            if cleaned_form_text != form_text:
-                                form_element.text = cleaned_form_text
+                            elif "456otca" in form_text:  # Remove <S> if text contains 456otca
+                                root.remove(sentence)
                                 modified = True
+                            else:
+                                if html.unescape(form_text) != form_text:  # Replace HTML entities
+                                    print('HTML entities found')
+                                    # log the change
+                                    with open(os.path.join(corpora_dir,"html_entities.log"), "a") as f:
+                                        f.write(f"{xml_file}:\n")
+                                        f.write(f"Original: {form_text}\n")
+                                        f.write(f"Modified: {html.unescape(form_text)}\n\n")
+                                    form_element.text = html.unescape(form_text)
+                                    modified = True
+                                cleaned_form_text = clean_text(form_text, lang="na")
+                                if cleaned_form_text != form_text:
+                                    form_element.text = cleaned_form_text
+                                    modified = True
 
                     # Clean <TRANSL> elements
                     for transl in sentence.findall('TRANSL'):

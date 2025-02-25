@@ -87,7 +87,7 @@ def analyze_xml_file(xml_file, lang_codes, args):
                 file_issues[issue_type] += count
 
             if args.verbose:
-                logging.info(f"Issues found in {xml_file}: {form_issues}")
+                logging.info(f"Issues found in {xml_file} in sentence with id {sentence.attrib['id']}: {form_issues}")
 
     return file_issues
 

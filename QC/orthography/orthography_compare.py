@@ -174,7 +174,7 @@ def main(args):
     bigram_euclidean_dist = euclidean(c1_bigram_vector, c2_bigram_vector)
     print(f"Euclidean Distance of bigram frequencies: {bigram_euclidean_dist:.2f}")
 
-    vis_diff(all_chars, c1_info['character_frequency'], c2_info['character_frequency'], "_".join(args.o_info_1.split('_')[2:]), "_".join(args.o_info_2.split('_')[2:]), logs_dir, lang)
+    vis_diff(all_chars, c1_info['character_frequency'], c2_info['character_frequency'], args.corpus_1, args.corpus_2, logs_dir, lang)
 
             
     
@@ -184,6 +184,8 @@ if __name__ == "__main__":
     #parser.add_argument('--verbose', action='store_true', help='increase output verbosity')
     parser.add_argument('--o_info_1', help='extracted orthographic info that will be used in comparison. Should be in the orthography folder. format is Lang_Corpus')
     parser.add_argument('--o_info_2', help='extracted orthographic info that will be used in comparison. Should be in the orthography folder. format is Lang_Corpus')
+    parser.add_argument('--corpus_1', help='name of first corpus associated with orthographic info 1')
+    parser.add_argument('--corpus_2', help='name of second corpus associated with orthographic info 2')
     args = parser.parse_args()
 
     # Validate required arguments
@@ -193,5 +195,6 @@ if __name__ == "__main__":
         parser.error(f"The entered orthographic info, {os.path.join(args.o_info_1, 'orthographic_info')}, doesn't exist")
     if not os.path.exists(os.path.join(args.o_info_2, "orthographic_info")):
         parser.error(f"The entered orthographic info, {os.path.join(args.o_info_2, 'orthographic_info')}, doesn't exist")
-
+    if not args.corpus_1 or not args.corpus_2:
+        parser.error("please specify names of corpus 1 and 2")
     main(args)
