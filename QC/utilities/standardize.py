@@ -2,7 +2,6 @@ import os
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
 import argparse
-from lxml import etree
 import re
 
 
@@ -53,19 +52,19 @@ def replace_u_with_o(s_element):
         form.text = form.text.replace("u", "o")
 
 
-def create_standard(s_element):
+def create_standard(element):
     # Find the <FORM> child within each <S> element
-    tmp = s_element.find("FORM[@kindOf='standard']")
+    tmp = element.find("FORM[@kindOf='standard']")
     if tmp is not None:
         return
 
-    form = s_element.find('FORM')
+    form = element.find('FORM')
     form.set("kindOf", "original")
     
     new_form = ET.Element("FORM")
     new_form.set("kindOf", "standard")
     new_form.text = form.text
-    s_element.insert(1, new_form)
+    element.insert(1, new_form)
 
 def main(args):
     if args.corpus:
@@ -87,9 +86,9 @@ def main(args):
                     root = tree.getroot()
 
                     # Iterate over all <S> elements
-                    for s_element in root.findall('.//S'):
-                        create_standard(s_element)
-                        replace_u_with_o(s_element)
+                    for element in root.findall('.//FORM/..'):
+                        create_standard(element)
+                        replace_u_with_o(element)
                         
                     try:
                         xml_string = prettify(root)

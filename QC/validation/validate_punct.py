@@ -37,13 +37,10 @@ def analyze_punctuation(text, lang):
     results['right_quotes'] += text.count(right_quote)
     results['left_double_quote'] += text.count(left_double_quote)
     results['right_double_quote'] += text.count(right_double_quote)
-    results['apostrophes'] += text.count(apostrophe)
-    results['standard_double_quotes'] += text.count(standard_double_quote)
 
     # Paired quotation patterns
     results['paired_single_quotes'] += len(re.findall(r'‘([^’]*)’', text))
     results['paired_double_quotes'] += len(re.findall(r'“([^”]*)”', text))
-    results['paired_standard_double_quotes'] += len(re.findall(r'"([^"]*)"', text))
 
     # Detect and count extra spaces
     results['extra_spaces'] += len(re.findall(r' {2,}', text))
@@ -78,15 +75,21 @@ def analyze_xml_file(xml_file, lang_codes, args):
     root = tree.getroot()
 
     file_issues = defaultdict(int)
-
+    
     for sentence in root.findall('.//S'):
-        form_text = sentence.findtext('FORM')
+        tmp = 0
+        form_elm = sentence.find("FORM[@kindOf='standard']")
+        if form_elm is None:
+            print(f"issue: the text hasn't been standardized in file {xml_file}")
+            break
+        form_text = form_elm.text
         if form_text:
             form_issues = analyze_punctuation(form_text, lang)
             for issue_type, count in form_issues.items():
+                tmp += count
                 file_issues[issue_type] += count
 
-            if args.verbose:
+            if args.verbose and tmp > 0:
                 logging.info(f"Issues found in {xml_file} in sentence with id {sentence.attrib['id']}: {form_issues}")
 
     return file_issues
@@ -147,6 +150,8 @@ def main():
         os.makedirs(log_dir, exist_ok=True)
 
         log_file_path = os.path.join(log_dir, f"punctuation_validation_log_{args.search_by}.txt")
+        with open(log_file_path, "w") as file:
+            pass  # This clears the file
 
         logging.getLogger().handlers.clear()
         logging.basicConfig(filename=log_file_path, level=logging.DEBUG,
