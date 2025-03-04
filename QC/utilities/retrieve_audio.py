@@ -1,4 +1,4 @@
-from huggingface_hub import snapshot_download, login
+from huggingface_hub import snapshot_download
 import argparse
 import os
 import shutil
@@ -96,7 +96,7 @@ def download_huggingface_repo(repo_id, langs):
         while True:
             try:
                 cache_dir = snapshot_download(
-                    repo_id=f"wmohamed24/{repo_id}",
+                    repo_id=f"FormosanBank/{repo_id}",
                     repo_type="dataset",
                     allow_patterns=[f"{lang}/*" for lang in langs],
                     max_workers=100,
@@ -113,7 +113,7 @@ def download_huggingface_repo(repo_id, langs):
         while True:
             try:
                 cache_dir = snapshot_download(
-                    repo_id=f"wmohamed24/{repo_id}",
+                    repo_id=f"FormosanBank/{repo_id}",
                     repo_type="dataset",
                     allow_patterns=[f"{topic}/{lang}/*" for lang in langs for topic in dirs],
                     max_workers=100,
@@ -140,7 +140,8 @@ def main(args, possiblelangs):
     languages = args.languages
 
     corpus_repo = {'ILRDF_Dicts': ['ILRDF_Dicts'], 'NTU_Paiwan_ASR': ['NTU_Paiwan_ASR'], 
-                   'ePark': ['ePark1_Batch1', 'ePark1_Batch2', 'ePark2_Batch1', 'ePark2_Batch2', 'ePark3_Batch1', 'ePark3_Batch2']}
+                   'ePark': ['ePark1_Batch1', 'ePark1_Batch2', 'ePark2_Batch1', 'ePark2_Batch2', 'ePark3_Batch1', 'ePark3_Batch2'],
+                   'Whitehorn':['Whitehorn_Collection']}
     
     if organize_by == "by_corpus":
         if languages == ['All']:
@@ -196,7 +197,8 @@ if __name__ == "__main__":
              'Thao', 'Kavalan', 'Truku', 'Sakizaya', 'Seediq', 'Saaroa', 'Siraya', 'Kanakanavu'],
              "NTU_Paiwan_ASR": ['Paiwan'],
              "ePark": ['Amis', 'Atayal', 'Paiwan', 'Bunun', 'Puyuma', 'Rukai', 'Tsou', 'Saisiyat', 'Yami',
-             'Thao', 'Kavalan', 'Truku', 'Sakizaya', 'Seediq', 'Saaroa', 'Siraya', 'Kanakanavu']}
+             'Thao', 'Kavalan', 'Truku', 'Sakizaya', 'Seediq', 'Saaroa', 'Siraya', 'Kanakanavu'],
+             "Whitehorn":['Paiwan', 'Amis', 'Atayal', 'Seediq']}
 
     parser = argparse.ArgumentParser(description="Download the audio files for a corpus from HuggingFace")
     parser.add_argument('organize_by', choices=['by_language', 'by_corpus'], help="Whether to download audio files organized by corpus or by language")
