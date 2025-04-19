@@ -7,6 +7,7 @@ def remove_windows_special(text):
     """
     Remove special reserved characters to maintain valid filepaths
     in windows. No doubling up of underscores and none at start or end of filename.
+    NB: We dont look at slashes, as working between systems these may change.
     """
 
     pattern = r'[<>:"|?*]'
