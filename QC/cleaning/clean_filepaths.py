@@ -38,6 +38,7 @@ def get_non_conflicting_path(path):
     in the event we removed chars that make them identical.
     """
 
+    # Before checking path exists,
     if not os.path.exists(path):
         return path
     print("Conflicting pathname detected, adding postfix")
@@ -60,8 +61,8 @@ def process_directory(xml_dir):
     """
     for root, dirs, files in os.walk(xml_dir):
         for file in files:
-            if file.endswith(".xml"):
-                sanitize_filename(os.path.join(root, file))
+            if file.endswith(".xml") or file.endswith(".csv"):
+                sanitize_filename(os.path.join(root, file)) 
 
 
 
