@@ -1,4 +1,5 @@
 import csv
+import re
 from xml.etree.ElementTree import Element, SubElement, tostring
 from xml.dom import minidom
 import os
@@ -174,9 +175,15 @@ def create_xml(curr_ePark, out_ePark, file, dialect, lang, lang_code, dir, ePark
         # If an error occurs during prettifying, print an error message
         xml_string = ""
         print(ePark, dir, dialect, lang, file)
-
+    
+    # Before write to path, validate output text for windows paths
+    output_path = os.path.join(xml_output, dialect+".xml")
+    pattern = r'[<>:"|?*]'
+    output_path = re.sub(pattern, '_', output_path)
+    output_path = re.sub(r'_+', '_', output_path)
+    # Write to file
     # Write the XML string to a file
-    with open(os.path.join(xml_output, dialect+".xml"), "w", encoding="utf-8") as xmlfile:
+    with open(output_path, "w", encoding="utf-8") as xmlfile:
         xmlfile.write(xml_string)
         
         

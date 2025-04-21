@@ -85,9 +85,12 @@ def read_article(title, wiki_wiki, lang_path):
 
     # Clean up the page name by removing newline characters and special characters
     title_search = title.replace('\n', '')
+    pattern = r'[<>:"|?*]'
     title = re.sub(r'\.', '', title)  # Remove periods
     title = re.sub(r'/', '', title)          # Remove slashes
     title = re.sub(r' ', '_', title)         # Replace spaces with underscores
+    title = re.sub(pattern, '_', title)      # Replace .NET special chars
+    title = re.sub(r'_+', '_', title)    # Cleanup for repeating underscores
     title = title.replace('\n', '')          # Ensure no newline characters
 
     # Fetch the page info using the Wikipedia API

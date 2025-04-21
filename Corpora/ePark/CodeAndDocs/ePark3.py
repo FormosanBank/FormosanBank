@@ -1,4 +1,5 @@
 import os
+import re
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
 import csv
@@ -248,7 +249,13 @@ def process_epark_sentence_patterns(ePark, path, output_path, dialects, lang_cod
             xml_string = ""
             print(f"Failed to format XML: {dialect}, {ePark}, {idx}, Error: {e}")
 
-        with open(os.path.join(xml_output, dialect+".xml"), "w", encoding="utf-8") as xmlfile:
+        # Before write to path, validate output text for windows paths
+        output_path = os.path.join(xml_output, dialect+".xml")
+        pattern = r'[<>:"|?*]'
+        output_path = re.sub(pattern, '_', output_path)
+        output_path = re.sub(r'_+', '_', output_path)
+        # Write to file
+        with open(output_path, "w", encoding="utf-8") as xmlfile:
             xmlfile.write(xml_string)
 
 def download_audio(save_path, url, file_name):
