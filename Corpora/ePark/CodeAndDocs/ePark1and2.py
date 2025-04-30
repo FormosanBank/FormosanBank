@@ -35,7 +35,7 @@ def download_audio(url, save_path, file_name, lang, dialect , failed_audio):
         else:
             # If the response status is not 200, record the failure
             id = file_name.split(".")[0].split("_")[-1]  # Extract the ID from the file name
-            with open(failed_audio, mode='a', newline='') as file:
+            with open(failed_audio, mode='a', newline='', encoding='utf-8') as file:
                 writer = csv.writer(file)
                 writer.writerow([url, file_name, lang, dialect, id, response.status_code])
             
@@ -43,7 +43,7 @@ def download_audio(url, save_path, file_name, lang, dialect , failed_audio):
     except Exception as e:
         # If an exception occurs, record the failure
         id = file_name.split(".")[0].split("_")[-1]
-        with open(failed_audio, mode='a', newline='') as file:
+        with open(failed_audio, mode='a', newline='', encoding='utf-8') as file:
             writer = csv.writer(file)
             writer.writerow([url, file_name, lang, dialect, id, e])
         
@@ -77,10 +77,10 @@ def create_xml(curr_ePark, out_ePark, file, dialect, lang, lang_code, dir, ePark
     
     # Create the output directories if they don't exist
     if not os.path.exists(xml_output):
-        os.mkdir(xml_output)
+        os.makedirs(xml_output)
 
     if not os.path.exists(audio_output):
-        os.mkdir(audio_output)
+        os.makedirs(audio_output)
 
     # Create the root element of the XML
     root = Element("TEXT")
@@ -177,10 +177,12 @@ def create_xml(curr_ePark, out_ePark, file, dialect, lang, lang_code, dir, ePark
         print(ePark, dir, dialect, lang, file)
     
     # Before write to path, validate output text for windows paths
-    output_path = os.path.join(xml_output, dialect+".xml")
     pattern = r'[<>:"|?*]'
-    output_path = re.sub(pattern, '_', output_path)
-    output_path = re.sub(r'_+', '_', output_path)
+    dialect = re.sub(pattern, '_', dialect)
+    dialect = re.sub(r'_+', '_', dialect)
+    output_path = os.path.join(xml_output, dialect+".xml")
+
+
     # Write to file
     # Write the XML string to a file
     with open(output_path, "w", encoding="utf-8") as xmlfile:
@@ -196,7 +198,7 @@ def ePark1_2(curr_dir, dialects, lang_codes, ePark_ver):
     # Define the output directory for the final XML files
     output_dir = os.path.join(curr_dir, "Final_XML")
     if not os.path.exists(output_dir):
-        os.mkdir(output_dir)
+        os.makedirs(output_dir)
 
     # Iterate over the directories in the ePark version directory
     for dir in os.listdir(os.path.join(curr_dir, ePark_ver)):
