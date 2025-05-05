@@ -50,7 +50,7 @@ def remove_links(text, file_path):
     no_links_text = re.sub(pattern, '', text)
 
     # Log the changes
-    with open('link_removal.log', 'a') as log_file:
+    with open('link_removal.log', 'a', encoding='utf-8') as log_file:
         for match in matches:
             # Find the line containing the match
             match_start = match.start()
@@ -93,7 +93,7 @@ def remove_after_marker(paragraph, file_path, citations_to_remove):
     #Remove whatever was found
     markerPositions=[item for item in markerPositions if item != -1]
     if len(markerPositions) != 0:  # Make sure the marker string is found
-        with open('citations_remove.log', 'a') as log_file:
+        with open('citations_remove.log', 'a', encoding='utf-8') as log_file:
             log_file.write(f"File: {file_path if file_path else 'N/A'}\n")
             log_file.write(f"Trigger: {paragraph[min(markerPositions):min(markerPositions)+15]}\n")
             log_file.write(f"Removed: {paragraph[min(markerPositions):]}\n")
@@ -124,7 +124,7 @@ def remove_citation_markers(text, file_path):
     no_citations_text = re.sub(pattern, ' ', text)
 
     # Log the changes
-    with open('citation_marker_removal.log', 'a') as log_file:
+    with open('citation_marker_removal.log', 'a', encoding='utf-8') as log_file:
         for match in matches:
             # Find the line containing the match
             match_start = match.start()
@@ -151,13 +151,14 @@ def create_xml(articles_path, xml_path, lang_code, lang, citations_to_remove):
     month = today.strftime("%B")
 
     print(f"creating XML of {lang_code}")
+
     for dir in os.listdir(articles_path):
         if dir.startswith("."):
             continue
         xml_lang_path = os.path.join(xml_path, dir)
         article_lang_path = os.path.join(articles_path, dir)
         if not os.path.exists(xml_lang_path):
-            os.mkdir(xml_lang_path)
+            os.makedirs(xml_lang_path)
         for title in os.listdir(article_lang_path):
             if title.startswith("."):
                 continue

@@ -1,4 +1,5 @@
 import os
+import re
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
 import csv
@@ -248,7 +249,15 @@ def process_epark_sentence_patterns(ePark, path, output_path, dialects, lang_cod
             xml_string = ""
             print(f"Failed to format XML: {dialect}, {ePark}, {idx}, Error: {e}")
 
-        with open(os.path.join(xml_output, dialect+".xml"), "w", encoding="utf-8") as xmlfile:
+        # Before write to path, validate output text for windows paths
+        write_path = os.path.join(xml_output, dialect+".xml")
+        drive, split_path = os.path.splitdrive(write_path)
+        pattern = r'[<>:"|?*]'
+        split_path = re.sub(pattern, '_', split_path)
+        split_path = re.sub(r'_+', '_', split_path)
+        write_path = drive + split_path
+        # Write to file
+        with open(write_path, "w", encoding="utf-8") as xmlfile:
             xmlfile.write(xml_string)
 
 def download_audio(save_path, url, file_name):
@@ -418,7 +427,7 @@ def process_epark_topics_with_csv(ePark, path, output_path, dialects, lang_codes
             root = xml_dict[idx if len(idx) > 1 else '0'+idx]
             root.append(s_element)
 
-        with open(os.path.join(output_path, "ep3_"+ePark, "failed_audio_copy.csv"), mode='w', newline='') as file:
+        with open(os.path.join(output_path, "ep3_"+ePark, "failed_audio_copy.csv"), mode='w', newline='', encoding='utf-8') as file:
             writer = csv.writer(file)
             writer.writerow(["ePark topic", "audio path", "lang", "dialect", "idx", "id"])
             writer.writerows(failed_audio)
@@ -443,7 +452,7 @@ def process_epark_topics_with_csv(ePark, path, output_path, dialects, lang_codes
     
     # Write failed audio entries
     failed_audio_file = os.path.join(output_path, "ep3_"+ePark, "failed_audio_download.csv")
-    with open(failed_audio_file, mode='w', newline='') as file:
+    with open(failed_audio_file, mode='w', newline='', encoding='utf-8') as file:
         writer = csv.writer(file)
         writer.writerow(["url", "file_name", "lang", "dialect", "id", "error"])
         writer.writerows(failed_audio_entries)
@@ -579,7 +588,7 @@ def process_epark_conversation_reading(ePark, path, output_path, dialects, lang_
             for item in to_read_root.findall('.//vocabulary'):
                 process_topics4and5_items(item, "Ab_", "Ch_", root, path, idx, audio_output, ePark, lang, dialect, failed_audio)
 
-    with open(os.path.join(output_path, "ep3_"+ePark, "failed_audio_copy.csv"), mode='w', newline='') as file:
+    with open(os.path.join(output_path, "ep3_"+ePark, "failed_audio_copy.csv"), mode='w', newline='', encoding='utf-8') as file:
         writer = csv.writer(file)
         writer.writerow(["ePark topic", "audio path", "lang", "dialect", "idx", "id"])
         writer.writerows(failed_audio)
@@ -600,7 +609,7 @@ def process_epark_conversation_reading(ePark, path, output_path, dialects, lang_
                 pass
         
         failed_audio_file = os.path.join(output_path, "ep3_"+ePark, "failed_audio_download.csv")
-        with open(failed_audio_file, mode='w', newline='') as file:
+        with open(failed_audio_file, mode='w', newline='', encoding='utf-8') as file:
             writer = csv.writer(file)
             writer.writerow(["url", "file_name", "lang", "dialect", "id", "error"])
             writer.writerows(failed_audio_entries)
