@@ -22,8 +22,9 @@ def read_file_with_utf8(file_path):
     try:
         with open(file_path, 'r', encoding='utf-8') as file:
             return file.read()
-    except UnicodeDecodeError:
+    except UnicodeDecodeError as e:
         print(f"Warning: Failed to decode {file_path} with UTF-8.")
+        print(e)
         encoding = detect_encoding(file_path)
     with open('encoding_detection.log', 'a') as log_file:
         log_file.write(f"File: {file_path}, Encoding: {encoding}\n")
@@ -155,6 +156,9 @@ def create_xml(articles_path, xml_path, lang_code, lang, citations_to_remove):
     for dir in os.listdir(articles_path):
         if dir.startswith("."):
             continue
+        if(dir!=lang): #Only parse directories that match current language
+            continue
+
         xml_lang_path = os.path.join(xml_path, dir)
         article_lang_path = os.path.join(articles_path, dir)
         if not os.path.exists(xml_lang_path):

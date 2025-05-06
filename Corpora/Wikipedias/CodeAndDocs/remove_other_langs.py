@@ -61,7 +61,7 @@ def remove_big_blocks(text, file_path):
             modifications.append((match_start, match_end))
     
     # Apply and log the modifications in reverse order to avoid messing up the indices
-    with open('remove_large_blocks.log', 'a') as log_file:
+    with open('remove_large_blocks.log', 'a', encoding='utf-8') as log_file:
         for start, end in sorted(modifications, reverse=True):
             log_file.write(f"File: {file_path if file_path else 'N/A'}\n")
             log_file.write(f"Text: {text[start:end]}\n")
@@ -86,7 +86,7 @@ def remove_empty_parentheses(text, file_path):
         modifications.append((match_start, match_end))
     
     # Apply and log the modifications in reverse order to avoid messing up the indices
-    with open('remove_empty_parentheses.log', 'a') as log_file:
+    with open('remove_empty_parentheses.log', 'a', encoding='utf-8') as log_file:
         for start, end in sorted(modifications, reverse=True):
             log_file.write(f"File: {file_path if file_path else 'N/A'}\n")
             log_file.write(f"Text: {text[start:end]}\n")
@@ -116,7 +116,7 @@ def remove_continuous_otherlang(text, file_path):
             modifications.append((match_start, match_end))
             
     # Apply and log the modifications in reverse order to avoid messing up the indices
-    with open('remove_character_strings.log', 'a') as log_file:
+    with open('remove_character_strings.log', 'a', encoding='utf-8') as log_file:
         for start, end in sorted(modifications, reverse=True):
             forlog = text[max(0,start-50):start] + "|||" + text[start:end] + "|||" + text[end:min(len(text),end+50)]
             # Get 50 characters before and after the match
@@ -140,7 +140,7 @@ def remove_continuous_otherlang(text, file_path):
                 modifications.append((match_start, match_end))
 
     # Apply and log the modifications in reverse order to avoid messing up the indices
-    with open('remove_character_strings.log', 'a') as log_file:
+    with open('remove_character_strings.log', 'a', encoding='utf-8') as log_file:
         for start, end in sorted(modifications, reverse=True):
             forlog = text[max(0,start-50):start] + "|||" + text[start:end] + "|||" + text[end:min(len(text),end+50)]
             # Get 50 characters before and after the match
@@ -179,7 +179,7 @@ def remove_probable_references(text, filepath):
         latin_pattern = r'[^A-Za-z0-9\u00C0-\u00FF\u0100-\u017F\u0180-\u024F\u1E00-\u1EFF]'
         remaining_latin = re.sub(latin_pattern, '', match_text)
         if len(remaining_latin) < lenmatch/2:
-            with open('remove_possible_citations.log', 'a') as log_file:
+            with open('remove_possible_citations.log', 'a', encoding='utf-8') as log_file:
                 text = text.replace(match.group(0), '\n') #go ahead and remove from text
                 log_file.write(f"File: {filepath if filepath else 'N/A'}:\n")
                 log_file.write(f"Removed: {match.group(0)}\n")
@@ -232,7 +232,7 @@ def remove_annotations(text, filepath):
 
     # Apply the modifications in reverse order to avoid messing up the indices
     for start, end in sorted(modifications, reverse=True):
-        with open('remove_Annotations.log', 'a') as log_file:
+        with open('remove_Annotations.log', 'a', encoding='utf-8') as log_file:
             forlog = text[max(0,start-50):start] + "|||" + text[start:end] + "|||" + text[end:min(len(text),end+50)]
             # Get 50 characters before and after the match
             log_file.write(f"File: {filepath if filepath else 'N/A'}\n")
