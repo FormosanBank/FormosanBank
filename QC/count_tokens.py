@@ -1,6 +1,7 @@
 import xml.etree.ElementTree as ET
 import os
 import argparse
+import json
 from collections import defaultdict
 # Determine the language of the file based on the path
 def get_lang(path, file, langs):
@@ -72,7 +73,10 @@ def main(corpora_path):
     #for lang in tokens_by_lang:
         #print(lang, ": ", tokens_by_lang[lang], "\n\n")
     #print("\n=====tokens count per language======")
-    print(tokens_by_lang)
+    print(json.dumps(tokens_by_lang, indent=4))
+    #default print
+    #print("straight print:")
+    #print(tokens_by_lang)
     #print("\n=====tokens count per source======")
     #print(tokens_by_source)
     #print("\n=====tokens total count======")

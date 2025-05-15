@@ -26,9 +26,7 @@ jobs:
         cp QC/tokens_delta.py /tmp/token_analysis/
     - name: Run token count on latest commit
       run: |
-        python3 /tmp/token_analysis/count_tokens.py ./Corpora > /tmp/current_token_count.txt
-    - name: Debug print token count
-      run: cat /tmp/current_token_count.txt
+        python3 /tmp/token_analysis/count_tokens.py ./Corpora > /tmp/current_token_count.json
     - name: Get commit from 6 months ago
       id: oldcommit
       run: |
@@ -38,7 +36,7 @@ jobs:
       run: git checkout ${{ steps.oldcommit.outputs.commit_sha }}
     - name: Run token count on old commit
       run: |
-        python3 /tmp/token_analysis/count_tokens.py ./Corpora > /tmp/old_token_count.txt
+        python3 /tmp/token_analysis/count_tokens.py ./Corpora > /tmp/old_token_count.json
     - name: Compute token deltas
       run: |
         python3 /tmp/token_analysis/tokens_delta.py \
