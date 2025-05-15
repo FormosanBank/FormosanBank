@@ -18,12 +18,16 @@ jobs:
       uses: actions/setup-python@v5
       with:
         python-version: '3.10'
+    - name: Set up packages
+      run: |
+        python3 -m pip install -r requirements.txt
     - name: Create temp analysis directory
       run: mkdir -p /tmp/token_analysis
     - name: Copy token scripts to temp folder
       run: |
         cp QC/count_tokens.py /tmp/token_analysis/
         cp QC/tokens_delta.py /tmp/token_analysis/
+        cp QC/plot_deltas.py /tmp/token_analysis/
     - name: Run token count on latest commit
       run: |
         python3 /tmp/token_analysis/count_tokens.py ./Corpora > /tmp/current_token_count.json
@@ -45,3 +49,10 @@ jobs:
           /tmp/token_delta.json
     - name: Show token delta
       run: cat /tmp/token_delta.json
+    - name: Generate plots
+      run: python3 /tmp/token_analysis/plot_deltas.py /tmp/token_delta.json
+    - name: Upload plot artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: language-dialect-deltas
+        path: language_dialect_deltas.png
