@@ -5,6 +5,11 @@ on:
       parameter:
         description: My Parameter
   pull_request:  # This was the line with incorrect indentation
+  push:
+    branch:
+      - 'visualizations'
+    tags:
+      - v1.*
     
 jobs:
   compare-token-counts:
@@ -28,9 +33,12 @@ jobs:
         cp QC/count_tokens.py /tmp/token_analysis/
         cp QC/tokens_delta.py /tmp/token_analysis/
         cp QC/plot_deltas.py /tmp/token_analysis/
+        cp QC/plot_counts.py /tmp/token_analysis/
     - name: Run token count on latest commit
       run: |
         python3 /tmp/token_analysis/count_tokens.py ./Corpora > /tmp/current_token_count.json
+    - name: Show token delta
+      run: cat /tmp/current_token_count.json
     - name: Get commit from 6 months ago
       id: oldcommit
       run: |
@@ -41,6 +49,8 @@ jobs:
     - name: Run token count on old commit
       run: |
         python3 /tmp/token_analysis/count_tokens.py ./Corpora > /tmp/old_token_count.json
+    - name: Show old token count
+      run: cat /tmp/old_token_count.json
     - name: Compute token deltas
       run: |
         python3 /tmp/token_analysis/tokens_delta.py \
@@ -49,10 +59,27 @@ jobs:
           /tmp/token_delta.json
     - name: Show token delta
       run: cat /tmp/token_delta.json
-    - name: Generate plots
+
+    - name: Generate plots for delta
       run: python3 /tmp/token_analysis/plot_deltas.py /tmp/token_delta.json
     - name: Upload plot artifact
       uses: actions/upload-artifact@v4
       with:
         name: language-dialect-deltas
         path: language_dialect_deltas.png
+
+    - name: Generate plots for new count
+      run: python3 /tmp/token_analysis/plot_counts.py /tmp/current_token_count.json 0
+    - name: Upload plot artifact current count
+      uses: actions/upload-artifact@v4
+      with:
+        name: language-dialect-plot
+        path: plot.png
+
+    - name: Generate plots for new count simplified
+      run: python3 /tmp/token_analysis/plot_counts.py /tmp/current_token_count.json 1
+    - name: Upload plot artifact current count
+      uses: actions/upload-artifact@v4
+      with:
+        name: language-plot
+        path: plot.png

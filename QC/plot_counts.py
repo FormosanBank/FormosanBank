@@ -5,9 +5,9 @@ import seaborn as sns
 import pandas as pd
 import colorsys
 
-def plot_charts(deltas_path):
+def plot_charts(path, mode):
     # Load data
-    with open(deltas_path) as f:
+    with open(path) as f:
         data = json.load(f)
 
     # Flatten data into a DataFrame
@@ -73,17 +73,21 @@ def plot_charts(deltas_path):
     for lang in languages:
         dialects = df[df["Language"] == lang]
         for _, row in dialects.iterrows():
+            if mode[0] == '1' and row["Dialect"] != "Total Sum":
+                print(f"skippin{row}, {lang}")
+                continue
             bars.append(row["Delta"])
             x_labels.append(f'{lang}-{row["Dialect"]}')
             colors.append(dialect_colors[(lang, row["Dialect"])])
 
     plt.bar(range(len(bars)), bars, color=colors, align="center")
-    plt.xticks(range(len(bars)), x_labels, rotation=90, ha='center', fontsize = 10)
-    plt.ylabel("Delta")
-    plt.title("Token Deltas by Language and Dialect (Grouped by Language)")
+    plt.xticks(range(len(bars)), x_labels, rotation=90, ha='center', fontsize = 8)
+    plt.ylabel("Count")
+    plt.title("Token Count by Language and Dialect (Grouped by Language)")
     plt.tight_layout()
-    plt.savefig("language_dialect_deltas.png")
+    plt.savefig("plot.png")
 
 if __name__ == "__main__":
-    deltas_path = sys.argv[1]
-    plot_charts(deltas_path)
+    path = sys.argv[1]
+    mode = sys.argv[2]
+    plot_charts(path, mode)
