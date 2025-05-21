@@ -1,0 +1,17 @@
+---
+icon: square-terminal
+---
+
+# Developers
+
+This section is dedicated to developers who wish to contribute to the project, build tools utilizing the data, or integrate FormosanBank resources into their own applications.
+
+### What You'll Find in This Section
+
+This section is designed to provide technical documentation, guidelines, and resources to help developers navigate and work with FormosanBank efficiently. Here’s what you can expect:
+
+* **Data Access & API Usage** – Learn how to interact with the FormosanBank datasets, including retrieving, processing, and integrating data.
+* **Codebase & Repository Structure** – Understand the structure of the FormosanBank repositories and how to contribute to the development.
+* **Audio Processing & NLP** – Explore how to work with the provided audio and text corpora, including tools for transcription, speech synthesis, and natural language processing (NLP).
+
+Whether you're developing NLP applications, improving our database, or integrating FormosanBank into your own projects, this section will provide the resources you need to get started.&#x20;
