@@ -41,7 +41,6 @@ In addition to the wide range of corpora already incorporated into FormosanBank,
 * Tung's Descriptive study of Tsou (Tsou)
 * Jeng (1992) Topic and focus in Bunun (Bunun)
 * Blust's Thao Dictionary (Thao)
-* Rau & Dong (2006) Yami texts with reference grammar and dictionary (Yami)
 
 ***
 
