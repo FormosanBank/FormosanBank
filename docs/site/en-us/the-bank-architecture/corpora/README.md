@@ -13,7 +13,7 @@ Welcome to the FormosanBank Corpora section! Here, you’ll find comprehensive d
 * [NTU Paiwan ASR](ntu-paiwan-asr.md)
 * [Virginia Fey's Amis Dictionary](virginia-feys-amis-dictionary.md)
 * [Paiwan Stories](paiwan-stories.md)
-* [Rau-Dong](https://github.com/FormosanBank/FormosanBankGitbook/commit/f0cc50e3b01ff1e981e76aff2e468f107296a2a7) 
+* [Rau-Dong](RauDong.md) 
 
 ***
 
