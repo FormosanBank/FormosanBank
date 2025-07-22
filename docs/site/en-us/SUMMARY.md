@@ -22,7 +22,7 @@
   * [NTU Paiwan ASR](the-bank-architecture/corpora/ntu-paiwan-asr.md)
   * [Virginia Fey's Amis Dictionary](the-bank-architecture/corpora/virginia-feys-amis-dictionary.md)
   * [Paiwan Stories](the-bank-architecture/corpora/paiwan-stories.md)
-  * [Rau-Dong](RauDong.md)
+  * [Rau-Dong](the-bank-architecture/corpora/RauDong.md)
 * [Developers](the-bank-architecture/developers/README.md)
   * [🤗 HuggingFace](the-bank-architecture/developers/huggingface.md)
   * [Folder structure](the-bank-architecture/developers/folder-structure.md)
