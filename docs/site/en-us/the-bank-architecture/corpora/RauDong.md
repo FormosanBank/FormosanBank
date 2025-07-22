@@ -2,7 +2,7 @@
 
 ### Overview
 
-[The Rau-Dong Corpus](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/RauDong/XML) contains 20 glossed texts from Rau and Dong (2006).
+[The Rau-Dong Corpus](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/RauDong/XML) contains 20 glossed texts in Siraya from Rau and Dong (2006).
 
 ***
 
