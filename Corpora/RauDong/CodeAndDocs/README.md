@@ -1,10 +1,16 @@
+# Formosan-RauDong
 
-# Rau and Dong
-
-This repo contains 20 glossed texts from Rau and Dong (2006). The nature of how the machine-readable files were derived means that the process is not easily reproducible, but it should be fairly accurate.
+This repository contains the 20 glossed texts from 
 
 Rau, D. V., and Dong, M. N. (2006). Yami texts with reference grammar and dictionary. Institute of Linguistics, Academia Sinica.
 
-This corpus is available CC BY-NC, with permission of the publisher.
+The nature of how the machine-readable version was obtained is such that we do not have a reproducible pipeline. 
+
+## References
+
+Rau, D. V., and Dong, M. N. (2006). Yami texts with reference grammar and dictionary. Institute of Linguistics, Academia Sinica.
 
 
+## License
+
+The copyright holder made this corpus available CC BY-NC.
