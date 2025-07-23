@@ -76,6 +76,7 @@
           <xs:restriction base="xs:string">
             <xs:enumeration value="original"/>
             <xs:enumeration value="standard"/>
+            <xs:enumeration value="alternate"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
