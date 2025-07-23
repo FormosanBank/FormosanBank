@@ -1,4 +1,4 @@
-# Formosan-MontgomeryTexts
+# The Montgomery Texts
 
 This repository contains the 3 glossed texts [found here](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/MontgomeryTexts/CodeAndDocs/Original.pdf) from 
 
