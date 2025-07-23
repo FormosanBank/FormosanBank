@@ -13,7 +13,8 @@ Welcome to the FormosanBank Corpora section! Here, you’ll find comprehensive d
 * [NTU Paiwan ASR](ntu-paiwan-asr.md)
 * [Virginia Fey's Amis Dictionary](virginia-feys-amis-dictionary.md)
 * [Paiwan Stories](paiwan-stories.md)
-* [Rau-Dong](RauDong.md)  
+* [Rau-Dong](RauDong.md)
+* [The Montgomery Texts](MontgomeryTexts.md)
 
 ***
 
@@ -24,7 +25,6 @@ In addition to the wide range of corpora already incorporated into FormosanBank,
 * NTU Corpus (Various languages)
 * Glosbe (Amis, Truku, Atayal, Saisayat)&#x20;
 * Xuan's books (Paiwan)
-* Amis Texts - Montgomery (Amis)
 * Wakelin (1958) Yami texts (Yami)
 * Matthew's Gospel and John's Gospel (Siraya)
 * 100 Paiwan Texts (Paiwan)
