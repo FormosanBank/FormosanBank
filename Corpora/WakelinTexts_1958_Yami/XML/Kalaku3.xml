@@ -1,561 +1,701 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" ?>
 <TEXT id="Kalaku3" xml:lang="tao" source="Yami text. Kalaku." copyright="CC-BY-NC-ND" citation="Indosan, S., Wakelin, G., Dararyaw, S., and Kalaku, S. (1958). Yami texts. Work Papers of the Summer Institute of Linguistics, University of North Dakota Session: Vol. 2, Article 7. 10.31356/silwp.vol02.07" BibTeX_citation="@article{indosan1958yami, title={Yami texts}, year={1958}, author={Indosan, Samen and Wakelin, Grace and Dararyaw, Sinan and Kalaku, Saman}, journal={Work Papers of the Summer Institute of Linguistics, University of North Dakota Session}, volume={2}, number={7}, doi={10.31356/silwp.vol02.07}">
     <S id="S1">
         <FORM kindOf="original">inyuranayam mang-anak-u-em anu amyan su panchy-an-da-ninyu-em</FORM>
+        <FORM kindOf="standard">inyoranayam mang-anak-o-em ano amyan so panchy-an-da-ninyo-em</FORM>
         <TRANSL xml:lang="en">My dear children, when the foreigner in Imurud is lecturing all of you</TRANSL>
         <W id="S1W1">
             <FORM kindOf="original">inyuranayam</FORM>
+            <FORM kindOf="standard">inyoranayam</FORM>
             <TRANSL xml:lang="en">UNAN</TRANSL>
         </W>
         <W id="S1W2">
             <FORM kindOf="original">mang-anak-u-em</FORM>
+            <FORM kindOf="standard">mang-anak-o-em</FORM>
             <TRANSL xml:lang="en">dear-children-my</TRANSL>
             <M id="S1W2M1">
                 <FORM kindOf="original">mang</FORM>
+                <FORM kindOf="standard">mang</FORM>
                 <TRANSL xml:lang="en">dear</TRANSL>
             </M>
             <M id="S1W2M2">
                 <FORM kindOf="original">anak</FORM>
+                <FORM kindOf="standard">anak</FORM>
                 <TRANSL xml:lang="en">children</TRANSL>
             </M>
             <M id="S1W2M3">
                 <FORM kindOf="original">u</FORM>
+                <FORM kindOf="standard">o</FORM>
                 <TRANSL xml:lang="en">my</TRANSL>
             </M>
             <M id="S1W2M4">
                 <FORM kindOf="original">em</FORM>
-                <TRANSL xml:lang="en"></TRANSL>
+                <FORM kindOf="standard">em</FORM>
+                <TRANSL xml:lang="en"/>
             </M>
         </W>
         <W id="S1W3">
             <FORM kindOf="original">anu</FORM>
+            <FORM kindOf="standard">ano</FORM>
             <TRANSL xml:lang="en">when</TRANSL>
         </W>
         <W id="S1W4">
             <FORM kindOf="original">amyan</FORM>
+            <FORM kindOf="standard">amyan</FORM>
             <TRANSL xml:lang="en">is</TRANSL>
         </W>
         <W id="S1W5">
             <FORM kindOf="original">su</FORM>
+            <FORM kindOf="standard">so</FORM>
             <TRANSL xml:lang="en">CM</TRANSL>
         </W>
         <W id="S1W6">
             <FORM kindOf="original">panchy-an-da-ninyu-em</FORM>
+            <FORM kindOf="standard">panchy-an-da-ninyo-em</FORM>
             <TRANSL xml:lang="en">say-unan-they-you(pl)</TRANSL>
             <M id="S1W6M1">
                 <FORM kindOf="original">panchy</FORM>
+                <FORM kindOf="standard">panchy</FORM>
                 <TRANSL xml:lang="en">say</TRANSL>
             </M>
             <M id="S1W6M2">
                 <FORM kindOf="original">an</FORM>
+                <FORM kindOf="standard">an</FORM>
                 <TRANSL xml:lang="en">unan</TRANSL>
             </M>
             <M id="S1W6M3">
                 <FORM kindOf="original">da</FORM>
+                <FORM kindOf="standard">da</FORM>
                 <TRANSL xml:lang="en">they</TRANSL>
             </M>
             <M id="S1W6M4">
                 <FORM kindOf="original">ninyu</FORM>
+                <FORM kindOf="standard">ninyo</FORM>
                 <TRANSL xml:lang="en">you(pl)</TRANSL>
             </M>
             <M id="S1W6M5">
                 <FORM kindOf="original">em</FORM>
+                <FORM kindOf="standard">em</FORM>
                 <TRANSL xml:lang="en">unan</TRANSL>
             </M>
         </W>
     </S>
     <S id="S2">
-        <FORM kindOf="original"> tuka-malu-maluvut anu ipanchi-di-nyu nu tau d-imurud a-dewdew</FORM>
+        <FORM kindOf="original">tuka-malu-maluvut anu ipanchi-di-nyu nu tau d-imurud a-dewdew</FORM>
+        <FORM kindOf="standard">toka-malo-malovot ano ipanchi-di-nyo no tao d-imorod a-dewdew</FORM>
         <TRANSL xml:lang="en">My dear children, when the foreigner in Imurud is lecturing all of you</TRANSL>
         <W id="S2W1">
             <FORM kindOf="original">tuka-malu-maluvut</FORM>
+            <FORM kindOf="standard">toka-malo-malovot</FORM>
             <TRANSL xml:lang="en">unan-rdpl-all</TRANSL>
             <M id="S2W1M1">
                 <FORM kindOf="original">tuka</FORM>
+                <FORM kindOf="standard">toka</FORM>
                 <TRANSL xml:lang="en">unan</TRANSL>
             </M>
             <M id="S2W1M2">
                 <FORM kindOf="original">malu</FORM>
+                <FORM kindOf="standard">malo</FORM>
                 <TRANSL xml:lang="en">rdpl</TRANSL>
             </M>
             <M id="S2W1M3">
                 <FORM kindOf="original">maluvut</FORM>
+                <FORM kindOf="standard">malovot</FORM>
                 <TRANSL xml:lang="en">all</TRANSL>
             </M>
         </W>
-            <W id="S2W2">
+        <W id="S2W2">
             <FORM kindOf="original">anu</FORM>
+            <FORM kindOf="standard">ano</FORM>
             <TRANSL xml:lang="en">when</TRANSL>
         </W>
-            <W id="S2W3">
-                <FORM kindOf="original">ipanchi-di-nyu</FORM>
-                <TRANSL xml:lang="en">say-to-you(pl)</TRANSL>
-                <M id="S2W3M1">
-                    <FORM kindOf="original">ipanchi</FORM>
-                    <TRANSL xml:lang="en">say</TRANSL>
-                </M>
+        <W id="S2W3">
+            <FORM kindOf="original">ipanchi-di-nyu</FORM>
+            <FORM kindOf="standard">ipanchi-di-nyo</FORM>
+            <TRANSL xml:lang="en">say-to-you(pl)</TRANSL>
+            <M id="S2W3M1">
+                <FORM kindOf="original">ipanchi</FORM>
+                <FORM kindOf="standard">ipanchi</FORM>
+                <TRANSL xml:lang="en">say</TRANSL>
+            </M>
             <M id="S2W3M2">
                 <FORM kindOf="original">di</FORM>
+                <FORM kindOf="standard">di</FORM>
                 <TRANSL xml:lang="en">to</TRANSL>
             </M>
             <M id="S2W3M3">
                 <FORM kindOf="original">nyu</FORM>
+                <FORM kindOf="standard">nyo</FORM>
                 <TRANSL xml:lang="en">you(pl)</TRANSL>
             </M>
         </W>
         <W id="S2W4">
             <FORM kindOf="original">nu</FORM>
+            <FORM kindOf="standard">no</FORM>
             <TRANSL xml:lang="en">UNAN</TRANSL>
         </W>
         <W id="S2W5">
             <FORM kindOf="original">tau</FORM>
+            <FORM kindOf="standard">tao</FORM>
             <TRANSL xml:lang="en">person</TRANSL>
         </W>
         <W id="S2W6">
             <FORM kindOf="original">d-imurud</FORM>
+            <FORM kindOf="standard">d-imorod</FORM>
             <TRANSL xml:lang="en">from-Imurud</TRANSL>
             <M id="S2W6M1">
                 <FORM kindOf="original">d</FORM>
+                <FORM kindOf="standard">d</FORM>
                 <TRANSL xml:lang="en">from</TRANSL>
             </M>
             <M id="S2W6M2">
                 <FORM kindOf="original">imurud</FORM>
+                <FORM kindOf="standard">imorod</FORM>
                 <TRANSL xml:lang="en">Imurud</TRANSL>
             </M>
         </W>
         <W id="S2W7">
             <FORM kindOf="original">a-dewdew</FORM>
+            <FORM kindOf="standard">a-dewdew</FORM>
             <TRANSL xml:lang="en">unan-foreigner</TRANSL>
             <M id="S2W7M1">
                 <FORM kindOf="original">a</FORM>
+                <FORM kindOf="standard">a</FORM>
                 <TRANSL xml:lang="en">unan</TRANSL>
             </M>
             <M id="S2W7M2">
                 <FORM kindOf="original">dewdew</FORM>
+                <FORM kindOf="standard">dewdew</FORM>
                 <TRANSL xml:lang="en">foreigner</TRANSL>
             </M>
         </W>
     </S>
     <S id="S3">
         <FORM kindOf="original">tapyapyaenika-sip-siprutan-di-nyu</FORM>
-        <TRANSL xml:lang="en">and keeps striking you, </TRANSL>
+        <FORM kindOf="standard">tapyapyaenika-sip-siprotan-di-nyo</FORM>
+        <TRANSL xml:lang="en">and keeps striking you,</TRANSL>
         <W id="S3W1">
             <FORM kindOf="original">tapyapyaenika-sip-siprutan-di-nyu</FORM>
+            <FORM kindOf="standard">tapyapyaenika-sip-siprotan-di-nyo</FORM>
             <TRANSL xml:lang="en">unan-rdpl-strike-to-you(pl)</TRANSL>
             <M id="S3W1M1">
                 <FORM kindOf="original">tapyapyaenika</FORM>
+                <FORM kindOf="standard">tapyapyaenika</FORM>
                 <TRANSL xml:lang="en">unan</TRANSL>
             </M>
             <M id="S3W1M2">
                 <FORM kindOf="original">sip</FORM>
+                <FORM kindOf="standard">sip</FORM>
                 <TRANSL xml:lang="en">rdpl</TRANSL>
             </M>
             <M id="S3W1M3">
                 <FORM kindOf="original">siprutan</FORM>
+                <FORM kindOf="standard">siprotan</FORM>
                 <TRANSL xml:lang="en">strike</TRANSL>
             </M>
             <M id="S3W1M4">
                 <FORM kindOf="original">di</FORM>
+                <FORM kindOf="standard">di</FORM>
                 <TRANSL xml:lang="en">to</TRANSL>
             </M>
             <M id="S3W1M5">
                 <FORM kindOf="original">nyu</FORM>
+                <FORM kindOf="standard">nyo</FORM>
                 <TRANSL xml:lang="en">you(pl)</TRANSL>
             </M>
         </W>
     </S>
     <S id="S4">
         <FORM kindOf="original">amuri agapen isu i-na-nanaw-namen-di-nyu a-raraku</FORM>
+        <FORM kindOf="standard">amori agapen iso i-na-nanaw-namen-di-nyo a-rarako</FORM>
         <TRANSL xml:lang="en">then take some advice from an old person.</TRANSL>
         <W id="S4W1">
             <FORM kindOf="original">amuri</FORM>
+            <FORM kindOf="standard">amori</FORM>
             <TRANSL xml:lang="en">therefore</TRANSL>
         </W>
         <W id="S4W2">
             <FORM kindOf="original">agapen</FORM>
+            <FORM kindOf="standard">agapen</FORM>
             <TRANSL xml:lang="en">take</TRANSL>
         </W>
         <W id="S4W3">
             <FORM kindOf="original">isu</FORM>
+            <FORM kindOf="standard">iso</FORM>
             <TRANSL xml:lang="en">UNAN</TRANSL>
         </W>
         <W id="S4W4">
             <FORM kindOf="original">i-na-nanaw-namen-di-nyu</FORM>
+            <FORM kindOf="standard">i-na-nanaw-namen-di-nyo</FORM>
             <TRANSL xml:lang="en">unan-rdpl-teaching-our-to-you(pl)</TRANSL>
             <M id="S4W4M1">
                 <FORM kindOf="original">i</FORM>
+                <FORM kindOf="standard">i</FORM>
                 <TRANSL xml:lang="en">unan</TRANSL>
             </M>
             <M id="S4W4M2">
                 <FORM kindOf="original">na</FORM>
+                <FORM kindOf="standard">na</FORM>
                 <TRANSL xml:lang="en">rdpl</TRANSL>
             </M>
             <M id="S4W4M3">
                 <FORM kindOf="original">nanaw</FORM>
+                <FORM kindOf="standard">nanaw</FORM>
                 <TRANSL xml:lang="en">teaching</TRANSL>
             </M>
             <M id="S4W4M4">
                 <FORM kindOf="original">namen</FORM>
+                <FORM kindOf="standard">namen</FORM>
                 <TRANSL xml:lang="en">our</TRANSL>
             </M>
             <M id="S4W4M5">
                 <FORM kindOf="original">di</FORM>
+                <FORM kindOf="standard">di</FORM>
                 <TRANSL xml:lang="en">to</TRANSL>
             </M>
             <M id="S4W4M6">
                 <FORM kindOf="original">nyu</FORM>
+                <FORM kindOf="standard">nyo</FORM>
                 <TRANSL xml:lang="en">you(pl)</TRANSL>
             </M>
         </W>
         <W id="S4W5">
             <FORM kindOf="original">a-raraku</FORM>
+            <FORM kindOf="standard">a-rarako</FORM>
             <TRANSL xml:lang="en">unan-(older-person)</TRANSL>
             <M id="S4W5M1">
                 <FORM kindOf="original">a</FORM>
+                <FORM kindOf="standard">a</FORM>
                 <TRANSL xml:lang="en">unan</TRANSL>
             </M>
             <M id="S4W5M2">
                 <FORM kindOf="original">raraku</FORM>
+                <FORM kindOf="standard">rarako</FORM>
                 <TRANSL xml:lang="en">(older-person)</TRANSL>
             </M>
         </W>
     </S>
     <S id="S5">
         <FORM kindOf="original">tapekenukakme-namen-di-nyu-em mi-vi-varay-em</FORM>
+        <FORM kindOf="standard">tapekenokakme-namen-di-nyo-em mi-vi-varay-em</FORM>
         <TRANSL xml:lang="en">When there's much work to be done,</TRANSL>
         <W id="S5W1">
             <FORM kindOf="original">tapekenukakme-namen-di-nyu-em</FORM>
+            <FORM kindOf="standard">tapekenokakme-namen-di-nyo-em</FORM>
             <TRANSL xml:lang="en">unan-we-to-you(pl)</TRANSL>
             <M id="S5W1M1">
                 <FORM kindOf="original">tapekenukakme</FORM>
+                <FORM kindOf="standard">tapekenokakme</FORM>
                 <TRANSL xml:lang="en">unan</TRANSL>
             </M>
             <M id="S5W1M2">
                 <FORM kindOf="original">namen</FORM>
+                <FORM kindOf="standard">namen</FORM>
                 <TRANSL xml:lang="en">we</TRANSL>
             </M>
             <M id="S5W1M3">
                 <FORM kindOf="original">di</FORM>
+                <FORM kindOf="standard">di</FORM>
                 <TRANSL xml:lang="en">to</TRANSL>
             </M>
             <M id="S5W1M4">
                 <FORM kindOf="original">nyu</FORM>
+                <FORM kindOf="standard">nyo</FORM>
                 <TRANSL xml:lang="en">you(pl)</TRANSL>
             </M>
             <M id="S5W1M5">
                 <FORM kindOf="original">em</FORM>
+                <FORM kindOf="standard">em</FORM>
                 <TRANSL xml:lang="en">unan</TRANSL>
             </M>
         </W>
         <W id="S5W2">
             <FORM kindOf="original">mi-vi-varay-em</FORM>
+            <FORM kindOf="standard">mi-vi-varay-em</FORM>
             <TRANSL xml:lang="en">unan-unan-work</TRANSL>
             <M id="S5W2M1">
                 <FORM kindOf="original">mi</FORM>
+                <FORM kindOf="standard">mi</FORM>
                 <TRANSL xml:lang="en">unan</TRANSL>
             </M>
             <M id="S5W2M2">
                 <FORM kindOf="original">vi</FORM>
+                <FORM kindOf="standard">vi</FORM>
                 <TRANSL xml:lang="en">unan</TRANSL>
             </M>
             <M id="S5W2M3">
                 <FORM kindOf="original">varay</FORM>
+                <FORM kindOf="standard">varay</FORM>
                 <TRANSL xml:lang="en">work</TRANSL>
             </M>
             <M id="S5W2M4">
                 <FORM kindOf="original">em</FORM>
+                <FORM kindOf="standard">em</FORM>
                 <TRANSL xml:lang="en">unan</TRANSL>
             </M>
         </W>
     </S>
     <S id="S6">
         <FORM kindOf="original">sinu mapasalasala lu chiri-chiring nu pangangavangen</FORM>
+        <FORM kindOf="standard">sino mapasalasala lo chiri-chiring no pangangavangen</FORM>
         <TRANSL xml:lang="en">everybody should obey the commands of the foreigner.</TRANSL>
         <W id="S6W1">
             <FORM kindOf="original">sinu</FORM>
+            <FORM kindOf="standard">sino</FORM>
             <TRANSL xml:lang="en">who</TRANSL>
         </W>
         <W id="S6W2">
             <FORM kindOf="original">mapasalasala</FORM>
+            <FORM kindOf="standard">mapasalasala</FORM>
             <TRANSL xml:lang="en">obedient(unctn)</TRANSL>
         </W>
         <W id="S6W3">
             <FORM kindOf="original">lu</FORM>
+            <FORM kindOf="standard">lo</FORM>
             <TRANSL xml:lang="en">to</TRANSL>
         </W>
         <W id="S6W4">
             <FORM kindOf="original">chiri-chiring</FORM>
+            <FORM kindOf="standard">chiri-chiring</FORM>
             <TRANSL xml:lang="en">rdpl-words</TRANSL>
             <M id="S6W4M1">
                 <FORM kindOf="original">chiri</FORM>
+                <FORM kindOf="standard">chiri</FORM>
                 <TRANSL xml:lang="en">rdpl</TRANSL>
             </M>
             <M id="S6W4M2">
                 <FORM kindOf="original">chiring</FORM>
+                <FORM kindOf="standard">chiring</FORM>
                 <TRANSL xml:lang="en">words</TRANSL>
             </M>
         </W>
         <W id="S6W5">
             <FORM kindOf="original">nu</FORM>
+            <FORM kindOf="standard">no</FORM>
             <TRANSL xml:lang="en">CM</TRANSL>
         </W>
         <W id="S6W6">
             <FORM kindOf="original">pangangavangen</FORM>
+            <FORM kindOf="standard">pangangavangen</FORM>
             <TRANSL xml:lang="en">foreigner</TRANSL>
         </W>
     </S>
     <S id="S7">
         <FORM kindOf="original">anu kapi-k-ali-namen lu tukun-em atu-namen (n)aku-yakuyab-yab</FORM>
+        <FORM kindOf="standard">ano kapi-k-ali-namen lo tokon-em ato-namen (n)ako-yakoyab-yab</FORM>
         <TRANSL xml:lang="en">When we're digging every afternoon on the mountain,</TRANSL>
         <W id="S7W1">
             <FORM kindOf="original">anu</FORM>
+            <FORM kindOf="standard">ano</FORM>
             <TRANSL xml:lang="en">when</TRANSL>
         </W>
         <W id="S7W2">
             <FORM kindOf="original">kapi-k-ali-namen</FORM>
+            <FORM kindOf="standard">kapi-k-ali-namen</FORM>
             <TRANSL xml:lang="en">unan-unan-dig-we</TRANSL>
             <M id="S7W2M1">
                 <FORM kindOf="original">kapi</FORM>
+                <FORM kindOf="standard">kapi</FORM>
                 <TRANSL xml:lang="en">unan</TRANSL>
             </M>
             <M id="S7W2M2">
                 <FORM kindOf="original">k</FORM>
+                <FORM kindOf="standard">k</FORM>
                 <TRANSL xml:lang="en">unan</TRANSL>
             </M>
             <M id="S7W2M3">
                 <FORM kindOf="original">ali</FORM>
+                <FORM kindOf="standard">ali</FORM>
                 <TRANSL xml:lang="en">dig</TRANSL>
             </M>
             <M id="S7W2M4">
                 <FORM kindOf="original">namen</FORM>
+                <FORM kindOf="standard">namen</FORM>
                 <TRANSL xml:lang="en">we</TRANSL>
             </M>
         </W>
         <W id="S7W3">
             <FORM kindOf="original">lu</FORM>
+            <FORM kindOf="standard">lo</FORM>
             <TRANSL xml:lang="en">on</TRANSL>
         </W>
         <W id="S7W4">
             <FORM kindOf="original">tukun-em</FORM>
+            <FORM kindOf="standard">tokon-em</FORM>
             <TRANSL xml:lang="en">mountain</TRANSL>
             <M id="S7W4M1">
                 <FORM kindOf="original">tukun</FORM>
+                <FORM kindOf="standard">tokon</FORM>
                 <TRANSL xml:lang="en">mountain</TRANSL>
             </M>
             <M id="S7W4M2">
                 <FORM kindOf="original">em</FORM>
+                <FORM kindOf="standard">em</FORM>
                 <TRANSL xml:lang="en">unan</TRANSL>
             </M>
         </W>
         <W id="S7W5">
             <FORM kindOf="original">atu-namen</FORM>
+            <FORM kindOf="standard">ato-namen</FORM>
             <TRANSL xml:lang="en">unan-we</TRANSL>
             <M id="S7W5M1">
                 <FORM kindOf="original">atu</FORM>
+                <FORM kindOf="standard">ato</FORM>
                 <TRANSL xml:lang="en">unan</TRANSL>
             </M>
             <M id="S7W5M2">
                 <FORM kindOf="original">namen</FORM>
+                <FORM kindOf="standard">namen</FORM>
                 <TRANSL xml:lang="en">we</TRANSL>
             </M>
         </W>
         <W id="S7W6">
             <FORM kindOf="original">(n)aku-yakuyab-yab</FORM>
+            <FORM kindOf="standard">(n)ako-yakoyab-yab</FORM>
             <TRANSL xml:lang="en">rdpl-afternoon-rdpl</TRANSL>
             <M id="S7W6M1">
                 <FORM kindOf="original">(n)aku</FORM>
+                <FORM kindOf="standard">(n)ako</FORM>
                 <TRANSL xml:lang="en">rdpl</TRANSL>
             </M>
             <M id="S7W6M2">
                 <FORM kindOf="original">yakuyab</FORM>
+                <FORM kindOf="standard">yakoyab</FORM>
                 <TRANSL xml:lang="en">afternoon</TRANSL>
             </M>
             <M id="S7W6M3">
                 <FORM kindOf="original">yab</FORM>
+                <FORM kindOf="standard">yab</FORM>
                 <TRANSL xml:lang="en">rdpl</TRANSL>
             </M>
         </W>
     </S>
     <S id="S8">
         <FORM kindOf="original">puken-em marikna-namen-pa kwan-amen a-mangday su araw akak-aep-an/(mangday su aep)</FORM>
+        <FORM kindOf="standard">poken-em marikna-namen-pa kwan-amen a-mangday so araw akak-aep-an/(mangday so aep)</FORM>
         <TRANSL xml:lang="en">he says we aren't tired.</TRANSL>
         <W id="S8W1">
             <FORM kindOf="original">puken-em</FORM>
+            <FORM kindOf="standard">poken-em</FORM>
             <TRANSL xml:lang="en">not</TRANSL>
             <M id="S8W1M1">
                 <FORM kindOf="original">puken</FORM>
+                <FORM kindOf="standard">poken</FORM>
                 <TRANSL xml:lang="en">not</TRANSL>
             </M>
             <M id="S8W1M2">
                 <FORM kindOf="original">em</FORM>
+                <FORM kindOf="standard">em</FORM>
                 <TRANSL xml:lang="en">unan</TRANSL>
             </M>
         </W>
         <W id="S8W2">
             <FORM kindOf="original">marikna-namen-pa</FORM>
+            <FORM kindOf="standard">marikna-namen-pa</FORM>
             <TRANSL xml:lang="en">tired-we-again</TRANSL>
             <M id="S8W2M1">
                 <FORM kindOf="original">marikna</FORM>
+                <FORM kindOf="standard">marikna</FORM>
                 <TRANSL xml:lang="en">tired</TRANSL>
             </M>
             <M id="S8W2M2">
                 <FORM kindOf="original">namen</FORM>
+                <FORM kindOf="standard">namen</FORM>
                 <TRANSL xml:lang="en">we</TRANSL>
             </M>
             <M id="S8W2M3">
                 <FORM kindOf="original">pa</FORM>
+                <FORM kindOf="standard">pa</FORM>
                 <TRANSL xml:lang="en">again</TRANSL>
             </M>
         </W>
         <W id="S8W3">
             <FORM kindOf="original">kwan-amen</FORM>
+            <FORM kindOf="standard">kwan-amen</FORM>
             <TRANSL xml:lang="en">said-we</TRANSL>
             <M id="S8W3M1">
                 <FORM kindOf="original">kwan</FORM>
+                <FORM kindOf="standard">kwan</FORM>
                 <TRANSL xml:lang="en">said</TRANSL>
             </M>
             <M id="S8W3M2">
                 <FORM kindOf="original">amen</FORM>
+                <FORM kindOf="standard">amen</FORM>
                 <TRANSL xml:lang="en">we</TRANSL>
             </M>
         </W>
         <W id="S8W4">
             <FORM kindOf="original">a-mangday</FORM>
+            <FORM kindOf="standard">a-mangday</FORM>
             <TRANSL xml:lang="en">unan-every</TRANSL>
             <M id="S8W4M1">
                 <FORM kindOf="original">a</FORM>
+                <FORM kindOf="standard">a</FORM>
                 <TRANSL xml:lang="en">unan</TRANSL>
             </M>
             <M id="S8W4M2">
                 <FORM kindOf="original">mangday</FORM>
+                <FORM kindOf="standard">mangday</FORM>
                 <TRANSL xml:lang="en">every</TRANSL>
             </M>
         </W>
         <W id="S8W5">
             <FORM kindOf="original">su</FORM>
+            <FORM kindOf="standard">so</FORM>
             <TRANSL xml:lang="en">CM</TRANSL>
             <M id="S8W5M1">
                 <FORM kindOf="original">su</FORM>
+                <FORM kindOf="standard">so</FORM>
                 <TRANSL xml:lang="en">CM</TRANSL>
             </M>
         </W>
         <W id="S8W6">
             <FORM kindOf="original">araw</FORM>
+            <FORM kindOf="standard">araw</FORM>
             <TRANSL xml:lang="en">day</TRANSL>
         </W>
         <W id="S8W7">
             <FORM kindOf="original">akak-aep-an</FORM>
+            <FORM kindOf="standard">akak-aep-an</FORM>
             <TRANSL xml:lang="en">every-night-intrg(unctn)</TRANSL>
             <M id="S8W7M1">
                 <FORM kindOf="original">akak</FORM>
+                <FORM kindOf="standard">akak</FORM>
                 <TRANSL xml:lang="en">every</TRANSL>
             </M>
             <M id="S8W7M2">
                 <FORM kindOf="original">aep</FORM>
+                <FORM kindOf="standard">aep</FORM>
                 <TRANSL xml:lang="en">night</TRANSL>
             </M>
             <M id="S8W7M3">
                 <FORM kindOf="original">an</FORM>
+                <FORM kindOf="standard">an</FORM>
                 <TRANSL xml:lang="en">intrg(unctn)</TRANSL>
             </M>
         </W>
         <W id="S8W8">
             <FORM kindOf="original">mangday su aep</FORM>
+            <FORM kindOf="standard">mangday so aep</FORM>
             <TRANSL xml:lang="en">every CM night</TRANSL>
             <M id="S8W8M1">
                 <FORM kindOf="original">mangday</FORM>
+                <FORM kindOf="standard">mangday</FORM>
                 <TRANSL xml:lang="en">every</TRANSL>
             </M>
             <M id="S8W8M2">
                 <FORM kindOf="original">su</FORM>
+                <FORM kindOf="standard">so</FORM>
                 <TRANSL xml:lang="en">CM</TRANSL>
             </M>
             <M id="S8W8M3">
                 <FORM kindOf="original">aep</FORM>
+                <FORM kindOf="standard">aep</FORM>
                 <TRANSL xml:lang="en">night</TRANSL>
             </M>
         </W>
     </S>
     <S id="S9">
         <FORM kindOf="original">a-tu-da-na-lavi-i nu anan-anak</FORM>
+        <FORM kindOf="standard">a-to-da-na-lavi-i no anan-anak</FORM>
         <TRANSL xml:lang="en">Every day and every evening, you come home crying, little children.</TRANSL>
         <W id="S9W1">
             <FORM kindOf="original">a-tu-da-na-lavi-i</FORM>
+            <FORM kindOf="standard">a-to-da-na-lavi-i</FORM>
             <TRANSL xml:lang="en">unan-unan-they(unctn)-unan-cry-unan</TRANSL>
             <M id="S9W1M1">
                 <FORM kindOf="original">a</FORM>
+                <FORM kindOf="standard">a</FORM>
                 <TRANSL xml:lang="en">unan</TRANSL>
             </M>
             <M id="S9W1M2">
                 <FORM kindOf="original">tu</FORM>
+                <FORM kindOf="standard">to</FORM>
                 <TRANSL xml:lang="en">unan</TRANSL>
             </M>
             <M id="S9W1M3">
                 <FORM kindOf="original">da</FORM>
+                <FORM kindOf="standard">da</FORM>
                 <TRANSL xml:lang="en">they(unctn)</TRANSL>
             </M>
             <M id="S9W1M4">
                 <FORM kindOf="original">na</FORM>
+                <FORM kindOf="standard">na</FORM>
                 <TRANSL xml:lang="en">unan</TRANSL>
             </M>
             <M id="S9W1M5">
                 <FORM kindOf="original">lavi</FORM>
+                <FORM kindOf="standard">lavi</FORM>
                 <TRANSL xml:lang="en">cry</TRANSL>
             </M>
             <M id="S9W1M6">
                 <FORM kindOf="original">i</FORM>
+                <FORM kindOf="standard">i</FORM>
                 <TRANSL xml:lang="en">unan</TRANSL>
             </M>
         </W>
         <W id="S9W2">
             <FORM kindOf="original">nu</FORM>
+            <FORM kindOf="standard">no</FORM>
             <TRANSL xml:lang="en">CM</TRANSL>
         </W>
         <W id="S9W3">
             <FORM kindOf="original">anan-anak</FORM>
+            <FORM kindOf="standard">anan-anak</FORM>
             <TRANSL xml:lang="en">younger-children</TRANSL>
             <M id="S9W3M1">
                 <FORM kindOf="original">anan</FORM>
+                <FORM kindOf="standard">anan</FORM>
                 <TRANSL xml:lang="en">younger</TRANSL>
             </M>
             <M id="S9W3M2">
                 <FORM kindOf="original">anak</FORM>
+                <FORM kindOf="standard">anak</FORM>
                 <TRANSL xml:lang="en">children</TRANSL>
             </M>
         </W>
     </S>
     <S id="S10">
         <FORM kindOf="original">puken-(en) lavi u anan-anak</FORM>
+        <FORM kindOf="standard">poken-(en) lavi o anan-anak</FORM>
         <TRANSL xml:lang="en">But don't cry.</TRANSL>
         <W id="S10W1">
             <FORM kindOf="original">puken-(en)</FORM>
+            <FORM kindOf="standard">poken-(en)</FORM>
             <TRANSL xml:lang="en">not-unan</TRANSL>
             <M id="S10W1M1">
                 <FORM kindOf="original">puken</FORM>
+                <FORM kindOf="standard">poken</FORM>
                 <TRANSL xml:lang="en">not</TRANSL>
             </M>
             <M id="S10W1M2">
                 <FORM kindOf="original">(en)</FORM>
+                <FORM kindOf="standard">(en)</FORM>
                 <TRANSL xml:lang="en">unan</TRANSL>
             </M>
         </W>
         <W id="S10W2">
             <FORM kindOf="original">lavi</FORM>
+            <FORM kindOf="standard">lavi</FORM>
             <TRANSL xml:lang="en">cry</TRANSL>
         </W>
         <W id="S10W3">
             <FORM kindOf="original">u</FORM>
+            <FORM kindOf="standard">o</FORM>
             <TRANSL xml:lang="en">UNAN</TRANSL>
         </W>
         <W id="S10W4">
             <FORM kindOf="original">anan-anak</FORM>
+            <FORM kindOf="standard">anan-anak</FORM>
             <TRANSL xml:lang="en">younger-children</TRANSL>
             <M id="S10W4M1">
                 <FORM kindOf="original">anan</FORM>
+                <FORM kindOf="standard">anan</FORM>
                 <TRANSL xml:lang="en">younger</TRANSL>
             </M>
             <M id="S10W4M2">
                 <FORM kindOf="original">anak</FORM>
+                <FORM kindOf="standard">anak</FORM>
                 <TRANSL xml:lang="en">children</TRANSL>
             </M>
         </W>
