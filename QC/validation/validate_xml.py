@@ -166,10 +166,18 @@ def prettify(xml_file):
 
 # Get all XML files in the specified path
 def get_files(path, to_check, lang, langs):
+    # Check if path is a single file
+    if os.path.isfile(path):
+        if path.endswith(".xml") and 'XML' in path:
+            if not lang or get_lang(path, langs) == lang:
+                to_check.append(path)
+        return to_check
+    
+    # Handle directory case
     if lang:
         for root, dirs, files in os.walk(path):
             for file in files:
-                if file.endswith(".xml") and get_lang(os.path.join(root, file), langs) == args.language and 'XML' in os.path.join(root, file):
+                if file.endswith(".xml") and get_lang(os.path.join(root, file), langs) == lang and 'XML' in os.path.join(root, file):
                     to_check.append(os.path.join(root, file))
         return to_check
     for root, dirs, files in os.walk(path):
