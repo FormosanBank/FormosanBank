@@ -1,7 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
 <TEXT id="20. piramosen no kakawan a kanakan" xml:lang="tao" copyright="CC NC-BY" citation="Rau, D. V., &amp; Dong, M. N. (2006). Yami texts with reference grammar and dictionary. Institute of Linguistics, Academia Sinica." BibTeX_citation="@book{rau2006yami, title={Yami texts with reference grammar and dictionary}, author={Rau, D Victoria and Dong, Maa-Neu}, year={2006}, publisher={Institute of Linguistics, Academia Sinica}}" source="['20. piramosen no kakawan a kanakan', '沒入岩石裡的小孩', 'The child who entered a rock', '', 'si apen Maveyvow (F, 58, Iranmilek)', '黃月娥，女，58，東清村', '']">
     <S id="1">
         <FORM kindOf="original">no m-oli o ina na ori am, o ya o ai no pala da ori am, mi na panadeng-an ori a ma-nangdang a.</FORM>
-        <FORM kindOf="standard">no m-oli o ina na ori am, o ya o ai no pala da ori am, mi na panadeng-an ori a ma-nangdang a.</FORM>
+        <FORM kindOf="standard">no moli o ina na ori am, o ya o ai no pala da ori am, mi na panadengan ori a manangdang a.</FORM>
         <TRANSL xml:lang="zh">每當他的母親從山上回來，總是看見他（孩子）貼靠著柴乾架烤火取暖</TRANSL>
         <TRANSL xml:lang="en">Every time the mother came back from the mountains, she saw her child leaning against the pillar of the heating rack to get warm.</TRANSL>
         <W id="1_1">
@@ -18,7 +19,7 @@
         </W>
         <W id="1_2">
             <FORM kindOf="original">m-oli</FORM>
-            <FORM kindOf="standard">m-oli</FORM>
+            <FORM kindOf="standard">moli</FORM>
             <TRANSL xml:lang="zh">主焦-返家</TRANSL>
             <TRANSL xml:lang="en">AF-go_home</TRANSL>
             <M id="1_2_1">
@@ -228,7 +229,7 @@
         </W>
         <W id="1_19">
             <FORM kindOf="original">panadeng-an</FORM>
-            <FORM kindOf="standard">panadeng-an</FORM>
+            <FORM kindOf="standard">panadengan</FORM>
             <TRANSL xml:lang="zh">靠背-處焦</TRANSL>
             <TRANSL xml:lang="en">lean-LF</TRANSL>
             <M id="1_19_1">
@@ -270,7 +271,7 @@
         </W>
         <W id="1_22">
             <FORM kindOf="original">ma-nangdang</FORM>
-            <FORM kindOf="standard">ma-nangdang</FORM>
+            <FORM kindOf="standard">manangdang</FORM>
             <TRANSL xml:lang="zh">主焦-烤火取暖</TRANSL>
             <TRANSL xml:lang="en">AF-get_warm_near_the_fire</TRANSL>
             <M id="1_22_1">
@@ -301,12 +302,12 @@
     </S>
     <S id="2">
         <FORM kindOf="original">"ka-pa-nangdang, mo koimo a, ji angay ma-ngayo a, ji angay ma-masil a, ji angay do i-yakan, manga anak ko, o maka-veyvow rana" koan na.</FORM>
-        <FORM kindOf="standard">"ka-pa-nangdang, mo koimo a, ji angay ma-ngayo a, ji angay ma-masil a, ji angay do i-yakan, manga anak ko, o maka-veyvow rana" koan na.</FORM>
+        <FORM kindOf="standard">"kapanangdang, mo koimo a, ji angay mangayo a, ji angay mamasil a, ji angay do iyakan, manga anak ko, o makaveyvow rana" koan na.</FORM>
         <TRANSL xml:lang="zh">“孩子，你已經長大懂事了，怎麼還只會烤火取暖，不去撿木柴，也不去釣魚，也不去採集一些菜”</TRANSL>
         <TRANSL xml:lang="en">“Son, you are mature enough to know not to always be sitting there getting heat. Why don’t you go pick up firewood, go fishing, or pick plants to eat?”</TRANSL>
         <W id="2_1">
             <FORM kindOf="original">ka-pa-nangdang</FORM>
-            <FORM kindOf="standard">ka-pa-nangdang</FORM>
+            <FORM kindOf="standard">kapanangdang</FORM>
             <TRANSL xml:lang="zh">只會-動綴-烤火取暖</TRANSL>
             <TRANSL xml:lang="en">only-VF-get_warm_near_the_fire</TRANSL>
             <M id="2_1_1">
@@ -390,7 +391,7 @@
         </W>
         <W id="2_7">
             <FORM kindOf="original">ma-ngayo</FORM>
-            <FORM kindOf="standard">ma-ngayo</FORM>
+            <FORM kindOf="standard">mangayo</FORM>
             <TRANSL xml:lang="zh">主焦-撿木柴</TRANSL>
             <TRANSL xml:lang="en">AF-pick_up_firewood</TRANSL>
             <M id="2_7_1">
@@ -444,7 +445,7 @@
         </W>
         <W id="2_11">
             <FORM kindOf="original">ma-masil</FORM>
-            <FORM kindOf="standard">ma-masil</FORM>
+            <FORM kindOf="standard">mamasil</FORM>
             <TRANSL xml:lang="zh">主焦-釣魚</TRANSL>
             <TRANSL xml:lang="en">AF-go_fishing</TRANSL>
             <M id="2_11_1">
@@ -510,7 +511,7 @@
         </W>
         <W id="2_16">
             <FORM kindOf="original">i-yakan</FORM>
-            <FORM kindOf="standard">i-yakan</FORM>
+            <FORM kindOf="standard">iyakan</FORM>
             <TRANSL xml:lang="zh">疊-菜類</TRANSL>
             <TRANSL xml:lang="en">RED-plants</TRANSL>
             <M id="2_16_1">
@@ -576,7 +577,7 @@
         </W>
         <W id="2_21">
             <FORM kindOf="original">maka-veyvow</FORM>
-            <FORM kindOf="standard">maka-veyvow</FORM>
+            <FORM kindOf="standard">makaveyvow</FORM>
             <TRANSL xml:lang="zh">主焦-獨立懂事</TRANSL>
             <TRANSL xml:lang="en">AF-independentmature</TRANSL>
             <M id="2_21_1">
@@ -631,7 +632,7 @@
     </S>
     <S id="3">
         <FORM kindOf="original">to ma-nángdang ori, mang-dang-day so ara-raw o ka-ngay na ma-nangdang do a-emian ori, ta ji á-rekmeh no amian.</FORM>
-        <FORM kindOf="standard">to ma-nángdang ori, mang-dang-day so ara-raw o ka-ngay na ma-nangdang do a-emian ori, ta ji á-rekmeh no amian.</FORM>
+        <FORM kindOf="standard">to manángdang ori, mangdangday so araraw o kangay na manangdang do aemian ori, ta ji árekmeh no amian.</FORM>
         <TRANSL xml:lang="zh">每年冬天的時候，因為天氣冷，他就每天坐在火邊烤火取暖</TRANSL>
         <TRANSL xml:lang="en">Every winter, when the days were cold, he would sit everyday next to the fire to get warm.</TRANSL>
         <W id="3_1">
@@ -648,7 +649,7 @@
         </W>
         <W id="3_2">
             <FORM kindOf="original">ma-nángdang</FORM>
-            <FORM kindOf="standard">ma-nángdang</FORM>
+            <FORM kindOf="standard">manángdang</FORM>
             <TRANSL xml:lang="zh">主焦-烤火取暖</TRANSL>
             <TRANSL xml:lang="en">AF-get_warm</TRANSL>
             <M id="3_2_1">
@@ -678,7 +679,7 @@
         </W>
         <W id="3_4">
             <FORM kindOf="original">mang-dang-day</FORM>
-            <FORM kindOf="standard">mang-dang-day</FORM>
+            <FORM kindOf="standard">mangdangday</FORM>
             <TRANSL xml:lang="zh">主焦-疊-每天</TRANSL>
             <TRANSL xml:lang="en">AF-RED-every_day</TRANSL>
             <M id="3_4_1">
@@ -714,7 +715,7 @@
         </W>
         <W id="3_6">
             <FORM kindOf="original">ara-raw</FORM>
-            <FORM kindOf="standard">ara-raw</FORM>
+            <FORM kindOf="standard">araraw</FORM>
             <TRANSL xml:lang="zh">疊-日子</TRANSL>
             <TRANSL xml:lang="en">RED-day</TRANSL>
             <M id="3_6_1">
@@ -744,7 +745,7 @@
         </W>
         <W id="3_8">
             <FORM kindOf="original">ka-ngay</FORM>
-            <FORM kindOf="standard">ka-ngay</FORM>
+            <FORM kindOf="standard">kangay</FORM>
             <TRANSL xml:lang="zh">名綴-去</TRANSL>
             <TRANSL xml:lang="en">NF-go</TRANSL>
             <M id="3_8_1">
@@ -774,7 +775,7 @@
         </W>
         <W id="3_10">
             <FORM kindOf="original">ma-nangdang</FORM>
-            <FORM kindOf="standard">ma-nangdang</FORM>
+            <FORM kindOf="standard">manangdang</FORM>
             <TRANSL xml:lang="zh">主焦-烤火取暖</TRANSL>
             <TRANSL xml:lang="en">AF-get_warm</TRANSL>
             <M id="3_10_1">
@@ -804,7 +805,7 @@
         </W>
         <W id="3_12">
             <FORM kindOf="original">a-emian</FORM>
-            <FORM kindOf="standard">a-emian</FORM>
+            <FORM kindOf="standard">aemian</FORM>
             <TRANSL xml:lang="zh">疊-冬天</TRANSL>
             <TRANSL xml:lang="en">RED-winter</TRANSL>
             <M id="3_12_1">
@@ -858,7 +859,7 @@
         </W>
         <W id="3_16">
             <FORM kindOf="original">á-rekmeh</FORM>
-            <FORM kindOf="standard">á-rekmeh</FORM>
+            <FORM kindOf="standard">árekmeh</FORM>
             <TRANSL xml:lang="zh">虛-寒冷</TRANSL>
             <TRANSL xml:lang="en">SUB-cold</TRANSL>
             <M id="3_16_1">
@@ -901,12 +902,12 @@
     </S>
     <S id="4">
         <FORM kindOf="original">m-ámo o anak na ori am, "to ko rana ngikáy-i si Ina saon" koan na am,</FORM>
-        <FORM kindOf="standard">m-ámo o anak na ori am, "to ko rana ngikáy-i si Ina saon" koan na am,</FORM>
+        <FORM kindOf="standard">mámo o anak na ori am, "to ko rana ngikáyi si Ina saon" koan na am,</FORM>
         <TRANSL xml:lang="zh">他的小孩稍長，就想“我要對母親表示我的不滿”</TRANSL>
         <TRANSL xml:lang="en">The child was embarrassed (as he grew up), and thought, “I might as well show my mother how unhappy I am with her.”</TRANSL>
         <W id="4_1">
             <FORM kindOf="original">m-ámo</FORM>
-            <FORM kindOf="standard">m-ámo</FORM>
+            <FORM kindOf="standard">mámo</FORM>
             <TRANSL xml:lang="zh">靜態-愧疚</TRANSL>
             <TRANSL xml:lang="en">SV-embarrassed</TRANSL>
             <M id="4_1_1">
@@ -1020,7 +1021,7 @@
         </W>
         <W id="4_10">
             <FORM kindOf="original">ngikáy-i</FORM>
-            <FORM kindOf="standard">ngikáy-i</FORM>
+            <FORM kindOf="standard">ngikáyi</FORM>
             <TRANSL xml:lang="zh">虛.不滿-處焦.虛</TRANSL>
             <TRANSL xml:lang="en">SUB.unhappy-LF.SUB</TRANSL>
             <M id="4_10_1">
@@ -1111,7 +1112,7 @@
     </S>
     <S id="5">
         <FORM kindOf="original">to na rana angay mi-ttattaw do dang a, to na mi-ramós-i ori no wawa ori a,</FORM>
-        <FORM kindOf="standard">to na rana angay mi-ttattaw do dang a, to na mi-ramós-i ori no wawa ori a,</FORM>
+        <FORM kindOf="standard">to na rana angay mittattaw do dang a, to na miramósi ori no wawa ori a,</FORM>
         <TRANSL xml:lang="zh">於是就去游泳了，讓海水淹溺他</TRANSL>
         <TRANSL xml:lang="en">He went to swim and took his life by drowning.</TRANSL>
         <W id="5_1">
@@ -1164,7 +1165,7 @@
         </W>
         <W id="5_5">
             <FORM kindOf="original">mi-ttattaw</FORM>
-            <FORM kindOf="standard">mi-ttattaw</FORM>
+            <FORM kindOf="standard">mittattaw</FORM>
             <TRANSL xml:lang="zh">主焦-游泳</TRANSL>
             <TRANSL xml:lang="en">AF-swim</TRANSL>
             <M id="5_5_1">
@@ -1242,7 +1243,7 @@
         </W>
         <W id="5_11">
             <FORM kindOf="original">mi-ramós-i</FORM>
-            <FORM kindOf="standard">mi-ramós-i</FORM>
+            <FORM kindOf="standard">miramósi</FORM>
             <TRANSL xml:lang="zh">虛.動綴-淹沒-處焦.虛</TRANSL>
             <TRANSL xml:lang="en">SUB.VF-drown-LF.SUB</TRANSL>
             <M id="5_11_1">
@@ -1327,7 +1328,7 @@
     </S>
     <S id="6">
         <FORM kindOf="original">"imo rana kataotao ko am, to ka i mi-ávas jiaken a kakawan" koan na, to na? o kataotao na, pi-ramos-en no kakawan ori, to lida o kakawan ori a.</FORM>
-        <FORM kindOf="standard">"imo rana kataotao ko am, to ka i mi-ávas jiaken a kakawan" koan na, to na? o kataotao na, pi-ramos-en no kakawan ori, to lida o kakawan ori a.</FORM>
+        <FORM kindOf="standard">"imo rana kataotao ko am, to ka i miávas jiaken a kakawan" koan na, to na? o kataotao na, piramosen no kakawan ori, to lida o kakawan ori a.</FORM>
         <TRANSL xml:lang="zh">“礁石啊！你就經過（壓過）我的身體吧” ，不久，那礁石就慢慢的長大，然後把他夾起來了</TRANSL>
         <TRANSL xml:lang="en">“Reef, cover me up.” The reef slowly grew and covered him.</TRANSL>
         <W id="6_1">
@@ -1428,7 +1429,7 @@
         </W>
         <W id="6_9">
             <FORM kindOf="original">mi-ávas</FORM>
-            <FORM kindOf="standard">mi-ávas</FORM>
+            <FORM kindOf="standard">miávas</FORM>
             <TRANSL xml:lang="zh">主焦-經過</TRANSL>
             <TRANSL xml:lang="en">AF-pass_by</TRANSL>
             <M id="6_9_1">
@@ -1566,7 +1567,7 @@
         </W>
         <W id="6_20">
             <FORM kindOf="original">pi-ramos-en</FORM>
-            <FORM kindOf="standard">pi-ramos-en</FORM>
+            <FORM kindOf="standard">piramosen</FORM>
             <TRANSL xml:lang="zh">動綴-擠壓_壓碎-受焦</TRANSL>
             <TRANSL xml:lang="en">VF-squeeze_crush-PF</TRANSL>
             <M id="6_20_1">
@@ -1699,7 +1700,7 @@
     </S>
     <S id="7">
         <FORM kindOf="original">a ya ni-mi-ttattaw do attaw ya an, mi ta pala", to sia angay sira miaven-do-vahay ya.</FORM>
-        <FORM kindOf="standard">a ya ni-mi-ttattaw do attaw ya an, mi ta pala", to sia angay sira miaven-do-vahay ya.</FORM>
+        <FORM kindOf="standard">a ya nimittattaw do attaw ya an, mi ta pala", to sia angay sira miavendovahay ya.</FORM>
         <TRANSL xml:lang="zh">會不會是去海邊游泳啊？我們去海邊找找看” ，他們夫妻倆就一起去找他</TRANSL>
         <TRANSL xml:lang="en">Maybe he has gone swimming. We have to go look.” The couple went out to look for him.</TRANSL>
         <W id="7_1">
@@ -1728,7 +1729,7 @@
         </W>
         <W id="7_3">
             <FORM kindOf="original">ni-mi-ttattaw</FORM>
-            <FORM kindOf="standard">ni-mi-ttattaw</FORM>
+            <FORM kindOf="standard">nimittattaw</FORM>
             <TRANSL xml:lang="zh">過去-主焦-游泳</TRANSL>
             <TRANSL xml:lang="en">PA-AF-swim</TRANSL>
             <M id="7_3_1">
@@ -1884,7 +1885,7 @@
         </W>
         <W id="7_15">
             <FORM kindOf="original">miaven-do-vahay</FORM>
-            <FORM kindOf="standard">miaven-do-vahay</FORM>
+            <FORM kindOf="standard">miavendovahay</FORM>
             <TRANSL xml:lang="zh">彼此使喚-處格-家夫妻</TRANSL>
             <TRANSL xml:lang="en">call_each_other-LOC-homehuband_and_wife</TRANSL>
             <M id="7_15_1">
@@ -1921,7 +1922,7 @@
     </S>
     <S id="8">
         <FORM kindOf="original">"o ito o oo na" koan na, am ovok na rana o ma-cita-cita da am, to da i nita am, to da a-kah-a o rako a kakawan do kataotao na?</FORM>
-        <FORM kindOf="standard">"o ito o oo na" koan na, am ovok na rana o ma-cita-cita da am, to da i nita am, to da a-kah-a o rako a kakawan do kataotao na?</FORM>
+        <FORM kindOf="standard">"o ito o oo na" koan na, am ovok na rana o macitacita da am, to da i nita am, to da akaha o rako a kakawan do kataotao na?</FORM>
         <TRANSL xml:lang="zh">他說，“他的頭在那裡！” 但只看得到頭髮了。他們再靠過去看，試圖扒開黏在他身上的大礁石，但是哪裡扒得開？</TRANSL>
         <TRANSL xml:lang="en">“There he is,” the husband said, but they only saw his hair when they looked. How could they open the rock and break away his body from it?</TRANSL>
         <W id="8_1">
@@ -2070,7 +2071,7 @@
         </W>
         <W id="8_13">
             <FORM kindOf="original">ma-cita-cita</FORM>
-            <FORM kindOf="standard">ma-cita-cita</FORM>
+            <FORM kindOf="standard">macitacita</FORM>
             <TRANSL xml:lang="zh">靜態-疊-看見</TRANSL>
             <TRANSL xml:lang="en">SV-RED-see</TRANSL>
             <M id="8_13_1">
@@ -2202,7 +2203,7 @@
         </W>
         <W id="8_23">
             <FORM kindOf="original">a-kah-a</FORM>
-            <FORM kindOf="standard">a-kah-a</FORM>
+            <FORM kindOf="standard">akaha</FORM>
             <TRANSL xml:lang="zh">靜態.虛-拔開-受焦.虛</TRANSL>
             <TRANSL xml:lang="en">SV.SUB-break_away-PF.SUB</TRANSL>
             <M id="8_23_1">
@@ -2311,7 +2312,7 @@
     </S>
     <S id="9">
         <FORM kindOf="original">am ori o kakawan do dang a, namen ngaran-an a asa ka ili a "do obo na Jiminapala" koan no nang ori a.</FORM>
-        <FORM kindOf="standard">am ori o kakawan do dang a, namen ngaran-an a asa ka ili a "do obo na Jiminapala" koan no nang ori a.</FORM>
+        <FORM kindOf="standard">am ori o kakawan do dang a, namen ngaranan a asa ka ili a "do obo na Jiminapala" koan no nang ori a.</FORM>
         <TRANSL xml:lang="zh">因故，我們村就命名那礁石為“do obo na Jiminapala岩” （烘柴架的底下）</TRANSL>
         <TRANSL xml:lang="en">Therefore, our village named the place “ do obo na Jiminapala” (i.e., Under the heating rack).</TRANSL>
         <W id="9_1">
@@ -2412,7 +2413,7 @@
         </W>
         <W id="9_9">
             <FORM kindOf="original">ngaran-an</FORM>
-            <FORM kindOf="standard">ngaran-an</FORM>
+            <FORM kindOf="standard">ngaranan</FORM>
             <TRANSL xml:lang="zh">稱呼命名-處焦</TRANSL>
             <TRANSL xml:lang="en">name-LF</TRANSL>
             <M id="9_9_1">
@@ -2599,12 +2600,12 @@
     </S>
     <S id="10">
         <FORM kindOf="original">ika-doa na no nang am, o líkey a k-anak-an am, "mo Ina," koan na o ina na, "ikongo?"</FORM>
-        <FORM kindOf="standard">ika-doa na no nang am, o líkey a k-anak-an am, "mo Ina," koan na o ina na, "ikongo?"</FORM>
+        <FORM kindOf="standard">ikadoa na no nang am, o líkey a kanakan am, "mo Ina," koan na o ina na, "ikongo?"</FORM>
         <TRANSL xml:lang="zh">另外一個故事是這樣的。有一個小小孩，說“媽媽” ，母親說“什麼事？”</TRANSL>
         <TRANSL xml:lang="en">The second story is like this. There was a little child who said, “Mom.” “What is it?” the mother said.</TRANSL>
         <W id="10_1">
             <FORM kindOf="original">ika-doa</FORM>
-            <FORM kindOf="standard">ika-doa</FORM>
+            <FORM kindOf="standard">ikadoa</FORM>
             <TRANSL xml:lang="zh">第-二</TRANSL>
             <TRANSL xml:lang="en">OR-two</TRANSL>
             <M id="10_1_1">
@@ -2706,7 +2707,7 @@
         </W>
         <W id="10_9">
             <FORM kindOf="original">k-anak-an</FORM>
-            <FORM kindOf="standard">k-anak-an</FORM>
+            <FORM kindOf="standard">kanakan</FORM>
             <TRANSL xml:lang="zh">名綴-小孩子-名綴</TRANSL>
             <TRANSL xml:lang="en">NF-child-NF</TRANSL>
             <M id="10_9_1">
@@ -2989,7 +2990,7 @@
     </S>
     <S id="12">
         <FORM kindOf="original">"taon a, nio rana ji manta-n yaken do cinapay, ta inio mi-yakan" koan na no kanakan a,</FORM>
-        <FORM kindOf="standard">"taon a, nio rana ji manta-n yaken do cinapay, ta inio mi-yakan" koan na no kanakan a,</FORM>
+        <FORM kindOf="standard">"taon a, nio rana ji mantan yaken do cinapay, ta inio miyakan" koan na no kanakan a,</FORM>
         <TRANSL xml:lang="zh">“你們怎麼不留一點給我？難道就只有你們可以吃芋頭葉菜嗎” 小孩子說</TRANSL>
         <TRANSL xml:lang="en">“You ate them all and didn’t leave any for me? Are you the only ones who can eat them?” the child said.</TRANSL>
         <W id="12_1">
@@ -3054,7 +3055,7 @@
         </W>
         <W id="12_6">
             <FORM kindOf="original">manta-n</FORM>
-            <FORM kindOf="standard">manta-n</FORM>
+            <FORM kindOf="standard">mantan</FORM>
             <TRANSL xml:lang="zh">虛.給-工焦.虛</TRANSL>
             <TRANSL xml:lang="en">SUB.give-IF.SUB</TRANSL>
             <M id="12_6_1">
@@ -3132,7 +3133,7 @@
         </W>
         <W id="12_12">
             <FORM kindOf="original">mi-yakan</FORM>
-            <FORM kindOf="standard">mi-yakan</FORM>
+            <FORM kindOf="standard">miyakan</FORM>
             <TRANSL xml:lang="zh">主焦-菜</TRANSL>
             <TRANSL xml:lang="en">AF-side_dish</TRANSL>
             <M id="12_12_1">
@@ -3211,7 +3212,7 @@
     </S>
     <S id="13">
         <FORM kindOf="original">"sáon jimo am", to rana abo o k-anak-an ori a.</FORM>
-        <FORM kindOf="standard">"sáon jimo am", to rana abo o k-anak-an ori a.</FORM>
+        <FORM kindOf="standard">"sáon jimo am", to rana abo o kanakan ori a.</FORM>
         <TRANSL xml:lang="zh">“隨便你啦” 。之後小孩子就不見了</TRANSL>
         <TRANSL xml:lang="en">“It’s your own fault.” The child disappeared.</TRANSL>
         <W id="13_1">
@@ -3300,7 +3301,7 @@
         </W>
         <W id="13_8">
             <FORM kindOf="original">k-anak-an</FORM>
-            <FORM kindOf="standard">k-anak-an</FORM>
+            <FORM kindOf="standard">kanakan</FORM>
             <TRANSL xml:lang="zh">名綴-小孩子-名綴</TRANSL>
             <TRANSL xml:lang="en">NF-child-NF</TRANSL>
             <M id="13_8_1">
@@ -3349,12 +3350,12 @@
     </S>
     <S id="14">
         <FORM kindOf="original">m-ównay am, "a ya pa ji ngoli a, ya ni-ma-ngay jino si koa, a ya ni-ma-ngay do wajin ori?".</FORM>
-        <FORM kindOf="standard">m-ównay am, "a ya pa ji ngoli a, ya ni-ma-ngay jino si koa, a ya ni-ma-ngay do wajin ori?".</FORM>
+        <FORM kindOf="standard">mównay am, "a ya pa ji ngoli a, ya nimangay jino si koa, a ya nimangay do wajin ori?".</FORM>
         <TRANSL xml:lang="zh">過了很久，“怎麼還不回來，孩子去哪裡了？他去什麼地方呢？”</TRANSL>
         <TRANSL xml:lang="en">After a long time, they said, “Where is the child? Why hasn’t he come back yet? Where did he go?”</TRANSL>
         <W id="14_1">
             <FORM kindOf="original">m-ównay</FORM>
-            <FORM kindOf="standard">m-ównay</FORM>
+            <FORM kindOf="standard">mównay</FORM>
             <TRANSL xml:lang="zh">靜態-很久</TRANSL>
             <TRANSL xml:lang="en">SV-long_time</TRANSL>
             <M id="14_1_1">
@@ -3468,7 +3469,7 @@
         </W>
         <W id="14_10">
             <FORM kindOf="original">ni-ma-ngay</FORM>
-            <FORM kindOf="standard">ni-ma-ngay</FORM>
+            <FORM kindOf="standard">nimangay</FORM>
             <TRANSL xml:lang="zh">過去-主焦-去</TRANSL>
             <TRANSL xml:lang="en">PA-AF-go</TRANSL>
             <M id="14_10_1">
@@ -3552,7 +3553,7 @@
         </W>
         <W id="14_16">
             <FORM kindOf="original">ni-ma-ngay</FORM>
-            <FORM kindOf="standard">ni-ma-ngay</FORM>
+            <FORM kindOf="standard">nimangay</FORM>
             <TRANSL xml:lang="zh">過去-主焦-去</TRANSL>
             <TRANSL xml:lang="en">PA-AF-go</TRANSL>
             <M id="14_16_1">
@@ -3613,7 +3614,7 @@
     </S>
     <S id="15">
         <FORM kindOf="original">mi da cita-en am, akman so sang a, oo na o ma-cita da,</FORM>
-        <FORM kindOf="standard">mi da cita-en am, akman so sang a, oo na o ma-cita da,</FORM>
+        <FORM kindOf="standard">mi da citaen am, akman so sang a, oo na o macita da,</FORM>
         <TRANSL xml:lang="zh">他們去看（找）的時候，如同前述的故事情形一樣，也只看見他的頭了</TRANSL>
         <TRANSL xml:lang="en">When they went to look, the same thing happened to the boy as in the previous story. Only the head was visible.</TRANSL>
         <W id="15_1">
@@ -3642,7 +3643,7 @@
         </W>
         <W id="15_3">
             <FORM kindOf="original">cita-en</FORM>
-            <FORM kindOf="standard">cita-en</FORM>
+            <FORM kindOf="standard">citaen</FORM>
             <TRANSL xml:lang="zh">看-受焦</TRANSL>
             <TRANSL xml:lang="en">see-PF</TRANSL>
             <M id="15_3_1">
@@ -3756,7 +3757,7 @@
         </W>
         <W id="15_12">
             <FORM kindOf="original">ma-cita</FORM>
-            <FORM kindOf="standard">ma-cita</FORM>
+            <FORM kindOf="standard">macita</FORM>
             <TRANSL xml:lang="zh">靜態-看見</TRANSL>
             <TRANSL xml:lang="en">SV-see</TRANSL>
             <M id="15_12_1">
@@ -3787,7 +3788,7 @@
     </S>
     <S id="16">
         <FORM kindOf="original">"a o ito si alikey a, mi ta pala hap-en", to da i nga-hap-a am, to da a-hap o ito rana o ma-cita da do kakawan, a ni-d-om-ket do kakawan.</FORM>
-        <FORM kindOf="standard">"a o ito si alikey a, mi ta pala hap-en", to da i nga-hap-a am, to da a-hap o ito rana o ma-cita da do kakawan, a ni-d-om-ket do kakawan.</FORM>
+        <FORM kindOf="standard">"a o ito si alikey a, mi ta pala hapen", to da i ngahapa am, to da ahap o ito rana o macita da do kakawan, a nidomket do kakawan.</FORM>
         <TRANSL xml:lang="zh">“孩子在那裡！我們去看看！” 他們過去一看，結果他已黏在礁石上了，能看見的就只有這麼一點了（用手比），怎麼拉得起來？”</TRANSL>
         <TRANSL xml:lang="en">“There is the child. Let’s go see.” When they went to look, they could only see this much [action. They tried to pull him out, but he was already stuck in the reef, so it was impossible to pull him out.</TRANSL>
         <W id="16_1">
@@ -3900,7 +3901,7 @@
         </W>
         <W id="16_10">
             <FORM kindOf="original">hap-en</FORM>
-            <FORM kindOf="standard">hap-en</FORM>
+            <FORM kindOf="standard">hapen</FORM>
             <TRANSL xml:lang="zh">拿-受焦</TRANSL>
             <TRANSL xml:lang="en">take-PF</TRANSL>
             <M id="16_10_1">
@@ -3954,7 +3955,7 @@
         </W>
         <W id="16_14">
             <FORM kindOf="original">nga-hap-a</FORM>
-            <FORM kindOf="standard">nga-hap-a</FORM>
+            <FORM kindOf="standard">ngahapa</FORM>
             <TRANSL xml:lang="zh">虛.疊-拿到-受焦.虛</TRANSL>
             <TRANSL xml:lang="en">SUB.RED-take-PF.SUB</TRANSL>
             <M id="16_14_1">
@@ -4014,7 +4015,7 @@
         </W>
         <W id="16_18">
             <FORM kindOf="original">a-hap</FORM>
-            <FORM kindOf="standard">a-hap</FORM>
+            <FORM kindOf="standard">ahap</FORM>
             <TRANSL xml:lang="zh">靜態.虛-拿</TRANSL>
             <TRANSL xml:lang="en">SV.SUB-take</TRANSL>
             <M id="16_18_1">
@@ -4080,7 +4081,7 @@
         </W>
         <W id="16_23">
             <FORM kindOf="original">ma-cita</FORM>
-            <FORM kindOf="standard">ma-cita</FORM>
+            <FORM kindOf="standard">macita</FORM>
             <TRANSL xml:lang="zh">靜態-看見</TRANSL>
             <TRANSL xml:lang="en">SV-see</TRANSL>
             <M id="16_23_1">
@@ -4146,7 +4147,7 @@
         </W>
         <W id="16_28">
             <FORM kindOf="original">ni-d-om-ket</FORM>
-            <FORM kindOf="standard">ni-d-om-ket</FORM>
+            <FORM kindOf="standard">nidomket</FORM>
             <TRANSL xml:lang="zh">過去-&lt;主焦&gt;-黏住</TRANSL>
             <TRANSL xml:lang="en">PA&lt;AF&gt;adhere</TRANSL>
             <M id="16_28_1">
@@ -4195,7 +4196,7 @@
     </S>
     <S id="17">
         <FORM kindOf="original">am mi-da-dowdaw rana sira a om-lavi am, ori o kava-kavavatanen no inapo ta,</FORM>
-        <FORM kindOf="standard">am mi-da-dowdaw rana sira a om-lavi am, ori o kava-kavavatanen no inapo ta,</FORM>
+        <FORM kindOf="standard">am midadowdaw rana sira a omlavi am, ori o kavakavavatanen no inapo ta,</FORM>
         <TRANSL xml:lang="zh">於是他們很傷心的哭了。這就是我們祖先的故事</TRANSL>
         <TRANSL xml:lang="en">They cried over losing their child. This is a story of our ancestors.</TRANSL>
         <W id="17_1">
@@ -4212,7 +4213,7 @@
         </W>
         <W id="17_2">
             <FORM kindOf="original">mi-da-dowdaw</FORM>
-            <FORM kindOf="standard">mi-da-dowdaw</FORM>
+            <FORM kindOf="standard">midadowdaw</FORM>
             <TRANSL xml:lang="zh">主焦-疊-傷心</TRANSL>
             <TRANSL xml:lang="en">AF-RED-sad</TRANSL>
             <M id="17_2_1">
@@ -4272,7 +4273,7 @@
         </W>
         <W id="17_6">
             <FORM kindOf="original">om-lavi</FORM>
-            <FORM kindOf="standard">om-lavi</FORM>
+            <FORM kindOf="standard">omlavi</FORM>
             <TRANSL xml:lang="zh">&lt;主焦&gt;-哭</TRANSL>
             <TRANSL xml:lang="en">&lt;AF&gt;cry</TRANSL>
             <M id="17_6_1">
@@ -4326,7 +4327,7 @@
         </W>
         <W id="17_10">
             <FORM kindOf="original">kava-kavavatanen</FORM>
-            <FORM kindOf="standard">kava-kavavatanen</FORM>
+            <FORM kindOf="standard">kavakavavatanen</FORM>
             <TRANSL xml:lang="zh">疊-故事</TRANSL>
             <TRANSL xml:lang="en">RED-story</TRANSL>
             <M id="17_10_1">
@@ -4381,7 +4382,7 @@
     </S>
     <S id="18">
         <FORM kindOf="original">a ci-cilo-an ko si ama icalaw a, na kavos-an no nang, manga wari an.</FORM>
-        <FORM kindOf="standard">a ci-cilo-an ko si ama icalaw a, na kavos-an no nang, manga wari an.</FORM>
+        <FORM kindOf="standard">a ciciloan ko si ama icalaw a, na kavosan no nang, manga wari an.</FORM>
         <TRANSL xml:lang="zh">以上是從我父親那裡聽來的，故事就講到這裡結束，各位。</TRANSL>
         <TRANSL xml:lang="en">This is something that I heard from my father. This is the end.</TRANSL>
         <W id="18_1">
@@ -4398,7 +4399,7 @@
         </W>
         <W id="18_2">
             <FORM kindOf="original">ci-cilo-an</FORM>
-            <FORM kindOf="standard">ci-cilo-an</FORM>
+            <FORM kindOf="standard">ciciloan</FORM>
             <TRANSL xml:lang="zh">疊-耳聞-處焦</TRANSL>
             <TRANSL xml:lang="en">RED-hear-LF</TRANSL>
             <M id="18_2_1">
@@ -4494,7 +4495,7 @@
         </W>
         <W id="18_9">
             <FORM kindOf="original">kavos-an</FORM>
-            <FORM kindOf="standard">kavos-an</FORM>
+            <FORM kindOf="standard">kavosan</FORM>
             <TRANSL xml:lang="zh">結束-處焦</TRANSL>
             <TRANSL xml:lang="en">end-LF</TRANSL>
             <M id="18_9_1">
@@ -4573,7 +4574,7 @@
     </S>
     <S id="19">
         <FORM kindOf="original">toda a-ónay am, toda á-hep am, "a ya ni-mi do wajin, ya pa ji ngoli si alikey ya?</FORM>
-        <FORM kindOf="standard">toda a-ónay am, toda á-hep am, "a ya ni-mi do wajin, ya pa ji ngoli si alikey ya?</FORM>
+        <FORM kindOf="standard">toda aónay am, toda áhep am, "a ya nimi do wajin, ya pa ji ngoli si alikey ya?</FORM>
         <TRANSL xml:lang="zh">過了很久，而且愈來愈晚了，“孩子去哪裡了？怎麼還不回家？</TRANSL>
         <TRANSL xml:lang="en">After a long time, when it was already night time, the Mother thought,“Where is my boy? Why isn’t he home yet?”</TRANSL>
         <W id="19_1">
@@ -4590,7 +4591,7 @@
         </W>
         <W id="19_2">
             <FORM kindOf="original">a-ónay</FORM>
-            <FORM kindOf="standard">a-ónay</FORM>
+            <FORM kindOf="standard">aónay</FORM>
             <TRANSL xml:lang="zh">靜態.虛-很久</TRANSL>
             <TRANSL xml:lang="en">SV.SUB-long_time</TRANSL>
             <M id="19_2_1">
@@ -4632,7 +4633,7 @@
         </W>
         <W id="19_5">
             <FORM kindOf="original">á-hep</FORM>
-            <FORM kindOf="standard">á-hep</FORM>
+            <FORM kindOf="standard">áhep</FORM>
             <TRANSL xml:lang="zh">靜態.虛-晚上</TRANSL>
             <TRANSL xml:lang="en">SV.SUB-night</TRANSL>
             <M id="19_5_1">
@@ -4686,7 +4687,7 @@
         </W>
         <W id="19_9">
             <FORM kindOf="original">ni-mi</FORM>
-            <FORM kindOf="standard">ni-mi</FORM>
+            <FORM kindOf="standard">nimi</FORM>
             <TRANSL xml:lang="zh">過去-去</TRANSL>
             <TRANSL xml:lang="en">PA-go</TRANSL>
             <M id="19_9_1">
@@ -4813,7 +4814,7 @@
     </S>
     <S id="20">
         <FORM kindOf="original">"a k-óm-oan, manga anak ko am, a ya ji a-líkey ori".</FORM>
-        <FORM kindOf="standard">"a k-óm-oan, manga anak ko am, a ya ji a-líkey ori".</FORM>
+        <FORM kindOf="standard">"a kómoan, manga anak ko am, a ya ji alíkey ori".</FORM>
         <TRANSL xml:lang="zh">“沒辦法，菜就那麼一點點啊”</TRANSL>
         <TRANSL xml:lang="en">“We had no choice. There was very little.”</TRANSL>
         <W id="20_1">
@@ -4830,7 +4831,7 @@
         </W>
         <W id="20_2">
             <FORM kindOf="original">k-óm-oan</FORM>
-            <FORM kindOf="standard">k-óm-oan</FORM>
+            <FORM kindOf="standard">kómoan</FORM>
             <TRANSL xml:lang="zh">&lt;主焦&gt;沒辦法</TRANSL>
             <TRANSL xml:lang="en">&lt;AF&gt;nothing_can_be_done</TRANSL>
             <M id="20_2_1">
@@ -4932,7 +4933,7 @@
         </W>
         <W id="20_10">
             <FORM kindOf="original">a-líkey</FORM>
-            <FORM kindOf="standard">a-líkey</FORM>
+            <FORM kindOf="standard">alíkey</FORM>
             <TRANSL xml:lang="zh">虛-少</TRANSL>
             <TRANSL xml:lang="en">SUB-little</TRANSL>
             <M id="20_10_1">
@@ -4963,7 +4964,7 @@
     </S>
     <S id="21">
         <FORM kindOf="original">ko ji a-tenng-i, manga wari o ka mehakay na ka mavakes na no nang no ni-m-indok ori a, ala mehakay ori, ni-m-indok do cinapay.</FORM>
-        <FORM kindOf="standard">ko ji a-tenng-i, manga wari o ka mehakay na ka mavakes na no nang no ni-m-indok ori a, ala mehakay ori, ni-m-indok do cinapay.</FORM>
+        <FORM kindOf="standard">ko ji atenngi, manga wari o ka mehakay na ka mavakes na no nang no nimindok ori a, ala mehakay ori, nimindok do cinapay.</FORM>
         <TRANSL xml:lang="zh">各位，我（口述者）不知道那個因為不滿父母的小孩，是男還是女；那個沒吃到芋頭葉而不滿父母的小孩可能是男的吧</TRANSL>
         <TRANSL xml:lang="en">I [speaker don’t know if the child was a girl or a boy who was upset because [there were no taro leaves. It probably was a boy.</TRANSL>
         <W id="21_1">
@@ -4992,7 +4993,7 @@
         </W>
         <W id="21_3">
             <FORM kindOf="original">a-tenng-i</FORM>
-            <FORM kindOf="standard">a-tenng-i</FORM>
+            <FORM kindOf="standard">atenngi</FORM>
             <TRANSL xml:lang="zh">虛-知道-處焦.虛</TRANSL>
             <TRANSL xml:lang="en">SUB-know-PF.SUB</TRANSL>
             <M id="21_3_1">
@@ -5160,7 +5161,7 @@
         </W>
         <W id="21_16">
             <FORM kindOf="original">ni-m-indok</FORM>
-            <FORM kindOf="standard">ni-m-indok</FORM>
+            <FORM kindOf="standard">nimindok</FORM>
             <TRANSL xml:lang="zh">過去-主焦-不滿</TRANSL>
             <TRANSL xml:lang="en">PA-AF-unhappy</TRANSL>
             <M id="21_16_1">
@@ -5244,7 +5245,7 @@
         </W>
         <W id="21_22">
             <FORM kindOf="original">ni-m-indok</FORM>
-            <FORM kindOf="standard">ni-m-indok</FORM>
+            <FORM kindOf="standard">nimindok</FORM>
             <TRANSL xml:lang="zh">過去-主焦-不滿</TRANSL>
             <TRANSL xml:lang="en">PA-AF-unhappy</TRANSL>
             <M id="21_22_1">

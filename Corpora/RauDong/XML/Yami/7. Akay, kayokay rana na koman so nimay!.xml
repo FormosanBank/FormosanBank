@@ -1,7 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
 <TEXT id="7. Akay, kayokay rana na koman so nimay!" xml:lang="tao" copyright="CC NC-BY" citation="Rau, D. V., &amp; Dong, M. N. (2006). Yami texts with reference grammar and dictionary. Institute of Linguistics, Academia Sinica." BibTeX_citation="@book{rau2006yami, title={Yami texts with reference grammar and dictionary}, author={Rau, D Victoria and Dong, Maa-Neu}, year={2006}, publisher={Institute of Linguistics, Academia Sinica}}" source="['7. Akay, kayokay rana na koman so nimay!', '祖父，起來吃芋糕！', 'Grandpa, come eat taro cake!', '', 'si apen Ogaog (M, 69, Iranmilek)', '黃馬期，男，69，東清村', '']">
     <S id="1">
         <FORM kindOf="original">yaken rana am, mina apia dang o kakawan a, k-aro namen a ka-k-anak-an a mi-al-alam do Jicinikcikan ito a.</FORM>
-        <FORM kindOf="standard">yaken rana am, mina apia dang o kakawan a, k-aro namen a ka-k-anak-an a mi-al-alam do Jicinikcikan ito a.</FORM>
+        <FORM kindOf="standard">yaken rana am, mina apia dang o kakawan a, karo namen a kakanakan a mialalam do Jicinikcikan ito a.</FORM>
         <TRANSL xml:lang="zh">我呢，那天天氣很好，所以我們很多小孩子就都去Jicinikcikan遊玩</TRANSL>
         <TRANSL xml:lang="en">As for me, one day the weather was very good, and a lot of us children went to Jicinikcikan to play.</TRANSL>
         <W id="1_1">
@@ -114,7 +115,7 @@
         </W>
         <W id="1_10">
             <FORM kindOf="original">k-aro</FORM>
-            <FORM kindOf="standard">k-aro</FORM>
+            <FORM kindOf="standard">karo</FORM>
             <TRANSL xml:lang="zh">故-很多</TRANSL>
             <TRANSL xml:lang="en">CON-many</TRANSL>
             <M id="1_10_1">
@@ -156,7 +157,7 @@
         </W>
         <W id="1_13">
             <FORM kindOf="original">ka-k-anak-an</FORM>
-            <FORM kindOf="standard">ka-k-anak-an</FORM>
+            <FORM kindOf="standard">kakanakan</FORM>
             <TRANSL xml:lang="zh">疊-名綴-小孩子-名綴</TRANSL>
             <TRANSL xml:lang="en">RED-NF-child-NF</TRANSL>
             <M id="1_13_1">
@@ -198,7 +199,7 @@
         </W>
         <W id="1_15">
             <FORM kindOf="original">mi-al-alam</FORM>
-            <FORM kindOf="standard">mi-al-alam</FORM>
+            <FORM kindOf="standard">mialalam</FORM>
             <TRANSL xml:lang="zh">主焦-疊-玩耍</TRANSL>
             <TRANSL xml:lang="en">AF-RED-play</TRANSL>
             <M id="1_15_1">
@@ -271,7 +272,7 @@
     </S>
     <S id="2">
         <FORM kindOf="original">karaan na am, m-ángsah ko rana, ta ji ko á-kaha, to ko rana ngítkeh, ta mi ko rana m-itkeh koan ko am, to ko rana ngóli a.</FORM>
-        <FORM kindOf="standard">karaan na am, m-ángsah ko rana, ta ji ko á-kaha, to ko rana ngítkeh, ta mi ko rana m-itkeh koan ko am, to ko rana ngóli a.</FORM>
+        <FORM kindOf="standard">karaan na am, mángsah ko rana, ta ji ko ákaha, to ko rana ngítkeh, ta mi ko rana mitkeh koan ko am, to ko rana ngóli a.</FORM>
         <TRANSL xml:lang="zh">後來覺得無聊，想睡覺；我就想，還是回家去睡覺好了，於是就回家了</TRANSL>
         <TRANSL xml:lang="en">At the time I felt bored and sleepy. As I thought about it, I wanted to sleep, so I went home.</TRANSL>
         <W id="2_1">
@@ -312,7 +313,7 @@
         </W>
         <W id="2_4">
             <FORM kindOf="original">m-ángsah</FORM>
-            <FORM kindOf="standard">m-ángsah</FORM>
+            <FORM kindOf="standard">mángsah</FORM>
             <TRANSL xml:lang="zh">靜態-很無聊</TRANSL>
             <TRANSL xml:lang="en">SV-bored</TRANSL>
             <M id="2_4_1">
@@ -390,7 +391,7 @@
         </W>
         <W id="2_10">
             <FORM kindOf="original">á-kaha</FORM>
-            <FORM kindOf="standard">á-kaha</FORM>
+            <FORM kindOf="standard">ákaha</FORM>
             <TRANSL xml:lang="zh">靜態.虛-想睡_睏</TRANSL>
             <TRANSL xml:lang="en">SV.SUB-sleepy</TRANSL>
             <M id="2_10_1">
@@ -504,7 +505,7 @@
         </W>
         <W id="2_19">
             <FORM kindOf="original">m-itkeh</FORM>
-            <FORM kindOf="standard">m-itkeh</FORM>
+            <FORM kindOf="standard">mitkeh</FORM>
             <TRANSL xml:lang="zh">主焦-睡覺</TRANSL>
             <TRANSL xml:lang="en">AF-sleep</TRANSL>
             <M id="2_19_1">
@@ -619,12 +620,12 @@
     </S>
     <S id="3">
         <FORM kindOf="original">"ma-ngay ko pala jira Akay an" koan ko a, ka-to ko angay-an, "a ji ko manci-an, ji ko yokay-a".</FORM>
-        <FORM kindOf="standard">"ma-ngay ko pala jira Akay an" koan ko a, ka-to ko angay-an, "a ji ko manci-an, ji ko yokay-a".</FORM>
+        <FORM kindOf="standard">"mangay ko pala jira Akay an" koan ko a, kato ko angayan, "a ji ko mancian, ji ko yokaya".</FORM>
         <TRANSL xml:lang="zh">途中我想“去祖父家看看” ，我就去了。我想“我要跟他說 。還是不要吵醒他的好”</TRANSL>
         <TRANSL xml:lang="en">As I walked home, I thought, “I’ll go to Grandpa’s,” and I went. “I’ll tell him I’ll not wake him up.”</TRANSL>
         <W id="3_1">
             <FORM kindOf="original">ma-ngay</FORM>
-            <FORM kindOf="standard">ma-ngay</FORM>
+            <FORM kindOf="standard">mangay</FORM>
             <TRANSL xml:lang="zh">主焦-去</TRANSL>
             <TRANSL xml:lang="en">AF-go</TRANSL>
             <M id="3_1_1">
@@ -738,7 +739,7 @@
         </W>
         <W id="3_10">
             <FORM kindOf="original">ka-to</FORM>
-            <FORM kindOf="standard">ka-to</FORM>
+            <FORM kindOf="standard">kato</FORM>
             <TRANSL xml:lang="zh">然後-就</TRANSL>
             <TRANSL xml:lang="en">CON-AUX</TRANSL>
             <M id="3_10_1">
@@ -768,7 +769,7 @@
         </W>
         <W id="3_12">
             <FORM kindOf="original">angay-an</FORM>
-            <FORM kindOf="standard">angay-an</FORM>
+            <FORM kindOf="standard">angayan</FORM>
             <TRANSL xml:lang="zh">虛.去-名綴</TRANSL>
             <TRANSL xml:lang="en">SUB.go-NF</TRANSL>
             <M id="3_12_1">
@@ -822,7 +823,7 @@
         </W>
         <W id="3_16">
             <FORM kindOf="original">manci-an</FORM>
-            <FORM kindOf="standard">manci-an</FORM>
+            <FORM kindOf="standard">mancian</FORM>
             <TRANSL xml:lang="zh">虛.講-工焦.虛</TRANSL>
             <TRANSL xml:lang="en">SUB.tell-IF.SUB</TRANSL>
             <M id="3_16_1">
@@ -864,7 +865,7 @@
         </W>
         <W id="3_19">
             <FORM kindOf="original">yokay-a</FORM>
-            <FORM kindOf="standard">yokay-a</FORM>
+            <FORM kindOf="standard">yokaya</FORM>
             <TRANSL xml:lang="zh">叫醒-受焦.虛</TRANSL>
             <TRANSL xml:lang="en">wake_up-PF.SUB</TRANSL>
             <M id="3_19_1">
@@ -883,7 +884,7 @@
     </S>
     <S id="4">
         <FORM kindOf="original">karaan am, "yokay-in ko si Akay saon, ta ya ni-mang-may si Ina" koan ko, ka-to ko angay-an ji akay ta icialaw a.</FORM>
-        <FORM kindOf="standard">karaan am, "yokay-in ko si Akay saon, ta ya ni-mang-may si Ina" koan ko, ka-to ko angay-an ji akay ta icialaw a.</FORM>
+        <FORM kindOf="standard">karaan am, "yokayin ko si Akay saon, ta ya nimangmay si Ina" koan ko, kato ko angayan ji akay ta icialaw a.</FORM>
         <TRANSL xml:lang="zh">後來我又想“還是叫醒祖父吧，就說，我媽媽做了芋糕” ，就這樣，我去了祖父的家</TRANSL>
         <TRANSL xml:lang="en">“I’ll wake him up, saying, Mom has made taro cake.” I went with this thought.</TRANSL>
         <W id="4_1">
@@ -912,7 +913,7 @@
         </W>
         <W id="4_3">
             <FORM kindOf="original">yokay-in</FORM>
-            <FORM kindOf="standard">yokay-in</FORM>
+            <FORM kindOf="standard">yokayin</FORM>
             <TRANSL xml:lang="zh">叫醒-受焦</TRANSL>
             <TRANSL xml:lang="en">wake_up-PF</TRANSL>
             <M id="4_3_1">
@@ -1002,7 +1003,7 @@
         </W>
         <W id="4_10">
             <FORM kindOf="original">ni-mang-may</FORM>
-            <FORM kindOf="standard">ni-mang-may</FORM>
+            <FORM kindOf="standard">nimangmay</FORM>
             <TRANSL xml:lang="zh">過去-主焦-做芋糕</TRANSL>
             <TRANSL xml:lang="en">PA-AF-make_taro_cake</TRANSL>
             <M id="4_10_1">
@@ -1074,7 +1075,7 @@
         </W>
         <W id="4_15">
             <FORM kindOf="original">ka-to</FORM>
-            <FORM kindOf="standard">ka-to</FORM>
+            <FORM kindOf="standard">kato</FORM>
             <TRANSL xml:lang="zh">然後-就</TRANSL>
             <TRANSL xml:lang="en">CON-AUX</TRANSL>
             <M id="4_15_1">
@@ -1104,7 +1105,7 @@
         </W>
         <W id="4_17">
             <FORM kindOf="original">angay-an</FORM>
-            <FORM kindOf="standard">angay-an</FORM>
+            <FORM kindOf="standard">angayan</FORM>
             <TRANSL xml:lang="zh">虛.去-名綴</TRANSL>
             <TRANSL xml:lang="en">SUB.go-NF</TRANSL>
             <M id="4_17_1">
@@ -1183,7 +1184,7 @@
     </S>
     <S id="5">
         <FORM kindOf="original">karaan na am, "mo Akay!" koan ko am, ji pa mi-zi-ziak, ta m-itkeh ori a, "mo Akay!" "ikongo manga apo ko?"</FORM>
-        <FORM kindOf="standard">karaan na am, "mo Akay!" koan ko am, ji pa mi-zi-ziak, ta m-itkeh ori a, "mo Akay!" "ikongo manga apo ko?"</FORM>
+        <FORM kindOf="standard">karaan na am, "mo Akay!" koan ko am, ji pa miziziak, ta mitkeh ori a, "mo Akay!" "ikongo manga apo ko?"</FORM>
         <TRANSL xml:lang="zh">我去了之後，就喊道：“祖父！” 可是他在睡覺，沒有回應；我就再喊一次：“祖父！” “什麼事啊？孫子”</TRANSL>
         <TRANSL xml:lang="en">When I arrived I shouted, “Grandpa!” He didn’t reply because he was still asleep, so I cried again, “Grandpa!” “What is it, my grandson?”</TRANSL>
         <W id="5_1">
@@ -1308,7 +1309,7 @@
         </W>
         <W id="5_11">
             <FORM kindOf="original">mi-zi-ziak</FORM>
-            <FORM kindOf="standard">mi-zi-ziak</FORM>
+            <FORM kindOf="standard">miziziak</FORM>
             <TRANSL xml:lang="zh">主焦-疊-講話</TRANSL>
             <TRANSL xml:lang="en">AF-RED-speak</TRANSL>
             <M id="5_11_1">
@@ -1344,7 +1345,7 @@
         </W>
         <W id="5_13">
             <FORM kindOf="original">m-itkeh</FORM>
-            <FORM kindOf="standard">m-itkeh</FORM>
+            <FORM kindOf="standard">mitkeh</FORM>
             <TRANSL xml:lang="zh">主焦-睡覺</TRANSL>
             <TRANSL xml:lang="en">AF-sleep</TRANSL>
             <M id="5_13_1">
@@ -1459,7 +1460,7 @@
     </S>
     <S id="6">
         <FORM kindOf="original">"mo Akay!" "ikongo, mo panci-an yaken manga apo ko?" "ya ni-mang-may si Ina, t-om-anggah ka kono",</FORM>
-        <FORM kindOf="standard">"mo Akay!" "ikongo, mo panci-an yaken manga apo ko?" "ya ni-mang-may si Ina, t-om-anggah ka kono",</FORM>
+        <FORM kindOf="standard">"mo Akay!" "ikongo, mo pancian yaken manga apo ko?" "ya nimangmay si Ina, tomanggah ka kono",</FORM>
         <TRANSL xml:lang="zh">“祖父！” “叫我有什麼事嗎，孫子” ，“聽說我媽媽做了芋糕，請你上去吃”</TRANSL>
         <TRANSL xml:lang="en">“Grandpa!” “What is it, my grandson?” “They said Mom made taro cake for you and invite you up to eat.”</TRANSL>
         <W id="6_1">
@@ -1512,7 +1513,7 @@
         </W>
         <W id="6_5">
             <FORM kindOf="original">panci-an</FORM>
-            <FORM kindOf="standard">panci-an</FORM>
+            <FORM kindOf="standard">pancian</FORM>
             <TRANSL xml:lang="zh">叫-處焦</TRANSL>
             <TRANSL xml:lang="en">call-LF</TRANSL>
             <M id="6_5_1">
@@ -1590,7 +1591,7 @@
         </W>
         <W id="6_11">
             <FORM kindOf="original">ni-mang-may</FORM>
-            <FORM kindOf="standard">ni-mang-may</FORM>
+            <FORM kindOf="standard">nimangmay</FORM>
             <TRANSL xml:lang="zh">過去-主焦-做芋糕</TRANSL>
             <TRANSL xml:lang="en">PA-AF-make_taro_cake</TRANSL>
             <M id="6_11_1">
@@ -1638,7 +1639,7 @@
         </W>
         <W id="6_14">
             <FORM kindOf="original">t-om-anggah</FORM>
-            <FORM kindOf="standard">t-om-anggah</FORM>
+            <FORM kindOf="standard">tomanggah</FORM>
             <TRANSL xml:lang="zh">&lt;主焦&gt;上去</TRANSL>
             <TRANSL xml:lang="en">&lt;AF&gt;go_up</TRANSL>
             <M id="6_14_1">
@@ -1681,7 +1682,7 @@
     </S>
     <S id="7">
         <FORM kindOf="original">karaan am, ma-ngay ko rana do vahay namen a, ma-níring si Ina am, "ya ka rana ni-man-ngo ya, mo koimo, ka ji a-kaha pa ya?" koan na yaken a.</FORM>
-        <FORM kindOf="standard">karaan am, ma-ngay ko rana do vahay namen a, ma-níring si Ina am, "ya ka rana ni-man-ngo ya, mo koimo, ka ji a-kaha pa ya?" koan na yaken a.</FORM>
+        <FORM kindOf="standard">karaan am, mangay ko rana do vahay namen a, maníring si Ina am, "ya ka rana nimanngo ya, mo koimo, ka ji akaha pa ya?" koan na yaken a.</FORM>
         <TRANSL xml:lang="zh">後來我就到家了，我媽說“孩子，你怎麼這麼晚回來？還不想睡哦”</TRANSL>
         <TRANSL xml:lang="en">When I got home, Mom said, “Why did you come back so late? Aren’t you sleepy?”</TRANSL>
         <W id="7_1">
@@ -1710,7 +1711,7 @@
         </W>
         <W id="7_3">
             <FORM kindOf="original">ma-ngay</FORM>
-            <FORM kindOf="standard">ma-ngay</FORM>
+            <FORM kindOf="standard">mangay</FORM>
             <TRANSL xml:lang="zh">主焦-去</TRANSL>
             <TRANSL xml:lang="en">AF-go</TRANSL>
             <M id="7_3_1">
@@ -1800,7 +1801,7 @@
         </W>
         <W id="7_10">
             <FORM kindOf="original">ma-níring</FORM>
-            <FORM kindOf="standard">ma-níring</FORM>
+            <FORM kindOf="standard">maníring</FORM>
             <TRANSL xml:lang="zh">主焦-說</TRANSL>
             <TRANSL xml:lang="en">AF-say</TRANSL>
             <M id="7_10_1">
@@ -1890,7 +1891,7 @@
         </W>
         <W id="7_17">
             <FORM kindOf="original">ni-man-ngo</FORM>
-            <FORM kindOf="standard">ni-man-ngo</FORM>
+            <FORM kindOf="standard">nimanngo</FORM>
             <TRANSL xml:lang="zh">過去-主焦-什麼</TRANSL>
             <TRANSL xml:lang="en">PA-AF-what</TRANSL>
             <M id="7_17_1">
@@ -1974,7 +1975,7 @@
         </W>
         <W id="7_23">
             <FORM kindOf="original">a-kaha</FORM>
-            <FORM kindOf="standard">a-kaha</FORM>
+            <FORM kindOf="standard">akaha</FORM>
             <TRANSL xml:lang="zh">靜態.虛-想睡</TRANSL>
             <TRANSL xml:lang="en">SV.SUB-sleepy</TRANSL>
             <M id="7_23_1">
@@ -2065,7 +2066,7 @@
     </S>
     <S id="8">
         <FORM kindOf="original">"todey mapa-lalak so ra-rakeh "karaan na am, ni-totoaw-an na rana ni Akay a.</FORM>
-        <FORM kindOf="standard">"todey mapa-lalak so ra-rakeh "karaan na am, ni-totoaw-an na rana ni Akay a.</FORM>
+        <FORM kindOf="standard">"todey mapalalak so rarakeh "karaan na am, nitotoawan na rana ni Akay a.</FORM>
         <TRANSL xml:lang="zh">“你怎麼可以這樣欺騙老人家呢？” 才說完，祖父來了</TRANSL>
         <TRANSL xml:lang="en">“How dare you trick the elders?” Just as she said that, Grandpa came in.</TRANSL>
         <W id="8_1">
@@ -2082,7 +2083,7 @@
         </W>
         <W id="8_2">
             <FORM kindOf="original">mapa-lalak</FORM>
-            <FORM kindOf="standard">mapa-lalak</FORM>
+            <FORM kindOf="standard">mapalalak</FORM>
             <TRANSL xml:lang="zh">主焦.使-欺騙</TRANSL>
             <TRANSL xml:lang="en">AF.CAU-cheat</TRANSL>
             <M id="8_2_1">
@@ -2112,7 +2113,7 @@
         </W>
         <W id="8_4">
             <FORM kindOf="original">ra-rakeh</FORM>
-            <FORM kindOf="standard">ra-rakeh</FORM>
+            <FORM kindOf="standard">rarakeh</FORM>
             <TRANSL xml:lang="zh">疊-老人</TRANSL>
             <TRANSL xml:lang="en">RED-old_person</TRANSL>
             <M id="8_4_1">
@@ -2166,7 +2167,7 @@
         </W>
         <W id="8_8">
             <FORM kindOf="original">ni-totoaw-an</FORM>
-            <FORM kindOf="standard">ni-totoaw-an</FORM>
+            <FORM kindOf="standard">nitotoawan</FORM>
             <TRANSL xml:lang="zh">過去-出現-處焦</TRANSL>
             <TRANSL xml:lang="en">PA-appear-LF</TRANSL>
             <M id="8_8_1">
@@ -2251,7 +2252,7 @@
     </S>
     <S id="9">
         <FORM kindOf="original">"Ama kong a, ka ma-ngay jino, mo keypong?" "na ni-yokay yaken ni Apo ito a, angay do tey-ngato, ta ya ni-mang-may si ina koan na",</FORM>
-        <FORM kindOf="standard">"Ama kong a, ka ma-ngay jino, mo keypong?" "na ni-yokay yaken ni Apo ito a, angay do tey-ngato, ta ya ni-mang-may si ina koan na",</FORM>
+        <FORM kindOf="standard">"Ama kong a, ka mangay jino, mo keypong?" "na niyokay yaken ni Apo ito a, angay do teyngato, ta ya nimangmay si ina koan na",</FORM>
         <TRANSL xml:lang="zh">“親愛的爸爸好，你怎麼來了？” “是孫子把我叫醒的，他說媽媽做了芋糕，叫我上來（吃）”</TRANSL>
         <TRANSL xml:lang="en">“Dear Dad, why have you come?” “Grandson woke me up, and he said you had made taro cake and invited me up.”</TRANSL>
         <W id="9_1">
@@ -2304,7 +2305,7 @@
         </W>
         <W id="9_5">
             <FORM kindOf="original">ma-ngay</FORM>
-            <FORM kindOf="standard">ma-ngay</FORM>
+            <FORM kindOf="standard">mangay</FORM>
             <TRANSL xml:lang="zh">主焦-去</TRANSL>
             <TRANSL xml:lang="en">AF-go</TRANSL>
             <M id="9_5_1">
@@ -2370,7 +2371,7 @@
         </W>
         <W id="9_10">
             <FORM kindOf="original">ni-yokay</FORM>
-            <FORM kindOf="standard">ni-yokay</FORM>
+            <FORM kindOf="standard">niyokay</FORM>
             <TRANSL xml:lang="zh">過去.受焦-叫醒</TRANSL>
             <TRANSL xml:lang="en">PA.PF-wake_up</TRANSL>
             <M id="9_10_1">
@@ -2472,7 +2473,7 @@
         </W>
         <W id="9_18">
             <FORM kindOf="original">tey-ngato</FORM>
-            <FORM kindOf="standard">tey-ngato</FORM>
+            <FORM kindOf="standard">teyngato</FORM>
             <TRANSL xml:lang="zh">名綴-上面</TRANSL>
             <TRANSL xml:lang="en">NF-above</TRANSL>
             <M id="9_18_1">
@@ -2514,7 +2515,7 @@
         </W>
         <W id="9_21">
             <FORM kindOf="original">ni-mang-may</FORM>
-            <FORM kindOf="standard">ni-mang-may</FORM>
+            <FORM kindOf="standard">nimangmay</FORM>
             <TRANSL xml:lang="zh">過去-主焦-做芋糕</TRANSL>
             <TRANSL xml:lang="en">PA-AF-make_taro_cake</TRANSL>
             <M id="9_21_1">
@@ -2587,7 +2588,7 @@
     </S>
     <S id="10">
         <FORM kindOf="original">"ya ji abo, Ama kong a, ya ji abo, mo keypong a, ji á-sta yaken a na ni-yokay ni tamazang ito a",</FORM>
-        <FORM kindOf="standard">"ya ji abo, Ama kong a, ya ji abo, mo keypong a, ji á-sta yaken a na ni-yokay ni tamazang ito a",</FORM>
+        <FORM kindOf="standard">"ya ji abo, Ama kong a, ya ji abo, mo keypong a, ji ásta yaken a na niyokay ni tamazang ito a",</FORM>
         <TRANSL xml:lang="zh">“沒有芋糕呢，親愛的爸爸，真不好意思，真的沒有呢，你看，我也被他叫醒了，真是的</TRANSL>
         <TRANSL xml:lang="en">“There is no taro cake, Dear Dad. Look at me, I have also been woken up by that naughty boy.</TRANSL>
         <W id="10_1">
@@ -2748,7 +2749,7 @@
         </W>
         <W id="10_14">
             <FORM kindOf="original">á-sta</FORM>
-            <FORM kindOf="standard">á-sta</FORM>
+            <FORM kindOf="standard">ásta</FORM>
             <TRANSL xml:lang="zh">虛-看見.受焦.虛</TRANSL>
             <TRANSL xml:lang="en">SUB-see.PF.SUB</TRANSL>
             <M id="10_14_1">
@@ -2802,7 +2803,7 @@
         </W>
         <W id="10_18">
             <FORM kindOf="original">ni-yokay</FORM>
-            <FORM kindOf="standard">ni-yokay</FORM>
+            <FORM kindOf="standard">niyokay</FORM>
             <TRANSL xml:lang="zh">過去.受焦-叫醒</TRANSL>
             <TRANSL xml:lang="en">PA.PF-wake_up</TRANSL>
             <M id="10_18_1">
@@ -2869,7 +2870,7 @@
     </S>
     <S id="11">
         <FORM kindOf="original">"ko ni-panci si Akay a ni-yokay", "ta mo todey yokay-i sia", "ya ni-mang-may si Ina" koan ko, "ásio todey mapa-lalak so ra-rakeh a, ásio ka ya?"</FORM>
-        <FORM kindOf="standard">"ko ni-panci si Akay a ni-yokay", "ta mo todey yokay-i sia", "ya ni-mang-may si Ina" koan ko, "ásio todey mapa-lalak so ra-rakeh a, ásio ka ya?"</FORM>
+        <FORM kindOf="standard">"ko nipanci si Akay a niyokay", "ta mo todey yokayi sia", "ya nimangmay si Ina" koan ko, "ásio todey mapalalak so rarakeh a, ásio ka ya?"</FORM>
         <TRANSL xml:lang="zh">“我已叫醒了祖父” “為什麼要叫醒他？” 我說“媽媽做了芋糕” “你怎麼可以這樣欺騙老人家呢，你怎麼這樣？！”</TRANSL>
         <TRANSL xml:lang="en">He told me about waking you, I asked him why he woke you and he said that I had made taro cake. I said how dare he tricked the elders.”</TRANSL>
         <W id="11_1">
@@ -2886,7 +2887,7 @@
         </W>
         <W id="11_2">
             <FORM kindOf="original">ni-panci</FORM>
-            <FORM kindOf="standard">ni-panci</FORM>
+            <FORM kindOf="standard">nipanci</FORM>
             <TRANSL xml:lang="zh">過去.工焦-告訴</TRANSL>
             <TRANSL xml:lang="en">PA.IF-tell</TRANSL>
             <M id="11_2_1">
@@ -2940,7 +2941,7 @@
         </W>
         <W id="11_6">
             <FORM kindOf="original">ni-yokay</FORM>
-            <FORM kindOf="standard">ni-yokay</FORM>
+            <FORM kindOf="standard">niyokay</FORM>
             <TRANSL xml:lang="zh">過去.受焦-叫醒</TRANSL>
             <TRANSL xml:lang="en">PA.PF-wake_up</TRANSL>
             <M id="11_6_1">
@@ -2994,7 +2995,7 @@
         </W>
         <W id="11_10">
             <FORM kindOf="original">yokay-i</FORM>
-            <FORM kindOf="standard">yokay-i</FORM>
+            <FORM kindOf="standard">yokayi</FORM>
             <TRANSL xml:lang="zh">叫醒-處焦.虛</TRANSL>
             <TRANSL xml:lang="en">wake_up-LF.SUB</TRANSL>
             <M id="11_10_1">
@@ -3036,7 +3037,7 @@
         </W>
         <W id="11_13">
             <FORM kindOf="original">ni-mang-may</FORM>
-            <FORM kindOf="standard">ni-mang-may</FORM>
+            <FORM kindOf="standard">nimangmay</FORM>
             <TRANSL xml:lang="zh">過去-主焦-做芋糕</TRANSL>
             <TRANSL xml:lang="en">PA-AF-make_taro_cake</TRANSL>
             <M id="11_13_1">
@@ -3132,7 +3133,7 @@
         </W>
         <W id="11_20">
             <FORM kindOf="original">mapa-lalak</FORM>
-            <FORM kindOf="standard">mapa-lalak</FORM>
+            <FORM kindOf="standard">mapalalak</FORM>
             <TRANSL xml:lang="zh">主焦.使-欺騙</TRANSL>
             <TRANSL xml:lang="en">AF.CAU-cheat</TRANSL>
             <M id="11_20_1">
@@ -3162,7 +3163,7 @@
         </W>
         <W id="11_22">
             <FORM kindOf="original">ra-rakeh</FORM>
-            <FORM kindOf="standard">ra-rakeh</FORM>
+            <FORM kindOf="standard">rarakeh</FORM>
             <TRANSL xml:lang="zh">疊-老人</TRANSL>
             <TRANSL xml:lang="en">RED-old_person</TRANSL>
             <M id="11_22_1">
@@ -3229,7 +3230,7 @@
     </S>
     <S id="12">
         <FORM kindOf="original">"a ya abo an, ya abo, manga anak ko, a", "a ya ji abo, mo keypong a, ji ka ma-karilaw, mo keypong a, na todey yokay-a ni apo mo",</FORM>
-        <FORM kindOf="standard">"a ya abo an, ya abo, manga anak ko, a", "a ya ji abo, mo keypong a, ji ka ma-karilaw, mo keypong a, na todey yokay-a ni apo mo",</FORM>
+        <FORM kindOf="standard">"a ya abo an, ya abo, manga anak ko, a", "a ya ji abo, mo keypong a, ji ka makarilaw, mo keypong a, na todey yokaya ni apo mo",</FORM>
         <TRANSL xml:lang="zh">“沒有哦，真的沒有哦，孩子！那麼 ”，“是的，真的沒有芋糕，親愛的。你的孫子吵醒了你，真是不好意思”</TRANSL>
         <TRANSL xml:lang="en">“Oh, there is none, my child? If there is not, then ”“No, there is no taro cake. I am sorry that your grandson woke you up.”</TRANSL>
         <W id="12_1">
@@ -3462,7 +3463,7 @@
         </W>
         <W id="12_20">
             <FORM kindOf="original">ma-karilaw</FORM>
-            <FORM kindOf="standard">ma-karilaw</FORM>
+            <FORM kindOf="standard">makarilaw</FORM>
             <TRANSL xml:lang="zh">靜態-很可憐</TRANSL>
             <TRANSL xml:lang="en">SV-pitiable</TRANSL>
             <M id="12_20_1">
@@ -3540,7 +3541,7 @@
         </W>
         <W id="12_26">
             <FORM kindOf="original">yokay-a</FORM>
-            <FORM kindOf="standard">yokay-a</FORM>
+            <FORM kindOf="standard">yokaya</FORM>
             <TRANSL xml:lang="zh">叫醒-受焦.虛</TRANSL>
             <TRANSL xml:lang="en">wake_up-PF.SUB</TRANSL>
             <M id="12_26_1">
@@ -3595,7 +3596,7 @@
     </S>
     <S id="13">
         <FORM kindOf="original">"ciaha, mo keypong a, si Apo ya todey yokay jiaken a, ko ka-teng-an na k-abo, manga anak ko am" "y-owsok ko rana, manga apo ko an".</FORM>
-        <FORM kindOf="standard">"ciaha, mo keypong a, si Apo ya todey yokay jiaken a, ko ka-teng-an na k-abo, manga anak ko am" "y-owsok ko rana, manga apo ko an".</FORM>
+        <FORM kindOf="standard">"ciaha, mo keypong a, si Apo ya todey yokay jiaken a, ko katengan na kabo, manga anak ko am" "yowsok ko rana, manga apo ko an".</FORM>
         <TRANSL xml:lang="zh">“沒關係，親愛的。是孫子來叫醒我的，我也不知道原來沒有芋糕。那麼我下去囉，親愛的孫子”</TRANSL>
         <TRANSL xml:lang="en">“It’s okay, dear. My grandson woke me up, and I didn’t even know there was no taro cake. (But if there isn’t any), then I’ll just go home, Dear Grandson.”</TRANSL>
         <W id="13_1">
@@ -3744,7 +3745,7 @@
         </W>
         <W id="13_13">
             <FORM kindOf="original">ka-teng-an</FORM>
-            <FORM kindOf="standard">ka-teng-an</FORM>
+            <FORM kindOf="standard">katengan</FORM>
             <TRANSL xml:lang="zh">動綴-知道-動綴</TRANSL>
             <TRANSL xml:lang="en">VF-know-VF</TRANSL>
             <M id="13_13_1">
@@ -3780,7 +3781,7 @@
         </W>
         <W id="13_15">
             <FORM kindOf="original">k-abo</FORM>
-            <FORM kindOf="standard">k-abo</FORM>
+            <FORM kindOf="standard">kabo</FORM>
             <TRANSL xml:lang="zh">動綴-無</TRANSL>
             <TRANSL xml:lang="en">VF-no</TRANSL>
             <M id="13_15_1">
@@ -3846,7 +3847,7 @@
         </W>
         <W id="13_20">
             <FORM kindOf="original">y-owsok</FORM>
-            <FORM kindOf="standard">y-owsok</FORM>
+            <FORM kindOf="standard">yowsok</FORM>
             <TRANSL xml:lang="zh">工焦-下去</TRANSL>
             <TRANSL xml:lang="en">IF-go_down</TRANSL>
             <M id="13_20_1">
@@ -3937,7 +3938,7 @@
     </S>
     <S id="14">
         <FORM kindOf="original">karaan na am, ma-'ayo rana ori a, a m-osok rana ori am, maka-logod am ma-zokot a om-osok a.</FORM>
-        <FORM kindOf="standard">karaan na am, ma-'ayo rana ori a, a m-osok rana ori am, maka-logod am ma-zokot a om-osok a.</FORM>
+        <FORM kindOf="standard">karaan na am, ma'ayo rana ori a, a mosok rana ori am, makalogod am mazokot a omosok a.</FORM>
         <TRANSL xml:lang="zh">就這樣，他很失望的下去了。然後看到他低著頭駝著背的身影回去了</TRANSL>
         <TRANSL xml:lang="en">And he left the house disappointed. I watched his back as he walked back home with his head lowered and shoulders drooped.</TRANSL>
         <W id="14_1">
@@ -3978,7 +3979,7 @@
         </W>
         <W id="14_4">
             <FORM kindOf="original">ma-'ayo</FORM>
-            <FORM kindOf="standard">ma-'ayo</FORM>
+            <FORM kindOf="standard">ma'ayo</FORM>
             <TRANSL xml:lang="zh">靜態-失望</TRANSL>
             <TRANSL xml:lang="en">SV-disappointed</TRANSL>
             <M id="14_4_1">
@@ -4044,7 +4045,7 @@
         </W>
         <W id="14_9">
             <FORM kindOf="original">m-osok</FORM>
-            <FORM kindOf="standard">m-osok</FORM>
+            <FORM kindOf="standard">mosok</FORM>
             <TRANSL xml:lang="zh">主焦-下去</TRANSL>
             <TRANSL xml:lang="en">AF-go_down</TRANSL>
             <M id="14_9_1">
@@ -4098,7 +4099,7 @@
         </W>
         <W id="14_13">
             <FORM kindOf="original">maka-logod</FORM>
-            <FORM kindOf="standard">maka-logod</FORM>
+            <FORM kindOf="standard">makalogod</FORM>
             <TRANSL xml:lang="zh">主焦-低著頭</TRANSL>
             <TRANSL xml:lang="en">AF-lower_one’s_head</TRANSL>
             <M id="14_13_1">
@@ -4128,7 +4129,7 @@
         </W>
         <W id="14_15">
             <FORM kindOf="original">ma-zokot</FORM>
-            <FORM kindOf="standard">ma-zokot</FORM>
+            <FORM kindOf="standard">mazokot</FORM>
             <TRANSL xml:lang="zh">靜態-駝著背</TRANSL>
             <TRANSL xml:lang="en">SV-drooped_shoulders</TRANSL>
             <M id="14_15_1">
@@ -4158,7 +4159,7 @@
         </W>
         <W id="14_17">
             <FORM kindOf="original">om-osok</FORM>
-            <FORM kindOf="standard">om-osok</FORM>
+            <FORM kindOf="standard">omosok</FORM>
             <TRANSL xml:lang="zh">主焦-下去</TRANSL>
             <TRANSL xml:lang="en">AF-go_down</TRANSL>
             <M id="14_17_1">
@@ -4189,7 +4190,7 @@
     </S>
     <S id="15">
         <FORM kindOf="original">"a ji ka ma-kasi, mo keypong, am ásio, mo keypong, ikong to ko ngmáy-a a ma-la-lahet a waka-wakay ito am", ma-'ayo a om-osok a.</FORM>
-        <FORM kindOf="standard">"a ji ka ma-kasi, mo keypong, am ásio, mo keypong, ikong to ko ngmáy-a a ma-la-lahet a waka-wakay ito am", ma-'ayo a om-osok a.</FORM>
+        <FORM kindOf="standard">"a ji ka makasi, mo keypong, am ásio, mo keypong, ikong to ko ngmáya a malalahet a wakawakay ito am", ma'ayo a omosok a.</FORM>
         <TRANSL xml:lang="zh">“真的不好意思呢，親愛的爸爸；但真的沒有芋糕呢，我們有的只是一些不好的地瓜，做不成糕點呢” ，就這樣，他很失望的回家去了</TRANSL>
         <TRANSL xml:lang="en">“Dear Dad, I’m so sorry. How can I make any taro cake when the only things in the house are a few lousy sweet potatoes?” He walked down disappointed.</TRANSL>
         <W id="15_1">
@@ -4230,7 +4231,7 @@
         </W>
         <W id="15_4">
             <FORM kindOf="original">ma-kasi</FORM>
-            <FORM kindOf="standard">ma-kasi</FORM>
+            <FORM kindOf="standard">makasi</FORM>
             <TRANSL xml:lang="zh">靜態-可憐</TRANSL>
             <TRANSL xml:lang="en">SV-pitiable</TRANSL>
             <M id="15_4_1">
@@ -4356,7 +4357,7 @@
         </W>
         <W id="15_14">
             <FORM kindOf="original">ngmáy-a</FORM>
-            <FORM kindOf="standard">ngmáy-a</FORM>
+            <FORM kindOf="standard">ngmáya</FORM>
             <TRANSL xml:lang="zh">虛.做芋糕-受焦.虛</TRANSL>
             <TRANSL xml:lang="en">SUB.make_taro_cake-PF.SUB</TRANSL>
             <M id="15_14_1">
@@ -4386,7 +4387,7 @@
         </W>
         <W id="15_16">
             <FORM kindOf="original">ma-la-lahet</FORM>
-            <FORM kindOf="standard">ma-la-lahet</FORM>
+            <FORM kindOf="standard">malalahet</FORM>
             <TRANSL xml:lang="zh">靜態-疊-壞</TRANSL>
             <TRANSL xml:lang="en">SV-RED-bad</TRANSL>
             <M id="15_16_1">
@@ -4422,7 +4423,7 @@
         </W>
         <W id="15_18">
             <FORM kindOf="original">waka-wakay</FORM>
-            <FORM kindOf="standard">waka-wakay</FORM>
+            <FORM kindOf="standard">wakawakay</FORM>
             <TRANSL xml:lang="zh">疊-地瓜</TRANSL>
             <TRANSL xml:lang="en">RED-sweet_potato</TRANSL>
             <M id="15_18_1">
@@ -4464,7 +4465,7 @@
         </W>
         <W id="15_21">
             <FORM kindOf="original">ma-'ayo</FORM>
-            <FORM kindOf="standard">ma-'ayo</FORM>
+            <FORM kindOf="standard">ma'ayo</FORM>
             <TRANSL xml:lang="zh">靜態-失望</TRANSL>
             <TRANSL xml:lang="en">SV-disappointed</TRANSL>
             <M id="15_21_1">
@@ -4494,7 +4495,7 @@
         </W>
         <W id="15_23">
             <FORM kindOf="original">om-osok</FORM>
-            <FORM kindOf="standard">om-osok</FORM>
+            <FORM kindOf="standard">omosok</FORM>
             <TRANSL xml:lang="zh">主焦-下去</TRANSL>
             <TRANSL xml:lang="en">AF-go_down</TRANSL>
             <M id="15_23_1">
@@ -4525,7 +4526,7 @@
     </S>
     <S id="16">
         <FORM kindOf="original">"a todey yokay so ra-rakeh ta, wánja o ya na ni-akan ni akay mo a ka-to mo yokay-an sia".</FORM>
-        <FORM kindOf="standard">"a todey yokay so ra-rakeh ta, wánja o ya na ni-akan ni akay mo a ka-to mo yokay-an sia".</FORM>
+        <FORM kindOf="standard">"a todey yokay so rarakeh ta, wánja o ya na niakan ni akay mo a kato mo yokayan sia".</FORM>
         <TRANSL xml:lang="zh">“怎麼可以這樣叫醒老人家，你看你祖父來（家裡）吃什麼，真是的！”</TRANSL>
         <TRANSL xml:lang="en">How dare you get an old man up like this. What did your grandpa get to eat? Why did you wake him up? Jeez!”</TRANSL>
         <W id="16_1">
@@ -4578,7 +4579,7 @@
         </W>
         <W id="16_5">
             <FORM kindOf="original">ra-rakeh</FORM>
-            <FORM kindOf="standard">ra-rakeh</FORM>
+            <FORM kindOf="standard">rarakeh</FORM>
             <TRANSL xml:lang="zh">疊-老人</TRANSL>
             <TRANSL xml:lang="en">RED-old_person</TRANSL>
             <M id="16_5_1">
@@ -4656,7 +4657,7 @@
         </W>
         <W id="16_11">
             <FORM kindOf="original">ni-akan</FORM>
-            <FORM kindOf="standard">ni-akan</FORM>
+            <FORM kindOf="standard">niakan</FORM>
             <TRANSL xml:lang="zh">過去.受焦-吃</TRANSL>
             <TRANSL xml:lang="en">PA.PF-eat</TRANSL>
             <M id="16_11_1">
@@ -4722,7 +4723,7 @@
         </W>
         <W id="16_16">
             <FORM kindOf="original">ka-to</FORM>
-            <FORM kindOf="standard">ka-to</FORM>
+            <FORM kindOf="standard">kato</FORM>
             <TRANSL xml:lang="zh">然後-就</TRANSL>
             <TRANSL xml:lang="en">CON-AUX</TRANSL>
             <M id="16_16_1">
@@ -4752,7 +4753,7 @@
         </W>
         <W id="16_18">
             <FORM kindOf="original">yokay-an</FORM>
-            <FORM kindOf="standard">yokay-an</FORM>
+            <FORM kindOf="standard">yokayan</FORM>
             <TRANSL xml:lang="zh">叫醒-名綴</TRANSL>
             <TRANSL xml:lang="en">wake_up-NF</TRANSL>
             <M id="16_18_1">
@@ -4783,7 +4784,7 @@
     </S>
     <S id="17">
         <FORM kindOf="original">"ya ko m-ai jia am, ya ko todey nibo ji Akay a yokay-in ang", do akma so sang a.</FORM>
-        <FORM kindOf="standard">"ya ko m-ai jia am, ya ko todey nibo ji Akay a yokay-in ang", do akma so sang a.</FORM>
+        <FORM kindOf="standard">"ya ko mai jia am, ya ko todey nibo ji Akay a yokayin ang", do akma so sang a.</FORM>
         <TRANSL xml:lang="zh">“那是我要回來的時候臨時想到要去叫醒祖父的嘛” 。這是當時的情形</TRANSL>
         <TRANSL xml:lang="en">“I was going to come straight home, and going the grandpa’s was a last minute decision.” Just like that.</TRANSL>
         <W id="17_1">
@@ -4812,7 +4813,7 @@
         </W>
         <W id="17_3">
             <FORM kindOf="original">m-ai</FORM>
-            <FORM kindOf="standard">m-ai</FORM>
+            <FORM kindOf="standard">mai</FORM>
             <TRANSL xml:lang="zh">主焦-來</TRANSL>
             <TRANSL xml:lang="en">AF-come</TRANSL>
             <M id="17_3_1">
@@ -4938,7 +4939,7 @@
         </W>
         <W id="17_13">
             <FORM kindOf="original">yokay-in</FORM>
-            <FORM kindOf="standard">yokay-in</FORM>
+            <FORM kindOf="standard">yokayin</FORM>
             <TRANSL xml:lang="zh">叫醒-受焦</TRANSL>
             <TRANSL xml:lang="en">wake_up-PF</TRANSL>
             <M id="17_13_1">
@@ -5029,12 +5030,12 @@
     </S>
     <S id="18">
         <FORM kindOf="original">ika-doa na araw am, i-pang-may na rana ori, ta i-k-arilaw na ni-pa-lalak ko ang, do akma sang,</FORM>
-        <FORM kindOf="standard">ika-doa na araw am, i-pang-may na rana ori, ta i-k-arilaw na ni-pa-lalak ko ang, do akma sang,</FORM>
+        <FORM kindOf="standard">ikadoa na araw am, ipangmay na rana ori, ta ikarilaw na nipalalak ko ang, do akma sang,</FORM>
         <TRANSL xml:lang="zh">第二天，我媽因為可憐祖父被我騙醒，所以她就特地為他做了芋糕；像這樣</TRANSL>
         <TRANSL xml:lang="en">The next day, my mom made taro cake for Grandpa because she was sorry about my trickery. Just like that.</TRANSL>
         <W id="18_1">
             <FORM kindOf="original">ika-doa</FORM>
-            <FORM kindOf="standard">ika-doa</FORM>
+            <FORM kindOf="standard">ikadoa</FORM>
             <TRANSL xml:lang="zh">第-二</TRANSL>
             <TRANSL xml:lang="en">OR-two</TRANSL>
             <M id="18_1_1">
@@ -5088,7 +5089,7 @@
         </W>
         <W id="18_5">
             <FORM kindOf="original">i-pang-may</FORM>
-            <FORM kindOf="standard">i-pang-may</FORM>
+            <FORM kindOf="standard">ipangmay</FORM>
             <TRANSL xml:lang="zh">工焦-動綴-做芋糕</TRANSL>
             <TRANSL xml:lang="en">IF-VF-make_taro_cake</TRANSL>
             <M id="18_5_1">
@@ -5160,7 +5161,7 @@
         </W>
         <W id="18_10">
             <FORM kindOf="original">i-k-arilaw</FORM>
-            <FORM kindOf="standard">i-k-arilaw</FORM>
+            <FORM kindOf="standard">ikarilaw</FORM>
             <TRANSL xml:lang="zh">工焦-動綴-同情</TRANSL>
             <TRANSL xml:lang="en">IF-VF-sympathize</TRANSL>
             <M id="18_10_1">
@@ -5196,7 +5197,7 @@
         </W>
         <W id="18_12">
             <FORM kindOf="original">ni-pa-lalak</FORM>
-            <FORM kindOf="standard">ni-pa-lalak</FORM>
+            <FORM kindOf="standard">nipalalak</FORM>
             <TRANSL xml:lang="zh">過去.受焦-使-騙</TRANSL>
             <TRANSL xml:lang="en">PA.PF-CAU-cheat</TRANSL>
             <M id="18_12_1">
@@ -5281,12 +5282,12 @@
     </S>
     <S id="19">
         <FORM kindOf="original">ka-tey-má-rahet no k-anak-an ya a mang-alalas,</FORM>
-        <FORM kindOf="standard">ka-tey-má-rahet no k-anak-an ya a mang-alalas,</FORM>
+        <FORM kindOf="standard">kateymárahet no kanakan ya a mangalalas,</FORM>
         <TRANSL xml:lang="zh">所以啊，小孩子欺騙老人家是件很糟糕的事情</TRANSL>
         <TRANSL xml:lang="en">Therefore it is really bad for a child to trick (elders).</TRANSL>
         <W id="19_1">
             <FORM kindOf="original">ka-tey-má-rahet</FORM>
-            <FORM kindOf="standard">ka-tey-má-rahet</FORM>
+            <FORM kindOf="standard">kateymárahet</FORM>
             <TRANSL xml:lang="zh">然後-最-靜態-很壞</TRANSL>
             <TRANSL xml:lang="en">CON-very-SV-bad</TRANSL>
             <M id="19_1_1">
@@ -5328,7 +5329,7 @@
         </W>
         <W id="19_3">
             <FORM kindOf="original">k-anak-an</FORM>
-            <FORM kindOf="standard">k-anak-an</FORM>
+            <FORM kindOf="standard">kanakan</FORM>
             <TRANSL xml:lang="zh">名綴-小孩子-名綴</TRANSL>
             <TRANSL xml:lang="en">NF-child-NF</TRANSL>
             <M id="19_3_1">
@@ -5376,7 +5377,7 @@
         </W>
         <W id="19_6">
             <FORM kindOf="original">mang-alalas</FORM>
-            <FORM kindOf="standard">mang-alalas</FORM>
+            <FORM kindOf="standard">mangalalas</FORM>
             <TRANSL xml:lang="zh">主焦-騙人</TRANSL>
             <TRANSL xml:lang="en">AF-cheat</TRANSL>
             <M id="19_6_1">
@@ -5395,7 +5396,7 @@
     </S>
     <S id="20">
         <FORM kindOf="original">ta todey yokay so ra-rakeh, ta ikong o angayan na no akma so sang am,</FORM>
-        <FORM kindOf="standard">ta todey yokay so ra-rakeh, ta ikong o angayan na no akma so sang am,</FORM>
+        <FORM kindOf="standard">ta todey yokay so rarakeh, ta ikong o angayan na no akma so sang am,</FORM>
         <TRANSL xml:lang="zh">像這樣隨便叫醒老人家的行為，實在是沒有意義（很無聊）</TRANSL>
         <TRANSL xml:lang="en">It makes no sense to wake up elders for no reasons like that.</TRANSL>
         <W id="20_1">
@@ -5448,7 +5449,7 @@
         </W>
         <W id="20_5">
             <FORM kindOf="original">ra-rakeh</FORM>
-            <FORM kindOf="standard">ra-rakeh</FORM>
+            <FORM kindOf="standard">rarakeh</FORM>
             <TRANSL xml:lang="zh">疊-老人</TRANSL>
             <TRANSL xml:lang="en">RED-old_person</TRANSL>
             <M id="20_5_1">
@@ -5587,12 +5588,12 @@
     </S>
     <S id="21">
         <FORM kindOf="original">ka-ji ani-níg-an no met-metdeh ya, ori rana ya na kavos-an no kava-kavavatanen ko a ya ko on-onong-an.</FORM>
-        <FORM kindOf="standard">ka-ji ani-níg-an no met-metdeh ya, ori rana ya na kavos-an no kava-kavavatanen ko a ya ko on-onong-an.</FORM>
+        <FORM kindOf="standard">kaji aninígan no metmetdeh ya, ori rana ya na kavosan no kavakavavatanen ko a ya ko ononongan.</FORM>
         <TRANSL xml:lang="zh">都是因為小孩子不懂禮貌的緣故。我的故事就此說完了</TRANSL>
         <TRANSL xml:lang="en">It is also very rude for children to behave like that. This is the end of my story.</TRANSL>
         <W id="21_1">
             <FORM kindOf="original">ka-ji</FORM>
-            <FORM kindOf="standard">ka-ji</FORM>
+            <FORM kindOf="standard">kaji</FORM>
             <TRANSL xml:lang="zh">因-不</TRANSL>
             <TRANSL xml:lang="en">CON-NEG</TRANSL>
             <M id="21_1_1">
@@ -5610,7 +5611,7 @@
         </W>
         <W id="21_2">
             <FORM kindOf="original">ani-níg-an</FORM>
-            <FORM kindOf="standard">ani-níg-an</FORM>
+            <FORM kindOf="standard">aninígan</FORM>
             <TRANSL xml:lang="zh">疊-禮貌-名綴</TRANSL>
             <TRANSL xml:lang="en">RED-polite-NF</TRANSL>
             <M id="21_2_1">
@@ -5646,7 +5647,7 @@
         </W>
         <W id="21_4">
             <FORM kindOf="original">met-metdeh</FORM>
-            <FORM kindOf="standard">met-metdeh</FORM>
+            <FORM kindOf="standard">metmetdeh</FORM>
             <TRANSL xml:lang="zh">疊-孩童</TRANSL>
             <TRANSL xml:lang="en">RED-child</TRANSL>
             <M id="21_4_1">
@@ -5724,7 +5725,7 @@
         </W>
         <W id="21_10">
             <FORM kindOf="original">kavos-an</FORM>
-            <FORM kindOf="standard">kavos-an</FORM>
+            <FORM kindOf="standard">kavosan</FORM>
             <TRANSL xml:lang="zh">結尾-處焦</TRANSL>
             <TRANSL xml:lang="en">end-LF</TRANSL>
             <M id="21_10_1">
@@ -5754,7 +5755,7 @@
         </W>
         <W id="21_12">
             <FORM kindOf="original">kava-kavavatanen</FORM>
-            <FORM kindOf="standard">kava-kavavatanen</FORM>
+            <FORM kindOf="standard">kavakavavatanen</FORM>
             <TRANSL xml:lang="zh">疊-故事</TRANSL>
             <TRANSL xml:lang="en">RED-story</TRANSL>
             <M id="21_12_1">
@@ -5820,7 +5821,7 @@
         </W>
         <W id="21_17">
             <FORM kindOf="original">on-onong-an</FORM>
-            <FORM kindOf="standard">on-onong-an</FORM>
+            <FORM kindOf="standard">ononongan</FORM>
             <TRANSL xml:lang="zh">疊-講述-處焦</TRANSL>
             <TRANSL xml:lang="en">RED-state-LF</TRANSL>
             <M id="21_17_1">
@@ -5845,12 +5846,12 @@
     </S>
     <S id="22">
         <FORM kindOf="original">"ma-noyong ori, manga apo ko an?" "nona, ya ji a-noyong a", "pánma, mo ovay", ratateng am, to ko rana mánma ori a.</FORM>
-        <FORM kindOf="standard">"ma-noyong ori, manga apo ko an?" "nona, ya ji a-noyong a", "pánma, mo ovay", ratateng am, to ko rana mánma ori a.</FORM>
+        <FORM kindOf="standard">"manoyong ori, manga apo ko an?" "nona, ya ji anoyong a", "pánma, mo ovay", ratateng am, to ko rana mánma ori a.</FORM>
         <TRANSL xml:lang="zh">“那是真的嗎？孫子” ，“是的，是真的” ，“那你先上去吧，寶貝” ，我就先上去了</TRANSL>
         <TRANSL xml:lang="en">“Really, my grandson?” “Yes, really.” “Then go ahead first, my dear.” So I left.</TRANSL>
         <W id="22_1">
             <FORM kindOf="original">ma-noyong</FORM>
-            <FORM kindOf="standard">ma-noyong</FORM>
+            <FORM kindOf="standard">manoyong</FORM>
             <TRANSL xml:lang="zh">靜態-真的</TRANSL>
             <TRANSL xml:lang="en">SV-real</TRANSL>
             <M id="22_1_1">
@@ -5964,7 +5965,7 @@
         </W>
         <W id="22_10">
             <FORM kindOf="original">a-noyong</FORM>
-            <FORM kindOf="standard">a-noyong</FORM>
+            <FORM kindOf="standard">anoyong</FORM>
             <TRANSL xml:lang="zh">靜態.虛-是真的</TRANSL>
             <TRANSL xml:lang="en">SV.SUB-real</TRANSL>
             <M id="22_10_1">
@@ -6127,7 +6128,7 @@
     </S>
     <S id="23">
         <FORM kindOf="original">"nona, yaken rana am, ko mi ni-yokay si Akay", "ta mo mi yokay-an sia?" "ya ni-mang-may si Ina koan ko",</FORM>
-        <FORM kindOf="standard">"nona, yaken rana am, ko mi ni-yokay si Akay", "ta mo mi yokay-an sia?" "ya ni-mang-may si Ina koan ko",</FORM>
+        <FORM kindOf="standard">"nona, yaken rana am, ko mi niyokay si Akay", "ta mo mi yokayan sia?" "ya nimangmay si Ina koan ko",</FORM>
         <TRANSL xml:lang="zh">“嗯，我呢，已經去叫醒了祖父” ，“你為什麼叫醒他？” “我說媽媽做了芋糕”</TRANSL>
         <TRANSL xml:lang="en">“Uh, I went to wake up Grandpa.” “Why did you wake him up?” “I said Mom made taro cake.”</TRANSL>
         <W id="23_1">
@@ -6204,7 +6205,7 @@
         </W>
         <W id="23_7">
             <FORM kindOf="original">ni-yokay</FORM>
-            <FORM kindOf="standard">ni-yokay</FORM>
+            <FORM kindOf="standard">niyokay</FORM>
             <TRANSL xml:lang="zh">過去.受焦-叫醒</TRANSL>
             <TRANSL xml:lang="en">PA.PF-wake_up</TRANSL>
             <M id="23_7_1">
@@ -6282,7 +6283,7 @@
         </W>
         <W id="23_13">
             <FORM kindOf="original">yokay-an</FORM>
-            <FORM kindOf="standard">yokay-an</FORM>
+            <FORM kindOf="standard">yokayan</FORM>
             <TRANSL xml:lang="zh">叫醒-處焦</TRANSL>
             <TRANSL xml:lang="en">wake_up-LF</TRANSL>
             <M id="23_13_1">
@@ -6324,7 +6325,7 @@
         </W>
         <W id="23_16">
             <FORM kindOf="original">ni-mang-may</FORM>
-            <FORM kindOf="standard">ni-mang-may</FORM>
+            <FORM kindOf="standard">nimangmay</FORM>
             <TRANSL xml:lang="zh">過去-主焦-做芋糕</TRANSL>
             <TRANSL xml:lang="en">PA-AF-make_taro_cake</TRANSL>
             <M id="23_16_1">
