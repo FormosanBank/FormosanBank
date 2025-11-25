@@ -14,6 +14,7 @@ Welcome to the FormosanBank Corpora section! Here, you’ll find comprehensive d
 * [Virginia Fey's Amis Dictionary](virginia-feys-amis-dictionary.md)
 * [Paiwan Stories](paiwan-stories.md)
 * [Rau-Dong](RauDong.md)  
+* [100 Paiwan Texts](HundredPaiwanStories.md)
 
 ***
 
@@ -27,7 +28,6 @@ In addition to the wide range of corpora already incorporated into FormosanBank,
 * Amis Texts - Montgomery (Amis)
 * Wakelin (1958) Yami texts (Yami)
 * Matthew's Gospel and John's Gospel (Siraya)
-* 100 Paiwan Texts (Paiwan)
 * The Sedik Language of Formosa by Erin Asai (Seediq)
 * Chang's Seediq Reference Grammar (Seediq)
 * Chang's Kavalan reference grammar (Kavalan)
@@ -52,20 +52,20 @@ As of the time you're reading this, FormosanBank contains over 8 million tokens 
 
 | **Language** | **Tokens** |
 | ------------ | ---------- |
-| Amis         | 2,213,003  |
-| Atayal       | 907,763    |
-| Paiwan       | 492,056    |
-| Bunun        | 318,422    |
-| Puyuma       | 340,520    |
+| Amis         | 2,184,946  |
+| Atayal       | 870,844    |
+| Paiwan       | 480,574    |
+| Bunun        | 317,946    |
+| Puyuma       | 330,571    |
 | Rukai        | 358,879    |
 | Tsou         | 99,694     |
 | Saisiyat     | 109,512    |
 | Yami         | 128,404    |
 | Thao         | 121,970    |
 | Kavalan      | 132,412    |
-| Truku        | 115,948    |
-| Sakizaya     | 1,504,757  |
-| Seediq       | 1,044,350  |
+| Truku        | 105,872    |
+| Sakizaya     | 1,473,448  |
+| Seediq       | 1,035,877  |
 | Saaroa       | 79,458     |
 | Kanakanavu   | 108,446    |
 
@@ -82,6 +82,8 @@ As of the time you're reading this, FormosanBank contains over 8 million tokens 
 | Paiwan Stories          | 556 (Paiwan only)    |
 | Wikipedias              | 4,628,365            |
 | ePark                   | 2,680,175            |
+| Rau and Dong            | 13,274 (Yami only)   |
+| 100 Paiwan Stories      | 24,469 (Paiwan only) |
 
 #### Recorded Audio per Language
 
