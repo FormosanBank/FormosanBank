@@ -15,7 +15,7 @@ Welcome to the FormosanBank Corpora section! Here, you’ll find comprehensive d
 * [Paiwan Stories](paiwan-stories.md)
 * [Rau-Dong](RauDong.md)
 * [The Montgomery Texts](MontgomeryTexts.md)
-* [100 Paiwan Texts](HundredPaiwanStories.md)
+* [100 Paiwan Texts](HundredPaiwanTexts.md)
 
 ***
 
