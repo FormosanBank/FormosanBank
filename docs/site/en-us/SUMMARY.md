@@ -23,7 +23,7 @@
   * [Virginia Fey's Amis Dictionary](the-bank-architecture/corpora/virginia-feys-amis-dictionary.md)
   * [Paiwan Stories](the-bank-architecture/corpora/paiwan-stories.md)
   * [Rau-Dong](the-bank-architecture/corpora/RauDong.md)
-  * [100 Paiwan Texts](the-bank-architecture/corpora/HundredPaiwanStories.md)
+  * [100 Paiwan Texts](the-bank-architecture/corpora/HundredPaiwanTexts.md)
 * [Developers](the-bank-architecture/developers/README.md)
   * [🤗 HuggingFace](the-bank-architecture/developers/huggingface.md)
   * [Folder structure](the-bank-architecture/developers/folder-structure.md)
