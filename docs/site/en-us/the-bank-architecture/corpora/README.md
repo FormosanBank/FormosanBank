@@ -6,16 +6,16 @@ icon: subtitles
 
 Welcome to the FormosanBank Corpora section! Here, you’ll find comprehensive documentation of the corpora used in FormosanBank. Each corpus in this collection represents a unique linguistic dataset, encompassing various types of text and audio recordings. Our corpora are designed to support linguistic research, language education, and revitalization efforts, making these endangered languages accessible and analyzable for researchers, educators, and community members alike. Below is a list of the current corpora of which FormosanBank consists:
 
-* [ePark](epark.md)
-* [ILRDF Dictionaries](ilrdf-dictionaries.md)
-* [Wikipedias](wikipedias.md)
-* [Presidential Apologies](presidential-apologies.md)
-* [NTU Paiwan ASR](ntu-paiwan-asr.md)
-* [Virginia Fey's Amis Dictionary](virginia-feys-amis-dictionary.md)
-* [Paiwan Stories](paiwan-stories.md)
-* [Rau-Dong](RauDong.md)
-* [The Montgomery Texts](MontgomeryTexts.md)
-* [100 Paiwan Texts](HundredPaiwanTexts.md)
+* [ePark](epark.md) (text, audio, English, Mandarin)
+* [ILRDF Dictionaries](ilrdf-dictionaries.md) (text, audio, Mandarin)
+* [Wikipedias](wikipedias.md) (text)
+* [Presidential Apologies](presidential-apologies.md) (text, English, Mandarin)
+* [NTU Paiwan ASR](ntu-paiwan-asr.md) (text, audio) 
+* [Virginia Fey's Amis Dictionary](virginia-feys-amis-dictionary.md) (text, English, Mandarin)
+* [Paiwan Stories](paiwan-stories.md) (text, audio, Mandarin)
+* [Rau-Dong](RauDong.md) (text, glossing, English, Mandarin)
+* [The Montgomery Texts](MontgomeryTexts.md) (text, English)
+* [100 Paiwan Texts](HundredPaiwanTexts.md) (text, glossing, English)
 
 ***
 
@@ -25,7 +25,6 @@ In addition to the wide range of corpora already incorporated into FormosanBank,
 
 * NTU Corpus (Various languages)
 * Glosbe (Amis, Truku, Atayal, Saisayat)&#x20;
-* Xuan's books (Paiwan)
 * Wakelin (1958) Yami texts (Yami)
 * Matthew's Gospel and John's Gospel (Siraya)
 * The Sedik Language of Formosa by Erin Asai (Seediq)
