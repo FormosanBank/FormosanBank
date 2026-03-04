@@ -8,6 +8,7 @@ being used in XML files based on the letters found in the original text.
 
 import os
 import csv
+from pydoc import text
 import xml.etree.ElementTree as ET
 from collections import defaultdict, Counter
 import re
@@ -145,7 +146,15 @@ def extract_text_from_xml(xml_file: str) -> Tuple[str, str, Optional[str]]:
         
         # Combine all extracted text snippets into one string for analysis
         combined_text = ' '.join(texts)
-        return combined_text, language, dialect
+
+        # Clean the text: remove only numbers, double quotes, periods, and commas
+        # Keep letters, apostrophes, hyphens, and other characters that might be linguistically significant
+        cleaned_text = re.sub(r'[0-9".,]', ' ', combined_text)
+        
+        # Lowercase the entire text at once for efficiency
+        cleaned_text_lower = cleaned_text.lower()
+
+        return cleaned_text_lower, language, dialect
         
     except Exception as e:
         print(f"Error parsing XML file {xml_file}: {e}")
@@ -199,25 +208,19 @@ def extract_letters(text: str) -> Tuple[Set[str], Counter]:
     Returns:
         Tuple of (set of unique letters, Counter of letter frequencies)
     """
-    # Clean the text: remove punctuation and numbers, keep only letters and apostrophes
-    # Apostrophes are important in Formosan languages (e.g., glottal stops)
-    cleaned_text = re.sub(r'[^\w\s\'\'-]', ' ', text)
     
     letters = set()
     letter_counts = Counter()
-    
-    # Collect individual characters (single letters and apostrophes)
-    # Convert to lowercase for consistent comparison with orthography files
-    for char in cleaned_text:
-        if char.isalpha() or char in ["'", "'"]:  # Include both straight and curly apostrophes
-            char_lower = char.lower()
-            letters.add(char_lower)
-            letter_counts[char_lower] += 1
+    # Collect individual characters (excluding spaces)
+    for char in text:
+        if char != ' ':  # Exclude spaces but include all other remaining characters
+            letters.add(char)
+            letter_counts[char] += 1
     
     return letters, letter_counts
 
 
-def calculate_orthography_score(text_letters: Set[str], orthography_letters: Set[str], text_letter_counts: Counter, text: str = None) -> Tuple[float, int, int, float]:
+def calculate_orthography_score(text_letters: Set[str], orthography_letters: Set[str], text_letter_counts: Counter, text: str = None) -> Tuple[float, int, int, float, Set[str], Dict[str, int]]:
     """
     Calculate how well the text matches an orthography.
     
@@ -228,12 +231,12 @@ def calculate_orthography_score(text_letters: Set[str], orthography_letters: Set
         text: Original text (needed for multi-letter pattern detection)
         
     Returns:
-        Tuple of (match_score, matched_letters, unexpected_letter_types, unexpected_letter_percentage)
+        Tuple of (match_score, matched_letters, unexpected_letter_types, unexpected_letter_percentage, effective_text_letters, unexpected_tokens)
     """
     # Handle edge case: no letters defined in orthography
     if not orthography_letters:
         total_tokens = sum(text_letter_counts.values())
-        return 0.0, 0, len(text_letters), 100.0 if total_tokens > 0 else 0.0
+        return 0.0, 0, len(text_letters), 100.0 if total_tokens > 0 else 0.0, text_letters, dict(text_letter_counts)
     
     # Identify multi-letter patterns from this specific orthography
     multi_letter_patterns = [letter for letter in orthography_letters if len(letter) > 1]
@@ -243,13 +246,9 @@ def calculate_orthography_score(text_letters: Set[str], orthography_letters: Set
     effective_letter_counts = text_letter_counts.copy()
     
     # Process multi-letter patterns specific to this orthography
-    if text and multi_letter_patterns:
-        text_lower = text.lower()
-        # Clean text first
-        cleaned_text = re.sub(r'[^\w\s\'\'-]', ' ', text_lower)
-        
+    if text and multi_letter_patterns:        
         for pattern in multi_letter_patterns:
-            pattern_count = cleaned_text.count(pattern)
+            pattern_count = text.count(pattern)
             if pattern_count > 0:
                 # Add the multi-letter pattern
                 effective_text_letters.add(pattern)
@@ -261,9 +260,7 @@ def calculate_orthography_score(text_letters: Set[str], orthography_letters: Set
                         effective_letter_counts[char] = max(0, effective_letter_counts[char] - pattern_count)
                         if effective_letter_counts[char] == 0:
                             del effective_letter_counts[char]
-                            # Only remove from letters set if it doesn't appear elsewhere
-                            if char in effective_text_letters and char not in cleaned_text.replace(pattern, ''):
-                                effective_text_letters.discard(char)
+                            effective_text_letters.discard(char)
     
     # Calculate intersection: letters that appear in both text and orthography
     matched_letters = len(effective_text_letters & orthography_letters)
@@ -271,15 +268,16 @@ def calculate_orthography_score(text_letters: Set[str], orthography_letters: Set
     # Calculate unexpected letter types and their token frequency
     unexpected_letter_types = effective_text_letters - orthography_letters
     unexpected_token_count = sum(effective_letter_counts[letter] for letter in unexpected_letter_types)
+    unexpected_tokens = {letter: effective_letter_counts[letter] for letter in unexpected_letter_types}
     
     # Calculate total tokens and unexpected percentage
     total_tokens = sum(effective_letter_counts.values())
     unexpected_percentage = (unexpected_token_count / total_tokens * 100) if total_tokens > 0 else 0.0
     
     # Calculate match percentage based on how much of the orthography is used
-    match_score = matched_letters / len(orthography_letters)
+    match_score = ((matched_letters / len(orthography_letters)) + (1 - (unexpected_percentage / 100)))/2  # Combine coverage and cleanliness into a single score
     
-    return match_score, matched_letters, len(unexpected_letter_types), unexpected_percentage
+    return match_score, matched_letters, len(unexpected_letter_types), unexpected_percentage, effective_text_letters, unexpected_tokens
 
 
 def determine_orthography_with_data(xml_file: str, orthography_data: Dict, ignore_dialect: bool = False) -> Dict:
@@ -289,139 +287,112 @@ def determine_orthography_with_data(xml_file: str, orthography_data: Dict, ignor
     Args:
         xml_file: Path to the XML file
         orthography_data: Pre-loaded orthography data dictionary
+        ignore_dialect: If True, ignore XML dialect tags and test all orthographies
         
     Returns:
         Dictionary with analysis results
     """
-    # Step 1: Extract text content and metadata from the XML file
+    # Extract text content and metadata from the XML file
     text, language_code, dialect = extract_text_from_xml(xml_file)
     
-    # Validation: ensure we extracted some text to analyze
+    # If ignore_dialect is True, reset dialect to empty string to force testing all orthographies
+    if ignore_dialect:
+        dialect = ''
+    
+    # Use the new core analysis function
+    return analyze_text_for_orthography(text, language_code, dialect, orthography_data, xml_file)
+
+
+def analyze_text_for_orthography(text: str, language_code: str, dialect: str, orthography_data: Dict, file_identifier: str = "unknown") -> Dict:
+    """
+    Analyze text to determine the most likely orthography using pre-loaded orthography data.
+    
+    Args:
+        text: The text content to analyze
+        language_code: ISO language code (e.g., 'tao', 'ami')
+        dialect: Dialect name if specified
+        orthography_data: Pre-loaded orthography data dictionary
+        file_identifier: Identifier for the source (file path, group name, etc.)
+        
+    Returns:
+        Dictionary with analysis results
+    """
+    # Validation: ensure we have text to analyze
     if not text:
         return {
-            'error': 'No text could be extracted from XML file',
-            'file': xml_file
+            'error': 'No text provided for analysis',
+            'file': file_identifier
         }
     
-    # Step 2: Convert ISO language code to orthography file naming convention
+    # Convert ISO language code to orthography file naming convention
     normalized_language = normalize_language_code(language_code)
     
-    # Step 3: Use pre-loaded orthography data (no need to reload)
-    
-    # Step 4: Analyze the text to identify all letters and letter combinations used
+    # Analyze the text to identify all letters and letter combinations used
     text_letters, text_letter_counts = extract_letters(text)
     
-    # Step 5: Compare text against all relevant orthographies and score each match
+    # Compare text against all relevant orthographies and score each match
     results = []
     
+    # Determine which (language, dialect_name, dialect_data) combinations to test
+    test_combinations = []
+    
     # Strategy: if we can identify the language, focus on that language's orthographies
-    # This is more efficient and gives more meaningful results
     target_language_data = orthography_data.get(normalized_language, {})
     
     if target_language_data:
-        # Language identified: test the orthographies for this specific language
-        
-        # If ignore_dialect is True, skip dialect-specific matching and test all orthographies
-        if ignore_dialect:
-            # Force testing of all available orthographies for this language without dialect bias
-            for dialect_name, dialect_data in target_language_data.items():
-                    for ortho_type, ortho_letters in dialect_data.items():
-                        score, matched, unexpected_types, unexpected_pct = calculate_orthography_score(text_letters, ortho_letters, text_letter_counts, text)
-                        results.append({
-                            'language': normalized_language,
-                            'dialect': dialect_name,
-                            'orthography': ortho_type,
-                            'score': score,
-                            'matched_letters': matched,
-                            'unexpected_letter_types': unexpected_types,
-                            'unexpected_percentage': unexpected_pct,
-                            'total_text_letters': len(text_letters),
-                            'orthography_size': len(ortho_letters)
-                        })
-        elif dialect and dialect in target_language_data:
+        # Language identified: determine which dialects to test
+        if dialect and dialect in target_language_data:
             # Use dialect information: test the specific dialect orthographies
-            dialect_data = target_language_data[dialect]
-            for ortho_type, ortho_letters in dialect_data.items():
-                score, matched, unexpected_types, unexpected_pct = calculate_orthography_score(text_letters, ortho_letters, text_letter_counts, text)
-                results.append({
-                    'language': normalized_language,
-                    'dialect': dialect,
-                    'orthography': ortho_type,
-                    'score': score,
-                    'matched_letters': matched,
-                    'unexpected_letter_types': unexpected_types,
-                    'unexpected_percentage': unexpected_pct,
-                    'total_text_letters': len(text_letters),
-                    'orthography_size': len(ortho_letters)
-                })
+            test_combinations.append((normalized_language, dialect, target_language_data[dialect]))
             
             # Also test 'default' orthographies (single orthography for all dialects, like Church/MinEd)
             if 'default' in target_language_data:
-                default_data = target_language_data['default']
-                for ortho_type, ortho_letters in default_data.items():
-                    score, matched, unexpected_types, unexpected_pct = calculate_orthography_score(text_letters, ortho_letters, text_letter_counts, text)
-                    results.append({
-                        'language': normalized_language,
-                        'dialect': 'default',
-                        'orthography': ortho_type,
-                        'score': score,
-                        'matched_letters': matched,
-                        'unexpected_letter_types': unexpected_types,
-                        'unexpected_percentage': unexpected_pct,
-                        'total_text_letters': len(text_letters),
-                        'orthography_size': len(ortho_letters)
-                    })
+                test_combinations.append((normalized_language, 'default', target_language_data['default']))
         else:
             # No specific dialect or dialect not found: test all available orthographies for this language
             for dialect_name, dialect_data in target_language_data.items():
-                    for ortho_type, ortho_letters in dialect_data.items():
-                        score, matched, unexpected_types, unexpected_pct = calculate_orthography_score(text_letters, ortho_letters, text_letter_counts, text)
-                        results.append({
-                            'language': normalized_language,
-                            'dialect': dialect_name,
-                            'orthography': ortho_type,
-                            'score': score,
-                            'matched_letters': matched,
-                            'unexpected_letter_types': unexpected_types,
-                            'unexpected_percentage': unexpected_pct,
-                            'total_text_letters': len(text_letters),
-                            'orthography_size': len(ortho_letters)
-                        })
+                test_combinations.append((normalized_language, dialect_name, dialect_data))
     else:
         # Language not recognized: test against all available orthographies
         # This is a fallback that helps identify the language as well as orthography
         for lang, language_data in orthography_data.items():
-            # Test against all dialect entries
             for dialect_name, dialect_data in language_data.items():
-                    for ortho_type, ortho_letters in dialect_data.items():
-                        score, matched, unexpected_types, unexpected_pct = calculate_orthography_score(text_letters, ortho_letters, text_letter_counts, text)
-                        results.append({
-                            'language': lang,
-                            'dialect': dialect_name,
-                            'orthography': ortho_type,
-                            'score': score,
-                            'matched_letters': matched,
-                            'unexpected_letter_types': unexpected_types,
-                            'unexpected_percentage': unexpected_pct,
-                            'total_text_letters': len(text_letters),
-                            'orthography_size': len(ortho_letters)
-                        })
+                test_combinations.append((lang, dialect_name, dialect_data))
     
-    # Step 6: Rank results by quality of match
+    # Single loop to test all determined combinations
+    for lang, dialect_name, dialect_data in test_combinations:
+        for ortho_type, ortho_letters in dialect_data.items():
+            score, matched, unexpected_types, unexpected_pct, effective_text_letters, unexpected_tokens = calculate_orthography_score(text_letters, ortho_letters, text_letter_counts, text)
+            
+            # Calculate missing letters
+            missing_letters = sorted(list(ortho_letters - effective_text_letters))
+            
+            results.append({
+                'language': lang,
+                'dialect': dialect_name,
+                'orthography': ortho_type,
+                'score': score,
+                'matched_letters': matched,
+                'unexpected_letter_types': unexpected_types,
+                'unexpected_percentage': unexpected_pct,
+                'total_text_letters': len(effective_text_letters),
+                'orthography_size': len(ortho_letters),
+                'missing_letters': missing_letters,
+                'unexpected_tokens': unexpected_tokens
+            })
+    
+    # Rank results by quality of match
     # Primary sort: highest match score (more letters recognized)
     # Secondary sort: lowest unexpected percentage (fewer foreign/borrowed characters)
     results.sort(key=lambda x: (x['score'], -x['unexpected_percentage']), reverse=True)
     
-    # Step 7: Generate additional diagnostic information
-    # We already have letter frequency from extract_letters function
-    
-    # Step 8: Return comprehensive analysis results
+    # Return comprehensive analysis results
     return {
         # File and language metadata
-        'file': xml_file,                                    # Original XML file path
-        'extracted_language': language_code,                 # ISO 639-3 code from XML
+        'file': file_identifier,                             # Source identifier
+        'extracted_language': language_code,                 # ISO 639-3 code
         'normalized_language': normalized_language,          # Language name for orthography lookup
-        'dialect': dialect,                                  # Dialect if specified in XML
+        'dialect': dialect,                                  # Dialect if specified
         
         # Text analysis results
         'text_sample': text[:200] + '...' if len(text) > 200 else text,  # Preview of analyzed text
@@ -472,16 +443,37 @@ def analyze_xml_files(directory: str, orthographies_dir: str, ignore_dialect: bo
     # Load orthography data once for all files (optimization)
     orthography_data = load_orthography_data(orthographies_dir)
     
-    # Walk through directory tree to find all XML files
-    # This handles nested directory structures like the Corpora folder
+    # Count files first for progress tracking
+    xml_files = []
     for root, dirs, files in os.walk(directory):
         for file in files:
             if file.endswith('.xml'):
-                # Process each XML file individually using pre-loaded orthography data
-                xml_path = os.path.join(root, file)
-                result = determine_orthography_with_data(xml_path, orthography_data, ignore_dialect=ignore_dialect)
-                results.append(result)
+                xml_files.append(os.path.join(root, file))
     
+    total_files = len(xml_files)
+    if total_files == 0:
+        print("No XML files found in directory")
+        return results
+    
+    print(f"Found {total_files} XML files to process...")
+    
+    # Process files with progress tracking
+    for i, xml_path in enumerate(xml_files, 1):
+        if i % 100 == 0 or i == total_files:  # Progress every 100 files or at the end
+            print(f"Processing file {i}/{total_files}...")
+        
+        # Extract text and metadata from XML
+        text, language_code, dialect = extract_text_from_xml(xml_path)
+        
+        # If ignore_dialect is True, clear dialect to force testing all orthographies
+        if ignore_dialect:
+            dialect = ''
+        
+        # Analyze the text using the core analysis function
+        result = analyze_text_for_orthography(text, language_code, dialect, orthography_data, xml_path)
+        results.append(result)
+    
+    print(f"Completed analysis of {total_files} files.")
     return results
 
 
@@ -742,30 +734,51 @@ def analyze_xml_files_combined(directory: str, orthographies_dir: str, ignore_di
     dialect_groups = defaultdict(list)
     error_files = []
     
-    # Walk through directory tree to find all XML files
+    # Count files first for progress tracking
+    xml_files = []
     for root, dirs, files in os.walk(directory):
         for file in files:
             if file.endswith('.xml'):
-                xml_path = os.path.join(root, file)
-                try:
-                    # Extract metadata only (not full analysis)
-                    text, language_code, dialect = extract_text_from_xml(xml_path)
-                    if text:  # Only include files with extractable text
-                        dialect_key = dialect if dialect else 'unspecified'
-                        dialect_groups[dialect_key].append({
-                            'file': xml_path,
-                            'text': text,
-                            'language_code': language_code,
-                            'dialect': dialect
-                        })
-                    else:
-                        error_files.append(xml_path)
-                except Exception as e:
-                    error_files.append(xml_path)
+                xml_files.append(os.path.join(root, file))
+    
+    total_files = len(xml_files)
+    if total_files == 0:
+        print("No XML files found in directory")
+        return {}
+    
+    print(f"Found {total_files} XML files to process...")
+    
+    # Process files with progress tracking
+    for i, xml_path in enumerate(xml_files, 1):
+        if i % 100 == 0 or i == total_files:  # Progress every 100 files or at the end
+            print(f"Processing file {i}/{total_files}...")
+        
+        try:
+            # Extract text and metadata from each file
+            text, language_code, dialect = extract_text_from_xml(xml_path)
+            
+            if text:  # Only include files with extractable text
+                # Group files by dialect (or 'unspecified' if no dialect)
+                group_key = dialect if dialect else 'unspecified'
+                dialect_groups[group_key].append({
+                    'text': text,
+                    'language_code': language_code,
+                    'dialect': dialect,
+                    'file_path': xml_path
+                })
+            else:
+                error_files.append(xml_path)
+        except Exception as e:
+            print(f"Error processing {xml_path}: {e}")
+            error_files.append(xml_path)
+    
+    print(f"Completed processing {total_files} files. Found {len(dialect_groups)} dialect groups.")
     
     # Analyze each dialect group as a combined dataset
     results = {}
     for dialect_key, files_in_group in dialect_groups.items():
+        print(f"Analyzing combined text for dialect group '{dialect_key}' ({len(files_in_group)} files)...")
+        
         # Combine all text from files in this dialect group
         combined_text = ' '.join(f['text'] for f in files_in_group)
         
@@ -774,131 +787,31 @@ def analyze_xml_files_combined(directory: str, orthographies_dir: str, ignore_di
         language_code = representative_file['language_code']
         dialect = representative_file['dialect']
         
-        # Create a synthetic analysis result for the combined text
-        # We'll skip the full file analysis and go straight to text analysis
-        text_letters, text_letter_counts = extract_letters(combined_text)
-        text_letters, text_letter_counts = extract_letters(combined_text)
+        # If ignore_dialect is True, clear dialect to force testing all orthographies
+        if ignore_dialect:
+            dialect = ''
         
-        # Recalculate with combined text
-        normalized_language = normalize_language_code(language_code)
-        target_language_data = orthography_data.get(normalized_language, {})
+        # Create group identifier for reporting
+        file_list = [f['file_path'] for f in files_in_group]
+        group_id = f"Combined {dialect_key} group ({len(files_in_group)} files)"
         
-        orthography_results = []
+        # Analyze the combined text using the core analysis function
+        analysis_result = analyze_text_for_orthography(combined_text, language_code, dialect, orthography_data, group_id)
         
-        if target_language_data:
-            if ignore_dialect:
-                # Test all available orthographies
-                for dialect_name, dialect_data in target_language_data.items():
-                    for ortho_type, ortho_letters in dialect_data.items():
-                        score, matched, unexpected_types, unexpected_pct = calculate_orthography_score(text_letters, ortho_letters, text_letter_counts, text)
-                        orthography_results.append({
-                            'language': normalized_language,
-                            'dialect': dialect_name,
-                            'orthography': ortho_type,
-                            'score': score,
-                            'matched_letters': matched,
-                            'unexpected_letter_types': unexpected_types,
-                            'unexpected_percentage': unexpected_pct,
-                            'total_text_letters': len(text_letters),
-                            'orthography_size': len(ortho_letters),
-                            'missing_letters': sorted(list(ortho_letters - text_letters)),
-                            'missing_letters': sorted(list(ortho_letters - text_letters))
-                        })
-            elif dialect and dialect in target_language_data:
-                # Test specific dialect orthographies
-                dialect_data = target_language_data[dialect]
-                for ortho_type, ortho_letters in dialect_data.items():
-                    score, matched, unexpected_types, unexpected_pct = calculate_orthography_score(text_letters, ortho_letters, text_letter_counts, text)
-                    missing_letters = sorted(list(ortho_letters - text_letters))
-                    orthography_results.append({
-                        'language': normalized_language,
-                        'dialect': dialect,
-                        'orthography': ortho_type,
-                        'score': score,
-                        'matched_letters': matched,
-                        'unexpected_letter_types': unexpected_types,
-                        'unexpected_percentage': unexpected_pct,
-                        'total_text_letters': len(text_letters),
-                        'orthography_size': len(ortho_letters),
-                        'missing_letters': missing_letters
-                    })
-                # Also test default orthographies
-                if 'default' in target_language_data:
-                    default_data = target_language_data['default']
-                    for ortho_type, ortho_letters in default_data.items():
-                        score, matched, unexpected_types, unexpected_pct = calculate_orthography_score(text_letters, ortho_letters, text_letter_counts, text)
-                        orthography_results.append({
-                            'language': normalized_language,
-                            'dialect': 'default',
-                            'orthography': ortho_type,
-                            'score': score,
-                            'matched_letters': matched,
-                            'unexpected_letter_types': unexpected_types,
-                            'unexpected_percentage': unexpected_pct,
-                            'total_text_letters': len(text_letters),
-                            'orthography_size': len(ortho_letters),
-                            'missing_letters': sorted(list(ortho_letters - text_letters))
-                        })
-            else:
-                # Test all available orthographies for this language
-                for dialect_name, dialect_data in target_language_data.items():
-                    for ortho_type, ortho_letters in dialect_data.items():
-                        score, matched, unexpected_types, unexpected_pct = calculate_orthography_score(text_letters, ortho_letters, text_letter_counts, text)
-                        orthography_results.append({
-                            'language': normalized_language,
-                            'dialect': dialect_name,
-                            'orthography': ortho_type,
-                            'score': score,
-                            'matched_letters': matched,
-                            'unexpected_letter_types': unexpected_types,
-                            'unexpected_percentage': unexpected_pct,
-                            'total_text_letters': len(text_letters),
-                            'orthography_size': len(ortho_letters),
-                            'missing_letters': sorted(list(ortho_letters - text_letters))
-                        })
-        else:
-            # Language not recognized: test against all available orthographies
-            for lang, language_data in orthography_data.items():
-                for dialect_name, dialect_data in language_data.items():
-                    for ortho_type, ortho_letters in dialect_data.items():
-                        score, matched, unexpected_types, unexpected_pct = calculate_orthography_score(text_letters, ortho_letters, text_letter_counts, text)
-                        orthography_results.append({
-                            'language': lang,
-                            'dialect': dialect_name,
-                            'orthography': ortho_type,
-                            'score': score,
-                            'matched_letters': matched,
-                            'unexpected_letter_types': unexpected_types,
-                            'unexpected_percentage': unexpected_pct,
-                            'total_text_letters': len(text_letters),
-                            'orthography_size': len(ortho_letters),
-                            'missing_letters': sorted(list(ortho_letters - text_letters))
-                        })
+        # Add additional metadata about the group
+        analysis_result['files_in_group'] = file_list
+        analysis_result['file_count'] = len(files_in_group)
         
-        # Sort results by score
-        orthography_results.sort(key=lambda x: (x['score'], -x['unexpected_percentage']), reverse=True)
-        
-        # Store results for this dialect group
-        results[dialect_key] = {
-            'dialect': dialect_key,
-            'file_count': len(files_in_group),
-            'files': [f['file'] for f in files_in_group],
-            'combined_text_length': len(combined_text),
-            'unique_letters_found': len(text_letters),
-            'letters_found': sorted(list(text_letters)),
-            'letter_frequency': dict(text_letter_counts.most_common()),
-            'language_code': language_code,
-            'normalized_language': normalized_language,
-            'orthography_analysis': orthography_results,
-            'best_match': orthography_results[0] if orthography_results else None
+        results[dialect_key] = analysis_result
+    
+    # Add error information to results
+    if error_files:
+        results['error_info'] = {
+            'error_files': error_files,
+            'error_count': len(error_files)
         }
     
-    return {
-        'dialect_groups': results,
-        'error_files': error_files,
-        'total_files': sum(len(files) for files in dialect_groups.values()) + len(error_files),
-        'files_with_errors': len(error_files)
-    }
+    return results
 
 
 def display_combined_results(results: Dict) -> None:
@@ -906,17 +819,30 @@ def display_combined_results(results: Dict) -> None:
     Display results from combined analysis in a readable format.
     """
     print(f"=== Combined Analysis Results ===")
-    print(f"Total files analyzed: {results['total_files']}")
-    print(f"Files with errors: {results['files_with_errors']}")
-    print(f"Dialect groups found: {len(results['dialect_groups'])}")
+    
+    # Calculate total files and errors from the new structure
+    total_files = 0
+    error_count = 0
+    dialect_groups = {}
+    
+    for key, value in results.items():
+        if key == 'error_info':
+            error_count = value['error_count']
+        else:
+            dialect_groups[key] = value
+            total_files += value.get('file_count', 0)
+    
+    print(f"Total files analyzed: {total_files}")
+    print(f"Files with errors: {error_count}")
+    print(f"Dialect groups found: {len(dialect_groups)}")
     print()
     
-    for dialect_key, group_data in results['dialect_groups'].items():
+    for dialect_key, group_data in dialect_groups.items():
         print(f"=== Dialect Group: {dialect_key} ===")
         print(f"Files combined: {group_data['file_count']}")
-        print(f"Combined text length: {group_data['combined_text_length']:,} characters")
+        print(f"Combined text length: {group_data['total_characters_analyzed']:,} characters")
         print(f"Unique letters found: {group_data['unique_letters_found']}")
-        print(f"Language: {group_data['language_code']} -> {group_data['normalized_language']}")
+        print(f"Language: {group_data['extracted_language']} -> {group_data['normalized_language']}")
         print()
         
         # Show best match
@@ -924,7 +850,7 @@ def display_combined_results(results: Dict) -> None:
             best = group_data['best_match']
             dialect_info = f" ({best['dialect']})" if best['dialect'] != 'default' else ""
             print(f"Best orthography: {best['language']}{dialect_info} - {best['orthography']}")
-            print(f"  Orthography letters used: {best['score']:.2%}")
+            print(f"  Score: {best['score']:.2%}")
             print(f"  Unexpected tokens: {best['unexpected_percentage']:.1f}%")
             print(f"  Letters matched: {best['matched_letters']}/{best['orthography_size']}")
         
@@ -934,29 +860,36 @@ def display_combined_results(results: Dict) -> None:
             rank = i + 1
             dialect_info = f" ({match['dialect']})" if match['dialect'] != 'default' else ""
             print(f"  {rank}. {match['language']}{dialect_info} - {match['orthography']}")
-            print(f"     Orthography letters used: {match['score']:.2%}")
+            print(f"     Score: {match['score']:.2%}")
             print(f"     Unexpected tokens: {match['unexpected_percentage']:.1f}%")
             print(f"     Letters matched: {match['matched_letters']}/{match['orthography_size']}")
             
+            # Show missing letters
             missing_letters = match.get('missing_letters', [])
             if missing_letters:
                 missing_str = ', '.join(missing_letters)
                 print(f"     Missing letters: {missing_str}")
             else:
                 print(f"     Missing letters: None")
+            
+            # Show unexpected tokens
+            unexpected_tokens = match.get('unexpected_tokens', {})
+            if unexpected_tokens:
+                # Sort by frequency (descending) and then alphabetically
+                sorted_unexpected = sorted(unexpected_tokens.items(), key=lambda x: (-x[1], x[0]))
+                unexpected_str = ', '.join([f"{token}({count})" for token, count in sorted_unexpected])
+                print(f"     Unexpected tokens: {unexpected_str}")
+            else:
+                print(f"     Unexpected tokens: None")
         
         print(f"\nFiles included in {dialect_key} group:")
-        for file_path in group_data['files'][:10]:  # Show first 10 files
+        for file_path in group_data.get('files_in_group', [])[:10]:  # Show first 10 files
             print(f"  - {file_path}")
-        if len(group_data['files']) > 10:
-            print(f"  ... and {len(group_data['files']) - 10} more files")
+        if len(group_data.get('files_in_group', [])) > 10:
+            print(f"  ... and {len(group_data['files_in_group']) - 10} more files")
         
-        print("\n" + "="*60 + "\n")
-    
-    if results['error_files']:
-        print("=== Files with Errors ===")
-        for error_file in results['error_files']:
-            print(f"- {error_file}")
+        print("=" * 60)
+        print()
 
 
 # Example usage and demonstration
@@ -1031,7 +964,7 @@ if __name__ == "__main__":
             dialect_info = f" ({match['dialect']})" if match['dialect'] != 'default' else ""
             print(f"{i+1}. {match['language']}{dialect_info} - {match['orthography']}")
             print(f"   Score: {match['score']:.2%}")
-            print(f"   Orthography letters used: {match['matched_letters']}")
+            print(f"   Score: {match['matched_letters']}")
             print(f"   Unexpected letter types: {match['unexpected_letter_types']}")
             print(f"   Unexpected token %: {match['unexpected_percentage']:.1f}%")
             print()
@@ -1043,7 +976,21 @@ if __name__ == "__main__":
             print(f"=== Best Match ===")
             print(f"Orthography: {best['language']}{dialect_info} - {best['orthography']}")
             print(f"Match Score: {best['score']:.2%}")
-            print(f"Unexpected Letters: {best['unexpected_letters']}")
+            
+            # Show missing letters and unexpected tokens
+            missing_letters = best.get('missing_letters', [])
+            if missing_letters:
+                print(f"Missing Letters: {', '.join(missing_letters)}")
+            else:
+                print(f"Missing Letters: None")
+            
+            unexpected_tokens = best.get('unexpected_tokens', {})
+            if unexpected_tokens:
+                sorted_unexpected = sorted(unexpected_tokens.items(), key=lambda x: (-x[1], x[0]))
+                unexpected_str = ', '.join([f"{token}({count})" for token, count in sorted_unexpected])
+                print(f"Unexpected Tokens: {unexpected_str}")
+            else:
+                print(f"Unexpected Tokens: None")
             
     elif os.path.isdir(args.input_path):
         # Directory analysis
@@ -1128,102 +1075,102 @@ if __name__ == "__main__":
                     orthography_aggregates[ortho_id]['orthography_sizes'].append(orthography_size)
                     orthography_aggregates[ortho_id]['files'].append(file_name)
             
-                # Calculate aggregate statistics and sort by average score
-                aggregated_results = []
-                for ortho_id, data in orthography_aggregates.items():
-                    if not data['scores']:  # Skip empty entries
-                        continue
-                        
-                    avg_score = sum(data['scores']) / len(data['scores'])
-                    min_score = min(data['scores'])
-                    max_score = max(data['scores'])
-                    file_count = len(data['scores'])
-                    avg_matched = sum(data['matched_letters']) / len(data['matched_letters'])
-                    avg_orthography_size = sum(data['orthography_sizes']) / len(data['orthography_sizes'])
-                    avg_total = sum(data['total_letters']) / len(data['total_letters'])
-                    avg_unexpected_types = sum(data['unexpected_types']) / len(data['unexpected_types'])
-                    avg_unexpected_pct = sum(data['unexpected_percentages']) / len(data['unexpected_percentages'])
+            # Calculate aggregate statistics and sort by average score
+            aggregated_results = []
+            for ortho_id, data in orthography_aggregates.items():
+                if not data['scores']:  # Skip empty entries
+                    continue
                     
-                    aggregated_results.append({
-                        'orthography': ortho_id,
-                        'avg_score': avg_score,
-                        'min_score': min_score,
-                        'max_score': max_score,
-                        'file_count': file_count,
-                        'avg_matched': avg_matched,
-                        'avg_orthography_size': avg_orthography_size,
-                        'avg_total': avg_total,
-                        'avg_unexpected_types': avg_unexpected_types,
-                        'avg_unexpected_pct': avg_unexpected_pct
-                    })
+                avg_score = sum(data['scores']) / len(data['scores'])
+                min_score = min(data['scores'])
+                max_score = max(data['scores'])
+                file_count = len(data['scores'])
+                avg_matched = sum(data['matched_letters']) / len(data['matched_letters'])
+                avg_orthography_size = sum(data['orthography_sizes']) / len(data['orthography_sizes'])
+                avg_total = sum(data['total_letters']) / len(data['total_letters'])
+                avg_unexpected_types = sum(data['unexpected_types']) / len(data['unexpected_types'])
+                avg_unexpected_pct = sum(data['unexpected_percentages']) / len(data['unexpected_percentages'])
                 
-                # Generate and show summary using new dialect-based approach
-                summary = summarize_analysis_results(results, ignore_dialect=args.ignore_dialect)
+                aggregated_results.append({
+                    'orthography': ortho_id,
+                    'avg_score': avg_score,
+                    'min_score': min_score,
+                    'max_score': max_score,
+                    'file_count': file_count,
+                    'avg_matched': avg_matched,
+                    'avg_orthography_size': avg_orthography_size,
+                    'avg_total': avg_total,
+                    'avg_unexpected_types': avg_unexpected_types,
+                    'avg_unexpected_pct': avg_unexpected_pct
+                })
+            
+            # Generate and show summary using new dialect-based approach
+            summary = summarize_analysis_results(results, ignore_dialect=args.ignore_dialect)
+            
+            # Display results by dialect group  
+            if 'dialect_analysis' in summary and summary['dialect_analysis']:
+                if args.ignore_dialect:
+                    print(f"\n=== Results by Best-Matching Orthography Dialect ===")
+                    group_description = "Files grouped by the orthography dialect that performed best (ignoring XML dialect tags)"
+                else:
+                    print(f"\n=== Results by XML Dialect ===")
+                    group_description = "Files grouped by their XML dialect attribute"
                 
-                # Display results by dialect group  
-                if 'dialect_analysis' in summary and summary['dialect_analysis']:
+                print(f"({group_description})")
+                
+                for group_key, dialect_info in summary['dialect_analysis'].items():
                     if args.ignore_dialect:
-                        print(f"\n=== Results by Best-Matching Orthography Dialect ===")
-                        group_description = "Files grouped by the orthography dialect that performed best (ignoring XML dialect tags)"
+                        dialect_label = f"Best-match: {group_key}" if group_key != 'unmatched' else 'No clear best match'
                     else:
-                        print(f"\n=== Results by XML Dialect ===")
-                        group_description = "Files grouped by their XML dialect attribute"
+                        dialect_label = group_key if group_key != 'unspecified' else 'No dialect specified'
+                    print(f"\n--- {dialect_label} ({dialect_info['file_count']} files) ---")
                     
-                    print(f"({group_description})")
-                    
-                    for group_key, dialect_info in summary['dialect_analysis'].items():
+                    if dialect_info['best_match']:
+                        best = dialect_info['best_match']
                         if args.ignore_dialect:
-                            dialect_label = f"Best-match: {group_key}" if group_key != 'unmatched' else 'No clear best match'
+                            print(f"Best orthography: {best['orthography']}")
                         else:
-                            dialect_label = group_key if group_key != 'unspecified' else 'No dialect specified'
-                        print(f"\n--- {dialect_label} ({dialect_info['file_count']} files) ---")
-                        
-                        if dialect_info['best_match']:
-                            best = dialect_info['best_match']
-                            if args.ignore_dialect:
-                                print(f"Best orthography: {best['orthography']}")
+                            # Show the dialect that was actually used for the best-matching test
+                            best_ortho_parts = best['orthography'].split(' - ')
+                            if len(best_ortho_parts) == 2:
+                                lang_part, ortho_part = best_ortho_parts
+                                print(f"Best orthography: {lang_part} ({best.get('dialect_tested', 'unknown')}) - {ortho_part}")
                             else:
-                                # Show the dialect that was actually used for the best-matching test
-                                best_ortho_parts = best['orthography'].split(' - ')
-                                if len(best_ortho_parts) == 2:
-                                    lang_part, ortho_part = best_ortho_parts
-                                    print(f"Best orthography: {lang_part} ({best.get('dialect_tested', 'unknown')}) - {ortho_part}")
-                                else:
-                                    print(f"Best orthography: {best['orthography']}")
-                            print(f"  Orthography letters used: {best['average_score']:.2%}")
-                            print(f"  Score Range: {best['min_score']:.2%} - {best['max_score']:.2%}")
-                            print(f"  Unexpected tokens: {best['avg_unexpected_percentage']:.1f}%")
-                            print(f"  Top choice in: {best['best_match_count']} files")
-                        
-                        # Show top 5 orthographies (or fewer if not enough)
-                        performance_items = list(dialect_info['orthography_performance'].items())
-                        # Sort by: 1) number of files that chose this orthography (descending), 2) average score (descending)
-                        performance_items.sort(key=lambda x: (x[1]['best_match_count'], x[1]['average_score']), reverse=True)
-                        
-                        top_count = min(5, len(performance_items))
-                        print(f"  Top {top_count} orthographies tested:")
-                        
-                        for i, (ortho_id, perf) in enumerate(performance_items[:top_count]):
-                            rank = i + 1
-                            print(f"    {rank}. {ortho_id}")
-                            print(f"       Orthography letters used: {perf['average_score']:.2%} (range: {perf['min_score']:.2%} - {perf['max_score']:.2%})")
-                            print(f"       Unexpected tokens: {perf['avg_unexpected_percentage']:.1f}%")
-                            print(f"       Letters matched: {perf['avg_matched_letters']:.1f}/{perf['orthography_size']}")
-                            print(f"       Top choice: {perf['best_match_count']}/{perf['test_count']} files")
-                
-                # Show overall best match
-                if 'best_overall_match' in summary and summary['best_overall_match']:
-                    best = summary['best_overall_match']
-                    print(f"\n=== Best Overall Orthography (All Files Combined) ===")
-                    print(f"Orthography: {best['orthography']}")
-                    print(f"Used by: {best['file_count']} files ({best['percentage']:.1f}%)")
-                    print(f"Average Score: {best['average_score']:.2%}")
-                    print(f"Score Range: {best['min_score']:.2%} - {best['max_score']:.2%}")
-                
-                if error_results:
-                    print(f"\n=== Files with Errors ===")
-                    for error_result in error_results:
-                        print(f"- {error_result.get('file', 'unknown')}")
+                                print(f"Best orthography: {best['orthography']}")
+                        print(f"  Score: {best['average_score']:.2%}")
+                        print(f"  Score Range: {best['min_score']:.2%} - {best['max_score']:.2%}")
+                        print(f"  Unexpected tokens: {best['avg_unexpected_percentage']:.1f}%")
+                        print(f"  Top choice in: {best['best_match_count']} files")
+                    
+                    # Show top 8 orthographies (or fewer if not enough)
+                    performance_items = list(dialect_info['orthography_performance'].items())
+                    # Sort by: 1) number of files that chose this orthography (descending), 2) average score (descending)
+                    performance_items.sort(key=lambda x: (x[1]['best_match_count'], x[1]['average_score']), reverse=True)
+                    
+                    top_count = min(8, len(performance_items))
+                    print(f"  Top {top_count} orthographies tested:")
+                    
+                    for i, (ortho_id, perf) in enumerate(performance_items[:top_count]):
+                        rank = i + 1
+                        print(f"    {rank}. {ortho_id}")
+                        print(f"       Score: {perf['average_score']:.2%} (range: {perf['min_score']:.2%} - {perf['max_score']:.2%})")
+                        print(f"       Unexpected tokens: {perf['avg_unexpected_percentage']:.1f}%")
+                        print(f"       Letters matched: {perf['avg_matched_letters']:.1f}/{perf['orthography_size']}")
+                        print(f"       Top choice: {perf['best_match_count']}/{perf['test_count']} files")
+            
+            # Show overall best match
+            if 'best_overall_match' in summary and summary['best_overall_match']:
+                best = summary['best_overall_match']
+                print(f"\n=== Best Overall Orthography (All Files Combined) ===")
+                print(f"Orthography: {best['orthography']}")
+                print(f"Used by: {best['file_count']} files ({best['percentage']:.1f}%)")
+                print(f"Average Score: {best['average_score']:.2%}")
+                print(f"Score Range: {best['min_score']:.2%} - {best['max_score']:.2%}")
+            
+            if error_results:
+                print(f"\n=== Files with Errors ===")
+                for error_result in error_results:
+                    print(f"- {error_result.get('file', 'unknown')}")
     else:
         print(f"Error: '{args.input_path}' is neither a file nor a directory.")
         sys.exit(1)
