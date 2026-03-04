@@ -105,12 +105,13 @@ def load_orthography_data(orthographies_dir: str) -> Dict[str, Dict[str, Dict[st
     return {k: dict(v) for k, v in orthography_data.items()}
 
 
-def extract_text_from_xml(xml_file: str) -> Tuple[str, str, Optional[str]]:
+def extract_text_from_xml(xml_file: str, use_standard: bool = False) -> Tuple[str, str, Optional[str]]:
     """
-    Extract original text from XML file.
+    Extract text from XML file.
     
     Args:
         xml_file: Path to the XML file
+        use_standard: If True, extract standard text; if False, extract original text
         
     Returns:
         Tuple of (extracted_text, language_code, dialect)
@@ -125,22 +126,23 @@ def extract_text_from_xml(xml_file: str) -> Tuple[str, str, Optional[str]]:
         language = root.get('{http://www.w3.org/XML/1998/namespace}lang', '').lower()  # ISO 639-3 language code
         dialect = root.get('dialect', '')            # Dialect name if specified
         
-        # Extract text from FORM elements marked as original orthography
+        # Extract text from FORM elements marked as original or standard orthography
         # We prioritize sentence-level forms over word-level forms
         texts = []
+        kind_of = "standard" if use_standard else "original"
         
-        # First, look for sentence-level FORM elements with kindOf="original"
-        # These contain the complete original sentences as they appear in the source
+        # First, look for sentence-level FORM elements with kindOf="original" or "standard"
+        # These contain the complete sentences as they appear in the source
         for sentence in root.findall('.//S'):
-            for form in sentence.findall('./FORM[@kindOf="original"]'):
+            for form in sentence.findall(f'./FORM[@kindOf="{kind_of}"]'):
                 if form.text:
                     texts.append(form.text.strip())
         
-        # Fallback: if no sentence-level original forms exist, collect word-level forms
-        # This handles cases where only individual words are marked with original orthography
+        # Fallback: if no sentence-level forms exist, collect word-level forms
+        # This handles cases where only individual words are marked with the specified orthography
         if not texts:
             for word in root.findall('.//W'):
-                for form in word.findall('./FORM[@kindOf="original"]'):
+                for form in word.findall(f'./FORM[@kindOf="{kind_of}"]'):
                     if form.text:
                         texts.append(form.text.strip())
         
@@ -280,7 +282,7 @@ def calculate_orthography_score(text_letters: Set[str], orthography_letters: Set
     return match_score, matched_letters, len(unexpected_letter_types), unexpected_percentage, effective_text_letters, unexpected_tokens
 
 
-def determine_orthography_with_data(xml_file: str, orthography_data: Dict, ignore_dialect: bool = False) -> Dict:
+def determine_orthography_with_data(xml_file: str, orthography_data: Dict, ignore_dialect: bool = False, use_standard: bool = False) -> Dict:
     """
     Determine the most likely orthography for an XML file using pre-loaded orthography data.
     
@@ -288,12 +290,13 @@ def determine_orthography_with_data(xml_file: str, orthography_data: Dict, ignor
         xml_file: Path to the XML file
         orthography_data: Pre-loaded orthography data dictionary
         ignore_dialect: If True, ignore XML dialect tags and test all orthographies
+        use_standard: If True, analyze standard text; if False, analyze original text
         
     Returns:
         Dictionary with analysis results
     """
     # Extract text content and metadata from the XML file
-    text, language_code, dialect = extract_text_from_xml(xml_file)
+    text, language_code, dialect = extract_text_from_xml(xml_file, use_standard)
     
     # If ignore_dialect is True, reset dialect to empty string to force testing all orthographies
     if ignore_dialect:
@@ -409,7 +412,7 @@ def analyze_text_for_orthography(text: str, language_code: str, dialect: str, or
     }
 
 
-def determine_orthography(xml_file: str, orthographies_dir: str, ignore_dialect: bool = False) -> Dict:
+def determine_orthography(xml_file: str, orthographies_dir: str, ignore_dialect: bool = False, use_standard: bool = False) -> Dict:
     """
     Determine the most likely orthography for an XML file.
     
@@ -417,16 +420,17 @@ def determine_orthography(xml_file: str, orthographies_dir: str, ignore_dialect:
         xml_file: Path to the XML file
         orthographies_dir: Path to the Orthographies directory
         ignore_dialect: If True, ignore XML dialect tags and test all orthographies
+        use_standard: If True, analyze standard text; if False, analyze original text
         
     Returns:
         Dictionary with analysis results
     """
     # Load orthography data and delegate to optimized function
     orthography_data = load_orthography_data(orthographies_dir)
-    return determine_orthography_with_data(xml_file, orthography_data, ignore_dialect=ignore_dialect)
+    return determine_orthography_with_data(xml_file, orthography_data, ignore_dialect=ignore_dialect, use_standard=use_standard)
 
 
-def analyze_xml_files(directory: str, orthographies_dir: str, ignore_dialect: bool = False) -> List[Dict]:
+def analyze_xml_files(directory: str, orthographies_dir: str, ignore_dialect: bool = False, use_standard: bool = False) -> List[Dict]:
     """
     Analyze all XML files in a directory.
     
@@ -434,6 +438,7 @@ def analyze_xml_files(directory: str, orthographies_dir: str, ignore_dialect: bo
         directory: Directory containing XML files
         orthographies_dir: Path to the Orthographies directory
         ignore_dialect: If True, ignore XML dialect tags and test all orthographies
+        use_standard: If True, analyze standard text; if False, analyze original text
         
     Returns:
         List of analysis results for each XML file
@@ -463,7 +468,7 @@ def analyze_xml_files(directory: str, orthographies_dir: str, ignore_dialect: bo
             print(f"Processing file {i}/{total_files}...")
         
         # Extract text and metadata from XML
-        text, language_code, dialect = extract_text_from_xml(xml_path)
+        text, language_code, dialect = extract_text_from_xml(xml_path, use_standard)
         
         # If ignore_dialect is True, clear dialect to force testing all orthographies
         if ignore_dialect:
@@ -715,7 +720,7 @@ def summarize_analysis_results(results: List[Dict], ignore_dialect: bool = False
     }
 
 
-def analyze_xml_files_combined(directory: str, orthographies_dir: str, ignore_dialect: bool = False) -> Dict:
+def analyze_xml_files_combined(directory: str, orthographies_dir: str, ignore_dialect: bool = False, use_standard: bool = False) -> Dict:
     """
     Analyze all XML files in a directory by combining files with same dialect into single datasets.
     
@@ -723,6 +728,7 @@ def analyze_xml_files_combined(directory: str, orthographies_dir: str, ignore_di
         directory: Directory containing XML files
         orthographies_dir: Path to the Orthographies directory
         ignore_dialect: If True, ignore XML dialect tags and test all orthographies
+        use_standard: If True, analyze standard text; if False, analyze original text
         
     Returns:
         Dictionary with combined analysis results for each dialect group
@@ -755,7 +761,7 @@ def analyze_xml_files_combined(directory: str, orthographies_dir: str, ignore_di
         
         try:
             # Extract text and metadata from each file
-            text, language_code, dialect = extract_text_from_xml(xml_path)
+            text, language_code, dialect = extract_text_from_xml(xml_path, use_standard)
             
             if text:  # Only include files with extractable text
                 # Group files by dialect (or 'unspecified' if no dialect)
@@ -920,6 +926,9 @@ if __name__ == "__main__":
     parser.add_argument('--combine', '-c',
                        action='store_true',
                        help='Combine all files with same dialect into single dataset for analysis')
+    parser.add_argument('--use-standard', '-s',
+                       action='store_true',
+                       help='Analyze standard text instead of original text')
     
     # Parse arguments
     args = parser.parse_args()
@@ -943,7 +952,7 @@ if __name__ == "__main__":
             
         dialect_info = " (ignoring dialect)" if args.ignore_dialect else ""
         print(f"Analyzing single file: {args.input_path}{dialect_info}")
-        result = determine_orthography(args.input_path, args.orthographies, ignore_dialect=args.ignore_dialect)
+        result = determine_orthography(args.input_path, args.orthographies, ignore_dialect=args.ignore_dialect, use_standard=args.use_standard)
         
         # Display the results in a user-friendly format
         if 'error' in result:
@@ -998,13 +1007,13 @@ if __name__ == "__main__":
             # Combined analysis mode
             dialect_info = " (ignoring dialect tags)" if args.ignore_dialect else ""
             print(f"Analyzing directory with combined dialect analysis: {args.input_path}{dialect_info}")
-            combined_results = analyze_xml_files_combined(args.input_path, args.orthographies, ignore_dialect=args.ignore_dialect)
+            combined_results = analyze_xml_files_combined(args.input_path, args.orthographies, ignore_dialect=args.ignore_dialect, use_standard=args.use_standard)
             display_combined_results(combined_results)
         else:
             # File-by-file analysis mode (existing behavior)
             dialect_info = " (ignoring dialect tags)" if args.ignore_dialect else ""
             print(f"Analyzing all XML files in directory: {args.input_path}{dialect_info}")
-            results = analyze_xml_files(args.input_path, args.orthographies, ignore_dialect=args.ignore_dialect)
+            results = analyze_xml_files(args.input_path, args.orthographies, ignore_dialect=args.ignore_dialect, use_standard=args.use_standard)
         
             if not results:
                 print("No XML files found in the specified directory.")
