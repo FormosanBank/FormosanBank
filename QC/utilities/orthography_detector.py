@@ -178,7 +178,7 @@ def normalize_language_code(lang_code: str) -> str:
     # while XML files use ISO codes (e.g., 'ami')
     lang_mapping = {
         'ami': 'Amis',
-        'aty': 'Atayal',
+        'tay': 'Atayal',
         'bnn': 'Bunun',
         'ckv': 'Kavalan',
         'pwn': 'Paiwan',
@@ -430,7 +430,7 @@ def determine_orthography(xml_file: str, orthographies_dir: str, ignore_dialect:
     return determine_orthography_with_data(xml_file, orthography_data, ignore_dialect=ignore_dialect, use_standard=use_standard)
 
 
-def analyze_xml_files(directory: str, orthographies_dir: str, ignore_dialect: bool = False, use_standard: bool = False) -> List[Dict]:
+def analyze_xml_files(directory: str, orthographies_dir: str, ignore_dialect: bool = False, use_standard: bool = False, language_filter: str = None) -> List[Dict]:
     """
     Analyze all XML files in a directory.
     
@@ -469,6 +469,10 @@ def analyze_xml_files(directory: str, orthographies_dir: str, ignore_dialect: bo
         
         # Extract text and metadata from XML
         text, language_code, dialect = extract_text_from_xml(xml_path, use_standard)
+        
+        # If language filter is specified, skip files that don't match
+        if language_filter and language_code.lower() != language_filter.lower():
+            continue
         
         # If ignore_dialect is True, clear dialect to force testing all orthographies
         if ignore_dialect:
@@ -720,7 +724,7 @@ def summarize_analysis_results(results: List[Dict], ignore_dialect: bool = False
     }
 
 
-def analyze_xml_files_combined(directory: str, orthographies_dir: str, ignore_dialect: bool = False, use_standard: bool = False) -> Dict:
+def analyze_xml_files_combined(directory: str, orthographies_dir: str, ignore_dialect: bool = False, use_standard: bool = False, language_filter: str = None) -> Dict:
     """
     Analyze all XML files in a directory by combining files with same dialect into single datasets.
     
@@ -729,6 +733,7 @@ def analyze_xml_files_combined(directory: str, orthographies_dir: str, ignore_di
         orthographies_dir: Path to the Orthographies directory
         ignore_dialect: If True, ignore XML dialect tags and test all orthographies
         use_standard: If True, analyze standard text; if False, analyze original text
+        language_filter: If specified, only process XML files with this language code
         
     Returns:
         Dictionary with combined analysis results for each dialect group
@@ -762,6 +767,10 @@ def analyze_xml_files_combined(directory: str, orthographies_dir: str, ignore_di
         try:
             # Extract text and metadata from each file
             text, language_code, dialect = extract_text_from_xml(xml_path, use_standard)
+            
+            # If language filter is specified, skip files that don't match
+            if language_filter and language_code.lower() != language_filter.lower():
+                continue
             
             if text:  # Only include files with extractable text
                 # Group files by dialect (or 'unspecified' if no dialect)
@@ -929,6 +938,8 @@ if __name__ == "__main__":
     parser.add_argument('--use-standard', '-s',
                        action='store_true',
                        help='Analyze standard text instead of original text')
+    parser.add_argument('--language', '-l',
+                       help='Only process XML files with this specific language (ISO 639-3 code)')
     
     # Parse arguments
     args = parser.parse_args()
@@ -1007,13 +1018,13 @@ if __name__ == "__main__":
             # Combined analysis mode
             dialect_info = " (ignoring dialect tags)" if args.ignore_dialect else ""
             print(f"Analyzing directory with combined dialect analysis: {args.input_path}{dialect_info}")
-            combined_results = analyze_xml_files_combined(args.input_path, args.orthographies, ignore_dialect=args.ignore_dialect, use_standard=args.use_standard)
+            combined_results = analyze_xml_files_combined(args.input_path, args.orthographies, ignore_dialect=args.ignore_dialect, use_standard=args.use_standard, language_filter=args.language)
             display_combined_results(combined_results)
         else:
             # File-by-file analysis mode (existing behavior)
             dialect_info = " (ignoring dialect tags)" if args.ignore_dialect else ""
             print(f"Analyzing all XML files in directory: {args.input_path}{dialect_info}")
-            results = analyze_xml_files(args.input_path, args.orthographies, ignore_dialect=args.ignore_dialect, use_standard=args.use_standard)
+            results = analyze_xml_files(args.input_path, args.orthographies, ignore_dialect=args.ignore_dialect, use_standard=args.use_standard, language_filter=args.language)
         
             if not results:
                 print("No XML files found in the specified directory.")

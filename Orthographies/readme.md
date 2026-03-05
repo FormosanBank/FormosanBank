@@ -1,3 +1,9 @@
+# Ortho113Liberal
+
+## Amis
+
+Identical to Ortho113 except that all dialects can use either `o` or `u` to refer to the same phoneme. This orthography is used by ePark. 
+
 # Ferrell
 
 Does not have a glottal stop `'`.
