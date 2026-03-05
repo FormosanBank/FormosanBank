@@ -73,10 +73,15 @@ def create_standard(element):
     element.insert(1, new_form)
 
 def main(args):
-    # Load the TSV file to get available columns
-    with open(args.tsv_path, 'r', encoding='utf-8') as f:
-        reader = csv.DictReader(f, delimiter='\t')
-        available_columns = reader.fieldnames
+    # Handle copy mode vs normal standardization mode
+    if args.copy:
+        available_columns = None
+        print("Running in copy mode - copying original text to standard form")
+    else:
+        # Load the TSV file to get available columns
+        with open(args.tsv_path, 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f, delimiter='\t')
+            available_columns = reader.fieldnames
     
     if args.corpus:
         to_explore = [os.path.join(args.corpora_path, args.corpus)]
@@ -102,35 +107,41 @@ def main(args):
                     tree = ET.parse(file)
                     root = tree.getroot()
                     
-                    # Determine target column
-                    target_column = args.target_column
-                    if not target_column:
-                        # Check if XML has dialect attribute
-                        dialect = root.get('dialect')
-                        if dialect:
-                            if dialect in available_columns:
-                                target_column = dialect
+                    if args.copy:
+                        # In copy mode, just copy original to standard
+                        for element in root.findall('.//FORM/..'):
+                            create_standard(element)
+                    else:
+                        # Normal standardization mode
+                        # Determine target column
+                        target_column = args.target_column
+                        if not target_column:
+                            # Check if XML has dialect attribute
+                            dialect = root.get('dialect')
+                            if dialect:
+                                if dialect in available_columns:
+                                    target_column = dialect
+                                else:
+                                    print(f"Error: Dialect '{dialect}' found in file '{file}' but not available in TSV columns: {available_columns}")
+                                    print("Available columns:", ', '.join(available_columns))
+                                    sys.exit(1)
+                            elif 'standard' in available_columns:
+                                target_column = 'standard'
                             else:
-                                print(f"Error: Dialect '{dialect}' found in file '{file}' but not available in TSV columns: {available_columns}")
-                                print("Available columns:", ', '.join(available_columns))
-                                sys.exit(1)
-                        elif 'standard' in available_columns:
-                            target_column = 'standard'
-                        else:
-                            target_column = available_columns[1]  # Use second column as fallback
-                    
-                    # Load standardization mappings for this target column
-                    standard = []
-                    with open(args.tsv_path, 'r', encoding='utf-8') as f:
-                        reader = csv.DictReader(f, delimiter='\t')
-                        for row in reader:
-                            if target_column in row:
-                                standard.append((row['original'], row[target_column]))
+                                target_column = available_columns[1]  # Use second column as fallback
+                        
+                        # Load standardization mappings for this target column
+                        standard = []
+                        with open(args.tsv_path, 'r', encoding='utf-8') as f:
+                            reader = csv.DictReader(f, delimiter='\t')
+                            for row in reader:
+                                if target_column in row:
+                                    standard.append((row['original'], row[target_column]))
 
-                    # Iterate over all <S> elements
-                    for element in root.findall('.//FORM/..'):
-                        create_standard(element)
-                        apply_standard(element, standard)
+                        # Iterate over all <S> elements
+                        for element in root.findall('.//FORM/..'):
+                            create_standard(element)
+                            apply_standard(element, standard)
                         
                     try:
                         xml_string = prettify(root)
@@ -154,7 +165,8 @@ if __name__ == "__main__":
     
     parser = argparse.ArgumentParser(description="Standardize the orthography")
     #parser.add_argument('--verbose', action='store_true', help='increase output verbosity')
-    parser.add_argument('--tsv_path', required=True, help='path to TSV file with original and standard columns')
+    parser.add_argument('--copy', action='store_true', help='copy original text to standard form without any transformations')
+    parser.add_argument('--tsv_path', help='path to TSV file with original and standard columns (not required when using --copy)')
     parser.add_argument('--target_column', help='column name to use as target for standardization (default: auto-detect from dialect or use "standard")')
     parser.add_argument('--corpora_path', help='path of the corpora')
     parser.add_argument('--corpus', help='if standardization is desired to be applied to a specific corpus -- optional')
@@ -162,7 +174,9 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Validate required arguments
-    if not os.path.exists(args.tsv_path):
+    if not args.copy and not args.tsv_path:
+        parser.error("Either --copy flag or --tsv_path is required.")
+    if not args.copy and not os.path.exists(args.tsv_path):
         parser.error(f"The TSV file doesn't exist: {args.tsv_path}")
     if not args.corpora_path:
         parser.error("--corpora_path is required.")
