@@ -114,10 +114,23 @@ def main(args):
                     
                     
                     # Convert xml:lang codes to language names if needed
-                    lang_map = {'pwn': 'Paiwan', 'ami': 'Amis', 'aty': 'Atayal', 'bnn': 'Bunun', 
-                               'pyu': 'Puyuma', 'dru': 'Rukai', 'tsu': 'Tsou', 'xsy': 'Saisiyat', 
-                               'tao': 'Yami', 'ssf': 'Thao', 'ckv': 'Kavalan', 'trv': 'Truku', 
-                               'szy': 'Sakizaya', 'sed': 'Seediq', 'sxr': 'Saaroa', 'xnb': 'Kanakanavu'}
+                    lang_map = {
+                        'ami': 'Amis',
+                        'tay': 'Atayal',
+                        'bnn': 'Bunun',
+                        'ckv': 'Kavalan',
+                        'pwn': 'Paiwan',
+                        'pyu': 'Puyuma',
+                        'dru': 'Rukai',
+                        'sxr': 'Saaroa',
+                        'xsy': 'Saisiyat',
+                        'szy': 'Sakizaya',
+                        'trv': 'Seediq',
+                        'ssf': 'Thao',
+                        'tsu': 'Tsou',
+                        'tao': 'Yami',
+                        'xnb': 'Kanakanavu'
+                    }#Note that since Seediq and Truku both share the code `trv`, we will need to rely on dialect information to distinguish them when analyzing XML files.
                     if language in lang_map:
                         language = lang_map[language]
                                         
@@ -165,12 +178,13 @@ def main(args):
                             if 'letter' in row and target_column in row:
                                 letter = row['letter'].strip()
                                 target_value = row[target_column].strip()
-                                if letter and target_value and target_value != 'NA':  # Only add non-empty pairs and exclude NA values
+                                if letter and target_value != 'NA':  # Include empty values but exclude explicit 'NA'
                                     phonology_mappings.append((letter, target_value))
                                     conversion_dict[letter] = target_value
                                     # Add all characters from the IPA value to the valid set
-                                    for char in target_value:
-                                        ipa_characters.add(char)
+                                    if target_value:  # Only add characters if there's an actual IPA value
+                                        for char in target_value:
+                                            ipa_characters.add(char)
                     
                     # Find all <FORM> elements with kindOf="standard"
                     standard_forms = root.findall('.//FORM[@kindOf="standard"]')
@@ -256,11 +270,12 @@ def main(args):
                                         if 'letter' in row and custom_target_column in row:
                                             letter = row['letter'].strip()
                                             target_value = row[custom_target_column].strip()
-                                            if letter and target_value and target_value != 'NA':
+                                            if letter and target_value != 'NA':  # Include empty values but exclude explicit 'NA'
                                                 custom_phonology_mappings.append((letter, target_value))
                                                 custom_conversion_dict[letter] = target_value
-                                                for char in target_value:
-                                                    custom_ipa_characters.add(char)
+                                                if target_value:  # Only add characters if there's an actual IPA value
+                                                    for char in target_value:
+                                                        custom_ipa_characters.add(char)
                                 
                                 # Process all <FORM> elements with kindOf="original"
                                 original_forms = root.findall('.//FORM[@kindOf="original"]')

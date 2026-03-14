@@ -33,9 +33,10 @@ def main(dialects_csv, final_xml_dir):
                     # Step 6: Check for underscore and add the dialect attribute
                     if '_' in filename_without_ext:
                         dialect = filename_without_ext.split('_')[0]
-                        # Add space before capital letter preceded by a lowercase letter
-                        dialect = re.sub(r'(?<=[a-z])(?=[A-Z])', ' ', dialect)
                         root_element.set('dialect', dialect)
+                    elif filename_without_ext == 'Truku':
+                        # Special case for Truku files
+                        root_element.set('dialect', 'Truku')
 
                     # Step 7: Save the modified XML file
                     tree.write(file_path, encoding='utf-8', xml_declaration=True)

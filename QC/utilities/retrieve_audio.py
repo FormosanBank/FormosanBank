@@ -3,7 +3,23 @@ import argparse
 import os
 import shutil
 from pathlib import Path
-import time 
+import time
+import gc
+import signal
+import sys 
+
+def signal_handler(signum, frame):
+    print("\n\nReceived interrupt signal. Exiting gracefully...")
+    print("Warning: Download may not be complete. You may need to run the script again.")
+    sys.exit(0)
+
+def timeout_handler(signum, frame):
+    raise TimeoutError("Download timed out")
+
+def monitor_progress(repo_id):
+    """Force garbage collection to prevent memory issues"""
+    print(f"[{repo_id}] Running garbage collection to free memory...")
+    gc.collect()
 
 def replace_symlinks_in_folder(folder):
     """Recursively replaces symlinks inside a folder with the actual files."""
@@ -93,45 +109,72 @@ def download_huggingface_repo(repo_id, langs):
     # print(repo_id, dirs)
     # Use `allow_patterns` to filter for specific folders
     if 'ePark' not in repo_id:
-        while True:
+        retry_count = 0
+        max_retries = 10
+        while retry_count < max_retries:
             try:
+                print(f"Downloading {repo_id} (attempt {retry_count + 1}/{max_retries})")
+                monitor_progress(repo_id)
+                
+                # Set up interrupt handler
+                signal.signal(signal.SIGINT, signal_handler)
+                
                 cache_dir = snapshot_download(
                     repo_id=f"FormosanBank/{repo_id}",
                     repo_type="dataset",
                     allow_patterns=[f"{lang}/*" for lang in langs],
-                    max_workers=100,
+                    max_workers=1,  # Single worker to avoid threading issues
                 )
                 print("Download completed successfully:", cache_dir)
                 break  # Exit loop if successful
 
             except Exception as e:
-                print(f"Download didn't finish, Retrying in 3 seconds...")
-                # print("Retrying in 3 seconds...")
-                time.sleep(3)  # Wait before retrying
+                retry_count += 1
+                print(f"Download failed (attempt {retry_count}/{max_retries}): {str(e)}")
+                if retry_count < max_retries:
+                    print("Retrying in 5 seconds...")
+                    time.sleep(5)  # Wait before retrying
     
     else:
-        while True:
+        retry_count = 0
+        max_retries = 10
+        while retry_count < max_retries:
             try:
+                print(f"Downloading {repo_id} (attempt {retry_count + 1}/{max_retries})")
+                monitor_progress(repo_id)
+                
+                # Set up interrupt handler
+                signal.signal(signal.SIGINT, signal_handler)
+                
                 cache_dir = snapshot_download(
                     repo_id=f"FormosanBank/{repo_id}",
                     repo_type="dataset",
                     allow_patterns=[f"{topic}/{lang}/*" for lang in langs for topic in dirs],
-                    max_workers=100,
+                    max_workers=1,  # Single worker to avoid threading issues
                 )
+                
                 print("Download completed successfully:", cache_dir)
                 break  # Exit loop if successful
 
             except Exception as e:
-                print(f"Download didn't finish, Retrying in 3 seconds...")
-                # print("Retrying in 3 seconds...")
-                time.sleep(3)  # Wait before retrying
+                retry_count += 1
+                print(f"Download failed (attempt {retry_count}/{max_retries}): {str(e)}")
+                if retry_count < max_retries:
+                    print("Retrying in 5 seconds...")
+                    time.sleep(5)  # Wait before retrying
+        
+        if retry_count >= max_retries:
+            print(f"Failed to download {repo_id} after {max_retries} attempts")
+            return None
 
     return cache_dir
 
 
 
 def main(args, possiblelangs):
-
+    # Set up global signal handler for graceful interrupts
+    signal.signal(signal.SIGINT, signal_handler)
+    
     organize_by = args.organize_by
     if args.organize_by == "by_corpus":
         XML_path, corpus = args.XML_Path, args.corpus 
@@ -162,33 +205,56 @@ def main(args, possiblelangs):
         corpora = [corpus]
 
     for corpus in corpora:
-        caches = list()
-        for repo in corpus_repo[corpus]:
-            caches.append(download_huggingface_repo(repo, languages))
+        print(f"\n=== Processing corpus: {corpus} ===")
         
         if organize_by == "by_language":
             audio_output = os.path.join(output_path, corpus)
             os.makedirs(audio_output, exist_ok=True)
         
-        for cache_dir in caches:
-            # Move files from the cache to the output directory
-            for folder in os.listdir(cache_dir):
-                if not os.path.isdir(os.path.join(cache_dir, folder)):
-                    continue
-                #replace symlink files with actual ones
-                replace_symlinks_in_folder(os.path.join(cache_dir, folder))
+        # Process each repository one at a time
+        total_repos = len(corpus_repo[corpus])
+        for i, repo in enumerate(corpus_repo[corpus], 1):
+            print(f"\n--- Processing batch {i}/{total_repos}: {repo} ---")
+            
+            cache_dir = download_huggingface_repo(repo, languages)
+            
+            if cache_dir is not None:
+                print(f"Download successful, processing files from {repo}...")
                 
-                src_folder = os.path.join(cache_dir, folder)
-                dst_folder = os.path.join(audio_output, folder)
-                
-                if os.path.exists(src_folder):
-                    if not os.path.exists(dst_folder):
-                        shutil.move(src_folder, dst_folder)
+                # Process this cache directory immediately
+                for folder in os.listdir(cache_dir):
+                    if not os.path.isdir(os.path.join(cache_dir, folder)):
+                        continue
+                    
+                    print(f"Processing language folder: {folder}")
+                    #replace symlink files with actual ones
+                    replace_symlinks_in_folder(os.path.join(cache_dir, folder))
+                    
+                    src_folder = os.path.join(cache_dir, folder)
+                    dst_folder = os.path.join(audio_output, folder)
+                    
+                    if os.path.exists(src_folder):
+                        if not os.path.exists(dst_folder):
+                            shutil.move(src_folder, dst_folder)
+                            print(f"  Moved {folder} to output directory")
+                        else:
+                            # Merge with existing folder
+                            file_count = 0
+                            for item in os.listdir(src_folder):
+                                shutil.move(os.path.join(src_folder, item), os.path.join(dst_folder, item))
+                                file_count += 1
+                            print(f"  Merged {file_count} files from {folder} into existing directory")
                     else:
-                        for item in os.listdir(src_folder):
-                            shutil.move(os.path.join(src_folder, item), os.path.join(dst_folder, item))
-                else:
-                    print(f"Folder not found in the repository: {folder}")
+                        print(f"  Warning: Folder not found in the repository: {folder}")
+                
+                print(f"Completed processing {repo}")
+            else:
+                print(f"Skipping {repo} due to download failure")
+                print("Continuing with next batch...")
+        
+        print(f"\n=== Finished processing all batches for {corpus} ===")
+    
+    print("\n=== Running final cleanup ===")
     check_batches(audio_output)
 
 if __name__ == "__main__":

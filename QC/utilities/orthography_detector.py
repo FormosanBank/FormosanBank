@@ -88,10 +88,11 @@ def load_orthography_data(orthographies_dir: str) -> Dict[str, Dict[str, Dict[st
                                     # Single dialect case: always include the letter
                                     dialect_letters[dialect].add(letter)
                                 else:
-                                    # Multi-dialect case: only include if not 'NA'
+                                    # Multi-dialect case: include if not explicitly 'NA'
+                                    # Empty values mean "part of orthography but no IPA"
                                     ipa_value = row.get(dialect, '') or ''
                                     ipa_value = ipa_value.strip() if ipa_value else ''
-                                    if ipa_value and ipa_value.upper() != 'NA':
+                                    if ipa_value.upper() != 'NA':  # Include if empty or has any value other than 'NA'
                                         dialect_letters[dialect].add(letter)
                         
                         # Store the dialect-specific letter sets
@@ -149,14 +150,11 @@ def extract_text_from_xml(xml_file: str, use_standard: bool = False) -> Tuple[st
         # Combine all extracted text snippets into one string for analysis
         combined_text = ' '.join(texts)
 
-        # Clean the text: remove only numbers, double quotes, periods, and commas
+        # Clean the text: remove numbers, double quotes, periods, commas, question marks, and exclamation marks
         # Keep letters, apostrophes, hyphens, and other characters that might be linguistically significant
-        cleaned_text = re.sub(r'[0-9".,]', ' ', combined_text)
+        cleaned_text = re.sub(r'[0-9".,?!]', ' ', combined_text)
         
-        # Lowercase the entire text at once for efficiency
-        cleaned_text_lower = cleaned_text.lower()
-
-        return cleaned_text_lower, language, dialect
+        return cleaned_text, language, dialect
         
     except Exception as e:
         print(f"Error parsing XML file {xml_file}: {e}")
@@ -186,14 +184,13 @@ def normalize_language_code(lang_code: str) -> str:
         'dru': 'Rukai',
         'sxr': 'Saaroa',
         'xsy': 'Saisiyat',
-        'sku': 'Sakizaya',
-        'sdq': 'Seediq',
+        'szy': 'Sakizaya',
+        'trv': 'Seediq',
         'ssf': 'Thao',
         'tsu': 'Tsou',
         'tao': 'Yami',
-        'kni': 'Kanakanavu',
-        'trv': 'Truku'
-    }
+        'xnb': 'Kanakanavu'
+    }#Note that since Seediq and Truku both share the code `trv`, we will need to rely on dialect information to distinguish them when analyzing XML files.
     
     # Look up the language code, default to capitalizing the input if not found
     return lang_mapping.get(lang_code.lower(), lang_code.capitalize())
@@ -222,7 +219,7 @@ def extract_letters(text: str) -> Tuple[Set[str], Counter]:
     return letters, letter_counts
 
 
-def calculate_orthography_score(text_letters: Set[str], orthography_letters: Set[str], text_letter_counts: Counter, text: str = None) -> Tuple[float, int, int, float, Set[str], Dict[str, int]]:
+def calculate_orthography_score(text_letters: Set[str], orthography_letters: Set[str], text_letter_counts: Counter, text: str = None) -> Tuple[float, int, int, float, Set[str], Dict[str, int], int]:
     """
     Calculate how well the text matches an orthography.
     
@@ -233,12 +230,12 @@ def calculate_orthography_score(text_letters: Set[str], orthography_letters: Set
         text: Original text (needed for multi-letter pattern detection)
         
     Returns:
-        Tuple of (match_score, matched_letters, unexpected_letter_types, unexpected_letter_percentage, effective_text_letters, unexpected_tokens)
+        Tuple of (match_score, matched_letters, unexpected_letter_types, unexpected_letter_percentage, effective_text_letters, unexpected_tokens, common_letters)
     """
     # Handle edge case: no letters defined in orthography
     if not orthography_letters:
         total_tokens = sum(text_letter_counts.values())
-        return 0.0, 0, len(text_letters), 100.0 if total_tokens > 0 else 0.0, text_letters, dict(text_letter_counts)
+        return 0.0, 0, len(text_letters), 100.0 if total_tokens > 0 else 0.0, text_letters, dict(text_letter_counts), 0
     
     # Identify multi-letter patterns from this specific orthography
     multi_letter_patterns = [letter for letter in orthography_letters if len(letter) > 1]
@@ -264,7 +261,7 @@ def calculate_orthography_score(text_letters: Set[str], orthography_letters: Set
                             del effective_letter_counts[char]
                             effective_text_letters.discard(char)
     
-    # Calculate intersection: letters that appear in both text and orthography
+    # Recalculate matched letters after potential capitalization changes
     matched_letters = len(effective_text_letters & orthography_letters)
     
     # Calculate unexpected letter types and their token frequency
@@ -272,14 +269,64 @@ def calculate_orthography_score(text_letters: Set[str], orthography_letters: Set
     unexpected_token_count = sum(effective_letter_counts[letter] for letter in unexpected_letter_types)
     unexpected_tokens = {letter: effective_letter_counts[letter] for letter in unexpected_letter_types}
     
+    # Handle capitalization: if an unexpected letter is uppercase and the orthography 
+    # has the lowercase version, treat it as the lowercase letter
+    unexpected_to_remove = set()
+    for unexpected_letter in list(unexpected_letter_types):
+        if unexpected_letter.isupper():
+            lowercase_version = unexpected_letter.lower()
+            if lowercase_version in orthography_letters:
+                # Move the counts from the uppercase to lowercase version
+                count = effective_letter_counts.get(unexpected_letter, 0)
+                if count > 0:
+                    # Add to lowercase version in effective counts
+                    if lowercase_version in effective_letter_counts:
+                        effective_letter_counts[lowercase_version] += count
+                    else:
+                        effective_letter_counts[lowercase_version] = count
+                    
+                    # Add lowercase to effective letters if not already there
+                    effective_text_letters.add(lowercase_version)
+                    
+                    # Remove uppercase version from counts and letters
+                    del effective_letter_counts[unexpected_letter]
+                    effective_text_letters.discard(unexpected_letter)
+                    
+                    # Mark for removal from unexpected
+                    unexpected_to_remove.add(unexpected_letter)
+    
+    # Remove handled uppercase letters from unexpected sets
+    for letter in unexpected_to_remove:
+        unexpected_letter_types.discard(letter)
+        if letter in unexpected_tokens:
+            del unexpected_tokens[letter]
+    
+    # Recalculate unexpected counts after handling capitalization
+    unexpected_token_count = sum(effective_letter_counts[letter] for letter in unexpected_letter_types)
+    
     # Calculate total tokens and unexpected percentage
     total_tokens = sum(effective_letter_counts.values())
     unexpected_percentage = (unexpected_token_count / total_tokens * 100) if total_tokens > 0 else 0.0
     
-    # Calculate match percentage based on how much of the orthography is used
-    match_score = ((matched_letters / len(orthography_letters)) + (1 - (unexpected_percentage / 100)))/2  # Combine coverage and cleanliness into a single score
+    # Recalculate matched letters after potential capitalization changes
+    matched_letters = len(effective_text_letters & orthography_letters)
     
-    return match_score, matched_letters, len(unexpected_letter_types), unexpected_percentage, effective_text_letters, unexpected_tokens
+    # Calculate common letters (letters occurring at least 0.5% of the time)
+    # This differs from 'matched_letters' which counts all expected letters that appear at least once
+    # Common letters only counts those that appear frequently enough to be considered active in the text
+    total_tokens = sum(effective_letter_counts.values())
+    common_letters = 0
+    if total_tokens > 0:
+        threshold = total_tokens * (1 / (len(orthography_letters) ** 1.75))  # 0.5% threshold
+        for letter in (effective_text_letters & orthography_letters):
+            if effective_letter_counts.get(letter, 0) >= threshold:
+                common_letters += 1
+    
+    # Calculate match percentage based on how much of the orthography is used
+    # Combine coverage and cleanliness into a single score, with a small bonus for total number of characters matched
+    match_score = ((common_letters / len(orthography_letters)) + (1 - 10 * (unexpected_percentage / 100)))/2 + common_letters/750 
+    
+    return match_score, matched_letters, len(unexpected_letter_types), unexpected_percentage, effective_text_letters, unexpected_tokens, common_letters
 
 
 def determine_orthography_with_data(xml_file: str, orthography_data: Dict, ignore_dialect: bool = False, use_standard: bool = False) -> Dict:
@@ -365,7 +412,7 @@ def analyze_text_for_orthography(text: str, language_code: str, dialect: str, or
     # Single loop to test all determined combinations
     for lang, dialect_name, dialect_data in test_combinations:
         for ortho_type, ortho_letters in dialect_data.items():
-            score, matched, unexpected_types, unexpected_pct, effective_text_letters, unexpected_tokens = calculate_orthography_score(text_letters, ortho_letters, text_letter_counts, text)
+            score, matched, unexpected_types, unexpected_pct, effective_text_letters, unexpected_tokens, common_letters = calculate_orthography_score(text_letters, ortho_letters, text_letter_counts, text)
             
             # Calculate missing letters
             missing_letters = sorted(list(ortho_letters - effective_text_letters))
@@ -381,7 +428,8 @@ def analyze_text_for_orthography(text: str, language_code: str, dialect: str, or
                 'total_text_letters': len(effective_text_letters),
                 'orthography_size': len(ortho_letters),
                 'missing_letters': missing_letters,
-                'unexpected_tokens': unexpected_tokens
+                'unexpected_tokens': unexpected_tokens,
+                'common_letters': common_letters
             })
     
     # Rank results by quality of match
@@ -868,6 +916,7 @@ def display_combined_results(results: Dict) -> None:
             print(f"  Score: {best['score']:.2%}")
             print(f"  Unexpected tokens: {best['unexpected_percentage']:.1f}%")
             print(f"  Letters matched: {best['matched_letters']}/{best['orthography_size']}")
+            print(f"  Common letters: {best.get('common_letters', 0)}")
         
         # Show top 5 orthographies
         print(f"\nTop 5 orthographies for combined {dialect_key} corpus:")
@@ -878,6 +927,7 @@ def display_combined_results(results: Dict) -> None:
             print(f"     Score: {match['score']:.2%}")
             print(f"     Unexpected tokens: {match['unexpected_percentage']:.1f}%")
             print(f"     Letters matched: {match['matched_letters']}/{match['orthography_size']}")
+            print(f"     Common letters: {match.get('common_letters', 0)}")
             
             # Show missing letters
             missing_letters = match.get('missing_letters', [])
@@ -984,7 +1034,8 @@ if __name__ == "__main__":
             dialect_info = f" ({match['dialect']})" if match['dialect'] != 'default' else ""
             print(f"{i+1}. {match['language']}{dialect_info} - {match['orthography']}")
             print(f"   Score: {match['score']:.2%}")
-            print(f"   Score: {match['matched_letters']}")
+            print(f"   Letters matched: {match['matched_letters']}")
+            print(f"   Common letters: {match.get('common_letters', 0)}")
             print(f"   Unexpected letter types: {match['unexpected_letter_types']}")
             print(f"   Unexpected token %: {match['unexpected_percentage']:.1f}%")
             print()

@@ -1,5 +1,4 @@
 import os
-import re
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
 import csv
@@ -9,6 +8,18 @@ import requests
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from collections import defaultdict
 import threading
+import re
+
+def clean_text(text):
+    """Remove spaces before question marks and normalize multiple spaces."""
+    if text is None:
+        return None
+    # Remove spaces before question marks
+    text = re.sub(r'\s+\?', '?', text)
+    # Normalize multiple spaces to single spaces
+    text = re.sub(r'\s+', ' ', text)
+    # Strip leading/trailing whitespace
+    return text.strip()
 
 def prettify(elem):
     """Return a pretty-printed XML string for the Element."""
@@ -49,8 +60,8 @@ def process_match_items(item, types, audio_path, type_id, class_num):
         t1, t2 = item.find(f"match{curr}ChA"), item.find(f"match{curr}ChB")
         if s1 is None or t1 is None:
             break
-        sentence = s1.text + " " + s2.text
-        trans = t1.text + " " + t2.text
+        sentence = clean_text(s1.text) + " " + clean_text(s2.text)
+        trans = clean_text(t1.text) + " " + clean_text(t2.text)
         audio_filename = f"{class_num}_{item.find('matchOrder').text}_{curr}.mp3"
         audio = os.path.join(audio_path, type_id + types[type_id], audio_filename)
         if not os.path.exists(audio):
@@ -85,11 +96,14 @@ def process_multiple_sentences_single_audio(item, types, audio_path, type_id, cl
         if s is None or t is None:
             break
 
-        s_text, t_text = s.text, t.text
+        s_text, t_text = clean_text(s.text), clean_text(t.text)
         if s_text is None or t_text is None or s_text.isspace():
             break
 
-        sentence += s_text
+        if sentence:  # If we already have content, add a space before the next sentence
+            sentence += " " + s_text
+        else:
+            sentence += s_text
         trans += t_text
         curr = chr(ord(curr)+1)
     return [(sentence, trans, audio)]
@@ -119,7 +133,7 @@ def process_multiple_sentences_multiple_audio(item, types, audio_path, type_id, 
         audio = os.path.join(audio_path, type_id + types[type_id], audio_filename)
         if not os.path.exists(audio):
             audio = None
-        to_return.append((s.text, t.text, audio))
+        to_return.append((clean_text(s.text), clean_text(t.text), audio))
         curr = chr(ord(curr)+1)
     return to_return
 
@@ -141,7 +155,7 @@ def process_single_sentence_item(item, types, audio_path, type_id, class_num):
     audio = os.path.join(audio_path, type_id + types[type_id], audio_filename)
     if not os.path.exists(audio):
         audio = None
-    return [(item.find(f"{types[type_id]}Ab").text,  item.find(f"{types[type_id]}Ch").text, audio)]
+    return [(clean_text(item.find(f"{types[type_id]}Ab").text), clean_text(item.find(f"{types[type_id]}Ch").text), audio)]
 
 def process_item_by_type(ePark, item, types, audio_path):
     """
@@ -209,7 +223,7 @@ def process_epark_sentence_patterns(ePark, path, output_path, dialects, lang_cod
         dialect_path = os.path.join(xml_path, idx)
         lang = dialect.split("_")[-1]
         xml_output = os.path.join(output_path, "ep3_"+ePark, lang)
-        audio_output = os.path.join(xml_output, "audio")
+        audio_output = os.path.join(xml_output, dialect).replace("Final_XML", "Final_audio")
         os.makedirs(xml_output, exist_ok=True)
         os.makedirs(audio_output, exist_ok=True)
         
@@ -236,28 +250,23 @@ def process_epark_sentence_patterns(ePark, path, output_path, dialects, lang_cod
                         transl_element.text = trans
                         
                         if audio:
-                            audio_element = ET.SubElement(s_element, "AUDIO")
-                            audio_element.set("file", id + ".mp3")
                             if not os.path.exists(os.path.join(audio_output, id + ".mp3")):
                                 try:
                                     shutil.copy(audio, os.path.join(audio_output, id + ".mp3"))
+                                    audio_element = ET.SubElement(s_element, "AUDIO")
+                                    audio_element.set("file", id + ".mp3")
                                 except:
                                     print(f"Failed to copy audio: {idx}, {file}")
+                            else:
+                                audio_element = ET.SubElement(s_element, "AUDIO")
+                                audio_element.set("file", id + ".mp3")
         try:
             xml_string = prettify(root)
         except Exception as e:
             xml_string = ""
             print(f"Failed to format XML: {dialect}, {ePark}, {idx}, Error: {e}")
 
-        # Before write to path, validate output text for windows paths
-        write_path = os.path.join(xml_output, dialect+".xml")
-        drive, split_path = os.path.splitdrive(write_path)
-        pattern = r'[<>:"|?*]'
-        split_path = re.sub(pattern, '_', split_path)
-        split_path = re.sub(r'_+', '_', split_path)
-        write_path = drive + split_path
-        # Write to file
-        with open(write_path, "w", encoding="utf-8") as xmlfile:
+        with open(os.path.join(xml_output, dialect+".xml"), "w", encoding="utf-8") as xmlfile:
             xmlfile.write(xml_string)
 
 def download_audio(save_path, url, file_name):
@@ -296,7 +305,7 @@ def process_data_point(data_point, dialects, audio_output_dict, download_url, eP
     Parameters:
         data_point (list): The data point to process.
         dialects (dict): A dictionary mapping indices to dialect names.
-        audio_output_dict (dict): A dictionary mapping indices to audio output paths.
+        xml_output (str): path to xml output dir for the language.
         download_url (str): The base URL for downloading audio files.
         ePark (str): The ePark topic.
         failed_audio_entries (list): A list to collect entries for which audio download failed.
@@ -313,11 +322,11 @@ def process_data_point(data_point, dialects, audio_output_dict, download_url, eP
     s_element.set("id", data_point[0])
 
     form_element = ET.SubElement(s_element, "FORM")
-    form_element.text = data_point[3]
+    form_element.text = clean_text(data_point[3])
 
     transl_element = ET.SubElement(s_element, "TRANSL")
     transl_element.set("xml:lang", "zh")
-    transl_element.text = data_point[4]
+    transl_element.text = clean_text(data_point[4])
 
     audio_url = f"{download_url}/{data_point[1]}/{data_point[0]}.mp3"
     audio_file = f"{ePark}_{dialect}_{data_point[0]}.mp3"
@@ -371,7 +380,7 @@ def process_epark_topics_with_csv(ePark, path, output_path, dialects, lang_codes
         xml_dict[idx] = root
 
         xml_output = os.path.join(output_path, "ep3_"+ePark, lang)
-        audio_output = os.path.join(xml_output, "audio")
+        audio_output = os.path.join(xml_output, dialect).replace("Final_XML", "Final_audio")
         os.makedirs(xml_output, exist_ok=True)
         os.makedirs(audio_output, exist_ok=True)
 
@@ -382,7 +391,7 @@ def process_epark_topics_with_csv(ePark, path, output_path, dialects, lang_codes
     with ThreadPoolExecutor(max_workers=100) as executor:
         futures = [executor.submit(process_data_point, data[entry], dialects, audio_output_dict, download_url, ePark, failed_audio_entries, s_elements_dict) for entry in data]
         for future in tqdm(as_completed(futures), desc= f"Processing {ePark}:", total=len(data)):
-            pass
+            future.result()
     
     if ePark == "文化篇":
         # Process additional data for '文化篇'
@@ -407,27 +416,30 @@ def process_epark_topics_with_csv(ePark, path, output_path, dialects, lang_codes
             s_element.set("id", id)
 
             form_element = ET.SubElement(s_element, "FORM")
-            form_element.text = data_point[3]
+            form_element.text = clean_text(data_point[3])
 
             transl_element = ET.SubElement(s_element, "TRANSL")
             transl_element.set("xml:lang", "zh")
-            transl_element.text = data_point[4]
+            transl_element.text = clean_text(data_point[4])
             
             audio = os.path.join(path, idx, f"{data_point[0]}_{data_point[1]}_V{data_point[2]}.mp3")
             if os.path.exists(audio):
-                audio_element = ET.SubElement(s_element, "AUDIO")
-                audio_element.set("file", id + ".mp3")
                 if not os.path.exists(os.path.join(audio_output, id + ".mp3")):
                     try:
                         shutil.copy(audio, os.path.join(audio_output, id + ".mp3"))
+                        audio_element = ET.SubElement(s_element, "AUDIO")
+                        audio_element.set("file", id + ".mp3")
                     except:
                         print(f"Failed to copy audio: {idx}, {id}")
+                else:
+                    audio_element = ET.SubElement(s_element, "AUDIO")
+                    audio_element.set("file", id + ".mp3")
             else:
                 failed_audio.append([ePark, audio, lang, dialect, idx, id])
             root = xml_dict[idx if len(idx) > 1 else '0'+idx]
             root.append(s_element)
 
-        with open(os.path.join(output_path, "ep3_"+ePark, "failed_audio_copy.csv"), mode='w', newline='', encoding='utf-8') as file:
+        with open(os.path.join(output_path, "ep3_"+ePark, "failed_audio_copy.csv"), mode='w', newline='') as file:
             writer = csv.writer(file)
             writer.writerow(["ePark topic", "audio path", "lang", "dialect", "idx", "id"])
             writer.writerows(failed_audio)
@@ -452,7 +464,7 @@ def process_epark_topics_with_csv(ePark, path, output_path, dialects, lang_codes
     
     # Write failed audio entries
     failed_audio_file = os.path.join(output_path, "ep3_"+ePark, "failed_audio_download.csv")
-    with open(failed_audio_file, mode='w', newline='', encoding='utf-8') as file:
+    with open(failed_audio_file, mode='w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["url", "file_name", "lang", "dialect", "id", "error"])
         writer.writerows(failed_audio_entries)
@@ -480,7 +492,7 @@ def process_topics4and5_items(item, tag_org, tag_zh, root, path, idx, audio_outp
         if sen is None or trans is None:
             break
 
-        sen, trans = sen.text, trans.text
+        sen, trans = clean_text(sen.text), clean_text(trans.text)
         if sen is None or trans is None or sen == "" or sen.isspace():
             break
 
@@ -509,13 +521,17 @@ def process_topics4and5_items(item, tag_org, tag_zh, root, path, idx, audio_outp
             audio = os.path.join(path, idx, "sound", f"{idx}_{item.find('lessonNo').text}_V{i}.mp3")
         
         if os.path.exists(audio):
-            audio_element = ET.SubElement(s_element, "AUDIO")
-            audio_element.set("file", id + ".mp3")
             if not os.path.exists(os.path.join(audio_output, id + ".mp3")):
                 try:
                     shutil.copy(audio, os.path.join(audio_output, id + ".mp3"))
+                    audio_element = ET.SubElement(s_element, "AUDIO")
+                    audio_element.set("file", id + ".mp3")
                 except:
                     print(f"Failed to copy audio: {idx}, {id}")
+                    failed_audio.append([ePark, audio, lang, dialect, idx, id])
+            else:
+                audio_element = ET.SubElement(s_element, "AUDIO")
+                audio_element.set("file", id + ".mp3")
         else:
             failed_audio.append([ePark, audio, lang, dialect, idx, id])
         i += 1
@@ -547,10 +563,10 @@ def process_epark_conversation_reading(ePark, path, output_path, dialects, lang_
         dialect = dialects[idx if len(idx) > 1 else "0"+idx]
         lang = dialect.split("_")[-1]
         xml_output = os.path.join(output_path, "ep3_"+ePark, lang)
-        audio_output = os.path.join(xml_output, "audio")
+        audio_output = os.path.join(xml_output, dialect).replace("Final_XML", "Final_audio")
         os.makedirs(xml_output, exist_ok=True)
         os.makedirs(audio_output, exist_ok=True)
-
+        
         root = create_root(ePark, dialect, lang_codes[lang])        
         xml_dict[idx if len(idx) > 1 else "0"+idx] = root
         audio_output_dict[idx if len(idx) > 1 else "0"+idx] = audio_output
@@ -567,16 +583,16 @@ def process_epark_conversation_reading(ePark, path, output_path, dialects, lang_
             
             form_element = ET.SubElement(s_element, "FORM")
             if ePark == "生活會話篇":
-                form_element.text = item.find("lessonAB").text
+                form_element.text = clean_text(item.find("lessonAB").text)
             elif ePark == "閱讀書寫篇":
-                form_element.text = item.find("lessonAb").text
+                form_element.text = clean_text(item.find("lessonAb").text)
 
             transl_element = ET.SubElement(s_element, "TRANSL")
             transl_element.set("xml:lang", "zh")
             if ePark == "生活會話篇":
-                transl_element.text = item.find("lessonCH").text
+                transl_element.text = clean_text(item.find("lessonCH").text)
             elif ePark == "閱讀書寫篇":
-                transl_element.text = item.find("lessonCh").text
+                transl_element.text = clean_text(item.find("lessonCh").text)
            
         if ePark == "生活會話篇":
             for item in to_read_root.findall('.//content'):
@@ -588,7 +604,7 @@ def process_epark_conversation_reading(ePark, path, output_path, dialects, lang_
             for item in to_read_root.findall('.//vocabulary'):
                 process_topics4and5_items(item, "Ab_", "Ch_", root, path, idx, audio_output, ePark, lang, dialect, failed_audio)
 
-    with open(os.path.join(output_path, "ep3_"+ePark, "failed_audio_copy.csv"), mode='w', newline='', encoding='utf-8') as file:
+    with open(os.path.join(output_path, "ep3_"+ePark, "failed_audio_copy.csv"), mode='w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["ePark topic", "audio path", "lang", "dialect", "idx", "id"])
         writer.writerows(failed_audio)
@@ -606,10 +622,10 @@ def process_epark_conversation_reading(ePark, path, output_path, dialects, lang_
         with ThreadPoolExecutor(max_workers=100) as executor:
             futures = [executor.submit(process_data_point, data[entry], dialects, audio_output_dict, "https://web.klokah.tw/text/sound/", ePark, failed_audio_entries, s_elements_dict) for entry in data]
             for future in tqdm(as_completed(futures), desc= f"Processing {ePark}:", total=len(data)):
-                pass
+                future.result()
         
         failed_audio_file = os.path.join(output_path, "ep3_"+ePark, "failed_audio_download.csv")
-        with open(failed_audio_file, mode='w', newline='', encoding='utf-8') as file:
+        with open(failed_audio_file, mode='w', newline='') as file:
             writer = csv.writer(file)
             writer.writerow(["url", "file_name", "lang", "dialect", "id", "error"])
             writer.writerows(failed_audio_entries)

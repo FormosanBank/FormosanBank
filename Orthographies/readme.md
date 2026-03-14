@@ -118,7 +118,7 @@ The letter `d` similarly has three pronunciations (which use non-standard charac
 
 ## Atayal
 
-No notes
+Does not use `_` as a vowel, which was added in Ortho113. This cannot be easily recovered.
 
 ## Paiwan
 
@@ -211,6 +211,8 @@ Also notes that `o` continues to be used in spelling some loanwords and function
 ## Bunun
 
 Similar to the Ortho94, but with more special spelling rules involving `c` and `s`.
+
+The documentation states that `-` used to represent a glottal stop, but I haven't seen any such orthographies yet. Now it is used to specify syllable boundaries.
 
 ## Puyuma
 

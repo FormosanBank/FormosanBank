@@ -121,10 +121,15 @@ def main(args):
                             if dialect:
                                 if dialect in available_columns:
                                     target_column = dialect
+                                    print(f"Using dialect-specific column: {dialect}")
                                 else:
-                                    print(f"Error: Dialect '{dialect}' found in file '{file}' but not available in TSV columns: {available_columns}")
-                                    print("Available columns:", ', '.join(available_columns))
-                                    sys.exit(1)
+                                    print(f"Warning: Dialect '{dialect}' found in file '{file}' but not available in TSV columns: {available_columns}")
+                                    print("Falling back to 'standard' column or second available column")
+                                    # Fall back to standard column or second column
+                                    if 'standard' in available_columns:
+                                        target_column = 'standard'
+                                    else:
+                                        target_column = available_columns[1]  # Use second column as fallback
                             elif 'standard' in available_columns:
                                 target_column = 'standard'
                             else:
@@ -136,7 +141,12 @@ def main(args):
                             reader = csv.DictReader(f, delimiter='\t')
                             for row in reader:
                                 if target_column in row:
-                                    standard.append((row['original'], row[target_column]))
+                                    original_value = row.get('original', '').strip()
+                                    standard_value = row.get(target_column, '').strip()
+                                    # Only include mappings where the original value exists
+                                    # Empty standard value means "remove the original character"
+                                    if original_value:  # Only process if there's something to replace
+                                        standard.append((original_value, standard_value))
 
                         # Iterate over all <S> elements
                         for element in root.findall('.//FORM/..'):

@@ -1,5 +1,4 @@
 import csv
-import re
 from xml.etree.ElementTree import Element, SubElement, tostring
 from xml.dom import minidom
 import os
@@ -20,8 +19,11 @@ def download_audio(url, save_path, file_name, lang, dialect , failed_audio):
     Download an audio file from the given URL and save it to the specified path.
     If the download fails, record the failure in 'failed_audio.csv' and append the ID to 'failed_ids'.
     """
+    os.makedirs(save_path, exist_ok=True)
     # Determine the path to 'failed_audio.csv' relative to 'save_path'
     try:
+        if os.path.exists(os.path.join(save_path, file_name)):
+            return
         # Send a GET request to the URL with streaming enabled
         response = requests.get(url, stream=True)
         # Check if the request was successful
@@ -29,13 +31,13 @@ def download_audio(url, save_path, file_name, lang, dialect , failed_audio):
             # Create the full file path for saving the audio file
             file_path = os.path.join(save_path, file_name)
             # Write the content to the file in chunks
-            # with open(file_path, 'wb') as audio_file:
-            #     for chunk in response.iter_content(chunk_size=1024):
-            #         audio_file.write(chunk)
+            with open(file_path, 'wb') as audio_file:
+                for chunk in response.iter_content(chunk_size=1024):
+                    audio_file.write(chunk)
         else:
             # If the response status is not 200, record the failure
             id = file_name.split(".")[0].split("_")[-1]  # Extract the ID from the file name
-            with open(failed_audio, mode='a', newline='', encoding='utf-8') as file:
+            with open(failed_audio, mode='a', newline='') as file:
                 writer = csv.writer(file)
                 writer.writerow([url, file_name, lang, dialect, id, response.status_code])
             
@@ -43,7 +45,7 @@ def download_audio(url, save_path, file_name, lang, dialect , failed_audio):
     except Exception as e:
         # If an exception occurs, record the failure
         id = file_name.split(".")[0].split("_")[-1]
-        with open(failed_audio, mode='a', newline='', encoding='utf-8') as file:
+        with open(failed_audio, mode='a', newline='') as file:
             writer = csv.writer(file)
             writer.writerow([url, file_name, lang, dialect, id, e])
         
@@ -73,15 +75,12 @@ def create_xml(curr_ePark, out_ePark, file, dialect, lang, lang_code, dir, ePark
     print(f"in {ePark}, {dialect}, {file}...")
     # Define the output directories for XML and audio files
     xml_output = os.path.join(out_ePark, lang)
-    audio_output = os.path.join(xml_output, "audio")
     
     # Create the output directories if they don't exist
     if not os.path.exists(xml_output):
-        os.makedirs(xml_output)
+        os.mkdir(xml_output)
 
-    if not os.path.exists(audio_output):
-        os.makedirs(audio_output)
-
+    
     # Create the root element of the XML
     root = Element("TEXT")
     root.set("id", f"eP{ePark[-1]}_{dir}_{dialect}")
@@ -166,7 +165,7 @@ def create_xml(curr_ePark, out_ePark, file, dialect, lang, lang_code, dir, ePark
 
     print(f"in {ePark}, {dialect}, {file} audios...")
     # Download all audio files and get the list of failed IDs
-    download_all_audios(audio_urls, audio_output, lang, dialect, failed_audio)
+    download_all_audios(audio_urls, os.path.join(xml_output, dialect).replace("Final_XML", "Final_audio"), lang, dialect, failed_audio)
 
     try:
         # Generate the pretty-printed XML string
@@ -175,17 +174,9 @@ def create_xml(curr_ePark, out_ePark, file, dialect, lang, lang_code, dir, ePark
         # If an error occurs during prettifying, print an error message
         xml_string = ""
         print(ePark, dir, dialect, lang, file)
-    
-    # Before write to path, validate output text for windows paths
-    pattern = r'[<>:"|?*]'
-    dialect = re.sub(pattern, '_', dialect)
-    dialect = re.sub(r'_+', '_', dialect)
-    output_path = os.path.join(xml_output, dialect+".xml")
 
-
-    # Write to file
     # Write the XML string to a file
-    with open(output_path, "w", encoding="utf-8") as xmlfile:
+    with open(os.path.join(xml_output, dialect+".xml"), "w", encoding="utf-8") as xmlfile:
         xmlfile.write(xml_string)
         
         
@@ -196,9 +187,8 @@ def ePark1_2(curr_dir, dialects, lang_codes, ePark_ver):
     Iterates over directories and files, and creates XML files for each dialect.
     """
     # Define the output directory for the final XML files
-    output_dir = os.path.join(curr_dir, "Final_XML")
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
+    output_xml_dir = os.path.join(curr_dir, "Final_XML")
+    os.makedirs(output_xml_dir, exist_ok=True)
 
     # Iterate over the directories in the ePark version directory
     for dir in os.listdir(os.path.join(curr_dir, ePark_ver)):
@@ -207,7 +197,7 @@ def ePark1_2(curr_dir, dialects, lang_codes, ePark_ver):
 
         # Define the current and output paths for the ePark version
         curr_ePark = os.path.join(curr_dir, ePark_ver, dir)
-        out_ePark = os.path.join(output_dir, f"ep{ePark_ver[-1]}_"+dir)
+        out_ePark = os.path.join(output_xml_dir, f"ep{ePark_ver[-1]}_"+dir)
         
 
         os.makedirs(out_ePark, exist_ok=True)
@@ -252,7 +242,7 @@ def main():
             dialects[row[0]] = row[1]
 
     # Process ePark versions 1 and 2
-    #ePark1_2(curr_dir, dialects, lang_codes, "ePark_1")
+    ePark1_2(curr_dir, dialects, lang_codes, "ePark_1")
     ePark1_2(curr_dir, dialects, lang_codes, "ePark_2")
     
 
