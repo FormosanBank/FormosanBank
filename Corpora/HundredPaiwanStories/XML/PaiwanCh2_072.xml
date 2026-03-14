@@ -1232,7 +1232,7 @@
     </S>
     <S id="072S14">
         <FORM kindOf="original">"anema nu vavayanan a namaitazua a kutji sakamaya, neka nu buang?"</FORM>
-        <PHON kindOf="original">"anəma nu vavajanan a namaitazua a kuci sakamaja, nəka nu buaŋ?"</PHON>
+        <PHON kindOf="original">"anəma nu vavajanan a namaitazua a kuci sakamaja, nəka nu buaŋʔ"</PHON>
         <FORM kindOf="standard">"anema nu vavayanan a namaitazua a kutji sakamaya, neka nu buang?"</FORM>
         <PHON kindOf="standard">"anəma nu vavajanan a namaitazua a kuʦi sakamaja, nəka nu buaŋ?"</PHON>
         <TRANSL xml:lang="en">“What sort of woman is that with no hole in her private parts?”</TRANSL>
@@ -1410,7 +1410,7 @@
         </W>
         <W id="072S14W11">
             <FORM kindOf="original">buang?"</FORM>
-            <PHON kindOf="original">buaŋ?"</PHON>
+            <PHON kindOf="original">buaŋʔ"</PHON>
             <FORM kindOf="standard">buang?"</FORM>
             <PHON kindOf="standard">buaŋ?"</PHON>
             <M id="072S14W11M0">
@@ -3532,7 +3532,7 @@
     </S>
     <S id="072S33">
         <FORM kindOf="original">"aku maitutsu anga sa niaken?</FORM>
-        <PHON kindOf="original">"aku maituʦu aŋa sa niakən?</PHON>
+        <PHON kindOf="original">"aku maituʦu aŋa sa niakənʔ</PHON>
         <FORM kindOf="standard">"aku maitucu anga sa niaken?</FORM>
         <PHON kindOf="standard">"aku maituʦu aŋa sa niakən?</PHON>
         <TRANSL xml:lang="en">“Why is it like this?</TRANSL>
@@ -3611,7 +3611,7 @@
         </W>
         <W id="072S33W5">
             <FORM kindOf="original">niaken?</FORM>
-            <PHON kindOf="original">niakən?</PHON>
+            <PHON kindOf="original">niakənʔ</PHON>
             <FORM kindOf="standard">niaken?</FORM>
             <PHON kindOf="standard">niakən?</PHON>
             <M id="072S33W5M0">
@@ -3732,7 +3732,7 @@
     </S>
     <S id="072S36">
         <FORM kindOf="original">"makuda sun, Muakai?</FORM>
-        <PHON kindOf="original">"makuda sun, muakai?</PHON>
+        <PHON kindOf="original">"makuda sun, muakaiʔ</PHON>
         <FORM kindOf="standard">"makuda sun, Muakai?</FORM>
         <PHON kindOf="standard">"makuda sun, muakai?</PHON>
         <TRANSL xml:lang="en">“What’s up with you, Muakai?</TRANSL>
@@ -3771,7 +3771,7 @@
         </W>
         <W id="072S36W3">
             <FORM kindOf="original">Muakai?</FORM>
-            <PHON kindOf="original">muakai?</PHON>
+            <PHON kindOf="original">muakaiʔ</PHON>
             <FORM kindOf="standard">Muakai?</FORM>
             <PHON kindOf="standard">muakai?</PHON>
             <M id="072S36W3M0">
@@ -3785,7 +3785,7 @@
     </S>
     <S id="072S37">
         <FORM kindOf="original">aku sun a namaitazua?"</FORM>
-        <PHON kindOf="original">aku sun a namaitazua?"</PHON>
+        <PHON kindOf="original">aku sun a namaitazuaʔ"</PHON>
         <FORM kindOf="standard">aku sun a namaitazua?"</FORM>
         <PHON kindOf="standard">aku sun a namaitazua?"</PHON>
         <TRANSL xml:lang="en">Why are you behaving like that?”</TRANSL>
@@ -3830,7 +3830,7 @@
         </W>
         <W id="072S37W4">
             <FORM kindOf="original">namaitazua?"</FORM>
-            <PHON kindOf="original">namaitazua?"</PHON>
+            <PHON kindOf="original">namaitazuaʔ"</PHON>
             <FORM kindOf="standard">namaitazua?"</FORM>
             <PHON kindOf="standard">namaitazua?"</PHON>
             <M id="072S37W4M0">
@@ -4856,22 +4856,23 @@
         </W>
     </S>
     <S id="072S45">
-        <FORM kindOf="original"/>
-        <PHON kindOf="original"/>
-        <FORM kindOf="standard"/>
-        <PHON kindOf="standard"/>
-        <TRANSL xml:lang="en">amin</TRANSL>
+        <FORM kindOf="original">amin.</FORM>
+        <PHON kindOf="original">amin.</PHON>
+        <FORM kindOf="standard">amin.</FORM>
+        <PHON kindOf="standard">amin.</PHON>
+        <TRANSL xml:lang="en">The end.</TRANSL>
         <W id="072S45W1">
-            <FORM kindOf="original"/>
-            <PHON kindOf="original"/>
-            <FORM kindOf="standard"/>
-            <PHON kindOf="standard"/>
+            <FORM kindOf="original">amin.</FORM>
+            <PHON kindOf="original">amin.</PHON>
+            <FORM kindOf="standard">amin.</FORM>
+            <PHON kindOf="standard">amin.</PHON>
+            <TRANSL xml:lang="en">no.more</TRANSL>
             <M id="072S45W1M0">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
-                <TRANSL/>
+                <FORM kindOf="original">amin</FORM>
+                <PHON kindOf="original">amin</PHON>
+                <FORM kindOf="standard">amin</FORM>
+                <PHON kindOf="standard">amin</PHON>
+                <TRANSL xml:lang="en">no.more</TRANSL>
             </M>
         </W>
     </S>

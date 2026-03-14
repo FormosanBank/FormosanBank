@@ -18,9 +18,28 @@ story 095, sentence 008<br>
 story 096, sentence 049<br>
 story 097, sentence 022<br>
 
-5. The QC scripts `clean_xml.py` and `standardize.py` were run, as per usual procedure. This mostly standardizes punctuation.
+5. The QC script `clean_xml.py` was run, as per usual procedure. This mostly standardizes punctuation.
 
-6. Because the original used a slightly different orthography than the modern orthography, the local script `convert.py` was used to convert the orthography to the standard. 
+6. Handle orthography.
+
+The Ferrell script was detected. Standardize with:
+
+```bash
+    python ../FormosanBank/QC/utilities/standardize.py --corpora_path Final_XML --tsv_path ../FormosanBank/Orthographies/ConversionTables/Paiwan_Ferrell_113.tsv
+```
+
+Then add IPA:
+
+```bash
+    python ../FormosanBank/QC/utilities/add_phonology.py --corpora_path Final_XML --orthography Ferrell
+```
+7. **Confirm glossing worked**
+
+For now the glossing isn't standardized across corpora. But the following will at least check to make sure the glosses exist everywhere they are supposed to:
+
+```bash
+    python ../FormosanBank/QC/validation/validate_glosses.py Final_XML --check_morpho
+```
 
 ### Citation
 
