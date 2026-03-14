@@ -6,66 +6,25 @@ Using the provided script provide a number of advantages. First off, due to hugg
 
 ### Downloading Audio Files via Script
 
-A dedicated Python script is available to facilitate downloading the audio files based on corpus or language. The script, `retrieve_audio.py`, is located in the FormosanBank GitHub repository at:
-
-[https://github.com/FormosanBank/FormosanBank/blob/main/QC/utilities/retrieve\_audio.py](https://github.com/FormosanBank/FormosanBank/blob/main/QC/utilities/retrieve_audio.py)
+Dedicated Bash script is available to facilitate downloading the audio files based on corpus or language. Each individual corpus that has associated data on HuggingFace should have a `download_audio_data.sh` script in its root directory. There is also a Bash script `run_audio_downloads.sh` in the root directory of FormosanBank that will find and run all the individual download scripts.
 
 #### Running the Script
 
-The script allows you to download audio files in two ways:
-
-1. **By Corpus**: Downloads all audio files related to a specific corpus.&#x20;
-2. **By Language**: Downloads all audio files for a specific language across corpora.
-
 **1. Downloading by Corpus**
 
-To download audio files based on a specific corpus, use the following command:
+To download audio files based on a specific corpus, `cd` to the root directory of that corpus and use the following command:
 
 ```bash
-python QC/utilities/retrieve_audio.py by_corpus --XML_Path <path_to_XML_directory> --corpus <corpus_name> --languages <language_list>
+./download_audio_data.sh
 ```
 
-**Required Arguments:**
+**2. Downloading all audio**
 
-* `--XML_Path`: Path to the directory containing the XML files associated with the corpus. Currently, it’s assumed that if you organize by\_corpus, you have the XML files of the desired corpus downloaded.
-* `--corpus`: Name of the corpus (supported options at the moment are `ILRDF_Dicts`, `NTU_Paiwan_ASR`, `ePark`, `Whitehorn`).
-* `--languages`: A list of languages to download for the specified corpus (or use `All` to download all available languages for that corpus; available languages per corpus can be found inside the script).
-
-**Example:**
+To download all audio for all corpora that have them, `cd` to the root directory of FormosanBank and use the following command:
 
 ```bash
-python QC/utilities/retrieve_audio.py by_corpus --XML_Path ../Whitehorn_Collection/Final_XML --corpus Whitehorn --languages All
+./run_audio_downloads.sh
 ```
-
-**2. Downloading by Language**
-
-To download audio files based on a specific language across multiple corpora, use:
-
-```bash
-python QC/utilities/retrieve_audio.py by_language --output_dir <output_directory> --languages <language_list>
-```
-
-**Required Arguments:**
-
-* `--output_dir`: The directory where the downloaded audio files will be saved.
-* `--languages`: The list of languages to download. Can be set to All.
-
-**Example:**
-
-```bash
-python QC/utilities/retrieve_audio.py by_language --output_dir ./downloaded_audio --languages Amis
-```
-
-### Handling Download Interruptions
-
-Due to the large number of files, the script may occasionally stop due to read-limit timeouts. However, it is designed to retrying until all the desired audio data is downloaded. If an interruption occurs to the script itself before it finishes running for any reason, simply re-run the command, and it will continue from the last completed point as huggingFace keeps track of which files were downloaded already. However, if you rerung the script after it finished running without interruptions, it will start the download from the beginning.
-
-### Hugging Face Cache Considerations
-
-* Files are first downloaded to the Hugging Face cache folder which is located at (`~/.cache/huggingface/hub`) on MacOS.
-* The actual audio files are stored in the `blobs` directory within the cache, with filenames based on their SHA256 hash values.
-* Once the script completes, it extracts and renames the downloaded files according to the symlink information in the snapshot directory.
-* If a download is interrupted and not restarted, cached files may take up space—so periodically check and clear unnecessary cache data.
 
 ### Dealing with Large Corpora
 
@@ -74,3 +33,7 @@ Since Hugging Face imposes a directory limit of 10,000 files, some corpora (e.g.
 ***
 
 By following these steps, you can efficiently download the necessary FormosanBank audio files for research and revitalization purposes.
+
+## Creating New Corpora
+
+If you create a new corpus that has audio on HuggingFace, you need to create a `download_audio_data.sh` script. In theory, this could work any way you want, but for consistency, it is best to use `git lfs` to download from a HuggingFace dataset within the FormosanBank organization. If you need multiple datasets (because the total amount of data is too much), it is recommended to give each one a prefix so that you can then automatically search for and download all datasets with that prefix. For an example, see `Corpora/ePark/download_audio_data.sh`.

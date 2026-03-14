@@ -33,18 +33,6 @@
 
 ***
 
-### **Significance**
-
-1. **Language Preservation**
-   * The corpus supports the documentation and revitalization of endangered indigenous languages, ensuring they remain a living cultural asset.
-2. **Accessibility**
-   * The online platform makes these resources available to a global audience, transcending geographical boundaries.
-3. **Education and Research**
-   * With rich examples and structured content, the ePark platform is invaluable for both language learners and researchers.
-   * Having the same content translated across the different languages and across different dialects of the same language is extremely valuable in learning about and further studying the Formosan languages, which makes the corpus an integral part of FormosanBank.
-
-***
-
 ### **Access Details**
 
 * Visit the ePark corpus online platform at [https://web.klokah.tw/](https://web.klokah.tw/)
@@ -60,11 +48,9 @@ The ePark corpus was developed through collaboration between ILRDF, educators, l
 
 ### **Corpus Notes**
 
-This section will be used to describe any notes regarding the corpus (e.g. explaining the presence of characters that aren't part of the standard orthography)
+The corpus appears to use the standard orthography ("Ortho113" in FormosanBank nomenclature), with some exceptions:
 
-* In the Amis corpus of ePark, the letter b occurs a number of times, even though it isn't part of the official orthography. Specifically, there are only 4 sentences with occurrences of the letter b, and the b's occur in two words: “Coylienboy” and Coy-lien-boy (which seems to be broken down version of the first word). Both of them are quoted, so this isn't an indication of an issue, orthography-wise, with the corpus.
-* Similar to b, there are 13 occurances in the Amis corpus of the letter z, even though it's not part of the orthography. all of the occurrences are happening in the two words Sakizaya and E-ziday, which seem to be quoted as well.
-* In the southern Amis dialect specifically, there are around \~3000 sentences/words with v's in them. That's the only dialect with the letter v among all the Amis dialect, and it's likely a letter that's used only in this dialect.
+* Ortho113 specifies that only the Nanshi dialect uses `u`, while the other dialects use `o`. However, there are a fair number of `o`s and `u`s throughout the dialect, irrespective of dialect. The `standard` tier normalizes these to match the standard orthography. For the IPA transcriptions of the `original` tier, we recognize either `o` or `u` as referring to the same phoneme. .
 
 ***
 
