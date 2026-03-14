@@ -10,8 +10,8 @@ from lxml import etree
 def verify_audio_files():
     """Check all XML files and verify that referenced audio files exist."""
     
-    xml_root = Path("Final_XML")
-    audio_root = Path("Final_audio")
+    xml_root = Path("XML")
+    audio_root = Path("Audio")
     
     missing_files = []
     total_audio_elements = 0

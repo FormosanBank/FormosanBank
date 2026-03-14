@@ -6,11 +6,22 @@ Identical to Ortho113 except that all dialects can use either `o` or `u` to refe
 
 # Ferrell
 
-Does not have a glottal stop `'`.
-
 ts	-> c
+
 ḍ ->	dr
+
 ɫ ->	lj
+
+? -> '
+
+Note about glottal stops, from the text: Phoneme q is manifested in
+some dialects as a glottal stop, and in others as a backed-k [k] and in texts 095-098, where
+some forms are found with the [?] glottal stop phoneme in the text, this symbol is replaced
+in the glosses with k, because that is the phoneme that occurs in these same morphemes in
+all other locations in the texts. An exception to this is the borrowed form ?aming, which
+always occurs with the actual phonetic glottal stop, and so it is glossed as qaming. The
+digraph ng represents the velar nasal [n], is a lateral affricate, r is a trilled approximate,
+and d is a retroflexed alveolar plosive.
 
 # Church
 

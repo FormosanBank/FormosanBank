@@ -85,6 +85,14 @@ Clone the repository and install dependencies.
 git clone <repository-url>
 cd FormosanBank
 pip install -r requirements.txt
+./run_audio_downloads.sh
+```
+
+Note that `run_audio_downloads.sh` depends on having git, git-lfs, jq, and hf (the huggingface cli) installed. On a Mac, use:
+
+```bash
+brew install git git-lfs jq
+pip install huggingface_hub[cli]  # This installs the 'hf' command
 ```
 
 ---

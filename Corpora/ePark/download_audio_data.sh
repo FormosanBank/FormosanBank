@@ -23,6 +23,13 @@ if ! command -v hf &> /dev/null; then
     exit 1
 fi
 
+# Check if jq is installed (for JSON parsing)
+if ! command -v jq &> /dev/null; then
+    echo "❌ jq is not installed. Please install it first:"
+    echo "   brew install jq"
+    exit 1
+fi
+
 # Ensure Git LFS is properly installed and configured
 echo "🔧 Setting up Git LFS..."
 if ! command -v git-lfs &> /dev/null && ! git lfs version &> /dev/null; then
@@ -38,12 +45,13 @@ fi
 
 # Get list of all FormosanBank datasets and filter for ePark ones
 echo "Fetching dataset list from FormosanBank organization..."
-datasets=$(hf api list-datasets FormosanBank 2>/dev/null | grep -E '"id":\s*"FormosanBank/ePark' | sed 's/.*"FormosanBank\/\([^"]*\)".*/\1/' || echo "")
+datasets=$(hf datasets list --author FormosanBank --limit 100 --format json 2>/dev/null | jq -r '.[] | select(.id | startswith("FormosanBank/ePark_")) | .id | sub("FormosanBank/"; "")')
 
 if [[ -z "$datasets" ]]; then
     echo "❌ No ePark datasets found or unable to fetch dataset list."
     echo "💡 Make sure you're logged in: hf auth login"
     echo "💡 And that the FormosanBank organization exists and has public datasets"
+    echo "💡 Also check if jq is installed: brew install jq"
     exit 1
 fi
 
