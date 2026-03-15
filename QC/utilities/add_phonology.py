@@ -162,11 +162,14 @@ def main(args):
                             continue
                         target_column = dialect
                     else:
-                        # No specific dialect, check for IPA column for default encoding
-                        if 'IPA' not in available_columns:
-                            print(f"Error: 'IPA' column not found in TSV for default encoding in {language}: {available_columns}")
+                        # No specific dialect: prefer 'IPA', fall back to 'default' column
+                        if 'IPA' in available_columns:
+                            target_column = 'IPA'
+                        elif 'default' in available_columns:
+                            target_column = 'default'
+                        else:
+                            print(f"Error: Neither 'IPA' nor 'default' column found in TSV for default encoding in {language}: {available_columns}")
                             continue
-                        target_column = 'IPA'
                     
                     # Create array of pairs from 'letter' column and target column
                     phonology_mappings = []
@@ -176,8 +179,8 @@ def main(args):
                         reader = csv.DictReader(f, delimiter='\t')
                         for row in reader:
                             if 'letter' in row and target_column in row:
-                                letter = row['letter'].strip()
-                                target_value = row[target_column].strip()
+                                letter = (row['letter'] or '').strip()
+                                target_value = (row[target_column] or '').strip()
                                 if letter and target_value != 'NA':  # Include empty values but exclude explicit 'NA'
                                     phonology_mappings.append((letter, target_value))
                                     conversion_dict[letter] = target_value
@@ -255,8 +258,10 @@ def main(args):
                             else:
                                 if 'IPA' in custom_available_columns:
                                     custom_target_column = 'IPA'
+                                elif 'default' in custom_available_columns:
+                                    custom_target_column = 'default'
                                 else:
-                                    print(f"Warning: No IPA column found in custom orthography, skipping original forms")
+                                    print(f"Warning: No IPA or default column found in custom orthography, skipping original forms")
                                     custom_target_column = None
                             
                             if custom_target_column:
@@ -268,8 +273,8 @@ def main(args):
                                     reader = csv.DictReader(f, delimiter='\t')
                                     for row in reader:
                                         if 'letter' in row and custom_target_column in row:
-                                            letter = row['letter'].strip()
-                                            target_value = row[custom_target_column].strip()
+                                            letter = (row['letter'] or '').strip()
+                                            target_value = (row[custom_target_column] or '').strip()
                                             if letter and target_value != 'NA':  # Include empty values but exclude explicit 'NA'
                                                 custom_phonology_mappings.append((letter, target_value))
                                                 custom_conversion_dict[letter] = target_value
