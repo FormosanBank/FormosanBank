@@ -1,4 +1,4 @@
-<?xml version="1.0" ?>
+<?xml version='1.0' encoding='utf-8'?>
 <TEXT id="PaiwanCh2_061_MUAKAKAI" xml:lang="pwn" copyright="public domain" citation="Early, R. J., &amp; Whitehorn, J. (2003). One hundred Paiwan texts. Pacific Linguistics, Research School of Pacific and Asian Studies, The Australian National University." BibTeX_citation="@book{100paiwantexts, author = {Robert Early and John Whitehorn}, title = {One Hundred Paiwan Texts}, year = {2003}, publisher = {Pacific Linguistics, Research School of Pacific and Asian Studies, The Australian National University}}" source="Muakakai (Kaviangan village, p.269)" dialect="Central">
     <S id="061S1">
         <FORM kindOf="original">izua aya ta maretsekeɫ ti Tjukutjuku kati Puɫaɫuɫaɫuyan; sa puaɫak tjai Muakakai tu nguanguaq aravats.</FORM>
@@ -901,9 +901,9 @@
     </S>
     <S id="061S9">
         <FORM kindOf="original">saka "aku matsay? su kinuda?" aya kivadaq a matjaɫaɫak.</FORM>
-        <PHON kindOf="original">saka "aku maʦajʔ su kinudaʔ" aja kivadaq a macaʎaʎak.</PHON>
-        <FORM kindOf="standard">saka "aku macay? su kinuda?" aya kivadaq a matjaljaljak.</FORM>
-        <PHON kindOf="standard">saka "aku maʦaj? su kinuda?" aja kivadaq a maʦaʎaʎak.</PHON>
+        <PHON kindOf="original">saka "aku maʦajʔ su kinuda" aja kivadaq a macaʎaʎak.</PHON>
+        <FORM kindOf="standard">saka "aku macay' su kinuda?" aya kivadaq a matjaljaljak.</FORM>
+        <PHON kindOf="standard">saka "aku maʦajʔ su kinuda" aja kivadaq a maʦaʎaʎak.</PHON>
         <TRANSL xml:lang="en">“Why did he die? What did you do?” her parents asked.</TRANSL>
         <W id="061S9W1">
             <FORM kindOf="original">saka</FORM>
@@ -940,9 +940,9 @@
         </W>
         <W id="061S9W3">
             <FORM kindOf="original">matsay?</FORM>
-            <PHON kindOf="original">maʦajʔ</PHON>
+            <PHON kindOf="original">maʦaj</PHON>
             <FORM kindOf="standard">macay?</FORM>
-            <PHON kindOf="standard">maʦaj?</PHON>
+            <PHON kindOf="standard">maʦaj</PHON>
             <M id="061S9W3M0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
@@ -973,9 +973,9 @@
         </W>
         <W id="061S9W5">
             <FORM kindOf="original">kinuda?"</FORM>
-            <PHON kindOf="original">kinudaʔ"</PHON>
+            <PHON kindOf="original">kinuda"</PHON>
             <FORM kindOf="standard">kinuda?"</FORM>
-            <PHON kindOf="standard">kinuda?"</PHON>
+            <PHON kindOf="standard">kinuda"</PHON>
             <M id="061S9W5M0">
                 <FORM kindOf="original">in=kuda</FORM>
                 <PHON kindOf="original">in=kuda</PHON>
@@ -2353,8 +2353,8 @@
     <S id="061S18">
         <FORM kindOf="original">aki anema i taladj? sadjelung aravats."</FORM>
         <PHON kindOf="original">aki anəma i taɭaɉʔ saɉəɭuŋ aravaʦ."</PHON>
-        <FORM kindOf="standard">aki anema i taladj? sadjelung aravac."</FORM>
-        <PHON kindOf="standard">aki anəma i taɭaɉ? saɉəɭuŋ aravaʦ."</PHON>
+        <FORM kindOf="standard">aki anema i taladj' sadjelung aravac."</FORM>
+        <PHON kindOf="standard">aki anəma i taɭaɉʔ saɉəɭuŋ aravaʦ."</PHON>
         <TRANSL xml:lang="en">What can be inside it? It’s very heavy.”</TRANSL>
         <W id="061S18W1">
             <FORM kindOf="original">aki</FORM>
@@ -2404,9 +2404,9 @@
         </W>
         <W id="061S18W4">
             <FORM kindOf="original">taladj?</FORM>
-            <PHON kindOf="original">taɭaɉʔ</PHON>
+            <PHON kindOf="original">taɭaɉ</PHON>
             <FORM kindOf="standard">taladj?</FORM>
-            <PHON kindOf="standard">taɭaɉ?</PHON>
+            <PHON kindOf="standard">taɭaɉ</PHON>
             <M id="061S18W4M0">
                 <FORM kindOf="original">taladj</FORM>
                 <PHON kindOf="original">taɭaɉ</PHON>

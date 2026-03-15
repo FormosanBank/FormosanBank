@@ -1,1439 +1,2061 @@
 <?xml version="1.0" ?>
-<TEXT id="PaiwanCh2_095_PRAYER" xml:lang="pwn" copyright="public domain" citation="Early, R. J., &amp; Whitehorn, J. (2003). One hundred Paiwan texts. Pacific Linguistics, Research School of Pacific and Asian Studies, The Australian National University." BibTeX_citation="@book{100paiwantexts, author = {Robert Early and John Whitehorn}, title = {One Hundred Paiwan Texts}, year = {2003}, publisher = {Pacific Linguistics, Research School of Pacific and Asian Studies, The Australian National University}}" source="Makazayazaya dialect">
+<TEXT id="PaiwanCh2_095_PRAYER" xml:lang="pwn" copyright="public domain" citation="Early, R. J., &amp; Whitehorn, J. (2003). One hundred Paiwan texts. Pacific Linguistics, Research School of Pacific and Asian Studies, The Australian National University." BibTeX_citation="@book{100paiwantexts, author = {Robert Early and John Whitehorn}, title = {One Hundred Paiwan Texts}, year = {2003}, publisher = {Pacific Linguistics, Research School of Pacific and Asian Studies, The Australian National University}}" source="Makazayazaya dialect" dialect="Central">
     <S id="095S1">
         <FORM kindOf="original">pai aitsu uri maleva men tjanusun a naqemati a Tsemas.</FORM>
+        <PHON kindOf="original">pai aiʦu uri maɭəva mən canusun a naqəmati a ʦəmas.</PHON>
         <FORM kindOf="standard">pai aicu uri maleva men tjanusun a naqemati a Cemas.</FORM>
+        <PHON kindOf="standard">pai aiʦu uri maɭəva mən ʦanusun a naqəmati a ʦəmas.</PHON>
         <TRANSL xml:lang="en">And now we will rejoice in you, creator God.</TRANSL>
         <W id="095S1W1">
             <FORM kindOf="original">pai</FORM>
+            <PHON kindOf="original">pai</PHON>
             <FORM kindOf="standard">pai</FORM>
+            <PHON kindOf="standard">pai</PHON>
             <M id="095S1W1M0">
                 <FORM kindOf="original">pai</FORM>
+                <PHON kindOf="original">pai</PHON>
                 <FORM kindOf="standard">pai</FORM>
+                <PHON kindOf="standard">pai</PHON>
                 <TRANSL>well</TRANSL>
             </M>
         </W>
         <W id="095S1W2">
             <FORM kindOf="original">aitsu</FORM>
+            <PHON kindOf="original">aiʦu</PHON>
             <FORM kindOf="standard">aicu</FORM>
+            <PHON kindOf="standard">aiʦu</PHON>
             <M id="095S1W2M0">
                 <FORM kindOf="original">aya</FORM>
+                <PHON kindOf="original">aja</PHON>
                 <FORM kindOf="standard">aya</FORM>
+                <PHON kindOf="standard">aja</PHON>
                 <TRANSL>be.thus</TRANSL>
             </M>
             <M id="095S1W2M1">
                 <FORM kindOf="original">i</FORM>
+                <PHON kindOf="original">i</PHON>
                 <FORM kindOf="standard">i</FORM>
+                <PHON kindOf="standard">i</PHON>
                 <TRANSL>loc</TRANSL>
             </M>
             <M id="095S1W2M2">
                 <FORM kindOf="original">tsu</FORM>
+                <PHON kindOf="original">ʦu</PHON>
                 <FORM kindOf="standard">cu</FORM>
+                <PHON kindOf="standard">ʦu</PHON>
                 <TRANSL>this</TRANSL>
             </M>
         </W>
         <W id="095S1W3">
             <FORM kindOf="original">uri</FORM>
+            <PHON kindOf="original">uri</PHON>
             <FORM kindOf="standard">uri</FORM>
+            <PHON kindOf="standard">uri</PHON>
             <M id="095S1W3M0">
                 <FORM kindOf="original">uri</FORM>
+                <PHON kindOf="original">uri</PHON>
                 <FORM kindOf="standard">uri</FORM>
+                <PHON kindOf="standard">uri</PHON>
                 <TRANSL>will</TRANSL>
             </M>
         </W>
         <W id="095S1W4">
             <FORM kindOf="original">maleva</FORM>
+            <PHON kindOf="original">maɭəva</PHON>
             <FORM kindOf="standard">maleva</FORM>
+            <PHON kindOf="standard">maɭəva</PHON>
             <M id="095S1W4M0">
                 <FORM kindOf="original">ma</FORM>
+                <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
+                <PHON kindOf="standard">ma</PHON>
                 <TRANSL>stat</TRANSL>
             </M>
             <M id="095S1W4M1">
                 <FORM kindOf="original">leva</FORM>
+                <PHON kindOf="original">ɭəva</PHON>
                 <FORM kindOf="standard">leva</FORM>
+                <PHON kindOf="standard">ɭəva</PHON>
                 <TRANSL>pleased</TRANSL>
             </M>
         </W>
         <W id="095S1W5">
             <FORM kindOf="original">men</FORM>
+            <PHON kindOf="original">mən</PHON>
             <FORM kindOf="standard">men</FORM>
+            <PHON kindOf="standard">mən</PHON>
             <M id="095S1W5M0">
                 <FORM kindOf="original">amen</FORM>
+                <PHON kindOf="original">amən</PHON>
                 <FORM kindOf="standard">amen</FORM>
+                <PHON kindOf="standard">amən</PHON>
                 <TRANSL>f.we(exc)</TRANSL>
             </M>
         </W>
         <W id="095S1W6">
             <FORM kindOf="original">tjanusun</FORM>
+            <PHON kindOf="original">canusun</PHON>
             <FORM kindOf="standard">tjanusun</FORM>
+            <PHON kindOf="standard">ʦanusun</PHON>
             <M id="095S1W6M0">
                 <FORM kindOf="original">tjanu</FORM>
+                <PHON kindOf="original">canu</PHON>
                 <FORM kindOf="standard">tjanu</FORM>
+                <PHON kindOf="standard">ʦanu</PHON>
                 <TRANSL>obl</TRANSL>
             </M>
             <M id="095S1W6M1">
                 <FORM kindOf="original">sun</FORM>
+                <PHON kindOf="original">sun</PHON>
                 <FORM kindOf="standard">sun</FORM>
+                <PHON kindOf="standard">sun</PHON>
                 <TRANSL>you(s)</TRANSL>
             </M>
         </W>
         <W id="095S1W7">
             <FORM kindOf="original">a</FORM>
+            <PHON kindOf="original">a</PHON>
             <FORM kindOf="standard">a</FORM>
+            <PHON kindOf="standard">a</PHON>
             <M id="095S1W7M0">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
+                <PHON kindOf="standard">a</PHON>
                 <TRANSL>c</TRANSL>
             </M>
         </W>
         <W id="095S1W8">
             <FORM kindOf="original">naqemati</FORM>
+            <PHON kindOf="original">naqəmati</PHON>
             <FORM kindOf="standard">naqemati</FORM>
+            <PHON kindOf="standard">naqəmati</PHON>
             <M id="095S1W8M0">
                 <FORM kindOf="original">na</FORM>
+                <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
+                <PHON kindOf="standard">na</PHON>
                 <TRANSL>past</TRANSL>
             </M>
             <M id="095S1W8M1">
                 <FORM kindOf="original">em=qati</FORM>
+                <PHON kindOf="original">əm=qati</PHON>
                 <FORM kindOf="standard">em=qati</FORM>
+                <PHON kindOf="standard">əm=qati</PHON>
                 <TRANSL>af=create</TRANSL>
             </M>
         </W>
         <W id="095S1W9">
             <FORM kindOf="original">a</FORM>
+            <PHON kindOf="original">a</PHON>
             <FORM kindOf="standard">a</FORM>
+            <PHON kindOf="standard">a</PHON>
             <M id="095S1W9M0">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
+                <PHON kindOf="standard">a</PHON>
                 <TRANSL>c</TRANSL>
             </M>
         </W>
         <W id="095S1W10">
             <FORM kindOf="original">Tsemas.</FORM>
+            <PHON kindOf="original">ʦəmas.</PHON>
             <FORM kindOf="standard">Cemas.</FORM>
+            <PHON kindOf="standard">ʦəmas.</PHON>
             <M id="095S1W10M0">
                 <FORM kindOf="original">Tsemas</FORM>
+                <PHON kindOf="original">ʦəmas</PHON>
                 <FORM kindOf="standard">Cemas</FORM>
+                <PHON kindOf="standard">ʦəmas</PHON>
                 <TRANSL>God</TRANSL>
             </M>
         </W>
     </S>
     <S id="095S2">
         <FORM kindOf="original">pai aitsu a i katsauan tisun a Tsemas a naqemati, mavan a muri nia sikaleva.</FORM>
+        <PHON kindOf="original">pai aiʦu a i kaʦauan tisun a ʦəmas a naqəmati, mavan a muri nia sikaɭəva.</PHON>
         <FORM kindOf="standard">pai aicu a i kacauan tisun a Cemas a naqemati, mavan a muri nia sikaleva.</FORM>
+        <PHON kindOf="standard">pai aiʦu a i kaʦauan tisun a ʦəmas a naqəmati, mavan a muri nia sikaɭəva.</PHON>
         <TRANSL xml:lang="en">It is you, God, who created this world, and for that we rejoice in you.</TRANSL>
         <W id="095S2W1">
             <FORM kindOf="original">pai</FORM>
+            <PHON kindOf="original">pai</PHON>
             <FORM kindOf="standard">pai</FORM>
+            <PHON kindOf="standard">pai</PHON>
             <M id="095S2W1M0">
                 <FORM kindOf="original">pai</FORM>
+                <PHON kindOf="original">pai</PHON>
                 <FORM kindOf="standard">pai</FORM>
+                <PHON kindOf="standard">pai</PHON>
                 <TRANSL>well</TRANSL>
             </M>
         </W>
         <W id="095S2W2">
             <FORM kindOf="original">aitsu</FORM>
+            <PHON kindOf="original">aiʦu</PHON>
             <FORM kindOf="standard">aicu</FORM>
+            <PHON kindOf="standard">aiʦu</PHON>
             <M id="095S2W2M0">
                 <FORM kindOf="original">aya</FORM>
+                <PHON kindOf="original">aja</PHON>
                 <FORM kindOf="standard">aya</FORM>
+                <PHON kindOf="standard">aja</PHON>
                 <TRANSL>be.thus</TRANSL>
             </M>
             <M id="095S2W2M1">
                 <FORM kindOf="original">i</FORM>
+                <PHON kindOf="original">i</PHON>
                 <FORM kindOf="standard">i</FORM>
+                <PHON kindOf="standard">i</PHON>
                 <TRANSL>loc</TRANSL>
             </M>
             <M id="095S2W2M2">
                 <FORM kindOf="original">tsu</FORM>
+                <PHON kindOf="original">ʦu</PHON>
                 <FORM kindOf="standard">cu</FORM>
+                <PHON kindOf="standard">ʦu</PHON>
                 <TRANSL>this</TRANSL>
             </M>
         </W>
         <W id="095S2W3">
             <FORM kindOf="original">a</FORM>
+            <PHON kindOf="original">a</PHON>
             <FORM kindOf="standard">a</FORM>
+            <PHON kindOf="standard">a</PHON>
             <M id="095S2W3M0">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
+                <PHON kindOf="standard">a</PHON>
                 <TRANSL>c</TRANSL>
             </M>
         </W>
         <W id="095S2W4">
             <FORM kindOf="original">i</FORM>
+            <PHON kindOf="original">i</PHON>
             <FORM kindOf="standard">i</FORM>
+            <PHON kindOf="standard">i</PHON>
             <M id="095S2W4M0">
                 <FORM kindOf="original">i</FORM>
+                <PHON kindOf="original">i</PHON>
                 <FORM kindOf="standard">i</FORM>
+                <PHON kindOf="standard">i</PHON>
                 <TRANSL>loc</TRANSL>
             </M>
         </W>
         <W id="095S2W5">
             <FORM kindOf="original">katsauan</FORM>
+            <PHON kindOf="original">kaʦauan</PHON>
             <FORM kindOf="standard">kacauan</FORM>
+            <PHON kindOf="standard">kaʦauan</PHON>
             <M id="095S2W5M0">
                 <FORM kindOf="original">ka</FORM>
+                <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
+                <PHON kindOf="standard">ka</PHON>
                 <TRANSL>main</TRANSL>
             </M>
             <M id="095S2W5M1">
                 <FORM kindOf="original">tsau</FORM>
+                <PHON kindOf="original">ʦau</PHON>
                 <FORM kindOf="standard">cau</FORM>
+                <PHON kindOf="standard">ʦau</PHON>
                 <TRANSL>being</TRANSL>
             </M>
             <M id="095S2W5M2">
                 <FORM kindOf="original">an</FORM>
+                <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
+                <PHON kindOf="standard">an</PHON>
                 <TRANSL>nom</TRANSL>
             </M>
         </W>
         <W id="095S2W6">
             <FORM kindOf="original">tisun</FORM>
+            <PHON kindOf="original">tisun</PHON>
             <FORM kindOf="standard">tisun</FORM>
+            <PHON kindOf="standard">tisun</PHON>
             <M id="095S2W6M0">
                 <FORM kindOf="original">ti</FORM>
+                <PHON kindOf="original">ti</PHON>
                 <FORM kindOf="standard">ti</FORM>
+                <PHON kindOf="standard">ti</PHON>
                 <TRANSL>f</TRANSL>
             </M>
             <M id="095S2W6M1">
                 <FORM kindOf="original">sun</FORM>
+                <PHON kindOf="original">sun</PHON>
                 <FORM kindOf="standard">sun</FORM>
+                <PHON kindOf="standard">sun</PHON>
                 <TRANSL>you(s)</TRANSL>
             </M>
         </W>
         <W id="095S2W7">
             <FORM kindOf="original">a</FORM>
+            <PHON kindOf="original">a</PHON>
             <FORM kindOf="standard">a</FORM>
+            <PHON kindOf="standard">a</PHON>
             <M id="095S2W7M0">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
+                <PHON kindOf="standard">a</PHON>
                 <TRANSL>c</TRANSL>
             </M>
         </W>
         <W id="095S2W8">
             <FORM kindOf="original">Tsemas</FORM>
+            <PHON kindOf="original">ʦəmas</PHON>
             <FORM kindOf="standard">Cemas</FORM>
+            <PHON kindOf="standard">ʦəmas</PHON>
             <M id="095S2W8M0">
                 <FORM kindOf="original">Tsemas</FORM>
+                <PHON kindOf="original">ʦəmas</PHON>
                 <FORM kindOf="standard">Cemas</FORM>
+                <PHON kindOf="standard">ʦəmas</PHON>
                 <TRANSL>God</TRANSL>
             </M>
         </W>
         <W id="095S2W9">
             <FORM kindOf="original">a</FORM>
+            <PHON kindOf="original">a</PHON>
             <FORM kindOf="standard">a</FORM>
+            <PHON kindOf="standard">a</PHON>
             <M id="095S2W9M0">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
+                <PHON kindOf="standard">a</PHON>
                 <TRANSL>c</TRANSL>
             </M>
         </W>
         <W id="095S2W10">
             <FORM kindOf="original">naqemati,</FORM>
+            <PHON kindOf="original">naqəmati,</PHON>
             <FORM kindOf="standard">naqemati,</FORM>
+            <PHON kindOf="standard">naqəmati,</PHON>
             <M id="095S2W10M0">
                 <FORM kindOf="original">na</FORM>
+                <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
+                <PHON kindOf="standard">na</PHON>
                 <TRANSL>past</TRANSL>
             </M>
             <M id="095S2W10M1">
                 <FORM kindOf="original">em=qati</FORM>
+                <PHON kindOf="original">əm=qati</PHON>
                 <FORM kindOf="standard">em=qati</FORM>
+                <PHON kindOf="standard">əm=qati</PHON>
                 <TRANSL>af=create</TRANSL>
             </M>
         </W>
         <W id="095S2W11">
             <FORM kindOf="original">mavan</FORM>
+            <PHON kindOf="original">mavan</PHON>
             <FORM kindOf="standard">mavan</FORM>
+            <PHON kindOf="standard">mavan</PHON>
             <M id="095S2W11M0">
                 <FORM kindOf="original">ma</FORM>
+                <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
+                <PHON kindOf="standard">ma</PHON>
                 <TRANSL>stat</TRANSL>
             </M>
             <M id="095S2W11M1">
                 <FORM kindOf="original">avan</FORM>
+                <PHON kindOf="original">avan</PHON>
                 <FORM kindOf="standard">avan</FORM>
+                <PHON kindOf="standard">avan</PHON>
                 <TRANSL>exact</TRANSL>
             </M>
         </W>
         <W id="095S2W12">
             <FORM kindOf="original">a</FORM>
+            <PHON kindOf="original">a</PHON>
             <FORM kindOf="standard">a</FORM>
+            <PHON kindOf="standard">a</PHON>
             <M id="095S2W12M0">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
+                <PHON kindOf="standard">a</PHON>
                 <TRANSL>c</TRANSL>
             </M>
         </W>
         <W id="095S2W13">
             <FORM kindOf="original">muri</FORM>
+            <PHON kindOf="original">muri</PHON>
             <FORM kindOf="standard">muri</FORM>
+            <PHON kindOf="standard">muri</PHON>
             <M id="095S2W13M0">
                 <FORM kindOf="original">ma</FORM>
+                <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
+                <PHON kindOf="standard">ma</PHON>
                 <TRANSL>stat</TRANSL>
             </M>
             <M id="095S2W13M1">
                 <FORM kindOf="original">uri</FORM>
+                <PHON kindOf="original">uri</PHON>
                 <FORM kindOf="standard">uri</FORM>
+                <PHON kindOf="standard">uri</PHON>
                 <TRANSL>will</TRANSL>
             </M>
         </W>
         <W id="095S2W14">
             <FORM kindOf="original">nia</FORM>
+            <PHON kindOf="original">nia</PHON>
             <FORM kindOf="standard">nia</FORM>
+            <PHON kindOf="standard">nia</PHON>
             <M id="095S2W14M0">
                 <FORM kindOf="original">nia</FORM>
+                <PHON kindOf="original">nia</PHON>
                 <FORM kindOf="standard">nia</FORM>
+                <PHON kindOf="standard">nia</PHON>
                 <TRANSL>we(exc)</TRANSL>
             </M>
         </W>
         <W id="095S2W15">
             <FORM kindOf="original">sikaleva.</FORM>
+            <PHON kindOf="original">sikaɭəva.</PHON>
             <FORM kindOf="standard">sikaleva.</FORM>
+            <PHON kindOf="standard">sikaɭəva.</PHON>
             <M id="095S2W15M0">
                 <FORM kindOf="original">si</FORM>
+                <PHON kindOf="original">si</PHON>
                 <FORM kindOf="standard">si</FORM>
+                <PHON kindOf="standard">si</PHON>
                 <TRANSL>if</TRANSL>
             </M>
             <M id="095S2W15M1">
                 <FORM kindOf="original">ka</FORM>
+                <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
+                <PHON kindOf="standard">ka</PHON>
                 <TRANSL>?</TRANSL>
             </M>
             <M id="095S2W15M2">
                 <FORM kindOf="original">leva</FORM>
+                <PHON kindOf="original">ɭəva</PHON>
                 <FORM kindOf="standard">leva</FORM>
+                <PHON kindOf="standard">ɭəva</PHON>
                 <TRANSL>pleased</TRANSL>
             </M>
         </W>
     </S>
     <S id="095S3">
         <FORM kindOf="original">sa?a pai aitsu su pinasuɫivatjan amen a Tsemas, su kinizangan amen tusa nia pinatsalivat a qadaw; malevaleva men aravats.</FORM>
-        <FORM kindOf="standard">sa?a pai aicu su pinasuljivatjan amen a Cemas, su kinizangan amen tusa nia pinacalivat a qadaw; malevaleva men aravac.</FORM>
+        <PHON kindOf="original">saʔa pai aiʦu su pinasuʎivacan amən a ʦəmas, su kinizaŋan amən tusa nia pinaʦaɭivat a qadaw; maɭəvaɭəva mən aravaʦ.</PHON>
+        <FORM kindOf="standard">sa'a pai aicu su pinasuljivatjan amen a Cemas, su kinizangan amen tusa nia pinacalivat a qadaw; malevaleva men aravac.</FORM>
+        <PHON kindOf="standard">saʔa pai aiʦu su pinasuʎivaʦan amən a ʦəmas, su kinizaŋan amən tusa nia pinaʦaɭivat a qadaw; maɭəvaɭəva mən aravaʦ.</PHON>
         <TRANSL xml:lang="en">And now you, God, have given us peace, you have guarded us through the past days; we rejoice greatly in you.</TRANSL>
         <W id="095S3W1">
             <FORM kindOf="original">sa?a</FORM>
-            <FORM kindOf="standard">sa?a</FORM>
+            <PHON kindOf="original">saʔa</PHON>
+            <FORM kindOf="standard">sa'a</FORM>
+            <PHON kindOf="standard">saʔa</PHON>
             <M id="095S3W1M0">
                 <FORM kindOf="original">sa</FORM>
+                <PHON kindOf="original">sa</PHON>
                 <FORM kindOf="standard">sa</FORM>
+                <PHON kindOf="standard">sa</PHON>
                 <TRANSL>and</TRANSL>
             </M>
             <M id="095S3W1M1">
                 <FORM kindOf="original">ka</FORM>
+                <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
+                <PHON kindOf="standard">ka</PHON>
                 <TRANSL>after</TRANSL>
             </M>
         </W>
         <W id="095S3W2">
             <FORM kindOf="original">pai</FORM>
+            <PHON kindOf="original">pai</PHON>
             <FORM kindOf="standard">pai</FORM>
+            <PHON kindOf="standard">pai</PHON>
             <M id="095S3W2M0">
                 <FORM kindOf="original">pai</FORM>
+                <PHON kindOf="original">pai</PHON>
                 <FORM kindOf="standard">pai</FORM>
+                <PHON kindOf="standard">pai</PHON>
                 <TRANSL>well</TRANSL>
             </M>
         </W>
         <W id="095S3W3">
             <FORM kindOf="original">aitsu</FORM>
+            <PHON kindOf="original">aiʦu</PHON>
             <FORM kindOf="standard">aicu</FORM>
+            <PHON kindOf="standard">aiʦu</PHON>
             <M id="095S3W3M0">
                 <FORM kindOf="original">aya</FORM>
+                <PHON kindOf="original">aja</PHON>
                 <FORM kindOf="standard">aya</FORM>
+                <PHON kindOf="standard">aja</PHON>
                 <TRANSL>be.thus</TRANSL>
             </M>
             <M id="095S3W3M1">
                 <FORM kindOf="original">i</FORM>
+                <PHON kindOf="original">i</PHON>
                 <FORM kindOf="standard">i</FORM>
+                <PHON kindOf="standard">i</PHON>
                 <TRANSL>loc</TRANSL>
             </M>
             <M id="095S3W3M2">
                 <FORM kindOf="original">tsu</FORM>
+                <PHON kindOf="original">ʦu</PHON>
                 <FORM kindOf="standard">cu</FORM>
+                <PHON kindOf="standard">ʦu</PHON>
                 <TRANSL>this</TRANSL>
             </M>
         </W>
         <W id="095S3W4">
             <FORM kindOf="original">su</FORM>
+            <PHON kindOf="original">su</PHON>
             <FORM kindOf="standard">su</FORM>
+            <PHON kindOf="standard">su</PHON>
             <M id="095S3W4M0">
                 <FORM kindOf="original">su</FORM>
+                <PHON kindOf="original">su</PHON>
                 <FORM kindOf="standard">su</FORM>
+                <PHON kindOf="standard">su</PHON>
                 <TRANSL>you(s)</TRANSL>
             </M>
         </W>
         <W id="095S3W5">
             <FORM kindOf="original">pinasuɫivatjan</FORM>
+            <PHON kindOf="original">pinasuʎivacan</PHON>
             <FORM kindOf="standard">pinasuljivatjan</FORM>
+            <PHON kindOf="standard">pinasuʎivaʦan</PHON>
             <M id="095S3W5M0">
                 <FORM kindOf="original">in=pa</FORM>
+                <PHON kindOf="original">in=pa</PHON>
                 <FORM kindOf="standard">in=pa</FORM>
+                <PHON kindOf="standard">in=pa</PHON>
                 <TRANSL>perf=cause</TRANSL>
             </M>
             <M id="095S3W5M1">
                 <FORM kindOf="original">suɫivatj</FORM>
+                <PHON kindOf="original">suʎivac</PHON>
                 <FORM kindOf="standard">suljivatj</FORM>
+                <PHON kindOf="standard">suʎivaʦ</PHON>
                 <TRANSL>peace</TRANSL>
             </M>
             <M id="095S3W5M2">
                 <FORM kindOf="original">an</FORM>
+                <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
+                <PHON kindOf="standard">an</PHON>
                 <TRANSL>lf</TRANSL>
             </M>
         </W>
         <W id="095S3W6">
             <FORM kindOf="original">amen</FORM>
+            <PHON kindOf="original">amən</PHON>
             <FORM kindOf="standard">amen</FORM>
+            <PHON kindOf="standard">amən</PHON>
             <M id="095S3W6M0">
                 <FORM kindOf="original">amen</FORM>
+                <PHON kindOf="original">amən</PHON>
                 <FORM kindOf="standard">amen</FORM>
+                <PHON kindOf="standard">amən</PHON>
                 <TRANSL>f.we(exc)</TRANSL>
             </M>
         </W>
         <W id="095S3W7">
             <FORM kindOf="original">a</FORM>
+            <PHON kindOf="original">a</PHON>
             <FORM kindOf="standard">a</FORM>
+            <PHON kindOf="standard">a</PHON>
             <M id="095S3W7M0">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
+                <PHON kindOf="standard">a</PHON>
                 <TRANSL>c</TRANSL>
             </M>
         </W>
         <W id="095S3W8">
             <FORM kindOf="original">Tsemas,</FORM>
+            <PHON kindOf="original">ʦəmas,</PHON>
             <FORM kindOf="standard">Cemas,</FORM>
+            <PHON kindOf="standard">ʦəmas,</PHON>
             <M id="095S3W8M0">
                 <FORM kindOf="original">Tsemas</FORM>
+                <PHON kindOf="original">ʦəmas</PHON>
                 <FORM kindOf="standard">Cemas</FORM>
+                <PHON kindOf="standard">ʦəmas</PHON>
                 <TRANSL>God</TRANSL>
             </M>
         </W>
         <W id="095S3W9">
             <FORM kindOf="original">su</FORM>
+            <PHON kindOf="original">su</PHON>
             <FORM kindOf="standard">su</FORM>
+            <PHON kindOf="standard">su</PHON>
             <M id="095S3W9M0">
                 <FORM kindOf="original">su</FORM>
+                <PHON kindOf="original">su</PHON>
                 <FORM kindOf="standard">su</FORM>
+                <PHON kindOf="standard">su</PHON>
                 <TRANSL>you(s)</TRANSL>
             </M>
         </W>
         <W id="095S3W10">
             <FORM kindOf="original">kinizangan</FORM>
+            <PHON kindOf="original">kinizaŋan</PHON>
             <FORM kindOf="standard">kinizangan</FORM>
+            <PHON kindOf="standard">kinizaŋan</PHON>
             <M id="095S3W10M0">
                 <FORM kindOf="original">in=ki</FORM>
+                <PHON kindOf="original">in=ki</PHON>
                 <FORM kindOf="standard">in=ki</FORM>
+                <PHON kindOf="standard">in=ki</PHON>
                 <TRANSL>perf=do</TRANSL>
             </M>
             <M id="095S3W10M1">
                 <FORM kindOf="original">zang</FORM>
+                <PHON kindOf="original">zaŋ</PHON>
                 <FORM kindOf="standard">zang</FORM>
+                <PHON kindOf="standard">zaŋ</PHON>
                 <TRANSL>guard</TRANSL>
             </M>
             <M id="095S3W10M2">
                 <FORM kindOf="original">an</FORM>
+                <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
+                <PHON kindOf="standard">an</PHON>
                 <TRANSL>lf</TRANSL>
             </M>
         </W>
         <W id="095S3W11">
             <FORM kindOf="original">amen</FORM>
+            <PHON kindOf="original">amən</PHON>
             <FORM kindOf="standard">amen</FORM>
+            <PHON kindOf="standard">amən</PHON>
             <M id="095S3W11M0">
                 <FORM kindOf="original">amen</FORM>
+                <PHON kindOf="original">amən</PHON>
                 <FORM kindOf="standard">amen</FORM>
+                <PHON kindOf="standard">amən</PHON>
                 <TRANSL>f.we(exc)</TRANSL>
             </M>
         </W>
         <W id="095S3W12">
             <FORM kindOf="original">tusa</FORM>
+            <PHON kindOf="original">tusa</PHON>
             <FORM kindOf="standard">tusa</FORM>
+            <PHON kindOf="standard">tusa</PHON>
             <M id="095S3W12M0">
                 <FORM kindOf="original">tu</FORM>
+                <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
+                <PHON kindOf="standard">tu</PHON>
                 <TRANSL>obl</TRANSL>
             </M>
             <M id="095S3W12M1">
                 <FORM kindOf="original">tsa</FORM>
+                <PHON kindOf="original">ʦa</PHON>
                 <FORM kindOf="standard">ca</FORM>
+                <PHON kindOf="standard">ʦa</PHON>
                 <TRANSL>this</TRANSL>
             </M>
         </W>
         <W id="095S3W13">
             <FORM kindOf="original">nia</FORM>
+            <PHON kindOf="original">nia</PHON>
             <FORM kindOf="standard">nia</FORM>
+            <PHON kindOf="standard">nia</PHON>
             <M id="095S3W13M0">
                 <FORM kindOf="original">nia</FORM>
+                <PHON kindOf="original">nia</PHON>
                 <FORM kindOf="standard">nia</FORM>
+                <PHON kindOf="standard">nia</PHON>
                 <TRANSL>we(exc)</TRANSL>
             </M>
         </W>
         <W id="095S3W14">
             <FORM kindOf="original">pinatsalivat</FORM>
+            <PHON kindOf="original">pinaʦaɭivat</PHON>
             <FORM kindOf="standard">pinacalivat</FORM>
+            <PHON kindOf="standard">pinaʦaɭivat</PHON>
             <M id="095S3W14M0">
                 <FORM kindOf="original">in=pa</FORM>
+                <PHON kindOf="original">in=pa</PHON>
                 <FORM kindOf="standard">in=pa</FORM>
+                <PHON kindOf="standard">in=pa</PHON>
                 <TRANSL>perf=cause</TRANSL>
             </M>
             <M id="095S3W14M1">
                 <FORM kindOf="original">tsalivat</FORM>
+                <PHON kindOf="original">ʦaɭivat</PHON>
                 <FORM kindOf="standard">calivat</FORM>
+                <PHON kindOf="standard">ʦaɭivat</PHON>
                 <TRANSL>pass</TRANSL>
             </M>
         </W>
         <W id="095S3W15">
             <FORM kindOf="original">a</FORM>
+            <PHON kindOf="original">a</PHON>
             <FORM kindOf="standard">a</FORM>
+            <PHON kindOf="standard">a</PHON>
             <M id="095S3W15M0">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
+                <PHON kindOf="standard">a</PHON>
                 <TRANSL>c</TRANSL>
             </M>
         </W>
         <W id="095S3W16">
             <FORM kindOf="original">qadaw;</FORM>
+            <PHON kindOf="original">qadaw;</PHON>
             <FORM kindOf="standard">qadaw;</FORM>
+            <PHON kindOf="standard">qadaw;</PHON>
             <M id="095S3W16M0">
                 <FORM kindOf="original">qadaw</FORM>
+                <PHON kindOf="original">qadaw</PHON>
                 <FORM kindOf="standard">qadaw</FORM>
+                <PHON kindOf="standard">qadaw</PHON>
                 <TRANSL>sun</TRANSL>
             </M>
         </W>
         <W id="095S3W17">
             <FORM kindOf="original">malevaleva</FORM>
+            <PHON kindOf="original">maɭəvaɭəva</PHON>
             <FORM kindOf="standard">malevaleva</FORM>
+            <PHON kindOf="standard">maɭəvaɭəva</PHON>
             <M id="095S3W17M0">
                 <FORM kindOf="original">ma</FORM>
+                <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
+                <PHON kindOf="standard">ma</PHON>
                 <TRANSL>stat</TRANSL>
             </M>
             <M id="095S3W17M1">
                 <FORM kindOf="original">leva</FORM>
+                <PHON kindOf="original">ɭəva</PHON>
                 <FORM kindOf="standard">leva</FORM>
+                <PHON kindOf="standard">ɭəva</PHON>
                 <TRANSL>red</TRANSL>
             </M>
             <M id="095S3W17M2">
                 <FORM kindOf="original">leva</FORM>
+                <PHON kindOf="original">ɭəva</PHON>
                 <FORM kindOf="standard">leva</FORM>
+                <PHON kindOf="standard">ɭəva</PHON>
                 <TRANSL>pleased</TRANSL>
             </M>
         </W>
         <W id="095S3W18">
             <FORM kindOf="original">men</FORM>
+            <PHON kindOf="original">mən</PHON>
             <FORM kindOf="standard">men</FORM>
+            <PHON kindOf="standard">mən</PHON>
             <M id="095S3W18M0">
                 <FORM kindOf="original">amen</FORM>
+                <PHON kindOf="original">amən</PHON>
                 <FORM kindOf="standard">amen</FORM>
+                <PHON kindOf="standard">amən</PHON>
                 <TRANSL>f.we(exc)</TRANSL>
             </M>
         </W>
         <W id="095S3W19">
             <FORM kindOf="original">aravats.</FORM>
+            <PHON kindOf="original">aravaʦ.</PHON>
             <FORM kindOf="standard">aravac.</FORM>
+            <PHON kindOf="standard">aravaʦ.</PHON>
             <M id="095S3W19M0">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
+                <PHON kindOf="standard">a</PHON>
                 <TRANSL>c</TRANSL>
             </M>
             <M id="095S3W19M1">
                 <FORM kindOf="original">ravats</FORM>
+                <PHON kindOf="original">ravaʦ</PHON>
                 <FORM kindOf="standard">ravac</FORM>
+                <PHON kindOf="standard">ravaʦ</PHON>
                 <TRANSL>true</TRANSL>
             </M>
         </W>
     </S>
     <S id="095S4">
         <FORM kindOf="original">qau pai aitsu imazanga men i tjaiqayaw tjanusun a namaqepu a uri semenasenay a uri semupusupu tua su pazazekazekatj a Tsemas.</FORM>
+        <PHON kindOf="original">qau pai aiʦu imazaŋa mən i caiqajaw canusun a namaqəpu a uri səmənasənaj a uri səmupusupu tua su pazazəkazəkac a ʦəmas.</PHON>
         <FORM kindOf="standard">qau pai aicu imazanga men i tjaiqayaw tjanusun a namaqepu a uri semenasenay a uri semupusupu tua su pazazekazekatj a Cemas.</FORM>
+        <PHON kindOf="standard">qau pai aiʦu imazaŋa mən i ʦaiqajaw ʦanusun a namaqəpu a uri səmənasənaj a uri səmupusupu tua su pazazəkazəkaʦ a ʦəmas.</PHON>
         <TRANSL xml:lang="en">And now here we are before you gathered to sing and to read your commands, God.</TRANSL>
         <W id="095S4W1">
             <FORM kindOf="original">qau</FORM>
+            <PHON kindOf="original">qau</PHON>
             <FORM kindOf="standard">qau</FORM>
+            <PHON kindOf="standard">qau</PHON>
             <M id="095S4W1M0">
                 <FORM kindOf="original">qau</FORM>
+                <PHON kindOf="original">qau</PHON>
                 <FORM kindOf="standard">qau</FORM>
+                <PHON kindOf="standard">qau</PHON>
                 <TRANSL>so</TRANSL>
             </M>
         </W>
         <W id="095S4W2">
             <FORM kindOf="original">pai</FORM>
+            <PHON kindOf="original">pai</PHON>
             <FORM kindOf="standard">pai</FORM>
+            <PHON kindOf="standard">pai</PHON>
             <M id="095S4W2M0">
                 <FORM kindOf="original">pai</FORM>
+                <PHON kindOf="original">pai</PHON>
                 <FORM kindOf="standard">pai</FORM>
+                <PHON kindOf="standard">pai</PHON>
                 <TRANSL>well</TRANSL>
             </M>
         </W>
         <W id="095S4W3">
             <FORM kindOf="original">aitsu</FORM>
+            <PHON kindOf="original">aiʦu</PHON>
             <FORM kindOf="standard">aicu</FORM>
+            <PHON kindOf="standard">aiʦu</PHON>
             <M id="095S4W3M0">
                 <FORM kindOf="original">aya</FORM>
+                <PHON kindOf="original">aja</PHON>
                 <FORM kindOf="standard">aya</FORM>
+                <PHON kindOf="standard">aja</PHON>
                 <TRANSL>be.thus</TRANSL>
             </M>
             <M id="095S4W3M1">
                 <FORM kindOf="original">i</FORM>
+                <PHON kindOf="original">i</PHON>
                 <FORM kindOf="standard">i</FORM>
+                <PHON kindOf="standard">i</PHON>
                 <TRANSL>loc</TRANSL>
             </M>
             <M id="095S4W3M2">
                 <FORM kindOf="original">tsu</FORM>
+                <PHON kindOf="original">ʦu</PHON>
                 <FORM kindOf="standard">cu</FORM>
+                <PHON kindOf="standard">ʦu</PHON>
                 <TRANSL>this</TRANSL>
             </M>
         </W>
         <W id="095S4W4">
             <FORM kindOf="original">imazanga</FORM>
+            <PHON kindOf="original">imazaŋa</PHON>
             <FORM kindOf="standard">imazanga</FORM>
+            <PHON kindOf="standard">imazaŋa</PHON>
             <M id="095S4W4M0">
                 <FORM kindOf="original">i</FORM>
+                <PHON kindOf="original">i</PHON>
                 <FORM kindOf="standard">i</FORM>
+                <PHON kindOf="standard">i</PHON>
                 <TRANSL>loc</TRANSL>
             </M>
             <M id="095S4W4M1">
                 <FORM kindOf="original">maza</FORM>
+                <PHON kindOf="original">maza</PHON>
                 <FORM kindOf="standard">maza</FORM>
+                <PHON kindOf="standard">maza</PHON>
                 <TRANSL>here</TRANSL>
             </M>
             <M id="095S4W4M2">
                 <FORM kindOf="original">anga</FORM>
+                <PHON kindOf="original">aŋa</PHON>
                 <FORM kindOf="standard">anga</FORM>
+                <PHON kindOf="standard">aŋa</PHON>
                 <TRANSL>indeed</TRANSL>
             </M>
         </W>
         <W id="095S4W5">
             <FORM kindOf="original">men</FORM>
+            <PHON kindOf="original">mən</PHON>
             <FORM kindOf="standard">men</FORM>
+            <PHON kindOf="standard">mən</PHON>
             <M id="095S4W5M0">
                 <FORM kindOf="original">amen</FORM>
+                <PHON kindOf="original">amən</PHON>
                 <FORM kindOf="standard">amen</FORM>
+                <PHON kindOf="standard">amən</PHON>
                 <TRANSL>f.we(exc)</TRANSL>
             </M>
         </W>
         <W id="095S4W6">
             <FORM kindOf="original">i</FORM>
+            <PHON kindOf="original">i</PHON>
             <FORM kindOf="standard">i</FORM>
+            <PHON kindOf="standard">i</PHON>
             <M id="095S4W6M0">
                 <FORM kindOf="original">i</FORM>
+                <PHON kindOf="original">i</PHON>
                 <FORM kindOf="standard">i</FORM>
+                <PHON kindOf="standard">i</PHON>
                 <TRANSL>loc</TRANSL>
             </M>
         </W>
         <W id="095S4W7">
             <FORM kindOf="original">tjaiqayaw</FORM>
+            <PHON kindOf="original">caiqajaw</PHON>
             <FORM kindOf="standard">tjaiqayaw</FORM>
+            <PHON kindOf="standard">ʦaiqajaw</PHON>
             <M id="095S4W7M0">
                 <FORM kindOf="original">tjai</FORM>
+                <PHON kindOf="original">cai</PHON>
                 <FORM kindOf="standard">tjai</FORM>
+                <PHON kindOf="standard">ʦai</PHON>
                 <TRANSL>obl</TRANSL>
             </M>
             <M id="095S4W7M1">
                 <FORM kindOf="original">qayaw</FORM>
+                <PHON kindOf="original">qajaw</PHON>
                 <FORM kindOf="standard">qayaw</FORM>
+                <PHON kindOf="standard">qajaw</PHON>
                 <TRANSL>front</TRANSL>
             </M>
         </W>
         <W id="095S4W8">
             <FORM kindOf="original">tjanusun</FORM>
+            <PHON kindOf="original">canusun</PHON>
             <FORM kindOf="standard">tjanusun</FORM>
+            <PHON kindOf="standard">ʦanusun</PHON>
             <M id="095S4W8M0">
                 <FORM kindOf="original">tjanu</FORM>
+                <PHON kindOf="original">canu</PHON>
                 <FORM kindOf="standard">tjanu</FORM>
+                <PHON kindOf="standard">ʦanu</PHON>
                 <TRANSL>obl</TRANSL>
             </M>
             <M id="095S4W8M1">
                 <FORM kindOf="original">sun</FORM>
+                <PHON kindOf="original">sun</PHON>
                 <FORM kindOf="standard">sun</FORM>
+                <PHON kindOf="standard">sun</PHON>
                 <TRANSL>you(s)</TRANSL>
             </M>
         </W>
         <W id="095S4W9">
             <FORM kindOf="original">a</FORM>
+            <PHON kindOf="original">a</PHON>
             <FORM kindOf="standard">a</FORM>
+            <PHON kindOf="standard">a</PHON>
             <M id="095S4W9M0">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
+                <PHON kindOf="standard">a</PHON>
                 <TRANSL>c</TRANSL>
             </M>
         </W>
         <W id="095S4W10">
             <FORM kindOf="original">namaqepu</FORM>
+            <PHON kindOf="original">namaqəpu</PHON>
             <FORM kindOf="standard">namaqepu</FORM>
+            <PHON kindOf="standard">namaqəpu</PHON>
             <M id="095S4W10M0">
                 <FORM kindOf="original">na</FORM>
+                <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
+                <PHON kindOf="standard">na</PHON>
                 <TRANSL>past</TRANSL>
             </M>
             <M id="095S4W10M1">
                 <FORM kindOf="original">ma</FORM>
+                <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
+                <PHON kindOf="standard">ma</PHON>
                 <TRANSL>stat</TRANSL>
             </M>
             <M id="095S4W10M2">
                 <FORM kindOf="original">qepu</FORM>
+                <PHON kindOf="original">qəpu</PHON>
                 <FORM kindOf="standard">qepu</FORM>
+                <PHON kindOf="standard">qəpu</PHON>
                 <TRANSL>associate</TRANSL>
             </M>
         </W>
         <W id="095S4W11">
             <FORM kindOf="original">a</FORM>
+            <PHON kindOf="original">a</PHON>
             <FORM kindOf="standard">a</FORM>
+            <PHON kindOf="standard">a</PHON>
             <M id="095S4W11M0">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
+                <PHON kindOf="standard">a</PHON>
                 <TRANSL>c</TRANSL>
             </M>
         </W>
         <W id="095S4W12">
             <FORM kindOf="original">uri</FORM>
+            <PHON kindOf="original">uri</PHON>
             <FORM kindOf="standard">uri</FORM>
+            <PHON kindOf="standard">uri</PHON>
             <M id="095S4W12M0">
                 <FORM kindOf="original">uri</FORM>
+                <PHON kindOf="original">uri</PHON>
                 <FORM kindOf="standard">uri</FORM>
+                <PHON kindOf="standard">uri</PHON>
                 <TRANSL>will</TRANSL>
             </M>
         </W>
         <W id="095S4W13">
             <FORM kindOf="original">semenasenay</FORM>
+            <PHON kindOf="original">səmənasənaj</PHON>
             <FORM kindOf="standard">semenasenay</FORM>
+            <PHON kindOf="standard">səmənasənaj</PHON>
             <M id="095S4W13M0">
                 <FORM kindOf="original">em=sena</FORM>
+                <PHON kindOf="original">əm=səna</PHON>
                 <FORM kindOf="standard">em=sena</FORM>
+                <PHON kindOf="standard">əm=səna</PHON>
                 <TRANSL>af=red</TRANSL>
             </M>
             <M id="095S4W13M1">
                 <FORM kindOf="original">senay</FORM>
+                <PHON kindOf="original">sənaj</PHON>
                 <FORM kindOf="standard">senay</FORM>
+                <PHON kindOf="standard">sənaj</PHON>
                 <TRANSL>chant</TRANSL>
             </M>
         </W>
         <W id="095S4W14">
             <FORM kindOf="original">a</FORM>
+            <PHON kindOf="original">a</PHON>
             <FORM kindOf="standard">a</FORM>
+            <PHON kindOf="standard">a</PHON>
             <M id="095S4W14M0">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
+                <PHON kindOf="standard">a</PHON>
                 <TRANSL>c</TRANSL>
             </M>
         </W>
         <W id="095S4W15">
             <FORM kindOf="original">uri</FORM>
+            <PHON kindOf="original">uri</PHON>
             <FORM kindOf="standard">uri</FORM>
+            <PHON kindOf="standard">uri</PHON>
             <M id="095S4W15M0">
                 <FORM kindOf="original">uri</FORM>
+                <PHON kindOf="original">uri</PHON>
                 <FORM kindOf="standard">uri</FORM>
+                <PHON kindOf="standard">uri</PHON>
                 <TRANSL>will</TRANSL>
             </M>
         </W>
         <W id="095S4W16">
             <FORM kindOf="original">semupusupu</FORM>
+            <PHON kindOf="original">səmupusupu</PHON>
             <FORM kindOf="standard">semupusupu</FORM>
+            <PHON kindOf="standard">səmupusupu</PHON>
             <M id="095S4W16M0">
                 <FORM kindOf="original">em=supu</FORM>
+                <PHON kindOf="original">əm=supu</PHON>
                 <FORM kindOf="standard">em=supu</FORM>
+                <PHON kindOf="standard">əm=supu</PHON>
                 <TRANSL>af=red</TRANSL>
             </M>
             <M id="095S4W16M1">
                 <FORM kindOf="original">supu</FORM>
+                <PHON kindOf="original">supu</PHON>
                 <FORM kindOf="standard">supu</FORM>
+                <PHON kindOf="standard">supu</PHON>
                 <TRANSL>count</TRANSL>
             </M>
         </W>
         <W id="095S4W17">
             <FORM kindOf="original">tua</FORM>
+            <PHON kindOf="original">tua</PHON>
             <FORM kindOf="standard">tua</FORM>
+            <PHON kindOf="standard">tua</PHON>
             <M id="095S4W17M0">
                 <FORM kindOf="original">tua</FORM>
+                <PHON kindOf="original">tua</PHON>
                 <FORM kindOf="standard">tua</FORM>
+                <PHON kindOf="standard">tua</PHON>
                 <TRANSL>obl</TRANSL>
             </M>
         </W>
         <W id="095S4W18">
             <FORM kindOf="original">su</FORM>
+            <PHON kindOf="original">su</PHON>
             <FORM kindOf="standard">su</FORM>
+            <PHON kindOf="standard">su</PHON>
             <M id="095S4W18M0">
                 <FORM kindOf="original">su</FORM>
+                <PHON kindOf="original">su</PHON>
                 <FORM kindOf="standard">su</FORM>
+                <PHON kindOf="standard">su</PHON>
                 <TRANSL>your(s)</TRANSL>
             </M>
         </W>
         <W id="095S4W19">
             <FORM kindOf="original">pazazekazekatj</FORM>
+            <PHON kindOf="original">pazazəkazəkac</PHON>
             <FORM kindOf="standard">pazazekazekatj</FORM>
+            <PHON kindOf="standard">pazazəkazəkaʦ</PHON>
             <M id="095S4W19M0">
                 <FORM kindOf="original">pa</FORM>
+                <PHON kindOf="original">pa</PHON>
                 <FORM kindOf="standard">pa</FORM>
+                <PHON kindOf="standard">pa</PHON>
                 <TRANSL>cause</TRANSL>
             </M>
             <M id="095S4W19M1">
                 <FORM kindOf="original">za</FORM>
+                <PHON kindOf="original">za</PHON>
                 <FORM kindOf="standard">za</FORM>
+                <PHON kindOf="standard">za</PHON>
                 <TRANSL>red</TRANSL>
             </M>
             <M id="095S4W19M2">
                 <FORM kindOf="original">zeka</FORM>
+                <PHON kindOf="original">zəka</PHON>
                 <FORM kindOf="standard">zeka</FORM>
+                <PHON kindOf="standard">zəka</PHON>
                 <TRANSL>red</TRANSL>
             </M>
             <M id="095S4W19M3">
                 <FORM kindOf="original">zekatj</FORM>
+                <PHON kindOf="original">zəkac</PHON>
                 <FORM kindOf="standard">zekatj</FORM>
+                <PHON kindOf="standard">zəkaʦ</PHON>
                 <TRANSL>share</TRANSL>
             </M>
         </W>
         <W id="095S4W20">
             <FORM kindOf="original">a</FORM>
+            <PHON kindOf="original">a</PHON>
             <FORM kindOf="standard">a</FORM>
+            <PHON kindOf="standard">a</PHON>
             <M id="095S4W20M0">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
+                <PHON kindOf="standard">a</PHON>
                 <TRANSL>c</TRANSL>
             </M>
         </W>
         <W id="095S4W21">
             <FORM kindOf="original">Tsemas.</FORM>
+            <PHON kindOf="original">ʦəmas.</PHON>
             <FORM kindOf="standard">Cemas.</FORM>
+            <PHON kindOf="standard">ʦəmas.</PHON>
             <M id="095S4W21M0">
                 <FORM kindOf="original">Tsemas</FORM>
+                <PHON kindOf="original">ʦəmas</PHON>
                 <FORM kindOf="standard">Cemas</FORM>
+                <PHON kindOf="standard">ʦəmas</PHON>
                 <TRANSL>God</TRANSL>
             </M>
         </W>
     </S>
     <S id="095S5">
         <FORM kindOf="original">pai sa?a uɫa men a naɫemaluay, uɫa men a su kinizangan a kemasi patagiɫ a patje maqatsuvung tusa nia kinaqepuan.</FORM>
-        <FORM kindOf="standard">pai sa?a ulja men a naljemaluay, ulja men a su kinizangan a kemasi patagilj a patje maqacuvung tusa nia kinaqepuan.</FORM>
+        <PHON kindOf="original">pai saʔa uʎa mən a naʎəmaɭuaj, uʎa mən a su kinizaŋan a kəmasi patagiʎ a pacə maqaʦuvuŋ tusa nia kinaqəpuan.</PHON>
+        <FORM kindOf="standard">pai sa'a ulja men a naljemaluay, ulja men a su kinizangan a kemasi patagilj a patje maqacuvung tusa nia kinaqepuan.</FORM>
+        <PHON kindOf="standard">pai saʔa uʎa mən a naʎəmaɭuaj, uʎa mən a su kinizaŋan a kəmasi patagiʎ a paʦə maqaʦuvuŋ tusa nia kinaqəpuan.</PHON>
         <TRANSL xml:lang="en">So may we understand, and may we be guarded by you from the beginning to the end of our gathering.</TRANSL>
         <W id="095S5W1">
             <FORM kindOf="original">pai</FORM>
+            <PHON kindOf="original">pai</PHON>
             <FORM kindOf="standard">pai</FORM>
+            <PHON kindOf="standard">pai</PHON>
             <M id="095S5W1M0">
                 <FORM kindOf="original">pai</FORM>
+                <PHON kindOf="original">pai</PHON>
                 <FORM kindOf="standard">pai</FORM>
+                <PHON kindOf="standard">pai</PHON>
                 <TRANSL>well</TRANSL>
             </M>
         </W>
         <W id="095S5W2">
             <FORM kindOf="original">sa?a</FORM>
-            <FORM kindOf="standard">sa?a</FORM>
+            <PHON kindOf="original">saʔa</PHON>
+            <FORM kindOf="standard">sa'a</FORM>
+            <PHON kindOf="standard">saʔa</PHON>
             <M id="095S5W2M0">
                 <FORM kindOf="original">sa</FORM>
+                <PHON kindOf="original">sa</PHON>
                 <FORM kindOf="standard">sa</FORM>
+                <PHON kindOf="standard">sa</PHON>
                 <TRANSL>and</TRANSL>
             </M>
             <M id="095S5W2M1">
                 <FORM kindOf="original">ka</FORM>
+                <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
+                <PHON kindOf="standard">ka</PHON>
                 <TRANSL>after</TRANSL>
             </M>
         </W>
         <W id="095S5W3">
             <FORM kindOf="original">uɫa</FORM>
+            <PHON kindOf="original">uʎa</PHON>
             <FORM kindOf="standard">ulja</FORM>
+            <PHON kindOf="standard">uʎa</PHON>
             <M id="095S5W3M0">
                 <FORM kindOf="original">uɫa</FORM>
+                <PHON kindOf="original">uʎa</PHON>
                 <FORM kindOf="standard">ulja</FORM>
+                <PHON kindOf="standard">uʎa</PHON>
                 <TRANSL>so.that</TRANSL>
             </M>
         </W>
         <W id="095S5W4">
             <FORM kindOf="original">men</FORM>
+            <PHON kindOf="original">mən</PHON>
             <FORM kindOf="standard">men</FORM>
+            <PHON kindOf="standard">mən</PHON>
             <M id="095S5W4M0">
                 <FORM kindOf="original">amen</FORM>
+                <PHON kindOf="original">amən</PHON>
                 <FORM kindOf="standard">amen</FORM>
+                <PHON kindOf="standard">amən</PHON>
                 <TRANSL>f.we(exc)</TRANSL>
             </M>
         </W>
         <W id="095S5W5">
             <FORM kindOf="original">a</FORM>
+            <PHON kindOf="original">a</PHON>
             <FORM kindOf="standard">a</FORM>
+            <PHON kindOf="standard">a</PHON>
             <M id="095S5W5M0">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
+                <PHON kindOf="standard">a</PHON>
                 <TRANSL>c</TRANSL>
             </M>
         </W>
         <W id="095S5W6">
             <FORM kindOf="original">naɫemaluay,</FORM>
+            <PHON kindOf="original">naʎəmaɭuaj,</PHON>
             <FORM kindOf="standard">naljemaluay,</FORM>
+            <PHON kindOf="standard">naʎəmaɭuaj,</PHON>
             <M id="095S5W6M0">
                 <FORM kindOf="original">na</FORM>
+                <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
+                <PHON kindOf="standard">na</PHON>
                 <TRANSL>past</TRANSL>
             </M>
             <M id="095S5W6M1">
                 <FORM kindOf="original">em=ɫaluay</FORM>
+                <PHON kindOf="original">əm=ʎaɭuaj</PHON>
                 <FORM kindOf="standard">em=ljaluay</FORM>
+                <PHON kindOf="standard">əm=ʎaɭuaj</PHON>
                 <TRANSL>af=clear</TRANSL>
             </M>
         </W>
         <W id="095S5W7">
             <FORM kindOf="original">uɫa</FORM>
+            <PHON kindOf="original">uʎa</PHON>
             <FORM kindOf="standard">ulja</FORM>
+            <PHON kindOf="standard">uʎa</PHON>
             <M id="095S5W7M0">
                 <FORM kindOf="original">uɫa</FORM>
+                <PHON kindOf="original">uʎa</PHON>
                 <FORM kindOf="standard">ulja</FORM>
+                <PHON kindOf="standard">uʎa</PHON>
                 <TRANSL>so.that</TRANSL>
             </M>
         </W>
         <W id="095S5W8">
             <FORM kindOf="original">men</FORM>
+            <PHON kindOf="original">mən</PHON>
             <FORM kindOf="standard">men</FORM>
+            <PHON kindOf="standard">mən</PHON>
             <M id="095S5W8M0">
                 <FORM kindOf="original">amen</FORM>
+                <PHON kindOf="original">amən</PHON>
                 <FORM kindOf="standard">amen</FORM>
+                <PHON kindOf="standard">amən</PHON>
                 <TRANSL>f.we(exc)</TRANSL>
             </M>
         </W>
         <W id="095S5W9">
             <FORM kindOf="original">a</FORM>
+            <PHON kindOf="original">a</PHON>
             <FORM kindOf="standard">a</FORM>
+            <PHON kindOf="standard">a</PHON>
             <M id="095S5W9M0">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
+                <PHON kindOf="standard">a</PHON>
                 <TRANSL>c</TRANSL>
             </M>
         </W>
         <W id="095S5W10">
             <FORM kindOf="original">su</FORM>
+            <PHON kindOf="original">su</PHON>
             <FORM kindOf="standard">su</FORM>
+            <PHON kindOf="standard">su</PHON>
             <M id="095S5W10M0">
                 <FORM kindOf="original">su</FORM>
+                <PHON kindOf="original">su</PHON>
                 <FORM kindOf="standard">su</FORM>
+                <PHON kindOf="standard">su</PHON>
                 <TRANSL>you(s)</TRANSL>
             </M>
         </W>
         <W id="095S5W11">
             <FORM kindOf="original">kinizangan</FORM>
+            <PHON kindOf="original">kinizaŋan</PHON>
             <FORM kindOf="standard">kinizangan</FORM>
+            <PHON kindOf="standard">kinizaŋan</PHON>
             <M id="095S5W11M0">
                 <FORM kindOf="original">in=ki</FORM>
+                <PHON kindOf="original">in=ki</PHON>
                 <FORM kindOf="standard">in=ki</FORM>
+                <PHON kindOf="standard">in=ki</PHON>
                 <TRANSL>perf=do</TRANSL>
             </M>
             <M id="095S5W11M1">
                 <FORM kindOf="original">zang</FORM>
+                <PHON kindOf="original">zaŋ</PHON>
                 <FORM kindOf="standard">zang</FORM>
+                <PHON kindOf="standard">zaŋ</PHON>
                 <TRANSL>guard</TRANSL>
             </M>
             <M id="095S5W11M2">
                 <FORM kindOf="original">an</FORM>
+                <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
+                <PHON kindOf="standard">an</PHON>
                 <TRANSL>lf</TRANSL>
             </M>
         </W>
         <W id="095S5W12">
             <FORM kindOf="original">a</FORM>
+            <PHON kindOf="original">a</PHON>
             <FORM kindOf="standard">a</FORM>
+            <PHON kindOf="standard">a</PHON>
             <M id="095S5W12M0">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
+                <PHON kindOf="standard">a</PHON>
                 <TRANSL>c</TRANSL>
             </M>
         </W>
         <W id="095S5W13">
             <FORM kindOf="original">kemasi</FORM>
+            <PHON kindOf="original">kəmasi</PHON>
             <FORM kindOf="standard">kemasi</FORM>
+            <PHON kindOf="standard">kəmasi</PHON>
             <M id="095S5W13M0">
                 <FORM kindOf="original">em=kasi</FORM>
+                <PHON kindOf="original">əm=kasi</PHON>
                 <FORM kindOf="standard">em=kasi</FORM>
+                <PHON kindOf="standard">əm=kasi</PHON>
                 <TRANSL>af=from</TRANSL>
             </M>
         </W>
         <W id="095S5W14">
             <FORM kindOf="original">patagiɫ</FORM>
+            <PHON kindOf="original">patagiʎ</PHON>
             <FORM kindOf="standard">patagilj</FORM>
+            <PHON kindOf="standard">patagiʎ</PHON>
             <M id="095S5W14M0">
                 <FORM kindOf="original">pa</FORM>
+                <PHON kindOf="original">pa</PHON>
                 <FORM kindOf="standard">pa</FORM>
+                <PHON kindOf="standard">pa</PHON>
                 <TRANSL>cause</TRANSL>
             </M>
             <M id="095S5W14M1">
                 <FORM kindOf="original">tagiɫ</FORM>
+                <PHON kindOf="original">tagiʎ</PHON>
                 <FORM kindOf="standard">tagilj</FORM>
+                <PHON kindOf="standard">tagiʎ</PHON>
                 <TRANSL>originate</TRANSL>
             </M>
         </W>
         <W id="095S5W15">
             <FORM kindOf="original">a</FORM>
+            <PHON kindOf="original">a</PHON>
             <FORM kindOf="standard">a</FORM>
+            <PHON kindOf="standard">a</PHON>
             <M id="095S5W15M0">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
+                <PHON kindOf="standard">a</PHON>
                 <TRANSL>c</TRANSL>
             </M>
         </W>
         <W id="095S5W16">
             <FORM kindOf="original">patje</FORM>
+            <PHON kindOf="original">pacə</PHON>
             <FORM kindOf="standard">patje</FORM>
+            <PHON kindOf="standard">paʦə</PHON>
             <M id="095S5W16M0">
                 <FORM kindOf="original">pa</FORM>
+                <PHON kindOf="original">pa</PHON>
                 <FORM kindOf="standard">pa</FORM>
+                <PHON kindOf="standard">pa</PHON>
                 <TRANSL>cause</TRANSL>
             </M>
             <M id="095S5W16M1">
                 <FORM kindOf="original">tje</FORM>
+                <PHON kindOf="original">cə</PHON>
                 <FORM kindOf="standard">tje</FORM>
+                <PHON kindOf="standard">ʦə</PHON>
                 <TRANSL>do.at</TRANSL>
             </M>
         </W>
         <W id="095S5W17">
             <FORM kindOf="original">maqatsuvung</FORM>
+            <PHON kindOf="original">maqaʦuvuŋ</PHON>
             <FORM kindOf="standard">maqacuvung</FORM>
+            <PHON kindOf="standard">maqaʦuvuŋ</PHON>
             <M id="095S5W17M0">
                 <FORM kindOf="original">ma</FORM>
+                <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
+                <PHON kindOf="standard">ma</PHON>
                 <TRANSL>stat</TRANSL>
             </M>
             <M id="095S5W17M1">
                 <FORM kindOf="original">qa</FORM>
+                <PHON kindOf="original">qa</PHON>
                 <FORM kindOf="standard">qa</FORM>
+                <PHON kindOf="standard">qa</PHON>
                 <TRANSL>?</TRANSL>
             </M>
             <M id="095S5W17M2">
                 <FORM kindOf="original">tsuvung</FORM>
+                <PHON kindOf="original">ʦuvuŋ</PHON>
                 <FORM kindOf="standard">cuvung</FORM>
+                <PHON kindOf="standard">ʦuvuŋ</PHON>
                 <TRANSL>complete</TRANSL>
             </M>
         </W>
         <W id="095S5W18">
             <FORM kindOf="original">tusa</FORM>
+            <PHON kindOf="original">tusa</PHON>
             <FORM kindOf="standard">tusa</FORM>
+            <PHON kindOf="standard">tusa</PHON>
             <M id="095S5W18M0">
                 <FORM kindOf="original">tu</FORM>
+                <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
+                <PHON kindOf="standard">tu</PHON>
                 <TRANSL>obl</TRANSL>
             </M>
             <M id="095S5W18M1">
                 <FORM kindOf="original">tsa</FORM>
+                <PHON kindOf="original">ʦa</PHON>
                 <FORM kindOf="standard">ca</FORM>
+                <PHON kindOf="standard">ʦa</PHON>
                 <TRANSL>this</TRANSL>
             </M>
         </W>
         <W id="095S5W19">
             <FORM kindOf="original">nia</FORM>
+            <PHON kindOf="original">nia</PHON>
             <FORM kindOf="standard">nia</FORM>
+            <PHON kindOf="standard">nia</PHON>
             <M id="095S5W19M0">
                 <FORM kindOf="original">nia</FORM>
+                <PHON kindOf="original">nia</PHON>
                 <FORM kindOf="standard">nia</FORM>
+                <PHON kindOf="standard">nia</PHON>
                 <TRANSL>our(exc)</TRANSL>
             </M>
         </W>
         <W id="095S5W20">
             <FORM kindOf="original">kinaqepuan.</FORM>
+            <PHON kindOf="original">kinaqəpuan.</PHON>
             <FORM kindOf="standard">kinaqepuan.</FORM>
+            <PHON kindOf="standard">kinaqəpuan.</PHON>
             <M id="095S5W20M0">
                 <FORM kindOf="original">in=ka</FORM>
+                <PHON kindOf="original">in=ka</PHON>
                 <FORM kindOf="standard">in=ka</FORM>
+                <PHON kindOf="standard">in=ka</PHON>
                 <TRANSL>perf=stat</TRANSL>
             </M>
             <M id="095S5W20M1">
                 <FORM kindOf="original">qepu</FORM>
+                <PHON kindOf="original">qəpu</PHON>
                 <FORM kindOf="standard">qepu</FORM>
+                <PHON kindOf="standard">qəpu</PHON>
                 <TRANSL>associate</TRANSL>
             </M>
             <M id="095S5W20M2">
                 <FORM kindOf="original">an</FORM>
+                <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
+                <PHON kindOf="standard">an</PHON>
                 <TRANSL>nom</TRANSL>
             </M>
         </W>
     </S>
     <S id="095S6">
         <FORM kindOf="original">uɫa men a napuzangar, uɫa men a natemavelak uta tua su pitsul tua su kiɫivak tusa nia kinaqepuan.</FORM>
+        <PHON kindOf="original">uʎa mən a napuzaŋar, uʎa mən a natəmavəɭak uta tua su piʦuɭ tua su kiʎivak tusa nia kinaqəpuan.</PHON>
         <FORM kindOf="standard">ulja men a napuzangar, ulja men a natemavelak uta tua su picul tua su kiljivak tusa nia kinaqepuan.</FORM>
+        <PHON kindOf="standard">uʎa mən a napuzaŋar, uʎa mən a natəmavəɭak uta tua su piʦuɭ tua su kiʎivak tusa nia kinaqəpuan.</PHON>
         <TRANSL xml:lang="en">May we be joyful, and may we receive also your strength and love in our gathering.</TRANSL>
         <W id="095S6W1">
             <FORM kindOf="original">uɫa</FORM>
+            <PHON kindOf="original">uʎa</PHON>
             <FORM kindOf="standard">ulja</FORM>
+            <PHON kindOf="standard">uʎa</PHON>
             <M id="095S6W1M0">
                 <FORM kindOf="original">uɫa</FORM>
+                <PHON kindOf="original">uʎa</PHON>
                 <FORM kindOf="standard">ulja</FORM>
+                <PHON kindOf="standard">uʎa</PHON>
                 <TRANSL>so.that</TRANSL>
             </M>
         </W>
         <W id="095S6W2">
             <FORM kindOf="original">men</FORM>
+            <PHON kindOf="original">mən</PHON>
             <FORM kindOf="standard">men</FORM>
+            <PHON kindOf="standard">mən</PHON>
             <M id="095S6W2M0">
                 <FORM kindOf="original">amen</FORM>
+                <PHON kindOf="original">amən</PHON>
                 <FORM kindOf="standard">amen</FORM>
+                <PHON kindOf="standard">amən</PHON>
                 <TRANSL>f.we(exc)</TRANSL>
             </M>
         </W>
         <W id="095S6W3">
             <FORM kindOf="original">a</FORM>
+            <PHON kindOf="original">a</PHON>
             <FORM kindOf="standard">a</FORM>
+            <PHON kindOf="standard">a</PHON>
             <M id="095S6W3M0">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
+                <PHON kindOf="standard">a</PHON>
                 <TRANSL>c</TRANSL>
             </M>
         </W>
         <W id="095S6W4">
             <FORM kindOf="original">napuzangar,</FORM>
+            <PHON kindOf="original">napuzaŋar,</PHON>
             <FORM kindOf="standard">napuzangar,</FORM>
+            <PHON kindOf="standard">napuzaŋar,</PHON>
             <M id="095S6W4M0">
                 <FORM kindOf="original">na</FORM>
+                <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
+                <PHON kindOf="standard">na</PHON>
                 <TRANSL>past</TRANSL>
             </M>
             <M id="095S6W4M1">
                 <FORM kindOf="original">pu</FORM>
+                <PHON kindOf="original">pu</PHON>
                 <FORM kindOf="standard">pu</FORM>
+                <PHON kindOf="standard">pu</PHON>
                 <TRANSL>have</TRANSL>
             </M>
             <M id="095S6W4M2">
                 <FORM kindOf="original">zangar</FORM>
+                <PHON kindOf="original">zaŋar</PHON>
                 <FORM kindOf="standard">zangar</FORM>
+                <PHON kindOf="standard">zaŋar</PHON>
                 <TRANSL>joy</TRANSL>
             </M>
         </W>
         <W id="095S6W5">
             <FORM kindOf="original">uɫa</FORM>
+            <PHON kindOf="original">uʎa</PHON>
             <FORM kindOf="standard">ulja</FORM>
+            <PHON kindOf="standard">uʎa</PHON>
             <M id="095S6W5M0">
                 <FORM kindOf="original">uɫa</FORM>
+                <PHON kindOf="original">uʎa</PHON>
                 <FORM kindOf="standard">ulja</FORM>
+                <PHON kindOf="standard">uʎa</PHON>
                 <TRANSL>so.that</TRANSL>
             </M>
         </W>
         <W id="095S6W6">
             <FORM kindOf="original">men</FORM>
+            <PHON kindOf="original">mən</PHON>
             <FORM kindOf="standard">men</FORM>
+            <PHON kindOf="standard">mən</PHON>
             <M id="095S6W6M0">
                 <FORM kindOf="original">amen</FORM>
+                <PHON kindOf="original">amən</PHON>
                 <FORM kindOf="standard">amen</FORM>
+                <PHON kindOf="standard">amən</PHON>
                 <TRANSL>f.we(exc)</TRANSL>
             </M>
         </W>
         <W id="095S6W7">
             <FORM kindOf="original">a</FORM>
+            <PHON kindOf="original">a</PHON>
             <FORM kindOf="standard">a</FORM>
+            <PHON kindOf="standard">a</PHON>
             <M id="095S6W7M0">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
+                <PHON kindOf="standard">a</PHON>
                 <TRANSL>c</TRANSL>
             </M>
         </W>
         <W id="095S6W8">
             <FORM kindOf="original">natemavelak</FORM>
+            <PHON kindOf="original">natəmavəɭak</PHON>
             <FORM kindOf="standard">natemavelak</FORM>
+            <PHON kindOf="standard">natəmavəɭak</PHON>
             <M id="095S6W8M0">
                 <FORM kindOf="original">na</FORM>
+                <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
+                <PHON kindOf="standard">na</PHON>
                 <TRANSL>past</TRANSL>
             </M>
             <M id="095S6W8M1">
                 <FORM kindOf="original">em=ta</FORM>
+                <PHON kindOf="original">əm=ta</PHON>
                 <FORM kindOf="standard">em=ta</FORM>
+                <PHON kindOf="standard">əm=ta</PHON>
                 <TRANSL>af=past</TRANSL>
             </M>
             <M id="095S6W8M2">
                 <FORM kindOf="original">velak</FORM>
+                <PHON kindOf="original">vəɭak</PHON>
                 <FORM kindOf="standard">velak</FORM>
+                <PHON kindOf="standard">vəɭak</PHON>
                 <TRANSL>receive</TRANSL>
             </M>
         </W>
         <W id="095S6W9">
             <FORM kindOf="original">uta</FORM>
+            <PHON kindOf="original">uta</PHON>
             <FORM kindOf="standard">uta</FORM>
+            <PHON kindOf="standard">uta</PHON>
             <M id="095S6W9M0">
                 <FORM kindOf="original">uta</FORM>
+                <PHON kindOf="original">uta</PHON>
                 <FORM kindOf="standard">uta</FORM>
+                <PHON kindOf="standard">uta</PHON>
                 <TRANSL>also</TRANSL>
             </M>
         </W>
         <W id="095S6W10">
             <FORM kindOf="original">tua</FORM>
+            <PHON kindOf="original">tua</PHON>
             <FORM kindOf="standard">tua</FORM>
+            <PHON kindOf="standard">tua</PHON>
             <M id="095S6W10M0">
                 <FORM kindOf="original">tua</FORM>
+                <PHON kindOf="original">tua</PHON>
                 <FORM kindOf="standard">tua</FORM>
+                <PHON kindOf="standard">tua</PHON>
                 <TRANSL>obl</TRANSL>
             </M>
         </W>
         <W id="095S6W11">
             <FORM kindOf="original">su</FORM>
+            <PHON kindOf="original">su</PHON>
             <FORM kindOf="standard">su</FORM>
+            <PHON kindOf="standard">su</PHON>
             <M id="095S6W11M0">
                 <FORM kindOf="original">su</FORM>
+                <PHON kindOf="original">su</PHON>
                 <FORM kindOf="standard">su</FORM>
+                <PHON kindOf="standard">su</PHON>
                 <TRANSL>you(s)</TRANSL>
             </M>
         </W>
         <W id="095S6W12">
             <FORM kindOf="original">pitsul</FORM>
+            <PHON kindOf="original">piʦuɭ</PHON>
             <FORM kindOf="standard">picul</FORM>
+            <PHON kindOf="standard">piʦuɭ</PHON>
             <M id="095S6W12M0">
                 <FORM kindOf="original">pitsul</FORM>
+                <PHON kindOf="original">piʦuɭ</PHON>
                 <FORM kindOf="standard">picul</FORM>
+                <PHON kindOf="standard">piʦuɭ</PHON>
                 <TRANSL>strong</TRANSL>
             </M>
         </W>
         <W id="095S6W13">
             <FORM kindOf="original">tua</FORM>
+            <PHON kindOf="original">tua</PHON>
             <FORM kindOf="standard">tua</FORM>
+            <PHON kindOf="standard">tua</PHON>
             <M id="095S6W13M0">
                 <FORM kindOf="original">tua</FORM>
+                <PHON kindOf="original">tua</PHON>
                 <FORM kindOf="standard">tua</FORM>
+                <PHON kindOf="standard">tua</PHON>
                 <TRANSL>obl</TRANSL>
             </M>
         </W>
         <W id="095S6W14">
             <FORM kindOf="original">su</FORM>
+            <PHON kindOf="original">su</PHON>
             <FORM kindOf="standard">su</FORM>
+            <PHON kindOf="standard">su</PHON>
             <M id="095S6W14M0">
                 <FORM kindOf="original">su</FORM>
+                <PHON kindOf="original">su</PHON>
                 <FORM kindOf="standard">su</FORM>
+                <PHON kindOf="standard">su</PHON>
                 <TRANSL>you(s)</TRANSL>
             </M>
         </W>
         <W id="095S6W15">
             <FORM kindOf="original">kiɫivak</FORM>
+            <PHON kindOf="original">kiʎivak</PHON>
             <FORM kindOf="standard">kiljivak</FORM>
+            <PHON kindOf="standard">kiʎivak</PHON>
             <M id="095S6W15M0">
                 <FORM kindOf="original">ki</FORM>
+                <PHON kindOf="original">ki</PHON>
                 <FORM kindOf="standard">ki</FORM>
+                <PHON kindOf="standard">ki</PHON>
                 <TRANSL>do</TRANSL>
             </M>
             <M id="095S6W15M1">
                 <FORM kindOf="original">ɫivak</FORM>
+                <PHON kindOf="original">ʎivak</PHON>
                 <FORM kindOf="standard">ljivak</FORM>
+                <PHON kindOf="standard">ʎivak</PHON>
                 <TRANSL>care.for</TRANSL>
             </M>
         </W>
         <W id="095S6W16">
             <FORM kindOf="original">tusa</FORM>
+            <PHON kindOf="original">tusa</PHON>
             <FORM kindOf="standard">tusa</FORM>
+            <PHON kindOf="standard">tusa</PHON>
             <M id="095S6W16M0">
                 <FORM kindOf="original">tu</FORM>
+                <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
+                <PHON kindOf="standard">tu</PHON>
                 <TRANSL>obl</TRANSL>
             </M>
             <M id="095S6W16M1">
                 <FORM kindOf="original">tsa</FORM>
+                <PHON kindOf="original">ʦa</PHON>
                 <FORM kindOf="standard">ca</FORM>
+                <PHON kindOf="standard">ʦa</PHON>
                 <TRANSL>this</TRANSL>
             </M>
         </W>
         <W id="095S6W17">
             <FORM kindOf="original">nia</FORM>
+            <PHON kindOf="original">nia</PHON>
             <FORM kindOf="standard">nia</FORM>
+            <PHON kindOf="standard">nia</PHON>
             <M id="095S6W17M0">
                 <FORM kindOf="original">nia</FORM>
+                <PHON kindOf="original">nia</PHON>
                 <FORM kindOf="standard">nia</FORM>
+                <PHON kindOf="standard">nia</PHON>
                 <TRANSL>our(exc)</TRANSL>
             </M>
         </W>
         <W id="095S6W18">
             <FORM kindOf="original">kinaqepuan.</FORM>
+            <PHON kindOf="original">kinaqəpuan.</PHON>
             <FORM kindOf="standard">kinaqepuan.</FORM>
+            <PHON kindOf="standard">kinaqəpuan.</PHON>
             <M id="095S6W18M0">
                 <FORM kindOf="original">in=ka</FORM>
+                <PHON kindOf="original">in=ka</PHON>
                 <FORM kindOf="standard">in=ka</FORM>
+                <PHON kindOf="standard">in=ka</PHON>
                 <TRANSL>perf=stat</TRANSL>
             </M>
             <M id="095S6W18M1">
                 <FORM kindOf="original">qepu</FORM>
+                <PHON kindOf="original">qəpu</PHON>
                 <FORM kindOf="standard">qepu</FORM>
+                <PHON kindOf="standard">qəpu</PHON>
                 <TRANSL>associate</TRANSL>
             </M>
             <M id="095S6W18M2">
                 <FORM kindOf="original">an</FORM>
+                <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
+                <PHON kindOf="standard">an</PHON>
                 <TRANSL>nom</TRANSL>
             </M>
         </W>
     </S>
     <S id="095S7">
         <FORM kindOf="original">sa?a aitsu a nia kiqaung a nia levan nia pinaka tjanusun a ti Yisu-sama.</FORM>
-        <FORM kindOf="standard">sa?a aicu a nia kiqaung a nia levan nia pinaka tjanusun a ti Yisu-sama.</FORM>
+        <PHON kindOf="original">saʔa aiʦu a nia kiqauŋ a nia ɭəvan nia pinaka canusun a ti jisu-sama.</PHON>
+        <FORM kindOf="standard">sa'a aicu a nia kiqaung a nia levan nia pinaka tjanusun a ti Yisu-sama.</FORM>
+        <PHON kindOf="standard">saʔa aiʦu a nia kiqauŋ a nia ɭəvan nia pinaka ʦanusun a ti jisu-sama.</PHON>
         <TRANSL xml:lang="en">And now our prayer and praise is made through you, Jesus.</TRANSL>
         <W id="095S7W1">
             <FORM kindOf="original">sa?a</FORM>
-            <FORM kindOf="standard">sa?a</FORM>
+            <PHON kindOf="original">saʔa</PHON>
+            <FORM kindOf="standard">sa'a</FORM>
+            <PHON kindOf="standard">saʔa</PHON>
             <M id="095S7W1M0">
                 <FORM kindOf="original">sa</FORM>
+                <PHON kindOf="original">sa</PHON>
                 <FORM kindOf="standard">sa</FORM>
+                <PHON kindOf="standard">sa</PHON>
                 <TRANSL>and</TRANSL>
             </M>
             <M id="095S7W1M1">
                 <FORM kindOf="original">ka</FORM>
+                <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
+                <PHON kindOf="standard">ka</PHON>
                 <TRANSL>after</TRANSL>
             </M>
         </W>
         <W id="095S7W2">
             <FORM kindOf="original">aitsu</FORM>
+            <PHON kindOf="original">aiʦu</PHON>
             <FORM kindOf="standard">aicu</FORM>
+            <PHON kindOf="standard">aiʦu</PHON>
             <M id="095S7W2M0">
                 <FORM kindOf="original">aya</FORM>
+                <PHON kindOf="original">aja</PHON>
                 <FORM kindOf="standard">aya</FORM>
+                <PHON kindOf="standard">aja</PHON>
                 <TRANSL>be.thus</TRANSL>
             </M>
             <M id="095S7W2M1">
                 <FORM kindOf="original">i</FORM>
+                <PHON kindOf="original">i</PHON>
                 <FORM kindOf="standard">i</FORM>
+                <PHON kindOf="standard">i</PHON>
                 <TRANSL>loc</TRANSL>
             </M>
             <M id="095S7W2M2">
                 <FORM kindOf="original">tsu</FORM>
+                <PHON kindOf="original">ʦu</PHON>
                 <FORM kindOf="standard">cu</FORM>
+                <PHON kindOf="standard">ʦu</PHON>
                 <TRANSL>this</TRANSL>
             </M>
         </W>
         <W id="095S7W3">
             <FORM kindOf="original">a</FORM>
+            <PHON kindOf="original">a</PHON>
             <FORM kindOf="standard">a</FORM>
+            <PHON kindOf="standard">a</PHON>
             <M id="095S7W3M0">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
+                <PHON kindOf="standard">a</PHON>
                 <TRANSL>c</TRANSL>
             </M>
         </W>
         <W id="095S7W4">
             <FORM kindOf="original">nia</FORM>
+            <PHON kindOf="original">nia</PHON>
             <FORM kindOf="standard">nia</FORM>
+            <PHON kindOf="standard">nia</PHON>
             <M id="095S7W4M0">
                 <FORM kindOf="original">nia</FORM>
+                <PHON kindOf="original">nia</PHON>
                 <FORM kindOf="standard">nia</FORM>
+                <PHON kindOf="standard">nia</PHON>
                 <TRANSL>our(exc)</TRANSL>
             </M>
         </W>
         <W id="095S7W5">
             <FORM kindOf="original">kiqaung</FORM>
+            <PHON kindOf="original">kiqauŋ</PHON>
             <FORM kindOf="standard">kiqaung</FORM>
+            <PHON kindOf="standard">kiqauŋ</PHON>
             <M id="095S7W5M0">
                 <FORM kindOf="original">ki</FORM>
+                <PHON kindOf="original">ki</PHON>
                 <FORM kindOf="standard">ki</FORM>
+                <PHON kindOf="standard">ki</PHON>
                 <TRANSL>do</TRANSL>
             </M>
             <M id="095S7W5M1">
                 <FORM kindOf="original">qaung</FORM>
+                <PHON kindOf="original">qauŋ</PHON>
                 <FORM kindOf="standard">qaung</FORM>
+                <PHON kindOf="standard">qauŋ</PHON>
                 <TRANSL>cry</TRANSL>
             </M>
         </W>
         <W id="095S7W6">
             <FORM kindOf="original">a</FORM>
+            <PHON kindOf="original">a</PHON>
             <FORM kindOf="standard">a</FORM>
+            <PHON kindOf="standard">a</PHON>
             <M id="095S7W6M0">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
+                <PHON kindOf="standard">a</PHON>
                 <TRANSL>c</TRANSL>
             </M>
         </W>
         <W id="095S7W7">
             <FORM kindOf="original">nia</FORM>
+            <PHON kindOf="original">nia</PHON>
             <FORM kindOf="standard">nia</FORM>
+            <PHON kindOf="standard">nia</PHON>
             <M id="095S7W7M0">
                 <FORM kindOf="original">nia</FORM>
+                <PHON kindOf="original">nia</PHON>
                 <FORM kindOf="standard">nia</FORM>
+                <PHON kindOf="standard">nia</PHON>
                 <TRANSL>our(exc)</TRANSL>
             </M>
         </W>
         <W id="095S7W8">
             <FORM kindOf="original">levan</FORM>
+            <PHON kindOf="original">ɭəvan</PHON>
             <FORM kindOf="standard">levan</FORM>
+            <PHON kindOf="standard">ɭəvan</PHON>
             <M id="095S7W8M0">
                 <FORM kindOf="original">leva</FORM>
+                <PHON kindOf="original">ɭəva</PHON>
                 <FORM kindOf="standard">leva</FORM>
+                <PHON kindOf="standard">ɭəva</PHON>
                 <TRANSL>pleased</TRANSL>
             </M>
             <M id="095S7W8M1">
                 <FORM kindOf="original">an</FORM>
+                <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
+                <PHON kindOf="standard">an</PHON>
                 <TRANSL>nom</TRANSL>
             </M>
         </W>
         <W id="095S7W9">
             <FORM kindOf="original">nia</FORM>
+            <PHON kindOf="original">nia</PHON>
             <FORM kindOf="standard">nia</FORM>
+            <PHON kindOf="standard">nia</PHON>
             <M id="095S7W9M0">
                 <FORM kindOf="original">nia</FORM>
+                <PHON kindOf="original">nia</PHON>
                 <FORM kindOf="standard">nia</FORM>
+                <PHON kindOf="standard">nia</PHON>
                 <TRANSL>we(exc)</TRANSL>
             </M>
         </W>
         <W id="095S7W10">
             <FORM kindOf="original">pinaka</FORM>
+            <PHON kindOf="original">pinaka</PHON>
             <FORM kindOf="standard">pinaka</FORM>
+            <PHON kindOf="standard">pinaka</PHON>
             <M id="095S7W10M0">
                 <FORM kindOf="original">in=pa</FORM>
+                <PHON kindOf="original">in=pa</PHON>
                 <FORM kindOf="standard">in=pa</FORM>
+                <PHON kindOf="standard">in=pa</PHON>
                 <TRANSL>perf=cause</TRANSL>
             </M>
             <M id="095S7W10M1">
                 <FORM kindOf="original">maka</FORM>
+                <PHON kindOf="original">maka</PHON>
                 <FORM kindOf="standard">maka</FORM>
+                <PHON kindOf="standard">maka</PHON>
                 <TRANSL>via</TRANSL>
             </M>
         </W>
         <W id="095S7W11">
             <FORM kindOf="original">tjanusun</FORM>
+            <PHON kindOf="original">canusun</PHON>
             <FORM kindOf="standard">tjanusun</FORM>
+            <PHON kindOf="standard">ʦanusun</PHON>
             <M id="095S7W11M0">
                 <FORM kindOf="original">tjanu</FORM>
+                <PHON kindOf="original">canu</PHON>
                 <FORM kindOf="standard">tjanu</FORM>
+                <PHON kindOf="standard">ʦanu</PHON>
                 <TRANSL>obl</TRANSL>
             </M>
             <M id="095S7W11M1">
                 <FORM kindOf="original">sun</FORM>
+                <PHON kindOf="original">sun</PHON>
                 <FORM kindOf="standard">sun</FORM>
+                <PHON kindOf="standard">sun</PHON>
                 <TRANSL>you(s)</TRANSL>
             </M>
         </W>
         <W id="095S7W12">
             <FORM kindOf="original">a</FORM>
+            <PHON kindOf="original">a</PHON>
             <FORM kindOf="standard">a</FORM>
+            <PHON kindOf="standard">a</PHON>
             <M id="095S7W12M0">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
+                <PHON kindOf="standard">a</PHON>
                 <TRANSL>c</TRANSL>
             </M>
         </W>
         <W id="095S7W13">
             <FORM kindOf="original">ti</FORM>
+            <PHON kindOf="original">ti</PHON>
             <FORM kindOf="standard">ti</FORM>
+            <PHON kindOf="standard">ti</PHON>
             <M id="095S7W13M0">
                 <FORM kindOf="original">ti</FORM>
+                <PHON kindOf="original">ti</PHON>
                 <FORM kindOf="standard">ti</FORM>
+                <PHON kindOf="standard">ti</PHON>
                 <TRANSL>f.h</TRANSL>
             </M>
         </W>
         <W id="095S7W14">
             <FORM kindOf="original">Yisu-sama.</FORM>
+            <PHON kindOf="original">jisu-sama.</PHON>
             <FORM kindOf="standard">Yisu-sama.</FORM>
+            <PHON kindOf="standard">jisu-sama.</PHON>
             <M id="095S7W14M0">
                 <FORM kindOf="original">Yisu</FORM>
+                <PHON kindOf="original">jisu</PHON>
                 <FORM kindOf="standard">Yisu</FORM>
+                <PHON kindOf="standard">jisu</PHON>
                 <TRANSL>Jesus</TRANSL>
             </M>
             <M id="095S7W14M1">
                 <FORM kindOf="original">sama</FORM>
+                <PHON kindOf="original">sama</PHON>
                 <FORM kindOf="standard">sama</FORM>
+                <PHON kindOf="standard">sama</PHON>
                 <TRANSL>h</TRANSL>
             </M>
         </W>
     </S>
     <S id="095S8">
         <FORM kindOf="original">?aming</FORM>
-        <FORM kindOf="standard">?aming</FORM>
+        <PHON kindOf="original">ʔamiŋ</PHON>
+        <FORM kindOf="standard">'aming</FORM>
+        <PHON kindOf="standard">ʔamiŋ</PHON>
         <TRANSL xml:lang="en">Amen.</TRANSL>
         <W id="095S8W1">
             <FORM kindOf="original">qaming</FORM>
+            <PHON kindOf="original">qamiŋ</PHON>
             <FORM kindOf="standard">qaming</FORM>
+            <PHON kindOf="standard">qamiŋ</PHON>
             <TRANSL xml:lang="en">Amen.</TRANSL>
             <M id="095S8W1M0">
                 <FORM kindOf="original">qaming</FORM>
+                <PHON kindOf="original">qamiŋ</PHON>
                 <FORM kindOf="standard">qaming</FORM>
+                <PHON kindOf="standard">qamiŋ</PHON>
                 <TRANSL>Amen.</TRANSL>
             </M>
         </W>

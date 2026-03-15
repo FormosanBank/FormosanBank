@@ -33,6 +33,13 @@ Then add IPA:
 ```bash
     python ../FormosanBank/QC/utilities/add_phonology.py --corpora_path Final_XML --orthography Ferrell
 ```
+
+The fact that in some texts `?` is a character in the original text AND punctuation causes some problems. The following should clean most of that up:
+
+```bash
+    python fix_ferrell.py
+```
+
 7. **Confirm glossing worked**
 
 For now the glossing isn't standardized across corpora. But the following will at least check to make sure the glosses exist everywhere they are supposed to:

@@ -1,4 +1,4 @@
-<?xml version="1.0" ?>
+<?xml version='1.0' encoding='utf-8'?>
 <TEXT id="PaiwanCh2_017_DOGS" xml:lang="pwn" copyright="public domain" citation="Early, R. J., &amp; Whitehorn, J. (2003). One hundred Paiwan texts. Pacific Linguistics, Research School of Pacific and Asian Studies, The Australian National University." BibTeX_citation="@book{100paiwantexts, author = {Robert Early and John Whitehorn}, title = {One Hundred Paiwan Texts}, year = {2003}, publisher = {Pacific Linguistics, Research School of Pacific and Asian Studies, The Australian National University}}" source="vatu (Qatsiɫay village, p.189)" dialect="Southern">
     <S id="017S1">
         <FORM kindOf="original">uzai a tsautsau ka sitsuayan a puanemanema.</FORM>
@@ -329,9 +329,9 @@
     </S>
     <S id="017S3">
         <FORM kindOf="original">qau kinemnem timadju tu "kudain tsu a tsaḍ sa karekutj?" aya timadju a kinemnem.</FORM>
-        <PHON kindOf="original">qau kinəmnəm timaɉu tu "kudain ʦu a ʦaɖ sa karəkucʔ" aja timaɉu a kinəmnəm.</PHON>
+        <PHON kindOf="original">qau kinəmnəm timaɉu tu "kudain ʦu a ʦaɖ sa karəkuc" aja timaɉu a kinəmnəm.</PHON>
         <FORM kindOf="standard">qau kinemnem timadju tu "kudain cu a cadr sa karekutj?" aya timadju a kinemnem.</FORM>
-        <PHON kindOf="standard">qau kinəmnəm timaɉu tu "kudain ʦu a ʦaɖ sa kaRəkuʦ?" aja timaɉu a kinəmnəm.</PHON>
+        <PHON kindOf="standard">qau kinəmnəm timaɉu tu "kudain ʦu a ʦaɖ sa kaRəkuʦ" aja timaɉu a kinəmnəm.</PHON>
         <TRANSL xml:lang="en">So he thought: “What can be done to these thieves to frighten them?” he thought.</TRANSL>
         <W id="017S3W1">
             <FORM kindOf="original">qau</FORM>
@@ -466,9 +466,9 @@
         </W>
         <W id="017S3W10">
             <FORM kindOf="original">karekutj?"</FORM>
-            <PHON kindOf="original">karəkucʔ"</PHON>
+            <PHON kindOf="original">karəkuc"</PHON>
             <FORM kindOf="standard">karekutj?"</FORM>
-            <PHON kindOf="standard">kaRəkuʦ?"</PHON>
+            <PHON kindOf="standard">kaRəkuʦ"</PHON>
             <M id="017S3W10M0">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
@@ -751,9 +751,9 @@
     </S>
     <S id="017S6">
         <FORM kindOf="original">kivadaqan timadju: "anema su kinemnemnemen?" ayain a kivadaq timadju.</FORM>
-        <PHON kindOf="original">kivadaqan timaɉu: "anəma su kinəmnəmnəmənʔ" ajain a kivadaq timaɉu.</PHON>
+        <PHON kindOf="original">kivadaqan timaɉu: "anəma su kinəmnəmnəmən" ajain a kivadaq timaɉu.</PHON>
         <FORM kindOf="standard">kivadaqan timadju: "anema su kinemnemnemen?" ayain a kivadaq timadju.</FORM>
-        <PHON kindOf="standard">kivadaqan timaɉu: "anəma su kinəmnəmnəmən?" ajain a kivadaq timaɉu.</PHON>
+        <PHON kindOf="standard">kivadaqan timaɉu: "anəma su kinəmnəmnəmən" ajain a kivadaq timaɉu.</PHON>
         <TRANSL xml:lang="en">and asked him: “What are you thinking about?” he was asked.</TRANSL>
         <W id="017S6W1">
             <FORM kindOf="original">kivadaqan</FORM>
@@ -837,9 +837,9 @@
         </W>
         <W id="017S6W5">
             <FORM kindOf="original">kinemnemnemen?"</FORM>
-            <PHON kindOf="original">kinəmnəmnəmənʔ"</PHON>
+            <PHON kindOf="original">kinəmnəmnəmən"</PHON>
             <FORM kindOf="standard">kinemnemnemen?"</FORM>
-            <PHON kindOf="standard">kinəmnəmnəmən?"</PHON>
+            <PHON kindOf="standard">kinəmnəmnəmən"</PHON>
             <M id="017S6W5M0">
                 <FORM kindOf="original">nem=kinemnem</FORM>
                 <PHON kindOf="original">nəm=kinəmnəm</PHON>
@@ -1109,8 +1109,8 @@
     <S id="017S8">
         <FORM kindOf="original">ku kudain sa kasualap?, aya ku varung.</FORM>
         <PHON kindOf="original">ku kudain sa kasuaɭapʔ, aja ku varuŋ.</PHON>
-        <FORM kindOf="standard">ku kudain sa kasualap?, aya ku varung.</FORM>
-        <PHON kindOf="standard">ku kudain sa kasuaɣap?, aja ku vaRuŋ.</PHON>
+        <FORM kindOf="standard">ku kudain sa kasualap', aya ku varung.</FORM>
+        <PHON kindOf="standard">ku kudain sa kasuaɣapʔ, aja ku vaRuŋ.</PHON>
         <TRANSL xml:lang="en">What am I to do to get rid of them is what I am thinking.</TRANSL>
         <W id="017S8W1">
             <FORM kindOf="original">ku</FORM>
@@ -1161,8 +1161,8 @@
         <W id="017S8W4">
             <FORM kindOf="original">kasualap?,</FORM>
             <PHON kindOf="original">kasuaɭapʔ,</PHON>
-            <FORM kindOf="standard">kasualap?,</FORM>
-            <PHON kindOf="standard">kasuaɣap?,</PHON>
+            <FORM kindOf="standard">kasualap',</FORM>
+            <PHON kindOf="standard">kasuaɣapʔ,</PHON>
             <M id="017S8W4M0">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>

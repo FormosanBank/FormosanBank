@@ -1,4 +1,4 @@
-<?xml version="1.0" ?>
+<?xml version='1.0' encoding='utf-8'?>
 <TEXT id="PaiwanCh2_042_THE MONKEY AND THE CRAB" xml:lang="pwn" copyright="public domain" citation="Early, R. J., &amp; Whitehorn, J. (2003). One hundred Paiwan texts. Pacific Linguistics, Research School of Pacific and Asian Studies, The Australian National University." BibTeX_citation="@book{100paiwantexts, author = {Robert Early and John Whitehorn}, title = {One Hundred Paiwan Texts}, year = {2003}, publisher = {Pacific Linguistics, Research School of Pacific and Asian Studies, The Australian National University}}" source="ti ḍail kati gagang (Kuɫaɫau village, p.224)" dialect="Central">
     <S id="042S1">
         <FORM kindOf="original">izua ti ḍail kati gagang.</FORM>
@@ -844,8 +844,8 @@
     <S id="042S8">
         <FORM kindOf="original">"aku a keḍi anga ku kiniitju, qalian? lingu su getselen a ku kaikapu."</FORM>
         <PHON kindOf="original">"aku a kəɖi aŋa ku kiniicu, qaɭianʔ ɭiŋu su gəʦəɭən a ku kaikapu."</PHON>
-        <FORM kindOf="standard">"aku a kedri anga ku kiniitju, qalian? lingu su gecelen a ku kaikapu."</FORM>
-        <PHON kindOf="standard">"aku a kəɖi aŋa ku kiniiʦu, qaɭian? ɭiŋu su gəʦəɭən a ku kaikapu."</PHON>
+        <FORM kindOf="standard">"aku a kedri anga ku kiniitju, qalian' lingu su gecelen a ku kaikapu."</FORM>
+        <PHON kindOf="standard">"aku a kəɖi aŋa ku kiniiʦu, qaɭianʔ ɭiŋu su gəʦəɭən a ku kaikapu."</PHON>
         <TRANSL xml:lang="en">“Friend, why are there so few left of what I’ve picked? Perhaps you have torn the cloth.”</TRANSL>
         <W id="042S8W1">
             <FORM kindOf="original">"aku</FORM>
@@ -934,9 +934,9 @@
         </W>
         <W id="042S8W7">
             <FORM kindOf="original">qalian?</FORM>
-            <PHON kindOf="original">qaɭianʔ</PHON>
+            <PHON kindOf="original">qaɭian</PHON>
             <FORM kindOf="standard">qalian?</FORM>
-            <PHON kindOf="standard">qaɭian?</PHON>
+            <PHON kindOf="standard">qaɭian</PHON>
             <M id="042S8W7M0">
                 <FORM kindOf="original">qali</FORM>
                 <PHON kindOf="original">qaɭi</PHON>
@@ -1041,8 +1041,8 @@
     <S id="042S9">
         <FORM kindOf="original">"anema naya, qalian? qayamu a su kaikapu, tu ki zua verits kemuda."</FORM>
         <PHON kindOf="original">"anəma naja, qaɭianʔ qajamu a su kaikapu, tu ki zua vəriʦ kəmuda."</PHON>
-        <FORM kindOf="standard">"anema naya, qalian? qayamu a su kaikapu, tu ki zua veric kemuda."</FORM>
-        <PHON kindOf="standard">"anəma naja, qaɭian? qajamu a su kaikapu, tu ki zua vəriʦ kəmuda."</PHON>
+        <FORM kindOf="standard">"anema naya, qalian' qayamu a su kaikapu, tu ki zua veric kemuda."</FORM>
+        <PHON kindOf="standard">"anəma naja, qaɭianʔ qajamu a su kaikapu, tu ki zua vəriʦ kəmuda."</PHON>
         <TRANSL xml:lang="en">“What are you saying, friend? Look at your cloth, to see whether there is a tear or anything.”</TRANSL>
         <W id="042S9W1">
             <FORM kindOf="original">"anema</FORM>
@@ -1086,9 +1086,9 @@
         </W>
         <W id="042S9W3">
             <FORM kindOf="original">qalian?</FORM>
-            <PHON kindOf="original">qaɭianʔ</PHON>
+            <PHON kindOf="original">qaɭian</PHON>
             <FORM kindOf="standard">qalian?</FORM>
-            <PHON kindOf="standard">qaɭian?</PHON>
+            <PHON kindOf="standard">qaɭian</PHON>
             <M id="042S9W3M0">
                 <FORM kindOf="original">qali</FORM>
                 <PHON kindOf="original">qaɭi</PHON>
@@ -1749,9 +1749,9 @@
     </S>
     <S id="042S16">
         <FORM kindOf="original">"sekuda sun tua ku sapui, qalian?"</FORM>
-        <PHON kindOf="original">"səkuda sun tua ku sapui, qaɭianʔ"</PHON>
+        <PHON kindOf="original">"səkuda sun tua ku sapui, qaɭian"</PHON>
         <FORM kindOf="standard">"sekuda sun tua ku sapui, qalian?"</FORM>
-        <PHON kindOf="standard">"səkuda sun tua ku sapui, qaɭian?"</PHON>
+        <PHON kindOf="standard">"səkuda sun tua ku sapui, qaɭian"</PHON>
         <TRANSL xml:lang="en">“What do you think of my fire, friend?”</TRANSL>
         <W id="042S16W1">
             <FORM kindOf="original">"sekuda</FORM>
@@ -1827,9 +1827,9 @@
         </W>
         <W id="042S16W6">
             <FORM kindOf="original">qalian?"</FORM>
-            <PHON kindOf="original">qaɭianʔ"</PHON>
+            <PHON kindOf="original">qaɭian"</PHON>
             <FORM kindOf="standard">qalian?"</FORM>
-            <PHON kindOf="standard">qaɭian?"</PHON>
+            <PHON kindOf="standard">qaɭian"</PHON>
             <M id="042S16W6M0">
                 <FORM kindOf="original">qali</FORM>
                 <PHON kindOf="original">qaɭi</PHON>
@@ -2212,9 +2212,9 @@
     </S>
     <S id="042S21">
         <FORM kindOf="original">"sekuda sun tua ku sapui, qalian?"</FORM>
-        <PHON kindOf="original">"səkuda sun tua ku sapui, qaɭianʔ"</PHON>
+        <PHON kindOf="original">"səkuda sun tua ku sapui, qaɭian"</PHON>
         <FORM kindOf="standard">"sekuda sun tua ku sapui, qalian?"</FORM>
-        <PHON kindOf="standard">"səkuda sun tua ku sapui, qaɭian?"</PHON>
+        <PHON kindOf="standard">"səkuda sun tua ku sapui, qaɭian"</PHON>
         <TRANSL xml:lang="en">“What do you think of my fire, friend?”</TRANSL>
         <W id="042S21W1">
             <FORM kindOf="original">"sekuda</FORM>
@@ -2290,9 +2290,9 @@
         </W>
         <W id="042S21W6">
             <FORM kindOf="original">qalian?"</FORM>
-            <PHON kindOf="original">qaɭianʔ"</PHON>
+            <PHON kindOf="original">qaɭian"</PHON>
             <FORM kindOf="standard">qalian?"</FORM>
-            <PHON kindOf="standard">qaɭian?"</PHON>
+            <PHON kindOf="standard">qaɭian"</PHON>
             <M id="042S21W6M0">
                 <FORM kindOf="original">qali</FORM>
                 <PHON kindOf="original">qaɭi</PHON>
@@ -2753,9 +2753,9 @@
     </S>
     <S id="042S28">
         <FORM kindOf="original">"ki ku kuda-i sa ti ku qali, sa mevaɫut?"</FORM>
-        <PHON kindOf="original">"ki ku kuda-i sa ti ku qaɭi, sa məvaʎutʔ"</PHON>
+        <PHON kindOf="original">"ki ku kuda-i sa ti ku qaɭi, sa məvaʎut"</PHON>
         <FORM kindOf="standard">"ki ku kuda-i sa ti ku qali, sa mevaljut?"</FORM>
-        <PHON kindOf="standard">"ki ku kuda-i sa ti ku qaɭi, sa məvaʎut?"</PHON>
+        <PHON kindOf="standard">"ki ku kuda-i sa ti ku qaɭi, sa məvaʎut"</PHON>
         <TRANSL xml:lang="en">“What am I to do to bring my friend back to life?”</TRANSL>
         <W id="042S28W1">
             <FORM kindOf="original">"ki</FORM>
@@ -2870,9 +2870,9 @@
         </W>
         <W id="042S28W9">
             <FORM kindOf="original">mevaɫut?"</FORM>
-            <PHON kindOf="original">məvaʎutʔ"</PHON>
+            <PHON kindOf="original">məvaʎut"</PHON>
             <FORM kindOf="standard">mevaljut?"</FORM>
-            <PHON kindOf="standard">məvaʎut?"</PHON>
+            <PHON kindOf="standard">məvaʎut"</PHON>
             <M id="042S28W9M0">
                 <FORM kindOf="original">me</FORM>
                 <PHON kindOf="original">mə</PHON>
@@ -3030,9 +3030,9 @@
     </S>
     <S id="042S30">
         <FORM kindOf="original">"kemuda mevaɫut ti ku qali?" aya.</FORM>
-        <PHON kindOf="original">"kəmuda məvaʎut ti ku qaɭiʔ" aja.</PHON>
+        <PHON kindOf="original">"kəmuda məvaʎut ti ku qaɭi" aja.</PHON>
         <FORM kindOf="standard">"kemuda mevaljut ti ku qali?" aya.</FORM>
-        <PHON kindOf="standard">"kəmuda məvaʎut ti ku qaɭi?" aja.</PHON>
+        <PHON kindOf="standard">"kəmuda məvaʎut ti ku qaɭi" aja.</PHON>
         <TRANSL xml:lang="en">“How will my friend come back to life?” he said.</TRANSL>
         <W id="042S30W1">
             <FORM kindOf="original">"kemuda</FORM>
@@ -3095,9 +3095,9 @@
         </W>
         <W id="042S30W5">
             <FORM kindOf="original">qali?"</FORM>
-            <PHON kindOf="original">qaɭiʔ"</PHON>
+            <PHON kindOf="original">qaɭi"</PHON>
             <FORM kindOf="standard">qali?"</FORM>
-            <PHON kindOf="standard">qaɭi?"</PHON>
+            <PHON kindOf="standard">qaɭi"</PHON>
             <M id="042S30W5M0">
                 <FORM kindOf="original">qali</FORM>
                 <PHON kindOf="original">qaɭi</PHON>
@@ -4635,9 +4635,9 @@
     </S>
     <S id="042S43">
         <FORM kindOf="original">"aku azua su sualapen a ku qalitsi?"</FORM>
-        <PHON kindOf="original">"aku azua su suaɭapən a ku qaɭiʦiʔ"</PHON>
+        <PHON kindOf="original">"aku azua su suaɭapən a ku qaɭiʦi"</PHON>
         <FORM kindOf="standard">"aku azua su sualapen a ku qalici?"</FORM>
-        <PHON kindOf="standard">"aku azua su suaɭapən a ku qaɭiʦi?"</PHON>
+        <PHON kindOf="standard">"aku azua su suaɭapən a ku qaɭiʦi"</PHON>
         <TRANSL xml:lang="en">“Why did you remove my penis?”</TRANSL>
         <W id="042S43W1">
             <FORM kindOf="original">"aku</FORM>
@@ -4740,9 +4740,9 @@
         </W>
         <W id="042S43W7">
             <FORM kindOf="original">qalitsi?"</FORM>
-            <PHON kindOf="original">qaɭiʦiʔ"</PHON>
+            <PHON kindOf="original">qaɭiʦi"</PHON>
             <FORM kindOf="standard">qalici?"</FORM>
-            <PHON kindOf="standard">qaɭiʦi?"</PHON>
+            <PHON kindOf="standard">qaɭiʦi"</PHON>
             <M id="042S43W7M0">
                 <FORM kindOf="original">qalitsi</FORM>
                 <PHON kindOf="original">qaɭiʦi</PHON>

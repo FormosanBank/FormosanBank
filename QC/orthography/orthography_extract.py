@@ -428,7 +428,7 @@ def main(args, langs):
             if corpus[corp]:
                 o_info = extract_orthographic_info(corpus[corp])
                 if args.by_dialect:
-                    output_folder = os.path.join(logs_dir, corp, language)
+                    output_folder = os.path.join(logs_dir, language, corp)
                 else:
                     output_folder = os.path.join(logs_dir, language)
                 os.makedirs(output_folder, exist_ok=True) #make the folder if needed. Doesn't overwrite.

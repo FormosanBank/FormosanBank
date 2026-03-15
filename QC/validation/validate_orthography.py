@@ -91,8 +91,7 @@ def main(args, possiblelangs):
     if args.language:
         langs = [args.language]
     else:
-        langs = os.listdir(args.o_info)
-        langs = [lang for lang in langs if lang in possiblelangs]
+        langs = [lang for lang in os.listdir(args.o_info)]
 
     for lang in langs:
         print(f"========== Analyzing {lang} ==========\n")

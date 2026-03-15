@@ -6,6 +6,10 @@ Identical to Ortho113 except that all dialects can use either `o` or `u` to refe
 
 # Ferrell
 
+Ferrell does not use `o` since it is the same phoneme as `u`. However, Ortho113 does. This cannot be straightforwardly standardized.
+
+WARNING: The normal code will replace all question marks with glottal stops, even if it's actual punctuation. For 100 Paiwan Texts, I wrote a fix_ferrell.py script to try to mostly fix this.
+
 ts	-> c
 
 ḍ ->	dr
