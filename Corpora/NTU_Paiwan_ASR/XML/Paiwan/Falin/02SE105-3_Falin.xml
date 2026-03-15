@@ -1,123 +1,171 @@
-<?xml version='1.0' encoding='utf-8'?>
-<TEXT id="NTU_Pwn_Falin_02SE105-3 Falin" xml:lang="pwn" source="NTU Paiwan Data, Participant Falin, file 02SE105-3 Falin" audio="02SE105-3 Falin.wav" copyright="CC-BY" citation="Le Ferrand, É., Prud'hommeaux, E., Hartshorne, J. K., &amp; Sung, L.-M. (2024). NTU Paiwan ASR Corpus. Electronic Resource." BibTeX_citation="@electronic{leferrand2024ntu, author = {Le Ferrand, {'E}ric and Prud'hommeaux, Emily and Hartshorne, Joshua K. and Sung, Li-May}, year = {2024}, title = {{NTU} {Paiwan} {ASR} Corpus},type = {Electronic Resource}}" dialect="Eastern">
+<?xml version='1.0' encoding='UTF-8'?>
+<TEXT id="NTU_Pwn_Falin_02SE105-3 Falin" xml:lang="pwn" source="NTU Paiwan Data, Participant Falin, file 02SE105-3 Falin" audio="02SE105-3_Falin.wav" copyright="CC-BY" citation="Le Ferrand, É., Prud'hommeaux, E., Hartshorne, J. K., &amp; Sung, L.-M. (2024). NTU Paiwan ASR Corpus. Electronic Resource." BibTeX_citation="@electronic{leferrand2024ntu, author = {Le Ferrand, {'E}ric and Prud'hommeaux, Emily and Hartshorne, Joshua K. and Sung, Li-May}, year = {2024}, title = {{NTU} {Paiwan} {ASR} Corpus},type = {Electronic Resource}}" dialect="Eastern">
     <S id="a1">
         <FORM kindOf="original">kasicuacuayan, izua za pinaka ti salavan a qadaw a cemas, aya tu si qati ta caucau timadju.</FORM>
-        <FORM kindOf="standard">kasicoacoayan, izoa za pinaka ti salavan a qadaw a cemas, aya to si qati ta caocao timadjo.</FORM>
-        <AUDIO start="1.970" end="18.088" />
+        <PHON kindOf="original">kasiʦuaʦuajan, izua za pinaka ti saɭavan a qadaw a ʦəmas, aja tu si qati ta ʦauʦau timaɉu.</PHON>
+        <FORM kindOf="standard">kasicuacuayan, izua za pinaka ti salavan a qadaw a cemas, aya tu si qati ta caucau timadju.</FORM>
+        <PHON kindOf="standard">kasiʦuaʦuajan, izua za pinaka ti saɭavan a qadaw a ʦəmas, aja tu si qati ta ʦauʦau timaɉu.</PHON>
+        <AUDIO start="1.970" end="18.088" file="02SE105-3_Falin_a1.wav"/>
     </S>
     <S id="a3">
         <FORM kindOf="original">masa peniliq ta djuadjuay a qipu, sa alang tu pinaru caucau tu tjara macidilj a uqaljay kata vavayan a ljicaq,</FORM>
-        <FORM kindOf="standard">masa peniliq ta djoadjoay a qipo, sa alang to pinaro caocao to tjara macidilj a oqaljay kata vavayan a ljicaq,</FORM>
-        <AUDIO start="18.500" end="37.735" />
+        <PHON kindOf="original">masa pəniɭiq ta ɉuaɉuaj a qipu, sa aɭaŋ tu pinaru ʦauʦau tu ʦara maʦidiʎ a uqaʎaj kata vavajan a ʎiʦaq,</PHON>
+        <FORM kindOf="standard">masa peniliq ta djuadjuay a qipu, sa alang tu pinaru caucau tu tjara macidilj a uqaljay kata vavayan a ljicaq,</FORM>
+        <PHON kindOf="standard">masa pəniɭiq ta ɉuaɉuaj a qipu, sa aɭaŋ tu pinaru ʦauʦau tu ʦara maʦidiʎ a uqaʎaj kata vavajan a ʎiʦaq,</PHON>
+        <AUDIO start="18.500" end="37.735" file="02SE105-3_Falin_a3.wav"/>
     </S>
     <S id="a5">
         <FORM kindOf="original">sa djapesi a venalidi a papunasi, sa papuvavaki azua inalang a pina, sa papuvavaki azua inalang a pinaru caucau a ljicaq katua kinemenem vinarung, katua kinemeneman vinarungan.</FORM>
-        <FORM kindOf="standard">sa djapesi a venalidi a paponasi, sa papovavaki azoa inalang a pina, sa papovavaki azoa inalang a pinaro caocao a ljicaq katoa kinemenem vinarong, katoa kinemeneman vinarongan.</FORM>
-        <AUDIO start="51.029" end="86.970" />
+        <PHON kindOf="original">sa ɉapəsi a vənaɭidi a papunasi, sa papuvavaki azua inaɭaŋ a pina, sa papuvavaki azua inaɭaŋ a pinaru ʦauʦau a ʎiʦaq katua kinəmənəm vinaruŋ, katua kinəmənəman vinaruŋan.</PHON>
+        <FORM kindOf="standard">sa djapesi a venalidi a papunasi, sa papuvavaki azua inalang a pina, sa papuvavaki azua inalang a pinaru caucau a ljicaq katua kinemenem vinarung, katua kinemeneman vinarungan.</FORM>
+        <PHON kindOf="standard">sa ɉapəsi a vənaɭidi a papunasi, sa papuvavaki azua inaɭaŋ a pina, sa papuvavaki azua inaɭaŋ a pinaru ʦauʦau a ʎiʦaq katua kinəmənəm vinaruŋ, katua kinəmənəman vinaruŋan.</PHON>
+        <AUDIO start="51.029" end="86.970" file="02SE105-3_Falin_a5.wav"/>
     </S>
     <S id="a8">
         <FORM kindOf="original">kemasitazua maqatin anga tu katjenasiyan anga caucau,</FORM>
-        <FORM kindOf="standard">kemasitazoa maqatin anga to katjenasiyan anga caocao,</FORM>
-        <AUDIO start="112.294" end="119.911" />
+        <PHON kindOf="original">kəmasitazua maqatin aŋa tu kaʦənasijan aŋa ʦauʦau,</PHON>
+        <FORM kindOf="standard">kemasitazua maqatin anga tu katjenasiyan anga caucau,</FORM>
+        <PHON kindOf="standard">kəmasitazua maqatin aŋa tu kaʦənasijan aŋa ʦauʦau,</PHON>
+        <AUDIO start="112.294" end="119.911" file="02SE105-3_Falin_a8.wav"/>
     </S>
     <S id="a6">
         <FORM kindOf="original">sa inika mavavetjek anga nasi nua caucau.</FORM>
-        <FORM kindOf="standard">sa inika mavavetjek anga nasi noa caocao.</FORM>
-        <AUDIO start="129.265" end="135.559" />
+        <PHON kindOf="original">sa inika mavavəʦək aŋa nasi nua ʦauʦau.</PHON>
+        <FORM kindOf="standard">sa inika mavavetjek anga nasi nua caucau.</FORM>
+        <PHON kindOf="standard">sa inika mavavəʦək aŋa nasi nua ʦauʦau.</PHON>
+        <AUDIO start="129.265" end="135.559" file="02SE105-3_Falin_a6.wav"/>
     </S>
     <S id="a11">
         <FORM kindOf="original">au ita ljinavekan a kacauan kamayan a maudaudalj ta pitja mira mirazerazek, pitja mirazerazek.</FORM>
-        <FORM kindOf="standard">ao ita ljinavekan a kacaoan kamayan a maodaodalj ta pitja mira mirazerazek, pitja mirazerazek.</FORM>
-        <AUDIO start="162.146" end="179.440" />
+        <PHON kindOf="original">au ita ʎinavəkan a kaʦauan kamajan a maudaudaʎ ta piʦa mira mirazərazək, piʦa mirazərazək.</PHON>
+        <FORM kindOf="standard">au ita ljinavekan a kacauan kamayan a maudaudalj ta pitja mira mirazerazek, pitja mirazerazek.</FORM>
+        <PHON kindOf="standard">au ita ʎinavəkan a kaʦauan kamajan a maudaudaʎ ta piʦa mira mirazərazək, piʦa mirazərazək.</PHON>
+        <AUDIO start="162.146" end="179.440" file="02SE105-3_Falin_a11.wav"/>
     </S>
     <S id="a12">
         <FORM kindOf="original">aicu a madrusa kinasizuanan a tinagiljan a caucau, pinuvaruvarung a rinanau na qadaw a cemas.</FORM>
-        <FORM kindOf="standard">aico a madrosa kinasizoanan a tinagiljan a caocao, pinovarovarong a rinanao na qadaw a cemas.</FORM>
-        <AUDIO start="192.941" end="215.999" />
+        <PHON kindOf="original">aiʦu a maɖusa kinasizuanan a tinagiʎan a ʦauʦau, pinuvaruvaruŋ a rinanau na qadaw a ʦəmas.</PHON>
+        <FORM kindOf="standard">aicu a madrusa kinasizuanan a tinagiljan a caucau, pinuvaruvarung a rinanau na qadaw a cemas.</FORM>
+        <PHON kindOf="standard">aiʦu a maɖusa kinasizuanan a tinagiʎan a ʦauʦau, pinuvaruvaruŋ a rinanau na qadaw a ʦəmas.</PHON>
+        <AUDIO start="192.941" end="215.999" file="02SE105-3_Falin_a12.wav"/>
     </S>
     <S id="a14">
         <FORM kindOf="original">marepuvaljau sa patagilj a qemati a masan aljak ta vavayan kata uqaljay tu ti tu si qacu qacuvungan, tu si qacuvungan ta si sekauljan ta si sekaulj na cemas a sengesengan.</FORM>
-        <FORM kindOf="standard">marepovaljao sa patagilj a qemati a masan aljak ta vavayan kata oqaljay to ti to si qaco qacovongan, to si qacovongan ta si sekaoljan ta si sekaolj na cemas a sengesengan.</FORM>
-        <AUDIO start="218.852" end="249.176" />
+        <PHON kindOf="original">marəpuvaʎau sa patagiʎ a qəmati a masan aʎak ta vavajan kata uqaʎaj tu ti tu si qaʦu qaʦuvuŋan, tu si qaʦuvuŋan ta si səkauʎan ta si səkauʎ na ʦəmas a səŋəsəŋan.</PHON>
+        <FORM kindOf="standard">marepuvaljau sa patagilj a qemati a masan aljak ta vavayan kata uqaljay tu ti tu si qacu qacuvungan, tu si qacuvungan ta si sekauljan ta si sekaulj na cemas a sengesengan.</FORM>
+        <PHON kindOf="standard">marəpuvaʎau sa patagiʎ a qəmati a masan aʎak ta vavajan kata uqaʎaj tu ti tu si qaʦu qaʦuvuŋan, tu si qaʦuvuŋan ta si səkauʎan ta si səkauʎ na ʦəmas a səŋəsəŋan.</PHON>
+        <AUDIO start="218.852" end="249.176" file="02SE105-3_Falin_a14.wav"/>
     </S>
     <S id="a17">
         <FORM kindOf="original">ulja madjadjut anan a kina marekasusu, azua sinipualjak a uqaljay kata vavayan ita cungal a pinu macan, sa na pakasarekuya aravac ta sikipa kakudanan.</FORM>
-        <FORM kindOf="standard">olja madjadjot anan a kina marekasoso, azoa sinipoaljak a oqaljay kata vavayan ita congal a pino macan, sa na pakasarekoya aravac ta sikipa kakodanan.</FORM>
-        <AUDIO start="254.382" end="282.941" />
+        <PHON kindOf="original">uʎa maɉaɉut anan a kina marəkasusu, azua sinipuaʎak a uqaʎaj kata vavajan ita ʦuŋaɭ a pinu maʦan, sa na pakasarəkuja aravaʦ ta sikipa kakudanan.</PHON>
+        <FORM kindOf="standard">ulja madjadjut anan a kina marekasusu, azua sinipualjak a uqaljay kata vavayan ita cungal a pinu macan, sa na pakasarekuya aravac ta sikipa kakudanan.</FORM>
+        <PHON kindOf="standard">uʎa maɉaɉut anan a kina marəkasusu, azua sinipuaʎak a uqaʎaj kata vavajan ita ʦuŋaɭ a pinu maʦan, sa na pakasarəkuja aravaʦ ta sikipa kakudanan.</PHON>
+        <AUDIO start="254.382" end="282.941" file="02SE105-3_Falin_a17.wav"/>
     </S>
     <S id="a19">
         <FORM kindOf="original">autauta pita siki qecevan ta sikavaljutan, pinarumalj anga i kacauan.</FORM>
-        <FORM kindOf="standard">aotaota pita siki qecevan ta sikavaljotan, pinaromalj anga i kacaoan.</FORM>
-        <AUDIO start="289.264" end="301.529" />
+        <PHON kindOf="original">autauta pita siki qəʦəvan ta sikavaʎutan, pinarumaʎ aŋa i kaʦauan.</PHON>
+        <FORM kindOf="standard">autauta pita siki qecevan ta sikavaljutan, pinarumalj anga i kacauan.</FORM>
+        <PHON kindOf="standard">autauta pita siki qəʦəvan ta sikavaʎutan, pinarumaʎ aŋa i kaʦauan.</PHON>
+        <AUDIO start="289.264" end="301.529" file="02SE105-3_Falin_a19.wav"/>
     </S>
     <S id="a21">
         <FORM kindOf="original">sinipatudur sa paljiazuay anga sikudan na caucau,</FORM>
-        <FORM kindOf="standard">sinipatodor sa paljiazoay anga sikodan na caocao,</FORM>
-        <AUDIO start="310.617" end="319.764" />
+        <PHON kindOf="original">sinipatudur sa paʎiazuaj aŋa sikudan na ʦauʦau,</PHON>
+        <FORM kindOf="standard">sinipatudur sa paljiazuay anga sikudan na caucau,</FORM>
+        <PHON kindOf="standard">sinipatudur sa paʎiazuaj aŋa sikudan na ʦauʦau,</PHON>
+        <AUDIO start="310.617" end="319.764" file="02SE105-3_Falin_a21.wav"/>
     </S>
     <S id="a23">
         <FORM kindOf="original">sa zinululj anga na masan pazangal a kakeljangan tua sikuda sikudan na caucau, tua sikudan na caucau.</FORM>
-        <FORM kindOf="standard">sa zinololj anga na masan pazangal a kakeljangan toa sikoda sikodan na caocao, toa sikodan na caocao.</FORM>
-        <AUDIO start="334.764" end="351.852" />
+        <PHON kindOf="original">sa zinuɭuʎ aŋa na masan pazaŋaɭ a kakəʎaŋan tua sikuda sikudan na ʦauʦau, tua sikudan na ʦauʦau.</PHON>
+        <FORM kindOf="standard">sa zinululj anga na masan pazangal a kakeljangan tua sikuda sikudan na caucau, tua sikudan na caucau.</FORM>
+        <PHON kindOf="standard">sa zinuɭuʎ aŋa na masan pazaŋaɭ a kakəʎaŋan tua sikuda sikudan na ʦauʦau, tua sikudan na ʦauʦau.</PHON>
+        <AUDIO start="334.764" end="351.852" file="02SE105-3_Falin_a23.wav"/>
     </S>
     <S id="a25">
         <FORM kindOf="original">ka meqaca anga zua mareka aljak, izua i djudjut a umaq ta karakuda karakudakuda.</FORM>
-        <FORM kindOf="standard">ka meqaca anga zoa mareka aljak, izoa i djodjot a omaq ta karakoda karakodakoda.</FORM>
-        <AUDIO start="356.470" end="370.440" />
+        <PHON kindOf="original">ka məqaʦa aŋa zua marəka aʎak, izua i ɉuɉut a umaq ta karakuda karakudakuda.</PHON>
+        <FORM kindOf="standard">ka meqaca anga zua mareka aljak, izua i djudjut a umaq ta karakuda karakudakuda.</FORM>
+        <PHON kindOf="standard">ka məqaʦa aŋa zua marəka aʎak, izua i ɉuɉut a umaq ta karakuda karakudakuda.</PHON>
+        <AUDIO start="356.470" end="370.440" file="02SE105-3_Falin_a25.wav"/>
     </S>
     <S id="a27">
         <FORM kindOf="original">tazua na se sedjut a kalevelevan ta kadjunangan,</FORM>
-        <FORM kindOf="standard">tazoa na se sedjot a kalevelevan ta kadjonangan,</FORM>
-        <AUDIO start="376.999" end="386.882" />
+        <PHON kindOf="original">tazua na sə səɉut a kaɭəvəɭəvan ta kaɉunaŋan,</PHON>
+        <FORM kindOf="standard">tazua na se sedjut a kalevelevan ta kadjunangan,</FORM>
+        <PHON kindOf="standard">tazua na sə səɉut a kaɭəvəɭəvan ta kaɉunaŋan,</PHON>
+        <AUDIO start="376.999" end="386.882" file="02SE105-3_Falin_a27.wav"/>
     </S>
     <S id="a29">
         <FORM kindOf="original">au maculju tu puqizing a cedas na qadaw, sa ulja maqati a mevaljut sa uqaca a sini talem ta mareka lami,</FORM>
-        <FORM kindOf="standard">ao macoljo to poqizing a cedas na qadaw, sa olja maqati a mevaljot sa oqaca a sini talem ta mareka lami,</FORM>
-        <AUDIO start="395.587" end="417.441" />
+        <PHON kindOf="original">au maʦuʎu tu puqiziŋ a ʦədas na qadaw, sa uʎa maqati a məvaʎut sa uqaʦa a sini taɭəm ta marəka ɭami,</PHON>
+        <FORM kindOf="standard">au maculju tu puqizing a cedas na qadaw, sa ulja maqati a mevaljut sa uqaca a sini talem ta mareka lami,</FORM>
+        <PHON kindOf="standard">au maʦuʎu tu puqiziŋ a ʦədas na qadaw, sa uʎa maqati a məvaʎut sa uqaʦa a sini taɭəm ta marəka ɭami,</PHON>
+        <AUDIO start="395.587" end="417.441" file="02SE105-3_Falin_a29.wav"/>
     </S>
     <S id="a31">
         <FORM kindOf="original">na matulu anga cemepis ta asaw na kasiw tu si paselem ta cedas na qadaw,</FORM>
-        <FORM kindOf="standard">na matolo anga cemepis ta asaw na kasiw to si paselem ta cedas na qadaw,</FORM>
-        <AUDIO start="427.882" end="438.646" />
+        <PHON kindOf="original">na matuɭu aŋa ʦəməpis ta asaw na kasiw tu si pasəɭəm ta ʦədas na qadaw,</PHON>
+        <FORM kindOf="standard">na matulu anga cemepis ta asaw na kasiw tu si paselem ta cedas na qadaw,</FORM>
+        <PHON kindOf="standard">na matuɭu aŋa ʦəməpis ta asaw na kasiw tu si pasəɭəm ta ʦədas na qadaw,</PHON>
+        <AUDIO start="427.882" end="438.646" file="02SE105-3_Falin_a31.wav"/>
     </S>
     <S id="a32">
         <FORM kindOf="original">sa maqati tu si kavaljutan sa uqaca a sini kikavecengel a mareka talem na lami.</FORM>
-        <FORM kindOf="standard">sa maqati to si kavaljotan sa oqaca a sini kikavecengel a mareka talem na lami.</FORM>
-        <AUDIO start="458.146" end="474.352" />
+        <PHON kindOf="original">sa maqati tu si kavaʎutan sa uqaʦa a sini kikavəʦəŋəɭ a marəka taɭəm na ɭami.</PHON>
+        <FORM kindOf="standard">sa maqati tu si kavaljutan sa uqaca a sini kikavecengel a mareka talem na lami.</FORM>
+        <PHON kindOf="standard">sa maqati tu si kavaʎutan sa uqaʦa a sini kikavəʦəŋəɭ a marəka taɭəm na ɭami.</PHON>
+        <AUDIO start="458.146" end="474.352" file="02SE105-3_Falin_a32.wav"/>
     </S>
     <S id="a35">
         <FORM kindOf="original">kiljaljava anga tu kiljaljava, maqati anga kiayain a sinikavecang sinikavecengel.</FORM>
-        <FORM kindOf="standard">kiljaljava anga to kiljaljava, maqati anga kiayain a sinikavecang sinikavecengel.</FORM>
-        <AUDIO start="482.117" end="496.235" />
+        <PHON kindOf="original">kiʎaʎava aŋa tu kiʎaʎava, maqati aŋa kiajain a sinikavəʦaŋ sinikavəʦəŋəɭ.</PHON>
+        <FORM kindOf="standard">kiljaljava anga tu kiljaljava, maqati anga kiayain a sinikavecang sinikavecengel.</FORM>
+        <PHON kindOf="standard">kiʎaʎava aŋa tu kiʎaʎava, maqati aŋa kiajain a sinikavəʦaŋ sinikavəʦəŋəɭ.</PHON>
+        <AUDIO start="482.117" end="496.235" file="02SE105-3_Falin_a35.wav"/>
     </S>
     <S id="a36">
         <FORM kindOf="original">matu pusi maisuan ta vaqu, ayatua masa ljiyateku angata qadaw, azua si paisuisu a qaselu,</FORM>
-        <FORM kindOf="standard">mato posi maisoan ta vaqo, ayatoa masa ljiyateko angata qadaw, azoa si paisoiso a qaselo,</FORM>
-        <AUDIO start="503.382" end="519.823" />
+        <PHON kindOf="original">matu pusi maisuan ta vaqu, ajatua masa ʎijatəku aŋata qadaw, azua si paisuisu a qasəɭu,</PHON>
+        <FORM kindOf="standard">matu pusi maisuan ta vaqu, ayatua masa ljiyateku angata qadaw, azua si paisuisu a qaselu,</FORM>
+        <PHON kindOf="standard">matu pusi maisuan ta vaqu, ajatua masa ʎijatəku aŋata qadaw, azua si paisuisu a qasəɭu,</PHON>
+        <AUDIO start="503.382" end="519.823" file="02SE105-3_Falin_a36.wav"/>
     </S>
     <S id="a37">
         <FORM kindOf="original">nu cidjingen a paljevavaw secukes ta kamaya ta kalevelevan,</FORM>
-        <FORM kindOf="standard">no cidjingen a paljevavaw secokes ta kamaya ta kalevelevan,</FORM>
-        <AUDIO start="534.205" end="544.647" />
+        <PHON kindOf="original">nu ʦiɉiŋən a paʎəvavaw səʦukəs ta kamaja ta kaɭəvəɭəvan,</PHON>
+        <FORM kindOf="standard">nu cidjingen a paljevavaw secukes ta kamaya ta kalevelevan,</FORM>
+        <PHON kindOf="standard">nu ʦiɉiŋən a paʎəvavaw səʦukəs ta kamaja ta kaɭəvəɭəvan,</PHON>
+        <AUDIO start="534.205" end="544.647" file="02SE105-3_Falin_a37.wav"/>
     </S>
     <S id="a39">
         <FORM kindOf="original">ljakua izua za na penakaleva nu ljevavaw sa ljeteku a qaselu nu maisuisu, cinukes anga paljevavaw a kalevelevan, au masa pinavacaqan anga sa na pazangal a pacugan.</FORM>
-        <FORM kindOf="standard">ljakoa izoa za na penakaleva no ljevavaw sa ljeteko a qaselo no maisoiso, cinokes anga paljevavaw a kalevelevan, ao masa pinavacaqan anga sa na pazangal a pacogan.</FORM>
-        <AUDIO start="544.647" end="577.735" />
+        <PHON kindOf="original">ʎakua izua za na pənakaɭəva nu ʎəvavaw sa ʎətəku a qasəɭu nu maisuisu, ʦinukəs aŋa paʎəvavaw a kaɭəvəɭəvan, au masa pinavaʦaqan aŋa sa na pazaŋaɭ a paʦugan.</PHON>
+        <FORM kindOf="standard">ljakua izua za na penakaleva nu ljevavaw sa ljeteku a qaselu nu maisuisu, cinukes anga paljevavaw a kalevelevan, au masa pinavacaqan anga sa na pazangal a pacugan.</FORM>
+        <PHON kindOf="standard">ʎakua izua za na pənakaɭəva nu ʎəvavaw sa ʎətəku a qasəɭu nu maisuisu, ʦinukəs aŋa paʎəvavaw a kaɭəvəɭəvan, au masa pinavaʦaqan aŋa sa na pazaŋaɭ a paʦugan.</PHON>
+        <AUDIO start="544.647" end="577.735" file="02SE105-3_Falin_a39.wav"/>
     </S>
     <S id="a42">
         <FORM kindOf="original">ljakua, ayatua tua na maqati a maca ita cungal, nu peni nu pen nu penitua nu penitua pi nu penitua pitua ta qipu, azua qipu kata pitus sedjamedjameq sakamaya tua maca. sa manguaq angata,</FORM>
-        <FORM kindOf="standard">ljakoa, ayatoa toa na maqati a maca ita congal, no peni no pen no penitoa no penitoa pi no penitoa pitoa ta qipo, azoa qipo kata pitos sedjamedjameq sakamaya toa maca. sa mangoaq angata,</FORM>
-        <AUDIO start="578.646" end="620.294" />
+        <PHON kindOf="original">ʎakua, ajatua tua na maqati a maʦa ita ʦuŋaɭ, nu pəni nu pən nu pənitua nu pənitua pi nu pənitua pitua ta qipu, azua qipu kata pitus səɉaməɉaməq sakamaja tua maʦa. sa maŋuaq aŋata,</PHON>
+        <FORM kindOf="standard">ljakua, ayatua tua na maqati a maca ita cungal, nu peni nu pen nu penitua nu penitua pi nu penitua pitua ta qipu, azua qipu kata pitus sedjamedjameq sakamaya tua maca. sa manguaq angata,</FORM>
+        <PHON kindOf="standard">ʎakua, ajatua tua na maqati a maʦa ita ʦuŋaɭ, nu pəni nu pən nu pənitua nu pənitua pi nu pənitua pitua ta qipu, azua qipu kata pitus səɉaməɉaməq sakamaja tua maʦa. sa maŋuaq aŋata,</PHON>
+        <AUDIO start="578.646" end="620.294" file="02SE105-3_Falin_a42.wav"/>
     </S>
     <S id="a44">
         <FORM kindOf="original">aicu a sinedjamedjameqan a sineljekuyan a caucau a qadaw, ka vililj anga, semata qulu anga maca niamadju,</FORM>
-        <FORM kindOf="standard">aico a sinedjamedjameqan a sineljekoyan a caocao a qadaw, ka vililj anga, semata qolo anga maca niamadjo,</FORM>
-        <AUDIO start="662.088" end="684.294" />
+        <PHON kindOf="original">aiʦu a sinəɉaməɉaməqan a sinəʎəkujan a ʦauʦau a qadaw, ka viɭiʎ aŋa, səmata quɭu aŋa maʦa niamaɉu,</PHON>
+        <FORM kindOf="standard">aicu a sinedjamedjameqan a sineljekuyan a caucau a qadaw, ka vililj anga, semata qulu anga maca niamadju,</FORM>
+        <PHON kindOf="standard">aiʦu a sinəɉaməɉaməqan a sinəʎəkujan a ʦauʦau a qadaw, ka viɭiʎ aŋa, səmata quɭu aŋa maʦa niamaɉu,</PHON>
+        <AUDIO start="662.088" end="684.294" file="02SE105-3_Falin_a44.wav"/>
     </S>
     <S id="a46">
         <FORM kindOf="original">sa pavacaqi anga sikamasanmusalj a na puzangal a pacugan.</FORM>
-        <FORM kindOf="standard">sa pavacaqi anga sikamasanmosalj a na pozangal a pacogan.</FORM>
-        <AUDIO start="699.500" end="709.999" />
+        <PHON kindOf="original">sa pavaʦaqi aŋa sikamasanmusaʎ a na puzaŋaɭ a paʦugan.</PHON>
+        <FORM kindOf="standard">sa pavacaqi anga sikamasanmusalj a na puzangal a pacugan.</FORM>
+        <PHON kindOf="standard">sa pavaʦaqi aŋa sikamasanmusaʎ a na puzaŋaɭ a paʦugan.</PHON>
+        <AUDIO start="699.500" end="709.999" file="02SE105-3_Falin_a46.wav"/>
     </S>
 </TEXT>

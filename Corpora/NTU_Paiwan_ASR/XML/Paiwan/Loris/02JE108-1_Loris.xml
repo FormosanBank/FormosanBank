@@ -1,88 +1,122 @@
-<?xml version='1.0' encoding='utf-8'?>
-<TEXT id="NTU_Pwn_Loris_02JE108-1 Loris" xml:lang="pwn" source="NTU Paiwan Data, Participant Loris, file 02JE108-1 Loris" audio="02JE108-1 Loris.wav" copyright="CC-BY" citation="Le Ferrand, É., Prud'hommeaux, E., Hartshorne, J. K., &amp; Sung, L.-M. (2024). NTU Paiwan ASR Corpus. Electronic Resource." BibTeX_citation="@electronic{leferrand2024ntu, author = {Le Ferrand, {'E}ric and Prud'hommeaux, Emily and Hartshorne, Joshua K. and Sung, Li-May}, year = {2024}, title = {{NTU} {Paiwan} {ASR} Corpus},type = {Electronic Resource}}" dialect="Eastern">
+<?xml version='1.0' encoding='UTF-8'?>
+<TEXT id="NTU_Pwn_Loris_02JE108-1 Loris" xml:lang="pwn" source="NTU Paiwan Data, Participant Loris, file 02JE108-1 Loris" audio="02JE108-1_Loris.wav" copyright="CC-BY" citation="Le Ferrand, É., Prud'hommeaux, E., Hartshorne, J. K., &amp; Sung, L.-M. (2024). NTU Paiwan ASR Corpus. Electronic Resource." BibTeX_citation="@electronic{leferrand2024ntu, author = {Le Ferrand, {'E}ric and Prud'hommeaux, Emily and Hartshorne, Joshua K. and Sung, Li-May}, year = {2024}, title = {{NTU} {Paiwan} {ASR} Corpus},type = {Electronic Resource}}" dialect="Eastern">
     <S id="a1">
         <FORM kindOf="original">tazua qadaw, na malivu kata kina timadju, matjalaw a pasanitalj, kivalidi sa ukelj a sema sasaw.</FORM>
-        <FORM kindOf="standard">tazoa qadaw, na malivo kata kina timadjo, matjalaw a pasanitalj, kivalidi sa okelj a sema sasaw.</FORM>
-        <AUDIO start="1.470" end="13.852" />
+        <PHON kindOf="original">tazua qadaw, na maɭivu kata kina timaɉu, maʦaɭaw a pasanitaʎ, kivaɭidi sa ukəʎ a səma sasaw.</PHON>
+        <FORM kindOf="standard">tazua qadaw, na malivu kata kina timadju, matjalaw a pasanitalj, kivalidi sa ukelj a sema sasaw.</FORM>
+        <PHON kindOf="standard">tazua qadaw, na maɭivu kata kina timaɉu, maʦaɭaw a pasanitaʎ, kivaɭidi sa ukəʎ a səma sasaw.</PHON>
+        <AUDIO start="1.470" end="13.852" file="02JE108-1_Loris_a1.wav"/>
     </S>
     <S id="a2">
         <FORM kindOf="original">ka cuay anga tu vinaikan, pacunan a seman subasuba, masa maculja anga tjialj, ljakua, sasipuin a penuljat pulingetj a lubulubu, manu neka tuita pakiyaw.</FORM>
-        <FORM kindOf="standard">ka coay anga to vinaikan, paconan a seman sobasoba, masa macolja anga tjialj, ljakoa, sasipoin a penoljat polingetj a lobolobo, mano neka toita pakiyaw.</FORM>
-        <AUDIO start="14.235" end="35.705" />
+        <PHON kindOf="original">ka ʦuaj aŋa tu vinaikan, paʦunan a səman subasuba, masa maʦuʎa aŋa ʦiaʎ, ʎakua, sasipuin a pənuʎat puɭiŋəʦ a ɭubuɭubu, manu nəka tuita pakijaw.</PHON>
+        <FORM kindOf="standard">ka cuay anga tu vinaikan, pacunan a seman subasuba, masa maculja anga tjialj, ljakua, sasipuin a penuljat pulingetj a lubulubu, manu neka tuita pakiyaw.</FORM>
+        <PHON kindOf="standard">ka ʦuaj aŋa tu vinaikan, paʦunan a səman subasuba, masa maʦuʎa aŋa ʦiaʎ, ʎakua, sasipuin a pənuʎat puɭiŋəʦ a ɭubuɭubu, manu nəka tuita pakijaw.</PHON>
+        <AUDIO start="14.235" end="35.705" file="02JE108-1_Loris_a2.wav"/>
     </S>
     <S id="a3">
         <FORM kindOf="original">aza kisan semansuba a caucau nu tja pacunen na sarenguaq aravac a ramaljeng a vavayan,</FORM>
-        <FORM kindOf="standard">aza kisan semansoba a caocao no tja paconen na sarengoaq aravac a ramaljeng a vavayan,</FORM>
-        <AUDIO start="35.941" end="48.324" />
+        <PHON kindOf="original">aza kisan səmansuba a ʦauʦau nu ʦa paʦunən na sarəŋuaq aravaʦ a ramaʎəŋ a vavajan,</PHON>
+        <FORM kindOf="standard">aza kisan semansuba a caucau nu tja pacunen na sarenguaq aravac a ramaljeng a vavayan,</FORM>
+        <PHON kindOf="standard">aza kisan səmansuba a ʦauʦau nu ʦa paʦunən na sarəŋuaq aravaʦ a ramaʎəŋ a vavajan,</PHON>
+        <AUDIO start="35.941" end="48.324" file="02JE108-1_Loris_a3.wav"/>
     </S>
     <S id="a4">
         <FORM kindOf="original">ljemengljeng tjaymadju a namigacalj izua, kivadaqan, "aljak, uri keman sun ta suba?"</FORM>
-        <FORM kindOf="standard">ljemengljeng tjaymadjo a namigacalj izoa, kivadaqan, "aljak, ori keman son ta soba?"</FORM>
-        <AUDIO start="50.764" end="64.823" />
+        <PHON kindOf="original">ʎəməŋʎəŋ ʦajmaɉu a namigaʦaʎ izua, kivadaqan, "aʎak, uri kəman sun ta suba?"</PHON>
+        <FORM kindOf="standard">ljemengljeng tjaymadju a namigacalj izua, kivadaqan, "aljak, uri keman sun ta suba?"</FORM>
+        <PHON kindOf="standard">ʎəməŋʎəŋ ʦajmaɉu a namigaʦaʎ izua, kivadaqan, "aʎak, uri kəman sun ta suba?"</PHON>
+        <AUDIO start="50.764" end="64.823" file="02JE108-1_Loris_a4.wav"/>
     </S>
     <S id="a5">
         <FORM kindOf="original">"ljakua, malim anga aken a masi paisu." na masiaq a pagalju a temevela.</FORM>
-        <FORM kindOf="standard">"ljakoa, malim anga aken a masi paiso." na masiaq a pagaljo a temevela.</FORM>
-        <AUDIO start="66.028" end="77.028" />
+        <PHON kindOf="original">"ʎakua, maɭim aŋa akən a masi paisu." na masiaq a pagaʎu a təməvəɭa.</PHON>
+        <FORM kindOf="standard">"ljakua, malim anga aken a masi paisu." na masiaq a pagalju a temevela.</FORM>
+        <PHON kindOf="standard">"ʎakua, maɭim aŋa akən a masi paisu." na masiaq a pagaʎu a təməvəɭa.</PHON>
+        <AUDIO start="66.028" end="77.028" file="02JE108-1_Loris_a5.wav"/>
     </S>
     <S id="a6">
         <FORM kindOf="original">"inika makuda, ku pakanay sun." aza ramaljeng a vavayan na pizua tu takisian a nguljinguljingulj a suba.</FORM>
-        <FORM kindOf="standard">"inika makoda, ko pakanay son." aza ramaljeng a vavayan na pizoa to takisian a ngoljingoljingolj a soba.</FORM>
-        <AUDIO start="77.617" end="92.735" />
+        <PHON kindOf="original">"inika makuda, ku pakanaj sun." aza ramaʎəŋ a vavajan na pizua tu takisian a ŋuʎiŋuʎiŋuʎ a suba.</PHON>
+        <FORM kindOf="standard">"inika makuda, ku pakanay sun." aza ramaljeng a vavayan na pizua tu takisian a nguljinguljingulj a suba.</FORM>
+        <PHON kindOf="standard">"inika makuda, ku pakanaj sun." aza ramaʎəŋ a vavajan na pizua tu takisian a ŋuʎiŋuʎiŋuʎ a suba.</PHON>
+        <AUDIO start="77.617" end="92.735" file="02JE108-1_Loris_a6.wav"/>
     </S>
     <S id="a7">
         <FORM kindOf="original">na masalu aravac timadju, tjaukan tu pida angaljan, matjani a luseq, sa katjanitjani i ta kisi.</FORM>
-        <FORM kindOf="standard">na masalo aravac timadjo, tjaokan to pida angaljan, matjani a loseq, sa katjanitjani i ta kisi.</FORM>
-        <AUDIO start="93.529" end="109.235" />
+        <PHON kindOf="original">na masaɭu aravaʦ timaɉu, ʦaukan tu pida aŋaʎan, maʦani a ɭusəq, sa kaʦaniʦani i ta kisi.</PHON>
+        <FORM kindOf="standard">na masalu aravac timadju, tjaukan tu pida angaljan, matjani a luseq, sa katjanitjani i ta kisi.</FORM>
+        <PHON kindOf="standard">na masaɭu aravaʦ timaɉu, ʦaukan tu pida aŋaʎan, maʦani a ɭusəq, sa kaʦaniʦani i ta kisi.</PHON>
+        <AUDIO start="93.529" end="109.235" file="02JE108-1_Loris_a7.wav"/>
     </S>
     <S id="a8">
         <FORM kindOf="original">"makuda sun?" aya na livadrek a kivadaq. "neka nu ku pacugan, ljakua na masalu aravac aken!"</FORM>
-        <FORM kindOf="standard">"makoda son?" aya na livadrek a kivadaq. "neka no ko pacogan, ljakoa na masalo aravac aken!"</FORM>
-        <AUDIO start="109.353" end="124.823" />
+        <PHON kindOf="original">"makuda sun?" aja na ɭivaɖək a kivadaq. "nəka nu ku paʦugan, ʎakua na masaɭu aravaʦ akən!"</PHON>
+        <FORM kindOf="standard">"makuda sun?" aya na livadrek a kivadaq. "neka nu ku pacugan, ljakua na masalu aravac aken!"</FORM>
+        <PHON kindOf="standard">"makuda sun?" aja na ɭivaɖək a kivadaq. "nəka nu ku paʦugan, ʎakua na masaɭu aravaʦ akən!"</PHON>
+        <AUDIO start="109.353" end="124.823" file="02JE108-1_Loris_a8.wav"/>
     </S>
     <S id="a9">
         <FORM kindOf="original">djemuadjuas ta luseq, a matjakay tua san seman suba a va vuluvulung,</FORM>
-        <FORM kindOf="standard">djemoadjoas ta loseq, a matjakay toa san seman soba a va volovolong,</FORM>
-        <AUDIO start="126.323" end="137.058" />
+        <PHON kindOf="original">ɉəmuaɉuas ta ɭusəq, a maʦakaj tua san səman suba a va vuɭuvuɭuŋ,</PHON>
+        <FORM kindOf="standard">djemuadjuas ta luseq, a matjakay tua san seman suba a va vuluvulung,</FORM>
+        <PHON kindOf="standard">ɉəmuaɉuas ta ɭusəq, a maʦakaj tua san səman suba a va vuɭuvuɭuŋ,</PHON>
+        <AUDIO start="126.323" end="137.058" file="02JE108-1_Loris_a9.wav"/>
     </S>
     <S id="a10">
         <FORM kindOf="original">"ika itjen a makakeljang, sa nanguaq sun aravac tjanuaken, kisalu sun a kemesa tua suba tjanuaken.</FORM>
-        <FORM kindOf="standard">"ika itjen a makakeljang, sa nangoaq son aravac tjanoaken, kisalo son a kemesa toa soba tjanoaken.</FORM>
-        <AUDIO start="138.528" end="152.293" />
+        <PHON kindOf="original">"ika iʦən a makakəʎaŋ, sa naŋuaq sun aravaʦ ʦanuakən, kisaɭu sun a kəməsa tua suba ʦanuakən.</PHON>
+        <FORM kindOf="standard">"ika itjen a makakeljang, sa nanguaq sun aravac tjanuaken, kisalu sun a kemesa tua suba tjanuaken.</FORM>
+        <PHON kindOf="standard">"ika iʦən a makakəʎaŋ, sa naŋuaq sun aravaʦ ʦanuakən, kisaɭu sun a kəməsa tua suba ʦanuakən.</PHON>
+        <AUDIO start="138.528" end="152.293" file="02JE108-1_Loris_a10.wav"/>
     </S>
     <S id="a11">
         <FORM kindOf="original">ljakua ti ina, malivu amen, sauin aken, sa ayain aken tu maya anga tjumaq!"</FORM>
-        <FORM kindOf="standard">ljakoa ti ina, malivo amen, saoin aken, sa ayain aken to maya anga tjomaq!"</FORM>
-        <AUDIO start="152.705" end="162.941" />
+        <PHON kindOf="original">ʎakua ti ina, maɭivu amən, sauin akən, sa ajain akən tu maja aŋa ʦumaq!"</PHON>
+        <FORM kindOf="standard">ljakua ti ina, malivu amen, sauin aken, sa ayain aken tu maya anga tjumaq!"</FORM>
+        <PHON kindOf="standard">ʎakua ti ina, maɭivu amən, sauin akən, sa ajain akən tu maja aŋa ʦumaq!"</PHON>
+        <AUDIO start="152.705" end="162.941" file="02JE108-1_Loris_a11.wav"/>
     </S>
     <S id="a12">
         <FORM kindOf="original">ka kilangeda anga vuluvulung a vavayan, na pagalju a maitucu, "aljak, akumaya maitucu sun a kinemenem?"</FORM>
-        <FORM kindOf="standard">ka kilangeda anga volovolong a vavayan, na pagaljo a maitoco, "aljak, akomaya maitoco son a kinemenem?"</FORM>
-        <AUDIO start="163.382" end="177.529" />
+        <PHON kindOf="original">ka kiɭaŋəda aŋa vuɭuvuɭuŋ a vavajan, na pagaʎu a maituʦu, "aʎak, akumaja maituʦu sun a kinəmənəm?"</PHON>
+        <FORM kindOf="standard">ka kilangeda anga vuluvulung a vavayan, na pagalju a maitucu, "aljak, akumaya maitucu sun a kinemenem?"</FORM>
+        <PHON kindOf="standard">ka kiɭaŋəda aŋa vuɭuvuɭuŋ a vavajan, na pagaʎu a maituʦu, "aʎak, akumaja maituʦu sun a kinəmənəm?"</PHON>
+        <AUDIO start="163.382" end="177.529" file="02JE108-1_Loris_a12.wav"/>
     </S>
     <S id="a13">
         <FORM kindOf="original">pay varungu qemayam, "u su sini san takisian a suba sa u su pakani, akumaya ika sun na masalu tjaiamadju? aku sun a malivu kati tjaina?"</FORM>
-        <FORM kindOf="standard">pay varongo qemayam, "o so sini san takisian a soba sa o so pakani, akomaya ika son na masalo tjaiamadjo? ako son a malivo kati tjaina?"</FORM>
-        <AUDIO start="178.058" end="199.647" />
+        <PHON kindOf="original">paj varuŋu qəmajam, "u su sini san takisian a suba sa u su pakani, akumaja ika sun na masaɭu ʦaiamaɉu? aku sun a maɭivu kati ʦaina?"</PHON>
+        <FORM kindOf="standard">pay varungu qemayam, "u su sini san takisian a suba sa u su pakani, akumaya ika sun na masalu tjaiamadju? aku sun a malivu kati tjaina?"</FORM>
+        <PHON kindOf="standard">paj varuŋu qəmajam, "u su sini san takisian a suba sa u su pakani, akumaja ika sun na masaɭu ʦaiamaɉu? aku sun a maɭivu kati ʦaina?"</PHON>
+        <AUDIO start="178.058" end="199.647" file="02JE108-1_Loris_a13.wav"/>
     </S>
     <S id="a14">
         <FORM kindOf="original">ljemeker aza kakedrian a vavayan, pakilimuin a keman a suba, sa vaik i dut tua tjumaq,</FORM>
-        <FORM kindOf="standard">ljemeker aza kakedrian a vavayan, pakilimoin a keman a soba, sa vaik i dot toa tjomaq,</FORM>
-        <AUDIO start="201.558" end="214.088" />
+        <PHON kindOf="original">ʎəməkər aza kakəɖian a vavajan, pakiɭimuin a kəman a suba, sa vaik i dut tua ʦumaq,</PHON>
+        <FORM kindOf="standard">ljemeker aza kakedrian a vavayan, pakilimuin a keman a suba, sa vaik i dut tua tjumaq,</FORM>
+        <PHON kindOf="standard">ʎəməkər aza kakəɖian a vavajan, pakiɭimuin a kəman a suba, sa vaik i dut tua ʦumaq,</PHON>
+        <AUDIO start="201.558" end="214.088" file="02JE108-1_Loris_a14.wav"/>
     </S>
     <S id="a15">
         <FORM kindOf="original">kilalimu a ljemeljeng tua na masi luljayan a pacucun a pasatutunazu anga, ka pacun timadju, sekeljang a levan ta mudingan,</FORM>
-        <FORM kindOf="standard">kilalimo a ljemeljeng toa na masi loljayan a pacocon a pasatotonazo anga, ka pacon timadjo, sekeljang a levan ta modingan,</FORM>
-        <AUDIO start="214.764" end="233.234" />
+        <PHON kindOf="original">kiɭaɭimu a ʎəməʎəŋ tua na masi ɭuʎajan a paʦuʦun a pasatutunazu aŋa, ka paʦun timaɉu, səkəʎaŋ a ɭəvan ta mudiŋan,</PHON>
+        <FORM kindOf="standard">kilalimu a ljemeljeng tua na masi luljayan a pacucun a pasatutunazu anga, ka pacun timadju, sekeljang a levan ta mudingan,</FORM>
+        <PHON kindOf="standard">kiɭaɭimu a ʎəməʎəŋ tua na masi ɭuʎajan a paʦuʦun a pasatutunazu aŋa, ka paʦun timaɉu, səkəʎaŋ a ɭəvan ta mudiŋan,</PHON>
+        <AUDIO start="214.764" end="233.234" file="02JE108-1_Loris_a15.wav"/>
     </S>
     <S id="a16">
         <FORM kindOf="original">"samazau a kilimu, makakesa anga aken kasauni, nu ika sun tjumaq a keman, uri na ljaljeqel anga djamay!"</FORM>
-        <FORM kindOf="standard">"samazao a kilimo, makakesa anga aken kasaoni, no ika son tjomaq a keman, ori na ljaljeqel anga djamay!"</FORM>
-        <AUDIO start="233.323" end="246.911" />
+        <PHON kindOf="original">"samazau a kiɭimu, makakəsa aŋa akən kasauni, nu ika sun ʦumaq a kəman, uri na ʎaʎəqəɭ aŋa ɉamaj!"</PHON>
+        <FORM kindOf="standard">"samazau a kilimu, makakesa anga aken kasauni, nu ika sun tjumaq a keman, uri na ljaljeqel anga djamay!"</FORM>
+        <PHON kindOf="standard">"samazau a kiɭimu, makakəsa aŋa akən kasauni, nu ika sun ʦumaq a kəman, uri na ʎaʎəqəɭ aŋa ɉamaj!"</PHON>
+        <AUDIO start="233.323" end="246.911" file="02JE108-1_Loris_a16.wav"/>
     </S>
     <S id="a17">
         <FORM kindOf="original">qau, tucu matjani anan uta luseq na za kakedrian a vavayan!</FORM>
-        <FORM kindOf="standard">qao, toco matjani anan ota loseq na za kakedrian a vavayan!</FORM>
-        <AUDIO start="247.382" end="256.323" />
+        <PHON kindOf="original">qau, tuʦu maʦani anan uta ɭusəq na za kakəɖian a vavajan!</PHON>
+        <FORM kindOf="standard">qau, tucu matjani anan uta luseq na za kakedrian a vavayan!</FORM>
+        <PHON kindOf="standard">qau, tuʦu maʦani anan uta ɭusəq na za kakəɖian a vavajan!</PHON>
+        <AUDIO start="247.382" end="256.323" file="02JE108-1_Loris_a17.wav"/>
     </S>
 </TEXT>

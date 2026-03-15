@@ -1,83 +1,115 @@
-<?xml version='1.0' encoding='utf-8'?>
-<TEXT id="NTU_Pwn_Nira_02SN112-4 Nira" xml:lang="pwn" source="NTU Paiwan Data, Participant Nira, file 02SN112-4 Nira" audio="02SN112-4 Nira.wav" copyright="CC-BY" citation="Le Ferrand, É., Prud'hommeaux, E., Hartshorne, J. K., &amp; Sung, L.-M. (2024). NTU Paiwan ASR Corpus. Electronic Resource." BibTeX_citation="@electronic{leferrand2024ntu, author = {Le Ferrand, {'E}ric and Prud'hommeaux, Emily and Hartshorne, Joshua K. and Sung, Li-May}, year = {2024}, title = {{NTU} {Paiwan} {ASR} Corpus},type = {Electronic Resource}}" dialect="Northern">
+<?xml version='1.0' encoding='UTF-8'?>
+<TEXT id="NTU_Pwn_Nira_02SN112-4 Nira" xml:lang="pwn" source="NTU Paiwan Data, Participant Nira, file 02SN112-4 Nira" audio="02SN112-4_Nira.wav" copyright="CC-BY" citation="Le Ferrand, É., Prud'hommeaux, E., Hartshorne, J. K., &amp; Sung, L.-M. (2024). NTU Paiwan ASR Corpus. Electronic Resource." BibTeX_citation="@electronic{leferrand2024ntu, author = {Le Ferrand, {'E}ric and Prud'hommeaux, Emily and Hartshorne, Joshua K. and Sung, Li-May}, year = {2024}, title = {{NTU} {Paiwan} {ASR} Corpus},type = {Electronic Resource}}" dialect="Northern">
     <S id="a1">
         <FORM kindOf="original">pa'enetj ka kakedrianaken nu na cemavu ti kina, semekaulj tjanuamen, "sau, siljevan tjay su vuvu tjay tjama tjay tjaina aicu a cinavu."</FORM>
-        <FORM kindOf="standard">pa'enetj ka kakedrianaken no na cemavo ti kina, semekaolj tjanoamen, "sao, siljevan tjay so vovo tjay tjama tjay tjaina aico a cinavo."</FORM>
-        <AUDIO start="5.294" end="22.500" />
+        <PHON kindOf="original">paʔənəʦ ka kakəɖianakən nu na ʦəmavu ti kina, səməkauʎ ʦanuamən, "sau, siʎəvan ʦaj su vuvu ʦaj ʦama ʦaj ʦaina aiʦu a ʦinavu."</PHON>
+        <FORM kindOf="standard">pa'enetj ka kakedrianaken nu na cemavu ti kina, semekaulj tjanuamen, "sau, siljevan tjay su vuvu tjay tjama tjay tjaina aicu a cinavu."</FORM>
+        <PHON kindOf="standard">paʔənəʦ ka kakəɖianakən nu na ʦəmavu ti kina, səməkauʎ ʦanuamən, "sau, siʎəvan ʦaj su vuvu ʦaj ʦama ʦaj ʦaina aiʦu a ʦinavu."</PHON>
+        <AUDIO start="5.294" end="22.500" file="02SN112-4_Nira_a1.wav"/>
     </S>
     <S id="a3">
         <FORM kindOf="original">'aw nu na kasi vavua a 'inuman a vurasi a vasa, tjara pakavulj sakamaya ta lja'edi'edi.</FORM>
-        <FORM kindOf="standard">'aw no na kasi vavoa a 'inoman a vorasi a vasa, tjara pakavolj sakamaya ta lja'edi'edi.</FORM>
-        <AUDIO start="22.794" end="33.911" />
+        <PHON kindOf="original">ʔaw nu na kasi vavua a ʔinuman a vurasi a vasa, ʦara pakavuʎ sakamaja ta ʎaʔədiʔədi.</PHON>
+        <FORM kindOf="standard">'aw nu na kasi vavua a 'inuman a vurasi a vasa, tjara pakavulj sakamaya ta lja'edi'edi.</FORM>
+        <PHON kindOf="standard">ʔaw nu na kasi vavua a ʔinuman a vurasi a vasa, ʦara pakavuʎ sakamaja ta ʎaʔədiʔədi.</PHON>
+        <AUDIO start="22.794" end="33.911" file="02SN112-4_Nira_a3.wav"/>
     </S>
     <S id="a4">
         <FORM kindOf="original">nu kasi cemecemel ti kama, nu izua djiname' a sacemel, cemeged a pipaljing ta mangetjez a cemulju tazua 'adaw ni kama a vavuy.</FORM>
-        <FORM kindOf="standard">no kasi cemecemel ti kama, no izoa djiname' a sacemel, cemeged a pipaljing ta mangetjez a cemoljo tazoa 'adaw ni kama a vavoy.</FORM>
-        <AUDIO start="33.911" end="48.147" />
+        <PHON kindOf="original">nu kasi ʦəməʦəməɭ ti kama, nu izua ɉinaməʔ a saʦəməɭ, ʦəməgəd a pipaʎiŋ ta maŋəʦəz a ʦəmuʎu tazua ʔadaw ni kama a vavuj.</PHON>
+        <FORM kindOf="standard">nu kasi cemecemel ti kama, nu izua djiname' a sacemel, cemeged a pipaljing ta mangetjez a cemulju tazua 'adaw ni kama a vavuy.</FORM>
+        <PHON kindOf="standard">nu kasi ʦəməʦəməɭ ti kama, nu izua ɉinaməʔ a saʦəməɭ, ʦəməgəd a pipaʎiŋ ta maŋəʦəz a ʦəmuʎu tazua ʔadaw ni kama a vavuj.</PHON>
+        <AUDIO start="33.911" end="48.147" file="02SN112-4_Nira_a4.wav"/>
     </S>
     <S id="a7">
         <FORM kindOf="original">nu kaljakidjulisan mangetjez a tja lja'edi'edi a pusaladj a cemuljeculj ta penaisu mudja' ta djulis. azua djulis a pinuljacengan sa sisiaw ta ljameljam. mapa'enetj a patjetucu.</FORM>
-        <FORM kindOf="standard">no kaljakidjolisan mangetjez a tja lja'edi'edi a posaladj a cemoljecolj ta penaiso modja' ta djolis. azoa djolis a pinoljacengan sa sisiaw ta ljameljam. mapa'enetj a patjetoco.</FORM>
-        <AUDIO start="49.735" end="70.646" />
+        <PHON kindOf="original">nu kaʎakiɉuɭisan maŋəʦəz a ʦa ʎaʔədiʔədi a pusaɭaɉ a ʦəmuʎəʦuʎ ta pənaisu muɉaʔ ta ɉuɭis. azua ɉuɭis a pinuʎaʦəŋan sa sisiaw ta ʎaməʎam. mapaʔənəʦ a paʦətuʦu.</PHON>
+        <FORM kindOf="standard">nu kaljakidjulisan mangetjez a tja lja'edi'edi a pusaladj a cemuljeculj ta penaisu mudja' ta djulis. azua djulis a pinuljacengan sa sisiaw ta ljameljam. mapa'enetj a patjetucu.</FORM>
+        <PHON kindOf="standard">nu kaʎakiɉuɭisan maŋəʦəz a ʦa ʎaʔədiʔədi a pusaɭaɉ a ʦəmuʎəʦuʎ ta pənaisu muɉaʔ ta ɉuɭis. azua ɉuɭis a pinuʎaʦəŋan sa sisiaw ta ʎaməʎam. mapaʔənəʦ a paʦətuʦu.</PHON>
+        <AUDIO start="49.735" end="70.646" file="02SN112-4_Nira_a7.wav"/>
     </S>
     <S id="a8">
         <FORM kindOf="original">ljakua maumalj a ziday, tucu tjuruvu a kakedrian a vaikanga kitevelj a mapairang a semupu. lemaing ta varung niamadju a sikacu.</FORM>
-        <FORM kindOf="standard">ljakoa maomalj a ziday, toco tjorovo a kakedrian a vaikanga kitevelj a mapairang a semopo. lemaing ta varong niamadjo a sikaco.</FORM>
-        <AUDIO start="70.970" end="85.352" />
+        <PHON kindOf="original">ʎakua maumaʎ a zidaj, tuʦu ʦuruvu a kakəɖian a vaikaŋa kitəvəʎ a mapairaŋ a səmupu. ɭəmaiŋ ta varuŋ niamaɉu a sikaʦu.</PHON>
+        <FORM kindOf="standard">ljakua maumalj a ziday, tucu tjuruvu a kakedrian a vaikanga kitevelj a mapairang a semupu. lemaing ta varung niamadju a sikacu.</FORM>
+        <PHON kindOf="standard">ʎakua maumaʎ a zidaj, tuʦu ʦuruvu a kakəɖian a vaikaŋa kitəvəʎ a mapairaŋ a səmupu. ɭəmaiŋ ta varuŋ niamaɉu a sikaʦu.</PHON>
+        <AUDIO start="70.970" end="85.352" file="02SN112-4_Nira_a8.wav"/>
     </S>
     <S id="a11">
         <FORM kindOf="original">aicu a kakedrian tucu ma-pavalit-anga a varung a sipacunan a silangedan a sidjavacan, neka nu sepacengeceng ta situluan na tjaisangasangas.</FORM>
-        <FORM kindOf="standard">aico a kakedrian toco ma-pavalit-anga a varong a sipaconan a silangedan a sidjavacan, neka no sepacengeceng ta sitoloan na tjaisangasangas.</FORM>
-        <AUDIO start="86.088" end="102.352" />
+        <PHON kindOf="original">aiʦu a kakəɖian tuʦu ma-pavaɭit-aŋa a varuŋ a sipaʦunan a siɭaŋədan a siɉavaʦan, nəka nu səpaʦəŋəʦəŋ ta situɭuan na ʦaisaŋasaŋas.</PHON>
+        <FORM kindOf="standard">aicu a kakedrian tucu ma-pavalit-anga a varung a sipacunan a silangedan a sidjavacan, neka nu sepacengeceng ta situluan na tjaisangasangas.</FORM>
+        <PHON kindOf="standard">aiʦu a kakəɖian tuʦu ma-pavaɭit-aŋa a varuŋ a sipaʦunan a siɭaŋədan a siɉavaʦan, nəka nu səpaʦəŋəʦəŋ ta situɭuan na ʦaisaŋasaŋas.</PHON>
+        <AUDIO start="86.088" end="102.352" file="02SN112-4_Nira_a11.wav"/>
     </S>
     <S id="a13">
         <FORM kindOf="original">tucuanga aicu a kakedrian nu veneli a masiubay ta kakanen, nu sipangetjez i tjuma', makulung a pacun ta izua i tjuma' a mareka cemekemekelj.</FORM>
-        <FORM kindOf="standard">tocoanga aico a kakedrian no veneli a masiobay ta kakanen, no sipangetjez i tjoma', makolong a pacon ta izoa i tjoma' a mareka cemekemekelj.</FORM>
-        <AUDIO start="103.294" end="118.706" />
+        <PHON kindOf="original">tuʦuaŋa aiʦu a kakəɖian nu vənəɭi a masiubaj ta kakanən, nu sipaŋəʦəz i ʦumaʔ, makuɭuŋ a paʦun ta izua i ʦumaʔ a marəka ʦəməkəməkəʎ.</PHON>
+        <FORM kindOf="standard">tucuanga aicu a kakedrian nu veneli a masiubay ta kakanen, nu sipangetjez i tjuma', makulung a pacun ta izua i tjuma' a mareka cemekemekelj.</FORM>
+        <PHON kindOf="standard">tuʦuaŋa aiʦu a kakəɖian nu vənəɭi a masiubaj ta kakanən, nu sipaŋəʦəz i ʦumaʔ, makuɭuŋ a paʦun ta izua i ʦumaʔ a marəka ʦəməkəməkəʎ.</PHON>
+        <AUDIO start="103.294" end="118.706" file="02SN112-4_Nira_a13.wav"/>
     </S>
     <S id="a14">
         <FORM kindOf="original">makulunganga a pukanu ta matjaljaljak ta cemekemekelj, keman a kisumadju. "nu mavetuaken kiparia," aya kininemeneman.</FORM>
-        <FORM kindOf="standard">makolonganga a pokano ta matjaljaljak ta cemekemekelj, keman a kisomadjo. "no mavetoaken kiparia," aya kininemeneman.</FORM>
-        <AUDIO start="119.529" end="134.911" />
+        <PHON kindOf="original">makuɭuŋaŋa a pukanu ta maʦaʎaʎak ta ʦəməkəməkəʎ, kəman a kisumaɉu. "nu mavətuakən kiparia," aja kininəmənəman.</PHON>
+        <FORM kindOf="standard">makulunganga a pukanu ta matjaljaljak ta cemekemekelj, keman a kisumadju. "nu mavetuaken kiparia," aya kininemeneman.</FORM>
+        <PHON kindOf="standard">makuɭuŋaŋa a pukanu ta maʦaʎaʎak ta ʦəməkəməkəʎ, kəman a kisumaɉu. "nu mavətuakən kiparia," aja kininəmənəman.</PHON>
+        <AUDIO start="119.529" end="134.911" file="02SN112-4_Nira_a14.wav"/>
     </S>
     <S id="a17">
         <FORM kindOf="original">tucuanga aicu a kakedrian, nekanga nu papa'aljayan tua matjaljaljak tua tjavuluvulung.</FORM>
-        <FORM kindOf="standard">tocoanga aico a kakedrian, nekanga no papa'aljayan toa matjaljaljak toa tjavolovolong.</FORM>
-        <AUDIO start="134.911" end="144.794" />
+        <PHON kindOf="original">tuʦuaŋa aiʦu a kakəɖian, nəkaŋa nu papaʔaʎajan tua maʦaʎaʎak tua ʦavuɭuvuɭuŋ.</PHON>
+        <FORM kindOf="standard">tucuanga aicu a kakedrian, nekanga nu papa'aljayan tua matjaljaljak tua tjavuluvulung.</FORM>
+        <PHON kindOf="standard">tuʦuaŋa aiʦu a kakəɖian, nəkaŋa nu papaʔaʎajan tua maʦaʎaʎak tua ʦavuɭuvuɭuŋ.</PHON>
+        <AUDIO start="134.911" end="144.794" file="02SN112-4_Nira_a17.wav"/>
     </S>
     <S id="a19">
         <FORM kindOf="original">nu pacunitjen a pita tinese. uianga ui angata tu na geminagalj. nu tja cikelen a pacun a sicuayan a sikacu, namasete'ec a ma namase'etj maca'u a lemangeda a kakedrian ta kai nua matjaljaljak.</FORM>
-        <FORM kindOf="standard">no paconitjen a pita tinese. oianga oi angata to na geminagalj. no tja cikelen a pacon a sicoayan a sikaco, namasete'ec a ma namase'etj maca'o a lemangeda a kakedrian ta kai noa matjaljaljak.</FORM>
-        <AUDIO start="144.970" end="173.558" />
+        <PHON kindOf="original">nu paʦuniʦən a pita tinəsə. uiaŋa ui aŋata tu na gəminagaʎ. nu ʦa ʦikəɭən a paʦun a siʦuajan a sikaʦu, namasətəʔəʦ a ma namasəʔəʦ maʦaʔu a ɭəmaŋəda a kakəɖian ta kai nua maʦaʎaʎak.</PHON>
+        <FORM kindOf="standard">nu pacunitjen a pita tinese. uianga ui angata tu na geminagalj. nu tja cikelen a pacun a sicuayan a sikacu, namasete'ec a ma namase'etj maca'u a lemangeda a kakedrian ta kai nua matjaljaljak.</FORM>
+        <PHON kindOf="standard">nu paʦuniʦən a pita tinəsə. uiaŋa ui aŋata tu na gəminagaʎ. nu ʦa ʦikəɭən a paʦun a siʦuajan a sikaʦu, namasətəʔəʦ a ma namasəʔəʦ maʦaʔu a ɭəmaŋəda a kakəɖian ta kai nua maʦaʎaʎak.</PHON>
+        <AUDIO start="144.970" end="173.558" file="02SN112-4_Nira_a19.wav"/>
     </S>
     <S id="a20">
         <FORM kindOf="original">aicu a masasiljevaljevaitjen i ta tja-sikudan nangua' aravac. nu semiljevaitjen ta mareka tja kaka, uri mangetjez a tja mangua'an.</FORM>
-        <FORM kindOf="standard">aico a masasiljevaljevaitjen i ta tja-sikodan nangoa' aravac. no semiljevaitjen ta mareka tja kaka, ori mangetjez a tja mangoa'an.</FORM>
-        <AUDIO start="174.764" end="190.617" />
+        <PHON kindOf="original">aiʦu a masasiʎəvaʎəvaiʦən i ta ʦa-sikudan naŋuaʔ aravaʦ. nu səmiʎəvaiʦən ta marəka ʦa kaka, uri maŋəʦəz a ʦa maŋuaʔan.</PHON>
+        <FORM kindOf="standard">aicu a masasiljevaljevaitjen i ta tja-sikudan nangua' aravac. nu semiljevaitjen ta mareka tja kaka, uri mangetjez a tja mangua'an.</FORM>
+        <PHON kindOf="standard">aiʦu a masasiʎəvaʎəvaiʦən i ta ʦa-sikudan naŋuaʔ aravaʦ. nu səmiʎəvaiʦən ta marəka ʦa kaka, uri maŋəʦəz a ʦa maŋuaʔan.</PHON>
+        <AUDIO start="174.764" end="190.617" file="02SN112-4_Nira_a20.wav"/>
     </S>
     <S id="a21">
         <FORM kindOf="original">nu namacelak a tja lima, uri mapase'eljing a mareka tja kaka. nu namasu'eljev a tja varung, izua tja levan.</FORM>
-        <FORM kindOf="standard">no namacelak a tja lima, ori mapase'eljing a mareka tja kaka. no namaso'eljev a tja varong, izoa tja levan.</FORM>
-        <AUDIO start="190.852" end="203.705" />
+        <PHON kindOf="original">nu namaʦəɭak a ʦa ɭima, uri mapasəʔəʎiŋ a marəka ʦa kaka. nu namasuʔəʎəv a ʦa varuŋ, izua ʦa ɭəvan.</PHON>
+        <FORM kindOf="standard">nu namacelak a tja lima, uri mapase'eljing a mareka tja kaka. nu namasu'eljev a tja varung, izua tja levan.</FORM>
+        <PHON kindOf="standard">nu namaʦəɭak a ʦa ɭima, uri mapasəʔəʎiŋ a marəka ʦa kaka. nu namasuʔəʎəv a ʦa varuŋ, izua ʦa ɭəvan.</PHON>
+        <AUDIO start="190.852" end="203.705" file="02SN112-4_Nira_a21.wav"/>
     </S>
     <S id="a25">
         <FORM kindOf="original">kavala sa makaya a cemikel azua tja masasiljevaljeva kasicuayan.</FORM>
-        <FORM kindOf="standard">kavala sa makaya a cemikel azoa tja masasiljevaljeva kasicoayan.</FORM>
-        <AUDIO start="211.264" end="219.147" />
+        <PHON kindOf="original">kavaɭa sa makaja a ʦəmikəɭ azua ʦa masasiʎəvaʎəva kasiʦuajan.</PHON>
+        <FORM kindOf="standard">kavala sa makaya a cemikel azua tja masasiljevaljeva kasicuayan.</FORM>
+        <PHON kindOf="standard">kavaɭa sa makaja a ʦəmikəɭ azua ʦa masasiʎəvaʎəva kasiʦuajan.</PHON>
+        <AUDIO start="211.264" end="219.147" file="02SN112-4_Nira_a25.wav"/>
     </S>
     <S id="a27">
         <FORM kindOf="original">tucu, amin a tja kemasitjuma' kata tja kinacemekeljan a temulu ta tja aljak namakuda situluan na tjaisangasangas, mana uri pinivarung aicu a nguangua' a kakudan.</FORM>
-        <FORM kindOf="standard">toco, amin a tja kemasitjoma' kata tja kinacemekeljan a temolo ta tja aljak namakoda sitoloan na tjaisangasangas, mana ori pinivarong aico a ngoangoa' a kakodan.</FORM>
-        <AUDIO start="227.735" end="249.470" />
+        <PHON kindOf="original">tuʦu, amin a ʦa kəmasiʦumaʔ kata ʦa kinaʦəməkəʎan a təmuɭu ta ʦa aʎak namakuda situɭuan na ʦaisaŋasaŋas, mana uri pinivaruŋ aiʦu a ŋuaŋuaʔ a kakudan.</PHON>
+        <FORM kindOf="standard">tucu, amin a tja kemasitjuma' kata tja kinacemekeljan a temulu ta tja aljak namakuda situluan na tjaisangasangas, mana uri pinivarung aicu a nguangua' a kakudan.</FORM>
+        <PHON kindOf="standard">tuʦu, amin a ʦa kəmasiʦumaʔ kata ʦa kinaʦəməkəʎan a təmuɭu ta ʦa aʎak namakuda situɭuan na ʦaisaŋasaŋas, mana uri pinivaruŋ aiʦu a ŋuaŋuaʔ a kakudan.</PHON>
+        <AUDIO start="227.735" end="249.470" file="02SN112-4_Nira_a27.wav"/>
     </S>
     <S id="a31">
         <FORM kindOf="original">nu nakemasitjuma' a matulu a kakedrian, pai nu vaikanga sasaw tiamadju a kitateveljan ta 'ali'ali, mana uri izua marepa'alja'aljay marekiljivaljivak.</FORM>
-        <FORM kindOf="standard">no nakemasitjoma' a matolo a kakedrian, pai no vaikanga sasaw tiamadjo a kitateveljan ta 'ali'ali, mana ori izoa marepa'alja'aljay marekiljivaljivak.</FORM>
-        <AUDIO start="250.147" end="266.323" />
+        <PHON kindOf="original">nu nakəmasiʦumaʔ a matuɭu a kakəɖian, pai nu vaikaŋa sasaw tiamaɉu a kitatəvəʎan ta ʔaɭiʔaɭi, mana uri izua marəpaʔaʎaʔaʎaj marəkiʎivaʎivak.</PHON>
+        <FORM kindOf="standard">nu nakemasitjuma' a matulu a kakedrian, pai nu vaikanga sasaw tiamadju a kitateveljan ta 'ali'ali, mana uri izua marepa'alja'aljay marekiljivaljivak.</FORM>
+        <PHON kindOf="standard">nu nakəmasiʦumaʔ a matuɭu a kakəɖian, pai nu vaikaŋa sasaw tiamaɉu a kitatəvəʎan ta ʔaɭiʔaɭi, mana uri izua marəpaʔaʎaʔaʎaj marəkiʎivaʎivak.</PHON>
+        <AUDIO start="250.147" end="266.323" file="02SN112-4_Nira_a31.wav"/>
     </S>
     <S id="a28">
         <FORM kindOf="original">azua maresiljevaljeva mana uri nama'ulipanga a tja pacucunan a pita tinese a na geminagalj. ulja ini a na ma'ulip azua masasiljevaljeva a tja sikudan.</FORM>
-        <FORM kindOf="standard">azoa maresiljevaljeva mana ori nama'olipanga a tja pacoconan a pita tinese a na geminagalj. olja ini a na ma'olip azoa masasiljevaljeva a tja sikodan.</FORM>
-        <AUDIO start="266.588" end="285.588" />
+        <PHON kindOf="original">azua marəsiʎəvaʎəva mana uri namaʔuɭipaŋa a ʦa paʦuʦunan a pita tinəsə a na gəminagaʎ. uʎa ini a na maʔuɭip azua masasiʎəvaʎəva a ʦa sikudan.</PHON>
+        <FORM kindOf="standard">azua maresiljevaljeva mana uri nama'ulipanga a tja pacucunan a pita tinese a na geminagalj. ulja ini a na ma'ulip azua masasiljevaljeva a tja sikudan.</FORM>
+        <PHON kindOf="standard">azua marəsiʎəvaʎəva mana uri namaʔuɭipaŋa a ʦa paʦuʦunan a pita tinəsə a na gəminagaʎ. uʎa ini a na maʔuɭip azua masasiʎəvaʎəva a ʦa sikudan.</PHON>
+        <AUDIO start="266.588" end="285.588" file="02SN112-4_Nira_a28.wav"/>
     </S>
 </TEXT>

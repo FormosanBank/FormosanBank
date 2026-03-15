@@ -1,173 +1,241 @@
-<?xml version='1.0' encoding='utf-8'?>
-<TEXT id="NTU_Pwn_Loris_02JE110-3 Loris" xml:lang="pwn" source="NTU Paiwan Data, Participant Loris, file 02JE110-3 Loris" audio="02JE110-3 Loris.wav" copyright="CC-BY" citation="Le Ferrand, É., Prud'hommeaux, E., Hartshorne, J. K., &amp; Sung, L.-M. (2024). NTU Paiwan ASR Corpus. Electronic Resource." BibTeX_citation="@electronic{leferrand2024ntu, author = {Le Ferrand, {'E}ric and Prud'hommeaux, Emily and Hartshorne, Joshua K. and Sung, Li-May}, year = {2024}, title = {{NTU} {Paiwan} {ASR} Corpus},type = {Electronic Resource}}" dialect="Eastern">
+<?xml version='1.0' encoding='UTF-8'?>
+<TEXT id="NTU_Pwn_Loris_02JE110-3 Loris" xml:lang="pwn" source="NTU Paiwan Data, Participant Loris, file 02JE110-3 Loris" audio="02JE110-3_Loris.wav" copyright="CC-BY" citation="Le Ferrand, É., Prud'hommeaux, E., Hartshorne, J. K., &amp; Sung, L.-M. (2024). NTU Paiwan ASR Corpus. Electronic Resource." BibTeX_citation="@electronic{leferrand2024ntu, author = {Le Ferrand, {'E}ric and Prud'hommeaux, Emily and Hartshorne, Joshua K. and Sung, Li-May}, year = {2024}, title = {{NTU} {Paiwan} {ASR} Corpus},type = {Electronic Resource}}" dialect="Eastern">
     <S id="a1">
         <FORM kindOf="original">ita nia sikataqaljan,</FORM>
+        <PHON kindOf="original">ita nia sikataqaʎan,</PHON>
         <FORM kindOf="standard">ita nia sikataqaljan,</FORM>
-        <AUDIO start="3.585" end="6.082" />
+        <PHON kindOf="standard">ita nia sikataqaʎan,</PHON>
+        <AUDIO start="3.585" end="6.082" file="02JE110-3_Loris_a1.wav"/>
     </S>
     <S id="a2">
         <FORM kindOf="original">a uqaljaqaljay palaing tu macaqu a qemaljup,</FORM>
-        <FORM kindOf="standard">a oqaljaqaljay palaing to macaqo a qemaljop,</FORM>
-        <AUDIO start="6.375" end="10.230" />
+        <PHON kindOf="original">a uqaʎaqaʎaj paɭaiŋ tu maʦaqu a qəmaʎup,</PHON>
+        <FORM kindOf="standard">a uqaljaqaljay palaing tu macaqu a qemaljup,</FORM>
+        <PHON kindOf="standard">a uqaʎaqaʎaj paɭaiŋ tu maʦaqu a qəmaʎup,</PHON>
+        <AUDIO start="6.375" end="10.230" file="02JE110-3_Loris_a2.wav"/>
     </S>
     <S id="a3">
         <FORM kindOf="original">satja si qivu tana</FORM>
-        <FORM kindOf="standard">satja si qivo tana</FORM>
-        <AUDIO start="11.227" end="13.207" />
+        <PHON kindOf="original">saʦa si qivu tana</PHON>
+        <FORM kindOf="standard">satja si qivu tana</FORM>
+        <PHON kindOf="standard">saʦa si qivu tana</PHON>
+        <AUDIO start="11.227" end="13.207" file="02JE110-3_Loris_a3.wav"/>
     </S>
     <S id="a4">
         <FORM kindOf="original">sepuwalang ta</FORM>
-        <FORM kindOf="standard">sepowalang ta</FORM>
-        <AUDIO start="13.477" end="14.754" />
+        <PHON kindOf="original">səpuwaɭaŋ ta</PHON>
+        <FORM kindOf="standard">sepuwalang ta</FORM>
+        <PHON kindOf="standard">səpuwaɭaŋ ta</PHON>
+        <AUDIO start="13.477" end="14.754" file="02JE110-3_Loris_a4.wav"/>
     </S>
     <S id="a5">
         <FORM kindOf="original">qaqaljupan na i cemiyul,</FORM>
-        <FORM kindOf="standard">qaqaljopan na i cemiyol,</FORM>
-        <AUDIO start="15.340" end="18.305" />
+        <PHON kindOf="original">qaqaʎupan na i ʦəmijuɭ,</PHON>
+        <FORM kindOf="standard">qaqaljupan na i cemiyul,</FORM>
+        <PHON kindOf="standard">qaqaʎupan na i ʦəmijuɭ,</PHON>
+        <AUDIO start="15.340" end="18.305" file="02JE110-3_Loris_a5.wav"/>
     </S>
     <S id="a6">
         <FORM kindOf="original">timadju tja sinan</FORM>
-        <FORM kindOf="standard">timadjo tja sinan</FORM>
-        <AUDIO start="19.125" end="20.625" />
+        <PHON kindOf="original">timaɉu ʦa sinan</PHON>
+        <FORM kindOf="standard">timadju tja sinan</FORM>
+        <PHON kindOf="standard">timaɉu ʦa sinan</PHON>
+        <AUDIO start="19.125" end="20.625" file="02JE110-3_Loris_a6.wav"/>
     </S>
     <S id="a7">
         <FORM kindOf="original">"kisan cemiyul" kata "kisan</FORM>
-        <FORM kindOf="standard">"kisan cemiyol" kata "kisan</FORM>
-        <AUDIO start="20.930" end="23.344" />
+        <PHON kindOf="original">"kisan ʦəmijuɭ" kata "kisan</PHON>
+        <FORM kindOf="standard">"kisan cemiyul" kata "kisan</FORM>
+        <PHON kindOf="standard">"kisan ʦəmijuɭ" kata "kisan</PHON>
+        <AUDIO start="20.930" end="23.344" file="02JE110-3_Loris_a7.wav"/>
     </S>
     <S id="a8">
         <FORM kindOf="original">pasepucug".</FORM>
-        <FORM kindOf="standard">pasepocog".</FORM>
-        <AUDIO start="23.672" end="25.277" />
+        <PHON kindOf="original">pasəpuʦug".</PHON>
+        <FORM kindOf="standard">pasepucug".</FORM>
+        <PHON kindOf="standard">pasəpuʦug".</PHON>
+        <AUDIO start="23.672" end="25.277" file="02JE110-3_Loris_a8.wav"/>
     </S>
     <S id="a9">
         <FORM kindOf="original">saka nu uqaljay sun,</FORM>
-        <FORM kindOf="standard">saka no oqaljay son,</FORM>
-        <AUDIO start="26.543" end="28.664" />
+        <PHON kindOf="original">saka nu uqaʎaj sun,</PHON>
+        <FORM kindOf="standard">saka nu uqaljay sun,</FORM>
+        <PHON kindOf="standard">saka nu uqaʎaj sun,</PHON>
+        <AUDIO start="26.543" end="28.664" file="02JE110-3_Loris_a9.wav"/>
     </S>
     <S id="a10">
         <FORM kindOf="original">nu djemaljun a pitju,</FORM>
-        <FORM kindOf="standard">no djemaljon a pitjo,</FORM>
-        <AUDIO start="29.074" end="31.301" />
+        <PHON kindOf="original">nu ɉəmaʎun a piʦu,</PHON>
+        <FORM kindOf="standard">nu djemaljun a pitju,</FORM>
+        <PHON kindOf="standard">nu ɉəmaʎun a piʦu,</PHON>
+        <AUDIO start="29.074" end="31.301" file="02JE110-3_Loris_a10.wav"/>
     </S>
     <S id="a11">
         <FORM kindOf="original">alu a cavilj tazua,</FORM>
-        <FORM kindOf="standard">alo a cavilj tazoa,</FORM>
-        <AUDIO start="31.734" end="34.160" />
+        <PHON kindOf="original">aɭu a ʦaviʎ tazua,</PHON>
+        <FORM kindOf="standard">alu a cavilj tazua,</FORM>
+        <PHON kindOf="standard">aɭu a ʦaviʎ tazua,</PHON>
+        <AUDIO start="31.734" end="34.160" file="02JE110-3_Loris_a11.wav"/>
     </S>
     <S id="a12">
         <FORM kindOf="original">si djaulj ta para</FORM>
-        <FORM kindOf="standard">si djaolj ta para</FORM>
-        <AUDIO start="34.910" end="37.395" />
+        <PHON kindOf="original">si ɉauʎ ta para</PHON>
+        <FORM kindOf="standard">si djaulj ta para</FORM>
+        <PHON kindOf="standard">si ɉauʎ ta para</PHON>
+        <AUDIO start="34.910" end="37.395" file="02JE110-3_Loris_a12.wav"/>
     </S>
     <S id="a13">
         <FORM kindOf="original">parakaljay</FORM>
+        <PHON kindOf="original">parakaʎaj</PHON>
         <FORM kindOf="standard">parakaljay</FORM>
-        <AUDIO start="37.875" end="39.035" />
+        <PHON kindOf="standard">parakaʎaj</PHON>
+        <AUDIO start="37.875" end="39.035" file="02JE110-3_Loris_a13.wav"/>
     </S>
     <S id="a14">
         <FORM kindOf="original">sasu</FORM>
-        <FORM kindOf="standard">saso</FORM>
-        <AUDIO start="40.266" end="41.191" />
+        <PHON kindOf="original">sasu</PHON>
+        <FORM kindOf="standard">sasu</FORM>
+        <PHON kindOf="standard">sasu</PHON>
+        <AUDIO start="40.266" end="41.191" file="02JE110-3_Loris_a14.wav"/>
     </S>
     <S id="a15">
         <FORM kindOf="original">sanluqeman</FORM>
-        <FORM kindOf="standard">sanloqeman</FORM>
-        <AUDIO start="41.859" end="43.441" />
+        <PHON kindOf="original">sanɭuqəman</PHON>
+        <FORM kindOf="standard">sanluqeman</FORM>
+        <PHON kindOf="standard">sanɭuqəman</PHON>
+        <AUDIO start="41.859" end="43.441" file="02JE110-3_Loris_a15.wav"/>
     </S>
     <S id="a16">
         <FORM kindOf="original">a pari</FORM>
+        <PHON kindOf="original">a pari</PHON>
         <FORM kindOf="standard">a pari</FORM>
-        <AUDIO start="43.605" end="44.496" />
+        <PHON kindOf="standard">a pari</PHON>
+        <AUDIO start="43.605" end="44.496" file="02JE110-3_Loris_a16.wav"/>
     </S>
     <S id="a17">
         <FORM kindOf="original">pairava</FORM>
+        <PHON kindOf="original">pairava</PHON>
         <FORM kindOf="standard">pairava</FORM>
-        <AUDIO start="45.492" end="46.664" />
+        <PHON kindOf="standard">pairava</PHON>
+        <AUDIO start="45.492" end="46.664" file="02JE110-3_Loris_a17.wav"/>
     </S>
     <S id="a18">
         <FORM kindOf="original">ta tjakit,</FORM>
+        <PHON kindOf="original">ta ʦakit,</PHON>
         <FORM kindOf="standard">ta tjakit,</FORM>
-        <AUDIO start="47.355" end="48.316" />
+        <PHON kindOf="standard">ta ʦakit,</PHON>
+        <AUDIO start="47.355" end="48.316" file="02JE110-3_Loris_a18.wav"/>
     </S>
     <S id="a19">
         <FORM kindOf="original">ulja sun a</FORM>
-        <FORM kindOf="standard">olja son a</FORM>
-        <AUDIO start="49.090" end="50.109" />
+        <PHON kindOf="original">uʎa sun a</PHON>
+        <FORM kindOf="standard">ulja sun a</FORM>
+        <PHON kindOf="standard">uʎa sun a</PHON>
+        <AUDIO start="49.090" end="50.109" file="02JE110-3_Loris_a19.wav"/>
     </S>
     <S id="a20">
         <FORM kindOf="original">puvarung saka</FORM>
-        <FORM kindOf="standard">povarong saka</FORM>
-        <AUDIO start="50.566" end="51.879" />
+        <PHON kindOf="original">puvaruŋ saka</PHON>
+        <FORM kindOf="standard">puvarung saka</FORM>
+        <PHON kindOf="standard">puvaruŋ saka</PHON>
+        <AUDIO start="50.566" end="51.879" file="02JE110-3_Loris_a20.wav"/>
     </S>
     <S id="a21">
         <FORM kindOf="original">napupicul,</FORM>
-        <FORM kindOf="standard">napopicol,</FORM>
-        <AUDIO start="52.160" end="53.472" />
+        <PHON kindOf="original">napupiʦuɭ,</PHON>
+        <FORM kindOf="standard">napupicul,</FORM>
+        <PHON kindOf="standard">napupiʦuɭ,</PHON>
+        <AUDIO start="52.160" end="53.472" file="02JE110-3_Loris_a21.wav"/>
     </S>
     <S id="a22">
         <FORM kindOf="original">a qemaljup a kiqeci.</FORM>
-        <FORM kindOf="standard">a qemaljop a kiqeci.</FORM>
-        <AUDIO start="54.352" end="56.473" />
+        <PHON kindOf="original">a qəmaʎup a kiqəʦi.</PHON>
+        <FORM kindOf="standard">a qemaljup a kiqeci.</FORM>
+        <PHON kindOf="standard">a qəmaʎup a kiqəʦi.</PHON>
+        <AUDIO start="54.352" end="56.473" file="02JE110-3_Loris_a22.wav"/>
     </S>
     <S id="a23">
         <FORM kindOf="original">i "qaqaljupan" avan nusi</FORM>
-        <FORM kindOf="standard">i "qaqaljopan" avan nosi</FORM>
-        <AUDIO start="60.844" end="63.703" />
+        <PHON kindOf="original">i "qaqaʎupan" avan nusi</PHON>
+        <FORM kindOf="standard">i "qaqaljupan" avan nusi</FORM>
+        <PHON kindOf="standard">i "qaqaʎupan" avan nusi</PHON>
+        <AUDIO start="60.844" end="63.703" file="02JE110-3_Loris_a23.wav"/>
     </S>
     <S id="a24">
         <FORM kindOf="original">kungkuan,</FORM>
-        <FORM kindOf="standard">kongkoan,</FORM>
-        <AUDIO start="64.289" end="65.156" />
+        <PHON kindOf="original">kuŋkuan,</PHON>
+        <FORM kindOf="standard">kungkuan,</FORM>
+        <PHON kindOf="standard">kuŋkuan,</PHON>
+        <AUDIO start="64.289" end="65.156" file="02JE110-3_Loris_a24.wav"/>
     </S>
     <S id="a25">
         <FORM kindOf="original">sa</FORM>
+        <PHON kindOf="original">sa</PHON>
         <FORM kindOf="standard">sa</FORM>
-        <AUDIO start="68.332" end="68.965" />
+        <PHON kindOf="standard">sa</PHON>
+        <AUDIO start="68.332" end="68.965" file="02JE110-3_Loris_a25.wav"/>
     </S>
     <S id="a26">
         <FORM kindOf="original">sangsangasan a tja kituluin</FORM>
-        <FORM kindOf="standard">sangsangasan a tja kitoloin</FORM>
-        <AUDIO start="70.688" end="73.559" />
+        <PHON kindOf="original">saŋsaŋasan a ʦa kituɭuin</PHON>
+        <FORM kindOf="standard">sangsangasan a tja kituluin</FORM>
+        <PHON kindOf="standard">saŋsaŋasan a ʦa kituɭuin</PHON>
+        <AUDIO start="70.688" end="73.559" file="02JE110-3_Loris_a26.wav"/>
     </S>
     <S id="a27">
         <FORM kindOf="original">avanzua "kipu</FORM>
-        <FORM kindOf="standard">avanzoa "kipo</FORM>
-        <AUDIO start="73.769" end="75.339" />
+        <PHON kindOf="original">avanzua "kipu</PHON>
+        <FORM kindOf="standard">avanzua "kipu</FORM>
+        <PHON kindOf="standard">avanzua "kipu</PHON>
+        <AUDIO start="73.769" end="75.339" file="02JE110-3_Loris_a27.wav"/>
     </S>
     <S id="a28">
         <FORM kindOf="original">kipucug ta sacemel".</FORM>
-        <FORM kindOf="standard">kipocog ta sacemel".</FORM>
-        <AUDIO start="75.656" end="77.906" />
+        <PHON kindOf="original">kipuʦug ta saʦəməɭ".</PHON>
+        <FORM kindOf="standard">kipucug ta sacemel".</FORM>
+        <PHON kindOf="standard">kipuʦug ta saʦəməɭ".</PHON>
+        <AUDIO start="75.656" end="77.906" file="02JE110-3_Loris_a28.wav"/>
     </S>
     <S id="a29">
         <FORM kindOf="original">nu madjaljun anga</FORM>
-        <FORM kindOf="standard">no madjaljon anga</FORM>
-        <AUDIO start="78.633" end="80.426" />
+        <PHON kindOf="original">nu maɉaʎun aŋa</PHON>
+        <FORM kindOf="standard">nu madjaljun anga</FORM>
+        <PHON kindOf="standard">nu maɉaʎun aŋa</PHON>
+        <AUDIO start="78.633" end="80.426" file="02JE110-3_Loris_a29.wav"/>
     </S>
     <S id="a30">
         <FORM kindOf="original">ta puluqe sa pitju,</FORM>
-        <FORM kindOf="standard">ta poloqe sa pitjo,</FORM>
-        <AUDIO start="80.484" end="82.512" />
+        <PHON kindOf="original">ta puɭuqə sa piʦu,</PHON>
+        <FORM kindOf="standard">ta puluqe sa pitju,</FORM>
+        <PHON kindOf="standard">ta puɭuqə sa piʦu,</PHON>
+        <AUDIO start="80.484" end="82.512" file="02JE110-3_Loris_a30.wav"/>
     </S>
     <S id="a31">
         <FORM kindOf="original">alu a su cavilj,</FORM>
-        <FORM kindOf="standard">alo a so cavilj,</FORM>
-        <AUDIO start="83.098" end="85.066" />
+        <PHON kindOf="original">aɭu a su ʦaviʎ,</PHON>
+        <FORM kindOf="standard">alu a su cavilj,</FORM>
+        <PHON kindOf="standard">aɭu a su ʦaviʎ,</PHON>
+        <AUDIO start="83.098" end="85.066" file="02JE110-3_Loris_a31.wav"/>
     </S>
     <S id="a32">
         <FORM kindOf="original">saka a su tarivakan a su picul</FORM>
-        <FORM kindOf="standard">saka a so tarivakan a so picol</FORM>
-        <AUDIO start="85.770" end="89.566" />
+        <PHON kindOf="original">saka a su tarivakan a su piʦuɭ</PHON>
+        <FORM kindOf="standard">saka a su tarivakan a su picul</FORM>
+        <PHON kindOf="standard">saka a su tarivakan a su piʦuɭ</PHON>
+        <AUDIO start="85.770" end="89.566" file="02JE110-3_Loris_a32.wav"/>
     </S>
     <S id="a33">
         <FORM kindOf="original">na maqati anga,</FORM>
+        <PHON kindOf="original">na maqati aŋa,</PHON>
         <FORM kindOf="standard">na maqati anga,</FORM>
-        <AUDIO start="89.953" end="91.336" />
+        <PHON kindOf="standard">na maqati aŋa,</PHON>
+        <AUDIO start="89.953" end="91.336" file="02JE110-3_Loris_a33.wav"/>
     </S>
     <S id="a34">
         <FORM kindOf="original">ui si paka</FORM>
-        <FORM kindOf="standard">oi si paka</FORM>
-        <AUDIO start="92.918" end="94.559" />
+        <PHON kindOf="original">ui si paka</PHON>
+        <FORM kindOf="standard">ui si paka</FORM>
+        <PHON kindOf="standard">ui si paka</PHON>
+        <AUDIO start="92.918" end="94.559" file="02JE110-3_Loris_a34.wav"/>
     </S>
 </TEXT>

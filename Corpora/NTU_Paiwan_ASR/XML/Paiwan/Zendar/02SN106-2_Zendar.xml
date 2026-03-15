@@ -1,88 +1,122 @@
-<?xml version='1.0' encoding='utf-8'?>
-<TEXT id="NTU_Pwn_Zendar_02SN106-2 Zendar" xml:lang="pwn" source="NTU Paiwan Data, Participant Zendar, file 02SN106-2 Zendar" audio="02SN106-2 Zendar.wav" copyright="CC-BY" citation="Le Ferrand, É., Prud'hommeaux, E., Hartshorne, J. K., &amp; Sung, L.-M. (2024). NTU Paiwan ASR Corpus. Electronic Resource." BibTeX_citation="@electronic{leferrand2024ntu, author = {Le Ferrand, {'E}ric and Prud'hommeaux, Emily and Hartshorne, Joshua K. and Sung, Li-May}, year = {2024}, title = {{NTU} {Paiwan} {ASR} Corpus},type = {Electronic Resource}}" dialect="Northern">
+<?xml version='1.0' encoding='UTF-8'?>
+<TEXT id="NTU_Pwn_Zendar_02SN106-2 Zendar" xml:lang="pwn" source="NTU Paiwan Data, Participant Zendar, file 02SN106-2 Zendar" audio="02SN106-2_Zendar.wav" copyright="CC-BY" citation="Le Ferrand, É., Prud'hommeaux, E., Hartshorne, J. K., &amp; Sung, L.-M. (2024). NTU Paiwan ASR Corpus. Electronic Resource." BibTeX_citation="@electronic{leferrand2024ntu, author = {Le Ferrand, {'E}ric and Prud'hommeaux, Emily and Hartshorne, Joshua K. and Sung, Li-May}, year = {2024}, title = {{NTU} {Paiwan} {ASR} Corpus},type = {Electronic Resource}}" dialect="Northern">
     <S id="a1">
         <FORM kindOf="original">ka tevutanga dingki maljiyananga tjasipa'ulja'ulja, sa maumaljanga a tjasikudan a tjasikavaljutan a tjasikavaljut auta, pasa ma'uli'ulipanga a patjetucu!</FORM>
-        <FORM kindOf="standard">ka tevotanga dingki maljiyananga tjasipa'olja'olja, sa maomaljanga a tjasikodan a tjasikavaljotan a tjasikavaljot aota, pasa ma'oli'olipanga a patjetoco!</FORM>
-        <AUDIO start="1.058" end="21.117" />
+        <PHON kindOf="original">ka təvutaŋa diŋki maʎijanaŋa ʦasipaʔuʎaʔuʎa, sa maumaʎaŋa a ʦasikudan a ʦasikavaʎutan a ʦasikavaʎut auta, pasa maʔuɭiʔuɭipaŋa a paʦətuʦu!</PHON>
+        <FORM kindOf="standard">ka tevutanga dingki maljiyananga tjasipa'ulja'ulja, sa maumaljanga a tjasikudan a tjasikavaljutan a tjasikavaljut auta, pasa ma'uli'ulipanga a patjetucu!</FORM>
+        <PHON kindOf="standard">ka təvutaŋa diŋki maʎijanaŋa ʦasipaʔuʎaʔuʎa, sa maumaʎaŋa a ʦasikudan a ʦasikavaʎutan a ʦasikavaʎut auta, pasa maʔuɭiʔuɭipaŋa a paʦətuʦu!</PHON>
+        <AUDIO start="1.058" end="21.117" file="02SN106-2_Zendar_a1.wav"/>
     </S>
     <S id="a2">
         <FORM kindOf="original">ljakua aicu a sikudan sikudanan nua semicuayan, nu neka a sapuy maru neka a zaljum a tjasikavaljutan a tjasikavaljut sarekuya aravac.</FORM>
-        <FORM kindOf="standard">ljakoa aico a sikodan sikodanan noa semicoayan, no neka a sapoy maro neka a zaljom a tjasikavaljotan a tjasikavaljot sarekoya aravac.</FORM>
-        <AUDIO start="21.205" end="36.382" />
+        <PHON kindOf="original">ʎakua aiʦu a sikudan sikudanan nua səmiʦuajan, nu nəka a sapuj maru nəka a zaʎum a ʦasikavaʎutan a ʦasikavaʎut sarəkuja aravaʦ.</PHON>
+        <FORM kindOf="standard">ljakua aicu a sikudan sikudanan nua semicuayan, nu neka a sapuy maru neka a zaljum a tjasikavaljutan a tjasikavaljut sarekuya aravac.</FORM>
+        <PHON kindOf="standard">ʎakua aiʦu a sikudan sikudanan nua səmiʦuajan, nu nəka a sapuj maru nəka a zaʎum a ʦasikavaʎutan a ʦasikavaʎut sarəkuja aravaʦ.</PHON>
+        <AUDIO start="21.205" end="36.382" file="02SN106-2_Zendar_a2.wav"/>
     </S>
     <S id="a3">
         <FORM kindOf="original">manasika a tjasikarakudan a semicuayan, a sisanpazangalan tua sapuy, namaya tua sisanpazangalan tua zaljum. ayata aicu a sapuy nuaya, a pitua tjakakudakudan namasan paravac angata.</FORM>
-        <FORM kindOf="standard">manasika a tjasikarakodan a semicoayan, a sisanpazangalan toa sapoy, namaya toa sisanpazangalan toa zaljom. ayata aico a sapoy noaya, a pitoa tjakakodakodan namasan paravac angata.</FORM>
-        <AUDIO start="36.529" end="62.440" />
+        <PHON kindOf="original">manasika a ʦasikarakudan a səmiʦuajan, a sisanpazaŋaɭan tua sapuj, namaja tua sisanpazaŋaɭan tua zaʎum. ajata aiʦu a sapuj nuaja, a pitua ʦakakudakudan namasan paravaʦ aŋata.</PHON>
+        <FORM kindOf="standard">manasika a tjasikarakudan a semicuayan, a sisanpazangalan tua sapuy, namaya tua sisanpazangalan tua zaljum. ayata aicu a sapuy nuaya, a pitua tjakakudakudan namasan paravac angata.</FORM>
+        <PHON kindOf="standard">manasika a ʦasikarakudan a səmiʦuajan, a sisanpazaŋaɭan tua sapuj, namaja tua sisanpazaŋaɭan tua zaʎum. ajata aiʦu a sapuj nuaja, a pitua ʦakakudakudan namasan paravaʦ aŋata.</PHON>
+        <AUDIO start="36.529" end="62.440" file="02SN106-2_Zendar_a3.wav"/>
     </S>
     <S id="a4">
         <FORM kindOf="original">nu pecunguitjen sa medjek makayanga a lemikezalj a kemesa tua kanen, nu kaljaljalje'elan tjasikalingulingulj a kingidu tu sikaseljec.</FORM>
-        <FORM kindOf="standard">no pecongoitjen sa medjek makayanga a lemikezalj a kemesa toa kanen, no kaljaljalje'elan tjasikalingolingolj a kingido to sikaseljec.</FORM>
-        <AUDIO start="62.440" end="85.999" />
+        <PHON kindOf="original">nu pəʦuŋuiʦən sa məɉək makajaŋa a ɭəmikəzaʎ a kəməsa tua kanən, nu kaʎaʎaʎəʔəɭan ʦasikaɭiŋuɭiŋuʎ a kiŋidu tu sikasəʎəʦ.</PHON>
+        <FORM kindOf="standard">nu pecunguitjen sa medjek makayanga a lemikezalj a kemesa tua kanen, nu kaljaljalje'elan tjasikalingulingulj a kingidu tu sikaseljec.</FORM>
+        <PHON kindOf="standard">nu pəʦuŋuiʦən sa məɉək makajaŋa a ɭəmikəzaʎ a kəməsa tua kanən, nu kaʎaʎaʎəʔəɭan ʦasikaɭiŋuɭiŋuʎ a kiŋidu tu sikasəʎəʦ.</PHON>
+        <AUDIO start="62.440" end="85.999" file="02SN106-2_Zendar_a4.wav"/>
     </S>
     <S id="a5">
         <FORM kindOf="original">azua a namazazangiljan a kasasavan tjakaka'epuan i 'inaljan, nu izua a pupalisiyan, pucekecekelj, nu'ezemezemetj pinivecekadan a sapuy, sa tjaziazian a malevaleva.</FORM>
-        <FORM kindOf="standard">azoa a namazazangiljan a kasasavan tjakaka'epoan i 'inaljan, no izoa a popalisiyan, pocekecekelj, no'ezemezemetj pinivecekadan a sapoy, sa tjaziazian a malevaleva.</FORM>
-        <AUDIO start="86.118" end="108.823" />
+        <PHON kindOf="original">azua a namazazaŋiʎan a kasasavan ʦakakaʔəpuan i ʔinaʎan, nu izua a pupaɭisijan, puʦəkəʦəkəʎ, nuʔəzəməzəməʦ pinivəʦəkadan a sapuj, sa ʦaziazian a maɭəvaɭəva.</PHON>
+        <FORM kindOf="standard">azua a namazazangiljan a kasasavan tjakaka'epuan i 'inaljan, nu izua a pupalisiyan, pucekecekelj, nu'ezemezemetj pinivecekadan a sapuy, sa tjaziazian a malevaleva.</FORM>
+        <PHON kindOf="standard">azua a namazazaŋiʎan a kasasavan ʦakakaʔəpuan i ʔinaʎan, nu izua a pupaɭisijan, puʦəkəʦəkəʎ, nuʔəzəməzəməʦ pinivəʦəkadan a sapuj, sa ʦaziazian a maɭəvaɭəva.</PHON>
+        <AUDIO start="86.118" end="108.823" file="02SN106-2_Zendar_a5.wav"/>
     </S>
     <S id="a6">
         <FORM kindOf="original">malap ta ma malayicanga a ljaviljav ungelj ungeljen sa seman zaman, sipa'ulja ta djalan nu 'ezemezemetj.</FORM>
-        <FORM kindOf="standard">malap ta ma malayicanga a ljaviljav ongelj ongeljen sa seman zaman, sipa'olja ta djalan no 'ezemezemetj.</FORM>
-        <AUDIO start="108.882" end="129.117" />
+        <PHON kindOf="original">maɭap ta ma maɭajiʦaŋa a ʎaviʎav uŋəʎ uŋəʎən sa səman zaman, sipaʔuʎa ta ɉaɭan nu ʔəzəməzəməʦ.</PHON>
+        <FORM kindOf="standard">malap ta ma malayicanga a ljaviljav ungelj ungeljen sa seman zaman, sipa'ulja ta djalan nu 'ezemezemetj.</FORM>
+        <PHON kindOf="standard">maɭap ta ma maɭajiʦaŋa a ʎaviʎav uŋəʎ uŋəʎən sa səman zaman, sipaʔuʎa ta ɉaɭan nu ʔəzəməzəməʦ.</PHON>
+        <AUDIO start="108.882" end="129.117" file="02SN106-2_Zendar_a6.wav"/>
     </S>
     <S id="a7">
         <FORM kindOf="original">nu izua pacugan i 'inaljan, pucevulj sa pakeljang tu yainuan. kumalji a salilim ulja djaljuni a pase'eljing a kirimu.</FORM>
-        <FORM kindOf="standard">no izoa pacogan i 'inaljan, pocevolj sa pakeljang to yainoan. komalji a salilim olja djaljoni a pase'eljing a kirimo.</FORM>
-        <AUDIO start="129.117" end="149.470" />
+        <PHON kindOf="original">nu izua paʦugan i ʔinaʎan, puʦəvuʎ sa pakəʎaŋ tu jainuan. kumaʎi a saɭiɭim uʎa ɉaʎuni a pasəʔəʎiŋ a kirimu.</PHON>
+        <FORM kindOf="standard">nu izua pacugan i 'inaljan, pucevulj sa pakeljang tu yainuan. kumalji a salilim ulja djaljuni a pase'eljing a kirimu.</FORM>
+        <PHON kindOf="standard">nu izua paʦugan i ʔinaʎan, puʦəvuʎ sa pakəʎaŋ tu jainuan. kumaʎi a saɭiɭim uʎa ɉaʎuni a pasəʔəʎiŋ a kirimu.</PHON>
+        <AUDIO start="129.117" end="149.470" file="02SN106-2_Zendar_a7.wav"/>
     </S>
     <S id="a8">
         <FORM kindOf="original">mayatucu ti vuvu, nu maka nu makaki kiva'u icengceng a liav liav a 'iyav, a gang, a makaveljeluan, tazua masizaman tu sipa'ulja marepusalasaladj, a tjem tjemilju tjemiljulj tjemiljulj ta gang ta 'iav sa sipangapangalj, izuanga tjakanen, tjasinikalevanga mapuljat.</FORM>
-        <FORM kindOf="standard">mayatoco ti vovo, no maka no makaki kiva'o icengceng a liav liav a 'iyav, a gang, a makaveljeloan, tazoa masizaman to sipa'olja mareposalasaladj, a tjem tjemiljo tjemiljolj tjemiljolj ta gang ta 'iav sa sipangapangalj, izoanga tjakanen, tjasinikalevanga mapoljat.</FORM>
-        <AUDIO start="149.470" end="188.735" />
+        <PHON kindOf="original">majatuʦu ti vuvu, nu maka nu makaki kivaʔu iʦəŋʦəŋ a ɭiav ɭiav a ʔijav, a gaŋ, a makavəʎəɭuan, tazua masizaman tu sipaʔuʎa marəpusaɭasaɭaɉ, a ʦəm ʦəmiʎu ʦəmiʎuʎ ʦəmiʎuʎ ta gaŋ ta ʔiav sa sipaŋapaŋaʎ, izuaŋa ʦakanən, ʦasinikaɭəvaŋa mapuʎat.</PHON>
+        <FORM kindOf="standard">mayatucu ti vuvu, nu maka nu makaki kiva'u icengceng a liav liav a 'iyav, a gang, a makaveljeluan, tazua masizaman tu sipa'ulja marepusalasaladj, a tjem tjemilju tjemiljulj tjemiljulj ta gang ta 'iav sa sipangapangalj, izuanga tjakanen, tjasinikalevanga mapuljat.</FORM>
+        <PHON kindOf="standard">majatuʦu ti vuvu, nu maka nu makaki kivaʔu iʦəŋʦəŋ a ɭiav ɭiav a ʔijav, a gaŋ, a makavəʎəɭuan, tazua masizaman tu sipaʔuʎa marəpusaɭasaɭaɉ, a ʦəm ʦəmiʎu ʦəmiʎuʎ ʦəmiʎuʎ ta gaŋ ta ʔiav sa sipaŋapaŋaʎ, izuaŋa ʦakanən, ʦasinikaɭəvaŋa mapuʎat.</PHON>
+        <AUDIO start="149.470" end="188.735" file="02SN106-2_Zendar_a8.wav"/>
     </S>
     <S id="a9">
         <FORM kindOf="original">nu cemulju ta 'acang, malap ta zaman sa papedjek tu semi semingis a pakasangas, kata cemapa ta vasa a seman aradj.</FORM>
-        <FORM kindOf="standard">no cemoljo ta 'acang, malap ta zaman sa papedjek to semi semingis a pakasangas, kata cemapa ta vasa a seman aradj.</FORM>
-        <AUDIO start="188.794" end="206.058" />
+        <PHON kindOf="original">nu ʦəmuʎu ta ʔaʦaŋ, maɭap ta zaman sa papəɉək tu səmi səmiŋis a pakasaŋas, kata ʦəmapa ta vasa a səman araɉ.</PHON>
+        <FORM kindOf="standard">nu cemulju ta 'acang, malap ta zaman sa papedjek tu semi semingis a pakasangas, kata cemapa ta vasa a seman aradj.</FORM>
+        <PHON kindOf="standard">nu ʦəmuʎu ta ʔaʦaŋ, maɭap ta zaman sa papəɉək tu səmi səmiŋis a pakasaŋas, kata ʦəmapa ta vasa a səman araɉ.</PHON>
+        <AUDIO start="188.794" end="206.058" file="02SN106-2_Zendar_a9.wav"/>
     </S>
     <S id="a10">
         <FORM kindOf="original">nu masusalimananga tiamadju a u'alja'aljay mavan a sapuy a sikasengesengeseng tua ljemengua' ta turivecan.</FORM>
-        <FORM kindOf="standard">no masosalimananga tiamadjo a o'alja'aljay mavan a sapoy a sikasengesengeseng toa ljemengoa' ta torivecan.</FORM>
-        <AUDIO start="206.058" end="221.558" />
+        <PHON kindOf="original">nu masusaɭimanaŋa tiamaɉu a uʔaʎaʔaʎaj mavan a sapuj a sikasəŋəsəŋəsəŋ tua ʎəməŋuaʔ ta turivəʦan.</PHON>
+        <FORM kindOf="standard">nu masusalimananga tiamadju a u'alja'aljay mavan a sapuy a sikasengesengeseng tua ljemengua' ta turivecan.</FORM>
+        <PHON kindOf="standard">nu masusaɭimanaŋa tiamaɉu a uʔaʎaʔaʎaj mavan a sapuj a sikasəŋəsəŋəsəŋ tua ʎəməŋuaʔ ta turivəʦan.</PHON>
+        <AUDIO start="206.058" end="221.558" file="02SN106-2_Zendar_a10.wav"/>
     </S>
     <S id="a11">
         <FORM kindOf="original">a tjakit, vulu', a sipana', a tiveljatan, vakela, a si'usu'usul a kakara(kakarang), a vuka, katua seman djilung, sapuy sakamaya sikasengeseng.</FORM>
-        <FORM kindOf="standard">a tjakit, volo', a sipana', a tiveljatan, vakela, a si'oso'osol a kakara(kakarang), a voka, katoa seman djilong, sapoy sakamaya sikasengeseng.</FORM>
-        <AUDIO start="221.558" end="253.029" />
+        <PHON kindOf="original">a ʦakit, vuɭuʔ, a sipanaʔ, a tivəʎatan, vakəɭa, a siʔusuʔusuɭ a kakara(kakaraŋ), a vuka, katua səman ɉiɭuŋ, sapuj sakamaja sikasəŋəsəŋ.</PHON>
+        <FORM kindOf="standard">a tjakit, vulu', a sipana', a tiveljatan, vakela, a si'usu'usul a kakara(kakarang), a vuka, katua seman djilung, sapuy sakamaya sikasengeseng.</FORM>
+        <PHON kindOf="standard">a ʦakit, vuɭuʔ, a sipanaʔ, a tivəʎatan, vakəɭa, a siʔusuʔusuɭ a kakara(kakaraŋ), a vuka, katua səman ɉiɭuŋ, sapuj sakamaja sikasəŋəsəŋ.</PHON>
+        <AUDIO start="221.558" end="253.029" file="02SN106-2_Zendar_a11.wav"/>
     </S>
     <S id="a12">
         <FORM kindOf="original">rema'ezemetj a masizaman, lemivu tua tidriyulj, cemevulj tua pakazuazuanan a lala, na lava, ciya, but, nu macevulj sa kaviladj, madjame' sakamaya.</FORM>
-        <FORM kindOf="standard">rema'ezemetj a masizaman, lemivo toa tidriyolj, cemevolj toa pakazoazoanan a lala, na lava, ciya, bot, no macevolj sa kaviladj, madjame' sakamaya.</FORM>
-        <AUDIO start="253.558" end="275.617" />
+        <PHON kindOf="original">rəmaʔəzəməʦ a masizaman, ɭəmivu tua tiɖijuʎ, ʦəməvuʎ tua pakazuazuanan a ɭaɭa, na ɭava, ʦija, but, nu maʦəvuʎ sa kaviɭaɉ, maɉaməʔ sakamaja.</PHON>
+        <FORM kindOf="standard">rema'ezemetj a masizaman, lemivu tua tidriyulj, cemevulj tua pakazuazuanan a lala, na lava, ciya, but, nu macevulj sa kaviladj, madjame' sakamaya.</FORM>
+        <PHON kindOf="standard">rəmaʔəzəməʦ a masizaman, ɭəmivu tua tiɖijuʎ, ʦəməvuʎ tua pakazuazuanan a ɭaɭa, na ɭava, ʦija, but, nu maʦəvuʎ sa kaviɭaɉ, maɉaməʔ sakamaja.</PHON>
+        <AUDIO start="253.558" end="275.617" file="02SN106-2_Zendar_a12.wav"/>
     </S>
     <S id="a13">
         <FORM kindOf="original">a uma' kasicuayan nakuya a ika tjapadjekedjekecan a 'avu'avuan a pucevulj, avan nu 'emuveling aya ramaljemaljeng.</FORM>
-        <FORM kindOf="standard">a oma' kasicoayan nakoya a ika tjapadjekedjekecan a 'avo'avoan a pocevolj, avan no 'emoveling aya ramaljemaljeng.</FORM>
-        <AUDIO start="275.911" end="295.058" />
+        <PHON kindOf="original">a umaʔ kasiʦuajan nakuja a ika ʦapaɉəkəɉəkəʦan a ʔavuʔavuan a puʦəvuʎ, avan nu ʔəmuvəɭiŋ aja ramaʎəmaʎəŋ.</PHON>
+        <FORM kindOf="standard">a uma' kasicuayan nakuya a ika tjapadjekedjekecan a 'avu'avuan a pucevulj, avan nu 'emuveling aya ramaljemaljeng.</FORM>
+        <PHON kindOf="standard">a umaʔ kasiʦuajan nakuja a ika ʦapaɉəkəɉəkəʦan a ʔavuʔavuan a puʦəvuʎ, avan nu ʔəmuvəɭiŋ aja ramaʎəmaʎəŋ.</PHON>
+        <AUDIO start="275.911" end="295.058" file="02SN106-2_Zendar_a13.wav"/>
     </S>
     <S id="a14">
         <FORM kindOf="original">ulja paljakev tua 'eluz tua sialangan, ika kicaingan na 'atjuvitjuvi kata sasayalj tu maljekuya tjauma'.</FORM>
-        <FORM kindOf="standard">olja paljakev toa 'eloz toa sialangan, ika kicaingan na 'atjovitjovi kata sasayalj to maljekoya tjaoma'.</FORM>
-        <AUDIO start="295.117" end="310.058" />
+        <PHON kindOf="original">uʎa paʎakəv tua ʔəɭuz tua siaɭaŋan, ika kiʦaiŋan na ʔaʦuviʦuvi kata sasajaʎ tu maʎəkuja ʦaumaʔ.</PHON>
+        <FORM kindOf="standard">ulja paljakev tua 'eluz tua sialangan, ika kicaingan na 'atjuvitjuvi kata sasayalj tu maljekuya tjauma'.</FORM>
+        <PHON kindOf="standard">uʎa paʎakəv tua ʔəɭuz tua siaɭaŋan, ika kiʦaiŋan na ʔaʦuviʦuvi kata sasajaʎ tu maʎəkuja ʦaumaʔ.</PHON>
+        <AUDIO start="295.117" end="310.058" file="02SN106-2_Zendar_a14.wav"/>
     </S>
     <S id="a15">
         <FORM kindOf="original">aicu a pita kemapalisi nu masalut nu maljeve', izua sakamaya cemevulj, padjekec tua singilj a djemaulj tua cemas a kivada' tua cemas.</FORM>
-        <FORM kindOf="standard">aico a pita kemapalisi no masalot no maljeve', izoa sakamaya cemevolj, padjekec toa singilj a djemaolj toa cemas a kivada' toa cemas.</FORM>
-        <AUDIO start="310.058" end="329.705" />
+        <PHON kindOf="original">aiʦu a pita kəmapaɭisi nu masaɭut nu maʎəvəʔ, izua sakamaja ʦəməvuʎ, paɉəkəʦ tua siŋiʎ a ɉəmauʎ tua ʦəmas a kivadaʔ tua ʦəmas.</PHON>
+        <FORM kindOf="standard">aicu a pita kemapalisi nu masalut nu maljeve', izua sakamaya cemevulj, padjekec tua singilj a djemaulj tua cemas a kivada' tua cemas.</FORM>
+        <PHON kindOf="standard">aiʦu a pita kəmapaɭisi nu masaɭut nu maʎəvəʔ, izua sakamaja ʦəməvuʎ, paɉəkəʦ tua siŋiʎ a ɉəmauʎ tua ʦəmas a kivadaʔ tua ʦəmas.</PHON>
+        <AUDIO start="310.058" end="329.705" file="02SN106-2_Zendar_a15.wav"/>
     </S>
     <S id="a16">
         <FORM kindOf="original">kemasi tua sapuy setje keljanganga tu namakuda pinakazuanan a ca'uan nua tjasevalitan.</FORM>
-        <FORM kindOf="standard">kemasi toa sapoy setje keljanganga to namakoda pinakazoanan a ca'oan noa tjasevalitan.</FORM>
-        <AUDIO start="329.764" end="339.852" />
+        <PHON kindOf="original">kəmasi tua sapuj səʦə kəʎaŋaŋa tu namakuda pinakazuanan a ʦaʔuan nua ʦasəvaɭitan.</PHON>
+        <FORM kindOf="standard">kemasi tua sapuy setje keljanganga tu namakuda pinakazuanan a ca'uan nua tjasevalitan.</FORM>
+        <PHON kindOf="standard">kəmasi tua sapuj səʦə kəʎaŋaŋa tu namakuda pinakazuanan a ʦaʔuan nua ʦasəvaɭitan.</PHON>
+        <AUDIO start="329.764" end="339.852" file="02SN106-2_Zendar_a16.wav"/>
     </S>
     <S id="a17">
         <FORM kindOf="original">nu namayatucuangatjen a izuanga ta dingki na sekiamav tua situcuananga a sikudan, a nekanga tjavalisaked tua tjasikavaljut, nakuya a ikatjen a kipa'enetj tua tjasinikavaljut a sapuy!</FORM>
-        <FORM kindOf="standard">no namayatocoangatjen a izoanga ta dingki na sekiamav toa sitocoananga a sikodan, a nekanga tjavalisaked toa tjasikavaljot, nakoya a ikatjen a kipa'enetj toa tjasinikavaljot a sapoy!</FORM>
-        <AUDIO start="339.970" end="366.265" />
+        <PHON kindOf="original">nu namajatuʦuaŋaʦən a izuaŋa ta diŋki na səkiamav tua situʦuanaŋa a sikudan, a nəkaŋa ʦavaɭisakəd tua ʦasikavaʎut, nakuja a ikaʦən a kipaʔənəʦ tua ʦasinikavaʎut a sapuj!</PHON>
+        <FORM kindOf="standard">nu namayatucuangatjen a izuanga ta dingki na sekiamav tua situcuananga a sikudan, a nekanga tjavalisaked tua tjasikavaljut, nakuya a ikatjen a kipa'enetj tua tjasinikavaljut a sapuy!</FORM>
+        <PHON kindOf="standard">nu namajatuʦuaŋaʦən a izuaŋa ta diŋki na səkiamav tua situʦuanaŋa a sikudan, a nəkaŋa ʦavaɭisakəd tua ʦasikavaʎut, nakuja a ikaʦən a kipaʔənəʦ tua ʦasinikavaʎut a sapuj!</PHON>
+        <AUDIO start="339.970" end="366.265" file="02SN106-2_Zendar_a17.wav"/>
     </S>
 </TEXT>

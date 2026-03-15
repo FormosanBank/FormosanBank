@@ -1,93 +1,129 @@
-<?xml version='1.0' encoding='utf-8'?>
-<TEXT id="NTU_Pwn_Loris_02JE105-4 Loris" xml:lang="pwn" source="NTU Paiwan Data, Participant Loris, file 02JE105-4 Loris" audio="02JE105-4 Loris.wav" copyright="CC-BY" citation="Le Ferrand, É., Prud'hommeaux, E., Hartshorne, J. K., &amp; Sung, L.-M. (2024). NTU Paiwan ASR Corpus. Electronic Resource." BibTeX_citation="@electronic{leferrand2024ntu, author = {Le Ferrand, {'E}ric and Prud'hommeaux, Emily and Hartshorne, Joshua K. and Sung, Li-May}, year = {2024}, title = {{NTU} {Paiwan} {ASR} Corpus},type = {Electronic Resource}}" dialect="Eastern">
+<?xml version='1.0' encoding='UTF-8'?>
+<TEXT id="NTU_Pwn_Loris_02JE105-4 Loris" xml:lang="pwn" source="NTU Paiwan Data, Participant Loris, file 02JE105-4 Loris" audio="02JE105-4_Loris.wav" copyright="CC-BY" citation="Le Ferrand, É., Prud'hommeaux, E., Hartshorne, J. K., &amp; Sung, L.-M. (2024). NTU Paiwan ASR Corpus. Electronic Resource." BibTeX_citation="@electronic{leferrand2024ntu, author = {Le Ferrand, {'E}ric and Prud'hommeaux, Emily and Hartshorne, Joshua K. and Sung, Li-May}, year = {2024}, title = {{NTU} {Paiwan} {ASR} Corpus},type = {Electronic Resource}}" dialect="Eastern">
     <S id="a1">
         <FORM kindOf="original">neka nu uri kipasaliv tua temakesi! neka nu uri pabilji tua kitulu. pazangal tua kemuda anga a makulung tua vecik.</FORM>
-        <FORM kindOf="standard">neka no ori kipasaliv toa temakesi! neka no ori pabilji toa kitolo. pazangal toa kemoda anga a makolong toa vecik.</FORM>
-        <AUDIO start="3.549" end="18.833" />
+        <PHON kindOf="original">nəka nu uri kipasaɭiv tua təmakəsi! nəka nu uri pabiʎi tua kituɭu. pazaŋaɭ tua kəmuda aŋa a makuɭuŋ tua vəʦik.</PHON>
+        <FORM kindOf="standard">neka nu uri kipasaliv tua temakesi! neka nu uri pabilji tua kitulu. pazangal tua kemuda anga a makulung tua vecik.</FORM>
+        <PHON kindOf="standard">nəka nu uri kipasaɭiv tua təmakəsi! nəka nu uri pabiʎi tua kituɭu. pazaŋaɭ tua kəmuda aŋa a makuɭuŋ tua vəʦik.</PHON>
+        <AUDIO start="3.549" end="18.833" file="02JE105-4_Loris_a1.wav"/>
     </S>
     <S id="a2">
         <FORM kindOf="original">mavan anga azua tja siselapalapay a sisegaljugalju a paiwan. "ini a na temakesi ti vuvu, sikanaselapay aken a mulisengesengan" mavan anga azua siayaya ni vuvu.</FORM>
-        <FORM kindOf="standard">mavan anga azoa tja siselapalapay a sisegaljogaljo a paiwan. "ini a na temakesi ti vovo, sikanaselapay aken a molisengesengan" mavan anga azoa siayaya ni vovo.</FORM>
-        <AUDIO start="18.833" end="40.566" />
+        <PHON kindOf="original">mavan aŋa azua ʦa sisəɭapaɭapaj a sisəgaʎugaʎu a paiwan. "ini a na təmakəsi ti vuvu, sikanasəɭapaj akən a muɭisəŋəsəŋan" mavan aŋa azua siajaja ni vuvu.</PHON>
+        <FORM kindOf="standard">mavan anga azua tja siselapalapay a sisegaljugalju a paiwan. "ini a na temakesi ti vuvu, sikanaselapay aken a mulisengesengan" mavan anga azua siayaya ni vuvu.</FORM>
+        <PHON kindOf="standard">mavan aŋa azua ʦa sisəɭapaɭapaj a sisəgaʎugaʎu a paiwan. "ini a na təmakəsi ti vuvu, sikanasəɭapaj akən a muɭisəŋəsəŋan" mavan aŋa azua siajaja ni vuvu.</PHON>
+        <AUDIO start="18.833" end="40.566" file="02JE105-4_Loris_a2.wav"/>
     </S>
     <S id="a3">
         <FORM kindOf="original">timitja a caucau i kacawan a pinapacuganan, mavan a tja talivakan, tja salenguaqan, tja paqeljin tua i kacawan.</FORM>
-        <FORM kindOf="standard">timitja a caocao i kacawan a pinapacoganan, mavan a tja talivakan, tja salengoaqan, tja paqeljin toa i kacawan.</FORM>
-        <AUDIO start="40.767" end="62.033" />
+        <PHON kindOf="original">timiʦa a ʦauʦau i kaʦawan a pinapaʦuganan, mavan a ʦa taɭivakan, ʦa saɭəŋuaqan, ʦa paqəʎin tua i kaʦawan.</PHON>
+        <FORM kindOf="standard">timitja a caucau i kacawan a pinapacuganan, mavan a tja talivakan, tja salenguaqan, tja paqeljin tua i kacawan.</FORM>
+        <PHON kindOf="standard">timiʦa a ʦauʦau i kaʦawan a pinapaʦuganan, mavan a ʦa taɭivakan, ʦa saɭəŋuaqan, ʦa paqəʎin tua i kaʦawan.</PHON>
+        <AUDIO start="40.767" end="62.033" file="02JE105-4_Loris_a3.wav"/>
     </S>
     <S id="a4">
         <FORM kindOf="original">ljakua, tja pacunan a namakulung, naselapay, napasaliw a mala caucau.</FORM>
-        <FORM kindOf="standard">ljakoa, tja paconan a namakolong, naselapay, napasaliw a mala caocao.</FORM>
-        <AUDIO start="63.267" end="74.367" />
+        <PHON kindOf="original">ʎakua, ʦa paʦunan a namakuɭuŋ, nasəɭapaj, napasaɭiw a maɭa ʦauʦau.</PHON>
+        <FORM kindOf="standard">ljakua, tja pacunan a namakulung, naselapay, napasaliw a mala caucau.</FORM>
+        <PHON kindOf="standard">ʎakua, ʦa paʦunan a namakuɭuŋ, nasəɭapaj, napasaɭiw a maɭa ʦauʦau.</PHON>
+        <AUDIO start="63.267" end="74.367" file="02JE105-4_Loris_a4.wav"/>
     </S>
     <S id="a5">
         <FORM kindOf="original">sa pai. neka nunamaya tua situluan ta temakesi, mavanangan azua uri tja pakasizuanan tua kemudanga, aya sa kisantemulu anga.</FORM>
-        <FORM kindOf="standard">sa pai. neka nonamaya toa sitoloan ta temakesi, mavanangan azoa ori tja pakasizoanan toa kemodanga, aya sa kisantemolo anga.</FORM>
-        <AUDIO start="74.699" end="94.632" />
+        <PHON kindOf="original">sa pai. nəka nunamaja tua situɭuan ta təmakəsi, mavanaŋan azua uri ʦa pakasizuanan tua kəmudaŋa, aja sa kisantəmuɭu aŋa.</PHON>
+        <FORM kindOf="standard">sa pai. neka nunamaya tua situluan ta temakesi, mavanangan azua uri tja pakasizuanan tua kemudanga, aya sa kisantemulu anga.</FORM>
+        <PHON kindOf="standard">sa pai. nəka nunamaja tua situɭuan ta təmakəsi, mavanaŋan azua uri ʦa pakasizuanan tua kəmudaŋa, aja sa kisantəmuɭu aŋa.</PHON>
+        <AUDIO start="74.699" end="94.632" file="02JE105-4_Loris_a5.wav"/>
     </S>
     <S id="a6">
         <FORM kindOf="original">sa aicu a temakesi, ini a mavan a seme semalu tua matjaljaljak aya. tua sasekingen aya. tua paqeljing aya.</FORM>
-        <FORM kindOf="standard">sa aico a temakesi, ini a mavan a seme semalo toa matjaljaljak aya. toa sasekingen aya. toa paqeljing aya.</FORM>
-        <AUDIO start="94.767" end="113.133" />
+        <PHON kindOf="original">sa aiʦu a təmakəsi, ini a mavan a səmə səmaɭu tua maʦaʎaʎak aja. tua sasəkiŋən aja. tua paqəʎiŋ aja.</PHON>
+        <FORM kindOf="standard">sa aicu a temakesi, ini a mavan a seme semalu tua matjaljaljak aya. tua sasekingen aya. tua paqeljing aya.</FORM>
+        <PHON kindOf="standard">sa aiʦu a təmakəsi, ini a mavan a səmə səmaɭu tua maʦaʎaʎak aja. tua sasəkiŋən aja. tua paqəʎiŋ aja.</PHON>
+        <AUDIO start="94.767" end="113.133" file="02JE105-4_Loris_a6.wav"/>
     </S>
     <S id="a7">
         <FORM kindOf="original">anema sa pakazuanan nua situlutuluan ta temakesi? nu aya aken uri masan tjelu a ku sisusu a pasemalaw.</FORM>
-        <FORM kindOf="standard">anema sa pakazoanan noa sitolotoloan ta temakesi? no aya aken ori masan tjelo a ko sisoso a pasemalaw.</FORM>
-        <AUDIO start="113.233" end="127.699" />
+        <PHON kindOf="original">anəma sa pakazuanan nua situɭutuɭuan ta təmakəsi? nu aja akən uri masan ʦəɭu a ku sisusu a pasəmaɭaw.</PHON>
+        <FORM kindOf="standard">anema sa pakazuanan nua situlutuluan ta temakesi? nu aya aken uri masan tjelu a ku sisusu a pasemalaw.</FORM>
+        <PHON kindOf="standard">anəma sa pakazuanan nua situɭutuɭuan ta təmakəsi? nu aja akən uri masan ʦəɭu a ku sisusu a pasəmaɭaw.</PHON>
+        <AUDIO start="113.233" end="127.699" file="02JE105-4_Loris_a7.wav"/>
     </S>
     <S id="a8">
         <FORM kindOf="original">azua masanitalj, mavan a mapazulju a tja penaqenetjan sa mavan a macaquan itjen tua tja sikudakuda.</FORM>
-        <FORM kindOf="standard">azoa masanitalj, mavan a mapazoljo a tja penaqenetjan sa mavan a macaqoan itjen toa tja sikodakoda.</FORM>
-        <AUDIO start="127.766" end="145.767" />
+        <PHON kindOf="original">azua masanitaʎ, mavan a mapazuʎu a ʦa pənaqənəʦan sa mavan a maʦaquan iʦən tua ʦa sikudakuda.</PHON>
+        <FORM kindOf="standard">azua masanitalj, mavan a mapazulju a tja penaqenetjan sa mavan a macaquan itjen tua tja sikudakuda.</FORM>
+        <PHON kindOf="standard">azua masanitaʎ, mavan a mapazuʎu a ʦa pənaqənəʦan sa mavan a maʦaquan iʦən tua ʦa sikudakuda.</PHON>
+        <AUDIO start="127.766" end="145.767" file="02JE105-4_Loris_a8.wav"/>
     </S>
     <S id="a9">
         <FORM kindOf="original">saka kisamulja itjen a temakesi, ini a itjen a malupi. ini a itjen a masudram.</FORM>
-        <FORM kindOf="standard">saka kisamolja itjen a temakesi, ini a itjen a malopi. ini a itjen a masodram.</FORM>
-        <AUDIO start="146.700" end="161.833" />
+        <PHON kindOf="original">saka kisamuʎa iʦən a təmakəsi, ini a iʦən a maɭupi. ini a iʦən a masuɖam.</PHON>
+        <FORM kindOf="standard">saka kisamulja itjen a temakesi, ini a itjen a malupi. ini a itjen a masudram.</FORM>
+        <PHON kindOf="standard">saka kisamuʎa iʦən a təmakəsi, ini a iʦən a maɭupi. ini a iʦən a masuɖam.</PHON>
+        <AUDIO start="146.700" end="161.833" file="02JE105-4_Loris_a9.wav"/>
     </S>
     <S id="a10">
         <FORM kindOf="original">tja kituluan a nanguanguaq a sikudakuda. sa nu tja puqenetj itjen, tja kitjayteku itjen.</FORM>
-        <FORM kindOf="standard">tja kitoloan a nangoangoaq a sikodakoda. sa no tja poqenetj itjen, tja kitjayteko itjen.</FORM>
-        <AUDIO start="161.999" end="175.500" />
+        <PHON kindOf="original">ʦa kituɭuan a naŋuaŋuaq a sikudakuda. sa nu ʦa puqənəʦ iʦən, ʦa kiʦajtəku iʦən.</PHON>
+        <FORM kindOf="standard">tja kituluan a nanguanguaq a sikudakuda. sa nu tja puqenetj itjen, tja kitjayteku itjen.</FORM>
+        <PHON kindOf="standard">ʦa kituɭuan a naŋuaŋuaq a sikudakuda. sa nu ʦa puqənəʦ iʦən, ʦa kiʦajtəku iʦən.</PHON>
+        <AUDIO start="161.999" end="175.500" file="02JE105-4_Loris_a10.wav"/>
     </S>
     <S id="a11">
         <FORM kindOf="original">a caquan itjen a paqaljay tua timaimanga. azua masanmusalj, mavan a izua anga tja ngadan mavan a mapavalit a tja sikudakuda.</FORM>
-        <FORM kindOf="standard">a caqoan itjen a paqaljay toa timaimanga. azoa masanmosalj, mavan a izoa anga tja ngadan mavan a mapavalit a tja sikodakoda.</FORM>
-        <AUDIO start="176.967" end="196.466" />
+        <PHON kindOf="original">a ʦaquan iʦən a paqaʎaj tua timaimaŋa. azua masanmusaʎ, mavan a izua aŋa ʦa ŋadan mavan a mapavaɭit a ʦa sikudakuda.</PHON>
+        <FORM kindOf="standard">a caquan itjen a paqaljay tua timaimanga. azua masanmusalj, mavan a izua anga tja ngadan mavan a mapavalit a tja sikudakuda.</FORM>
+        <PHON kindOf="standard">a ʦaquan iʦən a paqaʎaj tua timaimaŋa. azua masanmusaʎ, mavan a izua aŋa ʦa ŋadan mavan a mapavaɭit a ʦa sikudakuda.</PHON>
+        <AUDIO start="176.967" end="196.466" file="02JE105-4_Loris_a11.wav"/>
     </S>
     <S id="a12">
         <FORM kindOf="original">uri parulialiaw, paruqadaqavan patje mamiling a tja ngadan.</FORM>
-        <FORM kindOf="standard">ori parolialiaw, paroqadaqavan patje mamiling a tja ngadan.</FORM>
-        <AUDIO start="196.799" end="208.633" />
+        <PHON kindOf="original">uri paruɭiaɭiaw, paruqadaqavan paʦə mamiɭiŋ a ʦa ŋadan.</PHON>
+        <FORM kindOf="standard">uri parulialiaw, paruqadaqavan patje mamiling a tja ngadan.</FORM>
+        <PHON kindOf="standard">uri paruɭiaɭiaw, paruqadaqavan paʦə mamiɭiŋ a ʦa ŋadan.</PHON>
+        <AUDIO start="196.799" end="208.633" file="02JE105-4_Loris_a12.wav"/>
     </S>
     <S id="a13">
         <FORM kindOf="original">azua masantjelu, mavan a papegamel tua tja valung, mavan a izua anga tja pakasizuanan.</FORM>
-        <FORM kindOf="standard">azoa masantjelo, mavan a papegamel toa tja valong, mavan a izoa anga tja pakasizoanan.</FORM>
-        <AUDIO start="208.933" end="224.133" />
+        <PHON kindOf="original">azua masanʦəɭu, mavan a papəgaməɭ tua ʦa vaɭuŋ, mavan a izua aŋa ʦa pakasizuanan.</PHON>
+        <FORM kindOf="standard">azua masantjelu, mavan a papegamel tua tja valung, mavan a izua anga tja pakasizuanan.</FORM>
+        <PHON kindOf="standard">azua masanʦəɭu, mavan a papəgaməɭ tua ʦa vaɭuŋ, mavan a izua aŋa ʦa pakasizuanan.</PHON>
+        <AUDIO start="208.933" end="224.133" file="02JE105-4_Loris_a13.wav"/>
     </S>
     <S id="a14">
         <FORM kindOf="original">azua kemuda anga na kemasi valung sakamaya, nu liaw anga tja piniqenetj, uri tja talivak anga itjen a paiwan tua tja sikudakuda.</FORM>
-        <FORM kindOf="standard">azoa kemoda anga na kemasi valong sakamaya, no liaw anga tja piniqenetj, ori tja talivak anga itjen a paiwan toa tja sikodakoda.</FORM>
-        <AUDIO start="224.433" end="243.533" />
+        <PHON kindOf="original">azua kəmuda aŋa na kəmasi vaɭuŋ sakamaja, nu ɭiaw aŋa ʦa piniqənəʦ, uri ʦa taɭivak aŋa iʦən a paiwan tua ʦa sikudakuda.</PHON>
+        <FORM kindOf="standard">azua kemuda anga na kemasi valung sakamaya, nu liaw anga tja piniqenetj, uri tja talivak anga itjen a paiwan tua tja sikudakuda.</FORM>
+        <PHON kindOf="standard">azua kəmuda aŋa na kəmasi vaɭuŋ sakamaja, nu ɭiaw aŋa ʦa piniqənəʦ, uri ʦa taɭivak aŋa iʦən a paiwan tua ʦa sikudakuda.</PHON>
+        <AUDIO start="224.433" end="243.533" file="02JE105-4_Loris_a14.wav"/>
     </S>
     <S id="a15">
         <FORM kindOf="original">azua temakesi, sinanpicul, mavan anga azua siayaya.</FORM>
-        <FORM kindOf="standard">azoa temakesi, sinanpicol, mavan anga azoa siayaya.</FORM>
-        <AUDIO start="243.666" end="252.366" />
+        <PHON kindOf="original">azua təmakəsi, sinanpiʦuɭ, mavan aŋa azua siajaja.</PHON>
+        <FORM kindOf="standard">azua temakesi, sinanpicul, mavan anga azua siayaya.</FORM>
+        <PHON kindOf="standard">azua təmakəsi, sinanpiʦuɭ, mavan aŋa azua siajaja.</PHON>
+        <AUDIO start="243.666" end="252.366" file="02JE105-4_Loris_a15.wav"/>
     </S>
     <S id="a16">
         <FORM kindOf="original">azua paqulid angata, masalu aravac tua ku matjaljaljak, tua mareka ku sasusuan a patakesin itjen.</FORM>
-        <FORM kindOf="standard">azoa paqolid angata, masalo aravac toa ko matjaljaljak, toa mareka ko sasosoan a patakesin itjen.</FORM>
-        <AUDIO start="252.833" end="267.333" />
+        <PHON kindOf="original">azua paquɭid aŋata, masaɭu aravaʦ tua ku maʦaʎaʎak, tua marəka ku sasusuan a patakəsin iʦən.</PHON>
+        <FORM kindOf="standard">azua paqulid angata, masalu aravac tua ku matjaljaljak, tua mareka ku sasusuan a patakesin itjen.</FORM>
+        <PHON kindOf="standard">azua paquɭid aŋata, masaɭu aravaʦ tua ku maʦaʎaʎak, tua marəka ku sasusuan a patakəsin iʦən.</PHON>
+        <AUDIO start="252.833" end="267.333" file="02JE105-4_Loris_a16.wav"/>
     </S>
     <S id="a17">
         <FORM kindOf="original">macaqu anga itjen tua vecik aya, tua sitakesian aya, tua sikudakuda aya.</FORM>
-        <FORM kindOf="standard">macaqo anga itjen toa vecik aya, toa sitakesian aya, toa sikodakoda aya.</FORM>
-        <AUDIO start="267.566" end="278.499" />
+        <PHON kindOf="original">maʦaqu aŋa iʦən tua vəʦik aja, tua sitakəsian aja, tua sikudakuda aja.</PHON>
+        <FORM kindOf="standard">macaqu anga itjen tua vecik aya, tua sitakesian aya, tua sikudakuda aya.</FORM>
+        <PHON kindOf="standard">maʦaqu aŋa iʦən tua vəʦik aja, tua sitakəsian aja, tua sikudakuda aja.</PHON>
+        <AUDIO start="267.566" end="278.499" file="02JE105-4_Loris_a17.wav"/>
     </S>
     <S id="a18">
         <FORM kindOf="original">sa nu qemacuvung itjen a temakesi, azua tja kinitulu a tja caquanan, tja situlu anga tua tjaivilivililj a kakedrian, ulja pitjaljiazua a tja caquanan.</FORM>
-        <FORM kindOf="standard">sa no qemacovong itjen a temakesi, azoa tja kinitolo a tja caqoanan, tja sitolo anga toa tjaivilivililj a kakedrian, olja pitjaljiazoa a tja caqoanan.</FORM>
-        <AUDIO start="282.533" end="302.366" />
+        <PHON kindOf="original">sa nu qəmaʦuvuŋ iʦən a təmakəsi, azua ʦa kinituɭu a ʦa ʦaquanan, ʦa situɭu aŋa tua ʦaiviɭiviɭiʎ a kakəɖian, uʎa piʦaʎiazua a ʦa ʦaquanan.</PHON>
+        <FORM kindOf="standard">sa nu qemacuvung itjen a temakesi, azua tja kinitulu a tja caquanan, tja situlu anga tua tjaivilivililj a kakedrian, ulja pitjaljiazua a tja caquanan.</FORM>
+        <PHON kindOf="standard">sa nu qəmaʦuvuŋ iʦən a təmakəsi, azua ʦa kinituɭu a ʦa ʦaquanan, ʦa situɭu aŋa tua ʦaiviɭiviɭiʎ a kakəɖian, uʎa piʦaʎiazua a ʦa ʦaquanan.</PHON>
+        <AUDIO start="282.533" end="302.366" file="02JE105-4_Loris_a18.wav"/>
     </S>
 </TEXT>

@@ -1,78 +1,108 @@
-<?xml version='1.0' encoding='utf-8'?>
-<TEXT id="NTU_Pwn_Sarnix_02JE107-3 Sarnix" xml:lang="pwn" source="NTU Paiwan Data, Participant Sarnix, file 02JE107-3 Sarnix" audio="02JE107-3 Sarnix.wav" copyright="CC-BY" citation="Le Ferrand, É., Prud'hommeaux, E., Hartshorne, J. K., &amp; Sung, L.-M. (2024). NTU Paiwan ASR Corpus. Electronic Resource." BibTeX_citation="@electronic{leferrand2024ntu, author = {Le Ferrand, {'E}ric and Prud'hommeaux, Emily and Hartshorne, Joshua K. and Sung, Li-May}, year = {2024}, title = {{NTU} {Paiwan} {ASR} Corpus},type = {Electronic Resource}}" dialect="Eastern">
+<?xml version='1.0' encoding='UTF-8'?>
+<TEXT id="NTU_Pwn_Sarnix_02JE107-3 Sarnix" xml:lang="pwn" source="NTU Paiwan Data, Participant Sarnix, file 02JE107-3 Sarnix" audio="02JE107-3_Sarnix.wav" copyright="CC-BY" citation="Le Ferrand, É., Prud'hommeaux, E., Hartshorne, J. K., &amp; Sung, L.-M. (2024). NTU Paiwan ASR Corpus. Electronic Resource." BibTeX_citation="@electronic{leferrand2024ntu, author = {Le Ferrand, {'E}ric and Prud'hommeaux, Emily and Hartshorne, Joshua K. and Sung, Li-May}, year = {2024}, title = {{NTU} {Paiwan} {ASR} Corpus},type = {Electronic Resource}}" dialect="Eastern">
     <S id="a1">
         <FORM kindOf="original">azua a tjaucikel, na kemasi tjagaraus titjen a mapuljat. sa naseman vurung tua qatjuvian.</FORM>
-        <FORM kindOf="standard">azoa a tjaocikel, na kemasi tjagaraos titjen a mapoljat. sa naseman vorong toa qatjovian.</FORM>
-        <AUDIO start="2.617" end="15.000" />
+        <PHON kindOf="original">azua a ʦauʦikəɭ, na kəmasi ʦagaraus tiʦən a mapuʎat. sa nasəman vuruŋ tua qaʦuvian.</PHON>
+        <FORM kindOf="standard">azua a tjaucikel, na kemasi tjagaraus titjen a mapuljat. sa naseman vurung tua qatjuvian.</FORM>
+        <PHON kindOf="standard">azua a ʦauʦikəɭ, na kəmasi ʦagaraus tiʦən a mapuʎat. sa nasəman vuruŋ tua qaʦuvian.</PHON>
+        <AUDIO start="2.617" end="15.000" file="02JE107-3_Sarnix_a1.wav"/>
     </S>
     <S id="a2">
         <FORM kindOf="original">izua za matjatjelu a pinakaqapulu a qaqinaljan i padain aya, i paiwan aya, i piyuma aya, sana kemasizua a mavadavaday.</FORM>
-        <FORM kindOf="standard">izoa za matjatjelo a pinakaqapolo a qaqinaljan i padain aya, i paiwan aya, i piyoma aya, sana kemasizoa a mavadavaday.</FORM>
-        <AUDIO start="21.323" end="38.264" />
+        <PHON kindOf="original">izua za maʦaʦəɭu a pinakaqapuɭu a qaqinaʎan i padain aja, i paiwan aja, i pijuma aja, sana kəmasizua a mavadavadaj.</PHON>
+        <FORM kindOf="standard">izua za matjatjelu a pinakaqapulu a qaqinaljan i padain aya, i paiwan aya, i piyuma aya, sana kemasizua a mavadavaday.</FORM>
+        <PHON kindOf="standard">izua za maʦaʦəɭu a pinakaqapuɭu a qaqinaʎan i padain aja, i paiwan aja, i pijuma aja, sana kəmasizua a mavadavadaj.</PHON>
+        <AUDIO start="21.323" end="38.264" file="02JE107-3_Sarnix_a2.wav"/>
     </S>
     <S id="a5">
         <FORM kindOf="original">mavana azua pinaka raval aya, vuculj aya, paumaumaq aya, paqaluqalu aya. sa amin itjen a semusususu tua semanvusam a masan mamazangiljan.</FORM>
-        <FORM kindOf="standard">mavana azoa pinaka raval aya, vocolj aya, paomaomaq aya, paqaloqalo aya. sa amin itjen a semosososo toa semanvosam a masan mamazangiljan.</FORM>
-        <AUDIO start="38.264" end="58.088" />
+        <PHON kindOf="original">mavana azua pinaka ravaɭ aja, vuʦuʎ aja, paumaumaq aja, paqaɭuqaɭu aja. sa amin iʦən a səmusususu tua səmanvusam a masan mamazaŋiʎan.</PHON>
+        <FORM kindOf="standard">mavana azua pinaka raval aya, vuculj aya, paumaumaq aya, paqaluqalu aya. sa amin itjen a semusususu tua semanvusam a masan mamazangiljan.</FORM>
+        <PHON kindOf="standard">mavana azua pinaka ravaɭ aja, vuʦuʎ aja, paumaumaq aja, paqaɭuqaɭu aja. sa amin iʦən a səmusususu tua səmanvusam a masan mamazaŋiʎan.</PHON>
+        <AUDIO start="38.264" end="58.088" file="02JE107-3_Sarnix_a5.wav"/>
     </S>
     <S id="a7">
         <FORM kindOf="original">na masansimatjelj a tjaljetjaljan a caucau, paru mamazangiljan aya, ma mazangilj aya, mamazangiljan aya, mazangilj aya, rakac aya, qatitan aya.</FORM>
-        <FORM kindOf="standard">na masansimatjelj a tjaljetjaljan a caocao, paro mamazangiljan aya, ma mazangilj aya, mamazangiljan aya, mazangilj aya, rakac aya, qatitan aya.</FORM>
-        <AUDIO start="70.676" end="90.647" />
+        <PHON kindOf="original">na masansimaʦəʎ a ʦaʎəʦaʎan a ʦauʦau, paru mamazaŋiʎan aja, ma mazaŋiʎ aja, mamazaŋiʎan aja, mazaŋiʎ aja, rakaʦ aja, qatitan aja.</PHON>
+        <FORM kindOf="standard">na masansimatjelj a tjaljetjaljan a caucau, paru mamazangiljan aya, ma mazangilj aya, mamazangiljan aya, mazangilj aya, rakac aya, qatitan aya.</FORM>
+        <PHON kindOf="standard">na masansimaʦəʎ a ʦaʎəʦaʎan a ʦauʦau, paru mamazaŋiʎan aja, ma mazaŋiʎ aja, mamazaŋiʎan aja, mazaŋiʎ aja, rakaʦ aja, qatitan aja.</PHON>
+        <AUDIO start="70.676" end="90.647" file="02JE107-3_Sarnix_a7.wav"/>
     </S>
     <S id="a9">
         <FORM kindOf="original">azua paqulid inika a maqati a papucekelj a mamazangiljan katua qatitan, pinakapa pinakapa pungdan tiamadju.</FORM>
-        <FORM kindOf="standard">azoa paqolid inika a maqati a papocekelj a mamazangiljan katoa qatitan, pinakapa pinakapa pongdan tiamadjo.</FORM>
-        <AUDIO start="90.647" end="107.471" />
+        <PHON kindOf="original">azua paquɭid inika a maqati a papuʦəkəʎ a mamazaŋiʎan katua qatitan, pinakapa pinakapa puŋdan tiamaɉu.</PHON>
+        <FORM kindOf="standard">azua paqulid inika a maqati a papucekelj a mamazangiljan katua qatitan, pinakapa pinakapa pungdan tiamadju.</FORM>
+        <PHON kindOf="standard">azua paquɭid inika a maqati a papuʦəkəʎ a mamazaŋiʎan katua qatitan, pinakapa pinakapa puŋdan tiamaɉu.</PHON>
+        <AUDIO start="90.647" end="107.471" file="02JE107-3_Sarnix_a9.wav"/>
     </S>
     <S id="a11">
         <FORM kindOf="original">izua azua masantjelulj a tjaljapazangalan a pinaka a qata aya, "re reteretan reretan aya, dragaman aya" nua mamazangiljan. mavan anga azua sinan sauzayan nua mamazangiljan.</FORM>
-        <FORM kindOf="standard">izoa azoa masantjelolj a tjaljapazangalan a pinaka a qata aya, "re reteretan reretan aya, dragaman aya" noa mamazangiljan. mavan anga azoa sinan saozayan noa mamazangiljan.</FORM>
-        <AUDIO start="110.088" end="135.794" />
+        <PHON kindOf="original">izua azua masanʦəɭuʎ a ʦaʎapazaŋaɭan a pinaka a qata aja, "rə rətərətan rərətan aja, ɖagaman aja" nua mamazaŋiʎan. mavan aŋa azua sinan sauzajan nua mamazaŋiʎan.</PHON>
+        <FORM kindOf="standard">izua azua masantjelulj a tjaljapazangalan a pinaka a qata aya, "re reteretan reretan aya, dragaman aya" nua mamazangiljan. mavan anga azua sinan sauzayan nua mamazangiljan.</FORM>
+        <PHON kindOf="standard">izua azua masanʦəɭuʎ a ʦaʎapazaŋaɭan a pinaka a qata aja, "rə rətərətan rərətan aja, ɖagaman aja" nua mamazaŋiʎan. mavan aŋa azua sinan sauzajan nua mamazaŋiʎan.</PHON>
+        <AUDIO start="110.088" end="135.794" file="02JE107-3_Sarnix_a11.wav"/>
     </S>
     <S id="a13">
         <FORM kindOf="original">nu mecevuang a tjara mamazangizangiljan nu uri pucekelj, mavan anga azua tjaljapazangalan a sinilisi tua pinaka mamazangiljan.</FORM>
-        <FORM kindOf="standard">no mecevoang a tjara mamazangizangiljan no ori pocekelj, mavan anga azoa tjaljapazangalan a sinilisi toa pinaka mamazangiljan.</FORM>
-        <AUDIO start="136.352" end="153.647" />
+        <PHON kindOf="original">nu məʦəvuaŋ a ʦara mamazaŋizaŋiʎan nu uri puʦəkəʎ, mavan aŋa azua ʦaʎapazaŋaɭan a siniɭisi tua pinaka mamazaŋiʎan.</PHON>
+        <FORM kindOf="standard">nu mecevuang a tjara mamazangizangiljan nu uri pucekelj, mavan anga azua tjaljapazangalan a sinilisi tua pinaka mamazangiljan.</FORM>
+        <PHON kindOf="standard">nu məʦəvuaŋ a ʦara mamazaŋizaŋiʎan nu uri puʦəkəʎ, mavan aŋa azua ʦaʎapazaŋaɭan a siniɭisi tua pinaka mamazaŋiʎan.</PHON>
+        <AUDIO start="136.352" end="153.647" file="02JE107-3_Sarnix_a13.wav"/>
     </S>
     <S id="a14">
         <FORM kindOf="original">izua uta masan liaw a palisian, mavan a masan tjaljapazangalan a pakatua "maljeveq" aya. izua pulingaw a kinemenem tua sipalisian.</FORM>
-        <FORM kindOf="standard">izoa ota masan liaw a palisian, mavan a masan tjaljapazangalan a pakatoa "maljeveq" aya. izoa polingaw a kinemenem toa sipalisian.</FORM>
-        <AUDIO start="153.647" end="170.235" />
+        <PHON kindOf="original">izua uta masan ɭiaw a paɭisian, mavan a masan ʦaʎapazaŋaɭan a pakatua "maʎəvəq" aja. izua puɭiŋaw a kinəmənəm tua sipaɭisian.</PHON>
+        <FORM kindOf="standard">izua uta masan liaw a palisian, mavan a masan tjaljapazangalan a pakatua "maljeveq" aya. izua pulingaw a kinemenem tua sipalisian.</FORM>
+        <PHON kindOf="standard">izua uta masan ɭiaw a paɭisian, mavan a masan ʦaʎapazaŋaɭan a pakatua "maʎəvəq" aja. izua puɭiŋaw a kinəmənəm tua sipaɭisian.</PHON>
+        <AUDIO start="153.647" end="170.235" file="02JE107-3_Sarnix_a14.wav"/>
     </S>
     <S id="a17">
         <FORM kindOf="original">izua pinaka pulima aya, inika palaing tu uqaljay tu vavayan.</FORM>
-        <FORM kindOf="standard">izoa pinaka polima aya, inika palaing to oqaljay to vavayan.</FORM>
-        <AUDIO start="170.587" end="180.176" />
+        <PHON kindOf="original">izua pinaka puɭima aja, inika paɭaiŋ tu uqaʎaj tu vavajan.</PHON>
+        <FORM kindOf="standard">izua pinaka pulima aya, inika palaing tu uqaljay tu vavayan.</FORM>
+        <PHON kindOf="standard">izua pinaka puɭima aja, inika paɭaiŋ tu uqaʎaj tu vavajan.</PHON>
+        <AUDIO start="170.587" end="180.176" file="02JE107-3_Sarnix_a17.wav"/>
     </S>
     <S id="a19">
         <FORM kindOf="original">izua uqaljay a kisanvenecik: paru tua cukes aya, langalj aya, tjakit aya, kisanseman reretan aya. izua vavayan a pulima uta: paru kisan cemepu aya, temeqic tua situngan aya.</FORM>
-        <FORM kindOf="standard">izoa oqaljay a kisanvenecik: paro toa cokes aya, langalj aya, tjakit aya, kisanseman reretan aya. izoa vavayan a polima ota: paro kisan cemepo aya, temeqic toa sitongan aya.</FORM>
-        <AUDIO start="181.411" end="212.000" />
+        <PHON kindOf="original">izua uqaʎaj a kisanvənəʦik: paru tua ʦukəs aja, ɭaŋaʎ aja, ʦakit aja, kisansəman rərətan aja. izua vavajan a puɭima uta: paru kisan ʦəməpu aja, təməqiʦ tua situŋan aja.</PHON>
+        <FORM kindOf="standard">izua uqaljay a kisanvenecik: paru tua cukes aya, langalj aya, tjakit aya, kisanseman reretan aya. izua vavayan a pulima uta: paru kisan cemepu aya, temeqic tua situngan aya.</FORM>
+        <PHON kindOf="standard">izua uqaʎaj a kisanvənəʦik: paru tua ʦukəs aja, ɭaŋaʎ aja, ʦakit aja, kisansəman rərətan aja. izua vavajan a puɭima uta: paru kisan ʦəməpu aja, təməqiʦ tua situŋan aja.</PHON>
+        <AUDIO start="181.411" end="212.000" file="02JE107-3_Sarnix_a19.wav"/>
     </S>
     <S id="a21">
         <FORM kindOf="original">izua kivecik a vavayavayan ta pitualima; izua kivecik a uqaljaqaljay a pitua kinacavacavan.</FORM>
-        <FORM kindOf="standard">izoa kivecik a vavayavayan ta pitoalima; izoa kivecik a oqaljaqaljay a pitoa kinacavacavan.</FORM>
-        <AUDIO start="212.000" end="224.323" />
+        <PHON kindOf="original">izua kivəʦik a vavajavajan ta pituaɭima; izua kivəʦik a uqaʎaqaʎaj a pitua kinaʦavaʦavan.</PHON>
+        <FORM kindOf="standard">izua kivecik a vavayavayan ta pitualima; izua kivecik a uqaljaqaljay a pitua kinacavacavan.</FORM>
+        <PHON kindOf="standard">izua kivəʦik a vavajavajan ta pituaɭima; izua kivəʦik a uqaʎaqaʎaj a pitua kinaʦavaʦavan.</PHON>
+        <AUDIO start="212.000" end="224.323" file="02JE107-3_Sarnix_a21.wav"/>
     </S>
     <S id="a22">
         <FORM kindOf="original">babulayan a vinecikan sa taliduan taliduitjen a pacun.</FORM>
-        <FORM kindOf="standard">babolayan a vinecikan sa talidoan talidoitjen a pacon.</FORM>
-        <AUDIO start="224.558" end="235.294" />
+        <PHON kindOf="original">babuɭajan a vinəʦikan sa taɭiduan taɭiduiʦən a paʦun.</PHON>
+        <FORM kindOf="standard">babulayan a vinecikan sa taliduan taliduitjen a pacun.</FORM>
+        <PHON kindOf="standard">babuɭajan a vinəʦikan sa taɭiduan taɭiduiʦən a paʦun.</PHON>
+        <AUDIO start="224.558" end="235.294" file="02JE107-3_Sarnix_a22.wav"/>
     </S>
     <S id="a25">
         <FORM kindOf="original">taliduitjen a pacun nu zemiyazian itua pucekecekelj a na mirava,</FORM>
-        <FORM kindOf="standard">talidoitjen a pacon no zemiyazian itoa pocekecekelj a na mirava,</FORM>
-        <AUDIO start="235.294" end="246.823" />
+        <PHON kindOf="original">taɭiduiʦən a paʦun nu zəmijazian itua puʦəkəʦəkəʎ a na mirava,</PHON>
+        <FORM kindOf="standard">taliduitjen a pacun nu zemiyazian itua pucekecekelj a na mirava,</FORM>
+        <PHON kindOf="standard">taɭiduiʦən a paʦun nu zəmijazian itua puʦəkəʦəkəʎ a na mirava,</PHON>
+        <AUDIO start="235.294" end="246.823" file="02JE107-3_Sarnix_a25.wav"/>
     </S>
     <S id="a28">
         <FORM kindOf="original">na temarar sana puk sana pukavaluan a vavayavayan, na tjemalupung a rakac a uqaljayqaljay tua katjepalaljan nua qadris.</FORM>
-        <FORM kindOf="standard">na temarar sana pok sana pokavaloan a vavayavayan, na tjemalopong a rakac a oqaljayqaljay toa katjepalaljan noa qadris.</FORM>
-        <AUDIO start="252.131" end="274.735" />
+        <PHON kindOf="original">na təmarar sana puk sana pukavaɭuan a vavajavajan, na ʦəmaɭupuŋ a rakaʦ a uqaʎajqaʎaj tua kaʦəpaɭaʎan nua qaɖis.</PHON>
+        <FORM kindOf="standard">na temarar sana puk sana pukavaluan a vavayavayan, na tjemalupung a rakac a uqaljayqaljay tua katjepalaljan nua qadris.</FORM>
+        <PHON kindOf="standard">na təmarar sana puk sana pukavaɭuan a vavajavajan, na ʦəmaɭupuŋ a rakaʦ a uqaʎajqaʎaj tua kaʦəpaɭaʎan nua qaɖis.</PHON>
+        <AUDIO start="252.131" end="274.735" file="02JE107-3_Sarnix_a28.wav"/>
     </S>
     <S id="a26">
         <FORM kindOf="original">valeljeveljan a vavayavayan, sauqaljaqaljay a sasauqaljayan angata uqaljaqaljay nua sePaiwan!</FORM>
-        <FORM kindOf="standard">valeljeveljan a vavayavayan, saoqaljaqaljay a sasaoqaljayan angata oqaljaqaljay noa sePaiwan!</FORM>
-        <AUDIO start="282.323" end="294.206" />
+        <PHON kindOf="original">vaɭəʎəvəʎan a vavajavajan, sauqaʎaqaʎaj a sasauqaʎajan aŋata uqaʎaqaʎaj nua səpaiwan!</PHON>
+        <FORM kindOf="standard">valeljeveljan a vavayavayan, sauqaljaqaljay a sasauqaljayan angata uqaljaqaljay nua sePaiwan!</FORM>
+        <PHON kindOf="standard">vaɭəʎəvəʎan a vavajavajan, sauqaʎaqaʎaj a sasauqaʎajan aŋata uqaʎaqaʎaj nua səpaiwan!</PHON>
+        <AUDIO start="282.323" end="294.206" file="02JE107-3_Sarnix_a26.wav"/>
     </S>
 </TEXT>

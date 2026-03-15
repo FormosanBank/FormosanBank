@@ -7,6 +7,8 @@ This repository contains code and data for processing and structuring linguistic
 
 The names of the speakers are pseudonyms.
 
+The very end of the audio file for the 02SC105-1_Belmira.xml was silent. The last two audio segments are removed from the XML for htat reason.
+
 ## Project Structure
 
 - **Data**: Directory containing the raw source data in the Paiwan language, with audio recordings of scripted text read by participants. Each file is organized by topic and participant.
@@ -90,7 +92,7 @@ This isn't necessary because everything was already standardized. It is listed j
 5. **Standardize orthography**
 
    ```bash
-   python path/to/FormosanBankRepo/QC/utilities/standardize.py --corpora_path path/to/FormosanWikipedias/Final_XML
+   python path/to/FormosanBankRepo/QC/utilities/standardize.py --corpora_path path/to/FormosanWikipedias/Final_XML --copy
    ```
 
 **Outputs**
@@ -98,8 +100,30 @@ This isn't necessary because everything was already standardized. It is listed j
 
 **Notes**
    - Creates a copy of every <FORM> element with kindOf="standard" attribute
-   - All u's are converted to o's.
+   - Makes no changes, since the transcription is already the 113 Orthography.
 
+6. **Add IPA**
+
+   ```bash
+   python ../FormosanBank/QC/utilities/add_phonology.py --corpora_path Final_XML --orthography Ortho113
+   ```
+
+**Outputs**
+   - Updates XML files
+
+**Notes**
+   - Adds <PHON /> elements corresponding to each <FORM />, containing IPA.
+
+7. **Create Audio Clips**
+
+The audio is in continuous files. To extract clips, run:
+
+   ```bash
+   python normalize_audio_filenames.py
+   python extract_audio_clips.py --xml_root Final_XML --audio_root Final_Audio
+   ```
+
+Update the path to the XML and audio files if needed.
 
 ## Code Breakdown
 

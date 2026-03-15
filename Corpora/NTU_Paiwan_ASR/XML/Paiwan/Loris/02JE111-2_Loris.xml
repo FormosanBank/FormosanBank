@@ -1,68 +1,94 @@
-<?xml version='1.0' encoding='utf-8'?>
-<TEXT id="NTU_Pwn_Loris_02JE111-2 Loris" xml:lang="pwn" source="NTU Paiwan Data, Participant Loris, file 02JE111-2 Loris" audio="02JE111-2 Loris.wav" copyright="CC-BY" citation="Le Ferrand, É., Prud'hommeaux, E., Hartshorne, J. K., &amp; Sung, L.-M. (2024). NTU Paiwan ASR Corpus. Electronic Resource." BibTeX_citation="@electronic{leferrand2024ntu, author = {Le Ferrand, {'E}ric and Prud'hommeaux, Emily and Hartshorne, Joshua K. and Sung, Li-May}, year = {2024}, title = {{NTU} {Paiwan} {ASR} Corpus},type = {Electronic Resource}}" dialect="Eastern">
+<?xml version='1.0' encoding='UTF-8'?>
+<TEXT id="NTU_Pwn_Loris_02JE111-2 Loris" xml:lang="pwn" source="NTU Paiwan Data, Participant Loris, file 02JE111-2 Loris" audio="02JE111-2_Loris.wav" copyright="CC-BY" citation="Le Ferrand, É., Prud'hommeaux, E., Hartshorne, J. K., &amp; Sung, L.-M. (2024). NTU Paiwan ASR Corpus. Electronic Resource." BibTeX_citation="@electronic{leferrand2024ntu, author = {Le Ferrand, {'E}ric and Prud'hommeaux, Emily and Hartshorne, Joshua K. and Sung, Li-May}, year = {2024}, title = {{NTU} {Paiwan} {ASR} Corpus},type = {Electronic Resource}}" dialect="Eastern">
     <S id="a1">
         <FORM kindOf="original">mangtjez anga kalalazung kata tjainan ana masi alju nua vuciyar, kinipusauan anga kavuavuan sa tjumaq a tavaluljan a sizi kata gung.</FORM>
-        <FORM kindOf="standard">mangtjez anga kalalazong kata tjainan ana masi aljo noa vociyar, kiniposaoan anga kavoavoan sa tjomaq a tavaloljan a sizi kata gong.</FORM>
-        <AUDIO start=".852" end="20.294" />
+        <PHON kindOf="original">maŋʦəz aŋa kaɭaɭazuŋ kata ʦainan ana masi aʎu nua vuʦijar, kinipusauan aŋa kavuavuan sa ʦumaq a tavaɭuʎan a sizi kata guŋ.</PHON>
+        <FORM kindOf="standard">mangtjez anga kalalazung kata tjainan ana masi alju nua vuciyar, kinipusauan anga kavuavuan sa tjumaq a tavaluljan a sizi kata gung.</FORM>
+        <PHON kindOf="standard">maŋʦəz aŋa kaɭaɭazuŋ kata ʦainan ana masi aʎu nua vuʦijar, kinipusauan aŋa kavuavuan sa ʦumaq a tavaɭuʎan a sizi kata guŋ.</PHON>
+        <AUDIO start=".852" end="20.294" file="02JE111-2_Loris_a1.wav"/>
     </S>
     <S id="a3">
         <FORM kindOf="original">remuqu ta sapuy a tjukutjuku a qudjilj a matu sapuy sa tjuaq a qadaw.</FORM>
-        <FORM kindOf="standard">remoqo ta sapoy a tjokotjoko a qodjilj a mato sapoy sa tjoaq a qadaw.</FORM>
-        <AUDIO start="20.675" end="33.087" />
+        <PHON kindOf="original">rəmuqu ta sapuj a ʦukuʦuku a quɉiʎ a matu sapuj sa ʦuaq a qadaw.</PHON>
+        <FORM kindOf="standard">remuqu ta sapuy a tjukutjuku a qudjilj a matu sapuy sa tjuaq a qadaw.</FORM>
+        <PHON kindOf="standard">rəmuqu ta sapuj a ʦukuʦuku a quɉiʎ a matu sapuj sa ʦuaq a qadaw.</PHON>
+        <AUDIO start="20.675" end="33.087" file="02JE111-2_Loris_a3.wav"/>
     </S>
     <S id="a4">
         <FORM kindOf="original">ka temeljar a dingki i ta djalan sa parasulem a pakeljang ta qinaljan, mangtjez anga kipagalju ka qezemezemetj na kaljavaquan. mangtjez anga! mangtjez anga!</FORM>
-        <FORM kindOf="standard">ka temeljar a dingki i ta djalan sa parasolem a pakeljang ta qinaljan, mangtjez anga kipagaljo ka qezemezemetj na kaljavaqoan. mangtjez anga! mangtjez anga!</FORM>
-        <AUDIO start="33.235" end="53.853" />
+        <PHON kindOf="original">ka təməʎar a diŋki i ta ɉaɭan sa parasuɭəm a pakəʎaŋ ta qinaʎan, maŋʦəz aŋa kipagaʎu ka qəzəməzəməʦ na kaʎavaquan. maŋʦəz aŋa! maŋʦəz aŋa!</PHON>
+        <FORM kindOf="standard">ka temeljar a dingki i ta djalan sa parasulem a pakeljang ta qinaljan, mangtjez anga kipagalju ka qezemezemetj na kaljavaquan. mangtjez anga! mangtjez anga!</FORM>
+        <PHON kindOf="standard">ka təməʎar a diŋki i ta ɉaɭan sa parasuɭəm a pakəʎaŋ ta qinaʎan, maŋʦəz aŋa kipagaʎu ka qəzəməzəməʦ na kaʎavaquan. maŋʦəz aŋa! maŋʦəz aŋa!</PHON>
+        <AUDIO start="33.235" end="53.853" file="02JE111-2_Loris_a4.wav"/>
     </S>
     <S id="a5">
         <FORM kindOf="original">ljeteku anga kipagalju a kemasi tua ngaingaw nua yasi. mangtjez anga! mangtjez anga!</FORM>
-        <FORM kindOf="standard">ljeteko anga kipagaljo a kemasi toa ngaingaw noa yasi. mangtjez anga! mangtjez anga!</FORM>
-        <AUDIO start="53.911" end="64.558" />
+        <PHON kindOf="original">ʎətəku aŋa kipagaʎu a kəmasi tua ŋaiŋaw nua jasi. maŋʦəz aŋa! maŋʦəz aŋa!</PHON>
+        <FORM kindOf="standard">ljeteku anga kipagalju a kemasi tua ngaingaw nua yasi. mangtjez anga! mangtjez anga!</FORM>
+        <PHON kindOf="standard">ʎətəku aŋa kipagaʎu a kəmasi tua ŋaiŋaw nua jasi. maŋʦəz aŋa! maŋʦəz aŋa!</PHON>
+        <AUDIO start="53.911" end="64.558" file="02JE111-2_Loris_a5.wav"/>
     </S>
     <S id="a6">
         <FORM kindOf="original">vinuqesian a pulingetj tua cencu kata qaqacan tua galja galjelje galjiljegilj a ginpian a kalevelevan. na bulay a vengin na kaljavaquan lja!</FORM>
-        <FORM kindOf="standard">vinoqesian a polingetj toa cenco kata qaqacan toa galja galjelje galjiljegilj a ginpian a kalevelevan. na bolay a vengin na kaljavaqoan lja!</FORM>
-        <AUDIO start="65.323" end="90.441" />
+        <PHON kindOf="original">vinuqəsian a puɭiŋəʦ tua ʦənʦu kata qaqaʦan tua gaʎa gaʎəʎə gaʎiʎəgiʎ a ginpian a kaɭəvəɭəvan. na buɭaj a vəŋin na kaʎavaquan ʎa!</PHON>
+        <FORM kindOf="standard">vinuqesian a pulingetj tua cencu kata qaqacan tua galja galjelje galjiljegilj a ginpian a kalevelevan. na bulay a vengin na kaljavaquan lja!</FORM>
+        <PHON kindOf="standard">vinuqəsian a puɭiŋəʦ tua ʦənʦu kata qaqaʦan tua gaʎa gaʎəʎə gaʎiʎəgiʎ a ginpian a kaɭəvəɭəvan. na buɭaj a vəŋin na kaʎavaquan ʎa!</PHON>
+        <AUDIO start="65.323" end="90.441" file="02JE111-2_Loris_a6.wav"/>
     </S>
     <S id="a7">
         <FORM kindOf="original">na sarenguaq a vengin na kaljavaquan lja! na taqed anga qinljevan tua drinipa kaizuanan a siusiu kata bibi.</FORM>
-        <FORM kindOf="standard">na sarengoaq a vengin na kaljavaqoan lja! na taqed anga qinljevan toa drinipa kaizoanan a siosio kata bibi.</FORM>
-        <AUDIO start="90.559" end="105.706" />
+        <PHON kindOf="original">na sarəŋuaq a vəŋin na kaʎavaquan ʎa! na taqəd aŋa qinʎəvan tua ɖinipa kaizuanan a siusiu kata bibi.</PHON>
+        <FORM kindOf="standard">na sarenguaq a vengin na kaljavaquan lja! na taqed anga qinljevan tua drinipa kaizuanan a siusiu kata bibi.</FORM>
+        <PHON kindOf="standard">na sarəŋuaq a vəŋin na kaʎavaquan ʎa! na taqəd aŋa qinʎəvan tua ɖinipa kaizuanan a siusiu kata bibi.</PHON>
+        <AUDIO start="90.559" end="105.706" file="02JE111-2_Loris_a7.wav"/>
     </S>
     <S id="a8">
         <FORM kindOf="original">maka kilangda tua milimilingan ni vuvu a ramaljemaljeng, a uqaljay kata vavayan a kakedrian sevaik maca a mi misepisepi anga.</FORM>
-        <FORM kindOf="standard">maka kilangda toa milimilingan ni vovo a ramaljemaljeng, a oqaljay kata vavayan a kakedrian sevaik maca a mi misepisepi anga.</FORM>
-        <AUDIO start="106.382" end="123.382" />
+        <PHON kindOf="original">maka kiɭaŋda tua miɭimiɭiŋan ni vuvu a ramaʎəmaʎəŋ, a uqaʎaj kata vavajan a kakəɖian səvaik maʦa a mi misəpisəpi aŋa.</PHON>
+        <FORM kindOf="standard">maka kilangda tua milimilingan ni vuvu a ramaljemaljeng, a uqaljay kata vavayan a kakedrian sevaik maca a mi misepisepi anga.</FORM>
+        <PHON kindOf="standard">maka kiɭaŋda tua miɭimiɭiŋan ni vuvu a ramaʎəmaʎəŋ, a uqaʎaj kata vavajan a kakəɖian səvaik maʦa a mi misəpisəpi aŋa.</PHON>
+        <AUDIO start="106.382" end="123.382" file="02JE111-2_Loris_a8.wav"/>
     </S>
     <S id="a9">
         <FORM kindOf="original">taqed anga, na taqed anga! matu ljimeljimek, na miculeq sa kataqed a gadu!</FORM>
-        <FORM kindOf="standard">taqed anga, na taqed anga! mato ljimeljimek, na micoleq sa kataqed a gado!</FORM>
-        <AUDIO start="123.735" end="133.647" />
+        <PHON kindOf="original">taqəd aŋa, na taqəd aŋa! matu ʎiməʎimək, na miʦuɭəq sa kataqəd a gadu!</PHON>
+        <FORM kindOf="standard">taqed anga, na taqed anga! matu ljimeljimek, na miculeq sa kataqed a gadu!</FORM>
+        <PHON kindOf="standard">taqəd aŋa, na taqəd aŋa! matu ʎiməʎimək, na miʦuɭəq sa kataqəd a gadu!</PHON>
+        <AUDIO start="123.735" end="133.647" file="02JE111-2_Loris_a9.wav"/>
     </S>
     <S id="a10">
         <FORM kindOf="original">matu ljimeljimek, na miculeq sa kataqed a kavuavuan!</FORM>
-        <FORM kindOf="standard">mato ljimeljimek, na micoleq sa kataqed a kavoavoan!</FORM>
-        <AUDIO start="134.264" end="141.617" />
+        <PHON kindOf="original">matu ʎiməʎimək, na miʦuɭəq sa kataqəd a kavuavuan!</PHON>
+        <FORM kindOf="standard">matu ljimeljimek, na miculeq sa kataqed a kavuavuan!</FORM>
+        <PHON kindOf="standard">matu ʎiməʎimək, na miʦuɭəq sa kataqəd a kavuavuan!</PHON>
+        <AUDIO start="134.264" end="141.617" file="02JE111-2_Loris_a10.wav"/>
     </S>
     <S id="a11">
         <FORM kindOf="original">amin anga na kitjuvu tua padrar i tjaysasaw tua qezung a siak a na paceged anan, kinecekec a vaudj sa kipagalju a ljevavaw tua qaljiw.</FORM>
-        <FORM kindOf="standard">amin anga na kitjovo toa padrar i tjaysasaw toa qezong a siak a na paceged anan, kinecekec a vaodj sa kipagaljo a ljevavaw toa qaljiw.</FORM>
-        <AUDIO start="141.823" end="162.676" />
+        <PHON kindOf="original">amin aŋa na kiʦuvu tua paɖar i ʦajsasaw tua qəzuŋ a siak a na paʦəgəd anan, kinəʦəkəʦ a vauɉ sa kipagaʎu a ʎəvavaw tua qaʎiw.</PHON>
+        <FORM kindOf="standard">amin anga na kitjuvu tua padrar i tjaysasaw tua qezung a siak a na paceged anan, kinecekec a vaudj sa kipagalju a ljevavaw tua qaljiw.</FORM>
+        <PHON kindOf="standard">amin aŋa na kiʦuvu tua paɖar i ʦajsasaw tua qəzuŋ a siak a na paʦəgəd anan, kinəʦəkəʦ a vauɉ sa kipagaʎu a ʎəvavaw tua qaʎiw.</PHON>
+        <AUDIO start="141.823" end="162.676" file="02JE111-2_Loris_a11.wav"/>
     </S>
     <S id="a12">
         <FORM kindOf="original">amin anga liljualjuas a pana na paceged anan, kipagaljugalju a semanay sa kicakaw a maka ta vikiviking a kedrikedri a tja kudrang.</FORM>
-        <FORM kindOf="standard">amin anga liljoaljoas a pana na paceged anan, kipagaljogaljo a semanay sa kicakaw a maka ta vikiviking a kedrikedri a tja kodrang.</FORM>
-        <AUDIO start="162.705" end="179.970" />
+        <PHON kindOf="original">amin aŋa ɭiʎuaʎuas a pana na paʦəgəd anan, kipagaʎugaʎu a səmanaj sa kiʦakaw a maka ta vikivikiŋ a kəɖikəɖi a ʦa kuɖaŋ.</PHON>
+        <FORM kindOf="standard">amin anga liljualjuas a pana na paceged anan, kipagaljugalju a semanay sa kicakaw a maka ta vikiviking a kedrikedri a tja kudrang.</FORM>
+        <PHON kindOf="standard">amin aŋa ɭiʎuaʎuas a pana na paʦəgəd anan, kipagaʎugaʎu a səmanaj sa kiʦakaw a maka ta vikivikiŋ a kəɖikəɖi a ʦa kuɖaŋ.</PHON>
+        <AUDIO start="162.705" end="179.970" file="02JE111-2_Loris_a12.wav"/>
     </S>
     <S id="a13">
         <FORM kindOf="original">amin anga karungan a na paceged anan, mekelj sa tjekacauan tua qauqauin, kicaciuran tua masi ranpu a qucivauvaw.</FORM>
-        <FORM kindOf="standard">amin anga karongan a na paceged anan, mekelj sa tjekacaoan toa qaoqaoin, kicacioran toa masi ranpo a qocivaovaw.</FORM>
-        <AUDIO start="180.206" end="200.147" />
+        <PHON kindOf="original">amin aŋa karuŋan a na paʦəgəd anan, məkəʎ sa ʦəkaʦauan tua qauqauin, kiʦaʦiuran tua masi ranpu a quʦivauvaw.</PHON>
+        <FORM kindOf="standard">amin anga karungan a na paceged anan, mekelj sa tjekacauan tua qauqauin, kicaciuran tua masi ranpu a qucivauvaw.</FORM>
+        <PHON kindOf="standard">amin aŋa karuŋan a na paʦəgəd anan, məkəʎ sa ʦəkaʦauan tua qauqauin, kiʦaʦiuran tua masi ranpu a quʦivauvaw.</PHON>
+        <AUDIO start="180.206" end="200.147" file="02JE111-2_Loris_a13.wav"/>
     </S>
     <S id="a14">
         <FORM kindOf="original">malevaleva tja qalja i tua bulabulay a vengin na kaljavaquan.</FORM>
-        <FORM kindOf="standard">malevaleva tja qalja i toa bolabolay a vengin na kaljavaqoan.</FORM>
-        <AUDIO start="200.587" end="209.529" />
+        <PHON kindOf="original">maɭəvaɭəva ʦa qaʎa i tua buɭabuɭaj a vəŋin na kaʎavaquan.</PHON>
+        <FORM kindOf="standard">malevaleva tja qalja i tua bulabulay a vengin na kaljavaquan.</FORM>
+        <PHON kindOf="standard">maɭəvaɭəva ʦa qaʎa i tua buɭabuɭaj a vəŋin na kaʎavaquan.</PHON>
+        <AUDIO start="200.587" end="209.529" file="02JE111-2_Loris_a14.wav"/>
     </S>
 </TEXT>

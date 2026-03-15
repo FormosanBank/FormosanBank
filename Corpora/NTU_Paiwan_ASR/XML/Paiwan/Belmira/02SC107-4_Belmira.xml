@@ -1,113 +1,157 @@
-<?xml version='1.0' encoding='utf-8'?>
-<TEXT id="NTU_Pwn_Belmira_02SC107-4 Belmira" xml:lang="pwn" source="NTU Paiwan Data, Participant Belmira, file 02SC107-4 Belmira" audio="02SC107-4 Belmira.wav" copyright="CC-BY" citation="Le Ferrand, É., Prud'hommeaux, E., Hartshorne, J. K., &amp; Sung, L.-M. (2024). NTU Paiwan ASR Corpus. Electronic Resource." BibTeX_citation="@electronic{leferrand2024ntu, author = {Le Ferrand, {'E}ric and Prud'hommeaux, Emily and Hartshorne, Joshua K. and Sung, Li-May}, year = {2024}, title = {{NTU} {Paiwan} {ASR} Corpus},type = {Electronic Resource}}" dialect="Central">
+<?xml version='1.0' encoding='UTF-8'?>
+<TEXT id="NTU_Pwn_Belmira_02SC107-4 Belmira" xml:lang="pwn" source="NTU Paiwan Data, Participant Belmira, file 02SC107-4 Belmira" audio="02SC107-4_Belmira.wav" copyright="CC-BY" citation="Le Ferrand, É., Prud'hommeaux, E., Hartshorne, J. K., &amp; Sung, L.-M. (2024). NTU Paiwan ASR Corpus. Electronic Resource." BibTeX_citation="@electronic{leferrand2024ntu, author = {Le Ferrand, {'E}ric and Prud'hommeaux, Emily and Hartshorne, Joshua K. and Sung, Li-May}, year = {2024}, title = {{NTU} {Paiwan} {ASR} Corpus},type = {Electronic Resource}}" dialect="Central">
     <S id="a1">
         <FORM kindOf="original">tucuanga a caucau nuri papungadan tua lumamad, tjara iniya pa'apazangal.</FORM>
-        <FORM kindOf="standard">tocoanga a caocao nori papongadan toa lomamad, tjara iniya pa'apazangal.</FORM>
-        <AUDIO start="2.911" end="11.911" />
+        <PHON kindOf="original">tuʦuaŋa a ʦauʦau nuri papuŋadan tua ɭumamad, ʦara inija paʔapazaŋaɭ.</PHON>
+        <FORM kindOf="standard">tucuanga a caucau nuri papungadan tua lumamad, tjara iniya pa'apazangal.</FORM>
+        <PHON kindOf="standard">tuʦuaŋa a ʦauʦau nuri papuŋadan tua ɭumamad, ʦara inija paʔapazaŋaɭ.</PHON>
+        <AUDIO start="2.911" end="11.911" file="02SC107-4_Belmira_a1.wav"/>
     </S>
     <S id="a2">
         <FORM kindOf="original">ayata ljiyavanga a 'inituluwan, liavanga a'ineljang a veci'.</FORM>
-        <FORM kindOf="standard">ayata ljiyavanga a 'initolowan, liavanga a'ineljang a veci'.</FORM>
-        <AUDIO start="12.205" end="21.029" />
+        <PHON kindOf="original">ajata ʎijavaŋa a ʔinituɭuwan, ɭiavaŋa aʔinəʎaŋ a vəʦiʔ.</PHON>
+        <FORM kindOf="standard">ayata ljiyavanga a 'inituluwan, liavanga a'ineljang a veci'.</FORM>
+        <PHON kindOf="standard">ajata ʎijavaŋa a ʔinituɭuwan, ɭiavaŋa aʔinəʎaŋ a vəʦiʔ.</PHON>
+        <AUDIO start="12.205" end="21.029" file="02SC107-4_Belmira_a2.wav"/>
     </S>
     <S id="a5">
         <FORM kindOf="original">izuanga a macaqu a pacun a semupu tua tjanu tjanugumi tua semupu tua tjaung tjaungmi, sipiliq sipiliq itjen ta tjaljananguaqan a pusepi a ngadan, avan nusi'a aicu a pairang madjulu a papungadan ta lumamad ta lumamad.</FORM>
-        <FORM kindOf="standard">izoanga a macaqo a pacon a semopo toa tjano tjanogomi toa semopo toa tjaong tjaongmi, sipiliq sipiliq itjen ta tjaljanangoaqan a posepi a ngadan, avan nosi'a aico a pairang madjolo a papongadan ta lomamad ta lomamad.</FORM>
-        <AUDIO start="21.058" end="56.970" />
+        <PHON kindOf="original">izuaŋa a maʦaqu a paʦun a səmupu tua ʦanu ʦanugumi tua səmupu tua ʦauŋ ʦauŋmi, sipiɭiq sipiɭiq iʦən ta ʦaʎanaŋuaqan a pusəpi a ŋadan, avan nusiʔa aiʦu a pairaŋ maɉuɭu a papuŋadan ta ɭumamad ta ɭumamad.</PHON>
+        <FORM kindOf="standard">izuanga a macaqu a pacun a semupu tua tjanu tjanugumi tua semupu tua tjaung tjaungmi, sipiliq sipiliq itjen ta tjaljananguaqan a pusepi a ngadan, avan nusi'a aicu a pairang madjulu a papungadan ta lumamad ta lumamad.</FORM>
+        <PHON kindOf="standard">izuaŋa a maʦaqu a paʦun a səmupu tua ʦanu ʦanugumi tua səmupu tua ʦauŋ ʦauŋmi, sipiɭiq sipiɭiq iʦən ta ʦaʎanaŋuaqan a pusəpi a ŋadan, avan nusiʔa aiʦu a pairaŋ maɉuɭu a papuŋadan ta ɭumamad ta ɭumamad.</PHON>
+        <AUDIO start="21.058" end="56.970" file="02SC107-4_Belmira_a5.wav"/>
     </S>
     <S id="a7">
         <FORM kindOf="original">ljauwa titjen a se'acalisian liyav aravac a tja 'a'udanan a liya liyav aravac a tja 'a'udan a pa'ata papungadan, selapay itjen a sepaiwan.</FORM>
-        <FORM kindOf="standard">ljaowa titjen a se'acalisian liyav aravac a tja 'a'odanan a liya liyav aravac a tja 'a'odan a pa'ata papongadan, selapay itjen a sepaiwan.</FORM>
-        <AUDIO start="57.117" end="74.058" />
+        <PHON kindOf="original">ʎauwa tiʦən a səʔaʦaɭisian ɭijav aravaʦ a ʦa ʔaʔudanan a ɭija ɭijav aravaʦ a ʦa ʔaʔudan a paʔata papuŋadan, səɭapaj iʦən a səpaiwan.</PHON>
+        <FORM kindOf="standard">ljauwa titjen a se'acalisian liyav aravac a tja 'a'udanan a liya liyav aravac a tja 'a'udan a pa'ata papungadan, selapay itjen a sepaiwan.</FORM>
+        <PHON kindOf="standard">ʎauwa tiʦən a səʔaʦaɭisian ɭijav aravaʦ a ʦa ʔaʔudanan a ɭija ɭijav aravaʦ a ʦa ʔaʔudan a paʔata papuŋadan, səɭapaj iʦən a səpaiwan.</PHON>
+        <AUDIO start="57.117" end="74.058" file="02SC107-4_Belmira_a7.wav"/>
     </S>
     <S id="a10">
         <FORM kindOf="original">ayatua puljaljedjeqan itjen i qinaljan,</FORM>
-        <FORM kindOf="standard">ayatoa poljaljedjeqan itjen i qinaljan,</FORM>
-        <AUDIO start="78.499" end="84.117" />
+        <PHON kindOf="original">ajatua puʎaʎəɉəqan iʦən i qinaʎan,</PHON>
+        <FORM kindOf="standard">ayatua puljaljedjeqan itjen i qinaljan,</FORM>
+        <PHON kindOf="standard">ajatua puʎaʎəɉəqan iʦən i qinaʎan,</PHON>
+        <AUDIO start="78.499" end="84.117" file="02SC107-4_Belmira_a10.wav"/>
     </S>
     <S id="a9">
         <FORM kindOf="original">nu papungadan iniya manu'ina' ata 'ama 'atuwa ceme'ce ceme'eme'elj a penenetj ta ngadan, mavan a mazazangiljan'ata marevetjevtje' a maljavar,</FORM>
-        <FORM kindOf="standard">no papongadan iniya mano'ina' ata 'ama 'atowa ceme'ce ceme'eme'elj a penenetj ta ngadan, mavan a mazazangiljan'ata marevetjevtje' a maljavar,</FORM>
-        <AUDIO start="101.382" end="121.294" />
+        <PHON kindOf="original">nu papuŋadan inija manuʔinaʔ ata ʔama ʔatuwa ʦəməʔʦə ʦəməʔəməʔəʎ a pənənəʦ ta ŋadan, mavan a mazazaŋiʎanʔata marəvəʦəvʦəʔ a maʎavar,</PHON>
+        <FORM kindOf="standard">nu papungadan iniya manu'ina' ata 'ama 'atuwa ceme'ce ceme'eme'elj a penenetj ta ngadan, mavan a mazazangiljan'ata marevetjevtje' a maljavar,</FORM>
+        <PHON kindOf="standard">nu papuŋadan inija manuʔinaʔ ata ʔama ʔatuwa ʦəməʔʦə ʦəməʔəməʔəʎ a pənənəʦ ta ŋadan, mavan a mazazaŋiʎanʔata marəvəʦəvʦəʔ a maʎavar,</PHON>
+        <AUDIO start="101.382" end="121.294" file="02SC107-4_Belmira_a9.wav"/>
     </S>
     <S id="a11">
         <FORM kindOf="original">nu pina'asedjaljep avan azua sipapungadan. iniya maqati a'itjuvarung a papungadan a penaqeteleng a na penaqetelengan. pazangal aravac a papungadan lja!</FORM>
-        <FORM kindOf="standard">no pina'asedjaljep avan azoa sipapongadan. iniya maqati a'itjovarong a papongadan a penaqeteleng a na penaqetelengan. pazangal aravac a papongadan lja!</FORM>
-        <AUDIO start="121.823" end="141.617" />
+        <PHON kindOf="original">nu pinaʔasəɉaʎəp avan azua sipapuŋadan. inija maqati aʔiʦuvaruŋ a papuŋadan a pənaqətəɭəŋ a na pənaqətəɭəŋan. pazaŋaɭ aravaʦ a papuŋadan ʎa!</PHON>
+        <FORM kindOf="standard">nu pina'asedjaljep avan azua sipapungadan. iniya maqati a'itjuvarung a papungadan a penaqeteleng a na penaqetelengan. pazangal aravac a papungadan lja!</FORM>
+        <PHON kindOf="standard">nu pinaʔasəɉaʎəp avan azua sipapuŋadan. inija maqati aʔiʦuvaruŋ a papuŋadan a pənaqətəɭəŋ a na pənaqətəɭəŋan. pazaŋaɭ aravaʦ a papuŋadan ʎa!</PHON>
+        <AUDIO start="121.823" end="141.617" file="02SC107-4_Belmira_a11.wav"/>
     </S>
     <S id="a15">
         <FORM kindOf="original">sa pay tja pacunay a sepaiwan tu'i 'emuda a paru paruwarut a paruwarut nu papungadan ta tjausipualjapualjalja' a lumamad.</FORM>
-        <FORM kindOf="standard">sa pay tja paconay a sepaiwan to'i 'emoda a paro parowarot a parowarot no papongadan ta tjaosipoaljapoaljalja' a lomamad.</FORM>
-        <AUDIO start="143.882" end="163.235" />
+        <PHON kindOf="original">sa paj ʦa paʦunaj a səpaiwan tuʔi ʔəmuda a paru paruwarut a paruwarut nu papuŋadan ta ʦausipuaʎapuaʎaʎaʔ a ɭumamad.</PHON>
+        <FORM kindOf="standard">sa pay tja pacunay a sepaiwan tu'i 'emuda a paru paruwarut a paruwarut nu papungadan ta tjausipualjapualjalja' a lumamad.</FORM>
+        <PHON kindOf="standard">sa paj ʦa paʦunaj a səpaiwan tuʔi ʔəmuda a paru paruwarut a paruwarut nu papuŋadan ta ʦausipuaʎapuaʎaʎaʔ a ɭumamad.</PHON>
+        <AUDIO start="143.882" end="163.235" file="02SC107-4_Belmira_a15.wav"/>
     </S>
     <S id="a16">
         <FORM kindOf="original">masanmusalj a 'a'udan a sipapungadanan na sepaiwan. a sangasangasan selju seljudjen a ngadan na sevalitan sa pukeljangi tu ljaima, tinevelje tinevelje a nacaucau'atua ngadan na umaq,</FORM>
-        <FORM kindOf="standard">masanmosalj a 'a'odan a sipapongadanan na sepaiwan. a sangasangasan seljo seljodjen a ngadan na sevalitan sa pokeljangi to ljaima, tinevelje tinevelje a nacaocao'atoa ngadan na omaq,</FORM>
-        <AUDIO start="163.911" end="193.441" />
+        <PHON kindOf="original">masanmusaʎ a ʔaʔudan a sipapuŋadanan na səpaiwan. a saŋasaŋasan səʎu səʎuɉən a ŋadan na səvaɭitan sa pukəʎaŋi tu ʎaima, tinəvəʎə tinəvəʎə a naʦauʦauʔatua ŋadan na umaq,</PHON>
+        <FORM kindOf="standard">masanmusalj a 'a'udan a sipapungadanan na sepaiwan. a sangasangasan selju seljudjen a ngadan na sevalitan sa pukeljangi tu ljaima, tinevelje tinevelje a nacaucau'atua ngadan na umaq,</FORM>
+        <PHON kindOf="standard">masanmusaʎ a ʔaʔudan a sipapuŋadanan na səpaiwan. a saŋasaŋasan səʎu səʎuɉən a ŋadan na səvaɭitan sa pukəʎaŋi tu ʎaima, tinəvəʎə tinəvəʎə a naʦauʦauʔatua ŋadan na umaq,</PHON>
+        <AUDIO start="163.911" end="193.441" file="02SC107-4_Belmira_a16.wav"/>
     </S>
     <S id="a19">
         <FORM kindOf="original">pitjaivililjen a ngadan nua umaq ta ngadan na caucau, titjen a paiwan a tjara titjen a paiwan a tjaratacem'elj</FORM>
-        <FORM kindOf="standard">pitjaivililjen a ngadan noa omaq ta ngadan na caocao, titjen a paiwan a tjara titjen a paiwan a tjaratacem'elj</FORM>
-        <AUDIO start="197.352" end="210.058" />
+        <PHON kindOf="original">piʦaiviɭiʎən a ŋadan nua umaq ta ŋadan na ʦauʦau, tiʦən a paiwan a ʦara tiʦən a paiwan a ʦarataʦəmʔəʎ</PHON>
+        <FORM kindOf="standard">pitjaivililjen a ngadan nua umaq ta ngadan na caucau, titjen a paiwan a tjara titjen a paiwan a tjaratacem'elj</FORM>
+        <PHON kindOf="standard">piʦaiviɭiʎən a ŋadan nua umaq ta ŋadan na ʦauʦau, tiʦən a paiwan a ʦara tiʦən a paiwan a ʦarataʦəmʔəʎ</PHON>
+        <AUDIO start="197.352" end="210.058" file="02SC107-4_Belmira_a19.wav"/>
     </S>
     <S id="a21">
         <FORM kindOf="original">izua a ngadan nua tjaumaq, avan nu tjasipualang, avan nu tjasipualangan tu ljayima zua a caucau.</FORM>
-        <FORM kindOf="standard">izoa a ngadan noa tjaomaq, avan no tjasipoalang, avan no tjasipoalangan to ljayima zoa a caocao.</FORM>
-        <AUDIO start="223.941" end="240.206" />
+        <PHON kindOf="original">izua a ŋadan nua ʦaumaq, avan nu ʦasipuaɭaŋ, avan nu ʦasipuaɭaŋan tu ʎajima zua a ʦauʦau.</PHON>
+        <FORM kindOf="standard">izua a ngadan nua tjaumaq, avan nu tjasipualang, avan nu tjasipualangan tu ljayima zua a caucau.</FORM>
+        <PHON kindOf="standard">izua a ŋadan nua ʦaumaq, avan nu ʦasipuaɭaŋ, avan nu ʦasipuaɭaŋan tu ʎajima zua a ʦauʦau.</PHON>
+        <AUDIO start="223.941" end="240.206" file="02SC107-4_Belmira_a21.wav"/>
     </S>
     <S id="a23">
         <FORM kindOf="original">titjen a paiwan nama'eljang a ljaljed ljaljedjeqan na na tja ngadan i qinaljan, a sinipapungadan ta tjaumaq ma'eljang mau ma'eljang uta tu ljaima a mamazangiljan a tja sivaivaik,</FORM>
-        <FORM kindOf="standard">titjen a paiwan nama'eljang a ljaljed ljaljedjeqan na na tja ngadan i qinaljan, a sinipapongadan ta tjaomaq ma'eljang mao ma'eljang ota to ljaima a mamazangiljan a tja sivaivaik,</FORM>
-        <AUDIO start="243.793" end="265.617" />
+        <PHON kindOf="original">tiʦən a paiwan namaʔəʎaŋ a ʎaʎəd ʎaʎəɉəqan na na ʦa ŋadan i qinaʎan, a sinipapuŋadan ta ʦaumaq maʔəʎaŋ mau maʔəʎaŋ uta tu ʎaima a mamazaŋiʎan a ʦa sivaivaik,</PHON>
+        <FORM kindOf="standard">titjen a paiwan nama'eljang a ljaljed ljaljedjeqan na na tja ngadan i qinaljan, a sinipapungadan ta tjaumaq ma'eljang mau ma'eljang uta tu ljaima a mamazangiljan a tja sivaivaik,</FORM>
+        <PHON kindOf="standard">tiʦən a paiwan namaʔəʎaŋ a ʎaʎəd ʎaʎəɉəqan na na ʦa ŋadan i qinaʎan, a sinipapuŋadan ta ʦaumaq maʔəʎaŋ mau maʔəʎaŋ uta tu ʎaima a mamazaŋiʎan a ʦa sivaivaik,</PHON>
+        <AUDIO start="243.793" end="265.617" file="02SC107-4_Belmira_a23.wav"/>
     </S>
     <S id="a24">
         <FORM kindOf="original">iniya maqati a pavalitan a paqeteleng.</FORM>
+        <PHON kindOf="original">inija maqati a pavaɭitan a paqətəɭəŋ.</PHON>
         <FORM kindOf="standard">iniya maqati a pavalitan a paqeteleng.</FORM>
-        <AUDIO start="268.588" end="271.706" />
+        <PHON kindOf="standard">inija maqati a pavaɭitan a paqətəɭəŋ.</PHON>
+        <AUDIO start="268.588" end="271.706" file="02SC107-4_Belmira_a24.wav"/>
     </S>
     <S id="a26">
         <FORM kindOf="original">a pinaiwanan a ngadan 'emasi ta 'inadjamuqan a tinavela'e.</FORM>
-        <FORM kindOf="standard">a pinaiwanan a ngadan 'emasi ta 'inadjamoqan a tinavela'e.</FORM>
-        <AUDIO start="288.882" end="296.323" />
+        <PHON kindOf="original">a pinaiwanan a ŋadan ʔəmasi ta ʔinaɉamuqan a tinavəɭaʔə.</PHON>
+        <FORM kindOf="standard">a pinaiwanan a ngadan 'emasi ta 'inadjamuqan a tinavela'e.</FORM>
+        <PHON kindOf="standard">a pinaiwanan a ŋadan ʔəmasi ta ʔinaɉamuqan a tinavəɭaʔə.</PHON>
+        <AUDIO start="288.882" end="296.323" file="02SC107-4_Belmira_a26.wav"/>
     </S>
     <S id="a28">
         <FORM kindOf="original">a paru paruwarut nu pualja'e a tjaljavulungan, nu uqaljay papungadanan ta na vuvu a uqaljay, nu vavayan papungadanan ta na vuvu a vavayan a ngadan. a sepaiwuan pasusu taicu a 'a'udanan ta 'a'udan ta papungadan.</FORM>
-        <FORM kindOf="standard">a paro parowarot no poalja'e a tjaljavolongan, no oqaljay papongadanan ta na vovo a oqaljay, no vavayan papongadanan ta na vovo a vavayan a ngadan. a sepaiwoan pasoso taico a 'a'odanan ta 'a'odan ta papongadan.</FORM>
-        <AUDIO start="296.323" end="327.029" />
+        <PHON kindOf="original">a paru paruwarut nu puaʎaʔə a ʦaʎavuɭuŋan, nu uqaʎaj papuŋadanan ta na vuvu a uqaʎaj, nu vavajan papuŋadanan ta na vuvu a vavajan a ŋadan. a səpaiwuan pasusu taiʦu a ʔaʔudanan ta ʔaʔudan ta papuŋadan.</PHON>
+        <FORM kindOf="standard">a paru paruwarut nu pualja'e a tjaljavulungan, nu uqaljay papungadanan ta na vuvu a uqaljay, nu vavayan papungadanan ta na vuvu a vavayan a ngadan. a sepaiwuan pasusu taicu a 'a'udanan ta 'a'udan ta papungadan.</FORM>
+        <PHON kindOf="standard">a paru paruwarut nu puaʎaʔə a ʦaʎavuɭuŋan, nu uqaʎaj papuŋadanan ta na vuvu a uqaʎaj, nu vavajan papuŋadanan ta na vuvu a vavajan a ŋadan. a səpaiwuan pasusu taiʦu a ʔaʔudanan ta ʔaʔudan ta papuŋadan.</PHON>
+        <AUDIO start="296.323" end="327.029" file="02SC107-4_Belmira_a28.wav"/>
     </S>
     <S id="a30">
         <FORM kindOf="original">a si'amasanmusalj avan a inudalj a vaquan a ngadan, pasusuan pasusuan a pinualja' pasusuan a pinualja'an a qadav sa papungadanan, ljauwa ini'a tjuruvu a namayatucu a sipapungadanan.</FORM>
-        <FORM kindOf="standard">a si'amasanmosalj avan a inodalj a vaqoan a ngadan, pasosoan pasosoan a pinoalja' pasosoan a pinoalja'an a qadav sa papongadanan, ljaowa ini'a tjorovo a namayatoco a sipapongadanan.</FORM>
-        <AUDIO start="329.059" end="356.764" />
+        <PHON kindOf="original">a siʔamasanmusaʎ avan a inudaʎ a vaquan a ŋadan, pasusuan pasusuan a pinuaʎaʔ pasusuan a pinuaʎaʔan a qadav sa papuŋadanan, ʎauwa iniʔa ʦuruvu a namajatuʦu a sipapuŋadanan.</PHON>
+        <FORM kindOf="standard">a si'amasanmusalj avan a inudalj a vaquan a ngadan, pasusuan pasusuan a pinualja' pasusuan a pinualja'an a qadav sa papungadanan, ljauwa ini'a tjuruvu a namayatucu a sipapungadanan.</FORM>
+        <PHON kindOf="standard">a siʔamasanmusaʎ avan a inudaʎ a vaquan a ŋadan, pasusuan pasusuan a pinuaʎaʔ pasusuan a pinuaʎaʔan a qadav sa papuŋadanan, ʎauwa iniʔa ʦuruvu a namajatuʦu a sipapuŋadanan.</PHON>
+        <AUDIO start="329.059" end="356.764" file="02SC107-4_Belmira_a30.wav"/>
     </S>
     <S id="a32">
         <FORM kindOf="original">aicu a pina'a ti dripun a ngadan, a sipualja'e mangtjengtjez a dripung, pay, papungadanan tu ti dripun.</FORM>
-        <FORM kindOf="standard">aico a pina'a ti dripon a ngadan, a sipoalja'e mangtjengtjez a dripong, pay, papongadanan to ti dripon.</FORM>
-        <AUDIO start="362.146" end="377.323" />
+        <PHON kindOf="original">aiʦu a pinaʔa ti ɖipun a ŋadan, a sipuaʎaʔə maŋʦəŋʦəz a ɖipuŋ, paj, papuŋadanan tu ti ɖipun.</PHON>
+        <FORM kindOf="standard">aicu a pina'a ti dripun a ngadan, a sipualja'e mangtjengtjez a dripung, pay, papungadanan tu ti dripun.</FORM>
+        <PHON kindOf="standard">aiʦu a pinaʔa ti ɖipun a ŋadan, a sipuaʎaʔə maŋʦəŋʦəz a ɖipuŋ, paj, papuŋadanan tu ti ɖipun.</PHON>
+        <AUDIO start="362.146" end="377.323" file="02SC107-4_Belmira_a32.wav"/>
     </S>
     <S id="a34">
         <FORM kindOf="original">a ti gade a ngadan, sinipualja'e i gade, pay, papungadanan ta ti gade.</FORM>
-        <FORM kindOf="standard">a ti gade a ngadan, sinipoalja'e i gade, pay, papongadanan ta ti gade.</FORM>
-        <AUDIO start="377.647" end="387.323" />
+        <PHON kindOf="original">a ti gadə a ŋadan, sinipuaʎaʔə i gadə, paj, papuŋadanan ta ti gadə.</PHON>
+        <FORM kindOf="standard">a ti gade a ngadan, sinipualja'e i gade, pay, papungadanan ta ti gade.</FORM>
+        <PHON kindOf="standard">a ti gadə a ŋadan, sinipuaʎaʔə i gadə, paj, papuŋadanan ta ti gadə.</PHON>
+        <AUDIO start="377.647" end="387.323" file="02SC107-4_Belmira_a34.wav"/>
     </S>
     <S id="a37">
         <FORM kindOf="original">a ti 'auvuan a ngadan, a sipualja'e namapa namaqe nama namaqaluvu sa'a nama sa'a namalutelut a quvalj, pa'ati auvuwan.</FORM>
-        <FORM kindOf="standard">a ti 'aovoan a ngadan, a sipoalja'e namapa namaqe nama namaqalovo sa'a nama sa'a namalotelot a qovalj, pa'ati aovowan.</FORM>
-        <AUDIO start="390.264" end="415.735" />
+        <PHON kindOf="original">a ti ʔauvuan a ŋadan, a sipuaʎaʔə namapa namaqə nama namaqaɭuvu saʔa nama saʔa namaɭutəɭut a quvaʎ, paʔati auvuwan.</PHON>
+        <FORM kindOf="standard">a ti 'auvuan a ngadan, a sipualja'e namapa namaqe nama namaqaluvu sa'a nama sa'a namalutelut a quvalj, pa'ati auvuwan.</FORM>
+        <PHON kindOf="standard">a ti ʔauvuan a ŋadan, a sipuaʎaʔə namapa namaqə nama namaqaɭuvu saʔa nama saʔa namaɭutəɭut a quvaʎ, paʔati auvuwan.</PHON>
+        <AUDIO start="390.264" end="415.735" file="02SC107-4_Belmira_a37.wav"/>
     </S>
     <S id="a38">
         <FORM kindOf="original">pina'a ti celalaq, a sipualjalja'e zemuzung a 'iqazalj aya, ti celalaq anga ngadan.</FORM>
-        <FORM kindOf="standard">pina'a ti celalaq, a sipoaljalja'e zemozong a 'iqazalj aya, ti celalaq anga ngadan.</FORM>
-        <AUDIO start="418.646" end="433.087" />
+        <PHON kindOf="original">pinaʔa ti ʦəɭaɭaq, a sipuaʎaʎaʔə zəmuzuŋ a ʔiqazaʎ aja, ti ʦəɭaɭaq aŋa ŋadan.</PHON>
+        <FORM kindOf="standard">pina'a ti celalaq, a sipualjalja'e zemuzung a 'iqazalj aya, ti celalaq anga ngadan.</FORM>
+        <PHON kindOf="standard">pinaʔa ti ʦəɭaɭaq, a sipuaʎaʎaʔə zəmuzuŋ a ʔiqazaʎ aja, ti ʦəɭaɭaq aŋa ŋadan.</PHON>
+        <AUDIO start="418.646" end="433.087" file="02SC107-4_Belmira_a38.wav"/>
     </S>
     <S id="a41">
         <FORM kindOf="original">a sepaiwuan izua pina'apalisi nu papunagadan, i'a maqati tu mamav a ngadan 'ata 'ina, 'ama, siruvetje'e a tjavulung.</FORM>
-        <FORM kindOf="standard">a sepaiwoan izoa pina'apalisi no paponagadan, i'a maqati to mamav a ngadan 'ata 'ina, 'ama, sirovetje'e a tjavolong.</FORM>
-        <AUDIO start="434.323" end="451.353" />
+        <PHON kindOf="original">a səpaiwuan izua pinaʔapaɭisi nu papunagadan, iʔa maqati tu mamav a ŋadan ʔata ʔina, ʔama, siruvəʦəʔə a ʦavuɭuŋ.</PHON>
+        <FORM kindOf="standard">a sepaiwuan izua pina'apalisi nu papunagadan, i'a maqati tu mamav a ngadan 'ata 'ina, 'ama, siruvetje'e a tjavulung.</FORM>
+        <PHON kindOf="standard">a səpaiwuan izua pinaʔapaɭisi nu papunagadan, iʔa maqati tu mamav a ŋadan ʔata ʔina, ʔama, siruvəʦəʔə a ʦavuɭuŋ.</PHON>
+        <AUDIO start="434.323" end="451.353" file="02SC107-4_Belmira_a41.wav"/>
     </S>
     <S id="a44">
         <FORM kindOf="original">aicu a qaqetitan 'i 'iamaqati a papungadan tua na mamazangiljan a 'aniamadjuan a ngadan</FORM>
-        <FORM kindOf="standard">aico a qaqetitan 'i 'iamaqati a papongadan toa na mamazangiljan a 'aniamadjoan a ngadan</FORM>
-        <AUDIO start="470.265" end="481.559" />
+        <PHON kindOf="original">aiʦu a qaqətitan ʔi ʔiamaqati a papuŋadan tua na mamazaŋiʎan a ʔaniamaɉuan a ŋadan</PHON>
+        <FORM kindOf="standard">aicu a qaqetitan 'i 'iamaqati a papungadan tua na mamazangiljan a 'aniamadjuan a ngadan</FORM>
+        <PHON kindOf="standard">aiʦu a qaqətitan ʔi ʔiamaqati a papuŋadan tua na mamazaŋiʎan a ʔaniamaɉuan a ŋadan</PHON>
+        <AUDIO start="470.265" end="481.559" file="02SC107-4_Belmira_a44.wav"/>
     </S>
 </TEXT>
