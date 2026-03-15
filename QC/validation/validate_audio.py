@@ -1,11 +1,13 @@
 import xml.etree.ElementTree as ET
 import os
+import sys
 import argparse
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from mutagen.mp3 import MP3
 import wave
+import array
 import csv
-import sndhdr
+from pathlib import Path
 from tqdm import tqdm
 
 """
@@ -17,13 +19,196 @@ and the path to Final_audio is the one to be provided as arg for the main
 """
 
 
-# Determine the language of the file based on the path
 def get_lang(path, file):
     langs = ['Amis', 'Atayal', 'Paiwan', 'Bunun','Puyuma', 'Rukai', 'Tsou', 'Saisiyat', 'Yami',
         'Thao', 'Kavalan', 'Truku', 'Sakizaya','Seediq','Saaroa', 'Kanakanavu', 'Siraya']
     for lang in langs:
         if lang in path or (file.split('.')[0] == lang and file.split('.')[1:] == ['xml']):
             return lang
+
+
+def get_audio_duration(file_path):
+    """Return the duration of an audio file in seconds, or None on failure."""
+    try:
+        if file_path.endswith('.mp3'):
+            audio = MP3(file_path)
+            return audio.info.length
+        elif file_path.endswith('.wav'):
+            with wave.open(file_path, "rb") as wav_file:
+                return wav_file.getnframes() / wav_file.getframerate()
+    except Exception:
+        return None
+    return None
+
+
+def is_silent_wav(file_path, threshold=10):
+    """
+    Return True if a WAV file appears to be silent.
+    Reads all PCM samples and checks whether the RMS amplitude is below
+    `threshold` (on a 0-32767 scale for 16-bit audio; the threshold is
+    scaled proportionally for 8- and 32-bit files).
+    Returns None if the file cannot be read or is not PCM.
+    """
+    try:
+        with wave.open(file_path, "rb") as wf:
+            sampwidth = wf.getsampwidth()  # bytes per sample
+            nframes = wf.getnframes()
+            nchannels = wf.getnchannels()
+            if nframes == 0:
+                return True
+            raw = wf.readframes(nframes)
+        # Map sample width to array typecode
+        typecode = {1: 'b', 2: 'h', 4: 'i'}.get(sampwidth)
+        if typecode is None:
+            return None  # unsupported format
+        samples = array.array(typecode, raw)
+        # Compute RMS
+        rms = (sum(s * s for s in samples) / len(samples)) ** 0.5
+        # Normalise threshold to the actual bit depth
+        max_val = (1 << (sampwidth * 8 - 1)) - 1
+        normalised_threshold = threshold * max_val / 32767
+        return rms < normalised_threshold
+    except Exception:
+        return None
+
+
+def resolve_audio_path(xml_file_path, xml_root, audio_root, audio_filename):
+    """
+    Resolve the full path of an audio file referenced in an XML element.
+    Mirrors the logic from extract_audio_clips.py's resolve_audio_dir:
+      XML/Paiwan/Belmira/file.xml  →  Audio/Belmira/<audio_filename>
+    Tries the following candidates in order:
+      1. audio_root / rel_dir / audio_filename
+      2. audio_root / rel_dir (first component stripped) / audio_filename
+      3. audio_root / audio_filename
+    """
+    xml_file = Path(xml_file_path)
+    xml_root = Path(xml_root)
+    audio_root = Path(audio_root)
+
+    rel_dir = xml_file.parent.relative_to(xml_root)
+
+    candidate = audio_root / rel_dir / audio_filename
+    if candidate.is_file():
+        return str(candidate)
+
+    parts = rel_dir.parts
+    if len(parts) > 1:
+        candidate2 = audio_root / Path(*parts[1:]) / audio_filename
+        if candidate2.is_file():
+            return str(candidate2)
+
+    candidate3 = audio_root / audio_filename
+    if candidate3.is_file():
+        return str(candidate3)
+
+    return None
+
+
+def collect_sentence_refs(xml_root):
+    """
+    Walk all XML files under xml_root and collect audio/text references from
+    both <S> (sentence) and <W> (word) elements.
+    Returns a list of (xml_file_path, element_id, audio_filename, form_text) tuples.
+    Only includes elements that have both an AUDIO child with a 'file' attribute
+    and a FORM child with kindOf='original'.
+    """
+    refs = []
+    for root, dirs, files in os.walk(xml_root):
+        for file in files:
+            if file.endswith('.xml'):
+                xml_path = os.path.join(root, file)
+                try:
+                    tree = ET.parse(xml_path)
+                    root_elem = tree.getroot()
+                    for elem in root_elem.findall('.//S') + root_elem.findall('.//W'):
+                        audio_elem = elem.find('AUDIO')
+                        form_elem = elem.find("FORM[@kindOf='original']")
+                        if (audio_elem is not None
+                                and 'file' in audio_elem.attrib
+                                and form_elem is not None):
+                            audio_filename = audio_elem.attrib['file']
+                            form_text = form_elem.text or ''
+                            refs.append((xml_path, elem.attrib.get('id', ''), audio_filename, form_text))
+                except Exception as e:
+                    print(f"Warning: Could not parse {xml_path}: {e}")
+    return refs
+
+
+def check_audio_existence_and_duration(xml_root, audio_root, duration_log):
+    """
+    Phase 1: Verify that every audio file referenced in the XML files exists.
+             If any are missing, report them and exit.
+    Phase 2: For each sentence/word, read the audio file duration and count the
+             words in <FORM kindOf='original'>. Log any elements where
+             the ratio falls outside [1, 3] words per second.
+    """
+    print(f"Collecting audio references from XMLs in: {xml_root}")
+    refs = collect_sentence_refs(xml_root)
+
+    if not refs:
+        print("No audio references with 'file' attributes found in XML files.")
+        return
+
+    # --- Phase 1: existence check ---
+    print(f"Checking existence of {len(refs)} referenced audio file(s)...")
+    missing = []
+    resolved = []
+    for xml_path, sent_id, audio_filename, form_text in refs:
+        audio_path = resolve_audio_path(xml_path, xml_root, audio_root, audio_filename)
+        if audio_path is None:
+            missing.append((xml_path, audio_filename))
+        else:
+            resolved.append((xml_path, sent_id, audio_filename, audio_path, form_text))
+
+    if missing:
+        print(f"\nERROR: {len(missing)} audio file(s) referenced in XMLs could not be found:")
+        for xml_path, audio_filename in missing:
+            print(f"  {xml_path}: {audio_filename}")
+        sys.exit(1)
+
+    print(f"All {len(refs)} referenced audio files exist.")
+
+    # --- Phase 1b + Phase 2: silence check and words/sec check in one pass ---
+    silent_log = os.path.join(os.path.dirname(duration_log), "silent_audio.csv")
+    silent_files = []
+    issues = []
+    for xml_path, sent_id, audio_filename, audio_path, form_text in tqdm(
+        resolved, desc="Checking audio (silence + words/sec)"
+    ):
+        # Silence check (WAV only)
+        if audio_path.endswith('.wav'):
+            result = is_silent_wav(audio_path)
+            if result is True:
+                silent_files.append((xml_path, audio_filename))
+
+        # Words/sec check
+        duration = get_audio_duration(audio_path)
+        if duration is not None and duration > 0:
+            word_count = len(form_text.strip().split())
+            words_per_sec = word_count / duration
+            if (words_per_sec < .5 or words_per_sec > 3) or (word_count < 5 and duration > 10) or (word_count > 12 and duration < 7):
+                issues.append((xml_path, audio_filename, round(words_per_sec, 2)))
+
+    os.makedirs(os.path.dirname(duration_log), exist_ok=True)
+
+    with open(silent_log, mode='w', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(['xml_file', 'audio_file'])
+        for xml_path, audio_file in silent_files:
+            writer.writerow([xml_path, audio_file])
+    if silent_files:
+        print(f"Silence check: {len(silent_files)} silent WAV file(s) logged to: {silent_log}")
+    else:
+        print("Silence check: no silent WAV files detected.")
+
+    with open(duration_log, mode='w', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(['xml_file', 'audio_file', 'words_per_sec'])
+        for xml_path, audio_file, issue in issues:
+            writer.writerow([xml_path, audio_file, issue])
+
+    print(f"Duration check complete. {len(issues)} potential issue(s) logged to: {duration_log}")
 
 def process_file(path, file_name, failed_audio):
     """Process a single file"""
@@ -54,7 +239,7 @@ def process_file(path, file_name, failed_audio):
                 writer.writerow([path, lang, file_name])
                 
     
-def main(corpus_audio_path):
+def main(corpus_audio_path, xml_path=None):
     failed_audio = os.path.join(os.path.dirname(os.path.abspath(__file__)), "logs", "non_working_audio.csv")
     
     with open(failed_audio, mode='w', newline='') as file:
@@ -72,8 +257,13 @@ def main(corpus_audio_path):
         for f in tqdm(as_completed(futures), total=len(futures), desc=f"checking {corpus_audio_path}"): 
             f.result()
 
+    if xml_path:
+        duration_log = os.path.join(os.path.dirname(os.path.abspath(__file__)), "logs", "audio_duration_issues.csv")
+        check_audio_existence_and_duration(xml_path, corpus_audio_path, duration_log)
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="validates the functionality of audio files associated with a corpus")
-    parser.add_argument('--path', help='the path to the Final_audio folder containing the audio files associated with a corpus')
+    parser.add_argument('--path', help='the path to the audio folder containing the audio files associated with a corpus')
+    parser.add_argument('--xml_path', help='the path to the XML folder; if provided, validates that all referenced audio files exist and checks character-per-second ratios against <FORM kindOf="original"> text')
     args = parser.parse_args()
-    main(args.path)
+    main(args.path, args.xml_path)
