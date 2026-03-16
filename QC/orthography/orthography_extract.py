@@ -25,7 +25,7 @@ plt.rcParams['font.sans-serif'] = ['Arial Unicode MS']
 def generate_corpus(language_to_process, to_check_path, kindOf, by_dialect=False):
     corpus = {}
     if not by_dialect:
-        corpus["corpus"] = ""
+        corpus["default"] = ""
     if not os.path.exists(to_check_path):
         raise ValueError(f"corpus {to_check_path} doesn't exist")
     for root, dirs, files in os.walk(to_check_path):
@@ -55,7 +55,7 @@ def generate_corpus(language_to_process, to_check_path, kindOf, by_dialect=False
                 if by_dialect:                
                     if not 'dialect' in root_to_read.attrib:
                         print(f"WARNING: No dialect found in the corpus for {file}")  
-                        current_dialect = "corpus"
+                        current_dialect = "default"
                     else:
                         current_dialect = root_to_read.attrib['dialect']
                     if current_dialect in corpus.keys():
@@ -63,7 +63,7 @@ def generate_corpus(language_to_process, to_check_path, kindOf, by_dialect=False
                     else:
                         corpus[current_dialect] = text
                 else:
-                    corpus["corpus"] += text
+                    corpus["default"] += text
 
     return corpus
 

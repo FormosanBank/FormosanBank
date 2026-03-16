@@ -25,46 +25,82 @@ def overlap_coefficient(set1, set2):
     coefficient = len(intersection) / smaller_set_size
     return coefficient
 
+def compare_vocabulary(c1_dir, c2_dir, label):
+    """Compare vocabulary from orthographic_info in c1_dir against the reference in c2_dir."""
+
+    with open(os.path.join(c1_dir, 'orthographic_info'), 'rb') as f:
+        c1_info = pickle.load(f)
+
+    ref_path = os.path.join(c2_dir, 'orthographic_info')
+    if not os.path.isfile(ref_path):
+        print(f"WARNING: No reference orthographic info found at {c2_dir}. Skipping {label}.")
+        return
+    with open(ref_path, 'rb') as f:
+        c2_info = pickle.load(f)
+
+    vocab1 = [word for word, freq in c1_info['word_frequency'].most_common(100)]
+    vocab2 = [word for word, freq in c2_info['word_frequency'].most_common(100)]
+
+    warns = False  # flag to check if any warnings were raised
+
+    word_jaccard_similarity = jaccard_similarity(set(vocab1), set(vocab2))
+    print(f"Jaccard Similarity of words characters: {word_jaccard_similarity:.2f}")
+    if word_jaccard_similarity < .975:
+        warns = True
+        warnings.warn("The disjunction of character sets should be close to 0.")
+
+    word_overlap_coefficient = overlap_coefficient(set(vocab1), set(vocab2))
+    print(f"Overlap Coefficient of unique words: {word_overlap_coefficient:.2f}")
+    if word_overlap_coefficient < .975:
+        warns = True
+        warnings.warn("The disjunction of character sets should be close to 0.")
+
+    if warns:
+        unique_to_vocab1 = set(vocab1) - set(vocab2)
+        warnings.warn(f"High-frequency words in corpus but not in reference: {unique_to_vocab1}")
+        unique_to_vocab2 = set(vocab2) - set(vocab1)
+        warnings.warn(f"High-frequency words in reference but not in corpus: {unique_to_vocab2}")
+
+
 def main(args, possiblelangs):
 
     if args.language:
         langs = [args.language]
     else:
-        langs = [lang for lang in os.listdir(args.o_info)]
+        langs = sorted([d for d in os.listdir(args.o_info)
+                        if os.path.isdir(os.path.join(args.o_info, d))])
 
     for lang in langs:
         print(f"========== Analyzing {lang} ==========\n")
-        # get the orthographic info for the target corpus
-        with open(os.path.join(args.o_info, lang, 'orthographic_info'), 'rb') as f:
-            c1_info = pickle.load(f)
 
-        # get the reference orthographic info for that language
-        with open(os.path.join(args.reference, lang, 'orthographic_info'), 'rb') as f:
-            c2_info = pickle.load(f)
+        lang_path = os.path.join(args.o_info, lang)
 
-        vocab1 = [word for word, freq in c1_info['word_frequency'].most_common(100)]
-        vocab2 = [word for word, freq in c2_info['word_frequency'].most_common(100)]
-
-
-        warns = False # flag to check if any warnings were raised
-
-        word_jaccard_similarity = jaccard_similarity(set(vocab1), set(vocab2))
-        print(f"Jaccard Similarity of words characters: {word_jaccard_similarity:.2f}")
-        if word_jaccard_similarity < .975:
-            warns = True
-            warnings.warn("The disjunction of character sets should be close to 0.")
-
-        word_overlap_coefficient = overlap_coefficient(set(vocab1), set(vocab2))
-        print(f"Overlap Coefficient of unique words: {word_overlap_coefficient:.2f}")
-        if word_overlap_coefficient < .975:
-            warns = True
-            warnings.warn("The disjunction of character sets should be close to 0.")
-        
-        if warns:
-            unique_to_vocab1 = set(vocab1) - set(vocab2)
-            warnings.warn(f"High-frequency words in corpus but not in reference: {unique_to_vocab1}")
-            unique_to_vocab2 = set(vocab2) - set(vocab1)
-            warnings.warn(f"High-frequency words in reference but not in corpus: {unique_to_vocab2}")
+        # Determine whether the language folder contains dialect subdirectories or a
+        # bare orthographic_info file (non-dialect / legacy layout).
+        if os.path.isfile(os.path.join(lang_path, 'orthographic_info')):
+            # No dialect subdirectories: compare the language folder directly.
+            compare_vocabulary(
+                lang_path,
+                os.path.join(args.reference, lang),
+                lang
+            )
+        else:
+            # Each subdirectory is a dialect (including "default" if present).
+            dialects = sorted([
+                d for d in os.listdir(lang_path)
+                if os.path.isdir(os.path.join(lang_path, d))
+                and os.path.isfile(os.path.join(lang_path, d, 'orthographic_info'))
+            ])
+            if not dialects:
+                print(f"WARNING: No orthographic_info found for {lang} in {lang_path}. Skipping.")
+                continue
+            for dialect in dialects:
+                print(f"  --- Dialect: {dialect} ---")
+                compare_vocabulary(
+                    os.path.join(lang_path, dialect),
+                    os.path.join(args.reference, lang, dialect),
+                    f"{lang} / {dialect}"
+                )
 
 if __name__ == "__main__":
     # Code requires that orthographic info is stored in a folder with the name of a language from this list
