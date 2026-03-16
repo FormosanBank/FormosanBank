@@ -2,34 +2,7 @@
 
 ### Overview
 
-[The ePark corpus](https://web.klokah.tw/) is a comprehensive and interactive resource for the preservation, learning, and revitalization of Indigenous languages of Taiwan. Developed by the Indigenous Languages Research and Development Foundation ([ILRDF](https://www.ilrdf.org.tw/)), this digital platform caters to a wide audience, including preschoolers, students, adults, and language teachers, with resources and tools designed to support various learning levels and linguistic goals. The corpus is available in all recognized 42 official dialects across the 16 different Formosan languages: **Amis**, **Atayal**, **Saisiyat**, **Thao**, **Seediq**, **Bunun**, **Paiwan**, **Rukai**, **Truku**, **Kavalan**, **Tsou**, **Kanakanavu**, **Saaroa**, **Puyuma**, **Yami**, and **Sakizaya**. The corpus is invaluable for documenting and preserving linguistic diversity, and it includes text, audio recordings, and translations, making it a comprehensive resource for research, education, and language revitalization.
-
-***
-
-### Features of the online platform
-
-1. **Teaching Modules**:
-   * **Elementary, Intermediate, and Advanced Levels**: Progressive exercises focusing on listening, speaking, and writing skills.
-   * **Interactive Components**: Drag-and-drop activities, typing exercises, and dialogue recording.
-2. **Vocabulary Analysis**:
-   * Analyze text or individual words for classification, level range, and teaching material usage.
-3. **Situational Language**:
-   * Covers 12 practical topics such as greetings and classroom terms with dialogue comprehension and dictation exercises.
-4. **Short Essays and Advanced Texts**:
-   * Includes rich topics with sentence structure exercises and translation practice.
-5. **Resource Download**:
-   * Comprehensive access to teaching materials, including digital aids and printable resources.
-
-***
-
-### Key Features of the Corpus in FormosanBank
-
-* **Comprehensive Data**
-  * The corpus contains a total of **2680175 tokens** and over **587 hours of audio**, offering a rich and comprehensive resource for the study of Formosan languages. Its quality is ensured by the extensive effort and meticulous processes involved in its creation. Below is a breakdown of the token count and audio duration for each language:
-* **Audio Integration**
-  * High-quality audio files accompany most example sentences, providing an invaluable resource for analyzing pronunciation, phonology, and spoken language contexts.
-* **Translation Availability**
-  * Example sentences are translated into **Chinese**, ensuring accessibility for researchers and learners.
+[The ePark corpus](https://web.klokah.tw/) is a comprehensive and interactive resource for the preservation, learning, and revitalization of Indigenous languages of Taiwan. Developed by the Indigenous Languages Research and Development Foundation ([ILRDF](https://www.ilrdf.org.tw/)), this digital platform caters to a wide audience, including preschoolers, students, adults, and language teachers, with resources and tools designed to support various learning levels and linguistic goals. The corpus is available in all recognized 42 official dialects across the 16 different Formosan language. The corpus is invaluable for documenting and preserving linguistic diversity, and it includes text, audio recordings, and translations, making it a comprehensive resource for research, education, and language revitalization.
 
 ***
 

@@ -2,7 +2,9 @@
 
 ### Overview
 
-The Paiwan Stories corpus is a small collection of children’s stories told in Eastern Paiwan. Drawn from three storybooks, these narratives provide valuable cultural and linguistic insights into the Paiwan language as it is used in accessible, community-oriented contexts. Their inclusion in FormosanBank broadens the range of available materials, offering a glimpse into traditional knowledge, everyday life, and childhood learning in a Paiwan-speaking environment.&#x20;
+The Paiwan Stories corpus is a small collection of children’s stories told in Eastern Paiwan. Drawn from three storybooks, these narratives provide valuable cultural and linguistic insights into the Paiwan language as it is used in accessible, community-oriented contexts. Their inclusion in FormosanBank broadens the range of available materials, offering a glimpse into traditional knowledge, everyday life, and childhood learning in a Paiwan-speaking environment.
+
+**Audio is available as part of the repo and does not need to be downloaded from HuggingFace.**
 
 #### Source Materials
 
