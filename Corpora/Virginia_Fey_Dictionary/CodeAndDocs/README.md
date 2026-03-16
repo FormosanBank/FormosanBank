@@ -1,6 +1,6 @@
 # Formosan-VirginiaFey
 
-This repository contains code and data for processing and structuring the Virginia Fey dictionary corpus.
+This repository contains code and data for processing and structuring the Paiwan Stories dataset into the [FormosanBank XML format](https://app.gitbook.com/o/tZF822XPLvjWkTiqbQyF/s/VETgkt5DVZWXBIolTyjW/the-bank-architecture/xml-standardize-format). The dataset includes various Formosan dialects and is organized to assist in linguistic research and language preservation.
 
 ## Notes
 
@@ -24,7 +24,7 @@ It is not clear whether this addressed the concerns raised by Li and colleagues,
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/Formosan-VirginiaFeyDictionary.git
+   git clone https://github.com/yourusername/ePark.git
    cd ePark
    ```
 
@@ -71,7 +71,7 @@ This doesn't actually do anything other than create a `kindof="standard"` tier, 
 
 
    ```bash
-   python path/to/FormosanBankRepo/QC/utilities/standardize.py --corpora_path path/to/repo/Final_XML
+   python path/to/FormosanBankRepo/QC/utilities/standardize.py --corpora_path path/to/repo/Final_XML --copy
    ```
 
 **Outputs**
@@ -79,7 +79,13 @@ This doesn't actually do anything other than create a `kindof="standard"` tier, 
 
 **Notes**
    - Creates a copy of every <FORM> element with kindOf="standard" attribute
-   - All u's are converted to o's.
+   - This is exact copy of the kindOf="original" tier, because dictionary appears to use Ortho94/Ortho113 (they are indistinguishable for this purpose).
+
+4. **Add IPA**
+
+   ```bash
+   python path/to/FormosanBankRepo/QC/utilities/add_phonology.py --corpora_path path/to/repo/Final_XML --orthography Ortho113
+   ```
 
 
 ## References

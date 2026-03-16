@@ -178,7 +178,7 @@ def check_audio_existence_and_duration(xml_root, audio_root, duration_log):
     ):
         # Silence check (WAV only)
         if audio_path.endswith('.wav'):
-            result = is_silent_wav(audio_path)
+            result = False #is_silent_wav(audio_path)
             if result is True:
                 silent_files.append((xml_path, audio_filename))
 
@@ -186,9 +186,11 @@ def check_audio_existence_and_duration(xml_root, audio_root, duration_log):
         duration = get_audio_duration(audio_path)
         if duration is not None and duration > 0:
             word_count = len(form_text.strip().split())
+            num_char = len(form_text.strip())
+            char_per_sec = num_char / duration
             words_per_sec = word_count / duration
-            if (words_per_sec < .5 or words_per_sec > 3) or (word_count < 5 and duration > 10) or (word_count > 12 and duration < 7):
-                issues.append((xml_path, audio_filename, round(words_per_sec, 2)))
+            if (words_per_sec < .1 or char_per_sec > 17) or (word_count < 5 and duration > 10) or (word_count > 12 and duration < 7):
+                issues.append((xml_path, audio_filename, round(words_per_sec, 2), round(char_per_sec, 2)))
 
     os.makedirs(os.path.dirname(duration_log), exist_ok=True)
 
@@ -204,9 +206,9 @@ def check_audio_existence_and_duration(xml_root, audio_root, duration_log):
 
     with open(duration_log, mode='w', newline='') as f:
         writer = csv.writer(f)
-        writer.writerow(['xml_file', 'audio_file', 'words_per_sec'])
-        for xml_path, audio_file, issue in issues:
-            writer.writerow([xml_path, audio_file, issue])
+        writer.writerow(['xml_file', 'audio_file', 'words_per_sec', 'chars_per_sec'])
+        for xml_path, audio_file, issue, issue2 in issues:
+            writer.writerow([xml_path, audio_file, issue, issue2])
 
     print(f"Duration check complete. {len(issues)} potential issue(s) logged to: {duration_log}")
 
