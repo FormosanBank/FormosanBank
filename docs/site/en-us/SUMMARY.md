@@ -25,6 +25,7 @@
   * [Rau-Dong](the-bank-architecture/corpora/RauDong.md)
   * [100 Paiwan Texts](the-bank-architecture/corpora/HundredPaiwanTexts.md)
   * [FormosanBank GitBook](the-bank-architecture/corpora/FormosanBankGitBook.md)
+  * [FormosanBank GitBook](the-bank-architecture/corpora/SEALS33.md)
 * [Developers](the-bank-architecture/developers/README.md)
   * [🤗 HuggingFace](the-bank-architecture/developers/huggingface.md)
   * [Folder structure](the-bank-architecture/developers/folder-structure.md)
