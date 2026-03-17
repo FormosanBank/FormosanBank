@@ -150,9 +150,9 @@ def extract_text_from_xml(xml_file: str, use_standard: bool = False) -> Tuple[st
         # Combine all extracted text snippets into one string for analysis
         combined_text = ' '.join(texts)
 
-        # Clean the text: remove numbers, double quotes, periods, commas, question marks, and exclamation marks
+        # Clean the text: remove numbers, commas, and exclamation marks
         # Keep letters, apostrophes, hyphens, and other characters that might be linguistically significant
-        cleaned_text = re.sub(r'[0-9".,?!]', ' ', combined_text)
+        cleaned_text = re.sub(r'[0-9",!]', ' ', combined_text)
         
         return cleaned_text, language, dialect
         

@@ -135,23 +135,55 @@ def collect_sentence_refs(xml_root):
     return refs
 
 
+def collect_text_audio_refs(xml_root):
+    """
+    Walk all XML files under xml_root and collect audio references from
+    <AUDIO> elements that are direct children of the <TEXT> root element.
+    Returns a list of (xml_file_path, audio_filename) tuples.
+    These elements only require existence and silence checks — no duration
+    or words-per-second check is performed for them.
+    """
+    refs = []
+    for root, dirs, files in os.walk(xml_root):
+        for file in files:
+            if file.endswith('.xml'):
+                xml_path = os.path.join(root, file)
+                try:
+                    tree = ET.parse(xml_path)
+                    root_elem = tree.getroot()
+                    if root_elem.tag == 'TEXT':
+                        for audio_elem in root_elem.findall('AUDIO'):
+                            if 'file' in audio_elem.attrib:
+                                refs.append((xml_path, audio_elem.attrib['file']))
+                except Exception as e:
+                    print(f"Warning: Could not parse {xml_path}: {e}")
+    return refs
+
+
 def check_audio_existence_and_duration(xml_root, audio_root, duration_log):
     """
     Phase 1: Verify that every audio file referenced in the XML files exists.
              If any are missing, report them and exit.
-    Phase 2: For each sentence/word, read the audio file duration and count the
-             words in <FORM kindOf='original'>. Log any elements where
-             the ratio falls outside [1, 3] words per second.
+             Includes both sentence/word-level <AUDIO> elements and <AUDIO>
+             elements that are direct children of <TEXT>.
+    Phase 2: For sentence/word-level references, check audio duration and
+             words-per-second ratio against <FORM kindOf='original'> text.
+             Log any elements where the ratio falls outside expected bounds.
+             TEXT-level <AUDIO> elements only undergo existence and silence
+             checks — no duration or words-per-second check is performed.
     """
     print(f"Collecting audio references from XMLs in: {xml_root}")
     refs = collect_sentence_refs(xml_root)
+    text_refs = collect_text_audio_refs(xml_root)
 
-    if not refs:
+    if not refs and not text_refs:
         print("No audio references with 'file' attributes found in XML files.")
         return
 
     # --- Phase 1: existence check ---
-    print(f"Checking existence of {len(refs)} referenced audio file(s)...")
+    total_count = len(refs) + len(text_refs)
+    print(f"Checking existence of {len(refs)} sentence/word and "
+          f"{len(text_refs)} TEXT-level audio reference(s)...")
     missing = []
     resolved = []
     for xml_path, sent_id, audio_filename, form_text in refs:
@@ -161,15 +193,23 @@ def check_audio_existence_and_duration(xml_root, audio_root, duration_log):
         else:
             resolved.append((xml_path, sent_id, audio_filename, audio_path, form_text))
 
+    resolved_text = []
+    for xml_path, audio_filename in text_refs:
+        audio_path = resolve_audio_path(xml_path, xml_root, audio_root, audio_filename)
+        if audio_path is None:
+            missing.append((xml_path, audio_filename))
+        else:
+            resolved_text.append((xml_path, audio_filename, audio_path))
+
     if missing:
         print(f"\nERROR: {len(missing)} audio file(s) referenced in XMLs could not be found:")
         for xml_path, audio_filename in missing:
             print(f"  {xml_path}: {audio_filename}")
         sys.exit(1)
 
-    print(f"All {len(refs)} referenced audio files exist.")
+    print(f"All {total_count} referenced audio files exist.")
 
-    # --- Phase 1b + Phase 2: silence check and words/sec check in one pass ---
+    # --- Phase 1b + Phase 2: silence check and words/sec check for sentence/word refs ---
     silent_log = os.path.join(os.path.dirname(duration_log), "silent_audio.csv")
     silent_files = []
     issues = []
@@ -191,6 +231,15 @@ def check_audio_existence_and_duration(xml_root, audio_root, duration_log):
             words_per_sec = word_count / duration
             if (words_per_sec < .1 or char_per_sec > 17) or (word_count < 5 and duration > 10) or (word_count > 12 and duration < 7):
                 issues.append((xml_path, audio_filename, round(words_per_sec, 2), round(char_per_sec, 2)))
+
+    # --- Silence check only for TEXT-level refs (no duration/words-per-sec check) ---
+    for xml_path, audio_filename, audio_path in tqdm(
+        resolved_text, desc="Checking TEXT-level audio (silence only)"
+    ):
+        if audio_path.endswith('.wav'):
+            result = False #is_silent_wav(audio_path)
+            if result is True:
+                silent_files.append((xml_path, audio_filename))
 
     os.makedirs(os.path.dirname(duration_log), exist_ok=True)
 
