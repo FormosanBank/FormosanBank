@@ -105,7 +105,7 @@ def compare_orthography(c1_dir, c2_dir, label):
         c2_info = pickle.load(f)
     print(c2_info.keys())
 
-    # Filter unique_chars to exclude punctuation and numerals
+    # Filter unique_chars to exclude numerals
     exclude_chars = set(string.digits)
     c1_use_chars = [char for char in c1_info['unique_characters'] if char not in exclude_chars]
     c2_use_chars = [char for char in c2_info['unique_characters'] if char not in exclude_chars]
@@ -114,29 +114,25 @@ def compare_orthography(c1_dir, c2_dir, label):
     c1_character_frequency = {char: freq for char, freq in c1_info['character_frequency'].items() if char in c1_use_chars}
     c2_character_frequency = {char: freq for char, freq in c2_info['character_frequency'].items() if char in c2_use_chars}
 
-    # Sort characters by frequency in descending order
+    # Sort corpus characters by frequency in descending order
     c1_sorted_characters = sorted(c1_character_frequency.items(), key=lambda item: item[1], reverse=True)
-    c2_sorted_characters = sorted(c2_character_frequency.items(), key=lambda item: item[1], reverse=True)
 
-    # Extract the top 30 characters and their frequencies
+    # Build all_chars from ALL reference characters (the full expected orthography) plus
+    # the top 30 most-frequent corpus characters.  Using only the top-30 of each would
+    # drop legitimate low-frequency orthographic letters (e.g. 'j' and 'v' in Sakizaya)
+    # when they rank below 30 in both the corpus and the reference.
     c1_top_30_chars = dict(c1_sorted_characters[:30])
-    c2_top_30_chars = dict(c2_sorted_characters[:30])
+    all_chars = set(c2_use_chars).union(set(c1_top_30_chars))
 
-    # Update c1_info['unique_characters'] to contain only the top 30 characters
-    c1_info['unique_characters'] = c1_top_30_chars
-    c2_info['unique_characters'] = c2_top_30_chars
+    print(c2_character_frequency)
 
-    print(c2_top_30_chars)
-
-    char_jaccard_similarity = jaccard_similarity(set(c1_info['unique_characters']), set(c2_info['unique_characters']))
+    char_jaccard_similarity = jaccard_similarity(set(c1_use_chars), set(c2_use_chars))
     print(f"Jaccard Similarity of unique characters: {char_jaccard_similarity:.2f}")
     if char_jaccard_similarity < .95:
         print("WARNING: The disjunction of character sets should be close to 0. It is recommended to check the unique characters in the orthographic info for the target corpus and the reference corpus.")
 
-    char_overlap_coefficient = overlap_coefficient(set(c1_info['unique_characters']), set(c2_info['unique_characters']))
+    char_overlap_coefficient = overlap_coefficient(set(c1_use_chars), set(c2_use_chars))
     print(f"Overlap Coefficient of unique characters: {char_overlap_coefficient:.2f}")
-
-    all_chars = set(c1_info['unique_characters']).union(set(c2_info['unique_characters']))
 
     c1_freq_vector = np.array([c1_info['character_frequency'].get(char, 0) for char in all_chars])
     c2_freq_vector = np.array([c2_info['character_frequency'].get(char, 0) for char in all_chars])

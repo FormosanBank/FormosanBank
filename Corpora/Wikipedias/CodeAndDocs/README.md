@@ -102,15 +102,25 @@ This repository contains code and data for retrieving, processing and structurin
 5. **Standardize orthography**
 
    ```bash
-   python path/to/FormosanBankRepo/QC/utilities/standardize.py --corpora_path path/to/FormosanWikipedias/XML
+   python path/to/FormosanBankRepo/QC/utilities/standardize.py --corpora_path path/to/FormosanWikipedias/Final_XML --copy
    ```
-   
-   **Outputs**
-      - Updates XML files
 
-   **Notes**
-      - Creates a copy of every <FORM> element with kindOf="standard" attribute
-      - All u's are converted to o's.
+This is almost certainly Ortho94, because it doesn't use `_`. However, there's no other difference between Ortho94 and Ortho113.
+
+**Outputs**
+   - Updates XML files
+
+**Notes**
+   - Creates a copy of every <FORM> element with kindOf="standard" attribute
+   - All u's are converted to o's.
+
+6. **Add IPA**
+
+This uses a "default" IPA encoding, because dialect is unknown.
+
+   ```bash
+   python path/to/FormosanBankRepo/QC/utilities/add_phonology.py --corpora_path path/to/FormosanWikipedias/Final_XML --orthography Ortho113
+   ```
 
 ## Developer Notes and Tools
 

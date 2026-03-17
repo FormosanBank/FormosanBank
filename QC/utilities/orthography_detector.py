@@ -877,6 +877,22 @@ def analyze_xml_files_combined(directory: str, orthographies_dir: str, ignore_di
     return results
 
 
+def format_unexpected_tokens(unexpected_tokens: Dict[str, int], top_n: int = 10) -> str:
+    """
+    Format unexpected token counts: list the top_n most-common, then lump the rest as 'other'.
+    """
+    if not unexpected_tokens:
+        return "None"
+    sorted_unexpected = sorted(unexpected_tokens.items(), key=lambda x: (-x[1], x[0]))
+    top = sorted_unexpected[:top_n]
+    rest = sorted_unexpected[top_n:]
+    parts = [f"{token}({count})" for token, count in top]
+    if rest:
+        other_count = sum(count for _, count in rest)
+        parts.append(f"other({other_count})")
+    return ', '.join(parts)
+
+
 def display_combined_results(results: Dict) -> None:
     """
     Display results from combined analysis in a readable format.
@@ -919,8 +935,8 @@ def display_combined_results(results: Dict) -> None:
             print(f"  Common letters: {best.get('common_letters', 0)}")
         
         # Show top 5 orthographies
-        print(f"\nTop 5 orthographies for combined {dialect_key} corpus:")
-        for i, match in enumerate(group_data['orthography_analysis'][:5]):
+        print(f"\nTop 7 orthographies for combined {dialect_key} corpus:")
+        for i, match in enumerate(group_data['orthography_analysis'][:7]):
             rank = i + 1
             dialect_info = f" ({match['dialect']})" if match['dialect'] != 'default' else ""
             print(f"  {rank}. {match['language']}{dialect_info} - {match['orthography']}")
@@ -939,13 +955,7 @@ def display_combined_results(results: Dict) -> None:
             
             # Show unexpected tokens
             unexpected_tokens = match.get('unexpected_tokens', {})
-            if unexpected_tokens:
-                # Sort by frequency (descending) and then alphabetically
-                sorted_unexpected = sorted(unexpected_tokens.items(), key=lambda x: (-x[1], x[0]))
-                unexpected_str = ', '.join([f"{token}({count})" for token, count in sorted_unexpected])
-                print(f"     Unexpected tokens: {unexpected_str}")
-            else:
-                print(f"     Unexpected tokens: None")
+            print(f"     Unexpected tokens: {format_unexpected_tokens(unexpected_tokens)}")
         
         print(f"\nFiles included in {dialect_key} group:")
         for file_path in group_data.get('files_in_group', [])[:10]:  # Show first 10 files
@@ -1056,12 +1066,7 @@ if __name__ == "__main__":
                 print(f"Missing Letters: None")
             
             unexpected_tokens = best.get('unexpected_tokens', {})
-            if unexpected_tokens:
-                sorted_unexpected = sorted(unexpected_tokens.items(), key=lambda x: (-x[1], x[0]))
-                unexpected_str = ', '.join([f"{token}({count})" for token, count in sorted_unexpected])
-                print(f"Unexpected Tokens: {unexpected_str}")
-            else:
-                print(f"Unexpected Tokens: None")
+            print(f"Unexpected Tokens: {format_unexpected_tokens(unexpected_tokens)}")
             
     elif os.path.isdir(args.input_path):
         # Directory analysis
