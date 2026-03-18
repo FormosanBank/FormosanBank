@@ -19,6 +19,8 @@ Welcome to the FormosanBank Corpora section! Here, you’ll find comprehensive d
 * [FormosanBank GitBook](FormosanBankGitBook.md)
 * [SEALS 33](SEALS33.md) (text, Mandarin, English)
 * [Glosbe](Glosbe.md) (text, Mandarin (Traditional), Mandarin (Simplified))
+* [Whitehorn Collection](Whitehorn-Collection.md) (audio)
+
 
 ***
 

@@ -27,6 +27,7 @@
   * [FormosanBank GitBook](the-bank-architecture/corpora/FormosanBankGitBook.md)
   * [SEALS 33](the-bank-architecture/corpora/SEALS33.md)
   * [Glosbe](the-bank-architecture/corpora/Glosbe.md) 
+  * [Whitehorn Collection](the-bank-architecture/corpora/Whitehorn-Collection.md) (audio)
 * [Developers](the-bank-architecture/developers/README.md)
   * [🤗 HuggingFace](the-bank-architecture/developers/huggingface.md)
   * [Folder structure](the-bank-architecture/developers/folder-structure.md)

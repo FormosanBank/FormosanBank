@@ -1,4 +1,4 @@
-# Presidential Apologies
+# SEALS 33
 
 ## **Overview**
 
@@ -84,7 +84,7 @@ This section will be used to describe any notes regarding the corpus (e.g. expla
 
 ## **Access Details**
 
-* The repo containing the ePark corpus in FormosanBank as well as the code to reconstruct the corpus can be found [here](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/SEALS33).
+* The repo containing the SEALS 33 corpus in FormosanBank as well as the code to reconstruct the corpus can be found [here](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/SEALS33).
 
 ***
 
