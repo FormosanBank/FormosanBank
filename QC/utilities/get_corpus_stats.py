@@ -194,16 +194,28 @@ def count_audio(tree, xml_file_path):
 
     for elem in audio_elems:
         audio_filename = elem.attrib['file']
+        audio_path_obj = Path(audio_filename)
+        # Build alternative filenames with the other common extension
+        alt_ext = '.wav' if audio_path_obj.suffix.lower() == '.mp3' else '.mp3'
+        alt_filename = audio_path_obj.stem + alt_ext
 
         # Try candidates in order until one exists on disk
         if corpus_root is not None:
-            candidates = [
-                audio_base / rel.parent / audio_filename,               # direct mirror
-                audio_base / rel.parent / xml_file.stem / audio_filename,  # extra lang subfolder
-                audio_base / audio_filename,                            # flat fallback
-            ]
+            # Build a list of rel.parent variants, progressively stripping leading components
+            # e.g. Paiwan/Sarnix → Sarnix → (empty)
+            rel_parts = rel.parent.parts
+            rel_variants = [Path(*rel_parts[i:]) for i in range(len(rel_parts))] + [Path('.')]
+            candidates = []
+            for rel_var in rel_variants:
+                for name in (audio_filename, alt_filename):
+                    candidates += [
+                        audio_base / rel_var / name,                    # direct / stripped mirror
+                        audio_base / rel_var / xml_file.stem / name,    # extra lang subfolder
+                    ]
+            candidates.append(audio_base / audio_filename)   # fully flat fallback
+            candidates.append(audio_base / alt_filename)
         else:
-            candidates = [audio_base / audio_filename]
+            candidates = [audio_base / audio_filename, audio_base / alt_filename]
 
         audio_path = next((c for c in candidates if c.is_file()), None)
         if audio_path is None:
@@ -242,10 +254,10 @@ def process_xml_file(xml_file_path):
 def main(corpora_path):
 
     if os.path.isdir(os.path.join(corpora_path, 'XML')):
-        paths = [corpora_path]
+        paths = [os.path.join(corpora_path, 'XML')]
     else:
-        paths = [os.path.join(corpora_path, d, XML) for d in os.listdir(corpora_path)
-                 if os.path.isdir(os.path.join(corpora_path, d, XML))]
+        paths = [os.path.join(corpora_path, d, 'XML') for d in os.listdir(corpora_path)
+                 if os.path.isdir(os.path.join(corpora_path, d, 'XML'))]
 
     file_stats = []
     for path in paths:
