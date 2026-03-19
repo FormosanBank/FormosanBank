@@ -15,6 +15,7 @@ Welcome to the FormosanBank Corpora section! Here, you’ll find comprehensive d
 * [Paiwan Stories](paiwan-stories.md) (text, audio, Mandarin)
 * [Rau-Dong](RauDong.md) (text, glossing, English, Mandarin)
 * [The Montgomery Texts](MontgomeryTexts.md) (text, English)
+* [The Wakelin Texts](WakelinTexts.md) (text, English, segmented)
 * [100 Paiwan Texts](HundredPaiwanTexts.md) (text, glossing, English)
 * [FormosanBank GitBook](FormosanBankGitBook.md)
 * [SEALS 33](SEALS33.md) (text, Mandarin, English)
@@ -26,8 +27,6 @@ Welcome to the FormosanBank Corpora section! Here, you’ll find comprehensive d
 
 <!-- CORPUS STATS START -->
 ### Corpus Statistics
-
-Note "Sentences" are defined by being enclosed in <S> tags. This is not necessarily a single sentence. However, this is the useful scope for counting translations, in that translations are <S>-by-<S>.
 
 #### By language
 

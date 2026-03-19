@@ -1,0 +1,29 @@
+# The Wakelin Texts
+
+This repository contains the 6 glossed texts [found here](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/WakelinTexts/CodeAndDocs/Original.pdf) from 
+
+> Indosan, S., Wakelin, G., Dararyaw, S., and Kalaku, S. (1958). Yami texts. Work Papers of the Summer Institute of Linguistics, University of North Dakota Session: Vol. 2, Article 7. 10.31356/silwp.vol02.07
+
+This uses an unusual orthography, which has not yet been identified.
+
+***
+
+### Notes
+
+* **Critical** the standard tier is just the original with the hyphens removed, since they seem to be morphological segmentations, not orthography. Thus, the Orthographies/ConversionTables/Yami_Wakelin_113.tsv should not be taken seriously.
+
+* Was transferred to XML by hand.
+
+***
+
+# Copyright
+
+Authors cannot be located. This text was previously licensed as CC-BY-ND by publisher, which we have interpreted liberally. If you are a copyright owner, please reach out to us.
+
+***
+
+### Citation
+
+In accordance with our [Terms of Use](../../additional-resources/terms-of-use.md), if you use this corpus or any product derived from this corpus in any publication, you must cite both FormosanBank and:
+
+* Indosan, S., Wakelin, G., Dararyaw, S., and Kalaku, S. (1958). Yami texts. Work Papers of the Summer Institute of Linguistics, University of North Dakota Session: Vol. 2, Article 7. 10.31356/silwp.vol02.07
