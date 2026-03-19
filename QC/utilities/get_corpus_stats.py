@@ -153,8 +153,13 @@ def _get_audio_duration(file_path):
 
 def count_audio(tree, xml_file_path):
     """
-    Given a parsed XML tree and the path of the XML file, count all <AUDIO>
-    elements and sum up their durations.
+    Given a parsed XML tree and the path of the XML file, count <AUDIO>
+    elements and sum up their durations, split into two categories:
+
+      - Transcribed:    <AUDIO> elements that are children of <S> or <W>.
+                        These accompany transcribed speech.
+      - Untranscribed:  <AUDIO> elements that are direct children of the
+                        root <TEXT> element.  These are not transcribed.
 
     Audio files live under an `Audio` folder that is a sibling of `XML`.
     The relative path of the XML file within `XML` is mirrored under `Audio`.
@@ -166,9 +171,11 @@ def count_audio(tree, xml_file_path):
         xml_file_path: Absolute or relative path to the XML file
 
     Returns:
-        (audio_count, total_seconds)
-        audio_count   – number of <AUDIO> elements with a 'file' attribute
-        total_seconds – sum of durations in seconds (None-duration files skipped)
+        (transcribed_count, transcribed_seconds, untranscribed_count, untranscribed_seconds)
+        transcribed_count      – number of <AUDIO> elements inside <S> or <W>
+        transcribed_seconds    – total duration of transcribed audio in seconds
+        untranscribed_count    – number of <AUDIO> elements that are direct children of <TEXT>
+        untranscribed_seconds  – total duration of untranscribed audio in seconds
     """
     xml_file = Path(xml_file_path).resolve()
 
@@ -180,9 +187,12 @@ def count_audio(tree, xml_file_path):
         xml_idx = None
 
     root = tree.getroot()
-    audio_elems = [e for e in root.findall('.//AUDIO') if 'file' in e.attrib]
-    audio_count = len(audio_elems)
-    total_seconds = 0.0
+
+    # Untranscribed: <AUDIO> direct children of the root <TEXT> element
+    untranscribed_elems = [e for e in root.findall('AUDIO') if 'file' in e.attrib]
+    # Transcribed: <AUDIO> elements nested inside <S> or <W>
+    transcribed_elems = [e for e in root.findall('.//S/AUDIO') if 'file' in e.attrib]
+    transcribed_elems += [e for e in root.findall('.//W/AUDIO') if 'file' in e.attrib]
 
     if xml_idx is not None:
         corpus_root = Path(*parts[:xml_idx])  # everything before `XML`
@@ -192,40 +202,47 @@ def count_audio(tree, xml_file_path):
         corpus_root = None
         audio_base = xml_file.parent
 
-    for elem in audio_elems:
-        audio_filename = elem.attrib['file']
-        audio_path_obj = Path(audio_filename)
-        # Build alternative filenames with the other common extension
-        alt_ext = '.wav' if audio_path_obj.suffix.lower() == '.mp3' else '.mp3'
-        alt_filename = audio_path_obj.stem + alt_ext
+    def _sum_duration(elems):
+        """Resolve each element's audio file and return the sum of durations."""
+        total = 0.0
+        for elem in elems:
+            audio_filename = elem.attrib['file']
+            audio_path_obj = Path(audio_filename)
+            # Build alternative filenames with the other common extension
+            alt_ext = '.wav' if audio_path_obj.suffix.lower() == '.mp3' else '.mp3'
+            alt_filename = audio_path_obj.stem + alt_ext
 
-        # Try candidates in order until one exists on disk
-        if corpus_root is not None:
-            # Build a list of rel.parent variants, progressively stripping leading components
-            # e.g. Paiwan/Sarnix → Sarnix → (empty)
-            rel_parts = rel.parent.parts
-            rel_variants = [Path(*rel_parts[i:]) for i in range(len(rel_parts))] + [Path('.')]
-            candidates = []
-            for rel_var in rel_variants:
-                for name in (audio_filename, alt_filename):
-                    candidates += [
-                        audio_base / rel_var / name,                    # direct / stripped mirror
-                        audio_base / rel_var / xml_file.stem / name,    # extra lang subfolder
-                    ]
-            candidates.append(audio_base / audio_filename)   # fully flat fallback
-            candidates.append(audio_base / alt_filename)
-        else:
-            candidates = [audio_base / audio_filename, audio_base / alt_filename]
+            # Try candidates in order until one exists on disk
+            if corpus_root is not None:
+                # Build a list of rel.parent variants, progressively stripping leading components
+                # e.g. Paiwan/Sarnix → Sarnix → (empty)
+                rel_parts = rel.parent.parts
+                rel_variants = [Path(*rel_parts[i:]) for i in range(len(rel_parts))] + [Path('.')]
+                candidates = []
+                for rel_var in rel_variants:
+                    for name in (audio_filename, alt_filename):
+                        candidates += [
+                            audio_base / rel_var / name,                    # direct / stripped mirror
+                            audio_base / rel_var / xml_file.stem / name,    # extra lang subfolder
+                        ]
+                candidates.append(audio_base / audio_filename)   # fully flat fallback
+                candidates.append(audio_base / alt_filename)
+            else:
+                candidates = [audio_base / audio_filename, audio_base / alt_filename]
 
-        audio_path = next((c for c in candidates if c.is_file()), None)
-        if audio_path is None:
-            continue
+            audio_path = next((c for c in candidates if c.is_file()), None)
+            if audio_path is None:
+                continue
 
-        duration = _get_audio_duration(str(audio_path))
-        if duration is not None:
-            total_seconds += duration
+            duration = _get_audio_duration(str(audio_path))
+            if duration is not None:
+                total += duration
+        return total
 
-    return audio_count, total_seconds
+    transcribed_seconds = _sum_duration(transcribed_elems)
+    untranscribed_seconds = _sum_duration(untranscribed_elems)
+
+    return len(transcribed_elems), transcribed_seconds, len(untranscribed_elems), untranscribed_seconds
 
 def process_xml_file(xml_file_path):
     """Process a single XML file to extract text, language, dialect, glossing stats, and audio stats."""
@@ -233,7 +250,7 @@ def process_xml_file(xml_file_path):
         tree = ET.parse(xml_file_path)
         language, dialect, en_transl_count, zho_transl_count, word_count = extract_text_from_xml(tree)
         glossed_sentences, transl_proportion = count_glosses(tree)
-        audio_count, total_audio_seconds = count_audio(tree, xml_file_path)
+        transcribed_count, transcribed_seconds, untranscribed_count, untranscribed_seconds = count_audio(tree, xml_file_path)
 
         return {
             'language': language,
@@ -243,8 +260,10 @@ def process_xml_file(xml_file_path):
             'zho_transl_count': zho_transl_count,
             'segmented_sentences': glossed_sentences,
             'glossed_proportion': transl_proportion,
-            'audio_count': audio_count,
-            'total_audio_seconds': total_audio_seconds
+            'transcribed_audio_count': transcribed_count,
+            'transcribed_audio_seconds': transcribed_seconds,
+            'untranscribed_audio_count': untranscribed_count,
+            'untranscribed_audio_seconds': untranscribed_seconds,
         }
 
     except Exception as e:
@@ -275,8 +294,10 @@ def main(corpora_path):
         'word_count': 0,
         'segmented_sentences': 0,
         'glossed_proportion': 0.0,
-        'audio_count': 0,
-        'audio_time': 0.0,
+        'transcribed_audio_count': 0,
+        'transcribed_audio_seconds': 0.0,
+        'untranscribed_audio_count': 0,
+        'untranscribed_audio_seconds': 0.0,
         'eng_transl_count': 0,
         'zho_transl_count': 0,
         'file_count': 0,
@@ -286,8 +307,10 @@ def main(corpora_path):
         key = (stats['language'], stats['dialect'])
         corpora_dict[key]['segmented_sentences'] += stats['segmented_sentences']
         corpora_dict[key]['glossed_proportion'] += stats['glossed_proportion']
-        corpora_dict[key]['audio_count'] += stats['audio_count']
-        corpora_dict[key]['audio_time'] += round(stats['total_audio_seconds'], 0)
+        corpora_dict[key]['transcribed_audio_count'] += stats['transcribed_audio_count']
+        corpora_dict[key]['transcribed_audio_seconds'] += round(stats['transcribed_audio_seconds'], 0)
+        corpora_dict[key]['untranscribed_audio_count'] += stats['untranscribed_audio_count']
+        corpora_dict[key]['untranscribed_audio_seconds'] += round(stats['untranscribed_audio_seconds'], 0)
         corpora_dict[key]['eng_transl_count'] += stats['en_transl_count']
         corpora_dict[key]['zho_transl_count'] += stats['zho_transl_count']
         corpora_dict[key]['word_count'] += stats.get('word_count', 0)
@@ -299,10 +322,26 @@ def main(corpora_path):
         if fc > 0:
             vals['glossed_proportion'] = round(vals['glossed_proportion'] / fc, 4)
 
+    # Derive corpus name and repo root from the 'Corpora' component in the path
+    parts = Path(corpora_path).resolve().parts
+    corpora_idx = next((i for i, p in enumerate(parts) if p == 'Corpora'), None)
+    if corpora_idx is not None:
+        repo_root = Path(*parts[:corpora_idx])
+        corpus_name = parts[corpora_idx + 1] if corpora_idx + 1 < len(parts) else 'unknown'
+    else:
+        repo_root = Path(corpora_path).resolve()
+        corpus_name = repo_root.name
+
+    # Place output in <repo_root>/statistics/
+    stats_dir = repo_root / 'statistics'
+    stats_dir.mkdir(exist_ok=True)
+
     # Save as CSV
-    csv_path = os.path.join(corpora_path, 'corpora_stats.csv')
+    csv_path = stats_dir / f'{corpus_name}_corpora_stats.csv'
     fieldnames = ['language', 'dialect', 'segmented_sentences', 'glossed_proportion',
-                  'audio_count', 'audio_time', 'eng_transl_count', 'zho_transl_count', 'word_count', 'file_count']
+                  'transcribed_audio_count', 'transcribed_audio_seconds',
+                  'untranscribed_audio_count', 'untranscribed_audio_seconds',
+                  'eng_transl_count', 'zho_transl_count', 'word_count', 'file_count']
     with open(csv_path, 'w', newline='') as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
@@ -312,7 +351,37 @@ def main(corpora_path):
     print(f"Corpus statistics saved to {csv_path}")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="count statistics for one or more corpora.")
-    parser.add_argument('corpora_path', help='Specify the path of the corpora')
+    # Default Corpora directory is ../../Corpora relative to this script
+    script_dir = Path(__file__).resolve().parent
+    default_corpora_dir = script_dir / '..' / '..' / 'Corpora'
+
+    parser = argparse.ArgumentParser(description="Count statistics for one or more corpora.")
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument(
+        'corpora_path',
+        nargs='?',
+        help='Path to a single corpus directory (e.g. Corpora/ePark).',
+    )
+    group.add_argument(
+        '--all',
+        action='store_true',
+        help=(
+            'Run on every corpus found in ../../Corpora (relative to this script), '
+            'producing one CSV per corpus in statistics/.'
+        ),
+    )
     args = parser.parse_args()
-    main(args.corpora_path)
+
+    if args.all:
+        corpora_dir = default_corpora_dir.resolve()
+        corpus_dirs = sorted(
+            d for d in corpora_dir.iterdir()
+            if d.is_dir() and (d / 'XML').is_dir()
+        )
+        if not corpus_dirs:
+            print(f"No corpus directories with an XML/ subfolder found in {corpora_dir}")
+        for corpus_dir in corpus_dirs:
+            print(f"Processing {corpus_dir.name} …")
+            main(str(corpus_dir))
+    else:
+        main(args.corpora_path)

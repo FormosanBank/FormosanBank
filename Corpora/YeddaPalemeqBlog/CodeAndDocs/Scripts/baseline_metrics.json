@@ -1,0 +1,55 @@
+{
+  "file_path": "Final_XML/Paiwan_Yedda_Blog.xml",
+  "analysis_date": "2026-03-17T16:31:12.125774",
+  "file_size_bytes": 764472,
+  "element_counts": {
+    "S": 640,
+    "W": 4526,
+    "TRANSL": 5078,
+    "FORM": 5166
+  },
+  "text_statistics": {
+    "S_sentences": {
+      "total_characters": 36776,
+      "average_length": 57.55,
+      "min_length": 9,
+      "max_length": 466,
+      "count": 639
+    },
+    "W_words": {
+      "total_characters": 39223,
+      "average_length": 8.67,
+      "min_length": 1,
+      "max_length": 428,
+      "count": 4526
+    },
+    "TRANSL_translations": {
+      "total_characters": 202792,
+      "average_length": 41.55,
+      "min_length": 1,
+      "max_length": 784,
+      "count": 4881
+    },
+    "ALL_FORM_elements": {
+      "total_characters": 75999,
+      "average_length": 14.71,
+      "min_length": 1,
+      "max_length": 466,
+      "count": 5165
+    }
+  },
+  "attribute_statistics": {
+    "S_elements_with_audio_url": 639,
+    "TRANSL_elements_with_xml_lang": 0,
+    "percentage_S_with_audio": 99.84,
+    "percentage_TRANSL_with_lang": 0.0
+  },
+  "unique_audio_urls": 639,
+  "sample_audio_urls": [
+    "https://www.youtube.com/embed/gqpDSVTbESE?feature=player_embedded",
+    "https://www.youtube.com/embed/3EL3aeCMqQk?feature=player_embedded",
+    "https://www.youtube.com/embed/_xlgUZwEnqw",
+    "https://www.youtube.com/embed/daQmzH88CsU",
+    "https://www.youtube.com/embed/cMsqJtUOLCw?feature=player_embedded"
+  ]
+}
