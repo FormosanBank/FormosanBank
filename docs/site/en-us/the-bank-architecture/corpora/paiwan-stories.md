@@ -21,11 +21,11 @@ The Paiwan Stories corpus is a small collection of children’s stories told in 
 | --- | --- |
 | Word count | 557 |
 | Total audio | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 |
 | Translated sentences |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;English | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 44 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 44 |
 | Morphologically segmented | 0 |
 | Proportion glossed | 0% |
 

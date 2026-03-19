@@ -15,11 +15,11 @@ The orthographic system used has not yet been identified.
 | --- | --- |
 | Word count | 358 |
 | Total audio | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 |
 | Translated sentences |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;English | 40 |
-| &nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 40 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 |
 | Morphologically segmented | 0 |
 | Proportion glossed | 0% |
 

@@ -15,11 +15,11 @@ The 2024 South East Asian Linguistic Society meeting took place in Taipei. The m
 | --- | --- | --- |
 | Word count | 543 | 585 |
 | Total audio | 0 | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 |
 | Translated sentences |  |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;English | 16 | 16 |
-| &nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 28 | 28 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 16 | 16 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 28 | 28 |
 | Morphologically segmented | 0 | 0 |
 | Proportion glossed | 0% | 0% |
 
