@@ -4,6 +4,8 @@ Authors cannot be located. This text was previously licensed as CC-BY-ND by publ
 
 The orthographic system used has not yet been identified. 
 
+**NOTE** the standard tier is just the original with the hyphens removed, since they seem to be morphological segmentations, not orthography. Thus, the Orthographies/ConversionTables/Yami_Wakelin_113.tsv should not be taken seriously.
+
 Transferred to XML by hand.
 
 KEY to symbols and abbreviations:
