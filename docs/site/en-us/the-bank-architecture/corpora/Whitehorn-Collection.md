@@ -13,7 +13,7 @@ They are mostly Paiwan but also some Atayal, Seediq, and Amis.
 <!-- CORPUS STATS START -->
 ## Corpus Statistics
 
-| | amis<br>UK | Paiwan<br>UK | Paiwan<br>North Western | Paiwan<br>Sothern | Atayal<br>UK | Seediq<br>UK |
+| | Amis<br>UK | Paiwan<br>UK | Paiwan<br>North Western | Paiwan<br>Sothern | Atayal<br>UK | Seediq<br>UK |
 | --- | --- | --- | --- | --- | --- | --- |
 | Word count | 0 | 0 | 0 | 0 | 0 | 0 |
 | Total audio | 0.2h | 4.5h | 7.9h | 0.1h | 0.5h | 0.1h |
