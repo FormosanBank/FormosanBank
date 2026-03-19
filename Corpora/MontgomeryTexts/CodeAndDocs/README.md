@@ -6,7 +6,7 @@ This repository contains the 3 glossed texts from
 
 These text were OCRed and then carefully checked against the originals.
 
-The orthographic system used has not yet been identified. 
+We corrected “mi-salrama” to “mi-salama”
 
 # Copyright
 
