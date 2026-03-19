@@ -13,11 +13,11 @@ This corpus comes from the crowdsourced online dictionary Glosbe. Currently we h
 | --- | --- |
 | Word count | 90,631 |
 | Total audio | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 |
 | Translated sentences |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;English | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 5,860 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 5,860 |
 | Morphologically segmented | 0 |
 | Proportion glossed | 0% |
 

@@ -15,11 +15,11 @@ After scraping the articles, they have been preprocessed to remove elements like
 | --- | --- | --- | --- | --- | --- |
 | Word count | 1,772,368 | 124,479 | 1,344,333 | 417,534 | 754,287 |
 | Total audio | 0 | 0 | 0 | 0 | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 | 0 | 0 | 0 | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 | 0 | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 | 0 | 0 | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 | 0 | 0 | 0 |
 | Translated sentences |  |  |  |  |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;English | 0 | 0 | 0 | 0 | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 | 0 | 0 | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 0 | 0 | 0 | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 | 0 | 0 | 0 | 0 |
 | Morphologically segmented | 0 | 0 | 0 | 0 | 0 |
 | Proportion glossed | 0% | 0% | 0% | 0% | 0% |
 

@@ -235,4 +235,10 @@ This project is made possible through the collaboration of native speakers, ling
 
 ## **Copyrights**
 
-To be added
+CC BY-NC
+
+### Citation
+
+In accordance with our [Terms of Use](../../additional-resources/terms-of-use.md), if you use this corpus or any product derived from this corpus in any publication, you must cite both FormosanBank and:
+
+* Sung, L. M., Lily, I., Hsieh, F., & Lin, Z. (2008). DEVELOPING AN ONLINE CORPUS OF FORMOSAN LANGUAGES. Taiwan Journal of Linguistics, 6(2).

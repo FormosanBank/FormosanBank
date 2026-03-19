@@ -173,7 +173,7 @@ def prepare_rows(raw_rows: list[dict]) -> list[dict]:
 # ---------------------------------------------------------------------------
 
 # Non-breaking space for indented sub-rows inside a markdown table cell
-INDENT = '&nbsp;&nbsp;&nbsp;&nbsp;'
+INDENT = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
 
 # Row definitions: (display label, CSV field or None, formatter)
 # A field of None marks a parent/header row with empty data cells.

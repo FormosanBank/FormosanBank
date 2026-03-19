@@ -15,11 +15,11 @@ This dictionary is a critical addition to FormosanBank, complementing other corp
 | --- | --- |
 | Word count | 9,078 |
 | Total audio | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 |
 | Translated sentences |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;English | 2,307 |
-| &nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 2,478 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 2,307 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 2,478 |
 | Morphologically segmented | 0 |
 | Proportion glossed | 0% |
 
