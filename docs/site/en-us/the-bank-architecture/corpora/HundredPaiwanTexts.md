@@ -4,6 +4,24 @@
 
 [The 100 Paiwan Texts](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/HundredPaiwanStories) corpus contains 100 morphologically parsed and glossed texts from Early and Whitehorn (2003).
 
+
+<!-- CORPUS STATS START -->
+### Corpus Statistics
+
+| | pwn<br>UK | pwn<br>Central | pwn<br>Eastern | pwn<br>Northern | pwn<br>Southern |
+| --- | --- | --- | --- | --- | --- |
+| Word count | 1,105 | 3,727 | 1,198 | 9,007 | 9,446 |
+| Audio length | 0 | 0 | 0 | 0 | 0 |
+| Translated sentences |  |  |  |  |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;English | 71 | 537 | 157 | 995 | 1,155 |
+| &nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 | 0 | 0 | 0 | 0 |
+| Morphologically segmented | 71 | 537 | 157 | 995 | 1,155 |
+| Proportion glossed | 100% | 100% | 100% | 100% | 100% |
+
+***
+
+<!-- CORPUS STATS END -->
+
 ### **Corpus Processing**
 
 This corpus was originally published as a book. Prof. Early graciously provided the original Word document, which we scraped. The following steps were followed:

@@ -8,6 +8,24 @@ Currently, we only have Paiwan (Eastern dialect).
 
 ***
 
+<!-- CORPUS STATS START -->
+## Corpus Statistics
+
+| | pwn<br>Eastern |
+| --- | --- |
+| Word count | 1,855 |
+| Audio length | 0 |
+| Translated sentences |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;English | 102 |
+| &nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 102 |
+| Morphologically segmented | 0 |
+| Proportion glossed | 0% |
+
+***
+
+<!-- CORPUS STATS END -->
+
+
 ## **Corpus Processing**
 
 1. **Process Raw Data to XML**:

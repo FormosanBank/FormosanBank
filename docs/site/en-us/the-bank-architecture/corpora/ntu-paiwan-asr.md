@@ -37,6 +37,24 @@ Below is a detailed description of the data outlying for each speaker how many r
 
 ***
 
+<!-- CORPUS STATS START -->
+### Corpus Statistics
+
+| | pwn<br>Central | pwn<br>Eastern | pwn<br>Northern |
+| --- | --- | --- | --- |
+| Word count | 3,136 | 10,688 | 20,672 |
+| Audio length | 0.8h | 2.7h | 4.6h |
+| Translated sentences |  |  |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;English | 0 | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 | 0 | 0 |
+| Morphologically segmented | 0 | 0 | 0 |
+| Proportion glossed | 0% | 0% | 0% |
+
+***
+
+<!-- CORPUS STATS END -->
+
+
 ### Corpus Processing
 
 The data was processed thoroughly to ensure compatibility with FormosanBank standards while ensuring accuracy and usability. The corpus collected by Dr. Sung was structured by associating each topic with its corresponding audio recordings and transcriptions (for read speech) for each speaker.  This data was then processed to transform the data into [FormosanBank XML Format](../formosanbank-xml-format.md). Below is a detailed description of the process.

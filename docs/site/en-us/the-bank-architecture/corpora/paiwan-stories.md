@@ -14,6 +14,24 @@ The Paiwan Stories corpus is a small collection of children’s stories told in 
 
 ***
 
+<!-- CORPUS STATS START -->
+### Corpus Statistics
+
+| | pwn<br>Eastern |
+| --- | --- |
+| Word count | 557 |
+| Audio length | 0 |
+| Translated sentences |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;English | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 44 |
+| Morphologically segmented | 0 |
+| Proportion glossed | 0% |
+
+***
+
+<!-- CORPUS STATS END -->
+
+
 ### **Corpus Processing**
 
 The Paiwan Stories were integrated into FormosanBank’s standardized XML format to ensure consistency and ease of access.&#x20;

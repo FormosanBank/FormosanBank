@@ -10,6 +10,24 @@ They are mostly Paiwan but also some Atayal, Seediq, and Amis.
 
 ***
 
+<!-- CORPUS STATS START -->
+## Corpus Statistics
+
+| | amis<br>UK | pwn<br>UK | pwn<br>North Western | pwn<br>Sothern | tay<br>UK | trv<br>UK |
+| --- | --- | --- | --- | --- | --- | --- |
+| Word count | 0 | 0 | 0 | 0 | 0 | 0 |
+| Audio length | 0.2h | 4.5h | 7.9h | 0.1h | 0.5h | 0.1h |
+| Translated sentences |  |  |  |  |  |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;English | 0 | 0 | 0 | 0 | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 | 0 | 0 | 0 | 0 | 0 |
+| Morphologically segmented | 0 | 0 | 0 | 0 | 0 | 0 |
+| Proportion glossed | 0% | 0% | 0% | 0% | 0% | 0% |
+
+***
+
+<!-- CORPUS STATS END -->
+
+
 ## **Corpus Processing**
 
 N/A
@@ -20,7 +38,6 @@ N/A
 
 * Recording quality is about what you would expect, given the age.
 * Whitehorn sometimes specifies dialects, but not using the modern dialect distinctions. This will need to be standardized if possible.
-
 
 ***
 

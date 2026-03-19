@@ -8,6 +8,24 @@ The 2024 South East Asian Linguistic Society meeting took place in Taipei. The m
 
 ***
 
+<!-- CORPUS STATS START -->
+## Corpus Statistics
+
+| | trv<br>UK | xsy |
+| --- | --- | --- |
+| Word count | 543 | 585 |
+| Audio length | 0 | 0 |
+| Translated sentences |  |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;English | 16 | 16 |
+| &nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 28 | 28 |
+| Morphologically segmented | 0 | 0 |
+| Proportion glossed | 0% | 0% |
+
+***
+
+<!-- CORPUS STATS END -->
+
+
 ## **Corpus Processing**
 
 1. **Process Raw Data to XML**:
