@@ -28,6 +28,31 @@ CORPORA_DIR = REPO_ROOT / 'en-us' / 'the-bank-architecture' / 'corpora'
 # Languages that have no dialect subdivisions
 NO_DIALECT_LANGS = {'ckv', 'ssf', 'sxr', 'szy', 'tao', 'tsu', 'xnb', 'xsy'}
 
+# Dialects that are culturally/politically treated as independent languages.
+# Maps (csv_lang_code, csv_dialect_name) → display name used as a language-level column.
+PROMOTE_DIALECT_AS_LANG = {
+    ('trv', 'Truku'): 'Truku',
+}
+
+# Human-readable names for each ISO language code
+LANG_NAMES = {
+    'ami': 'Amis',
+    'bnn': 'Bunun',
+    'ckv': 'Kavalan',
+    'dru': 'Rukai',
+    'pwn': 'Paiwan',
+    'pyu': 'Puyuma',
+    'ssf': 'Thao',
+    'sxr': 'Saaroa',
+    'szy': 'Sakizaya',
+    'tao': 'Yami',
+    'tay': 'Atayal',
+    'trv': 'Seediq',
+    'tsu': 'Tsou',
+    'xnb': 'Kanakanabu',
+    'xsy': 'Saisiyat',
+}
+
 # HTML markers so the section can be cleanly replaced on subsequent runs
 STATS_START = '<!-- CORPUS STATS START -->'
 STATS_END   = '<!-- CORPUS STATS END -->'
@@ -102,17 +127,20 @@ def col_header(lang: str, dialect: str) -> str:
     dialect = dialect.strip()
     if not lang:
         return 'Unknown'
+    if (lang, dialect) in PROMOTE_DIALECT_AS_LANG:
+        return PROMOTE_DIALECT_AS_LANG[(lang, dialect)]
+    display = LANG_NAMES.get(lang, lang)
     if lang in NO_DIALECT_LANGS:
-        return lang
+        return display
     if dialect:
-        return f'{lang}<br>{dialect}'
-    return f'{lang}<br>UK'
+        return f'{display}<br>{dialect}'
+    return f'{display}<br>UK'
 
 
 def row_has_data(row: dict) -> bool:
     """Return True if at least one displayed numeric field is non-zero."""
-    fields = ('word_count', 'audio_time', 'eng_transl_count',
-              'zho_transl_count', 'segmented_sentences')
+    fields = ('word_count', 'transcribed_audio_seconds', 'untranscribed_audio_seconds',
+              'eng_transl_count', 'zho_transl_count', 'segmented_sentences')
     try:
         return any(float(row.get(f) or 0) != 0 for f in fields)
     except (ValueError, TypeError):
@@ -121,14 +149,22 @@ def row_has_data(row: dict) -> bool:
 
 def sort_key(row: dict):
     """Sort key: language alphabetically (empty → last), then dialect."""
-    lang    = row.get('language', '').strip() or '\xff'
+    lang    = LANG_NORMALISE.get(row.get('language', '').strip(), row.get('language', '').strip()) or '\xff'
     dialect = row.get('dialect',  '').strip() or ''
     return (lang, dialect)
 
 
 def prepare_rows(raw_rows: list[dict]) -> list[dict]:
-    """Filter meaningless rows and sort."""
-    kept = [r for r in raw_rows if row_has_data(r)]
+    """Filter meaningless rows, normalise language codes, and sort."""
+    kept = []
+    for r in raw_rows:
+        if not row_has_data(r):
+            continue
+        lang = r.get('language', '').strip()
+        normalised = LANG_NORMALISE.get(lang, lang)
+        if normalised != lang:
+            r = dict(r, language=normalised)
+        kept.append(r)
     return sorted(kept, key=sort_key)
 
 
@@ -140,15 +176,31 @@ def prepare_rows(raw_rows: list[dict]) -> list[dict]:
 INDENT = '&nbsp;&nbsp;&nbsp;&nbsp;'
 
 # Row definitions: (display label, CSV field or None, formatter)
+# A field of None marks a parent/header row with empty data cells.
+# A field of 'AUDIO_TOTAL' is a computed row (sum of transcribed + untranscribed).
 ROW_DEFS = [
-    ('Word count',                        'word_count',           fmt_count),
-    ('Audio length',                      'audio_time',           fmt_audio),
-    ('Translated sentences',              None,                   None),          # header row
-    (f'{INDENT}English',                  'eng_transl_count',     fmt_count),
-    (f'{INDENT}Mandarin',                 'zho_transl_count',     fmt_count),
-    ('Morphologically segmented',         'segmented_sentences',  fmt_count),
-    ('Proportion glossed',                'glossed_proportion',   fmt_pct),
+    ('Word count',                          'word_count',                fmt_count),
+    ('Total audio',                         'AUDIO_TOTAL',               fmt_audio),
+    (f'{INDENT}Transcribed',               'transcribed_audio_seconds',  fmt_audio),
+    (f'{INDENT}Untranscribed',             'untranscribed_audio_seconds',fmt_audio),
+    ('Translated sentences',                None,                        None),
+    (f'{INDENT}English',                   'eng_transl_count',           fmt_count),
+    (f'{INDENT}Mandarin',                  'zho_transl_count',           fmt_count),
+    ('Morphologically segmented',           'segmented_sentences',       fmt_count),
+    ('Proportion glossed',                  'glossed_proportion',        fmt_pct),
 ]
+
+
+def _row_cell(row: dict, field: str, formatter) -> str:
+    """Return a single formatted cell value, handling the computed AUDIO_TOTAL field."""
+    if field == 'AUDIO_TOTAL':
+        try:
+            total = float(row.get('transcribed_audio_seconds') or 0) \
+                  + float(row.get('untranscribed_audio_seconds') or 0)
+        except (ValueError, TypeError):
+            total = 0.0
+        return formatter(total)
+    return formatter(row.get(field, 0))
 
 
 def build_table(rows: list[dict]) -> str:
@@ -162,10 +214,9 @@ def build_table(rows: list[dict]) -> str:
     data_lines = []
     for label, field, formatter in ROW_DEFS:
         if field is None:
-            # Parent label row – all data cells are empty
             cells = [''] * len(rows)
         else:
-            cells = [formatter(r.get(field, 0)) for r in rows]
+            cells = [_row_cell(r, field, formatter) for r in rows]
         data_lines.append('| ' + label + ' | ' + ' | '.join(cells) + ' |')
 
     return '\n'.join([header_line, sep_line] + data_lines)
@@ -278,25 +329,27 @@ LANG_NORMALISE = {
 
 def _empty_stats() -> dict:
     return {
-        'word_count':          0,
-        'audio_time':          0.0,
-        'eng_transl_count':    0,
-        'zho_transl_count':    0,
-        'segmented_sentences': 0,
-        'glossed_segments':    0.0,   # sum of seg_sentences × glossed_proportion
+        'word_count':                  0,
+        'transcribed_audio_seconds':   0.0,
+        'untranscribed_audio_seconds': 0.0,
+        'eng_transl_count':            0,
+        'zho_transl_count':            0,
+        'segmented_sentences':         0,
+        'glossed_segments':            0.0,   # sum of seg_sentences × glossed_proportion
     }
 
 
 def _accumulate(bucket: dict, row: dict) -> None:
     try:
-        bucket['word_count']          += int(float(row.get('word_count')          or 0))
-        bucket['audio_time']          += float(row.get('audio_time')              or 0)
-        bucket['eng_transl_count']    += int(float(row.get('eng_transl_count')    or 0))
-        bucket['zho_transl_count']    += int(float(row.get('zho_transl_count')    or 0))
-        seg                            = int(float(row.get('segmented_sentences') or 0))
-        gp                             = float(row.get('glossed_proportion')      or 0)
-        bucket['segmented_sentences'] += seg
-        bucket['glossed_segments']    += seg * gp
+        bucket['word_count']                  += int(float(row.get('word_count')                  or 0))
+        bucket['transcribed_audio_seconds']   += float(row.get('transcribed_audio_seconds')       or 0)
+        bucket['untranscribed_audio_seconds'] += float(row.get('untranscribed_audio_seconds')     or 0)
+        bucket['eng_transl_count']            += int(float(row.get('eng_transl_count')            or 0))
+        bucket['zho_transl_count']            += int(float(row.get('zho_transl_count')            or 0))
+        seg                                    = int(float(row.get('segmented_sentences')         or 0))
+        gp                                     = float(row.get('glossed_proportion')              or 0)
+        bucket['segmented_sentences']         += seg
+        bucket['glossed_segments']            += seg * gp
     except (ValueError, TypeError):
         pass
 
@@ -323,12 +376,17 @@ def _aggregate_csvs() -> tuple[dict, dict]:
 
                 dialect = row.get('dialect', '').strip()
 
-                _accumulate(lang_stats[lang], row)
-
-                # Dialect breakdown only for multi-dialect languages
-                if lang not in NO_DIALECT_LANGS:
-                    label = dialect if dialect else 'UK'
-                    _accumulate(dial_stats[(lang, label)], row)
+                # Check if this dialect is promoted to a language in its own right
+                if (lang, dialect) in PROMOTE_DIALECT_AS_LANG:
+                    promoted = PROMOTE_DIALECT_AS_LANG[(lang, dialect)]
+                    _accumulate(lang_stats[promoted], row)
+                    # Don't add to dial_stats — it's a language, not a dialect
+                else:
+                    _accumulate(lang_stats[lang], row)
+                    # Dialect breakdown only for multi-dialect languages
+                    if lang not in NO_DIALECT_LANGS:
+                        label = dialect if dialect else 'UK'
+                        _accumulate(dial_stats[(lang, label)], row)
 
     return dict(lang_stats), dict(dial_stats)
 
@@ -347,14 +405,20 @@ def _make_table_from_buckets(keys: list, buckets: dict, header_fn) -> str:
     def col(k, field, fmt):
         return fmt(buckets[k][field])
 
+    def audio_total(k):
+        return fmt_audio(buckets[k]['transcribed_audio_seconds']
+                       + buckets[k]['untranscribed_audio_seconds'])
+
     data_lines = [
-        '| Word count | '                + ' | '.join(col(k, 'word_count',          fmt_count) for k in keys) + ' |',
-        '| Audio length | '              + ' | '.join(col(k, 'audio_time',          fmt_audio) for k in keys) + ' |',
-        '| Translated sentences | '      + ' | '.join('' for _ in keys)                                       + ' |',
-        f'| {INDENT}English | '          + ' | '.join(col(k, 'eng_transl_count',    fmt_count) for k in keys) + ' |',
-        f'| {INDENT}Mandarin | '         + ' | '.join(col(k, 'zho_transl_count',    fmt_count) for k in keys) + ' |',
-        '| Morphologically segmented | ' + ' | '.join(col(k, 'segmented_sentences', fmt_count) for k in keys) + ' |',
-        '| Proportion glossed | '        + ' | '.join(glossed(k)                               for k in keys) + ' |',
+        '| Word count | '                          + ' | '.join(col(k, 'word_count',                  fmt_count) for k in keys) + ' |',
+        '| Total audio | '                         + ' | '.join(audio_total(k)                                   for k in keys) + ' |',
+        f'| {INDENT}Transcribed | '               + ' | '.join(col(k, 'transcribed_audio_seconds',   fmt_audio) for k in keys) + ' |',
+        f'| {INDENT}Untranscribed | '             + ' | '.join(col(k, 'untranscribed_audio_seconds', fmt_audio) for k in keys) + ' |',
+        '| Translated sentences | '                + ' | '.join('' for _ in keys)                                              + ' |',
+        f'| {INDENT}English | '                   + ' | '.join(col(k, 'eng_transl_count',            fmt_count) for k in keys) + ' |',
+        f'| {INDENT}Mandarin | '                  + ' | '.join(col(k, 'zho_transl_count',            fmt_count) for k in keys) + ' |',
+        '| Morphologically segmented | '           + ' | '.join(col(k, 'segmented_sentences',         fmt_count) for k in keys) + ' |',
+        '| Proportion glossed | '                  + ' | '.join(glossed(k)                                        for k in keys) + ' |',
     ]
     return '\n'.join([header_line, sep_line] + data_lines)
 
@@ -367,14 +431,14 @@ def build_readme_tables() -> tuple[str, str]:
     lang_keys = sorted(lang_stats)
     lang_table = _make_table_from_buckets(
         lang_keys, lang_stats,
-        header_fn=lambda k: k
+        header_fn=lambda k: LANG_NAMES.get(k, k)
     )
 
-    # --- Dialect-level table (columns = lang<br>Dialect, multi-dialect langs only) ---
+    # --- Dialect-level table (columns = Language<br>Dialect, multi-dialect langs only) ---
     dial_keys = sorted(dial_stats, key=lambda t: (t[0], t[1]))
     dial_table = _make_table_from_buckets(
         dial_keys, dial_stats,
-        header_fn=lambda t: f'{t[0]}<br>{t[1]}'
+        header_fn=lambda t: f'{LANG_NAMES.get(t[0], t[0])}<br>{t[1]}'
     )
 
     return lang_table, dial_table

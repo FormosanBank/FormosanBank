@@ -9,10 +9,12 @@ This corpus comes from the crowdsourced online dictionary Glosbe. Currently we h
 <!-- CORPUS STATS START -->
 ## Corpus Statistics
 
-| | ami<br>UK |
+| | Amis<br>UK |
 | --- | --- |
 | Word count | 90,631 |
-| Audio length | 0 |
+| Total audio | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 |
 | Translated sentences |  |
 | &nbsp;&nbsp;&nbsp;&nbsp;English | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 5,860 |

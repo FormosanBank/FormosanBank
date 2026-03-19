@@ -11,10 +11,12 @@ After scraping the articles, they have been preprocessed to remove elements like
 <!-- CORPUS STATS START -->
 ### Corpus Statistics
 
-| | ami<br>UK | pwn<br>UK | szy | tay<br>UK | trv<br>UK |
+| | Amis<br>UK | Paiwan<br>UK | Sakizaya | Atayal<br>UK | Seediq<br>UK |
 | --- | --- | --- | --- | --- | --- |
 | Word count | 1,772,368 | 124,479 | 1,344,333 | 417,534 | 754,287 |
-| Audio length | 0 | 0 | 0 | 0 | 0 |
+| Total audio | 0 | 0 | 0 | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 | 0 | 0 | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 | 0 | 0 | 0 |
 | Translated sentences |  |  |  |  |  |
 | &nbsp;&nbsp;&nbsp;&nbsp;English | 0 | 0 | 0 | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 | 0 | 0 | 0 | 0 |
