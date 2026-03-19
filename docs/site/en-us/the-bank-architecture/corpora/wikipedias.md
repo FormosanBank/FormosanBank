@@ -8,6 +8,24 @@ After scraping the articles, they have been preprocessed to remove elements like
 
 ***
 
+<!-- CORPUS STATS START -->
+### Corpus Statistics
+
+| | ami<br>UK | pwn<br>UK | szy | tay<br>UK | trv<br>UK |
+| --- | --- | --- | --- | --- | --- |
+| Word count | 1,772,368 | 124,479 | 1,344,333 | 417,534 | 754,287 |
+| Audio length | 0 | 0 | 0 | 0 | 0 |
+| Translated sentences |  |  |  |  |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;English | 0 | 0 | 0 | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 | 0 | 0 | 0 | 0 |
+| Morphologically segmented | 0 | 0 | 0 | 0 | 0 |
+| Proportion glossed | 0% | 0% | 0% | 0% | 0% |
+
+***
+
+<!-- CORPUS STATS END -->
+
+
 ### Processing and Quality Control
 
 The **Formosan Wikipedias Corpus** was created by sourcing articles from publicly available Formosan-language Wikipedias, Amis, Atayal, Sakizaya, Seediq, and Paiwan. Considering that the quality control pipeline of Wikipedias isn't as rigorous as other resources in the Bank, extra effort went into processing, cleaning, and QCing the Wikipedias articles. Below, we outline the detailed processing steps and quality control measures applied to ensure the corpus is both reliable and linguistically accurate.
@@ -54,8 +72,6 @@ In addition to the thorough work done during processing to ensure the resulting 
    * A character frequency comparison was conducted between the Formosan Wikipedias and the [ILRDF corpus](ilrdf-dictionaries.md) (Indigenous Languages Research and Development Foundation). This ensures that expected Formosan characters dominate and non-Formosan characters (e.g., English characters used incidentally) appear at low frequencies.
    *   Below are the character-frequency graphs for the 5 languages compared to the ILRDF corpus:
 
-
-
 {% tabs %}
 {% tab title="Amis" %}
 <figure><img src="../../.gitbook/assets/Amis_frequency_comparison.png" alt=""><figcaption></figcaption></figure>
@@ -77,8 +93,6 @@ In addition to the thorough work done during processing to ensure the resulting 
 <figure><img src="../../.gitbook/assets/Seediq_frequency_comparison.png" alt=""><figcaption></figcaption></figure>
 {% endtab %}
 {% endtabs %}
-
-
 
 2. **Annotation Verification**
    * Logs of removed annotations and non-Formosan text were reviewed to ensure edits were appropriate and did not inadvertently remove valuable linguistic data. Cases flagged for ambiguity were manually resolved.

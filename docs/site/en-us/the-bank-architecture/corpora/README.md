@@ -21,23 +21,51 @@ Welcome to the FormosanBank Corpora section! Here, you’ll find comprehensive d
 * [Glosbe](Glosbe.md) (text, Mandarin (Traditional), Mandarin (Simplified))
 * [Whitehorn Collection](Whitehorn-Collection.md) (audio)
 
+***
+
+<!-- CORPUS STATS START -->
+### Corpus Statistics
+
+#### By language
+
+| | ami | bnn | ckv | dru | pwn | pyu | ssf | sxr | szy | tao | tay | trv | tsu | xnb | xsy |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Word count | 2,116,670 | 226,894 | 110,915 | 257,615 | 395,204 | 231,154 | 101,856 | 63,097 | 1,431,883 | 119,240 | 718,980 | 1,033,704 | 77,985 | 88,730 | 90,383 |
+| Audio length | 59.7h | 61.1h | 24.0h | 75.5h | 73.7h | 59.9h | 20.7h | 23.0h | 22.2h | 20.3h | 72.7h | 63.6h | 19.5h | 28.6h | 21.7h |
+| Translated sentences |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;English | 13,150 | 10,819 | 2,162 | 12,952 | 11,731 | 8,720 | 2,155 | 2,183 | 2,182 | 3,062 | 13,120 | 8,711 | 2,183 | 2,177 | 2,204 |
+| &nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 46,423 | 40,072 | 16,273 | 48,950 | 32,986 | 35,382 | 13,902 | 11,902 | 12,779 | 14,712 | 45,492 | 37,557 | 10,569 | 13,439 | 13,527 |
+| Morphologically segmented | 0 | 0 | 0 | 0 | 2,915 | 0 | 0 | 0 | 0 | 960 | 0 | 0 | 0 | 0 | 0 |
+| Proportion glossed | 0% | 0% | 0% | 0% | 100% | 0% | 0% | 0% | 0% | 100% | 0% | 0% | 0% | 0% | 0% |
+
+#### By dialect
+
+| | ami<br>Coastal | ami<br>Hengchun | ami<br>Malan | ami<br>Southern | ami<br>UK | ami<br>Xiuguluan | bnn<br>Junqun | bnn<br>Kaqun | bnn<br>Luanqun | bnn<br>Tanqun | bnn<br>UK | bnn<br>Zhuoqun | dru<br>Dawu | dru<br>Dona | dru<br>Eastern | dru<br>Maolin | dru<br>UK | dru<br>Wanshan | dru<br>Wutai | pwn<br>Central | pwn<br>Eastern | pwn<br>North Western | pwn<br>Northern | pwn<br>Sothern | pwn<br>Southern | pwn<br>UK | pyu<br>Jianhe | pyu<br>Nanwang | pyu<br>UK | pyu<br>Xiqun | pyu<br>Zhiben | tay<br>FourSeasons | tay<br>Sekolik | tay<br>UK | tay<br>Wanda | tay<br>Wenshui | tay<br>YilanZeaol | tay<br>Zeaol | trv<br>DeluValley | trv<br>Duda | trv<br>Tegudaya | trv<br>Truku | trv<br>UK |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Word count | 58,782 | 36,750 | 36,137 | 36,328 | 1,865,278 | 83,395 | 106,539 | 29,654 | 30,595 | 29,721 | 1,551 | 28,834 | 29,992 | 28,565 | 30,151 | 27,693 | 1,949 | 24,350 | 114,915 | 41,624 | 50,297 | 0 | 127,754 | 0 | 47,573 | 127,956 | 35,383 | 116,881 | 2,090 | 37,157 | 39,643 | 38,172 | 113,050 | 419,990 | 31,056 | 37,004 | 40,229 | 39,479 | 39,861 | 41,788 | 110,951 | 86,274 | 754,830 |
+| Audio length | 13.4h | 10.2h | 8.4h | 9.2h | 0.2h | 18.3h | 28.5h | 8.0h | 7.9h | 8.6h | 0 | 8.1h | 9.5h | 8.9h | 9.4h | 8.8h | 0 | 8.4h | 30.6h | 10.2h | 12.8h | 7.9h | 27.7h | 0.1h | 10.5h | 4.5h | 9.4h | 29.8h | 0 | 9.9h | 10.8h | 9.2h | 24.5h | 0.5h | 8.8h | 9.5h | 10.3h | 9.9h | 11.7h | 10.1h | 21.0h | 20.8h | 0.1h |
+| Translated sentences |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;English | 2,157 | 2,155 | 2,144 | 2,158 | 73 | 4,463 | 2,159 | 2,154 | 2,163 | 2,154 | 33 | 2,156 | 2,151 | 2,154 | 2,149 | 2,158 | 33 | 2,150 | 2,157 | 2,721 | 2,400 | 0 | 3,197 | 0 | 3,309 | 104 | 2,153 | 2,150 | 33 | 2,229 | 2,155 | 2,159 | 2,309 | 33 | 2,154 | 2,156 | 2,160 | 2,149 | 2,159 | 2,158 | 2,191 | 2,187 | 16 |
+| &nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 7,520 | 6,325 | 6,276 | 6,076 | 5,893 | 14,333 | 15,910 | 6,109 | 6,142 | 5,932 | 33 | 5,946 | 6,283 | 6,193 | 6,031 | 6,149 | 33 | 6,295 | 17,966 | 6,467 | 6,387 | 0 | 13,460 | 0 | 6,639 | 33 | 6,502 | 15,618 | 33 | 6,581 | 6,648 | 6,714 | 14,169 | 33 | 5,896 | 6,035 | 6,276 | 6,369 | 6,367 | 6,264 | 12,903 | 11,995 | 28 |
+| Morphologically segmented | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 537 | 157 | 0 | 995 | 0 | 1,155 | 71 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Proportion glossed | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 100% | 100% | 0% | 100% | 0% | 100% | 100% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |
 
 ***
+
+<!-- CORPUS STATS END -->
+
 
 ### Coming Soon
 
 In addition to the wide range of corpora already incorporated into FormosanBank, there is a large number of further corpora that permission to include in FormosanBank has been obtained and they are being processed at the moment. Below are some of these corpora:
 
 * NTU Corpus (Various languages)
-* Glosbe (Amis, Truku, Atayal, Saisayat)&#x20;
-* Wakelin (1958) Yami texts (Yami)
 * Matthew's Gospel and John's Gospel (Siraya)
 * The Sedik Language of Formosa by Erin Asai (Seediq)
 * Chang's Seediq Reference Grammar (Seediq)
 * Chang's Kavalan reference grammar (Kavalan)
 * Poinsot Amis Dictionary (Amis)
 * Moedict Amis (Amis)
-* Whitehorn Collection (Paiwan, Amis, Atayal)
 * Asai's Seediq Language of Formosan (Seediq)
 * Wilang Yutas videos (Atayal)
 * ​hala saku la (videos - Atayal)
@@ -45,68 +73,3 @@ In addition to the wide range of corpora already incorporated into FormosanBank,
 * Tung's Descriptive study of Tsou (Tsou)
 * Jeng (1992) Topic and focus in Bunun (Bunun)
 * Blust's Thao Dictionary (Thao)
-
-***
-
-### Current numbers
-
-As of the time you're reading this, FormosanBank contains over 8 million tokens (precisely **8075594**) as well as **731 hours and 40 minutes** of recorded audio across the 16 Formosan languages. Below is a breakdown of the most up-to-date token count based on language and corpus as well as audio breakdown by language.
-
-#### Token Count per Language
-
-| **Language** | **Tokens** |
-| ------------ | ---------- |
-| Amis         | 2,184,946  |
-| Atayal       | 870,844    |
-| Paiwan       | 480,574    |
-| Bunun        | 317,946    |
-| Puyuma       | 330,571    |
-| Rukai        | 358,879    |
-| Tsou         | 99,694     |
-| Saisiyat     | 109,512    |
-| Yami         | 128,404    |
-| Thao         | 121,970    |
-| Kavalan      | 132,412    |
-| Truku        | 105,872    |
-| Sakizaya     | 1,473,448  |
-| Seediq       | 1,035,877  |
-| Saaroa       | 79,458     |
-| Kanakanavu   | 108,446    |
-
-***
-
-#### Token Count per Corpus
-
-| **Source**              | **Tokens**           |
-| ----------------------- | -------------------- |
-| Virginia Fey Dictionary | 9,078 (Amis only)    |
-| ILRDF Dictionaries      | 659,295              |
-| NTU Paiwan ASR          | 68,332 (Paiwan only) |
-| Presidential Apologies  | 29,793               |
-| Paiwan Stories          | 556 (Paiwan only)    |
-| Wikipedias              | 4,628,365            |
-| ePark                   | 2,680,175            |
-| Rau and Dong            | 13,274 (Yami only)   |
-| 100 Paiwan Stories      | 24,469 (Paiwan only) |
-
-#### Recorded Audio per Language
-
-| Language   | Duration                       |
-| ---------- | ------------------------------ |
-| Amis       | 72 hours 32 minutes 18 seconds |
-| Atayal     | 87 hours 4 minutes 2 seconds   |
-| Paiwan     | 72 hours 1 minutes 24 seconds  |
-| Bunun      | 71 hours 13 minutes 28 seconds |
-| Puyuma     | 71 hours 8 minutes 6 seconds   |
-| Rukai      | 88 hours 19 minutes 41 seconds |
-| Tsou       | 21 hours 49 minutes 36 seconds |
-| Saisiyat   | 23 hours 11 minutes 33 seconds |
-| Yami       | 21 hours 41 minutes 46 seconds |
-| Thao       | 21 hours 49 minutes 28 seconds |
-| Kavalan    | 25 hours 41 minutes 1 second   |
-| Truku      | 22 hours 41 minutes 47 seconds |
-| Sakizaya   | 24 hours 39 minutes 49 seconds |
-| Seediq     | 49 hours 46 minutes 30 seconds |
-| Saaroa     | 26 hours 23 minutes 26 seconds |
-| Kanakanavu | 31 hours 36 minutes 54 seconds |
-

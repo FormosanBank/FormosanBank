@@ -6,6 +6,24 @@ This corpus comes from the crowdsourced online dictionary Glosbe. Currently we h
 
 ***
 
+<!-- CORPUS STATS START -->
+## Corpus Statistics
+
+| | ami<br>UK |
+| --- | --- |
+| Word count | 90,631 |
+| Audio length | 0 |
+| Translated sentences |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;English | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 5,860 |
+| Morphologically segmented | 0 |
+| Proportion glossed | 0% |
+
+***
+
+<!-- CORPUS STATS END -->
+
+
 ## **Corpus Processing**
 
 The process involves several steps to extract, scrape, clean and format the data:

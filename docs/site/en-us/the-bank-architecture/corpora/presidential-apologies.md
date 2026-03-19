@@ -8,14 +8,30 @@ This apology text, as part of the effort to promote **historical justice**, has 
 
 ***
 
+<!-- CORPUS STATS START -->
+### Corpus Statistics
+
+| | ami<br>UK | bnn<br>UK | ckv | dru<br>UK | pwn<br>UK | pyu<br>UK | ssf | sxr | szy | tao | tay<br>UK | trv<br>Tegudaya | trv<br>Truku | tsu | xnb | xsy |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Word count | 1,921 | 1,551 | 2,328 | 1,949 | 2,372 | 2,090 | 1,856 | 1,117 | 1,749 | 1,693 | 2,456 | 1,501 | 1,874 | 2,157 | 1,552 | 1,655 |
+| Audio length | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Translated sentences |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;English | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 29 | 33 |
+| &nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 29 | 33 |
+| Morphologically segmented | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Proportion glossed | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |
+
+***
+
+<!-- CORPUS STATS END -->
+
+
 ### **Corpus Processing**
 
 The Presidential Apology corpus was developed using officially released translations of the apology by the President of Taiwan. These translations were provided in 16 official Formosan languages, as well as in Chinese and English. The corpus was processed following these steps:
 
 1.  **Alignment of Sentences Across Translations**\
     Each paragraph in the Formosan languages was aligned with its corresponding translations in English and Chinese. This was accomplished by segmenting the apology into 33 consistent sections across all languages. An example image is shown below. The only exception to this was Kanakanavu where I did it separately with only 29 sections because the sectioning was quite different from the rest.
-
-
 
     <figure><img src="../../.gitbook/assets/Screenshot 2024-12-08 at 9.41.01 PM.png" alt=""><figcaption></figcaption></figure>
 2. **XML Generation Following FormosanBank Standards**\

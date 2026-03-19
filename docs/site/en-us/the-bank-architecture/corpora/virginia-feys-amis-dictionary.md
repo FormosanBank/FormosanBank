@@ -8,6 +8,24 @@ This dictionary is a critical addition to FormosanBank, complementing other corp
 
 ***
 
+<!-- CORPUS STATS START -->
+### Corpus Statistics
+
+| | ami<br>Xiuguluan |
+| --- | --- |
+| Word count | 9,078 |
+| Audio length | 0 |
+| Translated sentences |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;English | 2,307 |
+| &nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 2,478 |
+| Morphologically segmented | 0 |
+| Proportion glossed | 0% |
+
+***
+
+<!-- CORPUS STATS END -->
+
+
 ### Background
 
 First compiled by Virginia Fey in 1986, this dictionary has undergone several stages of transformation:
