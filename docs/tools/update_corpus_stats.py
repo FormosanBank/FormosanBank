@@ -149,14 +149,22 @@ def row_has_data(row: dict) -> bool:
 
 def sort_key(row: dict):
     """Sort key: language alphabetically (empty → last), then dialect."""
-    lang    = row.get('language', '').strip() or '\xff'
+    lang    = LANG_NORMALISE.get(row.get('language', '').strip(), row.get('language', '').strip()) or '\xff'
     dialect = row.get('dialect',  '').strip() or ''
     return (lang, dialect)
 
 
 def prepare_rows(raw_rows: list[dict]) -> list[dict]:
-    """Filter meaningless rows and sort."""
-    kept = [r for r in raw_rows if row_has_data(r)]
+    """Filter meaningless rows, normalise language codes, and sort."""
+    kept = []
+    for r in raw_rows:
+        if not row_has_data(r):
+            continue
+        lang = r.get('language', '').strip()
+        normalised = LANG_NORMALISE.get(lang, lang)
+        if normalised != lang:
+            r = dict(r, language=normalised)
+        kept.append(r)
     return sorted(kept, key=sort_key)
 
 
