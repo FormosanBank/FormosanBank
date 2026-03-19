@@ -12,7 +12,9 @@
 | | Yami |
 | --- | --- |
 | Word count | 13,310 |
-| Audio length | 0 |
+| Total audio | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 |
 | Translated sentences |  |
 | &nbsp;&nbsp;&nbsp;&nbsp;English | 793 |
 | &nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 793 |

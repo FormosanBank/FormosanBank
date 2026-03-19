@@ -139,8 +139,8 @@ def col_header(lang: str, dialect: str) -> str:
 
 def row_has_data(row: dict) -> bool:
     """Return True if at least one displayed numeric field is non-zero."""
-    fields = ('word_count', 'audio_time', 'eng_transl_count',
-              'zho_transl_count', 'segmented_sentences')
+    fields = ('word_count', 'transcribed_audio_seconds', 'untranscribed_audio_seconds',
+              'eng_transl_count', 'zho_transl_count', 'segmented_sentences')
     try:
         return any(float(row.get(f) or 0) != 0 for f in fields)
     except (ValueError, TypeError):
@@ -168,15 +168,31 @@ def prepare_rows(raw_rows: list[dict]) -> list[dict]:
 INDENT = '&nbsp;&nbsp;&nbsp;&nbsp;'
 
 # Row definitions: (display label, CSV field or None, formatter)
+# A field of None marks a parent/header row with empty data cells.
+# A field of 'AUDIO_TOTAL' is a computed row (sum of transcribed + untranscribed).
 ROW_DEFS = [
-    ('Word count',                        'word_count',           fmt_count),
-    ('Audio length',                      'audio_time',           fmt_audio),
-    ('Translated sentences',              None,                   None),          # header row
-    (f'{INDENT}English',                  'eng_transl_count',     fmt_count),
-    (f'{INDENT}Mandarin',                 'zho_transl_count',     fmt_count),
-    ('Morphologically segmented',         'segmented_sentences',  fmt_count),
-    ('Proportion glossed',                'glossed_proportion',   fmt_pct),
+    ('Word count',                          'word_count',                fmt_count),
+    ('Total audio',                         'AUDIO_TOTAL',               fmt_audio),
+    (f'{INDENT}Transcribed',               'transcribed_audio_seconds',  fmt_audio),
+    (f'{INDENT}Untranscribed',             'untranscribed_audio_seconds',fmt_audio),
+    ('Translated sentences',                None,                        None),
+    (f'{INDENT}English',                   'eng_transl_count',           fmt_count),
+    (f'{INDENT}Mandarin',                  'zho_transl_count',           fmt_count),
+    ('Morphologically segmented',           'segmented_sentences',       fmt_count),
+    ('Proportion glossed',                  'glossed_proportion',        fmt_pct),
 ]
+
+
+def _row_cell(row: dict, field: str, formatter) -> str:
+    """Return a single formatted cell value, handling the computed AUDIO_TOTAL field."""
+    if field == 'AUDIO_TOTAL':
+        try:
+            total = float(row.get('transcribed_audio_seconds') or 0) \
+                  + float(row.get('untranscribed_audio_seconds') or 0)
+        except (ValueError, TypeError):
+            total = 0.0
+        return formatter(total)
+    return formatter(row.get(field, 0))
 
 
 def build_table(rows: list[dict]) -> str:
@@ -190,10 +206,9 @@ def build_table(rows: list[dict]) -> str:
     data_lines = []
     for label, field, formatter in ROW_DEFS:
         if field is None:
-            # Parent label row – all data cells are empty
             cells = [''] * len(rows)
         else:
-            cells = [formatter(r.get(field, 0)) for r in rows]
+            cells = [_row_cell(r, field, formatter) for r in rows]
         data_lines.append('| ' + label + ' | ' + ' | '.join(cells) + ' |')
 
     return '\n'.join([header_line, sep_line] + data_lines)
@@ -306,25 +321,27 @@ LANG_NORMALISE = {
 
 def _empty_stats() -> dict:
     return {
-        'word_count':          0,
-        'audio_time':          0.0,
-        'eng_transl_count':    0,
-        'zho_transl_count':    0,
-        'segmented_sentences': 0,
-        'glossed_segments':    0.0,   # sum of seg_sentences × glossed_proportion
+        'word_count':                  0,
+        'transcribed_audio_seconds':   0.0,
+        'untranscribed_audio_seconds': 0.0,
+        'eng_transl_count':            0,
+        'zho_transl_count':            0,
+        'segmented_sentences':         0,
+        'glossed_segments':            0.0,   # sum of seg_sentences × glossed_proportion
     }
 
 
 def _accumulate(bucket: dict, row: dict) -> None:
     try:
-        bucket['word_count']          += int(float(row.get('word_count')          or 0))
-        bucket['audio_time']          += float(row.get('audio_time')              or 0)
-        bucket['eng_transl_count']    += int(float(row.get('eng_transl_count')    or 0))
-        bucket['zho_transl_count']    += int(float(row.get('zho_transl_count')    or 0))
-        seg                            = int(float(row.get('segmented_sentences') or 0))
-        gp                             = float(row.get('glossed_proportion')      or 0)
-        bucket['segmented_sentences'] += seg
-        bucket['glossed_segments']    += seg * gp
+        bucket['word_count']                  += int(float(row.get('word_count')                  or 0))
+        bucket['transcribed_audio_seconds']   += float(row.get('transcribed_audio_seconds')       or 0)
+        bucket['untranscribed_audio_seconds'] += float(row.get('untranscribed_audio_seconds')     or 0)
+        bucket['eng_transl_count']            += int(float(row.get('eng_transl_count')            or 0))
+        bucket['zho_transl_count']            += int(float(row.get('zho_transl_count')            or 0))
+        seg                                    = int(float(row.get('segmented_sentences')         or 0))
+        gp                                     = float(row.get('glossed_proportion')              or 0)
+        bucket['segmented_sentences']         += seg
+        bucket['glossed_segments']            += seg * gp
     except (ValueError, TypeError):
         pass
 
@@ -380,14 +397,20 @@ def _make_table_from_buckets(keys: list, buckets: dict, header_fn) -> str:
     def col(k, field, fmt):
         return fmt(buckets[k][field])
 
+    def audio_total(k):
+        return fmt_audio(buckets[k]['transcribed_audio_seconds']
+                       + buckets[k]['untranscribed_audio_seconds'])
+
     data_lines = [
-        '| Word count | '                + ' | '.join(col(k, 'word_count',          fmt_count) for k in keys) + ' |',
-        '| Audio length | '              + ' | '.join(col(k, 'audio_time',          fmt_audio) for k in keys) + ' |',
-        '| Translated sentences | '      + ' | '.join('' for _ in keys)                                       + ' |',
-        f'| {INDENT}English | '          + ' | '.join(col(k, 'eng_transl_count',    fmt_count) for k in keys) + ' |',
-        f'| {INDENT}Mandarin | '         + ' | '.join(col(k, 'zho_transl_count',    fmt_count) for k in keys) + ' |',
-        '| Morphologically segmented | ' + ' | '.join(col(k, 'segmented_sentences', fmt_count) for k in keys) + ' |',
-        '| Proportion glossed | '        + ' | '.join(glossed(k)                               for k in keys) + ' |',
+        '| Word count | '                          + ' | '.join(col(k, 'word_count',                  fmt_count) for k in keys) + ' |',
+        '| Total audio | '                         + ' | '.join(audio_total(k)                                   for k in keys) + ' |',
+        f'| {INDENT}Transcribed | '               + ' | '.join(col(k, 'transcribed_audio_seconds',   fmt_audio) for k in keys) + ' |',
+        f'| {INDENT}Untranscribed | '             + ' | '.join(col(k, 'untranscribed_audio_seconds', fmt_audio) for k in keys) + ' |',
+        '| Translated sentences | '                + ' | '.join('' for _ in keys)                                              + ' |',
+        f'| {INDENT}English | '                   + ' | '.join(col(k, 'eng_transl_count',            fmt_count) for k in keys) + ' |',
+        f'| {INDENT}Mandarin | '                  + ' | '.join(col(k, 'zho_transl_count',            fmt_count) for k in keys) + ' |',
+        '| Morphologically segmented | '           + ' | '.join(col(k, 'segmented_sentences',         fmt_count) for k in keys) + ' |',
+        '| Proportion glossed | '                  + ' | '.join(glossed(k)                                        for k in keys) + ' |',
     ]
     return '\n'.join([header_line, sep_line] + data_lines)
 

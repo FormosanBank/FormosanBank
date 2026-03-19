@@ -43,7 +43,9 @@ Below is a detailed description of the data outlying for each speaker how many r
 | | Paiwan<br>Central | Paiwan<br>Eastern | Paiwan<br>Northern |
 | --- | --- | --- | --- |
 | Word count | 3,136 | 10,688 | 20,672 |
-| Audio length | 0.8h | 2.7h | 4.6h |
+| Total audio | 0.8h | 2.7h | 4.6h |
+| &nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0.8h | 2.7h | 4.6h |
+| &nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 | 0 |
 | Translated sentences |  |  |  |
 | &nbsp;&nbsp;&nbsp;&nbsp;English | 0 | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 | 0 | 0 |

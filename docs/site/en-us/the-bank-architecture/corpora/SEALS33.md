@@ -14,7 +14,9 @@ The 2024 South East Asian Linguistic Society meeting took place in Taipei. The m
 | | Seediq<br>UK | Saisiyat |
 | --- | --- | --- |
 | Word count | 543 | 585 |
-| Audio length | 0 | 0 |
+| Total audio | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 |
 | Translated sentences |  |  |
 | &nbsp;&nbsp;&nbsp;&nbsp;English | 16 | 16 |
 | &nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 28 | 28 |

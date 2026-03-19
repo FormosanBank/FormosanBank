@@ -11,15 +11,17 @@ This apology text, as part of the effort to promote **historical justice**, has 
 <!-- CORPUS STATS START -->
 ### Corpus Statistics
 
-| | Amis<br>UK | Bunun<br>UK | Kavalan | Rukai<br>UK | Paiwan<br>UK | Puyuma<br>UK | Thao | Saaroa | Sakizaya | Yami | Atayal<br>UK | Seediq<br>Tegudaya | Truku | Tsou | Kanakanabu | Saisiyat |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Word count | 1,921 | 1,551 | 2,328 | 1,949 | 2,372 | 2,090 | 1,856 | 1,117 | 1,749 | 1,693 | 2,456 | 1,501 | 1,874 | 2,157 | 1,552 | 1,655 |
-| Audio length | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| Translated sentences |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;English | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 29 | 33 |
-| &nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 29 | 33 |
-| Morphologically segmented | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| Proportion glossed | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |
+| | Kavalan | Thao | Saaroa | Sakizaya | Yami | Seediq<br>Tegudaya | Truku | Tsou | Kanakanabu | Saisiyat |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Word count | 2,328 | 1,856 | 1,117 | 1,749 | 1,693 | 1,501 | 1,874 | 2,157 | 1,552 | 1,655 |
+| Total audio | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Translated sentences |  |  |  |  |  |  |  |  |  |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;English | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 29 | 33 |
+| &nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 29 | 33 |
+| Morphologically segmented | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Proportion glossed | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |
 
 ***
 
