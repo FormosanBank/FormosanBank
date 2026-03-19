@@ -11,7 +11,7 @@ This dictionary is a critical addition to FormosanBank, complementing other corp
 <!-- CORPUS STATS START -->
 ### Corpus Statistics
 
-| | ami<br>Xiuguluan |
+| | Amis<br>Xiuguluan |
 | --- | --- |
 | Word count | 9,078 |
 | Audio length | 0 |

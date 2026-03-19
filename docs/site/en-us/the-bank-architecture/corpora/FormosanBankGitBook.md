@@ -11,7 +11,7 @@ Currently, we only have Paiwan (Eastern dialect).
 <!-- CORPUS STATS START -->
 ## Corpus Statistics
 
-| | pwn<br>Eastern |
+| | Paiwan<br>Eastern |
 | --- | --- |
 | Word count | 1,855 |
 | Audio length | 0 |

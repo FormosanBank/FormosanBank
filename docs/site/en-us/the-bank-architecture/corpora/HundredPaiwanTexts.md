@@ -8,7 +8,7 @@
 <!-- CORPUS STATS START -->
 ### Corpus Statistics
 
-| | pwn<br>UK | pwn<br>Central | pwn<br>Eastern | pwn<br>Northern | pwn<br>Southern |
+| | Paiwan<br>UK | Paiwan<br>Central | Paiwan<br>Eastern | Paiwan<br>Northern | Paiwan<br>Southern |
 | --- | --- | --- | --- | --- | --- |
 | Word count | 1,105 | 3,727 | 1,198 | 9,007 | 9,446 |
 | Audio length | 0 | 0 | 0 | 0 | 0 |

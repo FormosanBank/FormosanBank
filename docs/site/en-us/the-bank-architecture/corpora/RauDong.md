@@ -9,7 +9,7 @@
 <!-- CORPUS STATS START -->
 ### Corpus Statistics
 
-| | tao |
+| | Yami |
 | --- | --- |
 | Word count | 13,310 |
 | Audio length | 0 |

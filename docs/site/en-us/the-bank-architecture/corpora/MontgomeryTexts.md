@@ -11,7 +11,7 @@ The orthographic system used has not yet been identified.
 <!-- CORPUS STATS START -->
 ### Corpus Statistics
 
-| | ami<br>UK |
+| | Amis<br>UK |
 | --- | --- |
 | Word count | 358 |
 | Audio length | 0 |

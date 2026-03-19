@@ -40,7 +40,7 @@ Below is a detailed description of the data outlying for each speaker how many r
 <!-- CORPUS STATS START -->
 ### Corpus Statistics
 
-| | pwn<br>Central | pwn<br>Eastern | pwn<br>Northern |
+| | Paiwan<br>Central | Paiwan<br>Eastern | Paiwan<br>Northern |
 | --- | --- | --- | --- |
 | Word count | 3,136 | 10,688 | 20,672 |
 | Audio length | 0.8h | 2.7h | 4.6h |

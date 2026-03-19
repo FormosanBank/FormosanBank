@@ -28,6 +28,31 @@ CORPORA_DIR = REPO_ROOT / 'en-us' / 'the-bank-architecture' / 'corpora'
 # Languages that have no dialect subdivisions
 NO_DIALECT_LANGS = {'ckv', 'ssf', 'sxr', 'szy', 'tao', 'tsu', 'xnb', 'xsy'}
 
+# Dialects that are culturally/politically treated as independent languages.
+# Maps (csv_lang_code, csv_dialect_name) → display name used as a language-level column.
+PROMOTE_DIALECT_AS_LANG = {
+    ('trv', 'Truku'): 'Truku',
+}
+
+# Human-readable names for each ISO language code
+LANG_NAMES = {
+    'ami': 'Amis',
+    'bnn': 'Bunun',
+    'ckv': 'Kavalan',
+    'dru': 'Rukai',
+    'pwn': 'Paiwan',
+    'pyu': 'Puyuma',
+    'ssf': 'Thao',
+    'sxr': 'Saaroa',
+    'szy': 'Sakizaya',
+    'tao': 'Yami',
+    'tay': 'Atayal',
+    'trv': 'Seediq',
+    'tsu': 'Tsou',
+    'xnb': 'Kanakanabu',
+    'xsy': 'Saisiyat',
+}
+
 # HTML markers so the section can be cleanly replaced on subsequent runs
 STATS_START = '<!-- CORPUS STATS START -->'
 STATS_END   = '<!-- CORPUS STATS END -->'
@@ -102,11 +127,14 @@ def col_header(lang: str, dialect: str) -> str:
     dialect = dialect.strip()
     if not lang:
         return 'Unknown'
+    if (lang, dialect) in PROMOTE_DIALECT_AS_LANG:
+        return PROMOTE_DIALECT_AS_LANG[(lang, dialect)]
+    display = LANG_NAMES.get(lang, lang)
     if lang in NO_DIALECT_LANGS:
-        return lang
+        return display
     if dialect:
-        return f'{lang}<br>{dialect}'
-    return f'{lang}<br>UK'
+        return f'{display}<br>{dialect}'
+    return f'{display}<br>UK'
 
 
 def row_has_data(row: dict) -> bool:
@@ -323,12 +351,17 @@ def _aggregate_csvs() -> tuple[dict, dict]:
 
                 dialect = row.get('dialect', '').strip()
 
-                _accumulate(lang_stats[lang], row)
-
-                # Dialect breakdown only for multi-dialect languages
-                if lang not in NO_DIALECT_LANGS:
-                    label = dialect if dialect else 'UK'
-                    _accumulate(dial_stats[(lang, label)], row)
+                # Check if this dialect is promoted to a language in its own right
+                if (lang, dialect) in PROMOTE_DIALECT_AS_LANG:
+                    promoted = PROMOTE_DIALECT_AS_LANG[(lang, dialect)]
+                    _accumulate(lang_stats[promoted], row)
+                    # Don't add to dial_stats — it's a language, not a dialect
+                else:
+                    _accumulate(lang_stats[lang], row)
+                    # Dialect breakdown only for multi-dialect languages
+                    if lang not in NO_DIALECT_LANGS:
+                        label = dialect if dialect else 'UK'
+                        _accumulate(dial_stats[(lang, label)], row)
 
     return dict(lang_stats), dict(dial_stats)
 
@@ -367,14 +400,14 @@ def build_readme_tables() -> tuple[str, str]:
     lang_keys = sorted(lang_stats)
     lang_table = _make_table_from_buckets(
         lang_keys, lang_stats,
-        header_fn=lambda k: k
+        header_fn=lambda k: LANG_NAMES.get(k, k)
     )
 
-    # --- Dialect-level table (columns = lang<br>Dialect, multi-dialect langs only) ---
+    # --- Dialect-level table (columns = Language<br>Dialect, multi-dialect langs only) ---
     dial_keys = sorted(dial_stats, key=lambda t: (t[0], t[1]))
     dial_table = _make_table_from_buckets(
         dial_keys, dial_stats,
-        header_fn=lambda t: f'{t[0]}<br>{t[1]}'
+        header_fn=lambda t: f'{LANG_NAMES.get(t[0], t[0])}<br>{t[1]}'
     )
 
     return lang_table, dial_table

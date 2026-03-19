@@ -17,7 +17,7 @@ The Paiwan Stories corpus is a small collection of children’s stories told in 
 <!-- CORPUS STATS START -->
 ### Corpus Statistics
 
-| | pwn<br>Eastern |
+| | Paiwan<br>Eastern |
 | --- | --- |
 | Word count | 557 |
 | Audio length | 0 |

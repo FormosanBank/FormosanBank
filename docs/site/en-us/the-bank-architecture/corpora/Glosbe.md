@@ -9,7 +9,7 @@ This corpus comes from the crowdsourced online dictionary Glosbe. Currently we h
 <!-- CORPUS STATS START -->
 ## Corpus Statistics
 
-| | ami<br>UK |
+| | Amis<br>UK |
 | --- | --- |
 | Word count | 90,631 |
 | Audio length | 0 |

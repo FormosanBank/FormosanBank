@@ -11,7 +11,7 @@ The 2024 South East Asian Linguistic Society meeting took place in Taipei. The m
 <!-- CORPUS STATS START -->
 ## Corpus Statistics
 
-| | trv<br>UK | xsy |
+| | Seediq<br>UK | Saisiyat |
 | --- | --- | --- |
 | Word count | 543 | 585 |
 | Audio length | 0 | 0 |
