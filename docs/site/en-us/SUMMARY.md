@@ -24,7 +24,7 @@
   * [Rau-Dong](the-bank-architecture/corpora/RauDong.md)
   * [100 Paiwan Texts](the-bank-architecture/corpora/HundredPaiwanTexts.md)
   * [The Montgomery Texts](the-bank-architecture/corpora/MontgomeryTexts.md)
-  * [The Montgomery Texts](the-bank-architecture/corpora/WakelinTexts.md)
+  * [The Wakelin Texts](the-bank-architecture/corpora/WakelinTexts.md)
   * [FormosanBank GitBook](the-bank-architecture/corpora/FormosanBankGitBook.md)
   * [SEALS 33](the-bank-architecture/corpora/SEALS33.md)
   * [Glosbe](the-bank-architecture/corpora/Glosbe.md) 
