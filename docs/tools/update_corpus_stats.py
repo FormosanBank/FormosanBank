@@ -71,9 +71,10 @@ CSV_TO_MD = {
     'RauDong_corpora_stats.csv':                'RauDong.md',
     'SEALS33_corpora_stats.csv':                'SEALS33.md',
     'Virginia_Fey_Dictionary_corpora_stats.csv':'virginia-feys-amis-dictionary.md',
-    'WakelinTexts_1958_Yami_corpora_stats.csv': None,   # no matching MD yet
+    'WakelinTexts_corpora_stats.csv': 'WakelinTexts.md', 
     'Whitehorn_Collection_corpora_stats.csv':   'Whitehorn-Collection.md',
     'Wikipedias_corpora_stats.csv':             'wikipedias.md',
+    'YeddaPalemeqBlog_corpora_stats.csv':         'YeddaPalemeqBlog.md',
 }
 
 # ---------------------------------------------------------------------------
