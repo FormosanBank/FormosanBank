@@ -26,7 +26,7 @@ CORPORA_DIR = REPO_ROOT / 'en-us' / 'the-bank-architecture' / 'corpora'
 # ---------------------------------------------------------------------------
 
 # Languages that have no dialect subdivisions
-NO_DIALECT_LANGS = {'ckv', 'ssf', 'sxr', 'szy', 'tao', 'tsu', 'xnb', 'xsy'}
+NO_DIALECT_LANGS = {'ckv', 'fos', 'ssf', 'sxr', 'szy', 'tao', 'tsu', 'xnb', 'xsy'}
 
 # Dialects that are culturally/politically treated as independent languages.
 # Maps (csv_lang_code, csv_dialect_name) → display name used as a language-level column.
@@ -51,6 +51,7 @@ LANG_NAMES = {
     'tsu': 'Tsou',
     'xnb': 'Kanakanabu',
     'xsy': 'Saisiyat',
+    'fos': 'Siraya'
 }
 
 # HTML markers so the section can be cleanly replaced on subsequent runs
@@ -75,6 +76,7 @@ CSV_TO_MD = {
     'Whitehorn_Collection_corpora_stats.csv':   'Whitehorn-Collection.md',
     'Wikipedias_corpora_stats.csv':             'wikipedias.md',
     'YeddaPalemeqBlog_corpora_stats.csv':         'YeddaPalemeqBlog.md',
+    'Siraya_Gospels_corpora_stats.csv': 'Siraya-Gospels.md',
 }
 
 # ---------------------------------------------------------------------------
