@@ -8,6 +8,26 @@ This uses an unusual orthography, which has not yet been identified.
 
 ***
 
+<!-- CORPUS STATS START -->
+### Corpus Statistics
+
+| | Yami |
+| --- | --- |
+| Word count | 847 |
+| Total audio | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 |
+| Translated sentences |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 171 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 |
+| Morphologically segmented | 167 |
+| Proportion glossed | 100% |
+
+***
+
+<!-- CORPUS STATS END -->
+
+
 ### Notes
 
 * **Critical** the standard tier is just the original with the hyphens removed, since they seem to be morphological segmentations, not orthography. Thus, the Orthographies/ConversionTables/Yami_Wakelin_113.tsv should not be taken seriously.

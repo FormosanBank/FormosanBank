@@ -6,6 +6,26 @@ Yedda Palemeq, a Paiwan-speaker and linguist, maintained a [blog](https://yeddap
 
 ***
 
+<!-- CORPUS STATS START -->
+### Corpus Statistics
+
+| | Paiwan<br>Southern |
+| --- | --- |
+| Word count | 5,850 |
+| Total audio | 1.2h |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 1.2h |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 |
+| Translated sentences |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 659 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 |
+| Morphologically segmented | 652 |
+| Proportion glossed | 0% |
+
+***
+
+<!-- CORPUS STATS END -->
+
+
 ### **Access Details**
 
 * The repo containing the ePark corpus in FormosanBank as well as the code to reconstruct the corpus can be found [here](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/YeddaPalemeqBlog).
