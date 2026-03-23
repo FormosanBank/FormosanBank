@@ -118,4 +118,4 @@ CC-BY-NC
 
 In accordance with our [Terms of Use](../../additional-resources/terms-of-use.md), if you use this corpus or any product derived from this corpus in any publication, you must cite both FormosanBank and:
 
-* Ruan, X. (2025). Paiwan translation of FormosanBank manual.
+* Wilang Yutas. (2019). YouTube channel. YouTube. https://www.youtube.com/@wilangyutas9297
