@@ -38,7 +38,7 @@ All audio is available. If it is transcribed, it is also diarized.
 
 ## **Access Details**
 
-* The repo containing the Glosbe corpus in FormosanBank as well as the code to reconstruct the corpus can be found [here](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/WilangYutasVideos).
+* The repo containing this corpus in FormosanBank as well as the code to reconstruct the corpus can be found [here](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/WilangYutasVideos).
 
 ***
 
