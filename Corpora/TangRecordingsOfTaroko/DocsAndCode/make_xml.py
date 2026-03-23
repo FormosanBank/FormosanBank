@@ -131,7 +131,7 @@ else:
             "dialect":        "Truku",
             "audio":          wav_name,
             "source":         source,
-            "copyright":      "",
+            "copyright":      "CC BY-NC",
             "citation":       citation,
             "BibTeX_citation": bibtex,
         })

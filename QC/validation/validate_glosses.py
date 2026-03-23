@@ -7,6 +7,8 @@ Usage: python validate_glosses.py <xml_folder> [--check_morpho]
 Checks XML files recursively for:
 - Number of words in <S> text vs number of <W> elements  
 - Optional: Whether each <W> contains at least one <M> element
+- Morpheme count mismatch: number of <M> elements vs morphemes implied by <W> FORM
+  (logged to a separate CSV)
 """
 
 import argparse
@@ -46,6 +48,90 @@ def extract_s_direct_text(s_element):
     # Last resort: any direct text content (excluding child elements)
     text = s_element.text if s_element.text else ""
     return text.strip()
+
+
+def count_morphemes_from_form(form_text):
+    """
+    Count the number of morphemes implied by a W FORM string.
+
+    Rules:
+    - Each <...> group is one infix morpheme.
+    - After removing infix groups, split the remainder on '-' and '=' to get
+      the remaining morpheme segments.
+    - Total = number of infix groups + number of non-empty segments.
+
+    Examples:
+      'ka'        -> 1
+      'ika-doa'   -> 2
+      'k-anak-an' -> 3
+      'ma=luhay'  -> 2
+      'k<um>ita'  -> 2  (infix 'um' + root 'kita')
+    """
+    if not form_text:
+        return 0
+
+    # Count and remove infix groups <...>
+    infixes = re.findall(r'<[^>]+>', form_text)
+    n_infixes = len(infixes)
+    remainder = re.sub(r'<[^>]+>', '', form_text)
+
+    # Split remainder on morpheme boundary markers - and =
+    segments = re.split(r'[-=]', remainder)
+    n_segments = len([s for s in segments if s])  # ignore empty segments
+
+    return n_infixes + n_segments
+
+
+def get_w_form(w_element):
+    """Return the original FORM text of a W element, or any FORM as fallback."""
+    original = w_element.find('./FORM[@kindOf="original"]')
+    if original is not None and original.text:
+        return original.text.strip()
+    any_form = w_element.find('./FORM')
+    if any_form is not None and any_form.text:
+        return any_form.text.strip()
+    return ''
+
+
+def validate_morpheme_counts_file(xml_file, debug=False):
+    """
+    Check that the number of <M> elements in each <W> matches the number of
+    morphemes implied by the W's FORM (via '-', '=', and '<>' notation).
+
+    Skipped cases (not an error):
+    - W implies exactly 1 morpheme AND has 0 M elements  (monomorphemic, M optional)
+
+    Returns list of tuples:
+        (filename, s_id, w_id, w_form, expected_m_count, actual_m_count)
+    """
+    errors = []
+
+    try:
+        tree = ET.parse(xml_file)
+        root = tree.getroot()
+    except ET.ParseError as e:
+        print(f"Warning: Could not parse {xml_file}: {e}")
+        return errors
+
+    for s_elem in root.findall('.//S[@id]'):
+        s_id = s_elem.get('id')
+        for w_elem in s_elem.findall('./W'):
+            w_id = w_elem.get('id', '')
+            form_text = get_w_form(w_elem)
+            expected = count_morphemes_from_form(form_text)
+            actual = len(w_elem.findall('./M'))
+
+            if debug:
+                print(f"  S[{s_id}] W[{w_id}] form='{form_text}' expected={expected} actual={actual}")
+
+            # Monomorphemic word with no M tags is acceptable
+            if expected == 1 and actual == 0:
+                continue
+
+            if expected != actual:
+                errors.append((str(xml_file), s_id, w_id, form_text, expected, actual))
+
+    return errors
 
 
 def validate_xml_file(xml_file, check_morpho=False, debug=False):
@@ -131,63 +217,68 @@ Examples:
         print(f"Error: Directory '{xml_folder}' does not exist")
         sys.exit(1)
     
-    # Setup output CSV
-    csv_file = Path('validation_results.csv')
-    
+    # Setup output CSVs
+    w_csv_file = Path('validation_w_mismatches.csv')
+    m_csv_file = Path('validation_m_mismatches.csv')
+
     print(f"Validating XML files in: {xml_folder}")
-    print(f"Check morphemes: {args.check_morpho}")
-    print(f"Output file: {csv_file}")
+    print(f"Check morphemes (W missing M): {args.check_morpho}")
+    print(f"W-mismatch output: {w_csv_file}")
+    print(f"M-mismatch output: {m_csv_file}")
     print()
-    
+
     # Find all XML files recursively
     xml_files = list(xml_folder.rglob('*.xml'))
-    
+
     if not xml_files:
         print(f"No XML files found in {xml_folder}")
         return
-    
-    all_errors = []
-    
+
+    all_w_errors = []
+    all_m_errors = []
+
     # Process each XML file
     for xml_file in xml_files:
         print(f"Processing: {xml_file}")
-        
-        file_errors = validate_xml_file(xml_file, args.check_morpho, args.debug)
-        
-        if file_errors:
-            print(f"  Found {len(file_errors)} validation error(s)")
-            all_errors.extend(file_errors)
-    
-    # Write results to CSV
-    if all_errors:
-        with open(csv_file, 'w', newline='', encoding='utf-8') as f:
+
+        file_w_errors = validate_xml_file(xml_file, args.check_morpho, args.debug)
+        if file_w_errors:
+            print(f"  Found {len(file_w_errors)} W-count mismatch(es)")
+            all_w_errors.extend(file_w_errors)
+
+        file_m_errors = validate_morpheme_counts_file(xml_file, args.debug)
+        if file_m_errors:
+            print(f"  Found {len(file_m_errors)} M-count mismatch(es)")
+            all_m_errors.extend(file_m_errors)
+
+    # Write W-mismatch CSV
+    if all_w_errors:
+        with open(w_csv_file, 'w', newline='', encoding='utf-8') as f:
             writer = csv.writer(f)
-            
-            # Write header
             if args.check_morpho:
                 writer.writerow(['filename', 's_id', 'word_count', 'w_element_count', 'has_morphemes'])
             else:
                 writer.writerow(['filename', 's_id', 'word_count', 'w_element_count'])
-            
-            # Write error records
-            for error in all_errors:
+            for error in all_w_errors:
                 if args.check_morpho:
                     writer.writerow(error)
                 else:
-                    writer.writerow(error[:-1])  # Exclude has_morphemes column
-        
-        print(f"\nValidation complete!")
-        print(f"Files processed: {len(xml_files)}")
-        print(f"Total errors found: {len(all_errors)}")
-        print(f"Results saved to: {csv_file}")
-        
-        print(f"\nSummary of errors:")
-        print(f"  Total error records: {len(all_errors)}")
-        
+                    writer.writerow(error[:-1])
+        print(f"\nW-mismatch results saved to: {w_csv_file} ({len(all_w_errors)} error(s))")
     else:
-        print(f"\nValidation complete!")
-        print(f"Files processed: {len(xml_files)}")
-        print(f"No validation errors found!")
+        print(f"\nNo W-count mismatches found.")
+
+    # Write M-mismatch CSV
+    if all_m_errors:
+        with open(m_csv_file, 'w', newline='', encoding='utf-8') as f:
+            writer = csv.writer(f)
+            writer.writerow(['filename', 's_id', 'w_id', 'w_form', 'expected_m_count', 'actual_m_count'])
+            writer.writerows(all_m_errors)
+        print(f"M-mismatch results saved to: {m_csv_file} ({len(all_m_errors)} error(s))")
+    else:
+        print(f"No M-count mismatches found.")
+
+    print(f"\nValidation complete! Files processed: {len(xml_files)}")
 
 
 if __name__ == '__main__':
