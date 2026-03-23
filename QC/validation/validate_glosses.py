@@ -218,7 +218,7 @@ Examples:
         sys.exit(1)
     
     # Setup output CSVs
-    w_csv_file = Path('validation_w_mismatches.csv')
+    w_csv_file = Path('validation_results.csv')
     m_csv_file = Path('validation_m_mismatches.csv')
 
     print(f"Validating XML files in: {xml_folder}")
