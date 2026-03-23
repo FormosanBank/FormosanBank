@@ -1,0 +1,109 @@
+{
+  "metadata": {
+    "@id": "https://catalog.paradisec.org.au/repository/AIT1/001",
+    "@type": [
+      "Data",
+      "Object",
+      "RepositoryObject"
+    ],
+    "conformsTo": {
+      "@id": "https://w3id.org/ldac/profile#Object"
+    },
+    "additionalType": "item",
+    "identifier": [
+      {
+        "@id": "#identifier_domain"
+      },
+      {
+        "@id": "#identifier_identifier"
+      },
+      {
+        "@id": "#identifier_collectionIdentifier"
+      },
+      {
+        "@id": "#identifier_itemIdentifier"
+      },
+      {
+        "@id": "#identifier_doi"
+      }
+    ],
+    "name": "traditional Truku stories",
+    "description": "traditional Truku stories",
+    "creditText": "Apay Tang (collector), Apay Tang (recorder), 1997. traditional Truku stories. MPEG/WAV/PDF.  AIT1-001 at catalog.paradisec.org.au. https://dx.doi.org/10.4225/72/56EC22110B85A",
+    "contentLocation": [
+      {
+        "@id": "#place-Siyu-Lin, Hualien"
+      }
+    ],
+    "dateCreated": "2008-09-20",
+    "dateModified": "2016-03-19",
+    "datePublished": "2016-03-19",
+    "publisher": {
+      "@id": "http://nla.gov.au/nla.party-1810306"
+    },
+    "collector": {
+      "@id": "mailto:aiyu98@yahoo.com"
+    },
+    "inLanguage": [
+      {
+        "@id": "http://www.language-archives.org/language/trv"
+      }
+    ],
+    "ldac:subjectLanguage": [
+      {
+        "@id": "http://www.language-archives.org/language/trv"
+      }
+    ],
+    "countries": [
+      {
+        "@id": "#country-Taiwan"
+      }
+    ],
+    "ldac:doi": "10.4225/72/56EC22110B85A",
+    "license": {
+      "@id": "#license-3-a6e13b67"
+    },
+    "operator": {
+      "@id": "mailto:narakawa@hawaii.edu"
+    },
+    "sourceOrganization": {
+      "@id": "http://nla.gov.au/nla.party-1170956"
+    },
+    "pcdm:memberOf": {
+      "@id": "https://catalog.paradisec.org.au/repository/AIT1"
+    },
+    "root": {
+      "@id": "https://catalog.paradisec.org.au/repository/AIT1"
+    },
+    "languageAsGiven": "Truku",
+    "originalMedia": "audio casssette",
+    "originatedOn": "1997-10-01",
+    "hasPart": [
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/001/AIT1-001-1.mp3"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/001/AIT1-001-1.wav"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/001/AIT1-001-2df.pdf"
+      }
+    ],
+    "languageGenre": "narrative",
+    "communicationMode": [
+      {
+        "@id": "https://w3id.org/ldac/terms#primary text"
+      }
+    ],
+    "paradisec:dataType": [
+      {
+        "@id": "#datatype-10"
+      }
+    ],
+    "recorder": [
+      {
+        "@id": "mailto:aiyu98@yahoo.com"
+      }
+    ]
+  }
+}

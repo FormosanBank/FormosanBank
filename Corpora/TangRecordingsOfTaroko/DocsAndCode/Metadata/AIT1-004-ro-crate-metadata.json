@@ -1,0 +1,257 @@
+{
+  "metadata": {
+    "@id": "https://catalog.paradisec.org.au/repository/AIT1/004",
+    "@type": [
+      "Data",
+      "Object",
+      "RepositoryObject"
+    ],
+    "conformsTo": {
+      "@id": "https://w3id.org/ldac/profile#Object"
+    },
+    "additionalType": "item",
+    "identifier": [
+      {
+        "@id": "#identifier_domain"
+      },
+      {
+        "@id": "#identifier_identifier"
+      },
+      {
+        "@id": "#identifier_collectionIdentifier"
+      },
+      {
+        "@id": "#identifier_itemIdentifier"
+      },
+      {
+        "@id": "#identifier_doi"
+      }
+    ],
+    "name": "Tama visitation",
+    "description": "Tama visitation",
+    "creditText": "Apay Tang (collector), Apay Tang (recorder), 1998. Tama visitation. MPEG/WAV.  AIT1-004 at catalog.paradisec.org.au. https://dx.doi.org/10.4225/72/56EC2221E2713",
+    "contentLocation": [
+      {
+        "@id": "#place-Siyu-Lin, Hualien"
+      }
+    ],
+    "dateCreated": "2010-11-04",
+    "dateModified": "2016-03-19",
+    "datePublished": "2016-03-19",
+    "publisher": {
+      "@id": "http://nla.gov.au/nla.party-1810306"
+    },
+    "collector": {
+      "@id": "mailto:aiyu98@yahoo.com"
+    },
+    "inLanguage": [
+      {
+        "@id": "http://www.language-archives.org/language/trv"
+      }
+    ],
+    "ldac:subjectLanguage": [
+      {
+        "@id": "http://www.language-archives.org/language/trv"
+      }
+    ],
+    "countries": [
+      {
+        "@id": "#country-Taiwan"
+      }
+    ],
+    "ldac:doi": "10.4225/72/56EC2221E2713",
+    "license": {
+      "@id": "#license-3-e8baa7c0"
+    },
+    "sourceOrganization": {
+      "@id": "http://nla.gov.au/nla.party-1170956"
+    },
+    "pcdm:memberOf": {
+      "@id": "https://catalog.paradisec.org.au/repository/AIT1"
+    },
+    "root": {
+      "@id": "https://catalog.paradisec.org.au/repository/AIT1"
+    },
+    "originalMedia": "audio casssette",
+    "originatedOn": "1998-01-02",
+    "hasPart": [
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-10A.mp3"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-10A.wav"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-10B.mp3"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-10B.wav"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-11A.mp3"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-11A.wav"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-11B.mp3"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-11B.wav"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-12A.mp3"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-12A.wav"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-12B.mp3"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-12B.wav"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-13A.mp3"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-13A.wav"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-13B.mp3"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-13B.wav"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-14A.mp3"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-14A.wav"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-14B.mp3"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-14B.wav"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-15A.mp3"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-15A.wav"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-1A.mp3"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-1A.wav"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-1B.mp3"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-1B.wav"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-2A.mp3"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-2A.wav"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-2B.mp3"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-2B.wav"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-3A.mp3"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-3A.wav"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-4A.mp3"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-4A.wav"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-4B.mp3"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-4B.wav"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-5A.mp3"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-5A.wav"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-5B.mp3"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-5B.wav"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-6A.mp3"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-6A.wav"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-6B.mp3"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-6B.wav"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-7A.mp3"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-7A.wav"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-7B.mp3"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-7B.wav"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-8A.mp3"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-8A.wav"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-9A.mp3"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-9A.wav"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-9B.mp3"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/004/AIT1-004-9B.wav"
+      }
+    ],
+    "communicationMode": [
+      {
+        "@id": "https://w3id.org/ldac/terms#primary text"
+      }
+    ],
+    "paradisec:dataType": [
+      {
+        "@id": "#datatype-10"
+      }
+    ],
+    "recorder": [
+      {
+        "@id": "mailto:aiyu98@yahoo.com"
+      }
+    ]
+  }
+}

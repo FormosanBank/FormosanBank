@@ -1,0 +1,105 @@
+{
+  "metadata": {
+    "@id": "https://catalog.paradisec.org.au/repository/AIT1/003",
+    "@type": [
+      "Data",
+      "Object",
+      "RepositoryObject"
+    ],
+    "conformsTo": {
+      "@id": "https://w3id.org/ldac/profile#Object"
+    },
+    "additionalType": "item",
+    "identifier": [
+      {
+        "@id": "#identifier_domain"
+      },
+      {
+        "@id": "#identifier_identifier"
+      },
+      {
+        "@id": "#identifier_collectionIdentifier"
+      },
+      {
+        "@id": "#identifier_itemIdentifier"
+      },
+      {
+        "@id": "#identifier_doi"
+      }
+    ],
+    "name": "Daily and traditional stories",
+    "description": "Daily and traditional stories",
+    "creditText": "Apay Tang (collector), Apay Tang (recorder), 1997. Daily and traditional stories. MPEG/WAV.  AIT1-003 at catalog.paradisec.org.au. https://dx.doi.org/10.4225/72/56EC221C96ACD",
+    "contentLocation": [
+      {
+        "@id": "#place-Siyu-Lin, Hualien"
+      }
+    ],
+    "dateCreated": "2008-09-20",
+    "dateModified": "2016-03-19",
+    "datePublished": "2016-03-19",
+    "publisher": {
+      "@id": "http://nla.gov.au/nla.party-1810306"
+    },
+    "collector": {
+      "@id": "mailto:aiyu98@yahoo.com"
+    },
+    "inLanguage": [
+      {
+        "@id": "http://www.language-archives.org/language/trv"
+      }
+    ],
+    "ldac:subjectLanguage": [
+      {
+        "@id": "http://www.language-archives.org/language/trv"
+      }
+    ],
+    "countries": [
+      {
+        "@id": "#country-Taiwan"
+      }
+    ],
+    "ldac:doi": "10.4225/72/56EC221C96ACD",
+    "license": {
+      "@id": "#license-3-a6e13b67"
+    },
+    "operator": {
+      "@id": "mailto:narakawa@hawaii.edu"
+    },
+    "sourceOrganization": {
+      "@id": "http://nla.gov.au/nla.party-1170956"
+    },
+    "pcdm:memberOf": {
+      "@id": "https://catalog.paradisec.org.au/repository/AIT1"
+    },
+    "root": {
+      "@id": "https://catalog.paradisec.org.au/repository/AIT1"
+    },
+    "originalMedia": "audio casssette",
+    "originatedOn": "1997-10-02",
+    "hasPart": [
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/003/AIT1-003-1.mp3"
+      },
+      {
+        "@id": "https://catalog.paradisec.org.au/repository/AIT1/003/AIT1-003-1.wav"
+      }
+    ],
+    "languageGenre": "narrative",
+    "communicationMode": [
+      {
+        "@id": "https://w3id.org/ldac/terms#primary text"
+      }
+    ],
+    "paradisec:dataType": [
+      {
+        "@id": "#datatype-10"
+      }
+    ],
+    "recorder": [
+      {
+        "@id": "mailto:aiyu98@yahoo.com"
+      }
+    ]
+  }
+}
