@@ -31,6 +31,7 @@
   * [Whitehorn Collection](the-bank-architecture/corpora/Whitehorn-Collection.md)
   * [Yedda Palemeq Blog](the-bank-architecture/corpora/YeddaPalemeqBlog.md)
   * [Siraya Gospels](the-bank-architecture/corpora/Siraya-Gospels.md)
+  * [Wilang Yutas Videos](the-bank-architecture/corpora/WilangYutasVideos.md)
 * [Developers](the-bank-architecture/developers/README.md)
   * [🤗 HuggingFace](the-bank-architecture/developers/huggingface.md)
   * [Folder structure](the-bank-architecture/developers/folder-structure.md)

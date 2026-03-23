@@ -23,6 +23,7 @@ Welcome to the FormosanBank Corpora section! Here, you’ll find comprehensive d
 * [Whitehorn Collection](Whitehorn-Collection.md) (audio)
 * [Yedda Palemeq Blog](YeddaPalemeqBlog.md) (text, English, segmentation, audio)
 * [Siraya Gospels](Siraya-Gospels.md) (text, English, Mandarin, Dutch)
+* [Wilang Yutas Videos](WilangYutasVideos.md) (text, Mandarin, audio)
 
 ***
 
@@ -33,13 +34,13 @@ Welcome to the FormosanBank Corpora section! Here, you’ll find comprehensive d
 
 | | Truku | Amis | Bunun | Kavalan | Rukai | Siraya | Paiwan | Puyuma | Thao | Saaroa | Sakizaya | Yami | Atayal | Seediq | Tsou | Kanakanabu | Saisiyat |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Word count | 86,274 | 2,114,749 | 225,343 | 110,915 | 255,666 | 42,107 | 398,682 | 229,064 | 101,856 | 63,097 | 1,431,883 | 119,240 | 716,524 | 947,430 | 77,985 | 88,730 | 90,383 |
-| Total audio | 20.8h | 59.7h | 61.1h | 24.0h | 75.5h | 0 | 74.9h | 59.9h | 20.7h | 23.0h | 22.2h | 20.3h | 72.7h | 42.8h | 19.5h | 28.6h | 21.7h |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 20.8h | 59.5h | 61.1h | 24.0h | 75.5h | 0 | 62.4h | 59.9h | 20.7h | 23.0h | 22.2h | 20.3h | 72.2h | 42.7h | 19.5h | 28.6h | 21.7h |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0.2h | 0 | 0 | 0 | 0 | 12.5h | 0 | 0 | 0 | 0 | 0 | 0.5h | 0.1h | 0 | 0 | 0 |
+| Word count | 86,274 | 2,114,749 | 225,343 | 110,915 | 255,666 | 42,107 | 398,682 | 229,064 | 101,856 | 63,097 | 1,431,883 | 119,240 | 741,620 | 947,430 | 77,985 | 88,730 | 90,383 |
+| Total audio | 20.8h | 59.7h | 61.1h | 24.0h | 75.5h | 0 | 74.9h | 59.9h | 20.7h | 23.0h | 22.2h | 20.3h | 82.4h | 42.8h | 19.5h | 28.6h | 21.7h |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 20.8h | 59.5h | 61.1h | 24.0h | 75.5h | 0 | 62.4h | 59.9h | 20.7h | 23.0h | 22.2h | 20.3h | 76.2h | 42.7h | 19.5h | 28.6h | 21.7h |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0.2h | 0 | 0 | 0 | 0 | 12.5h | 0 | 0 | 0 | 0 | 0 | 6.2h | 0.1h | 0 | 0 | 0 |
 | Translated sentences |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 2,187 | 13,117 | 10,786 | 2,162 | 12,919 | 1,951 | 12,357 | 8,687 | 2,155 | 2,183 | 2,182 | 3,062 | 13,087 | 6,524 | 2,183 | 2,177 | 2,204 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 11,995 | 46,390 | 40,039 | 16,273 | 48,917 | 1,947 | 32,953 | 35,349 | 13,902 | 11,902 | 12,779 | 14,712 | 45,459 | 25,562 | 10,569 | 13,439 | 13,527 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 11,995 | 46,390 | 40,039 | 16,273 | 48,917 | 1,947 | 32,953 | 35,349 | 13,902 | 11,902 | 12,779 | 14,712 | 45,694 | 25,562 | 10,569 | 13,439 | 13,527 |
 | Morphologically segmented | 0 | 0 | 0 | 0 | 0 | 0 | 3,567 | 0 | 0 | 0 | 0 | 960 | 0 | 0 | 0 | 0 | 0 |
 | Proportion glossed | 0% | 0% | 0% | 0% | 0% | 0% | 82% | 0% | 0% | 0% | 0% | 100% | 0% | 0% | 0% | 0% | 0% |
 
@@ -47,13 +48,13 @@ Welcome to the FormosanBank Corpora section! Here, you’ll find comprehensive d
 
 | | Amis<br>Coastal | Amis<br>Hengchun | Amis<br>Malan | Amis<br>Southern | Amis<br>UK | Amis<br>Xiuguluan | Bunun<br>Junqun | Bunun<br>Kaqun | Bunun<br>Luanqun | Bunun<br>Tanqun | Bunun<br>Zhuoqun | Rukai<br>Dawu | Rukai<br>Dona | Rukai<br>Eastern | Rukai<br>Maolin | Rukai<br>Wanshan | Rukai<br>Wutai | Paiwan<br>Central | Paiwan<br>Eastern | Paiwan<br>North Western | Paiwan<br>Northern | Paiwan<br>Sothern | Paiwan<br>Southern | Paiwan<br>UK | Puyuma<br>Jianhe | Puyuma<br>Nanwang | Puyuma<br>Xiqun | Puyuma<br>Zhiben | Atayal<br>FourSeasons | Atayal<br>Sekolik | Atayal<br>UK | Atayal<br>Wanda | Atayal<br>Wenshui | Atayal<br>YilanZeaol | Atayal<br>Zeaol | Seediq<br>DeluValley | Seediq<br>Duda | Seediq<br>Tegudaya | Seediq<br>UK |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Word count | 58,782 | 36,750 | 36,137 | 36,328 | 1,863,357 | 83,395 | 106,539 | 29,654 | 30,595 | 29,721 | 28,834 | 29,992 | 28,565 | 30,151 | 27,693 | 24,350 | 114,915 | 41,624 | 50,297 | 0 | 127,754 | 0 | 53,423 | 125,584 | 35,383 | 116,881 | 37,157 | 39,643 | 38,172 | 113,050 | 417,534 | 31,056 | 37,004 | 40,229 | 39,479 | 39,861 | 41,788 | 110,951 | 754,830 |
-| Total audio | 13.4h | 10.2h | 8.4h | 9.2h | 0.2h | 18.3h | 28.5h | 8.0h | 7.9h | 8.6h | 8.1h | 9.5h | 8.9h | 9.4h | 8.8h | 8.4h | 30.6h | 10.2h | 12.8h | 7.9h | 27.7h | 0.0h | 11.8h | 4.5h | 9.4h | 29.8h | 9.9h | 10.8h | 9.2h | 24.5h | 0.5h | 8.8h | 9.5h | 10.3h | 9.9h | 11.7h | 10.1h | 21.0h | 0.1h |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 13.4h | 10.2h | 8.4h | 9.2h | 0 | 18.3h | 28.5h | 8.0h | 7.9h | 8.6h | 8.1h | 9.5h | 8.9h | 9.4h | 8.8h | 8.4h | 30.6h | 10.2h | 12.8h | 0 | 27.7h | 0 | 11.7h | 0 | 9.4h | 29.8h | 9.9h | 10.8h | 9.2h | 24.5h | 0 | 8.8h | 9.5h | 10.3h | 9.9h | 11.7h | 10.1h | 21.0h | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 | 0 | 0 | 0.2h | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 7.9h | 0 | 0.0h | 0.1h | 4.5h | 0 | 0 | 0 | 0 | 0 | 0 | 0.5h | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0.1h |
+| Word count | 58,782 | 36,750 | 36,137 | 36,328 | 1,863,357 | 83,395 | 106,539 | 29,654 | 30,595 | 29,721 | 28,834 | 29,992 | 28,565 | 30,151 | 27,693 | 24,350 | 114,915 | 41,624 | 50,297 | 0 | 127,754 | 0 | 53,423 | 125,584 | 35,383 | 116,881 | 37,157 | 39,643 | 38,172 | 138,146 | 417,534 | 31,056 | 37,004 | 40,229 | 39,479 | 39,861 | 41,788 | 110,951 | 754,830 |
+| Total audio | 13.4h | 10.2h | 8.4h | 9.2h | 0.2h | 18.3h | 28.5h | 8.0h | 7.9h | 8.6h | 8.1h | 9.5h | 8.9h | 9.4h | 8.8h | 8.4h | 30.6h | 10.2h | 12.8h | 7.9h | 27.7h | 0.0h | 11.8h | 4.5h | 9.4h | 29.8h | 9.9h | 10.8h | 9.2h | 34.2h | 0.5h | 8.8h | 9.5h | 10.3h | 9.9h | 11.7h | 10.1h | 21.0h | 0.1h |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 13.4h | 10.2h | 8.4h | 9.2h | 0 | 18.3h | 28.5h | 8.0h | 7.9h | 8.6h | 8.1h | 9.5h | 8.9h | 9.4h | 8.8h | 8.4h | 30.6h | 10.2h | 12.8h | 0 | 27.7h | 0 | 11.7h | 0 | 9.4h | 29.8h | 9.9h | 10.8h | 9.2h | 28.5h | 0 | 8.8h | 9.5h | 10.3h | 9.9h | 11.7h | 10.1h | 21.0h | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 | 0 | 0 | 0.2h | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 7.9h | 0 | 0.0h | 0.1h | 4.5h | 0 | 0 | 0 | 0 | 0 | 5.7h | 0.5h | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0.1h |
 | Translated sentences |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 2,157 | 2,155 | 2,144 | 2,158 | 40 | 4,463 | 2,159 | 2,154 | 2,163 | 2,154 | 2,156 | 2,151 | 2,154 | 2,149 | 2,158 | 2,150 | 2,157 | 2,721 | 2,400 | 0 | 3,197 | 0 | 3,968 | 71 | 2,153 | 2,150 | 2,229 | 2,155 | 2,159 | 2,309 | 0 | 2,154 | 2,156 | 2,160 | 2,149 | 2,159 | 2,158 | 2,191 | 16 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 7,520 | 6,325 | 6,276 | 6,076 | 5,860 | 14,333 | 15,910 | 6,109 | 6,142 | 5,932 | 5,946 | 6,283 | 6,193 | 6,031 | 6,149 | 6,295 | 17,966 | 6,467 | 6,387 | 0 | 13,460 | 0 | 6,639 | 0 | 6,502 | 15,618 | 6,581 | 6,648 | 6,714 | 14,169 | 0 | 5,896 | 6,035 | 6,276 | 6,369 | 6,367 | 6,264 | 12,903 | 28 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 7,520 | 6,325 | 6,276 | 6,076 | 5,860 | 14,333 | 15,910 | 6,109 | 6,142 | 5,932 | 5,946 | 6,283 | 6,193 | 6,031 | 6,149 | 6,295 | 17,966 | 6,467 | 6,387 | 0 | 13,460 | 0 | 6,639 | 0 | 6,502 | 15,618 | 6,581 | 6,648 | 6,714 | 14,404 | 0 | 5,896 | 6,035 | 6,276 | 6,369 | 6,367 | 6,264 | 12,903 | 28 |
 | Morphologically segmented | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 537 | 157 | 0 | 995 | 0 | 1,807 | 71 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | Proportion glossed | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 100% | 100% | 0% | 100% | 0% | 64% | 100% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |
 

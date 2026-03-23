@@ -77,6 +77,7 @@ CSV_TO_MD = {
     'Wikipedias_corpora_stats.csv':             'wikipedias.md',
     'YeddaPalemeqBlog_corpora_stats.csv':         'YeddaPalemeqBlog.md',
     'Siraya_Gospels_corpora_stats.csv': 'Siraya-Gospels.md',
+    'WilangYutasVideos_corpora_stats.csv': 'WilangYutasVideos.md',
 }
 
 # ---------------------------------------------------------------------------
