@@ -24,6 +24,8 @@ Welcome to the FormosanBank Corpora section! Here, you’ll find comprehensive d
 * [Yedda Palemeq Blog](YeddaPalemeqBlog.md) (text, English, segmentation, audio)
 * [Siraya Gospels](Siraya-Gospels.md) (text, English, Mandarin, Dutch)
 * [Wilang Yutas Videos](WilangYutasVideos.md) (text, Mandarin, audio)
+* [Tang Recordings of Taroko](TangRecordingsOfTaroko.md) (audio)
+* [NTU Corpus of Formosan Languages](NTUFormosanCorpus.md) (text, audio, glossing)
 
 ***
 
@@ -35,9 +37,9 @@ Welcome to the FormosanBank Corpora section! Here, you’ll find comprehensive d
 | | Truku | Amis | Bunun | Kavalan | Rukai | Siraya | Paiwan | Puyuma | Thao | Saaroa | Sakizaya | Yami | Atayal | Seediq | Tsou | Kanakanabu | Saisiyat |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Word count | 86,274 | 2,114,749 | 225,343 | 110,915 | 255,666 | 42,107 | 398,682 | 229,064 | 101,856 | 63,097 | 1,431,883 | 119,240 | 741,620 | 947,430 | 77,985 | 88,730 | 90,383 |
-| Total audio | 20.8h | 59.7h | 61.1h | 24.0h | 75.5h | 0 | 74.9h | 59.9h | 20.7h | 23.0h | 22.2h | 20.3h | 82.4h | 42.8h | 19.5h | 28.6h | 21.7h |
+| Total audio | 42.2h | 59.7h | 61.1h | 24.0h | 75.5h | 0 | 74.9h | 59.9h | 20.7h | 23.0h | 22.2h | 20.3h | 82.4h | 42.8h | 19.5h | 28.6h | 21.7h |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 20.8h | 59.5h | 61.1h | 24.0h | 75.5h | 0 | 62.4h | 59.9h | 20.7h | 23.0h | 22.2h | 20.3h | 76.2h | 42.7h | 19.5h | 28.6h | 21.7h |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0.2h | 0 | 0 | 0 | 0 | 12.5h | 0 | 0 | 0 | 0 | 0 | 6.2h | 0.1h | 0 | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 21.4h | 0.2h | 0 | 0 | 0 | 0 | 12.5h | 0 | 0 | 0 | 0 | 0 | 6.2h | 0.1h | 0 | 0 | 0 |
 | Translated sentences |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 2,187 | 13,117 | 10,786 | 2,162 | 12,919 | 1,951 | 12,357 | 8,687 | 2,155 | 2,183 | 2,182 | 3,062 | 13,087 | 6,524 | 2,183 | 2,177 | 2,204 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 11,995 | 46,390 | 40,039 | 16,273 | 48,917 | 1,947 | 32,953 | 35,349 | 13,902 | 11,902 | 12,779 | 14,712 | 45,694 | 25,562 | 10,569 | 13,439 | 13,527 |

@@ -78,6 +78,7 @@ CSV_TO_MD = {
     'YeddaPalemeqBlog_corpora_stats.csv':         'YeddaPalemeqBlog.md',
     'Siraya_Gospels_corpora_stats.csv': 'Siraya-Gospels.md',
     'WilangYutasVideos_corpora_stats.csv': 'WilangYutasVideos.md',
+    'TangRecordingsOfTaroko_corpora_stats.csv': 'TangRecordingsOfTaroko.md',
 }
 
 # ---------------------------------------------------------------------------
