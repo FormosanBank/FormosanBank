@@ -79,6 +79,7 @@ CSV_TO_MD = {
     'Siraya_Gospels_corpora_stats.csv': 'Siraya-Gospels.md',
     'WilangYutasVideos_corpora_stats.csv': 'WilangYutasVideos.md',
     'TangRecordingsOfTaroko_corpora_stats.csv': 'TangRecordingsOfTaroko.md',
+    'NTUFormosanCorpus_corpora_stats.csv': 'NTUFormosanCorpus.md',
 }
 
 # ---------------------------------------------------------------------------
