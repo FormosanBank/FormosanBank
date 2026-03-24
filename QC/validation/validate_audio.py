@@ -128,6 +128,8 @@ def collect_sentence_refs(xml_root):
                                 and 'file' in audio_elem.attrib
                                 and form_elem is not None):
                             audio_filename = audio_elem.attrib['file']
+                            if not audio_filename.lower().endswith(('.mp3', '.wav', '.flac', '.ogg', '.m4a')):
+                                continue
                             form_text = form_elem.text or ''
                             refs.append((xml_path, elem.attrib.get('id', ''), audio_filename, form_text))
                 except Exception as e:
@@ -154,13 +156,16 @@ def collect_text_audio_refs(xml_root):
                     if root_elem.tag == 'TEXT':
                         for audio_elem in root_elem.findall('AUDIO'):
                             if 'file' in audio_elem.attrib:
-                                refs.append((xml_path, audio_elem.attrib['file']))
+                                audio_filename = audio_elem.attrib['file']
+                                if not audio_filename.lower().endswith(('.mp3', '.wav', '.flac', '.ogg', '.m4a')):
+                                    continue
+                                refs.append((xml_path, audio_filename))
                 except Exception as e:
                     print(f"Warning: Could not parse {xml_path}: {e}")
     return refs
 
 
-def check_audio_existence_and_duration(xml_root, audio_root, duration_log):
+def check_audio_existence_and_duration(xml_root, audio_root, duration_log, check_silence=False):
     """
     Phase 1: Verify that every audio file referenced in the XML files exists.
              If any are missing, report them and exit.
@@ -202,12 +207,18 @@ def check_audio_existence_and_duration(xml_root, audio_root, duration_log):
             resolved_text.append((xml_path, audio_filename, audio_path))
 
     if missing:
-        print(f"\nERROR: {len(missing)} audio file(s) referenced in XMLs could not be found:")
-        for xml_path, audio_filename in missing:
-            print(f"  {xml_path}: {audio_filename}")
-        sys.exit(1)
-
-    print(f"All {total_count} referenced audio files exist.")
+        missing_log = os.path.join(os.path.dirname(duration_log), "missing_audio.csv")
+        os.makedirs(os.path.dirname(missing_log), exist_ok=True)
+        with open(missing_log, mode='w', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow(['xml_file', 'audio_file'])
+            for xml_path, audio_filename in missing:
+                writer.writerow([xml_path, audio_filename])
+        print(f"\nWARNING: {len(missing)} audio file(s) could not be found. "
+              f"Logged to: {missing_log}")
+        print("Continuing with the files that were found...")
+    else:
+        print(f"All {total_count} referenced audio files exist.")
 
     # --- Phase 1b + Phase 2: silence check and words/sec check for sentence/word refs ---
     silent_log = os.path.join(os.path.dirname(duration_log), "silent_audio.csv")
@@ -217,8 +228,8 @@ def check_audio_existence_and_duration(xml_root, audio_root, duration_log):
         resolved, desc="Checking audio (silence + words/sec)"
     ):
         # Silence check (WAV only)
-        if audio_path.endswith('.wav'):
-            result = False #is_silent_wav(audio_path)
+        if audio_path.endswith('.wav') and check_silence:
+            result = is_silent_wav(audio_path)
             if result is True:
                 silent_files.append((xml_path, audio_filename))
 
@@ -236,8 +247,8 @@ def check_audio_existence_and_duration(xml_root, audio_root, duration_log):
     for xml_path, audio_filename, audio_path in tqdm(
         resolved_text, desc="Checking TEXT-level audio (silence only)"
     ):
-        if audio_path.endswith('.wav'):
-            result = False #is_silent_wav(audio_path)
+        if audio_path.endswith('.wav') and check_silence:
+            result = is_silent_wav(audio_path)
             if result is True:
                 silent_files.append((xml_path, audio_filename))
 
@@ -290,9 +301,10 @@ def process_file(path, file_name, failed_audio):
                 writer.writerow([path, lang, file_name])
                 
     
-def main(corpus_audio_path, xml_path=None):
-    failed_audio = os.path.join(os.path.dirname(os.path.abspath(__file__)), "logs", "non_working_audio.csv")
-    
+def main(corpus_audio_path, xml_path=None, check_silence=False):
+    failed_audio = os.path.join(os.getcwd(), "logs", "non_working_audio.csv")
+    os.makedirs(os.path.dirname(failed_audio), exist_ok=True)
+
     with open(failed_audio, mode='w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["path", "lang", "file_name"])
@@ -309,12 +321,13 @@ def main(corpus_audio_path, xml_path=None):
             f.result()
 
     if xml_path:
-        duration_log = os.path.join(os.path.dirname(os.path.abspath(__file__)), "logs", "audio_duration_issues.csv")
-        check_audio_existence_and_duration(xml_path, corpus_audio_path, duration_log)
+        duration_log = os.path.join(os.getcwd(), "logs", "audio_duration_issues.csv")
+        check_audio_existence_and_duration(xml_path, corpus_audio_path, duration_log, check_silence=check_silence)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="validates the functionality of audio files associated with a corpus")
     parser.add_argument('--path', help='the path to the audio folder containing the audio files associated with a corpus')
     parser.add_argument('--xml_path', help='the path to the XML folder; if provided, validates that all referenced audio files exist and checks character-per-second ratios against <FORM kindOf="original"> text')
+    parser.add_argument('--check_silence', action='store_true', help='enable silence detection for WAV files (may be slow for large corpora)')
     args = parser.parse_args()
-    main(args.path, args.xml_path)
+    main(args.path, args.xml_path, check_silence=args.check_silence)
