@@ -25,6 +25,7 @@ Welcome to the FormosanBank Corpora section! Here, you’ll find comprehensive d
 * [Siraya Gospels](Siraya-Gospels.md) (text, English, Mandarin, Dutch)
 * [Wilang Yutas Videos](WilangYutasVideos.md) (text, Mandarin, audio)
 * [Tang Recordings of Taroko](TangRecordingsOfTaroko.md) (audio)
+* [NTU Corpus of Formosan Languages](NTUFormosanCorpus.md) (text, audio, glossing)
 
 ***
 

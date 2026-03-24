@@ -33,6 +33,7 @@
   * [Siraya Gospels](the-bank-architecture/corpora/Siraya-Gospels.md)
   * [Wilang Yutas Videos](the-bank-architecture/corpora/WilangYutasVideos.md)
   * [Tang Recordings of Taroko](the-bank-architecture/corpora/TangRecordingsOfTaroko.md)
+  * [NTU Corpus of Formosan Languages](the-bank-architecture/corpora/NTUFormosanCorpus.md)
 * [Developers](the-bank-architecture/developers/README.md)
   * [🤗 HuggingFace](the-bank-architecture/developers/huggingface.md)
   * [Folder structure](the-bank-architecture/developers/folder-structure.md)
