@@ -105,7 +105,7 @@ The original corpus has a great deal of discourse coding for Sentences and Stori
 
 ### Major issues, user beware
 
-* It is known that the audio does not always match the text. It is not clear how common this is. 
+* It is known that the audio does not always match the text. It is not clear how common this is. A list of audio clips that are suspiciously long or short given how many words in the utterance can be found in [audio_duration_issues.csv](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/NTUFormosanCorpus/audio_duration_issues.csv)
 
 * There are sentences (last count, 56) where the glosses are clearly wrong. Most, but not all, of these cases involve a missing gloss, resulting in glosses being out of sync with the words. See [sentences_with_bad_glosses_removed.csv](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/NTUFormosanCorpus/sentences_with_bad_glosses_removed.csv).
 
