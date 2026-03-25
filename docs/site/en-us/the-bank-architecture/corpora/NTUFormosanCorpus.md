@@ -1,6 +1,8 @@
 # NTU Corpus of Formosan Languages
 
-[The NTU Corpus of Formosan Languages](https://corpus.linguistics.ntu.edu.tw/#/) is the first large open corpus of Formosan languages. It consists of three main sections:
+[The NTU Corpus of Formosan Languages](https://corpus.linguistics.ntu.edu.tw/#/) is the first large open corpus of Formosan languages. The NTU Corpus is a comprehensive and meticulously curated dataset representing 10 Indigenous Formosan languages: Kanakanavu, Rukai, Saisiyat, Tsou, Kavalan, Amis, Seediq, Atayal, Sakizaya, and Bunun. This corpus includes texts, audio recordings, elicited sentences, and example sentences from various sources such as grammar books and narrative collections. Designed to support linguistic research and revitalization efforts, the NTU Corpus provides a unique window into the diversity and complexity of Formosan languages.
+
+It consists of three main sections:
 
 * Grammar (examples derived from grammar textbooks)
 
@@ -29,6 +31,69 @@
 
 <!-- CORPUS STATS END -->
 
+***
+
+## **Glossing Conventions**
+
+The glossing conventions for the NTU Corpus primarily follow the [**Leipzig Glossing Rules**](https://www.eva.mpg.de/lingua/resources/glossing-rules.php), with modifications to better capture the linguistic specificity of Formosan languages. Below are the alternative treatments for Leipzig Rules 6, 7, and 10, as well as other adopted coding conventions.
+
+### **Modifications to Leipzig Glossing Rules**
+
+1. **Rule 6 - Non-Overt Elements**
+   * The symbol `[ ]` or `Ø` is not used for glossing non-overt elements.
+   * Example:
+     * **akoy** (Saisiyat) is glossed as `AF.many`.
+     * In Tsou, the non-overt element in **bonu** ('to eat') is glossed as `eat.AF`.
+2. **Rule 7 - Inherent Categories**
+   * Coding for inherent categories is **not used**.
+3. **Rule 10 - Reduplication**
+   * Reduplication is not marked by the tilde `~`. Instead, the following conventions are adopted:
+     * **Ca Reduplication:** Marked as `Ca-`.
+       * Example: **ha-hila** (Saisiyat) is glossed as `Ca-sun`.
+     * **Prefix-Type Reduplication:** Marked as `red-` if the reduplicated portion is at the beginning of the word.
+       * Example: **m-li-lizaq** (Kavalan) is glossed as `af-red-happy`.
+     * **Infix-Type Reduplication:** Marked as `<red>` if the reduplicated portion occurs in the medial position of the word.
+       * Example: **sa-ru\<mi'a>mi'ad** (Amis) is glossed as `sa-<red>day`.
+
+### **Glossing Focus Markers**
+
+The following focus markers are **new abbreviations** introduced in the NTU Corpus to represent the specific focus morphology of Formosan languages:
+
+* **AF:** Agent Focus
+* **PF:** Patient Focus
+* **RF (IF):** Referential Focus (Instrumental Focus)
+* **LF:** Locative Focus
+
+### **Focus Morphology in Tsou**
+
+The Tsou language has a unique focus system compared to other Formosan languages:
+
+* **Agent Focus (AF):** Glossed after the verb stem.
+* **Patient Focus (PF):** Glossed similarly.
+* Example:
+  * **bonU/ana** ('to eat') → `eat.AF/eat.PF`.
+  * **boacU/eoeca** ('to bite') → `bite.AF/bite.PF`.
+  * Verbs with -m- or m- forms for AF:
+    * **tmoecU/teoca** ('to hack') → `hack.AF/hack.PF`.
+    * **matvo'ho/patvo'ha** ('to dare to say') → `dare.to.say.AF/dare.to.say.PF`.
+    * **mooteo/totea** ('to wait') → `wait.AF/wait.PF`.
+
+### **Replaced Abbreviations**
+
+The NTU Corpus uses alternative abbreviations to standard Leipzig Glossing Rules to better fit Formosan languages:
+
+| **Leipzig Abbreviation** | **NTU Corpus Abbreviation** |
+| ------------------------ | --------------------------- |
+| `caus`                   | `cau`                       |
+| `dem`                    | `'this'` and `'that'`       |
+| `nmlz`                   | `nmz`                       |
+| `recp`                   | `rec`                       |
+
+### **Discourse Coding**
+
+The original corpus has a great deal of discourse coding for Sentences and Stories. For purposes of FormosanBank, this has been removed. Interested parties should consult the original.
+
+***
 
 ## Access Details
 
