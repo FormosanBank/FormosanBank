@@ -2,7 +2,6 @@ import csv
 import xml.etree.ElementTree as ET
 import os
 import argparse
-import json
 import wave
 import re
 from pathlib import Path
@@ -23,8 +22,8 @@ def extract_text_from_xml(tree: str, use_standard: bool = False) -> Tuple[str, s
         
     Returns:
         Tuple of (extracted_text, language_code, dialect, en_transl_count, zho_transl_count)
-        en_transl_count  – number of <S> elements with a non-empty English <TRANSL>
-        zho_transl_count – number of <S> elements with a non-empty Mandarin <TRANSL>
+        en_transl_count  – number of Formosan words (from S FORMs) in sentences with an English <TRANSL>
+        zho_transl_count – number of Formosan words (from S FORMs) in sentences with a Mandarin <TRANSL>
                            (xml:lang="zho" or "zh-Hant")
     """
     XML_LANG = '{http://www.w3.org/XML/1998/namespace}lang'
@@ -48,18 +47,21 @@ def extract_text_from_xml(tree: str, use_standard: bool = False) -> Tuple[str, s
         # First, look for sentence-level FORM elements with kindOf="original" or "standard"
         # These contain the complete sentences as they appear in the source
         for sentence in root.findall('.//S'):
+            sentence_words = 0
             for form in sentence.findall(f'./FORM[@kindOf="{kind_of}"]'):
                 if form.text:
                     texts.append(form.text.strip())
+                    cleaned = re.sub(r'[0-9",!]', ' ', form.text.strip())
+                    sentence_words += len(cleaned.split())
 
-            # Count translations by language
+            # Count translated words by language (words in the Formosan S FORM)
             for transl in sentence.findall('TRANSL'):
                 lang_code = (transl.get(XML_LANG) or '').lower()
                 if transl.text and transl.text.strip():
                     if lang_code == 'en':
-                        en_transl_count += 1
+                        en_transl_count += sentence_words
                     elif lang_code in ZHO_CODES:
-                        zho_transl_count += 1
+                        zho_transl_count += sentence_words
         
         # Fallback: if no sentence-level forms exist, collect word-level forms
         # This handles cases where only individual words are marked with the specified orthography
@@ -112,30 +114,33 @@ def get_lang_dialects(tree):
 def count_glosses(tree):
     """
     Given a parsed XML tree (ET.parse(xml_file)), count:
-      - glossed_sentences: number of <S> elements that have at least one <M> descendant
-      - transl_proportion: proportion of all <M> elements in the document that have a
-                           direct <TRANSL> child (0.0 if there are no <M> elements)
+      - segmented_words: number of Formosan words (from S FORMs with kindOf="original") in
+                         <S> elements that have at least one <M> descendant
+      - glossed_words:   number of Formosan words (from S FORMs with kindOf="original") in
+                         <S> elements that have at least one <M> descendant with a <TRANSL>
+                         child (always <= segmented_words)
 
     Returns:
-        (glossed_sentences, transl_proportion)
+        (segmented_words, glossed_words)
     """
     root = tree.getroot()
 
-    all_morphemes = root.findall('.//M')
-    total_m = len(all_morphemes)
+    segmented_words = 0
+    glossed_words = 0
+    for s in root.findall('.//S'):
+        has_m = s.find('.//M') is not None
+        has_glossed_m = s.find('.//M/TRANSL') is not None
+        word_count = 0
+        for form in s.findall('./FORM[@kindOf="original"]'):
+            if form.text:
+                cleaned = re.sub(r'[0-9",!]', ' ', form.text.strip())
+                word_count += len(cleaned.split())
+        if has_m:
+            segmented_words += word_count
+        if has_glossed_m:
+            glossed_words += word_count
 
-    glossed_sentences = sum(
-        1 for s in root.findall('.//S')
-        if s.find('.//M') is not None
-    )
-
-    if total_m == 0:
-        transl_proportion = 0.0
-    else:
-        m_with_transl = sum(1 for m in all_morphemes if m.find('TRANSL') is not None)
-        transl_proportion = m_with_transl / total_m
-
-    return glossed_sentences, transl_proportion
+    return segmented_words, glossed_words
 
 
 def _get_audio_duration(file_path):
@@ -249,7 +254,7 @@ def process_xml_file(xml_file_path):
     try:
         tree = ET.parse(xml_file_path)
         language, dialect, en_transl_count, zho_transl_count, word_count = extract_text_from_xml(tree)
-        glossed_sentences, transl_proportion = count_glosses(tree)
+        segmented_words, glossed_words = count_glosses(tree)
         transcribed_count, transcribed_seconds, untranscribed_count, untranscribed_seconds = count_audio(tree, xml_file_path)
 
         return {
@@ -258,8 +263,8 @@ def process_xml_file(xml_file_path):
             'word_count': word_count,
             'en_transl_count': en_transl_count,
             'zho_transl_count': zho_transl_count,
-            'segmented_sentences': glossed_sentences,
-            'glossed_proportion': transl_proportion,
+            'segmented_words': segmented_words,
+            'glossed_words': glossed_words,
             'transcribed_audio_count': transcribed_count,
             'transcribed_audio_seconds': transcribed_seconds,
             'untranscribed_audio_count': untranscribed_count,
@@ -289,11 +294,10 @@ def main(corpora_path):
                         file_stats.append(stats)
 
     # Aggregate stats by language and dialect
-    # _file_count is used internally to average glossed_proportion across files
     corpora_dict = defaultdict(lambda: {
         'word_count': 0,
-        'segmented_sentences': 0,
-        'glossed_proportion': 0.0,
+        'segmented_words': 0,
+        'glossed_words': 0,
         'transcribed_audio_count': 0,
         'transcribed_audio_seconds': 0.0,
         'untranscribed_audio_count': 0,
@@ -305,8 +309,8 @@ def main(corpora_path):
 
     for stats in file_stats:
         key = (stats['language'], stats['dialect'])
-        corpora_dict[key]['segmented_sentences'] += stats['segmented_sentences']
-        corpora_dict[key]['glossed_proportion'] += stats['glossed_proportion']
+        corpora_dict[key]['segmented_words'] += stats['segmented_words']
+        corpora_dict[key]['glossed_words'] += stats['glossed_words']
         corpora_dict[key]['transcribed_audio_count'] += stats['transcribed_audio_count']
         corpora_dict[key]['transcribed_audio_seconds'] += round(stats['transcribed_audio_seconds'], 0)
         corpora_dict[key]['untranscribed_audio_count'] += stats['untranscribed_audio_count']
@@ -315,12 +319,6 @@ def main(corpora_path):
         corpora_dict[key]['zho_transl_count'] += stats['zho_transl_count']
         corpora_dict[key]['word_count'] += stats.get('word_count', 0)
         corpora_dict[key]['file_count'] += 1
-
-    # Convert summed glossed_proportion to a per-file average
-    for key, vals in corpora_dict.items():
-        fc = vals['file_count']
-        if fc > 0:
-            vals['glossed_proportion'] = round(vals['glossed_proportion'] / fc, 4)
 
     # Derive corpus name and repo root from the 'Corpora' component in the path
     parts = Path(corpora_path).resolve().parts
@@ -338,7 +336,7 @@ def main(corpora_path):
 
     # Save as CSV
     csv_path = stats_dir / f'{corpus_name}_corpora_stats.csv'
-    fieldnames = ['language', 'dialect', 'segmented_sentences', 'glossed_proportion',
+    fieldnames = ['language', 'dialect', 'segmented_words', 'glossed_words',
                   'transcribed_audio_count', 'transcribed_audio_seconds',
                   'untranscribed_audio_count', 'untranscribed_audio_seconds',
                   'eng_transl_count', 'zho_transl_count', 'word_count', 'file_count']
