@@ -146,7 +146,7 @@ def col_header(lang: str, dialect: str) -> str:
 def row_has_data(row: dict) -> bool:
     """Return True if at least one displayed numeric field is non-zero."""
     fields = ('word_count', 'transcribed_audio_seconds', 'untranscribed_audio_seconds',
-              'eng_transl_count', 'zho_transl_count', 'segmented_sentences')
+              'eng_transl_count', 'zho_transl_count', 'segmented_words')
     try:
         return any(float(row.get(f) or 0) != 0 for f in fields)
     except (ValueError, TypeError):
@@ -189,11 +189,11 @@ ROW_DEFS = [
     ('Total audio',                         'AUDIO_TOTAL',               fmt_audio),
     (f'{INDENT}Transcribed',               'transcribed_audio_seconds',  fmt_audio),
     (f'{INDENT}Untranscribed',             'untranscribed_audio_seconds',fmt_audio),
-    ('Translated sentences',                None,                        None),
+    ('Translated words',                    None,                        None),
     (f'{INDENT}English',                   'eng_transl_count',           fmt_count),
     (f'{INDENT}Mandarin',                  'zho_transl_count',           fmt_count),
-    ('Morphologically segmented',           'segmented_sentences',       fmt_count),
-    ('Proportion glossed',                  'glossed_proportion',        fmt_pct),
+    ('Morphologically segmented',           'segmented_words',           fmt_count),
+    ('Glossed words',                       'glossed_words',             fmt_count),
 ]
 
 
@@ -340,8 +340,8 @@ def _empty_stats() -> dict:
         'untranscribed_audio_seconds': 0.0,
         'eng_transl_count':            0,
         'zho_transl_count':            0,
-        'segmented_sentences':         0,
-        'glossed_segments':            0.0,   # sum of seg_sentences × glossed_proportion
+        'segmented_words':             0,
+        'glossed_words':               0,
     }
 
 
@@ -352,10 +352,8 @@ def _accumulate(bucket: dict, row: dict) -> None:
         bucket['untranscribed_audio_seconds'] += float(row.get('untranscribed_audio_seconds')     or 0)
         bucket['eng_transl_count']            += int(float(row.get('eng_transl_count')            or 0))
         bucket['zho_transl_count']            += int(float(row.get('zho_transl_count')            or 0))
-        seg                                    = int(float(row.get('segmented_sentences')         or 0))
-        gp                                     = float(row.get('glossed_proportion')              or 0)
-        bucket['segmented_sentences']         += seg
-        bucket['glossed_segments']            += seg * gp
+        bucket['segmented_words']             += int(float(row.get('segmented_words')             or 0))
+        bucket['glossed_words']               += int(float(row.get('glossed_words')               or 0))
     except (ValueError, TypeError):
         pass
 
@@ -404,9 +402,7 @@ def _make_table_from_buckets(keys: list, buckets: dict, header_fn) -> str:
     sep_line    = '| --- | ' + ' | '.join(['---'] * len(keys)) + ' |'
 
     def glossed(k):
-        seg = buckets[k]['segmented_sentences']
-        gs  = buckets[k]['glossed_segments']
-        return '0%' if seg == 0 else fmt_pct(gs / seg)
+        return fmt_count(buckets[k]['glossed_words'])
 
     def col(k, field, fmt):
         return fmt(buckets[k][field])
@@ -420,11 +416,11 @@ def _make_table_from_buckets(keys: list, buckets: dict, header_fn) -> str:
         '| Total audio | '                         + ' | '.join(audio_total(k)                                   for k in keys) + ' |',
         f'| {INDENT}Transcribed | '               + ' | '.join(col(k, 'transcribed_audio_seconds',   fmt_audio) for k in keys) + ' |',
         f'| {INDENT}Untranscribed | '             + ' | '.join(col(k, 'untranscribed_audio_seconds', fmt_audio) for k in keys) + ' |',
-        '| Translated sentences | '                + ' | '.join('' for _ in keys)                                              + ' |',
+        '| Translated words | '                    + ' | '.join('' for _ in keys)                                              + ' |',
         f'| {INDENT}English | '                   + ' | '.join(col(k, 'eng_transl_count',            fmt_count) for k in keys) + ' |',
         f'| {INDENT}Mandarin | '                  + ' | '.join(col(k, 'zho_transl_count',            fmt_count) for k in keys) + ' |',
-        '| Morphologically segmented | '           + ' | '.join(col(k, 'segmented_sentences',         fmt_count) for k in keys) + ' |',
-        '| Proportion glossed | '                  + ' | '.join(glossed(k)                                        for k in keys) + ' |',
+        '| Morphologically segmented | '           + ' | '.join(col(k, 'segmented_words',              fmt_count) for k in keys) + ' |',
+        '| Glossed words | '                       + ' | '.join(glossed(k)                                        for k in keys) + ' |',
     ]
     return '\n'.join([header_line, sep_line] + data_lines)
 

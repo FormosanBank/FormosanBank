@@ -11,17 +11,17 @@ This uses an unusual orthography (see Notes) and is imperfectly standardized.
 <!-- CORPUS STATS START -->
 ### Corpus Statistics
 
-| | Amis<br>UK |
+| | Amis<br>NA |
 | --- | --- |
 | Word count | 358 |
 | Total audio | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 |
-| Translated sentences |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 40 |
+| Translated words |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 358 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 |
 | Morphologically segmented | 0 |
-| Proportion glossed | 0% |
+| Glossed words | 0 |
 
 ***
 

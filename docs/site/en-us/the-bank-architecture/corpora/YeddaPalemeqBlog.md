@@ -15,11 +15,11 @@ Yedda Palemeq, a Paiwan-speaker and linguist, maintained a [blog](https://yeddap
 | Total audio | 1.2h |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 1.2h |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 |
-| Translated sentences |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 659 |
+| Translated words |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 5,835 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 |
-| Morphologically segmented | 652 |
-| Proportion glossed | 0% |
+| Morphologically segmented | 5,613 |
+| Glossed words | 0 |
 
 ***
 

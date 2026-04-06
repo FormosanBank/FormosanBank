@@ -20,9 +20,31 @@ layout:
 
 # Welcome
 
-Welcome to FormosanBank, a large-scale data-driven project dedicated to the preservation and revitalization of the Indigenous Formosan languages of Taiwan. These languages, which form a significant part of the Austronesian language family, are endangered, with some facing the risk of extinction. Our mission is to create a comprehensive, machine-readable corpus of these languages to support linguistic research, language education, and revitalization efforts.
+Welcome to FormosanBank, a large-scale data-driven project dedicated to the preservation and revitalization of the indigenous languages of Taiwan. These languages, which form a significant part of the Austronesian language family, are endangered, with some facing the risk of extinction. 
 
-Here, you'll find a description of the corpus collected and processed across the 16 official Formosan languages, which includes over 8 million tokens and over 730 hours of audio across the languages (detailed breakdown can be found[ here](https://ai4commsci.gitbook.io/formosanbank/the-bank-architecture/corpora)). You'd further find a detailed description of how the data is structured and the various way to access it. You can also access the github with all the work and data related to FormosanBank[ here](https://github.com/FormosanBank/FormosanBank) and the huggingFace organization with all the audio files from[ here](https://huggingface.co/FormosanBank).
+The Taiwanese indigenous languages are possessed of a remarkable number of corpora, particularly by comparison to other "under-resourced" languages. However, these materials are typically difficult to find, in a bewildering variety of formats, and rarely in machine-readable formats. Thus, while in aggregate a substantial corpus exists, in practice researchers and technology developers are restricted in what they can actually use.
+
+The goal of FormosanBank is to eliminate this bottleneck, providing researchers, technology developers, educators, and community members with a central repository of critical linguistic data. Similar to CHILDES or Pangloss, FormosanBank is a corpus of corpora. Data [from different sources](https://ai4commsci.gitbook.io/formosanbank/the-bank-architecture/corpora) are compiled and standardized. FormosanBank is also [FAIR](https://www.nature.com/articles/sdata201618): Free, Accessible, Interoperable, and Reusable. 
+
+Currently, the corpus covers 17 languages to date, including 16 extant languages and 1 dormant language. In total, the corpus includes 7.3 million tokens and 700 hours of audio. Much of it is translated into Mandarin, English, or both. A smaller portion includes morphosyntactic glosses, typically on the order of 10k-20k sentences per language. A detailed breakdown can be found [here](https://ai4commsci.gitbook.io/formosanbank/the-bank-architecture/corpora).
+
+Learn more about the goals of FormosanBank and how it differs from other corpus projects [here](https://ai4commsci.gitbook.io/formosanbank/background/formosanbank).
+
+## Rules of the Road
+
+FormosanBank is free to use and copy, but you *must cite the individual corpora as well as FormosanBank itself*. The required citation is listed on the page for the corpus, as well as in the XML files themselves. Respecting the copyright owners is not just required by law, but ensures people continue to contribute their work so that all of us may benefit. Note that while some corpora are licensed for commercial use, most are not. The license is listed on the page for each corpus and in each XML file. If you wish to license materials for commercial use, we can help you reach out to the copyright owners. 
+
+## Accessing and Using FormosanBank
+
+FormosanBank is accessible through the [GitHub repository](https://github.com/FormosanBank/FormosanBank), with audio hosted by [HuggingFace](https://huggingface.co/FormosanBank).
+
+The repository comes with many useful utility scripts, which are documented in these pages.
+
+We strongly recommend you carefully read the documentation before using any data. For instance, not undestanding the [XML format](https://ai4commsci.gitbook.io/formosanbank/the-bank-architecture/formosanbank-xml-format) is likely to lead to wildly inaccurate results. (This has happened.) Similarly, while we have standardized what we can, there are non-trivial differences across corpora that you should be aware of, and which are documented on each corpus page. 
+
+A good place to start is the [overview page](https://ai4commsci.gitbook.io/formosanbank/background/formosanbank).
+
+## Participants and Contributors
 
 The large-scale nature of FormosanBank would not have been possible without the collaborative efforts of numerous individuals and organizations.&#x20;
 

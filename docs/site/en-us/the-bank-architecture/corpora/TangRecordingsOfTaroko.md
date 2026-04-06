@@ -15,11 +15,11 @@ None of the audio are transcribed. There is slightly more meta-data at Paradisec
 | Total audio | 21.4h |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 21.4h |
-| Translated sentences |  |
+| Translated words |  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 |
 | Morphologically segmented | 0 |
-| Proportion glossed | 0% |
+| Glossed words | 0 |
 
 ***
 

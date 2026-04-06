@@ -21,15 +21,16 @@ It consists of three main sections:
 | Total audio | 1.2h | 1.6h | 2.9h | 1.6h | 2.3h | 1.1h | 3.3h | 1.0h | 4.0h | 1.8h |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 1.2h | 1.6h | 2.9h | 1.6h | 2.3h | 1.1h | 3.3h | 1.0h | 4.0h | 1.8h |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| Translated sentences |  |  |  |  |  |  |  |  |  |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 753 | 2,973 | 2,382 | 2,256 | 923 | 488 | 1,611 | 949 | 2,421 | 1,293 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 756 | 2,970 | 2,393 | 2,255 | 2,071 | 488 | 2,840 | 949 | 3,963 | 1,293 |
-| Morphologically segmented | 756 | 2,975 | 2,394 | 2,252 | 1,530 | 489 | 2,098 | 949 | 3,013 | 1,294 |
-| Proportion glossed | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% |
+| Translated words |  |  |  |  |  |  |  |  |  |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 7,516 | 22,855 | 16,181 | 17,918 | 8,949 | 5,854 | 18,434 | 10,117 | 14,975 | 10,803 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 7,561 | 22,844 | 16,245 | 17,917 | 13,972 | 5,854 | 23,349 | 10,117 | 20,072 | 10,803 |
+| Morphologically segmented | 7,561 | 22,867 | 16,247 | 17,893 | 12,975 | 5,855 | 21,937 | 10,117 | 18,687 | 10,816 |
+| Glossed words | 7,561 | 22,867 | 16,247 | 17,893 | 12,975 | 5,855 | 21,937 | 10,117 | 18,687 | 10,816 |
 
 ***
 
 <!-- CORPUS STATS END -->
+
 
 ***
 
