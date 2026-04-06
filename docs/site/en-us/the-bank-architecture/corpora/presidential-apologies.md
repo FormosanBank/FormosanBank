@@ -17,11 +17,11 @@ This apology text, as part of the effort to promote **historical justice**, has 
 | Total audio | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| Translated sentences |  |  |  |  |  |  |  |  |  |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 29 | 33 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 33 | 29 | 33 |
+| Translated words |  |  |  |  |  |  |  |  |  |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 2,328 | 1,856 | 1,117 | 1,749 | 1,693 | 1,501 | 1,874 | 2,157 | 1,552 | 1,655 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 2,328 | 1,856 | 1,117 | 1,749 | 1,693 | 1,501 | 1,874 | 2,157 | 1,552 | 1,655 |
 | Morphologically segmented | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| Proportion glossed | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |
+| Glossed words | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 
 ***
 

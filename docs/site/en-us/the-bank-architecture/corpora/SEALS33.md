@@ -11,17 +11,17 @@ The 2024 South East Asian Linguistic Society meeting took place in Taipei. The m
 <!-- CORPUS STATS START -->
 ## Corpus Statistics
 
-| | Seediq<br>UK | Saisiyat |
+| | Seediq<br>NA | Saisiyat |
 | --- | --- | --- |
 | Word count | 543 | 585 |
 | Total audio | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 |
-| Translated sentences |  |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 16 | 16 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 28 | 28 |
+| Translated words |  |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 136 | 177 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 402 | 434 |
 | Morphologically segmented | 0 | 0 |
-| Proportion glossed | 0% | 0% |
+| Glossed words | 0 | 0 |
 
 ***
 

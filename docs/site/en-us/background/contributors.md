@@ -22,6 +22,7 @@ The following have contributed data to FormosanBank. Note that in some cases, th
 * Wilang Yutas
 * [Henry Chang](https://www.ling.sinica.edu.tw/main/en?act=researcher_manager\&code=show_member\&memberID=11)
 * Robert Early
+* Yedda Palemeq
 
 ***
 
