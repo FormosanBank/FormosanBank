@@ -19,7 +19,8 @@ The following have contributed data to FormosanBank. Note that in some cases, th
 * [劉宇陽](https://ced.utaipei.edu.tw/teacher/info?id=100103)
 * Juan T. F. & Ruan X.
 * [Victoria Rau](https://rau.ccu.edu.tw/)
-* Wilang Yutas
+* Wilang Simaw
+* Apay Tang
 * [Henry Chang](https://www.ling.sinica.edu.tw/main/en?act=researcher_manager\&code=show_member\&memberID=11)
 * Robert Early
 * Yedda Palemeq
