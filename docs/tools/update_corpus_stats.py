@@ -145,7 +145,8 @@ def col_header(lang: str, dialect: str) -> str:
 
 def row_has_data(row: dict) -> bool:
     """Return True if at least one displayed numeric field is non-zero."""
-    fields = ('word_count', 'transcribed_audio_seconds', 'untranscribed_audio_seconds',
+    fields = ('word_count', 'transcribed_audio_count', 'transcribed_audio_seconds',
+              'untranscribed_audio_count', 'untranscribed_audio_seconds',
               'eng_transl_count', 'zho_transl_count', 'segmented_words')
     try:
         return any(float(row.get(f) or 0) != 0 for f in fields)
