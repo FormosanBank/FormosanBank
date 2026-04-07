@@ -19,11 +19,11 @@ They are mostly Paiwan but also some Atayal, Seediq, and Amis.
 | Total audio | 0.2h | 4.5h | 7.9h | 0.0h | 0.1h | 0.5h | 0.1h |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0.2h | 4.5h | 7.9h | 0.0h | 0.1h | 0.5h | 0.1h |
-| Translated sentences |  |  |  |  |  |  |  |
+| Translated words |  |  |  |  |  |  |  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | Morphologically segmented | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| Proportion glossed | 0% | 0% | 0% | 0% | 0% | 0% | 0% |
+| Glossed words | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 
 ***
 
