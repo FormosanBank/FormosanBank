@@ -3,6 +3,26 @@ import os
 import argparse
 import json
 from collections import defaultdict
+
+LANG_CODE_TO_NAME = {
+    'ami': 'Amis',
+    'tay': 'Atayal',
+    'pwn': 'Paiwan',
+    'bnn': 'Bunun',
+    'pyu': 'Puyuma',
+    'dru': 'Rukai',
+    'tsu': 'Tsou',
+    'xsy': 'Saisiyat',
+    'tao': 'Yami',
+    'ssf': 'Thao',
+    'ckv': 'Kavalan',
+    'trv': 'Seediq',
+    'szy': 'Sakizaya',
+    'sxr': 'Saaroa',
+    'xnb': 'Kanakanavu',
+    'fos': 'Siraya',
+}
+
 # Determine the language of the file based on the path
 def get_lang(path, file, langs):
     for lang in langs:
@@ -15,6 +35,7 @@ def read_file(file_path):
     num_words = 0
     tree = ET.parse(file_path)
     root = tree.getroot()
+    xml_lang = root.attrib.get('{http://www.w3.org/XML/1998/namespace}lang')
     if "dialect" in root.attrib:
         dialect = root.attrib['dialect']
     else:
@@ -30,7 +51,7 @@ def read_file(file_path):
             # Count the number of words
             num_words += len(words)
 
-    return num_words, dialect
+    return num_words, dialect, xml_lang
 
 def count_source(path, tokens_by_lang, langs):
     source_total = 0
@@ -39,7 +60,12 @@ def count_source(path, tokens_by_lang, langs):
             if file.endswith(".xml") and 'XML' in os.path.join(root, file):
                 # print(root, file)
                 lang = get_lang(root, file, langs)
-                tokens_in_file, dialect = read_file(os.path.join(root, file))
+                file_path = os.path.join(root, file)
+                tokens_in_file, dialect, xml_lang = read_file(file_path)
+                if lang is None and xml_lang:
+                    lang = LANG_CODE_TO_NAME.get(xml_lang)
+                if lang is None:
+                    raise ValueError(f"Could not determine language for XML file: {file_path}")
                 if dialect:
                     tokens_by_lang[lang][1][dialect] += tokens_in_file
                 else:
