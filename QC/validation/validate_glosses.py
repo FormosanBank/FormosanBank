@@ -208,6 +208,8 @@ Examples:
                        help='Check if each W element has at least one M element')
     parser.add_argument('--debug', action='store_true',
                        help='Enable debug output showing detailed parsing information')
+    parser.add_argument('--output_dir',
+                       help='Directory for validation CSV outputs. Defaults to the current working directory.')
     
     args = parser.parse_args()
     
@@ -218,8 +220,10 @@ Examples:
         sys.exit(1)
     
     # Setup output CSVs
-    w_csv_file = Path('validation_results.csv')
-    m_csv_file = Path('validation_m_mismatches.csv')
+    output_dir = Path(args.output_dir) if args.output_dir else Path.cwd()
+    output_dir.mkdir(parents=True, exist_ok=True)
+    w_csv_file = output_dir / 'validation_results.csv'
+    m_csv_file = output_dir / 'validation_m_mismatches.csv'
 
     print(f"Validating XML files in: {xml_folder}")
     print(f"Check morphemes (W missing M): {args.check_morpho}")
