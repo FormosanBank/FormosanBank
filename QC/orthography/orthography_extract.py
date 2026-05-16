@@ -22,6 +22,16 @@ plt.rcParams['font.sans-serif'] = ['Arial Unicode MS']
 # Set the font properties globally
 #plt.rcParams['font.family'] = 'Noto Sans'
 
+
+def parse_bool(value):
+    if isinstance(value, bool):
+        return value
+    if value.lower() in {"1", "true", "t", "yes", "y"}:
+        return True
+    if value.lower() in {"0", "false", "f", "no", "n"}:
+        return False
+    raise argparse.ArgumentTypeError("Expected a boolean value such as true or false.")
+
 def generate_corpus(language_to_process, to_check_path, kindOf, by_dialect=False):
     corpus = {}
     if not by_dialect:
@@ -412,7 +422,12 @@ def visualize(o_info, output_folder):
     plt.close()
 
 def main(args, langs):
-    logs_dir = os.path.join(args.corpora_path, "extract_logs")
+    if args.corpus == "all":
+        to_check_path = args.corpora_path
+    else:
+        to_check_path = os.path.join(args.corpora_path, args.corpus)
+
+    logs_dir = args.output_dir or os.path.join(to_check_path, "extract_logs")
     os.makedirs(logs_dir, exist_ok=True)
 
     if args.language == 'All':
@@ -423,7 +438,7 @@ def main(args, langs):
     for language in languages_to_process:
         corpus = None
 
-        corpus = generate_corpus(language, args.corpora_path, args.kindOf, args.by_dialect)
+        corpus = generate_corpus(language, to_check_path, args.kindOf, args.by_dialect)
         for corp in corpus.keys():
             if corpus[corp]:
                 o_info = extract_orthographic_info(corpus[corp])
@@ -435,7 +450,7 @@ def main(args, langs):
                 with open(os.path.join(output_folder, "orthographic_info"), 'wb') as fp:
                     pickle.dump(o_info, fp)
                 visualize(o_info, output_folder)
-                print(f"Successfully extracted orthographic information for {corp} from {language} using {args.corpora_path}")
+                print(f"Successfully extracted orthographic information for {corp} from {language} using {to_check_path}")
             else:
                 print(f"Warning: Unable to extract the orthographic information for {corp} from {language}. generate_corpus function didn't return any corpus")
     
@@ -450,7 +465,10 @@ if __name__ == "__main__":
     parser.add_argument('--corpus', help='Set to "all" to process all corpora in the corpora_path. Otherwise, provide name of corpus.')
     parser.add_argument('--language', help='Language code')
     parser.add_argument('--kindOf', help='which XML tier to consider. Defaults to all, which is a problem if there is both an original and standard tier.')
-    parser.add_argument('--by_dialect', help='If set to True, will process corpora by dialect')
+    parser.add_argument('--by_dialect', nargs='?', const=True, default=False, type=parse_bool,
+                        help='Process corpora by dialect. Accepts true/false; passing the flag alone means true.')
+    parser.add_argument('--output_dir',
+                        help='Directory for extracted orthographic info and plots. Defaults to <corpus>/extract_logs.')
     args = parser.parse_args()
 
     # Validate required arguments
@@ -460,6 +478,6 @@ if __name__ == "__main__":
         parser.error(f"The entered path, {args.corpora_path}, doesn't exist")
     if args.language != "All" and not args.language in langs:
         parser.error(f"Enter a valid Formosan language from the list: {langs}")
-    if not args.by_dialect:
-        args.by_dialect = False
+    if args.corpus != "all" and not os.path.exists(os.path.join(args.corpora_path, args.corpus)):
+        parser.error(f"The entered corpus doesn't exist: {os.path.join(args.corpora_path, args.corpus)}")
     main(args, langs)
