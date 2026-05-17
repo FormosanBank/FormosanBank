@@ -36,6 +36,7 @@
   * [NTU Corpus of Formosan Languages](the-bank-architecture/corpora/NTUFormosanCorpus.md)
 * [Developers](the-bank-architecture/developers/README.md)
   * [🤗 HuggingFace](the-bank-architecture/developers/huggingface.md)
+  * [Formosan MT Toolkit](the-bank-architecture/developers/formosan-mt-toolkit.md)
   * [Folder structure](the-bank-architecture/developers/folder-structure.md)
 
 ## Additional Resources
