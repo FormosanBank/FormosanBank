@@ -61,7 +61,7 @@ The processed data in XML format will be saved in the `Final_XML` directory.
    **_Output_**
    The processed data in XML format will be saved in the `Final_XML` directory.
 
-   For some files, this ends up with some semi-blank <S /> elements, which are deleted by hand when seen.
+   Some ePark picture-book records are illustration-only pages: the source row has an ID and page order, but both the Formosan text and Chinese translation are blank. `ePark3.py` skips these rows so they do not become empty `<S />` elements in `Final_XML`. Skipped rows are recorded in `skipped_blank_rows.csv` in the generated topic directory.
 
 3. **remove audio tags associated with failed downloads**
 
