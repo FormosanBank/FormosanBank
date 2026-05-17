@@ -11,14 +11,20 @@ import threading
 import re
 
 def clean_text(text):
-    """Remove spaces before question marks and normalize multiple spaces."""
+    """Normalize whitespace and obvious sentence-punctuation spacing."""
     if text is None:
         return None
-    # Remove spaces before question marks
-    text = re.sub(r'\s+\?', '?', text)
+    # Remove spaces before common punctuation.
+    text = re.sub(r'\s+([?!,！？，。])', r'\1', text)
+    text = re.sub(r'\s+\.([^0-9])', r'.\1', text)
     # Normalize multiple spaces to single spaces
     text = re.sub(r'\s+', ' ', text)
-    # Strip leading/trailing whitespace
+    # Add spaces after sentence punctuation when source fields run sentences together.
+    text = re.sub(r'([!?！？。])(?=[^\W\d_])', r'\1 ', text)
+    text = re.sub(r'(\.{2,})(?=(?:[^\W\d_]|[ʔʡ]))', r'\1 ', text)
+    text = re.sub(r'(?<=[^\W\d_])\.(?=(?:[^\W\d_]|[ʔʡ]))', '. ', text)
+    text = re.sub(r'(?<=[ʔʡ])\.(?=(?:[^\W\d_]|[ʔʡ]))', '. ', text)
+    text = re.sub(r"(?<=[a-z’'])\.(?=[A-Z])", '. ', text)
     return text.strip()
 
 def has_text(text):
