@@ -1,9 +1,20 @@
 from lxml import etree
 import os
-import pandas as pd
 import argparse
 import logging
 import xml.etree.ElementTree as ET
+import csv
+
+XML_NAMESPACE_XSD = """\
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.w3.org/XML/1998/namespace"
+           xmlns:xml="http://www.w3.org/XML/1998/namespace"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified">
+  <xs:attribute name="lang" type="xs:language"/>
+</xs:schema>
+"""
 
 
 '''
@@ -29,6 +40,22 @@ def get_log_file_name(args):
     else:
         log_file_name = "validation_log.txt"
     return log_file_name
+
+
+def load_iso_639_3_codes(path):
+    """Load ISO 639-3 identifiers without requiring pandas."""
+    with open(path, newline='', encoding='utf-8') as iso_file:
+        reader = csv.DictReader(iso_file, delimiter='\t')
+        return {row['Id'] for row in reader if row.get('Id')}
+
+
+class XmlNamespaceResolver(etree.Resolver):
+    """Resolve the W3C xml namespace import locally for consistent XSD loading."""
+
+    def resolve(self, url, pubid, context):
+        if url == "http://www.w3.org/2001/xml.xsd":
+            return self.resolve_string(XML_NAMESPACE_XSD, context)
+        return None
 
 # Get the language being analyzed from the path
 def get_lang(path, langs):
@@ -188,12 +215,12 @@ def get_files(path, to_check, lang, langs):
 # Main process call subfunctions, log issues, and print summary
 def main(args, langs):
     curr_dir = os.path.dirname(os.path.abspath(__file__))
-    iso6393_3 = pd.read_csv(os.path.join(curr_dir, 'iso-639-3.txt'), sep='\t')
-    langs_codes = set(iso6393_3['Id'])
+    langs_codes = load_iso_639_3_codes(os.path.join(curr_dir, 'iso-639-3.txt'))
     xsd_file = os.path.join(curr_dir, "xml_template.xsd")
     # Parse the XSD file
-    with open(xsd_file, 'r') as schema_file:
-        schema_root = etree.parse(schema_file)
+    schema_parser = etree.XMLParser()
+    schema_parser.resolvers.add(XmlNamespaceResolver())
+    schema_root = etree.parse(xsd_file, schema_parser)
     schema = etree.XMLSchema(schema_root)
     
     to_check = list()
@@ -256,6 +283,8 @@ if __name__ == "__main__":
     parser.add_argument('--corpora_path', help='Path to corpora directory (required for by_language and by_corpus)')
     parser.add_argument('--path', help='Path to XML file or directory (required for by_path)')
     parser.add_argument('--corpus', help='Corpus name (required for by_corpus)')
+    parser.add_argument('--log_dir',
+                        help='Directory for verbose logs. Defaults to QC/validation/logs.')
     args = parser.parse_args()
 
     # Validate required arguments based on 'search_by'
@@ -280,7 +309,7 @@ if __name__ == "__main__":
     # Set up logging only if verbose is True
     if args.verbose:
         curr_dir = os.path.dirname(os.path.abspath(__file__))
-        log_dir = os.path.join(curr_dir, "logs")
+        log_dir = args.log_dir or os.path.join(curr_dir, "logs")
         os.makedirs(log_dir, exist_ok=True)
 
         log_file_name = get_log_file_name(args)

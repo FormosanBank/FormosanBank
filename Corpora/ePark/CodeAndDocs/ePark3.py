@@ -11,15 +11,25 @@ import threading
 import re
 
 def clean_text(text):
-    """Remove spaces before question marks and normalize multiple spaces."""
+    """Normalize whitespace and obvious sentence-punctuation spacing."""
     if text is None:
         return None
-    # Remove spaces before question marks
-    text = re.sub(r'\s+\?', '?', text)
+    # Remove spaces before common punctuation.
+    text = re.sub(r'\s+([?!,！？，。])', r'\1', text)
+    text = re.sub(r'\s+\.([^0-9])', r'.\1', text)
     # Normalize multiple spaces to single spaces
     text = re.sub(r'\s+', ' ', text)
-    # Strip leading/trailing whitespace
+    # Add spaces after sentence punctuation when source fields run sentences together.
+    text = re.sub(r'([!?！？。])(?=[^\W\d_])', r'\1 ', text)
+    text = re.sub(r'(\.{2,})(?=(?:[^\W\d_]|[ʔʡ]))', r'\1 ', text)
+    text = re.sub(r'(?<=[^\W\d_])\.(?=(?:[^\W\d_]|[ʔʡ]))', '. ', text)
+    text = re.sub(r'(?<=[ʔʡ])\.(?=(?:[^\W\d_]|[ʔʡ]))', '. ', text)
+    text = re.sub(r"(?<=[a-z’'])\.(?=[A-Z])", '. ', text)
     return text.strip()
+
+def has_text(text):
+    """Return True when a cleaned text field has linguistic content."""
+    return text is not None and text.strip() != ""
 
 def prettify(elem):
     """Return a pretty-printed XML string for the Element."""
@@ -298,7 +308,7 @@ def download_audio(save_path, url, file_name):
     except Exception as e:
         return False, str(e)
 
-def process_data_point(data_point, dialects, audio_output_dict, download_url, ePark, failed_audio_entries, s_elements_dict):
+def process_data_point(data_point, dialects, audio_output_dict, download_url, ePark, failed_audio_entries, skipped_blank_entries, entries_lock, s_elements_dict):
     """
     Processes a single data point from the CSV file.
 
@@ -309,24 +319,42 @@ def process_data_point(data_point, dialects, audio_output_dict, download_url, eP
         download_url (str): The base URL for downloading audio files.
         ePark (str): The ePark topic.
         failed_audio_entries (list): A list to collect entries for which audio download failed.
+        skipped_blank_entries (list): A list to collect source rows with no sentence or translation.
+        entries_lock (threading.Lock): A shared lock for appending to report lists.
         s_elements_dict (dict): A dictionary to collect 'S' elements for each index.
     """
-    failed_audio_lock = threading.Lock()
-    
     idx = data_point[2] if len(data_point[2]) > 1 else '0'+data_point[2]
     dialect = dialects[idx]
     lang = dialect.split("_")[-1]
     audio_output = audio_output_dict[idx]
+    form_text = clean_text(data_point[3])
+    transl_text = clean_text(data_point[4])
+
+    # Some ePark picture-book rows are illustration-only pages. They have IDs
+    # and ordering metadata but no text, translation, or usable sentence audio.
+    # These should not become empty <S> entries in final corpus XML.
+    if not has_text(form_text) and not has_text(transl_text):
+        skipped_entry = [
+            ePark,
+            data_point[0],
+            data_point[1],
+            data_point[2],
+            dialect,
+            data_point[5] if len(data_point) > 5 else "",
+        ]
+        with entries_lock:
+            skipped_blank_entries.append(skipped_entry)
+        return
 
     s_element = ET.Element("S")
     s_element.set("id", data_point[0])
 
     form_element = ET.SubElement(s_element, "FORM")
-    form_element.text = clean_text(data_point[3])
+    form_element.text = form_text
 
     transl_element = ET.SubElement(s_element, "TRANSL")
     transl_element.set("xml:lang", "zh")
-    transl_element.text = clean_text(data_point[4])
+    transl_element.text = transl_text
 
     audio_url = f"{download_url}/{data_point[1]}/{data_point[0]}.mp3"
     audio_file = f"{ePark}_{dialect}_{data_point[0]}.mp3"
@@ -340,10 +368,11 @@ def process_data_point(data_point, dialects, audio_output_dict, download_url, eP
     else:
         id = data_point[0]
         error_entry = [audio_url, audio_file, lang, dialect, id, error_info]
-        with failed_audio_lock:
+        with entries_lock:
             failed_audio_entries.append(error_entry)
 
-    s_elements_dict[idx].append(s_element)
+    with entries_lock:
+        s_elements_dict[idx].append(s_element)
 
 def process_epark_topics_with_csv(ePark, path, output_path, dialects, lang_codes, data_file, download_url):
     """
@@ -370,6 +399,8 @@ def process_epark_topics_with_csv(ePark, path, output_path, dialects, lang_codes
     xml_output_dict = {}
     audio_output_dict = {}
     failed_audio_entries = []
+    skipped_blank_entries = []
+    entries_lock = threading.Lock()
     
     # Initialize XML roots and output paths
     for idx in dialects:
@@ -389,7 +420,21 @@ def process_epark_topics_with_csv(ePark, path, output_path, dialects, lang_codes
 
     # Multithreading setup
     with ThreadPoolExecutor(max_workers=100) as executor:
-        futures = [executor.submit(process_data_point, data[entry], dialects, audio_output_dict, download_url, ePark, failed_audio_entries, s_elements_dict) for entry in data]
+        futures = [
+            executor.submit(
+                process_data_point,
+                data[entry],
+                dialects,
+                audio_output_dict,
+                download_url,
+                ePark,
+                failed_audio_entries,
+                skipped_blank_entries,
+                entries_lock,
+                s_elements_dict,
+            )
+            for entry in data
+        ]
         for future in tqdm(as_completed(futures), desc= f"Processing {ePark}:", total=len(data)):
             future.result()
     
@@ -468,6 +513,12 @@ def process_epark_topics_with_csv(ePark, path, output_path, dialects, lang_codes
         writer = csv.writer(file)
         writer.writerow(["url", "file_name", "lang", "dialect", "id", "error"])
         writer.writerows(failed_audio_entries)
+
+    skipped_blank_file = os.path.join(output_path, "ep3_"+ePark, "skipped_blank_rows.csv")
+    with open(skipped_blank_file, mode='w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(["ePark topic", "id", "textId", "dialectId", "dialect", "sentenceOrder"])
+        writer.writerows(skipped_blank_entries)
 
 def process_topics4and5_items(item, tag_org, tag_zh, root, path, idx, audio_output, ePark, lang, dialect, failed_audio):
     """
@@ -612,6 +663,8 @@ def process_epark_conversation_reading(ePark, path, output_path, dialects, lang_
     if ePark == "閱讀書寫篇":
         data = {}
         failed_audio_entries = []
+        skipped_blank_entries = []
+        entries_lock = threading.Lock()
 
         with open(os.path.join(path, "klokah_reading_sentence.csv"), mode='r', encoding='utf-8') as csvfile:
             reader = csv.reader(csvfile)
@@ -620,7 +673,21 @@ def process_epark_conversation_reading(ePark, path, output_path, dialects, lang_
                 data[row[0]] = row
                 
         with ThreadPoolExecutor(max_workers=100) as executor:
-            futures = [executor.submit(process_data_point, data[entry], dialects, audio_output_dict, "https://web.klokah.tw/text/sound/", ePark, failed_audio_entries, s_elements_dict) for entry in data]
+            futures = [
+                executor.submit(
+                    process_data_point,
+                    data[entry],
+                    dialects,
+                    audio_output_dict,
+                    "https://web.klokah.tw/text/sound/",
+                    ePark,
+                    failed_audio_entries,
+                    skipped_blank_entries,
+                    entries_lock,
+                    s_elements_dict,
+                )
+                for entry in data
+            ]
             for future in tqdm(as_completed(futures), desc= f"Processing {ePark}:", total=len(data)):
                 future.result()
         
@@ -629,6 +696,12 @@ def process_epark_conversation_reading(ePark, path, output_path, dialects, lang_
             writer = csv.writer(file)
             writer.writerow(["url", "file_name", "lang", "dialect", "id", "error"])
             writer.writerows(failed_audio_entries)
+
+        skipped_blank_file = os.path.join(output_path, "ep3_"+ePark, "skipped_blank_rows.csv")
+        with open(skipped_blank_file, mode='w', newline='') as file:
+            writer = csv.writer(file)
+            writer.writerow(["ePark topic", "id", "textId", "dialectId", "dialect", "sentenceOrder"])
+            writer.writerows(skipped_blank_entries)
         
     for idx in xml_dict:
         root = xml_dict[idx]

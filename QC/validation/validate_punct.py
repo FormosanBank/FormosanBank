@@ -98,15 +98,24 @@ def analyze_xml_file(xml_file, lang_codes, args):
 def analyze_directory(xml_dir, lang_codes, args):
     directory_issues = defaultdict(lambda: defaultdict(int))
 
-    for root, _, files in os.walk(xml_dir):
-        for file in files:
-            if file.endswith(".xml"):
-                xml_path = os.path.join(root, file)
-                parent_dir = os.path.dirname(xml_path)
-                file_issues = analyze_xml_file(xml_path, lang_codes, args)
+    if os.path.isfile(xml_dir):
+        xml_files = [xml_dir] if xml_dir.endswith(".xml") else []
+    else:
+        xml_files = [
+            os.path.join(root, file)
+            for root, _, files in os.walk(xml_dir)
+            for file in files
+            if file.endswith(".xml")
+        ]
 
-                for issue_type, count in file_issues.items():
-                    directory_issues[parent_dir][issue_type] += count
+    for xml_path in xml_files:
+        if args.search_by == "by_language" and get_lang(xml_path, lang_codes) != args.language:
+            continue
+        parent_dir = os.path.dirname(xml_path)
+        file_issues = analyze_xml_file(xml_path, lang_codes, args)
+
+        for issue_type, count in file_issues.items():
+            directory_issues[parent_dir][issue_type] += count
 
     return directory_issues
 
@@ -139,6 +148,8 @@ def main():
     parser.add_argument('--corpora_path', help='Path to corpora directory (required for by_language and by_corpus)')
     parser.add_argument('--path', help='Path to XML file or directory (required for by_path)')
     parser.add_argument('--corpus', help='Corpus name (required for by_corpus)')
+    parser.add_argument('--log_dir',
+                        help='Directory for verbose logs. Defaults to QC/validation/logs.')
     args = parser.parse_args()
 
     langs = ["Amis", "Atayal", "Paiwan", "Bunun", "Puyuma", "Rukai", "Tsou", "Saisiyat", "Yami",
@@ -146,7 +157,7 @@ def main():
 
     if args.verbose:
         curr_dir = os.path.dirname(os.path.abspath(__file__))
-        log_dir = os.path.join(curr_dir, "logs")
+        log_dir = args.log_dir or os.path.join(curr_dir, "logs")
         os.makedirs(log_dir, exist_ok=True)
 
         log_file_path = os.path.join(log_dir, f"punctuation_validation_log_{args.search_by}.txt")
@@ -160,7 +171,19 @@ def main():
 
     lang_codes = {lang: lang.lower() for lang in langs}
 
-    corpora_dir = args.corpora_path if args.search_by != 'by_path' else os.path.dirname(args.path)
+    if args.search_by == 'by_path':
+        if not args.path:
+            parser.error("For 'by_path', --path is required.")
+        corpora_dir = args.path
+    elif args.search_by == 'by_corpus':
+        if not args.corpora_path or not args.corpus:
+            parser.error("For 'by_corpus', --corpora_path and --corpus are required.")
+        corpora_dir = os.path.join(args.corpora_path, args.corpus)
+    else:
+        if not args.corpora_path:
+            parser.error("For 'by_language', --corpora_path is required.")
+        corpora_dir = args.corpora_path
+
     directory_issues = analyze_directory(corpora_dir, lang_codes, args)
 
     generate_report(directory_issues, "Directory")
