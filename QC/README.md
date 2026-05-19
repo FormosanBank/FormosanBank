@@ -108,9 +108,18 @@ The script writes:
 
 By default, token counts use the first direct sentence-level `FORM` in each `S`, matching the legacy token counter. Use `--form-kind standard`, `--form-kind original`, or `--form-kind auto` when a different sentence tier is needed.
 
-History mode samples recent first-parent commits where `Corpora/**/*.xml` was added, deleted, or modified, plus the current `HEAD` when it is not already in that sample.
+History mode samples first-parent commits where XML files under `Corpora/**/XML/` were added, deleted, or modified. It uses the full XML-changing history by default; pass `--max-history-commits N` to sample only the most recent `N` XML-changing commits.
 
-During history runs, `corpus_metrics.py` prints progress to stderr for the current corpus and each sampled commit, so long runs show `[current/total]` status instead of appearing hung.
+For routine updates, reuse the existing history CSV so the script only applies XML-changing commits after the last recorded commit:
+
+```bash
+python QC/corpus_metrics.py Corpora \
+  --output-dir corpus-metrics \
+  --history \
+  --history-cache statistics/corpus_size_history.csv
+```
+
+During history runs, `corpus_metrics.py` prints progress to stderr for the current corpus and each sampled commit, so long runs show `[current/total]` status instead of appearing hung. The GitHub workflow uploads the full `corpus-metrics/` directory as a 30-day Actions artifact; on pushes to `main`, only `statistics/corpus_size_history.csv` and `statistics/corpus_size_over_time.png` are committed back for the README graph.
 
 ## Token Delta Regression
 

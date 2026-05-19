@@ -21,7 +21,7 @@ jobs:
   corpus-metrics:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -43,13 +43,33 @@ jobs:
           python3 QC/corpus_metrics.py Corpora \
             --output-dir corpus-metrics \
             --history \
-            --max-history-commits 12
+            --history-cache statistics/corpus_size_history.csv \
+            --max-history-commits 0
 
       - name: Add metrics summary
         run: cat corpus-metrics/corpus_metrics.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Update README growth graph
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          mkdir -p statistics
+          cp corpus-metrics/corpus_size_history.csv statistics/corpus_size_history.csv
+          cp corpus-metrics/corpus_size_over_time.png statistics/corpus_size_over_time.png
+
+          if git diff --quiet -- statistics/corpus_size_history.csv statistics/corpus_size_over_time.png; then
+            echo "No README growth graph changes."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add statistics/corpus_size_history.csv statistics/corpus_size_over_time.png
+          git commit -m "Update corpus growth graph"
+          git push
 
       - name: Upload corpus metrics artifacts
         uses: actions/upload-artifact@v4
         with:
           name: corpus-metrics
           path: corpus-metrics/
+          retention-days: 30
