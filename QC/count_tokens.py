@@ -1,118 +1,43 @@
-import xml.etree.ElementTree as ET
-import os
 import argparse
 import json
-from collections import defaultdict
+from pathlib import Path
 
-LANG_CODE_TO_NAME = {
-    'ami': 'Amis',
-    'tay': 'Atayal',
-    'pwn': 'Paiwan',
-    'bnn': 'Bunun',
-    'pyu': 'Puyuma',
-    'dru': 'Rukai',
-    'tsu': 'Tsou',
-    'xsy': 'Saisiyat',
-    'tao': 'Yami',
-    'ssf': 'Thao',
-    'ckv': 'Kavalan',
-    'trv': 'Seediq',
-    'szy': 'Sakizaya',
-    'sxr': 'Saaroa',
-    'xnb': 'Kanakanavu',
-    'fos': 'Siraya',
-}
-
-# Determine the language of the file based on the path
-def get_lang(path, file, langs):
-    for lang in langs:
-        if lang in path or (file.split('.')[0] == lang and file.split('.')[1:] == ['xml']):
-            return lang
+from corpus_metrics import KNOWN_LANGUAGES, analyze_corpora
 
 
-def read_file(file_path):
+def get_counts(corpora_path, form_kind="first"):
+    metrics = analyze_corpora(Path(corpora_path), form_kind=form_kind)
+    tokens_by_lang = {lang: [0, {}] for lang in sorted(KNOWN_LANGUAGES)}
 
-    num_words = 0
-    tree = ET.parse(file_path)
-    root = tree.getroot()
-    xml_lang = root.attrib.get('{http://www.w3.org/XML/1998/namespace}lang')
-    if "dialect" in root.attrib:
-        dialect = root.attrib['dialect']
-    else:
-        dialect = None
-    # Iterate over all <S> elements
-    for s in root.findall('.//S'):
-        # Find the <FORM> element within the <S> element
-        form = s.find('FORM')
+    for row in metrics["by_language_dialect"]:
+        lang = row["language"]
+        dialect = row["dialect"]
+        tokens = row["tokens"]
+        if lang not in tokens_by_lang:
+            tokens_by_lang[lang] = [0, {}]
+        tokens_by_lang[lang][0] += tokens
+        tokens_by_lang[lang][1][dialect] = tokens
 
-        if form is not None and form.text is not None:
-            # Split the text of the <FORM> element into words
-            words = form.text.split()
-            # Count the number of words
-            num_words += len(words)
-
-    return num_words, dialect, xml_lang
-
-def count_source(path, tokens_by_lang, langs):
-    source_total = 0
-    for root, dirs, files in os.walk(path):
-        for file in files:
-            if file.endswith(".xml") and 'XML' in os.path.join(root, file):
-                # print(root, file)
-                lang = get_lang(root, file, langs)
-                file_path = os.path.join(root, file)
-                tokens_in_file, dialect, xml_lang = read_file(file_path)
-                if lang is None and xml_lang:
-                    lang = LANG_CODE_TO_NAME.get(xml_lang)
-                if lang is None:
-                    raise ValueError(f"Could not determine language for XML file: {file_path}")
-                if dialect:
-                    tokens_by_lang[lang][1][dialect] += tokens_in_file
-                else:
-                    tokens_by_lang[lang][1]['Not Specified'] += tokens_in_file
-                tokens_by_lang[lang][0] += tokens_in_file
-                source_total += tokens_in_file
-    return source_total
-    
-    
-
-def get_counts(corpora_path):
-    
-    langs = ['Amis', 'Atayal', 'Paiwan', 'Bunun','Puyuma', 'Rukai', 'Tsou', 'Saisiyat', 'Yami',
-        'Thao', 'Kavalan', 'Truku', 'Sakizaya','Seediq','Saaroa', 'Kanakanavu', 'Siraya']
-
-    tokens_by_lang = {lang: [0, defaultdict(int)] for lang in langs}
-    tokens_by_source = dict()
-    for source in os.listdir(corpora_path):
-        if source.startswith('.'):
-            continue
-        if source  == 'Siraya_Gospels':
-            continue
-        tokens_by_source[source] = 0
-        #print(f"\n=====counting in {source}======")
-        tokens_by_source[source] = count_source(os.path.join(corpora_path, source), tokens_by_lang, langs)
-
+    tokens_by_source = {
+        source: counts["tokens"]
+        for source, counts in metrics["by_source"].items()
+    }
     return tokens_by_lang, tokens_by_source
-def main(corpora_path):
-
-    tokens_by_lang, tokens_by_source = get_counts(corpora_path)
-    #for lang in tokens_by_lang:
-        #print(lang, ": ", tokens_by_lang[lang], "\n\n")
-    #print("\n=====tokens count per language======")
-    print(json.dumps(tokens_by_lang, indent=4))
-    #default print
-    #print("straight print:")
-    #print(tokens_by_lang)
-    #print("\n=====tokens count per source======")
-    #print(tokens_by_source)
-    #print("\n=====tokens total count======")
-    #print(sum(tokens_by_source.values()))
 
 
-    # with open('current_counts.txt', 'w') as file:
-    #     json.dump(token_count, file)
+def main(corpora_path, form_kind="first"):
+    tokens_by_lang, _tokens_by_source = get_counts(corpora_path, form_kind=form_kind)
+    print(json.dumps(tokens_by_lang, indent=4, ensure_ascii=False, sort_keys=True))
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="count tokens per corpus and per language.")
     parser.add_argument('corpora_path', help='Specify the path of the corpora')
+    parser.add_argument(
+        "--form-kind",
+        choices=["first", "auto", "standard", "original"],
+        default="first",
+        help="Sentence-level FORM selection mode. 'first' matches the legacy token counter.",
+    )
     args = parser.parse_args()
-    main(args.corpora_path)
+    main(args.corpora_path, form_kind=args.form_kind)

@@ -1,85 +1,139 @@
 name: Token Count Delta
+
 on:
   workflow_dispatch:
     inputs:
-      parameter:
-        description: My Parameter
-  pull_request:  # This was the line with incorrect indentation
+      base_ref:
+        description: Ref or SHA to compare against
+        required: false
+        default: origin/main
+      compare_ref:
+        description: Ref or SHA to analyze
+        required: false
+  pull_request:
+    paths:
+      - "Corpora/**"
+      - "QC/count_tokens.py"
+      - "QC/tokens_delta.py"
+      - "QC/plot_counts.py"
+      - "QC/plot_deltas.py"
+      - "QC/corpus_metrics.py"
+      - ".github/workflows/token-comparison.yaml"
   push:
-    branch:
-      - 'visualizations'
+    branches:
+      - main
     tags:
       - v1.*
+    paths:
+      - "Corpora/**"
+      - "QC/count_tokens.py"
+      - "QC/tokens_delta.py"
+      - "QC/plot_counts.py"
+      - "QC/plot_deltas.py"
+      - "QC/corpus_metrics.py"
+      - ".github/workflows/token-comparison.yaml"
     
 jobs:
   compare-token-counts:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-    - name: Checkout latest commit
+    - name: Checkout compare ref
       uses: actions/checkout@v4
       with:
-        fetch-depth: 0  # Needed for full git history
+        ref: ${{ inputs.compare_ref || github.sha }}
+        fetch-depth: 0
+
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
         python-version: '3.10'
-    - name: Set up packages
+
+    - name: Install plotting dependencies
       run: |
-        python3 -m pip install -r requirements.txt
-    - name: Create temp analysis directory
-      run: mkdir -p /tmp/token_analysis
-    - name: Copy token scripts to temp folder
+        python3 -m pip install --upgrade pip
+        python3 -m pip install matplotlib pandas seaborn
+
+    - name: Resolve base ref
+      id: base
+      env:
+        EVENT_NAME: ${{ github.event_name }}
+        INPUT_BASE_REF: ${{ inputs.base_ref }}
+        PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        PUSH_BEFORE_SHA: ${{ github.event.before }}
       run: |
-        cp QC/count_tokens.py /tmp/token_analysis/
-        cp QC/tokens_delta.py /tmp/token_analysis/
-        cp QC/plot_deltas.py /tmp/token_analysis/
-        cp QC/plot_counts.py /tmp/token_analysis/
-    - name: Run token count on latest commit
+        if [[ "$EVENT_NAME" == "pull_request" && -n "$PR_BASE_SHA" ]]; then
+          BASE_REF="$PR_BASE_SHA"
+        elif [[ "$EVENT_NAME" == "push" && -n "$PUSH_BEFORE_SHA" && "$PUSH_BEFORE_SHA" != "0000000000000000000000000000000000000000" ]]; then
+          BASE_REF="$PUSH_BEFORE_SHA"
+        else
+          BASE_REF="${INPUT_BASE_REF:-origin/main}"
+        fi
+
+        git rev-parse --verify "$BASE_REF^{commit}"
+        echo "base_ref=$BASE_REF" >> "$GITHUB_OUTPUT"
+        git show -s --format='Base: %H %cI %s' "$BASE_REF"
+        git show -s --format='Compare: %H %cI %s' HEAD
+
+    - name: Create artifact directory
+      run: mkdir -p token-count-artifacts
+
+    - name: Run token count on compare ref
       run: |
-        python3 /tmp/token_analysis/count_tokens.py ./Corpora > /tmp/current_token_count.json
-    - name: Show token delta
-      run: cat /tmp/current_token_count.json
-    - name: Get commit from 6 months ago
-      id: oldcommit
+        python3 QC/count_tokens.py Corpora > token-count-artifacts/current_token_count.json
+
+    - name: Run token count on base ref
       run: |
-        OLD_COMMIT=$(git rev-list -1 --before="6 months ago" origin/main)
-        echo "commit_sha=$OLD_COMMIT" >> $GITHUB_OUTPUT
-    - name: Checkout repo at old commit
-      run: git checkout ${{ steps.oldcommit.outputs.commit_sha }}
-    - name: Run token count on old commit
-      run: |
-        python3 /tmp/token_analysis/count_tokens.py ./Corpora > /tmp/old_token_count.json
-    - name: Show old token count
-      run: cat /tmp/old_token_count.json
+        git worktree add --detach /tmp/token-count-base "${{ steps.base.outputs.base_ref }}"
+        python3 QC/count_tokens.py /tmp/token-count-base/Corpora > token-count-artifacts/base_token_count.json
+        git worktree remove --force /tmp/token-count-base
+
     - name: Compute token deltas
       run: |
-        python3 /tmp/token_analysis/tokens_delta.py \
-          /tmp/old_token_count.json \
-          /tmp/current_token_count.json \
-          /tmp/token_delta.json
-    - name: Show token delta
-      run: cat /tmp/token_delta.json
+        python3 QC/tokens_delta.py \
+          token-count-artifacts/base_token_count.json \
+          token-count-artifacts/current_token_count.json \
+          token-count-artifacts/token_delta.json
 
-    - name: Generate plots for delta
-      run: python3 /tmp/token_analysis/plot_deltas.py /tmp/token_delta.json
-    - name: Upload plot artifact
+    - name: Add token delta summary
+      run: |
+        python3 - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+        import json
+        from pathlib import Path
+
+        current = json.loads(Path("token-count-artifacts/current_token_count.json").read_text())
+        base = json.loads(Path("token-count-artifacts/base_token_count.json").read_text())
+        deltas = json.loads(Path("token-count-artifacts/token_delta.json").read_text())
+
+        current_total = sum(lang[0] for lang in current.values())
+        base_total = sum(lang[0] for lang in base.values())
+        delta_total = current_total - base_total
+        rows = sorted(((lang, vals[0]) for lang, vals in deltas.items() if vals[0]), key=lambda row: abs(row[1]), reverse=True)
+
+        print("# Token Count Delta")
+        print()
+        print(f"Base total: `{base_total:,}`")
+        print(f"Current total: `{current_total:,}`")
+        print(f"Delta: `{delta_total:+,}`")
+        print()
+        print("| Language | Delta |")
+        print("| --- | ---: |")
+        for lang, delta in rows[:20]:
+            print(f"| {lang} | {delta:+,} |")
+        PY
+
+    - name: Generate token plots
+      working-directory: token-count-artifacts
+      run: |
+        python3 ../QC/plot_deltas.py token_delta.json
+        python3 ../QC/plot_counts.py current_token_count.json 0
+        mv plot.png language_dialect_counts.png
+        python3 ../QC/plot_counts.py current_token_count.json 1
+        mv plot.png language_counts.png
+
+    - name: Upload token count artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: language-dialect-deltas
-        path: language_dialect_deltas.png
-
-    - name: Generate plots for new count
-      run: python3 /tmp/token_analysis/plot_counts.py /tmp/current_token_count.json 0
-    - name: Upload plot artifact current count
-      uses: actions/upload-artifact@v4
-      with:
-        name: language-dialect-plot
-        path: plot.png
-
-    - name: Generate plots for new count simplified
-      run: python3 /tmp/token_analysis/plot_counts.py /tmp/current_token_count.json 1
-    - name: Upload plot artifact current count
-      uses: actions/upload-artifact@v4
-      with:
-        name: language-plot
-        path: plot.png
+        name: token-count-delta
+        path: token-count-artifacts/

@@ -1,50 +1,50 @@
 [
   {
     "name": "Brown Corpus",
-    "tokens": 1000000,
+    "tokens": null,
     "unit": "words",
     "source": "CoRD Brown Corpus overview",
     "url": "https://varieng.helsinki.fi/CoRD/corpora/BROWN/",
-    "note": "Rounded benchmark; Brown is commonly described as over one million words."
+    "note": "Exact count not yet source-verified for this comparison."
   },
   {
     "name": "Penn Treebank WSJ",
-    "tokens": 1000000,
+    "tokens": null,
     "unit": "words",
     "source": "LDC Treebank-3 catalog entry",
     "url": "https://catalog.ldc.upenn.edu/LDC99T42",
-    "note": "Rounded benchmark for the one-million-word Wall Street Journal material."
+    "note": "Exact count not yet source-verified for this comparison."
   },
   {
     "name": "CHILDES Brown Adam",
-    "tokens": 84643,
+    "tokens": null,
     "unit": "tokens",
-    "source": "UD English-CHILDES README",
-    "url": "https://github.com/UniversalDependencies/UD_English-CHILDES",
-    "note": "Gold-token count from the UD English-CHILDES subset, not the full raw CHILDES corpus."
+    "source": "TalkBank CHILDES Brown Corpus",
+    "url": "https://talkbank.org/childes/access/Eng-NA/Brown.html",
+    "note": "Exact participant-level count not yet source-verified for this comparison."
   },
   {
     "name": "CHILDES Brown Eve",
-    "tokens": 8497,
+    "tokens": null,
     "unit": "tokens",
-    "source": "UD English-CHILDES README",
-    "url": "https://github.com/UniversalDependencies/UD_English-CHILDES",
-    "note": "Gold-token count from the UD English-CHILDES subset, not the full raw CHILDES corpus."
+    "source": "TalkBank CHILDES Brown Corpus",
+    "url": "https://talkbank.org/childes/access/Eng-NA/Brown.html",
+    "note": "Exact participant-level count not yet source-verified for this comparison."
   },
   {
     "name": "CHILDES Brown Sarah",
-    "tokens": 23233,
+    "tokens": null,
     "unit": "tokens",
-    "source": "UD English-CHILDES README",
-    "url": "https://github.com/UniversalDependencies/UD_English-CHILDES",
-    "note": "Gold-token count from the UD English-CHILDES subset, not the full raw CHILDES corpus."
+    "source": "TalkBank CHILDES Brown Corpus",
+    "url": "https://talkbank.org/childes/access/Eng-NA/Brown.html",
+    "note": "Exact participant-level count not yet source-verified for this comparison."
   },
   {
     "name": "CHILDES Brown Adam+Eve+Sarah",
-    "tokens": 116373,
+    "tokens": null,
     "unit": "tokens",
-    "source": "UD English-CHILDES README",
-    "url": "https://github.com/UniversalDependencies/UD_English-CHILDES",
-    "note": "Sum of the Adam, Eve, and Sarah gold-token counts listed above."
+    "source": "TalkBank CHILDES Brown Corpus",
+    "url": "https://talkbank.org/childes/access/Eng-NA/Brown.html",
+    "note": "Exact combined count not yet source-verified for this comparison."
   }
 ]

@@ -350,8 +350,9 @@ def benchmark_rows(metrics: dict[str, Any], benchmarks: list[dict[str, Any]]) ->
         ]
     ]
     for benchmark in benchmarks:
-        tokens = int(benchmark["tokens"])
-        ratio = f"{current_tokens / tokens:.2f}x" if tokens else "n/a"
+        tokens = benchmark.get("tokens")
+        token_count = int(tokens) if tokens is not None else None
+        ratio = f"{current_tokens / token_count:.2f}x" if token_count else "n/a"
         source = benchmark.get("source", "")
         url = benchmark.get("url")
         if url:
@@ -359,7 +360,7 @@ def benchmark_rows(metrics: dict[str, Any], benchmarks: list[dict[str, Any]]) ->
         rows.append(
             [
                 benchmark["name"],
-                format_int(tokens),
+                format_int(token_count) if token_count else "TBD",
                 benchmark.get("unit", "tokens"),
                 ratio,
                 source,
@@ -485,7 +486,11 @@ def plot_horizontal_bars(rows: list[tuple[str, int]], title: str, output_path: P
 def plot_benchmarks(metrics: dict[str, Any], benchmarks: list[dict[str, Any]], output_path: Path) -> None:
     current_tokens = int(metrics["totals"]["tokens"])
     rows = [("FormosanBank current", current_tokens)]
-    rows.extend((benchmark["name"], int(benchmark["tokens"])) for benchmark in benchmarks)
+    rows.extend(
+        (benchmark["name"], int(benchmark["tokens"]))
+        for benchmark in benchmarks
+        if benchmark.get("tokens") is not None
+    )
     plot_horizontal_bars(rows, "Corpus Size Benchmarks", output_path)
 
 

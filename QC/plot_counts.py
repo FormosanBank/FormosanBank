@@ -17,12 +17,12 @@ def plot_charts(path, mode):
             rows.append({
                 "Language": lang,
                 "Dialect": dialect,
-                "Delta": delta
+                "Count": delta
             })
         rows.append({
             "Language":lang,
             "Dialect": "Total Sum",
-            "Delta": total
+            "Count": total
         })
     df = pd.DataFrame(rows)
 
@@ -74,9 +74,8 @@ def plot_charts(path, mode):
         dialects = df[df["Language"] == lang]
         for _, row in dialects.iterrows():
             if mode[0] == '1' and row["Dialect"] != "Total Sum":
-                print(f"skippin{row}, {lang}")
                 continue
-            bars.append(row["Delta"])
+            bars.append(row["Count"])
             x_labels.append(f'{lang}-{row["Dialect"]}')
             colors.append(dialect_colors[(lang, row["Dialect"])])
 
