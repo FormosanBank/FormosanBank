@@ -1,91 +1,128 @@
 import json
 import sys
+import textwrap
+
+import matplotlib
+
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-import seaborn as sns
-import pandas as pd
-import colorsys
+
+
+BG = "#fbfbf8"
+TEXT = "#24292f"
+MUTED = "#6e7781"
+GRID = "#d8dee4"
+BLUE = "#4f6f91"
+GREEN = "#2f7f73"
+GOLD = "#c58b2a"
+RED = "#b05c4b"
+PURPLE = "#7467a8"
+TEAL = "#3f8f9f"
+PALETTE = [BLUE, GREEN, GOLD, RED, PURPLE, TEAL]
+
+
+def short_number(value):
+    value = int(value)
+    sign = "-" if value < 0 else ""
+    value = abs(value)
+    if value >= 1_000_000:
+        return f"{sign}{value / 1_000_000:.2f}M"
+    if value >= 1_000:
+        return f"{sign}{value / 1_000:.1f}K"
+    return f"{sign}{value:,}"
+
+
+def wrapped(label, width=28):
+    return textwrap.fill(label, width=width, break_long_words=False)
+
+
+def flatten_counts(data, mode):
+    rows = []
+    language_totals_only = str(mode).startswith("1")
+
+    for language, (total, dialects) in data.items():
+        if language_totals_only:
+            rows.append((language, int(total)))
+            continue
+
+        for dialect, count in dialects.items():
+            label = language if dialect == "Not Specified" else f"{language}: {dialect}"
+            rows.append((label, int(count)))
+
+    return [(label, count) for label, count in rows if count]
+
+
+def draw_empty(title, output_path):
+    fig, ax = plt.subplots(figsize=(10, 4), facecolor=BG)
+    ax.set_facecolor(BG)
+    ax.axis("off")
+    ax.text(0.02, 0.70, title, color=TEXT, fontsize=18, fontweight="bold", transform=ax.transAxes)
+    ax.text(0.02, 0.48, "No non-zero token counts to plot.", color=MUTED, fontsize=11, transform=ax.transAxes)
+    fig.savefig(output_path, dpi=180, bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+
+
+def draw_bar_chart(rows, title, output_path, max_rows):
+    if not rows:
+        draw_empty(title, output_path)
+        return
+
+    total_rows = len(rows)
+    rows = sorted(rows, key=lambda item: item[1], reverse=True)[:max_rows]
+    rows = list(reversed(rows))
+
+    labels = [wrapped(label) for label, _count in rows]
+    values = [count for _label, count in rows]
+    colors = [PALETTE[i % len(PALETTE)] for i in range(len(rows))]
+
+    height = max(5.0, min(16.0, 0.38 * len(rows) + 2.4))
+    fig, ax = plt.subplots(figsize=(11, height), facecolor=BG)
+    ax.set_facecolor(BG)
+
+    bars = ax.barh(labels, values, color=colors, height=0.68)
+    ax.set_title(title, loc="left", fontsize=18, fontweight="bold", color=TEXT, pad=16)
+    note = f"Showing top {len(rows)} of {total_rows} rows by token count."
+    ax.text(0, 1.01, note, transform=ax.transAxes, ha="left", va="bottom", fontsize=10, color=MUTED)
+
+    ax.set_xlabel("Tokens", color=MUTED, labelpad=10)
+    ax.xaxis.set_major_formatter(lambda value, _pos: short_number(value))
+    ax.grid(axis="x", color=GRID, linewidth=0.8, alpha=0.8)
+    ax.set_axisbelow(True)
+    ax.tick_params(axis="x", colors=MUTED, labelsize=9)
+    ax.tick_params(axis="y", colors=TEXT, labelsize=9, length=0)
+
+    for spine in ["top", "right", "left"]:
+        ax.spines[spine].set_visible(False)
+    ax.spines["bottom"].set_color(GRID)
+
+    xmax = max(values) * 1.16 if values else 1
+    ax.set_xlim(0, xmax)
+    for bar, value in zip(bars, values):
+        ax.text(
+            bar.get_width() + xmax * 0.01,
+            bar.get_y() + bar.get_height() / 2,
+            short_number(value),
+            va="center",
+            ha="left",
+            fontsize=9,
+            color=MUTED,
+        )
+
+    fig.tight_layout()
+    fig.savefig(output_path, dpi=180, bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+
 
 def plot_charts(path, mode):
-    # Load data
     with open(path) as f:
         data = json.load(f)
 
-    # Flatten data into a DataFrame
-    rows = []
-    for lang, (total, dialects) in data.items():
-        for dialect, delta in dialects.items():
-            rows.append({
-                "Language": lang,
-                "Dialect": dialect,
-                "Delta": delta
-            })
-        rows.append({
-            "Language":lang,
-            "Dialect": "Total Sum",
-            "Delta": total
-        })
-    df = pd.DataFrame(rows)
+    language_totals_only = str(mode).startswith("1")
+    title = "Language Token Counts" if language_totals_only else "Language and Dialect Token Counts"
+    max_rows = 25 if language_totals_only else 40
+    rows = flatten_counts(data, mode)
+    draw_bar_chart(rows, title, "plot.png", max_rows=max_rows)
 
-    # Get a base color for each language
-    languages = df["Language"].unique()
-    base_palette = sns.color_palette("tab20", len(languages))
-
-    def generate_language_dialect_colors(languages, df):
-        language_colors = {}
-        dialect_colors = {}
-
-        # Equally space hues between 0 and 1
-        for lang_idx, lang in enumerate(sorted(languages)):
-            hue = lang_idx / len(languages)  # Spread hues evenly
-            base_s = 0.6  # Fixed saturation
-            base_l = 0.5  # Middle lightness for base
-
-            language_rgb = colorsys.hls_to_rgb(hue, base_l, base_s)
-            language_colors[lang] = language_rgb
-
-            # Dialects for this language
-            dialects = df[df["Language"] == lang]["Dialect"].unique()
-            num_dialects = len(dialects)
-
-            for d_idx, dialect in enumerate(dialects):
-                # Vary lightness from 0.35 to 0.85
-                l_range = (0.25, 0.85)
-                l = l_range[0] + (d_idx / max(1, num_dialects - 1)) * (l_range[1] - l_range[0])
-                rgb = colorsys.hls_to_rgb(hue, l, base_s)
-                dialect_colors[(lang, dialect)] = tuple(min(1.0, max(0.0, c)) for c in rgb)
-        return dialect_colors
-    # Build color map for each language-dialect
-    dialect_colors = generate_language_dialect_colors(languages, df)
-
-
-    # Plot
-    plt.figure(figsize=(18, 8))
-    sns.set(style="whitegrid")
-
-    # Sort languages for consistent bar grouping
-    #df["Lang_Dialect"] = df["Language"] + " - " + df["Dialect"]
-    #df = df.sort_values(["Language", "Dialect"])
-
-    # Plot manually with correct colors
-    bars = []
-    x_labels = []
-    colors = []
-    for lang in languages:
-        dialects = df[df["Language"] == lang]
-        for _, row in dialects.iterrows():
-            if mode[0] == '1' and row["Dialect"] != "Total Sum":
-                print(f"skippin{row}, {lang}")
-                continue
-            bars.append(row["Delta"])
-            x_labels.append(f'{lang}-{row["Dialect"]}')
-            colors.append(dialect_colors[(lang, row["Dialect"])])
-
-    plt.bar(range(len(bars)), bars, color=colors, align="center")
-    plt.xticks(range(len(bars)), x_labels, rotation=90, ha='center', fontsize = 8)
-    plt.ylabel("Count")
-    plt.title("Token Count by Language and Dialect (Grouped by Language)")
-    plt.tight_layout()
-    plt.savefig("plot.png")
 
 if __name__ == "__main__":
     path = sys.argv[1]

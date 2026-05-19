@@ -1,5 +1,11 @@
 # Corpora
 
+## Corpus Growth
+
+![FormosanBank corpus size over time](statistics/corpus_size_over_time.png)
+
+The growth graph is updated by the Corpus Metrics GitHub Action after pushes to `main`. Detailed JSON, Markdown, and plot outputs stay attached to each workflow run as 30-day artifacts; only the README graph and its history CSV are kept in `statistics/`. The CSV is reused as the history cache, so routine updates only apply new XML-changing commits.
+
 ---
 
 # Quality Control

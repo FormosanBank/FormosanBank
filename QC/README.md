@@ -87,6 +87,77 @@ python QC/validation/validate_glosses.py /path/to/Final_XML \
 
 For verse-level or sentence-only corpora with no `W`/`M` segmentation, `validate_glosses.py` will report sentence/W mismatches. Treat those as "not applicable" unless word segmentation is required for that corpus.
 
+## Corpus Metrics
+
+Generate corpus-wide facts, figures, and plots from XML files under `Corpora/`:
+
+```bash
+python QC/corpus_metrics.py Corpora \
+  --output-dir corpus-metrics \
+  --history
+```
+
+The script writes:
+
+- `corpus_metrics.json`
+- `corpus_metrics.md`
+- `corpus_language_tokens.png`
+- `corpus_source_tokens.png`
+- `corpus_benchmark_comparison.png`
+- `corpus_size_history.csv` and `corpus_size_over_time.png` when `--history` is used
+
+By default, token counts use the first direct sentence-level `FORM` in each `S`, matching the legacy token counter. Use `--form-kind standard`, `--form-kind original`, or `--form-kind auto` when a different sentence tier is needed.
+
+History mode samples first-parent commits where XML files under `Corpora/**/XML/` were added, deleted, or modified. It uses the full XML-changing history by default; pass `--max-history-commits N` to sample only the most recent `N` XML-changing commits.
+
+For routine updates, reuse the existing history CSV so the script only applies XML-changing commits after the last recorded commit:
+
+```bash
+python QC/corpus_metrics.py Corpora \
+  --output-dir corpus-metrics \
+  --history \
+  --history-cache statistics/corpus_size_history.csv
+```
+
+During history runs, `corpus_metrics.py` prints progress to stderr for the current corpus and each sampled commit, so long runs show `[current/total]` status instead of appearing hung. The GitHub workflow uploads the full `corpus-metrics/` directory as a 30-day Actions artifact; on pushes to `main`, only `statistics/corpus_size_history.csv` and `statistics/corpus_size_over_time.png` are committed back for the README graph.
+
+## Token Delta Regression
+
+Generate the same language/dialect token JSON used by the token delta workflow:
+
+```bash
+mkdir -p token-count-artifacts
+python QC/count_tokens.py Corpora > token-count-artifacts/current_token_count.json
+```
+
+Compare the current checkout against another ref, such as `origin/main`, by counting that ref from a temporary worktree:
+
+```bash
+mkdir -p token-count-artifacts
+git worktree add --detach /tmp/formosanbank-token-base origin/main
+python QC/count_tokens.py /tmp/formosanbank-token-base/Corpora > token-count-artifacts/base_token_count.json
+git worktree remove --force /tmp/formosanbank-token-base
+
+python QC/tokens_delta.py \
+  token-count-artifacts/base_token_count.json \
+  token-count-artifacts/current_token_count.json \
+  token-count-artifacts/token_delta.json
+```
+
+Optional plots can be generated from inside the artifact directory:
+
+```bash
+cd token-count-artifacts
+python ../QC/plot_deltas.py token_delta.json
+python ../QC/plot_counts.py current_token_count.json 0
+mv plot.png language_dialect_counts.png
+python ../QC/plot_counts.py current_token_count.json 1
+mv plot.png language_counts.png
+cd ..
+```
+
+The GitHub workflow runs this comparison automatically for PRs against the PR base SHA and for pushes to `main` against the previous push SHA.
+
 ## Output Locations
 
 Use explicit output directories when you do not want logs or CSVs written beside the scripts or inside the corpus:

@@ -1,4 +1,5 @@
 .DS_Store
+__pycache__/
 venv
 .venv
 formosanenv
@@ -14,5 +15,10 @@ QC/orthography/logs
 QC/orthography/extract_logs
 QC/durations.txt
 QC/*.json
+corpus-metrics/
+corpus_metrics/
+token-count-artifacts/
+language_dialect_deltas.png
+plot.png
 **/*.wav
 **/*.mp3
