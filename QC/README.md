@@ -87,6 +87,29 @@ python QC/validation/validate_glosses.py /path/to/Final_XML \
 
 For verse-level or sentence-only corpora with no `W`/`M` segmentation, `validate_glosses.py` will report sentence/W mismatches. Treat those as "not applicable" unless word segmentation is required for that corpus.
 
+## Corpus Metrics
+
+Generate corpus-wide facts, figures, and plots from XML files under `Corpora/`:
+
+```bash
+python QC/corpus_metrics.py Corpora \
+  --output-dir corpus-metrics \
+  --history
+```
+
+The script writes:
+
+- `corpus_metrics.json`
+- `corpus_metrics.md`
+- `corpus_language_tokens.png`
+- `corpus_source_tokens.png`
+- `corpus_benchmark_comparison.png`
+- `corpus_size_history.csv` and `corpus_size_over_time.png` when `--history` is used
+
+By default, token counts use the first direct sentence-level `FORM` in each `S`, matching the legacy token counter. Use `--form-kind standard`, `--form-kind original`, or `--form-kind auto` when a different sentence tier is needed.
+
+History mode samples recent first-parent commits where `Corpora/**/*.xml` was added, deleted, or modified, plus the current `HEAD` when it is not already in that sample.
+
 ## Output Locations
 
 Use explicit output directories when you do not want logs or CSVs written beside the scripts or inside the corpus:

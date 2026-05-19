@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Brown Corpus",
+    "tokens": 1000000,
+    "unit": "words",
+    "source": "CoRD Brown Corpus overview",
+    "url": "https://varieng.helsinki.fi/CoRD/corpora/BROWN/",
+    "note": "Rounded benchmark; Brown is commonly described as over one million words."
+  },
+  {
+    "name": "Penn Treebank WSJ",
+    "tokens": 1000000,
+    "unit": "words",
+    "source": "LDC Treebank-3 catalog entry",
+    "url": "https://catalog.ldc.upenn.edu/LDC99T42",
+    "note": "Rounded benchmark for the one-million-word Wall Street Journal material."
+  },
+  {
+    "name": "CHILDES Brown Adam",
+    "tokens": 84643,
+    "unit": "tokens",
+    "source": "UD English-CHILDES README",
+    "url": "https://github.com/UniversalDependencies/UD_English-CHILDES",
+    "note": "Gold-token count from the UD English-CHILDES subset, not the full raw CHILDES corpus."
+  },
+  {
+    "name": "CHILDES Brown Eve",
+    "tokens": 8497,
+    "unit": "tokens",
+    "source": "UD English-CHILDES README",
+    "url": "https://github.com/UniversalDependencies/UD_English-CHILDES",
+    "note": "Gold-token count from the UD English-CHILDES subset, not the full raw CHILDES corpus."
+  },
+  {
+    "name": "CHILDES Brown Sarah",
+    "tokens": 23233,
+    "unit": "tokens",
+    "source": "UD English-CHILDES README",
+    "url": "https://github.com/UniversalDependencies/UD_English-CHILDES",
+    "note": "Gold-token count from the UD English-CHILDES subset, not the full raw CHILDES corpus."
+  },
+  {
+    "name": "CHILDES Brown Adam+Eve+Sarah",
+    "tokens": 116373,
+    "unit": "tokens",
+    "source": "UD English-CHILDES README",
+    "url": "https://github.com/UniversalDependencies/UD_English-CHILDES",
+    "note": "Sum of the Adam, Eve, and Sarah gold-token counts listed above."
+  }
+]
