@@ -120,6 +120,10 @@ def git_value(args: list[str], cwd: Path) -> str | None:
     return result.stdout.strip() or None
 
 
+def progress(message: str) -> None:
+    print(f"[corpus-metrics] {message}", file=sys.stderr, flush=True)
+
+
 def repo_root_from(path: Path) -> Path:
     root = git_value(["rev-parse", "--show-toplevel"], path)
     return Path(root) if root else path.resolve()
@@ -654,24 +658,42 @@ def generate_history(
     rows = []
     commits = history_commits(repo_root, max_commits)
     current_commit = current_metrics.get("git", {}).get("commit") if current_metrics else None
+    total_commits = len(commits)
+    progress(f"History mode: sampling {total_commits} XML-changing commit(s).")
     with tempfile.TemporaryDirectory(prefix="formosanbank-metrics-") as tmp:
         tmp_root = Path(tmp)
         for index, commit in enumerate(commits):
+            position = index + 1
+            short_commit = commit[:8]
             if current_metrics and commit == current_commit:
-                rows.append(history_row(repo_root, commit, current_metrics))
+                row = history_row(repo_root, commit, current_metrics)
+                rows.append(row)
+                progress(
+                    f"[{position}/{total_commits}] {short_commit} reused current checkout: "
+                    f"{format_short(row['tokens'])} tokens, {format_int(row['xml_files'])} XML files."
+                )
                 continue
 
             worktree = tmp_root / f"commit-{index}"
             try:
+                progress(f"[{position}/{total_commits}] {short_commit} checking out temporary worktree.")
                 add_worktree(repo_root, commit, worktree)
                 corpora_path = worktree / "Corpora"
                 if not corpora_path.exists():
+                    progress(f"[{position}/{total_commits}] {short_commit} skipped: no Corpora directory.")
                     continue
+                progress(f"[{position}/{total_commits}] {short_commit} counting Corpora XML.")
                 metrics = analyze_corpora(corpora_path, form_kind=form_kind)
-                rows.append(history_row(repo_root, commit, metrics))
+                row = history_row(repo_root, commit, metrics)
+                rows.append(row)
+                progress(
+                    f"[{position}/{total_commits}] {short_commit} done: "
+                    f"{format_short(row['tokens'])} tokens, {format_int(row['xml_files'])} XML files."
+                )
             finally:
                 if worktree.exists():
                     remove_worktree(repo_root, worktree)
+    progress(f"History mode complete: wrote {len(rows)} sampled row(s).")
     return rows
 
 
@@ -772,7 +794,13 @@ def main(argv: list[str] | None = None) -> int:
     output_dir.mkdir(parents=True, exist_ok=True)
 
     benchmarks = load_benchmarks(Path(args.benchmarks) if args.benchmarks else None)
+    progress(f"Counting current corpus XML from {corpora_path}.")
     metrics = analyze_corpora(corpora_path, form_kind=args.form_kind)
+    progress(
+        "Current corpus counted: "
+        f"{format_short(metrics['totals']['tokens'])} tokens, "
+        f"{format_int(metrics['totals']['xml_files'])} XML files."
+    )
     json_path = write_json(metrics, output_dir)
     md_path = write_markdown(metrics, benchmarks, output_dir)
 

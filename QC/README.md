@@ -110,6 +110,8 @@ By default, token counts use the first direct sentence-level `FORM` in each `S`,
 
 History mode samples recent first-parent commits where `Corpora/**/*.xml` was added, deleted, or modified, plus the current `HEAD` when it is not already in that sample.
 
+During history runs, `corpus_metrics.py` prints progress to stderr for the current corpus and each sampled commit, so long runs show `[current/total]` status instead of appearing hung.
+
 ## Token Delta Regression
 
 Generate the same language/dialect token JSON used by the token delta workflow:
