@@ -53,7 +53,7 @@ jobs:
     - name: Install plotting dependencies
       run: |
         python3 -m pip install --upgrade pip
-        python3 -m pip install matplotlib pandas seaborn
+        python3 -m pip install matplotlib
 
     - name: Resolve base ref
       id: base

@@ -13,6 +13,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import textwrap
 import xml.etree.ElementTree as ET
 from collections import defaultdict
 from pathlib import Path
@@ -70,6 +71,11 @@ COUNT_FIELDS = (
 )
 
 XML_HISTORY_PATHSPEC = ":(glob)Corpora/**/*.xml"
+PLOT_BG = "#fbfbf8"
+PLOT_TEXT = "#24292f"
+PLOT_MUTED = "#6e7781"
+PLOT_GRID = "#d8dee4"
+PLOT_COLORS = ["#4f6f91", "#2f7f73", "#c58b2a", "#b05c4b", "#7467a8", "#3f8f9f"]
 
 DEFAULT_BENCHMARKS = [
     {
@@ -324,6 +330,17 @@ def format_int(value: int | float) -> str:
     return f"{int(value):,}"
 
 
+def format_short(value: int | float) -> str:
+    value = int(value)
+    sign = "-" if value < 0 else ""
+    value = abs(value)
+    if value >= 1_000_000:
+        return f"{sign}{value / 1_000_000:.2f}M"
+    if value >= 1_000:
+        return f"{sign}{value / 1_000:.1f}K"
+    return f"{sign}{value:,}"
+
+
 def pct_of(value: int, total: int) -> str:
     if total <= 0:
         return "n/a"
@@ -459,27 +476,93 @@ def require_matplotlib() -> Any:
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
 
+    plt.rcParams.update(
+        {
+            "figure.facecolor": PLOT_BG,
+            "axes.facecolor": PLOT_BG,
+            "axes.edgecolor": PLOT_GRID,
+            "axes.labelcolor": PLOT_MUTED,
+            "xtick.color": PLOT_MUTED,
+            "ytick.color": PLOT_TEXT,
+            "font.family": "DejaVu Sans",
+            "font.size": 10,
+            "savefig.facecolor": PLOT_BG,
+        }
+    )
     return plt
 
 
-def plot_horizontal_bars(rows: list[tuple[str, int]], title: str, output_path: Path) -> None:
+def wrap_plot_label(label: str, width: int = 28) -> str:
+    return textwrap.fill(label, width=width, break_long_words=False)
+
+
+def plot_empty_state(title: str, message: str, output_path: Path) -> None:
+    plt = require_matplotlib()
+    fig, ax = plt.subplots(figsize=(10, 4), facecolor=PLOT_BG)
+    ax.set_facecolor(PLOT_BG)
+    ax.axis("off")
+    ax.text(0.02, 0.70, title, transform=ax.transAxes, color=PLOT_TEXT, fontsize=18, fontweight="bold")
+    ax.text(0.02, 0.46, message, transform=ax.transAxes, color=PLOT_MUTED, fontsize=11, wrap=True)
+    fig.savefig(output_path, dpi=180, bbox_inches="tight", facecolor=PLOT_BG)
+    plt.close(fig)
+
+
+def plot_horizontal_bars(
+    rows: list[tuple[str, int]],
+    title: str,
+    output_path: Path,
+    max_rows: int | None = None,
+    note: str | None = None,
+) -> None:
     if not rows:
+        plot_empty_state(title, "No non-zero values to plot.", output_path)
         return
 
     plt = require_matplotlib()
-    rows = sorted(rows, key=lambda item: item[1])
-    labels = [row[0] for row in rows]
-    values = [row[1] for row in rows]
-    height = max(4, min(14, 0.42 * len(rows) + 1.5))
+    total_rows = len(rows)
+    rows = sorted(rows, key=lambda item: item[1], reverse=True)
+    if max_rows:
+        rows = rows[:max_rows]
+    rows = list(reversed(rows))
 
-    fig, ax = plt.subplots(figsize=(10, height))
-    ax.barh(labels, values, color="#4C78A8")
-    ax.set_title(title)
-    ax.set_xlabel("Tokens")
-    ax.grid(axis="x", alpha=0.25)
-    ax.bar_label(ax.containers[0], labels=[format_int(v) for v in values], padding=3, fontsize=8)
+    labels = [wrap_plot_label(row[0]) for row in rows]
+    values = [row[1] for row in rows]
+    colors = [PLOT_COLORS[i % len(PLOT_COLORS)] for i in range(len(rows))]
+    height = max(5, min(16, 0.38 * len(rows) + 2.4))
+
+    fig, ax = plt.subplots(figsize=(11, height), facecolor=PLOT_BG)
+    ax.set_facecolor(PLOT_BG)
+    bars = ax.barh(labels, values, color=colors, height=0.68)
+    ax.set_title(title, loc="left", fontsize=18, fontweight="bold", color=PLOT_TEXT, pad=16)
+    if note is None and max_rows and total_rows > len(rows):
+        note = f"Showing top {len(rows)} of {total_rows} rows by token count."
+    if note:
+        ax.text(0, 1.01, note, transform=ax.transAxes, ha="left", va="bottom", fontsize=10, color=PLOT_MUTED)
+
+    ax.set_xlabel("Tokens", labelpad=10)
+    ax.xaxis.set_major_formatter(lambda value, _pos: format_short(value))
+    ax.grid(axis="x", color=PLOT_GRID, linewidth=0.8, alpha=0.8)
+    ax.set_axisbelow(True)
+    ax.tick_params(axis="x", colors=PLOT_MUTED, labelsize=9)
+    ax.tick_params(axis="y", colors=PLOT_TEXT, labelsize=9, length=0)
+    for spine in ["top", "right", "left"]:
+        ax.spines[spine].set_visible(False)
+    ax.spines["bottom"].set_color(PLOT_GRID)
+
+    xmax = max(values) * 1.16 if values else 1
+    ax.set_xlim(0, xmax)
+    for bar, value in zip(bars, values):
+        ax.text(
+            bar.get_width() + xmax * 0.01,
+            bar.get_y() + bar.get_height() / 2,
+            format_short(value),
+            va="center",
+            ha="left",
+            fontsize=9,
+            color=PLOT_MUTED,
+        )
     fig.tight_layout()
-    fig.savefig(output_path, dpi=180)
+    fig.savefig(output_path, dpi=180, bbox_inches="tight", facecolor=PLOT_BG)
     plt.close(fig)
 
 
@@ -491,14 +574,26 @@ def plot_benchmarks(metrics: dict[str, Any], benchmarks: list[dict[str, Any]], o
         for benchmark in benchmarks
         if benchmark.get("tokens") is not None
     )
+    if len(rows) == 1:
+        plot_empty_state(
+            "Corpus Size Benchmarks",
+            (
+                f"FormosanBank current corpus: {format_short(current_tokens)} tokens. "
+                "External benchmark counts are marked TBD until exact source-confirmed values "
+                "are filled in QC/reference/corpus_benchmarks.json."
+            ),
+            output_path,
+        )
+        return
+
     plot_horizontal_bars(rows, "Corpus Size Benchmarks", output_path)
 
 
 def write_current_plots(metrics: dict[str, Any], benchmarks: list[dict[str, Any]], output_dir: Path) -> None:
     language_rows = [(language, int(counts["tokens"])) for language, counts in list(metrics["by_language"].items())[:20]]
     source_rows = [(source, int(counts["tokens"])) for source, counts in list(metrics["by_source"].items())[:20]]
-    plot_horizontal_bars(language_rows, "Tokens by Language", output_dir / "corpus_language_tokens.png")
-    plot_horizontal_bars(source_rows, "Tokens by Corpus Source", output_dir / "corpus_source_tokens.png")
+    plot_horizontal_bars(language_rows, "Tokens by Language", output_dir / "corpus_language_tokens.png", max_rows=20)
+    plot_horizontal_bars(source_rows, "Tokens by Corpus Source", output_dir / "corpus_source_tokens.png", max_rows=20)
     plot_benchmarks(metrics, benchmarks, output_dir / "corpus_benchmark_comparison.png")
 
 
@@ -592,6 +687,7 @@ def write_history_csv(rows: list[dict[str, Any]], output_dir: Path) -> Path:
 
 def plot_history(rows: list[dict[str, Any]], output_dir: Path) -> None:
     if not rows:
+        plot_empty_state("FormosanBank Size Over Time", "No history rows were generated.", output_dir / "corpus_size_over_time.png")
         return
 
     plt = require_matplotlib()
@@ -603,17 +699,47 @@ def plot_history(rows: list[dict[str, Any]], output_dir: Path) -> None:
         dates.append(dt.datetime.fromisoformat(row["date"].replace("Z", "+00:00")))
         tokens.append(int(row["tokens"]))
     if not dates:
+        plot_empty_state("FormosanBank Size Over Time", "No dated history rows were available.", output_dir / "corpus_size_over_time.png")
         return
 
-    fig, ax = plt.subplots(figsize=(10, 5))
-    ax.plot(dates, tokens, color="#4C78A8", marker="o", linewidth=2)
-    ax.set_title("FormosanBank Size Over Time")
-    ax.set_ylabel("Tokens")
-    ax.grid(alpha=0.25)
-    ax.yaxis.set_major_formatter(lambda value, _pos: format_int(value))
+    fig, ax = plt.subplots(figsize=(11, 5.8), facecolor=PLOT_BG)
+    ax.set_facecolor(PLOT_BG)
+    ax.plot(dates, tokens, color=PLOT_COLORS[0], marker="o", markersize=5, linewidth=2.4)
+    ax.fill_between(dates, tokens, min(tokens), color=PLOT_COLORS[0], alpha=0.12)
+    ax.set_title("FormosanBank Size Over Time", loc="left", fontsize=18, fontweight="bold", color=PLOT_TEXT, pad=16)
+    ax.text(
+        0,
+        1.01,
+        f"{len(tokens)} XML-changing commits sampled.",
+        transform=ax.transAxes,
+        ha="left",
+        va="bottom",
+        fontsize=10,
+        color=PLOT_MUTED,
+    )
+    ax.set_ylabel("Tokens", color=PLOT_MUTED, labelpad=10)
+    ax.grid(color=PLOT_GRID, linewidth=0.8, alpha=0.8)
+    ax.set_axisbelow(True)
+    ax.yaxis.set_major_formatter(lambda value, _pos: format_short(value))
+    ax.tick_params(axis="x", colors=PLOT_MUTED, labelsize=9)
+    ax.tick_params(axis="y", colors=PLOT_MUTED, labelsize=9)
+    for spine in ["top", "right"]:
+        ax.spines[spine].set_visible(False)
+    ax.spines["left"].set_color(PLOT_GRID)
+    ax.spines["bottom"].set_color(PLOT_GRID)
+    ax.annotate(
+        format_short(tokens[-1]),
+        xy=(dates[-1], tokens[-1]),
+        xytext=(8, 0),
+        textcoords="offset points",
+        va="center",
+        fontsize=10,
+        color=PLOT_TEXT,
+        fontweight="bold",
+    )
     fig.autofmt_xdate()
     fig.tight_layout()
-    fig.savefig(output_dir / "corpus_size_over_time.png", dpi=180)
+    fig.savefig(output_dir / "corpus_size_over_time.png", dpi=180, bbox_inches="tight", facecolor=PLOT_BG)
     plt.close(fig)
 
 
