@@ -1,1850 +1,983 @@
 <?xml version="1.0" ?>
-<TEXT id="NTU_Stry_Kavalan_KavNr-sea_buya" xml:lang="ckv" source="NTU Corpus stories for Kavalan, story: KavNr-sea_buya" audio="diarized" copyright="CC BY-NC" citation="Sung, L. M., Lily, I., Hsieh, F., &amp; Lin, Z. (2008). Developing an online corpus of Formosan languages. Taiwan Journal of Linguistics, 6(2.)." BibTeX_citation="@article{sung2008developing,title={Developing an online corpus of Formosan languages.},author={Sung, Li-May and Lily, I and Hsieh, Fuhui and Lin, Zhemin and others},journal={Taiwan Journal of Linguistics},volume={6},number={2},year={2008}}">
-    <S id="KavNr-sea_buya_S_0">
-        <FORM kindOf="original">aimi kebalan azu ngid kataz qatiw sa lazing nani.</FORM>
-        <PHON kindOf="original">aimi kəβaran az~ru ŋiɮ kataz~r qatiw sa raz~riŋ nani.</PHON>
-        <FORM kindOf="standard">aimi kebalan azu ngid kataz qatiw sa lazing nani.</FORM>
-        <PHON kindOf="standard">aimi kəβaran az~ru ŋiɮ kataz~r qatiw sa raz~riŋ nani.</PHON>
-        <TRANSL xml:lang="zho">如果我們噶瑪蘭人想去海邊,</TRANSL>
-        <TRANSL xml:lang="en">If we Kavalan people want to go to the sea,</TRANSL>
-        <AUDIO file="KavNr-sea_buya_S0.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-sea_buya.mp3" start="0.0" end="5.45"/>
-        <W id="KavNr-sea_buya_S_0_W0">
-            <FORM kindOf="original">aimi</FORM>
-            <PHON kindOf="original">aimi</PHON>
-            <FORM kindOf="standard">aimi</FORM>
-            <PHON kindOf="standard">aimi</PHON>
-            <TRANSL xml:lang="zho">1EPL.主格</TRANSL>
-            <TRANSL xml:lang="en">1EPL.NOM</TRANSL>
-            <M id="KavNr-sea_buya_S_0_W0_M0_0">
-                <FORM kindOf="original">aimi</FORM>
-                <PHON kindOf="original">aimi</PHON>
-                <FORM kindOf="standard">aimi</FORM>
-                <PHON kindOf="standard">aimi</PHON>
-                <TRANSL xml:lang="en">1EPL.NOM</TRANSL>
-                <TRANSL xml:lang="zho">1EPL.主格</TRANSL>
+<TEXT id="NTU_Stry_Kavalan_KavNr-sea_buya" xml:lang="ckv" source="NTU Corpus stories for Kavalan, story: KavNr-sea_buya" audio="diarized" copyright="" citation="" BibTeX_citation="">
+    <S id="S_0">
+        <FORM>aimi kebalan azu ngid kataz qatiw sa lazing nani.</FORM>
+        <TRANSL xml:lang="zh"> 如果我們噶瑪蘭人想去海邊，</TRANSL>
+        <TRANSL xml:lang="en"> If we Kavalan people want to go to the sea,</TRANSL>
+        <AUDIO file="KavNr-sea_buya_S0.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-sea_buya.mp3"/>
+        <W id="S0W0">
+            <FORM>aimi</FORM>
+            <M id="S0W0M0_0">
+                <FORM>aimi</FORM>
+                <TRANSL>1EPL.NOM</TRANSL>
+                <TRANSL ver="zh_gloss">1EPL.主格</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_0_W1">
-            <FORM kindOf="original">kebalan</FORM>
-            <PHON kindOf="original">kəβaran</PHON>
-            <FORM kindOf="standard">kebalan</FORM>
-            <PHON kindOf="standard">kəβaran</PHON>
-            <TRANSL xml:lang="zho">噶瑪蘭</TRANSL>
-            <TRANSL xml:lang="en">Kavalan</TRANSL>
-            <M id="KavNr-sea_buya_S_0_W1_M0_0">
-                <FORM kindOf="original">kebalan</FORM>
-                <PHON kindOf="original">kəβaran</PHON>
-                <FORM kindOf="standard">kebalan</FORM>
-                <PHON kindOf="standard">kəβaran</PHON>
-                <TRANSL xml:lang="en">Kavalan</TRANSL>
-                <TRANSL xml:lang="zho">噶瑪蘭</TRANSL>
+        <W id="S0W1">
+            <FORM>kebalan</FORM>
+            <M id="S0W1M0_0">
+                <FORM>kebalan</FORM>
+                <TRANSL>Kavalan</TRANSL>
+                <TRANSL ver="zh_gloss">噶瑪蘭</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_0_W2">
-            <FORM kindOf="original">azu</FORM>
-            <PHON kindOf="original">az~ru</PHON>
-            <FORM kindOf="standard">azu</FORM>
-            <PHON kindOf="standard">az~ru</PHON>
-            <TRANSL xml:lang="zho">像</TRANSL>
-            <TRANSL xml:lang="en">like</TRANSL>
-            <M id="KavNr-sea_buya_S_0_W2_M0_0">
-                <FORM kindOf="original">azu</FORM>
-                <PHON kindOf="original">az~ru</PHON>
-                <FORM kindOf="standard">azu</FORM>
-                <PHON kindOf="standard">az~ru</PHON>
-                <TRANSL xml:lang="en">like</TRANSL>
-                <TRANSL xml:lang="zho">像</TRANSL>
+        <W id="S0W2">
+            <FORM>azu</FORM>
+            <M id="S0W2M0_0">
+                <FORM>azu</FORM>
+                <TRANSL>like</TRANSL>
+                <TRANSL ver="zh_gloss">像</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_0_W3">
-            <FORM kindOf="original">ngid</FORM>
-            <PHON kindOf="original">ŋiɮ</PHON>
-            <FORM kindOf="standard">ngid</FORM>
-            <PHON kindOf="standard">ŋiɮ</PHON>
-            <TRANSL xml:lang="zho">想</TRANSL>
-            <TRANSL xml:lang="en">want</TRANSL>
-            <M id="KavNr-sea_buya_S_0_W3_M0_0">
-                <FORM kindOf="original">ngid</FORM>
-                <PHON kindOf="original">ŋiɮ</PHON>
-                <FORM kindOf="standard">ngid</FORM>
-                <PHON kindOf="standard">ŋiɮ</PHON>
-                <TRANSL xml:lang="en">want</TRANSL>
-                <TRANSL xml:lang="zho">想</TRANSL>
+        <W id="S0W3">
+            <FORM>ngid</FORM>
+            <M id="S0W3M0_0">
+                <FORM>ngid</FORM>
+                <TRANSL>want</TRANSL>
+                <TRANSL ver="zh_gloss">想</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_0_W4">
-            <FORM kindOf="original">kataz</FORM>
-            <PHON kindOf="original">kataz~r</PHON>
-            <FORM kindOf="standard">kataz</FORM>
-            <PHON kindOf="standard">kataz~r</PHON>
-            <TRANSL xml:lang="zho">FS</TRANSL>
-            <TRANSL xml:lang="en">FS</TRANSL>
-            <M id="KavNr-sea_buya_S_0_W4_M0_0">
-                <FORM kindOf="original">kataz</FORM>
-                <PHON kindOf="original">kataz~r</PHON>
-                <FORM kindOf="standard">kataz</FORM>
-                <PHON kindOf="standard">kataz~r</PHON>
-                <TRANSL xml:lang="en">FS</TRANSL>
-                <TRANSL xml:lang="zho">FS</TRANSL>
+        <W id="S0W4">
+            <FORM>kataz</FORM>
+            <M id="S0W4M0_0">
+                <FORM>kataz</FORM>
+                <TRANSL>FS</TRANSL>
+                <TRANSL ver="zh_gloss">FS</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_0_W5">
-            <FORM kindOf="original">qatiw</FORM>
-            <PHON kindOf="original">qatiw</PHON>
-            <FORM kindOf="standard">qatiw</FORM>
-            <PHON kindOf="standard">qatiw</PHON>
-            <TRANSL xml:lang="zho">去</TRANSL>
-            <TRANSL xml:lang="en">go</TRANSL>
-            <M id="KavNr-sea_buya_S_0_W5_M0_0">
-                <FORM kindOf="original">qatiw</FORM>
-                <PHON kindOf="original">qatiw</PHON>
-                <FORM kindOf="standard">qatiw</FORM>
-                <PHON kindOf="standard">qatiw</PHON>
-                <TRANSL xml:lang="en">go</TRANSL>
-                <TRANSL xml:lang="zho">去</TRANSL>
+        <W id="S0W5">
+            <FORM>qatiw</FORM>
+            <M id="S0W5M0_0">
+                <FORM>qatiw</FORM>
+                <TRANSL>go</TRANSL>
+                <TRANSL ver="zh_gloss">去</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_0_W6">
-            <FORM kindOf="original">sa</FORM>
-            <PHON kindOf="original">sa</PHON>
-            <FORM kindOf="standard">sa</FORM>
-            <PHON kindOf="standard">sa</PHON>
-            <TRANSL xml:lang="zho">到</TRANSL>
-            <TRANSL xml:lang="en">to</TRANSL>
-            <M id="KavNr-sea_buya_S_0_W6_M0_0">
-                <FORM kindOf="original">sa</FORM>
-                <PHON kindOf="original">sa</PHON>
-                <FORM kindOf="standard">sa</FORM>
-                <PHON kindOf="standard">sa</PHON>
-                <TRANSL xml:lang="en">to</TRANSL>
-                <TRANSL xml:lang="zho">到</TRANSL>
+        <W id="S0W6">
+            <FORM>sa</FORM>
+            <M id="S0W6M0_0">
+                <FORM>sa</FORM>
+                <TRANSL>to</TRANSL>
+                <TRANSL ver="zh_gloss">到</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_0_W7">
-            <FORM kindOf="original">lazing</FORM>
-            <PHON kindOf="original">raz~riŋ</PHON>
-            <FORM kindOf="standard">lazing</FORM>
-            <PHON kindOf="standard">raz~riŋ</PHON>
-            <TRANSL xml:lang="zho">海邊</TRANSL>
-            <TRANSL xml:lang="en">sea</TRANSL>
-            <M id="KavNr-sea_buya_S_0_W7_M0_0">
-                <FORM kindOf="original">lazing</FORM>
-                <PHON kindOf="original">raz~riŋ</PHON>
-                <FORM kindOf="standard">lazing</FORM>
-                <PHON kindOf="standard">raz~riŋ</PHON>
-                <TRANSL xml:lang="en">sea</TRANSL>
-                <TRANSL xml:lang="zho">海邊</TRANSL>
+        <W id="S0W7">
+            <FORM>lazing</FORM>
+            <M id="S0W7M0_0">
+                <FORM>lazing</FORM>
+                <TRANSL>sea</TRANSL>
+                <TRANSL ver="zh_gloss">海邊</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_0_W8">
-            <FORM kindOf="original">nani</FORM>
-            <PHON kindOf="original">nani</PHON>
-            <FORM kindOf="standard">nani</FORM>
-            <PHON kindOf="standard">nani</PHON>
-            <TRANSL xml:lang="zho">DM</TRANSL>
-            <TRANSL xml:lang="en">DM</TRANSL>
-            <M id="KavNr-sea_buya_S_0_W8_M0_0">
-                <FORM kindOf="original">nani</FORM>
-                <PHON kindOf="original">nani</PHON>
-                <FORM kindOf="standard">nani</FORM>
-                <PHON kindOf="standard">nani</PHON>
-                <TRANSL xml:lang="en">DM</TRANSL>
-                <TRANSL xml:lang="zho">DM</TRANSL>
+        <W id="S0W8">
+            <FORM>nani</FORM>
+            <M id="S0W8M0_0">
+                <FORM>nani</FORM>
+                <TRANSL>DM</TRANSL>
+                <TRANSL ver="zh_gloss">DM</TRANSL>
             </M>
         </W>
     </S>
-    <S id="KavNr-sea_buya_S_1">
-        <FORM kindOf="original">qawman kmilim tu kaput.</FORM>
-        <PHON kindOf="original">qawman kmirim tu kaput.</PHON>
-        <FORM kindOf="standard">qawman kmilim tu kaput.</FORM>
-        <PHON kindOf="standard">qawman kmirim tu kaput.</PHON>
-        <TRANSL xml:lang="zho" notes="(我們)絕對會找伴(一起去).">絕對會找伴 .</TRANSL>
-        <TRANSL xml:lang="en" notes="(we) will definitely ask friends (to come with us).">will definitely ask friends .</TRANSL>
-        <AUDIO file="KavNr-sea_buya_S1.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-sea_buya.mp3" start="5.45" end="8.83"/>
-        <W id="KavNr-sea_buya_S_1_W0">
-            <FORM kindOf="original">qawman</FORM>
-            <PHON kindOf="original">qawman</PHON>
-            <FORM kindOf="standard">qawman</FORM>
-            <PHON kindOf="standard">qawman</PHON>
-            <TRANSL xml:lang="zho">必定</TRANSL>
-            <TRANSL xml:lang="en">definitely</TRANSL>
-            <M id="KavNr-sea_buya_S_1_W0_M0_0">
-                <FORM kindOf="original">qawman</FORM>
-                <PHON kindOf="original">qawman</PHON>
-                <FORM kindOf="standard">qawman</FORM>
-                <PHON kindOf="standard">qawman</PHON>
-                <TRANSL xml:lang="en">definitely</TRANSL>
-                <TRANSL xml:lang="zho">必定</TRANSL>
+    <S id="S_1">
+        <FORM>qawman kmilim tu kaput.</FORM>
+        <TRANSL xml:lang="zh"> (我們)絕對會找伴(一起去)。</TRANSL>
+        <TRANSL xml:lang="en"> (we) will definitely ask friends (to come with us).</TRANSL>
+        <AUDIO file="KavNr-sea_buya_S1.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-sea_buya.mp3"/>
+        <W id="S1W0">
+            <FORM>qawman</FORM>
+            <M id="S1W0M0_0">
+                <FORM>qawman</FORM>
+                <TRANSL>definitely</TRANSL>
+                <TRANSL ver="zh_gloss">必定</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_1_W1">
-            <FORM kindOf="original">k&lt;m&gt;ilim</FORM>
-            <PHON kindOf="original">k&lt;m&gt;irim</PHON>
-            <FORM kindOf="standard">k&lt;m&gt;ilim</FORM>
-            <PHON kindOf="standard">k&lt;m&gt;irim</PHON>
-            <TRANSL xml:lang="zho">&lt;主焦&gt;找</TRANSL>
-            <TRANSL xml:lang="en">&lt;AF&gt;look.for</TRANSL>
-            <M id="KavNr-sea_buya_S_1_W1_M0_0_0">
-                <FORM kindOf="original">&lt;m&gt;</FORM>
-                <PHON kindOf="original">&lt;m&gt;</PHON>
-                <FORM kindOf="standard">&lt;m&gt;</FORM>
-                <PHON kindOf="standard">&lt;m&gt;</PHON>
-                <TRANSL xml:lang="en">&lt;AF&gt;</TRANSL>
-                <TRANSL xml:lang="zho">&lt;主焦&gt;</TRANSL>
-            </M>
-            <M id="KavNr-sea_buya_S_1_W1_M0_0_1">
-                <FORM kindOf="original">k-ilim</FORM>
-                <PHON kindOf="original">k-irim</PHON>
-                <FORM kindOf="standard">k-ilim</FORM>
-                <PHON kindOf="standard">k-irim</PHON>
-                <TRANSL xml:lang="en">look.for</TRANSL>
-                <TRANSL xml:lang="zho">找</TRANSL>
+        <W id="S1W1">
+            <FORM>k&lt;m&gt;ilim</FORM>
+            <M id="S1W1M0_0">
+                <FORM>k&lt;m&gt;ilim</FORM>
+                <TRANSL>&lt;AF&gt;look.for</TRANSL>
+                <TRANSL ver="zh_gloss">&lt;主焦&gt;找</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_1_W2">
-            <FORM kindOf="original">tu</FORM>
-            <PHON kindOf="original">tu</PHON>
-            <FORM kindOf="standard">tu</FORM>
-            <PHON kindOf="standard">tu</PHON>
-            <TRANSL xml:lang="zho">斜格</TRANSL>
-            <TRANSL xml:lang="en">OBL</TRANSL>
-            <M id="KavNr-sea_buya_S_1_W2_M0_0">
-                <FORM kindOf="original">tu</FORM>
-                <PHON kindOf="original">tu</PHON>
-                <FORM kindOf="standard">tu</FORM>
-                <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="en">OBL</TRANSL>
-                <TRANSL xml:lang="zho">斜格</TRANSL>
+        <W id="S1W2">
+            <FORM>tu</FORM>
+            <M id="S1W2M0_0">
+                <FORM>tu</FORM>
+                <TRANSL>OBL</TRANSL>
+                <TRANSL ver="zh_gloss">斜格</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_1_W3">
-            <FORM kindOf="original">kaput</FORM>
-            <PHON kindOf="original">kaput</PHON>
-            <FORM kindOf="standard">kaput</FORM>
-            <PHON kindOf="standard">kaput</PHON>
-            <TRANSL xml:lang="zho">朋友</TRANSL>
-            <TRANSL xml:lang="en">friend</TRANSL>
-            <M id="KavNr-sea_buya_S_1_W3_M0_0">
-                <FORM kindOf="original">kaput</FORM>
-                <PHON kindOf="original">kaput</PHON>
-                <FORM kindOf="standard">kaput</FORM>
-                <PHON kindOf="standard">kaput</PHON>
-                <TRANSL xml:lang="en">friend</TRANSL>
-                <TRANSL xml:lang="zho">朋友</TRANSL>
+        <W id="S1W3">
+            <FORM>kaput</FORM>
+            <M id="S1W3M0_0">
+                <FORM>kaput</FORM>
+                <TRANSL>friend</TRANSL>
+                <TRANSL ver="zh_gloss">朋友</TRANSL>
             </M>
         </W>
     </S>
-    <S id="KavNr-sea_buya_S_2">
-        <FORM kindOf="original">masulun sa lazing qawqa nengi.</FORM>
-        <PHON kindOf="original">masurun sa raz~riŋ qawqa nəŋi.</PHON>
-        <FORM kindOf="standard">masulun sa lazing qawqa nengi.</FORM>
-        <PHON kindOf="standard">masurun sa raz~riŋ qawqa nəŋi.</PHON>
-        <TRANSL xml:lang="zho">一起去海邊比較好</TRANSL>
-        <TRANSL xml:lang="en">It's better if we go to the sea together.</TRANSL>
-        <AUDIO file="KavNr-sea_buya_S2.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-sea_buya.mp3" start="8.83" end="14.98"/>
-        <W id="KavNr-sea_buya_S_2_W0">
-            <FORM kindOf="original">masulun</FORM>
-            <PHON kindOf="original">masurun</PHON>
-            <FORM kindOf="standard">masulun</FORM>
-            <PHON kindOf="standard">masurun</PHON>
-            <TRANSL xml:lang="zho">主焦.一起</TRANSL>
-            <TRANSL xml:lang="en">AF.together</TRANSL>
-            <M id="KavNr-sea_buya_S_2_W0_M0_0">
-                <FORM kindOf="original">masulun</FORM>
-                <PHON kindOf="original">masurun</PHON>
-                <FORM kindOf="standard">masulun</FORM>
-                <PHON kindOf="standard">masurun</PHON>
-                <TRANSL xml:lang="en">AF.together</TRANSL>
-                <TRANSL xml:lang="zho">主焦.一起</TRANSL>
+    <S id="S_2">
+        <FORM>masulun sa lazing qawqa nengi.</FORM>
+        <TRANSL xml:lang="zh"> 一起去海邊比較好</TRANSL>
+        <TRANSL xml:lang="en"> It’s better if we go to the sea together.</TRANSL>
+        <AUDIO file="KavNr-sea_buya_S2.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-sea_buya.mp3"/>
+        <W id="S2W0">
+            <FORM>masulun</FORM>
+            <M id="S2W0M0_0">
+                <FORM>masulun</FORM>
+                <TRANSL>AF.together</TRANSL>
+                <TRANSL ver="zh_gloss">主焦.一起</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_2_W1">
-            <FORM kindOf="original">sa</FORM>
-            <PHON kindOf="original">sa</PHON>
-            <FORM kindOf="standard">sa</FORM>
-            <PHON kindOf="standard">sa</PHON>
-            <TRANSL xml:lang="zho">到</TRANSL>
-            <TRANSL xml:lang="en">to</TRANSL>
-            <M id="KavNr-sea_buya_S_2_W1_M0_0">
-                <FORM kindOf="original">sa</FORM>
-                <PHON kindOf="original">sa</PHON>
-                <FORM kindOf="standard">sa</FORM>
-                <PHON kindOf="standard">sa</PHON>
-                <TRANSL xml:lang="en">to</TRANSL>
-                <TRANSL xml:lang="zho">到</TRANSL>
+        <W id="S2W1">
+            <FORM>sa</FORM>
+            <M id="S2W1M0_0">
+                <FORM>sa</FORM>
+                <TRANSL>to</TRANSL>
+                <TRANSL ver="zh_gloss">到</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_2_W2">
-            <FORM kindOf="original">lazing</FORM>
-            <PHON kindOf="original">raz~riŋ</PHON>
-            <FORM kindOf="standard">lazing</FORM>
-            <PHON kindOf="standard">raz~riŋ</PHON>
-            <TRANSL xml:lang="zho">海邊</TRANSL>
-            <TRANSL xml:lang="en">sea</TRANSL>
-            <M id="KavNr-sea_buya_S_2_W2_M0_0">
-                <FORM kindOf="original">lazing</FORM>
-                <PHON kindOf="original">raz~riŋ</PHON>
-                <FORM kindOf="standard">lazing</FORM>
-                <PHON kindOf="standard">raz~riŋ</PHON>
-                <TRANSL xml:lang="en">sea</TRANSL>
-                <TRANSL xml:lang="zho">海邊</TRANSL>
+        <W id="S2W2">
+            <FORM>lazing</FORM>
+            <M id="S2W2M0_0">
+                <FORM>lazing</FORM>
+                <TRANSL>sea</TRANSL>
+                <TRANSL ver="zh_gloss">海邊</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_2_W3">
-            <FORM kindOf="original">qawqa</FORM>
-            <PHON kindOf="original">qawqa</PHON>
-            <FORM kindOf="standard">qawqa</FORM>
-            <PHON kindOf="standard">qawqa</PHON>
-            <TRANSL xml:lang="zho">比較</TRANSL>
-            <TRANSL xml:lang="en">more</TRANSL>
-            <M id="KavNr-sea_buya_S_2_W3_M0_0">
-                <FORM kindOf="original">qawqa</FORM>
-                <PHON kindOf="original">qawqa</PHON>
-                <FORM kindOf="standard">qawqa</FORM>
-                <PHON kindOf="standard">qawqa</PHON>
-                <TRANSL xml:lang="en">more</TRANSL>
-                <TRANSL xml:lang="zho">比較</TRANSL>
+        <W id="S2W3">
+            <FORM>qawqa</FORM>
+            <M id="S2W3M0_0">
+                <FORM>qawqa</FORM>
+                <TRANSL>more</TRANSL>
+                <TRANSL ver="zh_gloss">比較</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_2_W4">
-            <FORM kindOf="original">nengi</FORM>
-            <PHON kindOf="original">nəŋi</PHON>
-            <FORM kindOf="standard">nengi</FORM>
-            <PHON kindOf="standard">nəŋi</PHON>
-            <TRANSL xml:lang="zho">好</TRANSL>
-            <TRANSL xml:lang="en">good</TRANSL>
-            <M id="KavNr-sea_buya_S_2_W4_M0_0">
-                <FORM kindOf="original">nengi</FORM>
-                <PHON kindOf="original">nəŋi</PHON>
-                <FORM kindOf="standard">nengi</FORM>
-                <PHON kindOf="standard">nəŋi</PHON>
-                <TRANSL xml:lang="en">good</TRANSL>
-                <TRANSL xml:lang="zho">好</TRANSL>
+        <W id="S2W4">
+            <FORM>nengi</FORM>
+            <M id="S2W4M0_0">
+                <FORM>nengi</FORM>
+                <TRANSL>good</TRANSL>
+                <TRANSL ver="zh_gloss">好</TRANSL>
             </M>
         </W>
     </S>
-    <S id="KavNr-sea_buya_S_3">
-        <FORM kindOf="original">qawqa mlizaq mlilizaq tayan.</FORM>
-        <PHON kindOf="original">qawqa mriz~raq mririz~raq tajan.</PHON>
-        <FORM kindOf="standard">qawqa mlizaq mlilizaq tayan.</FORM>
-        <PHON kindOf="standard">qawqa mriz~raq mririz~raq tajan.</PHON>
-        <TRANSL xml:lang="zho">更能高高興興在那裡.</TRANSL>
-        <TRANSL xml:lang="en">Being much happier there.</TRANSL>
-        <AUDIO file="KavNr-sea_buya_S3.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-sea_buya.mp3" start="14.98" end="17.75"/>
-        <W id="KavNr-sea_buya_S_3_W0">
-            <FORM kindOf="original">qawqa</FORM>
-            <PHON kindOf="original">qawqa</PHON>
-            <FORM kindOf="standard">qawqa</FORM>
-            <PHON kindOf="standard">qawqa</PHON>
-            <TRANSL xml:lang="zho">比較</TRANSL>
-            <TRANSL xml:lang="en">more</TRANSL>
-            <M id="KavNr-sea_buya_S_3_W0_M0_0">
-                <FORM kindOf="original">qawqa</FORM>
-                <PHON kindOf="original">qawqa</PHON>
-                <FORM kindOf="standard">qawqa</FORM>
-                <PHON kindOf="standard">qawqa</PHON>
-                <TRANSL xml:lang="en">more</TRANSL>
-                <TRANSL xml:lang="zho">比較</TRANSL>
+    <S id="S_3">
+        <FORM>qawqa mlizaq mlilizaq tayan.</FORM>
+        <TRANSL xml:lang="zh"> 更能高高興興在那裡。</TRANSL>
+        <TRANSL xml:lang="en"> Being much happier there.</TRANSL>
+        <AUDIO file="KavNr-sea_buya_S3.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-sea_buya.mp3"/>
+        <W id="S3W0">
+            <FORM>qawqa</FORM>
+            <M id="S3W0M0_0">
+                <FORM>qawqa</FORM>
+                <TRANSL>more</TRANSL>
+                <TRANSL ver="zh_gloss">比較</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_3_W1">
-            <FORM kindOf="original">m-lizaq</FORM>
-            <PHON kindOf="original">m-riz~raq</PHON>
-            <FORM kindOf="standard">m-lizaq</FORM>
-            <PHON kindOf="standard">m-riz~raq</PHON>
-            <TRANSL xml:lang="zho">主焦-高興</TRANSL>
-            <TRANSL xml:lang="en">AF-happy</TRANSL>
-            <M id="KavNr-sea_buya_S_3_W1_M0_0">
-                <FORM kindOf="original">m</FORM>
-                <PHON kindOf="original">m</PHON>
-                <FORM kindOf="standard">m</FORM>
-                <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="en">AF</TRANSL>
-                <TRANSL xml:lang="zho">主焦</TRANSL>
+        <W id="S3W1">
+            <FORM>m-lizaq</FORM>
+            <M id="S3W1M0_0">
+                <FORM>m</FORM>
+                <TRANSL>AF</TRANSL>
+                <TRANSL ver="zh_gloss">主焦</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_3_W1_M1_0">
-                <FORM kindOf="original">lizaq</FORM>
-                <PHON kindOf="original">riz~raq</PHON>
-                <FORM kindOf="standard">lizaq</FORM>
-                <PHON kindOf="standard">riz~raq</PHON>
-                <TRANSL xml:lang="en">happy</TRANSL>
-                <TRANSL xml:lang="zho">高興</TRANSL>
+            <M id="S3W1M1_0">
+                <FORM>lizaq</FORM>
+                <TRANSL>happy</TRANSL>
+                <TRANSL ver="zh_gloss">高興</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_3_W2">
-            <FORM kindOf="original">m-li-lizaq</FORM>
-            <PHON kindOf="original">m-ri-riz~raq</PHON>
-            <FORM kindOf="standard">m-li-lizaq</FORM>
-            <PHON kindOf="standard">m-ri-riz~raq</PHON>
-            <TRANSL xml:lang="zho">主焦-重疊-高興</TRANSL>
-            <TRANSL xml:lang="en">AF-RED-happy</TRANSL>
-            <M id="KavNr-sea_buya_S_3_W2_M0_0">
-                <FORM kindOf="original">m</FORM>
-                <PHON kindOf="original">m</PHON>
-                <FORM kindOf="standard">m</FORM>
-                <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="en">AF</TRANSL>
-                <TRANSL xml:lang="zho">主焦</TRANSL>
+        <W id="S3W2">
+            <FORM>m-li-lizaq</FORM>
+            <M id="S3W2M0_0">
+                <FORM>m</FORM>
+                <TRANSL>AF</TRANSL>
+                <TRANSL ver="zh_gloss">主焦</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_3_W2_M1_0">
-                <FORM kindOf="original">li</FORM>
-                <PHON kindOf="original">ri</PHON>
-                <FORM kindOf="standard">li</FORM>
-                <PHON kindOf="standard">ri</PHON>
-                <TRANSL xml:lang="en">RED</TRANSL>
-                <TRANSL xml:lang="zho">重疊</TRANSL>
+            <M id="S3W2M1_0">
+                <FORM>li</FORM>
+                <TRANSL>RED</TRANSL>
+                <TRANSL ver="zh_gloss">重疊</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_3_W2_M2_0">
-                <FORM kindOf="original">lizaq</FORM>
-                <PHON kindOf="original">riz~raq</PHON>
-                <FORM kindOf="standard">lizaq</FORM>
-                <PHON kindOf="standard">riz~raq</PHON>
-                <TRANSL xml:lang="en">happy</TRANSL>
-                <TRANSL xml:lang="zho">高興</TRANSL>
+            <M id="S3W2M2_0">
+                <FORM>lizaq</FORM>
+                <TRANSL>happy</TRANSL>
+                <TRANSL ver="zh_gloss">高興</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_3_W3">
-            <FORM kindOf="original">tayan</FORM>
-            <PHON kindOf="original">tajan</PHON>
-            <FORM kindOf="standard">tayan</FORM>
-            <PHON kindOf="standard">tajan</PHON>
-            <TRANSL xml:lang="zho">那裡</TRANSL>
-            <TRANSL xml:lang="en">there</TRANSL>
-            <M id="KavNr-sea_buya_S_3_W3_M0_0">
-                <FORM kindOf="original">tayan</FORM>
-                <PHON kindOf="original">tajan</PHON>
-                <FORM kindOf="standard">tayan</FORM>
-                <PHON kindOf="standard">tajan</PHON>
-                <TRANSL xml:lang="en">there</TRANSL>
-                <TRANSL xml:lang="zho">那裡</TRANSL>
+        <W id="S3W3">
+            <FORM>tayan</FORM>
+            <M id="S3W3M0_0">
+                <FORM>tayan</FORM>
+                <TRANSL>there</TRANSL>
+                <TRANSL ver="zh_gloss">那裡</TRANSL>
             </M>
         </W>
     </S>
-    <S id="KavNr-sea_buya_S_4">
-        <FORM kindOf="original">azu maseq talazingan.</FORM>
-        <PHON kindOf="original">az~ru masəq taraz~riŋan.</PHON>
-        <FORM kindOf="standard">azu maseq talazingan.</FORM>
-        <PHON kindOf="standard">az~ru masəq taraz~riŋan.</PHON>
-        <TRANSL xml:lang="zho">如果到了海邊,</TRANSL>
-        <TRANSL xml:lang="en" notes="If (we) arrive at the sea,">If arrive at the sea,</TRANSL>
-        <AUDIO file="KavNr-sea_buya_S4.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-sea_buya.mp3" start="17.75" end="25.08"/>
-        <W id="KavNr-sea_buya_S_4_W0">
-            <FORM kindOf="original">azu</FORM>
-            <PHON kindOf="original">az~ru</PHON>
-            <FORM kindOf="standard">azu</FORM>
-            <PHON kindOf="standard">az~ru</PHON>
-            <TRANSL xml:lang="zho">像</TRANSL>
-            <TRANSL xml:lang="en">like</TRANSL>
-            <M id="KavNr-sea_buya_S_4_W0_M0_0">
-                <FORM kindOf="original">azu</FORM>
-                <PHON kindOf="original">az~ru</PHON>
-                <FORM kindOf="standard">azu</FORM>
-                <PHON kindOf="standard">az~ru</PHON>
-                <TRANSL xml:lang="en">like</TRANSL>
-                <TRANSL xml:lang="zho">像</TRANSL>
+    <S id="S_4">
+        <FORM>azu maseq talazingan.</FORM>
+        <TRANSL xml:lang="zh"> 如果到了海邊，</TRANSL>
+        <TRANSL xml:lang="en"> If (we) arrive at the sea,</TRANSL>
+        <AUDIO file="KavNr-sea_buya_S4.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-sea_buya.mp3"/>
+        <W id="S4W0">
+            <FORM>azu</FORM>
+            <M id="S4W0M0_0">
+                <FORM>azu</FORM>
+                <TRANSL>like</TRANSL>
+                <TRANSL ver="zh_gloss">像</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_4_W1">
-            <FORM kindOf="original">maseq</FORM>
-            <PHON kindOf="original">masəq</PHON>
-            <FORM kindOf="standard">maseq</FORM>
-            <PHON kindOf="standard">masəq</PHON>
-            <TRANSL xml:lang="zho">主焦.到達</TRANSL>
-            <TRANSL xml:lang="en">AF.arrive</TRANSL>
-            <M id="KavNr-sea_buya_S_4_W1_M0_0">
-                <FORM kindOf="original">maseq</FORM>
-                <PHON kindOf="original">masəq</PHON>
-                <FORM kindOf="standard">maseq</FORM>
-                <PHON kindOf="standard">masəq</PHON>
-                <TRANSL xml:lang="en">AF.arrive</TRANSL>
-                <TRANSL xml:lang="zho">主焦.到達</TRANSL>
+        <W id="S4W1">
+            <FORM>maseq</FORM>
+            <M id="S4W1M0_0">
+                <FORM>maseq</FORM>
+                <TRANSL>AF.arrive</TRANSL>
+                <TRANSL ver="zh_gloss">主焦.到達</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_4_W2">
-            <FORM kindOf="original">ta-lazing-an</FORM>
-            <PHON kindOf="original">ta-raz~riŋ-an</PHON>
-            <FORM kindOf="standard">ta-lazing-an</FORM>
-            <PHON kindOf="standard">ta-raz~riŋ-an</PHON>
-            <TRANSL xml:lang="zho">處格-海邊-處格</TRANSL>
-            <TRANSL xml:lang="en">LOC-sea-LOC</TRANSL>
-            <M id="KavNr-sea_buya_S_4_W2_M0_0">
-                <FORM kindOf="original">ta</FORM>
-                <PHON kindOf="original">ta</PHON>
-                <FORM kindOf="standard">ta</FORM>
-                <PHON kindOf="standard">ta</PHON>
-                <TRANSL xml:lang="en">LOC</TRANSL>
-                <TRANSL xml:lang="zho">處格</TRANSL>
+        <W id="S4W2">
+            <FORM>ta-lazing-an</FORM>
+            <M id="S4W2M0_0">
+                <FORM>ta</FORM>
+                <TRANSL>LOC</TRANSL>
+                <TRANSL ver="zh_gloss">處格</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_4_W2_M1_0">
-                <FORM kindOf="original">lazing</FORM>
-                <PHON kindOf="original">raz~riŋ</PHON>
-                <FORM kindOf="standard">lazing</FORM>
-                <PHON kindOf="standard">raz~riŋ</PHON>
-                <TRANSL xml:lang="en">sea</TRANSL>
-                <TRANSL xml:lang="zho">海邊</TRANSL>
+            <M id="S4W2M1_0">
+                <FORM>lazing</FORM>
+                <TRANSL>sea</TRANSL>
+                <TRANSL ver="zh_gloss">海邊</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_4_W2_M2_0">
-                <FORM kindOf="original">an</FORM>
-                <PHON kindOf="original">an</PHON>
-                <FORM kindOf="standard">an</FORM>
-                <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="en">LOC</TRANSL>
-                <TRANSL xml:lang="zho">處格</TRANSL>
+            <M id="S4W2M2_0">
+                <FORM>an</FORM>
+                <TRANSL>LOC</TRANSL>
+                <TRANSL ver="zh_gloss">處格</TRANSL>
             </M>
         </W>
     </S>
-    <S id="KavNr-sea_buya_S_5">
-        <FORM kindOf="original">Runanay mRenem Ribaut pmazing.</FORM>
-        <PHON kindOf="original">ʁunanaj mʁənəm ʁiβaut pmaz~riŋ.</PHON>
-        <FORM kindOf="standard">Runanay mRenem Ribaut pmazing.</FORM>
-        <PHON kindOf="standard">ʁunanaj mʁənəm ʁiβaut pmaz~riŋ.</PHON>
-        <TRANSL xml:lang="zho">男人下水抓魚和射魚.</TRANSL>
-        <TRANSL xml:lang="en">Men dive into the waters, catching and spearing fish.</TRANSL>
-        <AUDIO file="KavNr-sea_buya_S5.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-sea_buya.mp3" start="25.08" end="33.9"/>
-        <W id="KavNr-sea_buya_S_5_W0">
-            <FORM kindOf="original">Runanay</FORM>
-            <PHON kindOf="original">ʁunanaj</PHON>
-            <FORM kindOf="standard">Runanay</FORM>
-            <PHON kindOf="standard">ʁunanaj</PHON>
-            <TRANSL xml:lang="zho">男人</TRANSL>
-            <TRANSL xml:lang="en">man</TRANSL>
-            <M id="KavNr-sea_buya_S_5_W0_M0_0">
-                <FORM kindOf="original">Runanay</FORM>
-                <PHON kindOf="original">ʁunanaj</PHON>
-                <FORM kindOf="standard">Runanay</FORM>
-                <PHON kindOf="standard">ʁunanaj</PHON>
-                <TRANSL xml:lang="en">man</TRANSL>
-                <TRANSL xml:lang="zho">男人</TRANSL>
+    <S id="S_5">
+        <FORM>Runanay mRenem Ribaut pmazing.</FORM>
+        <TRANSL xml:lang="zh"> 男人下水抓魚和射魚。</TRANSL>
+        <TRANSL xml:lang="en"> Men dive into the waters, catching and spearing fish.</TRANSL>
+        <AUDIO file="KavNr-sea_buya_S5.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-sea_buya.mp3"/>
+        <W id="S5W0">
+            <FORM>Runanay</FORM>
+            <M id="S5W0M0_0">
+                <FORM>Runanay</FORM>
+                <TRANSL>man</TRANSL>
+                <TRANSL ver="zh_gloss">男人</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_5_W1">
-            <FORM kindOf="original">m-Renem</FORM>
-            <PHON kindOf="original">m-ʁənəm</PHON>
-            <FORM kindOf="standard">m-Renem</FORM>
-            <PHON kindOf="standard">m-ʁənəm</PHON>
-            <TRANSL xml:lang="zho">主焦-潛水</TRANSL>
-            <TRANSL xml:lang="en">AF-dive</TRANSL>
-            <M id="KavNr-sea_buya_S_5_W1_M0_0">
-                <FORM kindOf="original">m</FORM>
-                <PHON kindOf="original">m</PHON>
-                <FORM kindOf="standard">m</FORM>
-                <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="en">AF</TRANSL>
-                <TRANSL xml:lang="zho">主焦</TRANSL>
+        <W id="S5W1">
+            <FORM>m-Renem</FORM>
+            <M id="S5W1M0_0">
+                <FORM>m</FORM>
+                <TRANSL>AF</TRANSL>
+                <TRANSL ver="zh_gloss">主焦</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_5_W1_M1_0">
-                <FORM kindOf="original">Renem</FORM>
-                <PHON kindOf="original">ʁənəm</PHON>
-                <FORM kindOf="standard">Renem</FORM>
-                <PHON kindOf="standard">ʁənəm</PHON>
-                <TRANSL xml:lang="en">dive</TRANSL>
-                <TRANSL xml:lang="zho">潛水</TRANSL>
+            <M id="S5W1M1_0">
+                <FORM>Renem</FORM>
+                <TRANSL>dive</TRANSL>
+                <TRANSL ver="zh_gloss">潛水</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_5_W2">
-            <FORM kindOf="original">Ri-baut</FORM>
-            <PHON kindOf="original">ʁi-βaut</PHON>
-            <FORM kindOf="standard">Ri-baut</FORM>
-            <PHON kindOf="standard">ʁi-βaut</PHON>
-            <TRANSL xml:lang="zho">抓-魚</TRANSL>
-            <TRANSL xml:lang="en">catch-fish</TRANSL>
-            <M id="KavNr-sea_buya_S_5_W2_M0_0">
-                <FORM kindOf="original">Ri</FORM>
-                <PHON kindOf="original">ʁi</PHON>
-                <FORM kindOf="standard">Ri</FORM>
-                <PHON kindOf="standard">ʁi</PHON>
-                <TRANSL xml:lang="en">catch</TRANSL>
-                <TRANSL xml:lang="zho">抓</TRANSL>
+        <W id="S5W2">
+            <FORM>Ri-baut</FORM>
+            <M id="S5W2M0_0">
+                <FORM>Ri</FORM>
+                <TRANSL>catch</TRANSL>
+                <TRANSL ver="zh_gloss">抓</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_5_W2_M1_0">
-                <FORM kindOf="original">baut</FORM>
-                <PHON kindOf="original">βaut</PHON>
-                <FORM kindOf="standard">baut</FORM>
-                <PHON kindOf="standard">βaut</PHON>
-                <TRANSL xml:lang="en">fish</TRANSL>
-                <TRANSL xml:lang="zho">魚</TRANSL>
+            <M id="S5W2M1_0">
+                <FORM>baut</FORM>
+                <TRANSL>fish</TRANSL>
+                <TRANSL ver="zh_gloss">魚</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_5_W3">
-            <FORM kindOf="original">p&lt;m&gt;azing</FORM>
-            <PHON kindOf="original">p&lt;m&gt;az~riŋ</PHON>
-            <FORM kindOf="standard">p&lt;m&gt;azing</FORM>
-            <PHON kindOf="standard">p&lt;m&gt;az~riŋ</PHON>
-            <TRANSL xml:lang="zho">&lt;主焦&gt;射魚</TRANSL>
-            <TRANSL xml:lang="en">&lt;AF&gt;catch.fish.with.a.spear</TRANSL>
-            <M id="KavNr-sea_buya_S_5_W3_M0_0_0">
-                <FORM kindOf="original">&lt;m&gt;</FORM>
-                <PHON kindOf="original">&lt;m&gt;</PHON>
-                <FORM kindOf="standard">&lt;m&gt;</FORM>
-                <PHON kindOf="standard">&lt;m&gt;</PHON>
-                <TRANSL xml:lang="en">&lt;AF&gt;</TRANSL>
-                <TRANSL xml:lang="zho">&lt;主焦&gt;</TRANSL>
-            </M>
-            <M id="KavNr-sea_buya_S_5_W3_M0_0_1">
-                <FORM kindOf="original">p-azing</FORM>
-                <PHON kindOf="original">p-az~riŋ</PHON>
-                <FORM kindOf="standard">p-azing</FORM>
-                <PHON kindOf="standard">p-az~riŋ</PHON>
-                <TRANSL xml:lang="en">catch.fish.with.a.spear</TRANSL>
-                <TRANSL xml:lang="zho">射魚</TRANSL>
+        <W id="S5W3">
+            <FORM>p&lt;m&gt;azing</FORM>
+            <M id="S5W3M0_0">
+                <FORM>p&lt;m&gt;azing</FORM>
+                <TRANSL>&lt;AF&gt;catch.fish.with.a.spear</TRANSL>
+                <TRANSL ver="zh_gloss">&lt;主焦&gt;射魚</TRANSL>
             </M>
         </W>
     </S>
-    <S id="KavNr-sea_buya_S_6">
-        <FORM kindOf="original">tazungan qipais u qituqu.</FORM>
-        <PHON kindOf="original">taz~ruŋan qipais u qituqu.</PHON>
-        <FORM kindOf="standard">tazungan qipais u qituqu.</FORM>
-        <PHON kindOf="standard">taz~ruŋan qipais u qituqu.</PHON>
-        <TRANSL xml:lang="zho">女人撿笠螺和螺類.</TRANSL>
-        <TRANSL xml:lang="en">Women pick up limpets and shells.</TRANSL>
-        <AUDIO file="KavNr-sea_buya_S6.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-sea_buya.mp3" start="33.9" end="41.81"/>
-        <W id="KavNr-sea_buya_S_6_W0">
-            <FORM kindOf="original">tazungan</FORM>
-            <PHON kindOf="original">taz~ruŋan</PHON>
-            <FORM kindOf="standard">tazungan</FORM>
-            <PHON kindOf="standard">taz~ruŋan</PHON>
-            <TRANSL xml:lang="zho">女人</TRANSL>
-            <TRANSL xml:lang="en">woman</TRANSL>
-            <M id="KavNr-sea_buya_S_6_W0_M0_0">
-                <FORM kindOf="original">tazungan</FORM>
-                <PHON kindOf="original">taz~ruŋan</PHON>
-                <FORM kindOf="standard">tazungan</FORM>
-                <PHON kindOf="standard">taz~ruŋan</PHON>
-                <TRANSL xml:lang="en">woman</TRANSL>
-                <TRANSL xml:lang="zho">女人</TRANSL>
+    <S id="S_6">
+        <FORM>tazungan qipais u qituqu.</FORM>
+        <TRANSL xml:lang="zh"> 女人撿笠螺和螺類。</TRANSL>
+        <TRANSL xml:lang="en"> Women pick up limpets and shells.</TRANSL>
+        <AUDIO file="KavNr-sea_buya_S6.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-sea_buya.mp3"/>
+        <W id="S6W0">
+            <FORM>tazungan</FORM>
+            <M id="S6W0M0_0">
+                <FORM>tazungan</FORM>
+                <TRANSL>woman</TRANSL>
+                <TRANSL ver="zh_gloss">女人</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_6_W1">
-            <FORM kindOf="original">qi-pais</FORM>
-            <PHON kindOf="original">qi-pais</PHON>
-            <FORM kindOf="standard">qi-pais</FORM>
-            <PHON kindOf="standard">qi-pais</PHON>
-            <TRANSL xml:lang="zho">撿-笠螺</TRANSL>
-            <TRANSL xml:lang="en">pick-limpet</TRANSL>
-            <M id="KavNr-sea_buya_S_6_W1_M0_0">
-                <FORM kindOf="original">qi</FORM>
-                <PHON kindOf="original">qi</PHON>
-                <FORM kindOf="standard">qi</FORM>
-                <PHON kindOf="standard">qi</PHON>
-                <TRANSL xml:lang="en">pick</TRANSL>
-                <TRANSL xml:lang="zho">撿</TRANSL>
+        <W id="S6W1">
+            <FORM>qi-pais</FORM>
+            <M id="S6W1M0_0">
+                <FORM>qi</FORM>
+                <TRANSL>pick</TRANSL>
+                <TRANSL ver="zh_gloss">撿</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_6_W1_M1_0">
-                <FORM kindOf="original">pais</FORM>
-                <PHON kindOf="original">pais</PHON>
-                <FORM kindOf="standard">pais</FORM>
-                <PHON kindOf="standard">pais</PHON>
-                <TRANSL xml:lang="en">limpet</TRANSL>
-                <TRANSL xml:lang="zho">笠螺</TRANSL>
+            <M id="S6W1M1_0">
+                <FORM>pais</FORM>
+                <TRANSL>limpet</TRANSL>
+                <TRANSL ver="zh_gloss">笠螺</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_6_W2">
-            <FORM kindOf="original">u</FORM>
-            <PHON kindOf="original">u</PHON>
-            <FORM kindOf="standard">u</FORM>
-            <PHON kindOf="standard">u</PHON>
-            <TRANSL xml:lang="zho">或</TRANSL>
-            <TRANSL xml:lang="en">or</TRANSL>
-            <M id="KavNr-sea_buya_S_6_W2_M0_0">
-                <FORM kindOf="original">u</FORM>
-                <PHON kindOf="original">u</PHON>
-                <FORM kindOf="standard">u</FORM>
-                <PHON kindOf="standard">u</PHON>
-                <TRANSL xml:lang="en">or</TRANSL>
-                <TRANSL xml:lang="zho">或</TRANSL>
+        <W id="S6W2">
+            <FORM>u</FORM>
+            <M id="S6W2M0_0">
+                <FORM>u</FORM>
+                <TRANSL>or</TRANSL>
+                <TRANSL ver="zh_gloss">或</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_6_W3">
-            <FORM kindOf="original">qi-tuqu</FORM>
-            <PHON kindOf="original">qi-tuqu</PHON>
-            <FORM kindOf="standard">qi-tuqu</FORM>
-            <PHON kindOf="standard">qi-tuqu</PHON>
-            <TRANSL xml:lang="zho">撿-一種螺類</TRANSL>
-            <TRANSL xml:lang="en">pick-a.kind.of.shell</TRANSL>
-            <M id="KavNr-sea_buya_S_6_W3_M0_0">
-                <FORM kindOf="original">qi</FORM>
-                <PHON kindOf="original">qi</PHON>
-                <FORM kindOf="standard">qi</FORM>
-                <PHON kindOf="standard">qi</PHON>
-                <TRANSL xml:lang="en">pick</TRANSL>
-                <TRANSL xml:lang="zho">撿</TRANSL>
+        <W id="S6W3">
+            <FORM>qi-tuqu</FORM>
+            <M id="S6W3M0_0">
+                <FORM>qi</FORM>
+                <TRANSL>pick</TRANSL>
+                <TRANSL ver="zh_gloss">撿</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_6_W3_M1_0">
-                <FORM kindOf="original">tuqu</FORM>
-                <PHON kindOf="original">tuqu</PHON>
-                <FORM kindOf="standard">tuqu</FORM>
-                <PHON kindOf="standard">tuqu</PHON>
-                <TRANSL xml:lang="en">a.kind.of.shell</TRANSL>
-                <TRANSL xml:lang="zho">一種螺類</TRANSL>
+            <M id="S6W3M1_0">
+                <FORM>tuqu</FORM>
+                <TRANSL>a.kind.of.shell</TRANSL>
+                <TRANSL ver="zh_gloss">一種螺類</TRANSL>
             </M>
         </W>
     </S>
-    <S id="KavNr-sea_buya_S_7">
-        <FORM kindOf="original">u yaupama nayi qiqakutung u iza ya.</FORM>
-        <PHON kindOf="original">u jaupama naji qiqakutuŋ u iz~ra ja.</PHON>
-        <FORM kindOf="standard">u yaupama nayi qiqakutung u iza ya.</FORM>
-        <PHON kindOf="standard">u jaupama naji qiqakutuŋ u iz~ra ja.</PHON>
-        <TRANSL xml:lang="zho">或撿海菜.</TRANSL>
-        <TRANSL xml:lang="en">or pick up seaweed.</TRANSL>
-        <AUDIO file="KavNr-sea_buya_S7.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-sea_buya.mp3" start="41.81" end="54.47"/>
-        <W id="KavNr-sea_buya_S_7_W0">
-            <FORM kindOf="original">u</FORM>
-            <PHON kindOf="original">u</PHON>
-            <FORM kindOf="standard">u</FORM>
-            <PHON kindOf="standard">u</PHON>
-            <TRANSL xml:lang="zho">或</TRANSL>
-            <TRANSL xml:lang="en">or</TRANSL>
-            <M id="KavNr-sea_buya_S_7_W0_M0_0">
-                <FORM kindOf="original">u</FORM>
-                <PHON kindOf="original">u</PHON>
-                <FORM kindOf="standard">u</FORM>
-                <PHON kindOf="standard">u</PHON>
-                <TRANSL xml:lang="en">or</TRANSL>
-                <TRANSL xml:lang="zho">或</TRANSL>
+    <S id="S_7">
+        <FORM>u yau pama nayi qiqakutung u iza ya.</FORM>
+        <TRANSL xml:lang="zh"> 或撿海菜。</TRANSL>
+        <TRANSL xml:lang="en"> or pick up seaweed.</TRANSL>
+        <AUDIO file="KavNr-sea_buya_S7.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-sea_buya.mp3"/>
+        <W id="S7W0">
+            <FORM>u</FORM>
+            <M id="S7W0M0_0">
+                <FORM>u</FORM>
+                <TRANSL>or</TRANSL>
+                <TRANSL ver="zh_gloss">或</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_7_W1">
-            <FORM kindOf="original">yau=pama</FORM>
-            <PHON kindOf="original">jau=pama</PHON>
-            <FORM kindOf="standard">yau=pama</FORM>
-            <PHON kindOf="standard">jau=pama</PHON>
-            <TRANSL xml:lang="zho">存在=仍然</TRANSL>
-            <TRANSL xml:lang="en">EXIST=still</TRANSL>
-            <M id="KavNr-sea_buya_S_7_W1_M0_0">
-                <FORM kindOf="original">yau</FORM>
-                <PHON kindOf="original">jau</PHON>
-                <FORM kindOf="standard">yau</FORM>
-                <PHON kindOf="standard">jau</PHON>
-                <TRANSL xml:lang="en">EXIST</TRANSL>
-                <TRANSL xml:lang="zho">存在</TRANSL>
+        <W id="S7W1">
+            <FORM>yau=pama</FORM>
+            <M id="S7W1M0_0">
+                <FORM>yau</FORM>
+                <TRANSL>EXIST</TRANSL>
+                <TRANSL ver="zh_gloss">存在</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_7_W1_M0_1">
-                <FORM kindOf="original">pama</FORM>
-                <PHON kindOf="original">pama</PHON>
-                <FORM kindOf="standard">pama</FORM>
-                <PHON kindOf="standard">pama</PHON>
-                <TRANSL xml:lang="en">still</TRANSL>
-                <TRANSL xml:lang="zho">仍然</TRANSL>
+            <M id="S7W1M0_1">
+                <FORM>pama</FORM>
+                <TRANSL>still</TRANSL>
+                <TRANSL ver="zh_gloss">仍然</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_7_W2">
-            <FORM kindOf="original">nayi</FORM>
-            <PHON kindOf="original">naji</PHON>
-            <FORM kindOf="standard">nayi</FORM>
-            <PHON kindOf="standard">naji</PHON>
-            <TRANSL xml:lang="zho">NAYI</TRANSL>
-            <TRANSL xml:lang="en">NAYI</TRANSL>
-            <M id="KavNr-sea_buya_S_7_W2_M0_0">
-                <FORM kindOf="original">nayi</FORM>
-                <PHON kindOf="original">naji</PHON>
-                <FORM kindOf="standard">nayi</FORM>
-                <PHON kindOf="standard">naji</PHON>
-                <TRANSL xml:lang="en">NAYI</TRANSL>
-                <TRANSL xml:lang="zho">NAYI</TRANSL>
+        <W id="S7W2">
+            <FORM>nayi==</FORM>
+            <M id="S7W2M0_0">
+                <FORM>nayi==</FORM>
+                <TRANSL>NAYI</TRANSL>
+                <TRANSL ver="zh_gloss">NAYI</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_7_W3">
-            <FORM kindOf="original">qi-qakutung</FORM>
-            <PHON kindOf="original">qi-qakutuŋ</PHON>
-            <FORM kindOf="standard">qi-qakutung</FORM>
-            <PHON kindOf="standard">qi-qakutuŋ</PHON>
-            <TRANSL xml:lang="zho">撿-海菜類</TRANSL>
-            <TRANSL xml:lang="en">pick-seaweed</TRANSL>
-            <M id="KavNr-sea_buya_S_7_W3_M0_0">
-                <FORM kindOf="original">qi</FORM>
-                <PHON kindOf="original">qi</PHON>
-                <FORM kindOf="standard">qi</FORM>
-                <PHON kindOf="standard">qi</PHON>
-                <TRANSL xml:lang="en">pick</TRANSL>
-                <TRANSL xml:lang="zho">撿</TRANSL>
+        <W id="S7W3">
+            <FORM>qi-qakutung</FORM>
+            <M id="S7W3M0_0">
+                <FORM>qi</FORM>
+                <TRANSL>pick</TRANSL>
+                <TRANSL ver="zh_gloss">撿</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_7_W3_M1_0">
-                <FORM kindOf="original">qakutung</FORM>
-                <PHON kindOf="original">qakutuŋ</PHON>
-                <FORM kindOf="standard">qakutung</FORM>
-                <PHON kindOf="standard">qakutuŋ</PHON>
-                <TRANSL xml:lang="en">seaweed</TRANSL>
-                <TRANSL xml:lang="zho">海菜類</TRANSL>
+            <M id="S7W3M1_0">
+                <FORM>qakutung</FORM>
+                <TRANSL>seaweed</TRANSL>
+                <TRANSL ver="zh_gloss">海菜類</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_7_W4">
-            <FORM kindOf="original">u</FORM>
-            <PHON kindOf="original">u</PHON>
-            <FORM kindOf="standard">u</FORM>
-            <PHON kindOf="standard">u</PHON>
-            <TRANSL xml:lang="zho">或</TRANSL>
-            <TRANSL xml:lang="en">or</TRANSL>
-            <M id="KavNr-sea_buya_S_7_W4_M0_0">
-                <FORM kindOf="original">u</FORM>
-                <PHON kindOf="original">u</PHON>
-                <FORM kindOf="standard">u</FORM>
-                <PHON kindOf="standard">u</PHON>
-                <TRANSL xml:lang="en">or</TRANSL>
-                <TRANSL xml:lang="zho">或</TRANSL>
+        <W id="S7W4">
+            <FORM>u==</FORM>
+            <M id="S7W4M0_0">
+                <FORM>u==</FORM>
+                <TRANSL>or</TRANSL>
+                <TRANSL ver="zh_gloss">或</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_7_W5">
-            <FORM kindOf="original">iza</FORM>
-            <PHON kindOf="original">iz~ra</PHON>
-            <FORM kindOf="standard">iza</FORM>
-            <PHON kindOf="standard">iz~ra</PHON>
-            <TRANSL xml:lang="zho">某物</TRANSL>
-            <TRANSL xml:lang="en">something</TRANSL>
-            <M id="KavNr-sea_buya_S_7_W5_M0_0">
-                <FORM kindOf="original">iza</FORM>
-                <PHON kindOf="original">iz~ra</PHON>
-                <FORM kindOf="standard">iza</FORM>
-                <PHON kindOf="standard">iz~ra</PHON>
-                <TRANSL xml:lang="en">something</TRANSL>
-                <TRANSL xml:lang="zho">某物</TRANSL>
+        <W id="S7W5">
+            <FORM>iza</FORM>
+            <M id="S7W5M0_0">
+                <FORM>iza</FORM>
+                <TRANSL>something</TRANSL>
+                <TRANSL ver="zh_gloss">某物</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_7_W6">
-            <FORM kindOf="original">ya</FORM>
-            <PHON kindOf="original">ja</PHON>
-            <FORM kindOf="standard">ya</FORM>
-            <PHON kindOf="standard">ja</PHON>
-            <TRANSL xml:lang="zho">語助詞</TRANSL>
-            <TRANSL xml:lang="en">PART</TRANSL>
-            <M id="KavNr-sea_buya_S_7_W6_M0_0">
-                <FORM kindOf="original">ya</FORM>
-                <PHON kindOf="original">ja</PHON>
-                <FORM kindOf="standard">ya</FORM>
-                <PHON kindOf="standard">ja</PHON>
-                <TRANSL xml:lang="en">PART</TRANSL>
-                <TRANSL xml:lang="zho">語助詞</TRANSL>
+        <W id="S7W6">
+            <FORM>ya</FORM>
+            <M id="S7W6M0_0">
+                <FORM>ya</FORM>
+                <TRANSL>PART</TRANSL>
+                <TRANSL ver="zh_gloss">語助詞</TRANSL>
             </M>
         </W>
     </S>
-    <S id="KavNr-sea_buya_S_8">
-        <FORM kindOf="original">nisianguzusanna ngid qan satutu nizanta pazukat.</FORM>
-        <PHON kindOf="original">nisiaŋuz~rusanna ŋiɮ qan satutu niz~ranta paz~rukat.</PHON>
-        <FORM kindOf="standard">nisianguzusanna ngid qan satutu nizanta pazukat.</FORM>
-        <PHON kindOf="standard">nisiaŋuz~rusanna ŋiɮ qan satutu niz~ranta paz~rukat.</PHON>
-        <TRANSL xml:lang="zho">中午要吃飯的時候,在海邊所採的東西全部都拿出來.</TRANSL>
-        <TRANSL xml:lang="en">We take out all that we have picked up at sea when it is time for lunch.</TRANSL>
-        <AUDIO file="KavNr-sea_buya_S8.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-sea_buya.mp3" start="54.47" end="65.68"/>
-        <W id="KavNr-sea_buya_S_8_W0">
-            <FORM kindOf="original">ni-sianguzus-an-na</FORM>
-            <PHON kindOf="original">ni-siaŋuz~rus-an-na</PHON>
-            <FORM kindOf="standard">ni-sianguzus-an-na</FORM>
-            <PHON kindOf="standard">ni-siaŋuz~rus-an-na</PHON>
-            <TRANSL xml:lang="zho">完成-在海邊撿食物-名物化-3PL.屬格</TRANSL>
-            <TRANSL xml:lang="en">PFV-pick.up.food.at.sea-NMZ-3PL.GEN</TRANSL>
-            <M id="KavNr-sea_buya_S_8_W0_M0_0">
-                <FORM kindOf="original">ni</FORM>
-                <PHON kindOf="original">ni</PHON>
-                <FORM kindOf="standard">ni</FORM>
-                <PHON kindOf="standard">ni</PHON>
-                <TRANSL xml:lang="en">PFV</TRANSL>
-                <TRANSL xml:lang="zho">完成</TRANSL>
+    <S id="S_8">
+        <FORM>nisianguzusanna ngid qan satutu nizanta pazukat.</FORM>
+        <TRANSL xml:lang="zh"> 中午要吃飯的時候,在海邊所採的東西全部都拿出來。</TRANSL>
+        <TRANSL xml:lang="en"> We take out all that we have picked up at sea when it is time for lunch.</TRANSL>
+        <AUDIO file="KavNr-sea_buya_S8.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-sea_buya.mp3"/>
+        <W id="S8W0">
+            <FORM>ni-sianguzus-an-na</FORM>
+            <M id="S8W0M0_0">
+                <FORM>ni</FORM>
+                <TRANSL>PFV</TRANSL>
+                <TRANSL ver="zh_gloss">完成</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_8_W0_M1_0">
-                <FORM kindOf="original">sianguzus</FORM>
-                <PHON kindOf="original">siaŋuz~rus</PHON>
-                <FORM kindOf="standard">sianguzus</FORM>
-                <PHON kindOf="standard">siaŋuz~rus</PHON>
-                <TRANSL xml:lang="en">pick.up.food.at.sea</TRANSL>
-                <TRANSL xml:lang="zho">在海邊撿食物</TRANSL>
+            <M id="S8W0M1_0">
+                <FORM>sianguzus</FORM>
+                <TRANSL>pick.up.food.at.sea</TRANSL>
+                <TRANSL ver="zh_gloss">在海邊撿食物</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_8_W0_M2_0">
-                <FORM kindOf="original">an</FORM>
-                <PHON kindOf="original">an</PHON>
-                <FORM kindOf="standard">an</FORM>
-                <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="en">NMZ</TRANSL>
-                <TRANSL xml:lang="zho">名物化</TRANSL>
+            <M id="S8W0M2_0">
+                <FORM>an</FORM>
+                <TRANSL>NMZ</TRANSL>
+                <TRANSL ver="zh_gloss">名物化</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_8_W0_M3_0">
-                <FORM kindOf="original">na</FORM>
-                <PHON kindOf="original">na</PHON>
-                <FORM kindOf="standard">na</FORM>
-                <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="en">3PL.GEN</TRANSL>
-                <TRANSL xml:lang="zho">3PL.屬格</TRANSL>
+            <M id="S8W0M3_0">
+                <FORM>na</FORM>
+                <TRANSL>3PL.GEN</TRANSL>
+                <TRANSL ver="zh_gloss">3PL.屬格</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_8_W1">
-            <FORM kindOf="original">ngid</FORM>
-            <PHON kindOf="original">ŋiɮ</PHON>
-            <FORM kindOf="standard">ngid</FORM>
-            <PHON kindOf="standard">ŋiɮ</PHON>
-            <TRANSL xml:lang="zho">要</TRANSL>
-            <TRANSL xml:lang="en">want</TRANSL>
-            <M id="KavNr-sea_buya_S_8_W1_M0_0">
-                <FORM kindOf="original">ngid</FORM>
-                <PHON kindOf="original">ŋiɮ</PHON>
-                <FORM kindOf="standard">ngid</FORM>
-                <PHON kindOf="standard">ŋiɮ</PHON>
-                <TRANSL xml:lang="en">want</TRANSL>
-                <TRANSL xml:lang="zho">要</TRANSL>
+        <W id="S8W1">
+            <FORM>ngid</FORM>
+            <M id="S8W1M0_0">
+                <FORM>ngid</FORM>
+                <TRANSL>want</TRANSL>
+                <TRANSL ver="zh_gloss">要</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_8_W2">
-            <FORM kindOf="original">qan</FORM>
-            <PHON kindOf="original">qan</PHON>
-            <FORM kindOf="standard">qan</FORM>
-            <PHON kindOf="standard">qan</PHON>
-            <TRANSL xml:lang="zho">吃</TRANSL>
-            <TRANSL xml:lang="en">eat</TRANSL>
-            <M id="KavNr-sea_buya_S_8_W2_M0_0">
-                <FORM kindOf="original">qan</FORM>
-                <PHON kindOf="original">qan</PHON>
-                <FORM kindOf="standard">qan</FORM>
-                <PHON kindOf="standard">qan</PHON>
-                <TRANSL xml:lang="en">eat</TRANSL>
-                <TRANSL xml:lang="zho">吃</TRANSL>
+        <W id="S8W2">
+            <FORM>qan</FORM>
+            <M id="S8W2M0_0">
+                <FORM>qan</FORM>
+                <TRANSL>eat</TRANSL>
+                <TRANSL ver="zh_gloss">吃</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_8_W3">
-            <FORM kindOf="original">sa-tutu</FORM>
-            <PHON kindOf="original">sa-tutu</PHON>
-            <FORM kindOf="standard">sa-tutu</FORM>
-            <PHON kindOf="standard">sa-tutu</PHON>
-            <TRANSL xml:lang="zho">SA-中午</TRANSL>
-            <TRANSL xml:lang="en">SA-noon</TRANSL>
-            <M id="KavNr-sea_buya_S_8_W3_M0_0">
-                <FORM kindOf="original">sa</FORM>
-                <PHON kindOf="original">sa</PHON>
-                <FORM kindOf="standard">sa</FORM>
-                <PHON kindOf="standard">sa</PHON>
-                <TRANSL xml:lang="en">SA</TRANSL>
-                <TRANSL xml:lang="zho">SA</TRANSL>
+        <W id="S8W3">
+            <FORM>sa-tutu</FORM>
+            <M id="S8W3M0_0">
+                <FORM>sa</FORM>
+                <TRANSL>SA</TRANSL>
+                <TRANSL ver="zh_gloss">SA</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_8_W3_M1_0">
-                <FORM kindOf="original">tutu</FORM>
-                <PHON kindOf="original">tutu</PHON>
-                <FORM kindOf="standard">tutu</FORM>
-                <PHON kindOf="standard">tutu</PHON>
-                <TRANSL xml:lang="en">noon</TRANSL>
-                <TRANSL xml:lang="zho">中午</TRANSL>
+            <M id="S8W3M1_0">
+                <FORM>tutu</FORM>
+                <TRANSL>noon</TRANSL>
+                <TRANSL ver="zh_gloss">中午</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_8_W4">
-            <FORM kindOf="original">niz-an-ta</FORM>
-            <PHON kindOf="original">niz~r-an-ta</PHON>
-            <FORM kindOf="standard">niz-an-ta</FORM>
-            <PHON kindOf="standard">niz~r-an-ta</PHON>
-            <TRANSL xml:lang="zho">全部-處焦-1IPL.屬格</TRANSL>
-            <TRANSL xml:lang="en">all-LF-1IPL.GEN</TRANSL>
-            <M id="KavNr-sea_buya_S_8_W4_M0_0">
-                <FORM kindOf="original">niz</FORM>
-                <PHON kindOf="original">niz~r</PHON>
-                <FORM kindOf="standard">niz</FORM>
-                <PHON kindOf="standard">niz~r</PHON>
-                <TRANSL xml:lang="en">all</TRANSL>
-                <TRANSL xml:lang="zho">全部</TRANSL>
+        <W id="S8W4">
+            <FORM>niz-an-ta</FORM>
+            <M id="S8W4M0_0">
+                <FORM>niz</FORM>
+                <TRANSL>all</TRANSL>
+                <TRANSL ver="zh_gloss">全部</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_8_W4_M1_0">
-                <FORM kindOf="original">an</FORM>
-                <PHON kindOf="original">an</PHON>
-                <FORM kindOf="standard">an</FORM>
-                <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="en">LF</TRANSL>
-                <TRANSL xml:lang="zho">處焦</TRANSL>
+            <M id="S8W4M1_0">
+                <FORM>an</FORM>
+                <TRANSL>LF</TRANSL>
+                <TRANSL ver="zh_gloss">處焦</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_8_W4_M2_0">
-                <FORM kindOf="original">ta</FORM>
-                <PHON kindOf="original">ta</PHON>
-                <FORM kindOf="standard">ta</FORM>
-                <PHON kindOf="standard">ta</PHON>
-                <TRANSL xml:lang="en">1IPL.GEN</TRANSL>
-                <TRANSL xml:lang="zho">1IPL.屬格</TRANSL>
+            <M id="S8W4M2_0">
+                <FORM>ta</FORM>
+                <TRANSL>1IPL.GEN</TRANSL>
+                <TRANSL ver="zh_gloss">1IPL.屬格</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_8_W5">
-            <FORM kindOf="original">pa-zukat</FORM>
-            <PHON kindOf="original">pa-z~rukat</PHON>
-            <FORM kindOf="standard">pa-zukat</FORM>
-            <PHON kindOf="standard">pa-z~rukat</PHON>
-            <TRANSL xml:lang="zho">使役-出</TRANSL>
-            <TRANSL xml:lang="en">CAU-out</TRANSL>
-            <M id="KavNr-sea_buya_S_8_W5_M0_0">
-                <FORM kindOf="original">pa</FORM>
-                <PHON kindOf="original">pa</PHON>
-                <FORM kindOf="standard">pa</FORM>
-                <PHON kindOf="standard">pa</PHON>
-                <TRANSL xml:lang="en">CAU</TRANSL>
-                <TRANSL xml:lang="zho">使役</TRANSL>
+        <W id="S8W5">
+            <FORM>pa-zukat</FORM>
+            <M id="S8W5M0_0">
+                <FORM>pa</FORM>
+                <TRANSL>CAU</TRANSL>
+                <TRANSL ver="zh_gloss">使役</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_8_W5_M1_0">
-                <FORM kindOf="original">zukat</FORM>
-                <PHON kindOf="original">z~rukat</PHON>
-                <FORM kindOf="standard">zukat</FORM>
-                <PHON kindOf="standard">z~rukat</PHON>
-                <TRANSL xml:lang="en">out</TRANSL>
-                <TRANSL xml:lang="zho">出</TRANSL>
+            <M id="S8W5M1_0">
+                <FORM>zukat</FORM>
+                <TRANSL>out</TRANSL>
+                <TRANSL ver="zh_gloss">出</TRANSL>
             </M>
         </W>
     </S>
-    <S id="KavNr-sea_buya_S_9">
-        <FORM kindOf="original">sa satutuan yau metiay yau maninay.</FORM>
-        <PHON kindOf="original">sa satutuan jau mətiaj jau maninaj.</PHON>
-        <FORM kindOf="standard">sa satutuan yau metiay yau maninay.</FORM>
-        <PHON kindOf="standard">sa satutuan jau mətiaj jau maninaj.</PHON>
-        <TRANSL xml:lang="zho">中午吃的有生的有熟的.</TRANSL>
-        <TRANSL xml:lang="en">There are raw and cooked food for lunch.</TRANSL>
-        <AUDIO file="KavNr-sea_buya_S9.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-sea_buya.mp3" start="65.68" end="75.32"/>
-        <W id="KavNr-sea_buya_S_9_W0">
-            <FORM kindOf="original">sa</FORM>
-            <PHON kindOf="original">sa</PHON>
-            <FORM kindOf="standard">sa</FORM>
-            <PHON kindOf="standard">sa</PHON>
-            <TRANSL xml:lang="zho">FS</TRANSL>
-            <TRANSL xml:lang="en">FS</TRANSL>
-            <M id="KavNr-sea_buya_S_9_W0_M0_0">
-                <FORM kindOf="original">sa</FORM>
-                <PHON kindOf="original">sa</PHON>
-                <FORM kindOf="standard">sa</FORM>
-                <PHON kindOf="standard">sa</PHON>
-                <TRANSL xml:lang="en">FS</TRANSL>
-                <TRANSL xml:lang="zho">FS</TRANSL>
+    <S id="S_9">
+        <FORM>sa satutuan yau meti ay yau manin ay.</FORM>
+        <TRANSL xml:lang="zh"> 中午吃的有生的有熟的。</TRANSL>
+        <TRANSL xml:lang="en"> There are raw and cooked food for lunch.</TRANSL>
+        <AUDIO file="KavNr-sea_buya_S9.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-sea_buya.mp3"/>
+        <W id="S9W0">
+            <FORM>sa</FORM>
+            <M id="S9W0M0_0">
+                <FORM>sa</FORM>
+                <TRANSL>FS</TRANSL>
+                <TRANSL ver="zh_gloss">FS</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_9_W1">
-            <FORM kindOf="original">sa-tutu-an</FORM>
-            <PHON kindOf="original">sa-tutu-an</PHON>
-            <FORM kindOf="standard">sa-tutu-an</FORM>
-            <PHON kindOf="standard">sa-tutu-an</PHON>
-            <TRANSL xml:lang="zho">未來-中午-名物化</TRANSL>
-            <TRANSL xml:lang="en">FUT-noon-NMZ</TRANSL>
-            <M id="KavNr-sea_buya_S_9_W1_M0_0">
-                <FORM kindOf="original">sa</FORM>
-                <PHON kindOf="original">sa</PHON>
-                <FORM kindOf="standard">sa</FORM>
-                <PHON kindOf="standard">sa</PHON>
-                <TRANSL xml:lang="en">FUT</TRANSL>
-                <TRANSL xml:lang="zho">未來</TRANSL>
+        <W id="S9W1">
+            <FORM>sa-tutu-an</FORM>
+            <M id="S9W1M0_0">
+                <FORM>sa</FORM>
+                <TRANSL>FUT</TRANSL>
+                <TRANSL ver="zh_gloss">未來</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_9_W1_M1_0">
-                <FORM kindOf="original">tutu</FORM>
-                <PHON kindOf="original">tutu</PHON>
-                <FORM kindOf="standard">tutu</FORM>
-                <PHON kindOf="standard">tutu</PHON>
-                <TRANSL xml:lang="en">noon</TRANSL>
-                <TRANSL xml:lang="zho">中午</TRANSL>
+            <M id="S9W1M1_0">
+                <FORM>tutu</FORM>
+                <TRANSL>noon</TRANSL>
+                <TRANSL ver="zh_gloss">中午</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_9_W1_M2_0">
-                <FORM kindOf="original">an</FORM>
-                <PHON kindOf="original">an</PHON>
-                <FORM kindOf="standard">an</FORM>
-                <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="en">NMZ</TRANSL>
-                <TRANSL xml:lang="zho">名物化</TRANSL>
+            <M id="S9W1M2_0">
+                <FORM>an</FORM>
+                <TRANSL>NMZ</TRANSL>
+                <TRANSL ver="zh_gloss">名物化</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_9_W2">
-            <FORM kindOf="original">yau</FORM>
-            <PHON kindOf="original">jau</PHON>
-            <FORM kindOf="standard">yau</FORM>
-            <PHON kindOf="standard">jau</PHON>
-            <TRANSL xml:lang="zho">存在</TRANSL>
-            <TRANSL xml:lang="en">EXIST</TRANSL>
-            <M id="KavNr-sea_buya_S_9_W2_M0_0">
-                <FORM kindOf="original">yau</FORM>
-                <PHON kindOf="original">jau</PHON>
-                <FORM kindOf="standard">yau</FORM>
-                <PHON kindOf="standard">jau</PHON>
-                <TRANSL xml:lang="en">EXIST</TRANSL>
-                <TRANSL xml:lang="zho">存在</TRANSL>
+        <W id="S9W2">
+            <FORM>yau</FORM>
+            <M id="S9W2M0_0">
+                <FORM>yau</FORM>
+                <TRANSL>EXIST</TRANSL>
+                <TRANSL ver="zh_gloss">存在</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_9_W3">
-            <FORM kindOf="original">meti=ay</FORM>
-            <PHON kindOf="original">məti=aj</PHON>
-            <FORM kindOf="standard">meti=ay</FORM>
-            <PHON kindOf="standard">məti=aj</PHON>
-            <TRANSL xml:lang="zho">生的=關係詞</TRANSL>
-            <TRANSL xml:lang="en">raw=REL</TRANSL>
-            <M id="KavNr-sea_buya_S_9_W3_M0_0">
-                <FORM kindOf="original">meti</FORM>
-                <PHON kindOf="original">məti</PHON>
-                <FORM kindOf="standard">meti</FORM>
-                <PHON kindOf="standard">məti</PHON>
-                <TRANSL xml:lang="en">raw</TRANSL>
-                <TRANSL xml:lang="zho">生的</TRANSL>
+        <W id="S9W3">
+            <FORM>meti=ay</FORM>
+            <M id="S9W3M0_0">
+                <FORM>meti</FORM>
+                <TRANSL>raw</TRANSL>
+                <TRANSL ver="zh_gloss">生的</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_9_W3_M0_1">
-                <FORM kindOf="original">ay</FORM>
-                <PHON kindOf="original">aj</PHON>
-                <FORM kindOf="standard">ay</FORM>
-                <PHON kindOf="standard">aj</PHON>
-                <TRANSL xml:lang="en">REL</TRANSL>
-                <TRANSL xml:lang="zho">關係詞</TRANSL>
+            <M id="S9W3M0_1">
+                <FORM>ay</FORM>
+                <TRANSL>REL</TRANSL>
+                <TRANSL ver="zh_gloss">關係詞</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_9_W4">
-            <FORM kindOf="original">yau</FORM>
-            <PHON kindOf="original">jau</PHON>
-            <FORM kindOf="standard">yau</FORM>
-            <PHON kindOf="standard">jau</PHON>
-            <TRANSL xml:lang="zho">存在</TRANSL>
-            <TRANSL xml:lang="en">EXIST</TRANSL>
-            <M id="KavNr-sea_buya_S_9_W4_M0_0">
-                <FORM kindOf="original">yau</FORM>
-                <PHON kindOf="original">jau</PHON>
-                <FORM kindOf="standard">yau</FORM>
-                <PHON kindOf="standard">jau</PHON>
-                <TRANSL xml:lang="en">EXIST</TRANSL>
-                <TRANSL xml:lang="zho">存在</TRANSL>
+        <W id="S9W4">
+            <FORM>yau</FORM>
+            <M id="S9W4M0_0">
+                <FORM>yau</FORM>
+                <TRANSL>EXIST</TRANSL>
+                <TRANSL ver="zh_gloss">存在</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_9_W5">
-            <FORM kindOf="original">manin=ay</FORM>
-            <PHON kindOf="original">manin=aj</PHON>
-            <FORM kindOf="standard">manin=ay</FORM>
-            <PHON kindOf="standard">manin=aj</PHON>
-            <TRANSL xml:lang="zho">熟的=關係詞</TRANSL>
-            <TRANSL xml:lang="en">cooked=REL</TRANSL>
-            <M id="KavNr-sea_buya_S_9_W5_M0_0">
-                <FORM kindOf="original">manin</FORM>
-                <PHON kindOf="original">manin</PHON>
-                <FORM kindOf="standard">manin</FORM>
-                <PHON kindOf="standard">manin</PHON>
-                <TRANSL xml:lang="en">cooked</TRANSL>
-                <TRANSL xml:lang="zho">熟的</TRANSL>
+        <W id="S9W5">
+            <FORM>manin=ay</FORM>
+            <M id="S9W5M0_0">
+                <FORM>manin</FORM>
+                <TRANSL>cooked</TRANSL>
+                <TRANSL ver="zh_gloss">熟的</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_9_W5_M0_1">
-                <FORM kindOf="original">ay</FORM>
-                <PHON kindOf="original">aj</PHON>
-                <FORM kindOf="standard">ay</FORM>
-                <PHON kindOf="standard">aj</PHON>
-                <TRANSL xml:lang="en">REL</TRANSL>
-                <TRANSL xml:lang="zho">關係詞</TRANSL>
+            <M id="S9W5M0_1">
+                <FORM>ay</FORM>
+                <TRANSL>REL</TRANSL>
+                <TRANSL ver="zh_gloss">關係詞</TRANSL>
             </M>
         </W>
     </S>
-    <S id="KavNr-sea_buya_S_10">
-        <FORM kindOf="original">satutuan maiita mazas tu ninuay nitalepawan matiw sa lazing.</FORM>
-        <PHON kindOf="original">satutuan maiita maz~ras tu ninuaj nitarəpawan matiw sa raz~riŋ.</PHON>
-        <FORM kindOf="standard">satutuan maiita mazas tu ninuay nitalepawan matiw sa lazing.</FORM>
-        <PHON kindOf="standard">satutuan maiita maz~ras tu ninuaj nitarəpawan matiw sa raz~riŋ.</PHON>
-        <TRANSL xml:lang="zho">我們不帶家裡的東西去海邊.</TRANSL>
-        <TRANSL xml:lang="en">We don't take food from home to the sea.</TRANSL>
-        <AUDIO file="KavNr-sea_buya_S10.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-sea_buya.mp3" start="75.32" end="87.16"/>
-        <W id="KavNr-sea_buya_S_10_W0">
-            <FORM kindOf="original">sa-tutu-an</FORM>
-            <PHON kindOf="original">sa-tutu-an</PHON>
-            <FORM kindOf="standard">sa-tutu-an</FORM>
-            <PHON kindOf="standard">sa-tutu-an</PHON>
-            <TRANSL xml:lang="zho">未來-中午-名物化</TRANSL>
-            <TRANSL xml:lang="en">FUT-noon-NMZ</TRANSL>
-            <M id="KavNr-sea_buya_S_10_W0_M0_0">
-                <FORM kindOf="original">sa</FORM>
-                <PHON kindOf="original">sa</PHON>
-                <FORM kindOf="standard">sa</FORM>
-                <PHON kindOf="standard">sa</PHON>
-                <TRANSL xml:lang="en">FUT</TRANSL>
-                <TRANSL xml:lang="zho">未來</TRANSL>
+    <S id="S_10">
+        <FORM>satutuan mai ita mazas tu ninu ay nitalepawan matiw sa lazing.</FORM>
+        <TRANSL xml:lang="zh"> 我們不帶家裡的東西去海邊。</TRANSL>
+        <TRANSL xml:lang="en"> We don’t take food from home to the sea.</TRANSL>
+        <AUDIO file="KavNr-sea_buya_S10.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-sea_buya.mp3"/>
+        <W id="S10W0">
+            <FORM>sa-tutu-an</FORM>
+            <M id="S10W0M0_0">
+                <FORM>sa</FORM>
+                <TRANSL>FUT</TRANSL>
+                <TRANSL ver="zh_gloss">未來</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_10_W0_M1_0">
-                <FORM kindOf="original">tutu</FORM>
-                <PHON kindOf="original">tutu</PHON>
-                <FORM kindOf="standard">tutu</FORM>
-                <PHON kindOf="standard">tutu</PHON>
-                <TRANSL xml:lang="en">noon</TRANSL>
-                <TRANSL xml:lang="zho">中午</TRANSL>
+            <M id="S10W0M1_0">
+                <FORM>tutu</FORM>
+                <TRANSL>noon</TRANSL>
+                <TRANSL ver="zh_gloss">中午</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_10_W0_M2_0">
-                <FORM kindOf="original">an</FORM>
-                <PHON kindOf="original">an</PHON>
-                <FORM kindOf="standard">an</FORM>
-                <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="en">NMZ</TRANSL>
-                <TRANSL xml:lang="zho">名物化</TRANSL>
+            <M id="S10W0M2_0">
+                <FORM>an</FORM>
+                <TRANSL>NMZ</TRANSL>
+                <TRANSL ver="zh_gloss">名物化</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_10_W1">
-            <FORM kindOf="original">mai=ita</FORM>
-            <PHON kindOf="original">mai=ita</PHON>
-            <FORM kindOf="standard">mai=ita</FORM>
-            <PHON kindOf="standard">mai=ita</PHON>
-            <TRANSL xml:lang="zho">否定=1IPL.主格</TRANSL>
-            <TRANSL xml:lang="en">NEG=1IPL.NOM</TRANSL>
-            <M id="KavNr-sea_buya_S_10_W1_M0_0">
-                <FORM kindOf="original">mai</FORM>
-                <PHON kindOf="original">mai</PHON>
-                <FORM kindOf="standard">mai</FORM>
-                <PHON kindOf="standard">mai</PHON>
-                <TRANSL xml:lang="en">NEG</TRANSL>
-                <TRANSL xml:lang="zho">否定</TRANSL>
+        <W id="S10W1">
+            <FORM>mai=ita</FORM>
+            <M id="S10W1M0_0">
+                <FORM>mai</FORM>
+                <TRANSL>NEG</TRANSL>
+                <TRANSL ver="zh_gloss">否定</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_10_W1_M0_1">
-                <FORM kindOf="original">ita</FORM>
-                <PHON kindOf="original">ita</PHON>
-                <FORM kindOf="standard">ita</FORM>
-                <PHON kindOf="standard">ita</PHON>
-                <TRANSL xml:lang="en">1IPL.NOM</TRANSL>
-                <TRANSL xml:lang="zho">1IPL.主格</TRANSL>
+            <M id="S10W1M0_1">
+                <FORM>ita</FORM>
+                <TRANSL>1IPL.NOM</TRANSL>
+                <TRANSL ver="zh_gloss">1IPL.主格</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_10_W2">
-            <FORM kindOf="original">m-azas</FORM>
-            <PHON kindOf="original">m-az~ras</PHON>
-            <FORM kindOf="standard">m-azas</FORM>
-            <PHON kindOf="standard">m-az~ras</PHON>
-            <TRANSL xml:lang="zho">主焦-帶</TRANSL>
-            <TRANSL xml:lang="en">AF-bring</TRANSL>
-            <M id="KavNr-sea_buya_S_10_W2_M0_0">
-                <FORM kindOf="original">m</FORM>
-                <PHON kindOf="original">m</PHON>
-                <FORM kindOf="standard">m</FORM>
-                <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="en">AF</TRANSL>
-                <TRANSL xml:lang="zho">主焦</TRANSL>
+        <W id="S10W2">
+            <FORM>m-azas</FORM>
+            <M id="S10W2M0_0">
+                <FORM>m</FORM>
+                <TRANSL>AF</TRANSL>
+                <TRANSL ver="zh_gloss">主焦</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_10_W2_M1_0">
-                <FORM kindOf="original">azas</FORM>
-                <PHON kindOf="original">az~ras</PHON>
-                <FORM kindOf="standard">azas</FORM>
-                <PHON kindOf="standard">az~ras</PHON>
-                <TRANSL xml:lang="en">bring</TRANSL>
-                <TRANSL xml:lang="zho">帶</TRANSL>
+            <M id="S10W2M1_0">
+                <FORM>azas</FORM>
+                <TRANSL>bring</TRANSL>
+                <TRANSL ver="zh_gloss">帶</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_10_W3">
-            <FORM kindOf="original">tu</FORM>
-            <PHON kindOf="original">tu</PHON>
-            <FORM kindOf="standard">tu</FORM>
-            <PHON kindOf="standard">tu</PHON>
-            <TRANSL xml:lang="zho">斜格</TRANSL>
-            <TRANSL xml:lang="en">OBL</TRANSL>
-            <M id="KavNr-sea_buya_S_10_W3_M0_0">
-                <FORM kindOf="original">tu</FORM>
-                <PHON kindOf="original">tu</PHON>
-                <FORM kindOf="standard">tu</FORM>
-                <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="en">OBL</TRANSL>
-                <TRANSL xml:lang="zho">斜格</TRANSL>
+        <W id="S10W3">
+            <FORM>tu</FORM>
+            <M id="S10W3M0_0">
+                <FORM>tu</FORM>
+                <TRANSL>OBL</TRANSL>
+                <TRANSL ver="zh_gloss">斜格</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_10_W4">
-            <FORM kindOf="original">ninu=ay</FORM>
-            <PHON kindOf="original">ninu=aj</PHON>
-            <FORM kindOf="standard">ninu=ay</FORM>
-            <PHON kindOf="standard">ninu=aj</PHON>
-            <TRANSL xml:lang="zho">什麼=關係詞</TRANSL>
-            <TRANSL xml:lang="en">what=REL</TRANSL>
-            <M id="KavNr-sea_buya_S_10_W4_M0_0">
-                <FORM kindOf="original">ninu</FORM>
-                <PHON kindOf="original">ninu</PHON>
-                <FORM kindOf="standard">ninu</FORM>
-                <PHON kindOf="standard">ninu</PHON>
-                <TRANSL xml:lang="en">what</TRANSL>
-                <TRANSL xml:lang="zho">什麼</TRANSL>
+        <W id="S10W4">
+            <FORM>ninu=ay</FORM>
+            <M id="S10W4M0_0">
+                <FORM>ninu</FORM>
+                <TRANSL>what</TRANSL>
+                <TRANSL ver="zh_gloss">什麼</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_10_W4_M0_1">
-                <FORM kindOf="original">ay</FORM>
-                <PHON kindOf="original">aj</PHON>
-                <FORM kindOf="standard">ay</FORM>
-                <PHON kindOf="standard">aj</PHON>
-                <TRANSL xml:lang="en">REL</TRANSL>
-                <TRANSL xml:lang="zho">關係詞</TRANSL>
+            <M id="S10W4M0_1">
+                <FORM>ay</FORM>
+                <TRANSL>REL</TRANSL>
+                <TRANSL ver="zh_gloss">關係詞</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_10_W5">
-            <FORM kindOf="original">ni-ta-lepaw-an</FORM>
-            <PHON kindOf="original">ni-ta-rəpaw-an</PHON>
-            <FORM kindOf="standard">ni-ta-lepaw-an</FORM>
-            <PHON kindOf="standard">ni-ta-rəpaw-an</PHON>
-            <TRANSL xml:lang="zho">完成-處格-家-處格</TRANSL>
-            <TRANSL xml:lang="en">PFV-LOC-home-LOC</TRANSL>
-            <M id="KavNr-sea_buya_S_10_W5_M0_0">
-                <FORM kindOf="original">ni</FORM>
-                <PHON kindOf="original">ni</PHON>
-                <FORM kindOf="standard">ni</FORM>
-                <PHON kindOf="standard">ni</PHON>
-                <TRANSL xml:lang="en">PFV</TRANSL>
-                <TRANSL xml:lang="zho">完成</TRANSL>
+        <W id="S10W5">
+            <FORM>ni-ta-lepaw-an</FORM>
+            <M id="S10W5M0_0">
+                <FORM>ni</FORM>
+                <TRANSL>PFV</TRANSL>
+                <TRANSL ver="zh_gloss">完成</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_10_W5_M1_0">
-                <FORM kindOf="original">ta</FORM>
-                <PHON kindOf="original">ta</PHON>
-                <FORM kindOf="standard">ta</FORM>
-                <PHON kindOf="standard">ta</PHON>
-                <TRANSL xml:lang="en">LOC</TRANSL>
-                <TRANSL xml:lang="zho">處格</TRANSL>
+            <M id="S10W5M1_0">
+                <FORM>ta</FORM>
+                <TRANSL>LOC</TRANSL>
+                <TRANSL ver="zh_gloss">處格</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_10_W5_M2_0">
-                <FORM kindOf="original">lepaw</FORM>
-                <PHON kindOf="original">rəpaw</PHON>
-                <FORM kindOf="standard">lepaw</FORM>
-                <PHON kindOf="standard">rəpaw</PHON>
-                <TRANSL xml:lang="en">home</TRANSL>
-                <TRANSL xml:lang="zho">家</TRANSL>
+            <M id="S10W5M2_0">
+                <FORM>lepaw</FORM>
+                <TRANSL>home</TRANSL>
+                <TRANSL ver="zh_gloss">家</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_10_W5_M3_0">
-                <FORM kindOf="original">an</FORM>
-                <PHON kindOf="original">an</PHON>
-                <FORM kindOf="standard">an</FORM>
-                <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="en">LOC</TRANSL>
-                <TRANSL xml:lang="zho">處格</TRANSL>
+            <M id="S10W5M3_0">
+                <FORM>an</FORM>
+                <TRANSL>LOC</TRANSL>
+                <TRANSL ver="zh_gloss">處格</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_10_W6">
-            <FORM kindOf="original">matiw</FORM>
-            <PHON kindOf="original">matiw</PHON>
-            <FORM kindOf="standard">matiw</FORM>
-            <PHON kindOf="standard">matiw</PHON>
-            <TRANSL xml:lang="zho">主焦.去</TRANSL>
-            <TRANSL xml:lang="en">AF.go</TRANSL>
-            <M id="KavNr-sea_buya_S_10_W6_M0_0">
-                <FORM kindOf="original">matiw</FORM>
-                <PHON kindOf="original">matiw</PHON>
-                <FORM kindOf="standard">matiw</FORM>
-                <PHON kindOf="standard">matiw</PHON>
-                <TRANSL xml:lang="en">AF.go</TRANSL>
-                <TRANSL xml:lang="zho">主焦.去</TRANSL>
+        <W id="S10W6">
+            <FORM>matiw</FORM>
+            <M id="S10W6M0_0">
+                <FORM>matiw</FORM>
+                <TRANSL>AF.go</TRANSL>
+                <TRANSL ver="zh_gloss">主焦.去</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_10_W7">
-            <FORM kindOf="original">sa</FORM>
-            <PHON kindOf="original">sa</PHON>
-            <FORM kindOf="standard">sa</FORM>
-            <PHON kindOf="standard">sa</PHON>
-            <TRANSL xml:lang="zho">到</TRANSL>
-            <TRANSL xml:lang="en">to</TRANSL>
-            <M id="KavNr-sea_buya_S_10_W7_M0_0">
-                <FORM kindOf="original">sa</FORM>
-                <PHON kindOf="original">sa</PHON>
-                <FORM kindOf="standard">sa</FORM>
-                <PHON kindOf="standard">sa</PHON>
-                <TRANSL xml:lang="en">to</TRANSL>
-                <TRANSL xml:lang="zho">到</TRANSL>
+        <W id="S10W7">
+            <FORM>sa</FORM>
+            <M id="S10W7M0_0">
+                <FORM>sa</FORM>
+                <TRANSL>to</TRANSL>
+                <TRANSL ver="zh_gloss">到</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_10_W8">
-            <FORM kindOf="original">lazing</FORM>
-            <PHON kindOf="original">raz~riŋ</PHON>
-            <FORM kindOf="standard">lazing</FORM>
-            <PHON kindOf="standard">raz~riŋ</PHON>
-            <TRANSL xml:lang="zho">海邊</TRANSL>
-            <TRANSL xml:lang="en">sea</TRANSL>
-            <M id="KavNr-sea_buya_S_10_W8_M0_0">
-                <FORM kindOf="original">lazing</FORM>
-                <PHON kindOf="original">raz~riŋ</PHON>
-                <FORM kindOf="standard">lazing</FORM>
-                <PHON kindOf="standard">raz~riŋ</PHON>
-                <TRANSL xml:lang="en">sea</TRANSL>
-                <TRANSL xml:lang="zho">海邊</TRANSL>
+        <W id="S10W8">
+            <FORM>lazing</FORM>
+            <M id="S10W8M0_0">
+                <FORM>lazing</FORM>
+                <TRANSL>sea</TRANSL>
+                <TRANSL ver="zh_gloss">海邊</TRANSL>
             </M>
         </W>
     </S>
-    <S id="KavNr-sea_buya_S_11">
-        <FORM kindOf="original">qawman wama zana lazingay tamunniq tayan.</FORM>
-        <PHON kindOf="original">qawman wama z~rana raz~riŋaj tamunniq tajan.</PHON>
-        <FORM kindOf="standard">qawman wama zana lazingay tamunniq tayan.</FORM>
-        <PHON kindOf="standard">qawman wama z~rana raz~riŋaj tamunniq tajan.</PHON>
-        <TRANSL xml:lang="zho">我們的菜絕對只有海邊的菜.</TRANSL>
-        <TRANSL xml:lang="en">Our foods are definitely only those picked up at the sea.</TRANSL>
-        <AUDIO file="KavNr-sea_buya_S11.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-sea_buya.mp3" start="87.16" end="92.34"/>
-        <W id="KavNr-sea_buya_S_11_W0">
-            <FORM kindOf="original">qawman</FORM>
-            <PHON kindOf="original">qawman</PHON>
-            <FORM kindOf="standard">qawman</FORM>
-            <PHON kindOf="standard">qawman</PHON>
-            <TRANSL xml:lang="zho">絕對</TRANSL>
-            <TRANSL xml:lang="en">definitely</TRANSL>
-            <M id="KavNr-sea_buya_S_11_W0_M0_0">
-                <FORM kindOf="original">qawman</FORM>
-                <PHON kindOf="original">qawman</PHON>
-                <FORM kindOf="standard">qawman</FORM>
-                <PHON kindOf="standard">qawman</PHON>
-                <TRANSL xml:lang="en">definitely</TRANSL>
-                <TRANSL xml:lang="zho">絕對</TRANSL>
+    <S id="S_11">
+        <FORM>qawman wama zana lazing ay tamunniq tayan.</FORM>
+        <TRANSL xml:lang="zh"> 我們的菜絕對只有海邊的菜。</TRANSL>
+        <TRANSL xml:lang="en"> Our foods are definitely only those picked up at the sea.</TRANSL>
+        <AUDIO file="KavNr-sea_buya_S11.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-sea_buya.mp3"/>
+        <W id="S11W0">
+            <FORM>qawman</FORM>
+            <M id="S11W0M0_0">
+                <FORM>qawman</FORM>
+                <TRANSL>definitely</TRANSL>
+                <TRANSL ver="zh_gloss">絕對</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_11_W1">
-            <FORM kindOf="original">wama</FORM>
-            <PHON kindOf="original">wama</PHON>
-            <FORM kindOf="standard">wama</FORM>
-            <PHON kindOf="standard">wama</PHON>
-            <TRANSL xml:lang="zho">只</TRANSL>
-            <TRANSL xml:lang="en">only</TRANSL>
-            <M id="KavNr-sea_buya_S_11_W1_M0_0">
-                <FORM kindOf="original">wama</FORM>
-                <PHON kindOf="original">wama</PHON>
-                <FORM kindOf="standard">wama</FORM>
-                <PHON kindOf="standard">wama</PHON>
-                <TRANSL xml:lang="en">only</TRANSL>
-                <TRANSL xml:lang="zho">只</TRANSL>
+        <W id="S11W1">
+            <FORM>wama</FORM>
+            <M id="S11W1M0_0">
+                <FORM>wama</FORM>
+                <TRANSL>only</TRANSL>
+                <TRANSL ver="zh_gloss">只</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_11_W2">
-            <FORM kindOf="original">zana</FORM>
-            <PHON kindOf="original">z~rana</PHON>
-            <FORM kindOf="standard">zana</FORM>
-            <PHON kindOf="standard">z~rana</PHON>
-            <TRANSL xml:lang="zho">3PL.所有格</TRANSL>
-            <TRANSL xml:lang="en">3PL.POSS</TRANSL>
-            <M id="KavNr-sea_buya_S_11_W2_M0_0">
-                <FORM kindOf="original">zana</FORM>
-                <PHON kindOf="original">z~rana</PHON>
-                <FORM kindOf="standard">zana</FORM>
-                <PHON kindOf="standard">z~rana</PHON>
-                <TRANSL xml:lang="en">3PL.POSS</TRANSL>
-                <TRANSL xml:lang="zho">3PL.所有格</TRANSL>
+        <W id="S11W2">
+            <FORM>zana</FORM>
+            <M id="S11W2M0_0">
+                <FORM>zana</FORM>
+                <TRANSL>3PL.POSS</TRANSL>
+                <TRANSL ver="zh_gloss">3PL.所有格</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_11_W3">
-            <FORM kindOf="original">lazing=ay</FORM>
-            <PHON kindOf="original">raz~riŋ=aj</PHON>
-            <FORM kindOf="standard">lazing=ay</FORM>
-            <PHON kindOf="standard">raz~riŋ=aj</PHON>
-            <TRANSL xml:lang="zho">海邊=關係詞</TRANSL>
-            <TRANSL xml:lang="en">sea=REL</TRANSL>
-            <M id="KavNr-sea_buya_S_11_W3_M0_0">
-                <FORM kindOf="original">lazing</FORM>
-                <PHON kindOf="original">raz~riŋ</PHON>
-                <FORM kindOf="standard">lazing</FORM>
-                <PHON kindOf="standard">raz~riŋ</PHON>
-                <TRANSL xml:lang="en">sea</TRANSL>
-                <TRANSL xml:lang="zho">海邊</TRANSL>
+        <W id="S11W3">
+            <FORM>lazing=ay</FORM>
+            <M id="S11W3M0_0">
+                <FORM>lazing</FORM>
+                <TRANSL>sea</TRANSL>
+                <TRANSL ver="zh_gloss">海邊</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_11_W3_M0_1">
-                <FORM kindOf="original">ay</FORM>
-                <PHON kindOf="original">aj</PHON>
-                <FORM kindOf="standard">ay</FORM>
-                <PHON kindOf="standard">aj</PHON>
-                <TRANSL xml:lang="en">REL</TRANSL>
-                <TRANSL xml:lang="zho">關係詞</TRANSL>
+            <M id="S11W3M0_1">
+                <FORM>ay</FORM>
+                <TRANSL>REL</TRANSL>
+                <TRANSL ver="zh_gloss">關係詞</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_11_W4">
-            <FORM kindOf="original">tamun-niq</FORM>
-            <PHON kindOf="original">tamun-niq</PHON>
-            <FORM kindOf="standard">tamun-niq</FORM>
-            <PHON kindOf="standard">tamun-niq</PHON>
-            <TRANSL xml:lang="zho">菜-1EPL.屬格</TRANSL>
-            <TRANSL xml:lang="en">meal-1EPL.GEN</TRANSL>
-            <M id="KavNr-sea_buya_S_11_W4_M0_0">
-                <FORM kindOf="original">tamun</FORM>
-                <PHON kindOf="original">tamun</PHON>
-                <FORM kindOf="standard">tamun</FORM>
-                <PHON kindOf="standard">tamun</PHON>
-                <TRANSL xml:lang="en">meal</TRANSL>
-                <TRANSL xml:lang="zho">菜</TRANSL>
+        <W id="S11W4">
+            <FORM>tamun-niq</FORM>
+            <M id="S11W4M0_0">
+                <FORM>tamun</FORM>
+                <TRANSL>meal</TRANSL>
+                <TRANSL ver="zh_gloss">菜</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_11_W4_M1_0">
-                <FORM kindOf="original">niq</FORM>
-                <PHON kindOf="original">niq</PHON>
-                <FORM kindOf="standard">niq</FORM>
-                <PHON kindOf="standard">niq</PHON>
-                <TRANSL xml:lang="en">1EPL.GEN</TRANSL>
-                <TRANSL xml:lang="zho">1EPL.屬格</TRANSL>
+            <M id="S11W4M1_0">
+                <FORM>niq</FORM>
+                <TRANSL>1EPL.GEN</TRANSL>
+                <TRANSL ver="zh_gloss">1EPL.屬格</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_11_W5">
-            <FORM kindOf="original">tayan</FORM>
-            <PHON kindOf="original">tajan</PHON>
-            <FORM kindOf="standard">tayan</FORM>
-            <PHON kindOf="standard">tajan</PHON>
-            <TRANSL xml:lang="zho">那邊</TRANSL>
-            <TRANSL xml:lang="en">there</TRANSL>
-            <M id="KavNr-sea_buya_S_11_W5_M0_0">
-                <FORM kindOf="original">tayan</FORM>
-                <PHON kindOf="original">tajan</PHON>
-                <FORM kindOf="standard">tayan</FORM>
-                <PHON kindOf="standard">tajan</PHON>
-                <TRANSL xml:lang="en">there</TRANSL>
-                <TRANSL xml:lang="zho">那邊</TRANSL>
+        <W id="S11W5">
+            <FORM>tayan</FORM>
+            <M id="S11W5M0_0">
+                <FORM>tayan</FORM>
+                <TRANSL>there</TRANSL>
+                <TRANSL ver="zh_gloss">那邊</TRANSL>
             </M>
         </W>
     </S>
-    <S id="KavNr-sea_buya_S_12">
-        <FORM kindOf="original">wama memay atu mian niazasan.</FORM>
-        <PHON kindOf="original">wama məmaj atu mian niaz~rasan.</PHON>
-        <FORM kindOf="standard">wama memay atu mian niazasan.</FORM>
-        <PHON kindOf="standard">wama məmaj atu mian niaz~rasan.</PHON>
-        <TRANSL xml:lang="zho">帶的東西只有飯和鹽.</TRANSL>
-        <TRANSL xml:lang="en" notes="What are brought (from home) are only rice and salt.">What are brought are only rice and salt.</TRANSL>
-        <AUDIO file="KavNr-sea_buya_S12.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-sea_buya.mp3" start="92.34" end="97.2"/>
-        <W id="KavNr-sea_buya_S_12_W0">
-            <FORM kindOf="original">wama</FORM>
-            <PHON kindOf="original">wama</PHON>
-            <FORM kindOf="standard">wama</FORM>
-            <PHON kindOf="standard">wama</PHON>
-            <TRANSL xml:lang="zho">只有</TRANSL>
-            <TRANSL xml:lang="en">only</TRANSL>
-            <M id="KavNr-sea_buya_S_12_W0_M0_0">
-                <FORM kindOf="original">wama</FORM>
-                <PHON kindOf="original">wama</PHON>
-                <FORM kindOf="standard">wama</FORM>
-                <PHON kindOf="standard">wama</PHON>
-                <TRANSL xml:lang="en">only</TRANSL>
-                <TRANSL xml:lang="zho">只有</TRANSL>
+    <S id="S_12">
+        <FORM>wama memay atu mian niazasan.</FORM>
+        <TRANSL xml:lang="zh"> 帶的東西只有飯和鹽。</TRANSL>
+        <TRANSL xml:lang="en"> What are brought (from home) are only rice and salt.</TRANSL>
+        <AUDIO file="KavNr-sea_buya_S12.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-sea_buya.mp3"/>
+        <W id="S12W0">
+            <FORM>wama</FORM>
+            <M id="S12W0M0_0">
+                <FORM>wama</FORM>
+                <TRANSL>only</TRANSL>
+                <TRANSL ver="zh_gloss">只有</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_12_W1">
-            <FORM kindOf="original">memay</FORM>
-            <PHON kindOf="original">məmaj</PHON>
-            <FORM kindOf="standard">memay</FORM>
-            <PHON kindOf="standard">məmaj</PHON>
-            <TRANSL xml:lang="zho">飯</TRANSL>
-            <TRANSL xml:lang="en">rice</TRANSL>
-            <M id="KavNr-sea_buya_S_12_W1_M0_0">
-                <FORM kindOf="original">memay</FORM>
-                <PHON kindOf="original">məmaj</PHON>
-                <FORM kindOf="standard">memay</FORM>
-                <PHON kindOf="standard">məmaj</PHON>
-                <TRANSL xml:lang="en">rice</TRANSL>
-                <TRANSL xml:lang="zho">飯</TRANSL>
+        <W id="S12W1">
+            <FORM>memay</FORM>
+            <M id="S12W1M0_0">
+                <FORM>memay</FORM>
+                <TRANSL>rice</TRANSL>
+                <TRANSL ver="zh_gloss">飯</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_12_W2">
-            <FORM kindOf="original">atu</FORM>
-            <PHON kindOf="original">atu</PHON>
-            <FORM kindOf="standard">atu</FORM>
-            <PHON kindOf="standard">atu</PHON>
-            <TRANSL xml:lang="zho">連接詞</TRANSL>
-            <TRANSL xml:lang="en">CONJ</TRANSL>
-            <M id="KavNr-sea_buya_S_12_W2_M0_0">
-                <FORM kindOf="original">atu</FORM>
-                <PHON kindOf="original">atu</PHON>
-                <FORM kindOf="standard">atu</FORM>
-                <PHON kindOf="standard">atu</PHON>
-                <TRANSL xml:lang="en">CONJ</TRANSL>
-                <TRANSL xml:lang="zho">連接詞</TRANSL>
+        <W id="S12W2">
+            <FORM>atu</FORM>
+            <M id="S12W2M0_0">
+                <FORM>atu</FORM>
+                <TRANSL>CONJ</TRANSL>
+                <TRANSL ver="zh_gloss">連接詞</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_12_W3">
-            <FORM kindOf="original">mian</FORM>
-            <PHON kindOf="original">mian</PHON>
-            <FORM kindOf="standard">mian</FORM>
-            <PHON kindOf="standard">mian</PHON>
-            <TRANSL xml:lang="zho">鹽</TRANSL>
-            <TRANSL xml:lang="en">salt</TRANSL>
-            <M id="KavNr-sea_buya_S_12_W3_M0_0">
-                <FORM kindOf="original">mian</FORM>
-                <PHON kindOf="original">mian</PHON>
-                <FORM kindOf="standard">mian</FORM>
-                <PHON kindOf="standard">mian</PHON>
-                <TRANSL xml:lang="en">salt</TRANSL>
-                <TRANSL xml:lang="zho">鹽</TRANSL>
+        <W id="S12W3">
+            <FORM>mian</FORM>
+            <M id="S12W3M0_0">
+                <FORM>mian</FORM>
+                <TRANSL>salt</TRANSL>
+                <TRANSL ver="zh_gloss">鹽</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_12_W4">
-            <FORM kindOf="original">ni-azas-an</FORM>
-            <PHON kindOf="original">ni-az~ras-an</PHON>
-            <FORM kindOf="standard">ni-azas-an</FORM>
-            <PHON kindOf="standard">ni-az~ras-an</PHON>
-            <TRANSL xml:lang="zho">完成-帶-名物化</TRANSL>
-            <TRANSL xml:lang="en">PFV-bring-NMZ</TRANSL>
-            <M id="KavNr-sea_buya_S_12_W4_M0_0">
-                <FORM kindOf="original">ni</FORM>
-                <PHON kindOf="original">ni</PHON>
-                <FORM kindOf="standard">ni</FORM>
-                <PHON kindOf="standard">ni</PHON>
-                <TRANSL xml:lang="en">PFV</TRANSL>
-                <TRANSL xml:lang="zho">完成</TRANSL>
+        <W id="S12W4">
+            <FORM>ni-azas-an</FORM>
+            <M id="S12W4M0_0">
+                <FORM>ni</FORM>
+                <TRANSL>PFV</TRANSL>
+                <TRANSL ver="zh_gloss">完成</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_12_W4_M1_0">
-                <FORM kindOf="original">azas</FORM>
-                <PHON kindOf="original">az~ras</PHON>
-                <FORM kindOf="standard">azas</FORM>
-                <PHON kindOf="standard">az~ras</PHON>
-                <TRANSL xml:lang="en">bring</TRANSL>
-                <TRANSL xml:lang="zho">帶</TRANSL>
+            <M id="S12W4M1_0">
+                <FORM>azas</FORM>
+                <TRANSL>bring</TRANSL>
+                <TRANSL ver="zh_gloss">帶</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_12_W4_M2_0">
-                <FORM kindOf="original">an</FORM>
-                <PHON kindOf="original">an</PHON>
-                <FORM kindOf="standard">an</FORM>
-                <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="en">NMZ</TRANSL>
-                <TRANSL xml:lang="zho">名物化</TRANSL>
+            <M id="S12W4M2_0">
+                <FORM>an</FORM>
+                <TRANSL>NMZ</TRANSL>
+                <TRANSL ver="zh_gloss">名物化</TRANSL>
             </M>
         </W>
     </S>
-    <S id="KavNr-sea_buya_S_13">
-        <FORM kindOf="original">nayau zana kebalan matiw sa lazing.</FORM>
-        <PHON kindOf="original">najau z~rana kəβaran matiw sa raz~riŋ.</PHON>
-        <FORM kindOf="standard">nayau zana kebalan matiw sa lazing.</FORM>
-        <PHON kindOf="standard">najau z~rana kəβaran matiw sa raz~riŋ.</PHON>
-        <TRANSL xml:lang="zho">噶瑪蘭人是那樣子去海邊的.</TRANSL>
-        <TRANSL xml:lang="en">That is how Kavalan people go to the sea.</TRANSL>
-        <AUDIO file="KavNr-sea_buya_S13.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-sea_buya.mp3" start="97.2" end="100.63"/>
-        <W id="KavNr-sea_buya_S_13_W0">
-            <FORM kindOf="original">nayau</FORM>
-            <PHON kindOf="original">najau</PHON>
-            <FORM kindOf="standard">nayau</FORM>
-            <PHON kindOf="standard">najau</PHON>
-            <TRANSL xml:lang="zho">那樣</TRANSL>
-            <TRANSL xml:lang="en">that.way</TRANSL>
-            <M id="KavNr-sea_buya_S_13_W0_M0_0">
-                <FORM kindOf="original">nayau</FORM>
-                <PHON kindOf="original">najau</PHON>
-                <FORM kindOf="standard">nayau</FORM>
-                <PHON kindOf="standard">najau</PHON>
-                <TRANSL xml:lang="en">that.way</TRANSL>
-                <TRANSL xml:lang="zho">那樣</TRANSL>
+    <S id="S_13">
+        <FORM>nayau zana kebalan matiw sa lazing.</FORM>
+        <TRANSL xml:lang="zh"> 噶瑪蘭人是那樣子去海邊的。</TRANSL>
+        <TRANSL xml:lang="en"> That is how Kavalan people go to the sea.</TRANSL>
+        <AUDIO file="KavNr-sea_buya_S13.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-sea_buya.mp3"/>
+        <W id="S13W0">
+            <FORM>nayau</FORM>
+            <M id="S13W0M0_0">
+                <FORM>nayau</FORM>
+                <TRANSL>that.way</TRANSL>
+                <TRANSL ver="zh_gloss">那樣</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_13_W1">
-            <FORM kindOf="original">zana</FORM>
-            <PHON kindOf="original">z~rana</PHON>
-            <FORM kindOf="standard">zana</FORM>
-            <PHON kindOf="standard">z~rana</PHON>
-            <TRANSL xml:lang="zho">3PL.所有格</TRANSL>
-            <TRANSL xml:lang="en">3PL.POSS</TRANSL>
-            <M id="KavNr-sea_buya_S_13_W1_M0_0">
-                <FORM kindOf="original">zana</FORM>
-                <PHON kindOf="original">z~rana</PHON>
-                <FORM kindOf="standard">zana</FORM>
-                <PHON kindOf="standard">z~rana</PHON>
-                <TRANSL xml:lang="en">3PL.POSS</TRANSL>
-                <TRANSL xml:lang="zho">3PL.所有格</TRANSL>
+        <W id="S13W1">
+            <FORM>zana</FORM>
+            <M id="S13W1M0_0">
+                <FORM>zana</FORM>
+                <TRANSL>3PL.POSS</TRANSL>
+                <TRANSL ver="zh_gloss">3PL.所有格</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_13_W2">
-            <FORM kindOf="original">kebalan</FORM>
-            <PHON kindOf="original">kəβaran</PHON>
-            <FORM kindOf="standard">kebalan</FORM>
-            <PHON kindOf="standard">kəβaran</PHON>
-            <TRANSL xml:lang="zho">噶瑪蘭</TRANSL>
-            <TRANSL xml:lang="en">Kavalan</TRANSL>
-            <M id="KavNr-sea_buya_S_13_W2_M0_0">
-                <FORM kindOf="original">kebalan</FORM>
-                <PHON kindOf="original">kəβaran</PHON>
-                <FORM kindOf="standard">kebalan</FORM>
-                <PHON kindOf="standard">kəβaran</PHON>
-                <TRANSL xml:lang="en">Kavalan</TRANSL>
-                <TRANSL xml:lang="zho">噶瑪蘭</TRANSL>
+        <W id="S13W2">
+            <FORM>kebalan</FORM>
+            <M id="S13W2M0_0">
+                <FORM>kebalan</FORM>
+                <TRANSL>Kavalan</TRANSL>
+                <TRANSL ver="zh_gloss">噶瑪蘭</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_13_W3">
-            <FORM kindOf="original">matiw</FORM>
-            <PHON kindOf="original">matiw</PHON>
-            <FORM kindOf="standard">matiw</FORM>
-            <PHON kindOf="standard">matiw</PHON>
-            <TRANSL xml:lang="zho">主焦.去</TRANSL>
-            <TRANSL xml:lang="en">AF.go</TRANSL>
-            <M id="KavNr-sea_buya_S_13_W3_M0_0">
-                <FORM kindOf="original">matiw</FORM>
-                <PHON kindOf="original">matiw</PHON>
-                <FORM kindOf="standard">matiw</FORM>
-                <PHON kindOf="standard">matiw</PHON>
-                <TRANSL xml:lang="en">AF.go</TRANSL>
-                <TRANSL xml:lang="zho">主焦.去</TRANSL>
+        <W id="S13W3">
+            <FORM>matiw</FORM>
+            <M id="S13W3M0_0">
+                <FORM>matiw</FORM>
+                <TRANSL>AF.go</TRANSL>
+                <TRANSL ver="zh_gloss">主焦.去</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_13_W4">
-            <FORM kindOf="original">sa</FORM>
-            <PHON kindOf="original">sa</PHON>
-            <FORM kindOf="standard">sa</FORM>
-            <PHON kindOf="standard">sa</PHON>
-            <TRANSL xml:lang="zho">到</TRANSL>
-            <TRANSL xml:lang="en">to</TRANSL>
-            <M id="KavNr-sea_buya_S_13_W4_M0_0">
-                <FORM kindOf="original">sa</FORM>
-                <PHON kindOf="original">sa</PHON>
-                <FORM kindOf="standard">sa</FORM>
-                <PHON kindOf="standard">sa</PHON>
-                <TRANSL xml:lang="en">to</TRANSL>
-                <TRANSL xml:lang="zho">到</TRANSL>
+        <W id="S13W4">
+            <FORM>sa</FORM>
+            <M id="S13W4M0_0">
+                <FORM>sa</FORM>
+                <TRANSL>to</TRANSL>
+                <TRANSL ver="zh_gloss">到</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_13_W5">
-            <FORM kindOf="original">lazing</FORM>
-            <PHON kindOf="original">raz~riŋ</PHON>
-            <FORM kindOf="standard">lazing</FORM>
-            <PHON kindOf="standard">raz~riŋ</PHON>
-            <TRANSL xml:lang="zho">海邊</TRANSL>
-            <TRANSL xml:lang="en">sea</TRANSL>
-            <M id="KavNr-sea_buya_S_13_W5_M0_0">
-                <FORM kindOf="original">lazing</FORM>
-                <PHON kindOf="original">raz~riŋ</PHON>
-                <FORM kindOf="standard">lazing</FORM>
-                <PHON kindOf="standard">raz~riŋ</PHON>
-                <TRANSL xml:lang="en">sea</TRANSL>
-                <TRANSL xml:lang="zho">海邊</TRANSL>
+        <W id="S13W5">
+            <FORM>lazing</FORM>
+            <M id="S13W5M0_0">
+                <FORM>lazing</FORM>
+                <TRANSL>sea</TRANSL>
+                <TRANSL ver="zh_gloss">海邊</TRANSL>
             </M>
         </W>
     </S>
-    <S id="KavNr-sea_buya_S_14">
-        <FORM kindOf="original">saqalizaqan saqanengian na waway.</FORM>
-        <PHON kindOf="original">saqariz~raqan saqanəŋian na wawaj.</PHON>
-        <FORM kindOf="standard">saqalizaqan saqanengian na waway.</FORM>
-        <PHON kindOf="standard">saqariz~raqan saqanəŋian na wawaj.</PHON>
-        <TRANSL xml:lang="zho">使我們高興及好的生活方式.</TRANSL>
-        <TRANSL xml:lang="en">the way of life which makes us happy and good</TRANSL>
-        <AUDIO file="KavNr-sea_buya_S14.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-sea_buya.mp3" start="100.63" end="105.4"/>
-        <W id="KavNr-sea_buya_S_14_W0">
-            <FORM kindOf="original">sa-qa-lizaq-an</FORM>
-            <PHON kindOf="original">sa-qa-riz~raq-an</PHON>
-            <FORM kindOf="standard">sa-qa-lizaq-an</FORM>
-            <PHON kindOf="standard">sa-qa-riz~raq-an</PHON>
-            <TRANSL xml:lang="zho">未來-QA-高興-名物化</TRANSL>
-            <TRANSL xml:lang="en">FUT-QA-happy-NMZ</TRANSL>
-            <M id="KavNr-sea_buya_S_14_W0_M0_0">
-                <FORM kindOf="original">sa</FORM>
-                <PHON kindOf="original">sa</PHON>
-                <FORM kindOf="standard">sa</FORM>
-                <PHON kindOf="standard">sa</PHON>
-                <TRANSL xml:lang="en">FUT</TRANSL>
-                <TRANSL xml:lang="zho">未來</TRANSL>
+    <S id="S_14">
+        <FORM>saqalizaqan saqanengian na waway.</FORM>
+        <TRANSL xml:lang="zh"> 使我們高興及好的生活方式。</TRANSL>
+        <TRANSL xml:lang="en"> the way of life which makes us happy and good</TRANSL>
+        <AUDIO file="KavNr-sea_buya_S14.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-sea_buya.mp3"/>
+        <W id="S14W0">
+            <FORM>sa-qa-lizaq-an</FORM>
+            <M id="S14W0M0_0">
+                <FORM>sa</FORM>
+                <TRANSL>FUT</TRANSL>
+                <TRANSL ver="zh_gloss">未來</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_14_W0_M1_0">
-                <FORM kindOf="original">qa</FORM>
-                <PHON kindOf="original">qa</PHON>
-                <FORM kindOf="standard">qa</FORM>
-                <PHON kindOf="standard">qa</PHON>
-                <TRANSL xml:lang="en">QA</TRANSL>
-                <TRANSL xml:lang="zho">QA</TRANSL>
+            <M id="S14W0M1_0">
+                <FORM>qa</FORM>
+                <TRANSL>QA</TRANSL>
+                <TRANSL ver="zh_gloss">QA</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_14_W0_M2_0">
-                <FORM kindOf="original">lizaq</FORM>
-                <PHON kindOf="original">riz~raq</PHON>
-                <FORM kindOf="standard">lizaq</FORM>
-                <PHON kindOf="standard">riz~raq</PHON>
-                <TRANSL xml:lang="en">happy</TRANSL>
-                <TRANSL xml:lang="zho">高興</TRANSL>
+            <M id="S14W0M2_0">
+                <FORM>lizaq</FORM>
+                <TRANSL>happy</TRANSL>
+                <TRANSL ver="zh_gloss">高興</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_14_W0_M3_0">
-                <FORM kindOf="original">an</FORM>
-                <PHON kindOf="original">an</PHON>
-                <FORM kindOf="standard">an</FORM>
-                <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="en">NMZ</TRANSL>
-                <TRANSL xml:lang="zho">名物化</TRANSL>
+            <M id="S14W0M3_0">
+                <FORM>an</FORM>
+                <TRANSL>NMZ</TRANSL>
+                <TRANSL ver="zh_gloss">名物化</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_14_W1">
-            <FORM kindOf="original">sa-qa-nengi-an</FORM>
-            <PHON kindOf="original">sa-qa-nəŋi-an</PHON>
-            <FORM kindOf="standard">sa-qa-nengi-an</FORM>
-            <PHON kindOf="standard">sa-qa-nəŋi-an</PHON>
-            <TRANSL xml:lang="zho">未來-QA-好-名物化</TRANSL>
-            <TRANSL xml:lang="en">FUT-QA-good-NMZ</TRANSL>
-            <M id="KavNr-sea_buya_S_14_W1_M0_0">
-                <FORM kindOf="original">sa</FORM>
-                <PHON kindOf="original">sa</PHON>
-                <FORM kindOf="standard">sa</FORM>
-                <PHON kindOf="standard">sa</PHON>
-                <TRANSL xml:lang="en">FUT</TRANSL>
-                <TRANSL xml:lang="zho">未來</TRANSL>
+        <W id="S14W1">
+            <FORM>sa-qa-nengi-an</FORM>
+            <M id="S14W1M0_0">
+                <FORM>sa</FORM>
+                <TRANSL>FUT</TRANSL>
+                <TRANSL ver="zh_gloss">未來</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_14_W1_M1_0">
-                <FORM kindOf="original">qa</FORM>
-                <PHON kindOf="original">qa</PHON>
-                <FORM kindOf="standard">qa</FORM>
-                <PHON kindOf="standard">qa</PHON>
-                <TRANSL xml:lang="en">QA</TRANSL>
-                <TRANSL xml:lang="zho">QA</TRANSL>
+            <M id="S14W1M1_0">
+                <FORM>qa</FORM>
+                <TRANSL>QA</TRANSL>
+                <TRANSL ver="zh_gloss">QA</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_14_W1_M2_0">
-                <FORM kindOf="original">nengi</FORM>
-                <PHON kindOf="original">nəŋi</PHON>
-                <FORM kindOf="standard">nengi</FORM>
-                <PHON kindOf="standard">nəŋi</PHON>
-                <TRANSL xml:lang="en">good</TRANSL>
-                <TRANSL xml:lang="zho">好</TRANSL>
+            <M id="S14W1M2_0">
+                <FORM>nengi</FORM>
+                <TRANSL>good</TRANSL>
+                <TRANSL ver="zh_gloss">好</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_14_W1_M3_0">
-                <FORM kindOf="original">an</FORM>
-                <PHON kindOf="original">an</PHON>
-                <FORM kindOf="standard">an</FORM>
-                <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="en">NMZ</TRANSL>
-                <TRANSL xml:lang="zho">名物化</TRANSL>
+            <M id="S14W1M3_0">
+                <FORM>an</FORM>
+                <TRANSL>NMZ</TRANSL>
+                <TRANSL ver="zh_gloss">名物化</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_14_W2">
-            <FORM kindOf="original">na</FORM>
-            <PHON kindOf="original">na</PHON>
-            <FORM kindOf="standard">na</FORM>
-            <PHON kindOf="standard">na</PHON>
-            <TRANSL xml:lang="zho">屬格</TRANSL>
-            <TRANSL xml:lang="en">GEN</TRANSL>
-            <M id="KavNr-sea_buya_S_14_W2_M0_0">
-                <FORM kindOf="original">na</FORM>
-                <PHON kindOf="original">na</PHON>
-                <FORM kindOf="standard">na</FORM>
-                <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="en">GEN</TRANSL>
-                <TRANSL xml:lang="zho">屬格</TRANSL>
+        <W id="S14W2">
+            <FORM>na</FORM>
+            <M id="S14W2M0_0">
+                <FORM>na</FORM>
+                <TRANSL>GEN</TRANSL>
+                <TRANSL ver="zh_gloss">屬格</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_14_W3">
-            <FORM kindOf="original">waway</FORM>
-            <PHON kindOf="original">wawaj</PHON>
-            <FORM kindOf="standard">waway</FORM>
-            <PHON kindOf="standard">wawaj</PHON>
-            <TRANSL xml:lang="zho">生活方式</TRANSL>
-            <TRANSL xml:lang="en">way.of.life</TRANSL>
-            <M id="KavNr-sea_buya_S_14_W3_M0_0">
-                <FORM kindOf="original">waway</FORM>
-                <PHON kindOf="original">wawaj</PHON>
-                <FORM kindOf="standard">waway</FORM>
-                <PHON kindOf="standard">wawaj</PHON>
-                <TRANSL xml:lang="en">way.of.life</TRANSL>
-                <TRANSL xml:lang="zho">生活方式</TRANSL>
+        <W id="S14W3">
+            <FORM>waway</FORM>
+            <M id="S14W3M0_0">
+                <FORM>waway</FORM>
+                <TRANSL>way.of.life</TRANSL>
+                <TRANSL ver="zh_gloss">生活方式</TRANSL>
             </M>
         </W>
     </S>
-    <S id="KavNr-sea_buya_S_15">
-        <FORM kindOf="original">zinniq nayau ma.</FORM>
-        <PHON kindOf="original">z~rinniq najau ma.</PHON>
-        <FORM kindOf="standard">zinniq nayau ma.</FORM>
-        <PHON kindOf="standard">z~rinniq najau ma.</PHON>
-        <TRANSL xml:lang="zho">我們是這樣想的.</TRANSL>
-        <TRANSL xml:lang="en">That's how we think.</TRANSL>
-        <AUDIO file="KavNr-sea_buya_S15.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-sea_buya.mp3" start="105.4" end="108.35"/>
-        <W id="KavNr-sea_buya_S_15_W0">
-            <FORM kindOf="original">zin-niq</FORM>
-            <PHON kindOf="original">z~rin-niq</PHON>
-            <FORM kindOf="standard">zin-niq</FORM>
-            <PHON kindOf="standard">z~rin-niq</PHON>
-            <TRANSL xml:lang="zho">說-1EPL.屬格</TRANSL>
-            <TRANSL xml:lang="en">say-1EPL.GEN</TRANSL>
-            <M id="KavNr-sea_buya_S_15_W0_M0_0">
-                <FORM kindOf="original">zin</FORM>
-                <PHON kindOf="original">z~rin</PHON>
-                <FORM kindOf="standard">zin</FORM>
-                <PHON kindOf="standard">z~rin</PHON>
-                <TRANSL xml:lang="en">say</TRANSL>
-                <TRANSL xml:lang="zho">說</TRANSL>
+    <S id="S_15">
+        <FORM>zinniq nayau ma.</FORM>
+        <TRANSL xml:lang="zh"> 我們是這樣想的。</TRANSL>
+        <TRANSL xml:lang="en"> That’s how we think.</TRANSL>
+        <AUDIO file="KavNr-sea_buya_S15.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-sea_buya.mp3"/>
+        <W id="S15W0">
+            <FORM>zin-niq</FORM>
+            <M id="S15W0M0_0">
+                <FORM>zin</FORM>
+                <TRANSL>say</TRANSL>
+                <TRANSL ver="zh_gloss">說</TRANSL>
             </M>
-            <M id="KavNr-sea_buya_S_15_W0_M1_0">
-                <FORM kindOf="original">niq</FORM>
-                <PHON kindOf="original">niq</PHON>
-                <FORM kindOf="standard">niq</FORM>
-                <PHON kindOf="standard">niq</PHON>
-                <TRANSL xml:lang="en">1EPL.GEN</TRANSL>
-                <TRANSL xml:lang="zho">1EPL.屬格</TRANSL>
+            <M id="S15W0M1_0">
+                <FORM>niq</FORM>
+                <TRANSL>1EPL.GEN</TRANSL>
+                <TRANSL ver="zh_gloss">1EPL.屬格</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_15_W1">
-            <FORM kindOf="original">nayau</FORM>
-            <PHON kindOf="original">najau</PHON>
-            <FORM kindOf="standard">nayau</FORM>
-            <PHON kindOf="standard">najau</PHON>
-            <TRANSL xml:lang="zho">那樣</TRANSL>
-            <TRANSL xml:lang="en">that.way</TRANSL>
-            <M id="KavNr-sea_buya_S_15_W1_M0_0">
-                <FORM kindOf="original">nayau</FORM>
-                <PHON kindOf="original">najau</PHON>
-                <FORM kindOf="standard">nayau</FORM>
-                <PHON kindOf="standard">najau</PHON>
-                <TRANSL xml:lang="en">that.way</TRANSL>
-                <TRANSL xml:lang="zho">那樣</TRANSL>
+        <W id="S15W1">
+            <FORM>nayau</FORM>
+            <M id="S15W1M0_0">
+                <FORM>nayau</FORM>
+                <TRANSL>that.way</TRANSL>
+                <TRANSL ver="zh_gloss">那樣</TRANSL>
             </M>
         </W>
-        <W id="KavNr-sea_buya_S_15_W2">
-            <FORM kindOf="original">ma</FORM>
-            <PHON kindOf="original">ma</PHON>
-            <FORM kindOf="standard">ma</FORM>
-            <PHON kindOf="standard">ma</PHON>
-            <TRANSL xml:lang="zho">感嘆</TRANSL>
-            <TRANSL xml:lang="en">INT</TRANSL>
-            <M id="KavNr-sea_buya_S_15_W2_M0_0">
-                <FORM kindOf="original">ma</FORM>
-                <PHON kindOf="original">ma</PHON>
-                <FORM kindOf="standard">ma</FORM>
-                <PHON kindOf="standard">ma</PHON>
-                <TRANSL xml:lang="en">INT</TRANSL>
-                <TRANSL xml:lang="zho">感嘆</TRANSL>
+        <W id="S15W2">
+            <FORM>ma</FORM>
+            <M id="S15W2M0_0">
+                <FORM>ma</FORM>
+                <TRANSL>INT</TRANSL>
+                <TRANSL ver="zh_gloss">感嘆</TRANSL>
             </M>
         </W>
     </S>
