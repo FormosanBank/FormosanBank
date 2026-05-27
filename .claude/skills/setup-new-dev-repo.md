@@ -18,7 +18,8 @@ Bootstrap a fresh corpus development repository at `<parent_dir>/Formosan-<corpu
 ## Pre-checks
 
 1. Locate FormosanBank: usually `<parent_dir>/FormosanBank/`. If not found, prompt user for path. Required for `requirements.txt` and the `check-venv.py` hook to copy.
-2. Verify target directory `<parent_dir>/Formosan-<corpus_name>/` does NOT already exist. If it does, refuse — operator must delete first or choose a new name.
+2. Verify `<formosanbank_path>/requirements.txt` and `<formosanbank_path>/.claude/hooks/check-venv.py` both exist. If either is missing, refuse and surface to the user — the bootstrap depends on both.
+3. Verify target directory `<parent_dir>/Formosan-<corpus_name>/` does NOT already exist. If it does, refuse — operator must delete first or choose a new name.
 
 ## Recipe phases
 
@@ -36,12 +37,14 @@ User can approve, request changes, or abort. **No filesystem changes before appr
 ### Phase 2: Create directory and init git
 
 ```bash
-mkdir -p "<target>/{XML,CodeAndDocs}"
+mkdir -p "<target>/XML" "<target>/CodeAndDocs"
 cd "<target>"
 git init -b main
 # If remote_url:
 git remote add origin "<remote_url>"
 ```
+
+Note: brace expansion (`mkdir -p "<target>/{XML,CodeAndDocs}"`) does NOT work inside double quotes — it would create a single literal directory named `{XML,CodeAndDocs}`. Either pass the two paths separately as above, or unquote the braces: `mkdir -p "<target>"/{XML,CodeAndDocs}`.
 
 ### Phase 3: Create .venv
 
@@ -63,15 +66,14 @@ Capture pip output. If any install fails, surface immediately to user — do not
 ### Phase 5: Install Claude Code safety rails
 
 - Create `<target>/.claude/hooks/check-venv.py` by copying from `<formosanbank_path>/.claude/hooks/check-venv.py`. (Copy the *file*; the new repo shouldn't depend on FormosanBank's filesystem location.)
-- Create `<target>/.claude/settings.local.json` with:
+- Split the Claude Code settings between two files:
+  - **Committed** (project-wide, in version control): `<target>/.claude/settings.json` carries the hook config so anyone cloning the dev repo gets the same safety rail.
+  - **Per-user** (gitignored — the `.gitignore` from Phase 4 already excludes it): `<target>/.claude/settings.local.json` carries `additionalDirectories`, which is the operator's machine layout and shouldn't be shared.
+
+Create `<target>/.claude/settings.json`:
 
 ```json
 {
-  "permissions": {
-    "additionalDirectories": [
-      "<parent_dir>"
-    ]
-  },
   "hooks": {
     "SessionStart": [
       {
@@ -82,6 +84,18 @@ Capture pip output. If any install fails, surface immediately to user — do not
           }
         ]
       }
+    ]
+  }
+}
+```
+
+Create `<target>/.claude/settings.local.json`:
+
+```json
+{
+  "permissions": {
+    "additionalDirectories": [
+      "<parent_dir>"
     ]
   }
 }

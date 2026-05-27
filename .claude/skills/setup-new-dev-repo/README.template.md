@@ -6,7 +6,12 @@
 
 ## Source
 
-<!-- Describe the source data: where it came from, who collected it, what format the original is in, any licensing/access constraints. -->
+<!-- Describe the source data: where it came from, who collected it, what format the original is in, any licensing/access constraints.
+
+If the source includes private/unshareable material, large binaries, or scratch
+intermediate artifacts, conventional dirs to use (already in .gitignore):
+  data/        raw_data/        Original/        img-by-page/        text-by-page/
+-->
 
 TBD.
 
