@@ -90,12 +90,17 @@ At the lowest level of `<S>,` `<W>,` and `<M>`, a `<FORM>` element must be used 
 </S>
 ```
 
-The `<FORM>` element has one optional attribute, `kindOf`, which has two use cases:
+The `<FORM>` element has one attribute, `kindOf`, which has two use cases:
 
-* For indicating phonological transcriptions. In that case, the value would be "phono".
-* For indicating the orthography used for languages with more than one orthography, A lis of orthographies can be found here.
+**original** This is the text as it appeared in the original source. The only differences should be punctuation standardization. If there were listed errata, the `original` text should be updated to address those errata. Otherwise, this should be left as-is. In most cases, the `original` FORMs exist as a historical record and for reproducibility. They are not used in analysis and can be safely ignored by most end-users.
 
-The XML format in FormosanBank ensures comprehensive representation of linguistic data, supporting both detailed analysis and high-level exploration.
+**standard** This is text that has been normalized as much as possible, including standardizing the orthography and spelling. For `S`-level FORMs only, this includes removing any morphological segmentation (other than morphological segmentation that may be indicated by the orthography rules themselves). For `W`-level forms, morphological segmentation should be retained.
+
+### The `<PHON>` Element
+
+This is an analog to `<FORM>` and contains IPA transliterations of the text. Note that these are almost always transliterations rather than actual transcriptions, being derived from the content of `<FORM>`.
+
+Like `<FORM>`, `<PHON>` should have a `kindOf` attribute set to `original` or `standard`, indicating which text it is transliterated from. If this is a transcription not a transliteration, use `standard`.
 
 ***
 
@@ -159,7 +164,7 @@ Usage Guidelines:
         <TRANSL xml:lang="en">I</TRANSL>
     </W>
     ```
-3.  **Morpheme-Level Translation (Leipzig Glosses)**: For linguistic glosses following the Leipzig Glossing Rules, use the `<TRANSL>` element within the `<M>` element to provide morpheme-level glosses.
+3.  **Morpheme-Level Translation (glosses)**: For linguistic glosses following the Leipzig Glossing Rules, use the `<TRANSL>` element within the `<M>` element to provide morpheme-level glosses.
 
     Example:
 
@@ -172,4 +177,20 @@ Usage Guidelines:
     </W>
     ```
 
+Importantly, the `M`-level `TRANSL` can have a `kindOf` attribute. Many of the older texts uses non-standard glosses, and even those that use Leipzig format may use different abbreviations for the same constructs. The original glosses should be left as is and indicated as `original` if necessary. Updated glosses should be `kidof="standard"`.
+
 Note: didn't include class or subclss attrs for W and M and didn't include ver attr for TRANSL.
+
+***
+
+### Special Rules
+
+#### Infixes and circumfixes
+
+When creating the `M` levels for words that have infixes, the `FORM` for the infix should start and stop with a `-`, indicating that it is in an infix. The `FORM` for the morpheme that surrounded the infix should have a `-` where the infix went. So: `a-b-c` would result in `M`s of `a-c` and `-b-`. 
+
+Circumfixes can be handled in an analogous way, though many glossing conventions treat the two parts of a circumfix as a prefix and a suffix. This should be standardized at some point. 
+
+#### Clitics
+
+Formosan languages have not standardized whether clitics are written as the same word or different, and probabilistic conventions have changed over time. When writing the `M` FORM for a clitic, include the `=` whether or not it was actually attached to the head word.
