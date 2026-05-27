@@ -108,6 +108,32 @@ def test_handles_missing_file_path() -> None:
     check(code == 0, "handles missing file_path gracefully")
 
 
+def test_allows_path_outside_repo() -> None:
+    code, _ = run_hook({
+        "tool_name": "Edit",
+        "tool_input": {"file_path": "/etc/hosts"},
+    })
+    check(code == 0, "allows path outside the repo (e.g. /etc/hosts)")
+
+
+def test_falls_back_to_cwd_when_env_unset() -> None:
+    """If CLAUDE_PROJECT_DIR is unset, the hook should resolve repo root from cwd."""
+    env = os.environ.copy()
+    env.pop("CLAUDE_PROJECT_DIR", None)
+    proc = subprocess.run(
+        [sys.executable, str(HOOK)],
+        input=json.dumps({
+            "tool_name": "Edit",
+            "tool_input": {"file_path": str(REPO_ROOT / "statistics/foo.csv")},
+        }),
+        capture_output=True,
+        text=True,
+        env=env,
+        cwd=str(REPO_ROOT),
+    )
+    check(proc.returncode == 2, "cwd fallback: blocks when CLAUDE_PROJECT_DIR is unset and cwd is repo root")
+
+
 if __name__ == "__main__":
     test_blocks_edit_to_statistics()
     test_blocks_write_to_statistics()
@@ -117,5 +143,7 @@ if __name__ == "__main__":
     test_allows_non_matching_tool()
     test_handles_invalid_json()
     test_handles_missing_file_path()
+    test_allows_path_outside_repo()
+    test_falls_back_to_cwd_when_env_unset()
     print(f"\n{PASS} pass, {FAIL} fail")
     sys.exit(0 if FAIL == 0 else 1)
