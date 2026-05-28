@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Positive fixture for the standardize copy-mode "overwrite existing standard"
+  behavior.
+
+  Shape: one S with both an original tier ("Halo, hapinangha.") and a
+  deliberately-divergent standard tier ("REPLACE ME"). The two tiers
+  disagree so the overwrite is detectable.
+
+  Exercises: standardize.py in copy mode must overwrite the existing standard
+  tier with the original tier's content. Catches a regression where the
+  script silently skips when a standard tier already exists.
+-->
+<TEXT id="TEST_BT" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+  <S id="S_1">
+    <FORM kindOf="original">Halo, hapinangha.</FORM>
+    <FORM kindOf="standard">REPLACE ME</FORM>
+  </S>
+</TEXT>

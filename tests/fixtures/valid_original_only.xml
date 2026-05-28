@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Positive fixture for the standardize copy-mode "add standard tier" behavior.
+
+  Shape: one TEXT containing two S elements, each with ONLY a FORM
+  kindOf="original" tier. No standard tier present anywhere.
+
+  Exercises: standardize.py in copy mode should add a standard tier to each S
+  whose content matches the existing original tier. Regression case: an
+  add-standard-tier change that fails to handle multi-S corpora.
+-->
+<TEXT id="TEST_OO" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+  <S id="S_1">
+    <FORM kindOf="original">Halo, hapinangha.</FORM>
+  </S>
+  <S id="S_2">
+    <FORM kindOf="original">Nawhani kako tayni i toron.</FORM>
+  </S>
+</TEXT>
