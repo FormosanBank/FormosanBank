@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  Canonical positive fixture: the minimum valid corpus.
+
+  Shape: one TEXT, one S, both required FORM tiers (original and standard
+  with identical content). xml:lang="ami" is Amis (ISO 639-3). No DOCTYPE
+  reference — validate_xml.py loads the DTD via its own logic.
+
+  Used as the project-wide baseline "this is correct XML" reference. Tests
+  assert against it for: extractor round-trips, validator no-findings,
+  cleaner no-change-needed.
+-->
 <TEXT id="TEST_MIN" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
   <S id="S_1">
     <FORM kindOf="original">Halo.</FORM>

@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  Negative fixture for the no-false-positives invariant.
+
+  Shape: two synthetic sentences containing deliberately implausible
+  tokens ("Zxqwerty", "XYZ123") that cannot exist in any real Formosan
+  corpus. The content is gibberish on purpose.
+
+  Exercises: the duplicate-sentence matcher (against any real corpus
+  index, e.g. the Glosbe corpus) must NOT return a match for either
+  sentence. Catches a regression where the matcher loosens beyond exact
+  string equality (e.g., starts matching on substrings or normalised
+  representations that collapse distinct sentences together).
+-->
 <TEXT id="TEST_INV" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
   <S id="INV_1">
     <FORM kindOf="standard">Zxqwerty totally fake sentence that is not in any corpus.</FORM>
