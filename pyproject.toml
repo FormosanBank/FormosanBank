@@ -2,3 +2,7 @@
 testpaths = ["tests"]
 python_files = "test_*.py"
 addopts = "--cov=QC --cov-report=term-missing --cov-report=xml"
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
