@@ -54,11 +54,21 @@ def apply_standard(s_element, standard):
         for original, replacement in standard:
             form.text = form.text.replace(original, replacement)
 
-def create_standard(element):
+def create_standard(element, file_path=None):
     # Find the <FORM> child within each <S> element
-    original_form = element.find('FORM')
+    original_form = element.find("FORM[@kindOf='original']")
     standard_form = element.find("FORM[@kindOf='standard']")
-    
+
+    if original_form is None:
+        s_id = element.get('id', '<unknown>')
+        location = f" in {file_path}" if file_path else ""
+        print(
+            f"Error: S id={s_id!r}{location} has no original tier (kindOf='original'). "
+            f"Cannot create standard tier.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+
     if standard_form is not None:
         # Standard form exists, replace its text with original text
         standard_form.text = original_form.text
@@ -110,7 +120,7 @@ def main(args):
                     if args.copy:
                         # In copy mode, just copy original to standard
                         for element in root.findall('.//FORM/..'):
-                            create_standard(element)
+                            create_standard(element, file_path=file)
                     else:
                         # Normal standardization mode
                         # Determine target column
@@ -150,7 +160,7 @@ def main(args):
 
                         # Iterate over all <S> elements
                         for element in root.findall('.//FORM/..'):
-                            create_standard(element)
+                            create_standard(element, file_path=file)
                             apply_standard(element, standard)
                         
                     try:
