@@ -1,6 +1,11 @@
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 python_files = "test_*.py"
+# Tests invoke QC scripts via subprocess, so --cov=QC will measure only
+# what gets imported by the test process (currently nothing). Expect the
+# "No data was collected" warning and 0% across QC/* in coverage.xml.
+# This is accepted per the design's "report-only, not gated" coverage
+# decision; the signal here is test pass/fail, not the coverage number.
 addopts = "--cov=QC --cov-report=term-missing --cov-report=xml"
 
 [tool.pyright]

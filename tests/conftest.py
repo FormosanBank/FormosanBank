@@ -27,8 +27,11 @@ def valid_minimal_xml(fixtures_dir) -> Path:
 @pytest.fixture
 def audio_file_factory(tmp_path) -> Callable[..., Path]:
     """Return a callable that generates a silent WAV at the given duration."""
+    counter = 0
     def make(duration_sec: float = 1.0, sample_rate: int = 8000) -> Path:
-        path = tmp_path / f"silent_{duration_sec}s.wav"
+        nonlocal counter
+        counter += 1
+        path = tmp_path / f"silent_{counter}_{duration_sec}s.wav"
         n_frames = int(duration_sec * sample_rate)
         with wave.open(str(path), "wb") as w:
             w.setnchannels(1)
