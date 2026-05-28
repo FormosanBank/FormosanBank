@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TEXT id="TEST_WL" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+  <S id="S_A">
+    <FORM kindOf="standard">A real sentence</FORM>
+    <W id="S_A_W_1">
+      <FORM kindOf="standard">SHOULD_NOT_MATCH</FORM>
+    </W>
+  </S>
+</TEXT>
