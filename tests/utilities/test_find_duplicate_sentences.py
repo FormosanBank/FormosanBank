@@ -11,6 +11,7 @@ to handle. Per the design doc's real-corpus exception, this dependency
 is explicit and intentional.
 """
 import sys
+import xml.sax.saxutils
 from collections import defaultdict
 from pathlib import Path
 
@@ -76,7 +77,7 @@ def test_real_glosbe_sentences_are_found(glosbe_sample, glosbe_index):
     """Sentences planted from the real Glosbe corpus should be matchable."""
     planted_gids = {gid for gid, _ in glosbe_sample}
     found_gids = set()
-    for gid, text in glosbe_sample:
+    for _, text in glosbe_sample:
         if text.lower() in glosbe_index:
             for hit_gid in glosbe_index[text.lower()]:
                 found_gids.add(hit_gid)
@@ -85,8 +86,23 @@ def test_real_glosbe_sentences_are_found(glosbe_sample, glosbe_index):
     )
 
 
-def test_case_insensitive_matching(glosbe_sample, glosbe_index):
-    """Upper and lower cased variants of a real Glosbe sentence both match."""
+def test_case_insensitive_matching(tmp_path, glosbe_sample, glosbe_index):
+    """Sentences extracted from upper-cased XML are findable in the lower-cased index."""
     _, sample_text = glosbe_sample[0]
-    assert sample_text.upper().lower() in glosbe_index
-    assert sample_text.lower() in glosbe_index
+    # Build a small XML at runtime with the sample text uppercased. We need a
+    # corpus-derived sentence here (not a synthetic one) so the lookup against
+    # glosbe_index is meaningful. Inline-via-tmp_path rather than a standalone
+    # fixture because the content depends on the actual Glosbe corpus state.
+    upper_xml = tmp_path / "upper.xml"
+    upper_xml.write_text(
+        '<?xml version="1.0" encoding="utf-8"?>\n'
+        '<TEXT id="TEST_UP" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">\n'
+        f'  <S id="UPPER_1">\n'
+        f'    <FORM kindOf="standard">{xml.sax.saxutils.escape(sample_text.upper())}</FORM>\n'
+        '  </S>\n'
+        '</TEXT>\n'
+    )
+    forms = extract_standard_forms(str(upper_xml))
+    assert any(text.lower() in glosbe_index for _, text in forms), (
+        f"upper-cased extract of {sample_text!r} not found in lower-cased glosbe_index"
+    )
