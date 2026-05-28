@@ -51,12 +51,17 @@ def glosbe_index():
 
 
 def test_extract_standard_forms_round_trips(fixtures_dir):
-    """Sentence ids and FORM text are read correctly from a minimal fixture."""
-    # valid_minimal.xml has one S (S_1) with FORM "Halo."
+    """Sentence ids and FORM text are read correctly from a minimal fixture.
+
+    valid_minimal.xml has distinct content in its two FORM tiers
+    ("Halo (orig)." vs "Halo (std)."), so this assertion catches a
+    regression where extract_standard_forms returns the original tier
+    instead of the standard tier.
+    """
     forms = extract_standard_forms(str(fixtures_dir / "valid_minimal.xml"))
     assert len(forms) == 1
     assert forms[0][0] == "S_1"
-    assert forms[0][1] == "Halo."
+    assert forms[0][1] == "Halo (std)."
 
 
 def test_word_level_forms_are_excluded(fixtures_dir):
@@ -73,16 +78,46 @@ def test_invented_sentences_produce_no_false_positives(fixtures_dir, glosbe_inde
     assert false_positives == []
 
 
-def test_real_glosbe_sentences_are_found(glosbe_sample, glosbe_index):
-    """Sentences planted from the real Glosbe corpus should be matchable."""
-    planted_gids = {gid for gid, _ in glosbe_sample}
-    found_gids = set()
-    for _, text in glosbe_sample:
-        if text.lower() in glosbe_index:
-            for hit_gid in glosbe_index[text.lower()]:
-                found_gids.add(hit_gid)
-    assert planted_gids.issubset(found_gids), (
-        f"missing matches: {planted_gids - found_gids}"
+def test_planted_glosbe_sentences_round_trip_through_extract_and_match(
+    tmp_path, glosbe_sample, glosbe_index
+):
+    """Plant Glosbe sentences in a separate corpus with new IDs; verify the
+    extractor + lower-case lookup round-trip finds each one back in Glosbe.
+
+    This mirrors the original hand-rolled test's design: copying glosbe
+    sentences into a *separate* corpus (with `PLANTED_*` ids) and then
+    looking each extracted text up in glosbe_index exercises the full
+    pipeline — file I/O + parse + extract + lowercase + index lookup.
+    Asserting that `glosbe_sample` is a subset of `glosbe_index` directly,
+    without the planting step, would be tautological since glosbe_sample
+    IS the first 5 entries of the index.
+    """
+    sentences_xml = "\n".join(
+        f'  <S id="PLANTED_{i}">\n'
+        f'    <FORM kindOf="standard">{xml.sax.saxutils.escape(text)}</FORM>\n'
+        f'  </S>'
+        for i, (_, text) in enumerate(glosbe_sample, 1)
+    )
+    planted_xml = tmp_path / "planted.xml"
+    planted_xml.write_text(
+        '<?xml version="1.0" encoding="utf-8"?>\n'
+        '<TEXT id="PLANTED" citation="test" BibTeX_citation="@test{test}" '
+        'copyright="test" xml:lang="ami">\n'
+        f'{sentences_xml}\n'
+        '</TEXT>\n'
+    )
+
+    extracted = extract_standard_forms(str(planted_xml))
+    assert len(extracted) == len(glosbe_sample), (
+        f"expected {len(glosbe_sample)} extracted sentences, got {len(extracted)}"
+    )
+
+    missing = [
+        (sid, text) for sid, text in extracted
+        if text.lower() not in glosbe_index
+    ]
+    assert missing == [], (
+        f"planted sentences not found in glosbe_index after round-trip: {missing}"
     )
 
 
