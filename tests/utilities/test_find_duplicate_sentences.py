@@ -138,6 +138,10 @@ def test_case_insensitive_matching(tmp_path, glosbe_sample, glosbe_index):
         '</TEXT>\n'
     )
     forms = extract_standard_forms(str(upper_xml))
-    assert any(text.lower() in glosbe_index for _, text in forms), (
-        f"upper-cased extract of {sample_text!r} not found in lower-cased glosbe_index"
+    assert len(forms) == 1, f"expected exactly one extracted form, got {forms}"
+    extracted_id, extracted_text = forms[0]
+    assert extracted_id == "UPPER_1"
+    assert extracted_text.lower() in glosbe_index, (
+        f"upper-cased extract {extracted_text!r} (from {sample_text!r}) "
+        f"not found in lower-cased glosbe_index"
     )
