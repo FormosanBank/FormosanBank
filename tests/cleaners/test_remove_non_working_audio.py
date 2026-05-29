@@ -1,0 +1,167 @@
+"""Tests for QC/cleaning/remove_non_working_audio.py.
+
+IMPORTANT: All tests in this file are CURRENTLY XFAIL because the
+script's current interface (legacy ePark-specific, no CLI args,
+hardcoded CSV input) doesn't match the test design. These tests
+specify the BEHAVIORAL CONTRACT we expect after sub-project B
+refactors the script:
+
+  - Accepts `--corpora_path <dir>` (dir/XML/*.xml is walked)
+  - Detects broken <AUDIO file="..."/> refs by checking file existence
+  - Removes broken refs in place; valid refs survive
+  - Exits 0 on success, non-zero on failure
+
+When B's refactor lands and the tests start passing, pytest will flag
+them as XPASSED (because strict=True). At that point the xfail markers
+should be removed.
+
+XML is built inline via tmp_path rather than as a standalone fixture
+because the audio paths must be dynamic (point at real tmp_path WAVs
+that audio_file_factory generates) — a committed fixture file would
+encode absolute paths that wouldn't resolve on other machines.
+
+For the "no audio" case the existing valid_minimal.xml fixture is used
+directly, since its content doesn't depend on dynamic paths.
+"""
+import subprocess
+import sys
+import xml.etree.ElementTree as ET
+from pathlib import Path
+
+import pytest
+
+
+REMOVE_AUDIO = Path(__file__).resolve().parents[2] / "QC" / "cleaning" / "remove_non_working_audio.py"
+XFAIL_REASON = (
+    "remove_non_working_audio.py interface refactor deferred to sub-project B "
+    "(currently hardcoded-CSV + ePark-specific; spec'd behavior here is the "
+    "desired post-refactor contract)"
+)
+
+
+def _write_xml_with_audio_refs(path: Path, audio_paths: list[Path]) -> None:
+    """Build an XML file referencing the given audio paths.
+
+    Each entry in audio_paths becomes an <AUDIO> element with file="...".
+    Paths are passed through as strings; whether they exist on disk
+    determines what remove_non_working_audio.py considers valid.
+    """
+    root = ET.Element("TEXT", attrib={
+        "id": "TEST_AUDIO",
+        "citation": "test",
+        "BibTeX_citation": "@test{test}",
+        "copyright": "test",
+        "xml:lang": "ami",
+    })
+    for i, audio_path in enumerate(audio_paths, 1):
+        s = ET.SubElement(root, "S", attrib={"id": f"S_{i}"})
+        ET.SubElement(s, "FORM", attrib={"kindOf": "original"}).text = f"Sentence {i}."
+        ET.SubElement(s, "FORM", attrib={"kindOf": "standard"}).text = f"Sentence {i}."
+        ET.SubElement(s, "AUDIO", attrib={
+            "file": str(audio_path),
+            "start": "0",
+            "end": "1",
+        })
+    ET.ElementTree(root).write(str(path), encoding="utf-8", xml_declaration=True)
+
+
+def _audio_refs(xml_path: Path) -> list[str]:
+    """Return the list of file="..." values from all <AUDIO> elements."""
+    root = ET.parse(xml_path).getroot()
+    return [a.get("file") for a in root.iter("AUDIO")]
+
+
+def _run_remove(corpora_path: Path) -> subprocess.CompletedProcess:
+    return subprocess.run(
+        [sys.executable, str(REMOVE_AUDIO), "--corpora_path", str(corpora_path)],
+        capture_output=True,
+        text=True,
+    )
+
+
+def _make_xml_dir(tmp_path: Path) -> Path:
+    d = tmp_path / "XML"
+    d.mkdir(parents=True, exist_ok=True)
+    return d
+
+
+@pytest.mark.xfail(strict=True, reason=XFAIL_REASON)
+def test_all_valid_audio_refs_are_kept(tmp_path, audio_file_factory):
+    xml_dir = _make_xml_dir(tmp_path)
+    good_a = audio_file_factory(0.1)
+    good_b = audio_file_factory(0.1)
+    xml = xml_dir / "test.xml"
+    _write_xml_with_audio_refs(xml, [good_a, good_b])
+
+    proc = _run_remove(tmp_path)
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    # The refactored script must report what it processed; a silent no-op (e.g.
+    # the legacy code that ignores --corpora_path and reads a CSV instead) would
+    # produce empty stdout and would NOT satisfy this assertion.
+    assert proc.stdout.strip() != "", (
+        "expected script to emit processing output when --corpora_path is given"
+    )
+
+    refs = _audio_refs(xml)
+    assert len(refs) == 2, f"expected 2 audio refs retained, got {refs}"
+    assert str(good_a) in refs
+    assert str(good_b) in refs
+
+
+@pytest.mark.xfail(strict=True, reason=XFAIL_REASON)
+def test_broken_audio_ref_is_removed_others_retained(tmp_path, audio_file_factory):
+    xml_dir = _make_xml_dir(tmp_path)
+    good = audio_file_factory(0.1)
+    broken = tmp_path / "does_not_exist.wav"  # never created
+    xml = xml_dir / "test.xml"
+    _write_xml_with_audio_refs(xml, [good, broken])
+
+    proc = _run_remove(tmp_path)
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+
+    refs = _audio_refs(xml)
+    assert str(good) in refs, "valid audio ref was incorrectly removed"
+    assert str(broken) not in refs, "broken audio ref was not removed"
+
+
+@pytest.mark.xfail(strict=True, reason=XFAIL_REASON)
+def test_corpus_with_no_audio_is_a_noop(tmp_path, fixtures_dir, copy_fixture):
+    """valid_minimal.xml has no <AUDIO> elements; script should leave it byte-exact."""
+    work = copy_fixture(fixtures_dir / "valid_minimal.xml", tmp_path)
+    before = work.read_bytes()
+
+    proc = _run_remove(tmp_path)
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    # The refactored script must report what it processed; a silent no-op (e.g.
+    # the legacy code that ignores --corpora_path and reads a CSV instead) would
+    # produce empty stdout and would NOT satisfy this assertion.
+    assert proc.stdout.strip() != "", (
+        "expected script to emit processing output when --corpora_path is given"
+    )
+    assert work.read_bytes() == before, (
+        "cleaner modified a corpus that had no AUDIO elements"
+    )
+
+
+@pytest.mark.xfail(strict=True, reason=XFAIL_REASON)
+def test_all_broken_audio_refs_are_all_removed(tmp_path):
+    xml_dir = _make_xml_dir(tmp_path)
+    broken_a = tmp_path / "missing_a.wav"
+    broken_b = tmp_path / "missing_b.wav"
+    xml = xml_dir / "test.xml"
+    _write_xml_with_audio_refs(xml, [broken_a, broken_b])
+
+    proc = _run_remove(tmp_path)
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+
+    refs = _audio_refs(xml)
+    assert refs == [], f"expected all broken refs removed, got: {refs}"
+
+    # Surviving XML should still be well-formed and parseable, with both
+    # sentences retained but their AUDIO children gone.
+    root = ET.parse(xml).getroot()
+    sentences = list(root.iter("S"))
+    assert len(sentences) == 2, "sentences should not have been removed, only their AUDIO children"
+    for s in sentences:
+        assert s.find("AUDIO") is None
+        assert s.find("FORM") is not None
