@@ -20,8 +20,6 @@ import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-import pytest
-
 STANDARDIZE = Path(__file__).resolve().parents[2] / "QC" / "utilities" / "standardize.py"
 
 
@@ -54,7 +52,7 @@ def _standard_forms(xml_path: Path) -> list[str]:
         f.text
         for s in root.iter("S")
         for f in s
-        if f.tag == "FORM" and f.get("kindOf") == "standard"
+        if f.tag == "FORM" and f.get("kindOf") == "standard" and f.text is not None
     ]
 
 
@@ -64,7 +62,7 @@ def _original_forms(xml_path: Path) -> list[str]:
         f.text
         for s in root.iter("S")
         for f in s
-        if f.tag == "FORM" and f.get("kindOf") == "original"
+        if f.tag == "FORM" and f.get("kindOf") == "original" and f.text is not None
     ]
 
 
@@ -94,21 +92,21 @@ def test_tsv_mapping_transforms_standard_tier(tmp_path, fixtures_dir):
         "--corpora_path", str(tmp_path),
     ])
     assert proc.returncode == 0, f"stderr: {proc.stderr}"
-    standard = " ".join(_standard_forms(work))
-    assert "Hello" in standard or "greeting" in standard, (
-        f"expected mapped tokens in standard tier, got: {standard!r}"
+    standard = _standard_forms(work)
+    assert standard == ["Hello, greeting.", "Nawhani kako tayni i toron."], (
+        f"expected mapped sentence in standard tier, got: {standard!r}"
     )
 
 
 def test_errors_when_no_original_tier(tmp_path, fixtures_dir):
     work = _copy_fixture(fixtures_dir / "valid_no_original_tier.xml", tmp_path)
     proc = _run_standardize(["--copy", "--corpora_path", str(tmp_path)])
-    has_clear_error = (
-        proc.returncode != 0
-        or "no original" in (proc.stderr + proc.stdout).lower()
-        or "missing original" in (proc.stderr + proc.stdout).lower()
+    assert proc.returncode != 0, (
+        f"expected non-zero exit; got returncode={proc.returncode}, "
+        f"stdout={proc.stdout!r}, stderr={proc.stderr!r}"
     )
-    assert has_clear_error, (
-        f"expected a clear error about missing original tier; "
-        f"got returncode={proc.returncode}, stdout={proc.stdout!r}, stderr={proc.stderr!r}"
+    combined = (proc.stderr + proc.stdout).lower()
+    assert "no original" in combined or "missing original" in combined, (
+        f"expected error message naming the missing original tier; "
+        f"got stdout={proc.stdout!r}, stderr={proc.stderr!r}"
     )
