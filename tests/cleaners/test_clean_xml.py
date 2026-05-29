@@ -7,7 +7,6 @@ are a deferred follow-up round with its own design pass.
 clean_xml mutates XML in place. All tests work on a tmp_path copy of
 the fixture; never mutate the fixture file itself.
 """
-import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -16,14 +15,6 @@ from lxml import etree
 
 
 CLEAN_XML = Path(__file__).resolve().parents[2] / "QC" / "cleaning" / "clean_xml.py"
-
-
-def _copy_fixture(src: Path, dest_dir: Path) -> Path:
-    target_dir = dest_dir / "XML"
-    target_dir.mkdir(parents=True, exist_ok=True)
-    copy = target_dir / src.name
-    shutil.copy(src, copy)
-    return copy
 
 
 def _run_clean(corpora_path: Path) -> subprocess.CompletedProcess:
@@ -40,19 +31,29 @@ def _form_texts(xml_path: Path) -> list[str]:
     return [el.text or "" for el in tree.findall(".//FORM")]
 
 
-def test_already_clean_xml_is_left_intact(tmp_path, fixtures_dir):
-    """A valid_minimal.xml should round-trip with FORM text preserved."""
-    work = _copy_fixture(fixtures_dir / "valid_minimal.xml", tmp_path)
+def test_already_clean_xml_is_left_intact(tmp_path, fixtures_dir, copy_fixture):
+    """valid_minimal.xml is already clean; cleaner must not mutate it (byte-exact)."""
+    work = copy_fixture(fixtures_dir / "valid_minimal.xml", tmp_path)
+    before = work.read_bytes()
     proc = _run_clean(tmp_path)
     assert proc.returncode == 0, f"stderr: {proc.stderr}"
-    after = work.read_text()
-    # The two distinct FORM texts from the fixture must survive intact.
-    assert "Halo (orig)." in after, f"expected 'Halo (orig).' to survive cleaning; got:\n{after}"
-    assert "Halo (std)." in after, f"expected 'Halo (std).' to survive cleaning; got:\n{after}"
+    assert work.read_bytes() == before, (
+        "cleaner modified an already-clean file (byte-level diff)"
+    )
 
 
-def test_html_entities_are_resolved(tmp_path, fixtures_dir):
-    work = _copy_fixture(fixtures_dir / "xml_with_html_entities.xml", tmp_path)
+def test_html_entities_round_trip_without_double_encoding(tmp_path, fixtures_dir, copy_fixture):
+    """Standard XML character references in FORM text round-trip without
+    becoming double-encoded after a clean pass.
+
+    Note: this does NOT exercise clean_xml.py's html.unescape branch.
+    lxml decodes &amp; -> & during parse, so the unescape branch's
+    condition (html.unescape(text) != text) is False for normal XML
+    input. Exercising that branch requires double-encoded input on
+    disk (literal `&amp;` inside FORM text), which is a separate
+    scenario deferred to the corpus-mined round.
+    """
+    work = copy_fixture(fixtures_dir / "xml_with_html_entities.xml", tmp_path)
     proc = _run_clean(tmp_path)
     assert proc.returncode == 0, f"stderr: {proc.stderr}"
     # Parse the output XML so we inspect FORM text values, not raw serialized
@@ -67,26 +68,26 @@ def test_html_entities_are_resolved(tmp_path, fixtures_dir):
         )
 
 
-def test_whitespace_is_normalized(tmp_path, fixtures_dir):
-    work = _copy_fixture(fixtures_dir / "xml_with_whitespace_problems.xml", tmp_path)
+def test_whitespace_is_normalized(tmp_path, fixtures_dir, copy_fixture):
+    work = copy_fixture(fixtures_dir / "xml_with_whitespace_problems.xml", tmp_path)
     proc = _run_clean(tmp_path)
     assert proc.returncode == 0, f"stderr: {proc.stderr}"
     # Parse the output XML so we inspect FORM text values, not raw serialized
     # bytes (XML comments and attribute indentation also contain spaces and
     # would produce false positives if we checked the raw file text).
-    forms = _form_texts(work)
-    for text in forms:
-        assert "   " not in text, (
-            f"expected repeated spaces to be normalized away in FORM text, got: {text!r}"
-        )
+    texts = _form_texts(work)
+    for text in texts:
+        assert "  " not in text, f"expected all repeated spaces collapsed: {text!r}"
+        assert not text.startswith(" "), f"expected leading whitespace stripped: {text!r}"
+        assert not text.endswith(" "), f"expected trailing whitespace stripped: {text!r}"
 
 
-def test_cleaner_is_idempotent(tmp_path, fixtures_dir):
+def test_cleaner_is_idempotent(tmp_path, fixtures_dir, copy_fixture):
     """Critical for in-place mutators: running twice == running once."""
     once_dir = tmp_path / "once"
     twice_dir = tmp_path / "twice"
-    work_a = _copy_fixture(fixtures_dir / "xml_with_html_entities.xml", once_dir)
-    work_b = _copy_fixture(fixtures_dir / "xml_with_html_entities.xml", twice_dir)
+    work_a = copy_fixture(fixtures_dir / "xml_with_whitespace_problems.xml", once_dir)
+    work_b = copy_fixture(fixtures_dir / "xml_with_whitespace_problems.xml", twice_dir)
 
     _run_clean(once_dir)
     _run_clean(twice_dir)

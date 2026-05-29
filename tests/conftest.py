@@ -1,4 +1,5 @@
 """Shared fixtures for the FormosanBank test suite."""
+import shutil
 import wave
 from pathlib import Path
 from typing import Callable
@@ -17,6 +18,24 @@ def repo_root() -> Path:
 @pytest.fixture
 def fixtures_dir() -> Path:
     return FIXTURES
+
+
+@pytest.fixture
+def copy_fixture():
+    """Return a helper that copies a fixture into tmp_path/XML/ for in-place mutation.
+
+    The QC scripts treat --corpora_path as a collection root and enumerate its
+    immediate children as corpus directories. Placing the file in dest_dir/XML/
+    means the script discovers it via the standard directory walk. The caller
+    should pass dest_dir (the collection root) to --corpora_path.
+    """
+    def _copy(src: Path, dest_dir: Path) -> Path:
+        target_dir = dest_dir / "XML"
+        target_dir.mkdir(parents=True, exist_ok=True)
+        copy = target_dir / src.name
+        shutil.copy(src, copy)
+        return copy
+    return _copy
 
 
 @pytest.fixture

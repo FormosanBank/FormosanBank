@@ -14,28 +14,12 @@ CLI shape notes:
   --tsv_path mode uses a column named "original" (not "source") as the
   lookup key; the target column is named via --target_column.
 """
-import shutil
 import subprocess
 import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
 STANDARDIZE = Path(__file__).resolve().parents[2] / "QC" / "utilities" / "standardize.py"
-
-
-def _copy_fixture(src: Path, dest_dir: Path) -> Path:
-    """Copy a fixture file into tmp_path/XML/ so the script can mutate it.
-
-    The script treats --corpora_path as a collection root and enumerates
-    its immediate children as corpus directories. Placing the file in
-    dest_dir/XML/ means the script discovers it via get_files(dest_dir/XML).
-    The caller should pass dest_dir (the collection root) to --corpora_path.
-    """
-    target_dir = dest_dir / "XML"
-    target_dir.mkdir(parents=True, exist_ok=True)
-    copy = target_dir / src.name
-    shutil.copy(src, copy)
-    return copy
 
 
 def _run_standardize(args: list[str]) -> subprocess.CompletedProcess:
@@ -66,16 +50,16 @@ def _original_forms(xml_path: Path) -> list[str]:
     ]
 
 
-def test_copy_adds_standard_tier_when_only_original_exists(tmp_path, fixtures_dir):
-    work = _copy_fixture(fixtures_dir / "valid_original_only.xml", tmp_path)
+def test_copy_adds_standard_tier_when_only_original_exists(tmp_path, fixtures_dir, copy_fixture):
+    work = copy_fixture(fixtures_dir / "valid_original_only.xml", tmp_path)
     proc = _run_standardize(["--copy", "--corpora_path", str(tmp_path)])
     assert proc.returncode == 0, f"stderr: {proc.stderr}"
     assert _standard_forms(work) == _original_forms(work)
     assert _standard_forms(work) == ["Halo, hapinangha.", "Nawhani kako tayni i toron."]
 
 
-def test_copy_overwrites_existing_standard_tier(tmp_path, fixtures_dir):
-    work = _copy_fixture(fixtures_dir / "valid_both_tiers.xml", tmp_path)
+def test_copy_overwrites_existing_standard_tier(tmp_path, fixtures_dir, copy_fixture):
+    work = copy_fixture(fixtures_dir / "valid_both_tiers.xml", tmp_path)
     proc = _run_standardize(["--copy", "--corpora_path", str(tmp_path)])
     assert proc.returncode == 0, f"stderr: {proc.stderr}"
     standard = _standard_forms(work)
@@ -83,8 +67,8 @@ def test_copy_overwrites_existing_standard_tier(tmp_path, fixtures_dir):
     assert standard == _original_forms(work)
 
 
-def test_tsv_mapping_transforms_standard_tier(tmp_path, fixtures_dir):
-    work = _copy_fixture(fixtures_dir / "valid_original_only.xml", tmp_path)
+def test_tsv_mapping_transforms_standard_tier(tmp_path, fixtures_dir, copy_fixture):
+    work = copy_fixture(fixtures_dir / "valid_original_only.xml", tmp_path)
     tsv = fixtures_dir / "tiny_mapping.tsv"
     proc = _run_standardize([
         "--tsv_path", str(tsv),
@@ -98,8 +82,8 @@ def test_tsv_mapping_transforms_standard_tier(tmp_path, fixtures_dir):
     )
 
 
-def test_errors_when_no_original_tier(tmp_path, fixtures_dir):
-    work = _copy_fixture(fixtures_dir / "valid_no_original_tier.xml", tmp_path)
+def test_errors_when_no_original_tier(tmp_path, fixtures_dir, copy_fixture):
+    work = copy_fixture(fixtures_dir / "valid_no_original_tier.xml", tmp_path)
     before = work.read_text()
     proc = _run_standardize(["--copy", "--corpora_path", str(tmp_path)])
     assert proc.returncode != 0, (

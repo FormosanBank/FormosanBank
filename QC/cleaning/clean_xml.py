@@ -227,7 +227,7 @@ def analyze_and_modify_xml_file(xml_dir, corpora_dir):
                                 modified = True
 
                 if modified:
-                    tree.write(xml_file, pretty_print=True, encoding="utf-8")
+                    tree.write(xml_file, xml_declaration=True, pretty_print=True, encoding="utf-8")
                     print(f"File cleaned: {xml_file}")
 
 def main(args):
