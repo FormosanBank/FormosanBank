@@ -100,6 +100,7 @@ def test_tsv_mapping_transforms_standard_tier(tmp_path, fixtures_dir):
 
 def test_errors_when_no_original_tier(tmp_path, fixtures_dir):
     work = _copy_fixture(fixtures_dir / "valid_no_original_tier.xml", tmp_path)
+    before = work.read_text()
     proc = _run_standardize(["--copy", "--corpora_path", str(tmp_path)])
     assert proc.returncode != 0, (
         f"expected non-zero exit; got returncode={proc.returncode}, "
@@ -109,4 +110,9 @@ def test_errors_when_no_original_tier(tmp_path, fixtures_dir):
     assert "no original" in combined or "missing original" in combined, (
         f"expected error message naming the missing original tier; "
         f"got stdout={proc.stdout!r}, stderr={proc.stderr!r}"
+    )
+    # Atomicity: the script should not mutate the file when it errors out.
+    assert work.read_text() == before, (
+        "standardize.py modified the input file even though it errored on "
+        "missing original tier"
     )
