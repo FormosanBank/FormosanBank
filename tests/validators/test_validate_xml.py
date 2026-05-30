@@ -545,7 +545,6 @@ def test_V062_infix_M_with_angle_gloss_positive(tmp_path, fixtures_dir, copy_fix
 # -----------------------------------------------------------------------------
 
 
-@pytest.mark.xfail(strict=True, reason=XFAIL_NOT_YET_CHECKED)
 def test_V070_PHON_directly_under_TEXT_negative(tmp_path, fixtures_dir, copy_fixture):
     """V070: PHON directly under TEXT (illegal placement)."""
     copy_fixture(fixtures_dir / "v070_PHON_directly_under_TEXT.xml", tmp_path)
@@ -555,7 +554,6 @@ def test_V070_PHON_directly_under_TEXT_negative(tmp_path, fixtures_dir, copy_fix
     )
 
 
-@pytest.mark.xfail(strict=True, reason=XFAIL_NOT_YET_CHECKED)
 def test_V071_PHON_invalid_kindOf_negative(tmp_path, fixtures_dir, copy_fixture):
     """V071: PHON kindOf="alternate" is not a valid value."""
     copy_fixture(fixtures_dir / "v071_PHON_invalid_kindOf.xml", tmp_path)
@@ -565,7 +563,6 @@ def test_V071_PHON_invalid_kindOf_negative(tmp_path, fixtures_dir, copy_fixture)
     )
 
 
-@pytest.mark.xfail(strict=True, reason=XFAIL_NOT_YET_CHECKED)
 def test_V072_duplicate_PHON_kindOf_negative(tmp_path, fixtures_dir, copy_fixture):
     """V072: two PHON kindOf="original" siblings under the same parent."""
     copy_fixture(fixtures_dir / "v072_duplicate_PHON_kindOf.xml", tmp_path)
@@ -575,7 +572,6 @@ def test_V072_duplicate_PHON_kindOf_negative(tmp_path, fixtures_dir, copy_fixtur
     )
 
 
-@pytest.mark.xfail(strict=True, reason=XFAIL_NOT_YET_CHECKED)
 def test_V073_PHON_empty_content_negative(tmp_path, fixtures_dir, copy_fixture):
     """V073: PHON with empty text content."""
     copy_fixture(fixtures_dir / "v073_PHON_empty_content.xml", tmp_path)
