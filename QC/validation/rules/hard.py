@@ -231,10 +231,39 @@ def v035_text_lang_is_iso_639_3(
     return []
 
 
+def v017_form_must_have_content(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V017: every <FORM> element must have non-empty text content.
+
+    The DTD allows mixed content on FORM, so this constraint cannot be
+    expressed in pure XSD/DTD — it requires a Python rule.
+    """
+    findings: list[Finding] = []
+    for form in tree.iter("FORM"):
+        text = form.text or ""
+        if text.strip():
+            continue
+        parent = form.getparent()
+        s_id = parent.get("id") if parent is not None else None
+        kind = form.get("kindOf") or "(no kindOf)"
+        findings.append(Finding(
+            rule_id="V017",
+            severity=Severity.HARD,
+            message=f"empty FORM (kindOf={kind!r}) — form is empty",
+            path=path,
+            location=f"S={s_id}" if s_id else "FORM",
+        ))
+    return findings
+
+
 RULES: list = [
     v000_dtd_validation,
     v001_root_must_be_TEXT,
     v016_known_kindOf_values,
+    v017_form_must_have_content,
     v035_text_lang_is_iso_639_3,
     v050_audio_attr_present,
     v051_audio_start_before_end,

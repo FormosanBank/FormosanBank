@@ -120,17 +120,23 @@ def _print_summary(findings: list[Finding]) -> None:
     tests/validators/test_validate_xml.py asserts on
     `_is_clean` (looks for "total issues found: 0" + "no issues found")
     and `_has_finding` (looks for "files with issues" et al).
+
+    Per-finding detail lines are also emitted so that `_has_rule_finding`
+    marker checks (which look for rule-ID or message text) can match.
     """
-    n = sum(1 for f in findings if f.severity is Severity.HARD)
+    hard = [f for f in findings if f.severity is Severity.HARD]
+    n = len(hard)
     print(f"Total issues found: {n}", file=sys.stderr)
     if n == 0:
         print("No issues found.", file=sys.stderr)
         return
-    paths_with_issues = sorted({str(f.path) for f in findings
-                                if f.severity is Severity.HARD})
+    paths_with_issues = sorted({str(f.path) for f in hard})
     print("Files with issues:", file=sys.stderr)
     for p in paths_with_issues:
         print(f"  {p}", file=sys.stderr)
+    for f in hard:
+        loc = f" [{f.location}]" if f.location else ""
+        print(f"  [{f.rule_id}]{loc} {f.message}", file=sys.stderr)
 
 
 def main(argv: list[str] | None = None) -> int:

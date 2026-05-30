@@ -276,7 +276,6 @@ def test_V016_unknown_kindOf_value_negative(tmp_path, fixtures_dir, copy_fixture
     )
 
 
-@pytest.mark.xfail(strict=True, reason=XFAIL_NOT_YET_CHECKED)
 def test_V017_empty_FORM_content_negative(tmp_path, fixtures_dir, copy_fixture):
     """V017: a FORM with empty text content is a bug."""
     copy_fixture(fixtures_dir / "v017_empty_FORM_content.xml", tmp_path)
