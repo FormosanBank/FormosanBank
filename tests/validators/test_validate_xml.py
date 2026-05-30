@@ -225,7 +225,6 @@ def test_V012_M_must_have_FORM_negative(tmp_path, fixtures_dir, copy_fixture):
     )
 
 
-@pytest.mark.xfail(strict=True, reason=XFAIL_NOT_YET_CHECKED)
 def test_V013_S_must_have_original_FORM_negative(tmp_path, fixtures_dir, copy_fixture):
     """V013: an S whose only FORM is kindOf="standard" must produce a finding."""
     copy_fixture(fixtures_dir / "v013_S_only_standard_no_original.xml", tmp_path)
@@ -263,7 +262,6 @@ def test_V014_missing_standard_FORM_is_counted(tmp_path, fixtures_dir, copy_fixt
     )
 
 
-@pytest.mark.xfail(strict=True, reason=XFAIL_NOT_YET_CHECKED)
 def test_V015_duplicate_original_FORM_negative(tmp_path, fixtures_dir, copy_fixture):
     """V015: two FORM kindOf="original" siblings under the same S is forbidden."""
     copy_fixture(fixtures_dir / "v015_duplicate_original_FORM.xml", tmp_path)
