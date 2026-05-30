@@ -31,22 +31,27 @@ def _run_standardize(args: list[str]) -> subprocess.CompletedProcess:
 
 
 def _standard_forms(xml_path: Path) -> list[str]:
+    """All standard FORM texts in document order, across S, W, and M levels.
+
+    standardize.py walks `.//FORM/..` so it operates on every element with a
+    FORM child. The test helpers mirror that scope rather than restricting
+    to sentence-level FORMs only.
+    """
     root = ET.parse(xml_path).getroot()
     return [
         f.text
-        for s in root.iter("S")
-        for f in s
-        if f.tag == "FORM" and f.get("kindOf") == "standard" and f.text is not None
+        for f in root.findall(".//FORM")
+        if f.get("kindOf") == "standard" and f.text is not None
     ]
 
 
 def _original_forms(xml_path: Path) -> list[str]:
+    """All original FORM texts in document order, across S, W, and M levels."""
     root = ET.parse(xml_path).getroot()
     return [
         f.text
-        for s in root.iter("S")
-        for f in s
-        if f.tag == "FORM" and f.get("kindOf") == "original" and f.text is not None
+        for f in root.findall(".//FORM")
+        if f.get("kindOf") == "original" and f.text is not None
     ]
 
 
@@ -54,8 +59,17 @@ def test_copy_adds_standard_tier_when_only_original_exists(tmp_path, fixtures_di
     work = copy_fixture(fixtures_dir / "valid_original_only.xml", tmp_path)
     proc = _run_standardize(["--copy", "--corpora_path", str(tmp_path)])
     assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    # standardize.py must add a standard tier at every element with a FORM
+    # child (S, W, M) — not just at the sentence level.
     assert _standard_forms(work) == _original_forms(work)
-    assert _standard_forms(work) == ["Halo, hapinangha.", "Nawhani kako tayni i toron."]
+    assert _standard_forms(work) == [
+        "Halo, hapinangha.",
+        "Nawhani kako tayni i toron.",
+        "Nawhani",
+        "Naw",
+        "hani",
+        "kako",
+    ]
 
 
 def test_copy_overwrites_existing_standard_tier(tmp_path, fixtures_dir, copy_fixture):
@@ -63,7 +77,11 @@ def test_copy_overwrites_existing_standard_tier(tmp_path, fixtures_dir, copy_fix
     proc = _run_standardize(["--copy", "--corpora_path", str(tmp_path)])
     assert proc.returncode == 0, f"stderr: {proc.stderr}"
     standard = _standard_forms(work)
-    assert "REPLACE ME" not in standard
+    # No level (S, W, M) may retain the divergent "REPLACE ME *" content
+    # — overwrite must happen at every level.
+    assert not any("REPLACE ME" in s for s in standard), (
+        f"some standard tier was not overwritten: {standard}"
+    )
     assert standard == _original_forms(work)
 
 
@@ -77,9 +95,17 @@ def test_tsv_mapping_transforms_standard_tier(tmp_path, fixtures_dir, copy_fixtu
     ])
     assert proc.returncode == 0, f"stderr: {proc.stderr}"
     standard = _standard_forms(work)
-    assert standard == ["Hello, greeting.", "Nawhani kako tayni i toron."], (
-        f"expected mapped sentence in standard tier, got: {standard!r}"
-    )
+    # apply_standard runs per-element, doing substring .replace() on each
+    # standard FORM. Only S_1's text contains the TSV's source tokens; the
+    # other elements (S_2 sentence, W, Ms, W_2) pass through unchanged.
+    assert standard == [
+        "Hello, greeting.",
+        "Nawhani kako tayni i toron.",
+        "Nawhani",
+        "Naw",
+        "hani",
+        "kako",
+    ], f"expected mapped sentence in standard tier, got: {standard!r}"
 
 
 def test_errors_when_no_original_tier(tmp_path, fixtures_dir, copy_fixture):

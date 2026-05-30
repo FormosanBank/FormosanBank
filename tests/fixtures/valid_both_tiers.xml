@@ -1,19 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  Positive fixture for the standardize copy-mode "overwrite existing standard"
-  behavior.
+  Positive fixture for the standardize copy-mode "overwrite existing
+  standard" behavior, exercised at S, W, and M levels.
 
-  Shape: one S with both an original tier ("Halo, hapinangha.") and a
-  deliberately-divergent standard tier ("REPLACE ME"). The two tiers
-  disagree so the overwrite is detectable.
+  Shape: one S with both an original ("Halo, hapinangha.") and a
+  divergent standard ("REPLACE ME S"). The S contains a W with its
+  own divergent standard ("REPLACE ME W") and two Ms each with their
+  own divergent standards ("REPLACE ME M1", "REPLACE ME M2"). The
+  divergence at every level makes the overwrite detectable per level.
 
-  Exercises: standardize.py in copy mode must overwrite the existing standard
-  tier with the original tier's content. Catches a regression where the
-  script silently skips when a standard tier already exists.
+  Exercises: standardize.py in copy mode must overwrite the existing
+  standard tier at every element (S, W, M) with the original tier's
+  content. Catches a regression where the script silently skips an
+  element with a pre-existing standard tier at any level.
 -->
 <TEXT id="TEST_BT" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
   <S id="S_1">
     <FORM kindOf="original">Halo, hapinangha.</FORM>
-    <FORM kindOf="standard">REPLACE ME</FORM>
+    <FORM kindOf="standard">REPLACE ME S</FORM>
+    <W id="S_1_W_1">
+      <FORM kindOf="original">Halo</FORM>
+      <FORM kindOf="standard">REPLACE ME W</FORM>
+      <M id="S_1_W_1_M_1">
+        <FORM kindOf="original">Ha</FORM>
+        <FORM kindOf="standard">REPLACE ME M1</FORM>
+      </M>
+      <M id="S_1_W_1_M_2">
+        <FORM kindOf="original">lo</FORM>
+        <FORM kindOf="standard">REPLACE ME M2</FORM>
+      </M>
+    </W>
   </S>
 </TEXT>
