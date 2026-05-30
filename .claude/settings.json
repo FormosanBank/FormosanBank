@@ -9,6 +9,15 @@
             "command": "python3 \"${CLAUDE_PROJECT_DIR}/.claude/hooks/block-statistics-edits.py\""
           }
         ]
+      },
+      {
+        "matcher": "Edit|Write|MultiEdit|NotebookEdit|Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${CLAUDE_PROJECT_DIR}/.claude/hooks/check-private-leaks.py\""
+          }
+        ]
       }
     ],
     "SessionStart": [
