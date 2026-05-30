@@ -458,14 +458,6 @@ def test_V039_duplicate_id_across_types_negative(tmp_path, fixtures_dir, copy_fi
 # -----------------------------------------------------------------------------
 
 
-@pytest.mark.xfail(
-    strict=True,
-    reason=(
-        "V051: segmented-mode AUDIO with empty @file must produce a finding. "
-        "Current validator's 'diarized' magic check uses the wrong sentinel "
-        "AND the wrong indicator. Tracked for sub-project B."
-    ),
-)
 def test_V051_AUDIO_empty_file_attr_negative(tmp_path, fixtures_dir, copy_fixture):
     """V051: AUDIO with file="" must produce a finding."""
     copy_fixture(fixtures_dir / "v051_AUDIO_empty_file_attr.xml", tmp_path)
@@ -475,14 +467,6 @@ def test_V051_AUDIO_empty_file_attr_negative(tmp_path, fixtures_dir, copy_fixtur
     )
 
 
-@pytest.mark.xfail(
-    strict=True,
-    reason=(
-        "V052: single-file mode requires TEXT/@audio + AUDIO/@start + @end. "
-        "Current validator partially checks this but with the wrong mode "
-        "entry condition. Tracked for sub-project B."
-    ),
-)
 def test_V052_single_file_mode_missing_start_end_negative(tmp_path, fixtures_dir, copy_fixture):
     """V052: AUDIO with no file, in single-file mode, must have start/end."""
     copy_fixture(fixtures_dir / "v052_single_file_missing_start_end.xml", tmp_path)
@@ -493,7 +477,6 @@ def test_V052_single_file_mode_missing_start_end_negative(tmp_path, fixtures_dir
     )
 
 
-@pytest.mark.xfail(strict=True, reason=XFAIL_NOT_YET_CHECKED)
 def test_V053_orphan_AUDIO_negative(tmp_path, fixtures_dir, copy_fixture):
     """V053: AUDIO with no @file and no TEXT/@audio is unmoored."""
     copy_fixture(fixtures_dir / "v053_orphan_AUDIO.xml", tmp_path)
@@ -503,7 +486,6 @@ def test_V053_orphan_AUDIO_negative(tmp_path, fixtures_dir, copy_fixture):
     )
 
 
-@pytest.mark.xfail(strict=True, reason=XFAIL_NOT_YET_CHECKED)
 def test_V054_AUDIO_end_before_start_negative(tmp_path, fixtures_dir, copy_fixture):
     """V054: AUDIO end < start must produce a finding."""
     copy_fixture(fixtures_dir / "v054_AUDIO_end_before_start.xml", tmp_path)
