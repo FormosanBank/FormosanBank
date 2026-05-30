@@ -73,23 +73,41 @@ def run_per_file_rules(
     return out
 
 
+def _add_common_flags(p: argparse.ArgumentParser) -> None:
+    """Add flags shared by all subcommands (verbose, log_dir, no-exit-on-hard).
+
+    These are added to each subparser rather than the parent so that callers
+    can place them either before or after the subcommand name on the CLI.
+    """
+    p.add_argument("--verbose", action="store_true")
+    p.add_argument("--log_dir", type=Path, default=None)
+    p.add_argument(
+        "--no-exit-on-hard",
+        action="store_true",
+        help="Always exit 0, even if HARD findings are produced. "
+             "Backward-compat for callers that depend on the legacy "
+             "always-exit-0 behavior.",
+    )
+
+
 def _build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="FormosanBank XML validator.")
     sub = parser.add_subparsers(dest="search_by", required=True)
 
     by_path = sub.add_parser("by_path")
     by_path.add_argument("--path", required=True, type=Path)
+    _add_common_flags(by_path)
 
     by_corpus = sub.add_parser("by_corpus")
     by_corpus.add_argument("--corpus", required=True)
     by_corpus.add_argument("--corpora_path", required=True, type=Path)
+    _add_common_flags(by_corpus)
 
     by_language = sub.add_parser("by_language")
     by_language.add_argument("--language", required=True)
     by_language.add_argument("--corpora_path", required=True, type=Path)
+    _add_common_flags(by_language)
 
-    parser.add_argument("--verbose", action="store_true")
-    parser.add_argument("--log_dir", type=Path, default=None)
     return parser
 
 
@@ -165,7 +183,10 @@ def main(argv: list[str] | None = None) -> int:
         all_findings.extend(run_per_file_rules(tree, path, all_rules, index=None))
 
     _print_summary(all_findings)
-    return 0  # exit-1-on-HARD lands in Task 9.
+    has_hard = any(f.severity is Severity.HARD for f in all_findings)
+    if has_hard and not args.no_exit_on_hard:
+        return 1
+    return 0
 
 
 if __name__ == "__main__":
