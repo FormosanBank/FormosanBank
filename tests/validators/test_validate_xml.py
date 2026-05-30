@@ -425,7 +425,6 @@ def test_V035_TEXT_xml_lang_must_be_iso_639_3_negative(tmp_path, fixtures_dir, c
     )
 
 
-@pytest.mark.xfail(strict=True, reason=XFAIL_NOT_YET_CHECKED)
 def test_V036_TEXT_dialect_must_be_valid_negative(tmp_path, fixtures_dir, copy_fixture):
     """V036 HARD-part: TEXT/@dialect, if set, must be in dialects.csv for the language."""
     copy_fixture(fixtures_dir / "v036_TEXT_invalid_dialect.xml", tmp_path)
@@ -444,7 +443,6 @@ def test_V038_S_must_have_id_negative(tmp_path, fixtures_dir, copy_fixture):
     )
 
 
-@pytest.mark.xfail(strict=True, reason=XFAIL_NOT_YET_CHECKED)
 def test_V039_duplicate_id_across_types_negative(tmp_path, fixtures_dir, copy_fixture):
     """V039: an S id and a W id cannot collide within the same file."""
     copy_fixture(fixtures_dir / "v039_duplicate_id_across_types.xml", tmp_path)
