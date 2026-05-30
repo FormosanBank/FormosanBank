@@ -295,7 +295,6 @@ def test_V017_empty_FORM_content_negative(tmp_path, fixtures_dir, copy_fixture):
 # -----------------------------------------------------------------------------
 
 
-@pytest.mark.xfail(strict=True, reason=XFAIL_NOT_YET_CHECKED)
 def test_V021_M_single_TRANSL_must_be_original_negative(tmp_path, fixtures_dir, copy_fixture):
     """V021: on M, a lone TRANSL without kindOf="original" must produce a finding."""
     copy_fixture(fixtures_dir / "v021_M_single_TRANSL_not_original.xml", tmp_path)
@@ -305,7 +304,6 @@ def test_V021_M_single_TRANSL_must_be_original_negative(tmp_path, fixtures_dir, 
     )
 
 
-@pytest.mark.xfail(strict=True, reason=XFAIL_NOT_YET_CHECKED)
 def test_V022_M_multiple_originals_must_have_distinct_lang_negative(
     tmp_path, fixtures_dir, copy_fixture
 ):
@@ -317,7 +315,6 @@ def test_V022_M_multiple_originals_must_have_distinct_lang_negative(
     )
 
 
-@pytest.mark.xfail(strict=True, reason=XFAIL_NOT_YET_CHECKED)
 def test_V023_TRANSL_must_have_xml_lang_negative(tmp_path, fixtures_dir, copy_fixture):
     """V023: every TRANSL must have an xml:lang attribute."""
     copy_fixture(fixtures_dir / "v023_TRANSL_missing_xml_lang.xml", tmp_path)
@@ -357,7 +354,6 @@ def test_V024_TRANSL_xml_lang_must_be_iso_639_3_negative(tmp_path, fixtures_dir,
     )
 
 
-@pytest.mark.xfail(strict=True, reason=XFAIL_NOT_YET_CHECKED)
 def test_V026_M_TRANSL_kindOf_must_be_original_or_standard_negative(
     tmp_path, fixtures_dir, copy_fixture
 ):
