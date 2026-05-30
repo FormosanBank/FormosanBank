@@ -247,14 +247,15 @@ def v017_form_must_have_content(
         if text.strip():
             continue
         parent = form.getparent()
-        s_id = parent.get("id") if parent is not None else None
+        parent_id = parent.get("id") if parent is not None else None
+        parent_tag = parent.tag if parent is not None else "FORM"
         kind = form.get("kindOf") or "(no kindOf)"
         findings.append(Finding(
             rule_id="V017",
             severity=Severity.HARD,
             message=f"empty FORM (kindOf={kind!r}) — form is empty",
             path=path,
-            location=f"S={s_id}" if s_id else "FORM",
+            location=f"{parent_tag}={parent_id}" if parent_id else parent_tag,
         ))
     return findings
 

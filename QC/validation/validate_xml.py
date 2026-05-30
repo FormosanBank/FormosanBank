@@ -10,9 +10,23 @@ CLI shape (preserved from prior version):
     validate_xml.py by_corpus   --corpus <name> --corpora_path <path>
     validate_xml.py by_language --language <name> --corpora_path <path>
 
-Phase 1 (this commit): runner scaffolding only. No rules registered;
-all input validates as clean. Subsequent commits add rules and the
-CLI flags for the new behavior (--no-exit-on-hard, --soft-csv).
+Common flags (--verbose, --log_dir, --no-exit-on-hard, --soft-csv) may
+appear either before or after the subcommand on the command line.
+
+Currently registered rules (HARD severity, all in rules/hard.py):
+  v000 — DTD validation (covers V003-V006, V011-V012, V030-V038, V050).
+  v001 — root must be TEXT (DTD does not enforce root tag identity).
+  v016 — FORM/@kindOf must be a known value.
+  v017 — FORM must have non-empty text content.
+  v035 — TEXT/@xml:lang must be a valid ISO 639-3 code.
+  v050 — AUDIO start and end attributes must be present and numeric.
+  v051 — AUDIO start must be less than end.
+
+SOFT and WARN rule modules exist but are empty pending Phases 5–7
+(per .claude/plans/2026-05-30-b-validator-refactor-design.md).
+
+Exit code: 1 if any HARD findings; 0 otherwise. Override with
+`--no-exit-on-hard`.
 """
 import argparse
 import sys
@@ -73,17 +87,22 @@ def run_per_file_rules(
     return out
 
 
-def _add_common_flags(p: argparse.ArgumentParser) -> None:
-    """Add flags shared by all subcommands (verbose, log_dir, no-exit-on-hard).
+def _add_common_flags_to_subparser(p: argparse.ArgumentParser) -> None:
+    """Add the common flags to a subparser using SUPPRESS as the default.
 
-    These are added to each subparser rather than the parent so that callers
-    can place them either before or after the subcommand name on the CLI.
+    The same flags are also registered on the parent parser with real
+    defaults. SUPPRESS here means: if the subparser does not see the
+    flag, leave the attribute alone (so the parent's value sticks).
+    Without SUPPRESS, the subparser would overwrite the parent's value
+    with its default, losing any pre-subcommand --flag value the user
+    supplied.
     """
-    p.add_argument("--verbose", action="store_true")
-    p.add_argument("--log_dir", type=Path, default=None)
+    p.add_argument("--verbose", action="store_true", default=argparse.SUPPRESS)
+    p.add_argument("--log_dir", type=Path, default=argparse.SUPPRESS)
     p.add_argument(
         "--no-exit-on-hard",
         action="store_true",
+        default=argparse.SUPPRESS,
         help="Always exit 0, even if HARD findings are produced. "
              "Backward-compat for callers that depend on the legacy "
              "always-exit-0 behavior.",
@@ -92,7 +111,7 @@ def _add_common_flags(p: argparse.ArgumentParser) -> None:
         "--soft-csv",
         dest="soft_csv",
         type=Path,
-        default=Path("logs") / "validation_soft.csv",
+        default=argparse.SUPPRESS,
         help="Path where SOFT findings are written as CSV. "
              "Overwritten per run; parent dirs created if absent.",
     )
@@ -100,21 +119,46 @@ def _add_common_flags(p: argparse.ArgumentParser) -> None:
 
 def _build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="FormosanBank XML validator.")
+
+    # Common flags also registered on the parent parser so they can appear
+    # BEFORE the subcommand on the CLI (e.g. `validate_xml.py --verbose
+    # by_path ...`). The subparsers register the same flags with
+    # default=argparse.SUPPRESS so the parent's value isn't overwritten
+    # when the subparser parses arguments without seeing the flag.
+    parser.add_argument("--verbose", action="store_true", default=False)
+    parser.add_argument("--log_dir", type=Path, default=None)
+    parser.add_argument(
+        "--no-exit-on-hard",
+        action="store_true",
+        default=False,
+        help="Always exit 0, even if HARD findings are produced. "
+             "Backward-compat for callers that depend on the legacy "
+             "always-exit-0 behavior.",
+    )
+    parser.add_argument(
+        "--soft-csv",
+        dest="soft_csv",
+        type=Path,
+        default=Path("logs") / "validation_soft.csv",
+        help="Path where SOFT findings are written as CSV. "
+             "Overwritten per run; parent dirs created if absent.",
+    )
+
     sub = parser.add_subparsers(dest="search_by", required=True)
 
     by_path = sub.add_parser("by_path")
     by_path.add_argument("--path", required=True, type=Path)
-    _add_common_flags(by_path)
+    _add_common_flags_to_subparser(by_path)
 
     by_corpus = sub.add_parser("by_corpus")
     by_corpus.add_argument("--corpus", required=True)
     by_corpus.add_argument("--corpora_path", required=True, type=Path)
-    _add_common_flags(by_corpus)
+    _add_common_flags_to_subparser(by_corpus)
 
     by_language = sub.add_parser("by_language")
     by_language.add_argument("--language", required=True)
     by_language.add_argument("--corpora_path", required=True, type=Path)
-    _add_common_flags(by_language)
+    _add_common_flags_to_subparser(by_language)
 
     return parser
 
@@ -167,6 +211,16 @@ def _print_summary(findings: list[Finding]) -> None:
 
 def main(argv: list[str] | None = None) -> int:
     args = _build_arg_parser().parse_args(argv)
+
+    if args.verbose or args.log_dir is not None:
+        print(
+            "NOTE: --verbose and --log_dir are accepted by the CLI but not "
+            "yet implemented by the refactored runner; their values are "
+            "ignored. See .claude/plans/2026-05-30-b-validator-refactor-"
+            "design.md for the implementation roadmap.",
+            file=sys.stderr,
+        )
+
     targets = _resolve_target_files(args)
 
     all_findings: list[Finding] = []
