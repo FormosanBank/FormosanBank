@@ -15,7 +15,6 @@ lxml (not raw file bytes — fixture comments and re-serialization make
 raw bytes unreliable).
 """
 import re
-import shutil
 import subprocess
 import sys
 import unicodedata
@@ -446,7 +445,7 @@ def test_C002b_ipa_stress_warning_emitted(tmp_path, fixtures_dir, copy_fixture):
     Stress markers should not normally appear in Formosan corpora;
     visibility helps catch unexpected use. Currently no warning infra.
     """
-    work = copy_fixture(fixtures_dir / "c002b_ipa_stress_in_form.xml", tmp_path)
+    copy_fixture(fixtures_dir / "c002b_ipa_stress_in_form.xml", tmp_path)
     proc = _run_clean(tmp_path)
     assert proc.returncode == 0, f"stderr: {proc.stderr}"
 
@@ -594,7 +593,7 @@ def test_C007_bopomofo_preserved(tmp_path, fixtures_dir, copy_fixture):
 @pytest.mark.xfail(strict=True, reason=XFAIL_NOT_YET_IMPLEMENTED)
 def test_C007_bopomofo_warning_emitted(tmp_path, fixtures_dir, copy_fixture):
     """C007 xfail: ㄇ occurrence should produce a WARN row in CSV."""
-    work = copy_fixture(fixtures_dir / "c007_bopomofo_in_form.xml", tmp_path)
+    copy_fixture(fixtures_dir / "c007_bopomofo_in_form.xml", tmp_path)
     proc = _run_clean(tmp_path)
     assert proc.returncode == 0, f"stderr: {proc.stderr}"
 
