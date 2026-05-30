@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  C006 fixture: U+2303 (UP ARROWHEAD, ⌃) in FORM should become ASCII ^,
+  but in TRANSL must be left alone (clean_trans skips swap_punctuation).
+
+  Shape: one S with both FORM tiers carrying ⌃, plus an S-level TRANSL
+  also carrying ⌃ for the negative-pin assertion. xml:lang="ami".
+  Exercises: positive on FORM (swap_punctuation maps ⌃ → ^); negative
+  pin on TRANSL (clean_trans does not touch it).
+-->
+<TEXT id="TEST_C006" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+  <S id="S_1">
+    <FORM kindOf="original">a⌃b</FORM>
+    <FORM kindOf="standard">a⌃b</FORM>
+    <TRANSL xml:lang="eng">arrowhead ⌃ stays</TRANSL>
+  </S>
+</TEXT>

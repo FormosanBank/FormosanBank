@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  C011 positive pin: hyphens marking morpheme boundaries in
+  S/FORM[@kindOf="original"] must survive cleaning verbatim.
+
+  Shape: one S with original FORM "M-kan =ku n-hapuy." and a benign
+  standard FORM (no hyphens, to keep this test orthogonal to C012).
+  xml:lang="ami".
+  Exercises: today this passes trivially because the cleaner has no
+  segmentation logic. The pin guards against any future feature that
+  strips hyphens — it must target the standard tier only, per Joshua's
+  May 20 instruction.
+-->
+<TEXT id="TEST_C011" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+  <S id="S_1">
+    <FORM kindOf="original">M-kan =ku n-hapuy.</FORM>
+    <FORM kindOf="standard">Halo.</FORM>
+  </S>
+</TEXT>

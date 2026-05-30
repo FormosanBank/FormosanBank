@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  C002 xfail fixture (Branch B): Chinese TRANSL with U+201C and U+201D
+  siblings should both collapse to U+201D under the canonical Chinese
+  full-width right double quote.
+
+  Shape: one S, both FORM tiers (no quotes), plus an S-level TRANSL
+  xml:lang="zho" containing both U+201C and U+201D.
+  Exercises (after B): the cleaner identifies xml:lang as Chinese and
+  collapses both U+201C and U+201D to U+201D. Today: clean_trans is a
+  no-op for quote variants, so both characters survive (XFAIL).
+-->
+<TEXT id="TEST_C002_ZH_DQ" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+  <S id="S_1">
+    <FORM kindOf="original">Halo.</FORM>
+    <FORM kindOf="standard">Halo.</FORM>
+    <TRANSL xml:lang="zho">他说“你好”。</TRANSL>
+  </S>
+</TEXT>

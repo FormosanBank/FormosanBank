@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  C010 positive fixture: NFD-decomposed text in S/FORM, W/FORM, M/FORM.
+
+  Shape: one S with both FORM tiers carrying NFD-decomposed "é" (e +
+  COMBINING ACUTE ACCENT U+0301), plus a W with its own FORM carrying
+  NFD "á" (a + U+0301) and an M with its own FORM carrying NFD "ó" (o +
+  U+0301). xml:lang="ami".
+  Exercises: the cleaner's .//FORM XPath matches all three tiers and
+  applies unicodedata.normalize("NFC", ...) to each. After cleaning all
+  FORM text should be NFC-normalised.
+
+  Note: the decomposed sequences here use literal Unicode in the XML
+  source. lxml round-trips bytes faithfully so the NFD remains until
+  the cleaner reads, normalises, and writes back.
+-->
+<TEXT id="TEST_C010" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+  <S id="S_1">
+    <FORM kindOf="original">cafe&#769;</FORM>
+    <FORM kindOf="standard">cafe&#769;</FORM>
+    <W id="W_1">
+      <FORM>ma&#769;rakat</FORM>
+      <M id="M_1">
+        <FORM>ho&#769;tas</FORM>
+      </M>
+    </W>
+  </S>
+</TEXT>

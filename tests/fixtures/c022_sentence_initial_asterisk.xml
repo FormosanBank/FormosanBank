@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  C022 xfail fixture: sentence-initial * (ungrammaticality marker)
+  should WARN but NOT structurally remove the S.
+
+  Shape: two S elements. The first carries "*Mu ka patas nii." in its
+  original FORM (and an unstarred standard). The second is a normal
+  S kept as a sibling so we can verify the cleaner did not remove the
+  marked S. xml:lang="ami".
+  Exercises (after B): cleaner emits a WARN/CSV row for the * occurrence
+  and preserves both S elements verbatim. Today: cleaner does not warn
+  (warn infrastructure absent) but also does not remove the S (no
+  rule), so the warn assertion XFAILs.
+
+  Contrast with C008's "456otca" sentinel which intentionally DOES
+  trigger structural removal of the S. The "*" is a linguistic
+  annotation worth surfacing upstream, not silencing.
+-->
+<TEXT id="TEST_C022" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+  <S id="S_1">
+    <FORM kindOf="original">*Mu ka patas nii.</FORM>
+    <FORM kindOf="standard">*Mu ka patas nii.</FORM>
+  </S>
+  <S id="S_2">
+    <FORM kindOf="original">Mu ka patas nii.</FORM>
+    <FORM kindOf="standard">Mu ka patas nii.</FORM>
+  </S>
+</TEXT>

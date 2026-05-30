@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  C014 positive pin: angle-bracket-shaped gloss in W/TRANSL survives.
+  On-disk the content is "walk&lt;AV&gt;-FAC"; lxml parses it as
+  "walk<AV>-FAC"; the cleaner must leave this intact.
+
+  Shape: one S with both S-level FORM tiers, one W with a FORM and a
+  W-level TRANSL whose source text is "walk&lt;AV&gt;-FAC". xml:lang="ami".
+  Exercises: W-level TRANSL is not touched by the cleaner at all (the
+  cleaner only iterates sentence.findall('TRANSL'), which is direct
+  children of S only). The pin guards against any future TRANSL-level
+  html.unescape pass or angle-bracket-stripping rule.
+-->
+<TEXT id="TEST_C014" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+  <S id="S_1">
+    <FORM kindOf="original">rumakat.</FORM>
+    <FORM kindOf="standard">rumakat.</FORM>
+    <W id="W_1">
+      <FORM>r&lt;um&gt;akat</FORM>
+      <TRANSL xml:lang="eng">walk&lt;AV&gt;-FAC</TRANSL>
+    </W>
+  </S>
+</TEXT>

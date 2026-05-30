@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  C020 positive pin: underscores in FORM survive cleaning byte-exact.
+
+  Shape: one S, both FORM tiers, each carrying "is_saiv". xml:lang="ami".
+  Exercises: the cleaner must not substitute "_" for "-", a space, or
+  anything else. Underscores can be part of spelling rules in some
+  languages. The pin guards against any future normalize-underscore
+  rewrite.
+-->
+<TEXT id="TEST_C020" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+  <S id="S_1">
+    <FORM kindOf="original">is_saiv.</FORM>
+    <FORM kindOf="standard">is_saiv.</FORM>
+  </S>
+</TEXT>

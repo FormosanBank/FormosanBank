@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  C003 positive fixture: repeated terminal punctuation in FORM and TRANSL.
+
+  Shape: one S with both FORM tiers and an S-level TRANSL, each carrying
+  doubled !!, doubled ??, and a run of dashes.
+  Exercises: trim_repeated_punctuation collapses both repeated kinds.
+  This is exercised on FORM (via clean_text) and TRANSL (via clean_trans),
+  which both call trim_repeated_punctuation.
+-->
+<TEXT id="TEST_C003" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+  <S id="S_1">
+    <FORM kindOf="original">Halo!! Hapinangha?? Pa---tas.</FORM>
+    <FORM kindOf="standard">Halo!! Hapinangha?? Pa---tas.</FORM>
+    <TRANSL xml:lang="eng">Hello!! How are you?? Wri---ting.</TRANSL>
+  </S>
+</TEXT>

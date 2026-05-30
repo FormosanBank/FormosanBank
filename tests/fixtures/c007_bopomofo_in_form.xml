@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  C007 xfail fixture: Bopomofo ㄇ (U+3107) should be PRESERVED with a
+  warning, per user direction (2026-05-29). The current cleaner silently
+  deletes it via remove_junk_chars.
+
+  Shape: one S with both FORM tiers containing ㄇ embedded between
+  Latin letters so we can spot the deletion. xml:lang="ami".
+  Exercises: post-B desired behavior: ㄇ survives unchanged, WARN row
+  emitted. Today: ㄇ is silently deleted (so positive xfail XFAILs
+  because the text does not survive).
+-->
+<TEXT id="TEST_C007" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+  <S id="S_1">
+    <FORM kindOf="original">aㄇb</FORM>
+    <FORM kindOf="standard">aㄇb</FORM>
+  </S>
+</TEXT>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  C002 xfail fixture: curly apostrophe in a non-Chinese (English) TRANSL.
+
+  Shape: one S, both FORM tiers (no apostrophes), plus an S-level
+  TRANSL xml:lang="eng" containing U+2019.
+  Exercises (after B): clean_trans collapses to ASCII U+0027 when xml:lang
+  is non-Chinese. Today: clean_trans never calls swap_punctuation so the
+  TRANSL text is unchanged (XFAIL).
+-->
+<TEXT id="TEST_C002_EN" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+  <S id="S_1">
+    <FORM kindOf="original">Halo.</FORM>
+    <FORM kindOf="standard">Halo.</FORM>
+    <TRANSL xml:lang="eng">It’s here.</TRANSL>
+  </S>
+</TEXT>

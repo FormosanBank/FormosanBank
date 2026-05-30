@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  C012 xfail fixture (Amis): hyphens in S/FORM[@kindOf="standard"] for
+  a language where "-" is NOT a letter in the canonical orthography
+  should be stripped.
+
+  Shape: one S with original "M-kan =ku n-hapuy." and standard
+  "M-kan =ku n-hapuy.". xml:lang="ami" (Amis).
+  Exercises (after B): standard tier becomes "Mkan ku nhapuy." because
+  "-" is not a letter row in Orthographies/Ortho113/Amis.tsv (and "="
+  also disappears as a clitic boundary). Today: no segmentation
+  stripping, so the standard text stays "M-kan =ku n-hapuy." (XFAIL).
+-->
+<TEXT id="TEST_C012_AMI" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+  <S id="S_1">
+    <FORM kindOf="original">M-kan =ku n-hapuy.</FORM>
+    <FORM kindOf="standard">M-kan =ku n-hapuy.</FORM>
+  </S>
+</TEXT>

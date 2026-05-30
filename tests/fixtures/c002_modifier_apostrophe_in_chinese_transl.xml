@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  C002 xfail fixture (Branch B): U+02BC modifier apostrophe in a Chinese
+  TRANSL should be preserved AND trigger a WARN (CSV row).
+
+  Shape: one S with both FORM tiers (no apostrophes), plus an S-level
+  TRANSL xml:lang="zho" containing U+02BC.
+  Exercises (after B): warn + preserve. Today: warn infrastructure does
+  not exist; the character also survives (clean_trans is a no-op), so
+  we assert on the warning indicator which today is absent (XFAIL).
+-->
+<TEXT id="TEST_C002_ZH_MOD" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+  <S id="S_1">
+    <FORM kindOf="original">Halo.</FORM>
+    <FORM kindOf="standard">Halo.</FORM>
+    <TRANSL xml:lang="zho">他ʼ说。</TRANSL>
+  </S>
+</TEXT>

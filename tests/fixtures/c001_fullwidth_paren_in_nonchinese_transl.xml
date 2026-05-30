@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  C001 xfail fixture: full-width parens in a non-Chinese TRANSL should
+  collapse to ASCII once language-aware cleaning lands in sub-project B.
+
+  Shape: one S, both FORM tiers (no full-width content), plus an S-level
+  TRANSL with xml:lang="eng" carrying full-width parens.
+  Exercises (after B): clean_trans branches on xml:lang and collapses
+  full-width on non-Chinese TRANSL. Today: clean_trans skips
+  swap_punctuation entirely so the test expects ASCII parens (XFAIL).
+-->
+<TEXT id="TEST_C001_EN" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+  <S id="S_1">
+    <FORM kindOf="original">Halo.</FORM>
+    <FORM kindOf="standard">Halo.</FORM>
+    <TRANSL xml:lang="eng">Hello （world）.</TRANSL>
+  </S>
+</TEXT>
