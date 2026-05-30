@@ -10,6 +10,11 @@ refactors the script:
   - Detects broken <AUDIO file="..."/> refs by checking file existence
   - Removes broken refs in place; valid refs survive
   - Exits 0 on success, non-zero on failure
+  - Outputs the list of scrubbed audio files so the operator can review
+    what was removed (stdout or stderr; structured or human-readable)
+  - Emits a warning indicator (e.g. "WARNING" / "WARN" in output) whenever
+    any non-working audio is encountered, so silent-success can't mask
+    real data loss
 
 When B's refactor lands and the tests start passing, pytest will flag
 them as XPASSED (because strict=True). At that point the xfail markers
@@ -69,9 +74,9 @@ def _audio_refs(xml_path: Path) -> list[str]:
     """Return the list of file="..." values from all <AUDIO> elements."""
     root = ET.parse(xml_path).getroot()
     return [
-        a.get("file")
+        ref
         for a in root.iter("AUDIO")
-        if a.get("file") is not None
+        if (ref := a.get("file")) is not None
     ]
 
 
@@ -171,6 +176,65 @@ def test_all_broken_audio_refs_are_all_removed(tmp_path):
     for s in sentences:
         assert s.find("AUDIO") is None
         assert s.find("FORM") is not None
+
+
+@pytest.mark.xfail(strict=True, reason=XFAIL_REASON)
+def test_outputs_list_of_scrubbed_files(tmp_path):
+    """The refactored script must report which audio files it removed.
+
+    A run that silently scrubs broken refs without naming them gives the
+    operator no way to review or recover from a mistake. The script must
+    print enough information (on stdout or stderr) for the operator to
+    identify each scrubbed reference — at minimum the basename of each
+    removed audio path. Exact format (one-per-line, JSON, CSV) is
+    intentionally not specified — sub-project B picks it.
+    """
+    xml_dir = _make_xml_dir(tmp_path)
+    broken_a = tmp_path / "missing_a.wav"
+    broken_b = tmp_path / "missing_b.wav"
+    xml = xml_dir / "test.xml"
+    _write_xml_with_audio_refs(xml, [broken_a, broken_b])
+
+    proc = _run_remove(tmp_path)
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    combined = proc.stdout + proc.stderr
+    # Each scrubbed file must be identifiable in the output. Match on
+    # basename rather than full path so the script has freedom in how
+    # it reports (relative path, absolute path, just the filename, etc.).
+    assert broken_a.name in combined, (
+        f"expected scrubbed file {broken_a.name!r} named in output; got:\n"
+        f"stdout={proc.stdout!r}\nstderr={proc.stderr!r}"
+    )
+    assert broken_b.name in combined, (
+        f"expected scrubbed file {broken_b.name!r} named in output; got:\n"
+        f"stdout={proc.stdout!r}\nstderr={proc.stderr!r}"
+    )
+
+
+@pytest.mark.xfail(strict=True, reason=XFAIL_REASON)
+def test_warns_when_non_working_audio_encountered(tmp_path, audio_file_factory):
+    """The refactored script must emit a warning indicator when ANY non-working
+    audio is encountered.
+
+    A successful-looking run (exit 0, no visible alert) that silently removed
+    references is a recipe for unnoticed data loss. The script must signal —
+    via the literal token "WARNING" or "WARN" in its output (case-insensitive)
+    — that something was wrong. Catches a regression where the cleaner becomes
+    too quiet about its work.
+    """
+    xml_dir = _make_xml_dir(tmp_path)
+    good = audio_file_factory(0.1)
+    broken = tmp_path / "broken.wav"  # never created
+    xml = xml_dir / "test.xml"
+    _write_xml_with_audio_refs(xml, [good, broken])
+
+    proc = _run_remove(tmp_path)
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    combined = (proc.stdout + proc.stderr).lower()
+    assert "warn" in combined, (
+        f"expected a WARNING indicator in output when broken audio encountered; "
+        f"got stdout={proc.stdout!r}, stderr={proc.stderr!r}"
+    )
 
 
 @pytest.mark.xfail(strict=True, reason=XFAIL_REASON)
