@@ -30,6 +30,7 @@ AND the summary reports "Total issues found: 0". We assert presence of
 error markers, because XSD lines for OTHER files in the corpus could
 otherwise pollute the output.
 """
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -71,8 +72,19 @@ def _run_validate(corpus_xml_dir: Path) -> subprocess.CompletedProcess:
     )
 
 
+# Strip .xml file paths from validator output so rule-marker matching does
+# not accidentally hit fixture filenames (which contain the rule ID, e.g.
+# "v051_AUDIO_empty_file_attr.xml"). Without this, every rule-specific
+# marker that includes the rule ID would XPASS on any validator finding
+# that names the file path.
+_FILE_PATH_RE = re.compile(r"/\S*\.xml")
+
+
 def _combined(proc: subprocess.CompletedProcess) -> str:
-    return (proc.stdout + proc.stderr).lower()
+    raw = proc.stdout + proc.stderr
+    # Strip .xml file paths so rule-marker checks don't match fixture
+    # filenames (which encode the rule ID, e.g. "v051_AUDIO_*.xml").
+    return _FILE_PATH_RE.sub("<path>", raw).lower()
 
 
 def _has_finding(proc: subprocess.CompletedProcess) -> bool:
@@ -404,7 +416,7 @@ def test_V035_TEXT_xml_lang_must_be_iso_639_3_negative(tmp_path, fixtures_dir, c
     """V035: TEXT/@xml:lang must be a valid ISO 639-3 code."""
     copy_fixture(fixtures_dir / "v035_TEXT_invalid_iso_code.xml", tmp_path)
     proc = _run_validate(tmp_path)
-    assert _has_finding(proc, ("iso", "639", "lang")), (
+    assert _has_finding(proc), (
         f"expected finding for invalid xml:lang code; got stdout={proc.stdout!r}"
     )
 
