@@ -118,8 +118,17 @@ The runner walks files via the existing `by_path` / `by_corpus` / `by_language` 
   ```
   Format: `[<rule_id>] <severity> <relative-path-to-corpora-root> <location>: <message>`.
 - **WARN findings → stderr,** same shape, severity tag `WARN`. Never affects exit code.
-- **SOFT findings → CSV** at `--soft-csv <path>` (default `logs/validation_soft.csv`). Columns:
-  `file,rule_id,language,character,count`. End-of-run summary names the CSV path.
+- **SOFT findings → CSV** at `--soft-csv <path>` (default `logs/validation_soft.csv`). One CSV per run, regardless of how many corpora the `by_*` mode covered — the `file` column disambiguates which row came from which file. Columns:
+
+  | Column      | Content                                                      |
+  |-------------|--------------------------------------------------------------|
+  | `file`      | Absolute path to the XML file the SOFT finding came from. Absolute (not relative-to-corpora-path) so the CSV is independently useful after the run, regardless of which invocation mode produced it. |
+  | `rule_id`   | `"V010"`, `"V014"`, … (uppercase rule ID).                   |
+  | `language`  | The file's resolved `xml:lang` (ISO 639-3 code). Empty if the rule does not key on language. |
+  | `character` | The offending character (or empty if the rule does not key on character — e.g., a count of S-elements missing FORM). |
+  | `count`     | Number of occurrences of `(rule, file, language, character)` in this file. |
+
+  End-of-run summary on stderr names the CSV path.
 - **End-of-run summary → stderr:**
   ```
   Total findings: 34 HARD, 1042 SOFT, 6 WARN. SOFT details in logs/validation_soft.csv.
@@ -224,10 +233,3 @@ Suggested order for the implementation plan:
 
 Each step lands as its own PR (or series of small PRs) so review stays tractable.
 
-## Open questions for implementation
-
-None blocking — the architecture above is approvable. Implementation-time questions to surface as they arise:
-
-- Whether SOFT CSV should be per-corpus (one CSV per `--corpora_path`) or one CSV for the whole run when multiple corpora are walked. Current default: one CSV per run, regardless of how many corpora the path covers. Revisit if the CSV gets unwieldy.
-- Whether the runner should support `--fail-fast` (stop after first HARD). YAGNI for now; add if needed.
-- WARN severity rules: the design doc lists most rules as HARD or SOFT; the WARN category exists as a future placeholder. Don't introduce WARN rules speculatively.
