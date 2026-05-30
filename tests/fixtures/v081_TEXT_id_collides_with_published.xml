@@ -4,14 +4,25 @@
   all published corpora under FormosanBank/Corpora/).
 
   Shape: TEXT id deliberately reuses a real id from the published
-  YeddaPalemeqBlog corpus ("Yedda_Ljeljeng_lja_Palemek's_Blog").
+  ILRDF Paiwan dictionary corpus ("ILRDF_Dicts_Paiwan").
   When the validator walks FormosanBank/Corpora/ for cross-corpus id
   collision checking, it should find this duplicate.
+
+  Choice of id: "ILRDF_Dicts_Paiwan" is from a stable published reference
+  (Indigenous Languages Online Dictionary, Paiwan), so this fixture is
+  unlikely to silently stop colliding because of a downstream rekey.
+  Crucially, the id contains no apostrophes or other quote characters,
+  so this fixture exercises ONLY V081 and does not entangle with V041
+  (quote-in-id) once B implements both.
+
+  xml:lang matches the real file's xml:lang="pwn" so a V081 implementation
+  that surfaces language alongside the collision will not see a
+  mismatch and produce confusing diagnostics.
 
   Exercises: validate_xml.py should report a cross-corpus id collision.
   Currently NOT enforced; xfail.
 -->
-<TEXT id="Yedda_Ljeljeng_lja_Palemek's_Blog" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+<TEXT id="ILRDF_Dicts_Paiwan" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="pwn">
   <S id="S_1">
     <FORM kindOf="original">Halo.</FORM>
   </S>

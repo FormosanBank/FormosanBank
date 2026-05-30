@@ -1,5 +1,6 @@
 """Shared fixtures for the FormosanBank test suite."""
 import shutil
+import sys
 import wave
 from pathlib import Path
 from typing import Callable
@@ -9,9 +10,20 @@ import pytest
 REPO_ROOT = Path(__file__).resolve().parents[1]
 FIXTURES = REPO_ROOT / "tests" / "fixtures"
 
+# Make tests/_helpers.py importable from every test file under tests/.
+# Pytest's default "prepend" import mode adds each test FILE's directory
+# to sys.path (so tests/cleaners/ for a test in that bucket), not tests/
+# itself. Without this line, `from _helpers import ...` in a bucket file
+# raises ModuleNotFoundError. Inserting tests/ directly fixes that
+# without adding __init__.py files (which would change pytest's
+# discovery behavior).
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
 
 @pytest.fixture
 def repo_root() -> Path:
+    """Path to the FormosanBank repo root. Available for future tests that
+    need to address files outside tests/."""
     return REPO_ROOT
 
 
@@ -22,12 +34,20 @@ def fixtures_dir() -> Path:
 
 @pytest.fixture
 def copy_fixture():
-    """Return a helper that copies a fixture into tmp_path/XML/ for in-place mutation.
+    """Return a helper that copies a fixture into dest_dir/XML/ for in-place mutation.
 
-    The QC scripts treat --corpora_path as a collection root and enumerate its
-    immediate children as corpus directories. Placing the file in dest_dir/XML/
-    means the script discovers it via the standard directory walk. The caller
-    should pass dest_dir (the collection root) to --corpora_path.
+    Signature: `copy_fixture(src: Path, dest_dir: Path) -> Path`.
+
+    - `src`: the source fixture under tests/fixtures/.
+    - `dest_dir`: the COLLECTION root (typically `tmp_path`). The file is
+      placed at `dest_dir/XML/<basename>`, and `dest_dir/XML/` is created
+      if absent. Callers pass `dest_dir` (not `dest_dir/XML/`) to the QC
+      script as `--corpora_path`: the script treats it as a collection
+      root and enumerates its immediate children as corpus directories,
+      then walks each one for files containing `XML` in the path.
+
+    Returns the path to the placed copy so the caller can assert on its
+    post-run state without re-reading the source-of-truth fixture.
     """
     def _copy(src: Path, dest_dir: Path) -> Path:
         target_dir = dest_dir / "XML"

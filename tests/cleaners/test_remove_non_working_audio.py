@@ -198,15 +198,35 @@ def test_outputs_list_of_scrubbed_files(tmp_path):
     proc = _run_remove(tmp_path)
     assert proc.returncode == 0, f"stderr: {proc.stderr}"
     combined = proc.stdout + proc.stderr
-    # Each scrubbed file must be identifiable in the output. Match on
-    # basename rather than full path so the script has freedom in how
-    # it reports (relative path, absolute path, just the filename, etc.).
-    assert broken_a.name in combined, (
-        f"expected scrubbed file {broken_a.name!r} named in output; got:\n"
+    # Each scrubbed file must be identifiable SOMEWHERE the operator
+    # can find — either in the script's stdout/stderr OR in a sidecar
+    # log/CSV the script wrote under corpora_path. Match on basename
+    # rather than full path so the script has freedom in how it reports
+    # (relative path, absolute path, just the filename, summary line
+    # + sidecar file, etc.). A summary-to-stdout + per-file-to-sidecar
+    # design is the most likely B implementation for large scrub lists.
+    def _named_anywhere(name: str) -> bool:
+        if name in combined:
+            return True
+        for path in tmp_path.rglob("*"):
+            if path.suffix.lower() not in (".log", ".csv", ".txt"):
+                continue
+            try:
+                content = path.read_text(encoding="utf-8", errors="ignore")
+            except OSError:
+                continue
+            if name in content:
+                return True
+        return False
+
+    assert _named_anywhere(broken_a.name), (
+        f"expected scrubbed file {broken_a.name!r} named in output or any "
+        f"sidecar log/csv/txt under tmp_path; got:\n"
         f"stdout={proc.stdout!r}\nstderr={proc.stderr!r}"
     )
-    assert broken_b.name in combined, (
-        f"expected scrubbed file {broken_b.name!r} named in output; got:\n"
+    assert _named_anywhere(broken_b.name), (
+        f"expected scrubbed file {broken_b.name!r} named in output or any "
+        f"sidecar log/csv/txt under tmp_path; got:\n"
         f"stdout={proc.stdout!r}\nstderr={proc.stderr!r}"
     )
 

@@ -19,7 +19,7 @@ Coverage is reported automatically (configured in [pyproject.toml](../pyproject.
 .venv/bin/pytest --cov-report=term-missing
 ```
 
-Current state (2026-05-30): **65 passed, 42 xfailed**.
+The suite mixes plain-passing tests with `xfail(strict=True)` tests targeting sub-project B's deferred work. Run pytest for the current pass/xfail breakdown.
 
 ## Layout
 
@@ -28,7 +28,7 @@ Tests are grouped **by concern** (risk class), not by source-tree path:
 - `tests/validators/` — hard pass/fail checks (DTD conformance, attribute correctness, structural invariants).
 - `tests/cleaners/` — in-place XML mutators (`clean_xml`, `remove_non_working_audio`).
 - `tests/utilities/` — helpers and one-offs (`standardize`, `find_duplicate_sentences`).
-- `tests/soft_checks/`, `tests/metrics/` — placeholder buckets; nothing here yet (will fill in as the relevant scripts get tests).
+- `tests/soft_checks/`, `tests/metrics/` — future buckets; will be created when the relevant scripts get tests.
 
 A source file's test lives in the concern bucket matching its risk class, **not** its source directory. Example: `QC/cleaning/remove_non_working_audio.py` is tested at [`tests/cleaners/test_remove_non_working_audio.py`](cleaners/test_remove_non_working_audio.py) (same bucket); `QC/utilities/standardize.py` is tested at [`tests/utilities/test_standardize.py`](utilities/test_standardize.py).
 
@@ -66,7 +66,13 @@ A large number of tests target behaviors that **sub-project B will implement** �
 
 The `strict=True` discipline is non-negotiable: it's what makes the test suite useful as a forward-looking spec rather than a permanently-amber dashboard.
 
-**Path-strip pattern.** When a test asserts that the script's output contains a rule-specific marker (e.g., `"v051:"` or `"c007"`), the assertion must guard against false positives from fixture filenames that ALSO contain the rule ID. Both [`tests/validators/test_validate_xml.py`](validators/test_validate_xml.py) and [`tests/cleaners/test_clean_xml_extensions.py`](cleaners/test_clean_xml_extensions.py) include a regex that strips `.xml` file paths from the combined stdout+stderr before marker matching. Mirror that helper when adding similar tests.
+**Path-strip pattern.** When a test asserts that the script's output contains a rule-specific marker (e.g., `"v051:"` or `"c007"`), the assertion must guard against false positives from fixture filenames that ALSO contain the rule ID. The shared `combined_output()` and `has_marker()` helpers in [`tests/_helpers.py`](_helpers.py) strip `.xml` file paths (and optionally the `corpora_path`) from the combined stdout+stderr before marker matching. Use those helpers when adding similar tests; do not re-roll the regex.
+
+## CI workflow scope
+
+The pytest workflow ([`.github/workflows/tests.yaml`](../.github/workflows/tests.yaml)) triggers on pushes/PRs that touch `QC/**`, `tests/**`, `Corpora/**`, `requirements.txt`, `pyproject.toml`, or the workflow file itself. The `Corpora/**` trigger is intentional: two tests transitively read `Corpora/` — [`test_find_duplicate_sentences.py`](utilities/test_find_duplicate_sentences.py) walks Glosbe XML, and the V081 cross-corpus id collision check (sub-project B) will walk every published corpus once implemented. A change to `Corpora/` can therefore flip those tests, so we run them.
+
+The asymmetry: `Corpora/**` changes trigger **validator** runs (because validators are pure-read and a corpus change could legitimately move a real corpus into or out of compliance), but we do NOT auto-run **cleaners** (`clean_xml.py`, `remove_non_working_audio.py`) on Corpora changes. Cleaners mutate files in place; running them in CI on PR base data would either be a no-op (if the diff is unrelated) or destructive (if it modifies real files). Cleaners are tested via fixtures only.
 
 ## Adding a test
 

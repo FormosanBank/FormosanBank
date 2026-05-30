@@ -30,12 +30,13 @@ AND the summary reports "Total issues found: 0". We assert presence of
 error markers, because XSD lines for OTHER files in the corpus could
 otherwise pollute the output.
 """
-import re
 import subprocess
 import sys
 from pathlib import Path
 
 import pytest
+
+from _helpers import combined_output, has_marker
 
 
 VALIDATE_XML = Path(__file__).resolve().parents[2] / "QC" / "validation" / "validate_xml.py"
@@ -72,21 +73,6 @@ def _run_validate(corpus_xml_dir: Path) -> subprocess.CompletedProcess:
     )
 
 
-# Strip .xml file paths from validator output so rule-marker matching does
-# not accidentally hit fixture filenames (which contain the rule ID, e.g.
-# "v051_AUDIO_empty_file_attr.xml"). Without this, every rule-specific
-# marker that includes the rule ID would XPASS on any validator finding
-# that names the file path.
-_FILE_PATH_RE = re.compile(r"/\S*\.xml")
-
-
-def _combined(proc: subprocess.CompletedProcess) -> str:
-    raw = proc.stdout + proc.stderr
-    # Strip .xml file paths so rule-marker checks don't match fixture
-    # filenames (which encode the rule ID, e.g. "v051_AUDIO_*.xml").
-    return _FILE_PATH_RE.sub("<path>", raw).lower()
-
-
 def _has_finding(proc: subprocess.CompletedProcess) -> bool:
     """Did the validator's output mention ANY generic finding marker?
 
@@ -95,8 +81,7 @@ def _has_finding(proc: subprocess.CompletedProcess) -> bool:
     which error class the validator chooses — just that SOME finding
     appears.
     """
-    combined = _combined(proc)
-    return any(m.lower() in combined for m in NEGATIVE_MARKERS)
+    return has_marker(proc, NEGATIVE_MARKERS)
 
 
 def _has_rule_finding(
@@ -115,13 +100,12 @@ def _has_rule_finding(
     emit one of these markers, flipping the test to XPASS so the xfail
     can be removed.
     """
-    combined = _combined(proc)
-    return any(m.lower() in combined for m in rule_markers)
+    return has_marker(proc, rule_markers)
 
 
 def _is_clean(proc: subprocess.CompletedProcess) -> bool:
     """Did the validator report a clean run (no issues)?"""
-    combined = _combined(proc)
+    combined = combined_output(proc)
     return ("total issues found: 0" in combined) and ("no issues found" in combined)
 
 
@@ -205,7 +189,7 @@ def test_V010_S_without_FORM_is_counted_not_fatal(tmp_path, fixtures_dir, copy_f
     assert _is_clean(proc), (
         f"V010 should not produce HARD findings; got stdout={proc.stdout!r}"
     )
-    combined = _combined(proc)
+    combined = combined_output(proc)
     # Some signal that the count was produced. The exact format is up
     # to B (CSV per V014 spec); we just look for any of a few sensible
     # indicators.
@@ -260,7 +244,7 @@ def test_V014_missing_standard_FORM_is_counted(tmp_path, fixtures_dir, copy_fixt
     """
     copy_fixture(fixtures_dir / "v014_missing_standard_FORM.xml", tmp_path)
     proc = _run_validate(tmp_path)
-    combined = _combined(proc)
+    combined = combined_output(proc)
     # The XML is structurally valid; HARD pipeline must not flag it.
     assert _is_clean(proc), (
         f"V014 missing-standard should not produce HARD findings; "
@@ -277,7 +261,7 @@ def test_V015_duplicate_original_FORM_negative(tmp_path, fixtures_dir, copy_fixt
     """V015: two FORM kindOf="original" siblings under the same S is forbidden."""
     copy_fixture(fixtures_dir / "v015_duplicate_original_FORM.xml", tmp_path)
     proc = _run_validate(tmp_path)
-    assert _has_rule_finding(proc, ("v015", "duplicate form", "duplicate kindof")), (
+    assert _has_rule_finding(proc, ("v015", "duplicate kindof")), (
         f"expected finding about duplicate FORM kindOf; got stdout={proc.stdout!r}"
     )
 

@@ -82,6 +82,28 @@ def test_whitespace_is_normalized(tmp_path, fixtures_dir, copy_fixture):
         assert not text.endswith(" "), f"expected trailing whitespace stripped: {text!r}"
 
 
+def test_xml_declaration_survives_clean_pass(tmp_path, fixtures_dir, copy_fixture):
+    """The XML declaration must survive a clean pass that mutates the file.
+
+    Regression pin for the bug where `tree.write()` defaulted to
+    `xml_declaration=False`, silently stripping `<?xml version="1.0"
+    encoding="utf-8"?>` from any file the cleaner touched. The fix at
+    QC/cleaning/clean_xml.py passed `xml_declaration=True` explicitly;
+    this test pins the fix so a future change can't regress it. Uses a
+    fixture that triggers `modified=True` so the cleaner actually
+    rewrites the file (an already-clean file is untouched and would
+    pass for the wrong reason).
+    """
+    work = copy_fixture(fixtures_dir / "xml_with_whitespace_problems.xml", tmp_path)
+    proc = _run_clean(tmp_path)
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    first_line = work.read_text(encoding="utf-8").splitlines()[0]
+    assert first_line.startswith("<?xml"), (
+        f"expected cleaned file to start with an XML declaration; "
+        f"got first line: {first_line!r}"
+    )
+
+
 def test_cleaner_is_idempotent(tmp_path, fixtures_dir, copy_fixture):
     """Critical for in-place mutators: running twice == running once."""
     once_dir = tmp_path / "once"

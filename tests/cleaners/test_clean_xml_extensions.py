@@ -14,7 +14,6 @@ via `--corpora_path tmp_path`, assert on parsed FORM/TRANSL text via
 lxml (not raw file bytes — fixture comments and re-serialization make
 raw bytes unreliable).
 """
-import re
 import subprocess
 import sys
 import unicodedata
@@ -22,6 +21,9 @@ from pathlib import Path
 
 import pytest
 from lxml import etree
+
+from _helpers import csv_warning_exists as _csv_warning_exists
+from _helpers import has_marker as _has_warning_signal
 
 
 CLEAN_XML = Path(__file__).resolve().parents[2] / "QC" / "cleaning" / "clean_xml.py"
@@ -33,16 +35,6 @@ XFAIL_NOT_YET_IMPLEMENTED = (
     "behavior is deferred to sub-project B (language-aware cleaning, "
     "CSV warnings, --hard-remove-segmentation, transformation counter)."
 )
-
-# Strip .xml file paths AND bare basenames from cleaner output so any
-# rule-marker matching does not accidentally hit fixture filenames
-# (which contain the rule ID, e.g. "c007_bopomofo_in_form.xml"). The
-# cleaner prints both full paths ("File cleaned: /tmp/.../c007_*.xml")
-# and basenames ("Processing file: c007_*.xml"), so this regex matches
-# any non-whitespace token that ends in .xml, with or without a leading
-# slash. Mirrors but broadens the strategy in
-# tests/validators/test_validate_xml.py.
-_FILE_PATH_RE = re.compile(r"\S*\.xml")
 
 
 # -----------------------------------------------------------------------------
@@ -56,68 +48,6 @@ def _run_clean(corpora_path: Path) -> subprocess.CompletedProcess:
         capture_output=True,
         text=True,
     )
-
-
-def _combined_output(
-    proc: subprocess.CompletedProcess, corpora_path: Path | None = None
-) -> str:
-    """Return stdout+stderr with path-like noise stripped.
-
-    Two strip passes:
-    1. The corpora_path itself, because pytest's tmp_path includes the
-       test function name, which includes the rule ID (e.g. "C002") —
-       if we left that in, every warning-marker check for "c002" would
-       trivially XPASS by matching the path.
-    2. Any token ending in .xml (fixture basenames also contain the
-       rule ID).
-    """
-    raw = proc.stdout + proc.stderr
-    if corpora_path is not None:
-        raw = raw.replace(str(corpora_path), "<corpora_path>")
-    return _FILE_PATH_RE.sub("<path>", raw).lower()
-
-
-def _has_warning_signal(
-    proc: subprocess.CompletedProcess, markers: tuple, corpora_path: Path | None = None
-) -> bool:
-    """Did the cleaner emit a rule-specific warning indicator?
-
-    Used for xfail tests targeting C002/C002b/C007/C012/C022 warning
-    requirements. The current cleaner has no warning infrastructure
-    (no CSV output, no rule IDs in stderr), so for any of these markers
-    the function correctly returns False. When B implements warning
-    infra, B should emit at least one of these markers, flipping the
-    xfail to XPASS so the marker can be removed.
-
-    Pass corpora_path so we can strip it from the output before
-    searching — otherwise pytest's tmp_path (which contains the test
-    function name and thus the rule ID) would cause every marker check
-    to match the path and incorrectly XPASS.
-    """
-    combined = _combined_output(proc, corpora_path)
-    if any(m.lower() in combined for m in markers):
-        return True
-    return False
-
-
-def _csv_warning_exists(corpora_path: Path, rule_id: str | None = None) -> bool:
-    """Did the cleaner create a CSV warning file anywhere under corpora_path?
-
-    Looks for any .csv file whose contents mention the rule_id (case-
-    insensitive) or generic warning headers. Returns False today
-    because warn infrastructure does not exist. Will return True after
-    B lands the CSV writer.
-    """
-    for path in corpora_path.rglob("*.csv"):
-        try:
-            content = path.read_text(encoding="utf-8", errors="ignore").lower()
-        except OSError:
-            continue
-        if rule_id and rule_id.lower() in content:
-            return True
-        if "warning" in content or "rule" in content:
-            return True
-    return False
 
 
 def _form_texts_with_kindof(xml_path: Path, parent_tag: str, kindOf: str) -> list:
@@ -181,6 +111,39 @@ IDEMPOTENT_FIXTURES = [
     "c020_underscore_in_form.xml",
     "c024_parens_in_transl_preserved.xml",
 ]
+
+
+# Fixtures whose target behavior is xfailed and therefore not idempotent
+# under the current cleaner. When B implements a rule, remove its
+# fixture from XFAIL_FIXTURES — the import-time drift assertion below
+# will then require the fixture to be added to IDEMPOTENT_FIXTURES.
+XFAIL_FIXTURES = {
+    "c001_fullwidth_paren_in_nonchinese_transl.xml",
+    "c002_apostrophe_in_nonchinese_transl.xml",
+    "c002_ascii_apostrophe_in_chinese_transl.xml",
+    "c002_double_quotes_in_chinese_transl.xml",
+    "c002_modifier_apostrophe_in_chinese_transl.xml",
+    "c007_bopomofo_in_form.xml",
+    "c012_hyphens_in_standard_amis.xml",
+    "c012_hyphens_in_standard_bunun.xml",
+    "c012_hyphens_in_standard_thao.xml",
+    "c022_sentence_initial_asterisk.xml",
+}
+
+
+# Drift guard: enforce that IDEMPOTENT_FIXTURES + XFAIL_FIXTURES exactly
+# cover every c-prefix fixture on disk. Adding a new c### fixture without
+# updating one of these sets fails at import time, before any test runs.
+_FIXTURES_DIR = Path(__file__).resolve().parents[1] / "fixtures"
+_ALL_C_FIXTURES = {p.name for p in _FIXTURES_DIR.glob("c*_*.xml")}
+_EXPECTED_IDEMPOTENT = _ALL_C_FIXTURES - XFAIL_FIXTURES
+_UNEXPECTED = set(IDEMPOTENT_FIXTURES) - _EXPECTED_IDEMPOTENT
+_MISSING = _EXPECTED_IDEMPOTENT - set(IDEMPOTENT_FIXTURES)
+assert not _UNEXPECTED and not _MISSING, (
+    "IDEMPOTENT_FIXTURES / XFAIL_FIXTURES drifted from c*_*.xml fixtures on disk.\n"
+    f"  In IDEMPOTENT_FIXTURES but not on disk (or are xfail): {sorted(_UNEXPECTED)}\n"
+    f"  On disk and not xfail, but missing from IDEMPOTENT_FIXTURES: {sorted(_MISSING)}"
+)
 
 
 # =============================================================================
