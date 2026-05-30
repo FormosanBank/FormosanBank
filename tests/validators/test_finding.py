@@ -69,3 +69,68 @@ def test_finding_equality():
     a = Finding(rule_id="V001", severity=Severity.HARD, message="m", path=Path("/x.xml"))
     b = Finding(rule_id="V001", severity=Severity.HARD, message="m", path=Path("/x.xml"))
     assert a == b
+
+
+import csv
+
+
+def test_write_soft_csv_empty(tmp_path):
+    from QC.validation._finding import write_soft_csv
+
+    out = tmp_path / "soft.csv"
+    write_soft_csv(out, [])
+    with open(out, newline="") as f:
+        rows = list(csv.reader(f))
+    assert rows == [["file", "rule_id", "language", "character", "count"]]
+
+
+def test_write_soft_csv_one_finding(tmp_path):
+    from QC.validation._finding import write_soft_csv
+
+    out = tmp_path / "soft.csv"
+    findings = [
+        Finding(
+            rule_id="V014",
+            severity=Severity.SOFT,
+            message="missing standard tier",
+            path=Path("/abs/path/to/ami_chapter01.xml"),
+            count=3,
+            language="ami",
+            character="",
+        ),
+    ]
+    write_soft_csv(out, findings)
+    with open(out, newline="") as f:
+        rows = list(csv.reader(f))
+    assert rows == [
+        ["file", "rule_id", "language", "character", "count"],
+        ["/abs/path/to/ami_chapter01.xml", "V014", "ami", "", "3"],
+    ]
+
+
+def test_write_soft_csv_skips_non_soft(tmp_path):
+    """write_soft_csv is the SOFT writer; HARD/WARN findings are not
+    its concern even if accidentally passed in."""
+    from QC.validation._finding import write_soft_csv
+
+    out = tmp_path / "soft.csv"
+    findings = [
+        Finding(rule_id="V001", severity=Severity.HARD, message="m", path=Path("/x.xml")),
+        Finding(rule_id="V014", severity=Severity.SOFT, message="m",
+                path=Path("/y.xml"), count=2, language="ami", character=""),
+        Finding(rule_id="V088", severity=Severity.WARN, message="m", path=Path("/z.xml")),
+    ]
+    write_soft_csv(out, findings)
+    with open(out, newline="") as f:
+        rows = list(csv.reader(f))
+    assert len(rows) == 2
+    assert rows[1][1] == "V014"
+
+
+def test_write_soft_csv_creates_parent_dir(tmp_path):
+    """If the requested output path's parent does not exist, it is created."""
+    from QC.validation._finding import write_soft_csv
+
+    out = tmp_path / "logs" / "subdir" / "soft.csv"
+    write_soft_csv(out, [])
+    assert out.exists()
