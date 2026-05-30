@@ -515,7 +515,6 @@ def test_V056_AUDIO_under_TEXT_positive(tmp_path, fixtures_dir, copy_fixture):
 # -----------------------------------------------------------------------------
 
 
-@pytest.mark.xfail(strict=True, reason=XFAIL_NOT_YET_CHECKED)
 def test_V062_infix_M_without_angle_gloss_negative(tmp_path, fixtures_dir, copy_fixture):
     """V062 (negative): infix-shaped M FORM without an angle-bracket gloss on W's TRANSL."""
     copy_fixture(fixtures_dir / "v062_infix_M_without_angle_gloss.xml", tmp_path)
