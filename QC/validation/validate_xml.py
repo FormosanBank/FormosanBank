@@ -1,334 +1,166 @@
-from lxml import etree
-import os
-import argparse
-import logging
-import xml.etree.ElementTree as ET
-import csv
+"""validate_xml.py — modular FormosanBank XML validator.
 
-XML_NAMESPACE_XSD = """\
-<?xml version="1.0"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://www.w3.org/XML/1998/namespace"
-           xmlns:xml="http://www.w3.org/XML/1998/namespace"
-           elementFormDefault="qualified"
-           attributeFormDefault="unqualified">
-  <xs:attribute name="lang" type="xs:language"/>
-</xs:schema>
+Walks a target (by path, by corpus, or by language), parses each .xml
+file once with lxml, applies the rules registered under
+QC/validation/rules/{hard,soft,warn}.py, and emits HARD/WARN findings
+to stderr and SOFT findings to a per-run CSV.
+
+CLI shape (preserved from prior version):
+    validate_xml.py by_path     --path <file-or-dir>
+    validate_xml.py by_corpus   --corpus <name> --corpora_path <path>
+    validate_xml.py by_language --language <name> --corpora_path <path>
+
+Phase 1 (this commit): runner scaffolding only. No rules registered;
+all input validates as clean. Subsequent commits add rules and the
+CLI flags for the new behavior (--no-exit-on-hard, --soft-csv).
 """
+import argparse
+import sys
+from collections.abc import Callable, Iterable
+from pathlib import Path
+
+# When invoked as `python QC/validation/validate_xml.py ...`, the repo root
+# is not on sys.path. Add it so the QC.* package imports resolve correctly
+# whether the file is run as a script or imported as a module.
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+
+from lxml import etree
+
+from QC.validation._corpus_index import CorpusIndex
+from QC.validation._finding import Finding, Severity
+from QC.validation.rules import hard as hard_rules
+from QC.validation.rules import soft as soft_rules
+from QC.validation.rules import warn as warn_rules
 
 
-'''
-The validate XML script: 
-- Validates the XML file against the xml template DTD file
-- Checks if the xml:lang attribute uses an ISO 639-3 code
-- Prettifies the XML file by replacing double spaces with tabs
-- Parses the XML file and logs any errors that occur
-'''
-
-# Generate the name for the log file based on the search method
-def get_log_file_name(args):
-    if args.search_by == 'by_language':
-        log_file_name = f"validation_log_by_language_{args.language.replace(' ', '_')}.txt"
-    elif args.search_by == 'by_corpus':
-        log_file_name = f"validation_log_by_corpus_{args.corpus.replace(' ', '_')}.txt"
-    elif args.search_by == 'by_path':
-        base_name = os.path.basename(args.path.strip('/'))
-        if base_name:
-            log_file_name = f"validation_log_by_path_{base_name.replace(' ', '_')}.txt"
-        else:
-            log_file_name = "validation_log_by_path.txt"
-    else:
-        log_file_name = "validation_log.txt"
-    return log_file_name
+Rule = Callable[[etree._ElementTree, Path, CorpusIndex | None], list[Finding]]
 
 
-def load_iso_639_3_codes(path):
-    """Load ISO 639-3 identifiers without requiring pandas."""
-    with open(path, newline='', encoding='utf-8') as iso_file:
-        reader = csv.DictReader(iso_file, delimiter='\t')
-        return {row['Id'] for row in reader if row.get('Id')}
+def discover_xml_files(root: Path) -> list[Path]:
+    """Return every .xml file under root, recursively.
+
+    Used for by_path, by_corpus, by_language modes uniformly. The
+    caller assembles the right root (a single dir, a single file, or
+    a filtered list).
+    """
+    if root.is_file():
+        return [root] if root.suffix == ".xml" else []
+    return sorted(p for p in root.rglob("*.xml"))
 
 
-class XmlNamespaceResolver(etree.Resolver):
-    """Resolve the W3C xml namespace import locally for consistent XSD loading."""
+def parse_tree(path: Path) -> etree._ElementTree:
+    """Parse a single XML file into an lxml ElementTree.
 
-    def resolve(self, url, pubid, context):
-        if url == "http://www.w3.org/2001/xml.xsd":
-            return self.resolve_string(XML_NAMESPACE_XSD, context)
-        return None
-
-# Get the language being analyzed from the path
-def get_lang(path, langs):
-    for lang in langs:
-        if lang in path:
-            return lang
-
-# Compare the XML to the XSD
-def validate_xml_against_xsd(xml_file, schema):
-    try:
-        # Parse the XML file
-        tree = etree.parse(xml_file)
-
-        # Validate the XML against the XSD
-        is_valid = schema.validate(tree)
-
-        if is_valid:
-            message = f"{xml_file}: XML is valid against the XSD."
-            logging.info(message)
-            return True
-        else:
-            error_message = f"{xml_file}: Validation errors:\n{schema.error_log}"
-            logging.error(error_message)
-            return False
-
-    except Exception as e:
-        error_message = f"An error occurred while validating {xml_file}: {e}"
-        logging.error(error_message)
-        return False
+    No special error handling here: a parse failure raises and the
+    runner reports it. Phase 4's DTD validation runs against the same
+    parse output.
+    """
+    return etree.parse(str(path))
 
 
-# def validated_form(xml_file):
-#     tree = ET.parse(xml_file)
-#     root = tree.getroot()
-    
-#     # Iterate over all <S> elements
-#     for s in root.findall('.//S'):
-#         forms = s.findall('.//FORM')
-#         if 'kindOf' not in forms[0].attrib or forms[0].attrib.get('kindOf') != 'original':
-#             error_message = f"{xml_file}: Either kindOf attribute isn't set for first FORM element in sentence with id {s.attrib['id']} or it's not set to 'original'"
-#             logging.error(error_message)
-#             return False
-#         if len(forms) > 1 and forms[1].attrib.get('kindOf') != 'standard':
-#             error_message = f"{xml_file}: A second FORM element is used in the sentence with id {s.attrib['id']} but its kindOf attribute isn't set to 'standard'"
-#             logging.error(error_message)
-#             return False
-
-#         for w in s.findall('.//W'):
-#             forms = w.findall('.//FORM')
-#             if 'kindOf' not in forms[0].attrib or forms[0].attrib.get('kindOf') != 'original':
-#                 error_message = f"{xml_file}: Either kindOf attribute isn't set for first FORM element in word with id {w.attrib['id']} or it's not set to 'original'"
-#                 logging.error(error_message)
-#                 return False
-#             if len(forms) > 1 and forms[1].attrib.get('kindOf') != 'standard':
-#                 error_message = f"{xml_file}: A second FORM element is used in the word with id {w.attrib['id']} but its kindOf attribute isn't set to 'standard'"
-#                 logging.error(error_message)
-#                 return False
-
-#             for m in root.findall('.//M'):
-#                 forms = w.findall('.//FORM')
-#                 if 'kindOf' not in forms[0].attrib or forms[0].attrib.get('kindOf') != 'original':
-#                     error_message = f"{xml_file}: Either kindOf attribute isn't set for first FORM element in morpheme with id {m.attrib['id']} or it's not set to 'original'"
-#                     logging.error(error_message)
-#                     return False
-#                 if len(forms) > 1 and forms[1].attrib.get('kindOf') != 'standard':
-#                     error_message = f"{xml_file}: A second FORM element is used in the morpheme with id {m.attrib['id']} but its kindOf attribute isn't set to 'standard'"
-#                     logging.error(error_message)
-#                     return False
+def run_per_file_rules(
+    tree: etree._ElementTree,
+    path: Path,
+    rules: Iterable[Rule],
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """Call each rule on this file's tree, return concatenated findings."""
+    out: list[Finding] = []
+    for rule in rules:
+        out.extend(rule(tree, path, index))
+    return out
 
 
-#     message = f"{xml_file}: FORMs are following the rules fine"
-#     logging.info(message)
-#     return True
+def _build_arg_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description="FormosanBank XML validator.")
+    sub = parser.add_subparsers(dest="search_by", required=True)
 
-# Ensure that if audio is set to "diarized", at least file attr is set for every Audio tag.
-# if audio is set to anything else, check that start and end exist
-def validate_audio_attr(xml_file):
-    tree = ET.parse(xml_file)
-    root = tree.getroot()
-    if "audio" in root.attrib:
-        audio_type = root.attrib["audio"]
-    else:
-        audio_type = None
-    
-    # Iterate over all <Audio> elements
-    for audio in root.findall('.//AUDIO'):
-        if audio_type is None:
-            error_message = f"{xml_file}: if the audio attribute isn't set for the TEXT tag, it's not allowed to have any AUDIO tags"
-            logging.error(error_message)
-            return False
-        # If audio is diarized, all audio tages need to have the at least the file attribute
-        if audio_type == "diarized" and "file" not in audio.attrib:
-            error_message = f"{xml_file}: if the audio attribute is set to diarized, file name must be set for the AUDIO tag"
-            logging.error(error_message)
-            return False
-        # if audio isn't diarized, all audio tages need to have a start and end
-        elif audio_type != "diarized" and ("start" not in audio.attrib or "end" not in audio.attrib):
-            error_message = f"{xml_file}: if the audio attribute isn't set to diarized, start and end time stamps must be specified for the AUDIO tag"
-            logging.error(error_message)
-            return False
-        
-    message = f"{xml_file}: audio attribute is set appropriately"
-    logging.info(message)
-    return True
+    by_path = sub.add_parser("by_path")
+    by_path.add_argument("--path", required=True, type=Path)
 
-# Ensure lang code complies with ISO 639-3
-def validate_lang_code(xml_file, lang_codes):
-    try:
-        tree = etree.parse(xml_file)
-        root = tree.getroot()
-        lang = root.get("{http://www.w3.org/XML/1998/namespace}lang")
+    by_corpus = sub.add_parser("by_corpus")
+    by_corpus.add_argument("--corpus", required=True)
+    by_corpus.add_argument("--corpora_path", required=True, type=Path)
 
-        if lang not in lang_codes:
-            error_message = f"{xml_file}: xml:lang attribute '{lang}' is not using an ISO 639-3 code."
-            logging.error(error_message)
-            return False
-        else:
-            message = f"{xml_file}: xml:lang attribute '{lang}' is using an ISO 639-3 code."
-            logging.info(message)
-            return True
-    except Exception as e:
-        error_message = f"An error occurred while checking language code in {xml_file}: {e}"
-        logging.error(error_message)
-        return False
+    by_language = sub.add_parser("by_language")
+    by_language.add_argument("--language", required=True)
+    by_language.add_argument("--corpora_path", required=True, type=Path)
 
-# Prettify the XML file by replacing double spaces with tabs
-def prettify(xml_file):
-    parser = etree.XMLParser(remove_blank_text=True)
-    tree = etree.parse(xml_file, parser)
+    parser.add_argument("--verbose", action="store_true")
+    parser.add_argument("--log_dir", type=Path, default=None)
+    return parser
 
-    with open(xml_file, 'w') as f:
-        temp_xml = etree.tostring(tree, pretty_print=True, encoding='unicode')
-        temp_xml = temp_xml.replace('  ', '\t')
-        f.write(temp_xml)
 
-# Get all XML files in the specified path
-def get_files(path, to_check, lang, langs):
-    # Check if path is a single file
-    if os.path.isfile(path):
-        if path.endswith(".xml") and 'XML' in path:
-            if not lang or get_lang(path, langs) == lang:
-                to_check.append(path)
-        return to_check
-    
-    # Handle directory case
-    if lang:
-        for root, dirs, files in os.walk(path):
-            for file in files:
-                if file.endswith(".xml") and get_lang(os.path.join(root, file), langs) == lang and 'XML' in os.path.join(root, file):
-                    to_check.append(os.path.join(root, file))
-        return to_check
-    for root, dirs, files in os.walk(path):
-        for file in files:
-            if file.endswith(".xml") and 'XML' in os.path.join(root, file):
-                to_check.append(os.path.join(root, file))
-
-# Main process call subfunctions, log issues, and print summary
-def main(args, langs):
-    curr_dir = os.path.dirname(os.path.abspath(__file__))
-    langs_codes = load_iso_639_3_codes(os.path.join(curr_dir, 'iso-639-3.txt'))
-    xsd_file = os.path.join(curr_dir, "xml_template.xsd")
-    # Parse the XSD file
-    schema_parser = etree.XMLParser()
-    schema_parser.resolvers.add(XmlNamespaceResolver())
-    schema_root = etree.parse(xsd_file, schema_parser)
-    schema = etree.XMLSchema(schema_root)
-    
-    to_check = list()
-    path_to_check = None
-    lang = None
-    
-    issues_found = 0
-    files_with_issues = []
-    
+def _resolve_target_files(args: argparse.Namespace) -> list[Path]:
+    if args.search_by == "by_path":
+        return discover_xml_files(args.path)
+    if args.search_by == "by_corpus":
+        return discover_xml_files(args.corpora_path / args.corpus)
     if args.search_by == "by_language":
-        path_to_check = args.corpora_path
-        lang = args.language
-    elif args.search_by == "by_corpus":
-        path_to_check = os.path.join(args.corpora_path, args.corpus)
-    elif args.search_by == "by_path":
-        path_to_check = args.path
+        # Filter by xml:lang at parse time — fast scan of the root attribute.
+        files = []
+        for path in discover_xml_files(args.corpora_path):
+            try:
+                tree = parse_tree(path)
+                lang_attr = "{http://www.w3.org/XML/1998/namespace}lang"
+                if tree.getroot().get(lang_attr) == args.language:
+                    files.append(path)
+            except etree.XMLSyntaxError:
+                continue
+        return files
+    raise AssertionError(f"unknown search_by mode: {args.search_by}")
 
-    get_files(path_to_check, to_check, lang, langs)
-    for file in to_check:
-        if args.verbose:
-            logging.info(f"\nChecking {file}...")
 
-        xml_valid = validate_xml_against_xsd(file, schema)
-        lang_code_valid = validate_lang_code(file, langs_codes)
-        audio_attr_valid = validate_audio_attr(file)
-        # check_form_valid = validated_form(file)
+def _print_summary(findings: list[Finding]) -> None:
+    """Emit the summary tokens that test helpers match on.
 
-        if not (xml_valid and lang_code_valid and audio_attr_valid):
-            issues_found += 1
-            files_with_issues.append(file)
-            if not args.verbose:
-                print("-" * 120, "\n")
-        if args.verbose:
-            logging.info("-" * 120 + "\n")
-    
-    # Summary of issues
-    summary_message = f"\nSummary:\nTotal issues found: {issues_found}"
-    if files_with_issues:
-        summary_message += "\nFiles with issues:\n" + "\n".join(files_with_issues)
-    else:
-        summary_message += "\nNo issues found."
+    The token strings are preserved from the legacy validator because
+    tests/validators/test_validate_xml.py asserts on
+    `_is_clean` (looks for "total issues found: 0" + "no issues found")
+    and `_has_finding` (looks for "files with issues" et al).
+    """
+    n = sum(1 for f in findings if f.severity is Severity.HARD)
+    print(f"Total issues found: {n}", file=sys.stderr)
+    if n == 0:
+        print("No issues found.", file=sys.stderr)
+        return
+    paths_with_issues = sorted({str(f.path) for f in findings
+                                if f.severity is Severity.HARD})
+    print("Files with issues:", file=sys.stderr)
+    for p in paths_with_issues:
+        print(f"  {p}", file=sys.stderr)
 
-    # Print summary to console
-    print(summary_message)
-    
-    # Log summary if verbose mode is on
-    if args.verbose:
-        logging.info(summary_message)
 
-# Main function to parse arguments and call main process
+def main(argv: list[str] | None = None) -> int:
+    args = _build_arg_parser().parse_args(argv)
+    targets = _resolve_target_files(args)
+
+    all_findings: list[Finding] = []
+    all_rules = (
+        hard_rules.RULES + soft_rules.RULES + warn_rules.RULES
+    )
+
+    for path in targets:
+        try:
+            tree = parse_tree(path)
+        except etree.XMLSyntaxError as e:
+            # Parse failure is a HARD finding. Match the legacy message
+            # shape so tests/validators/test_validate_xml.py's
+            # NEGATIVE_MARKERS ("error", "invalid", ...) match.
+            all_findings.append(Finding(
+                rule_id="V000",
+                severity=Severity.HARD,
+                message=f"XML parse error: {e}",
+                path=path,
+            ))
+            continue
+        all_findings.extend(run_per_file_rules(tree, path, all_rules, index=None))
+
+    _print_summary(all_findings)
+    return 0  # exit-1-on-HARD lands in Task 9.
+
+
 if __name__ == "__main__":
-    langs = ['Amis', 'Atayal', 'Paiwan', 'Bunun', 'Puyuma', 'Rukai', 'Tsou', 'Saisiyat', 'Yami',
-             'Thao', 'Kavalan', 'Truku', 'Sakizaya', 'Seediq', 'Saaroa', 'Kanakanavu']
-
-    parser = argparse.ArgumentParser(description="Validate XML files.")
-    parser.add_argument('--verbose', action='store_true', help='increase output verbosity')
-    parser.add_argument('search_by', choices=['by_language', 'by_path', 'by_corpus'],
-                        help='Specify the search method: by_language, by_path, or by_corpus')
-    parser.add_argument('--language', help='Language code (required for by_language)')
-    parser.add_argument('--corpora_path', help='Path to corpora directory (required for by_language and by_corpus)')
-    parser.add_argument('--path', help='Path to XML file or directory (required for by_path)')
-    parser.add_argument('--corpus', help='Corpus name (required for by_corpus)')
-    parser.add_argument('--log_dir',
-                        help='Directory for verbose logs. Defaults to QC/validation/logs.')
-    args = parser.parse_args()
-
-    # Validate required arguments based on 'search_by'
-    if args.search_by == 'by_language':
-        if not args.language or not args.corpora_path:
-            parser.error("For 'by_language', --language and --corpora_path are required.")
-        if args.language not in langs:
-            parser.error(f"Enter a valid Formosan language from the list: {langs}")
-        if not os.path.exists(args.corpora_path):
-            parser.error(f"The entered corpora path, {args.corpora_path}, doesn't exist")
-    elif args.search_by == 'by_path':
-        if not args.path:
-            parser.error("For 'by_path', --path is required.")
-        if not os.path.exists(args.path):
-            parser.error(f"The entered path, {args.path}, doesn't exist")
-    elif args.search_by == 'by_corpus':
-        if not args.corpus or not args.corpora_path:
-            parser.error("For 'by_corpus', --corpus and --corpora_path are required.")
-        if not os.path.exists(os.path.join(args.corpora_path, args.corpus)):
-            parser.error(f"The entered corpus, {args.corpus}, isn't a valid corpus in the provided corpora path.")
-
-    # Set up logging only if verbose is True
-    if args.verbose:
-        curr_dir = os.path.dirname(os.path.abspath(__file__))
-        log_dir = args.log_dir or os.path.join(curr_dir, "logs")
-        os.makedirs(log_dir, exist_ok=True)
-
-        log_file_name = get_log_file_name(args)
-        log_file_path = os.path.join(log_dir, log_file_name)
-
-        logger = logging.getLogger()
-        logger.setLevel(logging.DEBUG)
-
-        # Create file handler which logs debug messages
-        fh = logging.FileHandler(log_file_path, mode='w')
-        fh.setLevel(logging.DEBUG)
-
-        # Create formatter and add it to the handler
-        formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
-        fh.setFormatter(formatter)
-
-        # Add the handler to the logger
-        logger.addHandler(fh)
-
-        print(f"Verbose mode is on. Detailed logs will be saved in {log_file_path}. Log will include which files have been checked and a detailed record if whether there has been any issues or not. The search mood is indicated by the log file name. A summary of issues can be found the buttom of the log file")
-
-    main(args, langs)
+    sys.exit(main())

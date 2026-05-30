@@ -1,0 +1,70 @@
+"""Unit tests for the validate_xml runner: file walking, tree caching,
+dispatch. These tests import from QC.validation directly; they do not
+subprocess. End-to-end behavior is covered by the existing
+tests/validators/test_validate_xml.py against the CLI surface.
+"""
+from pathlib import Path
+
+import pytest
+from lxml import etree
+
+from QC.validation._finding import Finding, Severity
+from QC.validation.validate_xml import (
+    discover_xml_files,
+    parse_tree,
+    run_per_file_rules,
+)
+
+
+VALID_XML = b"""<?xml version="1.0" encoding="utf-8"?>
+<TEXT id="t1" citation="c" BibTeX_citation="@b{x}" copyright="cc" xml:lang="ami">
+  <S id="S1">
+    <FORM kindOf="original">Halo.</FORM>
+  </S>
+</TEXT>
+"""
+
+
+def test_discover_xml_files_returns_only_xml(tmp_path):
+    (tmp_path / "XML").mkdir()
+    (tmp_path / "XML" / "a.xml").write_bytes(VALID_XML)
+    (tmp_path / "XML" / "b.xml").write_bytes(VALID_XML)
+    (tmp_path / "XML" / "note.txt").write_text("not xml")
+    (tmp_path / "README.md").write_text("not xml")
+
+    files = sorted(discover_xml_files(tmp_path))
+    assert [p.name for p in files] == ["a.xml", "b.xml"]
+
+
+def test_discover_xml_files_recurses(tmp_path):
+    (tmp_path / "XML" / "Amis").mkdir(parents=True)
+    (tmp_path / "XML" / "Amis" / "x.xml").write_bytes(VALID_XML)
+    files = sorted(discover_xml_files(tmp_path))
+    assert [p.name for p in files] == ["x.xml"]
+
+
+def test_parse_tree_returns_etree(tmp_path):
+    p = tmp_path / "x.xml"
+    p.write_bytes(VALID_XML)
+    tree = parse_tree(p)
+    assert tree.getroot().tag == "TEXT"
+
+
+def test_run_per_file_rules_invokes_each_rule(tmp_path):
+    p = tmp_path / "x.xml"
+    p.write_bytes(VALID_XML)
+    tree = parse_tree(p)
+
+    calls = []
+    def rule_a(t, path, index):
+        calls.append(("a", path))
+        return []
+    def rule_b(t, path, index):
+        calls.append(("b", path))
+        return [Finding(rule_id="V999", severity=Severity.HARD,
+                        message="test", path=path)]
+
+    findings = run_per_file_rules(tree, p, [rule_a, rule_b], index=None)
+    assert [c[0] for c in calls] == ["a", "b"]
+    assert len(findings) == 1
+    assert findings[0].rule_id == "V999"
