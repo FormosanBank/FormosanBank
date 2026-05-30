@@ -29,7 +29,7 @@ if str(_REPO_ROOT) not in sys.path:
 from lxml import etree
 
 from QC.validation._corpus_index import CorpusIndex
-from QC.validation._finding import Finding, Severity
+from QC.validation._finding import Finding, Severity, write_soft_csv
 from QC.validation.rules import hard as hard_rules
 from QC.validation.rules import soft as soft_rules
 from QC.validation.rules import warn as warn_rules
@@ -87,6 +87,14 @@ def _add_common_flags(p: argparse.ArgumentParser) -> None:
         help="Always exit 0, even if HARD findings are produced. "
              "Backward-compat for callers that depend on the legacy "
              "always-exit-0 behavior.",
+    )
+    p.add_argument(
+        "--soft-csv",
+        dest="soft_csv",
+        type=Path,
+        default=Path("logs") / "validation_soft.csv",
+        help="Path where SOFT findings are written as CSV. "
+             "Overwritten per run; parent dirs created if absent.",
     )
 
 
@@ -183,6 +191,8 @@ def main(argv: list[str] | None = None) -> int:
         all_findings.extend(run_per_file_rules(tree, path, all_rules, index=None))
 
     _print_summary(all_findings)
+    write_soft_csv(args.soft_csv, all_findings)
+
     has_hard = any(f.severity is Severity.HARD for f in all_findings)
     if has_hard and not args.no_exit_on_hard:
         return 1

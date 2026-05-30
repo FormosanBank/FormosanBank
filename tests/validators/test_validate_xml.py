@@ -65,9 +65,16 @@ def _run_validate(corpus_xml_dir: Path) -> subprocess.CompletedProcess:
     The validator is given the directory whose contents include /XML/<files>.xml.
     by_path mode walks the tree and validates each .xml file whose path
     contains 'XML'.
+
+    SOFT CSV is directed into corpus_xml_dir so this helper never
+    pollutes the repo root with a logs/ directory.
     """
     return subprocess.run(
-        [sys.executable, str(VALIDATE_XML), "by_path", "--path", str(corpus_xml_dir)],
+        [
+            sys.executable, str(VALIDATE_XML),
+            "by_path", "--path", str(corpus_xml_dir),
+            "--soft-csv", str(corpus_xml_dir / "soft.csv"),
+        ],
         capture_output=True,
         text=True,
     )
