@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  SOFT-count fixture for V010 (S typically has at least one FORM; missing is counted).
+
+  Shape: one S with no FORM child, only a W child. Under V010 this is
+  permissible but should be counted.
+
+  Exercises: validate_xml.py should record an entry that the S lacks a FORM.
+  Currently the XSD treats this as HARD; after revision it becomes SOFT.
+-->
+<TEXT id="V010_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+  <S id="S_1">
+    <W id="S_1_W_1">
+      <FORM kindOf="original">Halo</FORM>
+    </W>
+  </S>
+</TEXT>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Negative fixture for V081 (TEXT/@id unique across corpus-under-test AND
+  all published corpora under FormosanBank/Corpora/).
+
+  Shape: TEXT id deliberately reuses a real id from the published
+  YeddaPalemeqBlog corpus ("Yedda_Ljeljeng_lja_Palemek's_Blog").
+  When the validator walks FormosanBank/Corpora/ for cross-corpus id
+  collision checking, it should find this duplicate.
+
+  Exercises: validate_xml.py should report a cross-corpus id collision.
+  Currently NOT enforced; xfail.
+-->
+<TEXT id="Yedda_Ljeljeng_lja_Palemek's_Blog" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+  <S id="S_1">
+    <FORM kindOf="original">Halo.</FORM>
+  </S>
+</TEXT>

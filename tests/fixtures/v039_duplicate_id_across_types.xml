@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Negative fixture for V039 (id values are globally unique within a file).
+
+  Shape: S id="X" coexists with W id="X" in the same file.
+
+  Exercises: validate_xml.py should report a duplicate-id finding.
+  Currently NOT enforced; xfail.
+-->
+<TEXT id="V039_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+  <S id="X">
+    <FORM kindOf="original">Halo.</FORM>
+    <W id="X">
+      <FORM kindOf="original">Halo</FORM>
+    </W>
+  </S>
+</TEXT>

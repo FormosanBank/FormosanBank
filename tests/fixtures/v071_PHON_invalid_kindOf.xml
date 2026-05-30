@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Negative fixture for V071 (PHON/@kindOf is "original" or "standard").
+
+  Shape: PHON kindOf="alternate" — not a valid value for PHON.
+
+  Exercises: validate_xml.py should reject. Currently the XSD does not
+  know about PHON at all; xfail.
+-->
+<TEXT id="V071_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+  <S id="S_1">
+    <FORM kindOf="original">Halo.</FORM>
+    <PHON kindOf="alternate">ha.lo</PHON>
+  </S>
+</TEXT>

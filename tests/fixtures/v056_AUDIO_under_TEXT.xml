@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Positive fixture for V056 (AUDIO is legal under TEXT, S, W, M).
+
+  Shape: TEXT-level AUDIO with a file path. After the XSD/validator
+  update, this should validate cleanly. Currently the XSD does NOT
+  permit AUDIO directly under TEXT, so this will FAIL XSD validation
+  until B updates the XSD; xfail on the positive direction.
+-->
+<TEXT id="V056_POS" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+  <AUDIO file="document.wav" start="0" end="10"/>
+  <S id="S_1">
+    <FORM kindOf="original">Halo.</FORM>
+  </S>
+</TEXT>

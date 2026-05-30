@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Positive fixture for V062 (infix marker on M paired with angle-bracket
+  gloss on parent W's TRANSL).
+
+  Shape: M FORM is "-um-" (infix shape); parent W TRANSL contains "<AV>"
+  somewhere in its text.
+
+  Exercises: validate_xml.py should NOT report a V062 finding here.
+-->
+<TEXT id="V062_POS" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+  <S id="S_1">
+    <FORM kindOf="original">rumakat.</FORM>
+    <W id="S_1_W_1">
+      <FORM kindOf="original">rumakat</FORM>
+      <TRANSL xml:lang="eng">walk &lt;AV&gt;</TRANSL>
+      <M id="S_1_W_1_M_1">
+        <FORM kindOf="original">-um-</FORM>
+      </M>
+    </W>
+  </S>
+</TEXT>

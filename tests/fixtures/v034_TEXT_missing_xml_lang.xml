@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Negative fixture for V034 (TEXT/@xml:lang is present).
+
+  Shape: TEXT with no xml:lang attribute.
+
+  Exercises: validate_xml.py should reject (currently does, via XSD AND
+  validate_lang_code, since lang lookup returns None which is not in
+  the 639-3 set).
+-->
+<TEXT id="V034_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test">
+  <S id="S_1">
+    <FORM kindOf="original">Halo.</FORM>
+  </S>
+</TEXT>

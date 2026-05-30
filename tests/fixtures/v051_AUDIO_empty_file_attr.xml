@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Negative fixture for V051 (segmented mode: every AUDIO with @file has a
+  non-empty file path).
+
+  Shape: AUDIO with file="" (empty). Triggers segmented mode (file attr
+  present) but the value is empty.
+
+  Exercises: validate_xml.py should report a finding. Currently NOT
+  enforced (the "diarized" check is the wrong indicator); xfail.
+-->
+<TEXT id="V051_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+  <S id="S_1">
+    <FORM kindOf="original">Halo.</FORM>
+    <AUDIO file="" start="0" end="1"/>
+  </S>
+</TEXT>

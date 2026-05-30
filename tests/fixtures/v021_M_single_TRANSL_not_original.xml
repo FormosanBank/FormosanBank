@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Negative fixture for V021 (on M, if exactly 1 TRANSL, it must be kindOf="original").
+
+  Shape: an M with one TRANSL that lacks kindOf="original".
+
+  Exercises: validate_xml.py should report a finding. Currently NOT
+  enforced; xfail.
+-->
+<TEXT id="V021_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+  <S id="S_1">
+    <FORM kindOf="original">Halo.</FORM>
+    <W id="S_1_W_1">
+      <FORM kindOf="original">halo</FORM>
+      <M id="S_1_W_1_M_1">
+        <FORM kindOf="original">halo</FORM>
+        <TRANSL xml:lang="eng">greeting</TRANSL>
+      </M>
+    </W>
+  </S>
+</TEXT>

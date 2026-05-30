@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Negative fixture for V038 (every S/W/M has a non-empty id).
+
+  Shape: an S with no id attribute.
+
+  Exercises: validate_xml.py should reject (currently does, via XSD).
+-->
+<TEXT id="V038_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+  <S>
+    <FORM kindOf="original">Halo.</FORM>
+  </S>
+</TEXT>

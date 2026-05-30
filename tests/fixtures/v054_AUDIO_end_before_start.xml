@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Negative fixture for V054 (AUDIO/@start and @end are non-negative numbers,
+  end >= start).
+
+  Shape: AUDIO start="10" end="5" — end precedes start.
+
+  Exercises: validate_xml.py should report a finding. Currently the XSD
+  types these as xs:string so no comparison is done; xfail.
+-->
+<TEXT id="V054_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" audio="lecture.wav">
+  <S id="S_1">
+    <FORM kindOf="original">Halo.</FORM>
+    <AUDIO start="10" end="5"/>
+  </S>
+</TEXT>

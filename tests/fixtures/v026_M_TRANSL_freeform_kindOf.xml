@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Negative fixture for V026 (TRANSL/@kindOf at M must be "original" or "standard").
+
+  Shape: an M with TRANSL kindOf="DeepL" (free-form value, not allowed at M-level).
+
+  Exercises: validate_xml.py should report a finding. Currently NOT
+  enforced; xfail.
+-->
+<TEXT id="V026_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+  <S id="S_1">
+    <FORM kindOf="original">Halo.</FORM>
+    <W id="S_1_W_1">
+      <FORM kindOf="original">halo</FORM>
+      <M id="S_1_W_1_M_1">
+        <FORM kindOf="original">halo</FORM>
+        <TRANSL kindOf="DeepL" xml:lang="eng">greeting</TRANSL>
+      </M>
+    </W>
+  </S>
+</TEXT>
