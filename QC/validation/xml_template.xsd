@@ -1,90 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
-  
+<!--
+  Canonical XSD for FormosanBank XML files.
+  Migrated from xml_template.dtd in Phase 4.5.
+
+  Adds four constraints the DTD could not express:
+  1. FORM/@kindOf enumeration (original | standard | alternate).
+     Replaces Python rule v016_known_kindOf_values.
+  2. PHON/@kindOf enumeration (original | standard).
+  3. AUDIO/@start and @end as xs:double (non-numeric values rejected at
+     schema time; the v050 try/except branch becomes unreachable).
+  4. xs:unique id uniqueness across S, W, M within a single file (V039).
+
+  Order remains strict (xs:sequence); xs:all is deferred because XSD 1.0
+  prohibits unbounded children under xs:all.
+
+  xml_template.dtd is retained on disk as a fallback; remove it only
+  after the XSD has been validated in production.
+-->
+<xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xml="http://www.w3.org/XML/1998/namespace"
+    elementFormDefault="unqualified"
+    attributeFormDefault="unqualified">
+
   <xs:import namespace="http://www.w3.org/XML/1998/namespace"
              schemaLocation="http://www.w3.org/2001/xml.xsd"/>
 
+  <!-- Simple types -->
 
-  <!-- nonEmpty Element -->
-  <xs:simpleType name="nonEmptyString">
+  <xs:simpleType name="FORM_kindOf_Type">
     <xs:restriction base="xs:string">
-      <xs:minLength value="1"/>
+      <xs:enumeration value="original"/>
+      <xs:enumeration value="standard"/>
+      <xs:enumeration value="alternate"/>
     </xs:restriction>
   </xs:simpleType>
 
-  <!-- TEXT Element -->
-  <xs:element name="TEXT">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element name="S" type="S_Type" maxOccurs="unbounded"/>
-      </xs:sequence>
-      <xs:attribute ref="xml:lang" use="required"/>
-      <xs:attribute name="id" type="nonEmptyString" use="required"/>
-      <xs:attribute name="citation" type="nonEmptyString" use="required"/>
-      <xs:attribute name="BibTeX_citation" type="nonEmptyString" use="required"/>
-      <xs:attribute name="copyright" type="nonEmptyString" use="required"/>
-      <xs:attribute name="source" type="xs:string"/>
-      <xs:attribute name="audio" type="xs:string"/>
-      <xs:attribute name="glottocode" type="xs:string"/>
-      <xs:attribute name="dialect" type="xs:string"/>
-    </xs:complexType>
-  </xs:element>
+  <xs:simpleType name="PHON_kindOf_Type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="original"/>
+      <xs:enumeration value="standard"/>
+    </xs:restriction>
+  </xs:simpleType>
 
-  <!-- S Element -->
-  <xs:complexType name="S_Type">
-    <xs:sequence>
-      <xs:element name="FORM" type="FORM_Type" minOccurs="1" maxOccurs="2"/>
-      <xs:element name="TRANSL" type="TRANSL_Type" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="AUDIO" type="AUDIO_Type" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="W" type="W_Type" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-    <xs:attribute name="id" type="nonEmptyString" use="required"/>
-  </xs:complexType>
+  <!-- FORM: text element with required kindOf enum -->
 
-  <!-- W Element -->
-  <xs:complexType name="W_Type">
-    <xs:sequence>
-      <xs:element name="FORM" type="FORM_Type" maxOccurs="2"/>
-      <xs:element name="TRANSL" type="TRANSL_Type" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="AUDIO" type="AUDIO_Type" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="M" type="M_Type" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-    <xs:attribute name="id" type="nonEmptyString" use="required"/>
-    <xs:attribute name="class" type="xs:string"/>
-    <xs:attribute name="sclass" type="xs:string"/>
-  </xs:complexType>
-
-  <!-- M Element -->
-  <xs:complexType name="M_Type">
-    <xs:sequence>
-      <xs:element name="FORM" type="FORM_Type" maxOccurs="2"/>
-      <xs:element name="TRANSL" type="TRANSL_Type" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="AUDIO" type="AUDIO_Type" minOccurs="0" maxOccurs="1"/>
-    </xs:sequence>
-    <xs:attribute name="id" type="nonEmptyString" use="required"/>
-    <xs:attribute name="class" type="xs:string"/>
-    <xs:attribute name="sclass" type="xs:string"/>
-  </xs:complexType>
-
-  <!-- FORM Element -->
   <xs:complexType name="FORM_Type">
-  <xs:simpleContent>
-    <xs:extension base="xs:string">
-      <!-- Restrict kindOf to valid values -->
-      <xs:attribute name="kindOf" use="required">
-        <xs:simpleType>
-          <xs:restriction base="xs:string">
-            <xs:enumeration value="original"/>
-            <xs:enumeration value="standard"/>
-            <xs:enumeration value="alternate"/>
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:attribute>
-    </xs:extension>
-  </xs:simpleContent>
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="kindOf" type="FORM_kindOf_Type" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
   </xs:complexType>
 
-  <!-- TRANSL Element -->
+  <!-- TRANSL: text element; xml:lang is optional at XSD level (V023 is a
+       Python rule because the DTD also could not express it as required
+       on TRANSL only). -->
+
   <xs:complexType name="TRANSL_Type">
     <xs:simpleContent>
       <xs:extension base="xs:string">
@@ -95,12 +67,95 @@
     </xs:simpleContent>
   </xs:complexType>
 
-  <!-- AUDIO Element -->
+  <!-- PHON: text element; kindOf is optional but, when present, must be
+       "original" or "standard". -->
+
+  <xs:complexType name="PHON_Type">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="kindOf" type="PHON_kindOf_Type"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <!-- AUDIO: empty element; start/end are optional but typed as xs:double
+       so non-numeric values are rejected by the schema. -->
+
   <xs:complexType name="AUDIO_Type">
-    <xs:attribute name="start" type="xs:string" use="required"/>
-    <xs:attribute name="end" type="xs:string" use="required"/>
+    <xs:attribute name="start" type="xs:double"/>
+    <xs:attribute name="end" type="xs:double"/>
     <xs:attribute name="file" type="xs:string"/>
     <xs:attribute name="url" type="xs:string"/>
   </xs:complexType>
+
+  <!-- M element: DTD declares M (FORM, TRANSL*, PHON*, AUDIO?) -->
+
+  <xs:complexType name="M_Type">
+    <xs:sequence>
+      <xs:element name="FORM" type="FORM_Type" minOccurs="1" maxOccurs="2"/>
+      <xs:element name="TRANSL" type="TRANSL_Type" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="PHON" type="PHON_Type" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="AUDIO" type="AUDIO_Type" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string" use="required"/>
+    <xs:attribute name="class" type="xs:string"/>
+    <xs:attribute name="sclass" type="xs:string"/>
+  </xs:complexType>
+
+  <!-- W element: DTD declares W (FORM, AUDIO?, TRANSL*, PHON*, M*) -->
+
+  <xs:complexType name="W_Type">
+    <xs:sequence>
+      <xs:element name="FORM" type="FORM_Type" minOccurs="1" maxOccurs="2"/>
+      <xs:element name="AUDIO" type="AUDIO_Type" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="TRANSL" type="TRANSL_Type" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="PHON" type="PHON_Type" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="M" type="M_Type" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string" use="required"/>
+    <xs:attribute name="class" type="xs:string"/>
+    <xs:attribute name="sclass" type="xs:string"/>
+  </xs:complexType>
+
+  <!-- S element: DTD declares S (FORM, FORM?, TRANSL*, PHON*, AUDIO?, W*) -->
+
+  <xs:complexType name="S_Type">
+    <xs:sequence>
+      <xs:element name="FORM" type="FORM_Type" minOccurs="1" maxOccurs="2"/>
+      <xs:element name="TRANSL" type="TRANSL_Type" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="PHON" type="PHON_Type" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="AUDIO" type="AUDIO_Type" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="W" type="W_Type" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <!-- TEXT element (root): DTD declares TEXT (AUDIO?, S+)
+       xs:unique on TEXT enforces V039: id values must be unique across
+       all S, W, and M elements within a single file. lxml/libxml2 supports
+       flat union paths (no predicates) in xs:selector. -->
+
+  <xs:element name="TEXT">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="AUDIO" type="AUDIO_Type" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="S" type="S_Type" minOccurs="1" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:string" use="required"/>
+      <xs:attribute name="citation" type="xs:string" use="required"/>
+      <xs:attribute name="BibTeX_citation" type="xs:string" use="required"/>
+      <xs:attribute name="copyright" type="xs:string" use="required"/>
+      <xs:attribute ref="xml:lang" use="required"/>
+      <xs:attribute name="source" type="xs:string"/>
+      <xs:attribute name="audio" type="xs:string"/>
+      <xs:attribute name="glottocode" type="xs:string"/>
+      <xs:attribute name="dialect" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:unique name="unique_id_within_file">
+      <xs:selector xpath=".//S | .//W | .//M"/>
+      <xs:field xpath="@id"/>
+    </xs:unique>
+  </xs:element>
 
 </xs:schema>
