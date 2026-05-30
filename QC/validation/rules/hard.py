@@ -99,5 +99,144 @@ def v016_known_kindOf_values(
     return findings
 
 
-RULES: list = [v000_dtd_validation, v001_root_must_be_TEXT, v016_known_kindOf_values]
+def v050_audio_attr_present(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """Each <AUDIO> element must have start and end attributes that are numeric.
+
+    Preserves the legacy validate_audio_attr behavior. Note: the legacy code
+    has a known bug around audio="diarized" vs audio="segmented" semantics.
+    Phase 5's V050-V056 rule migrations will refactor this rule to fix the bug;
+    for now we keep the bug so the existing tests continue to pass.
+    """
+    findings: list[Finding] = []
+    for audio in tree.iter("AUDIO"):
+        start = audio.get("start")
+        end = audio.get("end")
+        parent = audio.getparent()
+        s_id = parent.get("id") if parent is not None else None
+        location = f"S={s_id}" if s_id else "AUDIO"
+        if start is None or end is None:
+            findings.append(Finding(
+                rule_id="V050",
+                severity=Severity.HARD,
+                message="AUDIO missing required start or end attribute",
+                path=path,
+                location=location,
+            ))
+            continue
+        try:
+            float(start)
+            float(end)
+        except ValueError:
+            findings.append(Finding(
+                rule_id="V050",
+                severity=Severity.HARD,
+                message=f"AUDIO start/end not numeric (start={start!r}, end={end!r})",
+                path=path,
+                location=location,
+            ))
+    return findings
+
+
+def v051_audio_start_before_end(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """Each <AUDIO> element with numeric start/end must have start < end.
+
+    Preserves the legacy validate_audio_attr behavior. The diarized/segmented
+    bug noted above also affects this rule; Phase 5 fixes both together.
+    """
+    findings: list[Finding] = []
+    for audio in tree.iter("AUDIO"):
+        start = audio.get("start")
+        end = audio.get("end")
+        if start is None or end is None:
+            continue  # v050 already reports
+        try:
+            s = float(start)
+            e = float(end)
+        except ValueError:
+            continue  # v050 already reports
+        if s >= e:
+            parent = audio.getparent()
+            s_id = parent.get("id") if parent is not None else None
+            location = f"S={s_id}" if s_id else "AUDIO"
+            findings.append(Finding(
+                rule_id="V051",
+                severity=Severity.HARD,
+                message=f"AUDIO start ({start}) >= end ({end})",
+                path=path,
+                location=location,
+            ))
+    return findings
+
+
+def _load_iso_639_3() -> frozenset[str]:
+    """Load valid ISO 639-3 codes from the bundled reference file.
+
+    The reference file is QC/validation/iso-639-3.txt: tab-separated,
+    header on line 1, 3-letter code in column 1.
+    """
+    iso_path = Path(__file__).resolve().parents[1] / "iso-639-3.txt"
+    codes: set[str] = set()
+    with open(iso_path, encoding="utf-8") as f:
+        next(f)  # skip header
+        for line in f:
+            parts = line.split("\t")
+            if parts and parts[0].strip():
+                codes.add(parts[0].strip())
+    return frozenset(codes)
+
+
+_ISO_CODES = _load_iso_639_3()
+_XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
+
+
+def v035_text_lang_is_iso_639_3(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """The TEXT root's xml:lang must be a valid ISO 639-3 code.
+
+    Preserves the legacy validate_lang_code behavior at TEXT-level only.
+    Element-level (S, W, M) xml:lang checks are deferred to Phase 5
+    (V035 expansion).
+    """
+    root = tree.getroot()
+    if root.tag != "TEXT":
+        return []  # v001/v000 already report root-tag issues
+    lang = root.get(_XML_LANG)
+    if lang is None:
+        return [Finding(
+            rule_id="V035",
+            severity=Severity.HARD,
+            message="TEXT element missing xml:lang attribute",
+            path=path,
+            location="TEXT",
+        )]
+    if lang not in _ISO_CODES:
+        return [Finding(
+            rule_id="V035",
+            severity=Severity.HARD,
+            message=f"TEXT xml:lang={lang!r} is not a valid ISO 639-3 code",
+            path=path,
+            location="TEXT",
+        )]
+    return []
+
+
+RULES: list = [
+    v000_dtd_validation,
+    v001_root_must_be_TEXT,
+    v016_known_kindOf_values,
+    v035_text_lang_is_iso_639_3,
+    v050_audio_attr_present,
+    v051_audio_start_before_end,
+]
 CROSS_FILE_RULES: list = []
