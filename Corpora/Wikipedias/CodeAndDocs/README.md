@@ -68,7 +68,7 @@ This repository contains code and data for retrieving, processing and structurin
          - *citation_marker_removal.log*: Logs details of citation markers removed from the text, including file path, line number, original line, and modified line.
 
 3. **Delete non-Formosan Text**:
-   Run `remove_other_langs.py` to use the Wikipedia API to scrape articles.
+   Run `remove_other_langs.py`.
    
    ```bash
    python remove_other_langs.py
