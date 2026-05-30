@@ -521,17 +521,13 @@ def test_V054_AUDIO_end_before_start_negative(tmp_path, fixtures_dir, copy_fixtu
     )
 
 
-@pytest.mark.xfail(
-    strict=True,
-    reason=(
-        "V056: AUDIO is legal under TEXT, S, W, M. Current XSD only "
-        "permits AUDIO under S/W/M, so an AUDIO directly under TEXT is "
-        "WRONGLY rejected today. After XSD update, this fixture should "
-        "validate cleanly."
-    ),
-)
 def test_V056_AUDIO_under_TEXT_positive(tmp_path, fixtures_dir, copy_fixture):
-    """V056 (positive): AUDIO under TEXT should validate cleanly after XSD update."""
+    """V056 (positive): AUDIO under TEXT validates cleanly.
+
+    DTD updated in Phase 4 to allow AUDIO under TEXT (and M); previously
+    DTD only permitted AUDIO under S/W. Flipped from xfail to plain-pass
+    when the DTD change landed.
+    """
     copy_fixture(fixtures_dir / "v056_AUDIO_under_TEXT.xml", tmp_path)
     proc = _run_validate(tmp_path)
     assert _is_clean(proc), (
