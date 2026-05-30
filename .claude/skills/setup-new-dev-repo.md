@@ -37,7 +37,7 @@ User can approve, request changes, or abort. **No filesystem changes before appr
 ### Phase 2: Create directory and init git
 
 ```bash
-mkdir -p "<target>/XML" "<target>/CodeAndDocs"
+mkdir -p "<target>/XML" "<target>/CodeAndDocs" "<target>/Private"
 cd "<target>"
 git init -b main
 # If remote_url:
@@ -45,6 +45,8 @@ git remote add origin "<remote_url>"
 ```
 
 Note: brace expansion (`mkdir -p "<target>/{XML,CodeAndDocs}"`) does NOT work inside double quotes — it would create a single literal directory named `{XML,CodeAndDocs}`. Either pass the two paths separately as above, or unquote the braces: `mkdir -p "<target>"/{XML,CodeAndDocs}`.
+
+Note: The "Private" folder is for things that should not be copied into the public repo.
 
 ### Phase 3: Create .venv
 
