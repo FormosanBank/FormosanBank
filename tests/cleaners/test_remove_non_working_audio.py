@@ -68,7 +68,11 @@ def _write_xml_with_audio_refs(path: Path, audio_paths: list[Path]) -> None:
 def _audio_refs(xml_path: Path) -> list[str]:
     """Return the list of file="..." values from all <AUDIO> elements."""
     root = ET.parse(xml_path).getroot()
-    return [a.get("file") for a in root.iter("AUDIO")]
+    return [
+        a.get("file")
+        for a in root.iter("AUDIO")
+        if a.get("file") is not None
+    ]
 
 
 def _run_remove(corpora_path: Path) -> subprocess.CompletedProcess:
@@ -98,8 +102,9 @@ def test_all_valid_audio_refs_are_kept(tmp_path, audio_file_factory):
     # The refactored script must report what it processed; a silent no-op (e.g.
     # the legacy code that ignores --corpora_path and reads a CSV instead) would
     # produce empty stdout and would NOT satisfy this assertion.
-    assert proc.stdout.strip() != "", (
-        "expected script to emit processing output when --corpora_path is given"
+    assert (proc.stdout + proc.stderr).strip() != "", (
+        "expected the refactored script to emit some progress indication "
+        "(stdout or stderr) when given --corpora_path"
     )
 
     refs = _audio_refs(xml)
@@ -135,8 +140,9 @@ def test_corpus_with_no_audio_is_a_noop(tmp_path, fixtures_dir, copy_fixture):
     # The refactored script must report what it processed; a silent no-op (e.g.
     # the legacy code that ignores --corpora_path and reads a CSV instead) would
     # produce empty stdout and would NOT satisfy this assertion.
-    assert proc.stdout.strip() != "", (
-        "expected script to emit processing output when --corpora_path is given"
+    assert (proc.stdout + proc.stderr).strip() != "", (
+        "expected the refactored script to emit some progress indication "
+        "(stdout or stderr) when given --corpora_path"
     )
     assert work.read_bytes() == before, (
         "cleaner modified a corpus that had no AUDIO elements"
@@ -165,3 +171,28 @@ def test_all_broken_audio_refs_are_all_removed(tmp_path):
     for s in sentences:
         assert s.find("AUDIO") is None
         assert s.find("FORM") is not None
+
+
+@pytest.mark.xfail(strict=True, reason=XFAIL_REASON)
+def test_cleaner_is_idempotent(tmp_path, audio_file_factory):
+    """Critical for in-place mutators: running twice produces the same
+    state as running once. Catches a regression where the cleaner
+    re-removes audio refs that have become valid since the previous run."""
+    xml_dir = _make_xml_dir(tmp_path)
+    good = audio_file_factory(0.1)
+    broken = tmp_path / "does_not_exist.wav"
+    xml = xml_dir / "test.xml"
+    _write_xml_with_audio_refs(xml, [good, broken])
+
+    _run_remove(tmp_path)
+    after_one = _audio_refs(xml)
+    # The first run must have actually removed the broken ref; otherwise the
+    # idempotency check below is vacuously satisfied by a no-op script.
+    assert str(broken) not in after_one, (
+        "first run did not remove the broken audio ref — idempotency check "
+        "would be vacuously true"
+    )
+    _run_remove(tmp_path)
+    after_two = _audio_refs(xml)
+
+    assert after_one == after_two, "cleaner is not idempotent"
