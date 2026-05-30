@@ -329,9 +329,29 @@ def test_V023_TRANSL_must_have_xml_lang_negative(tmp_path, fixtures_dir, copy_fi
     )
 
 
-@pytest.mark.xfail(strict=True, reason=XFAIL_NOT_YET_CHECKED)
+def test_V050_AUDIO_with_file_only_is_clean(tmp_path, fixtures_dir, copy_fixture):
+    """V050 positive: AUDIO with @file (no start/end) is valid per the spec.
+
+    The whole referenced file IS the clip, so start/end are NOT required.
+    Regression pin for the prior bug where v050 unconditionally required
+    start/end on every AUDIO.
+    """
+    copy_fixture(fixtures_dir / "valid_audio_with_file.xml", tmp_path)
+    proc = _run_validate(tmp_path)
+    assert _is_clean(proc), (
+        f"expected clean validation; got stdout={proc.stdout!r}, "
+        f"stderr={proc.stderr!r}"
+    )
+
+
 def test_V024_TRANSL_xml_lang_must_be_iso_639_3_negative(tmp_path, fixtures_dir, copy_fixture):
-    """V024: TRANSL/@xml:lang must be a valid ISO 639-3 code."""
+    """V024: TRANSL/@xml:lang must be a valid ISO 639-3 code.
+
+    Implemented by v035_xml_lang_is_iso_639_3, which walks every element
+    with xml:lang (not only TEXT). The "transl xml:lang" marker matches
+    the rule's message format (`TRANSL xml:lang='xyz' is not a valid
+    ISO 639-3 code`).
+    """
     copy_fixture(fixtures_dir / "v024_TRANSL_invalid_iso_code.xml", tmp_path)
     proc = _run_validate(tmp_path)
     assert _has_rule_finding(proc, ("v024", "transl xml:lang", "transl iso")), (

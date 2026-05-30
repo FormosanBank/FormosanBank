@@ -104,40 +104,53 @@ def v050_audio_attr_present(
     path: Path,
     index: CorpusIndex | None,
 ) -> list[Finding]:
-    """Each <AUDIO> element must have start and end attributes that are numeric.
+    """AUDIO start/end attributes: required only when the AUDIO element has
+    no @file of its own.
 
-    Preserves the legacy validate_audio_attr behavior. Note: the legacy code
-    has a known bug around audio="diarized" vs audio="segmented" semantics.
-    Phase 5's V050-V056 rule migrations will refactor this rule to fix the bug;
-    for now we keep the bug so the existing tests continue to pass.
+    Per the canonical spec at
+    en-us/the-bank-architecture/formosanbank-xml-format.md:
+      - If <AUDIO> has its own @file attribute, the whole referenced file
+        IS the clip — start/end are NOT required.
+      - If <AUDIO> has no @file attribute, the audio is shared across the
+        XML (the file is named at TEXT/@audio); start and end pinpoint
+        the clip within that file and are required.
+    Either way, if start/end ARE present they must parse as numeric.
+
+    Phase 5 will likely re-attribute this check to V052 (single-file-mode
+    requires start/end) per the design doc rule numbering; for now we keep
+    the V050 label.
     """
     findings: list[Finding] = []
     for audio in tree.iter("AUDIO"):
         start = audio.get("start")
         end = audio.get("end")
+        has_file = audio.get("file") is not None
         parent = audio.getparent()
         s_id = parent.get("id") if parent is not None else None
         location = f"S={s_id}" if s_id else "AUDIO"
-        if start is None or end is None:
+
+        if not has_file and (start is None or end is None):
             findings.append(Finding(
                 rule_id="V050",
                 severity=Severity.HARD,
-                message="AUDIO missing required start or end attribute",
+                message="AUDIO without @file must have start and end attributes "
+                        "(audio is shared at TEXT level; start/end pinpoint the clip)",
                 path=path,
                 location=location,
             ))
             continue
-        try:
-            float(start)
-            float(end)
-        except ValueError:
-            findings.append(Finding(
-                rule_id="V050",
-                severity=Severity.HARD,
-                message=f"AUDIO start/end not numeric (start={start!r}, end={end!r})",
-                path=path,
-                location=location,
-            ))
+        if start is not None and end is not None:
+            try:
+                float(start)
+                float(end)
+            except ValueError:
+                findings.append(Finding(
+                    rule_id="V050",
+                    severity=Severity.HARD,
+                    message=f"AUDIO start/end not numeric (start={start!r}, end={end!r})",
+                    path=path,
+                    location=location,
+                ))
     return findings
 
 
@@ -197,38 +210,48 @@ _ISO_CODES = _load_iso_639_3()
 _XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
 
 
-def v035_text_lang_is_iso_639_3(
+def v035_xml_lang_is_iso_639_3(
     tree: etree._ElementTree,
     path: Path,
     index: CorpusIndex | None,
 ) -> list[Finding]:
-    """The TEXT root's xml:lang must be a valid ISO 639-3 code.
+    """Every xml:lang attribute on every element must be a valid ISO 639-3 code.
 
-    Preserves the legacy validate_lang_code behavior at TEXT-level only.
-    Element-level (S, W, M) xml:lang checks are deferred to Phase 5
-    (V035 expansion).
+    Extends the legacy validate_lang_code (which only checked TEXT-level)
+    to walk all elements with an xml:lang attribute. Code-switching at the
+    S/W/M/TRANSL level is rare but real; when present, the language code
+    must still be a valid ISO 639-3 entry from QC/validation/iso-639-3.txt.
+
+    The TEXT-level case is also covered here: a missing xml:lang on TEXT
+    raises a finding (xml:lang is required on TEXT, but the DTD-driven
+    enforcement may not surface a finding shaped the same way as this rule).
     """
+    findings: list[Finding] = []
     root = tree.getroot()
-    if root.tag != "TEXT":
-        return []  # v001/v000 already report root-tag issues
-    lang = root.get(_XML_LANG)
-    if lang is None:
-        return [Finding(
+    if root.tag == "TEXT" and root.get(_XML_LANG) is None:
+        findings.append(Finding(
             rule_id="V035",
             severity=Severity.HARD,
             message="TEXT element missing xml:lang attribute",
             path=path,
             location="TEXT",
-        )]
-    if lang not in _ISO_CODES:
-        return [Finding(
+        ))
+    for element in tree.iter():
+        lang = element.get(_XML_LANG)
+        if lang is None:
+            continue
+        if lang in _ISO_CODES:
+            continue
+        elem_id = element.get("id")
+        location = f"{element.tag}={elem_id}" if elem_id else element.tag
+        findings.append(Finding(
             rule_id="V035",
             severity=Severity.HARD,
-            message=f"TEXT xml:lang={lang!r} is not a valid ISO 639-3 code",
+            message=f"{element.tag} xml:lang={lang!r} is not a valid ISO 639-3 code",
             path=path,
-            location="TEXT",
-        )]
-    return []
+            location=location,
+        ))
+    return findings
 
 
 def v017_form_must_have_content(
@@ -265,7 +288,7 @@ RULES: list = [
     v001_root_must_be_TEXT,
     v016_known_kindOf_values,
     v017_form_must_have_content,
-    v035_text_lang_is_iso_639_3,
+    v035_xml_lang_is_iso_639_3,
     v050_audio_attr_present,
     v051_audio_start_before_end,
 ]

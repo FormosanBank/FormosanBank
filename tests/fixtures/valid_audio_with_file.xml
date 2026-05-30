@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Positive fixture for V050 (AUDIO start/end conditional on @file).
+
+  Shape: AUDIO has its own @file attribute (per-element audio file).
+  Per the canonical spec, the whole referenced file IS the clip, so
+  start and end are NOT required.
+
+  Regression pin: a previous version of v050_audio_attr_present
+  unconditionally required start/end on every AUDIO element, producing
+  false positive findings on legitimate per-element @file audio.
+  This fixture must validate clean; if v050 ever regresses to the
+  blanket-required behavior, this test fails.
+-->
+<TEXT id="audio_with_file" citation="t" BibTeX_citation="@t{t}" copyright="t" xml:lang="ami">
+  <S id="S_1">
+    <FORM kindOf="original">Halo.</FORM>
+    <AUDIO file="clip1.wav"/>
+  </S>
+</TEXT>
