@@ -235,18 +235,28 @@ def _load_iso_639_3() -> frozenset[str]:
 _ISO_CODES = _load_iso_639_3()
 _XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
 
+# Explicitly-allowed non-ISO-639-3 language tags. ISO 639-3 has no way to
+# distinguish Simplified vs Traditional Chinese script (both collapse to
+# "zho"), but in the Glosbe corpus the distinction is load-bearing —
+# zh-Hans (IETF BCP 47 Simplified Chinese) is preserved as-is. The
+# Traditional-script variant zh-Hant is remediated to "zho" because the
+# script is preserved by the rest of the corpus structure.
+_ALLOWED_NON_ISO_LANGS: frozenset[str] = frozenset({"zh-Hans"})
+
 
 def v035_xml_lang_is_iso_639_3(
     tree: etree._ElementTree,
     path: Path,
     index: CorpusIndex | None,
 ) -> list[Finding]:
-    """Every xml:lang attribute on every element must be a valid ISO 639-3 code.
+    """Every xml:lang attribute on every element must be a valid ISO 639-3 code,
+    or in the explicit allow-list of non-ISO tags FormosanBank accepts.
 
     Extends the legacy validate_lang_code (which only checked TEXT-level)
     to walk all elements with an xml:lang attribute. Code-switching at the
     S/W/M/TRANSL level is rare but real; when present, the language code
-    must still be a valid ISO 639-3 entry from QC/validation/iso-639-3.txt.
+    must still be a valid ISO 639-3 entry from QC/validation/iso-639-3.txt
+    (or be in `_ALLOWED_NON_ISO_LANGS`).
 
     The TEXT-level case is also covered here: a missing xml:lang on TEXT
     raises a finding (xml:lang is required on TEXT, but the DTD-driven
@@ -266,7 +276,7 @@ def v035_xml_lang_is_iso_639_3(
         lang = element.get(_XML_LANG)
         if lang is None:
             continue
-        if lang in _ISO_CODES:
+        if lang in _ISO_CODES or lang in _ALLOWED_NON_ISO_LANGS:
             continue
         elem_id = element.get("id")
         location = f"{element.tag}={elem_id}" if elem_id else element.tag

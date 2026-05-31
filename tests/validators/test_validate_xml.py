@@ -432,6 +432,23 @@ def test_V036_TEXT_dialect_must_be_valid_negative(tmp_path, fixtures_dir, copy_f
     )
 
 
+def test_V035_zh_Hans_is_accepted(tmp_path, fixtures_dir, copy_fixture):
+    """V035 positive: xml:lang='zh-Hans' is accepted via the explicit
+    non-ISO allow-list.
+
+    ISO 639-3 has no way to distinguish Simplified vs Traditional Chinese
+    (both collapse to 'zho'). zh-Hans is preserved as a documented
+    exception because the script distinction is load-bearing in some
+    corpora (notably Glosbe).
+    """
+    copy_fixture(fixtures_dir / "valid_zh_Hans_transl.xml", tmp_path)
+    proc = _run_validate(tmp_path)
+    assert _is_clean(proc), (
+        f"expected zh-Hans to validate clean; got stdout={proc.stdout!r}, "
+        f"stderr={proc.stderr!r}"
+    )
+
+
 def test_V036_trv_with_truku_dialect_is_clean(tmp_path, fixtures_dir, copy_fixture):
     """V036 positive: xml:lang='trv' with dialect='Truku' validates cleanly.
 
