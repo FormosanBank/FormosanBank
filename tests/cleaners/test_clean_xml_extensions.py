@@ -110,6 +110,9 @@ IDEMPOTENT_FIXTURES = [
     "c006_caret_variant_in_form_and_transl.xml",
     "c010_nfd_in_form_all_tiers.xml",
     "c011_hyphens_preserved_in_original.xml",
+    "c012_hyphens_in_standard_amis.xml",
+    "c012_hyphens_in_standard_bunun.xml",
+    "c012_hyphens_in_standard_thao.xml",
     "c013_W_segmentation_preserved.xml",
     "c014_angle_gloss_in_W_transl.xml",
     "c019_d_stroke_in_bunun_form.xml",
@@ -124,9 +127,6 @@ IDEMPOTENT_FIXTURES = [
 # fixture from XFAIL_FIXTURES — the import-time drift assertion below
 # will then require the fixture to be added to IDEMPOTENT_FIXTURES.
 XFAIL_FIXTURES = {
-    "c012_hyphens_in_standard_amis.xml",
-    "c012_hyphens_in_standard_bunun.xml",
-    "c012_hyphens_in_standard_thao.xml",
     "c022_sentence_initial_asterisk.xml",
 }
 
@@ -433,10 +433,13 @@ def test_C003_repeated_punct_collapses_in_form_and_transl(
     std = _form_texts_with_kindof(work, "S", "standard")[0]
     transl = _transl_texts(work, "S")[0]
 
-    expected_form = "Halo! Hapinangha? Pa-tas."
+    expected_orig = "Halo! Hapinangha? Pa-tas."
+    # C003 collapses --- → - in standard, then C012 strips that hyphen because
+    # Amis (ami) does not have '-' as a letter in Ortho113/Amis.tsv.
+    expected_std = "Halo! Hapinangha? Patas."
     expected_transl = "Hello! How are you? Wri-ting."
-    assert orig == expected_form, f"original: {orig!r}"
-    assert std == expected_form, f"standard: {std!r}"
+    assert orig == expected_orig, f"original: {orig!r}"
+    assert std == expected_std, f"standard: {std!r}"
     assert transl == expected_transl, f"TRANSL: {transl!r}"
 
 
@@ -650,7 +653,6 @@ def test_C011_hyphens_preserved_in_S_FORM_original(
 # gap here and revisit when B adds the flag.
 
 
-@pytest.mark.xfail(strict=True, reason=XFAIL_NOT_YET_IMPLEMENTED)
 def test_C012_amis_standard_hyphens_stripped(
     tmp_path, fixtures_dir, copy_fixture
 ):
@@ -663,7 +665,6 @@ def test_C012_amis_standard_hyphens_stripped(
     assert std == "Mkan ku nhapuy.", f"standard: {std!r}"
 
 
-@pytest.mark.xfail(strict=True, reason=XFAIL_NOT_YET_IMPLEMENTED)
 def test_C012_bunun_standard_hyphens_preserved_with_warning(
     tmp_path, fixtures_dir, copy_fixture
 ):
@@ -689,7 +690,6 @@ def test_C012_bunun_standard_hyphens_preserved_with_warning(
     )
 
 
-@pytest.mark.xfail(strict=True, reason=XFAIL_NOT_YET_IMPLEMENTED)
 def test_C012_thao_standard_hyphens_preserved_with_warning(
     tmp_path, fixtures_dir, copy_fixture
 ):
