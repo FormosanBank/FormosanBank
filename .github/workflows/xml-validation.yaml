@@ -1,0 +1,133 @@
+name: xml-validation
+
+# Runs the modular XML validator (validate_xml.py) against corpus data.
+#
+# Two trigger paths with different strictness:
+#
+# 1. **PR-changed files** (PR trigger): runs the validator on EVERY
+#    .xml file the PR touches under `Corpora/*/XML/`. Exits nonzero on
+#    any HARD finding. This BLOCKS the PR if a contributor adds or
+#    modifies XML that violates the rules. The "changed files only"
+#    scope means existing legacy bad data in unrelated corpora does
+#    NOT block unrelated PRs.
+#
+# 2. **Full-corpus baseline** (push-to-main + scheduled): runs the
+#    validator against all of `Corpora/` in informational mode
+#    (--no-exit-on-hard) and uploads the stderr log as an artifact.
+#    Does NOT fail the build. This is the longitudinal signal: as
+#    the corpora get cleaned up (B5 item 17 follow-ups, audit-driven
+#    fixes, etc.), the baseline finding count drifts down. Once the
+#    baseline reaches zero we can switch the full-corpus job to
+#    blocking mode and retire the PR-changed-files scoping.
+
+on:
+  pull_request:
+    paths:
+      - 'Corpora/**.xml'
+      - 'QC/validation/**'
+      - '.github/workflows/xml-validation.yaml'
+  push:
+    branches: [main]
+    paths:
+      - 'Corpora/**.xml'
+      - 'QC/validation/**'
+      - '.github/workflows/xml-validation.yaml'
+
+jobs:
+  validate-changed-files:
+    name: Validate XML files changed by this PR
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # we need history to diff against the PR base
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: 'pip'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Identify XML files changed in this PR
+        id: changed
+        run: |
+          # Files added or modified (not deleted) under Corpora/*/XML/.
+          # Excludes files outside the canonical XML/ subdir.
+          git diff --name-only --diff-filter=AM \
+            "origin/${{ github.base_ref }}...HEAD" \
+            -- 'Corpora/**/XML/**/*.xml' > changed_xml.txt
+          count=$(wc -l < changed_xml.txt)
+          echo "count=$count" >> "$GITHUB_OUTPUT"
+          echo "Changed canonical XML files: $count"
+          if [ "$count" -gt 0 ]; then
+            echo "Files:"
+            cat changed_xml.txt
+          fi
+      - name: Validate each changed XML file
+        if: steps.changed.outputs.count != '0'
+        run: |
+          # Run validate_xml.py by_path on each changed file. The
+          # default behavior (exit 1 on HARD findings) blocks the PR
+          # if any of the changed files violate the rules.
+          fail=0
+          while IFS= read -r file; do
+            [ -z "$file" ] && continue
+            echo "::group::validate $file"
+            if ! .venv/bin/python QC/validation/validate_xml.py by_path \
+                 --path "$file" \
+                 --soft-csv "/tmp/soft-$(basename "$file").csv"; then
+              fail=1
+            fi
+            echo "::endgroup::"
+          done < changed_xml.txt
+          exit $fail
+        # When venv doesn't exist in CI (it's a dev artifact), fall
+        # back to the system python. The dependencies are already
+        # installed by the previous step.
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+
+  validate-baseline:
+    name: Full-Corpora baseline (informational, not blocking)
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: 'pip'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run validator across full Corpora/ (informational)
+        run: |
+          # --no-exit-on-hard so this job never fails the build.
+          # The log is the artifact; the finding count over time is
+          # the signal. When the baseline reaches zero we can promote
+          # this job to blocking mode and retire the PR-changed-files
+          # job above.
+          python QC/validation/validate_xml.py by_path \
+            --path Corpora \
+            --no-exit-on-hard \
+            --soft-csv validation-soft.csv \
+            > /dev/null 2> validation-stderr.log
+          # Headline counts for the build log.
+          echo "=== Headline counts ==="
+          grep -E "^Total issues found:" validation-stderr.log || true
+          echo "=== Top 10 rule_ids by frequency ==="
+          grep -oE '\[V[0-9]+\]' validation-stderr.log | sort | uniq -c | sort -rn | head -10 || true
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+      - name: Upload validation log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: xml-validation-baseline-log
+          path: |
+            validation-stderr.log
+            validation-soft.csv
+          retention-days: 90
