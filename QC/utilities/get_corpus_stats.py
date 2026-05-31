@@ -23,20 +23,27 @@ def extract_text_from_xml(tree: str, use_standard: bool = False) -> Tuple[str, s
     Returns:
         Tuple of (extracted_text, language_code, dialect, en_transl_count, zho_transl_count)
         en_transl_count  – number of Formosan words (from S FORMs) in sentences with an English <TRANSL>
-        zho_transl_count – number of Formosan words (from S FORMs) in sentences with a Mandarin <TRANSL>
-                           (xml:lang="zho" or "zh-Hant")
+        zho_transl_count – number of Formosan words (from S FORMs) in sentences with a Chinese <TRANSL>
+                           (xml:lang="zho" — Simplified Chinese variant zh-Hans is also counted as
+                            Chinese per the V035 allow-list exception)
     """
     XML_LANG = '{http://www.w3.org/XML/1998/namespace}lang'
-    ZHO_CODES = {'zho', 'zh-hant', 'zh'}
+    # Accept both pre- and post-2026-05-31 ISO 639-3 remediation codes so this
+    # script works on current data AND on historical revisions checked out from
+    # git. After the per-corpus remediation, only 'eng' and 'zho' (plus 'zh-hans'
+    # in Glosbe) actually appear; the legacy 'en', 'zh', 'zh-hant' entries are
+    # kept for backwards compatibility.
+    ENG_CODES = {'eng', 'en'}
+    ZHO_CODES = {'zho', 'zh', 'zh-hant', 'zh-hans'}
 
     try:
         root = tree.getroot()
-        
+
         # Extract metadata from the root TEXT element
         # Handle xml:lang attribute properly - xml namespace is predefined
         language = root.get('{http://www.w3.org/XML/1998/namespace}lang', '').lower()  # ISO 639-3 language code
         dialect = root.get('dialect', '')            # Dialect name if specified
-        
+
         # Extract text from FORM elements marked as original or standard orthography
         # We prioritize sentence-level forms over word-level forms
         texts = []
@@ -58,7 +65,7 @@ def extract_text_from_xml(tree: str, use_standard: bool = False) -> Tuple[str, s
             for transl in sentence.findall('TRANSL'):
                 lang_code = (transl.get(XML_LANG) or '').lower()
                 if transl.text and transl.text.strip():
-                    if lang_code == 'en':
+                    if lang_code in ENG_CODES:
                         en_transl_count += sentence_words
                     elif lang_code in ZHO_CODES:
                         zho_transl_count += sentence_words
