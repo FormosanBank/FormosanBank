@@ -180,10 +180,7 @@ def analyze_and_modify_xml_file(xml_dir, corpora_dir):
                                 modified = True
 
                             # Handle specific <FORM> cases
-                            if not form_text:  # Remove <S> if <FORM> is empty
-                                root.remove(sentence)
-                                modified = True
-                            elif "456otca" in form_text:  # Remove <S> if text contains 456otca
+                            if "456otca" in form_text:  # Remove <S> if text contains 456otca
                                 root.remove(sentence)
                                 modified = True
                             else:
