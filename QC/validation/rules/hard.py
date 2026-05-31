@@ -290,6 +290,57 @@ def v035_xml_lang_is_iso_639_3(
     return findings
 
 
+def v011_W_must_have_FORM(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V011: every <W> element must have at least one FORM child.
+
+    Previously enforced via the XSD sequence requirement (FORM at the
+    start of W's content model). When the XSD was relaxed (2026-05-31)
+    to allow FORM/PHON/AUDIO/TRANSL in any order, the FORM requirement
+    became expressible only as a Python rule.
+    """
+    findings: list[Finding] = []
+    for w in tree.iter("W"):
+        if not any(child.tag == "FORM" for child in w):
+            w_id = w.get("id")
+            findings.append(Finding(
+                rule_id="V011",
+                severity=Severity.HARD,
+                message=f"W id={w_id!r} has no FORM child; W must have at least one FORM",
+                path=path,
+                location=f"W={w_id}" if w_id else "W",
+            ))
+    return findings
+
+
+def v012_M_must_have_FORM(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V012: every <M> element must have at least one FORM child.
+
+    Same rationale as V011: previously enforced by XSD sequence; now a
+    Python rule after the 2026-05-31 XSD relaxation to allow
+    sibling-element order flexibility within W/M/S content models.
+    """
+    findings: list[Finding] = []
+    for m in tree.iter("M"):
+        if not any(child.tag == "FORM" for child in m):
+            m_id = m.get("id")
+            findings.append(Finding(
+                rule_id="V012",
+                severity=Severity.HARD,
+                message=f"M id={m_id!r} has no FORM child; M must have at least one FORM",
+                path=path,
+                location=f"M={m_id}" if m_id else "M",
+            ))
+    return findings
+
+
 def v017_form_must_have_content(
     tree: etree._ElementTree,
     path: Path,
@@ -386,37 +437,15 @@ def v015_S_at_most_one_original_FORM(
 
 
 # ---------------------------------------------------------------------------
-# Category 2: TRANSL rules (V021, V022, V023, V026)
+# Category 2: TRANSL rules (V022, V023, V026)
+# V021 was removed 2026-05-31 — TRANSL does not need to have kindOf at all;
+# the original framing ("lone M-TRANSL must be kindOf=original") was an
+# overspecification that did not reflect how the corpora are actually
+# authored (per user direction; corpus-cleanup tasks captured in
+# .claude/plans/2026-05-31-corpus-cleanup-tasks.md).
 # ---------------------------------------------------------------------------
 
 _XML_LANG_ATTR = "{http://www.w3.org/XML/1998/namespace}lang"
-
-
-def v021_M_lone_TRANSL_must_be_original(
-    tree: etree._ElementTree,
-    path: Path,
-    index: CorpusIndex | None,
-) -> list[Finding]:
-    """V021: on an M element, if exactly one TRANSL child exists, it must be kindOf='original'.
-
-    A single TRANSL on M without kindOf='original' is ambiguous and
-    disallowed. (Multiple TRANSLs may include non-original forms.)
-    """
-    findings: list[Finding] = []
-    for m in tree.iter("M"):
-        transls = [child for child in m if child.tag == "TRANSL"]
-        if len(transls) == 1 and transls[0].get("kindOf") != "original":
-            m_id = m.get("id")
-            kind = transls[0].get("kindOf") or "(unset)"
-            findings.append(Finding(
-                rule_id="V021",
-                severity=Severity.HARD,
-                message=f"M id={m_id!r} has a lone TRANSL with kindOf={kind!r}; "
-                        "single transl on M must be kindOf='original'",
-                path=path,
-                location=f"M={m_id}" if m_id else "M",
-            ))
-    return findings
 
 
 def v022_M_originals_distinct_lang(
@@ -900,8 +929,9 @@ RULES: list = [
     v001_root_must_be_TEXT,
     v013_S_must_have_original_FORM,
     v015_S_at_most_one_original_FORM,
+    v011_W_must_have_FORM,
+    v012_M_must_have_FORM,
     v017_form_must_have_content,
-    v021_M_lone_TRANSL_must_be_original,
     v022_M_originals_distinct_lang,
     v023_transl_must_have_xml_lang,
     v026_M_transl_kindof_enum,

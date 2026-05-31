@@ -150,12 +150,9 @@ Each rule below has:
 - **Source:** GitBook; XSD (`maxOccurs="unbounded"`).
 - **Currently checked?** N/A.
 
-#### V021 — On `<M>`, if exactly 1 `<TRANSL>`, it must be `kindOf="original"`
-- **Severity:** HARD
-- **Description:** Per the user-supplied rules: an `<M>` may have 0 or N `<TRANSL>` children. If it has exactly 1, that one TRANSL must be marked `kindOf="original"`. (Rationale: a single morpheme-level gloss is always the original gloss; an updated/standardized gloss makes no sense without an original to standardize from.)
-- **Source:** User-supplied rules (verbatim).
-- **Currently checked?** No.
-- **Example violation:** `<M><FORM kindOf="original">ʕa</FORM><TRANSL xml:lang="en">1SG</TRANSL></M>` (the lone TRANSL lacks `kindOf="original"`).
+#### V021 — REMOVED (2026-05-31)
+- **Status:** Removed per user direction. The original framing ("on `<M>`, if exactly 1 `<TRANSL>`, it must be `kindOf='original'`") was an overspecification. TRANSL does not need to have `kindOf` at all. The rule, its Python implementation, fixture, and test have been deleted.
+- See `.claude/plans/2026-05-31-corpus-cleanup-tasks.md` for the per-corpus data this would have flagged (kept for the future corpus-reproduction reworks; not actionable today because changes to those corpora must be part of the reproducible pipeline).
 
 #### V022 — On `<M>`, multiple `kindOf="original"` TRANSLs must have distinct `xml:lang`
 - **Severity:** HARD

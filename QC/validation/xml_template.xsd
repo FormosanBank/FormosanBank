@@ -92,38 +92,41 @@
     <xs:attribute name="url" type="xs:string"/>
   </xs:complexType>
 
-  <!-- M element: canonical layout is FORM/PHON pairs (one per kindOf),
-       then TRANSL, then optional AUDIO. The FORM+PHON portion is an
-       xs:choice so they may interleave (FORM_original, PHON_original,
-       FORM_standard, PHON_standard); cardinality of each kindOf is
-       enforced by v015 (max one FORM kindOf=original) and v072
-       (no duplicate PHON kindOf) at the Python rule layer. -->
+  <!-- M element: FORM, PHON, AUDIO, TRANSL may appear in ANY order via
+       xs:choice. Per the design (and user direction 2026-05-31):
+       sibling-element ordering within a parent is NOT a validation
+       concern. Cardinality of each kindOf is enforced by Python rules
+       (v015 for FORM kindOf=original; v072 for duplicate PHON kindOf).
+       M may have zero or more of each type (M without a FORM is
+       unusual but not currently disallowed at the schema level —
+       V011/V012 cover the required-FORM-on-W/M case for FORM specifically). -->
 
   <xs:complexType name="M_Type">
     <xs:sequence>
-      <xs:choice minOccurs="1" maxOccurs="4">
+      <xs:choice minOccurs="1" maxOccurs="unbounded">
         <xs:element name="FORM" type="FORM_Type"/>
         <xs:element name="PHON" type="PHON_Type"/>
+        <xs:element name="AUDIO" type="AUDIO_Type"/>
+        <xs:element name="TRANSL" type="TRANSL_Type"/>
       </xs:choice>
-      <xs:element name="TRANSL" type="TRANSL_Type" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="AUDIO" type="AUDIO_Type" minOccurs="0" maxOccurs="1"/>
     </xs:sequence>
     <xs:attribute name="id" type="xs:string" use="required"/>
     <xs:attribute name="class" type="xs:string"/>
     <xs:attribute name="sclass" type="xs:string"/>
   </xs:complexType>
 
-  <!-- W element: same FORM/PHON-interleave rationale as M; trailing
-       AUDIO, TRANSL, M positions stay in fixed order. -->
+  <!-- W element: same order-flexibility rationale as M. The trailing
+       M position remains fixed (M elements are nested word-internal
+       structure and clearly come after the sister elements). -->
 
   <xs:complexType name="W_Type">
     <xs:sequence>
-      <xs:choice minOccurs="1" maxOccurs="4">
+      <xs:choice minOccurs="1" maxOccurs="unbounded">
         <xs:element name="FORM" type="FORM_Type"/>
         <xs:element name="PHON" type="PHON_Type"/>
+        <xs:element name="AUDIO" type="AUDIO_Type"/>
+        <xs:element name="TRANSL" type="TRANSL_Type"/>
       </xs:choice>
-      <xs:element name="AUDIO" type="AUDIO_Type" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="TRANSL" type="TRANSL_Type" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="M" type="M_Type" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
     <xs:attribute name="id" type="xs:string" use="required"/>
@@ -131,21 +134,20 @@
     <xs:attribute name="sclass" type="xs:string"/>
   </xs:complexType>
 
-  <!-- S element: FORM/PHON-interleave block (0-4, enforcing per-kindOf
-       cardinality via Python rules) followed by TRANSL*, AUDIO?, W*.
-       V010 (SOFT): S is allowed to have 0 FORMs (e.g., diarized-audio
-       S elements that have not yet been transcribed). The Python rule
-       v010_count_s_without_form in rules/soft.py counts and reports them.
-       W/M still require FORM (V011/V012 are HARD). -->
+  <!-- S element: same order-flexibility rationale; W stays at the end.
+       V010 (SOFT): S is allowed to have 0 sibling content (e.g.,
+       diarized-audio S elements that have not yet been transcribed).
+       The Python rule v010_count_s_without_form counts and reports them.
+       W/M still require at least one FORM (V011/V012 are HARD). -->
 
   <xs:complexType name="S_Type">
     <xs:sequence>
-      <xs:choice minOccurs="0" maxOccurs="4">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="FORM" type="FORM_Type"/>
         <xs:element name="PHON" type="PHON_Type"/>
+        <xs:element name="AUDIO" type="AUDIO_Type"/>
+        <xs:element name="TRANSL" type="TRANSL_Type"/>
       </xs:choice>
-      <xs:element name="TRANSL" type="TRANSL_Type" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="AUDIO" type="AUDIO_Type" minOccurs="0" maxOccurs="1"/>
       <xs:element name="W" type="W_Type" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
     <xs:attribute name="id" type="xs:string" use="required"/>

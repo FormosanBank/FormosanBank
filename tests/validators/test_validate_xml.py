@@ -289,17 +289,10 @@ def test_V017_empty_FORM_content_negative(tmp_path, fixtures_dir, copy_fixture):
 
 
 # -----------------------------------------------------------------------------
-# TRANSL: V021, V022, V023, V024, V026
+# TRANSL: V022, V023, V024, V026
+# (V021 removed 2026-05-31 — TRANSL does not need kindOf at all; per user
+# direction. See .claude/plans/2026-05-31-corpus-cleanup-tasks.md.)
 # -----------------------------------------------------------------------------
-
-
-def test_V021_M_single_TRANSL_must_be_original_negative(tmp_path, fixtures_dir, copy_fixture):
-    """V021: on M, a lone TRANSL without kindOf="original" must produce a finding."""
-    copy_fixture(fixtures_dir / "v021_M_single_TRANSL_not_original.xml", tmp_path)
-    proc = _run_validate(tmp_path)
-    assert _has_rule_finding(proc, ("v021", "lone transl", "single transl")), (
-        f"expected finding about M lone-TRANSL kindOf; got stdout={proc.stdout!r}"
-    )
 
 
 def test_V022_M_multiple_originals_must_have_distinct_lang_negative(
