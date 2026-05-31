@@ -5,6 +5,39 @@ import html
 import argparse
 import unicodedata
 
+XML_LANG_ATTR = "{http://www.w3.org/XML/1998/namespace}lang"
+
+_CHINESE_LANGS = frozenset({
+    "zho", "zh", "cmn", "yue", "wuu", "hak", "nan",
+})
+
+
+def _get_xml_lang(element) -> str | None:
+    """Return the effective xml:lang for element.
+
+    Walk up from element through its ancestors, returning the first
+    xml:lang value found. Falls back to None if no ancestor (including
+    element itself) carries xml:lang.
+
+    Used by language-aware cleaning rules to decide whether an element
+    carries Chinese text.
+    """
+    node = element
+    while node is not None:
+        lang = node.get(XML_LANG_ATTR)
+        if lang is not None:
+            return lang
+        node = node.getparent()
+    return None
+
+
+def _is_chinese(lang: str | None) -> bool:
+    """Return True when lang matches a known Chinese variant."""
+    if lang is None:
+        return False
+    return lang.lower() in _CHINESE_LANGS or lang.lower().startswith("zh")
+
+
 '''
 def fix_parentheses(text):
     """

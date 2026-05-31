@@ -882,3 +882,34 @@ def test_C025_idempotency_for_positive_fixtures(
         f"cleaner is not idempotent for {fixture_name}: "
         f"once vs twice produces different bytes"
     )
+
+
+# =============================================================================
+# Infrastructure unit tests (no xfail — tests the helpers directly)
+# =============================================================================
+
+def test_get_xml_lang_from_direct_attribute():
+    """_get_xml_lang finds xml:lang on the element itself."""
+    from QC.cleaning.clean_xml import _get_xml_lang
+    xml = b'<TEXT xml:lang="ami"><S><TRANSL xml:lang="eng">hi</TRANSL></S></TEXT>'
+    tree = etree.fromstring(xml)
+    transl = tree.find(".//TRANSL")
+    assert _get_xml_lang(transl) == "eng"
+
+
+def test_get_xml_lang_walks_up_to_ancestor():
+    """_get_xml_lang walks up to the TEXT root if element has no xml:lang."""
+    from QC.cleaning.clean_xml import _get_xml_lang
+    xml = b'<TEXT xml:lang="ami"><S><FORM kindOf="original">x</FORM></S></TEXT>'
+    tree = etree.fromstring(xml)
+    form = tree.find(".//FORM")
+    assert _get_xml_lang(form) == "ami"
+
+
+def test_get_xml_lang_returns_none_when_missing():
+    """_get_xml_lang returns None when no ancestor carries xml:lang."""
+    from QC.cleaning.clean_xml import _get_xml_lang
+    xml = b'<TEXT><S><FORM>x</FORM></S></TEXT>'
+    tree = etree.fromstring(xml)
+    form = tree.find(".//FORM")
+    assert _get_xml_lang(form) is None
