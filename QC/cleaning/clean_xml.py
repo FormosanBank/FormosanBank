@@ -1,9 +1,12 @@
+import csv
 import os
 import re
+from dataclasses import dataclass, field
 from lxml import etree
 import html
 import argparse
 import unicodedata
+from pathlib import Path
 
 XML_LANG_ATTR = "{http://www.w3.org/XML/1998/namespace}lang"
 
@@ -36,6 +39,48 @@ def _is_chinese(lang: str | None) -> bool:
     if lang is None:
         return False
     return lang.lower() in _CHINESE_LANGS or lang.lower().startswith("zh")
+
+
+@dataclass
+class CleanerWarnings:
+    """Accumulates per-occurrence warning rows and writes a CSV at end of run.
+
+    CSV columns: rule_id, file, s_id, character, position.
+
+    write_csv() is a no-op when no rows have been added (avoids creating
+    empty files on clean corpora).
+    """
+    csv_path: Path
+    _rows: list = field(default_factory=list, repr=False)
+
+    def add(
+        self,
+        rule_id: str,
+        file_path: str,
+        s_id: str | None,
+        character: str,
+        position: int,
+    ) -> None:
+        self._rows.append({
+            "rule_id": rule_id,
+            "file": file_path,
+            "s_id": s_id or "",
+            "character": character,
+            "position": position,
+        })
+
+    def write_csv(self) -> None:
+        if not self._rows:
+            return
+        self.csv_path.parent.mkdir(parents=True, exist_ok=True)
+        with open(self.csv_path, "a", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(
+                f,
+                fieldnames=["rule_id", "file", "s_id", "character", "position"],
+            )
+            if f.tell() == 0:
+                writer.writeheader()
+            writer.writerows(self._rows)
 
 
 '''

@@ -913,3 +913,24 @@ def test_get_xml_lang_returns_none_when_missing():
     tree = etree.fromstring(xml)
     form = tree.find(".//FORM")
     assert _get_xml_lang(form) is None
+
+
+def test_cleaner_warnings_appends_rows(tmp_path):
+    """CleanerWarnings.add() accumulates rows; write_csv() creates a CSV."""
+    from QC.cleaning.clean_xml import CleanerWarnings
+    w = CleanerWarnings(tmp_path / "out.csv")
+    w.add("c002", str(tmp_path / "foo.xml"), "S_1", "ʼ", 3)
+    w.add("c007", str(tmp_path / "bar.xml"), "S_2", "ㄇ", 0)
+    w.write_csv()
+    text = (tmp_path / "out.csv").read_text(encoding="utf-8").lower()
+    assert "c002" in text
+    assert "c007" in text
+    assert "ʼ".lower() in text or "02bc" in text  # char or unicode point
+
+
+def test_cleaner_warnings_no_file_when_empty(tmp_path):
+    """CleanerWarnings.write_csv() does NOT create the file if no rows."""
+    from QC.cleaning.clean_xml import CleanerWarnings
+    w = CleanerWarnings(tmp_path / "out.csv")
+    w.write_csv()
+    assert not (tmp_path / "out.csv").exists()
