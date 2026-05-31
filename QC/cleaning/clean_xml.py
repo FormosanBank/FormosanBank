@@ -26,17 +26,6 @@ def fix_parentheses(text):
     )
 '''
 
-def remove_nonlatin(text):
-    """
-    Removes characters that are not part of:
-    - Latin script (including accented characters)
-    - IPA Extensions (e.g., ʉ, ɨ)
-    - Digits (0-9)
-    - Common punctuation marks, including the caret (^)
-    """
-    pattern = r'[^A-Za-zÀ-ÖØ-öø-ÿʉɨɑɪɾθðŋʃʒʔɔɛæœɑəɯʌʊɜɵɒɲχϕ 0-9.,;:!?`\'\"()\[\]{}<>^]'
-    return re.sub(pattern, ' ', text)
-
 def swap_punctuation(text):
     """
     Replaces specific non-ASCII punctuation with their ASCII equivalents.
@@ -143,8 +132,6 @@ def clean_text(text, lang):
     text = normalize_whitespace(text)
     text = trim_repeated_punctuation(text)
     text = remove_junk_chars(text)
-    #if lang not in ["zho", "zh"]:  # Apply only for non-Chinese languages
-    #    text = remove_nonlatin(text)
     return text
 
 def clean_trans(text, lang):
@@ -153,8 +140,6 @@ def clean_trans(text, lang):
     """
     text = normalize_whitespace(text)
     text = trim_repeated_punctuation(text)
-    #if lang not in ["zho", "zh"]:  # Apply only for non-Chinese languages
-    #    text = remove_nonlatin(text)
     return text
 
 def analyze_and_modify_xml_file(xml_dir, corpora_dir):
