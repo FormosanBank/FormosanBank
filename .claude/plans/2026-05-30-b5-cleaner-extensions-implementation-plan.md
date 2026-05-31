@@ -901,6 +901,53 @@ Expected: all pass (6 previously-xfailed now pass, C006 passes with updated asse
 
 Expected: 131 passed, 11 xfailed (6 more xfails flipped).
 
+- [ ] **Step 6b: Update docstrings on `clean_text` and `clean_trans` (roadmap item 20, OQ9)**
+
+After the language-aware logic + caret normalization is in place, add module-level docstrings on `clean_text` and `clean_trans` that document the new behavior:
+
+For `clean_text` (FORM-tier cleaner):
+```
+"""Clean a FORM element's text per the canonical cleaner rules.
+
+Always applied (language-agnostic):
+- normalize_caret_variants: U+2303, U+2038, U+02C6, U+FF3E -> ASCII '^'
+- normalize_whitespace
+- NFC unicode normalization
+- swap_punctuation (C001/C002: full-width punctuation and quote canonicalisation)
+
+The FORM tier is language-uniform: every FORM, regardless of TEXT/@xml:lang,
+gets the same cleaning pass. The language-aware branching lives in clean_trans
+because Chinese TRANSL needs different treatment (full-width punctuation
+preserved, quote-variant warnings instead of rewrites).
+"""
+```
+
+For `clean_trans` (TRANSL-tier cleaner):
+```
+"""Clean a TRANSL element's text per the canonical cleaner rules.
+
+Language-AGNOSTIC steps (always applied):
+- normalize_caret_variants: U+2303, U+2038, U+02C6, U+FF3E -> ASCII '^'
+- normalize_whitespace
+- NFC unicode normalization
+
+Language-AWARE steps (branch on TRANSL/@xml:lang, falling back to the
+effective xml:lang resolved via _get_xml_lang):
+- Non-Chinese TRANSL (xml:lang != 'zho'): swap_punctuation applies in full
+  (C001/C002 Branch A).
+- Chinese TRANSL (xml:lang == 'zho'): swap_punctuation is SKIPPED for
+  full-width punctuation (preserved); double-quote canonicalisation to
+  U+201D applies; single-quote / Latin-quote occurrences emit c002
+  warnings instead of being rewritten (C002 Branch B); ASCII apostrophe
+  emits warnings (C002 Branch B).
+
+In all cases, ˈ (U+02C8 MODIFIER LETTER VERTICAL LINE) is transformed
+and emits a c002b warning (per design doc C002b).
+"""
+```
+
+These docstrings are deliberate: they document at the function level what was previously only implicit. Future contributors reading the cleaner code see the rule structure upfront, not buried in branching logic. Per roadmap item 20.
+
 - [ ] **Step 7: Commit**
 
 ```bash
@@ -1336,7 +1383,7 @@ XFAIL_FIXTURES should contain no entries (all 10 fixture names moved to IDEMPOTE
 - **C006 caret-preservation pin revisit** (roadmap item 23): handled in Task 6 inline — the C006 TRANSL pin is updated as part of language-aware `clean_trans` landing.
 - **The `remove_non_working_audio.py` refactor** (7 xfails in `test_remove_non_working_audio.py`): separate sub-effort; not part of clean_xml extension work.
 - **Item 19** (audit `clean_xml.py` for validator-territory checks): separate from this plan; no validator-territory code was found in current `clean_xml.py`.
-- **Item 20** (OQ9 docstring update): add docstrings to `clean_text`/`clean_trans` after this plan lands, noting the FORM-vs-TRANSL asymmetry and the `xml:lang` branching logic.
+- **Item 20** (OQ9 docstring update): NOW HANDLED INLINE in Task 6 (Step 6b) — added once the language-aware logic and caret normalization are in place.
 - **Phase B6** (Category 6 candidates: footnote detection, out-of-language flagging, multi-word gloss normalisation): validator/scraper work, not cleaner work.
 
 ---
