@@ -57,11 +57,16 @@ def build_current_index(file_paths: list[Path]) -> tuple[dict, dict]:
 
 
 def build_published_index(corpora_root: Path) -> dict[str, list[Path]]:
-    """Walk corpora_root (typically <repo>/Corpora/) extracting TEXT/@id
-    from each .xml file. Returns id -> [paths]. Used for cross-corpus
-    id uniqueness check (V081). Files that fail to parse are silently
-    skipped — Corpora/ may contain files with issues that other validators
-    handle; this function's job is just id extraction.
+    """Walk each corpus's canonical XML/ subdirectory under corpora_root
+    (typically <repo>/Corpora/) extracting TEXT/@id from each .xml file.
+    Returns id -> [paths]. Used for cross-corpus id uniqueness check (V081).
+    Files that fail to parse are silently skipped.
+
+    Only the canonical `<corpus>/XML/` subdirectory is walked for each
+    corpus; working files under `CodeAndDocs/` are NOT considered
+    published and would otherwise produce false V081 collisions (e.g.,
+    Glosbe's reference_amis/Amis.xml is a working file, not published
+    data with the published id 'Amis').
 
     Returns an empty dict if corpora_root does not exist (gracefully
     handles CI environments without Corpora/).
@@ -69,15 +74,21 @@ def build_published_index(corpora_root: Path) -> dict[str, list[Path]]:
     if not corpora_root.exists():
         return {}
     result: dict[str, list[Path]] = {}
-    for xml_path in sorted(corpora_root.rglob("*.xml")):
-        try:
-            tree = etree.parse(str(xml_path))
-        except etree.XMLSyntaxError:
+    for child in sorted(corpora_root.iterdir()):
+        if not child.is_dir():
             continue
-        root = tree.getroot()
-        if root.tag != "TEXT":
+        xml_subdir = child / "XML"
+        if not xml_subdir.is_dir():
             continue
-        text_id = root.get("id")
-        if text_id:
-            result.setdefault(text_id, []).append(xml_path)
+        for xml_path in sorted(xml_subdir.rglob("*.xml")):
+            try:
+                tree = etree.parse(str(xml_path))
+            except etree.XMLSyntaxError:
+                continue
+            root = tree.getroot()
+            if root.tag != "TEXT":
+                continue
+            text_id = root.get("id")
+            if text_id:
+                result.setdefault(text_id, []).append(xml_path)
     return result

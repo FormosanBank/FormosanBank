@@ -58,13 +58,48 @@ Rule = Callable[[etree._ElementTree, Path, CorpusIndex | None], list[Finding]]
 def discover_xml_files(root: Path) -> list[Path]:
     """Return every .xml file under root, recursively.
 
-    Used for by_path, by_corpus, by_language modes uniformly. The
-    caller assembles the right root (a single dir, a single file, or
-    a filtered list).
+    Used for by_path mode (user-specified). The caller is responsible
+    for narrowing if they want corpus-canonical files only.
     """
     if root.is_file():
         return [root] if root.suffix == ".xml" else []
     return sorted(p for p in root.rglob("*.xml"))
+
+
+def discover_corpus_canonical_xml(corpus_root: Path) -> list[Path]:
+    """Return canonical XML files for a single corpus.
+
+    FormosanBank convention: a corpus's published XML lives under
+    `<corpus_root>/XML/`. Working files under `CodeAndDocs/` and
+    elsewhere are NOT canonical and must NOT be validated as if they
+    were — they routinely have non-canonical roots (e.g., ePark's
+    `<dataroot>` lookup tables), missing required attributes, or are
+    deliberately malformed scratch files.
+
+    If `<corpus_root>/XML/` does not exist (a corpus that hasn't been
+    re-laid-out yet), fall back to a full recursive walk so the
+    validator still tries something rather than silently skipping.
+    """
+    xml_subdir = corpus_root / "XML"
+    if xml_subdir.is_dir():
+        return sorted(p for p in xml_subdir.rglob("*.xml"))
+    return discover_xml_files(corpus_root)
+
+
+def discover_all_corpora_canonical_xml(corpora_root: Path) -> list[Path]:
+    """Return canonical XML for every corpus under corpora_root.
+
+    Walks each top-level subdirectory as a separate corpus, calling
+    `discover_corpus_canonical_xml` on each. Avoids picking up working
+    files at the `Corpora/` root level or under `CodeAndDocs/`.
+    """
+    if not corpora_root.is_dir():
+        return []
+    files: list[Path] = []
+    for child in sorted(corpora_root.iterdir()):
+        if child.is_dir():
+            files.extend(discover_corpus_canonical_xml(child))
+    return files
 
 
 def parse_tree(path: Path) -> etree._ElementTree:
@@ -186,11 +221,13 @@ def _resolve_target_files(args: argparse.Namespace) -> list[Path]:
     if args.search_by == "by_path":
         return discover_xml_files(args.path)
     if args.search_by == "by_corpus":
-        return discover_xml_files(args.corpora_path / args.corpus)
+        return discover_corpus_canonical_xml(args.corpora_path / args.corpus)
     if args.search_by == "by_language":
         # Filter by xml:lang at parse time — fast scan of the root attribute.
+        # Only walks each corpus's canonical XML/ subdir; working files under
+        # CodeAndDocs/ are excluded so we don't validate scratch data.
         files = []
-        for path in discover_xml_files(args.corpora_path):
+        for path in discover_all_corpora_canonical_xml(args.corpora_path):
             try:
                 tree = parse_tree(path)
                 lang_attr = "{http://www.w3.org/XML/1998/namespace}lang"

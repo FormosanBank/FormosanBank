@@ -143,8 +143,15 @@ def test_build_published_index_skips_non_TEXT_root(tmp_path):
 
 
 def test_build_published_index_multiple_files(tmp_path):
+    """Multiple corpora each contribute one file under their XML/ subdir.
+
+    build_published_index walks <corpora_root>/<corpus>/XML/ for each
+    top-level subdirectory; files placed directly at the corpora_root
+    level (or under CodeAndDocs/) are excluded as non-canonical.
+    """
     for i in range(3):
-        xml = tmp_path / f"file{i}.xml"
+        xml = tmp_path / f"corpus_{i}" / "XML" / f"file{i}.xml"
+        xml.parent.mkdir(parents=True)
         xml.write_text(
             f'<?xml version="1.0"?>'
             f'<TEXT id="corpus_{i}" xml:lang="ami" citation="x" BibTeX_citation="x" copyright="x">'
@@ -156,3 +163,35 @@ def test_build_published_index_multiple_files(tmp_path):
     assert len(result) == 3
     for i in range(3):
         assert f"corpus_{i}" in result
+
+
+def test_build_published_index_excludes_non_canonical_locations(tmp_path):
+    """Regression pin: files under <corpus>/CodeAndDocs/ or at the
+    corpora_root level are NOT picked up — only <corpus>/XML/**/*.xml.
+
+    Without this exclusion, ePark's CodeAndDocs/.../class.xml (root
+    element <dataroot>) would produce false V000 findings, and
+    Glosbe's CodeAndDocs/work/reference_amis/Amis.xml would produce
+    false V081 cross-corpus id collisions.
+    """
+    canonical = tmp_path / "corpus_a" / "XML" / "valid.xml"
+    canonical.parent.mkdir(parents=True)
+    canonical.write_text(
+        '<?xml version="1.0"?>'
+        '<TEXT id="canonical_id" xml:lang="ami" citation="x" BibTeX_citation="x" copyright="x">'
+        '<S id="S1"><FORM kindOf="original">x</FORM></S>'
+        '</TEXT>',
+        encoding="utf-8",
+    )
+    working = tmp_path / "corpus_a" / "CodeAndDocs" / "scratch.xml"
+    working.parent.mkdir(parents=True)
+    working.write_text(
+        '<?xml version="1.0"?>'
+        '<TEXT id="working_id" xml:lang="ami" citation="x" BibTeX_citation="x" copyright="x">'
+        '<S id="S1"><FORM kindOf="original">x</FORM></S>'
+        '</TEXT>',
+        encoding="utf-8",
+    )
+    result = build_published_index(tmp_path)
+    assert "canonical_id" in result
+    assert "working_id" not in result
