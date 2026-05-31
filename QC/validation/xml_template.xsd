@@ -92,13 +92,20 @@
     <xs:attribute name="url" type="xs:string"/>
   </xs:complexType>
 
-  <!-- M element: DTD declares M (FORM, TRANSL*, PHON*, AUDIO?) -->
+  <!-- M element: canonical layout is FORM/PHON pairs (one per kindOf),
+       then TRANSL, then optional AUDIO. The FORM+PHON portion is an
+       xs:choice so they may interleave (FORM_original, PHON_original,
+       FORM_standard, PHON_standard); cardinality of each kindOf is
+       enforced by v015 (max one FORM kindOf=original) and v072
+       (no duplicate PHON kindOf) at the Python rule layer. -->
 
   <xs:complexType name="M_Type">
     <xs:sequence>
-      <xs:element name="FORM" type="FORM_Type" minOccurs="1" maxOccurs="2"/>
+      <xs:choice minOccurs="1" maxOccurs="4">
+        <xs:element name="FORM" type="FORM_Type"/>
+        <xs:element name="PHON" type="PHON_Type"/>
+      </xs:choice>
       <xs:element name="TRANSL" type="TRANSL_Type" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="PHON" type="PHON_Type" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="AUDIO" type="AUDIO_Type" minOccurs="0" maxOccurs="1"/>
     </xs:sequence>
     <xs:attribute name="id" type="xs:string" use="required"/>
@@ -106,14 +113,17 @@
     <xs:attribute name="sclass" type="xs:string"/>
   </xs:complexType>
 
-  <!-- W element: DTD declares W (FORM, AUDIO?, TRANSL*, PHON*, M*) -->
+  <!-- W element: same FORM/PHON-interleave rationale as M; trailing
+       AUDIO, TRANSL, M positions stay in fixed order. -->
 
   <xs:complexType name="W_Type">
     <xs:sequence>
-      <xs:element name="FORM" type="FORM_Type" minOccurs="1" maxOccurs="2"/>
+      <xs:choice minOccurs="1" maxOccurs="4">
+        <xs:element name="FORM" type="FORM_Type"/>
+        <xs:element name="PHON" type="PHON_Type"/>
+      </xs:choice>
       <xs:element name="AUDIO" type="AUDIO_Type" minOccurs="0" maxOccurs="1"/>
       <xs:element name="TRANSL" type="TRANSL_Type" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="PHON" type="PHON_Type" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="M" type="M_Type" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
     <xs:attribute name="id" type="xs:string" use="required"/>
@@ -121,7 +131,8 @@
     <xs:attribute name="sclass" type="xs:string"/>
   </xs:complexType>
 
-  <!-- S element: DTD declares S (FORM, FORM?, TRANSL*, PHON*, AUDIO?, W*)
+  <!-- S element: FORM/PHON-interleave block (0-4, enforcing per-kindOf
+       cardinality via Python rules) followed by TRANSL*, AUDIO?, W*.
        V010 (SOFT): S is allowed to have 0 FORMs (e.g., diarized-audio
        S elements that have not yet been transcribed). The Python rule
        v010_count_s_without_form in rules/soft.py counts and reports them.
@@ -129,9 +140,11 @@
 
   <xs:complexType name="S_Type">
     <xs:sequence>
-      <xs:element name="FORM" type="FORM_Type" minOccurs="0" maxOccurs="2"/>
+      <xs:choice minOccurs="0" maxOccurs="4">
+        <xs:element name="FORM" type="FORM_Type"/>
+        <xs:element name="PHON" type="PHON_Type"/>
+      </xs:choice>
       <xs:element name="TRANSL" type="TRANSL_Type" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="PHON" type="PHON_Type" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="AUDIO" type="AUDIO_Type" minOccurs="0" maxOccurs="1"/>
       <xs:element name="W" type="W_Type" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
