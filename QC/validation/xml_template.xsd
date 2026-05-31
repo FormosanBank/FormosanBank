@@ -23,6 +23,10 @@
     elementFormDefault="unqualified"
     attributeFormDefault="unqualified">
 
+  <!-- xml.xsd is a local copy of the 2009 W3C xml.xsd. The W3C URL
+       returns 403 in some CI/offline environments, breaking validator
+       startup; bundling the local copy avoids that. The xml.xsd file
+       attributes to W3C and the XML Working Group in its own header. -->
   <xs:import namespace="http://www.w3.org/XML/1998/namespace"
              schemaLocation="xml.xsd"/>
 

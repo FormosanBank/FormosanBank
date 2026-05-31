@@ -86,11 +86,13 @@ Drop nothing from the source dev repo unless explicitly approved.
 
 ### Phase 4: Validate after port
 
-Run `validate_xml.py` on the new published XML to confirm DTD conformance:
+Run `validate_xml.py` on the new published XML to confirm DTD/XSD conformance.
+`--no-exit-on-hard` lets us inspect findings rather than aborting the skill
+on first failure; HARD findings appear on stderr regardless.
 
 ```bash
 <python> <formosanbank_path>/QC/validation/validate_xml.py by_path \
-  --path "<formosanbank_path>/Corpora/<corpus_name>/XML"
+  --path "<formosanbank_path>/Corpora/<corpus_name>/XML" --no-exit-on-hard
 ```
 
 **Resolve `<python>` in this order:**

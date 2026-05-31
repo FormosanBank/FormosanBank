@@ -72,7 +72,7 @@ def v001_root_must_be_TEXT(
 
 
 
-def v050_audio_attr_present(
+def v052_audio_single_file_mode_requires_start_end(
     tree: etree._ElementTree,
     path: Path,
     index: CorpusIndex | None,
@@ -121,7 +121,7 @@ def v050_audio_attr_present(
     return findings
 
 
-def v051_audio_start_before_end(
+def v054_audio_end_after_start(
     tree: etree._ElementTree,
     path: Path,
     index: CorpusIndex | None,
@@ -549,28 +549,80 @@ _ISO_TO_LANGUAGE: dict[str, str] = {
 
 _DIALECT_MAP: dict[str, set[str]] = _load_dialects()
 
+# trv is the ISO 639-3 code that linguists assign to a Seediq/Truku cluster,
+# but Truku speakers consider Truku a distinct language. Per FormosanBank
+# data convention: xml:lang="trv" requires a dialect attribute. dialect="Truku"
+# resolves to language name "Truku"; the other valid dialects (Seediq's three
+# Official dialects) resolve to "Seediq". The full valid set is the union.
+_TRV_VALID_DIALECTS: frozenset[str] = frozenset({"Truku"}) | _DIALECT_MAP.get(
+    "Seediq", set()
+)
+
+
+def _resolve_language_name(lang_code: str, dialect: str | None) -> str | None:
+    """Return the human-readable Language name for an ISO 639-3 code.
+
+    Handles the trv (Seediq/Truku) ambiguity per FormosanBank convention:
+    trv with dialect="Truku" is named "Truku"; trv with any other dialect
+    is named "Seediq". Other ISO codes resolve via the _ISO_TO_LANGUAGE
+    table directly. Returns None for unknown codes.
+    """
+    if lang_code == "trv":
+        return "Truku" if dialect == "Truku" else "Seediq"
+    return _ISO_TO_LANGUAGE.get(lang_code)
+
 
 def v036_text_dialect_valid(
     tree: etree._ElementTree,
     path: Path,
     index: CorpusIndex | None,
 ) -> list[Finding]:
-    """V036: TEXT/@dialect, if set, must be a valid dialect for the language.
+    """V036: TEXT/@dialect must be valid for the language.
 
-    Dialect validity is checked against dialects.csv (Language -> Official
-    dialect names). The ISO 639-3 code in TEXT/@xml:lang is mapped to a
-    Language name via the hardcoded _ISO_TO_LANGUAGE dict (sourced from
-    QC/corpus_metrics.py). If the language code is not in the dict, the
-    rule skips the check (unknown language; other rules cover invalid lang
-    codes).
+    Dialect validity is checked against dialects.csv. For most languages,
+    @dialect is OPTIONAL — if absent, the rule skips. If present, it must
+    match one of the Official dialects for the language identified by
+    TEXT/@xml:lang.
+
+    Special case for xml:lang="trv": @dialect is REQUIRED (not optional)
+    because trv is ambiguous between Truku and Seediq. The valid dialects
+    for trv are Truku + the three Seediq Official dialects.
     """
     root = tree.getroot()
     if root.tag != "TEXT":
         return []
+    lang_code = root.get(_XML_LANG_ATTR) or root.get("xml:lang") or ""
     dialect = root.get("dialect")
+
+    if lang_code == "trv":
+        if not dialect:
+            return [Finding(
+                rule_id="V036",
+                severity=Severity.HARD,
+                message=(
+                    "TEXT with xml:lang='trv' must specify a dialect "
+                    f"(one of {sorted(_TRV_VALID_DIALECTS)}); "
+                    "trv is ambiguous between Truku and Seediq without it"
+                ),
+                path=path,
+                location="TEXT",
+            )]
+        if dialect not in _TRV_VALID_DIALECTS:
+            return [Finding(
+                rule_id="V036",
+                severity=Severity.HARD,
+                message=(
+                    f"TEXT dialect={dialect!r} is not a valid dialect for "
+                    f"xml:lang='trv'; expected one of "
+                    f"{sorted(_TRV_VALID_DIALECTS)}"
+                ),
+                path=path,
+                location="TEXT",
+            )]
+        return []
+
     if not dialect:
         return []
-    lang_code = root.get(_XML_LANG_ATTR) or root.get("xml:lang") or ""
     language = _ISO_TO_LANGUAGE.get(lang_code)
     if language is None:
         return []  # unknown language code; v035 handles that
@@ -847,9 +899,9 @@ RULES: list = [
     v036_text_dialect_valid,
     v039_id_unique_within_file,
     v051_audio_empty_file,
-    v050_audio_attr_present,
-    v051_audio_start_before_end,
+    v052_audio_single_file_mode_requires_start_end,
     v053_orphan_audio,
+    v054_audio_end_after_start,
     v062_infix_M_needs_angle_gloss,
     v070_phon_placement,
     v071_phon_kindof_enum,

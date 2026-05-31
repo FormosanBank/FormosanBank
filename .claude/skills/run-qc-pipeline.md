@@ -83,9 +83,13 @@ No decisions.
 Run each validator, capturing output. Do NOT abort the recipe on failures — these are info-gathering:
 
 ```bash
-# DTD conformance
+# DTD/XSD conformance. --no-exit-on-hard so the pipeline does not
+# abort on HARD findings — this phase is informational; the log is
+# the artifact. The validator's default behavior is to exit 1 on HARD
+# findings, which is the right behavior for CI gating but wrong for
+# this dev-repo discovery flow.
 .venv/bin/python3 <formosanbank_path>/QC/validation/validate_xml.py by_path \
-  --path <xml_path> 2>&1 | tee <output_dir>/05a_validate_xml.log
+  --path <xml_path> --no-exit-on-hard 2>&1 | tee <output_dir>/05a_validate_xml.log
 
 # Punctuation validation
 .venv/bin/python3 <formosanbank_path>/QC/validation/validate_punct.py by_path \

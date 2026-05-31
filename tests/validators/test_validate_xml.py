@@ -432,6 +432,23 @@ def test_V036_TEXT_dialect_must_be_valid_negative(tmp_path, fixtures_dir, copy_f
     )
 
 
+def test_V036_trv_with_truku_dialect_is_clean(tmp_path, fixtures_dir, copy_fixture):
+    """V036 positive: xml:lang='trv' with dialect='Truku' validates cleanly.
+
+    trv has two language identities in FormosanBank convention: 'Truku' (for
+    dialect='Truku') and 'Seediq' (for the three Seediq Official dialects).
+    This pins the fix for a prior bug where trv was hardcoded to 'Seediq'
+    and dialect='Truku' falsely triggered V036 across all published Truku
+    corpus files.
+    """
+    copy_fixture(fixtures_dir / "valid_trv_truku.xml", tmp_path)
+    proc = _run_validate(tmp_path)
+    assert _is_clean(proc), (
+        f"expected clean validation for trv+Truku; got stdout={proc.stdout!r}, "
+        f"stderr={proc.stderr!r}"
+    )
+
+
 def test_V038_S_must_have_id_negative(tmp_path, fixtures_dir, copy_fixture):
     """V038: S without an id attribute is rejected by the schema."""
     copy_fixture(fixtures_dir / "v038_S_missing_id.xml", tmp_path)

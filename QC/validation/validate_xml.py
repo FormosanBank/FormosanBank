@@ -13,17 +13,14 @@ CLI shape (preserved from prior version):
 Common flags (--verbose, --log_dir, --no-exit-on-hard, --soft-csv) may
 appear either before or after the subcommand on the command line.
 
-Currently registered rules (HARD severity, all in rules/hard.py):
-  v000 — DTD validation (covers V003-V006, V011-V012, V030-V038, V050).
-  v001 — root must be TEXT (DTD does not enforce root tag identity).
-  v016 — FORM/@kindOf must be a known value.
-  v017 — FORM must have non-empty text content.
-  v035 — TEXT/@xml:lang must be a valid ISO 639-3 code.
-  v050 — AUDIO start and end attributes must be present and numeric.
-  v051 — AUDIO start must be less than end.
-
-SOFT and WARN rule modules exist but are empty pending Phases 5–7
-(per .claude/plans/2026-05-30-b-validator-refactor-design.md).
+For the authoritative list of registered rules, see the `RULES` and
+`CROSS_FILE_RULES` lists at the bottom of `QC/validation/rules/hard.py`
+and `rules/soft.py`. Both are short and self-describing; keeping a
+duplicate enumeration here would just drift. As of the last update:
+~21 HARD rules in hard.py (v000 schema check + V001/V013/V015/V017/
+V021–V026/V035/V036/V039/V051–V054/V062/V070–V073/V081), 2 SOFT rules
+in soft.py (V010, V014), 0 WARN rules. Cross-file rules: V081
+(cross-corpus TEXT/@id uniqueness).
 
 Exit code: 1 if any HARD findings; 0 otherwise. Override with
 `--no-exit-on-hard`.
