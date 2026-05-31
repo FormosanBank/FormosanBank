@@ -268,7 +268,14 @@ def clean_trans(text, lang):
     text = trim_repeated_punctuation(text)
     return text
 
-def analyze_and_modify_xml_file(xml_dir, corpora_dir):
+def analyze_and_modify_xml_file(
+    xml_dir,
+    corpora_dir,
+    warnings: CleanerWarnings | None = None,
+    counter: TransformCounter | None = None,
+    hard_remove_segmentation: bool = False,
+    ortho_path: str | None = None,
+):
     """
     Analyzes and modifies an XML file by cleaning text and handling specific cases in <FORM>.
     """
@@ -339,11 +346,20 @@ def analyze_and_modify_xml_file(xml_dir, corpora_dir):
                     print(f"File cleaned: {xml_file}")
 
 def main(args):
-    """
-    Main function to process XML files in the corpora directory.
-    """
     print(f"Processing XML files in directory: {args.corpora_path}")
-    analyze_and_modify_xml_file(args.corpora_path, args.corpora_path)
+    warnings_path = Path(args.corpora_path) / "cleaner_warnings.csv"
+    warnings = CleanerWarnings(warnings_path)
+    counter = TransformCounter()
+    analyze_and_modify_xml_file(
+        args.corpora_path,
+        args.corpora_path,
+        warnings=warnings,
+        counter=counter,
+        hard_remove_segmentation=getattr(args, "hard_remove_segmentation", False),
+        ortho_path=getattr(args, "ortho_path", None),
+    )
+    warnings.write_csv()
+    counter.print_summary()
 
 
 if __name__ == "__main__":
@@ -351,6 +367,25 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Extract orthographic info")
     #parser.add_argument('--verbose', action='store_true', help='increase output verbosity')
     parser.add_argument('--corpora_path', help='the path to the corpus')
+    parser.add_argument(
+        "--hard-remove-segmentation",
+        action="store_true",
+        default=False,
+        help=(
+            "Force stripping of hyphens from S/FORM[@kindOf='standard'] even "
+            "when the language's canonical orthography includes '-' as a letter. "
+            "Overrides the default preserve-and-warn behavior for Bunun and Thao."
+        ),
+    )
+    parser.add_argument(
+        "--ortho-path",
+        default=None,
+        help=(
+            "Path to the canonical orthography directory (default: "
+            "Orthographies/Ortho113/ relative to the repo root). "
+            "Each <Language>.tsv under this directory is consulted by C012."
+        ),
+    )
     args = parser.parse_args()
 
     if not args.corpora_path:
