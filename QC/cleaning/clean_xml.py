@@ -217,13 +217,7 @@ def main(args):
     Main function to process XML files in the corpora directory.
     """
     print(f"Processing XML files in directory: {args.corpora_path}")
-    # If there are no subdirectories, process the files directly
-    subdir = os.listdir(args.corpora_path)
-    for subdir in os.listdir(args.corpora_path):
-        xml_dir = os.path.join(args.corpora_path, subdir)
-        if os.path.isdir(xml_dir):
-            analyze_and_modify_xml_file(xml_dir, args.corpora_path)
-    analyze_and_modify_xml_file(args.corpora_path, args.corpora_path) #also process the root directory, just in case
+    analyze_and_modify_xml_file(args.corpora_path, args.corpora_path)
 
 
 if __name__ == "__main__":
