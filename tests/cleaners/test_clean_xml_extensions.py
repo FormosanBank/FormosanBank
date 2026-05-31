@@ -934,3 +934,19 @@ def test_cleaner_warnings_no_file_when_empty(tmp_path):
     w = CleanerWarnings(tmp_path / "out.csv")
     w.write_csv()
     assert not (tmp_path / "out.csv").exists()
+
+
+def test_transform_counter_accumulates_and_formats():
+    """TransformCounter.record() tallies pairs; summary() returns sorted rows."""
+    from QC.cleaning.clean_xml import TransformCounter
+    tc = TransformCounter()
+    tc.record("（", "(", count=3)
+    tc.record("）", ")", count=1)
+    tc.record("（", "(", count=2)   # same pair, different call
+    summary = tc.summary()
+    # First row should be the highest-count pair (（ → (, total 5).
+    assert summary[0]["count"] == 5
+    assert summary[0]["input"] == "（"
+    assert summary[0]["output"] == "("
+    assert summary[1]["count"] == 1
+    assert len(summary) == 2

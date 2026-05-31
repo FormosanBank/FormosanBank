@@ -1,6 +1,7 @@
 import csv
 import os
 import re
+from collections import defaultdict
 from dataclasses import dataclass, field
 from lxml import etree
 import html
@@ -81,6 +82,53 @@ class CleanerWarnings:
             if f.tell() == 0:
                 writer.writeheader()
             writer.writerows(self._rows)
+
+
+@dataclass
+class TransformCounter:
+    """Tallies every (input_char → output_char) substitution.
+
+    record() may be called with count > 1 when the transformation was
+    applied to a string containing multiple occurrences.
+
+    summary() returns a list of dicts sorted by count descending,
+    suitable for printing as a human-readable table.
+    """
+    _counts: dict = field(default_factory=lambda: defaultdict(int), repr=False)
+
+    def record(self, input_char: str, output_char: str, count: int = 1) -> None:
+        self._counts[(input_char, output_char)] += count
+
+    def record_string_delta(self, before: str, after: str) -> None:
+        """Infer individual-character changes by comparing before/after strings.
+
+        Lightweight heuristic: counts characters in before that are absent
+        in after as deletions (output=""). Use for full-string deltas where
+        a transformation produced a diff but the caller did not record
+        each individual swap.
+        """
+        for ch in set(before):
+            if ch not in after:
+                self._counts[(ch, "")] += before.count(ch)
+
+    def summary(self) -> list[dict]:
+        return sorted(
+            [
+                {"input": inp, "output": out, "count": cnt}
+                for (inp, out), cnt in self._counts.items()
+            ],
+            key=lambda r: r["count"],
+            reverse=True,
+        )
+
+    def print_summary(self) -> None:
+        rows = self.summary()
+        if not rows:
+            return
+        print("\nTransformation summary (input → output : count):")
+        for r in rows:
+            out = r["output"] if r["output"] else "<deleted>"
+            print(f"  {r['input']!r} → {out!r} : {r['count']}")
 
 
 '''
