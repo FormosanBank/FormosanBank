@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  C006 fixture: U+2303 (UP ARROWHEAD, ⌃) in FORM should become ASCII ^,
-  but in TRANSL must be left alone (clean_trans skips swap_punctuation).
+  C006 fixture (revised 2026-05-31): four caret-variant codepoints
+  (U+2303 UP ARROWHEAD, U+2038 CARET, U+02C6 MODIFIER LETTER CIRCUMFLEX
+  ACCENT, U+FF3E FULLWIDTH CIRCUMFLEX ACCENT) must all normalize to ASCII
+  '^' in EVERY tier: FORM (both kindOf values) and TRANSL with ANY
+  xml:lang including 'zho'. Per FormosanBank convention (user direction
+  2026-05-30), a caret-like glyph always represents a glottal stop, so
+  normalization is universal — NOT coupled to the language-aware
+  C001/C002 swap.
 
-  Shape: one S with both FORM tiers carrying ⌃, plus an S-level TRANSL
-  also carrying ⌃ for the negative-pin assertion. xml:lang="ami".
-  Exercises: positive on FORM (swap_punctuation maps ⌃ → ^); negative
-  pin on TRANSL (clean_trans does not touch it).
+  The TRANSL xml:lang="zho" assertion is the key regression pin: a
+  future implementation that accidentally couples caret handling to the
+  language-aware swap (which skips Chinese) will fail loudly here.
 -->
-<TEXT id="TEST_C006" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+<TEXT id="TEST_C006" citation="test" BibTeX_citation="@test{test}"
+      copyright="test" xml:lang="ami">
   <S id="S_1">
-    <FORM kindOf="original">a⌃b</FORM>
-    <FORM kindOf="standard">a⌃b</FORM>
-    <TRANSL xml:lang="eng">arrowhead ⌃ stays</TRANSL>
+    <FORM kindOf="original">a&#x2303;b&#x2038;c&#x02C6;d&#xFF3E;e</FORM>
+    <FORM kindOf="standard">a&#x2303;b&#x2038;c&#x02C6;d&#xFF3E;e</FORM>
+    <TRANSL xml:lang="eng">arrowhead &#x2303; caret &#x2038; circ &#x02C6; fullwidth &#xFF3E;</TRANSL>
+    <TRANSL xml:lang="zho">&#x2303;&#x2038;&#x02C6;&#xFF3E;</TRANSL>
   </S>
 </TEXT>

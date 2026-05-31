@@ -169,12 +169,79 @@ def fix_parentheses(text):
     )
 '''
 
+_CARET_VARIANTS_TO_ASCII = {
+    "⌃": "^",  # UP ARROWHEAD (U+2303)
+    "‸": "^",  # CARET (U+2038)
+    "ˆ": "^",  # MODIFIER LETTER CIRCUMFLEX ACCENT (U+02C6)
+    "＾": "^",  # FULLWIDTH CIRCUMFLEX ACCENT (U+FF3E)
+}
+
+
+def normalize_caret_variants(text: str) -> str:
+    """Normalize caret-like Unicode characters to ASCII '^'.
+
+    Per FormosanBank convention, a caret-like glyph in this corpus
+    always represents a glottal stop. We canonicalize the visual
+    variants to a single character so downstream processing sees
+    one form regardless of source. Applied to both FORM and TRANSL
+    regardless of xml:lang.
+    """
+    for variant, ascii_caret in _CARET_VARIANTS_TO_ASCII.items():
+        text = text.replace(variant, ascii_caret)
+    return text
+
+
+_U201D = "”"  # RIGHT DOUBLE QUOTATION MARK — canonical Chinese closing quote
+CHINESE_DOUBLE_QUOTE_COLLAPSE = {
+    "“": _U201D,  # LEFT DOUBLE QUOTATION MARK
+    "「": _U201D,  # LEFT CORNER BRACKET 「
+    "」": _U201D,  # RIGHT CORNER BRACKET 」
+    "『": _U201D,  # LEFT WHITE CORNER BRACKET 『
+    "』": _U201D,  # RIGHT WHITE CORNER BRACKET 』
+    "《": _U201D,  # LEFT DOUBLE ANGLE BRACKET 《
+    "》": _U201D,  # RIGHT DOUBLE ANGLE BRACKET 》
+    "〈": _U201D,  # LEFT ANGLE BRACKET 〈
+    "〉": _U201D,  # RIGHT ANGLE BRACKET 〉
+}
+
+CHINESE_WARN_SINGLE_QUOTES = frozenset({
+    "‘",  # LEFT SINGLE QUOTATION MARK '
+    "’",  # RIGHT SINGLE QUOTATION MARK '
+    "ʼ",       # MODIFIER LETTER APOSTROPHE (U+02BC)
+    "ʻ",       # MODIFIER LETTER TURNED COMMA (U+02BB)
+    "`",       # GRAVE ACCENT / backtick
+})
+
+
+def _clean_trans_chinese(
+    text: str,
+    xml_file: str,
+    s_id: "str | None",
+    warnings: "CleanerWarnings | None",
+) -> str:
+    """C002 Branch B: canonicalise Chinese double quotes; warn on singles.
+
+    Double-quote variants (curly doubles, CJK brackets used as quotes)
+    are all collapsed to U+201D RIGHT DOUBLE QUOTATION MARK — the
+    conventional canonical form in Chinese text. Single-quote variants
+    and ASCII apostrophes emit a c002 warning row and are left unchanged:
+    these are typically IME artefacts worth flagging to the corpus author.
+    """
+    for ch, replacement in CHINESE_DOUBLE_QUOTE_COLLAPSE.items():
+        text = text.replace(ch, replacement)
+    for i, ch in enumerate(text):
+        if ch in CHINESE_WARN_SINGLE_QUOTES or ch == "'":
+            if warnings:
+                warnings.add("c002", xml_file, s_id, ch, i)
+    return text
+
+
 def swap_punctuation(text):
     """
     Replaces specific non-ASCII punctuation with their ASCII equivalents.
     """
     # Define the mapping of full-width punctuation to regular punctuation
-    # Also convert square brackets to parentheses    
+    # Also convert square brackets to parentheses
     fullwidth_to_regular = {
         '（': '(',
         '）': ')',
@@ -194,17 +261,16 @@ def swap_punctuation(text):
         '[': '(',
         '〔': '(',
         '〕': ')',
-        '“': '"',  # Left double quotation mark
-        '”': '"',  # Right double quotation mark
-        '‘': "'",  # Left single quotation mark
-        '’': "'",   # Right single quotation mark
+        '“': '"',  # LEFT DOUBLE QUOTATION MARK "
+        '”': '"',  # RIGHT DOUBLE QUOTATION MARK "
+        '‘': "'",  # LEFT SINGLE QUOTATION MARK '
+        '’': "'",  # RIGHT SINGLE QUOTATION MARK '
         'ˈ': "'",
-        '`': "'",  
+        '`': "'",
         'ʼ': "'",  # Modifier Letter Apostrophe (U+02BC)
         'ʻ': "'",
         '『': '"',
         '』': '"',
-        '⌃': '^', # Caret
     }
     
     # Create a regular expression pattern to match any of the full-width punctuation characters
@@ -223,10 +289,10 @@ def process_punctuation(text):
     """
     Cleans and standardizes punctuation in the text.
     """
-    text = re.sub(r'‘([^’]*)’', r'"\1"', text)  # Paired single quotes
-    text = text.replace("‘", "'").replace("’", "'")  # Single quotes
-    text = re.sub(r'“([^”]*)”', r'"\1"', text)  # Paired double quotes
-    text = text.replace('“', '"').replace('”', '"')  # Double quotes
+    text = re.sub(r''([^']*)'', r'"\1"', text)  # Paired single quotes
+    text = text.replace("'", "'").replace("'", "'")  # Single quotes
+    text = re.sub(r'"([^"]*)"', r'"\1"', text)  # Paired double quotes
+    text = text.replace('"', '"').replace('"', '"')  # Double quotes
     text = text.replace("ˈ", "'")  # Specific mark replacements
     return text
 '''
@@ -247,19 +313,76 @@ def trim_repeated_punctuation(text):
     text = re.sub(r'--+', '-', text)  # --- -> -
     return text
 
-def clean_text(text, lang):
+def clean_text(
+    text,
+    lang,
+    xml_file: str = "",
+    s_id: "str | None" = None,
+    warnings: "CleanerWarnings | None" = None,
+    counter: "TransformCounter | None" = None,
+):
+    """Apply cleaning functions to a FORM-tier text node.
+
+    Pipeline (always language-agnostic for FORM):
+      1. normalize_caret_variants — four caret-like Unicode chars → ASCII '^'
+         regardless of xml:lang. In FormosanBank a caret always represents
+         a glottal stop.
+      2. swap_punctuation — full-width and typographic punctuation → ASCII.
+         Emits a c002b warning row for each U+02C8 (IPA PRIMARY STRESS MARK)
+         found before the swap, because stress marks are unexpected in Formosan
+         corpus data and worth surfacing to the corpus author.
+      3. normalize_whitespace — collapse runs of whitespace.
+      4. trim_repeated_punctuation — !! → !, ??? → ?, --- → -.
     """
-    Applies a sequence of cleaning functions to the text.
-    """
+    text = normalize_caret_variants(text)
+    # Emit c002b warning for U+02C8 before it gets swapped to apostrophe.
+    if warnings is not None:
+        for pos, ch in enumerate(text):
+            if ch == "ˈ":
+                warnings.add("c002b", xml_file, s_id, ch, pos)
     text = swap_punctuation(text)
     text = normalize_whitespace(text)
     text = trim_repeated_punctuation(text)
     return text
 
-def clean_trans(text, lang):
+
+def clean_trans(
+    text,
+    lang,
+    xml_file: str = "",
+    s_id: "str | None" = None,
+    warnings: "CleanerWarnings | None" = None,
+    counter: "TransformCounter | None" = None,
+):
+    """Apply cleaning functions to a TRANSL-tier text node.
+
+    Pipeline:
+      1. normalize_caret_variants — language-agnostic; four caret-like Unicode
+         chars → ASCII '^' in EVERY TRANSL regardless of xml:lang. In
+         FormosanBank a caret always represents a glottal stop, so the
+         normalization is unconditional and deliberately does NOT branch on
+         _is_chinese(lang).
+      2. Language-aware quote/apostrophe handling:
+         - Non-Chinese (C001/C002 Branch A): call swap_punctuation, which
+           collapses full-width punctuation and typographic quotes/apostrophes
+           to their ASCII equivalents — same as FORM. A c002b warning row is
+           emitted for each U+02C8 (IPA PRIMARY STRESS MARK) found before swap.
+         - Chinese (C002 Branch B): call _clean_trans_chinese, which collapses
+           double-quote variants to U+201D and emits c002 warning rows for
+           single-quote variants and ASCII apostrophes (left unchanged).
+      3. normalize_whitespace — collapse runs of whitespace.
+      4. trim_repeated_punctuation — !! → !, ??? → ?, --- → -.
     """
-    Applies a sequence of cleaning functions to the text.
-    """
+    text = normalize_caret_variants(text)
+    if _is_chinese(lang):
+        text = _clean_trans_chinese(text, xml_file, s_id, warnings)
+    else:
+        # Emit c002b warning for U+02C8 before swap.
+        if warnings is not None:
+            for pos, ch in enumerate(text):
+                if ch == "ˈ":
+                    warnings.add("c002b", xml_file, s_id, ch, pos)
+        text = swap_punctuation(text)
     text = normalize_whitespace(text)
     text = trim_repeated_punctuation(text)
     return text
@@ -325,17 +448,31 @@ def analyze_and_modify_xml_file(
                                         f.write(f"Modified: {html.unescape(form_text)}\n\n")
                                     form_element.text = html.unescape(form_text)
                                     modified = True
-                                cleaned_form_text = clean_text(form_text, lang="na")
+                                cleaned_form_text = clean_text(
+                                    form_text,
+                                    lang="na",
+                                    xml_file=xml_file,
+                                    s_id=sentence.get("id"),
+                                    warnings=warnings,
+                                    counter=counter,
+                                )
                                 if cleaned_form_text != form_text:
                                     form_element.text = cleaned_form_text
                                     modified = True
 
                     # Clean <TRANSL> elements
                     for transl in sentence.findall('TRANSL'):
-                        lang = transl.get('{http://www.w3.org/XML/1998/namespace}lang')
+                        transl_lang = _get_xml_lang(transl)
                         transl_text = transl.text
                         if transl_text:
-                            cleaned_transl_text = clean_trans(transl_text, lang)
+                            cleaned_transl_text = clean_trans(
+                                transl_text,
+                                lang=transl_lang,
+                                xml_file=xml_file,
+                                s_id=sentence.get("id"),
+                                warnings=warnings,
+                                counter=counter,
+                            )
                             if cleaned_transl_text != transl_text:
                                 transl.text = cleaned_transl_text
                                 modified = True

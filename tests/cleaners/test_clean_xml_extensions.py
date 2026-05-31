@@ -96,8 +96,13 @@ IDEMPOTENT_FIXTURES = [
     "c001_fullwidth_paren_in_form.xml",
     "c001_fullwidth_paren_in_W_and_M_FORM.xml",
     "c001_fullwidth_paren_in_chinese_transl.xml",
+    "c001_fullwidth_paren_in_nonchinese_transl.xml",
     "c002_apostrophe_variants_in_form.xml",
     "c002_double_quote_variants_in_form.xml",
+    "c002_apostrophe_in_nonchinese_transl.xml",
+    "c002_ascii_apostrophe_in_chinese_transl.xml",
+    "c002_double_quotes_in_chinese_transl.xml",
+    "c002_modifier_apostrophe_in_chinese_transl.xml",
     "c002b_ipa_stress_in_form.xml",
     "c003_repeated_terminal_punct.xml",
     "c004_nbsp_in_form_and_transl.xml",
@@ -119,12 +124,6 @@ IDEMPOTENT_FIXTURES = [
 # fixture from XFAIL_FIXTURES — the import-time drift assertion below
 # will then require the fixture to be added to IDEMPOTENT_FIXTURES.
 XFAIL_FIXTURES = {
-    "c001_fullwidth_paren_in_nonchinese_transl.xml",
-    "c002_apostrophe_in_nonchinese_transl.xml",
-    "c002_ascii_apostrophe_in_chinese_transl.xml",
-    "c002_double_quotes_in_chinese_transl.xml",
-    "c002_modifier_apostrophe_in_chinese_transl.xml",
-
     "c012_hyphens_in_standard_amis.xml",
     "c012_hyphens_in_standard_bunun.xml",
     "c012_hyphens_in_standard_thao.xml",
@@ -206,7 +205,6 @@ def test_C001_chinese_transl_fullwidth_paren_preserved(
     assert transls == ["你好（世界）。"], f"TRANSL: {transls!r}"
 
 
-@pytest.mark.xfail(strict=True, reason=XFAIL_NOT_YET_IMPLEMENTED)
 def test_C001_nonchinese_transl_fullwidth_paren_collapses(
     tmp_path, fixtures_dir, copy_fixture
 ):
@@ -285,7 +283,6 @@ def test_C002_double_quote_variants_in_form_collapse_to_ascii(
         )
 
 
-@pytest.mark.xfail(strict=True, reason=XFAIL_NOT_YET_IMPLEMENTED)
 def test_C002_apostrophe_in_nonchinese_transl_collapses(
     tmp_path, fixtures_dir, copy_fixture
 ):
@@ -300,7 +297,6 @@ def test_C002_apostrophe_in_nonchinese_transl_collapses(
     assert transls == ["It's here."], f"TRANSL: {transls!r}"
 
 
-@pytest.mark.xfail(strict=True, reason=XFAIL_NOT_YET_IMPLEMENTED)
 def test_C002_double_quotes_in_chinese_transl_collapse_to_canonical(
     tmp_path, fixtures_dir, copy_fixture
 ):
@@ -320,7 +316,6 @@ def test_C002_double_quotes_in_chinese_transl_collapse_to_canonical(
     )
 
 
-@pytest.mark.xfail(strict=True, reason=XFAIL_NOT_YET_IMPLEMENTED)
 def test_C002_modifier_apostrophe_in_chinese_transl_warns(
     tmp_path, fixtures_dir, copy_fixture
 ):
@@ -352,7 +347,6 @@ def test_C002_modifier_apostrophe_in_chinese_transl_warns(
     )
 
 
-@pytest.mark.xfail(strict=True, reason=XFAIL_NOT_YET_IMPLEMENTED)
 def test_C002_ascii_apostrophe_in_chinese_transl_warns(
     tmp_path, fixtures_dir, copy_fixture
 ):
@@ -402,7 +396,6 @@ def test_C002b_ipa_stress_in_form_collapses_to_apostrophe(
         assert text == "pa'tas", f"{label}: {text!r}"
 
 
-@pytest.mark.xfail(strict=True, reason=XFAIL_NOT_YET_IMPLEMENTED)
 def test_C002b_ipa_stress_warning_emitted(tmp_path, fixtures_dir, copy_fixture):
     """C002b xfail: U+02C8 transformation should also produce a WARN.
 
@@ -504,16 +497,14 @@ def test_C005_fullwidth_space_collapses_in_form(
 # =============================================================================
 
 
-def test_C006_caret_variant_collapses_in_form_only(
+def test_C006_caret_variants_normalize_everywhere_regardless_of_lang(
     tmp_path, fixtures_dir, copy_fixture
 ):
-    """C006: ⌃ becomes ^ in FORM but NOT in TRANSL (clean_trans skips swap).
-
-    Negative pin on TRANSL: clean_trans does not call swap_punctuation,
-    so ⌃ in TRANSL survives. This documents the implicit asymmetry; if
-    a future change extends swap_punctuation to TRANSL via the C001/C002
-    language-aware path, ⌃ may end up being rewritten there too, in
-    which case this pin will need updating.
+    """C006: every caret-variant Unicode character normalizes to ASCII '^'
+    in EVERY tier (FORM original, FORM standard, TRANSL non-Chinese,
+    TRANSL Chinese), regardless of language. The Chinese TRANSL assertion
+    is the regression pin — a future coupling to the language-aware swap
+    (which skips Chinese) would fail this loudly.
     """
     work = copy_fixture(
         fixtures_dir / "c006_caret_variant_in_form_and_transl.xml", tmp_path
@@ -523,12 +514,20 @@ def test_C006_caret_variant_collapses_in_form_only(
 
     orig = _form_texts_with_kindof(work, "S", "original")[0]
     std = _form_texts_with_kindof(work, "S", "standard")[0]
-    assert orig == "a^b", f"original: {orig!r}"
-    assert std == "a^b", f"standard: {std!r}"
+    assert orig == "a^b^c^d^e", f"FORM original: {orig!r}"
+    assert std == "a^b^c^d^e", f"FORM standard: {std!r}"
 
-    # Negative pin: TRANSL ⌃ must survive untouched today.
-    transl = _transl_texts(work, "S")[0]
-    assert "⌃" in transl, f"TRANSL ⌃ should survive: {transl!r}"
+    tree = etree.parse(str(work))
+    transls = {
+        t.get(XML_LANG): t.text for t in tree.findall(".//S/TRANSL")
+    }
+    assert transls["eng"] == "arrowhead ^ caret ^ circ ^ fullwidth ^", (
+        f"non-Chinese TRANSL: {transls['eng']!r}"
+    )
+    assert transls["zho"] == "^^^^", (
+        f"Chinese TRANSL (caret normalization MUST happen regardless of lang): "
+        f"{transls['zho']!r}"
+    )
 
 
 # =============================================================================
