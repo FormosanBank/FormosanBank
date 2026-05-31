@@ -110,6 +110,7 @@ IDEMPOTENT_FIXTURES = [
     "c019_d_stroke_in_bunun_form.xml",
     "c020_underscore_in_form.xml",
     "c024_parens_in_transl_preserved.xml",
+    "c007_bopomofo_in_form.xml",
 ]
 
 
@@ -123,7 +124,7 @@ XFAIL_FIXTURES = {
     "c002_ascii_apostrophe_in_chinese_transl.xml",
     "c002_double_quotes_in_chinese_transl.xml",
     "c002_modifier_apostrophe_in_chinese_transl.xml",
-    "c007_bopomofo_in_form.xml",
+
     "c012_hyphens_in_standard_amis.xml",
     "c012_hyphens_in_standard_bunun.xml",
     "c012_hyphens_in_standard_thao.xml",
@@ -531,40 +532,53 @@ def test_C006_caret_variant_collapses_in_form_only(
 
 
 # =============================================================================
-# C007 — Bopomofo ㄇ retained with warning (BOTH xfail)
+# C007 — All named Bopomofo codepoints retained with per-occurrence warnings
 # =============================================================================
 
 
-@pytest.mark.xfail(strict=True, reason=XFAIL_NOT_YET_IMPLEMENTED)
-def test_C007_bopomofo_preserved(tmp_path, fixtures_dir, copy_fixture):
-    """C007 xfail: ㄇ should survive unchanged.
+def _all_bopomofo_chars() -> list[str]:
+    """Return every named Bopomofo codepoint (verified set, runtime-computed)."""
+    import unicodedata as _ud
+    out = []
+    for code in list(range(0x3100, 0x3130)) + list(range(0x31A0, 0x31C0)):
+        try:
+            if _ud.name(chr(code)).startswith("BOPOMOFO"):
+                out.append(chr(code))
+        except ValueError:
+            continue
+    return out
 
-    Today the cleaner silently DELETES ㄇ via remove_junk_chars, so this
-    test correctly XFAILs. After B reverses the behavior (preserve +
-    warn), the assertion will hold.
-    """
+
+def test_C007_bopomofo_preserved(tmp_path, fixtures_dir, copy_fixture):
+    """C007: every named Bopomofo codepoint must survive cleaning."""
     work = copy_fixture(fixtures_dir / "c007_bopomofo_in_form.xml", tmp_path)
     proc = _run_clean(tmp_path)
     assert proc.returncode == 0, f"stderr: {proc.stderr}"
 
+    expected = _all_bopomofo_chars()
     orig = _form_texts_with_kindof(work, "S", "original")[0]
     std = _form_texts_with_kindof(work, "S", "standard")[0]
-    assert "ㄇ" in orig, f"original should still contain ㄇ: {orig!r}"
-    assert "ㄇ" in std, f"standard should still contain ㄇ: {std!r}"
+    for ch in expected:
+        assert ch in orig, f"original lost {ch!r} (U+{ord(ch):04X})"
+        assert ch in std, f"standard lost {ch!r} (U+{ord(ch):04X})"
 
 
-@pytest.mark.xfail(strict=True, reason=XFAIL_NOT_YET_IMPLEMENTED)
 def test_C007_bopomofo_warning_emitted(tmp_path, fixtures_dir, copy_fixture):
-    """C007 xfail: ㄇ occurrence should produce a WARN row in CSV."""
+    """C007: a c007 warning row is emitted for EACH Bopomofo character."""
     copy_fixture(fixtures_dir / "c007_bopomofo_in_form.xml", tmp_path)
     proc = _run_clean(tmp_path)
     assert proc.returncode == 0, f"stderr: {proc.stderr}"
 
-    warned = _has_warning_signal(proc, ("c007", "bopomofo", "u+3107"), tmp_path)
-    csv_ok = _csv_warning_exists(tmp_path, "c007")
-    assert warned or csv_ok, (
-        f"expected warning indicator for ㄇ; "
-        f"stdout={proc.stdout!r}, stderr={proc.stderr!r}"
+    csv_path = tmp_path / "cleaner_warnings.csv"
+    assert csv_path.exists(), f"expected {csv_path} to exist"
+    import csv as _csv
+    rows = list(_csv.DictReader(csv_path.open(encoding="utf-8")))
+    c007_chars = {r["character"] for r in rows if r["rule_id"] == "c007"}
+
+    expected = set(_all_bopomofo_chars())
+    missing = expected - c007_chars
+    assert not missing, (
+        f"missing c007 warnings for: {[(c, hex(ord(c))) for c in sorted(missing)]}"
     )
 
 

@@ -42,6 +42,23 @@ def _is_chinese(lang: str | None) -> bool:
     return lang.lower() in _CHINESE_LANGS or lang.lower().startswith("zh")
 
 
+def _find_bopomofo(text: str) -> list[tuple[str, int]]:
+    """Return [(char, position)] for every Bopomofo character in text.
+
+    Covers Bopomofo (U+3100-U+312F) and Bopomofo Extended (U+31A0-U+31BF).
+    All 75 named codepoints in those ranges have unicodedata.name
+    starting with "BOPOMOFO" (verified 2026-05-30).
+    """
+    out = []
+    for i, ch in enumerate(text):
+        try:
+            if unicodedata.name(ch).startswith("BOPOMOFO"):
+                out.append((ch, i))
+        except ValueError:
+            continue
+    return out
+
+
 @dataclass
 class CleanerWarnings:
     """Accumulates per-occurrence warning rows and writes a CSV at end of run.
@@ -200,26 +217,6 @@ def swap_punctuation(text):
     # Use re.sub to replace all full-width punctuation with regular punctuation
     return pattern.sub(replace, text)
 
-def remove_junk_chars(text):
-    """
-    Replaces specific non-ASCII punctuation with their ASCII equivalents.
-    """
-    # Define the mapping of full-width punctuation to regular punctuation
-    # Also convert square brackets to parentheses    
-    to_remove = {
-        'ㄇ': ''
-    }
-    
-    # Create a regular expression pattern to match any of the full-width punctuation characters
-    pattern = re.compile('|'.join(map(re.escape, to_remove.keys())))
-    
-    # Define a function to replace each match with the corresponding regular punctuation
-    def replace(match):
-        return to_remove[match.group(0)]
-    
-    # Use re.sub to replace all full-width punctuation with regular punctuation
-    return pattern.sub(replace, text)
-
 
 '''
 def process_punctuation(text):
@@ -257,7 +254,6 @@ def clean_text(text, lang):
     text = swap_punctuation(text)
     text = normalize_whitespace(text)
     text = trim_repeated_punctuation(text)
-    text = remove_junk_chars(text)
     return text
 
 def clean_trans(text, lang):
@@ -308,6 +304,9 @@ def analyze_and_modify_xml_file(
                             form_text = form_element.text
                             if form_text is None or form_text == "":
                                 continue
+                            if warnings is not None:
+                                for ch, pos in _find_bopomofo(form_text):
+                                    warnings.add("c007", xml_file, sentence.get("id"), ch, pos)
                             if form_text != unicodedata.normalize("NFC", form_text):
                                 form_element.text = unicodedata.normalize("NFC", form_text)
                                 modified = True
