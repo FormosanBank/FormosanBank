@@ -188,14 +188,6 @@ def test_V005_M_only_child_of_W_negative(tmp_path, fixtures_dir, copy_fixture):
 # -----------------------------------------------------------------------------
 
 
-@pytest.mark.xfail(
-    strict=True,
-    reason=(
-        "V010 SOFT: per design, an S with no FORM should be COUNTED, not "
-        "rejected. Currently the XSD rejects it (HARD). After B's update, "
-        "the validator should accept this file and emit a count."
-    ),
-)
 def test_V010_S_without_FORM_is_counted_not_fatal(tmp_path, fixtures_dir, copy_fixture):
     """V010 SOFT: missing FORM on S is counted, not fatal.
 
@@ -247,13 +239,6 @@ def test_V013_S_must_have_original_FORM_negative(tmp_path, fixtures_dir, copy_fi
     )
 
 
-@pytest.mark.xfail(
-    strict=True,
-    reason=(
-        "V014 SOFT: per design, the validator should COUNT missing-standard "
-        "elements and emit them in a CSV-style report. Currently NOT checked."
-    ),
-)
 def test_V014_missing_standard_FORM_is_counted(tmp_path, fixtures_dir, copy_fixture):
     """V014 SOFT-count: missing standard FORM is counted (not fatal).
 

@@ -318,17 +318,22 @@ def v013_S_must_have_original_FORM(
     path: Path,
     index: CorpusIndex | None,
 ) -> list[Finding]:
-    """V013: every S must have at least one direct-child FORM with kindOf='original'.
+    """V013: every S that HAS at least one FORM must have one with kindOf='original'.
 
     DTD/XSD content models cannot express attribute-conditional cardinality,
     so this is a Python check.
+
+    S elements with NO FORM children at all are skipped here — that case
+    is the SOFT V010 rule's territory (diarized audio not yet transcribed).
+    V013 only fires when there IS a FORM child but none is kindOf='original'.
     """
     findings: list[Finding] = []
     for s in tree.iter("S"):
-        has_original = any(
-            child.tag == "FORM" and child.get("kindOf") == "original"
-            for child in s
-        )
+        forms = [child for child in s if child.tag == "FORM"]
+        if not forms:
+            # No FORMs at all — V010 (SOFT) handles this case.
+            continue
+        has_original = any(f.get("kindOf") == "original" for f in forms)
         if not has_original:
             s_id = s.get("id")
             findings.append(Finding(

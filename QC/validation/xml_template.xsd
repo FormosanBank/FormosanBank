@@ -117,11 +117,15 @@
     <xs:attribute name="sclass" type="xs:string"/>
   </xs:complexType>
 
-  <!-- S element: DTD declares S (FORM, FORM?, TRANSL*, PHON*, AUDIO?, W*) -->
+  <!-- S element: DTD declares S (FORM, FORM?, TRANSL*, PHON*, AUDIO?, W*)
+       V010 (SOFT): S is allowed to have 0 FORMs (e.g., diarized-audio
+       S elements that have not yet been transcribed). The Python rule
+       v010_count_s_without_form in rules/soft.py counts and reports them.
+       W/M still require FORM (V011/V012 are HARD). -->
 
   <xs:complexType name="S_Type">
     <xs:sequence>
-      <xs:element name="FORM" type="FORM_Type" minOccurs="1" maxOccurs="2"/>
+      <xs:element name="FORM" type="FORM_Type" minOccurs="0" maxOccurs="2"/>
       <xs:element name="TRANSL" type="TRANSL_Type" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="PHON" type="PHON_Type" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="AUDIO" type="AUDIO_Type" minOccurs="0" maxOccurs="1"/>

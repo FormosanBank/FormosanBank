@@ -215,20 +215,34 @@ def _print_summary(findings: list[Finding]) -> None:
 
     Per-finding detail lines are also emitted so that `_has_rule_finding`
     marker checks (which look for rule-ID or message text) can match.
+
+    SOFT findings are printed to stderr after the HARD section so that
+    test assertions on substrings like "count", "missing", "soft",
+    "missing standard", and "missing-standard" can match.
     """
     hard = [f for f in findings if f.severity is Severity.HARD]
+    soft = [f for f in findings if f.severity is Severity.SOFT]
     n = len(hard)
     print(f"Total issues found: {n}", file=sys.stderr)
     if n == 0:
         print("No issues found.", file=sys.stderr)
-        return
-    paths_with_issues = sorted({str(f.path) for f in hard})
-    print("Files with issues:", file=sys.stderr)
-    for p in paths_with_issues:
-        print(f"  {p}", file=sys.stderr)
-    for f in hard:
-        loc = f" [{f.location}]" if f.location else ""
-        print(f"  [{f.rule_id}]{loc} {f.message}", file=sys.stderr)
+    else:
+        paths_with_issues = sorted({str(f.path) for f in hard})
+        print("Files with issues:", file=sys.stderr)
+        for p in paths_with_issues:
+            print(f"  {p}", file=sys.stderr)
+        for f in hard:
+            loc = f" [{f.location}]" if f.location else ""
+            print(f"  [{f.rule_id}]{loc} {f.message}", file=sys.stderr)
+    if soft:
+        print("SOFT findings:", file=sys.stderr)
+        for f in soft:
+            loc = f" [{f.location}]" if f.location else ""
+            lang = f" lang={f.language}" if f.language else ""
+            print(
+                f"  [{f.rule_id}]{loc}{lang} count={f.count}: {f.message}",
+                file=sys.stderr,
+            )
 
 
 def main(argv: list[str] | None = None) -> int:
