@@ -565,6 +565,13 @@ def analyze_and_modify_xml_file(
                                     form_element.text = cleaned_form_text
                                     modified = True
 
+                                # C022: warn on each '*' in any FORM (any position).
+                                # FORM text is preserved (no removal).
+                                if warnings is not None and "*" in form_text:
+                                    for i, ch in enumerate(form_text):
+                                        if ch == "*":
+                                            warnings.add("c022", xml_file, sentence.get("id"), ch, i)
+
                     # C012: handle hyphens in S-level FORM[@kindOf="standard"] only.
                     # Must run AFTER clean_text so any clean_text output is included.
                     # W/M FORMs keep their segmentation (they are NOT matched here

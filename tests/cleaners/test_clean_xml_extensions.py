@@ -119,6 +119,7 @@ IDEMPOTENT_FIXTURES = [
     "c020_underscore_in_form.xml",
     "c024_parens_in_transl_preserved.xml",
     "c007_bopomofo_in_form.xml",
+    "c022_sentence_initial_asterisk.xml",
 ]
 
 
@@ -126,9 +127,7 @@ IDEMPOTENT_FIXTURES = [
 # under the current cleaner. When B implements a rule, remove its
 # fixture from XFAIL_FIXTURES — the import-time drift assertion below
 # will then require the fixture to be added to IDEMPOTENT_FIXTURES.
-XFAIL_FIXTURES = {
-    "c022_sentence_initial_asterisk.xml",
-}
+XFAIL_FIXTURES: set = set()
 
 
 # Drift guard: enforce that IDEMPOTENT_FIXTURES + XFAIL_FIXTURES exactly
@@ -806,46 +805,50 @@ def test_C020_underscores_preserved_in_form(
 # =============================================================================
 
 
-@pytest.mark.xfail(strict=True, reason=XFAIL_NOT_YET_IMPLEMENTED)
-def test_C022_sentence_initial_asterisk_warns_and_preserves(
+def test_C022_asterisk_in_form_warns_and_preserves(
     tmp_path, fixtures_dir, copy_fixture
 ):
-    """C022 xfail: starred S must be PRESERVED with a WARN.
-
-    Today the cleaner has no rule for "*", so the S is preserved
-    (this part already passes), but no warn is emitted — that's
-    what XFAILs. After B adds warning infra, both halves pass.
-
-    Contrast with C008's "456otca" sentinel which IS structurally
-    removed; "*" is a linguistic annotation worth surfacing upstream.
+    """C022: '*' may appear at ANY position in a FORM (not just
+    sentence-initial). The cleaner warns per occurrence and preserves
+    the FORM text unchanged.
     """
-    work = copy_fixture(fixtures_dir / "c022_sentence_initial_asterisk.xml", tmp_path)
+    work = copy_fixture(
+        fixtures_dir / "c022_sentence_initial_asterisk.xml", tmp_path
+    )
     proc = _run_clean(tmp_path)
     assert proc.returncode == 0, f"stderr: {proc.stderr}"
 
-    # Both S elements must still exist (preservation pin).
+    # All S elements still exist (no structural removal).
     ids = _s_ids(work)
-    assert "S_1" in ids and "S_2" in ids, f"S ids: {ids!r}"
+    for sid in ("S_1", "S_2", "S_3", "S_4"):
+        assert sid in ids, f"S ids: {ids!r}"
 
-    # The starred S still carries the "*".
-    orig_of_s1 = [
-        f.text
-        for s in etree.parse(str(work)).findall(".//S")
-        if s.get("id") == "S_1"
-        for f in s.findall("FORM[@kindOf='original']")
-    ]
-    assert orig_of_s1 and orig_of_s1[0].startswith("*"), (
-        f"S_1 original FORM should still start with '*': {orig_of_s1!r}"
-    )
+    # Each starred S still carries '*' in both FORM tiers.
+    tree = etree.parse(str(work))
+    for sid in ("S_1", "S_2", "S_3"):
+        forms = [
+            f.text
+            for s in tree.findall(".//S")
+            if s.get("id") == sid
+            for f in s.findall("FORM")
+        ]
+        for form_text in forms:
+            assert form_text and "*" in form_text, (
+                f"S={sid} should preserve '*': {form_text!r}"
+            )
 
-    # And a WARN must be emitted.
-    warned = _has_warning_signal(
-        proc, ("c022", "ungrammatical", "sentence-initial", "asterisk"), tmp_path
+    # Parse the warnings CSV and confirm c022 rows.
+    csv_path = tmp_path / "cleaner_warnings.csv"
+    assert csv_path.exists(), f"expected {csv_path}"
+    import csv as _csv
+    rows = list(_csv.DictReader(csv_path.open(encoding="utf-8")))
+    c022_rows = [r for r in rows if r["rule_id"] == "c022"]
+    starred_s_ids = {r["s_id"] for r in c022_rows}
+    assert {"S_1", "S_2", "S_3"} <= starred_s_ids, (
+        f"expected c022 warnings for S_1, S_2, S_3; got: {starred_s_ids}"
     )
-    csv_ok = _csv_warning_exists(tmp_path, "c022")
-    assert warned or csv_ok, (
-        f"expected warning indicator for sentence-initial *; "
-        f"stdout={proc.stdout!r}, stderr={proc.stderr!r}"
+    assert "S_4" not in starred_s_ids, (
+        f"S_4 has no '*' and should NOT carry a c022 warning"
     )
 
 

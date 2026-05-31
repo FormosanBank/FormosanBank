@@ -1,27 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  C022 xfail fixture: sentence-initial * (ungrammaticality marker)
-  should WARN but NOT structurally remove the S.
+  C022 fixture (revised 2026-05-31): '*' ungrammaticality marker can
+  appear at ANY position in a FORM (sentence-initial, mid-sentence, or
+  sentence-final). The cleaner must emit a c022 warning per occurrence
+  AND preserve the FORM text unchanged (no removal). S_4 is a control
+  with no '*' — no warning for its id.
 
-  Shape: two S elements. The first carries "*Mu ka patas nii." in its
-  original FORM (and an unstarred standard). The second is a normal
-  S kept as a sibling so we can verify the cleaner did not remove the
-  marked S. xml:lang="ami".
-  Exercises (after B): cleaner emits a WARN/CSV row for the * occurrence
-  and preserves both S elements verbatim. Today: cleaner does not warn
-  (warn infrastructure absent) but also does not remove the S (no
-  rule), so the warn assertion XFAILs.
-
-  Contrast with C008's "456otca" sentinel which intentionally DOES
-  trigger structural removal of the S. The "*" is a linguistic
-  annotation worth surfacing upstream, not silencing.
+  The pre-revision framing pinned only the sentence-initial case;
+  user direction (2026-05-30) broadens the rule to any position.
 -->
-<TEXT id="TEST_C022" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+<TEXT id="TEST_C022" citation="test" BibTeX_citation="@test{test}"
+      copyright="test" xml:lang="ami">
   <S id="S_1">
     <FORM kindOf="original">*Mu ka patas nii.</FORM>
     <FORM kindOf="standard">*Mu ka patas nii.</FORM>
   </S>
   <S id="S_2">
+    <FORM kindOf="original">Mu ka *patas nii.</FORM>
+    <FORM kindOf="standard">Mu ka *patas nii.</FORM>
+  </S>
+  <S id="S_3">
+    <FORM kindOf="original">Mu ka patas nii*.</FORM>
+    <FORM kindOf="standard">Mu ka patas nii*.</FORM>
+  </S>
+  <S id="S_4">
     <FORM kindOf="original">Mu ka patas nii.</FORM>
     <FORM kindOf="standard">Mu ka patas nii.</FORM>
   </S>
