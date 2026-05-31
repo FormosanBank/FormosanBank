@@ -78,9 +78,18 @@ VALIDATE_XML_CLI = (
 )
 
 
-def _run_cli(args: list[str], cwd: Path | None = None) -> subprocess.CompletedProcess:
+def _run_cli(
+    args: list[str],
+    cwd: Path | None = None,
+    published_corpora: Path | None = None,
+) -> subprocess.CompletedProcess:
+    # Default published_corpora to an empty dir so V081 doesn't walk the
+    # real Corpora/ on every test subprocess call.
+    pc = published_corpora if published_corpora is not None else Path("/tmp")
     return subprocess.run(
-        [sys.executable, str(VALIDATE_XML_CLI), *args],
+        [sys.executable, str(VALIDATE_XML_CLI),
+         "--published-corpora", str(pc),
+         *args],
         capture_output=True,
         text=True,
         cwd=cwd,

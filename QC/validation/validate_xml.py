@@ -42,11 +42,17 @@ if str(_REPO_ROOT) not in sys.path:
 
 from lxml import etree
 
-from QC.validation._corpus_index import CorpusIndex
+from QC.validation._corpus_index import (
+    CorpusIndex,
+    build_current_index,
+    build_published_index,
+)
 from QC.validation._finding import Finding, Severity, write_soft_csv
 from QC.validation.rules import hard as hard_rules
 from QC.validation.rules import soft as soft_rules
 from QC.validation.rules import warn as warn_rules
+
+_DEFAULT_CORPORA_ROOT = Path(__file__).resolve().parents[2] / "Corpora"
 
 
 Rule = Callable[[etree._ElementTree, Path, CorpusIndex | None], list[Finding]]
@@ -115,6 +121,14 @@ def _add_common_flags_to_subparser(p: argparse.ArgumentParser) -> None:
         help="Path where SOFT findings are written as CSV. "
              "Overwritten per run; parent dirs created if absent.",
     )
+    p.add_argument(
+        "--published-corpora",
+        dest="published_corpora",
+        type=Path,
+        default=argparse.SUPPRESS,
+        help="Path to the published Corpora/ directory for V081 cross-corpus "
+             "id uniqueness checks. Defaults to <repo>/Corpora/.",
+    )
 
 
 def _build_arg_parser() -> argparse.ArgumentParser:
@@ -142,6 +156,14 @@ def _build_arg_parser() -> argparse.ArgumentParser:
         default=Path("logs") / "validation_soft.csv",
         help="Path where SOFT findings are written as CSV. "
              "Overwritten per run; parent dirs created if absent.",
+    )
+    parser.add_argument(
+        "--published-corpora",
+        dest="published_corpora",
+        type=Path,
+        default=_DEFAULT_CORPORA_ROOT,
+        help="Path to the published Corpora/ directory for V081 cross-corpus "
+             "id uniqueness checks. Defaults to <repo>/Corpora/.",
     )
 
     sub = parser.add_subparsers(dest="search_by", required=True)
@@ -224,10 +246,10 @@ def main(argv: list[str] | None = None) -> int:
     targets = _resolve_target_files(args)
 
     all_findings: list[Finding] = []
-    all_rules = (
-        hard_rules.RULES + soft_rules.RULES + warn_rules.RULES
-    )
+    per_file_rules = hard_rules.RULES + soft_rules.RULES + warn_rules.RULES
 
+    # Pass 1: parse trees, run per-file rules, collect parse successes.
+    trees: list[tuple[Path, etree._ElementTree]] = []
     for path in targets:
         try:
             tree = parse_tree(path)
@@ -242,7 +264,26 @@ def main(argv: list[str] | None = None) -> int:
                 path=path,
             ))
             continue
-        all_findings.extend(run_per_file_rules(tree, path, all_rules, index=None))
+        trees.append((path, tree))
+        all_findings.extend(run_per_file_rules(tree, path, per_file_rules, index=None))
+
+    # Build CorpusIndex from pass-1 data + published Corpora/.
+    current_ids, current_langs = build_current_index(targets)
+    published_ids = build_published_index(args.published_corpora)
+    index = CorpusIndex(
+        ids=current_ids,
+        langs=current_langs,
+        published_ids=published_ids,
+    )
+
+    # Pass 2: cross-file rules with populated index.
+    cross_file_rules = (
+        hard_rules.CROSS_FILE_RULES
+        + soft_rules.CROSS_FILE_RULES
+        + warn_rules.CROSS_FILE_RULES
+    )
+    for path, tree in trees:
+        all_findings.extend(run_per_file_rules(tree, path, cross_file_rules, index=index))
 
     _print_summary(all_findings)
     write_soft_csv(args.soft_csv, all_findings)

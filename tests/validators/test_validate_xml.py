@@ -40,6 +40,8 @@ from _helpers import combined_output, has_marker
 
 
 VALIDATE_XML = Path(__file__).resolve().parents[2] / "QC" / "validation" / "validate_xml.py"
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+_CORPORA_ROOT = _REPO_ROOT / "Corpora"
 
 # Generic finding markers — any of these in the combined stdout+stderr
 # (case-insensitive) indicates the validator reported a problem. Tests
@@ -59,7 +61,10 @@ XFAIL_NOT_YET_CHECKED = (
 )
 
 
-def _run_validate(corpus_xml_dir: Path) -> subprocess.CompletedProcess:
+def _run_validate(
+    corpus_xml_dir: Path,
+    published_corpora: Path | None = None,
+) -> subprocess.CompletedProcess:
     """Invoke validate_xml.py against a directory containing an XML/ subdir.
 
     The validator is given the directory whose contents include /XML/<files>.xml.
@@ -68,10 +73,18 @@ def _run_validate(corpus_xml_dir: Path) -> subprocess.CompletedProcess:
 
     SOFT CSV is directed into corpus_xml_dir so this helper never
     pollutes the repo root with a logs/ directory.
+
+    published_corpora: path passed to --published-corpora. Defaults to
+    corpus_xml_dir (the test's tmp_path, which contains only the fixture
+    under test) to avoid walking the real Corpora/ on every test call.
+    Pass _CORPORA_ROOT explicitly for tests that exercise V081.
     """
+    if published_corpora is None:
+        published_corpora = corpus_xml_dir
     return subprocess.run(
         [
             sys.executable, str(VALIDATE_XML),
+            "--published-corpora", str(published_corpora),
             "by_path", "--path", str(corpus_xml_dir),
             "--soft-csv", str(corpus_xml_dir / "soft.csv"),
         ],
@@ -586,14 +599,6 @@ def test_V073_PHON_empty_content_negative(tmp_path, fixtures_dir, copy_fixture):
 # -----------------------------------------------------------------------------
 
 
-@pytest.mark.xfail(
-    strict=True,
-    reason=(
-        "V081: cross-corpus TEXT/@id uniqueness. The validator must walk "
-        "FormosanBank/Corpora/ (read-only) and check the corpus-under-test "
-        "for id collisions. Currently NOT enforced. Tracked for sub-project B."
-    ),
-)
 def test_V081_cross_corpus_TEXT_id_collision_negative(tmp_path, fixtures_dir, copy_fixture):
     """V081: a fixture whose TEXT/@id is also present in published Corpora.
 
@@ -603,7 +608,7 @@ def test_V081_cross_corpus_TEXT_id_collision_negative(tmp_path, fixtures_dir, co
     FormosanBank/Corpora/ and surface the collision.
     """
     copy_fixture(fixtures_dir / "v081_TEXT_id_collides_with_published.xml", tmp_path)
-    proc = _run_validate(tmp_path)
+    proc = _run_validate(tmp_path, published_corpora=_CORPORA_ROOT)
     assert _has_rule_finding(proc, ("v081", "cross-corpus", "id collision", "id collides")), (
         f"expected finding for cross-corpus id collision; got stdout={proc.stdout!r}"
     )

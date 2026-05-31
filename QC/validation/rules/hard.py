@@ -794,6 +794,40 @@ def v073_phon_non_empty(
     return findings
 
 
+def v081_text_id_unique_across_published_corpora(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V081: a TEXT/@id in the corpus-under-test must not collide with
+    any TEXT/@id in published Corpora/. Cross-file rule; consults the
+    CorpusIndex's published_ids.
+    """
+    if index is None:
+        return []
+    root = tree.getroot()
+    if root.tag != "TEXT":
+        return []
+    text_id = root.get("id")
+    if text_id is None:
+        return []
+    collisions = index.published_ids.get(text_id, [])
+    collisions = [p for p in collisions if p.resolve() != path.resolve()]
+    if not collisions:
+        return []
+    return [Finding(
+        rule_id="V081",
+        severity=Severity.HARD,
+        message=(
+            f"TEXT/@id={text_id!r} collides with id in published corpora: "
+            f"{', '.join(str(p) for p in collisions)}"
+            f" (cross-corpus id collision)"
+        ),
+        path=path,
+        location=f"TEXT[@id={text_id!r}]",
+    )]
+
+
 RULES: list = [
     v000_schema_validation,
     v001_root_must_be_TEXT,
@@ -817,4 +851,4 @@ RULES: list = [
     v072_duplicate_phon_kindof,
     v073_phon_non_empty,
 ]
-CROSS_FILE_RULES: list = []
+CROSS_FILE_RULES: list = [v081_text_id_unique_across_published_corpora]
