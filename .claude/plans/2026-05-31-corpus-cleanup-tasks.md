@@ -49,12 +49,41 @@
 
 **Pattern:** S elements have `audio_url="..."` and `source="..."` attributes that are not in the canonical XML schema. AUDIO elements also have `source="..."`. Visible across all 668 S elements + 1 file.
 
-**Affected counts:**
+**Affected counts (verified 2026-05-31):**
 - 668 × `S/@audio_url`
 - 668 × `S/@source`
-- ~660 × `AUDIO/@source`
+- 668 × `AUDIO/@source`
+  Total V000 hits from this pattern: 2,004.
 
 **Proposed pipeline change:** the corpus's `Scripts/make_xml.py` adds these attributes. Decision needed: either (a) extend the canonical schema to allow `source` (and possibly `audio_url`) on S/AUDIO, OR (b) move the provenance metadata into existing schema-allowed attributes (e.g., `TEXT/@source` is already in the schema; per-S provenance could be flattened into a single `TEXT/@source` URL or moved out-of-band). Option (b) is cleaner architecturally but loses per-S granularity.
+
+---
+
+## Duplicate M ids within file — YeddaPalemeqBlog
+
+**Count:** 68 M-element id collisions within single files (V000 from XSD's xs:unique constraint, plus 68 V039 Python rule findings — same underlying issue, two findings each).
+
+**Pattern:** Sample ids that collide: `S6_1W18M3`, `S6_1W15M3`, `S659_1W3M2`, `S641642_1W7M1`, `S618619_2W6M1`, `S610_1W8M1`, `S607_1W8M1`. Each appears twice on `<M>` elements in the same XML file. The id scheme is `S<sentence>_<num>W<word>M<morpheme>`, so this is likely a make_xml.py bug where the same morpheme id is emitted twice when a W element has multiple identical-looking sub-morphemes.
+
+**Proposed pipeline change:** the corpus's `Scripts/make_xml.py` needs to ensure unique M ids within each file. Either use a per-W counter to generate `M0`/`M1`/`M2` ids cleanly, or post-process to detect+rename collisions.
+
+---
+
+## Infix morphemes without angle-bracket gloss — YeddaPalemeqBlog
+
+**Count:** 285 V062 findings (M elements with infix-shaped FORM like `-em-` but the parent W has no TRANSL with `<X>` angle-bracket gloss notation).
+
+**Pattern:** Sample M ids: `S668_1W5M2`, `S660661662663_1W4M2`, `S660661662663_2W6M2`. The morpheme tier marks the infix correctly but the word-level English translation doesn't surface it with the expected `<...>` convention. Example: an infix morpheme like `-em-` should be glossed as `<AV>` (Actor Voice) in the W-level TRANSL.
+
+**Proposed pipeline change:** the corpus's `Scripts/make_xml.py` or a subsequent gloss-formatting script needs to emit angle-bracket glosses on the W TRANSL when M-level infix morphology is present. Alternatively, if the source data doesn't include the gloss info, V062 may need to be downgraded to SOFT/WARN for this corpus until the gloss info can be sourced.
+
+---
+
+## YeddaPalemeqBlog &amp;amp; double-encoded entities (informational)
+
+**Pattern (informational, not a validator finding):** The TRANSL text in this corpus contains literal `&amp;amp;` and `&amp;apos;` sequences — double-encoded HTML entities from the scrape. After the B7 fix (commit `fac85b55d`), the orthography extraction now correctly decodes these via `html.unescape`. The underlying XML files still carry the double-encoded forms, but downstream consumers (orthography stats, similarity metrics) are no longer polluted.
+
+**Proposed pipeline change:** the corpus's `download_html.py` or `Scripts/make_xml.py` should call `html.unescape()` on extracted text before writing the XML. Not blocking — the validator doesn't complain — but the data would be cleaner.
 
 ---
 
