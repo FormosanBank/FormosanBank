@@ -792,18 +792,98 @@ Move corresponding fixture names from `XFAIL_FIXTURES` to `IDEMPOTENT_FIXTURES`:
 
 (C002b's fixture `"c002b_ipa_stress_in_form.xml"` is already in `IDEMPOTENT_FIXTURES` — the warning test used the same fixture.)
 
-**IMPORTANT:** After adding `swap_punctuation` to non-Chinese TRANSL, verify the existing test `test_C006_caret_variant_collapses_in_form_only` still passes. That test asserts `⌃` (U+2303) survives in TRANSL today because `clean_trans` skips `swap_punctuation`. After Task 6, a non-Chinese TRANSL will now get `swap_punctuation`, so `⌃` WILL be converted to `^`. The C006 test's negative pin on TRANSL needs to be updated:
+**ALSO in this task (Step 4b): caret-variant normalization, language-AGNOSTIC.**
+
+Per user direction (2026-05-30): in this corpus, a caret-like glyph in any position is always a glottal stop. The cleaner must normalize ALL caret-variant Unicode characters to ASCII `^` (U+005E) in BOTH FORM and TRANSL, regardless of language. The current cleaner only handles ⌃ (U+2303) and only in FORM (via swap_punctuation). Expand to four variants and apply in both tiers.
+
+The four caret-variant characters:
+| Codepoint | Char | Unicode name |
+|---|---|---|
+| U+2303 | ⌃ | UP ARROWHEAD |
+| U+2038 | ‸ | CARET |
+| U+02C6 | ˆ | MODIFIER LETTER CIRCUMFLEX ACCENT |
+| U+FF3E | ＾ | FULLWIDTH CIRCUMFLEX ACCENT |
+
+Implementation: factor a dedicated function so it's clearly language-agnostic and separate from the language-aware C001/C002 swap.
+
+```python
+_CARET_VARIANTS_TO_ASCII = {
+    "⌃": "^",  # UP ARROWHEAD
+    "‸": "^",  # CARET
+    "ˆ": "^",  # MODIFIER LETTER CIRCUMFLEX ACCENT
+    "＾": "^",  # FULLWIDTH CIRCUMFLEX ACCENT
+}
+
+
+def normalize_caret_variants(text: str) -> str:
+    """Normalize caret-like Unicode characters to ASCII '^'.
+
+    Per FormosanBank convention, a caret-like glyph in this corpus
+    always represents a glottal stop. We canonicalize the visual
+    variants to a single character so downstream processing sees
+    one form regardless of source.
+    """
+    for variant, ascii_caret in _CARET_VARIANTS_TO_ASCII.items():
+        text = text.replace(variant, ascii_caret)
+    return text
+```
+
+Call sites: invoke `normalize_caret_variants` from both `clean_text` and `clean_trans`, regardless of `xml:lang`. Apply BEFORE the language-aware swap_punctuation so the rest of the pipeline only ever sees `^`.
+
+ALSO: remove the existing `'⌃': '^'` entry from the `swap_punctuation` table (line 64 of clean_xml.py) — the new dedicated function handles it. Keep all other swap_punctuation entries.
+
+**C006 test pin update.** With caret normalization now applied to TRANSL, the existing C006 test's negative pin on TRANSL (`assert "⌃" in transl`) flips. The new behavior is uniform across tiers: every caret variant becomes `^` everywhere.
 
 Old assertion:
 ```python
 assert "⌃" in transl, f"TRANSL ⌃ should survive: {transl!r}"
 ```
-New assertion (per roadmap item 23 — C006 caret revisit):
+New assertion (per user direction 2026-05-30; supersedes roadmap item 23):
 ```python
-assert transl == "a^b", f"TRANSL after language-aware cleaning: {transl!r}"
+assert transl == "arrowhead ^ stays", f"TRANSL after caret normalization: {transl!r}"
 ```
 
-Update the C006 test docstring to explain the change.
+Update the C006 test docstring to explain the new uniform rule.
+
+**Expand the C006 fixture** to verify caret normalization happens across the full cross-product:
+
+- All FOUR caret variants (⌃ ‸ ˆ ＾)
+- In all THREE tier positions: FORM (kindOf="original" AND kindOf="standard") + TRANSL with `xml:lang="eng"` (non-Chinese) + TRANSL with `xml:lang="zho"` (Chinese — explicit verification that caret normalization is NOT language-coupled)
+
+Shape:
+```xml
+<TEXT id="TEST_C006" citation="test" BibTeX_citation="@test{test}"
+      copyright="test" xml:lang="ami">
+  <S id="S_1">
+    <FORM kindOf="original">a⌃b‸cˆd＾e</FORM>
+    <FORM kindOf="standard">a⌃b‸cˆd＾e</FORM>
+    <TRANSL xml:lang="eng">arrowhead ⌃ caret ‸ circ ˆ fullwidth ＾</TRANSL>
+    <TRANSL xml:lang="zho">⌃‸ˆ＾</TRANSL>
+  </S>
+</TEXT>
+```
+
+Test assertions:
+```python
+# All four caret variants must normalize to ASCII '^' in every tier.
+orig = _form_texts_with_kindof(work, "S", "original")[0]
+std  = _form_texts_with_kindof(work, "S", "standard")[0]
+assert orig == "a^b^c^d^e", f"FORM original: {orig!r}"
+assert std  == "a^b^c^d^e", f"FORM standard: {std!r}"
+
+transls = {t.get(XML_LANG): t.text for t in tree.findall(".//S/TRANSL")}
+assert transls["eng"] == "arrowhead ^ caret ^ circ ^ fullwidth ^", (
+    f"non-Chinese TRANSL: {transls['eng']!r}"
+)
+assert transls["zho"] == "^^^^", (
+    f"Chinese TRANSL (caret normalization MUST happen regardless of lang): "
+    f"{transls['zho']!r}"
+)
+```
+
+The Chinese TRANSL assertion is the key regression pin: if a future implementation accidentally couples caret handling to the language-aware C001/C002 swap (which DOES skip Chinese), the `transls["zho"]` assertion fails loudly. The test name and docstring should make this explicit.
+
+**Rename the C006 test** from `test_C006_caret_variant_collapses_in_form_only` to `test_C006_caret_variants_normalize_everywhere_regardless_of_lang` (the "form_only" framing is now wrong; the new name encodes the universality).
 
 - [ ] **Step 5: Run C001/C002/C006 tests**
 
@@ -826,14 +906,26 @@ Expected: 131 passed, 11 xfailed (6 more xfails flipped).
 ```bash
 git add QC/cleaning/clean_xml.py tests/cleaners/test_clean_xml_extensions.py
 git commit -m "$(cat <<'EOF'
-B5 task 6 (C001/C002/C002b): language-aware clean_trans
+B5 task 6 (C001/C002/C002b + C006 caret normalization): language-aware
+clean_trans + always-convert caret variants
 
 Non-Chinese TRANSL now gets swap_punctuation (C001/C002 Branch A).
 Chinese TRANSL gets double-quote canonicalisation to U+201D (Branch B)
 plus warnings for single-quote variants and ASCII apostrophes.
 ˈ (U+02C8) transformations in both FORM and TRANSL now emit c002b
-warning rows. C006 TRANSL pin updated: ⌃ is now normalised to ^ in
-non-Chinese TRANSL. Flips 6 xfails. Per roadmap items 12-13.
+warning rows. Flips 6 xfails. Per roadmap items 12-13.
+
+Caret-variant normalization (C006 simplified per user direction
+2026-05-30): four caret-like Unicode characters (U+2303 UP ARROWHEAD,
+U+2038 CARET, U+02C6 MODIFIER LETTER CIRCUMFLEX ACCENT, U+FF3E
+FULLWIDTH CIRCUMFLEX ACCENT) all normalize to ASCII '^' in BOTH FORM
+and TRANSL, regardless of xml:lang. In FormosanBank, a caret-like
+glyph always represents a glottal stop, so the variants are
+canonicalized to one representation. The C006 test pin on TRANSL is
+updated accordingly (no longer a negative pin — TRANSL now sees the
+same caret normalization as FORM). The fixture expands to cover all
+four variants. Supersedes roadmap item 23 (the "future revisit" is
+now done here).
 
 Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
 EOF
