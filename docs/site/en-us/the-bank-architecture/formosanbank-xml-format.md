@@ -110,7 +110,7 @@ The `<AUDIO>` element links specific audio segments to linguistic elements in th
 
 Attributes:
 
-* **`start`** and **`end`**: Must always be set. When there is a single, large audio file associated with the entire XML document. These attributes indicate the start and end times of the audio segment in seconds, measured from the beginning of the file. When audio files are segmented, start would be 0 and end would be the length of the audio file associated with the element.
+* **`start`** and **`end`**: Must always be set when there is a single, large audio file associated with the entire XML document. These attributes indicate the start and end times of the audio segment in seconds, measured from the beginning of the file. When audio files are segmented, start would be 0 and end would be the length of the audio file associated with the element.
 * **`file`** and **`url`**: Used when the audio is **segmented**—that is, there are separate audio files for individual elements (e.g., each sentence or word). The `file` attribute specifies the audio file for the segment, and the `url` attribute (optional) provides a web link for accessing the file.
 
 Usage Scenarios:
