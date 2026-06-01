@@ -1565,3 +1565,87 @@ def test_V136_latin_with_cjk_OK(tmp_path):
     assert "v136" not in combined, (
         f"V136 should not fire on Latin + CJK; stdout={proc.stdout!r}"
     )
+
+
+# TR19 V137 SOFT — trailing-decimal footnote (`word.1`, `word.2`) at end of
+# S-level FORM or TRANSL.
+
+def test_V137_trailing_decimal_in_S_FORM_soft(tmp_path):
+    """V137 SOFT: text ending in `word.1` (digit glued to non-digit via '.')."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">hello world.1</FORM>'
+        + '<FORM kindOf="standard">hello world</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v137", "trailing decimal", "trailing-decimal", "footnote")
+    ), (
+        f"expected V137 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V137_trailing_decimal_in_TRANSL_soft(tmp_path):
+    """V137 SOFT: TRANSL ending in `word.2`."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">std</FORM>'
+        + '<TRANSL xml:lang="eng">to speak.2</TRANSL>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v137", "trailing decimal", "trailing-decimal", "footnote")
+    ), (
+        f"expected V137 finding in TRANSL; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V137_plain_decimal_number_OK(tmp_path):
+    """V137: ends with a plain decimal `3.14` (digit before .). Not flagged.
+
+    The plan: 'Require the digit glued to a non-digit'. The character
+    immediately before the '.' must be a non-digit for the pattern to
+    fire — guards against numerals (3.14, 2025.12) being misclassified.
+    """
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">pi is 3.14</FORM>'
+        + '<FORM kindOf="standard">pi is 3.14</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v137" not in combined, (
+        f"V137 should not fire on decimal numerals; stdout={proc.stdout!r}"
+    )
+
+
+def test_V137_mid_text_decimal_not_flagged(tmp_path):
+    """V137: scope is END-of-text only (per plan). Mid-text `.1` not flagged."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">word.1 plus more</FORM>'
+        + '<FORM kindOf="standard">word.1 plus more</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v137" not in combined, (
+        f"V137 should be end-anchored; stdout={proc.stdout!r}"
+    )

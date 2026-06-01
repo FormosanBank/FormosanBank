@@ -1128,6 +1128,51 @@ def v136_mixed_script_confusables(
     )]
 
 
+# TR19 V137 SOFT — trailing-decimal footnote (`word.1`, `word.2`) at end
+# of S-level FORM or TRANSL. Per plan: require the digit glued to a
+# non-digit (so `3.14` doesn't trigger, but `world.1` does). End-anchored
+# (after rstrip).
+
+_TRAILING_DECIMAL_FOOTNOTE_RE = re.compile(r"(?<!\d)\.\d+$")
+
+
+def v137_trailing_decimal_footnote_in_S_FORM_TRANSL(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V137 SOFT (TR19): trailing-decimal footnote at end of S-level FORM
+    or TRANSL. False-positive guard: the character immediately before
+    the '.' must be a non-digit (so plain decimal numerals like '3.14'
+    are not flagged)."""
+    lang = _resolve_language(tree)
+    count = 0
+    for s in tree.iter("S"):
+        for child in s:
+            if child.tag not in ("FORM", "TRANSL"):
+                continue
+            text = (child.text or "").rstrip()
+            if not text:
+                continue
+            if _TRAILING_DECIMAL_FOOTNOTE_RE.search(text):
+                count += 1
+    if count == 0:
+        return []
+    return [Finding(
+        rule_id="V137",
+        severity=Severity.SOFT,
+        message=(
+            f"V137 SOFT trailing-decimal footnote: count={count} S-level "
+            "FORM/TRANSL element(s) ending in `<non-digit>.<digits>` "
+            "(likely footnote leak)"
+        ),
+        path=path,
+        count=count,
+        language=lang,
+        character="",
+    )]
+
+
 RULES: list = [
     # W1 (V110-V115): ported from validate_punct.py
     v110_smart_quotes,
@@ -1157,5 +1202,6 @@ RULES: list = [
     v134_angle_brackets_in_S_FORM,
     v135_trailing_punct_mismatch,
     v136_mixed_script_confusables,
+    v137_trailing_decimal_footnote_in_S_FORM_TRANSL,
 ]
 CROSS_FILE_RULES: list = []
