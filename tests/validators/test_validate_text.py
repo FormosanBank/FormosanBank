@@ -1264,3 +1264,68 @@ def test_V132_clean_text_OK(tmp_path):
     assert "v132" not in combined, (
         f"V132 should not fire on clean text; stdout={proc.stdout!r}"
     )
+
+
+# TR12 V133 SOFT — '-' (segmentation marker) in S-level standard FORM.
+
+def test_V133_dash_in_S_standard_FORM_soft(tmp_path):
+    """V133 SOFT: '-' in S-level standard FORM (segmentation leftover)."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">ma-luhay</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v133", "dash in s", "segmentation", "- in")
+    ), (
+        f"expected V133 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V133_dash_in_S_original_does_not_trigger(tmp_path):
+    """V133: '-' in S-original tier is preserved (source) — not flagged."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">ma-luhay</FORM>'
+        + '<FORM kindOf="standard">maluhay</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v133" not in combined, (
+        f"V133 should not fire on original tier; stdout={proc.stdout!r}"
+    )
+
+
+def test_V133_dash_in_W_standard_does_not_trigger(tmp_path):
+    """V133: '-' in W-level standard FORM is permitted by V133.
+
+    V133 targets S-level standard only; morpheme boundaries inside W are
+    not in scope.
+    """
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">maluhay</FORM>'
+        + '<W id="W1">'
+        + '<FORM kindOf="original">ma-luhay</FORM>'
+        + '<FORM kindOf="standard">ma-luhay</FORM>'
+        + '</W>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v133" not in combined, (
+        f"V133 should not fire on W-level dash; stdout={proc.stdout!r}"
+    )

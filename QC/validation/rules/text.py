@@ -926,6 +926,37 @@ def v132_html_entities_in_FORM_TRANSL(
     return findings
 
 
+# TR12 V133 SOFT — '-' (segmentation marker) in S-level standard FORM.
+
+
+def v133_dash_in_S_standard_FORM(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V133 SOFT (TR12): '-' in S-level standard FORM, likely a leftover
+    segmentation/hyphenation marker that should have been removed."""
+    lang = _resolve_language(tree)
+    count = 0
+    for _, text in _s_standard_pairs(tree):
+        if "-" in text:
+            count += 1
+    if count == 0:
+        return []
+    return [Finding(
+        rule_id="V133",
+        severity=Severity.SOFT,
+        message=(
+            f"V133 SOFT dash in S-standard: count={count} S-standard FORM(s) "
+            "containing '-' (segmentation leftover)"
+        ),
+        path=path,
+        count=count,
+        language=lang,
+        character="-",
+    )]
+
+
 RULES: list = [
     # W1 (V110-V115): ported from validate_punct.py
     v110_smart_quotes,
@@ -951,5 +982,6 @@ RULES: list = [
     v130_leading_trailing_whitespace_in_FORM,
     v131_zero_width_or_BOM_in_FORM_TRANSL,
     v132_html_entities_in_FORM_TRANSL,
+    v133_dash_in_S_standard_FORM,
 ]
 CROSS_FILE_RULES: list = []
