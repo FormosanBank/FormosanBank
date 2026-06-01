@@ -87,6 +87,36 @@ python QC/validation/validate_glosses.py /path/to/Final_XML \
 
 For verse-level or sentence-only corpora with no `W`/`M` segmentation, `validate_glosses.py` will report sentence/W mismatches. Treat those as "not applicable" unless word segmentation is required for that corpus.
 
+Detect duplicate `<S>` sentences within a corpus (within-file matches are HARD findings; cross-file matches in the same corpus are SOFT):
+
+```bash
+python QC/validation/validate_duplicate_sentences.py by_path \
+  --path /path/to/Final_XML \
+  --output /path/to/qc-output/duplicate_sentences.csv
+```
+
+The validator compares whitespace-normalized FORM text on the `kindOf="standard"` tier by default; pass `--tier original` to compare the source tier. Cross-corpus duplicate detection (e.g. "is this Glosbe sentence also in ePark?") is a separate tool: see `QC/utilities/find_duplicate_sentences.py`.
+
+## Cleaning
+
+`QC/cleaning/clean_xml.py` normalizes unicode and HTML entities in place.
+
+`QC/cleaning/remove_duplicate_sentences.py` removes duplicate `<S>` elements detected by the validator above. **It modifies XML in place** — the default is `--dry-run`; pass `--apply` to actually mutate files. Within each duplicate group it deterministically keeps the first occurrence by `(file, S id)` sort order.
+
+```bash
+# Plan only (default; nothing is written):
+python QC/cleaning/remove_duplicate_sentences.py by_path \
+  --path /path/to/Final_XML
+
+# After reviewing the dry-run plan, actually remove:
+python QC/cleaning/remove_duplicate_sentences.py by_path \
+  --path /path/to/Final_XML --apply
+
+# Include cross-file duplicates within the corpus (default scope is file-only):
+python QC/cleaning/remove_duplicate_sentences.py by_path \
+  --path /path/to/Final_XML --scope corpus --apply
+```
+
 ## Corpus Metrics
 
 Generate corpus-wide facts, figures, and plots from XML files under `Corpora/`:
