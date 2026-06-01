@@ -1079,3 +1079,103 @@ def test_V130_empty_FORM_OK(tmp_path):
     assert "v130" not in combined, (
         f"V130 should not fire on empty FORM; stdout={proc.stdout!r}"
     )
+
+
+# TR16 V131 HARD — zero-width / BOM (U+200B U+200C U+200D U+FEFF) in
+# FORM or TRANSL, anywhere.
+
+def test_V131_ZWSP_in_FORM_negative(tmp_path):
+    """V131 HARD: U+200B ZERO WIDTH SPACE inside FORM."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">hello​world</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v131", "zero-width", "zero width", "bom")
+    ), (
+        f"expected V131 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V131_BOM_at_FORM_start_negative(tmp_path):
+    """V131 HARD: U+FEFF BOM at the start of a FORM."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">﻿hello</FORM>'
+        + '<FORM kindOf="standard">hello</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v131", "zero-width", "zero width", "bom")
+    ), (
+        f"expected V131 BOM finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V131_ZWNJ_in_TRANSL_negative(tmp_path):
+    """V131 HARD: U+200C ZWNJ inside TRANSL."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">std</FORM>'
+        + '<TRANSL xml:lang="eng">hi‌there</TRANSL>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v131", "zero-width", "zero width", "bom")
+    ), (
+        f"expected V131 finding in TRANSL; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V131_ZWJ_in_FORM_negative(tmp_path):
+    """V131 HARD: U+200D ZWJ inside FORM is also forbidden."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">a‍b</FORM>'
+        + '<FORM kindOf="standard">ab</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v131", "zero-width", "zero width", "bom")
+    ), (
+        f"expected V131 ZWJ finding; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V131_clean_FORM_OK(tmp_path):
+    """V131 OK: ordinary ASCII content has no zero-width chars."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">hello world</FORM>'
+        + '<FORM kindOf="standard">hello world</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v131" not in combined, (
+        f"V131 should not fire on clean text; stdout={proc.stdout!r}"
+    )

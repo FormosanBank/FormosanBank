@@ -841,6 +841,51 @@ def v130_leading_trailing_whitespace_in_FORM(
     return findings
 
 
+# TR16 V131 HARD — zero-width / BOM in FORM or TRANSL, anywhere.
+#
+# Per W3 sign-off: U+200B ZWSP, U+200C ZWNJ, U+200D ZWJ, U+FEFF BOM are
+# invisible characters with no legitimate use in Formosan / English /
+# Chinese content. Subsumes the earlier TR17 "BOM at position 0" idea
+# (broader scope; one rule). Cleaner-side strip queued for B5.
+_ZERO_WIDTH_CHARS: frozenset[str] = frozenset((
+    "​",  # ZERO WIDTH SPACE
+    "‌",  # ZERO WIDTH NON-JOINER
+    "‍",  # ZERO WIDTH JOINER
+    "﻿",  # ZERO WIDTH NO-BREAK SPACE (BOM)
+))
+
+
+def v131_zero_width_or_BOM_in_FORM_TRANSL(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V131 HARD (TR16): zero-width or BOM in FORM or TRANSL."""
+    findings: list[Finding] = []
+    for elem in tree.iter("FORM", "TRANSL"):
+        text = elem.text or ""
+        offenders = sorted({ch for ch in text if ch in _ZERO_WIDTH_CHARS})
+        if not offenders:
+            continue
+        parent = elem.getparent()
+        parent_tag = parent.tag if parent is not None else ""
+        parent_id = (parent.get("id") if parent is not None else None) or ""
+        location = f"{parent_tag}={parent_id}" if parent_id else parent_tag
+        offenders_str = "+".join(f"U+{ord(ch):04X}" for ch in offenders)
+        findings.append(Finding(
+            rule_id="V131",
+            severity=Severity.HARD,
+            message=(
+                f"V131 HARD zero-width/BOM char(s) in {elem.tag}: codepoints "
+                f"{offenders_str}; {parent_tag} id={parent_id!r} "
+                f"{elem.tag} kindOf={elem.get('kindOf')!r}"
+            ),
+            path=path,
+            location=location,
+        ))
+    return findings
+
+
 RULES: list = [
     # W1 (V110-V115): ported from validate_punct.py
     v110_smart_quotes,
@@ -864,5 +909,6 @@ RULES: list = [
     v128_control_chars_in_FORM_TRANSL,
     v129_asterisk_in_standard_FORM,
     v130_leading_trailing_whitespace_in_FORM,
+    v131_zero_width_or_BOM_in_FORM_TRANSL,
 ]
 CROSS_FILE_RULES: list = []
