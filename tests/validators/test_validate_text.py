@@ -916,3 +916,66 @@ def test_V128_clean_form_does_not_trigger(tmp_path):
     assert "v128" not in combined, (
         f"V128 should not fire on clean input; stdout={proc.stdout!r}"
     )
+
+
+# TR11 V129 HARD — '*' in standard-tier FORM.
+
+def test_V129_asterisk_in_S_standard_FORM_negative(tmp_path):
+    """V129 HARD: '*' in S-level standard FORM is forbidden."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">*ungrammatical</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v129", "asterisk", "* in")
+    ), (
+        f"expected V129 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V129_asterisk_in_W_standard_FORM_negative(tmp_path):
+    """V129 HARD: '*' in W-level standard FORM is forbidden (any tier=standard)."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">stdsentence</FORM>'
+        + '<W id="W1">'
+        + '<FORM kindOf="original">word</FORM>'
+        + '<FORM kindOf="standard">*word</FORM>'
+        + '</W>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v129", "asterisk", "* in")
+    ), (
+        f"expected V129 finding for W-level standard; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V129_asterisk_in_original_does_not_trigger(tmp_path):
+    """V129: '*' in ORIGINAL tier is preserved (rule targets standard only)."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">*ungrammatical</FORM>'
+        + '<FORM kindOf="standard">ungrammatical</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v129" not in combined, (
+        f"V129 should not fire on original tier; stdout={proc.stdout!r}"
+    )

@@ -760,6 +760,44 @@ def v128_control_chars_in_FORM_TRANSL(
     return findings
 
 
+# TR11 V129 HARD — '*' in standard-tier FORM (any level).
+#
+# The asterisk is a metalinguistic ungrammaticality marker. It can be
+# meaningful in raw source / original transcripts but should never
+# appear in the project's standardized surface form. Scope: any FORM
+# (S, W, or M) with kindOf='standard'.
+
+
+def v129_asterisk_in_standard_FORM(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V129 HARD (TR11): '*' in any standard-tier FORM."""
+    findings: list[Finding] = []
+    for form in tree.iter("FORM"):
+        if form.get("kindOf") != "standard":
+            continue
+        text = form.text or ""
+        if "*" not in text:
+            continue
+        parent = form.getparent()
+        parent_tag = parent.tag if parent is not None else ""
+        parent_id = (parent.get("id") if parent is not None else None) or ""
+        location = f"{parent_tag}={parent_id}" if parent_id else parent_tag
+        findings.append(Finding(
+            rule_id="V129",
+            severity=Severity.HARD,
+            message=(
+                f"V129 HARD asterisk in standard-tier FORM: '*' in "
+                f"{parent_tag} id={parent_id!r}"
+            ),
+            path=path,
+            location=location,
+        ))
+    return findings
+
+
 RULES: list = [
     # W1 (V110-V115): ported from validate_punct.py
     v110_smart_quotes,
@@ -781,5 +819,6 @@ RULES: list = [
     # W10 (V127-V139): brainstorm-derived rules
     v127_smart_quotes_in_FORM_hard,
     v128_control_chars_in_FORM_TRANSL,
+    v129_asterisk_in_standard_FORM,
 ]
 CROSS_FILE_RULES: list = []
