@@ -134,7 +134,7 @@ XFAIL_FIXTURES: set = set()
 # cover every c-prefix fixture on disk. Adding a new c### fixture without
 # updating one of these sets fails at import time, before any test runs.
 _FIXTURES_DIR = Path(__file__).resolve().parents[1] / "fixtures"
-_ALL_C_FIXTURES = {p.name for p in _FIXTURES_DIR.glob("c*_*.xml")}
+_ALL_C_FIXTURES = {p.name for p in _FIXTURES_DIR.glob("c[0-9][0-9][0-9]*_*.xml")}
 _EXPECTED_IDEMPOTENT = _ALL_C_FIXTURES - XFAIL_FIXTURES
 _UNEXPECTED = set(IDEMPOTENT_FIXTURES) - _EXPECTED_IDEMPOTENT
 _MISSING = _EXPECTED_IDEMPOTENT - set(IDEMPOTENT_FIXTURES)

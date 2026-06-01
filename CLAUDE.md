@@ -57,7 +57,7 @@ TEXT (id, citation, BibTeX_citation, copyright, xml:lang, [source, audio, glotto
             └── AUDIO?
 ```
 
-Per the XSD (via `xs:choice maxOccurs="unbounded"`), sibling order of FORM/PHON/TRANSL/AUDIO within S, W, and M is **not enforced** — the diagram shows a typical order, not a required one. W stays at the end of S, and M stays at the end of W.
+Per the XSD (via `xs:choice maxOccurs="unbounded"`), sibling order of FORM/PHON/TRANSL/AUDIO/W within S — and FORM/PHON/TRANSL/AUDIO/M within W — is **not enforced**. The diagram shows a typical order, not a required one. (Prior to 2026-06-01 the XSD forced W to the end of S and M to the end of W; this was relaxed because AUDIO needs to be positionable anywhere within S and W, and XSD 1.0 can't express "AUDIO flexible, W/M trailing" without UPA violations. W/M-at-end is now a soft documentation convention.)
 
 The `kindOf="original"` vs `kindOf="standard"` distinction is **critical** and not just cosmetic:
 - **`original`**: the text as it appeared in the original source (book, website, etc.), possibly after minor normalization of punctuation and HTML escape codes. Preserves the source's orthographic choices.

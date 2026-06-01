@@ -115,41 +115,45 @@
     <xs:attribute name="sclass" type="xs:string"/>
   </xs:complexType>
 
-  <!-- W element: same order-flexibility rationale as M. The trailing
-       M position remains fixed (M elements are nested word-internal
-       structure and clearly come after the sister elements). -->
+  <!-- W element: sibling order of FORM/PHON/AUDIO/TRANSL/M is NOT
+       enforced — relaxed 2026-06-01 per user direction. Previously M
+       was constrained to the trailing position; this is now a soft
+       documentation convention only. If M-at-end ever needs to be
+       hard-enforced again, add a Python rule. -->
 
   <xs:complexType name="W_Type">
-    <xs:sequence>
-      <xs:choice minOccurs="1" maxOccurs="unbounded">
-        <xs:element name="FORM" type="FORM_Type"/>
-        <xs:element name="PHON" type="PHON_Type"/>
-        <xs:element name="AUDIO" type="AUDIO_Type"/>
-        <xs:element name="TRANSL" type="TRANSL_Type"/>
-      </xs:choice>
-      <xs:element name="M" type="M_Type" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
+    <xs:choice minOccurs="1" maxOccurs="unbounded">
+      <xs:element name="FORM" type="FORM_Type"/>
+      <xs:element name="PHON" type="PHON_Type"/>
+      <xs:element name="AUDIO" type="AUDIO_Type"/>
+      <xs:element name="TRANSL" type="TRANSL_Type"/>
+      <xs:element name="M" type="M_Type"/>
+    </xs:choice>
     <xs:attribute name="id" type="xs:string" use="required"/>
     <xs:attribute name="class" type="xs:string"/>
     <xs:attribute name="sclass" type="xs:string"/>
   </xs:complexType>
 
-  <!-- S element: same order-flexibility rationale; W stays at the end.
+  <!-- S element: sibling order of FORM/PHON/AUDIO/TRANSL/W is NOT
+       enforced — relaxed 2026-06-01 per user direction (AUDIO may
+       appear anywhere within S, including after W children, to
+       accommodate corpora where the per-S audio clip is declared
+       trailing the word-level decomposition). Previously W was
+       constrained to the trailing position; this is now a soft
+       documentation convention only.
        V010 (SOFT): S is allowed to have 0 sibling content (e.g.,
        diarized-audio S elements that have not yet been transcribed).
        The Python rule v010_count_s_without_form counts and reports them.
        W/M still require at least one FORM (V011/V012 are HARD). -->
 
   <xs:complexType name="S_Type">
-    <xs:sequence>
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="FORM" type="FORM_Type"/>
-        <xs:element name="PHON" type="PHON_Type"/>
-        <xs:element name="AUDIO" type="AUDIO_Type"/>
-        <xs:element name="TRANSL" type="TRANSL_Type"/>
-      </xs:choice>
-      <xs:element name="W" type="W_Type" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="FORM" type="FORM_Type"/>
+      <xs:element name="PHON" type="PHON_Type"/>
+      <xs:element name="AUDIO" type="AUDIO_Type"/>
+      <xs:element name="TRANSL" type="TRANSL_Type"/>
+      <xs:element name="W" type="W_Type"/>
+    </xs:choice>
     <xs:attribute name="id" type="xs:string" use="required"/>
   </xs:complexType>
 
