@@ -34,7 +34,7 @@ if str(_REPO_ROOT) not in sys.path:
 from QC.validation._finding import Finding, Severity  # noqa: E402
 
 
-RULE_SUSPECT = "V120"
+RULE_SUSPECT = "V140"
 
 
 # (column_name, higher_is_better, default_pct)

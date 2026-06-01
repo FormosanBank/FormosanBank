@@ -110,14 +110,14 @@ def test_per_language_independent_normalization(fas_module, tmp_path):
 
 
 def test_emit_finding_per_suspicious_row(fas_module, tmp_path):
-    """Each suspicious row emits one SOFT Finding (V120)."""
+    """Each suspicious row emits one SOFT Finding (V140)."""
     rows = fas_module.load_scores(_write_scores(tmp_path, _make_rows(20)))
     flagged = fas_module.flag(rows, worst_pct=10.0, min_agreement=1)
     findings = fas_module.as_findings(flagged)
     assert len(findings) == len(flagged)
     from QC.validation._finding import Severity
     assert all(f.severity is Severity.SOFT for f in findings)
-    assert all(f.rule_id == "V120" for f in findings)
+    assert all(f.rule_id == "V140" for f in findings)
 
 
 def test_main_writes_suspect_audio_csv(fas_module, tmp_path):

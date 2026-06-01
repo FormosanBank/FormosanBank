@@ -8,7 +8,7 @@
 - **W3** [DONE] — MP3 silence detection via `ffprobe -af silencedetect`; `is_silent_wav` → `is_silent` dispatches on extension.
 - **W4** [DONE] — Finding/Severity integration; rule IDs V100–V105 mapped per the architecture table; HARD exits non-zero, SOFT does not.
 - **W5** [PARTIAL] — `QC/validation/validate_audio_quality.py` scaffolded with mocked tests; **real ML pipeline never exercised end-to-end** (`torch`/`torchaudio`/`allosaurus` deferred to `requirements-audio-mt.txt`, not installed). Acceptance criterion "produces a scores CSV from `Corpora/ePark/`" NOT satisfied.
-- **W6** [DONE] — `QC/validation/flag_audio_suspicious.py` writes `suspect_audio.csv`; emits SOFT Finding **V120**. ⚠️ V120 collision with B9.4's TR1/V120 — needs renumbering.
+- **W6** [DONE] — `QC/validation/flag_audio_suspicious.py` writes `suspect_audio.csv`; emits SOFT Finding **V140** (renumbered from V120 on 2026-06-01 to resolve collision with B9.4's TR1/V120).
 - **W7** [DONE] — `QC/utilities/audio_manual_verify.py` (`apply_decision` unit-tested + 3 mocked end-to-end tests for record/resume/back-navigate).
 - **W8** [PARTIAL] — `.github/workflows/audio-validation.yaml` created (PR-changed-files blocks on HARD; baseline informational). **Not draft-PR-verified** — `git push` was blocked in the subagent sandbox.
 - **W9** [DONE] — `QC/README.md` updated; `requirements-audio-mt.txt` created listing heavy deps (not installed).

@@ -8,7 +8,7 @@ Per-W status:
 - **W1** [DONE] — `QC/validation/rules/text.py` (new) + `QC/validation/validate_text.py` (new). V110 smart_quotes, V111 imbalanced_parens, V112 repeated_punct, V113 consecutive_dashes, V114 multiple_whitespace, V115 mismatched_quotes (all SOFT). `QC/validation/validate_punct.py` deleted.
 - **W2** [DONE] — V116 non_ascii_in_form SOFT; aggregated per (file, character_group); CJK excluded. `QC/cleaning/non_ascii_counts.py` deleted.
 - **W3** [DONE — brainstorm signed off 2026-06-01] — decisions inline below.
-- **W4** [DONE] — TR1 / V120 HARD (∅ in S-standard FORM). ⚠️ V120 collision with B9.2's flag_audio_suspicious SOFT — needs renumbering.
+- **W4** [DONE] — TR1 / V120 HARD (∅ in S-standard FORM). V120 collision resolved 2026-06-01 by bumping B9.2's `flag_audio_suspicious` to V140.
 - **W5** [DONE] — TR2 / V121 HARD (parens/`/` in W- or M-level FORM) + TR3 / V122 SOFT (parens/`/` in FORM/TRANSL).
 - **W6** [DONE] — TR4 / V123 HARD (null in W/M standard FORM ⇒ sister original).
 - **W7** [DONE] — TR5 / V124 HARD (null in M FORM ⇒ parent W FORM null AND S-original null).
@@ -195,7 +195,7 @@ Watch for false positives where genuine numerals belong in the text (years, page
 10. **TR18 SOFT** — mixed-script confusables.
 11. **TR19/TR20/TR21 SOFT** — footnote-residue heuristics (FORM + TRANSL scope).
 
-V-code assignment for W10: continue from V127 upward (V120–V126 are used by W4–W9). Renumber V120 if the B9.2 collision with `flag_audio_suspicious.py` SOFT V120 isn't resolved by then — pick a free number from V13x.
+V-code assignment for W10: V127–V139 allocated to TR8/TR10/TR11/TR15/TR16/TR9/TR12/TR13/TR14/TR18/TR19/TR20/TR21 in that order. V140 is taken by B9.2's `flag_audio_suspicious` (bumped from V120 on 2026-06-01); V120 stays with B9.4's TR1.
 
 For each rule: write failing test, verify fail, implement in `rules/text.py`, add to RULES list, verify pass, commit. Per the no-compound-bash memory, `.venv/bin/pytest` directly (no `source && pytest`).
 
