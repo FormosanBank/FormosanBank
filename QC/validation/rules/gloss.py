@@ -11,6 +11,7 @@ where `rules/hard.py` already mixes severities; renaming hard.py is
 deferred (see B9.3 plan, "Open questions").
 
 Rules:
+- V060 SOFT: W-count vs. word-count in S-level FORM[@kindOf="original"].
 - V062 HARD: M with infix-shaped FORM requires angle-bracket gloss on parent W's TRANSL.
 """
 import re
@@ -24,6 +25,92 @@ from QC.validation._finding import Finding, Severity
 
 # Infix shape: starts and ends with '-' with non-'-' content between.
 _INFIX_PATTERN = re.compile(r"^-[^-]+-$")
+
+
+# ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
+
+def _count_words(text: str | None) -> int:
+    """Count whitespace-delimited words in ``text``.
+
+    Mirrors validate_glosses.py's pre-refactor behavior: split on any
+    run of whitespace, drop empty segments.
+    """
+    if not text:
+        return 0
+    parts = re.split(r"\s+", text.strip())
+    return len([p for p in parts if p])
+
+
+def _extract_s_direct_text(s_elem: etree._Element) -> str:
+    """Return the text of the S element's preferred FORM child.
+
+    Preference order: FORM[@kindOf='original'] > any FORM > S's own
+    direct text. Matches validate_glosses.py's extract_s_direct_text
+    behavior; carried over so V060's word counts agree with the legacy
+    CSV output.
+    """
+    original = s_elem.find('./FORM[@kindOf="original"]')
+    if original is not None and original.text:
+        return original.text.strip()
+    any_form = s_elem.find('./FORM')
+    if any_form is not None and any_form.text:
+        return any_form.text.strip()
+    return (s_elem.text or "").strip()
+
+
+# ---------------------------------------------------------------------------
+# V060: W-count vs. word-count (SOFT)
+# ---------------------------------------------------------------------------
+
+def v060_W_count_matches_word_count(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V060 SOFT: count of <W> children of S should match the number of
+    whitespace-delimited words in the S's FORM[@kindOf="original"].
+
+    Why SOFT: spelling normalization and standardization can legitimately
+    change word count between the S-level FORM (free text) and the W
+    tier (tokenized). Reporting these is informational, not a corpus
+    bug per se.
+    """
+    findings: list[Finding] = []
+    for s in tree.iter("S"):
+        s_id = s.get("id")
+        # No FORM at all -> V010/V013 handle that; we have nothing to compare.
+        if s.find('./FORM') is None:
+            continue
+        s_text = _extract_s_direct_text(s)
+        word_count = _count_words(s_text)
+        direct_w = [child for child in s if child.tag == "W"]
+        w_count = len(direct_w)
+        nested_w = list(s.iter("W"))
+        if len(nested_w) != w_count:
+            # Preserve validate_glosses.py:166-169 warning behavior:
+            # nested W (descendant of S but not direct child) is unusual.
+            # Surface it but don't double-count.
+            print(
+                f"  Warning: Found {len(nested_w)} total W elements but "
+                f"{w_count} direct children in S[@id='{s_id}'] of {path}"
+            )
+        if word_count == w_count:
+            continue
+        findings.append(Finding(
+            rule_id="V060",
+            severity=Severity.SOFT,
+            message=(
+                f"S id={s_id!r}: W-count ({w_count}) does not match "
+                f"word-count ({word_count}) in FORM[@kindOf='original']; "
+                "may be due to normalization or spelling"
+            ),
+            path=path,
+            location=f"S={s_id}" if s_id else "S",
+            count=1,
+        ))
+    return findings
 
 
 # ---------------------------------------------------------------------------
@@ -86,6 +173,7 @@ def v062_infix_M_needs_angle_gloss(
 # ---------------------------------------------------------------------------
 
 RULES: list = [
+    v060_W_count_matches_word_count,
     v062_infix_M_needs_angle_gloss,
 ]
 CROSS_FILE_RULES: list = []

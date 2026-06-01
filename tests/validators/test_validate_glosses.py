@@ -56,6 +56,68 @@ _TEXT_TEMPLATE = """<?xml version="1.0" encoding="utf-8"?>
 
 
 # ---------------------------------------------------------------------------
+# V060: W-count vs. word-count (SOFT)
+# ---------------------------------------------------------------------------
+
+
+def test_V060_matching_W_and_word_count_clean():
+    """Clean S: 3 whitespace words and 3 direct W children -> no V060."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">a b c</FORM>
+        <W id="W1"><FORM kindOf="original">a</FORM></W>
+        <W id="W2"><FORM kindOf="original">b</FORM></W>
+        <W id="W3"><FORM kindOf="original">c</FORM></W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v060_W_count_matches_word_count, xml)
+    assert findings == [], f"expected no V060 finding; got {findings!r}"
+
+
+def test_V060_mismatched_W_and_word_count_emits_SOFT():
+    """3 words in FORM but 2 W children -> one SOFT V060 finding."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">a b c</FORM>
+        <W id="W1"><FORM kindOf="original">a</FORM></W>
+        <W id="W2"><FORM kindOf="original">b</FORM></W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v060_W_count_matches_word_count, xml)
+    assert len(findings) == 1, f"expected 1 V060 finding; got {findings!r}"
+    f = findings[0]
+    assert f.rule_id == "V060"
+    assert f.severity is Severity.SOFT
+    assert "S1" in f.location
+    assert "3" in f.message and "2" in f.message
+
+
+def test_V060_uses_original_FORM_in_preference_to_standard():
+    """Original tier wins as the word-count source; standard tier ignored."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">a b c</FORM>
+        <FORM kindOf="standard">a b c d e</FORM>
+        <W id="W1"><FORM kindOf="original">a</FORM></W>
+        <W id="W2"><FORM kindOf="original">b</FORM></W>
+        <W id="W3"><FORM kindOf="original">c</FORM></W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v060_W_count_matches_word_count, xml)
+    assert findings == [], (
+        f"V060 must use FORM[@kindOf='original'] (3 words) not standard "
+        f"(5 words); got {findings!r}"
+    )
+
+
+def test_V060_no_FORM_at_all_emits_nothing():
+    """S with no FORM at all: rule no-ops (V010/V013 handle that)."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <W id="W1"><FORM kindOf="original">a</FORM></W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v060_W_count_matches_word_count, xml)
+    assert findings == [], f"expected no V060 finding; got {findings!r}"
+
+
+# ---------------------------------------------------------------------------
 # V062: infix M needs angle-bracket gloss (HARD)
 # Moved from rules/hard.py to rules/gloss.py during B9.3. The pre-move
 # fixture files (v062_infix_M_*.xml) are reused.
