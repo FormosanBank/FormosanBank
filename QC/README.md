@@ -34,6 +34,18 @@ python QC/utilities/standardize.py \
 
 The TSV must include an `original` column and a target column such as `standard` or a dialect name. Replacements are applied globally and sequentially with Python string replacement, so review the diff after running it.
 
+## Validation pipeline (staged)
+
+The validator suite is a **staged pipeline** of separate executables that share a Finding/Severity framework but are run independently. XML format must pass before later stages produce meaningful output.
+
+| Stage | Validator | Rule module | What it checks |
+|---|---|---|---|
+| 1 | `QC/validation/validate_xml.py` | `QC/validation/rules/hard.py` | XML format: schema, IDs, attributes, structural validity. |
+| 2 | `QC/validation/validate_glosses.py` | `QC/validation/rules/gloss.py` | Gloss artifacts: V060–V065. SOFT rules emit warnings; HARD rules cause nonzero exit. |
+| 2 | `QC/validation/validate_punct.py` | (legacy script) | Punctuation/processing artifacts. |
+
+Gloss validation can be **run on any corpus**, including unsegmented ones — rules naturally no-op when iterating empty `W`/`M` lists. SOFT rules (V060/V061/V065) are review-not-gate: they surface candidate cleanups without blocking the build.
+
 ## Basic Flow
 
 Run XML validation first:
@@ -121,7 +133,18 @@ python QC/validation/validate_vocabulary.py \
   --reference QC/validation/reference
 ```
 
-Run gloss validation only when the corpus is expected to contain word-level `W` elements, and morpheme validation only when `M` elements are expected:
+Run gloss validation on any corpus; rules naturally no-op on unsegmented ones. Six rules are registered (see `QC/validation/rules/gloss.py`):
+
+| Rule | Severity | What it flags |
+|---|---|---|
+| V060 | SOFT | `<W>` count does not match the whitespace-delimited word count in S-level `FORM[@kindOf="original"]`. |
+| V061 | SOFT | `<M>` count does not match the morpheme count implied by W's FORM segmentation markers (`-`, `=`, `<...>`). |
+| V062 | HARD | `<M>` with infix-shaped FORM (`-X-`) requires an angle-bracket gloss (`<X>`) in the parent W's TRANSL. |
+| V063 | HARD | When the S-level FORM has > 3 segmentation markers, the W children's FORMs must collectively retain at least N/2 markers in each tier. |
+| V064 | HARD | Every `<M>` element must have at least one `<TRANSL>` child. |
+| V065 | SOFT | Every `<W>` element should have at least one `<TRANSL>` child. |
+
+Exit code: 1 if any HARD finding (V062/V063/V064); 0 otherwise. SOFT findings (V060/V061/V065) emit warnings to stderr but do not fail the run.
 
 ```bash
 python QC/validation/validate_glosses.py /path/to/Final_XML \
@@ -132,7 +155,7 @@ python QC/validation/validate_glosses.py /path/to/Final_XML \
   --output_dir /path/to/qc-output
 ```
 
-For verse-level or sentence-only corpora with no `W`/`M` segmentation, `validate_glosses.py` will report sentence/W mismatches. Treat those as "not applicable" unless word segmentation is required for that corpus.
+For verse-level or sentence-only corpora with no `W`/`M` segmentation, V060–V065 either no-op (no W/M to iterate) or surface SOFT findings that should be treated as "not applicable". The two legacy CSV artifacts (`validation_results.csv` for V060, `validation_m_mismatches.csv` for V061) are preserved for backward compatibility with prior callers.
 
 Detect duplicate `<S>` sentences within a corpus (within-file matches are HARD findings; cross-file matches in the same corpus are SOFT):
 

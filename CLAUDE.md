@@ -36,20 +36,28 @@ Each corpus *should* contain (this is the standard, not always followed in older
 - `XML/` — the canonical, published data, often further split by language (e.g. [Corpora/Wikipedias/XML/Amis/](Corpora/Wikipedias/XML/Amis/)) or sub-corpus (e.g. [Corpora/ePark/XML/](Corpora/ePark/XML/))
 - `CodeAndDocs/` — the scripts required to **reproduce** the contents of `XML/` from the original source data. This is reproducibility infrastructure, not just ingestion notes.
 
-The XML schema is defined by [QC/validation/xml_template.dtd](QC/validation/xml_template.dtd). The structure is:
+The XML schema is defined by [QC/validation/xml_template.xsd](QC/validation/xml_template.xsd) (migrated from DTD in Phase 4.5; [QC/validation/xml_template.dtd](QC/validation/xml_template.dtd) is retained on disk as a fallback only). The structure is:
 
 ```
 TEXT (id, citation, BibTeX_citation, copyright, xml:lang, [source, audio, glottocode, dialect])
-└── S (id)
-    ├── FORM (kindOf)              ← sentence tier; usually two: kindOf="original" and kindOf="standard"
+└── S (id)                                                ← sentence tier; usually at least "original" and "standard" FORMs
+    ├── FORM* (kindOf="original"|"standard"|"alternate")
+    ├── PHON* (kindOf="original"|"standard")
     ├── TRANSL* (xml:lang, [kindOf, ver])
     ├── AUDIO? (start, end, file, url)
-    └── W* (id, [class, sclass])   ← word tier (only when corpus is word-segmented)
-        ├── FORM
+    └── W* (id, [class, sclass])                          ← word tier (only when corpus is word-segmented)
+        ├── FORM* (kindOf)
+        ├── PHON* (kindOf)
+        ├── TRANSL* (xml:lang, [kindOf, ver])
         ├── AUDIO?
-        ├── TRANSL*
-        └── M* (id, [class, sclass]) ← morpheme tier
+        └── M* (id, [class, sclass])                      ← morpheme tier
+            ├── FORM* (kindOf)
+            ├── PHON* (kindOf)
+            ├── TRANSL*
+            └── AUDIO?
 ```
+
+Per the XSD (via `xs:choice maxOccurs="unbounded"`), sibling order of FORM/PHON/TRANSL/AUDIO within S, W, and M is **not enforced** — the diagram shows a typical order, not a required one. W stays at the end of S, and M stays at the end of W.
 
 The `kindOf="original"` vs `kindOf="standard"` distinction is **critical** and not just cosmetic:
 - **`original`**: the text as it appeared in the original source (book, website, etc.), possibly after minor normalization of punctuation and HTML escape codes. Preserves the source's orthographic choices.
@@ -73,7 +81,7 @@ Most validation/extraction scripts share a `search_by` positional with three mod
 When in doubt, `by_path` against a single corpus's `XML/` directory is the safest target. Many scripts accept `--verbose` and `--log_dir <path>` so logs don't get scattered next to scripts or inside corpora.
 
 The full pipeline is documented in [QC/README.md](QC/README.md). The typical order is:
-1. `QC/validation/validate_xml.py` (DTD conformance)
+1. `QC/validation/validate_xml.py` (XSD conformance)
 2. `QC/utilities/standardize.py --copy` (only if standard tier is missing)
 3. `QC/validation/validate_text.py` (B9.4 consolidation of `validate_punct.py` + `non_ascii_counts.py`)
 4. `QC/orthography/orthography_extract.py --kindOf standard --by_dialect true`
