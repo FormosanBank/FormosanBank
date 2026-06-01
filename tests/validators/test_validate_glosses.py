@@ -244,3 +244,174 @@ def test_V062_non_infix_M_emits_nothing():
       </S>""")
     findings = _findings_for(gloss_rules.v062_infix_M_needs_angle_gloss, xml)
     assert findings == [], f"expected no V062 finding; got {findings!r}"
+
+
+# ---------------------------------------------------------------------------
+# Orchestrator-level: validate_glosses.py (W4)
+# ---------------------------------------------------------------------------
+
+
+def _write_xml(target_dir: Path, basename: str, body: str) -> Path:
+    """Materialize an XML fixture from inline body into target_dir/XML/."""
+    xml_dir = target_dir / "XML"
+    xml_dir.mkdir(parents=True, exist_ok=True)
+    path = xml_dir / basename
+    path.write_text(_TEXT_TEMPLATE.format(body=body), encoding="utf-8")
+    return path
+
+
+def _run_validate_glosses(
+    xml_folder: Path,
+    output_dir: Path | None = None,
+    extra_args: tuple[str, ...] = (),
+) -> subprocess.CompletedProcess:
+    """Invoke validate_glosses.py as a subprocess."""
+    cmd = [
+        sys.executable,
+        str(VALIDATE_GLOSSES),
+        str(xml_folder),
+    ]
+    if output_dir is not None:
+        cmd.extend(["--output_dir", str(output_dir)])
+    cmd.extend(extra_args)
+    return subprocess.run(cmd, capture_output=True, text=True)
+
+
+def test_validate_glosses_clean_fixture_zero_findings(tmp_path):
+    """Clean fixture: validate_glosses.py exits 0, emits no findings.
+
+    Specifically:
+    - exit code 0
+    - validation_results.csv is either absent or header-only
+    - validation_m_mismatches.csv is either absent or header-only
+    """
+    _write_xml(tmp_path, "clean.xml", """
+      <S id="S1">
+        <FORM kindOf="original">a b</FORM>
+        <W id="W1"><FORM kindOf="original">a</FORM><TRANSL xml:lang="eng">A</TRANSL></W>
+        <W id="W2"><FORM kindOf="original">b</FORM><TRANSL xml:lang="eng">B</TRANSL></W>
+      </S>""")
+    out = tmp_path / "out"
+    proc = _run_validate_glosses(tmp_path / "XML", output_dir=out)
+    assert proc.returncode == 0, (
+        f"clean fixture should pass; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+    w_csv = out / "validation_results.csv"
+    m_csv = out / "validation_m_mismatches.csv"
+    for csv_path in (w_csv, m_csv):
+        if csv_path.exists():
+            lines = [
+                l for l in csv_path.read_text(encoding="utf-8").splitlines() if l.strip()
+            ]
+            # Header may or may not be written when there are no rows;
+            # either way there must be no data rows.
+            assert len(lines) <= 1, (
+                f"{csv_path.name} unexpectedly has data rows: {lines!r}"
+            )
+
+
+def test_validate_glosses_W_mismatch_emits_finding_and_csv_row(tmp_path):
+    """W-count mismatch -> SOFT V060 + row in validation_results.csv. Exit 0."""
+    _write_xml(tmp_path, "wmm.xml", """
+      <S id="S1">
+        <FORM kindOf="original">a b c</FORM>
+        <W id="W1"><FORM kindOf="original">a</FORM><TRANSL xml:lang="eng">A</TRANSL></W>
+        <W id="W2"><FORM kindOf="original">b</FORM><TRANSL xml:lang="eng">B</TRANSL></W>
+      </S>""")
+    out = tmp_path / "out"
+    proc = _run_validate_glosses(tmp_path / "XML", output_dir=out)
+    assert proc.returncode == 0, (
+        f"SOFT-only run should exit 0; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+    w_csv = out / "validation_results.csv"
+    assert w_csv.exists(), "validation_results.csv should exist"
+    contents = w_csv.read_text(encoding="utf-8")
+    assert "S1" in contents, f"expected S1 row in CSV; got {contents!r}"
+
+
+def test_validate_glosses_M_mismatch_emits_finding_and_csv_row(tmp_path):
+    """M-count mismatch -> SOFT V061 + row in validation_m_mismatches.csv. Exit 0."""
+    _write_xml(tmp_path, "mmm.xml", """
+      <S id="S1">
+        <FORM kindOf="original">k&lt;um&gt;ita</FORM>
+        <W id="W1">
+          <FORM kindOf="original">k&lt;um&gt;ita</FORM>
+          <TRANSL xml:lang="eng">walk &lt;AV&gt;</TRANSL>
+          <M id="M1"><FORM>kita</FORM><TRANSL xml:lang="eng">walk</TRANSL></M>
+        </W>
+      </S>""")
+    out = tmp_path / "out"
+    proc = _run_validate_glosses(tmp_path / "XML", output_dir=out)
+    assert proc.returncode == 0, (
+        f"SOFT-only run should exit 0; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+    m_csv = out / "validation_m_mismatches.csv"
+    assert m_csv.exists(), "validation_m_mismatches.csv should exist"
+    contents = m_csv.read_text(encoding="utf-8")
+    assert "W1" in contents, f"expected W1 row in CSV; got {contents!r}"
+
+
+def test_validate_glosses_HARD_V062_causes_nonzero_exit(tmp_path):
+    """A HARD V062 violation causes a nonzero exit code."""
+    _write_xml(tmp_path, "v062.xml", """
+      <S id="S1">
+        <FORM kindOf="original">rumakat</FORM>
+        <W id="W1">
+          <FORM kindOf="original">rumakat</FORM>
+          <TRANSL xml:lang="eng">walk</TRANSL>
+          <M id="M1"><FORM>-um-</FORM><TRANSL xml:lang="eng">AV</TRANSL></M>
+          <M id="M2"><FORM>rkt</FORM><TRANSL xml:lang="eng">walk</TRANSL></M>
+        </W>
+      </S>""")
+    out = tmp_path / "out"
+    proc = _run_validate_glosses(tmp_path / "XML", output_dir=out)
+    assert proc.returncode != 0, (
+        f"HARD V062 should cause nonzero exit; got rc={proc.returncode}, "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+    combined = (proc.stdout + proc.stderr).lower()
+    assert "v062" in combined, (
+        f"expected V062 mention; got stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_validate_glosses_check_morpho_flag(tmp_path):
+    """--check_morpho still works: legacy 'has_morphemes' column appears."""
+    # W3 has no M children -> should be flagged with has_morphemes='F'.
+    # Also creates a V060 SOFT (3 words vs 3 W, but the rule fires on
+    # check_morpho=True even when word/W counts match because at least
+    # one W lacks M children, mirroring the legacy condition).
+    _write_xml(tmp_path, "morpho.xml", """
+      <S id="S1">
+        <FORM kindOf="original">a b c</FORM>
+        <W id="W1">
+          <FORM kindOf="original">a</FORM>
+          <TRANSL xml:lang="eng">A</TRANSL>
+          <M id="M1"><FORM>a</FORM><TRANSL xml:lang="eng">A</TRANSL></M>
+        </W>
+        <W id="W2">
+          <FORM kindOf="original">b</FORM>
+          <TRANSL xml:lang="eng">B</TRANSL>
+          <M id="M2"><FORM>b</FORM><TRANSL xml:lang="eng">B</TRANSL></M>
+        </W>
+        <W id="W3">
+          <FORM kindOf="original">c</FORM>
+          <TRANSL xml:lang="eng">C</TRANSL>
+        </W>
+      </S>""")
+    out = tmp_path / "out"
+    proc = _run_validate_glosses(
+        tmp_path / "XML", output_dir=out, extra_args=("--check_morpho",)
+    )
+    # SOFT-only run; exit should be 0.
+    assert proc.returncode == 0, (
+        f"--check_morpho SOFT-only run should exit 0; rc={proc.returncode}, "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+    w_csv = out / "validation_results.csv"
+    if w_csv.exists():
+        contents = w_csv.read_text(encoding="utf-8")
+        # Header should reflect the check_morpho column.
+        assert "has_morphemes" in contents.splitlines()[0], (
+            f"expected has_morphemes column header; got {contents!r}"
+        )
