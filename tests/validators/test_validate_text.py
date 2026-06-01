@@ -1729,3 +1729,83 @@ def test_V138_no_superscript_OK(tmp_path):
     assert "v138" not in combined, (
         f"V138 should not fire on plain text; stdout={proc.stdout!r}"
     )
+
+
+# TR21 V139 SOFT — bracketed-digit footnote `[1]`, `[12]` in FORM or
+# TRANSL. Pattern: `\[\d+\]` (digits inside ASCII square brackets).
+
+def test_V139_bracketed_digit_in_FORM_soft(tmp_path):
+    """V139 SOFT: `word[1]` in FORM is a footnote marker."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">word[1]</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v139", "bracketed", "[d]", "footnote")
+    ), (
+        f"expected V139 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V139_standalone_bracketed_digit_in_TRANSL_soft(tmp_path):
+    """V139 SOFT: standalone `[2]` token in TRANSL."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">std</FORM>'
+        + '<TRANSL xml:lang="eng">see footnote [2]</TRANSL>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v139", "bracketed", "[d]", "footnote")
+    ), (
+        f"expected V139 finding in TRANSL; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V139_brackets_without_digits_OK(tmp_path):
+    """V139: `[note]` (no digits) is not flagged — only digits inside []."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig [note]</FORM>'
+        + '<FORM kindOf="standard">orig [note]</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v139" not in combined, (
+        f"V139 should not fire on non-digit brackets; "
+        f"stdout={proc.stdout!r}"
+    )
+
+
+def test_V139_clean_text_OK(tmp_path):
+    """V139 OK: text without `[\\d+]` is fine."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">hello world</FORM>'
+        + '<FORM kindOf="standard">hello world</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v139" not in combined, (
+        f"V139 should not fire on clean text; stdout={proc.stdout!r}"
+    )

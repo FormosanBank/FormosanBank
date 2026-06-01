@@ -1219,6 +1219,40 @@ def v138_superscript_digit_footnote(
     return findings
 
 
+# TR21 V139 SOFT — bracketed-digit footnote (`word[1]`, `[1]`) anywhere
+# in FORM or TRANSL. Pattern is conservative: ASCII square brackets
+# wrapping digit(s).
+
+_BRACKETED_DIGIT_RE = re.compile(r"\[\d+\]")
+
+
+def v139_bracketed_digit_footnote(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V139 SOFT (TR21): bracketed-digit footnote in FORM or TRANSL."""
+    lang = _resolve_language(tree)
+    total = 0
+    for elem in tree.iter("FORM", "TRANSL"):
+        text = elem.text or ""
+        total += len(_BRACKETED_DIGIT_RE.findall(text))
+    if total == 0:
+        return []
+    return [Finding(
+        rule_id="V139",
+        severity=Severity.SOFT,
+        message=(
+            f"V139 SOFT bracketed-digit [d+] footnote: count={total} "
+            "occurrence(s) in FORM/TRANSL (likely footnote / citation leak)"
+        ),
+        path=path,
+        count=total,
+        language=lang,
+        character="",
+    )]
+
+
 RULES: list = [
     # W1 (V110-V115): ported from validate_punct.py
     v110_smart_quotes,
@@ -1250,5 +1284,6 @@ RULES: list = [
     v136_mixed_script_confusables,
     v137_trailing_decimal_footnote_in_S_FORM_TRANSL,
     v138_superscript_digit_footnote,
+    v139_bracketed_digit_footnote,
 ]
 CROSS_FILE_RULES: list = []
