@@ -997,6 +997,61 @@ def v134_angle_brackets_in_S_FORM(
     return findings
 
 
+# TR14 V135 SOFT — trailing-punctuation mismatch between original and
+# standard tiers (per-S).
+#
+# We compare the trailing run of recognized punctuation (after stripping
+# trailing whitespace) between the S-level original and standard FORMs.
+# Recognized punctuation set is intentionally conservative: ASCII
+# `.,!?;:` plus full-width Chinese counterparts. A mismatch on the
+# trailing run is flagged per S (aggregated to one finding per file).
+_TRAILING_PUNCT_CHARS: frozenset[str] = frozenset(".,!?;:" + "。，！？；：")
+
+
+def _trailing_punct(text: str) -> str:
+    """Return the run of recognized trailing-punct chars at the end of text,
+    ignoring trailing whitespace. Returns '' if none."""
+    stripped = text.rstrip()
+    end = len(stripped)
+    i = end
+    while i > 0 and stripped[i - 1] in _TRAILING_PUNCT_CHARS:
+        i -= 1
+    return stripped[i:end]
+
+
+def v135_trailing_punct_mismatch(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V135 SOFT (TR14): trailing-punct mismatch in S-level FORM pair."""
+    lang = _resolve_language(tree)
+    count = 0
+    for s in tree.iter("S"):
+        orig = _s_original_form_text(s)
+        std = _s_standard_form_text(s)
+        if orig is None or std is None:
+            # Need both tiers to compare.
+            continue
+        if _trailing_punct(orig) != _trailing_punct(std):
+            count += 1
+    if count == 0:
+        return []
+    return [Finding(
+        rule_id="V135",
+        severity=Severity.SOFT,
+        message=(
+            f"V135 SOFT trailing-punct mismatch: count={count} S element(s) "
+            "where original and standard FORM tiers end in different "
+            "punctuation"
+        ),
+        path=path,
+        count=count,
+        language=lang,
+        character="",
+    )]
+
+
 RULES: list = [
     # W1 (V110-V115): ported from validate_punct.py
     v110_smart_quotes,
@@ -1024,5 +1079,6 @@ RULES: list = [
     v132_html_entities_in_FORM_TRANSL,
     v133_dash_in_S_standard_FORM,
     v134_angle_brackets_in_S_FORM,
+    v135_trailing_punct_mismatch,
 ]
 CROSS_FILE_RULES: list = []

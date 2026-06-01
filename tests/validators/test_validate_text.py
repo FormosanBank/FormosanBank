@@ -1396,3 +1396,87 @@ def test_V134_W_level_angle_brackets_do_not_trigger(tmp_path):
         f"V134 should not fire on W-level angle brackets; "
         f"stdout={proc.stdout!r}"
     )
+
+
+# TR14 V135 SOFT — trailing-punctuation mismatch between original and
+# standard tiers (per-S).
+#
+# Compares the trailing run of recognized punctuation characters (after
+# stripping trailing whitespace) between the S-level original and
+# standard FORMs. A mismatch (e.g., original ends with '.', standard
+# ends with '!', or one has punct and the other doesn't) is flagged.
+
+def test_V135_punct_mismatch_period_vs_bang_soft(tmp_path):
+    """V135 SOFT: original ends in '.', standard ends in '!'."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">hello world.</FORM>'
+        + '<FORM kindOf="standard">hello world!</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v135", "trailing punct", "trailing-punct", "punct mismatch")
+    ), (
+        f"expected V135 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V135_original_has_punct_standard_does_not_soft(tmp_path):
+    """V135 SOFT: original ends in '.', standard ends in no punct."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">hello.</FORM>'
+        + '<FORM kindOf="standard">hello</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v135", "trailing punct", "trailing-punct", "punct mismatch")
+    ), (
+        f"expected V135 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V135_matching_punct_OK(tmp_path):
+    """V135: both tiers end with the same punctuation — no finding."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">hello.</FORM>'
+        + '<FORM kindOf="standard">hello.</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v135" not in combined, (
+        f"V135 should not fire on matching trailing punct; "
+        f"stdout={proc.stdout!r}"
+    )
+
+
+def test_V135_both_no_trailing_punct_OK(tmp_path):
+    """V135: both tiers have no trailing punct — no finding."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">hello</FORM>'
+        + '<FORM kindOf="standard">hello</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v135" not in combined, (
+        f"V135 should not fire when both tiers have no trailing punct; "
+        f"stdout={proc.stdout!r}"
+    )
