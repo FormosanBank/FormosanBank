@@ -752,3 +752,1060 @@ def test_V126_equal_sign_in_original_does_not_trigger(tmp_path):
     assert "v126" not in combined, (
         f"V126 should not fire on original tier; stdout={proc.stdout!r}"
     )
+
+
+# -----------------------------------------------------------------------------
+# W10: brainstorm-derived rules (V127-V139)
+# -----------------------------------------------------------------------------
+
+
+# TR8 V127 HARD — smart quotes (curly + Chinese full-width) in either FORM tier.
+
+def test_V127_curly_single_quote_in_standard_FORM_negative(tmp_path):
+    """V127 HARD: U+2019 RIGHT SINGLE QUOTATION MARK in standard FORM is forbidden."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">it’s</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v127", "smart quote", "non-ascii quote")
+    ), (
+        f"expected V127 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V127_curly_double_quote_in_original_FORM_negative(tmp_path):
+    """V127 HARD: U+201C/U+201D in ORIGINAL FORM is also forbidden (TR8 spans both tiers)."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">“hello”</FORM>'
+        + '<FORM kindOf="standard">hello</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v127", "smart quote", "non-ascii quote")
+    ), (
+        f"expected V127 finding for original tier; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V127_chinese_brackets_in_FORM_negative(tmp_path):
+    """V127 HARD: Chinese full-width quote brackets in FORM are forbidden."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">「hello」</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v127", "smart quote", "non-ascii quote")
+    ), (
+        f"expected V127 finding for Chinese brackets; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V127_ascii_apostrophe_and_quote_OK(tmp_path):
+    """V127 OK: ASCII straight apostrophe U+0027 and quote U+0022 are allowed."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">it\'s "ok"</FORM>'
+        + '<FORM kindOf="standard">it\'s "ok"</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v127" not in combined, (
+        f"V127 should not fire on ASCII quotes; stdout={proc.stdout!r}"
+    )
+
+
+def test_V127_curly_quote_in_TRANSL_does_not_trigger(tmp_path):
+    """V127 scope is FORM only (per plan). TRANSL is not flagged here.
+
+    Different non-ASCII-content rules (e.g. V132) may flag TRANSL text.
+    """
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">std</FORM>'
+        + '<TRANSL xml:lang="eng">it’s fine</TRANSL>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v127" not in combined, (
+        f"V127 should not fire on TRANSL; stdout={proc.stdout!r}"
+    )
+
+
+# TR10 V128 HARD — control characters (codepoint < 0x20) other than \t \n \r.
+#
+# C0 controls are forbidden in XML 1.0; XML 1.1 permits them only via
+# numeric character references, and lxml/libxml2 still refuses to load
+# the characters into the tree (the C-API setter raises). The rule
+# remains defensive — it scans element.text for disallowed C0 control
+# chars — but in practice can only be exercised at the helper level.
+#
+# V128 is unit-tested at the helper level rather than via the
+# subprocess+file path because both well-formed XML 1.0 / XML 1.1 parsers
+# AND lxml's own API refuse to load or hold most C0 control characters
+# (the `_setNodeText` C-API path raises ValueError). The rule is
+# implemented defensively — if upstream data ever leaks through, the
+# HARD finding will fire — but the only realistic test target is the
+# string-scanning helper. The end-to-end OK path is exercised via the
+# subprocess so the "clean run produces zero findings" invariant holds.
+
+
+def test_V128_detects_vertical_tab_in_text():
+    """V128 HARD: U+000B (vertical tab) is flagged by the helper."""
+    from QC.validation.rules.text import _disallowed_control_chars
+
+    assert _disallowed_control_chars("hi\x0bthere") == frozenset(["\x0b"])
+
+
+def test_V128_detects_form_feed_and_null():
+    """V128 HARD: U+000C (form feed) and U+0000 (NUL) are both flagged."""
+    from QC.validation.rules.text import _disallowed_control_chars
+
+    assert "\x0c" in _disallowed_control_chars("a\x0cb")
+    assert "\x00" in _disallowed_control_chars("a\x00b")
+
+
+def test_V128_allows_tab_newline_carriage_return_at_helper_level():
+    """V128: \\t \\n \\r are explicitly allowed."""
+    from QC.validation.rules.text import _disallowed_control_chars
+
+    assert _disallowed_control_chars("hi\tthere\nfriend\r\n") == frozenset()
+
+
+def test_V128_clean_form_does_not_trigger(tmp_path):
+    """V128 OK: end-to-end clean run produces no V128 finding."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">hi\tthere</FORM>'
+        + '<FORM kindOf="standard">std</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v128" not in combined, (
+        f"V128 should not fire on clean input; stdout={proc.stdout!r}"
+    )
+
+
+# TR11 V129 HARD — '*' in standard-tier FORM.
+
+def test_V129_asterisk_in_S_standard_FORM_negative(tmp_path):
+    """V129 HARD: '*' in S-level standard FORM is forbidden."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">*ungrammatical</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v129", "asterisk", "* in")
+    ), (
+        f"expected V129 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V129_asterisk_in_W_standard_FORM_negative(tmp_path):
+    """V129 HARD: '*' in W-level standard FORM is forbidden (any tier=standard)."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">stdsentence</FORM>'
+        + '<W id="W1">'
+        + '<FORM kindOf="original">word</FORM>'
+        + '<FORM kindOf="standard">*word</FORM>'
+        + '</W>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v129", "asterisk", "* in")
+    ), (
+        f"expected V129 finding for W-level standard; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V129_asterisk_in_original_does_not_trigger(tmp_path):
+    """V129: '*' in ORIGINAL tier is preserved (rule targets standard only)."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">*ungrammatical</FORM>'
+        + '<FORM kindOf="standard">ungrammatical</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v129" not in combined, (
+        f"V129 should not fire on original tier; stdout={proc.stdout!r}"
+    )
+
+
+# TR15 V130 HARD — leading/trailing whitespace in any FORM.
+
+def test_V130_leading_whitespace_in_FORM_negative(tmp_path):
+    """V130 HARD: leading space in S-standard FORM is forbidden."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard"> hello</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v130", "leading", "trailing", "whitespace")
+    ), (
+        f"expected V130 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V130_trailing_whitespace_in_FORM_negative(tmp_path):
+    """V130 HARD: trailing space in S-original FORM is forbidden."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">hello </FORM>'
+        + '<FORM kindOf="standard">hello</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v130", "leading", "trailing", "whitespace")
+    ), (
+        f"expected V130 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V130_W_level_leading_whitespace_negative(tmp_path):
+    """V130 HARD: leading whitespace in W-level FORM is forbidden too."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">std</FORM>'
+        + '<W id="W1">'
+        + '<FORM kindOf="original"> word</FORM>'
+        + '<FORM kindOf="standard">word</FORM>'
+        + '</W>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v130", "leading", "trailing", "whitespace")
+    ), (
+        f"expected V130 finding for W-level; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V130_inner_whitespace_OK(tmp_path):
+    """V130: whitespace inside the FORM (not at edges) is fine."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">hello world</FORM>'
+        + '<FORM kindOf="standard">hello world</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v130" not in combined, (
+        f"V130 should not fire on inner whitespace; stdout={proc.stdout!r}"
+    )
+
+
+def test_V130_empty_FORM_OK(tmp_path):
+    """V130: empty FORM is not flagged by the whitespace rule."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original"></FORM>'
+        + '<FORM kindOf="standard">hello</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v130" not in combined, (
+        f"V130 should not fire on empty FORM; stdout={proc.stdout!r}"
+    )
+
+
+# TR16 V131 HARD — zero-width / BOM (U+200B U+200C U+200D U+FEFF) in
+# FORM or TRANSL, anywhere.
+
+def test_V131_ZWSP_in_FORM_negative(tmp_path):
+    """V131 HARD: U+200B ZERO WIDTH SPACE inside FORM."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">hello​world</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v131", "zero-width", "zero width", "bom")
+    ), (
+        f"expected V131 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V131_BOM_at_FORM_start_negative(tmp_path):
+    """V131 HARD: U+FEFF BOM at the start of a FORM."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">﻿hello</FORM>'
+        + '<FORM kindOf="standard">hello</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v131", "zero-width", "zero width", "bom")
+    ), (
+        f"expected V131 BOM finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V131_ZWNJ_in_TRANSL_negative(tmp_path):
+    """V131 HARD: U+200C ZWNJ inside TRANSL."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">std</FORM>'
+        + '<TRANSL xml:lang="eng">hi‌there</TRANSL>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v131", "zero-width", "zero width", "bom")
+    ), (
+        f"expected V131 finding in TRANSL; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V131_ZWJ_in_FORM_negative(tmp_path):
+    """V131 HARD: U+200D ZWJ inside FORM is also forbidden."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">a‍b</FORM>'
+        + '<FORM kindOf="standard">ab</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v131", "zero-width", "zero width", "bom")
+    ), (
+        f"expected V131 ZWJ finding; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V131_clean_FORM_OK(tmp_path):
+    """V131 OK: ordinary ASCII content has no zero-width chars."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">hello world</FORM>'
+        + '<FORM kindOf="standard">hello world</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v131" not in combined, (
+        f"V131 should not fire on clean text; stdout={proc.stdout!r}"
+    )
+
+
+# TR9 V132 SOFT — HTML entities in FORM/TRANSL after XML parse.
+#
+# The XML parser decodes well-formed XML entities (so `&amp;` in source
+# becomes `&` in element.text). After parse, finding a literal `&amp;`
+# substring in element.text implies the source contained `&amp;amp;`
+# (double-encoded) — typical scrape residue from `html.escape(html_text)`
+# being applied to already-escaped HTML. Same for `&apos;` `&lt;` `&gt;`.
+
+def test_V132_double_encoded_amp_in_FORM_soft(tmp_path):
+    """V132 SOFT: double-encoded `&amp;amp;` ⇒ post-parse `&amp;` in text."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">a &amp;amp; b</FORM>'
+        + '<FORM kindOf="standard">a &amp;amp; b</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v132", "html entity", "html entities")
+    ), (
+        f"expected V132 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V132_double_encoded_lt_in_TRANSL_soft(tmp_path):
+    """V132 SOFT: `&amp;lt;` in TRANSL ⇒ post-parse `&lt;`."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">std</FORM>'
+        + '<TRANSL xml:lang="eng">a &amp;lt; b</TRANSL>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v132", "html entity", "html entities")
+    ), (
+        f"expected V132 finding in TRANSL; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V132_plain_ampersand_does_not_trigger(tmp_path):
+    """V132: a plain `&` (entered as `&amp;` and decoded by parser) is fine."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">a &amp; b</FORM>'
+        + '<FORM kindOf="standard">a &amp; b</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v132" not in combined, (
+        f"V132 should not fire on a plain ampersand; "
+        f"stdout={proc.stdout!r}"
+    )
+
+
+def test_V132_clean_text_OK(tmp_path):
+    """V132 OK: ordinary clean text has no entity-looking substrings."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">hello world</FORM>'
+        + '<FORM kindOf="standard">hello world</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v132" not in combined, (
+        f"V132 should not fire on clean text; stdout={proc.stdout!r}"
+    )
+
+
+# TR12 V133 SOFT — '-' (segmentation marker) in S-level standard FORM.
+
+def test_V133_dash_in_S_standard_FORM_soft(tmp_path):
+    """V133 SOFT: '-' in S-level standard FORM (segmentation leftover)."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">ma-luhay</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v133", "dash in s", "segmentation", "- in")
+    ), (
+        f"expected V133 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V133_dash_in_S_original_does_not_trigger(tmp_path):
+    """V133: '-' in S-original tier is preserved (source) — not flagged."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">ma-luhay</FORM>'
+        + '<FORM kindOf="standard">maluhay</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v133" not in combined, (
+        f"V133 should not fire on original tier; stdout={proc.stdout!r}"
+    )
+
+
+def test_V133_dash_in_W_standard_does_not_trigger(tmp_path):
+    """V133: '-' in W-level standard FORM is permitted by V133.
+
+    V133 targets S-level standard only; morpheme boundaries inside W are
+    not in scope.
+    """
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">maluhay</FORM>'
+        + '<W id="W1">'
+        + '<FORM kindOf="original">ma-luhay</FORM>'
+        + '<FORM kindOf="standard">ma-luhay</FORM>'
+        + '</W>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v133" not in combined, (
+        f"V133 should not fire on W-level dash; stdout={proc.stdout!r}"
+    )
+
+
+# TR13 V134 SOFT — '<' or '>' (infix delimiter) in S-level FORM either tier.
+#
+# In XML source these are written as `&lt;` and `&gt;`; the parser
+# decodes them, so we look for literal '<' or '>' in S-level FORM.text.
+
+def test_V134_lt_in_S_standard_FORM_soft(tmp_path):
+    """V134 SOFT: '<' in S-level standard FORM."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">a&lt;b</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v134", "infix", "angle bracket", "&lt;", "< or >")
+    ), (
+        f"expected V134 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V134_gt_in_S_original_FORM_soft(tmp_path):
+    """V134 SOFT: '>' in S-level original FORM is also flagged."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">a&gt;b</FORM>'
+        + '<FORM kindOf="standard">ab</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v134", "infix", "angle bracket", "&gt;", "< or >")
+    ), (
+        f"expected V134 finding for original tier; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V134_W_level_angle_brackets_do_not_trigger(tmp_path):
+    """V134: '<' '>' in W-level FORM are not in scope."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">stdsentence</FORM>'
+        + '<W id="W1">'
+        + '<FORM kindOf="original">a&lt;b&gt;c</FORM>'
+        + '<FORM kindOf="standard">abc</FORM>'
+        + '</W>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v134" not in combined, (
+        f"V134 should not fire on W-level angle brackets; "
+        f"stdout={proc.stdout!r}"
+    )
+
+
+# TR14 V135 SOFT — trailing-punctuation mismatch between original and
+# standard tiers (per-S).
+#
+# Compares the trailing run of recognized punctuation characters (after
+# stripping trailing whitespace) between the S-level original and
+# standard FORMs. A mismatch (e.g., original ends with '.', standard
+# ends with '!', or one has punct and the other doesn't) is flagged.
+
+def test_V135_punct_mismatch_period_vs_bang_soft(tmp_path):
+    """V135 SOFT: original ends in '.', standard ends in '!'."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">hello world.</FORM>'
+        + '<FORM kindOf="standard">hello world!</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v135", "trailing punct", "trailing-punct", "punct mismatch")
+    ), (
+        f"expected V135 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V135_original_has_punct_standard_does_not_soft(tmp_path):
+    """V135 SOFT: original ends in '.', standard ends in no punct."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">hello.</FORM>'
+        + '<FORM kindOf="standard">hello</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v135", "trailing punct", "trailing-punct", "punct mismatch")
+    ), (
+        f"expected V135 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V135_matching_punct_OK(tmp_path):
+    """V135: both tiers end with the same punctuation — no finding."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">hello.</FORM>'
+        + '<FORM kindOf="standard">hello.</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v135" not in combined, (
+        f"V135 should not fire on matching trailing punct; "
+        f"stdout={proc.stdout!r}"
+    )
+
+
+def test_V135_both_no_trailing_punct_OK(tmp_path):
+    """V135: both tiers have no trailing punct — no finding."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">hello</FORM>'
+        + '<FORM kindOf="standard">hello</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v135" not in combined, (
+        f"V135 should not fire when both tiers have no trailing punct; "
+        f"stdout={proc.stdout!r}"
+    )
+
+
+# TR18 V136 SOFT — mixed-script confusables.
+#
+# Pragmatic heuristic: flag a FORM that contains characters from two or
+# more of {Latin, Cyrillic, Greek} simultaneously. Other scripts
+# (CJK, Hiragana, Katakana, Hangul, Arabic, Hebrew) are NOT included
+# because they don't visually confuse with Latin in the same way the
+# corpus is concerned about (mixed Latin+CJK is common and legitimate
+# in this dataset).
+
+def test_V136_latin_with_cyrillic_a_soft(tmp_path):
+    """V136 SOFT: a Latin word with a Cyrillic а (U+0430) hidden inside."""
+    # "cаfe" — the 'а' is Cyrillic U+0430, not Latin 'a' U+0061.
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">cаfe</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v136", "mixed script", "mixed-script", "confusable")
+    ), (
+        f"expected V136 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V136_latin_with_greek_omicron_soft(tmp_path):
+    """V136 SOFT: a Latin word with a Greek omicron hidden inside."""
+    # "hellο" — the 'ο' is Greek U+03BF, not Latin 'o'.
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">hellο</FORM>'
+        + '<FORM kindOf="standard">hello</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v136", "mixed script", "mixed-script", "confusable")
+    ), (
+        f"expected V136 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V136_pure_latin_OK(tmp_path):
+    """V136 OK: pure Latin content has no mixed-script finding."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">hello world</FORM>'
+        + '<FORM kindOf="standard">hello world</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v136" not in combined, (
+        f"V136 should not fire on pure Latin; stdout={proc.stdout!r}"
+    )
+
+
+def test_V136_latin_with_cjk_OK(tmp_path):
+    """V136 OK: Latin + CJK is legitimate (Chinese annotation), not flagged."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">hello 你好</FORM>'
+        + '<FORM kindOf="standard">hello 你好</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v136" not in combined, (
+        f"V136 should not fire on Latin + CJK; stdout={proc.stdout!r}"
+    )
+
+
+# TR19 V137 SOFT — trailing-decimal footnote (`word.1`, `word.2`) at end of
+# S-level FORM or TRANSL.
+
+def test_V137_trailing_decimal_in_S_FORM_soft(tmp_path):
+    """V137 SOFT: text ending in `word.1` (digit glued to non-digit via '.')."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">hello world.1</FORM>'
+        + '<FORM kindOf="standard">hello world</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v137", "trailing decimal", "trailing-decimal", "footnote")
+    ), (
+        f"expected V137 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V137_trailing_decimal_in_TRANSL_soft(tmp_path):
+    """V137 SOFT: TRANSL ending in `word.2`."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">std</FORM>'
+        + '<TRANSL xml:lang="eng">to speak.2</TRANSL>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v137", "trailing decimal", "trailing-decimal", "footnote")
+    ), (
+        f"expected V137 finding in TRANSL; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V137_plain_decimal_number_OK(tmp_path):
+    """V137: ends with a plain decimal `3.14` (digit before .). Not flagged.
+
+    The plan: 'Require the digit glued to a non-digit'. The character
+    immediately before the '.' must be a non-digit for the pattern to
+    fire — guards against numerals (3.14, 2025.12) being misclassified.
+    """
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">pi is 3.14</FORM>'
+        + '<FORM kindOf="standard">pi is 3.14</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v137" not in combined, (
+        f"V137 should not fire on decimal numerals; stdout={proc.stdout!r}"
+    )
+
+
+def test_V137_mid_text_decimal_not_flagged(tmp_path):
+    """V137: scope is END-of-text only (per plan). Mid-text `.1` not flagged."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">word.1 plus more</FORM>'
+        + '<FORM kindOf="standard">word.1 plus more</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v137" not in combined, (
+        f"V137 should be end-anchored; stdout={proc.stdout!r}"
+    )
+
+
+# TR20 V138 SOFT — superscript-digit footnote (¹²³…) in FORM or TRANSL.
+
+def test_V138_superscript_one_in_FORM_soft(tmp_path):
+    """V138 SOFT: superscript ¹ in FORM is a footnote leak."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">word¹</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v138", "superscript", "footnote")
+    ), (
+        f"expected V138 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V138_superscript_two_in_TRANSL_soft(tmp_path):
+    """V138 SOFT: superscript ² in TRANSL is a footnote leak."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">std</FORM>'
+        + '<TRANSL xml:lang="eng">speak²</TRANSL>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v138", "superscript", "footnote")
+    ), (
+        f"expected V138 finding for TRANSL; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V138_extended_superscript_4_soft(tmp_path):
+    """V138 SOFT: U+2074 SUPERSCRIPT FOUR also caught."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">word⁴</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v138", "superscript", "footnote")
+    ), (
+        f"expected V138 finding for ⁴; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V138_no_superscript_OK(tmp_path):
+    """V138 OK: plain text without superscript digits is fine."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">hello world</FORM>'
+        + '<FORM kindOf="standard">hello world</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v138" not in combined, (
+        f"V138 should not fire on plain text; stdout={proc.stdout!r}"
+    )
+
+
+# TR21 V139 SOFT — bracketed-digit footnote `[1]`, `[12]` in FORM or
+# TRANSL. Pattern: `\[\d+\]` (digits inside ASCII square brackets).
+
+def test_V139_bracketed_digit_in_FORM_soft(tmp_path):
+    """V139 SOFT: `word[1]` in FORM is a footnote marker."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">word[1]</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v139", "bracketed", "[d]", "footnote")
+    ), (
+        f"expected V139 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V139_standalone_bracketed_digit_in_TRANSL_soft(tmp_path):
+    """V139 SOFT: standalone `[2]` token in TRANSL."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">std</FORM>'
+        + '<TRANSL xml:lang="eng">see footnote [2]</TRANSL>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v139", "bracketed", "[d]", "footnote")
+    ), (
+        f"expected V139 finding in TRANSL; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V139_brackets_without_digits_OK(tmp_path):
+    """V139: `[note]` (no digits) is not flagged — only digits inside []."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig [note]</FORM>'
+        + '<FORM kindOf="standard">orig [note]</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v139" not in combined, (
+        f"V139 should not fire on non-digit brackets; "
+        f"stdout={proc.stdout!r}"
+    )
+
+
+def test_V139_clean_text_OK(tmp_path):
+    """V139 OK: text without `[\\d+]` is fine."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">hello world</FORM>'
+        + '<FORM kindOf="standard">hello world</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v139" not in combined, (
+        f"V139 should not fire on clean text; stdout={proc.stdout!r}"
+    )

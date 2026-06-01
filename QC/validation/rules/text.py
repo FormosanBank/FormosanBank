@@ -28,6 +28,19 @@ Rule ID assignments (B9.4):
   W7: V124 TR5 null in M FORM ⇒ also in parent W AND S-original (HARD)
   W8: V125 TR6 null in W FORM ⇒ also in some child M AND S-original (HARD)
   W9: V126 TR7 '=' in S-standard FORM (SOFT)
+  W10: V127 TR8 smart quotes in either FORM tier (HARD)
+       V128 TR10 control chars (<0x20 except \\t \\n \\r) in FORM/TRANSL (HARD)
+       V129 TR11 '*' in standard-tier FORM (HARD)
+       V130 TR15 leading/trailing whitespace in FORM (HARD)
+       V131 TR16 zero-width / BOM chars in FORM/TRANSL (HARD)
+       V132 TR9 HTML entities in FORM/TRANSL (SOFT)
+       V133 TR12 '-' in S-standard FORM (SOFT)
+       V134 TR13 '<'/'>' in S-level FORM either tier (SOFT)
+       V135 TR14 trailing-punct mismatch original vs standard (SOFT)
+       V136 TR18 mixed-script confusables (SOFT)
+       V137 TR19 trailing-decimal footnote in FORM/TRANSL (SOFT)
+       V138 TR20 superscript-digit footnote in FORM/TRANSL (SOFT)
+       V139 TR21 bracketed-digit footnote in FORM/TRANSL (SOFT)
 """
 import re
 from pathlib import Path
@@ -627,6 +640,619 @@ def v126_equal_sign_in_S_standard(
     )]
 
 
+# ---------------------------------------------------------------------------
+# W10: brainstorm-derived rules (V127-V139)
+# ---------------------------------------------------------------------------
+
+
+# TR8 V127 HARD — smart quotes in either FORM tier.
+#
+# Per W3 sign-off (2026-06-01): ASCII straight `'` U+0027 and `"` U+0022 are
+# the only acceptable apostrophe/quote characters in either FORM tier. Curly
+# smart quotes (U+2018/U+2019/U+201C/U+201D) and Chinese full-width quote
+# brackets (「 」 『 』 《 》) HARD-fail in either FORM tier. Scope is FORM
+# only; TRANSL is intentionally excluded.
+_SMART_QUOTE_CHARS: tuple[str, ...] = (
+    "‘",  # ‘ LEFT SINGLE QUOTATION MARK
+    "’",  # ’ RIGHT SINGLE QUOTATION MARK
+    "“",  # “ LEFT DOUBLE QUOTATION MARK
+    "”",  # ” RIGHT DOUBLE QUOTATION MARK
+    "「",  # 「 LEFT CORNER BRACKET
+    "」",  # 」 RIGHT CORNER BRACKET
+    "『",  # 『 LEFT WHITE CORNER BRACKET
+    "』",  # 』 RIGHT WHITE CORNER BRACKET
+    "《",  # 《 LEFT DOUBLE ANGLE BRACKET
+    "》",  # 》 RIGHT DOUBLE ANGLE BRACKET
+)
+_SMART_QUOTE_SET = frozenset(_SMART_QUOTE_CHARS)
+
+
+def v127_smart_quotes_in_FORM_hard(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V127 HARD (TR8): smart-quote characters in any FORM (either tier).
+
+    Only ASCII straight `'` (U+0027) and `"` (U+0022) are acceptable in
+    a FORM element. Curly smart quotes U+2018/U+2019/U+201C/U+201D and
+    Chinese full-width corner/angle brackets are HARD failures because
+    the project's standard convention forbids them outright. One finding
+    per offending FORM (severity HARD requires per-element location).
+    """
+    findings: list[Finding] = []
+    for form in tree.iter("FORM"):
+        text = form.text or ""
+        offenders = sorted({ch for ch in text if ch in _SMART_QUOTE_SET})
+        if not offenders:
+            continue
+        # Locate parent and id for diagnostics.
+        parent = form.getparent()
+        parent_tag = parent.tag if parent is not None else ""
+        parent_id = (parent.get("id") if parent is not None else None) or ""
+        location = f"{parent_tag}={parent_id}" if parent_id else parent_tag
+        offenders_str = "".join(offenders)
+        findings.append(Finding(
+            rule_id="V127",
+            severity=Severity.HARD,
+            message=(
+                f"V127 HARD smart quote(s) in FORM: non-ASCII quote "
+                f"chars={offenders_str!r}; "
+                f"{parent_tag} id={parent_id!r} FORM kindOf={form.get('kindOf')!r}"
+            ),
+            path=path,
+            location=location,
+        ))
+    return findings
+
+
+# TR10 V128 HARD — control characters (codepoint < 0x20) other than
+# \t (0x09), \n (0x0A), \r (0x0D) — anywhere in FORM or TRANSL.
+#
+# Defensive in practice: lxml/libxml2 refuses to load most C0 controls
+# from disk and lxml's API setter raises on them, so the rule normally
+# cannot fire end-to-end. It is implemented because the plan calls for
+# it (W3 sign-off) and to catch the case where a tree was constructed
+# in a way that bypasses lxml's checks (or a future relaxation in
+# libxml2). The companion `_disallowed_control_chars` helper is unit-
+# testable directly.
+_ALLOWED_CONTROL_CHARS: frozenset[str] = frozenset("\t\n\r")
+
+
+def _disallowed_control_chars(text: str) -> frozenset[str]:
+    """Return the set of C0 control chars in `text` other than \\t \\n \\r."""
+    return frozenset(
+        ch for ch in text
+        if ord(ch) < 0x20 and ch not in _ALLOWED_CONTROL_CHARS
+    )
+
+
+def v128_control_chars_in_FORM_TRANSL(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V128 HARD (TR10): C0 control chars (<0x20 except \\t \\n \\r) in
+    FORM or TRANSL elements.
+    """
+    findings: list[Finding] = []
+    for elem in tree.iter("FORM", "TRANSL"):
+        text = elem.text or ""
+        offenders = _disallowed_control_chars(text)
+        if not offenders:
+            continue
+        parent = elem.getparent()
+        parent_tag = parent.tag if parent is not None else ""
+        parent_id = (parent.get("id") if parent is not None else None) or ""
+        location = f"{parent_tag}={parent_id}" if parent_id else parent_tag
+        offenders_str = "+".join(f"U+{ord(ch):04X}" for ch in sorted(offenders))
+        findings.append(Finding(
+            rule_id="V128",
+            severity=Severity.HARD,
+            message=(
+                f"V128 HARD control character(s) in {elem.tag}: codepoints "
+                f"{offenders_str}; {parent_tag} id={parent_id!r} "
+                f"{elem.tag} kindOf={elem.get('kindOf')!r}"
+            ),
+            path=path,
+            location=location,
+        ))
+    return findings
+
+
+# TR11 V129 HARD — '*' in standard-tier FORM (any level).
+#
+# The asterisk is a metalinguistic ungrammaticality marker. It can be
+# meaningful in raw source / original transcripts but should never
+# appear in the project's standardized surface form. Scope: any FORM
+# (S, W, or M) with kindOf='standard'.
+
+
+def v129_asterisk_in_standard_FORM(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V129 HARD (TR11): '*' in any standard-tier FORM."""
+    findings: list[Finding] = []
+    for form in tree.iter("FORM"):
+        if form.get("kindOf") != "standard":
+            continue
+        text = form.text or ""
+        if "*" not in text:
+            continue
+        parent = form.getparent()
+        parent_tag = parent.tag if parent is not None else ""
+        parent_id = (parent.get("id") if parent is not None else None) or ""
+        location = f"{parent_tag}={parent_id}" if parent_id else parent_tag
+        findings.append(Finding(
+            rule_id="V129",
+            severity=Severity.HARD,
+            message=(
+                f"V129 HARD asterisk in standard-tier FORM: '*' in "
+                f"{parent_tag} id={parent_id!r}"
+            ),
+            path=path,
+            location=location,
+        ))
+    return findings
+
+
+# TR15 V130 HARD — leading/trailing whitespace in any FORM.
+#
+# clean_xml.py's `normalize_whitespace` already strips this at the
+# cleaner stage; the validator HARD just guarantees the cleaner ran.
+# Empty FORMs are not flagged (legitimate elision marker handling).
+
+
+def v130_leading_trailing_whitespace_in_FORM(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V130 HARD (TR15): FORM text has leading or trailing whitespace."""
+    findings: list[Finding] = []
+    for form in tree.iter("FORM"):
+        text = form.text
+        if not text:
+            continue
+        if text == text.strip():
+            continue
+        sides: list[str] = []
+        if text != text.lstrip():
+            sides.append("leading")
+        if text != text.rstrip():
+            sides.append("trailing")
+        parent = form.getparent()
+        parent_tag = parent.tag if parent is not None else ""
+        parent_id = (parent.get("id") if parent is not None else None) or ""
+        location = f"{parent_tag}={parent_id}" if parent_id else parent_tag
+        findings.append(Finding(
+            rule_id="V130",
+            severity=Severity.HARD,
+            message=(
+                f"V130 HARD {'/'.join(sides)} whitespace in FORM; "
+                f"{parent_tag} id={parent_id!r} "
+                f"FORM kindOf={form.get('kindOf')!r}"
+            ),
+            path=path,
+            location=location,
+        ))
+    return findings
+
+
+# TR16 V131 HARD — zero-width / BOM in FORM or TRANSL, anywhere.
+#
+# Per W3 sign-off: U+200B ZWSP, U+200C ZWNJ, U+200D ZWJ, U+FEFF BOM are
+# invisible characters with no legitimate use in Formosan / English /
+# Chinese content. Subsumes the earlier TR17 "BOM at position 0" idea
+# (broader scope; one rule). Cleaner-side strip queued for B5.
+_ZERO_WIDTH_CHARS: frozenset[str] = frozenset((
+    "​",  # ZERO WIDTH SPACE
+    "‌",  # ZERO WIDTH NON-JOINER
+    "‍",  # ZERO WIDTH JOINER
+    "﻿",  # ZERO WIDTH NO-BREAK SPACE (BOM)
+))
+
+
+def v131_zero_width_or_BOM_in_FORM_TRANSL(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V131 HARD (TR16): zero-width or BOM in FORM or TRANSL."""
+    findings: list[Finding] = []
+    for elem in tree.iter("FORM", "TRANSL"):
+        text = elem.text or ""
+        offenders = sorted({ch for ch in text if ch in _ZERO_WIDTH_CHARS})
+        if not offenders:
+            continue
+        parent = elem.getparent()
+        parent_tag = parent.tag if parent is not None else ""
+        parent_id = (parent.get("id") if parent is not None else None) or ""
+        location = f"{parent_tag}={parent_id}" if parent_id else parent_tag
+        offenders_str = "+".join(f"U+{ord(ch):04X}" for ch in offenders)
+        findings.append(Finding(
+            rule_id="V131",
+            severity=Severity.HARD,
+            message=(
+                f"V131 HARD zero-width/BOM char(s) in {elem.tag}: codepoints "
+                f"{offenders_str}; {parent_tag} id={parent_id!r} "
+                f"{elem.tag} kindOf={elem.get('kindOf')!r}"
+            ),
+            path=path,
+            location=location,
+        ))
+    return findings
+
+
+# TR9 V132 SOFT — HTML entity-like substrings in FORM or TRANSL.
+#
+# XML parsers decode well-formed entities, so `&amp;` in source becomes
+# `&` in element.text. Finding a literal `&amp;`, `&apos;`, `&lt;`, or
+# `&gt;` in element.text means the source was double-encoded
+# (e.g., `&amp;amp;` in the XML). Aggregated per (file, entity) for the
+# SOFT CSV.
+
+_HTML_ENTITY_RE = re.compile(r"&(?:amp|apos|lt|gt|quot);")
+
+
+def v132_html_entities_in_FORM_TRANSL(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V132 SOFT (TR9): HTML entity-like substrings in FORM or TRANSL."""
+    lang = _resolve_language(tree)
+    per_entity: dict[str, int] = {}
+    for elem in tree.iter("FORM", "TRANSL"):
+        text = elem.text or ""
+        for match in _HTML_ENTITY_RE.findall(text):
+            per_entity[match] = per_entity.get(match, 0) + 1
+    findings: list[Finding] = []
+    for entity, n in per_entity.items():
+        findings.append(Finding(
+            rule_id="V132",
+            severity=Severity.SOFT,
+            message=(
+                f"V132 SOFT html entity-like residue: count={n} {entity!r} "
+                "in FORM/TRANSL (likely double-encoded source)"
+            ),
+            path=path,
+            count=n,
+            language=lang,
+            character=entity,
+        ))
+    return findings
+
+
+# TR12 V133 SOFT — '-' (segmentation marker) in S-level standard FORM.
+
+
+def v133_dash_in_S_standard_FORM(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V133 SOFT (TR12): '-' in S-level standard FORM, likely a leftover
+    segmentation/hyphenation marker that should have been removed."""
+    lang = _resolve_language(tree)
+    count = 0
+    for _, text in _s_standard_pairs(tree):
+        if "-" in text:
+            count += 1
+    if count == 0:
+        return []
+    return [Finding(
+        rule_id="V133",
+        severity=Severity.SOFT,
+        message=(
+            f"V133 SOFT dash in S-standard: count={count} S-standard FORM(s) "
+            "containing '-' (segmentation leftover)"
+        ),
+        path=path,
+        count=count,
+        language=lang,
+        character="-",
+    )]
+
+
+# TR13 V134 SOFT — '<' or '>' (infix delimiter) in S-level FORM, either tier.
+#
+# Scope: S-level (direct-child FORM of S). Lower-tier FORMs (W, M) may
+# legitimately use angle-bracket annotation for infixes (e.g., m<um>law)
+# and are out of scope for V134.
+
+
+def v134_angle_brackets_in_S_FORM(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V134 SOFT (TR13): '<' or '>' in S-level FORM at either tier."""
+    lang = _resolve_language(tree)
+    per_char: dict[str, int] = {}
+    for s in tree.iter("S"):
+        for child in s:
+            if child.tag != "FORM":
+                continue
+            text = child.text or ""
+            for ch in text:
+                if ch in "<>":
+                    per_char[ch] = per_char.get(ch, 0) + 1
+    findings: list[Finding] = []
+    for ch, n in per_char.items():
+        findings.append(Finding(
+            rule_id="V134",
+            severity=Severity.SOFT,
+            message=(
+                f"V134 SOFT angle bracket / infix delimiter in S-level FORM: "
+                f"count={n} {ch!r} (< or > likely an infix marker)"
+            ),
+            path=path,
+            count=n,
+            language=lang,
+            character=ch,
+        ))
+    return findings
+
+
+# TR14 V135 SOFT — trailing-punctuation mismatch between original and
+# standard tiers (per-S).
+#
+# We compare the trailing run of recognized punctuation (after stripping
+# trailing whitespace) between the S-level original and standard FORMs.
+# Recognized punctuation set is intentionally conservative: ASCII
+# `.,!?;:` plus full-width Chinese counterparts. A mismatch on the
+# trailing run is flagged per S (aggregated to one finding per file).
+_TRAILING_PUNCT_CHARS: frozenset[str] = frozenset(".,!?;:" + "。，！？；：")
+
+
+def _trailing_punct(text: str) -> str:
+    """Return the run of recognized trailing-punct chars at the end of text,
+    ignoring trailing whitespace. Returns '' if none."""
+    stripped = text.rstrip()
+    end = len(stripped)
+    i = end
+    while i > 0 and stripped[i - 1] in _TRAILING_PUNCT_CHARS:
+        i -= 1
+    return stripped[i:end]
+
+
+def v135_trailing_punct_mismatch(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V135 SOFT (TR14): trailing-punct mismatch in S-level FORM pair."""
+    lang = _resolve_language(tree)
+    count = 0
+    for s in tree.iter("S"):
+        orig = _s_original_form_text(s)
+        std = _s_standard_form_text(s)
+        if orig is None or std is None:
+            # Need both tiers to compare.
+            continue
+        if _trailing_punct(orig) != _trailing_punct(std):
+            count += 1
+    if count == 0:
+        return []
+    return [Finding(
+        rule_id="V135",
+        severity=Severity.SOFT,
+        message=(
+            f"V135 SOFT trailing-punct mismatch: count={count} S element(s) "
+            "where original and standard FORM tiers end in different "
+            "punctuation"
+        ),
+        path=path,
+        count=count,
+        language=lang,
+        character="",
+    )]
+
+
+# TR18 V136 SOFT — mixed-script confusables.
+#
+# Pragmatic heuristic, not a full Unicode script-property analysis: flag
+# a FORM that contains characters from two or more of
+# {Latin, Cyrillic, Greek} simultaneously. Other scripts (CJK / Hiragana
+# / Katakana / Hangul / Arabic / Hebrew) are NOT considered for the
+# mixed-script test because the corpus legitimately mixes Latin with CJK
+# annotation and with other scripts in TRANSL; the confusable concern is
+# specifically about Latin homograph attacks (Cyrillic 'а' vs Latin 'a',
+# Greek omicron vs Latin 'o', etc.). Aggregated per file.
+#
+# Scope: FORM only. TRANSL is intentionally excluded — TRANSL into
+# Chinese, Japanese, etc. legitimately mixes scripts.
+
+_LATIN_BLOCKS = (
+    (0x0041, 0x005A),  # Basic Latin upper
+    (0x0061, 0x007A),  # Basic Latin lower
+    (0x00C0, 0x00FF),  # Latin-1 Supplement letters
+    (0x0100, 0x017F),  # Latin Extended-A
+    (0x0180, 0x024F),  # Latin Extended-B
+)
+_CYRILLIC_BLOCKS = (
+    (0x0400, 0x04FF),
+    (0x0500, 0x052F),
+)
+_GREEK_BLOCKS = (
+    (0x0370, 0x03FF),
+)
+
+
+def _in_ranges(code: int, ranges) -> bool:
+    return any(lo <= code <= hi for lo, hi in ranges)
+
+
+def _script_for(ch: str) -> str | None:
+    """Return 'latin' / 'cyrillic' / 'greek' or None for chars not in
+    the confusable-script set."""
+    code = ord(ch)
+    if _in_ranges(code, _LATIN_BLOCKS):
+        return "latin"
+    if _in_ranges(code, _CYRILLIC_BLOCKS):
+        return "cyrillic"
+    if _in_ranges(code, _GREEK_BLOCKS):
+        return "greek"
+    return None
+
+
+def v136_mixed_script_confusables(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V136 SOFT (TR18): mixed Latin/Cyrillic/Greek scripts in FORM text."""
+    lang = _resolve_language(tree)
+    mixed_count = 0
+    for form in tree.iter("FORM"):
+        text = form.text or ""
+        scripts = {s for s in (_script_for(ch) for ch in text) if s is not None}
+        if len(scripts) >= 2:
+            mixed_count += 1
+    if mixed_count == 0:
+        return []
+    return [Finding(
+        rule_id="V136",
+        severity=Severity.SOFT,
+        message=(
+            f"V136 SOFT mixed-script / confusable: count={mixed_count} FORM "
+            "element(s) mixing two or more of {Latin, Cyrillic, Greek}"
+        ),
+        path=path,
+        count=mixed_count,
+        language=lang,
+        character="",
+    )]
+
+
+# TR19 V137 SOFT — trailing-decimal footnote (`word.1`, `word.2`) at end
+# of S-level FORM or TRANSL. Per plan: require the digit glued to a
+# non-digit (so `3.14` doesn't trigger, but `world.1` does). End-anchored
+# (after rstrip).
+
+_TRAILING_DECIMAL_FOOTNOTE_RE = re.compile(r"(?<!\d)\.\d+$")
+
+
+def v137_trailing_decimal_footnote_in_S_FORM_TRANSL(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V137 SOFT (TR19): trailing-decimal footnote at end of S-level FORM
+    or TRANSL. False-positive guard: the character immediately before
+    the '.' must be a non-digit (so plain decimal numerals like '3.14'
+    are not flagged)."""
+    lang = _resolve_language(tree)
+    count = 0
+    for s in tree.iter("S"):
+        for child in s:
+            if child.tag not in ("FORM", "TRANSL"):
+                continue
+            text = (child.text or "").rstrip()
+            if not text:
+                continue
+            if _TRAILING_DECIMAL_FOOTNOTE_RE.search(text):
+                count += 1
+    if count == 0:
+        return []
+    return [Finding(
+        rule_id="V137",
+        severity=Severity.SOFT,
+        message=(
+            f"V137 SOFT trailing-decimal footnote: count={count} S-level "
+            "FORM/TRANSL element(s) ending in `<non-digit>.<digits>` "
+            "(likely footnote leak)"
+        ),
+        path=path,
+        count=count,
+        language=lang,
+        character="",
+    )]
+
+
+# TR20 V138 SOFT — superscript-digit footnote in FORM or TRANSL.
+#
+# Superscript digits in element text are almost always footnote leaks
+# from scrape. Recognized codepoints:
+#   U+00B9 ¹ SUPERSCRIPT ONE
+#   U+00B2 ² SUPERSCRIPT TWO
+#   U+00B3 ³ SUPERSCRIPT THREE
+#   U+2070 ⁰ SUPERSCRIPT ZERO
+#   U+2074-U+2079 ⁴-⁹ SUPERSCRIPT FOUR through NINE
+# Aggregated per (file, character).
+
+_SUPERSCRIPT_DIGITS: frozenset[str] = frozenset(
+    "¹²³⁰" + "".join(chr(c) for c in range(0x2074, 0x207A))
+)
+
+
+def v138_superscript_digit_footnote(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V138 SOFT (TR20): superscript digit (¹²³…) in FORM or TRANSL."""
+    lang = _resolve_language(tree)
+    per_char: dict[str, int] = {}
+    for elem in tree.iter("FORM", "TRANSL"):
+        text = elem.text or ""
+        for ch in text:
+            if ch in _SUPERSCRIPT_DIGITS:
+                per_char[ch] = per_char.get(ch, 0) + 1
+    findings: list[Finding] = []
+    for ch, n in per_char.items():
+        findings.append(Finding(
+            rule_id="V138",
+            severity=Severity.SOFT,
+            message=(
+                f"V138 SOFT superscript-digit footnote: count={n} {ch!r} "
+                "in FORM/TRANSL (likely footnote leak)"
+            ),
+            path=path,
+            count=n,
+            language=lang,
+            character=ch,
+        ))
+    return findings
+
+
+# TR21 V139 SOFT — bracketed-digit footnote (`word[1]`, `[1]`) anywhere
+# in FORM or TRANSL. Pattern is conservative: ASCII square brackets
+# wrapping digit(s).
+
+_BRACKETED_DIGIT_RE = re.compile(r"\[\d+\]")
+
+
+def v139_bracketed_digit_footnote(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V139 SOFT (TR21): bracketed-digit footnote in FORM or TRANSL."""
+    lang = _resolve_language(tree)
+    total = 0
+    for elem in tree.iter("FORM", "TRANSL"):
+        text = elem.text or ""
+        total += len(_BRACKETED_DIGIT_RE.findall(text))
+    if total == 0:
+        return []
+    return [Finding(
+        rule_id="V139",
+        severity=Severity.SOFT,
+        message=(
+            f"V139 SOFT bracketed-digit [d+] footnote: count={total} "
+            "occurrence(s) in FORM/TRANSL (likely footnote / citation leak)"
+        ),
+        path=path,
+        count=total,
+        language=lang,
+        character="",
+    )]
+
+
 RULES: list = [
     # W1 (V110-V115): ported from validate_punct.py
     v110_smart_quotes,
@@ -645,5 +1271,19 @@ RULES: list = [
     v124_null_in_M_requires_parent_W_and_S_original,
     v125_null_in_W_requires_child_M_and_S_original,
     v126_equal_sign_in_S_standard,
+    # W10 (V127-V139): brainstorm-derived rules
+    v127_smart_quotes_in_FORM_hard,
+    v128_control_chars_in_FORM_TRANSL,
+    v129_asterisk_in_standard_FORM,
+    v130_leading_trailing_whitespace_in_FORM,
+    v131_zero_width_or_BOM_in_FORM_TRANSL,
+    v132_html_entities_in_FORM_TRANSL,
+    v133_dash_in_S_standard_FORM,
+    v134_angle_brackets_in_S_FORM,
+    v135_trailing_punct_mismatch,
+    v136_mixed_script_confusables,
+    v137_trailing_decimal_footnote_in_S_FORM_TRANSL,
+    v138_superscript_digit_footnote,
+    v139_bracketed_digit_footnote,
 ]
 CROSS_FILE_RULES: list = []
