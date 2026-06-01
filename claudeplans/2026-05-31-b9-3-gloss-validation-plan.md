@@ -2,7 +2,16 @@
 
 **Date:** 2026-05-31
 **Roadmap section:** B9.3
-**Status:** Plan; not yet started.
+**Status:** [DONE 2026-06-01] — all work items W1–W7 landed on `feature/claude-tooling-phase-0`. Per-W commits:
+- **W1** `8afb8868f` — move V062 from `rules/hard.py` to new `rules/gloss.py`.
+- **W2** `38772885e` — V060 SOFT (W-count vs word-count).
+- **W3** `57febe9a1` — V061 SOFT (M-count vs implied-morpheme-count).
+- **W4** `fcda3d16b` — `validate_glosses.py` refactored to consume `rules/gloss.py` via the shared Finding framework (lxml + Severity-based exit semantics).
+- **W5** `42007e37a` — V063 HARD (W-FORM segmentation preservation; per-S marker count threshold > 3).
+- **W6** `cff0b7bd6` — V064 HARD (every M has TRANSL) + V065 SOFT (every W has TRANSL).
+- **W7** `e20180d2d` — CI integration (`xml-validation.yaml` extended with gloss step on PR + baseline) + QC/README.md staged-pipeline table + V060–V065 rule table.
+
+Test counts at landing: 31 pass on `tests/validators/test_validate_glosses.py`; 42 pass on `tests/validators/test_validate_xml.py` after V062 removal. No regressions in the full suite.
 **Supersedes:** earlier draft on the same path. Architecture revised after user feedback (2026-05-31): the rule registry framework is shared across validators, but the orchestrators stay split by concern (XML format first; artifact validators after). V062 moves out of `rules/hard.py`; `validate_glosses.py` is refactored to consume the shared framework rather than being deleted.
 
 ---

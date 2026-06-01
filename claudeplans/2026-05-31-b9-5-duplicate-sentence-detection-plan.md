@@ -2,7 +2,19 @@
 
 **Date:** 2026-05-31
 **Roadmap section:** B9.5 (Duplicates category of the six-category validator audit)
-**Status:** Plan; not yet started.
+**Status:** [DONE 2026-06-01] — all work items W1–W4 landed on `feature/claude-tooling-phase-0` via merge of `worktree-agent-a9d15d445b16a8808` (merge commit `3c1d23187`). Per-W summary:
+- **W1**: `QC/validation/validate_duplicate_sentences.py` (new) — within-corpus detector with `by_path` / `by_corpus` / `by_language` modes. HARD on within-file duplicates, SOFT on cross-file same-corpus.
+- **W2**: tier choice (`--tier {standard,original}` default `standard`) + whitespace-normalized equivalence helper folded into W1.
+- **W3**: `QC/cleaning/remove_duplicate_sentences.py` (new) — deterministic "keep first by (file, S id)" removal; `--dry-run` is the default, `--apply` required to mutate; `--scope file|corpus`.
+- **W4**: `QC/README.md` pipeline + Cleaning section update; `.github/workflows/duplicate-sentences.yaml` runs detection per-corpus on PRs/pushes, uploads CSVs as 30-day artifacts; remover deliberately not in CI.
+
+Open question resolutions: all defaults from the plan adopted as-is (OQ1=b, OQ2=b+d, OQ3=file→HARD/corpus→SOFT, OQ4=deterministic+dry-run).
+
+Test counts at landing: 24 pass (13 validator + 11 remover) on `tests/{validators,cleaning}/test_*duplicate_sentences.py`.
+
+Sanity-run finding (ePark): 3,963 HARD duplicate groups (8,394 occurrences) + 23,562 SOFT groups (78,474 occurrences). Heavy concentration in `qing_jing_zu_yu_contextual_indigenous_language/*` and `hui_ben_ping_tai_picture_book_platform/*` — likely a mix of intentional didactic repetition and ingestion bugs; curatorial review pending.
+
+Followup landed 2026-06-01 in commit `06290ab1e`: drop dead `if text is None:` guard in `normalize_for_comparison`, remove unused `_filter_by_language` helper (by_language uses an inline directory walk in `main()`).
 
 ---
 

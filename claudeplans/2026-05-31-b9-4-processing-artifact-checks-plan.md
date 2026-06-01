@@ -2,7 +2,24 @@
 
 **Date:** 2026-05-31
 **Roadmap section:** B9.4
-**Status:** Plan; not yet started.
+**Status:** [PARTIAL 2026-06-01] — W1, W2, W4–W9, W11 landed on `feature/claude-tooling-phase-0` (B9.4 subagent ran in main tree rather than its worktree branch; bundled into user's `5355d81cc added a number of tests and validators…` commit). W3 brainstorm signed off by user 2026-06-01 (decisions recorded inline in the W3 section below). W10 [NOT STARTED] — implements the now-finalized brainstorm-derived rules.
+
+Per-W status:
+- **W1** [DONE] — `QC/validation/rules/text.py` (new) + `QC/validation/validate_text.py` (new). V110 smart_quotes, V111 imbalanced_parens, V112 repeated_punct, V113 consecutive_dashes, V114 multiple_whitespace, V115 mismatched_quotes (all SOFT). `QC/validation/validate_punct.py` deleted.
+- **W2** [DONE] — V116 non_ascii_in_form SOFT; aggregated per (file, character_group); CJK excluded. `QC/cleaning/non_ascii_counts.py` deleted.
+- **W3** [DONE — brainstorm signed off 2026-06-01] — decisions inline below.
+- **W4** [DONE] — TR1 / V120 HARD (∅ in S-standard FORM). ⚠️ V120 collision with B9.2's flag_audio_suspicious SOFT — needs renumbering.
+- **W5** [DONE] — TR2 / V121 HARD (parens/`/` in W- or M-level FORM) + TR3 / V122 SOFT (parens/`/` in FORM/TRANSL).
+- **W6** [DONE] — TR4 / V123 HARD (null in W/M standard FORM ⇒ sister original).
+- **W7** [DONE] — TR5 / V124 HARD (null in M FORM ⇒ parent W FORM null AND S-original null).
+- **W8** [DONE] — TR6 / V125 HARD (null in W FORM ⇒ some child M FORM null AND S-original null).
+- **W9** [DONE] — TR7 / V126 SOFT (`=` in S-standard FORM).
+- **W10** [NOT STARTED] — see W3 sign-off below for the finalized rule list and severities.
+- **W11** [DONE] — `.github/workflows/xml-validation.yaml` extended (PR-changed and baseline jobs now also invoke `validate_text.py`; `text-soft.csv` artifact added). `QC/README.md`, `README.md`, `CLAUDE.md` updated. **Caveat (resolved 2026-06-01 in `06290ab1e`):** `.claude/skills/run-qc-pipeline.md` and `summary.template.md` updated by hand to point at `validate_text.py` (the subagent couldn't edit `.claude/` paths under the hook).
+
+Test counts at landing: 28 pass on `tests/validators/test_validate_text.py`; 255 total in the full suite.
+
+Followup landed 2026-06-01 in commit `06290ab1e`: `_s_id` loop variable in V110/V111/V112 renamed to `_` (rules aggregate file-level; per-S id not consumed).
 **Supersedes:** earlier B9.4 draft on the same path. Major reframing per user 2026-05-31: `non_ascii_counts.py` + `validate_punct.py` consolidate into a new `validate_text.py` (under `QC/validation/`), following the staged-pipeline architecture established in B9.3. Adds seven specific FORM-content rules plus a work item to brainstorm additional checks, with cross-references to roadmap items C016, C023, C024, C025.
 
 ---
@@ -105,61 +122,82 @@ Each item is a separable commit. Pattern per W*: write failing test → verify f
 
 ### W3. Brainstorm: enumerate additional candidate rules and get user sign-off
 
-This is a discussion artifact, not a code commit. **Output:** an updated section of this plan listing every candidate rule with proposed severity, awaiting user OK before W4+ implements them.
+**Status: SIGNED OFF 2026-06-01.** The user reviewed the seed list and locked the final rule set + severities below. Quoted user direction is from the 2026-06-01 conversation.
 
 **This step partly fulfills roadmap C025** ("decide what validators we need") for the text-content category.
 
-Seed list (drawn from the [OldQCPlan flowchart](../../temp/OldQCPlan.png), validate_punct.py current checks, [corpus-cleanup-tasks.md](2026-05-31-corpus-cleanup-tasks.md), the roadmap C-items below, and common sense). User adds / removes / rebalances as desired:
+**Sign-off resolutions:**
+
+1. **Null character: confirmed `∅` U+2205 EMPTY SET.** Used wherever a rule references "the null symbol" (TR1 / V120 and the W4–W8 propagation rules).
+2. **TR12 / TR13 supersede the earlier "segmentation-removed invariant" idea.** The roadmap's B9.4 §Gaps bullet for "Segmentation-removed-from-S-FORM-standard invariant" is dropped — TR12 (`-`) and TR13 (`<`/`>`) cover this directly at the rule level.
+3. **TR8 promoted to HARD, scope = both original AND standard tiers.** User: *"We should have ascii straight apostrophe and double quote only: `'` and `"`. And that should be HARD."* The only acceptable apostrophe and double-quote are ASCII U+0027 and U+0022; all smart-quote variants (U+2018/U+2019/U+201C/U+201D and friends) HARD-fail in both FORM tiers.
+4. **TR10–TR21 approved as written, with the explicit caveat that "we can tighten later if it turns up too many false positives."**
+5. **TR22 dropped.** User: *"Let's actually drop C016 entirely (and thus TR22)."* Out-of-language detection too costly for the value at this stage. Removed from the rule set and from the roadmap's B6-SUPERSEDED table.
+6. **TR15 / TR16 promoted to HARD; TR17 folded into TR16.** User asked whether TR15–17 should be HARD with the deletions in `clean_xml.py`; resolution:
+   - TR15 (leading/trailing whitespace in FORM) → HARD. `clean_xml.py` already strips via `normalize_whitespace`, so HARD just guarantees the cleaner ran.
+   - TR16 (zero-width chars U+200B/U+200C/U+200D/U+FEFF anywhere in FORM/TRANSL) → HARD. ZWJ/ZWNJ have legitimate uses in Arabic/Indic but not in Formosan/English/Chinese; safe to require absent. Cleaner-side strip lands as a follow-up to B5.
+   - TR17 (BOM at start of FORM/TRANSL) → **deleted as a separate rule** — subsumed by TR16's broader scope. If a more-pointed message for "BOM at position 0" is wanted later, it can be a separate finding within the same rule function.
+
+**Finalized rule list (W10 scope, ready for implementation):**
 
 **From OldQCPlan "verify punctuation, character set":**
-- TR8 SOFT: smart quotes in standard-tier FORM (left/right single, left/right double). Standard convention is ASCII apostrophe.
-- TR9 SOFT: HTML entities in FORM/TRANSL (`&amp;`, `&apos;`, `&lt;`, `&gt;`, including double-encoded `&amp;amp;`). Captures YeddaPalemeqBlog-style scrape residue.
-- TR10 HARD: control characters (codepoint < 0x20) other than `\t \n \r`.
+- **TR8 HARD** [updated] — smart quotes (any of U+2018/U+2019/U+201C/U+201D + Chinese full-width variants) in **either** FORM tier (original AND standard). Standard convention is ASCII straight `'` U+0027 and `"` U+0022 only.
+- TR9 SOFT — HTML entities in FORM/TRANSL (`&amp;`, `&apos;`, `&lt;`, `&gt;`, including double-encoded `&amp;amp;`). Captures YeddaPalemeqBlog-style scrape residue.
+- TR10 HARD — control characters (codepoint < 0x20) other than `\t \n \r`.
 
 **Structural FORM rules:**
-- TR11 HARD: asterisk (`*`) in standard-tier FORM. Asterisk is linguistics convention for "ungrammatical example"; should never appear in published surface form.
-- TR12 SOFT: `-` (segmentation marker) in S-level standard-tier FORM. Parallel to TR7 (`=`) — leftover morpheme boundary.
-- TR13 SOFT: `<` or `>` (infix delimiter) in S-level FORM at either tier. Surface form shouldn't carry segmentation markup.
-- TR14 SOFT: trailing punctuation mismatch between original and standard tiers (e.g., original ends with `.` but standard doesn't, or vice versa).
-- TR15 SOFT: leading or trailing whitespace in any FORM.
+- TR11 HARD — asterisk (`*`) in standard-tier FORM. Should never appear in published surface form.
+- TR12 SOFT — `-` (segmentation marker) in S-level standard-tier FORM. Supersedes earlier "Segmentation-removed-from-S-FORM-standard invariant" idea.
+- TR13 SOFT — `<` or `>` (infix delimiter) in S-level FORM at either tier.
+- TR14 SOFT — trailing punctuation mismatch between original and standard tiers.
+- **TR15 HARD** [updated] — leading or trailing whitespace in any FORM. Cleaner already handles via `normalize_whitespace`; validator HARD just guarantees the cleaner ran.
 
 **Character-set / encoding rules:**
-- TR16 SOFT: zero-width characters (U+200B, U+200C, U+200D, U+FEFF) in FORM/TRANSL. Common copy-paste / scrape artifact, invisible to humans, breaks downstream tokenization.
-- TR17 SOFT: byte-order mark (U+FEFF) at start of any FORM or TRANSL.
-- TR18 SOFT: mixed-script confusables (Cyrillic 'а' vs Latin 'a', etc.) — heuristic: any character whose Unicode block doesn't match the dominant script of the FORM.
+- **TR16 HARD** [updated, expanded] — zero-width / BOM characters (U+200B ZWSP, U+200C ZWNJ, U+200D ZWJ, U+FEFF BOM) **anywhere** in FORM/TRANSL. Subsumes the deleted TR17. Cleaner-side stripping queued for B5 follow-up.
+- ~~TR17~~ **DELETED** — merged into TR16.
+- TR18 SOFT — mixed-script confusables (Cyrillic 'а' vs Latin 'a', etc.) — heuristic: any character whose Unicode block doesn't match the dominant script of the FORM.
 
 **Footnote / scrape residue (scope: FORM AND TRANSL — per Bril Amis Basecamp card Apr 3, 2026):**
 
 Footnotes leak into both tiers. Real-world example from Bril Amis: `<M id="s13w4m2"><FORM>uwal</FORM><TRANSL>speak12</TRANSL></M>` — the `12` is a footnote leak in TRANSL, not FORM. Each rule below applies to FORM and TRANSL text.
 
-- TR19 SOFT: trailing-decimal footnote (`word.1`, `word.2`) at end of S-level FORM or TRANSL.
-- TR20 SOFT: superscript-digit footnote (`word¹`, `word²`, `¹` as standalone token) anywhere in FORM or TRANSL.
-- TR21 SOFT: bracketed-digit footnote (`word[1]`, `[1]` as standalone token) anywhere in FORM or TRANSL.
+- TR19 SOFT — trailing-decimal footnote (`word.1`, `word.2`) at end of S-level FORM or TRANSL.
+- TR20 SOFT — superscript-digit footnote (`word¹`, `word²`, `¹` as standalone token) anywhere in FORM or TRANSL.
+- TR21 SOFT — bracketed-digit footnote (`word[1]`, `[1]` as standalone token) anywhere in FORM or TRANSL.
 
 Watch for false positives where genuine numerals belong in the text (years, page references in TRANSL, dates). Implementation should require the digit to be glued to a non-digit token (no whitespace between) to reduce noise; document the false-positive risk in each rule's docstring.
 
-**Language-content rules (advanced):**
-- TR22 WARN: out-of-language examples (e.g. Japanese/Fongbe/Tagalog tokens in an Amis or Bunun file). **Closes roadmap C016**. Roadmap explicitly notes "hard problem; likely WARN-level if attempted" — needs a language-ID model (langid / fasttext-lid / whatever the project standardizes on). Possibly deferred to a B9.4-followup round rather than landed in this plan; flag as scoped-out unless cheap to add.
+**Language-content rules:**
+- ~~TR22~~ **DROPPED** per user direction 2026-06-01. Out-of-language detection out of scope for B9; closes roadmap C016 by deletion (not by validator).
 
-**Open questions for W3 (user to resolve before W4 begins):**
-- What exact character is "the null symbol"? Assumption: `∅` U+2205 EMPTY SET. Confirm or specify alternative.
-- Do TR12 / TR13 supersede the earlier "segmentation-removed invariant" idea in the original draft? Or do we want both (one detects markers in S-FORM directly; the other verifies the W/M tier reconstructs to S-FORM)?
-- Severity of TR8 (smart quotes in standard tier) — SOFT now, but candidate for HARD eventually if standardization conventions are firm.
-- Footnote heuristics (TR19–TR21) — should they require additional context (e.g., the digit is unattached / standalone) to reduce false positives on legitimate numerals?
-- TR22 — implement in this plan or defer? Depends on whether the user wants a language-ID dep added now.
+**Cleaner-side follow-up (queued for B5):** TR15 (whitespace) is already handled by `clean_xml.py`'s `normalize_whitespace`. TR16 (zero-width / BOM) is a new mechanical strip that should land in `clean_text` / `clean_trans`. Add as a small follow-up task to the B5 plan so the HARD validator findings stay near zero in practice.
 
 ### W4–W10. Implement the rules (one per W, TDD)
 
-Order of implementation is by rule independence + simplicity:
-- **W4: TR1** (no null symbol in S-standard FORM). Simplest character search.
-- **W5: TR2 + TR3** (parens/slashes at W/M HARD; parens/slashes elsewhere SOFT). Two related rules, share helper.
-- **W6: TR4** (null propagation: W/M standard ⇒ sister original).
-- **W7: TR5** (null propagation: M ⇒ W + S-original).
-- **W8: TR6** (null propagation: W ⇒ some M child + S-original).
-- **W9: TR7** (`=` in S-standard).
-- **W10: TR8 onward** — the brainstorm-derived rules, batched by category (smart-quote/HTML-entity batch; structural batch; encoding batch; footnote batch). Each batch one commit.
+**W4–W9 status: [DONE]** — see the per-W table in the Status header at the top of this document. V120–V126 landed in `feature/claude-tooling-phase-0`. The original implementation order is preserved below for reference:
+- **W4: TR1 / V120** (no null symbol in S-standard FORM).
+- **W5: TR2 / V121 + TR3 / V122** (parens/slashes at W/M HARD; parens/slashes elsewhere SOFT).
+- **W6: TR4 / V123** (null propagation: W/M standard ⇒ sister original).
+- **W7: TR5 / V124** (null propagation: M ⇒ W + S-original).
+- **W8: TR6 / V125** (null propagation: W ⇒ some M child + S-original).
+- **W9: TR7 / V126** (`=` in S-standard).
 
-For each W4–W10: write failing test, verify fail, implement rule in `rules/text.py`, add to RULES list, verify pass, commit. Per the no-compound-bash memory, `.venv/bin/pytest` directly (no `source && pytest`).
+**W10 status: [NOT STARTED]** — implements the W3-signed-off brainstorm rules. **Suggested order, with HARD rules first** so the highest-value gates land before the SOFT noise:
+1. **TR8 HARD** — smart quotes in either FORM tier. Cross-tier scope; requires per-tier iteration helpers.
+2. **TR10 HARD** — control characters.
+3. **TR11 HARD** — `*` in standard-tier FORM.
+4. **TR15 HARD** — leading/trailing whitespace in any FORM. (Validator only; cleaner already strips.)
+5. **TR16 HARD** — zero-width / BOM chars in FORM/TRANSL. (Cleaner-side strip lands as a B5 follow-up.)
+6. **TR9 SOFT** — HTML entities.
+7. **TR12 SOFT** — `-` in S-standard FORM.
+8. **TR13 SOFT** — `<`/`>` in S-level FORM either tier.
+9. **TR14 SOFT** — trailing-punctuation mismatch.
+10. **TR18 SOFT** — mixed-script confusables.
+11. **TR19/TR20/TR21 SOFT** — footnote-residue heuristics (FORM + TRANSL scope).
+
+V-code assignment for W10: continue from V127 upward (V120–V126 are used by W4–W9). Renumber V120 if the B9.2 collision with `flag_audio_suspicious.py` SOFT V120 isn't resolved by then — pick a free number from V13x.
+
+For each rule: write failing test, verify fail, implement in `rules/text.py`, add to RULES list, verify pass, commit. Per the no-compound-bash memory, `.venv/bin/pytest` directly (no `source && pytest`).
 
 ### W11. CI integration + documentation
 

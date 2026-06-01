@@ -1388,6 +1388,20 @@ XFAIL_FIXTURES should contain no entries (all 10 fixture names moved to IDEMPOTE
 
 ---
 
+## Follow-up: cleaner-side zero-width / BOM stripping (added 2026-06-01)
+
+**Trigger:** B9.4 W3 brainstorm sign-off (2026-06-01) promoted TR16 (zero-width chars U+200B/U+200C/U+200D/U+FEFF anywhere in FORM/TRANSL) to HARD severity, with the cleaner-side deletion handed off here. TR15 (leading/trailing whitespace) is HARD too but already handled by `normalize_whitespace`; no cleaner change needed there.
+
+**Scope (one new Task — add after Task 9 when ready):**
+- Add `_strip_zero_width(text: str) -> str` helper that removes U+200B / U+200C / U+200D / U+FEFF wherever they appear. Wire into both `clean_text` (FORM) and `clean_trans` (TRANSL).
+- No language awareness needed — these characters have no legitimate use in Formosan, English, or Chinese. ZWJ/ZWNJ have legitimate uses in Arabic/Indic scripts only, which don't appear in this project's tiers.
+- Add idempotency pins in `tests/cleaners/test_clean_xml.py` (one fixture per character × FORM/TRANSL would be 8 fixtures; can be parametrized).
+- Silent mechanical fix; no `CleanerWarnings` CSV row needed (like NFC normalization).
+
+**Acceptance:** `validate_text.py` TR16 HARD findings on freshly-cleaned corpora drop to zero. Validator stays as defense-in-depth for corpora that bypass the cleaner.
+
+---
+
 ## Self-review
 
 **Spec coverage:**

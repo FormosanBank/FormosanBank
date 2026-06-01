@@ -2,7 +2,22 @@
 
 **Date:** 2026-05-31
 **Roadmap section:** B9.2
-**Status:** Plan; not yet started.
+**Status:** [MOSTLY DONE 2026-06-01] — structural work for W1–W4, W6–W9 landed on `feature/claude-tooling-phase-0` via the user's `5355d81cc added a number of tests and validators…` commit (B9.2 subagent ran in main tree rather than its worktree branch — see consolidated post-merge cleanup at `06290ab1e`). Per-W status:
+- **W1** [DONE] — `QC/cleaning/clean_audio.py` (new) replaces `remove_non_working_audio.py`; dry-run is default; `--apply`, `--also-delete-files`. The 7 xfail tests in `tests/cleaners/test_remove_non_working_audio.py` are removed by replacement, not flip.
+- **W2** [DONE] — unified `broken_audio.csv` with `kind` column (`missing`/`unloadable`/`silent`/`invalid_range`); `start >= end` detection added.
+- **W3** [DONE] — MP3 silence detection via `ffprobe -af silencedetect`; `is_silent_wav` → `is_silent` dispatches on extension.
+- **W4** [DONE] — Finding/Severity integration; rule IDs V100–V105 mapped per the architecture table; HARD exits non-zero, SOFT does not.
+- **W5** [PARTIAL] — `QC/validation/validate_audio_quality.py` scaffolded with mocked tests; **real ML pipeline never exercised end-to-end** (`torch`/`torchaudio`/`allosaurus` deferred to `requirements-audio-mt.txt`, not installed). Acceptance criterion "produces a scores CSV from `Corpora/ePark/`" NOT satisfied.
+- **W6** [DONE] — `QC/validation/flag_audio_suspicious.py` writes `suspect_audio.csv`; emits SOFT Finding **V120**. ⚠️ V120 collision with B9.4's TR1/V120 — needs renumbering.
+- **W7** [DONE] — `QC/utilities/audio_manual_verify.py` (`apply_decision` unit-tested + 3 mocked end-to-end tests for record/resume/back-navigate).
+- **W8** [PARTIAL] — `.github/workflows/audio-validation.yaml` created (PR-changed-files blocks on HARD; baseline informational). **Not draft-PR-verified** — `git push` was blocked in the subagent sandbox.
+- **W9** [DONE] — `QC/README.md` updated; `requirements-audio-mt.txt` created listing heavy deps (not installed).
+
+Test counts at landing: 59 pass, 1 skip (`torch` import smoke test) on the five audio test files. Full suite green: 255 pass, 1 skip.
+
+OQ resolutions (locked): OQ1 ffprobe for MP3 silence; OQ2 mock ML calls + one slow integration test marked `@pytest.mark.slow`; OQ3 deprecated legacy CSVs (`missing_audio.csv` / `silent_audio.csv` / `non_working_audio.csv`).
+
+Followup landed 2026-06-01 in commit `06290ab1e`: `tests/cleaning/test_clean_audio.py` `_audio_refs` return type fix (`a.get("file", "")` → `list[str]`).
 **Supersedes:** earlier draft on the same path that referenced Hunter as the ASR-metrics author — that was wrong; the ASR pipeline is Jacob Ye's, in the `Formosan-Update-Apr_2026` branch of [Formosan-ILRDF_Dicts](/Users/jkhartshorne/Documents/Projects/Formosan/Formosan-ILRDF_Dicts/data_validation/), per the user 2026-05-31.
 
 ---
