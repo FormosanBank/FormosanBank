@@ -28,6 +28,19 @@ Rule ID assignments (B9.4):
   W7: V124 TR5 null in M FORM ⇒ also in parent W AND S-original (HARD)
   W8: V125 TR6 null in W FORM ⇒ also in some child M AND S-original (HARD)
   W9: V126 TR7 '=' in S-standard FORM (SOFT)
+  W10: V127 TR8 smart quotes in either FORM tier (HARD)
+       V128 TR10 control chars (<0x20 except \\t \\n \\r) in FORM/TRANSL (HARD)
+       V129 TR11 '*' in standard-tier FORM (HARD)
+       V130 TR15 leading/trailing whitespace in FORM (HARD)
+       V131 TR16 zero-width / BOM chars in FORM/TRANSL (HARD)
+       V132 TR9 HTML entities in FORM/TRANSL (SOFT)
+       V133 TR12 '-' in S-standard FORM (SOFT)
+       V134 TR13 '<'/'>' in S-level FORM either tier (SOFT)
+       V135 TR14 trailing-punct mismatch original vs standard (SOFT)
+       V136 TR18 mixed-script confusables (SOFT)
+       V137 TR19 trailing-decimal footnote in FORM/TRANSL (SOFT)
+       V138 TR20 superscript-digit footnote in FORM/TRANSL (SOFT)
+       V139 TR21 bracketed-digit footnote in FORM/TRANSL (SOFT)
 """
 import re
 from pathlib import Path
@@ -627,6 +640,72 @@ def v126_equal_sign_in_S_standard(
     )]
 
 
+# ---------------------------------------------------------------------------
+# W10: brainstorm-derived rules (V127-V139)
+# ---------------------------------------------------------------------------
+
+
+# TR8 V127 HARD — smart quotes in either FORM tier.
+#
+# Per W3 sign-off (2026-06-01): ASCII straight `'` U+0027 and `"` U+0022 are
+# the only acceptable apostrophe/quote characters in either FORM tier. Curly
+# smart quotes (U+2018/U+2019/U+201C/U+201D) and Chinese full-width quote
+# brackets (「 」 『 』 《 》) HARD-fail in either FORM tier. Scope is FORM
+# only; TRANSL is intentionally excluded.
+_SMART_QUOTE_CHARS: tuple[str, ...] = (
+    "‘",  # ‘ LEFT SINGLE QUOTATION MARK
+    "’",  # ’ RIGHT SINGLE QUOTATION MARK
+    "“",  # “ LEFT DOUBLE QUOTATION MARK
+    "”",  # ” RIGHT DOUBLE QUOTATION MARK
+    "「",  # 「 LEFT CORNER BRACKET
+    "」",  # 」 RIGHT CORNER BRACKET
+    "『",  # 『 LEFT WHITE CORNER BRACKET
+    "』",  # 』 RIGHT WHITE CORNER BRACKET
+    "《",  # 《 LEFT DOUBLE ANGLE BRACKET
+    "》",  # 》 RIGHT DOUBLE ANGLE BRACKET
+)
+_SMART_QUOTE_SET = frozenset(_SMART_QUOTE_CHARS)
+
+
+def v127_smart_quotes_in_FORM_hard(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V127 HARD (TR8): smart-quote characters in any FORM (either tier).
+
+    Only ASCII straight `'` (U+0027) and `"` (U+0022) are acceptable in
+    a FORM element. Curly smart quotes U+2018/U+2019/U+201C/U+201D and
+    Chinese full-width corner/angle brackets are HARD failures because
+    the project's standard convention forbids them outright. One finding
+    per offending FORM (severity HARD requires per-element location).
+    """
+    findings: list[Finding] = []
+    for form in tree.iter("FORM"):
+        text = form.text or ""
+        offenders = sorted({ch for ch in text if ch in _SMART_QUOTE_SET})
+        if not offenders:
+            continue
+        # Locate parent and id for diagnostics.
+        parent = form.getparent()
+        parent_tag = parent.tag if parent is not None else ""
+        parent_id = (parent.get("id") if parent is not None else None) or ""
+        location = f"{parent_tag}={parent_id}" if parent_id else parent_tag
+        offenders_str = "".join(offenders)
+        findings.append(Finding(
+            rule_id="V127",
+            severity=Severity.HARD,
+            message=(
+                f"V127 HARD smart quote(s) in FORM: non-ASCII quote "
+                f"chars={offenders_str!r}; "
+                f"{parent_tag} id={parent_id!r} FORM kindOf={form.get('kindOf')!r}"
+            ),
+            path=path,
+            location=location,
+        ))
+    return findings
+
+
 RULES: list = [
     # W1 (V110-V115): ported from validate_punct.py
     v110_smart_quotes,
@@ -645,5 +724,7 @@ RULES: list = [
     v124_null_in_M_requires_parent_W_and_S_original,
     v125_null_in_W_requires_child_M_and_S_original,
     v126_equal_sign_in_S_standard,
+    # W10 (V127-V139): brainstorm-derived rules
+    v127_smart_quotes_in_FORM_hard,
 ]
 CROSS_FILE_RULES: list = []

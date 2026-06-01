@@ -752,3 +752,109 @@ def test_V126_equal_sign_in_original_does_not_trigger(tmp_path):
     assert "v126" not in combined, (
         f"V126 should not fire on original tier; stdout={proc.stdout!r}"
     )
+
+
+# -----------------------------------------------------------------------------
+# W10: brainstorm-derived rules (V127-V139)
+# -----------------------------------------------------------------------------
+
+
+# TR8 V127 HARD — smart quotes (curly + Chinese full-width) in either FORM tier.
+
+def test_V127_curly_single_quote_in_standard_FORM_negative(tmp_path):
+    """V127 HARD: U+2019 RIGHT SINGLE QUOTATION MARK in standard FORM is forbidden."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">it’s</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v127", "smart quote", "non-ascii quote")
+    ), (
+        f"expected V127 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V127_curly_double_quote_in_original_FORM_negative(tmp_path):
+    """V127 HARD: U+201C/U+201D in ORIGINAL FORM is also forbidden (TR8 spans both tiers)."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">“hello”</FORM>'
+        + '<FORM kindOf="standard">hello</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v127", "smart quote", "non-ascii quote")
+    ), (
+        f"expected V127 finding for original tier; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V127_chinese_brackets_in_FORM_negative(tmp_path):
+    """V127 HARD: Chinese full-width quote brackets in FORM are forbidden."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">「hello」</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v127", "smart quote", "non-ascii quote")
+    ), (
+        f"expected V127 finding for Chinese brackets; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V127_ascii_apostrophe_and_quote_OK(tmp_path):
+    """V127 OK: ASCII straight apostrophe U+0027 and quote U+0022 are allowed."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">it\'s "ok"</FORM>'
+        + '<FORM kindOf="standard">it\'s "ok"</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v127" not in combined, (
+        f"V127 should not fire on ASCII quotes; stdout={proc.stdout!r}"
+    )
+
+
+def test_V127_curly_quote_in_TRANSL_does_not_trigger(tmp_path):
+    """V127 scope is FORM only (per plan). TRANSL is not flagged here.
+
+    Different non-ASCII-content rules (e.g. V132) may flag TRANSL text.
+    """
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">std</FORM>'
+        + '<TRANSL xml:lang="eng">it’s fine</TRANSL>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v127" not in combined, (
+        f"V127 should not fire on TRANSL; stdout={proc.stdout!r}"
+    )
