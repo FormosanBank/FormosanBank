@@ -14,6 +14,7 @@ Rules:
 - V060 SOFT: W-count vs. word-count in S-level FORM[@kindOf="original"].
 - V061 SOFT: M-count vs. morpheme count implied by W FORM segmentation.
 - V062 HARD: M with infix-shaped FORM requires angle-bracket gloss on parent W's TRANSL.
+- V063 HARD: W-FORM segmentation markers preserved when S-FORM has > 3 markers.
 """
 import re
 from pathlib import Path
@@ -94,6 +95,17 @@ def _get_w_form(w_elem: etree._Element) -> str:
     if any_form is not None and any_form.text:
         return any_form.text.strip()
     return ''
+
+
+def _count_segmentation_chars(text: str) -> int:
+    """Count occurrences of ``-``, ``=``, ``<``, ``>`` in ``text``.
+
+    Used by V063 to measure how much segmentation information a FORM
+    string carries.
+    """
+    if not text:
+        return 0
+    return sum(text.count(c) for c in "-=<>")
 
 
 # ---------------------------------------------------------------------------
@@ -198,6 +210,82 @@ def v061_M_count_matches_form_segmentation(
 
 
 # ---------------------------------------------------------------------------
+# V063: W-FORM segmentation preservation (HARD)
+# ---------------------------------------------------------------------------
+
+def v063_W_FORM_retains_segmentation(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V063 HARD: when an S-level FORM[@kindOf='original'] carries more
+    than 3 segmentation markers (``-``, ``=``, ``<``, ``>``), the W
+    children's FORMs (both ``original`` and ``standard`` tiers) must
+    collectively retain at least N/2 such markers each.
+
+    Catches the failure mode where a cleaner regressed and stripped
+    segmentation markers from W-level FORMs (which would silently
+    destroy gloss alignment). The >3 threshold avoids false positives
+    on short S elements where rounding "at least half" is ambiguous —
+    e.g., a single inflectional ``-`` plus one clitic ``=`` would
+    yield N=2, threshold=1, and a single retained marker would
+    technically satisfy the rule without genuinely preserving the
+    segmentation.
+    """
+    findings: list[Finding] = []
+    for s in tree.iter("S"):
+        s_original = s.find('./FORM[@kindOf="original"]')
+        if s_original is None:
+            continue
+        s_count = _count_segmentation_chars(s_original.text or "")
+        if s_count <= 3:
+            continue
+        ws = [child for child in s if child.tag == "W"]
+        if not ws:
+            continue  # legitimately unsegmented; rule no-ops
+        threshold = s_count / 2
+        original_sum = 0
+        standard_sum = 0
+        for w in ws:
+            for form in w.findall('./FORM'):
+                kind = form.get("kindOf")
+                marker_count = _count_segmentation_chars(form.text or "")
+                if kind == "original":
+                    original_sum += marker_count
+                elif kind == "standard":
+                    standard_sum += marker_count
+        s_id = s.get("id")
+        loc = f"S={s_id}" if s_id else "S"
+        if original_sum < threshold:
+            findings.append(Finding(
+                rule_id="V063",
+                severity=Severity.HARD,
+                message=(
+                    f"S id={s_id!r}: W FORM[@kindOf='original'] retains "
+                    f"{original_sum} segmentation markers but S-level FORM has "
+                    f"{s_count}; expected at least {threshold:g}. Possible "
+                    "cleaner regression dropped segmentation markers."
+                ),
+                path=path,
+                location=loc,
+            ))
+        if standard_sum < threshold:
+            findings.append(Finding(
+                rule_id="V063",
+                severity=Severity.HARD,
+                message=(
+                    f"S id={s_id!r}: W FORM[@kindOf='standard'] retains "
+                    f"{standard_sum} segmentation markers but S-level FORM has "
+                    f"{s_count}; expected at least {threshold:g}. Possible "
+                    "cleaner regression dropped segmentation markers."
+                ),
+                path=path,
+                location=loc,
+            ))
+    return findings
+
+
+# ---------------------------------------------------------------------------
 # V062: infix-M requires angle-bracket gloss on parent W's TRANSL (HARD)
 # ---------------------------------------------------------------------------
 
@@ -260,5 +348,6 @@ RULES: list = [
     v060_W_count_matches_word_count,
     v061_M_count_matches_form_segmentation,
     v062_infix_M_needs_angle_gloss,
+    v063_W_FORM_retains_segmentation,
 ]
 CROSS_FILE_RULES: list = []

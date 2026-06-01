@@ -247,6 +247,124 @@ def test_V062_non_infix_M_emits_nothing():
 
 
 # ---------------------------------------------------------------------------
+# V063: W-FORM segmentation preservation (HARD)
+# ---------------------------------------------------------------------------
+
+
+def test_V063_low_marker_count_below_threshold_emits_nothing():
+    """S-level FORM has 3 markers (not > 3) -> V063 does not fire."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">M-kan =ku n-hapuy.</FORM>
+        <W id="W1"><FORM kindOf="original">M-kan</FORM><FORM kindOf="standard">M-kan</FORM></W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v063_W_FORM_retains_segmentation, xml)
+    assert findings == [], (
+        f"V063 should not fire when S-FORM has <=3 markers; got {findings!r}"
+    )
+
+
+def test_V063_above_threshold_with_preserved_markers_clean():
+    """S has 5 markers (>3); W-original and W-standard each retain >=3 -> clean."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">Pa-rakat-en =ku n-hapuy=mu</FORM>
+        <W id="W1">
+          <FORM kindOf="original">Pa-rakat-en</FORM>
+          <FORM kindOf="standard">Pa-rakat-en</FORM>
+        </W>
+        <W id="W2">
+          <FORM kindOf="original">=ku</FORM>
+          <FORM kindOf="standard">=ku</FORM>
+        </W>
+        <W id="W3">
+          <FORM kindOf="original">n-hapuy=mu</FORM>
+          <FORM kindOf="standard">n-hapuy=mu</FORM>
+        </W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v063_W_FORM_retains_segmentation, xml)
+    assert findings == [], f"expected no V063 findings; got {findings!r}"
+
+
+def test_V063_above_threshold_with_stripped_original_emits_HARD():
+    """S has 5 markers; W-original retains 0 -> HARD V063."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">Pa-rakat-en =ku n-hapuy=mu</FORM>
+        <W id="W1">
+          <FORM kindOf="original">Parakaten</FORM>
+          <FORM kindOf="standard">Pa-rakat-en</FORM>
+        </W>
+        <W id="W2">
+          <FORM kindOf="original">ku</FORM>
+          <FORM kindOf="standard">=ku</FORM>
+        </W>
+        <W id="W3">
+          <FORM kindOf="original">nhapuymu</FORM>
+          <FORM kindOf="standard">n-hapuy=mu</FORM>
+        </W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v063_W_FORM_retains_segmentation, xml)
+    assert any(f.rule_id == "V063" and f.severity is Severity.HARD for f in findings), (
+        f"expected at least one HARD V063 finding for stripped W-original; "
+        f"got {findings!r}"
+    )
+
+
+def test_V063_above_threshold_with_stripped_standard_emits_HARD():
+    """S has 5 markers; W-standard retains 0 -> HARD V063."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">Pa-rakat-en =ku n-hapuy=mu</FORM>
+        <W id="W1">
+          <FORM kindOf="original">Pa-rakat-en</FORM>
+          <FORM kindOf="standard">Parakaten</FORM>
+        </W>
+        <W id="W2">
+          <FORM kindOf="original">=ku</FORM>
+          <FORM kindOf="standard">ku</FORM>
+        </W>
+        <W id="W3">
+          <FORM kindOf="original">n-hapuy=mu</FORM>
+          <FORM kindOf="standard">nhapuymu</FORM>
+        </W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v063_W_FORM_retains_segmentation, xml)
+    assert any(f.rule_id == "V063" and f.severity is Severity.HARD for f in findings), (
+        f"expected at least one HARD V063 finding for stripped W-standard; "
+        f"got {findings!r}"
+    )
+
+
+def test_V063_S_with_no_W_children_no_ops():
+    """Legitimately unsegmented S (no W children) -> rule no-ops."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">a-b-c=d-e</FORM>
+      </S>""")
+    findings = _findings_for(gloss_rules.v063_W_FORM_retains_segmentation, xml)
+    assert findings == [], f"expected no V063 finding; got {findings!r}"
+
+
+def test_V063_S_with_no_segmentation_markers_no_ops():
+    """S-FORM has 0 markers -> rule no-ops."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">abc def</FORM>
+        <W id="W1">
+          <FORM kindOf="original">abc</FORM>
+          <FORM kindOf="standard">abc</FORM>
+        </W>
+        <W id="W2">
+          <FORM kindOf="original">def</FORM>
+          <FORM kindOf="standard">def</FORM>
+        </W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v063_W_FORM_retains_segmentation, xml)
+    assert findings == [], f"expected no V063 finding; got {findings!r}"
+
+
+# ---------------------------------------------------------------------------
 # Orchestrator-level: validate_glosses.py (W4)
 # ---------------------------------------------------------------------------
 
