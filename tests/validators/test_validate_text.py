@@ -1649,3 +1649,83 @@ def test_V137_mid_text_decimal_not_flagged(tmp_path):
     assert "v137" not in combined, (
         f"V137 should be end-anchored; stdout={proc.stdout!r}"
     )
+
+
+# TR20 V138 SOFT — superscript-digit footnote (¹²³…) in FORM or TRANSL.
+
+def test_V138_superscript_one_in_FORM_soft(tmp_path):
+    """V138 SOFT: superscript ¹ in FORM is a footnote leak."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">word¹</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v138", "superscript", "footnote")
+    ), (
+        f"expected V138 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V138_superscript_two_in_TRANSL_soft(tmp_path):
+    """V138 SOFT: superscript ² in TRANSL is a footnote leak."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">std</FORM>'
+        + '<TRANSL xml:lang="eng">speak²</TRANSL>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v138", "superscript", "footnote")
+    ), (
+        f"expected V138 finding for TRANSL; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V138_extended_superscript_4_soft(tmp_path):
+    """V138 SOFT: U+2074 SUPERSCRIPT FOUR also caught."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">word⁴</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v138", "superscript", "footnote")
+    ), (
+        f"expected V138 finding for ⁴; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V138_no_superscript_OK(tmp_path):
+    """V138 OK: plain text without superscript digits is fine."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">hello world</FORM>'
+        + '<FORM kindOf="standard">hello world</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v138" not in combined, (
+        f"V138 should not fire on plain text; stdout={proc.stdout!r}"
+    )

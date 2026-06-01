@@ -1173,6 +1173,52 @@ def v137_trailing_decimal_footnote_in_S_FORM_TRANSL(
     )]
 
 
+# TR20 V138 SOFT — superscript-digit footnote in FORM or TRANSL.
+#
+# Superscript digits in element text are almost always footnote leaks
+# from scrape. Recognized codepoints:
+#   U+00B9 ¹ SUPERSCRIPT ONE
+#   U+00B2 ² SUPERSCRIPT TWO
+#   U+00B3 ³ SUPERSCRIPT THREE
+#   U+2070 ⁰ SUPERSCRIPT ZERO
+#   U+2074-U+2079 ⁴-⁹ SUPERSCRIPT FOUR through NINE
+# Aggregated per (file, character).
+
+_SUPERSCRIPT_DIGITS: frozenset[str] = frozenset(
+    "¹²³⁰" + "".join(chr(c) for c in range(0x2074, 0x207A))
+)
+
+
+def v138_superscript_digit_footnote(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V138 SOFT (TR20): superscript digit (¹²³…) in FORM or TRANSL."""
+    lang = _resolve_language(tree)
+    per_char: dict[str, int] = {}
+    for elem in tree.iter("FORM", "TRANSL"):
+        text = elem.text or ""
+        for ch in text:
+            if ch in _SUPERSCRIPT_DIGITS:
+                per_char[ch] = per_char.get(ch, 0) + 1
+    findings: list[Finding] = []
+    for ch, n in per_char.items():
+        findings.append(Finding(
+            rule_id="V138",
+            severity=Severity.SOFT,
+            message=(
+                f"V138 SOFT superscript-digit footnote: count={n} {ch!r} "
+                "in FORM/TRANSL (likely footnote leak)"
+            ),
+            path=path,
+            count=n,
+            language=lang,
+            character=ch,
+        ))
+    return findings
+
+
 RULES: list = [
     # W1 (V110-V115): ported from validate_punct.py
     v110_smart_quotes,
@@ -1203,5 +1249,6 @@ RULES: list = [
     v135_trailing_punct_mismatch,
     v136_mixed_script_confusables,
     v137_trailing_decimal_footnote_in_S_FORM_TRANSL,
+    v138_superscript_digit_footnote,
 ]
 CROSS_FILE_RULES: list = []
