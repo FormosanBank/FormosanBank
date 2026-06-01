@@ -858,3 +858,61 @@ def test_V127_curly_quote_in_TRANSL_does_not_trigger(tmp_path):
     assert "v127" not in combined, (
         f"V127 should not fire on TRANSL; stdout={proc.stdout!r}"
     )
+
+
+# TR10 V128 HARD — control characters (codepoint < 0x20) other than \t \n \r.
+#
+# C0 controls are forbidden in XML 1.0; XML 1.1 permits them only via
+# numeric character references, and lxml/libxml2 still refuses to load
+# the characters into the tree (the C-API setter raises). The rule
+# remains defensive — it scans element.text for disallowed C0 control
+# chars — but in practice can only be exercised at the helper level.
+#
+# V128 is unit-tested at the helper level rather than via the
+# subprocess+file path because both well-formed XML 1.0 / XML 1.1 parsers
+# AND lxml's own API refuse to load or hold most C0 control characters
+# (the `_setNodeText` C-API path raises ValueError). The rule is
+# implemented defensively — if upstream data ever leaks through, the
+# HARD finding will fire — but the only realistic test target is the
+# string-scanning helper. The end-to-end OK path is exercised via the
+# subprocess so the "clean run produces zero findings" invariant holds.
+
+
+def test_V128_detects_vertical_tab_in_text():
+    """V128 HARD: U+000B (vertical tab) is flagged by the helper."""
+    from QC.validation.rules.text import _disallowed_control_chars
+
+    assert _disallowed_control_chars("hi\x0bthere") == frozenset(["\x0b"])
+
+
+def test_V128_detects_form_feed_and_null():
+    """V128 HARD: U+000C (form feed) and U+0000 (NUL) are both flagged."""
+    from QC.validation.rules.text import _disallowed_control_chars
+
+    assert "\x0c" in _disallowed_control_chars("a\x0cb")
+    assert "\x00" in _disallowed_control_chars("a\x00b")
+
+
+def test_V128_allows_tab_newline_carriage_return_at_helper_level():
+    """V128: \\t \\n \\r are explicitly allowed."""
+    from QC.validation.rules.text import _disallowed_control_chars
+
+    assert _disallowed_control_chars("hi\tthere\nfriend\r\n") == frozenset()
+
+
+def test_V128_clean_form_does_not_trigger(tmp_path):
+    """V128 OK: end-to-end clean run produces no V128 finding."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">hi\tthere</FORM>'
+        + '<FORM kindOf="standard">std</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v128" not in combined, (
+        f"V128 should not fire on clean input; stdout={proc.stdout!r}"
+    )

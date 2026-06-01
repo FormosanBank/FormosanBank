@@ -706,6 +706,60 @@ def v127_smart_quotes_in_FORM_hard(
     return findings
 
 
+# TR10 V128 HARD — control characters (codepoint < 0x20) other than
+# \t (0x09), \n (0x0A), \r (0x0D) — anywhere in FORM or TRANSL.
+#
+# Defensive in practice: lxml/libxml2 refuses to load most C0 controls
+# from disk and lxml's API setter raises on them, so the rule normally
+# cannot fire end-to-end. It is implemented because the plan calls for
+# it (W3 sign-off) and to catch the case where a tree was constructed
+# in a way that bypasses lxml's checks (or a future relaxation in
+# libxml2). The companion `_disallowed_control_chars` helper is unit-
+# testable directly.
+_ALLOWED_CONTROL_CHARS: frozenset[str] = frozenset("\t\n\r")
+
+
+def _disallowed_control_chars(text: str) -> frozenset[str]:
+    """Return the set of C0 control chars in `text` other than \\t \\n \\r."""
+    return frozenset(
+        ch for ch in text
+        if ord(ch) < 0x20 and ch not in _ALLOWED_CONTROL_CHARS
+    )
+
+
+def v128_control_chars_in_FORM_TRANSL(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V128 HARD (TR10): C0 control chars (<0x20 except \\t \\n \\r) in
+    FORM or TRANSL elements.
+    """
+    findings: list[Finding] = []
+    for elem in tree.iter("FORM", "TRANSL"):
+        text = elem.text or ""
+        offenders = _disallowed_control_chars(text)
+        if not offenders:
+            continue
+        parent = elem.getparent()
+        parent_tag = parent.tag if parent is not None else ""
+        parent_id = (parent.get("id") if parent is not None else None) or ""
+        location = f"{parent_tag}={parent_id}" if parent_id else parent_tag
+        offenders_str = "+".join(f"U+{ord(ch):04X}" for ch in sorted(offenders))
+        findings.append(Finding(
+            rule_id="V128",
+            severity=Severity.HARD,
+            message=(
+                f"V128 HARD control character(s) in {elem.tag}: codepoints "
+                f"{offenders_str}; {parent_tag} id={parent_id!r} "
+                f"{elem.tag} kindOf={elem.get('kindOf')!r}"
+            ),
+            path=path,
+            location=location,
+        ))
+    return findings
+
+
 RULES: list = [
     # W1 (V110-V115): ported from validate_punct.py
     v110_smart_quotes,
@@ -726,5 +780,6 @@ RULES: list = [
     v126_equal_sign_in_S_standard,
     # W10 (V127-V139): brainstorm-derived rules
     v127_smart_quotes_in_FORM_hard,
+    v128_control_chars_in_FORM_TRANSL,
 ]
 CROSS_FILE_RULES: list = []
