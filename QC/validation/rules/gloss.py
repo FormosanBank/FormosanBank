@@ -15,6 +15,8 @@ Rules:
 - V061 SOFT: M-count vs. morpheme count implied by W FORM segmentation.
 - V062 HARD: M with infix-shaped FORM requires angle-bracket gloss on parent W's TRANSL.
 - V063 HARD: W-FORM segmentation markers preserved when S-FORM has > 3 markers.
+- V064 HARD: every M element must have at least one TRANSL child.
+- V065 SOFT: every W element should have at least one TRANSL child.
 """
 import re
 from pathlib import Path
@@ -341,6 +343,72 @@ def v062_infix_M_needs_angle_gloss(
 
 
 # ---------------------------------------------------------------------------
+# V064: every M must have a TRANSL child (HARD)
+# ---------------------------------------------------------------------------
+
+def v064_every_M_has_TRANSL(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V064 HARD: every M element must have at least one TRANSL child.
+
+    Per user direction: an unglossed morpheme has no legitimate purpose
+    in a segmented corpus. One Finding per offending M.
+    """
+    findings: list[Finding] = []
+    for m in tree.iter("M"):
+        if any(child.tag == "TRANSL" for child in m):
+            continue
+        m_id = m.get("id")
+        findings.append(Finding(
+            rule_id="V064",
+            severity=Severity.HARD,
+            message=(
+                f"M id={m_id!r} has no TRANSL child; every M must have "
+                "at least one TRANSL (M-level gloss is mandatory)"
+            ),
+            path=path,
+            location=f"M={m_id}" if m_id else "M",
+        ))
+    return findings
+
+
+# ---------------------------------------------------------------------------
+# V065: every W should have a TRANSL child (SOFT)
+# ---------------------------------------------------------------------------
+
+def v065_every_W_has_TRANSL(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V065 SOFT: every W element should have at least one TRANSL child.
+
+    SOFT (not HARD) because rare legitimate cases exist where a W-level
+    gloss is absent (e.g., function-word stubs glossed only at the M
+    tier).
+    """
+    findings: list[Finding] = []
+    for w in tree.iter("W"):
+        if any(child.tag == "TRANSL" for child in w):
+            continue
+        w_id = w.get("id")
+        findings.append(Finding(
+            rule_id="V065",
+            severity=Severity.SOFT,
+            message=(
+                f"W id={w_id!r} has no TRANSL child; W-level gloss is "
+                "almost always expected"
+            ),
+            path=path,
+            location=f"W={w_id}" if w_id else "W",
+            count=1,
+        ))
+    return findings
+
+
+# ---------------------------------------------------------------------------
 # Registry
 # ---------------------------------------------------------------------------
 
@@ -349,5 +417,7 @@ RULES: list = [
     v061_M_count_matches_form_segmentation,
     v062_infix_M_needs_angle_gloss,
     v063_W_FORM_retains_segmentation,
+    v064_every_M_has_TRANSL,
+    v065_every_W_has_TRANSL,
 ]
 CROSS_FILE_RULES: list = []

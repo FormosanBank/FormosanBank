@@ -365,6 +365,118 @@ def test_V063_S_with_no_segmentation_markers_no_ops():
 
 
 # ---------------------------------------------------------------------------
+# V064: every M has TRANSL (HARD)
+# ---------------------------------------------------------------------------
+
+
+def test_V064_M_with_TRANSL_clean():
+    """Every M with a TRANSL child -> no V064."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">a-b</FORM>
+        <W id="W1">
+          <FORM kindOf="original">a-b</FORM>
+          <M id="M1"><FORM>a</FORM><TRANSL xml:lang="eng">A</TRANSL></M>
+          <M id="M2"><FORM>b</FORM><TRANSL xml:lang="eng">B</TRANSL></M>
+        </W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v064_every_M_has_TRANSL, xml)
+    assert findings == [], f"expected no V064 finding; got {findings!r}"
+
+
+def test_V064_one_M_missing_TRANSL_emits_one_HARD():
+    """One M lacks TRANSL -> one HARD V064 citing that M's id."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">a-b</FORM>
+        <W id="W1">
+          <FORM kindOf="original">a-b</FORM>
+          <M id="M1"><FORM>a</FORM><TRANSL xml:lang="eng">A</TRANSL></M>
+          <M id="M2"><FORM>b</FORM></M>
+        </W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v064_every_M_has_TRANSL, xml)
+    assert len(findings) == 1, f"expected 1 V064 finding; got {findings!r}"
+    f = findings[0]
+    assert f.rule_id == "V064"
+    assert f.severity is Severity.HARD
+    assert "M2" in f.location
+
+
+def test_V064_all_M_missing_TRANSL_emits_per_M():
+    """All M missing TRANSL -> one Finding per M."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">a-b</FORM>
+        <W id="W1">
+          <FORM kindOf="original">a-b</FORM>
+          <M id="M1"><FORM>a</FORM></M>
+          <M id="M2"><FORM>b</FORM></M>
+        </W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v064_every_M_has_TRANSL, xml)
+    assert len(findings) == 2, f"expected 2 V064 findings; got {findings!r}"
+    locations = {f.location for f in findings}
+    assert "M=M1" in locations
+    assert "M=M2" in locations
+
+
+def test_V064_no_M_at_all_no_ops():
+    """W with no M children -> V064 doesn't fire."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">a</FORM>
+        <W id="W1"><FORM kindOf="original">a</FORM></W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v064_every_M_has_TRANSL, xml)
+    assert findings == [], f"expected no V064 finding; got {findings!r}"
+
+
+# ---------------------------------------------------------------------------
+# V065: every W has TRANSL (SOFT)
+# ---------------------------------------------------------------------------
+
+
+def test_V065_W_with_TRANSL_clean():
+    """W with a TRANSL child -> no V065."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">a</FORM>
+        <W id="W1">
+          <FORM kindOf="original">a</FORM>
+          <TRANSL xml:lang="eng">A</TRANSL>
+        </W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v065_every_W_has_TRANSL, xml)
+    assert findings == [], f"expected no V065 finding; got {findings!r}"
+
+
+def test_V065_W_without_TRANSL_emits_SOFT():
+    """W with no TRANSL -> SOFT V065 finding."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">a</FORM>
+        <W id="W1"><FORM kindOf="original">a</FORM></W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v065_every_W_has_TRANSL, xml)
+    assert len(findings) == 1, f"expected 1 V065 finding; got {findings!r}"
+    f = findings[0]
+    assert f.rule_id == "V065"
+    assert f.severity is Severity.SOFT
+    assert "W1" in f.location
+
+
+def test_V065_no_W_at_all_no_ops():
+    """Unsegmented S (no W) -> V065 doesn't fire."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">a b c</FORM>
+      </S>""")
+    findings = _findings_for(gloss_rules.v065_every_W_has_TRANSL, xml)
+    assert findings == [], f"expected no V065 finding; got {findings!r}"
+
+
+# ---------------------------------------------------------------------------
 # Orchestrator-level: validate_glosses.py (W4)
 # ---------------------------------------------------------------------------
 
