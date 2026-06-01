@@ -12,6 +12,7 @@ deferred (see B9.3 plan, "Open questions").
 
 Rules:
 - V060 SOFT: W-count vs. word-count in S-level FORM[@kindOf="original"].
+- V061 SOFT: M-count vs. morpheme count implied by W FORM segmentation.
 - V062 HARD: M with infix-shaped FORM requires angle-bracket gloss on parent W's TRANSL.
 """
 import re
@@ -58,6 +59,41 @@ def _extract_s_direct_text(s_elem: etree._Element) -> str:
     if any_form is not None and any_form.text:
         return any_form.text.strip()
     return (s_elem.text or "").strip()
+
+
+def _count_morphemes_from_form(form_text: str) -> int:
+    """Number of morphemes implied by a W FORM string.
+
+    Rules:
+    - Each ``<...>`` group is one infix morpheme.
+    - After removing the infix groups, split the remainder on ``-`` and
+      ``=`` to get the remaining morpheme segments.
+    - Total = number of infix groups + number of non-empty segments.
+
+    Examples:
+        'ka'        -> 1
+        'ika-doa'   -> 2
+        'k-anak-an' -> 3
+        'ma=luhay'  -> 2
+        'k<um>ita'  -> 2  (infix 'um' + root 'kita')
+    """
+    if not form_text:
+        return 0
+    infixes = re.findall(r'<[^>]+>', form_text)
+    remainder = re.sub(r'<[^>]+>', '', form_text)
+    segments = re.split(r'[-=]', remainder)
+    return len(infixes) + len([s for s in segments if s])
+
+
+def _get_w_form(w_elem: etree._Element) -> str:
+    """Return W's preferred FORM text. Original > any FORM > ''."""
+    original = w_elem.find('./FORM[@kindOf="original"]')
+    if original is not None and original.text:
+        return original.text.strip()
+    any_form = w_elem.find('./FORM')
+    if any_form is not None and any_form.text:
+        return any_form.text.strip()
+    return ''
 
 
 # ---------------------------------------------------------------------------
@@ -108,6 +144,54 @@ def v060_W_count_matches_word_count(
             ),
             path=path,
             location=f"S={s_id}" if s_id else "S",
+            count=1,
+        ))
+    return findings
+
+
+# ---------------------------------------------------------------------------
+# V061: M-count vs. implied-morpheme-count (SOFT)
+# ---------------------------------------------------------------------------
+
+def v061_M_count_matches_form_segmentation(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V061 SOFT: count of <M> children of W should match the number of
+    morphemes implied by the W's FORM segmentation markers
+    (``-``, ``=``, ``<...>``).
+
+    Exception: a monomorphemic W with 0 M children is acceptable —
+    morpheme markup is optional when there is only one morpheme.
+    """
+    findings: list[Finding] = []
+    for w in tree.iter("W"):
+        form_text = _get_w_form(w)
+        if not form_text:
+            continue  # V011/V012 handle missing FORM
+        expected = _count_morphemes_from_form(form_text)
+        actual = sum(1 for child in w if child.tag == "M")
+        # Monomorphemic with no M tags is acceptable
+        if expected == 1 and actual == 0:
+            continue
+        if expected == actual:
+            continue
+        w_id = w.get("id")
+        parent_s = w.getparent()
+        s_id = parent_s.get("id") if parent_s is not None and parent_s.tag == "S" else None
+        loc = f"W={w_id}" if w_id else "W"
+        if s_id:
+            loc = f"S={s_id} {loc}"
+        findings.append(Finding(
+            rule_id="V061",
+            severity=Severity.SOFT,
+            message=(
+                f"W id={w_id!r}: M-count ({actual}) does not match implied "
+                f"morpheme count ({expected}) from FORM {form_text!r}"
+            ),
+            path=path,
+            location=loc,
             count=1,
         ))
     return findings
@@ -174,6 +258,7 @@ def v062_infix_M_needs_angle_gloss(
 
 RULES: list = [
     v060_W_count_matches_word_count,
+    v061_M_count_matches_form_segmentation,
     v062_infix_M_needs_angle_gloss,
 ]
 CROSS_FILE_RULES: list = []

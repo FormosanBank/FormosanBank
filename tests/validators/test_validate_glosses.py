@@ -118,6 +118,96 @@ def test_V060_no_FORM_at_all_emits_nothing():
 
 
 # ---------------------------------------------------------------------------
+# V061: M-count vs. implied-morpheme-count (SOFT)
+# ---------------------------------------------------------------------------
+
+
+def test_V061_monomorphemic_with_no_M_clean():
+    """W FORM 'ka' (1 morpheme) with 0 M children -> exception, no finding."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">ka</FORM>
+        <W id="W1"><FORM kindOf="original">ka</FORM></W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v061_M_count_matches_form_segmentation, xml)
+    assert findings == [], f"expected no V061 finding; got {findings!r}"
+
+
+def test_V061_hyphenated_with_matching_M_clean():
+    """W FORM 'ika-doa' (2 morphemes) with 2 M children -> no finding."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">ika-doa</FORM>
+        <W id="W1">
+          <FORM kindOf="original">ika-doa</FORM>
+          <M id="M1"><FORM>ika</FORM></M>
+          <M id="M2"><FORM>doa</FORM></M>
+        </W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v061_M_count_matches_form_segmentation, xml)
+    assert findings == [], f"expected no V061 finding; got {findings!r}"
+
+
+def test_V061_infix_with_matching_M_clean():
+    """W FORM 'k<um>ita' (infix + root = 2 morphemes) with 2 M -> no finding."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">k&lt;um&gt;ita</FORM>
+        <W id="W1">
+          <FORM kindOf="original">k&lt;um&gt;ita</FORM>
+          <M id="M1"><FORM>-um-</FORM></M>
+          <M id="M2"><FORM>kita</FORM></M>
+        </W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v061_M_count_matches_form_segmentation, xml)
+    assert findings == [], f"expected no V061 finding; got {findings!r}"
+
+
+def test_V061_infix_with_too_few_M_emits_SOFT():
+    """W FORM 'k<um>ita' (expected 2) with only 1 M -> SOFT V061."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">k&lt;um&gt;ita</FORM>
+        <W id="W1">
+          <FORM kindOf="original">k&lt;um&gt;ita</FORM>
+          <M id="M1"><FORM>kita</FORM></M>
+        </W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v061_M_count_matches_form_segmentation, xml)
+    assert len(findings) == 1, f"expected 1 V061 finding; got {findings!r}"
+    f = findings[0]
+    assert f.rule_id == "V061"
+    assert f.severity is Severity.SOFT
+    assert "W1" in f.location
+
+
+def test_V061_clitic_boundary_clean():
+    """W FORM 'ma=luhay' (= boundary, 2 morphemes) with 2 M -> no finding."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">ma=luhay</FORM>
+        <W id="W1">
+          <FORM kindOf="original">ma=luhay</FORM>
+          <M id="M1"><FORM>ma</FORM></M>
+          <M id="M2"><FORM>luhay</FORM></M>
+        </W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v061_M_count_matches_form_segmentation, xml)
+    assert findings == [], f"expected no V061 finding; got {findings!r}"
+
+
+def test_V061_W_with_no_FORM_emits_nothing():
+    """W with no FORM at all: rule no-ops (V011 handles missing FORM)."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">x</FORM>
+        <W id="W1"></W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v061_M_count_matches_form_segmentation, xml)
+    assert findings == [], f"expected no V061 finding; got {findings!r}"
+
+
+# ---------------------------------------------------------------------------
 # V062: infix M needs angle-bracket gloss (HARD)
 # Moved from rules/hard.py to rules/gloss.py during B9.3. The pre-move
 # fixture files (v062_infix_M_*.xml) are reused.
