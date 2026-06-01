@@ -1179,3 +1179,88 @@ def test_V131_clean_FORM_OK(tmp_path):
     assert "v131" not in combined, (
         f"V131 should not fire on clean text; stdout={proc.stdout!r}"
     )
+
+
+# TR9 V132 SOFT — HTML entities in FORM/TRANSL after XML parse.
+#
+# The XML parser decodes well-formed XML entities (so `&amp;` in source
+# becomes `&` in element.text). After parse, finding a literal `&amp;`
+# substring in element.text implies the source contained `&amp;amp;`
+# (double-encoded) — typical scrape residue from `html.escape(html_text)`
+# being applied to already-escaped HTML. Same for `&apos;` `&lt;` `&gt;`.
+
+def test_V132_double_encoded_amp_in_FORM_soft(tmp_path):
+    """V132 SOFT: double-encoded `&amp;amp;` ⇒ post-parse `&amp;` in text."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">a &amp;amp; b</FORM>'
+        + '<FORM kindOf="standard">a &amp;amp; b</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v132", "html entity", "html entities")
+    ), (
+        f"expected V132 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V132_double_encoded_lt_in_TRANSL_soft(tmp_path):
+    """V132 SOFT: `&amp;lt;` in TRANSL ⇒ post-parse `&lt;`."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">std</FORM>'
+        + '<TRANSL xml:lang="eng">a &amp;lt; b</TRANSL>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v132", "html entity", "html entities")
+    ), (
+        f"expected V132 finding in TRANSL; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V132_plain_ampersand_does_not_trigger(tmp_path):
+    """V132: a plain `&` (entered as `&amp;` and decoded by parser) is fine."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">a &amp; b</FORM>'
+        + '<FORM kindOf="standard">a &amp; b</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v132" not in combined, (
+        f"V132 should not fire on a plain ampersand; "
+        f"stdout={proc.stdout!r}"
+    )
+
+
+def test_V132_clean_text_OK(tmp_path):
+    """V132 OK: ordinary clean text has no entity-looking substrings."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">hello world</FORM>'
+        + '<FORM kindOf="standard">hello world</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v132" not in combined, (
+        f"V132 should not fire on clean text; stdout={proc.stdout!r}"
+    )

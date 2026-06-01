@@ -886,6 +886,46 @@ def v131_zero_width_or_BOM_in_FORM_TRANSL(
     return findings
 
 
+# TR9 V132 SOFT — HTML entity-like substrings in FORM or TRANSL.
+#
+# XML parsers decode well-formed entities, so `&amp;` in source becomes
+# `&` in element.text. Finding a literal `&amp;`, `&apos;`, `&lt;`, or
+# `&gt;` in element.text means the source was double-encoded
+# (e.g., `&amp;amp;` in the XML). Aggregated per (file, entity) for the
+# SOFT CSV.
+
+_HTML_ENTITY_RE = re.compile(r"&(?:amp|apos|lt|gt|quot);")
+
+
+def v132_html_entities_in_FORM_TRANSL(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V132 SOFT (TR9): HTML entity-like substrings in FORM or TRANSL."""
+    lang = _resolve_language(tree)
+    per_entity: dict[str, int] = {}
+    for elem in tree.iter("FORM", "TRANSL"):
+        text = elem.text or ""
+        for match in _HTML_ENTITY_RE.findall(text):
+            per_entity[match] = per_entity.get(match, 0) + 1
+    findings: list[Finding] = []
+    for entity, n in per_entity.items():
+        findings.append(Finding(
+            rule_id="V132",
+            severity=Severity.SOFT,
+            message=(
+                f"V132 SOFT html entity-like residue: count={n} {entity!r} "
+                "in FORM/TRANSL (likely double-encoded source)"
+            ),
+            path=path,
+            count=n,
+            language=lang,
+            character=entity,
+        ))
+    return findings
+
+
 RULES: list = [
     # W1 (V110-V115): ported from validate_punct.py
     v110_smart_quotes,
@@ -910,5 +950,6 @@ RULES: list = [
     v129_asterisk_in_standard_FORM,
     v130_leading_trailing_whitespace_in_FORM,
     v131_zero_width_or_BOM_in_FORM_TRANSL,
+    v132_html_entities_in_FORM_TRANSL,
 ]
 CROSS_FILE_RULES: list = []
