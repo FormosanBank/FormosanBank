@@ -1329,3 +1329,70 @@ def test_V133_dash_in_W_standard_does_not_trigger(tmp_path):
     assert "v133" not in combined, (
         f"V133 should not fire on W-level dash; stdout={proc.stdout!r}"
     )
+
+
+# TR13 V134 SOFT — '<' or '>' (infix delimiter) in S-level FORM either tier.
+#
+# In XML source these are written as `&lt;` and `&gt;`; the parser
+# decodes them, so we look for literal '<' or '>' in S-level FORM.text.
+
+def test_V134_lt_in_S_standard_FORM_soft(tmp_path):
+    """V134 SOFT: '<' in S-level standard FORM."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">a&lt;b</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v134", "infix", "angle bracket", "&lt;", "< or >")
+    ), (
+        f"expected V134 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V134_gt_in_S_original_FORM_soft(tmp_path):
+    """V134 SOFT: '>' in S-level original FORM is also flagged."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">a&gt;b</FORM>'
+        + '<FORM kindOf="standard">ab</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v134", "infix", "angle bracket", "&gt;", "< or >")
+    ), (
+        f"expected V134 finding for original tier; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V134_W_level_angle_brackets_do_not_trigger(tmp_path):
+    """V134: '<' '>' in W-level FORM are not in scope."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">stdsentence</FORM>'
+        + '<W id="W1">'
+        + '<FORM kindOf="original">a&lt;b&gt;c</FORM>'
+        + '<FORM kindOf="standard">abc</FORM>'
+        + '</W>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v134" not in combined, (
+        f"V134 should not fire on W-level angle brackets; "
+        f"stdout={proc.stdout!r}"
+    )

@@ -957,6 +957,46 @@ def v133_dash_in_S_standard_FORM(
     )]
 
 
+# TR13 V134 SOFT — '<' or '>' (infix delimiter) in S-level FORM, either tier.
+#
+# Scope: S-level (direct-child FORM of S). Lower-tier FORMs (W, M) may
+# legitimately use angle-bracket annotation for infixes (e.g., m<um>law)
+# and are out of scope for V134.
+
+
+def v134_angle_brackets_in_S_FORM(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V134 SOFT (TR13): '<' or '>' in S-level FORM at either tier."""
+    lang = _resolve_language(tree)
+    per_char: dict[str, int] = {}
+    for s in tree.iter("S"):
+        for child in s:
+            if child.tag != "FORM":
+                continue
+            text = child.text or ""
+            for ch in text:
+                if ch in "<>":
+                    per_char[ch] = per_char.get(ch, 0) + 1
+    findings: list[Finding] = []
+    for ch, n in per_char.items():
+        findings.append(Finding(
+            rule_id="V134",
+            severity=Severity.SOFT,
+            message=(
+                f"V134 SOFT angle bracket / infix delimiter in S-level FORM: "
+                f"count={n} {ch!r} (< or > likely an infix marker)"
+            ),
+            path=path,
+            count=n,
+            language=lang,
+            character=ch,
+        ))
+    return findings
+
+
 RULES: list = [
     # W1 (V110-V115): ported from validate_punct.py
     v110_smart_quotes,
@@ -983,5 +1023,6 @@ RULES: list = [
     v131_zero_width_or_BOM_in_FORM_TRANSL,
     v132_html_entities_in_FORM_TRANSL,
     v133_dash_in_S_standard_FORM,
+    v134_angle_brackets_in_S_FORM,
 ]
 CROSS_FILE_RULES: list = []
