@@ -537,25 +537,21 @@ def test_V056_AUDIO_under_TEXT_positive(tmp_path, fixtures_dir, copy_fixture):
 
 # -----------------------------------------------------------------------------
 # W/M segmentation: V062
+# (V062 was moved to QC/validation/rules/gloss.py during B9.3; it is
+# exercised by validate_glosses.py, not validate_xml.py. The positive
+# test stays here as a regression: a well-formed file with an infix M
+# correctly paired with an angle-bracket gloss must still validate
+# cleanly under validate_xml.py. The negative test moved to
+# tests/validators/test_validate_glosses.py.)
 # -----------------------------------------------------------------------------
-
-
-def test_V062_infix_M_without_angle_gloss_negative(tmp_path, fixtures_dir, copy_fixture):
-    """V062 (negative): infix-shaped M FORM without an angle-bracket gloss on W's TRANSL."""
-    copy_fixture(fixtures_dir / "v062_infix_M_without_angle_gloss.xml", tmp_path)
-    proc = _run_validate(tmp_path)
-    assert _has_rule_finding(proc, ("v062", "infix", "angle-bracket gloss")), (
-        f"expected finding about missing infix gloss; got stdout={proc.stdout!r}"
-    )
 
 
 def test_V062_infix_M_with_angle_gloss_positive(tmp_path, fixtures_dir, copy_fixture):
     """V062 (positive): infix M FORM correctly paired with angle-bracket gloss.
 
     A well-formed pairing of infix-shaped M FORM ("-um-") and a W TRANSL
-    containing "<AV>" must validate cleanly. This test currently passes
-    because V062 is not enforced (so nothing complains); after B
-    implements V062 it must still pass because the pairing is legal.
+    containing "<AV>" must validate cleanly under validate_xml.py
+    (V062 no longer participates here; nothing else should fire).
     """
     copy_fixture(fixtures_dir / "v062_infix_M_with_angle_gloss.xml", tmp_path)
     proc = _run_validate(tmp_path)

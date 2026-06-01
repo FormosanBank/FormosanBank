@@ -711,61 +711,9 @@ def v039_id_unique_within_file(
 
 
 # ---------------------------------------------------------------------------
-# Category 5: W/M segmentation (V062)
+# Category 5: W/M segmentation
+# (V062 moved to rules/gloss.py during B9.3 — conceptually a gloss rule.)
 # ---------------------------------------------------------------------------
-
-import re as _re
-
-_INFIX_PATTERN = _re.compile(r"^-[^-]+-$")
-
-
-def v062_infix_M_needs_angle_gloss(
-    tree: etree._ElementTree,
-    path: Path,
-    index: CorpusIndex | None,
-) -> list[Finding]:
-    """V062: an M whose FORM has infix shape ('-X-') requires parent W to have
-    a TRANSL containing an angle-bracket gloss (e.g., '<AV>').
-
-    Infix shape: FORM text matches /^-[^-]+-$/ (starts and ends with '-').
-    Angle-bracket gloss: TRANSL text contains '<...>' (any '<' followed
-    eventually by '>').
-    """
-    findings: list[Finding] = []
-    for m in tree.iter("M"):
-        # Check if M has an infix-shaped FORM
-        form_text = None
-        for child in m:
-            if child.tag == "FORM":
-                form_text = (child.text or "").strip()
-                break
-        if form_text is None or not _INFIX_PATTERN.match(form_text):
-            continue
-        # Find parent W
-        parent_w = m.getparent()
-        if parent_w is None or parent_w.tag != "W":
-            continue
-        # Check if parent W has a TRANSL with angle-bracket gloss
-        has_angle_gloss = False
-        for child in parent_w:
-            if child.tag == "TRANSL":
-                text = child.text or ""
-                if "<" in text and ">" in text:
-                    has_angle_gloss = True
-                    break
-        if not has_angle_gloss:
-            m_id = m.get("id")
-            w_id = parent_w.get("id")
-            findings.append(Finding(
-                rule_id="V062",
-                severity=Severity.HARD,
-                message=f"M id={m_id!r} has infix FORM {form_text!r} but parent "
-                        f"W id={w_id!r} has no TRANSL with an angle-bracket gloss "
-                        "('<X>'); infix morphemes require angle-bracket gloss notation",
-                path=path,
-                location=f"M={m_id}" if m_id else "M",
-            ))
-    return findings
 
 
 # ---------------------------------------------------------------------------
@@ -942,7 +890,6 @@ RULES: list = [
     v052_audio_single_file_mode_requires_start_end,
     v053_orphan_audio,
     v054_audio_end_after_start,
-    v062_infix_M_needs_angle_gloss,
     v070_phon_placement,
     v071_phon_kindof_enum,
     v072_duplicate_phon_kindof,
