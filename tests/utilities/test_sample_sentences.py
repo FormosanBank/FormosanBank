@@ -54,8 +54,8 @@ def test_collect_sentences_captures_both_FORM_tiers(tmp_path):
     _write_corpus(tmp_path, "Test", {"a.xml": SIMPLE_XML})
     records = collect_sentences(tmp_path / "Test")
     s1 = next(r for r in records if r["s_id"] == "S1")
-    assert s1["original"] == "Halo (orig)."
-    assert s1["standard"] == "Halo (std)."
+    assert s1["forms"]["original"] == "Halo (orig)."
+    assert s1["forms"]["standard"] == "Halo (std)."
 
 
 def test_collect_sentences_captures_translations_by_language(tmp_path):
