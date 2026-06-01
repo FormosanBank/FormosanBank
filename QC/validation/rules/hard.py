@@ -838,6 +838,90 @@ def v073_phon_non_empty(
     return findings
 
 
+# Allowed values for TRANSL/@ver. Per user direction (2026-06-01 follow-up to
+# the Bril Amis Basecamp card, Mar 3, 2026): when multiple translations share
+# the same xml:lang on the same parent, at least one carries a discriminating
+# `ver` attribute. The only well-known value so far is "alt"; extend this set
+# as new ver semantics are agreed on.
+_ALLOWED_VER_VALUES = {"alt"}
+
+
+def v084_transl_ver_value_in_allowlist(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V084: when TRANSL/@ver is set, its value must be in the project allowlist.
+
+    Source: 2026-06-01 follow-up to the Bril Amis Basecamp card (Mar 3, 2026)
+    establishing the `ver="alt"` convention. The allowlist is `{"alt"}` for
+    now; expand `_ALLOWED_VER_VALUES` as new values are agreed on.
+    """
+    findings: list[Finding] = []
+    for transl in tree.iter("TRANSL"):
+        ver = transl.get("ver")
+        if ver is None or ver in _ALLOWED_VER_VALUES:
+            continue
+        parent = transl.getparent()
+        p_id = parent.get("id") if parent is not None else None
+        p_tag = parent.tag if parent is not None else "?"
+        findings.append(Finding(
+            rule_id="V084",
+            severity=Severity.HARD,
+            message=(
+                f"TRANSL has ver={ver!r}; not in the allowed set "
+                f"{sorted(_ALLOWED_VER_VALUES)!r}"
+            ),
+            path=path,
+            location=f"{p_tag}={p_id}" if p_id else p_tag,
+        ))
+    return findings
+
+
+def v085_multi_same_lang_transl_requires_ver(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V085: when a parent has multiple TRANSL children sharing the same
+    xml:lang, at least one must carry a `ver` attribute to discriminate them.
+
+    Per the Bril Amis Basecamp card (Mar 3, 2026): "If there are multiple
+    translations in the same language, mark one with a `ver=\"alt\"` attribute."
+    The convention is one canonical TRANSL (bare) plus one or more alternatives
+    marked with `ver`. Two bare same-language TRANSLs on the same parent are
+    ambiguous about which one is canonical and which is the alternative.
+    """
+    findings: list[Finding] = []
+    for parent in tree.iter():
+        # Group this parent's direct TRANSL children by xml:lang.
+        by_lang: dict[str, list] = {}
+        for child in parent:
+            if child.tag != "TRANSL":
+                continue
+            lang = child.get(_XML_LANG_ATTR) or ""
+            by_lang.setdefault(lang, []).append(child)
+        for lang, group in by_lang.items():
+            if len(group) < 2:
+                continue
+            if any(t.get("ver") for t in group):
+                continue
+            p_id = parent.get("id")
+            p_tag = parent.tag
+            findings.append(Finding(
+                rule_id="V085",
+                severity=Severity.HARD,
+                message=(
+                    f"{p_tag} id={p_id!r} has {len(group)} TRANSL children with "
+                    f"xml:lang={lang!r}; at least one must carry a ver attribute "
+                    "to discriminate them"
+                ),
+                path=path,
+                location=f"{p_tag}={p_id}" if p_id else p_tag,
+            ))
+    return findings
+
+
 def v081_text_id_unique_across_published_corpora(
     tree: etree._ElementTree,
     path: Path,
@@ -894,5 +978,7 @@ RULES: list = [
     v071_phon_kindof_enum,
     v072_duplicate_phon_kindof,
     v073_phon_non_empty,
+    v084_transl_ver_value_in_allowlist,
+    v085_multi_same_lang_transl_requires_ver,
 ]
 CROSS_FILE_RULES: list = [v081_text_id_unique_across_published_corpora]

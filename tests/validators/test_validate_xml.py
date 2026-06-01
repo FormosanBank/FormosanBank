@@ -315,6 +315,46 @@ def test_V023_TRANSL_must_have_xml_lang_negative(tmp_path, fixtures_dir, copy_fi
     )
 
 
+def test_V084_TRANSL_ver_value_must_be_in_allowlist_negative(
+    tmp_path, fixtures_dir, copy_fixture
+):
+    """V084: TRANSL/@ver must be in the project allowlist (currently {"alt"})."""
+    copy_fixture(fixtures_dir / "v084_TRANSL_ver_invalid_value.xml", tmp_path)
+    proc = _run_validate(tmp_path)
+    assert _has_rule_finding(proc, ("v084", "ver=", "allowed set")), (
+        f"expected V084 finding for invalid ver value; got stdout={proc.stdout!r}"
+    )
+
+
+def test_V085_multi_same_lang_TRANSL_no_ver_negative(
+    tmp_path, fixtures_dir, copy_fixture
+):
+    """V085: multiple TRANSL same xml:lang on same parent must have >=1 ver."""
+    copy_fixture(fixtures_dir / "v085_S_two_same_lang_TRANSL_no_ver.xml", tmp_path)
+    proc = _run_validate(tmp_path)
+    assert _has_rule_finding(proc, ("v085", "ver attribute", "discriminate")), (
+        f"expected V085 finding for ambiguous same-lang TRANSLs; got stdout={proc.stdout!r}"
+    )
+
+
+def test_V085_multi_same_lang_TRANSL_with_ver_positive(
+    tmp_path, fixtures_dir, copy_fixture
+):
+    """V085: when one of the same-lang TRANSLs has ver, no V085 finding fires.
+
+    Also exercises V084 with a valid `ver="alt"` — should NOT trigger V084.
+    """
+    copy_fixture(fixtures_dir / "v085_S_two_same_lang_TRANSL_one_with_ver.xml", tmp_path)
+    proc = _run_validate(tmp_path)
+    combined = (proc.stdout + proc.stderr).lower()
+    assert "v085" not in combined, (
+        f"V085 should not fire when ver discriminates; got stdout={proc.stdout!r}"
+    )
+    assert "v084" not in combined, (
+        f"V084 should not fire on valid ver='alt'; got stdout={proc.stdout!r}"
+    )
+
+
 def test_V050_AUDIO_with_file_only_is_clean(tmp_path, fixtures_dir, copy_fixture):
     """V050 positive: AUDIO with @file (no start/end) is valid per the spec.
 

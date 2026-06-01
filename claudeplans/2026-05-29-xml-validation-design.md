@@ -406,6 +406,20 @@ Per user direction (2026-05-29): GitBook is authoritative. `<PHON>` is permitted
 - **Example violation:** A new corpus contains `<TEXT id="story1" …>` and `FormosanBank/Corpora/SomeOtherCorpus/XML/...` already contains `<TEXT id="story1" …>`.
 - **Implementation note:** The check requires the validator to walk `FormosanBank/Corpora/` (read-only) when given a single corpus to validate, in addition to its primary target. For pre-port dev-repo validation, the primary target is the dev repo and `FormosanBank/Corpora/` is the reference set.
 
+#### V084 — `TRANSL/@ver` value must be in the project allowlist
+- **Severity:** HARD
+- **Description:** When a TRANSL element carries a `ver` attribute, its value must be one of the project's recognized version labels. The allowlist starts as `{"alt"}` (the only value documented in the Bril Amis Basecamp card, Mar 3, 2026); extend as new ver semantics are agreed on. TRANSL elements with no `ver` attribute are unaffected (the attribute is optional).
+- **Source:** User direction (2026-06-01); Bril Amis Basecamp card (Mar 3, 2026): "If there are multiple translations in the same language, mark one with a `ver=\"alt\"` attribute."
+- **Currently checked?** Yes — added 2026-06-01 in `rules/hard.py:v084_transl_ver_value_in_allowlist`.
+- **Example violation:** `<TRANSL xml:lang="eng" ver="bogus">hi</TRANSL>` — `bogus` is not in the allowlist.
+
+#### V085 — Multiple same-language TRANSL siblings must have at least one `ver` discriminator
+- **Severity:** HARD
+- **Description:** When a parent element (S, W, or M) has multiple direct-child TRANSL elements sharing the same `xml:lang`, at least one of them must carry a `ver` attribute. The convention is one canonical TRANSL (bare) plus one or more alternatives marked with `ver` (e.g. `ver="alt"`). Two bare same-language TRANSLs on the same parent are ambiguous about which one is canonical and which is the alternative.
+- **Source:** User direction (2026-06-01); Bril Amis Basecamp card (Mar 3, 2026).
+- **Currently checked?** Yes — added 2026-06-01 in `rules/hard.py:v085_multi_same_lang_transl_requires_ver`.
+- **Example violation:** `<S>...<TRANSL xml:lang="eng">hello</TRANSL><TRANSL xml:lang="eng">hi</TRANSL></S>` — both bare, no discriminator.
+
 #### V082 — XML declaration and encoding
 - **Severity:** WARN
 - **Description:** Files should be UTF-8 and start with an `<?xml version="1.0" encoding="UTF-8"?>` declaration. lxml will handle non-UTF-8 gracefully, but a missing declaration / wrong encoding deserves a warning so we don't accumulate Latin-1 files silently.

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Negative fixture for V085 (multi-TRANSL same xml:lang on same parent
+  must have at least one ver attribute to discriminate).
+
+  Shape: an S with two TRANSL xml:lang="eng", neither carrying ver.
+
+  Exercises: validate_xml.py should report a V085 HARD finding. The
+  positive case (two TRANSLs with one carrying ver="alt") is tested
+  separately and must NOT trigger V085.
+-->
+<TEXT id="V085_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+  <S id="S_1">
+    <FORM kindOf="original">Halo.</FORM>
+    <TRANSL xml:lang="eng">hello</TRANSL>
+    <TRANSL xml:lang="eng">hi</TRANSL>
+  </S>
+</TEXT>
