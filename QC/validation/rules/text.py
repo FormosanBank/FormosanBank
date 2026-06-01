@@ -1052,6 +1052,82 @@ def v135_trailing_punct_mismatch(
     )]
 
 
+# TR18 V136 SOFT — mixed-script confusables.
+#
+# Pragmatic heuristic, not a full Unicode script-property analysis: flag
+# a FORM that contains characters from two or more of
+# {Latin, Cyrillic, Greek} simultaneously. Other scripts (CJK / Hiragana
+# / Katakana / Hangul / Arabic / Hebrew) are NOT considered for the
+# mixed-script test because the corpus legitimately mixes Latin with CJK
+# annotation and with other scripts in TRANSL; the confusable concern is
+# specifically about Latin homograph attacks (Cyrillic 'а' vs Latin 'a',
+# Greek omicron vs Latin 'o', etc.). Aggregated per file.
+#
+# Scope: FORM only. TRANSL is intentionally excluded — TRANSL into
+# Chinese, Japanese, etc. legitimately mixes scripts.
+
+_LATIN_BLOCKS = (
+    (0x0041, 0x005A),  # Basic Latin upper
+    (0x0061, 0x007A),  # Basic Latin lower
+    (0x00C0, 0x00FF),  # Latin-1 Supplement letters
+    (0x0100, 0x017F),  # Latin Extended-A
+    (0x0180, 0x024F),  # Latin Extended-B
+)
+_CYRILLIC_BLOCKS = (
+    (0x0400, 0x04FF),
+    (0x0500, 0x052F),
+)
+_GREEK_BLOCKS = (
+    (0x0370, 0x03FF),
+)
+
+
+def _in_ranges(code: int, ranges) -> bool:
+    return any(lo <= code <= hi for lo, hi in ranges)
+
+
+def _script_for(ch: str) -> str | None:
+    """Return 'latin' / 'cyrillic' / 'greek' or None for chars not in
+    the confusable-script set."""
+    code = ord(ch)
+    if _in_ranges(code, _LATIN_BLOCKS):
+        return "latin"
+    if _in_ranges(code, _CYRILLIC_BLOCKS):
+        return "cyrillic"
+    if _in_ranges(code, _GREEK_BLOCKS):
+        return "greek"
+    return None
+
+
+def v136_mixed_script_confusables(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V136 SOFT (TR18): mixed Latin/Cyrillic/Greek scripts in FORM text."""
+    lang = _resolve_language(tree)
+    mixed_count = 0
+    for form in tree.iter("FORM"):
+        text = form.text or ""
+        scripts = {s for s in (_script_for(ch) for ch in text) if s is not None}
+        if len(scripts) >= 2:
+            mixed_count += 1
+    if mixed_count == 0:
+        return []
+    return [Finding(
+        rule_id="V136",
+        severity=Severity.SOFT,
+        message=(
+            f"V136 SOFT mixed-script / confusable: count={mixed_count} FORM "
+            "element(s) mixing two or more of {Latin, Cyrillic, Greek}"
+        ),
+        path=path,
+        count=mixed_count,
+        language=lang,
+        character="",
+    )]
+
+
 RULES: list = [
     # W1 (V110-V115): ported from validate_punct.py
     v110_smart_quotes,
@@ -1080,5 +1156,6 @@ RULES: list = [
     v133_dash_in_S_standard_FORM,
     v134_angle_brackets_in_S_FORM,
     v135_trailing_punct_mismatch,
+    v136_mixed_script_confusables,
 ]
 CROSS_FILE_RULES: list = []

@@ -1480,3 +1480,88 @@ def test_V135_both_no_trailing_punct_OK(tmp_path):
         f"V135 should not fire when both tiers have no trailing punct; "
         f"stdout={proc.stdout!r}"
     )
+
+
+# TR18 V136 SOFT — mixed-script confusables.
+#
+# Pragmatic heuristic: flag a FORM that contains characters from two or
+# more of {Latin, Cyrillic, Greek} simultaneously. Other scripts
+# (CJK, Hiragana, Katakana, Hangul, Arabic, Hebrew) are NOT included
+# because they don't visually confuse with Latin in the same way the
+# corpus is concerned about (mixed Latin+CJK is common and legitimate
+# in this dataset).
+
+def test_V136_latin_with_cyrillic_a_soft(tmp_path):
+    """V136 SOFT: a Latin word with a Cyrillic а (U+0430) hidden inside."""
+    # "cаfe" — the 'а' is Cyrillic U+0430, not Latin 'a' U+0061.
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">cаfe</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v136", "mixed script", "mixed-script", "confusable")
+    ), (
+        f"expected V136 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V136_latin_with_greek_omicron_soft(tmp_path):
+    """V136 SOFT: a Latin word with a Greek omicron hidden inside."""
+    # "hellο" — the 'ο' is Greek U+03BF, not Latin 'o'.
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">hellο</FORM>'
+        + '<FORM kindOf="standard">hello</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v136", "mixed script", "mixed-script", "confusable")
+    ), (
+        f"expected V136 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V136_pure_latin_OK(tmp_path):
+    """V136 OK: pure Latin content has no mixed-script finding."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">hello world</FORM>'
+        + '<FORM kindOf="standard">hello world</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v136" not in combined, (
+        f"V136 should not fire on pure Latin; stdout={proc.stdout!r}"
+    )
+
+
+def test_V136_latin_with_cjk_OK(tmp_path):
+    """V136 OK: Latin + CJK is legitimate (Chinese annotation), not flagged."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">hello 你好</FORM>'
+        + '<FORM kindOf="standard">hello 你好</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v136" not in combined, (
+        f"V136 should not fire on Latin + CJK; stdout={proc.stdout!r}"
+    )
