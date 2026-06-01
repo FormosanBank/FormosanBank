@@ -979,3 +979,103 @@ def test_V129_asterisk_in_original_does_not_trigger(tmp_path):
     assert "v129" not in combined, (
         f"V129 should not fire on original tier; stdout={proc.stdout!r}"
     )
+
+
+# TR15 V130 HARD — leading/trailing whitespace in any FORM.
+
+def test_V130_leading_whitespace_in_FORM_negative(tmp_path):
+    """V130 HARD: leading space in S-standard FORM is forbidden."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard"> hello</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v130", "leading", "trailing", "whitespace")
+    ), (
+        f"expected V130 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V130_trailing_whitespace_in_FORM_negative(tmp_path):
+    """V130 HARD: trailing space in S-original FORM is forbidden."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">hello </FORM>'
+        + '<FORM kindOf="standard">hello</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v130", "leading", "trailing", "whitespace")
+    ), (
+        f"expected V130 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V130_W_level_leading_whitespace_negative(tmp_path):
+    """V130 HARD: leading whitespace in W-level FORM is forbidden too."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">std</FORM>'
+        + '<W id="W1">'
+        + '<FORM kindOf="original"> word</FORM>'
+        + '<FORM kindOf="standard">word</FORM>'
+        + '</W>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v130", "leading", "trailing", "whitespace")
+    ), (
+        f"expected V130 finding for W-level; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V130_inner_whitespace_OK(tmp_path):
+    """V130: whitespace inside the FORM (not at edges) is fine."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">hello world</FORM>'
+        + '<FORM kindOf="standard">hello world</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v130" not in combined, (
+        f"V130 should not fire on inner whitespace; stdout={proc.stdout!r}"
+    )
+
+
+def test_V130_empty_FORM_OK(tmp_path):
+    """V130: empty FORM is not flagged by the whitespace rule."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original"></FORM>'
+        + '<FORM kindOf="standard">hello</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v130" not in combined, (
+        f"V130 should not fire on empty FORM; stdout={proc.stdout!r}"
+    )

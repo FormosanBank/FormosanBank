@@ -798,6 +798,49 @@ def v129_asterisk_in_standard_FORM(
     return findings
 
 
+# TR15 V130 HARD — leading/trailing whitespace in any FORM.
+#
+# clean_xml.py's `normalize_whitespace` already strips this at the
+# cleaner stage; the validator HARD just guarantees the cleaner ran.
+# Empty FORMs are not flagged (legitimate elision marker handling).
+
+
+def v130_leading_trailing_whitespace_in_FORM(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V130 HARD (TR15): FORM text has leading or trailing whitespace."""
+    findings: list[Finding] = []
+    for form in tree.iter("FORM"):
+        text = form.text
+        if not text:
+            continue
+        if text == text.strip():
+            continue
+        sides: list[str] = []
+        if text != text.lstrip():
+            sides.append("leading")
+        if text != text.rstrip():
+            sides.append("trailing")
+        parent = form.getparent()
+        parent_tag = parent.tag if parent is not None else ""
+        parent_id = (parent.get("id") if parent is not None else None) or ""
+        location = f"{parent_tag}={parent_id}" if parent_id else parent_tag
+        findings.append(Finding(
+            rule_id="V130",
+            severity=Severity.HARD,
+            message=(
+                f"V130 HARD {'/'.join(sides)} whitespace in FORM; "
+                f"{parent_tag} id={parent_id!r} "
+                f"FORM kindOf={form.get('kindOf')!r}"
+            ),
+            path=path,
+            location=location,
+        ))
+    return findings
+
+
 RULES: list = [
     # W1 (V110-V115): ported from validate_punct.py
     v110_smart_quotes,
@@ -820,5 +863,6 @@ RULES: list = [
     v127_smart_quotes_in_FORM_hard,
     v128_control_chars_in_FORM_TRANSL,
     v129_asterisk_in_standard_FORM,
+    v130_leading_trailing_whitespace_in_FORM,
 ]
 CROSS_FILE_RULES: list = []
