@@ -111,6 +111,20 @@ The FormosanBankGitBook "open-soorce" typo was fixed directly (commit `6c0a0d7a5
 
 ---
 
+## Tooling bugs (non-validator, address when next touching the script)
+
+### `orthography_extract.py`: `unique_chars.remove(" ")` crashes on space-free input
+
+**Surfaced:** commit `fac85b55d` (B7 — html.unescape fix) noted but did not fix.
+
+**Pattern:** `extract_orthographic_info` in `QC/orthography/orthography_extract.py` calls `unique_chars.remove(" ")` unconditionally. If the input FORM text contains no whitespace at all (single-token corpus, or anything that reaches the function with all-glued text), the `set.remove()` raises `KeyError`.
+
+**Proposed fix:** change to `unique_chars.discard(" ")`. One-line edit. Add a regression test using a space-free fixture.
+
+**Not a validator issue.** Handle when next working on `orthography_extract.py` (will come up in B9.6 work).
+
+---
+
 ## Process notes
 
 - This list is appended to (not replaced) as new validator audits surface new issues.

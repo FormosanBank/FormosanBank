@@ -43,12 +43,59 @@ python QC/validation/validate_xml.py by_path \
   --path /path/to/Final_XML
 ```
 
-Run punctuation validation after `FORM kindOf="standard"` exists:
+If the corpus has audio, validate audio next. `validate_audio.py` is an
+always-on, lightweight check (no ML deps) that produces a single
+`broken_audio.csv` with a `kind` column (`missing`, `unloadable`,
+`silent`, `invalid_range`). HARD findings (V100-V103) cause non-zero
+exit; SOFT findings (V104-V105, words-per-sec out of range) warn but
+don't fail.
 
 ```bash
-python QC/validation/validate_punct.py by_path \
+python QC/validation/validate_audio.py \
+  --xml_path /path/to/corpus/XML \
+  --path /path/to/corpus/Audio \
+  --log_dir /path/to/qc-output/logs \
+  [--check_silence]
+```
+
+Silence detection covers WAV (via RMS) and MP3 (via `ffprobe -af
+silencedetect`). The MP3 path requires `ffmpeg`/`ffprobe` on `$PATH`.
+Pass `--check_silence` to enable; otherwise silence is skipped to keep
+the check fast for large corpora.
+
+To remove broken entries afterward, run `clean_audio.py` against the
+generated `broken_audio.csv`:
+
+```bash
+python QC/cleaning/clean_audio.py \
+  --corpus_path /path/to/corpus \
+  --broken_csv  /path/to/qc-output/logs/broken_audio.csv \
+  --apply              # default is --dry-run
+  [--also-delete-files]
+```
+
+`--apply` modifies the XML in place by removing each listed `<AUDIO>`
+element. `--also-delete-files` also deletes the matching audio file
+from `<corpus>/Audio/`. Default is `--dry-run`: print the intended
+changes, modify nothing.
+
+Run text-content validation after `FORM kindOf="standard"` exists:
+
+```bash
+python QC/validation/validate_text.py by_path \
   --path /path/to/Final_XML
 ```
+
+`validate_text.py` (added in B9.4) consolidates the legacy
+`validate_punct.py` and `non_ascii_counts.py` scripts under one
+Finding-framework-aware validator. It checks the *textual content* of
+`<FORM>` and `<TRANSL>`: smart quotes, imbalanced parentheses,
+repeated punctuation, consecutive dashes, multiple whitespace,
+mismatched smart quotes, non-ASCII characters (excluding CJK),
+null-symbol propagation between W/M/S tiers, parens/slashes in W/M
+FORM (HARD), parens/slashes anywhere (SOFT), and `=` leftovers in the
+S-level standard tier. HARD findings exit 1; SOFT findings go to a
+CSV artifact (`--soft-csv`) for review.
 
 Extract orthographic information from the standard tier:
 
@@ -180,6 +227,69 @@ python QC/validation/validate_punct.py by_path \
 
 - `validation_results.csv`
 - `validation_m_mismatches.csv`
+
+## MT Data Prep: On-Demand Audio Quality Scoring
+
+For corpora destined for machine translation training, run the
+on-demand audio quality pipeline ported from Jacob Ye's
+`Formosan-ILRDF_Dicts/data_validation/`. This is NOT part of the
+always-on QC suite (it has heavy ML dependencies and takes hours).
+
+**Heavy dependencies** (not in `requirements.txt`; see
+`requirements-audio-mt.txt`): `torch`, `torchaudio`, `torchcodec`,
+`allosaurus`, `Levenshtein`, `unidecode`.
+
+```bash
+pip install -r requirements-audio-mt.txt
+```
+
+The CTC pipeline also requires a sibling clone of Jacob's
+`data_quality_eval` repo (for the `utils_CTC.get_trellis` /
+`backtrack` helpers):
+
+```bash
+# clone next to FormosanBank so the default path resolves
+cd "$(dirname "$(pwd)")"
+git clone https://github.com/AI4CommSci/data_quality_eval
+```
+
+Stage 1 — score each `(audio, transcript)` pair on four mismatch metrics
+(`ctc`, `wer`, `cer`, `pdm`). Resumable: re-running skips
+sentence_ids already in `--out-csv`.
+
+```bash
+python QC/validation/validate_audio_quality.py \
+  --corpus_path Corpora/ePark \
+  --out-csv     Corpora/ePark/results/scores.csv \
+  --metrics     all
+```
+
+Stage 2 — turn the raw scores into a worklist by rank-normalizing each
+metric per-language and flagging the worst K%%. Output is
+`suspect_audio.csv`, sorted worst-first.
+
+```bash
+python QC/validation/flag_audio_suspicious.py \
+  --scores  Corpora/ePark/results/scores.csv \
+  --out     Corpora/ePark/results/suspect_audio.csv \
+  --worst-pct 5 --min-agreement 1
+```
+
+Stage 3 — interactive human triage of the worklist. Plays each clip,
+prompts for a single-key verdict (`c`/`w`/`u`/`s`/`p`/`n`/`b`/`q`),
+writes to `{Lang}_verdicts.csv`. Resumes from the first unverified
+row on re-run.
+
+```bash
+python QC/utilities/audio_manual_verify.py \
+  --suspicious Corpora/ePark/results/suspect_audio.csv \
+  --verdicts   Corpora/ePark/results/Amis_verdicts.csv
+```
+
+NOTE: the off-the-shelf wav2vec2 BASE_960H model is English-trained,
+so the absolute CTC/WER/CER values are meaningless — only the
+*relative* ranking within a language matters. A Formosan-tuned ASR
+model would turn this into absolute quality scoring; that's deferred.
 
 ## Interpreting Common Warnings
 

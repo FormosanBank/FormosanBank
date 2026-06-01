@@ -75,7 +75,7 @@ When in doubt, `by_path` against a single corpus's `XML/` directory is the safes
 The full pipeline is documented in [QC/README.md](QC/README.md). The typical order is:
 1. `QC/validation/validate_xml.py` (DTD conformance)
 2. `QC/utilities/standardize.py --copy` (only if standard tier is missing)
-3. `QC/validation/validate_punct.py`
+3. `QC/validation/validate_text.py` (B9.4 consolidation of `validate_punct.py` + `non_ascii_counts.py`)
 4. `QC/orthography/orthography_extract.py --kindOf standard --by_dialect true`
 5. `QC/validation/validate_orthography.py` and `validate_vocabulary.py` against [QC/validation/reference/](QC/validation/reference/) (per-language reference orthographies and vocabularies)
 6. `QC/validation/validate_glosses.py` only for corpora with `W`/`M` segmentation

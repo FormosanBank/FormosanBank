@@ -128,10 +128,15 @@ Seed list (drawn from the [OldQCPlan flowchart](../../temp/OldQCPlan.png), valid
 - TR17 SOFT: byte-order mark (U+FEFF) at start of any FORM or TRANSL.
 - TR18 SOFT: mixed-script confusables (Cyrillic 'а' vs Latin 'a', etc.) — heuristic: any character whose Unicode block doesn't match the dominant script of the FORM.
 
-**Footnote / scrape residue:**
-- TR19 SOFT: trailing-decimal footnote (`word.1`, `word.2`) at end of S-level FORM.
-- TR20 SOFT: superscript-digit footnote (`word¹`, `word²`, `¹` as standalone token) anywhere in FORM.
-- TR21 SOFT: bracketed-digit footnote (`word[1]`, `[1]` as standalone token) anywhere in FORM.
+**Footnote / scrape residue (scope: FORM AND TRANSL — per Bril Amis Basecamp card Apr 3, 2026):**
+
+Footnotes leak into both tiers. Real-world example from Bril Amis: `<M id="s13w4m2"><FORM>uwal</FORM><TRANSL>speak12</TRANSL></M>` — the `12` is a footnote leak in TRANSL, not FORM. Each rule below applies to FORM and TRANSL text.
+
+- TR19 SOFT: trailing-decimal footnote (`word.1`, `word.2`) at end of S-level FORM or TRANSL.
+- TR20 SOFT: superscript-digit footnote (`word¹`, `word²`, `¹` as standalone token) anywhere in FORM or TRANSL.
+- TR21 SOFT: bracketed-digit footnote (`word[1]`, `[1]` as standalone token) anywhere in FORM or TRANSL.
+
+Watch for false positives where genuine numerals belong in the text (years, page references in TRANSL, dates). Implementation should require the digit to be glued to a non-digit token (no whitespace between) to reduce noise; document the false-positive risk in each rule's docstring.
 
 **Language-content rules (advanced):**
 - TR22 WARN: out-of-language examples (e.g. Japanese/Fongbe/Tagalog tokens in an Amis or Bunun file). **Closes roadmap C016**. Roadmap explicitly notes "hard problem; likely WARN-level if attempted" — needs a language-ID model (langid / fasttext-lid / whatever the project standardizes on). Possibly deferred to a B9.4-followup round rather than landed in this plan; flag as scoped-out unless cheap to add.

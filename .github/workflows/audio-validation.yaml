@@ -1,0 +1,164 @@
+name: audio-validation
+
+# Runs the always-on broken-audio checks (validate_audio.py) against
+# corpus data. Mirrors the two-job pattern of xml-validation.yaml:
+#
+# 1. PR-changed files: validate any corpus whose XML changed in the PR.
+#    HARD findings (V100-V103: missing / unloadable / silent / invalid_range)
+#    block the PR. SOFT findings (V104-V105: duration / words-per-sec)
+#    log but don't fail.
+#
+# 2. Full-Corpora baseline (push to main): runs informationally
+#    (--no-exit-on-hard) and uploads the broken_audio.csv as an artifact.
+#
+# Audio files are gitignored; this CI cannot validate the actual audio
+# binaries unless the runner pulls them. Per the B9.2 plan we treat
+# this as a structural check only: missing/invalid-range checks run
+# off the XML alone; unloadable/silent only fire when audio files are
+# present on the runner. The full-Corpora baseline does NOT download
+# audio (it would take too long) — see run_audio_downloads.sh for the
+# local workflow.
+
+on:
+  pull_request:
+    paths:
+      - 'Corpora/**.xml'
+      - 'QC/validation/validate_audio.py'
+      - '.github/workflows/audio-validation.yaml'
+  push:
+    branches: [main]
+    paths:
+      - 'Corpora/**.xml'
+      - 'QC/validation/validate_audio.py'
+      - '.github/workflows/audio-validation.yaml'
+
+jobs:
+  validate-changed-corpora:
+    name: Validate audio for corpora touched by this PR
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: 'pip'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Install ffmpeg (for MP3 silence detection)
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - name: Identify corpora with XML changes
+        id: changed
+        run: |
+          # List unique corpus dirs whose XML changed in this PR.
+          git diff --name-only --diff-filter=AM \
+            "origin/${{ github.base_ref }}...HEAD" \
+            -- 'Corpora/**/XML/**/*.xml' \
+            | awk -F/ '{ print "Corpora/" $2 }' \
+            | sort -u > changed_corpora.txt
+          count=$(wc -l < changed_corpora.txt)
+          echo "count=$count" >> "$GITHUB_OUTPUT"
+          echo "Corpora touched: $count"
+          if [ "$count" -gt 0 ]; then
+            cat changed_corpora.txt
+          fi
+      - name: Run validate_audio.py for each affected corpus
+        if: steps.changed.outputs.count != '0'
+        run: |
+          # HARD findings (V100-V103) block the PR; SOFT findings warn.
+          # If the corpus has no Audio/ dir checked in, the "missing"
+          # check still flags every <AUDIO file=…> ref as missing,
+          # which is itself a useful signal (catches typos in the XML
+          # filenames).
+          fail=0
+          mkdir -p /tmp/audio-logs
+          while IFS= read -r corpus; do
+            [ -z "$corpus" ] && continue
+            xml_dir="$corpus/XML"
+            audio_dir="$corpus/Audio"
+            # Skip if XML/ doesn't exist (older corpora not re-laid-out).
+            if [ ! -d "$xml_dir" ]; then
+              echo "::warning::Skipping $corpus — no XML/ dir."
+              continue
+            fi
+            # If Audio/ doesn't exist either, point at XML/ so the
+            # validator's recursive search finds nothing — every ref
+            # falls into kind=missing, which the operator can review.
+            [ -d "$audio_dir" ] || audio_dir="$xml_dir"
+            echo "::group::validate_audio $corpus"
+            log_dir="/tmp/audio-logs/$(basename "$corpus")"
+            if ! python QC/validation/validate_audio.py \
+                 --xml_path "$xml_dir" \
+                 --path "$audio_dir" \
+                 --log_dir "$log_dir"; then
+              fail=1
+            fi
+            echo "::endgroup::"
+          done < changed_corpora.txt
+          exit $fail
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+      - name: Upload broken_audio.csv artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: audio-validation-pr-logs
+          path: /tmp/audio-logs/
+          retention-days: 30
+
+  validate-baseline:
+    name: Full-Corpora audio baseline (informational, not blocking)
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: 'pip'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Install ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - name: Run validate_audio.py across each corpus (informational)
+        run: |
+          mkdir -p /tmp/audio-logs
+          for corpus in Corpora/*/; do
+            corpus=${corpus%/}
+            xml_dir="$corpus/XML"
+            audio_dir="$corpus/Audio"
+            [ -d "$xml_dir" ] || continue
+            [ -d "$audio_dir" ] || audio_dir="$xml_dir"
+            log_dir="/tmp/audio-logs/$(basename "$corpus")"
+            echo "=== $corpus ==="
+            python QC/validation/validate_audio.py \
+              --xml_path "$xml_dir" \
+              --path "$audio_dir" \
+              --log_dir "$log_dir" \
+              --no-exit-on-hard || true
+          done
+          echo "=== Headline broken_audio counts per corpus ==="
+          for dir in /tmp/audio-logs/*/; do
+            corpus_name=$(basename "$dir")
+            csv="$dir/broken_audio.csv"
+            if [ -f "$csv" ]; then
+              # subtract 1 for the header row
+              n=$(($(wc -l < "$csv") - 1))
+              echo "$corpus_name: $n broken-audio row(s)"
+            fi
+          done
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+      - name: Upload audio-validation logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: audio-validation-baseline-logs
+          path: /tmp/audio-logs/
+          retention-days: 90

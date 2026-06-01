@@ -68,24 +68,31 @@ jobs:
       - name: Validate each changed XML file
         if: steps.changed.outputs.count != '0'
         run: |
-          # Run validate_xml.py by_path on each changed file. The
-          # default behavior (exit 1 on HARD findings) blocks the PR
-          # if any of the changed files violate the rules.
+          # Run validate_xml.py + validate_text.py by_path on each
+          # changed file. Default behavior (exit 1 on HARD findings)
+          # blocks the PR if any of the changed files violate the
+          # rules. validate_text.py (B9.4) consolidates the old
+          # validate_punct.py + non_ascii_counts.py; runs as a stage-2
+          # text-content validator.
           fail=0
           while IFS= read -r file; do
             [ -z "$file" ] && continue
-            echo "::group::validate $file"
-            if ! .venv/bin/python QC/validation/validate_xml.py by_path \
+            echo "::group::validate_xml $file"
+            if ! python QC/validation/validate_xml.py by_path \
                  --path "$file" \
-                 --soft-csv "/tmp/soft-$(basename "$file").csv"; then
+                 --soft-csv "/tmp/soft-xml-$(basename "$file").csv"; then
+              fail=1
+            fi
+            echo "::endgroup::"
+            echo "::group::validate_text $file"
+            if ! python QC/validation/validate_text.py by_path \
+                 --path "$file" \
+                 --soft-csv "/tmp/soft-text-$(basename "$file").csv"; then
               fail=1
             fi
             echo "::endgroup::"
           done < changed_xml.txt
           exit $fail
-        # When venv doesn't exist in CI (it's a dev artifact), fall
-        # back to the system python. The dependencies are already
-        # installed by the previous step.
         env:
           PYTHONPATH: ${{ github.workspace }}
 
@@ -115,11 +122,20 @@ jobs:
             --no-exit-on-hard \
             --soft-csv validation-soft.csv \
             > /dev/null 2> validation-stderr.log
+          python QC/validation/validate_text.py by_path \
+            --path Corpora \
+            --no-exit-on-hard \
+            --soft-csv validation-text-soft.csv \
+            > /dev/null 2> validation-text-stderr.log
           # Headline counts for the build log.
-          echo "=== Headline counts ==="
+          echo "=== Headline counts (validate_xml) ==="
           grep -E "^Total issues found:" validation-stderr.log || true
-          echo "=== Top 10 rule_ids by frequency ==="
+          echo "=== Headline counts (validate_text) ==="
+          grep -E "^Total issues found:" validation-text-stderr.log || true
+          echo "=== Top 10 rule_ids by frequency (validate_xml) ==="
           grep -oE '\[V[0-9]+\]' validation-stderr.log | sort | uniq -c | sort -rn | head -10 || true
+          echo "=== Top 10 rule_ids by frequency (validate_text) ==="
+          grep -oE '\[V[0-9]+\]' validation-text-stderr.log | sort | uniq -c | sort -rn | head -10 || true
         env:
           PYTHONPATH: ${{ github.workspace }}
       - name: Upload validation log
@@ -130,4 +146,6 @@ jobs:
           path: |
             validation-stderr.log
             validation-soft.csv
+            validation-text-stderr.log
+            validation-text-soft.csv
           retention-days: 90

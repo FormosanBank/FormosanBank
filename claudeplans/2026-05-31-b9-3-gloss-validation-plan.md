@@ -34,6 +34,9 @@ Each stage-2 validator can be run independently. They share the framework (Findi
 | V060 (new, W-count vs word-count) | SOFT |
 | V061 (new, M-count vs implied-morpheme-count) | SOFT |
 | V062 severity | Stays HARD (per-corpus downgrade tracked in corpus-cleanup-tasks.md) |
+| V063 (new, W-FORM segmentation preservation) | HARD (added 2026-05-31 per user direction) |
+| V064 (new, every M has child TRANSL) | HARD (added 2026-05-31 per user direction) |
+| V065 (new, every W has child TRANSL) | SOFT (added 2026-05-31 per user direction — rare but possible to legitimately lack a W-level gloss) |
 | CSV artifacts | Preserve `validation_results.csv` and `validation_m_mismatches.csv` as artifacts alongside Findings |
 | Unsegmented-corpus handling | No special check needed; rules naturally no-op when iterating empty W/M lists |
 
@@ -130,7 +133,50 @@ Each item is a separable commit. Pattern per W*: write failing test → run to v
   - CLI surface preserved: `xml_folder`, `--check_morpho`, `--debug`, `--output_dir`
   - Drop the standalone `count_words`, `extract_s_direct_text`, `count_morphemes_from_form`, `get_w_form` helpers from validate_glosses.py (they now live in `rules/gloss.py`)
 
-### W5. CI integration + documentation
+### W5. Add V063 (W-FORM segmentation preservation) to `rules/gloss.py` — HARD
+
+Per user direction (2026-05-31). Catches the failure mode where the cleaner over-stripped W-FORM segmentation markers (which C012/B5 should never do, but a regression here would silently destroy gloss alignment).
+
+- **Files:**
+  - Modify: `QC/validation/rules/gloss.py` (add `v063_W_FORM_retains_segmentation`)
+  - Extend: `tests/validators/test_validate_glosses.py`
+- **Rule (per user formulation):** for each S element, count `-`, `=`, `<`, `>` characters in the S-level FORM[kindOf="original"]. Let that count be N. If N > 3, then summed across the S's W children:
+  - The sum of segmentation-marker counts in all `W/FORM[@kindOf="original"]` should be ≥ N/2.
+  - The sum of segmentation-marker counts in all `W/FORM[@kindOf="standard"]` should be ≥ N/2.
+  - Emit a HARD V063 Finding if either sum falls below N/2.
+- **Test cases (W5.1):**
+  - S with `M-kan =ku n-hapuy.` in S-original (3 markers) → rule does not fire (N=3 not > 3, threshold not met)
+  - S with `Pa-rakat-en =ku n-hapuy=mu` in S-original (5 markers); W children retain ≥3 markers each tier → no finding
+  - Same S but W-original retains 0 markers (cleaner regression) → HARD V063 finding
+  - Same S but W-standard retains 0 markers → HARD V063 finding
+  - S with no W children → rule no-ops (legitimately unsegmented corpus)
+  - S with no segmentation markers in S-original → rule no-ops
+- **Implementation notes:**
+  - Helper `_count_segmentation_chars(text)` returning `sum(text.count(c) for c in "-=<>")`.
+  - Threshold rationale: the >3 floor prevents single-marker false positives on short S elements where rounding to "at least half" is ambiguous. Document the threshold's empirical basis (add as a comment).
+  - Add `v063_W_FORM_retains_segmentation` to RULES list.
+
+### W6. Add V064 (every M has TRANSL — HARD) and V065 (every W has TRANSL — SOFT) to `rules/gloss.py`
+
+Per user direction (2026-05-31). The Chen serial-verbs Basecamp card (Issue 7) called out missing-gloss S elements as a real ingestion bug.
+
+- **Files:**
+  - Modify: `QC/validation/rules/gloss.py` (add `v064_every_M_has_TRANSL` and `v065_every_W_has_TRANSL`)
+  - Extend: `tests/validators/test_validate_glosses.py`
+- **Test cases (W6.1):**
+  - W with M children, every M has a TRANSL child → no finding
+  - W with M children, one M lacks any TRANSL → HARD V064 finding citing that M's id
+  - W with M children, all M missing TRANSL → one V064 finding per M (per-element emission, not aggregated)
+  - W with no M children → V064 does not fire (rule scoped to M)
+  - W with at least one TRANSL child → no V065 finding
+  - W with no TRANSL child → SOFT V065 finding
+  - File with no W/M at all (unsegmented corpus) → rules no-op
+- **Implementation notes:**
+  - V064 severity is HARD; V065 is SOFT. User reasoning: M-level gloss is mandatory whenever M exists (no legitimate case for an un-glossed morpheme in a segmented corpus); W-level gloss is *almost* mandatory but rare exceptions exist.
+  - Both rules iterate the W/M trees directly; no cross-element knowledge needed (no CorpusIndex).
+  - Add both to RULES list.
+
+### W7. CI integration + documentation
 
 - **Files:**
   - Modify: `.github/workflows/xml-validation.yaml` (or new `gloss-validation.yaml` — decide per CI maintenance preference)
@@ -144,6 +190,12 @@ Each item is a separable commit. Pattern per W*: write failing test → run to v
     - Reference `rules/gloss.py` as the rule source
     - Add a sentence: "Run on any corpus; rules naturally no-op on unsegmented corpora."
 
+## Future candidates (brainstorm)
+
+Patterns flagged in earlier B6 review as gloss-validation candidates but not in scope for this plan. Listed here so they have an explicit home; promote to a W6+ work item once the user signs off on severity and concrete detection shape.
+
+- **C021 — Multi-word glosses that should be joined with `.`** (moved from roadmap B6 per the [B9.4 plan](2026-05-31-b9-4-processing-artifact-checks-plan.md)'s cross-reference). Detect W/M TRANSL strings (and possibly inline glosses inside FORM) that contain whitespace where a single dot-joined token is expected. Severity probably SOFT — legitimate multi-word glosses do exist (idiom rationalizations, mnemonic glosses), and the cleaner-side fix would be heuristic. Concrete detection shape and scope (W only? M only? both? TRANSL only?) TBD with the user.
+
 ## Out of scope for B9.3
 
 - Adding NEW gloss rules beyond V060/V061/V062.
@@ -154,9 +206,10 @@ Each item is a separable commit. Pattern per W*: write failing test → run to v
 
 ## Acceptance criteria
 
-- `pytest tests/validators/test_validate_glosses.py` passes with ≥6 substantive cases covering V060, V061, V062, and the validate_glosses.py orchestrator.
+- `pytest tests/validators/test_validate_glosses.py` passes with ≥3 substantive cases per rule (V060, V061, V062, V063, V064, V065) plus the validate_glosses.py orchestrator.
 - V062 is no longer in `rules/hard.py`'s RULES list; `validate_xml.py` no longer emits V062 findings.
 - `validate_glosses.py` against a known-clean corpus produces zero Findings and empty CSVs (header only).
-- `validate_glosses.py` against a known-bad corpus (or fixture) produces SOFT V060/V061 Findings + the corresponding CSV rows.
+- `validate_glosses.py` against a known-bad corpus (or fixture) produces SOFT V060/V061/V065 Findings + HARD V062/V063/V064 Findings + the corresponding CSV rows.
+- HARD V062/V063/V064 cause non-zero exit; SOFT V060/V061/V065 emit warnings but don't fail (mirrors `validate_xml.py` semantics).
 - The staged-pipeline architecture is documented in QC/README.md.
-- `xml-validation.yaml` (or gloss-validation.yaml) invokes `validate_glosses.py` in CI; HARD V062 fails the job, SOFT V060/V061 warn.
+- `xml-validation.yaml` (or gloss-validation.yaml) invokes `validate_glosses.py` in CI; HARD rules fail the job, SOFT rules warn.

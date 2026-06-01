@@ -1,31 +1,89 @@
-import xml.etree.ElementTree as ET
-import os
-import sys
+"""validate_audio.py — always-on broken-audio + duration checks.
+
+Walks a corpus's XML (and the audio dir referenced by it) and reports
+broken audio in four classes:
+
+  V100 missing       — file referenced by <AUDIO @file> not found
+  V101 unloadable    — file present but mutagen/wave can't decode it
+  V102 silent        — RMS amplitude (WAV) or ffprobe silencedetect (MP3) below threshold
+  V103 invalid_range — AUDIO/@start >= AUDIO/@end
+
+Plus two SOFT signals (warn, don't fail):
+
+  V104 declared-vs-actual duration  — currently absorbed by V105 (not yet split)
+  V105 words/sec or chars/sec out of range
+
+Output:
+  <log_dir>/broken_audio.csv         — kind ∈ {missing, unloadable, silent, invalid_range}
+  <log_dir>/audio_duration_issues.csv — words/sec + chars/sec rows (SOFT)
+
+This validator integrates with the Finding framework
+(`QC/validation/_finding.py`): each broken-audio class is emitted as a
+HARD Finding with the corresponding rule_id; words/sec issues are SOFT.
+HARD findings cause non-zero exit; SOFT findings warn but don't fail
+(mirroring `validate_xml.py`'s exit semantics).
+
+Legacy CSVs (`non_working_audio.csv`, `missing_audio.csv`,
+`silent_audio.csv`) are NOT written by this script anymore — the
+single `broken_audio.csv` with a `kind` column subsumes them. See
+B9.2 plan W2 / Open Question 3.
+"""
 import argparse
-from concurrent.futures import ThreadPoolExecutor, as_completed
-from mutagen.mp3 import MP3
-import wave
 import array
 import csv
+import os
+import subprocess
+import sys
+import wave
+import xml.etree.ElementTree as ET
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
+
+from mutagen.mp3 import MP3
 from tqdm import tqdm
 
-"""
-The main functionality of this validation test is to check the functionality of audio files associated with a corpus.
-The following folder structure is assumed
-path/to/corpus/Final_XML/
-path/to/corpus/Final_audio/
-and the path to Final_audio is the one to be provided as arg for the main
-"""
+# Make _finding importable whether we're run as a script or imported as a module.
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+
+from QC.validation._finding import Finding, Severity  # noqa: E402
+
+
+# -----------------------------------------------------------------------------
+# Rule IDs
+# -----------------------------------------------------------------------------
+RULE_MISSING = "V100"
+RULE_UNLOADABLE = "V101"
+RULE_SILENT = "V102"
+RULE_INVALID_RANGE = "V103"
+RULE_WORDS_PER_SEC = "V105"
+
+KIND_TO_RULE = {
+    "missing": RULE_MISSING,
+    "unloadable": RULE_UNLOADABLE,
+    "silent": RULE_SILENT,
+    "invalid_range": RULE_INVALID_RANGE,
+}
+
+
+# -----------------------------------------------------------------------------
+# Lang resolution (kept for legacy callers; not used by the new pipeline).
+# -----------------------------------------------------------------------------
+_LANGS = ['Amis', 'Atayal', 'Paiwan', 'Bunun', 'Puyuma', 'Rukai', 'Tsou',
+          'Saisiyat', 'Yami', 'Thao', 'Kavalan', 'Truku', 'Sakizaya',
+          'Seediq', 'Saaroa', 'Kanakanavu', 'Siraya']
 
 
 def get_lang(path, file):
-    langs = ['Amis', 'Atayal', 'Paiwan', 'Bunun','Puyuma', 'Rukai', 'Tsou', 'Saisiyat', 'Yami',
-        'Thao', 'Kavalan', 'Truku', 'Sakizaya','Seediq','Saaroa', 'Kanakanavu', 'Siraya']
-    for lang in langs:
+    for lang in _LANGS:
         if lang in path or (file.split('.')[0] == lang and file.split('.')[1:] == ['xml']):
             return lang
 
+
+# -----------------------------------------------------------------------------
+# Audio inspection helpers
+# -----------------------------------------------------------------------------
 
 def get_audio_duration(file_path):
     """Return the duration of an audio file in seconds, or None on failure."""
@@ -42,29 +100,22 @@ def get_audio_duration(file_path):
 
 
 def is_silent_wav(file_path, threshold=10):
-    """
-    Return True if a WAV file appears to be silent.
-    Reads all PCM samples and checks whether the RMS amplitude is below
-    `threshold` (on a 0-32767 scale for 16-bit audio; the threshold is
-    scaled proportionally for 8- and 32-bit files).
+    """Return True if a WAV file appears silent (RMS amplitude below threshold).
+
     Returns None if the file cannot be read or is not PCM.
     """
     try:
         with wave.open(file_path, "rb") as wf:
-            sampwidth = wf.getsampwidth()  # bytes per sample
+            sampwidth = wf.getsampwidth()
             nframes = wf.getnframes()
-            nchannels = wf.getnchannels()
             if nframes == 0:
                 return True
             raw = wf.readframes(nframes)
-        # Map sample width to array typecode
         typecode = {1: 'b', 2: 'h', 4: 'i'}.get(sampwidth)
         if typecode is None:
-            return None  # unsupported format
+            return None
         samples = array.array(typecode, raw)
-        # Compute RMS
         rms = (sum(s * s for s in samples) / len(samples)) ** 0.5
-        # Normalise threshold to the actual bit depth
         max_val = (1 << (sampwidth * 8 - 1)) - 1
         normalised_threshold = threshold * max_val / 32767
         return rms < normalised_threshold
@@ -72,47 +123,88 @@ def is_silent_wav(file_path, threshold=10):
         return None
 
 
+def is_silent_mp3(file_path, noise_db=-50, min_silence_sec=0.5):
+    """Return True if an MP3 appears silent end-to-end.
+
+    Uses ffprobe's silencedetect audio filter. We treat the file as
+    silent if every reported silence segment together covers (almost)
+    the entire duration. Returns None when ffprobe is unavailable or
+    the probe fails (caller should escalate to "unloadable").
+    """
+    duration = get_audio_duration(file_path)
+    if duration is None:
+        return None
+    try:
+        # silencedetect emits lines like:
+        #   [silencedetect ...] silence_start: 0
+        #   [silencedetect ...] silence_end: 1.234 | silence_duration: 1.234
+        proc = subprocess.run(
+            [
+                "ffmpeg", "-hide_banner", "-nostats", "-i", file_path,
+                "-af", f"silencedetect=noise={noise_db}dB:d={min_silence_sec}",
+                "-f", "null", "-",
+            ],
+            stderr=subprocess.PIPE,
+            stdout=subprocess.DEVNULL,
+            timeout=30,
+        )
+    except (FileNotFoundError, subprocess.TimeoutExpired):
+        return None
+    output = proc.stderr.decode("utf-8", errors="ignore")
+    total_silence = 0.0
+    for line in output.splitlines():
+        if "silence_duration:" in line:
+            try:
+                total_silence += float(line.split("silence_duration:")[1].strip())
+            except (ValueError, IndexError):
+                pass
+    if duration <= 0:
+        return None
+    # If ≥95% of the file is reported as silence segments, call it silent.
+    return (total_silence / duration) >= 0.95
+
+
+def is_silent(file_path):
+    """Dispatch silence detection on extension. Returns True/False/None."""
+    if file_path.lower().endswith(".wav"):
+        return is_silent_wav(file_path)
+    if file_path.lower().endswith(".mp3"):
+        return is_silent_mp3(file_path)
+    return None
+
+
+# -----------------------------------------------------------------------------
+# Path resolution + reference collection
+# -----------------------------------------------------------------------------
+
 def resolve_audio_path(xml_file_path, xml_root, audio_root, audio_filename):
-    """
-    Resolve the full path of an audio file referenced in an XML element.
-    Mirrors the logic from extract_audio_clips.py's resolve_audio_dir:
-      XML/Paiwan/Belmira/file.xml  →  Audio/Belmira/<audio_filename>
-    Tries the following candidates in order:
-      1. audio_root / rel_dir / audio_filename
-      2. audio_root / rel_dir (first component stripped) / audio_filename
-      3. audio_root / audio_filename
-    """
     xml_file = Path(xml_file_path)
     xml_root = Path(xml_root)
     audio_root = Path(audio_root)
-
     rel_dir = xml_file.parent.relative_to(xml_root)
-
     candidate = audio_root / rel_dir / audio_filename
     if candidate.is_file():
         return str(candidate)
-
     parts = rel_dir.parts
     if len(parts) > 1:
         candidate2 = audio_root / Path(*parts[1:]) / audio_filename
         if candidate2.is_file():
             return str(candidate2)
-
     candidate3 = audio_root / audio_filename
     if candidate3.is_file():
         return str(candidate3)
-
+    # Final fallback: search the audio_root recursively for the filename.
+    for found in audio_root.rglob(audio_filename):
+        return str(found)
     return None
 
 
+def _audio_extensions_ok(audio_filename: str) -> bool:
+    return audio_filename.lower().endswith(('.mp3', '.wav', '.flac', '.ogg', '.m4a'))
+
+
 def collect_sentence_refs(xml_root):
-    """
-    Walk all XML files under xml_root and collect audio/text references from
-    both <S> (sentence) and <W> (word) elements.
-    Returns a list of (xml_file_path, element_id, audio_filename, form_text) tuples.
-    Only includes elements that have both an AUDIO child with a 'file' attribute
-    and a FORM child with kindOf='original'.
-    """
+    """Return list of (xml_path, element_id, audio_filename, form_text, start, end)."""
     refs = []
     for root, dirs, files in os.walk(xml_root):
         for file in files:
@@ -128,23 +220,19 @@ def collect_sentence_refs(xml_root):
                                 and 'file' in audio_elem.attrib
                                 and form_elem is not None):
                             audio_filename = audio_elem.attrib['file']
-                            if not audio_filename.lower().endswith(('.mp3', '.wav', '.flac', '.ogg', '.m4a')):
+                            if not _audio_extensions_ok(audio_filename):
                                 continue
                             form_text = form_elem.text or ''
-                            refs.append((xml_path, elem.attrib.get('id', ''), audio_filename, form_text))
+                            start = audio_elem.attrib.get('start')
+                            end = audio_elem.attrib.get('end')
+                            refs.append((xml_path, elem.attrib.get('id', ''),
+                                         audio_filename, form_text, start, end))
                 except Exception as e:
-                    print(f"Warning: Could not parse {xml_path}: {e}")
+                    print(f"Warning: Could not parse {xml_path}: {e}", file=sys.stderr)
     return refs
 
 
 def collect_text_audio_refs(xml_root):
-    """
-    Walk all XML files under xml_root and collect audio references from
-    <AUDIO> elements that are direct children of the <TEXT> root element.
-    Returns a list of (xml_file_path, audio_filename) tuples.
-    These elements only require existence and silence checks — no duration
-    or words-per-second check is performed for them.
-    """
     refs = []
     for root, dirs, files in os.walk(xml_root):
         for file in files:
@@ -157,177 +245,285 @@ def collect_text_audio_refs(xml_root):
                         for audio_elem in root_elem.findall('AUDIO'):
                             if 'file' in audio_elem.attrib:
                                 audio_filename = audio_elem.attrib['file']
-                                if not audio_filename.lower().endswith(('.mp3', '.wav', '.flac', '.ogg', '.m4a')):
+                                if not _audio_extensions_ok(audio_filename):
                                     continue
-                                refs.append((xml_path, audio_filename))
+                                start = audio_elem.attrib.get('start')
+                                end = audio_elem.attrib.get('end')
+                                refs.append((xml_path, audio_filename, start, end))
                 except Exception as e:
-                    print(f"Warning: Could not parse {xml_path}: {e}")
+                    print(f"Warning: Could not parse {xml_path}: {e}", file=sys.stderr)
     return refs
 
 
-def check_audio_existence_and_duration(xml_root, audio_root, duration_log, check_silence=False):
+# -----------------------------------------------------------------------------
+# Validation passes — produce Findings
+# -----------------------------------------------------------------------------
+
+def _try_float(s):
+    if s is None:
+        return None
+    try:
+        return float(s)
+    except (TypeError, ValueError):
+        return None
+
+
+def _check_invalid_range(start, end) -> bool:
+    s = _try_float(start)
+    e = _try_float(end)
+    if s is None or e is None:
+        return False
+    return s >= e
+
+
+def _check_unloadable(audio_path: str) -> bool:
+    """Return True if mutagen/wave cannot decode the file."""
+    try:
+        if audio_path.lower().endswith('.mp3'):
+            audio = MP3(audio_path)
+            if audio is None or audio.info is None or not audio.info.length:
+                return True
+            return False
+        if audio_path.lower().endswith('.wav'):
+            with wave.open(audio_path, "rb") as wav_file:
+                if wav_file.getnframes() == 0 or wav_file.getframerate() == 0:
+                    return True
+            return False
+    except Exception:
+        return True
+    return False
+
+
+def validate_corpus(xml_root: Path, audio_root: Path,
+                    check_silence: bool = False) -> tuple[list[Finding], list[tuple]]:
+    """Walk the corpus and return (broken_findings, duration_issue_rows).
+
+    broken_findings: list of HARD Findings for missing/unloadable/silent/invalid_range.
+    duration_issue_rows: tuples (xml_path, audio_filename, wps, cps) for the
+    SOFT words/sec output; ALSO emitted as SOFT Findings into the returned list.
     """
-    Phase 1: Verify that every audio file referenced in the XML files exists.
-             If any are missing, report them and exit.
-             Includes both sentence/word-level <AUDIO> elements and <AUDIO>
-             elements that are direct children of <TEXT>.
-    Phase 2: For sentence/word-level references, check audio duration and
-             words-per-second ratio against <FORM kindOf='original'> text.
-             Log any elements where the ratio falls outside expected bounds.
-             TEXT-level <AUDIO> elements only undergo existence and silence
-             checks — no duration or words-per-second check is performed.
-    """
-    print(f"Collecting audio references from XMLs in: {xml_root}")
     refs = collect_sentence_refs(xml_root)
     text_refs = collect_text_audio_refs(xml_root)
 
-    if not refs and not text_refs:
-        print("No audio references with 'file' attributes found in XML files.")
-        return
+    findings: list[Finding] = []
+    duration_rows: list[tuple] = []
 
-    # --- Phase 1: existence check ---
-    total_count = len(refs) + len(text_refs)
-    print(f"Checking existence of {len(refs)} sentence/word and "
-          f"{len(text_refs)} TEXT-level audio reference(s)...")
-    missing = []
-    resolved = []
-    for xml_path, sent_id, audio_filename, form_text in refs:
+    # --- Invalid range (independent of file existence) ---
+    for xml_path, sent_id, audio_filename, form_text, start, end in refs:
+        if _check_invalid_range(start, end):
+            findings.append(Finding(
+                rule_id=RULE_INVALID_RANGE,
+                severity=Severity.HARD,
+                message=f"AUDIO @start={start} >= @end={end} (invalid range)",
+                path=Path(xml_path),
+                location=audio_filename,
+            ))
+    for xml_path, audio_filename, start, end in text_refs:
+        if _check_invalid_range(start, end):
+            findings.append(Finding(
+                rule_id=RULE_INVALID_RANGE,
+                severity=Severity.HARD,
+                message=f"AUDIO @start={start} >= @end={end} (invalid range)",
+                path=Path(xml_path),
+                location=audio_filename,
+            ))
+
+    # --- Resolve files; missing ones get V100 immediately ---
+    resolved_refs = []
+    for xml_path, sent_id, audio_filename, form_text, start, end in refs:
         audio_path = resolve_audio_path(xml_path, xml_root, audio_root, audio_filename)
         if audio_path is None:
-            missing.append((xml_path, audio_filename))
+            findings.append(Finding(
+                rule_id=RULE_MISSING,
+                severity=Severity.HARD,
+                message=f"audio file not found: {audio_filename}",
+                path=Path(xml_path),
+                location=audio_filename,
+            ))
         else:
-            resolved.append((xml_path, sent_id, audio_filename, audio_path, form_text))
+            resolved_refs.append((xml_path, sent_id, audio_filename, audio_path, form_text))
 
-    resolved_text = []
-    for xml_path, audio_filename in text_refs:
+    resolved_text_refs = []
+    for xml_path, audio_filename, start, end in text_refs:
         audio_path = resolve_audio_path(xml_path, xml_root, audio_root, audio_filename)
         if audio_path is None:
-            missing.append((xml_path, audio_filename))
+            findings.append(Finding(
+                rule_id=RULE_MISSING,
+                severity=Severity.HARD,
+                message=f"audio file not found: {audio_filename}",
+                path=Path(xml_path),
+                location=audio_filename,
+            ))
         else:
-            resolved_text.append((xml_path, audio_filename, audio_path))
+            resolved_text_refs.append((xml_path, audio_filename, audio_path))
 
-    if missing:
-        missing_log = os.path.join(os.path.dirname(duration_log), "missing_audio.csv")
-        os.makedirs(os.path.dirname(missing_log), exist_ok=True)
-        with open(missing_log, mode='w', newline='') as f:
-            writer = csv.writer(f)
-            writer.writerow(['xml_file', 'audio_file'])
-            for xml_path, audio_filename in missing:
-                writer.writerow([xml_path, audio_filename])
-        print(f"\nWARNING: {len(missing)} audio file(s) could not be found. "
-              f"Logged to: {missing_log}")
-        print("Continuing with the files that were found...")
-    else:
-        print(f"All {total_count} referenced audio files exist.")
-
-    # --- Phase 1b + Phase 2: silence check and words/sec check for sentence/word refs ---
-    silent_log = os.path.join(os.path.dirname(duration_log), "silent_audio.csv")
-    silent_files = []
-    issues = []
+    # --- For resolved files, check unloadable then silent (mutex per file) ---
     for xml_path, sent_id, audio_filename, audio_path, form_text in tqdm(
-        resolved, desc="Checking audio (silence + words/sec)"
+        resolved_refs, desc="checking sentence/word audio", disable=not sys.stderr.isatty()
     ):
-        # Silence check (WAV only)
-        if audio_path.endswith('.wav') and check_silence:
-            result = is_silent_wav(audio_path)
-            if result is True:
-                silent_files.append((xml_path, audio_filename))
+        if _check_unloadable(audio_path):
+            findings.append(Finding(
+                rule_id=RULE_UNLOADABLE,
+                severity=Severity.HARD,
+                message=f"audio file unreadable: {audio_filename}",
+                path=Path(xml_path),
+                location=audio_filename,
+            ))
+            continue  # Don't try silence/duration on a broken file.
+        if check_silence:
+            silent = is_silent(audio_path)
+            if silent is True:
+                findings.append(Finding(
+                    rule_id=RULE_SILENT,
+                    severity=Severity.HARD,
+                    message=f"audio file is silent: {audio_filename}",
+                    path=Path(xml_path),
+                    location=audio_filename,
+                ))
+                # Fall through to also run the words/sec SOFT check; silent
+                # audio shouldn't suppress that signal.
 
-        # Words/sec check
+        # SOFT: words/sec + chars/sec
         duration = get_audio_duration(audio_path)
         if duration is not None and duration > 0:
             word_count = len(form_text.strip().split())
             num_char = len(form_text.strip())
             char_per_sec = num_char / duration
             words_per_sec = word_count / duration
-            if (words_per_sec < .1 or char_per_sec > 17) or (word_count < 5 and duration > 10) or (word_count > 12 and duration < 7):
-                issues.append((xml_path, audio_filename, round(words_per_sec, 2), round(char_per_sec, 2)))
+            if (words_per_sec < .1 or char_per_sec > 17) or \
+               (word_count < 5 and duration > 10) or \
+               (word_count > 12 and duration < 7):
+                duration_rows.append((xml_path, audio_filename,
+                                      round(words_per_sec, 2), round(char_per_sec, 2)))
+                findings.append(Finding(
+                    rule_id=RULE_WORDS_PER_SEC,
+                    severity=Severity.SOFT,
+                    message=(f"words/sec={words_per_sec:.2f} chars/sec={char_per_sec:.2f} "
+                             f"outside expected range"),
+                    path=Path(xml_path),
+                    location=audio_filename,
+                ))
 
-    # --- Silence check only for TEXT-level refs (no duration/words-per-sec check) ---
+    # --- TEXT-level: existence + unloadable + silence (no words/sec) ---
     for xml_path, audio_filename, audio_path in tqdm(
-        resolved_text, desc="Checking TEXT-level audio (silence only)"
+        resolved_text_refs, desc="checking TEXT-level audio", disable=not sys.stderr.isatty()
     ):
-        if audio_path.endswith('.wav') and check_silence:
-            result = is_silent_wav(audio_path)
-            if result is True:
-                silent_files.append((xml_path, audio_filename))
+        if _check_unloadable(audio_path):
+            findings.append(Finding(
+                rule_id=RULE_UNLOADABLE,
+                severity=Severity.HARD,
+                message=f"audio file unreadable: {audio_filename}",
+                path=Path(xml_path),
+                location=audio_filename,
+            ))
+            continue
+        if check_silence:
+            silent = is_silent(audio_path)
+            if silent is True:
+                findings.append(Finding(
+                    rule_id=RULE_SILENT,
+                    severity=Severity.HARD,
+                    message=f"audio file is silent: {audio_filename}",
+                    path=Path(xml_path),
+                    location=audio_filename,
+                ))
 
-    os.makedirs(os.path.dirname(duration_log), exist_ok=True)
+    return findings, duration_rows
 
-    with open(silent_log, mode='w', newline='') as f:
+
+# -----------------------------------------------------------------------------
+# Output writers
+# -----------------------------------------------------------------------------
+
+BROKEN_CSV_HEADER = ["xml_file", "audio_file", "kind", "rule_id", "message"]
+DURATION_CSV_HEADER = ["xml_file", "audio_file", "words_per_sec", "chars_per_sec"]
+
+
+def write_broken_csv(path: Path, findings: list[Finding]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with open(path, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
-        writer.writerow(['xml_file', 'audio_file'])
-        for xml_path, audio_file in silent_files:
-            writer.writerow([xml_path, audio_file])
-    if silent_files:
-        print(f"Silence check: {len(silent_files)} silent WAV file(s) logged to: {silent_log}")
-    else:
-        print("Silence check: no silent WAV files detected.")
+        writer.writerow(BROKEN_CSV_HEADER)
+        kind_by_rule = {v: k for k, v in KIND_TO_RULE.items()}
+        for fnd in findings:
+            if fnd.severity is not Severity.HARD:
+                continue
+            kind = kind_by_rule.get(fnd.rule_id, "")
+            writer.writerow([str(fnd.path), fnd.location or "", kind, fnd.rule_id, fnd.message])
 
-    with open(duration_log, mode='w', newline='') as f:
+
+def write_duration_csv(path: Path, rows: list[tuple]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with open(path, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
-        writer.writerow(['xml_file', 'audio_file', 'words_per_sec', 'chars_per_sec'])
-        for xml_path, audio_file, issue, issue2 in issues:
-            writer.writerow([xml_path, audio_file, issue, issue2])
+        writer.writerow(DURATION_CSV_HEADER)
+        for row in rows:
+            writer.writerow(row)
 
-    print(f"Duration check complete. {len(issues)} potential issue(s) logged to: {duration_log}")
 
-def process_file(path, file_name, failed_audio):
-    """Process a single file"""
-    file_path = os.path.join(path, file_name)
-    lang = get_lang(path, file_name)
-    if file_path.endswith('.mp3'):
-        # filetype = sndhdr.what(file_path)
-        # if filetype and filetype.filetype == 'wav':
-        #     print(file_path)
-        try:
-            audio = MP3(file_path)
-            length_in_sec = audio.info.length
-            if audio is None or length_in_sec is None or length_in_sec == 0:
-                raise Exception("problem with audio file")
-        except Exception as e:
-            with open(failed_audio, mode='a', newline='') as file:
-                writer = csv.writer(file)
-                writer.writerow([path, lang, file_name])
-    elif file_path.endswith('.wav'):
-        try:
-            with wave.open(file_path, "rb") as wav_file:  # Use correct extension if renamed
-                length_in_sec = wav_file.getnframes() / wav_file.getframerate()
-                if length_in_sec == 0:
-                    raise Exception("problem with audio file")
-        except:
-            with open(failed_audio, mode='a', newline='') as file:
-                writer = csv.writer(file)
-                writer.writerow([path, lang, file_name])
-                
-    
-def main(corpus_audio_path, xml_path=None, check_silence=False):
-    failed_audio = os.path.join(os.getcwd(), "logs", "non_working_audio.csv")
-    os.makedirs(os.path.dirname(failed_audio), exist_ok=True)
+def print_summary(findings: list[Finding]) -> None:
+    hard = [f for f in findings if f.severity is Severity.HARD]
+    soft = [f for f in findings if f.severity is Severity.SOFT]
+    print(f"Audio validation: {len(hard)} HARD finding(s), {len(soft)} SOFT finding(s).",
+          file=sys.stderr)
+    if hard:
+        print("HARD findings:", file=sys.stderr)
+        for f in hard:
+            loc = f" [{f.location}]" if f.location else ""
+            print(f"  [{f.rule_id}]{loc} {f.path}: {f.message}", file=sys.stderr)
+    if soft:
+        print("SOFT findings:", file=sys.stderr)
+        for f in soft:
+            loc = f" [{f.location}]" if f.location else ""
+            print(f"  [{f.rule_id}]{loc} {f.path}: {f.message}", file=sys.stderr)
 
-    with open(failed_audio, mode='w', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerow(["path", "lang", "file_name"])
-    
-    to_process = list()
-    for root, dirs, files in os.walk(corpus_audio_path):
-        for file in files:
-            if (file.endswith(".wav") or file.endswith('.mp3')) and 'audio' in os.path.join(root, file):
-                to_process.append([root, file])
-    
-    with ThreadPoolExecutor() as executor:
-        futures = [executor.submit(process_file, path, file, failed_audio) for path, file in to_process]
-        for f in tqdm(as_completed(futures), total=len(futures), desc=f"checking {corpus_audio_path}"): 
-            f.result()
 
-    if xml_path:
-        duration_log = os.path.join(os.getcwd(), "logs", "audio_duration_issues.csv")
-        check_audio_existence_and_duration(xml_path, corpus_audio_path, duration_log, check_silence=check_silence)
+# -----------------------------------------------------------------------------
+# CLI
+# -----------------------------------------------------------------------------
+
+def _build_arg_parser() -> argparse.ArgumentParser:
+    p = argparse.ArgumentParser(
+        description="Validate audio files associated with a corpus."
+    )
+    p.add_argument("--path", required=True,
+                   help="root dir containing audio files (corpus's Audio/ dir)")
+    p.add_argument("--xml_path", required=True,
+                   help="root dir containing XML files (corpus's XML/ dir)")
+    p.add_argument("--check_silence", action="store_true",
+                   help="enable silence detection (WAV via RMS, MP3 via ffprobe)")
+    p.add_argument("--log_dir", type=Path, default=None,
+                   help="output dir for broken_audio.csv and audio_duration_issues.csv "
+                        "(default: ./logs/ relative to cwd)")
+    p.add_argument("--no-exit-on-hard", action="store_true",
+                   help="always exit 0, even if HARD findings present "
+                        "(back-compat for callers that depend on legacy behavior)")
+    return p
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = _build_arg_parser().parse_args(argv)
+    log_dir = args.log_dir if args.log_dir is not None else Path("logs")
+
+    audio_root = Path(args.path)
+    xml_root = Path(args.xml_path)
+
+    findings, duration_rows = validate_corpus(
+        xml_root=xml_root, audio_root=audio_root, check_silence=args.check_silence
+    )
+
+    write_broken_csv(log_dir / "broken_audio.csv", findings)
+    write_duration_csv(log_dir / "audio_duration_issues.csv", duration_rows)
+
+    print_summary(findings)
+    print(f"Wrote {log_dir / 'broken_audio.csv'}", file=sys.stderr)
+    print(f"Wrote {log_dir / 'audio_duration_issues.csv'}", file=sys.stderr)
+
+    has_hard = any(f.severity is Severity.HARD for f in findings)
+    if has_hard and not args.no_exit_on_hard:
+        return 1
+    return 0
+
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="validates the functionality of audio files associated with a corpus")
-    parser.add_argument('--path', help='the path to the audio folder containing the audio files associated with a corpus')
-    parser.add_argument('--xml_path', help='the path to the XML folder; if provided, validates that all referenced audio files exist and checks character-per-second ratios against <FORM kindOf="original"> text')
-    parser.add_argument('--check_silence', action='store_true', help='enable silence detection for WAV files (may be slow for large corpora)')
-    args = parser.parse_args()
-    main(args.path, args.xml_path, check_silence=args.check_silence)
+    sys.exit(main())
