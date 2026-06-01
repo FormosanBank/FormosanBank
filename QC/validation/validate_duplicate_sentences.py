@@ -65,8 +65,6 @@ def normalize_for_comparison(text: str) -> str:
     Does NOT lowercase.  Case-sensitivity is intentional per the B9.5 plan;
     cross-corpus tooling can still choose to lowercase if it wants to.
     """
-    if text is None:
-        return ""
     return _WS.sub(" ", text).strip()
 
 
@@ -176,10 +174,6 @@ def _resolve_scan_root(args, parser) -> str:
         parser.error("For 'by_language', --corpora_path is required.")
     # by_language scans the whole Corpora root but filters XML files later by language path component.
     return args.corpora_path
-
-
-def _filter_by_language(xml_files, language):
-    return [p for p in xml_files if language in Path(p).parts]
 
 
 def _write_csv(findings, output_path: str):

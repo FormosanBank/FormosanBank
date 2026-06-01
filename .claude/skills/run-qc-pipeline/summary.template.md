@@ -25,8 +25,8 @@
 
 | Check | Result | Notes |
 |---|---|---|
-| `validate_xml.py` (DTD) | {{XML_RESULT}} | {{XML_NOTES}} |
-| `validate_punct.py` | {{PUNCT_RESULT}} | {{PUNCT_NOTES}} |
+| `validate_xml.py` (XSD) | {{XML_RESULT}} | {{XML_NOTES}} |
+| `validate_text.py` (punct + character set) | {{TEXT_RESULT}} | {{TEXT_NOTES}} |
 | `validate_glosses.py` | {{GLOSSES_RESULT_OR_NA}} | {{GLOSSES_NOTES}} |
 
 ## Soft checks (info-only)

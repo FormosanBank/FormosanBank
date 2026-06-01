@@ -47,7 +47,7 @@ def _write_xml_with_audio_refs(path: Path, audio_filenames: list[str]) -> None:
 
 def _audio_refs(xml_path: Path) -> list[str]:
     root = ET.parse(xml_path).getroot()
-    return [a.get("file") for a in root.iter("AUDIO")]
+    return [a.get("file", "") for a in root.iter("AUDIO")]
 
 
 def _write_broken_csv(path: Path, rows: list[dict]) -> None:

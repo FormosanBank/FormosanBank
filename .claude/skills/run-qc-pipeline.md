@@ -91,9 +91,14 @@ Run each validator, capturing output. Do NOT abort the recipe on failures — th
 .venv/bin/python3 <formosanbank_path>/QC/validation/validate_xml.py by_path \
   --path <xml_path> --no-exit-on-hard 2>&1 | tee <output_dir>/05a_validate_xml.log
 
-# Punctuation validation
-.venv/bin/python3 <formosanbank_path>/QC/validation/validate_punct.py by_path \
-  --path <xml_path> 2>&1 | tee <output_dir>/05b_validate_punct.log
+# Text-content validation (punctuation, character set, null/segmentation
+# markers). B9.4 consolidated the old validate_punct.py + non_ascii_counts.py
+# into a single staged-pipeline validator (rules in QC/validation/rules/text.py).
+# --no-exit-on-hard so this informational phase does not abort the recipe.
+.venv/bin/python3 <formosanbank_path>/QC/validation/validate_text.py by_path \
+  --path <xml_path> --no-exit-on-hard \
+  --soft-csv <output_dir>/05b_validate_text_soft.csv \
+  2>&1 | tee <output_dir>/05b_validate_text.log
 
 # Orthography extraction
 .venv/bin/python3 <formosanbank_path>/QC/orthography/orthography_extract.py \
@@ -131,7 +136,7 @@ Generate `<output_dir>/qc-summary.md` from `.claude/skills/run-qc-pipeline/summa
 - `{{ORIGINAL_ORTHOGRAPHY}}` — user's Phase 2 answer
 - `{{STANDARDIZE_ARGS}}` — the actual standardize.py args used
 - `{{N_TEXTS}}`, `{{N_SENTENCES}}`, etc. — extract from the various logs
-- `{{XML_RESULT}}`, `{{PUNCT_RESULT}}`, etc. — read each validator's log to determine pass/fail
+- `{{XML_RESULT}}`, `{{TEXT_RESULT}}`, etc. — read each validator's log to determine pass/fail
 - `{{ORTHO_SIM}}`, `{{VOCAB_OVERLAP}}` — pull numbers from soft-check logs
 - Fill the "Unusual things surfaced" section with anything notable from any phase
 - Fill the "Ready to port?" verdict — heuristic only:

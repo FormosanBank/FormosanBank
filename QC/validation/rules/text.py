@@ -130,7 +130,7 @@ def v110_smart_quotes(
     """
     lang = _resolve_language(tree)
     counts: dict[str, int] = {}
-    for _s_id, text in _s_standard_pairs(tree):
+    for _, text in _s_standard_pairs(tree):
         for ch in (_LEFT_SQUOTE, _RIGHT_SQUOTE, _LEFT_DQUOTE, _RIGHT_DQUOTE):
             n = text.count(ch)
             if n:
@@ -157,7 +157,7 @@ def v111_imbalanced_parens(
     """V111 SOFT: imbalanced ASCII parentheses in S-level standard FORM."""
     lang = _resolve_language(tree)
     total = 0
-    for _s_id, text in _s_standard_pairs(tree):
+    for _, text in _s_standard_pairs(tree):
         diff = abs(text.count("(") - text.count(")"))
         total += diff
     if total == 0:
@@ -184,7 +184,7 @@ def v112_repeated_punct(
     """V112 SOFT: repeated terminal punctuation (??, !!) in S-standard FORM."""
     lang = _resolve_language(tree)
     total = 0
-    for _s_id, text in _s_standard_pairs(tree):
+    for _, text in _s_standard_pairs(tree):
         total += len(_REPEATED_PUNCT.findall(text))
     if total == 0:
         return []
@@ -210,7 +210,7 @@ def v113_consecutive_dashes(
     """V113 SOFT: two or more consecutive dashes in S-standard FORM."""
     lang = _resolve_language(tree)
     total = 0
-    for _s_id, text in _s_standard_pairs(tree):
+    for _, text in _s_standard_pairs(tree):
         total += len(_CONSECUTIVE_DASHES.findall(text))
     if total == 0:
         return []
@@ -236,7 +236,7 @@ def v114_multiple_whitespace(
     """V114 SOFT: two or more consecutive spaces in S-standard FORM."""
     lang = _resolve_language(tree)
     total = 0
-    for _s_id, text in _s_standard_pairs(tree):
+    for _, text in _s_standard_pairs(tree):
         total += len(_MULTI_WS.findall(text))
     if total == 0:
         return []
@@ -259,7 +259,7 @@ def v115_mismatched_quotes(
     """V115 SOFT: left/right smart quotes do not balance in S-standard FORM."""
     lang = _resolve_language(tree)
     bad_s_count = 0
-    for _s_id, text in _s_standard_pairs(tree):
+    for _, text in _s_standard_pairs(tree):
         if (text.count(_LEFT_SQUOTE) != text.count(_RIGHT_SQUOTE)) or (
             text.count(_LEFT_DQUOTE) != text.count(_RIGHT_DQUOTE)
         ):
@@ -608,7 +608,7 @@ def v126_equal_sign_in_S_standard(
     """
     lang = _resolve_language(tree)
     count = 0
-    for _s_id, text in _s_standard_pairs(tree):
+    for _, text in _s_standard_pairs(tree):
         if "=" in text:
             count += 1
     if count == 0:
