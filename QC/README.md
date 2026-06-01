@@ -147,11 +147,23 @@ Run gloss validation on any corpus; rules naturally no-op on unsegmented ones. S
 Exit code: 1 if any HARD finding (V062/V063/V064); 0 otherwise. SOFT findings (V060/V061/V065) emit warnings to stderr but do not fail the run.
 
 ```bash
-python QC/validation/validate_glosses.py /path/to/Final_XML \
+# Validate one XML file
+python QC/validation/validate_glosses.py by_path --path /path/to/file.xml \
   --output_dir /path/to/qc-output
 
-python QC/validation/validate_glosses.py /path/to/Final_XML \
+# Validate a directory tree
+python QC/validation/validate_glosses.py by_path --path /path/to/Final_XML \
   --check_morpho \
+  --output_dir /path/to/qc-output
+
+# Validate one corpus by name (walks its canonical XML/)
+python QC/validation/validate_glosses.py by_corpus \
+  --corpus ePark --corpora_path Corpora \
+  --output_dir /path/to/qc-output
+
+# Validate every file across all corpora whose root xml:lang matches
+python QC/validation/validate_glosses.py by_language \
+  --language ami --corpora_path Corpora \
   --output_dir /path/to/qc-output
 ```
 

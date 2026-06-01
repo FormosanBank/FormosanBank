@@ -123,7 +123,7 @@ jobs:
             [ -z "$dir" ] && continue
             echo "::group::validate_glosses $dir"
             if ! python QC/validation/validate_glosses.py \
-                "$dir" \
+                by_path --path "$dir" \
                 --output_dir "/tmp/gloss-$(echo "$dir" | tr '/' '_')"; then
               fail=1
             fi
@@ -188,7 +188,7 @@ jobs:
             corpus=$(basename "$(dirname "$corpus_dir")")
             echo "=== $corpus ==="
             python QC/validation/validate_glosses.py \
-              "$corpus_dir" \
+              by_path --path "$corpus_dir" \
               --output_dir "gloss-baseline/$corpus" \
               2>> gloss-baseline/stderr.log || true
           done

@@ -499,6 +499,8 @@ def _run_validate_glosses(
     cmd = [
         sys.executable,
         str(VALIDATE_GLOSSES),
+        "by_path",
+        "--path",
         str(xml_folder),
     ]
     if output_dir is not None:

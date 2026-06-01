@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """validate_glosses.py — gloss-tier validator.
 
-Stage-2 validator in the FormosanBank validation pipeline. Walks a
-folder of .xml files, parses each with lxml, applies the rules
-registered under QC/validation/rules/gloss.py, and emits:
+Stage-2 validator in the FormosanBank validation pipeline. Walks the
+selected target (file, directory, corpus, or language), parses each
+.xml with lxml, applies the rules registered under
+QC/validation/rules/gloss.py, and emits:
 
 - HARD/SOFT findings printed to stderr.
 - Two legacy CSV artifacts for backward compatibility with prior callers:
@@ -11,9 +12,13 @@ registered under QC/validation/rules/gloss.py, and emits:
   - validation_m_mismatches.csv (M-count mismatches, from V061)
 - Exit code 1 if any HARD findings; 0 otherwise.
 
-CLI (preserved from prior version):
-    validate_glosses.py <xml_folder> [--check_morpho] [--debug]
-                       [--output_dir DIR]
+CLI (matches the validate_xml.py / validate_text.py subparser pattern
+as of 2026-06-01):
+    validate_glosses.py by_path     --path <file-or-dir> [opts]
+    validate_glosses.py by_corpus   --corpus <name> --corpora_path <path> [opts]
+    validate_glosses.py by_language --language <code> --corpora_path <path> [opts]
+
+Common opts: --check_morpho, --debug, --output_dir DIR.
 
 The --check_morpho flag adds a legacy "has_morphemes" column to
 validation_results.csv (T if every W has at least one M child, F
@@ -37,6 +42,14 @@ from lxml import etree
 
 from QC.validation._finding import Finding, Severity
 from QC.validation.rules import gloss as gloss_rules
+from QC.validation.validate_xml import (
+    discover_all_corpora_canonical_xml,
+    discover_corpus_canonical_xml,
+    discover_xml_files,
+)
+
+
+_XML_LANG_ATTR = "{http://www.w3.org/XML/1998/namespace}lang"
 
 
 def _parse_w_mismatch_message(message: str) -> tuple[str, str] | None:
@@ -240,59 +253,106 @@ def _print_summary(findings: list[Finding]) -> None:
         print(f"  [{f.rule_id}]{loc} {f.message}", file=sys.stderr)
 
 
-def main() -> int:
-    parser = argparse.ArgumentParser(
-        description="Validate XML gloss structure",
-        formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog="""
-Examples:
-  python validate_glosses.py /path/to/xml/files
-  python validate_glosses.py /path/to/xml/files --check_morpho
-        """,
-    )
+def _add_common_flags(p: argparse.ArgumentParser, *, suppress: bool) -> None:
+    """Register --check_morpho/--debug/--output_dir on a parser.
 
-    parser.add_argument(
-        "xml_folder",
-        help="Folder containing XML files to validate (searches recursively)",
-    )
-    parser.add_argument(
+    suppress=True is used for subparsers (so the parent parser's value
+    sticks when the user passes the flag BEFORE the subcommand). Same
+    pattern as validate_xml.py's _add_common_flags_to_subparser.
+    """
+    default = argparse.SUPPRESS if suppress else False
+    p.add_argument(
         "--check_morpho",
         action="store_true",
+        default=default,
         help="Check if each W element has at least one M element (legacy "
-             "column in validation_results.csv)",
+             "column in validation_results.csv).",
     )
-    parser.add_argument(
+    p.add_argument(
         "--debug",
         action="store_true",
-        help="Enable debug output showing detailed parsing information",
+        default=default,
+        help="Print one debug line per finding to stdout.",
     )
-    parser.add_argument(
+    p.add_argument(
         "--output_dir",
+        default=argparse.SUPPRESS if suppress else None,
         help="Directory for validation CSV outputs. Defaults to the current "
              "working directory.",
     )
 
-    args = parser.parse_args()
 
-    xml_folder = Path(args.xml_folder)
-    if not xml_folder.exists() or not xml_folder.is_dir():
-        print(f"Error: Directory '{xml_folder}' does not exist")
-        return 1
+def _build_arg_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        description="FormosanBank gloss validator.",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  python validate_glosses.py by_path     --path tests/fixtures/foo.xml
+  python validate_glosses.py by_path     --path Corpora/ePark/XML --check_morpho
+  python validate_glosses.py by_corpus   --corpus ePark --corpora_path Corpora
+  python validate_glosses.py by_language --language ami  --corpora_path Corpora
+        """,
+    )
+    _add_common_flags(parser, suppress=False)
+
+    sub = parser.add_subparsers(dest="search_by", required=True)
+
+    by_path = sub.add_parser("by_path", help="Validate a single XML file or a directory")
+    by_path.add_argument("--path", required=True, type=Path)
+    _add_common_flags(by_path, suppress=True)
+
+    by_corpus = sub.add_parser("by_corpus", help="Validate one corpus's canonical XML/")
+    by_corpus.add_argument("--corpus", required=True)
+    by_corpus.add_argument("--corpora_path", required=True, type=Path)
+    _add_common_flags(by_corpus, suppress=True)
+
+    by_language = sub.add_parser("by_language", help="Validate every file in Corpora with matching xml:lang")
+    by_language.add_argument("--language", required=True)
+    by_language.add_argument("--corpora_path", required=True, type=Path)
+    _add_common_flags(by_language, suppress=True)
+
+    return parser
+
+
+def _resolve_target_files(args: argparse.Namespace) -> list[Path]:
+    if args.search_by == "by_path":
+        return discover_xml_files(args.path)
+    if args.search_by == "by_corpus":
+        return discover_corpus_canonical_xml(args.corpora_path / args.corpus)
+    if args.search_by == "by_language":
+        files: list[Path] = []
+        for path in discover_all_corpora_canonical_xml(args.corpora_path):
+            try:
+                tree = etree.parse(str(path))
+            except etree.XMLSyntaxError:
+                continue
+            if tree.getroot().get(_XML_LANG_ATTR) == args.language:
+                files.append(path)
+        return files
+    raise AssertionError(f"unknown search_by mode: {args.search_by}")
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = _build_arg_parser().parse_args(argv)
 
     output_dir = Path(args.output_dir) if args.output_dir else Path.cwd()
     output_dir.mkdir(parents=True, exist_ok=True)
     w_csv_file = output_dir / "validation_results.csv"
     m_csv_file = output_dir / "validation_m_mismatches.csv"
 
-    print(f"Validating XML files in: {xml_folder}")
+    print(f"Mode: {args.search_by}")
     print(f"Check morphemes (W missing M): {args.check_morpho}")
     print(f"W-mismatch output: {w_csv_file}")
     print(f"M-mismatch output: {m_csv_file}")
     print()
 
-    xml_files = list(xml_folder.rglob("*.xml"))
+    xml_files = _resolve_target_files(args)
     if not xml_files:
-        print(f"No XML files found in {xml_folder}")
+        print("No XML files matched the selection.")
+        # Still write the empty CSVs so downstream consumers see header-only files.
+        _write_w_csv(w_csv_file, [], args.check_morpho)
+        _write_m_csv(m_csv_file, [])
         return 0
 
     all_findings: list[Finding] = []
