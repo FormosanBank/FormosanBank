@@ -75,6 +75,13 @@ python path/to/FormosanBank/QC/utilities/standardize.py --corpora_path path/to/F
 python path/to/FormosanBank/QC/utilities/add_phonology.py --corpora_path XML --orthography Ortho113 
 ```
 
+### 5. Fix XML ids
+For some reason, we ended up with some repeated id attributes for some M elements. This will fix that.
+
+```bash
+python QC/validation/validate_xml.py by_path --path path/to/Formosan-Yeddas-Blog/_XML
+```
+
 ## Contributing
 
 Please feel free to submit issues and pull requests for any improvements.
