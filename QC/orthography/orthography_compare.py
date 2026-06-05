@@ -8,7 +8,7 @@ from scipy.special import rel_entr
 import argparse
 
 plt.switch_backend('Agg')  # Use a non-GUI backend
-plt.rcParams['font.sans-serif'] = ['Arial Unicode MS']
+# plt.rcParams['font.sans-serif'] = ['Arial Unicode MS']
 
 
 def get_lang(path, langs):

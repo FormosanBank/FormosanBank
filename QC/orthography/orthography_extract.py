@@ -18,10 +18,14 @@ import warnings
 warnings.filterwarnings("ignore", message="Glyph .* missing from font")
 
 plt.switch_backend('Agg')  # Use a non-GUI backend
-plt.rcParams['font.sans-serif'] = ['Arial Unicode MS']
+# plt.rcParams['font.sans-serif'] = ['Arial Unicode MS']
 # Set the font properties globally
 #plt.rcParams['font.family'] = 'Noto Sans'
 
+
+def is_dialect(lang, dialect):
+    dialect_csv = pd.read_csv("dialects.csv")
+    return (dialect in dialect_csv[dialect_csv['Language'] == lang]['Official'].unique())
 
 def parse_bool(value):
     if isinstance(value, bool):
@@ -71,7 +75,9 @@ def generate_corpus(language_to_process, to_check_path, kindOf, by_dialect=False
                     if current_dialect in corpus.keys():
                         corpus[current_dialect] += text
                     else:
-                        corpus[current_dialect] = text
+                        # should only add to corpus if legal dialect
+                        if is_dialect(language_to_process, current_dialect):
+                            corpus[current_dialect] = text
                 else:
                     corpus["default"] += text
 
