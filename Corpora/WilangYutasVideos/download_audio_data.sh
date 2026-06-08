@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Downloads the Audio/ folder from FormosanBank/YutasWilang on HuggingFace.
-# Mirrors the structure uploaded by upload_hf_datasets.sh:
+# Mirrors the structure uploaded by QC/utilities/upload_to_hf.py:
 #   HF repo root  →  local Audio/
 #   (e.g. Atayal/*.wav inside the repo lands in Audio/Atayal/*.wav locally)
 # Usage: ./download_audio_data.sh
