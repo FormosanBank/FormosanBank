@@ -44,7 +44,7 @@ Wilang Yutas was an Atayal elder who, with his collaborator 劉宇陽, recorded 
 Run the scraping script to extract video information and metadata:
 
 ```bash
-python scripts/scrape_videos.py
+python scripts/scrape.py
 ```
 
 This will:
@@ -76,14 +76,6 @@ This will download the audio, convert to WAV, and then segment into units matchi
 
 ### 4. Clean and Standardize XML, add IPA
 Run the FormosanBank cleaning and standardization scripts:
-
-First, authors appear to have used strings of question marks to indicate unclear audio. We replace these with "<UNCLEAR>" because otherwise our clean_xml.py script removes them.
-
-```bash
-   find Final_XML -type f -name "*.xml" -exec sed -i '' -E 's/[?？]{3,}/ <UNCLEAR> /g' {} +
-```
-
-Now standard cleaning scripts:
 
 ```bash
    python path/to/FormosanBank/QC/cleaning/clean_xml.py --corpora_path path/to/Formosan-Wilang-Yutas-Videos/Final_XML
