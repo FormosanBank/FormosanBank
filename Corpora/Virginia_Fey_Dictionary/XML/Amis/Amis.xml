@@ -1,4 +1,4 @@
-<?xml version="1.0" ?>
+<?xml version='1.0' encoding='UTF-8'?>
 <TEXT xml:lang="ami" id="VirginiaFeyDictionary" source="https://github.com/miaoski/amis-data?tab=readme-ov-file" copyright="CC BY-SA" citation="Fey, V. (1986). Amis dictionary. Taipei: The Bible Society. | miaoski. (2023). miaoski/amis-data [Python]. GitHub. https://github.com/miaoski/amis-data (Original work published 2013)" BibTeX_citation="@article{fey1986amis,title={Amis dictionary},author={Fey, Virginia},journal={Taipei: The Bible Society},year={1986}}, @misc{miaoski2023amisfey,author={miaoski},title={miaoski/amis-data [Python]},year={2023},howpublished={\url{https://github.com/miaoski/amis-data}},note={Original work published 2013},publisher={GitHub}}" dialect="Xiuguluan">
     <S id="S38">
         <FORM kindOf="original">Fangcalay 'Adingo</FORM>
@@ -807,9 +807,11 @@
         <FORM kindOf="standard">Icowa ko kamaro'an iso?</FORM>
         <PHON kindOf="standard">iʦo~uwa ko~u kamaro~uʡan iso~u?</PHON>
         <TRANSL xml:lang="eng">Where are you sitting?</TRANSL>
-        <TRANSL xml:lang="eng">Where are you working?</TRANSL>
-        <TRANSL xml:lang="eng">Where are you staying?</TRANSL>
-        <TRANSL xml:lang="zho">你在那裏坐/工作/居住?</TRANSL>
+        <TRANSL xml:lang="eng" ver="alt">Where are you working?</TRANSL>
+        <TRANSL xml:lang="eng" ver="alt">Where are you staying?</TRANSL>
+        <TRANSL xml:lang="zho">你在那裏坐?</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">你在那裏工作?</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">你在那裏居住?</TRANSL>
     </S>
     <S id="S619">
         <FORM kindOf="original">Aro'en ko loma' nira.</FORM>
@@ -5806,7 +5808,8 @@
         <FORM kindOf="standard">Aka samatiyatiya o mafana'ay.</FORM>
         <PHON kindOf="standard">aka samatijatija o~u mafanaʡaj.</PHON>
         <TRANSL xml:lang="eng">Don't act like you know everything.</TRANSL>
-        <TRANSL xml:lang="zho">不要以為聰明/不要自作聰明</TRANSL>
+        <TRANSL xml:lang="zho">不要以為聰明</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">不要自作聰明</TRANSL>
     </S>
     <S id="S3503">
         <FORM kindOf="original">tiya o wawa ako cingra a haratengen.</FORM>
@@ -6640,7 +6643,8 @@
         <FORM kindOf="standard">Maocor no was Yis.</FORM>
         <PHON kindOf="standard">mao~uʦo~ur no~u was jis.</PHON>
         <TRANSL xml:lang="eng">Jesus was sent by God.</TRANSL>
-        <TRANSL xml:lang="zho">上帝派遣耶穌/耶穌被上帝差遣</TRANSL>
+        <TRANSL xml:lang="zho">上帝派遣耶穌</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">耶穌被上帝差遣</TRANSL>
     </S>
     <S id="S3997">
         <FORM kindOf="original">Ocoren no was Yis.</FORM>
@@ -7073,9 +7077,11 @@
         <PHON kindOf="original">mipaijo~u to~u aɬ~ɮaɬ~ɮaaj</PHON>
         <FORM kindOf="standard">mipaiyo to adadaay</FORM>
         <PHON kindOf="standard">mipaijo~u to~u aɬ~ɮaɬ~ɮaaj</PHON>
-        <TRANSL xml:lang="eng">1. take sick person to the doctor 2. give medicine to the sick person</TRANSL>
-        <TRANSL xml:lang="eng">1. take sick person to the doctor 2. treat the sick person</TRANSL>
-        <TRANSL xml:lang="zho">1. 帶病人給醫生看 2. 給病人吃藥/或治療病人</TRANSL>
+        <TRANSL xml:lang="eng">take sick person to the doctor</TRANSL>
+        <TRANSL xml:lang="eng" ver="alt">treat the sick person</TRANSL>
+        <TRANSL xml:lang="zho">帶病人給醫生看</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">給病人吃藥</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">或治療病人</TRANSL>
     </S>
     <S id="S4216">
         <FORM kindOf="original">pakakemoday ko sowal</FORM>
@@ -8847,8 +8853,9 @@
         <FORM kindOf="standard">O karahkeran ako ko faloco' no fafahi ako.</FORM>
         <PHON kindOf="standard">o~u karaħkəran ako~u ko~u faɾo~uʦo~uʡ no~u fafaħi ako~u.</PHON>
         <TRANSL xml:lang="eng">I am satisfied with my wife's personality.</TRANSL>
-        <TRANSL xml:lang="eng">I am satisfied with my wife's attitude.</TRANSL>
-        <TRANSL xml:lang="zho">我為我太太的人格/態度而感到高興</TRANSL>
+        <TRANSL xml:lang="eng" ver="alt">I am satisfied with my wife's attitude.</TRANSL>
+        <TRANSL xml:lang="zho">我為我太太的人格</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">態度而感到高興</TRANSL>
     </S>
     <S id="S4840">
         <FORM kindOf="original">Yo mafana'to kako i, sarahker kako.</FORM>
@@ -10230,7 +10237,7 @@
         <FORM kindOf="standard">O sowal nira i, "o tatayni kako" saan.</FORM>
         <PHON kindOf="standard">o~u so~uwaɾ nira i, "o~u tatajni kako~u" saan.</PHON>
         <TRANSL xml:lang="eng">He said he would come.</TRANSL>
-        <TRANSL xml:lang="zho">他說：「我本來要來的」。</TRANSL>
+        <TRANSL xml:lang="zho">他說：”我本來要來的”。</TRANSL>
     </S>
     <S id="S5154">
         <FORM kindOf="original">Maherek kako a milicay i, sowal saan cingra</FORM>
@@ -10238,7 +10245,7 @@
         <FORM kindOf="standard">Maherek kako a milicay i, sowal saan cingra</FORM>
         <PHON kindOf="standard">maħərək kako~u a miɾiʦaj i, so~uwaɾ saan ʦiŋra</PHON>
         <TRANSL xml:lang="eng">When I finished asking, he responded by saying ...</TRANSL>
-        <TRANSL xml:lang="zho">我問完他以後，他就說：「……」</TRANSL>
+        <TRANSL xml:lang="zho">我問完他以後，他就說：”……”</TRANSL>
     </S>
     <S id="S5168">
         <FORM kindOf="original">Masadak to cingra nai pirofoan.</FORM>
@@ -12224,8 +12231,9 @@
         <FORM kindOf="standard">O misolapay a tamdaw cingra.</FORM>
         <PHON kindOf="standard">o~u miso~uɾapaj a tamɬ~ɮaw ʦiŋra.</PHON>
         <TRANSL xml:lang="eng">He is an undercover man.</TRANSL>
-        <TRANSL xml:lang="eng">He is a spy.</TRANSL>
-        <TRANSL xml:lang="zho">他是地下工作人員/奸諜</TRANSL>
+        <TRANSL xml:lang="eng" ver="alt">He is a spy.</TRANSL>
+        <TRANSL xml:lang="zho">他是地下工作人員</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">他是奸諜</TRANSL>
     </S>
     <S id="S5741">
         <FORM kindOf="original">Masolinga' ko faloco' noya tamdaw.</FORM>
@@ -15908,8 +15916,9 @@
         <FORM kindOf="standard">O mato'asay cingra.</FORM>
         <PHON kindOf="standard">o~u mato~uʡasaj ʦiŋra.</PHON>
         <TRANSL xml:lang="eng">He is an old man.</TRANSL>
-        <TRANSL xml:lang="eng">He is a man to be respected.</TRANSL>
-        <TRANSL xml:lang="zho">他是老人家/是可敬的人</TRANSL>
+        <TRANSL xml:lang="eng" ver="alt">He is a man to be respected.</TRANSL>
+        <TRANSL xml:lang="zho">他是老人家</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">是可敬的人</TRANSL>
     </S>
     <S id="S6616">
         <FORM kindOf="original">Mato'as to ko wawa iso anini.</FORM>
@@ -16418,8 +16427,9 @@
         <FORM kindOf="standard">tatongroh ko loma'.</FORM>
         <PHON kindOf="standard">tato~uŋro~uħ ko~u ɾo~umaʡ.</PHON>
         <TRANSL xml:lang="eng">The house has two stories.</TRANSL>
-        <TRANSL xml:lang="eng">The house has one surface on top of another.</TRANSL>
-        <TRANSL xml:lang="zho">房子有兩層/一面在另一面的頂上</TRANSL>
+        <TRANSL xml:lang="eng" ver="alt">The house has one surface on top of another.</TRANSL>
+        <TRANSL xml:lang="zho">房子有兩層</TRANSL>
+        <TRANSL xml:lang="zho" ver="alt">房子有一面在另一面的頂上</TRANSL>
     </S>
     <S id="S6758">
         <FORM kindOf="original">Mitongtongay cingra to panay.</FORM>
