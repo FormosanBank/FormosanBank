@@ -13,7 +13,7 @@
   fixture because lxml decodes the references before the Python code
   sees the text).
 -->
-<TEXT id="TEST_HE" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+<TEXT id="TEST_HE" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
   <S id="S_1">
     <FORM kindOf="original">Tom &amp; Jerry &quot;cartoon&quot; episode &#39;1</FORM>
     <FORM kindOf="standard">Tom &amp; Jerry &quot;cartoon&quot; episode &#39;1</FORM>

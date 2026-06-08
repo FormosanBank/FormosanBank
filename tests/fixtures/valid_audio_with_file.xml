@@ -12,7 +12,7 @@
   This fixture must validate clean; if v050 ever regresses to the
   blanket-required behavior, this test fails.
 -->
-<TEXT id="audio_with_file" citation="t" BibTeX_citation="@t{t}" copyright="t" xml:lang="ami">
+<TEXT id="audio_with_file" citation="t" BibTeX_citation="@t{t}" copyright="t" xml:lang="ami" dialect="unknown">
   <S id="S_1">
     <FORM kindOf="original">Halo.</FORM>
     <AUDIO file="clip1.wav"/>

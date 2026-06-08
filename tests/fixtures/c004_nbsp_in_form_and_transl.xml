@@ -8,7 +8,7 @@
   before parsing. After cleaning, no U+00A0 may appear anywhere in the
   serialised file content nor in the text values of any element.
 -->
-<TEXT id="TEST_C004" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+<TEXT id="TEST_C004" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
   <S id="S_1">
     <FORM kindOf="original">Halo hapinangha.</FORM>
     <FORM kindOf="standard">Halo hapinangha.</FORM>

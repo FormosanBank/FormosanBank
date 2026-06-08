@@ -7,7 +7,7 @@
   Exercises: validate_xml.py should report a finding. validate_lang_code
   only checks TEXT, not TRANSL; xfail.
 -->
-<TEXT id="V024_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+<TEXT id="V024_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
   <S id="S_1">
     <FORM kindOf="original">Halo.</FORM>
     <TRANSL xml:lang="zz">greeting</TRANSL>

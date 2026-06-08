@@ -108,6 +108,46 @@ def test_tsv_mapping_transforms_standard_tier(tmp_path, fixtures_dir, copy_fixtu
     ], f"expected mapped sentence in standard tier, got: {standard!r}"
 
 
+def test_copy_preserves_UNCLEAR_child_when_creating_standard(
+    tmp_path, fixtures_dir, copy_fixture
+):
+    """--copy must preserve <UNCLEAR/> children when adding a standard tier.
+
+    Pins the 2026-06-08 fix to create_standard. Before that fix, the
+    code did `standard_form.text = original_form.text`, which only
+    copies text and silently dropped mixed-content children like
+    <UNCLEAR/>. After --copy on an original-only FORM containing only
+    <UNCLEAR/>, the resulting standard FORM must also contain
+    <UNCLEAR/> (not be empty), otherwise V017 fires on it under the
+    new schema.
+    """
+    work = copy_fixture(
+        fixtures_dir / "valid_original_only_with_UNCLEAR.xml", tmp_path
+    )
+    proc = _run_standardize(["--copy", "--corpora_path", str(tmp_path)])
+    assert proc.returncode == 0, (
+        f"standardize --copy exited {proc.returncode}; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+    root = ET.parse(work).getroot()
+    standard_forms = [
+        f for f in root.findall(".//FORM") if f.get("kindOf") == "standard"
+    ]
+    assert len(standard_forms) == 1, (
+        f"expected one standard FORM after --copy; got {len(standard_forms)}"
+    )
+    standard = standard_forms[0]
+    assert standard.find("UNCLEAR") is not None, (
+        f"standard FORM is missing <UNCLEAR/> child; serialization is "
+        f"{ET.tostring(standard, encoding='unicode')!r}"
+    )
+    # And no spurious text content snuck in.
+    assert (standard.text or "").strip() == "", (
+        f"standard FORM should have no text content (UNCLEAR-only), got "
+        f"{standard.text!r}"
+    )
+
+
 def test_errors_when_no_original_tier(tmp_path, fixtures_dir, copy_fixture):
     work = copy_fixture(fixtures_dir / "valid_no_original_tier.xml", tmp_path)
     before = work.read_text()

@@ -7,7 +7,7 @@
   .//FORM XPath, so the full-width parens collapse to ASCII parens.
   Both tiers carry the same shape so we can pin both at once.
 -->
-<TEXT id="TEST_C001" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+<TEXT id="TEST_C001" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
   <S id="S_1">
     <FORM kindOf="original">Halo （X）.</FORM>
     <FORM kindOf="standard">Halo （X）.</FORM>

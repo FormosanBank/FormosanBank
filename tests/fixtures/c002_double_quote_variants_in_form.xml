@@ -8,7 +8,7 @@
   Exercises: swap_punctuation collapses every variant in its table to
   ASCII U+0022.
 -->
-<TEXT id="TEST_C002_DQ" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+<TEXT id="TEST_C002_DQ" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
   <S id="S_1">
     <FORM kindOf="original">“a”《b》「c」『d』</FORM>
     <FORM kindOf="standard">“a”《b》「c」『d』</FORM>

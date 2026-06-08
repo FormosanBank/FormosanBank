@@ -22,7 +22,7 @@
   Exercises: validate_xml.py should report a cross-corpus id collision.
   Currently NOT enforced; xfail.
 -->
-<TEXT id="ILRDF_Dicts_Paiwan" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="pwn">
+<TEXT id="ILRDF_Dicts_Paiwan" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="pwn" dialect="unknown">
   <S id="S_1">
     <FORM kindOf="original">Halo.</FORM>
   </S>

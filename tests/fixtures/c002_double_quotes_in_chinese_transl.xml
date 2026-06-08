@@ -10,7 +10,7 @@
   collapses both U+201C and U+201D to U+201D. Today: clean_trans is a
   no-op for quote variants, so both characters survive (XFAIL).
 -->
-<TEXT id="TEST_C002_ZH_DQ" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+<TEXT id="TEST_C002_ZH_DQ" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
   <S id="S_1">
     <FORM kindOf="original">Halo.</FORM>
     <FORM kindOf="standard">Halo.</FORM>

@@ -333,6 +333,27 @@ def _resolve_target_files(args: argparse.Namespace) -> list[Path]:
     raise AssertionError(f"unknown search_by mode: {args.search_by}")
 
 
+def _write_or_remove(
+    path: Path,
+    rows: list[tuple],
+    write_fn,
+) -> None:
+    """Write rows to `path` via `write_fn` if non-empty, else remove any
+    stale file at that path.
+
+    Per Joshua (2026-06-01): empty CSVs shouldn't be created; if one
+    already exists, delete it. Avoids cluttering the working dir with
+    placeholder header-only files that imply something needs checking.
+    """
+    if rows:
+        write_fn(path, rows)
+        return
+    try:
+        path.unlink()
+    except FileNotFoundError:
+        pass
+
+
 def main(argv: list[str] | None = None) -> int:
     args = _build_arg_parser().parse_args(argv)
 
@@ -343,16 +364,15 @@ def main(argv: list[str] | None = None) -> int:
 
     print(f"Mode: {args.search_by}")
     print(f"Check morphemes (W missing M): {args.check_morpho}")
-    print(f"W-mismatch output: {w_csv_file}")
-    print(f"M-mismatch output: {m_csv_file}")
-    print()
+    # CSV paths announced AFTER we know whether they were written, so
+    # the user isn't pointed at non-existent files.
 
     xml_files = _resolve_target_files(args)
     if not xml_files:
         print("No XML files matched the selection.")
-        # Still write the empty CSVs so downstream consumers see header-only files.
-        _write_w_csv(w_csv_file, [], args.check_morpho)
-        _write_m_csv(m_csv_file, [])
+        # Clean up any stale CSVs from a prior run.
+        _write_or_remove(w_csv_file, [], lambda p, _r: None)
+        _write_or_remove(m_csv_file, [], lambda p, _r: None)
         return 0
 
     all_findings: list[Finding] = []
@@ -372,8 +392,12 @@ def main(argv: list[str] | None = None) -> int:
         all_w_rows.extend(w_rows)
         all_m_rows.extend(m_rows)
 
-    _write_w_csv(w_csv_file, all_w_rows, args.check_morpho)
-    _write_m_csv(m_csv_file, all_m_rows)
+    _write_or_remove(
+        w_csv_file,
+        all_w_rows,
+        lambda p, rows: _write_w_csv(p, rows, args.check_morpho),
+    )
+    _write_or_remove(m_csv_file, all_m_rows, _write_m_csv)
 
     if all_w_rows:
         print(

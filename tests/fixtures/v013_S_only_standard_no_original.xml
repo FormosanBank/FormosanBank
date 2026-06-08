@@ -8,7 +8,7 @@
   original tier. Currently NOT enforced; this test is xfail until B
   fixes the validator.
 -->
-<TEXT id="V013_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+<TEXT id="V013_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
   <S id="S_1">
     <FORM kindOf="standard">Halo.</FORM>
   </S>

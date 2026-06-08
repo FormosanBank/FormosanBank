@@ -7,7 +7,7 @@
   Exercises: validate_xml.py should report a finding. Active validator
   uses the XSD which does not require xml:lang on TRANSL; xfail.
 -->
-<TEXT id="V023_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+<TEXT id="V023_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
   <S id="S_1">
     <FORM kindOf="original">Halo.</FORM>
     <TRANSL>greeting</TRANSL>

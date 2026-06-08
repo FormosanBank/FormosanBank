@@ -9,7 +9,7 @@
   ASCII U+0027. After cleaning every single-quote-shape character in
   the FORM text must be U+0027.
 -->
-<TEXT id="TEST_C002_APOS" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+<TEXT id="TEST_C002_APOS" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
   <S id="S_1">
     <FORM kindOf="original">a’b‘c ʼd ʻe `f</FORM>
     <FORM kindOf="standard">a’b‘c ʼd ʻe `f</FORM>

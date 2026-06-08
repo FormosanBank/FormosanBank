@@ -47,39 +47,52 @@
     </xs:restriction>
   </xs:simpleType>
 
-  <!-- FORM: text element with required kindOf enum -->
+  <!-- UNCLEAR: empty marker element used inline within FORM/PHON/TRANSL
+       to indicate audio that was attempted but could not be transcribed
+       (or, in TRANSL, text that could not be translated). Distinct from
+       V010 (S with no FORM at all, i.e. "not yet transcribed") because
+       UNCLEAR is a positive assertion: "we tried and failed."
+       Token-counting tools should NOT count UNCLEAR as a token.
+       Added 2026-06-08 to schematize a pattern already in published
+       data (WilangYutasVideos, YeddaPalemeqBlog). -->
 
-  <xs:complexType name="FORM_Type">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute name="kindOf" type="FORM_kindOf_Type" use="required"/>
-      </xs:extension>
-    </xs:simpleContent>
+  <xs:complexType name="UNCLEAR_Type"/>
+
+  <!-- FORM/PHON/TRANSL: mixed content. Each carries free text and may
+       additionally contain zero or more <UNCLEAR/> children, allowing
+       both whole-tier unclarity (<FORM><UNCLEAR/></FORM>) and partial
+       inline unclarity (<FORM>foo <UNCLEAR/> bar</FORM>). Was
+       simpleContent (text-only) prior to 2026-06-08. -->
+
+  <xs:complexType name="FORM_Type" mixed="true">
+    <xs:sequence>
+      <xs:element name="UNCLEAR" type="UNCLEAR_Type" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="kindOf" type="FORM_kindOf_Type" use="required"/>
+    <xs:attribute name="notes" type="xs:string"/>
   </xs:complexType>
 
-  <!-- TRANSL: text element; xml:lang is optional at XSD level (V023 is a
+  <!-- TRANSL: mixed content; xml:lang is optional at XSD level (V023 is a
        Python rule because the DTD also could not express it as required
        on TRANSL only). -->
 
-  <xs:complexType name="TRANSL_Type">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute ref="xml:lang"/>
-        <xs:attribute name="kindOf" type="xs:string"/>
-        <xs:attribute name="ver" type="xs:string"/>
-      </xs:extension>
-    </xs:simpleContent>
+  <xs:complexType name="TRANSL_Type" mixed="true">
+    <xs:sequence>
+      <xs:element name="UNCLEAR" type="UNCLEAR_Type" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute ref="xml:lang"/>
+    <xs:attribute name="kindOf" type="xs:string"/>
+    <xs:attribute name="ver" type="xs:string"/>
   </xs:complexType>
 
-  <!-- PHON: text element; kindOf is optional but, when present, must be
+  <!-- PHON: mixed content; kindOf is optional but, when present, must be
        "original" or "standard". -->
 
-  <xs:complexType name="PHON_Type">
-    <xs:simpleContent>
-      <xs:extension base="xs:string">
-        <xs:attribute name="kindOf" type="PHON_kindOf_Type"/>
-      </xs:extension>
-    </xs:simpleContent>
+  <xs:complexType name="PHON_Type" mixed="true">
+    <xs:sequence>
+      <xs:element name="UNCLEAR" type="UNCLEAR_Type" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="kindOf" type="PHON_kindOf_Type"/>
   </xs:complexType>
 
   <!-- AUDIO: empty element; start/end are optional but typed as xs:double
@@ -90,6 +103,7 @@
     <xs:attribute name="end" type="xs:double"/>
     <xs:attribute name="file" type="xs:string"/>
     <xs:attribute name="url" type="xs:string"/>
+    <xs:attribute name="source" type="xs:string"/>
   </xs:complexType>
 
   <!-- M element: FORM, PHON, AUDIO, TRANSL may appear in ANY order via
@@ -155,9 +169,23 @@
       <xs:element name="W" type="W_Type"/>
     </xs:choice>
     <xs:attribute name="id" type="xs:string" use="required"/>
+    <xs:attribute name="audio_url" type="xs:string"/>
+    <xs:attribute name="source" type="xs:string"/>
   </xs:complexType>
 
-  <!-- TEXT element (root): DTD declares TEXT (AUDIO?, S+)
+  <!-- TEXT element (root): AUDIO and S are both optional at the schema
+       level. The canonical shapes are:
+         - text corpus: <TEXT> [<AUDIO/>] <S>+ </TEXT> (one or more S,
+           optional top-level AUDIO)
+         - audio-only file: <TEXT> <AUDIO file="..."/> </TEXT> (single
+           AUDIO child, no S; used for recordings not yet transcribed —
+           relaxed 2026-06-03 per user direction after Whitehorn_Collection)
+       The fully empty case (no AUDIO and no S) is not meaningful but
+       isn't caught here; XSD 1.0 can't express "at least one of these
+       two must be present" without UPA violations, and an empty TEXT
+       is obvious on inspection. Add a Python rule if it ever shows up
+       in real data.
+
        xs:unique on TEXT enforces V039: id values must be unique across
        all S, W, and M elements within a single file. lxml/libxml2 supports
        flat union paths (no predicates) in xs:selector. -->
@@ -165,8 +193,13 @@
   <xs:element name="TEXT">
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="AUDIO" type="AUDIO_Type" minOccurs="0" maxOccurs="1"/>
-        <xs:element name="S" type="S_Type" minOccurs="1" maxOccurs="unbounded"/>
+        <!-- AUDIO/@maxOccurs relaxed to unbounded 2026-06-08: untranscribed
+             companion files (e.g. Wilang Yutas) emit one top-level <AUDIO>
+             per gap, so a single TEXT may legitimately carry several. The
+             text-corpus case still uses 0 or 1; this just no longer caps
+             it at 1. -->
+        <xs:element name="AUDIO" type="AUDIO_Type" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element name="S" type="S_Type" minOccurs="0" maxOccurs="unbounded"/>
       </xs:sequence>
       <xs:attribute name="id" type="xs:string" use="required"/>
       <xs:attribute name="citation" type="xs:string" use="required"/>

@@ -7,7 +7,7 @@
   Exercises: validate_xml.py should report a duplicate-kindOf finding.
   Currently NOT enforced; xfail.
 -->
-<TEXT id="V015_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+<TEXT id="V015_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
   <S id="S_1">
     <FORM kindOf="original">Halo.</FORM>
     <FORM kindOf="original">Halo again.</FORM>

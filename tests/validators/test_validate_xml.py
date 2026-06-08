@@ -347,11 +347,73 @@ def test_V085_multi_same_lang_TRANSL_with_ver_positive(
     copy_fixture(fixtures_dir / "v085_S_two_same_lang_TRANSL_one_with_ver.xml", tmp_path)
     proc = _run_validate(tmp_path)
     combined = (proc.stdout + proc.stderr).lower()
-    assert "v085" not in combined, (
+    # Match the rule-id marker shape "[v085]" rather than the bare
+    # substring "v085", because as of 2026-06-03 the validator prints
+    # the file path on each finding line and that path can contain
+    # "v085" (the fixture's basename) without V085 itself firing.
+    assert "[v085]" not in combined, (
         f"V085 should not fire when ver discriminates; got stdout={proc.stdout!r}"
     )
-    assert "v084" not in combined, (
+    assert "[v084]" not in combined, (
         f"V084 should not fire on valid ver='alt'; got stdout={proc.stdout!r}"
+    )
+
+
+def test_S_audio_url_and_source_and_AUDIO_source_are_clean(
+    tmp_path, fixtures_dir, copy_fixture
+):
+    """Schema regression: S/@audio_url, S/@source, AUDIO/@source, FORM/@notes.
+
+    Added 2026-06-03 to support YeddaPalemeqBlog-style sentence metadata
+    where each S has both a per-sentence audio URL and a per-sentence
+    source-page URL, AUDIO carries the original recording URL in @source
+    alongside @file, and FORM may carry a free-text @notes annotation.
+    Pins all four optional attributes against schema regression.
+    """
+    copy_fixture(
+        fixtures_dir / "valid_S_audio_url_source_and_AUDIO_source.xml", tmp_path
+    )
+    proc = _run_validate(tmp_path)
+    assert _is_clean(proc), (
+        f"expected clean validation; got stdout={proc.stdout!r}, "
+        f"stderr={proc.stderr!r}"
+    )
+
+
+def test_UNCLEAR_in_FORM_PHON_TRANSL_is_clean(
+    tmp_path, fixtures_dir, copy_fixture
+):
+    """Schema regression: <UNCLEAR/> child in FORM/PHON/TRANSL validates.
+
+    Added 2026-06-08 to schematize a pattern already in published data
+    (WilangYutasVideos, YeddaPalemeqBlog). FORM_Type, PHON_Type and
+    TRANSL_Type became mixed content allowing zero or more UNCLEAR
+    children. Pins three shapes: whole-tier (FORM=<UNCLEAR/>), partial
+    inline (FORM='halo <UNCLEAR/> world'), and TRANSL-level.
+    """
+    copy_fixture(
+        fixtures_dir / "valid_UNCLEAR_in_FORM_PHON_TRANSL.xml", tmp_path
+    )
+    proc = _run_validate(tmp_path)
+    assert _is_clean(proc), (
+        f"expected clean validation for UNCLEAR fixture; got "
+        f"stdout={proc.stdout!r}, stderr={proc.stderr!r}"
+    )
+
+
+def test_audio_only_TEXT_no_S_is_clean(tmp_path, fixtures_dir, copy_fixture):
+    """Schema regression: TEXT with single AUDIO child and no S validates.
+
+    Added 2026-06-03 to support audio-only files (no transcription yet).
+    Example in published data: Corpora/Whitehorn_Collection/XML/Amis/
+    hymns_of_praise_side_a_whitehorn_Amis.xml. Pins S/@minOccurs=0
+    against schema regression.
+    """
+    copy_fixture(fixtures_dir / "valid_audio_only_TEXT_no_S.xml", tmp_path)
+    proc = _run_validate(tmp_path)
+    assert _is_clean(proc), (
+        f"expected clean validation for audio-only TEXT; got "
+        f"stdout={proc.stdout!r}, stderr={proc.stderr!r}"
     )
 
 
@@ -499,6 +561,46 @@ def test_V036_trv_with_truku_dialect_is_clean(tmp_path, fixtures_dir, copy_fixtu
     )
 
 
+def test_V036_missing_dialect_is_negative(tmp_path, fixtures_dir, copy_fixture):
+    """V036 negative: TEXT/@dialect is REQUIRED under the new convention.
+
+    A missing dialect attribute must produce a HARD V036 finding. The
+    "unknown" sentinel exists specifically to let authors record "we
+    don't know the dialect" without leaving the attribute off, which
+    used to be indistinguishable from "we forgot".
+    """
+    copy_fixture(fixtures_dir / "v036_TEXT_missing_dialect.xml", tmp_path)
+    proc = _run_validate(tmp_path)
+    assert _has_rule_finding(proc, ("v036", "dialect")), (
+        f"expected finding for missing dialect; got stdout={proc.stdout!r}"
+    )
+
+
+def test_V036_dialect_unknown_is_clean(tmp_path, fixtures_dir, copy_fixture):
+    """V036 positive: dialect='unknown' is accepted for any language."""
+    copy_fixture(fixtures_dir / "valid_dialect_unknown.xml", tmp_path)
+    proc = _run_validate(tmp_path)
+    assert _is_clean(proc), (
+        f"expected clean validation for dialect='unknown'; "
+        f"got stdout={proc.stdout!r}, stderr={proc.stderr!r}"
+    )
+
+
+def test_V036_single_dialect_language_name_is_clean(tmp_path, fixtures_dir, copy_fixture):
+    """V036 positive: single-dialect languages use the language name as dialect.
+
+    e.g., xml:lang='tsu' (Tsou) must accept dialect='Tsou'. This is how
+    single-dialect languages avoid branching code throughout the toolchain —
+    every TEXT has a meaningful dialect value, even when there's only one.
+    """
+    copy_fixture(fixtures_dir / "valid_single_dialect_language_name.xml", tmp_path)
+    proc = _run_validate(tmp_path)
+    assert _is_clean(proc), (
+        f"expected clean validation for xml:lang='tsu' dialect='Tsou'; "
+        f"got stdout={proc.stdout!r}, stderr={proc.stderr!r}"
+    )
+
+
 def test_V038_S_must_have_id_negative(tmp_path, fixtures_dir, copy_fixture):
     """V038: S without an id attribute is rejected by the schema."""
     copy_fixture(fixtures_dir / "v038_S_missing_id.xml", tmp_path)
@@ -642,6 +744,72 @@ def test_V073_PHON_empty_content_negative(tmp_path, fixtures_dir, copy_fixture):
     )
 
 
+def test_V073_PHON_empty_when_sister_FORM_is_null_OK():
+    """V073: empty PHON is OK when the parent's FORM[@kindOf='original'] is '∅'.
+
+    Rule-level test (in-memory): a null morpheme has no phonological
+    content by definition. Both original and standard PHON of a null
+    morpheme are legitimately empty, so V073 must not fire for either.
+    Confirmed by Joshua's request on 2026-06-01.
+    """
+    from io import BytesIO
+    from lxml import etree as _etree
+
+    from QC.validation.rules import hard as hard_rules
+
+    xml = (
+        '<?xml version="1.0" encoding="utf-8"?>'
+        '<TEXT id="T1" citation="t" BibTeX_citation="@t{t}" '
+        'copyright="t" xml:lang="ami">'
+        '<S id="S1">'
+        '<FORM kindOf="original">a ∅ b</FORM>'
+        '<FORM kindOf="standard">a ∅ b</FORM>'
+        '<W id="W1">'
+        '<FORM kindOf="original">∅</FORM>'
+        '<FORM kindOf="standard">∅</FORM>'
+        '<PHON kindOf="original"></PHON>'
+        '<PHON kindOf="standard"></PHON>'
+        '<M id="M1">'
+        '<FORM kindOf="original">∅</FORM>'
+        '<FORM kindOf="standard">∅</FORM>'
+        '<PHON kindOf="original"></PHON>'
+        '<PHON kindOf="standard"></PHON>'
+        '</M>'
+        '</W>'
+        '</S>'
+        '</TEXT>'
+    )
+    tree = _etree.parse(BytesIO(xml.encode("utf-8")))
+    findings = hard_rules.v073_phon_non_empty(tree, Path("test.xml"), None)
+    assert findings == [], (
+        f"V073 should not fire when sister FORM is '∅'; got {findings!r}"
+    )
+
+
+def test_V073_PHON_empty_when_sister_FORM_is_non_null_negative():
+    """V073: empty PHON when sister FORM has real content (no '∅') still fires."""
+    from io import BytesIO
+    from lxml import etree as _etree
+
+    from QC.validation.rules import hard as hard_rules
+
+    xml = (
+        '<?xml version="1.0" encoding="utf-8"?>'
+        '<TEXT id="T1" citation="t" BibTeX_citation="@t{t}" '
+        'copyright="t" xml:lang="ami">'
+        '<S id="S1">'
+        '<FORM kindOf="original">halo</FORM>'
+        '<PHON kindOf="original"></PHON>'
+        '</S>'
+        '</TEXT>'
+    )
+    tree = _etree.parse(BytesIO(xml.encode("utf-8")))
+    findings = hard_rules.v073_phon_non_empty(tree, Path("test.xml"), None)
+    assert len(findings) == 1, (
+        f"V073 should fire when sister FORM has real content; got {findings!r}"
+    )
+
+
 # -----------------------------------------------------------------------------
 # Cross-corpus: V081, V083
 # -----------------------------------------------------------------------------
@@ -668,6 +836,61 @@ def test_V083_schema_validation_positive(tmp_path, fixtures_dir, copy_fixture):
     proc = _run_validate(tmp_path)
     assert _is_clean(proc), (
         f"expected clean validation; got stdout={proc.stdout!r}, stderr={proc.stderr!r}"
+    )
+
+
+# -----------------------------------------------------------------------------
+# Regression: comprehensive_test.xml
+#
+# Joshua maintains tests/fixtures/comprehensive_test.xml as a real-world
+# example carrying many distinct issues. The fixture grows over time as
+# new patterns surface; this test asserts the CURRENTLY-FLAGGED set is
+# always a SUBSET of what fires. New findings are fine — silently
+# dropping any of these is a regression.
+# -----------------------------------------------------------------------------
+
+
+def test_comprehensive_test_xml_regression():
+    """Lock in validate_xml.py findings on comprehensive_test.xml.
+
+    When Joshua adds new examples, add the corresponding (rule, marker)
+    pair below. When a rule is renamed or restructured, update the
+    marker — but don't delete the entry until the underlying issue is
+    actually resolved in the fixture.
+    """
+    fixture = _REPO_ROOT / "tests" / "fixtures" / "comprehensive_test.xml"
+    assert fixture.exists(), f"comprehensive fixture missing at {fixture}"
+    proc = subprocess.run(
+        [
+            sys.executable, str(VALIDATE_XML),
+            "--published-corpora", str(_CORPORA_ROOT),
+            "by_path", "--path", str(fixture),
+            "--soft-csv", "/tmp/comprehensive_xml_soft.csv",
+        ],
+        capture_output=True,
+        text=True,
+    )
+    combined = (proc.stdout + proc.stderr).lower()
+    # (rule_id, identifying marker) — both must appear in combined output.
+    expected: tuple[tuple[str, str], ...] = (
+        # V000 schema: duplicated id key-sequences (multiple lines).
+        ("v000", "duplicate key-sequence"),
+        # V017 empty FORM at the typo'd id "ap3_S_2_W0_M0_0a".
+        ("v017", "ap3_s_2_w0_m0_0a"),
+        # V039 duplicate-id collisions (many; sample one as a marker).
+        ("v039", "ap3_s_2_w0"),
+        # V085 duplicate TRANSL xml:lang without `ver` at ap3_S_2.
+        ("v085", "ap3_s_2"),
+        # V081 cross-corpus TEXT id collision.
+        ("v081", "id collision"),
+    )
+    missing: list[tuple[str, str]] = []
+    for rule, marker in expected:
+        if rule not in combined or marker not in combined:
+            missing.append((rule, marker))
+    assert not missing, (
+        f"comprehensive_test.xml regression: missing expected findings "
+        f"{missing!r}; stdout={proc.stdout!r} stderr={proc.stderr!r}"
     )
 
 

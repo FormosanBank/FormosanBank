@@ -10,7 +10,7 @@
   "triple space" pattern is the marker tested — if a cleanup pass
   collapses doubles but not triples (or vice versa), this catches it.
 -->
-<TEXT id="TEST_WS" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+<TEXT id="TEST_WS" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
   <S id="S_1">
     <FORM kindOf="original">  Halo,   hapinangha.   </FORM>
     <FORM kindOf="standard">  Halo,   hapinangha.   </FORM>

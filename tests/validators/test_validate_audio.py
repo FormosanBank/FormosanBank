@@ -319,6 +319,57 @@ def test_no_findings_means_clean_exit(tmp_path):
     )
 
 
+def test_no_V105_when_FORM_is_UNCLEAR_only(tmp_path):
+    """UNCLEAR-only FORM must not trigger the cps/wps SOFT finding (V105).
+
+    Pre-2026-06-08 behavior: validate_audio.py extracted form_elem.text
+    (empty for <FORM><UNCLEAR/></FORM>) and computed words/sec = 0,
+    which is < 0.1, which unconditionally triggered V105. The signal
+    ("speaker too slow") was wrong; the truth is "audio was
+    unintelligible — nothing to count." Fix: use itertext() to gather
+    all text under FORM, and skip the cps/wps check entirely when the
+    resulting text is empty/whitespace.
+
+    Builds an explicit XML with <FORM kindOf='original'><UNCLEAR/></FORM>
+    rather than using the _write_text helper (which assigns `.text`),
+    then asserts the broken_audio.csv has no words/sec row for this clip.
+    """
+    corpus, xml_dir, audio_dir = _make_corpus(tmp_path)
+    wav = audio_dir / "unclear.wav"
+    _make_audible_wav(wav, duration_sec=1.0)
+    xml = xml_dir / "test.xml"
+    root = ET.Element("TEXT", attrib={
+        "id": "TEST",
+        "citation": "t",
+        "BibTeX_citation": "@t{t}",
+        "copyright": "t",
+        "xml:lang": "ami",
+    })
+    s = ET.SubElement(root, "S", attrib={"id": "S_1"})
+    form = ET.SubElement(s, "FORM", attrib={"kindOf": "original"})
+    ET.SubElement(form, "UNCLEAR")
+    ET.SubElement(s, "AUDIO", attrib={
+        "file": "unclear.wav", "start": "0", "end": "1",
+    })
+    ET.ElementTree(root).write(str(xml), encoding="utf-8", xml_declaration=True)
+
+    log_dir = tmp_path / "logs"
+    proc = _run(xml_dir, audio_dir, log_dir)
+    assert proc.returncode == 0, (
+        f"clean (no-content) UNCLEAR run should exit 0; got "
+        f"{proc.returncode}, stderr={proc.stderr!r}"
+    )
+    rows = _read_broken_csv(log_dir)
+    # broken_audio.csv tracks the HARD missing/unloadable/silent/range
+    # kinds and ALSO the SOFT words/sec kind. Filter to our file and
+    # assert no rows for it (i.e. no V105 was emitted).
+    our_rows = [r for r in rows if r["audio_file"] == "unclear.wav"]
+    assert not our_rows, (
+        f"expected NO broken_audio rows for an UNCLEAR-only FORM (cps/wps "
+        f"check should be skipped); got {our_rows!r}"
+    )
+
+
 def test_soft_findings_alone_do_not_fail(tmp_path):
     """A corpus that only triggers SOFT findings (e.g. words/sec out of
     range) should still exit 0 — SOFT findings warn but don't fail."""

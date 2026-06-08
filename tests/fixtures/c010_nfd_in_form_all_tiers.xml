@@ -14,7 +14,7 @@
   source. lxml round-trips bytes faithfully so the NFD remains until
   the cleaner reads, normalises, and writes back.
 -->
-<TEXT id="TEST_C010" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+<TEXT id="TEST_C010" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
   <S id="S_1">
     <FORM kindOf="original">cafe&#769;</FORM>
     <FORM kindOf="standard">cafe&#769;</FORM>

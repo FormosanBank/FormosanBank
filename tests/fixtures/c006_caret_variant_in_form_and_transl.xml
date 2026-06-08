@@ -14,7 +14,7 @@
   language-aware swap (which skips Chinese) will fail loudly here.
 -->
 <TEXT id="TEST_C006" citation="test" BibTeX_citation="@test{test}"
-      copyright="test" xml:lang="ami">
+      copyright="test" xml:lang="ami" dialect="unknown">
   <S id="S_1">
     <FORM kindOf="original">a&#x2303;b&#x2038;c&#x02C6;d&#xFF3E;e</FORM>
     <FORM kindOf="standard">a&#x2303;b&#x2038;c&#x02C6;d&#xFF3E;e</FORM>

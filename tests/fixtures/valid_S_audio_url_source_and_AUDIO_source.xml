@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Positive fixture: optional attributes added 2026-06-03 must validate clean.
+  - S/@audio_url   (per-sentence URL pointing at the source audio recording)
+  - S/@source      (per-sentence URL pointing at the source page)
+  - AUDIO/@source  (per-clip URL pointing at the source audio recording)
+  - FORM/@notes    (free-text annotation on a FORM element)
+
+  Modeled on Corpora/YeddaPalemeqBlog/XML/Paiwan/Paiwan_Yedda_Blog.xml
+  where each S carries both URL attributes and AUDIO carries the source
+  URL alongside @file. FORM/@notes is added for upcoming annotation
+  workflows.
+-->
+<TEXT id="audio_url_and_source" citation="t" BibTeX_citation="@t{t}" copyright="t" xml:lang="ami" dialect="unknown">
+  <S id="S_1"
+     audio_url="https://www.example.com/embed/abc"
+     source="https://www.example.com/post/abc">
+    <AUDIO source="https://www.example.com/embed/abc" file="S_1.wav"/>
+    <FORM kindOf="original" notes="transcription verified 2026-06-03">Halo (orig).</FORM>
+    <FORM kindOf="standard">Halo (std).</FORM>
+  </S>
+</TEXT>

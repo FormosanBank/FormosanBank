@@ -9,7 +9,7 @@
   full-width on non-Chinese TRANSL. Today: clean_trans skips
   swap_punctuation entirely so the test expects ASCII parens (XFAIL).
 -->
-<TEXT id="TEST_C001_EN" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+<TEXT id="TEST_C001_EN" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
   <S id="S_1">
     <FORM kindOf="original">Halo.</FORM>
     <FORM kindOf="standard">Halo.</FORM>

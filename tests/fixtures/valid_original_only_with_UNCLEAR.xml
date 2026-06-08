@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Positive fixture for standardize.py copy mode preserving UNCLEAR when
+  duplicating original to standard. One S with an UNCLEAR-only FORM
+  (the whole-tier unclarity case from WilangYutasVideos), no standard
+  tier yet, exercises the "create new" branch of create_standard.
+
+  Expected post-copy state: a new FORM kindOf='standard' is inserted,
+  containing the same UNCLEAR child as the original. Without the
+  fix, the new standard FORM would be empty and would trigger V017
+  under the 2026-06-08 schema.
+-->
+<TEXT id="UNCLEAR_OO" citation="t" BibTeX_citation="@t{t}" copyright="t" xml:lang="ami" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original"><UNCLEAR/></FORM>
+  </S>
+</TEXT>

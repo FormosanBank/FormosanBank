@@ -14,7 +14,7 @@
   content. Catches a regression where the script silently skips an
   element with a pre-existing standard tier at any level.
 -->
-<TEXT id="TEST_BT" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+<TEXT id="TEST_BT" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
   <S id="S_1">
     <FORM kindOf="original">Halo, hapinangha.</FORM>
     <FORM kindOf="standard">REPLACE ME S</FORM>

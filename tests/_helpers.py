@@ -11,14 +11,16 @@ import subprocess
 from pathlib import Path
 
 
-# Match any non-whitespace token that ends in ".xml", with or without a
-# leading slash. The broad pattern catches both full paths
+# Match any non-whitespace token that ends in ".xml" or ".csv", with or
+# without a leading slash. The broad pattern catches both full paths
 # ("/tmp/.../v051_AUDIO_empty_file_attr.xml") and bare basenames
 # ("v051_AUDIO_empty_file_attr.xml") that scripts may print. Stripping
 # these before marker matching prevents fixture filenames (which encode
-# the rule ID) from falsely satisfying rule-specific assertions and
-# turning xfail tests into XPASSes for the wrong reason.
-FILE_PATH_RE = re.compile(r"\S*\.xml")
+# the rule ID) and SOFT-CSV output paths (which include the pytest test
+# function name, also encoding the rule ID) from falsely satisfying
+# rule-specific assertions and turning xfail tests into XPASSes for
+# the wrong reason.
+FILE_PATH_RE = re.compile(r"\S*\.(?:xml|csv)")
 
 
 def combined_output(

@@ -8,7 +8,7 @@
   Exercises: validate_xml.py should report a finding. Currently the XSD
   types these as xs:string so no comparison is done; xfail.
 -->
-<TEXT id="V054_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" audio="lecture.wav">
+<TEXT id="V054_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" audio="lecture.wav" dialect="unknown">
   <S id="S_1">
     <FORM kindOf="original">Halo.</FORM>
     <AUDIO start="10" end="5"/>

@@ -7,12 +7,12 @@ Rules that do NOT consult `index` go in RULES; the runner calls them
 in pass 1. Rules that DO consult `index` go in CROSS_FILE_RULES; the
 runner calls them in pass 2 after the index is built.
 """
-import csv
 from pathlib import Path
 
 from lxml import etree
 
 from QC.validation._corpus_index import CorpusIndex
+from QC.validation._dialect_inventory import valid_dialects
 from QC.validation._finding import Finding, Severity
 
 
@@ -350,11 +350,19 @@ def v017_form_must_have_content(
 
     The DTD allows mixed content on FORM, so this constraint cannot be
     expressed in pure XSD/DTD — it requires a Python rule.
+
+    Carve-out: FORM containing one or more <UNCLEAR/> children is not
+    empty in the V017 sense — it positively asserts "we tried to
+    transcribe and the audio is unintelligible." This is distinct from
+    the no-attempt case (V010 SOFT, S with no FORM at all). See the
+    UNCLEAR comment in xml_template.xsd. Added 2026-06-08.
     """
     findings: list[Finding] = []
     for form in tree.iter("FORM"):
         text = form.text or ""
         if text.strip():
+            continue
+        if form.find("UNCLEAR") is not None:
             continue
         parent = form.getparent()
         parent_id = parent.get("id") if parent is not None else None
@@ -546,86 +554,24 @@ def v026_M_transl_kindof_enum(
 # Category 3: TEXT attribute rules (V036, V039)
 # ---------------------------------------------------------------------------
 
-def _load_dialects() -> dict[str, set[str]]:
-    """Load dialects.csv into a dict mapping Language name -> set of dialect names.
-
-    CSV format: Language,Official,Chinese,glottocode,OtherNames
-    We use the 'Language' and 'Official' columns (Language is the language
-    name; Official is the dialect name).
-    """
-    dialects_path = Path(__file__).resolve().parents[3] / "dialects.csv"
-    result: dict[str, set[str]] = {}
-    with open(dialects_path, newline="", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            lang = row["Language"].strip()
-            dialect = row["Official"].strip()
-            if lang and dialect:
-                result.setdefault(lang, set()).add(dialect)
-    return result
-
-
-# ISO 639-3 code -> Language name (matches dialects.csv "Language" column).
-# Source: QC/corpus_metrics.py LANG_CODES dict.
-_ISO_TO_LANGUAGE: dict[str, str] = {
-    "ami": "Amis",
-    "tay": "Atayal",
-    "pwn": "Paiwan",
-    "bnn": "Bunun",
-    "pyu": "Puyuma",
-    "dru": "Rukai",
-    "tsu": "Tsou",
-    "xsy": "Saisiyat",
-    "tao": "Yami",
-    "ssf": "Thao",
-    "ckv": "Kavalan",
-    "trv": "Seediq",
-    "szy": "Sakizaya",
-    "sxr": "Saaroa",
-    "xnb": "Kanakanavu",
-    "fos": "Siraya",
-}
-
-_DIALECT_MAP: dict[str, set[str]] = _load_dialects()
-
-# trv is the ISO 639-3 code that linguists assign to a Seediq/Truku cluster,
-# but Truku speakers consider Truku a distinct language. Per FormosanBank
-# data convention: xml:lang="trv" requires a dialect attribute. dialect="Truku"
-# resolves to language name "Truku"; the other valid dialects (Seediq's three
-# Official dialects) resolve to "Seediq". The full valid set is the union.
-_TRV_VALID_DIALECTS: frozenset[str] = frozenset({"Truku"}) | _DIALECT_MAP.get(
-    "Seediq", set()
-)
-
-
-def _resolve_language_name(lang_code: str, dialect: str | None) -> str | None:
-    """Return the human-readable Language name for an ISO 639-3 code.
-
-    Handles the trv (Seediq/Truku) ambiguity per FormosanBank convention:
-    trv with dialect="Truku" is named "Truku"; trv with any other dialect
-    is named "Seediq". Other ISO codes resolve via the _ISO_TO_LANGUAGE
-    table directly. Returns None for unknown codes.
-    """
-    if lang_code == "trv":
-        return "Truku" if dialect == "Truku" else "Seediq"
-    return _ISO_TO_LANGUAGE.get(lang_code)
-
-
 def v036_text_dialect_valid(
     tree: etree._ElementTree,
     path: Path,
     index: CorpusIndex | None,
 ) -> list[Finding]:
-    """V036: TEXT/@dialect must be valid for the language.
+    """V036: TEXT/@dialect is required and must be valid for the language.
 
-    Dialect validity is checked against dialects.csv. For most languages,
-    @dialect is OPTIONAL — if absent, the rule skips. If present, it must
-    match one of the Official dialects for the language identified by
-    TEXT/@xml:lang.
-
-    Special case for xml:lang="trv": @dialect is REQUIRED (not optional)
-    because trv is ambiguous between Truku and Seediq. The valid dialects
-    for trv are Truku + the three Seediq Official dialects.
+    Convention (see QC/validation/_dialect_inventory.py for the full table):
+      - Every TEXT MUST have a `dialect` attribute. Use "unknown" when the
+        dialect cannot be identified — that distinguishes "we don't know"
+        from "we forgot to record it".
+      - For multi-dialect languages, the value must be one of the Official
+        dialects in dialects.csv, or "unknown".
+      - For single-dialect languages, the value is the language name itself
+        (e.g., xml:lang="tsu" -> dialect="Tsou"), or "unknown".
+      - xml:lang="trv" accepts Truku + Seediq's three Official dialects
+        + "unknown" (the one ISO code that lumps two FormosanBank languages
+        together).
     """
     root = tree.getroot()
     if root.tag != "TEXT":
@@ -633,45 +579,30 @@ def v036_text_dialect_valid(
     lang_code = root.get(_XML_LANG_ATTR) or root.get("xml:lang") or ""
     dialect = root.get("dialect")
 
-    if lang_code == "trv":
-        if not dialect:
-            return [Finding(
-                rule_id="V036",
-                severity=Severity.HARD,
-                message=(
-                    "TEXT with xml:lang='trv' must specify a dialect "
-                    f"(one of {sorted(_TRV_VALID_DIALECTS)}); "
-                    "trv is ambiguous between Truku and Seediq without it"
-                ),
-                path=path,
-                location="TEXT",
-            )]
-        if dialect not in _TRV_VALID_DIALECTS:
-            return [Finding(
-                rule_id="V036",
-                severity=Severity.HARD,
-                message=(
-                    f"TEXT dialect={dialect!r} is not a valid dialect for "
-                    f"xml:lang='trv'; expected one of "
-                    f"{sorted(_TRV_VALID_DIALECTS)}"
-                ),
-                path=path,
-                location="TEXT",
-            )]
-        return []
-
     if not dialect:
+        return [Finding(
+            rule_id="V036",
+            severity=Severity.HARD,
+            message=(
+                "TEXT/@dialect is required; use 'unknown' if the dialect "
+                "is not known. See dialects.csv for valid values."
+            ),
+            path=path,
+            location="TEXT",
+        )]
+
+    allowed = valid_dialects(lang_code)
+    if allowed is None:
+        # Unknown xml:lang — V035 handles that finding; don't double-report.
         return []
-    language = _ISO_TO_LANGUAGE.get(lang_code)
-    if language is None:
-        return []  # unknown language code; v035 handles that
-    allowed = _DIALECT_MAP.get(language, set())
     if dialect not in allowed:
         return [Finding(
             rule_id="V036",
             severity=Severity.HARD,
-            message=f"TEXT dialect={dialect!r} is not a valid dialect for "
-                    f"language {language!r}; check dialects.csv for allowed values",
+            message=(
+                f"TEXT dialect={dialect!r} is not valid for xml:lang={lang_code!r}; "
+                f"expected one of {sorted(allowed)}"
+            ),
             path=path,
             location="TEXT",
         )]
@@ -812,6 +743,12 @@ def v072_duplicate_phon_kindof(
     return findings
 
 
+# Null symbol used in W/M-tier FORM to mark elided morphemes. Canonical
+# source is QC.validation.rules.text.NULL_SYMBOL; duplicated here as a
+# literal to avoid a hard.py -> text.py dependency.
+_NULL_SYMBOL_CHAR = "∅"
+
+
 def v073_phon_non_empty(
     tree: etree._ElementTree,
     path: Path,
@@ -819,23 +756,71 @@ def v073_phon_non_empty(
 ) -> list[Finding]:
     """V073: PHON must have non-empty text content.
 
-    A PHON with empty or whitespace-only text is a data error.
+    A PHON with empty or whitespace-only text is a data error — UNLESS
+    the PHON's parent (W or M) has a direct-child FORM whose stripped
+    text equals '∅'. A null morpheme has no phonological content by
+    definition, so the original and standard PHON for a null
+    parent are legitimately empty. Joshua flagged this on 2026-06-01.
     """
     findings: list[Finding] = []
     for phon in tree.iter("PHON"):
         text = phon.text or ""
-        if not text.strip():
-            parent = phon.getparent()
-            p_id = parent.get("id") if parent is not None else None
-            p_tag = parent.tag if parent is not None else "?"
-            findings.append(Finding(
-                rule_id="V073",
-                severity=Severity.HARD,
-                message="PHON is empty; PHON must have non-empty text content",
-                path=path,
-                location=f"{p_tag}={p_id}" if p_id else p_tag,
-            ))
+        if text.strip():
+            continue
+        # Carve-out: PHON containing <UNCLEAR/> is not empty in the V073
+        # sense — it positively asserts "audio is unintelligible." Same
+        # logic as the V017 carve-out for FORM; added 2026-06-08.
+        if phon.find("UNCLEAR") is not None:
+            continue
+        parent = phon.getparent()
+        if parent is not None and _parent_form_is_null(parent):
+            continue
+        # Carve-out: empty PHON is also legitimate when its sibling FORM
+        # contains <UNCLEAR/> — when the transcription itself is
+        # unintelligible, there's no phonology to record. This matches
+        # the published pattern in WilangYutasVideos where each <S> with
+        # an UNCLEAR FORM has empty PHON siblings (no UNCLEAR child on
+        # PHON itself). Added 2026-06-08.
+        if parent is not None and _parent_form_is_unclear(parent):
+            continue
+        p_id = parent.get("id") if parent is not None else None
+        p_tag = parent.tag if parent is not None else "?"
+        findings.append(Finding(
+            rule_id="V073",
+            severity=Severity.HARD,
+            message="PHON is empty; PHON must have non-empty text content",
+            path=path,
+            location=f"{p_tag}={p_id}" if p_id else p_tag,
+        ))
     return findings
+
+
+def _parent_form_is_null(parent: etree._Element) -> bool:
+    """True if `parent` has any direct-child FORM whose text == '∅' (after strip).
+
+    Used by V073 to exempt PHONs whose parent W/M is a null morpheme.
+    Either tier counts; per V123, a `∅` in one FORM must also be in the
+    sister, so checking 'any FORM' is equivalent to 'either FORM' in
+    well-formed corpora.
+    """
+    for child in parent:
+        if child.tag == "FORM" and (child.text or "").strip() == _NULL_SYMBOL_CHAR:
+            return True
+    return False
+
+
+def _parent_form_is_unclear(parent: etree._Element) -> bool:
+    """True if `parent` has any direct-child FORM that contains an <UNCLEAR/>.
+
+    Used by V073 to exempt empty PHONs whose sibling FORM positively
+    asserts that the audio is unintelligible. Added 2026-06-08 to
+    accommodate the published WilangYutasVideos pattern where an
+    UNCLEAR FORM sits next to empty PHON siblings.
+    """
+    for child in parent:
+        if child.tag == "FORM" and child.find("UNCLEAR") is not None:
+            return True
+    return False
 
 
 # Allowed values for TRANSL/@ver. Per user direction (2026-06-01 follow-up to

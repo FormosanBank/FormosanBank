@@ -135,7 +135,10 @@ def test_soft_csv_written_with_header_when_no_soft_findings(tmp_path, fixtures_d
     assert csv_path.exists()
     with open(csv_path, newline="") as f:
         rows = list(csv.reader(f))
-    assert rows == [["file", "rule_id", "language", "character", "count"]]
+    # SOFT_CSV columns include `location` and `line` (added 2026-06-01).
+    assert rows == [
+        ["file", "rule_id", "location", "line", "language", "character", "count"]
+    ]
 
 
 def test_soft_csv_default_path(tmp_path, fixtures_dir, copy_fixture):

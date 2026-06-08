@@ -477,6 +477,180 @@ def test_V065_no_W_at_all_no_ops():
 
 
 # ---------------------------------------------------------------------------
+# V066: clitic boundary '=' in W FORM must propagate into a child M FORM (HARD)
+# ---------------------------------------------------------------------------
+
+
+def test_V066_clitic_in_W_with_no_clitic_in_any_M_emits_HARD():
+    """W FORM 'akia=cu with Ms 'akia' and 'cu' (neither carries '=') -> HARD."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">'akia=cu</FORM>
+        <W id="W1">
+          <FORM kindOf="original">'akia=cu</FORM>
+          <M id="M1"><FORM kindOf="original">'akia</FORM></M>
+          <M id="M2"><FORM kindOf="original">cu</FORM></M>
+        </W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v066_clitic_in_W_requires_clitic_in_M, xml)
+    assert len(findings) == 1, f"expected 1 V066 finding; got {findings!r}"
+    f = findings[0]
+    assert f.rule_id == "V066"
+    assert f.severity is Severity.HARD
+    assert "W1" in f.location
+
+
+def test_V066_clitic_preserved_in_one_M_clean():
+    """W FORM 'akia=cu with one M containing '=' -> no V066."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">'akia=cu</FORM>
+        <W id="W1">
+          <FORM kindOf="original">'akia=cu</FORM>
+          <M id="M1"><FORM kindOf="original">'akia</FORM></M>
+          <M id="M2"><FORM kindOf="original">=cu</FORM></M>
+        </W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v066_clitic_in_W_requires_clitic_in_M, xml)
+    assert findings == [], f"expected no V066 finding; got {findings!r}"
+
+
+def test_V066_no_clitic_in_W_no_ops():
+    """W FORM with no '=' -> V066 never fires."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">aba</FORM>
+        <W id="W1">
+          <FORM kindOf="original">aba</FORM>
+          <M id="M1"><FORM kindOf="original">a</FORM></M>
+          <M id="M2"><FORM kindOf="original">ba</FORM></M>
+        </W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v066_clitic_in_W_requires_clitic_in_M, xml)
+    assert findings == [], f"expected no V066 finding; got {findings!r}"
+
+
+def test_V066_clitic_in_W_with_no_M_children_no_ops():
+    """W FORM has '=' but no M children -> V066 doesn't fire.
+
+    V061 already handles the morpheme-count side; V066's scope is the
+    type of boundary carried into the M tier, which only makes sense
+    when an M tier exists.
+    """
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">'akia=cu</FORM>
+        <W id="W1"><FORM kindOf="original">'akia=cu</FORM></W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v066_clitic_in_W_requires_clitic_in_M, xml)
+    assert findings == [], f"expected no V066 finding; got {findings!r}"
+
+
+def test_V066_uses_W_original_FORM_in_preference_to_standard():
+    """V066 inspects the W's preferred FORM (original > any FORM)."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">'akia=cu</FORM>
+        <W id="W1">
+          <FORM kindOf="original">'akia=cu</FORM>
+          <FORM kindOf="standard">'akiacu</FORM>
+          <M id="M1"><FORM kindOf="original">'akia</FORM></M>
+          <M id="M2"><FORM kindOf="original">cu</FORM></M>
+        </W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v066_clitic_in_W_requires_clitic_in_M, xml)
+    # W-original has '='; no M carries it -> finding.
+    assert len(findings) == 1, f"expected 1 V066 finding; got {findings!r}"
+
+
+# ---------------------------------------------------------------------------
+# V067: angle-bracket notation in M FORM is forbidden (HARD)
+# ---------------------------------------------------------------------------
+
+
+def test_V067_angle_brackets_in_M_FORM_emits_HARD():
+    """M FORM '<n>' -> HARD V067. Infix M FORMs must use '-X-' notation."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">n&lt;n&gt;daha</FORM>
+        <W id="W1">
+          <FORM kindOf="original">n&lt;n&gt;daha</FORM>
+          <M id="M1"><FORM kindOf="original">&lt;n&gt;</FORM></M>
+          <M id="M2"><FORM kindOf="original">n-daha</FORM></M>
+        </W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v067_no_angle_brackets_in_M_FORM, xml)
+    assert len(findings) == 1, f"expected 1 V067 finding; got {findings!r}"
+    f = findings[0]
+    assert f.rule_id == "V067"
+    assert f.severity is Severity.HARD
+    assert "M1" in f.location
+
+
+def test_V067_dash_infix_notation_clean():
+    """M FORM '-um-' (canonical infix notation) -> no V067."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">k-um-ita</FORM>
+        <W id="W1">
+          <FORM kindOf="original">k-um-ita</FORM>
+          <TRANSL xml:lang="eng">see&lt;AV&gt;</TRANSL>
+          <M id="M1"><FORM kindOf="original">-um-</FORM></M>
+          <M id="M2"><FORM kindOf="original">kita</FORM></M>
+        </W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v067_no_angle_brackets_in_M_FORM, xml)
+    assert findings == [], f"expected no V067 finding; got {findings!r}"
+
+
+def test_V067_plain_M_FORM_clean():
+    """M FORM 'kaen' (no angle brackets) -> no V067."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">kaen</FORM>
+        <W id="W1">
+          <FORM kindOf="original">kaen</FORM>
+          <M id="M1"><FORM kindOf="original">kaen</FORM></M>
+        </W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v067_no_angle_brackets_in_M_FORM, xml)
+    assert findings == [], f"expected no V067 finding; got {findings!r}"
+
+
+def test_V067_checks_both_kindOf_tiers():
+    """V067 fires on either kindOf='original' or kindOf='standard' M FORM."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">x</FORM>
+        <W id="W1">
+          <FORM kindOf="original">x</FORM>
+          <M id="M1">
+            <FORM kindOf="original">x</FORM>
+            <FORM kindOf="standard">&lt;n&gt;</FORM>
+          </M>
+        </W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v067_no_angle_brackets_in_M_FORM, xml)
+    assert len(findings) == 1, f"expected 1 V067 finding; got {findings!r}"
+    assert findings[0].rule_id == "V067"
+
+
+def test_V067_angle_brackets_in_W_FORM_do_not_trigger():
+    """V067 is M-scoped only; '<X>' in W FORM (legitimate infix marker) is fine."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">k&lt;um&gt;ita</FORM>
+        <W id="W1">
+          <FORM kindOf="original">k&lt;um&gt;ita</FORM>
+          <M id="M1"><FORM kindOf="original">-um-</FORM></M>
+          <M id="M2"><FORM kindOf="original">kita</FORM></M>
+        </W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v067_no_angle_brackets_in_M_FORM, xml)
+    assert findings == [], f"expected no V067 finding; got {findings!r}"
+
+
+# ---------------------------------------------------------------------------
 # Orchestrator-level: validate_glosses.py (W4)
 # ---------------------------------------------------------------------------
 
@@ -647,3 +821,47 @@ def test_validate_glosses_check_morpho_flag(tmp_path):
         assert "has_morphemes" in contents.splitlines()[0], (
             f"expected has_morphemes column header; got {contents!r}"
         )
+
+
+# -----------------------------------------------------------------------------
+# Regression: comprehensive_test.xml
+#
+# Companion to test_validate_xml.py's comprehensive_test_xml_regression
+# and test_validate_text.py's regression test. See those for the
+# maintenance protocol.
+# -----------------------------------------------------------------------------
+
+
+def test_comprehensive_test_xml_regression(tmp_path):
+    """Lock in validate_glosses.py findings on comprehensive_test.xml."""
+    repo_root = Path(__file__).resolve().parents[2]
+    fixture = repo_root / "tests" / "fixtures" / "comprehensive_test.xml"
+    assert fixture.exists(), f"comprehensive fixture missing at {fixture}"
+    out = tmp_path / "out"
+    proc = subprocess.run(
+        [
+            sys.executable, str(VALIDATE_GLOSSES),
+            "by_path", "--path", str(fixture),
+            "--output_dir", str(out),
+        ],
+        capture_output=True,
+        text=True,
+    )
+    combined = (proc.stdout + proc.stderr).lower()
+    expected: tuple[tuple[str, str], ...] = (
+        # V066 clitic-propagation on the two clitic-bearing Ws of S=3_S_10.
+        ("v066", "3_s_10_w6"),
+        ("v066", "3_s_10_w7"),
+        # V067 angle-bracket-in-M on the infix M of ap2_S_1_W3.
+        ("v067", "ap2_s_1_w3_m0_0_0"),
+        # V060 W-count vs word-count mismatch on S=1.
+        ("v060", "s=1"),
+    )
+    missing: list[tuple[str, str]] = []
+    for rule, marker in expected:
+        if rule not in combined or marker not in combined:
+            missing.append((rule, marker))
+    assert not missing, (
+        f"comprehensive_test.xml regression: missing expected findings "
+        f"{missing!r}; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )

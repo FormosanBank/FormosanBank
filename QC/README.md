@@ -41,6 +41,7 @@ The validator suite is a **staged pipeline** of separate executables that share 
 | Stage | Validator | Rule module | What it checks |
 |---|---|---|---|
 | 1 | `QC/validation/validate_xml.py` | `QC/validation/rules/hard.py` | XML format: schema, IDs, attributes, structural validity. |
+| 1 | `QC/validation/validate_dialect.py` | (n/a — informational) | Prints a `(xml:lang, dialect) -> count` summary. Run right after `validate_xml.py`; requires human eyeballing to confirm the distribution looks right. |
 | 2 | `QC/validation/validate_glosses.py` | `QC/validation/rules/gloss.py` | Gloss artifacts: V060–V065. SOFT rules emit warnings; HARD rules cause nonzero exit. |
 | 2 | `QC/validation/validate_punct.py` | (legacy script) | Punctuation/processing artifacts. |
 

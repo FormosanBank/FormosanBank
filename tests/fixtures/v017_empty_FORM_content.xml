@@ -7,7 +7,7 @@
   Exercises: validate_xml.py should reject. Currently XSD allows xs:string
   with no minLength so this is NOT enforced; xfail.
 -->
-<TEXT id="V017_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+<TEXT id="V017_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
   <S id="S_1">
     <FORM kindOf="original"></FORM>
   </S>

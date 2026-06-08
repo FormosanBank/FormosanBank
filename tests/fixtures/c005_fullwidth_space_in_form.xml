@@ -10,7 +10,7 @@
   it. The pin guards against a future refactor to a stricter regex
   (e.g. [ \t\n]+) that would break this incidental behaviour.
 -->
-<TEXT id="TEST_C005" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+<TEXT id="TEST_C005" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
   <S id="S_1">
     <FORM kindOf="original">Halo　hapinangha.</FORM>
     <FORM kindOf="standard">Halo　hapinangha.</FORM>

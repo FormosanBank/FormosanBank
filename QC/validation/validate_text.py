@@ -159,6 +159,11 @@ def _resolve_target_files(args: argparse.Namespace) -> list[Path]:
 def _print_summary(findings: list[Finding]) -> None:
     """Emit per-rule findings + summary. Format mirrors validate_xml.py so
     callers / test helpers can reuse the same marker conventions.
+
+    SOFT findings are aggregated by (rule_id, language, character) before
+    printing — per-occurrence detail goes to the SOFT CSV, not stderr.
+    Per Joshua (2026-06-01): CSV is per-occurrence for findability;
+    command-line output stays aggregated for readability.
     """
     hard = [f for f in findings if f.severity is Severity.HARD]
     soft = [f for f in findings if f.severity is Severity.SOFT]
@@ -175,12 +180,18 @@ def _print_summary(findings: list[Finding]) -> None:
             loc = f" [{f.location}]" if f.location else ""
             print(f"  [{f.rule_id}]{loc} {f.message}", file=sys.stderr)
     if soft:
-        print("SOFT findings:", file=sys.stderr)
+        # Aggregate per-occurrence SOFT findings into one line per
+        # (rule_id, language, character).
+        agg: dict[tuple[str, str, str], int] = {}
         for f in soft:
-            loc = f" [{f.location}]" if f.location else ""
-            lang = f" lang={f.language}" if f.language else ""
+            key = (f.rule_id, f.language or "", f.character or "")
+            agg[key] = agg.get(key, 0) + f.count
+        print("SOFT findings:", file=sys.stderr)
+        for (rid, lang, char), total in sorted(agg.items()):
+            lang_part = f" lang={lang}" if lang else ""
+            char_part = f" {char!r}" if char else ""
             print(
-                f"  [{f.rule_id}]{loc}{lang} count={f.count}: {f.message}",
+                f"  [{rid}]{lang_part} count={total}{char_part}",
                 file=sys.stderr,
             )
 
@@ -214,7 +225,21 @@ def main(argv: list[str] | None = None) -> int:
         all_findings.extend(run_per_file_rules(tree, path, per_file_rules, index=None))
 
     _print_summary(all_findings)
-    write_soft_csv(args.soft_csv, all_findings)
+    soft_count = sum(1 for f in all_findings if f.severity is Severity.SOFT)
+    if soft_count:
+        write_soft_csv(args.soft_csv, all_findings)
+        # Surface the path so users can find per-occurrence detail.
+        print(
+            f"SOFT findings ({soft_count}) written to: {args.soft_csv}",
+            file=sys.stderr,
+        )
+    else:
+        # Don't create empty CSVs. Delete any stale file from a prior run.
+        try:
+            args.soft_csv.unlink()
+        except FileNotFoundError:
+            pass
+        print("No SOFT findings.", file=sys.stderr)
 
     has_hard = any(f.severity is Severity.HARD for f in all_findings)
     if has_hard and not args.no_exit_on_hard:

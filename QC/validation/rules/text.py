@@ -77,6 +77,85 @@ def _is_cjk(char: str) -> bool:
     return any(lo <= code <= hi for lo, hi in _CJK_RANGES)
 
 
+# Maps ISO 639-3 codes to the English language-name stem used in
+# Orthographies/<subdir>/<Name>.tsv. ISO Ref_Name doesn't always match
+# the filename (e.g. ISO has "Sediq" but the orthography file is
+# "Seediq.tsv"; ISO has "Kanakanabu" but the file is "Kanakanavu.tsv"),
+# so this mapping is maintained by hand. Limited to the 16 Formosan
+# languages the project tracks; non-Formosan xml:lang values fall
+# through to legacy V116 behavior (ASCII + CJK exclusion only).
+_ISO_TO_ORTHO_NAME: dict[str, str] = {
+    "ami": "Amis",
+    "tay": "Atayal",
+    "bnn": "Bunun",
+    "xnb": "Kanakanavu",
+    "ckv": "Kavalan",
+    "pwn": "Paiwan",
+    "pyu": "Puyuma",
+    "dru": "Rukai",
+    "sxr": "Saaroa",
+    "xsy": "Saisiyat",
+    "szy": "Sakizaya",
+    "trv": "Seediq",
+    "ssf": "Thao",
+    "tsu": "Tsou",
+    "tao": "Yami",
+}
+
+
+_ORTHOGRAPHIES_ROOT = Path(__file__).resolve().parents[3] / "Orthographies"
+
+
+# Cache: lang ISO code -> frozenset of non-ASCII chars allowed by orthography.
+# Populated lazily by _orthography_allowed_chars below. Module-level cache
+# is fine because the Orthographies/ directory is not modified during a
+# validator run. Tests that monkey-patch should clear this cache.
+_ortho_cache: dict[str, frozenset[str]] = {}
+
+
+def _orthography_allowed_chars(lang: str) -> frozenset[str]:
+    """Return the set of non-ASCII characters that appear in the first
+    column ('letter') of any Orthographies/**/<Lang>.tsv for the given
+    ISO 639-3 code.
+
+    Char-decompose semantics (per design choice on 2026-06-01): multi-
+    character letters like 'ng' are decomposed into their component
+    characters and each is added to the allow set. This is the simpler
+    of the two tokenization approaches; the trade-off is that a digraph's
+    components are individually exempted even when they never appear bare
+    in the language. The first column also contains ASCII letters which
+    are dropped from the set — V116 only cares about non-ASCII.
+
+    Returns an empty frozenset if the ISO code is not in the Formosan
+    mapping or if no orthography file is found for it.
+    """
+    if lang in _ortho_cache:
+        return _ortho_cache[lang]
+    name = _ISO_TO_ORTHO_NAME.get(lang)
+    if name is None or not _ORTHOGRAPHIES_ROOT.is_dir():
+        _ortho_cache[lang] = frozenset()
+        return _ortho_cache[lang]
+    chars: set[str] = set()
+    for tsv_path in _ORTHOGRAPHIES_ROOT.glob(f"*/{name}.tsv"):
+        try:
+            with tsv_path.open(encoding="utf-8") as fh:
+                # Skip header row.
+                next(fh, None)
+                for line in fh:
+                    parts = line.split("\t")
+                    if not parts:
+                        continue
+                    cell = parts[0]
+                    for ch in cell:
+                        if ord(ch) > 127:
+                            chars.add(ch)
+        except OSError:
+            continue
+    result = frozenset(chars)
+    _ortho_cache[lang] = result
+    return result
+
+
 def _resolve_language(tree: etree._ElementTree) -> str:
     """Read xml:lang from the TEXT root, or empty string if absent."""
     root = tree.getroot()
@@ -118,6 +197,69 @@ def _s_standard_pairs(tree: etree._ElementTree):
         yield s.get("id") or "", text
 
 
+def _s_standard_triples(tree: etree._ElementTree):
+    """Yield (s_elem, s_id, standard_text) for each S with a standard FORM.
+
+    Variant of `_s_standard_pairs` that exposes the S element itself so
+    per-occurrence Findings can populate `location` (S id) and `line`
+    (sourceline). Added 2026-06-01 alongside the SOFT-CSV upgrade.
+    """
+    for s in tree.iter("S"):
+        text = _s_standard_form_text(s)
+        if text is None:
+            continue
+        yield s, s.get("id") or "", text
+
+
+def _location_for(elem: etree._Element) -> str:
+    """Return 'S=<id>' / 'W=<id>' / 'M=<id>' for an element with an id,
+    or just the tag if no id. For non-S/W/M elements (like FORM/TRANSL),
+    falls back to the parent's location.
+    """
+    if elem is None:
+        return ""
+    if elem.tag in ("S", "W", "M") and elem.get("id"):
+        return f"{elem.tag}={elem.get('id')}"
+    parent = elem.getparent()
+    if parent is not None and parent.tag in ("S", "W", "M") and parent.get("id"):
+        return f"{parent.tag}={parent.get('id')}"
+    return elem.tag
+
+
+def _sourceline(elem: etree._Element) -> int | None:
+    """lxml's 1-indexed source line for elem, or None if unavailable."""
+    return getattr(elem, "sourceline", None)
+
+
+def _soft_finding(
+    rule_id: str,
+    message: str,
+    path: Path,
+    elem: etree._Element,
+    *,
+    language: str | None = None,
+    character: str = "",
+    count: int = 1,
+) -> Finding:
+    """Build a per-occurrence SOFT Finding rooted at `elem`.
+
+    Populates `location` (S/W/M id of elem or its parent) and `line`
+    (elem.sourceline) so the SOFT CSV's new location/line columns are
+    informative. Stderr aggregation happens later in validate_text.py.
+    """
+    return Finding(
+        rule_id=rule_id,
+        severity=Severity.SOFT,
+        message=message,
+        path=path,
+        location=_location_for(elem),
+        count=count,
+        language=language,
+        character=character,
+        line=_sourceline(elem),
+    )
+
+
 # ---------------------------------------------------------------------------
 # W1: ported validate_punct.py rules
 # ---------------------------------------------------------------------------
@@ -133,32 +275,25 @@ def v110_smart_quotes(
     path: Path,
     index: CorpusIndex | None,
 ) -> list[Finding]:
-    """V110 SOFT: count smart quotes in S-level standard FORM.
+    """V110 SOFT: smart quotes in S-level standard FORM.
 
-    Smart quote conventions vary widely in the source corpora; the
-    standardized tier is expected to use the project's canonical
-    apostrophe/quotation conventions. This rule counts the occurrences
-    of left/right single/double smart quotes so that a per-corpus
-    review of the SOFT CSV can spot anomalies.
+    Emits one Finding per smart-quote occurrence so the SOFT CSV pins
+    each row to the offending S id and source line. Stderr aggregates
+    by (rule, character) before printing.
     """
     lang = _resolve_language(tree)
-    counts: dict[str, int] = {}
-    for _, text in _s_standard_pairs(tree):
-        for ch in (_LEFT_SQUOTE, _RIGHT_SQUOTE, _LEFT_DQUOTE, _RIGHT_DQUOTE):
-            n = text.count(ch)
-            if n:
-                counts[ch] = counts.get(ch, 0) + n
     findings: list[Finding] = []
-    for ch, n in counts.items():
-        findings.append(Finding(
-            rule_id="V110",
-            severity=Severity.SOFT,
-            message=f"V110 SOFT smart_quotes: count={n} {ch!r} in S-standard FORM",
-            path=path,
-            count=n,
-            language=lang,
-            character=ch,
-        ))
+    for s, _s_id, text in _s_standard_triples(tree):
+        for ch in (_LEFT_SQUOTE, _RIGHT_SQUOTE, _LEFT_DQUOTE, _RIGHT_DQUOTE):
+            for _ in range(text.count(ch)):
+                findings.append(_soft_finding(
+                    rule_id="V110",
+                    message=f"V110 SOFT smart_quote {ch!r} in S-standard FORM",
+                    path=path,
+                    elem=s,
+                    language=lang,
+                    character=ch,
+                ))
     return findings
 
 
@@ -167,23 +302,29 @@ def v111_imbalanced_parens(
     path: Path,
     index: CorpusIndex | None,
 ) -> list[Finding]:
-    """V111 SOFT: imbalanced ASCII parentheses in S-level standard FORM."""
+    """V111 SOFT: imbalanced ASCII parentheses in S-level standard FORM.
+
+    One finding per offending S; `count` carries the per-S excess
+    (number of unmatched parens) so stderr aggregation can sum across
+    sentences."""
     lang = _resolve_language(tree)
-    total = 0
-    for _, text in _s_standard_pairs(tree):
+    findings: list[Finding] = []
+    for s, _s_id, text in _s_standard_triples(tree):
         diff = abs(text.count("(") - text.count(")"))
-        total += diff
-    if total == 0:
-        return []
-    return [Finding(
-        rule_id="V111",
-        severity=Severity.SOFT,
-        message=f"V111 SOFT imbalanced_parens: count={total} unmatched () in S-standard FORM",
-        path=path,
-        count=total,
-        language=lang,
-        character="()",
-    )]
+        if diff:
+            findings.append(_soft_finding(
+                rule_id="V111",
+                message=(
+                    f"V111 SOFT imbalanced_parens: {diff} unmatched () "
+                    "in S-standard FORM"
+                ),
+                path=path,
+                elem=s,
+                language=lang,
+                character="()",
+                count=diff,
+            ))
+    return findings
 
 
 _REPEATED_PUNCT = re.compile(r"([?!])\1+")
@@ -194,22 +335,21 @@ def v112_repeated_punct(
     path: Path,
     index: CorpusIndex | None,
 ) -> list[Finding]:
-    """V112 SOFT: repeated terminal punctuation (??, !!) in S-standard FORM."""
+    """V112 SOFT: repeated terminal punctuation (??, !!) in S-standard FORM.
+
+    One finding per match (each run of `??`/`!!`)."""
     lang = _resolve_language(tree)
-    total = 0
-    for _, text in _s_standard_pairs(tree):
-        total += len(_REPEATED_PUNCT.findall(text))
-    if total == 0:
-        return []
-    return [Finding(
-        rule_id="V112",
-        severity=Severity.SOFT,
-        message=f"V112 SOFT repeated_punct: count={total} repeated punct in S-standard FORM",
-        path=path,
-        count=total,
-        language=lang,
-        character="",
-    )]
+    findings: list[Finding] = []
+    for s, _s_id, text in _s_standard_triples(tree):
+        for _ in _REPEATED_PUNCT.findall(text):
+            findings.append(_soft_finding(
+                rule_id="V112",
+                message="V112 SOFT repeated_punct in S-standard FORM",
+                path=path,
+                elem=s,
+                language=lang,
+            ))
+    return findings
 
 
 _CONSECUTIVE_DASHES = re.compile(r"--+")
@@ -220,22 +360,22 @@ def v113_consecutive_dashes(
     path: Path,
     index: CorpusIndex | None,
 ) -> list[Finding]:
-    """V113 SOFT: two or more consecutive dashes in S-standard FORM."""
+    """V113 SOFT: two or more consecutive dashes in S-standard FORM.
+
+    One finding per run of consecutive dashes."""
     lang = _resolve_language(tree)
-    total = 0
-    for _, text in _s_standard_pairs(tree):
-        total += len(_CONSECUTIVE_DASHES.findall(text))
-    if total == 0:
-        return []
-    return [Finding(
-        rule_id="V113",
-        severity=Severity.SOFT,
-        message=f"V113 SOFT consecutive_dashes: count={total} runs of -- in S-standard FORM",
-        path=path,
-        count=total,
-        language=lang,
-        character="-",
-    )]
+    findings: list[Finding] = []
+    for s, _s_id, text in _s_standard_triples(tree):
+        for _ in _CONSECUTIVE_DASHES.findall(text):
+            findings.append(_soft_finding(
+                rule_id="V113",
+                message="V113 SOFT consecutive_dashes (-- or longer) in S-standard FORM",
+                path=path,
+                elem=s,
+                language=lang,
+                character="-",
+            ))
+    return findings
 
 
 _MULTI_WS = re.compile(r" {2,}")
@@ -246,22 +386,22 @@ def v114_multiple_whitespace(
     path: Path,
     index: CorpusIndex | None,
 ) -> list[Finding]:
-    """V114 SOFT: two or more consecutive spaces in S-standard FORM."""
+    """V114 SOFT: two or more consecutive spaces in S-standard FORM.
+
+    One finding per run of consecutive spaces."""
     lang = _resolve_language(tree)
-    total = 0
-    for _, text in _s_standard_pairs(tree):
-        total += len(_MULTI_WS.findall(text))
-    if total == 0:
-        return []
-    return [Finding(
-        rule_id="V114",
-        severity=Severity.SOFT,
-        message=f"V114 SOFT multiple_whitespace: count={total} runs of multi-space in S-standard FORM",
-        path=path,
-        count=total,
-        language=lang,
-        character=" ",
-    )]
+    findings: list[Finding] = []
+    for s, _s_id, text in _s_standard_triples(tree):
+        for _ in _MULTI_WS.findall(text):
+            findings.append(_soft_finding(
+                rule_id="V114",
+                message="V114 SOFT multiple_whitespace run in S-standard FORM",
+                path=path,
+                elem=s,
+                language=lang,
+                character=" ",
+            ))
+    return findings
 
 
 def v115_mismatched_quotes(
@@ -269,28 +409,26 @@ def v115_mismatched_quotes(
     path: Path,
     index: CorpusIndex | None,
 ) -> list[Finding]:
-    """V115 SOFT: left/right smart quotes do not balance in S-standard FORM."""
+    """V115 SOFT: left/right smart quotes do not balance in S-standard FORM.
+
+    One finding per offending S."""
     lang = _resolve_language(tree)
-    bad_s_count = 0
-    for _, text in _s_standard_pairs(tree):
+    findings: list[Finding] = []
+    for s, _s_id, text in _s_standard_triples(tree):
         if (text.count(_LEFT_SQUOTE) != text.count(_RIGHT_SQUOTE)) or (
             text.count(_LEFT_DQUOTE) != text.count(_RIGHT_DQUOTE)
         ):
-            bad_s_count += 1
-    if bad_s_count == 0:
-        return []
-    return [Finding(
-        rule_id="V115",
-        severity=Severity.SOFT,
-        message=(
-            f"V115 SOFT mismatched_quotes: count={bad_s_count} S-standard FORM(s) "
-            "with mismatched smart-quote pairs"
-        ),
-        path=path,
-        count=bad_s_count,
-        language=lang,
-        character="",
-    )]
+            findings.append(_soft_finding(
+                rule_id="V115",
+                message=(
+                    "V115 SOFT mismatched_quotes: S-standard FORM has "
+                    "mismatched smart-quote pairs"
+                ),
+                path=path,
+                elem=s,
+                language=lang,
+            ))
+    return findings
 
 
 # ---------------------------------------------------------------------------
@@ -305,12 +443,17 @@ def v116_non_ascii_in_form(
     """V116 SOFT: count non-ASCII characters in ALL FORM tiers.
 
     Mirrors non_ascii_counts.py: walks every FORM element across S, W, M
-    and counts characters with codepoint > 127, excluding CJK ranges.
+    and counts characters with codepoint > 127, excluding CJK ranges
+    AND characters that appear in the first ('letter') column of any
+    Orthographies/<subdir>/<Lang>.tsv for the file's TEXT@xml:lang
+    (Formosan-language exclusion added 2026-06-01).
+
     Findings are pre-aggregated per (file, character) to keep the CSV
     compact — one row per unique non-ASCII character per file.
     """
     lang = _resolve_language(tree)
-    per_char: dict[str, int] = {}
+    allowed_ortho_chars = _orthography_allowed_chars(lang)
+    findings: list[Finding] = []
     for form in tree.iter("FORM"):
         text = form.text or ""
         for ch in text:
@@ -318,18 +461,16 @@ def v116_non_ascii_in_form(
                 continue
             if _is_cjk(ch):
                 continue
-            per_char[ch] = per_char.get(ch, 0) + 1
-    findings: list[Finding] = []
-    for ch, n in per_char.items():
-        findings.append(Finding(
-            rule_id="V116",
-            severity=Severity.SOFT,
-            message=f"V116 SOFT non_ascii_in_form: count={n} {ch!r}",
-            path=path,
-            count=n,
-            language=lang,
-            character=ch,
-        ))
+            if ch in allowed_ortho_chars:
+                continue
+            findings.append(_soft_finding(
+                rule_id="V116",
+                message=f"V116 SOFT non_ascii_in_form: {ch!r}",
+                path=path,
+                elem=form,
+                language=lang,
+                character=ch,
+            ))
     return findings
 
 
@@ -415,30 +556,25 @@ def v122_parens_slashes_anywhere(
     """V122 SOFT (TR3): parens or '/' anywhere in FORM or TRANSL.
 
     Closes roadmap C023 ('/' = alternative forms) and C024 (parens in
-    free translations: flag-only, no auto-normalize). Aggregated per
-    (file, character) to keep the CSV compact.
+    free translations: flag-only, no auto-normalize). One finding per
+    occurrence so the SOFT CSV pins each row to the offending element.
     """
     lang = _resolve_language(tree)
-    per_char: dict[str, int] = {}
+    findings: list[Finding] = []
     for elem in tree.iter("FORM", "TRANSL"):
         text = elem.text or ""
         for ch in text:
             if ch in "()/":
-                per_char[ch] = per_char.get(ch, 0) + 1
-    findings: list[Finding] = []
-    for ch, n in per_char.items():
-        findings.append(Finding(
-            rule_id="V122",
-            severity=Severity.SOFT,
-            message=(
-                f"V122 SOFT: parens or slash in FORM/TRANSL "
-                f"(paren or slash); count={n} {ch!r}"
-            ),
-            path=path,
-            count=n,
-            language=lang,
-            character=ch,
-        ))
+                findings.append(_soft_finding(
+                    rule_id="V122",
+                    message=(
+                        f"V122 SOFT: {ch!r} (paren or slash) in {elem.tag}"
+                    ),
+                    path=path,
+                    elem=elem,
+                    language=lang,
+                    character=ch,
+                ))
     return findings
 
 
@@ -615,29 +751,25 @@ def v126_equal_sign_in_S_standard(
     """V126 SOFT (TR7): '=' in S-level standard FORM, likely a leftover
     clitic boundary marker that should have been resolved.
 
-    Aggregated per file (count of S elements whose standard FORM
-    contains at least one '='). Original-tier '=' is preserved verbatim
-    and is not flagged.
+    One finding per offending S so the SOFT CSV pins each row to a
+    specific sentence. Original-tier '=' is preserved verbatim and is
+    not flagged.
     """
     lang = _resolve_language(tree)
-    count = 0
-    for _, text in _s_standard_pairs(tree):
+    findings: list[Finding] = []
+    for s, _s_id, text in _s_standard_triples(tree):
         if "=" in text:
-            count += 1
-    if count == 0:
-        return []
-    return [Finding(
-        rule_id="V126",
-        severity=Severity.SOFT,
-        message=(
-            f"V126 SOFT equal sign: count={count} S-standard FORM(s) containing "
-            "'=' (clitic marker leftover)"
-        ),
-        path=path,
-        count=count,
-        language=lang,
-        character="=",
-    )]
+            findings.append(_soft_finding(
+                rule_id="V126",
+                message=(
+                    "V126 SOFT '=' (clitic marker leftover) in S-standard FORM"
+                ),
+                path=path,
+                elem=s,
+                language=lang,
+                character="=",
+            ))
+    return findings
 
 
 # ---------------------------------------------------------------------------
@@ -760,12 +892,13 @@ def v128_control_chars_in_FORM_TRANSL(
     return findings
 
 
-# TR11 V129 HARD — '*' in standard-tier FORM (any level).
+# TR11 V129 HARD — '*' in any FORM (original or standard, any level).
 #
-# The asterisk is a metalinguistic ungrammaticality marker. It can be
-# meaningful in raw source / original transcripts but should never
-# appear in the project's standardized surface form. Scope: any FORM
-# (S, W, or M) with kindOf='standard'.
+# Originally scoped to standard-tier only (rationale: original tier could
+# preserve source-text metalinguistic ungrammaticality markers). Joshua
+# extended the scope on 2026-06-01 — FormosanBank corpora aren't
+# faithful verbatim source preservation, so the asterisk should not
+# leak into either tier.
 
 
 def v129_asterisk_in_standard_FORM(
@@ -773,11 +906,9 @@ def v129_asterisk_in_standard_FORM(
     path: Path,
     index: CorpusIndex | None,
 ) -> list[Finding]:
-    """V129 HARD (TR11): '*' in any standard-tier FORM."""
+    """V129 HARD (TR11): '*' in any FORM, either tier (original or standard)."""
     findings: list[Finding] = []
     for form in tree.iter("FORM"):
-        if form.get("kindOf") != "standard":
-            continue
         text = form.text or ""
         if "*" not in text:
             continue
@@ -789,8 +920,8 @@ def v129_asterisk_in_standard_FORM(
             rule_id="V129",
             severity=Severity.HARD,
             message=(
-                f"V129 HARD asterisk in standard-tier FORM: '*' in "
-                f"{parent_tag} id={parent_id!r}"
+                f"V129 HARD asterisk in FORM (kindOf={form.get('kindOf')!r}): "
+                f"'*' in {parent_tag} id={parent_id!r}"
             ),
             path=path,
             location=location,
@@ -817,6 +948,15 @@ def v130_leading_trailing_whitespace_in_FORM(
         if not text:
             continue
         if text == text.strip():
+            continue
+        # Carve-out: pretty-printers (notably xml.dom.minidom in
+        # standardize.py / add_phonology.py) indent every child element
+        # of a mixed-content parent, which puts \n+spaces into
+        # `form.text` around any inline child like <UNCLEAR/>. That's a
+        # serialization artifact, not a content bug — the cleaner-stage
+        # signal V130 exists to catch doesn't apply here. Mirrors the
+        # V017/V073 carve-outs for UNCLEAR. Added 2026-06-08.
+        if form.find("UNCLEAR") is not None:
             continue
         sides: list[str] = []
         if text != text.lstrip():
@@ -902,27 +1042,27 @@ def v132_html_entities_in_FORM_TRANSL(
     path: Path,
     index: CorpusIndex | None,
 ) -> list[Finding]:
-    """V132 SOFT (TR9): HTML entity-like substrings in FORM or TRANSL."""
+    """V132 SOFT (TR9): HTML entity-like substrings in FORM or TRANSL.
+
+    One finding per match so the SOFT CSV pins each row to the
+    offending element.
+    """
     lang = _resolve_language(tree)
-    per_entity: dict[str, int] = {}
+    findings: list[Finding] = []
     for elem in tree.iter("FORM", "TRANSL"):
         text = elem.text or ""
         for match in _HTML_ENTITY_RE.findall(text):
-            per_entity[match] = per_entity.get(match, 0) + 1
-    findings: list[Finding] = []
-    for entity, n in per_entity.items():
-        findings.append(Finding(
-            rule_id="V132",
-            severity=Severity.SOFT,
-            message=(
-                f"V132 SOFT html entity-like residue: count={n} {entity!r} "
-                "in FORM/TRANSL (likely double-encoded source)"
-            ),
-            path=path,
-            count=n,
-            language=lang,
-            character=entity,
-        ))
+            findings.append(_soft_finding(
+                rule_id="V132",
+                message=(
+                    f"V132 SOFT html entity-like residue {match!r} "
+                    f"in {elem.tag} (likely double-encoded source)"
+                ),
+                path=path,
+                elem=elem,
+                language=lang,
+                character=match,
+            ))
     return findings
 
 
@@ -935,26 +1075,24 @@ def v133_dash_in_S_standard_FORM(
     index: CorpusIndex | None,
 ) -> list[Finding]:
     """V133 SOFT (TR12): '-' in S-level standard FORM, likely a leftover
-    segmentation/hyphenation marker that should have been removed."""
+    segmentation/hyphenation marker that should have been removed.
+
+    One finding per offending S."""
     lang = _resolve_language(tree)
-    count = 0
-    for _, text in _s_standard_pairs(tree):
+    findings: list[Finding] = []
+    for s, _s_id, text in _s_standard_triples(tree):
         if "-" in text:
-            count += 1
-    if count == 0:
-        return []
-    return [Finding(
-        rule_id="V133",
-        severity=Severity.SOFT,
-        message=(
-            f"V133 SOFT dash in S-standard: count={count} S-standard FORM(s) "
-            "containing '-' (segmentation leftover)"
-        ),
-        path=path,
-        count=count,
-        language=lang,
-        character="-",
-    )]
+            findings.append(_soft_finding(
+                rule_id="V133",
+                message=(
+                    "V133 SOFT '-' (segmentation leftover) in S-standard FORM"
+                ),
+                path=path,
+                elem=s,
+                language=lang,
+                character="-",
+            ))
+    return findings
 
 
 # TR13 V134 SOFT — '<' or '>' (infix delimiter) in S-level FORM, either tier.
@@ -969,9 +1107,11 @@ def v134_angle_brackets_in_S_FORM(
     path: Path,
     index: CorpusIndex | None,
 ) -> list[Finding]:
-    """V134 SOFT (TR13): '<' or '>' in S-level FORM at either tier."""
+    """V134 SOFT (TR13): '<' or '>' in S-level FORM at either tier.
+
+    One finding per occurrence; location is the S id of the parent."""
     lang = _resolve_language(tree)
-    per_char: dict[str, int] = {}
+    findings: list[Finding] = []
     for s in tree.iter("S"):
         for child in s:
             if child.tag != "FORM":
@@ -979,21 +1119,17 @@ def v134_angle_brackets_in_S_FORM(
             text = child.text or ""
             for ch in text:
                 if ch in "<>":
-                    per_char[ch] = per_char.get(ch, 0) + 1
-    findings: list[Finding] = []
-    for ch, n in per_char.items():
-        findings.append(Finding(
-            rule_id="V134",
-            severity=Severity.SOFT,
-            message=(
-                f"V134 SOFT angle bracket / infix delimiter in S-level FORM: "
-                f"count={n} {ch!r} (< or > likely an infix marker)"
-            ),
-            path=path,
-            count=n,
-            language=lang,
-            character=ch,
-        ))
+                    findings.append(_soft_finding(
+                        rule_id="V134",
+                        message=(
+                            f"V134 SOFT angle bracket / infix delimiter "
+                            f"{ch!r} in S-level FORM"
+                        ),
+                        path=path,
+                        elem=child,
+                        language=lang,
+                        character=ch,
+                    ))
     return findings
 
 
@@ -1024,9 +1160,11 @@ def v135_trailing_punct_mismatch(
     path: Path,
     index: CorpusIndex | None,
 ) -> list[Finding]:
-    """V135 SOFT (TR14): trailing-punct mismatch in S-level FORM pair."""
+    """V135 SOFT (TR14): trailing-punct mismatch in S-level FORM pair.
+
+    One finding per offending S."""
     lang = _resolve_language(tree)
-    count = 0
+    findings: list[Finding] = []
     for s in tree.iter("S"):
         orig = _s_original_form_text(s)
         std = _s_standard_form_text(s)
@@ -1034,22 +1172,17 @@ def v135_trailing_punct_mismatch(
             # Need both tiers to compare.
             continue
         if _trailing_punct(orig) != _trailing_punct(std):
-            count += 1
-    if count == 0:
-        return []
-    return [Finding(
-        rule_id="V135",
-        severity=Severity.SOFT,
-        message=(
-            f"V135 SOFT trailing-punct mismatch: count={count} S element(s) "
-            "where original and standard FORM tiers end in different "
-            "punctuation"
-        ),
-        path=path,
-        count=count,
-        language=lang,
-        character="",
-    )]
+            findings.append(_soft_finding(
+                rule_id="V135",
+                message=(
+                    "V135 SOFT trailing-punct mismatch: original and "
+                    "standard S FORM tiers end in different punctuation"
+                ),
+                path=path,
+                elem=s,
+                language=lang,
+            ))
+    return findings
 
 
 # TR18 V136 SOFT — mixed-script confusables.
@@ -1104,36 +1237,40 @@ def v136_mixed_script_confusables(
     path: Path,
     index: CorpusIndex | None,
 ) -> list[Finding]:
-    """V136 SOFT (TR18): mixed Latin/Cyrillic/Greek scripts in FORM text."""
+    """V136 SOFT (TR18): mixed Latin/Cyrillic/Greek scripts in FORM text.
+
+    One finding per offending FORM."""
     lang = _resolve_language(tree)
-    mixed_count = 0
+    findings: list[Finding] = []
     for form in tree.iter("FORM"):
         text = form.text or ""
         scripts = {s for s in (_script_for(ch) for ch in text) if s is not None}
         if len(scripts) >= 2:
-            mixed_count += 1
-    if mixed_count == 0:
-        return []
-    return [Finding(
-        rule_id="V136",
-        severity=Severity.SOFT,
-        message=(
-            f"V136 SOFT mixed-script / confusable: count={mixed_count} FORM "
-            "element(s) mixing two or more of {Latin, Cyrillic, Greek}"
-        ),
-        path=path,
-        count=mixed_count,
-        language=lang,
-        character="",
-    )]
+            findings.append(_soft_finding(
+                rule_id="V136",
+                message=(
+                    "V136 SOFT mixed-script / confusable: FORM mixes "
+                    "two or more of {Latin, Cyrillic, Greek}"
+                ),
+                path=path,
+                elem=form,
+                language=lang,
+            ))
+    return findings
 
 
-# TR19 V137 SOFT — trailing-decimal footnote (`word.1`, `word.2`) at end
-# of S-level FORM or TRANSL. Per plan: require the digit glued to a
-# non-digit (so `3.14` doesn't trigger, but `world.1` does). End-anchored
-# (after rstrip).
+# V137 SOFT — footnote-like markers anywhere in any FORM or TRANSL.
+#
+# Two patterns, both treated as likely footnote leaks from scraped source:
+#   - `.<digits>` not preceded by another digit (e.g. 'world.1', not '3.14')
+#   - `<letter><digits>` (e.g. 'nganai12', 'B12')
+#
+# Scope was originally narrow (end-of-string, S-level only, per-file
+# aggregated). Broadened on 2026-06-01 to scan every FORM (S/W/M, both
+# tiers) and every TRANSL, anywhere in the text, with one Finding per
+# occurrence so the stderr summary lists each call-site.
 
-_TRAILING_DECIMAL_FOOTNOTE_RE = re.compile(r"(?<!\d)\.\d+$")
+_FOOTNOTE_RE = re.compile(r"(?<!\d)\.\d+|[A-Za-z]\d+")
 
 
 def v137_trailing_decimal_footnote_in_S_FORM_TRANSL(
@@ -1141,36 +1278,45 @@ def v137_trailing_decimal_footnote_in_S_FORM_TRANSL(
     path: Path,
     index: CorpusIndex | None,
 ) -> list[Finding]:
-    """V137 SOFT (TR19): trailing-decimal footnote at end of S-level FORM
-    or TRANSL. False-positive guard: the character immediately before
-    the '.' must be a non-digit (so plain decimal numerals like '3.14'
-    are not flagged)."""
+    """V137 SOFT: footnote-like substrings (`.<digits>` not preceded by a
+    digit, or `<letter><digits>`) anywhere in any FORM (S/W/M, either
+    kindOf) or any TRANSL element.
+
+    Emits one Finding per matched occurrence so per-FORM locations are
+    visible in the stderr summary (the SOFT CSV remains aggregated).
+
+    False-positive guard: plain decimal numerals like '3.14' are not
+    flagged (digit before '.' blocks the first pattern, and there is no
+    letter immediately before the digit run).
+    """
     lang = _resolve_language(tree)
-    count = 0
-    for s in tree.iter("S"):
-        for child in s:
-            if child.tag not in ("FORM", "TRANSL"):
-                continue
-            text = (child.text or "").rstrip()
-            if not text:
-                continue
-            if _TRAILING_DECIMAL_FOOTNOTE_RE.search(text):
-                count += 1
-    if count == 0:
-        return []
-    return [Finding(
-        rule_id="V137",
-        severity=Severity.SOFT,
-        message=(
-            f"V137 SOFT trailing-decimal footnote: count={count} S-level "
-            "FORM/TRANSL element(s) ending in `<non-digit>.<digits>` "
-            "(likely footnote leak)"
-        ),
-        path=path,
-        count=count,
-        language=lang,
-        character="",
-    )]
+    findings: list[Finding] = []
+    for elem in tree.iter("FORM", "TRANSL"):
+        text = elem.text or ""
+        for match in _FOOTNOTE_RE.finditer(text):
+            parent_tag = elem.tag
+            host = elem.getparent()
+            host_tag = host.tag if host is not None else ""
+            host_id = (host.get("id") if host is not None else None) or ""
+            location = (
+                f"{host_tag}={host_id} {parent_tag}"
+                if host_id else f"{host_tag} {parent_tag}".strip()
+            )
+            findings.append(Finding(
+                rule_id="V137",
+                severity=Severity.SOFT,
+                message=(
+                    f"V137 SOFT footnote-like substring {match.group(0)!r} "
+                    f"in {parent_tag} (kindOf={elem.get('kindOf')!r}); "
+                    f"{host_tag} id={host_id!r}"
+                ),
+                path=path,
+                location=location,
+                count=1,
+                language=lang,
+                character="",
+            ))
+    return findings
 
 
 # TR20 V138 SOFT — superscript-digit footnote in FORM or TRANSL.
@@ -1194,27 +1340,81 @@ def v138_superscript_digit_footnote(
     path: Path,
     index: CorpusIndex | None,
 ) -> list[Finding]:
-    """V138 SOFT (TR20): superscript digit (¹²³…) in FORM or TRANSL."""
+    """V138 SOFT (TR20): superscript digit (¹²³…) in FORM or TRANSL.
+
+    One finding per occurrence."""
     lang = _resolve_language(tree)
-    per_char: dict[str, int] = {}
+    findings: list[Finding] = []
     for elem in tree.iter("FORM", "TRANSL"):
         text = elem.text or ""
         for ch in text:
             if ch in _SUPERSCRIPT_DIGITS:
-                per_char[ch] = per_char.get(ch, 0) + 1
+                findings.append(_soft_finding(
+                    rule_id="V138",
+                    message=(
+                        f"V138 SOFT superscript-digit footnote {ch!r} "
+                        f"in {elem.tag} (likely footnote leak)"
+                    ),
+                    path=path,
+                    elem=elem,
+                    language=lang,
+                    character=ch,
+                ))
+    return findings
+
+
+# V140 HARD — null in S-original FORM must propagate DOWN to at least
+# one W (and that same W must have at least one M FORM with the null).
+# Converse of V125 (which propagates UP from W to S-original); closes
+# the round-trip so a `∅` cannot live only at the surface tier.
+
+
+def v140_null_in_S_original_requires_child_W_and_M(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V140 HARD: if an S-level FORM[@kindOf='original'] contains '∅',
+    then S must have at least one child W with '∅' in some FORM, AND
+    that same W must have at least one child M with '∅' in some FORM.
+
+    Symmetric with V125 (which fires when a W carries '∅' but the
+    upward propagation is missing). V140 catches the opposite failure
+    mode: '∅' marked at the sentence surface but never grounded in the
+    morpheme tier.
+
+    No-ops on S elements with no W children (unsegmented S). The lack
+    of a tokenization tier is V060's domain, not V140's.
+    """
     findings: list[Finding] = []
-    for ch, n in per_char.items():
+    for s in tree.iter("S"):
+        orig_text = _s_original_form_text(s)
+        if orig_text is None or NULL_SYMBOL not in orig_text:
+            continue
+        ws = [child for child in s if child.tag == "W"]
+        if not ws:
+            continue
+        satisfied = False
+        for w in ws:
+            if not _form_contains_null(w):
+                continue
+            if any(child.tag == "M" and _form_contains_null(child) for child in w):
+                satisfied = True
+                break
+        if satisfied:
+            continue
+        s_id = s.get("id") or ""
         findings.append(Finding(
-            rule_id="V138",
-            severity=Severity.SOFT,
+            rule_id="V140",
+            severity=Severity.HARD,
             message=(
-                f"V138 SOFT superscript-digit footnote: count={n} {ch!r} "
-                "in FORM/TRANSL (likely footnote leak)"
+                f"V140 HARD: S-original FORM has null '{NULL_SYMBOL}' but no W "
+                "child has both a null FORM and a child M with a null FORM "
+                "(S-original null propagation); "
+                f"S id={s_id!r}"
             ),
             path=path,
-            count=n,
-            language=lang,
-            character=ch,
+            location=f"S={s_id}" if s_id else "S",
         ))
     return findings
 
@@ -1231,26 +1431,26 @@ def v139_bracketed_digit_footnote(
     path: Path,
     index: CorpusIndex | None,
 ) -> list[Finding]:
-    """V139 SOFT (TR21): bracketed-digit footnote in FORM or TRANSL."""
+    """V139 SOFT (TR21): bracketed-digit footnote in FORM or TRANSL.
+
+    One finding per match."""
     lang = _resolve_language(tree)
-    total = 0
+    findings: list[Finding] = []
     for elem in tree.iter("FORM", "TRANSL"):
         text = elem.text or ""
-        total += len(_BRACKETED_DIGIT_RE.findall(text))
-    if total == 0:
-        return []
-    return [Finding(
-        rule_id="V139",
-        severity=Severity.SOFT,
-        message=(
-            f"V139 SOFT bracketed-digit [d+] footnote: count={total} "
-            "occurrence(s) in FORM/TRANSL (likely footnote / citation leak)"
-        ),
-        path=path,
-        count=total,
-        language=lang,
-        character="",
-    )]
+        for match in _BRACKETED_DIGIT_RE.findall(text):
+            findings.append(_soft_finding(
+                rule_id="V139",
+                message=(
+                    f"V139 SOFT bracketed-digit footnote {match!r} "
+                    f"in {elem.tag} (likely footnote / citation leak)"
+                ),
+                path=path,
+                elem=elem,
+                language=lang,
+                character=match,
+            ))
+    return findings
 
 
 RULES: list = [
@@ -1285,5 +1485,7 @@ RULES: list = [
     v137_trailing_decimal_footnote_in_S_FORM_TRANSL,
     v138_superscript_digit_footnote,
     v139_bracketed_digit_footnote,
+    # V140: converse of V125 (null in S-original requires W and M)
+    v140_null_in_S_original_requires_child_W_and_M,
 ]
 CROSS_FILE_RULES: list = []

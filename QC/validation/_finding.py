@@ -28,9 +28,12 @@ class Finding:
     count: int = 1
     language: str | None = None
     character: str | None = None
+    line: int | None = None
 
 
-SOFT_CSV_COLUMNS = ["file", "rule_id", "language", "character", "count"]
+SOFT_CSV_COLUMNS = [
+    "file", "rule_id", "location", "line", "language", "character", "count",
+]
 
 
 def write_soft_csv(path: Path, findings: Iterable[Finding]) -> None:
@@ -45,9 +48,17 @@ def write_soft_csv(path: Path, findings: Iterable[Finding]) -> None:
     Column shape per the validator design doc:
       file: absolute path to the XML file the finding came from.
       rule_id: uppercase rule identifier (e.g., "V014").
+      location: parent element ID where the finding occurred (e.g.
+        "S=ap3_S_2") or empty for rules that aggregate per-file.
+      line: 1-indexed source line of the offending element, or empty.
       language: resolved xml:lang (ISO 639-3) or empty.
       character: the offending character, or empty if not applicable.
-      count: occurrence count for this (rule, file, language, character).
+      count: occurrence count for this row.
+
+    `location` and `line` were added 2026-06-01 so per-occurrence rules
+    can pin each row to a specific S/W/M element. Aggregated rules
+    continue to emit one row per (file, language, character) with these
+    columns blank.
     """
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w", newline="", encoding="utf-8") as f:
@@ -59,6 +70,8 @@ def write_soft_csv(path: Path, findings: Iterable[Finding]) -> None:
             writer.writerow([
                 str(finding.path),
                 finding.rule_id,
+                finding.location or "",
+                str(finding.line) if finding.line is not None else "",
                 finding.language or "",
                 finding.character or "",
                 str(finding.count),

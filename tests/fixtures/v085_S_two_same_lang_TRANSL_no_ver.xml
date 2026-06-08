@@ -9,7 +9,7 @@
   positive case (two TRANSLs with one carrying ver="alt") is tested
   separately and must NOT trigger V085.
 -->
-<TEXT id="V085_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+<TEXT id="V085_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
   <S id="S_1">
     <FORM kindOf="original">Halo.</FORM>
     <TRANSL xml:lang="eng">hello</TRANSL>

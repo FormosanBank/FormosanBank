@@ -8,7 +8,7 @@
   anywhere (PHON is not in the schema yet); after B's update, only
   this placement should remain forbidden. xfail.
 -->
-<TEXT id="V070_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+<TEXT id="V070_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
   <PHON kindOf="original">ha.lo</PHON>
   <S id="S_1">
     <FORM kindOf="original">Halo.</FORM>

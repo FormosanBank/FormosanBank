@@ -222,7 +222,17 @@ def collect_sentence_refs(xml_root):
                             audio_filename = audio_elem.attrib['file']
                             if not _audio_extensions_ok(audio_filename):
                                 continue
-                            form_text = form_elem.text or ''
+                            # Use itertext() to collect every textual chunk
+                            # in FORM — including the `tail` text that follows
+                            # any inline child element like <UNCLEAR/>. The
+                            # bare `form_elem.text` is only the prefix before
+                            # the first child, which silently undercounts
+                            # characters/words when FORM has mixed content.
+                            # UNCLEAR contributes no text itself (empty
+                            # element), so itertext() is equivalent to plain
+                            # text for FORMs with no children, and correct
+                            # for FORMs with UNCLEAR. Added 2026-06-08.
+                            form_text = ''.join(form_elem.itertext())
                             start = audio_elem.attrib.get('start')
                             end = audio_elem.attrib.get('end')
                             refs.append((xml_path, elem.attrib.get('id', ''),
@@ -385,7 +395,13 @@ def validate_corpus(xml_root: Path, audio_root: Path,
 
         # SOFT: words/sec + chars/sec
         duration = get_audio_duration(audio_path)
-        if duration is not None and duration > 0:
+        # Skip the cps/wps check when there is no transcribed text — e.g.
+        # a FORM containing only <UNCLEAR/>. Counting "0 words / N seconds"
+        # would unconditionally trip the wps < 0.1 threshold and emit a
+        # SOFT V105 finding, but the signal there is "speaker is too
+        # slow," not "audio was unintelligible." Suppress to avoid the
+        # false positive. Added 2026-06-08.
+        if duration is not None and duration > 0 and form_text.strip():
             word_count = len(form_text.strip().split())
             num_char = len(form_text.strip())
             char_per_sec = num_char / duration

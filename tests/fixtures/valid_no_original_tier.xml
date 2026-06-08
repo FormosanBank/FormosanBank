@@ -10,7 +10,7 @@
   silently producing nothing. Catches a regression where the absence of
   an original tier is silently tolerated.
 -->
-<TEXT id="TEST_NO" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+<TEXT id="TEST_NO" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
   <S id="S_1">
     <FORM kindOf="standard">Only a standard tier here.</FORM>
   </S>

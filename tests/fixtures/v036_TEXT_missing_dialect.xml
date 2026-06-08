@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Negative fixture for V036: TEXT/@dialect is REQUIRED on every TEXT
+  element under the 2026-06-04 convention. A missing dialect attribute
+  must produce a HARD V036 finding, distinguishing "we forgot to record
+  the dialect" from "we recorded the dialect as unknown".
+-->
+<TEXT id="V036_MISSING" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+  <S id="S_1">
+    <FORM kindOf="original">Halo.</FORM>
+  </S>
+</TEXT>

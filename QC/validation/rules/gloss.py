@@ -17,6 +17,8 @@ Rules:
 - V063 HARD: W-FORM segmentation markers preserved when S-FORM has > 3 markers.
 - V064 HARD: every M element must have at least one TRANSL child.
 - V065 SOFT: every W element should have at least one TRANSL child.
+- V066 HARD: '=' (clitic boundary) in a W FORM must appear in at least one child M FORM.
+- V067 HARD: '<' or '>' in an M FORM is forbidden; infix Ms must use '-X-' notation.
 """
 import re
 from pathlib import Path
@@ -409,6 +411,121 @@ def v065_every_W_has_TRANSL(
 
 
 # ---------------------------------------------------------------------------
+# V066: clitic boundary '=' in W FORM must appear in at least one child M FORM (HARD)
+# ---------------------------------------------------------------------------
+
+
+def _m_forms(m_elem: etree._Element) -> list[str]:
+    """Return all direct-child FORM text values of an M element."""
+    return [
+        (child.text or "")
+        for child in m_elem
+        if child.tag == "FORM"
+    ]
+
+
+def v066_clitic_in_W_requires_clitic_in_M(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V066 HARD: if a W's preferred FORM contains '=' (clitic boundary)
+    and the W has at least one child M, at least one of those child M
+    FORMs (any kindOf, any tier) must also contain '='.
+
+    Rationale: '=' marks a clitic boundary in the canonical FormosanBank
+    convention. The morpheme tier should carry the boundary marker
+    explicitly on the cliticized morpheme so that downstream tooling can
+    distinguish a clitic from an ordinary affix. A W like 'akia=cu with
+    Ms 'akia and 'cu' silently drops the clitic-vs-affix distinction.
+
+    No-ops on Ws with no M children (V061 covers count of Ms; the
+    boundary-type check is meaningless without the M tier).
+    """
+    findings: list[Finding] = []
+    for w in tree.iter("W"):
+        w_form = _get_w_form(w)
+        if "=" not in w_form:
+            continue
+        ms = [child for child in w if child.tag == "M"]
+        if not ms:
+            continue
+        clitic_present_in_any_M = any(
+            "=" in text
+            for m in ms
+            for text in _m_forms(m)
+        )
+        if clitic_present_in_any_M:
+            continue
+        w_id = w.get("id") or ""
+        parent_s = w.getparent()
+        s_id = parent_s.get("id") if parent_s is not None and parent_s.tag == "S" else None
+        loc = f"W={w_id}" if w_id else "W"
+        if s_id:
+            loc = f"S={s_id} {loc}"
+        findings.append(Finding(
+            rule_id="V066",
+            severity=Severity.HARD,
+            message=(
+                f"W id={w_id!r}: W FORM {w_form!r} contains '=' (clitic boundary) "
+                "but no child M FORM does; clitic boundary must propagate to the M tier"
+            ),
+            path=path,
+            location=loc,
+        ))
+    return findings
+
+
+# ---------------------------------------------------------------------------
+# V067: angle-bracket notation in M FORM is forbidden (HARD)
+# ---------------------------------------------------------------------------
+
+
+def v067_no_angle_brackets_in_M_FORM(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V067 HARD: no '<' or '>' in any M FORM, either tier.
+
+    Infix morphemes at the M tier must use the canonical '-X-' notation
+    (a leading and trailing dash). The angle-bracket convention '<X>'
+    is reserved for the W FORM (where it indicates the surface position
+    of the infix in the host root) and for the TRANSL gloss (where it
+    matches the gloss to the infix morpheme).
+
+    Scope: any direct-child FORM of an M. Fires once per offending M.
+    """
+    findings: list[Finding] = []
+    for m in tree.iter("M"):
+        offending_forms: list[tuple[str | None, str]] = []
+        for child in m:
+            if child.tag != "FORM":
+                continue
+            text = child.text or ""
+            if "<" in text or ">" in text:
+                offending_forms.append((child.get("kindOf"), text))
+        if not offending_forms:
+            continue
+        m_id = m.get("id") or ""
+        # Compose a stable message listing the first offending FORM
+        # (sufficient for diagnostics; downstream tooling can re-parse
+        # the M if it needs the full list).
+        kind, text = offending_forms[0]
+        findings.append(Finding(
+            rule_id="V067",
+            severity=Severity.HARD,
+            message=(
+                f"M id={m_id!r}: FORM kindOf={kind!r} contains '<' or '>' "
+                f"({text!r}); infix M FORMs must use '-X-' notation, not '<X>'"
+            ),
+            path=path,
+            location=f"M={m_id}" if m_id else "M",
+        ))
+    return findings
+
+
+# ---------------------------------------------------------------------------
 # Registry
 # ---------------------------------------------------------------------------
 
@@ -419,5 +536,7 @@ RULES: list = [
     v063_W_FORM_retains_segmentation,
     v064_every_M_has_TRANSL,
     v065_every_W_has_TRANSL,
+    v066_clitic_in_W_requires_clitic_in_M,
+    v067_no_angle_brackets_in_M_FORM,
 ]
 CROSS_FILE_RULES: list = []

@@ -113,6 +113,92 @@ def test_clean_xml_produces_zero_findings(tmp_path):
     )
 
 
+def test_soft_csv_rows_have_location_and_line(tmp_path):
+    """SOFT CSV rows must include the offending element's id (location)
+    and source line number, so the user can jump directly to the issue.
+
+    Added 2026-06-01 per Joshua's request: the SOFT stderr summary is
+    aggregated, so the CSV is the authoritative per-occurrence record.
+    Without location + line, the CSV says "file X has 4 V116 findings"
+    but not where to look.
+    """
+    import csv as _csv
+
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S_target">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">café</FORM>'  # 'é' triggers V116
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    written_path = _write_xml(tmp_path, xml)
+    soft_csv = tmp_path / "loc_line.csv"
+    proc = subprocess.run(
+        [
+            sys.executable, str(VALIDATE_TEXT),
+            "by_path", "--path", str(tmp_path / "XML"),
+            "--soft-csv", str(soft_csv),
+        ],
+        capture_output=True,
+        text=True,
+    )
+    assert soft_csv.exists(), (
+        f"CSV missing; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+    with open(soft_csv, newline="", encoding="utf-8") as fh:
+        rows = list(_csv.DictReader(fh))
+    v116_rows = [r for r in rows if r["rule_id"] == "V116"]
+    assert v116_rows, f"expected V116 row in CSV; rows={rows!r}"
+    row = v116_rows[0]
+    assert row["location"], (
+        f"V116 row missing 'location'; row={row!r}"
+    )
+    assert row["line"].isdigit() and int(row["line"]) > 0, (
+        f"V116 row missing valid 'line'; row={row!r}"
+    )
+    # And the S id should be discoverable in the location field.
+    assert "S_target" in row["location"], (
+        f"expected S_target in location; got {row['location']!r}"
+    )
+
+
+def test_soft_csv_path_is_announced(tmp_path):
+    """validate_text.py must print the SOFT-CSV output path so users can
+    find the aggregated per-character SOFT data after a run.
+
+    Stderr summary lists SOFT findings without per-element locations
+    (aggregation is by design — see Finding docstring), so the CSV is
+    the primary place to look up details. Silently writing the CSV
+    leaves the user guessing where the file went.
+    """
+    # XML guaranteed to produce a SOFT finding (V126: '=' in S-standard).
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">a=b</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    soft_csv = tmp_path / "explicit_soft.csv"
+    proc = subprocess.run(
+        [
+            sys.executable, str(VALIDATE_TEXT),
+            "by_path", "--path", str(tmp_path / "XML"),
+            "--soft-csv", str(soft_csv),
+        ],
+        capture_output=True,
+        text=True,
+    )
+    combined = proc.stdout + proc.stderr
+    assert str(soft_csv) in combined, (
+        f"expected SOFT CSV path {soft_csv!s} in script output; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
 # -----------------------------------------------------------------------------
 # W1: ported validate_punct.py rules
 # -----------------------------------------------------------------------------
@@ -308,6 +394,86 @@ def test_V116_scans_all_FORM_tiers(tmp_path):
     proc = _run_validate_text(tmp_path)
     assert _has_text_finding(proc, ("v116", "non_ascii", "non-ascii")), (
         f"expected V116 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+# Helper for V116 orthography-exclusion tests: build a fixture XML with a
+# specified xml:lang so we can exercise per-language letter exclusion.
+def _xml_with_lang_and_form(lang: str, form_text: str) -> str:
+    return (
+        '<?xml version="1.0" encoding="utf-8"?>\n'
+        f'<TEXT id="T1" citation="t" BibTeX_citation="@t{{t}}" '
+        f'copyright="t" xml:lang="{lang}">'
+        '<S id="S1">'
+        f'<FORM kindOf="original">{form_text}</FORM>'
+        f'<FORM kindOf="standard">{form_text}</FORM>'
+        '</S>'
+        + _TEXT_CLOSE
+    )
+
+
+def test_V116_excludes_chars_from_matching_language_orthography(tmp_path):
+    """V116: 'ṟ' (Atayal orthography letter) in a tay-tagged file is excluded.
+
+    'ṟ' (U+1E5F) appears in the first column of Orthographies/Ortho113/Atayal.tsv.
+    A file whose TEXT/@xml:lang is 'tay' (Atayal ISO 639-3) should not have
+    'ṟ' flagged by V116, because the letter is part of the language's
+    legitimate orthography.
+    """
+    xml = _xml_with_lang_and_form("tay", "kaṟal")
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v116" not in combined, (
+        f"V116 should exclude 'ṟ' for tay (Atayal); "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V116_still_triggers_for_chars_only_in_other_languages_orthography(tmp_path):
+    """V116: 'ʉ' (Kanakanavu / Tsou / Saaroa letter) is NOT in Atayal orthography
+    and should still be flagged in a tay-tagged file."""
+    xml = _xml_with_lang_and_form("tay", "kʉal")
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(proc, ("v116", "non_ascii", "non-ascii")), (
+        f"expected V116 finding for 'ʉ' in tay file; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V116_excludes_chars_from_any_orthography_subdir(tmp_path):
+    """V116: pools first-column letters across ALL Orthographies/*/ TSVs.
+
+    'ř' (U+0159) for Amis only appears in Orthographies/Montgomery/Amis.tsv,
+    not Ortho113 or Ortho94. The rule must pool across orthography subdirs.
+    """
+    xml = _xml_with_lang_and_form("ami", "ŕaři")
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    # 'ŕ' (U+0155) is NOT in any Amis orthography; should still trigger.
+    assert _has_text_finding(proc, ("v116", "non_ascii", "non-ascii")), (
+        f"V116 should trigger for 'ŕ' (not in Amis orthography); "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+    # 'ř' is in Montgomery/Amis.tsv — only the 'ŕ' finding should appear,
+    # not a separate finding citing 'ř'.
+    assert "u+0159" not in combined and "'ř'" not in combined, (
+        f"V116 should exclude 'ř' (in Montgomery/Amis.tsv); "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V116_unknown_xml_lang_falls_back_to_legacy_behavior(tmp_path):
+    """V116: when xml:lang is an unknown / unmapped code, no orthography
+    exclusion is applied and V116 behaves as it did pre-enhancement."""
+    xml = _xml_with_lang_and_form("xyz", "café")
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(proc, ("v116", "non_ascii", "non-ascii")), (
+        f"V116 should still trigger for unknown xml:lang; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
     )
 
 
@@ -713,6 +879,137 @@ def test_V125_W_null_fully_propagated_OK(tmp_path):
 
 
 # -----------------------------------------------------------------------------
+# V140: null in S-original FORM must propagate DOWN to at least one W AND
+# that W must have at least one M FORM with null (HARD).
+# Converse of V125 (which propagates UP). Added 2026-06-01.
+# -----------------------------------------------------------------------------
+
+
+def test_V140_S_original_null_not_in_any_W_negative(tmp_path):
+    """V140 HARD: S-original has ∅ but no W FORM contains ∅."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">∅ sua</FORM>'
+        + '<FORM kindOf="standard">sua</FORM>'
+        + '<W id="W1">'
+        + '<FORM kindOf="original">sua</FORM>'
+        + '<FORM kindOf="standard">sua</FORM>'
+        + '<M id="M1">'
+        + '<FORM kindOf="original">sua</FORM>'
+        + '<FORM kindOf="standard">sua</FORM>'
+        + '</M>'
+        + '</W>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v140", "s-original null", "s original null", "null in s-original")
+    ), (
+        f"expected V140 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V140_S_original_null_in_W_but_not_in_M_negative(tmp_path):
+    """V140 HARD: a W FORM has ∅ but that W's Ms have no ∅."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">∅ sua</FORM>'
+        + '<FORM kindOf="standard">sua</FORM>'
+        + '<W id="W1">'
+        + '<FORM kindOf="original">∅</FORM>'
+        + '<FORM kindOf="standard">∅</FORM>'
+        + '<M id="M1">'
+        + '<FORM kindOf="original">a</FORM>'
+        + '<FORM kindOf="standard">a</FORM>'
+        + '</M>'
+        + '</W>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v140", "s-original null", "s original null", "null in s-original")
+    ), (
+        f"expected V140 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V140_S_original_null_fully_propagated_OK(tmp_path):
+    """V140 OK: a W has ∅ AND that W has a child M with ∅."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">∅ sua</FORM>'
+        + '<FORM kindOf="standard">sua</FORM>'
+        + '<W id="W1">'
+        + '<FORM kindOf="original">∅</FORM>'
+        + '<FORM kindOf="standard">∅</FORM>'
+        + '<M id="M1">'
+        + '<FORM kindOf="original">∅</FORM>'
+        + '<FORM kindOf="standard">∅</FORM>'
+        + '</M>'
+        + '</W>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v140" not in combined, (
+        f"V140 should not fire when fully propagated; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V140_no_null_in_S_original_no_ops(tmp_path):
+    """V140: S-original has no ∅ -> rule never fires."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">hello</FORM>'
+        + '<FORM kindOf="standard">hello</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v140" not in combined, (
+        f"V140 should not fire when S-original has no ∅; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V140_S_with_no_W_children_no_ops(tmp_path):
+    """V140: S has ∅ but no W children at all (unsegmented S) -> rule no-ops.
+
+    Mirrors V063's no-segmentation no-op semantics: when no tokenization
+    tier exists, the propagation rule has nothing to check against.
+    Catching unsegmented S elements is V060's job, not V140's.
+    """
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">∅ sua</FORM>'
+        + '<FORM kindOf="standard">sua</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v140" not in combined, (
+        f"V140 should no-op on unsegmented S; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+# -----------------------------------------------------------------------------
 # W9: TR7 — `=` in S-level standard FORM (SOFT)
 # -----------------------------------------------------------------------------
 
@@ -963,8 +1260,14 @@ def test_V129_asterisk_in_W_standard_FORM_negative(tmp_path):
     )
 
 
-def test_V129_asterisk_in_original_does_not_trigger(tmp_path):
-    """V129: '*' in ORIGINAL tier is preserved (rule targets standard only)."""
+def test_V129_asterisk_in_original_FORM_negative(tmp_path):
+    """V129 HARD: '*' in ORIGINAL tier is also forbidden (policy change 2026-06-01).
+
+    The original tier was previously allowed to preserve source-text
+    metalinguistic markers, but Joshua's call: asterisks in FormosanBank
+    corpora are project artifacts, not faithful source-text preservation,
+    so the rule applies in both tiers.
+    """
     xml = (
         _TEXT_OPEN
         + '<S id="S1">'
@@ -975,9 +1278,11 @@ def test_V129_asterisk_in_original_does_not_trigger(tmp_path):
     )
     _write_xml(tmp_path, xml)
     proc = _run_validate_text(tmp_path)
-    combined = combined_output(proc)
-    assert "v129" not in combined, (
-        f"V129 should not fire on original tier; stdout={proc.stdout!r}"
+    assert _has_text_finding(
+        proc, ("v129", "asterisk", "* in")
+    ), (
+        f"expected V129 finding on original tier; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
     )
 
 
@@ -1633,8 +1938,8 @@ def test_V137_plain_decimal_number_OK(tmp_path):
     )
 
 
-def test_V137_mid_text_decimal_not_flagged(tmp_path):
-    """V137: scope is END-of-text only (per plan). Mid-text `.1` not flagged."""
+def test_V137_mid_text_decimal_now_flagged(tmp_path):
+    """V137 (broadened 2026-06-01): mid-text `word.1` triggers."""
     xml = (
         _TEXT_OPEN
         + '<S id="S1">'
@@ -1645,9 +1950,128 @@ def test_V137_mid_text_decimal_not_flagged(tmp_path):
     )
     _write_xml(tmp_path, xml)
     proc = _run_validate_text(tmp_path)
-    combined = combined_output(proc)
-    assert "v137" not in combined, (
-        f"V137 should be end-anchored; stdout={proc.stdout!r}"
+    assert _has_text_finding(
+        proc, ("v137", "footnote")
+    ), (
+        f"expected V137 finding on mid-text `.1`; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V137_letter_plus_digit_in_S_FORM_soft(tmp_path):
+    """V137: letter immediately followed by digits (e.g., 'nganai12') triggers."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">nganai12 isi ia</FORM>'
+        + '<FORM kindOf="standard">nganai isi ia</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v137", "footnote")
+    ), (
+        f"expected V137 finding on `nganai12`; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V137_W_FORM_letter_plus_digit_soft(tmp_path):
+    """V137 walks W-level FORM (broadened scope, 2026-06-01)."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">nganai</FORM>'
+        + '<FORM kindOf="standard">nganai</FORM>'
+        + '<W id="W1">'
+        + '<FORM kindOf="original">nganai12</FORM>'
+        + '<FORM kindOf="standard">nganai</FORM>'
+        + '</W>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v137", "footnote")
+    ), (
+        f"expected V137 finding in W FORM; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V137_M_FORM_letter_plus_digit_soft(tmp_path):
+    """V137 walks M-level FORM (broadened scope, 2026-06-01)."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">nganai</FORM>'
+        + '<FORM kindOf="standard">nganai</FORM>'
+        + '<W id="W1">'
+        + '<FORM kindOf="original">nganai</FORM>'
+        + '<FORM kindOf="standard">nganai</FORM>'
+        + '<M id="M1">'
+        + '<FORM kindOf="original">nganai12</FORM>'
+        + '<FORM kindOf="standard">nganai</FORM>'
+        + '</M>'
+        + '</W>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v137", "footnote")
+    ), (
+        f"expected V137 finding in M FORM; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V137_multiple_findings_per_FORM(tmp_path):
+    """V137 writes one CSV row per occurrence (per-occurrence semantics).
+
+    The S-level original FORM here contains two distinct footnote
+    markers: `niaranai12` (letter+digit, mid-string) and `miana.19`
+    (`.digit`, trailing). The SOFT CSV must carry two V137 rows so
+    Joshua can pin each to its source line. Stderr aggregates by
+    (rule, lang, character) so the test reads the CSV directly.
+    """
+    import csv as _csv
+
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">'
+        +     '∅-sua nganai isi ia, niaranai12 upeni kusai mʉna cenana miana.19'
+        + '</FORM>'
+        + '<FORM kindOf="standard">a b c</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    soft_csv = tmp_path / "v137_soft.csv"
+    proc = subprocess.run(
+        [
+            sys.executable, str(VALIDATE_TEXT),
+            "by_path", "--path", str(tmp_path / "XML"),
+            "--soft-csv", str(soft_csv),
+        ],
+        capture_output=True,
+        text=True,
+    )
+    assert soft_csv.exists(), (
+        f"expected SOFT CSV at {soft_csv}; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+    with open(soft_csv, newline="", encoding="utf-8") as fh:
+        rows = [r for r in _csv.reader(fh)]
+    header, *data = rows
+    v137_rows = [r for r in data if r[header.index("rule_id")] == "V137"]
+    assert len(v137_rows) >= 2, (
+        f"expected >=2 V137 rows in CSV; got {len(v137_rows)}; rows={data!r}"
     )
 
 
@@ -1808,4 +2232,67 @@ def test_V139_clean_text_OK(tmp_path):
     combined = combined_output(proc)
     assert "v139" not in combined, (
         f"V139 should not fire on clean text; stdout={proc.stdout!r}"
+    )
+
+
+# -----------------------------------------------------------------------------
+# Regression: comprehensive_test.xml
+#
+# Companion to the same-named tests in test_validate_xml.py and
+# test_validate_glosses.py. Joshua's growing real-world fixture.
+# Per-occurrence findings live in the SOFT CSV; aggregated SOFT lines
+# in stderr are matched by (rule_id + character).
+# -----------------------------------------------------------------------------
+
+
+def test_comprehensive_test_xml_regression(tmp_path):
+    """Lock in validate_text.py findings on comprehensive_test.xml.
+
+    Asserts each expected (rule_id, marker) pair appears in the
+    combined CLI output (HARD findings) or in the per-occurrence SOFT
+    CSV (SOFT findings).
+    """
+    import csv as _csv
+
+    repo_root = Path(__file__).resolve().parents[2]
+    fixture = repo_root / "tests" / "fixtures" / "comprehensive_test.xml"
+    assert fixture.exists(), f"comprehensive fixture missing at {fixture}"
+    soft_csv = tmp_path / "comp_soft.csv"
+    proc = subprocess.run(
+        [
+            sys.executable, str(VALIDATE_TEXT),
+            "by_path", "--path", str(fixture),
+            "--soft-csv", str(soft_csv),
+            "--no-exit-on-hard",
+        ],
+        capture_output=True,
+        text=True,
+    )
+    combined = (proc.stdout + proc.stderr).lower()
+    # HARD findings: assert (rule_id, location-id) both appear in combined output.
+    expected_hard: tuple[tuple[str, str], ...] = (
+        ("v120", "ap3_s_2"),    # null '∅' in S-standard FORM
+        ("v129", "s=1"),         # '*' in either FORM tier of S=1
+        ("v129", "w=1_1"),       # '*' in W=1_1
+        ("v140", "ap3_s_2"),     # S-original null not propagated down
+    )
+    missing_hard: list[tuple[str, str]] = []
+    for rule, marker in expected_hard:
+        if rule not in combined or marker not in combined:
+            missing_hard.append((rule, marker))
+    assert not missing_hard, (
+        f"HARD regression missing: {missing_hard!r}; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+    # SOFT findings: assert rule_ids appear as CSV rows.
+    assert soft_csv.exists(), (
+        f"SOFT CSV missing for fixture run; stderr={proc.stderr!r}"
+    )
+    with open(soft_csv, newline="", encoding="utf-8") as fh:
+        rows = list(_csv.DictReader(fh))
+    soft_rule_ids_present = {r["rule_id"] for r in rows}
+    expected_soft = {"V116", "V122", "V133", "V135", "V137"}
+    missing_soft = expected_soft - soft_rule_ids_present
+    assert not missing_soft, (
+        f"SOFT regression missing: {missing_soft!r}; csv rows={rows!r}"
     )

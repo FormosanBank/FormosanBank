@@ -10,7 +10,7 @@
   CSV. Today: text is unchanged (no segmentation logic), but warn
   infrastructure is absent so the warn assertion XFAILs.
 -->
-<TEXT id="TEST_C012_BNN" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="bnn">
+<TEXT id="TEST_C012_BNN" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="bnn" dialect="unknown">
   <S id="S_1">
     <FORM kindOf="original">ma-baliv-an.</FORM>
     <FORM kindOf="standard">ma-baliv-an.</FORM>

@@ -11,7 +11,7 @@
   also disappears as a clitic boundary). Today: no segmentation
   stripping, so the standard text stays "M-kan =ku n-hapuy." (XFAIL).
 -->
-<TEXT id="TEST_C012_AMI" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+<TEXT id="TEST_C012_AMI" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
   <S id="S_1">
     <FORM kindOf="original">M-kan =ku n-hapuy.</FORM>
     <FORM kindOf="standard">M-kan =ku n-hapuy.</FORM>

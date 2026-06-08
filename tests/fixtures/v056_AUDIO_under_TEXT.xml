@@ -7,7 +7,7 @@
   permit AUDIO directly under TEXT, so this will FAIL XSD validation
   until B updates the XSD; xfail on the positive direction.
 -->
-<TEXT id="V056_POS" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+<TEXT id="V056_POS" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
   <AUDIO file="document.wav" start="0" end="10"/>
   <S id="S_1">
     <FORM kindOf="original">Halo.</FORM>

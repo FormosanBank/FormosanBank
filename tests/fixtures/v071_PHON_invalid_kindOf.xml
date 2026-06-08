@@ -7,7 +7,7 @@
   Exercises: validate_xml.py should reject. Currently the XSD does not
   know about PHON at all; xfail.
 -->
-<TEXT id="V071_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+<TEXT id="V071_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
   <S id="S_1">
     <FORM kindOf="original">Halo.</FORM>
     <PHON kindOf="alternate">ha.lo</PHON>

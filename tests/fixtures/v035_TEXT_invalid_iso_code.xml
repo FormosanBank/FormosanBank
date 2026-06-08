@@ -7,7 +7,7 @@
   Exercises: validate_xml.py should reject (currently does, via
   validate_lang_code).
 -->
-<TEXT id="V035_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="zz">
+<TEXT id="V035_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="zz" dialect="unknown">
   <S id="S_1">
     <FORM kindOf="original">Halo.</FORM>
   </S>

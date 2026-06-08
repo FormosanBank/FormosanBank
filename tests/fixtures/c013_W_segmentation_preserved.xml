@@ -18,7 +18,7 @@
   "[" and "]" to "(" and ")", which would silently corrupt W/FORM
   text if those characters ever appeared as segmentation markers.
 -->
-<TEXT id="TEST_C013" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+<TEXT id="TEST_C013" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
   <S id="S_1">
     <FORM kindOf="original">Pa-rakat-en.</FORM>
     <FORM kindOf="standard">Pa-rakat-en.</FORM>

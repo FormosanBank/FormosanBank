@@ -1,14 +1,14 @@
 <?xml version="1.0" ?>
-<TEXT id="1. niomahas a longtsang si Kaojinzhong" xml:lang="trv" copyright="CC NC-BY" citation="Rau, D. V., &amp; Dong, M. N. (2006). Yami texts with reference grammar and dictionary. Institute of Linguistics, Academia Sinica." BibTeX_citation="@book{rau2006yami, title={Yami texts with reference grammar and dictionary}, author={Rau, D Victoria and Dong, Maa-Neu}, year={2006}, publisher={Institute of Linguistics, Academia Sinica}}" source="['1. niomahas a longtsang si Kaojinzhong', '越獄犯高進忠', 'An escaped convict', '', 'si Tonosen (M, 53, Yayo)', '賴金龍，男，53，椰油村', '']">
+<TEXT id="1. niomahas a longtsang si Kaojinzhong" xml:lang="dru" copyright="CC NC-BY" citation="Rau, D. V., &amp; Dong, M. N. (2006). Yami texts with reference grammar and dictionary. Institute of Linguistics, Academia Sinica." BibTeX_citation="@book{rau2006yami, title={Yami texts with reference grammar and dictionary}, author={Rau, D Victoria and Dong, Maa-Neu}, year={2006}, publisher={Institute of Linguistics, Academia Sinica}}" source="['1. niomahas a longtsang si Kaojinzhong', '越獄犯高進忠', 'An escaped convict', '', 'si Tonosen (M, 53, Yayo)', '賴金龍，男，53，椰油村', '']" dialect="unknown">
     <S id="1">
-        <FORM kindOf="original">apnezak rana am, ma-níring si Apiasongaran am, ji apen Jinovoya am,</FORM>
+        <FORM kindOf="original">ɨapnezak* rana am, (ma-níring) si / Apiasongaran am, ji apen Jinovoya am,</FORM>
         <PHON kindOf="original">apnəʐak rana am, ma-n*riŋ ʂi apiaʂo~uŋaran am, ʥi apən ʥino~uvo~uja am,</PHON>
-        <FORM kindOf="standard">apnezak rana am, ma-níring si Apiasongaran am, ji apen Jinovoya am,</FORM>
+        <FORM kindOf="standard">*apnezak rana am, ma-níring si Apiasongaran am, ji apen Jinovoya am,</FORM>
         <PHON kindOf="standard">apnəɻak ɻana am, ma-n*ɻiŋ ɕi apiaʂo~uŋaɻan am, ʥi apən ʥino~ufo~uja am,</PHON>
         <TRANSL xml:lang="zho">有一天早上,si Apiasongaran對si apen Jinovoya說</TRANSL>
         <TRANSL xml:lang="eng">In the morning, Si Apiasongaran said to si apen Jinovoya,</TRANSL>
         <W id="1_1">
-            <FORM kindOf="original">apnezak</FORM>
+            <FORM kindOf="original">*apnezak</FORM>
             <PHON kindOf="original">apnəʐak</PHON>
             <FORM kindOf="standard">apnezak</FORM>
             <PHON kindOf="standard">apnəɻak</PHON>
@@ -193,10 +193,11 @@
         </W>
     </S>
     <S id="ap3_S_2">
-        <FORM kindOf="original">sua nganai isi ia, niaranai upeni kusai mʉna cenana miana.</FORM>
+        <FORM kindOf="original">∅-sua nganai isi ia, niaranai upeni kusai mʉna cenana miana.</FORM>
         <PHON kindOf="original">sua ŋanai isi ia, niar~ɾanai upeni kusai mɨna ʦenana miana.</PHON>
-        <FORM kindOf="standard">sua nganai isi ia, niaranai upeni kusai mʉna cenana miana.</FORM>
+        <FORM kindOf="standard">∅-sua n-ganai isi ia, ni-ara-nai up-eni kus-ai mʉna ce-nan-a mi-ana.</FORM>
         <PHON kindOf="standard">sua ŋanai isi ia, niar~ɾanai upeni kusai mɨna ʦenana miana.</PHON>
+        <TRANSL xml:lang="zho">這個名稱是來自於數百年之前.</TRANSL>
         <TRANSL xml:lang="zho">這個名稱是來自於數百年之前.</TRANSL>
         <W id="ap3_S_2_W0">
             <FORM kindOf="original">sua</FORM>
@@ -530,4 +531,329 @@
             </M>
         </W>
     </S>
-    </TEXT>
+    <S id="ap2_S_1">
+        <FORM kindOf="original">Cbeyo cbeyo bale, nndaha ka hido karac baro han mesa.</FORM>
+        <PHON kindOf="original">ʦbejo ʦbejo bale, nndaħa ka ħido kaɾaʦ baɾo ħan mesa.</PHON>
+        <FORM kindOf="standard">Cbeyo cbeyo bale, nndaha ka hido karac baro han mesa.</FORM>
+        <PHON kindOf="standard">ʦbejo ʦbejo bale, nndaħa ka ħido kaɾaʦ baɾo ħan mesa.</PHON>
+        <TRANSL xml:lang="zho">很久很久以前,據說天上曾經有兩個太陽.</TRANSL>
+        <W id="ap2_S_1_W0">
+            <FORM kindOf="original">cbeyo</FORM>
+            <PHON kindOf="original">ʦbejo</PHON>
+            <FORM kindOf="standard">cbeyo</FORM>
+            <PHON kindOf="standard">ʦbejo</PHON>
+            <TRANSL xml:lang="zho">以前</TRANSL>
+            <M id="ap2_S_1_W0_M0_0">
+                <FORM kindOf="original">cbeyo</FORM>
+                <PHON kindOf="original">ʦbejo</PHON>
+                <FORM kindOf="standard">cbeyo</FORM>
+                <PHON kindOf="standard">ʦbejo</PHON>
+                <TRANSL xml:lang="zho">以前</TRANSL>
+            </M>
+        </W>
+        <W id="ap2_S_1_W1">
+            <FORM kindOf="original">cbeyo</FORM>
+            <PHON kindOf="original">ʦbejo</PHON>
+            <FORM kindOf="standard">cbeyo</FORM>
+            <PHON kindOf="standard">ʦbejo</PHON>
+            <TRANSL xml:lang="zho">以前</TRANSL>
+            <M id="ap2_S_1_W1_M0_0">
+                <FORM kindOf="original">cbeyo</FORM>
+                <PHON kindOf="original">ʦbejo</PHON>
+                <FORM kindOf="standard">cbeyo</FORM>
+                <PHON kindOf="standard">ʦbejo</PHON>
+                <TRANSL xml:lang="zho">以前</TRANSL>
+            </M>
+        </W>
+        <W id="ap2_S_1_W2">
+            <FORM kindOf="original">bale,</FORM>
+            <PHON kindOf="original">bale,</PHON>
+            <FORM kindOf="standard">bale,</FORM>
+            <PHON kindOf="standard">bale,</PHON>
+            <TRANSL xml:lang="zho">真的</TRANSL>
+            <M id="ap2_S_1_W2_M0_0">
+                <FORM kindOf="original">bale,</FORM>
+                <PHON kindOf="original">bale,</PHON>
+                <FORM kindOf="standard">bale,</FORM>
+                <PHON kindOf="standard">bale,</PHON>
+                <TRANSL xml:lang="zho">真的</TRANSL>
+            </M>
+        </W>
+        <W id="ap2_S_1_W3">
+            <FORM kindOf="original">n&lt;n&gt;daha</FORM>
+            <PHON kindOf="original">n&lt;n&gt;daħa</PHON>
+            <FORM kindOf="standard">n&lt;n&gt;daha</FORM>
+            <PHON kindOf="standard">n&lt;n&gt;daħa</PHON>
+            <TRANSL xml:lang="zho">重疊&lt;完成貌&gt;二</TRANSL>
+            <M id="ap2_S_1_W3_M0_0_0">
+                <FORM kindOf="original">&lt;n&gt;</FORM>
+                <PHON kindOf="original">&lt;n&gt;</PHON>
+                <FORM kindOf="standard">&lt;n&gt;</FORM>
+                <PHON kindOf="standard">&lt;n&gt;</PHON>
+                <TRANSL xml:lang="zho">&lt;完成貌&gt;</TRANSL>
+            </M>
+            <M id="ap2_S_1_W3_M0_0_1">
+                <FORM kindOf="original">n-daha</FORM>
+                <PHON kindOf="original">n-daħa</PHON>
+                <FORM kindOf="standard">n-daha</FORM>
+                <PHON kindOf="standard">n-daħa</PHON>
+                <TRANSL xml:lang="zho">重疊二</TRANSL>
+            </M>
+        </W>
+        <W id="ap2_S_1_W4">
+            <FORM kindOf="original">ka</FORM>
+            <PHON kindOf="original">ka</PHON>
+            <FORM kindOf="standard">ka</FORM>
+            <PHON kindOf="standard">ka</PHON>
+            <TRANSL xml:lang="zho">主格</TRANSL>
+            <M id="ap2_S_1_W4_M0_0">
+                <FORM kindOf="original">ka</FORM>
+                <PHON kindOf="original">ka</PHON>
+                <FORM kindOf="standard">ka</FORM>
+                <PHON kindOf="standard">ka</PHON>
+                <TRANSL xml:lang="zho">主格</TRANSL>
+            </M>
+        </W>
+        <W id="ap2_S_1_W5">
+            <FORM kindOf="original">hido</FORM>
+            <PHON kindOf="original">ħido</PHON>
+            <FORM kindOf="standard">hido</FORM>
+            <PHON kindOf="standard">ħido</PHON>
+            <TRANSL xml:lang="zho">太陽</TRANSL>
+            <M id="ap2_S_1_W5_M0_0">
+                <FORM kindOf="original">hido</FORM>
+                <PHON kindOf="original">ħido</PHON>
+                <FORM kindOf="standard">hido</FORM>
+                <PHON kindOf="standard">ħido</PHON>
+                <TRANSL xml:lang="zho">太陽</TRANSL>
+            </M>
+        </W>
+        <W id="ap2_S_1_W6">
+            <FORM kindOf="original">karac</FORM>
+            <PHON kindOf="original">kaɾaʦ</PHON>
+            <FORM kindOf="standard">karac</FORM>
+            <PHON kindOf="standard">kaɾaʦ</PHON>
+            <TRANSL xml:lang="zho">天空</TRANSL>
+            <M id="ap2_S_1_W6_M0_0">
+                <FORM kindOf="original">karac</FORM>
+                <PHON kindOf="original">kaɾaʦ</PHON>
+                <FORM kindOf="standard">karac</FORM>
+                <PHON kindOf="standard">kaɾaʦ</PHON>
+                <TRANSL xml:lang="zho">天空</TRANSL>
+            </M>
+        </W>
+        <W id="ap2_S_1_W7">
+            <FORM kindOf="original">baro</FORM>
+            <PHON kindOf="original">baɾo</PHON>
+            <FORM kindOf="standard">baro</FORM>
+            <PHON kindOf="standard">baɾo</PHON>
+            <TRANSL xml:lang="zho">上方</TRANSL>
+            <M id="ap2_S_1_W7_M0_0">
+                <FORM kindOf="original">baro</FORM>
+                <PHON kindOf="original">baɾo</PHON>
+                <FORM kindOf="standard">baro</FORM>
+                <PHON kindOf="standard">baɾo</PHON>
+                <TRANSL xml:lang="zho">上方</TRANSL>
+            </M>
+        </W>
+        <W id="ap2_S_1_W8">
+            <FORM kindOf="original">han</FORM>
+            <PHON kindOf="original">ħan</PHON>
+            <FORM kindOf="standard">han</FORM>
+            <PHON kindOf="standard">ħan</PHON>
+            <TRANSL xml:lang="zho">先</TRANSL>
+            <M id="ap2_S_1_W8_M0_0">
+                <FORM kindOf="original">han</FORM>
+                <PHON kindOf="original">ħan</PHON>
+                <FORM kindOf="standard">han</FORM>
+                <PHON kindOf="standard">ħan</PHON>
+                <TRANSL xml:lang="zho">先</TRANSL>
+            </M>
+        </W>
+        <W id="ap2_S_1_W9">
+            <FORM kindOf="original">mesa.</FORM>
+            <PHON kindOf="original">mesa.</PHON>
+            <FORM kindOf="standard">mesa.</FORM>
+            <PHON kindOf="standard">mesa.</PHON>
+            <TRANSL xml:lang="zho">主事焦點.說</TRANSL>
+            <M id="ap2_S_1_W9_M0_0">
+                <FORM kindOf="original">mesa.</FORM>
+                <PHON kindOf="original">mesa.</PHON>
+                <FORM kindOf="standard">mesa.</FORM>
+                <PHON kindOf="standard">mesa.</PHON>
+                <TRANSL xml:lang="zho">主事焦點.說</TRANSL>
+            </M>
+        </W>
+        <AUDIO file="Seediq_A4-1-1.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Seediq_A4-1-1.mp3"/>
+    </S>
+    <S id="ap3_S_2b">
+        <FORM kindOf="original">∅-sua nganai isi ia, niaranai12 upeni kusai mʉna cenana miana.19</FORM>
+        <PHON kindOf="original">sua ŋanai isi ia, niar~ɾanai upeni kusai mɨna ʦenana miana.</PHON>
+        <FORM kindOf="standard">sua nganai isi ia, niaranai upeni kusai mʉna cenana miana.</FORM>
+        <PHON kindOf="standard">sua ŋanai isi ia, niar~ɾanai upeni kusai mɨna ʦenana miana.</PHON>
+        <TRANSL xml:lang="zho">這個名稱是來自於數百年之前.</TRANSL>
+        <TRANSL ver="alt" xml:lang="zho">這個名稱是來自於數百年之前.</TRANSL>
+        <W id="ap3_S_2_W0">
+            <FORM kindOf="original">∅-sua</FORM>
+            <PHON kindOf="original">sua</PHON>
+            <FORM kindOf="standard">sua</FORM>
+            <PHON kindOf="standard">sua</PHON>
+            <TRANSL xml:lang="zho">AV-主格</TRANSL>
+            <M id="ap3_S_2_W0_M0_0a">
+                <FORM kindOf="original">∅</FORM>
+                <PHON kindOf="original"></PHON>
+                <FORM kindOf="standard"></FORM>
+                <PHON kindOf="standard"></PHON>
+                <TRANSL xml:lang="zho">AV</TRANSL>
+            </M>
+            <M id="ap3_S_2_W0_M0_0">
+                <FORM kindOf="original">sua</FORM>
+                <PHON kindOf="original">sua</PHON>
+                <FORM kindOf="standard">sua</FORM>
+                <PHON kindOf="standard">sua</PHON>
+                <TRANSL xml:lang="zho">主格</TRANSL>
+            </M>
+        </W>
+        <W id="ap3_S_2_W1">
+            <FORM kindOf="original">nganai12</FORM>
+            <PHON kindOf="original">ŋanai</PHON>
+            <FORM kindOf="standard">nganai</FORM>
+            <PHON kindOf="standard">ŋanai</PHON>
+            <TRANSL xml:lang="zho">名字</TRANSL>
+            <M id="ap3_S_2_W1_M0_0">
+                <FORM kindOf="original">nganai12</FORM>
+                <PHON kindOf="original">ŋanai</PHON>
+                <FORM kindOf="standard">nganai</FORM>
+                <PHON kindOf="standard">ŋanai</PHON>
+                <TRANSL xml:lang="zho">名字</TRANSL>
+            </M>
+        </W>
+        <W id="ap3_S_2_W2">
+            <FORM kindOf="original">isi</FORM>
+            <PHON kindOf="original">isi</PHON>
+            <FORM kindOf="standard">isi</FORM>
+            <PHON kindOf="standard">isi</PHON>
+            <TRANSL xml:lang="zho">這</TRANSL>
+            <M id="ap3_S_2_W2_M0_0">
+                <FORM kindOf="original">isi</FORM>
+                <PHON kindOf="original">isi</PHON>
+                <FORM kindOf="standard">isi</FORM>
+                <PHON kindOf="standard">isi</PHON>
+                <TRANSL xml:lang="zho">這</TRANSL>
+            </M>
+        </W>
+        <W id="ap3_S_2_W3">
+            <FORM kindOf="original">ia,</FORM>
+            <PHON kindOf="original">ia,</PHON>
+            <FORM kindOf="standard">ia,</FORM>
+            <PHON kindOf="standard">ia,</PHON>
+            <TRANSL xml:lang="zho">主題</TRANSL>
+            <M id="ap3_S_2_W3_M0_0">
+                <FORM kindOf="original">ia,</FORM>
+                <PHON kindOf="original">ia,</PHON>
+                <FORM kindOf="standard">ia,</FORM>
+                <PHON kindOf="standard">ia,</PHON>
+                <TRANSL xml:lang="zho">主題</TRANSL>
+            </M>
+        </W>
+        <W id="ap3_S_2_W4">
+            <FORM kindOf="original">ni-aranai</FORM>
+            <PHON kindOf="original">ni-ar~ɾanai</PHON>
+            <FORM kindOf="standard">ni-aranai</FORM>
+            <PHON kindOf="standard">ni-ar~ɾanai</PHON>
+            <TRANSL xml:lang="zho">完成貌-來自</TRANSL>
+            <M id="ap3_S_2_W4_M0_0">
+                <FORM kindOf="original">ni</FORM>
+                <PHON kindOf="original">ni</PHON>
+                <FORM kindOf="standard">ni</FORM>
+                <PHON kindOf="standard">ni</PHON>
+                <TRANSL xml:lang="zho">完成貌</TRANSL>
+            </M>
+            <M id="ap3_S_2_W4_M1_0">
+                <FORM kindOf="original">aranai</FORM>
+                <PHON kindOf="original">ar~ɾanai</PHON>
+                <FORM kindOf="standard">aranai</FORM>
+                <PHON kindOf="standard">ar~ɾanai</PHON>
+                <TRANSL xml:lang="zho">來自</TRANSL>
+            </M>
+        </W>
+        <W id="ap3_S_2_W5">
+            <FORM kindOf="original">u-peni</FORM>
+            <PHON kindOf="original">u-peni</PHON>
+            <FORM kindOf="standard">u-peni</FORM>
+            <PHON kindOf="standard">u-peni</PHON>
+            <TRANSL xml:lang="zho">量詞.非人-多少</TRANSL>
+            <M id="ap3_S_2_W5_M0_0">
+                <FORM kindOf="original">u</FORM>
+                <PHON kindOf="original">u</PHON>
+                <FORM kindOf="standard">u</FORM>
+                <PHON kindOf="standard">u</PHON>
+                <TRANSL xml:lang="zho">量詞.非人</TRANSL>
+            </M>
+            <M id="ap3_S_2_W5_M1_0">
+                <FORM kindOf="original">peni</FORM>
+                <PHON kindOf="original">peni</PHON>
+                <FORM kindOf="standard">peni</FORM>
+                <PHON kindOf="standard">peni</PHON>
+                <TRANSL xml:lang="zho">多少</TRANSL>
+            </M>
+        </W>
+        <W id="ap3_S_2_W6">
+            <FORM kindOf="original">kusai</FORM>
+            <PHON kindOf="original">kusai</PHON>
+            <FORM kindOf="standard">kusai</FORM>
+            <PHON kindOf="standard">kusai</PHON>
+            <TRANSL xml:lang="zho">究竟</TRANSL>
+            <M id="ap3_S_2_W6_M0_0">
+                <FORM kindOf="original">kusai</FORM>
+                <PHON kindOf="original">kusai</PHON>
+                <FORM kindOf="standard">kusai</FORM>
+                <PHON kindOf="standard">kusai</PHON>
+                <TRANSL xml:lang="zho">究竟</TRANSL>
+            </M>
+        </W>
+        <W id="ap3_S_2_W7">
+            <FORM kindOf="original">mʉna</FORM>
+            <PHON kindOf="original">mɨna</PHON>
+            <FORM kindOf="standard">mʉna</FORM>
+            <PHON kindOf="standard">mɨna</PHON>
+            <TRANSL xml:lang="zho">一百</TRANSL>
+            <M id="ap3_S_2_W7_M0_0">
+                <FORM kindOf="original">mʉna</FORM>
+                <PHON kindOf="original">mɨna</PHON>
+                <FORM kindOf="standard">mʉna</FORM>
+                <PHON kindOf="standard">mɨna</PHON>
+                <TRANSL xml:lang="zho">一百</TRANSL>
+            </M>
+        </W>
+        <W id="ap3_S_2_W8">
+            <FORM kindOf="original">cenana</FORM>
+            <PHON kindOf="original">ʦenana</PHON>
+            <FORM kindOf="standard">cenana</FORM>
+            <PHON kindOf="standard">ʦenana</PHON>
+            <TRANSL xml:lang="zho">年</TRANSL>
+            <M id="ap3_S_2_W8_M0_0">
+                <FORM kindOf="original">cenana</FORM>
+                <PHON kindOf="original">ʦenana</PHON>
+                <FORM kindOf="standard">cenana</FORM>
+                <PHON kindOf="standard">ʦenana</PHON>
+                <TRANSL xml:lang="zho">年</TRANSL>
+            </M>
+        </W>
+        <W id="ap3_S_2_W9">
+            <FORM kindOf="original">miana.</FORM>
+            <PHON kindOf="original">miana.</PHON>
+            <FORM kindOf="standard">miana.</FORM>
+            <PHON kindOf="standard">miana.</PHON>
+            <TRANSL xml:lang="zho">以前</TRANSL>
+            <M id="ap3_S_2_W9_M0_0">
+                <FORM kindOf="original">miana.</FORM>
+                <PHON kindOf="original">miana.</PHON>
+                <FORM kindOf="standard">miana.</FORM>
+                <PHON kindOf="standard">miana.</PHON>
+                <TRANSL xml:lang="zho">以前</TRANSL>
+            </M>
+        </W>
+        <AUDIO file="Kanakanavu_A5-1-2.wav" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/Kanakanavu_A5-1-2.wav"/>
+    </S>
+</TEXT>

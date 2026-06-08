@@ -265,16 +265,23 @@ def _print_summary(findings: list[Finding]) -> None:
         print("Files with issues:", file=sys.stderr)
         for p in paths_with_issues:
             print(f"  {p}", file=sys.stderr)
+        # Per-finding lines lead with the file path so readers can jump
+        # straight to the offending file (V039/V000 list dozens of ids
+        # without context otherwise). Path-first also helps editor link
+        # parsers turn each line into a clickable target.
         for f in hard:
             loc = f" [{f.location}]" if f.location else ""
-            print(f"  [{f.rule_id}]{loc} {f.message}", file=sys.stderr)
+            print(
+                f"  {f.path}: [{f.rule_id}]{loc} {f.message}",
+                file=sys.stderr,
+            )
     if soft:
         print("SOFT findings:", file=sys.stderr)
         for f in soft:
             loc = f" [{f.location}]" if f.location else ""
             lang = f" lang={f.language}" if f.language else ""
             print(
-                f"  [{f.rule_id}]{loc}{lang} count={f.count}: {f.message}",
+                f"  {f.path}: [{f.rule_id}]{loc}{lang} count={f.count}: {f.message}",
                 file=sys.stderr,
             )
 

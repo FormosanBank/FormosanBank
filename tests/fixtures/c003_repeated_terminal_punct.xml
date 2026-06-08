@@ -8,7 +8,7 @@
   This is exercised on FORM (via clean_text) and TRANSL (via clean_trans),
   which both call trim_repeated_punctuation.
 -->
-<TEXT id="TEST_C003" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+<TEXT id="TEST_C003" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
   <S id="S_1">
     <FORM kindOf="original">Halo!! Hapinangha?? Pa---tas.</FORM>
     <FORM kindOf="standard">Halo!! Hapinangha?? Pa---tas.</FORM>

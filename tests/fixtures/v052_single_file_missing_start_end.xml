@@ -11,7 +11,7 @@
   this also fails XSD validation; the V052 check itself is not yet
   implemented as a coherent rule with the correct mode framework; xfail.
 -->
-<TEXT id="V052_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" audio="lecture.wav">
+<TEXT id="V052_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" audio="lecture.wav" dialect="unknown">
   <S id="S_1">
     <FORM kindOf="original">Halo.</FORM>
     <AUDIO/>

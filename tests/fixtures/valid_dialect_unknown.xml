@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Positive fixture for V036: dialect="unknown" must be accepted for any
+  language. Used when the dialect of a TEXT cannot be identified, but
+  the team still wants the attribute to be explicit (distinguishing
+  "unknown" from a forgotten attribute).
+-->
+<TEXT id="V036_unknown_pos" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original">Halo.</FORM>
+    <FORM kindOf="standard">Halo.</FORM>
+  </S>
+</TEXT>

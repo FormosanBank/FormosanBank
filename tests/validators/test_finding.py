@@ -81,7 +81,12 @@ def test_write_soft_csv_empty(tmp_path):
     write_soft_csv(out, [])
     with open(out, newline="") as f:
         rows = list(csv.reader(f))
-    assert rows == [["file", "rule_id", "language", "character", "count"]]
+    # SOFT_CSV columns were extended on 2026-06-01 to add `location` and
+    # `line`, so per-occurrence rules can pin each row to a specific
+    # S/W/M element. Aggregated rules leave these blank.
+    assert rows == [
+        ["file", "rule_id", "location", "line", "language", "character", "count"]
+    ]
 
 
 def test_write_soft_csv_one_finding(tmp_path):
@@ -102,9 +107,10 @@ def test_write_soft_csv_one_finding(tmp_path):
     write_soft_csv(out, findings)
     with open(out, newline="") as f:
         rows = list(csv.reader(f))
+    # No location/line on this finding (aggregated rule shape) -> blank.
     assert rows == [
-        ["file", "rule_id", "language", "character", "count"],
-        ["/abs/path/to/ami_chapter01.xml", "V014", "ami", "", "3"],
+        ["file", "rule_id", "location", "line", "language", "character", "count"],
+        ["/abs/path/to/ami_chapter01.xml", "V014", "", "", "ami", "", "3"],
     ]
 
 

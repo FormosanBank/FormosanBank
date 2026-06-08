@@ -14,7 +14,7 @@
   assert against it for: extractor round-trips, validator no-findings,
   cleaner no-change-needed.
 -->
-<TEXT id="TEST_MIN" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami">
+<TEXT id="TEST_MIN" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
   <S id="S_1">
     <FORM kindOf="original">Halo (orig).</FORM>
     <FORM kindOf="standard">Halo (std).</FORM>
