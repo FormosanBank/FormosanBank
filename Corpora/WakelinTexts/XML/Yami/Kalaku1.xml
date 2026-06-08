@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<TEXT id="Kalaku1" xml:lang="tao" source="Yami text. Kalaku." copyright="CC-BY-NC-ND" citation="Indosan, S., Wakelin, G., Dararyaw, S., and Kalaku, S. (1958). Yami texts. Work Papers of the Summer Institute of Linguistics, University of North Dakota Session: Vol. 2, Article 7. 10.31356/silwp.vol02.07" BibTeX_citation="@article{indosan1958yami, title={Yami texts}, year={1958}, author={Indosan, Samen and Wakelin, Grace and Dararyaw, Sinan and Kalaku, Saman}, journal={Work Papers of the Summer Institute of Linguistics, University of North Dakota Session}, volume={2}, number={7}, doi={10.31356/silwp.vol02.07}">
+<TEXT id="Kalaku1" xml:lang="tao" source="Yami text. Kalaku." copyright="CC-BY-NC-ND" citation="Indosan, S., Wakelin, G., Dararyaw, S., and Kalaku, S. (1958). Yami texts. Work Papers of the Summer Institute of Linguistics, University of North Dakota Session: Vol. 2, Article 7. 10.31356/silwp.vol02.07" BibTeX_citation="@article{indosan1958yami, title={Yami texts}, year={1958}, author={Indosan, Samen and Wakelin, Grace and Dararyaw, Sinan and Kalaku, Saman}, journal={Work Papers of the Summer Institute of Linguistics, University of North Dakota Session}, volume={2}, number={7}, doi={10.31356/silwp.vol02.07}" dialect="Yami">
     <S id="S1">
         <FORM kindOf="original">yaken-rana anu-i-k-angay-namen lu ilaud-em</FORM>
         <FORM kindOf="standard">yakenrana anuikangaynamen lu ilaudem</FORM>
@@ -602,16 +602,16 @@
                 <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
             <M id="S11W5M2">
-                <FORM kindOf="original">aru-pa</FORM>
-                <FORM kindOf="standard">arupa</FORM>
+                <FORM kindOf="original">aru</FORM>
+                <FORM kindOf="standard">aru</FORM>
                 <TRANSL xml:lang="eng">many</TRANSL>
             </M>
-            <M id="S11W5M2">
+            <M id="S11W5M3">
                 <FORM kindOf="original">pa</FORM>
                 <FORM kindOf="standard">pa</FORM>
                 <TRANSL xml:lang="eng">still/again</TRANSL>
             </M>
-            <M id="S11W5M3">
+            <M id="S11W5M4">
                 <FORM kindOf="original">sira</FORM>
                 <FORM kindOf="standard">sira</FORM>
                 <TRANSL xml:lang="eng">them</TRANSL>
@@ -640,7 +640,7 @@
             <M id="S11W6M4">
                 <FORM kindOf="original">rana</FORM>
                 <FORM kindOf="standard">rana</FORM>
-                <TRANSL xml:kang="en">completely</TRANSL>
+                <TRANSL xml:lang="eng">completely</TRANSL>
             </M>
         </W>
     </S>
