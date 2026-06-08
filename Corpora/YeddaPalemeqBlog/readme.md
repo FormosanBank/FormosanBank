@@ -75,7 +75,12 @@ python path/to/FormosanBank/QC/utilities/standardize.py --corpora_path path/to/F
 python path/to/FormosanBank/QC/utilities/add_phonology.py --corpora_path XML --orthography Ortho113 
 ```
 
-### 5. Fix XML ids
+### 5. Hand-correction of / and ()
+There are some cases where alternates are provided. In these cases, the AUDIO has generally been removed because Yedda pronounces both options, resulting in an ungrammatical sentence, and we don't want ungrammatical sentences in the corpus. There aren't enough of these for it to be worth implementing a method of preserving them.
+
+But this does mean that caution is suggested in reproducing this corpus.
+
+### 6. Fix XML ids
 For some reason, we ended up with some repeated id attributes for some M elements. This will fix that.
 
 ```bash
