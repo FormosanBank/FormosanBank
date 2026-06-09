@@ -48,6 +48,16 @@ For now the glossing isn't standardized across corpora. But the following will a
     python ../FormosanBank/QC/validation/validate_glosses.py Final_XML --check_morpho
 ```
 
+8. **Tag gloss translations with a language**
+
+The morpheme-level (`M`) interlinear glosses were emitted as bare `<TRANSL>` elements with no `xml:lang`, which fails validator rule V023 (`xml:lang` is required on every `TRANSL`). The glosses are all English (English words plus Leipzig glossing abbreviations), so `xml:lang="eng"` was added to every such tag with:
+
+```bash
+    python CodeAndDocs/add_transl_lang.py
+```
+
+The script edits via targeted string replacement (leaving all other formatting intact) and re-parses each file with lxml to confirm the `TRANSL` count is unchanged and none remain without `xml:lang`. The sentence-level (`S`) free translations already carried `xml:lang="eng"` and were untouched.
+
 ### Citation
 
 Early, R. J., and Whitehorn, J. (2003). One hundred Paiwan texts. Pacific Linguistics, Research School of Pacific and Asian Studies, The Australian National University.
