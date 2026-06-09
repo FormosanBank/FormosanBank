@@ -4,6 +4,8 @@ Consumed by:
   - QC/validation/rules/hard.py (V036)
   - QC/utilities/fix_dialects.py
   - QC/validation/validate_dialect.py
+  - QC/utilities/add_phonology.py (single-vs-multi-dialect column resolution)
+  - QC/utilities/standardize.py (single-vs-multi-dialect column resolution)
 
 Convention (2026-06-03):
   - TEXT/@dialect is REQUIRED on every TEXT element.

@@ -296,17 +296,18 @@ def normalize_caret_variants(text: str) -> str:
     return text
 
 
-_U201D = "”"  # RIGHT DOUBLE QUOTATION MARK — canonical Chinese closing quote
+_FW_DQUOTE = "＂"  # U+FF02 FULLWIDTH QUOTATION MARK — canonical Chinese double quote
+# Only genuine double-quotation marks are collapsed. The angle brackets
+# 《 》 (whole-work title mark, 書名號) and 〈 〉 (part-work/篇名號) are Chinese
+# TITLE marks, not quotes — they carry real semantic information and are
+# deliberately left untouched.
 CHINESE_DOUBLE_QUOTE_COLLAPSE = {
-    "“": _U201D,  # LEFT DOUBLE QUOTATION MARK
-    "「": _U201D,  # LEFT CORNER BRACKET 「
-    "」": _U201D,  # RIGHT CORNER BRACKET 」
-    "『": _U201D,  # LEFT WHITE CORNER BRACKET 『
-    "』": _U201D,  # RIGHT WHITE CORNER BRACKET 』
-    "《": _U201D,  # LEFT DOUBLE ANGLE BRACKET 《
-    "》": _U201D,  # RIGHT DOUBLE ANGLE BRACKET 》
-    "〈": _U201D,  # LEFT ANGLE BRACKET 〈
-    "〉": _U201D,  # RIGHT ANGLE BRACKET 〉
+    "“": _FW_DQUOTE,  # U+201C LEFT DOUBLE QUOTATION MARK
+    "”": _FW_DQUOTE,  # U+201D RIGHT DOUBLE QUOTATION MARK
+    "「": _FW_DQUOTE,  # LEFT CORNER BRACKET 「
+    "」": _FW_DQUOTE,  # RIGHT CORNER BRACKET 」
+    "『": _FW_DQUOTE,  # LEFT WHITE CORNER BRACKET 『
+    "』": _FW_DQUOTE,  # RIGHT WHITE CORNER BRACKET 』
 }
 
 CHINESE_WARN_SINGLE_QUOTES = frozenset({
@@ -326,11 +327,14 @@ def _clean_trans_chinese(
 ) -> str:
     """C002 Branch B: canonicalise Chinese double quotes; warn on singles.
 
-    Double-quote variants (curly doubles, CJK brackets used as quotes)
-    are all collapsed to U+201D RIGHT DOUBLE QUOTATION MARK — the
-    conventional canonical form in Chinese text. Single-quote variants
-    and ASCII apostrophes emit a c002 warning row and are left unchanged:
-    these are typically IME artefacts worth flagging to the corpus author.
+    Double-quote variants (curly doubles, and the corner brackets 「」『』
+    used as quotes) are all collapsed to U+FF02 FULLWIDTH QUOTATION MARK —
+    the full-width straight double quote, the conventional canonical form
+    in Chinese text. The angle brackets 《》/〈〉 are Chinese TITLE marks
+    (書名號/篇名號), not quotes, and are deliberately left untouched.
+    Single-quote variants and ASCII apostrophes emit a c002 warning row
+    and are left unchanged: these are typically IME artefacts worth
+    flagging to the corpus author.
     """
     for ch, replacement in CHINESE_DOUBLE_QUOTE_COLLAPSE.items():
         text = text.replace(ch, replacement)
@@ -473,8 +477,9 @@ def clean_trans(
            to their ASCII equivalents — same as FORM. A c002b warning row is
            emitted for each U+02C8 (IPA PRIMARY STRESS MARK) found before swap.
          - Chinese (C002 Branch B): call _clean_trans_chinese, which collapses
-           double-quote variants to U+201D and emits c002 warning rows for
-           single-quote variants and ASCII apostrophes (left unchanged).
+           double-quote variants to U+FF02 (full-width straight double quote)
+           and emits c002 warning rows for single-quote variants and ASCII
+           apostrophes (left unchanged).
       3. normalize_whitespace — collapse runs of whitespace.
       4. trim_repeated_punctuation — !! → !, ??? → ?, --- → -.
     """

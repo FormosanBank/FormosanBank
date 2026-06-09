@@ -166,3 +166,66 @@ def test_errors_when_no_original_tier(tmp_path, fixtures_dir, copy_fixture):
         "standardize.py modified the input file even though it errored on "
         "missing original tier"
     )
+
+
+def _write_corpus_xml(corpus_root: Path, name: str, xml_text: str) -> Path:
+    """Place a standalone XML at corpus_root/XML/<name> and return its path.
+
+    Mirrors the layout copy_fixture produces, but lets a test control the
+    TEXT xml:lang/dialect attributes inline (which drive column resolution).
+    """
+    xml_dir = corpus_root / "XML"
+    xml_dir.mkdir(parents=True, exist_ok=True)
+    path = xml_dir / name
+    path.write_text(xml_text, encoding="utf-8")
+    return path
+
+
+def test_auto_resolves_single_dialect_to_lone_column(tmp_path):
+    """Single-dialect language: dialect attribute == the language name (e.g.
+    "Yami"), which is not a TSV column. Without --target_column the script must
+    use the lone value column ('standard') rather than warning or erroring.
+
+    Regression for the 2026-06 bug where a single-dialect language with
+    dialect="<language name>" failed column resolution.
+    """
+    corpus = tmp_path / "corpus"
+    work = _write_corpus_xml(
+        corpus,
+        "y.xml",
+        '<TEXT xml:lang="tao" dialect="Yami">'
+        '<S id="1"><FORM kindOf="original">amaama</FORM></S></TEXT>',
+    )
+    tsv = tmp_path / "single.tsv"
+    tsv.write_text("original\tstandard\na\tA\n", encoding="utf-8")
+    proc = _run_standardize(["--tsv_path", str(tsv), "--corpora_path", str(corpus)])
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    combined = (proc.stdout + proc.stderr).lower()
+    assert "not found" not in combined, (
+        f"single-dialect run should not warn about a missing dialect column: {combined!r}"
+    )
+    # The 'standard' column was applied: a -> A.
+    assert _standard_forms(work) == ["AmAAmA"]
+
+
+def test_auto_resolves_multi_dialect_to_dialect_column(tmp_path):
+    """Multi-dialect language: the dialect attribute selects the column. With
+    dialect="Coastal" and a TSV carrying both 'Coastal' and 'standard', the
+    Coastal column must win over the 'standard' fallback.
+    """
+    corpus = tmp_path / "corpus"
+    work = _write_corpus_xml(
+        corpus,
+        "a.xml",
+        '<TEXT xml:lang="ami" dialect="Coastal">'
+        '<S id="1"><FORM kindOf="original">amaama</FORM></S></TEXT>',
+    )
+    tsv = tmp_path / "multi.tsv"
+    tsv.write_text("original\tCoastal\tstandard\na\tC\tA\n", encoding="utf-8")
+    proc = _run_standardize(["--tsv_path", str(tsv), "--corpora_path", str(corpus)])
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    assert "Using dialect-specific column: Coastal" in proc.stdout, (
+        f"expected Coastal column selection; stdout: {proc.stdout!r}"
+    )
+    # The Coastal column was applied (a -> C), not 'standard' (a -> A).
+    assert _standard_forms(work) == ["CmCCmC"]

@@ -102,6 +102,7 @@ IDEMPOTENT_FIXTURES = [
     "c002_apostrophe_in_nonchinese_transl.xml",
     "c002_ascii_apostrophe_in_chinese_transl.xml",
     "c002_double_quotes_in_chinese_transl.xml",
+    "c002_title_marks_in_chinese_transl_preserved.xml",
     "c002_modifier_apostrophe_in_chinese_transl.xml",
     "c002b_ipa_stress_in_form.xml",
     "c003_repeated_terminal_punct.xml",
@@ -299,7 +300,7 @@ def test_C002_apostrophe_in_nonchinese_transl_collapses(
 def test_C002_double_quotes_in_chinese_transl_collapse_to_canonical(
     tmp_path, fixtures_dir, copy_fixture
 ):
-    """C002 Branch B xfail: Chinese TRANSL with U+201C/U+201D → both U+201D."""
+    """C002 Branch B: Chinese TRANSL double quotes → full-width straight U+FF02."""
     work = copy_fixture(
         fixtures_dir / "c002_double_quotes_in_chinese_transl.xml", tmp_path
     )
@@ -308,10 +309,41 @@ def test_C002_double_quotes_in_chinese_transl_collapse_to_canonical(
 
     transls = _transl_texts(work, "S")
     text = transls[0]
-    assert "“" not in text, f"U+201C should be collapsed to U+201D: {text!r}"
-    # And both quote positions should now be U+201D.
-    assert text.count("”") == 2, (
-        f"expected two U+201D characters; got {text!r}"
+    # Curly typographic doubles must be gone...
+    assert "“" not in text and "”" not in text, (
+        f"curly doubles U+201C/U+201D should collapse to full-width "
+        f"straight U+FF02: {text!r}"
+    )
+    # ...replaced by two full-width straight double quotes (U+FF02).
+    assert text.count("＂") == 2, (
+        f"expected two full-width straight double quotes (U+FF02); got {text!r}"
+    )
+
+
+def test_C002_title_marks_in_chinese_transl_preserved(
+    tmp_path, fixtures_dir, copy_fixture
+):
+    """C002 Branch B: 《》/〈〉 are title marks, not quotes — left untouched.
+
+    Genuine quotation 「讚」 still collapses to U+FF02, but the whole-work
+    title mark 《》 (書名號) and part-work mark 〈〉 (篇名號) are preserved.
+    """
+    work = copy_fixture(
+        fixtures_dir / "c002_title_marks_in_chinese_transl_preserved.xml", tmp_path
+    )
+    proc = _run_clean(tmp_path)
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+
+    text = _transl_texts(work, "S")[0]
+    # Title marks survive verbatim.
+    for ch in ("《", "》", "〈", "〉"):
+        assert ch in text, f"title mark {ch!r} should be preserved: {text!r}"
+    # The genuine corner-bracket quotation still collapses to U+FF02.
+    assert "「" not in text and "」" not in text, (
+        f"corner-bracket quotes should collapse to U+FF02: {text!r}"
+    )
+    assert text.count("＂") == 2, (
+        f"expected the 「」 quote to become two U+FF02; got {text!r}"
     )
 
 
