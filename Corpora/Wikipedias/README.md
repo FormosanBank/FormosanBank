@@ -84,7 +84,23 @@ This repository contains code and data for retrieving, processing and structurin
          - *remove_character_strings.log*: Longish continuous segments of non-latin text are removed. Every edit is logged with the file path and the section of text modified, with the part that was removed set aside within |||triple lines|||.
          - *remove_empty_parentheses.log*: Does what is sounds like.
 
-4. **Clean XML and standardize punctuation**
+4. **Delete XMLs with no Formosan content**:
+   Run `delete_empty_forms.py` to remove XML files whose `<FORM>` elements are all empty.
+
+   ```bash
+   python delete_empty_forms.py --corpora_path path/to/FormosanWikipedias/XML
+   ```
+
+   **Outputs**:
+      - Deletes XMLs in place.
+      - Writes `delete_empty_forms.log` next to the corpora_path listing every file removed.
+
+   **Notes**:
+      - Some scraped articles produce empty FORMs: the page was a "this article does not exist yet" placeholder in the target Formosan language, or `remove_other_langs.py` stripped away all the non-Formosan content and nothing remained. These files trip `QC/validation/validate_xml.py` as `V017` errors and contribute nothing to the corpus.
+      - A file is deleted only if it parses, contains at least one `<FORM>` element, and every `<FORM>` element's text is empty after stripping whitespace. Files with any non-empty FORM are left untouched.
+      - Run this after `remove_other_langs.py` (which can itself empty FORMs by stripping Chinese-heavy content) and before `clean_xml.py`.
+
+5. **Clean XML and standardize punctuation**
 
    ```bash
    python path/to/FormosanBankRepo/QC/cleaning/clean_xml.py --corpora_path path/to/FormosanWikipedias/XML
@@ -99,7 +115,7 @@ This repository contains code and data for retrieving, processing and structurin
       - Unicode is flattened so that diacritics are merged with the characters they modify
       - HTML escape codes are replaced with the corresponding characters
 
-5. **Standardize orthography**
+6. **Standardize orthography**
 
    ```bash
    python path/to/FormosanBankRepo/QC/utilities/standardize.py --corpora_path path/to/FormosanWikipedias/Final_XML --copy
@@ -114,13 +130,28 @@ This is almost certainly Ortho94, because it doesn't use `_`. However, there's n
    - Creates a copy of every <FORM> element with kindOf="standard" attribute
    - All u's are converted to o's.
 
-6. **Add IPA**
+7. **Add IPA**
 
 This uses a "default" IPA encoding, because dialect is unknown.
 
    ```bash
    python path/to/FormosanBankRepo/QC/utilities/add_phonology.py --corpora_path path/to/FormosanWikipedias/Final_XML --orthography Ortho113
    ```
+
+8. **Consolidate citations**:
+   Run `consolidate_citations.py` to replace the per-article `citation` and `BibTeX_citation` attributes with one shared citation per language Wikipedia.
+
+   ```bash
+   python consolidate_citations.py --corpora_path path/to/FormosanWikipedias/XML
+   ```
+
+   **Outputs**:
+      - Rewrites the `citation` and `BibTeX_citation` attributes on every `<TEXT>` element in place. No other attributes (including `source` and `id`) are touched.
+
+   **Notes**:
+      - `clean_articles.py` emits a unique citation per article (e.g. *"Ku_shu_shu. (2026, June 08). In Wikipedia [Amis]. https://ami.wikipedia.org/wiki/Ku_shu_shu"*). That's not citable: an end-user can't include ten thousand citations in a paper. After this step, every Amis article shares one citation for "Amis Wikipedia" as a whole, every Sakizaya article shares one for "Sakizaya Wikipedia", and so on.
+      - `citation` is APA-style with a retrieval date; `BibTeX_citation` is a `@misc{Wiki_<lang_code>, ... }` entry with `title`, `author`, `publisher`, `url`, and `urldate`.
+      - Defaults the retrieval date to today; pass `--date YYYY-MM-DD` to fix it (idempotent — re-running with the same `--date` produces no diff).
 
 ## Developer Notes and Tools
 

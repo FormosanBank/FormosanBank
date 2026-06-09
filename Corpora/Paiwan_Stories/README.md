@@ -52,7 +52,7 @@ This isn't necessary because everything was already standardized. It is listed j
 3. **Standardize orthography**
 
    ```bash
-   python path/to/FormosanBankRepo/QC/utilities/standardize.py --corpora_path path/to/FormosanWikipedias/Final_XML
+   python path/to/FormosanBankRepo/QC/utilities/standardize.py --corpora_path path/to/FormosanWikipedias/Final_XML --copy
    ```
 
 **Outputs**
@@ -60,4 +60,7 @@ This isn't necessary because everything was already standardized. It is listed j
 
 **Notes**
    - Creates a copy of every <FORM> element with kindOf="standard" attribute
-   - All u's are converted to o's.
+
+4. **Add phonology**
+
+The usual way.
