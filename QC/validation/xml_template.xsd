@@ -83,6 +83,7 @@
     <xs:attribute ref="xml:lang"/>
     <xs:attribute name="kindOf" type="xs:string"/>
     <xs:attribute name="ver" type="xs:string"/>
+    <xs:attribute name="notes" type="xs:string"/>
   </xs:complexType>
 
   <!-- PHON: mixed content; kindOf is optional but, when present, must be

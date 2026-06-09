@@ -5,10 +5,11 @@
   - S/@source      (per-sentence URL pointing at the source page)
   - AUDIO/@source  (per-clip URL pointing at the source audio recording)
   - FORM/@notes    (free-text annotation on a FORM element)
+  - TRANSL/@notes  (free-text annotation on a TRANSL element)
 
   Modeled on Corpora/YeddaPalemeqBlog/XML/Paiwan/Paiwan_Yedda_Blog.xml
   where each S carries both URL attributes and AUDIO carries the source
-  URL alongside @file. FORM/@notes is added for upcoming annotation
+  URL alongside @file. FORM/@notes and TRANSL/@notes are for annotation
   workflows.
 -->
 <TEXT id="audio_url_and_source" citation="t" BibTeX_citation="@t{t}" copyright="t" xml:lang="ami" dialect="unknown">
@@ -18,5 +19,6 @@
     <AUDIO source="https://www.example.com/embed/abc" file="S_1.wav"/>
     <FORM kindOf="original" notes="transcription verified 2026-06-03">Halo (orig).</FORM>
     <FORM kindOf="standard">Halo (std).</FORM>
+    <TRANSL xml:lang="eng" notes="translator: example; reviewed 2026-06-09">Hello.</TRANSL>
   </S>
 </TEXT>

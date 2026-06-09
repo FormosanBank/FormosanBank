@@ -362,13 +362,15 @@ def test_V085_multi_same_lang_TRANSL_with_ver_positive(
 def test_S_audio_url_and_source_and_AUDIO_source_are_clean(
     tmp_path, fixtures_dir, copy_fixture
 ):
-    """Schema regression: S/@audio_url, S/@source, AUDIO/@source, FORM/@notes.
+    """Schema regression: S/@audio_url, S/@source, AUDIO/@source, FORM/@notes, TRANSL/@notes.
 
     Added 2026-06-03 to support YeddaPalemeqBlog-style sentence metadata
     where each S has both a per-sentence audio URL and a per-sentence
     source-page URL, AUDIO carries the original recording URL in @source
     alongside @file, and FORM may carry a free-text @notes annotation.
-    Pins all four optional attributes against schema regression.
+    TRANSL/@notes added 2026-06-09 (same optional free-text annotation,
+    extended to the translation tier). Pins all five optional attributes
+    against schema regression.
     """
     copy_fixture(
         fixtures_dir / "valid_S_audio_url_source_and_AUDIO_source.xml", tmp_path
