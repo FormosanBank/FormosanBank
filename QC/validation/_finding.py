@@ -35,6 +35,69 @@ SOFT_CSV_COLUMNS = [
     "file", "rule_id", "location", "line", "language", "character", "count",
 ]
 
+# One-CSV-for-everything column shape (2026-06-09). Unlike SOFT_CSV_COLUMNS
+# this carries `severity` and the free-text `message` so a reader can view
+# each finding's context without opening the XML, and holds HARD + SOFT +
+# WARN rows together.
+FINDINGS_CSV_COLUMNS = [
+    "file", "line", "severity", "rule_id", "title", "location",
+    "language", "character", "count", "message",
+]
+
+
+def summarize(findings: Iterable[Finding]) -> dict[Severity, dict[str, int]]:
+    """Aggregate findings into per-rule occurrence counts, split by severity.
+
+    Returns a dict with a key for every Severity (HARD, SOFT, WARN), each
+    mapping rule_id -> total occurrences. "Occurrences" sums each finding's
+    ``count`` field, so pre-aggregated SOFT rows (count=N) contribute N and
+    per-element HARD rows (count=1) contribute 1. This is the data behind
+    the terminal summary.
+    """
+    out: dict[Severity, dict[str, int]] = {
+        Severity.HARD: {}, Severity.SOFT: {}, Severity.WARN: {},
+    }
+    for f in findings:
+        bucket = out[f.severity]
+        bucket[f.rule_id] = bucket.get(f.rule_id, 0) + f.count
+    return out
+
+
+def write_findings_csv(
+    path: Path,
+    findings: Iterable[Finding],
+    titles: dict[str, str] | None = None,
+) -> None:
+    """Write ALL findings (every severity) to a single CSV at ``path``.
+
+    Columns are FINDINGS_CSV_COLUMNS. The CSV is overwritten on each call;
+    the parent directory is created if absent. This is the one detail file
+    the validators announce on the terminal; the per-rule `message` carries
+    the human-readable context.
+
+    ``titles`` maps rule_id -> mnemonic to fill the `title` column (blank
+    for any rule_id not in the map). Passing it lives with the caller so
+    this module needn't import the rule registry.
+    """
+    titles = titles or {}
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with open(path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        writer.writerow(FINDINGS_CSV_COLUMNS)
+        for finding in findings:
+            writer.writerow([
+                str(finding.path),
+                str(finding.line) if finding.line is not None else "",
+                finding.severity.value,
+                finding.rule_id,
+                titles.get(finding.rule_id, ""),
+                finding.location or "",
+                finding.language or "",
+                finding.character or "",
+                str(finding.count),
+                finding.message,
+            ])
+
 
 def write_soft_csv(path: Path, findings: Iterable[Finding]) -> None:
     """Write all SOFT findings in `findings` to a CSV at `path`.

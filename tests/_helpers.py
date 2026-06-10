@@ -6,6 +6,7 @@ test_clean_xml_extensions.py. Centralizing them here keeps the convention
 in a single source of truth so a regex update or marker-matching tweak
 applies uniformly across the suite.
 """
+import csv as _csv
 import re
 import subprocess
 from pathlib import Path
@@ -59,6 +60,40 @@ def has_marker(
     """
     combined = combined_output(proc, corpora_path)
     return any(m.lower() in combined for m in markers)
+
+
+def csv_rows(csv_path: Path) -> list[dict]:
+    """Read the one findings CSV into a list of dict rows (DictReader)."""
+    with open(csv_path, newline="", encoding="utf-8") as f:
+        return list(_csv.DictReader(f))
+
+
+def csv_has(csv_path: Path, rule_id: str | None = None, marker: str | None = None) -> bool:
+    """Does the findings CSV have a row matching rule_id and/or marker?
+
+    Since 2026-06-09 each finding-based validator writes ONE CSV (HARD +
+    SOFT) with columns including `location` and `message`. Per-finding
+    detail (ids, offending text) lives there, not on the terminal, so the
+    tests that used to scan stderr for message snippets now read the CSV.
+
+    - `rule_id`: if given, the row's rule_id must match (case-insensitive).
+    - `marker`: if given, must appear (case-insensitive) anywhere in the
+      row (location/message/character/...).
+    Both optional; with neither, returns True if the CSV has any data row.
+    """
+    try:
+        rows = csv_rows(csv_path)
+    except OSError:
+        return False
+    for r in rows:
+        if rule_id is not None and r.get("rule_id", "").lower() != rule_id.lower():
+            continue
+        if marker is not None:
+            blob = " ".join(str(v) for v in r.values()).lower()
+            if marker.lower() not in blob:
+                continue
+        return True
+    return False
 
 
 def csv_warning_exists(corpora_path: Path, rule_id: str) -> bool:

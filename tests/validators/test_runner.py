@@ -123,28 +123,30 @@ def test_no_exit_on_hard_overrides_to_zero(tmp_path, fixtures_dir, copy_fixture)
     )
 
 
-def test_soft_csv_written_with_header_when_no_soft_findings(tmp_path, fixtures_dir, copy_fixture):
-    """Even with no SOFT findings, the CSV is created with just the header."""
+def test_findings_csv_written_with_header_when_clean(tmp_path, fixtures_dir, copy_fixture):
+    """Even on a clean run, the one findings CSV is created (header only).
+
+    The 2026-06-09 reporter always writes the CSV so CI artifact uploads
+    stay robust. `--soft-csv` is retained as a deprecated alias for `--csv`.
+    """
     copy_fixture(fixtures_dir / "valid_minimal.xml", tmp_path)
-    csv_path = tmp_path / "soft.csv"
+    csv_path = tmp_path / "findings.csv"
     proc = _run_cli([
         "by_path", "--path", str(tmp_path),
-        "--soft-csv", str(csv_path),
+        "--soft-csv", str(csv_path),  # alias for --csv
     ])
     assert proc.returncode == 0
     assert csv_path.exists()
     with open(csv_path, newline="") as f:
         rows = list(csv.reader(f))
-    # SOFT_CSV columns include `location` and `line` (added 2026-06-01).
-    assert rows == [
-        ["file", "rule_id", "location", "line", "language", "character", "count"]
-    ]
+    from QC.validation._finding import FINDINGS_CSV_COLUMNS
+    assert rows == [FINDINGS_CSV_COLUMNS]
 
 
-def test_soft_csv_default_path(tmp_path, fixtures_dir, copy_fixture):
-    """Without --soft-csv, the writer goes to logs/validation_soft.csv
+def test_findings_csv_default_path(tmp_path, fixtures_dir, copy_fixture):
+    """Without --csv, the writer goes to logs/validate_xml_findings.csv
     relative to the current working directory."""
     copy_fixture(fixtures_dir / "valid_minimal.xml", tmp_path)
     proc = _run_cli(["by_path", "--path", str(tmp_path)], cwd=tmp_path)
     assert proc.returncode == 0
-    assert (tmp_path / "logs" / "validation_soft.csv").exists()
+    assert (tmp_path / "logs" / "validate_xml_findings.csv").exists()

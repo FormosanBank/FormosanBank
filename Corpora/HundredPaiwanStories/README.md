@@ -84,7 +84,7 @@ The `<M>` created in steps 9–10 (and other hand-repaired morphemes) initially 
     python CodeAndDocs/fill_standard_tier.py
 ```
 
-> **Do not run `standardize.py` (step 6) over the published `XML/`.** Its TSV maps `? → '`, which reconflates sentence-final question-mark *punctuation* with the glottal stop; in the dev-repo build this is undone afterward by `fix_ferrell.py`, but that script is hardcoded to the dev path and does not run here. Applying the TSV to only the new morphemes (step 11) is safe because morpheme FORMs never carry question-mark punctuation. (`add_phonology.py` carries the same whole-file caveat and is likewise not run over the published `XML/`; PHON for the new morphemes was filled by the same targeted character-mapping.)
+> **Do not run `standardize.py` (step 6) over the published `XML/`.** Its TSV maps `? → '`, which reconflates sentence-final question-mark *punctuation* with the glottal stop; in the dev-repo build this is undone afterward by `fix_ferrell.py`, but that script is hardcoded to the dev path and does not run here. Applying the TSV to only the new morphemes (step 11) is safe because morpheme FORMs never carry question-mark punctuation. (`add_phonology.py` carries the same whole-file caveat and is likewise not run over the published `XML/`; PHON is filled by the equivalent targeted mapping in step 13.)
 
 12. **Split infix/reduplication morphemes inside multi-M words**
 
@@ -95,6 +95,23 @@ Step 9 only handled words whose `=` morpheme spanned the whole word. `split_mult
 ```
 
 477 morphemes split; words where a sibling doesn't match the surface (consonant mutation, infix vowel change, w/v alternation) or that stack multiple `=` morphemes are left untouched and listed in `multi_M_eq_morphemes.csv`.
+
+13. **Fill the phonological (IPA) tier on the morphemes that lack it**
+
+`fill_phon_tier.py` adds `PHON` to any `<M>` that has a `FORM` but no sister `PHON`, applying the same orthography→IPA character mappings `add_phonology.py` uses: original FORM via `Orthographies/Ferrell/Paiwan.tsv`, standard FORM via `Orthographies/Ortho113/Paiwan.tsv`, dialect column taken from the `<TEXT>` `dialect` attribute. The replication was checked by reproducing existing PHON for 32832/32833 Ms (100%); additions-only.
+
+```bash
+    python CodeAndDocs/fill_phon_tier.py
+```
+
+This covers the morphemes created in steps 9 and 11 **and** four texts (`090`, `091`, `097`, `099`) that `add_phonology.py` had skipped entirely because their `dialect="unknown"` has no TSV column. For those four the `default` column is used, so **their IPA is provisional** and should be regenerated once a real dialect is assigned.
+
+### Manual corrections (provenance only — not re-runnable scripts)
+
+Two fixes were applied directly to the published data and are recorded here for completeness; they are one-off corrections, not part of the `.docx`→XML pipeline:
+
+- **Word/morpheme desync repair (the `avanu` cascade).** The original glossing notebook split each tier on whitespace and zipped them positionally; the word `avanu` — glossed `avan nu` with an internal space — added an extra token that shifted every following morpheme onto the wrong word to the end of the sentence. Eight sentences (`030S6`, `039S12`, `039S14`, `044S4`, `050S52`, `052S17`, `063S4`, plus a separate one-off in `009S2`) were corrected by hand.
+- **Duplicate M-id renumber.** Some hand-edits reused an `M0` id for two morphemes within a W; a 0-based renumber of the affected Ws restored unique ids. (`QC/utilities/fix_ids.py` does this, but it is 1-based whereas this corpus is 0-based, so it was done with a 0-based equivalent.)
 
 ### Citation
 

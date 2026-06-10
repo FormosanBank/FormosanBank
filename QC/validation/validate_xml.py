@@ -44,7 +44,8 @@ from QC.validation._corpus_index import (
     build_current_index,
     build_published_index,
 )
-from QC.validation._finding import Finding, Severity, write_soft_csv
+from QC.validation._finding import Finding, Severity
+from QC.validation._report import report_findings
 from QC.validation.rules import hard as hard_rules
 from QC.validation.rules import soft as soft_rules
 from QC.validation.rules import warn as warn_rules
@@ -146,12 +147,14 @@ def _add_common_flags_to_subparser(p: argparse.ArgumentParser) -> None:
              "always-exit-0 behavior.",
     )
     p.add_argument(
+        "--csv",
         "--soft-csv",
-        dest="soft_csv",
+        dest="csv",
         type=Path,
         default=argparse.SUPPRESS,
-        help="Path where SOFT findings are written as CSV. "
-             "Overwritten per run; parent dirs created if absent.",
+        help="Path where ALL findings are written as one CSV (--soft-csv is "
+             "a deprecated alias). Overwritten per run; parent dirs created "
+             "if absent.",
     )
     p.add_argument(
         "--published-corpora",
@@ -182,12 +185,14 @@ def _build_arg_parser() -> argparse.ArgumentParser:
              "always-exit-0 behavior.",
     )
     parser.add_argument(
+        "--csv",
         "--soft-csv",
-        dest="soft_csv",
+        dest="csv",
         type=Path,
-        default=Path("logs") / "validation_soft.csv",
-        help="Path where SOFT findings are written as CSV. "
-             "Overwritten per run; parent dirs created if absent.",
+        default=Path("logs") / "validate_xml_findings.csv",
+        help="Path where ALL findings are written as one CSV (--soft-csv is "
+             "a deprecated alias). Overwritten per run; parent dirs created "
+             "if absent.",
     )
     parser.add_argument(
         "--published-corpora",
@@ -237,53 +242,6 @@ def _resolve_target_files(args: argparse.Namespace) -> list[Path]:
                 continue
         return files
     raise AssertionError(f"unknown search_by mode: {args.search_by}")
-
-
-def _print_summary(findings: list[Finding]) -> None:
-    """Emit the summary tokens that test helpers match on.
-
-    The token strings are preserved from the legacy validator because
-    tests/validators/test_validate_xml.py asserts on
-    `_is_clean` (looks for "total issues found: 0" + "no issues found")
-    and `_has_finding` (looks for "files with issues" et al).
-
-    Per-finding detail lines are also emitted so that `_has_rule_finding`
-    marker checks (which look for rule-ID or message text) can match.
-
-    SOFT findings are printed to stderr after the HARD section so that
-    test assertions on substrings like "count", "missing", "soft",
-    "missing standard", and "missing-standard" can match.
-    """
-    hard = [f for f in findings if f.severity is Severity.HARD]
-    soft = [f for f in findings if f.severity is Severity.SOFT]
-    n = len(hard)
-    print(f"Total issues found: {n}", file=sys.stderr)
-    if n == 0:
-        print("No issues found.", file=sys.stderr)
-    else:
-        paths_with_issues = sorted({str(f.path) for f in hard})
-        print("Files with issues:", file=sys.stderr)
-        for p in paths_with_issues:
-            print(f"  {p}", file=sys.stderr)
-        # Per-finding lines lead with the file path so readers can jump
-        # straight to the offending file (V039/V000 list dozens of ids
-        # without context otherwise). Path-first also helps editor link
-        # parsers turn each line into a clickable target.
-        for f in hard:
-            loc = f" [{f.location}]" if f.location else ""
-            print(
-                f"  {f.path}: [{f.rule_id}]{loc} {f.message}",
-                file=sys.stderr,
-            )
-    if soft:
-        print("SOFT findings:", file=sys.stderr)
-        for f in soft:
-            loc = f" [{f.location}]" if f.location else ""
-            lang = f" lang={f.language}" if f.language else ""
-            print(
-                f"  {f.path}: [{f.rule_id}]{loc}{lang} count={f.count}: {f.message}",
-                file=sys.stderr,
-            )
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -340,10 +298,7 @@ def main(argv: list[str] | None = None) -> int:
     for path, tree in trees:
         all_findings.extend(run_per_file_rules(tree, path, cross_file_rules, index=index))
 
-    _print_summary(all_findings)
-    write_soft_csv(args.soft_csv, all_findings)
-
-    has_hard = any(f.severity is Severity.HARD for f in all_findings)
+    has_hard = report_findings(all_findings, args.csv, file_count=len(targets))
     if has_hard and not args.no_exit_on_hard:
         return 1
     return 0

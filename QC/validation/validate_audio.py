@@ -47,7 +47,7 @@ _REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
-from QC.validation._finding import Finding, Severity  # noqa: E402
+from QC.validation._finding import Finding, Severity, summarize  # noqa: E402
 
 
 # -----------------------------------------------------------------------------
@@ -477,21 +477,31 @@ def write_duration_csv(path: Path, rows: list[tuple]) -> None:
             writer.writerow(row)
 
 
-def print_summary(findings: list[Finding]) -> None:
-    hard = [f for f in findings if f.severity is Severity.HARD]
-    soft = [f for f in findings if f.severity is Severity.SOFT]
-    print(f"Audio validation: {len(hard)} HARD finding(s), {len(soft)} SOFT finding(s).",
-          file=sys.stderr)
-    if hard:
-        print("HARD findings:", file=sys.stderr)
-        for f in hard:
-            loc = f" [{f.location}]" if f.location else ""
-            print(f"  [{f.rule_id}]{loc} {f.path}: {f.message}", file=sys.stderr)
-    if soft:
-        print("SOFT findings:", file=sys.stderr)
-        for f in soft:
-            loc = f" [{f.location}]" if f.location else ""
-            print(f"  [{f.rule_id}]{loc} {f.path}: {f.message}", file=sys.stderr)
+def print_summary(findings: list[Finding], *, file_count: int) -> None:
+    """Print a compact per-rule count summary (HARD then SOFT) to stderr.
+
+    Mirrors QC/validation/_report.report_findings' summary so all the
+    validators read the same on the terminal. Per-finding detail lives in
+    broken_audio.csv (the audio-specific CSV with its `kind` column), not
+    on screen.
+    """
+    files_with_issues = len({str(f.path) for f in findings})
+    print(
+        f"=== Audio validation: {file_count} files, "
+        f"{files_with_issues} with issues ===",
+        file=sys.stderr,
+    )
+    if not findings:
+        print("No issues found.", file=sys.stderr)
+        return
+    counts = summarize(findings)
+    for severity in (Severity.HARD, Severity.SOFT, Severity.WARN):
+        per_rule = counts[severity]
+        if not per_rule:
+            continue
+        print(f"{severity.value} — {sum(per_rule.values())} total:", file=sys.stderr)
+        for rule_id in sorted(per_rule):
+            print(f"  {rule_id}: {per_rule[rule_id]}", file=sys.stderr)
 
 
 # -----------------------------------------------------------------------------
@@ -528,12 +538,17 @@ def main(argv: list[str] | None = None) -> int:
         xml_root=xml_root, audio_root=audio_root, check_silence=args.check_silence
     )
 
+    # Audio keeps its domain-specific CSVs: broken_audio.csv (the `kind`-tagged
+    # findings consumed by clean_audio.py) and audio_duration_issues.csv (per-S
+    # words/sec data). Only the terminal output changes — a compact per-rule
+    # summary instead of a per-finding dump.
     write_broken_csv(log_dir / "broken_audio.csv", findings)
     write_duration_csv(log_dir / "audio_duration_issues.csv", duration_rows)
 
-    print_summary(findings)
-    print(f"Wrote {log_dir / 'broken_audio.csv'}", file=sys.stderr)
-    print(f"Wrote {log_dir / 'audio_duration_issues.csv'}", file=sys.stderr)
+    file_count = sum(1 for _ in xml_root.rglob("*.xml"))
+    print_summary(findings, file_count=file_count)
+    print(f"Broken-audio findings: {log_dir / 'broken_audio.csv'}", file=sys.stderr)
+    print(f"Audio duration issues: {log_dir / 'audio_duration_issues.csv'}", file=sys.stderr)
 
     has_hard = any(f.severity is Severity.HARD for f in findings)
     if has_hard and not args.no_exit_on_hard:

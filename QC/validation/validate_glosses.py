@@ -4,29 +4,31 @@
 Stage-2 validator in the FormosanBank validation pipeline. Walks the
 selected target (file, directory, corpus, or language), parses each
 .xml with lxml, applies the rules registered under
-QC/validation/rules/gloss.py, and emits:
+QC/validation/rules/gloss.py, and reports via the shared reporter
+(QC/validation/_report.py):
 
-- HARD/SOFT findings printed to stderr.
-- Two legacy CSV artifacts for backward compatibility with prior callers:
-  - validation_results.csv (W-count mismatches, from V060)
-  - validation_m_mismatches.csv (M-count mismatches, from V061)
-- Exit code 1 if any HARD findings; 0 otherwise.
+- A compact per-rule count summary (HARD then SOFT) on the terminal.
+- One findings CSV (all severities) carrying full per-finding context,
+  whose path is printed. Detail no longer floods the terminal.
+- Exit code 1 if any HARD findings; 0 otherwise (override with
+  --no-exit-on-hard).
 
-CLI (matches the validate_xml.py / validate_text.py subparser pattern
-as of 2026-06-01):
+CLI (matches the validate_xml.py / validate_text.py subparser pattern):
     validate_glosses.py by_path     --path <file-or-dir> [opts]
     validate_glosses.py by_corpus   --corpus <name> --corpora_path <path> [opts]
     validate_glosses.py by_language --language <code> --corpora_path <path> [opts]
 
-Common opts: --check_morpho, --debug, --output_dir DIR.
+Common opts: --csv PATH (where the one findings CSV is written),
+--output_dir DIR (directory for the findings CSV when --csv is not given;
+retained for the run-qc-pipeline skill and CI), --debug, --no-exit-on-hard.
 
-The --check_morpho flag adds a legacy "has_morphemes" column to
-validation_results.csv (T if every W has at least one M child, F
-otherwise). It does not alter rule severity — V060 is still SOFT.
+The findings CSV writes the finding's `location` (e.g. "S=<sid> W=<wid>")
+verbatim, so sentence/word ids that contain spaces (NTU filenames do) are
+preserved intact — superseding the old validation_results.csv /
+validation_m_mismatches.csv, which re-parsed `location` and truncated such
+ids at the first space.
 """
 import argparse
-import csv
-import re
 import sys
 from pathlib import Path
 
@@ -40,7 +42,8 @@ if str(_REPO_ROOT) not in sys.path:
 
 from lxml import etree
 
-from QC.validation._finding import Finding, Severity
+from QC.validation._finding import Finding
+from QC.validation._report import report_findings
 from QC.validation.rules import gloss as gloss_rules
 from QC.validation.validate_xml import (
     discover_all_corpora_canonical_xml,
@@ -52,233 +55,58 @@ from QC.validation.validate_xml import (
 _XML_LANG_ATTR = "{http://www.w3.org/XML/1998/namespace}lang"
 
 
-def _parse_w_mismatch_message(message: str) -> tuple[str, str] | None:
-    """Pull (word_count, w_count) out of a V060 Finding message.
-
-    Avoids re-walking the tree just to populate the legacy CSV. V060's
-    message is the source of truth for the per-S counts.
-
-    Returns (word_count, w_count) as strings, or None on parse failure
-    (defensive — should not happen given the rule's stable format).
-    """
-    # Message format: "S id='...': W-count (N) does not match word-count (M) in ..."
-    m = re.search(r"W-count \((\d+)\) does not match word-count \((\d+)\)", message)
-    if not m:
-        return None
-    return (m.group(2), m.group(1))  # (word_count, w_count)
-
-
-def _parse_m_mismatch_message(message: str) -> tuple[str, str, str] | None:
-    """Pull (w_form, expected_m, actual_m) out of a V061 Finding message."""
-    # Message format: "W id='...': M-count (A) does not match implied morpheme count (E) from FORM 'X'"
-    m = re.search(
-        r"M-count \((\d+)\) does not match implied morpheme count \((\d+)\) from FORM '(.*)'$",
-        message,
-    )
-    if not m:
-        return None
-    return (m.group(3), m.group(2), m.group(1))  # (w_form, expected, actual)
-
-
-def _extract_s_id_from_location(location: str | None) -> str:
-    """Extract the S id from a finding's location field.
-
-    V060's location is 'S=<id>'. V061's is 'S=<sid> W=<wid>' when both
-    are known, or just 'W=<wid>'. Returns '' if no S id is present.
-    """
-    if not location:
-        return ""
-    m = re.search(r"S=([^\s]+)", location)
-    return m.group(1) if m else ""
-
-
-def _extract_w_id_from_location(location: str | None) -> str:
-    """Extract the W id from a V061 finding's location field."""
-    if not location:
-        return ""
-    m = re.search(r"W=([^\s]+)", location)
-    return m.group(1) if m else ""
-
-
-def _w_has_no_M(w: etree._Element) -> bool:
-    """Return True if W has no M children. Used by --check_morpho."""
-    return not any(child.tag == "M" for child in w)
-
-
-def _build_check_morpho_index(tree: etree._ElementTree) -> dict[str, bool]:
-    """Map S id -> True iff every W in S has at least one M child.
-
-    Mirrors the pre-refactor has_morphemes='T'/'F' logic; the column
-    value is 'T' when this returns True and 'F' otherwise. Used by the
-    legacy CSV writer when --check_morpho is on.
-    """
-    out: dict[str, bool] = {}
-    for s in tree.iter("S"):
-        s_id = s.get("id") or ""
-        if not s_id:
-            continue
-        any_w_without_m = any(_w_has_no_M(w) for w in s if w.tag == "W")
-        out[s_id] = not any_w_without_m
-    return out
-
-
-def _process_file(
-    xml_file: Path,
-    check_morpho: bool,
-    debug: bool,
-) -> tuple[list[Finding], list[tuple], list[tuple]]:
-    """Process one XML file. Returns (findings, w_rows, m_rows).
-
-    w_rows: legacy validation_results.csv rows (filename, s_id, word_count,
-            w_count [, has_morphemes when check_morpho]).
-    m_rows: legacy validation_m_mismatches.csv rows
-            (filename, s_id, w_id, w_form, expected_m_count, actual_m_count).
-    """
-    findings: list[Finding] = []
-    w_rows: list[tuple] = []
-    m_rows: list[tuple] = []
-
+def _process_file(xml_file: Path, debug: bool) -> list[Finding]:
+    """Run every gloss rule against one XML file; return its findings."""
     try:
         tree = etree.parse(str(xml_file))
     except etree.XMLSyntaxError as e:
-        print(f"Warning: Could not parse {xml_file}: {e}")
-        return findings, w_rows, m_rows
+        print(f"Warning: Could not parse {xml_file}: {e}", file=sys.stderr)
+        return []
 
-    # Run every rule registered for gloss validation.
+    findings: list[Finding] = []
     for rule in gloss_rules.RULES:
         findings.extend(rule(tree, xml_file, None))
-
-    # Pre-compute --check_morpho index (S -> all-W-have-M flag) so we
-    # can both update w_rows and emit extra rows for "W with no M" S
-    # elements that V060 does NOT flag (legacy behavior).
-    if check_morpho:
-        check_morpho_idx = _build_check_morpho_index(tree)
-    else:
-        check_morpho_idx = {}
-
-    # Derive legacy CSV rows from the findings.
-    s_ids_seen_in_w_rows: set[str] = set()
-    for finding in findings:
-        if finding.rule_id == "V060":
-            parsed = _parse_w_mismatch_message(finding.message)
-            if parsed is None:
-                continue
-            word_count, w_count = parsed
-            s_id = _extract_s_id_from_location(finding.location)
-            row_tuple = (str(xml_file), s_id, word_count, w_count)
-            if check_morpho:
-                hm = "T" if check_morpho_idx.get(s_id, True) else "F"
-                w_rows.append((*row_tuple, hm))
-            else:
-                w_rows.append(row_tuple)
-            s_ids_seen_in_w_rows.add(s_id)
-        elif finding.rule_id == "V061":
-            parsed = _parse_m_mismatch_message(finding.message)
-            if parsed is None:
-                continue
-            w_form, expected, actual = parsed
-            s_id = _extract_s_id_from_location(finding.location)
-            w_id = _extract_w_id_from_location(finding.location)
-            m_rows.append(
-                (str(xml_file), s_id, w_id, w_form, expected, actual)
-            )
-
-    # Legacy --check_morpho path: also row-out S elements where V060 didn't
-    # fire but at least one W lacks M children (has_morphemes='F').
-    if check_morpho:
-        for s_id, all_have_m in check_morpho_idx.items():
-            if s_id in s_ids_seen_in_w_rows:
-                continue
-            if all_have_m:
-                continue
-            # Reconstruct word_count and w_count for the row.
-            s_elem = tree.find(f".//S[@id='{s_id}']")
-            if s_elem is None:
-                continue
-            text = gloss_rules._extract_s_direct_text(s_elem)
-            word_count = gloss_rules._count_words(text)
-            w_count = sum(1 for child in s_elem if child.tag == "W")
-            w_rows.append((str(xml_file), s_id, str(word_count), str(w_count), "F"))
 
     if debug:
         for finding in findings:
             print(f"  [{finding.rule_id}] {finding.location}: {finding.message}")
 
-    return findings, w_rows, m_rows
-
-
-def _write_w_csv(path: Path, rows: list[tuple], check_morpho: bool) -> None:
-    """Write validation_results.csv. Header always written; rows may be empty."""
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with open(path, "w", newline="", encoding="utf-8") as f:
-        writer = csv.writer(f)
-        if check_morpho:
-            writer.writerow(
-                ["filename", "s_id", "word_count", "w_element_count", "has_morphemes"]
-            )
-        else:
-            writer.writerow(["filename", "s_id", "word_count", "w_element_count"])
-        writer.writerows(rows)
-
-
-def _write_m_csv(path: Path, rows: list[tuple]) -> None:
-    """Write validation_m_mismatches.csv. Header always written; rows may be empty."""
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with open(path, "w", newline="", encoding="utf-8") as f:
-        writer = csv.writer(f)
-        writer.writerow(
-            [
-                "filename",
-                "s_id",
-                "w_id",
-                "w_form",
-                "expected_m_count",
-                "actual_m_count",
-            ]
-        )
-        writer.writerows(rows)
-
-
-def _print_summary(findings: list[Finding]) -> None:
-    """Print HARD/SOFT findings to stderr (per validate_xml.py convention)."""
-    hard = [f for f in findings if f.severity is Severity.HARD]
-    soft = [f for f in findings if f.severity is Severity.SOFT]
-    print(f"\nHARD findings: {len(hard)}", file=sys.stderr)
-    for f in hard:
-        loc = f" [{f.location}]" if f.location else ""
-        print(f"  [{f.rule_id}]{loc} {f.message}", file=sys.stderr)
-    print(f"SOFT findings: {len(soft)}", file=sys.stderr)
-    for f in soft:
-        loc = f" [{f.location}]" if f.location else ""
-        print(f"  [{f.rule_id}]{loc} {f.message}", file=sys.stderr)
+    return findings
 
 
 def _add_common_flags(p: argparse.ArgumentParser, *, suppress: bool) -> None:
-    """Register --check_morpho/--debug/--output_dir on a parser.
+    """Register --csv/--output_dir/--debug/--no-exit-on-hard on a parser.
 
     suppress=True is used for subparsers (so the parent parser's value
     sticks when the user passes the flag BEFORE the subcommand). Same
     pattern as validate_xml.py's _add_common_flags_to_subparser.
     """
-    default = argparse.SUPPRESS if suppress else False
+    default = argparse.SUPPRESS if suppress else None
     p.add_argument(
-        "--check_morpho",
-        action="store_true",
+        "--csv",
+        dest="csv",
+        type=Path,
+        default=argparse.SUPPRESS if suppress else None,
+        help="Path where ALL findings are written as one CSV. Defaults to "
+             "<output_dir>/validate_glosses_findings.csv.",
+    )
+    p.add_argument(
+        "--output_dir",
         default=default,
-        help="Check if each W element has at least one M element (legacy "
-             "column in validation_results.csv).",
+        help="Directory for the findings CSV when --csv is not given. "
+             "Defaults to the current working directory's logs/.",
     )
     p.add_argument(
         "--debug",
         action="store_true",
-        default=default,
+        default=argparse.SUPPRESS if suppress else False,
         help="Print one debug line per finding to stdout.",
     )
     p.add_argument(
-        "--output_dir",
-        default=argparse.SUPPRESS if suppress else None,
-        help="Directory for validation CSV outputs. Defaults to the current "
-             "working directory.",
+        "--no-exit-on-hard",
+        action="store_true",
+        default=argparse.SUPPRESS if suppress else False,
+        help="Always exit 0, even if HARD findings are produced.",
     )
 
 
@@ -289,7 +117,7 @@ def _build_arg_parser() -> argparse.ArgumentParser:
         epilog="""
 Examples:
   python validate_glosses.py by_path     --path tests/fixtures/foo.xml
-  python validate_glosses.py by_path     --path Corpora/ePark/XML --check_morpho
+  python validate_glosses.py by_path     --path Corpora/ePark/XML
   python validate_glosses.py by_corpus   --corpus ePark --corpora_path Corpora
   python validate_glosses.py by_language --language ami  --corpora_path Corpora
         """,
@@ -317,11 +145,11 @@ Examples:
 
 def _resolve_target_files(args: argparse.Namespace) -> list[Path]:
     if args.search_by == "by_path":
-        return discover_xml_files(args.path)
-    if args.search_by == "by_corpus":
-        return discover_corpus_canonical_xml(args.corpora_path / args.corpus)
-    if args.search_by == "by_language":
-        files: list[Path] = []
+        files = discover_xml_files(args.path)
+    elif args.search_by == "by_corpus":
+        files = discover_corpus_canonical_xml(args.corpora_path / args.corpus)
+    elif args.search_by == "by_language":
+        files = []
         for path in discover_all_corpora_canonical_xml(args.corpora_path):
             try:
                 tree = etree.parse(str(path))
@@ -329,97 +157,38 @@ def _resolve_target_files(args: argparse.Namespace) -> list[Path]:
                 continue
             if tree.getroot().get(_XML_LANG_ATTR) == args.language:
                 files.append(path)
-        return files
-    raise AssertionError(f"unknown search_by mode: {args.search_by}")
+    else:
+        raise AssertionError(f"unknown search_by mode: {args.search_by}")
+    # Defensive: only ever validate .xml files (a directory walk could in
+    # principle surface a README or other non-XML; the discovery helpers
+    # already filter, this guarantees it).
+    return [f for f in files if f.suffix == ".xml"]
 
 
-def _write_or_remove(
-    path: Path,
-    rows: list[tuple],
-    write_fn,
-) -> None:
-    """Write rows to `path` via `write_fn` if non-empty, else remove any
-    stale file at that path.
-
-    Per Joshua (2026-06-01): empty CSVs shouldn't be created; if one
-    already exists, delete it. Avoids cluttering the working dir with
-    placeholder header-only files that imply something needs checking.
-    """
-    if rows:
-        write_fn(path, rows)
-        return
-    try:
-        path.unlink()
-    except FileNotFoundError:
-        pass
+def _resolve_csv_path(args: argparse.Namespace) -> Path:
+    if getattr(args, "csv", None):
+        return args.csv
+    base = Path(args.output_dir) if getattr(args, "output_dir", None) else Path("logs")
+    return base / "validate_glosses_findings.csv"
 
 
 def main(argv: list[str] | None = None) -> int:
     args = _build_arg_parser().parse_args(argv)
 
-    output_dir = Path(args.output_dir) if args.output_dir else Path.cwd()
-    output_dir.mkdir(parents=True, exist_ok=True)
-    w_csv_file = output_dir / "validation_results.csv"
-    m_csv_file = output_dir / "validation_m_mismatches.csv"
-
-    print(f"Mode: {args.search_by}")
-    print(f"Check morphemes (W missing M): {args.check_morpho}")
-    # CSV paths announced AFTER we know whether they were written, so
-    # the user isn't pointed at non-existent files.
-
+    csv_path = _resolve_csv_path(args)
     xml_files = _resolve_target_files(args)
     if not xml_files:
         print("No XML files matched the selection.")
-        # Clean up any stale CSVs from a prior run.
-        _write_or_remove(w_csv_file, [], lambda p, _r: None)
-        _write_or_remove(m_csv_file, [], lambda p, _r: None)
         return 0
 
     all_findings: list[Finding] = []
-    all_w_rows: list[tuple] = []
-    all_m_rows: list[tuple] = []
-
     for xml_file in xml_files:
-        print(f"Processing: {xml_file}")
-        findings, w_rows, m_rows = _process_file(
-            xml_file, args.check_morpho, args.debug
-        )
-        if w_rows:
-            print(f"  Found {len(w_rows)} W-count mismatch(es)")
-        if m_rows:
-            print(f"  Found {len(m_rows)} M-count mismatch(es)")
-        all_findings.extend(findings)
-        all_w_rows.extend(w_rows)
-        all_m_rows.extend(m_rows)
+        all_findings.extend(_process_file(xml_file, getattr(args, "debug", False)))
 
-    _write_or_remove(
-        w_csv_file,
-        all_w_rows,
-        lambda p, rows: _write_w_csv(p, rows, args.check_morpho),
-    )
-    _write_or_remove(m_csv_file, all_m_rows, _write_m_csv)
-
-    if all_w_rows:
-        print(
-            f"\nW-mismatch results saved to: {w_csv_file} "
-            f"({len(all_w_rows)} error(s))"
-        )
-    else:
-        print("\nNo W-count mismatches found.")
-
-    if all_m_rows:
-        print(
-            f"M-mismatch results saved to: {m_csv_file} "
-            f"({len(all_m_rows)} error(s))"
-        )
-    else:
-        print("No M-count mismatches found.")
-
-    print(f"\nValidation complete! Files processed: {len(xml_files)}")
-    _print_summary(all_findings)
-
-    has_hard = any(f.severity is Severity.HARD for f in all_findings)
-    return 1 if has_hard else 0
+    has_hard = report_findings(all_findings, csv_path, file_count=len(xml_files))
+    if has_hard and not getattr(args, "no_exit_on_hard", False):
+        return 1
+    return 0
 
 
 if __name__ == "__main__":

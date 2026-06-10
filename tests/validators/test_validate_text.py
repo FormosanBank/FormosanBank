@@ -73,9 +73,13 @@ def _has_text_finding(
 
 
 def _is_clean(proc: subprocess.CompletedProcess) -> bool:
-    """Did the validator report a clean run (no HARD issues)?"""
+    """Did the validator report a fully clean run (zero findings)?
+
+    New summary contract (2026-06-09): a clean run prints
+    "=== Validation summary: N files, 0 with issues ===" + "No issues found."
+    """
     combined = combined_output(proc)
-    return ("total issues found: 0" in combined) and ("no issues found" in combined)
+    return ("0 with issues" in combined) and ("no issues found" in combined)
 
 
 def _write_xml(path: Path, content: str) -> Path:
@@ -2272,8 +2276,10 @@ def test_comprehensive_test_xml_regression(tmp_path):
         capture_output=True,
         text=True,
     )
-    combined = (proc.stdout + proc.stderr).lower()
-    # HARD findings: assert (rule_id, location-id) both appear in combined output.
+    # Per-finding detail (rule ids + element ids) now lives in the one CSV,
+    # not on the terminal. Match HARD markers against the CSV contents.
+    combined = soft_csv.read_text(encoding="utf-8").lower()
+    # HARD findings: assert (rule_id, location-id) both appear in the CSV.
     expected_hard: tuple[tuple[str, str], ...] = (
         ("v120", "ap3_s_2"),    # null '∅' in S-standard FORM
         ("v129", "s=1"),         # '*' in either FORM tier of S=1

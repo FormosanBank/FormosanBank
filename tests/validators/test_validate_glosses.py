@@ -729,10 +729,12 @@ def test_validate_glosses_W_mismatch_emits_finding_and_csv_row(tmp_path):
     assert proc.returncode == 0, (
         f"SOFT-only run should exit 0; stdout={proc.stdout!r} stderr={proc.stderr!r}"
     )
-    w_csv = out / "validation_results.csv"
-    assert w_csv.exists(), "validation_results.csv should exist"
-    contents = w_csv.read_text(encoding="utf-8")
-    assert "S1" in contents, f"expected S1 row in CSV; got {contents!r}"
+    csv_path = out / "validate_glosses_findings.csv"
+    assert csv_path.exists(), "findings CSV should exist"
+    contents = csv_path.read_text(encoding="utf-8")
+    assert "V060" in contents and "S1" in contents, (
+        f"expected a V060 row for S1 in CSV; got {contents!r}"
+    )
 
 
 def test_validate_glosses_M_mismatch_emits_finding_and_csv_row(tmp_path):
@@ -751,10 +753,12 @@ def test_validate_glosses_M_mismatch_emits_finding_and_csv_row(tmp_path):
     assert proc.returncode == 0, (
         f"SOFT-only run should exit 0; stdout={proc.stdout!r} stderr={proc.stderr!r}"
     )
-    m_csv = out / "validation_m_mismatches.csv"
-    assert m_csv.exists(), "validation_m_mismatches.csv should exist"
-    contents = m_csv.read_text(encoding="utf-8")
-    assert "W1" in contents, f"expected W1 row in CSV; got {contents!r}"
+    csv_path = out / "validate_glosses_findings.csv"
+    assert csv_path.exists(), "findings CSV should exist"
+    contents = csv_path.read_text(encoding="utf-8")
+    assert "V061" in contents and "W1" in contents, (
+        f"expected a V061 row for W1 in CSV; got {contents!r}"
+    )
 
 
 def test_validate_glosses_HARD_V062_causes_nonzero_exit(tmp_path):
@@ -781,46 +785,46 @@ def test_validate_glosses_HARD_V062_causes_nonzero_exit(tmp_path):
     )
 
 
-def test_validate_glosses_check_morpho_flag(tmp_path):
-    """--check_morpho still works: legacy 'has_morphemes' column appears."""
-    # W3 has no M children -> should be flagged with has_morphemes='F'.
-    # Also creates a V060 SOFT (3 words vs 3 W, but the rule fires on
-    # check_morpho=True even when word/W counts match because at least
-    # one W lacks M children, mirroring the legacy condition).
-    _write_xml(tmp_path, "morpho.xml", """
-      <S id="S1">
+def test_validate_glosses_csv_preserves_space_containing_ids(tmp_path):
+    """Regression: ids containing spaces survive intact in the findings CSV.
+
+    NTU filenames produce S ids like 'RukaiNr-princess balenge_S_19'. The
+    old legacy CSVs re-parsed `location` with re.search(r'S=([^\\s]+)', ...)
+    and truncated such ids at the first space. The unified CSV writes
+    `location` verbatim, so the full id (including the space) is preserved.
+    """
+    _write_xml(tmp_path, "spaceid.xml", """
+      <S id="princess balenge_S_19">
         <FORM kindOf="original">a b c</FORM>
-        <W id="W1">
-          <FORM kindOf="original">a</FORM>
-          <TRANSL xml:lang="eng">A</TRANSL>
-          <M id="M1"><FORM>a</FORM><TRANSL xml:lang="eng">A</TRANSL></M>
-        </W>
-        <W id="W2">
-          <FORM kindOf="original">b</FORM>
-          <TRANSL xml:lang="eng">B</TRANSL>
-          <M id="M2"><FORM>b</FORM><TRANSL xml:lang="eng">B</TRANSL></M>
-        </W>
-        <W id="W3">
-          <FORM kindOf="original">c</FORM>
-          <TRANSL xml:lang="eng">C</TRANSL>
-        </W>
+        <W id="princess balenge_W1"><FORM kindOf="original">a</FORM><TRANSL xml:lang="eng">A</TRANSL></W>
+        <W id="princess balenge_W2"><FORM kindOf="original">b</FORM><TRANSL xml:lang="eng">B</TRANSL></W>
       </S>""")
     out = tmp_path / "out"
-    proc = _run_validate_glosses(
-        tmp_path / "XML", output_dir=out, extra_args=("--check_morpho",)
+    proc = _run_validate_glosses(tmp_path / "XML", output_dir=out)
+    assert proc.returncode == 0, f"stderr={proc.stderr!r}"
+    contents = (out / "validate_glosses_findings.csv").read_text(encoding="utf-8")
+    # Full id with the space must be present (not truncated to 'princess').
+    assert "princess balenge_S_19" in contents, (
+        f"space-containing id was truncated in CSV; got {contents!r}"
     )
-    # SOFT-only run; exit should be 0.
-    assert proc.returncode == 0, (
-        f"--check_morpho SOFT-only run should exit 0; rc={proc.returncode}, "
-        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+
+
+def test_validate_glosses_ignores_non_xml_files(tmp_path):
+    """The validator must only process .xml files; a README in the tree is
+    ignored (not parsed/validated)."""
+    _write_xml(tmp_path, "real.xml", """
+      <S id="S1"><FORM kindOf="original">a</FORM>
+        <W id="W1"><FORM kindOf="original">a</FORM><TRANSL xml:lang="eng">A</TRANSL></W>
+      </S>""")
+    (tmp_path / "XML" / "README.md").write_text("# not xml\n<S> this is not xml </S>\n")
+    proc = _run_validate_glosses(tmp_path / "XML", output_dir=tmp_path / "out")
+    combined = proc.stdout + proc.stderr
+    assert "README" not in combined, (
+        f"validator should not touch README.md; output={combined!r}"
     )
-    w_csv = out / "validation_results.csv"
-    if w_csv.exists():
-        contents = w_csv.read_text(encoding="utf-8")
-        # Header should reflect the check_morpho column.
-        assert "has_morphemes" in contents.splitlines()[0], (
-            f"expected has_morphemes column header; got {contents!r}"
-        )
+    assert "1 files" in combined, (
+        f"expected exactly 1 (xml) file processed; output={combined!r}"
+    )
 
 
 # -----------------------------------------------------------------------------
@@ -847,7 +851,8 @@ def test_comprehensive_test_xml_regression(tmp_path):
         capture_output=True,
         text=True,
     )
-    combined = (proc.stdout + proc.stderr).lower()
+    # Per-finding detail (rule ids, element ids) now lives in the CSV.
+    combined = (out / "validate_glosses_findings.csv").read_text(encoding="utf-8").lower()
     expected: tuple[tuple[str, str], ...] = (
         # V066 clitic-propagation on the two clitic-bearing Ws of S=3_S_10.
         ("v066", "3_s_10_w6"),

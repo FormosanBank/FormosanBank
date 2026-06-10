@@ -36,7 +36,7 @@ from pathlib import Path
 
 import pytest
 
-from _helpers import combined_output, has_marker
+from _helpers import combined_output, csv_has, has_marker
 
 
 VALIDATE_XML = Path(__file__).resolve().parents[2] / "QC" / "validation" / "validate_xml.py"
@@ -94,14 +94,16 @@ def _run_validate(
 
 
 def _has_finding(proc: subprocess.CompletedProcess) -> bool:
-    """Did the validator's output mention ANY generic finding marker?
+    """Did the validator's summary report at least one issue?
 
-    Used for HARD rules the validator already enforces (V001, V003–V005,
-    V011–V012, V016, V030–V035, V038, V083). For those, we don't care
-    which error class the validator chooses — just that SOME finding
-    appears.
+    Since 2026-06-09 the terminal shows only the per-rule count summary
+    (per-finding detail moved to the CSV). A run with findings prints
+    "... N with issues ===" where N > 0; a clean run prints
+    "... 0 with issues ===". So "has a finding" == the summary mentions
+    issues and the count is not zero.
     """
-    return has_marker(proc, NEGATIVE_MARKERS)
+    combined = combined_output(proc)
+    return ("with issues" in combined) and ("0 with issues" not in combined)
 
 
 def _has_rule_finding(
@@ -124,9 +126,16 @@ def _has_rule_finding(
 
 
 def _is_clean(proc: subprocess.CompletedProcess) -> bool:
-    """Did the validator report a clean run (no issues)?"""
+    """Did the validator report no HARD findings?
+
+    These positive tests assert a fixture triggers no HARD (schema/format)
+    violation; SOFT findings (e.g. V010/V014) are allowed and do not make a
+    run "unclean" in this sense. Under the 2026-06-09 summary contract the
+    validator exits 0 iff there are no HARD findings, and always prints the
+    summary header, so: ran + exit 0 == HARD-clean.
+    """
     combined = combined_output(proc)
-    return ("total issues found: 0" in combined) and ("no issues found" in combined)
+    return proc.returncode == 0 and "validation summary" in combined
 
 
 # -----------------------------------------------------------------------------
@@ -248,15 +257,15 @@ def test_V014_missing_standard_FORM_is_counted(tmp_path, fixtures_dir, copy_fixt
     """
     copy_fixture(fixtures_dir / "v014_missing_standard_FORM.xml", tmp_path)
     proc = _run_validate(tmp_path)
-    combined = combined_output(proc)
     # The XML is structurally valid; HARD pipeline must not flag it.
     assert _is_clean(proc), (
         f"V014 missing-standard should not produce HARD findings; "
         f"got stdout={proc.stdout!r}"
     )
-    # But some SOFT-count signal must be present.
-    assert "missing standard" in combined or "missing-standard" in combined, (
-        f"expected SOFT-count 'missing standard' indicator; got stdout={proc.stdout!r}"
+    # But the SOFT V014 finding must be recorded in the findings CSV.
+    assert csv_has(tmp_path / "soft.csv", "V014", "missing standard"), (
+        f"expected a V014 'missing standard' row in the CSV; "
+        f"got stdout={proc.stdout!r} stderr={proc.stderr!r}"
     )
 
 
@@ -444,8 +453,11 @@ def test_V024_TRANSL_xml_lang_must_be_iso_639_3_negative(tmp_path, fixtures_dir,
     """
     copy_fixture(fixtures_dir / "v024_TRANSL_invalid_iso_code.xml", tmp_path)
     proc = _run_validate(tmp_path)
-    assert _has_rule_finding(proc, ("v024", "transl xml:lang", "transl iso")), (
-        f"expected finding about invalid TRANSL iso code; got stdout={proc.stdout!r}"
+    # v035_xml_lang_is_iso_639_3 flags this as a V035 finding whose message
+    # names the TRANSL element. Detail lives in the CSV now, not stderr.
+    assert csv_has(tmp_path / "soft.csv", "V035", "transl"), (
+        f"expected a V035 row naming the invalid TRANSL iso code in the CSV; "
+        f"got stdout={proc.stdout!r} stderr={proc.stderr!r}"
     )
 
 
@@ -862,18 +874,21 @@ def test_comprehensive_test_xml_regression():
     """
     fixture = _REPO_ROOT / "tests" / "fixtures" / "comprehensive_test.xml"
     assert fixture.exists(), f"comprehensive fixture missing at {fixture}"
+    csv_out = "/tmp/comprehensive_xml_soft.csv"
     proc = subprocess.run(
         [
             sys.executable, str(VALIDATE_XML),
             "--published-corpora", str(_CORPORA_ROOT),
             "by_path", "--path", str(fixture),
-            "--soft-csv", "/tmp/comprehensive_xml_soft.csv",
+            "--csv", csv_out,
         ],
         capture_output=True,
         text=True,
     )
-    combined = (proc.stdout + proc.stderr).lower()
-    # (rule_id, identifying marker) — both must appear in combined output.
+    # Per-finding detail (rule ids, offending element ids, messages) now lives
+    # in the CSV, not on the terminal. Match against the CSV contents.
+    combined = Path(csv_out).read_text(encoding="utf-8").lower()
+    # (rule_id, identifying marker) — both must appear in the CSV.
     expected: tuple[tuple[str, str], ...] = (
         # V000 schema: duplicated id key-sequences (multiple lines).
         ("v000", "duplicate key-sequence"),
