@@ -17,6 +17,7 @@ import csv
 import sys
 from collections import defaultdict
 from pathlib import Path
+from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import corpus_counts
@@ -77,7 +78,9 @@ def process_corpus(corpus_path: Path, strict: bool) -> int:
 
     carried = load_carry_seconds(csv_path)
 
-    buckets = defaultdict(lambda: {f: 0 for f in FIELDNAMES if f not in ("language", "dialect")})
+    buckets: defaultdict[tuple[str, str], dict[str, Any]] = defaultdict(
+        lambda: {f: 0 for f in FIELDNAMES if f not in ("language", "dialect")}
+    )
     n_warnings = 0
     records, parse_errors = corpus_counts.collect_records(xml_dir)
 
