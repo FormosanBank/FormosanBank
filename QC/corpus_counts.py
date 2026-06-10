@@ -49,3 +49,14 @@ def count_words(text: str | None) -> int:
     if not text:
         return 0
     return sum(1 for chunk in text.split() if any(c.isalnum() for c in chunk))
+
+
+def select_sentence_form(sentence) -> str | None:
+    """Return the text to count for one <S>: standard tier, else original.
+
+    Only direct FORM children of S are considered (S-tier rule)."""
+    for kind in ("standard", "original"):
+        for form in sentence.findall("FORM"):
+            if form.get("kindOf") == kind and form.text and form.text.strip():
+                return form.text
+    return None
