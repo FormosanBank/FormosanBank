@@ -2515,13 +2515,20 @@
             <FORM kindOf="standard">semucaqev,</FORM>
             <PHON kindOf="standard">səmuʦaqəv,</PHON>
             <M id="061S19W3M0">
-                <FORM kindOf="original">em=su</FORM>
-                <PHON kindOf="original">əm=su</PHON>
-                <FORM kindOf="standard">em=su</FORM>
-                <PHON kindOf="standard">əm=su</PHON>
-                <TRANSL xml:lang="eng">af=remove</TRANSL>
+                <FORM kindOf="original">-em-</FORM>
+                <PHON kindOf="original">-əm-</PHON>
+                <FORM kindOf="standard">-em-</FORM>
+                <PHON kindOf="standard">-əm-</PHON>
+                <TRANSL xml:lang="eng">af</TRANSL>
             </M>
             <M id="061S19W3M1">
+                <FORM kindOf="original">s-u</FORM>
+                <PHON kindOf="original">s-u</PHON>
+                <FORM kindOf="standard">s-u</FORM>
+                <PHON kindOf="standard">s-u</PHON>
+                <TRANSL xml:lang="eng">remove</TRANSL>
+            </M>
+            <M id="061S19W3M2">
                 <FORM kindOf="original">tsaqev</FORM>
                 <PHON kindOf="original">ʦaqəv</PHON>
                 <FORM kindOf="standard">caqev</FORM>
@@ -2740,13 +2747,20 @@
             <FORM kindOf="standard">siniveric</FORM>
             <PHON kindOf="standard">sinivəriʦ</PHON>
             <M id="061S21W6M0">
-                <FORM kindOf="original">in=si</FORM>
-                <PHON kindOf="original">in=si</PHON>
-                <FORM kindOf="standard">in=si</FORM>
-                <PHON kindOf="standard">in=si</PHON>
-                <TRANSL xml:lang="eng">perf=if</TRANSL>
+                <FORM kindOf="original">-in-</FORM>
+                <PHON kindOf="original">-in-</PHON>
+                <FORM kindOf="standard">-in-</FORM>
+                <PHON kindOf="standard">-in-</PHON>
+                <TRANSL xml:lang="eng">perf</TRANSL>
             </M>
             <M id="061S21W6M1">
+                <FORM kindOf="original">s-i</FORM>
+                <PHON kindOf="original">s-i</PHON>
+                <FORM kindOf="standard">s-i</FORM>
+                <PHON kindOf="standard">s-i</PHON>
+                <TRANSL xml:lang="eng">if</TRANSL>
+            </M>
+            <M id="061S21W6M2">
                 <FORM kindOf="original">verits</FORM>
                 <PHON kindOf="original">vəriʦ</PHON>
                 <FORM kindOf="standard">veric</FORM>
@@ -3211,11 +3225,18 @@
                 <TRANSL xml:lang="eng">past</TRANSL>
             </M>
             <M id="061S25W6M1">
-                <FORM kindOf="original">em=qaɫup</FORM>
-                <PHON kindOf="original">əm=qaʎup</PHON>
-                <FORM kindOf="standard">em=qaljup</FORM>
-                <PHON kindOf="standard">əm=qaʎup</PHON>
-                <TRANSL xml:lang="eng">af=hunt</TRANSL>
+                <FORM kindOf="original">-em-</FORM>
+                <PHON kindOf="original">-əm-</PHON>
+                <FORM kindOf="standard">-em-</FORM>
+                <PHON kindOf="standard">-əm-</PHON>
+                <TRANSL xml:lang="eng">af</TRANSL>
+            </M>
+            <M id="061S25W6M2">
+                <FORM kindOf="original">q-aɫup</FORM>
+                <PHON kindOf="original">q-aʎup</PHON>
+                <FORM kindOf="standard">q-aljup</FORM>
+                <PHON kindOf="standard">q-aʎup</PHON>
+                <TRANSL xml:lang="eng">hunt</TRANSL>
             </M>
         </W>
     </S>

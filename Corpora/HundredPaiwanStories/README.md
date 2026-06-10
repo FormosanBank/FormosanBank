@@ -86,6 +86,16 @@ The `<M>` created in steps 9–10 (and other hand-repaired morphemes) initially 
 
 > **Do not run `standardize.py` (step 6) over the published `XML/`.** Its TSV maps `? → '`, which reconflates sentence-final question-mark *punctuation* with the glottal stop; in the dev-repo build this is undone afterward by `fix_ferrell.py`, but that script is hardcoded to the dev path and does not run here. Applying the TSV to only the new morphemes (step 11) is safe because morpheme FORMs never carry question-mark punctuation. (`add_phonology.py` carries the same whole-file caveat and is likewise not run over the published `XML/`; PHON for the new morphemes was filled by the same targeted character-mapping.)
 
+12. **Split infix/reduplication morphemes inside multi-M words**
+
+Step 9 only handled words whose `=` morpheme spanned the whole word. `split_multi_M_infix.py` handles the multi-M case: it peels off the sibling morphemes that match the surface directly to isolate the substring the `=` morpheme spans, then splices as in step 9 (e.g. `qemaqivu` with `<M>em=qa</M><M>qivu</M>` → peel `qivu` → span `qema` → `-em-` + `q-a`, leaving `qivu`). The `=` M becomes two Ms, the siblings are untouched, and the W's M ids are renumbered 0-based. Unlike step 9 these new Ms are emitted complete (standard `FORM` + both `PHON` tiers, via the same TSV/orthography mappings), so no separate fill is needed.
+
+```bash
+    python CodeAndDocs/split_multi_M_infix.py
+```
+
+477 morphemes split; words where a sibling doesn't match the surface (consonant mutation, infix vowel change, w/v alternation) or that stack multiple `=` morphemes are left untouched and listed in `multi_M_eq_morphemes.csv`.
+
 ### Citation
 
 Early, R. J., and Whitehorn, J. (2003). One hundred Paiwan texts. Pacific Linguistics, Research School of Pacific and Asian Studies, The Australian National University.

@@ -976,20 +976,27 @@
             <FORM kindOf="standard">pinalimasudj</FORM>
             <PHON kindOf="standard">pinaɣimasuɉ</PHON>
             <M id="031S7W16M0">
-                <FORM kindOf="original">in=pa</FORM>
-                <PHON kindOf="original">in=pa</PHON>
-                <FORM kindOf="standard">in=pa</FORM>
-                <PHON kindOf="standard">in=pa</PHON>
-                <TRANSL xml:lang="eng">perf=cause</TRANSL>
+                <FORM kindOf="original">-in-</FORM>
+                <PHON kindOf="original">-in-</PHON>
+                <FORM kindOf="standard">-in-</FORM>
+                <PHON kindOf="standard">-in-</PHON>
+                <TRANSL xml:lang="eng">perf</TRANSL>
             </M>
             <M id="031S7W16M1">
+                <FORM kindOf="original">p-a</FORM>
+                <PHON kindOf="original">p-a</PHON>
+                <FORM kindOf="standard">p-a</FORM>
+                <PHON kindOf="standard">p-a</PHON>
+                <TRANSL xml:lang="eng">cause</TRANSL>
+            </M>
+            <M id="031S7W16M2">
                 <FORM kindOf="original">li</FORM>
                 <PHON kindOf="original">ɭi</PHON>
                 <FORM kindOf="standard">li</FORM>
                 <PHON kindOf="standard">ɣi</PHON>
                 <TRANSL xml:lang="eng">qal</TRANSL>
             </M>
-            <M id="031S7W16M2">
+            <M id="031S7W16M3">
                 <FORM kindOf="original">masudj</FORM>
                 <PHON kindOf="original">masuɉ</PHON>
                 <FORM kindOf="standard">masudj</FORM>
@@ -1366,11 +1373,18 @@
                 <TRANSL xml:lang="eng">past</TRANSL>
             </M>
             <M id="031S10W3M1">
-                <FORM kindOf="original">em=suap</FORM>
-                <PHON kindOf="original">əm=suap</PHON>
-                <FORM kindOf="standard">em=suap</FORM>
-                <PHON kindOf="standard">əm=suap</PHON>
-                <TRANSL xml:lang="eng">af=sweep</TRANSL>
+                <FORM kindOf="original">-em-</FORM>
+                <PHON kindOf="original">-əm-</PHON>
+                <FORM kindOf="standard">-em-</FORM>
+                <PHON kindOf="standard">-əm-</PHON>
+                <TRANSL xml:lang="eng">af</TRANSL>
+            </M>
+            <M id="031S10W3M2">
+                <FORM kindOf="original">s-uap</FORM>
+                <PHON kindOf="original">s-uap</PHON>
+                <FORM kindOf="standard">s-uap</FORM>
+                <PHON kindOf="standard">s-uap</PHON>
+                <TRANSL xml:lang="eng">sweep</TRANSL>
             </M>
         </W>
         <W id="031S10W4">
