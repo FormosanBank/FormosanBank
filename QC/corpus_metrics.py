@@ -8,7 +8,6 @@ import csv
 import datetime as dt
 import json
 import os
-import re
 import subprocess
 import sys
 import textwrap
@@ -17,46 +16,7 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Any, NamedTuple
 
-XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
-
-LANG_CODE_TO_NAME = {
-    "ami": "Amis",
-    "tay": "Atayal",
-    "pwn": "Paiwan",
-    "bnn": "Bunun",
-    "pyu": "Puyuma",
-    "dru": "Rukai",
-    "tsu": "Tsou",
-    "xsy": "Saisiyat",
-    "tao": "Yami",
-    "ssf": "Thao",
-    "ckv": "Kavalan",
-    "trv": "Seediq",
-    "szy": "Sakizaya",
-    "sxr": "Saaroa",
-    "xnb": "Kanakanavu",
-    "fos": "Siraya",
-}
-
-KNOWN_LANGUAGES = {
-    "Amis",
-    "Atayal",
-    "Paiwan",
-    "Bunun",
-    "Puyuma",
-    "Rukai",
-    "Tsou",
-    "Saisiyat",
-    "Yami",
-    "Thao",
-    "Kavalan",
-    "Truku",
-    "Sakizaya",
-    "Seediq",
-    "Saaroa",
-    "Kanakanavu",
-    "Siraya",
-}
+import corpus_counts
 
 COUNT_FIELDS = (
     "tokens",
@@ -161,102 +121,40 @@ def source_for(corpora_path: Path, xml_file: Path) -> str:
     return rel.parts[0] if rel.parts else corpora_path.name
 
 
-def language_from_path(corpora_path: Path, xml_file: Path) -> str | None:
-    language_lookup = {lang.casefold(): lang for lang in KNOWN_LANGUAGES}
-    try:
-        parts = xml_file.relative_to(corpora_path).parts
-    except ValueError:
-        parts = xml_file.parts
-    for part in parts:
-        language = language_lookup.get(part.casefold())
-        if language:
-            return language
-    return None
+def display_language(language_code: str, dialect: str) -> str:
+    resolved = corpus_counts.resolve_language(language_code, dialect)
+    if resolved:
+        return resolved
+    return f"Unknown ({language_code})" if language_code else "Unknown"
 
 
-def language_for(root: ET.Element, corpora_path: Path, xml_file: Path) -> tuple[str, str | None]:
-    path_language = language_from_path(corpora_path, xml_file)
-    if path_language:
-        return path_language, root.get(XML_LANG)
-
-    lang_code = (root.get(XML_LANG) or "").lower()
-    if lang_code in LANG_CODE_TO_NAME:
-        return LANG_CODE_TO_NAME[lang_code], lang_code
-    return f"Unknown ({lang_code})" if lang_code else "Unknown", lang_code or None
-
-
-def dialect_for(root: ET.Element) -> str:
-    dialect = (root.get("dialect") or "").strip()
-    return dialect or "Not Specified"
-
-
-def word_count(text: str) -> int:
-    return len(re.findall(r"\S+", text))
-
-
-def select_sentence_form(sentence: ET.Element, form_kind: str) -> str | None:
-    forms = sentence.findall("FORM")
-    if not forms:
-        return None
-
-    if form_kind == "first":
-        for form in forms:
-            if form.text and form.text.strip():
-                return form.text
-        return None
-
-    preferred_kinds = [form_kind]
-    if form_kind == "auto":
-        preferred_kinds = ["standard", "original"]
-
-    for kind in preferred_kinds:
-        for form in forms:
-            if form.get("kindOf") == kind and form.text and form.text.strip():
-                return form.text
-
-    if form_kind == "auto":
-        for form in forms:
-            if form.text and form.text.strip():
-                return form.text
-    return None
-
-
-def analyze_xml_root(corpora_path: Path, xml_file: Path, root: ET.Element, form_kind: str) -> dict[str, Any]:
-    language, language_code = language_for(root, corpora_path, xml_file)
-    dialect = dialect_for(root)
-
-    sentences = root.findall(".//S")
-    tokens = 0
-    for sentence in sentences:
-        form_text = select_sentence_form(sentence, form_kind)
-        if form_text:
-            tokens += word_count(form_text)
-
+def analyze_xml_root(corpora_path: Path, xml_file: Path, root: ET.Element) -> dict[str, Any]:
+    record = corpus_counts.analyze_root(root)
     return {
         "source": source_for(corpora_path, xml_file),
-        "language": language,
-        "language_code": language_code,
-        "dialect": dialect,
+        "language": display_language(record["language"], record["dialect"]),
+        "language_code": record["language"] or None,
+        "dialect": record["dialect"] or "Not Specified",
         "path": str(xml_file.relative_to(corpora_path.parent)),
-        "tokens": tokens,
-        "sentences": len(sentences),
+        "tokens": record["word_count"],
+        "sentences": record["sentences"],
         "xml_files": 1,
-        "word_elements": len(root.findall(".//W")),
-        "morpheme_elements": len(root.findall(".//M")),
-        "translation_elements": len(root.findall(".//TRANSL")),
-        "audio_elements": len(root.findall(".//AUDIO")),
+        "word_elements": record["word_elements"],
+        "morpheme_elements": record["morpheme_elements"],
+        "translation_elements": record["translation_elements"],
+        "audio_elements": record["audio_elements"],
     }
 
 
-def analyze_xml_file(corpora_path: Path, xml_file: Path, form_kind: str) -> dict[str, Any]:
+def analyze_xml_file(corpora_path: Path, xml_file: Path) -> dict[str, Any]:
     tree = ET.parse(xml_file)
-    return analyze_xml_root(corpora_path, xml_file, tree.getroot(), form_kind)
+    return analyze_xml_root(corpora_path, xml_file, tree.getroot())
 
 
-def analyze_xml_bytes(corpora_path: Path, relative_path: str, content: bytes, form_kind: str) -> dict[str, Any]:
+def analyze_xml_bytes(corpora_path: Path, relative_path: str, content: bytes) -> dict[str, Any]:
     root = ET.fromstring(content)
     xml_file = corpora_path.parent / relative_path
-    return analyze_xml_root(corpora_path, xml_file, root, form_kind)
+    return analyze_xml_root(corpora_path, xml_file, root)
 
 
 def empty_counts() -> dict[str, int]:
@@ -313,12 +211,12 @@ def aggregate_records(
     return totals, sorted_counts_map(by_source), sorted_counts_map(by_language), sorted_dialect_counts(by_language_dialect)
 
 
-def build_metrics(corpora_path: Path, form_kind: str, records: list[dict[str, Any]], parse_errors: list[dict[str, str]]) -> dict[str, Any]:
+def build_metrics(corpora_path: Path, records: list[dict[str, Any]], parse_errors: list[dict[str, str]]) -> dict[str, Any]:
     totals, by_source, by_language, by_language_dialect = aggregate_records(records, parse_errors)
     return {
         "generated_at": now_utc(),
         "corpora_path": str(corpora_path),
-        "form_kind": form_kind,
+        "counting": "standard tier (original fallback); tokens are whitespace chunks containing a letter or digit",
         "git": {
             "commit": os.environ.get("GITHUB_SHA")
             or git_value(["rev-parse", "HEAD"], corpora_path),
@@ -333,14 +231,14 @@ def build_metrics(corpora_path: Path, form_kind: str, records: list[dict[str, An
     }
 
 
-def collect_corpus_records(corpora_path: Path, form_kind: str) -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
+def collect_corpus_records(corpora_path: Path) -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
     corpora_path = corpora_path.resolve()
     records: list[dict[str, Any]] = []
     parse_errors: list[dict[str, str]] = []
 
     for xml_file in find_xml_files(corpora_path):
         try:
-            records.append(analyze_xml_file(corpora_path, xml_file, form_kind))
+            records.append(analyze_xml_file(corpora_path, xml_file))
         except Exception as exc:
             parse_errors.append(
                 {
@@ -352,10 +250,10 @@ def collect_corpus_records(corpora_path: Path, form_kind: str) -> tuple[list[dic
     return records, parse_errors
 
 
-def analyze_corpora(corpora_path: Path, form_kind: str = "first") -> dict[str, Any]:
+def analyze_corpora(corpora_path: Path) -> dict[str, Any]:
     corpora_path = corpora_path.resolve()
-    records, parse_errors = collect_corpus_records(corpora_path, form_kind)
-    return build_metrics(corpora_path, form_kind, records, parse_errors)
+    records, parse_errors = collect_corpus_records(corpora_path)
+    return build_metrics(corpora_path, records, parse_errors)
 
 
 def load_benchmarks(path: Path | None) -> list[dict[str, Any]]:
@@ -441,7 +339,7 @@ def write_markdown(metrics: dict[str, Any], benchmarks: list[dict[str, Any]], ou
         f"Generated at: `{metrics['generated_at']}`",
         f"Git ref: `{metrics['git'].get('ref') or 'unknown'}`",
         f"Git commit: `{metrics['git'].get('commit') or 'unknown'}`",
-        f"Token source: sentence-level `FORM` elements using form mode `{metrics['form_kind']}`.",
+        f"Token source: sentence-level FORM, standard tier with original fallback.",
         "",
         "## Totals",
         "",
@@ -798,14 +696,13 @@ def parse_errors_by_path(parse_errors: list[dict[str, str]]) -> dict[str, dict[s
 
 def restore_xml_blob(
     corpora_path: Path,
-    form_kind: str,
     path: str,
     content: bytes,
     records: dict[str, dict[str, Any]],
     parse_errors: dict[str, dict[str, str]],
 ) -> None:
     try:
-        records[path] = analyze_xml_bytes(corpora_path, path, content, form_kind)
+        records[path] = analyze_xml_bytes(corpora_path, path, content)
         parse_errors.pop(path, None)
     except Exception as exc:
         records.pop(path, None)
@@ -815,7 +712,6 @@ def restore_xml_blob(
 def roll_back_xml_commit(
     repo_root: Path,
     corpora_path: Path,
-    form_kind: str,
     changes: list[XmlChange],
     records: dict[str, dict[str, Any]],
     parse_errors: dict[str, dict[str, str]],
@@ -831,7 +727,7 @@ def roll_back_xml_commit(
 
         if not change.old_oid or change.old_oid not in old_blobs:
             raise ValueError(f"Could not read previous git blob for {change.path}")
-        restore_xml_blob(corpora_path, form_kind, change.path, old_blobs[change.old_oid], records, parse_errors)
+        restore_xml_blob(corpora_path, change.path, old_blobs[change.old_oid], records, parse_errors)
 
 
 def load_history_csv(path: Path) -> list[dict[str, Any]]:
@@ -852,7 +748,6 @@ def cached_history_base(repo_root: Path, rows: list[dict[str, Any]]) -> tuple[in
 
 def generate_history_from_cache(
     repo_root: Path,
-    form_kind: str,
     cache_path: Path,
     current_records: list[dict[str, Any]],
     current_parse_errors: list[dict[str, str]],
@@ -894,7 +789,7 @@ def generate_history_from_cache(
             f"{format_short(row['tokens'])} tokens, {format_int(row['xml_files'])} XML files; "
             f"rolling back {len(changes)} XML change(s)."
         )
-        roll_back_xml_commit(repo_root, corpora_path, form_kind, changes, records, parse_errors)
+        roll_back_xml_commit(repo_root, corpora_path, changes, records, parse_errors)
 
     new_rows = [rows_by_commit[commit] for commit in new_commits]
     progress(f"History cache update complete: kept {len(rows)} row(s), appended {len(new_rows)} row(s).")
@@ -903,7 +798,6 @@ def generate_history_from_cache(
 
 def generate_history(
     repo_root: Path,
-    form_kind: str,
     max_commits: int,
     current_metrics: dict[str, Any] | None = None,
     current_records: list[dict[str, Any]] | None = None,
@@ -911,7 +805,7 @@ def generate_history(
     cache_path: Path | None = None,
 ) -> list[dict[str, Any]]:
     if cache_path and max_commits == 0 and current_records is not None and current_parse_errors is not None:
-        cached_rows = generate_history_from_cache(repo_root, form_kind, cache_path, current_records, current_parse_errors)
+        cached_rows = generate_history_from_cache(repo_root, cache_path, current_records, current_parse_errors)
         if cached_rows is not None:
             return cached_rows
     elif cache_path and max_commits > 0:
@@ -951,7 +845,7 @@ def generate_history(
                 try:
                     if not change.new_oid or change.new_oid not in blobs:
                         raise ValueError(f"Could not read git blob for {change.path}")
-                    record = analyze_xml_bytes(corpora_path, change.path, blobs[change.new_oid], form_kind)
+                    record = analyze_xml_bytes(corpora_path, change.path, blobs[change.new_oid])
                     records_by_path[change.path] = record
                     parse_errors_by_path.pop(change.path, None)
                 except Exception as exc:
@@ -1044,12 +938,6 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser.add_argument("corpora_path", nargs="?", default="Corpora", help="Path to the Corpora directory.")
     parser.add_argument("--output-dir", default="corpus_metrics", help="Directory for metrics artifacts.")
     parser.add_argument(
-        "--form-kind",
-        choices=["first", "auto", "standard", "original"],
-        default="first",
-        help="Sentence-level FORM selection mode. 'first' matches the legacy token counter.",
-    )
-    parser.add_argument(
         "--benchmarks",
         default=str(Path(__file__).resolve().parent / "reference" / "corpus_benchmarks.json"),
         help="Optional benchmark JSON file.",
@@ -1074,8 +962,8 @@ def main(argv: list[str] | None = None) -> int:
 
     benchmarks = load_benchmarks(Path(args.benchmarks) if args.benchmarks else None)
     progress(f"Counting current corpus XML from {corpora_path}.")
-    current_records, current_parse_errors = collect_corpus_records(corpora_path, args.form_kind)
-    metrics = build_metrics(corpora_path.resolve(), args.form_kind, current_records, current_parse_errors)
+    current_records, current_parse_errors = collect_corpus_records(corpora_path)
+    metrics = build_metrics(corpora_path.resolve(), current_records, current_parse_errors)
     progress(
         "Current corpus counted: "
         f"{format_short(metrics['totals']['tokens'])} tokens, "
@@ -1091,7 +979,6 @@ def main(argv: list[str] | None = None) -> int:
         repo_root = repo_root_from(corpora_path.resolve())
         history_rows = generate_history(
             repo_root,
-            args.form_kind,
             args.max_history_commits,
             metrics,
             current_records=current_records,
