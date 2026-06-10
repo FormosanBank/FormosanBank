@@ -93,3 +93,53 @@ class TestResolveLanguage:
         assert corpus_counts.resolve_language("xx", "y") is None
         assert corpus_counts.resolve_language("", "y") is None
         assert corpus_counts.resolve_language(None, "y") is None
+
+
+FIXTURE_XML = REPO_ROOT / "tests" / "fixtures" / "stats_corpus" / "MiniCorpus" / "XML"
+
+
+class TestAnalyzeFile:
+    def test_ami_haian_record(self):
+        rec = corpus_counts.analyze_file(FIXTURE_XML / "ami_haian.xml")
+        assert rec["language"] == "ami"
+        assert rec["dialect"] == "Haian"
+        assert rec["word_count"] == 5
+        assert rec["sentences"] == 3
+        assert rec["segmented_words"] == 3
+        assert rec["glossed_words"] == 3
+        assert rec["eng_transl_count"] == 5  # two eng TRANSLs in s2 count once
+        assert rec["zho_transl_count"] == 3
+        assert rec["word_elements"] == 3
+        assert rec["morpheme_elements"] == 1
+        assert rec["translation_elements"] == 5
+        assert rec["audio_elements"] == 0
+        assert rec["file_count"] == 1
+        # s3 has W-level FORMs but no S-level FORM: contributes 0, warned.
+        assert any("no countable FORM" in w for w in rec["warnings"])
+
+    def test_truku_record_and_audio_counts(self):
+        rec = corpus_counts.analyze_file(FIXTURE_XML / "trv_truku.xml")
+        assert rec["word_count"] == 2
+        assert rec["transcribed_audio_count"] == 1
+        assert rec["untranscribed_audio_count"] == 1
+        assert rec["audio_elements"] == 2
+        assert corpus_counts.resolve_language(rec["language"], rec["dialect"]) == "Truku"
+
+    def test_missing_dialect_warns(self):
+        rec = corpus_counts.analyze_file(FIXTURE_XML / "ami_nodialect.xml")
+        assert rec["word_count"] == 1
+        assert rec["dialect"] == ""
+        assert any("missing dialect" in w for w in rec["warnings"])
+
+    def test_parse_error_raises(self):
+        with pytest.raises(ET.ParseError):
+            corpus_counts.analyze_file(FIXTURE_XML / "bad.xml")
+
+
+class TestCollectRecords:
+    def test_walks_xml_dir_and_collects_errors(self):
+        records, errors = corpus_counts.collect_records(FIXTURE_XML)
+        assert len(records) == 4
+        assert len(errors) == 1
+        assert errors[0]["path"].endswith("bad.xml")
+        assert sum(r["word_count"] for r in records) == 11  # 5 + 2 + 3 + 1
