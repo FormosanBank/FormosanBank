@@ -865,3 +865,103 @@ def test_comprehensive_test_xml_regression(tmp_path):
         f"comprehensive_test.xml regression: missing expected findings "
         f"{missing!r}; stdout={proc.stdout!r} stderr={proc.stderr!r}"
     )
+
+
+# ---------------------------------------------------------------------------
+# V068: M FORMs reconstruct the W FORM (SOFT)
+# ---------------------------------------------------------------------------
+
+
+def test_V068_clean_decomposition_no_finding():
+    """W 'ka-en' decomposed into M 'ka' + 'en' reconstructs cleanly."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">ka-en</FORM>
+        <W id="W1">
+          <FORM kindOf="original">ka-en</FORM>
+          <M id="W1M1"><FORM kindOf="original">ka</FORM></M>
+          <M id="W1M2"><FORM kindOf="original">en</FORM></M>
+        </W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v068_M_reconstructs_W, xml)
+    assert findings == [], f"expected no V068 finding; got {findings!r}"
+
+
+def test_V068_infix_decomposition_no_finding():
+    """Infix: W 'sumulat' = M 's' + '-um-' + 'ulat'. Multiset is identical
+    despite the infix being inserted, so no finding."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">sumulat</FORM>
+        <W id="W1">
+          <FORM kindOf="original">s&lt;um&gt;ulat</FORM>
+          <M id="W1M1"><FORM kindOf="original">s</FORM></M>
+          <M id="W1M2"><FORM kindOf="original">-um-</FORM></M>
+          <M id="W1M3"><FORM kindOf="original">ulat</FORM></M>
+        </W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v068_M_reconstructs_W, xml)
+    assert findings == [], f"infix must reconstruct cleanly; got {findings!r}"
+
+
+def test_V068_null_morpheme_tolerated_no_finding():
+    """A single null-morpheme letter (ø) not present in the W stays above
+    threshold (0.75) -> tolerated, no finding."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">kan</FORM>
+        <W id="W1">
+          <FORM kindOf="original">kan</FORM>
+          <M id="W1M1"><FORM kindOf="original">kan</FORM></M>
+          <M id="W1M2"><FORM kindOf="original">ø</FORM></M>
+        </W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v068_M_reconstructs_W, xml)
+    assert findings == [], f"null morpheme should be tolerated; got {findings!r}"
+
+
+def test_V068_misaligned_Ms_emit_SOFT():
+    """M FORMs spell a different word than the W FORM -> SOFT V068."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">sumulat</FORM>
+        <W id="W1">
+          <FORM kindOf="original">sumulat</FORM>
+          <M id="W1M1"><FORM kindOf="original">ka</FORM></M>
+          <M id="W1M2"><FORM kindOf="original">cedas</FORM></M>
+        </W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v068_M_reconstructs_W, xml)
+    assert len(findings) == 1, f"expected 1 V068 finding; got {findings!r}"
+    f = findings[0]
+    assert f.rule_id == "V068"
+    assert f.severity is Severity.SOFT
+    assert "W1" in f.location
+
+
+def test_V068_uses_original_tier_only():
+    """Original tiers reconstruct; standard tiers diverge wildly -> still no
+    finding, because V068 compares the original tier only."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">kaen</FORM>
+        <W id="W1">
+          <FORM kindOf="original">kaen</FORM>
+          <FORM kindOf="standard">zzzz</FORM>
+          <M id="W1M1"><FORM kindOf="original">ka</FORM><FORM kindOf="standard">qq</FORM></M>
+          <M id="W1M2"><FORM kindOf="original">en</FORM><FORM kindOf="standard">pp</FORM></M>
+        </W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v068_M_reconstructs_W, xml)
+    assert findings == [], f"V068 must ignore the standard tier; got {findings!r}"
+
+
+def test_V068_W_without_M_skipped():
+    """A monomorphemic W with no M children is skipped (nothing to check)."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">kan</FORM>
+        <W id="W1"><FORM kindOf="original">kan</FORM></W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v068_M_reconstructs_W, xml)
+    assert findings == [], f"W with no M must be skipped; got {findings!r}"

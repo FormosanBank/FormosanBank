@@ -27,11 +27,15 @@ Rule ID assignments for B9.4 (recorded in commit messages too):
 """
 import subprocess
 import sys
+from io import BytesIO
 from pathlib import Path
 
 import pytest
+from lxml import etree
 
 from _helpers import combined_output, has_marker
+from QC.validation._finding import Severity
+from QC.validation.rules import text as text_rules
 
 
 VALIDATE_TEXT = (
@@ -2296,3 +2300,67 @@ def test_comprehensive_test_xml_regression(tmp_path):
     assert not missing_soft, (
         f"SOFT regression missing: {missing_soft!r}; csv rows={rows!r}"
     )
+
+
+# ---------------------------------------------------------------------------
+# V141: W FORMs reconstruct the S FORM (SOFT) — rule-level tests
+# (imports for these live at the top of the file with the rest)
+# ---------------------------------------------------------------------------
+
+_V141_TEMPLATE = """<?xml version="1.0" encoding="utf-8"?>
+<TEXT id="T1" citation="t" BibTeX_citation="@t{{t}}" copyright="t" xml:lang="ami">
+{body}
+</TEXT>
+"""
+
+
+def _v141_findings(xml: str):
+    tree = etree.parse(BytesIO(xml.encode("utf-8")))
+    return text_rules.v141_W_reconstructs_S(tree, Path("test.xml"), None)
+
+
+def test_V141_clean_reconstruction_no_finding():
+    """W FORMs spell the S FORM (punctuation in S ignored) -> no finding."""
+    xml = _V141_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">ka en, taon.</FORM>
+        <W id="W1"><FORM kindOf="original">ka</FORM></W>
+        <W id="W2"><FORM kindOf="original">en</FORM></W>
+        <W id="W3"><FORM kindOf="original">taon</FORM></W>
+      </S>""")
+    assert _v141_findings(xml) == []
+
+
+def test_V141_misaligned_W_tier_emits_SOFT():
+    """The W decomposition spells a different sentence -> SOFT V141."""
+    xml = _V141_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">ka en taon</FORM>
+        <W id="W1"><FORM kindOf="original">mirung</FORM></W>
+        <W id="W2"><FORM kindOf="original">cudju</FORM></W>
+      </S>""")
+    findings = _v141_findings(xml)
+    assert len(findings) == 1, f"expected 1 V141 finding; got {findings!r}"
+    f = findings[0]
+    assert f.rule_id == "V141"
+    assert f.severity is Severity.SOFT
+    assert "S1" in f.location
+
+
+def test_V141_uses_original_tier_only():
+    """Original tiers reconstruct; standard tiers diverge -> no finding."""
+    xml = _V141_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">ka en</FORM>
+        <FORM kindOf="standard">zzzzz</FORM>
+        <W id="W1"><FORM kindOf="original">ka</FORM><FORM kindOf="standard">qq</FORM></W>
+        <W id="W2"><FORM kindOf="original">en</FORM><FORM kindOf="standard">pp</FORM></W>
+      </S>""")
+    assert _v141_findings(xml) == []
+
+
+def test_V141_S_without_W_skipped():
+    """An unsegmented S (no W children) is skipped."""
+    xml = _V141_TEMPLATE.format(body="""
+      <S id="S1"><FORM kindOf="original">ka en taon</FORM></S>""")
+    assert _v141_findings(xml) == []

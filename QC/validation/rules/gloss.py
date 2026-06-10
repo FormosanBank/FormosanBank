@@ -21,12 +21,18 @@ Rules:
 - V067 HARD: '<' or '>' in an M FORM is forbidden; infix Ms must use '-X-' notation.
 """
 import re
+from collections import Counter
 from pathlib import Path
 
 from lxml import etree
 
 from QC.validation._corpus_index import CorpusIndex
 from QC.validation._finding import Finding, Severity
+from QC.validation.rules._reconstruct import (
+    DEFAULT_SIMILARITY_THRESHOLD,
+    letter_skeleton,
+    similarity,
+)
 
 
 # Infix shape: starts and ends with '-' with non-'-' content between.
@@ -526,6 +532,75 @@ def v067_no_angle_brackets_in_M_FORM(
 
 
 # ---------------------------------------------------------------------------
+# V068: M FORMs reconstruct the W FORM (SOFT)
+# ---------------------------------------------------------------------------
+
+def v068_M_reconstructs_W(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V068 SOFT: the M FORMs of a W should spell the W FORM.
+
+    Compares the letter-skeleton (Unicode-letter multiset, casefolded) of
+    W FORM[@kindOf='original'] against the summed skeletons of its child M
+    FORM[@kindOf='original']. SOFT finding when their ``similarity`` falls
+    below ``DEFAULT_SIMILARITY_THRESHOLD`` — i.e., the morphemes likely
+    belong to a different word (misalignment). This is a content check, not
+    a count check (V061): a W could have the right number of Ms that spell
+    something unrelated and pass every other gloss rule.
+
+    Original tier only (if it reconstructs, the standard tier follows).
+    Because the comparison is a multiset, infixes/circumfixes reconstruct
+    perfectly; the threshold tolerates reduplication placeholders and null
+    morphemes. Ws with no M child (monomorphemic) and Ws/Ms missing an
+    original FORM are skipped — other rules own those cases.
+    """
+    findings: list[Finding] = []
+    for w in tree.iter("W"):
+        ms = [child for child in w if child.tag == "M"]
+        if not ms:
+            continue  # monomorphemic; nothing to reconstruct
+        w_form = w.find('./FORM[@kindOf="original"]')
+        if w_form is None:
+            continue
+        w_skel = letter_skeleton(w_form.text)
+        if not w_skel:
+            continue
+        m_skel: Counter = Counter()
+        saw_m_form = False
+        for m in ms:
+            m_form = m.find('./FORM[@kindOf="original"]')
+            if m_form is not None and (m_form.text or "").strip():
+                saw_m_form = True
+                m_skel += letter_skeleton(m_form.text)
+        if not saw_m_form:
+            continue  # M FORMs missing -> V011/V012/other rules own this
+        sim = similarity(w_skel, m_skel)
+        if sim >= DEFAULT_SIMILARITY_THRESHOLD:
+            continue
+        w_id = w.get("id")
+        parent_s = w.getparent()
+        s_id = parent_s.get("id") if parent_s is not None and parent_s.tag == "S" else None
+        loc = f"W={w_id}" if w_id else "W"
+        if s_id:
+            loc = f"S={s_id} {loc}"
+        findings.append(Finding(
+            rule_id="V068",
+            severity=Severity.SOFT,
+            message=(
+                f"W id={w_id!r}: child M FORMs reconstruct only {sim:.0%} of the "
+                f"W FORM letters; the morphemes may belong to a different word. "
+                f"W FORM={w_form.text!r}"
+            ),
+            path=path,
+            location=loc,
+            count=1,
+        ))
+    return findings
+
+
+# ---------------------------------------------------------------------------
 # Registry
 # ---------------------------------------------------------------------------
 
@@ -538,5 +613,6 @@ RULES: list = [
     v065_every_W_has_TRANSL,
     v066_clitic_in_W_requires_clitic_in_M,
     v067_no_angle_brackets_in_M_FORM,
+    v068_M_reconstructs_W,
 ]
 CROSS_FILE_RULES: list = []

@@ -43,12 +43,18 @@ Rule ID assignments (B9.4):
        V139 TR21 bracketed-digit footnote in FORM/TRANSL (SOFT)
 """
 import re
+from collections import Counter
 from pathlib import Path
 
 from lxml import etree
 
 from QC.validation._corpus_index import CorpusIndex
 from QC.validation._finding import Finding, Severity
+from QC.validation.rules._reconstruct import (
+    DEFAULT_SIMILARITY_THRESHOLD,
+    letter_skeleton,
+    similarity,
+)
 
 
 _XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
@@ -1453,6 +1459,63 @@ def v139_bracketed_digit_footnote(
     return findings
 
 
+def v141_W_reconstructs_S(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V141 SOFT: the W FORMs of an S should spell the S FORM.
+
+    Sentence-level sibling of the gloss rule V068 (M->W). Compares the
+    letter-skeleton (Unicode-letter multiset, casefolded) of S
+    FORM[@kindOf='original'] against the summed skeletons of its direct W
+    children's FORM[@kindOf='original']. SOFT finding when ``similarity``
+    falls below ``DEFAULT_SIMILARITY_THRESHOLD`` — i.e., the word tier is
+    likely misaligned with the sentence (e.g., the W decomposition belongs
+    to a different sentence). Content check, not the word-count check V060.
+
+    Original tier only. No-ops on unsegmented corpora (S with no direct W)
+    and skips S/W elements missing an original FORM (other rules own those).
+    """
+    findings: list[Finding] = []
+    for s in tree.iter("S"):
+        ws = [child for child in s if child.tag == "W"]
+        if not ws:
+            continue  # unsegmented; nothing to reconstruct
+        s_form = s.find('./FORM[@kindOf="original"]')
+        if s_form is None:
+            continue
+        s_skel = letter_skeleton(s_form.text)
+        if not s_skel:
+            continue
+        w_skel: Counter = Counter()
+        saw_w_form = False
+        for w in ws:
+            w_form = w.find('./FORM[@kindOf="original"]')
+            if w_form is not None and (w_form.text or "").strip():
+                saw_w_form = True
+                w_skel += letter_skeleton(w_form.text)
+        if not saw_w_form:
+            continue  # W FORMs missing -> structural rules own this
+        sim = similarity(s_skel, w_skel)
+        if sim >= DEFAULT_SIMILARITY_THRESHOLD:
+            continue
+        s_id = s.get("id")
+        findings.append(Finding(
+            rule_id="V141",
+            severity=Severity.SOFT,
+            message=(
+                f"S id={s_id!r}: child W FORMs reconstruct only {sim:.0%} of the "
+                f"S FORM letters; the word tier may be misaligned with the "
+                f"sentence. S FORM={s_form.text!r}"
+            ),
+            path=path,
+            location=f"S={s_id}" if s_id else "S",
+            count=1,
+        ))
+    return findings
+
+
 RULES: list = [
     # W1 (V110-V115): ported from validate_punct.py
     v110_smart_quotes,
@@ -1487,5 +1550,7 @@ RULES: list = [
     v139_bracketed_digit_footnote,
     # V140: converse of V125 (null in S-original requires W and M)
     v140_null_in_S_original_requires_child_W_and_M,
+    # V141: W FORMs reconstruct the S FORM (sibling of gloss V068)
+    v141_W_reconstructs_S,
 ]
 CROSS_FILE_RULES: list = []
