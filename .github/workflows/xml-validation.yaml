@@ -164,15 +164,17 @@ jobs:
             --no-exit-on-hard \
             --soft-csv validation-text-soft.csv \
             > /dev/null 2> validation-text-stderr.log
-          # Headline counts for the build log.
-          echo "=== Headline counts (validate_xml) ==="
-          grep -E "^Total issues found:" validation-stderr.log || true
-          echo "=== Headline counts (validate_text) ==="
-          grep -E "^Total issues found:" validation-text-stderr.log || true
+          # Headline counts for the build log. The validators now print a
+          # compact "=== Validation summary: N files, M with issues ===" line
+          # and write all findings to one CSV; rule frequencies come from the CSV.
+          echo "=== Headline (validate_xml) ==="
+          grep -E "^=== Validation summary" validation-stderr.log || true
+          echo "=== Headline (validate_text) ==="
+          grep -E "^=== Validation summary" validation-text-stderr.log || true
           echo "=== Top 10 rule_ids by frequency (validate_xml) ==="
-          grep -oE '\[V[0-9]+\]' validation-stderr.log | sort | uniq -c | sort -rn | head -10 || true
+          python -c "import csv,collections; c=collections.Counter(r['rule_id'] for r in csv.DictReader(open('validation-soft.csv'))); print('\n'.join(f'{n:6d} {rid}' for rid,n in c.most_common(10)))" || true
           echo "=== Top 10 rule_ids by frequency (validate_text) ==="
-          grep -oE '\[V[0-9]+\]' validation-text-stderr.log | sort | uniq -c | sort -rn | head -10 || true
+          python -c "import csv,collections; c=collections.Counter(r['rule_id'] for r in csv.DictReader(open('validation-text-soft.csv'))); print('\n'.join(f'{n:6d} {rid}' for rid,n in c.most_common(10)))" || true
         env:
           PYTHONPATH: ${{ github.workspace }}
       - name: Run gloss validator across full Corpora/ (informational)
@@ -193,7 +195,7 @@ jobs:
               2>> gloss-baseline/stderr.log || true
           done
           echo "=== Top 10 gloss rule_ids by frequency ==="
-          grep -oE '\[V06[0-9]\]' gloss-baseline/stderr.log | sort | uniq -c | sort -rn | head -10 || true
+          python -c "import csv,collections,glob; c=collections.Counter(r['rule_id'] for f in glob.glob('gloss-baseline/*/validate_glosses_findings.csv') for r in csv.DictReader(open(f))); print('\n'.join(f'{n:6d} {rid}' for rid,n in c.most_common(10)))" || true
         env:
           PYTHONPATH: ${{ github.workspace }}
       - name: Upload validation log
