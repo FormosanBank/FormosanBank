@@ -70,13 +70,14 @@ def _resolve_audio_path(elem, xml_file: Path, corpus_root, audio_base: Path):
     return next((c for c in candidates if c.is_file()), None)
 
 
-def compute_seconds_by_bucket(xml_dir: Path) -> tuple[dict, int, int]:
+def compute_seconds_by_bucket(xml_dir: Path) -> tuple[dict, int, int, int]:
     """Sum (transcribed, untranscribed) seconds per (language, dialect).
 
-    Returns (buckets, n_elements, n_missing_files)."""
+    Returns (buckets, n_elements, n_missing_files, n_mp3_skipped_no_mutagen)."""
     buckets = defaultdict(lambda: [0.0, 0.0])
     n_elements = 0
     n_missing = 0
+    n_mp3_skipped = 0
     for xml_file in sorted(Path(xml_dir).rglob("*.xml")):
         try:
             root = ET.parse(xml_file).getroot()
@@ -103,10 +104,13 @@ def compute_seconds_by_bucket(xml_dir: Path) -> tuple[dict, int, int]:
                 if path is None:
                     n_missing += 1
                     continue
+                if MutagenMP3 is None and str(path).endswith(".mp3"):
+                    n_mp3_skipped += 1
+                    continue
                 duration = _get_audio_duration(str(path))
                 if duration is not None:
                     buckets[key][slot] += duration
-    return buckets, n_elements, n_missing
+    return buckets, n_elements, n_missing, n_mp3_skipped
 
 
 def update_corpus(corpus_path: Path) -> int:
@@ -119,7 +123,11 @@ def update_corpus(corpus_path: Path) -> int:
               f"Run get_corpus_stats.py on this corpus first.", file=sys.stderr)
         return 1
 
-    seconds, n_elements, n_missing = compute_seconds_by_bucket(xml_dir)
+    seconds, n_elements, n_missing, n_mp3_skipped = compute_seconds_by_bucket(xml_dir)
+    if n_mp3_skipped:
+        print(f"[update_audio_stats] WARNING: {n_mp3_skipped} .mp3 file(s) "
+              f"encountered but mutagen is not installed; their durations were "
+              f"skipped - pip install mutagen.", file=sys.stderr)
     if n_missing:
         print(f"[update_audio_stats] WARNING: {n_missing}/{n_elements} AUDIO "
               f"elements reference files not found on disk; buckets with no "
@@ -153,7 +161,10 @@ def main() -> int:
     default_corpora = Path(__file__).resolve().parents[2] / "Corpora"
     parser = argparse.ArgumentParser(
         description="Recompute audio-seconds columns of per-corpus stats CSVs "
-                    "from local audio files (manual; not run in CI).")
+                    "from local audio files (manual; not run in CI). Buckets "
+                    "with no audio located on disk KEEP their previous seconds "
+                    "(never zeroed) - to force a bucket to zero, edit the CSV "
+                    "by hand.")
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("corpora_path", nargs="?",
                        help="Path to a single corpus directory (e.g. Corpora/ePark).")
