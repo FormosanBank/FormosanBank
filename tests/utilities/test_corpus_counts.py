@@ -135,6 +135,12 @@ class TestAnalyzeFile:
         with pytest.raises(ET.ParseError):
             corpus_counts.analyze_file(FIXTURE_XML / "bad.xml")
 
+    def test_missing_lang_warns(self):
+        rec = corpus_counts.analyze_file(FIXTURE_XML.parent.parent / "nolang.xml")
+        assert rec["language"] == ""
+        assert rec["word_count"] == 1
+        assert any("missing xml:lang" in w for w in rec["warnings"])
+
 
 class TestCollectRecords:
     def test_walks_xml_dir_and_collects_errors(self):

@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import xml.etree.ElementTree as ET
 from pathlib import Path
+from typing import Any
 
 XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
 
@@ -116,7 +117,7 @@ def analyze_root(root) -> dict:
     if not dialect:
         warnings.append("missing dialect attribute")
 
-    record = {field: 0 for field in COUNT_FIELDS}
+    record: dict[str, Any] = {field: 0 for field in COUNT_FIELDS}
     record.update({"language": language, "dialect": dialect, "file_count": 1})
 
     for sentence in root.findall(".//S"):
