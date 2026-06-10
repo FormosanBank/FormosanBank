@@ -17,6 +17,8 @@ Reasons:
 
 If a task involves *creating* or *substantially reworking* a corpus rather than maintaining the published version, the work likely belongs in the corpus-specific dev repo, not here.
 
+To audit a dev repo's preprocessing before porting, use the `audit-dev-repo` skill (briefing: [claudeplans/2026-06-09-dev-repo-audit-briefing.md](claudeplans/2026-06-09-dev-repo-audit-briefing.md)).
+
 ## Related repos
 
 - **`../FormosanBankGitbook/`** — public-facing documentation site for both end-users of the corpora and FormosanBank contributors. Published at https://ai4commsci.gitbook.io/formosanbank. Available in multiple languages; **the English version is canonical**, others are typically out of date or incomplete. Ultimately should reflect what's in this repo.
@@ -24,7 +26,7 @@ If a task involves *creating* or *substantially reworking* a corpus rather than 
 
 ## Environment
 
-Python 3.10 (matches CI in [.github/workflows/](.github/workflows/)). A `.venv` exists in the repo root — activate it before running anything: `source .venv/bin/activate`. Deps are pinned in [requirements.txt](requirements.txt).
+Python 3.13 (the repo `.venv`). CI is mixed: tests/xml-validation/audio-validation use 3.13; corpus-metrics/token-comparison/duplicate-sentences still pin 3.10 (worth standardizing). A `.venv` exists in the repo root — activate it before running anything: `source .venv/bin/activate`. Deps are pinned in [requirements.txt](requirements.txt).
 
 Audio files (`*.wav`, `*.mp3`) are gitignored and pulled per-corpus via [run_audio_downloads.sh](run_audio_downloads.sh), which iterates `Corpora/*/download_audio_data.sh`. Audio downloads require `git-lfs`, `jq`, and the `hf` (huggingface) CLI.
 
@@ -41,14 +43,14 @@ The XML schema is defined by [QC/validation/xml_template.xsd](QC/validation/xml_
 ```
 TEXT (id, citation, BibTeX_citation, copyright, xml:lang, [source, audio, glottocode, dialect])
 └── S (id)                                                ← sentence tier; usually at least "original" and "standard" FORMs
-    ├── FORM* (kindOf="original"|"standard"|"alternate")
+    ├── FORM* (kindOf="original"|"standard"|"alternate", [notes])
     ├── PHON* (kindOf="original"|"standard")
-    ├── TRANSL* (xml:lang, [kindOf, ver])
+    ├── TRANSL* (xml:lang, [kindOf, ver, notes])
     ├── AUDIO? (start, end, file, url)
     └── W* (id, [class, sclass])                          ← word tier (only when corpus is word-segmented)
         ├── FORM* (kindOf)
         ├── PHON* (kindOf)
-        ├── TRANSL* (xml:lang, [kindOf, ver])
+        ├── TRANSL* (xml:lang, [kindOf, ver, notes])
         ├── AUDIO?
         └── M* (id, [class, sclass])                      ← morpheme tier
             ├── FORM* (kindOf)
@@ -79,6 +81,8 @@ Most validation/extraction scripts share a `search_by` positional with three mod
 - `by_path --path <file-or-dir>`
 
 When in doubt, `by_path` against a single corpus's `XML/` directory is the safest target. Many scripts accept `--verbose` and `--log_dir <path>` so logs don't get scattered next to scripts or inside corpora.
+
+The finding-based validators (`validate_xml`, `validate_text`, `validate_glosses`) print a compact per-rule **summary** with mnemonic names (e.g. `V060 W_count_matches_word_count: 1`) and write **one findings CSV** (path printed as `Details: …`); per-finding detail lives in the CSV, not the terminal. Flags: `--csv <path>` (`--soft-csv` is a deprecated alias); exit 1 on any HARD finding unless `--no-exit-on-hard`.
 
 The full pipeline is documented in [QC/README.md](QC/README.md). The typical order is:
 1. `QC/validation/validate_xml.py` (XSD conformance)
