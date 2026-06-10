@@ -76,7 +76,15 @@ An `<M>`-level `TRANSL` of exactly `red` is always the reduplication marker in t
     python CodeAndDocs/capitalize_red.py
 ```
 
-> **Pending — regenerate standard tier + IPA.** The `<M>` elements created in steps 9–10 (and other hand-repaired morphemes) have only an original `FORM` and a `TRANSL`. Re-run `standardize.py` (step 6) and `add_phonology.py` over `XML/` to regenerate their standard `FORM` and `PHON`. `standardize.py` resets the standard tier from the original tier before applying the TSV, so re-running reproduces existing standard forms while filling the new morphemes. Until this is done, `validate_xml.py` reports V014 (missing standard tier) on those `<M>`.
+11. **Fill the standard tier on the new morphemes**
+
+The `<M>` created in steps 9–10 (and other hand-repaired morphemes) initially had only an original `FORM` and a `TRANSL`. `fill_standard_tier.py` adds their standard `FORM` by applying the `Paiwan_Ferrell_113.tsv` mappings directly to each new morpheme's original FORM (additions-only; existing forms untouched).
+
+```bash
+    python CodeAndDocs/fill_standard_tier.py
+```
+
+> **Do not run `standardize.py` (step 6) over the published `XML/`.** Its TSV maps `? → '`, which reconflates sentence-final question-mark *punctuation* with the glottal stop; in the dev-repo build this is undone afterward by `fix_ferrell.py`, but that script is hardcoded to the dev path and does not run here. Applying the TSV to only the new morphemes (step 11) is safe because morpheme FORMs never carry question-mark punctuation. **Still pending:** `PHON` (IPA) for these new `<M>` — `add_phonology.py` carries the same whole-file caveat, so this needs the same targeted treatment or regeneration in the dev repo.
 
 ### Citation
 
