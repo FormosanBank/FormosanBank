@@ -137,3 +137,25 @@ Six sentence-subcorpus source JSONs assign the same record id to two different s
    - Renames only the second-and-later occurrences of a duplicated S id (document order), cascading the prefix into descendant W/M ids. Element content is never touched.
    - Audio safety: a duplicated sentence carrying an AUDIO descendant is skipped with a warning, since audio file names elsewhere embed sentence ids. (None exist today: all duplicates are in the Sentences subcorpus, which has no audio.)
    - Same conventions as steps 4-5: byte-identical round-trip guard, idempotent.
+
+* **7. Remove null-morpheme symbols from the standard tier**
+
+The Kanakanavu sentence subcorpus writes a null-morpheme placeholder inside words (e.g. `niarisinatʉ∅kee`; see Minor notes). This is linguist's annotation, not orthography, so it is kept in `original` but removed from `standard`:
+
+```bash
+    python CodeAndDocs/scripts/remove_null_symbols.py
+```
+
+**Notes**
+   - Cleans only S- and W-level `FORM`/`PHON` with `kindOf="standard"`. M-level null symbols (where `∅`/`ø` is itself a morpheme slot, e.g. Sakizaya `ø-sitangah` → M `ø` + M `sitangah`) are deliberately left: stripping them would create empty-form morphemes. An element is never emptied; would-be-emptied elements are skipped and reported.
+   - Default removes `∅` only; `--chars` can extend the set.
+   - Same conventions as steps 4-6: byte-identical round-trip guard, idempotent.
+
+* **8. Manual review: parentheses and slashes in W/M forms (V121)**
+
+This step is **manual** and must be redone (or the edits re-applied) after any regeneration from source. `validate_text.py` rule V121 flags W/M FORMs containing parentheses or slashes; these are annotation conventions from the source that survive the parsers:
+
+   - Parenthesized optional/elided material, e.g. W forms `(sua)`, `(i)`, `k(a)-u` (~259 W elements). Whether to realize, drop, or annotate these is a linguistic judgment made case by case.
+   - Slash-delimited unresolved alternatives, e.g. `si/la`, `ma-lrigi/ma-elre-elrenge/ma-adraw` (~42 W elements; these are in languages where the Kanakanavu-style slash-variant expansion was not applied).
+
+Run `python ../FormosanBank/QC/validation/validate_text.py by_path --path XML` and work through the V121 findings.
