@@ -60,3 +60,17 @@ def select_sentence_form(sentence) -> str | None:
             if form.get("kindOf") == kind and form.text and form.text.strip():
                 return form.text
     return None
+
+
+def resolve_language(language_code: str | None, dialect: str | None) -> str | None:
+    """Resolve (xml:lang, dialect) to a display language name.
+
+    trv + dialect 'Truku' is Truku; trv + anything else is Seediq.
+    Returns None for unknown or missing codes (caller decides how to
+    label those)."""
+    code = (language_code or "").strip().lower()
+    if not code:
+        return None
+    if code == "trv" and (dialect or "").strip().lower() == "truku":
+        return "Truku"
+    return LANG_CODE_TO_NAME.get(code)

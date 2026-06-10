@@ -71,3 +71,25 @@ class TestSelectSentenceForm:
         f = ET.SubElement(w, "FORM", {"kindOf": "standard"})
         f.text = "word-level"
         assert corpus_counts.select_sentence_form(s) is None
+
+
+class TestResolveLanguage:
+    def test_plain_code(self):
+        assert corpus_counts.resolve_language("ami", "Haian") == "Amis"
+
+    def test_trv_truku_dialect_is_truku(self):
+        assert corpus_counts.resolve_language("trv", "Truku") == "Truku"
+        assert corpus_counts.resolve_language("trv", "truku") == "Truku"
+
+    def test_trv_other_dialect_is_seediq(self):
+        assert corpus_counts.resolve_language("trv", "Tgdaya") == "Seediq"
+        assert corpus_counts.resolve_language("trv", "unknown") == "Seediq"
+        assert corpus_counts.resolve_language("trv", "") == "Seediq"
+
+    def test_case_and_whitespace_normalized(self):
+        assert corpus_counts.resolve_language(" AMI ", "x") == "Amis"
+
+    def test_unknown_or_missing_code_returns_none(self):
+        assert corpus_counts.resolve_language("xx", "y") is None
+        assert corpus_counts.resolve_language("", "y") is None
+        assert corpus_counts.resolve_language(None, "y") is None
