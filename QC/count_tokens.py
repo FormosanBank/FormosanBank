@@ -1,43 +1,53 @@
+"""Token counts per language/dialect as JSON, for the token-comparison CI.
+
+Computes from XML via QC/corpus_counts.py (NOT from statistics/*.csv —
+this script runs on arbitrary checkouts, e.g. a PR base in a worktree,
+where the committed CSVs may be stale or absent).
+
+Output shape (stable interface for tokens_delta.py / plot_counts.py /
+plot_deltas.py): {LanguageName: [total_tokens, {dialect: tokens}]}.
+"""
 import argparse
 import json
+from collections import defaultdict
 from pathlib import Path
 
-from corpus_metrics import KNOWN_LANGUAGES, analyze_corpora
+import corpus_counts
 
 
-def get_counts(corpora_path, form_kind="first"):
-    metrics = analyze_corpora(Path(corpora_path), form_kind=form_kind)
-    tokens_by_lang = {lang: [0, {}] for lang in sorted(KNOWN_LANGUAGES)}
+def get_counts(corpora_path):
+    records, _parse_errors = corpus_counts.collect_records(Path(corpora_path))
 
-    for row in metrics["by_language_dialect"]:
-        lang = row["language"]
-        dialect = row["dialect"]
-        tokens = row["tokens"]
-        if lang not in tokens_by_lang:
-            tokens_by_lang[lang] = [0, {}]
-        tokens_by_lang[lang][0] += tokens
-        tokens_by_lang[lang][1][dialect] = tokens
+    tokens_by_lang = {name: [0, {}] for name in corpus_counts.LANGUAGE_NAMES}
+    tokens_by_source = defaultdict(int)
 
-    tokens_by_source = {
-        source: counts["tokens"]
-        for source, counts in metrics["by_source"].items()
-    }
-    return tokens_by_lang, tokens_by_source
+    corpora_path = Path(corpora_path).resolve()
+    for record in records:
+        language = corpus_counts.resolve_language(record["language"], record["dialect"])
+        if language is None:
+            code = record["language"]
+            language = f"Unknown ({code})" if code else "Unknown"
+        dialect = record["dialect"] or "Not Specified"
+        entry = tokens_by_lang.setdefault(language, [0, {}])
+        entry[0] += record["word_count"]
+        entry[1][dialect] = entry[1].get(dialect, 0) + record["word_count"]
+
+        try:
+            source = Path(record["path"]).resolve().relative_to(corpora_path).parts[0]
+        except (ValueError, IndexError):
+            source = "Unknown"
+        tokens_by_source[source] += record["word_count"]
+
+    return tokens_by_lang, dict(tokens_by_source)
 
 
-def main(corpora_path, form_kind="first"):
-    tokens_by_lang, _tokens_by_source = get_counts(corpora_path, form_kind=form_kind)
+def main(corpora_path):
+    tokens_by_lang, _tokens_by_source = get_counts(corpora_path)
     print(json.dumps(tokens_by_lang, indent=4, ensure_ascii=False, sort_keys=True))
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="count tokens per corpus and per language.")
-    parser.add_argument('corpora_path', help='Specify the path of the corpora')
-    parser.add_argument(
-        "--form-kind",
-        choices=["first", "auto", "standard", "original"],
-        default="first",
-        help="Sentence-level FORM selection mode. 'first' matches the legacy token counter.",
-    )
+    parser = argparse.ArgumentParser(description="Count tokens per language and dialect.")
+    parser.add_argument("corpora_path", help="Path of the corpora collection root")
     args = parser.parse_args()
-    main(args.corpora_path, form_kind=args.form_kind)
+    main(args.corpora_path)
