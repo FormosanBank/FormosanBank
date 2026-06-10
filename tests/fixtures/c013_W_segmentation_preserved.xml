@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  C013 positive pin: segmentation markers in W/FORM survive cleaning at
+  both tiers regardless of kindOf. Markers: "-", "=", and "&lt;...&gt;"
+  written as escaped angle brackets in the XML source.
+
+  Shape: one S with both S-level FORM tiers, and three W elements:
+  - W_1/FORM = "Pa-rakat-en"     (hyphen segmentation)
+  - W_2/FORM = "r&lt;um&gt;akat" (parses to "r<um>akat", infix angle gloss)
+  - W_3/FORM = "=ku"             (clitic equal sign)
+  xml:lang="ami".
+  Exercises: clean_xml.py must NOT strip hyphens, equal signs, or
+  angle brackets in W/FORM text. swap_punctuation does not touch any
+  of these, but normalize_whitespace and trim_repeated_punctuation
+  might in a future change, so this is a forward pin.
+
+  Important: do NOT use square brackets here. swap_punctuation maps
+  "[" and "]" to "(" and ")", which would silently corrupt W/FORM
+  text if those characters ever appeared as segmentation markers.
+-->
+<TEXT id="TEST_C013" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original">Pa-rakat-en.</FORM>
+    <FORM kindOf="standard">Pa-rakat-en.</FORM>
+    <W id="W_1">
+      <FORM>Pa-rakat-en</FORM>
+    </W>
+    <W id="W_2">
+      <FORM>r&lt;um&gt;akat</FORM>
+    </W>
+    <W id="W_3">
+      <FORM>=ku</FORM>
+    </W>
+  </S>
+</TEXT>

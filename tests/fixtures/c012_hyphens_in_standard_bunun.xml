@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  C012 xfail fixture (Bunun): hyphens in S/FORM[@kindOf="standard"] for
+  Bunun must be PRESERVED (because "-" IS a letter in
+  Orthographies/Ortho113/Bunun.tsv) AND trigger a WARN.
+
+  Shape: one S with original and standard FORM both carrying hyphens.
+  xml:lang="bnn".
+  Exercises (after B): standard text unchanged, WARN row emitted in
+  CSV. Today: text is unchanged (no segmentation logic), but warn
+  infrastructure is absent so the warn assertion XFAILs.
+-->
+<TEXT id="TEST_C012_BNN" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="bnn" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original">ma-baliv-an.</FORM>
+    <FORM kindOf="standard">ma-baliv-an.</FORM>
+  </S>
+</TEXT>

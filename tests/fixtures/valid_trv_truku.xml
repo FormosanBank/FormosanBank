@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Positive regression fixture for V036's trv (Seediq/Truku) special case.
+
+  xml:lang="trv" with dialect="Truku" must validate cleanly. trv is the
+  ISO 639-3 code linguists assign to a Seediq/Truku cluster; Truku
+  speakers treat Truku as a distinct language. FormosanBank convention:
+  trv requires a dialect attribute, and dialect="Truku" resolves the
+  full-name display to "Truku" (the other valid dialects resolve to
+  "Seediq").
+
+  Pin: a previous V036 implementation hardcoded trv -> "Seediq" without
+  recognizing "Truku" as a valid dialect, producing false HARD findings
+  on every published Truku corpus file. If V036 ever regresses to that
+  behavior, this fixture fails.
+-->
+<TEXT id="V036_trv_truku_pos" citation="test" BibTeX_citation="@test{test}"
+      copyright="test" xml:lang="trv" dialect="Truku">
+  <S id="S_1">
+    <FORM kindOf="original">Halo.</FORM>
+  </S>
+</TEXT>

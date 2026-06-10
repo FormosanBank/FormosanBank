@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Negative fixture for V005 (M only appears as a child of W).
+
+  Shape: an M appears as a direct child of S, without an enclosing W.
+
+  Exercises: validate_xml.py should reject (currently does, via XSD).
+-->
+<TEXT id="V005_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original">Halo.</FORM>
+    <M id="M_1">
+      <FORM kindOf="original">halo</FORM>
+    </M>
+  </S>
+</TEXT>

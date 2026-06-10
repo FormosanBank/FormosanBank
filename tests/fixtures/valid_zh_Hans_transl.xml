@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Positive regression fixture for V035's explicit allow-list of non-ISO
+  language tags. xml:lang="zh-Hans" (IETF BCP 47 Simplified Chinese) must
+  validate clean even though it is not a valid ISO 639-3 code.
+
+  Background: ISO 639-3 has no way to distinguish Simplified vs Traditional
+  Chinese script (both collapse to "zho"). In Glosbe the distinction is
+  load-bearing, so zh-Hans is preserved as-is. The Traditional-script
+  variant zh-Hant is remediated to "zho" in published corpora (the script
+  distinction is implicit in those corpora).
+
+  Pin: if V035 ever drops zh-Hans from _ALLOWED_NON_ISO_LANGS, this
+  fixture fails loudly.
+-->
+<TEXT id="V035_zh_Hans_pos" citation="test" BibTeX_citation="@test{test}"
+      copyright="test" xml:lang="ami" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original">Halo.</FORM>
+    <TRANSL xml:lang="zh-Hans">你好。</TRANSL>
+  </S>
+</TEXT>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Negative fixture for V052 (single-file mode: when AUDIO/@file absent,
+  TEXT/@audio AND AUDIO/@start AND AUDIO/@end must all be set).
+
+  Shape: TEXT has audio="lecture.wav" (single-file mode). AUDIO has no
+  file attribute and no start/end attributes.
+
+  Exercises: validate_xml.py should report a finding about missing
+  start/end. Currently the XSD requires start/end as use="required" so
+  this also fails XSD validation; the V052 check itself is not yet
+  implemented as a coherent rule with the correct mode framework; xfail.
+-->
+<TEXT id="V052_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" audio="lecture.wav" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original">Halo.</FORM>
+    <AUDIO/>
+  </S>
+</TEXT>

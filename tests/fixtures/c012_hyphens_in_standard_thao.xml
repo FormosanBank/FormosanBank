@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  C012 xfail fixture (Thao): same expectation as Bunun, used as a
+  second-language negative pin against any future hardcoded
+  "Bunun only" implementation of C012.
+
+  Shape: one S with original and standard FORM both carrying hyphens.
+  xml:lang="ssf" (Thao).
+  Exercises (after B): standard text unchanged, WARN row emitted
+  (because "-" is a letter row in Orthographies/Ortho113/Thao.tsv).
+  Today: text unchanged but warn infrastructure absent (XFAIL).
+-->
+<TEXT id="TEST_C012_SSF" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ssf" dialect="Thao">
+  <S id="S_1">
+    <FORM kindOf="original">qa-li-ka-tu.</FORM>
+    <FORM kindOf="standard">qa-li-ka-tu.</FORM>
+  </S>
+</TEXT>

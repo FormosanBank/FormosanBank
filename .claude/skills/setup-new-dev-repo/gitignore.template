@@ -1,0 +1,19 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Logs and scratch
+*.log
+qc-output/
+data/
+raw_data/
+Original/
+img-by-page/
+text-by-page/
+
+# OS
+.DS_Store
+
+# Claude
+.claude/settings.local.json

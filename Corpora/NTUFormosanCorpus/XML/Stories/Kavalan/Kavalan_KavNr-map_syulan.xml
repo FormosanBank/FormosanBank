@@ -1,12 +1,12 @@
 <?xml version="1.0" ?>
-<TEXT id="NTU_Stry_Kavalan_KavNr-map_syulan" xml:lang="ckv" source="NTU Corpus stories for Kavalan, story: KavNr-map_syulan" audio="diarized" copyright="CC BY-NC" citation="Sung, L. M., Lily, I., Hsieh, F., &amp; Lin, Z. (2008). Developing an online corpus of Formosan languages. Taiwan Journal of Linguistics, 6(2.)." BibTeX_citation="@article{sung2008developing,title={Developing an online corpus of Formosan languages.},author={Sung, Li-May and Lily, I and Hsieh, Fuhui and Lin, Zhemin and others},journal={Taiwan Journal of Linguistics},volume={6},number={2},year={2008}}">
+<TEXT id="NTU_Stry_Kavalan_KavNr-map_syulan" xml:lang="ckv" source="NTU Corpus stories for Kavalan, story: KavNr-map_syulan" audio="diarized" copyright="CC BY-NC" citation="Sung, L. M., Lily, I., Hsieh, F., &amp; Lin, Z. (2008). Developing an online corpus of Formosan languages. Taiwan Journal of Linguistics, 6(2.)." BibTeX_citation="@article{sung2008developing,title={Developing an online corpus of Formosan languages.},author={Sung, Li-May and Lily, I and Hsieh, Fuhui and Lin, Zhemin and others},journal={Taiwan Journal of Linguistics},volume={6},number={2},year={2008}}" dialect="Kavalan">
     <S id="KavNr-map_syulan_S_0">
         <FORM kindOf="original">e talepawan ni buya syangatu smaqay.</FORM>
         <PHON kindOf="original">ə tarəpawan ni βuja sjaŋatu smaqaj.</PHON>
         <FORM kindOf="standard">e talepawan ni buya syangatu smaqay.</FORM>
         <PHON kindOf="standard">ə tarəpawan ni βuja sjaŋatu smaqaj.</PHON>
         <TRANSL xml:lang="zho">從Buya的家開始走.</TRANSL>
-        <TRANSL xml:lang="en">Starting from Buya's house,</TRANSL>
+        <TRANSL xml:lang="eng">Starting from Buya's house,</TRANSL>
         <AUDIO file="KavNr-map_syulan_S0.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_syulan.mp3" start="0.0" end="3.15"/>
         <W id="KavNr-map_syulan_S_0_W0">
             <FORM kindOf="original">e</FORM>
@@ -14,13 +14,13 @@
             <FORM kindOf="standard">e</FORM>
             <PHON kindOf="standard">ə</PHON>
             <TRANSL xml:lang="zho">FIL</TRANSL>
-            <TRANSL xml:lang="en">FIL</TRANSL>
+            <TRANSL xml:lang="eng">FIL</TRANSL>
             <M id="KavNr-map_syulan_S_0_W0_M0_0">
                 <FORM kindOf="original">e</FORM>
                 <PHON kindOf="original">ə</PHON>
                 <FORM kindOf="standard">e</FORM>
                 <PHON kindOf="standard">ə</PHON>
-                <TRANSL xml:lang="en">FIL</TRANSL>
+                <TRANSL xml:lang="eng">FIL</TRANSL>
                 <TRANSL xml:lang="zho">FIL</TRANSL>
             </M>
         </W>
@@ -30,13 +30,13 @@
             <FORM kindOf="standard">ta-lepaw-an</FORM>
             <PHON kindOf="standard">ta-rəpaw-an</PHON>
             <TRANSL xml:lang="zho">處格-家-處格</TRANSL>
-            <TRANSL xml:lang="en">LOC-house-LOC</TRANSL>
+            <TRANSL xml:lang="eng">LOC-house-LOC</TRANSL>
             <M id="KavNr-map_syulan_S_0_W1_M0_0">
                 <FORM kindOf="original">ta</FORM>
                 <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
-                <TRANSL xml:lang="en">LOC</TRANSL>
+                <TRANSL xml:lang="eng">LOC</TRANSL>
                 <TRANSL xml:lang="zho">處格</TRANSL>
             </M>
             <M id="KavNr-map_syulan_S_0_W1_M1_0">
@@ -44,7 +44,7 @@
                 <PHON kindOf="original">rəpaw</PHON>
                 <FORM kindOf="standard">lepaw</FORM>
                 <PHON kindOf="standard">rəpaw</PHON>
-                <TRANSL xml:lang="en">house</TRANSL>
+                <TRANSL xml:lang="eng">house</TRANSL>
                 <TRANSL xml:lang="zho">家</TRANSL>
             </M>
             <M id="KavNr-map_syulan_S_0_W1_M2_0">
@@ -52,7 +52,7 @@
                 <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="en">LOC</TRANSL>
+                <TRANSL xml:lang="eng">LOC</TRANSL>
                 <TRANSL xml:lang="zho">處格</TRANSL>
             </M>
         </W>
@@ -62,13 +62,13 @@
             <FORM kindOf="standard">ni</FORM>
             <PHON kindOf="standard">ni</PHON>
             <TRANSL xml:lang="zho">屬格</TRANSL>
-            <TRANSL xml:lang="en">GEN</TRANSL>
+            <TRANSL xml:lang="eng">GEN</TRANSL>
             <M id="KavNr-map_syulan_S_0_W2_M0_0">
                 <FORM kindOf="original">ni</FORM>
                 <PHON kindOf="original">ni</PHON>
                 <FORM kindOf="standard">ni</FORM>
                 <PHON kindOf="standard">ni</PHON>
-                <TRANSL xml:lang="en">GEN</TRANSL>
+                <TRANSL xml:lang="eng">GEN</TRANSL>
                 <TRANSL xml:lang="zho">屬格</TRANSL>
             </M>
         </W>
@@ -78,13 +78,13 @@
             <FORM kindOf="standard">buya</FORM>
             <PHON kindOf="standard">βuja</PHON>
             <TRANSL xml:lang="zho">人名</TRANSL>
-            <TRANSL xml:lang="en">PN</TRANSL>
+            <TRANSL xml:lang="eng">PN</TRANSL>
             <M id="KavNr-map_syulan_S_0_W3_M0_0">
                 <FORM kindOf="original">buya</FORM>
                 <PHON kindOf="original">βuja</PHON>
                 <FORM kindOf="standard">buya</FORM>
                 <PHON kindOf="standard">βuja</PHON>
-                <TRANSL xml:lang="en">PN</TRANSL>
+                <TRANSL xml:lang="eng">PN</TRANSL>
                 <TRANSL xml:lang="zho">人名</TRANSL>
             </M>
         </W>
@@ -94,13 +94,13 @@
             <FORM kindOf="standard">syangatu</FORM>
             <PHON kindOf="standard">sjaŋatu</PHON>
             <TRANSL xml:lang="zho">開始</TRANSL>
-            <TRANSL xml:lang="en">begin</TRANSL>
+            <TRANSL xml:lang="eng">begin</TRANSL>
             <M id="KavNr-map_syulan_S_0_W4_M0_0">
                 <FORM kindOf="original">syangatu</FORM>
                 <PHON kindOf="original">sjaŋatu</PHON>
                 <FORM kindOf="standard">syangatu</FORM>
                 <PHON kindOf="standard">sjaŋatu</PHON>
-                <TRANSL xml:lang="en">begin</TRANSL>
+                <TRANSL xml:lang="eng">begin</TRANSL>
                 <TRANSL xml:lang="zho">開始</TRANSL>
             </M>
         </W>
@@ -110,13 +110,13 @@
             <FORM kindOf="standard">s&lt;m&gt;aqay</FORM>
             <PHON kindOf="standard">s&lt;m&gt;aqaj</PHON>
             <TRANSL xml:lang="zho">&lt;主焦&gt;走</TRANSL>
-            <TRANSL xml:lang="en">&lt;AF&gt;walk</TRANSL>
+            <TRANSL xml:lang="eng">&lt;AF&gt;walk</TRANSL>
             <M id="KavNr-map_syulan_S_0_W5_M0_0_0">
                 <FORM kindOf="original">&lt;m&gt;</FORM>
                 <PHON kindOf="original">&lt;m&gt;</PHON>
                 <FORM kindOf="standard">&lt;m&gt;</FORM>
                 <PHON kindOf="standard">&lt;m&gt;</PHON>
-                <TRANSL xml:lang="en">&lt;AF&gt;</TRANSL>
+                <TRANSL xml:lang="eng">&lt;AF&gt;</TRANSL>
                 <TRANSL xml:lang="zho">&lt;主焦&gt;</TRANSL>
             </M>
             <M id="KavNr-map_syulan_S_0_W5_M0_0_1">
@@ -124,7 +124,7 @@
                 <PHON kindOf="original">s-aqaj</PHON>
                 <FORM kindOf="standard">s-aqay</FORM>
                 <PHON kindOf="standard">s-aqaj</PHON>
-                <TRANSL xml:lang="en">walk</TRANSL>
+                <TRANSL xml:lang="eng">walk</TRANSL>
                 <TRANSL xml:lang="zho">走</TRANSL>
             </M>
         </W>
@@ -135,7 +135,7 @@
         <FORM kindOf="standard">mlaziw tu iRuR.</FORM>
         <PHON kindOf="standard">mraz~riw tu iʁuʁ.</PHON>
         <TRANSL xml:lang="zho" notes="(他)穿過河.">穿過河.</TRANSL>
-        <TRANSL xml:lang="en" notes="(He) walked across the river.">walked across the river.</TRANSL>
+        <TRANSL xml:lang="eng" notes="(He) walked across the river.">walked across the river.</TRANSL>
         <AUDIO file="KavNr-map_syulan_S1.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_syulan.mp3" start="3.15" end="5.86"/>
         <W id="KavNr-map_syulan_S_1_W0">
             <FORM kindOf="original">m-laziw</FORM>
@@ -143,13 +143,13 @@
             <FORM kindOf="standard">m-laziw</FORM>
             <PHON kindOf="standard">m-raz~riw</PHON>
             <TRANSL xml:lang="zho">主焦-穿過</TRANSL>
-            <TRANSL xml:lang="en">AF-cross</TRANSL>
+            <TRANSL xml:lang="eng">AF-cross</TRANSL>
             <M id="KavNr-map_syulan_S_1_W0_M0_0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="en">AF</TRANSL>
+                <TRANSL xml:lang="eng">AF</TRANSL>
                 <TRANSL xml:lang="zho">主焦</TRANSL>
             </M>
             <M id="KavNr-map_syulan_S_1_W0_M1_0">
@@ -157,7 +157,7 @@
                 <PHON kindOf="original">raz~riw</PHON>
                 <FORM kindOf="standard">laziw</FORM>
                 <PHON kindOf="standard">raz~riw</PHON>
-                <TRANSL xml:lang="en">cross</TRANSL>
+                <TRANSL xml:lang="eng">cross</TRANSL>
                 <TRANSL xml:lang="zho">穿過</TRANSL>
             </M>
         </W>
@@ -167,13 +167,13 @@
             <FORM kindOf="standard">tu</FORM>
             <PHON kindOf="standard">tu</PHON>
             <TRANSL xml:lang="zho">斜格</TRANSL>
-            <TRANSL xml:lang="en">OBL</TRANSL>
+            <TRANSL xml:lang="eng">OBL</TRANSL>
             <M id="KavNr-map_syulan_S_1_W1_M0_0">
                 <FORM kindOf="original">tu</FORM>
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="en">OBL</TRANSL>
+                <TRANSL xml:lang="eng">OBL</TRANSL>
                 <TRANSL xml:lang="zho">斜格</TRANSL>
             </M>
         </W>
@@ -183,13 +183,13 @@
             <FORM kindOf="standard">iRuR</FORM>
             <PHON kindOf="standard">iʁuʁ</PHON>
             <TRANSL xml:lang="zho">河</TRANSL>
-            <TRANSL xml:lang="en">river</TRANSL>
+            <TRANSL xml:lang="eng">river</TRANSL>
             <M id="KavNr-map_syulan_S_1_W2_M0_0">
                 <FORM kindOf="original">iRuR</FORM>
                 <PHON kindOf="original">iʁuʁ</PHON>
                 <FORM kindOf="standard">iRuR</FORM>
                 <PHON kindOf="standard">iʁuʁ</PHON>
-                <TRANSL xml:lang="en">river</TRANSL>
+                <TRANSL xml:lang="eng">river</TRANSL>
                 <TRANSL xml:lang="zho">河</TRANSL>
             </M>
         </W>
@@ -200,7 +200,7 @@
         <FORM kindOf="standard">nani matiw sa naung.</FORM>
         <PHON kindOf="standard">nani matiw sa nauŋ.</PHON>
         <TRANSL xml:lang="zho">然後去山上.</TRANSL>
-        <TRANSL xml:lang="en" notes="(He) went to a mountain.">went to a mountain.</TRANSL>
+        <TRANSL xml:lang="eng" notes="(He) went to a mountain.">went to a mountain.</TRANSL>
         <AUDIO file="KavNr-map_syulan_S2.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_syulan.mp3" start="5.86" end="8.82"/>
         <W id="KavNr-map_syulan_S_2_W0">
             <FORM kindOf="original">nani</FORM>
@@ -208,13 +208,13 @@
             <FORM kindOf="standard">nani</FORM>
             <PHON kindOf="standard">nani</PHON>
             <TRANSL xml:lang="zho">DM</TRANSL>
-            <TRANSL xml:lang="en">DM</TRANSL>
+            <TRANSL xml:lang="eng">DM</TRANSL>
             <M id="KavNr-map_syulan_S_2_W0_M0_0">
                 <FORM kindOf="original">nani</FORM>
                 <PHON kindOf="original">nani</PHON>
                 <FORM kindOf="standard">nani</FORM>
                 <PHON kindOf="standard">nani</PHON>
-                <TRANSL xml:lang="en">DM</TRANSL>
+                <TRANSL xml:lang="eng">DM</TRANSL>
                 <TRANSL xml:lang="zho">DM</TRANSL>
             </M>
         </W>
@@ -224,13 +224,13 @@
             <FORM kindOf="standard">matiw</FORM>
             <PHON kindOf="standard">matiw</PHON>
             <TRANSL xml:lang="zho">主焦.去</TRANSL>
-            <TRANSL xml:lang="en">AF.go</TRANSL>
+            <TRANSL xml:lang="eng">AF.go</TRANSL>
             <M id="KavNr-map_syulan_S_2_W1_M0_0">
                 <FORM kindOf="original">matiw</FORM>
                 <PHON kindOf="original">matiw</PHON>
                 <FORM kindOf="standard">matiw</FORM>
                 <PHON kindOf="standard">matiw</PHON>
-                <TRANSL xml:lang="en">AF.go</TRANSL>
+                <TRANSL xml:lang="eng">AF.go</TRANSL>
                 <TRANSL xml:lang="zho">主焦.去</TRANSL>
             </M>
         </W>
@@ -240,13 +240,13 @@
             <FORM kindOf="standard">sa</FORM>
             <PHON kindOf="standard">sa</PHON>
             <TRANSL xml:lang="zho">處格</TRANSL>
-            <TRANSL xml:lang="en">LOC</TRANSL>
+            <TRANSL xml:lang="eng">LOC</TRANSL>
             <M id="KavNr-map_syulan_S_2_W2_M0_0">
                 <FORM kindOf="original">sa</FORM>
                 <PHON kindOf="original">sa</PHON>
                 <FORM kindOf="standard">sa</FORM>
                 <PHON kindOf="standard">sa</PHON>
-                <TRANSL xml:lang="en">LOC</TRANSL>
+                <TRANSL xml:lang="eng">LOC</TRANSL>
                 <TRANSL xml:lang="zho">處格</TRANSL>
             </M>
         </W>
@@ -256,13 +256,13 @@
             <FORM kindOf="standard">naung</FORM>
             <PHON kindOf="standard">nauŋ</PHON>
             <TRANSL xml:lang="zho">山</TRANSL>
-            <TRANSL xml:lang="en">mountain</TRANSL>
+            <TRANSL xml:lang="eng">mountain</TRANSL>
             <M id="KavNr-map_syulan_S_2_W3_M0_0">
                 <FORM kindOf="original">naung</FORM>
                 <PHON kindOf="original">nauŋ</PHON>
                 <FORM kindOf="standard">naung</FORM>
                 <PHON kindOf="standard">nauŋ</PHON>
-                <TRANSL xml:lang="en">mountain</TRANSL>
+                <TRANSL xml:lang="eng">mountain</TRANSL>
                 <TRANSL xml:lang="zho">山</TRANSL>
             </M>
         </W>
@@ -273,7 +273,7 @@
         <FORM kindOf="standard">tanaungan.</FORM>
         <PHON kindOf="standard">tanauŋan.</PHON>
         <TRANSL xml:lang="zho">在山上,</TRANSL>
-        <TRANSL xml:lang="en">In the mountain,</TRANSL>
+        <TRANSL xml:lang="eng">In the mountain,</TRANSL>
         <AUDIO file="KavNr-map_syulan_S3.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_syulan.mp3" start="8.82" end="9.92"/>
         <W id="KavNr-map_syulan_S_3_W0">
             <FORM kindOf="original">ta-naung-an</FORM>
@@ -281,13 +281,13 @@
             <FORM kindOf="standard">ta-naung-an</FORM>
             <PHON kindOf="standard">ta-nauŋ-an</PHON>
             <TRANSL xml:lang="zho">處格-山-處格</TRANSL>
-            <TRANSL xml:lang="en">LOC-mountain-LOC</TRANSL>
+            <TRANSL xml:lang="eng">LOC-mountain-LOC</TRANSL>
             <M id="KavNr-map_syulan_S_3_W0_M0_0">
                 <FORM kindOf="original">ta</FORM>
                 <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
-                <TRANSL xml:lang="en">LOC</TRANSL>
+                <TRANSL xml:lang="eng">LOC</TRANSL>
                 <TRANSL xml:lang="zho">處格</TRANSL>
             </M>
             <M id="KavNr-map_syulan_S_3_W0_M1_0">
@@ -295,7 +295,7 @@
                 <PHON kindOf="original">nauŋ</PHON>
                 <FORM kindOf="standard">naung</FORM>
                 <PHON kindOf="standard">nauŋ</PHON>
-                <TRANSL xml:lang="en">mountain</TRANSL>
+                <TRANSL xml:lang="eng">mountain</TRANSL>
                 <TRANSL xml:lang="zho">山</TRANSL>
             </M>
             <M id="KavNr-map_syulan_S_3_W0_M2_0">
@@ -303,7 +303,7 @@
                 <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="en">LOC</TRANSL>
+                <TRANSL xml:lang="eng">LOC</TRANSL>
                 <TRANSL xml:lang="zho">處格</TRANSL>
             </M>
         </W>
@@ -314,7 +314,7 @@
         <FORM kindOf="standard">m tmita taytaanna babuy na naung.</FORM>
         <PHON kindOf="standard">m tmita tajtaanna βaβuj na nauŋ.</PHON>
         <TRANSL xml:lang="zho">他看到山豬.</TRANSL>
-        <TRANSL xml:lang="en">He saw a boar.</TRANSL>
+        <TRANSL xml:lang="eng">He saw a boar.</TRANSL>
         <AUDIO file="KavNr-map_syulan_S4.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_syulan.mp3" start="9.92" end="14.74"/>
         <W id="KavNr-map_syulan_S_4_W0">
             <FORM kindOf="original">m</FORM>
@@ -322,13 +322,13 @@
             <FORM kindOf="standard">m</FORM>
             <PHON kindOf="standard">m</PHON>
             <TRANSL xml:lang="zho">FIL</TRANSL>
-            <TRANSL xml:lang="en">FIL</TRANSL>
+            <TRANSL xml:lang="eng">FIL</TRANSL>
             <M id="KavNr-map_syulan_S_4_W0_M0_0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="en">FIL</TRANSL>
+                <TRANSL xml:lang="eng">FIL</TRANSL>
                 <TRANSL xml:lang="zho">FIL</TRANSL>
             </M>
         </W>
@@ -338,13 +338,13 @@
             <FORM kindOf="standard">t&lt;m&gt;ita</FORM>
             <PHON kindOf="standard">t&lt;m&gt;ita</PHON>
             <TRANSL xml:lang="zho">&lt;主焦&gt;看</TRANSL>
-            <TRANSL xml:lang="en">&lt;AF&gt;see</TRANSL>
+            <TRANSL xml:lang="eng">&lt;AF&gt;see</TRANSL>
             <M id="KavNr-map_syulan_S_4_W1_M0_0_0">
                 <FORM kindOf="original">&lt;m&gt;</FORM>
                 <PHON kindOf="original">&lt;m&gt;</PHON>
                 <FORM kindOf="standard">&lt;m&gt;</FORM>
                 <PHON kindOf="standard">&lt;m&gt;</PHON>
-                <TRANSL xml:lang="en">&lt;AF&gt;</TRANSL>
+                <TRANSL xml:lang="eng">&lt;AF&gt;</TRANSL>
                 <TRANSL xml:lang="zho">&lt;主焦&gt;</TRANSL>
             </M>
             <M id="KavNr-map_syulan_S_4_W1_M0_0_1">
@@ -352,7 +352,7 @@
                 <PHON kindOf="original">t-ita</PHON>
                 <FORM kindOf="standard">t-ita</FORM>
                 <PHON kindOf="standard">t-ita</PHON>
-                <TRANSL xml:lang="en">see</TRANSL>
+                <TRANSL xml:lang="eng">see</TRANSL>
                 <TRANSL xml:lang="zho">看</TRANSL>
             </M>
         </W>
@@ -362,13 +362,13 @@
             <FORM kindOf="standard">tayta-an-na</FORM>
             <PHON kindOf="standard">tajta-an-na</PHON>
             <TRANSL xml:lang="zho">看-處焦-3SG.屬格</TRANSL>
-            <TRANSL xml:lang="en">see-LF-3SG.GEN</TRANSL>
+            <TRANSL xml:lang="eng">see-LF-3SG.GEN</TRANSL>
             <M id="KavNr-map_syulan_S_4_W2_M0_0">
                 <FORM kindOf="original">tayta</FORM>
                 <PHON kindOf="original">tajta</PHON>
                 <FORM kindOf="standard">tayta</FORM>
                 <PHON kindOf="standard">tajta</PHON>
-                <TRANSL xml:lang="en">see</TRANSL>
+                <TRANSL xml:lang="eng">see</TRANSL>
                 <TRANSL xml:lang="zho">看</TRANSL>
             </M>
             <M id="KavNr-map_syulan_S_4_W2_M1_0">
@@ -376,7 +376,7 @@
                 <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="en">LF</TRANSL>
+                <TRANSL xml:lang="eng">LF</TRANSL>
                 <TRANSL xml:lang="zho">處焦</TRANSL>
             </M>
             <M id="KavNr-map_syulan_S_4_W2_M2_0">
@@ -384,7 +384,7 @@
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="en">3SG.GEN</TRANSL>
+                <TRANSL xml:lang="eng">3SG.GEN</TRANSL>
                 <TRANSL xml:lang="zho">3SG.屬格</TRANSL>
             </M>
         </W>
@@ -394,13 +394,13 @@
             <FORM kindOf="standard">babuy</FORM>
             <PHON kindOf="standard">βaβuj</PHON>
             <TRANSL xml:lang="zho">豬</TRANSL>
-            <TRANSL xml:lang="en">pig</TRANSL>
+            <TRANSL xml:lang="eng">pig</TRANSL>
             <M id="KavNr-map_syulan_S_4_W3_M0_0">
                 <FORM kindOf="original">babuy</FORM>
                 <PHON kindOf="original">βaβuj</PHON>
                 <FORM kindOf="standard">babuy</FORM>
                 <PHON kindOf="standard">βaβuj</PHON>
-                <TRANSL xml:lang="en">pig</TRANSL>
+                <TRANSL xml:lang="eng">pig</TRANSL>
                 <TRANSL xml:lang="zho">豬</TRANSL>
             </M>
         </W>
@@ -410,13 +410,13 @@
             <FORM kindOf="standard">na</FORM>
             <PHON kindOf="standard">na</PHON>
             <TRANSL xml:lang="zho">屬格</TRANSL>
-            <TRANSL xml:lang="en">GEN</TRANSL>
+            <TRANSL xml:lang="eng">GEN</TRANSL>
             <M id="KavNr-map_syulan_S_4_W4_M0_0">
                 <FORM kindOf="original">na</FORM>
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="en">GEN</TRANSL>
+                <TRANSL xml:lang="eng">GEN</TRANSL>
                 <TRANSL xml:lang="zho">屬格</TRANSL>
             </M>
         </W>
@@ -426,13 +426,13 @@
             <FORM kindOf="standard">naung</FORM>
             <PHON kindOf="standard">nauŋ</PHON>
             <TRANSL xml:lang="zho">山</TRANSL>
-            <TRANSL xml:lang="en">mountain</TRANSL>
+            <TRANSL xml:lang="eng">mountain</TRANSL>
             <M id="KavNr-map_syulan_S_4_W5_M0_0">
                 <FORM kindOf="original">naung</FORM>
                 <PHON kindOf="original">nauŋ</PHON>
                 <FORM kindOf="standard">naung</FORM>
                 <PHON kindOf="standard">nauŋ</PHON>
-                <TRANSL xml:lang="en">mountain</TRANSL>
+                <TRANSL xml:lang="eng">mountain</TRANSL>
                 <TRANSL xml:lang="zho">山</TRANSL>
             </M>
         </W>
@@ -443,7 +443,7 @@
         <FORM kindOf="standard">sumniz ta pawa pa tanaungan nani.</FORM>
         <PHON kindOf="standard">sumniz~r ta pawa pa tanauŋan nani.</PHON>
         <TRANSL xml:lang="zho">從山上下來.</TRANSL>
-        <TRANSL xml:lang="en" notes="(He) came down (from) the mountain.">came down the mountain.</TRANSL>
+        <TRANSL xml:lang="eng" notes="(He) came down (from) the mountain.">came down the mountain.</TRANSL>
         <AUDIO file="KavNr-map_syulan_S5.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_syulan.mp3" start="14.74" end="17.98"/>
         <W id="KavNr-map_syulan_S_5_W0">
             <FORM kindOf="original">s&lt;um&gt;niz</FORM>
@@ -451,13 +451,13 @@
             <FORM kindOf="standard">s&lt;um&gt;niz</FORM>
             <PHON kindOf="standard">s&lt;um&gt;niz~r</PHON>
             <TRANSL xml:lang="zho">&lt;主焦&gt;下來</TRANSL>
-            <TRANSL xml:lang="en">&lt;AF&gt;come.down</TRANSL>
+            <TRANSL xml:lang="eng">&lt;AF&gt;come.down</TRANSL>
             <M id="KavNr-map_syulan_S_5_W0_M0_0_0">
                 <FORM kindOf="original">&lt;um&gt;</FORM>
                 <PHON kindOf="original">&lt;um&gt;</PHON>
                 <FORM kindOf="standard">&lt;um&gt;</FORM>
                 <PHON kindOf="standard">&lt;um&gt;</PHON>
-                <TRANSL xml:lang="en">&lt;AF&gt;</TRANSL>
+                <TRANSL xml:lang="eng">&lt;AF&gt;</TRANSL>
                 <TRANSL xml:lang="zho">&lt;主焦&gt;</TRANSL>
             </M>
             <M id="KavNr-map_syulan_S_5_W0_M0_0_1">
@@ -465,7 +465,7 @@
                 <PHON kindOf="original">s-niz~r</PHON>
                 <FORM kindOf="standard">s-niz</FORM>
                 <PHON kindOf="standard">s-niz~r</PHON>
-                <TRANSL xml:lang="en">come.down</TRANSL>
+                <TRANSL xml:lang="eng">come.down</TRANSL>
                 <TRANSL xml:lang="zho">下來</TRANSL>
             </M>
         </W>
@@ -475,13 +475,13 @@
             <FORM kindOf="standard">ta</FORM>
             <PHON kindOf="standard">ta</PHON>
             <TRANSL xml:lang="zho">FS</TRANSL>
-            <TRANSL xml:lang="en">FS</TRANSL>
+            <TRANSL xml:lang="eng">FS</TRANSL>
             <M id="KavNr-map_syulan_S_5_W1_M0_0">
                 <FORM kindOf="original">ta</FORM>
                 <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
-                <TRANSL xml:lang="en">FS</TRANSL>
+                <TRANSL xml:lang="eng">FS</TRANSL>
                 <TRANSL xml:lang="zho">FS</TRANSL>
             </M>
         </W>
@@ -491,13 +491,13 @@
             <FORM kindOf="standard">pawa</FORM>
             <PHON kindOf="standard">pawa</PHON>
             <TRANSL xml:lang="zho">FS</TRANSL>
-            <TRANSL xml:lang="en">FS</TRANSL>
+            <TRANSL xml:lang="eng">FS</TRANSL>
             <M id="KavNr-map_syulan_S_5_W2_M0_0">
                 <FORM kindOf="original">pawa</FORM>
                 <PHON kindOf="original">pawa</PHON>
                 <FORM kindOf="standard">pawa</FORM>
                 <PHON kindOf="standard">pawa</PHON>
-                <TRANSL xml:lang="en">FS</TRANSL>
+                <TRANSL xml:lang="eng">FS</TRANSL>
                 <TRANSL xml:lang="zho">FS</TRANSL>
             </M>
         </W>
@@ -507,13 +507,13 @@
             <FORM kindOf="standard">pa</FORM>
             <PHON kindOf="standard">pa</PHON>
             <TRANSL xml:lang="zho">FS</TRANSL>
-            <TRANSL xml:lang="en">FS</TRANSL>
+            <TRANSL xml:lang="eng">FS</TRANSL>
             <M id="KavNr-map_syulan_S_5_W3_M0_0">
                 <FORM kindOf="original">pa</FORM>
                 <PHON kindOf="original">pa</PHON>
                 <FORM kindOf="standard">pa</FORM>
                 <PHON kindOf="standard">pa</PHON>
-                <TRANSL xml:lang="en">FS</TRANSL>
+                <TRANSL xml:lang="eng">FS</TRANSL>
                 <TRANSL xml:lang="zho">FS</TRANSL>
             </M>
         </W>
@@ -523,13 +523,13 @@
             <FORM kindOf="standard">ta-naung-an</FORM>
             <PHON kindOf="standard">ta-nauŋ-an</PHON>
             <TRANSL xml:lang="zho">處格-山-處格</TRANSL>
-            <TRANSL xml:lang="en">LOC-mountain-LOC</TRANSL>
+            <TRANSL xml:lang="eng">LOC-mountain-LOC</TRANSL>
             <M id="KavNr-map_syulan_S_5_W4_M0_0">
                 <FORM kindOf="original">ta</FORM>
                 <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
-                <TRANSL xml:lang="en">LOC</TRANSL>
+                <TRANSL xml:lang="eng">LOC</TRANSL>
                 <TRANSL xml:lang="zho">處格</TRANSL>
             </M>
             <M id="KavNr-map_syulan_S_5_W4_M1_0">
@@ -537,7 +537,7 @@
                 <PHON kindOf="original">nauŋ</PHON>
                 <FORM kindOf="standard">naung</FORM>
                 <PHON kindOf="standard">nauŋ</PHON>
-                <TRANSL xml:lang="en">mountain</TRANSL>
+                <TRANSL xml:lang="eng">mountain</TRANSL>
                 <TRANSL xml:lang="zho">山</TRANSL>
             </M>
             <M id="KavNr-map_syulan_S_5_W4_M2_0">
@@ -545,7 +545,7 @@
                 <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="en">LOC</TRANSL>
+                <TRANSL xml:lang="eng">LOC</TRANSL>
                 <TRANSL xml:lang="zho">處格</TRANSL>
             </M>
         </W>
@@ -555,13 +555,13 @@
             <FORM kindOf="standard">nani</FORM>
             <PHON kindOf="standard">nani</PHON>
             <TRANSL xml:lang="zho">DM</TRANSL>
-            <TRANSL xml:lang="en">DM</TRANSL>
+            <TRANSL xml:lang="eng">DM</TRANSL>
             <M id="KavNr-map_syulan_S_5_W5_M0_0">
                 <FORM kindOf="original">nani</FORM>
                 <PHON kindOf="original">nani</PHON>
                 <FORM kindOf="standard">nani</FORM>
                 <PHON kindOf="standard">nani</PHON>
-                <TRANSL xml:lang="en">DM</TRANSL>
+                <TRANSL xml:lang="eng">DM</TRANSL>
                 <TRANSL xml:lang="zho">DM</TRANSL>
             </M>
         </W>
@@ -572,7 +572,7 @@
         <FORM kindOf="standard">matiw talepawan ni utay.</FORM>
         <PHON kindOf="standard">matiw tarəpawan ni utaj.</PHON>
         <TRANSL xml:lang="zho">去UTAY的家裡.</TRANSL>
-        <TRANSL xml:lang="en" notes="(He) went to Utay's house.">went to Utay's house.</TRANSL>
+        <TRANSL xml:lang="eng" notes="(He) went to Utay's house.">went to Utay's house.</TRANSL>
         <AUDIO file="KavNr-map_syulan_S6.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_syulan.mp3" start="17.98" end="20.84"/>
         <W id="KavNr-map_syulan_S_6_W0">
             <FORM kindOf="original">matiw</FORM>
@@ -580,13 +580,13 @@
             <FORM kindOf="standard">matiw</FORM>
             <PHON kindOf="standard">matiw</PHON>
             <TRANSL xml:lang="zho">主焦.去</TRANSL>
-            <TRANSL xml:lang="en">AF.go</TRANSL>
+            <TRANSL xml:lang="eng">AF.go</TRANSL>
             <M id="KavNr-map_syulan_S_6_W0_M0_0">
                 <FORM kindOf="original">matiw</FORM>
                 <PHON kindOf="original">matiw</PHON>
                 <FORM kindOf="standard">matiw</FORM>
                 <PHON kindOf="standard">matiw</PHON>
-                <TRANSL xml:lang="en">AF.go</TRANSL>
+                <TRANSL xml:lang="eng">AF.go</TRANSL>
                 <TRANSL xml:lang="zho">主焦.去</TRANSL>
             </M>
         </W>
@@ -596,13 +596,13 @@
             <FORM kindOf="standard">ta-lepaw-an</FORM>
             <PHON kindOf="standard">ta-rəpaw-an</PHON>
             <TRANSL xml:lang="zho">處格-家-處格</TRANSL>
-            <TRANSL xml:lang="en">LOC-house-LOC</TRANSL>
+            <TRANSL xml:lang="eng">LOC-house-LOC</TRANSL>
             <M id="KavNr-map_syulan_S_6_W1_M0_0">
                 <FORM kindOf="original">ta</FORM>
                 <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
-                <TRANSL xml:lang="en">LOC</TRANSL>
+                <TRANSL xml:lang="eng">LOC</TRANSL>
                 <TRANSL xml:lang="zho">處格</TRANSL>
             </M>
             <M id="KavNr-map_syulan_S_6_W1_M1_0">
@@ -610,7 +610,7 @@
                 <PHON kindOf="original">rəpaw</PHON>
                 <FORM kindOf="standard">lepaw</FORM>
                 <PHON kindOf="standard">rəpaw</PHON>
-                <TRANSL xml:lang="en">house</TRANSL>
+                <TRANSL xml:lang="eng">house</TRANSL>
                 <TRANSL xml:lang="zho">家</TRANSL>
             </M>
             <M id="KavNr-map_syulan_S_6_W1_M2_0">
@@ -618,7 +618,7 @@
                 <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="en">LOC</TRANSL>
+                <TRANSL xml:lang="eng">LOC</TRANSL>
                 <TRANSL xml:lang="zho">處格</TRANSL>
             </M>
         </W>
@@ -628,13 +628,13 @@
             <FORM kindOf="standard">ni</FORM>
             <PHON kindOf="standard">ni</PHON>
             <TRANSL xml:lang="zho">屬格</TRANSL>
-            <TRANSL xml:lang="en">GEN</TRANSL>
+            <TRANSL xml:lang="eng">GEN</TRANSL>
             <M id="KavNr-map_syulan_S_6_W2_M0_0">
                 <FORM kindOf="original">ni</FORM>
                 <PHON kindOf="original">ni</PHON>
                 <FORM kindOf="standard">ni</FORM>
                 <PHON kindOf="standard">ni</PHON>
-                <TRANSL xml:lang="en">GEN</TRANSL>
+                <TRANSL xml:lang="eng">GEN</TRANSL>
                 <TRANSL xml:lang="zho">屬格</TRANSL>
             </M>
         </W>
@@ -644,13 +644,13 @@
             <FORM kindOf="standard">utay</FORM>
             <PHON kindOf="standard">utaj</PHON>
             <TRANSL xml:lang="zho">人名</TRANSL>
-            <TRANSL xml:lang="en">PN</TRANSL>
+            <TRANSL xml:lang="eng">PN</TRANSL>
             <M id="KavNr-map_syulan_S_6_W3_M0_0">
                 <FORM kindOf="original">utay</FORM>
                 <PHON kindOf="original">utaj</PHON>
                 <FORM kindOf="standard">utay</FORM>
                 <PHON kindOf="standard">utaj</PHON>
-                <TRANSL xml:lang="en">PN</TRANSL>
+                <TRANSL xml:lang="eng">PN</TRANSL>
                 <TRANSL xml:lang="zho">人名</TRANSL>
             </M>
         </W>
@@ -661,7 +661,7 @@
         <FORM kindOf="standard">eh uzusa dukian ta lepawan ni utay.</FORM>
         <PHON kindOf="standard">əh uz~rusa ɮukian ta rəpawan ni utaj.</PHON>
         <TRANSL xml:lang="zho">在Utay家裡待了兩個小時.</TRANSL>
-        <TRANSL xml:lang="en" notes="(He spent) two hours at Utay's house.">two hours at Utay's house.</TRANSL>
+        <TRANSL xml:lang="eng" notes="(He spent) two hours at Utay's house.">two hours at Utay's house.</TRANSL>
         <AUDIO file="KavNr-map_syulan_S7.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_syulan.mp3" start="20.84" end="24.11"/>
         <W id="KavNr-map_syulan_S_7_W0">
             <FORM kindOf="original">eh</FORM>
@@ -669,13 +669,13 @@
             <FORM kindOf="standard">eh</FORM>
             <PHON kindOf="standard">əh</PHON>
             <TRANSL xml:lang="zho">FIL</TRANSL>
-            <TRANSL xml:lang="en">FIL</TRANSL>
+            <TRANSL xml:lang="eng">FIL</TRANSL>
             <M id="KavNr-map_syulan_S_7_W0_M0_0">
                 <FORM kindOf="original">eh</FORM>
                 <PHON kindOf="original">əh</PHON>
                 <FORM kindOf="standard">eh</FORM>
                 <PHON kindOf="standard">əh</PHON>
-                <TRANSL xml:lang="en">FIL</TRANSL>
+                <TRANSL xml:lang="eng">FIL</TRANSL>
                 <TRANSL xml:lang="zho">FIL</TRANSL>
             </M>
         </W>
@@ -685,13 +685,13 @@
             <FORM kindOf="standard">u-zusa</FORM>
             <PHON kindOf="standard">u-z~rusa</PHON>
             <TRANSL xml:lang="zho">非人量詞-二</TRANSL>
-            <TRANSL xml:lang="en">CLF.NHUM-two</TRANSL>
+            <TRANSL xml:lang="eng">CLF.NHUM-two</TRANSL>
             <M id="KavNr-map_syulan_S_7_W1_M0_0">
                 <FORM kindOf="original">u</FORM>
                 <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">u</FORM>
                 <PHON kindOf="standard">u</PHON>
-                <TRANSL xml:lang="en">CLF.NHUM</TRANSL>
+                <TRANSL xml:lang="eng">CLF.NHUM</TRANSL>
                 <TRANSL xml:lang="zho">非人量詞</TRANSL>
             </M>
             <M id="KavNr-map_syulan_S_7_W1_M1_0">
@@ -699,7 +699,7 @@
                 <PHON kindOf="original">z~rusa</PHON>
                 <FORM kindOf="standard">zusa</FORM>
                 <PHON kindOf="standard">z~rusa</PHON>
-                <TRANSL xml:lang="en">two</TRANSL>
+                <TRANSL xml:lang="eng">two</TRANSL>
                 <TRANSL xml:lang="zho">二</TRANSL>
             </M>
         </W>
@@ -709,13 +709,13 @@
             <FORM kindOf="standard">duki-an</FORM>
             <PHON kindOf="standard">ɮuki-an</PHON>
             <TRANSL xml:lang="zho">小時-AN</TRANSL>
-            <TRANSL xml:lang="en">hour-AN</TRANSL>
+            <TRANSL xml:lang="eng">hour-AN</TRANSL>
             <M id="KavNr-map_syulan_S_7_W2_M0_0">
                 <FORM kindOf="original">duki</FORM>
                 <PHON kindOf="original">ɮuki</PHON>
                 <FORM kindOf="standard">duki</FORM>
                 <PHON kindOf="standard">ɮuki</PHON>
-                <TRANSL xml:lang="en">hour</TRANSL>
+                <TRANSL xml:lang="eng">hour</TRANSL>
                 <TRANSL xml:lang="zho">小時</TRANSL>
             </M>
             <M id="KavNr-map_syulan_S_7_W2_M1_0">
@@ -723,7 +723,7 @@
                 <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="en">AN</TRANSL>
+                <TRANSL xml:lang="eng">AN</TRANSL>
                 <TRANSL xml:lang="zho">AN</TRANSL>
             </M>
         </W>
@@ -733,13 +733,13 @@
             <FORM kindOf="standard">ta-</FORM>
             <PHON kindOf="standard">ta-</PHON>
             <TRANSL xml:lang="zho">處格</TRANSL>
-            <TRANSL xml:lang="en">LOC</TRANSL>
+            <TRANSL xml:lang="eng">LOC</TRANSL>
             <M id="KavNr-map_syulan_S_7_W3_M0_0">
                 <FORM kindOf="original">ta</FORM>
                 <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
-                <TRANSL xml:lang="en">LOC</TRANSL>
+                <TRANSL xml:lang="eng">LOC</TRANSL>
                 <TRANSL xml:lang="zho">處格</TRANSL>
             </M>
         </W>
@@ -749,13 +749,13 @@
             <FORM kindOf="standard">lepaw-an</FORM>
             <PHON kindOf="standard">rəpaw-an</PHON>
             <TRANSL xml:lang="zho">家-處格</TRANSL>
-            <TRANSL xml:lang="en">house-LOC</TRANSL>
+            <TRANSL xml:lang="eng">house-LOC</TRANSL>
             <M id="KavNr-map_syulan_S_7_W4_M0_0">
                 <FORM kindOf="original">lepaw</FORM>
                 <PHON kindOf="original">rəpaw</PHON>
                 <FORM kindOf="standard">lepaw</FORM>
                 <PHON kindOf="standard">rəpaw</PHON>
-                <TRANSL xml:lang="en">house</TRANSL>
+                <TRANSL xml:lang="eng">house</TRANSL>
                 <TRANSL xml:lang="zho">家</TRANSL>
             </M>
             <M id="KavNr-map_syulan_S_7_W4_M1_0">
@@ -763,7 +763,7 @@
                 <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="en">LOC</TRANSL>
+                <TRANSL xml:lang="eng">LOC</TRANSL>
                 <TRANSL xml:lang="zho">處格</TRANSL>
             </M>
         </W>
@@ -773,13 +773,13 @@
             <FORM kindOf="standard">ni</FORM>
             <PHON kindOf="standard">ni</PHON>
             <TRANSL xml:lang="zho">屬格</TRANSL>
-            <TRANSL xml:lang="en">GEN</TRANSL>
+            <TRANSL xml:lang="eng">GEN</TRANSL>
             <M id="KavNr-map_syulan_S_7_W5_M0_0">
                 <FORM kindOf="original">ni</FORM>
                 <PHON kindOf="original">ni</PHON>
                 <FORM kindOf="standard">ni</FORM>
                 <PHON kindOf="standard">ni</PHON>
-                <TRANSL xml:lang="en">GEN</TRANSL>
+                <TRANSL xml:lang="eng">GEN</TRANSL>
                 <TRANSL xml:lang="zho">屬格</TRANSL>
             </M>
         </W>
@@ -789,13 +789,13 @@
             <FORM kindOf="standard">utay</FORM>
             <PHON kindOf="standard">utaj</PHON>
             <TRANSL xml:lang="zho">人名</TRANSL>
-            <TRANSL xml:lang="en">PN</TRANSL>
+            <TRANSL xml:lang="eng">PN</TRANSL>
             <M id="KavNr-map_syulan_S_7_W6_M0_0">
                 <FORM kindOf="original">utay</FORM>
                 <PHON kindOf="original">utaj</PHON>
                 <FORM kindOf="standard">utay</FORM>
                 <PHON kindOf="standard">utaj</PHON>
-                <TRANSL xml:lang="en">PN</TRANSL>
+                <TRANSL xml:lang="eng">PN</TRANSL>
                 <TRANSL xml:lang="zho">人名</TRANSL>
             </M>
         </W>
@@ -806,7 +806,7 @@
         <FORM kindOf="standard">nani eh sumnizti.</FORM>
         <PHON kindOf="standard">nani əh sumniz~rti.</PHON>
         <TRANSL xml:lang="zho" notes="然後(從Utay家裡)下來(/出來),">然後 下來 ,</TRANSL>
-        <TRANSL xml:lang="en" notes="(He) came down (from Utay's house).">came down .</TRANSL>
+        <TRANSL xml:lang="eng" notes="(He) came down (from Utay's house).">came down .</TRANSL>
         <AUDIO file="KavNr-map_syulan_S8.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_syulan.mp3" start="24.11" end="26.91"/>
         <W id="KavNr-map_syulan_S_8_W0">
             <FORM kindOf="original">nani</FORM>
@@ -814,13 +814,13 @@
             <FORM kindOf="standard">nani</FORM>
             <PHON kindOf="standard">nani</PHON>
             <TRANSL xml:lang="zho">DM</TRANSL>
-            <TRANSL xml:lang="en">DM</TRANSL>
+            <TRANSL xml:lang="eng">DM</TRANSL>
             <M id="KavNr-map_syulan_S_8_W0_M0_0">
                 <FORM kindOf="original">nani</FORM>
                 <PHON kindOf="original">nani</PHON>
                 <FORM kindOf="standard">nani</FORM>
                 <PHON kindOf="standard">nani</PHON>
-                <TRANSL xml:lang="en">DM</TRANSL>
+                <TRANSL xml:lang="eng">DM</TRANSL>
                 <TRANSL xml:lang="zho">DM</TRANSL>
             </M>
         </W>
@@ -830,13 +830,13 @@
             <FORM kindOf="standard">eh</FORM>
             <PHON kindOf="standard">əh</PHON>
             <TRANSL xml:lang="zho">FIL</TRANSL>
-            <TRANSL xml:lang="en">FIL</TRANSL>
+            <TRANSL xml:lang="eng">FIL</TRANSL>
             <M id="KavNr-map_syulan_S_8_W1_M0_0">
                 <FORM kindOf="original">eh</FORM>
                 <PHON kindOf="original">əh</PHON>
                 <FORM kindOf="standard">eh</FORM>
                 <PHON kindOf="standard">əh</PHON>
-                <TRANSL xml:lang="en">FIL</TRANSL>
+                <TRANSL xml:lang="eng">FIL</TRANSL>
                 <TRANSL xml:lang="zho">FIL</TRANSL>
             </M>
         </W>
@@ -846,13 +846,13 @@
             <FORM kindOf="standard">s&lt;um&gt;niz=ti</FORM>
             <PHON kindOf="standard">s&lt;um&gt;niz~r=ti</PHON>
             <TRANSL xml:lang="zho">&lt;主焦&gt;下來=完成</TRANSL>
-            <TRANSL xml:lang="en">&lt;AF&gt;come.down=PFV</TRANSL>
+            <TRANSL xml:lang="eng">&lt;AF&gt;come.down=PFV</TRANSL>
             <M id="KavNr-map_syulan_S_8_W2_M0_0_0">
                 <FORM kindOf="original">&lt;um&gt;</FORM>
                 <PHON kindOf="original">&lt;um&gt;</PHON>
                 <FORM kindOf="standard">&lt;um&gt;</FORM>
                 <PHON kindOf="standard">&lt;um&gt;</PHON>
-                <TRANSL xml:lang="en">&lt;AF&gt;</TRANSL>
+                <TRANSL xml:lang="eng">&lt;AF&gt;</TRANSL>
                 <TRANSL xml:lang="zho">&lt;主焦&gt;</TRANSL>
             </M>
             <M id="KavNr-map_syulan_S_8_W2_M0_0_1">
@@ -860,7 +860,7 @@
                 <PHON kindOf="original">s-niz~r</PHON>
                 <FORM kindOf="standard">s-niz</FORM>
                 <PHON kindOf="standard">s-niz~r</PHON>
-                <TRANSL xml:lang="en">come.down</TRANSL>
+                <TRANSL xml:lang="eng">come.down</TRANSL>
                 <TRANSL xml:lang="zho">下來</TRANSL>
             </M>
             <M id="KavNr-map_syulan_S_8_W2_M0_1">
@@ -868,7 +868,7 @@
                 <PHON kindOf="original">ti</PHON>
                 <FORM kindOf="standard">ti</FORM>
                 <PHON kindOf="standard">ti</PHON>
-                <TRANSL xml:lang="en">PFV</TRANSL>
+                <TRANSL xml:lang="eng">PFV</TRANSL>
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
@@ -879,7 +879,7 @@
         <FORM kindOf="standard">matiw pasa kawanan.</FORM>
         <PHON kindOf="standard">matiw pasa kawanan.</PHON>
         <TRANSL xml:lang="zho">往右邊,</TRANSL>
-        <TRANSL xml:lang="en" notes="(He) went towards the right.">went towards the right.</TRANSL>
+        <TRANSL xml:lang="eng" notes="(He) went towards the right.">went towards the right.</TRANSL>
         <AUDIO file="KavNr-map_syulan_S9.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_syulan.mp3" start="26.91" end="30.33"/>
         <W id="KavNr-map_syulan_S_9_W0">
             <FORM kindOf="original">matiw</FORM>
@@ -887,13 +887,13 @@
             <FORM kindOf="standard">matiw</FORM>
             <PHON kindOf="standard">matiw</PHON>
             <TRANSL xml:lang="zho">主焦.去</TRANSL>
-            <TRANSL xml:lang="en">AF.go</TRANSL>
+            <TRANSL xml:lang="eng">AF.go</TRANSL>
             <M id="KavNr-map_syulan_S_9_W0_M0_0">
                 <FORM kindOf="original">matiw</FORM>
                 <PHON kindOf="original">matiw</PHON>
                 <FORM kindOf="standard">matiw</FORM>
                 <PHON kindOf="standard">matiw</PHON>
-                <TRANSL xml:lang="en">AF.go</TRANSL>
+                <TRANSL xml:lang="eng">AF.go</TRANSL>
                 <TRANSL xml:lang="zho">主焦.去</TRANSL>
             </M>
         </W>
@@ -903,13 +903,13 @@
             <FORM kindOf="standard">pasa</FORM>
             <PHON kindOf="standard">pasa</PHON>
             <TRANSL xml:lang="zho">往</TRANSL>
-            <TRANSL xml:lang="en">toward</TRANSL>
+            <TRANSL xml:lang="eng">toward</TRANSL>
             <M id="KavNr-map_syulan_S_9_W1_M0_0">
                 <FORM kindOf="original">pasa</FORM>
                 <PHON kindOf="original">pasa</PHON>
                 <FORM kindOf="standard">pasa</FORM>
                 <PHON kindOf="standard">pasa</PHON>
-                <TRANSL xml:lang="en">toward</TRANSL>
+                <TRANSL xml:lang="eng">toward</TRANSL>
                 <TRANSL xml:lang="zho">往</TRANSL>
             </M>
         </W>
@@ -919,13 +919,13 @@
             <FORM kindOf="standard">kawanan</FORM>
             <PHON kindOf="standard">kawanan</PHON>
             <TRANSL xml:lang="zho">右邊</TRANSL>
-            <TRANSL xml:lang="en">right</TRANSL>
+            <TRANSL xml:lang="eng">right</TRANSL>
             <M id="KavNr-map_syulan_S_9_W2_M0_0">
                 <FORM kindOf="original">kawanan</FORM>
                 <PHON kindOf="original">kawanan</PHON>
                 <FORM kindOf="standard">kawanan</FORM>
                 <PHON kindOf="standard">kawanan</PHON>
-                <TRANSL xml:lang="en">right</TRANSL>
+                <TRANSL xml:lang="eng">right</TRANSL>
                 <TRANSL xml:lang="zho">右邊</TRANSL>
             </M>
         </W>
@@ -936,7 +936,7 @@
         <FORM kindOf="standard">smaqay.</FORM>
         <PHON kindOf="standard">smaqaj.</PHON>
         <TRANSL xml:lang="zho">走.</TRANSL>
-        <TRANSL xml:lang="en" notes="(He) walked.">walked.</TRANSL>
+        <TRANSL xml:lang="eng" notes="(He) walked.">walked.</TRANSL>
         <AUDIO file="KavNr-map_syulan_S10.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_syulan.mp3" start="30.33" end="31.58"/>
         <W id="KavNr-map_syulan_S_10_W0">
             <FORM kindOf="original">s&lt;m&gt;aqay</FORM>
@@ -944,13 +944,13 @@
             <FORM kindOf="standard">s&lt;m&gt;aqay</FORM>
             <PHON kindOf="standard">s&lt;m&gt;aqaj</PHON>
             <TRANSL xml:lang="zho">&lt;主焦&gt;走</TRANSL>
-            <TRANSL xml:lang="en">&lt;AF&gt;walk</TRANSL>
+            <TRANSL xml:lang="eng">&lt;AF&gt;walk</TRANSL>
             <M id="KavNr-map_syulan_S_10_W0_M0_0_0">
                 <FORM kindOf="original">&lt;m&gt;</FORM>
                 <PHON kindOf="original">&lt;m&gt;</PHON>
                 <FORM kindOf="standard">&lt;m&gt;</FORM>
                 <PHON kindOf="standard">&lt;m&gt;</PHON>
-                <TRANSL xml:lang="en">&lt;AF&gt;</TRANSL>
+                <TRANSL xml:lang="eng">&lt;AF&gt;</TRANSL>
                 <TRANSL xml:lang="zho">&lt;主焦&gt;</TRANSL>
             </M>
             <M id="KavNr-map_syulan_S_10_W0_M0_0_1">
@@ -958,7 +958,7 @@
                 <PHON kindOf="original">s-aqaj</PHON>
                 <FORM kindOf="standard">s-aqay</FORM>
                 <PHON kindOf="standard">s-aqaj</PHON>
-                <TRANSL xml:lang="en">walk</TRANSL>
+                <TRANSL xml:lang="eng">walk</TRANSL>
                 <TRANSL xml:lang="zho">走</TRANSL>
             </M>
         </W>
@@ -969,7 +969,7 @@
         <FORM kindOf="standard">yau takinilan na kawanan yau takinilan na kawanan iki.</FORM>
         <PHON kindOf="standard">jau takiniran na kawanan jau takiniran na kawanan iki.</PHON>
         <TRANSL xml:lang="zho">在右邊的旁邊有個池塘.</TRANSL>
-        <TRANSL xml:lang="en">There was a pond on the right.</TRANSL>
+        <TRANSL xml:lang="eng">There was a pond on the right.</TRANSL>
         <AUDIO file="KavNr-map_syulan_S11.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_syulan.mp3" start="31.58" end="35.09"/>
         <W id="KavNr-map_syulan_S_11_W0">
             <FORM kindOf="original">yau</FORM>
@@ -977,13 +977,13 @@
             <FORM kindOf="standard">yau</FORM>
             <PHON kindOf="standard">jau</PHON>
             <TRANSL xml:lang="zho">存在</TRANSL>
-            <TRANSL xml:lang="en">EXIST</TRANSL>
+            <TRANSL xml:lang="eng">EXIST</TRANSL>
             <M id="KavNr-map_syulan_S_11_W0_M0_0">
                 <FORM kindOf="original">yau</FORM>
                 <PHON kindOf="original">jau</PHON>
                 <FORM kindOf="standard">yau</FORM>
                 <PHON kindOf="standard">jau</PHON>
-                <TRANSL xml:lang="en">EXIST</TRANSL>
+                <TRANSL xml:lang="eng">EXIST</TRANSL>
                 <TRANSL xml:lang="zho">存在</TRANSL>
             </M>
         </W>
@@ -993,13 +993,13 @@
             <FORM kindOf="standard">ta-kinil-an</FORM>
             <PHON kindOf="standard">ta-kinir-an</PHON>
             <TRANSL xml:lang="zho">處格-旁邊-處格</TRANSL>
-            <TRANSL xml:lang="en">LOC-beside-LOC</TRANSL>
+            <TRANSL xml:lang="eng">LOC-beside-LOC</TRANSL>
             <M id="KavNr-map_syulan_S_11_W1_M0_0">
                 <FORM kindOf="original">ta</FORM>
                 <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
-                <TRANSL xml:lang="en">LOC</TRANSL>
+                <TRANSL xml:lang="eng">LOC</TRANSL>
                 <TRANSL xml:lang="zho">處格</TRANSL>
             </M>
             <M id="KavNr-map_syulan_S_11_W1_M1_0">
@@ -1007,7 +1007,7 @@
                 <PHON kindOf="original">kinir</PHON>
                 <FORM kindOf="standard">kinil</FORM>
                 <PHON kindOf="standard">kinir</PHON>
-                <TRANSL xml:lang="en">beside</TRANSL>
+                <TRANSL xml:lang="eng">beside</TRANSL>
                 <TRANSL xml:lang="zho">旁邊</TRANSL>
             </M>
             <M id="KavNr-map_syulan_S_11_W1_M2_0">
@@ -1015,7 +1015,7 @@
                 <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="en">LOC</TRANSL>
+                <TRANSL xml:lang="eng">LOC</TRANSL>
                 <TRANSL xml:lang="zho">處格</TRANSL>
             </M>
         </W>
@@ -1025,13 +1025,13 @@
             <FORM kindOf="standard">na</FORM>
             <PHON kindOf="standard">na</PHON>
             <TRANSL xml:lang="zho">屬格</TRANSL>
-            <TRANSL xml:lang="en">GEN</TRANSL>
+            <TRANSL xml:lang="eng">GEN</TRANSL>
             <M id="KavNr-map_syulan_S_11_W2_M0_0">
                 <FORM kindOf="original">na</FORM>
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="en">GEN</TRANSL>
+                <TRANSL xml:lang="eng">GEN</TRANSL>
                 <TRANSL xml:lang="zho">屬格</TRANSL>
             </M>
         </W>
@@ -1041,13 +1041,13 @@
             <FORM kindOf="standard">kawanan</FORM>
             <PHON kindOf="standard">kawanan</PHON>
             <TRANSL xml:lang="zho">右邊</TRANSL>
-            <TRANSL xml:lang="en">right</TRANSL>
+            <TRANSL xml:lang="eng">right</TRANSL>
             <M id="KavNr-map_syulan_S_11_W3_M0_0">
                 <FORM kindOf="original">kawanan</FORM>
                 <PHON kindOf="original">kawanan</PHON>
                 <FORM kindOf="standard">kawanan</FORM>
                 <PHON kindOf="standard">kawanan</PHON>
-                <TRANSL xml:lang="en">right</TRANSL>
+                <TRANSL xml:lang="eng">right</TRANSL>
                 <TRANSL xml:lang="zho">右邊</TRANSL>
             </M>
         </W>
@@ -1057,13 +1057,13 @@
             <FORM kindOf="standard">yau</FORM>
             <PHON kindOf="standard">jau</PHON>
             <TRANSL xml:lang="zho">存在</TRANSL>
-            <TRANSL xml:lang="en">EXIST</TRANSL>
+            <TRANSL xml:lang="eng">EXIST</TRANSL>
             <M id="KavNr-map_syulan_S_11_W4_M0_0">
                 <FORM kindOf="original">yau</FORM>
                 <PHON kindOf="original">jau</PHON>
                 <FORM kindOf="standard">yau</FORM>
                 <PHON kindOf="standard">jau</PHON>
-                <TRANSL xml:lang="en">EXIST</TRANSL>
+                <TRANSL xml:lang="eng">EXIST</TRANSL>
                 <TRANSL xml:lang="zho">存在</TRANSL>
             </M>
         </W>
@@ -1073,13 +1073,13 @@
             <FORM kindOf="standard">ta-kinil-an</FORM>
             <PHON kindOf="standard">ta-kinir-an</PHON>
             <TRANSL xml:lang="zho">處格-旁邊-處格</TRANSL>
-            <TRANSL xml:lang="en">LOC-beside-LOC</TRANSL>
+            <TRANSL xml:lang="eng">LOC-beside-LOC</TRANSL>
             <M id="KavNr-map_syulan_S_11_W5_M0_0">
                 <FORM kindOf="original">ta</FORM>
                 <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
-                <TRANSL xml:lang="en">LOC</TRANSL>
+                <TRANSL xml:lang="eng">LOC</TRANSL>
                 <TRANSL xml:lang="zho">處格</TRANSL>
             </M>
             <M id="KavNr-map_syulan_S_11_W5_M1_0">
@@ -1087,7 +1087,7 @@
                 <PHON kindOf="original">kinir</PHON>
                 <FORM kindOf="standard">kinil</FORM>
                 <PHON kindOf="standard">kinir</PHON>
-                <TRANSL xml:lang="en">beside</TRANSL>
+                <TRANSL xml:lang="eng">beside</TRANSL>
                 <TRANSL xml:lang="zho">旁邊</TRANSL>
             </M>
             <M id="KavNr-map_syulan_S_11_W5_M2_0">
@@ -1095,7 +1095,7 @@
                 <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="en">LOC</TRANSL>
+                <TRANSL xml:lang="eng">LOC</TRANSL>
                 <TRANSL xml:lang="zho">處格</TRANSL>
             </M>
         </W>
@@ -1105,13 +1105,13 @@
             <FORM kindOf="standard">na</FORM>
             <PHON kindOf="standard">na</PHON>
             <TRANSL xml:lang="zho">屬格</TRANSL>
-            <TRANSL xml:lang="en">GEN</TRANSL>
+            <TRANSL xml:lang="eng">GEN</TRANSL>
             <M id="KavNr-map_syulan_S_11_W6_M0_0">
                 <FORM kindOf="original">na</FORM>
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="en">GEN</TRANSL>
+                <TRANSL xml:lang="eng">GEN</TRANSL>
                 <TRANSL xml:lang="zho">屬格</TRANSL>
             </M>
         </W>
@@ -1121,13 +1121,13 @@
             <FORM kindOf="standard">kawanan</FORM>
             <PHON kindOf="standard">kawanan</PHON>
             <TRANSL xml:lang="zho">右邊</TRANSL>
-            <TRANSL xml:lang="en">right</TRANSL>
+            <TRANSL xml:lang="eng">right</TRANSL>
             <M id="KavNr-map_syulan_S_11_W7_M0_0">
                 <FORM kindOf="original">kawanan</FORM>
                 <PHON kindOf="original">kawanan</PHON>
                 <FORM kindOf="standard">kawanan</FORM>
                 <PHON kindOf="standard">kawanan</PHON>
-                <TRANSL xml:lang="en">right</TRANSL>
+                <TRANSL xml:lang="eng">right</TRANSL>
                 <TRANSL xml:lang="zho">右邊</TRANSL>
             </M>
         </W>
@@ -1137,13 +1137,13 @@
             <FORM kindOf="standard">iki</FORM>
             <PHON kindOf="standard">iki</PHON>
             <TRANSL xml:lang="zho">池塘</TRANSL>
-            <TRANSL xml:lang="en">pond</TRANSL>
+            <TRANSL xml:lang="eng">pond</TRANSL>
             <M id="KavNr-map_syulan_S_11_W8_M0_0">
                 <FORM kindOf="original">iki</FORM>
                 <PHON kindOf="original">iki</PHON>
                 <FORM kindOf="standard">iki</FORM>
                 <PHON kindOf="standard">iki</PHON>
-                <TRANSL xml:lang="en">pond</TRANSL>
+                <TRANSL xml:lang="eng">pond</TRANSL>
                 <TRANSL xml:lang="zho">池塘</TRANSL>
             </M>
         </W>
@@ -1154,7 +1154,7 @@
         <FORM kindOf="standard">smaqay nani mlaziw tu iRuR.</FORM>
         <PHON kindOf="standard">smaqaj nani mraz~riw tu iʁuʁ.</PHON>
         <TRANSL xml:lang="zho">他走過河.</TRANSL>
-        <TRANSL xml:lang="en" notes="(He) walked across a river.">walked across a river.</TRANSL>
+        <TRANSL xml:lang="eng" notes="(He) walked across a river.">walked across a river.</TRANSL>
         <AUDIO file="KavNr-map_syulan_S12.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_syulan.mp3" start="35.09" end="38.07"/>
         <W id="KavNr-map_syulan_S_12_W0">
             <FORM kindOf="original">s&lt;m&gt;aqay</FORM>
@@ -1162,13 +1162,13 @@
             <FORM kindOf="standard">s&lt;m&gt;aqay</FORM>
             <PHON kindOf="standard">s&lt;m&gt;aqaj</PHON>
             <TRANSL xml:lang="zho">&lt;主焦&gt;走</TRANSL>
-            <TRANSL xml:lang="en">&lt;AF&gt;walk</TRANSL>
+            <TRANSL xml:lang="eng">&lt;AF&gt;walk</TRANSL>
             <M id="KavNr-map_syulan_S_12_W0_M0_0_0">
                 <FORM kindOf="original">&lt;m&gt;</FORM>
                 <PHON kindOf="original">&lt;m&gt;</PHON>
                 <FORM kindOf="standard">&lt;m&gt;</FORM>
                 <PHON kindOf="standard">&lt;m&gt;</PHON>
-                <TRANSL xml:lang="en">&lt;AF&gt;</TRANSL>
+                <TRANSL xml:lang="eng">&lt;AF&gt;</TRANSL>
                 <TRANSL xml:lang="zho">&lt;主焦&gt;</TRANSL>
             </M>
             <M id="KavNr-map_syulan_S_12_W0_M0_0_1">
@@ -1176,7 +1176,7 @@
                 <PHON kindOf="original">s-aqaj</PHON>
                 <FORM kindOf="standard">s-aqay</FORM>
                 <PHON kindOf="standard">s-aqaj</PHON>
-                <TRANSL xml:lang="en">walk</TRANSL>
+                <TRANSL xml:lang="eng">walk</TRANSL>
                 <TRANSL xml:lang="zho">走</TRANSL>
             </M>
         </W>
@@ -1186,13 +1186,13 @@
             <FORM kindOf="standard">nani</FORM>
             <PHON kindOf="standard">nani</PHON>
             <TRANSL xml:lang="zho">DM</TRANSL>
-            <TRANSL xml:lang="en">DM</TRANSL>
+            <TRANSL xml:lang="eng">DM</TRANSL>
             <M id="KavNr-map_syulan_S_12_W1_M0_0">
                 <FORM kindOf="original">nani</FORM>
                 <PHON kindOf="original">nani</PHON>
                 <FORM kindOf="standard">nani</FORM>
                 <PHON kindOf="standard">nani</PHON>
-                <TRANSL xml:lang="en">DM</TRANSL>
+                <TRANSL xml:lang="eng">DM</TRANSL>
                 <TRANSL xml:lang="zho">DM</TRANSL>
             </M>
         </W>
@@ -1202,13 +1202,13 @@
             <FORM kindOf="standard">m-laziw</FORM>
             <PHON kindOf="standard">m-raz~riw</PHON>
             <TRANSL xml:lang="zho">主焦-穿過</TRANSL>
-            <TRANSL xml:lang="en">AF-cross</TRANSL>
+            <TRANSL xml:lang="eng">AF-cross</TRANSL>
             <M id="KavNr-map_syulan_S_12_W2_M0_0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="en">AF</TRANSL>
+                <TRANSL xml:lang="eng">AF</TRANSL>
                 <TRANSL xml:lang="zho">主焦</TRANSL>
             </M>
             <M id="KavNr-map_syulan_S_12_W2_M1_0">
@@ -1216,7 +1216,7 @@
                 <PHON kindOf="original">raz~riw</PHON>
                 <FORM kindOf="standard">laziw</FORM>
                 <PHON kindOf="standard">raz~riw</PHON>
-                <TRANSL xml:lang="en">cross</TRANSL>
+                <TRANSL xml:lang="eng">cross</TRANSL>
                 <TRANSL xml:lang="zho">穿過</TRANSL>
             </M>
         </W>
@@ -1226,13 +1226,13 @@
             <FORM kindOf="standard">tu</FORM>
             <PHON kindOf="standard">tu</PHON>
             <TRANSL xml:lang="zho">斜格</TRANSL>
-            <TRANSL xml:lang="en">OBL</TRANSL>
+            <TRANSL xml:lang="eng">OBL</TRANSL>
             <M id="KavNr-map_syulan_S_12_W3_M0_0">
                 <FORM kindOf="original">tu</FORM>
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="en">OBL</TRANSL>
+                <TRANSL xml:lang="eng">OBL</TRANSL>
                 <TRANSL xml:lang="zho">斜格</TRANSL>
             </M>
         </W>
@@ -1242,13 +1242,13 @@
             <FORM kindOf="standard">iRuR</FORM>
             <PHON kindOf="standard">iʁuʁ</PHON>
             <TRANSL xml:lang="zho">河</TRANSL>
-            <TRANSL xml:lang="en">river</TRANSL>
+            <TRANSL xml:lang="eng">river</TRANSL>
             <M id="KavNr-map_syulan_S_12_W4_M0_0">
                 <FORM kindOf="original">iRuR</FORM>
                 <PHON kindOf="original">iʁuʁ</PHON>
                 <FORM kindOf="standard">iRuR</FORM>
                 <PHON kindOf="standard">iʁuʁ</PHON>
-                <TRANSL xml:lang="en">river</TRANSL>
+                <TRANSL xml:lang="eng">river</TRANSL>
                 <TRANSL xml:lang="zho">河</TRANSL>
             </M>
         </W>
@@ -1259,7 +1259,7 @@
         <FORM kindOf="standard">nani muman pasa ngayaw smaqay nani.</FORM>
         <PHON kindOf="standard">nani muman pasa ŋajaw smaqaj nani.</PHON>
         <TRANSL xml:lang="zho">繼續往前走.</TRANSL>
-        <TRANSL xml:lang="en" notes="(He) continued walking ahead.">continued walking ahead.</TRANSL>
+        <TRANSL xml:lang="eng" notes="(He) continued walking ahead.">continued walking ahead.</TRANSL>
         <AUDIO file="KavNr-map_syulan_S13.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_syulan.mp3" start="38.07" end="41.84"/>
         <W id="KavNr-map_syulan_S_13_W0">
             <FORM kindOf="original">nani</FORM>
@@ -1267,13 +1267,13 @@
             <FORM kindOf="standard">nani</FORM>
             <PHON kindOf="standard">nani</PHON>
             <TRANSL xml:lang="zho">DM</TRANSL>
-            <TRANSL xml:lang="en">DM</TRANSL>
+            <TRANSL xml:lang="eng">DM</TRANSL>
             <M id="KavNr-map_syulan_S_13_W0_M0_0">
                 <FORM kindOf="original">nani</FORM>
                 <PHON kindOf="original">nani</PHON>
                 <FORM kindOf="standard">nani</FORM>
                 <PHON kindOf="standard">nani</PHON>
-                <TRANSL xml:lang="en">DM</TRANSL>
+                <TRANSL xml:lang="eng">DM</TRANSL>
                 <TRANSL xml:lang="zho">DM</TRANSL>
             </M>
         </W>
@@ -1283,13 +1283,13 @@
             <FORM kindOf="standard">m-uman</FORM>
             <PHON kindOf="standard">m-uman</PHON>
             <TRANSL xml:lang="zho">主焦-再</TRANSL>
-            <TRANSL xml:lang="en">AF-again</TRANSL>
+            <TRANSL xml:lang="eng">AF-again</TRANSL>
             <M id="KavNr-map_syulan_S_13_W1_M0_0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="en">AF</TRANSL>
+                <TRANSL xml:lang="eng">AF</TRANSL>
                 <TRANSL xml:lang="zho">主焦</TRANSL>
             </M>
             <M id="KavNr-map_syulan_S_13_W1_M1_0">
@@ -1297,7 +1297,7 @@
                 <PHON kindOf="original">uman</PHON>
                 <FORM kindOf="standard">uman</FORM>
                 <PHON kindOf="standard">uman</PHON>
-                <TRANSL xml:lang="en">again</TRANSL>
+                <TRANSL xml:lang="eng">again</TRANSL>
                 <TRANSL xml:lang="zho">再</TRANSL>
             </M>
         </W>
@@ -1307,13 +1307,13 @@
             <FORM kindOf="standard">pasa</FORM>
             <PHON kindOf="standard">pasa</PHON>
             <TRANSL xml:lang="zho">往</TRANSL>
-            <TRANSL xml:lang="en">toward</TRANSL>
+            <TRANSL xml:lang="eng">toward</TRANSL>
             <M id="KavNr-map_syulan_S_13_W2_M0_0">
                 <FORM kindOf="original">pasa</FORM>
                 <PHON kindOf="original">pasa</PHON>
                 <FORM kindOf="standard">pasa</FORM>
                 <PHON kindOf="standard">pasa</PHON>
-                <TRANSL xml:lang="en">toward</TRANSL>
+                <TRANSL xml:lang="eng">toward</TRANSL>
                 <TRANSL xml:lang="zho">往</TRANSL>
             </M>
         </W>
@@ -1323,13 +1323,13 @@
             <FORM kindOf="standard">ngayaw</FORM>
             <PHON kindOf="standard">ŋajaw</PHON>
             <TRANSL xml:lang="zho">前面</TRANSL>
-            <TRANSL xml:lang="en">front</TRANSL>
+            <TRANSL xml:lang="eng">front</TRANSL>
             <M id="KavNr-map_syulan_S_13_W3_M0_0">
                 <FORM kindOf="original">ngayaw</FORM>
                 <PHON kindOf="original">ŋajaw</PHON>
                 <FORM kindOf="standard">ngayaw</FORM>
                 <PHON kindOf="standard">ŋajaw</PHON>
-                <TRANSL xml:lang="en">front</TRANSL>
+                <TRANSL xml:lang="eng">front</TRANSL>
                 <TRANSL xml:lang="zho">前面</TRANSL>
             </M>
         </W>
@@ -1339,13 +1339,13 @@
             <FORM kindOf="standard">s&lt;m&gt;aqay</FORM>
             <PHON kindOf="standard">s&lt;m&gt;aqaj</PHON>
             <TRANSL xml:lang="zho">&lt;主焦&gt;走</TRANSL>
-            <TRANSL xml:lang="en">&lt;AF&gt;walk</TRANSL>
+            <TRANSL xml:lang="eng">&lt;AF&gt;walk</TRANSL>
             <M id="KavNr-map_syulan_S_13_W4_M0_0_0">
                 <FORM kindOf="original">&lt;m&gt;</FORM>
                 <PHON kindOf="original">&lt;m&gt;</PHON>
                 <FORM kindOf="standard">&lt;m&gt;</FORM>
                 <PHON kindOf="standard">&lt;m&gt;</PHON>
-                <TRANSL xml:lang="en">&lt;AF&gt;</TRANSL>
+                <TRANSL xml:lang="eng">&lt;AF&gt;</TRANSL>
                 <TRANSL xml:lang="zho">&lt;主焦&gt;</TRANSL>
             </M>
             <M id="KavNr-map_syulan_S_13_W4_M0_0_1">
@@ -1353,7 +1353,7 @@
                 <PHON kindOf="original">s-aqaj</PHON>
                 <FORM kindOf="standard">s-aqay</FORM>
                 <PHON kindOf="standard">s-aqaj</PHON>
-                <TRANSL xml:lang="en">walk</TRANSL>
+                <TRANSL xml:lang="eng">walk</TRANSL>
                 <TRANSL xml:lang="zho">走</TRANSL>
             </M>
         </W>
@@ -1363,13 +1363,13 @@
             <FORM kindOf="standard">nani</FORM>
             <PHON kindOf="standard">nani</PHON>
             <TRANSL xml:lang="zho">DM</TRANSL>
-            <TRANSL xml:lang="en">DM</TRANSL>
+            <TRANSL xml:lang="eng">DM</TRANSL>
             <M id="KavNr-map_syulan_S_13_W5_M0_0">
                 <FORM kindOf="original">nani</FORM>
                 <PHON kindOf="original">nani</PHON>
                 <FORM kindOf="standard">nani</FORM>
                 <PHON kindOf="standard">nani</PHON>
-                <TRANSL xml:lang="en">DM</TRANSL>
+                <TRANSL xml:lang="eng">DM</TRANSL>
                 <TRANSL xml:lang="zho">DM</TRANSL>
             </M>
         </W>
@@ -1380,7 +1380,7 @@
         <FORM kindOf="standard">m mlaziw tu zena.</FORM>
         <PHON kindOf="standard">m mraz~riw tu z~rəna.</PHON>
         <TRANSL xml:lang="zho" notes="(他)經過(穿過)水田.">經過 水田.</TRANSL>
-        <TRANSL xml:lang="en" notes="(He) crossed a paddy field.">crossed a paddy field.</TRANSL>
+        <TRANSL xml:lang="eng" notes="(He) crossed a paddy field.">crossed a paddy field.</TRANSL>
         <AUDIO file="KavNr-map_syulan_S14.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_syulan.mp3" start="41.84" end="44.49"/>
         <W id="KavNr-map_syulan_S_14_W0">
             <FORM kindOf="original">m</FORM>
@@ -1388,13 +1388,13 @@
             <FORM kindOf="standard">m</FORM>
             <PHON kindOf="standard">m</PHON>
             <TRANSL xml:lang="zho">FIL</TRANSL>
-            <TRANSL xml:lang="en">FIL</TRANSL>
+            <TRANSL xml:lang="eng">FIL</TRANSL>
             <M id="KavNr-map_syulan_S_14_W0_M0_0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="en">FIL</TRANSL>
+                <TRANSL xml:lang="eng">FIL</TRANSL>
                 <TRANSL xml:lang="zho">FIL</TRANSL>
             </M>
         </W>
@@ -1404,13 +1404,13 @@
             <FORM kindOf="standard">m-laziw</FORM>
             <PHON kindOf="standard">m-raz~riw</PHON>
             <TRANSL xml:lang="zho">主焦-穿過</TRANSL>
-            <TRANSL xml:lang="en">AF-cross</TRANSL>
+            <TRANSL xml:lang="eng">AF-cross</TRANSL>
             <M id="KavNr-map_syulan_S_14_W1_M0_0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="en">AF</TRANSL>
+                <TRANSL xml:lang="eng">AF</TRANSL>
                 <TRANSL xml:lang="zho">主焦</TRANSL>
             </M>
             <M id="KavNr-map_syulan_S_14_W1_M1_0">
@@ -1418,7 +1418,7 @@
                 <PHON kindOf="original">raz~riw</PHON>
                 <FORM kindOf="standard">laziw</FORM>
                 <PHON kindOf="standard">raz~riw</PHON>
-                <TRANSL xml:lang="en">cross</TRANSL>
+                <TRANSL xml:lang="eng">cross</TRANSL>
                 <TRANSL xml:lang="zho">穿過</TRANSL>
             </M>
         </W>
@@ -1428,13 +1428,13 @@
             <FORM kindOf="standard">tu</FORM>
             <PHON kindOf="standard">tu</PHON>
             <TRANSL xml:lang="zho">斜格</TRANSL>
-            <TRANSL xml:lang="en">OBL</TRANSL>
+            <TRANSL xml:lang="eng">OBL</TRANSL>
             <M id="KavNr-map_syulan_S_14_W2_M0_0">
                 <FORM kindOf="original">tu</FORM>
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="en">OBL</TRANSL>
+                <TRANSL xml:lang="eng">OBL</TRANSL>
                 <TRANSL xml:lang="zho">斜格</TRANSL>
             </M>
         </W>
@@ -1444,13 +1444,13 @@
             <FORM kindOf="standard">zena</FORM>
             <PHON kindOf="standard">z~rəna</PHON>
             <TRANSL xml:lang="zho">水田</TRANSL>
-            <TRANSL xml:lang="en">paddy.field</TRANSL>
+            <TRANSL xml:lang="eng">paddy.field</TRANSL>
             <M id="KavNr-map_syulan_S_14_W3_M0_0">
                 <FORM kindOf="original">zena</FORM>
                 <PHON kindOf="original">z~rəna</PHON>
                 <FORM kindOf="standard">zena</FORM>
                 <PHON kindOf="standard">z~rəna</PHON>
-                <TRANSL xml:lang="en">paddy.field</TRANSL>
+                <TRANSL xml:lang="eng">paddy.field</TRANSL>
                 <TRANSL xml:lang="zho">水田</TRANSL>
             </M>
         </W>
@@ -1461,7 +1461,7 @@
         <FORM kindOf="standard">mlaziw tu zena pasa ngayaw smaqay nani.</FORM>
         <PHON kindOf="standard">mraz~riw tu z~rəna pasa ŋajaw smaqaj nani.</PHON>
         <TRANSL xml:lang="zho" notes="(他)經過水田往前走,">經過水田往前走,</TRANSL>
-        <TRANSL xml:lang="en">He crossed a paddy field and walked ahead,</TRANSL>
+        <TRANSL xml:lang="eng">He crossed a paddy field and walked ahead,</TRANSL>
         <AUDIO file="KavNr-map_syulan_S15.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_syulan.mp3" start="44.49" end="47.87"/>
         <W id="KavNr-map_syulan_S_15_W0">
             <FORM kindOf="original">m-laziw</FORM>
@@ -1469,13 +1469,13 @@
             <FORM kindOf="standard">m-laziw</FORM>
             <PHON kindOf="standard">m-raz~riw</PHON>
             <TRANSL xml:lang="zho">主焦-穿過</TRANSL>
-            <TRANSL xml:lang="en">AF-cross</TRANSL>
+            <TRANSL xml:lang="eng">AF-cross</TRANSL>
             <M id="KavNr-map_syulan_S_15_W0_M0_0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="en">AF</TRANSL>
+                <TRANSL xml:lang="eng">AF</TRANSL>
                 <TRANSL xml:lang="zho">主焦</TRANSL>
             </M>
             <M id="KavNr-map_syulan_S_15_W0_M1_0">
@@ -1483,7 +1483,7 @@
                 <PHON kindOf="original">raz~riw</PHON>
                 <FORM kindOf="standard">laziw</FORM>
                 <PHON kindOf="standard">raz~riw</PHON>
-                <TRANSL xml:lang="en">cross</TRANSL>
+                <TRANSL xml:lang="eng">cross</TRANSL>
                 <TRANSL xml:lang="zho">穿過</TRANSL>
             </M>
         </W>
@@ -1493,13 +1493,13 @@
             <FORM kindOf="standard">tu</FORM>
             <PHON kindOf="standard">tu</PHON>
             <TRANSL xml:lang="zho">斜格</TRANSL>
-            <TRANSL xml:lang="en">OBL</TRANSL>
+            <TRANSL xml:lang="eng">OBL</TRANSL>
             <M id="KavNr-map_syulan_S_15_W1_M0_0">
                 <FORM kindOf="original">tu</FORM>
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="en">OBL</TRANSL>
+                <TRANSL xml:lang="eng">OBL</TRANSL>
                 <TRANSL xml:lang="zho">斜格</TRANSL>
             </M>
         </W>
@@ -1509,13 +1509,13 @@
             <FORM kindOf="standard">zena</FORM>
             <PHON kindOf="standard">z~rəna</PHON>
             <TRANSL xml:lang="zho">水田</TRANSL>
-            <TRANSL xml:lang="en">paddy.field</TRANSL>
+            <TRANSL xml:lang="eng">paddy.field</TRANSL>
             <M id="KavNr-map_syulan_S_15_W2_M0_0">
                 <FORM kindOf="original">zena</FORM>
                 <PHON kindOf="original">z~rəna</PHON>
                 <FORM kindOf="standard">zena</FORM>
                 <PHON kindOf="standard">z~rəna</PHON>
-                <TRANSL xml:lang="en">paddy.field</TRANSL>
+                <TRANSL xml:lang="eng">paddy.field</TRANSL>
                 <TRANSL xml:lang="zho">水田</TRANSL>
             </M>
         </W>
@@ -1525,13 +1525,13 @@
             <FORM kindOf="standard">pasa</FORM>
             <PHON kindOf="standard">pasa</PHON>
             <TRANSL xml:lang="zho">往</TRANSL>
-            <TRANSL xml:lang="en">toward</TRANSL>
+            <TRANSL xml:lang="eng">toward</TRANSL>
             <M id="KavNr-map_syulan_S_15_W3_M0_0">
                 <FORM kindOf="original">pasa</FORM>
                 <PHON kindOf="original">pasa</PHON>
                 <FORM kindOf="standard">pasa</FORM>
                 <PHON kindOf="standard">pasa</PHON>
-                <TRANSL xml:lang="en">toward</TRANSL>
+                <TRANSL xml:lang="eng">toward</TRANSL>
                 <TRANSL xml:lang="zho">往</TRANSL>
             </M>
         </W>
@@ -1541,13 +1541,13 @@
             <FORM kindOf="standard">ngayaw</FORM>
             <PHON kindOf="standard">ŋajaw</PHON>
             <TRANSL xml:lang="zho">前面</TRANSL>
-            <TRANSL xml:lang="en">front</TRANSL>
+            <TRANSL xml:lang="eng">front</TRANSL>
             <M id="KavNr-map_syulan_S_15_W4_M0_0">
                 <FORM kindOf="original">ngayaw</FORM>
                 <PHON kindOf="original">ŋajaw</PHON>
                 <FORM kindOf="standard">ngayaw</FORM>
                 <PHON kindOf="standard">ŋajaw</PHON>
-                <TRANSL xml:lang="en">front</TRANSL>
+                <TRANSL xml:lang="eng">front</TRANSL>
                 <TRANSL xml:lang="zho">前面</TRANSL>
             </M>
         </W>
@@ -1557,13 +1557,13 @@
             <FORM kindOf="standard">s&lt;m&gt;aqay</FORM>
             <PHON kindOf="standard">s&lt;m&gt;aqaj</PHON>
             <TRANSL xml:lang="zho">&lt;主焦&gt;走</TRANSL>
-            <TRANSL xml:lang="en">&lt;AF&gt;walk</TRANSL>
+            <TRANSL xml:lang="eng">&lt;AF&gt;walk</TRANSL>
             <M id="KavNr-map_syulan_S_15_W5_M0_0_0">
                 <FORM kindOf="original">&lt;m&gt;</FORM>
                 <PHON kindOf="original">&lt;m&gt;</PHON>
                 <FORM kindOf="standard">&lt;m&gt;</FORM>
                 <PHON kindOf="standard">&lt;m&gt;</PHON>
-                <TRANSL xml:lang="en">&lt;AF&gt;</TRANSL>
+                <TRANSL xml:lang="eng">&lt;AF&gt;</TRANSL>
                 <TRANSL xml:lang="zho">&lt;主焦&gt;</TRANSL>
             </M>
             <M id="KavNr-map_syulan_S_15_W5_M0_0_1">
@@ -1571,7 +1571,7 @@
                 <PHON kindOf="original">s-aqaj</PHON>
                 <FORM kindOf="standard">s-aqay</FORM>
                 <PHON kindOf="standard">s-aqaj</PHON>
-                <TRANSL xml:lang="en">walk</TRANSL>
+                <TRANSL xml:lang="eng">walk</TRANSL>
                 <TRANSL xml:lang="zho">走</TRANSL>
             </M>
         </W>
@@ -1581,13 +1581,13 @@
             <FORM kindOf="standard">nani</FORM>
             <PHON kindOf="standard">nani</PHON>
             <TRANSL xml:lang="zho">DM</TRANSL>
-            <TRANSL xml:lang="en">DM</TRANSL>
+            <TRANSL xml:lang="eng">DM</TRANSL>
             <M id="KavNr-map_syulan_S_15_W6_M0_0">
                 <FORM kindOf="original">nani</FORM>
                 <PHON kindOf="original">nani</PHON>
                 <FORM kindOf="standard">nani</FORM>
                 <PHON kindOf="standard">nani</PHON>
-                <TRANSL xml:lang="en">DM</TRANSL>
+                <TRANSL xml:lang="eng">DM</TRANSL>
                 <TRANSL xml:lang="zho">DM</TRANSL>
             </M>
         </W>
@@ -1598,7 +1598,7 @@
         <FORM kindOf="standard">mlaziw tu mwaza paRin.</FORM>
         <PHON kindOf="standard">mraz~riw tu mwaz~ra paʁin.</PHON>
         <TRANSL xml:lang="zho">經過很多樹.</TRANSL>
-        <TRANSL xml:lang="en" notes="(He) crossed a lot of trees.">crossed a lot of trees.</TRANSL>
+        <TRANSL xml:lang="eng" notes="(He) crossed a lot of trees.">crossed a lot of trees.</TRANSL>
         <AUDIO file="KavNr-map_syulan_S16.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_syulan.mp3" start="47.87" end="51.24"/>
         <W id="KavNr-map_syulan_S_16_W0">
             <FORM kindOf="original">m-laziw</FORM>
@@ -1606,13 +1606,13 @@
             <FORM kindOf="standard">m-laziw</FORM>
             <PHON kindOf="standard">m-raz~riw</PHON>
             <TRANSL xml:lang="zho">主焦-經過</TRANSL>
-            <TRANSL xml:lang="en">AF-cross</TRANSL>
+            <TRANSL xml:lang="eng">AF-cross</TRANSL>
             <M id="KavNr-map_syulan_S_16_W0_M0_0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="en">AF</TRANSL>
+                <TRANSL xml:lang="eng">AF</TRANSL>
                 <TRANSL xml:lang="zho">主焦</TRANSL>
             </M>
             <M id="KavNr-map_syulan_S_16_W0_M1_0">
@@ -1620,7 +1620,7 @@
                 <PHON kindOf="original">raz~riw</PHON>
                 <FORM kindOf="standard">laziw</FORM>
                 <PHON kindOf="standard">raz~riw</PHON>
-                <TRANSL xml:lang="en">cross</TRANSL>
+                <TRANSL xml:lang="eng">cross</TRANSL>
                 <TRANSL xml:lang="zho">經過</TRANSL>
             </M>
         </W>
@@ -1630,13 +1630,13 @@
             <FORM kindOf="standard">tu</FORM>
             <PHON kindOf="standard">tu</PHON>
             <TRANSL xml:lang="zho">斜格</TRANSL>
-            <TRANSL xml:lang="en">OBL</TRANSL>
+            <TRANSL xml:lang="eng">OBL</TRANSL>
             <M id="KavNr-map_syulan_S_16_W1_M0_0">
                 <FORM kindOf="original">tu</FORM>
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="en">OBL</TRANSL>
+                <TRANSL xml:lang="eng">OBL</TRANSL>
                 <TRANSL xml:lang="zho">斜格</TRANSL>
             </M>
         </W>
@@ -1646,13 +1646,13 @@
             <FORM kindOf="standard">mwaza</FORM>
             <PHON kindOf="standard">mwaz~ra</PHON>
             <TRANSL xml:lang="zho">多.非人</TRANSL>
-            <TRANSL xml:lang="en">many.NHUM</TRANSL>
+            <TRANSL xml:lang="eng">many.NHUM</TRANSL>
             <M id="KavNr-map_syulan_S_16_W2_M0_0">
                 <FORM kindOf="original">mwaza</FORM>
                 <PHON kindOf="original">mwaz~ra</PHON>
                 <FORM kindOf="standard">mwaza</FORM>
                 <PHON kindOf="standard">mwaz~ra</PHON>
-                <TRANSL xml:lang="en">many.NHUM</TRANSL>
+                <TRANSL xml:lang="eng">many.NHUM</TRANSL>
                 <TRANSL xml:lang="zho">多.非人</TRANSL>
             </M>
         </W>
@@ -1662,13 +1662,13 @@
             <FORM kindOf="standard">paRin</FORM>
             <PHON kindOf="standard">paʁin</PHON>
             <TRANSL xml:lang="zho">樹</TRANSL>
-            <TRANSL xml:lang="en">tree</TRANSL>
+            <TRANSL xml:lang="eng">tree</TRANSL>
             <M id="KavNr-map_syulan_S_16_W3_M0_0">
                 <FORM kindOf="original">paRin</FORM>
                 <PHON kindOf="original">paʁin</PHON>
                 <FORM kindOf="standard">paRin</FORM>
                 <PHON kindOf="standard">paʁin</PHON>
-                <TRANSL xml:lang="en">tree</TRANSL>
+                <TRANSL xml:lang="eng">tree</TRANSL>
                 <TRANSL xml:lang="zho">樹</TRANSL>
             </M>
         </W>
@@ -1679,7 +1679,7 @@
         <FORM kindOf="standard">maseqti tu lepaw.</FORM>
         <PHON kindOf="standard">masəqti tu rəpaw.</PHON>
         <TRANSL xml:lang="zho">到家了.</TRANSL>
-        <TRANSL xml:lang="en" notes="(He) arrived at home.">arrived at home.</TRANSL>
+        <TRANSL xml:lang="eng" notes="(He) arrived at home.">arrived at home.</TRANSL>
         <AUDIO file="KavNr-map_syulan_S17.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_syulan.mp3" start="51.24" end="52.8"/>
         <W id="KavNr-map_syulan_S_17_W0">
             <FORM kindOf="original">maseq=ti</FORM>
@@ -1687,13 +1687,13 @@
             <FORM kindOf="standard">maseq=ti</FORM>
             <PHON kindOf="standard">masəq=ti</PHON>
             <TRANSL xml:lang="zho">主焦.到達=完成</TRANSL>
-            <TRANSL xml:lang="en">AF.arrive=PFV</TRANSL>
+            <TRANSL xml:lang="eng">AF.arrive=PFV</TRANSL>
             <M id="KavNr-map_syulan_S_17_W0_M0_0">
                 <FORM kindOf="original">maseq</FORM>
                 <PHON kindOf="original">masəq</PHON>
                 <FORM kindOf="standard">maseq</FORM>
                 <PHON kindOf="standard">masəq</PHON>
-                <TRANSL xml:lang="en">AF.arrive</TRANSL>
+                <TRANSL xml:lang="eng">AF.arrive</TRANSL>
                 <TRANSL xml:lang="zho">主焦.到達</TRANSL>
             </M>
             <M id="KavNr-map_syulan_S_17_W0_M0_1">
@@ -1701,7 +1701,7 @@
                 <PHON kindOf="original">ti</PHON>
                 <FORM kindOf="standard">ti</FORM>
                 <PHON kindOf="standard">ti</PHON>
-                <TRANSL xml:lang="en">PFV</TRANSL>
+                <TRANSL xml:lang="eng">PFV</TRANSL>
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
@@ -1711,13 +1711,13 @@
             <FORM kindOf="standard">tu</FORM>
             <PHON kindOf="standard">tu</PHON>
             <TRANSL xml:lang="zho">斜格</TRANSL>
-            <TRANSL xml:lang="en">OBL</TRANSL>
+            <TRANSL xml:lang="eng">OBL</TRANSL>
             <M id="KavNr-map_syulan_S_17_W1_M0_0">
                 <FORM kindOf="original">tu</FORM>
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="en">OBL</TRANSL>
+                <TRANSL xml:lang="eng">OBL</TRANSL>
                 <TRANSL xml:lang="zho">斜格</TRANSL>
             </M>
         </W>
@@ -1727,13 +1727,13 @@
             <FORM kindOf="standard">lepaw</FORM>
             <PHON kindOf="standard">rəpaw</PHON>
             <TRANSL xml:lang="zho">家</TRANSL>
-            <TRANSL xml:lang="en">house</TRANSL>
+            <TRANSL xml:lang="eng">house</TRANSL>
             <M id="KavNr-map_syulan_S_17_W2_M0_0">
                 <FORM kindOf="original">lepaw</FORM>
                 <PHON kindOf="original">rəpaw</PHON>
                 <FORM kindOf="standard">lepaw</FORM>
                 <PHON kindOf="standard">rəpaw</PHON>
-                <TRANSL xml:lang="en">house</TRANSL>
+                <TRANSL xml:lang="eng">house</TRANSL>
                 <TRANSL xml:lang="zho">家</TRANSL>
             </M>
         </W>

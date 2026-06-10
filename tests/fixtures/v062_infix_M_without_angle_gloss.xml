@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Negative fixture for V062 (infix marker on M requires angle-bracket gloss
+  on parent W's TRANSL).
+
+  Shape: W has an M whose FORM is "-um-" (infix shape). The parent W has
+  a TRANSL with text "walk" containing no angle-bracketed substring.
+
+  Exercises: validate_xml.py should report a finding. Currently NOT
+  enforced; xfail.
+-->
+<TEXT id="V062_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original">rumakat.</FORM>
+    <W id="S_1_W_1">
+      <FORM kindOf="original">rumakat</FORM>
+      <TRANSL xml:lang="eng">walk</TRANSL>
+      <M id="S_1_W_1_M_1">
+        <FORM kindOf="original">-um-</FORM>
+      </M>
+    </W>
+  </S>
+</TEXT>

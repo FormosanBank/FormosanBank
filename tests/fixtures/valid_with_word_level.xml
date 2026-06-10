@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Positive fixture for the word-level-FORM exclusion invariant.
+
+  Shape: one S containing a sentence-level FORM ("A real sentence", direct
+  child of S) plus a word-level FORM ("SHOULD_NOT_MATCH", nested inside W).
+
+  Exercises: extract_standard_forms must return ONLY direct-child FORM
+  elements of S. The SHOULD_NOT_MATCH text must never appear in the
+  extracted output — if it does, the extractor is incorrectly descending
+  into W elements.
+-->
+<TEXT id="TEST_WL" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
+  <S id="S_A">
+    <FORM kindOf="standard">A real sentence</FORM>
+    <W id="S_A_W_1">
+      <FORM kindOf="standard">SHOULD_NOT_MATCH</FORM>
+    </W>
+  </S>
+</TEXT>

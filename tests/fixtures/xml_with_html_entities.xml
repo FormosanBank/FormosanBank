@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Negative fixture for the clean_xml HTML-entity resolution behavior.
+
+  Shape: one S with both FORM tiers containing a mix of HTML entity
+  escapes: &amp; (ampersand), &quot; (double-quote), &#39; (apostrophe
+  written as a numeric character reference).
+
+  Exercises: standard XML character references in FORM text survive a
+  clean pass without becoming double-encoded after lxml's parse-then-
+  re-serialise cycle. This is a property of lxml's serialiser, not of
+  clean_xml.py's html.unescape logic (which is unexercised by this
+  fixture because lxml decodes the references before the Python code
+  sees the text).
+-->
+<TEXT id="TEST_HE" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original">Tom &amp; Jerry &quot;cartoon&quot; episode &#39;1</FORM>
+    <FORM kindOf="standard">Tom &amp; Jerry &quot;cartoon&quot; episode &#39;1</FORM>
+  </S>
+</TEXT>

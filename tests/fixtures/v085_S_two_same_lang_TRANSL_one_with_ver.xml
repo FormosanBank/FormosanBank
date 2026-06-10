@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Positive fixture for V085 (passes — at least one TRANSL has ver).
+
+  Shape: an S with two TRANSL xml:lang="eng"; one is canonical (bare),
+  the other carries ver="alt". This is the convention described in the
+  Bril Amis Basecamp card (Mar 3, 2026).
+
+  Exercises: validate_xml.py should produce NO V085 finding. Also
+  exercises V084 with a valid `ver` value ("alt") — should NOT trigger
+  V084 either.
+-->
+<TEXT id="V085_POS" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original">Halo.</FORM>
+    <TRANSL xml:lang="eng">hello</TRANSL>
+    <TRANSL xml:lang="eng" ver="alt">hi</TRANSL>
+  </S>
+</TEXT>

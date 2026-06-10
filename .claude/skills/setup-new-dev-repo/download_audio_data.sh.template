@@ -1,0 +1,13 @@
+#!/bin/bash
+# download_audio_data.sh - download audio files for Formosan-{{CORPUS_NAME}}
+# Requires: git-lfs, jq, hf (huggingface CLI)
+set -euo pipefail
+
+# TODO: fill in the actual download logic for this corpus.
+# Common patterns:
+#   - Hugging Face dataset: `hf download <repo> --local-dir <target>`
+#   - git-lfs from a public repo: `git lfs pull`
+#   - Direct URL list: `while read url; do curl -O "$url"; done < urls.txt`
+
+echo "TODO: implement audio download for Formosan-{{CORPUS_NAME}}" >&2
+exit 1

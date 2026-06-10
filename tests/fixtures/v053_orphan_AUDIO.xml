@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Negative fixture for V053 (orphan AUDIO: AUDIO with no @file AND TEXT/@audio
+  not set).
+
+  Shape: TEXT has no audio attribute. AUDIO has no file attribute, only
+  start/end. Both anchors are missing, so the AUDIO is unmoored.
+
+  Exercises: validate_xml.py should report an "orphan AUDIO" finding.
+  Currently NOT enforced with the correct mode framework; xfail.
+-->
+<TEXT id="V053_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original">Halo.</FORM>
+    <AUDIO start="0" end="1"/>
+  </S>
+</TEXT>

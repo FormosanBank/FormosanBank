@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  C002 positive fixture: mixed apostrophe variants in non-Chinese FORM.
+
+  Shape: one S with both FORM tiers containing a mix of single-quote /
+  apostrophe variants: U+2019, U+2018, U+02BC, U+02BB, U+0060 (grave).
+  xml:lang="ami".
+  Exercises: swap_punctuation in clean_text collapses each variant to
+  ASCII U+0027. After cleaning every single-quote-shape character in
+  the FORM text must be U+0027.
+-->
+<TEXT id="TEST_C002_APOS" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original">a’b‘c ʼd ʻe `f</FORM>
+    <FORM kindOf="standard">a’b‘c ʼd ʻe `f</FORM>
+  </S>
+</TEXT>

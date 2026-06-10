@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Negative fixture for V035 (TEXT/@xml:lang is a valid ISO 639-3 code).
+
+  Shape: TEXT with xml:lang="zz" (not a 639-3 Id).
+
+  Exercises: validate_xml.py should reject (currently does, via
+  validate_lang_code).
+-->
+<TEXT id="V035_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="zz" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original">Halo.</FORM>
+  </S>
+</TEXT>

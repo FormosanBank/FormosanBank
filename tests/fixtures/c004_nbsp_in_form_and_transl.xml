@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  C004 positive fixture: NBSP (U+00A0) in FORM and TRANSL text.
+
+  Shape: one S with both FORM tiers and an S-level TRANSL, each carrying
+  embedded NBSPs between words.
+  Exercises: the cleaner does a raw-text re.sub of U+00A0 to ASCII space
+  before parsing. After cleaning, no U+00A0 may appear anywhere in the
+  serialised file content nor in the text values of any element.
+-->
+<TEXT id="TEST_C004" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original">Halo hapinangha.</FORM>
+    <FORM kindOf="standard">Halo hapinangha.</FORM>
+    <TRANSL xml:lang="eng">Hello world.</TRANSL>
+  </S>
+</TEXT>

@@ -11,6 +11,9 @@ from xml.dom import minidom
 from datetime import datetime
 from tqdm import tqdm
 
+# Wikipedia API requires a descriptive User-Agent; anonymous requests are rejected (HTTP 403).
+USER_AGENT = "FormosanBank/1.0 (jkhartshorne@gmail.com)"
+
 # Retry decorator function
 def retry(retries=3, delay=2, backoff=2):
     def retry_decorator(func):
@@ -29,6 +32,7 @@ def retry(retries=3, delay=2, backoff=2):
         return wrapper
     return retry_decorator
 
+@retry(retries=3)
 def get_titles(lang_code, titles_path):
     """
     Retrieve article titles from a specific language Wikipedia
@@ -60,7 +64,18 @@ def get_titles(lang_code, titles_path):
     # Loop to handle paginated results from the API
     while True:
         # Send the API request and get the response in JSON format
-        re = requests.get(url, params).json()
+        resp = requests.get(url, params, headers={"User-Agent": USER_AGENT})
+        if resp.status_code == 429:
+            # Per Wikimedia best practices: respect Retry-After header, else wait ≥5s.
+            wait_sec = int(resp.headers.get("Retry-After", "5"))
+            print(f"  rate-limited (429); sleeping {wait_sec}s")
+            time.sleep(wait_sec)
+            continue
+        try:
+            re = resp.json()
+        except Exception:
+            print(f"  [diag] status={resp.status_code} ctype={resp.headers.get('content-type')!r} len={len(resp.text)} body[:300]={resp.text[:300]!r}")
+            raise
 
         # Check if the 'query' and 'allpages' keys exist in the response
         if re.get('query') and re['query'].get('allpages'):
@@ -74,6 +89,7 @@ def get_titles(lang_code, titles_path):
         params.update(re['continue'])
 
     titles = [page['title'] for page in all_pages]
+    os.makedirs(titles_path, exist_ok=True)
     with open(curr_titles_path, 'wb') as fp:
         pickle.dump(titles, fp)
     return titles
@@ -93,6 +109,13 @@ def read_article(title, wiki_wiki, lang_path):
     title = re.sub(r'_+', '_', title)    # Cleanup for repeating underscores
     title = title.replace('\n', '')          # Ensure no newline characters
 
+    # Skip articles already downloaded with non-empty content. Lets the download
+    # resume after interruption without re-fetching what we already have. Empty
+    # files are retried in case Wikipedia now has content for them.
+    out_path = os.path.join(lang_path, title + '.txt')
+    if os.path.exists(out_path) and os.path.getsize(out_path) > 0:
+        return
+
     # Fetch the page info using the Wikipedia API
     page_info = wiki_wiki.page(title_search)
     if page_info.exists():
@@ -108,11 +131,12 @@ def read_article(title, wiki_wiki, lang_path):
 
     
 def download_articles(titles, lang_path, lang_code):
-    wiki_wiki = wikipediaapi.Wikipedia('Amis_language (merlin@example.com)', lang_code)
+    wiki_wiki = wikipediaapi.Wikipedia(USER_AGENT, lang_code)
     if not os.path.exists(lang_path):
         os.makedirs(lang_path)
 
-    with ThreadPoolExecutor(max_workers=10) as executor:  # 10 threads for parallel downloading
+    # Wikipedia API best practices cap concurrency at 3 (Wikimedia_APIs/Rate_limits).
+    with ThreadPoolExecutor(max_workers=3) as executor:
         future_to_article = {executor.submit(read_article, title, wiki_wiki, lang_path): title for title in titles}
         
         for future in tqdm(as_completed(future_to_article), desc=f"downloading articles of {lang_code}", total=len(titles)):

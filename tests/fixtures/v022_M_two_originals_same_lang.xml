@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Negative fixture for V022 (multiple kindOf="original" TRANSLs on M must have distinct xml:lang).
+
+  Shape: an M with two TRANSL kindOf="original" both xml:lang="eng".
+
+  Exercises: validate_xml.py should report a finding. Currently NOT
+  enforced; xfail.
+-->
+<TEXT id="V022_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original">Halo.</FORM>
+    <W id="S_1_W_1">
+      <FORM kindOf="original">halo</FORM>
+      <M id="S_1_W_1_M_1">
+        <FORM kindOf="original">halo</FORM>
+        <TRANSL kindOf="original" xml:lang="eng">greeting</TRANSL>
+        <TRANSL kindOf="original" xml:lang="eng">hello</TRANSL>
+      </M>
+    </W>
+  </S>
+</TEXT>

@@ -38,7 +38,7 @@ This repository contains code and data for recreating the XMLs.
    Run `process_raw.py` to process the raw data in the `raw_data` directory and structure it into XML format.
 
    ```bash
-   python main.py
+   python process_raw.py
    ```
 
 Currently, this only works for Eastern Paiwan.

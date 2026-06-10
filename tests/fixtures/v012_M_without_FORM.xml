@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Negative fixture for V012 (M has at least one FORM).
+
+  Shape: an M with no FORM child, only a TRANSL child.
+
+  Exercises: validate_xml.py should reject (currently does, via XSD).
+-->
+<TEXT id="V012_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original">Halo.</FORM>
+    <W id="S_1_W_1">
+      <FORM kindOf="original">Halo</FORM>
+      <M id="S_1_W_1_M_1">
+        <TRANSL xml:lang="eng">greeting</TRANSL>
+      </M>
+    </W>
+  </S>
+</TEXT>

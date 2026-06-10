@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  C007 fixture: all 75 named Bopomofo codepoints (Bopomofo block
+  U+3100-U+312F plus Bopomofo Extended U+31A0-U+31BF) embedded between
+  Latin letters. Per FormosanBank convention, the cleaner must PRESERVE
+  every Bopomofo character (not delete) and emit a c007 warning CSV
+  row per occurrence so the operator can review.
+
+  Regression pin: count is 75 as of Python's current unicodedata. If
+  Unicode adds new Bopomofo codepoints in a future Python release,
+  the count rises and the test catches it via the runtime-computed
+  expected character set.
+-->
+<TEXT id="TEST_C007" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original">aㄅㄆㄇㄈㄉㄊㄋㄌㄍㄎㄏㄐㄑㄒㄓㄔㄕㄖㄗㄘㄙㄚㄛㄜㄝㄞㄟㄠㄡㄢㄣㄤㄥㄦㄧㄨㄩㄪㄫㄬㄭㄮㄯㆠㆡㆢㆣㆤㆥㆦㆧㆨㆩㆪㆫㆬㆭㆮㆯㆰㆱㆲㆳㆴㆵㆶㆷㆸㆹㆺㆻㆼㆽㆾㆿb</FORM>
+    <FORM kindOf="standard">aㄅㄆㄇㄈㄉㄊㄋㄌㄍㄎㄏㄐㄑㄒㄓㄔㄕㄖㄗㄘㄙㄚㄛㄜㄝㄞㄟㄠㄡㄢㄣㄤㄥㄦㄧㄨㄩㄪㄫㄬㄭㄮㄯㆠㆡㆢㆣㆤㆥㆦㆧㆨㆩㆪㆫㆬㆭㆮㆯㆰㆱㆲㆳㆴㆵㆶㆷㆸㆹㆺㆻㆼㆽㆾㆿb</FORM>
+  </S>
+</TEXT>

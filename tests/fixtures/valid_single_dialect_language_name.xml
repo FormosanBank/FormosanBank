@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Positive fixture for V036: single-dialect languages use the language
+  name itself as the dialect value. Here xml:lang="tsu" (Tsou) requires
+  dialect="Tsou". Same pattern applies to Yami (tao -> "Yami"), Kavalan
+  (ckv -> "Kavalan"), Saaroa, Saisiyat, Sakizaya, Thao, Kanakanavu, and
+  Siraya. See QC/validation/_dialect_inventory.py for the inventory.
+-->
+<TEXT id="V036_single_dialect_pos" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="tsu" dialect="Tsou">
+  <S id="S_1">
+    <FORM kindOf="original">Halo.</FORM>
+    <FORM kindOf="standard">Halo.</FORM>
+  </S>
+</TEXT>

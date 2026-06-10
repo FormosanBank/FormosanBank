@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Canonical positive fixture: the minimum valid corpus.
+
+  Shape: one TEXT, one S, both required FORM tiers (original and standard).
+  Tier contents are DELIBERATELY DISTINCT ("Halo (orig)." vs "Halo (std).")
+  so that any test asserting on extracted content can distinguish "got the
+  standard tier" from "got the original tier" — otherwise an extractor bug
+  that returns the wrong tier would silently pass. xml:lang="ami" is Amis
+  (ISO 639-3). No DOCTYPE reference — validate_xml.py loads the DTD via
+  its own logic.
+
+  Used as the project-wide baseline "this is correct XML" reference. Tests
+  assert against it for: extractor round-trips, validator no-findings,
+  cleaner no-change-needed.
+-->
+<TEXT id="TEST_MIN" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original">Halo (orig).</FORM>
+    <FORM kindOf="standard">Halo (std).</FORM>
+  </S>
+</TEXT>

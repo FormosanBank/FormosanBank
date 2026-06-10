@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Negative fixture for V084 (TRANSL/@ver must be in the project allowlist).
+
+  Shape: an S with a TRANSL carrying ver="bogus" — not in {"alt"}.
+
+  Exercises: validate_xml.py should report a V084 HARD finding citing
+  the offending value.
+-->
+<TEXT id="V084_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original">Halo.</FORM>
+    <TRANSL xml:lang="eng">hello</TRANSL>
+    <TRANSL xml:lang="eng" ver="bogus">hi</TRANSL>
+  </S>
+</TEXT>
