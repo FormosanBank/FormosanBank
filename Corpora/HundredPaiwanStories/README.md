@@ -84,7 +84,7 @@ The `<M>` created in steps 9–10 (and other hand-repaired morphemes) initially 
     python CodeAndDocs/fill_standard_tier.py
 ```
 
-> **Do not run `standardize.py` (step 6) over the published `XML/`.** Its TSV maps `? → '`, which reconflates sentence-final question-mark *punctuation* with the glottal stop; in the dev-repo build this is undone afterward by `fix_ferrell.py`, but that script is hardcoded to the dev path and does not run here. Applying the TSV to only the new morphemes (step 11) is safe because morpheme FORMs never carry question-mark punctuation. **Still pending:** `PHON` (IPA) for these new `<M>` — `add_phonology.py` carries the same whole-file caveat, so this needs the same targeted treatment or regeneration in the dev repo.
+> **Do not run `standardize.py` (step 6) over the published `XML/`.** Its TSV maps `? → '`, which reconflates sentence-final question-mark *punctuation* with the glottal stop; in the dev-repo build this is undone afterward by `fix_ferrell.py`, but that script is hardcoded to the dev path and does not run here. Applying the TSV to only the new morphemes (step 11) is safe because morpheme FORMs never carry question-mark punctuation. (`add_phonology.py` carries the same whole-file caveat and is likewise not run over the published `XML/`; PHON for the new morphemes was filled by the same targeted character-mapping.)
 
 ### Citation
 
