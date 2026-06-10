@@ -58,6 +58,26 @@ The morpheme-level (`M`) interlinear glosses were emitted as bare `<TRANSL>` ele
 
 The script edits via targeted string replacement (leaving all other formatting intact) and re-parses each file with lxml to confirm the `TRANSL` count is unchanged and none remain without `xml:lang`. The sentence-level (`S`) free translations already carried `xml:lang="eng"` and were untouched.
 
+9. **Split infix / reduplication morphemes**
+
+The glosser packed actor-focus/perfective infixes and partial reduplication into a single `<M>` using `INFIX=ROOT` notation in *citation* form (e.g. `keman` → one `<M>` of `em=kan` / `af=eat`, where the surface is `k‹em›an`). `split_infix_morphemes.py` splits each such single-`M` word into two `<M>` elements — the infix/reduplicant (`-em-`, gloss `af`/`RED`) and the root with the infix position marked by `-` (`k-an`) — locating the infix by splicing it into the citation root to match the surface word (allowing one root-vowel syncope, e.g. `qetsi` → `q‹em›tsi`). The two new `<M>` carry only `FORM kindOf="original"` and `TRANSL`; their standard `FORM` and `PHON` are dropped and regenerated later (see the note below).
+
+```bash
+    python CodeAndDocs/split_infix_morphemes.py
+```
+
+Cases that do not splice cleanly (consonant mutation, stacked `=`, an extra unglossed prefix) are written to `flagged_infix_splits.csv` for manual handling; `=` morphemes inside already-multi-`M` words — where the morpheme maps to an unknown *substring* of the word — are listed in `multi_M_eq_morphemes.csv` and left untouched.
+
+10. **Capitalize the reduplication gloss**
+
+An `<M>`-level `TRANSL` of exactly `red` is always the reduplication marker in this corpus (every instance is a reduplicant copying a sister morpheme; there is no colour-word `red`). `capitalize_red.py` rewrites these to the glossing abbreviation `RED`, leaving any word/sentence-level `red` untouched.
+
+```bash
+    python CodeAndDocs/capitalize_red.py
+```
+
+> **Pending — regenerate standard tier + IPA.** The `<M>` elements created in steps 9–10 (and other hand-repaired morphemes) have only an original `FORM` and a `TRANSL`. Re-run `standardize.py` (step 6) and `add_phonology.py` over `XML/` to regenerate their standard `FORM` and `PHON`. `standardize.py` resets the standard tier from the original tier before applying the TSV, so re-running reproduces existing standard forms while filling the new morphemes. Until this is done, `validate_xml.py` reports V014 (missing standard tier) on those `<M>`.
+
 ### Citation
 
 Early, R. J., and Whitehorn, J. (2003). One hundred Paiwan texts. Pacific Linguistics, Research School of Pacific and Asian Studies, The Australian National University.

@@ -197,11 +197,12 @@
             <FORM kindOf="standard">"kemuda</FORM>
             <PHON kindOf="standard">"kəmuda</PHON>
             <M id="029S2W1M0">
-                <FORM kindOf="original">em=kuda</FORM>
-                <PHON kindOf="original">əm=kuda</PHON>
-                <FORM kindOf="standard">em=kuda</FORM>
-                <PHON kindOf="standard">əm=kuda</PHON>
-                <TRANSL xml:lang="eng">af=do.what</TRANSL>
+                <FORM kindOf="original">-em-</FORM>
+                <TRANSL xml:lang="eng">af</TRANSL>
+            </M>
+            <M id="029S2W1M1">
+                <FORM kindOf="original">k-uda</FORM>
+                <TRANSL xml:lang="eng">do.what</TRANSL>
             </M>
         </W>
         <W id="029S2W2">
@@ -474,11 +475,12 @@
             <FORM kindOf="standard">venli</FORM>
             <PHON kindOf="standard">vənɣi</PHON>
             <M id="029S4W1M0">
-                <FORM kindOf="original">n=veli</FORM>
-                <PHON kindOf="original">n=vəɭi</PHON>
-                <FORM kindOf="standard">n=veli</FORM>
-                <PHON kindOf="standard">n=vəɣi</PHON>
-                <TRANSL xml:lang="eng">af=buy</TRANSL>
+                <FORM kindOf="original">-n-</FORM>
+                <TRANSL xml:lang="eng">af</TRANSL>
+            </M>
+            <M id="029S4W1M1">
+                <FORM kindOf="original">ve-li</FORM>
+                <TRANSL xml:lang="eng">buy</TRANSL>
             </M>
         </W>
         <W id="029S4W2">
@@ -755,7 +757,7 @@
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
-                <TRANSL xml:lang="eng">red</TRANSL>
+                <TRANSL xml:lang="eng">RED</TRANSL>
             </M>
             <M id="029S6W3M2">
                 <FORM kindOf="original">kutsu</FORM>
