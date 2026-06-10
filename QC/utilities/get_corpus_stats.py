@@ -105,8 +105,8 @@ def process_corpus(corpus_path: Path, strict: bool) -> int:
         writer = csv.DictWriter(f, fieldnames=FIELDNAMES)
         writer.writeheader()
         for (language, dialect), values in sorted(buckets.items()):
-            values["transcribed_audio_seconds"] = round(values["transcribed_audio_seconds"], 1)
-            values["untranscribed_audio_seconds"] = round(values["untranscribed_audio_seconds"], 1)
+            values["transcribed_audio_seconds"] = round(float(values["transcribed_audio_seconds"]), 1)
+            values["untranscribed_audio_seconds"] = round(float(values["untranscribed_audio_seconds"]), 1)
             writer.writerow({"language": language, "dialect": dialect, **values})
 
     print(f"Corpus statistics saved to {csv_path} "

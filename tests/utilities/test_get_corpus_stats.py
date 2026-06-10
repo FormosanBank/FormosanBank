@@ -108,3 +108,27 @@ def test_strict_fails_on_parse_error(mini_corpus):
 def test_warnings_reported_on_stderr(mini_corpus):
     result = _run([str(mini_corpus)])
     assert "missing dialect" in result.stderr
+
+
+def test_all_processes_every_corpus_and_propagates_strict(tmp_path):
+    # The CI invocation: --all --strict over a collection root. One corpus
+    # has a parse error (bad.xml); exit code is the worst per-corpus code,
+    # but every corpus's CSV must still be written.
+    corpora_root = tmp_path / "Corpora"
+    shutil.copytree(FIXTURE, corpora_root / "MiniCorpus")
+    clean = corpora_root / "CleanCorpus" / "XML"
+    clean.mkdir(parents=True)
+    shutil.copy(FIXTURE / "XML" / "trv_truku.xml", clean / "trv_truku.xml")
+
+    result = _run(["--all", "--corpora_root", str(corpora_root), "--strict"])
+    assert result.returncode == 1
+    assert (tmp_path / "statistics" / "MiniCorpus_corpora_stats.csv").is_file()
+    assert (tmp_path / "statistics" / "CleanCorpus_corpora_stats.csv").is_file()
+
+    # Stability: a second identical run must produce byte-identical CSVs
+    # (guards the int-0 vs 0.0 seconds churn in CI auto-commits).
+    before = (tmp_path / "statistics" / "MiniCorpus_corpora_stats.csv").read_text()
+    result = _run(["--all", "--corpora_root", str(corpora_root), "--strict"])
+    assert result.returncode == 1
+    after = (tmp_path / "statistics" / "MiniCorpus_corpora_stats.csv").read_text()
+    assert after == before
