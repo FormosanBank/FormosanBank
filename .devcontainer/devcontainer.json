@@ -22,13 +22,33 @@
   ],
 
   "remoteUser": "vscode",
+
+  // NET_ADMIN/NET_RAW let the firewall (postStart) program iptables/ipset.
+  "runArgs": ["--cap-add=NET_ADMIN", "--cap-add=NET_RAW"],
+
+  // postCreate (once): build the Linux .venv + install plugins — needs OPEN
+  // network, and runs BEFORE the firewall below, so it isn't blocked.
   "postCreateCommand": "bash .devcontainer/postCreate.sh",
+  // postStart (every start): bring up the egress-allowlist firewall. iptables
+  // state doesn't survive restarts, so it must re-apply each start. Combined
+  // with the filesystem isolation, this makes bypass-permissions mode safe:
+  // Claude can neither escape /workspace nor reach arbitrary hosts.
+  "postStartCommand": "sudo /workspace/FormosanBank/.devcontainer/init-firewall.sh",
 
   "customizations": {
     "vscode": {
       // Install the Claude Code extension INSIDE the container so the chat
       // panel runs in the isolated environment.
-      "extensions": ["anthropic.claude-code"]
+      "extensions": ["anthropic.claude-code"],
+      // Run container chats prompt-free. SAFE here because the container is the
+      // boundary: filesystem isolation (nothing outside /workspace exists) +
+      // the egress firewall (no arbitrary network). deny rules and PreToolUse
+      // hooks (statistics-block, private-leaks) still apply in bypass mode.
+      // These settings are container-scoped only; the host keeps normal prompting.
+      "settings": {
+        "claudeCode.allowDangerouslySkipPermissions": true,
+        "claudeCode.initialPermissionMode": "bypassPermissions"
+      }
     }
   }
 }

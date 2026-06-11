@@ -13,9 +13,17 @@ FROM mcr.microsoft.com/devcontainers/python:1-3.12-bookworm
 # image and breaks `apt-get update`. We don't need yarn here.
 RUN rm -f /etc/apt/sources.list.d/yarn.list \
     && apt-get update \
-    && apt-get install -y --no-install-recommends git-lfs jq \
+    && apt-get install -y --no-install-recommends \
+        git-lfs jq \
+        iptables ipset dnsutils aggregate \
     && rm -rf /var/lib/apt/lists/* \
     && git lfs install --system
+
+# Let the non-root `vscode` user run the firewall init (iptables/ipset) without
+# a password prompt. Scoped to exactly that one script.
+RUN echo 'vscode ALL=(root) NOPASSWD: /workspace/FormosanBank/.devcontainer/init-firewall.sh' \
+        > /etc/sudoers.d/firewall \
+    && chmod 0440 /etc/sudoers.d/firewall
 
 # Claude Code CLI, so you can run `claude` in any container terminal (the
 # multi-agent pattern: several terminals, each its own prompt-free session).
