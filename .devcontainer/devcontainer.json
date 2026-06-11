@@ -1,0 +1,34 @@
+{
+  // FormosanBank isolated dev container.
+  //
+  // Mounts the WHOLE Formosan parent dir (so cross-repo workflows like
+  // port-corpus-in and gitbook-sync work) and NOTHING else from the host.
+  // Everything outside ~/Documents/Projects/Formosan is invisible inside the
+  // container — that is the isolation boundary.
+  "name": "FormosanBank (isolated)",
+  "build": { "dockerfile": "Dockerfile" },
+
+  // Mount the parent dir at /workspace; open FormosanBank as the working folder.
+  "workspaceMount": "source=${localEnv:HOME}/Documents/Projects/Formosan,target=/workspace,type=bind,consistency=cached",
+  "workspaceFolder": "/workspace/FormosanBank",
+
+  "mounts": [
+    // Linux-native .venv lives in a named volume that SHADOWS the host's
+    // macOS .venv (which can't run in Linux). Persists across rebuilds.
+    "source=formosanbank-venv,target=/workspace/FormosanBank/.venv,type=volume",
+    // Persist the in-container Claude OAuth login so it's one-time, not per-session.
+    // (macOS Keychain creds don't cross into Linux, so the container logs in once.)
+    "source=formosanbank-claude-auth,target=/home/vscode/.claude,type=volume"
+  ],
+
+  "remoteUser": "vscode",
+  "postCreateCommand": "bash .devcontainer/postCreate.sh",
+
+  "customizations": {
+    "vscode": {
+      // Install the Claude Code extension INSIDE the container so the chat
+      // panel runs in the isolated environment.
+      "extensions": ["anthropic.claude-code"]
+    }
+  }
+}
