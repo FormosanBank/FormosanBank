@@ -618,6 +618,9 @@ def history_row(repo_root: Path, commit: str, metrics: dict[str, Any]) -> dict[s
         "sources": metrics["totals"]["sources"],
         "languages": metrics["totals"]["languages"],
         "parse_errors": metrics["totals"]["parse_errors"],
+        "transcribed_audio_seconds": metrics["totals"]["transcribed_audio_seconds"],
+        "zho_transl_count": metrics["totals"]["zho_transl_count"],
+        "glossed_words": metrics["totals"]["glossed_words"],
     }
 
 
@@ -640,6 +643,9 @@ def history_row_from_records(
         "sources": totals["sources"],
         "languages": totals["languages"],
         "parse_errors": totals["parse_errors"],
+        "transcribed_audio_seconds": totals["transcribed_audio_seconds"],
+        "zho_transl_count": totals["zho_transl_count"],
+        "glossed_words": totals["glossed_words"],
     }
 
 
@@ -745,6 +751,9 @@ def append_history_row(repo_root: Path, cache_path: Path, metrics: dict[str, Any
         "sources": metrics["totals"]["sources"],
         "languages": metrics["totals"]["languages"],
         "parse_errors": metrics["totals"]["parse_errors"],
+        "transcribed_audio_seconds": metrics["totals"]["transcribed_audio_seconds"],
+        "zho_transl_count": metrics["totals"]["zho_transl_count"],
+        "glossed_words": metrics["totals"]["glossed_words"],
     }
     if rows and rows[-1].get("commit") == head:
         rows[-1] = row
@@ -814,7 +823,9 @@ def generate_history(
 
 def write_history_csv(rows: list[dict[str, Any]], output_dir: Path) -> Path:
     path = output_dir / "corpus_size_history.csv"
-    fieldnames = ["date", "commit", "tokens", "sentences", "xml_files", "sources", "languages", "parse_errors"]
+    fieldnames = ["date", "commit", "tokens", "sentences", "xml_files", "sources",
+                  "languages", "parse_errors", "transcribed_audio_seconds",
+                  "zho_transl_count", "glossed_words"]
     with open(path, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()

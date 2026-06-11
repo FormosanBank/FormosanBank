@@ -114,3 +114,21 @@ def test_xml_path_aggregates_glossed_and_mandarin_but_zero_seconds(tmp_path):
     assert totals["glossed_words"] == 3
     assert totals["zho_transl_count"] == 3
     assert totals["transcribed_audio_seconds"] == 0
+
+
+def test_history_row_carries_new_metric_columns(tmp_path):
+    _write_stats(tmp_path / "statistics")
+    cache = tmp_path / "cache.csv"
+    result = _run(["Corpora", "--stats-dir", str(tmp_path / "statistics"),
+                   "--output-dir", str(tmp_path / "out"), "--no-plots",
+                   "--history", "--history-cache", str(cache)])
+    assert result.returncode == 0, result.stderr
+    with open(tmp_path / "out" / "corpus_size_history.csv", newline="") as f:
+        rows = list(csv.DictReader(f))
+    head = rows[-1]
+    assert "transcribed_audio_seconds" in head
+    assert "zho_transl_count" in head
+    assert "glossed_words" in head
+    assert int(head["glossed_words"]) == 3
+    assert int(head["zho_transl_count"]) == 3
+    assert float(head["transcribed_audio_seconds"]) == 1.0
