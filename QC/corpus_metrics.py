@@ -795,8 +795,6 @@ def generate_history(
     repo_root: Path,
     max_commits: int,
     current_metrics: dict[str, Any] | None = None,
-    current_records: list[dict[str, Any]] | None = None,
-    current_parse_errors: list[dict[str, str]] | None = None,
 ) -> list[dict[str, Any]]:
     rows = []
     commits = history_commits(repo_root, max_commits)
@@ -984,11 +982,7 @@ def main(argv: list[str] | None = None) -> int:
             print("--history-rebuild requires XML mode (omit --stats-dir).", file=sys.stderr)
             return 2
         repo_root = repo_root_from(corpora_path.resolve())
-        history_rows = generate_history(
-            repo_root, args.max_history_commits, metrics,
-            current_records=current_records,
-            current_parse_errors=current_parse_errors,
-        )
+        history_rows = generate_history(repo_root, args.max_history_commits, metrics)
         write_history_csv(history_rows, output_dir)
         if not args.no_plots:
             plot_history(history_rows, output_dir)
