@@ -39,6 +39,24 @@ echo "[postCreate] installing deps from requirements.txt ..."
 # `hf` CLI for audio downloads (huggingface_hub[cli] extra).
 .venv/bin/python -m pip install --quiet "huggingface_hub[cli]"
 
+# --- Claude Code plugins -------------------------------------------------
+# Mirror the host's enabled plugin set so custom skills (superpowers
+# workflows, pr-review-toolkit, plugin-dev, etc.) are available in the
+# container. Plugins install into the persisted ~/.claude named volume, so
+# this is effectively one-time (re-runs find them already present). Headless-
+# safe: fetching from GitHub needs no TTY and no Claude auth. typescript-lsp
+# is intentionally omitted (pure-Python project; project settings disable it).
+echo "[postCreate] provisioning Claude Code plugins ..."
+claude plugin marketplace add anthropics/claude-plugins-official >/dev/null 2>&1 || true
+for p in superpowers code-review skill-creator github claude-md-management \
+         claude-code-setup pr-review-toolkit plugin-dev hookify pyright-lsp; do
+  if claude plugin install "${p}@claude-plugins-official" >/dev/null 2>&1; then
+    echo "[postCreate]   + ${p}"
+  else
+    echo "[postCreate]   ! ${p} (skipped / already present)"
+  fi
+done
+
 echo "[postCreate] done. Linux .venv ready at $WS/.venv"
 echo "[postCreate] NOTE: if Claude is not yet authenticated in this container,"
 echo "[postCreate]       run 'claude login' once; the token persists in the"
