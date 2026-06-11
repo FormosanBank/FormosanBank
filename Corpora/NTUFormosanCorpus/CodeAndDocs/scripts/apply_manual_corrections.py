@@ -81,6 +81,28 @@ CORRECTIONS = [
      "caliw sa kya taywan u, tu pida tu mih-mihca-an."),
 ]
 
+# 3. Fullwidth equals (＝) used as a clitic boundary or in gloss strings;
+#    normalized to ASCII '=' consistent with clean_xml's fullwidth-punctuation
+#    handling (all tiers; the parser's clean_punctuation lacks this mapping).
+FW_EQ = [
+    ("Sentences/Bunun/Bunun.xml", "61_S_2", "FORM", None, "nii＝ik", "nii=ik"),
+    ("Sentences/Bunun/Bunun.xml", "63_S_781", "TRANSL", None, "PF＝COS", "PF=COS"),
+    ("Sentences/Bunun/Bunun.xml", "54_S_12", "TRANSL", None, "PF＝COS", "PF=COS"),
+    ("Stories/Bunun/Bunun_bnNr-frog_Adus.xml", "bnNr-frog_Adus_S_39", "TRANSL", None,
+     "虎頭蜂＝遠距", "虎頭蜂=遠距"),
+    ("Stories/Bunun/Bunun_bnNr-frog_Laniahu.xml", "bnNr-frog_Laniahu_S_53", "TRANSL", None,
+     "狗＝遠距", "狗=遠距"),
+    ("Grammar/Sakizaya/Sakizaya.xml", "ap1_S_76", "TRANSL", None,
+     "走＝完成貌", "走=完成貌"),
+    ("Stories/Saisiyat/Saisiyat_SaiNr-election_lahi_ a taro_ babay.xml",
+     "SaiNr-election_lahi_ a taro_ babay_S_3", "TRANSL", None, "那＝你", "那=你"),
+    ("Sentences/Kanakanavu/Kanakanavu.xml", "3_S_436", "FORM", None,
+     "nomani＝nguain", "nomani=nguain"),
+    ("Sentences/Kanakanavu/Kanakanavu.xml", "3_S_437", "FORM", None,
+     "in＝kee", "in=kee"),
+]
+CORRECTIONS.extend(FW_EQ)
+
 # (relative file, S id, notes value set on the S-level original FORM)
 NOTES = [
     (_SKZY, "13_S_38", "Source cites NTU Formosan Corpus skzyNr-movingkulang IU100-101"),

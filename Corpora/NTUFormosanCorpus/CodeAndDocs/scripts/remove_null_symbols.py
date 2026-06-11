@@ -50,7 +50,7 @@ import lxml.etree as etree
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from _phon_regen import language_of, load_mappings, regen_standard_phon  # noqa: E402
 
-DEFAULT_CHARS = "∅ø"
+DEFAULT_CHARS = "∅øØ"
 
 
 def strip_symbols(text, chars):
