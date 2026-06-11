@@ -19,6 +19,8 @@ from QC.utilities.dialect_detector_pkg.graphemes import (
 COMPONENTS = ["orthography", "char", "bigram", "word"]
 DEFAULT_UNKNOWN_THRESHOLD = 0.50
 
+IN_SCOPE_LANGS = ["ami", "tay", "bnn", "pwn", "pyu", "dru", "trv"]
+
 
 def language_name_for(lang_code: str) -> str | None:
     if lang_code == "trv":
@@ -191,6 +193,17 @@ def load_model(path: Path) -> DialectModel:
         threshold=d.get("threshold", DEFAULT_UNKNOWN_THRESHOLD),
         components=d.get("components", list(COMPONENTS)),
     )
+
+
+def train_all(corpora_path, orthographies_path, models_dir, top_n=2000) -> list[str]:
+    trained = []
+    for lc in IN_SCOPE_LANGS:
+        model = build_model(lc, corpora_path, orthographies_path, top_n=top_n)
+        if model is None:
+            continue
+        save_model(model, Path(models_dir) / f"{model.language_name}.json")
+        trained.append(lc)
+    return trained
 
 
 @dataclass(frozen=True)
