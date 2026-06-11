@@ -132,3 +132,19 @@ def test_history_row_carries_new_metric_columns(tmp_path):
     assert int(head["glossed_words"]) == 3
     assert int(head["zho_transl_count"]) == 3
     assert float(head["transcribed_audio_seconds"]) == 1.0
+
+
+def test_history_plots_emit_four_pngs(tmp_path):
+    # Use the real subprocess path WITH plots (omit --no-plots). Seed stats and
+    # a one-row cache so there is a dated row to plot.
+    _write_stats(tmp_path / "statistics")
+    out = tmp_path / "out"
+    result = _run(["Corpora", "--stats-dir", str(tmp_path / "statistics"),
+                   "--output-dir", str(out), "--history",
+                   "--history-cache", str(tmp_path / "cache.csv")])
+    assert result.returncode == 0, result.stderr
+    for name in ("corpus_size_over_time.png",
+                 "corpus_transcribed_audio_over_time.png",
+                 "corpus_mandarin_words_over_time.png",
+                 "corpus_glossed_words_over_time.png"):
+        assert (out / name).is_file(), f"missing {name}"
