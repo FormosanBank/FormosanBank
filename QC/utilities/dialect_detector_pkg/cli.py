@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -43,7 +44,12 @@ def _cmd_predict(a) -> int:
             continue
         if name not in cache:
             mp = Path(a.models_dir) / f"{name}.json"
-            cache[name] = M.load_model(mp) if mp.exists() else None
+            cache[name] = None
+            if mp.exists():
+                try:
+                    cache[name] = M.load_model(mp)
+                except (json.JSONDecodeError, KeyError, OSError) as exc:
+                    print(f"{xml_path}: could not load model {mp}: {exc}")
         model = cache[name]
         if model is None:
             print(f"{xml_path}: no trained model for {name} (run `train`)")
@@ -67,6 +73,7 @@ def _cmd_evaluate(a) -> int:
     for lc in langs:
         model = M.build_model(lc, a.corpora_path, a.orthographies, a.top_n)
         if model is None:
+            print(f"  (skipping {lc}: unsupported language or no trainable data)")
             continue
         rep = evaluate_language(lc, model, a.corpora_path)
         print(f"\n{rep['language']} ({lc}): n={rep['n']} "
