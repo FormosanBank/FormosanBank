@@ -240,7 +240,9 @@ The script writes:
 - `corpus_language_tokens.png`
 - `corpus_source_tokens.png`
 - `corpus_benchmark_comparison.png`
-- `corpus_size_history.csv` and `corpus_size_over_time.png` when `--history` is used
+- `corpus_size_history.csv` when `--history` is used, plus four time-series PNGs: `corpus_size_over_time.png` (tokens), `corpus_transcribed_audio_over_time.png` (hours), `corpus_mandarin_words_over_time.png`, and `corpus_glossed_words_over_time.png`
+
+The history CSV carries, per commit: `tokens`, `sentences`, `xml_files`, `sources`, `languages`, `parse_errors`, `transcribed_audio_seconds`, `zho_transl_count`, and `glossed_words`. The `transcribed_audio_seconds` series is **forward-only**: audio durations cannot be reconstructed from git history (audio files are not in the repo), so `--history-rebuild` writes 0 for historical rows and the series accumulates from rollout onward. Keep it current by running [QC/utilities/update_audio_stats.py](utilities/update_audio_stats.py) against downloaded audio so the per-corpus CSVs carry real seconds; the normal CI `--history` append then picks them up.
 
 `--history` appends **one row at HEAD** to the size-over-time CSV (replacing the row if re-run on the same commit). To rebuild the entire history from git blobs under the current counting rules (slow full first-parent walk; XML mode only, omit `--stats-dir`):
 
@@ -253,7 +255,7 @@ python QC/corpus_metrics.py Corpora \
 
 History rows written before 2026-06 used different counting rules (first FORM, all whitespace chunks); a `--history-rebuild` run restates all rows under the current rules.
 
-During history rebuild, `corpus_metrics.py` prints progress to stderr for each sampled commit so long runs show status instead of appearing hung. The GitHub workflow uploads the full `corpus-metrics/` directory as a 30-day Actions artifact; on pushes to `main`, the per-corpus CSVs, `statistics/corpus_size_history.csv`, and `statistics/corpus_size_over_time.png` are committed back.
+During history rebuild, `corpus_metrics.py` prints progress to stderr for each sampled commit so long runs show status instead of appearing hung. The GitHub workflow uploads the full `corpus-metrics/` directory as a 30-day Actions artifact; on pushes to `main`, the per-corpus CSVs, `statistics/corpus_size_history.csv`, and the four time-series PNGs are committed back.
 
 ## Token Delta Regression
 
