@@ -173,4 +173,18 @@ Hand-verified single corrections that are too specific for a general rule live i
     python CodeAndDocs/scripts/apply_manual_corrections.py
 ```
 
-Idempotent (applied corrections stop matching and are reported as no-match). New one-off fixes should be added to the table in the script rather than edited directly into the XML, so they survive regeneration.
+Idempotent (applied corrections stop matching and are reported as no-match). New one-off fixes should be added to the table in the script rather than edited directly into the XML, so they survive regeneration. The table also repairs the three Grammar/Sakizaya sentences whose source records *cite* corpus examples instead of restating them (`13_S_38`, `13_S_39`, `13_S_48`): the IU numbers and pause durations fused to the first word of each intonation unit are stripped from the W/M forms, the S FORM is rebuilt from the cleaned words, the citation is preserved in a `notes` attribute on the S-level original FORM, and PHON is regenerated (witness-gated).
+
+* **10. Repair code-switch (L2) markup**
+
+The source marks code-switched words with tags like `<L2JjidenshaL2J>` (J/M/T/... = the language switched into). Well-formed tags are stripped by the parsers, but the source contains ~30 malformed spellings — transposed closers (`<L2MpiaocunLM2>`), missing `>` (`<L2JjidenshaL2J`), letterless tags (`<L2siyencL2>`, where the stripper previously ate the word's first letter: published `iyenc` for source `siyenc`; likewise `haiya`), square-bracket variants (`[L2JmaemotteL2J]`), and tags inside gloss strings (TRANSL), which were never stripped at all. This step applies a hand-audited token map (every contaminated token in the corpus → its correct form, derived from and verified against the source JSONs):
+
+```bash
+    python CodeAndDocs/scripts/repair_l2_markers.py
+```
+
+**Notes**
+   - Tokens are replaced only on exact match, so clean text cannot be affected; gloss notation like `2SG`/`2PL` is untouched. A gloss that was only a marker becomes a properly empty TRANSL. A FORM is never emptied; the one known marker-only morpheme (`L2M-L2M` under Kanakanavu `kkvNr_dailylife_Angai_S_11_W0`, with its echo-gloss sibling) is left as-is and reported on every run — it needs a structural (manual) fix.
+   - PHON of affected elements is regenerated through the Ortho113 mapping, gated by the pre-change original-tier witness check.
+   - The parser-side stripper (`strip_l2m` in `scripts/utils.py`) is intentionally left unchanged: this post-step runs after parsing in the pipeline and converges the output regardless, without risking an over-eager regex in the parser (the eaten-letter bug came from exactly that).
+   - Same conventions as steps 4-7: byte-identical round-trip guard, idempotent.
