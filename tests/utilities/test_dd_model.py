@@ -1,5 +1,6 @@
+import xml.etree.ElementTree as ET
 from pathlib import Path
-from QC.utilities.dialect_detector_pkg.model import build_model, COMPONENTS, save_model, load_model
+from QC.utilities.dialect_detector_pkg.model import build_model, COMPONENTS, save_model, load_model, predict_root
 
 
 def _toy_tsv(orth: Path):
@@ -51,3 +52,19 @@ def test_save_load_roundtrip_preserves_ranking(tmp_path, monkeypatch):
     loaded = load_model(out)
     assert loaded.dialects == model.dialects
     assert loaded.score_text("vik viva")[0][0] == model.score_text("vik viva")[0][0]
+
+
+def test_predict_unknown_when_below_threshold(tmp_path, monkeypatch):
+    import QC.utilities.dialect_detector_pkg.candidates as cand
+    monkeypatch.setattr(cand, "candidate_dialects", lambda lc: ["Alpha", "Beta"])
+    import QC.utilities.dialect_detector_pkg.model as m
+    monkeypatch.setattr(m, "language_name_for", lambda lc: "Toy")
+    orth = tmp_path / "orth"; _toy_tsv(orth)
+    corp = tmp_path / "corp"; _toy_corpus(corp)
+    model = build_model("toy", corp, orth, top_n=100)
+    model.threshold = 0.99   # force unknown for a clear Alpha doc
+    root = ET.fromstring('<TEXT xml:lang="toy" dialect="unknown">'
+                         '<S id="1"><FORM kindOf="standard">vik viva</FORM></S></TEXT>')
+    pred = predict_root(model, root)
+    assert pred.top == "Alpha"            # ranking still reported
+    assert pred.is_unknown is True        # but gated

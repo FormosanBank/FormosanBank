@@ -11,7 +11,7 @@ from QC.validation._dialect_inventory import ISO_TO_LANGUAGE
 from QC.utilities.dialect_detector_pkg import features as F
 from QC.utilities.dialect_detector_pkg import candidates as C
 from QC.utilities.dialect_detector_pkg.combiner import fit_combiner, predict_proba
-from QC.utilities.dialect_detector_pkg.data import iter_labeled_documents
+from QC.utilities.dialect_detector_pkg.data import extract_standard_text, iter_labeled_documents
 from QC.utilities.dialect_detector_pkg.graphemes import (
     alphabet_of, load_letter_inventories, tokenize_graphemes,
 )
@@ -191,3 +191,20 @@ def load_model(path: Path) -> DialectModel:
         threshold=d.get("threshold", DEFAULT_UNKNOWN_THRESHOLD),
         components=d.get("components", list(COMPONENTS)),
     )
+
+
+@dataclass(frozen=True)
+class Prediction:
+    top: str | None
+    probability: float
+    ranked: list[tuple[str, float, dict[str, float]]]
+    is_unknown: bool
+
+
+def predict_root(model: DialectModel, root) -> Prediction:
+    text = extract_standard_text(root)
+    if not text:
+        return Prediction(None, 0.0, [], True)
+    ranked = model.score_text(text)
+    top, prob, _ = ranked[0]
+    return Prediction(top, prob, ranked, prob < model.threshold)
