@@ -22,6 +22,6 @@ def reconcile_label(raw: str, candidates: list[str]) -> str | None:
     if raw in candidates:
         return raw
     aliased = DIALECT_ALIASES.get(raw)
-    if aliased in candidates:
+    if aliased is not None and aliased in candidates:
         return aliased
     return None

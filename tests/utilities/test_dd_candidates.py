@@ -17,3 +17,5 @@ def test_reconcile_exact_and_alias():
     assert reconcile_label("Xiqun", cands) == "Xiqun"          # exact
     assert reconcile_label("Chulu", cands) == "Xiqun"          # alias (初鹿->西群)
     assert reconcile_label("NoSuchDialect", cands) is None
+    # an alias whose target is not among these candidates also yields None
+    assert reconcile_label("Toda", cands) is None              # Toda->Duda, not a Puyuma candidate
