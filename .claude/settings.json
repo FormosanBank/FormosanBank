@@ -1,4 +1,9 @@
 {
+  "permissions": {
+    "additionalDirectories": [
+      "/workspace"
+    ]
+  },
   "hooks": {
     "PreToolUse": [
       {
