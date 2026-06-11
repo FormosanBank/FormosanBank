@@ -3,8 +3,16 @@
 Helper function to standardize punctuation spacing in FORM and PHON elements across all XML files.
 
 Rules:
-1. Remove whitespace before "?", ",", and "."
-2. Add whitespace after "?", ",", and "." (unless it's the final character or followed by punctuation)
+1. Remove whitespace before "?", "!", ",", and "."
+2. Add whitespace after "?", "!", ",", and "." (unless it's the final character or followed by punctuation)
+
+"!" is handled here, parallel to "?", so that ePark1/2 outputs (whose generator
+ePark1and2.py does no text cleaning) receive the same sentence-punctuation
+spacing as ePark3 outputs (whose ePark3.py clean_text() already splits
+run-together sentences on "!"). This pass runs over all of Final_XML, so it is
+the single authoritative, uniform punctuation-spacing step. By the time it runs,
+clean_xml.py has already mapped full-width "！" and other typographic punctuation
+to ASCII, so only ASCII forms need to be matched here.
 """
 
 import os
@@ -17,29 +25,33 @@ def fix_punctuation_spacing(text):
     Fix punctuation spacing according to the rules:
     1. Remove whitespace at the beginning of text
     2. Remove whitespace at the end of text
-    3. Remove whitespace before "?", ",", "."
+    3. Remove whitespace before "?", "!", ",", "."
     4. Replace " : " with ": " (remove space before colon)
-    5. Add whitespace after "?", ",", and "." (unless it's the final character or followed by punctuation)
+    5. Add whitespace after "?", "!", ",", and "." (unless it's the final character or followed by punctuation)
     """
     if not text:
         return text
-    
+
     # Remove whitespace at the beginning and end of text
     text = text.strip()
-    
-    # Remove whitespace before "?", ",", and "."
-    text = re.sub(r'\s+([?,.])(?!\d)', r'\1', text)  # Don't remove space before . in numbers
-    
+
+    # Remove whitespace before "?", "!", ",", and "."
+    text = re.sub(r'\s+([?!,.])(?!\d)', r'\1', text)  # Don't remove space before . in numbers
+
     # Replace " : " with ": " (remove space before colon)
     text = re.sub(r'\s+:\s*"', ': "', text)
-    
+
     # Replace ",:" with ":" (remove comma before colon)
     text = re.sub(r',:(?=\s*")', ':', text)
-    
+
     # Add whitespace after "?" if not already present and not at end of string
     # and not followed by common punctuation marks
     text = re.sub(r'\?(?!\s|$|["\')\]\},.;:])', '? ', text)
-    
+
+    # Add whitespace after "!" (parallel to "?") if not already present and not
+    # at end of string and not followed by common punctuation marks
+    text = re.sub(r'!(?!\s|$|["\')\]\},.;:])', '! ', text)
+
     # Add whitespace after "," if not already present and not at end of string
     # and not followed by common punctuation marks
     text = re.sub(r',(?!\s|$|["\')\]\}?,.;:])', ', ', text)
@@ -47,6 +59,14 @@ def fix_punctuation_spacing(text):
     # Add whitespace after "." if not already present and not at end of string
     # and not followed by common punctuation marks or digits (for decimals)
     text = re.sub(r'\.(?!\s|$|["\')\]\}?,.;:]|\d)', '. ', text)
+
+    # In Formosan orthographies the apostrophe (and IPA ʔ/ʡ in PHON) is a
+    # glottal-stop LETTER that can begin a word, not a closing quote. The rules
+    # above exclude it as closing punctuation, so a sentence mark running
+    # straight into a glottal-initial word (e.g. source "akən!'aijaŋa") is left
+    # merged. Add the missing space when a glottal stop directly follows ? ! , .
+    # and itself begins a word.
+    text = re.sub(r"([?!,.])(?=['’ʔʡ][^\W\d_])", r'\1 ', text)
     
     return text
 

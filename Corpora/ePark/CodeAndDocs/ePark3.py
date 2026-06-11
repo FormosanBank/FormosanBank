@@ -14,6 +14,14 @@ def clean_text(text):
     """Normalize whitespace and obvious sentence-punctuation spacing."""
     if text is None:
         return None
+    # Strip the ePark sentence-pattern instructional boilerplate that the source
+    # appends to many Chinese translations: "如果會話只有兩句本欄位請勿更動"
+    # ("if the conversation has only two sentences, do not change this field").
+    # It occurs 8,778x in the ePark_3 sentence-pattern source (句型篇國中/高中) and
+    # never in the published corpus, i.e. it was stripped out-of-pipeline before.
+    # Removing it here reproduces that. It never appears in Formosan FORM text,
+    # so applying this to all clean_text() callers is harmless.
+    text = text.replace("如果會話只有兩句本欄位請勿更動", "")
     # Remove spaces before common punctuation.
     text = re.sub(r'\s+([?!,！？，。])', r'\1', text)
     text = re.sub(r'\s+\.([^0-9])', r'.\1', text)
@@ -239,37 +247,54 @@ def process_epark_sentence_patterns(ePark, path, output_path, dialects, lang_cod
         
         root = create_root(ePark, dialect, lang_codes[lang])
         
-        for file in os.listdir(dialect_path):
+        # Sort for deterministic <S> ordering across runs (os.listdir is unordered).
+        for file in sorted(os.listdir(dialect_path)):
             tree = ET.parse(os.path.join(dialect_path, file))
             to_read_root = tree.getroot()
-            
+            # autoId is only unique *within* a source file, but all of a dialect's
+            # files are merged into one output root. Namespace the S id with the
+            # source-file stem so ids stay unique within the file (V039 / schema
+            # unique_id_within_file).
+            file_stem = os.path.splitext(file)[0]
+
             for item in to_read_root.findall('.//item'):
                 to_append = process_item_by_type(ePark, item, types, os.path.join(audio_path, idx))
                 if to_append:
                     for i, entry in enumerate(to_append):
-                        id = item.find("autoId").text if i == 0 else item.find("autoId").text+f"_{i}"
+                        auto_id = item.find('autoId').text
+                        base_id = f"{file_stem}_{auto_id}"
+                        id = base_id if i == 0 else f"{base_id}_{i}"
+                        # The AUDIO @file keeps the raw autoId (NOT the namespaced
+                        # S id): sentence-pattern audio was originally downloaded as
+                        # <autoId>.wav and is NOT regenerable from this repo (the
+                        # source sound/ tree was not retained), so the filename must
+                        # stay stable to match the published/HuggingFace audio.
+                        # Where autoId collides across source files the files share
+                        # one audio name, as in the published corpus.
+                        audio_name = auto_id if i == 0 else f"{auto_id}_{i}"
                         form, trans, audio = entry
                         s_element = ET.SubElement(root, "S")
                         s_element.set("id", id)
-                        
+
                         form_element = ET.SubElement(s_element, "FORM")
+                        form_element.set("kindOf", "original")
                         form_element.text = form
 
                         transl_element = ET.SubElement(s_element, "TRANSL")
-                        transl_element.set("xml:lang", "zh")
+                        transl_element.set("xml:lang", "zho")
                         transl_element.text = trans
-                        
+
                         if audio:
-                            if not os.path.exists(os.path.join(audio_output, id + ".mp3")):
+                            if not os.path.exists(os.path.join(audio_output, audio_name + ".mp3")):
                                 try:
-                                    shutil.copy(audio, os.path.join(audio_output, id + ".mp3"))
+                                    shutil.copy(audio, os.path.join(audio_output, audio_name + ".mp3"))
                                     audio_element = ET.SubElement(s_element, "AUDIO")
-                                    audio_element.set("file", id + ".mp3")
+                                    audio_element.set("file", audio_name + ".mp3")
                                 except:
                                     print(f"Failed to copy audio: {idx}, {file}")
                             else:
                                 audio_element = ET.SubElement(s_element, "AUDIO")
-                                audio_element.set("file", id + ".mp3")
+                                audio_element.set("file", audio_name + ".mp3")
         try:
             xml_string = prettify(root)
         except Exception as e:
@@ -331,9 +356,13 @@ def process_data_point(data_point, dialects, audio_output_dict, download_url, eP
     transl_text = clean_text(data_point[4])
 
     # Some ePark picture-book rows are illustration-only pages. They have IDs
-    # and ordering metadata but no text, translation, or usable sentence audio.
-    # These should not become empty <S> entries in final corpus XML.
-    if not has_text(form_text) and not has_text(transl_text):
+    # and ordering metadata but no Formosan text. Many carry a Chinese placeholder
+    # such as "(無文字)" / "有圖無字" ("this page has a picture, no text"), so the
+    # row is only blank on the Formosan side. A Formosan corpus entry with no
+    # FORM content is useless and invalid per the schema (FORM must have content;
+    # validate_xml.py V017/V073), so skip whenever the Formosan form is blank
+    # regardless of whether a Chinese placeholder is present.
+    if not has_text(form_text):
         skipped_entry = [
             ePark,
             data_point[0],
@@ -350,10 +379,11 @@ def process_data_point(data_point, dialects, audio_output_dict, download_url, eP
     s_element.set("id", data_point[0])
 
     form_element = ET.SubElement(s_element, "FORM")
+    form_element.set("kindOf", "original")
     form_element.text = form_text
 
     transl_element = ET.SubElement(s_element, "TRANSL")
-    transl_element.set("xml:lang", "zh")
+    transl_element.set("xml:lang", "zho")
     transl_element.text = transl_text
 
     audio_url = f"{download_url}/{data_point[1]}/{data_point[0]}.mp3"
@@ -461,10 +491,11 @@ def process_epark_topics_with_csv(ePark, path, output_path, dialects, lang_codes
             s_element.set("id", id)
 
             form_element = ET.SubElement(s_element, "FORM")
+            form_element.set("kindOf", "original")
             form_element.text = clean_text(data_point[3])
 
             transl_element = ET.SubElement(s_element, "TRANSL")
-            transl_element.set("xml:lang", "zh")
+            transl_element.set("xml:lang", "zho")
             transl_element.text = clean_text(data_point[4])
             
             audio = os.path.join(path, idx, f"{data_point[0]}_{data_point[1]}_V{data_point[2]}.mp3")
@@ -558,10 +589,11 @@ def process_topics4and5_items(item, tag_org, tag_zh, root, path, idx, audio_outp
         s_element.set("id", id)
         
         form_element = ET.SubElement(s_element, "FORM")
+        form_element.set("kindOf", "original")
         form_element.text = sen
 
         transl_element = ET.SubElement(s_element, "TRANSL")
-        transl_element.set("xml:lang", "zh")
+        transl_element.set("xml:lang", "zho")
         transl_element.text = trans
 
         if tag_org == "con_AB":
@@ -633,13 +665,14 @@ def process_epark_conversation_reading(ePark, path, output_path, dialects, lang_
             s_element.set("id", id)
             
             form_element = ET.SubElement(s_element, "FORM")
+            form_element.set("kindOf", "original")
             if ePark == "生活會話篇":
                 form_element.text = clean_text(item.find("lessonAB").text)
             elif ePark == "閱讀書寫篇":
                 form_element.text = clean_text(item.find("lessonAb").text)
 
             transl_element = ET.SubElement(s_element, "TRANSL")
-            transl_element.set("xml:lang", "zh")
+            transl_element.set("xml:lang", "zho")
             if ePark == "生活會話篇":
                 transl_element.text = clean_text(item.find("lessonCH").text)
             elif ePark == "閱讀書寫篇":
@@ -733,11 +766,15 @@ def main():
     process_epark_sentence_patterns("句型篇國中", "./ePark_3/1.句型篇國中", "./Final_XML", dialects, lang_codes)
     process_epark_sentence_patterns("句型篇高中", "./ePark_3/2.句型篇高中", "./Final_XML", dialects, lang_codes)
     process_epark_topics_with_csv("圖畫故事篇", "./ePark_3/3.圖畫故事篇", "./Final_XML", dialects, lang_codes, "klokah_story_sentence.csv", "https://web.klokah.tw/text/sound/")
-    process_epark_conversation_reading("生活會話篇", "./ePark_3/4.生活會話篇", "./Final_XML", dialects, lang_codes, "conversation.xml")
-    process_epark_conversation_reading("閱讀書寫篇", "./ePark_3/5.閱讀書寫篇", "./Final_XML", dialects, lang_codes, "reading.xml")
-    process_epark_topics_with_csv("文化篇", "./ePark_3/6.文化篇", "./Final_XML", dialects, lang_codes, "klokah_cuture_sentence.csv", "https://web.klokah.tw/text/sound/")
-    process_epark_topics_with_csv("情境族語", "./ePark_3/7.情境族語", "./Final_XML", dialects, lang_codes, "klokah_dialogue_sentence.csv", "https://web.klokah.tw/text/sound/")
-    process_epark_topics_with_csv("族語短文", "./ePark_3/8.族語短文", "./Final_XML", dialects, lang_codes, "klokah_essay_sentence.csv", "https://web.klokah.tw/text/sound/")
+    # ePark_3 topics 4-8 (生活會話篇 / 閱讀書寫篇 / 文化篇 / 情境族語 / 族語短文) are
+    # intentionally NOT generated here. Their published subcorpora
+    # (sheng_huo_hui_hua_pian, yue_du_shu_xie_pian, wen_hua_pian, qing_jing_zu_yu,
+    # zu_yu_duan_wen) are produced from the equivalent ePark_2 topics by
+    # ePark1and2.py — the per-subcorpus S counts match ePark_2 exactly, so the
+    # ePark_3 versions were redundant duplicates. The ePark_3 source for these
+    # topics was not retained in this repo (nor the dev repo), and generating
+    # them would only reintroduce duplicates that a later dedup step removed.
+    # Leaving the calls in place crashed the run before topic 9 (繪本平台) below.
     process_epark_topics_with_csv("繪本平台", "./ePark_3/9.繪本平台", "./Final_XML", dialects, lang_codes, "klokah_PBC_sentence.csv", "https://web.klokah.tw/text/sound/")
 
 if __name__ == "__main__":

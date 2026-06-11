@@ -186,6 +186,18 @@ Different subcorpora appear to use different orthographies, so they need to be s
    python ../FormosanBank/QC/utilities/add_phonology.py --corpora_path Final_XML/zu_yu_duan_wen_indigenous_language_essays --orthography Ortho113
 ```
 
+After `add_phonology`, drop the original-tier PHON elements that came out fully
+unmapped. Some dialect/orthography combinations have no letter→IPA mapping (most
+notably YilanZeaol Atayal in `jiu_jie_jiao_cai`, phonologized with Ortho94 whose
+YilanZeaol column is entirely `NA`), so `add_phonology` emits placeholder strings
+like `"**** ****"`. This removes any `PHON[@kindOf="original"]` whose content is
+only `*` placeholders (the standard-tier PHON, built from the mappable
+standardized text, is kept):
+
+```bash
+   python drop_unmapped_phon.py --final_xml_dir Final_XML
+```
+
 6. **More**
 
 So ePark is a very complex datasource. It contains repeated names. It also contains a lot of Chinese in filenames, which are problems for some computers. We have a series of scripts that clean this up. It would be better to do this much earlier in the process. Feel free to submit a pull request!
