@@ -1,5 +1,37 @@
 from __future__ import annotations
 
+from pathlib import Path
+from collections import defaultdict
+from QC.utilities.dialect_detector_pkg.data import iter_labeled_documents
+
+
+def evaluate_language(lang_code: str, model, corpora_path: Path) -> dict:
+    kept, _dropped = iter_labeled_documents(corpora_path, lang_code)
+    confusion: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
+    top1 = top2 = n = 0
+    ambiguous: list[tuple[float, str, str, str]] = []  # (margin, path, true, pred)
+    for doc in kept:
+        ranked = model.score_text(doc.text)
+        if not ranked:
+            continue
+        n += 1
+        pred = ranked[0][0]
+        confusion[doc.dialect][pred] += 1
+        top1 += int(pred == doc.dialect)
+        top2 += int(doc.dialect in {r[0] for r in ranked[:2]})
+        margin = ranked[0][1] - (ranked[1][1] if len(ranked) > 1 else 0.0)
+        ambiguous.append((margin, str(doc.path), doc.dialect, pred))
+    ambiguous.sort(key=lambda r: r[0])
+    return {
+        "language": getattr(model, "language_name", lang_code),
+        "confusion": {k: dict(v) for k, v in confusion.items()},
+        "metrics": metrics_from_confusion({k: dict(v) for k, v in confusion.items()}),
+        "top1": top1 / n if n else 0.0,
+        "top2": top2 / n if n else 0.0,
+        "n": n,
+        "most_ambiguous": ambiguous[:20],
+    }
+
 
 def metrics_from_confusion(confusion: dict[str, dict[str, int]]) -> dict[str, float]:
     dialects = sorted(confusion)
