@@ -198,6 +198,19 @@ standardized text, is kept):
    python drop_unmapped_phon.py --final_xml_dir Final_XML
 ```
 
+Finally, **re-run `clean_xml.py` now that the standard tier exists**. The earlier
+`clean_xml` pass (step "Clean XML and standardize punctuation" above) ran *before*
+`standardize.py` created the `kindOf="standard"` FORM tier, so its standard-tier
+cleanups never touched it: `standardize --copy` produces the standard tier as a
+verbatim copy of the original, inheriting its hyphens and curly apostrophes. A
+second `clean_xml` pass strips `-` from the standard tier where the orthography
+doesn't use it as a letter (kept for Bunun/Thao per C012) and normalizes smart
+quotes `’→'` in both FORM tiers (otherwise validate_text flags V110/V127/V133):
+
+```bash
+   python ../FormosanBank/QC/cleaning/clean_xml.py --corpora_path Final_XML
+```
+
 6. **More**
 
 So ePark is a very complex datasource. It contains repeated names. It also contains a lot of Chinese in filenames, which are problems for some computers. We have a series of scripts that clean this up. It would be better to do this much earlier in the process. Feel free to submit a pull request!
