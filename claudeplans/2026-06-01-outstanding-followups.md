@@ -91,6 +91,16 @@ Fix in a dedicated "Pyright cleanup" pass once enough of these accumulate, or pi
 
 ---
 
+## 7. V132 rule update — whitelist gloss-side angle brackets (added 2026-06-10)
+
+**Roadmap:** B9.4 Gaps list (same-date entry).
+
+V132 (`html_entities_in_FORM_TRANSL`) fires 2,257 false positives on NTUFormosanCorpus Bunun W/M TRANSLs where `<X>` is gloss notation for infixed material (`主焦-<重疊>教` = AF-⟨REDUP⟩-teach, mirroring form-side `t<in>imana`), not entity residue. Update the rule to skip balanced `<...>` spans in W/M-level TRANSL (or restrict it to literal `&lt;`-like strings), with a Bunun fixture + regression test per the A.7 workflow.
+
+**Action:** rule edit in `QC/validation/rules/text.py` + fixture + test. Small, unblocked.
+
+---
+
 ## Cross-reference
 
 For corpus-side data issues surfaced by validators (e.g., specific files needing remediation, missing standard tiers, etc.), see [corpus-cleanup-tasks.md](2026-05-31-corpus-cleanup-tasks.md). That document is for *data* state; this one is for *development* state.

@@ -96,8 +96,11 @@ According to the documentation, all data use Ortho94. In practice, though, we fo
 ```bash
     python scripts/remove_no_audio_elements.py
     python ../FormosanBank/QC/utilities/standardize.py --corpora_path Final_XML --copy 
+    python CodeAndDocs/scripts/remove_stress_accents.py --xml_dir Final_XML
     python ../FormosanBank/QC/utilities/add_phonology.py --corpora_path Final_XML --orthography Ortho113
 ```
+
+The `remove_stress_accents.py` step removes acute stress marks from the *standard* tier. The Grammar subcorpus (Kanakanavu and Sakizaya) marks stress in elicited examples (`Namásia`, `mʉ́rʉpʉ`, `Pánay`/`Panáy`); the same lexemes appear unaccented (with the same meanings) in the other subcorpora, so the accents are suprasegmental annotation, not orthography. They are kept in `original` and removed from `standard`. The script handles both precomposed accented vowels (`á é í ó ú`) and the necessarily-decomposed `ʉ́` (no precomposed codepoint exists; it is stored as `ʉ` + U+0301), and regenerates the standard PHON of affected elements (gated by an original-tier witness check; this also repairs PHON, since the accented characters were previously rendered as `*` by add_phonology's unknown-character handling). When running on the published corpus post-hoc, use the default `--xml_dir` (the corpus `XML/`).
 
 * **4. Repair empty-form morphemes**
 
@@ -147,8 +150,10 @@ The Kanakanavu sentence subcorpus writes a null-morpheme placeholder inside word
 ```
 
 **Notes**
-   - Cleans only S- and W-level `FORM`/`PHON` with `kindOf="standard"`. M-level null symbols (where `∅`/`ø` is itself a morpheme slot, e.g. Sakizaya `ø-sitangah` → M `ø` + M `sitangah`) are deliberately left: stripping them would create empty-form morphemes. An element is never emptied; would-be-emptied elements are skipped and reported.
-   - Default removes `∅` only; `--chars` can extend the set.
+   - Cleans only S- and W-level `FORM` with `kindOf="standard"`. M-level null symbols (where `∅`/`ø` is itself a morpheme slot, e.g. Sakizaya `ø-sitangah` → M `ø` + M `sitangah`) are deliberately left: stripping them would create empty-form morphemes.
+   - Default removes both `∅` (Kanakanavu, word-internal) and `ø` (Sakizaya, a null prefix slot). Boundary markers orphaned by the removal are cleaned token-wise (`ø-sitangah` → `sitangah`, not `-sitangah`).
+   - An element is never emptied; would-be-emptied elements are skipped and reported. (One known case: a Sakizaya W whose standard FORM is just `ø`.)
+   - The standard PHON of affected elements is regenerated via the Ortho113 mapping, gated by an original-tier witness check. This also repairs PHON: the symbols were previously rendered as `*` (e.g. `*-sitaŋaħ` → `sitaŋaħ`). The cleanup is driven from the original tier, so re-running also heals elements whose FORM was cleaned earlier but whose PHON was stale.
    - Same conventions as steps 4-6: byte-identical round-trip guard, idempotent.
 
 * **8. Manual review: parentheses and slashes in W/M forms (V121)**
@@ -159,3 +164,13 @@ This step is **manual** and must be redone (or the edits re-applied) after any r
    - Slash-delimited unresolved alternatives, e.g. `si/la`, `ma-lrigi/ma-elre-elrenge/ma-adraw` (~42 W elements; these are in languages where the Kanakanavu-style slash-variant expansion was not applied).
 
 Run `python ../FormosanBank/QC/validation/validate_text.py by_path --path XML` and work through the V121 findings.
+
+* **9. Apply one-off manual corrections**
+
+Hand-verified single corrections that are too specific for a general rule live in a table inside the script (currently one: a stray `<` for `(` in a Bunun zho TRANSL, which also explains the 1129/1128 `<`/`>` imbalance in V132 counts):
+
+```bash
+    python CodeAndDocs/scripts/apply_manual_corrections.py
+```
+
+Idempotent (applied corrections stop matching and are reported as no-match). New one-off fixes should be added to the table in the script rather than edited directly into the XML, so they survive regeneration.
