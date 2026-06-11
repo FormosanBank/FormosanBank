@@ -178,7 +178,21 @@ The source embeds transcription machinery that the parsers fused into the publis
    - Removed codes are NOT preserved verbatim (per maintainer decision 2026-06-11); each affected sentence's S-level original FORM gains a `notes` breadcrumb (e.g. `annotation codes removed; consult the NTU Formosan Corpus source`).
    - PHON regenerated via the witness-gated Ortho113 mechanism. Round-trip guard; idempotent.
 
-* **10. Apply one-off manual corrections**
+* **10. Fix swapped gloss languages**
+
+Two sentence-subcorpus source files (`sentence/Bunun_Isbukun/63.json`, `64.json`) are zh-first while the parser assumes eng-first, inverting eng/zho for every W/M gloss in those stems (~16,400); ~170 isolated rows elsewhere have the same per-row inversion:
+
+```bash
+    python CodeAndDocs/scripts/fix_swapped_gloss_langs.py        # stems 63/64
+    python CodeAndDocs/scripts/fix_swapped_gloss_langs.py --all  # corpus-wide sweep
+```
+
+**Notes**
+   - Swap gate per element: eng text contains CJK and zho text does not — idempotent, and identical code pairs (DM, TOP) or single-tier elements are untouched. S-level free translations were never affected.
+   - Remaining mixed-language cells that the gate cannot resolve are listed in `gloss_anomalies_review.csv` (with bare-code/code-in-form anomalies) for manual review.
+   - Round-trip guard as in steps 4-9.
+
+* **11. Apply one-off manual corrections**
 
 Hand-verified single corrections that are too specific for a general rule live in a table inside the script (currently one: a stray `<` for `(` in a Bunun zho TRANSL, which also explains the 1129/1128 `<`/`>` imbalance in V132 counts):
 
@@ -188,7 +202,7 @@ Hand-verified single corrections that are too specific for a general rule live i
 
 Idempotent (applied corrections stop matching and are reported as no-match). New one-off fixes should be added to the table in the script rather than edited directly into the XML, so they survive regeneration. The table also repairs the three Grammar/Sakizaya sentences whose source records *cite* corpus examples instead of restating them (`13_S_38`, `13_S_39`, `13_S_48`): the IU numbers and pause durations fused to the first word of each intonation unit are stripped from the W/M forms, the S FORM is rebuilt from the cleaned words, the citation is preserved in a `notes` attribute on the S-level original FORM, and PHON is regenerated (witness-gated).
 
-* **11. Repair code-switch (L2) markup**
+* **12. Repair code-switch (L2) markup**
 
 The source marks code-switched words with tags like `<L2JjidenshaL2J>` (J/M/T/... = the language switched into). Well-formed tags are stripped by the parsers, but the source contains ~30 malformed spellings — transposed closers (`<L2MpiaocunLM2>`), missing `>` (`<L2JjidenshaL2J`), letterless tags (`<L2siyencL2>`, where the stripper previously ate the word's first letter: published `iyenc` for source `siyenc`; likewise `haiya`), square-bracket variants (`[L2JmaemotteL2J]`), and tags inside gloss strings (TRANSL), which were never stripped at all. This step applies a hand-audited token map (every contaminated token in the corpus → its correct form, derived from and verified against the source JSONs):
 

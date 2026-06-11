@@ -185,6 +185,41 @@ GLOSS_SHIFT = [
      "TRANSL", "zho", "但是這裡出現的是ma'cohioa", "教.受焦", "TsouConv-informants_S_19_W5M1"),
 ]
 
+# 4b. Two more column-shifted rows found by the 2026-06-11 source sweep
+#     (impostor English word as form + IU number in the stray cell);
+#     true forms from the source ori field.
+GLOSS_SHIFT.extend([
+    # KavCon-home rec 213: ['how', '如何', '212']; ori: qumuni,
+    ("Stories/Kavalan/Kavalan_KavCon-home_buya_imuy.xml", "KavCon-home_buya_imuy_S_69",
+     "FORM", None, " how ", " qumuni ", None),
+    ("Stories/Kavalan/Kavalan_KavCon-home_buya_imuy.xml", "KavCon-home_buya_imuy_S_69",
+     "FORM", None, "how", "qumuni,", "KavCon-home_buya_imuy_S_69_W4"),
+    ("Stories/Kavalan/Kavalan_KavCon-home_buya_imuy.xml", "KavCon-home_buya_imuy_S_69",
+     "FORM", None, "how", "qumuni,", "KavCon-home_buya_imuy_S_69_W4M1"),
+    ("Stories/Kavalan/Kavalan_KavCon-home_buya_imuy.xml", "KavCon-home_buya_imuy_S_69",
+     "TRANSL", "eng", "如何", "how", "KavCon-home_buya_imuy_S_69_W4"),
+    ("Stories/Kavalan/Kavalan_KavCon-home_buya_imuy.xml", "KavCon-home_buya_imuy_S_69",
+     "TRANSL", "zho", "212", "如何", "KavCon-home_buya_imuy_S_69_W4"),
+    ("Stories/Kavalan/Kavalan_KavCon-home_buya_imuy.xml", "KavCon-home_buya_imuy_S_69",
+     "TRANSL", "eng", "如何", "how", "KavCon-home_buya_imuy_S_69_W4M1"),
+    ("Stories/Kavalan/Kavalan_KavCon-home_buya_imuy.xml", "KavCon-home_buya_imuy_S_69",
+     "TRANSL", "zho", "212", "如何", "KavCon-home_buya_imuy_S_69_W4M1"),
+    # KavCon-relatives rec 225: ['that', '那個', '205']; ori: 'nay==,
+    ("Stories/Kavalan/Kavalan_KavCon-relatives_buya_ngengi.xml", "KavCon-relatives_buya_ngengi_S_70",
+     "FORM", None, " that ", " 'nay ", None),
+    ("Stories/Kavalan/Kavalan_KavCon-relatives_buya_ngengi.xml", "KavCon-relatives_buya_ngengi_S_70",
+     "FORM", None, "that", "'nay,", "KavCon-relatives_buya_ngengi_S_70_W1"),
+    ("Stories/Kavalan/Kavalan_KavCon-relatives_buya_ngengi.xml", "KavCon-relatives_buya_ngengi_S_70",
+     "FORM", None, "that", "'nay,", "KavCon-relatives_buya_ngengi_S_70_W1M1"),
+    ("Stories/Kavalan/Kavalan_KavCon-relatives_buya_ngengi.xml", "KavCon-relatives_buya_ngengi_S_70",
+     "TRANSL", "eng", "那個", "that", "KavCon-relatives_buya_ngengi_S_70_W1"),
+    ("Stories/Kavalan/Kavalan_KavCon-relatives_buya_ngengi.xml", "KavCon-relatives_buya_ngengi_S_70",
+     "TRANSL", "zho", "205", "那個", "KavCon-relatives_buya_ngengi_S_70_W1"),
+    ("Stories/Kavalan/Kavalan_KavCon-relatives_buya_ngengi.xml", "KavCon-relatives_buya_ngengi_S_70",
+     "TRANSL", "eng", "那個", "that", "KavCon-relatives_buya_ngengi_S_70_W1M1"),
+    ("Stories/Kavalan/Kavalan_KavCon-relatives_buya_ngengi.xml", "KavCon-relatives_buya_ngengi_S_70",
+     "TRANSL", "zho", "205", "那個", "KavCon-relatives_buya_ngengi_S_70_W1M1"),
+])
 # 5. Stray number fused to a wordform in the source gloss table
 #    (Grammar/Kanakanavu 12_S_5: gloss-table wordform 'na33' vs ori 'na';
 #    same genus as the fused example numbers, but not sentence-final).
@@ -204,6 +239,10 @@ GLOSS_SHIFT_NOTES = [
      "gloss-table column shift repaired from source; consult the NTU Formosan Corpus source"),
     ("Stories/Tsou/Tsou_TsouConv-informants.xml", "TsouConv-informants_S_19",
      "gloss-table column shift repaired from source; an impostor word was removed; consult the NTU Formosan Corpus source"),
+    ("Stories/Kavalan/Kavalan_KavCon-home_buya_imuy.xml", "KavCon-home_buya_imuy_S_69",
+     "gloss-table column shift repaired from source; consult the NTU Formosan Corpus source"),
+    ("Stories/Kavalan/Kavalan_KavCon-relatives_buya_ngengi.xml", "KavCon-relatives_buya_ngengi_S_70",
+     "gloss-table column shift repaired from source; consult the NTU Formosan Corpus source"),
 ]
 
 # (relative file, S id, notes value set on the S-level original FORM)
