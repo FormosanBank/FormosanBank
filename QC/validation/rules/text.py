@@ -478,6 +478,14 @@ def v116_non_ascii_in_form(
                 continue
             if ch in allowed_ortho_chars:
                 continue
+            # Case-fold: orthography tables list letters in lowercase, but the
+            # corpus capitalizes them sentence-initially (e.g. 'Ʉ' for
+            # Kanakanavu's 'ʉ'). A char whose lower- or upper-case form is in
+            # the language's orthography is still legitimate. This does NOT
+            # relax the cross-language check — 'ʉ' in an Atayal file still
+            # flags, because neither 'ʉ' nor 'Ʉ' is in Atayal's orthography.
+            if ch.lower() in allowed_ortho_chars or ch.upper() in allowed_ortho_chars:
+                continue
             findings.append(_soft_finding(
                 rule_id="V116",
                 message=f"V116 SOFT non_ascii_in_form: {ch!r}",

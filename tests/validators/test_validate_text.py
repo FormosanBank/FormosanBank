@@ -452,6 +452,22 @@ def test_V116_still_triggers_for_chars_only_in_other_languages_orthography(tmp_p
     )
 
 
+def test_V116_case_folds_orthography_letters(tmp_path):
+    """V116: a capitalized form of a lowercase orthography letter is still
+    legitimate. 'Ʉ' (U+0244) is the uppercase of Kanakanavu's 'ʉ' (U+0289),
+    which IS in the Kanakanavu orthography, so a sentence-initial 'Ʉ' must NOT
+    be flagged. The cross-language guard is unaffected (test above: 'ʉ' in a
+    tay file still flags, because neither case is in Atayal's orthography)."""
+    xml = _xml_with_lang_and_form("xnb", "Ʉmu")
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "u+0244" not in combined and "'Ʉ'" not in combined, (
+        f"V116 should case-fold 'Ʉ' to Kanakanavu's 'ʉ' and not flag it; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
 def test_V116_excludes_chars_from_any_orthography_subdir(tmp_path):
     """V116: pools first-column letters across ALL Orthographies/*/ TSVs.
 
