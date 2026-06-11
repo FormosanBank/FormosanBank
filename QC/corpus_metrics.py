@@ -297,12 +297,6 @@ def read_stats_dir(stats_dir: Path) -> tuple[list[dict[str, Any]], list[dict[str
     return records, parse_errors
 
 
-def analyze_corpora(corpora_path: Path) -> dict[str, Any]:
-    corpora_path = corpora_path.resolve()
-    records, parse_errors = collect_corpus_records(corpora_path)
-    return build_metrics(corpora_path, records, parse_errors)
-
-
 def load_benchmarks(path: Path | None) -> list[dict[str, Any]]:
     if path and path.is_file():
         with open(path, encoding="utf-8") as f:
@@ -599,13 +593,6 @@ def history_commits(repo_root: Path, max_commits: int) -> list[str]:
 
 
 
-def is_ancestor(repo_root: Path, commit: str) -> bool:
-    if not commit:
-        return False
-    result = run_git(["merge-base", "--is-ancestor", commit, "HEAD"], repo_root, check=False)
-    return result.returncode == 0
-
-
 def commit_date(repo_root: Path, commit: str) -> str:
     return git_value(["show", "-s", "--format=%cI", commit], repo_root) or ""
 
@@ -723,42 +710,6 @@ def records_by_path(records: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
 
 def parse_errors_by_path(parse_errors: list[dict[str, str]]) -> dict[str, dict[str, str]]:
     return {item["path"]: item for item in parse_errors}
-
-
-def restore_xml_blob(
-    corpora_path: Path,
-    path: str,
-    content: bytes,
-    records: dict[str, dict[str, Any]],
-    parse_errors: dict[str, dict[str, str]],
-) -> None:
-    try:
-        records[path] = analyze_xml_bytes(corpora_path, path, content)
-        parse_errors.pop(path, None)
-    except Exception as exc:
-        records.pop(path, None)
-        parse_errors[path] = {"path": path, "error": str(exc)}
-
-
-def roll_back_xml_commit(
-    repo_root: Path,
-    corpora_path: Path,
-    changes: list[XmlChange],
-    records: dict[str, dict[str, Any]],
-    parse_errors: dict[str, dict[str, str]],
-) -> None:
-    old_blob_ids = [change.old_oid for change in changes if change.status in {"D", "M"} and change.old_oid]
-    old_blobs = read_git_blobs(repo_root, old_blob_ids)
-
-    for change in changes:
-        if change.status == "A":
-            records.pop(change.path, None)
-            parse_errors.pop(change.path, None)
-            continue
-
-        if not change.old_oid or change.old_oid not in old_blobs:
-            raise ValueError(f"Could not read previous git blob for {change.path}")
-        restore_xml_blob(corpora_path, change.path, old_blobs[change.old_oid], records, parse_errors)
 
 
 def load_history_csv(path: Path) -> list[dict[str, Any]]:
@@ -928,7 +879,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
         help="Optional benchmark JSON file.",
     )
     parser.add_argument("--history", action="store_true", help="Append one history row at HEAD to the size-over-time CSV.")
-    parser.add_argument("--max-history-commits", type=int, default=0, help="Maximum XML-changing commits to sample. Use 0 for full history.")
+    parser.add_argument("--max-history-commits", type=int, default=0, help="Maximum XML-changing commits to sample (only with --history-rebuild). Use 0 for full history.")
     parser.add_argument(
         "--history-cache",
         default=None,
