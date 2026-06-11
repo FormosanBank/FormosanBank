@@ -32,3 +32,7 @@ def test_build_model_learns_to_separate(tmp_path, monkeypatch):
     assert model.components == COMPONENTS
     ranked = model.score_text("vik viva")
     assert ranked[0][0] == "Alpha"
+    # symmetric case + a confident probability confirm the combiner separated the
+    # classes at training time (not just the orthography component on one example).
+    assert model.score_text("fik fifa")[0][0] == "Beta"
+    assert ranked[0][1] > 0.9

@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import warnings
+
 import numpy as np
 from scipy.optimize import minimize
 
@@ -44,5 +46,11 @@ def fit_combiner(
         return total
 
     res = minimize(nll, theta0, method="L-BFGS-B")
+    if not res.success:
+        warnings.warn(
+            f"dialect combiner optimization did not converge: {res.message}",
+            RuntimeWarning,
+            stacklevel=2,
+        )
     w, bias = _unpack(res.x, n_features, n_dialects)
     return w, bias

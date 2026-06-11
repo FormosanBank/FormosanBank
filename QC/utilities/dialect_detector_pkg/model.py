@@ -115,15 +115,19 @@ def build_model(
         bi[doc.dialect] += b
         words[doc.dialect] += w
 
+    # Vocab sizes are the smoothing denominators, so they must reflect the FULL
+    # observed vocabulary, not the per-dialect top_n-pruned profiles (pruning
+    # would understate the vocab and inflate unseen-token probabilities).
+    uni_vocab = len({k for c in uni.values() for k in c}) or 1
+    bi_vocab = len({k for c in bi.values() for k in c}) or 1
+    word_vocab = len({k for c in words.values() for k in c}) or 1
+
     uni = {d: _prune(c, top_n) for d, c in uni.items()}
     bi = {d: _prune(c, top_n) for d, c in bi.items()}
     words = {d: _prune(c, top_n) for d, c in words.items()}
     uni_total = {d: sum(c.values()) for d, c in uni.items()}
     bi_total = {d: sum(c.values()) for d, c in bi.items()}
     word_total = {d: sum(c.values()) for d, c in words.items()}
-    uni_vocab = len({k for c in uni.values() for k in c}) or 1
-    bi_vocab = len({k for c in bi.values() for k in c}) or 1
-    word_vocab = len({k for c in words.values() for k in c}) or 1
 
     model = DialectModel(
         lang_code=lang_code, language_name=name, dialects=present,
