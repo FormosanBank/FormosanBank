@@ -69,7 +69,7 @@ QC scripts that compare across corpora or compute orthographic statistics genera
 
 Two conventions that most QC code assumes:
 1. **Two sentence-tier `FORM` elements** (original and standard). If a corpus only has one, create the standard tier with `python QC/utilities/standardize.py --copy --corpora_path <path>` *before* running punctuation/orthography checks. `--copy` does not normalize spelling — it just duplicates the original so QC scripts have a consistent tier to inspect; actual transliteration requires a TSV mapping.
-2. **`--kindOf standard`** is the default for orthography extraction; legacy token counting uses the first sentence-level `FORM`.
+2. **`--kindOf standard`** is the default for orthography extraction; token counting (see "Corpus metrics" below) uses the standard sentence-level `FORM` with original fallback.
 
 `xml:lang` uses ISO 639-3 codes (validated against [QC/validation/iso-639-3.txt](QC/validation/iso-639-3.txt)). Dialect labels come from the `dialect` attribute; the canonical list is in [dialects.csv](dialects.csv).
 
@@ -96,12 +96,12 @@ The full pipeline is documented in [QC/README.md](QC/README.md). The typical ord
 
 ## Corpus metrics and token deltas (CI-coupled)
 
-[QC/corpus_metrics.py](QC/corpus_metrics.py) and [QC/count_tokens.py](QC/count_tokens.py) feed two GitHub Actions:
+[QC/corpus_counts.py](QC/corpus_counts.py) is the single source of truth for counting rules (used by `get_corpus_stats.py`, `corpus_metrics.py`, and `count_tokens.py`): tokens come from sentence-level `FORM` only (standard tier, original fallback) and are whitespace chunks containing at least one letter or digit; language identity comes from `xml:lang` + `dialect` (`trv` + dialect `Truku` → Truku, otherwise Seediq). These scripts feed two GitHub Actions:
 
-- **[.github/workflows/corpus-metrics.yaml](.github/workflows/corpus-metrics.yaml)** runs on push to `main` and auto-commits [statistics/corpus_size_history.csv](statistics/corpus_size_history.csv) and [statistics/corpus_size_over_time.png](statistics/corpus_size_over_time.png) back to the repo. **Do not hand-edit those two files** — let the workflow regenerate them. Full JSON/Markdown/plot output is a 30-day Actions artifact, not committed.
-- **[.github/workflows/token-comparison.yaml](.github/workflows/token-comparison.yaml)** runs on PRs and pushes, comparing token counts against the PR base or previous push.
+- **[.github/workflows/corpus-metrics.yaml](.github/workflows/corpus-metrics.yaml)** runs on push to `main`: `QC/utilities/get_corpus_stats.py --all` regenerates `statistics/*_corpora_stats.csv` (the per-corpus CSVs the Gitbook consumes), then [QC/corpus_metrics.py](QC/corpus_metrics.py) `--stats-dir statistics` aggregates them and appends one row at HEAD to [statistics/corpus_size_history.csv](statistics/corpus_size_history.csv). The workflow auto-commits the CSVs, the history CSV, and the growth PNG — **do not hand-edit any of them**. Audio *seconds* columns are never computed by `get_corpus_stats.py` (CI has no audio); they carry forward from the committed CSVs and are refreshed only by running [QC/utilities/update_audio_stats.py](QC/utilities/update_audio_stats.py) manually on a machine with the corpus audio downloaded (do this for new corpora or audio updates).
+- **[.github/workflows/token-comparison.yaml](.github/workflows/token-comparison.yaml)** runs on PRs and pushes, comparing [QC/count_tokens.py](QC/count_tokens.py) output (computed from XML, since checkouts may have stale CSVs) against the PR base or previous push.
 
-For local runs of `corpus_metrics.py --history`, pass `--history-cache statistics/corpus_size_history.csv` to reuse the cache — otherwise a full first-parent walk of XML-changing commits will take a long time.
+`QC/corpus_metrics.py --history-rebuild` (XML mode, no `--stats-dir`) restates the entire history CSV from git blobs under the current rules — a full first-parent walk that takes a long time. History rows written before 2026-06 used different counting rules (first FORM, all whitespace chunks); the discontinuity is accepted.
 
 ## Conventions worth preserving
 

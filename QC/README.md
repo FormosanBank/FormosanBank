@@ -202,12 +202,35 @@ python QC/cleaning/remove_duplicate_sentences.py by_path \
 
 ## Corpus Metrics
 
-Generate corpus-wide facts, figures, and plots from XML files under `Corpora/`:
+**Shared counting rules** live in `QC/corpus_counts.py`: tokens are whitespace-separated chunks containing at least one Unicode letter or digit (digit-only chunks count; punctuation-only chunks like `?` do not); per sentence, the `standard` FORM is used if non-empty, otherwise the `original` FORM, otherwise 0; language identity comes from `xml:lang` + `dialect` attributes (`trv` + `Truku` dialect → Truku, otherwise Seediq). This module is imported by `get_corpus_stats.py`, `corpus_metrics.py`, and `count_tokens.py`.
+
+The statistics pipeline is **inverted**: `get_corpus_stats.py` counts and writes per-corpus CSVs; `corpus_metrics.py` aggregates those CSVs for snapshots and appends to the size-over-time history.
+
+**Step 1 — generate per-corpus CSVs** (writes `statistics/<Corpus>_corpora_stats.csv` for each corpus):
+
+```bash
+python QC/utilities/get_corpus_stats.py Corpora/ePark   # one corpus
+python QC/utilities/get_corpus_stats.py --all            # all corpora under Corpora/
+python QC/utilities/get_corpus_stats.py --all --strict   # exit nonzero if any XML fails to parse
+```
+
+Audio *seconds* columns (`transcribed_audio_seconds`, `untranscribed_audio_seconds`) are **never computed** by `get_corpus_stats.py` — CI has no audio files. They carry forward from the existing committed CSV. To refresh them from local audio files, run the manual command:
+
+```bash
+python QC/utilities/update_audio_stats.py Corpora/ePark  # one corpus
+python QC/utilities/update_audio_stats.py --all           # all corpora
+```
+
+`update_audio_stats.py` requires `get_corpus_stats.py` to have been run first (the CSV must exist). Buckets with no audio found on disk keep their previous seconds — running without audio downloaded will not zero out good data.
+
+**Step 2 — aggregate CSVs and generate metrics** (reads `statistics/` rather than walking XML):
 
 ```bash
 python QC/corpus_metrics.py Corpora \
+  --stats-dir statistics \
   --output-dir corpus-metrics \
-  --history
+  --history \
+  --history-cache statistics/corpus_size_history.csv
 ```
 
 The script writes:
@@ -219,24 +242,24 @@ The script writes:
 - `corpus_benchmark_comparison.png`
 - `corpus_size_history.csv` and `corpus_size_over_time.png` when `--history` is used
 
-By default, token counts use the first direct sentence-level `FORM` in each `S`, matching the legacy token counter. Use `--form-kind standard`, `--form-kind original`, or `--form-kind auto` when a different sentence tier is needed.
-
-History mode samples first-parent commits where XML files under `Corpora/**/XML/` were added, deleted, or modified. It uses the full XML-changing history by default; pass `--max-history-commits N` to sample only the most recent `N` XML-changing commits.
-
-For routine updates, reuse the existing history CSV so the script only applies XML-changing commits after the last recorded commit:
+`--history` appends **one row at HEAD** to the size-over-time CSV (replacing the row if re-run on the same commit). To rebuild the entire history from git blobs under the current counting rules (slow full first-parent walk; XML mode only, omit `--stats-dir`):
 
 ```bash
 python QC/corpus_metrics.py Corpora \
   --output-dir corpus-metrics \
-  --history \
+  --history-rebuild \
   --history-cache statistics/corpus_size_history.csv
 ```
 
-During history runs, `corpus_metrics.py` prints progress to stderr for the current corpus and each sampled commit, so long runs show `[current/total]` status instead of appearing hung. The GitHub workflow uploads the full `corpus-metrics/` directory as a 30-day Actions artifact; on pushes to `main`, only `statistics/corpus_size_history.csv` and `statistics/corpus_size_over_time.png` are committed back for the README graph.
+History rows written before 2026-06 used different counting rules (first FORM, all whitespace chunks); a `--history-rebuild` run restates all rows under the current rules.
+
+During history rebuild, `corpus_metrics.py` prints progress to stderr for each sampled commit so long runs show status instead of appearing hung. The GitHub workflow uploads the full `corpus-metrics/` directory as a 30-day Actions artifact; on pushes to `main`, the per-corpus CSVs, `statistics/corpus_size_history.csv`, and `statistics/corpus_size_over_time.png` are committed back.
 
 ## Token Delta Regression
 
-Generate the same language/dialect token JSON used by the token delta workflow:
+`QC/count_tokens.py` counts tokens from XML via `corpus_counts.py` (not from the per-corpus CSVs, because it runs on arbitrary checkouts — e.g. a PR base in a git worktree — where committed CSVs may be stale or absent). Output shape `{LanguageName: [total, {dialect: tokens}]}` is consumed by `tokens_delta.py`, `plot_counts.py`, `plot_deltas.py`, and the token-comparison workflow.
+
+Generate the language/dialect token JSON used by the token delta workflow:
 
 ```bash
 mkdir -p token-count-artifacts
