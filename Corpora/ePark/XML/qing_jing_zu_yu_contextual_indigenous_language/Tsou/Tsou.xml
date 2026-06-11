@@ -1,5 +1,5 @@
-<?xml version="1.0" ?>
-<TEXT id="qing_jing_zu_yu_contextual_indigenous_language_Tsou" xml:lang="tsu" source="情境族語 Tsou" audio="diarized" copyright="CC-BY-NC-SA" citation="Indigenous Languages Research and Development Foundation. (2020). 族語E樂園. https://web.klokah.tw/" BibTeX_citation="@misc{ePark, author = {Indigenous Languages Research and Development Foundation}, title = {族語E樂園}, year = {2020}, url = {https://web.klokah.tw/} }" glottocode="">
+<?xml version='1.0' encoding='UTF-8'?>
+<TEXT id="qing_jing_zu_yu_contextual_indigenous_language_Tsou" xml:lang="tsu" source="情境族語 Tsou" audio="diarized" copyright="CC-BY-NC-SA" citation="Indigenous Languages Research and Development Foundation. (2020). 族語E樂園. https://web.klokah.tw/" BibTeX_citation="@misc{ePark, author = {Indigenous Languages Research and Development Foundation}, title = {族語E樂園}, year = {2020}, url = {https://web.klokah.tw/} }" glottocode="" dialect="Tsou">
     <S id="0">
         <FORM kindOf="original">acʉhʉ ʉmnʉ, teto cu ahoi.</FORM>
         <PHON kindOf="original">sʦɨhɨ ɨmnɨ, teto ʦu shoi.</PHON>
@@ -60,7 +60,7 @@
         <FORM kindOf="standard">lema'cohio, o'a os'os'a ta'hongi, teko peela i'vaha engha?</FORM>
         <PHON kindOf="standard">ɗemsʔʦohio, oʔs osʔosʔs tsʔhoŋi, teko peeɗs iʔvshs eŋhs?</PHON>
         <TRANSL xml:lang="zho">老師，我不懂。可以再說一次嗎?</TRANSL>
-        <TRANSL xml:lang="eng">I don’t understand. Can you repeat it again?</TRANSL>
+        <TRANSL xml:lang="eng">I don't understand. Can you repeat it again?</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_6.wav" url="https://web.klokah.tw/text/sound/27407/454536.mp3" start="0" end="10.67"/>
     </S>
     <S id="7">
@@ -69,7 +69,7 @@
         <FORM kindOf="standard">o'a os'os'a talʉi, ake'i tmunoi?</FORM>
         <PHON kindOf="standard">oʔs osʔosʔs tsɗɨi, skeʔi tmunoi?</PHON>
         <TRANSL xml:lang="zho">我聽不到，可以大聲一點嗎?</TRANSL>
-        <TRANSL xml:lang="eng">I can’t hear you, can you speak louder?</TRANSL>
+        <TRANSL xml:lang="eng">I can't hear you, can you speak louder?</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_7.wav" url="https://web.klokah.tw/text/sound/27407/454537.mp3" start="0" end="4.15"/>
     </S>
     <S id="8">
@@ -87,7 +87,7 @@
         <FORM kindOf="standard">na'no meemealʉ mo'engho.</FORM>
         <PHON kindOf="standard">nsʔno meemesɗɨ moʔeŋho.</PHON>
         <TRANSL xml:lang="zho">唸得很好。</TRANSL>
-        <TRANSL xml:lang="eng">It’s very well read.</TRANSL>
+        <TRANSL xml:lang="eng">It's very well read.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_9.wav" url="https://web.klokah.tw/text/sound/27407/454539.mp3" start="0" end="2.59"/>
     </S>
     <S id="10">
@@ -105,7 +105,7 @@
         <FORM kindOf="standard">naho cu amzocni, 'ote ya'ei.</FORM>
         <PHON kindOf="standard">nsho ʦu smzoʦni, ʔote jsʔei.</PHON>
         <TRANSL xml:lang="zho">請安靜。不要說話。</TRANSL>
-        <TRANSL xml:lang="eng">Please be quiet. Don’t talk.</TRANSL>
+        <TRANSL xml:lang="eng">Please be quiet. Don't talk.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_11.wav" url="https://web.klokah.tw/text/sound/27407/454541.mp3" start="0" end="3.35"/>
     </S>
     <S id="12">
@@ -718,10 +718,10 @@
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_79.wav" url="https://web.klokah.tw/text/sound/27409/454605.mp3" start="0" end="3.07"/>
     </S>
     <S id="80">
-        <FORM kindOf="original">zou,'a lea hin'i meelʉ bua cou.</FORM>
-        <PHON kindOf="original">zou,ʔs ɗes hinʔi meeɗɨ ɓus ʦou.</PHON>
-        <FORM kindOf="standard">zou,'a lea hin'i meelʉ bua cou.</FORM>
-        <PHON kindOf="standard">zou,ʔs ɗes hinʔi meeɗɨ ɓus ʦou.</PHON>
+        <FORM kindOf="original">zou, 'a lea hin'i meelʉ bua cou.</FORM>
+        <PHON kindOf="original">zou, ʔs ɗes hinʔi meeɗɨ ɓus ʦou.</PHON>
+        <FORM kindOf="standard">zou, 'a lea hin'i meelʉ bua cou.</FORM>
+        <PHON kindOf="standard">zou, ʔs ɗes hinʔi meeɗɨ ɓus ʦou.</PHON>
         <TRANSL xml:lang="zho">是，他們會說族語。</TRANSL>
         <TRANSL xml:lang="eng">Yes, they speak the ethnic language.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_80.wav" url="https://web.klokah.tw/text/sound/27409/454606.mp3" start="0" end="4.07"/>
@@ -1550,7 +1550,7 @@
         <FORM kindOf="standard">mio yonta emoo, naho yʉmeʉmʉ.</FORM>
         <PHON kindOf="standard">mio jonts emoo, nsho jɨmeɨmɨ.</PHON>
         <TRANSL xml:lang="zho">她在家，請進來。</TRANSL>
-        <TRANSL xml:lang="eng">She’s at home, please come in.</TRANSL>
+        <TRANSL xml:lang="eng">She's at home, please come in.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_172.wav" url="https://web.klokah.tw/text/sound/27412/454695.mp3" start="0" end="4.27"/>
     </S>
     <S id="173">
@@ -1811,7 +1811,7 @@
         <FORM kindOf="standard">acʉhʉ ʉmnʉ, maitan'e te hafa ta lema'cohio ho uhto you ho tuhtuucosʉ to mamameoi.</FORM>
         <PHON kindOf="standard">sʦɨhɨ ɨmnɨ, msitsnʔe te hsfs ts ɗemsʔʦohio ho uhto jou ho tuhtuuʦosɨ to msmsmeoi.</PHON>
         <TRANSL xml:lang="zho">大家好，老師今天要帶大家去部落訪問耆老。</TRANSL>
-        <TRANSL xml:lang="eng">Hello everyone, today I’m taking you to the tribe to interview the elders.</TRANSL>
+        <TRANSL xml:lang="eng">Hello everyone, today I'm taking you to the tribe to interview the elders.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_201.wav" url="https://web.klokah.tw/text/sound/27413/454724.mp3" start="0" end="11.37"/>
     </S>
     <S id="202">
@@ -1820,7 +1820,7 @@
         <FORM kindOf="standard">na'no ʉmnʉ, teto uhto mamameoi ho bua cou.</FORM>
         <PHON kindOf="standard">nsʔno ɨmnɨ, teto uhto msmsmeoi ho ɓus ʦou.</PHON>
         <TRANSL xml:lang="zho">好喔!我們要跟耆老說鄒語。</TRANSL>
-        <TRANSL xml:lang="eng">Okay! We’re going to speak Chowder with the seniors.</TRANSL>
+        <TRANSL xml:lang="eng">Okay! We're going to speak Chowder with the seniors.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_202.wav" url="https://web.klokah.tw/text/sound/27413/454725.mp3" start="0" end="5.8"/>
     </S>
     <S id="203">
@@ -1847,7 +1847,7 @@
         <FORM kindOf="standard">ak'i, mimza uhtan'e ho aiti suu.</FORM>
         <PHON kindOf="standard">skʔi, mimzs uhtsnʔe ho siti suu.</PHON>
         <TRANSL xml:lang="zho">爺爺，我們來看你了。</TRANSL>
-        <TRANSL xml:lang="eng">Grandpa, we’ve come to see you.</TRANSL>
+        <TRANSL xml:lang="eng">Grandpa, we've come to see you.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_205.wav" url="https://web.klokah.tw/text/sound/27413/454728.mp3" start="0" end="3.88"/>
     </S>
     <S id="206">
@@ -1856,7 +1856,7 @@
         <FORM kindOf="standard">'oaa! ma mimu meelʉ bua cou! a'ʉmtʉ na'no ʉmnʉ!</FORM>
         <PHON kindOf="standard">ʔoss! ms mimu meeɗɨ ɓus ʦou! sʔɨmtɨ nsʔno ɨmnɨ!</PHON>
         <TRANSL xml:lang="zho">哇! 你們會說鄒語啊!真是太棒了!</TRANSL>
-        <TRANSL xml:lang="eng">Wow! You speak the Tsou language! That’s great!</TRANSL>
+        <TRANSL xml:lang="eng">Wow! You speak the Tsou language! That's great!</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_206.wav" url="https://web.klokah.tw/text/sound/27413/454729.mp3" start="0" end="7.79"/>
     </S>
     <S id="207">
@@ -1892,7 +1892,7 @@
         <FORM kindOf="standard">zou, lema'cohio, imza cu acʉha hafa 'ete tititha.</FORM>
         <PHON kindOf="standard">zou, ɗemsʔʦohio, imzs ʦu sʦɨhs hsfs ʔete titiths.</PHON>
         <TRANSL xml:lang="zho">是的，老師，我們都拿好工具了。</TRANSL>
-        <TRANSL xml:lang="eng">Yes, sir, we’ve got our tools.</TRANSL>
+        <TRANSL xml:lang="eng">Yes, sir, we've got our tools.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_210.wav" url="https://web.klokah.tw/text/sound/27413/454733.mp3" start="0" end="6.91"/>
     </S>
     <S id="211">
@@ -1910,7 +1910,7 @@
         <FORM kindOf="standard">o'a mocu, mon'a covhi.</FORM>
         <PHON kindOf="standard">oʔs moʦu, monʔs ʦovhi.</PHON>
         <TRANSL xml:lang="zho">還沒到，還很遠。</TRANSL>
-        <TRANSL xml:lang="eng">Not yet, it’s still far away.</TRANSL>
+        <TRANSL xml:lang="eng">Not yet, it's still far away.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_212.wav" url="https://web.klokah.tw/text/sound/27413/454735.mp3" start="0" end="3.47"/>
     </S>
     <S id="213">
@@ -1928,7 +1928,7 @@
         <FORM kindOf="standard">zou, te'o cohmo to chumu.</FORM>
         <PHON kindOf="standard">zou, teʔo ʦohmo to ʦhumu.</PHON>
         <TRANSL xml:lang="zho">好，我來澆水。</TRANSL>
-        <TRANSL xml:lang="eng">Okay, I’ll water it.</TRANSL>
+        <TRANSL xml:lang="eng">Okay, I'll water it.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_214.wav" url="https://web.klokah.tw/text/sound/27413/454737.mp3" start="0" end="3.74"/>
     </S>
     <S id="215">
@@ -1946,7 +1946,7 @@
         <FORM kindOf="standard">zou, te'o etaptaka 'o zomʉ.</FORM>
         <PHON kindOf="standard">zou, teʔo etsptsks ʔo zomɨ.</PHON>
         <TRANSL xml:lang="zho">好，我去趕鳥。</TRANSL>
-        <TRANSL xml:lang="eng">Okay, I’ll go and catch the birds.</TRANSL>
+        <TRANSL xml:lang="eng">Okay, I'll go and catch the birds.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_216.wav" url="https://web.klokah.tw/text/sound/27413/454739.mp3" start="0" end="3.64"/>
     </S>
     <S id="217">
@@ -1973,7 +1973,7 @@
         <FORM kindOf="standard">'a teto yonto vasu.</FORM>
         <PHON kindOf="standard">ʔs teto jonto vssu.</PHON>
         <TRANSL xml:lang="zho">我們搭公車去。</TRANSL>
-        <TRANSL xml:lang="eng">Let’s take the bus.</TRANSL>
+        <TRANSL xml:lang="eng">Let's take the bus.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_219.wav" url="https://web.klokah.tw/text/sound/27413/454742.mp3" start="0" end="1.84"/>
     </S>
     <S id="220">
@@ -2009,7 +2009,7 @@
         <FORM kindOf="standard">lema'cohio, la'u smoyo to fkoi.</FORM>
         <PHON kindOf="standard">ɗemsʔʦohio, ɗsʔu smojo to fkoi.</PHON>
         <TRANSL xml:lang="zho">老師我會怕蛇。</TRANSL>
-        <TRANSL xml:lang="eng">I’m afraid of snakes.</TRANSL>
+        <TRANSL xml:lang="eng">I'm afraid of snakes.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_223.wav" url="https://web.klokah.tw/text/sound/27413/454746.mp3" start="0" end="4.07"/>
     </S>
     <S id="224">
@@ -2018,7 +2018,7 @@
         <FORM kindOf="standard">'upena, naho eno baito to zomu.</FORM>
         <PHON kindOf="standard">ʔupens, nsho eno ɓsito to zomu.</PHON>
         <TRANSL xml:lang="zho">沒關係，那你去看鳥。</TRANSL>
-        <TRANSL xml:lang="eng">It doesn’t matter, then you go and watch the birds.</TRANSL>
+        <TRANSL xml:lang="eng">It doesn't matter, then you go and watch the birds.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_224.wav" url="https://web.klokah.tw/text/sound/27413/454747.mp3" start="0" end="3.52"/>
     </S>
     <S id="225">
@@ -2027,7 +2027,7 @@
         <FORM kindOf="standard">tato yu'eteuyunu to cono masconi.</FORM>
         <PHON kindOf="standard">tsto juʔeteujunu to ʦono mssʦoni.</PHON>
         <TRANSL xml:lang="zho">我們一個小時後回來集合。</TRANSL>
-        <TRANSL xml:lang="eng">We’ll be back in an hour.</TRANSL>
+        <TRANSL xml:lang="eng">We'll be back in an hour.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_225.wav" url="https://web.klokah.tw/text/sound/27413/454748.mp3" start="0" end="4.19"/>
     </S>
     <S id="226">
@@ -2090,7 +2090,7 @@
         <FORM kindOf="standard">zou! cu e'ohʉ.</FORM>
         <PHON kindOf="standard">zou! ʦu eʔohɨ.</PHON>
         <TRANSL xml:lang="zho">好啊!走吧!</TRANSL>
-        <TRANSL xml:lang="eng">Yes! Let’s go!</TRANSL>
+        <TRANSL xml:lang="eng">Yes! Let's go!</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_232.wav" url="https://web.klokah.tw/text/sound/27413/454755.mp3" start="0" end="1.99"/>
     </S>
     <S id="233">
@@ -3066,10 +3066,10 @@
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_340.wav" url="https://web.klokah.tw/text/sound/27417/454863.mp3" start="0" end="5.42"/>
     </S>
     <S id="341">
-        <FORM kindOf="original">o'ate'o,'amcu osko yooveia 'o osu aueva yuevaha ci peisu.</FORM>
-        <PHON kindOf="original">oʔsteʔo,ʔsmʦu osko jooveis ʔo osu suevs juevshs ʦi peisu.</PHON>
-        <FORM kindOf="standard">o'ate'o,'amcu osko yooveia 'o osu aueva yuevaha ci peisu.</FORM>
-        <PHON kindOf="standard">oʔsteʔo,ʔsmʦu osko jooveis ʔo osu suevs juevshs ʦi peisu.</PHON>
+        <FORM kindOf="original">o'ate'o, 'amcu osko yooveia 'o osu aueva yuevaha ci peisu.</FORM>
+        <PHON kindOf="original">oʔsteʔo, ʔsmʦu osko jooveis ʔo osu suevs juevshs ʦi peisu.</PHON>
+        <FORM kindOf="standard">o'ate'o, 'amcu osko yooveia 'o osu aueva yuevaha ci peisu.</FORM>
+        <PHON kindOf="standard">oʔsteʔo, ʔsmʦu osko jooveis ʔo osu suevs juevshs ʦi peisu.</PHON>
         <TRANSL xml:lang="zho">不要，上次借的錢你都還沒還我。</TRANSL>
         <TRANSL xml:lang="eng">No, you haven't paid me back the money you borrowed last time.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_341.wav" url="https://web.klokah.tw/text/sound/27417/454864.mp3" start="0" end="9.83"/>
@@ -3305,7 +3305,7 @@
         <FORM kindOf="standard">te'o uhne chachae ho emʉm'ʉ to chae.</FORM>
         <PHON kindOf="standard">teʔo uhne ʦhsʦhse ho emɨmʔɨ to ʦhse.</PHON>
         <TRANSL xml:lang="zho">我要去菜園裡種菜。</TRANSL>
-        <TRANSL xml:lang="eng">I’m going to plant vegetables in the garden.</TRANSL>
+        <TRANSL xml:lang="eng">I'm going to plant vegetables in the garden.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_367.wav" url="https://web.klokah.tw/text/sound/27418/454890.mp3" start="0" end="4.07"/>
     </S>
     <S id="368">
@@ -3619,7 +3619,7 @@
         <FORM kindOf="standard">'ote oengʉtʉ.</FORM>
         <PHON kindOf="standard">ʔote oeŋɨtɨ.</PHON>
         <TRANSL xml:lang="zho">不要睡覺。</TRANSL>
-        <TRANSL xml:lang="eng">Don’t sleep.</TRANSL>
+        <TRANSL xml:lang="eng">Don't sleep.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_402.wav" url="https://web.klokah.tw/text/sound/36910/583227.mp3" start="0" end="1.66"/>
     </S>
     <S id="403">
@@ -3628,7 +3628,7 @@
         <FORM kindOf="standard">'ote ptaʉngʉ.</FORM>
         <PHON kindOf="standard">ʔote ptsɨŋɨ.</PHON>
         <TRANSL xml:lang="zho">不要講話。</TRANSL>
-        <TRANSL xml:lang="eng">Don’t talk.</TRANSL>
+        <TRANSL xml:lang="eng">Don't talk.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_403.wav" url="https://web.klokah.tw/text/sound/36910/583228.mp3" start="0" end="2.02"/>
     </S>
     <S id="404">
@@ -3637,7 +3637,7 @@
         <FORM kindOf="standard">'ote bonʉ.</FORM>
         <PHON kindOf="standard">ʔote ɓonɨ.</PHON>
         <TRANSL xml:lang="zho">不要吃東西。</TRANSL>
-        <TRANSL xml:lang="eng">Don’t eat.</TRANSL>
+        <TRANSL xml:lang="eng">Don't eat.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_404.wav" url="https://web.klokah.tw/text/sound/36910/583229.mp3" start="0" end="1.48"/>
     </S>
     <S id="405">
@@ -3718,7 +3718,7 @@
         <FORM kindOf="standard">'a nuu'u.</FORM>
         <PHON kindOf="standard">ʔs nuuʔu.</PHON>
         <TRANSL xml:lang="zho">是我的。</TRANSL>
-        <TRANSL xml:lang="eng">It’s mine.</TRANSL>
+        <TRANSL xml:lang="eng">It's mine.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_413.wav" url="https://web.klokah.tw/text/sound/36910/583238.mp3" start="0" end="0.8"/>
     </S>
     <S id="414">
@@ -3736,7 +3736,7 @@
         <FORM kindOf="standard">'a nuu to pasuya.</FORM>
         <PHON kindOf="standard">ʔs nuu to pssujs.</PHON>
         <TRANSL xml:lang="zho">是pasuya的。</TRANSL>
-        <TRANSL xml:lang="eng">It’s pasuya’s.</TRANSL>
+        <TRANSL xml:lang="eng">It's pasuya's.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_415.wav" url="https://web.klokah.tw/text/sound/36910/583240.mp3" start="0" end="1.45"/>
     </S>
     <S id="416">
@@ -3754,7 +3754,7 @@
         <FORM kindOf="standard">o'a i'o s'a cohivi.</FORM>
         <PHON kindOf="standard">oʔs iʔo sʔs ʦohivi.</PHON>
         <TRANSL xml:lang="zho">我不知道 。</TRANSL>
-        <TRANSL xml:lang="eng">I don’t know.</TRANSL>
+        <TRANSL xml:lang="eng">I don't know.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_417.wav" url="https://web.klokah.tw/text/sound/36910/583242.mp3" start="0" end="1.99"/>
     </S>
     <S id="418">
@@ -3763,7 +3763,7 @@
         <FORM kindOf="standard">zou yʉsʉ to pasuya na eni?</FORM>
         <PHON kindOf="standard">zou jɨsɨ to pssujs ns eni?</PHON>
         <TRANSL xml:lang="zho">那是pasuya的衣服嗎?</TRANSL>
-        <TRANSL xml:lang="eng">Is that pasuya’s clothes?</TRANSL>
+        <TRANSL xml:lang="eng">Is that pasuya's clothes?</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_418.wav" url="https://web.klokah.tw/text/sound/36910/583243.mp3" start="0" end="2.45"/>
     </S>
     <S id="419">
@@ -3772,7 +3772,7 @@
         <FORM kindOf="standard">o'a, 'a nuu to voyu.</FORM>
         <PHON kindOf="standard">oʔs, ʔs nuu to voju.</PHON>
         <TRANSL xml:lang="zho">不是，這是voyu的。</TRANSL>
-        <TRANSL xml:lang="eng">No, this is voyu’s clothes.</TRANSL>
+        <TRANSL xml:lang="eng">No, this is voyu's clothes.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_419.wav" url="https://web.klokah.tw/text/sound/36910/583244.mp3" start="0" end="1.99"/>
     </S>
     <S id="420">
@@ -3781,7 +3781,7 @@
         <FORM kindOf="standard">lema'cohio, o'a mi'o mahno tposʉ.</FORM>
         <PHON kindOf="standard">ɗemsʔʦohio, oʔs miʔo mshno tposɨ.</PHON>
         <TRANSL xml:lang="zho">老師，我沒帶課本。</TRANSL>
-        <TRANSL xml:lang="eng">Teacher, I didn’t bring my textbook.</TRANSL>
+        <TRANSL xml:lang="eng">Teacher, I didn't bring my textbook.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_420.wav" url="https://web.klokah.tw/text/sound/36910/583245.mp3" start="0" end="3.68"/>
     </S>
     <S id="421">
@@ -3906,7 +3906,7 @@
         <FORM kindOf="standard">'aveoveoyʉ, mo'o 'o ongko'u.</FORM>
         <PHON kindOf="standard">ʔsveoveojɨ, moʔo ʔo oŋkoʔu.</PHON>
         <TRANSL xml:lang="zho">你好，我是mo’o。</TRANSL>
-        <TRANSL xml:lang="eng">Hello, I am mo’o.</TRANSL>
+        <TRANSL xml:lang="eng">Hello, I am mo'o.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_434.wav" url="https://web.klokah.tw/text/sound/36913/583296.mp3" start="0" end="2.81"/>
     </S>
     <S id="435">
@@ -3915,7 +3915,7 @@
         <FORM kindOf="standard">'aveoveoyʉ mo'o, pasuya na a'o.</FORM>
         <PHON kindOf="standard">ʔsveoveojɨ moʔo, pssujs ns sʔo.</PHON>
         <TRANSL xml:lang="zho">mo’o你好，我是pasuya。</TRANSL>
-        <TRANSL xml:lang="eng">Hello, mo’o, I am pasuya.</TRANSL>
+        <TRANSL xml:lang="eng">Hello, mo'o, I am pasuya.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_435.wav" url="https://web.klokah.tw/text/sound/36913/583297.mp3" start="0" end="3.35"/>
     </S>
     <S id="436">
@@ -3951,7 +3951,7 @@
         <FORM kindOf="standard">'a ino to voyu a'o, 'aeno tanivu.</FORM>
         <PHON kindOf="standard">ʔs ino to voju sʔo, ʔseno tsnivu.</PHON>
         <TRANSL xml:lang="zho">我是voyu的媽媽，我是tanivu。</TRANSL>
-        <TRANSL xml:lang="eng">I am voyu’s mom, tanivu.</TRANSL>
+        <TRANSL xml:lang="eng">I am voyu's mom, tanivu.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_439.wav" url="https://web.klokah.tw/text/sound/36913/583301.mp3" start="0" end="3.71"/>
     </S>
     <S id="440">
@@ -3969,7 +3969,7 @@
         <FORM kindOf="standard">ohaesa to pasuya a'o, yangui 'o ongko'u.</FORM>
         <PHON kindOf="standard">ohsess to pssujs sʔo, jsŋui ʔo oŋkoʔu.</PHON>
         <TRANSL xml:lang="zho">我是pasuya的妹妹，我的名字是yangui。</TRANSL>
-        <TRANSL xml:lang="eng">I am pasuya’s sister. My name is yangui.</TRANSL>
+        <TRANSL xml:lang="eng">I am pasuya's sister. My name is yangui.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_441.wav" url="https://web.klokah.tw/text/sound/36913/583303.mp3" start="0" end="4.61"/>
     </S>
     <S id="442">
@@ -4005,7 +4005,7 @@
         <FORM kindOf="standard">'a ohaeva'u, zou mo'o.</FORM>
         <PHON kindOf="standard">ʔs ohsevsʔu, zou moʔo.</PHON>
         <TRANSL xml:lang="zho">他是我的哥哥，他叫mo’o。</TRANSL>
-        <TRANSL xml:lang="eng">He is my brother, mo’o.</TRANSL>
+        <TRANSL xml:lang="eng">He is my brother, mo'o.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_445.wav" url="https://web.klokah.tw/text/sound/36913/583307.mp3" start="0" end="2.85"/>
     </S>
     <S id="446">
@@ -4041,7 +4041,7 @@
         <FORM kindOf="standard">o'a, 'a mo'o.</FORM>
         <PHON kindOf="standard">oʔs, ʔs moʔo.</PHON>
         <TRANSL xml:lang="zho">不是，我是mo’o。</TRANSL>
-        <TRANSL xml:lang="eng">No, I am mo’o.</TRANSL>
+        <TRANSL xml:lang="eng">No, I am mo'o.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_449.wav" url="https://web.klokah.tw/text/sound/36913/583311.mp3" start="0" end="2.56"/>
     </S>
     <S id="450">
@@ -4086,7 +4086,7 @@
         <FORM kindOf="standard">cuma na ongko to ohaevasu?</FORM>
         <PHON kindOf="standard">ʦums ns oŋko to ohsevssu?</PHON>
         <TRANSL xml:lang="zho">你姐姐的名字是什麼?</TRANSL>
-        <TRANSL xml:lang="eng">What is your elder sister’s name?</TRANSL>
+        <TRANSL xml:lang="eng">What is your elder sister's name?</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_454.wav" url="https://web.klokah.tw/text/sound/36913/583316.mp3" start="0" end="3.07"/>
     </S>
     <S id="455">
@@ -4095,7 +4095,7 @@
         <FORM kindOf="standard">'a apu'u 'o ongko to ohaeva'u.</FORM>
         <PHON kindOf="standard">ʔs spuʔu ʔo oŋko to ohsevsʔu.</PHON>
         <TRANSL xml:lang="zho">我的姐姐的名字是apu’u。</TRANSL>
-        <TRANSL xml:lang="eng">My elder sister’s name is apu’u.</TRANSL>
+        <TRANSL xml:lang="eng">My elder sister's name is apu'u.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_455.wav" url="https://web.klokah.tw/text/sound/36913/583317.mp3" start="0" end="3.21"/>
     </S>
     <S id="456">
@@ -4104,7 +4104,7 @@
         <FORM kindOf="standard">cuma na ongko to ohaesasu?</FORM>
         <PHON kindOf="standard">ʦums ns oŋko to ohsesssu?</PHON>
         <TRANSL xml:lang="zho">你妹妹的名字是什麼?</TRANSL>
-        <TRANSL xml:lang="eng">What is your younger sister’s name?</TRANSL>
+        <TRANSL xml:lang="eng">What is your younger sister's name?</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_456.wav" url="https://web.klokah.tw/text/sound/36913/583318.mp3" start="0" end="3.17"/>
     </S>
     <S id="457">
@@ -4113,7 +4113,7 @@
         <FORM kindOf="standard">'a naa'u 'o ongko to ohaesa'u.</FORM>
         <PHON kindOf="standard">ʔs nssʔu ʔo oŋko to ohsessʔu.</PHON>
         <TRANSL xml:lang="zho">我的妹妹的名字是naa’u。</TRANSL>
-        <TRANSL xml:lang="eng">My younger sister’s name is naa’u.</TRANSL>
+        <TRANSL xml:lang="eng">My younger sister's name is naa'u.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_457.wav" url="https://web.klokah.tw/text/sound/36913/583319.mp3" start="0" end="3.39"/>
     </S>
     <S id="458">
@@ -4194,7 +4194,7 @@
         <FORM kindOf="standard">leako yone hosa ho tmpsʉ?</FORM>
         <PHON kindOf="standard">ɗesko jone hoss ho tmpsɨ?</PHON>
         <TRANSL xml:lang="zho">你在部落的學校讀書嗎?</TRANSL>
-        <TRANSL xml:lang="eng">Do you study in your tribe’s school?</TRANSL>
+        <TRANSL xml:lang="eng">Do you study in your tribe's school?</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_466.wav" url="https://web.klokah.tw/text/sound/36913/583328.mp3" start="0" end="2.42"/>
     </S>
     <S id="467">
@@ -4310,7 +4310,7 @@
         <FORM kindOf="standard">o'a, 'a nanghia to ohaesa'u.</FORM>
         <PHON kindOf="standard">oʔs, ʔs nsŋhis to ohsessʔu.</PHON>
         <TRANSL xml:lang="zho">不是， 他是我弟弟的朋友。</TRANSL>
-        <TRANSL xml:lang="eng">No, he is my younger brother’s friend.</TRANSL>
+        <TRANSL xml:lang="eng">No, he is my younger brother's friend.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_479.wav" url="https://web.klokah.tw/text/sound/36916/583377.mp3" start="0" end="3.5"/>
     </S>
     <S id="480">
@@ -4382,7 +4382,7 @@
         <FORM kindOf="standard">uk'a hahocngʉ, mo tuyu ci maamespingi.</FORM>
         <PHON kindOf="standard">ukʔs hshoʦŋɨ, mo tuju ʦi mssmespiŋi.</PHON>
         <TRANSL xml:lang="zho">我沒有弟弟，有三位妹妹。</TRANSL>
-        <TRANSL xml:lang="eng">I don’t have any younger brothers, but I have three younger sisters.</TRANSL>
+        <TRANSL xml:lang="eng">I don't have any younger brothers, but I have three younger sisters.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_487.wav" url="https://web.klokah.tw/text/sound/36916/583385.mp3" start="0" end="4.43"/>
     </S>
     <S id="488">
@@ -4400,7 +4400,7 @@
         <FORM kindOf="standard">uk'a s'a ohaeva'u.</FORM>
         <PHON kindOf="standard">ukʔs sʔs ohsevsʔu.</PHON>
         <TRANSL xml:lang="zho">我沒有兄姊。</TRANSL>
-        <TRANSL xml:lang="eng">I don’t have any older siblings.</TRANSL>
+        <TRANSL xml:lang="eng">I don't have any older siblings.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_489.wav" url="https://web.klokah.tw/text/sound/36916/583387.mp3" start="0" end="2.02"/>
     </S>
     <S id="490">
@@ -4418,7 +4418,7 @@
         <FORM kindOf="standard">uk'a s'a.</FORM>
         <PHON kindOf="standard">ukʔs sʔs.</PHON>
         <TRANSL xml:lang="zho">我沒有兄弟姐妹。</TRANSL>
-        <TRANSL xml:lang="eng">I don’t have any siblings.</TRANSL>
+        <TRANSL xml:lang="eng">I don't have any siblings.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_491.wav" url="https://web.klokah.tw/text/sound/36916/583389.mp3" start="0" end="1.27"/>
     </S>
     <S id="492">
@@ -4481,7 +4481,7 @@
         <FORM kindOf="standard">te nana mainenu 'e hpʉhpʉngʉ maitan'e?</FORM>
         <PHON kindOf="standard">te nsns msinenu ʔe hpɨhpɨŋɨ msitsnʔe?</PHON>
         <TRANSL xml:lang="zho">今天天氣如何?</TRANSL>
-        <TRANSL xml:lang="eng">How’s the weather today?</TRANSL>
+        <TRANSL xml:lang="eng">How's the weather today?</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_498.wav" url="https://web.klokah.tw/text/sound/36919/583434.mp3" start="0" end="3.57"/>
     </S>
     <S id="499">
@@ -4490,7 +4490,7 @@
         <FORM kindOf="standard">mo ake'i coheʉceʉ, la asngʉcʉ mimo tomo noyano ci chumu.</FORM>
         <PHON kindOf="standard">mo skeʔi ʦoheɨʦeɨ, ɗs ssŋɨʦɨ mimo tomo nojsno ʦi ʦhumu.</PHON>
         <TRANSL xml:lang="zho">天氣有點冷，要多喝熱水。</TRANSL>
-        <TRANSL xml:lang="eng">It’s a bit cold, so you need to drink more warm water.</TRANSL>
+        <TRANSL xml:lang="eng">It's a bit cold, so you need to drink more warm water.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_499.wav" url="https://web.klokah.tw/text/sound/36919/583435.mp3" start="0" end="7.67"/>
     </S>
     <S id="500">
@@ -4499,7 +4499,7 @@
         <FORM kindOf="standard">te nana mainenu 'e hpʉhpʉngʉ maitan'e?</FORM>
         <PHON kindOf="standard">te nsns msinenu ʔe hpɨhpɨŋɨ msitsnʔe?</PHON>
         <TRANSL xml:lang="zho">今天天氣如何?</TRANSL>
-        <TRANSL xml:lang="eng">How’s the weather today?</TRANSL>
+        <TRANSL xml:lang="eng">How's the weather today?</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_500.wav" url="https://web.klokah.tw/text/sound/36919/583436.mp3" start="0" end="3.39"/>
     </S>
     <S id="501">
@@ -4508,7 +4508,7 @@
         <FORM kindOf="standard">mo ake'i mu'ei, la asngʉcʉ mimo to chumu.</FORM>
         <PHON kindOf="standard">mo skeʔi muʔei, ɗs ssŋɨʦɨ mimo to ʦhumu.</PHON>
         <TRANSL xml:lang="zho">天氣有點熱，要多喝水。</TRANSL>
-        <TRANSL xml:lang="eng">It’s a bit hot, so you need to drink more water.</TRANSL>
+        <TRANSL xml:lang="eng">It's a bit hot, so you need to drink more water.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_501.wav" url="https://web.klokah.tw/text/sound/36919/583437.mp3" start="0" end="4.58"/>
     </S>
     <S id="502">
@@ -4517,7 +4517,7 @@
         <FORM kindOf="standard">mo nana mainenu 'e hpʉhpʉngʉ maitan'e?</FORM>
         <PHON kindOf="standard">mo nsns msinenu ʔe hpɨhpɨŋɨ msitsnʔe?</PHON>
         <TRANSL xml:lang="zho">外面天氣如何?</TRANSL>
-        <TRANSL xml:lang="eng">How’s the weather outside?</TRANSL>
+        <TRANSL xml:lang="eng">How's the weather outside?</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_502.wav" url="https://web.klokah.tw/text/sound/36919/583438.mp3" start="0" end="2.81"/>
     </S>
     <S id="503">
@@ -4535,7 +4535,7 @@
         <FORM kindOf="standard">mo nana mainenu 'e hpʉhpʉngʉ maitan'e?</FORM>
         <PHON kindOf="standard">mo nsns msinenu ʔe hpɨhpɨŋɨ msitsnʔe?</PHON>
         <TRANSL xml:lang="zho">外面天氣如何?</TRANSL>
-        <TRANSL xml:lang="eng">How’s the weather outside?</TRANSL>
+        <TRANSL xml:lang="eng">How's the weather outside?</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_504.wav" url="https://web.klokah.tw/text/sound/36919/583440.mp3" start="0" end="2.92"/>
     </S>
     <S id="505">
@@ -4589,7 +4589,7 @@
         <FORM kindOf="standard">te nana huaeca molʉ maitan'e?</FORM>
         <PHON kindOf="standard">te nsns huseʦs moɗɨ msitsnʔe?</PHON>
         <TRANSL xml:lang="zho">假日天氣如何?</TRANSL>
-        <TRANSL xml:lang="eng">How’s the weather on the weekend?</TRANSL>
+        <TRANSL xml:lang="eng">How's the weather on the weekend?</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_510.wav" url="https://web.klokah.tw/text/sound/36919/583446.mp3" start="0" end="4.04"/>
     </S>
     <S id="511">
@@ -4670,7 +4670,7 @@
         <FORM kindOf="standard">mo mʉchʉ, o'a mi'o mahno khasa.</FORM>
         <PHON kindOf="standard">mo mɨʦhɨ, oʔs miʔo mshno khsss.</PHON>
         <TRANSL xml:lang="zho">下雨了，我沒有帶傘。</TRANSL>
-        <TRANSL xml:lang="eng">It is raining and I don’t have an umbrella with me.</TRANSL>
+        <TRANSL xml:lang="eng">It is raining and I don't have an umbrella with me.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_519.wav" url="https://web.klokah.tw/text/sound/36919/583455.mp3" start="0" end="4.69"/>
     </S>
     <S id="520">
@@ -4760,7 +4760,7 @@
         <FORM kindOf="standard">o'a, la'so man'i 'o cmoehu ho mio.</FORM>
         <PHON kindOf="standard">oʔs, ɗsʔso msnʔi ʔo ʦmoehu ho mio.</PHON>
         <TRANSL xml:lang="zho">不，秋天有好多颱風。</TRANSL>
-        <TRANSL xml:lang="eng">I don’t like autumn because there are lots of typhoons in autumn.</TRANSL>
+        <TRANSL xml:lang="eng">I don't like autumn because there are lots of typhoons in autumn.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_529.wav" url="https://web.klokah.tw/text/sound/36919/583465.mp3" start="0" end="5.37"/>
     </S>
     <S id="530">
@@ -4895,7 +4895,7 @@
         <FORM kindOf="standard">teto mo'potʉ to mali.</FORM>
         <PHON kindOf="standard">teto moʔpotɨ to msɗi.</PHON>
         <TRANSL xml:lang="zho">我們去踢球。</TRANSL>
-        <TRANSL xml:lang="eng">Let’s play soccer.</TRANSL>
+        <TRANSL xml:lang="eng">Let's play soccer.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_544.wav" url="https://web.klokah.tw/text/sound/36922/583519.mp3" start="0" end="4.15"/>
     </S>
     <S id="545">
@@ -4913,7 +4913,7 @@
         <FORM kindOf="standard">teto no yuhnguzu.</FORM>
         <PHON kindOf="standard">teto no juhŋuzu.</PHON>
         <TRANSL xml:lang="zho">我們去游泳。</TRANSL>
-        <TRANSL xml:lang="eng">Let’s go swimming.</TRANSL>
+        <TRANSL xml:lang="eng">Let's go swimming.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_546.wav" url="https://web.klokah.tw/text/sound/36922/583521.mp3" start="0" end="1.88"/>
     </S>
     <S id="547">
@@ -4922,7 +4922,7 @@
         <FORM kindOf="standard">'a te, teto yuyuso.</FORM>
         <PHON kindOf="standard">ʔs te, teto jujuso.</PHON>
         <TRANSL xml:lang="zho">好啊，我們一起去。</TRANSL>
-        <TRANSL xml:lang="eng">Sure! Let’s go there together.</TRANSL>
+        <TRANSL xml:lang="eng">Sure! Let's go there together.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_547.wav" url="https://web.klokah.tw/text/sound/36922/583522.mp3" start="0" end="2.45"/>
     </S>
     <S id="548">
@@ -4931,7 +4931,7 @@
         <FORM kindOf="standard">teto peispak'i to mali.</FORM>
         <PHON kindOf="standard">teto peispskʔi to msɗi.</PHON>
         <TRANSL xml:lang="zho">我們去玩球。</TRANSL>
-        <TRANSL xml:lang="eng">Let’s play ball.</TRANSL>
+        <TRANSL xml:lang="eng">Let's play ball.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_548.wav" url="https://web.klokah.tw/text/sound/36922/583523.mp3" start="0" end="2.06"/>
     </S>
     <S id="549">
@@ -4985,7 +4985,7 @@
         <FORM kindOf="standard">manci o'te oemucu?</FORM>
         <PHON kindOf="standard">msnʦi oʔte oemuʦu?</PHON>
         <TRANSL xml:lang="zho">你怎麼沒洗手?</TRANSL>
-        <TRANSL xml:lang="eng">Why didn’t you wash your hands?</TRANSL>
+        <TRANSL xml:lang="eng">Why didn't you wash your hands?</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_554.wav" url="https://web.klokah.tw/text/sound/36922/583531.mp3" start="0" end="2.92"/>
     </S>
     <S id="555">
@@ -5120,7 +5120,7 @@
         <FORM kindOf="standard">'a pasuya a'o, te'o miebini to mo'o.</FORM>
         <PHON kindOf="standard">ʔs pssujs sʔo, teʔo mieɓini to moʔo.</PHON>
         <TRANSL xml:lang="zho">我是pasuya，我是來找mo’o的。</TRANSL>
-        <TRANSL xml:lang="eng">I am pasuya, I am here for mo’o.</TRANSL>
+        <TRANSL xml:lang="eng">I am pasuya, I am here for mo'o.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_569.wav" url="https://web.klokah.tw/text/sound/36925/583584.mp3" start="0" end="5.19"/>
     </S>
     <S id="570">
@@ -5138,7 +5138,7 @@
         <FORM kindOf="standard">mikocu noana'o o'te uh tan'e, engha na'na talʉa na suu.</FORM>
         <PHON kindOf="standard">mikoʦu nosnsʔo oʔte uh tsnʔe, eŋhs nsʔns tsɗɨs ns suu.</PHON>
         <TRANSL xml:lang="zho">你好久沒來了，我好想念你。</TRANSL>
-        <TRANSL xml:lang="eng">You haven’t been here for a long time. I missed you so much.</TRANSL>
+        <TRANSL xml:lang="eng">You haven't been here for a long time. I missed you so much.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_571.wav" url="https://web.klokah.tw/text/sound/36925/583586.mp3" start="0" end="6.99"/>
     </S>
     <S id="572">
@@ -5228,7 +5228,7 @@
         <FORM kindOf="standard">o'a la'u ʉmnʉ to huv'o, te'o bonʉ to linggo.</FORM>
         <PHON kindOf="standard">oʔs ɗsʔu ɨmnɨ to huvʔo, teʔo ɓonɨ to ɗiŋ*o.</PHON>
         <TRANSL xml:lang="zho">我不能吃橘子，我吃蘋果就好。</TRANSL>
-        <TRANSL xml:lang="eng">I can’t eat oranges. I will have some apples instead.</TRANSL>
+        <TRANSL xml:lang="eng">I can't eat oranges. I will have some apples instead.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_581.wav" url="https://web.klokah.tw/text/sound/36925/583596.mp3" start="0" end="6.34"/>
     </S>
     <S id="582">
@@ -5318,7 +5318,7 @@
         <FORM kindOf="standard">'a te'o iachi!</FORM>
         <PHON kindOf="standard">ʔs teʔo isʦhi!</PHON>
         <TRANSL xml:lang="zho">我不客氣了喔！</TRANSL>
-        <TRANSL xml:lang="eng">I’ll make myself at home then.</TRANSL>
+        <TRANSL xml:lang="eng">I'll make myself at home then.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_591.wav" url="https://web.klokah.tw/text/sound/36925/583606.mp3" start="0" end="1.81"/>
     </S>
     <S id="592">
@@ -5336,7 +5336,7 @@
         <FORM kindOf="standard">ma tec'u, mi'ocu oenguzu.</FORM>
         <PHON kindOf="standard">ms teʦʔu, miʔoʦu oeŋuzu.</PHON>
         <TRANSL xml:lang="zho">我吃了好多，不能再吃了。</TRANSL>
-        <TRANSL xml:lang="eng">I ate a lot and couldn’t eat any more.</TRANSL>
+        <TRANSL xml:lang="eng">I ate a lot and couldn't eat any more.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_593.wav" url="https://web.klokah.tw/text/sound/36925/583608.mp3" start="0" end="3.14"/>
     </S>
     <S id="594">
@@ -5597,7 +5597,7 @@
         <FORM kindOf="standard">yotan'e c'o ho biu'i'io, 'ote emomcovhi!</FORM>
         <PHON kindOf="standard">jotsnʔe ʦʔo ho ɓiuʔiʔio, ʔote emomʦovhi!</PHON>
         <TRANSL xml:lang="zho">在這裡看一看，不要到太遠的地方唷!</TRANSL>
-        <TRANSL xml:lang="eng">Come here and take a look. Don’t go too far!</TRANSL>
+        <TRANSL xml:lang="eng">Come here and take a look. Don't go too far!</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_622.wav" url="https://web.klokah.tw/text/sound/36928/583673.mp3" start="0" end="5.55"/>
     </S>
     <S id="623">
@@ -5606,7 +5606,7 @@
         <FORM kindOf="standard">te, o'a temza s'a emomcovhi.</FORM>
         <PHON kindOf="standard">te, oʔs temzs sʔs emomʦovhi.</PHON>
         <TRANSL xml:lang="zho">好，我們不會去太遠的地方。</TRANSL>
-        <TRANSL xml:lang="eng">Got it, we won’t go anywhere too far.</TRANSL>
+        <TRANSL xml:lang="eng">Got it, we won't go anywhere too far.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_623.wav" url="https://web.klokah.tw/text/sound/36928/583674.mp3" start="0" end="3.57"/>
     </S>
     <S id="624">
@@ -5615,7 +5615,7 @@
         <FORM kindOf="standard">'ote peayofʉ, apopoha'o c'o ci temu s'a smopcuku.</FORM>
         <PHON kindOf="standard">ʔote pesjofɨ, spopohsʔo ʦʔo ʦi temu sʔs smopʦuku.</PHON>
         <TRANSL xml:lang="zho">不要用跑的，慢慢走免得跌倒了。</TRANSL>
-        <TRANSL xml:lang="eng">Don’t run and walk slowly lest you fall down.</TRANSL>
+        <TRANSL xml:lang="eng">Don't run and walk slowly lest you fall down.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_624.wav" url="https://web.klokah.tw/text/sound/36928/583675.mp3" start="0" end="6.05"/>
     </S>
     <S id="625">
@@ -5723,7 +5723,7 @@
         <FORM kindOf="standard">te yono cuma 'o apu'u ho te uh ne 'oyonatmopsʉ?</FORM>
         <PHON kindOf="standard">te jono ʦums ʔo spuʔu ho te uh ne ʔojonstmopsɨ?</PHON>
         <TRANSL xml:lang="zho">apu’u搭什麼去學校?</TRANSL>
-        <TRANSL xml:lang="eng">How does apu’u go to school?</TRANSL>
+        <TRANSL xml:lang="eng">How does apu'u go to school?</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_636.wav" url="https://web.klokah.tw/text/sound/36931/583722.mp3" start="0" end="4.83"/>
     </S>
     <S id="637">
@@ -5732,7 +5732,7 @@
         <FORM kindOf="standard">te nooyo to kuyai no tacvo'hi 'o apu'u ho uh ne 'oyonatmopsʉ.</FORM>
         <PHON kindOf="standard">te noojo to kujsi no tsʦvoʔhi ʔo spuʔu ho uh ne ʔojonstmopsɨ.</PHON>
         <TRANSL xml:lang="zho">apu’u搭火車去學校。</TRANSL>
-        <TRANSL xml:lang="eng">apu’u goes to school by train.</TRANSL>
+        <TRANSL xml:lang="eng">apu'u goes to school by train.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_637.wav" url="https://web.klokah.tw/text/sound/36931/583723.mp3" start="0" end="6.31"/>
     </S>
     <S id="638">
@@ -5939,7 +5939,7 @@
         <FORM kindOf="standard">te nana ʉmnʉ ho hucma? ta'u biebini ho ta'esi no cohzona.</FORM>
         <PHON kindOf="standard">te nsns ɨmnɨ ho huʦms? tsʔu ɓieɓini ho tsʔesi no ʦohzons.</PHON>
         <TRANSL xml:lang="zho">那你明天有空嗎?我下午去找你。</TRANSL>
-        <TRANSL xml:lang="eng">Then, are you available tomorrow? I’ll visit you tomorrow afternoon.</TRANSL>
+        <TRANSL xml:lang="eng">Then, are you available tomorrow? I'll visit you tomorrow afternoon.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_660.wav" url="https://web.klokah.tw/text/sound/36934/583785.mp3" start="0" end="5.84"/>
     </S>
     <S id="661">
@@ -5984,7 +5984,7 @@
         <FORM kindOf="standard">o'a te, o'a mi'o yonghu, maezo esku'u si macucuma ta emoo.</FORM>
         <PHON kindOf="standard">oʔs te, oʔs miʔo joŋhu, msezo eskuʔu si msʦuʦums ts emoo.</PHON>
         <TRANSL xml:lang="zho">我不好看，倉庫也沒整理，不要啦。</TRANSL>
-        <TRANSL xml:lang="eng">No, I am plain and the warehouse hasn’t been tidied up yet.</TRANSL>
+        <TRANSL xml:lang="eng">No, I am plain and the warehouse hasn't been tidied up yet.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_665.wav" url="https://web.klokah.tw/text/sound/36934/583790.mp3" start="0" end="8.07"/>
     </S>
     <S id="666">
@@ -6101,7 +6101,7 @@
         <FORM kindOf="standard">mi'o maezo aʉt'ʉcʉ to ngiau, la'u koa o'te nama nac'o homo c'o noachi.</FORM>
         <PHON kindOf="standard">miʔo msezo sɨtʔɨʦɨ to ŋisu, ɗsʔu kos oʔte nsms nsʦʔo homo ʦʔo nosʦhi.</PHON>
         <TRANSL xml:lang="zho">我也有養一隻貓，有動物陪伴不會無聊。</TRANSL>
-        <TRANSL xml:lang="eng">I have a cat too. I won’t get bored with the company of my pet.</TRANSL>
+        <TRANSL xml:lang="eng">I have a cat too. I won't get bored with the company of my pet.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_678.wav" url="https://web.klokah.tw/text/sound/36934/583803.mp3" start="0" end="8.18"/>
     </S>
     <S id="679">
@@ -6119,7 +6119,7 @@
         <FORM kindOf="standard">o'a mi'o nama bocbochio, 'a te'o yut'ingha na os'o cohivi.</FORM>
         <PHON kindOf="standard">oʔs miʔo nsms ɓoʦɓoʦhio, ʔs teʔo jutʔiŋhs ns osʔo ʦohivi.</PHON>
         <TRANSL xml:lang="zho">我知道的不多，但我能回答的都會回答你。</TRANSL>
-        <TRANSL xml:lang="eng">I don’t know much about that, but I will tell you everything I know.</TRANSL>
+        <TRANSL xml:lang="eng">I don't know much about that, but I will tell you everything I know.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_680.wav" url="https://web.klokah.tw/text/sound/36934/583805.mp3" start="0" end="8.18"/>
     </S>
     <S id="681">
@@ -6487,7 +6487,7 @@
         <FORM kindOf="standard">'ancu iko s'a yoveineni a'o 'o smaofsusu'u.</FORM>
         <PHON kindOf="standard">ʔsnʦu iko sʔs joveineni sʔo ʔo smsofsusuʔu.</PHON>
         <TRANSL xml:lang="zho">你還沒還我橡皮擦。</TRANSL>
-        <TRANSL xml:lang="eng">You haven’t returned me the eraser.</TRANSL>
+        <TRANSL xml:lang="eng">You haven't returned me the eraser.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_721.wav" url="https://web.klokah.tw/text/sound/36938/583906.mp3" start="0" end="5.15"/>
     </S>
     <S id="722">
@@ -6523,7 +6523,7 @@
         <FORM kindOf="standard">bochio, te'o n'a tuocosi.</FORM>
         <PHON kindOf="standard">ɓoʦhio, teʔo nʔs tuoʦosi.</PHON>
         <TRANSL xml:lang="zho">我不知道，我去問問她。</TRANSL>
-        <TRANSL xml:lang="eng">I don’t know. I will go and ask her.</TRANSL>
+        <TRANSL xml:lang="eng">I don't know. I will go and ask her.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_725.wav" url="https://web.klokah.tw/text/sound/36938/583910.mp3" start="0" end="3.39"/>
     </S>
     <S id="726">
@@ -6559,7 +6559,7 @@
         <FORM kindOf="standard">mo totiski to ocmʉyʉ ci yʉsʉ to pasuya.</FORM>
         <PHON kindOf="standard">mo totiski to oʦmɨjɨ ʦi jɨsɨ to pssujs.</PHON>
         <TRANSL xml:lang="zho">pasuya的外套跟你的一樣。</TRANSL>
-        <TRANSL xml:lang="eng">voyu’s coat is the same as yours.</TRANSL>
+        <TRANSL xml:lang="eng">voyu's coat is the same as yours.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_729.wav" url="https://web.klokah.tw/text/sound/36938/583914.mp3" start="0" end="4.97"/>
     </S>
     <S id="730">
@@ -6631,7 +6631,7 @@
         <FORM kindOf="standard">'ie ma mo maica, ko'ko o'a mi'o ahtu ticunu.</FORM>
         <PHON kindOf="standard">ʔie ms mo msiʦs, koʔko oʔs miʔo shtu tiʦunu.</PHON>
         <TRANSL xml:lang="zho">原來是這樣，我都搞錯了！難怪我都抓不到。</TRANSL>
-        <TRANSL xml:lang="eng">No wonder! I am mistaken and that’s why I cannot catch any of them.</TRANSL>
+        <TRANSL xml:lang="eng">No wonder! I am mistaken and that's why I cannot catch any of them.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_737.wav" url="https://web.klokah.tw/text/sound/36940/583952.mp3" start="0" end="6.13"/>
     </S>
     <S id="738">
@@ -6658,7 +6658,7 @@
         <FORM kindOf="standard">micu taacvo'hi si kukuzo ta chana, uh ne tvosiamacucuma ho mayo to poyave, teto n'a uh ne chana.</FORM>
         <PHON kindOf="standard">miʦu tssʦvoʔhi si kukuzo ts ʦhsns, uh ne tvosismsʦuʦums ho msjo to pojsve, teto nʔs uh ne ʦhsns.</PHON>
         <TRANSL xml:lang="zho">田裡的草太長了，你去倉庫拿鐮刀，我們去田裡。</TRANSL>
-        <TRANSL xml:lang="eng">The grass in the fields is too tall. Go to the warehouse to take the sickle and let’s go to the fields.</TRANSL>
+        <TRANSL xml:lang="eng">The grass in the fields is too tall. Go to the warehouse to take the sickle and let's go to the fields.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_740.wav" url="https://web.klokah.tw/text/sound/36940/583955.mp3" start="0" end="13.54"/>
     </S>
     <S id="741">
@@ -6685,7 +6685,7 @@
         <FORM kindOf="standard">bumemealʉ ho teko yaa, 'a mo na'no feofeo 'o poyave.</FORM>
         <PHON kindOf="standard">ɓumemesɗɨ ho teko jss, ʔs mo nsʔno feofeo ʔo pojsve.</PHON>
         <TRANSL xml:lang="zho">小心拿，不要受傷。鐮刀很利。</TRANSL>
-        <TRANSL xml:lang="eng">Be careful and don’t get hurt. The sickle is very sharp.</TRANSL>
+        <TRANSL xml:lang="eng">Be careful and don't get hurt. The sickle is very sharp.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_743.wav" url="https://web.klokah.tw/text/sound/36940/583957.mp3" start="0" end="6.13"/>
     </S>
     <S id="744">
@@ -6694,7 +6694,7 @@
         <FORM kindOf="standard">teav'a so p'ecihi 'o h'oepona'u.</FORM>
         <PHON kindOf="standard">tesvʔs so pʔeʦihi ʔo hʔoeponsʔu.</PHON>
         <TRANSL xml:lang="zho">不要踩到我的陷阱。</TRANSL>
-        <TRANSL xml:lang="eng">Don’t step on my trap!</TRANSL>
+        <TRANSL xml:lang="eng">Don't step on my trap!</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_744.wav" url="https://web.klokah.tw/text/sound/36940/583958.mp3" start="0" end="4.47"/>
     </S>
     <S id="745">
@@ -6748,7 +6748,7 @@
         <FORM kindOf="standard">uk'a s'a yungumza, lamza c'o tualungu.</FORM>
         <PHON kindOf="standard">ukʔs sʔs juŋumzs, ɗsmzs ʦʔo tusɗuŋu.</PHON>
         <TRANSL xml:lang="zho">我們那邊沒有魚筌，我們都用釣竿抓魚。</TRANSL>
-        <TRANSL xml:lang="eng">We don’t have any fish traps there, so we catch fish with a fishing rod.</TRANSL>
+        <TRANSL xml:lang="eng">We don't have any fish traps there, so we catch fish with a fishing rod.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_750.wav" url="https://web.klokah.tw/text/sound/36940/583962.mp3" start="0" end="4.36"/>
     </S>
     <S id="751">
@@ -6766,7 +6766,7 @@
         <FORM kindOf="standard">ta'u lea, 'a tato no ipopohʉ tualungu.</FORM>
         <PHON kindOf="standard">tsʔu ɗes, ʔs tsto no ipopohɨ tusɗuŋu.</PHON>
         <TRANSL xml:lang="zho">好啊，我們下次一起去釣魚。</TRANSL>
-        <TRANSL xml:lang="eng">Sure! Let’s go fishing together next time.</TRANSL>
+        <TRANSL xml:lang="eng">Sure! Let's go fishing together next time.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_752.wav" url="https://web.klokah.tw/text/sound/36940/583964.mp3" start="0" end="4.25"/>
     </S>
     <S id="753">
@@ -6784,7 +6784,7 @@
         <FORM kindOf="standard">si lungu suu micu yaa boecʉ ci yoskʉ, naho cu e'tʉi.</FORM>
         <PHON kindOf="standard">si ɗuŋu suu miʦu jss ɓoeʦɨ ʦi joskɨ, nsho ʦu eʔtɨi.</PHON>
         <TRANSL xml:lang="zho">你的釣竿動了，是不是有魚上鉤了!你快拉起來。</TRANSL>
-        <TRANSL xml:lang="eng">Your fishing rod is moving. Isn’t the fish on the hook? Pull it up!</TRANSL>
+        <TRANSL xml:lang="eng">Your fishing rod is moving. Isn't the fish on the hook? Pull it up!</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_754.wav" url="https://web.klokah.tw/text/sound/36940/583966.mp3" start="0" end="4.83"/>
     </S>
     <S id="755">
@@ -6820,7 +6820,7 @@
         <FORM kindOf="standard">teto cu maine'e ho angaezneni to maa'oahnguto.</FORM>
         <PHON kindOf="standard">teto ʦu msineʔe ho sŋsezneni to mssʔoshŋuto.</PHON>
         <TRANSL xml:lang="zho">我們快回去和大家分享。</TRANSL>
-        <TRANSL xml:lang="eng">Let’s go back immediately and share it with everyone.</TRANSL>
+        <TRANSL xml:lang="eng">Let's go back immediately and share it with everyone.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_758.wav" url="https://web.klokah.tw/text/sound/36940/583970.mp3" start="0" end="5.95"/>
     </S>
     <S id="759">
@@ -6847,7 +6847,7 @@
         <FORM kindOf="standard">pa'hi kokoe'i, mi'o poha'o esmi!</FORM>
         <PHON kindOf="standard">psʔhi kokoeʔi, miʔo pohsʔo esmi!</PHON>
         <TRANSL xml:lang="zho">抱歉，我遲到了!</TRANSL>
-        <TRANSL xml:lang="eng">Sorry, I’m late!</TRANSL>
+        <TRANSL xml:lang="eng">Sorry, I'm late!</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_761.wav" url="https://web.klokah.tw/text/sound/63638/893358.mp3" start="0" end="7.35"/>
     </S>
     <S id="762">
@@ -6874,7 +6874,7 @@
         <FORM kindOf="standard">mo maiuemo maitan'e, te tosvo ho hucma, tato nʉthʉ mimiyo!</FORM>
         <PHON kindOf="standard">mo msiuemo msitsnʔe, te tosvo ho huʦms, tsto nɨthɨ mimijo!</PHON>
         <TRANSL xml:lang="zho">今天星期五，明天放假，一起出去玩吧!</TRANSL>
-        <TRANSL xml:lang="eng">It’s Friday today, we have a day off tomorrow. Let’s go out and play together!</TRANSL>
+        <TRANSL xml:lang="eng">It's Friday today, we have a day off tomorrow. Let's go out and play together!</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_764.wav" url="https://web.klokah.tw/text/sound/63638/893361.mp3" start="0" end="13.26"/>
     </S>
     <S id="765">
@@ -6883,7 +6883,7 @@
         <FORM kindOf="standard">'a tee eno! tato uhne c'oeha.</FORM>
         <PHON kindOf="standard">ʔs tee eno! tsto uhne ʦʔoehs.</PHON>
         <TRANSL xml:lang="zho">好啊!我們去河邊。</TRANSL>
-        <TRANSL xml:lang="eng">Great! Let’s go to the riverside.</TRANSL>
+        <TRANSL xml:lang="eng">Great! Let's go to the riverside.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_765.wav" url="https://web.klokah.tw/text/sound/63638/893362.mp3" start="0" end="9.65"/>
     </S>
     <S id="766">
@@ -6901,7 +6901,7 @@
         <FORM kindOf="standard">te maiuteu ho hucma, tato peispak'i no mali ho atavei no cohzona ho hucma!</FORM>
         <PHON kindOf="standard">te msiuteu ho huʦms, tsto peispskʔi no msɗi ho stsvei no ʦohzons ho huʦms!</PHON>
         <TRANSL xml:lang="zho">明天星期三，我們明天下午去玩球吧!</TRANSL>
-        <TRANSL xml:lang="eng">Tomorrow will be Wednesday. Let’s go play ball tomorrow afternoon!</TRANSL>
+        <TRANSL xml:lang="eng">Tomorrow will be Wednesday. Let's go play ball tomorrow afternoon!</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_767.wav" url="https://web.klokah.tw/text/sound/63638/893364.mp3" start="0" end="11.45"/>
     </S>
     <S id="768">
@@ -6928,7 +6928,7 @@
         <FORM kindOf="standard">mikos'a mainenu?</FORM>
         <PHON kindOf="standard">mikosʔs msinenu?</PHON>
         <TRANSL xml:lang="zho">你怎麼了?</TRANSL>
-        <TRANSL xml:lang="eng">What’s wrong?</TRANSL>
+        <TRANSL xml:lang="eng">What's wrong?</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_770.wav" url="https://web.klokah.tw/text/sound/63638/893367.mp3" start="0" end="6.42"/>
     </S>
     <S id="771">
@@ -6991,7 +6991,7 @@
         <FORM kindOf="standard">tec'u mon'i tosvo, totea na'a hocu uhne'e.</FORM>
         <PHON kindOf="standard">teʦʔu monʔi tosvo, totes nsʔs hoʦu uhneʔe.</PHON>
         <TRANSL xml:lang="zho">快下課了，等一下再去。</TRANSL>
-        <TRANSL xml:lang="eng">It’s almost time for class to end. Wait a little longer.</TRANSL>
+        <TRANSL xml:lang="eng">It's almost time for class to end. Wait a little longer.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_777.wav" url="https://web.klokah.tw/text/sound/63638/893374.mp3" start="0" end="8.89"/>
     </S>
     <S id="778">
@@ -7000,7 +7000,7 @@
         <FORM kindOf="standard">lema'cohio, mo na'no congo co fnguu'u, te'o m'ea tosvo no atatvei no cohzona.</FORM>
         <PHON kindOf="standard">ɗemsʔʦohio, mo nsʔno ʦoŋo ʦo fŋuuʔu, teʔo mʔes tosvo no ststvei no ʦohzons.</PHON>
         <TRANSL xml:lang="zho">老師，我頭好痛，下午要請假。</TRANSL>
-        <TRANSL xml:lang="eng">It’s almost time for class to end. Wait a little longer.</TRANSL>
+        <TRANSL xml:lang="eng">It's almost time for class to end. Wait a little longer.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_778.wav" url="https://web.klokah.tw/text/sound/63638/893375.mp3" start="0" end="14.2"/>
     </S>
     <S id="779">
@@ -7045,7 +7045,7 @@
         <FORM kindOf="standard">mo congo 'o bʉyosi, mo yone tote'za.</FORM>
         <PHON kindOf="standard">mo ʦoŋo ʔo ɓɨjosi, mo jone toteʔzs.</PHON>
         <TRANSL xml:lang="zho">她肚子痛，她在廁所。</TRANSL>
-        <TRANSL xml:lang="eng">She has a stomachache. She’s in the restroom.</TRANSL>
+        <TRANSL xml:lang="eng">She has a stomachache. She's in the restroom.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_783.wav" url="https://web.klokah.tw/text/sound/63638/893380.mp3" start="0" end="7.69"/>
     </S>
     <S id="784">
@@ -7072,7 +7072,7 @@
         <FORM kindOf="standard">mainci o'te uhtan'e 'o yangui?</FORM>
         <PHON kindOf="standard">msinʦi oʔte uhtsnʔe ʔo jsŋui?</PHON>
         <TRANSL xml:lang="zho">yangui為甚麼沒來?</TRANSL>
-        <TRANSL xml:lang="eng">Why didn’t yangui come?</TRANSL>
+        <TRANSL xml:lang="eng">Why didn't yangui come?</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_786.wav" url="https://web.klokah.tw/text/sound/63638/893383.mp3" start="0" end="7.11"/>
     </S>
     <S id="787">
@@ -7099,7 +7099,7 @@
         <FORM kindOf="standard">zou mo'o vayaeana na a'o, mi'o cu tomaska ta tonsoha.</FORM>
         <PHON kindOf="standard">zou moʔo vsjsesns ns sʔo, miʔo ʦu tomssks ts tonsohs.</PHON>
         <TRANSL xml:lang="zho">我叫mo'o.vayaeana，我今年10歲。</TRANSL>
-        <TRANSL xml:lang="eng">My name is mo’o vayaeana, and I’m 10 years old.</TRANSL>
+        <TRANSL xml:lang="eng">My name is mo'o vayaeana, and I'm 10 years old.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_789.wav" url="https://web.klokah.tw/text/sound/63641/893423.mp3" start="0" end="10.58"/>
     </S>
     <S id="790">
@@ -7108,7 +7108,7 @@
         <FORM kindOf="standard">cuma na ongkosu?</FORM>
         <PHON kindOf="standard">ʦums ns oŋkosu?</PHON>
         <TRANSL xml:lang="zho">你叫甚麼名字?</TRANSL>
-        <TRANSL xml:lang="eng">What’s your name?</TRANSL>
+        <TRANSL xml:lang="eng">What's your name?</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_790.wav" url="https://web.klokah.tw/text/sound/63641/893424.mp3" start="0" end="4.27"/>
     </S>
     <S id="791">
@@ -7135,7 +7135,7 @@
         <FORM kindOf="standard">'a oko no coua'toana na a'o.</FORM>
         <PHON kindOf="standard">ʔs oko no ʦousʔtosns ns sʔo.</PHON>
         <TRANSL xml:lang="zho">我是鄒族小孩。</TRANSL>
-        <TRANSL xml:lang="eng">I’m from the Cou.</TRANSL>
+        <TRANSL xml:lang="eng">I'm from the Cou.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_793.wav" url="https://web.klokah.tw/text/sound/63641/893427.mp3" start="0" end="7.79"/>
     </S>
     <S id="794">
@@ -7189,7 +7189,7 @@
         <FORM kindOf="standard">'a oko to 'uongʉ tiaki'ana na a'o.</FORM>
         <PHON kindOf="standard">ʔs oko to ʔuoŋɨ tiskiʔsns ns sʔo.</PHON>
         <TRANSL xml:lang="zho">我是'uongʉ.tiaki'ana的小孩。</TRANSL>
-        <TRANSL xml:lang="eng">I am ’uongʉ tiaki’ana’s child.</TRANSL>
+        <TRANSL xml:lang="eng">I am 'uongʉ tiaki'ana's child.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_799.wav" url="https://web.klokah.tw/text/sound/63641/893433.mp3" start="0" end="6.4"/>
     </S>
     <S id="800">
@@ -7279,7 +7279,7 @@
         <FORM kindOf="standard">mi'o se'conia msʉptʉhʉ kongfʉn.</FORM>
         <PHON kindOf="standard">miʔo seʔʦonis msɨptɨhɨ koŋfɨn.</PHON>
         <TRANSL xml:lang="zho">我140公分。</TRANSL>
-        <TRANSL xml:lang="eng">I’m 140 centimeters.</TRANSL>
+        <TRANSL xml:lang="eng">I'm 140 centimeters.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_809.wav" url="https://web.klokah.tw/text/sound/63641/893443.mp3" start="0" end="6.93"/>
     </S>
     <S id="810">
@@ -7288,7 +7288,7 @@
         <FORM kindOf="standard">cu noana'o ho o'te yupa baito, 'a mikocus'a asuhcu bankake?</FORM>
         <PHON kindOf="standard">ʦu nosnsʔo ho oʔte jups ɓsito, ʔs mikoʦusʔs ssuhʦu ɓsnkske?</PHON>
         <TRANSL xml:lang="zho">好久不見，你是不是長高了?</TRANSL>
-        <TRANSL xml:lang="eng">I haven’t seen you in a while. Have you grown taller?</TRANSL>
+        <TRANSL xml:lang="eng">I haven't seen you in a while. Have you grown taller?</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_810.wav" url="https://web.klokah.tw/text/sound/63641/893444.mp3" start="0" end="10.59"/>
     </S>
     <S id="811">
@@ -7297,7 +7297,7 @@
         <FORM kindOf="standard">'a zoueno, mi'ocu se'conza mtuehu kongfʉn.</FORM>
         <PHON kindOf="standard">ʔs zoueno, miʔoʦu seʔʦonzs mtuehu koŋfɨn.</PHON>
         <TRANSL xml:lang="zho">對阿，我130公分了。</TRANSL>
-        <TRANSL xml:lang="eng">Yes, I’m 130 centimeters now.</TRANSL>
+        <TRANSL xml:lang="eng">Yes, I'm 130 centimeters now.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_811.wav" url="https://web.klokah.tw/text/sound/63641/893445.mp3" start="0" end="8.05"/>
     </S>
     <S id="812">
@@ -7315,7 +7315,7 @@
         <FORM kindOf="standard">o'as'a, 'a iko hukvo'i.</FORM>
         <PHON kindOf="standard">oʔssʔs, ʔs iko hukvoʔi.</PHON>
         <TRANSL xml:lang="zho">沒有，你看錯了。</TRANSL>
-        <TRANSL xml:lang="eng">No, you’re mistaken.</TRANSL>
+        <TRANSL xml:lang="eng">No, you're mistaken.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_813.wav" url="https://web.klokah.tw/text/sound/63641/893447.mp3" start="0" end="6.52"/>
     </S>
     <S id="814">
@@ -7333,7 +7333,7 @@
         <FORM kindOf="standard">ma o'a, 'a mi'ocu noyʉnʉ.</FORM>
         <PHON kindOf="standard">ms oʔs, ʔs miʔoʦu nojɨnɨ.</PHON>
         <TRANSL xml:lang="zho">沒有，我胖了。</TRANSL>
-        <TRANSL xml:lang="eng">No, I’ve gained weight.</TRANSL>
+        <TRANSL xml:lang="eng">No, I've gained weight.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_815.wav" url="https://web.klokah.tw/text/sound/63641/893449.mp3" start="0" end="5.39"/>
     </S>
     <S id="816">
@@ -7369,7 +7369,7 @@
         <FORM kindOf="standard">te'o uhne pankongsʉ ho i'eima 'o lema'cohio.</FORM>
         <PHON kindOf="standard">teʔo uhne psnkoŋsɨ ho iʔeims ʔo ɗemsʔʦohio.</PHON>
         <TRANSL xml:lang="zho">我要去辦公室找老師。</TRANSL>
-        <TRANSL xml:lang="eng">I’m going to the office to see the teacher.</TRANSL>
+        <TRANSL xml:lang="eng">I'm going to the office to see the teacher.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_819.wav" url="https://web.klokah.tw/text/sound/63644/893487.mp3" start="0" end="6.92"/>
     </S>
     <S id="820">
@@ -7387,7 +7387,7 @@
         <FORM kindOf="standard">'a teta mochi to pucu.</FORM>
         <PHON kindOf="standard">ʔs tets moʦhi to puʦu.</PHON>
         <TRANSL xml:lang="zho">他要去丟垃圾。</TRANSL>
-        <TRANSL xml:lang="eng">He’s going to throw away the trash.</TRANSL>
+        <TRANSL xml:lang="eng">He's going to throw away the trash.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_821.wav" url="https://web.klokah.tw/text/sound/63644/893489.mp3" start="0" end="5.37"/>
     </S>
     <S id="822">
@@ -7405,7 +7405,7 @@
         <FORM kindOf="standard">'a mita yonto 'oyona yuuhnguzu, tata cu yupa toosa'o no yuuhnguzu.</FORM>
         <PHON kindOf="standard">ʔs mits jonto ʔojons juuhŋuzu, tsts ʦu jups toossʔo no juuhŋuzu.</PHON>
         <TRANSL xml:lang="zho">他在游泳池，他等一下要比賽游泳。</TRANSL>
-        <TRANSL xml:lang="eng">He’s at the swimming pool. He’s going to compete in a swimming competition later.</TRANSL>
+        <TRANSL xml:lang="eng">He's at the swimming pool. He's going to compete in a swimming competition later.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_823.wav" url="https://web.klokah.tw/text/sound/63644/893491.mp3" start="0" end="9.33"/>
     </S>
     <S id="824">
@@ -7414,7 +7414,7 @@
         <FORM kindOf="standard">mo yonenu 'o sayungu? tenata cu yupa toosa'o no peayofʉ.</FORM>
         <PHON kindOf="standard">mo jonenu ʔo ssjuŋu? tensts ʦu jups toossʔo no pesjofɨ.</PHON>
         <TRANSL xml:lang="zho">sayungu在哪裡?她等一下要比賽跑步。</TRANSL>
-        <TRANSL xml:lang="eng">Where is sayungu? She’s going to compete in a running competition later.</TRANSL>
+        <TRANSL xml:lang="eng">Where is sayungu? She's going to compete in a running competition later.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_824.wav" url="https://web.klokah.tw/text/sound/63644/893492.mp3" start="0" end="9.93"/>
     </S>
     <S id="825">
@@ -7423,7 +7423,7 @@
         <FORM kindOf="standard">'a mita yonto lii-thang, te'o eno usa ho yooho'a.</FORM>
         <PHON kindOf="standard">ʔs mits jonto ɗii-thsŋ, teʔo eno uss ho joohoʔs.</PHON>
         <TRANSL xml:lang="zho">她在禮堂，我去叫她。</TRANSL>
-        <TRANSL xml:lang="eng">She’s in the auditorium. I’ll go call her.</TRANSL>
+        <TRANSL xml:lang="eng">She's in the auditorium. I'll go call her.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_825.wav" url="https://web.klokah.tw/text/sound/63644/893493.mp3" start="0" end="8.13"/>
     </S>
     <S id="826">
@@ -7432,7 +7432,7 @@
         <FORM kindOf="standard">teto nʉthʉ uhne coca.</FORM>
         <PHON kindOf="standard">teto nɨthɨ uhne ʦoʦs.</PHON>
         <TRANSL xml:lang="zho">我們一起去操場吧。</TRANSL>
-        <TRANSL xml:lang="eng">Let’s go to the playground together.</TRANSL>
+        <TRANSL xml:lang="eng">Let's go to the playground together.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_826.wav" url="https://web.klokah.tw/text/sound/63644/893494.mp3" start="0" end="5.39"/>
     </S>
     <S id="827">
@@ -7441,7 +7441,7 @@
         <FORM kindOf="standard">te'o na'a mhia ocohiona, ta'u cu i'eima suu.</FORM>
         <PHON kindOf="standard">teʔo nsʔs mhis oʦohions, tsʔu ʦu iʔeims suu.</PHON>
         <TRANSL xml:lang="zho">我先去買午餐，等一下去找你。</TRANSL>
-        <TRANSL xml:lang="eng">I’ll go buy lunch first, and then I’ll meet you later.</TRANSL>
+        <TRANSL xml:lang="eng">I'll go buy lunch first, and then I'll meet you later.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_827.wav" url="https://web.klokah.tw/text/sound/63644/893495.mp3" start="0" end="8.98"/>
     </S>
     <S id="828">
@@ -7450,7 +7450,7 @@
         <FORM kindOf="standard">teto eno yuyuso ho hafa na cʉyʉ!</FORM>
         <PHON kindOf="standard">teto eno jujuso ho hsfs ns ʦɨjɨ!</PHON>
         <TRANSL xml:lang="zho">我們一起去抬便當吧!</TRANSL>
-        <TRANSL xml:lang="eng">Let’s carry the lunch boxes together!</TRANSL>
+        <TRANSL xml:lang="eng">Let's carry the lunch boxes together!</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_828.wav" url="https://web.klokah.tw/text/sound/63644/893496.mp3" start="0" end="5.9"/>
     </S>
     <S id="829">
@@ -7459,7 +7459,7 @@
         <FORM kindOf="standard">biebimi no mocmo, te'o i'eima 'o lema'cohio.</FORM>
         <PHON kindOf="standard">ɓieɓimi no moʦmo, teʔo iʔeims ʔo ɗemsʔʦohio.</PHON>
         <TRANSL xml:lang="zho">你找別人，我要去找老師。</TRANSL>
-        <TRANSL xml:lang="eng">You find someone else, I’m going to find the teacher.</TRANSL>
+        <TRANSL xml:lang="eng">You find someone else, I'm going to find the teacher.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_829.wav" url="https://web.klokah.tw/text/sound/63644/893497.mp3" start="0" end="7.61"/>
     </S>
     <S id="830">
@@ -7477,7 +7477,7 @@
         <FORM kindOf="standard">o'ate, teta yupa toosa'o no smoepepe.</FORM>
         <PHON kindOf="standard">oʔste, tets jups toossʔo no smoepepe.</PHON>
         <TRANSL xml:lang="zho">沒有，他要比賽跳高。</TRANSL>
-        <TRANSL xml:lang="eng">No, he’s competing in high jump.</TRANSL>
+        <TRANSL xml:lang="eng">No, he's competing in high jump.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_831.wav" url="https://web.klokah.tw/text/sound/63644/893499.mp3" start="0" end="7.88"/>
     </S>
     <S id="832">
@@ -7495,7 +7495,7 @@
         <FORM kindOf="standard">'a ta'u eno, ta'u i'upu to yupa toosa'o no toemayahe.</FORM>
         <PHON kindOf="standard">ʔs tsʔu eno, tsʔu iʔupu to jups toossʔo no toemsjshe.</PHON>
         <TRANSL xml:lang="zho">會阿，我會比賽跑步。</TRANSL>
-        <TRANSL xml:lang="eng">Yes, I’ll compete in running.</TRANSL>
+        <TRANSL xml:lang="eng">Yes, I'll compete in running.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_833.wav" url="https://web.klokah.tw/text/sound/63644/893501.mp3" start="0" end="9.0"/>
     </S>
     <S id="834">
@@ -7513,7 +7513,7 @@
         <FORM kindOf="standard">'a ta'u i'upu to yupa toosa'o no chueichiu.</FORM>
         <PHON kindOf="standard">ʔs tsʔu iʔupu to jups toossʔo no ʦhueiʦhiu.</PHON>
         <TRANSL xml:lang="zho">我會參加比賽槌球。</TRANSL>
-        <TRANSL xml:lang="eng">I’ll compete in croquet.</TRANSL>
+        <TRANSL xml:lang="eng">I'll compete in croquet.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_835.wav" url="https://web.klokah.tw/text/sound/63644/893503.mp3" start="0" end="6.33"/>
     </S>
     <S id="836">
@@ -7558,7 +7558,7 @@
         <FORM kindOf="standard">ma miko mayo tomo ti-'i-ming, a'ʉmtʉ kuici meemealʉ!</FORM>
         <PHON kindOf="standard">ms miko msjo tomo ti-ʔi-miŋ, sʔɨmtɨ kuiʦi meemesɗɨ!</PHON>
         <TRANSL xml:lang="zho">你獲得了第一名耶，真是厲害！</TRANSL>
-        <TRANSL xml:lang="eng">Congratulations on getting first place! You’re amazing!</TRANSL>
+        <TRANSL xml:lang="eng">Congratulations on getting first place! You're amazing!</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_840.wav" url="https://web.klokah.tw/text/sound/63644/893508.mp3" start="0" end="11.11"/>
     </S>
     <S id="841">
@@ -7585,7 +7585,7 @@
         <FORM kindOf="standard">'a mio, mita yonto hopo ho oengʉtʉ.</FORM>
         <PHON kindOf="standard">ʔs mio, mits jonto hopo ho oeŋɨtɨ.</PHON>
         <TRANSL xml:lang="zho">在，她在房間睡覺。</TRANSL>
-        <TRANSL xml:lang="eng">Yes, she’s sleeping in her room.</TRANSL>
+        <TRANSL xml:lang="eng">Yes, she's sleeping in her room.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_843.wav" url="https://web.klokah.tw/text/sound/63647/893545.mp3" start="0" end="7.27"/>
     </S>
     <S id="844">
@@ -7603,7 +7603,7 @@
         <FORM kindOf="standard">o'amos'a, mita emoyafo, tena maine'e ho yofna.</FORM>
         <PHON kindOf="standard">oʔsmosʔs, mits emojsfo, tens msineʔe ho jofns.</PHON>
         <TRANSL xml:lang="zho">不在，她剛出去了，要晚上才回家。</TRANSL>
-        <TRANSL xml:lang="eng">No, she’s not. She just went out and will be back in the evening.</TRANSL>
+        <TRANSL xml:lang="eng">No, she's not. She just went out and will be back in the evening.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_845.wav" url="https://web.klokah.tw/text/sound/63647/893547.mp3" start="0" end="9.15"/>
     </S>
     <S id="846">
@@ -7621,7 +7621,7 @@
         <FORM kindOf="standard">'a mita yone nikai, naho eno usa ho i'eima.</FORM>
         <PHON kindOf="standard">ʔs mits jone niksi, nsho eno uss ho iʔeims.</PHON>
         <TRANSL xml:lang="zho">他在二樓，你去找他吧。</TRANSL>
-        <TRANSL xml:lang="eng">He’s upstairs. You can go up and find him.</TRANSL>
+        <TRANSL xml:lang="eng">He's upstairs. You can go up and find him.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_847.wav" url="https://web.klokah.tw/text/sound/63647/893549.mp3" start="0" end="9.14"/>
     </S>
     <S id="848">
@@ -7639,7 +7639,7 @@
         <FORM kindOf="standard">'iama yapasuyongʉ, noana'va o'te aiti na suu, leako ʉm'ʉmnʉ?</FORM>
         <PHON kindOf="standard">ʔisms jspssujoŋɨ, nosnsʔvs oʔte siti ns suu, ɗesko ɨmʔɨmnɨ?</PHON>
         <TRANSL xml:lang="zho">是yapasuyongʉ阿，很久沒有看到你了，你好嗎?</TRANSL>
-        <TRANSL xml:lang="eng">It’s yapasuyongʉ. I haven’t seen you in a while! How have you been?</TRANSL>
+        <TRANSL xml:lang="eng">It's yapasuyongʉ. I haven't seen you in a while! How have you been?</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_849.wav" url="https://web.klokah.tw/text/sound/63647/893551.mp3" start="0" end="9.92"/>
     </S>
     <S id="850">
@@ -7648,7 +7648,7 @@
         <FORM kindOf="standard">'a lea'u na'no ʉm'ʉmnʉ! os'o i'eima suu ho toa ya'ei.</FORM>
         <PHON kindOf="standard">ʔs ɗesʔu nsʔno ɨmʔɨmnɨ! osʔo iʔeims suu ho tos jsʔei.</PHON>
         <TRANSL xml:lang="zho">很好啊!我來找你聊天。</TRANSL>
-        <TRANSL xml:lang="eng">I’m doing great! I came to chat with you.</TRANSL>
+        <TRANSL xml:lang="eng">I'm doing great! I came to chat with you.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_850.wav" url="https://web.klokah.tw/text/sound/63647/893552.mp3" start="0" end="8.89"/>
     </S>
     <S id="851">
@@ -7666,7 +7666,7 @@
         <FORM kindOf="standard">mita yonto 'oyona pei'i ho cmuecuyu to chae, te'o eno usa ho yooho'a.</FORM>
         <PHON kindOf="standard">mits jonto ʔojons peiʔi ho ʦmueʦuju to ʦhse, teʔo eno uss ho joohoʔs.</PHON>
         <TRANSL xml:lang="zho">他在廚房炒菜，我去叫他。</TRANSL>
-        <TRANSL xml:lang="eng">He’s in the kitchen cooking. Let me go call him.</TRANSL>
+        <TRANSL xml:lang="eng">He's in the kitchen cooking. Let me go call him.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_852.wav" url="https://web.klokah.tw/text/sound/63647/893554.mp3" start="0" end="9.32"/>
     </S>
     <S id="853">
@@ -7693,7 +7693,7 @@
         <FORM kindOf="standard">ak'i, mimza cu esmi.</FORM>
         <PHON kindOf="standard">skʔi, mimzs ʦu esmi.</PHON>
         <TRANSL xml:lang="zho">爺爺，我們來了。</TRANSL>
-        <TRANSL xml:lang="eng">Grandfather, we’re here.</TRANSL>
+        <TRANSL xml:lang="eng">Grandfather, we're here.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_855.wav" url="https://web.klokah.tw/text/sound/63647/893557.mp3" start="0" end="6.52"/>
     </S>
     <S id="856">
@@ -7702,7 +7702,7 @@
         <FORM kindOf="standard">o'amos'a yonta emoo 'o ak'i, mo yone ezoyʉ,, temu yonta emoo ho totea.</FORM>
         <PHON kindOf="standard">oʔsmosʔs jonts emoo ʔo skʔi, mo jone ezojɨ,, temu jonts emoo ho totes.</PHON>
         <TRANSL xml:lang="zho">你們的爺爺不在家，他在田裡，你們在家等他回來吧。</TRANSL>
-        <TRANSL xml:lang="eng">Your grandfather is not at home. He’s in the field. Wait for him to come back.</TRANSL>
+        <TRANSL xml:lang="eng">Your grandfather is not at home. He's in the field. Wait for him to come back.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_856.wav" url="https://web.klokah.tw/text/sound/63647/893558.mp3" start="0" end="11.45"/>
     </S>
     <S id="857">
@@ -7711,7 +7711,7 @@
         <FORM kindOf="standard">ma miko uhtan'e amoconi!</FORM>
         <PHON kindOf="standard">ms miko uhtsnʔe smoʦoni!</PHON>
         <TRANSL xml:lang="zho">叔叔你來啦!</TRANSL>
-        <TRANSL xml:lang="eng">Uncle, you’re here!</TRANSL>
+        <TRANSL xml:lang="eng">Uncle, you're here!</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_857.wav" url="https://web.klokah.tw/text/sound/63647/893559.mp3" start="0" end="8.46"/>
     </S>
     <S id="858">
@@ -7720,7 +7720,7 @@
         <FORM kindOf="standard">noana'va o'te aiti, ma mikocu yubankake.</FORM>
         <PHON kindOf="standard">nosnsʔvs oʔte siti, ms mikoʦu juɓsnkske.</PHON>
         <TRANSL xml:lang="zho">好久不見，你長高了。</TRANSL>
-        <TRANSL xml:lang="eng">I haven’t seen you in a while. You’ve grown taller.</TRANSL>
+        <TRANSL xml:lang="eng">I haven't seen you in a while. You've grown taller.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_858.wav" url="https://web.klokah.tw/text/sound/63647/893560.mp3" start="0" end="7.35"/>
     </S>
     <S id="859">
@@ -7729,7 +7729,7 @@
         <FORM kindOf="standard">na'no kokaekaebʉ ho os'o aiti na suu ho miko cmʉ'ho.</FORM>
         <PHON kindOf="standard">nsʔno koksekseɓɨ ho osʔo siti ns suu ho miko ʦmɨʔho.</PHON>
         <TRANSL xml:lang="zho">看到你來真開心。</TRANSL>
-        <TRANSL xml:lang="eng">It’s so good to see you.</TRANSL>
+        <TRANSL xml:lang="eng">It's so good to see you.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_859.wav" url="https://web.klokah.tw/text/sound/63647/893561.mp3" start="0" end="8.12"/>
     </S>
     <S id="860">
@@ -7738,7 +7738,7 @@
         <FORM kindOf="standard">na eni te'o faeni muu ci 'ungeai, te siya no tvoyuhoa.</FORM>
         <PHON kindOf="standard">ns eni teʔo fseni muu ʦi ʔuŋesi, te sijs no tvojuhos.</PHON>
         <TRANSL xml:lang="zho">這是給你們的鳳梨，要放到冰箱裡。</TRANSL>
-        <TRANSL xml:lang="eng">Here’s a pineapple for you. Put it in the refrigerator.</TRANSL>
+        <TRANSL xml:lang="eng">Here's a pineapple for you. Put it in the refrigerator.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_860.wav" url="https://web.klokah.tw/text/sound/63647/893562.mp3" start="0" end="9.57"/>
     </S>
     <S id="861">
@@ -7747,7 +7747,7 @@
         <FORM kindOf="standard">miko cu noana'o o'te uhtan'e, te'o eho'ʉ ho toehungu bonʉ.</FORM>
         <PHON kindOf="standard">miko ʦu nosnsʔo oʔte uhtsnʔe, teʔo ehoʔɨ ho toehuŋu ɓonɨ.</PHON>
         <TRANSL xml:lang="zho">你這麼久沒來，我邀請大家一起來吃飯。</TRANSL>
-        <TRANSL xml:lang="eng">It’s been a while. Let’s have a meal together.</TRANSL>
+        <TRANSL xml:lang="eng">It's been a while. Let's have a meal together.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_861.wav" url="https://web.klokah.tw/text/sound/63647/893563.mp3" start="0" end="11.36"/>
     </S>
     <S id="862">
@@ -7756,7 +7756,7 @@
         <FORM kindOf="standard">o'ate 'ahʉyʉ, te'oc'o mimo no 'ocea, teto uhto aemana ho yoya'ei.</FORM>
         <PHON kindOf="standard">oʔste ʔshɨjɨ, teʔoʦʔo mimo no ʔoʦes, teto uhto semsns ho jojsʔei.</PHON>
         <TRANSL xml:lang="zho">不用麻煩了，我喝茶就好，我們來客廳聊天。</TRANSL>
-        <TRANSL xml:lang="eng">No need to bother. I’ll just have tea. Let’s sit in the living room and chat.</TRANSL>
+        <TRANSL xml:lang="eng">No need to bother. I'll just have tea. Let's sit in the living room and chat.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_862.wav" url="https://web.klokah.tw/text/sound/63647/893564.mp3" start="0" end="11.35"/>
     </S>
     <S id="863">
@@ -7810,7 +7810,7 @@
         <FORM kindOf="standard">ma tee eno uhne kuba, ta'u sʉ'eʉsʉ to yʉsʉ no cou.</FORM>
         <PHON kindOf="standard">ms tee eno uhne kuɓs, tsʔu sɨʔeɨsɨ to jɨsɨ no ʦou.</PHON>
         <TRANSL xml:lang="zho">那去聚會所好了，我會穿族服去。</TRANSL>
-        <TRANSL xml:lang="eng">Then let’s go to the community center. I’ll wear folk costume.</TRANSL>
+        <TRANSL xml:lang="eng">Then let's go to the community center. I'll wear folk costume.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_868.wav" url="https://web.klokah.tw/text/sound/63650/893604.mp3" start="0" end="8.46"/>
     </S>
     <S id="869">
@@ -7828,7 +7828,7 @@
         <FORM kindOf="standard">ma tee eno mooteo no hofungahoa, 'a tee eno angu poha'o!</FORM>
         <PHON kindOf="standard">ms tee eno mooteo no hofuŋshos, ʔs tee eno sŋu pohsʔo!</PHON>
         <TRANSL xml:lang="zho">那要等到春天，太晚了吧!</TRANSL>
-        <TRANSL xml:lang="eng">That would have to wait until spring. It’s too late, isn’t it?</TRANSL>
+        <TRANSL xml:lang="eng">That would have to wait until spring. It's too late, isn't it?</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_870.wav" url="https://web.klokah.tw/text/sound/63650/893606.mp3" start="0" end="10.25"/>
     </S>
     <S id="871">
@@ -7846,7 +7846,7 @@
         <FORM kindOf="standard">'uatee! os'o na'na tongsoya!</FORM>
         <PHON kindOf="standard">ʔustee! osʔo nsʔns toŋsojs!</PHON>
         <TRANSL xml:lang="zho">好啊!我很期待!</TRANSL>
-        <TRANSL xml:lang="eng">Alright! I’m looking forward to it!</TRANSL>
+        <TRANSL xml:lang="eng">Alright! I'm looking forward to it!</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_872.wav" url="https://web.klokah.tw/text/sound/63650/893608.mp3" start="0" end="6.85"/>
     </S>
     <S id="873">
@@ -7891,7 +7891,7 @@
         <FORM kindOf="standard">ci miko na'no meemealʉ tme'si, sia na moso ma'cohio suu?</FORM>
         <PHON kindOf="standard">ʦi miko nsʔno meemesɗɨ tmeʔsi, sis ns moso msʔʦohio suu?</PHON>
         <TRANSL xml:lang="zho">你很會織布，是誰教你的?</TRANSL>
-        <TRANSL xml:lang="eng">You’re very skilled at weaving, who taught you?</TRANSL>
+        <TRANSL xml:lang="eng">You're very skilled at weaving, who taught you?</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_877.wav" url="https://web.klokah.tw/text/sound/63650/893613.mp3" start="0" end="9.49"/>
     </S>
     <S id="878">
@@ -7945,7 +7945,7 @@
         <FORM kindOf="standard">ci miko na'no meemealʉ, mio noana'o ho isi teai?</FORM>
         <PHON kindOf="standard">ʦi miko nsʔno meemesɗɨ, mio nosnsʔo ho isi tesi?</PHON>
         <TRANSL xml:lang="zho">你真厲害，這要釀很久嗎?</TRANSL>
-        <TRANSL xml:lang="eng">You’re really talented. Does it take a long time to make?</TRANSL>
+        <TRANSL xml:lang="eng">You're really talented. Does it take a long time to make?</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_883.wav" url="https://web.klokah.tw/text/sound/63650/893619.mp3" start="0" end="8.05"/>
     </S>
     <S id="884">
@@ -8008,7 +8008,7 @@
         <FORM kindOf="standard">te suse'einva na eni.</FORM>
         <PHON kindOf="standard">te suseʔeinvs ns eni.</PHON>
         <TRANSL xml:lang="zho">這件500元。</TRANSL>
-        <TRANSL xml:lang="eng">It’s 500 dollars.</TRANSL>
+        <TRANSL xml:lang="eng">It's 500 dollars.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_890.wav" url="https://web.klokah.tw/text/sound/63652/893656.mp3" start="0" end="4.97"/>
     </S>
     <S id="891">
@@ -8017,7 +8017,7 @@
         <FORM kindOf="standard">mo angu pepe, te peela ake'a poa cʉecʉ?</FORM>
         <PHON kindOf="standard">mo sŋu pepe, te peeɗs skeʔs pos ʦɨeʦɨ?</PHON>
         <TRANSL xml:lang="zho">太貴了，不能低一些嗎?</TRANSL>
-        <TRANSL xml:lang="eng">It’s too expensive. Can’t you lower the price a bit?</TRANSL>
+        <TRANSL xml:lang="eng">It's too expensive. Can't you lower the price a bit?</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_891.wav" url="https://web.klokah.tw/text/sound/63652/893657.mp3" start="0" end="7.18"/>
     </S>
     <S id="892">
@@ -8026,7 +8026,7 @@
         <FORM kindOf="standard">o'ate te'o sonsulu hoci angu cʉecʉ.</FORM>
         <PHON kindOf="standard">oʔste teʔo sonsuɗu hoʦi sŋu ʦɨeʦɨ.</PHON>
         <TRANSL xml:lang="zho">不行，再低我會虧錢。</TRANSL>
-        <TRANSL xml:lang="eng">No, if I lower it further, I’ll lose money.</TRANSL>
+        <TRANSL xml:lang="eng">No, if I lower it further, I'll lose money.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_892.wav" url="https://web.klokah.tw/text/sound/63652/893658.mp3" start="0" end="7.44"/>
     </S>
     <S id="893">
@@ -8035,7 +8035,7 @@
         <FORM kindOf="standard">'uatee! ma te'o eno yaa 'emo kua'onga ci yʉsʉ.</FORM>
         <PHON kindOf="standard">ʔustee! ms teʔo eno jss ʔemo kusʔoŋs ʦi jɨsɨ.</PHON>
         <TRANSL xml:lang="zho">好吧!那我要這一件黑色的衣服。</TRANSL>
-        <TRANSL xml:lang="eng">Alright then, I’ll take a black piece of clothing.</TRANSL>
+        <TRANSL xml:lang="eng">Alright then, I'll take a black piece of clothing.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_893.wav" url="https://web.klokah.tw/text/sound/63652/893659.mp3" start="0" end="8.28"/>
     </S>
     <S id="894">
@@ -8053,7 +8053,7 @@
         <FORM kindOf="standard">mo acʉhʉ suposiueso, na eni o'u iachia tiemuca ho teai, tee asansana peela noana'va titha.</FORM>
         <PHON kindOf="standard">mo sʦɨhɨ suposiueso, ns eni oʔu isʦhis tiemuʦs ho tesi, tee sssnssns peeɗs nosnsʔvs tiths.</PHON>
         <TRANSL xml:lang="zho">總共2000元，這是我自己手工打造的，保證可以用很久。</TRANSL>
-        <TRANSL xml:lang="eng">It’s a total of 2000 dollars. I handmade these, and they are guaranteed to last a long time.</TRANSL>
+        <TRANSL xml:lang="eng">It's a total of 2000 dollars. I handmade these, and they are guaranteed to last a long time.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_895.wav" url="https://web.klokah.tw/text/sound/63652/893661.mp3" start="0" end="18.36"/>
     </S>
     <S id="896">
@@ -8062,7 +8062,7 @@
         <FORM kindOf="standard">ta'u eʉsvʉta to nanghia'u ho poa mhino, te meelʉ asuhcu cʉecʉ?</FORM>
         <PHON kindOf="standard">tsʔu eɨsvɨts to nsŋhisʔu ho pos mhino, te meeɗɨ ssuhʦu ʦɨeʦɨ?</PHON>
         <TRANSL xml:lang="zho">我介紹朋友來買，可以再便宜一些嗎?</TRANSL>
-        <TRANSL xml:lang="eng">I’ll introduce my friend to buy. Can you give a further discount?</TRANSL>
+        <TRANSL xml:lang="eng">I'll introduce my friend to buy. Can you give a further discount?</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_896.wav" url="https://web.klokah.tw/text/sound/63652/893662.mp3" start="0" end="10.75"/>
     </S>
     <S id="897">
@@ -8071,7 +8071,7 @@
         <FORM kindOf="standard">'uatee! teec'o poa paa coo.</FORM>
         <PHON kindOf="standard">ʔustee! teeʦʔo pos pss ʦoo.</PHON>
         <TRANSL xml:lang="zho">好啦!幫你打八折。</TRANSL>
-        <TRANSL xml:lang="eng">Alright! I’ll give you a 20% discount.</TRANSL>
+        <TRANSL xml:lang="eng">Alright! I'll give you a 20% discount.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_897.wav" url="https://web.klokah.tw/text/sound/63652/893663.mp3" start="0" end="6.4"/>
     </S>
     <S id="898">
@@ -8107,7 +8107,7 @@
         <FORM kindOf="standard">tec'o coni 'e te'o phini, fii'sio a'o nomo faeva.</FORM>
         <PHON kindOf="standard">teʦʔo ʦoni ʔe teʔo phini, fiiʔsio sʔo nomo fsevs.</PHON>
         <TRANSL xml:lang="zho">我買一件就好，請給我新的。</TRANSL>
-        <TRANSL xml:lang="eng">I’ll just buy one piece, please give me a new one.</TRANSL>
+        <TRANSL xml:lang="eng">I'll just buy one piece, please give me a new one.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_901.wav" url="https://web.klokah.tw/text/sound/63652/893667.mp3" start="0" end="10.75"/>
     </S>
     <S id="902">
@@ -8134,7 +8134,7 @@
         <FORM kindOf="standard">'uatee, poa cono oachia, ta'u i'vaho uhtan'e ho mhia naveu.</FORM>
         <PHON kindOf="standard">ʔustee, pos ʦono osʦhis, tsʔu iʔvsho uhtsnʔe ho mhis nsveu.</PHON>
         <TRANSL xml:lang="zho">好吧!請給我一份，我下次再來買飯。</TRANSL>
-        <TRANSL xml:lang="eng">Alright, please give me one. I’ll come back next time to buy rice.</TRANSL>
+        <TRANSL xml:lang="eng">Alright, please give me one. I'll come back next time to buy rice.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_904.wav" url="https://web.klokah.tw/text/sound/63652/893670.mp3" start="0" end="10.68"/>
     </S>
     <S id="905">
@@ -8143,7 +8143,7 @@
         <FORM kindOf="standard">'uatee, te'o to'uni suu ho cfua to efucu, te sumeemohi.</FORM>
         <PHON kindOf="standard">ʔustee, teʔo toʔuni suu ho ʦfus to efuʦu, te sumeemohi.</PHON>
         <TRANSL xml:lang="zho">W：好，我幫你用袋子裝起來，這樣50元。</TRANSL>
-        <TRANSL xml:lang="eng">Okay, I’ll pack it in a bag for you. That’ll be 50 dollars.</TRANSL>
+        <TRANSL xml:lang="eng">Okay, I'll pack it in a bag for you. That'll be 50 dollars.</TRANSL>
         <AUDIO file="qing_jing_zu_yu_contextual_indigenous_language_Tsou_905.wav" url="https://web.klokah.tw/text/sound/63652/893671.mp3" start="0" end="12.21"/>
     </S>
 </TEXT>

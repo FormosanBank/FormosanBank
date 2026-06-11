@@ -520,10 +520,13 @@ def process_epark_topics_with_csv(ePark, path, output_path, dialects, lang_codes
             writer.writerow(["ePark topic", "audio path", "lang", "dialect", "idx", "id"])
             writer.writerows(failed_audio)
             
-    # Append S elements to XML trees
+    # Append S elements to XML trees. process_data_point runs under a
+    # ThreadPoolExecutor, so s_elements_dict was populated in thread-completion
+    # (nondeterministic) order. Sort by numeric S id so the output is
+    # deterministic and in reading order (ids run in page order per book).
     for idx in xml_dict:
         root = xml_dict[idx]
-        for s_element in s_elements_dict[idx]:
+        for s_element in sorted(s_elements_dict[idx], key=lambda s: int(s.get("id"))):
             root.append(s_element)
 
         xml_output = xml_output_dict[idx]
@@ -738,7 +741,7 @@ def process_epark_conversation_reading(ePark, path, output_path, dialects, lang_
         
     for idx in xml_dict:
         root = xml_dict[idx]
-        for s_element in s_elements_dict[idx]:
+        for s_element in sorted(s_elements_dict[idx], key=lambda s: int(s.get("id"))):
             root.append(s_element)
 
         xml_output = xml_output_dict[idx]
