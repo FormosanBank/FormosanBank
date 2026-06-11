@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import csv
+import unicodedata
 from pathlib import Path
 
 _NON_DIALECT_COLUMNS = {"letter", "letters", "default", "standard", "ipa"}
@@ -37,3 +38,42 @@ def load_letter_inventories(
                 if cell and cell.upper() != "NA":
                     inv[col].add(letter)
     return {d: frozenset(s) for d, s in inv.items()}
+
+
+UNK = "<unk>"
+
+
+def alphabet_of(inventories: dict[str, frozenset[str]]) -> frozenset[str]:
+    if not inventories:
+        return frozenset()
+    return frozenset().union(*inventories.values())
+
+
+def tokenize_graphemes(text: str, alphabet: frozenset[str]) -> list[str]:
+    """Greedy longest-match tokenization of `text` into graphemes.
+
+    Multi-char letters in `alphabet` are matched whole. Unknown alphabetic
+    characters become UNK; non-alphabetic characters are skipped. Casefolded.
+    """
+    if not text:
+        return []
+    max_len = max((len(g) for g in alphabet), default=1)
+    out: list[str] = []
+    for word in text.casefold().split():
+        i, n = 0, len(word)
+        while i < n:
+            matched = None
+            for length in range(min(max_len, n - i), 0, -1):
+                cand = word[i : i + length]
+                if cand in alphabet:
+                    matched = cand
+                    break
+            if matched is not None:
+                out.append(matched)
+                i += len(matched)
+            else:
+                ch = word[i]
+                if unicodedata.category(ch).startswith("L"):
+                    out.append(UNK)
+                i += 1
+    return out

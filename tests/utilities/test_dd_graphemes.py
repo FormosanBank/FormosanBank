@@ -21,3 +21,19 @@ def test_load_letter_inventories_splits_by_dialect_and_drops_NA(tmp_path):
 
 def test_load_letter_inventories_missing_file_returns_empty(tmp_path):
     assert load_letter_inventories("DoesNotExist", tmp_path) == {}
+
+from QC.utilities.dialect_detector_pkg.graphemes import alphabet_of, tokenize_graphemes, UNK
+
+def test_alphabet_is_union_of_inventories():
+    inv = {"A": frozenset({"ng", "a"}), "B": frozenset({"ng", "v"})}
+    assert alphabet_of(inv) == frozenset({"ng", "a", "v"})
+
+def test_longest_match_keeps_digraphs_whole():
+    alpha = frozenset({"ng", "n", "g", "a"})
+    assert tokenize_graphemes("nga", alpha) == ["ng", "a"]      # ng wins over n
+    assert tokenize_graphemes("nag", alpha) == ["n", "a", "g"]
+
+def test_casefold_and_punctuation_skipped_unknown_marked():
+    alpha = frozenset({"a", "b"})
+    # 'Q' is alphabetic but not in alphabet -> UNK; '.' skipped; 'B' casefolds to 'b'
+    assert tokenize_graphemes("aB. Q", alpha) == ["a", "b", UNK]
