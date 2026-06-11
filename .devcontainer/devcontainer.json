@@ -18,7 +18,14 @@
     "source=formosanbank-venv,target=/workspace/FormosanBank/.venv,type=volume",
     // Persist the in-container Claude OAuth login so it's one-time, not per-session.
     // (macOS Keychain creds don't cross into Linux, so the container logs in once.)
-    "source=formosanbank-claude-auth,target=/home/vscode/.claude,type=volume"
+    "source=formosanbank-claude-auth,target=/home/vscode/.claude,type=volume",
+    // SHADOW the host's .claude/settings.local.json with a container-specific one.
+    // The host file is authored for macOS (absolute /Users/... paths) and its
+    // PreToolUse Bash hook runs a host-only script that doesn't exist in Linux —
+    // python exits 2 and blocks EVERY Bash call. The container doesn't need that
+    // hook (bypass mode does the same job); this gives it clean settings (just the
+    // git-push deny) while leaving the host's file untouched.
+    "source=${localWorkspaceFolder}/.devcontainer/container-settings.local.json,target=/workspace/FormosanBank/.claude/settings.local.json,type=bind"
   ],
 
   "remoteUser": "vscode",
