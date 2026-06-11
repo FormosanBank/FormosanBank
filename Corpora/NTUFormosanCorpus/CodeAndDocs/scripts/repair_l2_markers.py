@@ -49,6 +49,16 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from _phon_regen import language_of, load_mappings, convert  # noqa: E402
 
 TOKEN_MAP = {
+    # 2026-06-11 additions: escapees of the original contamination census,
+    # whose patterns lack an 'L2' substring (trailing 'LM2', L3 third-language
+    # tags, T2 openers). The census regex was widened accordingly.
+    '<L3JsiukaiL3J>': 'siukai',
+    'L3JsiukaiL3J': 'siukai',
+    'piaocunLM2': 'piaocun',
+    'piaocunLM2>': 'piaocun',
+    'T2mijio.': 'mijio.',
+    '<T2mi-jio': 'mi-jio',
+
     '&lt;L2JchurchL2J&gt;': 'church',
     '&lt;L2JclockL2J&gt;': 'clock',
     '&lt;L2JphotoL2J&gt;': 'photo',

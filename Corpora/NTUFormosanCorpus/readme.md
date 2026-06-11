@@ -165,7 +165,20 @@ This step is **manual** and must be redone (or the edits re-applied) after any r
 
 Run `python ../FormosanBank/QC/validation/validate_text.py by_path --path XML` and work through the V121 findings.
 
-* **9. Apply one-off manual corrections**
+* **9. Remove source annotation codes and overlap markers**
+
+The source embeds transcription machinery that the parsers fused into the published text: bracketed elicitation/annotation codes inside wordforms and translations (`na=unau[u1]`, `Tahail[u1][A2][A3] [TVH4]ran ...`), conversation-analysis overlap markers in the Kavalan dialogs (`[1aw1]`, `[3maiseng=ay3]`), and the Grammar books' example numbers fused to the final word (`cina.25` — fused in the source itself). This step removes them:
+
+```bash
+    python CodeAndDocs/scripts/remove_annotation_codes.py
+```
+
+**Notes**
+   - FORM-side removals are source-driven: only exact fused variants derived from bracket-marked source tokens are replaced, so clean text cannot be affected. TRANSL-side bracketed codes are removed only for codes attested in the source inventory.
+   - Removed codes are NOT preserved verbatim (per maintainer decision 2026-06-11); each affected sentence's S-level original FORM gains a `notes` breadcrumb (e.g. `annotation codes removed; consult the NTU Formosan Corpus source`).
+   - PHON regenerated via the witness-gated Ortho113 mechanism. Round-trip guard; idempotent.
+
+* **10. Apply one-off manual corrections**
 
 Hand-verified single corrections that are too specific for a general rule live in a table inside the script (currently one: a stray `<` for `(` in a Bunun zho TRANSL, which also explains the 1129/1128 `<`/`>` imbalance in V132 counts):
 
@@ -175,7 +188,7 @@ Hand-verified single corrections that are too specific for a general rule live i
 
 Idempotent (applied corrections stop matching and are reported as no-match). New one-off fixes should be added to the table in the script rather than edited directly into the XML, so they survive regeneration. The table also repairs the three Grammar/Sakizaya sentences whose source records *cite* corpus examples instead of restating them (`13_S_38`, `13_S_39`, `13_S_48`): the IU numbers and pause durations fused to the first word of each intonation unit are stripped from the W/M forms, the S FORM is rebuilt from the cleaned words, the citation is preserved in a `notes` attribute on the S-level original FORM, and PHON is regenerated (witness-gated).
 
-* **10. Repair code-switch (L2) markup**
+* **11. Repair code-switch (L2) markup**
 
 The source marks code-switched words with tags like `<L2JjidenshaL2J>` (J/M/T/... = the language switched into). Well-formed tags are stripped by the parsers, but the source contains ~30 malformed spellings — transposed closers (`<L2MpiaocunLM2>`), missing `>` (`<L2JjidenshaL2J`), letterless tags (`<L2siyencL2>`, where the stripper previously ate the word's first letter: published `iyenc` for source `siyenc`; likewise `haiya`), square-bracket variants (`[L2JmaemotteL2J]`), and tags inside gloss strings (TRANSL), which were never stripped at all. This step applies a hand-audited token map (every contaminated token in the corpus → its correct form, derived from and verified against the source JSONs):
 
