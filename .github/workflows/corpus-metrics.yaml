@@ -8,12 +8,16 @@ on:
     paths:
       - "Corpora/**"
       - "QC/corpus_metrics.py"
+      - "QC/corpus_counts.py"
+      - "QC/utilities/get_corpus_stats.py"
       - "QC/reference/corpus_benchmarks.json"
       - ".github/workflows/corpus-metrics.yaml"
   pull_request:
     paths:
       - "Corpora/**"
       - "QC/corpus_metrics.py"
+      - "QC/corpus_counts.py"
+      - "QC/utilities/get_corpus_stats.py"
       - "QC/reference/corpus_benchmarks.json"
       - ".github/workflows/corpus-metrics.yaml"
 
@@ -38,33 +42,37 @@ jobs:
           python3 -m pip install --upgrade pip
           python3 -m pip install matplotlib
 
+      - name: Generate per-corpus statistics CSVs
+        run: |
+          python3 QC/utilities/get_corpus_stats.py --all --strict
+
       - name: Generate corpus metrics
         run: |
           python3 QC/corpus_metrics.py Corpora \
+            --stats-dir statistics \
             --output-dir corpus-metrics \
             --history \
-            --history-cache statistics/corpus_size_history.csv \
-            --max-history-commits 0
+            --history-cache statistics/corpus_size_history.csv
 
       - name: Add metrics summary
         run: cat corpus-metrics/corpus_metrics.md >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Update README growth graph
+      - name: Commit updated statistics
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
           mkdir -p statistics
           cp corpus-metrics/corpus_size_history.csv statistics/corpus_size_history.csv
           cp corpus-metrics/corpus_size_over_time.png statistics/corpus_size_over_time.png
 
-          if git diff --quiet -- statistics/corpus_size_history.csv statistics/corpus_size_over_time.png; then
-            echo "No README growth graph changes."
+          git add statistics/corpus_size_history.csv statistics/corpus_size_over_time.png statistics/*_corpora_stats.csv
+          if git diff --cached --quiet; then
+            echo "No statistics changes."
             exit 0
           fi
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add statistics/corpus_size_history.csv statistics/corpus_size_over_time.png
-          git commit -m "Update corpus growth graph"
+          git commit -m "Update corpus statistics and growth graph"
           git push
 
       - name: Upload corpus metrics artifacts
