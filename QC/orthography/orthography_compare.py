@@ -64,13 +64,12 @@ def vis_diff(all_chars, c1_char_freq, c2_char_freq, source_1, source_2, logs_dir
     # ]
 
     corpus1_freqs = [
-    np.log((c1_char_freq.get(char, 0) + 1) / (total_corpus1_chars - c1_char_freq.get(char, 0) + 1))
-    if c1_char_freq.get(char, 0) > 0 else None
+    np.log((c1_char_freq.get(char, 0) + 1) / (total_corpus1_chars - c1_char_freq.get(char, 0) + len(sorted_chars)))
     for char in sorted_chars
     ]
 
     corpus2_freqs = [
-        np.log((c2_char_freq.get(char, 0) + 1) / (total_corpus2_chars - c2_char_freq.get(char, 0) + 1))
+        np.log((c2_char_freq.get(char, 0) + 1) / (total_corpus2_chars - c2_char_freq.get(char, 0) + len(sorted_chars)))
         if c2_char_freq.get(char, 0) > 0 else None
         for char in sorted_chars
     ]
