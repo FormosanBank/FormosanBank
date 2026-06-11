@@ -4,7 +4,7 @@ import xml.etree.ElementTree as ET
 from dataclasses import dataclass
 from pathlib import Path
 
-from QC.utilities.dialect_detector_pkg.candidates import candidate_dialects, reconcile_label
+from QC.utilities.dialect_detector_pkg import candidates
 
 _XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
 _UNLABELED = {"", "unknown"}
@@ -47,7 +47,7 @@ def iter_labeled_documents(
     """Return (kept, dropped). `kept` have a reconciled candidate dialect and a
     non-empty standard tier; `dropped` had a non-empty label that did not map to
     any candidate (recorded with the raw label for diagnostics)."""
-    cands = candidate_dialects(lang_code)
+    cands = candidates.candidate_dialects(lang_code)
     kept: list[LabeledDoc] = []
     dropped: list[LabeledDoc] = []
     for path, root in _iter_text_roots(corpora_path):
@@ -59,7 +59,7 @@ def iter_labeled_documents(
         text = extract_standard_text(root)
         if not text:
             continue
-        canon = reconcile_label(raw, cands)
+        canon = candidates.reconcile_label(raw, cands)
         if canon is None:
             dropped.append(LabeledDoc(path, raw, text))
         else:

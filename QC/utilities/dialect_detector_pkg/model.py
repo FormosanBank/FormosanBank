@@ -1,0 +1,148 @@
+from __future__ import annotations
+
+from collections import Counter, defaultdict
+from dataclasses import dataclass, field
+from pathlib import Path
+
+import numpy as np
+
+from QC.validation._dialect_inventory import ISO_TO_LANGUAGE
+from QC.utilities.dialect_detector_pkg import features as F
+from QC.utilities.dialect_detector_pkg import candidates as C
+from QC.utilities.dialect_detector_pkg.combiner import fit_combiner, predict_proba
+from QC.utilities.dialect_detector_pkg.data import iter_labeled_documents
+from QC.utilities.dialect_detector_pkg.graphemes import (
+    alphabet_of, load_letter_inventories, tokenize_graphemes,
+)
+
+COMPONENTS = ["orthography", "char", "bigram", "word"]
+DEFAULT_UNKNOWN_THRESHOLD = 0.50
+
+
+def language_name_for(lang_code: str) -> str | None:
+    if lang_code == "trv":
+        return "Seediq"   # the TSV that carries Truku + Seediq dialect columns
+    return ISO_TO_LANGUAGE.get(lang_code)
+
+
+@dataclass
+class DialectModel:
+    lang_code: str
+    language_name: str
+    dialects: list[str]                       # fixed order = combiner row order
+    inventories: dict[str, frozenset[str]]
+    alphabet: frozenset[str]
+    support_count: dict[str, int]
+    uni: dict[str, Counter]                    # per-dialect profiles
+    bi: dict[str, Counter]
+    words: dict[str, Counter]
+    uni_total: dict[str, int]
+    bi_total: dict[str, int]
+    word_total: dict[str, int]
+    uni_vocab: int
+    bi_vocab: int
+    word_vocab: int
+    weights: list[float]
+    bias: list[float]
+    threshold: float = DEFAULT_UNKNOWN_THRESHOLD
+    components: list[str] = field(default_factory=lambda: list(COMPONENTS))
+
+    def _score_matrix(self, text: str) -> np.ndarray:
+        graphemes = tokenize_graphemes(text, self.alphabet)
+        uni, bi, words = F.extract_counts(graphemes, text)
+        rows = []
+        n = len(self.dialects)
+        for d in self.dialects:
+            o, _, _ = F.orthography_score(uni, self.inventories.get(d, frozenset()),
+                                          self.support_count, n)
+            c = F.log_prob_score(uni, self.uni[d], self.uni_total[d], self.uni_vocab)
+            b = F.log_prob_score(bi, self.bi[d], self.bi_total[d], self.bi_vocab)
+            w = F.log_prob_score(words, self.words[d], self.word_total[d], self.word_vocab)
+            rows.append([o, c, b, w])
+        return np.asarray(rows, dtype=float)
+
+    def score_text(self, text: str) -> list[tuple[str, float, dict[str, float]]]:
+        """Return [(dialect, probability, {component: score}), ...] best-first."""
+        X = self._score_matrix(text)
+        p = predict_proba(np.asarray(self.weights), np.asarray(self.bias), X)
+        out = [
+            (d, float(p[i]), dict(zip(self.components, X[i].tolist())))
+            for i, d in enumerate(self.dialects)
+        ]
+        out.sort(key=lambda r: (-r[1], r[0]))
+        return out
+
+
+def _prune(counter: Counter, top_n: int) -> Counter:
+    return Counter(dict(counter.most_common(top_n)))
+
+
+def build_model(
+    lang_code: str,
+    corpora_path: Path,
+    orthographies_path: Path,
+    top_n: int = 2000,
+) -> DialectModel | None:
+    name = language_name_for(lang_code)
+    if name is None:
+        return None
+    inventories = load_letter_inventories(name, orthographies_path)
+    if not inventories:
+        return None
+    cands = C.candidate_dialects(lang_code)
+    if len(cands) < 2:
+        return None
+    kept, _dropped = iter_labeled_documents(corpora_path, lang_code)
+    present = [d for d in cands if any(k.dialect == d for k in kept)]
+    if len(present) < 2:
+        return None
+
+    alphabet = alphabet_of(inventories)
+    support_count: dict[str, int] = defaultdict(int)
+    for d in present:
+        for g in inventories.get(d, frozenset()):
+            support_count[g] += 1
+
+    uni = {d: Counter() for d in present}
+    bi = {d: Counter() for d in present}
+    words = {d: Counter() for d in present}
+    for doc in kept:
+        if doc.dialect not in uni:
+            continue
+        g = tokenize_graphemes(doc.text, alphabet)
+        u, b, w = F.extract_counts(g, doc.text)
+        uni[doc.dialect] += u
+        bi[doc.dialect] += b
+        words[doc.dialect] += w
+
+    uni = {d: _prune(c, top_n) for d, c in uni.items()}
+    bi = {d: _prune(c, top_n) for d, c in bi.items()}
+    words = {d: _prune(c, top_n) for d, c in words.items()}
+    uni_total = {d: sum(c.values()) for d, c in uni.items()}
+    bi_total = {d: sum(c.values()) for d, c in bi.items()}
+    word_total = {d: sum(c.values()) for d, c in words.items()}
+    uni_vocab = len({k for c in uni.values() for k in c}) or 1
+    bi_vocab = len({k for c in bi.values() for k in c}) or 1
+    word_vocab = len({k for c in words.values() for k in c}) or 1
+
+    model = DialectModel(
+        lang_code=lang_code, language_name=name, dialects=present,
+        inventories={d: inventories.get(d, frozenset()) for d in present},
+        alphabet=alphabet, support_count=dict(support_count),
+        uni=uni, bi=bi, words=words,
+        uni_total=uni_total, bi_total=bi_total, word_total=word_total,
+        uni_vocab=uni_vocab, bi_vocab=bi_vocab, word_vocab=word_vocab,
+        weights=[0.0] * len(COMPONENTS), bias=[0.0] * len(present),
+    )
+
+    Xs, ys = [], []
+    index = {d: i for i, d in enumerate(present)}
+    for doc in kept:
+        if doc.dialect not in index:
+            continue
+        Xs.append(model._score_matrix(doc.text))
+        ys.append(index[doc.dialect])
+    w, bias = fit_combiner(Xs, ys, n_dialects=len(present), l2=1.0)
+    model.weights = w.tolist()
+    model.bias = bias.tolist()
+    return model
