@@ -89,3 +89,28 @@ def test_history_appends_one_row_at_head(tmp_path):
     assert result.returncode == 0, result.stderr
     with open(tmp_path / "out" / "corpus_size_history.csv", newline="") as f:
         assert len(list(csv.DictReader(f))) == 2
+
+
+def test_snapshot_aggregates_new_metrics(tmp_path):
+    # _write_stats seeds: ami,Haian has glossed_words=3, zho_transl_count=3;
+    # trv,Truku has transcribed_audio_seconds=1.0; everything else 0.
+    _write_stats(tmp_path / "statistics")
+    result = _run(["Corpora", "--stats-dir", str(tmp_path / "statistics"),
+                   "--output-dir", str(tmp_path / "out"), "--no-plots"])
+    assert result.returncode == 0, result.stderr
+    totals = json.loads((tmp_path / "out" / "corpus_metrics.json").read_text())["totals"]
+    assert totals["glossed_words"] == 3
+    assert totals["zho_transl_count"] == 3
+    assert totals["transcribed_audio_seconds"] == 1.0
+
+
+def test_xml_path_aggregates_glossed_and_mandarin_but_zero_seconds(tmp_path):
+    # XML walk over the fixture corpus: ami_haian contributes glossed=3, zho=3.
+    # transcribed_audio_seconds is uncomputable from XML, so it must be 0.
+    result = _run(["tests/fixtures/stats_corpus",
+                   "--output-dir", str(tmp_path / "out"), "--no-plots"])
+    assert result.returncode == 0, result.stderr
+    totals = json.loads((tmp_path / "out" / "corpus_metrics.json").read_text())["totals"]
+    assert totals["glossed_words"] == 3
+    assert totals["zho_transl_count"] == 3
+    assert totals["transcribed_audio_seconds"] == 0

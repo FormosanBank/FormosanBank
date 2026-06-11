@@ -26,6 +26,8 @@ COUNT_FIELDS = (
     "morpheme_elements",
     "translation_elements",
     "audio_elements",
+    "zho_transl_count",
+    "glossed_words",
 )
 
 XML_HISTORY_PATHSPEC = ":(glob)Corpora/**/XML/**/*.xml"
@@ -143,6 +145,9 @@ def analyze_xml_root(corpora_path: Path, xml_file: Path, root: ET.Element) -> di
         "morpheme_elements": record["morpheme_elements"],
         "translation_elements": record["translation_elements"],
         "audio_elements": record["audio_elements"],
+        "zho_transl_count": record["zho_transl_count"],
+        "glossed_words": record["glossed_words"],
+        "transcribed_audio_seconds": 0,
     }
 
 
@@ -180,8 +185,8 @@ def sorted_dialect_counts(data: dict[tuple[str, str], dict[str, int]]) -> list[d
 def aggregate_records(
     records: list[dict[str, Any]],
     parse_errors: list[dict[str, str]],
-) -> tuple[dict[str, int], dict[str, dict[str, int]], dict[str, dict[str, int]], list[dict[str, Any]]]:
-    totals = empty_counts()
+) -> tuple[dict[str, Any], dict[str, dict[str, int]], dict[str, dict[str, int]], list[dict[str, Any]]]:
+    totals: dict[str, Any] = empty_counts()
     by_source: dict[str, dict[str, int]] = defaultdict(empty_counts)
     by_language: dict[str, dict[str, int]] = defaultdict(empty_counts)
     by_language_dialect: dict[tuple[str, str], dict[str, int]] = defaultdict(empty_counts)
@@ -201,6 +206,9 @@ def aggregate_records(
 
     totals.update(
         {
+            "transcribed_audio_seconds": round(
+                sum(float(record.get("transcribed_audio_seconds", 0) or 0) for record in records), 1
+            ),
             "sources": len(source_names),
             "languages": len(languages),
             "language_dialects": len(dialects),
@@ -293,6 +301,9 @@ def read_stats_dir(stats_dir: Path) -> tuple[list[dict[str, Any]], list[dict[str
                     "morpheme_elements": as_int("morpheme_elements"),
                     "translation_elements": as_int("translation_elements"),
                     "audio_elements": as_int("audio_elements"),
+                    "zho_transl_count": as_int("zho_transl_count"),
+                    "glossed_words": as_int("glossed_words"),
+                    "transcribed_audio_seconds": float(row.get("transcribed_audio_seconds") or 0),
                 })
     return records, parse_errors
 
