@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from collections import Counter, defaultdict
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -150,3 +151,43 @@ def build_model(
     model.weights = w.tolist()
     model.bias = bias.tolist()
     return model
+
+
+def save_model(model: DialectModel, path: Path) -> None:
+    Path(path).parent.mkdir(parents=True, exist_ok=True)
+    payload = {
+        "lang_code": model.lang_code,
+        "language_name": model.language_name,
+        "dialects": model.dialects,
+        "inventories": {d: sorted(s) for d, s in model.inventories.items()},
+        "alphabet": sorted(model.alphabet),
+        "support_count": model.support_count,
+        "uni": {d: dict(c) for d, c in model.uni.items()},
+        "bi": {d: dict(c) for d, c in model.bi.items()},
+        "words": {d: dict(c) for d, c in model.words.items()},
+        "uni_total": model.uni_total, "bi_total": model.bi_total,
+        "word_total": model.word_total,
+        "uni_vocab": model.uni_vocab, "bi_vocab": model.bi_vocab,
+        "word_vocab": model.word_vocab,
+        "weights": model.weights, "bias": model.bias,
+        "threshold": model.threshold, "components": model.components,
+    }
+    Path(path).write_text(json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
+
+
+def load_model(path: Path) -> DialectModel:
+    d = json.loads(Path(path).read_text(encoding="utf-8"))
+    return DialectModel(
+        lang_code=d["lang_code"], language_name=d["language_name"],
+        dialects=d["dialects"],
+        inventories={k: frozenset(v) for k, v in d["inventories"].items()},
+        alphabet=frozenset(d["alphabet"]), support_count=d["support_count"],
+        uni={k: Counter(v) for k, v in d["uni"].items()},
+        bi={k: Counter(v) for k, v in d["bi"].items()},
+        words={k: Counter(v) for k, v in d["words"].items()},
+        uni_total=d["uni_total"], bi_total=d["bi_total"], word_total=d["word_total"],
+        uni_vocab=d["uni_vocab"], bi_vocab=d["bi_vocab"], word_vocab=d["word_vocab"],
+        weights=d["weights"], bias=d["bias"],
+        threshold=d.get("threshold", DEFAULT_UNKNOWN_THRESHOLD),
+        components=d.get("components", list(COMPONENTS)),
+    )
