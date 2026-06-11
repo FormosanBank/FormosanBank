@@ -81,7 +81,7 @@ def write_findings_csv(
     """
     titles = titles or {}
     path.parent.mkdir(parents=True, exist_ok=True)
-    with open(path, "w", newline="", encoding="utf-8") as f:
+    with open(path, "w", newline="", encoding="utf-8-sig") as f:
         writer = csv.writer(f)
         writer.writerow(FINDINGS_CSV_COLUMNS)
         for finding in findings:
@@ -118,13 +118,16 @@ def write_soft_csv(path: Path, findings: Iterable[Finding]) -> None:
       character: the offending character, or empty if not applicable.
       count: occurrence count for this row.
 
+    Written as UTF-8 with BOM (utf-8-sig) so Excel renders non-ASCII
+    characters correctly when opening the CSV directly (2026-06-11).
+
     `location` and `line` were added 2026-06-01 so per-occurrence rules
     can pin each row to a specific S/W/M element. Aggregated rules
     continue to emit one row per (file, language, character) with these
     columns blank.
     """
     path.parent.mkdir(parents=True, exist_ok=True)
-    with open(path, "w", newline="", encoding="utf-8") as f:
+    with open(path, "w", newline="", encoding="utf-8-sig") as f:
         writer = csv.writer(f)
         writer.writerow(SOFT_CSV_COLUMNS)
         for finding in findings:

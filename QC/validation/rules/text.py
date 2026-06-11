@@ -448,11 +448,18 @@ def v116_non_ascii_in_form(
 ) -> list[Finding]:
     """V116 SOFT: count non-ASCII characters in ALL FORM tiers.
 
-    Mirrors non_ascii_counts.py: walks every FORM element across S, W, M
+    Mirrors non_ascii_counts.py: walks FORM elements across S, W, M
     and counts characters with codepoint > 127, excluding CJK ranges
     AND characters that appear in the first ('letter') column of any
     Orthographies/<subdir>/<Lang>.tsv for the file's TEXT@xml:lang
     (Formosan-language exclusion added 2026-06-01).
+
+    FORM[@kindOf="original"] is skipped (2026-06-11): the original tier
+    is source-faithful by policy and legitimately carries annotation
+    characters (e.g. NTU Grammar stress accents like á/ʉ́, null-morpheme
+    symbols) that are deliberately preserved there and removed from the
+    standard tier. Flagging them contradicts that policy; cleanliness is
+    only an invariant of the non-original tiers.
 
     Findings are pre-aggregated per (file, character) to keep the CSV
     compact — one row per unique non-ASCII character per file.
@@ -461,6 +468,8 @@ def v116_non_ascii_in_form(
     allowed_ortho_chars = _orthography_allowed_chars(lang)
     findings: list[Finding] = []
     for form in tree.iter("FORM"):
+        if form.get("kindOf") == "original":
+            continue
         text = form.text or ""
         for ch in text:
             if ord(ch) <= 127:

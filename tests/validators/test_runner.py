@@ -143,7 +143,7 @@ def test_findings_csv_written_with_header_when_clean(tmp_path, fixtures_dir, cop
     ])
     assert proc.returncode == 0
     assert csv_path.exists()
-    with open(csv_path, newline="") as f:
+    with open(csv_path, newline="", encoding="utf-8-sig") as f:
         rows = list(csv.reader(f))
     from QC.validation._finding import FINDINGS_CSV_COLUMNS
     assert rows == [FINDINGS_CSV_COLUMNS]

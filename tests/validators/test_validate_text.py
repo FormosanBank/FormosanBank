@@ -354,12 +354,14 @@ def test_W1_rules_only_check_standard_tier(tmp_path):
 
 
 def test_V116_non_ascii_in_form(tmp_path):
-    """V116 SOFT: non-ASCII characters (excluding CJK) in any FORM tier."""
+    """V116 SOFT: non-ASCII characters (excluding CJK) in non-original
+    FORM tiers. (The original tier is skipped by policy since
+    2026-06-11; see test_v116_skips_original_tier.)"""
     xml = (
         _TEXT_OPEN
         + '<S id="S1">'
-        + '<FORM kindOf="original">café</FORM>'
-        + '<FORM kindOf="standard">cafe</FORM>'
+        + '<FORM kindOf="original">cafe</FORM>'
+        + '<FORM kindOf="standard">café</FORM>'
         + '</S>'
         + _TEXT_CLOSE
     )
@@ -2370,3 +2372,43 @@ def test_V141_S_without_W_skipped():
     xml = _V141_TEMPLATE.format(body="""
       <S id="S1"><FORM kindOf="original">ka en taon</FORM></S>""")
     assert _v141_findings(xml) == []
+
+
+def test_v116_skips_original_tier(tmp_path):
+    """V116 must not flag non-ASCII in FORM[@kindOf='original'].
+
+    The original tier is source-faithful by policy and legitimately
+    carries annotation characters (NTU Grammar stress accents like
+    'mámia', null-morpheme symbols) that are deliberately preserved
+    there and stripped from the standard tier (README steps 3/7).
+    Added 2026-06-11 after V116 flagged 875 policy-compliant
+    original-tier elements on NTUFormosanCorpus.
+    """
+    import csv as _csv
+
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S_acc">'
+        + '<FORM kindOf="original">mámia</FORM>'   # accent: original -> no finding
+        + '<FORM kindOf="standard">café</FORM>'  # standard -> still flagged
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    soft_csv = tmp_path / "v116_orig.csv"
+    subprocess.run(
+        [
+            sys.executable, str(VALIDATE_TEXT),
+            "by_path", "--path", str(tmp_path / "XML"),
+            "--soft-csv", str(soft_csv),
+        ],
+        capture_output=True,
+        text=True,
+    )
+    with open(soft_csv, newline="", encoding="utf-8-sig") as fh:
+        rows = [r for r in _csv.DictReader(fh) if r["rule_id"] == "V116"]
+    chars = {r["character"] for r in rows}
+    assert "é" in chars, f"standard-tier é should be flagged; rows={rows!r}"
+    assert "á" not in chars, (
+        f"original-tier á must NOT be flagged; rows={rows!r}"
+    )
