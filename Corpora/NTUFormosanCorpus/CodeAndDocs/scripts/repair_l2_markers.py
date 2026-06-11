@@ -58,6 +58,7 @@ TOKEN_MAP = {
     'piaocunLM2>': 'piaocun',
     'T2mijio.': 'mijio.',
     '<T2mi-jio': 'mi-jio',
+    '<T2mi': 'mi',
 
     '&lt;L2JchurchL2J&gt;': 'church',
     '&lt;L2JclockL2J&gt;': 'clock',

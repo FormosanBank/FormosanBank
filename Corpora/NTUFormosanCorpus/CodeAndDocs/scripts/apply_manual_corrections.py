@@ -103,6 +103,109 @@ FW_EQ = [
 ]
 CORRECTIONS.extend(FW_EQ)
 
+# 4. Gloss-table column shifts (wordform column missing in the source
+#    grid, so English glosses became "wordforms" and everything slid):
+#    - fishing_Pani S_34 (source record 226): true words matupuru, /
+#      kisʉ-ʉn=maku. survive in the source ori field; strays 到達中間/太陽
+#      are glosses of untranscribed context words (matavʉcʉ, taniarʉ).
+#    - earthquake S_194 (source record 613): true word iza-an-na in ori;
+#      stray '608' is an IU number.
+#    - TsouConv-informants S_19 (source record 73): true words hia /
+#      ma'cohioa. in ori; the shifted third cells are annotator comments.
+#      Two impostor W's but only one missing word -> W6 is deleted.
+#    Entries use the optional element-id field for M-level precision.
+
+GLOSS_SHIFT = [
+    # --- fishing_Pani S_34 ---
+    ("Stories/Kanakanavu/Kanakanavu_kkvNr_fishing_Pani.xml", "kkvNr_fishing_Pani_S_34",
+     "FORM", None, "makefireAF callPF1SGGEN.", "matupuru, kisʉʉnmaku.", None),
+    ("Stories/Kanakanavu/Kanakanavu_kkvNr_fishing_Pani.xml", "kkvNr_fishing_Pani_S_34",
+     "FORM", None, "makefireAF", "matupuru,", None),
+    ("Stories/Kanakanavu/Kanakanavu_kkvNr_fishing_Pani.xml", "kkvNr_fishing_Pani_S_34",
+     "FORM", None, "call-PF=1SGGEN", "kisʉ-ʉn=maku.", None),
+    ("Stories/Kanakanavu/Kanakanavu_kkvNr_fishing_Pani.xml", "kkvNr_fishing_Pani_S_34",
+     "TRANSL", "eng", "生火.主焦", "make.fire.AF", None),
+    ("Stories/Kanakanavu/Kanakanavu_kkvNr_fishing_Pani.xml", "kkvNr_fishing_Pani_S_34",
+     "TRANSL", "zho", "到達中間", "生火.主焦", None),
+    ("Stories/Kanakanavu/Kanakanavu_kkvNr_fishing_Pani.xml", "kkvNr_fishing_Pani_S_34",
+     "TRANSL", "eng", "叫-受焦=1SG.屬格", "call-PF=1SG.GEN", None),
+    ("Stories/Kanakanavu/Kanakanavu_kkvNr_fishing_Pani.xml", "kkvNr_fishing_Pani_S_34",
+     "TRANSL", "zho", "太陽", "叫-受焦=1SG.屬格", "kkvNr_fishing_Pani_S_34_W10"),
+    ("Stories/Kanakanavu/Kanakanavu_kkvNr_fishing_Pani.xml", "kkvNr_fishing_Pani_S_34",
+     "FORM", None, "call", "kisʉ", "kkvNr_fishing_Pani_S_34_W10M1"),
+    ("Stories/Kanakanavu/Kanakanavu_kkvNr_fishing_Pani.xml", "kkvNr_fishing_Pani_S_34",
+     "TRANSL", "eng", "叫", "call", "kkvNr_fishing_Pani_S_34_W10M1"),
+    ("Stories/Kanakanavu/Kanakanavu_kkvNr_fishing_Pani.xml", "kkvNr_fishing_Pani_S_34",
+     "TRANSL", "zho", "太陽", "叫", "kkvNr_fishing_Pani_S_34_W10M1"),
+    ("Stories/Kanakanavu/Kanakanavu_kkvNr_fishing_Pani.xml", "kkvNr_fishing_Pani_S_34",
+     "FORM", None, "PF", "ʉn", "kkvNr_fishing_Pani_S_34_W10M2"),
+    ("Stories/Kanakanavu/Kanakanavu_kkvNr_fishing_Pani.xml", "kkvNr_fishing_Pani_S_34",
+     "TRANSL", "eng", "受焦", "PF", "kkvNr_fishing_Pani_S_34_W10M2"),
+    ("Stories/Kanakanavu/Kanakanavu_kkvNr_fishing_Pani.xml", "kkvNr_fishing_Pani_S_34",
+     "FORM", None, "1SGGEN", "maku", "kkvNr_fishing_Pani_S_34_W10M3"),
+    ("Stories/Kanakanavu/Kanakanavu_kkvNr_fishing_Pani.xml", "kkvNr_fishing_Pani_S_34",
+     "TRANSL", "eng", "1SG.屬格", "1SG.GEN", "kkvNr_fishing_Pani_S_34_W10M3"),
+    # --- earthquake S_194 ---
+    ("Stories/Kavalan/Kavalan_KavCon-earthquake_abas_haciang.xml", "KavCon-earthquake_abas_haciang_S_194",
+     "FORM", None, "dosomethingLF3PLGEN", "izaanna", None),
+    ("Stories/Kavalan/Kavalan_KavCon-earthquake_abas_haciang.xml", "KavCon-earthquake_abas_haciang_S_194",
+     "FORM", None, "dosomething-LF-3PLGEN", "iza-an-na", None),
+    ("Stories/Kavalan/Kavalan_KavCon-earthquake_abas_haciang.xml", "KavCon-earthquake_abas_haciang_S_194",
+     "TRANSL", "eng", "做某事-處焦-3PL.屬格", "do.something-LF-3PL.GEN", "KavCon-earthquake_abas_haciang_S_194_W1"),
+    ("Stories/Kavalan/Kavalan_KavCon-earthquake_abas_haciang.xml", "KavCon-earthquake_abas_haciang_S_194",
+     "TRANSL", "zho", "608", "做某事-處焦-3PL.屬格", "KavCon-earthquake_abas_haciang_S_194_W1"),
+    ("Stories/Kavalan/Kavalan_KavCon-earthquake_abas_haciang.xml", "KavCon-earthquake_abas_haciang_S_194",
+     "FORM", None, "dosomething", "iza", "KavCon-earthquake_abas_haciang_S_194_W1M1"),
+    ("Stories/Kavalan/Kavalan_KavCon-earthquake_abas_haciang.xml", "KavCon-earthquake_abas_haciang_S_194",
+     "TRANSL", "eng", "做某事", "do.something", "KavCon-earthquake_abas_haciang_S_194_W1M1"),
+    ("Stories/Kavalan/Kavalan_KavCon-earthquake_abas_haciang.xml", "KavCon-earthquake_abas_haciang_S_194",
+     "TRANSL", "zho", "608", "做某事", "KavCon-earthquake_abas_haciang_S_194_W1M1"),
+    ("Stories/Kavalan/Kavalan_KavCon-earthquake_abas_haciang.xml", "KavCon-earthquake_abas_haciang_S_194",
+     "FORM", None, "LF", "an", "KavCon-earthquake_abas_haciang_S_194_W1M2"),
+    ("Stories/Kavalan/Kavalan_KavCon-earthquake_abas_haciang.xml", "KavCon-earthquake_abas_haciang_S_194",
+     "TRANSL", "eng", "處焦", "LF", "KavCon-earthquake_abas_haciang_S_194_W1M2"),
+    ("Stories/Kavalan/Kavalan_KavCon-earthquake_abas_haciang.xml", "KavCon-earthquake_abas_haciang_S_194",
+     "FORM", None, "3PLGEN", "na", "KavCon-earthquake_abas_haciang_S_194_W1M3"),
+    ("Stories/Kavalan/Kavalan_KavCon-earthquake_abas_haciang.xml", "KavCon-earthquake_abas_haciang_S_194",
+     "TRANSL", "eng", "3PL.屬格", "3PL.GEN", "KavCon-earthquake_abas_haciang_S_194_W1M3"),
+    # --- TsouConv-informants S_19 ---
+    ("Stories/Tsou/Tsou_TsouConv-informants.xml", "TsouConv-informants_S_19",
+     "FORM", None, "hia how teachPF.", "hia ma'cohioa.", None),
+    ("Stories/Tsou/Tsou_TsouConv-informants.xml", "TsouConv-informants_S_19",
+     "FORM", None, "how", "ma'cohioa.", "TsouConv-informants_S_19_W5"),
+    ("Stories/Tsou/Tsou_TsouConv-informants.xml", "TsouConv-informants_S_19",
+     "FORM", None, "how", "ma'cohioa.", "TsouConv-informants_S_19_W5M1"),
+    ("Stories/Tsou/Tsou_TsouConv-informants.xml", "TsouConv-informants_S_19",
+     "TRANSL", "eng", "如何", "teach.PF", "TsouConv-informants_S_19_W5"),
+    ("Stories/Tsou/Tsou_TsouConv-informants.xml", "TsouConv-informants_S_19",
+     "TRANSL", "zho", "但是這裡出現的是ma'cohioa", "教.受焦", "TsouConv-informants_S_19_W5"),
+    ("Stories/Tsou/Tsou_TsouConv-informants.xml", "TsouConv-informants_S_19",
+     "TRANSL", "eng", "如何", "teach.PF", "TsouConv-informants_S_19_W5M1"),
+    ("Stories/Tsou/Tsou_TsouConv-informants.xml", "TsouConv-informants_S_19",
+     "TRANSL", "zho", "但是這裡出現的是ma'cohioa", "教.受焦", "TsouConv-informants_S_19_W5M1"),
+]
+
+# 5. Stray number fused to a wordform in the source gloss table
+#    (Grammar/Kanakanavu 12_S_5: gloss-table wordform 'na33' vs ori 'na';
+#    same genus as the fused example numbers, but not sentence-final).
+GLOSS_SHIFT.append(
+    ("Grammar/Kanakanavu/Kanakanavu.xml", "12_S_5", "FORM", None, "na33", "na", None))
+
+# (relative file, S id, W id to delete) — impostor words with no source word
+DELETE_W = [
+    ("Stories/Tsou/Tsou_TsouConv-informants.xml", "TsouConv-informants_S_19",
+     "TsouConv-informants_S_19_W6"),
+]
+
+GLOSS_SHIFT_NOTES = [
+    ("Stories/Kanakanavu/Kanakanavu_kkvNr_fishing_Pani.xml", "kkvNr_fishing_Pani_S_34",
+     "gloss-table column shift repaired from source; stray glosses belonged to untranscribed words; consult the NTU Formosan Corpus source"),
+    ("Stories/Kavalan/Kavalan_KavCon-earthquake_abas_haciang.xml", "KavCon-earthquake_abas_haciang_S_194",
+     "gloss-table column shift repaired from source; consult the NTU Formosan Corpus source"),
+    ("Stories/Tsou/Tsou_TsouConv-informants.xml", "TsouConv-informants_S_19",
+     "gloss-table column shift repaired from source; an impostor word was removed; consult the NTU Formosan Corpus source"),
+]
+
 # (relative file, S id, notes value set on the S-level original FORM)
 NOTES = [
     (_SKZY, "13_S_38", "Source cites NTU Formosan Corpus skzyNr-movingkulang IU100-101"),
@@ -132,8 +235,13 @@ def main():
 
     by_file = {}
     for entry in CORRECTIONS:
+        e = entry if len(entry) == 7 else entry + (None,)
+        by_file.setdefault(e[0], []).append(("text",) + e[1:])
+    for entry in GLOSS_SHIFT:
         by_file.setdefault(entry[0], []).append(("text",) + entry[1:])
-    for rel, sid, note in NOTES:
+    for rel, sid, wid in DELETE_W:
+        by_file.setdefault(rel, []).append(("delw", sid, wid))
+    for rel, sid, note in list(NOTES) + GLOSS_SHIFT_NOTES:
         by_file.setdefault(rel, []).append(("note", sid, note))
 
     applied = stale = phon = 0
@@ -166,7 +274,25 @@ def main():
                     modified = True
                     print(f"  notes set: {rel} {sid}")
                 continue
-            _, sid, tag, lang, old, new = entry
+            if entry[0] == "delw":
+                _, sid, wid = entry
+                s = sindex.get(sid)
+                target = None
+                if s is not None:
+                    for w in s.iter("W"):
+                        if w.get("id") == wid:
+                            target = w
+                            break
+                if target is None:
+                    print(f"  no match for delete-W (already applied?): {rel} {wid}")
+                    stale += 1
+                else:
+                    target.getparent().remove(target)
+                    applied += 1
+                    modified = True
+                    print(f"  deleted impostor W: {rel} {wid}")
+                continue
+            _, sid, tag, lang, old, new, elem_id = entry
             s = sindex.get(sid)
             matches = []
             if s is not None:
@@ -174,6 +300,10 @@ def main():
                     el_lang = el.get(_XLANG) or el.get("lang")
                     if lang is not None and el_lang != lang:
                         continue
+                    if elem_id is not None:
+                        parent = el.getparent()
+                        if parent is None or parent.get("id") != elem_id:
+                            continue
                     if old in (el.text or ""):
                         matches.append(el)
             if not matches:
