@@ -45,6 +45,10 @@
 
 * In the Kanakanavu sentence subcorpus, "∅" appears 31 times. Its interpretation is unclear. 
 
+* Some English glosses contain Mandarin (e.g. `eng="使役-太陽=完成貌"`), most likely because the glossers were Mandarin-dominant. These are left as they are in the source; the known cases are listed in [gloss_anomalies_review.csv](gloss_anomalies_review.csv) (category `eng gloss contains CJK`).
+
+* A handful of wordforms contain or consist of gloss codes rather than actual word material (e.g. `RED-osa-un`, where the annotator wrote the reduplication code instead of the reduplicated syllable, or words whose form cell is just `FIL`/`NOM`/`EXIST`). The true forms are not recoverable from the source; they are listed in [gloss_anomalies_review.csv](gloss_anomalies_review.csv) (categories `gloss code embedded in wordform` and `wordform is a bare gloss code`).
+
 * Six source JSONs in the sentence subcorpus assign the same record id to two *different* sentences (e.g. `sentence/Bunun_Isbukun/46.json` numbers its records 1,2,3,3,4,...). Because S ids embed the record id, both sentences would receive the same S id (and identical W/M ids below it). The second occurrence (in document order) is disambiguated with a `-2` suffix: `46_S_3` and `46_S_3-2`. For those sentences the NTU line-number provenance is inherently ambiguous — the collision is in the NTU backend itself. Affected: `46_S_3`, `03-4_S_15`, `43_S_2` (Bunun); `3_S_201` (Kanakanavu); `20200530-FW-Andrea-1_S_6`, `20200530-FW-Yongfu-1_S_13` (Rukai).
 
 ***
