@@ -83,14 +83,10 @@ def test_audio_seconds_carried_from_existing_csv(mini_corpus, tmp_path):
     # re-running get_corpus_stats must preserve them while recomputing counts.
     stats_dir = tmp_path / "statistics"
     stats_dir.mkdir()
-    seed = stats_dir / "MiniCorpus_corpora_stats.csv"
-    seed.write_text(
-        "language,dialect,segmented_words,glossed_words,"
-        "transcribed_audio_count,transcribed_audio_seconds,"
-        "untranscribed_audio_count,untranscribed_audio_seconds,"
-        "eng_transl_count,zho_transl_count,word_count,file_count\n"
-        "trv,Truku,0,0,1,99.0,1,42.0,0,0,2,1\n"
-    )
+    (stats_dir / "audio_durations.csv").write_text(
+        "corpus,language,dialect,transcribed_audio_seconds,untranscribed_audio_seconds,"
+        "transcribed_audio_count,untranscribed_audio_count,computed_at\n"
+        "MiniCorpus,trv,Truku,99.0,42.0,1,1,2026-06-10\n", encoding="utf-8")
     result = _run([str(mini_corpus)])
     assert result.returncode == 0, result.stderr
     truku = _read_rows(tmp_path)[("trv", "Truku")]
@@ -108,6 +104,61 @@ def test_strict_fails_on_parse_error(mini_corpus):
 def test_warnings_reported_on_stderr(mini_corpus):
     result = _run([str(mini_corpus)])
     assert "missing dialect" in result.stderr
+
+
+def test_seconds_filled_from_truth_file(tmp_path):
+    # Minimal corpus: one XML with one transcribed S/AUDIO.
+    corpus = tmp_path / "Corpora" / "Mini"
+    xml_dir = corpus / "XML" / "Amis"
+    xml_dir.mkdir(parents=True)
+    (xml_dir / "a.xml").write_text(
+        '<?xml version="1.0" encoding="utf-8"?>'
+        '<TEXT xml:lang="ami" dialect="Coastal">'
+        '<S id="1"><FORM kindOf="standard">w</FORM>'
+        '<AUDIO file="a.wav"/></S></TEXT>', encoding="utf-8")
+    stats_dir = tmp_path / "statistics"
+    stats_dir.mkdir()
+    (stats_dir / "audio_durations.csv").write_text(
+        "corpus,language,dialect,transcribed_audio_seconds,untranscribed_audio_seconds,"
+        "transcribed_audio_count,untranscribed_audio_count,computed_at\n"
+        "Mini,ami,Coastal,42.0,0.0,1,0,2026-06-10\n", encoding="utf-8")
+
+    import subprocess, sys
+    script = Path(__file__).resolve().parents[2] / "QC" / "utilities" / "get_corpus_stats.py"
+    proc = subprocess.run([sys.executable, str(script), str(corpus)],
+                          capture_output=True, text=True)
+    assert proc.returncode == 0, proc.stderr
+    out = (stats_dir / "Mini_corpora_stats.csv").read_text()
+    # current count is 1 (matches truth count_at_compute) -> not stale, seconds filled
+    assert ",42.0," in out
+    assert "STALE AUDIO" not in proc.stderr
+
+
+def test_stale_warning_when_count_grew(tmp_path):
+    corpus = tmp_path / "Corpora" / "Mini"
+    xml_dir = corpus / "XML" / "Amis"
+    xml_dir.mkdir(parents=True)
+    # Two transcribed AUDIO -> current count 2.
+    (xml_dir / "a.xml").write_text(
+        '<?xml version="1.0" encoding="utf-8"?>'
+        '<TEXT xml:lang="ami" dialect="Coastal">'
+        '<S id="1"><FORM kindOf="standard">w</FORM><AUDIO file="a.wav"/></S>'
+        '<S id="2"><FORM kindOf="standard">w</FORM><AUDIO file="b.wav"/></S></TEXT>',
+        encoding="utf-8")
+    stats_dir = tmp_path / "statistics"
+    stats_dir.mkdir()
+    (stats_dir / "audio_durations.csv").write_text(
+        "corpus,language,dialect,transcribed_audio_seconds,untranscribed_audio_seconds,"
+        "transcribed_audio_count,untranscribed_audio_count,computed_at\n"
+        "Mini,ami,Coastal,42.0,0.0,1,0,2026-06-10\n", encoding="utf-8")
+    import subprocess, sys
+    script = Path(__file__).resolve().parents[2] / "QC" / "utilities" / "get_corpus_stats.py"
+    proc = subprocess.run([sys.executable, str(script), str(corpus)],
+                          capture_output=True, text=True)
+    assert proc.returncode == 0, proc.stderr
+    assert "STALE AUDIO" in proc.stderr
+    # value is kept (not zeroed)
+    assert ",42.0," in (stats_dir / "Mini_corpora_stats.csv").read_text()
 
 
 def test_all_processes_every_corpus_and_propagates_strict(tmp_path):

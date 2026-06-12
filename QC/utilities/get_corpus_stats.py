@@ -4,9 +4,10 @@ Counting rules live in QC/corpus_counts.py (shared with corpus_metrics.py
 and count_tokens.py). Writes statistics/<CorpusName>_corpora_stats.csv.
 
 Audio durations are NOT computed here (CI has no audio files): the
-seconds columns are carried forward from the existing CSV and refreshed
-only by the manual QC/utilities/update_audio_stats.py. Audio *counts*
-are recomputed from XML on every run.
+seconds columns are read from statistics/audio_durations.csv (the
+source of truth written by update_audio_stats.py / refresh_audio_stats.py).
+Staleness is flagged when XML audio-element counts differ from those stored
+in that file. Audio *counts* are recomputed from XML on every run.
 
 Column names through `file_count` are a published interface: the Gitbook's
 update_corpus_stats.py reads them by name. Only append columns, never
@@ -20,6 +21,7 @@ from pathlib import Path
 from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import audio_durations
 import corpus_counts
 
 FIELDNAMES = [
@@ -36,24 +38,6 @@ SUM_FIELDS = [f for f in FIELDNAMES if f not in
               ("language", "dialect",
                "transcribed_audio_seconds", "untranscribed_audio_seconds",
                "parse_errors")]
-
-
-def load_carry_seconds(csv_path: Path) -> dict:
-    """Read seconds columns from an existing CSV, keyed (language, dialect).
-
-    Missing CSV is normal for a brand-new corpus: seconds start at 0 and
-    get filled in by a manual update_audio_stats.py run."""
-    carried = {}
-    if not csv_path.is_file():
-        return carried
-    with open(csv_path, newline="", encoding="utf-8") as f:
-        for row in csv.DictReader(f):
-            key = (row.get("language", ""), row.get("dialect", ""))
-            carried[key] = (
-                float(row.get("transcribed_audio_seconds") or 0),
-                float(row.get("untranscribed_audio_seconds") or 0),
-            )
-    return carried
 
 
 def stats_paths(corpus_path: Path) -> tuple[Path, str]:
@@ -76,7 +60,7 @@ def process_corpus(corpus_path: Path, strict: bool) -> int:
     stats_dir, corpus_name = stats_paths(corpus_path)
     csv_path = stats_dir / f"{corpus_name}_corpora_stats.csv"
 
-    carried = load_carry_seconds(csv_path)
+    durations = audio_durations.load_for_corpus(stats_dir, corpus_name)
 
     buckets: defaultdict[tuple[str, str], dict[str, Any]] = defaultdict(
         lambda: {f: 0 for f in FIELDNAMES if f not in ("language", "dialect")}
@@ -93,10 +77,22 @@ def process_corpus(corpus_path: Path, strict: bool) -> int:
             n_warnings += 1
             print(f"[get_corpus_stats] WARNING {record['path']}: {warning}", file=sys.stderr)
 
-    for key, (t_sec, u_sec) in carried.items():
-        if key in buckets:
-            buckets[key]["transcribed_audio_seconds"] = t_sec
-            buckets[key]["untranscribed_audio_seconds"] = u_sec
+    # Fill seconds from the audio-durations source of truth and flag staleness.
+    for key, bucket in buckets.items():
+        entry = durations.get(key)
+        if entry is not None:
+            bucket["transcribed_audio_seconds"] = entry["transcribed_audio_seconds"]
+            bucket["untranscribed_audio_seconds"] = entry["untranscribed_audio_seconds"]
+        if audio_durations.is_stale(bucket["transcribed_audio_count"],
+                                    bucket["untranscribed_audio_count"], entry):
+            language, dialect = key
+            anchor = "never" if entry is None else (
+                f"{entry['transcribed_audio_count']}+{entry['untranscribed_audio_count']}")
+            print(f"[get_corpus_stats] STALE AUDIO {corpus_name} {language}/{dialect}: "
+                  f"XML has {bucket['transcribed_audio_count']}+"
+                  f"{bucket['untranscribed_audio_count']} audio elements; seconds "
+                  f"computed against {anchor} (run refresh_audio_stats.py).",
+                  file=sys.stderr)
 
     for item in parse_errors:
         print(f"[get_corpus_stats] PARSE ERROR {item['path']}: {item['error']}", file=sys.stderr)
@@ -125,11 +121,34 @@ def main() -> int:
                        help="Path to a single corpus directory (e.g. Corpora/ePark).")
     group.add_argument("--all", action="store_true",
                        help="Run on every corpus under --corpora_root.")
+    group.add_argument("--report-stale-audio", action="store_true",
+                       help="Scan corpora under --corpora_root and list every "
+                            "stale (corpus, language, dialect) audio bucket; "
+                            "write nothing. Exit 1 if any are stale.")
     parser.add_argument("--corpora_root", default=str(default_corpora),
                         help="Collection root used with --all (default: repo Corpora/).")
     parser.add_argument("--strict", action="store_true",
                         help="Exit nonzero if any XML file fails to parse.")
     args = parser.parse_args()
+
+    if args.report_stale_audio:
+        corpora_root = Path(args.corpora_root)
+        any_stale = False
+        for corpus_dir in sorted(d for d in corpora_root.iterdir()
+                                 if d.is_dir() and (d / "XML").is_dir()):
+            stats_dir, corpus_name = stats_paths(corpus_dir)
+            durations = audio_durations.load_for_corpus(stats_dir, corpus_name)
+            records, _ = corpus_counts.collect_records(corpus_dir / "XML")
+            counts: dict = {}
+            for r in records:
+                cur = counts.setdefault((r["language"], r["dialect"]), [0, 0])
+                cur[0] += r["transcribed_audio_count"]
+                cur[1] += r["untranscribed_audio_count"]
+            for key, (t, u) in sorted(counts.items()):
+                if (t + u) and audio_durations.is_stale(t, u, durations.get(key)):
+                    any_stale = True
+                    print(f"STALE {corpus_name} {key[0]}/{key[1]}: XML {t}+{u}")
+        return 1 if any_stale else 0
 
     if args.all:
         corpora_root = Path(args.corpora_root).resolve()
