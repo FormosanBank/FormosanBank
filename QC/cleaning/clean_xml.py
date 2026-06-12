@@ -133,7 +133,14 @@ def _process_standard_hyphens(
     and DO NOT warn).
 
     The '=' clitic marker is always stripped (it's never a letter).
+
+    The null-morpheme marker 'Ø' (U+00D8) is likewise stripped unconditionally
+    — together with its bridging segmentation hyphen ('Ø-' / '-Ø') — because it
+    is an annotation, never an orthographic letter in any Formosan language.
+    Removing it as a unit avoids leaving a dangling hyphen even where '-' is a
+    letter (Bunun, Thao).
     """
+    text = re.sub(r"Ø-|-Ø|Ø", "", text)
     if lang_code and _hyphen_is_letter(lang_code, ortho_path):
         if hard_remove_segmentation:
             return text.replace("-", "").replace("=", "")
@@ -296,6 +303,26 @@ def normalize_caret_variants(text: str) -> str:
     return text
 
 
+# Zero-width / BOM codepoints that are never meaningful in FormosanBank
+# FORM or TRANSL text: ZERO WIDTH SPACE, ZERO WIDTH NON-JOINER, ZERO WIDTH
+# JOINER, and ZERO WIDTH NO-BREAK SPACE (a.k.a. BOM). They are invisible
+# source residue. The validator side flags them HARD (V131 / TR16); the
+# cleaner strips them silently here so HARD findings stay near zero in
+# practice. Like NFC normalization (C010), this is unconditional and emits
+# no CleanerWarnings row.
+_ZERO_WIDTH_CHARS = "​‌‍﻿"
+_ZERO_WIDTH_RE = re.compile(f"[{_ZERO_WIDTH_CHARS}]")
+
+
+def _strip_zero_width(text: str) -> str:
+    """Remove zero-width / BOM characters (U+200B/200C/200D/FEFF).
+
+    Applied to both FORM and TRANSL regardless of xml:lang. Silent
+    mechanical fix — no warning row, idempotent.
+    """
+    return _ZERO_WIDTH_RE.sub("", text)
+
+
 _FW_DQUOTE = "＂"  # U+FF02 FULLWIDTH QUOTATION MARK — canonical Chinese double quote
 # Only genuine double-quotation marks are collapsed. The angle brackets
 # 《 》 (whole-work title mark, 書名號) and 〈 〉 (part-work/篇名號) are Chinese
@@ -442,7 +469,12 @@ def clean_text(
          corpus data and worth surfacing to the corpus author.
       3. normalize_whitespace — collapse runs of whitespace.
       4. trim_repeated_punctuation — !! → !, ??? → ?, --- → -.
+
+    Zero-width / BOM characters (U+200B/200C/200D/FEFF) are stripped first,
+    unconditionally — invisible source residue the validator flags HARD
+    (V131 / TR16).
     """
+    text = _strip_zero_width(text)
     text = normalize_caret_variants(text)
     # Emit c002b warning for U+02C8 before it gets swapped to apostrophe.
     if warnings is not None:
@@ -482,7 +514,12 @@ def clean_trans(
            apostrophes (left unchanged).
       3. normalize_whitespace — collapse runs of whitespace.
       4. trim_repeated_punctuation — !! → !, ??? → ?, --- → -.
+
+    Zero-width / BOM characters (U+200B/200C/200D/FEFF) are stripped first,
+    unconditionally — invisible source residue the validator flags HARD
+    (V131 / TR16).
     """
+    text = _strip_zero_width(text)
     text = normalize_caret_variants(text)
     if _is_chinese(lang):
         text = _clean_trans_chinese(text, xml_file, s_id, warnings)

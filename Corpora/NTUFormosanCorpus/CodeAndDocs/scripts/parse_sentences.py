@@ -446,6 +446,13 @@ def main(lang_codes):
         if dialect:
             root.set("dialect", dialect)
 
+        # A few source JSONs assign the same record id to two *different*
+        # sentences (e.g. sentence/Bunun_Isbukun/46.json numbers its records
+        # 1,2,3,3,4,...). Propagating those collisions produces duplicate S
+        # (and W/M) ids in the XML. Track ids per language root and suffix
+        # second-and-later occurrences with -2, -3, ... in document order.
+        seen_s_ids = {}
+
         # Loop over each JSON file in the language directory
         for file in os.listdir(lang_dir):
             with open(os.path.join(lang_dir, file), 'r') as js_file:
@@ -475,6 +482,12 @@ def main(lang_codes):
                     _to_process = [(s, f"{file.split('.')[0]}_S_{s['id']}")]
 
                 for s_curr, s_id_str in _to_process:
+                    # Disambiguate source record-id collisions (see seen_s_ids above).
+                    n_seen = seen_s_ids.get(s_id_str, 0) + 1
+                    seen_s_ids[s_id_str] = n_seen
+                    if n_seen > 1:
+                        s_id_str = f"{s_id_str}-{n_seen}"
+
                     # Create an 'S' element for the sentence
                     s_element = ET.SubElement(root, "S")
                     s_element.set("id", s_id_str)

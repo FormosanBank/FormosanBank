@@ -1,4 +1,4 @@
-<?xml version="1.0" ?>
+<?xml version='1.0' encoding='UTF-8'?>
 <TEXT id="NTU_Stry_Saisiyat_SaiNr-Molaw" xml:lang="xsy" source="NTU Corpus stories for Saisiyat, story: SaiNr-Molaw" audio="diarized" copyright="CC BY-NC" citation="Sung, L. M., Lily, I., Hsieh, F., &amp; Lin, Z. (2008). Developing an online corpus of Formosan languages. Taiwan Journal of Linguistics, 6(2.)." BibTeX_citation="@article{sung2008developing,title={Developing an online corpus of Formosan languages.},author={Sung, Li-May and Lily, I and Hsieh, Fuhui and Lin, Zhemin and others},journal={Taiwan Journal of Linguistics},volume={6},number={2},year={2008}}" dialect="Saisiyat">
     <S id="SaiNr-Molaw_S_0">
         <FORM kindOf="original">yao 'am manmanabih koSa'en ka kakhayza'an papnabih.</FORM>
@@ -14,7 +14,7 @@
             <PHON kindOf="standard">jao</PHON>
             <TRANSL xml:lang="zho">1SG.主格</TRANSL>
             <TRANSL xml:lang="eng">1SG.NOM</TRANSL>
-            <M id="SaiNr-Molaw_S_0_W0_M0_0">
+            <M id="SaiNr-Molaw_S_0_W0M1">
                 <FORM kindOf="original">yao</FORM>
                 <PHON kindOf="original">jao</PHON>
                 <FORM kindOf="standard">yao</FORM>
@@ -30,7 +30,7 @@
             <PHON kindOf="standard">ʔam</PHON>
             <TRANSL xml:lang="zho">未來</TRANSL>
             <TRANSL xml:lang="eng">FUT</TRANSL>
-            <M id="SaiNr-Molaw_S_0_W1_M0_0">
+            <M id="SaiNr-Molaw_S_0_W1M1">
                 <FORM kindOf="original">'am</FORM>
                 <PHON kindOf="original">ʔam</PHON>
                 <FORM kindOf="standard">'am</FORM>
@@ -46,7 +46,7 @@
             <PHON kindOf="standard">man-m-anaβih</PHON>
             <TRANSL xml:lang="zho">重疊-主焦-說</TRANSL>
             <TRANSL xml:lang="eng">RED-AF-say</TRANSL>
-            <M id="SaiNr-Molaw_S_0_W2_M0_0">
+            <M id="SaiNr-Molaw_S_0_W2M1">
                 <FORM kindOf="original">man</FORM>
                 <PHON kindOf="original">man</PHON>
                 <FORM kindOf="standard">man</FORM>
@@ -54,7 +54,7 @@
                 <TRANSL xml:lang="eng">RED</TRANSL>
                 <TRANSL xml:lang="zho">重疊</TRANSL>
             </M>
-            <M id="SaiNr-Molaw_S_0_W2_M1_0">
+            <M id="SaiNr-Molaw_S_0_W2M2">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
@@ -62,7 +62,7 @@
                 <TRANSL xml:lang="eng">AF</TRANSL>
                 <TRANSL xml:lang="zho">主焦</TRANSL>
             </M>
-            <M id="SaiNr-Molaw_S_0_W2_M2_0">
+            <M id="SaiNr-Molaw_S_0_W2M3">
                 <FORM kindOf="original">anabih</FORM>
                 <PHON kindOf="original">anaβih</PHON>
                 <FORM kindOf="standard">anabih</FORM>
@@ -78,7 +78,7 @@
             <PHON kindOf="standard">koʃaʔən</PHON>
             <TRANSL xml:lang="zho">FIL</TRANSL>
             <TRANSL xml:lang="eng">FIL</TRANSL>
-            <M id="SaiNr-Molaw_S_0_W3_M0_0">
+            <M id="SaiNr-Molaw_S_0_W3M1">
                 <FORM kindOf="original">koSa'en</FORM>
                 <PHON kindOf="original">koʃaʔən</PHON>
                 <FORM kindOf="standard">koSa'en</FORM>
@@ -94,7 +94,7 @@
             <PHON kindOf="standard">ka</PHON>
             <TRANSL xml:lang="zho">受格</TRANSL>
             <TRANSL xml:lang="eng">ACC</TRANSL>
-            <M id="SaiNr-Molaw_S_0_W4_M0_0">
+            <M id="SaiNr-Molaw_S_0_W4M1">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
@@ -110,7 +110,7 @@
             <PHON kindOf="standard">kakhajz~ðaʔan</PHON>
             <TRANSL xml:lang="zho">從前</TRANSL>
             <TRANSL xml:lang="eng">before</TRANSL>
-            <M id="SaiNr-Molaw_S_0_W5_M0_0">
+            <M id="SaiNr-Molaw_S_0_W5M1">
                 <FORM kindOf="original">kakhayza'an</FORM>
                 <PHON kindOf="original">kakhajz~ðaʔan</PHON>
                 <FORM kindOf="standard">kakhayza'an</FORM>
@@ -126,7 +126,7 @@
             <PHON kindOf="standard">papnaβih</PHON>
             <TRANSL xml:lang="zho">告訴.完成</TRANSL>
             <TRANSL xml:lang="eng">tell.PFV</TRANSL>
-            <M id="SaiNr-Molaw_S_0_W6_M0_0">
+            <M id="SaiNr-Molaw_S_0_W6M1">
                 <FORM kindOf="original">papnabih</FORM>
                 <PHON kindOf="original">papnaβih</PHON>
                 <FORM kindOf="standard">papnabih</FORM>
@@ -150,7 +150,7 @@
             <PHON kindOf="standard">kakhajz~ðaʔan</PHON>
             <TRANSL xml:lang="zho">從前</TRANSL>
             <TRANSL xml:lang="eng">before</TRANSL>
-            <M id="SaiNr-Molaw_S_1_W0_M0_0">
+            <M id="SaiNr-Molaw_S_1_W0M1">
                 <FORM kindOf="original">kakhayza'an</FORM>
                 <PHON kindOf="original">kakhajz~ðaʔan</PHON>
                 <FORM kindOf="standard">kakhayza'an</FORM>
@@ -166,7 +166,7 @@
             <PHON kindOf="standard">koʃaʔən</PHON>
             <TRANSL xml:lang="zho">FIL</TRANSL>
             <TRANSL xml:lang="eng">FIL</TRANSL>
-            <M id="SaiNr-Molaw_S_1_W1_M0_0">
+            <M id="SaiNr-Molaw_S_1_W1M1">
                 <FORM kindOf="original">koSa'en</FORM>
                 <PHON kindOf="original">koʃaʔən</PHON>
                 <FORM kindOf="standard">koSa'en</FORM>
@@ -182,7 +182,7 @@
             <PHON kindOf="standard">raj</PHON>
             <TRANSL xml:lang="zho">處格</TRANSL>
             <TRANSL xml:lang="eng">LOC</TRANSL>
-            <M id="SaiNr-Molaw_S_1_W2_M0_0">
+            <M id="SaiNr-Molaw_S_1_W2M1">
                 <FORM kindOf="original">ray</FORM>
                 <PHON kindOf="original">raj</PHON>
                 <FORM kindOf="standard">ray</FORM>
@@ -198,7 +198,7 @@
             <PHON kindOf="standard">kawaʃ</PHON>
             <TRANSL xml:lang="zho">天空</TRANSL>
             <TRANSL xml:lang="eng">sky</TRANSL>
-            <M id="SaiNr-Molaw_S_1_W3_M0_0">
+            <M id="SaiNr-Molaw_S_1_W3M1">
                 <FORM kindOf="original">kawaS</FORM>
                 <PHON kindOf="original">kawaʃ</PHON>
                 <FORM kindOf="standard">kawaS</FORM>
@@ -214,7 +214,7 @@
             <PHON kindOf="standard">kamaʃal</PHON>
             <TRANSL xml:lang="zho">下面</TRANSL>
             <TRANSL xml:lang="eng">below</TRANSL>
-            <M id="SaiNr-Molaw_S_1_W4_M0_0">
+            <M id="SaiNr-Molaw_S_1_W4M1">
                 <FORM kindOf="original">kamaSal</FORM>
                 <PHON kindOf="original">kamaʃal</PHON>
                 <FORM kindOf="standard">kamaSal</FORM>
@@ -230,7 +230,7 @@
             <PHON kindOf="standard">ʔokaʔ</PHON>
             <TRANSL xml:lang="zho">沒有</TRANSL>
             <TRANSL xml:lang="eng">NEG</TRANSL>
-            <M id="SaiNr-Molaw_S_1_W5_M0_0">
+            <M id="SaiNr-Molaw_S_1_W5M1">
                 <FORM kindOf="original">'oka'</FORM>
                 <PHON kindOf="original">ʔokaʔ</PHON>
                 <FORM kindOf="standard">'oka'</FORM>
@@ -246,7 +246,7 @@
             <PHON kindOf="standard">ka</PHON>
             <TRANSL xml:lang="zho">主格</TRANSL>
             <TRANSL xml:lang="eng">NOM</TRANSL>
-            <M id="SaiNr-Molaw_S_1_W6_M0_0">
+            <M id="SaiNr-Molaw_S_1_W6M1">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
@@ -262,7 +262,7 @@
             <PHON kindOf="standard">mæʔijæh</PHON>
             <TRANSL xml:lang="zho">人</TRANSL>
             <TRANSL xml:lang="eng">person</TRANSL>
-            <M id="SaiNr-Molaw_S_1_W7_M0_0">
+            <M id="SaiNr-Molaw_S_1_W7M1">
                 <FORM kindOf="original">mae'iyaeh</FORM>
                 <PHON kindOf="original">mæʔijæh</PHON>
                 <FORM kindOf="standard">mae'iyaeh</FORM>
@@ -286,7 +286,7 @@
             <PHON kindOf="standard">hiz~ða</PHON>
             <TRANSL xml:lang="zho">FIL</TRANSL>
             <TRANSL xml:lang="eng">FIL</TRANSL>
-            <M id="SaiNr-Molaw_S_2_W0_M0_0">
+            <M id="SaiNr-Molaw_S_2_W0M1">
                 <FORM kindOf="original">hiza</FORM>
                 <PHON kindOf="original">hiz~ða</PHON>
                 <FORM kindOf="standard">hiza</FORM>
@@ -302,7 +302,7 @@
             <PHON kindOf="standard">hajz~ðaʔ</PHON>
             <TRANSL xml:lang="zho">存在</TRANSL>
             <TRANSL xml:lang="eng">EXIST</TRANSL>
-            <M id="SaiNr-Molaw_S_2_W1_M0_0">
+            <M id="SaiNr-Molaw_S_2_W1M1">
                 <FORM kindOf="original">hayza'</FORM>
                 <PHON kindOf="original">hajz~ðaʔ</PHON>
                 <FORM kindOf="standard">hayza'</FORM>
@@ -318,7 +318,7 @@
             <PHON kindOf="standard">ila</PHON>
             <TRANSL xml:lang="zho">完成</TRANSL>
             <TRANSL xml:lang="eng">PFV</TRANSL>
-            <M id="SaiNr-Molaw_S_2_W2_M0_0">
+            <M id="SaiNr-Molaw_S_2_W2M1">
                 <FORM kindOf="original">ila</FORM>
                 <PHON kindOf="original">ila</PHON>
                 <FORM kindOf="standard">ila</FORM>
@@ -334,7 +334,7 @@
             <PHON kindOf="standard">koʃaʔən</PHON>
             <TRANSL xml:lang="zho">FIL</TRANSL>
             <TRANSL xml:lang="eng">FIL</TRANSL>
-            <M id="SaiNr-Molaw_S_2_W3_M0_0">
+            <M id="SaiNr-Molaw_S_2_W3M1">
                 <FORM kindOf="original">koSa'en</FORM>
                 <PHON kindOf="original">koʃaʔən</PHON>
                 <FORM kindOf="standard">koSa'en</FORM>
@@ -350,7 +350,7 @@
             <PHON kindOf="standard">ka</PHON>
             <TRANSL xml:lang="zho">主格</TRANSL>
             <TRANSL xml:lang="eng">NOM</TRANSL>
-            <M id="SaiNr-Molaw_S_2_W4_M0_0">
+            <M id="SaiNr-Molaw_S_2_W4M1">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
@@ -366,7 +366,7 @@
             <PHON kindOf="standard">ʃaiʃijat</PHON>
             <TRANSL xml:lang="zho">賽夏人</TRANSL>
             <TRANSL xml:lang="eng">PN</TRANSL>
-            <M id="SaiNr-Molaw_S_2_W5_M0_0">
+            <M id="SaiNr-Molaw_S_2_W5M1">
                 <FORM kindOf="original">SaiSiyat</FORM>
                 <PHON kindOf="original">ʃaiʃijat</PHON>
                 <FORM kindOf="standard">SaiSiyat</FORM>
@@ -390,7 +390,7 @@
             <PHON kindOf="standard">ʃaiʃijat</PHON>
             <TRANSL xml:lang="zho">賽夏人</TRANSL>
             <TRANSL xml:lang="eng">PN</TRANSL>
-            <M id="SaiNr-Molaw_S_3_W0_M0_0">
+            <M id="SaiNr-Molaw_S_3_W0M1">
                 <FORM kindOf="original">SaiSiyat</FORM>
                 <PHON kindOf="original">ʃaiʃijat</PHON>
                 <FORM kindOf="standard">SaiSiyat</FORM>
@@ -406,7 +406,7 @@
             <PHON kindOf="standard">hajz~ðaʔ</PHON>
             <TRANSL xml:lang="zho">存在</TRANSL>
             <TRANSL xml:lang="eng">EXIST</TRANSL>
-            <M id="SaiNr-Molaw_S_3_W1_M0_0">
+            <M id="SaiNr-Molaw_S_3_W1M1">
                 <FORM kindOf="original">hayza'</FORM>
                 <PHON kindOf="original">hajz~ðaʔ</PHON>
                 <FORM kindOf="standard">hayza'</FORM>
@@ -422,7 +422,7 @@
             <PHON kindOf="standard">ila</PHON>
             <TRANSL xml:lang="zho">完成</TRANSL>
             <TRANSL xml:lang="eng">PFV</TRANSL>
-            <M id="SaiNr-Molaw_S_3_W2_M0_0">
+            <M id="SaiNr-Molaw_S_3_W2M1">
                 <FORM kindOf="original">ila</FORM>
                 <PHON kindOf="original">ila</PHON>
                 <FORM kindOf="standard">ila</FORM>
@@ -438,7 +438,7 @@
             <PHON kindOf="standard">las~θia</PHON>
             <TRANSL xml:lang="zho">3PL.主格</TRANSL>
             <TRANSL xml:lang="eng">3PL.NOM</TRANSL>
-            <M id="SaiNr-Molaw_S_3_W3_M0_0">
+            <M id="SaiNr-Molaw_S_3_W3M1">
                 <FORM kindOf="original">lasia</FORM>
                 <PHON kindOf="original">las~θia</PHON>
                 <FORM kindOf="standard">lasia</FORM>
@@ -454,7 +454,7 @@
             <PHON kindOf="standard">ʃo</PHON>
             <TRANSL xml:lang="zho">條件詞</TRANSL>
             <TRANSL xml:lang="eng">COND</TRANSL>
-            <M id="SaiNr-Molaw_S_3_W4_M0_0">
+            <M id="SaiNr-Molaw_S_3_W4M1">
                 <FORM kindOf="original">So</FORM>
                 <PHON kindOf="original">ʃo</PHON>
                 <FORM kindOf="standard">So</FORM>
@@ -478,7 +478,7 @@
             <PHON kindOf="standard">ʔiʔijæh</PHON>
             <TRANSL xml:lang="zho">活</TRANSL>
             <TRANSL xml:lang="eng">live</TRANSL>
-            <M id="SaiNr-Molaw_S_4_W0_M0_0">
+            <M id="SaiNr-Molaw_S_4_W0M1">
                 <FORM kindOf="original">'i'iyaeh</FORM>
                 <PHON kindOf="original">ʔiʔijæh</PHON>
                 <FORM kindOf="standard">'i'iyaeh</FORM>
@@ -494,7 +494,7 @@
             <PHON kindOf="standard">o</PHON>
             <TRANSL xml:lang="zho">感嘆</TRANSL>
             <TRANSL xml:lang="eng">INT</TRANSL>
-            <M id="SaiNr-Molaw_S_4_W1_M0_0">
+            <M id="SaiNr-Molaw_S_4_W1M1">
                 <FORM kindOf="original">o</FORM>
                 <PHON kindOf="original">o</PHON>
                 <FORM kindOf="standard">o</FORM>
@@ -510,7 +510,7 @@
             <PHON kindOf="standard">tatiniʔ</PHON>
             <TRANSL xml:lang="zho">變老</TRANSL>
             <TRANSL xml:lang="eng">grow.old</TRANSL>
-            <M id="SaiNr-Molaw_S_4_W2_M0_0">
+            <M id="SaiNr-Molaw_S_4_W2M1">
                 <FORM kindOf="original">tatini'</FORM>
                 <PHON kindOf="original">tatiniʔ</PHON>
                 <FORM kindOf="standard">tatini'</FORM>
@@ -526,7 +526,7 @@
             <PHON kindOf="standard">ila</PHON>
             <TRANSL xml:lang="zho">完成</TRANSL>
             <TRANSL xml:lang="eng">PFV</TRANSL>
-            <M id="SaiNr-Molaw_S_4_W3_M0_0">
+            <M id="SaiNr-Molaw_S_4_W3M1">
                 <FORM kindOf="original">ila</FORM>
                 <PHON kindOf="original">ila</PHON>
                 <FORM kindOf="standard">ila</FORM>
@@ -542,7 +542,7 @@
             <PHON kindOf="standard">nanaw</PHON>
             <TRANSL xml:lang="zho">還</TRANSL>
             <TRANSL xml:lang="eng">still</TRANSL>
-            <M id="SaiNr-Molaw_S_4_W4_M0_0">
+            <M id="SaiNr-Molaw_S_4_W4M1">
                 <FORM kindOf="original">nanaw</FORM>
                 <PHON kindOf="original">nanaw</PHON>
                 <FORM kindOf="standard">nanaw</FORM>
@@ -558,7 +558,7 @@
             <PHON kindOf="standard">koʃa</PHON>
             <TRANSL xml:lang="zho">說.主焦</TRANSL>
             <TRANSL xml:lang="eng">say.AF</TRANSL>
-            <M id="SaiNr-Molaw_S_4_W5_M0_0">
+            <M id="SaiNr-Molaw_S_4_W5M1">
                 <FORM kindOf="original">koSa</FORM>
                 <PHON kindOf="original">koʃa</PHON>
                 <FORM kindOf="standard">koSa</FORM>
@@ -574,7 +574,7 @@
             <PHON kindOf="standard">ʔam</PHON>
             <TRANSL xml:lang="zho">未來</TRANSL>
             <TRANSL xml:lang="eng">FUT</TRANSL>
-            <M id="SaiNr-Molaw_S_4_W6_M0_0">
+            <M id="SaiNr-Molaw_S_4_W6M1">
                 <FORM kindOf="original">'am</FORM>
                 <PHON kindOf="original">ʔam</PHON>
                 <FORM kindOf="standard">'am</FORM>
@@ -590,7 +590,7 @@
             <PHON kindOf="standard">mas~θaj</PHON>
             <TRANSL xml:lang="zho">死.主焦</TRANSL>
             <TRANSL xml:lang="eng">die.AF</TRANSL>
-            <M id="SaiNr-Molaw_S_4_W7_M0_0">
+            <M id="SaiNr-Molaw_S_4_W7M1">
                 <FORM kindOf="original">masay</FORM>
                 <PHON kindOf="original">mas~θaj</PHON>
                 <FORM kindOf="standard">masay</FORM>
@@ -606,7 +606,7 @@
             <PHON kindOf="standard">ila</PHON>
             <TRANSL xml:lang="zho">完成</TRANSL>
             <TRANSL xml:lang="eng">PFV</TRANSL>
-            <M id="SaiNr-Molaw_S_4_W8_M0_0">
+            <M id="SaiNr-Molaw_S_4_W8M1">
                 <FORM kindOf="original">ila</FORM>
                 <PHON kindOf="original">ila</PHON>
                 <FORM kindOf="standard">ila</FORM>
@@ -622,7 +622,7 @@
             <PHON kindOf="standard">m-olaw</PHON>
             <TRANSL xml:lang="zho">主焦-蛻皮</TRANSL>
             <TRANSL xml:lang="eng">AF-molt</TRANSL>
-            <M id="SaiNr-Molaw_S_4_W9_M0_0">
+            <M id="SaiNr-Molaw_S_4_W9M1">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
@@ -630,7 +630,7 @@
                 <TRANSL xml:lang="eng">AF</TRANSL>
                 <TRANSL xml:lang="zho">主焦</TRANSL>
             </M>
-            <M id="SaiNr-Molaw_S_4_W9_M1_0">
+            <M id="SaiNr-Molaw_S_4_W9M2">
                 <FORM kindOf="original">olaw</FORM>
                 <PHON kindOf="original">olaw</PHON>
                 <FORM kindOf="standard">olaw</FORM>
@@ -646,7 +646,7 @@
             <PHON kindOf="standard">ila</PHON>
             <TRANSL xml:lang="zho">完成</TRANSL>
             <TRANSL xml:lang="eng">PFV</TRANSL>
-            <M id="SaiNr-Molaw_S_4_W10_M0_0">
+            <M id="SaiNr-Molaw_S_4_W10M1">
                 <FORM kindOf="original">ila</FORM>
                 <PHON kindOf="original">ila</PHON>
                 <FORM kindOf="standard">ila</FORM>
@@ -662,7 +662,7 @@
             <PHON kindOf="standard">næhæn</PHON>
             <TRANSL xml:lang="zho">又</TRANSL>
             <TRANSL xml:lang="eng">still</TRANSL>
-            <M id="SaiNr-Molaw_S_4_W11_M0_0">
+            <M id="SaiNr-Molaw_S_4_W11M1">
                 <FORM kindOf="original">naehaen</FORM>
                 <PHON kindOf="original">næhæn</PHON>
                 <FORM kindOf="standard">naehaen</FORM>
@@ -678,7 +678,7 @@
             <PHON kindOf="standard">m-olaw</PHON>
             <TRANSL xml:lang="zho">主焦-蛻皮</TRANSL>
             <TRANSL xml:lang="eng">AF-molt</TRANSL>
-            <M id="SaiNr-Molaw_S_4_W12_M0_0">
+            <M id="SaiNr-Molaw_S_4_W12M1">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
@@ -686,7 +686,7 @@
                 <TRANSL xml:lang="eng">AF</TRANSL>
                 <TRANSL xml:lang="zho">主焦</TRANSL>
             </M>
-            <M id="SaiNr-Molaw_S_4_W12_M1_0">
+            <M id="SaiNr-Molaw_S_4_W12M2">
                 <FORM kindOf="original">olaw</FORM>
                 <PHON kindOf="original">olaw</PHON>
                 <FORM kindOf="standard">olaw</FORM>
@@ -702,7 +702,7 @@
             <PHON kindOf="standard">ila</PHON>
             <TRANSL xml:lang="zho">完成</TRANSL>
             <TRANSL xml:lang="eng">PFV</TRANSL>
-            <M id="SaiNr-Molaw_S_4_W13_M0_0">
+            <M id="SaiNr-Molaw_S_4_W13M1">
                 <FORM kindOf="original">ila</FORM>
                 <PHON kindOf="original">ila</PHON>
                 <FORM kindOf="standard">ila</FORM>
@@ -718,7 +718,7 @@
             <PHON kindOf="standard">s~θo</PHON>
             <TRANSL xml:lang="zho">條件詞</TRANSL>
             <TRANSL xml:lang="eng">COND</TRANSL>
-            <M id="SaiNr-Molaw_S_4_W14_M0_0">
+            <M id="SaiNr-Molaw_S_4_W14M1">
                 <FORM kindOf="original">so</FORM>
                 <PHON kindOf="original">s~θo</PHON>
                 <FORM kindOf="standard">so</FORM>
@@ -734,7 +734,7 @@
             <PHON kindOf="standard">m-olaw</PHON>
             <TRANSL xml:lang="zho">主焦-蛻皮</TRANSL>
             <TRANSL xml:lang="eng">AF-molt</TRANSL>
-            <M id="SaiNr-Molaw_S_4_W15_M0_0">
+            <M id="SaiNr-Molaw_S_4_W15M1">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
@@ -742,7 +742,7 @@
                 <TRANSL xml:lang="eng">AF</TRANSL>
                 <TRANSL xml:lang="zho">主焦</TRANSL>
             </M>
-            <M id="SaiNr-Molaw_S_4_W15_M1_0">
+            <M id="SaiNr-Molaw_S_4_W15M2">
                 <FORM kindOf="original">olaw</FORM>
                 <PHON kindOf="original">olaw</PHON>
                 <FORM kindOf="standard">olaw</FORM>
@@ -752,25 +752,25 @@
             </M>
         </W>
         <W id="SaiNr-Molaw_S_4_W16">
-            <FORM kindOf="original">kita'en</FORM>
-            <PHON kindOf="original">kitaʔən</PHON>
-            <FORM kindOf="standard">kita'en</FORM>
-            <PHON kindOf="standard">kitaʔən</PHON>
+            <FORM kindOf="original">kita'-en</FORM>
+            <PHON kindOf="original">kitaʔ-ən</PHON>
+            <FORM kindOf="standard">kita'-en</FORM>
+            <PHON kindOf="standard">kitaʔ-ən</PHON>
             <TRANSL xml:lang="zho">看到-受焦</TRANSL>
             <TRANSL xml:lang="eng">see-PF</TRANSL>
-            <M id="SaiNr-Molaw_S_4_W16_M0_0">
-                <FORM kindOf="original">kita'en</FORM>
-                <PHON kindOf="original">kitaʔən</PHON>
-                <FORM kindOf="standard">kita'en</FORM>
-                <PHON kindOf="standard">kitaʔən</PHON>
+            <M id="SaiNr-Molaw_S_4_W16M1">
+                <FORM kindOf="original">kita'</FORM>
+                <PHON kindOf="original">kitaʔ</PHON>
+                <FORM kindOf="standard">kita'</FORM>
+                <PHON kindOf="standard">kitaʔ</PHON>
                 <TRANSL xml:lang="eng">see</TRANSL>
                 <TRANSL xml:lang="zho">看到</TRANSL>
             </M>
-            <M id="SaiNr-Molaw_S_4_W16_M1_0">
-                <FORM kindOf="original"/>
-                <PHON kindOf="original"/>
-                <FORM kindOf="standard"/>
-                <PHON kindOf="standard"/>
+            <M id="SaiNr-Molaw_S_4_W16M2">
+                <FORM kindOf="original">en</FORM>
+                <PHON kindOf="original">ən</PHON>
+                <FORM kindOf="standard">en</FORM>
+                <PHON kindOf="standard">ən</PHON>
                 <TRANSL xml:lang="eng">PF</TRANSL>
                 <TRANSL xml:lang="zho">受焦</TRANSL>
             </M>
@@ -782,7 +782,7 @@
             <PHON kindOf="standard">maʔ</PHON>
             <TRANSL xml:lang="zho">也</TRANSL>
             <TRANSL xml:lang="eng">also</TRANSL>
-            <M id="SaiNr-Molaw_S_4_W17_M0_0">
+            <M id="SaiNr-Molaw_S_4_W17M1">
                 <FORM kindOf="original">ma'</FORM>
                 <PHON kindOf="original">maʔ</PHON>
                 <FORM kindOf="standard">ma'</FORM>
@@ -798,7 +798,7 @@
             <PHON kindOf="standard">ʔalʔalak</PHON>
             <TRANSL xml:lang="zho">年輕</TRANSL>
             <TRANSL xml:lang="eng">young</TRANSL>
-            <M id="SaiNr-Molaw_S_4_W18_M0_0">
+            <M id="SaiNr-Molaw_S_4_W18M1">
                 <FORM kindOf="original">'al'alak</FORM>
                 <PHON kindOf="original">ʔalʔalak</PHON>
                 <FORM kindOf="standard">'al'alak</FORM>
@@ -814,7 +814,7 @@
             <PHON kindOf="standard">ila</PHON>
             <TRANSL xml:lang="zho">完成</TRANSL>
             <TRANSL xml:lang="eng">PFV</TRANSL>
-            <M id="SaiNr-Molaw_S_4_W19_M0_0">
+            <M id="SaiNr-Molaw_S_4_W19M1">
                 <FORM kindOf="original">ila</FORM>
                 <PHON kindOf="original">ila</PHON>
                 <FORM kindOf="standard">ila</FORM>
@@ -830,7 +830,7 @@
             <PHON kindOf="standard">næhæn</PHON>
             <TRANSL xml:lang="zho">又</TRANSL>
             <TRANSL xml:lang="eng">again</TRANSL>
-            <M id="SaiNr-Molaw_S_4_W20_M0_0">
+            <M id="SaiNr-Molaw_S_4_W20M1">
                 <FORM kindOf="original">naehaen</FORM>
                 <PHON kindOf="original">næhæn</PHON>
                 <FORM kindOf="standard">naehaen</FORM>
@@ -854,7 +854,7 @@
             <PHON kindOf="standard">ka</PHON>
             <TRANSL xml:lang="zho">FIL</TRANSL>
             <TRANSL xml:lang="eng">FIL</TRANSL>
-            <M id="SaiNr-Molaw_S_5_W0_M0_0">
+            <M id="SaiNr-Molaw_S_5_W0M1">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
@@ -870,7 +870,7 @@
             <PHON kindOf="standard">koʃaʔən</PHON>
             <TRANSL xml:lang="zho">FIL</TRANSL>
             <TRANSL xml:lang="eng">FIL</TRANSL>
-            <M id="SaiNr-Molaw_S_5_W1_M0_0">
+            <M id="SaiNr-Molaw_S_5_W1M1">
                 <FORM kindOf="original">koSa'en</FORM>
                 <PHON kindOf="original">koʃaʔən</PHON>
                 <FORM kindOf="standard">koSa'en</FORM>
@@ -886,7 +886,7 @@
             <PHON kindOf="standard">m</PHON>
             <TRANSL xml:lang="zho">FS</TRANSL>
             <TRANSL xml:lang="eng">FS</TRANSL>
-            <M id="SaiNr-Molaw_S_5_W2_M0_0">
+            <M id="SaiNr-Molaw_S_5_W2M1">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
@@ -902,7 +902,7 @@
             <PHON kindOf="standard">a</PHON>
             <TRANSL xml:lang="zho">FS</TRANSL>
             <TRANSL xml:lang="eng">FS</TRANSL>
-            <M id="SaiNr-Molaw_S_5_W3_M0_0">
+            <M id="SaiNr-Molaw_S_5_W3M1">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
@@ -918,7 +918,7 @@
             <PHON kindOf="standard">kakhajz~ðaʔan</PHON>
             <TRANSL xml:lang="zho">以前</TRANSL>
             <TRANSL xml:lang="eng">before</TRANSL>
-            <M id="SaiNr-Molaw_S_5_W4_M0_0">
+            <M id="SaiNr-Molaw_S_5_W4M1">
                 <FORM kindOf="original">kakhayza'an</FORM>
                 <PHON kindOf="original">kakhajz~ðaʔan</PHON>
                 <FORM kindOf="standard">kakhayza'an</FORM>
@@ -934,7 +934,7 @@
             <PHON kindOf="standard">nakʔis~θaa</PHON>
             <TRANSL xml:lang="zho">像這樣</TRANSL>
             <TRANSL xml:lang="eng">like.that</TRANSL>
-            <M id="SaiNr-Molaw_S_5_W5_M0_0">
+            <M id="SaiNr-Molaw_S_5_W5M1">
                 <FORM kindOf="original">nak'isaa</FORM>
                 <PHON kindOf="original">nakʔis~θaa</PHON>
                 <FORM kindOf="standard">nak'isaa</FORM>
@@ -950,7 +950,7 @@
             <PHON kindOf="standard">kapnaβih</PHON>
             <TRANSL xml:lang="zho">說.主焦</TRANSL>
             <TRANSL xml:lang="eng">say.AF</TRANSL>
-            <M id="SaiNr-Molaw_S_5_W6_M0_0">
+            <M id="SaiNr-Molaw_S_5_W6M1">
                 <FORM kindOf="original">kapnabih</FORM>
                 <PHON kindOf="original">kapnaβih</PHON>
                 <FORM kindOf="standard">kapnabih</FORM>
@@ -974,7 +974,7 @@
             <PHON kindOf="standard">ʃo</PHON>
             <TRANSL xml:lang="zho">條件詞</TRANSL>
             <TRANSL xml:lang="eng">COND</TRANSL>
-            <M id="SaiNr-Molaw_S_6_W0_M0_0">
+            <M id="SaiNr-Molaw_S_6_W0M1">
                 <FORM kindOf="original">So</FORM>
                 <PHON kindOf="original">ʃo</PHON>
                 <FORM kindOf="standard">So</FORM>
@@ -990,7 +990,7 @@
             <PHON kindOf="standard">hæβææn</PHON>
             <TRANSL xml:lang="zho">多</TRANSL>
             <TRANSL xml:lang="eng">many</TRANSL>
-            <M id="SaiNr-Molaw_S_6_W1_M0_0">
+            <M id="SaiNr-Molaw_S_6_W1M1">
                 <FORM kindOf="original">haebaeaen</FORM>
                 <PHON kindOf="original">hæβææn</PHON>
                 <FORM kindOf="standard">haebaeaen</FORM>
@@ -1006,7 +1006,7 @@
             <PHON kindOf="standard">ila</PHON>
             <TRANSL xml:lang="zho">完成</TRANSL>
             <TRANSL xml:lang="eng">PFV</TRANSL>
-            <M id="SaiNr-Molaw_S_6_W2_M0_0">
+            <M id="SaiNr-Molaw_S_6_W2M1">
                 <FORM kindOf="original">ila</FORM>
                 <PHON kindOf="original">ila</PHON>
                 <FORM kindOf="standard">ila</FORM>
@@ -1022,7 +1022,7 @@
             <PHON kindOf="standard">nanaw</PHON>
             <TRANSL xml:lang="zho">還</TRANSL>
             <TRANSL xml:lang="eng">still</TRANSL>
-            <M id="SaiNr-Molaw_S_6_W3_M0_0">
+            <M id="SaiNr-Molaw_S_6_W3M1">
                 <FORM kindOf="original">nanaw</FORM>
                 <PHON kindOf="original">nanaw</PHON>
                 <FORM kindOf="standard">nanaw</FORM>
@@ -1038,7 +1038,7 @@
             <PHON kindOf="standard">maʔ</PHON>
             <TRANSL xml:lang="zho">也</TRANSL>
             <TRANSL xml:lang="eng">also</TRANSL>
-            <M id="SaiNr-Molaw_S_6_W4_M0_0">
+            <M id="SaiNr-Molaw_S_6_W4M1">
                 <FORM kindOf="original">ma'</FORM>
                 <PHON kindOf="original">maʔ</PHON>
                 <FORM kindOf="standard">ma'</FORM>
@@ -1054,7 +1054,7 @@
             <PHON kindOf="standard">hiŋhæʔ</PHON>
             <TRANSL xml:lang="zho">相同</TRANSL>
             <TRANSL xml:lang="eng">same</TRANSL>
-            <M id="SaiNr-Molaw_S_6_W5_M0_0">
+            <M id="SaiNr-Molaw_S_6_W5M1">
                 <FORM kindOf="original">hinghae'</FORM>
                 <PHON kindOf="original">hiŋhæʔ</PHON>
                 <FORM kindOf="standard">hinghae'</FORM>
@@ -1070,7 +1070,7 @@
             <PHON kindOf="standard">nakʔis~θaa</PHON>
             <TRANSL xml:lang="zho">像那樣</TRANSL>
             <TRANSL xml:lang="eng">like.that</TRANSL>
-            <M id="SaiNr-Molaw_S_6_W6_M0_0">
+            <M id="SaiNr-Molaw_S_6_W6M1">
                 <FORM kindOf="original">nak'isaa</FORM>
                 <PHON kindOf="original">nakʔis~θaa</PHON>
                 <FORM kindOf="standard">nak'isaa</FORM>
@@ -1086,7 +1086,7 @@
             <PHON kindOf="standard">o</PHON>
             <TRANSL xml:lang="zho">感嘆</TRANSL>
             <TRANSL xml:lang="eng">INT</TRANSL>
-            <M id="SaiNr-Molaw_S_6_W7_M0_0">
+            <M id="SaiNr-Molaw_S_6_W7M1">
                 <FORM kindOf="original">o</FORM>
                 <PHON kindOf="original">o</PHON>
                 <FORM kindOf="standard">o</FORM>
@@ -1102,7 +1102,7 @@
             <PHON kindOf="standard">hiz~ða</PHON>
             <TRANSL xml:lang="zho">那個</TRANSL>
             <TRANSL xml:lang="eng">that</TRANSL>
-            <M id="SaiNr-Molaw_S_6_W8_M0_0">
+            <M id="SaiNr-Molaw_S_6_W8M1">
                 <FORM kindOf="original">hiza</FORM>
                 <PHON kindOf="original">hiz~ða</PHON>
                 <FORM kindOf="standard">hiza</FORM>
@@ -1118,7 +1118,7 @@
             <PHON kindOf="standard">ʔæhæʔ</PHON>
             <TRANSL xml:lang="zho">一</TRANSL>
             <TRANSL xml:lang="eng">one</TRANSL>
-            <M id="SaiNr-Molaw_S_6_W9_M0_0">
+            <M id="SaiNr-Molaw_S_6_W9M1">
                 <FORM kindOf="original">'aehae'</FORM>
                 <PHON kindOf="original">ʔæhæʔ</PHON>
                 <FORM kindOf="standard">'aehae'</FORM>
@@ -1134,7 +1134,7 @@
             <PHON kindOf="standard">ha</PHON>
             <TRANSL xml:lang="zho">FS</TRANSL>
             <TRANSL xml:lang="eng">FS</TRANSL>
-            <M id="SaiNr-Molaw_S_6_W10_M0_0">
+            <M id="SaiNr-Molaw_S_6_W10M1">
                 <FORM kindOf="original">ha</FORM>
                 <PHON kindOf="original">ha</PHON>
                 <FORM kindOf="standard">ha</FORM>
@@ -1150,7 +1150,7 @@
             <PHON kindOf="standard">hahila</PHON>
             <TRANSL xml:lang="zho">日</TRANSL>
             <TRANSL xml:lang="eng">day</TRANSL>
-            <M id="SaiNr-Molaw_S_6_W11_M0_0">
+            <M id="SaiNr-Molaw_S_6_W11M1">
                 <FORM kindOf="original">hahila</FORM>
                 <PHON kindOf="original">hahila</PHON>
                 <FORM kindOf="standard">hahila</FORM>
@@ -1166,7 +1166,7 @@
             <PHON kindOf="standard">ʔæhæʔ</PHON>
             <TRANSL xml:lang="zho">一</TRANSL>
             <TRANSL xml:lang="eng">one</TRANSL>
-            <M id="SaiNr-Molaw_S_6_W12_M0_0">
+            <M id="SaiNr-Molaw_S_6_W12M1">
                 <FORM kindOf="original">'aehae'</FORM>
                 <PHON kindOf="original">ʔæhæʔ</PHON>
                 <FORM kindOf="standard">'aehae'</FORM>
@@ -1182,7 +1182,7 @@
             <PHON kindOf="standard">hahila</PHON>
             <TRANSL xml:lang="zho">日</TRANSL>
             <TRANSL xml:lang="eng">day</TRANSL>
-            <M id="SaiNr-Molaw_S_6_W13_M0_0">
+            <M id="SaiNr-Molaw_S_6_W13M1">
                 <FORM kindOf="original">hahila</FORM>
                 <PHON kindOf="original">hahila</PHON>
                 <FORM kindOf="standard">hahila</FORM>
@@ -1198,7 +1198,7 @@
             <PHON kindOf="standard">hon</PHON>
             <TRANSL xml:lang="zho">DM</TRANSL>
             <TRANSL xml:lang="eng">DM</TRANSL>
-            <M id="SaiNr-Molaw_S_6_W14_M0_0">
+            <M id="SaiNr-Molaw_S_6_W14M1">
                 <FORM kindOf="original">hoN</FORM>
                 <PHON kindOf="original">hon</PHON>
                 <FORM kindOf="standard">hoN</FORM>
@@ -1214,7 +1214,7 @@
             <PHON kindOf="standard">tatiniʔ</PHON>
             <TRANSL xml:lang="zho">老年</TRANSL>
             <TRANSL xml:lang="eng">old.man</TRANSL>
-            <M id="SaiNr-Molaw_S_6_W15_M0_0">
+            <M id="SaiNr-Molaw_S_6_W15M1">
                 <FORM kindOf="original">tatini'</FORM>
                 <PHON kindOf="original">tatiniʔ</PHON>
                 <FORM kindOf="standard">tatini'</FORM>
@@ -1230,7 +1230,7 @@
             <PHON kindOf="standard">ʔam</PHON>
             <TRANSL xml:lang="zho">未來</TRANSL>
             <TRANSL xml:lang="eng">FUT</TRANSL>
-            <M id="SaiNr-Molaw_S_6_W16_M0_0">
+            <M id="SaiNr-Molaw_S_6_W16M1">
                 <FORM kindOf="original">'am</FORM>
                 <PHON kindOf="original">ʔam</PHON>
                 <FORM kindOf="standard">'am</FORM>
@@ -1246,7 +1246,7 @@
             <PHON kindOf="standard">m-olaw</PHON>
             <TRANSL xml:lang="zho">主焦.蛻皮</TRANSL>
             <TRANSL xml:lang="eng">AF-molt</TRANSL>
-            <M id="SaiNr-Molaw_S_6_W17_M0_0">
+            <M id="SaiNr-Molaw_S_6_W17M1">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
@@ -1254,7 +1254,7 @@
                 <TRANSL xml:lang="eng">AF</TRANSL>
                 <TRANSL xml:lang="zho">主焦.蛻皮</TRANSL>
             </M>
-            <M id="SaiNr-Molaw_S_6_W17_M1_0">
+            <M id="SaiNr-Molaw_S_6_W17M2">
                 <FORM kindOf="original">olaw</FORM>
                 <PHON kindOf="original">olaw</PHON>
                 <FORM kindOf="standard">olaw</FORM>
@@ -1270,7 +1270,7 @@
             <PHON kindOf="standard">ila</PHON>
             <TRANSL xml:lang="zho">完成</TRANSL>
             <TRANSL xml:lang="eng">PFV</TRANSL>
-            <M id="SaiNr-Molaw_S_6_W18_M0_0">
+            <M id="SaiNr-Molaw_S_6_W18M1">
                 <FORM kindOf="original">ila</FORM>
                 <PHON kindOf="original">ila</PHON>
                 <FORM kindOf="standard">ila</FORM>
@@ -1294,7 +1294,7 @@
             <PHON kindOf="standard">koʃaʔən</PHON>
             <TRANSL xml:lang="zho">DM</TRANSL>
             <TRANSL xml:lang="eng">DM</TRANSL>
-            <M id="SaiNr-Molaw_S_7_W0_M0_0">
+            <M id="SaiNr-Molaw_S_7_W0M1">
                 <FORM kindOf="original">koSa'en</FORM>
                 <PHON kindOf="original">koʃaʔən</PHON>
                 <FORM kindOf="standard">koSa'en</FORM>
@@ -1310,7 +1310,7 @@
             <PHON kindOf="standard">m-olaw</PHON>
             <TRANSL xml:lang="zho">主焦-蛻皮</TRANSL>
             <TRANSL xml:lang="eng">AF-molt</TRANSL>
-            <M id="SaiNr-Molaw_S_7_W1_M0_0">
+            <M id="SaiNr-Molaw_S_7_W1M1">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
@@ -1318,7 +1318,7 @@
                 <TRANSL xml:lang="eng">AF</TRANSL>
                 <TRANSL xml:lang="zho">主焦</TRANSL>
             </M>
-            <M id="SaiNr-Molaw_S_7_W1_M1_0">
+            <M id="SaiNr-Molaw_S_7_W1M2">
                 <FORM kindOf="original">olaw</FORM>
                 <PHON kindOf="original">olaw</PHON>
                 <FORM kindOf="standard">olaw</FORM>
@@ -1334,7 +1334,7 @@
             <PHON kindOf="standard">ʔis~θaa</PHON>
             <TRANSL xml:lang="zho">FIL</TRANSL>
             <TRANSL xml:lang="eng">FIL</TRANSL>
-            <M id="SaiNr-Molaw_S_7_W2_M0_0">
+            <M id="SaiNr-Molaw_S_7_W2M1">
                 <FORM kindOf="original">'isaa</FORM>
                 <PHON kindOf="original">ʔis~θaa</PHON>
                 <FORM kindOf="standard">'isaa</FORM>
@@ -1350,7 +1350,7 @@
             <PHON kindOf="standard">hœpaj</PHON>
             <TRANSL xml:lang="zho">累.主焦</TRANSL>
             <TRANSL xml:lang="eng">tiring.AF</TRANSL>
-            <M id="SaiNr-Molaw_S_7_W3_M0_0">
+            <M id="SaiNr-Molaw_S_7_W3M1">
                 <FORM kindOf="original">hoepay</FORM>
                 <PHON kindOf="original">hœpaj</PHON>
                 <FORM kindOf="standard">hoepay</FORM>
@@ -1366,7 +1366,7 @@
             <PHON kindOf="standard">ʔatomalan</PHON>
             <TRANSL xml:lang="zho">相當</TRANSL>
             <TRANSL xml:lang="eng">very</TRANSL>
-            <M id="SaiNr-Molaw_S_7_W4_M0_0">
+            <M id="SaiNr-Molaw_S_7_W4M1">
                 <FORM kindOf="original">'atomalan</FORM>
                 <PHON kindOf="original">ʔatomalan</PHON>
                 <FORM kindOf="standard">'atomalan</FORM>
@@ -1382,7 +1382,7 @@
             <PHON kindOf="standard">o</PHON>
             <TRANSL xml:lang="zho">感嘆</TRANSL>
             <TRANSL xml:lang="eng">INT</TRANSL>
-            <M id="SaiNr-Molaw_S_7_W5_M0_0">
+            <M id="SaiNr-Molaw_S_7_W5M1">
                 <FORM kindOf="original">o</FORM>
                 <PHON kindOf="original">o</PHON>
                 <FORM kindOf="standard">o</FORM>
@@ -1398,7 +1398,7 @@
             <PHON kindOf="standard">hœnæhŋə</PHON>
             <TRANSL xml:lang="zho">久.主焦</TRANSL>
             <TRANSL xml:lang="eng">long.time.AF</TRANSL>
-            <M id="SaiNr-Molaw_S_7_W6_M0_0">
+            <M id="SaiNr-Molaw_S_7_W6M1">
                 <FORM kindOf="original">hoenaehnge</FORM>
                 <PHON kindOf="original">hœnæhŋə</PHON>
                 <FORM kindOf="standard">hoenaehnge</FORM>
@@ -1414,7 +1414,7 @@
             <PHON kindOf="standard">ʔojæ</PHON>
             <TRANSL xml:lang="zho">也</TRANSL>
             <TRANSL xml:lang="eng">also</TRANSL>
-            <M id="SaiNr-Molaw_S_7_W7_M0_0">
+            <M id="SaiNr-Molaw_S_7_W7M1">
                 <FORM kindOf="original">'oyae</FORM>
                 <PHON kindOf="original">ʔojæ</PHON>
                 <FORM kindOf="standard">'oyae</FORM>
@@ -1438,7 +1438,7 @@
             <PHON kindOf="standard">hiz~ða</PHON>
             <TRANSL xml:lang="zho">那個</TRANSL>
             <TRANSL xml:lang="eng">FIL</TRANSL>
-            <M id="SaiNr-Molaw_S_8_W0_M0_0">
+            <M id="SaiNr-Molaw_S_8_W0M1">
                 <FORM kindOf="original">hiza</FORM>
                 <PHON kindOf="original">hiz~ða</PHON>
                 <FORM kindOf="standard">hiza</FORM>
@@ -1454,7 +1454,7 @@
             <PHON kindOf="standard">tatiniʔ</PHON>
             <TRANSL xml:lang="zho">老</TRANSL>
             <TRANSL xml:lang="eng">grow.old</TRANSL>
-            <M id="SaiNr-Molaw_S_8_W1_M0_0">
+            <M id="SaiNr-Molaw_S_8_W1M1">
                 <FORM kindOf="original">tatini'</FORM>
                 <PHON kindOf="original">tatiniʔ</PHON>
                 <FORM kindOf="standard">tatini'</FORM>
@@ -1470,7 +1470,7 @@
             <PHON kindOf="standard">ila</PHON>
             <TRANSL xml:lang="zho">完成</TRANSL>
             <TRANSL xml:lang="eng">PFV</TRANSL>
-            <M id="SaiNr-Molaw_S_8_W2_M0_0">
+            <M id="SaiNr-Molaw_S_8_W2M1">
                 <FORM kindOf="original">ila</FORM>
                 <PHON kindOf="original">ila</PHON>
                 <FORM kindOf="standard">ila</FORM>
@@ -1486,7 +1486,7 @@
             <PHON kindOf="standard">m-olaw</PHON>
             <TRANSL xml:lang="zho">主焦-蛻皮</TRANSL>
             <TRANSL xml:lang="eng">AF-molt</TRANSL>
-            <M id="SaiNr-Molaw_S_8_W3_M0_0">
+            <M id="SaiNr-Molaw_S_8_W3M1">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
@@ -1494,7 +1494,7 @@
                 <TRANSL xml:lang="eng">AF</TRANSL>
                 <TRANSL xml:lang="zho">主焦</TRANSL>
             </M>
-            <M id="SaiNr-Molaw_S_8_W3_M1_0">
+            <M id="SaiNr-Molaw_S_8_W3M2">
                 <FORM kindOf="original">olaw</FORM>
                 <PHON kindOf="original">olaw</PHON>
                 <FORM kindOf="standard">olaw</FORM>
@@ -1510,7 +1510,7 @@
             <PHON kindOf="standard">ka</PHON>
             <TRANSL xml:lang="zho">受格</TRANSL>
             <TRANSL xml:lang="eng">ACC</TRANSL>
-            <M id="SaiNr-Molaw_S_8_W4_M0_0">
+            <M id="SaiNr-Molaw_S_8_W4M1">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
@@ -1526,7 +1526,7 @@
             <PHON kindOf="standard">βaŋəʃ</PHON>
             <TRANSL xml:lang="zho">皮膚</TRANSL>
             <TRANSL xml:lang="eng">skin</TRANSL>
-            <M id="SaiNr-Molaw_S_8_W5_M0_0">
+            <M id="SaiNr-Molaw_S_8_W5M1">
                 <FORM kindOf="original">bangeS</FORM>
                 <PHON kindOf="original">βaŋəʃ</PHON>
                 <FORM kindOf="standard">bangeS</FORM>
@@ -1542,7 +1542,7 @@
             <PHON kindOf="standard">minajhæl</PHON>
             <TRANSL xml:lang="zho">子孫</TRANSL>
             <TRANSL xml:lang="eng">next.generation</TRANSL>
-            <M id="SaiNr-Molaw_S_8_W6_M0_0">
+            <M id="SaiNr-Molaw_S_8_W6M1">
                 <FORM kindOf="original">minayhael</FORM>
                 <PHON kindOf="original">minajhæl</PHON>
                 <FORM kindOf="standard">minayhael</FORM>
@@ -1558,7 +1558,7 @@
             <PHON kindOf="standard">ʔam</PHON>
             <TRANSL xml:lang="zho">未來</TRANSL>
             <TRANSL xml:lang="eng">FUT</TRANSL>
-            <M id="SaiNr-Molaw_S_8_W7_M0_0">
+            <M id="SaiNr-Molaw_S_8_W7M1">
                 <FORM kindOf="original">'am</FORM>
                 <PHON kindOf="original">ʔam</PHON>
                 <FORM kindOf="standard">'am</FORM>
@@ -1574,7 +1574,7 @@
             <PHON kindOf="standard">ʔam</PHON>
             <TRANSL xml:lang="zho">未來</TRANSL>
             <TRANSL xml:lang="eng">FUT</TRANSL>
-            <M id="SaiNr-Molaw_S_8_W8_M0_0">
+            <M id="SaiNr-Molaw_S_8_W8M1">
                 <FORM kindOf="original">'am</FORM>
                 <PHON kindOf="original">ʔam</PHON>
                 <FORM kindOf="standard">'am</FORM>
@@ -1590,7 +1590,7 @@
             <PHON kindOf="standard">ʔalʔalak</PHON>
             <TRANSL xml:lang="zho">年輕</TRANSL>
             <TRANSL xml:lang="eng">young</TRANSL>
-            <M id="SaiNr-Molaw_S_8_W9_M0_0">
+            <M id="SaiNr-Molaw_S_8_W9M1">
                 <FORM kindOf="original">'al'alak</FORM>
                 <PHON kindOf="original">ʔalʔalak</PHON>
                 <FORM kindOf="standard">'al'alak</FORM>
@@ -1606,7 +1606,7 @@
             <PHON kindOf="standard">næhæn</PHON>
             <TRANSL xml:lang="zho">又</TRANSL>
             <TRANSL xml:lang="eng">again</TRANSL>
-            <M id="SaiNr-Molaw_S_8_W10_M0_0">
+            <M id="SaiNr-Molaw_S_8_W10M1">
                 <FORM kindOf="original">naehaen</FORM>
                 <PHON kindOf="original">næhæn</PHON>
                 <FORM kindOf="standard">naehaen</FORM>
@@ -1630,7 +1630,7 @@
             <PHON kindOf="standard">hœpaj</PHON>
             <TRANSL xml:lang="zho">累.主焦</TRANSL>
             <TRANSL xml:lang="eng">be.tired.AF</TRANSL>
-            <M id="SaiNr-Molaw_S_9_W0_M0_0">
+            <M id="SaiNr-Molaw_S_9_W0M1">
                 <FORM kindOf="original">hoepay</FORM>
                 <PHON kindOf="original">hœpaj</PHON>
                 <FORM kindOf="standard">hoepay</FORM>
@@ -1646,7 +1646,7 @@
             <PHON kindOf="standard">o</PHON>
             <TRANSL xml:lang="zho">感嘆</TRANSL>
             <TRANSL xml:lang="eng">INT</TRANSL>
-            <M id="SaiNr-Molaw_S_9_W1_M0_0">
+            <M id="SaiNr-Molaw_S_9_W1M1">
                 <FORM kindOf="original">o</FORM>
                 <PHON kindOf="original">o</PHON>
                 <FORM kindOf="standard">o</FORM>
@@ -1662,7 +1662,7 @@
             <PHON kindOf="standard">βiʃβiʃ</PHON>
             <TRANSL xml:lang="zho">痛苦.主焦</TRANSL>
             <TRANSL xml:lang="eng">painful.AF</TRANSL>
-            <M id="SaiNr-Molaw_S_9_W2_M0_0">
+            <M id="SaiNr-Molaw_S_9_W2M1">
                 <FORM kindOf="original">biSbiS</FORM>
                 <PHON kindOf="original">βiʃβiʃ</PHON>
                 <FORM kindOf="standard">biSbiS</FORM>
@@ -1678,7 +1678,7 @@
             <PHON kindOf="standard">ʔatomalan</PHON>
             <TRANSL xml:lang="zho">非常</TRANSL>
             <TRANSL xml:lang="eng">very</TRANSL>
-            <M id="SaiNr-Molaw_S_9_W3_M0_0">
+            <M id="SaiNr-Molaw_S_9_W3M1">
                 <FORM kindOf="original">'atomalan</FORM>
                 <PHON kindOf="original">ʔatomalan</PHON>
                 <FORM kindOf="standard">'atomalan</FORM>
@@ -1694,7 +1694,7 @@
             <PHON kindOf="standard">hiŋhæʔ</PHON>
             <TRANSL xml:lang="zho">相同</TRANSL>
             <TRANSL xml:lang="eng">same</TRANSL>
-            <M id="SaiNr-Molaw_S_9_W4_M0_0">
+            <M id="SaiNr-Molaw_S_9_W4M1">
                 <FORM kindOf="original">hinghae'</FORM>
                 <PHON kindOf="original">hiŋhæʔ</PHON>
                 <FORM kindOf="standard">hinghae'</FORM>
@@ -1710,7 +1710,7 @@
             <PHON kindOf="standard">ki</PHON>
             <TRANSL xml:lang="zho">與</TRANSL>
             <TRANSL xml:lang="eng">and</TRANSL>
-            <M id="SaiNr-Molaw_S_9_W5_M0_0">
+            <M id="SaiNr-Molaw_S_9_W5M1">
                 <FORM kindOf="original">ki</FORM>
                 <PHON kindOf="original">ki</PHON>
                 <FORM kindOf="standard">ki</FORM>
@@ -1726,7 +1726,7 @@
             <PHON kindOf="standard">ʃiβaiʔ</PHON>
             <TRANSL xml:lang="zho">蛇</TRANSL>
             <TRANSL xml:lang="eng">snake</TRANSL>
-            <M id="SaiNr-Molaw_S_9_W6_M0_0">
+            <M id="SaiNr-Molaw_S_9_W6M1">
                 <FORM kindOf="original">Sibai'</FORM>
                 <PHON kindOf="original">ʃiβaiʔ</PHON>
                 <FORM kindOf="standard">Sibai'</FORM>
@@ -1742,7 +1742,7 @@
             <PHON kindOf="standard">hara</PHON>
             <TRANSL xml:lang="zho">像</TRANSL>
             <TRANSL xml:lang="eng">like</TRANSL>
-            <M id="SaiNr-Molaw_S_9_W7_M0_0">
+            <M id="SaiNr-Molaw_S_9_W7M1">
                 <FORM kindOf="original">hara</FORM>
                 <PHON kindOf="original">hara</PHON>
                 <FORM kindOf="standard">hara</FORM>
@@ -1758,7 +1758,7 @@
             <PHON kindOf="standard">hajs~θani</PHON>
             <TRANSL xml:lang="zho">現在</TRANSL>
             <TRANSL xml:lang="eng">now</TRANSL>
-            <M id="SaiNr-Molaw_S_9_W8_M0_0">
+            <M id="SaiNr-Molaw_S_9_W8M1">
                 <FORM kindOf="original">haysani</FORM>
                 <PHON kindOf="original">hajs~θani</PHON>
                 <FORM kindOf="standard">haysani</FORM>
@@ -1774,7 +1774,7 @@
             <PHON kindOf="standard">ʃiβaiʔ</PHON>
             <TRANSL xml:lang="zho">蛇</TRANSL>
             <TRANSL xml:lang="eng">snake</TRANSL>
-            <M id="SaiNr-Molaw_S_9_W9_M0_0">
+            <M id="SaiNr-Molaw_S_9_W9M1">
                 <FORM kindOf="original">Sibai'</FORM>
                 <PHON kindOf="original">ʃiβaiʔ</PHON>
                 <FORM kindOf="standard">Sibai'</FORM>
@@ -1798,7 +1798,7 @@
             <PHON kindOf="standard">ʃo</PHON>
             <TRANSL xml:lang="zho">條件詞</TRANSL>
             <TRANSL xml:lang="eng">COND</TRANSL>
-            <M id="SaiNr-Molaw_S_10_W0_M0_0">
+            <M id="SaiNr-Molaw_S_10_W0M1">
                 <FORM kindOf="original">So</FORM>
                 <PHON kindOf="original">ʃo</PHON>
                 <FORM kindOf="standard">So</FORM>
@@ -1814,7 +1814,7 @@
             <PHON kindOf="standard">m-olaw</PHON>
             <TRANSL xml:lang="zho">主焦-蛻皮</TRANSL>
             <TRANSL xml:lang="eng">AF-molt</TRANSL>
-            <M id="SaiNr-Molaw_S_10_W1_M0_0">
+            <M id="SaiNr-Molaw_S_10_W1M1">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
@@ -1822,7 +1822,7 @@
                 <TRANSL xml:lang="eng">AF</TRANSL>
                 <TRANSL xml:lang="zho">主焦</TRANSL>
             </M>
-            <M id="SaiNr-Molaw_S_10_W1_M1_0">
+            <M id="SaiNr-Molaw_S_10_W1M2">
                 <FORM kindOf="original">olaw</FORM>
                 <PHON kindOf="original">olaw</PHON>
                 <FORM kindOf="standard">olaw</FORM>
@@ -1838,7 +1838,7 @@
             <PHON kindOf="standard">kitaʔ-ən</PHON>
             <TRANSL xml:lang="zho">看-受焦</TRANSL>
             <TRANSL xml:lang="eng">see-PF</TRANSL>
-            <M id="SaiNr-Molaw_S_10_W2_M0_0">
+            <M id="SaiNr-Molaw_S_10_W2M1">
                 <FORM kindOf="original">kita'</FORM>
                 <PHON kindOf="original">kitaʔ</PHON>
                 <FORM kindOf="standard">kita'</FORM>
@@ -1846,7 +1846,7 @@
                 <TRANSL xml:lang="eng">see</TRANSL>
                 <TRANSL xml:lang="zho">看</TRANSL>
             </M>
-            <M id="SaiNr-Molaw_S_10_W2_M1_0">
+            <M id="SaiNr-Molaw_S_10_W2M2">
                 <FORM kindOf="original">en</FORM>
                 <PHON kindOf="original">ən</PHON>
                 <FORM kindOf="standard">en</FORM>
@@ -1862,7 +1862,7 @@
             <PHON kindOf="standard">maʔ</PHON>
             <TRANSL xml:lang="zho">也</TRANSL>
             <TRANSL xml:lang="eng">also</TRANSL>
-            <M id="SaiNr-Molaw_S_10_W3_M0_0">
+            <M id="SaiNr-Molaw_S_10_W3M1">
                 <FORM kindOf="original">ma'</FORM>
                 <PHON kindOf="original">maʔ</PHON>
                 <FORM kindOf="standard">ma'</FORM>
@@ -1878,7 +1878,7 @@
             <PHON kindOf="standard">a</PHON>
             <TRANSL xml:lang="zho">FIL</TRANSL>
             <TRANSL xml:lang="eng">FIL</TRANSL>
-            <M id="SaiNr-Molaw_S_10_W4_M0_0">
+            <M id="SaiNr-Molaw_S_10_W4M1">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
@@ -1894,7 +1894,7 @@
             <PHON kindOf="standard">ʃaʔʃo</PHON>
             <TRANSL xml:lang="zho">新</TRANSL>
             <TRANSL xml:lang="eng">new</TRANSL>
-            <M id="SaiNr-Molaw_S_10_W5_M0_0">
+            <M id="SaiNr-Molaw_S_10_W5M1">
                 <FORM kindOf="original">Sa'So</FORM>
                 <PHON kindOf="original">ʃaʔʃo</PHON>
                 <FORM kindOf="standard">Sa'So</FORM>
@@ -1910,7 +1910,7 @@
             <PHON kindOf="standard">ila</PHON>
             <TRANSL xml:lang="zho">完成</TRANSL>
             <TRANSL xml:lang="eng">PFV</TRANSL>
-            <M id="SaiNr-Molaw_S_10_W6_M0_0">
+            <M id="SaiNr-Molaw_S_10_W6M1">
                 <FORM kindOf="original">ila</FORM>
                 <PHON kindOf="original">ila</PHON>
                 <FORM kindOf="standard">ila</FORM>
@@ -1926,7 +1926,7 @@
             <PHON kindOf="standard">o</PHON>
             <TRANSL xml:lang="zho">感嘆</TRANSL>
             <TRANSL xml:lang="eng">INT</TRANSL>
-            <M id="SaiNr-Molaw_S_10_W7_M0_0">
+            <M id="SaiNr-Molaw_S_10_W7M1">
                 <FORM kindOf="original">o</FORM>
                 <PHON kindOf="original">o</PHON>
                 <FORM kindOf="standard">o</FORM>
@@ -1950,7 +1950,7 @@
             <PHON kindOf="standard">a</PHON>
             <TRANSL xml:lang="zho">FIL</TRANSL>
             <TRANSL xml:lang="eng">FIL</TRANSL>
-            <M id="SaiNr-Molaw_S_11_W0_M0_0">
+            <M id="SaiNr-Molaw_S_11_W0M1">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
@@ -1966,7 +1966,7 @@
             <PHON kindOf="standard">s~θoβæœh</PHON>
             <TRANSL xml:lang="zho">長大.主焦</TRANSL>
             <TRANSL xml:lang="eng">grow.up.AF</TRANSL>
-            <M id="SaiNr-Molaw_S_11_W1_M0_0">
+            <M id="SaiNr-Molaw_S_11_W1M1">
                 <FORM kindOf="original">sobaeoeh</FORM>
                 <PHON kindOf="original">s~θoβæœh</PHON>
                 <FORM kindOf="standard">sobaeoeh</FORM>
@@ -1982,7 +1982,7 @@
             <PHON kindOf="standard">ila</PHON>
             <TRANSL xml:lang="zho">完成</TRANSL>
             <TRANSL xml:lang="eng">PFV</TRANSL>
-            <M id="SaiNr-Molaw_S_11_W2_M0_0">
+            <M id="SaiNr-Molaw_S_11_W2M1">
                 <FORM kindOf="original">ila</FORM>
                 <PHON kindOf="original">ila</PHON>
                 <FORM kindOf="standard">ila</FORM>
@@ -1998,7 +1998,7 @@
             <PHON kindOf="standard">s~θowitiʔ</PHON>
             <TRANSL xml:lang="zho">一點點</TRANSL>
             <TRANSL xml:lang="eng">bit</TRANSL>
-            <M id="SaiNr-Molaw_S_11_W3_M0_0">
+            <M id="SaiNr-Molaw_S_11_W3M1">
                 <FORM kindOf="original">sowiti'</FORM>
                 <PHON kindOf="original">s~θowitiʔ</PHON>
                 <FORM kindOf="standard">sowiti'</FORM>
@@ -2022,7 +2022,7 @@
             <PHON kindOf="standard">nakʔis~θaa</PHON>
             <TRANSL xml:lang="zho">像那樣</TRANSL>
             <TRANSL xml:lang="eng">like.that</TRANSL>
-            <M id="SaiNr-Molaw_S_12_W0_M0_0">
+            <M id="SaiNr-Molaw_S_12_W0M1">
                 <FORM kindOf="original">nak'isaa</FORM>
                 <PHON kindOf="original">nakʔis~θaa</PHON>
                 <FORM kindOf="standard">nak'isaa</FORM>
@@ -2038,7 +2038,7 @@
             <PHON kindOf="standard">hajz~ðaʔ</PHON>
             <TRANSL xml:lang="zho">存在</TRANSL>
             <TRANSL xml:lang="eng">EXIST</TRANSL>
-            <M id="SaiNr-Molaw_S_12_W1_M0_0">
+            <M id="SaiNr-Molaw_S_12_W1M1">
                 <FORM kindOf="original">hayza'</FORM>
                 <PHON kindOf="original">hajz~ðaʔ</PHON>
                 <FORM kindOf="standard">hayza'</FORM>
@@ -2054,7 +2054,7 @@
             <PHON kindOf="standard">ʔæhæʔ</PHON>
             <TRANSL xml:lang="zho">一</TRANSL>
             <TRANSL xml:lang="eng">one</TRANSL>
-            <M id="SaiNr-Molaw_S_12_W2_M0_0">
+            <M id="SaiNr-Molaw_S_12_W2M1">
                 <FORM kindOf="original">'aehae'</FORM>
                 <PHON kindOf="original">ʔæhæʔ</PHON>
                 <FORM kindOf="standard">'aehae'</FORM>
@@ -2070,7 +2070,7 @@
             <PHON kindOf="standard">hahila</PHON>
             <TRANSL xml:lang="zho">日</TRANSL>
             <TRANSL xml:lang="eng">day</TRANSL>
-            <M id="SaiNr-Molaw_S_12_W3_M0_0">
+            <M id="SaiNr-Molaw_S_12_W3M1">
                 <FORM kindOf="original">hahila</FORM>
                 <PHON kindOf="original">hahila</PHON>
                 <FORM kindOf="standard">hahila</FORM>
@@ -2086,7 +2086,7 @@
             <PHON kindOf="standard">ʔinaraj</PHON>
             <TRANSL xml:lang="zho">從</TRANSL>
             <TRANSL xml:lang="eng">from</TRANSL>
-            <M id="SaiNr-Molaw_S_12_W4_M0_0">
+            <M id="SaiNr-Molaw_S_12_W4M1">
                 <FORM kindOf="original">'inaray</FORM>
                 <PHON kindOf="original">ʔinaraj</PHON>
                 <FORM kindOf="standard">'inaray</FORM>
@@ -2102,7 +2102,7 @@
             <PHON kindOf="standard">βaβih</PHON>
             <TRANSL xml:lang="zho">別處</TRANSL>
             <TRANSL xml:lang="eng">another.place</TRANSL>
-            <M id="SaiNr-Molaw_S_12_W5_M0_0">
+            <M id="SaiNr-Molaw_S_12_W5M1">
                 <FORM kindOf="original">babih</FORM>
                 <PHON kindOf="original">βaβih</PHON>
                 <FORM kindOf="standard">babih</FORM>
@@ -2118,7 +2118,7 @@
             <PHON kindOf="standard">ʔima</PHON>
             <TRANSL xml:lang="zho">進行</TRANSL>
             <TRANSL xml:lang="eng">PROG</TRANSL>
-            <M id="SaiNr-Molaw_S_12_W6_M0_0">
+            <M id="SaiNr-Molaw_S_12_W6M1">
                 <FORM kindOf="original">'ima</FORM>
                 <PHON kindOf="original">ʔima</PHON>
                 <FORM kindOf="standard">'ima</FORM>
@@ -2134,7 +2134,7 @@
             <PHON kindOf="standard">s~θamijan</PHON>
             <TRANSL xml:lang="zho">神明</TRANSL>
             <TRANSL xml:lang="eng">god</TRANSL>
-            <M id="SaiNr-Molaw_S_12_W7_M0_0">
+            <M id="SaiNr-Molaw_S_12_W7M1">
                 <FORM kindOf="original">samiyan</FORM>
                 <PHON kindOf="original">s~θamijan</PHON>
                 <FORM kindOf="standard">samiyan</FORM>
@@ -2150,7 +2150,7 @@
             <PHON kindOf="standard">a</PHON>
             <TRANSL xml:lang="zho">FIL</TRANSL>
             <TRANSL xml:lang="eng">FIL</TRANSL>
-            <M id="SaiNr-Molaw_S_12_W8_M0_0">
+            <M id="SaiNr-Molaw_S_12_W8M1">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
@@ -2166,7 +2166,7 @@
             <PHON kindOf="standard">kanoʔ</PHON>
             <TRANSL xml:lang="zho">什麼</TRANSL>
             <TRANSL xml:lang="eng">what</TRANSL>
-            <M id="SaiNr-Molaw_S_12_W9_M0_0">
+            <M id="SaiNr-Molaw_S_12_W9M1">
                 <FORM kindOf="original">kano'</FORM>
                 <PHON kindOf="original">kanoʔ</PHON>
                 <FORM kindOf="standard">kano'</FORM>
@@ -2182,7 +2182,7 @@
             <PHON kindOf="standard">kitaʔ</PHON>
             <TRANSL xml:lang="zho">看.主焦</TRANSL>
             <TRANSL xml:lang="eng">see.AF</TRANSL>
-            <M id="SaiNr-Molaw_S_12_W10_M0_0">
+            <M id="SaiNr-Molaw_S_12_W10M1">
                 <FORM kindOf="original">kita'</FORM>
                 <PHON kindOf="original">kitaʔ</PHON>
                 <FORM kindOf="standard">kita'</FORM>
@@ -2206,7 +2206,7 @@
             <PHON kindOf="standard">s~θi-ʔolaw</PHON>
             <TRANSL xml:lang="zho">指焦-蛻皮</TRANSL>
             <TRANSL xml:lang="eng">RF-molt</TRANSL>
-            <M id="SaiNr-Molaw_S_13_W0_M0_0">
+            <M id="SaiNr-Molaw_S_13_W0M1">
                 <FORM kindOf="original">si</FORM>
                 <PHON kindOf="original">s~θi</PHON>
                 <FORM kindOf="standard">si</FORM>
@@ -2214,7 +2214,7 @@
                 <TRANSL xml:lang="eng">RF</TRANSL>
                 <TRANSL xml:lang="zho">指焦</TRANSL>
             </M>
-            <M id="SaiNr-Molaw_S_13_W0_M1_0">
+            <M id="SaiNr-Molaw_S_13_W0M2">
                 <FORM kindOf="original">'olaw</FORM>
                 <PHON kindOf="original">ʔolaw</PHON>
                 <FORM kindOf="standard">'olaw</FORM>
@@ -2230,7 +2230,7 @@
             <PHON kindOf="standard">ka</PHON>
             <TRANSL xml:lang="zho">FS</TRANSL>
             <TRANSL xml:lang="eng">FS</TRANSL>
-            <M id="SaiNr-Molaw_S_13_W1_M0_0">
+            <M id="SaiNr-Molaw_S_13_W1M1">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
@@ -2246,7 +2246,7 @@
             <PHON kindOf="standard">noka</PHON>
             <TRANSL xml:lang="zho">屬格</TRANSL>
             <TRANSL xml:lang="eng">GEN</TRANSL>
-            <M id="SaiNr-Molaw_S_13_W2_M0_0">
+            <M id="SaiNr-Molaw_S_13_W2M1">
                 <FORM kindOf="original">noka</FORM>
                 <PHON kindOf="original">noka</PHON>
                 <FORM kindOf="standard">noka</FORM>
@@ -2262,7 +2262,7 @@
             <PHON kindOf="standard">ʃajʃijat</PHON>
             <TRANSL xml:lang="zho">賽夏人</TRANSL>
             <TRANSL xml:lang="eng">PN</TRANSL>
-            <M id="SaiNr-Molaw_S_13_W3_M0_0">
+            <M id="SaiNr-Molaw_S_13_W3M1">
                 <FORM kindOf="original">SaySiyat</FORM>
                 <PHON kindOf="original">ʃajʃijat</PHON>
                 <FORM kindOf="standard">SaySiyat</FORM>
@@ -2278,7 +2278,7 @@
             <PHON kindOf="standard">s~θiŋoz~ðaw-ən</PHON>
             <TRANSL xml:lang="zho">問-受焦</TRANSL>
             <TRANSL xml:lang="eng">ask-PF</TRANSL>
-            <M id="SaiNr-Molaw_S_13_W4_M0_0">
+            <M id="SaiNr-Molaw_S_13_W4M1">
                 <FORM kindOf="original">singozaw</FORM>
                 <PHON kindOf="original">s~θiŋoz~ðaw</PHON>
                 <FORM kindOf="standard">singozaw</FORM>
@@ -2286,7 +2286,7 @@
                 <TRANSL xml:lang="eng">ask</TRANSL>
                 <TRANSL xml:lang="zho">問</TRANSL>
             </M>
-            <M id="SaiNr-Molaw_S_13_W4_M1_0">
+            <M id="SaiNr-Molaw_S_13_W4M2">
                 <FORM kindOf="original">en</FORM>
                 <PHON kindOf="original">ən</PHON>
                 <FORM kindOf="standard">en</FORM>
@@ -2302,7 +2302,7 @@
             <PHON kindOf="standard">s~θa</PHON>
             <TRANSL xml:lang="zho">DM</TRANSL>
             <TRANSL xml:lang="eng">DM</TRANSL>
-            <M id="SaiNr-Molaw_S_13_W5_M0_0">
+            <M id="SaiNr-Molaw_S_13_W5M1">
                 <FORM kindOf="original">sa</FORM>
                 <PHON kindOf="original">s~θa</PHON>
                 <FORM kindOf="standard">sa</FORM>
@@ -2318,7 +2318,7 @@
             <PHON kindOf="standard">koʃaʔ-ən</PHON>
             <TRANSL xml:lang="zho">說-受焦</TRANSL>
             <TRANSL xml:lang="eng">say-PF</TRANSL>
-            <M id="SaiNr-Molaw_S_13_W6_M0_0">
+            <M id="SaiNr-Molaw_S_13_W6M1">
                 <FORM kindOf="original">koSa'</FORM>
                 <PHON kindOf="original">koʃaʔ</PHON>
                 <FORM kindOf="standard">koSa'</FORM>
@@ -2326,7 +2326,7 @@
                 <TRANSL xml:lang="eng">say</TRANSL>
                 <TRANSL xml:lang="zho">說</TRANSL>
             </M>
-            <M id="SaiNr-Molaw_S_13_W6_M1_0">
+            <M id="SaiNr-Molaw_S_13_W6M2">
                 <FORM kindOf="original">en</FORM>
                 <PHON kindOf="original">ən</PHON>
                 <FORM kindOf="standard">en</FORM>
@@ -2342,7 +2342,7 @@
             <PHON kindOf="standard">ʃoʔo</PHON>
             <TRANSL xml:lang="zho">2SG.主格</TRANSL>
             <TRANSL xml:lang="eng">2SG.NOM</TRANSL>
-            <M id="SaiNr-Molaw_S_13_W7_M0_0">
+            <M id="SaiNr-Molaw_S_13_W7M1">
                 <FORM kindOf="original">So'o</FORM>
                 <PHON kindOf="original">ʃoʔo</PHON>
                 <FORM kindOf="standard">So'o</FORM>
@@ -2358,7 +2358,7 @@
             <PHON kindOf="standard">nakhiz~ða</PHON>
             <TRANSL xml:lang="zho">像那樣</TRANSL>
             <TRANSL xml:lang="eng">like.that</TRANSL>
-            <M id="SaiNr-Molaw_S_13_W8_M0_0">
+            <M id="SaiNr-Molaw_S_13_W8M1">
                 <FORM kindOf="original">nakhiza</FORM>
                 <PHON kindOf="original">nakhiz~ða</PHON>
                 <FORM kindOf="standard">nakhiza</FORM>
@@ -2374,7 +2374,7 @@
             <PHON kindOf="standard">m-olaw</PHON>
             <TRANSL xml:lang="zho">主焦-蛻皮</TRANSL>
             <TRANSL xml:lang="eng">AF-molt</TRANSL>
-            <M id="SaiNr-Molaw_S_13_W9_M0_0">
+            <M id="SaiNr-Molaw_S_13_W9M1">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
@@ -2382,7 +2382,7 @@
                 <TRANSL xml:lang="eng">AF</TRANSL>
                 <TRANSL xml:lang="zho">主焦</TRANSL>
             </M>
-            <M id="SaiNr-Molaw_S_13_W9_M1_0">
+            <M id="SaiNr-Molaw_S_13_W9M2">
                 <FORM kindOf="original">olaw</FORM>
                 <PHON kindOf="original">olaw</PHON>
                 <FORM kindOf="standard">olaw</FORM>
@@ -2406,7 +2406,7 @@
             <PHON kindOf="standard">koz~ðaʔ</PHON>
             <TRANSL xml:lang="zho">多少</TRANSL>
             <TRANSL xml:lang="eng">what</TRANSL>
-            <M id="SaiNr-Molaw_S_14_W0_M0_0">
+            <M id="SaiNr-Molaw_S_14_W0M1">
                 <FORM kindOf="original">koza'</FORM>
                 <PHON kindOf="original">koz~ðaʔ</PHON>
                 <FORM kindOf="standard">koza'</FORM>
@@ -2422,7 +2422,7 @@
             <PHON kindOf="standard">kin</PHON>
             <TRANSL xml:lang="zho">很</TRANSL>
             <TRANSL xml:lang="eng">very</TRANSL>
-            <M id="SaiNr-Molaw_S_14_W1_M0_0">
+            <M id="SaiNr-Molaw_S_14_W1M1">
                 <FORM kindOf="original">kin</FORM>
                 <PHON kindOf="original">kin</PHON>
                 <FORM kindOf="standard">kin</FORM>
@@ -2438,7 +2438,7 @@
             <PHON kindOf="standard">hœpaj</PHON>
             <TRANSL xml:lang="zho">累</TRANSL>
             <TRANSL xml:lang="eng">tired</TRANSL>
-            <M id="SaiNr-Molaw_S_14_W2_M0_0">
+            <M id="SaiNr-Molaw_S_14_W2M1">
                 <FORM kindOf="original">hoepay</FORM>
                 <PHON kindOf="original">hœpaj</PHON>
                 <FORM kindOf="standard">hoepay</FORM>
@@ -2454,7 +2454,7 @@
             <PHON kindOf="standard">hœpaj</PHON>
             <TRANSL xml:lang="zho">累.主焦</TRANSL>
             <TRANSL xml:lang="eng">be.tired.AF</TRANSL>
-            <M id="SaiNr-Molaw_S_14_W3_M0_0">
+            <M id="SaiNr-Molaw_S_14_W3M1">
                 <FORM kindOf="original">hoepay</FORM>
                 <PHON kindOf="original">hœpaj</PHON>
                 <FORM kindOf="standard">hoepay</FORM>
@@ -2470,7 +2470,7 @@
             <PHON kindOf="standard">ʔatomal</PHON>
             <TRANSL xml:lang="zho">相當</TRANSL>
             <TRANSL xml:lang="eng">very</TRANSL>
-            <M id="SaiNr-Molaw_S_14_W4_M0_0">
+            <M id="SaiNr-Molaw_S_14_W4M1">
                 <FORM kindOf="original">'atomal</FORM>
                 <PHON kindOf="original">ʔatomal</PHON>
                 <FORM kindOf="standard">'atomal</FORM>
@@ -2486,7 +2486,7 @@
             <PHON kindOf="standard">o</PHON>
             <TRANSL xml:lang="zho">感嘆</TRANSL>
             <TRANSL xml:lang="eng">INT</TRANSL>
-            <M id="SaiNr-Molaw_S_14_W5_M0_0">
+            <M id="SaiNr-Molaw_S_14_W5M1">
                 <FORM kindOf="original">o</FORM>
                 <PHON kindOf="original">o</PHON>
                 <FORM kindOf="standard">o</FORM>
@@ -2502,7 +2502,7 @@
             <PHON kindOf="standard">βis~θβis~θ</PHON>
             <TRANSL xml:lang="zho">痛.主焦</TRANSL>
             <TRANSL xml:lang="eng">be.painful.AF</TRANSL>
-            <M id="SaiNr-Molaw_S_14_W6_M0_0">
+            <M id="SaiNr-Molaw_S_14_W6M1">
                 <FORM kindOf="original">bisbis</FORM>
                 <PHON kindOf="original">βis~θβis~θ</PHON>
                 <FORM kindOf="standard">bisbis</FORM>
@@ -2518,7 +2518,7 @@
             <PHON kindOf="standard">ʔatomal</PHON>
             <TRANSL xml:lang="zho">非常</TRANSL>
             <TRANSL xml:lang="eng">very</TRANSL>
-            <M id="SaiNr-Molaw_S_14_W7_M0_0">
+            <M id="SaiNr-Molaw_S_14_W7M1">
                 <FORM kindOf="original">'atomal</FORM>
                 <PHON kindOf="original">ʔatomal</PHON>
                 <FORM kindOf="standard">'atomal</FORM>
@@ -2534,7 +2534,7 @@
             <PHON kindOf="standard">o</PHON>
             <TRANSL xml:lang="zho">感嘆</TRANSL>
             <TRANSL xml:lang="eng">INT</TRANSL>
-            <M id="SaiNr-Molaw_S_14_W8_M0_0">
+            <M id="SaiNr-Molaw_S_14_W8M1">
                 <FORM kindOf="original">o</FORM>
                 <PHON kindOf="original">o</PHON>
                 <FORM kindOf="standard">o</FORM>
@@ -2550,7 +2550,7 @@
             <PHON kindOf="standard">maʔ</PHON>
             <TRANSL xml:lang="zho">也</TRANSL>
             <TRANSL xml:lang="eng">also</TRANSL>
-            <M id="SaiNr-Molaw_S_14_W9_M0_0">
+            <M id="SaiNr-Molaw_S_14_W9M1">
                 <FORM kindOf="original">ma'</FORM>
                 <PHON kindOf="original">maʔ</PHON>
                 <FORM kindOf="standard">ma'</FORM>
@@ -2566,7 +2566,7 @@
             <PHON kindOf="standard">honahŋə</PHON>
             <TRANSL xml:lang="zho">久.主焦</TRANSL>
             <TRANSL xml:lang="eng">long.time.AF</TRANSL>
-            <M id="SaiNr-Molaw_S_14_W10_M0_0">
+            <M id="SaiNr-Molaw_S_14_W10M1">
                 <FORM kindOf="original">honahnge</FORM>
                 <PHON kindOf="original">honahŋə</PHON>
                 <FORM kindOf="standard">honahnge</FORM>
@@ -2582,7 +2582,7 @@
             <PHON kindOf="standard">ʔatomalan</PHON>
             <TRANSL xml:lang="zho">非常</TRANSL>
             <TRANSL xml:lang="eng">very</TRANSL>
-            <M id="SaiNr-Molaw_S_14_W11_M0_0">
+            <M id="SaiNr-Molaw_S_14_W11M1">
                 <FORM kindOf="original">'atomalan</FORM>
                 <PHON kindOf="original">ʔatomalan</PHON>
                 <FORM kindOf="standard">'atomalan</FORM>
@@ -2606,7 +2606,7 @@
             <PHON kindOf="standard">mojo</PHON>
             <TRANSL xml:lang="zho">2PL.主格</TRANSL>
             <TRANSL xml:lang="eng">2PL.NOM</TRANSL>
-            <M id="SaiNr-Molaw_S_15_W0_M0_0">
+            <M id="SaiNr-Molaw_S_15_W0M1">
                 <FORM kindOf="original">moyo</FORM>
                 <PHON kindOf="original">mojo</PHON>
                 <FORM kindOf="standard">moyo</FORM>
@@ -2622,7 +2622,7 @@
             <PHON kindOf="standard">nakhiz~ða</PHON>
             <TRANSL xml:lang="zho">像那樣</TRANSL>
             <TRANSL xml:lang="eng">like.that</TRANSL>
-            <M id="SaiNr-Molaw_S_15_W1_M0_0">
+            <M id="SaiNr-Molaw_S_15_W1M1">
                 <FORM kindOf="original">nakhiza</FORM>
                 <PHON kindOf="original">nakhiz~ða</PHON>
                 <FORM kindOf="standard">nakhiza</FORM>
@@ -2638,7 +2638,7 @@
             <PHON kindOf="standard">kin</PHON>
             <TRANSL xml:lang="zho">非常</TRANSL>
             <TRANSL xml:lang="eng">very</TRANSL>
-            <M id="SaiNr-Molaw_S_15_W2_M0_0">
+            <M id="SaiNr-Molaw_S_15_W2M1">
                 <FORM kindOf="original">kin</FORM>
                 <PHON kindOf="original">kin</PHON>
                 <FORM kindOf="standard">kin</FORM>
@@ -2654,7 +2654,7 @@
             <PHON kindOf="standard">hœpaj</PHON>
             <TRANSL xml:lang="zho">累.主焦</TRANSL>
             <TRANSL xml:lang="eng">be.tiring.AF</TRANSL>
-            <M id="SaiNr-Molaw_S_15_W3_M0_0">
+            <M id="SaiNr-Molaw_S_15_W3M1">
                 <FORM kindOf="original">hoepay</FORM>
                 <PHON kindOf="original">hœpaj</PHON>
                 <FORM kindOf="standard">hoepay</FORM>
@@ -2670,7 +2670,7 @@
             <PHON kindOf="standard">naw</PHON>
             <TRANSL xml:lang="zho">條件詞</TRANSL>
             <TRANSL xml:lang="eng">COND</TRANSL>
-            <M id="SaiNr-Molaw_S_15_W4_M0_0">
+            <M id="SaiNr-Molaw_S_15_W4M1">
                 <FORM kindOf="original">naw</FORM>
                 <PHON kindOf="original">naw</PHON>
                 <FORM kindOf="standard">naw</FORM>
@@ -2686,7 +2686,7 @@
             <PHON kindOf="standard">ʔokik</PHON>
             <TRANSL xml:lang="zho">否定</TRANSL>
             <TRANSL xml:lang="eng">NEG</TRANSL>
-            <M id="SaiNr-Molaw_S_15_W5_M0_0">
+            <M id="SaiNr-Molaw_S_15_W5M1">
                 <FORM kindOf="original">'okik</FORM>
                 <PHON kindOf="original">ʔokik</PHON>
                 <FORM kindOf="standard">'okik</FORM>
@@ -2702,7 +2702,7 @@
             <PHON kindOf="standard">olaw</PHON>
             <TRANSL xml:lang="zho">蛻皮.主焦</TRANSL>
             <TRANSL xml:lang="eng">molt.AF</TRANSL>
-            <M id="SaiNr-Molaw_S_15_W6_M0_0">
+            <M id="SaiNr-Molaw_S_15_W6M1">
                 <FORM kindOf="original">olaw</FORM>
                 <PHON kindOf="original">olaw</PHON>
                 <FORM kindOf="standard">olaw</FORM>
@@ -2718,7 +2718,7 @@
             <PHON kindOf="standard">mas~θaj</PHON>
             <TRANSL xml:lang="zho">死.主焦</TRANSL>
             <TRANSL xml:lang="eng">die.AF</TRANSL>
-            <M id="SaiNr-Molaw_S_15_W7_M0_0">
+            <M id="SaiNr-Molaw_S_15_W7M1">
                 <FORM kindOf="original">masay</FORM>
                 <PHON kindOf="original">mas~θaj</PHON>
                 <FORM kindOf="standard">masay</FORM>
@@ -2734,7 +2734,7 @@
             <PHON kindOf="standard">ʃo</PHON>
             <TRANSL xml:lang="zho">條件詞</TRANSL>
             <TRANSL xml:lang="eng">COND</TRANSL>
-            <M id="SaiNr-Molaw_S_15_W8_M0_0">
+            <M id="SaiNr-Molaw_S_15_W8M1">
                 <FORM kindOf="original">So</FORM>
                 <PHON kindOf="original">ʃo</PHON>
                 <FORM kindOf="standard">So</FORM>
@@ -2750,7 +2750,7 @@
             <PHON kindOf="standard">mas~θaj</PHON>
             <TRANSL xml:lang="zho">死.主焦</TRANSL>
             <TRANSL xml:lang="eng">die.AF</TRANSL>
-            <M id="SaiNr-Molaw_S_15_W9_M0_0">
+            <M id="SaiNr-Molaw_S_15_W9M1">
                 <FORM kindOf="original">masay</FORM>
                 <PHON kindOf="original">mas~θaj</PHON>
                 <FORM kindOf="standard">masay</FORM>
@@ -2766,7 +2766,7 @@
             <PHON kindOf="standard">ila</PHON>
             <TRANSL xml:lang="zho">完成</TRANSL>
             <TRANSL xml:lang="eng">PFV</TRANSL>
-            <M id="SaiNr-Molaw_S_15_W10_M0_0">
+            <M id="SaiNr-Molaw_S_15_W10M1">
                 <FORM kindOf="original">ila</FORM>
                 <PHON kindOf="original">ila</PHON>
                 <FORM kindOf="standard">ila</FORM>
@@ -2782,7 +2782,7 @@
             <PHON kindOf="standard">maʔ</PHON>
             <TRANSL xml:lang="zho">也</TRANSL>
             <TRANSL xml:lang="eng">also</TRANSL>
-            <M id="SaiNr-Molaw_S_15_W11_M0_0">
+            <M id="SaiNr-Molaw_S_15_W11M1">
                 <FORM kindOf="original">ma'</FORM>
                 <PHON kindOf="original">maʔ</PHON>
                 <FORM kindOf="standard">ma'</FORM>
@@ -2798,7 +2798,7 @@
             <PHON kindOf="standard">ʔokaʔ</PHON>
             <TRANSL xml:lang="zho">否定</TRANSL>
             <TRANSL xml:lang="eng">NEG</TRANSL>
-            <M id="SaiNr-Molaw_S_15_W12_M0_0">
+            <M id="SaiNr-Molaw_S_15_W12M1">
                 <FORM kindOf="original">'oka'</FORM>
                 <PHON kindOf="original">ʔokaʔ</PHON>
                 <FORM kindOf="standard">'oka'</FORM>
@@ -2814,7 +2814,7 @@
             <PHON kindOf="standard">ila</PHON>
             <TRANSL xml:lang="zho">完成</TRANSL>
             <TRANSL xml:lang="eng">PFV</TRANSL>
-            <M id="SaiNr-Molaw_S_15_W13_M0_0">
+            <M id="SaiNr-Molaw_S_15_W13M1">
                 <FORM kindOf="original">ila</FORM>
                 <PHON kindOf="original">ila</PHON>
                 <FORM kindOf="standard">ila</FORM>
@@ -2830,7 +2830,7 @@
             <PHON kindOf="standard">i</PHON>
             <TRANSL xml:lang="zho">i:</TRANSL>
             <TRANSL xml:lang="eng">i:</TRANSL>
-            <M id="SaiNr-Molaw_S_15_W14_M0_0">
+            <M id="SaiNr-Molaw_S_15_W14M1">
                 <FORM kindOf="original">i</FORM>
                 <PHON kindOf="original">i</PHON>
                 <FORM kindOf="standard">i</FORM>
@@ -2846,7 +2846,7 @@
             <PHON kindOf="standard">βis~θβis~θ</PHON>
             <TRANSL xml:lang="zho">痛</TRANSL>
             <TRANSL xml:lang="eng">pain</TRANSL>
-            <M id="SaiNr-Molaw_S_15_W15_M0_0">
+            <M id="SaiNr-Molaw_S_15_W15M1">
                 <FORM kindOf="original">bisbis</FORM>
                 <PHON kindOf="original">βis~θβis~θ</PHON>
                 <FORM kindOf="standard">bisbis</FORM>
@@ -2862,7 +2862,7 @@
             <PHON kindOf="standard">ʔokaʔ</PHON>
             <TRANSL xml:lang="zho">否定</TRANSL>
             <TRANSL xml:lang="eng">NEG</TRANSL>
-            <M id="SaiNr-Molaw_S_15_W16_M0_0">
+            <M id="SaiNr-Molaw_S_15_W16M1">
                 <FORM kindOf="original">'oka'</FORM>
                 <PHON kindOf="original">ʔokaʔ</PHON>
                 <FORM kindOf="standard">'oka'</FORM>
@@ -2878,7 +2878,7 @@
             <PHON kindOf="standard">ila</PHON>
             <TRANSL xml:lang="zho">完成</TRANSL>
             <TRANSL xml:lang="eng">PFV</TRANSL>
-            <M id="SaiNr-Molaw_S_15_W17_M0_0">
+            <M id="SaiNr-Molaw_S_15_W17M1">
                 <FORM kindOf="original">ila</FORM>
                 <PHON kindOf="original">ila</PHON>
                 <FORM kindOf="standard">ila</FORM>
@@ -2894,7 +2894,7 @@
             <PHON kindOf="standard">ʔokik</PHON>
             <TRANSL xml:lang="zho">否定</TRANSL>
             <TRANSL xml:lang="eng">NEG</TRANSL>
-            <M id="SaiNr-Molaw_S_15_W18_M0_0">
+            <M id="SaiNr-Molaw_S_15_W18M1">
                 <FORM kindOf="original">'okik</FORM>
                 <PHON kindOf="original">ʔokik</PHON>
                 <FORM kindOf="standard">'okik</FORM>
@@ -2910,7 +2910,7 @@
             <PHON kindOf="standard">raam</PHON>
             <TRANSL xml:lang="zho">知道.主焦</TRANSL>
             <TRANSL xml:lang="eng">know.AF</TRANSL>
-            <M id="SaiNr-Molaw_S_15_W19_M0_0">
+            <M id="SaiNr-Molaw_S_15_W19M1">
                 <FORM kindOf="original">raam</FORM>
                 <PHON kindOf="original">raam</PHON>
                 <FORM kindOf="standard">raam</FORM>
@@ -2926,7 +2926,7 @@
             <PHON kindOf="standard">ka</PHON>
             <TRANSL xml:lang="zho">受格</TRANSL>
             <TRANSL xml:lang="eng">ACC</TRANSL>
-            <M id="SaiNr-Molaw_S_15_W20_M0_0">
+            <M id="SaiNr-Molaw_S_15_W20M1">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
@@ -2942,7 +2942,7 @@
             <PHON kindOf="standard">kin</PHON>
             <TRANSL xml:lang="zho">非常</TRANSL>
             <TRANSL xml:lang="eng">very</TRANSL>
-            <M id="SaiNr-Molaw_S_15_W21_M0_0">
+            <M id="SaiNr-Molaw_S_15_W21M1">
                 <FORM kindOf="original">kin</FORM>
                 <PHON kindOf="original">kin</PHON>
                 <FORM kindOf="standard">kin</FORM>
@@ -2958,7 +2958,7 @@
             <PHON kindOf="standard">hœpaj</PHON>
             <TRANSL xml:lang="zho">累.主焦</TRANSL>
             <TRANSL xml:lang="eng">be.tiring.AF</TRANSL>
-            <M id="SaiNr-Molaw_S_15_W22_M0_0">
+            <M id="SaiNr-Molaw_S_15_W22M1">
                 <FORM kindOf="original">hoepay</FORM>
                 <PHON kindOf="original">hœpaj</PHON>
                 <FORM kindOf="standard">hoepay</FORM>
@@ -2982,7 +2982,7 @@
             <PHON kindOf="standard">ʔis~θaa</PHON>
             <TRANSL xml:lang="zho">那</TRANSL>
             <TRANSL xml:lang="eng">that</TRANSL>
-            <M id="SaiNr-Molaw_S_16_W0_M0_0">
+            <M id="SaiNr-Molaw_S_16_W0M1">
                 <FORM kindOf="original">'isaa</FORM>
                 <PHON kindOf="original">ʔis~θaa</PHON>
                 <FORM kindOf="standard">'isaa</FORM>
@@ -2998,7 +2998,7 @@
             <PHON kindOf="standard">roʃaʔ</PHON>
             <TRANSL xml:lang="zho">兩</TRANSL>
             <TRANSL xml:lang="eng">two</TRANSL>
-            <M id="SaiNr-Molaw_S_16_W1_M0_0">
+            <M id="SaiNr-Molaw_S_16_W1M1">
                 <FORM kindOf="original">roSa'</FORM>
                 <PHON kindOf="original">roʃaʔ</PHON>
                 <FORM kindOf="standard">roSa'</FORM>
@@ -3014,7 +3014,7 @@
             <PHON kindOf="standard">ʔam</PHON>
             <TRANSL xml:lang="zho">未來</TRANSL>
             <TRANSL xml:lang="eng">FUT</TRANSL>
-            <M id="SaiNr-Molaw_S_16_W2_M0_0">
+            <M id="SaiNr-Molaw_S_16_W2M1">
                 <FORM kindOf="original">'am</FORM>
                 <PHON kindOf="original">ʔam</PHON>
                 <FORM kindOf="standard">'am</FORM>
@@ -3030,7 +3030,7 @@
             <PHON kindOf="standard">hajnoʔ</PHON>
             <TRANSL xml:lang="zho">哪一個</TRANSL>
             <TRANSL xml:lang="eng">which</TRANSL>
-            <M id="SaiNr-Molaw_S_16_W3_M0_0">
+            <M id="SaiNr-Molaw_S_16_W3M1">
                 <FORM kindOf="original">hayno'</FORM>
                 <PHON kindOf="original">hajnoʔ</PHON>
                 <FORM kindOf="standard">hayno'</FORM>
@@ -3046,7 +3046,7 @@
             <PHON kindOf="standard">kajz~ðæh</PHON>
             <TRANSL xml:lang="zho">好.主焦</TRANSL>
             <TRANSL xml:lang="eng">good.AG</TRANSL>
-            <M id="SaiNr-Molaw_S_16_W4_M0_0">
+            <M id="SaiNr-Molaw_S_16_W4M1">
                 <FORM kindOf="original">kayzaeh</FORM>
                 <PHON kindOf="original">kajz~ðæh</PHON>
                 <FORM kindOf="standard">kayzaeh</FORM>
@@ -3070,7 +3070,7 @@
             <PHON kindOf="standard">ʔis~θahiz~ða</PHON>
             <TRANSL xml:lang="zho">那個</TRANSL>
             <TRANSL xml:lang="eng">that</TRANSL>
-            <M id="SaiNr-Molaw_S_17_W0_M0_0">
+            <M id="SaiNr-Molaw_S_17_W0M1">
                 <FORM kindOf="original">'isahiza</FORM>
                 <PHON kindOf="original">ʔis~θahiz~ða</PHON>
                 <FORM kindOf="standard">'isahiza</FORM>
@@ -3086,7 +3086,7 @@
             <PHON kindOf="standard">mæʔijæh</PHON>
             <TRANSL xml:lang="zho">人</TRANSL>
             <TRANSL xml:lang="eng">person</TRANSL>
-            <M id="SaiNr-Molaw_S_17_W1_M0_0">
+            <M id="SaiNr-Molaw_S_17_W1M1">
                 <FORM kindOf="original">mae'iyaeh</FORM>
                 <PHON kindOf="original">mæʔijæh</PHON>
                 <FORM kindOf="standard">mae'iyaeh</FORM>
@@ -3102,7 +3102,7 @@
             <PHON kindOf="standard">ʔam</PHON>
             <TRANSL xml:lang="zho">未來</TRANSL>
             <TRANSL xml:lang="eng">FUT</TRANSL>
-            <M id="SaiNr-Molaw_S_17_W2_M0_0">
+            <M id="SaiNr-Molaw_S_17_W2M1">
                 <FORM kindOf="original">'am</FORM>
                 <PHON kindOf="original">ʔam</PHON>
                 <FORM kindOf="standard">'am</FORM>
@@ -3118,7 +3118,7 @@
             <PHON kindOf="standard">m-olaw</PHON>
             <TRANSL xml:lang="zho">主焦-蛻皮</TRANSL>
             <TRANSL xml:lang="eng">AF-molt</TRANSL>
-            <M id="SaiNr-Molaw_S_17_W3_M0_0">
+            <M id="SaiNr-Molaw_S_17_W3M1">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
@@ -3126,7 +3126,7 @@
                 <TRANSL xml:lang="eng">AF</TRANSL>
                 <TRANSL xml:lang="zho">主焦</TRANSL>
             </M>
-            <M id="SaiNr-Molaw_S_17_W3_M1_0">
+            <M id="SaiNr-Molaw_S_17_W3M2">
                 <FORM kindOf="original">olaw</FORM>
                 <PHON kindOf="original">olaw</PHON>
                 <FORM kindOf="standard">olaw</FORM>
@@ -3142,7 +3142,7 @@
             <PHON kindOf="standard">s~θa</PHON>
             <TRANSL xml:lang="zho">SA</TRANSL>
             <TRANSL xml:lang="eng">SA</TRANSL>
-            <M id="SaiNr-Molaw_S_17_W4_M0_0">
+            <M id="SaiNr-Molaw_S_17_W4M1">
                 <FORM kindOf="original">sa</FORM>
                 <PHON kindOf="original">s~θa</PHON>
                 <FORM kindOf="standard">sa</FORM>
@@ -3158,7 +3158,7 @@
             <PHON kindOf="standard">m-ajakai</PHON>
             <TRANSL xml:lang="zho">主焦-告訴</TRANSL>
             <TRANSL xml:lang="eng">AF-say</TRANSL>
-            <M id="SaiNr-Molaw_S_17_W5_M0_0">
+            <M id="SaiNr-Molaw_S_17_W5M1">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
@@ -3166,7 +3166,7 @@
                 <TRANSL xml:lang="eng">AF</TRANSL>
                 <TRANSL xml:lang="zho">主焦</TRANSL>
             </M>
-            <M id="SaiNr-Molaw_S_17_W5_M1_0">
+            <M id="SaiNr-Molaw_S_17_W5M2">
                 <FORM kindOf="original">ayakai</FORM>
                 <PHON kindOf="original">ajakai</PHON>
                 <FORM kindOf="standard">ayakai</FORM>
@@ -3182,7 +3182,7 @@
             <PHON kindOf="standard">koʃa</PHON>
             <TRANSL xml:lang="zho">說.主焦</TRANSL>
             <TRANSL xml:lang="eng">say.主焦</TRANSL>
-            <M id="SaiNr-Molaw_S_17_W6_M0_0">
+            <M id="SaiNr-Molaw_S_17_W6M1">
                 <FORM kindOf="original">koSa</FORM>
                 <PHON kindOf="original">koʃa</PHON>
                 <FORM kindOf="standard">koSa</FORM>
@@ -3198,7 +3198,7 @@
             <PHON kindOf="standard">s~θaʔœwaz~ð</PHON>
             <TRANSL xml:lang="zho">真</TRANSL>
             <TRANSL xml:lang="eng">truly</TRANSL>
-            <M id="SaiNr-Molaw_S_17_W7_M0_0">
+            <M id="SaiNr-Molaw_S_17_W7M1">
                 <FORM kindOf="original">sa'oewaz</FORM>
                 <PHON kindOf="original">s~θaʔœwaz~ð</PHON>
                 <FORM kindOf="standard">sa'oewaz</FORM>
@@ -3222,7 +3222,7 @@
             <PHON kindOf="standard">nakhini</PHON>
             <TRANSL xml:lang="zho">像這樣</TRANSL>
             <TRANSL xml:lang="eng">like.this</TRANSL>
-            <M id="SaiNr-Molaw_S_18_W0_M0_0">
+            <M id="SaiNr-Molaw_S_18_W0M1">
                 <FORM kindOf="original">nakhini</FORM>
                 <PHON kindOf="original">nakhini</PHON>
                 <FORM kindOf="standard">nakhini</FORM>
@@ -3238,7 +3238,7 @@
             <PHON kindOf="standard">mina</PHON>
             <TRANSL xml:lang="zho">MINA</TRANSL>
             <TRANSL xml:lang="eng">MINA</TRANSL>
-            <M id="SaiNr-Molaw_S_18_W1_M0_0">
+            <M id="SaiNr-Molaw_S_18_W1M1">
                 <FORM kindOf="original">mina</FORM>
                 <PHON kindOf="original">mina</PHON>
                 <FORM kindOf="standard">mina</FORM>
@@ -3254,7 +3254,7 @@
             <PHON kindOf="standard">hœpaj</PHON>
             <TRANSL xml:lang="zho">累.主焦</TRANSL>
             <TRANSL xml:lang="eng">tiring.AF</TRANSL>
-            <M id="SaiNr-Molaw_S_18_W2_M0_0">
+            <M id="SaiNr-Molaw_S_18_W2M1">
                 <FORM kindOf="original">hoepay</FORM>
                 <PHON kindOf="original">hœpaj</PHON>
                 <FORM kindOf="standard">hoepay</FORM>
@@ -3270,7 +3270,7 @@
             <PHON kindOf="standard">ʔatomalan</PHON>
             <TRANSL xml:lang="zho">非常</TRANSL>
             <TRANSL xml:lang="eng">very</TRANSL>
-            <M id="SaiNr-Molaw_S_18_W3_M0_0">
+            <M id="SaiNr-Molaw_S_18_W3M1">
                 <FORM kindOf="original">'atomalan</FORM>
                 <PHON kindOf="original">ʔatomalan</PHON>
                 <FORM kindOf="standard">'atomalan</FORM>
@@ -3294,7 +3294,7 @@
             <PHON kindOf="standard">m-olaw</PHON>
             <TRANSL xml:lang="zho">主焦.蛻皮</TRANSL>
             <TRANSL xml:lang="eng">AF-molt</TRANSL>
-            <M id="SaiNr-Molaw_S_19_W0_M0_0">
+            <M id="SaiNr-Molaw_S_19_W0M1">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
@@ -3302,7 +3302,7 @@
                 <TRANSL xml:lang="eng">AF</TRANSL>
                 <TRANSL xml:lang="zho">主焦.蛻皮</TRANSL>
             </M>
-            <M id="SaiNr-Molaw_S_19_W0_M1_0">
+            <M id="SaiNr-Molaw_S_19_W0M2">
                 <FORM kindOf="original">olaw</FORM>
                 <PHON kindOf="original">olaw</PHON>
                 <FORM kindOf="standard">olaw</FORM>
@@ -3318,7 +3318,7 @@
             <PHON kindOf="standard">βiʃβiʃ</PHON>
             <TRANSL xml:lang="zho">累.主焦</TRANSL>
             <TRANSL xml:lang="eng">painful.AF</TRANSL>
-            <M id="SaiNr-Molaw_S_19_W1_M0_0">
+            <M id="SaiNr-Molaw_S_19_W1M1">
                 <FORM kindOf="original">biSbiS</FORM>
                 <PHON kindOf="original">βiʃβiʃ</PHON>
                 <FORM kindOf="standard">biSbiS</FORM>
@@ -3334,7 +3334,7 @@
             <PHON kindOf="standard">ʔatomalan</PHON>
             <TRANSL xml:lang="zho">非常</TRANSL>
             <TRANSL xml:lang="eng">very</TRANSL>
-            <M id="SaiNr-Molaw_S_19_W2_M0_0">
+            <M id="SaiNr-Molaw_S_19_W2M1">
                 <FORM kindOf="original">'atomalan</FORM>
                 <PHON kindOf="original">ʔatomalan</PHON>
                 <FORM kindOf="standard">'atomalan</FORM>
@@ -3350,7 +3350,7 @@
             <PHON kindOf="standard">hœnæhŋə</PHON>
             <TRANSL xml:lang="zho">久.主焦</TRANSL>
             <TRANSL xml:lang="eng">long.time.AF</TRANSL>
-            <M id="SaiNr-Molaw_S_19_W3_M0_0">
+            <M id="SaiNr-Molaw_S_19_W3M1">
                 <FORM kindOf="original">hoenaehnge</FORM>
                 <PHON kindOf="original">hœnæhŋə</PHON>
                 <FORM kindOf="standard">hoenaehnge</FORM>
@@ -3366,7 +3366,7 @@
             <PHON kindOf="standard">ʔatomal</PHON>
             <TRANSL xml:lang="zho">非常</TRANSL>
             <TRANSL xml:lang="eng">very</TRANSL>
-            <M id="SaiNr-Molaw_S_19_W4_M0_0">
+            <M id="SaiNr-Molaw_S_19_W4M1">
                 <FORM kindOf="original">'atomal</FORM>
                 <PHON kindOf="original">ʔatomal</PHON>
                 <FORM kindOf="standard">'atomal</FORM>
@@ -3390,7 +3390,7 @@
             <PHON kindOf="standard">hœpaj</PHON>
             <TRANSL xml:lang="zho">主焦.累</TRANSL>
             <TRANSL xml:lang="eng">AF.tiring</TRANSL>
-            <M id="SaiNr-Molaw_S_20_W0_M0_0">
+            <M id="SaiNr-Molaw_S_20_W0M1">
                 <FORM kindOf="original">hoepay</FORM>
                 <PHON kindOf="original">hœpaj</PHON>
                 <FORM kindOf="standard">hoepay</FORM>
@@ -3406,7 +3406,7 @@
             <PHON kindOf="standard">ʔatomal</PHON>
             <TRANSL xml:lang="zho">非常</TRANSL>
             <TRANSL xml:lang="eng">very</TRANSL>
-            <M id="SaiNr-Molaw_S_20_W1_M0_0">
+            <M id="SaiNr-Molaw_S_20_W1M1">
                 <FORM kindOf="original">'atomal</FORM>
                 <PHON kindOf="original">ʔatomal</PHON>
                 <FORM kindOf="standard">'atomal</FORM>
@@ -3422,7 +3422,7 @@
             <PHON kindOf="standard">mas~θaj</PHON>
             <TRANSL xml:lang="zho">主焦.死</TRANSL>
             <TRANSL xml:lang="eng">AF.die</TRANSL>
-            <M id="SaiNr-Molaw_S_20_W2_M0_0">
+            <M id="SaiNr-Molaw_S_20_W2M1">
                 <FORM kindOf="original">masay</FORM>
                 <PHON kindOf="original">mas~θaj</PHON>
                 <FORM kindOf="standard">masay</FORM>
@@ -3438,7 +3438,7 @@
             <PHON kindOf="standard">ʔam</PHON>
             <TRANSL xml:lang="zho">未來</TRANSL>
             <TRANSL xml:lang="eng">FUT</TRANSL>
-            <M id="SaiNr-Molaw_S_20_W3_M0_0">
+            <M id="SaiNr-Molaw_S_20_W3M1">
                 <FORM kindOf="original">'am</FORM>
                 <PHON kindOf="original">ʔam</PHON>
                 <FORM kindOf="standard">'am</FORM>
@@ -3454,7 +3454,7 @@
             <PHON kindOf="standard">kajz~ðæh</PHON>
             <TRANSL xml:lang="zho">主焦.好</TRANSL>
             <TRANSL xml:lang="eng">AF.good</TRANSL>
-            <M id="SaiNr-Molaw_S_20_W4_M0_0">
+            <M id="SaiNr-Molaw_S_20_W4M1">
                 <FORM kindOf="original">kayzaeh</FORM>
                 <PHON kindOf="original">kajz~ðæh</PHON>
                 <FORM kindOf="standard">kayzaeh</FORM>
@@ -3478,7 +3478,7 @@
             <PHON kindOf="standard">las~θia</PHON>
             <TRANSL xml:lang="zho">3PL.主格</TRANSL>
             <TRANSL xml:lang="eng">3PL.NOM</TRANSL>
-            <M id="SaiNr-Molaw_S_21_W0_M0_0">
+            <M id="SaiNr-Molaw_S_21_W0M1">
                 <FORM kindOf="original">lasia</FORM>
                 <PHON kindOf="original">las~θia</PHON>
                 <FORM kindOf="standard">lasia</FORM>
@@ -3494,7 +3494,7 @@
             <PHON kindOf="standard">ma</PHON>
             <TRANSL xml:lang="zho">FIL</TRANSL>
             <TRANSL xml:lang="eng">FIL</TRANSL>
-            <M id="SaiNr-Molaw_S_21_W1_M0_0">
+            <M id="SaiNr-Molaw_S_21_W1M1">
                 <FORM kindOf="original">ma</FORM>
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
@@ -3510,7 +3510,7 @@
             <PHON kindOf="standard">koʃa</PHON>
             <TRANSL xml:lang="zho">說.主焦</TRANSL>
             <TRANSL xml:lang="eng">say.AF</TRANSL>
-            <M id="SaiNr-Molaw_S_21_W2_M0_0">
+            <M id="SaiNr-Molaw_S_21_W2M1">
                 <FORM kindOf="original">koSa</FORM>
                 <PHON kindOf="original">koʃa</PHON>
                 <FORM kindOf="standard">koSa</FORM>
@@ -3526,7 +3526,7 @@
             <PHON kindOf="standard">mas~θaj</PHON>
             <TRANSL xml:lang="zho">死</TRANSL>
             <TRANSL xml:lang="eng">die</TRANSL>
-            <M id="SaiNr-Molaw_S_21_W3_M0_0">
+            <M id="SaiNr-Molaw_S_21_W3M1">
                 <FORM kindOf="original">masay</FORM>
                 <PHON kindOf="original">mas~θaj</PHON>
                 <FORM kindOf="standard">masay</FORM>
@@ -3542,7 +3542,7 @@
             <PHON kindOf="standard">ʔam</PHON>
             <TRANSL xml:lang="zho">未來</TRANSL>
             <TRANSL xml:lang="eng">FUT</TRANSL>
-            <M id="SaiNr-Molaw_S_21_W4_M0_0">
+            <M id="SaiNr-Molaw_S_21_W4M1">
                 <FORM kindOf="original">'am</FORM>
                 <PHON kindOf="original">ʔam</PHON>
                 <FORM kindOf="standard">'am</FORM>
@@ -3558,7 +3558,7 @@
             <PHON kindOf="standard">kajz~ðæh</PHON>
             <TRANSL xml:lang="zho">主焦.好</TRANSL>
             <TRANSL xml:lang="eng">AF.good</TRANSL>
-            <M id="SaiNr-Molaw_S_21_W5_M0_0">
+            <M id="SaiNr-Molaw_S_21_W5M1">
                 <FORM kindOf="original">kayzaeh</FORM>
                 <PHON kindOf="original">kajz~ðæh</PHON>
                 <FORM kindOf="standard">kayzaeh</FORM>
@@ -3574,7 +3574,7 @@
             <PHON kindOf="standard">raamən</PHON>
             <TRANSL xml:lang="zho">可能</TRANSL>
             <TRANSL xml:lang="eng">probably</TRANSL>
-            <M id="SaiNr-Molaw_S_21_W6_M0_0">
+            <M id="SaiNr-Molaw_S_21_W6M1">
                 <FORM kindOf="original">raamen</FORM>
                 <PHON kindOf="original">raamən</PHON>
                 <FORM kindOf="standard">raamen</FORM>
@@ -3598,7 +3598,7 @@
             <PHON kindOf="standard">ʔokaʔ</PHON>
             <TRANSL xml:lang="zho">否定</TRANSL>
             <TRANSL xml:lang="eng">NEG</TRANSL>
-            <M id="SaiNr-Molaw_S_22_W0_M0_0">
+            <M id="SaiNr-Molaw_S_22_W0M1">
                 <FORM kindOf="original">'oka'</FORM>
                 <PHON kindOf="original">ʔokaʔ</PHON>
                 <FORM kindOf="standard">'oka'</FORM>
@@ -3614,7 +3614,7 @@
             <PHON kindOf="standard">ila</PHON>
             <TRANSL xml:lang="zho">完成</TRANSL>
             <TRANSL xml:lang="eng">PFV</TRANSL>
-            <M id="SaiNr-Molaw_S_22_W1_M0_0">
+            <M id="SaiNr-Molaw_S_22_W1M1">
                 <FORM kindOf="original">ila</FORM>
                 <PHON kindOf="original">ila</PHON>
                 <FORM kindOf="standard">ila</FORM>
@@ -3630,7 +3630,7 @@
             <PHON kindOf="standard">ka</PHON>
             <TRANSL xml:lang="zho">受格</TRANSL>
             <TRANSL xml:lang="eng">ACC</TRANSL>
-            <M id="SaiNr-Molaw_S_22_W2_M0_0">
+            <M id="SaiNr-Molaw_S_22_W2M1">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
@@ -3646,7 +3646,7 @@
             <PHON kindOf="standard">kinhœpaj</PHON>
             <TRANSL xml:lang="zho">累</TRANSL>
             <TRANSL xml:lang="eng">tiring</TRANSL>
-            <M id="SaiNr-Molaw_S_22_W3_M0_0">
+            <M id="SaiNr-Molaw_S_22_W3M1">
                 <FORM kindOf="original">kinhoepay</FORM>
                 <PHON kindOf="original">kinhœpaj</PHON>
                 <FORM kindOf="standard">kinhoepay</FORM>
@@ -3670,7 +3670,7 @@
             <PHON kindOf="standard">ʔis~θaa</PHON>
             <TRANSL xml:lang="zho">DM</TRANSL>
             <TRANSL xml:lang="eng">DM</TRANSL>
-            <M id="SaiNr-Molaw_S_23_W0_M0_0">
+            <M id="SaiNr-Molaw_S_23_W0M1">
                 <FORM kindOf="original">'isaa</FORM>
                 <PHON kindOf="original">ʔis~θaa</PHON>
                 <FORM kindOf="standard">'isaa</FORM>
@@ -3686,7 +3686,7 @@
             <PHON kindOf="standard">ʔinaj</PHON>
             <TRANSL xml:lang="zho">從</TRANSL>
             <TRANSL xml:lang="eng">from</TRANSL>
-            <M id="SaiNr-Molaw_S_23_W1_M0_0">
+            <M id="SaiNr-Molaw_S_23_W1M1">
                 <FORM kindOf="original">'inay</FORM>
                 <PHON kindOf="original">ʔinaj</PHON>
                 <FORM kindOf="standard">'inay</FORM>
@@ -3702,7 +3702,7 @@
             <PHON kindOf="standard">ʔis~θaa</PHON>
             <TRANSL xml:lang="zho">那</TRANSL>
             <TRANSL xml:lang="eng">that</TRANSL>
-            <M id="SaiNr-Molaw_S_23_W2_M0_0">
+            <M id="SaiNr-Molaw_S_23_W2M1">
                 <FORM kindOf="original">'isaa</FORM>
                 <PHON kindOf="original">ʔis~θaa</PHON>
                 <FORM kindOf="standard">'isaa</FORM>
@@ -3718,7 +3718,7 @@
             <PHON kindOf="standard">koʃaʔən</PHON>
             <TRANSL xml:lang="zho">DM</TRANSL>
             <TRANSL xml:lang="eng">DM</TRANSL>
-            <M id="SaiNr-Molaw_S_23_W3_M0_0">
+            <M id="SaiNr-Molaw_S_23_W3M1">
                 <FORM kindOf="original">koSa'en</FORM>
                 <PHON kindOf="original">koʃaʔən</PHON>
                 <FORM kindOf="standard">koSa'en</FORM>
@@ -3734,7 +3734,7 @@
             <PHON kindOf="standard">ka</PHON>
             <TRANSL xml:lang="zho">FIL</TRANSL>
             <TRANSL xml:lang="eng">FIL</TRANSL>
-            <M id="SaiNr-Molaw_S_23_W4_M0_0">
+            <M id="SaiNr-Molaw_S_23_W4M1">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
@@ -3750,7 +3750,7 @@
             <PHON kindOf="standard">mæʔijæh</PHON>
             <TRANSL xml:lang="zho">人</TRANSL>
             <TRANSL xml:lang="eng">person</TRANSL>
-            <M id="SaiNr-Molaw_S_23_W5_M0_0">
+            <M id="SaiNr-Molaw_S_23_W5M1">
                 <FORM kindOf="original">mae'iyaeh</FORM>
                 <PHON kindOf="original">mæʔijæh</PHON>
                 <FORM kindOf="standard">mae'iyaeh</FORM>
@@ -3766,7 +3766,7 @@
             <PHON kindOf="standard">ʃaiʃijat</PHON>
             <TRANSL xml:lang="zho">賽夏人</TRANSL>
             <TRANSL xml:lang="eng">PN</TRANSL>
-            <M id="SaiNr-Molaw_S_23_W6_M0_0">
+            <M id="SaiNr-Molaw_S_23_W6M1">
                 <FORM kindOf="original">SaiSiyat</FORM>
                 <PHON kindOf="original">ʃaiʃijat</PHON>
                 <FORM kindOf="standard">SaiSiyat</FORM>
@@ -3782,7 +3782,7 @@
             <PHON kindOf="standard">taβin</PHON>
             <TRANSL xml:lang="zho">到</TRANSL>
             <TRANSL xml:lang="eng">until</TRANSL>
-            <M id="SaiNr-Molaw_S_23_W7_M0_0">
+            <M id="SaiNr-Molaw_S_23_W7M1">
                 <FORM kindOf="original">tabin</FORM>
                 <PHON kindOf="original">taβin</PHON>
                 <FORM kindOf="standard">tabin</FORM>
@@ -3798,7 +3798,7 @@
             <PHON kindOf="standard">hajs~θani</PHON>
             <TRANSL xml:lang="zho">現在</TRANSL>
             <TRANSL xml:lang="eng">now</TRANSL>
-            <M id="SaiNr-Molaw_S_23_W8_M0_0">
+            <M id="SaiNr-Molaw_S_23_W8M1">
                 <FORM kindOf="original">haysani</FORM>
                 <PHON kindOf="original">hajs~θani</PHON>
                 <FORM kindOf="standard">haysani</FORM>
@@ -3814,7 +3814,7 @@
             <PHON kindOf="standard">okaʔ</PHON>
             <TRANSL xml:lang="zho">否定</TRANSL>
             <TRANSL xml:lang="eng">NEG</TRANSL>
-            <M id="SaiNr-Molaw_S_23_W9_M0_0">
+            <M id="SaiNr-Molaw_S_23_W9M1">
                 <FORM kindOf="original">oka'</FORM>
                 <PHON kindOf="original">okaʔ</PHON>
                 <FORM kindOf="standard">oka'</FORM>
@@ -3830,7 +3830,7 @@
             <PHON kindOf="standard">ila</PHON>
             <TRANSL xml:lang="zho">完成</TRANSL>
             <TRANSL xml:lang="eng">PFV</TRANSL>
-            <M id="SaiNr-Molaw_S_23_W10_M0_0">
+            <M id="SaiNr-Molaw_S_23_W10M1">
                 <FORM kindOf="original">ila</FORM>
                 <PHON kindOf="original">ila</PHON>
                 <FORM kindOf="standard">ila</FORM>
@@ -3846,7 +3846,7 @@
             <PHON kindOf="standard">i</PHON>
             <TRANSL xml:lang="zho">I:</TRANSL>
             <TRANSL xml:lang="eng">I:</TRANSL>
-            <M id="SaiNr-Molaw_S_23_W11_M0_0">
+            <M id="SaiNr-Molaw_S_23_W11M1">
                 <FORM kindOf="original">i</FORM>
                 <PHON kindOf="original">i</PHON>
                 <FORM kindOf="standard">i</FORM>
@@ -3862,7 +3862,7 @@
             <PHON kindOf="standard">olaw</PHON>
             <TRANSL xml:lang="zho">蛻皮.主焦</TRANSL>
             <TRANSL xml:lang="eng">molt.AF</TRANSL>
-            <M id="SaiNr-Molaw_S_23_W12_M0_0">
+            <M id="SaiNr-Molaw_S_23_W12M1">
                 <FORM kindOf="original">olaw</FORM>
                 <PHON kindOf="original">olaw</PHON>
                 <FORM kindOf="standard">olaw</FORM>
@@ -3886,7 +3886,7 @@
             <PHON kindOf="standard">ʔis~θaa</PHON>
             <TRANSL xml:lang="zho">DM</TRANSL>
             <TRANSL xml:lang="eng">DM</TRANSL>
-            <M id="SaiNr-Molaw_S_24_W0_M0_0">
+            <M id="SaiNr-Molaw_S_24_W0M1">
                 <FORM kindOf="original">'isaa</FORM>
                 <PHON kindOf="original">ʔis~θaa</PHON>
                 <FORM kindOf="standard">'isaa</FORM>
@@ -3902,7 +3902,7 @@
             <PHON kindOf="standard">ʃo</PHON>
             <TRANSL xml:lang="zho">條件詞</TRANSL>
             <TRANSL xml:lang="eng">COND</TRANSL>
-            <M id="SaiNr-Molaw_S_24_W1_M0_0">
+            <M id="SaiNr-Molaw_S_24_W1M1">
                 <FORM kindOf="original">So</FORM>
                 <PHON kindOf="original">ʃo</PHON>
                 <FORM kindOf="standard">So</FORM>
@@ -3918,7 +3918,7 @@
             <PHON kindOf="standard">tatiniʔ</PHON>
             <TRANSL xml:lang="zho">老</TRANSL>
             <TRANSL xml:lang="eng">grow.old</TRANSL>
-            <M id="SaiNr-Molaw_S_24_W2_M0_0">
+            <M id="SaiNr-Molaw_S_24_W2M1">
                 <FORM kindOf="original">tatini'</FORM>
                 <PHON kindOf="original">tatiniʔ</PHON>
                 <FORM kindOf="standard">tatini'</FORM>
@@ -3934,7 +3934,7 @@
             <PHON kindOf="standard">ila</PHON>
             <TRANSL xml:lang="zho">完成</TRANSL>
             <TRANSL xml:lang="eng">PFV</TRANSL>
-            <M id="SaiNr-Molaw_S_24_W3_M0_0">
+            <M id="SaiNr-Molaw_S_24_W3M1">
                 <FORM kindOf="original">ila</FORM>
                 <PHON kindOf="original">ila</PHON>
                 <FORM kindOf="standard">ila</FORM>
@@ -3950,7 +3950,7 @@
             <PHON kindOf="standard">maʔ</PHON>
             <TRANSL xml:lang="zho">也</TRANSL>
             <TRANSL xml:lang="eng">also</TRANSL>
-            <M id="SaiNr-Molaw_S_24_W4_M0_0">
+            <M id="SaiNr-Molaw_S_24_W4M1">
                 <FORM kindOf="original">ma'</FORM>
                 <PHON kindOf="original">maʔ</PHON>
                 <FORM kindOf="standard">ma'</FORM>
@@ -3966,7 +3966,7 @@
             <PHON kindOf="standard">mas~θaj</PHON>
             <TRANSL xml:lang="zho">死.主焦</TRANSL>
             <TRANSL xml:lang="eng">die.AF</TRANSL>
-            <M id="SaiNr-Molaw_S_24_W5_M0_0">
+            <M id="SaiNr-Molaw_S_24_W5M1">
                 <FORM kindOf="original">masay</FORM>
                 <PHON kindOf="original">mas~θaj</PHON>
                 <FORM kindOf="standard">masay</FORM>
@@ -3982,7 +3982,7 @@
             <PHON kindOf="standard">ila</PHON>
             <TRANSL xml:lang="zho">完成</TRANSL>
             <TRANSL xml:lang="eng">PFV</TRANSL>
-            <M id="SaiNr-Molaw_S_24_W6_M0_0">
+            <M id="SaiNr-Molaw_S_24_W6M1">
                 <FORM kindOf="original">ila</FORM>
                 <PHON kindOf="original">ila</PHON>
                 <FORM kindOf="standard">ila</FORM>
@@ -4006,7 +4006,7 @@
             <PHON kindOf="standard">ʔis~θaa</PHON>
             <TRANSL xml:lang="zho">那個</TRANSL>
             <TRANSL xml:lang="eng">that</TRANSL>
-            <M id="SaiNr-Molaw_S_25_W0_M0_0">
+            <M id="SaiNr-Molaw_S_25_W0M1">
                 <FORM kindOf="original">'isaa</FORM>
                 <PHON kindOf="original">ʔis~θaa</PHON>
                 <FORM kindOf="standard">'isaa</FORM>
@@ -4022,7 +4022,7 @@
             <PHON kindOf="standard">papaj</PHON>
             <TRANSL xml:lang="zho">到</TRANSL>
             <TRANSL xml:lang="eng">until</TRANSL>
-            <M id="SaiNr-Molaw_S_25_W1_M0_0">
+            <M id="SaiNr-Molaw_S_25_W1M1">
                 <FORM kindOf="original">papay</FORM>
                 <PHON kindOf="original">papaj</PHON>
                 <FORM kindOf="standard">papay</FORM>
@@ -4038,7 +4038,7 @@
             <PHON kindOf="standard">ka-pan-panaβih</PHON>
             <TRANSL xml:lang="zho">未來-重疊-說</TRANSL>
             <TRANSL xml:lang="eng">FUT-RED-say</TRANSL>
-            <M id="SaiNr-Molaw_S_25_W2_M0_0">
+            <M id="SaiNr-Molaw_S_25_W2M1">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
@@ -4046,7 +4046,7 @@
                 <TRANSL xml:lang="eng">FUT</TRANSL>
                 <TRANSL xml:lang="zho">未來</TRANSL>
             </M>
-            <M id="SaiNr-Molaw_S_25_W2_M1_0">
+            <M id="SaiNr-Molaw_S_25_W2M2">
                 <FORM kindOf="original">pan</FORM>
                 <PHON kindOf="original">pan</PHON>
                 <FORM kindOf="standard">pan</FORM>
@@ -4054,7 +4054,7 @@
                 <TRANSL xml:lang="eng">RED</TRANSL>
                 <TRANSL xml:lang="zho">重疊</TRANSL>
             </M>
-            <M id="SaiNr-Molaw_S_25_W2_M2_0">
+            <M id="SaiNr-Molaw_S_25_W2M3">
                 <FORM kindOf="original">panabih</FORM>
                 <PHON kindOf="original">panaβih</PHON>
                 <FORM kindOf="standard">panabih</FORM>
@@ -4070,7 +4070,7 @@
             <PHON kindOf="standard">koʃa</PHON>
             <TRANSL xml:lang="zho">&lt;主焦&gt;說</TRANSL>
             <TRANSL xml:lang="eng">say</TRANSL>
-            <M id="SaiNr-Molaw_S_25_W3_M0_0">
+            <M id="SaiNr-Molaw_S_25_W3M1">
                 <FORM kindOf="original">koSa</FORM>
                 <PHON kindOf="original">koʃa</PHON>
                 <FORM kindOf="standard">koSa</FORM>
@@ -4086,7 +4086,7 @@
             <PHON kindOf="standard">koʃaʔ-ən</PHON>
             <TRANSL xml:lang="zho">說-受焦</TRANSL>
             <TRANSL xml:lang="eng">say-PF</TRANSL>
-            <M id="SaiNr-Molaw_S_25_W4_M0_0">
+            <M id="SaiNr-Molaw_S_25_W4M1">
                 <FORM kindOf="original">koSa'</FORM>
                 <PHON kindOf="original">koʃaʔ</PHON>
                 <FORM kindOf="standard">koSa'</FORM>
@@ -4094,7 +4094,7 @@
                 <TRANSL xml:lang="eng">say</TRANSL>
                 <TRANSL xml:lang="zho">說</TRANSL>
             </M>
-            <M id="SaiNr-Molaw_S_25_W4_M1_0">
+            <M id="SaiNr-Molaw_S_25_W4M2">
                 <FORM kindOf="original">en</FORM>
                 <PHON kindOf="original">ən</PHON>
                 <FORM kindOf="standard">en</FORM>
@@ -4110,7 +4110,7 @@
             <PHON kindOf="standard">mæʔijæh</PHON>
             <TRANSL xml:lang="zho">人</TRANSL>
             <TRANSL xml:lang="eng">person</TRANSL>
-            <M id="SaiNr-Molaw_S_25_W5_M0_0">
+            <M id="SaiNr-Molaw_S_25_W5M1">
                 <FORM kindOf="original">mae'iyaeh</FORM>
                 <PHON kindOf="original">mæʔijæh</PHON>
                 <FORM kindOf="standard">mae'iyaeh</FORM>
@@ -4126,7 +4126,7 @@
             <PHON kindOf="standard">kakhajz~ðaʔan</PHON>
             <TRANSL xml:lang="zho">以前</TRANSL>
             <TRANSL xml:lang="eng">before</TRANSL>
-            <M id="SaiNr-Molaw_S_25_W6_M0_0">
+            <M id="SaiNr-Molaw_S_25_W6M1">
                 <FORM kindOf="original">kakhayza'an</FORM>
                 <PHON kindOf="original">kakhajz~ðaʔan</PHON>
                 <FORM kindOf="standard">kakhayza'an</FORM>
@@ -4142,7 +4142,7 @@
             <PHON kindOf="standard">naw</PHON>
             <TRANSL xml:lang="zho">只</TRANSL>
             <TRANSL xml:lang="eng">only</TRANSL>
-            <M id="SaiNr-Molaw_S_25_W7_M0_0">
+            <M id="SaiNr-Molaw_S_25_W7M1">
                 <FORM kindOf="original">naw</FORM>
                 <PHON kindOf="original">naw</PHON>
                 <FORM kindOf="standard">naw</FORM>
@@ -4158,7 +4158,7 @@
             <PHON kindOf="standard">ina</PHON>
             <TRANSL xml:lang="zho">經驗</TRANSL>
             <TRANSL xml:lang="eng">EXPER</TRANSL>
-            <M id="SaiNr-Molaw_S_25_W8_M0_0">
+            <M id="SaiNr-Molaw_S_25_W8M1">
                 <FORM kindOf="original">ina</FORM>
                 <PHON kindOf="original">ina</PHON>
                 <FORM kindOf="standard">ina</FORM>
@@ -4174,7 +4174,7 @@
             <PHON kindOf="standard">narməʃ</PHON>
             <TRANSL xml:lang="zho">忍耐.主焦</TRANSL>
             <TRANSL xml:lang="eng">be.patient.AF</TRANSL>
-            <M id="SaiNr-Molaw_S_25_W9_M0_0">
+            <M id="SaiNr-Molaw_S_25_W9M1">
                 <FORM kindOf="original">narmeS</FORM>
                 <PHON kindOf="original">narməʃ</PHON>
                 <FORM kindOf="standard">narmeS</FORM>
@@ -4190,7 +4190,7 @@
             <PHON kindOf="standard">kin</PHON>
             <TRANSL xml:lang="zho">非常</TRANSL>
             <TRANSL xml:lang="eng">very</TRANSL>
-            <M id="SaiNr-Molaw_S_25_W10_M0_0">
+            <M id="SaiNr-Molaw_S_25_W10M1">
                 <FORM kindOf="original">kin</FORM>
                 <PHON kindOf="original">kin</PHON>
                 <FORM kindOf="standard">kin</FORM>
@@ -4206,7 +4206,7 @@
             <PHON kindOf="standard">βiʃβiʃ</PHON>
             <TRANSL xml:lang="zho">痛</TRANSL>
             <TRANSL xml:lang="eng">pain</TRANSL>
-            <M id="SaiNr-Molaw_S_25_W11_M0_0">
+            <M id="SaiNr-Molaw_S_25_W11M1">
                 <FORM kindOf="original">biSbiS</FORM>
                 <PHON kindOf="original">βiʃβiʃ</PHON>
                 <FORM kindOf="standard">biSbiS</FORM>
@@ -4222,7 +4222,7 @@
             <PHON kindOf="standard">o</PHON>
             <TRANSL xml:lang="zho">感嘆</TRANSL>
             <TRANSL xml:lang="eng">INT</TRANSL>
-            <M id="SaiNr-Molaw_S_25_W12_M0_0">
+            <M id="SaiNr-Molaw_S_25_W12M1">
                 <FORM kindOf="original">o</FORM>
                 <PHON kindOf="original">o</PHON>
                 <FORM kindOf="standard">o</FORM>
@@ -4238,7 +4238,7 @@
             <PHON kindOf="standard">narməʃ</PHON>
             <TRANSL xml:lang="zho">忍耐.主焦</TRANSL>
             <TRANSL xml:lang="eng">be.patient.AF</TRANSL>
-            <M id="SaiNr-Molaw_S_25_W13_M0_0">
+            <M id="SaiNr-Molaw_S_25_W13M1">
                 <FORM kindOf="original">narmeS</FORM>
                 <PHON kindOf="original">narməʃ</PHON>
                 <FORM kindOf="standard">narmeS</FORM>
@@ -4254,7 +4254,7 @@
             <PHON kindOf="standard">ka</PHON>
             <TRANSL xml:lang="zho">受格</TRANSL>
             <TRANSL xml:lang="eng">ACC</TRANSL>
-            <M id="SaiNr-Molaw_S_25_W14_M0_0">
+            <M id="SaiNr-Molaw_S_25_W14M1">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
@@ -4270,7 +4270,7 @@
             <PHON kindOf="standard">kinhœpaj</PHON>
             <TRANSL xml:lang="zho">疲累</TRANSL>
             <TRANSL xml:lang="eng">tiring</TRANSL>
-            <M id="SaiNr-Molaw_S_25_W15_M0_0">
+            <M id="SaiNr-Molaw_S_25_W15M1">
                 <FORM kindOf="original">kinhoepay</FORM>
                 <PHON kindOf="original">kinhœpaj</PHON>
                 <FORM kindOf="standard">kinhoepay</FORM>
@@ -4286,7 +4286,7 @@
             <PHON kindOf="standard">ina</PHON>
             <TRANSL xml:lang="zho">經驗</TRANSL>
             <TRANSL xml:lang="eng">EXPER</TRANSL>
-            <M id="SaiNr-Molaw_S_25_W16_M0_0">
+            <M id="SaiNr-Molaw_S_25_W16M1">
                 <FORM kindOf="original">ina</FORM>
                 <PHON kindOf="original">ina</PHON>
                 <FORM kindOf="standard">ina</FORM>
@@ -4302,7 +4302,7 @@
             <PHON kindOf="standard">m-olaw</PHON>
             <TRANSL xml:lang="zho">主焦-蛻皮</TRANSL>
             <TRANSL xml:lang="eng">AF-molt</TRANSL>
-            <M id="SaiNr-Molaw_S_25_W17_M0_0">
+            <M id="SaiNr-Molaw_S_25_W17M1">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
@@ -4310,7 +4310,7 @@
                 <TRANSL xml:lang="eng">AF</TRANSL>
                 <TRANSL xml:lang="zho">主焦</TRANSL>
             </M>
-            <M id="SaiNr-Molaw_S_25_W17_M1_0">
+            <M id="SaiNr-Molaw_S_25_W17M2">
                 <FORM kindOf="original">olaw</FORM>
                 <PHON kindOf="original">olaw</PHON>
                 <FORM kindOf="standard">olaw</FORM>
@@ -4326,7 +4326,7 @@
             <PHON kindOf="standard">taβin</PHON>
             <TRANSL xml:lang="zho">到</TRANSL>
             <TRANSL xml:lang="eng">until</TRANSL>
-            <M id="SaiNr-Molaw_S_25_W18_M0_0">
+            <M id="SaiNr-Molaw_S_25_W18M1">
                 <FORM kindOf="original">tabin</FORM>
                 <PHON kindOf="original">taβin</PHON>
                 <FORM kindOf="standard">tabin</FORM>
@@ -4342,7 +4342,7 @@
             <PHON kindOf="standard">hajs~θani</PHON>
             <TRANSL xml:lang="zho">現在</TRANSL>
             <TRANSL xml:lang="eng">now</TRANSL>
-            <M id="SaiNr-Molaw_S_25_W19_M0_0">
+            <M id="SaiNr-Molaw_S_25_W19M1">
                 <FORM kindOf="original">haysani</FORM>
                 <PHON kindOf="original">hajs~θani</PHON>
                 <FORM kindOf="standard">haysani</FORM>
@@ -4358,7 +4358,7 @@
             <PHON kindOf="standard">ʔam</PHON>
             <TRANSL xml:lang="zho">未來</TRANSL>
             <TRANSL xml:lang="eng">FUT</TRANSL>
-            <M id="SaiNr-Molaw_S_25_W20_M0_0">
+            <M id="SaiNr-Molaw_S_25_W20M1">
                 <FORM kindOf="original">'am</FORM>
                 <PHON kindOf="original">ʔam</PHON>
                 <FORM kindOf="standard">'am</FORM>
@@ -4374,7 +4374,7 @@
             <PHON kindOf="standard">koz~ðaʔ</PHON>
             <TRANSL xml:lang="zho">多少</TRANSL>
             <TRANSL xml:lang="eng">what</TRANSL>
-            <M id="SaiNr-Molaw_S_25_W21_M0_0">
+            <M id="SaiNr-Molaw_S_25_W21M1">
                 <FORM kindOf="original">koza'</FORM>
                 <PHON kindOf="original">koz~ðaʔ</PHON>
                 <FORM kindOf="standard">koza'</FORM>
@@ -4390,7 +4390,7 @@
             <PHON kindOf="standard">kinhæβææn</PHON>
             <TRANSL xml:lang="zho">非常多</TRANSL>
             <TRANSL xml:lang="eng">very.many</TRANSL>
-            <M id="SaiNr-Molaw_S_25_W22_M0_0">
+            <M id="SaiNr-Molaw_S_25_W22M1">
                 <FORM kindOf="original">kinhaebaeaen</FORM>
                 <PHON kindOf="original">kinhæβææn</PHON>
                 <FORM kindOf="standard">kinhaebaeaen</FORM>
@@ -4406,7 +4406,7 @@
             <PHON kindOf="standard">ila</PHON>
             <TRANSL xml:lang="zho">完成</TRANSL>
             <TRANSL xml:lang="eng">PFV</TRANSL>
-            <M id="SaiNr-Molaw_S_25_W23_M0_0">
+            <M id="SaiNr-Molaw_S_25_W23M1">
                 <FORM kindOf="original">ila</FORM>
                 <PHON kindOf="original">ila</PHON>
                 <FORM kindOf="standard">ila</FORM>
@@ -4430,7 +4430,7 @@
             <PHON kindOf="standard">ʔam</PHON>
             <TRANSL xml:lang="zho">未來</TRANSL>
             <TRANSL xml:lang="eng">FUT</TRANSL>
-            <M id="SaiNr-Molaw_S_26_W0_M0_0">
+            <M id="SaiNr-Molaw_S_26_W0M1">
                 <FORM kindOf="original">'am</FORM>
                 <PHON kindOf="original">ʔam</PHON>
                 <FORM kindOf="standard">'am</FORM>
@@ -4446,7 +4446,7 @@
             <PHON kindOf="standard">ʔokaʔ</PHON>
             <TRANSL xml:lang="zho">否定</TRANSL>
             <TRANSL xml:lang="eng">NEG</TRANSL>
-            <M id="SaiNr-Molaw_S_26_W1_M0_0">
+            <M id="SaiNr-Molaw_S_26_W1M1">
                 <FORM kindOf="original">'oka'</FORM>
                 <PHON kindOf="original">ʔokaʔ</PHON>
                 <FORM kindOf="standard">'oka'</FORM>
@@ -4462,7 +4462,7 @@
             <PHON kindOf="standard">ka</PHON>
             <TRANSL xml:lang="zho">受格</TRANSL>
             <TRANSL xml:lang="eng">ACC</TRANSL>
-            <M id="SaiNr-Molaw_S_26_W2_M0_0">
+            <M id="SaiNr-Molaw_S_26_W2M1">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
@@ -4478,7 +4478,7 @@
             <PHON kindOf="standard">ima</PHON>
             <TRANSL xml:lang="zho">ima</TRANSL>
             <TRANSL xml:lang="eng">ima</TRANSL>
-            <M id="SaiNr-Molaw_S_26_W3_M0_0">
+            <M id="SaiNr-Molaw_S_26_W3M1">
                 <FORM kindOf="original">ima</FORM>
                 <PHON kindOf="original">ima</PHON>
                 <FORM kindOf="standard">ima</FORM>
@@ -4494,7 +4494,7 @@
             <PHON kindOf="standard">mas~θaj</PHON>
             <TRANSL xml:lang="zho">死.主焦</TRANSL>
             <TRANSL xml:lang="eng">die.AF</TRANSL>
-            <M id="SaiNr-Molaw_S_26_W4_M0_0">
+            <M id="SaiNr-Molaw_S_26_W4M1">
                 <FORM kindOf="original">masay</FORM>
                 <PHON kindOf="original">mas~θaj</PHON>
                 <FORM kindOf="standard">masay</FORM>
@@ -4510,7 +4510,7 @@
             <PHON kindOf="standard">ʔam</PHON>
             <TRANSL xml:lang="zho">未來</TRANSL>
             <TRANSL xml:lang="eng">FUT</TRANSL>
-            <M id="SaiNr-Molaw_S_26_W5_M0_0">
+            <M id="SaiNr-Molaw_S_26_W5M1">
                 <FORM kindOf="original">'am</FORM>
                 <PHON kindOf="original">ʔam</PHON>
                 <FORM kindOf="standard">'am</FORM>
@@ -4526,7 +4526,7 @@
             <PHON kindOf="standard">twaʔiʃ</PHON>
             <TRANSL xml:lang="zho">繼續.主焦</TRANSL>
             <TRANSL xml:lang="eng">keep.on.AF</TRANSL>
-            <M id="SaiNr-Molaw_S_26_W6_M0_0">
+            <M id="SaiNr-Molaw_S_26_W6M1">
                 <FORM kindOf="original">twa'iS</FORM>
                 <PHON kindOf="original">twaʔiʃ</PHON>
                 <FORM kindOf="standard">twa'iS</FORM>
@@ -4542,7 +4542,7 @@
             <PHON kindOf="standard">m-olaw</PHON>
             <TRANSL xml:lang="zho">主焦-蛻皮</TRANSL>
             <TRANSL xml:lang="eng">AF-molt</TRANSL>
-            <M id="SaiNr-Molaw_S_26_W7_M0_0">
+            <M id="SaiNr-Molaw_S_26_W7M1">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
@@ -4550,7 +4550,7 @@
                 <TRANSL xml:lang="eng">AF</TRANSL>
                 <TRANSL xml:lang="zho">主焦</TRANSL>
             </M>
-            <M id="SaiNr-Molaw_S_26_W7_M1_0">
+            <M id="SaiNr-Molaw_S_26_W7M2">
                 <FORM kindOf="original">olaw</FORM>
                 <PHON kindOf="original">olaw</PHON>
                 <FORM kindOf="standard">olaw</FORM>
@@ -4566,7 +4566,7 @@
             <PHON kindOf="standard">m-olaw</PHON>
             <TRANSL xml:lang="zho">主焦-蛻皮</TRANSL>
             <TRANSL xml:lang="eng">AF-molt</TRANSL>
-            <M id="SaiNr-Molaw_S_26_W8_M0_0">
+            <M id="SaiNr-Molaw_S_26_W8M1">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
@@ -4574,7 +4574,7 @@
                 <TRANSL xml:lang="eng">AF</TRANSL>
                 <TRANSL xml:lang="zho">主焦</TRANSL>
             </M>
-            <M id="SaiNr-Molaw_S_26_W8_M1_0">
+            <M id="SaiNr-Molaw_S_26_W8M2">
                 <FORM kindOf="original">olaw</FORM>
                 <PHON kindOf="original">olaw</PHON>
                 <FORM kindOf="standard">olaw</FORM>
@@ -4590,7 +4590,7 @@
             <PHON kindOf="standard">mæʔijæh</PHON>
             <TRANSL xml:lang="zho">人</TRANSL>
             <TRANSL xml:lang="eng">person</TRANSL>
-            <M id="SaiNr-Molaw_S_26_W9_M0_0">
+            <M id="SaiNr-Molaw_S_26_W9M1">
                 <FORM kindOf="original">mae'iyaeh</FORM>
                 <PHON kindOf="original">mæʔijæh</PHON>
                 <FORM kindOf="standard">mae'iyaeh</FORM>
@@ -4606,7 +4606,7 @@
             <PHON kindOf="standard">maʔ</PHON>
             <TRANSL xml:lang="zho">也</TRANSL>
             <TRANSL xml:lang="eng">also</TRANSL>
-            <M id="SaiNr-Molaw_S_26_W10_M0_0">
+            <M id="SaiNr-Molaw_S_26_W10M1">
                 <FORM kindOf="original">ma'</FORM>
                 <PHON kindOf="original">maʔ</PHON>
                 <FORM kindOf="standard">ma'</FORM>
@@ -4622,7 +4622,7 @@
             <PHON kindOf="standard">ʔam</PHON>
             <TRANSL xml:lang="zho">未來</TRANSL>
             <TRANSL xml:lang="eng">FUT</TRANSL>
-            <M id="SaiNr-Molaw_S_26_W11_M0_0">
+            <M id="SaiNr-Molaw_S_26_W11M1">
                 <FORM kindOf="original">'am</FORM>
                 <PHON kindOf="original">ʔam</PHON>
                 <FORM kindOf="standard">'am</FORM>
@@ -4638,7 +4638,7 @@
             <PHON kindOf="standard">hæβææn</PHON>
             <TRANSL xml:lang="zho">多</TRANSL>
             <TRANSL xml:lang="eng">many</TRANSL>
-            <M id="SaiNr-Molaw_S_26_W12_M0_0">
+            <M id="SaiNr-Molaw_S_26_W12M1">
                 <FORM kindOf="original">haebaeaen</FORM>
                 <PHON kindOf="original">hæβææn</PHON>
                 <FORM kindOf="standard">haebaeaen</FORM>
@@ -4654,7 +4654,7 @@
             <PHON kindOf="standard">ʔatomal</PHON>
             <TRANSL xml:lang="zho">非常</TRANSL>
             <TRANSL xml:lang="eng">very</TRANSL>
-            <M id="SaiNr-Molaw_S_26_W13_M0_0">
+            <M id="SaiNr-Molaw_S_26_W13M1">
                 <FORM kindOf="original">'atomal</FORM>
                 <PHON kindOf="original">ʔatomal</PHON>
                 <FORM kindOf="standard">'atomal</FORM>
@@ -4670,7 +4670,7 @@
             <PHON kindOf="standard">ila</PHON>
             <TRANSL xml:lang="zho">完成</TRANSL>
             <TRANSL xml:lang="eng">PFV</TRANSL>
-            <M id="SaiNr-Molaw_S_26_W14_M0_0">
+            <M id="SaiNr-Molaw_S_26_W14M1">
                 <FORM kindOf="original">ila</FORM>
                 <PHON kindOf="original">ila</PHON>
                 <FORM kindOf="standard">ila</FORM>
@@ -4694,7 +4694,7 @@
             <PHON kindOf="standard">ʔis~θaa</PHON>
             <TRANSL xml:lang="zho">DM</TRANSL>
             <TRANSL xml:lang="eng">DM</TRANSL>
-            <M id="SaiNr-Molaw_S_27_W0_M0_0">
+            <M id="SaiNr-Molaw_S_27_W0M1">
                 <FORM kindOf="original">'isaa</FORM>
                 <PHON kindOf="original">ʔis~θaa</PHON>
                 <FORM kindOf="standard">'isaa</FORM>
@@ -4710,7 +4710,7 @@
             <PHON kindOf="standard">koʃa</PHON>
             <TRANSL xml:lang="zho">說.主焦</TRANSL>
             <TRANSL xml:lang="eng">say.AF</TRANSL>
-            <M id="SaiNr-Molaw_S_27_W1_M0_0">
+            <M id="SaiNr-Molaw_S_27_W1M1">
                 <FORM kindOf="original">koSa</FORM>
                 <PHON kindOf="original">koʃa</PHON>
                 <FORM kindOf="standard">koSa</FORM>
@@ -4726,7 +4726,7 @@
             <PHON kindOf="standard">ʔis~θaa</PHON>
             <TRANSL xml:lang="zho">DM</TRANSL>
             <TRANSL xml:lang="eng">DM</TRANSL>
-            <M id="SaiNr-Molaw_S_27_W2_M0_0">
+            <M id="SaiNr-Molaw_S_27_W2M1">
                 <FORM kindOf="original">'isaa</FORM>
                 <PHON kindOf="original">ʔis~θaa</PHON>
                 <FORM kindOf="standard">'isaa</FORM>
@@ -4742,7 +4742,7 @@
             <PHON kindOf="standard">ʔæhæʔ</PHON>
             <TRANSL xml:lang="zho">一</TRANSL>
             <TRANSL xml:lang="eng">one</TRANSL>
-            <M id="SaiNr-Molaw_S_27_W3_M0_0">
+            <M id="SaiNr-Molaw_S_27_W3M1">
                 <FORM kindOf="original">'aehae'</FORM>
                 <PHON kindOf="original">ʔæhæʔ</PHON>
                 <FORM kindOf="standard">'aehae'</FORM>
@@ -4758,7 +4758,7 @@
             <PHON kindOf="standard">hahila</PHON>
             <TRANSL xml:lang="zho">天</TRANSL>
             <TRANSL xml:lang="eng">day</TRANSL>
-            <M id="SaiNr-Molaw_S_27_W4_M0_0">
+            <M id="SaiNr-Molaw_S_27_W4M1">
                 <FORM kindOf="original">hahila</FORM>
                 <PHON kindOf="original">hahila</PHON>
                 <FORM kindOf="standard">hahila</FORM>
@@ -4774,7 +4774,7 @@
             <PHON kindOf="standard">koʃaʔən</PHON>
             <TRANSL xml:lang="zho">DM</TRANSL>
             <TRANSL xml:lang="eng">DM</TRANSL>
-            <M id="SaiNr-Molaw_S_27_W5_M0_0">
+            <M id="SaiNr-Molaw_S_27_W5M1">
                 <FORM kindOf="original">koSa'en</FORM>
                 <PHON kindOf="original">koʃaʔən</PHON>
                 <FORM kindOf="standard">koSa'en</FORM>
@@ -4790,7 +4790,7 @@
             <PHON kindOf="standard">mas~θaj</PHON>
             <TRANSL xml:lang="zho">死.主焦</TRANSL>
             <TRANSL xml:lang="eng">die.AF</TRANSL>
-            <M id="SaiNr-Molaw_S_27_W6_M0_0">
+            <M id="SaiNr-Molaw_S_27_W6M1">
                 <FORM kindOf="original">masay</FORM>
                 <PHON kindOf="original">mas~θaj</PHON>
                 <FORM kindOf="standard">masay</FORM>
@@ -4806,7 +4806,7 @@
             <PHON kindOf="standard">ʔam</PHON>
             <TRANSL xml:lang="zho">未來</TRANSL>
             <TRANSL xml:lang="eng">FUT</TRANSL>
-            <M id="SaiNr-Molaw_S_27_W7_M0_0">
+            <M id="SaiNr-Molaw_S_27_W7M1">
                 <FORM kindOf="original">'am</FORM>
                 <PHON kindOf="original">ʔam</PHON>
                 <FORM kindOf="standard">'am</FORM>
@@ -4822,7 +4822,7 @@
             <PHON kindOf="standard">kajz~ðæh</PHON>
             <TRANSL xml:lang="zho">好.主焦</TRANSL>
             <TRANSL xml:lang="eng">good.AF</TRANSL>
-            <M id="SaiNr-Molaw_S_27_W8_M0_0">
+            <M id="SaiNr-Molaw_S_27_W8M1">
                 <FORM kindOf="original">kayzaeh</FORM>
                 <PHON kindOf="original">kajz~ðæh</PHON>
                 <FORM kindOf="standard">kayzaeh</FORM>
@@ -4838,7 +4838,7 @@
             <PHON kindOf="standard">is~θaa</PHON>
             <TRANSL xml:lang="zho">DM</TRANSL>
             <TRANSL xml:lang="eng">DM</TRANSL>
-            <M id="SaiNr-Molaw_S_27_W9_M0_0">
+            <M id="SaiNr-Molaw_S_27_W9M1">
                 <FORM kindOf="original">isaa</FORM>
                 <PHON kindOf="original">is~θaa</PHON>
                 <FORM kindOf="standard">isaa</FORM>
@@ -4862,7 +4862,7 @@
             <PHON kindOf="standard">haj</PHON>
             <TRANSL xml:lang="zho">FS</TRANSL>
             <TRANSL xml:lang="eng">FS</TRANSL>
-            <M id="SaiNr-Molaw_S_28_W0_M0_0">
+            <M id="SaiNr-Molaw_S_28_W0M1">
                 <FORM kindOf="original">hay</FORM>
                 <PHON kindOf="original">haj</PHON>
                 <FORM kindOf="standard">hay</FORM>
@@ -4878,7 +4878,7 @@
             <PHON kindOf="standard">taβin</PHON>
             <TRANSL xml:lang="zho">到</TRANSL>
             <TRANSL xml:lang="eng">until</TRANSL>
-            <M id="SaiNr-Molaw_S_28_W1_M0_0">
+            <M id="SaiNr-Molaw_S_28_W1M1">
                 <FORM kindOf="original">tabin</FORM>
                 <PHON kindOf="original">taβin</PHON>
                 <FORM kindOf="standard">tabin</FORM>
@@ -4894,7 +4894,7 @@
             <PHON kindOf="standard">hajs~θani</PHON>
             <TRANSL xml:lang="zho">現在</TRANSL>
             <TRANSL xml:lang="eng">now</TRANSL>
-            <M id="SaiNr-Molaw_S_28_W2_M0_0">
+            <M id="SaiNr-Molaw_S_28_W2M1">
                 <FORM kindOf="original">haysani</FORM>
                 <PHON kindOf="original">hajs~θani</PHON>
                 <FORM kindOf="standard">haysani</FORM>
@@ -4910,7 +4910,7 @@
             <PHON kindOf="standard">ʔitaʔ</PHON>
             <TRANSL xml:lang="zho">1IPL.主格</TRANSL>
             <TRANSL xml:lang="eng">1IPL.NOM</TRANSL>
-            <M id="SaiNr-Molaw_S_28_W3_M0_0">
+            <M id="SaiNr-Molaw_S_28_W3M1">
                 <FORM kindOf="original">'ita'</FORM>
                 <PHON kindOf="original">ʔitaʔ</PHON>
                 <FORM kindOf="standard">'ita'</FORM>
@@ -4926,7 +4926,7 @@
             <PHON kindOf="standard">tatiniʔ</PHON>
             <TRANSL xml:lang="zho">變老.主焦</TRANSL>
             <TRANSL xml:lang="eng">grow.old.AF</TRANSL>
-            <M id="SaiNr-Molaw_S_28_W4_M0_0">
+            <M id="SaiNr-Molaw_S_28_W4M1">
                 <FORM kindOf="original">tatini'</FORM>
                 <PHON kindOf="original">tatiniʔ</PHON>
                 <FORM kindOf="standard">tatini'</FORM>
@@ -4942,7 +4942,7 @@
             <PHON kindOf="standard">ila</PHON>
             <TRANSL xml:lang="zho">完成</TRANSL>
             <TRANSL xml:lang="eng">PFV</TRANSL>
-            <M id="SaiNr-Molaw_S_28_W5_M0_0">
+            <M id="SaiNr-Molaw_S_28_W5M1">
                 <FORM kindOf="original">ila</FORM>
                 <PHON kindOf="original">ila</PHON>
                 <FORM kindOf="standard">ila</FORM>
@@ -4958,7 +4958,7 @@
             <PHON kindOf="standard">maʔ</PHON>
             <TRANSL xml:lang="zho">FS</TRANSL>
             <TRANSL xml:lang="eng">FS</TRANSL>
-            <M id="SaiNr-Molaw_S_28_W6_M0_0">
+            <M id="SaiNr-Molaw_S_28_W6M1">
                 <FORM kindOf="original">ma'</FORM>
                 <PHON kindOf="original">maʔ</PHON>
                 <FORM kindOf="standard">ma'</FORM>
@@ -4974,7 +4974,7 @@
             <PHON kindOf="standard">mas~θaj</PHON>
             <TRANSL xml:lang="zho">死.主焦</TRANSL>
             <TRANSL xml:lang="eng">die.AF</TRANSL>
-            <M id="SaiNr-Molaw_S_28_W7_M0_0">
+            <M id="SaiNr-Molaw_S_28_W7M1">
                 <FORM kindOf="original">masay</FORM>
                 <PHON kindOf="original">mas~θaj</PHON>
                 <FORM kindOf="standard">masay</FORM>
@@ -4990,7 +4990,7 @@
             <PHON kindOf="standard">ila</PHON>
             <TRANSL xml:lang="zho">完成</TRANSL>
             <TRANSL xml:lang="eng">PFV</TRANSL>
-            <M id="SaiNr-Molaw_S_28_W8_M0_0">
+            <M id="SaiNr-Molaw_S_28_W8M1">
                 <FORM kindOf="original">ila</FORM>
                 <PHON kindOf="original">ila</PHON>
                 <FORM kindOf="standard">ila</FORM>
@@ -5006,7 +5006,7 @@
             <PHON kindOf="standard">tatiniʔ</PHON>
             <TRANSL xml:lang="zho">變老.主焦</TRANSL>
             <TRANSL xml:lang="eng">grow.old.AF</TRANSL>
-            <M id="SaiNr-Molaw_S_28_W9_M0_0">
+            <M id="SaiNr-Molaw_S_28_W9M1">
                 <FORM kindOf="original">tatini'</FORM>
                 <PHON kindOf="original">tatiniʔ</PHON>
                 <FORM kindOf="standard">tatini'</FORM>
@@ -5022,7 +5022,7 @@
             <PHON kindOf="standard">ila</PHON>
             <TRANSL xml:lang="zho">完成</TRANSL>
             <TRANSL xml:lang="eng">PFV</TRANSL>
-            <M id="SaiNr-Molaw_S_28_W10_M0_0">
+            <M id="SaiNr-Molaw_S_28_W10M1">
                 <FORM kindOf="original">ila</FORM>
                 <PHON kindOf="original">ila</PHON>
                 <FORM kindOf="standard">ila</FORM>
@@ -5038,7 +5038,7 @@
             <PHON kindOf="standard">mas~θaj</PHON>
             <TRANSL xml:lang="zho">變老.主焦</TRANSL>
             <TRANSL xml:lang="eng">die.AF</TRANSL>
-            <M id="SaiNr-Molaw_S_28_W11_M0_0">
+            <M id="SaiNr-Molaw_S_28_W11M1">
                 <FORM kindOf="original">masay</FORM>
                 <PHON kindOf="original">mas~θaj</PHON>
                 <FORM kindOf="standard">masay</FORM>
@@ -5054,7 +5054,7 @@
             <PHON kindOf="standard">ila</PHON>
             <TRANSL xml:lang="zho">完成</TRANSL>
             <TRANSL xml:lang="eng">PFV</TRANSL>
-            <M id="SaiNr-Molaw_S_28_W12_M0_0">
+            <M id="SaiNr-Molaw_S_28_W12M1">
                 <FORM kindOf="original">ila</FORM>
                 <PHON kindOf="original">ila</PHON>
                 <FORM kindOf="standard">ila</FORM>
@@ -5078,7 +5078,7 @@
             <PHON kindOf="standard">maβas~θəz~ð</PHON>
             <TRANSL xml:lang="zho">虛無.主焦</TRANSL>
             <TRANSL xml:lang="eng">empty.AF</TRANSL>
-            <M id="SaiNr-Molaw_S_29_W0_M0_0">
+            <M id="SaiNr-Molaw_S_29_W0M1">
                 <FORM kindOf="original">mabasez</FORM>
                 <PHON kindOf="original">maβas~θəz~ð</PHON>
                 <FORM kindOf="standard">mabasez</FORM>
@@ -5094,7 +5094,7 @@
             <PHON kindOf="standard">ma</PHON>
             <TRANSL xml:lang="zho">FIL</TRANSL>
             <TRANSL xml:lang="eng">FIL</TRANSL>
-            <M id="SaiNr-Molaw_S_29_W1_M0_0">
+            <M id="SaiNr-Molaw_S_29_W1M1">
                 <FORM kindOf="original">ma</FORM>
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
@@ -5110,7 +5110,7 @@
             <PHON kindOf="standard">****</PHON>
             <TRANSL xml:lang="zho">XXXX</TRANSL>
             <TRANSL xml:lang="eng">XXXX</TRANSL>
-            <M id="SaiNr-Molaw_S_29_W2_M0_0">
+            <M id="SaiNr-Molaw_S_29_W2M1">
                 <FORM kindOf="original">XXXX</FORM>
                 <PHON kindOf="original">****</PHON>
                 <FORM kindOf="standard">XXXX</FORM>
@@ -5126,7 +5126,7 @@
             <PHON kindOf="standard">taβin</PHON>
             <TRANSL xml:lang="zho">到</TRANSL>
             <TRANSL xml:lang="eng">until</TRANSL>
-            <M id="SaiNr-Molaw_S_29_W3_M0_0">
+            <M id="SaiNr-Molaw_S_29_W3M1">
                 <FORM kindOf="original">tabin</FORM>
                 <PHON kindOf="original">taβin</PHON>
                 <FORM kindOf="standard">tabin</FORM>
@@ -5142,7 +5142,7 @@
             <PHON kindOf="standard">tatiniʔ</PHON>
             <TRANSL xml:lang="zho">老</TRANSL>
             <TRANSL xml:lang="eng">old</TRANSL>
-            <M id="SaiNr-Molaw_S_29_W4_M0_0">
+            <M id="SaiNr-Molaw_S_29_W4M1">
                 <FORM kindOf="original">tatini'</FORM>
                 <PHON kindOf="original">tatiniʔ</PHON>
                 <FORM kindOf="standard">tatini'</FORM>
@@ -5158,7 +5158,7 @@
             <PHON kindOf="standard">maʔ</PHON>
             <TRANSL xml:lang="zho">也</TRANSL>
             <TRANSL xml:lang="eng">also</TRANSL>
-            <M id="SaiNr-Molaw_S_29_W5_M0_0">
+            <M id="SaiNr-Molaw_S_29_W5M1">
                 <FORM kindOf="original">ma'</FORM>
                 <PHON kindOf="original">maʔ</PHON>
                 <FORM kindOf="standard">ma'</FORM>
@@ -5174,7 +5174,7 @@
             <PHON kindOf="standard">mas~θaj</PHON>
             <TRANSL xml:lang="zho">死.主焦</TRANSL>
             <TRANSL xml:lang="eng">die.AF</TRANSL>
-            <M id="SaiNr-Molaw_S_29_W6_M0_0">
+            <M id="SaiNr-Molaw_S_29_W6M1">
                 <FORM kindOf="original">masay</FORM>
                 <PHON kindOf="original">mas~θaj</PHON>
                 <FORM kindOf="standard">masay</FORM>
@@ -5190,7 +5190,7 @@
             <PHON kindOf="standard">ila</PHON>
             <TRANSL xml:lang="zho">完成</TRANSL>
             <TRANSL xml:lang="eng">PFV</TRANSL>
-            <M id="SaiNr-Molaw_S_29_W7_M0_0">
+            <M id="SaiNr-Molaw_S_29_W7M1">
                 <FORM kindOf="original">ila</FORM>
                 <PHON kindOf="original">ila</PHON>
                 <FORM kindOf="standard">ila</FORM>
@@ -5206,7 +5206,7 @@
             <PHON kindOf="standard">a</PHON>
             <TRANSL xml:lang="zho">FIL</TRANSL>
             <TRANSL xml:lang="eng">FIL</TRANSL>
-            <M id="SaiNr-Molaw_S_29_W8_M0_0">
+            <M id="SaiNr-Molaw_S_29_W8M1">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
@@ -5222,7 +5222,7 @@
             <PHON kindOf="standard">papaj</PHON>
             <TRANSL xml:lang="zho">到</TRANSL>
             <TRANSL xml:lang="eng">until</TRANSL>
-            <M id="SaiNr-Molaw_S_29_W9_M0_0">
+            <M id="SaiNr-Molaw_S_29_W9M1">
                 <FORM kindOf="original">papay</FORM>
                 <PHON kindOf="original">papaj</PHON>
                 <FORM kindOf="standard">papay</FORM>
@@ -5238,7 +5238,7 @@
             <PHON kindOf="standard">is~θaz~ða</PHON>
             <TRANSL xml:lang="zho">那裡</TRANSL>
             <TRANSL xml:lang="eng">there</TRANSL>
-            <M id="SaiNr-Molaw_S_29_W10_M0_0">
+            <M id="SaiNr-Molaw_S_29_W10M1">
                 <FORM kindOf="original">isaza</FORM>
                 <PHON kindOf="original">is~θaz~ða</PHON>
                 <FORM kindOf="standard">isaza</FORM>
@@ -5254,7 +5254,7 @@
             <PHON kindOf="standard">maʔan</PHON>
             <TRANSL xml:lang="zho">1SG.屬格</TRANSL>
             <TRANSL xml:lang="eng">1SG.GEN</TRANSL>
-            <M id="SaiNr-Molaw_S_29_W11_M0_0">
+            <M id="SaiNr-Molaw_S_29_W11M1">
                 <FORM kindOf="original">ma'an</FORM>
                 <PHON kindOf="original">maʔan</PHON>
                 <FORM kindOf="standard">ma'an</FORM>
@@ -5270,7 +5270,7 @@
             <PHON kindOf="standard">ka</PHON>
             <TRANSL xml:lang="zho">主格</TRANSL>
             <TRANSL xml:lang="eng">NOM</TRANSL>
-            <M id="SaiNr-Molaw_S_29_W12_M0_0">
+            <M id="SaiNr-Molaw_S_29_W12M1">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
@@ -5286,7 +5286,7 @@
             <PHON kindOf="standard">pinanaβih</PHON>
             <TRANSL xml:lang="zho">我說的故事</TRANSL>
             <TRANSL xml:lang="eng">what.I.say</TRANSL>
-            <M id="SaiNr-Molaw_S_29_W13_M0_0">
+            <M id="SaiNr-Molaw_S_29_W13M1">
                 <FORM kindOf="original">pinanabih</FORM>
                 <PHON kindOf="original">pinanaβih</PHON>
                 <FORM kindOf="standard">pinanabih</FORM>

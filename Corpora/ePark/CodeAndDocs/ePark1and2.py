@@ -109,11 +109,12 @@ def create_xml(curr_ePark, out_ePark, file, dialect, lang, lang_code, dir, ePark
                 
                 # Add the 'FORM' element containing the sentence
                 form_element = SubElement(word_element, "FORM")
+                form_element.set("kindOf", "original")
                 form_element.text = form_word
 
                 # Add the 'TRANSL' element containing the Chinese translation
                 transl_element = SubElement(word_element, "TRANSL")
-                transl_element.set("xml:lang", "zh")
+                transl_element.set("xml:lang", "zho")
                 transl_element.text = chinese_word
                 
                 # Generate the audio file name and add it to the list for downloading
@@ -138,16 +139,17 @@ def create_xml(curr_ePark, out_ePark, file, dialect, lang, lang_code, dir, ePark
             
             # Add the 'FORM' element containing the sentence
             form_element = SubElement(s_element, "FORM")
+            form_element.set("kindOf", "original")
             form_element.text = form_sentence
 
             # Add the 'TRANSL' element containing the Chinese translation
             transl_element = SubElement(s_element, "TRANSL")
-            transl_element.set("xml:lang", "zh")
+            transl_element.set("xml:lang", "zho")
             transl_element.text = chinese_translation
             if english_translation!="":
                 # If there is an English translation, add another 'TRANSL' element
                 transl_element = SubElement(s_element, "TRANSL")
-                transl_element.set("xml:lang", "en")
+                transl_element.set("xml:lang", "eng")
                 transl_element.text = english_translation
             
             # Generate the audio file name and add it to the list for downloading

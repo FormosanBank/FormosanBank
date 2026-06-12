@@ -6,6 +6,7 @@ tests/validators/test_validate_xml.py against the CLI surface.
 import csv
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 import pytest
@@ -84,8 +85,13 @@ def _run_cli(
     published_corpora: Path | None = None,
 ) -> subprocess.CompletedProcess:
     # Default published_corpora to an empty dir so V081 doesn't walk the
-    # real Corpora/ on every test subprocess call.
-    pc = published_corpora if published_corpora is not None else Path("/tmp")
+    # real Corpora/ on every test subprocess call. Must be a genuinely
+    # empty directory: /tmp can contain unreadable entries (e.g. root-owned
+    # sandbox mounts) that crash the index scan with PermissionError.
+    if published_corpora is not None:
+        pc = published_corpora
+    else:
+        pc = Path(tempfile.mkdtemp(prefix="empty-published-corpora-"))
     return subprocess.run(
         [sys.executable, str(VALIDATE_XML_CLI),
          "--published-corpora", str(pc),
@@ -137,7 +143,7 @@ def test_findings_csv_written_with_header_when_clean(tmp_path, fixtures_dir, cop
     ])
     assert proc.returncode == 0
     assert csv_path.exists()
-    with open(csv_path, newline="") as f:
+    with open(csv_path, newline="", encoding="utf-8-sig") as f:
         rows = list(csv.reader(f))
     from QC.validation._finding import FINDINGS_CSV_COLUMNS
     assert rows == [FINDINGS_CSV_COLUMNS]

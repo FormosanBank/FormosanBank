@@ -1,0 +1,61 @@
+{
+  // FormosanBank isolated dev container.
+  //
+  // Mounts the WHOLE Formosan parent dir (so cross-repo workflows like
+  // port-corpus-in and gitbook-sync work) and NOTHING else from the host.
+  // Everything outside ~/Documents/Projects/Formosan is invisible inside the
+  // container — that is the isolation boundary.
+  "name": "FormosanBank (isolated)",
+  "build": { "dockerfile": "Dockerfile" },
+
+  // Mount the parent dir at /workspace; open FormosanBank as the working folder.
+  "workspaceMount": "source=${localEnv:HOME}/Documents/Projects/Formosan,target=/workspace,type=bind,consistency=cached",
+  "workspaceFolder": "/workspace/FormosanBank",
+
+  "mounts": [
+    // Linux-native .venv lives in a named volume that SHADOWS the host's
+    // macOS .venv (which can't run in Linux). Persists across rebuilds.
+    "source=formosanbank-venv,target=/workspace/FormosanBank/.venv,type=volume",
+    // Persist the in-container Claude OAuth login so it's one-time, not per-session.
+    // (macOS Keychain creds don't cross into Linux, so the container logs in once.)
+    "source=formosanbank-claude-auth,target=/home/vscode/.claude,type=volume",
+    // SHADOW the host's .claude/settings.local.json with a container-specific one.
+    // The host file is authored for macOS (absolute /Users/... paths) and its
+    // PreToolUse Bash hook runs a host-only script that doesn't exist in Linux —
+    // python exits 2 and blocks EVERY Bash call. The container doesn't need that
+    // hook (bypass mode does the same job); this gives it clean settings (just the
+    // git-push deny) while leaving the host's file untouched.
+    "source=${localWorkspaceFolder}/.devcontainer/container-settings.local.json,target=/workspace/FormosanBank/.claude/settings.local.json,type=bind"
+  ],
+
+  "remoteUser": "vscode",
+
+  // NET_ADMIN/NET_RAW let the firewall (postStart) program iptables/ipset.
+  "runArgs": ["--cap-add=NET_ADMIN", "--cap-add=NET_RAW"],
+
+  // postCreate (once): build the Linux .venv + install plugins — needs OPEN
+  // network, and runs BEFORE the firewall below, so it isn't blocked.
+  "postCreateCommand": "bash .devcontainer/postCreate.sh",
+  // postStart (every start): bring up the egress-allowlist firewall. iptables
+  // state doesn't survive restarts, so it must re-apply each start. Combined
+  // with the filesystem isolation, this makes bypass-permissions mode safe:
+  // Claude can neither escape /workspace nor reach arbitrary hosts.
+  "postStartCommand": "sudo /workspace/FormosanBank/.devcontainer/init-firewall.sh",
+
+  "customizations": {
+    "vscode": {
+      // Install the Claude Code extension INSIDE the container so the chat
+      // panel runs in the isolated environment.
+      "extensions": ["anthropic.claude-code"],
+      // Run container chats prompt-free. SAFE here because the container is the
+      // boundary: filesystem isolation (nothing outside /workspace exists) +
+      // the egress firewall (no arbitrary network). deny rules and PreToolUse
+      // hooks (statistics-block, private-leaks) still apply in bypass mode.
+      // These settings are container-scoped only; the host keeps normal prompting.
+      "settings": {
+        "claudeCode.allowDangerouslySkipPermissions": true,
+        "claudeCode.initialPermissionMode": "bypassPermissions"
+      }
+    }
+  }
+}

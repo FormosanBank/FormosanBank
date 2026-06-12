@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEXT id="fixA" xml:lang="ami" dialect="Haian" citation="test" BibTeX_citation="@misc{test}" copyright="CC BY-SA">
+  <S id="fixA_s1">
+    <FORM kindOf="original">O 123 wawa .</FORM>
+    <FORM kindOf="standard">O 123 wawa .</FORM>
+    <TRANSL xml:lang="eng">The child</TRANSL>
+    <TRANSL xml:lang="zho">小孩</TRANSL>
+    <W id="fixA_s1_w1">
+      <FORM kindOf="original">wawa</FORM>
+      <M id="fixA_s1_w1_m1">
+        <FORM kindOf="original">wawa</FORM>
+        <TRANSL xml:lang="eng">child</TRANSL>
+      </M>
+    </W>
+  </S>
+  <S id="fixA_s2">
+    <FORM kindOf="original">ma- kaen ?</FORM>
+    <TRANSL xml:lang="eng">eaten</TRANSL>
+    <TRANSL xml:lang="eng" ver="literal">it is eaten</TRANSL>
+  </S>
+  <S id="fixA_s3">
+    <W id="fixA_s3_w1"><FORM kindOf="original">foo</FORM></W>
+    <W id="fixA_s3_w2"><FORM kindOf="original">bar</FORM></W>
+  </S>
+</TEXT>

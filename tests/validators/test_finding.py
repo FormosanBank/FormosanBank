@@ -79,7 +79,7 @@ def test_write_soft_csv_empty(tmp_path):
 
     out = tmp_path / "soft.csv"
     write_soft_csv(out, [])
-    with open(out, newline="") as f:
+    with open(out, newline="", encoding="utf-8-sig") as f:
         rows = list(csv.reader(f))
     # SOFT_CSV columns were extended on 2026-06-01 to add `location` and
     # `line`, so per-occurrence rules can pin each row to a specific
@@ -105,7 +105,7 @@ def test_write_soft_csv_one_finding(tmp_path):
         ),
     ]
     write_soft_csv(out, findings)
-    with open(out, newline="") as f:
+    with open(out, newline="", encoding="utf-8-sig") as f:
         rows = list(csv.reader(f))
     # No location/line on this finding (aggregated rule shape) -> blank.
     assert rows == [
@@ -127,7 +127,7 @@ def test_write_soft_csv_skips_non_soft(tmp_path):
         Finding(rule_id="V088", severity=Severity.WARN, message="m", path=Path("/z.xml")),
     ]
     write_soft_csv(out, findings)
-    with open(out, newline="") as f:
+    with open(out, newline="", encoding="utf-8-sig") as f:
         rows = list(csv.reader(f))
     assert len(rows) == 2
     assert rows[1][1] == "V014"
@@ -185,7 +185,7 @@ def test_write_findings_csv_header_only_when_empty(tmp_path):
 
     out = tmp_path / "f.csv"
     write_findings_csv(out, [])
-    with open(out, newline="") as f:
+    with open(out, newline="", encoding="utf-8-sig") as f:
         rows = list(csv.reader(f))
     assert rows == [[
         "file", "line", "severity", "rule_id", "title", "location",
@@ -199,7 +199,7 @@ def test_write_findings_csv_fills_title_column_from_map(tmp_path):
     findings = [Finding("V068", Severity.SOFT, "m", Path("/a.xml"))]
     out = tmp_path / "f.csv"
     write_findings_csv(out, findings, titles={"V068": "M_reconstructs_W"})
-    with open(out, newline="") as f:
+    with open(out, newline="", encoding="utf-8-sig") as f:
         rows = list(csv.DictReader(f))
     assert rows[0]["title"] == "M_reconstructs_W"
 
@@ -210,7 +210,7 @@ def test_write_findings_csv_blank_title_when_unmapped(tmp_path):
     findings = [Finding("V999", Severity.SOFT, "m", Path("/a.xml"))]
     out = tmp_path / "f.csv"
     write_findings_csv(out, findings, titles={})  # no entry for V999
-    with open(out, newline="") as f:
+    with open(out, newline="", encoding="utf-8-sig") as f:
         rows = list(csv.DictReader(f))
     assert rows[0]["title"] == ""
 
@@ -226,7 +226,7 @@ def test_write_findings_csv_includes_both_hard_and_soft(tmp_path):
     ]
     out = tmp_path / "f.csv"
     write_findings_csv(out, findings)
-    with open(out, newline="") as f:
+    with open(out, newline="", encoding="utf-8-sig") as f:
         rows = list(csv.DictReader(f))
     assert len(rows) == 2
     assert rows[0]["severity"] == "HARD" and rows[0]["rule_id"] == "V064"
@@ -243,7 +243,7 @@ def test_write_findings_csv_quotes_message_with_commas(tmp_path):
                         "reconstruct only 41%, W FORM='a,b'", Path("/a.xml"))]
     out = tmp_path / "f.csv"
     write_findings_csv(out, findings)
-    with open(out, newline="") as f:
+    with open(out, newline="", encoding="utf-8-sig") as f:
         rows = list(csv.DictReader(f))
     assert rows[0]["message"] == "reconstruct only 41%, W FORM='a,b'"
 

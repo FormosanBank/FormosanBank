@@ -91,6 +91,20 @@ Fix in a dedicated "Pyright cleanup" pass once enough of these accumulate, or pi
 
 ---
 
+## 7. V132 on NTU gloss notation — NOT a rule bug; NTU data fix (re-investigated 2026-06-12)
+
+**Roadmap:** B9.4 Gaps list (same-date entry).
+
+**Original framing (2026-06-10, now corrected):** "V132 fires ~2,257 false positives on NTU Bunun W/M TRANSLs where `<X>` is legitimate gloss notation, not entity residue — whitelist it in the rule."
+
+**Corrected finding (2026-06-12).** This is NOT a false positive. The NTU source `Sentences/Bunun/Bunun.xml` is genuinely **double-encoded**: the raw XML contains `&amp;lt;RED&amp;gt;`, which lxml decodes one level into the literal string `&lt;RED&gt;` in `elem.text`. V132's regex requires literal `&lt;`/`&gt;` (it does NOT match bare `<…>`), so it is correctly diagnosing real double-encoding. All 2,237 hits are W/M TRANSL; the intended content is gloss notation (`<RED>` / `<重疊>`) but as stored it renders to any consumer as broken `&lt;RED&gt;`.
+
+**Decision (Joshua, 2026-06-12): keep V132 strict — no rule change.** Whitelisting would mask a real data bug and blind the rule to future double-encoding. The fix is to **un-double-encode the NTU source** (`&amp;lt;`→`&lt;`, `&amp;gt;`→`&gt;` ⇒ decodes to real `<RED>`), after which V132 drops to ~0 on its own. No HARD rule objects to real `<…>` in W/M TRANSL (v067 = M-FORM only, v134 = S-FORM only).
+
+**Action: NTU corpus walk-through branch (deferred, Corpora-touching).** Add a `fix_double_encoded_glosses.py` alongside the existing NTU repair scripts (`apply_manual_corrections.py`, `fix_swapped_gloss_langs.py`); record the step in the NTU README. NOT part of the tooling merge.
+
+---
+
 ## Cross-reference
 
 For corpus-side data issues surfaced by validators (e.g., specific files needing remediation, missing standard tiers, etc.), see [corpus-cleanup-tasks.md](2026-05-31-corpus-cleanup-tasks.md). That document is for *data* state; this one is for *development* state.

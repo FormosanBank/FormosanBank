@@ -354,12 +354,14 @@ def test_W1_rules_only_check_standard_tier(tmp_path):
 
 
 def test_V116_non_ascii_in_form(tmp_path):
-    """V116 SOFT: non-ASCII characters (excluding CJK) in any FORM tier."""
+    """V116 SOFT: non-ASCII characters (excluding CJK) in non-original
+    FORM tiers. (The original tier is skipped by policy since
+    2026-06-11; see test_v116_skips_original_tier.)"""
     xml = (
         _TEXT_OPEN
         + '<S id="S1">'
-        + '<FORM kindOf="original">café</FORM>'
-        + '<FORM kindOf="standard">cafe</FORM>'
+        + '<FORM kindOf="original">cafe</FORM>'
+        + '<FORM kindOf="standard">café</FORM>'
         + '</S>'
         + _TEXT_CLOSE
     )
@@ -446,6 +448,22 @@ def test_V116_still_triggers_for_chars_only_in_other_languages_orthography(tmp_p
     proc = _run_validate_text(tmp_path)
     assert _has_text_finding(proc, ("v116", "non_ascii", "non-ascii")), (
         f"expected V116 finding for 'ʉ' in tay file; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V116_case_folds_orthography_letters(tmp_path):
+    """V116: a capitalized form of a lowercase orthography letter is still
+    legitimate. 'Ʉ' (U+0244) is the uppercase of Kanakanavu's 'ʉ' (U+0289),
+    which IS in the Kanakanavu orthography, so a sentence-initial 'Ʉ' must NOT
+    be flagged. The cross-language guard is unaffected (test above: 'ʉ' in a
+    tay file still flags, because neither case is in Atayal's orthography)."""
+    xml = _xml_with_lang_and_form("xnb", "Ʉmu")
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "u+0244" not in combined and "'Ʉ'" not in combined, (
+        f"V116 should case-fold 'Ʉ' to Kanakanavu's 'ʉ' and not flag it; "
         f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
     )
 
@@ -1923,6 +1941,86 @@ def test_V137_trailing_decimal_in_TRANSL_soft(tmp_path):
     )
 
 
+def test_V137_person_gloss_in_WM_TRANSL_not_flagged(tmp_path):
+    """V137 (2026-06-12): Leipzig gloss codes in W/M-level TRANSL are gloss
+    notation, not footnotes. `.3SG`, `1SG.2PL`, numbered morpheme labels
+    like `A2` must NOT fire. Regression for NTUFormosanCorpus Bunun, where
+    130 W/M-TRANSL gloss codes were false-flagged.
+    """
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">tina</FORM>'
+        + '<FORM kindOf="standard">tina</FORM>'
+        + '<W id="S1W0">'
+        + '<FORM>tina</FORM>'
+        + '<TRANSL xml:lang="zho">房子.3SG.屬格</TRANSL>'
+        + '<TRANSL xml:lang="eng">AUX.PST=2SG.GEN.1SG.NOM</TRANSL>'
+        + '<M id="S1W0M0">'
+        + '<FORM>tina</FORM>'
+        + '<TRANSL xml:lang="eng">house.3SG</TRANSL>'
+        + '</M>'
+        + '</W>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v137" not in combined.lower(), (
+        f"V137 must not fire on W/M-level TRANSL gloss codes; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V137_footnote_in_WM_FORM_still_flagged(tmp_path):
+    """V137: the W/M-TRANSL exemption must NOT leak to FORM. A footnote
+    digit glued onto a morpheme FORM (`speak12`) — V137's original C015
+    purpose — must still fire even at the W/M tier.
+    """
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">tina</FORM>'
+        + '<FORM kindOf="standard">tina</FORM>'
+        + '<W id="S1W0">'
+        + '<FORM>speak12</FORM>'
+        + '<TRANSL xml:lang="eng">to speak</TRANSL>'
+        + '</W>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v137", "trailing decimal", "trailing-decimal", "footnote")
+    ), (
+        f"expected V137 to still fire on W/M FORM footnote; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V137_footnote_in_S_TRANSL_still_flagged(tmp_path):
+    """V137: S-level TRANSL is NOT exempt — only W/M-level TRANSL is."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">std</FORM>'
+        + '<TRANSL xml:lang="eng">to speak.2</TRANSL>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v137", "trailing decimal", "trailing-decimal", "footnote")
+    ), (
+        f"expected V137 to still fire on S-level TRANSL; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
 def test_V137_plain_decimal_number_OK(tmp_path):
     """V137: ends with a plain decimal `3.14` (digit before .). Not flagged.
 
@@ -2370,3 +2468,43 @@ def test_V141_S_without_W_skipped():
     xml = _V141_TEMPLATE.format(body="""
       <S id="S1"><FORM kindOf="original">ka en taon</FORM></S>""")
     assert _v141_findings(xml) == []
+
+
+def test_v116_skips_original_tier(tmp_path):
+    """V116 must not flag non-ASCII in FORM[@kindOf='original'].
+
+    The original tier is source-faithful by policy and legitimately
+    carries annotation characters (NTU Grammar stress accents like
+    'mámia', null-morpheme symbols) that are deliberately preserved
+    there and stripped from the standard tier (README steps 3/7).
+    Added 2026-06-11 after V116 flagged 875 policy-compliant
+    original-tier elements on NTUFormosanCorpus.
+    """
+    import csv as _csv
+
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S_acc">'
+        + '<FORM kindOf="original">mámia</FORM>'   # accent: original -> no finding
+        + '<FORM kindOf="standard">café</FORM>'  # standard -> still flagged
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    soft_csv = tmp_path / "v116_orig.csv"
+    subprocess.run(
+        [
+            sys.executable, str(VALIDATE_TEXT),
+            "by_path", "--path", str(tmp_path / "XML"),
+            "--soft-csv", str(soft_csv),
+        ],
+        capture_output=True,
+        text=True,
+    )
+    with open(soft_csv, newline="", encoding="utf-8-sig") as fh:
+        rows = [r for r in _csv.DictReader(fh) if r["rule_id"] == "V116"]
+    chars = {r["character"] for r in rows}
+    assert "é" in chars, f"standard-tier é should be flagged; rows={rows!r}"
+    assert "á" not in chars, (
+        f"original-tier á must NOT be flagged; rows={rows!r}"
+    )

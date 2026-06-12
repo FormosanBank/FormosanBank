@@ -448,11 +448,18 @@ def v116_non_ascii_in_form(
 ) -> list[Finding]:
     """V116 SOFT: count non-ASCII characters in ALL FORM tiers.
 
-    Mirrors non_ascii_counts.py: walks every FORM element across S, W, M
+    Mirrors non_ascii_counts.py: walks FORM elements across S, W, M
     and counts characters with codepoint > 127, excluding CJK ranges
     AND characters that appear in the first ('letter') column of any
     Orthographies/<subdir>/<Lang>.tsv for the file's TEXT@xml:lang
     (Formosan-language exclusion added 2026-06-01).
+
+    FORM[@kindOf="original"] is skipped (2026-06-11): the original tier
+    is source-faithful by policy and legitimately carries annotation
+    characters (e.g. NTU Grammar stress accents like á/ʉ́, null-morpheme
+    symbols) that are deliberately preserved there and removed from the
+    standard tier. Flagging them contradicts that policy; cleanliness is
+    only an invariant of the non-original tiers.
 
     Findings are pre-aggregated per (file, character) to keep the CSV
     compact — one row per unique non-ASCII character per file.
@@ -461,6 +468,8 @@ def v116_non_ascii_in_form(
     allowed_ortho_chars = _orthography_allowed_chars(lang)
     findings: list[Finding] = []
     for form in tree.iter("FORM"):
+        if form.get("kindOf") == "original":
+            continue
         text = form.text or ""
         for ch in text:
             if ord(ch) <= 127:
@@ -468,6 +477,14 @@ def v116_non_ascii_in_form(
             if _is_cjk(ch):
                 continue
             if ch in allowed_ortho_chars:
+                continue
+            # Case-fold: orthography tables list letters in lowercase, but the
+            # corpus capitalizes them sentence-initially (e.g. 'Ʉ' for
+            # Kanakanavu's 'ʉ'). A char whose lower- or upper-case form is in
+            # the language's orthography is still legitimate. This does NOT
+            # relax the cross-language check — 'ʉ' in an Atayal file still
+            # flags, because neither 'ʉ' nor 'Ʉ' is in Atayal's orthography.
+            if ch.lower() in allowed_ortho_chars or ch.upper() in allowed_ortho_chars:
                 continue
             findings.append(_soft_finding(
                 rule_id="V116",
@@ -1298,12 +1315,20 @@ def v137_trailing_decimal_footnote_in_S_FORM_TRANSL(
     lang = _resolve_language(tree)
     findings: list[Finding] = []
     for elem in tree.iter("FORM", "TRANSL"):
+        parent_tag = elem.tag
+        host = elem.getparent()
+        host_tag = host.tag if host is not None else ""
+        host_id = (host.get("id") if host is not None else None) or ""
+        # W/M-level TRANSL is the interlinear gloss tier: digit-bearing
+        # Leipzig gloss codes (e.g. '.3SG', '1SG.2PL', numbered morpheme
+        # labels like 'A2'/'G0') are expected notation, not scrape
+        # footnotes. Skip them. FORM at every tier stays covered — that is
+        # V137's original purpose (e.g. catching 'speak12' footnotes glued
+        # onto a morpheme), as does S-level TRANSL.
+        if parent_tag == "TRANSL" and host_tag in ("W", "M"):
+            continue
         text = elem.text or ""
         for match in _FOOTNOTE_RE.finditer(text):
-            parent_tag = elem.tag
-            host = elem.getparent()
-            host_tag = host.tag if host is not None else ""
-            host_id = (host.get("id") if host is not None else None) or ""
             location = (
                 f"{host_tag}={host_id} {parent_tag}"
                 if host_id else f"{host_tag} {parent_tag}".strip()
