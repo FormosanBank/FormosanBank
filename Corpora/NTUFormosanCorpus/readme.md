@@ -221,3 +221,13 @@ The source marks code-switched words with tags like `<L2JjidenshaL2J>` (J/M/T/..
    - PHON of affected elements is regenerated through the Ortho113 mapping, gated by the pre-change original-tier witness check.
    - The parser-side stripper (`strip_l2m` in `scripts/utils.py`) is intentionally left unchanged: this post-step runs after parsing in the pipeline and converges the output regardless, without risking an over-eager regex in the parser (the eaten-letter bug came from exactly that).
    - Same conventions as steps 4-7: byte-identical round-trip guard, idempotent.
+
+* **13. Decode double-encoded gloss entities**
+
+The source JSONs are inconsistent about angle brackets in reduplication/infix notation: most store the real characters (`<RED>cook-LF`), but `sentence/Bunun_Isbukun/63.json` stores HTML-escaped strings (`&lt;RED&gt;`), which reached the XML writer verbatim and were escaped a second time on serialization (`&amp;lt;` in the published file — validate_text rule V132). This step decodes literal entity strings in element text and attribute values by exactly one level (1,109 TRANSL glosses + 3 TRANSL `notes` in `Sentences/Bunun/Bunun.xml`; nothing else in the corpus is affected):
+
+```bash
+    python CodeAndDocs/scripts/fix_double_encoded_glosses.py
+```
+
+Single non-iterating pass (one decode level only), so it can never over-decode; byte-identical round-trip guard; idempotent.
