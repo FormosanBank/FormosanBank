@@ -104,7 +104,23 @@ def build_model(
             RuntimeWarning,
             stacklevel=2,
         )
-    present = [d for d in cands if any(k.dialect == d for k in kept)]
+    return fit_model_from_docs(lang_code, name, inventories, kept, top_n=top_n)
+
+
+def fit_model_from_docs(
+    lang_code: str,
+    name: str,
+    inventories: dict[str, frozenset[str]],
+    docs: list,
+    top_n: int = 2000,
+) -> DialectModel | None:
+    """Fit a DialectModel from an explicit list of LabeledDoc.
+
+    Shared by build_model (full corpus) and cross_validate (per-fold training
+    subset). `present` is the set of dialects actually attested in `docs`;
+    returns None if fewer than two dialects have data.
+    """
+    present = sorted({doc.dialect for doc in docs})
     if len(present) < 2:
         return None
 
@@ -117,7 +133,7 @@ def build_model(
     uni = {d: Counter() for d in present}
     bi = {d: Counter() for d in present}
     words = {d: Counter() for d in present}
-    for doc in kept:
+    for doc in docs:
         if doc.dialect not in uni:
             continue
         g = tokenize_graphemes(doc.text, alphabet)
@@ -155,7 +171,7 @@ def build_model(
 
     Xs, ys = [], []
     index = {d: i for i, d in enumerate(present)}
-    for doc in kept:
+    for doc in docs:
         if doc.dialect not in index:
             continue
         Xs.append(model._score_matrix(doc.text))
