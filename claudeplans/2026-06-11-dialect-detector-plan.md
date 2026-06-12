@@ -186,10 +186,21 @@ char-only (non-grapheme) features, the unguarded label join, and the missing wor
 signal. The roadmap §F entry and this plan are rewritten; the unrelated "B5 item 24"
 roadmap edit Copilot added is left for the maintainer to adjudicate separately.
 
-## 11. Open items
+## 11. Open items — all resolved 2026-06-12 (see roadmap §F)
 
-- Final `unknown` probability threshold — set from the eval score distribution during
-  implementation.
-- Pruning size N for persisted profiles — pick the smallest N that holds eval accuracy.
-- Whether to commit the curated PDF-hint files now or as a follow-up once the
-  TSV+distribution model's residual confusions are known (informs which hints matter).
+- ~~Final `unknown` threshold~~ → **calibrated per language** from a held-out 5-fold
+  cross-validation (max coverage s.t. accuracy-on-committed ≥ 0.95); baked into the
+  committed models by `train`. `evaluate.calibrate_threshold` / `cross_validate`.
+- ~~Pruning size N~~ → swept {500,1000,2000}; held-out accuracy is flat for five
+  languages and improves with N for Paiwan, so **kept top_n=2000** (evidence-based).
+- ~~Curated PDF-hint files~~ → **not applicable**: the only confused languages (Amis's
+  four common-orthography dialects, Paiwan) use identical letter inventories across
+  their dialects, so there is no orthographic signal to encode. Documented in
+  `QC/utilities/dialect_detector/hints.py`. The PDF's usable contribution is the alias
+  table.
+
+> Note on evaluation honesty: the earlier headline file-level numbers in this spec were
+> **train=test** and inflated. The honest held-out (forced-choice) top-1 is Atayal/Bunun/
+> Puyuma/Rukai/Seediq 1.000, Paiwan 0.854, Amis 0.819; an ablation confirmed the word
+> feature improves held-out accuracy in all seven languages (real signal, not
+> memorization). Use `crossvalidate`, not `evaluate`, for honest numbers.
