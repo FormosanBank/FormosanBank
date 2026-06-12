@@ -742,6 +742,98 @@ def append_history_row(repo_root: Path, cache_path: Path, metrics: dict[str, Any
     return rows
 
 
+def apply_commit_changes(
+    repo_root: Path,
+    commit: str,
+    records_by_path: dict[str, dict[str, Any]],
+    parse_errors_by_path: dict[str, dict[str, str]],
+    corpora_path: Path,
+    progress_prefix: str = "",
+) -> int:
+    """Advance the running per-path record/parse-error maps by applying one
+    commit's XML diff (vs its first parent), in place. Returns the file count."""
+    changes = changed_xml_files(repo_root, commit)
+    blob_ids = [change.new_oid for change in changes if change.status != "D" and change.new_oid]
+    blobs = read_git_blobs(repo_root, blob_ids)
+
+    for change_index, change in enumerate(changes, start=1):
+        if change.status == "D":
+            records_by_path.pop(change.path, None)
+            parse_errors_by_path.pop(change.path, None)
+        else:
+            try:
+                if not change.new_oid or change.new_oid not in blobs:
+                    raise ValueError(f"Could not read git blob for {change.path}")
+                record = analyze_xml_bytes(corpora_path, change.path, blobs[change.new_oid])
+                records_by_path[change.path] = record
+                parse_errors_by_path.pop(change.path, None)
+            except Exception as exc:
+                records_by_path.pop(change.path, None)
+                parse_errors_by_path[change.path] = {"path": change.path, "error": str(exc)}
+
+        if len(changes) >= 1000 and (change_index % 1000 == 0 or change_index == len(changes)):
+            progress(f"{progress_prefix}processed {change_index}/{len(changes)} XML changes.")
+    return len(changes)
+
+
+def snapshot_records(
+    repo_root: Path,
+    commit: str,
+    corpora_path: Path,
+) -> tuple[dict[str, dict[str, Any]], dict[str, dict[str, str]]]:
+    """Analyze every tracked XML file as it existed at `commit`, returning the
+    per-path record/parse-error maps — the seed state for an incremental walk."""
+    # ls-tree does not accept :(glob) pathspec magic (unlike git show), so list
+    # everything under Corpora/ and filter to the same .../XML/.../*.xml set.
+    result = run_git_bytes(
+        ["ls-tree", "-r", "-z", commit, "--", "Corpora"],
+        repo_root,
+    )
+    oid_by_path: dict[str, str] = {}
+    for entry in result.stdout.split(b"\0"):
+        if not entry:
+            continue
+        meta, _, raw_path = entry.partition(b"\t")
+        fields = meta.decode("utf-8", errors="replace").split()
+        if len(fields) < 3 or fields[1] != "blob":
+            continue
+        path = raw_path.decode("utf-8", errors="replace")
+        parts = path.split("/")
+        if not path.endswith(".xml") or "XML" not in parts:
+            continue
+        oid_by_path[path] = fields[2]
+
+    blobs = read_git_blobs(repo_root, list(oid_by_path.values()))
+    records_by_path: dict[str, dict[str, Any]] = {}
+    parse_errors_by_path: dict[str, dict[str, str]] = {}
+    for path, oid in oid_by_path.items():
+        try:
+            if oid not in blobs:
+                raise ValueError(f"Could not read git blob for {path}")
+            records_by_path[path] = analyze_xml_bytes(corpora_path, path, blobs[oid])
+        except Exception as exc:
+            parse_errors_by_path[path] = {"path": path, "error": str(exc)}
+    return records_by_path, parse_errors_by_path
+
+
+def is_ancestor(repo_root: Path, commit: str, descendant: str = "HEAD") -> bool:
+    """True if `commit` is an ancestor of (or equal to) `descendant`."""
+    if not commit:
+        return False
+    proc = run_git(["merge-base", "--is-ancestor", commit, descendant], repo_root, check=False)
+    return proc.returncode == 0
+
+
+def commits_after(repo_root: Path, base_commit: str, max_commits: int) -> list[str]:
+    """XML-changing first-parent commits in (base_commit, HEAD], oldest first."""
+    args = ["log", "--first-parent", "--no-renames", "--diff-filter=ADM", "--format=%H"]
+    if max_commits > 0:
+        args.append(f"--max-count={max_commits}")
+    args.extend([f"{base_commit}..HEAD", "--", XML_HISTORY_PATHSPEC])
+    raw = git_value(args, repo_root)
+    return list(reversed(raw.splitlines())) if raw else []
+
+
 def generate_history(
     repo_root: Path,
     max_commits: int,
@@ -768,36 +860,69 @@ def generate_history(
             )
             continue
 
-        changes = changed_xml_files(repo_root, commit)
-        progress(f"[{position}/{total_commits}] {short_commit} applying {len(changes)} XML file change(s).")
-        blob_ids = [change.new_oid for change in changes if change.status != "D" and change.new_oid]
-        blobs = read_git_blobs(repo_root, blob_ids)
-
-        for change_index, change in enumerate(changes, start=1):
-            if change.status == "D":
-                records_by_path.pop(change.path, None)
-                parse_errors_by_path.pop(change.path, None)
-            else:
-                try:
-                    if not change.new_oid or change.new_oid not in blobs:
-                        raise ValueError(f"Could not read git blob for {change.path}")
-                    record = analyze_xml_bytes(corpora_path, change.path, blobs[change.new_oid])
-                    records_by_path[change.path] = record
-                    parse_errors_by_path.pop(change.path, None)
-                except Exception as exc:
-                    records_by_path.pop(change.path, None)
-                    parse_errors_by_path[change.path] = {"path": change.path, "error": str(exc)}
-
-            if len(changes) >= 1000 and (change_index % 1000 == 0 or change_index == len(changes)):
-                progress(f"[{position}/{total_commits}] {short_commit} processed {change_index}/{len(changes)} XML changes.")
-
+        count = apply_commit_changes(
+            repo_root, commit, records_by_path, parse_errors_by_path, corpora_path,
+            progress_prefix=f"[{position}/{total_commits}] {short_commit} ",
+        )
         row = history_row_from_records(repo_root, commit, records_by_path, parse_errors_by_path)
         rows.append(row)
         progress(
-            f"[{position}/{total_commits}] {short_commit} done: "
+            f"[{position}/{total_commits}] {short_commit} applied {count} change(s): "
             f"{format_short(row['tokens'])} tokens, {format_int(row['xml_files'])} XML files."
         )
     progress(f"History mode complete: wrote {len(rows)} sampled row(s).")
+    return rows
+
+
+def extend_history(
+    repo_root: Path,
+    cache_path: Path,
+    current_metrics: dict[str, Any],
+    max_commits: int = 0,
+) -> list[dict[str, Any]]:
+    """Extend the cached size-over-time CSV by sampling each XML-changing commit
+    that landed since the last cached row, seeded from the corpus state at that
+    cached commit. Falls back to a single HEAD append when there is no usable
+    cache tip (empty/diverged) or no gap to fill (<=1 new commit)."""
+    rows = load_history_csv(cache_path)
+    base_commit = rows[-1]["commit"] if rows else ""
+    head = current_metrics["git"].get("commit") or git_value(["rev-parse", "HEAD"], repo_root) or ""
+
+    if not base_commit:
+        progress("History extend: empty cache; appending a single HEAD row.")
+        return append_history_row(repo_root, cache_path, current_metrics)
+    if not is_ancestor(repo_root, base_commit):
+        progress(
+            f"History extend: cached tip {base_commit[:8]} is not an ancestor of HEAD; "
+            "appending a single HEAD row instead of walking."
+        )
+        return append_history_row(repo_root, cache_path, current_metrics)
+
+    new_commits = commits_after(repo_root, base_commit, max_commits)
+    if len(new_commits) <= 1:
+        progress("History extend: no gap to fill (<=1 new XML-changing commit); appending a single HEAD row.")
+        return append_history_row(repo_root, cache_path, current_metrics)
+
+    corpora_path = repo_root / "Corpora"
+    total = len(new_commits)
+    progress(f"History extend: seeding from {base_commit[:8]}, filling {total} new commit(s).")
+    records_by_path, parse_errors_by_path = snapshot_records(repo_root, base_commit, corpora_path)
+
+    for index, commit in enumerate(new_commits, start=1):
+        short_commit = commit[:8]
+        if commit == head:
+            row = history_row(repo_root, commit, current_metrics)
+        else:
+            apply_commit_changes(
+                repo_root, commit, records_by_path, parse_errors_by_path, corpora_path,
+                progress_prefix=f"[{index}/{total}] {short_commit} ",
+            )
+            row = history_row_from_records(repo_root, commit, records_by_path, parse_errors_by_path)
+        rows.append(row)
+        progress(
+            f"[{index}/{total}] {short_commit} done: "
+            f"{format_short(row['tokens'])} tokens, {format_int(row['xml_files'])} XML files."
+        )
     return rows
 
 
@@ -879,7 +1004,15 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
         help="Optional benchmark JSON file.",
     )
     parser.add_argument("--history", action="store_true", help="Append one history row at HEAD to the size-over-time CSV.")
-    parser.add_argument("--max-history-commits", type=int, default=0, help="Maximum XML-changing commits to sample (only with --history-rebuild). Use 0 for full history.")
+    parser.add_argument(
+        "--history-extend",
+        action="store_true",
+        help="Resume from the cached size-over-time CSV and add a row for every "
+             "XML-changing commit since its last entry (fills gaps cheaply). Falls "
+             "back to a single HEAD append when the cache is empty/diverged or there "
+             "is no gap.",
+    )
+    parser.add_argument("--max-history-commits", type=int, default=0, help="Maximum XML-changing commits to sample (with --history-rebuild, or to cap the fill window of --history-extend). Use 0 for no limit.")
     parser.add_argument(
         "--history-cache",
         default=None,
@@ -928,12 +1061,23 @@ def main(argv: list[str] | None = None) -> int:
     if not args.no_plots:
         write_current_plots(metrics, benchmarks, output_dir)
 
+    if args.history_rebuild and args.history_extend:
+        print("--history-rebuild and --history-extend are mutually exclusive.", file=sys.stderr)
+        return 2
+
     if args.history_rebuild:
         if args.stats_dir:
             print("--history-rebuild requires XML mode (omit --stats-dir).", file=sys.stderr)
             return 2
         repo_root = repo_root_from(corpora_path.resolve())
         history_rows = generate_history(repo_root, args.max_history_commits, metrics)
+        write_history_csv(history_rows, output_dir)
+        if not args.no_plots:
+            plot_history(history_rows, output_dir)
+    elif args.history_extend:
+        repo_root = repo_root_from(corpora_path.resolve())
+        cache = Path(args.history_cache) if args.history_cache else output_dir / "corpus_size_history.csv"
+        history_rows = extend_history(repo_root, cache, metrics, args.max_history_commits)
         write_history_csv(history_rows, output_dir)
         if not args.no_plots:
             plot_history(history_rows, output_dir)

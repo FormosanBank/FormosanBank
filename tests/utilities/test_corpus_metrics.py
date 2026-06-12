@@ -89,3 +89,132 @@ def test_history_appends_one_row_at_head(tmp_path):
     assert result.returncode == 0, result.stderr
     with open(tmp_path / "out" / "corpus_size_history.csv", newline="") as f:
         assert len(list(csv.DictReader(f))) == 2
+
+
+# --------------------------------------------------------------------------- #
+# --history-extend: fill every XML-changing commit since the last cached row  #
+# --------------------------------------------------------------------------- #
+
+HISTORY_HEADER = (
+    "date,commit,tokens,sentences,xml_files,sources,languages,parse_errors\n"
+)
+
+
+def _git(repo: Path, *args: str) -> str:
+    return subprocess.run(
+        ["git", *args], cwd=repo, capture_output=True, text=True, check=True
+    ).stdout.strip()
+
+
+def _init_repo(repo: Path) -> None:
+    repo.mkdir(parents=True, exist_ok=True)
+    _git(repo, "init", "-q")
+    _git(repo, "config", "user.email", "t@t.test")
+    _git(repo, "config", "user.name", "Tester")
+    _git(repo, "config", "commit.gpgsign", "false")
+
+
+def _xml(tokens: int) -> str:
+    words = " ".join(f"w{i}" for i in range(tokens))
+    return (
+        '<?xml version="1.0" encoding="utf-8"?>\n'
+        '<TEXT xml:lang="ami">\n'
+        '  <S id="1"><FORM kindOf="standard">' + words + "</FORM></S>\n"
+        "</TEXT>\n"
+    )
+
+
+def _add_xml(repo: Path, rel: str, tokens: int, message: str) -> str:
+    path = repo / rel
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(_xml(tokens), encoding="utf-8")
+    _git(repo, "add", rel)
+    _git(repo, "commit", "-q", "-m", message)
+    return _git(repo, "rev-parse", "HEAD")
+
+
+def _run_in(repo: Path, args):
+    return subprocess.run(
+        [sys.executable, str(SCRIPT), *args],
+        capture_output=True, text=True, cwd=repo,
+    )
+
+
+def test_history_extend_fills_intermediate_commits(tmp_path):
+    repo = tmp_path / "repo"
+    _init_repo(repo)
+    c1 = _add_xml(repo, "Corpora/Mini/XML/Amis/a.xml", 2, "c1: a.xml (2)")
+    c2 = _add_xml(repo, "Corpora/Mini/XML/Amis/b.xml", 3, "c2: b.xml (+3)")
+    c3 = _add_xml(repo, "Corpora/Mini/XML/Amis/c.xml", 1, "c3: c.xml (+1)")
+
+    # Cache holds only the seed commit (c1); c2 and c3 are the gap to fill.
+    cache = repo / "statistics" / "corpus_size_history.csv"
+    cache.parent.mkdir(parents=True)
+    cache.write_text(
+        HISTORY_HEADER + f"2025-01-01T00:00:00+00:00,{c1},2,1,1,1,1,0\n"
+    )
+
+    out = tmp_path / "out"
+    result = _run_in(repo, [str(repo / "Corpora"), "--output-dir", str(out),
+                            "--no-plots", "--history-extend",
+                            "--history-cache", str(cache)])
+    assert result.returncode == 0, result.stderr
+
+    with open(out / "corpus_size_history.csv", newline="") as f:
+        rows = list(csv.DictReader(f))
+    # seed (c1) preserved + one new row each for c2 and c3
+    assert [r["commit"] for r in rows] == [c1, c2, c3]
+    assert [r["tokens"] for r in rows] == ["2", "5", "6"]      # cumulative
+    assert [r["xml_files"] for r in rows] == ["1", "2", "3"]
+
+
+def test_history_extend_appends_one_row_when_no_gap(tmp_path):
+    repo = tmp_path / "repo"
+    _init_repo(repo)
+    c1 = _add_xml(repo, "Corpora/Mini/XML/Amis/a.xml", 2, "c1")
+    c2 = _add_xml(repo, "Corpora/Mini/XML/Amis/b.xml", 3, "c2")
+
+    # Cache already at the second-to-last commit => only HEAD is new (<=1).
+    cache = repo / "statistics" / "corpus_size_history.csv"
+    cache.parent.mkdir(parents=True)
+    cache.write_text(
+        HISTORY_HEADER + f"2025-01-01T00:00:00+00:00,{c1},2,1,1,1,1,0\n"
+    )
+
+    out = tmp_path / "out"
+    result = _run_in(repo, [str(repo / "Corpora"), "--output-dir", str(out),
+                            "--no-plots", "--history-extend",
+                            "--history-cache", str(cache)])
+    assert result.returncode == 0, result.stderr
+    with open(out / "corpus_size_history.csv", newline="") as f:
+        rows = list(csv.DictReader(f))
+    assert [r["commit"] for r in rows] == [c1, c2]
+    assert rows[-1]["tokens"] == "5"
+
+
+def test_history_extend_falls_back_when_cache_tip_unrelated(tmp_path):
+    repo = tmp_path / "repo"
+    _init_repo(repo)
+    _add_xml(repo, "Corpora/Mini/XML/Amis/a.xml", 2, "c1")
+    c2 = _add_xml(repo, "Corpora/Mini/XML/Amis/b.xml", 3, "c2")
+
+    # Cache tip is a commit that is NOT an ancestor of HEAD -> safe append only.
+    cache = repo / "statistics" / "corpus_size_history.csv"
+    cache.parent.mkdir(parents=True)
+    bogus = "0" * 40
+    cache.write_text(
+        HISTORY_HEADER + f"2025-01-01T00:00:00+00:00,{bogus},99,9,9,1,1,0\n"
+    )
+
+    out = tmp_path / "out"
+    result = _run_in(repo, [str(repo / "Corpora"), "--output-dir", str(out),
+                            "--no-plots", "--history-extend",
+                            "--history-cache", str(cache)])
+    assert result.returncode == 0, result.stderr
+    with open(out / "corpus_size_history.csv", newline="") as f:
+        rows = list(csv.DictReader(f))
+    # bogus cached row preserved; exactly one HEAD row appended (no walk).
+    assert len(rows) == 2
+    assert rows[0]["commit"] == bogus
+    assert rows[1]["commit"] == c2
+    assert rows[1]["tokens"] == "5"

@@ -51,7 +51,7 @@ jobs:
           python3 QC/corpus_metrics.py Corpora \
             --stats-dir statistics \
             --output-dir corpus-metrics \
-            --history \
+            --history-extend \
             --history-cache statistics/corpus_size_history.csv
 
       - name: Add metrics summary

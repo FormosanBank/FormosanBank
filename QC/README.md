@@ -254,7 +254,7 @@ python QC/utilities/update_audio_stats.py --all           # all corpora
 python QC/corpus_metrics.py Corpora \
   --stats-dir statistics \
   --output-dir corpus-metrics \
-  --history \
+  --history-extend \
   --history-cache statistics/corpus_size_history.csv
 ```
 
@@ -265,9 +265,13 @@ The script writes:
 - `corpus_language_tokens.png`
 - `corpus_source_tokens.png`
 - `corpus_benchmark_comparison.png`
-- `corpus_size_history.csv` and `corpus_size_over_time.png` when `--history` is used
+- `corpus_size_history.csv` and `corpus_size_over_time.png` when a history flag is used
 
-`--history` appends **one row at HEAD** to the size-over-time CSV (replacing the row if re-run on the same commit). To rebuild the entire history from git blobs under the current counting rules (slow full first-parent walk; XML mode only, omit `--stats-dir`):
+There are three history modes, in increasing cost:
+
+- `--history` appends **one row at HEAD** to the size-over-time CSV (replacing the row if re-run on the same commit). Cheapest; skips any commits between runs.
+- `--history-extend` resumes from the cached CSV and adds **one row per XML-changing commit since its last entry**, so no commits are skipped even if several land between runs. It snapshots the corpus once at the cached commit, then walks forward applying per-commit diffs. If the cache is empty, its tip is not an ancestor of HEAD (rewritten/diverged history), or there is no gap (≤1 new commit), it safely falls back to a single `--history`-style HEAD append. This is what CI uses. New rows reuse the current counting rules; older cached rows are left untouched.
+- `--history-rebuild` restates the **entire** history from git blobs under the current counting rules (slow full first-parent walk; XML mode only, omit `--stats-dir`):
 
 ```bash
 python QC/corpus_metrics.py Corpora \
