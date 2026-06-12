@@ -222,12 +222,24 @@ def load_model(path: Path) -> DialectModel:
     )
 
 
-def train_all(corpora_path, orthographies_path, models_dir, top_n=2000) -> list[str]:
+def train_all(corpora_path, orthographies_path, models_dir, top_n=2000,
+              calibrate=True, precision_floor=0.95, k=5) -> list[str]:
+    """Build and persist one model per in-scope language. When `calibrate`,
+    set each model's `unknown` threshold from a held-out cross-validation so the
+    committed model commits as much as it can while keeping accuracy-on-committed
+    >= precision_floor."""
+    from QC.utilities.dialect_detector.evaluate import (
+        calibrate_threshold, cross_validate,
+    )
     trained = []
     for lc in IN_SCOPE_LANGS:
         model = build_model(lc, corpora_path, orthographies_path, top_n=top_n)
         if model is None:
             continue
+        if calibrate:
+            cv = cross_validate(lc, corpora_path, orthographies_path, k=k, top_n=top_n)
+            if cv and cv["records"]:
+                model.threshold = calibrate_threshold(cv["records"], precision_floor)
         save_model(model, Path(models_dir) / f"{model.language_name}.json")
         trained.append(lc)
     return trained

@@ -86,10 +86,30 @@ def _cmd_evaluate(a) -> int:
     return 0
 
 
+def _cmd_crossvalidate(a) -> int:
+    from QC.utilities.dialect_detector.evaluate import calibrate_threshold, cross_validate
+    langs = [a.language] if a.language else M.IN_SCOPE_LANGS
+    print(f"(honest held-out {a.k}-fold; precision floor {a.precision_floor})")
+    print(f"{'language':<10}{'n':>5}{'heldout1':>10}{'thr':>7}{'coverage':>10}{'acc|commit':>12}")
+    for lc in langs:
+        cv = cross_validate(lc, a.corpora_path, a.orthographies, k=a.k, top_n=a.top_n)
+        if cv is None or not cv["records"]:
+            print(f"  (skipping {lc}: unsupported language or no trainable data)")
+            continue
+        recs = cv["records"]
+        t = calibrate_threshold(recs, a.precision_floor)
+        committed = [c for p, c in recs if p >= t]
+        cov = len(committed) / len(recs)
+        accc = sum(committed) / len(committed) if committed else 0.0
+        print(f"{cv['language']:<10}{cv['n']:>5}{cv['top1']:>10.3f}"
+              f"{t:>7.3f}{cov:>10.3f}{accc:>12.3f}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description="Guess dialect from standard-tier XML.")
     sub = p.add_subparsers(dest="cmd", required=True)
-    for name in ("train", "predict", "evaluate"):
+    for name in ("train", "predict", "evaluate", "crossvalidate"):
         sp = sub.add_parser(name)
         sp.add_argument("--corpora_path", type=Path, default=DEFAULT_CORPORA)
         sp.add_argument("--orthographies", type=Path, default=DEFAULT_ORTH)
@@ -98,7 +118,15 @@ def main(argv: list[str] | None = None) -> int:
         if name == "predict":
             sp.add_argument("--path", type=Path, required=True)
             sp.add_argument("--lang", type=str, default=None)
-        if name == "evaluate":
+        if name in ("evaluate", "crossvalidate"):
             sp.add_argument("--language", type=str, default=None)
+        if name == "crossvalidate":
+            sp.add_argument("--k", type=int, default=5)
+            sp.add_argument("--precision_floor", type=float, default=0.95)
     a = p.parse_args(argv)
-    return {"train": _cmd_train, "predict": _cmd_predict, "evaluate": _cmd_evaluate}[a.cmd](a)
+    return {
+        "train": _cmd_train,
+        "predict": _cmd_predict,
+        "evaluate": _cmd_evaluate,
+        "crossvalidate": _cmd_crossvalidate,
+    }[a.cmd](a)
