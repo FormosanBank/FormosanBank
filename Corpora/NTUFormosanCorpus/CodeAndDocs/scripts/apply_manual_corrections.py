@@ -220,16 +220,93 @@ GLOSS_SHIFT.extend([
     ("Stories/Kavalan/Kavalan_KavCon-relatives_buya_ngengi.xml", "KavCon-relatives_buya_ngengi_S_70",
      "TRANSL", "zho", "205", "那個", "KavCon-relatives_buya_ngengi_S_70_W1M1"),
 ])
+# 4c. Source echo rows and a diagonally-slid grid (2026-06-11 review of
+#     gloss_anomalies_review.csv). In sdqCon-dialog2 record 187 the gloss
+#     cells just repeat the wordform (echo rows); clean duplicates of the
+#     same words elsewhere in the file supply the real glosses. In
+#     sdqNr-mother_iwan record 143 the grid slid diagonally and the four
+#     Chinese glosses fell into orphan rows; both gloss tiers are
+#     recoverable from the record itself.
+_DLG2="Stories/Seediq/Seediq_sdqCon-dialog2_ciwas_tiwas 2021s.xml"
+_MIWAN="Stories/Seediq/Seediq_sdqNr-mother_iwan 2020s.xml"
+_S128="sdqCon-dialog2_ciwas_tiwas 2021s_S_128"
+_S32="sdqNr-mother_iwan 2020s_S_32"
+GLOSS_SHIFT.extend([
+    (_DLG2, _S128, "TRANSL", "eng", "mu[da", "AF-pass", None),
+    (_DLG2, _S128, "TRANSL", "zho", "m-u[da", "主焦-經過", None),
+    (_DLG2, _S128, "TRANSL", "eng", "icin", "another", None),
+    (_DLG2, _S128, "TRANSL", "zho", "icin", "另一", None),
+    (_MIWAN, _S32, "TRANSL", "eng", "..", "say-PF", None),
+    (_MIWAN, _S32, "TRANSL", "zho", "say-PF", "說-受焦", None),
+    (_MIWAN, _S32, "TRANSL", "eng", "kesa-un", "elderly", None),
+    (_MIWAN, _S32, "TRANSL", "zho", "elderly", "長者", None),
+    (_MIWAN, _S32, "TRANSL", "eng", "rudan", "past", None),
+    (_MIWAN, _S32, "TRANSL", "zho", "past", "以前", None),
+    (_MIWAN, _S32, "TRANSL", "eng", "cbeyo", "AF.say", None),
+    (_MIWAN, _S32, "TRANSL", "zho", "AF.say", "主焦.說", None),
+])
+
 # 5. Stray number fused to a wordform in the source gloss table
 #    (Grammar/Kanakanavu 12_S_5: gloss-table wordform 'na33' vs ori 'na';
 #    same genus as the fused example numbers, but not sentence-final).
 GLOSS_SHIFT.append(
     ("Grammar/Kanakanavu/Kanakanavu.xml", "12_S_5", "FORM", None, "na33", "na", None))
 
+# 6. M-tier completion for the gloss-shift repairs (2026-06-11 follow-up:
+#    the S_32/S_128 repairs initially fixed only the W tier, leaving the
+#    whole-word gloss unsplit on M1 and junk in siblings; also fill the
+#    benign missing zho cells left by the earlier per-M repairs).
+#    FILL entries: (file, S id, element id, tag, kindOf-or-lang, text) —
+#    set only if the tier is empty/absent; FORM fills also set the
+#    matching empty PHON via the Ortho113 mapping.
+FILLS = [
+    ("Stories/Kanakanavu/Kanakanavu_kkvNr_fishing_Pani.xml", "kkvNr_fishing_Pani_S_34",
+     "kkvNr_fishing_Pani_S_34_W10M2", "TRANSL", "zho", "受焦"),
+    ("Stories/Kanakanavu/Kanakanavu_kkvNr_fishing_Pani.xml", "kkvNr_fishing_Pani_S_34",
+     "kkvNr_fishing_Pani_S_34_W10M3", "TRANSL", "zho", "1SG.屬格"),
+    ("Stories/Kavalan/Kavalan_KavCon-earthquake_abas_haciang.xml", "KavCon-earthquake_abas_haciang_S_194",
+     "KavCon-earthquake_abas_haciang_S_194_W1M2", "TRANSL", "zho", "處焦"),
+    ("Stories/Kavalan/Kavalan_KavCon-earthquake_abas_haciang.xml", "KavCon-earthquake_abas_haciang_S_194",
+     "KavCon-earthquake_abas_haciang_S_194_W1M3", "TRANSL", "zho", "3PL.屬格"),
+    ("Stories/Seediq/Seediq_sdqCon-dialog2_ciwas_tiwas 2021s.xml", "sdqCon-dialog2_ciwas_tiwas 2021s_S_128",
+     "sdqCon-dialog2_ciwas_tiwas 2021s_S_128_W5M2", "TRANSL", "eng", "pass"),
+    ("Stories/Seediq/Seediq_sdqNr-mother_iwan 2020s.xml", "sdqNr-mother_iwan 2020s_S_32",
+     "sdqNr-mother_iwan 2020s_S_32_W17M2", "FORM", "original", "un"),
+    ("Stories/Seediq/Seediq_sdqNr-mother_iwan 2020s.xml", "sdqNr-mother_iwan 2020s_S_32",
+     "sdqNr-mother_iwan 2020s_S_32_W17M2", "FORM", "standard", "un"),
+    ("Stories/Seediq/Seediq_sdqNr-mother_iwan 2020s.xml", "sdqNr-mother_iwan 2020s_S_32",
+     "sdqNr-mother_iwan 2020s_S_32_W17M2", "TRANSL", "eng", "PF"),
+]
+_S128b="sdqCon-dialog2_ciwas_tiwas 2021s_S_128"
+_S32b="sdqNr-mother_iwan 2020s_S_32"
+GLOSS_SHIFT.extend([
+    # S_128 W5: split the whole-word gloss across the morphemes
+    (_DLG2, _S128b, "TRANSL", "eng", "AF-pass", "AF", _S128b+"_W5M1"),
+    (_DLG2, _S128b, "TRANSL", "zho", "m", "主焦", _S128b+"_W5M1"),
+    (_DLG2, _S128b, "TRANSL", "zho", "u[da", "經過", _S128b+"_W5M2"),
+    # S_32 W17: borrow segmentation kesa-un from the source row
+    (_MIWAN, _S32b, "FORM", None, "kesun", "kesa", _S32b+"_W17M1"),
+    (_MIWAN, _S32b, "TRANSL", "eng", "say-PF", "say", _S32b+"_W17M1"),
+    (_MIWAN, _S32b, "TRANSL", "zho", "say", "說", _S32b+"_W17M1"),
+    (_MIWAN, _S32b, "TRANSL", "zho", "PF", "受焦", _S32b+"_W17M2"),
+    # S_32 W17 W-level: carry the source segmentation (kesa-un) so the
+    # M count matches the form (corpus convention; V061)
+    (_MIWAN, _S32b, "FORM", None, "kesun", "kesa-un", _S32b+"_W17"),
+    (_MIWAN, _S32b, "PHON", None, "kesun", "kesa-un", _S32b+"_W17"),
+    # S_32 W17M1 PHON: this file's PHON predates the current mapping
+    # (stores 'kesun', today's mapping gives kəsun), so the witness
+    # correctly refused regeneration; set the vintage-style value.
+    (_MIWAN, _S32b, "PHON", None, "kesun", "kesa", _S32b+"_W17M1"),
+    # S_32 W18: M1 stale eng; M2 is a junk shell (deleted below)
+    (_MIWAN, _S32b, "TRANSL", "eng", "kesa", "elderly", _S32b+"_W18M1"),
+])
 # (relative file, S id, W id to delete) — impostor words with no source word
 DELETE_W = [
     ("Stories/Tsou/Tsou_TsouConv-informants.xml", "TsouConv-informants_S_19",
      "TsouConv-informants_S_19_W6"),
+    # junk M shell left by the diagonally-slid grid (rudan is monomorphemic)
+    ("Stories/Seediq/Seediq_sdqNr-mother_iwan 2020s.xml",
+     "sdqNr-mother_iwan 2020s_S_32", "sdqNr-mother_iwan 2020s_S_32_W18M2"),
 ]
 
 GLOSS_SHIFT_NOTES = [
@@ -243,6 +320,10 @@ GLOSS_SHIFT_NOTES = [
      "gloss-table column shift repaired from source; consult the NTU Formosan Corpus source"),
     ("Stories/Kavalan/Kavalan_KavCon-relatives_buya_ngengi.xml", "KavCon-relatives_buya_ngengi_S_70",
      "gloss-table column shift repaired from source; consult the NTU Formosan Corpus source"),
+    ("Stories/Seediq/Seediq_sdqCon-dialog2_ciwas_tiwas 2021s.xml", "sdqCon-dialog2_ciwas_tiwas 2021s_S_128",
+     "source echo-row glosses replaced from clean duplicates; consult the NTU Formosan Corpus source"),
+    ("Stories/Seediq/Seediq_sdqNr-mother_iwan 2020s.xml", "sdqNr-mother_iwan 2020s_S_32",
+     "gloss grid slid in source; glosses restored from the record's orphan rows; consult the NTU Formosan Corpus source"),
 ]
 
 # (relative file, S id, notes value set on the S-level original FORM)
@@ -280,6 +361,8 @@ def main():
         by_file.setdefault(entry[0], []).append(("text",) + entry[1:])
     for rel, sid, wid in DELETE_W:
         by_file.setdefault(rel, []).append(("delw", sid, wid))
+    for rel, sid, eid, tag, kol, text in FILLS:
+        by_file.setdefault(rel, []).append(("fill", sid, eid, tag, kol, text))
     for rel, sid, note in list(NOTES) + GLOSS_SHIFT_NOTES:
         by_file.setdefault(rel, []).append(("note", sid, note))
 
@@ -313,13 +396,53 @@ def main():
                     modified = True
                     print(f"  notes set: {rel} {sid}")
                 continue
+            if entry[0] == "fill":
+                _, sid, eid, tag, kol, text = entry
+                s_el = sindex.get(sid)
+                parent = None
+                if s_el is not None:
+                    for cand in s_el.iter():
+                        if cand.tag in ("W", "M", "S") and cand.get("id") == eid:
+                            parent = cand
+                            break
+                if parent is None:
+                    print(f"  no match for fill: {rel} {eid}")
+                    stale += 1
+                    continue
+                if tag == "TRANSL":
+                    tel = next((t for t in parent.findall("TRANSL")
+                                if (t.get(_XLANG) or t.get("lang")) == kol), None)
+                    if tel is None:
+                        tel = etree.SubElement(parent, "TRANSL")
+                        tel.set(_XLANG, kol)
+                    if (tel.text or "").strip():
+                        print(f"  fill skipped (already non-empty): {rel} {eid} {tag}/{kol}")
+                        stale += 1
+                        continue
+                    tel.text = text
+                else:
+                    el2 = _tier(parent, tag, kol)
+                    if el2 is None or (el2.text or "").strip():
+                        print(f"  fill skipped (missing tier or non-empty): {rel} {eid} {tag}/{kol}")
+                        stale += 1
+                        continue
+                    el2.text = text
+                    if tag == "FORM" and mp is not None:
+                        pe = _tier(parent, "PHON", kol)
+                        if pe is not None and not (pe.text or "").strip():
+                            pe.text = convert(text, mp)
+                            phon += 1
+                applied += 1
+                modified = True
+                print(f"  filled: {rel} {eid} {tag}/{kol} = {text!r}")
+                continue
             if entry[0] == "delw":
                 _, sid, wid = entry
                 s = sindex.get(sid)
                 target = None
                 if s is not None:
-                    for w in s.iter("W"):
-                        if w.get("id") == wid:
+                    for w in s.iter():
+                        if w.tag in ("W", "M") and w.get("id") == wid:
                             target = w
                             break
                 if target is None:
