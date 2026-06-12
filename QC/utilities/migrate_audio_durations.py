@@ -7,8 +7,10 @@ count_at_compute anchor comes from a reference commit (the "unified counting
 rules" seeding, d1bd8f4d8) via `git show`, matched by (language, dialect):
 - unchanged corpora: reference count == current count -> get_corpus_stats
   reads them NOT stale (no download needed).
-- changed corpora (e.g. NTU_Paiwan_ASR, WilangYutasVideos): reference count
-  < current count -> read STALE -> refresh_audio_stats recomputes them.
+- changed corpora (e.g. NTU_Paiwan_ASR, whose audio grew): reference count
+  != current count -> read STALE -> refresh_audio_stats recomputes them.
+- a new (language, dialect) absent at the reference commit falls back to the
+  current count (treated as not-stale; refresh it if its seconds are 0).
 
 Run once, then commit statistics/audio_durations.csv.
 """
@@ -21,6 +23,7 @@ import subprocess
 import sys
 from datetime import date
 from pathlib import Path
+from typing import Callable
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import audio_durations
@@ -51,7 +54,8 @@ def reference_counts_factory(repo_root: Path, reference_commit: str):
     return get
 
 
-def build_rows_for_corpus(corpus: str, current_csv_text: str, ref_counts) -> list[dict]:
+def build_rows_for_corpus(corpus: str, current_csv_text: str,
+                          ref_counts: "Callable[[str], dict]") -> list[dict]:
     """Build audio_durations rows for one corpus. `ref_counts(corpus)` -> dict."""
     ref = ref_counts(corpus)
     rows = []
