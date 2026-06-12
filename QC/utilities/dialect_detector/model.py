@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import warnings
 from collections import Counter, defaultdict
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -95,7 +96,14 @@ def build_model(
     cands = C.candidate_dialects(lang_code)
     if len(cands) < 2:
         return None
-    kept, _dropped = iter_labeled_documents(corpora_path, lang_code)
+    kept, dropped = iter_labeled_documents(corpora_path, lang_code)
+    if dropped:
+        warnings.warn(
+            f"{lang_code}: {len(dropped)} document(s) skipped with dialect labels "
+            f"that map to no candidate: {sorted({d.dialect for d in dropped})}",
+            RuntimeWarning,
+            stacklevel=2,
+        )
     present = [d for d in cands if any(k.dialect == d for k in kept)]
     if len(present) < 2:
         return None
@@ -120,7 +128,10 @@ def build_model(
 
     # Vocab sizes are the smoothing denominators, so they must reflect the FULL
     # observed vocabulary, not the per-dialect top_n-pruned profiles (pruning
-    # would understate the vocab and inflate unseen-token probabilities).
+    # would understate the vocab and inflate unseen-token probabilities). The
+    # per-dialect *totals* below ARE post-prune; the denominator is therefore
+    # slightly underestimated, but the bias is symmetric across dialects and
+    # does not affect relative rankings.
     uni_vocab = len({k for c in uni.values() for k in c}) or 1
     bi_vocab = len({k for c in bi.values() for k in c}) or 1
     word_vocab = len({k for c in words.values() for k in c}) or 1

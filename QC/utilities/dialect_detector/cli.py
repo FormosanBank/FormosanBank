@@ -56,6 +56,9 @@ def _cmd_predict(a) -> int:
             continue
         pred = M.predict_root(model, root)
         print(f"\nFile: {xml_path}\nLanguage: {lc} -> {name}")
+        existing = (root.get("dialect") or "").strip()
+        if existing:
+            print(f"  existing dialect: {existing}")
         if pred.top is None:
             print("  (no standard tier)")
             continue
@@ -70,6 +73,7 @@ def _cmd_predict(a) -> int:
 def _cmd_evaluate(a) -> int:
     from QC.utilities.dialect_detector.evaluate import evaluate_language
     langs = [a.language] if a.language else M.IN_SCOPE_LANGS
+    print("(apparent accuracy; train = test — not held-out)")
     for lc in langs:
         model = M.build_model(lc, a.corpora_path, a.orthographies, a.top_n)
         if model is None:

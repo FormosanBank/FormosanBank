@@ -1,12 +1,20 @@
 from __future__ import annotations
 
+import warnings
 from pathlib import Path
 from collections import defaultdict
 from QC.utilities.dialect_detector.data import iter_labeled_documents
 
 
 def evaluate_language(lang_code: str, model, corpora_path: Path) -> dict:
-    kept, _dropped = iter_labeled_documents(corpora_path, lang_code)
+    kept, dropped = iter_labeled_documents(corpora_path, lang_code)
+    if dropped:
+        warnings.warn(
+            f"{lang_code}: {len(dropped)} document(s) skipped with dialect labels "
+            f"that map to no candidate: {sorted({d.dialect for d in dropped})}",
+            RuntimeWarning,
+            stacklevel=2,
+        )
     confusion: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
     top1 = top2 = n = 0
     ambiguous: list[tuple[float, str, str, str]] = []  # (margin, path, true, pred)
