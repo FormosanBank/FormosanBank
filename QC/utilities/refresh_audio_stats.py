@@ -6,7 +6,8 @@ CSV, then delete the downloaded audio.
     python QC/utilities/refresh_audio_stats.py NTU_Paiwan_ASR
     python QC/utilities/refresh_audio_stats.py WilangYutasVideos --keep-audio
 
-NEVER run in CI or a merge — this is the only path that downloads audio.
+NEVER run in CI or a merge. This is the only Python-level path that recomputes
+audio durations on demand (see run_audio_downloads.sh for bulk audio downloads).
 Requires git, git-lfs, jq and the `hf` CLI (same as download_audio_data.sh).
 """
 from __future__ import annotations
@@ -44,6 +45,8 @@ def refresh_corpus(corpus_dir: Path, keep_audio: bool = False,
                    download=_default_download, regen_stats=_default_regen_stats,
                    computed_at: str | None = None) -> int:
     corpus_dir = Path(corpus_dir)
+    # Download is outside the try/finally: if it fails partway, any partial
+    # Audio/ is left on disk for the operator to inspect (not auto-deleted).
     download(corpus_dir)
     try:
         rc = update_audio_stats.update_corpus(corpus_dir, computed_at=computed_at)
