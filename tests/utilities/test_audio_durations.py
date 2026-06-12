@@ -66,3 +66,15 @@ def test_upsert_replaces_corpus_rows_keeps_others(tmp_path):
     assert rows[("ePark", "ami", "Coastal")]["transcribed_audio_seconds"] == 200.0
     assert rows[("ePark", "ami", "Coastal")]["transcribed_audio_count"] == 6
     assert ("Other", "tay", "Sekolik") in rows  # untouched
+
+
+def test_upsert_creates_file_when_missing(tmp_path):
+    audio_durations.upsert_audio_durations(
+        tmp_path, "NewCorpus",
+        [{"language": "ami", "dialect": "Coastal",
+          "transcribed_audio_seconds": 10.0, "untranscribed_audio_seconds": 0.0,
+          "transcribed_audio_count": 2, "untranscribed_audio_count": 0}],
+        computed_at="2026-06-12",
+    )
+    rows = audio_durations.load_audio_durations(tmp_path)
+    assert ("NewCorpus", "ami", "Coastal") in rows

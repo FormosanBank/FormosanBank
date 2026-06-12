@@ -40,7 +40,7 @@ def load_audio_durations(stats_dir: Path) -> dict:
         return out
     with open(path, newline="", encoding="utf-8") as f:
         for row in csv.DictReader(f):
-            key = (row["corpus"], row["language"], row["dialect"])
+            key = (row.get("corpus", ""), row.get("language", ""), row.get("dialect", ""))
             out[key] = {
                 "transcribed_audio_seconds": float(row.get("transcribed_audio_seconds") or 0),
                 "untranscribed_audio_seconds": float(row.get("untranscribed_audio_seconds") or 0),
