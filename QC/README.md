@@ -248,6 +248,30 @@ python QC/utilities/update_audio_stats.py --all           # all corpora
 
 `update_audio_stats.py` requires `get_corpus_stats.py` to have been run first (the CSV must exist). Buckets with no audio found on disk keep their previous seconds — running without audio downloaded will not zero out good data.
 
+### Audio-seconds source of truth
+
+`statistics/audio_durations.csv` is the persistent source of truth for audio seconds, keyed by `(corpus, language, dialect)`. It holds the seconds plus `count_at_compute` (the XML audio-element count at the time of measurement) and a date. CI reads it but **never writes it**.
+
+`get_corpus_stats.py` fills the seconds columns from this file and prints a `STALE AUDIO` warning whenever a corpus's current XML audio-count no longer matches `count_at_compute`. To see the full worklist:
+
+```bash
+python QC/utilities/get_corpus_stats.py --report-stale-audio
+```
+
+To refresh one corpus whose audio changed (pulls HF audio, recomputes, deletes the download):
+
+```bash
+python QC/utilities/refresh_audio_stats.py <corpus>        # add --keep-audio to retain the download
+```
+
+To recompute from already-local audio without downloading:
+
+```bash
+python QC/utilities/update_audio_stats.py <corpus>         # or --all
+```
+
+After either command, commit `statistics/audio_durations.csv` and the per-corpus CSV. The history audio series updates on the next CI push.
+
 **Step 2 — aggregate CSVs and generate metrics** (reads `statistics/` rather than walking XML):
 
 ```bash
