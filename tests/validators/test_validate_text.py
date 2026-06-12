@@ -1941,6 +1941,86 @@ def test_V137_trailing_decimal_in_TRANSL_soft(tmp_path):
     )
 
 
+def test_V137_person_gloss_in_WM_TRANSL_not_flagged(tmp_path):
+    """V137 (2026-06-12): Leipzig gloss codes in W/M-level TRANSL are gloss
+    notation, not footnotes. `.3SG`, `1SG.2PL`, numbered morpheme labels
+    like `A2` must NOT fire. Regression for NTUFormosanCorpus Bunun, where
+    130 W/M-TRANSL gloss codes were false-flagged.
+    """
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">tina</FORM>'
+        + '<FORM kindOf="standard">tina</FORM>'
+        + '<W id="S1W0">'
+        + '<FORM>tina</FORM>'
+        + '<TRANSL xml:lang="zho">房子.3SG.屬格</TRANSL>'
+        + '<TRANSL xml:lang="eng">AUX.PST=2SG.GEN.1SG.NOM</TRANSL>'
+        + '<M id="S1W0M0">'
+        + '<FORM>tina</FORM>'
+        + '<TRANSL xml:lang="eng">house.3SG</TRANSL>'
+        + '</M>'
+        + '</W>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v137" not in combined.lower(), (
+        f"V137 must not fire on W/M-level TRANSL gloss codes; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V137_footnote_in_WM_FORM_still_flagged(tmp_path):
+    """V137: the W/M-TRANSL exemption must NOT leak to FORM. A footnote
+    digit glued onto a morpheme FORM (`speak12`) — V137's original C015
+    purpose — must still fire even at the W/M tier.
+    """
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">tina</FORM>'
+        + '<FORM kindOf="standard">tina</FORM>'
+        + '<W id="S1W0">'
+        + '<FORM>speak12</FORM>'
+        + '<TRANSL xml:lang="eng">to speak</TRANSL>'
+        + '</W>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v137", "trailing decimal", "trailing-decimal", "footnote")
+    ), (
+        f"expected V137 to still fire on W/M FORM footnote; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V137_footnote_in_S_TRANSL_still_flagged(tmp_path):
+    """V137: S-level TRANSL is NOT exempt — only W/M-level TRANSL is."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">std</FORM>'
+        + '<TRANSL xml:lang="eng">to speak.2</TRANSL>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v137", "trailing decimal", "trailing-decimal", "footnote")
+    ), (
+        f"expected V137 to still fire on S-level TRANSL; "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
 def test_V137_plain_decimal_number_OK(tmp_path):
     """V137: ends with a plain decimal `3.14` (digit before .). Not flagged.
 

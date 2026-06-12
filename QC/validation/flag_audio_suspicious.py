@@ -97,7 +97,7 @@ def flag(rows: list[dict], worst_pct: float = 5.0, min_agreement: int = 1,
         by_lang[r.get("lang", "")].append(r)
 
     flagged_all: list[dict] = []
-    for lang, lang_rows in by_lang.items():
+    for lang_rows in by_lang.values():
         distributions = {col: [r.get(col) for r in lang_rows if r.get(col) is not None]
                          for col, *_ in METRICS}
         pct_cutoffs = {}
@@ -228,7 +228,7 @@ def main(argv: list[str] | None = None) -> int:
         print(f"Flagged {len(flagged)} / {len(rows)} entries → {out_path}", file=sys.stderr)
         # Median per metric for diagnostics
         for col, *_ in METRICS:
-            vals = [r.get(col) for r in rows if r.get(col) is not None]
+            vals = [v for r in rows if (v := r.get(col)) is not None]
             if vals:
                 print(f"  {col:<10} median={median(vals):.4f}  n={len(vals)}",
                       file=sys.stderr)

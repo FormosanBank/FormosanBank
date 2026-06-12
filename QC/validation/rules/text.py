@@ -1315,12 +1315,20 @@ def v137_trailing_decimal_footnote_in_S_FORM_TRANSL(
     lang = _resolve_language(tree)
     findings: list[Finding] = []
     for elem in tree.iter("FORM", "TRANSL"):
+        parent_tag = elem.tag
+        host = elem.getparent()
+        host_tag = host.tag if host is not None else ""
+        host_id = (host.get("id") if host is not None else None) or ""
+        # W/M-level TRANSL is the interlinear gloss tier: digit-bearing
+        # Leipzig gloss codes (e.g. '.3SG', '1SG.2PL', numbered morpheme
+        # labels like 'A2'/'G0') are expected notation, not scrape
+        # footnotes. Skip them. FORM at every tier stays covered — that is
+        # V137's original purpose (e.g. catching 'speak12' footnotes glued
+        # onto a morpheme), as does S-level TRANSL.
+        if parent_tag == "TRANSL" and host_tag in ("W", "M"):
+            continue
         text = elem.text or ""
         for match in _FOOTNOTE_RE.finditer(text):
-            parent_tag = elem.tag
-            host = elem.getparent()
-            host_tag = host.tag if host is not None else ""
-            host_id = (host.get("id") if host is not None else None) or ""
             location = (
                 f"{host_tag}={host_id} {parent_tag}"
                 if host_id else f"{host_tag} {parent_tag}".strip()

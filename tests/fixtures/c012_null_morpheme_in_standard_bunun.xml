@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  C012 fixture (Bunun): "Ø" must be stripped from the standard tier EVEN in a
+  language where "-" IS a letter (Bunun), and stripping the null marker must NOT
+  eat the real, letter-status hyphens around it. This pins that the "Ø" removal
+  is independent of the hyphen-is-letter branch.
+
+  Shape: standard FORM "Ø-ma-baliv-an."; the leading "Ø-" (null prefix + its
+  bridging hyphen) is removed, while the two internal letter-hyphens of
+  "ma-baliv-an." are PRESERVED (Bunun "-" is a letter). After C012 the standard
+  becomes "ma-baliv-an.".
+-->
+<TEXT id="TEST_C012_BNN_NULL" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="bnn" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original">Ø-ma-baliv-an.</FORM>
+    <FORM kindOf="standard">Ø-ma-baliv-an.</FORM>
+  </S>
+</TEXT>

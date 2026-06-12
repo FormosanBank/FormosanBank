@@ -114,6 +114,8 @@ IDEMPOTENT_FIXTURES = [
     "c012_hyphens_in_standard_amis.xml",
     "c012_hyphens_in_standard_bunun.xml",
     "c012_hyphens_in_standard_thao.xml",
+    "c012_null_morpheme_in_standard_trv.xml",
+    "c012_null_morpheme_in_standard_bunun.xml",
     "c013_W_segmentation_preserved.xml",
     "c014_angle_gloss_in_W_transl.xml",
     "c019_d_stroke_in_bunun_form.xml",
@@ -121,6 +123,7 @@ IDEMPOTENT_FIXTURES = [
     "c024_parens_in_transl_preserved.xml",
     "c007_bopomofo_in_form.xml",
     "c022_sentence_initial_asterisk.xml",
+    "c027_zero_width_in_form_and_transl.xml",
 ]
 
 
@@ -565,6 +568,47 @@ def test_C006_caret_variants_normalize_everywhere_regardless_of_lang(
 
 
 # =============================================================================
+# C027 — Zero-width / BOM stripping (cleaner companion to V131 / TR16)
+# =============================================================================
+
+
+def test_C027_zero_width_stripped_everywhere_regardless_of_lang(
+    tmp_path, fixtures_dir, copy_fixture
+):
+    """C027: the four zero-width / BOM codepoints (U+200B/200C/200D/FEFF)
+    are stripped from EVERY tier (FORM original, FORM standard, TRANSL
+    non-Chinese, TRANSL Chinese), regardless of language. The Chinese
+    TRANSL assertion is the regression pin — a future coupling to the
+    language-aware swap (which skips Chinese) would leave them in place.
+    """
+    work = copy_fixture(
+        fixtures_dir / "c027_zero_width_in_form_and_transl.xml", tmp_path
+    )
+    proc = _run_clean(tmp_path)
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+
+    zero_width = {"​", "‌", "‍", "﻿"}
+
+    orig = _form_texts_with_kindof(work, "S", "original")[0]
+    std = _form_texts_with_kindof(work, "S", "standard")[0]
+    assert orig == "abcde", f"FORM original: {orig!r}"
+    assert std == "abcde", f"FORM standard: {std!r}"
+
+    tree = etree.parse(str(work))
+    transls = {t.get(XML_LANG): t.text for t in tree.findall(".//S/TRANSL")}
+    # Non-Chinese: zero-width chars gone, visible words + spacing intact.
+    assert not (zero_width & set(transls["eng"])), (
+        f"non-Chinese TRANSL still has zero-width chars: {transls['eng']!r}"
+    )
+    assert transls["eng"] == "zwsp zwnj zwj bom", f"eng TRANSL: {transls['eng']!r}"
+    # Chinese: the strip MUST run regardless of language → text becomes empty.
+    assert not (zero_width & set(transls["zho"] or "")), (
+        f"Chinese TRANSL still has zero-width chars (strip MUST be "
+        f"language-agnostic): {transls['zho']!r}"
+    )
+
+
+# =============================================================================
 # C007 — All named Bopomofo codepoints retained with per-occurrence warnings
 # =============================================================================
 
@@ -744,6 +788,50 @@ def test_C012_thao_standard_hyphens_preserved_with_warning(
         f"expected warning indicator for hyphens in Thao standard tier; "
         f"stdout={proc.stdout!r}, stderr={proc.stderr!r}"
     )
+
+
+def test_C012_null_morpheme_marker_stripped_from_standard(
+    tmp_path, fixtures_dir, copy_fixture
+):
+    """C012: the null-morpheme marker "Ø" is stripped from the standard tier
+    (with its bridging hyphen) for a language where "-" is not a letter.
+
+    "Ø" is a null-morpheme annotation, never an orthographic letter, so it must
+    not survive into the standard surface form alongside the segmentation it
+    marks. The original tier is left untouched.
+    """
+    work = copy_fixture(
+        fixtures_dir / "c012_null_morpheme_in_standard_trv.xml", tmp_path
+    )
+    proc = _run_clean(tmp_path)
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+
+    std = _form_texts_with_kindof(work, "S", "standard")[0]
+    assert std == "dhuq sapah ka tama da.", f"standard: {std!r}"
+
+    # Original tier is source-faithful: Ø preserved.
+    orig = _form_texts_with_kindof(work, "S", "original")[0]
+    assert orig == "Ø-dhuq sapah ka tama da.", f"original: {orig!r}"
+
+
+def test_C012_null_morpheme_stripped_but_letter_hyphens_preserved(
+    tmp_path, fixtures_dir, copy_fixture
+):
+    """C012: "Ø" is stripped even when "-" IS a letter (Bunun), and removing the
+    null marker does NOT eat the real letter-hyphens around it.
+
+    Negative pin against an implementation that only strips "Ø" in the
+    hyphen-not-a-letter branch, or that strips it together with adjacent
+    letter-hyphens.
+    """
+    work = copy_fixture(
+        fixtures_dir / "c012_null_morpheme_in_standard_bunun.xml", tmp_path
+    )
+    proc = _run_clean(tmp_path)
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+
+    std = _form_texts_with_kindof(work, "S", "standard")[0]
+    assert std == "ma-baliv-an.", f"standard: {std!r}"
 
 
 # =============================================================================
