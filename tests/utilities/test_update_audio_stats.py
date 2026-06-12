@@ -55,6 +55,7 @@ def test_updates_seconds_in_truth_file(mini_corpus, tmp_path, audio_file_factory
     assert truku["transcribed_audio_seconds"] == pytest.approx(1.0, abs=0.1)
     assert truku["untranscribed_audio_seconds"] == pytest.approx(2.0, abs=0.1)
     assert truku["transcribed_audio_count"] == 1
+    assert truku["untranscribed_audio_count"] == 1
     # ami/Haian has no audio elements: it should not appear in the truth file.
     assert ("ami", "Haian") not in rows
 
@@ -80,11 +81,13 @@ def test_no_audio_on_disk_warns_and_keeps_seconds(mini_corpus, tmp_path):
     truku = rows[("trv", "Truku")]
     assert truku["transcribed_audio_seconds"] == pytest.approx(55.0)
     assert truku["untranscribed_audio_seconds"] == pytest.approx(66.0)
+    assert truku["transcribed_audio_count"] == 1
+    assert truku["untranscribed_audio_count"] == 1
 
 
-def test_update_writes_truth_file_with_counts(tmp_path, monkeypatch):
+def test_update_writes_truth_file_with_counts(tmp_path):
     # One corpus, one wav of known duration, one transcribed AUDIO referencing it.
-    import wave, struct, importlib.util, sys
+    import importlib.util, wave, struct
     corpus = tmp_path / "Corpora" / "Mini"
     xml_dir = corpus / "XML" / "Amis"; xml_dir.mkdir(parents=True)
     audio_dir = corpus / "Audio" / "Amis"; audio_dir.mkdir(parents=True)
@@ -107,10 +110,7 @@ def test_update_writes_truth_file_with_counts(tmp_path, monkeypatch):
     rc = mod.update_corpus(corpus, computed_at="2026-06-12")
     assert rc == 0
 
-    ad_spec = importlib.util.spec_from_file_location(
-        "audio_durations",
-        Path(__file__).resolve().parents[2] / "QC" / "utilities" / "audio_durations.py")
-    ad = importlib.util.module_from_spec(ad_spec); ad_spec.loader.exec_module(ad)
+    ad = _load_ad()
     rows = ad.load_for_corpus(stats_dir, "Mini")
     assert rows[("ami", "Coastal")]["transcribed_audio_seconds"] == 1.0
     assert rows[("ami", "Coastal")]["transcribed_audio_count"] == 1

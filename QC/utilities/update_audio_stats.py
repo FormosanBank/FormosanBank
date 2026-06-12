@@ -18,8 +18,12 @@ import sys
 import wave
 import xml.etree.ElementTree as ET
 from collections import defaultdict
+from datetime import date
 from pathlib import Path
 
+# Insert QC/ so corpus_counts (a top-level QC module) is importable, and
+# QC/utilities/ so audio_durations is importable when this module is loaded
+# via importlib in tests (where sys.path may not include either directory).
 _utils = Path(__file__).resolve().parents[0]
 _qc = Path(__file__).resolve().parents[1]
 for _p in (_utils, _qc):
@@ -28,7 +32,7 @@ for _p in (_utils, _qc):
 
 import audio_durations
 import corpus_counts
-from get_corpus_stats import FIELDNAMES, stats_paths
+from get_corpus_stats import stats_paths
 
 try:
     from mutagen.mp3 import MP3 as MutagenMP3
@@ -165,7 +169,6 @@ def update_corpus(corpus_path: Path, computed_at: str | None = None) -> int:
                      "transcribed_audio_count": t_count,
                      "untranscribed_audio_count": u_count})
 
-    from datetime import date
     stamp = computed_at or date.today().isoformat()
     path = audio_durations.upsert_audio_durations(stats_dir, corpus_name, rows, stamp)
     print(f"Updated audio durations for {len(rows)} bucket(s) in {path}")
