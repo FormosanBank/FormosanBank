@@ -198,6 +198,28 @@ standardized text, is kept):
    python drop_unmapped_phon.py --final_xml_dir Final_XML
 ```
 
+Next, **add the missing space around inline parentheticals**. The ePark source
+frequently runs a word straight into a following parenthetical gloss/alternate
+with no separating space (e.g. `manokos(manakboz)`, `madagdag(apnezak)`,
+`saleman(100)`). This is present verbatim in the source CSVs — it is *not*
+introduced by our processing — so it is corrected here as a reproducible step.
+`fix_parenthetical_spacing.py` inserts a space before `(` and after `)` at word
+boundaries in `FORM` and `PHON` only. `TRANSL` is deliberately left untouched:
+the `zho` translations use CJK parenthetical conventions (e.g. `Dahu(拉荷)`) where
+a space is not wanted. It also **skips word-segmented sentences** (those with
+`<W>` children, all in `jiu_jie_jiao_cai_nine_level_materials`): there the
+parenthetical is a single word token aligned across the sentence `FORM` and the
+`W` tier (e.g. one `<W>` `apnezak(pepnezak)`), so spacing the sentence `FORM`
+would split it into two whitespace tokens while the `W` tier keeps one, breaking
+`FORM`↔`W` alignment (`validate_glosses` V060). Those ~100 glossed cases are left
+as-is on purpose. The script defaults to a dry run that previews every change;
+pass `--apply` to write. It serializes with lxml (matching `clean_xml.py`) so the
+diff contains only the text edits, not a whole-file reserialization:
+
+```bash
+   python fix_parenthetical_spacing.py --final_xml_dir Final_XML --apply
+```
+
 Finally, **re-run `clean_xml.py` now that the standard tier exists**. The earlier
 `clean_xml` pass (step "Clean XML and standardize punctuation" above) ran *before*
 `standardize.py` created the `kindOf="standard"` FORM tier, so its standard-tier
