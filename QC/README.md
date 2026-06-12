@@ -223,6 +223,8 @@ The committed models live under `QC/utilities/dialect_models/` and are regenerat
 
 Use **`crossvalidate`** for honest numbers — `evaluate` is train-on-test and optimistic (a file's own words sit in its dialect's profile). Held-out top-1 is **1.000 for Atayal/Bunun/Puyuma/Rukai/Seediq, ~0.85 Paiwan, ~0.82 Amis**. With the calibrated thresholds, the five strong languages commit everything at ~1.0 precision; **Amis and Paiwan commit ~70%/~66%** and return `unknown` on the rest. This is expected: the Amis "common-orthography" cluster and the Paiwan dialects are written with *identical letter inventories*, so they can only be separated lexically and short or genre-neutral text legitimately comes back `unknown`.
 
+**Full documentation** (usage, retraining, interpreting output, how it works): [QC/utilities/dialect_detector/README.md](utilities/dialect_detector/README.md).
+
 ## Corpus Metrics
 
 **Shared counting rules** live in `QC/corpus_counts.py`: tokens are whitespace-separated chunks containing at least one Unicode letter or digit (digit-only chunks count; punctuation-only chunks like `?` do not); per sentence, the `standard` FORM is used if non-empty, otherwise the `original` FORM, otherwise 0; language identity comes from `xml:lang` + `dialect` attributes (`trv` + `Truku` dialect → Truku, otherwise Seediq). This module is imported by `get_corpus_stats.py`, `corpus_metrics.py`, and `count_tokens.py`.
