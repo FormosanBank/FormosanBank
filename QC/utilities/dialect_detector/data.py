@@ -4,7 +4,7 @@ import xml.etree.ElementTree as ET
 from dataclasses import dataclass
 from pathlib import Path
 
-from QC.utilities.dialect_detector_pkg import candidates
+from QC.utilities.dialect_detector import candidates
 
 _XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
 _UNLABELED = {"", "unknown"}

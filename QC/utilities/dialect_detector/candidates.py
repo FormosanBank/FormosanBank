@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from QC.validation._dialect_inventory import UNKNOWN_DIALECT, valid_dialects
-from QC.utilities.dialect_detector_pkg.hints import DIALECT_ALIASES
+from QC.utilities.dialect_detector.hints import DIALECT_ALIASES
 
 
 def candidate_dialects(lang_code: str) -> list[str]:

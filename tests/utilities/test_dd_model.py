@@ -1,6 +1,6 @@
 import xml.etree.ElementTree as ET
 from pathlib import Path
-from QC.utilities.dialect_detector_pkg.model import build_model, COMPONENTS, save_model, load_model, predict_root
+from QC.utilities.dialect_detector.model import build_model, COMPONENTS, save_model, load_model, predict_root
 
 
 def _toy_tsv(orth: Path):
@@ -22,9 +22,9 @@ def _toy_corpus(corp: Path):
 
 
 def test_build_model_learns_to_separate(tmp_path, monkeypatch):
-    import QC.utilities.dialect_detector_pkg.candidates as cand
+    import QC.utilities.dialect_detector.candidates as cand
     monkeypatch.setattr(cand, "candidate_dialects", lambda lc: ["Alpha", "Beta"])
-    import QC.utilities.dialect_detector_pkg.model as m
+    import QC.utilities.dialect_detector.model as m
     monkeypatch.setattr(m, "language_name_for", lambda lc: "Toy")
     orth = tmp_path / "orth"; _toy_tsv(orth)
     corp = tmp_path / "corp"; _toy_corpus(corp)
@@ -40,9 +40,9 @@ def test_build_model_learns_to_separate(tmp_path, monkeypatch):
 
 
 def test_save_load_roundtrip_preserves_ranking(tmp_path, monkeypatch):
-    import QC.utilities.dialect_detector_pkg.candidates as cand
+    import QC.utilities.dialect_detector.candidates as cand
     monkeypatch.setattr(cand, "candidate_dialects", lambda lc: ["Alpha", "Beta"])
-    import QC.utilities.dialect_detector_pkg.model as m
+    import QC.utilities.dialect_detector.model as m
     monkeypatch.setattr(m, "language_name_for", lambda lc: "Toy")
     orth = tmp_path / "orth"; _toy_tsv(orth)
     corp = tmp_path / "corp"; _toy_corpus(corp)
@@ -55,9 +55,9 @@ def test_save_load_roundtrip_preserves_ranking(tmp_path, monkeypatch):
 
 
 def test_predict_unknown_when_below_threshold(tmp_path, monkeypatch):
-    import QC.utilities.dialect_detector_pkg.candidates as cand
+    import QC.utilities.dialect_detector.candidates as cand
     monkeypatch.setattr(cand, "candidate_dialects", lambda lc: ["Alpha", "Beta"])
-    import QC.utilities.dialect_detector_pkg.model as m
+    import QC.utilities.dialect_detector.model as m
     monkeypatch.setattr(m, "language_name_for", lambda lc: "Toy")
     orth = tmp_path / "orth"; _toy_tsv(orth)
     corp = tmp_path / "corp"; _toy_corpus(corp)

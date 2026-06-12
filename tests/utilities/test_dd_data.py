@@ -1,5 +1,5 @@
 from pathlib import Path
-from QC.utilities.dialect_detector_pkg.data import iter_labeled_documents, extract_standard_text
+from QC.utilities.dialect_detector.data import iter_labeled_documents, extract_standard_text
 import xml.etree.ElementTree as ET
 
 def _xml(lang, dialect, *std):

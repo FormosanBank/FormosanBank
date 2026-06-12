@@ -1,7 +1,7 @@
 import math
 from collections import Counter
-from QC.utilities.dialect_detector_pkg.features import orthography_score, log_prob_score, extract_counts
-from QC.utilities.dialect_detector_pkg.graphemes import UNK
+from QC.utilities.dialect_detector.features import orthography_score, log_prob_score, extract_counts
+from QC.utilities.dialect_detector.graphemes import UNK
 
 def test_orthography_prefers_dialect_with_exclusive_letter():
     # 2 candidates; 'v' only in Alpha (support 1), 'a' in both (support 2)

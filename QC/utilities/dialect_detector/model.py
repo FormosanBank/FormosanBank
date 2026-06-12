@@ -8,11 +8,11 @@ from pathlib import Path
 import numpy as np
 
 from QC.validation._dialect_inventory import ISO_TO_LANGUAGE
-from QC.utilities.dialect_detector_pkg import features as F
-from QC.utilities.dialect_detector_pkg import candidates as C
-from QC.utilities.dialect_detector_pkg.combiner import fit_combiner, predict_proba
-from QC.utilities.dialect_detector_pkg.data import extract_standard_text, iter_labeled_documents
-from QC.utilities.dialect_detector_pkg.graphemes import (
+from QC.utilities.dialect_detector import features as F
+from QC.utilities.dialect_detector import candidates as C
+from QC.utilities.dialect_detector.combiner import fit_combiner, predict_proba
+from QC.utilities.dialect_detector.data import extract_standard_text, iter_labeled_documents
+from QC.utilities.dialect_detector.graphemes import (
     alphabet_of, load_letter_inventories, tokenize_graphemes,
 )
 

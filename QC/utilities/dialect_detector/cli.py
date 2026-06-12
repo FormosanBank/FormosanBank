@@ -6,8 +6,8 @@ import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-from QC.utilities.dialect_detector_pkg import model as M
-from QC.utilities.dialect_detector_pkg.data import xml_lang
+from QC.utilities.dialect_detector import model as M
+from QC.utilities.dialect_detector.data import xml_lang
 
 _REPO = Path(__file__).resolve().parents[3]
 DEFAULT_CORPORA = _REPO / "Corpora"
@@ -68,7 +68,7 @@ def _cmd_predict(a) -> int:
 
 
 def _cmd_evaluate(a) -> int:
-    from QC.utilities.dialect_detector_pkg.evaluate import evaluate_language
+    from QC.utilities.dialect_detector.evaluate import evaluate_language
     langs = [a.language] if a.language else M.IN_SCOPE_LANGS
     for lc in langs:
         model = M.build_model(lc, a.corpora_path, a.orthographies, a.top_n)

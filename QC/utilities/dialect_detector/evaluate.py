@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 from collections import defaultdict
-from QC.utilities.dialect_detector_pkg.data import iter_labeled_documents
+from QC.utilities.dialect_detector.data import iter_labeled_documents
 
 
 def evaluate_language(lang_code: str, model, corpora_path: Path) -> dict:

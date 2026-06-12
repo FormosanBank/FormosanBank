@@ -10,8 +10,8 @@ from pathlib import Path
 
 import pytest
 
-from QC.utilities.dialect_detector_pkg.model import build_model
-from QC.utilities.dialect_detector_pkg.evaluate import evaluate_language
+from QC.utilities.dialect_detector.model import build_model
+from QC.utilities.dialect_detector.evaluate import evaluate_language
 
 REPO = Path(__file__).resolve().parents[2]
 CORP = REPO / "Corpora"

@@ -1,10 +1,10 @@
 from pathlib import Path
-from QC.utilities.dialect_detector_pkg.cli import main
+from QC.utilities.dialect_detector.cli import main
 
 def test_cli_predict_runs_and_reports(tmp_path, monkeypatch, capsys):
-    import QC.utilities.dialect_detector_pkg.candidates as cand
+    import QC.utilities.dialect_detector.candidates as cand
     monkeypatch.setattr(cand, "candidate_dialects", lambda lc: ["Alpha", "Beta"])
-    import QC.utilities.dialect_detector_pkg.model as m
+    import QC.utilities.dialect_detector.model as m
     monkeypatch.setattr(m, "language_name_for", lambda lc: "Toy")
     monkeypatch.setattr(m, "IN_SCOPE_LANGS", ["toy"])
     from tests.utilities.test_dd_model import _toy_tsv, _toy_corpus

@@ -1,5 +1,5 @@
 from pathlib import Path
-from QC.utilities.dialect_detector_pkg.graphemes import load_letter_inventories
+from QC.utilities.dialect_detector.graphemes import load_letter_inventories
 
 def _write_tsv(tmp_path: Path) -> Path:
     p = tmp_path / "Toy.tsv"
@@ -22,7 +22,7 @@ def test_load_letter_inventories_splits_by_dialect_and_drops_NA(tmp_path):
 def test_load_letter_inventories_missing_file_returns_empty(tmp_path):
     assert load_letter_inventories("DoesNotExist", tmp_path) == {}
 
-from QC.utilities.dialect_detector_pkg.graphemes import alphabet_of, tokenize_graphemes, UNK
+from QC.utilities.dialect_detector.graphemes import alphabet_of, tokenize_graphemes, UNK
 
 def test_alphabet_is_union_of_inventories():
     inv = {"A": frozenset({"ng", "a"}), "B": frozenset({"ng", "v"})}

@@ -1,4 +1,4 @@
-from QC.utilities.dialect_detector_pkg.candidates import candidate_dialects, reconcile_label
+from QC.utilities.dialect_detector.candidates import candidate_dialects, reconcile_label
 
 
 def test_trv_candidates_include_truku_and_seediq_dialects():

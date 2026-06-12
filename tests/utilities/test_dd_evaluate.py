@@ -1,11 +1,11 @@
-from QC.utilities.dialect_detector_pkg.evaluate import metrics_from_confusion, evaluate_language
+from QC.utilities.dialect_detector.evaluate import metrics_from_confusion, evaluate_language
 from pathlib import Path
 
 
 def test_evaluate_language_reports_top1_top2(tmp_path, monkeypatch):
-    import QC.utilities.dialect_detector_pkg.candidates as cand
+    import QC.utilities.dialect_detector.candidates as cand
     monkeypatch.setattr(cand, "candidate_dialects", lambda lc: ["Alpha", "Beta"])
-    import QC.utilities.dialect_detector_pkg.model as m
+    import QC.utilities.dialect_detector.model as m
     monkeypatch.setattr(m, "language_name_for", lambda lc: "Toy")
     # reuse the toy builders from test_dd_model
     from tests.utilities.test_dd_model import _toy_tsv, _toy_corpus

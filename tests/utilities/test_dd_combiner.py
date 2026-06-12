@@ -1,5 +1,5 @@
 import numpy as np
-from QC.utilities.dialect_detector_pkg.combiner import predict_proba, fit_combiner
+from QC.utilities.dialect_detector.combiner import predict_proba, fit_combiner
 
 def test_predict_proba_is_softmax_of_utilities():
     w = np.array([1.0, 0.0])
