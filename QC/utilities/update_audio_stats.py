@@ -1,10 +1,10 @@
 # QC/utilities/update_audio_stats.py
-"""Recompute the audio-seconds columns of statistics/<Corpus>_corpora_stats.csv.
+"""Recompute audio durations and write them to statistics/audio_durations.csv.
 
 Run MANUALLY on a machine where the corpus audio is downloaded (CI never
 runs this — audio is gitignored and absent on runners). get_corpus_stats.py
-carries the seconds columns forward on every run; this script is the only
-thing that refreshes them. Use it for new corpora and after audio updates:
+reads the truth file; this script is the only thing that refreshes it. Use
+it for new corpora and after audio updates:
 
     python QC/utilities/update_audio_stats.py Corpora/ePark
     python QC/utilities/update_audio_stats.py --all
@@ -14,14 +14,19 @@ had nonzero seconds, the old value is KEPT and a warning is printed —
 running this without audio downloaded must not wipe good data.
 """
 import argparse
-import csv
 import sys
 import wave
 import xml.etree.ElementTree as ET
 from collections import defaultdict
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+_utils = Path(__file__).resolve().parents[0]
+_qc = Path(__file__).resolve().parents[1]
+for _p in (_utils, _qc):
+    if str(_p) not in sys.path:
+        sys.path.insert(0, str(_p))
+
+import audio_durations
 import corpus_counts
 from get_corpus_stats import FIELDNAMES, stats_paths
 
@@ -113,15 +118,10 @@ def compute_seconds_by_bucket(xml_dir: Path) -> tuple[dict, int, int, int]:
     return buckets, n_elements, n_missing, n_mp3_skipped
 
 
-def update_corpus(corpus_path: Path) -> int:
+def update_corpus(corpus_path: Path, computed_at: str | None = None) -> int:
     corpus_path = Path(corpus_path)
     xml_dir = corpus_path / "XML" if (corpus_path / "XML").is_dir() else corpus_path
     stats_dir, corpus_name = stats_paths(corpus_path)
-    csv_path = stats_dir / f"{corpus_name}_corpora_stats.csv"
-    if not csv_path.is_file():
-        print(f"[update_audio_stats] ERROR: {csv_path} does not exist. "
-              f"Run get_corpus_stats.py on this corpus first.", file=sys.stderr)
-        return 1
 
     seconds, n_elements, n_missing, n_mp3_skipped = compute_seconds_by_bucket(xml_dir)
     if n_mp3_skipped:
@@ -133,34 +133,49 @@ def update_corpus(corpus_path: Path) -> int:
               f"elements reference files not found on disk; buckets with no "
               f"located audio keep their previous seconds.", file=sys.stderr)
 
-    with open(csv_path, newline="", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-        rows = list(reader)
-        fieldnames = reader.fieldnames or FIELDNAMES
+    # Current per-(language, dialect) audio counts (the count_at_compute anchor).
+    counts: dict = {}
+    records, _ = corpus_counts.collect_records(xml_dir)
+    for r in records:
+        key = (r["language"], r["dialect"])
+        cur = counts.setdefault(key, [0, 0])
+        cur[0] += r["transcribed_audio_count"]
+        cur[1] += r["untranscribed_audio_count"]
 
-    n_updated = 0
-    for row in rows:
-        key = (row.get("language", ""), row.get("dialect", ""))
+    # Preserve previously-good seconds for buckets where no audio was located.
+    prev = audio_durations.load_for_corpus(stats_dir, corpus_name)
+
+    rows = []
+    for key, (t_count, u_count) in sorted(counts.items()):
+        if (t_count + u_count) == 0:
+            continue  # no audio elements -> no truth row needed
         t_sec, u_sec = seconds.get(key, (0.0, 0.0))
-        # Keep old values when we found nothing (e.g. audio not downloaded
-        # for this bucket) — never silently zero out good data.
-        if t_sec or u_sec:
-            row["transcribed_audio_seconds"] = round(t_sec, 1)
-            row["untranscribed_audio_seconds"] = round(u_sec, 1)
-            n_updated += 1
+        if not (t_sec or u_sec) and key in prev:
+            # No audio located now but we had a good value: keep it, keep its anchor.
+            entry = prev[key]
+            rows.append({"language": key[0], "dialect": key[1],
+                         "transcribed_audio_seconds": entry["transcribed_audio_seconds"],
+                         "untranscribed_audio_seconds": entry["untranscribed_audio_seconds"],
+                         "transcribed_audio_count": entry["transcribed_audio_count"],
+                         "untranscribed_audio_count": entry["untranscribed_audio_count"]})
+            continue
+        rows.append({"language": key[0], "dialect": key[1],
+                     "transcribed_audio_seconds": round(t_sec, 1),
+                     "untranscribed_audio_seconds": round(u_sec, 1),
+                     "transcribed_audio_count": t_count,
+                     "untranscribed_audio_count": u_count})
 
-    with open(csv_path, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerows(rows)
-    print(f"Updated audio seconds for {n_updated} row(s) in {csv_path}")
+    from datetime import date
+    stamp = computed_at or date.today().isoformat()
+    path = audio_durations.upsert_audio_durations(stats_dir, corpus_name, rows, stamp)
+    print(f"Updated audio durations for {len(rows)} bucket(s) in {path}")
     return 0
 
 
 def main() -> int:
     default_corpora = Path(__file__).resolve().parents[2] / "Corpora"
     parser = argparse.ArgumentParser(
-        description="Recompute audio-seconds columns of per-corpus stats CSVs "
+        description="Recompute audio durations and write statistics/audio_durations.csv "
                     "from local audio files (manual; not run in CI). Buckets "
                     "with no audio located on disk KEEP their previous seconds "
                     "(never zeroed) - to force a bucket to zero, edit the CSV "
