@@ -93,6 +93,7 @@ def test_audio_seconds_carried_from_existing_csv(mini_corpus, tmp_path):
     assert float(truku["transcribed_audio_seconds"]) == pytest.approx(99.0)
     assert float(truku["untranscribed_audio_seconds"]) == pytest.approx(42.0)
     assert int(truku["transcribed_audio_count"]) == 1  # recomputed from XML
+    assert "STALE AUDIO" not in result.stderr
 
 
 def test_strict_fails_on_parse_error(mini_corpus):
@@ -123,10 +124,7 @@ def test_seconds_filled_from_truth_file(tmp_path):
         "transcribed_audio_count,untranscribed_audio_count,computed_at\n"
         "Mini,ami,Coastal,42.0,0.0,1,0,2026-06-10\n", encoding="utf-8")
 
-    import subprocess, sys
-    script = Path(__file__).resolve().parents[2] / "QC" / "utilities" / "get_corpus_stats.py"
-    proc = subprocess.run([sys.executable, str(script), str(corpus)],
-                          capture_output=True, text=True)
+    proc = _run([str(corpus)])
     assert proc.returncode == 0, proc.stderr
     out = (stats_dir / "Mini_corpora_stats.csv").read_text()
     # current count is 1 (matches truth count_at_compute) -> not stale, seconds filled
@@ -151,14 +149,30 @@ def test_stale_warning_when_count_grew(tmp_path):
         "corpus,language,dialect,transcribed_audio_seconds,untranscribed_audio_seconds,"
         "transcribed_audio_count,untranscribed_audio_count,computed_at\n"
         "Mini,ami,Coastal,42.0,0.0,1,0,2026-06-10\n", encoding="utf-8")
-    import subprocess, sys
-    script = Path(__file__).resolve().parents[2] / "QC" / "utilities" / "get_corpus_stats.py"
-    proc = subprocess.run([sys.executable, str(script), str(corpus)],
-                          capture_output=True, text=True)
+    proc = _run([str(corpus)])
     assert proc.returncode == 0, proc.stderr
     assert "STALE AUDIO" in proc.stderr
     # value is kept (not zeroed)
     assert ",42.0," in (stats_dir / "Mini_corpora_stats.csv").read_text()
+
+
+def test_report_stale_audio_flags_and_exits(tmp_path):
+    # A corpus whose XML has audio but the truth file's count_at_compute differs.
+    corpus = tmp_path / "Corpora" / "Mini"
+    xml_dir = corpus / "XML" / "Amis"; xml_dir.mkdir(parents=True)
+    (xml_dir / "a.xml").write_text(
+        '<?xml version="1.0" encoding="utf-8"?>'
+        '<TEXT xml:lang="ami" dialect="Coastal">'
+        '<S id="1"><FORM kindOf="standard">w</FORM><AUDIO file="a.wav"/></S></TEXT>',
+        encoding="utf-8")
+    stats_dir = tmp_path / "statistics"; stats_dir.mkdir()
+    (stats_dir / "audio_durations.csv").write_text(
+        "corpus,language,dialect,transcribed_audio_seconds,untranscribed_audio_seconds,"
+        "transcribed_audio_count,untranscribed_audio_count,computed_at\n"
+        "Mini,ami,Coastal,42.0,0.0,99,0,2026-06-10\n", encoding="utf-8")  # anchor 99 != current 1
+    result = _run(["--report-stale-audio", "--corpora_root", str(tmp_path / "Corpora")])
+    assert result.returncode == 1
+    assert "STALE Mini ami/Coastal" in result.stdout
 
 
 def test_all_processes_every_corpus_and_propagates_strict(tmp_path):

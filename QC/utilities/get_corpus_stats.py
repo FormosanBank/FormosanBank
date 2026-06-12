@@ -83,11 +83,15 @@ def process_corpus(corpus_path: Path, strict: bool) -> int:
         if entry is not None:
             bucket["transcribed_audio_seconds"] = entry["transcribed_audio_seconds"]
             bucket["untranscribed_audio_seconds"] = entry["untranscribed_audio_seconds"]
-        if audio_durations.is_stale(bucket["transcribed_audio_count"],
-                                    bucket["untranscribed_audio_count"], entry):
+        current_audio = bucket["transcribed_audio_count"] + bucket["untranscribed_audio_count"]
+        if current_audio and audio_durations.is_stale(
+                bucket["transcribed_audio_count"], bucket["untranscribed_audio_count"], entry):
             language, dialect = key
-            anchor = "never" if entry is None else (
-                f"{entry['transcribed_audio_count']}+{entry['untranscribed_audio_count']}")
+            anchor = (
+                "never" if entry is None
+                else "unknown" if (entry["transcribed_audio_count"] is None
+                                   or entry["untranscribed_audio_count"] is None)
+                else f"{entry['transcribed_audio_count']}+{entry['untranscribed_audio_count']}")
             print(f"[get_corpus_stats] STALE AUDIO {corpus_name} {language}/{dialect}: "
                   f"XML has {bucket['transcribed_audio_count']}+"
                   f"{bucket['untranscribed_audio_count']} audio elements; seconds "
@@ -132,7 +136,7 @@ def main() -> int:
     args = parser.parse_args()
 
     if args.report_stale_audio:
-        corpora_root = Path(args.corpora_root)
+        corpora_root = Path(args.corpora_root).resolve()
         any_stale = False
         for corpus_dir in sorted(d for d in corpora_root.iterdir()
                                  if d.is_dir() and (d / "XML").is_dir()):
