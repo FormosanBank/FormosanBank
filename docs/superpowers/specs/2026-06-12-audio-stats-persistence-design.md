@@ -73,8 +73,10 @@ Never invoked by CI or a merge. A thin `refresh-audio-stats` skill wraps it (mat
 
 ### Component 5 — Migration + one-time repair
 
-- **Migration**: build `audio_durations.csv` from the seconds currently in the committed per-corpus CSVs (NTU_Paiwan_ASR, WilangYutasVideos, YeddaPalemeqBlog, and any others with nonzero seconds), writing `count_at_compute` **blank** so every migrated row starts flagged stale — honest, since we cannot verify any are current.
-- **Repair**: run `refresh_audio_stats` for the corpora with downloadable audio (NTU_Paiwan_ASR, WilangYutasVideos, plus any other stale ones) to write real seconds + real `count_at_compute`, clearing their stale flags. **Contingent on HF egress in this environment** — probe first; if blocked, commit the mechanism + migration + the stale worklist for the maintainer to run on a suitable machine.
+The two corpora known to have changed audio (`WilangYutasVideos`, `NTU_Paiwan_ASR`) are repaired by a real recompute; everything else is migrated from version control without downloading.
+
+- **Migration (all audio corpora except the two excepted ones)**: for each, copy the seconds currently in the committed per-corpus CSV into `audio_durations.csv`, and set `count_at_compute` to that corpus's audio-count **as recorded in version control at the revision where those seconds were established** (the count the seconds were actually computed against — found by walking the per-corpus CSV's git history). For corpora whose audio is unchanged this equals the current XML audio-count, so `get_corpus_stats` marks them **not stale** with no download. If a corpus silently changed since its seconds were computed, current count ≠ `count_at_compute` → it is correctly flagged **stale** (a safety net), to be refreshed later. This is why we use the historical count rather than blindly stamping the current count (which would mark everything not-stale by construction).
+- **Repair (the two excepted corpora)**: run `refresh_audio_stats` for `WilangYutasVideos` and `NTU_Paiwan_ASR` (and any other corpus migration flags stale) to write real seconds + real `count_at_compute`, clearing their stale flags. **Contingent on HF egress in this environment** — probe first; if blocked, commit the mechanism + migration + the stale worklist for the maintainer to run on a suitable machine.
 
 ## Data flow
 
