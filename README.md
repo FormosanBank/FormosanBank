@@ -3,8 +3,11 @@
 ## Corpus Growth
 
 ![FormosanBank corpus size over time](statistics/corpus_size_over_time.png)
+![Transcribed audio over time](statistics/corpus_transcribed_audio_over_time.png)
+![Mandarin-translated words over time](statistics/corpus_mandarin_words_over_time.png)
+![Glossed words over time](statistics/corpus_glossed_words_over_time.png)
 
-The growth graph is updated by the Corpus Metrics GitHub Action after pushes to `main`. Detailed JSON, Markdown, and plot outputs stay attached to each workflow run as 30-day artifacts; only the README graph and its history CSV are kept in `statistics/`. The CSV is reused as the history cache, so routine updates only apply new XML-changing commits.
+The growth graphs are updated by the Corpus Metrics GitHub Action after pushes to `main`. Detailed JSON, Markdown, and plot outputs stay attached to each workflow run as 30-day artifacts; only the README graph and its history CSV are kept in `statistics/`. The CSV is reused as the history cache, so routine updates only apply new XML-changing commits.
 
 ---
 

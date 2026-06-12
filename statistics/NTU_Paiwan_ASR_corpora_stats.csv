@@ -1,5 +1,4 @@
-language,dialect,segmented_words,glossed_words,transcribed_audio_count,transcribed_audio_seconds,untranscribed_audio_count,untranscribed_audio_seconds,eng_transl_count,zho_transl_count,word_count,file_count
-pwn,Central,0,0,237,0.0,4,0.0,0,0,3635,16
-pwn,Eastern,0,0,1132,0.0,23,0.0,0,0,20522,98
-pwn,Northern,0,0,1412,0.0,23,0.0,0,0,27742,115
-pwn,Southern,0,0,331,0.0,8,0.0,0,0,5554,31
+language,dialect,segmented_words,glossed_words,transcribed_audio_count,transcribed_audio_seconds,untranscribed_audio_count,untranscribed_audio_seconds,eng_transl_count,zho_transl_count,word_count,file_count,sentences,word_elements,morpheme_elements,translation_elements,audio_elements,parse_errors
+pwn,Central,0,0,158,3034.0,0,0.0,0,0,3133,8,160,0,0,0,158,0
+pwn,Eastern,0,0,503,9841.0,0,0.0,0,0,10680,32,503,0,0,0,503,0
+pwn,Northern,0,0,874,16554.0,0,0.0,0,0,20665,58,874,0,0,0,874,0

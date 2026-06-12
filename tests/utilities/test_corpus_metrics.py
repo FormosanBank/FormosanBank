@@ -218,3 +218,62 @@ def test_history_extend_falls_back_when_cache_tip_unrelated(tmp_path):
     assert rows[0]["commit"] == bogus
     assert rows[1]["commit"] == c2
     assert rows[1]["tokens"] == "5"
+
+
+def test_snapshot_aggregates_new_metrics(tmp_path):
+    # _write_stats seeds: ami,Haian has glossed_words=3, zho_transl_count=3;
+    # trv,Truku has transcribed_audio_seconds=1.0; everything else 0.
+    _write_stats(tmp_path / "statistics")
+    result = _run(["Corpora", "--stats-dir", str(tmp_path / "statistics"),
+                   "--output-dir", str(tmp_path / "out"), "--no-plots"])
+    assert result.returncode == 0, result.stderr
+    totals = json.loads((tmp_path / "out" / "corpus_metrics.json").read_text())["totals"]
+    assert totals["glossed_words"] == 3
+    assert totals["zho_transl_count"] == 3
+    assert totals["transcribed_audio_seconds"] == 1.0
+
+
+def test_xml_path_aggregates_glossed_and_mandarin_but_zero_seconds(tmp_path):
+    # XML walk over the fixture corpus: ami_haian contributes glossed=3, zho=3.
+    # transcribed_audio_seconds is uncomputable from XML, so it must be 0.
+    result = _run(["tests/fixtures/stats_corpus",
+                   "--output-dir", str(tmp_path / "out"), "--no-plots"])
+    assert result.returncode == 0, result.stderr
+    totals = json.loads((tmp_path / "out" / "corpus_metrics.json").read_text())["totals"]
+    assert totals["glossed_words"] == 3
+    assert totals["zho_transl_count"] == 3
+    assert totals["transcribed_audio_seconds"] == 0
+
+
+def test_history_row_carries_new_metric_columns(tmp_path):
+    _write_stats(tmp_path / "statistics")
+    cache = tmp_path / "cache.csv"
+    result = _run(["Corpora", "--stats-dir", str(tmp_path / "statistics"),
+                   "--output-dir", str(tmp_path / "out"), "--no-plots",
+                   "--history", "--history-cache", str(cache)])
+    assert result.returncode == 0, result.stderr
+    with open(tmp_path / "out" / "corpus_size_history.csv", newline="") as f:
+        rows = list(csv.DictReader(f))
+    head = rows[-1]
+    assert "transcribed_audio_seconds" in head
+    assert "zho_transl_count" in head
+    assert "glossed_words" in head
+    assert int(head["glossed_words"]) == 3
+    assert int(head["zho_transl_count"]) == 3
+    assert float(head["transcribed_audio_seconds"]) == 1.0
+
+
+def test_history_plots_emit_four_pngs(tmp_path):
+    # Use the real subprocess path WITH plots (omit --no-plots). Seed stats and
+    # a one-row cache so there is a dated row to plot.
+    _write_stats(tmp_path / "statistics")
+    out = tmp_path / "out"
+    result = _run(["Corpora", "--stats-dir", str(tmp_path / "statistics"),
+                   "--output-dir", str(out), "--history",
+                   "--history-cache", str(tmp_path / "cache.csv")])
+    assert result.returncode == 0, result.stderr
+    for name in ("corpus_size_over_time.png",
+                 "corpus_transcribed_audio_over_time.png",
+                 "corpus_mandarin_words_over_time.png",
+                 "corpus_glossed_words_over_time.png"):
+        assert (out / name).is_file(), f"missing {name}"

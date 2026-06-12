@@ -63,8 +63,16 @@ jobs:
           mkdir -p statistics
           cp corpus-metrics/corpus_size_history.csv statistics/corpus_size_history.csv
           cp corpus-metrics/corpus_size_over_time.png statistics/corpus_size_over_time.png
+          cp corpus-metrics/corpus_transcribed_audio_over_time.png statistics/corpus_transcribed_audio_over_time.png
+          cp corpus-metrics/corpus_mandarin_words_over_time.png statistics/corpus_mandarin_words_over_time.png
+          cp corpus-metrics/corpus_glossed_words_over_time.png statistics/corpus_glossed_words_over_time.png
 
-          git add statistics/corpus_size_history.csv statistics/corpus_size_over_time.png statistics/*_corpora_stats.csv
+          git add statistics/corpus_size_history.csv \
+            statistics/corpus_size_over_time.png \
+            statistics/corpus_transcribed_audio_over_time.png \
+            statistics/corpus_mandarin_words_over_time.png \
+            statistics/corpus_glossed_words_over_time.png \
+            statistics/*_corpora_stats.csv
           if git diff --cached --quiet; then
             echo "No statistics changes."
             exit 0

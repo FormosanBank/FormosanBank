@@ -26,6 +26,8 @@ COUNT_FIELDS = (
     "morpheme_elements",
     "translation_elements",
     "audio_elements",
+    "zho_transl_count",
+    "glossed_words",
 )
 
 XML_HISTORY_PATHSPEC = ":(glob)Corpora/**/XML/**/*.xml"
@@ -143,6 +145,9 @@ def analyze_xml_root(corpora_path: Path, xml_file: Path, root: ET.Element) -> di
         "morpheme_elements": record["morpheme_elements"],
         "translation_elements": record["translation_elements"],
         "audio_elements": record["audio_elements"],
+        "zho_transl_count": record["zho_transl_count"],
+        "glossed_words": record["glossed_words"],
+        "transcribed_audio_seconds": 0,
     }
 
 
@@ -180,8 +185,8 @@ def sorted_dialect_counts(data: dict[tuple[str, str], dict[str, int]]) -> list[d
 def aggregate_records(
     records: list[dict[str, Any]],
     parse_errors: list[dict[str, str]],
-) -> tuple[dict[str, int], dict[str, dict[str, int]], dict[str, dict[str, int]], list[dict[str, Any]]]:
-    totals = empty_counts()
+) -> tuple[dict[str, Any], dict[str, dict[str, int]], dict[str, dict[str, int]], list[dict[str, Any]]]:
+    totals: dict[str, Any] = empty_counts()
     by_source: dict[str, dict[str, int]] = defaultdict(empty_counts)
     by_language: dict[str, dict[str, int]] = defaultdict(empty_counts)
     by_language_dialect: dict[tuple[str, str], dict[str, int]] = defaultdict(empty_counts)
@@ -201,6 +206,9 @@ def aggregate_records(
 
     totals.update(
         {
+            "transcribed_audio_seconds": round(
+                sum(float(record.get("transcribed_audio_seconds", 0) or 0) for record in records), 1
+            ),
             "sources": len(source_names),
             "languages": len(languages),
             "language_dialects": len(dialects),
@@ -293,6 +301,9 @@ def read_stats_dir(stats_dir: Path) -> tuple[list[dict[str, Any]], list[dict[str
                     "morpheme_elements": as_int("morpheme_elements"),
                     "translation_elements": as_int("translation_elements"),
                     "audio_elements": as_int("audio_elements"),
+                    "zho_transl_count": as_int("zho_transl_count"),
+                    "glossed_words": as_int("glossed_words"),
+                    "transcribed_audio_seconds": float(row.get("transcribed_audio_seconds") or 0),
                 })
     return records, parse_errors
 
@@ -325,6 +336,10 @@ def format_short(value: int | float) -> str:
     if value >= 1_000:
         return f"{sign}{value / 1_000:.1f}K"
     return f"{sign}{value:,}"
+
+
+def format_hours(value: int | float) -> str:
+    return f"{value:,.0f}"
 
 
 def pct_of(value: int, total: int) -> str:
@@ -607,6 +622,9 @@ def history_row(repo_root: Path, commit: str, metrics: dict[str, Any]) -> dict[s
         "sources": metrics["totals"]["sources"],
         "languages": metrics["totals"]["languages"],
         "parse_errors": metrics["totals"]["parse_errors"],
+        "transcribed_audio_seconds": metrics["totals"]["transcribed_audio_seconds"],
+        "zho_transl_count": metrics["totals"]["zho_transl_count"],
+        "glossed_words": metrics["totals"]["glossed_words"],
     }
 
 
@@ -629,6 +647,9 @@ def history_row_from_records(
         "sources": totals["sources"],
         "languages": totals["languages"],
         "parse_errors": totals["parse_errors"],
+        "transcribed_audio_seconds": totals["transcribed_audio_seconds"],
+        "zho_transl_count": totals["zho_transl_count"],
+        "glossed_words": totals["glossed_words"],
     }
 
 
@@ -734,6 +755,9 @@ def append_history_row(repo_root: Path, cache_path: Path, metrics: dict[str, Any
         "sources": metrics["totals"]["sources"],
         "languages": metrics["totals"]["languages"],
         "parse_errors": metrics["totals"]["parse_errors"],
+        "transcribed_audio_seconds": metrics["totals"]["transcribed_audio_seconds"],
+        "zho_transl_count": metrics["totals"]["zho_transl_count"],
+        "glossed_words": metrics["totals"]["glossed_words"],
     }
     if rows and rows[-1].get("commit") == head:
         rows[-1] = row
@@ -928,7 +952,9 @@ def extend_history(
 
 def write_history_csv(rows: list[dict[str, Any]], output_dir: Path) -> Path:
     path = output_dir / "corpus_size_history.csv"
-    fieldnames = ["date", "commit", "tokens", "sentences", "xml_files", "sources", "languages", "parse_errors"]
+    fieldnames = ["date", "commit", "tokens", "sentences", "xml_files", "sources",
+                  "languages", "parse_errors", "transcribed_audio_seconds",
+                  "zho_transl_count", "glossed_words"]
     with open(path, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
@@ -936,42 +962,80 @@ def write_history_csv(rows: list[dict[str, Any]], output_dir: Path) -> Path:
     return path
 
 
-def plot_history(rows: list[dict[str, Any]], output_dir: Path) -> None:
+HISTORY_SERIES = (
+    {
+        "column": "tokens",
+        "title": "FormosanBank Size Over Time",
+        "ylabel": "Tokens",
+        "filename": "corpus_size_over_time.png",
+        "to_y": None,
+        "fmt": format_short,
+        "caption": None,
+    },
+    {
+        "column": "transcribed_audio_seconds",
+        "title": "Transcribed Audio Over Time",
+        "ylabel": "Hours",
+        "filename": "corpus_transcribed_audio_over_time.png",
+        "to_y": lambda seconds: seconds / 3600.0,
+        "fmt": format_hours,
+        "caption": "Duration tracking begins at rollout; earlier points may be sparse.",
+    },
+    {
+        "column": "zho_transl_count",
+        "title": "Mandarin-Translated Words Over Time",
+        "ylabel": "Words",
+        "filename": "corpus_mandarin_words_over_time.png",
+        "to_y": None,
+        "fmt": format_short,
+        "caption": None,
+    },
+    {
+        "column": "glossed_words",
+        "title": "Glossed Words Over Time",
+        "ylabel": "Words",
+        "filename": "corpus_glossed_words_over_time.png",
+        "to_y": None,
+        "fmt": format_short,
+        "caption": None,
+    },
+)
+
+
+def plot_series(rows: list[dict[str, Any]], output_dir: Path, spec: dict[str, Any]) -> None:
+    output_path = output_dir / spec["filename"]
     if not rows:
-        plot_empty_state("FormosanBank Size Over Time", "No history rows were generated.", output_dir / "corpus_size_over_time.png")
+        plot_empty_state(spec["title"], "No history rows were generated.", output_path)
         return
 
     plt = require_matplotlib()
     dates = []
-    tokens = []
+    values = []
     for row in rows:
-        if not row["date"]:
+        if not row.get("date"):
             continue
+        raw = float(row.get(spec["column"], 0) or 0)
+        y = spec["to_y"](raw) if spec["to_y"] else raw
         dates.append(dt.datetime.fromisoformat(row["date"].replace("Z", "+00:00")))
-        tokens.append(int(row["tokens"]))
+        values.append(y)
     if not dates:
-        plot_empty_state("FormosanBank Size Over Time", "No dated history rows were available.", output_dir / "corpus_size_over_time.png")
+        plot_empty_state(spec["title"], "No dated history rows were available.", output_path)
         return
 
+    fmt = spec["fmt"]
     fig, ax = plt.subplots(figsize=(11, 5.8), facecolor=PLOT_BG)
     ax.set_facecolor(PLOT_BG)
-    ax.plot(dates, tokens, color=PLOT_COLORS[0], marker="o", markersize=5, linewidth=2.4)
-    ax.fill_between(dates, tokens, min(tokens), color=PLOT_COLORS[0], alpha=0.12)
-    ax.set_title("FormosanBank Size Over Time", loc="left", fontsize=18, fontweight="bold", color=PLOT_TEXT, pad=16)
-    ax.text(
-        0,
-        1.01,
-        f"{len(tokens)} XML-changing commits sampled.",
-        transform=ax.transAxes,
-        ha="left",
-        va="bottom",
-        fontsize=10,
-        color=PLOT_MUTED,
-    )
-    ax.set_ylabel("Tokens", color=PLOT_MUTED, labelpad=10)
+    ax.plot(dates, values, color=PLOT_COLORS[0], marker="o", markersize=5, linewidth=2.4)
+    ax.fill_between(dates, values, min(values), color=PLOT_COLORS[0], alpha=0.12)
+    ax.set_title(spec["title"], loc="left", fontsize=18, fontweight="bold", color=PLOT_TEXT, pad=16)
+    subtitle = f"{len(values)} commits sampled."
+    if spec["caption"]:
+        subtitle = f"{subtitle} {spec['caption']}"
+    ax.text(0, 1.01, subtitle, transform=ax.transAxes, ha="left", va="bottom", fontsize=10, color=PLOT_MUTED)
+    ax.set_ylabel(spec["ylabel"], color=PLOT_MUTED, labelpad=10)
     ax.grid(color=PLOT_GRID, linewidth=0.8, alpha=0.8)
     ax.set_axisbelow(True)
-    ax.yaxis.set_major_formatter(lambda value, _pos: format_short(value))
+    ax.yaxis.set_major_formatter(lambda value, _pos: fmt(value))
     ax.tick_params(axis="x", colors=PLOT_MUTED, labelsize=9)
     ax.tick_params(axis="y", colors=PLOT_MUTED, labelsize=9)
     for spine in ["top", "right"]:
@@ -979,8 +1043,8 @@ def plot_history(rows: list[dict[str, Any]], output_dir: Path) -> None:
     ax.spines["left"].set_color(PLOT_GRID)
     ax.spines["bottom"].set_color(PLOT_GRID)
     ax.annotate(
-        format_short(tokens[-1]),
-        xy=(dates[-1], tokens[-1]),
+        fmt(values[-1]),
+        xy=(dates[-1], values[-1]),
         xytext=(8, 0),
         textcoords="offset points",
         va="center",
@@ -990,8 +1054,13 @@ def plot_history(rows: list[dict[str, Any]], output_dir: Path) -> None:
     )
     fig.autofmt_xdate()
     fig.tight_layout()
-    fig.savefig(output_dir / "corpus_size_over_time.png", dpi=180, bbox_inches="tight", facecolor=PLOT_BG)
+    fig.savefig(output_path, dpi=180, bbox_inches="tight", facecolor=PLOT_BG)
     plt.close(fig)
+
+
+def plot_history(rows: list[dict[str, Any]], output_dir: Path) -> None:
+    for spec in HISTORY_SERIES:
+        plot_series(rows, output_dir, spec)
 
 
 def parse_args(argv: list[str]) -> argparse.Namespace:
