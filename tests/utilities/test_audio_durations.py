@@ -41,7 +41,8 @@ def test_is_stale_no_entry_with_audio():
 
 
 def test_is_stale_count_mismatch_and_match():
-    entry = {"transcribed_audio_count": 5, "untranscribed_audio_count": 0}
+    entry = {"transcribed_audio_count": 5, "untranscribed_audio_count": 0,
+             "transcribed_audio_seconds": 42.0, "untranscribed_audio_seconds": 0.0}
     assert audio_durations.is_stale(5, 0, entry) is False
     assert audio_durations.is_stale(7, 0, entry) is True
 
@@ -49,6 +50,20 @@ def test_is_stale_count_mismatch_and_match():
 def test_is_stale_blank_count_is_stale():
     entry = {"transcribed_audio_count": None, "untranscribed_audio_count": None}
     assert audio_durations.is_stale(5, 0, entry) is True
+
+
+def test_is_stale_audio_present_but_zero_seconds():
+    # New dialect: counts match the anchor, but seconds were never computed.
+    # Must be flagged stale so it shows up in the refresh worklist.
+    entry = {"transcribed_audio_count": 331, "untranscribed_audio_count": 8,
+             "transcribed_audio_seconds": 0.0, "untranscribed_audio_seconds": 0.0}
+    assert audio_durations.is_stale(331, 8, entry) is True
+
+
+def test_is_stale_audio_present_with_seconds_not_stale():
+    entry = {"transcribed_audio_count": 5, "untranscribed_audio_count": 0,
+             "transcribed_audio_seconds": 42.0, "untranscribed_audio_seconds": 0.0}
+    assert audio_durations.is_stale(5, 0, entry) is False
 
 
 def test_upsert_replaces_corpus_rows_keeps_others(tmp_path):
