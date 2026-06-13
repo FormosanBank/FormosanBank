@@ -246,7 +246,7 @@ python QC/utilities/update_audio_stats.py Corpora/ePark  # one corpus
 python QC/utilities/update_audio_stats.py --all           # all corpora
 ```
 
-`update_audio_stats.py` requires `get_corpus_stats.py` to have been run first (the CSV must exist). Buckets with no audio found on disk keep their previous seconds — running without audio downloaded will not zero out good data.
+`update_audio_stats.py <corpus>` recomputes durations from already-local audio and writes them to `statistics/audio_durations.csv` directly (no per-corpus CSV needs to exist first). Buckets with no audio found on disk keep their previous seconds — running without audio downloaded will not zero out good data.
 
 ### Audio-seconds source of truth
 
