@@ -231,3 +231,18 @@ The source JSONs are inconsistent about angle brackets in reduplication/infix no
 ```
 
 Single non-iterating pass (one decode level only), so it can never over-decode; byte-identical round-trip guard; idempotent.
+
+* **14. Convert M-tier infix notation to `-X-`**
+
+FormosanBank reserves angle brackets for the W FORM (where `<X>` marks the surface position of an infix in its host) and for TRANSL glosses (`<AF>`, `<RED>`); at the morpheme tier an infix must be written `-X-` (validate_glosses rule V067 HARD). The NTU parsers copy source morpheme strings verbatim and the source writes M-level infixes with brackets (`<n>` under `m<n>nanang`), so the published corpus carried ~2,920 bracketed infix Ms across all three subcorpora. This step rewrites them:
+
+```bash
+    python CodeAndDocs/scripts/convert_infix_notation.py
+```
+
+An M's FORM and PHON (both tiers) are converted only when (a) the M's original FORM is exactly one bracket group `<X>`, (b) that group occurs literally inside the parent W FORM (so the brackets are genuine infix notation, not a word-level code-switch/noise marker), and (c) removing all bracket groups from the W FORM leaves host letters beyond clitic chunks. W FORMs and TRANSL glosses are never touched. The transformation is purely notational, so PHON needs no orthography mapping. Round-trip guard; idempotent.
+
+**Notes / known residue (not converted)**
+   - The conversion drops V067 from ~2,946 to **11**. The 11 are not single bracket groups: they are word-level markers (`<BREATH>`, `<jiuhaole>`, `P>`) and bracket groups the parsers split across a morpheme boundary on a dash inside the brackets (`la<in-i>haib-an` → `la<in` / `i>haib`). These need structural repair, not notation conversion, and are left for manual review (the same four sentences also account for the 4 V134 angle-bracket-in-S-FORM SOFT findings).
+   - Converting to `-X-` activates **50 V062** (HARD: an infix M requires an angle-bracket gloss on its parent W). These are a pre-existing *source* gloss-completeness gap that the notation fix surfaces rather than creates: the infix morpheme is present at the M tier, but the source glossed the whole word holistically (`q<m>ita` → "then") and never bracketed the infix in the W gloss. The correct `<AF>`-style W gloss cannot be derived mechanically, so these are documented here rather than auto-filled.
+   - Marker residue that this sweep exposed in the L2 token map (step 12) — half-eaten bracketed L2 variants (`>ciuru>`, `<gonense>`), prosody-span markers split across words (`<HIGH.PITCH … HIGH.PITCH>`, `<LOW.VOLUME … LOW.VOLUME>`), and stray span closers — was added to that step's token map and to `apply_manual_corrections.py` (for file-vintage PHON whose witness check refused regeneration). Re-run steps 11 and 12 after this step is in place; all three are idempotent.

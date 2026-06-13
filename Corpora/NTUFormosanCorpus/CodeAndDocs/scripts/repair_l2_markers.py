@@ -49,6 +49,47 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from _phon_regen import language_of, load_mappings, convert  # noqa: E402
 
 TOKEN_MAP = {
+    # 2026-06-12 additions: residue surfaced by the V067 infix-notation sweep
+    # (convert_infix_notation.py skip list). Three families, all verified
+    # against the source JSONs: (a) bracket-closed L2 variants the stripper
+    # half-ate (source <L2J>ciuru<L2J> -> published '>ciuru>'; <L2M>嗯<L2M>;
+    # <L2JgonenseL2J> -> '<gonense>'; CJK-letter 日..日 Japanese marker);
+    # (b) prosody span markers split across words (source <HIGH.PITCH ...
+    # HIGH.PITCH> / <LOW.VOLUME ... LOW.VOLUME>, dots eaten by punctuation
+    # cleaning); (c) stray span-closer remnants (source ‘nay==(0.6)A>X>,_).
+    'jyurokusai>': 'jyurokusai',
+    '<gonense>': 'gonense',
+    '<gonense>=ku': 'gonense=ku',
+    '<Mpi-jiaoM>': 'pi-jiao',
+    '<Mpi': 'pi',
+    'jiaoM>': 'jiao',
+    '<LMJnazua': 'nazua',
+    'shiaolingLM>': 'shiaoling',
+    '<JgekiJ>': 'geki',
+    '<日wa日>': 'wa',
+    '<JapwaJap>': 'wa',
+    '>嗯>': '嗯',
+    '>ciuru>': 'ciuru',
+    "'nayA>": "'nay",
+    '<HIGHPITCHtayta-an-na': 'tayta-an-na',
+    '<HIGHPITCHtayta': 'tayta',
+    'naniHIGHPITCH>': 'nani',
+    '<LOWVOLUMEqalimek-ka': 'qalimek-ka',
+    '<LOWVOLUMEqalimek': 'qalimek',
+    's<m>uniLOWVOLUME>': 's<m>uni',
+    's-uniLOWVOLUME>': 's-uni',
+    # S-tier spellings of the same residue (the ori rows lack the brackets
+    # and boundary dashes of the gloss rows):
+    'MpijiaoM': 'pijiao',
+    'JgekiJ': 'geki',
+    'LMJnazua': 'nazua',
+    'HIGHPITCHtaytaanna': 'taytaanna',
+    'naniHIGHPITCH': 'nani',
+    'LOWVOLUMEqalimekka': 'qalimekka',
+    'smuniLOWVOLUME': 'smuni',
+    "'nayA.": "'nay.",
+    '日wa日': 'wa',
+
     # 2026-06-11 additions: escapees of the original contamination census,
     # whose patterns lack an 'L2' substring (trailing 'LM2', L3 third-language
     # tags, T2 openers). The census regex was widened accordingly.

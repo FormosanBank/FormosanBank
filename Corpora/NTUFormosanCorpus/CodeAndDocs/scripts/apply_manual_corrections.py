@@ -79,6 +79,34 @@ CORRECTIONS = [
     (_SKZY, "13_S_48", "FORM", None, _CIT48,
      "ya umah han=tu hananay sa, sansicigu nanay nu taw kya umah, "
      "caliw sa kya taywan u, tu pida tu mih-mihca-an."),
+
+    # PHON residue of L2-marker repairs (2026-06-12): these words' FORMs were
+    # cleaned of marker fragments, but their PHON still renders the fragment
+    # through the orthography mapping ('sanji' / 'sanjil*>'). The witness
+    # check rightly refused regeneration -- these files' PHON predates the
+    # current Ortho113 mapping (convert('sanji') is now 'sanɟi', the file has
+    # 'sanji') -- so the repair strips the junk substring, preserving the
+    # file-vintage style ('kesa' precedent). One entry covers all four PHON
+    # elements (W+M, both tiers) under the sentence; the Laniahu entry covers
+    # two words (W2, W3 = eight elements).
+    ("Stories/Seediq/Seediq_sdqCon-dialog5_dakis_takun 2020s.xml",
+     "sdqCon-dialog5_dakis_takun 2020s_S_88", "PHON", None, "sanjil*>", "sanji"),
+    ("Stories/Seediq/Seediq_sdqNr-frog_temi.xml",
+     "sdqNr-frog_temi_S_1", "PHON", None, "kejimaml*>?", "kejima?"),
+    ("Stories/Seediq/Seediq_sdqNr-south_pawan 2021s.xml",
+     "sdqNr-south_pawan 2021s_S_26", "PHON", None, "sonoaidanil*l*>", "sonoaidani"),
+    ("Stories/Bunun/Bunun_bnNr-frog_Laniahu.xml",
+     "bnNr-frog_Laniahu_S_96", "PHON", None, "<l~ɬ*ʔuaŋʔuaŋ", "ʔuaŋʔuaŋ"),
+    ("Stories/Amis/Amis_Amis_Nr-intro_tamih.xml",
+     "Amis_Nr-intro_tamih_S_65", "PHON", None, "piao~uʦunɾm*>", "piao~uʦun"),
+    ("Stories/Amis/Amis_Amis_Nr-peanut_panay.xml",
+     "Amis_Nr-peanut_panay_S_9", "PHON", None, "kuɾaʦiŋtɾ*>", "kuɾaʦiŋ"),
+    # Same vintage issue, opposite direction: this file's PHON left the
+    # Japanese loan unconverted ('<gonense>=ku' verbatim), so after the
+    # FORM-side marker strip the PHON keeps the brackets. Substring entry
+    # covers W ('<gonense>=ku') and M ('<gonense>'), both tiers.
+    ("Stories/Seediq/Seediq_sdqNr-childhood_micang 2020s.xml",
+     "sdqNr-childhood_micang 2020s_S_80", "PHON", None, "<gonense>", "gonense"),
 ]
 
 # 3. Fullwidth equals (＝) used as a clitic boundary or in gloss strings;
