@@ -246,3 +246,27 @@ An M's FORM and PHON (both tiers) are converted only when (a) the M's original F
    - The conversion drops V067 from ~2,946 to **11**. The 11 are not single bracket groups: they are word-level markers (`<BREATH>`, `<jiuhaole>`, `P>`) and bracket groups the parsers split across a morpheme boundary on a dash inside the brackets (`la<in-i>haib-an` → `la<in` / `i>haib`). These need structural repair, not notation conversion, and are left for manual review (the same four sentences also account for the 4 V134 angle-bracket-in-S-FORM SOFT findings).
    - Converting to `-X-` activates **50 V062** (HARD: an infix M requires an angle-bracket gloss on its parent W). These are a pre-existing *source* gloss-completeness gap that the notation fix surfaces rather than creates: the infix morpheme is present at the M tier, but the source glossed the whole word holistically (`q<m>ita` → "then") and never bracketed the infix in the W gloss. The correct `<AF>`-style W gloss cannot be derived mechanically, so these are documented here rather than auto-filled.
    - Marker residue that this sweep exposed in the L2 token map (step 12) — half-eaten bracketed L2 variants (`>ciuru>`, `<gonense>`), prosody-span markers split across words (`<HIGH.PITCH … HIGH.PITCH>`, `<LOW.VOLUME … LOW.VOLUME>`), and stray span closers — was added to that step's token map and to `apply_manual_corrections.py` (for file-vintage PHON whose witness check refused regeneration). Re-run steps 11 and 12 after this step is in place; all three are idempotent.
+
+* **15. Split optional-word parentheticals into two sentences**
+
+In elicitation the source sometimes records a word as *optional* by wrapping it in parentheses — in the running sentence FORM, in the word/morpheme FORM, and in the matching gloss (also parenthesized) — while the free translation has no parentheses (the optional material is a linguist's note, not part of the uttered sentence):
+
+```
+S FORM : wavutha (nakuane) pangipalay.
+W1     : FORM "(nakuane)"  gloss "(1S.FO)" / "(第一人稱單數.自由斜格)"
+TRANSL : "He forced me to fly."          (no parentheses)
+```
+
+Parentheses are forbidden in W/M FORMs (validate_text V121 HARD). Rather than guess whether the optional word belongs in the form, this step materializes both readings as real, parenthesis-free sentences:
+
+```bash
+    python CodeAndDocs/scripts/split_optional_parentheticals.py
+```
+
+A sentence is split only when **all** hold: (1) its FORM has a parenthesis; (2) its free translation has none; (3) every parenthesis-bearing word is a *whole* parenthetical (FORM matches `^\([^()]*\)$`, so no parens are embedded in or split across other words); (4) each such word's gloss is itself fully parenthesized. The original element becomes the **without-optional** reading (the parenthetical word(s) deleted, the optional token removed from the S FORM/PHON, whitespace/punctuation tidied); a **with-optional** reading is inserted right after it (only the optional word's parens stripped, content kept), with id suffix `-opt` and descendant ids rewritten to match. 58 sentences split (39 Bunun, 16 Kanakanavu, 3 Rukai); V121 drops by 246.
+
+**Notes**
+   - **Audio**: the recording is of the shorter, actually-uttered sentence, so AUDIO stays on the without-optional reading and is removed from the with-optional one (5 sentences, all Kanakanavu Grammar).
+   - **Only the optional word's parens are touched.** Unrelated parenthetical *gloss* annotations elsewhere in the same sentence — an optional gloss particle such as `去(了)`, `song(sing)`, or `(OBL)` — are preserved verbatim in both readings (those are V122 SOFT, not V121, and carry meaning). PHON needs no orthography mapping: removing parentheses never changes a letter.
+   - **Duplication of pre-existing findings**: the with-optional reading is a near-copy, so any pre-existing validator finding in a split sentence is inherited by its `-opt` twin. This accounts for, and is confined to, the small post-step increases (V066 +40, V017/V073 +4 from one sentence's empty-M shells, V060 +3, V061 +2) — all in `-opt` ids, no new defect types.
+   - Not handled (left for manual review): sentences with parentheses embedded in or split across words, or whose parenthetical word lacks a parenthesized gloss (133 split/intra-word + 61 gloss-mismatch candidates). Byte-identical round-trip guard; idempotent (the outputs contain no FORM parens to re-split).
