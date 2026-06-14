@@ -45,7 +45,7 @@ fi
 
 # Get list of all FormosanBank datasets and filter for ePark ones
 echo "Fetching dataset list from FormosanBank organization..."
-datasets=$(hf datasets list --author FormosanBank --limit 100 --format json 2>/dev/null | jq -r '.[] | select(.id | startswith("FormosanBank/ePark_")) | .id | sub("FormosanBank/"; "")')
+datasets=$(hf datasets ls --author FormosanBank --limit 100 --format json | jq -r '.[] | select(.id | startswith("FormosanBank/ePark_")) | .id | sub("FormosanBank/"; "")')
 
 if [[ -z "$datasets" ]]; then
     echo "❌ No ePark datasets found or unable to fetch dataset list."

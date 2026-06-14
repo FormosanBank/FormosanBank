@@ -63,13 +63,25 @@ def load_for_corpus(stats_dir: Path, corpus: str) -> dict:
 def is_stale(current_t_count: int, current_u_count: int, entry: dict | None) -> bool:
     """True when seconds are stale vs the current XML audio-counts.
 
-    No entry -> stale iff there is any current audio. Otherwise stale when
-    either count differs from count_at_compute (a None/blank anchor always
-    differs, so it is stale)."""
+    Stale when:
+    - there is no entry but the corpus currently has audio, OR
+    - either count differs from count_at_compute (a None/blank anchor always
+      differs, so it is stale), OR
+    - the corpus has audio but the recorded seconds are 0 — i.e. never
+      computed. This catches a new (language, dialect) the migration could
+      only anchor to its current count: counts match but the seconds are
+      still 0, so it must be flagged for a refresh rather than read as
+      current.
+    """
     if entry is None:
         return (current_t_count + current_u_count) > 0
-    return (entry["transcribed_audio_count"] != current_t_count
-            or entry["untranscribed_audio_count"] != current_u_count)
+    if (entry["transcribed_audio_count"] != current_t_count
+            or entry["untranscribed_audio_count"] != current_u_count):
+        return True
+    has_audio = (current_t_count + current_u_count) > 0
+    no_seconds = (entry.get("transcribed_audio_seconds", 0)
+                  + entry.get("untranscribed_audio_seconds", 0)) == 0
+    return has_audio and no_seconds
 
 
 def upsert_audio_durations(stats_dir: Path, corpus: str, rows: list, computed_at: str) -> Path:
