@@ -210,19 +210,18 @@ def main(args):
                                         for char in target_value:
                                             ipa_characters.add(char)
                     
+                    # Map each element to its parent once (O(n)); ElementTree has
+                    # no getparent(), and scanning root.iter() per FORM made this
+                    # O(n^2) -- ~33 min on a 49k-sentence corpus.
+                    parent_map = {child: parent for parent in root.iter() for child in parent}
+
                     # Find all <FORM> elements with kindOf="standard"
                     standard_forms = root.findall('.//FORM[@kindOf="standard"]')
-                    
+
                     for form_element in standard_forms:
                         # Check if there's already a sister <PHON> element with kindOf="standard"
-                        parent = form_element.getparent() if hasattr(form_element, 'getparent') else None
-                        if parent is None:
-                            # Find parent using the tree structure
-                            for elem in root.iter():
-                                if form_element in list(elem):
-                                    parent = elem
-                                    break
-                        
+                        parent = parent_map.get(form_element)
+
                         if parent is not None:
                             # Check for existing standard PHON element
                             existing_phon = parent.find('PHON[@kindOf="standard"]')
@@ -312,14 +311,8 @@ def main(args):
                                 
                                 for form_element in original_forms:
                                     # Check if there's already a sister <PHON> element with kindOf="original"
-                                    parent = form_element.getparent() if hasattr(form_element, 'getparent') else None
-                                    if parent is None:
-                                        # Find parent using the tree structure
-                                        for elem in root.iter():
-                                            if form_element in list(elem):
-                                                parent = elem
-                                                break
-                                    
+                                    parent = parent_map.get(form_element)
+
                                     if parent is not None:
                                         # Check for existing original PHON element
                                         existing_phon = parent.find('PHON[@kindOf="original"]')
