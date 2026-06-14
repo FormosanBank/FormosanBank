@@ -95,3 +95,54 @@ def insert_readme_list_entry(readme_text: str, slug: str, label: str,
         lines[last_idx] = lines[last_idx] + "\n"
     lines.insert(last_idx + 1, entry)
     return "".join(lines)
+
+
+def cmd_add(corpus, slug, nav_label, title, template, gitbook_root, descriptors=""):
+    """Wire a corpus's four integration points idempotently. Returns 0/exit code."""
+    root = Path(gitbook_root)
+    corpora_dir = root / "en-us" / "the-bank-architecture" / "corpora"
+    page_path = corpora_dir / slug
+    summary_path = root / "en-us" / "SUMMARY.md"
+    readme_path = corpora_dir / "README.md"
+    stats_script = root / "update_corpus_stats.py"
+
+    report = []
+
+    # 1. page
+    if page_path.exists():
+        report.append(("page", "already present"))
+    else:
+        template_text = Path(template).read_text(encoding="utf-8")  # raises if missing
+        page_path.write_text(render_page(template_text, title), encoding="utf-8")
+        report.append(("page", "created"))
+
+    # 2. nav bullet in SUMMARY.md
+    summary_text = summary_path.read_text(encoding="utf-8")
+    new_summary = insert_nav_entry(summary_text, slug, nav_label)
+    if new_summary != summary_text:
+        summary_path.write_text(new_summary, encoding="utf-8")
+        report.append(("nav", "created"))
+    else:
+        report.append(("nav", "already present"))
+
+    # 3. corpus-list bullet in corpora/README.md
+    readme_text = readme_path.read_text(encoding="utf-8")
+    new_readme = insert_readme_list_entry(readme_text, slug, nav_label, descriptors)
+    if new_readme != readme_text:
+        readme_path.write_text(new_readme, encoding="utf-8")
+        report.append(("readme_list", "created"))
+    else:
+        report.append(("readme_list", "already present"))
+
+    # 4. CSV_TO_MD stats-map entry
+    script_text = stats_script.read_text(encoding="utf-8")
+    new_script = insert_csv_to_md_entry(script_text, corpus, slug)
+    if new_script != script_text:
+        stats_script.write_text(new_script, encoding="utf-8")
+        report.append(("stats_map", "created"))
+    else:
+        report.append(("stats_map", "already present"))
+
+    for name, status in report:
+        print(f"  {name}: {status}")
+    return 0

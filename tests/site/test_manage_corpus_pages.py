@@ -1,3 +1,5 @@
+import pytest
+
 import manage_corpus_pages as mcp
 
 
@@ -73,3 +75,49 @@ def test_insert_readme_list_entry_idempotent(gitbook):
     once = mcp.insert_readme_list_entry(text, "newcorpus.md", "New Corpus", "(text)")
     twice = mcp.insert_readme_list_entry(once, "newcorpus.md", "New Corpus", "(text)")
     assert once == twice
+
+
+def test_cmd_add_wires_all_four_points(gitbook):
+    rc = mcp.cmd_add(
+        corpus="NewCorpus",
+        slug="newcorpus.md",
+        nav_label="New Corpus",
+        title="New Corpus",
+        template=str(gitbook.template),
+        gitbook_root=str(gitbook.root),
+        descriptors="(text, audio)",
+    )
+    assert rc == 0
+    page = gitbook.pages / "newcorpus.md"
+    assert page.exists()
+    assert "# New Corpus" in page.read_text(encoding="utf-8")
+    assert "{{DESCRIPTION}}" in page.read_text(encoding="utf-8")  # prose left
+    assert "corpora/newcorpus.md" in gitbook.summary.read_text(encoding="utf-8")
+    readme = gitbook.corpora_readme.read_text(encoding="utf-8")
+    assert "* [New Corpus](newcorpus.md) (text, audio)" in readme
+    assert "NewCorpus_corpora_stats.csv" in gitbook.stats_script.read_text(encoding="utf-8")
+
+
+def test_cmd_add_is_idempotent(gitbook):
+    kwargs = dict(
+        corpus="NewCorpus", slug="newcorpus.md", nav_label="New Corpus",
+        title="New Corpus", template=str(gitbook.template),
+        gitbook_root=str(gitbook.root), descriptors="(text)",
+    )
+    assert mcp.cmd_add(**kwargs) == 0
+    summary_after_1 = gitbook.summary.read_text(encoding="utf-8")
+    script_after_1 = gitbook.stats_script.read_text(encoding="utf-8")
+    readme_after_1 = gitbook.corpora_readme.read_text(encoding="utf-8")
+    assert mcp.cmd_add(**kwargs) == 0  # second run: clean no-op
+    assert gitbook.summary.read_text(encoding="utf-8") == summary_after_1
+    assert gitbook.stats_script.read_text(encoding="utf-8") == script_after_1
+    assert gitbook.corpora_readme.read_text(encoding="utf-8") == readme_after_1
+
+
+def test_cmd_add_missing_template_errors(gitbook):
+    with pytest.raises(FileNotFoundError):
+        mcp.cmd_add(
+            corpus="NewCorpus", slug="newcorpus.md", nav_label="New Corpus",
+            title="New Corpus", template=str(gitbook.root / "nope.md"),
+            gitbook_root=str(gitbook.root), descriptors="",
+        )
