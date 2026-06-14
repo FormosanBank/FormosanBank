@@ -316,4 +316,18 @@ For a few words the source's running sentence used a single form, but the word's
 
 A word is collapsed only if: exactly one slash-word with `<M>` segmentation and no parenthesis (slash+paren mixes left for manual); every morpheme tier/gloss splits into 1 or the same N≥2; the free translation has no `/`; and exactly one alternative's reconstructed surface (dashes/clitics removed) matches a whitespace token of the S-level FORM — the uttered form (0 or >1 ⇒ ambiguous, left for manual). The uttered alternative is kept across all tiers; the dropped alternative form(s) and glosses are recorded in a `notes` attribute on the word's original FORM. The S-level FORM/PHON are already collapsed and untouched. Collapses 3 words (`si/la` ×2, `ngu/mu-a-ta-tulru`); V121 drops by 12 (to 866). Round-trip guard; idempotent.
 
-   - **Still open in V121** after steps 15–19: the slash+paren mix `ngu-/mu-(a-)drusa` (1), plus the parenthesis families from step 15's "not handled" note. These need manual review.
+* **20. Resolve residual whole-word optional parentheticals**
+
+Step 15 split only optional words whose gloss was also parenthesized. This step handles the remaining whole-word parentheticals (plain gloss, or word absent from the sentence) by routing each on whether its surface form appears in the S-level FORM:
+
+```bash
+    python CodeAndDocs/scripts/resolve_residual_optional_parens.py
+```
+
+- **split** — the parenthesized surface (`(sua)`, `(kumakʉʉn)`) is a token of the S FORM → produce without- and with-optional readings, reusing step 15's `make_without`/`make_with` (id `-opt`). 61 sentences.
+- **strip** — the *bare* surface (`la`, `kavay`) is a token of the S FORM → the word is already in the sentence without parens; just remove them. 2 words.
+- **delete** — the surface is absent from the S FORM → an optional addition not uttered (Seediq `(so)` glossed `(如此)`); remove the word and record it in a `notes` attribute on the sentence's original FORM. 1 word.
+
+Surface matching strips infix/segmentation markers (`< > - =`) first, so `(k<um>a-kʉʉn)` matches the S-FORM token `(kumakʉʉn)`. V121 drops 866→580. The post-step V017/V073 +14 each are pre-existing empty-M shells duplicated into `-opt` clones (`make_with` is a pure deep copy — it creates no new empties), confined to `-opt` ids. Round-trip guard; idempotent.
+
+   - **Still open in V121** after steps 15–20 (left as-is by maintainer decision): optional sub-morphemic segments inside a word (`k(a)-u`, `a(ʉ)lʉ`, `(=dau)`; ~152 elements), parenthetical asides split across words (`usa-bi(n` … `ma)s`; ~134), and the one slash+paren mix `ngu-/mu-(a-)drusa`. These need manual review.
