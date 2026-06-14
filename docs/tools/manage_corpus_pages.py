@@ -2,14 +2,21 @@
 """Manage FormosanBank GitBook corpus pages.
 
 Two subcommands:
-  add    scaffold a new corpus page + nav entry + CSV_TO_MD stats-map entry
+  add    scaffold a new corpus page + nav entry + README list bullet
+         + CSV_TO_MD stats-map entry
   check  drift lint: every shipped corpus is fully wired; no leftover
-         placeholders; (informational) Coming-Soon drift + translation lag
+         placeholders; (informational) missing stats CSV, Coming-Soon
+         drift, and translation lag
 
-The three integration points for a published corpus are:
+The four integration points for a published corpus are:
   1. en-us/the-bank-architecture/corpora/<slug>          (the page)
   2. a sub-bullet in en-us/SUMMARY.md                    (the nav entry)
-  3. a CSV_TO_MD entry in update_corpus_stats.py         (the stats map)
+  3. a bullet in en-us/the-bank-architecture/corpora/README.md  (corpus list)
+  4. a CSV_TO_MD entry in update_corpus_stats.py         (the stats map)
+
+The corpus-list page's aggregate stats table and each corpus page's stats
+block are auto-filled by update_corpus_stats.py from point 4 once the
+corpus's stats CSV exists; they are not edited here.
 """
 import argparse
 import re
