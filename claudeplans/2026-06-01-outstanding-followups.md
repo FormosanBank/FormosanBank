@@ -103,6 +103,8 @@ Fix in a dedicated "Pyright cleanup" pass once enough of these accumulate, or pi
 
 **Action: NTU corpus walk-through branch (deferred, Corpora-touching).** Add a `fix_double_encoded_glosses.py` alongside the existing NTU repair scripts (`apply_manual_corrections.py`, `fix_swapped_gloss_langs.py`); record the step in the NTU README. NOT part of the tooling merge.
 
+**DONE (2026-06-12, branch `ntu-fix-double-encoding`).** Script added as NTU README step 13; decoded 1,109 TRANSL texts + 3 TRANSL `notes` attributes in `Sentences/Bunun/Bunun.xml` (1,122 `&lt;` + 1,118 `&gt;`, one decode level, idempotent, round-trip-guarded). validate_text re-run on the file: V132 = 0 (remaining findings are the known V121/V122/V126/V133 categories). The 3-entity surplus over the element count was double-encoding inside `notes` attributes, which V132 (text-only) never saw.
+
 ---
 
 ## Cross-reference

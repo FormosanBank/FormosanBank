@@ -221,3 +221,113 @@ The source marks code-switched words with tags like `<L2JjidenshaL2J>` (J/M/T/..
    - PHON of affected elements is regenerated through the Ortho113 mapping, gated by the pre-change original-tier witness check.
    - The parser-side stripper (`strip_l2m` in `scripts/utils.py`) is intentionally left unchanged: this post-step runs after parsing in the pipeline and converges the output regardless, without risking an over-eager regex in the parser (the eaten-letter bug came from exactly that).
    - Same conventions as steps 4-7: byte-identical round-trip guard, idempotent.
+
+* **13. Decode double-encoded gloss entities**
+
+The source JSONs are inconsistent about angle brackets in reduplication/infix notation: most store the real characters (`<RED>cook-LF`), but `sentence/Bunun_Isbukun/63.json` stores HTML-escaped strings (`&lt;RED&gt;`), which reached the XML writer verbatim and were escaped a second time on serialization (`&amp;lt;` in the published file — validate_text rule V132). This step decodes literal entity strings in element text and attribute values by exactly one level (1,109 TRANSL glosses + 3 TRANSL `notes` in `Sentences/Bunun/Bunun.xml`; nothing else in the corpus is affected):
+
+```bash
+    python CodeAndDocs/scripts/fix_double_encoded_glosses.py
+```
+
+Single non-iterating pass (one decode level only), so it can never over-decode; byte-identical round-trip guard; idempotent.
+
+* **14. Convert M-tier infix notation to `-X-`**
+
+FormosanBank reserves angle brackets for the W FORM (where `<X>` marks the surface position of an infix in its host) and for TRANSL glosses (`<AF>`, `<RED>`); at the morpheme tier an infix must be written `-X-` (validate_glosses rule V067 HARD). The NTU parsers copy source morpheme strings verbatim and the source writes M-level infixes with brackets (`<n>` under `m<n>nanang`), so the published corpus carried ~2,920 bracketed infix Ms across all three subcorpora. This step rewrites them:
+
+```bash
+    python CodeAndDocs/scripts/convert_infix_notation.py
+```
+
+An M's FORM and PHON (both tiers) are converted only when (a) the M's original FORM is exactly one bracket group `<X>`, (b) that group occurs literally inside the parent W FORM (so the brackets are genuine infix notation, not a word-level code-switch/noise marker), and (c) removing all bracket groups from the W FORM leaves host letters beyond clitic chunks. W FORMs and TRANSL glosses are never touched. The transformation is purely notational, so PHON needs no orthography mapping. Round-trip guard; idempotent.
+
+**Notes / known residue (not converted)**
+   - The conversion drops V067 from ~2,946 to **11**. The 11 are not single bracket groups: they are word-level markers (`<BREATH>`, `<jiuhaole>`, `P>`) and bracket groups the parsers split across a morpheme boundary on a dash inside the brackets (`la<in-i>haib-an` → `la<in` / `i>haib`). These need structural repair, not notation conversion, and are left for manual review (the same four sentences also account for the 4 V134 angle-bracket-in-S-FORM SOFT findings).
+   - Converting to `-X-` activates **50 V062** (HARD: an infix M requires an angle-bracket gloss on its parent W). These are a pre-existing *source* gloss-completeness gap that the notation fix surfaces rather than creates: the infix morpheme is present at the M tier, but the source glossed the whole word holistically (`q<m>ita` → "then") and never bracketed the infix in the W gloss. The correct `<AF>`-style W gloss cannot be derived mechanically, so these are documented here rather than auto-filled.
+   - Marker residue that this sweep exposed in the L2 token map (step 12) — half-eaten bracketed L2 variants (`>ciuru>`, `<gonense>`), prosody-span markers split across words (`<HIGH.PITCH … HIGH.PITCH>`, `<LOW.VOLUME … LOW.VOLUME>`), and stray span closers — was added to that step's token map and to `apply_manual_corrections.py` (for file-vintage PHON whose witness check refused regeneration). Re-run steps 11 and 12 after this step is in place; all three are idempotent.
+
+* **15. Split optional-word parentheticals into two sentences**
+
+In elicitation the source sometimes records a word as *optional* by wrapping it in parentheses — in the running sentence FORM, in the word/morpheme FORM, and in the matching gloss (also parenthesized) — while the free translation has no parentheses (the optional material is a linguist's note, not part of the uttered sentence):
+
+```
+S FORM : wavutha (nakuane) pangipalay.
+W1     : FORM "(nakuane)"  gloss "(1S.FO)" / "(第一人稱單數.自由斜格)"
+TRANSL : "He forced me to fly."          (no parentheses)
+```
+
+Parentheses are forbidden in W/M FORMs (validate_text V121 HARD). Rather than guess whether the optional word belongs in the form, this step materializes both readings as real, parenthesis-free sentences:
+
+```bash
+    python CodeAndDocs/scripts/split_optional_parentheticals.py
+```
+
+A sentence is split only when **all** hold: (1) its FORM has a parenthesis; (2) its free translation has none; (3) every parenthesis-bearing word is a *whole* parenthetical (FORM matches `^\([^()]*\)$`, so no parens are embedded in or split across other words); (4) each such word's gloss is itself fully parenthesized. The original element becomes the **without-optional** reading (the parenthetical word(s) deleted, the optional token removed from the S FORM/PHON, whitespace/punctuation tidied); a **with-optional** reading is inserted right after it (only the optional word's parens stripped, content kept), with id suffix `-opt` and descendant ids rewritten to match. 58 sentences split (39 Bunun, 16 Kanakanavu, 3 Rukai); V121 drops by 246.
+
+**Notes**
+   - **Audio**: the recording is of the shorter, actually-uttered sentence, so AUDIO stays on the without-optional reading and is removed from the with-optional one (5 sentences, all Kanakanavu Grammar).
+   - **Only the optional word's parens are touched.** Unrelated parenthetical *gloss* annotations elsewhere in the same sentence — an optional gloss particle such as `去(了)`, `song(sing)`, or `(OBL)` — are preserved verbatim in both readings (those are V122 SOFT, not V121, and carry meaning). PHON needs no orthography mapping: removing parentheses never changes a letter.
+   - **Duplication of pre-existing findings**: the with-optional reading is a near-copy, so any pre-existing validator finding in a split sentence is inherited by its `-opt` twin. This accounts for, and is confined to, the small post-step increases (V066 +40, V017/V073 +4 from one sentence's empty-M shells, V060 +3, V061 +2) — all in `-opt` ids, no new defect types.
+   - Not handled (left for manual review): sentences with parentheses embedded in or split across words, or whose parenthetical word lacks a parenthesized gloss (133 split/intra-word + 61 gloss-mismatch candidates). Byte-identical round-trip guard; idempotent (the outputs contain no FORM parens to re-split).
+
+* **16. Expand slash alternatives into one sentence per alternative**
+
+The source sometimes records several acceptable forms of a word separated by `/` (in the word/morpheme FORM and the also-slashed gloss) while the free translation lists none. The slash scope is the *morpheme*: in `pua/mua/mu-lebe` (gloss `放/去/去-下` / `put/go/go-down`) only M1 (`pua/mua/mu`) alternates and M2 (`lebe`) is shared, so the readings are `pua-lebe` / `mua-lebe` / `mu-lebe` — not the naive split `pua` / `mua` / `mu-lebe`. Slashes are forbidden in W/M FORMs (validate_text V121 HARD). This step materializes each alternative as its own sentence:
+
+```bash
+    python CodeAndDocs/scripts/expand_slash_alternatives.py
+```
+
+A sentence is expanded only when **all** hold: exactly one word has `/` in its FORM and is `<M>`-segmented; every morpheme's FORM/PHON tiers and glosses split into 1 (shared) or the same N≥2 (alternation); the **word-level FORM splits into exactly N** (this rejects word-level alternation the parser mis-segmented at the morpheme tier — see below); each morpheme group occurs verbatim in the word- and sentence-level FORM/PHON; and the free translation has no `/`. The original element becomes alternative 1; alternatives 2..N are inserted after it with id suffix `-alt2`..`-altN`. Each reading takes its morpheme pieces, and the word/sentence FORM/PHON/gloss are rebuilt by replacing each morpheme group in place (preserving the word's own `-`/`=` separators), so no slash remains. PHON needs no mapping (choosing an alternative changes no letter). AUDIO stays on alternative 1, removed from the rest (no clean slash sentence currently has audio). Round-trip guard; idempotent. Currently expands 1 sentence (Rukai `20200529-FW-Ken-1_S_6`, N=3); V121 drops by 4.
+
+**Not handled — other slash families (left for manual review)**
+   - **Word-level alternation with a garbled morpheme tier** (e.g. Rukai `20200528-FW-Yongfu_S_7`, `ma-lrigi/ma-elre-elrenge/ma-adraw` = smart/tall/big): the parser split on `-` and `/` together, so the morphemes are nonsense (`lrigi/ma`, `elrenge/ma`) and the word-level `/`-count (3) disagrees with the morpheme N (2). Re-segmenting would mean inventing morphemes (the zh gloss isn't even `-`-segmented), so it is not auto-expanded.
+   - **Trailing/empty-alternative slashes** (~36, mostly Bunun `63`): a stray `/` with an empty second alternative (`bunbun?/`, `ha?/`), not a real alternation — a cleanup, not an expansion.
+   - **W/M-only alternation** (3: `si/la`, `ngu/mu-a-ta-tulru`) where the S FORM already collapsed to one alternative, and **slash+paren mixes** (1: `ngu-/mu-(a-)drusa`).
+
+* **17. Strip stray trailing slashes**
+
+A run of Bunun `63` records ends a word with a slash and an empty second alternative — `bunbun?/`, `ha?/`, `mai-babu=tan?/` — where the `?` is sentence-final punctuation kept on the last word and the `/` is a transcription artifact, not an alternation (the matching glosses carry no slash; the S-level FORM never has the stray slash). This step removes trailing `/` from W/M FORM/PHON only:
+
+```bash
+    python CodeAndDocs/scripts/strip_trailing_slash.py
+```
+
+A genuine alternation has `/` *between* forms, never at the end, so real `a/b` forms (step 16) are untouched. 36 words (144 FORM elements across W/M × both tiers); V121 drops by 144 (to 884). Round-trip guard; idempotent.
+
+* **18. Expand word-level slash alternatives (mis-segmented at the morpheme tier)**
+
+A few words list several *complete* alternative words separated by `/`, each itself multi-morpheme — e.g. Rukai `20200528-FW-Yongfu_S_7` `ma-lrigi/ma-elre-elrenge/ma-adraw` (smart/tall/big). The parser split on `-` and `/` together, garbling the morpheme tier (`lrigi/ma`, `elrenge/ma`), so its slash count disagrees with the word-level count and step 16 refuses it. The word-level FORM/PHON/gloss split cleanly into N on `/`, and each alternative re-segments cleanly on `-`, so the sentence is rebuilt one alternative per S:
+
+```bash
+    python CodeAndDocs/scripts/expand_word_level_alternatives.py
+```
+
+Because these cases need per-sentence judgement, each is described in the script's `CONFIG` rather than inferred; the `/`-split, `-` re-segmentation, and PHON (from the word's own slashed PHON, no mapping) are mechanical. Two judgement points for S_7, both recorded in `CONFIG`: (a) the published free translation was **truncated** to the first alternative (source `free` is "Laucu is smart/tall/big"), so each reading's translation is restored from source — the zh `很` is taken to distribute (`Laucu很聰明/很高/很大`); (b) the source wrote `狀態.實現.聰明` with a `.` where the morpheme boundary `-` belongs (cf. the sibling `狀態.實現-大`), repaired so STAT.RLS/be.smart align. The original becomes alternative 1; alternatives 2..N follow with id suffix `-alt2`..`-altN`; mis-segmented morphemes are rebuilt from each alternative's own tiers; AUDIO stays on alternative 1. Expands 1 sentence (S_7 → 3); V121 drops by 6; the readings are clean under validate_glosses. Round-trip guard; idempotent.
+
+* **19. Collapse gloss-only slash alternations**
+
+For a few words the source's running sentence used a single form, but the word's lexical gloss row recorded an alternative with `/` — e.g. Rukai `20200531-FW-Yongfu-2_S_9` says `si` ("and") in the sentence while the gloss row is `si/la` (`and/then`). (Confirmed against the source JSON `ori` field, which carries one form for all three of these.) These must **not** be expanded — the alternative utterance was never made — so this step collapses the word to the alternative that actually appears in the sentence:
+
+```bash
+    python CodeAndDocs/scripts/collapse_gloss_only_alternations.py
+```
+
+A word is collapsed only if: exactly one slash-word with `<M>` segmentation and no parenthesis (slash+paren mixes left for manual); every morpheme tier/gloss splits into 1 or the same N≥2; the free translation has no `/`; and exactly one alternative's reconstructed surface (dashes/clitics removed) matches a whitespace token of the S-level FORM — the uttered form (0 or >1 ⇒ ambiguous, left for manual). The uttered alternative is kept across all tiers; the dropped alternative form(s) and glosses are recorded in a `notes` attribute on the word's original FORM. The S-level FORM/PHON are already collapsed and untouched. Collapses 3 words (`si/la` ×2, `ngu/mu-a-ta-tulru`); V121 drops by 12 (to 866). Round-trip guard; idempotent.
+
+* **20. Resolve residual whole-word optional parentheticals**
+
+Step 15 split only optional words whose gloss was also parenthesized. This step handles the remaining whole-word parentheticals (plain gloss, or word absent from the sentence) by routing each on whether its surface form appears in the S-level FORM:
+
+```bash
+    python CodeAndDocs/scripts/resolve_residual_optional_parens.py
+```
+
+- **split** — the parenthesized surface (`(sua)`, `(kumakʉʉn)`) is a token of the S FORM → produce without- and with-optional readings, reusing step 15's `make_without`/`make_with` (id `-opt`). 61 sentences.
+- **strip** — the *bare* surface (`la`, `kavay`) is a token of the S FORM → the word is already in the sentence without parens; just remove them. 2 words.
+- **delete** — the surface is absent from the S FORM → an optional addition not uttered (Seediq `(so)` glossed `(如此)`); remove the word and record it in a `notes` attribute on the sentence's original FORM. 1 word.
+
+Surface matching strips infix/segmentation markers (`< > - =`) first, so `(k<um>a-kʉʉn)` matches the S-FORM token `(kumakʉʉn)`. V121 drops 866→580. The post-step V017/V073 +14 each are pre-existing empty-M shells duplicated into `-opt` clones (`make_with` is a pure deep copy — it creates no new empties), confined to `-opt` ids. Round-trip guard; idempotent.
+
+   - **Still open in V121** after steps 15–20 (left as-is by maintainer decision): optional sub-morphemic segments inside a word (`k(a)-u`, `a(ʉ)lʉ`, `(=dau)`; ~152 elements), parenthetical asides split across words (`usa-bi(n` … `ma)s`; ~134), and the one slash+paren mix `ngu-/mu-(a-)drusa`. These need manual review.

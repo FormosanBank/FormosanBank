@@ -1,4 +1,4 @@
-<?xml version="1.0" ?>
+<?xml version='1.0' encoding='UTF-8'?>
 <TEXT id="NTU_Stry_Tsou_TsouConv-typhoon" xml:lang="tsu" source="NTU Corpus stories for Tsou, story: TsouConv-typhoon" audio="diarized" copyright="CC BY-NC" citation="Sung, L. M., Lily, I., Hsieh, F., &amp; Lin, Z. (2008). Developing an online corpus of Formosan languages. Taiwan Journal of Linguistics, 6(2.)." BibTeX_citation="@article{sung2008developing,title={Developing an online corpus of Formosan languages.},author={Sung, Li-May and Lily, I and Hsieh, Fuhui and Lin, Zhemin and others},journal={Taiwan Journal of Linguistics},volume={6},number={2},year={2008}}" dialect="Tsou">
     <S id="TsouConv-typhoon_S_0">
         <FORM kindOf="original">'o vcongʉsi to ha hanako ci ihe ne spukunu ne noana'o au.</FORM>
@@ -10204,10 +10204,10 @@
         </W>
     </S>
     <S id="TsouConv-typhoon_S_67">
-        <FORM kindOf="original">pa patmeaphi no LMJnazua 'e 'e ak'i.</FORM>
-        <PHON kindOf="original">pa patmeaphi no ɗm*nazua ʔe ʔe akʔi.</PHON>
-        <FORM kindOf="standard">pa patmeaphi no LMJnazua 'e 'e ak'i.</FORM>
-        <PHON kindOf="standard">pa patmeaphi no ɗm*nazua ʔe ʔe akʔi.</PHON>
+        <FORM kindOf="original">pa patmeaphi no nazua 'e 'e ak'i.</FORM>
+        <PHON kindOf="original">pa patmeaphi no nazua ʔe ʔe akʔi.</PHON>
+        <FORM kindOf="standard">pa patmeaphi no nazua 'e 'e ak'i.</FORM>
+        <PHON kindOf="standard">pa patmeaphi no nazua ʔe ʔe akʔi.</PHON>
         <TRANSL xml:lang="zho" notes="叫外公(自己)裝棉絮">叫外公 裝棉絮</TRANSL>
         <TRANSL xml:lang="eng" notes="Make Grandfather fill the cotton (into the bedquilt).">Make Grandfather fill the cotton .</TRANSL>
         <AUDIO file="TsouConv-typhoon_S67.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/TsouConv-typhoon.mp3" start="246.66" end="248.31"/>
@@ -10268,17 +10268,17 @@
             </M>
         </W>
         <W id="TsouConv-typhoon_S_67_W3">
-            <FORM kindOf="original" notes="code-switch">&lt;LMJnazua</FORM>
-            <PHON kindOf="original">&lt;ɗm*nazua</PHON>
-            <FORM kindOf="standard">&lt;LMJnazua</FORM>
-            <PHON kindOf="standard">&lt;ɗm*nazua</PHON>
+            <FORM kindOf="original" notes="code-switch">nazua</FORM>
+            <PHON kindOf="original">nazua</PHON>
+            <FORM kindOf="standard">nazua</FORM>
+            <PHON kindOf="standard">nazua</PHON>
             <TRANSL xml:lang="zho">棉絮</TRANSL>
             <TRANSL xml:lang="eng">cotton.in.bedquilt</TRANSL>
             <M id="TsouConv-typhoon_S_67_W3M1">
-                <FORM kindOf="original">&lt;LMJnazua</FORM>
-                <PHON kindOf="original">&lt;ɗm*nazua</PHON>
-                <FORM kindOf="standard">&lt;LMJnazua</FORM>
-                <PHON kindOf="standard">&lt;ɗm*nazua</PHON>
+                <FORM kindOf="original">nazua</FORM>
+                <PHON kindOf="original">nazua</PHON>
+                <FORM kindOf="standard">nazua</FORM>
+                <PHON kindOf="standard">nazua</PHON>
                 <TRANSL xml:lang="eng">cotton.in.bedquilt</TRANSL>
                 <TRANSL xml:lang="zho">棉絮</TRANSL>
             </M>
@@ -18551,17 +18551,17 @@
             </M>
         </W>
         <W id="TsouConv-typhoon_S_118_W5">
-            <FORM kindOf="original" notes="code-switch">shiaolingLM&gt;</FORM>
-            <PHON kindOf="original">shiaoɗiŋɗm&gt;</PHON>
-            <FORM kindOf="standard">shiaolingLM&gt;</FORM>
-            <PHON kindOf="standard">shiaoɗiŋɗm&gt;</PHON>
+            <FORM kindOf="original" notes="code-switch">shiaoling</FORM>
+            <PHON kindOf="original">shiaoɗiŋ</PHON>
+            <FORM kindOf="standard">shiaoling</FORM>
+            <PHON kindOf="standard">shiaoɗiŋ</PHON>
             <TRANSL xml:lang="zho">人名</TRANSL>
             <TRANSL xml:lang="eng">PN</TRANSL>
             <M id="TsouConv-typhoon_S_118_W5M1">
-                <FORM kindOf="original">shiaolingLM&gt;</FORM>
-                <PHON kindOf="original">shiaoɗiŋɗm&gt;</PHON>
-                <FORM kindOf="standard">shiaolingLM&gt;</FORM>
-                <PHON kindOf="standard">shiaoɗiŋɗm&gt;</PHON>
+                <FORM kindOf="original">shiaoling</FORM>
+                <PHON kindOf="original">shiaoɗiŋ</PHON>
+                <FORM kindOf="standard">shiaoling</FORM>
+                <PHON kindOf="standard">shiaoɗiŋ</PHON>
                 <TRANSL xml:lang="eng">PN</TRANSL>
                 <TRANSL xml:lang="zho">人名</TRANSL>
             </M>
@@ -23770,10 +23770,10 @@
         </W>
     </S>
     <S id="TsouConv-typhoon_S_153">
-        <FORM kindOf="original">'e mo mameoi (Exhale) mo ahmohmo hoci ako.</FORM>
-        <PHON kindOf="original">ʔe mo mameoi (e*haɗe) mo ahmohmo hoʦi ako.</PHON>
-        <FORM kindOf="standard">'e mo mameoi (Exhale) mo ahmohmo hoci ako.</FORM>
-        <PHON kindOf="standard">ʔe mo mameoi (e*haɗe) mo ahmohmo hoʦi ako.</PHON>
+        <FORM kindOf="original">'e mo mameoi mo ahmohmo hoci ako.</FORM>
+        <PHON kindOf="original">ʔe mo mameoi mo ahmohmo hoʦi ako.</PHON>
+        <FORM kindOf="standard">'e mo mameoi mo ahmohmo hoci ako.</FORM>
+        <PHON kindOf="standard">ʔe mo mameoi mo ahmohmo hoʦi ako.</PHON>
         <TRANSL xml:lang="zho">老人家如果一直閒在家裡會很不習慣.</TRANSL>
         <TRANSL xml:lang="eng" notes="For elders, if (they) keep staying at home and doing nothing, (they will) feel unaccustomed.">For elders, if keep staying at home and doing nothing, feel unaccustomed.</TRANSL>
         <AUDIO file="TsouConv-typhoon_S153.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/TsouConv-typhoon.mp3" start="566.11" end="569.97"/>
@@ -23823,22 +23823,6 @@
                 <PHON kindOf="standard">mameoi</PHON>
                 <TRANSL xml:lang="eng">old.AF</TRANSL>
                 <TRANSL xml:lang="zho">老.主焦</TRANSL>
-            </M>
-        </W>
-        <W id="TsouConv-typhoon_S_153_W3">
-            <FORM kindOf="original">(Exhale)</FORM>
-            <PHON kindOf="original">(e*haɗe)</PHON>
-            <FORM kindOf="standard">(Exhale)</FORM>
-            <PHON kindOf="standard">(e*haɗe)</PHON>
-            <TRANSL xml:lang="zho">助動詞.主焦</TRANSL>
-            <TRANSL xml:lang="eng">AUX.AF</TRANSL>
-            <M id="TsouConv-typhoon_S_153_W3M1">
-                <FORM kindOf="original">(Exhale)</FORM>
-                <PHON kindOf="original">(e*haɗe)</PHON>
-                <FORM kindOf="standard">(Exhale)</FORM>
-                <PHON kindOf="standard">(e*haɗe)</PHON>
-                <TRANSL xml:lang="eng">AUX.AF</TRANSL>
-                <TRANSL xml:lang="zho">助動詞.主焦</TRANSL>
             </M>
         </W>
         <W id="TsouConv-typhoon_S_153_W4">
@@ -23897,6 +23881,142 @@
             <TRANSL xml:lang="zho">閒在家裡.主焦</TRANSL>
             <TRANSL xml:lang="eng">do.nothing.all.day.AF</TRANSL>
             <M id="TsouConv-typhoon_S_153_W7M1">
+                <FORM kindOf="original">ako</FORM>
+                <PHON kindOf="original">ako</PHON>
+                <FORM kindOf="standard">ako</FORM>
+                <PHON kindOf="standard">ako</PHON>
+                <TRANSL xml:lang="eng">do.nothing.all.day.AF</TRANSL>
+                <TRANSL xml:lang="zho">閒在家裡.主焦</TRANSL>
+            </M>
+        </W>
+    </S>
+    <S id="TsouConv-typhoon_S_153-opt">
+        <FORM kindOf="original">'e mo mameoi Exhale mo ahmohmo hoci ako.</FORM>
+        <PHON kindOf="original">ʔe mo mameoi e*haɗe mo ahmohmo hoʦi ako.</PHON>
+        <FORM kindOf="standard">'e mo mameoi Exhale mo ahmohmo hoci ako.</FORM>
+        <PHON kindOf="standard">ʔe mo mameoi e*haɗe mo ahmohmo hoʦi ako.</PHON>
+        <TRANSL xml:lang="zho">老人家如果一直閒在家裡會很不習慣.</TRANSL>
+        <TRANSL xml:lang="eng" notes="For elders, if (they) keep staying at home and doing nothing, (they will) feel unaccustomed.">For elders, if keep staying at home and doing nothing, feel unaccustomed.</TRANSL>
+        <W id="TsouConv-typhoon_S_153-opt_W0">
+            <FORM kindOf="original">'e</FORM>
+            <PHON kindOf="original">ʔe</PHON>
+            <FORM kindOf="standard">'e</FORM>
+            <PHON kindOf="standard">ʔe</PHON>
+            <TRANSL xml:lang="zho">主格</TRANSL>
+            <TRANSL xml:lang="eng">NOM</TRANSL>
+            <M id="TsouConv-typhoon_S_153-opt_W0M1">
+                <FORM kindOf="original">'e</FORM>
+                <PHON kindOf="original">ʔe</PHON>
+                <FORM kindOf="standard">'e</FORM>
+                <PHON kindOf="standard">ʔe</PHON>
+                <TRANSL xml:lang="eng">NOM</TRANSL>
+                <TRANSL xml:lang="zho">主格</TRANSL>
+            </M>
+        </W>
+        <W id="TsouConv-typhoon_S_153-opt_W1">
+            <FORM kindOf="original">mo</FORM>
+            <PHON kindOf="original">mo</PHON>
+            <FORM kindOf="standard">mo</FORM>
+            <PHON kindOf="standard">mo</PHON>
+            <TRANSL xml:lang="zho">助動詞.主焦</TRANSL>
+            <TRANSL xml:lang="eng">AUX.AF</TRANSL>
+            <M id="TsouConv-typhoon_S_153-opt_W1M1">
+                <FORM kindOf="original">mo</FORM>
+                <PHON kindOf="original">mo</PHON>
+                <FORM kindOf="standard">mo</FORM>
+                <PHON kindOf="standard">mo</PHON>
+                <TRANSL xml:lang="eng">AUX.AF</TRANSL>
+                <TRANSL xml:lang="zho">助動詞.主焦</TRANSL>
+            </M>
+        </W>
+        <W id="TsouConv-typhoon_S_153-opt_W2">
+            <FORM kindOf="original">mameoi</FORM>
+            <PHON kindOf="original">mameoi</PHON>
+            <FORM kindOf="standard">mameoi</FORM>
+            <PHON kindOf="standard">mameoi</PHON>
+            <TRANSL xml:lang="zho">老.主焦</TRANSL>
+            <TRANSL xml:lang="eng">old.AF</TRANSL>
+            <M id="TsouConv-typhoon_S_153-opt_W2M1">
+                <FORM kindOf="original">mameoi</FORM>
+                <PHON kindOf="original">mameoi</PHON>
+                <FORM kindOf="standard">mameoi</FORM>
+                <PHON kindOf="standard">mameoi</PHON>
+                <TRANSL xml:lang="eng">old.AF</TRANSL>
+                <TRANSL xml:lang="zho">老.主焦</TRANSL>
+            </M>
+        </W>
+        <W id="TsouConv-typhoon_S_153-opt_W3">
+            <FORM kindOf="original">Exhale</FORM>
+            <PHON kindOf="original">e*haɗe</PHON>
+            <FORM kindOf="standard">Exhale</FORM>
+            <PHON kindOf="standard">e*haɗe</PHON>
+            <TRANSL xml:lang="zho">助動詞.主焦</TRANSL>
+            <TRANSL xml:lang="eng">AUX.AF</TRANSL>
+            <M id="TsouConv-typhoon_S_153-opt_W3M1">
+                <FORM kindOf="original">Exhale</FORM>
+                <PHON kindOf="original">e*haɗe</PHON>
+                <FORM kindOf="standard">Exhale</FORM>
+                <PHON kindOf="standard">e*haɗe</PHON>
+                <TRANSL xml:lang="eng">AUX.AF</TRANSL>
+                <TRANSL xml:lang="zho">助動詞.主焦</TRANSL>
+            </M>
+        </W>
+        <W id="TsouConv-typhoon_S_153-opt_W4">
+            <FORM kindOf="original">mo</FORM>
+            <PHON kindOf="original">mo</PHON>
+            <FORM kindOf="standard">mo</FORM>
+            <PHON kindOf="standard">mo</PHON>
+            <TRANSL xml:lang="zho">感到不適應.主焦</TRANSL>
+            <TRANSL xml:lang="eng">feel.unaccustomed.AF</TRANSL>
+            <M id="TsouConv-typhoon_S_153-opt_W4M1">
+                <FORM kindOf="original">mo</FORM>
+                <PHON kindOf="original">mo</PHON>
+                <FORM kindOf="standard">mo</FORM>
+                <PHON kindOf="standard">mo</PHON>
+                <TRANSL xml:lang="eng">feel.unaccustomed.AF</TRANSL>
+                <TRANSL xml:lang="zho">感到不適應.主焦</TRANSL>
+            </M>
+        </W>
+        <W id="TsouConv-typhoon_S_153-opt_W5">
+            <FORM kindOf="original">ahmohmo</FORM>
+            <PHON kindOf="original">ahmohmo</PHON>
+            <FORM kindOf="standard">ahmohmo</FORM>
+            <PHON kindOf="standard">ahmohmo</PHON>
+            <TRANSL xml:lang="zho">如果</TRANSL>
+            <TRANSL xml:lang="eng">if</TRANSL>
+            <M id="TsouConv-typhoon_S_153-opt_W5M1">
+                <FORM kindOf="original">ahmohmo</FORM>
+                <PHON kindOf="original">ahmohmo</PHON>
+                <FORM kindOf="standard">ahmohmo</FORM>
+                <PHON kindOf="standard">ahmohmo</PHON>
+                <TRANSL xml:lang="eng">if</TRANSL>
+                <TRANSL xml:lang="zho">如果</TRANSL>
+            </M>
+        </W>
+        <W id="TsouConv-typhoon_S_153-opt_W6">
+            <FORM kindOf="original">hoci</FORM>
+            <PHON kindOf="original">hoʦi</PHON>
+            <FORM kindOf="standard">hoci</FORM>
+            <PHON kindOf="standard">hoʦi</PHON>
+            <TRANSL xml:lang="zho">一直.主焦</TRANSL>
+            <TRANSL xml:lang="eng">continuously.AF</TRANSL>
+            <M id="TsouConv-typhoon_S_153-opt_W6M1">
+                <FORM kindOf="original">hoci</FORM>
+                <PHON kindOf="original">hoʦi</PHON>
+                <FORM kindOf="standard">hoci</FORM>
+                <PHON kindOf="standard">hoʦi</PHON>
+                <TRANSL xml:lang="eng">continuously.AF</TRANSL>
+                <TRANSL xml:lang="zho">一直.主焦</TRANSL>
+            </M>
+        </W>
+        <W id="TsouConv-typhoon_S_153-opt_W7">
+            <FORM kindOf="original">ako</FORM>
+            <PHON kindOf="original">ako</PHON>
+            <FORM kindOf="standard">ako</FORM>
+            <PHON kindOf="standard">ako</PHON>
+            <TRANSL xml:lang="zho">閒在家裡.主焦</TRANSL>
+            <TRANSL xml:lang="eng">do.nothing.all.day.AF</TRANSL>
+            <M id="TsouConv-typhoon_S_153-opt_W7M1">
                 <FORM kindOf="original">ako</FORM>
                 <PHON kindOf="original">ako</PHON>
                 <FORM kindOf="standard">ako</FORM>
