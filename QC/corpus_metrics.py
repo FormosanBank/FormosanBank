@@ -979,7 +979,8 @@ HISTORY_SERIES = (
         "filename": "corpus_transcribed_audio_over_time.png",
         "to_y": lambda seconds: seconds / 3600.0,
         "fmt": format_hours,
-        "caption": "Duration tracking begins at rollout; earlier points may be sparse.",
+        "caption": "Only commits with measured audio durations are shown.",
+        "drop_zeros": True,
     },
     {
         "column": "zho_transl_count",
@@ -1021,6 +1022,14 @@ def plot_series(rows: list[dict[str, Any]], output_dir: Path, spec: dict[str, An
     if not dates:
         plot_empty_state(spec["title"], "No dated history rows were available.", output_path)
         return
+
+    if spec.get("drop_zeros"):
+        kept = sorted(((d, v) for d, v in zip(dates, values) if v > 0), key=lambda dv: dv[0])
+        if not kept:
+            plot_empty_state(spec["title"], "No data points are available yet.", output_path)
+            return
+        dates = [d for d, _ in kept]
+        values = [v for _, v in kept]
 
     fmt = spec["fmt"]
     fig, ax = plt.subplots(figsize=(11, 5.8), facecolor=PLOT_BG)
