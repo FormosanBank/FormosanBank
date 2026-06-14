@@ -295,3 +295,13 @@ A run of Bunun `63` records ends a word with a slash and an empty second alterna
 ```
 
 A genuine alternation has `/` *between* forms, never at the end, so real `a/b` forms (step 16) are untouched. 36 words (144 FORM elements across W/M × both tiers); V121 drops by 144 (to 884). Round-trip guard; idempotent.
+
+* **18. Expand word-level slash alternatives (mis-segmented at the morpheme tier)**
+
+A few words list several *complete* alternative words separated by `/`, each itself multi-morpheme — e.g. Rukai `20200528-FW-Yongfu_S_7` `ma-lrigi/ma-elre-elrenge/ma-adraw` (smart/tall/big). The parser split on `-` and `/` together, garbling the morpheme tier (`lrigi/ma`, `elrenge/ma`), so its slash count disagrees with the word-level count and step 16 refuses it. The word-level FORM/PHON/gloss split cleanly into N on `/`, and each alternative re-segments cleanly on `-`, so the sentence is rebuilt one alternative per S:
+
+```bash
+    python CodeAndDocs/scripts/expand_word_level_alternatives.py
+```
+
+Because these cases need per-sentence judgement, each is described in the script's `CONFIG` rather than inferred; the `/`-split, `-` re-segmentation, and PHON (from the word's own slashed PHON, no mapping) are mechanical. Two judgement points for S_7, both recorded in `CONFIG`: (a) the published free translation was **truncated** to the first alternative (source `free` is "Laucu is smart/tall/big"), so each reading's translation is restored from source — the zh `很` is taken to distribute (`Laucu很聰明/很高/很大`); (b) the source wrote `狀態.實現.聰明` with a `.` where the morpheme boundary `-` belongs (cf. the sibling `狀態.實現-大`), repaired so STAT.RLS/be.smart align. The original becomes alternative 1; alternatives 2..N follow with id suffix `-alt2`..`-altN`; mis-segmented morphemes are rebuilt from each alternative's own tiers; AUDIO stays on alternative 1. Expands 1 sentence (S_7 → 3); V121 drops by 6; the readings are clean under validate_glosses. Round-trip guard; idempotent.
