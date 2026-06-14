@@ -96,6 +96,29 @@ def _count_morphemes_from_form(form_text: str) -> int:
     return len(infixes) + len([s for s in segments if s])
 
 
+def _w_form_with_inline_infixes_marked(form_text: str, w_elem: etree._Element) -> str:
+    """Rewrite hyphen-notated inline infixes in a W FORM to ``<X>`` form.
+
+    A W FORM like ``G-m-ealu`` is orthographically identical to a
+    prefix-root-suffix string (``k-anak-an``), so it cannot be
+    disambiguated on its own. The M tier resolves it: when an M child's
+    FORM is infix-shaped (``-X-``, the V067 convention), the matching
+    inline ``-X-`` in the W FORM is a single infix morpheme, not two
+    segment boundaries. We rewrite each such ``-X-`` to ``<X>`` so the
+    morpheme count treats it as one infix and rejoins the root halves —
+    mirroring native ``<X>`` notation. W FORMs with no infix-shaped M are
+    returned unchanged, so prefix-root-suffix counts are unaffected.
+    """
+    marked = form_text
+    for m in w_elem:
+        if m.tag != "M":
+            continue
+        m_form = _get_w_form(m)
+        if _INFIX_PATTERN.match(m_form) and m_form in marked:
+            marked = marked.replace(m_form, f"<{m_form.strip('-')}>", 1)
+    return marked
+
+
 def _get_w_form(w_elem: etree._Element) -> str:
     """Return W's preferred FORM text. Original > any FORM > ''."""
     original = w_elem.find('./FORM[@kindOf="original"]')
@@ -192,7 +215,11 @@ def v061_M_count_matches_form_segmentation(
         form_text = _get_w_form(w)
         if not form_text:
             continue  # V011/V012 handle missing FORM
-        expected = _count_morphemes_from_form(form_text)
+        # Hyphen-notated infixes (e.g. 'G-m-ealu' with an infix M '-m-')
+        # are rewritten to '<m>' so they count as one infix morpheme,
+        # not two segment boundaries.
+        expected = _count_morphemes_from_form(
+            _w_form_with_inline_infixes_marked(form_text, w))
         actual = sum(1 for child in w if child.tag == "M")
         # Monomorphemic with no M tags is acceptable
         if expected == 1 and actual == 0:

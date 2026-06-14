@@ -163,6 +163,53 @@ def test_V061_infix_with_matching_M_clean():
     assert findings == [], f"expected no V061 finding; got {findings!r}"
 
 
+def test_V061_hyphen_notated_infix_with_matching_M_clean():
+    """W FORM 'G-m-ealu' writes the infix with hyphens (-m-) instead of
+    <m>; the M tier confirms it (M2 FORM '-m-' is infix-shaped). Root
+    'Gealu' + infix 'm' = 2 morphemes, matching the 2 M children -> no
+    finding. Without infix awareness this would mis-count as 3."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">G-m-ealu</FORM>
+        <W id="W1">
+          <FORM kindOf="original">G-m-ealu</FORM>
+          <M id="M1"><FORM>G-ealu</FORM></M>
+          <M id="M2"><FORM>-m-</FORM></M>
+        </W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v061_M_count_matches_form_segmentation, xml)
+    assert findings == [], f"expected no V061 finding; got {findings!r}"
+
+
+def test_V061_prefix_root_suffix_still_counts_three():
+    """Disambiguation guard: 'k-anak-an' is prefix-root-suffix (no
+    infix-shaped M), so it must still imply 3 morphemes. With 3 Ms ->
+    clean; the hyphen-infix fix must NOT collapse genuine 3-way
+    segmentation."""
+    clean = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">k-anak-an</FORM>
+        <W id="W1">
+          <FORM kindOf="original">k-anak-an</FORM>
+          <M id="M1"><FORM>k-</FORM></M>
+          <M id="M2"><FORM>anak</FORM></M>
+          <M id="M3"><FORM>-an</FORM></M>
+        </W>
+      </S>""")
+    assert _findings_for(gloss_rules.v061_M_count_matches_form_segmentation, clean) == []
+    # ...and with only 2 Ms it must STILL flag (expected 3, actual 2).
+    short = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">k-anak-an</FORM>
+        <W id="W1">
+          <FORM kindOf="original">k-anak-an</FORM>
+          <M id="M1"><FORM>k-</FORM></M>
+          <M id="M2"><FORM>anak</FORM></M>
+        </W>
+      </S>""")
+    assert len(_findings_for(gloss_rules.v061_M_count_matches_form_segmentation, short)) == 1
+
+
 def test_V061_infix_with_too_few_M_emits_SOFT():
     """W FORM 'k<um>ita' (expected 2) with only 1 M -> SOFT V061."""
     xml = _TEXT_TEMPLATE.format(body="""
