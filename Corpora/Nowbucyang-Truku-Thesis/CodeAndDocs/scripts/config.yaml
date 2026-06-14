@@ -1,0 +1,76 @@
+source:
+  source_id: "HSU_LOWKING_TRUKU_WORDFORMATION_2008"
+  repository_name: "Formosan-Lowking-Truku-WordFormation"
+  pdf_path: "data/raw/pdf/許韋晟全文.pdf"
+  decrypted_pdf_path: "data/raw/pdf/許韋晟全文.decrypted.pdf"
+  title_zh: "太魯閣語構詞法研究"
+  title_en: "Word Formation in Truku"
+  author_zh: "許韋晟"
+  author_romanized: "Lowking Wei-Cheng Hsu"
+  expected_page_count: 164
+  publication_year: 2008
+  publication_month: "July"
+
+rights:
+  permission_confirmed: true
+  full_rights_obtained: true
+  create_final_xml: true
+  output_dir: "Final_XML"
+
+extraction:
+  primary_method: "pdf_text_layer"
+  decrypt_with_qpdf: true
+  use_pymupdf: true
+  use_pdfplumber: true
+  render_pages_for_audit: true
+  use_ocr: false
+  allow_ocr_fallback_after_review: false
+  preserve_layout_blocks: true
+  preserve_raw_text: true
+
+language:
+  source_language_name: "Truku"
+  source_language_name_zh: "太魯閣語"
+  expected_iso_639_3: "trv"
+  community_locations: ["Dumung / 銅門", "Tkijig / 崇德"]
+  verify_formosanbank_convention: true
+  use_dialect_or_location_attribute_if_validated: true
+  dialect: "Truku"
+
+examples:
+  parse_numbered_examples: true
+  parse_subexamples: true
+  parse_glosses: true
+  parse_source_chinese_translations: true
+  include_affix_only_examples_in_xml: false
+  include_table_rows_in_xml: false
+  include_glosses_in_xml: false
+  min_confidence_for_xml: "medium"
+
+normalization:
+  unicode_form: "NFC"
+  ascii_fold: false
+  preserve_case: true
+  preserve_truku_orthography: true
+  preserve_chinese_translations: true
+  preserve_gloss_case: true
+  normalize_whitespace: true
+
+xml:
+  output_dir: "Final_XML"
+  language_folder: "Truku"
+  output_file: "Hsu_Lowking_Truku_WordFormation_2008.xml"
+  source_translation_lang: "zho"
+  source_translation_lang_candidates: ["cmn", "zho"]
+  validate_strict: true
+  include_audio_tags: false
+  one_xml_per_source: true
+  include_w_tokens: true
+  include_m_morphemes: true
+
+overlap:
+  check_existing_formosanbank: true
+  check_existing_truku_taroko_seediq_sources: true
+  check_existing_ntu: true
+  check_existing_glosbe: true
+  check_existing_epank: true
