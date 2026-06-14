@@ -16,13 +16,14 @@ The driving example is the live port of `Formosan-Nowbucyang-Truku-Thesis`, whic
 
 ## Background: how a corpus reaches the GitBook today
 
-The English GitBook (`FormosanBankGitbook/en-us/`) renders one page per corpus under `the-bank-architecture/corpora/<slug>.md`. Publishing a corpus touches **three** places, and missing any one silently half-publishes it:
+The English GitBook (`FormosanBankGitbook/en-us/`) renders one page per corpus under `the-bank-architecture/corpora/<slug>.md`. Publishing a corpus touches **four** places, and missing any one silently half-publishes it:
 
 1. **Page** — `en-us/the-bank-architecture/corpora/<slug>.md`, containing a `<!-- CORPUS STATS START -->` / `<!-- CORPUS STATS END -->` marker block, prose (description, copyright, citation, access link), nothing else load-bearing.
-2. **Nav entry** — a bullet under the `## The Bank Architecture` → Corpora sublist in `en-us/SUMMARY.md`.
-3. **Stats map** — an entry in the hardcoded `CSV_TO_MD` dict in `FormosanBankGitbook/update_corpus_stats.py`, mapping `<FBDir>_corpora_stats.csv` → `<slug>.md`. Without it, `update_corpus_stats.py` never injects the stats table into the page.
+2. **Nav entry** — an indented sub-bullet under the `## The Bank Architecture` → Corpora sublist in `en-us/SUMMARY.md`.
+3. **Corpus-list entry** — a top-level bullet `* [<label>](<slug>) (<descriptors>)` in the **manually-maintained** corpus list inside `en-us/the-bank-architecture/corpora/README.md` (above that page's own `CORPUS STATS` marker block). Not auto-generated.
+4. **Stats map** — an entry in the hardcoded `CSV_TO_MD` dict in `FormosanBankGitbook/update_corpus_stats.py`, mapping `<FBDir>_corpora_stats.csv` → `<slug>.md`. Without it, `update_corpus_stats.py` injects stats neither into the corpus page nor into the `corpora/README.md` aggregate table.
 
-`update_corpus_stats.py` reads stats CSVs from `FormosanBankGitbook/statistics/` (themselves produced upstream by `FormosanBank/QC/utilities/get_corpus_stats.py`) and injects a per-language table between the markers.
+`update_corpus_stats.py` reads stats CSVs from `FormosanBankGitbook/statistics/` (themselves produced upstream by `FormosanBank/QC/utilities/get_corpus_stats.py`) and injects per-language tables between the markers — both into each corpus page **and** into the aggregate `by language` / `by dialect` tables on `corpora/README.md`. Those stats tables are therefore automatic once integration point 4 (the `CSV_TO_MD` entry) and the corpus's stats CSV both exist; they are **not** separate manual edits. A freshly-ported corpus's stats CSV does not exist until the corpus-metrics pipeline regenerates it and it is synced into the GitBook, so the stats tables stay empty until then — expected, not a porting defect.
 
 ### Branch state (Layer 0), re-audited 2026-06-14
 
@@ -60,10 +61,13 @@ Arguments:
 - `--template <path>` — **required**, no default. The skill passes its own template (see Piece 3). Tests pass a fixture template.
 - `--gitbook-root <path>` — default `.` (the repo the script lives in).
 
+Additional argument: `--descriptors` — the optional trailing parenthetical for the `corpora/README.md` list bullet (e.g. `(text, audio, English, Mandarin)`), passed verbatim; default empty.
+
 Actions, each a no-op if already present (re-running is safe):
 1. **Page**: if `corpora/<slug>` does not exist, render it from `--template`. Template carries the stats-marker block and `{{TITLE}}`, `{{DESCRIPTION}}`, `{{COPYRIGHT}}`, `{{CITATION}}`, `{{ACCESS}}` placeholders. `{{TITLE}}` is substituted from `--title`; the prose placeholders are left in place for the skill to fill.
-2. **Nav**: if no `SUMMARY.md` bullet references `corpora/<slug>`, insert `  * [<nav-label>](the-bank-architecture/corpora/<slug>)` as the **last** item of the Corpora sublist — located as the line immediately before the top-level `* [Developers](...)` bullet. Indentation matches sibling bullets (two spaces).
-3. **Stats map**: if `CSV_TO_MD` has no key `'<FBDir>_corpora_stats.csv'`, insert `    '<FBDir>_corpora_stats.csv': '<slug>',` as the last entry of the dict literal in `update_corpus_stats.py` — on the line immediately before the dict's closing `}`. (The existing dict is *not* sorted; entries were appended, so appending matches the established pattern and is robust.)
+2. **Nav**: if no `SUMMARY.md` bullet references `corpora/<slug>`, insert `  * [<nav-label>](the-bank-architecture/corpora/<slug>)` as the **last** indented sub-bullet of the Corpora sublist. Indentation matches sibling bullets (two spaces).
+3. **Corpus list**: if no bullet in `corpora/README.md` links `(<slug>)`, insert `* [<nav-label>](<slug>) <descriptors>` as the last bullet of the corpus list (the region before that page's `CORPUS STATS START` marker).
+4. **Stats map**: if `CSV_TO_MD` has no key `'<FBDir>_corpora_stats.csv'`, insert `    '<FBDir>_corpora_stats.csv': '<slug>',` as the last entry of the dict literal in `update_corpus_stats.py` — on the line immediately before the dict's closing `}`. (The existing dict is *not* sorted; entries were appended, so appending matches the established pattern and is robust.)
 
 Output: a per-action report (`created` / `already present`) for each of the three points, and a nonzero exit only on hard failure (e.g. template missing, `SUMMARY.md` Developers anchor not found, `CSV_TO_MD` not locatable).
 
@@ -74,15 +78,16 @@ Source of truth for "shipped corpora" = directory names under `--corpora-path` (
 Checks, grouped:
 
 **Integration (gating under `--strict`):**
-- Each shipped corpus (not in the ignore list) has: a stats CSV in `statistics/`, a `CSV_TO_MD` entry, an existing mapped page file, and a `SUMMARY.md` nav entry pointing to that page.
+- Each shipped corpus (not in the ignore list) has: a `CSV_TO_MD` entry, an existing mapped page file, a `SUMMARY.md` nav entry, and a `corpora/README.md` corpus-list bullet pointing to that page.
 - No corpus page contains a leftover `{{…}}` placeholder (a half-filled port).
 
 **Informational (never gating — reported only):**
+- **Missing stats CSV**: a shipped corpus with no `<FBDir>_corpora_stats.csv` in `statistics/`. The CSV is produced by a separate pipeline (`get_corpus_stats.py` → GitBook `statistics/`), absent at port time, so it must not gate the skill's verify step or CI; reported so the gap is visible.
 - **Coming-Soon drift**: a "Coming Soon" line in any `en-us/` page whose text contains a shipped corpus's directory name. Heuristic (matches free prose), so reported but never gates — a stale "Coming Soon" should prompt a human edit, not break CI.
 - **Translation lag (L3)**: corpus pages present in `en-us/the-bank-architecture/corpora/` but absent from the parallel `pwn/` and `zh-TW/` trees, reported as two lists.
 
 Flags:
-- `--strict` — exit nonzero if any *integration* check fails (missing CSV/map/page/nav, or a leftover placeholder). Coming-Soon and translation-lag never affect exit.
+- `--strict` — exit nonzero if any *integration* check fails (missing map/page/nav/README-list entry, or a leftover placeholder). Missing-stats-CSV, Coming-Soon, and translation-lag never affect exit.
 - `--ignore <path>` — path to a checked-in newline-delimited list of `Corpora/` dir names intentionally not published to the GitBook. Default `corpus_pages_ignore.txt` in the GitBook repo root if present. Documented exclusions only; an unlisted missing corpus fails CI.
 - `--corpora-path <path>` — override the FormosanBank `Corpora/` location.
 

@@ -4,7 +4,13 @@
 
 **Goal:** Make porting a corpus also publish its GitBook page, via a reusable `manage_corpus_pages.py` helper (GitBook repo) whose `check` mode doubles as a CI drift lint; then port `Formosan-Nowbucyang-Truku-Thesis` live to exercise it.
 
-**Architecture:** A hybrid helper in the GitBook repo owns the three mechanical integration points (page file, `SUMMARY.md` nav bullet, `CSV_TO_MD` stats-map entry); prose is filled by the `port-corpus-in` skill. The same helper's `check` subcommand is the Layer-1 drift lint and runs in a new GitBook CI workflow. Spec: [docs/superpowers/specs/2026-06-14-gitbook-sync-part-d-design.md](../specs/2026-06-14-gitbook-sync-part-d-design.md).
+**Architecture:** A hybrid helper in the GitBook repo owns the **four** mechanical integration points — (1) the corpus's own page file, (2) the `SUMMARY.md` nav bullet, (3) the corpus-list bullet in `the-bank-architecture/corpora/README.md`, (4) the `CSV_TO_MD` stats-map entry; prose is filled by the `port-corpus-in` skill. The aggregate stats table on `corpora/README.md` and the per-page stats block are auto-populated by `update_corpus_stats.py` once the `CSV_TO_MD` entry and the corpus's stats CSV both exist — no separate edit. The same helper's `check` subcommand is the Layer-1 drift lint and runs in a new GitBook CI workflow. Spec: [docs/superpowers/specs/2026-06-14-gitbook-sync-part-d-design.md](../specs/2026-06-14-gitbook-sync-part-d-design.md).
+
+**The four integration points** (miss any → corpus is silently half-published):
+1. **Page** — `en-us/the-bank-architecture/corpora/<slug>` (has the `CORPUS STATS` markers; per-page stats auto-fill).
+2. **Nav** — an indented sub-bullet in `en-us/SUMMARY.md` linking `the-bank-architecture/corpora/<slug>`.
+3. **Corpus list** — a top-level bullet `* [<label>](<slug>) (<descriptors>)` in `en-us/the-bank-architecture/corpora/README.md`, before its `CORPUS STATS START` marker.
+4. **Stats map** — a `'<FBDir>_corpora_stats.csv': '<slug>',` entry in `CSV_TO_MD` (drives both the per-page stats AND the README aggregate table).
 
 **Tech Stack:** Python 3.13/3.14 stdlib only (argparse, pathlib, re), pytest. Two repos: `FormosanBankGitbook` (helper, tests, CI, ignore-list) and `FormosanBank` (skill template, SKILL.md, roadmap).
 
@@ -127,6 +133,29 @@ SUMMARY_TEMPLATE = """\
   * [Folder structure](the-bank-architecture/developers/folder-structure.md)
 """
 
+CORPORA_README_TEMPLATE = """\
+---
+icon: subtitles
+---
+
+# Corpora
+
+Below is a list of the current corpora:
+
+* [ePark](epark.md) (text, audio, English, Mandarin)
+* [Wikipedias](wikipedias.md) (text)
+
+***
+
+<!-- CORPUS STATS START -->
+### Corpus Statistics
+<!-- CORPUS STATS END -->
+
+### Coming Soon
+
+* Some Future Corpus (Amis)
+"""
+
 UPDATE_STATS_TEMPLATE = '''\
 """Fake update_corpus_stats.py for tests."""
 
@@ -156,6 +185,7 @@ def gitbook(tmp_path):
     # Two existing, fully-wired corpora: ePark, Wikipedias
     (corpora_pages / "epark.md").write_text("# ePark\n\nText.\n", encoding="utf-8")
     (corpora_pages / "wikipedias.md").write_text("# Wikipedias\n\nText.\n", encoding="utf-8")
+    (corpora_pages / "README.md").write_text(CORPORA_README_TEMPLATE, encoding="utf-8")
     (root / "en-us" / "SUMMARY.md").write_text(SUMMARY_TEMPLATE, encoding="utf-8")
     (root / "update_corpus_stats.py").write_text(UPDATE_STATS_TEMPLATE, encoding="utf-8")
     for name in ("ePark", "Wikipedias"):
@@ -183,6 +213,7 @@ def gitbook(tmp_path):
     gb.summary = root / "en-us" / "SUMMARY.md"
     gb.stats_script = root / "update_corpus_stats.py"
     gb.pages = corpora_pages
+    gb.corpora_readme = corpora_pages / "README.md"
     gb.template = Path(__file__).parent / "fixtures" / "corpus_page.template.md"
     return gb
 ```
@@ -265,6 +296,30 @@ def test_insert_csv_to_md_entry_idempotent(gitbook):
     text = gitbook.stats_script.read_text(encoding="utf-8")
     once = mcp.insert_csv_to_md_entry(text, "NewCorpus", "newcorpus.md")
     twice = mcp.insert_csv_to_md_entry(once, "NewCorpus", "newcorpus.md")
+    assert once == twice
+
+
+def test_insert_readme_list_entry_appends_before_stats(gitbook):
+    text = gitbook.corpora_readme.read_text(encoding="utf-8")
+    out = mcp.insert_readme_list_entry(text, "newcorpus.md", "New Corpus", "(text, audio)")
+    lines = out.splitlines()
+    new_idx = next(i for i, l in enumerate(lines) if "](newcorpus.md)" in l)
+    stats_idx = next(i for i, l in enumerate(lines) if "CORPUS STATS START" in l)
+    wiki_idx = next(i for i, l in enumerate(lines) if "](wikipedias.md)" in l)
+    assert lines[new_idx] == "* [New Corpus](newcorpus.md) (text, audio)"
+    assert wiki_idx < new_idx < stats_idx
+
+
+def test_insert_readme_list_entry_no_descriptors(gitbook):
+    text = gitbook.corpora_readme.read_text(encoding="utf-8")
+    out = mcp.insert_readme_list_entry(text, "newcorpus.md", "New Corpus", "")
+    assert "* [New Corpus](newcorpus.md)\n" in out
+
+
+def test_insert_readme_list_entry_idempotent(gitbook):
+    text = gitbook.corpora_readme.read_text(encoding="utf-8")
+    once = mcp.insert_readme_list_entry(text, "newcorpus.md", "New Corpus", "(text)")
+    twice = mcp.insert_readme_list_entry(once, "newcorpus.md", "New Corpus", "(text)")
     assert once == twice
 ```
 
@@ -349,6 +404,34 @@ def insert_csv_to_md_entry(script_text: str, fbdir: str, slug: str) -> str:
         raise ValueError("CSV_TO_MD closing brace not found")
     lines.insert(close, f"    {key}: '{slug}',\n")
     return "".join(lines)
+
+
+def insert_readme_list_entry(readme_text: str, slug: str, label: str,
+                             descriptors: str = "") -> str:
+    """Insert a corpus-list bullet into corpora/README.md before its stats block.
+
+    Bullets look like: `* [ePark](epark.md) (text, audio, English, Mandarin)`.
+    `descriptors` is the optional trailing parenthetical, passed verbatim.
+    Idempotent: if a bullet already links to <slug>, returns unchanged.
+    """
+    if f"]({slug})" in readme_text:
+        return readme_text
+    lines = readme_text.splitlines(keepends=True)
+    # restrict to the region before the stats markers (the list lives above them)
+    stop = next((i for i, l in enumerate(lines) if "CORPUS STATS START" in l), len(lines))
+    last_idx = None
+    for i in range(stop):
+        line = lines[i]
+        if line.lstrip().startswith("*") and "](" in line and ".md)" in line:
+            last_idx = i
+    if last_idx is None:
+        raise ValueError("Could not locate the corpus list in corpora/README.md")
+    suffix = f" {descriptors}" if descriptors else ""
+    entry = f"* [{label}]({slug}){suffix}\n"
+    if not lines[last_idx].endswith("\n"):
+        lines[last_idx] = lines[last_idx] + "\n"
+    lines.insert(last_idx + 1, entry)
+    return "".join(lines)
 ```
 
 - [ ] **Step 4: Run tests to verify they pass**
@@ -358,7 +441,7 @@ Run:
 cd /workspace/FormosanBankGitbook
 .venv/bin/python3 -m pytest tests/test_manage_corpus_pages.py -q 2>&1 | tail -15
 ```
-Expected: 5 passed.
+Expected: 8 passed.
 
 - [ ] **Step 5: Commit**
 
@@ -379,7 +462,7 @@ git commit -m "feat: corpus-page text-transform helpers (render/nav/stats-map)"
 - [ ] **Step 1: Write failing tests** (append to `tests/test_manage_corpus_pages.py`)
 
 ```python
-def test_cmd_add_wires_all_three_points(gitbook):
+def test_cmd_add_wires_all_four_points(gitbook):
     rc = mcp.cmd_add(
         corpus="NewCorpus",
         slug="newcorpus.md",
@@ -387,6 +470,7 @@ def test_cmd_add_wires_all_three_points(gitbook):
         title="New Corpus",
         template=str(gitbook.template),
         gitbook_root=str(gitbook.root),
+        descriptors="(text, audio)",
     )
     assert rc == 0
     page = gitbook.pages / "newcorpus.md"
@@ -394,6 +478,8 @@ def test_cmd_add_wires_all_three_points(gitbook):
     assert "# New Corpus" in page.read_text(encoding="utf-8")
     assert "{{DESCRIPTION}}" in page.read_text(encoding="utf-8")  # prose left
     assert "corpora/newcorpus.md" in gitbook.summary.read_text(encoding="utf-8")
+    readme = gitbook.corpora_readme.read_text(encoding="utf-8")
+    assert "* [New Corpus](newcorpus.md) (text, audio)" in readme
     assert "NewCorpus_corpora_stats.csv" in gitbook.stats_script.read_text(encoding="utf-8")
 
 
@@ -401,14 +487,16 @@ def test_cmd_add_is_idempotent(gitbook):
     kwargs = dict(
         corpus="NewCorpus", slug="newcorpus.md", nav_label="New Corpus",
         title="New Corpus", template=str(gitbook.template),
-        gitbook_root=str(gitbook.root),
+        gitbook_root=str(gitbook.root), descriptors="(text)",
     )
     assert mcp.cmd_add(**kwargs) == 0
     summary_after_1 = gitbook.summary.read_text(encoding="utf-8")
     script_after_1 = gitbook.stats_script.read_text(encoding="utf-8")
+    readme_after_1 = gitbook.corpora_readme.read_text(encoding="utf-8")
     assert mcp.cmd_add(**kwargs) == 0  # second run: clean no-op
     assert gitbook.summary.read_text(encoding="utf-8") == summary_after_1
     assert gitbook.stats_script.read_text(encoding="utf-8") == script_after_1
+    assert gitbook.corpora_readme.read_text(encoding="utf-8") == readme_after_1
 
 
 def test_cmd_add_missing_template_errors(gitbook):
@@ -416,7 +504,7 @@ def test_cmd_add_missing_template_errors(gitbook):
         mcp.cmd_add(
             corpus="NewCorpus", slug="newcorpus.md", nav_label="New Corpus",
             title="New Corpus", template=str(gitbook.root / "nope.md"),
-            gitbook_root=str(gitbook.root),
+            gitbook_root=str(gitbook.root), descriptors="",
         )
 ```
 
@@ -434,15 +522,18 @@ Expected: FAIL — `AttributeError: module 'manage_corpus_pages' has no attribut
 - [ ] **Step 3: Implement `cmd_add`** (append to `manage_corpus_pages.py`, before the CLI section you add in Task 5)
 
 ```python
-def cmd_add(corpus, slug, nav_label, title, template, gitbook_root):
-    """Wire a corpus's three integration points idempotently. Returns 0/exit code."""
+def cmd_add(corpus, slug, nav_label, title, template, gitbook_root, descriptors=""):
+    """Wire a corpus's four integration points idempotently. Returns 0/exit code."""
     root = Path(gitbook_root)
-    page_path = root / "en-us" / "the-bank-architecture" / "corpora" / slug
+    corpora_dir = root / "en-us" / "the-bank-architecture" / "corpora"
+    page_path = corpora_dir / slug
     summary_path = root / "en-us" / "SUMMARY.md"
+    readme_path = corpora_dir / "README.md"
     stats_script = root / "update_corpus_stats.py"
 
     report = []
 
+    # 1. page
     if page_path.exists():
         report.append(("page", "already present"))
     else:
@@ -450,6 +541,7 @@ def cmd_add(corpus, slug, nav_label, title, template, gitbook_root):
         page_path.write_text(render_page(template_text, title), encoding="utf-8")
         report.append(("page", "created"))
 
+    # 2. nav bullet in SUMMARY.md
     summary_text = summary_path.read_text(encoding="utf-8")
     new_summary = insert_nav_entry(summary_text, slug, nav_label)
     if new_summary != summary_text:
@@ -458,6 +550,16 @@ def cmd_add(corpus, slug, nav_label, title, template, gitbook_root):
     else:
         report.append(("nav", "already present"))
 
+    # 3. corpus-list bullet in corpora/README.md
+    readme_text = readme_path.read_text(encoding="utf-8")
+    new_readme = insert_readme_list_entry(readme_text, slug, nav_label, descriptors)
+    if new_readme != readme_text:
+        readme_path.write_text(new_readme, encoding="utf-8")
+        report.append(("readme_list", "created"))
+    else:
+        report.append(("readme_list", "already present"))
+
+    # 4. CSV_TO_MD stats-map entry
     script_text = stats_script.read_text(encoding="utf-8")
     new_script = insert_csv_to_md_entry(script_text, corpus, slug)
     if new_script != script_text:
@@ -513,7 +615,7 @@ def test_check_clean_tree_passes(gitbook):
 
 
 def test_check_detects_missing_integration(gitbook):
-    # ship a third corpus with no page/nav/map/csv
+    # ship a third corpus with no page/nav/map/csv/readme-list
     (gitbook.corpora / "Orphan" / "XML").mkdir(parents=True)
     result = mcp.run_check(
         gitbook_root=str(gitbook.root),
@@ -523,6 +625,33 @@ def test_check_detects_missing_integration(gitbook):
     joined = " ".join(result.integration_issues)
     assert "Orphan" in joined
     assert result.ok is False
+
+
+def test_check_detects_missing_readme_list_entry(gitbook):
+    # Wikipedias is fully wired except its corpora/README.md list bullet
+    text = gitbook.corpora_readme.read_text(encoding="utf-8")
+    text = "\n".join(l for l in text.splitlines() if "](wikipedias.md)" not in l) + "\n"
+    gitbook.corpora_readme.write_text(text, encoding="utf-8")
+    result = mcp.run_check(
+        gitbook_root=str(gitbook.root),
+        corpora_path=str(gitbook.corpora),
+        ignore_path=None,
+    )
+    assert any("Wikipedias" in m and "README" in m for m in result.integration_issues)
+    assert result.ok is False
+
+
+def test_check_missing_stats_csv_is_informational(gitbook):
+    # remove a CSV but leave page/nav/readme-list/map intact
+    (gitbook.root / "statistics" / "Wikipedias_corpora_stats.csv").unlink()
+    result = mcp.run_check(
+        gitbook_root=str(gitbook.root),
+        corpora_path=str(gitbook.corpora),
+        ignore_path=None,
+    )
+    assert any("Wikipedias" in m for m in result.stats_csv_issues)
+    assert all("Wikipedias" not in m for m in result.integration_issues)
+    assert result.ok is True  # stats CSV is synced by a separate pipeline
 
 
 def test_check_ignore_list_suppresses(gitbook, tmp_path):
@@ -580,6 +709,7 @@ from dataclasses import dataclass, field
 class CheckResult:
     integration_issues: list = field(default_factory=list)
     placeholder_issues: list = field(default_factory=list)
+    stats_csv_issues: list = field(default_factory=list)  # informational (separate pipeline)
     coming_soon: list = field(default_factory=list)       # informational
     translation_lag: list = field(default_factory=list)   # informational
 
@@ -631,6 +761,7 @@ def run_check(gitbook_root, corpora_path, ignore_path) -> CheckResult:
     corpora = Path(corpora_path)
     pages_dir = root / "en-us" / "the-bank-architecture" / "corpora"
     summary_text = (root / "en-us" / "SUMMARY.md").read_text(encoding="utf-8")
+    readme_text = (pages_dir / "README.md").read_text(encoding="utf-8")
     csv_to_md = parse_csv_to_md(
         (root / "update_corpus_stats.py").read_text(encoding="utf-8")
     )
@@ -640,14 +771,14 @@ def run_check(gitbook_root, corpora_path, ignore_path) -> CheckResult:
 
     res = CheckResult()
 
-    # 1. integration
+    # 1. integration (gating) + stats-CSV presence (informational)
     for corpus in shipped:
         if corpus in ignore:
             continue
         csv_name = f"{corpus}_corpora_stats.csv"
         if not (statistics / csv_name).exists():
-            res.integration_issues.append(
-                f"{corpus}: no stats CSV ({csv_name}) in statistics/"
+            res.stats_csv_issues.append(
+                f"{corpus}: no stats CSV ({csv_name}) in statistics/ (synced separately)"
             )
         slug = csv_to_md.get(csv_name)
         if slug is None:
@@ -662,6 +793,10 @@ def run_check(gitbook_root, corpora_path, ignore_path) -> CheckResult:
         if f"(the-bank-architecture/corpora/{slug})" not in summary_text:
             res.integration_issues.append(
                 f"{corpus}: no SUMMARY.md nav entry for {slug}"
+            )
+        if f"]({slug})" not in readme_text:
+            res.integration_issues.append(
+                f"{corpus}: no corpora/README.md list entry for {slug}"
             )
 
     # 2. leftover placeholders in any corpus page
@@ -700,7 +835,7 @@ Run:
 cd /workspace/FormosanBankGitbook
 .venv/bin/python3 -m pytest tests/test_manage_corpus_pages.py -k check -q 2>&1 | tail -15
 ```
-Expected: 5 passed.
+Expected: 7 passed.
 
 - [ ] **Step 5: Commit**
 
@@ -768,6 +903,7 @@ def cmd_check(gitbook_root, corpora_path, ignore_path, strict) -> int:
 
     section("Integration issues (gating)", res.integration_issues)
     section("Leftover placeholders (gating)", res.placeholder_issues)
+    section("Missing stats CSVs (informational; synced separately)", res.stats_csv_issues)
     section("Coming-Soon drift (informational)", res.coming_soon)
     section("Translation lag (informational)", res.translation_lag)
 
@@ -785,9 +921,12 @@ def build_parser() -> argparse.ArgumentParser:
     a = sub.add_parser("add", help="scaffold a new corpus page + nav + stats-map entry")
     a.add_argument("--corpus", required=True, help="FormosanBank Corpora/ dir name")
     a.add_argument("--slug", required=True, help="page filename, e.g. my-corpus.md")
-    a.add_argument("--nav-label", required=True, help="label shown in SUMMARY.md")
+    a.add_argument("--nav-label", required=True, help="label shown in SUMMARY.md + README list")
     a.add_argument("--title", required=True, help="page H1")
     a.add_argument("--template", required=True, help="path to the page template")
+    a.add_argument("--descriptors", default="",
+                   help="trailing parenthetical for the README list bullet, "
+                        "e.g. '(text, audio, English, Mandarin)'")
     a.add_argument("--gitbook-root", default=".", help="GitBook repo root")
 
     c = sub.add_parser("check", help="drift lint over shipped corpora")
@@ -807,6 +946,7 @@ def main(argv=None) -> int:
         return cmd_add(
             corpus=args.corpus, slug=args.slug, nav_label=args.nav_label,
             title=args.title, template=args.template, gitbook_root=args.gitbook_root,
+            descriptors=args.descriptors,
         )
     if args.command == "check":
         ignore = args.ignore
@@ -839,7 +979,7 @@ Run:
 cd /workspace/FormosanBankGitbook
 .venv/bin/python3 -m pytest tests/test_manage_corpus_pages.py -q 2>&1 | tail -15
 ```
-Expected: all pass (15 tests).
+Expected: all pass (20 tests).
 
 - [ ] **Step 6: Smoke-test the real CLI against the real repo**
 
@@ -1012,9 +1152,10 @@ In `SKILL.md`, the current `### Phase 5: Summary` becomes `### Phase 6: Summary`
 ### Phase 5: Add to GitBook
 
 Publishing a corpus into `Corpora/` is only half-done until it appears in the
-public GitBook. This phase wires the corpus's three GitBook integration points
-(page, nav entry, stats map) using the GitBook repo's helper, then fills the
-page prose. **Skippable with `--skip-gitbook`** if the operator wants to defer.
+public GitBook. This phase wires the corpus's four GitBook integration points
+(its own page, the `SUMMARY.md` nav entry, the `corpora/README.md` corpus-list
+bullet, and the `CSV_TO_MD` stats map) using the GitBook repo's helper, then fills
+the page prose. **Skippable with `--skip-gitbook`** if the operator wants to defer.
 
 The helper does the mechanical edits; the skill (you) writes the prose. The
 skill makes working-tree edits only — the operator commits and opens the GitBook
@@ -1038,10 +1179,11 @@ PR separately (this skill is **not a git committer**, consistent with Phase 3).
 
 3. **Derive identifiers** and confirm via `AskUserQuestion` (offer defaults, allow override):
    - `slug` — kebab-case of `corpus_name` + `.md` (e.g. `Nowbucyang-Truku-Thesis` → `nowbucyang-truku-thesis.md`).
-   - `nav-label` — human label for the table of contents.
+   - `nav-label` — human label for the table of contents AND the corpus list.
    - `title` — the page H1.
+   - `descriptors` — the trailing parenthetical for the corpus-list bullet, summarizing what the corpus contains, in the style of the existing list (e.g. `(text, audio, English, Mandarin)`, `(audio)`, `(text, glossing, English)`). Derive from the corpus's tiers/audio/translations; confirm with the operator.
 
-4. **Scaffold the three integration points** with the helper, passing the skill's template:
+4. **Scaffold the four integration points** with the helper, passing the skill's template:
    ```bash
    <python> <gitbook_path>/manage_corpus_pages.py add \
      --gitbook-root "<gitbook_path>" \
@@ -1049,9 +1191,10 @@ PR separately (this skill is **not a git committer**, consistent with Phase 3).
      --slug "<slug>" \
      --nav-label "<nav-label>" \
      --title "<title>" \
+     --descriptors "<descriptors>" \
      --template "<formosanbank_path>/.claude/skills/port-corpus-in/corpus_page.template.md"
    ```
-   (`<python>` resolved as in Phase 4.)
+   This wires: the page, the `SUMMARY.md` nav bullet, the `corpora/README.md` corpus-list bullet, and the `CSV_TO_MD` stats-map entry. (`<python>` resolved as in Phase 4.)
 
 5. **Fill the prose placeholders** in `<gitbook_path>/en-us/the-bank-architecture/corpora/<slug>`,
    reading the corpus README + QC summary:
@@ -1068,10 +1211,14 @@ PR separately (this skill is **not a git committer**, consistent with Phase 3).
      --corpora-path "<formosanbank_path>/Corpora" \
      --strict
    ```
-   A leftover `{{...}}` placeholder or a missing integration point fails this — fix
-   before declaring the phase done. (The new corpus's stats CSV may not yet exist in
-   the GitBook's `statistics/`; if `check` flags only that, note it as a known
-   follow-up — stats CSVs are synced separately by the corpus-metrics pipeline.)
+   A leftover `{{...}}` placeholder or a missing integration point (page / nav / README
+   list / stats-map) fails this — fix before declaring the phase done. The new corpus's
+   stats CSV will **not** yet exist in the GitBook's `statistics/`; `check` reports that
+   as an **informational** "Missing stats CSV" line (it does not gate). That is expected:
+   the per-page stats block and the `corpora/README.md` aggregate table stay empty until
+   the corpus-metrics pipeline generates `<corpus_name>_corpora_stats.csv` and it is
+   synced into the GitBook, after which `update_corpus_stats.py` fills both. Note this in
+   the Phase 6 summary as a known follow-up; do not block the port on it.
 ```
 
 - [ ] **Step 2: Update the Phase 5 → Phase 6 heading and the Phase 5 summary body**
@@ -1185,6 +1332,7 @@ Surface both diffs to the operator. Per the skill, the operator commits and open
 ## Self-review notes
 
 - **Spec coverage:** Piece 1 → Tasks 2–6; Piece 2 (skill Phase 5) → Tasks 7–8; Piece 3 (template/CI/tests) → Tasks 1, 6, 7; roadmap update → Task 9; live port → Task 10; keep-repos-separate recommendation is documentation-only (no task). Design-only layers (L0/L2/L4, L1 stats sync) intentionally have no build task.
+- **Four integration points:** (1) page, (2) `SUMMARY.md` nav bullet, (3) `corpora/README.md` corpus-list bullet, (4) `CSV_TO_MD` stats-map entry. The `corpora/README.md` aggregate stats table + per-page stats block auto-populate from point 4's CSV — no separate edit.
 - **Dict name:** `CSV_TO_MD` (verified in `update_corpus_stats.py`), values are bare `.md` filenames; entries appended before the closing brace (dict is not sorted).
-- **Function names used consistently:** `render_page`, `insert_nav_entry`, `insert_csv_to_md_entry`, `cmd_add`, `run_check`, `cmd_check`, `find_shipped_corpora`, `load_ignore`, `parse_csv_to_md`, `CheckResult`.
-- **Gating:** only `integration_issues` + `placeholder_issues` affect `CheckResult.ok` / `--strict` exit; coming-soon + translation-lag are informational.
+- **Function names used consistently:** `render_page`, `insert_nav_entry`, `insert_readme_list_entry`, `insert_csv_to_md_entry`, `cmd_add` (takes `descriptors`), `run_check`, `cmd_check`, `find_shipped_corpora`, `load_ignore`, `parse_csv_to_md`, `CheckResult`.
+- **Gating:** only `integration_issues` (map/page/nav/README-list) + `placeholder_issues` affect `CheckResult.ok` / `--strict` exit. `stats_csv_issues`, `coming_soon`, and `translation_lag` are informational (a fresh port legitimately lacks its stats CSV until the metrics pipeline syncs it).
