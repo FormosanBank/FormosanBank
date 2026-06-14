@@ -285,3 +285,13 @@ A sentence is expanded only when **all** hold: exactly one word has `/` in its F
    - **Word-level alternation with a garbled morpheme tier** (e.g. Rukai `20200528-FW-Yongfu_S_7`, `ma-lrigi/ma-elre-elrenge/ma-adraw` = smart/tall/big): the parser split on `-` and `/` together, so the morphemes are nonsense (`lrigi/ma`, `elrenge/ma`) and the word-level `/`-count (3) disagrees with the morpheme N (2). Re-segmenting would mean inventing morphemes (the zh gloss isn't even `-`-segmented), so it is not auto-expanded.
    - **Trailing/empty-alternative slashes** (~36, mostly Bunun `63`): a stray `/` with an empty second alternative (`bunbun?/`, `ha?/`), not a real alternation — a cleanup, not an expansion.
    - **W/M-only alternation** (3: `si/la`, `ngu/mu-a-ta-tulru`) where the S FORM already collapsed to one alternative, and **slash+paren mixes** (1: `ngu-/mu-(a-)drusa`).
+
+* **17. Strip stray trailing slashes**
+
+A run of Bunun `63` records ends a word with a slash and an empty second alternative — `bunbun?/`, `ha?/`, `mai-babu=tan?/` — where the `?` is sentence-final punctuation kept on the last word and the `/` is a transcription artifact, not an alternation (the matching glosses carry no slash; the S-level FORM never has the stray slash). This step removes trailing `/` from W/M FORM/PHON only:
+
+```bash
+    python CodeAndDocs/scripts/strip_trailing_slash.py
+```
+
+A genuine alternation has `/` *between* forms, never at the end, so real `a/b` forms (step 16) are untouched. 36 words (144 FORM elements across W/M × both tiers); V121 drops by 144 (to 884). Round-trip guard; idempotent.
