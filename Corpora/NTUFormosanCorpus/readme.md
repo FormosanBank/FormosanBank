@@ -270,3 +270,18 @@ A sentence is split only when **all** hold: (1) its FORM has a parenthesis; (2) 
    - **Only the optional word's parens are touched.** Unrelated parenthetical *gloss* annotations elsewhere in the same sentence — an optional gloss particle such as `去(了)`, `song(sing)`, or `(OBL)` — are preserved verbatim in both readings (those are V122 SOFT, not V121, and carry meaning). PHON needs no orthography mapping: removing parentheses never changes a letter.
    - **Duplication of pre-existing findings**: the with-optional reading is a near-copy, so any pre-existing validator finding in a split sentence is inherited by its `-opt` twin. This accounts for, and is confined to, the small post-step increases (V066 +40, V017/V073 +4 from one sentence's empty-M shells, V060 +3, V061 +2) — all in `-opt` ids, no new defect types.
    - Not handled (left for manual review): sentences with parentheses embedded in or split across words, or whose parenthetical word lacks a parenthesized gloss (133 split/intra-word + 61 gloss-mismatch candidates). Byte-identical round-trip guard; idempotent (the outputs contain no FORM parens to re-split).
+
+* **16. Expand slash alternatives into one sentence per alternative**
+
+The source sometimes records several acceptable forms of a word separated by `/` (in the word/morpheme FORM and the also-slashed gloss) while the free translation lists none. The slash scope is the *morpheme*: in `pua/mua/mu-lebe` (gloss `放/去/去-下` / `put/go/go-down`) only M1 (`pua/mua/mu`) alternates and M2 (`lebe`) is shared, so the readings are `pua-lebe` / `mua-lebe` / `mu-lebe` — not the naive split `pua` / `mua` / `mu-lebe`. Slashes are forbidden in W/M FORMs (validate_text V121 HARD). This step materializes each alternative as its own sentence:
+
+```bash
+    python CodeAndDocs/scripts/expand_slash_alternatives.py
+```
+
+A sentence is expanded only when **all** hold: exactly one word has `/` in its FORM and is `<M>`-segmented; every morpheme's FORM/PHON tiers and glosses split into 1 (shared) or the same N≥2 (alternation); the **word-level FORM splits into exactly N** (this rejects word-level alternation the parser mis-segmented at the morpheme tier — see below); each morpheme group occurs verbatim in the word- and sentence-level FORM/PHON; and the free translation has no `/`. The original element becomes alternative 1; alternatives 2..N are inserted after it with id suffix `-alt2`..`-altN`. Each reading takes its morpheme pieces, and the word/sentence FORM/PHON/gloss are rebuilt by replacing each morpheme group in place (preserving the word's own `-`/`=` separators), so no slash remains. PHON needs no mapping (choosing an alternative changes no letter). AUDIO stays on alternative 1, removed from the rest (no clean slash sentence currently has audio). Round-trip guard; idempotent. Currently expands 1 sentence (Rukai `20200529-FW-Ken-1_S_6`, N=3); V121 drops by 4.
+
+**Not handled — other slash families (left for manual review)**
+   - **Word-level alternation with a garbled morpheme tier** (e.g. Rukai `20200528-FW-Yongfu_S_7`, `ma-lrigi/ma-elre-elrenge/ma-adraw` = smart/tall/big): the parser split on `-` and `/` together, so the morphemes are nonsense (`lrigi/ma`, `elrenge/ma`) and the word-level `/`-count (3) disagrees with the morpheme N (2). Re-segmenting would mean inventing morphemes (the zh gloss isn't even `-`-segmented), so it is not auto-expanded.
+   - **Trailing/empty-alternative slashes** (~36, mostly Bunun `63`): a stray `/` with an empty second alternative (`bunbun?/`, `ha?/`), not a real alternation — a cleanup, not an expansion.
+   - **W/M-only alternation** (3: `si/la`, `ngu/mu-a-ta-tulru`) where the S FORM already collapsed to one alternative, and **slash+paren mixes** (1: `ngu-/mu-(a-)drusa`).
