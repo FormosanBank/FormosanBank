@@ -305,3 +305,15 @@ A few words list several *complete* alternative words separated by `/`, each its
 ```
 
 Because these cases need per-sentence judgement, each is described in the script's `CONFIG` rather than inferred; the `/`-split, `-` re-segmentation, and PHON (from the word's own slashed PHON, no mapping) are mechanical. Two judgement points for S_7, both recorded in `CONFIG`: (a) the published free translation was **truncated** to the first alternative (source `free` is "Laucu is smart/tall/big"), so each reading's translation is restored from source — the zh `很` is taken to distribute (`Laucu很聰明/很高/很大`); (b) the source wrote `狀態.實現.聰明` with a `.` where the morpheme boundary `-` belongs (cf. the sibling `狀態.實現-大`), repaired so STAT.RLS/be.smart align. The original becomes alternative 1; alternatives 2..N follow with id suffix `-alt2`..`-altN`; mis-segmented morphemes are rebuilt from each alternative's own tiers; AUDIO stays on alternative 1. Expands 1 sentence (S_7 → 3); V121 drops by 6; the readings are clean under validate_glosses. Round-trip guard; idempotent.
+
+* **19. Collapse gloss-only slash alternations**
+
+For a few words the source's running sentence used a single form, but the word's lexical gloss row recorded an alternative with `/` — e.g. Rukai `20200531-FW-Yongfu-2_S_9` says `si` ("and") in the sentence while the gloss row is `si/la` (`and/then`). (Confirmed against the source JSON `ori` field, which carries one form for all three of these.) These must **not** be expanded — the alternative utterance was never made — so this step collapses the word to the alternative that actually appears in the sentence:
+
+```bash
+    python CodeAndDocs/scripts/collapse_gloss_only_alternations.py
+```
+
+A word is collapsed only if: exactly one slash-word with `<M>` segmentation and no parenthesis (slash+paren mixes left for manual); every morpheme tier/gloss splits into 1 or the same N≥2; the free translation has no `/`; and exactly one alternative's reconstructed surface (dashes/clitics removed) matches a whitespace token of the S-level FORM — the uttered form (0 or >1 ⇒ ambiguous, left for manual). The uttered alternative is kept across all tiers; the dropped alternative form(s) and glosses are recorded in a `notes` attribute on the word's original FORM. The S-level FORM/PHON are already collapsed and untouched. Collapses 3 words (`si/la` ×2, `ngu/mu-a-ta-tulru`); V121 drops by 12 (to 866). Round-trip guard; idempotent.
+
+   - **Still open in V121** after steps 15–19: the slash+paren mix `ngu-/mu-(a-)drusa` (1), plus the parenthesis families from step 15's "not handled" note. These need manual review.
