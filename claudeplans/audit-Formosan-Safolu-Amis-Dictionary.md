@@ -1,10 +1,10 @@
-# Audit: Formosan-Amis-Moedict (→ split into Formosan-Amis-Moedict + Formosan-Poinsot)
+# Audit: Formosan-Safolu-Amis-Dictionary (formerly Formosan-Amis-Moedict) — Safolu kept, Poinsot split out
 
-**Date:** 2026-06-12
+**Date:** 2026-06-12 (updated 2026-06-14)
 **Auditor:** Claude (audit-dev-repo skill), with maintainer (Joshua Hartshorne) sign-off at each step.
-**Dev repo audited:** `/workspace/Formosan-Amis-Moedict` (Amis; g0v Amis Moedict).
+**Dev repo audited:** `Formosan-Amis-Moedict`, since renamed to **`Formosan-Safolu-Amis-Dictionary`** (Amis; g0v Amis Moedict `docs/s`).
 **Outcome:** audit → remediation. Safolu fixed in place; Poinsot split into a new
-dedicated repo `/workspace/Formosan-Poinsot`.
+dedicated repo `/workspace/Formosan-Poinsot-Amis-Dictionary`.
 
 ## What the repo did (as audited)
 
@@ -76,7 +76,7 @@ recovered/added rows.
 
 ## Remediation performed (with maintainer sign-off)
 
-### Safolu (`Formosan-Amis-Moedict`, fixed in place)
+### Safolu (`Formosan-Safolu-Amis-Dictionary`, fixed in place)
 - Generalized annotation stripping → fixes the **14** mis-split rows.
 - Added high-precision embedded-note recovery → **+32** clean rows.
 - Stopped rejecting FORM-only rows → **+447** valid Amis sentences.
@@ -86,7 +86,7 @@ recovered/added rows.
   (build + audit + Makefile) so `make` reproduces the committed layout; relaxed the
   repo's own validator to allow FORM-only `S`.
 
-### Poinsot (split into new repo `Formosan-Poinsot`)
+### Poinsot (split into new repo `Formosan-Poinsot-Amis-Dictionary`)
 - Extended parsing to all 353 pages → **36** examples; added a separate
   **`amis_poinsot_lexicon.xml`** (144 headword→French entries) with quality guards
   that route reflowed-page debris to a rejected audit instead of the XML.
@@ -105,6 +105,23 @@ recovered/added rows.
    the scans before publishing, or publish the clean 4-page subset first.
 
 ## Status of changes
-- `Formosan-Poinsot`: created and committed (initial commit).
-- `Formosan-Amis-Moedict`: changes made on `main` but **left uncommitted** for
-  maintainer review (notably the Safolu data regeneration).
+- `Formosan-Safolu-Amis-Dictionary` (renamed from `Formosan-Amis-Moedict`):
+  remediation committed and pushed; the GitHub repo was renamed accordingly.
+- `Formosan-Poinsot-Amis-Dictionary`: created, committed, and pushed to FormosanBank/Formosan-Poinsot-Amis-Dictionary.
+
+## Update — 2026-06-14 (post-audit work)
+- **CJK-in-FORM cleanup** (the source packed `Amis 中文` content into the form
+  slot): single-glued pairs and `；`-separated lists are split into one `S` per
+  pair; unsplittable/pure-Chinese fields rejected; a straddling `（…）` annotation
+  and orphaned leading `)` repaired. New totals: **49,400 sentences / 44 rejected**
+  (all 49,419 source fields accounted at the source-field level).
+- **Stable source-ordinal IDs** for Safolu (and page+line IDs for Poinsot) so
+  regenerations diff cleanly instead of renumbering every row.
+- **QC pipeline run** on Safolu (Ortho113): `clean_xml → standardize --copy →
+  clean_xml → add_phonology`, wired as `make qc` + documented in the README. Adds
+  the standard tier + IPA `PHON`. `validate_xml` clean; `validate_text` 0 HARD.
+- **Perf fix (FormosanBank tool):** `QC/utilities/add_phonology.py` was O(n²)
+  (re-scanned the whole tree per FORM); replaced with a one-time parent map
+  (~33 min → ~1 s on 49k sentences).
+- `Tsai, Chung-Han (Safolu Kacaw Lalanges)` corrected to a single author in the
+  citation/BibTeX.
