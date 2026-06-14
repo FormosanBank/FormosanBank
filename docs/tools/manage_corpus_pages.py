@@ -146,3 +146,129 @@ def cmd_add(corpus, slug, nav_label, title, template, gitbook_root, descriptors=
     for name, status in report:
         print(f"  {name}: {status}")
     return 0
+
+
+from dataclasses import dataclass, field
+
+
+@dataclass
+class CheckResult:
+    integration_issues: list = field(default_factory=list)
+    placeholder_issues: list = field(default_factory=list)
+    stats_csv_issues: list = field(default_factory=list)  # informational (separate pipeline)
+    coming_soon: list = field(default_factory=list)       # informational
+    translation_lag: list = field(default_factory=list)   # informational
+
+    @property
+    def ok(self) -> bool:
+        # only integration + placeholders gate
+        return not self.integration_issues and not self.placeholder_issues
+
+
+def find_shipped_corpora(corpora_path: Path) -> list:
+    return sorted(
+        d.name for d in corpora_path.iterdir()
+        if d.is_dir() and (d / "XML").is_dir()
+    )
+
+
+def load_ignore(ignore_path) -> set:
+    if not ignore_path:
+        return set()
+    p = Path(ignore_path)
+    if not p.exists():
+        return set()
+    out = set()
+    for line in p.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if line and not line.startswith("#"):
+            out.add(line)
+    return out
+
+
+def parse_csv_to_md(script_text: str) -> dict:
+    result = {}
+    in_dict = False
+    for line in script_text.splitlines():
+        if line.startswith("CSV_TO_MD"):
+            in_dict = True
+            continue
+        if in_dict and line.rstrip() == "}":
+            break
+        if in_dict:
+            m = re.search(r"'([^']+)'\s*:\s*'([^']+)'", line)
+            if m:
+                result[m.group(1)] = m.group(2)
+    return result
+
+
+def run_check(gitbook_root, corpora_path, ignore_path) -> CheckResult:
+    root = Path(gitbook_root)
+    corpora = Path(corpora_path)
+    pages_dir = root / "en-us" / "the-bank-architecture" / "corpora"
+    summary_text = (root / "en-us" / "SUMMARY.md").read_text(encoding="utf-8")
+    readme_text = (pages_dir / "README.md").read_text(encoding="utf-8")
+    csv_to_md = parse_csv_to_md(
+        (root / "update_corpus_stats.py").read_text(encoding="utf-8")
+    )
+    ignore = load_ignore(ignore_path)
+    statistics = root / "statistics"
+    shipped = find_shipped_corpora(corpora)
+
+    res = CheckResult()
+
+    # 1. integration (gating) + stats-CSV presence (informational)
+    for corpus in shipped:
+        if corpus in ignore:
+            continue
+        csv_name = f"{corpus}_corpora_stats.csv"
+        if not (statistics / csv_name).exists():
+            res.stats_csv_issues.append(
+                f"{corpus}: no stats CSV ({csv_name}) in statistics/ (synced separately)"
+            )
+        slug = csv_to_md.get(csv_name)
+        if slug is None:
+            res.integration_issues.append(
+                f"{corpus}: no CSV_TO_MD entry for {csv_name}"
+            )
+            continue
+        if not (pages_dir / slug).exists():
+            res.integration_issues.append(
+                f"{corpus}: mapped page {slug} does not exist"
+            )
+        if f"(the-bank-architecture/corpora/{slug})" not in summary_text:
+            res.integration_issues.append(
+                f"{corpus}: no SUMMARY.md nav entry for {slug}"
+            )
+        if f"]({slug})" not in readme_text:
+            res.integration_issues.append(
+                f"{corpus}: no corpora/README.md list entry for {slug}"
+            )
+
+    # 2. leftover placeholders in any corpus page
+    for page in sorted(pages_dir.glob("*.md")):
+        if PLACEHOLDER_RE.search(page.read_text(encoding="utf-8")):
+            res.placeholder_issues.append(
+                f"{page.name}: contains a leftover {{...}} placeholder"
+            )
+
+    # 3. coming-soon drift (informational)
+    shipped_set = set(shipped)
+    for md in sorted((root / "en-us").rglob("*.md")):
+        for line in md.read_text(encoding="utf-8").splitlines():
+            if "Coming Soon" in line:
+                for corpus in shipped_set:
+                    if corpus in line:
+                        res.coming_soon.append(
+                            f"{md.relative_to(root)}: 'Coming Soon' names shipped '{corpus}'"
+                        )
+
+    # 4. translation lag (informational): en-us pages missing from pwn / zh-TW
+    en_pages = {p.name for p in pages_dir.glob("*.md")} - {"README.md"}
+    for lang in ("pwn", "zh-TW"):
+        lang_dir = root / lang / "the-bank-architecture" / "corpora"
+        lang_pages = {p.name for p in lang_dir.glob("*.md")} if lang_dir.is_dir() else set()
+        for missing in sorted(en_pages - lang_pages):
+            res.translation_lag.append(f"{lang}: missing {missing}")
+
+    return res

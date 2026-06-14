@@ -121,3 +121,97 @@ def test_cmd_add_missing_template_errors(gitbook):
             title="New Corpus", template=str(gitbook.root / "nope.md"),
             gitbook_root=str(gitbook.root), descriptors="",
         )
+
+
+def test_check_clean_tree_passes(gitbook):
+    result = mcp.run_check(
+        gitbook_root=str(gitbook.root),
+        corpora_path=str(gitbook.corpora),
+        ignore_path=None,
+    )
+    assert result.integration_issues == []
+    assert result.placeholder_issues == []
+    # wikipedias present in en-us but missing from pwn + zh-TW -> lag (informational)
+    assert any("wikipedias.md" in m for m in result.translation_lag)
+    assert result.ok is True  # ok ignores informational lag
+
+
+def test_check_detects_missing_integration(gitbook):
+    # ship a third corpus with no page/nav/map/csv/readme-list
+    (gitbook.corpora / "Orphan" / "XML").mkdir(parents=True)
+    result = mcp.run_check(
+        gitbook_root=str(gitbook.root),
+        corpora_path=str(gitbook.corpora),
+        ignore_path=None,
+    )
+    joined = " ".join(result.integration_issues)
+    assert "Orphan" in joined
+    assert result.ok is False
+
+
+def test_check_detects_missing_readme_list_entry(gitbook):
+    # Wikipedias is fully wired except its corpora/README.md list bullet
+    text = gitbook.corpora_readme.read_text(encoding="utf-8")
+    text = "\n".join(l for l in text.splitlines() if "](wikipedias.md)" not in l) + "\n"
+    gitbook.corpora_readme.write_text(text, encoding="utf-8")
+    result = mcp.run_check(
+        gitbook_root=str(gitbook.root),
+        corpora_path=str(gitbook.corpora),
+        ignore_path=None,
+    )
+    assert any("Wikipedias" in m and "README" in m for m in result.integration_issues)
+    assert result.ok is False
+
+
+def test_check_missing_stats_csv_is_informational(gitbook):
+    # remove a CSV but leave page/nav/readme-list/map intact
+    (gitbook.root / "statistics" / "Wikipedias_corpora_stats.csv").unlink()
+    result = mcp.run_check(
+        gitbook_root=str(gitbook.root),
+        corpora_path=str(gitbook.corpora),
+        ignore_path=None,
+    )
+    assert any("Wikipedias" in m for m in result.stats_csv_issues)
+    assert all("Wikipedias" not in m for m in result.integration_issues)
+    assert result.ok is True  # stats CSV is synced by a separate pipeline
+
+
+def test_check_ignore_list_suppresses(gitbook, tmp_path):
+    (gitbook.corpora / "Orphan" / "XML").mkdir(parents=True)
+    ignore = tmp_path / "ignore.txt"
+    ignore.write_text("# intentional\nOrphan\n", encoding="utf-8")
+    result = mcp.run_check(
+        gitbook_root=str(gitbook.root),
+        corpora_path=str(gitbook.corpora),
+        ignore_path=str(ignore),
+    )
+    assert all("Orphan" not in m for m in result.integration_issues)
+    assert result.ok is True
+
+
+def test_check_detects_leftover_placeholder(gitbook):
+    (gitbook.pages / "epark.md").write_text("# ePark\n\n{{DESCRIPTION}}\n", encoding="utf-8")
+    result = mcp.run_check(
+        gitbook_root=str(gitbook.root),
+        corpora_path=str(gitbook.corpora),
+        ignore_path=None,
+    )
+    assert any("epark.md" in m for m in result.placeholder_issues)
+    assert result.ok is False
+
+
+def test_check_coming_soon_is_informational_not_gating(gitbook):
+    # Append a Coming-Soon line naming a shipped corpus without disturbing the
+    # README's existing corpus-list bullets (those are a gating integration point).
+    readme = gitbook.root / "en-us" / "the-bank-architecture" / "corpora" / "README.md"
+    readme.write_text(
+        readme.read_text(encoding="utf-8") + "\nComing Soon: Wikipedias is on the way.\n",
+        encoding="utf-8",
+    )
+    result = mcp.run_check(
+        gitbook_root=str(gitbook.root),
+        corpora_path=str(gitbook.corpora),
+        ignore_path=None,
+    )
+    assert any("Wikipedias" in m for m in result.coming_soon)
+    assert result.ok is True  # coming-soon never gates
