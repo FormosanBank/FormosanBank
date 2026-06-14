@@ -26,6 +26,7 @@ Welcome to the FormosanBank Corpora section! Here, you’ll find comprehensive d
 * [Wilang Yutas Videos](WilangYutasVideos.md) (text, Mandarin, audio)
 * [Tang Recordings of Taroko](TangRecordingsOfTaroko.md) (audio)
 * [NTU Corpus of Formosan Languages](NTUFormosanCorpus.md) (text, audio, glossing)
+* [Truku Word Formation (Hsu Thesis)](nowbucyang-truku-thesis.md) (text, glossing, Mandarin)
 
 ***
 
