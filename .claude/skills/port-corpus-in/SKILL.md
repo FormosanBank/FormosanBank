@@ -15,6 +15,7 @@ Move a QC'd corpus from a development repo into FormosanBank with the standard p
 - `corpus_name` — name for the published version. Default: derive from source by stripping `Formosan-` prefix. User can override.
 - `formosanbank_path` — default sibling `../FormosanBank/` relative to source.
 - `assume_qc_passed` — default `false`. If `false` and no recent QC summary is found, refuse or ask.
+- `skip_gitbook` — default `false`. If `true`, Phase 5 (Add to GitBook) is skipped and the operator publishes the GitBook page later.
 
 ## Pre-checks
 
@@ -144,13 +145,86 @@ print("OK: no private content leaked.")
 EOF
 ```
 
-### Phase 5: Summary
+### Phase 5: Add to GitBook
+
+Publishing a corpus into `Corpora/` is only half-done until it appears in the
+public GitBook. This phase wires the corpus's four GitBook integration points
+(its own page, the `SUMMARY.md` nav entry, the `corpora/README.md` corpus-list
+bullet, and the `CSV_TO_MD` stats map) using the GitBook repo's helper, then fills
+the page prose. **Skippable with `--skip-gitbook`** if the operator wants to defer.
+
+The helper does the mechanical edits; the skill (you) writes the prose. The
+skill makes working-tree edits only — the operator commits and opens the GitBook
+PR separately (this skill is **not a git committer**, consistent with Phase 3).
+
+1. **Locate the GitBook repo.** Default sibling `<formosanbank_path>/../FormosanBankGitbook`.
+   If absent, ask the operator for the path or offer to skip this phase.
+
+2. **Resolve the publish branch (Roadmap Part D / Layer 0 is unresolved).** Report
+   the current divergence so the operator can choose:
+   ```bash
+   cd <gitbook_path>
+   git fetch --quiet
+   echo "main ahead of en-us by: $(git rev-list --count origin/en-us..main 2>/dev/null || echo '?')"
+   echo "en-us ahead of main by: $(git rev-list --count main..origin/en-us 2>/dev/null || echo '?')"
+   ```
+   Then `AskUserQuestion`: "Which branch does GitBook publish from? I'll make the
+   page edits on a fresh feature branch off it." Check out / create a feature
+   branch off the operator's choice in the GitBook working tree. Do NOT hardcode
+   a branch.
+
+3. **Derive identifiers** and confirm via `AskUserQuestion` (offer defaults, allow override):
+   - `slug` — kebab-case of `corpus_name` + `.md` (e.g. `Nowbucyang-Truku-Thesis` → `nowbucyang-truku-thesis.md`).
+   - `nav-label` — human label for the table of contents AND the corpus list.
+   - `title` — the page H1.
+   - `descriptors` — the trailing parenthetical for the corpus-list bullet, summarizing what the corpus contains, in the style of the existing list (e.g. `(text, audio, English, Mandarin)`, `(audio)`, `(text, glossing, English)`). Derive from the corpus's tiers/audio/translations; confirm with the operator.
+
+4. **Scaffold the four integration points** with the helper, passing the skill's template:
+   ```bash
+   <python> <gitbook_path>/manage_corpus_pages.py add \
+     --gitbook-root "<gitbook_path>" \
+     --corpus "<corpus_name>" \
+     --slug "<slug>" \
+     --nav-label "<nav-label>" \
+     --title "<title>" \
+     --descriptors "<descriptors>" \
+     --template "<formosanbank_path>/.claude/skills/port-corpus-in/corpus_page.template.md"
+   ```
+   This wires: the page, the `SUMMARY.md` nav bullet, the `corpora/README.md` corpus-list bullet, and the `CSV_TO_MD` stats-map entry. (`<python>` resolved as in Phase 4.)
+
+5. **Fill the prose placeholders** in `<gitbook_path>/en-us/the-bank-architecture/corpora/<slug>`,
+   reading the corpus README + QC summary:
+   - `{{DESCRIPTION}}` — 1–3 sentences on what the corpus is and where it came from.
+   - `{{COPYRIGHT}}` — the license/copyright line (e.g. `CC BY-NC`).
+   - `{{CITATION}}` — APA-style citation(s); multiple separated by `|` per the XML format conventions.
+   - `{{ACCESS}}` — the standard access line:
+     `* The repo containing this corpus in FormosanBank as well as the code to reconstruct the corpus can be found [here](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/<corpus_name>).`
+
+6. **Verify the page is fully wired and placeholder-free:**
+   ```bash
+   <python> <gitbook_path>/manage_corpus_pages.py check \
+     --gitbook-root "<gitbook_path>" \
+     --corpora-path "<formosanbank_path>/Corpora" \
+     --strict
+   ```
+   A leftover `{{...}}` placeholder or a missing integration point (page / nav / README
+   list / stats-map) fails this — fix before declaring the phase done. The new corpus's
+   stats CSV will **not** yet exist in the GitBook's `statistics/`; `check` reports that
+   as an **informational** "Missing stats CSV" line (it does not gate). That is expected:
+   the per-page stats block and the `corpora/README.md` aggregate table stay empty until
+   the corpus-metrics pipeline generates `<corpus_name>_corpora_stats.csv` and it is
+   synced into the GitBook, after which `update_corpus_stats.py` fills both. Note this in
+   the Phase 6 summary as a known follow-up; do not block the port on it.
+
+### Phase 6: Summary
 
 Print:
 - What was created (paths)
 - What was dropped (paths)
 - DTD validation result
 - Spot-check results
+- GitBook page: <path>
+- "GitBook page created on branch <chosen>; commit and open the GitBook PR separately."
 - Open items, e.g.:
   - "README is a stub — please flesh out the {{REPRODUCIBILITY_STEPS}} section before opening a PR"
   - "DTD validation failed on N files — investigate before opening PR"
