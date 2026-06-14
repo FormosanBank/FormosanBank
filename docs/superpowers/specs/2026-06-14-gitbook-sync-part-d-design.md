@@ -20,7 +20,7 @@ The English GitBook (`FormosanBankGitbook/en-us/`) renders one page per corpus u
 
 1. **Page** — `en-us/the-bank-architecture/corpora/<slug>.md`, containing a `<!-- CORPUS STATS START -->` / `<!-- CORPUS STATS END -->` marker block, prose (description, copyright, citation, access link), nothing else load-bearing.
 2. **Nav entry** — a bullet under the `## The Bank Architecture` → Corpora sublist in `en-us/SUMMARY.md`.
-3. **Stats map** — an entry in the hardcoded `STATS_FILE_MAP` dict in `FormosanBankGitbook/update_corpus_stats.py`, mapping `<FBDir>_corpora_stats.csv` → `<slug>.md`. Without it, `update_corpus_stats.py` never injects the stats table into the page.
+3. **Stats map** — an entry in the hardcoded `CSV_TO_MD` dict in `FormosanBankGitbook/update_corpus_stats.py`, mapping `<FBDir>_corpora_stats.csv` → `<slug>.md`. Without it, `update_corpus_stats.py` never injects the stats table into the page.
 
 `update_corpus_stats.py` reads stats CSVs from `FormosanBankGitbook/statistics/` (themselves produced upstream by `FormosanBank/QC/utilities/get_corpus_stats.py`) and injects a per-language table between the markers.
 
@@ -63,9 +63,9 @@ Arguments:
 Actions, each a no-op if already present (re-running is safe):
 1. **Page**: if `corpora/<slug>` does not exist, render it from `--template`. Template carries the stats-marker block and `{{TITLE}}`, `{{DESCRIPTION}}`, `{{COPYRIGHT}}`, `{{CITATION}}`, `{{ACCESS}}` placeholders. `{{TITLE}}` is substituted from `--title`; the prose placeholders are left in place for the skill to fill.
 2. **Nav**: if no `SUMMARY.md` bullet references `corpora/<slug>`, insert `  * [<nav-label>](the-bank-architecture/corpora/<slug>)` as the **last** item of the Corpora sublist — located as the line immediately before the top-level `* [Developers](...)` bullet. Indentation matches sibling bullets (two spaces).
-3. **Stats map**: if `STATS_FILE_MAP` has no key `'<FBDir>_corpora_stats.csv'`, insert `    '<FBDir>_corpora_stats.csv': '<slug>',` into the dict literal in `update_corpus_stats.py`, placed alphabetically among existing keys. Implemented by locating the dict's line range and the correct insertion line; preserve existing formatting/quote style.
+3. **Stats map**: if `CSV_TO_MD` has no key `'<FBDir>_corpora_stats.csv'`, insert `    '<FBDir>_corpora_stats.csv': '<slug>',` as the last entry of the dict literal in `update_corpus_stats.py` — on the line immediately before the dict's closing `}`. (The existing dict is *not* sorted; entries were appended, so appending matches the established pattern and is robust.)
 
-Output: a per-action report (`created` / `already present`) for each of the three points, and a nonzero exit only on hard failure (e.g. template missing, `SUMMARY.md` Developers anchor not found, `STATS_FILE_MAP` not locatable).
+Output: a per-action report (`created` / `already present`) for each of the three points, and a nonzero exit only on hard failure (e.g. template missing, `SUMMARY.md` Developers anchor not found, `CSV_TO_MD` not locatable).
 
 ### `check` — drift lint (L1) + translation-lag report (L3)
 
@@ -74,15 +74,15 @@ Source of truth for "shipped corpora" = directory names under `--corpora-path` (
 Checks, grouped:
 
 **Integration (gating under `--strict`):**
-- Each shipped corpus (not in the ignore list) has: a stats CSV in `statistics/`, a `STATS_FILE_MAP` entry, an existing mapped page file, and a `SUMMARY.md` nav entry pointing to that page.
+- Each shipped corpus (not in the ignore list) has: a stats CSV in `statistics/`, a `CSV_TO_MD` entry, an existing mapped page file, and a `SUMMARY.md` nav entry pointing to that page.
 - No corpus page contains a leftover `{{…}}` placeholder (a half-filled port).
-- No "Coming Soon" text in `en-us/` names a corpus that now exists under `Corpora/`.
 
-**Translation lag (never gating — informational, L3):**
-- Corpus pages present in `en-us/the-bank-architecture/corpora/` but absent from the parallel `pwn/` and `zh-TW/` trees, reported as two lists.
+**Informational (never gating — reported only):**
+- **Coming-Soon drift**: a "Coming Soon" line in any `en-us/` page whose text contains a shipped corpus's directory name. Heuristic (matches free prose), so reported but never gates — a stale "Coming Soon" should prompt a human edit, not break CI.
+- **Translation lag (L3)**: corpus pages present in `en-us/the-bank-architecture/corpora/` but absent from the parallel `pwn/` and `zh-TW/` trees, reported as two lists.
 
 Flags:
-- `--strict` — exit nonzero if any *integration* check fails. Translation-lag never affects exit.
+- `--strict` — exit nonzero if any *integration* check fails (missing CSV/map/page/nav, or a leftover placeholder). Coming-Soon and translation-lag never affect exit.
 - `--ignore <path>` — path to a checked-in newline-delimited list of `Corpora/` dir names intentionally not published to the GitBook. Default `corpus_pages_ignore.txt` in the GitBook repo root if present. Documented exclusions only; an unlisted missing corpus fails CI.
 - `--corpora-path <path>` — override the FormosanBank `Corpora/` location.
 
@@ -122,7 +122,7 @@ Phase 5 steps:
 The GitBook repo currently has **no** test infrastructure. Add a minimal `tests/` + a `requirements-dev.txt` (pytest). Cover:
 - `add` idempotency (second run is a clean no-op for all three points).
 - Nav bullet inserted at the correct position (last in Corpora sublist, before Developers).
-- `STATS_FILE_MAP` key inserted alphabetically, formatting preserved.
+- `CSV_TO_MD` key appended as the last dict entry (before the closing brace), formatting preserved.
 - Each `check` category: missing CSV / missing map entry / missing page / missing nav / leftover placeholder / Coming-Soon-names-shipped, and the ignore-list suppression.
 - Translation-lag never affects exit code.
 
@@ -149,7 +149,7 @@ The convenience gains do not outweigh the URL-breakage risk against an unknown s
 
 ## Out of scope
 
-- No edits to `update_corpus_stats.py` behavior beyond adding a `STATS_FILE_MAP` entry.
+- No edits to `update_corpus_stats.py` behavior beyond adding a `CSV_TO_MD` entry.
 - No zh-TW/pwn content generation (L2/L3 automation).
 - No cross-repo commit/PR automation; the operator commits both repos.
 - No changes to FormosanBank's existing CI or stats pipeline.
