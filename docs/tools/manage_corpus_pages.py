@@ -272,3 +272,74 @@ def run_check(gitbook_root, corpora_path, ignore_path) -> CheckResult:
             res.translation_lag.append(f"{lang}: missing {missing}")
 
     return res
+
+
+def cmd_check(gitbook_root, corpora_path, ignore_path, strict) -> int:
+    res = run_check(gitbook_root, corpora_path, ignore_path)
+
+    def section(title, items):
+        print(f"\n{title}: {len(items)}")
+        for m in items:
+            print(f"  - {m}")
+
+    section("Integration issues (gating)", res.integration_issues)
+    section("Leftover placeholders (gating)", res.placeholder_issues)
+    section("Missing stats CSVs (informational; synced separately)", res.stats_csv_issues)
+    section("Coming-Soon drift (informational)", res.coming_soon)
+    section("Translation lag (informational)", res.translation_lag)
+
+    if res.ok:
+        print("\nOK: every shipped corpus is fully wired; no leftover placeholders.")
+        return 0
+    print("\nFAIL: integration drift detected.")
+    return 1 if strict else 0
+
+
+def build_parser() -> argparse.ArgumentParser:
+    p = argparse.ArgumentParser(description=__doc__)
+    sub = p.add_subparsers(dest="command", required=True)
+
+    a = sub.add_parser("add", help="scaffold a new corpus page + nav + stats-map entry")
+    a.add_argument("--corpus", required=True, help="FormosanBank Corpora/ dir name")
+    a.add_argument("--slug", required=True, help="page filename, e.g. my-corpus.md")
+    a.add_argument("--nav-label", required=True, help="label shown in SUMMARY.md + README list")
+    a.add_argument("--title", required=True, help="page H1")
+    a.add_argument("--template", required=True, help="path to the page template")
+    a.add_argument("--descriptors", default="",
+                   help="trailing parenthetical for the README list bullet, "
+                        "e.g. '(text, audio, English, Mandarin)'")
+    a.add_argument("--gitbook-root", default=".", help="GitBook repo root")
+
+    c = sub.add_parser("check", help="drift lint over shipped corpora")
+    c.add_argument("--gitbook-root", default=".", help="GitBook repo root")
+    c.add_argument("--corpora-path", default="../FormosanBank/Corpora",
+                   help="FormosanBank Corpora/ directory")
+    c.add_argument("--ignore", default=None,
+                   help="path to ignore-list (default: <root>/corpus_pages_ignore.txt)")
+    c.add_argument("--strict", action="store_true",
+                   help="exit nonzero on integration drift")
+    return p
+
+
+def main(argv=None) -> int:
+    args = build_parser().parse_args(argv)
+    if args.command == "add":
+        return cmd_add(
+            corpus=args.corpus, slug=args.slug, nav_label=args.nav_label,
+            title=args.title, template=args.template, gitbook_root=args.gitbook_root,
+            descriptors=args.descriptors,
+        )
+    if args.command == "check":
+        ignore = args.ignore
+        if ignore is None:
+            default_ignore = Path(args.gitbook_root) / "corpus_pages_ignore.txt"
+            ignore = str(default_ignore) if default_ignore.exists() else None
+        return cmd_check(
+            gitbook_root=args.gitbook_root, corpora_path=args.corpora_path,
+            ignore_path=ignore, strict=args.strict,
+        )
+    return 2
+
+
+if __name__ == "__main__":
+    sys.exit(main())

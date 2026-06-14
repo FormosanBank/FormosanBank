@@ -215,3 +215,27 @@ def test_check_coming_soon_is_informational_not_gating(gitbook):
     )
     assert any("Wikipedias" in m for m in result.coming_soon)
     assert result.ok is True  # coming-soon never gates
+
+
+def test_cmd_check_strict_returns_nonzero_on_drift(gitbook, capsys):
+    (gitbook.corpora / "Orphan" / "XML").mkdir(parents=True)
+    rc = mcp.cmd_check(
+        gitbook_root=str(gitbook.root),
+        corpora_path=str(gitbook.corpora),
+        ignore_path=None,
+        strict=True,
+    )
+    assert rc == 1
+    out = capsys.readouterr().out
+    assert "Orphan" in out
+
+
+def test_cmd_check_nonstrict_returns_zero_on_drift(gitbook):
+    (gitbook.corpora / "Orphan" / "XML").mkdir(parents=True)
+    rc = mcp.cmd_check(
+        gitbook_root=str(gitbook.root),
+        corpora_path=str(gitbook.corpora),
+        ignore_path=None,
+        strict=False,
+    )
+    assert rc == 0
