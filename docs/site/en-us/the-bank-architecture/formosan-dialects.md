@@ -6,7 +6,9 @@ icon: text-height
 
 The Taiwanese government officially recognizes 42 dialects belonging to 16 extant Formosan languages. Within this repository, where possible, we identify and label these dialects directly in the XML files (see the [FormosanBank XML format](formosanbank-xml-format.md) for more details). Although other authorities have proposed alternative sets of dialect groupings themselves, our approach here is to follow the official nomenclature as recognized by the Taiwanese government, without making any independent scientific judgments.
 
-When a given source text or audio file is clearly aligned with one of the officially recognized dialects, we include that dialect’s name directly in the XML. However, if it cannot be firmly placed within these recognized dialect divisions, any dialect information would be recorded only in the accompanying corpus documentation. This ensures the highest possible accuracy and transparency, while making it easier for users of the corpus to understand the scope and provenance of each resource.
+When a given source text or audio file is clearly aligned with one of the officially recognized dialects, we include that dialect's name directly in the XML. When the dialect cannot be firmly placed, the XML records `dialect="unknown"` rather than omitting the attribute — this preserves the distinction between "we don't know the dialect" and "we forgot to record it" (the latter is rejected by the validator). Any additional dialect-related context that doesn't fit on the `dialect` attribute is recorded in the accompanying corpus documentation.
+
+For languages that have only one recognized dialect (Kanakanavu, Kavalan, Saaroa, Saisiyat, Sakizaya, Siraya, Thao, Tsou, Yami), the convention is to set `dialect` to the language name itself (e.g., `dialect="Tsou"` for an `xml:lang="tsu"` text). This keeps the `dialect` attribute meaningful for every TEXT and removes the need for special-case branching in downstream code.
 
 ***
 

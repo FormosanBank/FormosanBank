@@ -51,13 +51,17 @@ The `<TEXT>` represents the entire document. It is the root element, and it can 
 * `BibTeX_citation`: BibTeX citation of the original source. In case there are more than one citation associated with the corpus (the XML file), the citations will be seperated by a `,` delimter.
 * `copyright`: The copyright or license information (e.g., CC BY).
 * `xml:lang`: The language code using the ISO 639-3 standard.
+* `dialect`: The dialect of the Formosan language in use. Required on every `<TEXT>` element. Allowed values:
+  * One of the officially recognized dialects for the language (see [Formosan Dialects](formosan-dialects.md) and the [dialects.csv](https://github.com/FormosanBank/FormosanBank/blob/main/dialects.csv) reference).
+  * For languages with only one recognized dialect (e.g., Tsou, Yami, Kavalan, Thao, Saaroa, Saisiyat, Sakizaya, Kanakanavu, Siraya), the dialect value is simply the language name itself (`dialect="Tsou"`, `dialect="Yami"`, etc.). This convention removes branching code throughout the toolchain — every `<TEXT>` has a meaningful dialect even when the language is monodialectal.
+  * `"unknown"` when the dialect cannot be identified. This sentinel exists so that "we don't know the dialect" is distinguishable from "we forgot to record it"; the latter is rejected by the validator.
+  * For `xml:lang="trv"` (which ISO 639-3 lumps together as Truku and Seediq), the allowed values are `"Truku"` plus the three official Seediq dialects (`Tegudaya`, `Duda`, `DeluValley`) plus `"unknown"`.
 
 Optional attributes may include:
 
 * `source`: Description of the original file, chapter, or other relevant details. If this file contains everything in the original source, then this attribute is redundant with `citation` and won't be used. There is no specific format for `source`; it would contain enough information that the user can match what is in the XML against the original source.
 * `audio`: Name of the associated audio file. If the audio is already segmented and there is no single audio file corresponding to the entire XML, this will be set to "segmented"
 * `glottocode`: The [Glottolog](https://glottolog.org/) code if specifying a specific dialect.
-* `dialect`: The name of the dialect of the Formosan language in use. Will only be used if the dialect name corresponds to one of the 42 official dialects. For more information, see [Formosan Dialects](formosan-dialects.md).
 
 ***
 
@@ -140,6 +144,8 @@ Attributes:
 
 * **`xml:lang`**: The language code for the translation, using the ISO 639-3 standard.
 * **`kindOf`** (optional): Specifies the method or tool used to generate the translation, such as a pivot language or translation software (e.g., `kindOf="DeepL"`). Including the software version, if applicable, is encouraged for more detailed documentation.
+* **`ver`** (optional): Distinguishes multiple translations into the *same* language on the same element. When an element carries more than one `<TRANSL>` with the same `xml:lang`, the primary translation is left unmarked and each additional one is marked `ver="alt"`. (`alt` is currently the only defined value.)
+* **`notes`** (optional): Free-text annotation on the translation — e.g., the translator, a review status, or a caveat. It is for human documentation only and is not interpreted by tooling. This parallels the `notes` attribute on `<FORM>`.
 
 Usage Guidelines:
 
@@ -179,7 +185,7 @@ Usage Guidelines:
 
 Importantly, the `M`-level `TRANSL` can have a `kindOf` attribute. Many of the older texts uses non-standard glosses, and even those that use Leipzig format may use different abbreviations for the same constructs. The original glosses should be left as is and indicated as `original` if necessary. Updated glosses should be `kidof="standard"`.
 
-Note: didn't include class or subclss attrs for W and M and didn't include ver attr for TRANSL.
+Note: didn't include class or sclass attrs for W and M.
 
 ***
 
