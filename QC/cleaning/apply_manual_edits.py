@@ -101,6 +101,8 @@ def apply(corpora_path, manual_file) -> int:
     if pruned:
         mec.write_manual(root, manual_file)
 
+    mec.write_changelog(changelog, mec.changelog_path(manual_file))
+
     print(f"apply: {len(changelog)} edit(s) across {applied_files} file(s); "
           f"{len(pruned)} no-op(s) pruned.")
     return 0

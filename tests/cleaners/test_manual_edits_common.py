@@ -179,3 +179,18 @@ def test_git_ref_exists(tmp_path):
     subprocess.run(["git", "commit", "-q", "-m", "c1"], cwd=repo, check=True)
     assert mec.git_ref_exists(repo, "HEAD") is True
     assert mec.git_ref_exists(repo, "NOPE") is False
+
+
+def test_write_changelog_groups_by_file_with_before_after(tmp_path):
+    entries = [
+        {"file": "a.xml", "sid": "S1", "action": "changed", "before": "old", "after": "new"},
+        {"file": "a.xml", "sid": "S2", "action": "added", "before": None, "after": "fresh"},
+        {"file": "b.xml", "sid": "T1", "action": "deleted", "before": "gone", "after": None},
+    ]
+    path = tmp_path / "manual_edits.md"
+    mec.write_changelog(entries, path)
+    text = path.read_text(encoding="utf-8")
+    assert "## a.xml" in text and "## b.xml" in text
+    assert "S1" in text and "changed" in text and "old" in text and "new" in text
+    assert "S2" in text and "added" in text and "fresh" in text
+    assert "T1" in text and "deleted" in text and "gone" in text

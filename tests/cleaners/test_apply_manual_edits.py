@@ -159,3 +159,18 @@ def test_multi_file_routes_operations(tmp_path):
     assert proc.returncode == 0, proc.stderr
     assert _form(a, "S1") == "A!"
     assert _ids(b) == []
+
+
+def test_apply_writes_changelog_md(tmp_path):
+    xml = tmp_path / "XML" / "a.xml"
+    _write(xml, _doc(_sent("S1", "build")))
+    man = tmp_path / "CodeAndDocs" / "manual_edits.xml"
+    _write(man, '<MANUAL_EDITS><FILE path="a.xml">'
+                '<S id="S1"><FORM kindOf="original">manual</FORM></S>'
+                "</FILE></MANUAL_EDITS>")
+    proc = _run_apply(tmp_path / "XML")
+    assert proc.returncode == 0, proc.stderr
+    md = tmp_path / "CodeAndDocs" / "manual_edits.md"
+    assert md.exists()
+    text = md.read_text(encoding="utf-8")
+    assert "S1" in text and "manual" in text

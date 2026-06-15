@@ -158,6 +158,34 @@ def git_root(path):
     return Path(res.stdout.strip())
 
 
+def write_changelog(entries, path):
+    """Write the human-readable per-<S> changelog grouped by file.
+
+    entries: list of dicts with keys file, sid, action, before, after
+    (before/after are rendered strings or None). Regenerated every run; an
+    empty list yields a header-only file (git no-ops when unchanged).
+    """
+    by_file: dict[str, list] = {}
+    for e in entries:
+        by_file.setdefault(e["file"], []).append(e)
+    lines = ["# Manual edits changelog", ""]
+    for f in sorted(by_file):
+        lines.append(f"## {f}")
+        lines.append("")
+        for e in by_file[f]:
+            lines.append(f"### {e['sid']} — {e['action']}")
+            if e["before"] is not None:
+                lines.append(f"- before: {e['before']}")
+            if e["after"] is not None:
+                lines.append(f"- after:  {e['after']}")
+            lines.append("")
+    p = Path(path)
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
+
+
+# ----- git access ------------------------------------------------------------
+
 def git_ref_exists(repo_root, ref) -> bool:
     """True if ref resolves to a commit in the repo at repo_root."""
     res = subprocess.run(
