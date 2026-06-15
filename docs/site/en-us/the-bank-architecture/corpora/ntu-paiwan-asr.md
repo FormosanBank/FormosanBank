@@ -12,28 +12,7 @@ This corpus includes mostly read speech aligned with its corresponding text in a
 * **Corpus Content**:
   * Texts with aligned audio for read speech
   * Spontaneous speech recordings
-* **Data Contributors**: Six speakers (pseudonyms used to maintain anonymity)
-
-#### **Data Summary**
-
-| Metric         | Read Speech | Spontaneous Speech | Total    |
-| -------------- | ----------- | ------------------ | -------- |
-| **Topics**     | 11          | 51                 | 62       |
-| **Recordings** | 16          | 98                 | 114      |
-| **Duration**   | 1:24:10     | 9:10:33            | 10:34:43 |
-
-#### Data Breakdown by Participant
-
-Below is a detailed description of the data outlying for each speaker how many recordings are available of them and the duration they have spoken for. As mentioned above, participants' names are pseudonyms for privacy.
-
-| Speaker | Number of Recordings (N)	 | Total Duration |
-| ------- | ------------------------- | -------------- |
-| Loris   | 23                        | 2:05:16        |
-| Zendar  | 35                        | 3:01:01        |
-| Nira    | 30                        | 2:29:31        |
-| Belmira | 8                         | 1:00:57        |
-| Falin   | 7                         | 0:51:48        |
-| Sarnix  | 11                        | 1:06:10        |
+* **Data Contributors**: Sixteen speakers (pseudonyms used to maintain anonymity)
 
 ***
 
