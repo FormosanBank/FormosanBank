@@ -14,5 +14,6 @@ This section is designed to provide technical documentation, guidelines, and res
 * **Codebase & Repository Structure** – Understand the structure of the FormosanBank repositories and how to contribute to the development.
 * **Audio Processing & NLP** – Explore how to work with the provided audio and text corpora, including tools for transcription, speech synthesis, and natural language processing (NLP).
 * **Machine Translation** – Learn how FormosanBank XML is converted into released parallel corpora and machine translation experiments.
+* **QC Pipeline & Corpus Lifecycle** – Reference documentation for every quality-control script that validates, cleans, and measures the corpora ([QC Pipeline](qc-pipeline/README.md)), plus the end-to-end workflows for [auditing](running-an-audit.md) and [porting in](porting-a-corpus.md) a new corpus and the [Claude skills](using-the-claude-skills.md) that automate them.
 
 Whether you're developing NLP applications, improving our database, or integrating FormosanBank into your own projects, this section will provide the resources you need to get started.&#x20;
