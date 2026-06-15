@@ -196,3 +196,15 @@ def test_not_a_git_repo_errors(tmp_path):
     proc = _run_capture(tmp_path / "XML")
     assert proc.returncode == 2
     assert "git" in proc.stderr.lower()
+
+
+def test_bad_baseline_ref_errors(tmp_path):
+    repo = tmp_path
+    xml = repo / "XML" / "a.xml"
+    _write(xml, _doc(_sent("S1", "x")))
+    _init_repo(repo)
+    _commit_all(repo)
+    proc = _run_capture(repo / "XML", "--baseline-ref", "NOPE")
+    assert proc.returncode == 2
+    assert "nope" in proc.stderr.lower() or "ref" in proc.stderr.lower()
+    assert not (repo / "CodeAndDocs" / "manual_edits.xml").exists()

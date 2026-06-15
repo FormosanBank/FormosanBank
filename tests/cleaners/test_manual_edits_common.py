@@ -167,3 +167,15 @@ def test_remove_record_by_id():
     assert mec.remove_record(fg, "S1") is True
     assert mec.remove_record(fg, "MISSING") is False
     assert fg.findall("S") == []
+
+
+def test_git_ref_exists(tmp_path):
+    repo = tmp_path
+    (repo / "f.txt").write_text("v1\n", encoding="utf-8")
+    subprocess.run(["git", "init", "-q"], cwd=repo, check=True)
+    subprocess.run(["git", "config", "user.email", "t@t"], cwd=repo, check=True)
+    subprocess.run(["git", "config", "user.name", "t"], cwd=repo, check=True)
+    subprocess.run(["git", "add", "f.txt"], cwd=repo, check=True)
+    subprocess.run(["git", "commit", "-q", "-m", "c1"], cwd=repo, check=True)
+    assert mec.git_ref_exists(repo, "HEAD") is True
+    assert mec.git_ref_exists(repo, "NOPE") is False

@@ -158,6 +158,16 @@ def git_root(path):
     return Path(res.stdout.strip())
 
 
+def git_ref_exists(repo_root, ref) -> bool:
+    """True if ref resolves to a commit in the repo at repo_root."""
+    res = subprocess.run(
+        ["git", "-C", str(repo_root), "rev-parse", "--verify", "--quiet",
+         f"{ref}^{{commit}}"],
+        capture_output=True, text=True,
+    )
+    return res.returncode == 0
+
+
 def git_show(repo_root, ref, rel_path):
     """Bytes of <ref>:<rel_path>, or None if not present at that ref."""
     res = subprocess.run(

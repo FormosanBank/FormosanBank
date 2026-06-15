@@ -39,6 +39,11 @@ def capture(corpora_path, manual_file, baseline_ref) -> int:
               file=sys.stderr)
         return 2
 
+    if not mec.git_ref_exists(repo, baseline_ref):
+        print(f"ERROR: baseline ref '{baseline_ref}' does not resolve in the "
+              f"git repo at {repo}.", file=sys.stderr)
+        return 2
+
     root = mec.load_manual(manual_file) or mec.new_manual_root()
     dirty = False
 
