@@ -25,6 +25,17 @@ Run the full QC sequence on a corpus development repo, pausing for human judgmen
 
 All `python3` invocations use `<corpus_path>/.venv/bin/python3` (not the system python). All script paths are relative to `<formosanbank_path>`.
 
+### Phase 0: Apply manual edits
+
+Re-apply any recorded hand edits before cleaning, so later phases see them. No-op (and prints so) if the corpus has no `CodeAndDocs/manual_edits.xml`.
+
+```bash
+.venv/bin/python3 <formosanbank_path>/QC/cleaning/apply_manual_edits.py \
+  --corpora_path <xml_path> 2>&1 | tee <output_dir>/00_apply_manual_edits.log
+```
+
+This phase must run on freshly built (pre-manual) XML. Any `pruned no-op` warnings in the log mean an entry was dropped — surface them in the summary.
+
 ### Phase 1: Clean
 
 ```bash

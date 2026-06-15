@@ -182,6 +182,14 @@ The validator compares whitespace-normalized FORM text on the `kindOf="standard"
 
 ## Cleaning
 
+Before running other cleaners, re-apply any recorded hand edits:
+
+```bash
+python QC/cleaning/apply_manual_edits.py --corpora_path <XML-dir>
+```
+
+No-op (prints "nothing to do" and exits 0) if the corpus has no `CodeAndDocs/manual_edits.xml`. See "Manual edits" below for how to record edits in the first place.
+
 `QC/cleaning/clean_xml.py` normalizes unicode and HTML entities in place.
 
 `QC/cleaning/remove_duplicate_sentences.py` removes duplicate `<S>` elements detected by the validator above. **It modifies XML in place** — the default is `--dry-run`; pass `--apply` to actually mutate files. Within each duplicate group it deterministically keeps the first occurrence by `(file, S id)` sort order.
@@ -199,6 +207,19 @@ python QC/cleaning/remove_duplicate_sentences.py by_path \
 python QC/cleaning/remove_duplicate_sentences.py by_path \
   --path /path/to/Final_XML --scope corpus --apply
 ```
+
+### Manual edits (reproducible hand edits)
+
+Some corrections (often surfaced by `validate_text`/`validate_glosses`) can only be made by hand. To keep them reproducible across rebuilds, record them instead of editing the published XML ad hoc:
+
+1. Hand-edit the `<S>` blocks in the corpus XML directly.
+2. Run `python QC/utilities/capture_manual_edits.py --corpora_path <XML-dir>`. It diffs the working tree against the git baseline (`--baseline-ref`, default `HEAD`) and records each changed/added/deleted `<S>` into `<corpus-root>/CodeAndDocs/manual_edits.xml` (standard tier + PHON stripped; new sentences get an `after` placement hint).
+3. Commit `manual_edits.xml`.
+4. On every rebuild, `python QC/cleaning/apply_manual_edits.py --corpora_path <XML-dir>` re-applies them (first in the cleaning pipeline), prunes entries that have become no-ops (printing a `pruned no-op` warning for each), and regenerates the readable `CodeAndDocs/manual_edits.md` changelog.
+
+Splitting a multi-option sentence: edit the original `<S>` to a single variant and add new `<S>` (with fresh ids) for the others; `capture`/`apply` keep them adjacent via the `after` hint.
+
+**Discipline:** `apply` expects the XML to be fresh pre-manual build output. Run it on a freshly rebuilt tree; re-running it on already-applied XML prunes entries as no-ops (recoverable via git, and announced by warnings).
 
 ## Dialect detection (informational)
 

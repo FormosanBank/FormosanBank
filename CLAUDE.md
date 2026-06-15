@@ -85,6 +85,7 @@ When in doubt, `by_path` against a single corpus's `XML/` directory is the safes
 The finding-based validators (`validate_xml`, `validate_text`, `validate_glosses`) print a compact per-rule **summary** with mnemonic names (e.g. `V060 W_count_matches_word_count: 1`) and write **one findings CSV** (path printed as `Details: …`); per-finding detail lives in the CSV, not the terminal. Flags: `--csv <path>` (`--soft-csv` is a deprecated alias); exit 1 on any HARD finding unless `--no-exit-on-hard`.
 
 The full pipeline is documented in [QC/README.md](QC/README.md). The typical order is:
+0. `QC/cleaning/apply_manual_edits.py` — re-apply recorded hand edits first, before any other cleaning (no-op if no `CodeAndDocs/manual_edits.xml`)
 1. `QC/validation/validate_xml.py` (XSD conformance)
 2. `QC/utilities/standardize.py --copy` (only if standard tier is missing)
 3. `QC/validation/validate_text.py` (B9.4 consolidation of `validate_punct.py` + `non_ascii_counts.py`)
@@ -93,6 +94,8 @@ The full pipeline is documented in [QC/README.md](QC/README.md). The typical ord
 6. `QC/validation/validate_glosses.py` only for corpora with `W`/`M` segmentation
 
 `clean_xml.py` modify XML in place — diff before committing.
+
+- **Reproducible hand edits.** `QC/utilities/capture_manual_edits.py` records hand edits to a corpus's XML (diffed against git) into `<corpus>/CodeAndDocs/manual_edits.xml`; `QC/cleaning/apply_manual_edits.py` re-applies them first in the cleaning pipeline, prunes no-ops (with a warning), and writes a `manual_edits.md` changelog. Shared logic lives in `QC/cleaning/manual_edits_common.py`. See `claudeplans/2026-06-15-manual-edits-reproducibility-design.md`.
 
 ## Corpus metrics and token deltas (CI-coupled)
 
