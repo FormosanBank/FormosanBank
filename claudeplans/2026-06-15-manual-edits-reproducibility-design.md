@@ -102,7 +102,7 @@ Both scripts default `--manual_file` to `<corpus-root>/CodeAndDocs/manual_edits.
 
 ## `strip()` — the canonical comparison/storage basis
 
-Both scripts reduce an `<S>` to its **manual-relevant content** before comparing or storing: remove S-level `FORM[@kindOf="standard"]` and every `PHON` (at S, W, and M level). What remains: the `id`/`class`/`sclass` attributes, original-tier `FORM`, `TRANSL`, and the `W`/`M` tree (with their own originals/TRANSLs). Two `<S>` are "equal" when their stripped, canonicalized (lxml `etree.canonicalize`) serializations match. The operation is trivial — worst case, `capture` just batch-deletes all standard-tier FORMs and all PHON elements from the blocks it records.
+Both scripts reduce an `<S>` to its **manual-relevant content** before comparing or storing: remove **every** `FORM[@kindOf="standard"]` and every `PHON` (at S, W, and M level), and drop the bookkeeping attributes `after`/`action` from the top `<S>` so comparison is content-only. What remains: the `id`/`class`/`sclass` attributes, original-tier `FORM`, `TRANSL`, and the `W`/`M` tree (with their own original-tier FORMs and TRANSLs). Standard tiers are removed at all levels because `standardize.py` regenerates them at all levels downstream. Two `<S>` are "equal" when their stripped, canonicalized (lxml `etree.canonicalize`) serializations match. The operation is trivial — worst case, `capture` just batch-deletes all standard-tier FORMs and all PHON elements from the blocks it records.
 
 This basis is what lets the maintainer edit the fully standardized/phonologized XML directly: both the baseline `B` (committed, published XML) and the working tree `W` carry standard tiers + PHON, and comparing/storing only the stripped content drops those regenerated tiers so they never enter the manual file.
 
@@ -159,7 +159,9 @@ That is the whole job. No O, no changelog, no pruning, no `--force`.
 
 - **Add / change / delete** are all captured and applied.
 - **Undo is automatic and self-healing.** Editing a block back to the build output → captured → pruned on next apply (with a console warning).
-- **Caveat (documented, not enforced):** run `apply` after regenerating and before `capture`. If you `capture` against a regenerated-but-unapplied tree, you record pre-manual content; the next `apply` prunes it as a no-op, so it is self-healing rather than destructive — but the console prune-warning is the signal that this happened.
+- **Caveat (documented, not enforced):** `apply` expects **O to be fresh, pre-manual build output**. The no-op prune (`O = R` → drop `R`) is correct only then. Two consequences:
+  - Run `apply` after regenerating and before `capture`. If you `capture` against a regenerated-but-unapplied tree, you record pre-manual content; the next `apply` prunes it as a no-op (self-healing, not destructive) — the console prune-warning is the signal that this happened.
+  - Do **not** re-run `apply` on already-applied XML without rebuilding first: a second `apply` sees `O = R` for every applied entry and would prune them all (with warnings). The pipeline always rebuilds before the cleaning phase, so this only bites manual misuse; the warnings and git history make it recoverable.
 
 ---
 
