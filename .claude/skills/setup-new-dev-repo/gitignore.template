@@ -3,6 +3,12 @@
 __pycache__/
 *.pyc
 
+# Audio — large, downloaded via download_audio_data.sh; never committed.
+# Canonical folder is Audio/ (matches the published Corpora/<Name>/Audio/ layout).
+Audio/
+*.mp3
+*.wav
+
 # Logs and scratch
 *.log
 qc-output/
