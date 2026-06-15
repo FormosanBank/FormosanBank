@@ -5,7 +5,24 @@ This corpus is drawn from Lowking Wei-Cheng Hsu's (許韋晟) 2008 MA thesis, �
 ***
 
 <!-- CORPUS STATS START -->
+## Corpus Statistics
+
+| | Truku |
+| --- | --- |
+| Word count | 1,215 |
+| Total audio | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 |
+| Translated words |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 1,215 |
+| Morphologically segmented | 1,153 |
+| Glossed words | 1,070 |
+
+***
+
 <!-- CORPUS STATS END -->
+
 
 ## **Access Details**
 
