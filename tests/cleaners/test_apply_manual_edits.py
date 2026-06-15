@@ -89,3 +89,73 @@ def test_new_id_without_resolvable_anchor_appends(tmp_path):
     proc = _run_apply(tmp_path / "XML")
     assert proc.returncode == 0, proc.stderr
     assert _ids(xml) == ["S1", "SX"]
+
+
+def _manual_ids(man_path: Path):
+    root = etree.parse(str(man_path)).getroot()
+    return [s.get("id") for s in root.findall(".//S")]
+
+
+def test_delete_removes_sentence(tmp_path):
+    xml = tmp_path / "XML" / "a.xml"
+    _write(xml, _doc(_sent("S1", "a"), _sent("S2", "b")))
+    man = tmp_path / "CodeAndDocs" / "manual_edits.xml"
+    _write(man, '<MANUAL_EDITS><FILE path="a.xml">'
+                '<S id="S2" action="delete"/></FILE></MANUAL_EDITS>')
+    proc = _run_apply(tmp_path / "XML")
+    assert proc.returncode == 0, proc.stderr
+    assert _ids(xml) == ["S1"]
+
+
+def test_noop_upsert_is_pruned_with_warning(tmp_path):
+    xml = tmp_path / "XML" / "a.xml"
+    _write(xml, _doc(_sent("S1", "same")))
+    man = tmp_path / "CodeAndDocs" / "manual_edits.xml"
+    _write(man, '<MANUAL_EDITS><FILE path="a.xml">'
+                '<S id="S1"><FORM kindOf="original">same</FORM></S>'
+                "</FILE></MANUAL_EDITS>")
+    proc = _run_apply(tmp_path / "XML")
+    assert proc.returncode == 0, proc.stderr
+    assert "pruned no-op" in proc.stdout.lower()
+    assert _manual_ids(man) == []  # entry removed; empty file group dropped
+
+
+def test_noop_delete_of_absent_id_is_pruned(tmp_path):
+    xml = tmp_path / "XML" / "a.xml"
+    _write(xml, _doc(_sent("S1", "a")))
+    man = tmp_path / "CodeAndDocs" / "manual_edits.xml"
+    _write(man, '<MANUAL_EDITS><FILE path="a.xml">'
+                '<S id="GONE" action="delete"/></FILE></MANUAL_EDITS>')
+    proc = _run_apply(tmp_path / "XML")
+    assert proc.returncode == 0, proc.stderr
+    assert "pruned no-op" in proc.stdout.lower()
+    assert _manual_ids(man) == []
+
+
+def test_split_chain_inserts_in_reading_order(tmp_path):
+    xml = tmp_path / "XML" / "a.xml"
+    _write(xml, _doc(_sent("S1", "a"), _sent("S2", "z")))
+    man = tmp_path / "CodeAndDocs" / "manual_edits.xml"
+    _write(man, '<MANUAL_EDITS><FILE path="a.xml">'
+                '<S id="S1b" after="S1"><FORM kindOf="original">b</FORM></S>'
+                '<S id="S1c" after="S1b"><FORM kindOf="original">c</FORM></S>'
+                "</FILE></MANUAL_EDITS>")
+    proc = _run_apply(tmp_path / "XML")
+    assert proc.returncode == 0, proc.stderr
+    assert _ids(xml) == ["S1", "S1b", "S1c", "S2"]
+
+
+def test_multi_file_routes_operations(tmp_path):
+    a = tmp_path / "XML" / "Amis" / "a.xml"
+    b = tmp_path / "XML" / "Amis" / "b.xml"
+    _write(a, _doc(_sent("S1", "a")))
+    _write(b, _doc(_sent("T1", "t")))
+    man = tmp_path / "CodeAndDocs" / "manual_edits.xml"
+    _write(man, '<MANUAL_EDITS>'
+                '<FILE path="Amis/a.xml"><S id="S1"><FORM kindOf="original">A!</FORM></S></FILE>'
+                '<FILE path="Amis/b.xml"><S id="T1" action="delete"/></FILE>'
+                "</MANUAL_EDITS>")
+    proc = _run_apply(tmp_path / "XML")
+    assert proc.returncode == 0, proc.stderr
+    assert _form(a, "S1") == "A!"
+    assert _ids(b) == []
