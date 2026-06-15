@@ -87,6 +87,7 @@ def render_s(s_elem: etree._Element) -> str:
 # ----- manual-file model -----------------------------------------------------
 
 def new_manual_root() -> etree._Element:
+    """Return a fresh <MANUAL_EDITS> root element."""
     return etree.Element("MANUAL_EDITS")
 
 
@@ -99,6 +100,7 @@ def load_manual(manual_file):
 
 
 def find_file_group(root, rel_path):
+    """Return the <FILE> child whose path attr equals rel_path, or None."""
     for fe in root.findall("FILE"):
         if fe.get("path") == rel_path:
             return fe
@@ -106,6 +108,7 @@ def find_file_group(root, rel_path):
 
 
 def get_or_create_file_group(root, rel_path):
+    """Return the <FILE> group for rel_path, creating it if absent."""
     fe = find_file_group(root, rel_path)
     if fe is None:
         fe = etree.SubElement(root, "FILE", {"path": rel_path})
@@ -131,7 +134,7 @@ def remove_record(file_group, sid) -> bool:
 
 
 def write_manual(root, manual_file):
-    """Serialize the manual root (dropping empty <FILE> groups), pretty-printed."""
+    """Serialize the manual root, dropping empty <FILE> groups IN PLACE first (the passed-in root is mutated), then pretty-print to manual_file."""
     for fe in list(root.findall("FILE")):
         if not fe.findall("S"):
             root.remove(fe)
@@ -145,7 +148,7 @@ def write_manual(root, manual_file):
 # ----- git access ------------------------------------------------------------
 
 def git_root(path):
-    """Top-level of the git work tree containing path, or None."""
+    """Top-level of the git work tree containing path (must be a directory), or None."""
     res = subprocess.run(
         ["git", "-C", str(path), "rev-parse", "--show-toplevel"],
         capture_output=True, text=True,

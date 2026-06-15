@@ -111,7 +111,7 @@ def test_load_manual_missing_returns_none(tmp_path):
     assert mec.load_manual(tmp_path / "absent.xml") is None
 
 
-def test_upsert_record_replaces_by_id(tmp_path):
+def test_upsert_record_replaces_by_id():
     root = mec.new_manual_root()
     fg = mec.get_or_create_file_group(root, "a.xml")
     mec.upsert_record(fg, _s('<S id="S1"><FORM kindOf="original">old</FORM></S>'))
@@ -121,7 +121,7 @@ def test_upsert_record_replaces_by_id(tmp_path):
     assert ss[0].find("FORM").text == "new"
 
 
-def test_upsert_record_appends_new_id_in_order(tmp_path):
+def test_upsert_record_appends_new_id_in_order():
     root = mec.new_manual_root()
     fg = mec.get_or_create_file_group(root, "a.xml")
     mec.upsert_record(fg, _s('<S id="S1"/>'))
@@ -158,3 +158,12 @@ def test_git_root_and_show(tmp_path):
 def test_git_root_outside_repo_returns_none(tmp_path):
     # tmp_path here has no git repo initialized
     assert mec.git_root(tmp_path) is None
+
+
+def test_remove_record_by_id():
+    root = mec.new_manual_root()
+    fg = mec.get_or_create_file_group(root, "a.xml")
+    mec.upsert_record(fg, _s('<S id="S1"/>'))
+    assert mec.remove_record(fg, "S1") is True
+    assert mec.remove_record(fg, "MISSING") is False
+    assert fg.findall("S") == []
