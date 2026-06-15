@@ -44,14 +44,13 @@ Because `apply_manual_edits.py` runs before standardization and phonology, **the
 
 ### Why hand edits happen, and the editing workflow
 
-Hand edits are usually triggered by `validate_text` / `validate_glosses` output, which is produced on **standardized, phonologized** XML. So the maintainer's loop is:
+Hand edits are usually triggered by `validate_text` / `validate_glosses` output, which is produced on **standardized, phonologized** XML. The maintainer edits that XML **in place** — there is no need to rebuild to an earlier pipeline stage first, because `capture` records the edit on the `strip()` basis (standard tier + PHON removed). The loop is:
 
 1. Run the full pipeline (through standardize + phonology + validators) to get the findings CSVs.
 2. Decide what to correct.
-3. Re-run the pipeline **up through the first `clean_xml.py`** to get the working XML at the editable stage.
-4. Hand-edit the relevant `<S>` blocks.
-5. Run `capture_manual_edits.py` to record the edits.
-6. Re-run the pipeline; `apply_manual_edits.py` reproduces the edits.
+3. Hand-edit the relevant `<S>` blocks directly in the standardized/phonologized XML.
+4. Run `capture_manual_edits.py`; it records `strip(W)` — the standard tier and PHON are dropped from the recorded block.
+5. Re-run the pipeline; `apply_manual_edits.py` reproduces the edits.
 
 ---
 
@@ -101,9 +100,9 @@ Both scripts default `--manual_file` to `<corpus-root>/CodeAndDocs/manual_edits.
 
 ## `strip()` — the canonical comparison/storage basis
 
-Both scripts reduce an `<S>` to its **manual-relevant content** before comparing or storing: remove S-level `FORM[@kindOf="standard"]` and every `PHON` (at S, W, and M level). What remains: the `id`/`class`/`sclass` attributes, original-tier `FORM`, `TRANSL`, and the `W`/`M` tree (with their own originals/TRANSLs). Two `<S>` are "equal" when their stripped, canonicalized (lxml `etree.canonicalize`) serializations match.
+Both scripts reduce an `<S>` to its **manual-relevant content** before comparing or storing: remove S-level `FORM[@kindOf="standard"]` and every `PHON` (at S, W, and M level). What remains: the `id`/`class`/`sclass` attributes, original-tier `FORM`, `TRANSL`, and the `W`/`M` tree (with their own originals/TRANSLs). Two `<S>` are "equal" when their stripped, canonicalized (lxml `etree.canonicalize`) serializations match. The operation is trivial — worst case, `capture` just batch-deletes all standard-tier FORMs and all PHON elements from the blocks it records.
 
-This basis is what makes the two scripts robust to staging differences: the baseline `B` (committed, published XML) carries standard tiers + PHON, while the working tree `W` may be mid-pipeline; comparing only the stripped content neutralizes that.
+This basis is what lets the maintainer edit the fully standardized/phonologized XML directly: both the baseline `B` (committed, published XML) and the working tree `W` carry standard tiers + PHON, and comparing/storing only the stripped content drops those regenerated tiers so they never enter the manual file.
 
 ---
 
