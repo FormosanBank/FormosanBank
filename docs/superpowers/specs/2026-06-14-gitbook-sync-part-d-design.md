@@ -42,7 +42,7 @@ Rejected: (A) all-in-skill-prose — nested `SUMMARY.md` insertion and dict edit
 | **D-port** — `port-corpus-in` Phase 6 | **BUILD** | + live Truku port exercises it |
 | **L0** — branch reconciliation | **DESIGN-ONLY** | Repo evidence recorded above; skill detects+asks at port time; policy resolution is its own follow-up |
 | **L1** — drift lints + lint CI | **BUILD** | `check` mode of the helper + a GitBook CI workflow |
-| **L1** — cross-repo stats-CSV regeneration | **DESIGN-ONLY** | The messy cross-repo sync (get_corpus_stats → gitbook statistics/) is scoped, not built |
+| **L1** — cross-repo stats-CSV regeneration | **DESIGN-ONLY** | The messy cross-repo sync (get_corpus_stats → gitbook statistics/) is scoped, not built — **resolved 2026-06-15 via sister-read; see [2026-06-15-gitbook-stats-single-source-design.md](2026-06-15-gitbook-stats-single-source-design.md).** |
 | **L2** — zh-TW translation PRs | **DESIGN-ONLY** | Largest new subsystem (supersession state, MT/LLM engine) |
 | **L3** — pwn manual | **BUILD (report only)** | Falls out of `check`'s translation-lag report; banner is policy |
 | **L4** — cleaning-convention docs | **DESIGN-ONLY** | Blocked on B5 item 24 |
