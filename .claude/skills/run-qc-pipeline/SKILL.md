@@ -87,7 +87,7 @@ Otherwise, resolve the TSV mapping path. The convention (per CLAUDE.md) is `Orth
 
 No decisions.
 
-**Caveat:** `add_phonology.py` produces `<PHON>` elements that the current DTD does not allow. `validate_xml.py` in Phase 5 will fail purely because of this drift. Note this in the summary; do not treat it as a corpus problem. Resolving belongs to B.
+**Note:** `add_phonology.py` adds `<PHON>` elements. These are now valid under the schema — `xml_template.xsd` defines `PHON_Type` and allows `PHON` within `S`/`W`/`M` (and the DTD fallback declares `PHON*` on each), so `validate_xml.py` in Phase 5 accepts them. (Earlier versions of this skill warned that PHON would fail `validate_xml.py`; that schema drift has since been resolved, so no such caveat is needed in the summary.)
 
 ### Phase 5: Validate (informational)
 
