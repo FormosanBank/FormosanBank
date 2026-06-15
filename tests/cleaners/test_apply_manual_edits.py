@@ -186,3 +186,48 @@ def test_missing_xml_file_in_group_warns_and_skips(tmp_path):
     proc = _run_apply(tmp_path / "XML")
     assert proc.returncode == 0, proc.stderr
     assert "ghost.xml" in proc.stdout and "skipping" in proc.stdout.lower()
+
+
+def test_capture_then_apply_roundtrip(tmp_path):
+    """End-to-end: a build, a hand edit captured, then a fresh build re-applied
+    reproduces the edit. Uses both scripts."""
+    capture = Path(__file__).resolve().parents[2] / "QC" / "utilities" / "capture_manual_edits.py"
+
+    def git(*args):
+        subprocess.run(["git", "-C", str(tmp_path), *args], check=True,
+                       capture_output=True, text=True)
+
+    xml = tmp_path / "XML" / "a.xml"
+    build = _doc(_sent("S1", "build"))
+    _write(xml, build)
+    git("init", "-q"); git("config", "user.email", "t@t"); git("config", "user.name", "t")
+    git("add", "-A"); git("commit", "-q", "-m", "build")
+    # hand-edit + capture
+    _write(xml, _doc(_sent("S1", "edited")))
+    proc = subprocess.run([sys.executable, str(capture), "--corpora_path", str(tmp_path / "XML")],
+                          capture_output=True, text=True)
+    assert proc.returncode == 0, proc.stderr
+    # simulate a fresh rebuild (O reset to build output), then apply
+    _write(xml, build)
+    proc = _run_apply(tmp_path / "XML")
+    assert proc.returncode == 0, proc.stderr
+    assert _form(xml, "S1") == "edited"
+
+
+def test_second_apply_without_rebuild_prunes_documented_behavior(tmp_path):
+    """DOCUMENTED behavior (design caveat): apply expects fresh pre-manual O.
+    Re-running apply on already-applied XML prunes entries as no-ops (with a
+    warning), because O == R. The pipeline always rebuilds first, so this only
+    bites manual misuse."""
+    xml = tmp_path / "XML" / "a.xml"
+    _write(xml, _doc(_sent("S1", "build")))
+    man = tmp_path / "CodeAndDocs" / "manual_edits.xml"
+    _write(man, '<MANUAL_EDITS><FILE path="a.xml">'
+                '<S id="S1"><FORM kindOf="original">manual</FORM></S>'
+                "</FILE></MANUAL_EDITS>")
+    assert _run_apply(tmp_path / "XML").returncode == 0          # applies
+    assert _form(xml, "S1") == "manual"
+    proc = _run_apply(tmp_path / "XML")                          # second run, no rebuild
+    assert proc.returncode == 0
+    assert "pruned no-op" in proc.stdout.lower()
+    assert _manual_ids(man) == []
