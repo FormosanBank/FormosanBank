@@ -68,7 +68,7 @@ There is **no `--dry-run` and no `--apply`** — invoking the script writes chan
 
 ## When to run it
 
-This is typically the **first cleaning step** when QC'ing a corpus in its dev repo, before standardization and validation. The pipeline order is roughly: `clean_xml.py` → orthography detection (human input) → `standardize.py` → `add_phonology.py` → validators.
+This is typically the first *mechanical* cleaning step when QC'ing a corpus in its dev repo, before standardization and validation. The pipeline order is roughly: [apply_manual_edits.py](manual-edits.md) (replays any recorded hand edits; no-op if none) → `clean_xml.py` → orthography detection (human input) → `standardize.py` → `add_phonology.py` → validators.
 
 Prerequisites: XSD-valid XML (run [validate_xml.py](validate-xml.md) first). The `kindOf="original"` vs `kindOf="standard"` distinction matters here — C012 hyphen handling only touches the standard tier, preserving the source's orthographic choices in the original tier.
 
@@ -78,5 +78,6 @@ Prerequisites: XSD-valid XML (run [validate_xml.py](validate-xml.md) first). The
 - [validate_text.py](validate-text.md) — flags many of the same characters HARD
 - [standardize.py](standardize.md)
 - [orthography_detector.py](orthography-detector.md)
+- [Manual edits](manual-edits.md) — replayed just before this step
 - [QC Pipeline overview](README.md)
 - [Running an Audit](../running-an-audit.md)

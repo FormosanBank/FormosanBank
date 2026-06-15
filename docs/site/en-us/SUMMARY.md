@@ -48,6 +48,7 @@
     * [validate\_vocabulary.py](the-bank-architecture/developers/qc-pipeline/validate-vocabulary.md)
     * [validate\_duplicate\_sentences.py](the-bank-architecture/developers/qc-pipeline/validate-duplicate-sentences.md)
     * [validate\_audio.py](the-bank-architecture/developers/qc-pipeline/validate-audio.md)
+    * [Manual edits](the-bank-architecture/developers/qc-pipeline/manual-edits.md)
     * [clean\_xml.py](the-bank-architecture/developers/qc-pipeline/clean-xml.md)
     * [clean\_audio.py](the-bank-architecture/developers/qc-pipeline/clean-audio.md)
     * [clean\_filepaths.py](the-bank-architecture/developers/qc-pipeline/clean-filepaths.md)

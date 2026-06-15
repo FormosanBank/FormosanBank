@@ -87,6 +87,7 @@ The **cleaning** and **fix-up** scripts modify XML *in place*. Most default to `
 
 ### Cleaning
 
+* [Manual edits](manual-edits.md) — capture & replay reproducible hand edits (runs first)
 * [clean_xml.py](clean-xml.md) — unicode/entity normalization & sentinels
 * [clean_audio.py](clean-audio.md) — remove broken `<AUDIO>` entries
 * [clean_filepaths.py](clean-filepaths.md) — sanitize cross-platform filenames
