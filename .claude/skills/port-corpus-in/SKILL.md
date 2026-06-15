@@ -216,6 +216,46 @@ PR separately (this skill is **not a git committer**, consistent with Phase 3).
    synced into the GitBook, after which `update_corpus_stats.py` fills both. Note this in
    the Phase 6 summary as a known follow-up; do not block the port on it.
 
+7. **Populate the stats tables (audio-aware).** The page's stats block and the
+   `corpora/README.md` aggregate are filled by `update_corpus_stats.py` from the
+   corpus's stats CSV. Generate that CSV and inject it, in this order:
+
+   a. **Audio gate (detect + guide).** Check whether the ported XML has audio:
+      ```bash
+      grep -rl "<AUDIO" "<formosanbank_path>/Corpora/<corpus_name>/XML" | head -1
+      ```
+      - **No match (no audio):** skip to step 7b.
+      - **Has audio:** the audio-seconds columns need `statistics/audio_durations.csv`
+        populated for this corpus *before* `get_corpus_stats` runs (otherwise audio
+        seconds are 0). Do NOT automate this — surface the choice to the maintainer
+        via `AskUserQuestion`:
+        - *Audio is available locally* (downloaded into the corpus dir) →
+          `<python> <formosanbank_path>/QC/utilities/update_audio_stats.py Corpora/<corpus_name>`
+        - *Audio is only on Hugging Face* (`download_audio_data.sh` ported + uploaded) →
+          use the `refresh-audio-stats` skill / `refresh_audio_stats.py <corpus_name>`
+        - *Maintainer chooses to skip:* proceed; note in the Phase 6 summary that the
+          page's audio columns are pending a later `refresh-audio-stats` run.
+
+   b. **Generate the per-corpus stats CSV:**
+      ```bash
+      <python> <formosanbank_path>/QC/utilities/get_corpus_stats.py \
+        "<formosanbank_path>/Corpora/<corpus_name>"
+      ```
+      This writes `<formosanbank_path>/statistics/<corpus_name>_corpora_stats.csv`.
+      Commit it with the corpus (CI later regenerates the identical CSV via `--all`).
+
+   c. **Inject the tables into the GitBook:**
+      ```bash
+      <python> <gitbook_path>/update_corpus_stats.py --stats-dir "<formosanbank_path>/statistics"
+      ```
+      Pass `--stats-dir` explicitly so it reads the *active* FormosanBank checkout
+      (the sibling default may point at a different checkout that lacks the new CSV).
+      This fills the new page's stats block and refreshes the `corpora/README.md`
+      aggregate. Commit the changed `.md` in the GitBook repo.
+
+   d. **Re-verify:** `manage_corpus_pages.py check --strict` passes and the new
+      corpus's "missing stats CSV" informational line is gone.
+
 ### Phase 6: Summary
 
 Print:
@@ -224,6 +264,7 @@ Print:
 - DTD validation result
 - Spot-check results
 - GitBook page: <path>
+- Stats tables populated from `<corpus_name>_corpora_stats.csv` (audio columns pending if the audio-durations step was skipped).
 - "GitBook page created on branch <chosen>; commit and open the GitBook PR separately."
 - Open items, e.g.:
   - "README is a stub — please flesh out the {{REPRODUCIBILITY_STEPS}} section before opening a PR"
