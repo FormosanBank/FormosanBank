@@ -174,3 +174,15 @@ def test_apply_writes_changelog_md(tmp_path):
     assert md.exists()
     text = md.read_text(encoding="utf-8")
     assert "S1" in text and "manual" in text
+
+
+def test_missing_xml_file_in_group_warns_and_skips(tmp_path):
+    # manual_edits.xml references a file that doesn't exist under corpora_path
+    _write(tmp_path / "XML" / "real.xml", _doc(_sent("S1", "x")))
+    man = tmp_path / "CodeAndDocs" / "manual_edits.xml"
+    _write(man, '<MANUAL_EDITS><FILE path="ghost.xml">'
+                '<S id="S1"><FORM kindOf="original">y</FORM></S>'
+                "</FILE></MANUAL_EDITS>")
+    proc = _run_apply(tmp_path / "XML")
+    assert proc.returncode == 0, proc.stderr
+    assert "ghost.xml" in proc.stdout and "skipping" in proc.stdout.lower()
