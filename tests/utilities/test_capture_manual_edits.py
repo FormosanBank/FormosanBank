@@ -95,3 +95,104 @@ def test_standard_only_change_is_not_captured(tmp_path):
     proc = _run_capture(repo / "XML")
     assert proc.returncode == 0, proc.stderr
     assert not (repo / "CodeAndDocs" / "manual_edits.xml").exists()
+
+
+def test_new_s_is_recorded_with_after_anchor(tmp_path):
+    repo = tmp_path
+    xml = repo / "XML" / "a.xml"
+    _write(xml, _doc(_sent("S1", "one")))
+    _init_repo(repo)
+    _commit_all(repo)
+    # split: edit S1, add S1b after it
+    _write(xml, _doc(_sent("S1", "one-a"), _sent("S1b", "one-b")))
+    proc = _run_capture(repo / "XML")
+    assert proc.returncode == 0, proc.stderr
+    fg = _manual_root(repo).find("FILE[@path='a.xml']")
+    assert fg.find("S[@id='S1']").find("FORM").text == "one-a"
+    s1b = fg.find("S[@id='S1b']")
+    assert s1b.get("after") == "S1"
+
+
+def test_split_chain_anchors_on_immediate_predecessor(tmp_path):
+    repo = tmp_path
+    xml = repo / "XML" / "a.xml"
+    _write(xml, _doc(_sent("S1", "x")))
+    _init_repo(repo)
+    _commit_all(repo)
+    _write(xml, _doc(_sent("S1", "x"), _sent("S1b", "b"), _sent("S1c", "c")))
+    proc = _run_capture(repo / "XML")
+    assert proc.returncode == 0, proc.stderr
+    fg = _manual_root(repo).find("FILE[@path='a.xml']")
+    assert fg.find("S[@id='S1b']").get("after") == "S1"
+    assert fg.find("S[@id='S1c']").get("after") == "S1b"
+
+
+def test_first_sentence_addition_has_no_after(tmp_path):
+    repo = tmp_path
+    xml = repo / "XML" / "a.xml"
+    _write(xml, _doc(_sent("S1", "x")))
+    _init_repo(repo)
+    _commit_all(repo)
+    _write(xml, _doc(_sent("S0", "new-first"), _sent("S1", "x")))
+    proc = _run_capture(repo / "XML")
+    assert proc.returncode == 0, proc.stderr
+    fg = _manual_root(repo).find("FILE[@path='a.xml']")
+    assert "after" not in fg.find("S[@id='S0']").attrib
+
+
+def test_deletion_is_recorded(tmp_path):
+    repo = tmp_path
+    xml = repo / "XML" / "a.xml"
+    _write(xml, _doc(_sent("S1", "x"), _sent("S2", "y")))
+    _init_repo(repo)
+    _commit_all(repo)
+    _write(xml, _doc(_sent("S1", "x")))  # S2 removed
+    proc = _run_capture(repo / "XML")
+    assert proc.returncode == 0, proc.stderr
+    fg = _manual_root(repo).find("FILE[@path='a.xml']")
+    assert fg.find("S[@id='S2']").get("action") == "delete"
+
+
+def test_capture_is_additive_to_existing_entries(tmp_path):
+    repo = tmp_path
+    xml = repo / "XML" / "a.xml"
+    _write(xml, _doc(_sent("S1", "x"), _sent("S2", "y")))
+    _init_repo(repo)
+    _commit_all(repo)
+    # pre-existing manual file with an unrelated entry
+    man = repo / "CodeAndDocs" / "manual_edits.xml"
+    man.parent.mkdir(parents=True, exist_ok=True)
+    man.write_text(
+        '<MANUAL_EDITS><FILE path="a.xml">'
+        '<S id="S9"><FORM kindOf="original">keep</FORM></S>'
+        "</FILE></MANUAL_EDITS>",
+        encoding="utf-8",
+    )
+    _write(xml, _doc(_sent("S1", "edited"), _sent("S2", "y")))
+    proc = _run_capture(repo / "XML")
+    assert proc.returncode == 0, proc.stderr
+    fg = _manual_root(repo).find("FILE[@path='a.xml']")
+    assert fg.find("S[@id='S9']") is not None  # survived
+    assert fg.find("S[@id='S1']").find("FORM").text == "edited"
+
+
+def test_file_absent_from_baseline_is_warned_and_skipped(tmp_path):
+    repo = tmp_path
+    a = repo / "XML" / "a.xml"
+    _write(a, _doc(_sent("S1", "x")))
+    _init_repo(repo)
+    _commit_all(repo)
+    # brand-new file never committed
+    _write(repo / "XML" / "new.xml", _doc(_sent("N1", "z")))
+    proc = _run_capture(repo / "XML")
+    assert proc.returncode == 0, proc.stderr
+    assert "new.xml" in proc.stdout and "skipping" in proc.stdout.lower()
+    assert not (repo / "CodeAndDocs" / "manual_edits.xml").exists()
+
+
+def test_not_a_git_repo_errors(tmp_path):
+    xml = tmp_path / "XML" / "a.xml"
+    _write(xml, _doc(_sent("S1", "x")))  # no git init
+    proc = _run_capture(tmp_path / "XML")
+    assert proc.returncode == 2
+    assert "git" in proc.stderr.lower()
