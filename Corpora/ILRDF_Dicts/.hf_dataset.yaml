@@ -1,0 +1,7 @@
+# Per-language HuggingFace datasets for the ILRDF dictionaries.
+# upload_to_hf.py uploads each Audio/<Lang>/ subfolder to its own dataset,
+# matching the FormosanBank/ILRDF_Dict_<Lang> repos that download_audio_data.sh
+# already expects. Run from this corpus root after porting:
+#   python ../../QC/utilities/upload_to_hf.py --path . --sync
+repo_template: FormosanBank/ILRDF_Dict_{group}
+split_by: subdir

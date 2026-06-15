@@ -1,14 +1,29 @@
-"""Upload a corpus's Audio/ folder to a HuggingFace dataset repo.
+"""Upload a corpus's audio folder to HuggingFace dataset repo(s).
 
-Works for corpora under FormosanBank/Corpora/<Name>/ and for per-corpus dev repos.
-The target HF repo is recorded in .hf_dataset.yaml at the corpus root so future
-runs don't re-prompt. If the file is missing, the user is asked whether to
-select an existing FormosanBank dataset or create a new one; either way the
-choice is written to .hf_dataset.yaml.
+Works for corpora under FormosanBank/Corpora/<Name>/ and for per-corpus dev
+repos. The target is recorded in .hf_dataset.yaml at the corpus root so future
+runs don't re-prompt. Two layouts are supported:
+
+  # Single dataset (one repo for the whole Audio/ tree):
+  repo: FormosanBank/YutasWilang
+
+  # Per-subdir datasets (one repo per top-level subdir — e.g. per language).
+  # Each immediate subdir of the audio folder is uploaded to its own repo:
+  repo_template: FormosanBank/ILRDF_Dict_{group}
+  split_by: subdir
+  audio_dir: Final_audio        # optional; default "Audio"
+
+`{group}` is substituted with each subdir name (e.g. Amis -> ILRDF_Dict_Amis).
+`audio_dir` (or --audio-dir) overrides the default "Audio" folder name, so the
+tool also runs against a dev repo's Final_audio/ before porting.
+
+If .hf_dataset.yaml is missing, the user is asked to select an existing
+FormosanBank dataset or create a new one (single-dataset mode); the choice is
+written back. Split mode must be configured by writing .hf_dataset.yaml.
 
 Default mode is an incremental upload (new/changed files only, never deletes).
-With --sync, also removes remote files not present locally so the remote
-matches the local Audio/ tree exactly.
+With --sync, also removes remote files not present locally so each remote
+matches its local folder exactly.
 """
 
 import argparse
@@ -23,7 +38,7 @@ from huggingface_hub import HfApi
 from huggingface_hub.errors import HfHubHTTPError
 
 HIDDEN_FILE = ".hf_dataset.yaml"
-AUDIO_DIR_NAME = "Audio"
+DEFAULT_AUDIO_DIR = "Audio"
 DEFAULT_ORG = "FormosanBank"
 EXCLUDE_PATTERN = "**/.DS_Store"
 
@@ -44,40 +59,28 @@ UPLOAD_ENV = {
 
 def parse_args():
     p = argparse.ArgumentParser(
-        description="Upload a corpus's Audio/ folder to a HuggingFace dataset repo.",
+        description="Upload a corpus's audio folder to HuggingFace dataset repo(s).",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=(
-            "The target repo is read from .hf_dataset.yaml at the corpus root.\n"
-            "If absent, you'll be prompted to select an existing FormosanBank\n"
-            "dataset or create a new one; the choice is then written to that file."
+            "The target is read from .hf_dataset.yaml at the corpus root\n"
+            "(single dataset via 'repo:', or per-subdir via 'repo_template:' +\n"
+            "'split_by: subdir'). If absent, you'll be prompted to set up a\n"
+            "single dataset."
         ),
     )
-    p.add_argument(
-        "--path",
-        default=".",
-        help="Corpus root directory (must contain an Audio/ subfolder). Default: cwd.",
-    )
-    p.add_argument(
-        "--sync",
-        action="store_true",
-        help="Also delete remote files not present locally. Default mode never deletes.",
-    )
-    p.add_argument(
-        "--dry-run",
-        action="store_true",
-        help="Show what would happen; make no remote changes.",
-    )
-    p.add_argument(
-        "--yes",
-        action="store_true",
-        help="Skip confirmation prompts (for unattended runs).",
-    )
-    p.add_argument(
-        "--num-workers",
-        type=int,
-        default=1,
-        help="Parallelism for hf upload-large-folder. Default 1 for reliability.",
-    )
+    p.add_argument("--path", default=".",
+                   help="Corpus root directory (contains the audio folder). Default: cwd.")
+    p.add_argument("--audio-dir", default=None,
+                   help=f"Audio folder name under --path. Overrides the .hf_dataset.yaml "
+                        f"'audio_dir' and the default '{DEFAULT_AUDIO_DIR}'.")
+    p.add_argument("--sync", action="store_true",
+                   help="Also delete remote files not present locally. Default never deletes.")
+    p.add_argument("--dry-run", action="store_true",
+                   help="Show what would happen; make no remote changes.")
+    p.add_argument("--yes", action="store_true",
+                   help="Skip confirmation prompts (for unattended runs).")
+    p.add_argument("--num-workers", type=int, default=1,
+                   help="Parallelism for hf upload-large-folder. Default 1 for reliability.")
     return p.parse_args()
 
 
@@ -90,17 +93,12 @@ def info(msg):
     print(msg, file=sys.stderr)
 
 
-def find_corpus_root(path_str):
-    root = Path(path_str).expanduser().resolve()
-    if not root.is_dir():
-        die(f"--path {root} is not a directory")
-    audio = root / AUDIO_DIR_NAME
-    if not audio.is_dir():
-        die(f"No {AUDIO_DIR_NAME}/ directory found at {root}")
-    return root, audio
+def read_config(root):
+    """Parse .hf_dataset.yaml into a config dict, or None if absent.
 
-
-def read_hidden(root):
+    Returns {mode: 'single', repo, audio_dir} or
+            {mode: 'split', repo_template, audio_dir}.
+    """
     f = root / HIDDEN_FILE
     if not f.is_file():
         return None
@@ -108,16 +106,24 @@ def read_hidden(root):
         data = yaml.safe_load(f.read_text()) or {}
     except yaml.YAMLError as e:
         die(f"{f} is malformed: {e}")
+    audio_dir = data.get("audio_dir")
+    if "repo_template" in data or data.get("split_by"):
+        tmpl = data.get("repo_template")
+        if not isinstance(tmpl, str) or "{group}" not in tmpl:
+            die(f"{f}: 'repo_template' must be a string containing '{{group}}' "
+                f"(e.g. 'FormosanBank/ILRDF_Dict_{{group}}').")
+        if data.get("split_by") != "subdir":
+            die(f"{f}: 'split_by' must be 'subdir' for per-subdir datasets.")
+        return {"mode": "split", "repo_template": tmpl, "audio_dir": audio_dir}
     repo = data.get("repo")
     if not isinstance(repo, str) or "/" not in repo:
-        die(f"{f} missing or invalid 'repo:' field (expected 'org/name')")
-    return repo
+        die(f"{f}: need either 'repo: org/name' or 'repo_template:' + 'split_by: subdir'.")
+    return {"mode": "single", "repo": repo, "audio_dir": audio_dir}
 
 
-def write_hidden(root, repo_id):
-    f = root / HIDDEN_FILE
-    f.write_text(yaml.safe_dump({"repo": repo_id}, sort_keys=False))
-    info(f"Wrote {f}")
+def write_single_repo(root, repo_id):
+    (root / HIDDEN_FILE).write_text(yaml.safe_dump({"repo": repo_id}, sort_keys=False))
+    info(f"Wrote {root / HIDDEN_FILE}")
 
 
 def prompt(msg, default=None):
@@ -198,27 +204,27 @@ def create_new(api, default_name):
 def ensure_repo_exists(api, repo_id, dry_run, assume_yes):
     if api.repo_exists(repo_id, repo_type="dataset"):
         return
-    info(f"Repo {repo_id} does not exist on HuggingFace ({HIDDEN_FILE} may be stale).")
+    info(f"Repo {repo_id} does not exist on HuggingFace.")
     if dry_run:
-        die("Cannot proceed in dry-run mode when the target repo doesn't exist.")
+        die(f"Cannot proceed in dry-run mode when {repo_id} doesn't exist.")
     if not confirm(f"Create {repo_id} now?", assume_yes=assume_yes):
         sys.exit(1)
     api.create_repo(repo_id, repo_type="dataset", exist_ok=False)
     info(f"Created {repo_id}")
 
 
-def local_file_set(audio_dir):
+def local_file_set(folder):
     out = set()
-    for p in audio_dir.rglob("*"):
+    for p in folder.rglob("*"):
         if p.is_file() and p.name != ".DS_Store":
-            out.add(str(p.relative_to(audio_dir)).replace(os.sep, "/"))
+            out.add(str(p.relative_to(folder)).replace(os.sep, "/"))
     return out
 
 
-def sync_deletions(api, repo_id, audio_dir, dry_run, assume_yes):
+def sync_deletions(api, repo_id, folder, dry_run, assume_yes):
     info(f"Listing remote files in {repo_id}...")
     remote = set(api.list_repo_files(repo_id, repo_type="dataset")) - HUB_MANAGED_FILES
-    local = local_file_set(audio_dir)
+    local = local_file_set(folder)
     extras = sorted(remote - local)
     if not extras:
         info("--sync: nothing to delete (remote already matches local).")
@@ -240,9 +246,9 @@ def sync_deletions(api, repo_id, audio_dir, dry_run, assume_yes):
     info(f"Deleted {len(extras)} file(s).")
 
 
-def upload(repo_id, audio_dir, num_workers, dry_run):
+def upload(repo_id, folder, num_workers, dry_run):
     cmd = [
-        "hf", "upload-large-folder", repo_id, str(audio_dir),
+        "hf", "upload-large-folder", repo_id, str(folder),
         "--repo-type=dataset",
         "--num-workers", str(num_workers),
         "--exclude", EXCLUDE_PATTERN,
@@ -257,56 +263,85 @@ def upload(repo_id, audio_dir, num_workers, dry_run):
         die("hf upload-large-folder failed", code=result.returncode)
 
 
+def push_one(api, repo_id, folder, args):
+    """Ensure a repo exists, optionally sync deletions, and upload one folder."""
+    ensure_repo_exists(api, repo_id, dry_run=args.dry_run, assume_yes=args.yes)
+    if args.sync:
+        sync_deletions(api, repo_id, folder, dry_run=args.dry_run, assume_yes=args.yes)
+    upload(repo_id, folder, args.num_workers, dry_run=args.dry_run)
+
+
 def check_hf_cli():
     from shutil import which
     if which("hf") is None:
         die("'hf' command not found. Install with: pip install 'huggingface_hub[cli]'")
 
 
+def subdir_groups(audio_dir):
+    return sorted(d.name for d in audio_dir.iterdir() if d.is_dir())
+
+
+def count_files(folder):
+    return sum(1 for p in folder.rglob("*") if p.is_file() and p.name != ".DS_Store")
+
+
 def main():
     args = parse_args()
     check_hf_cli()
-    root, audio_dir = find_corpus_root(args.path)
-    api = HfApi()
 
+    root = Path(args.path).expanduser().resolve()
+    if not root.is_dir():
+        die(f"--path {root} is not a directory")
+    config = read_config(root)
+
+    audio_name = args.audio_dir or (config or {}).get("audio_dir") or DEFAULT_AUDIO_DIR
+    audio_dir = root / audio_name
+    if not audio_dir.is_dir():
+        die(f"No '{audio_name}/' directory found at {root} "
+            f"(set 'audio_dir' in {HIDDEN_FILE} or pass --audio-dir).")
+
+    api = HfApi()
     try:
         api.whoami()
     except Exception as e:
         die(f"Not authenticated to HuggingFace ({e.__class__.__name__}: {e}). "
             f"Run 'hf auth login'.")
 
-    repo_id = read_hidden(root)
-    if repo_id is None:
-        repo_id = select_or_create_repo(
-            api, default_name=root.name,
-            assume_yes=args.yes, dry_run=args.dry_run,
-        )
-        write_hidden(root, repo_id)
-    else:
-        info(f"Using repo from {HIDDEN_FILE}: {repo_id}")
+    # No config yet → interactive single-dataset setup (split must be hand-written).
+    if config is None:
+        repo_id = select_or_create_repo(api, default_name=root.name,
+                                        assume_yes=args.yes, dry_run=args.dry_run)
+        write_single_repo(root, repo_id)
+        config = {"mode": "single", "repo": repo_id}
 
-    ensure_repo_exists(api, repo_id, dry_run=args.dry_run, assume_yes=args.yes)
-
-    file_count = sum(
-        1 for p in audio_dir.rglob("*")
-        if p.is_file() and p.name != ".DS_Store"
-    )
     mode = "sync" if args.sync else "incremental upload"
     if args.dry_run:
         mode += " (dry-run)"
     info(f"Corpus root: {root}")
-    info(f"Audio dir  : {audio_dir} ({file_count} files)")
-    info(f"Repo       : {repo_id}")
+    info(f"Audio dir  : {audio_dir}")
     info(f"Mode       : {mode}")
 
-    if args.sync:
-        sync_deletions(api, repo_id, audio_dir,
-                       dry_run=args.dry_run, assume_yes=args.yes)
+    if config["mode"] == "single":
+        repo_id = config["repo"]
+        info(f"Target     : {repo_id} ({count_files(audio_dir)} files)")
+        push_one(api, repo_id, audio_dir, args)
+        if not args.dry_run:
+            print(f"https://huggingface.co/datasets/{repo_id}")
+        return
 
-    upload(repo_id, audio_dir, args.num_workers, dry_run=args.dry_run)
-
+    # split mode: one dataset per immediate subdir
+    tmpl = config["repo_template"]
+    groups = subdir_groups(audio_dir)
+    if not groups:
+        die(f"split_by subdir, but {audio_dir} has no subdirectories to upload.")
+    info(f"Target     : {tmpl} — {len(groups)} datasets (one per subdir)")
+    for g in groups:
+        repo_id = tmpl.format(group=g)
+        gdir = audio_dir / g
+        info(f"\n=== {g} → {repo_id} ({count_files(gdir)} files) ===")
+        push_one(api, repo_id, gdir, args)
     if not args.dry_run:
-        print(f"https://huggingface.co/datasets/{repo_id}")
+        print(f"Uploaded {len(groups)} datasets: " + ", ".join(tmpl.format(group=g) for g in groups))
 
 
 if __name__ == "__main__":
