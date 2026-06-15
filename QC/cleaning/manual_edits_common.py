@@ -18,6 +18,7 @@ regenerate those tiers downstream (apply runs before them).
 from __future__ import annotations
 
 import copy
+import subprocess
 from pathlib import Path
 
 from lxml import etree
@@ -81,3 +82,85 @@ def render_s(s_elem: etree._Element) -> str:
         if text:
             parts.append(f"[{lang}] {text}")
     return " / ".join(parts)
+
+
+# ----- manual-file model -----------------------------------------------------
+
+def new_manual_root() -> etree._Element:
+    return etree.Element("MANUAL_EDITS")
+
+
+def load_manual(manual_file):
+    """Parse manual_edits.xml -> <MANUAL_EDITS> root, or None if absent."""
+    p = Path(manual_file)
+    if not p.exists():
+        return None
+    return etree.parse(str(p)).getroot()
+
+
+def find_file_group(root, rel_path):
+    for fe in root.findall("FILE"):
+        if fe.get("path") == rel_path:
+            return fe
+    return None
+
+
+def get_or_create_file_group(root, rel_path):
+    fe = find_file_group(root, rel_path)
+    if fe is None:
+        fe = etree.SubElement(root, "FILE", {"path": rel_path})
+    return fe
+
+
+def upsert_record(file_group, s_record):
+    """Replace the <S> with matching id, or append s_record if id is new."""
+    sid = s_record.get("id")
+    for existing in file_group.findall("S"):
+        if existing.get("id") == sid:
+            file_group.replace(existing, s_record)
+            return
+    file_group.append(s_record)
+
+
+def remove_record(file_group, sid) -> bool:
+    for existing in file_group.findall("S"):
+        if existing.get("id") == sid:
+            file_group.remove(existing)
+            return True
+    return False
+
+
+def write_manual(root, manual_file):
+    """Serialize the manual root (dropping empty <FILE> groups), pretty-printed."""
+    for fe in list(root.findall("FILE")):
+        if not fe.findall("S"):
+            root.remove(fe)
+    p = Path(manual_file)
+    p.parent.mkdir(parents=True, exist_ok=True)
+    tree = etree.ElementTree(root)
+    etree.indent(tree, space="    ")
+    tree.write(str(p), xml_declaration=True, pretty_print=True, encoding="utf-8")
+
+
+# ----- git access ------------------------------------------------------------
+
+def git_root(path):
+    """Top-level of the git work tree containing path, or None."""
+    res = subprocess.run(
+        ["git", "-C", str(path), "rev-parse", "--show-toplevel"],
+        capture_output=True, text=True,
+    )
+    if res.returncode != 0:
+        return None
+    return Path(res.stdout.strip())
+
+
+def git_show(repo_root, ref, rel_path):
+    """Bytes of <ref>:<rel_path>, or None if not present at that ref."""
+    res = subprocess.run(
+        ["git", "-C", str(repo_root), "show", f"{ref}:{rel_path}"],
+        capture_output=True,
+    )
+    if res.returncode != 0:
+        return None
+    return res.stdout
