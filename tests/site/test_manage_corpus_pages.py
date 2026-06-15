@@ -131,6 +131,9 @@ def test_check_clean_tree_passes(gitbook):
     )
     assert result.integration_issues == []
     assert result.placeholder_issues == []
+    # pins the sister-read: the fixture's CSVs live in FormosanBank/statistics, so
+    # zero stats_csv_issues is only true if run_check reads there (not root/statistics)
+    assert result.stats_csv_issues == []
     # wikipedias present in en-us but missing from pwn + zh-TW -> lag (informational)
     assert any("wikipedias.md" in m for m in result.translation_lag)
     assert result.ok is True  # ok ignores informational lag
