@@ -22,7 +22,7 @@ from pathlib import Path
 
 from lxml import etree
 
-XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
+XML_LANG_ATTR = "{http://www.w3.org/XML/1998/namespace}lang"
 
 
 # ----- path resolution -------------------------------------------------------
@@ -76,7 +76,7 @@ def render_s(s_elem: etree._Element) -> str:
         if form.text and form.text.strip():
             parts.append(form.text.strip())
     for tr in s_elem.findall("TRANSL"):
-        lang = tr.get(XML_LANG, "")
+        lang = tr.get(XML_LANG_ATTR, "")
         text = (tr.text or "").strip()
         if text:
             parts.append(f"[{lang}] {text}")

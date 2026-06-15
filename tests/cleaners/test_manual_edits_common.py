@@ -87,3 +87,8 @@ def test_changelog_path_swaps_suffix(tmp_path):
     assert mec.changelog_path(tmp_path / "CodeAndDocs" / "manual_edits.xml") == (
         tmp_path / "CodeAndDocs" / "manual_edits.md"
     )
+
+
+def test_render_s_falls_back_to_bare_form_when_no_original():
+    s = _s('<S id="x"><FORM>bare</FORM></S>')
+    assert "bare" in mec.render_s(s)
