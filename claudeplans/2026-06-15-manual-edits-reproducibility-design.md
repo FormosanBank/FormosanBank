@@ -64,6 +64,7 @@ One file per corpus. Stores **full `<S>` blocks** (not a diff), grouped by sourc
 <MANUAL_EDITS>
   <FILE path="Amis/story01.xml">          <!-- path relative to --corpora_path -->
     <S id="S023"> … verbatim edited S, standard-tier FORM and PHON stripped … </S>
+    <S id="S023b" after="S023"> … a split-off variant, inserted after S023 … </S>
     <S id="S099" action="delete"/>         <!-- remove the S with this id on apply -->
   </FILE>
   <FILE path="Amis/story02.xml"> … </FILE>
@@ -72,7 +73,8 @@ One file per corpus. Stores **full `<S>` blocks** (not a diff), grouped by sourc
 
 - Root `<MANUAL_EDITS>` → `<FILE path="…">` groups → `<S>` blocks.
 - `path` is relative to the corpus's XML root (the `--corpora_path` both scripts are given).
-- Default `<S>` action is **upsert** (replace-by-id, or append if the id is new). `action="delete"` records a hand-deletion.
+- Default `<S>` action is **upsert** (replace-by-id, or insert if the id is new). `action="delete"` records a hand-deletion.
+- `after="<id>"` is an optional **placement hint** for a *newly added* id: `apply` inserts the new `<S>` immediately after the `<S>` with that id (see "Adding / splitting an S" below). It has no effect on override or delete semantics, and is ignored for ids that already exist in `O`.
 - Recorded `<S>` blocks have **standard-tier FORM and all PHON removed** (see `strip()` below).
 
 ### Changelog — `CodeAndDocs/manual_edits.md`
@@ -116,9 +118,12 @@ This basis is what lets the maintainer edit the fully standardized/phonologized 
 
 | Situation | Action on the manual file |
 |---|---|
-| `B ≠ W` | record `R := strip(W)` (replaces any prior R for that id) |
-| present in B, **absent in W** | record `R := <S id="…" action="delete"/>` |
+| present in B, `B ≠ W` (a **change**) | record `R := strip(W)` (replaces any prior R for that id) |
+| **absent in B**, present in W (a **new S**) | record `R := strip(W)` plus `after="<id>"` (see below) |
+| present in B, **absent in W** (a **deletion**) | record `R := <S id="…" action="delete"/>` |
 | `B = W` | leave untouched (additive — prior entries survive) |
+
+For a **new S**, `capture` sets `after` to the id of the **immediate preceding `<S>` sibling in `W`** — which may be a pre-existing id *or* another freshly added one. For a chain of split-offs, this records `S023b after="S023"` and `S023c after="S023b"`, so `apply` (processing new S in document order — see below) reproduces the exact order `S023 → S023b → S023c`. If a new S has no preceding `<S>` sibling, `after` is omitted and `apply` end-appends it.
 
 That is the whole job. No O, no changelog, no pruning, no `--force`.
 
@@ -138,9 +143,11 @@ That is the whole job. No O, no changelog, no pruning, no `--force`.
 - Otherwise, for each `<FILE path>` group and each operation `R`, compare against `O[target]` on the `strip()` basis:
   - **No-op** — an upsert where `strip(R) = strip(O[target])`, or a delete whose target is already absent → **delete `R` from the manual file**, apply nothing, **and warn to console** (e.g. `pruned no-op manual edit: <file> / <id>`). Expected to be rare.
   - **Otherwise** → apply the operation:
-    - upsert: replace the `<S>` with matching id, or append to the `TEXT` if the id is new;
+    - upsert, id already in `O`: **replace** the `<S>` with matching id in place (the `after` hint, if any, is ignored);
+    - upsert, id new: **insert** it — after the `<S>` whose id equals `after` if that id is present, otherwise **append** to the `TEXT`;
     - delete: remove the `<S>` with matching id.
     Record a changelog entry (before = `O[target]`, after = `R`, or "deleted").
+- New-S inserts within a file are processed in **manual-file document order**, so an `after` pointing at an earlier new sibling resolves correctly (it has already been inserted). An `after` that resolves to neither an existing id nor an already-inserted new id falls back to end-append.
 - Write back the (possibly pruned) `manual_edits.xml`, and (re)generate `manual_edits.md`.
 - Print a per-file summary (applied / pruned counts).
 
@@ -156,13 +163,25 @@ That is the whole job. No O, no changelog, no pruning, no `--force`.
 
 ---
 
+## Adding / splitting an S (the common addition case)
+
+The most common reason to *add* an S is **splitting a multi-option sentence**. A source `<S>` may pack several alternatives (typically marked with `/` or `(...)`); the pipeline tries to expand these programmatically, but cannot always. The maintainer then edits the original `<S>` down to a single version and creates one new `<S>` per remaining variant, placed adjacent to it.
+
+This needs no new mechanism beyond what is above:
+- The edit to the original id is a normal **change** (`R := strip(W)`).
+- Each new variant is a normal **new S** (`R := strip(W)` with an `after` hint), inserted adjacent to its sibling so reading order is preserved.
+
+The maintainer is responsible for choosing unique, stable ids for the new variants (e.g. suffixing the original id).
+
 ## Testing
 
 New tests under `tests/` (matching the existing `tests/cleaners/` layout), using `lxml` + `pytest` + `subprocess`, on synthetic multi-file fixtures:
 
 **`capture_manual_edits.py`**
 - change: an edited `<S>` is recorded as `strip(W)` under the right `<FILE path>`.
-- add: a brand-new id in an existing file is recorded.
+- add: a brand-new id in an existing file is recorded with `after` = its immediate preceding sibling id.
+- split chain: `S023 → S023b → S023c` records `after="S023"` then `after="S023b"`.
+- add with no preceding sibling: `after` omitted.
 - delete: an id present in B but gone from W is recorded as `action="delete"`.
 - additive: a pre-existing unrelated entry survives a capture that touches a different id.
 - strip: standard-tier FORM and PHON are absent from the recorded block.
@@ -170,7 +189,8 @@ New tests under `tests/` (matching the existing `tests/cleaners/` layout), using
 - no-git / bad ref: clean error.
 
 **`apply_manual_edits.py`**
-- upsert replace, upsert append, delete.
+- upsert replace (existing id), upsert insert-after-anchor (new id), upsert end-append (new id, no/unresolved anchor), delete.
+- split insertion: a chain anchored `S023 → S023b → S023c` lands in reading order, processed in manual-file document order.
 - multi-file: operations routed to the correct files.
 - no-op prune: an entry equal to O is removed, a warning is printed, and the changelog reflects it.
 - empty/missing manual file: prints the "nothing to do" message, exits 0, touches nothing.
