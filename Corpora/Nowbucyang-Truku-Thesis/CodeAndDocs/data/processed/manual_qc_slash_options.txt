@@ -1,0 +1,62 @@
+# Manual QC: Slash Option Preservation
+
+Each group below came from one source example containing slash-separated alternatives. Grammatical slash alternatives are preserved in the XML original forms; starred ungrammatical alternatives are omitted from XML. Source-published free translations are intentionally retained unchanged so a human can fix Mandarin free translations during QC.
+
+## (6) a. / HSU_LOWKING_TRUKU_WORDFORMATION_2008_RAW_0013
+- Page: 28
+- Source form: M-kan qlupas ka hiya/laqi.
+- Source gloss: AF-吃 桃子 主格 他/小孩
+- Source free translation kept for QC: 他/小孩要吃桃子
+- Emitted XML:
+
+## (6) b. / HSU_LOWKING_TRUKU_WORDFORMATION_2008_RAW_0014
+- Page: 28
+- Source form: Uq-un hiya/laqi ka qlupas nii.
+- Source gloss: 吃-un 他/小孩 主格 桃子 這
+- Source free translation kept for QC: 他/小孩要吃這個桃子
+- Emitted XML:
+
+## (6) c. / HSU_LOWKING_TRUKU_WORDFORMATION_2008_RAW_0015
+- Page: 28
+- Source form: S-m-ipaq hiya/laqi =na ka Lowking nii.
+- Source gloss: 打<AF> 他/小孩-他 主格 人名 這
+- Source free translation kept for QC: Lowking在打他/小孩。
+- Emitted XML:
+
+## (23) c. / HSU_LOWKING_TRUKU_WORDFORMATION_2008_RAW_0080
+- Page: 40
+- Source form: Ds-un =mu (saman/*shiga) ka huling nii.
+- Source gloss: 帶-PF-我 明天/昨天 主格 狗 這
+- Source free translation kept for QC: 這隻狗(明天/昨天)我要帶走。
+- Emitted XML:
+  - `HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E023Cb`: Ds-un =mu saman ka huling nii.
+
+## (23) d. / HSU_LOWKING_TRUKU_WORDFORMATION_2008_RAW_0081
+- Page: 40
+- Source form: Ds-an =mu (*saman/shiga) ka huling nii.
+- Source gloss: 帶-PF-我 明天/昨天 主格 狗 這
+- Source free translation kept for QC: 這隻狗(明天/昨天)是我帶走的。
+- Emitted XML:
+  - `HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E023Db`: Ds-an =mu shiga ka huling nii.
+
+## (25) a. / HSU_LOWKING_TRUKU_WORDFORMATION_2008_RAW_0086
+- Page: 41
+- Source form: M-ha =su inu ka sayang/saman/*shiga/*suni?
+- Source gloss: AF-去-你 哪裡 主格 今天(現在)/明天/昨天/剛才
+- Source free translation kept for QC: 你今天(現在)/明天/昨天/剛才去哪裡？
+- Emitted XML:
+
+## (26) d. / HSU_LOWKING_TRUKU_WORDFORMATION_2008_RAW_0097
+- Page: 43
+- Source form: Tna/Jima m-n-kan =ku n-hapuy ka sayang/shiga/*saman.
+- Source gloss: 已經 吃<n>-我 n-煮 主格 今天/昨天/明天
+- Source free translation kept for QC: 我今天/昨天/明天已經吃過飯了。
+- Emitted XML:
+
+## (26) e. / HSU_LOWKING_TRUKU_WORDFORMATION_2008_RAW_0098
+- Page: 43
+- Source form: *Tna/Jima m-kan =ku n-hapuy da.
+- Source gloss: 已經 AF-吃-我 n-煮 了
+- Source free translation kept for QC: 我已經吃過飯了。
+- Emitted XML:
+  - `HSU_LOWKING_TRUKU_WORDFORMATION_2008_C01_E026E`: Jima m-kan =ku n-hapuy da.

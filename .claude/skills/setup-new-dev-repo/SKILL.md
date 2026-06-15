@@ -60,10 +60,12 @@ Capture pip output. If any install fails, surface immediately to user — do not
 
 ### Phase 4: Scaffold layout
 
+Canonical corpus folders match the published `Corpora/<Name>/` tree: **`XML/`** (the corpus XML), **`Audio/`** (downloaded audio, gitignored — audio corpora only), and **`CodeAndDocs/`** (scripts that reproduce `XML/`). Use these names, **never `Final_XML`/`Final_audio`** (a legacy naming being phased out of older dev repos).
+
 - Create placeholders: `XML/.gitkeep`, `CodeAndDocs/.gitkeep`.
 - Generate `README.md` from `.claude/skills/setup-new-dev-repo/README.template.md`, substituting `{{CORPUS_NAME}}`, `{{LANGUAGE}}`, `{{CREATED_DATE}}` (today, YYYY-MM-DD).
-- Copy `.claude/skills/setup-new-dev-repo/gitignore.template` to `.gitignore`.
-- If `has_audio`: copy and substitute `download_audio_data.sh.template` to `download_audio_data.sh`; `chmod +x` it.
+- Copy `.claude/skills/setup-new-dev-repo/gitignore.template` to `.gitignore` (it already ignores `Audio/`, `*.mp3`, `*.wav`).
+- If `has_audio`: copy and substitute `download_audio_data.sh.template` to `download_audio_data.sh` (it downloads into `Audio/`); `chmod +x` it.
 
 ### Phase 5: Install Claude Code safety rails
 
