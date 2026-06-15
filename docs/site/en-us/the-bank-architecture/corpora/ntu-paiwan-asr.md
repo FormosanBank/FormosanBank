@@ -40,17 +40,17 @@ Below is a detailed description of the data outlying for each speaker how many r
 <!-- CORPUS STATS START -->
 ### Corpus Statistics
 
-| | Paiwan<br>Central | Paiwan<br>Eastern | Paiwan<br>Northern |
-| --- | --- | --- | --- |
-| Word count | 3,136 | 10,688 | 20,672 |
-| Total audio | 0.8h | 2.7h | 4.6h |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0.8h | 2.7h | 4.6h |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 | 0 |
-| Translated words |  |  |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 0 | 0 | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 | 0 | 0 |
-| Morphologically segmented | 0 | 0 | 0 |
-| Glossed words | 0 | 0 | 0 |
+| | Paiwan<br>Central | Paiwan<br>Eastern | Paiwan<br>Northern | Paiwan<br>Southern |
+| --- | --- | --- | --- | --- |
+| Word count | 3,632 | 20,512 | 27,735 | 5,554 |
+| Total audio | 1.5h | 6.6h | 8.1h | 1.5h |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0.9h | 4.8h | 6.3h | 0.9h |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0.5h | 1.9h | 1.9h | 0.6h |
+| Translated words |  |  |  |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 0 | 0 | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 | 0 | 0 | 0 |
+| Morphologically segmented | 0 | 0 | 0 | 0 |
+| Glossed words | 0 | 0 | 0 | 0 |
 
 ***
 
