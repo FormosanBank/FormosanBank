@@ -219,7 +219,8 @@ def run_check(gitbook_root, corpora_path, ignore_path) -> CheckResult:
         (root / "update_corpus_stats.py").read_text(encoding="utf-8")
     )
     ignore = load_ignore(ignore_path)
-    statistics = root / "statistics"
+    # canonical CSVs live in the sibling FormosanBank/statistics, not the GitBook repo
+    statistics = corpora.parent / "statistics"
     shipped = find_shipped_corpora(corpora)
 
     res = CheckResult()

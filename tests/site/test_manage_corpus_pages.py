@@ -165,7 +165,7 @@ def test_check_detects_missing_readme_list_entry(gitbook):
 
 def test_check_missing_stats_csv_is_informational(gitbook):
     # remove a CSV but leave page/nav/readme-list/map intact
-    (gitbook.root / "statistics" / "Wikipedias_corpora_stats.csv").unlink()
+    (gitbook.fb_statistics / "Wikipedias_corpora_stats.csv").unlink()
     result = mcp.run_check(
         gitbook_root=str(gitbook.root),
         corpora_path=str(gitbook.corpora),

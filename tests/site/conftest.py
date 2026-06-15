@@ -65,7 +65,6 @@ def gitbook(tmp_path):
     root = tmp_path / "FormosanBankGitbook"
     corpora_pages = root / "en-us" / "the-bank-architecture" / "corpora"
     corpora_pages.mkdir(parents=True)
-    (root / "statistics").mkdir()
 
     # Two existing, fully-wired corpora: ePark, Wikipedias
     (corpora_pages / "epark.md").write_text("# ePark\n\nText.\n", encoding="utf-8")
@@ -73,8 +72,6 @@ def gitbook(tmp_path):
     (corpora_pages / "README.md").write_text(CORPORA_README_TEMPLATE, encoding="utf-8")
     (root / "en-us" / "SUMMARY.md").write_text(SUMMARY_TEMPLATE, encoding="utf-8")
     (root / "update_corpus_stats.py").write_text(UPDATE_STATS_TEMPLATE, encoding="utf-8")
-    for name in ("ePark", "Wikipedias"):
-        (root / "statistics" / f"{name}_corpora_stats.csv").write_text("x\n", encoding="utf-8")
 
     # parallel translation trees (pwn missing wikipedias -> translation lag)
     pwn = root / "pwn" / "the-bank-architecture" / "corpora"
@@ -89,12 +86,19 @@ def gitbook(tmp_path):
     for name in ("ePark", "Wikipedias"):
         (corpora / name / "XML").mkdir(parents=True)
 
+    # per-corpus stats CSVs live in the canonical FormosanBank/statistics
+    fb_statistics = tmp_path / "FormosanBank" / "statistics"
+    fb_statistics.mkdir(parents=True)
+    for name in ("ePark", "Wikipedias"):
+        (fb_statistics / f"{name}_corpora_stats.csv").write_text("x\n", encoding="utf-8")
+
     class GB:
         pass
 
     gb = GB()
     gb.root = root
     gb.corpora = corpora
+    gb.fb_statistics = fb_statistics
     gb.summary = root / "en-us" / "SUMMARY.md"
     gb.stats_script = root / "update_corpus_stats.py"
     gb.pages = corpora_pages
