@@ -10,7 +10,9 @@ a Corpus Statistics section as the second section of each corresponding markdown
 in `en-us/the-bank-architecture/corpora/`.
 """
 
+import argparse
 import csv
+import os
 import re
 from pathlib import Path
 
@@ -19,6 +21,33 @@ from pathlib import Path
 # ---------------------------------------------------------------------------
 REPO_ROOT  = Path(__file__).parent
 STATS_DIR  = REPO_ROOT / 'statistics'
+
+
+def resolve_stats_dir(cli_stats_dir=None, env=None, repo_root=None):
+    """Resolve the canonical FormosanBank stats dir.
+
+    Precedence: --stats-dir flag > FORMOSANBANK_STATS_DIR env > sibling
+    <repo_root>/../FormosanBank/statistics. Hard-errors if the result is
+    not an existing directory (never silently falls back).
+    """
+    repo_root = Path(repo_root) if repo_root is not None else REPO_ROOT
+    env = env if env is not None else os.environ
+    if cli_stats_dir:
+        d = Path(cli_stats_dir)
+    elif env.get("FORMOSANBANK_STATS_DIR"):
+        d = Path(env["FORMOSANBANK_STATS_DIR"])
+    else:
+        d = repo_root.parent / "FormosanBank" / "statistics"
+    d = d.resolve()
+    if not d.is_dir():
+        raise SystemExit(
+            f"[update_corpus_stats] stats dir not found: {d}\n"
+            f"Clone FormosanBank as a sibling of FormosanBankGitbook, "
+            f"or pass --stats-dir <path>."
+        )
+    return d
+
+
 CORPORA_DIR = REPO_ROOT / 'en-us' / 'the-bank-architecture' / 'corpora'
 
 # ---------------------------------------------------------------------------
@@ -484,6 +513,21 @@ def update_readme() -> None:
 # ---------------------------------------------------------------------------
 
 def main() -> None:
+    parser = argparse.ArgumentParser(
+        description="Inject corpus statistics tables into the GitBook markdown."
+    )
+    parser.add_argument(
+        "--stats-dir",
+        default=None,
+        help="Path to FormosanBank/statistics (default: sibling FormosanBank "
+             "checkout, or $FORMOSANBANK_STATS_DIR).",
+    )
+    args = parser.parse_args()
+
+    global STATS_DIR
+    STATS_DIR = resolve_stats_dir(cli_stats_dir=args.stats_dir)
+
+    print(f'Reading stats from {STATS_DIR}\n')
     print('Updating corpus markdown files with statistics…\n')
 
     for csv_name, md_name in CSV_TO_MD.items():
