@@ -17,15 +17,15 @@ It consists of three main sections:
 
 | | Amis<br>Coastal | Bunun<br>Junqun | Kavalan | Rukai<br>Wutai | Sakizaya | Atayal<br>Wenshui | Seediq<br>Tegudaya | Tsou | Kanakanabu | Saisiyat |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Word count | 7,561 | 22,922 | 16,244 | 17,931 | 13,985 | 5,856 | 23,341 | 10,107 | 20,074 | 10,816 |
+| Word count | 7,561 | 23,283 | 16,244 | 17,985 | 13,999 | 5,856 | 23,341 | 10,128 | 20,352 | 10,816 |
 | Total audio | 1.2h | 1.6h | 2.9h | 1.6h | 2.3h | 1.1h | 3.3h | 1.0h | 4.0h | 1.8h |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 1.2h | 1.6h | 2.9h | 1.6h | 2.3h | 1.1h | 3.3h | 1.0h | 4.0h | 1.8h |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | Translated words |  |  |  |  |  |  |  |  |  |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 7,516 | 22,843 | 16,179 | 17,915 | 8,949 | 5,851 | 18,427 | 10,107 | 14,968 | 10,800 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 7,561 | 22,832 | 16,242 | 17,914 | 13,983 | 5,851 | 23,341 | 10,107 | 20,062 | 10,800 |
-| Morphologically segmented | 7,561 | 22,853 | 16,244 | 17,890 | 12,987 | 5,855 | 21,931 | 10,107 | 18,678 | 10,816 |
-| Glossed words | 7,561 | 22,853 | 16,244 | 17,890 | 12,987 | 5,855 | 21,931 | 10,107 | 18,678 | 10,816 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 7,516 | 23,204 | 16,179 | 17,969 | 8,949 | 5,851 | 18,427 | 10,128 | 15,176 | 10,800 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 7,561 | 23,193 | 16,242 | 17,968 | 13,997 | 5,851 | 23,341 | 10,128 | 20,336 | 10,800 |
+| Morphologically segmented | 7,561 | 23,214 | 16,244 | 17,944 | 13,001 | 5,855 | 21,931 | 10,128 | 18,948 | 10,816 |
+| Glossed words | 7,561 | 23,214 | 16,244 | 17,944 | 13,001 | 5,855 | 21,931 | 10,128 | 18,948 | 10,816 |
 
 ***
 

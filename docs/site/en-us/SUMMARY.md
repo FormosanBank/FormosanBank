@@ -35,6 +35,7 @@
   * [Tang Recordings of Taroko](the-bank-architecture/corpora/TangRecordingsOfTaroko.md)
   * [NTU Corpus of Formosan Languages](the-bank-architecture/corpora/NTUFormosanCorpus.md)
   * [Truku Word Formation (Hsu Thesis)](the-bank-architecture/corpora/nowbucyang-truku-thesis.md)
+  * [Safolu Amis Dictionary](the-bank-architecture/corpora/safolu-amis-dictionary.md)
 * [Developers](the-bank-architecture/developers/README.md)
   * [🤗 HuggingFace](the-bank-architecture/developers/huggingface.md)
   * [Formosan MT Toolkit](the-bank-architecture/developers/formosan-mt-toolkit.md)
