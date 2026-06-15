@@ -13,15 +13,15 @@ This uses an unusual orthography, which has not yet been identified.
 
 | | Yami |
 | --- | --- |
-| Word count | 847 |
+| Word count | 852 |
 | Total audio | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 |
 | Translated words |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 847 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 852 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 |
-| Morphologically segmented | 835 |
-| Glossed words | 835 |
+| Morphologically segmented | 840 |
+| Glossed words | 840 |
 
 ***
 

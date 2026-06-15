@@ -11,7 +11,7 @@ This uses an unusual orthography (see Notes) and is imperfectly standardized.
 <!-- CORPUS STATS START -->
 ### Corpus Statistics
 
-| | Amis<br>NA |
+| | Amis<br>unknown |
 | --- | --- |
 | Word count | 358 |
 | Total audio | 0 |

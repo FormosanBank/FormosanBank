@@ -11,15 +11,15 @@
 
 | | Yami |
 | --- | --- |
-| Word count | 13,310 |
+| Word count | 13,295 |
 | Total audio | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 |
 | Translated words |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 13,310 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 13,310 |
-| Morphologically segmented | 13,310 |
-| Glossed words | 13,310 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 13,295 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 13,295 |
+| Morphologically segmented | 13,295 |
+| Glossed words | 13,295 |
 
 ***
 
@@ -34,7 +34,13 @@ This corpus was originally published as a book. The version included in Formosan
 
 ### **Corpus Notes**
 
-The original text has morphemes marked with hyphens. This is retained in the "original" tier and removed from the "standard" tier. There remain several characters that appear rarely in this text but not at all in our reference text, as well as differences in the frequency of glottal stops.
+* The original text has morphemes marked with hyphens. This is retained in the "original" tier and removed from the "standard" tier. 
+
+* Lexical accent is marked in the original tier but removed in the standard tier. 
+
+* There are differences relative to the reference text in terms of the frequency of glottal stops.
+
+* Translations frequently have explanatory parantheticals. A few of these have been removed, but most remain.
 
 ![Yami Frequency Comparison](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/RauDong/CodeAndDocs/Yami_frequency_comparison.png)
 

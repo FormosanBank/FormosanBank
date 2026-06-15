@@ -11,9 +11,9 @@ After scraping the articles, they have been preprocessed to remove elements like
 <!-- CORPUS STATS START -->
 ### Corpus Statistics
 
-| | Amis<br>NA | Paiwan<br>NA | Sakizaya | Atayal<br>NA | Seediq<br>NA |
+| | Amis<br>UK | Paiwan<br>UK | Sakizaya | Atayal<br>UK | Seediq<br>UK |
 | --- | --- | --- | --- | --- | --- |
-| Word count | 1,772,368 | 124,479 | 1,344,333 | 417,534 | 754,287 |
+| Word count | 1,984,068 | 123,727 | 1,656,403 | 555,482 | 792,387 |
 | Total audio | 0 | 0 | 0 | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 | 0 | 0 | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 | 0 | 0 | 0 |

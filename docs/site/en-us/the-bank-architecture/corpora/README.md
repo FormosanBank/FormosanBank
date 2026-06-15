@@ -26,6 +26,8 @@ Welcome to the FormosanBank Corpora section! Here, you’ll find comprehensive d
 * [Wilang Yutas Videos](WilangYutasVideos.md) (text, Mandarin, audio)
 * [Tang Recordings of Taroko](TangRecordingsOfTaroko.md) (audio)
 * [NTU Corpus of Formosan Languages](NTUFormosanCorpus.md) (text, audio, glossing)
+* [Truku Word Formation (Hsu Thesis)](nowbucyang-truku-thesis.md) (text, glossing, Mandarin)
+* [Safolu Amis Dictionary](safolu-amis-dictionary.md) (text, Mandarin)
 
 ***
 
@@ -36,29 +38,29 @@ Welcome to the FormosanBank Corpora section! Here, you’ll find comprehensive d
 
 | | Truku | Amis | Bunun | Kavalan | Rukai | Siraya | Paiwan | Puyuma | Thao | Saaroa | Sakizaya | Yami | Atayal | Seediq | Tsou | Kanakanabu | Saisiyat |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Word count | 86,274 | 2,122,310 | 248,279 | 127,162 | 273,600 | 42,107 | 398,682 | 229,064 | 101,856 | 63,097 | 1,445,857 | 119,240 | 747,479 | 970,779 | 88,102 | 108,814 | 101,203 |
-| Total audio | 42.2h | 60.8h | 62.7h | 26.9h | 77.1h | 0 | 74.9h | 59.9h | 20.7h | 23.0h | 24.5h | 20.3h | 77.8h | 46.1h | 20.5h | 32.6h | 23.5h |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 20.8h | 60.6h | 62.7h | 26.9h | 77.1h | 0 | 62.4h | 59.9h | 20.7h | 23.0h | 24.5h | 20.3h | 77.3h | 46.0h | 20.5h | 32.6h | 23.5h |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 21.4h | 0.2h | 0 | 0 | 0 | 0 | 12.5h | 0 | 0 | 0 | 0 | 0 | 0.5h | 0.1h | 0 | 0 | 0 |
+| Word count | 87,364 | 2,579,830 | 249,743 | 126,970 | 275,546 | 41,952 | 422,601 | 230,655 | 101,815 | 63,050 | 1,758,027 | 119,261 | 886,983 | 1,007,992 | 87,939 | 109,036 | 101,179 |
+| Total audio | 84.4h | 121.6h | 125.3h | 53.8h | 154.2h | 0 | 168.9h | 119.9h | 41.4h | 45.9h | 49.0h | 40.5h | 171.2h | 92.2h | 41.0h | 65.1h | 47.0h |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 41.6h | 121.2h | 125.3h | 53.8h | 154.2h | 0 | 134.1h | 119.9h | 41.4h | 45.9h | 49.0h | 40.5h | 160.0h | 92.1h | 41.0h | 65.1h | 47.0h |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 42.8h | 0.4h | 0 | 0 | 0 | 0 | 34.8h | 0 | 0 | 0 | 0 | 0 | 11.2h | 0.1h | 0 | 0 | 0 |
 | Translated words |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 11,266 | 66,155 | 64,527 | 27,376 | 63,016 | 42,107 | 71,621 | 38,691 | 11,158 | 8,763 | 19,793 | 25,503 | 64,498 | 48,343 | 21,440 | 24,222 | 21,594 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 86,274 | 350,450 | 248,165 | 127,147 | 273,000 | 42,006 | 208,926 | 228,962 | 101,853 | 63,097 | 101,322 | 118,393 | 306,079 | 216,156 | 88,098 | 108,796 | 101,019 |
-| Morphologically segmented | 0 | 7,561 | 22,867 | 16,247 | 17,893 | 0 | 30,096 | 0 | 0 | 0 | 12,975 | 14,145 | 5,855 | 21,937 | 10,117 | 18,687 | 10,816 |
-| Glossed words | 0 | 7,561 | 22,867 | 16,247 | 17,893 | 0 | 24,483 | 0 | 0 | 0 | 12,975 | 14,145 | 5,855 | 21,937 | 10,117 | 18,687 | 10,816 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 11,254 | 66,945 | 66,202 | 27,254 | 64,970 | 41,952 | 73,867 | 40,780 | 11,156 | 8,760 | 19,844 | 25,444 | 66,935 | 48,408 | 21,337 | 24,425 | 21,512 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 87,348 | 593,646 | 249,559 | 126,939 | 274,826 | 41,851 | 210,538 | 230,491 | 101,796 | 63,034 | 101,406 | 118,409 | 307,665 | 215,362 | 87,902 | 108,998 | 101,115 |
+| Morphologically segmented | 1,153 | 7,561 | 23,214 | 16,244 | 17,944 | 0 | 30,119 | 0 | 0 | 0 | 13,001 | 14,135 | 5,855 | 21,931 | 10,128 | 18,948 | 10,816 |
+| Glossed words | 1,070 | 7,561 | 23,214 | 16,244 | 17,944 | 0 | 24,478 | 0 | 0 | 0 | 13,001 | 14,135 | 5,855 | 21,931 | 10,128 | 18,948 | 10,816 |
 
 #### By dialect
 
-| | Amis<br>Coastal | Amis<br>Hengchun | Amis<br>Malan | Amis<br>NA | Amis<br>Southern | Amis<br>UK | Amis<br>Xiuguluan | Bunun<br>Junqun | Bunun<br>Kaqun | Bunun<br>Luanqun | Bunun<br>Tanqun | Bunun<br>Zhuoqun | Rukai<br>Dawu | Rukai<br>Dona | Rukai<br>Eastern | Rukai<br>Maolin | Rukai<br>Wanshan | Rukai<br>Wutai | Paiwan<br>Central | Paiwan<br>Eastern | Paiwan<br>NA | Paiwan<br>North Western | Paiwan<br>Northern | Paiwan<br>Sothern | Paiwan<br>Southern | Paiwan<br>UK | Puyuma<br>Jianhe | Puyuma<br>Nanwang | Puyuma<br>Xiqun | Puyuma<br>Zhiben | Atayal<br>FourSeasons | Atayal<br>NA | Atayal<br>Sekolik | Atayal<br>UK | Atayal<br>Wanda | Atayal<br>Wenshui | Atayal<br>YilanZeaol | Atayal<br>Zeaol | Seediq<br>DeluValley | Seediq<br>Duda | Seediq<br>NA | Seediq<br>Tegudaya | Seediq<br>UK |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Word count | 66,343 | 36,750 | 36,137 | 1,863,357 | 36,328 | 0 | 83,395 | 129,475 | 29,654 | 30,595 | 29,721 | 28,834 | 29,992 | 28,565 | 30,151 | 27,693 | 24,350 | 132,849 | 41,624 | 50,297 | 124,479 | 0 | 127,754 | 0 | 53,423 | 1,105 | 35,383 | 116,881 | 37,157 | 39,643 | 38,172 | 417,534 | 138,146 | 0 | 31,056 | 42,863 | 40,229 | 39,479 | 39,861 | 41,788 | 754,830 | 134,300 | 0 |
-| Total audio | 14.5h | 10.2h | 8.4h | 0 | 9.2h | 0.2h | 18.3h | 30.2h | 8.0h | 7.9h | 8.6h | 8.1h | 9.5h | 8.9h | 9.4h | 8.8h | 8.4h | 32.2h | 10.2h | 12.8h | 0 | 7.9h | 27.7h | 0.0h | 11.8h | 4.5h | 9.4h | 29.8h | 9.9h | 10.8h | 9.2h | 0 | 28.5h | 0.5h | 8.8h | 10.6h | 10.3h | 9.9h | 11.7h | 10.1h | 0 | 24.3h | 0.1h |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 14.5h | 10.2h | 8.4h | 0 | 9.2h | 0 | 18.3h | 30.2h | 8.0h | 7.9h | 8.6h | 8.1h | 9.5h | 8.9h | 9.4h | 8.8h | 8.4h | 32.2h | 10.2h | 12.8h | 0 | 0 | 27.7h | 0 | 11.7h | 0 | 9.4h | 29.8h | 9.9h | 10.8h | 9.2h | 0 | 28.5h | 0 | 8.8h | 10.6h | 10.3h | 9.9h | 11.7h | 10.1h | 0 | 24.3h | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 | 0 | 0 | 0 | 0.2h | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 7.9h | 0 | 0.0h | 0.1h | 4.5h | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0.5h | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0.1h |
-| Translated words |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 17,245 | 9,440 | 9,306 | 358 | 10,325 | 0 | 19,481 | 30,929 | 8,113 | 8,824 | 8,121 | 8,540 | 7,573 | 7,949 | 8,185 | 7,318 | 6,526 | 25,465 | 14,034 | 12,357 | 0 | 0 | 19,011 | 0 | 25,114 | 1,105 | 9,224 | 9,436 | 9,889 | 10,142 | 9,457 | 0 | 10,216 | 0 | 9,144 | 16,467 | 9,497 | 9,717 | 9,343 | 10,020 | 136 | 28,844 | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 66,343 | 36,750 | 36,137 | 90,631 | 35,995 | 0 | 84,594 | 129,383 | 29,654 | 30,595 | 29,721 | 28,812 | 29,992 | 28,247 | 30,115 | 27,529 | 24,299 | 132,818 | 34,761 | 38,228 | 0 | 0 | 97,864 | 0 | 38,073 | 0 | 35,365 | 116,805 | 37,149 | 39,643 | 38,138 | 0 | 114,367 | 0 | 31,008 | 42,858 | 40,229 | 39,479 | 39,740 | 41,723 | 402 | 134,291 | 0 |
-| Morphologically segmented | 7,561 | 0 | 0 | 0 | 0 | 0 | 0 | 22,867 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 17,893 | 3,727 | 1,198 | 0 | 0 | 9,007 | 0 | 15,059 | 1,105 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 5,855 | 0 | 0 | 0 | 0 | 0 | 21,937 | 0 |
-| Glossed words | 7,561 | 0 | 0 | 0 | 0 | 0 | 0 | 22,867 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 17,893 | 3,727 | 1,198 | 0 | 0 | 9,007 | 0 | 9,446 | 1,105 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 5,855 | 0 | 0 | 0 | 0 | 0 | 21,937 | 0 |
+| | Amis<br>Coastal | Amis<br>Hengchun | Amis<br>Malan | Amis<br>Southern | Amis<br>UK | Amis<br>Xiuguluan | Amis<br>unknown | Bunun<br>Junqun | Bunun<br>Kaqun | Bunun<br>Luanqun | Bunun<br>Tanqun | Bunun<br>Zhuoqun | Rukai<br>Dawu | Rukai<br>Dona | Rukai<br>Eastern | Rukai<br>Maolin | Rukai<br>Wanshan | Rukai<br>Wutai | Paiwan<br>Central | Paiwan<br>Eastern | Paiwan<br>North Western | Paiwan<br>Northern | Paiwan<br>Southern | Paiwan<br>UK | Paiwan<br>unknown | Puyuma<br>Jianhe | Puyuma<br>Nanwang | Puyuma<br>Xiqun | Puyuma<br>Zhiben | Atayal<br>FourSeasons | Atayal<br>Sekolik | Atayal<br>UK | Atayal<br>Wanda | Atayal<br>Wenshui | Atayal<br>YilanZeaol | Atayal<br>Zeaol | Atayal<br>unknown | Seediq<br>DeluValley | Seediq<br>Duda | Seediq<br>Tegudaya | Seediq<br>UK | Seediq<br>unknown |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Word count | 66,371 | 36,726 | 35,979 | 36,318 | 2,075,269 | 85,169 | 243,998 | 131,337 | 29,637 | 30,240 | 29,700 | 28,829 | 29,959 | 28,596 | 30,129 | 27,665 | 24,434 | 134,763 | 44,064 | 60,117 | 0 | 134,716 | 58,872 | 123,727 | 1,105 | 35,216 | 118,867 | 37,017 | 39,555 | 38,123 | 140,278 | 555,482 | 30,977 | 42,766 | 40,168 | 39,189 | 0 | 39,565 | 41,166 | 134,314 | 792,387 | 560 |
+| Total audio | 29.0h | 20.4h | 16.8h | 18.5h | 0 | 36.6h | 0.4h | 60.3h | 15.9h | 15.8h | 17.1h | 16.2h | 18.9h | 17.8h | 18.8h | 17.5h | 16.8h | 64.5h | 21.7h | 33.4h | 15.8h | 62.5h | 26.6h | 0 | 8.9h | 18.9h | 59.6h | 19.8h | 21.6h | 18.3h | 72.7h | 0 | 17.5h | 21.2h | 20.6h | 19.8h | 1.1h | 23.3h | 20.2h | 48.6h | 0 | 0.1h |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 29.0h | 20.4h | 16.8h | 18.5h | 0 | 36.6h | 0 | 60.3h | 15.9h | 15.8h | 17.1h | 16.2h | 18.9h | 17.8h | 18.8h | 17.5h | 16.8h | 64.5h | 20.6h | 29.6h | 0 | 58.8h | 25.2h | 0 | 0 | 18.9h | 59.6h | 19.8h | 21.6h | 18.3h | 62.5h | 0 | 17.5h | 21.2h | 20.6h | 19.8h | 0 | 23.3h | 20.2h | 48.6h | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 | 0 | 0 | 0 | 0 | 0.4h | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1.1h | 3.8h | 15.8h | 3.8h | 1.5h | 0 | 8.9h | 0 | 0 | 0 | 0 | 0 | 10.1h | 0 | 0 | 0 | 0 | 0 | 1.1h | 0 | 0 | 0 | 0 | 0.1h |
+| Translated words |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 17,243 | 9,425 | 9,306 | 10,323 | 0 | 20,290 | 358 | 32,827 | 8,106 | 8,611 | 8,121 | 8,537 | 7,576 | 7,940 | 8,183 | 7,272 | 6,537 | 27,462 | 16,246 | 12,356 | 0 | 19,023 | 25,137 | 0 | 1,105 | 9,218 | 11,536 | 9,887 | 10,139 | 9,456 | 12,665 | 0 | 9,145 | 16,456 | 9,497 | 9,716 | 0 | 9,356 | 10,044 | 28,872 | 0 | 136 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 66,355 | 36,710 | 35,979 | 35,968 | 91,201 | 84,812 | 242,621 | 131,239 | 29,621 | 30,224 | 29,684 | 28,791 | 29,935 | 28,262 | 30,061 | 27,485 | 24,367 | 134,716 | 36,702 | 38,200 | 0 | 97,721 | 37,915 | 0 | 0 | 35,182 | 118,777 | 36,993 | 39,539 | 38,073 | 116,617 | 0 | 30,913 | 42,737 | 40,152 | 39,173 | 0 | 39,428 | 41,085 | 134,289 | 0 | 560 |
+| Morphologically segmented | 7,561 | 0 | 0 | 0 | 0 | 0 | 0 | 23,214 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 17,944 | 3,714 | 1,198 | 0 | 9,017 | 15,085 | 0 | 1,105 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 5,855 | 0 | 0 | 0 | 0 | 0 | 21,931 | 0 | 0 |
+| Glossed words | 7,561 | 0 | 0 | 0 | 0 | 0 | 0 | 23,214 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 17,944 | 3,714 | 1,198 | 0 | 9,017 | 9,444 | 0 | 1,105 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 5,855 | 0 | 0 | 0 | 0 | 0 | 21,931 | 0 | 0 |
 
 ***
 

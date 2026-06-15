@@ -13,13 +13,13 @@ The **ILRDF Dictionaries Corpus** is an integral part of the FormosanBank projec
 
 | | Amis<br>Xiuguluan | Bunun<br>Junqun | Kavalan | Rukai<br>Wutai | Paiwan<br>Northern | Puyuma<br>Nanwang | Thao | Saaroa | Sakizaya | Yami | Atayal<br>Sekolik | Seediq<br>Tegudaya | Truku | Tsou | Kanakanabu | Saisiyat |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Word count | 37,160 | 53,588 | 53,160 | 60,599 | 38,447 | 51,630 | 44,939 | 19,186 | 32,245 | 39,936 | 53,746 | 51,702 | 28,026 | 19,203 | 38,241 | 37,546 |
+| Word count | 37,140 | 53,541 | 53,088 | 60,572 | 38,316 | 51,590 | 44,889 | 19,149 | 32,233 | 39,790 | 53,688 | 51,673 | 27,973 | 19,184 | 38,130 | 37,491 |
 | Total audio | 8.4h | 12.3h | 10.9h | 14.7h | 9.2h | 10.6h | 9.2h | 6.9h | 8.2h | 6.3h | 10.5h | 8.5h | 7.1h | 4.3h | 12.5h | 9.2h |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 8.4h | 12.3h | 10.9h | 14.7h | 9.2h | 10.6h | 9.2h | 6.9h | 8.2h | 6.3h | 10.5h | 8.5h | 7.1h | 4.3h | 12.5h | 9.2h |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | Translated words |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 37,160 | 53,588 | 53,160 | 60,599 | 38,447 | 51,630 | 44,936 | 19,186 | 32,245 | 39,936 | 53,746 | 51,693 | 28,026 | 19,203 | 38,241 | 37,546 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 37,140 | 53,541 | 53,088 | 60,572 | 38,316 | 51,590 | 44,886 | 19,149 | 32,233 | 39,790 | 53,688 | 51,664 | 27,973 | 19,184 | 38,130 | 37,491 |
 | Morphologically segmented | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | Glossed words | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 

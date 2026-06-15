@@ -9,15 +9,15 @@ This corpus comes from the crowdsourced online dictionary Glosbe. Currently we h
 <!-- CORPUS STATS START -->
 ## Corpus Statistics
 
-| | Amis<br>NA |
+| | Amis<br>UK |
 | --- | --- |
-| Word count | 90,631 |
+| Word count | 91,201 |
 | Total audio | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 |
 | Translated words |  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 90,631 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 91,201 |
 | Morphologically segmented | 0 |
 | Glossed words | 0 |
 

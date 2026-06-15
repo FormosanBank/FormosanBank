@@ -51,13 +51,17 @@ The `<TEXT>` represents the entire document. It is the root element, and it can 
 * `BibTeX_citation`: BibTeX citation of the original source. In case there are more than one citation associated with the corpus (the XML file), the citations will be seperated by a `,` delimter.
 * `copyright`: The copyright or license information (e.g., CC BY).
 * `xml:lang`: The language code using the ISO 639-3 standard.
+* `dialect`: The dialect of the Formosan language in use. Required on every `<TEXT>` element. Allowed values:
+  * One of the officially recognized dialects for the language (see [Formosan Dialects](formosan-dialects.md) and the [dialects.csv](https://github.com/FormosanBank/FormosanBank/blob/main/dialects.csv) reference).
+  * For languages with only one recognized dialect (e.g., Tsou, Yami, Kavalan, Thao, Saaroa, Saisiyat, Sakizaya, Kanakanavu, Siraya), the dialect value is simply the language name itself (`dialect="Tsou"`, `dialect="Yami"`, etc.). This convention removes branching code throughout the toolchain — every `<TEXT>` has a meaningful dialect even when the language is monodialectal.
+  * `"unknown"` when the dialect cannot be identified. This sentinel exists so that "we don't know the dialect" is distinguishable from "we forgot to record it"; the latter is rejected by the validator.
+  * For `xml:lang="trv"` (which ISO 639-3 lumps together as Truku and Seediq), the allowed values are `"Truku"` plus the three official Seediq dialects (`Tegudaya`, `Duda`, `DeluValley`) plus `"unknown"`.
 
 Optional attributes may include:
 
 * `source`: Description of the original file, chapter, or other relevant details. If this file contains everything in the original source, then this attribute is redundant with `citation` and won't be used. There is no specific format for `source`; it would contain enough information that the user can match what is in the XML against the original source.
 * `audio`: Name of the associated audio file. If the audio is already segmented and there is no single audio file corresponding to the entire XML, this will be set to "segmented"
 * `glottocode`: The [Glottolog](https://glottolog.org/) code if specifying a specific dialect.
-* `dialect`: The name of the dialect of the Formosan language in use. Will only be used if the dialect name corresponds to one of the 42 official dialects. For more information, see [Formosan Dialects](formosan-dialects.md).
 
 ***
 
@@ -90,12 +94,17 @@ At the lowest level of `<S>,` `<W>,` and `<M>`, a `<FORM>` element must be used 
 </S>
 ```
 
-The `<FORM>` element has one optional attribute, `kindOf`, which has two use cases:
+The `<FORM>` element has one attribute, `kindOf`, which has two use cases:
 
-* For indicating phonological transcriptions. In that case, the value would be "phono".
-* For indicating the orthography used for languages with more than one orthography, A lis of orthographies can be found here.
+**original** This is the text as it appeared in the original source. The only differences should be punctuation standardization. If there were listed errata, the `original` text should be updated to address those errata. Otherwise, this should be left as-is. In most cases, the `original` FORMs exist as a historical record and for reproducibility. They are not used in analysis and can be safely ignored by most end-users.
 
-The XML format in FormosanBank ensures comprehensive representation of linguistic data, supporting both detailed analysis and high-level exploration.
+**standard** This is text that has been normalized as much as possible, including standardizing the orthography and spelling. For `S`-level FORMs only, this includes removing any morphological segmentation (other than morphological segmentation that may be indicated by the orthography rules themselves). For `W`-level forms, morphological segmentation should be retained.
+
+### The `<PHON>` Element
+
+This is an analog to `<FORM>` and contains IPA transliterations of the text. Note that these are almost always transliterations rather than actual transcriptions, being derived from the content of `<FORM>`.
+
+Like `<FORM>`, `<PHON>` should have a `kindOf` attribute set to `original` or `standard`, indicating which text it is transliterated from. If this is a transcription not a transliteration, use `standard`.
 
 ***
 
@@ -105,7 +114,7 @@ The `<AUDIO>` element links specific audio segments to linguistic elements in th
 
 Attributes:
 
-* **`start`** and **`end`**: Must always be set. When there is a single, large audio file associated with the entire XML document. These attributes indicate the start and end times of the audio segment in seconds, measured from the beginning of the file. When audio files are segmented, start would be 0 and end would be the length of the audio file associated with the element.
+* **`start`** and **`end`**: Must always be set when there is a single, large audio file associated with the entire XML document. These attributes indicate the start and end times of the audio segment in seconds, measured from the beginning of the file. When audio files are segmented, start would be 0 and end would be the length of the audio file associated with the element.
 * **`file`** and **`url`**: Used when the audio is **segmented**—that is, there are separate audio files for individual elements (e.g., each sentence or word). The `file` attribute specifies the audio file for the segment, and the `url` attribute (optional) provides a web link for accessing the file.
 
 Usage Scenarios:
@@ -135,6 +144,8 @@ Attributes:
 
 * **`xml:lang`**: The language code for the translation, using the ISO 639-3 standard.
 * **`kindOf`** (optional): Specifies the method or tool used to generate the translation, such as a pivot language or translation software (e.g., `kindOf="DeepL"`). Including the software version, if applicable, is encouraged for more detailed documentation.
+* **`ver`** (optional): Distinguishes multiple translations into the *same* language on the same element. When an element carries more than one `<TRANSL>` with the same `xml:lang`, the primary translation is left unmarked and each additional one is marked `ver="alt"`. (`alt` is currently the only defined value.)
+* **`notes`** (optional): Free-text annotation on the translation — e.g., the translator, a review status, or a caveat. It is for human documentation only and is not interpreted by tooling. This parallels the `notes` attribute on `<FORM>`.
 
 Usage Guidelines:
 
@@ -159,7 +170,7 @@ Usage Guidelines:
         <TRANSL xml:lang="en">I</TRANSL>
     </W>
     ```
-3.  **Morpheme-Level Translation (Leipzig Glosses)**: For linguistic glosses following the Leipzig Glossing Rules, use the `<TRANSL>` element within the `<M>` element to provide morpheme-level glosses.
+3.  **Morpheme-Level Translation (glosses)**: For linguistic glosses following the Leipzig Glossing Rules, use the `<TRANSL>` element within the `<M>` element to provide morpheme-level glosses.
 
     Example:
 
@@ -172,4 +183,20 @@ Usage Guidelines:
     </W>
     ```
 
-Note: didn't include class or subclss attrs for W and M and didn't include ver attr for TRANSL.
+Importantly, the `M`-level `TRANSL` can have a `kindOf` attribute. Many of the older texts uses non-standard glosses, and even those that use Leipzig format may use different abbreviations for the same constructs. The original glosses should be left as is and indicated as `original` if necessary. Updated glosses should be `kidof="standard"`.
+
+Note: didn't include class or sclass attrs for W and M.
+
+***
+
+### Special Rules
+
+#### Infixes and circumfixes
+
+When creating the `M` levels for words that have infixes, the `FORM` for the infix should start and stop with a `-`, indicating that it is in an infix. The `FORM` for the morpheme that surrounded the infix should have a `-` where the infix went. So: `a-b-c` would result in `M`s of `a-c` and `-b-`. 
+
+Circumfixes can be handled in an analogous way, though many glossing conventions treat the two parts of a circumfix as a prefix and a suffix. This should be standardized at some point. 
+
+#### Clitics
+
+Formosan languages have not standardized whether clitics are written as the same word or different, and probabilistic conventions have changed over time. When writing the `M` FORM for a clitic, include the `=` whether or not it was actually attached to the head word.

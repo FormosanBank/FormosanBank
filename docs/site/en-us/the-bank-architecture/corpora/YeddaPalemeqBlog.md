@@ -11,14 +11,14 @@ Yedda Palemeq, a Paiwan-speaker and linguist, maintained a [blog](https://yeddap
 
 | | Paiwan<br>Southern |
 | --- | --- |
-| Word count | 5,850 |
+| Word count | 5,878 |
 | Total audio | 1.2h |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 1.2h |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 |
 | Translated words |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 5,835 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 5,863 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 |
-| Morphologically segmented | 5,613 |
+| Morphologically segmented | 5,641 |
 | Glossed words | 0 |
 
 ***
