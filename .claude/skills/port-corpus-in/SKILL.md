@@ -208,13 +208,12 @@ PR separately (this skill is **not a git committer**, consistent with Phase 3).
      --strict
    ```
    A leftover `{{...}}` placeholder or a missing integration point (page / nav / README
-   list / stats-map) fails this — fix before declaring the phase done. The new corpus's
-   stats CSV will **not** yet exist in the GitBook's `statistics/`; `check` reports that
-   as an **informational** "Missing stats CSV" line (it does not gate). That is expected:
-   the per-page stats block and the `corpora/README.md` aggregate table stay empty until
-   the corpus-metrics pipeline generates `<corpus_name>_corpora_stats.csv` and it is
-   synced into the GitBook, after which `update_corpus_stats.py` fills both. Note this in
-   the Phase 6 summary as a known follow-up; do not block the port on it.
+   list / stats-map) fails this — fix before declaring the phase done. At this point
+   `check` also reports an **informational** "Missing stats CSV" line for the new corpus
+   (its stats CSV doesn't exist yet); that is expected *here* and is resolved by step 7
+   below, which generates the CSV and injects the tables. Because that line does not
+   gate, a `--strict` failure at this step means a real integration problem, not the
+   pending stats.
 
 7. **Populate the stats tables (audio-aware).** The page's stats block and the
    `corpora/README.md` aggregate are filled by `update_corpus_stats.py` from the
