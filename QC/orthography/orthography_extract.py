@@ -12,7 +12,9 @@ import numpy as np
 import pickle
 import argparse
 import math
+import random
 import warnings
+from pathlib import Path
 
 # Suppress specific warnings about missing glyphs
 warnings.filterwarnings("ignore", message="Glyph .* missing from font")
@@ -23,9 +25,22 @@ plt.switch_backend('Agg')  # Use a non-GUI backend
 #plt.rcParams['font.family'] = 'Noto Sans'
 
 
+def _dialects_path():
+    candidate = Path(__file__).resolve().parents[2] / "dialects.csv"
+    if candidate.exists():
+        return candidate
+    return Path("dialects.csv")
+
+
 def is_dialect(lang, dialect):
-    dialect_csv = pd.read_csv("dialects.csv")
+    dialect_csv = pd.read_csv(_dialects_path())
     return (dialect in dialect_csv[dialect_csv['Language'] == lang]['Official'].unique())
+
+
+def is_lang(lang):
+    dialect_csv = pd.read_csv(_dialects_path())
+    return lang in dialect_csv['Language'].unique()
+
 
 def parse_bool(value):
     if isinstance(value, bool):
@@ -102,9 +117,10 @@ def extract_orthographic_info(text):
     # Get list of unique characters and their freq
     unique_chars = list(set(text_nfc))
     unique_chars.sort()
-    unique_chars.remove(" ")
+    if " " in unique_chars:
+        unique_chars.remove(" ")
     char_freq = collections.Counter(text_nfc)
-    del char_freq[" "]
+    char_freq.pop(" ", None)
     
     temp = unique_chars[:]
     for c in temp:
@@ -188,6 +204,11 @@ def visualize(o_info, output_folder):
     
     # Ensure the output folder exists
     os.makedirs(output_folder, exist_ok=True)
+
+    if not o_info.get('unique_characters') or not o_info.get('character_frequency'):
+        with open(os.path.join(output_folder, 'unique_characters.txt'), 'w', encoding='utf-8') as f:
+            f.write("Unique Characters:\nNone\n")
+        return
     
     """
     Get a set of unique characters
@@ -427,6 +448,57 @@ def visualize(o_info, output_folder):
     plt.savefig(os.path.join(output_folder, 'top_words.png'))
     plt.close()
 
+def run_reference_simulations(language_to_process, dialect, corpora_paths, output_dir, num_sim=5, ref_ratio=0.8, kindOf="standard", by_dialect=True, verbose=True, seed=0):
+    if not is_lang(language_to_process):
+        raise ValueError(f"Target language not recognized: {language_to_process}")
+    if not corpora_paths:
+        raise ValueError("At least one corpus path is required")
+
+    combined_text = ""
+    for path in corpora_paths:
+        if not os.path.exists(path):
+            raise ValueError(f"corpus {path} doesn't exist")
+        corpus = generate_corpus(language_to_process, path, kindOf, by_dialect=by_dialect)
+        if by_dialect:
+            combined_text += corpus.get(dialect, "")
+        else:
+            combined_text += corpus.get("default", "")
+
+    combined_text = remove_chinese_characters(combined_text)
+    sentences = re.split(r'(?<=[.!?])\s+', combined_text)
+    sentences = [sentence.strip() for sentence in sentences if sentence and sentence.strip()]
+    if not sentences:
+        raise ValueError("No sentences were found for the requested dialect")
+
+    rng = random.Random(seed)
+    created_dirs = []
+    output_root = Path(output_dir)
+
+    for sim_idx in range(num_sim):
+        ref_sentences = rng.sample(sentences, math.ceil(ref_ratio * len(sentences)))
+        target_sentences = [sentence for sentence in sentences if sentence not in ref_sentences]
+        ref_text = "".join(ref_sentences)
+        target_text = "".join(target_sentences)
+
+        partition_dir = output_root / language_to_process / dialect / f"partition_{sim_idx + 1}"
+        partition_dir.mkdir(parents=True, exist_ok=True)
+
+        reference_info = extract_orthographic_info(ref_text)
+        with open(partition_dir / "orthographic_info", "wb") as fp:
+            pickle.dump(reference_info, fp)
+        visualize(reference_info, partition_dir)
+
+        target_info = extract_orthographic_info(target_text)
+        with open(partition_dir / "target_orthographic_info", "wb") as fp:
+            pickle.dump(target_info, fp)
+
+        if verbose:
+            print(f"Wrote reference simulation {sim_idx + 1} to {partition_dir}")
+        created_dirs.append(str(partition_dir))
+
+    return created_dirs
+
+
 def main(args, langs):
     if args.corpus == "all":
         to_check_path = args.corpora_path
@@ -475,6 +547,13 @@ if __name__ == "__main__":
                         help='Process corpora by dialect. Accepts true/false; passing the flag alone means true.')
     parser.add_argument('--output_dir',
                         help='Directory for extracted orthographic info and plots. Defaults to <corpus>/extract_logs.')
+    parser.add_argument('--simulate_references', action='store_true',
+                        help='Generate partition-based reference orthographic_info files for simulation workflows.')
+    parser.add_argument('--dialect', help='Dialect to use when generating reference simulations.')
+    parser.add_argument('--num_sim', type=int, default=5,
+                        help='Number of reference partitions to generate when --simulate_references is set.')
+    parser.add_argument('--ref_ratio', type=float, default=0.8,
+                        help='Fraction of sentences used as the reference corpus in each simulation.')
     args = parser.parse_args()
 
     # Validate required arguments
@@ -486,4 +565,20 @@ if __name__ == "__main__":
         parser.error(f"Enter a valid Formosan language from the list: {langs}")
     if args.corpus != "all" and not os.path.exists(os.path.join(args.corpora_path, args.corpus)):
         parser.error(f"The entered corpus doesn't exist: {os.path.join(args.corpora_path, args.corpus)}")
+    if args.simulate_references:
+        if not args.dialect:
+            parser.error("--dialect is required when --simulate_references is set")
+        corpora_paths = [os.path.join(args.corpora_path, args.corpus)] if args.corpus != "all" else [args.corpora_path]
+        run_reference_simulations(
+            language_to_process=args.language,
+            dialect=args.dialect,
+            corpora_paths=corpora_paths,
+            output_dir=args.output_dir or os.path.join(args.corpora_path, "reference_simulations"),
+            num_sim=args.num_sim,
+            ref_ratio=args.ref_ratio,
+            kindOf=args.kindOf,
+            by_dialect=True,
+            verbose=True,
+        )
+        raise SystemExit(0)
     main(args, langs)
