@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  SOFT-count fixture for V014 (missing FORM kindOf="standard" is counted, not fatal).
+
+  Shape: one S with only an original FORM, no standard FORM.
+
+  Exercises: validate_xml.py should record a count of "missing standard
+  FORM" elements. Validation does NOT fail. Currently NOT counted; xfail.
+-->
+<TEXT id="V014_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original">Halo.</FORM>
+  </S>
+</TEXT>

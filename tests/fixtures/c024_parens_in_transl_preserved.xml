@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  C024 negative pin: parentheses in a free TRANSL must survive cleaning.
+
+  Shape: one S with both FORM tiers, plus an English TRANSL containing
+  "(has)". xml:lang="ami".
+  Exercises: clean_trans does not run swap_punctuation, so ASCII "("
+  and ")" are untouched. The pin documents the requirement: even if
+  swap_punctuation were ever extended to TRANSL, it must not remove
+  ASCII parens because their semantics (optional words in glosses) is
+  too idiosyncratic to generalise across corpora.
+-->
+<TEXT id="TEST_C024" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original">Halo.</FORM>
+    <FORM kindOf="standard">Halo.</FORM>
+    <TRANSL xml:lang="eng">she (has) gone</TRANSL>
+  </S>
+</TEXT>

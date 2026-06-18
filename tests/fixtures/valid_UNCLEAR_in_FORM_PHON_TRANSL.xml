@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Positive fixture: <UNCLEAR/> child in FORM, PHON, and TRANSL must
+  validate clean (schema relaxation 2026-06-08).
+
+  Exercises three shapes:
+    - S_whole_unclear: FORM/PHON contain ONLY <UNCLEAR/> (whole-tier
+      unclarity, as in Corpora/WilangYutasVideos/XML/Atayal/...xml)
+    - S_partial_unclear: FORM contains text mixed with <UNCLEAR/>
+      (CHAT-style partial unintelligibility, future-proofing)
+    - S_transl_unclear: TRANSL/@xml:lang carries <UNCLEAR/>, meaning
+      the translator could not gloss the original
+
+  UNCLEAR must NOT count as a token in corpus_metrics — keep that
+  separately tested in tests/QC if/when count_tokens.py is updated.
+-->
+<TEXT id="unclear_fixture" citation="t" BibTeX_citation="@t{t}" copyright="t" xml:lang="ami" dialect="unknown">
+  <S id="S_whole_unclear">
+    <FORM kindOf="original"><UNCLEAR/></FORM>
+    <FORM kindOf="standard"><UNCLEAR/></FORM>
+    <PHON kindOf="original"><UNCLEAR/></PHON>
+    <PHON kindOf="standard"><UNCLEAR/></PHON>
+  </S>
+  <S id="S_partial_unclear">
+    <FORM kindOf="original">halo <UNCLEAR/> world.</FORM>
+    <FORM kindOf="standard">halo <UNCLEAR/> world.</FORM>
+  </S>
+  <S id="S_transl_unclear">
+    <FORM kindOf="original">halo.</FORM>
+    <FORM kindOf="standard">halo.</FORM>
+    <TRANSL xml:lang="eng"><UNCLEAR/></TRANSL>
+  </S>
+</TEXT>

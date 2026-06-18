@@ -1,0 +1,212 @@
+name: xml-validation
+
+# Runs the FormosanBank validation pipeline against corpus data:
+# - validate_xml.py (stage 1 — XML format/schema)
+# - validate_glosses.py (stage 2 — gloss artifacts, added in B9.3)
+#
+# Two trigger paths with different strictness:
+#
+# 1. **PR-changed files** (PR trigger): runs the validators on EVERY
+#    .xml file the PR touches under `Corpora/*/XML/`. Exits nonzero on
+#    any HARD finding. This BLOCKS the PR if a contributor adds or
+#    modifies XML that violates the rules. The "changed files only"
+#    scope means existing legacy bad data in unrelated corpora does
+#    NOT block unrelated PRs.
+#
+# 2. **Full-corpus baseline** (push-to-main + scheduled): runs the
+#    validator against all of `Corpora/` in informational mode
+#    (--no-exit-on-hard) and uploads the stderr log as an artifact.
+#    Does NOT fail the build. This is the longitudinal signal: as
+#    the corpora get cleaned up (B5 item 17 follow-ups, audit-driven
+#    fixes, etc.), the baseline finding count drifts down. Once the
+#    baseline reaches zero we can switch the full-corpus job to
+#    blocking mode and retire the PR-changed-files scoping.
+#
+# Gloss-validation severity policy (B9.3):
+# - HARD (V062/V063/V064): blocking on the PR path (nonzero exit).
+# - SOFT (V060/V061/V065): emitted as warnings to stderr but do NOT
+#   fail the job. Gloss checks are review-not-gate; SOFT findings
+#   surface candidate cleanups without blocking contribution.
+
+on:
+  pull_request:
+    paths:
+      - 'Corpora/**.xml'
+      - 'QC/validation/**'
+      - '.github/workflows/xml-validation.yaml'
+  push:
+    branches: [main]
+    paths:
+      - 'Corpora/**.xml'
+      - 'QC/validation/**'
+      - '.github/workflows/xml-validation.yaml'
+
+jobs:
+  validate-changed-files:
+    name: Validate XML files changed by this PR
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # we need history to diff against the PR base
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: 'pip'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Identify XML files changed in this PR
+        id: changed
+        run: |
+          # Files added or modified (not deleted) under Corpora/*/XML/.
+          # Excludes files outside the canonical XML/ subdir.
+          git diff --name-only --diff-filter=AM \
+            "origin/${{ github.base_ref }}...HEAD" \
+            -- 'Corpora/**/XML/**/*.xml' > changed_xml.txt
+          count=$(wc -l < changed_xml.txt)
+          echo "count=$count" >> "$GITHUB_OUTPUT"
+          echo "Changed canonical XML files: $count"
+          if [ "$count" -gt 0 ]; then
+            echo "Files:"
+            cat changed_xml.txt
+          fi
+      - name: Validate each changed XML file
+        if: steps.changed.outputs.count != '0'
+        run: |
+          # Run validate_xml.py + validate_text.py by_path on each
+          # changed file. Default behavior (exit 1 on HARD findings)
+          # blocks the PR if any of the changed files violate the
+          # rules. validate_text.py (B9.4) consolidates the old
+          # validate_punct.py + non_ascii_counts.py; runs as a stage-2
+          # text-content validator.
+          fail=0
+          while IFS= read -r file; do
+            [ -z "$file" ] && continue
+            echo "::group::validate_xml $file"
+            if ! python QC/validation/validate_xml.py by_path \
+                 --path "$file" \
+                 --soft-csv "/tmp/soft-xml-$(basename "$file").csv"; then
+              fail=1
+            fi
+            echo "::endgroup::"
+            echo "::group::validate_text $file"
+            if ! python QC/validation/validate_text.py by_path \
+                 --path "$file" \
+                 --soft-csv "/tmp/soft-text-$(basename "$file").csv"; then
+              fail=1
+            fi
+            echo "::endgroup::"
+          done < changed_xml.txt
+          exit $fail
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+
+      - name: Run gloss validator on changed files (stage 2)
+        if: steps.changed.outputs.count != '0'
+        run: |
+          # Run validate_glosses.py on the parent directories of the
+          # changed files. The script walks recursively, so processing
+          # one file's parent directory effectively processes the file
+          # plus its siblings — acceptable: gloss SOFT/HARD findings
+          # cite per-S/per-W/per-M ids, so unchanged siblings can
+          # surface known-bad findings without conflating them with
+          # the PR's own contributions.
+          # HARD findings (V062/V063/V064) cause nonzero exit and
+          # block the PR. SOFT findings (V060/V061/V065) are warned
+          # but do not fail the job.
+          fail=0
+          dirs=$(sort -u < <(awk -F/ 'BEGIN{OFS="/"} {NF--; print}' changed_xml.txt))
+          for dir in $dirs; do
+            [ -z "$dir" ] && continue
+            echo "::group::validate_glosses $dir"
+            if ! python QC/validation/validate_glosses.py \
+                by_path --path "$dir" \
+                --output_dir "/tmp/gloss-$(echo "$dir" | tr '/' '_')"; then
+              fail=1
+            fi
+            echo "::endgroup::"
+          done
+          exit $fail
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+
+  validate-baseline:
+    name: Full-Corpora baseline (informational, not blocking)
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: 'pip'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run validator across full Corpora/ (informational)
+        run: |
+          # --no-exit-on-hard so this job never fails the build.
+          # The log is the artifact; the finding count over time is
+          # the signal. When the baseline reaches zero we can promote
+          # this job to blocking mode and retire the PR-changed-files
+          # job above.
+          python QC/validation/validate_xml.py by_path \
+            --path Corpora \
+            --no-exit-on-hard \
+            --soft-csv validation-soft.csv \
+            > /dev/null 2> validation-stderr.log
+          python QC/validation/validate_text.py by_path \
+            --path Corpora \
+            --no-exit-on-hard \
+            --soft-csv validation-text-soft.csv \
+            > /dev/null 2> validation-text-stderr.log
+          # Headline counts for the build log. The validators now print a
+          # compact "=== Validation summary: N files, M with issues ===" line
+          # and write all findings to one CSV; rule frequencies come from the CSV.
+          echo "=== Headline (validate_xml) ==="
+          grep -E "^=== Validation summary" validation-stderr.log || true
+          echo "=== Headline (validate_text) ==="
+          grep -E "^=== Validation summary" validation-text-stderr.log || true
+          echo "=== Top 10 rule_ids by frequency (validate_xml) ==="
+          python -c "import csv,collections; c=collections.Counter(r['rule_id'] for r in csv.DictReader(open('validation-soft.csv'))); print('\n'.join(f'{n:6d} {rid}' for rid,n in c.most_common(10)))" || true
+          echo "=== Top 10 rule_ids by frequency (validate_text) ==="
+          python -c "import csv,collections; c=collections.Counter(r['rule_id'] for r in csv.DictReader(open('validation-text-soft.csv'))); print('\n'.join(f'{n:6d} {rid}' for rid,n in c.most_common(10)))" || true
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+      - name: Run gloss validator across full Corpora/ (informational)
+        run: |
+          # Gloss baseline: walk each corpus's canonical XML/
+          # subdirectory and run validate_glosses.py. Always exit 0
+          # for the baseline path (informational); the stderr log is
+          # uploaded as an artifact, the per-corpus CSVs go into the
+          # artifact bundle.
+          mkdir -p gloss-baseline
+          for corpus_dir in Corpora/*/XML; do
+            [ -d "$corpus_dir" ] || continue
+            corpus=$(basename "$(dirname "$corpus_dir")")
+            echo "=== $corpus ==="
+            python QC/validation/validate_glosses.py \
+              by_path --path "$corpus_dir" \
+              --output_dir "gloss-baseline/$corpus" \
+              2>> gloss-baseline/stderr.log || true
+          done
+          echo "=== Top 10 gloss rule_ids by frequency ==="
+          python -c "import csv,collections,glob; c=collections.Counter(r['rule_id'] for f in glob.glob('gloss-baseline/*/validate_glosses_findings.csv') for r in csv.DictReader(open(f))); print('\n'.join(f'{n:6d} {rid}' for rid,n in c.most_common(10)))" || true
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+      - name: Upload validation log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: xml-validation-baseline-log
+          path: |
+            validation-stderr.log
+            validation-soft.csv
+            validation-text-stderr.log
+            validation-text-soft.csv
+            gloss-baseline/
+          retention-days: 90

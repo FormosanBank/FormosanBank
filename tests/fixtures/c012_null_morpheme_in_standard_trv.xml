@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  C012 fixture (Truku): a null-morpheme marker "Ø" in S/FORM[@kindOf="standard"]
+  must be stripped from the standard tier (together with the segmentation hyphen
+  that attaches it), the same way "-"/"=" segmentation markers are. "Ø" (U+00D8)
+  is a null-morpheme annotation, never an orthographic letter in any Formosan
+  language, so it is stripped unconditionally.
+
+  Shape: one S whose standard FORM is "Ø-dhuq sapah ka tama da."; "-" is NOT a
+  letter in Truku, so after C012 the standard becomes "dhuq sapah ka tama da.".
+  The original tier is left untouched (source-faithful).
+-->
+<TEXT id="TEST_C012_TRV_NULL" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="trv" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original">Ø-dhuq sapah ka tama da.</FORM>
+    <FORM kindOf="standard">Ø-dhuq sapah ka tama da.</FORM>
+  </S>
+</TEXT>

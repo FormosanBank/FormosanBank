@@ -8,7 +8,6 @@ import csv
 import datetime as dt
 import json
 import os
-import re
 import subprocess
 import sys
 import textwrap
@@ -17,46 +16,7 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Any, NamedTuple
 
-XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
-
-LANG_CODE_TO_NAME = {
-    "ami": "Amis",
-    "tay": "Atayal",
-    "pwn": "Paiwan",
-    "bnn": "Bunun",
-    "pyu": "Puyuma",
-    "dru": "Rukai",
-    "tsu": "Tsou",
-    "xsy": "Saisiyat",
-    "tao": "Yami",
-    "ssf": "Thao",
-    "ckv": "Kavalan",
-    "trv": "Seediq",
-    "szy": "Sakizaya",
-    "sxr": "Saaroa",
-    "xnb": "Kanakanavu",
-    "fos": "Siraya",
-}
-
-KNOWN_LANGUAGES = {
-    "Amis",
-    "Atayal",
-    "Paiwan",
-    "Bunun",
-    "Puyuma",
-    "Rukai",
-    "Tsou",
-    "Saisiyat",
-    "Yami",
-    "Thao",
-    "Kavalan",
-    "Truku",
-    "Sakizaya",
-    "Seediq",
-    "Saaroa",
-    "Kanakanavu",
-    "Siraya",
-}
+import corpus_counts
 
 COUNT_FIELDS = (
     "tokens",
@@ -66,6 +26,8 @@ COUNT_FIELDS = (
     "morpheme_elements",
     "translation_elements",
     "audio_elements",
+    "zho_transl_count",
+    "glossed_words",
 )
 
 XML_HISTORY_PATHSPEC = ":(glob)Corpora/**/XML/**/*.xml"
@@ -161,102 +123,43 @@ def source_for(corpora_path: Path, xml_file: Path) -> str:
     return rel.parts[0] if rel.parts else corpora_path.name
 
 
-def language_from_path(corpora_path: Path, xml_file: Path) -> str | None:
-    language_lookup = {lang.casefold(): lang for lang in KNOWN_LANGUAGES}
-    try:
-        parts = xml_file.relative_to(corpora_path).parts
-    except ValueError:
-        parts = xml_file.parts
-    for part in parts:
-        language = language_lookup.get(part.casefold())
-        if language:
-            return language
-    return None
+def display_language(language_code: str, dialect: str) -> str:
+    resolved = corpus_counts.resolve_language(language_code, dialect)
+    if resolved:
+        return resolved
+    return f"Unknown ({language_code})" if language_code else "Unknown"
 
 
-def language_for(root: ET.Element, corpora_path: Path, xml_file: Path) -> tuple[str, str | None]:
-    path_language = language_from_path(corpora_path, xml_file)
-    if path_language:
-        return path_language, root.get(XML_LANG)
-
-    lang_code = (root.get(XML_LANG) or "").lower()
-    if lang_code in LANG_CODE_TO_NAME:
-        return LANG_CODE_TO_NAME[lang_code], lang_code
-    return f"Unknown ({lang_code})" if lang_code else "Unknown", lang_code or None
-
-
-def dialect_for(root: ET.Element) -> str:
-    dialect = (root.get("dialect") or "").strip()
-    return dialect or "Not Specified"
-
-
-def word_count(text: str) -> int:
-    return len(re.findall(r"\S+", text))
-
-
-def select_sentence_form(sentence: ET.Element, form_kind: str) -> str | None:
-    forms = sentence.findall("FORM")
-    if not forms:
-        return None
-
-    if form_kind == "first":
-        for form in forms:
-            if form.text and form.text.strip():
-                return form.text
-        return None
-
-    preferred_kinds = [form_kind]
-    if form_kind == "auto":
-        preferred_kinds = ["standard", "original"]
-
-    for kind in preferred_kinds:
-        for form in forms:
-            if form.get("kindOf") == kind and form.text and form.text.strip():
-                return form.text
-
-    if form_kind == "auto":
-        for form in forms:
-            if form.text and form.text.strip():
-                return form.text
-    return None
-
-
-def analyze_xml_root(corpora_path: Path, xml_file: Path, root: ET.Element, form_kind: str) -> dict[str, Any]:
-    language, language_code = language_for(root, corpora_path, xml_file)
-    dialect = dialect_for(root)
-
-    sentences = root.findall(".//S")
-    tokens = 0
-    for sentence in sentences:
-        form_text = select_sentence_form(sentence, form_kind)
-        if form_text:
-            tokens += word_count(form_text)
-
+def analyze_xml_root(corpora_path: Path, xml_file: Path, root: ET.Element) -> dict[str, Any]:
+    record = corpus_counts.analyze_root(root)
     return {
         "source": source_for(corpora_path, xml_file),
-        "language": language,
-        "language_code": language_code,
-        "dialect": dialect,
+        "language": display_language(record["language"], record["dialect"]),
+        "language_code": record["language"] or None,
+        "dialect": record["dialect"] or "Not Specified",
         "path": str(xml_file.relative_to(corpora_path.parent)),
-        "tokens": tokens,
-        "sentences": len(sentences),
+        "tokens": record["word_count"],
+        "sentences": record["sentences"],
         "xml_files": 1,
-        "word_elements": len(root.findall(".//W")),
-        "morpheme_elements": len(root.findall(".//M")),
-        "translation_elements": len(root.findall(".//TRANSL")),
-        "audio_elements": len(root.findall(".//AUDIO")),
+        "word_elements": record["word_elements"],
+        "morpheme_elements": record["morpheme_elements"],
+        "translation_elements": record["translation_elements"],
+        "audio_elements": record["audio_elements"],
+        "zho_transl_count": record["zho_transl_count"],
+        "glossed_words": record["glossed_words"],
+        "transcribed_audio_seconds": 0,
     }
 
 
-def analyze_xml_file(corpora_path: Path, xml_file: Path, form_kind: str) -> dict[str, Any]:
+def analyze_xml_file(corpora_path: Path, xml_file: Path) -> dict[str, Any]:
     tree = ET.parse(xml_file)
-    return analyze_xml_root(corpora_path, xml_file, tree.getroot(), form_kind)
+    return analyze_xml_root(corpora_path, xml_file, tree.getroot())
 
 
-def analyze_xml_bytes(corpora_path: Path, relative_path: str, content: bytes, form_kind: str) -> dict[str, Any]:
+def analyze_xml_bytes(corpora_path: Path, relative_path: str, content: bytes) -> dict[str, Any]:
     root = ET.fromstring(content)
     xml_file = corpora_path.parent / relative_path
-    return analyze_xml_root(corpora_path, xml_file, root, form_kind)
+    return analyze_xml_root(corpora_path, xml_file, root)
 
 
 def empty_counts() -> dict[str, int]:
@@ -282,8 +185,8 @@ def sorted_dialect_counts(data: dict[tuple[str, str], dict[str, int]]) -> list[d
 def aggregate_records(
     records: list[dict[str, Any]],
     parse_errors: list[dict[str, str]],
-) -> tuple[dict[str, int], dict[str, dict[str, int]], dict[str, dict[str, int]], list[dict[str, Any]]]:
-    totals = empty_counts()
+) -> tuple[dict[str, Any], dict[str, dict[str, int]], dict[str, dict[str, int]], list[dict[str, Any]]]:
+    totals: dict[str, Any] = empty_counts()
     by_source: dict[str, dict[str, int]] = defaultdict(empty_counts)
     by_language: dict[str, dict[str, int]] = defaultdict(empty_counts)
     by_language_dialect: dict[tuple[str, str], dict[str, int]] = defaultdict(empty_counts)
@@ -303,6 +206,9 @@ def aggregate_records(
 
     totals.update(
         {
+            "transcribed_audio_seconds": round(
+                sum(float(record.get("transcribed_audio_seconds", 0) or 0) for record in records), 1
+            ),
             "sources": len(source_names),
             "languages": len(languages),
             "language_dialects": len(dialects),
@@ -313,12 +219,12 @@ def aggregate_records(
     return totals, sorted_counts_map(by_source), sorted_counts_map(by_language), sorted_dialect_counts(by_language_dialect)
 
 
-def build_metrics(corpora_path: Path, form_kind: str, records: list[dict[str, Any]], parse_errors: list[dict[str, str]]) -> dict[str, Any]:
+def build_metrics(corpora_path: Path, records: list[dict[str, Any]], parse_errors: list[dict[str, str]]) -> dict[str, Any]:
     totals, by_source, by_language, by_language_dialect = aggregate_records(records, parse_errors)
     return {
         "generated_at": now_utc(),
         "corpora_path": str(corpora_path),
-        "form_kind": form_kind,
+        "counting": "standard tier (original fallback); tokens are whitespace chunks containing a letter or digit",
         "git": {
             "commit": os.environ.get("GITHUB_SHA")
             or git_value(["rev-parse", "HEAD"], corpora_path),
@@ -333,14 +239,14 @@ def build_metrics(corpora_path: Path, form_kind: str, records: list[dict[str, An
     }
 
 
-def collect_corpus_records(corpora_path: Path, form_kind: str) -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
+def collect_corpus_records(corpora_path: Path) -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
     corpora_path = corpora_path.resolve()
     records: list[dict[str, Any]] = []
     parse_errors: list[dict[str, str]] = []
 
     for xml_file in find_xml_files(corpora_path):
         try:
-            records.append(analyze_xml_file(corpora_path, xml_file, form_kind))
+            records.append(analyze_xml_file(corpora_path, xml_file))
         except Exception as exc:
             parse_errors.append(
                 {
@@ -352,10 +258,54 @@ def collect_corpus_records(corpora_path: Path, form_kind: str) -> tuple[list[dic
     return records, parse_errors
 
 
-def analyze_corpora(corpora_path: Path, form_kind: str = "first") -> dict[str, Any]:
-    corpora_path = corpora_path.resolve()
-    records, parse_errors = collect_corpus_records(corpora_path, form_kind)
-    return build_metrics(corpora_path, form_kind, records, parse_errors)
+STATS_SUFFIX = "_corpora_stats.csv"
+
+
+def read_stats_dir(stats_dir: Path) -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
+    """Build per-(corpus, language, dialect) records from the per-corpus CSVs
+    written by QC/utilities/get_corpus_stats.py (the inverted pipeline:
+    that script counts, this one aggregates)."""
+    records: list[dict[str, Any]] = []
+    parse_errors: list[dict[str, str]] = []
+    csv_paths = sorted(Path(stats_dir).glob(f"*{STATS_SUFFIX}"))
+    if not csv_paths:
+        raise FileNotFoundError(f"No *{STATS_SUFFIX} files found in {stats_dir}")
+
+    for csv_path in csv_paths:
+        source = csv_path.name[: -len(STATS_SUFFIX)]
+        with open(csv_path, newline="", encoding="utf-8") as f:
+            for row in csv.DictReader(f):
+
+                def as_int(field: str) -> int:
+                    return int(float(row.get(field) or 0))
+
+                if not (row.get("language") or "").strip() and as_int("parse_errors"):
+                    parse_errors.extend(
+                        {"path": f"{source} (file unknown; see get_corpus_stats log)",
+                         "error": "XML parse error"}
+                        for _ in range(as_int("parse_errors"))
+                    )
+                    continue
+                language_code = (row.get("language") or "").strip()
+                dialect = (row.get("dialect") or "").strip()
+                records.append({
+                    "source": source,
+                    "language": display_language(language_code, dialect),
+                    "language_code": language_code or None,
+                    "dialect": dialect or "Not Specified",
+                    "path": f"{source}:{language_code or 'unknown'}:{dialect or 'unknown'}",
+                    "tokens": as_int("word_count"),
+                    "sentences": as_int("sentences"),
+                    "xml_files": as_int("file_count"),
+                    "word_elements": as_int("word_elements"),
+                    "morpheme_elements": as_int("morpheme_elements"),
+                    "translation_elements": as_int("translation_elements"),
+                    "audio_elements": as_int("audio_elements"),
+                    "zho_transl_count": as_int("zho_transl_count"),
+                    "glossed_words": as_int("glossed_words"),
+                    "transcribed_audio_seconds": float(row.get("transcribed_audio_seconds") or 0),
+                })
+    return records, parse_errors
 
 
 def load_benchmarks(path: Path | None) -> list[dict[str, Any]]:
@@ -386,6 +336,10 @@ def format_short(value: int | float) -> str:
     if value >= 1_000:
         return f"{sign}{value / 1_000:.1f}K"
     return f"{sign}{value:,}"
+
+
+def format_hours(value: int | float) -> str:
+    return f"{value:,.0f}"
 
 
 def pct_of(value: int, total: int) -> str:
@@ -441,7 +395,7 @@ def write_markdown(metrics: dict[str, Any], benchmarks: list[dict[str, Any]], ou
         f"Generated at: `{metrics['generated_at']}`",
         f"Git ref: `{metrics['git'].get('ref') or 'unknown'}`",
         f"Git commit: `{metrics['git'].get('commit') or 'unknown'}`",
-        f"Token source: sentence-level `FORM` elements using form mode `{metrics['form_kind']}`.",
+        f"Token source: sentence-level FORM, standard tier with original fallback.",
         "",
         "## Totals",
         "",
@@ -653,29 +607,6 @@ def history_commits(repo_root: Path, max_commits: int) -> list[str]:
     return list(reversed(raw.splitlines())) if raw else []
 
 
-def history_commits_after(repo_root: Path, base_commit: str) -> list[str]:
-    raw = git_value(
-        [
-            "log",
-            "--first-parent",
-            "--no-renames",
-            "--diff-filter=ADM",
-            "--format=%H",
-            f"{base_commit}..HEAD",
-            "--",
-            XML_HISTORY_PATHSPEC,
-        ],
-        repo_root,
-    )
-    return list(reversed(raw.splitlines())) if raw else []
-
-
-def is_ancestor(repo_root: Path, commit: str) -> bool:
-    if not commit:
-        return False
-    result = run_git(["merge-base", "--is-ancestor", commit, "HEAD"], repo_root, check=False)
-    return result.returncode == 0
-
 
 def commit_date(repo_root: Path, commit: str) -> str:
     return git_value(["show", "-s", "--format=%cI", commit], repo_root) or ""
@@ -691,6 +622,9 @@ def history_row(repo_root: Path, commit: str, metrics: dict[str, Any]) -> dict[s
         "sources": metrics["totals"]["sources"],
         "languages": metrics["totals"]["languages"],
         "parse_errors": metrics["totals"]["parse_errors"],
+        "transcribed_audio_seconds": metrics["totals"]["transcribed_audio_seconds"],
+        "zho_transl_count": metrics["totals"]["zho_transl_count"],
+        "glossed_words": metrics["totals"]["glossed_words"],
     }
 
 
@@ -713,6 +647,9 @@ def history_row_from_records(
         "sources": totals["sources"],
         "languages": totals["languages"],
         "parse_errors": totals["parse_errors"],
+        "transcribed_audio_seconds": totals["transcribed_audio_seconds"],
+        "zho_transl_count": totals["zho_transl_count"],
+        "glossed_words": totals["glossed_words"],
     }
 
 
@@ -796,44 +733,6 @@ def parse_errors_by_path(parse_errors: list[dict[str, str]]) -> dict[str, dict[s
     return {item["path"]: item for item in parse_errors}
 
 
-def restore_xml_blob(
-    corpora_path: Path,
-    form_kind: str,
-    path: str,
-    content: bytes,
-    records: dict[str, dict[str, Any]],
-    parse_errors: dict[str, dict[str, str]],
-) -> None:
-    try:
-        records[path] = analyze_xml_bytes(corpora_path, path, content, form_kind)
-        parse_errors.pop(path, None)
-    except Exception as exc:
-        records.pop(path, None)
-        parse_errors[path] = {"path": path, "error": str(exc)}
-
-
-def roll_back_xml_commit(
-    repo_root: Path,
-    corpora_path: Path,
-    form_kind: str,
-    changes: list[XmlChange],
-    records: dict[str, dict[str, Any]],
-    parse_errors: dict[str, dict[str, str]],
-) -> None:
-    old_blob_ids = [change.old_oid for change in changes if change.status in {"D", "M"} and change.old_oid]
-    old_blobs = read_git_blobs(repo_root, old_blob_ids)
-
-    for change in changes:
-        if change.status == "A":
-            records.pop(change.path, None)
-            parse_errors.pop(change.path, None)
-            continue
-
-        if not change.old_oid or change.old_oid not in old_blobs:
-            raise ValueError(f"Could not read previous git blob for {change.path}")
-        restore_xml_blob(corpora_path, form_kind, change.path, old_blobs[change.old_oid], records, parse_errors)
-
-
 def load_history_csv(path: Path) -> list[dict[str, Any]]:
     if not path.is_file():
         return []
@@ -842,81 +741,128 @@ def load_history_csv(path: Path) -> list[dict[str, Any]]:
     return [row for row in rows if row.get("commit")]
 
 
-def cached_history_base(repo_root: Path, rows: list[dict[str, Any]]) -> tuple[int, str] | None:
-    for index in range(len(rows) - 1, -1, -1):
-        commit = rows[index].get("commit", "")
-        if is_ancestor(repo_root, commit):
-            return index, commit
-    return None
+def append_history_row(repo_root: Path, cache_path: Path, metrics: dict[str, Any]) -> list[dict[str, Any]]:
+    """One history row per run, at HEAD, from the current snapshot totals.
+    Re-running on the same commit replaces the row instead of duplicating."""
+    rows = load_history_csv(cache_path)
+    head = metrics["git"].get("commit") or git_value(["rev-parse", "HEAD"], repo_root) or ""
+    row = {
+        "commit": head,
+        "date": commit_date(repo_root, head),
+        "tokens": metrics["totals"]["tokens"],
+        "sentences": metrics["totals"]["sentences"],
+        "xml_files": metrics["totals"]["xml_files"],
+        "sources": metrics["totals"]["sources"],
+        "languages": metrics["totals"]["languages"],
+        "parse_errors": metrics["totals"]["parse_errors"],
+        "transcribed_audio_seconds": metrics["totals"]["transcribed_audio_seconds"],
+        "zho_transl_count": metrics["totals"]["zho_transl_count"],
+        "glossed_words": metrics["totals"]["glossed_words"],
+    }
+    if rows and rows[-1].get("commit") == head:
+        rows[-1] = row
+    else:
+        rows.append(row)
+    return rows
 
 
-def generate_history_from_cache(
+def apply_commit_changes(
     repo_root: Path,
-    form_kind: str,
-    cache_path: Path,
-    current_records: list[dict[str, Any]],
-    current_parse_errors: list[dict[str, str]],
-) -> list[dict[str, Any]] | None:
-    cached_rows = load_history_csv(cache_path)
-    if not cached_rows:
-        progress(f"History cache not found at {cache_path}; generating full history.")
-        return None
+    commit: str,
+    records_by_path: dict[str, dict[str, Any]],
+    parse_errors_by_path: dict[str, dict[str, str]],
+    corpora_path: Path,
+    progress_prefix: str = "",
+) -> int:
+    """Advance the running per-path record/parse-error maps by applying one
+    commit's XML diff (vs its first parent), in place. Returns the file count."""
+    changes = changed_xml_files(repo_root, commit)
+    blob_ids = [change.new_oid for change in changes if change.status != "D" and change.new_oid]
+    blobs = read_git_blobs(repo_root, blob_ids)
 
-    base = cached_history_base(repo_root, cached_rows)
-    if not base:
-        progress(f"History cache at {cache_path} has no commit on this branch; generating full history.")
-        return None
+    for change_index, change in enumerate(changes, start=1):
+        if change.status == "D":
+            records_by_path.pop(change.path, None)
+            parse_errors_by_path.pop(change.path, None)
+        else:
+            try:
+                if not change.new_oid or change.new_oid not in blobs:
+                    raise ValueError(f"Could not read git blob for {change.path}")
+                record = analyze_xml_bytes(corpora_path, change.path, blobs[change.new_oid])
+                records_by_path[change.path] = record
+                parse_errors_by_path.pop(change.path, None)
+            except Exception as exc:
+                records_by_path.pop(change.path, None)
+                parse_errors_by_path[change.path] = {"path": change.path, "error": str(exc)}
 
-    base_index, base_commit = base
-    rows = cached_rows[: base_index + 1]
-    new_commits = history_commits_after(repo_root, base_commit)
-    if not new_commits:
-        progress(f"History cache is current through {base_commit[:8]}; no new XML-changing commits.")
-        return rows
+        if len(changes) >= 1000 and (change_index % 1000 == 0 or change_index == len(changes)):
+            progress(f"{progress_prefix}processed {change_index}/{len(changes)} XML changes.")
+    return len(changes)
 
-    corpora_path = repo_root / "Corpora"
-    records = records_by_path(current_records)
-    parse_errors = parse_errors_by_path(current_parse_errors)
-    rows_by_commit: dict[str, dict[str, Any]] = {}
-    total_commits = len(new_commits)
 
-    progress(
-        f"History cache found {len(rows)} existing row(s) through {base_commit[:8]}; "
-        f"updating {total_commits} new XML-changing commit(s)."
+def snapshot_records(
+    repo_root: Path,
+    commit: str,
+    corpora_path: Path,
+) -> tuple[dict[str, dict[str, Any]], dict[str, dict[str, str]]]:
+    """Analyze every tracked XML file as it existed at `commit`, returning the
+    per-path record/parse-error maps — the seed state for an incremental walk."""
+    # ls-tree does not accept :(glob) pathspec magic (unlike git show), so list
+    # everything under Corpora/ and filter to the same .../XML/.../*.xml set.
+    result = run_git_bytes(
+        ["ls-tree", "-r", "-z", commit, "--", "Corpora"],
+        repo_root,
     )
-    for reverse_index, commit in enumerate(reversed(new_commits), start=1):
-        short_commit = commit[:8]
-        changes = changed_xml_files(repo_root, commit)
-        row = history_row_from_records(repo_root, commit, records, parse_errors)
-        rows_by_commit[commit] = row
-        progress(
-            f"[{reverse_index}/{total_commits}] {short_commit} cached row: "
-            f"{format_short(row['tokens'])} tokens, {format_int(row['xml_files'])} XML files; "
-            f"rolling back {len(changes)} XML change(s)."
-        )
-        roll_back_xml_commit(repo_root, corpora_path, form_kind, changes, records, parse_errors)
+    oid_by_path: dict[str, str] = {}
+    for entry in result.stdout.split(b"\0"):
+        if not entry:
+            continue
+        meta, _, raw_path = entry.partition(b"\t")
+        fields = meta.decode("utf-8", errors="replace").split()
+        if len(fields) < 3 or fields[1] != "blob":
+            continue
+        path = raw_path.decode("utf-8", errors="replace")
+        parts = path.split("/")
+        if not path.endswith(".xml") or "XML" not in parts:
+            continue
+        oid_by_path[path] = fields[2]
 
-    new_rows = [rows_by_commit[commit] for commit in new_commits]
-    progress(f"History cache update complete: kept {len(rows)} row(s), appended {len(new_rows)} row(s).")
-    return rows + new_rows
+    blobs = read_git_blobs(repo_root, list(oid_by_path.values()))
+    records_by_path: dict[str, dict[str, Any]] = {}
+    parse_errors_by_path: dict[str, dict[str, str]] = {}
+    for path, oid in oid_by_path.items():
+        try:
+            if oid not in blobs:
+                raise ValueError(f"Could not read git blob for {path}")
+            records_by_path[path] = analyze_xml_bytes(corpora_path, path, blobs[oid])
+        except Exception as exc:
+            parse_errors_by_path[path] = {"path": path, "error": str(exc)}
+    return records_by_path, parse_errors_by_path
+
+
+def is_ancestor(repo_root: Path, commit: str, descendant: str = "HEAD") -> bool:
+    """True if `commit` is an ancestor of (or equal to) `descendant`."""
+    if not commit:
+        return False
+    proc = run_git(["merge-base", "--is-ancestor", commit, descendant], repo_root, check=False)
+    return proc.returncode == 0
+
+
+def commits_after(repo_root: Path, base_commit: str, max_commits: int) -> list[str]:
+    """XML-changing first-parent commits in (base_commit, HEAD], oldest first."""
+    args = ["log", "--first-parent", "--no-renames", "--diff-filter=ADM", "--format=%H"]
+    if max_commits > 0:
+        args.append(f"--max-count={max_commits}")
+    args.extend([f"{base_commit}..HEAD", "--", XML_HISTORY_PATHSPEC])
+    raw = git_value(args, repo_root)
+    return list(reversed(raw.splitlines())) if raw else []
 
 
 def generate_history(
     repo_root: Path,
-    form_kind: str,
     max_commits: int,
     current_metrics: dict[str, Any] | None = None,
-    current_records: list[dict[str, Any]] | None = None,
-    current_parse_errors: list[dict[str, str]] | None = None,
-    cache_path: Path | None = None,
 ) -> list[dict[str, Any]]:
-    if cache_path and max_commits == 0 and current_records is not None and current_parse_errors is not None:
-        cached_rows = generate_history_from_cache(repo_root, form_kind, cache_path, current_records, current_parse_errors)
-        if cached_rows is not None:
-            return cached_rows
-    elif cache_path and max_commits > 0:
-        progress("History cache ignored because --max-history-commits is set.")
-
     rows = []
     commits = history_commits(repo_root, max_commits)
     current_commit = current_metrics.get("git", {}).get("commit") if current_metrics else None
@@ -938,42 +884,77 @@ def generate_history(
             )
             continue
 
-        changes = changed_xml_files(repo_root, commit)
-        progress(f"[{position}/{total_commits}] {short_commit} applying {len(changes)} XML file change(s).")
-        blob_ids = [change.new_oid for change in changes if change.status != "D" and change.new_oid]
-        blobs = read_git_blobs(repo_root, blob_ids)
-
-        for change_index, change in enumerate(changes, start=1):
-            if change.status == "D":
-                records_by_path.pop(change.path, None)
-                parse_errors_by_path.pop(change.path, None)
-            else:
-                try:
-                    if not change.new_oid or change.new_oid not in blobs:
-                        raise ValueError(f"Could not read git blob for {change.path}")
-                    record = analyze_xml_bytes(corpora_path, change.path, blobs[change.new_oid], form_kind)
-                    records_by_path[change.path] = record
-                    parse_errors_by_path.pop(change.path, None)
-                except Exception as exc:
-                    records_by_path.pop(change.path, None)
-                    parse_errors_by_path[change.path] = {"path": change.path, "error": str(exc)}
-
-            if len(changes) >= 1000 and (change_index % 1000 == 0 or change_index == len(changes)):
-                progress(f"[{position}/{total_commits}] {short_commit} processed {change_index}/{len(changes)} XML changes.")
-
+        count = apply_commit_changes(
+            repo_root, commit, records_by_path, parse_errors_by_path, corpora_path,
+            progress_prefix=f"[{position}/{total_commits}] {short_commit} ",
+        )
         row = history_row_from_records(repo_root, commit, records_by_path, parse_errors_by_path)
         rows.append(row)
         progress(
-            f"[{position}/{total_commits}] {short_commit} done: "
+            f"[{position}/{total_commits}] {short_commit} applied {count} change(s): "
             f"{format_short(row['tokens'])} tokens, {format_int(row['xml_files'])} XML files."
         )
     progress(f"History mode complete: wrote {len(rows)} sampled row(s).")
     return rows
 
 
+def extend_history(
+    repo_root: Path,
+    cache_path: Path,
+    current_metrics: dict[str, Any],
+    max_commits: int = 0,
+) -> list[dict[str, Any]]:
+    """Extend the cached size-over-time CSV by sampling each XML-changing commit
+    that landed since the last cached row, seeded from the corpus state at that
+    cached commit. Falls back to a single HEAD append when there is no usable
+    cache tip (empty/diverged) or no gap to fill (<=1 new commit)."""
+    rows = load_history_csv(cache_path)
+    base_commit = rows[-1]["commit"] if rows else ""
+    head = current_metrics["git"].get("commit") or git_value(["rev-parse", "HEAD"], repo_root) or ""
+
+    if not base_commit:
+        progress("History extend: empty cache; appending a single HEAD row.")
+        return append_history_row(repo_root, cache_path, current_metrics)
+    if not is_ancestor(repo_root, base_commit):
+        progress(
+            f"History extend: cached tip {base_commit[:8]} is not an ancestor of HEAD; "
+            "appending a single HEAD row instead of walking."
+        )
+        return append_history_row(repo_root, cache_path, current_metrics)
+
+    new_commits = commits_after(repo_root, base_commit, max_commits)
+    if len(new_commits) <= 1:
+        progress("History extend: no gap to fill (<=1 new XML-changing commit); appending a single HEAD row.")
+        return append_history_row(repo_root, cache_path, current_metrics)
+
+    corpora_path = repo_root / "Corpora"
+    total = len(new_commits)
+    progress(f"History extend: seeding from {base_commit[:8]}, filling {total} new commit(s).")
+    records_by_path, parse_errors_by_path = snapshot_records(repo_root, base_commit, corpora_path)
+
+    for index, commit in enumerate(new_commits, start=1):
+        short_commit = commit[:8]
+        if commit == head:
+            row = history_row(repo_root, commit, current_metrics)
+        else:
+            apply_commit_changes(
+                repo_root, commit, records_by_path, parse_errors_by_path, corpora_path,
+                progress_prefix=f"[{index}/{total}] {short_commit} ",
+            )
+            row = history_row_from_records(repo_root, commit, records_by_path, parse_errors_by_path)
+        rows.append(row)
+        progress(
+            f"[{index}/{total}] {short_commit} done: "
+            f"{format_short(row['tokens'])} tokens, {format_int(row['xml_files'])} XML files."
+        )
+    return rows
+
+
 def write_history_csv(rows: list[dict[str, Any]], output_dir: Path) -> Path:
     path = output_dir / "corpus_size_history.csv"
-    fieldnames = ["date", "commit", "tokens", "sentences", "xml_files", "sources", "languages", "parse_errors"]
+    fieldnames = ["date", "commit", "tokens", "sentences", "xml_files", "sources",
+                  "languages", "parse_errors", "transcribed_audio_seconds",
+                  "zho_transl_count", "glossed_words"]
     with open(path, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
@@ -981,42 +962,89 @@ def write_history_csv(rows: list[dict[str, Any]], output_dir: Path) -> Path:
     return path
 
 
-def plot_history(rows: list[dict[str, Any]], output_dir: Path) -> None:
+HISTORY_SERIES = (
+    {
+        "column": "tokens",
+        "title": "FormosanBank Size Over Time",
+        "ylabel": "Tokens",
+        "filename": "corpus_size_over_time.png",
+        "to_y": None,
+        "fmt": format_short,
+        "caption": None,
+    },
+    {
+        "column": "transcribed_audio_seconds",
+        "title": "Transcribed Audio Over Time",
+        "ylabel": "Hours",
+        "filename": "corpus_transcribed_audio_over_time.png",
+        "to_y": lambda seconds: seconds / 3600.0,
+        "fmt": format_hours,
+        "caption": "Only commits with measured audio durations are shown.",
+        "drop_zeros": True,
+    },
+    {
+        "column": "zho_transl_count",
+        "title": "Mandarin-Translated Words Over Time",
+        "ylabel": "Words",
+        "filename": "corpus_mandarin_words_over_time.png",
+        "to_y": None,
+        "fmt": format_short,
+        "caption": None,
+    },
+    {
+        "column": "glossed_words",
+        "title": "Glossed Words Over Time",
+        "ylabel": "Words",
+        "filename": "corpus_glossed_words_over_time.png",
+        "to_y": None,
+        "fmt": format_short,
+        "caption": None,
+    },
+)
+
+
+def plot_series(rows: list[dict[str, Any]], output_dir: Path, spec: dict[str, Any]) -> None:
+    output_path = output_dir / spec["filename"]
     if not rows:
-        plot_empty_state("FormosanBank Size Over Time", "No history rows were generated.", output_dir / "corpus_size_over_time.png")
+        plot_empty_state(spec["title"], "No history rows were generated.", output_path)
         return
 
     plt = require_matplotlib()
     dates = []
-    tokens = []
+    values = []
     for row in rows:
-        if not row["date"]:
+        if not row.get("date"):
             continue
+        raw = float(row.get(spec["column"], 0) or 0)
+        y = spec["to_y"](raw) if spec["to_y"] else raw
         dates.append(dt.datetime.fromisoformat(row["date"].replace("Z", "+00:00")))
-        tokens.append(int(row["tokens"]))
+        values.append(y)
     if not dates:
-        plot_empty_state("FormosanBank Size Over Time", "No dated history rows were available.", output_dir / "corpus_size_over_time.png")
+        plot_empty_state(spec["title"], "No dated history rows were available.", output_path)
         return
 
+    if spec.get("drop_zeros"):
+        kept = sorted(((d, v) for d, v in zip(dates, values) if v > 0), key=lambda dv: dv[0])
+        if not kept:
+            plot_empty_state(spec["title"], "No data points are available yet.", output_path)
+            return
+        dates = [d for d, _ in kept]
+        values = [v for _, v in kept]
+
+    fmt = spec["fmt"]
     fig, ax = plt.subplots(figsize=(11, 5.8), facecolor=PLOT_BG)
     ax.set_facecolor(PLOT_BG)
-    ax.plot(dates, tokens, color=PLOT_COLORS[0], marker="o", markersize=5, linewidth=2.4)
-    ax.fill_between(dates, tokens, min(tokens), color=PLOT_COLORS[0], alpha=0.12)
-    ax.set_title("FormosanBank Size Over Time", loc="left", fontsize=18, fontweight="bold", color=PLOT_TEXT, pad=16)
-    ax.text(
-        0,
-        1.01,
-        f"{len(tokens)} XML-changing commits sampled.",
-        transform=ax.transAxes,
-        ha="left",
-        va="bottom",
-        fontsize=10,
-        color=PLOT_MUTED,
-    )
-    ax.set_ylabel("Tokens", color=PLOT_MUTED, labelpad=10)
+    ax.plot(dates, values, color=PLOT_COLORS[0], marker="o", markersize=5, linewidth=2.4)
+    ax.fill_between(dates, values, min(values), color=PLOT_COLORS[0], alpha=0.12)
+    ax.set_title(spec["title"], loc="left", fontsize=18, fontweight="bold", color=PLOT_TEXT, pad=16)
+    subtitle = f"{len(values)} commits sampled."
+    if spec["caption"]:
+        subtitle = f"{subtitle} {spec['caption']}"
+    ax.text(0, 1.01, subtitle, transform=ax.transAxes, ha="left", va="bottom", fontsize=10, color=PLOT_MUTED)
+    ax.set_ylabel(spec["ylabel"], color=PLOT_MUTED, labelpad=10)
     ax.grid(color=PLOT_GRID, linewidth=0.8, alpha=0.8)
     ax.set_axisbelow(True)
-    ax.yaxis.set_major_formatter(lambda value, _pos: format_short(value))
+    ax.yaxis.set_major_formatter(lambda value, _pos: fmt(value))
     ax.tick_params(axis="x", colors=PLOT_MUTED, labelsize=9)
     ax.tick_params(axis="y", colors=PLOT_MUTED, labelsize=9)
     for spine in ["top", "right"]:
@@ -1024,8 +1052,8 @@ def plot_history(rows: list[dict[str, Any]], output_dir: Path) -> None:
     ax.spines["left"].set_color(PLOT_GRID)
     ax.spines["bottom"].set_color(PLOT_GRID)
     ax.annotate(
-        format_short(tokens[-1]),
-        xy=(dates[-1], tokens[-1]),
+        fmt(values[-1]),
+        xy=(dates[-1], values[-1]),
         xytext=(8, 0),
         textcoords="offset points",
         va="center",
@@ -1035,8 +1063,13 @@ def plot_history(rows: list[dict[str, Any]], output_dir: Path) -> None:
     )
     fig.autofmt_xdate()
     fig.tight_layout()
-    fig.savefig(output_dir / "corpus_size_over_time.png", dpi=180, bbox_inches="tight", facecolor=PLOT_BG)
+    fig.savefig(output_path, dpi=180, bbox_inches="tight", facecolor=PLOT_BG)
     plt.close(fig)
+
+
+def plot_history(rows: list[dict[str, Any]], output_dir: Path) -> None:
+    for spec in HISTORY_SERIES:
+        plot_series(rows, output_dir, spec)
 
 
 def parse_args(argv: list[str]) -> argparse.Namespace:
@@ -1044,25 +1077,39 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser.add_argument("corpora_path", nargs="?", default="Corpora", help="Path to the Corpora directory.")
     parser.add_argument("--output-dir", default="corpus_metrics", help="Directory for metrics artifacts.")
     parser.add_argument(
-        "--form-kind",
-        choices=["first", "auto", "standard", "original"],
-        default="first",
-        help="Sentence-level FORM selection mode. 'first' matches the legacy token counter.",
-    )
-    parser.add_argument(
         "--benchmarks",
         default=str(Path(__file__).resolve().parent / "reference" / "corpus_benchmarks.json"),
         help="Optional benchmark JSON file.",
     )
-    parser.add_argument("--history", action="store_true", help="Generate a size-over-time CSV and plot from git history.")
-    parser.add_argument("--max-history-commits", type=int, default=0, help="Maximum XML-changing commits to sample. Use 0 for full history.")
+    parser.add_argument("--history", action="store_true", help="Append one history row at HEAD to the size-over-time CSV.")
+    parser.add_argument(
+        "--history-extend",
+        action="store_true",
+        help="Resume from the cached size-over-time CSV and add a row for every "
+             "XML-changing commit since its last entry (fills gaps cheaply). Falls "
+             "back to a single HEAD append when the cache is empty/diverged or there "
+             "is no gap.",
+    )
+    parser.add_argument("--max-history-commits", type=int, default=0, help="Maximum XML-changing commits to sample (with --history-rebuild, or to cap the fill window of --history-extend). Use 0 for no limit.")
     parser.add_argument(
         "--history-cache",
         default=None,
-        help="Existing corpus_size_history.csv to update incrementally when full history is requested.",
+        help="Existing corpus_size_history.csv to read and append to.",
     )
     parser.add_argument("--no-plots", action="store_true", help="Skip PNG plot generation.")
     parser.add_argument("--fail-on-parse-error", action="store_true", help="Exit nonzero if any XML file cannot be parsed.")
+    parser.add_argument(
+        "--stats-dir",
+        default=None,
+        help="Aggregate per-corpus CSVs from this directory (written by "
+             "QC/utilities/get_corpus_stats.py) instead of parsing XML.",
+    )
+    parser.add_argument(
+        "--history-rebuild",
+        action="store_true",
+        help="Rebuild the full size-over-time CSV from git history (slow; "
+             "restates all rows under the current counting rules).",
+    )
     return parser.parse_args(argv)
 
 
@@ -1073,9 +1120,14 @@ def main(argv: list[str] | None = None) -> int:
     output_dir.mkdir(parents=True, exist_ok=True)
 
     benchmarks = load_benchmarks(Path(args.benchmarks) if args.benchmarks else None)
-    progress(f"Counting current corpus XML from {corpora_path}.")
-    current_records, current_parse_errors = collect_corpus_records(corpora_path, args.form_kind)
-    metrics = build_metrics(corpora_path.resolve(), args.form_kind, current_records, current_parse_errors)
+
+    if args.stats_dir:
+        progress(f"Aggregating per-corpus CSVs from {args.stats_dir}.")
+        current_records, current_parse_errors = read_stats_dir(Path(args.stats_dir))
+    else:
+        progress(f"Counting current corpus XML from {corpora_path}.")
+        current_records, current_parse_errors = collect_corpus_records(corpora_path)
+    metrics = build_metrics(corpora_path.resolve(), current_records, current_parse_errors)
     progress(
         "Current corpus counted: "
         f"{format_short(metrics['totals']['tokens'])} tokens, "
@@ -1087,17 +1139,30 @@ def main(argv: list[str] | None = None) -> int:
     if not args.no_plots:
         write_current_plots(metrics, benchmarks, output_dir)
 
-    if args.history:
+    if args.history_rebuild and args.history_extend:
+        print("--history-rebuild and --history-extend are mutually exclusive.", file=sys.stderr)
+        return 2
+
+    if args.history_rebuild:
+        if args.stats_dir:
+            print("--history-rebuild requires XML mode (omit --stats-dir).", file=sys.stderr)
+            return 2
         repo_root = repo_root_from(corpora_path.resolve())
-        history_rows = generate_history(
-            repo_root,
-            args.form_kind,
-            args.max_history_commits,
-            metrics,
-            current_records=current_records,
-            current_parse_errors=current_parse_errors,
-            cache_path=Path(args.history_cache) if args.history_cache else None,
-        )
+        history_rows = generate_history(repo_root, args.max_history_commits, metrics)
+        write_history_csv(history_rows, output_dir)
+        if not args.no_plots:
+            plot_history(history_rows, output_dir)
+    elif args.history_extend:
+        repo_root = repo_root_from(corpora_path.resolve())
+        cache = Path(args.history_cache) if args.history_cache else output_dir / "corpus_size_history.csv"
+        history_rows = extend_history(repo_root, cache, metrics, args.max_history_commits)
+        write_history_csv(history_rows, output_dir)
+        if not args.no_plots:
+            plot_history(history_rows, output_dir)
+    elif args.history:
+        repo_root = repo_root_from(corpora_path.resolve())
+        cache = Path(args.history_cache) if args.history_cache else output_dir / "corpus_size_history.csv"
+        history_rows = append_history_row(repo_root, cache, metrics)
         write_history_csv(history_rows, output_dir)
         if not args.no_plots:
             plot_history(history_rows, output_dir)

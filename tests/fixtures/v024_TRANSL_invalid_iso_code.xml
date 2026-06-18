@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Negative fixture for V024 (TRANSL/@xml:lang must be a valid ISO 639-3 code).
+
+  Shape: an S TRANSL with xml:lang="zz" (not a valid 639-3 Id).
+
+  Exercises: validate_xml.py should report a finding. validate_lang_code
+  only checks TEXT, not TRANSL; xfail.
+-->
+<TEXT id="V024_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original">Halo.</FORM>
+    <TRANSL xml:lang="zz">greeting</TRANSL>
+  </S>
+</TEXT>

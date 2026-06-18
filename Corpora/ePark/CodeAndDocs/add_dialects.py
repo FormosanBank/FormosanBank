@@ -34,9 +34,14 @@ def main(dialects_csv, final_xml_dir):
                     if '_' in filename_without_ext:
                         dialect = filename_without_ext.split('_')[0]
                         root_element.set('dialect', dialect)
-                    elif filename_without_ext == 'Truku':
-                        # Special case for Truku files
-                        root_element.set('dialect', 'Truku')
+                    else:
+                        # Single-dialect languages (e.g. Tsou, Thao, Yami,
+                        # Kavalan, Kanakanavu, Saaroa, Saisiyat, Sakizaya, Truku)
+                        # are stored in a file named after the language itself.
+                        # The valid @dialect value for these is the language name
+                        # (see QC/validation/_dialect_inventory.py); otherwise the
+                        # attribute is missing and validate_xml.py V036 fires.
+                        root_element.set('dialect', filename_without_ext)
 
                     # Step 7: Save the modified XML file
                     tree.write(file_path, encoding='utf-8', xml_declaration=True)

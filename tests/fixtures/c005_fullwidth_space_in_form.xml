@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  C005 positive pin: full-width space (U+3000) in FORM collapses to ASCII
+  space via normalize_whitespace's \s+ match.
+
+  Shape: one S with both FORM tiers, each carrying U+3000 between words.
+  xml:lang="ami".
+  Exercises: U+3000 is not in swap_punctuation's table but matches \s+
+  in Python's default regex flavour, so normalize_whitespace collapses
+  it. The pin guards against a future refactor to a stricter regex
+  (e.g. [ \t\n]+) that would break this incidental behaviour.
+-->
+<TEXT id="TEST_C005" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original">Halo　hapinangha.</FORM>
+    <FORM kindOf="standard">Halo　hapinangha.</FORM>
+  </S>
+</TEXT>

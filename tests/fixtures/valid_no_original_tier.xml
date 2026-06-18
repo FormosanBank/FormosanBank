@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Negative fixture for the standardize "missing original tier" error path.
+
+  Shape: one S with ONLY a standard tier. No original tier anywhere in
+  the corpus.
+
+  Exercises: standardize.py in copy mode must produce a clear error (non-zero
+  exit code OR a stderr/stdout message naming "original") rather than
+  silently producing nothing. Catches a regression where the absence of
+  an original tier is silently tolerated.
+-->
+<TEXT id="TEST_NO" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="standard">Only a standard tier here.</FORM>
+  </S>
+</TEXT>

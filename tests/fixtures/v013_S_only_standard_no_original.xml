@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Negative fixture for V013 (every S/W/M must have a FORM kindOf="original").
+
+  Shape: one S whose only FORM is kindOf="standard". No original tier.
+
+  Exercises: validate_xml.py should report a finding about the missing
+  original tier. Currently NOT enforced; this test is xfail until B
+  fixes the validator.
+-->
+<TEXT id="V013_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="standard">Halo.</FORM>
+  </S>
+</TEXT>

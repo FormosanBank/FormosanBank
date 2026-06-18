@@ -1,4 +1,5 @@
 import xml.etree.ElementTree as ET
+import html
 import os
 import unicodedata
 import collections
@@ -106,7 +107,19 @@ def remove_chinese_characters(text):
     return text_without_chinese
 
 def extract_orthographic_info(text):
-    
+
+    # Decode any HTML/XML entity references embedded as LITERAL text in
+    # FORM/TRANSL content. This handles cases where source scrapers
+    # produced literal "&amp;", "&lt;", "&gt;", "&nbsp;", "&quot;",
+    # numeric character references etc. as part of the FORM text rather
+    # than as XML entities (which lxml would already have decoded at
+    # parse time). Without this, each occurrence of "&amp;" is counted
+    # as five separate characters ("&", "a", "m", "p", ";") instead of
+    # the single intended character — polluting orthography statistics
+    # and downstream similarity metrics (which feed B4 threshold
+    # calibration). Per roadmap B7.
+    text = html.unescape(text)
+
     text = text.lower()
     #text = remove_chinese_characters(text)
     # Normalize text to NFC form (canonical decomposition followed by canonical composition)

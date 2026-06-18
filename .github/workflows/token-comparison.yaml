@@ -18,6 +18,7 @@ on:
       - "QC/plot_counts.py"
       - "QC/plot_deltas.py"
       - "QC/corpus_metrics.py"
+      - "QC/corpus_counts.py"
       - ".github/workflows/token-comparison.yaml"
   push:
     branches:
@@ -31,6 +32,7 @@ on:
       - "QC/plot_counts.py"
       - "QC/plot_deltas.py"
       - "QC/corpus_metrics.py"
+      - "QC/corpus_counts.py"
       - ".github/workflows/token-comparison.yaml"
     
 jobs:

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Negative fixture for V070 (PHON may only appear under S, W, or M).
+
+  Shape: PHON appears as a direct child of TEXT (forbidden).
+
+  Exercises: validate_xml.py should reject. XSD currently rejects PHON
+  anywhere (PHON is not in the schema yet); after B's update, only
+  this placement should remain forbidden. xfail.
+-->
+<TEXT id="V070_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
+  <PHON kindOf="original">ha.lo</PHON>
+  <S id="S_1">
+    <FORM kindOf="original">Halo.</FORM>
+  </S>
+</TEXT>

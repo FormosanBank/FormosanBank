@@ -1,16 +1,18 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TEXT id="PaiwanCh2_090_HARVEST PROSPECTS" xml:lang="pwn" copyright="public domain" citation="Early, R. J., &amp; Whitehorn, J. (2003). One hundred Paiwan texts. Pacific Linguistics, Research School of Pacific and Asian Studies, The Australian National University." BibTeX_citation="@book{100paiwantexts, author = {Robert Early and John Whitehorn}, title = {One Hundred Paiwan Texts}, year = {2003}, publisher = {Pacific Linguistics, Research School of Pacific and Asian Studies, The Australian National University}}" source="conversation piece">
+<TEXT id="PaiwanCh2_090_HARVEST PROSPECTS" xml:lang="pwn" copyright="public domain" citation="Early, R. J., &amp; Whitehorn, J. (2003). One hundred Paiwan texts. Pacific Linguistics, Research School of Pacific and Asian Studies, The Australian National University." BibTeX_citation="@book{100paiwantexts, author = {Robert Early and John Whitehorn}, title = {One Hundred Paiwan Texts}, year = {2003}, publisher = {Pacific Linguistics, Research School of Pacific and Asian Studies, The Australian National University}}" source="conversation piece" dialect="unknown">
     <S id="090S1">
         <FORM kindOf="original">Kai: "uri keman itjen tu sa qarizang nia su vuvu," ku ayain, kina, a su vuvu ka sauni, ka tsemalivalivat amen ta za su quma.</FORM>
         <FORM kindOf="standard">Kai: "uri keman itjen tu sa qarizang nia su vuvu," ku ayain, kina, a su vuvu ka sauni, ka cemalivalivat amen ta za su quma.</FORM>
-        <TRANSL xml:lang="en">(Rough translation) Kai: “We’ll be eating some of your grandparents’ beans,”I said to your grandchild, mother, earlier on when we were passing your fields.</TRANSL>
+        <TRANSL xml:lang="eng">(Rough translation) Kai: “We’ll be eating some of your grandparents’ beans,”I said to your grandchild, mother, earlier on when we were passing your fields.</TRANSL>
         <W id="090S1W1">
             <FORM kindOf="original">Kai:</FORM>
             <FORM kindOf="standard">Kai:</FORM>
             <M id="090S1W1M0">
                 <FORM kindOf="original">Kai</FORM>
+                <PHON kindOf="original">kai</PHON>
                 <FORM kindOf="standard">Kai</FORM>
-                <TRANSL>(name)</TRANSL>
+                <PHON kindOf="standard">kai</PHON>
+                <TRANSL xml:lang="eng">(name)</TRANSL>
             </M>
         </W>
         <W id="090S1W2">
@@ -18,17 +20,28 @@
             <FORM kindOf="standard">"uri</FORM>
             <M id="090S1W2M0">
                 <FORM kindOf="original">uri</FORM>
+                <PHON kindOf="original">uri</PHON>
                 <FORM kindOf="standard">uri</FORM>
-                <TRANSL>will</TRANSL>
+                <PHON kindOf="standard">uri</PHON>
+                <TRANSL xml:lang="eng">will</TRANSL>
             </M>
         </W>
         <W id="090S1W3">
             <FORM kindOf="original">keman</FORM>
             <FORM kindOf="standard">keman</FORM>
             <M id="090S1W3M0">
-                <FORM kindOf="original">em=kan</FORM>
-                <FORM kindOf="standard">em=kan</FORM>
-                <TRANSL>af=eat</TRANSL>
+                <FORM kindOf="original">-em-</FORM>
+                <PHON kindOf="original">-əm-</PHON>
+                <FORM kindOf="standard">-em-</FORM>
+                <PHON kindOf="standard">-əm-</PHON>
+                <TRANSL xml:lang="eng">af</TRANSL>
+            </M>
+            <M id="090S1W3M1">
+                <FORM kindOf="original">k-an</FORM>
+                <PHON kindOf="original">k-an</PHON>
+                <FORM kindOf="standard">k-an</FORM>
+                <PHON kindOf="standard">k-an</PHON>
+                <TRANSL xml:lang="eng">eat</TRANSL>
             </M>
         </W>
         <W id="090S1W4">
@@ -36,8 +49,10 @@
             <FORM kindOf="standard">itjen</FORM>
             <M id="090S1W4M0">
                 <FORM kindOf="original">itjen</FORM>
+                <PHON kindOf="original">icən</PHON>
                 <FORM kindOf="standard">itjen</FORM>
-                <TRANSL>f.we(inc)</TRANSL>
+                <PHON kindOf="standard">iʦən</PHON>
+                <TRANSL xml:lang="eng">f.we(inc)</TRANSL>
             </M>
         </W>
         <W id="090S1W5">
@@ -45,8 +60,10 @@
             <FORM kindOf="standard">tu</FORM>
             <M id="090S1W5M0">
                 <FORM kindOf="original">tu</FORM>
+                <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
-                <TRANSL>obl</TRANSL>
+                <PHON kindOf="standard">tu</PHON>
+                <TRANSL xml:lang="eng">obl</TRANSL>
             </M>
         </W>
         <W id="090S1W6">
@@ -54,8 +71,10 @@
             <FORM kindOf="standard">sa</FORM>
             <M id="090S1W6M0">
                 <FORM kindOf="original">tsa</FORM>
+                <PHON kindOf="original">ʦa</PHON>
                 <FORM kindOf="standard">ca</FORM>
-                <TRANSL>this</TRANSL>
+                <PHON kindOf="standard">ʦa</PHON>
+                <TRANSL xml:lang="eng">this</TRANSL>
             </M>
         </W>
         <W id="090S1W7">
@@ -63,8 +82,10 @@
             <FORM kindOf="standard">qarizang</FORM>
             <M id="090S1W7M0">
                 <FORM kindOf="original">qarizang</FORM>
+                <PHON kindOf="original">qarizaŋ</PHON>
                 <FORM kindOf="standard">qarizang</FORM>
-                <TRANSL>bean.sp</TRANSL>
+                <PHON kindOf="standard">qarizaŋ</PHON>
+                <TRANSL xml:lang="eng">bean.sp</TRANSL>
             </M>
         </W>
         <W id="090S1W8">
@@ -72,13 +93,17 @@
             <FORM kindOf="standard">nia</FORM>
             <M id="090S1W8M0">
                 <FORM kindOf="original">ni</FORM>
+                <PHON kindOf="original">ni</PHON>
                 <FORM kindOf="standard">ni</FORM>
-                <TRANSL>of</TRANSL>
+                <PHON kindOf="standard">ni</PHON>
+                <TRANSL xml:lang="eng">of</TRANSL>
             </M>
             <M id="090S1W8M1">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
-                <TRANSL>pl</TRANSL>
+                <PHON kindOf="standard">a</PHON>
+                <TRANSL xml:lang="eng">pl</TRANSL>
             </M>
         </W>
         <W id="090S1W9">
@@ -86,8 +111,10 @@
             <FORM kindOf="standard">su</FORM>
             <M id="090S1W9M0">
                 <FORM kindOf="original">su</FORM>
+                <PHON kindOf="original">su</PHON>
                 <FORM kindOf="standard">su</FORM>
-                <TRANSL>your(s)</TRANSL>
+                <PHON kindOf="standard">su</PHON>
+                <TRANSL xml:lang="eng">your(s)</TRANSL>
             </M>
         </W>
         <W id="090S1W10">
@@ -95,8 +122,10 @@
             <FORM kindOf="standard">vuvu,"</FORM>
             <M id="090S1W10M0">
                 <FORM kindOf="original">vuvu</FORM>
+                <PHON kindOf="original">vuvu</PHON>
                 <FORM kindOf="standard">vuvu</FORM>
-                <TRANSL>grandparent</TRANSL>
+                <PHON kindOf="standard">vuvu</PHON>
+                <TRANSL xml:lang="eng">grandparent</TRANSL>
             </M>
         </W>
         <W id="090S1W11">
@@ -104,8 +133,10 @@
             <FORM kindOf="standard">ku</FORM>
             <M id="090S1W11M0">
                 <FORM kindOf="original">ku</FORM>
+                <PHON kindOf="original">ku</PHON>
                 <FORM kindOf="standard">ku</FORM>
-                <TRANSL>I</TRANSL>
+                <PHON kindOf="standard">ku</PHON>
+                <TRANSL xml:lang="eng">I</TRANSL>
             </M>
         </W>
         <W id="090S1W12">
@@ -113,13 +144,17 @@
             <FORM kindOf="standard">ayain,</FORM>
             <M id="090S1W12M0">
                 <FORM kindOf="original">aya</FORM>
+                <PHON kindOf="original">aja</PHON>
                 <FORM kindOf="standard">aya</FORM>
-                <TRANSL>say</TRANSL>
+                <PHON kindOf="standard">aja</PHON>
+                <TRANSL xml:lang="eng">say</TRANSL>
             </M>
             <M id="090S1W12M1">
                 <FORM kindOf="original">en</FORM>
+                <PHON kindOf="original">ən</PHON>
                 <FORM kindOf="standard">en</FORM>
-                <TRANSL>pf</TRANSL>
+                <PHON kindOf="standard">ən</PHON>
+                <TRANSL xml:lang="eng">pf</TRANSL>
             </M>
         </W>
         <W id="090S1W13">
@@ -127,8 +162,10 @@
             <FORM kindOf="standard">kina,</FORM>
             <M id="090S1W13M0">
                 <FORM kindOf="original">kina</FORM>
+                <PHON kindOf="original">kina</PHON>
                 <FORM kindOf="standard">kina</FORM>
-                <TRANSL>mother</TRANSL>
+                <PHON kindOf="standard">kina</PHON>
+                <TRANSL xml:lang="eng">mother</TRANSL>
             </M>
         </W>
         <W id="090S1W14">
@@ -136,8 +173,10 @@
             <FORM kindOf="standard">a</FORM>
             <M id="090S1W14M0">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
-                <TRANSL>c</TRANSL>
+                <PHON kindOf="standard">a</PHON>
+                <TRANSL xml:lang="eng">c</TRANSL>
             </M>
         </W>
         <W id="090S1W15">
@@ -145,8 +184,10 @@
             <FORM kindOf="standard">su</FORM>
             <M id="090S1W15M0">
                 <FORM kindOf="original">su</FORM>
+                <PHON kindOf="original">su</PHON>
                 <FORM kindOf="standard">su</FORM>
-                <TRANSL>your(s)</TRANSL>
+                <PHON kindOf="standard">su</PHON>
+                <TRANSL xml:lang="eng">your(s)</TRANSL>
             </M>
         </W>
         <W id="090S1W16">
@@ -154,8 +195,10 @@
             <FORM kindOf="standard">vuvu</FORM>
             <M id="090S1W16M0">
                 <FORM kindOf="original">vuvu</FORM>
+                <PHON kindOf="original">vuvu</PHON>
                 <FORM kindOf="standard">vuvu</FORM>
-                <TRANSL>grandparent</TRANSL>
+                <PHON kindOf="standard">vuvu</PHON>
+                <TRANSL xml:lang="eng">grandparent</TRANSL>
             </M>
         </W>
         <W id="090S1W17">
@@ -163,8 +206,10 @@
             <FORM kindOf="standard">ka</FORM>
             <M id="090S1W17M0">
                 <FORM kindOf="original">ka</FORM>
+                <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
-                <TRANSL>after</TRANSL>
+                <PHON kindOf="standard">ka</PHON>
+                <TRANSL xml:lang="eng">after</TRANSL>
             </M>
         </W>
         <W id="090S1W18">
@@ -172,8 +217,10 @@
             <FORM kindOf="standard">sauni,</FORM>
             <M id="090S1W18M0">
                 <FORM kindOf="original">sauni</FORM>
+                <PHON kindOf="original">sauni</PHON>
                 <FORM kindOf="standard">sauni</FORM>
-                <TRANSL>soon</TRANSL>
+                <PHON kindOf="standard">sauni</PHON>
+                <TRANSL xml:lang="eng">soon</TRANSL>
             </M>
         </W>
         <W id="090S1W19">
@@ -181,8 +228,10 @@
             <FORM kindOf="standard">ka</FORM>
             <M id="090S1W19M0">
                 <FORM kindOf="original">ka</FORM>
+                <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
-                <TRANSL>after</TRANSL>
+                <PHON kindOf="standard">ka</PHON>
+                <TRANSL xml:lang="eng">after</TRANSL>
             </M>
         </W>
         <W id="090S1W20">
@@ -190,8 +239,10 @@
             <FORM kindOf="standard">cemalivalivat</FORM>
             <M id="090S1W20M0">
                 <FORM kindOf="original">em=liva=tsalivat</FORM>
+                <PHON kindOf="original">əm=ɭiva=ʦaɭivat</PHON>
                 <FORM kindOf="standard">em=liva=calivat</FORM>
-                <TRANSL>af=red=pass</TRANSL>
+                <PHON kindOf="standard">əm=ɭiva=ʦaɭivat</PHON>
+                <TRANSL xml:lang="eng">af=red=pass</TRANSL>
             </M>
         </W>
         <W id="090S1W21">
@@ -199,8 +250,10 @@
             <FORM kindOf="standard">amen</FORM>
             <M id="090S1W21M0">
                 <FORM kindOf="original">amen</FORM>
+                <PHON kindOf="original">amən</PHON>
                 <FORM kindOf="standard">amen</FORM>
-                <TRANSL>f.we(exc)</TRANSL>
+                <PHON kindOf="standard">amən</PHON>
+                <TRANSL xml:lang="eng">f.we(exc)</TRANSL>
             </M>
         </W>
         <W id="090S1W22">
@@ -208,8 +261,10 @@
             <FORM kindOf="standard">ta</FORM>
             <M id="090S1W22M0">
                 <FORM kindOf="original">ta</FORM>
+                <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">ta</FORM>
-                <TRANSL>obl</TRANSL>
+                <PHON kindOf="standard">ta</PHON>
+                <TRANSL xml:lang="eng">obl</TRANSL>
             </M>
         </W>
         <W id="090S1W23">
@@ -217,8 +272,10 @@
             <FORM kindOf="standard">za</FORM>
             <M id="090S1W23M0">
                 <FORM kindOf="original">zua</FORM>
+                <PHON kindOf="original">zua</PHON>
                 <FORM kindOf="standard">zua</FORM>
-                <TRANSL>that</TRANSL>
+                <PHON kindOf="standard">zua</PHON>
+                <TRANSL xml:lang="eng">that</TRANSL>
             </M>
         </W>
         <W id="090S1W24">
@@ -226,8 +283,10 @@
             <FORM kindOf="standard">su</FORM>
             <M id="090S1W24M0">
                 <FORM kindOf="original">su</FORM>
+                <PHON kindOf="original">su</PHON>
                 <FORM kindOf="standard">su</FORM>
-                <TRANSL>your(s)</TRANSL>
+                <PHON kindOf="standard">su</PHON>
+                <TRANSL xml:lang="eng">your(s)</TRANSL>
             </M>
         </W>
         <W id="090S1W25">
@@ -235,22 +294,26 @@
             <FORM kindOf="standard">quma.</FORM>
             <M id="090S1W25M0">
                 <FORM kindOf="original">quma</FORM>
+                <PHON kindOf="original">quma</PHON>
                 <FORM kindOf="standard">quma</FORM>
-                <TRANSL>field</TRANSL>
+                <PHON kindOf="standard">quma</PHON>
+                <TRANSL xml:lang="eng">field</TRANSL>
             </M>
         </W>
     </S>
     <S id="090S2">
         <FORM kindOf="original">Kaleskes: inu inu?</FORM>
         <FORM kindOf="standard">Kaleskes: inu inu?</FORM>
-        <TRANSL xml:lang="en">Kaleskes: Where where?</TRANSL>
+        <TRANSL xml:lang="eng">Kaleskes: Where where?</TRANSL>
         <W id="090S2W1">
             <FORM kindOf="original">Kaleskes:</FORM>
             <FORM kindOf="standard">Kaleskes:</FORM>
             <M id="090S2W1M0">
                 <FORM kindOf="original">Kaleskes</FORM>
+                <PHON kindOf="original">kaɭəskəs</PHON>
                 <FORM kindOf="standard">Kaleskes</FORM>
-                <TRANSL>(name)</TRANSL>
+                <PHON kindOf="standard">kaɭəskəs</PHON>
+                <TRANSL xml:lang="eng">(name)</TRANSL>
             </M>
         </W>
         <W id="090S2W2">
@@ -258,8 +321,10 @@
             <FORM kindOf="standard">inu</FORM>
             <M id="090S2W2M0">
                 <FORM kindOf="original">inu</FORM>
+                <PHON kindOf="original">inu</PHON>
                 <FORM kindOf="standard">inu</FORM>
-                <TRANSL>where</TRANSL>
+                <PHON kindOf="standard">inu</PHON>
+                <TRANSL xml:lang="eng">where</TRANSL>
             </M>
         </W>
         <W id="090S2W3">
@@ -267,22 +332,26 @@
             <FORM kindOf="standard">inu?</FORM>
             <M id="090S2W3M0">
                 <FORM kindOf="original">inu</FORM>
+                <PHON kindOf="original">inu</PHON>
                 <FORM kindOf="standard">inu</FORM>
-                <TRANSL>where</TRANSL>
+                <PHON kindOf="standard">inu</PHON>
+                <TRANSL xml:lang="eng">where</TRANSL>
             </M>
         </W>
     </S>
     <S id="090S3">
         <FORM kindOf="original">uzi ki mavan aza i kadjalanan a taupuan, aya-u.</FORM>
         <FORM kindOf="standard">uzi ki mavan aza i kadjalanan a taupuan, aya-u.</FORM>
-        <TRANSL xml:lang="en">Oh I suppose you mean the one terrace by the roadside.</TRANSL>
+        <TRANSL xml:lang="eng">Oh I suppose you mean the one terrace by the roadside.</TRANSL>
         <W id="090S3W1">
             <FORM kindOf="original">uzi</FORM>
             <FORM kindOf="standard">uzi</FORM>
             <M id="090S3W1M0">
                 <FORM kindOf="original">uzi</FORM>
+                <PHON kindOf="original">uzi</PHON>
                 <FORM kindOf="standard">uzi</FORM>
-                <TRANSL>well</TRANSL>
+                <PHON kindOf="standard">uzi</PHON>
+                <TRANSL xml:lang="eng">well</TRANSL>
             </M>
         </W>
         <W id="090S3W2">
@@ -290,8 +359,10 @@
             <FORM kindOf="standard">ki</FORM>
             <M id="090S3W2M0">
                 <FORM kindOf="original">ki</FORM>
+                <PHON kindOf="original">ki</PHON>
                 <FORM kindOf="standard">ki</FORM>
-                <TRANSL>will</TRANSL>
+                <PHON kindOf="standard">ki</PHON>
+                <TRANSL xml:lang="eng">will</TRANSL>
             </M>
         </W>
         <W id="090S3W3">
@@ -299,13 +370,17 @@
             <FORM kindOf="standard">mavan</FORM>
             <M id="090S3W3M0">
                 <FORM kindOf="original">ma</FORM>
+                <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
-                <TRANSL>stat</TRANSL>
+                <PHON kindOf="standard">ma</PHON>
+                <TRANSL xml:lang="eng">stat</TRANSL>
             </M>
             <M id="090S3W3M1">
                 <FORM kindOf="original">avan</FORM>
+                <PHON kindOf="original">avan</PHON>
                 <FORM kindOf="standard">avan</FORM>
-                <TRANSL>exact</TRANSL>
+                <PHON kindOf="standard">avan</PHON>
+                <TRANSL xml:lang="eng">exact</TRANSL>
             </M>
         </W>
         <W id="090S3W4">
@@ -313,13 +388,17 @@
             <FORM kindOf="standard">aza</FORM>
             <M id="090S3W4M0">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
-                <TRANSL>c</TRANSL>
+                <PHON kindOf="standard">a</PHON>
+                <TRANSL xml:lang="eng">c</TRANSL>
             </M>
             <M id="090S3W4M1">
                 <FORM kindOf="original">zua</FORM>
+                <PHON kindOf="original">zua</PHON>
                 <FORM kindOf="standard">zua</FORM>
-                <TRANSL>that</TRANSL>
+                <PHON kindOf="standard">zua</PHON>
+                <TRANSL xml:lang="eng">that</TRANSL>
             </M>
         </W>
         <W id="090S3W5">
@@ -327,8 +406,10 @@
             <FORM kindOf="standard">i</FORM>
             <M id="090S3W5M0">
                 <FORM kindOf="original">i</FORM>
+                <PHON kindOf="original">i</PHON>
                 <FORM kindOf="standard">i</FORM>
-                <TRANSL>loc</TRANSL>
+                <PHON kindOf="standard">i</PHON>
+                <TRANSL xml:lang="eng">loc</TRANSL>
             </M>
         </W>
         <W id="090S3W6">
@@ -336,18 +417,24 @@
             <FORM kindOf="standard">kadjalanan</FORM>
             <M id="090S3W6M0">
                 <FORM kindOf="original">ka</FORM>
+                <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
-                <TRANSL>main</TRANSL>
+                <PHON kindOf="standard">ka</PHON>
+                <TRANSL xml:lang="eng">main</TRANSL>
             </M>
             <M id="090S3W6M1">
                 <FORM kindOf="original">djalan</FORM>
+                <PHON kindOf="original">ɉaɭan</PHON>
                 <FORM kindOf="standard">djalan</FORM>
-                <TRANSL>road</TRANSL>
+                <PHON kindOf="standard">ɉaɭan</PHON>
+                <TRANSL xml:lang="eng">road</TRANSL>
             </M>
             <M id="090S3W6M2">
                 <FORM kindOf="original">an</FORM>
+                <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
-                <TRANSL>nom</TRANSL>
+                <PHON kindOf="standard">an</PHON>
+                <TRANSL xml:lang="eng">nom</TRANSL>
             </M>
         </W>
         <W id="090S3W7">
@@ -355,8 +442,10 @@
             <FORM kindOf="standard">a</FORM>
             <M id="090S3W7M0">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
-                <TRANSL>c</TRANSL>
+                <PHON kindOf="standard">a</PHON>
+                <TRANSL xml:lang="eng">c</TRANSL>
             </M>
         </W>
         <W id="090S3W8">
@@ -364,18 +453,24 @@
             <FORM kindOf="standard">taupuan,</FORM>
             <M id="090S3W8M0">
                 <FORM kindOf="original">ta</FORM>
+                <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">ta</FORM>
-                <TRANSL>one</TRANSL>
+                <PHON kindOf="standard">ta</PHON>
+                <TRANSL xml:lang="eng">one</TRANSL>
             </M>
             <M id="090S3W8M1">
                 <FORM kindOf="original">upu</FORM>
+                <PHON kindOf="original">upu</PHON>
                 <FORM kindOf="standard">upu</FORM>
-                <TRANSL>wall</TRANSL>
+                <PHON kindOf="standard">upu</PHON>
+                <TRANSL xml:lang="eng">wall</TRANSL>
             </M>
             <M id="090S3W8M2">
                 <FORM kindOf="original">an</FORM>
+                <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
-                <TRANSL>nom</TRANSL>
+                <PHON kindOf="standard">an</PHON>
+                <TRANSL xml:lang="eng">nom</TRANSL>
             </M>
         </W>
         <W id="090S3W9">
@@ -383,27 +478,33 @@
             <FORM kindOf="standard">aya-u.</FORM>
             <M id="090S3W9M0">
                 <FORM kindOf="original">aya</FORM>
+                <PHON kindOf="original">aja</PHON>
                 <FORM kindOf="standard">aya</FORM>
-                <TRANSL>say</TRANSL>
+                <PHON kindOf="standard">aja</PHON>
+                <TRANSL xml:lang="eng">say</TRANSL>
             </M>
             <M id="090S3W9M1">
                 <FORM kindOf="original">u</FORM>
+                <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">u</FORM>
-                <TRANSL>imp</TRANSL>
+                <PHON kindOf="standard">u</PHON>
+                <TRANSL xml:lang="eng">imp</TRANSL>
             </M>
         </W>
     </S>
     <S id="090S4">
         <FORM kindOf="original">Kai: pai ɫa, maya manu benereq a "taupuan" aya ta za nu penulingelingetj ta za nu quma.</FORM>
         <FORM kindOf="standard">Kai: pai lja, maya manu benereq a "taupuan" aya ta za nu penulingelingetj ta za nu quma.</FORM>
-        <TRANSL xml:lang="en">Kai: Oh come on, don’t joke by saying “one terrace” about your fields all over the place.</TRANSL>
+        <TRANSL xml:lang="eng">Kai: Oh come on, don’t joke by saying “one terrace” about your fields all over the place.</TRANSL>
         <W id="090S4W1">
             <FORM kindOf="original">Kai:</FORM>
             <FORM kindOf="standard">Kai:</FORM>
             <M id="090S4W1M0">
                 <FORM kindOf="original">Kai</FORM>
+                <PHON kindOf="original">kai</PHON>
                 <FORM kindOf="standard">Kai</FORM>
-                <TRANSL>(name)</TRANSL>
+                <PHON kindOf="standard">kai</PHON>
+                <TRANSL xml:lang="eng">(name)</TRANSL>
             </M>
         </W>
         <W id="090S4W2">
@@ -411,8 +512,10 @@
             <FORM kindOf="standard">pai</FORM>
             <M id="090S4W2M0">
                 <FORM kindOf="original">pai</FORM>
+                <PHON kindOf="original">pai</PHON>
                 <FORM kindOf="standard">pai</FORM>
-                <TRANSL>well</TRANSL>
+                <PHON kindOf="standard">pai</PHON>
+                <TRANSL xml:lang="eng">well</TRANSL>
             </M>
         </W>
         <W id="090S4W3">
@@ -420,8 +523,10 @@
             <FORM kindOf="standard">lja,</FORM>
             <M id="090S4W3M0">
                 <FORM kindOf="original">ɫa</FORM>
+                <PHON kindOf="original">ʎa</PHON>
                 <FORM kindOf="standard">lja</FORM>
-                <TRANSL>oh</TRANSL>
+                <PHON kindOf="standard">ʎa</PHON>
+                <TRANSL xml:lang="eng">oh</TRANSL>
             </M>
         </W>
         <W id="090S4W4">
@@ -429,8 +534,10 @@
             <FORM kindOf="standard">maya</FORM>
             <M id="090S4W4M0">
                 <FORM kindOf="original">maya</FORM>
+                <PHON kindOf="original">maja</PHON>
                 <FORM kindOf="standard">maya</FORM>
-                <TRANSL>don’t</TRANSL>
+                <PHON kindOf="standard">maja</PHON>
+                <TRANSL xml:lang="eng">don’t</TRANSL>
             </M>
         </W>
         <W id="090S4W5">
@@ -438,8 +545,10 @@
             <FORM kindOf="standard">manu</FORM>
             <M id="090S4W5M0">
                 <FORM kindOf="original">manu</FORM>
+                <PHON kindOf="original">manu</PHON>
                 <FORM kindOf="standard">manu</FORM>
-                <TRANSL>then</TRANSL>
+                <PHON kindOf="standard">manu</PHON>
+                <TRANSL xml:lang="eng">then</TRANSL>
             </M>
         </W>
         <W id="090S4W6">
@@ -447,8 +556,10 @@
             <FORM kindOf="standard">benereq</FORM>
             <M id="090S4W6M0">
                 <FORM kindOf="original">in=bereq</FORM>
+                <PHON kindOf="original">in=bərəq</PHON>
                 <FORM kindOf="standard">in=bereq</FORM>
-                <TRANSL>perf=joke</TRANSL>
+                <PHON kindOf="standard">in=bərəq</PHON>
+                <TRANSL xml:lang="eng">perf=joke</TRANSL>
             </M>
         </W>
         <W id="090S4W7">
@@ -456,8 +567,10 @@
             <FORM kindOf="standard">a</FORM>
             <M id="090S4W7M0">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
-                <TRANSL>c</TRANSL>
+                <PHON kindOf="standard">a</PHON>
+                <TRANSL xml:lang="eng">c</TRANSL>
             </M>
         </W>
         <W id="090S4W8">
@@ -465,18 +578,24 @@
             <FORM kindOf="standard">"taupuan"</FORM>
             <M id="090S4W8M0">
                 <FORM kindOf="original">ta</FORM>
+                <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">ta</FORM>
-                <TRANSL>one</TRANSL>
+                <PHON kindOf="standard">ta</PHON>
+                <TRANSL xml:lang="eng">one</TRANSL>
             </M>
             <M id="090S4W8M1">
                 <FORM kindOf="original">upu</FORM>
+                <PHON kindOf="original">upu</PHON>
                 <FORM kindOf="standard">upu</FORM>
-                <TRANSL>wall</TRANSL>
+                <PHON kindOf="standard">upu</PHON>
+                <TRANSL xml:lang="eng">wall</TRANSL>
             </M>
             <M id="090S4W8M2">
                 <FORM kindOf="original">an</FORM>
+                <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
-                <TRANSL>nom</TRANSL>
+                <PHON kindOf="standard">an</PHON>
+                <TRANSL xml:lang="eng">nom</TRANSL>
             </M>
         </W>
         <W id="090S4W9">
@@ -484,8 +603,10 @@
             <FORM kindOf="standard">aya</FORM>
             <M id="090S4W9M0">
                 <FORM kindOf="original">aya</FORM>
+                <PHON kindOf="original">aja</PHON>
                 <FORM kindOf="standard">aya</FORM>
-                <TRANSL>say</TRANSL>
+                <PHON kindOf="standard">aja</PHON>
+                <TRANSL xml:lang="eng">say</TRANSL>
             </M>
         </W>
         <W id="090S4W10">
@@ -493,8 +614,10 @@
             <FORM kindOf="standard">ta</FORM>
             <M id="090S4W10M0">
                 <FORM kindOf="original">ta</FORM>
+                <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">ta</FORM>
-                <TRANSL>obl</TRANSL>
+                <PHON kindOf="standard">ta</PHON>
+                <TRANSL xml:lang="eng">obl</TRANSL>
             </M>
         </W>
         <W id="090S4W11">
@@ -502,8 +625,10 @@
             <FORM kindOf="standard">za</FORM>
             <M id="090S4W11M0">
                 <FORM kindOf="original">zua</FORM>
+                <PHON kindOf="original">zua</PHON>
                 <FORM kindOf="standard">zua</FORM>
-                <TRANSL>that</TRANSL>
+                <PHON kindOf="standard">zua</PHON>
+                <TRANSL xml:lang="eng">that</TRANSL>
             </M>
         </W>
         <W id="090S4W12">
@@ -511,8 +636,10 @@
             <FORM kindOf="standard">nu</FORM>
             <M id="090S4W12M0">
                 <FORM kindOf="original">nu</FORM>
+                <PHON kindOf="original">nu</PHON>
                 <FORM kindOf="standard">nu</FORM>
-                <TRANSL>your(p)</TRANSL>
+                <PHON kindOf="standard">nu</PHON>
+                <TRANSL xml:lang="eng">your(p)</TRANSL>
             </M>
         </W>
         <W id="090S4W13">
@@ -520,18 +647,24 @@
             <FORM kindOf="standard">penulingelingetj</FORM>
             <M id="090S4W13M0">
                 <FORM kindOf="original">in=pu</FORM>
+                <PHON kindOf="original">in=pu</PHON>
                 <FORM kindOf="standard">in=pu</FORM>
-                <TRANSL>perf=have</TRANSL>
+                <PHON kindOf="standard">in=pu</PHON>
+                <TRANSL xml:lang="eng">perf=have</TRANSL>
             </M>
             <M id="090S4W13M1">
                 <FORM kindOf="original">linge</FORM>
+                <PHON kindOf="original">ɭiŋə</PHON>
                 <FORM kindOf="standard">linge</FORM>
-                <TRANSL>red</TRANSL>
+                <PHON kindOf="standard">ɭiŋə</PHON>
+                <TRANSL xml:lang="eng">RED</TRANSL>
             </M>
             <M id="090S4W13M2">
                 <FORM kindOf="original">lingetj</FORM>
+                <PHON kindOf="original">ɭiŋəc</PHON>
                 <FORM kindOf="standard">lingetj</FORM>
-                <TRANSL>entire</TRANSL>
+                <PHON kindOf="standard">ɭiŋəʦ</PHON>
+                <TRANSL xml:lang="eng">entire</TRANSL>
             </M>
         </W>
         <W id="090S4W14">
@@ -539,8 +672,10 @@
             <FORM kindOf="standard">ta</FORM>
             <M id="090S4W14M0">
                 <FORM kindOf="original">ta</FORM>
+                <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">ta</FORM>
-                <TRANSL>obl</TRANSL>
+                <PHON kindOf="standard">ta</PHON>
+                <TRANSL xml:lang="eng">obl</TRANSL>
             </M>
         </W>
         <W id="090S4W15">
@@ -548,8 +683,10 @@
             <FORM kindOf="standard">za</FORM>
             <M id="090S4W15M0">
                 <FORM kindOf="original">zua</FORM>
+                <PHON kindOf="original">zua</PHON>
                 <FORM kindOf="standard">zua</FORM>
-                <TRANSL>that</TRANSL>
+                <PHON kindOf="standard">zua</PHON>
+                <TRANSL xml:lang="eng">that</TRANSL>
             </M>
         </W>
         <W id="090S4W16">
@@ -557,8 +694,10 @@
             <FORM kindOf="standard">nu</FORM>
             <M id="090S4W16M0">
                 <FORM kindOf="original">nu</FORM>
+                <PHON kindOf="original">nu</PHON>
                 <FORM kindOf="standard">nu</FORM>
-                <TRANSL>your(p)</TRANSL>
+                <PHON kindOf="standard">nu</PHON>
+                <TRANSL xml:lang="eng">your(p)</TRANSL>
             </M>
         </W>
         <W id="090S4W17">
@@ -566,22 +705,26 @@
             <FORM kindOf="standard">quma.</FORM>
             <M id="090S4W17M0">
                 <FORM kindOf="original">quma</FORM>
+                <PHON kindOf="original">quma</PHON>
                 <FORM kindOf="standard">quma</FORM>
-                <TRANSL>field</TRANSL>
+                <PHON kindOf="standard">quma</PHON>
+                <TRANSL xml:lang="eng">field</TRANSL>
             </M>
         </W>
     </S>
     <S id="090S5">
         <FORM kindOf="original">Kaleskes: iya, ui, maɫimaɫi; nu uri keman itjen kaumaya nu izua.</FORM>
         <FORM kindOf="standard">Kaleskes: iya, ui, maljimalji; nu uri keman itjen kaumaya nu izua.</FORM>
-        <TRANSL xml:lang="en">Kaleskes: Oh yes, thank you; perhaps we’ll have something to eat if there is any crop.</TRANSL>
+        <TRANSL xml:lang="eng">Kaleskes: Oh yes, thank you; perhaps we’ll have something to eat if there is any crop.</TRANSL>
         <W id="090S5W1">
             <FORM kindOf="original">Kaleskes:</FORM>
             <FORM kindOf="standard">Kaleskes:</FORM>
             <M id="090S5W1M0">
                 <FORM kindOf="original">Kaleskes</FORM>
+                <PHON kindOf="original">kaɭəskəs</PHON>
                 <FORM kindOf="standard">Kaleskes</FORM>
-                <TRANSL>(name)</TRANSL>
+                <PHON kindOf="standard">kaɭəskəs</PHON>
+                <TRANSL xml:lang="eng">(name)</TRANSL>
             </M>
         </W>
         <W id="090S5W2">
@@ -589,8 +732,10 @@
             <FORM kindOf="standard">iya,</FORM>
             <M id="090S5W2M0">
                 <FORM kindOf="original">iya</FORM>
+                <PHON kindOf="original">ija</PHON>
                 <FORM kindOf="standard">iya</FORM>
-                <TRANSL>ah</TRANSL>
+                <PHON kindOf="standard">ija</PHON>
+                <TRANSL xml:lang="eng">ah</TRANSL>
             </M>
         </W>
         <W id="090S5W3">
@@ -598,8 +743,10 @@
             <FORM kindOf="standard">ui,</FORM>
             <M id="090S5W3M0">
                 <FORM kindOf="original">ui</FORM>
+                <PHON kindOf="original">ui</PHON>
                 <FORM kindOf="standard">ui</FORM>
-                <TRANSL>yes</TRANSL>
+                <PHON kindOf="standard">ui</PHON>
+                <TRANSL xml:lang="eng">yes</TRANSL>
             </M>
         </W>
         <W id="090S5W4">
@@ -607,8 +754,10 @@
             <FORM kindOf="standard">maljimalji;</FORM>
             <M id="090S5W4M0">
                 <FORM kindOf="original">maɫimaɫi</FORM>
+                <PHON kindOf="original">maʎimaʎi</PHON>
                 <FORM kindOf="standard">maljimalji</FORM>
-                <TRANSL>thank.you</TRANSL>
+                <PHON kindOf="standard">maʎimaʎi</PHON>
+                <TRANSL xml:lang="eng">thank.you</TRANSL>
             </M>
         </W>
         <W id="090S5W5">
@@ -616,8 +765,10 @@
             <FORM kindOf="standard">nu</FORM>
             <M id="090S5W5M0">
                 <FORM kindOf="original">nu</FORM>
+                <PHON kindOf="original">nu</PHON>
                 <FORM kindOf="standard">nu</FORM>
-                <TRANSL>when</TRANSL>
+                <PHON kindOf="standard">nu</PHON>
+                <TRANSL xml:lang="eng">when</TRANSL>
             </M>
         </W>
         <W id="090S5W6">
@@ -625,17 +776,28 @@
             <FORM kindOf="standard">uri</FORM>
             <M id="090S5W6M0">
                 <FORM kindOf="original">uri</FORM>
+                <PHON kindOf="original">uri</PHON>
                 <FORM kindOf="standard">uri</FORM>
-                <TRANSL>will</TRANSL>
+                <PHON kindOf="standard">uri</PHON>
+                <TRANSL xml:lang="eng">will</TRANSL>
             </M>
         </W>
         <W id="090S5W7">
             <FORM kindOf="original">keman</FORM>
             <FORM kindOf="standard">keman</FORM>
             <M id="090S5W7M0">
-                <FORM kindOf="original">em=kan</FORM>
-                <FORM kindOf="standard">em=kan</FORM>
-                <TRANSL>af=eat</TRANSL>
+                <FORM kindOf="original">-em-</FORM>
+                <PHON kindOf="original">-əm-</PHON>
+                <FORM kindOf="standard">-em-</FORM>
+                <PHON kindOf="standard">-əm-</PHON>
+                <TRANSL xml:lang="eng">af</TRANSL>
+            </M>
+            <M id="090S5W7M1">
+                <FORM kindOf="original">k-an</FORM>
+                <PHON kindOf="original">k-an</PHON>
+                <FORM kindOf="standard">k-an</FORM>
+                <PHON kindOf="standard">k-an</PHON>
+                <TRANSL xml:lang="eng">eat</TRANSL>
             </M>
         </W>
         <W id="090S5W8">
@@ -643,8 +805,10 @@
             <FORM kindOf="standard">itjen</FORM>
             <M id="090S5W8M0">
                 <FORM kindOf="original">itjen</FORM>
+                <PHON kindOf="original">icən</PHON>
                 <FORM kindOf="standard">itjen</FORM>
-                <TRANSL>f.we(inc)</TRANSL>
+                <PHON kindOf="standard">iʦən</PHON>
+                <TRANSL xml:lang="eng">f.we(inc)</TRANSL>
             </M>
         </W>
         <W id="090S5W9">
@@ -652,8 +816,10 @@
             <FORM kindOf="standard">kaumaya</FORM>
             <M id="090S5W9M0">
                 <FORM kindOf="original">kaumaya</FORM>
+                <PHON kindOf="original">kaumaja</PHON>
                 <FORM kindOf="standard">kaumaya</FORM>
-                <TRANSL>perhaps</TRANSL>
+                <PHON kindOf="standard">kaumaja</PHON>
+                <TRANSL xml:lang="eng">perhaps</TRANSL>
             </M>
         </W>
         <W id="090S5W10">
@@ -661,8 +827,10 @@
             <FORM kindOf="standard">nu</FORM>
             <M id="090S5W10M0">
                 <FORM kindOf="original">nu</FORM>
+                <PHON kindOf="original">nu</PHON>
                 <FORM kindOf="standard">nu</FORM>
-                <TRANSL>when</TRANSL>
+                <PHON kindOf="standard">nu</PHON>
+                <TRANSL xml:lang="eng">when</TRANSL>
             </M>
         </W>
         <W id="090S5W11">
@@ -670,27 +838,33 @@
             <FORM kindOf="standard">izua.</FORM>
             <M id="090S5W11M0">
                 <FORM kindOf="original">i</FORM>
+                <PHON kindOf="original">i</PHON>
                 <FORM kindOf="standard">i</FORM>
-                <TRANSL>loc</TRANSL>
+                <PHON kindOf="standard">i</PHON>
+                <TRANSL xml:lang="eng">loc</TRANSL>
             </M>
             <M id="090S5W11M1">
                 <FORM kindOf="original">zua</FORM>
+                <PHON kindOf="original">zua</PHON>
                 <FORM kindOf="standard">zua</FORM>
-                <TRANSL>that</TRANSL>
+                <PHON kindOf="standard">zua</PHON>
+                <TRANSL xml:lang="eng">that</TRANSL>
             </M>
         </W>
     </S>
     <S id="090S6">
         <FORM kindOf="original">Kai: ui, qau mayanga za nu puk, mayanga za nu ɫangga, mayanga za nu ɫumay, mayanga za nu vaqu.</FORM>
         <FORM kindOf="standard">Kai: ui, qau mayanga za nu puk, mayanga za nu ljangga, mayanga za nu ljumay, mayanga za nu vaqu.</FORM>
-        <TRANSL xml:lang="en">Kai: Yes, not to mention your peas, your sesame, your banyard millet, your ordinary millet.</TRANSL>
+        <TRANSL xml:lang="eng">Kai: Yes, not to mention your peas, your sesame, your banyard millet, your ordinary millet.</TRANSL>
         <W id="090S6W1">
             <FORM kindOf="original">Kai:</FORM>
             <FORM kindOf="standard">Kai:</FORM>
             <M id="090S6W1M0">
                 <FORM kindOf="original">Kai</FORM>
+                <PHON kindOf="original">kai</PHON>
                 <FORM kindOf="standard">Kai</FORM>
-                <TRANSL>(name)</TRANSL>
+                <PHON kindOf="standard">kai</PHON>
+                <TRANSL xml:lang="eng">(name)</TRANSL>
             </M>
         </W>
         <W id="090S6W2">
@@ -698,8 +872,10 @@
             <FORM kindOf="standard">ui,</FORM>
             <M id="090S6W2M0">
                 <FORM kindOf="original">ui</FORM>
+                <PHON kindOf="original">ui</PHON>
                 <FORM kindOf="standard">ui</FORM>
-                <TRANSL>yes</TRANSL>
+                <PHON kindOf="standard">ui</PHON>
+                <TRANSL xml:lang="eng">yes</TRANSL>
             </M>
         </W>
         <W id="090S6W3">
@@ -707,8 +883,10 @@
             <FORM kindOf="standard">qau</FORM>
             <M id="090S6W3M0">
                 <FORM kindOf="original">qau</FORM>
+                <PHON kindOf="original">qau</PHON>
                 <FORM kindOf="standard">qau</FORM>
-                <TRANSL>so</TRANSL>
+                <PHON kindOf="standard">qau</PHON>
+                <TRANSL xml:lang="eng">so</TRANSL>
             </M>
         </W>
         <W id="090S6W4">
@@ -716,18 +894,24 @@
             <FORM kindOf="standard">mayanga</FORM>
             <M id="090S6W4M0">
                 <FORM kindOf="original">ma</FORM>
+                <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
-                <TRANSL>stat</TRANSL>
+                <PHON kindOf="standard">ma</PHON>
+                <TRANSL xml:lang="eng">stat</TRANSL>
             </M>
             <M id="090S6W4M1">
                 <FORM kindOf="original">aya</FORM>
+                <PHON kindOf="original">aja</PHON>
                 <FORM kindOf="standard">aya</FORM>
-                <TRANSL>be.thus</TRANSL>
+                <PHON kindOf="standard">aja</PHON>
+                <TRANSL xml:lang="eng">be.thus</TRANSL>
             </M>
             <M id="090S6W4M2">
                 <FORM kindOf="original">anga</FORM>
+                <PHON kindOf="original">aŋa</PHON>
                 <FORM kindOf="standard">anga</FORM>
-                <TRANSL>indeed</TRANSL>
+                <PHON kindOf="standard">aŋa</PHON>
+                <TRANSL xml:lang="eng">indeed</TRANSL>
             </M>
         </W>
         <W id="090S6W5">
@@ -735,8 +919,10 @@
             <FORM kindOf="standard">za</FORM>
             <M id="090S6W5M0">
                 <FORM kindOf="original">zua</FORM>
+                <PHON kindOf="original">zua</PHON>
                 <FORM kindOf="standard">zua</FORM>
-                <TRANSL>that</TRANSL>
+                <PHON kindOf="standard">zua</PHON>
+                <TRANSL xml:lang="eng">that</TRANSL>
             </M>
         </W>
         <W id="090S6W6">
@@ -744,8 +930,10 @@
             <FORM kindOf="standard">nu</FORM>
             <M id="090S6W6M0">
                 <FORM kindOf="original">nu</FORM>
+                <PHON kindOf="original">nu</PHON>
                 <FORM kindOf="standard">nu</FORM>
-                <TRANSL>your(p)</TRANSL>
+                <PHON kindOf="standard">nu</PHON>
+                <TRANSL xml:lang="eng">your(p)</TRANSL>
             </M>
         </W>
         <W id="090S6W7">
@@ -753,8 +941,10 @@
             <FORM kindOf="standard">puk,</FORM>
             <M id="090S6W7M0">
                 <FORM kindOf="original">puk</FORM>
+                <PHON kindOf="original">puk</PHON>
                 <FORM kindOf="standard">puk</FORM>
-                <TRANSL>bean.sp</TRANSL>
+                <PHON kindOf="standard">puk</PHON>
+                <TRANSL xml:lang="eng">bean.sp</TRANSL>
             </M>
         </W>
         <W id="090S6W8">
@@ -762,18 +952,24 @@
             <FORM kindOf="standard">mayanga</FORM>
             <M id="090S6W8M0">
                 <FORM kindOf="original">ma</FORM>
+                <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
-                <TRANSL>stat</TRANSL>
+                <PHON kindOf="standard">ma</PHON>
+                <TRANSL xml:lang="eng">stat</TRANSL>
             </M>
             <M id="090S6W8M1">
                 <FORM kindOf="original">aya</FORM>
+                <PHON kindOf="original">aja</PHON>
                 <FORM kindOf="standard">aya</FORM>
-                <TRANSL>be.thus</TRANSL>
+                <PHON kindOf="standard">aja</PHON>
+                <TRANSL xml:lang="eng">be.thus</TRANSL>
             </M>
             <M id="090S6W8M2">
                 <FORM kindOf="original">anga</FORM>
+                <PHON kindOf="original">aŋa</PHON>
                 <FORM kindOf="standard">anga</FORM>
-                <TRANSL>indeed</TRANSL>
+                <PHON kindOf="standard">aŋa</PHON>
+                <TRANSL xml:lang="eng">indeed</TRANSL>
             </M>
         </W>
         <W id="090S6W9">
@@ -781,8 +977,10 @@
             <FORM kindOf="standard">za</FORM>
             <M id="090S6W9M0">
                 <FORM kindOf="original">zua</FORM>
+                <PHON kindOf="original">zua</PHON>
                 <FORM kindOf="standard">zua</FORM>
-                <TRANSL>that</TRANSL>
+                <PHON kindOf="standard">zua</PHON>
+                <TRANSL xml:lang="eng">that</TRANSL>
             </M>
         </W>
         <W id="090S6W10">
@@ -790,8 +988,10 @@
             <FORM kindOf="standard">nu</FORM>
             <M id="090S6W10M0">
                 <FORM kindOf="original">nu</FORM>
+                <PHON kindOf="original">nu</PHON>
                 <FORM kindOf="standard">nu</FORM>
-                <TRANSL>your(p)</TRANSL>
+                <PHON kindOf="standard">nu</PHON>
+                <TRANSL xml:lang="eng">your(p)</TRANSL>
             </M>
         </W>
         <W id="090S6W11">
@@ -799,8 +999,10 @@
             <FORM kindOf="standard">ljangga,</FORM>
             <M id="090S6W11M0">
                 <FORM kindOf="original">ɫangga</FORM>
+                <PHON kindOf="original">ʎaŋga</PHON>
                 <FORM kindOf="standard">ljangga</FORM>
-                <TRANSL>sesame</TRANSL>
+                <PHON kindOf="standard">ʎaŋga</PHON>
+                <TRANSL xml:lang="eng">sesame</TRANSL>
             </M>
         </W>
         <W id="090S6W12">
@@ -808,18 +1010,24 @@
             <FORM kindOf="standard">mayanga</FORM>
             <M id="090S6W12M0">
                 <FORM kindOf="original">ma</FORM>
+                <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
-                <TRANSL>stat</TRANSL>
+                <PHON kindOf="standard">ma</PHON>
+                <TRANSL xml:lang="eng">stat</TRANSL>
             </M>
             <M id="090S6W12M1">
                 <FORM kindOf="original">aya</FORM>
+                <PHON kindOf="original">aja</PHON>
                 <FORM kindOf="standard">aya</FORM>
-                <TRANSL>be.thus</TRANSL>
+                <PHON kindOf="standard">aja</PHON>
+                <TRANSL xml:lang="eng">be.thus</TRANSL>
             </M>
             <M id="090S6W12M2">
                 <FORM kindOf="original">anga</FORM>
+                <PHON kindOf="original">aŋa</PHON>
                 <FORM kindOf="standard">anga</FORM>
-                <TRANSL>indeed</TRANSL>
+                <PHON kindOf="standard">aŋa</PHON>
+                <TRANSL xml:lang="eng">indeed</TRANSL>
             </M>
         </W>
         <W id="090S6W13">
@@ -827,8 +1035,10 @@
             <FORM kindOf="standard">za</FORM>
             <M id="090S6W13M0">
                 <FORM kindOf="original">zua</FORM>
+                <PHON kindOf="original">zua</PHON>
                 <FORM kindOf="standard">zua</FORM>
-                <TRANSL>that</TRANSL>
+                <PHON kindOf="standard">zua</PHON>
+                <TRANSL xml:lang="eng">that</TRANSL>
             </M>
         </W>
         <W id="090S6W14">
@@ -836,8 +1046,10 @@
             <FORM kindOf="standard">nu</FORM>
             <M id="090S6W14M0">
                 <FORM kindOf="original">nu</FORM>
+                <PHON kindOf="original">nu</PHON>
                 <FORM kindOf="standard">nu</FORM>
-                <TRANSL>your(p)</TRANSL>
+                <PHON kindOf="standard">nu</PHON>
+                <TRANSL xml:lang="eng">your(p)</TRANSL>
             </M>
         </W>
         <W id="090S6W15">
@@ -845,8 +1057,10 @@
             <FORM kindOf="standard">ljumay,</FORM>
             <M id="090S6W15M0">
                 <FORM kindOf="original">ɫumay</FORM>
+                <PHON kindOf="original">ʎumaj</PHON>
                 <FORM kindOf="standard">ljumay</FORM>
-                <TRANSL>millet.sp</TRANSL>
+                <PHON kindOf="standard">ʎumaj</PHON>
+                <TRANSL xml:lang="eng">millet.sp</TRANSL>
             </M>
         </W>
         <W id="090S6W16">
@@ -854,18 +1068,24 @@
             <FORM kindOf="standard">mayanga</FORM>
             <M id="090S6W16M0">
                 <FORM kindOf="original">ma</FORM>
+                <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
-                <TRANSL>stat</TRANSL>
+                <PHON kindOf="standard">ma</PHON>
+                <TRANSL xml:lang="eng">stat</TRANSL>
             </M>
             <M id="090S6W16M1">
                 <FORM kindOf="original">aya</FORM>
+                <PHON kindOf="original">aja</PHON>
                 <FORM kindOf="standard">aya</FORM>
-                <TRANSL>be.thus</TRANSL>
+                <PHON kindOf="standard">aja</PHON>
+                <TRANSL xml:lang="eng">be.thus</TRANSL>
             </M>
             <M id="090S6W16M2">
                 <FORM kindOf="original">anga</FORM>
+                <PHON kindOf="original">aŋa</PHON>
                 <FORM kindOf="standard">anga</FORM>
-                <TRANSL>indeed</TRANSL>
+                <PHON kindOf="standard">aŋa</PHON>
+                <TRANSL xml:lang="eng">indeed</TRANSL>
             </M>
         </W>
         <W id="090S6W17">
@@ -873,8 +1093,10 @@
             <FORM kindOf="standard">za</FORM>
             <M id="090S6W17M0">
                 <FORM kindOf="original">zua</FORM>
+                <PHON kindOf="original">zua</PHON>
                 <FORM kindOf="standard">zua</FORM>
-                <TRANSL>that</TRANSL>
+                <PHON kindOf="standard">zua</PHON>
+                <TRANSL xml:lang="eng">that</TRANSL>
             </M>
         </W>
         <W id="090S6W18">
@@ -882,8 +1104,10 @@
             <FORM kindOf="standard">nu</FORM>
             <M id="090S6W18M0">
                 <FORM kindOf="original">nu</FORM>
+                <PHON kindOf="original">nu</PHON>
                 <FORM kindOf="standard">nu</FORM>
-                <TRANSL>your(p)</TRANSL>
+                <PHON kindOf="standard">nu</PHON>
+                <TRANSL xml:lang="eng">your(p)</TRANSL>
             </M>
         </W>
         <W id="090S6W19">
@@ -891,31 +1115,44 @@
             <FORM kindOf="standard">vaqu.</FORM>
             <M id="090S6W19M0">
                 <FORM kindOf="original">vaqu</FORM>
+                <PHON kindOf="original">vaqu</PHON>
                 <FORM kindOf="standard">vaqu</FORM>
-                <TRANSL>millet</TRANSL>
+                <PHON kindOf="standard">vaqu</PHON>
+                <TRANSL xml:lang="eng">millet</TRANSL>
             </M>
         </W>
     </S>
     <S id="090S7">
         <FORM kindOf="original">uri keman itjen aravats ta za nu kikavetsengel.</FORM>
         <FORM kindOf="standard">uri keman itjen aravac ta za nu kikavecengel.</FORM>
-        <TRANSL xml:lang="en">We are going to have plenty to eat from your crops.</TRANSL>
+        <TRANSL xml:lang="eng">We are going to have plenty to eat from your crops.</TRANSL>
         <W id="090S7W1">
             <FORM kindOf="original">uri</FORM>
             <FORM kindOf="standard">uri</FORM>
             <M id="090S7W1M0">
                 <FORM kindOf="original">uri</FORM>
+                <PHON kindOf="original">uri</PHON>
                 <FORM kindOf="standard">uri</FORM>
-                <TRANSL>will</TRANSL>
+                <PHON kindOf="standard">uri</PHON>
+                <TRANSL xml:lang="eng">will</TRANSL>
             </M>
         </W>
         <W id="090S7W2">
             <FORM kindOf="original">keman</FORM>
             <FORM kindOf="standard">keman</FORM>
             <M id="090S7W2M0">
-                <FORM kindOf="original">em=kan</FORM>
-                <FORM kindOf="standard">em=kan</FORM>
-                <TRANSL>af=eat</TRANSL>
+                <FORM kindOf="original">-em-</FORM>
+                <PHON kindOf="original">-əm-</PHON>
+                <FORM kindOf="standard">-em-</FORM>
+                <PHON kindOf="standard">-əm-</PHON>
+                <TRANSL xml:lang="eng">af</TRANSL>
+            </M>
+            <M id="090S7W2M1">
+                <FORM kindOf="original">k-an</FORM>
+                <PHON kindOf="original">k-an</PHON>
+                <FORM kindOf="standard">k-an</FORM>
+                <PHON kindOf="standard">k-an</PHON>
+                <TRANSL xml:lang="eng">eat</TRANSL>
             </M>
         </W>
         <W id="090S7W3">
@@ -923,8 +1160,10 @@
             <FORM kindOf="standard">itjen</FORM>
             <M id="090S7W3M0">
                 <FORM kindOf="original">itjen</FORM>
+                <PHON kindOf="original">icən</PHON>
                 <FORM kindOf="standard">itjen</FORM>
-                <TRANSL>f.we(inc)</TRANSL>
+                <PHON kindOf="standard">iʦən</PHON>
+                <TRANSL xml:lang="eng">f.we(inc)</TRANSL>
             </M>
         </W>
         <W id="090S7W4">
@@ -932,13 +1171,17 @@
             <FORM kindOf="standard">aravac</FORM>
             <M id="090S7W4M0">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
-                <TRANSL>c</TRANSL>
+                <PHON kindOf="standard">a</PHON>
+                <TRANSL xml:lang="eng">c</TRANSL>
             </M>
             <M id="090S7W4M1">
                 <FORM kindOf="original">ravats</FORM>
+                <PHON kindOf="original">ravaʦ</PHON>
                 <FORM kindOf="standard">ravac</FORM>
-                <TRANSL>true</TRANSL>
+                <PHON kindOf="standard">ravaʦ</PHON>
+                <TRANSL xml:lang="eng">true</TRANSL>
             </M>
         </W>
         <W id="090S7W5">
@@ -946,8 +1189,10 @@
             <FORM kindOf="standard">ta</FORM>
             <M id="090S7W5M0">
                 <FORM kindOf="original">ta</FORM>
+                <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">ta</FORM>
-                <TRANSL>obl</TRANSL>
+                <PHON kindOf="standard">ta</PHON>
+                <TRANSL xml:lang="eng">obl</TRANSL>
             </M>
         </W>
         <W id="090S7W6">
@@ -955,8 +1200,10 @@
             <FORM kindOf="standard">za</FORM>
             <M id="090S7W6M0">
                 <FORM kindOf="original">zua</FORM>
+                <PHON kindOf="original">zua</PHON>
                 <FORM kindOf="standard">zua</FORM>
-                <TRANSL>that</TRANSL>
+                <PHON kindOf="standard">zua</PHON>
+                <TRANSL xml:lang="eng">that</TRANSL>
             </M>
         </W>
         <W id="090S7W7">
@@ -964,8 +1211,10 @@
             <FORM kindOf="standard">nu</FORM>
             <M id="090S7W7M0">
                 <FORM kindOf="original">nu</FORM>
+                <PHON kindOf="original">nu</PHON>
                 <FORM kindOf="standard">nu</FORM>
-                <TRANSL>your(p)</TRANSL>
+                <PHON kindOf="standard">nu</PHON>
+                <TRANSL xml:lang="eng">your(p)</TRANSL>
             </M>
         </W>
         <W id="090S7W8">
@@ -973,32 +1222,40 @@
             <FORM kindOf="standard">kikavecengel.</FORM>
             <M id="090S7W8M0">
                 <FORM kindOf="original">ki</FORM>
+                <PHON kindOf="original">ki</PHON>
                 <FORM kindOf="standard">ki</FORM>
-                <TRANSL>do</TRANSL>
+                <PHON kindOf="standard">ki</PHON>
+                <TRANSL xml:lang="eng">do</TRANSL>
             </M>
             <M id="090S7W8M1">
                 <FORM kindOf="original">ka</FORM>
+                <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
-                <TRANSL>main</TRANSL>
+                <PHON kindOf="standard">ka</PHON>
+                <TRANSL xml:lang="eng">main</TRANSL>
             </M>
             <M id="090S7W8M2">
                 <FORM kindOf="original">vetsengel</FORM>
+                <PHON kindOf="original">vəʦəŋəɭ</PHON>
                 <FORM kindOf="standard">vecengel</FORM>
-                <TRANSL>crop</TRANSL>
+                <PHON kindOf="standard">vəʦəŋəɭ</PHON>
+                <TRANSL xml:lang="eng">crop</TRANSL>
             </M>
         </W>
     </S>
     <S id="090S8">
         <FORM kindOf="original">Kaleskes: ui, ɫakua qadjaw ki tja kani anga.</FORM>
         <FORM kindOf="standard">Kaleskes: ui, ljakua qadjaw ki tja kani anga.</FORM>
-        <TRANSL xml:lang="en">Kaleskes: Yes, but I don’t know whether we’ll eat any of it,</TRANSL>
+        <TRANSL xml:lang="eng">Kaleskes: Yes, but I don’t know whether we’ll eat any of it,</TRANSL>
         <W id="090S8W1">
             <FORM kindOf="original">Kaleskes:</FORM>
             <FORM kindOf="standard">Kaleskes:</FORM>
             <M id="090S8W1M0">
                 <FORM kindOf="original">Kaleskes</FORM>
+                <PHON kindOf="original">kaɭəskəs</PHON>
                 <FORM kindOf="standard">Kaleskes</FORM>
-                <TRANSL>(name)</TRANSL>
+                <PHON kindOf="standard">kaɭəskəs</PHON>
+                <TRANSL xml:lang="eng">(name)</TRANSL>
             </M>
         </W>
         <W id="090S8W2">
@@ -1006,8 +1263,10 @@
             <FORM kindOf="standard">ui,</FORM>
             <M id="090S8W2M0">
                 <FORM kindOf="original">ui</FORM>
+                <PHON kindOf="original">ui</PHON>
                 <FORM kindOf="standard">ui</FORM>
-                <TRANSL>yes</TRANSL>
+                <PHON kindOf="standard">ui</PHON>
+                <TRANSL xml:lang="eng">yes</TRANSL>
             </M>
         </W>
         <W id="090S8W3">
@@ -1015,8 +1274,10 @@
             <FORM kindOf="standard">ljakua</FORM>
             <M id="090S8W3M0">
                 <FORM kindOf="original">ɫakua</FORM>
+                <PHON kindOf="original">ʎakua</PHON>
                 <FORM kindOf="standard">ljakua</FORM>
-                <TRANSL>but</TRANSL>
+                <PHON kindOf="standard">ʎakua</PHON>
+                <TRANSL xml:lang="eng">but</TRANSL>
             </M>
         </W>
         <W id="090S8W4">
@@ -1024,8 +1285,10 @@
             <FORM kindOf="standard">qadjaw</FORM>
             <M id="090S8W4M0">
                 <FORM kindOf="original">qadjaw</FORM>
+                <PHON kindOf="original">qaɉaw</PHON>
                 <FORM kindOf="standard">qadjaw</FORM>
-                <TRANSL>perhaps</TRANSL>
+                <PHON kindOf="standard">qaɉaw</PHON>
+                <TRANSL xml:lang="eng">perhaps</TRANSL>
             </M>
         </W>
         <W id="090S8W5">
@@ -1033,8 +1296,10 @@
             <FORM kindOf="standard">ki</FORM>
             <M id="090S8W5M0">
                 <FORM kindOf="original">ki</FORM>
+                <PHON kindOf="original">ki</PHON>
                 <FORM kindOf="standard">ki</FORM>
-                <TRANSL>will</TRANSL>
+                <PHON kindOf="standard">ki</PHON>
+                <TRANSL xml:lang="eng">will</TRANSL>
             </M>
         </W>
         <W id="090S8W6">
@@ -1042,8 +1307,10 @@
             <FORM kindOf="standard">tja</FORM>
             <M id="090S8W6M0">
                 <FORM kindOf="original">tja</FORM>
+                <PHON kindOf="original">ca</PHON>
                 <FORM kindOf="standard">tja</FORM>
-                <TRANSL>we(inc)</TRANSL>
+                <PHON kindOf="standard">ʦa</PHON>
+                <TRANSL xml:lang="eng">we(inc)</TRANSL>
             </M>
         </W>
         <W id="090S8W7">
@@ -1051,13 +1318,17 @@
             <FORM kindOf="standard">kani</FORM>
             <M id="090S8W7M0">
                 <FORM kindOf="original">kan</FORM>
+                <PHON kindOf="original">kan</PHON>
                 <FORM kindOf="standard">kan</FORM>
-                <TRANSL>eat</TRANSL>
+                <PHON kindOf="standard">kan</PHON>
+                <TRANSL xml:lang="eng">eat</TRANSL>
             </M>
             <M id="090S8W7M1">
                 <FORM kindOf="original">i</FORM>
+                <PHON kindOf="original">i</PHON>
                 <FORM kindOf="standard">i</FORM>
-                <TRANSL>pf</TRANSL>
+                <PHON kindOf="standard">i</PHON>
+                <TRANSL xml:lang="eng">pf</TRANSL>
             </M>
         </W>
         <W id="090S8W8">
@@ -1065,27 +1336,33 @@
             <FORM kindOf="standard">anga.</FORM>
             <M id="090S8W8M0">
                 <FORM kindOf="original">anga</FORM>
+                <PHON kindOf="original">aŋa</PHON>
                 <FORM kindOf="standard">anga</FORM>
-                <TRANSL>indeed</TRANSL>
+                <PHON kindOf="standard">aŋa</PHON>
+                <TRANSL xml:lang="eng">indeed</TRANSL>
             </M>
         </W>
     </S>
     <S id="090S9">
         <FORM kindOf="original">maya sa qemuzimuzip, maya sa tja kinatsavitsaviɫan a nakuya aravats.</FORM>
         <FORM kindOf="standard">maya sa qemuzimuzip, maya sa tja kinacavicaviljan a nakuya aravac.</FORM>
-        <TRANSL xml:lang="en">what with the pests and (making good our losses on) the very bad years.</TRANSL>
+        <TRANSL xml:lang="eng">what with the pests and (making good our losses on) the very bad years.</TRANSL>
         <W id="090S9W1">
             <FORM kindOf="original">maya</FORM>
             <FORM kindOf="standard">maya</FORM>
             <M id="090S9W1M0">
                 <FORM kindOf="original">ma</FORM>
+                <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
-                <TRANSL>stat</TRANSL>
+                <PHON kindOf="standard">ma</PHON>
+                <TRANSL xml:lang="eng">stat</TRANSL>
             </M>
             <M id="090S9W1M1">
                 <FORM kindOf="original">aya</FORM>
+                <PHON kindOf="original">aja</PHON>
                 <FORM kindOf="standard">aya</FORM>
-                <TRANSL>be.thus</TRANSL>
+                <PHON kindOf="standard">aja</PHON>
+                <TRANSL xml:lang="eng">be.thus</TRANSL>
             </M>
         </W>
         <W id="090S9W2">
@@ -1093,8 +1370,10 @@
             <FORM kindOf="standard">sa</FORM>
             <M id="090S9W2M0">
                 <FORM kindOf="original">tsa</FORM>
+                <PHON kindOf="original">ʦa</PHON>
                 <FORM kindOf="standard">ca</FORM>
-                <TRANSL>this</TRANSL>
+                <PHON kindOf="standard">ʦa</PHON>
+                <TRANSL xml:lang="eng">this</TRANSL>
             </M>
         </W>
         <W id="090S9W3">
@@ -1102,8 +1381,10 @@
             <FORM kindOf="standard">qemuzimuzip,</FORM>
             <M id="090S9W3M0">
                 <FORM kindOf="original">em=em=uzi=quzip</FORM>
+                <PHON kindOf="original">əm=əm=uzi=quzip</PHON>
                 <FORM kindOf="standard">em=em=uzi=quzip</FORM>
-                <TRANSL>af=af=red=animal</TRANSL>
+                <PHON kindOf="standard">əm=əm=uzi=quzip</PHON>
+                <TRANSL xml:lang="eng">af=af=red=animal</TRANSL>
             </M>
         </W>
         <W id="090S9W4">
@@ -1111,13 +1392,17 @@
             <FORM kindOf="standard">maya</FORM>
             <M id="090S9W4M0">
                 <FORM kindOf="original">ma</FORM>
+                <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
-                <TRANSL>stat</TRANSL>
+                <PHON kindOf="standard">ma</PHON>
+                <TRANSL xml:lang="eng">stat</TRANSL>
             </M>
             <M id="090S9W4M1">
                 <FORM kindOf="original">aya</FORM>
+                <PHON kindOf="original">aja</PHON>
                 <FORM kindOf="standard">aya</FORM>
-                <TRANSL>be.thus</TRANSL>
+                <PHON kindOf="standard">aja</PHON>
+                <TRANSL xml:lang="eng">be.thus</TRANSL>
             </M>
         </W>
         <W id="090S9W5">
@@ -1125,8 +1410,10 @@
             <FORM kindOf="standard">sa</FORM>
             <M id="090S9W5M0">
                 <FORM kindOf="original">tsa</FORM>
+                <PHON kindOf="original">ʦa</PHON>
                 <FORM kindOf="standard">ca</FORM>
-                <TRANSL>this</TRANSL>
+                <PHON kindOf="standard">ʦa</PHON>
+                <TRANSL xml:lang="eng">this</TRANSL>
             </M>
         </W>
         <W id="090S9W6">
@@ -1134,32 +1421,49 @@
             <FORM kindOf="standard">tja</FORM>
             <M id="090S9W6M0">
                 <FORM kindOf="original">tja</FORM>
+                <PHON kindOf="original">ca</PHON>
                 <FORM kindOf="standard">tja</FORM>
-                <TRANSL>our(inc)</TRANSL>
+                <PHON kindOf="standard">ʦa</PHON>
+                <TRANSL xml:lang="eng">our(inc)</TRANSL>
             </M>
         </W>
         <W id="090S9W7">
             <FORM kindOf="original">kinatsavitsaviɫan</FORM>
             <FORM kindOf="standard">kinacavicaviljan</FORM>
             <M id="090S9W7M0">
-                <FORM kindOf="original">in=ka</FORM>
-                <FORM kindOf="standard">in=ka</FORM>
-                <TRANSL>perf=past</TRANSL>
+                <FORM kindOf="original">-in-</FORM>
+                <PHON kindOf="original">-in-</PHON>
+                <FORM kindOf="standard">-in-</FORM>
+                <PHON kindOf="standard">-in-</PHON>
+                <TRANSL xml:lang="eng">perf</TRANSL>
             </M>
             <M id="090S9W7M1">
-                <FORM kindOf="original">tsavi</FORM>
-                <FORM kindOf="standard">cavi</FORM>
-                <TRANSL>red</TRANSL>
+                <FORM kindOf="original">k-a</FORM>
+                <PHON kindOf="original">k-a</PHON>
+                <FORM kindOf="standard">k-a</FORM>
+                <PHON kindOf="standard">k-a</PHON>
+                <TRANSL xml:lang="eng">past</TRANSL>
             </M>
             <M id="090S9W7M2">
-                <FORM kindOf="original">tsaviɫ</FORM>
-                <FORM kindOf="standard">cavilj</FORM>
-                <TRANSL>year</TRANSL>
+                <FORM kindOf="original">tsavi</FORM>
+                <PHON kindOf="original">ʦavi</PHON>
+                <FORM kindOf="standard">cavi</FORM>
+                <PHON kindOf="standard">ʦavi</PHON>
+                <TRANSL xml:lang="eng">RED</TRANSL>
             </M>
             <M id="090S9W7M3">
+                <FORM kindOf="original">tsaviɫ</FORM>
+                <PHON kindOf="original">ʦaviʎ</PHON>
+                <FORM kindOf="standard">cavilj</FORM>
+                <PHON kindOf="standard">ʦaviʎ</PHON>
+                <TRANSL xml:lang="eng">year</TRANSL>
+            </M>
+            <M id="090S9W7M4">
                 <FORM kindOf="original">an</FORM>
+                <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
-                <TRANSL>nom</TRANSL>
+                <PHON kindOf="standard">an</PHON>
+                <TRANSL xml:lang="eng">nom</TRANSL>
             </M>
         </W>
         <W id="090S9W8">
@@ -1167,8 +1471,10 @@
             <FORM kindOf="standard">a</FORM>
             <M id="090S9W8M0">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
-                <TRANSL>c</TRANSL>
+                <PHON kindOf="standard">a</PHON>
+                <TRANSL xml:lang="eng">c</TRANSL>
             </M>
         </W>
         <W id="090S9W9">
@@ -1176,13 +1482,17 @@
             <FORM kindOf="standard">nakuya</FORM>
             <M id="090S9W9M0">
                 <FORM kindOf="original">na</FORM>
+                <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
-                <TRANSL>stat</TRANSL>
+                <PHON kindOf="standard">na</PHON>
+                <TRANSL xml:lang="eng">stat</TRANSL>
             </M>
             <M id="090S9W9M1">
                 <FORM kindOf="original">kuya</FORM>
+                <PHON kindOf="original">kuja</PHON>
                 <FORM kindOf="standard">kuya</FORM>
-                <TRANSL>bad</TRANSL>
+                <PHON kindOf="standard">kuja</PHON>
+                <TRANSL xml:lang="eng">bad</TRANSL>
             </M>
         </W>
         <W id="090S9W10">
@@ -1190,27 +1500,33 @@
             <FORM kindOf="standard">aravac.</FORM>
             <M id="090S9W10M0">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
-                <TRANSL>c</TRANSL>
+                <PHON kindOf="standard">a</PHON>
+                <TRANSL xml:lang="eng">c</TRANSL>
             </M>
             <M id="090S9W10M1">
                 <FORM kindOf="original">ravats</FORM>
+                <PHON kindOf="original">ravaʦ</PHON>
                 <FORM kindOf="standard">ravac</FORM>
-                <TRANSL>true</TRANSL>
+                <PHON kindOf="standard">ravaʦ</PHON>
+                <TRANSL xml:lang="eng">true</TRANSL>
             </M>
         </W>
     </S>
     <S id="090S10">
         <FORM kindOf="original">Kai: qu saka ki tja pinatsunan anga a tsinuvuqan.</FORM>
         <FORM kindOf="standard">Kai: qu saka ki tja pinacunan anga a cinuvuqan.</FORM>
-        <TRANSL xml:lang="en">Kai: Well, let’s be content to look at the crops.</TRANSL>
+        <TRANSL xml:lang="eng">Kai: Well, let’s be content to look at the crops.</TRANSL>
         <W id="090S10W1">
             <FORM kindOf="original">Kai:</FORM>
             <FORM kindOf="standard">Kai:</FORM>
             <M id="090S10W1M0">
                 <FORM kindOf="original">Kai</FORM>
+                <PHON kindOf="original">kai</PHON>
                 <FORM kindOf="standard">Kai</FORM>
-                <TRANSL>(name)</TRANSL>
+                <PHON kindOf="standard">kai</PHON>
+                <TRANSL xml:lang="eng">(name)</TRANSL>
             </M>
         </W>
         <W id="090S10W2">
@@ -1218,8 +1534,10 @@
             <FORM kindOf="standard">qu</FORM>
             <M id="090S10W2M0">
                 <FORM kindOf="original">qu</FORM>
+                <PHON kindOf="original">qu</PHON>
                 <FORM kindOf="standard">qu</FORM>
-                <TRANSL>well</TRANSL>
+                <PHON kindOf="standard">qu</PHON>
+                <TRANSL xml:lang="eng">well</TRANSL>
             </M>
         </W>
         <W id="090S10W3">
@@ -1227,13 +1545,17 @@
             <FORM kindOf="standard">saka</FORM>
             <M id="090S10W3M0">
                 <FORM kindOf="original">sa</FORM>
+                <PHON kindOf="original">sa</PHON>
                 <FORM kindOf="standard">sa</FORM>
-                <TRANSL>and</TRANSL>
+                <PHON kindOf="standard">sa</PHON>
+                <TRANSL xml:lang="eng">and</TRANSL>
             </M>
             <M id="090S10W3M1">
                 <FORM kindOf="original">ka</FORM>
+                <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
-                <TRANSL>after</TRANSL>
+                <PHON kindOf="standard">ka</PHON>
+                <TRANSL xml:lang="eng">after</TRANSL>
             </M>
         </W>
         <W id="090S10W4">
@@ -1241,8 +1563,10 @@
             <FORM kindOf="standard">ki</FORM>
             <M id="090S10W4M0">
                 <FORM kindOf="original">ki</FORM>
+                <PHON kindOf="original">ki</PHON>
                 <FORM kindOf="standard">ki</FORM>
-                <TRANSL>will</TRANSL>
+                <PHON kindOf="standard">ki</PHON>
+                <TRANSL xml:lang="eng">will</TRANSL>
             </M>
         </W>
         <W id="090S10W5">
@@ -1250,27 +1574,42 @@
             <FORM kindOf="standard">tja</FORM>
             <M id="090S10W5M0">
                 <FORM kindOf="original">tja</FORM>
+                <PHON kindOf="original">ca</PHON>
                 <FORM kindOf="standard">tja</FORM>
-                <TRANSL>we(inc)</TRANSL>
+                <PHON kindOf="standard">ʦa</PHON>
+                <TRANSL xml:lang="eng">we(inc)</TRANSL>
             </M>
         </W>
         <W id="090S10W6">
             <FORM kindOf="original">pinatsunan</FORM>
             <FORM kindOf="standard">pinacunan</FORM>
             <M id="090S10W6M0">
-                <FORM kindOf="original">in=pa</FORM>
-                <FORM kindOf="standard">in=pa</FORM>
-                <TRANSL>perf=cause</TRANSL>
+                <FORM kindOf="original">-in-</FORM>
+                <PHON kindOf="original">-in-</PHON>
+                <FORM kindOf="standard">-in-</FORM>
+                <PHON kindOf="standard">-in-</PHON>
+                <TRANSL xml:lang="eng">perf</TRANSL>
             </M>
             <M id="090S10W6M1">
-                <FORM kindOf="original">tsun</FORM>
-                <FORM kindOf="standard">cun</FORM>
-                <TRANSL>see</TRANSL>
+                <FORM kindOf="original">p-a</FORM>
+                <PHON kindOf="original">p-a</PHON>
+                <FORM kindOf="standard">p-a</FORM>
+                <PHON kindOf="standard">p-a</PHON>
+                <TRANSL xml:lang="eng">cause</TRANSL>
             </M>
             <M id="090S10W6M2">
+                <FORM kindOf="original">tsun</FORM>
+                <PHON kindOf="original">ʦun</PHON>
+                <FORM kindOf="standard">cun</FORM>
+                <PHON kindOf="standard">ʦun</PHON>
+                <TRANSL xml:lang="eng">see</TRANSL>
+            </M>
+            <M id="090S10W6M3">
                 <FORM kindOf="original">an</FORM>
+                <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
-                <TRANSL>lf</TRANSL>
+                <PHON kindOf="standard">an</PHON>
+                <TRANSL xml:lang="eng">lf</TRANSL>
             </M>
         </W>
         <W id="090S10W7">
@@ -1278,8 +1617,10 @@
             <FORM kindOf="standard">anga</FORM>
             <M id="090S10W7M0">
                 <FORM kindOf="original">anga</FORM>
+                <PHON kindOf="original">aŋa</PHON>
                 <FORM kindOf="standard">anga</FORM>
-                <TRANSL>indeed</TRANSL>
+                <PHON kindOf="standard">aŋa</PHON>
+                <TRANSL xml:lang="eng">indeed</TRANSL>
             </M>
         </W>
         <W id="090S10W8">
@@ -1287,36 +1628,51 @@
             <FORM kindOf="standard">a</FORM>
             <M id="090S10W8M0">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
-                <TRANSL>c</TRANSL>
+                <PHON kindOf="standard">a</PHON>
+                <TRANSL xml:lang="eng">c</TRANSL>
             </M>
         </W>
         <W id="090S10W9">
             <FORM kindOf="original">tsinuvuqan.</FORM>
             <FORM kindOf="standard">cinuvuqan.</FORM>
             <M id="090S10W9M0">
-                <FORM kindOf="original">in=tsuvuq</FORM>
-                <FORM kindOf="standard">in=cuvuq</FORM>
-                <TRANSL>perf=sprout</TRANSL>
+                <FORM kindOf="original">-in-</FORM>
+                <PHON kindOf="original">-in-</PHON>
+                <FORM kindOf="standard">-in-</FORM>
+                <PHON kindOf="standard">-in-</PHON>
+                <TRANSL xml:lang="eng">perf</TRANSL>
             </M>
             <M id="090S10W9M1">
+                <FORM kindOf="original">ts-uvuq</FORM>
+                <PHON kindOf="original">ʦ-uvuq</PHON>
+                <FORM kindOf="standard">c-uvuq</FORM>
+                <PHON kindOf="standard">ʦ-uvuq</PHON>
+                <TRANSL xml:lang="eng">sprout</TRANSL>
+            </M>
+            <M id="090S10W9M2">
                 <FORM kindOf="original">an</FORM>
+                <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
-                <TRANSL>nom</TRANSL>
+                <PHON kindOf="standard">an</PHON>
+                <TRANSL xml:lang="eng">nom</TRANSL>
             </M>
         </W>
     </S>
     <S id="090S11">
         <FORM kindOf="original">qau mamaw ka ta zua inika tjen a napatsun anga ta tsinuvuqan(?).</FORM>
         <FORM kindOf="standard">qau mamaw ka ta zua inika tjen a napacun anga ta cinuvuqan(').</FORM>
-        <TRANSL xml:lang="en">It’s not as if we hadn’t any crops to look at.</TRANSL>
+        <TRANSL xml:lang="eng">It’s not as if we hadn’t any crops to look at.</TRANSL>
         <W id="090S11W1">
             <FORM kindOf="original">qau</FORM>
             <FORM kindOf="standard">qau</FORM>
             <M id="090S11W1M0">
                 <FORM kindOf="original">qau</FORM>
+                <PHON kindOf="original">qau</PHON>
                 <FORM kindOf="standard">qau</FORM>
-                <TRANSL>so</TRANSL>
+                <PHON kindOf="standard">qau</PHON>
+                <TRANSL xml:lang="eng">so</TRANSL>
             </M>
         </W>
         <W id="090S11W2">
@@ -1324,13 +1680,17 @@
             <FORM kindOf="standard">mamaw</FORM>
             <M id="090S11W2M0">
                 <FORM kindOf="original">ma</FORM>
+                <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
-                <TRANSL>stat</TRANSL>
+                <PHON kindOf="standard">ma</PHON>
+                <TRANSL xml:lang="eng">stat</TRANSL>
             </M>
             <M id="090S11W2M1">
                 <FORM kindOf="original">amaw</FORM>
+                <PHON kindOf="original">amaw</PHON>
                 <FORM kindOf="standard">amaw</FORM>
-                <TRANSL>same</TRANSL>
+                <PHON kindOf="standard">amaw</PHON>
+                <TRANSL xml:lang="eng">same</TRANSL>
             </M>
         </W>
         <W id="090S11W3">
@@ -1338,8 +1698,10 @@
             <FORM kindOf="standard">ka</FORM>
             <M id="090S11W3M0">
                 <FORM kindOf="original">ka</FORM>
+                <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
-                <TRANSL>after</TRANSL>
+                <PHON kindOf="standard">ka</PHON>
+                <TRANSL xml:lang="eng">after</TRANSL>
             </M>
         </W>
         <W id="090S11W4">
@@ -1347,8 +1709,10 @@
             <FORM kindOf="standard">ta</FORM>
             <M id="090S11W4M0">
                 <FORM kindOf="original">ta</FORM>
+                <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">ta</FORM>
-                <TRANSL>obl</TRANSL>
+                <PHON kindOf="standard">ta</PHON>
+                <TRANSL xml:lang="eng">obl</TRANSL>
             </M>
         </W>
         <W id="090S11W5">
@@ -1356,8 +1720,10 @@
             <FORM kindOf="standard">zua</FORM>
             <M id="090S11W5M0">
                 <FORM kindOf="original">zua</FORM>
+                <PHON kindOf="original">zua</PHON>
                 <FORM kindOf="standard">zua</FORM>
-                <TRANSL>that</TRANSL>
+                <PHON kindOf="standard">zua</PHON>
+                <TRANSL xml:lang="eng">that</TRANSL>
             </M>
         </W>
         <W id="090S11W6">
@@ -1365,13 +1731,17 @@
             <FORM kindOf="standard">inika</FORM>
             <M id="090S11W6M0">
                 <FORM kindOf="original">ini</FORM>
+                <PHON kindOf="original">ini</PHON>
                 <FORM kindOf="standard">ini</FORM>
-                <TRANSL>not</TRANSL>
+                <PHON kindOf="standard">ini</PHON>
+                <TRANSL xml:lang="eng">not</TRANSL>
             </M>
             <M id="090S11W6M1">
                 <FORM kindOf="original">ka</FORM>
+                <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
-                <TRANSL>after</TRANSL>
+                <PHON kindOf="standard">ka</PHON>
+                <TRANSL xml:lang="eng">after</TRANSL>
             </M>
         </W>
         <W id="090S11W7">
@@ -1379,8 +1749,10 @@
             <FORM kindOf="standard">tjen</FORM>
             <M id="090S11W7M0">
                 <FORM kindOf="original">tjen</FORM>
+                <PHON kindOf="original">cən</PHON>
                 <FORM kindOf="standard">tjen</FORM>
-                <TRANSL>f.we(inc)</TRANSL>
+                <PHON kindOf="standard">ʦən</PHON>
+                <TRANSL xml:lang="eng">f.we(inc)</TRANSL>
             </M>
         </W>
         <W id="090S11W8">
@@ -1388,8 +1760,10 @@
             <FORM kindOf="standard">a</FORM>
             <M id="090S11W8M0">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
-                <TRANSL>c</TRANSL>
+                <PHON kindOf="standard">a</PHON>
+                <TRANSL xml:lang="eng">c</TRANSL>
             </M>
         </W>
         <W id="090S11W9">
@@ -1397,18 +1771,24 @@
             <FORM kindOf="standard">napacun</FORM>
             <M id="090S11W9M0">
                 <FORM kindOf="original">na</FORM>
+                <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
-                <TRANSL>past</TRANSL>
+                <PHON kindOf="standard">na</PHON>
+                <TRANSL xml:lang="eng">past</TRANSL>
             </M>
             <M id="090S11W9M1">
                 <FORM kindOf="original">pa</FORM>
+                <PHON kindOf="original">pa</PHON>
                 <FORM kindOf="standard">pa</FORM>
-                <TRANSL>cause</TRANSL>
+                <PHON kindOf="standard">pa</PHON>
+                <TRANSL xml:lang="eng">cause</TRANSL>
             </M>
             <M id="090S11W9M2">
                 <FORM kindOf="original">tsun</FORM>
+                <PHON kindOf="original">ʦun</PHON>
                 <FORM kindOf="standard">cun</FORM>
-                <TRANSL>see</TRANSL>
+                <PHON kindOf="standard">ʦun</PHON>
+                <TRANSL xml:lang="eng">see</TRANSL>
             </M>
         </W>
         <W id="090S11W10">
@@ -1416,8 +1796,10 @@
             <FORM kindOf="standard">anga</FORM>
             <M id="090S11W10M0">
                 <FORM kindOf="original">anga</FORM>
+                <PHON kindOf="original">aŋa</PHON>
                 <FORM kindOf="standard">anga</FORM>
-                <TRANSL>indeed</TRANSL>
+                <PHON kindOf="standard">aŋa</PHON>
+                <TRANSL xml:lang="eng">indeed</TRANSL>
             </M>
         </W>
         <W id="090S11W11">
@@ -1425,45 +1807,69 @@
             <FORM kindOf="standard">ta</FORM>
             <M id="090S11W11M0">
                 <FORM kindOf="original">ta</FORM>
+                <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">ta</FORM>
-                <TRANSL>obl</TRANSL>
+                <PHON kindOf="standard">ta</PHON>
+                <TRANSL xml:lang="eng">obl</TRANSL>
             </M>
         </W>
         <W id="090S11W12">
             <FORM kindOf="original">tsinuvuqan(?).</FORM>
             <FORM kindOf="standard">cinuvuqan(').</FORM>
             <M id="090S11W12M0">
-                <FORM kindOf="original">in=tsuvuq</FORM>
-                <FORM kindOf="standard">in=cuvuq</FORM>
-                <TRANSL>perf=sprout</TRANSL>
+                <FORM kindOf="original">-in-</FORM>
+                <PHON kindOf="original">-in-</PHON>
+                <FORM kindOf="standard">-in-</FORM>
+                <PHON kindOf="standard">-in-</PHON>
+                <TRANSL xml:lang="eng">perf</TRANSL>
             </M>
             <M id="090S11W12M1">
+                <FORM kindOf="original">ts-uvuq</FORM>
+                <PHON kindOf="original">ʦ-uvuq</PHON>
+                <FORM kindOf="standard">c-uvuq</FORM>
+                <PHON kindOf="standard">ʦ-uvuq</PHON>
+                <TRANSL xml:lang="eng">sprout</TRANSL>
+            </M>
+            <M id="090S11W12M2">
                 <FORM kindOf="original">an</FORM>
+                <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
-                <TRANSL>nom</TRANSL>
+                <PHON kindOf="standard">an</PHON>
+                <TRANSL xml:lang="eng">nom</TRANSL>
             </M>
         </W>
     </S>
     <S id="090S12">
         <FORM kindOf="original">ɫakua qemazaɫ a ika tjen a uri sinikuletj na Tsemas, a ika tjen a uri sinipenetj tua tja sikavaɫut.</FORM>
         <FORM kindOf="standard">ljakua qemazalj a ika tjen a uri sinikuletj na Cemas, a ika tjen a uri sinipenetj tua tja sikavaljut.</FORM>
-        <TRANSL xml:lang="en">Anyway it would be something quite out of the ordinary if God didn’t supply us and arrange for us to have something to live on.</TRANSL>
+        <TRANSL xml:lang="eng">Anyway it would be something quite out of the ordinary if God didn’t supply us and arrange for us to have something to live on.</TRANSL>
         <W id="090S12W1">
             <FORM kindOf="original">ɫakua</FORM>
             <FORM kindOf="standard">ljakua</FORM>
             <M id="090S12W1M0">
                 <FORM kindOf="original">ɫakua</FORM>
+                <PHON kindOf="original">ʎakua</PHON>
                 <FORM kindOf="standard">ljakua</FORM>
-                <TRANSL>but</TRANSL>
+                <PHON kindOf="standard">ʎakua</PHON>
+                <TRANSL xml:lang="eng">but</TRANSL>
             </M>
         </W>
         <W id="090S12W2">
             <FORM kindOf="original">qemazaɫ</FORM>
             <FORM kindOf="standard">qemazalj</FORM>
             <M id="090S12W2M0">
-                <FORM kindOf="original">em=qazaɫ</FORM>
-                <FORM kindOf="standard">em=qazalj</FORM>
-                <TRANSL>af=dread</TRANSL>
+                <FORM kindOf="original">-em-</FORM>
+                <PHON kindOf="original">-əm-</PHON>
+                <FORM kindOf="standard">-em-</FORM>
+                <PHON kindOf="standard">-əm-</PHON>
+                <TRANSL xml:lang="eng">af</TRANSL>
+            </M>
+            <M id="090S12W2M1">
+                <FORM kindOf="original">q-azaɫ</FORM>
+                <PHON kindOf="original">q-azaʎ</PHON>
+                <FORM kindOf="standard">q-azalj</FORM>
+                <PHON kindOf="standard">q-azaʎ</PHON>
+                <TRANSL xml:lang="eng">dread</TRANSL>
             </M>
         </W>
         <W id="090S12W3">
@@ -1471,8 +1877,10 @@
             <FORM kindOf="standard">a</FORM>
             <M id="090S12W3M0">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
-                <TRANSL>c</TRANSL>
+                <PHON kindOf="standard">a</PHON>
+                <TRANSL xml:lang="eng">c</TRANSL>
             </M>
         </W>
         <W id="090S12W4">
@@ -1480,8 +1888,10 @@
             <FORM kindOf="standard">ika</FORM>
             <M id="090S12W4M0">
                 <FORM kindOf="original">ika</FORM>
+                <PHON kindOf="original">ika</PHON>
                 <FORM kindOf="standard">ika</FORM>
-                <TRANSL>not</TRANSL>
+                <PHON kindOf="standard">ika</PHON>
+                <TRANSL xml:lang="eng">not</TRANSL>
             </M>
         </W>
         <W id="090S12W5">
@@ -1489,8 +1899,10 @@
             <FORM kindOf="standard">tjen</FORM>
             <M id="090S12W5M0">
                 <FORM kindOf="original">tjen</FORM>
+                <PHON kindOf="original">cən</PHON>
                 <FORM kindOf="standard">tjen</FORM>
-                <TRANSL>f.we(inc)</TRANSL>
+                <PHON kindOf="standard">ʦən</PHON>
+                <TRANSL xml:lang="eng">f.we(inc)</TRANSL>
             </M>
         </W>
         <W id="090S12W6">
@@ -1498,8 +1910,10 @@
             <FORM kindOf="standard">a</FORM>
             <M id="090S12W6M0">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
-                <TRANSL>c</TRANSL>
+                <PHON kindOf="standard">a</PHON>
+                <TRANSL xml:lang="eng">c</TRANSL>
             </M>
         </W>
         <W id="090S12W7">
@@ -1507,22 +1921,35 @@
             <FORM kindOf="standard">uri</FORM>
             <M id="090S12W7M0">
                 <FORM kindOf="original">uri</FORM>
+                <PHON kindOf="original">uri</PHON>
                 <FORM kindOf="standard">uri</FORM>
-                <TRANSL>will</TRANSL>
+                <PHON kindOf="standard">uri</PHON>
+                <TRANSL xml:lang="eng">will</TRANSL>
             </M>
         </W>
         <W id="090S12W8">
             <FORM kindOf="original">sinikuletj</FORM>
             <FORM kindOf="standard">sinikuletj</FORM>
             <M id="090S12W8M0">
-                <FORM kindOf="original">in=si</FORM>
-                <FORM kindOf="standard">in=si</FORM>
-                <TRANSL>perf=if</TRANSL>
+                <FORM kindOf="original">-in-</FORM>
+                <PHON kindOf="original">-in-</PHON>
+                <FORM kindOf="standard">-in-</FORM>
+                <PHON kindOf="standard">-in-</PHON>
+                <TRANSL xml:lang="eng">perf</TRANSL>
             </M>
             <M id="090S12W8M1">
+                <FORM kindOf="original">s-i</FORM>
+                <PHON kindOf="original">s-i</PHON>
+                <FORM kindOf="standard">s-i</FORM>
+                <PHON kindOf="standard">s-i</PHON>
+                <TRANSL xml:lang="eng">if</TRANSL>
+            </M>
+            <M id="090S12W8M2">
                 <FORM kindOf="original">kuletj</FORM>
+                <PHON kindOf="original">kuɭəc</PHON>
                 <FORM kindOf="standard">kuletj</FORM>
-                <TRANSL>supply</TRANSL>
+                <PHON kindOf="standard">kuɭəʦ</PHON>
+                <TRANSL xml:lang="eng">supply</TRANSL>
             </M>
         </W>
         <W id="090S12W9">
@@ -1530,8 +1957,10 @@
             <FORM kindOf="standard">na</FORM>
             <M id="090S12W9M0">
                 <FORM kindOf="original">nua</FORM>
+                <PHON kindOf="original">nua</PHON>
                 <FORM kindOf="standard">nua</FORM>
-                <TRANSL>by</TRANSL>
+                <PHON kindOf="standard">nua</PHON>
+                <TRANSL xml:lang="eng">by</TRANSL>
             </M>
         </W>
         <W id="090S12W10">
@@ -1539,8 +1968,10 @@
             <FORM kindOf="standard">Cemas,</FORM>
             <M id="090S12W10M0">
                 <FORM kindOf="original">Tsemas</FORM>
+                <PHON kindOf="original">ʦəmas</PHON>
                 <FORM kindOf="standard">Cemas</FORM>
-                <TRANSL>God</TRANSL>
+                <PHON kindOf="standard">ʦəmas</PHON>
+                <TRANSL xml:lang="eng">God</TRANSL>
             </M>
         </W>
         <W id="090S12W11">
@@ -1548,8 +1979,10 @@
             <FORM kindOf="standard">a</FORM>
             <M id="090S12W11M0">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
-                <TRANSL>c</TRANSL>
+                <PHON kindOf="standard">a</PHON>
+                <TRANSL xml:lang="eng">c</TRANSL>
             </M>
         </W>
         <W id="090S12W12">
@@ -1557,8 +1990,10 @@
             <FORM kindOf="standard">ika</FORM>
             <M id="090S12W12M0">
                 <FORM kindOf="original">ika</FORM>
+                <PHON kindOf="original">ika</PHON>
                 <FORM kindOf="standard">ika</FORM>
-                <TRANSL>not</TRANSL>
+                <PHON kindOf="standard">ika</PHON>
+                <TRANSL xml:lang="eng">not</TRANSL>
             </M>
         </W>
         <W id="090S12W13">
@@ -1566,8 +2001,10 @@
             <FORM kindOf="standard">tjen</FORM>
             <M id="090S12W13M0">
                 <FORM kindOf="original">tjen</FORM>
+                <PHON kindOf="original">cən</PHON>
                 <FORM kindOf="standard">tjen</FORM>
-                <TRANSL>f.we(inc)</TRANSL>
+                <PHON kindOf="standard">ʦən</PHON>
+                <TRANSL xml:lang="eng">f.we(inc)</TRANSL>
             </M>
         </W>
         <W id="090S12W14">
@@ -1575,8 +2012,10 @@
             <FORM kindOf="standard">a</FORM>
             <M id="090S12W14M0">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
-                <TRANSL>c</TRANSL>
+                <PHON kindOf="standard">a</PHON>
+                <TRANSL xml:lang="eng">c</TRANSL>
             </M>
         </W>
         <W id="090S12W15">
@@ -1584,22 +2023,35 @@
             <FORM kindOf="standard">uri</FORM>
             <M id="090S12W15M0">
                 <FORM kindOf="original">uri</FORM>
+                <PHON kindOf="original">uri</PHON>
                 <FORM kindOf="standard">uri</FORM>
-                <TRANSL>will</TRANSL>
+                <PHON kindOf="standard">uri</PHON>
+                <TRANSL xml:lang="eng">will</TRANSL>
             </M>
         </W>
         <W id="090S12W16">
             <FORM kindOf="original">sinipenetj</FORM>
             <FORM kindOf="standard">sinipenetj</FORM>
             <M id="090S12W16M0">
-                <FORM kindOf="original">in=si</FORM>
-                <FORM kindOf="standard">in=si</FORM>
-                <TRANSL>perf=if</TRANSL>
+                <FORM kindOf="original">-in-</FORM>
+                <PHON kindOf="original">-in-</PHON>
+                <FORM kindOf="standard">-in-</FORM>
+                <PHON kindOf="standard">-in-</PHON>
+                <TRANSL xml:lang="eng">perf</TRANSL>
             </M>
             <M id="090S12W16M1">
+                <FORM kindOf="original">s-i</FORM>
+                <PHON kindOf="original">s-i</PHON>
+                <FORM kindOf="standard">s-i</FORM>
+                <PHON kindOf="standard">s-i</PHON>
+                <TRANSL xml:lang="eng">if</TRANSL>
+            </M>
+            <M id="090S12W16M2">
                 <FORM kindOf="original">penetj</FORM>
+                <PHON kindOf="original">pənəc</PHON>
                 <FORM kindOf="standard">penetj</FORM>
-                <TRANSL>allot</TRANSL>
+                <PHON kindOf="standard">pənəʦ</PHON>
+                <TRANSL xml:lang="eng">allot</TRANSL>
             </M>
         </W>
         <W id="090S12W17">
@@ -1607,8 +2059,10 @@
             <FORM kindOf="standard">tua</FORM>
             <M id="090S12W17M0">
                 <FORM kindOf="original">tua</FORM>
+                <PHON kindOf="original">tua</PHON>
                 <FORM kindOf="standard">tua</FORM>
-                <TRANSL>obl</TRANSL>
+                <PHON kindOf="standard">tua</PHON>
+                <TRANSL xml:lang="eng">obl</TRANSL>
             </M>
         </W>
         <W id="090S12W18">
@@ -1616,8 +2070,10 @@
             <FORM kindOf="standard">tja</FORM>
             <M id="090S12W18M0">
                 <FORM kindOf="original">tja</FORM>
+                <PHON kindOf="original">ca</PHON>
                 <FORM kindOf="standard">tja</FORM>
-                <TRANSL>our(inc)</TRANSL>
+                <PHON kindOf="standard">ʦa</PHON>
+                <TRANSL xml:lang="eng">our(inc)</TRANSL>
             </M>
         </W>
         <W id="090S12W19">
@@ -1625,18 +2081,24 @@
             <FORM kindOf="standard">sikavaljut.</FORM>
             <M id="090S12W19M0">
                 <FORM kindOf="original">si</FORM>
+                <PHON kindOf="original">si</PHON>
                 <FORM kindOf="standard">si</FORM>
-                <TRANSL>if</TRANSL>
+                <PHON kindOf="standard">si</PHON>
+                <TRANSL xml:lang="eng">if</TRANSL>
             </M>
             <M id="090S12W19M1">
                 <FORM kindOf="original">ka</FORM>
+                <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
-                <TRANSL>?</TRANSL>
+                <PHON kindOf="standard">ka</PHON>
+                <TRANSL xml:lang="eng">?</TRANSL>
             </M>
             <M id="090S12W19M2">
                 <FORM kindOf="original">vaɫut</FORM>
+                <PHON kindOf="original">vaʎut</PHON>
                 <FORM kindOf="standard">valjut</FORM>
-                <TRANSL>alive</TRANSL>
+                <PHON kindOf="standard">vaʎut</PHON>
+                <TRANSL xml:lang="eng">alive</TRANSL>
             </M>
         </W>
     </S>

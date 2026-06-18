@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Negative fixture for V032 (TEXT/@BibTeX_citation is present and non-empty).
+
+  Shape: TEXT with no BibTeX_citation attribute.
+
+  Exercises: validate_xml.py should reject (currently does, via XSD).
+-->
+<TEXT id="V032_NEG" citation="test" copyright="test" xml:lang="ami" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original">Halo.</FORM>
+  </S>
+</TEXT>

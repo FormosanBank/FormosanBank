@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Positive fixture: TEXT with a single AUDIO child and no S elements.
+  Models corpora like Whitehorn_Collection where a recording exists
+  but no transcription has been added yet.
+
+  Schema relaxation 2026-06-03: S/@minOccurs lowered from 1 to 0 to
+  allow this shape. AUDIO is also optional; the all-empty TEXT case is
+  not enforced at schema level (see comment in xml_template.xsd).
+-->
+<TEXT id="audio_only_no_transcript" citation="t" BibTeX_citation="@t{t}" copyright="t" xml:lang="ami" dialect="unknown">
+  <AUDIO file="recording.wav"/>
+</TEXT>

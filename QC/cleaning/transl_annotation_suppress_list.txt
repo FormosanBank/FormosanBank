@@ -1,0 +1,33 @@
+# Curated suppression list for S-level TRANSL annotator notes.
+# (Joshua, 2026-06-13 — from translation_annotator_notes_candidates.csv)
+#
+# Each non-comment line is one EXACT parenthetical content to strip from
+# SENTENCE-level <TRANSL> only (a TRANSL that is a direct child of <S>).
+# W-level and M-level TRANSL are NEVER touched: there these same strings are
+# legitimate word/morpheme glosses (e.g. "人名" = "this word is a personal
+# name"), so suppressing them globally would destroy real data.
+#
+# Matching is exact on the parenthetical content after whitespace-strip, for
+# both half-width ( ) and full-width （ ） parentheses.
+#
+# Counts below are S-level occurrences at the time of curation.
+
+人名          # 75   (also 656 at W/M level — protected by S-level scoping)
+東西          # 541
+人            # 447
+男子名        # 140
+女子名        # 98
+地名          # 88
+祈使          # 210
+女子全名      # 158  (often the whole translation -> emptied)
+男子全名      # 158  (often the whole translation -> emptied)
+統稱          # 127
+用在問句      # 106
+全名          # 97
+指示詞        # 3    (also 94 at W/M level)
+動物          # 91
+各族用語      # 124  ("all ethnic languages")
+imperatives   # 167  English note, e.g. "run (imperatives)"
+collectively  # 127  English note, e.g. "mice (collectively)"
+name          # 0 at S-level (purely a W/M gloss; listed for completeness, no-op here)
+place         # 0 at S-level (purely a W/M gloss; listed for completeness, no-op here)

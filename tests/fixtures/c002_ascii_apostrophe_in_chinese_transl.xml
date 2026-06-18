@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  C002 xfail fixture (Branch B): ASCII apostrophe (U+0027) appearing in
+  Chinese TRANSL is suspicious (typist IME mistake), should WARN.
+
+  Shape: one S with both FORM tiers (no apostrophes), plus an S-level
+  TRANSL xml:lang="zho" containing ASCII apostrophe.
+  Exercises (after B): warn + preserve. Today: warn infrastructure
+  does not exist (XFAIL).
+-->
+<TEXT id="TEST_C002_ZH_ASC" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original">Halo.</FORM>
+    <FORM kindOf="standard">Halo.</FORM>
+    <TRANSL xml:lang="zho">他'说。</TRANSL>
+  </S>
+</TEXT>

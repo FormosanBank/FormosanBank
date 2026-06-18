@@ -1,0 +1,69 @@
+name: Duplicate Sentence Detection
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "Corpora/**/XML/**"
+      - "QC/validation/validate_duplicate_sentences.py"
+      - ".github/workflows/duplicate-sentences.yaml"
+  push:
+    branches:
+      - main
+    paths:
+      - "Corpora/**/XML/**"
+      - "QC/validation/validate_duplicate_sentences.py"
+      - ".github/workflows/duplicate-sentences.yaml"
+
+# This workflow runs the within-corpus duplicate-sentence detector against
+# every corpus under Corpora/.  It is informational: a finding does not fail
+# the build.  The remover (QC/cleaning/remove_duplicate_sentences.py) is
+# intentionally NOT run from CI - removal touches data and must be opt-in.
+
+jobs:
+  duplicate-sentences:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Detect duplicate sentences (per-corpus)
+        run: |
+          mkdir -p duplicate-findings
+          set -e
+          for corpus_dir in Corpora/*/XML; do
+            corpus_name=$(basename "$(dirname "$corpus_dir")")
+            out="duplicate-findings/${corpus_name}.csv"
+            echo "==> $corpus_name"
+            python3 QC/validation/validate_duplicate_sentences.py by_path \
+              --path "$corpus_dir" \
+              --output "$out"
+          done
+
+      - name: Summarize findings
+        run: |
+          {
+            echo "## Duplicate Sentence Findings"
+            echo ""
+            echo "| Corpus | HARD groups | SOFT groups |"
+            echo "|--------|-------------|-------------|"
+            for csv in duplicate-findings/*.csv; do
+              corpus=$(basename "$csv" .csv)
+              # Count unique groups by (severity, normalized_text)
+              hard=$(awk -F',' 'NR>1 && $1=="HARD" {print $1","$2}' "$csv" | sort -u | wc -l | tr -d ' ')
+              soft=$(awk -F',' 'NR>1 && $1=="SOFT" {print $1","$2}' "$csv" | sort -u | wc -l | tr -d ' ')
+              echo "| $corpus | $hard | $soft |"
+            done
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload duplicate findings
+        uses: actions/upload-artifact@v4
+        with:
+          name: duplicate-sentences
+          path: duplicate-findings/
+          retention-days: 30

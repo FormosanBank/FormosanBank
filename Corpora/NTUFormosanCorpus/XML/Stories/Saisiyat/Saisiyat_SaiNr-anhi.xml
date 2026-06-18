@@ -1,25 +1,25 @@
-<?xml version="1.0" ?>
-<TEXT id="NTU_Stry_Saisiyat_SaiNr-anhi" xml:lang="xsy" source="NTU Corpus stories for Saisiyat, story: SaiNr-anhi" audio="diarized" copyright="CC BY-NC" citation="Sung, L. M., Lily, I., Hsieh, F., &amp; Lin, Z. (2008). Developing an online corpus of Formosan languages. Taiwan Journal of Linguistics, 6(2.)." BibTeX_citation="@article{sung2008developing,title={Developing an online corpus of Formosan languages.},author={Sung, Li-May and Lily, I and Hsieh, Fuhui and Lin, Zhemin and others},journal={Taiwan Journal of Linguistics},volume={6},number={2},year={2008}}">
+<?xml version='1.0' encoding='UTF-8'?>
+<TEXT id="NTU_Stry_Saisiyat_SaiNr-anhi" xml:lang="xsy" source="NTU Corpus stories for Saisiyat, story: SaiNr-anhi" audio="diarized" copyright="CC BY-NC" citation="Sung, L. M., Lily, I., Hsieh, F., &amp; Lin, Z. (2008). Developing an online corpus of Formosan languages. Taiwan Journal of Linguistics, 6(2.)." BibTeX_citation="@article{sung2008developing,title={Developing an online corpus of Formosan languages.},author={Sung, Li-May and Lily, I and Hsieh, Fuhui and Lin, Zhemin and others},journal={Taiwan Journal of Linguistics},volume={6},number={2},year={2008}}" dialect="Saisiyat">
     <S id="SaiNr-anhi_S_0">
         <FORM kindOf="original">rima' ti'anhi' lobih oratitin.</FORM>
         <PHON kindOf="original">rimaʔ tiʔanhiʔ loβih oratitin.</PHON>
         <FORM kindOf="standard">rima' ti'anhi' lobih oratitin.</FORM>
         <PHON kindOf="standard">rimaʔ tiʔanhiʔ loβih oratitin.</PHON>
         <TRANSL xml:lang="zho" notes="(人)去採竹筍,回來,剝皮.">去採竹筍,回來,剝皮.</TRANSL>
-        <TRANSL xml:lang="en" notes="&quot;(One) goes to pick bamboo shoots, returns, and peels the skin off.&quot;">&quot; goes to pick bamboo shoots, returns, and peels the skin off.&quot;</TRANSL>
+        <TRANSL xml:lang="eng" notes="&quot;(One) goes to pick bamboo shoots, returns, and peels the skin off.&quot;">" goes to pick bamboo shoots, returns, and peels the skin off."</TRANSL>
         <W id="SaiNr-anhi_S_0_W0">
             <FORM kindOf="original">rima'</FORM>
             <PHON kindOf="original">rimaʔ</PHON>
             <FORM kindOf="standard">rima'</FORM>
             <PHON kindOf="standard">rimaʔ</PHON>
             <TRANSL xml:lang="zho">主焦.去</TRANSL>
-            <TRANSL xml:lang="en">AF.go</TRANSL>
-            <M id="SaiNr-anhi_S_0_W0_M0_0">
+            <TRANSL xml:lang="eng">AF.go</TRANSL>
+            <M id="SaiNr-anhi_S_0_W0M1">
                 <FORM kindOf="original">rima'</FORM>
                 <PHON kindOf="original">rimaʔ</PHON>
                 <FORM kindOf="standard">rima'</FORM>
                 <PHON kindOf="standard">rimaʔ</PHON>
-                <TRANSL xml:lang="en">AF.go</TRANSL>
+                <TRANSL xml:lang="eng">AF.go</TRANSL>
                 <TRANSL xml:lang="zho">主焦.去</TRANSL>
             </M>
         </W>
@@ -29,21 +29,21 @@
             <FORM kindOf="standard">ti-'anhi'</FORM>
             <PHON kindOf="standard">ti-ʔanhiʔ</PHON>
             <TRANSL xml:lang="zho">採-竹筍</TRANSL>
-            <TRANSL xml:lang="en">pick-bamboo.shoot</TRANSL>
-            <M id="SaiNr-anhi_S_0_W1_M0_0">
+            <TRANSL xml:lang="eng">pick-bamboo.shoot</TRANSL>
+            <M id="SaiNr-anhi_S_0_W1M1">
                 <FORM kindOf="original">ti</FORM>
                 <PHON kindOf="original">ti</PHON>
                 <FORM kindOf="standard">ti</FORM>
                 <PHON kindOf="standard">ti</PHON>
-                <TRANSL xml:lang="en">pick</TRANSL>
+                <TRANSL xml:lang="eng">pick</TRANSL>
                 <TRANSL xml:lang="zho">採</TRANSL>
             </M>
-            <M id="SaiNr-anhi_S_0_W1_M1_0">
+            <M id="SaiNr-anhi_S_0_W1M2">
                 <FORM kindOf="original">'anhi'</FORM>
                 <PHON kindOf="original">ʔanhiʔ</PHON>
                 <FORM kindOf="standard">'anhi'</FORM>
                 <PHON kindOf="standard">ʔanhiʔ</PHON>
-                <TRANSL xml:lang="en">bamboo.shoot</TRANSL>
+                <TRANSL xml:lang="eng">bamboo.shoot</TRANSL>
                 <TRANSL xml:lang="zho">竹筍</TRANSL>
             </M>
         </W>
@@ -53,13 +53,13 @@
             <FORM kindOf="standard">lobih</FORM>
             <PHON kindOf="standard">loβih</PHON>
             <TRANSL xml:lang="zho">主焦.回來</TRANSL>
-            <TRANSL xml:lang="en">AF.return</TRANSL>
-            <M id="SaiNr-anhi_S_0_W2_M0_0">
+            <TRANSL xml:lang="eng">AF.return</TRANSL>
+            <M id="SaiNr-anhi_S_0_W2M1">
                 <FORM kindOf="original">lobih</FORM>
                 <PHON kindOf="original">loβih</PHON>
                 <FORM kindOf="standard">lobih</FORM>
                 <PHON kindOf="standard">loβih</PHON>
-                <TRANSL xml:lang="en">AF.return</TRANSL>
+                <TRANSL xml:lang="eng">AF.return</TRANSL>
                 <TRANSL xml:lang="zho">主焦.回來</TRANSL>
             </M>
         </W>
@@ -69,21 +69,21 @@
             <FORM kindOf="standard">oratit-in</FORM>
             <PHON kindOf="standard">oratit-in</PHON>
             <TRANSL xml:lang="zho">剝皮-受焦</TRANSL>
-            <TRANSL xml:lang="en">peel.outer.layer-PF</TRANSL>
-            <M id="SaiNr-anhi_S_0_W3_M0_0">
+            <TRANSL xml:lang="eng">peel.outer.layer-PF</TRANSL>
+            <M id="SaiNr-anhi_S_0_W3M1">
                 <FORM kindOf="original">oratit</FORM>
                 <PHON kindOf="original">oratit</PHON>
                 <FORM kindOf="standard">oratit</FORM>
                 <PHON kindOf="standard">oratit</PHON>
-                <TRANSL xml:lang="en">peel.outer.layer</TRANSL>
+                <TRANSL xml:lang="eng">peel.outer.layer</TRANSL>
                 <TRANSL xml:lang="zho">剝皮</TRANSL>
             </M>
-            <M id="SaiNr-anhi_S_0_W3_M1_0">
+            <M id="SaiNr-anhi_S_0_W3M2">
                 <FORM kindOf="original">in</FORM>
                 <PHON kindOf="original">in</PHON>
                 <FORM kindOf="standard">in</FORM>
                 <PHON kindOf="standard">in</PHON>
-                <TRANSL xml:lang="en">PF</TRANSL>
+                <TRANSL xml:lang="eng">PF</TRANSL>
                 <TRANSL xml:lang="zho">受焦</TRANSL>
             </M>
         </W>
@@ -94,28 +94,28 @@
         <FORM kindOf="standard">taleken aroma' pal'apehen sipahila aroma' ma pilosnawen.</FORM>
         <PHON kindOf="standard">taləkən aromaʔ palʔapəhən s~θipahila aromaʔ ma pilos~θnawən.</PHON>
         <TRANSL xml:lang="zho" notes="有一些曬乾,一些煮一煮(加熱).">有一些曬乾,一些煮一煮 .</TRANSL>
-        <TRANSL xml:lang="en">&quot;Some are dried; some are heated.&quot;</TRANSL>
+        <TRANSL xml:lang="eng">"Some are dried; some are heated."</TRANSL>
         <W id="SaiNr-anhi_S_1_W0">
             <FORM kindOf="original">talek-en</FORM>
             <PHON kindOf="original">talək-ən</PHON>
             <FORM kindOf="standard">talek-en</FORM>
             <PHON kindOf="standard">talək-ən</PHON>
             <TRANSL xml:lang="zho">加熱-受焦</TRANSL>
-            <TRANSL xml:lang="en">heat-PF</TRANSL>
-            <M id="SaiNr-anhi_S_1_W0_M0_0">
+            <TRANSL xml:lang="eng">heat-PF</TRANSL>
+            <M id="SaiNr-anhi_S_1_W0M1">
                 <FORM kindOf="original">talek</FORM>
                 <PHON kindOf="original">talək</PHON>
                 <FORM kindOf="standard">talek</FORM>
                 <PHON kindOf="standard">talək</PHON>
-                <TRANSL xml:lang="en">heat</TRANSL>
+                <TRANSL xml:lang="eng">heat</TRANSL>
                 <TRANSL xml:lang="zho">加熱</TRANSL>
             </M>
-            <M id="SaiNr-anhi_S_1_W0_M1_0">
+            <M id="SaiNr-anhi_S_1_W0M2">
                 <FORM kindOf="original">en</FORM>
                 <PHON kindOf="original">ən</PHON>
                 <FORM kindOf="standard">en</FORM>
                 <PHON kindOf="standard">ən</PHON>
-                <TRANSL xml:lang="en">PF</TRANSL>
+                <TRANSL xml:lang="eng">PF</TRANSL>
                 <TRANSL xml:lang="zho">受焦</TRANSL>
             </M>
         </W>
@@ -125,13 +125,13 @@
             <FORM kindOf="standard">aroma'</FORM>
             <PHON kindOf="standard">aromaʔ</PHON>
             <TRANSL xml:lang="zho">一些</TRANSL>
-            <TRANSL xml:lang="en">some</TRANSL>
-            <M id="SaiNr-anhi_S_1_W1_M0_0">
+            <TRANSL xml:lang="eng">some</TRANSL>
+            <M id="SaiNr-anhi_S_1_W1M1">
                 <FORM kindOf="original">aroma'</FORM>
                 <PHON kindOf="original">aromaʔ</PHON>
                 <FORM kindOf="standard">aroma'</FORM>
                 <PHON kindOf="standard">aromaʔ</PHON>
-                <TRANSL xml:lang="en">some</TRANSL>
+                <TRANSL xml:lang="eng">some</TRANSL>
                 <TRANSL xml:lang="zho">一些</TRANSL>
             </M>
         </W>
@@ -141,21 +141,21 @@
             <FORM kindOf="standard">pal'apeh-en</FORM>
             <PHON kindOf="standard">palʔapəh-ən</PHON>
             <TRANSL xml:lang="zho">乾-受焦</TRANSL>
-            <TRANSL xml:lang="en">dry-PF</TRANSL>
-            <M id="SaiNr-anhi_S_1_W2_M0_0">
+            <TRANSL xml:lang="eng">dry-PF</TRANSL>
+            <M id="SaiNr-anhi_S_1_W2M1">
                 <FORM kindOf="original">pal'apeh</FORM>
                 <PHON kindOf="original">palʔapəh</PHON>
                 <FORM kindOf="standard">pal'apeh</FORM>
                 <PHON kindOf="standard">palʔapəh</PHON>
-                <TRANSL xml:lang="en">dry</TRANSL>
+                <TRANSL xml:lang="eng">dry</TRANSL>
                 <TRANSL xml:lang="zho">乾</TRANSL>
             </M>
-            <M id="SaiNr-anhi_S_1_W2_M1_0">
+            <M id="SaiNr-anhi_S_1_W2M2">
                 <FORM kindOf="original">en</FORM>
                 <PHON kindOf="original">ən</PHON>
                 <FORM kindOf="standard">en</FORM>
                 <PHON kindOf="standard">ən</PHON>
-                <TRANSL xml:lang="en">PF</TRANSL>
+                <TRANSL xml:lang="eng">PF</TRANSL>
                 <TRANSL xml:lang="zho">受焦</TRANSL>
             </M>
         </W>
@@ -165,29 +165,29 @@
             <FORM kindOf="standard">si-pa-hila</FORM>
             <PHON kindOf="standard">s~θi-pa-hila</PHON>
             <TRANSL xml:lang="zho">指焦-使役-日曬</TRANSL>
-            <TRANSL xml:lang="en">RF-CAU-sun</TRANSL>
-            <M id="SaiNr-anhi_S_1_W3_M0_0">
+            <TRANSL xml:lang="eng">RF-CAU-sun</TRANSL>
+            <M id="SaiNr-anhi_S_1_W3M1">
                 <FORM kindOf="original">si</FORM>
                 <PHON kindOf="original">s~θi</PHON>
                 <FORM kindOf="standard">si</FORM>
                 <PHON kindOf="standard">s~θi</PHON>
-                <TRANSL xml:lang="en">RF</TRANSL>
+                <TRANSL xml:lang="eng">RF</TRANSL>
                 <TRANSL xml:lang="zho">指焦</TRANSL>
             </M>
-            <M id="SaiNr-anhi_S_1_W3_M1_0">
+            <M id="SaiNr-anhi_S_1_W3M2">
                 <FORM kindOf="original">pa</FORM>
                 <PHON kindOf="original">pa</PHON>
                 <FORM kindOf="standard">pa</FORM>
                 <PHON kindOf="standard">pa</PHON>
-                <TRANSL xml:lang="en">CAU</TRANSL>
+                <TRANSL xml:lang="eng">CAU</TRANSL>
                 <TRANSL xml:lang="zho">使役</TRANSL>
             </M>
-            <M id="SaiNr-anhi_S_1_W3_M2_0">
+            <M id="SaiNr-anhi_S_1_W3M3">
                 <FORM kindOf="original">hila</FORM>
                 <PHON kindOf="original">hila</PHON>
                 <FORM kindOf="standard">hila</FORM>
                 <PHON kindOf="standard">hila</PHON>
-                <TRANSL xml:lang="en">sun</TRANSL>
+                <TRANSL xml:lang="eng">sun</TRANSL>
                 <TRANSL xml:lang="zho">日曬</TRANSL>
             </M>
         </W>
@@ -197,13 +197,13 @@
             <FORM kindOf="standard">aroma'</FORM>
             <PHON kindOf="standard">aromaʔ</PHON>
             <TRANSL xml:lang="zho">一些</TRANSL>
-            <TRANSL xml:lang="en">some</TRANSL>
-            <M id="SaiNr-anhi_S_1_W4_M0_0">
+            <TRANSL xml:lang="eng">some</TRANSL>
+            <M id="SaiNr-anhi_S_1_W4M1">
                 <FORM kindOf="original">aroma'</FORM>
                 <PHON kindOf="original">aromaʔ</PHON>
                 <FORM kindOf="standard">aroma'</FORM>
                 <PHON kindOf="standard">aromaʔ</PHON>
-                <TRANSL xml:lang="en">some</TRANSL>
+                <TRANSL xml:lang="eng">some</TRANSL>
                 <TRANSL xml:lang="zho">一些</TRANSL>
             </M>
         </W>
@@ -213,13 +213,13 @@
             <FORM kindOf="standard">ma</FORM>
             <PHON kindOf="standard">ma</PHON>
             <TRANSL xml:lang="zho">DM</TRANSL>
-            <TRANSL xml:lang="en">DM</TRANSL>
-            <M id="SaiNr-anhi_S_1_W5_M0_0">
+            <TRANSL xml:lang="eng">DM</TRANSL>
+            <M id="SaiNr-anhi_S_1_W5M1">
                 <FORM kindOf="original">ma</FORM>
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
-                <TRANSL xml:lang="en">DM</TRANSL>
+                <TRANSL xml:lang="eng">DM</TRANSL>
                 <TRANSL xml:lang="zho">DM</TRANSL>
             </M>
         </W>
@@ -229,21 +229,21 @@
             <FORM kindOf="standard">pilosnaw-en</FORM>
             <PHON kindOf="standard">pilos~θnaw-ən</PHON>
             <TRANSL xml:lang="zho">煮湯-受焦</TRANSL>
-            <TRANSL xml:lang="en">heat-PF</TRANSL>
-            <M id="SaiNr-anhi_S_1_W6_M0_0">
+            <TRANSL xml:lang="eng">heat-PF</TRANSL>
+            <M id="SaiNr-anhi_S_1_W6M1">
                 <FORM kindOf="original">pilosnaw</FORM>
                 <PHON kindOf="original">pilos~θnaw</PHON>
                 <FORM kindOf="standard">pilosnaw</FORM>
                 <PHON kindOf="standard">pilos~θnaw</PHON>
-                <TRANSL xml:lang="en">heat</TRANSL>
+                <TRANSL xml:lang="eng">heat</TRANSL>
                 <TRANSL xml:lang="zho">煮湯</TRANSL>
             </M>
-            <M id="SaiNr-anhi_S_1_W6_M1_0">
+            <M id="SaiNr-anhi_S_1_W6M2">
                 <FORM kindOf="original">en</FORM>
                 <PHON kindOf="original">ən</PHON>
                 <FORM kindOf="standard">en</FORM>
                 <PHON kindOf="standard">ən</PHON>
-                <TRANSL xml:lang="en">PF</TRANSL>
+                <TRANSL xml:lang="eng">PF</TRANSL>
                 <TRANSL xml:lang="zho">受焦</TRANSL>
             </M>
         </W>
@@ -254,28 +254,28 @@
         <FORM kindOf="standard">taleken aroma' ma hangraen ma' kayzaeh.</FORM>
         <PHON kindOf="standard">taləkən aromaʔ ma haŋræn maʔ kajz~ðæh.</PHON>
         <TRANSL xml:lang="zho">煮好了..炒也好.</TRANSL>
-        <TRANSL xml:lang="en" notes="&quot;(After they are) dried, It is good to fry some too.&quot;">&quot; dried, It is good to fry some too.&quot;</TRANSL>
+        <TRANSL xml:lang="eng" notes="&quot;(After they are) dried, It is good to fry some too.&quot;">" dried, It is good to fry some too."</TRANSL>
         <W id="SaiNr-anhi_S_2_W0">
             <FORM kindOf="original">talek-en</FORM>
             <PHON kindOf="original">talək-ən</PHON>
             <FORM kindOf="standard">talek-en</FORM>
             <PHON kindOf="standard">talək-ən</PHON>
             <TRANSL xml:lang="zho">&lt;完成&gt;加熱-受焦</TRANSL>
-            <TRANSL xml:lang="en">heat-PF</TRANSL>
-            <M id="SaiNr-anhi_S_2_W0_M0_0">
+            <TRANSL xml:lang="eng">heat-PF</TRANSL>
+            <M id="SaiNr-anhi_S_2_W0M1">
                 <FORM kindOf="original">talek</FORM>
                 <PHON kindOf="original">talək</PHON>
                 <FORM kindOf="standard">talek</FORM>
                 <PHON kindOf="standard">talək</PHON>
-                <TRANSL xml:lang="en">heat</TRANSL>
+                <TRANSL xml:lang="eng">heat</TRANSL>
                 <TRANSL xml:lang="zho">&lt;完成&gt;加熱</TRANSL>
             </M>
-            <M id="SaiNr-anhi_S_2_W0_M1_0">
+            <M id="SaiNr-anhi_S_2_W0M2">
                 <FORM kindOf="original">en</FORM>
                 <PHON kindOf="original">ən</PHON>
                 <FORM kindOf="standard">en</FORM>
                 <PHON kindOf="standard">ən</PHON>
-                <TRANSL xml:lang="en">PF</TRANSL>
+                <TRANSL xml:lang="eng">PF</TRANSL>
                 <TRANSL xml:lang="zho">受焦</TRANSL>
             </M>
         </W>
@@ -285,13 +285,13 @@
             <FORM kindOf="standard">aroma'</FORM>
             <PHON kindOf="standard">aromaʔ</PHON>
             <TRANSL xml:lang="zho">一些</TRANSL>
-            <TRANSL xml:lang="en">some</TRANSL>
-            <M id="SaiNr-anhi_S_2_W1_M0_0">
+            <TRANSL xml:lang="eng">some</TRANSL>
+            <M id="SaiNr-anhi_S_2_W1M1">
                 <FORM kindOf="original">aroma'</FORM>
                 <PHON kindOf="original">aromaʔ</PHON>
                 <FORM kindOf="standard">aroma'</FORM>
                 <PHON kindOf="standard">aromaʔ</PHON>
-                <TRANSL xml:lang="en">some</TRANSL>
+                <TRANSL xml:lang="eng">some</TRANSL>
                 <TRANSL xml:lang="zho">一些</TRANSL>
             </M>
         </W>
@@ -301,13 +301,13 @@
             <FORM kindOf="standard">ma</FORM>
             <PHON kindOf="standard">ma</PHON>
             <TRANSL xml:lang="zho">DM</TRANSL>
-            <TRANSL xml:lang="en">DM</TRANSL>
-            <M id="SaiNr-anhi_S_2_W2_M0_0">
+            <TRANSL xml:lang="eng">DM</TRANSL>
+            <M id="SaiNr-anhi_S_2_W2M1">
                 <FORM kindOf="original">ma</FORM>
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
-                <TRANSL xml:lang="en">DM</TRANSL>
+                <TRANSL xml:lang="eng">DM</TRANSL>
                 <TRANSL xml:lang="zho">DM</TRANSL>
             </M>
         </W>
@@ -317,21 +317,21 @@
             <FORM kindOf="standard">hangra-en</FORM>
             <PHON kindOf="standard">haŋra-ən</PHON>
             <TRANSL xml:lang="zho">炒-受焦</TRANSL>
-            <TRANSL xml:lang="en">fry-PF</TRANSL>
-            <M id="SaiNr-anhi_S_2_W3_M0_0">
+            <TRANSL xml:lang="eng">fry-PF</TRANSL>
+            <M id="SaiNr-anhi_S_2_W3M1">
                 <FORM kindOf="original">hangra</FORM>
                 <PHON kindOf="original">haŋra</PHON>
                 <FORM kindOf="standard">hangra</FORM>
                 <PHON kindOf="standard">haŋra</PHON>
-                <TRANSL xml:lang="en">fry</TRANSL>
+                <TRANSL xml:lang="eng">fry</TRANSL>
                 <TRANSL xml:lang="zho">炒</TRANSL>
             </M>
-            <M id="SaiNr-anhi_S_2_W3_M1_0">
+            <M id="SaiNr-anhi_S_2_W3M2">
                 <FORM kindOf="original">en</FORM>
                 <PHON kindOf="original">ən</PHON>
                 <FORM kindOf="standard">en</FORM>
                 <PHON kindOf="standard">ən</PHON>
-                <TRANSL xml:lang="en">PF</TRANSL>
+                <TRANSL xml:lang="eng">PF</TRANSL>
                 <TRANSL xml:lang="zho">受焦</TRANSL>
             </M>
         </W>
@@ -341,13 +341,13 @@
             <FORM kindOf="standard">ma'</FORM>
             <PHON kindOf="standard">maʔ</PHON>
             <TRANSL xml:lang="zho">DM</TRANSL>
-            <TRANSL xml:lang="en">DM</TRANSL>
-            <M id="SaiNr-anhi_S_2_W4_M0_0">
+            <TRANSL xml:lang="eng">DM</TRANSL>
+            <M id="SaiNr-anhi_S_2_W4M1">
                 <FORM kindOf="original">ma'</FORM>
                 <PHON kindOf="original">maʔ</PHON>
                 <FORM kindOf="standard">ma'</FORM>
                 <PHON kindOf="standard">maʔ</PHON>
-                <TRANSL xml:lang="en">DM</TRANSL>
+                <TRANSL xml:lang="eng">DM</TRANSL>
                 <TRANSL xml:lang="zho">DM</TRANSL>
             </M>
         </W>
@@ -357,13 +357,13 @@
             <FORM kindOf="standard">kayzaeh</FORM>
             <PHON kindOf="standard">kajz~ðæh</PHON>
             <TRANSL xml:lang="zho">好</TRANSL>
-            <TRANSL xml:lang="en">good</TRANSL>
-            <M id="SaiNr-anhi_S_2_W5_M0_0">
+            <TRANSL xml:lang="eng">good</TRANSL>
+            <M id="SaiNr-anhi_S_2_W5M1">
                 <FORM kindOf="original">kayzaeh</FORM>
                 <PHON kindOf="original">kajz~ðæh</PHON>
                 <FORM kindOf="standard">kayzaeh</FORM>
                 <PHON kindOf="standard">kajz~ðæh</PHON>
-                <TRANSL xml:lang="en">good</TRANSL>
+                <TRANSL xml:lang="eng">good</TRANSL>
                 <TRANSL xml:lang="zho">好</TRANSL>
             </M>
         </W>
@@ -374,20 +374,20 @@
         <FORM kindOf="standard">So pal pal'apehen sipahila So koSa kapahila 'aewhay ka kawaS intimoen sowiti' mwai' kayzaeh 'okik book.</FORM>
         <PHON kindOf="standard">ʃo pal palʔapəhən s~θipahila ʃo koʃa kapahila ʔæwhaj ka kawaʃ intimœn s~θowitiʔ mwaiʔ kajz~ðæh ʔokik βook.</PHON>
         <TRANSL xml:lang="zho" notes="如果天氣好就曬乾.天氣不好就用一點鹽醃,這樣(竹筍)就不會腐爛壞掉.">如果天氣好就曬乾.天氣不好就用一點鹽醃,這樣 就不會腐爛壞掉.</TRANSL>
-        <TRANSL xml:lang="en" notes="&quot;If the bamboo is dried when the weather is not good (not sunny), (it is advisable) to salten them a bit so they will not rot.&quot;">&quot;If the bamboo is dried when the weather is not good , to salten them a bit so they will not rot.&quot;</TRANSL>
+        <TRANSL xml:lang="eng" notes="&quot;If the bamboo is dried when the weather is not good (not sunny), (it is advisable) to salten them a bit so they will not rot.&quot;">"If the bamboo is dried when the weather is not good , to salten them a bit so they will not rot."</TRANSL>
         <W id="SaiNr-anhi_S_3_W0">
             <FORM kindOf="original">So</FORM>
             <PHON kindOf="original">ʃo</PHON>
             <FORM kindOf="standard">So</FORM>
             <PHON kindOf="standard">ʃo</PHON>
             <TRANSL xml:lang="zho">條件詞</TRANSL>
-            <TRANSL xml:lang="en">COND</TRANSL>
-            <M id="SaiNr-anhi_S_3_W0_M0_0">
+            <TRANSL xml:lang="eng">COND</TRANSL>
+            <M id="SaiNr-anhi_S_3_W0M1">
                 <FORM kindOf="original">So</FORM>
                 <PHON kindOf="original">ʃo</PHON>
                 <FORM kindOf="standard">So</FORM>
                 <PHON kindOf="standard">ʃo</PHON>
-                <TRANSL xml:lang="en">COND</TRANSL>
+                <TRANSL xml:lang="eng">COND</TRANSL>
                 <TRANSL xml:lang="zho">條件詞</TRANSL>
             </M>
         </W>
@@ -397,13 +397,13 @@
             <FORM kindOf="standard">pal</FORM>
             <PHON kindOf="standard">pal</PHON>
             <TRANSL xml:lang="zho">FS</TRANSL>
-            <TRANSL xml:lang="en">FS</TRANSL>
-            <M id="SaiNr-anhi_S_3_W1_M0_0">
+            <TRANSL xml:lang="eng">FS</TRANSL>
+            <M id="SaiNr-anhi_S_3_W1M1">
                 <FORM kindOf="original">pal</FORM>
                 <PHON kindOf="original">pal</PHON>
                 <FORM kindOf="standard">pal</FORM>
                 <PHON kindOf="standard">pal</PHON>
-                <TRANSL xml:lang="en">FS</TRANSL>
+                <TRANSL xml:lang="eng">FS</TRANSL>
                 <TRANSL xml:lang="zho">FS</TRANSL>
             </M>
         </W>
@@ -413,21 +413,21 @@
             <FORM kindOf="standard">pal'apeh-en</FORM>
             <PHON kindOf="standard">palʔapəh-ən</PHON>
             <TRANSL xml:lang="zho">乾-受焦</TRANSL>
-            <TRANSL xml:lang="en">dry-PF</TRANSL>
-            <M id="SaiNr-anhi_S_3_W2_M0_0">
+            <TRANSL xml:lang="eng">dry-PF</TRANSL>
+            <M id="SaiNr-anhi_S_3_W2M1">
                 <FORM kindOf="original">pal'apeh</FORM>
                 <PHON kindOf="original">palʔapəh</PHON>
                 <FORM kindOf="standard">pal'apeh</FORM>
                 <PHON kindOf="standard">palʔapəh</PHON>
-                <TRANSL xml:lang="en">dry</TRANSL>
+                <TRANSL xml:lang="eng">dry</TRANSL>
                 <TRANSL xml:lang="zho">乾</TRANSL>
             </M>
-            <M id="SaiNr-anhi_S_3_W2_M1_0">
+            <M id="SaiNr-anhi_S_3_W2M2">
                 <FORM kindOf="original">en</FORM>
                 <PHON kindOf="original">ən</PHON>
                 <FORM kindOf="standard">en</FORM>
                 <PHON kindOf="standard">ən</PHON>
-                <TRANSL xml:lang="en">PF</TRANSL>
+                <TRANSL xml:lang="eng">PF</TRANSL>
                 <TRANSL xml:lang="zho">受焦</TRANSL>
             </M>
         </W>
@@ -437,29 +437,29 @@
             <FORM kindOf="standard">si-pa-hila</FORM>
             <PHON kindOf="standard">s~θi-pa-hila</PHON>
             <TRANSL xml:lang="zho">指焦-使役-日曬</TRANSL>
-            <TRANSL xml:lang="en">RF-CAU-sun</TRANSL>
-            <M id="SaiNr-anhi_S_3_W3_M0_0">
+            <TRANSL xml:lang="eng">RF-CAU-sun</TRANSL>
+            <M id="SaiNr-anhi_S_3_W3M1">
                 <FORM kindOf="original">si</FORM>
                 <PHON kindOf="original">s~θi</PHON>
                 <FORM kindOf="standard">si</FORM>
                 <PHON kindOf="standard">s~θi</PHON>
-                <TRANSL xml:lang="en">RF</TRANSL>
+                <TRANSL xml:lang="eng">RF</TRANSL>
                 <TRANSL xml:lang="zho">指焦</TRANSL>
             </M>
-            <M id="SaiNr-anhi_S_3_W3_M1_0">
+            <M id="SaiNr-anhi_S_3_W3M2">
                 <FORM kindOf="original">pa</FORM>
                 <PHON kindOf="original">pa</PHON>
                 <FORM kindOf="standard">pa</FORM>
                 <PHON kindOf="standard">pa</PHON>
-                <TRANSL xml:lang="en">CAU</TRANSL>
+                <TRANSL xml:lang="eng">CAU</TRANSL>
                 <TRANSL xml:lang="zho">使役</TRANSL>
             </M>
-            <M id="SaiNr-anhi_S_3_W3_M2_0">
+            <M id="SaiNr-anhi_S_3_W3M3">
                 <FORM kindOf="original">hila</FORM>
                 <PHON kindOf="original">hila</PHON>
                 <FORM kindOf="standard">hila</FORM>
                 <PHON kindOf="standard">hila</PHON>
-                <TRANSL xml:lang="en">sun</TRANSL>
+                <TRANSL xml:lang="eng">sun</TRANSL>
                 <TRANSL xml:lang="zho">日曬</TRANSL>
             </M>
         </W>
@@ -469,13 +469,13 @@
             <FORM kindOf="standard">So</FORM>
             <PHON kindOf="standard">ʃo</PHON>
             <TRANSL xml:lang="zho">條件詞</TRANSL>
-            <TRANSL xml:lang="en">COND</TRANSL>
-            <M id="SaiNr-anhi_S_3_W4_M0_0">
+            <TRANSL xml:lang="eng">COND</TRANSL>
+            <M id="SaiNr-anhi_S_3_W4M1">
                 <FORM kindOf="original">So</FORM>
                 <PHON kindOf="original">ʃo</PHON>
                 <FORM kindOf="standard">So</FORM>
                 <PHON kindOf="standard">ʃo</PHON>
-                <TRANSL xml:lang="en">COND</TRANSL>
+                <TRANSL xml:lang="eng">COND</TRANSL>
                 <TRANSL xml:lang="zho">條件詞</TRANSL>
             </M>
         </W>
@@ -485,13 +485,13 @@
             <FORM kindOf="standard">koSa</FORM>
             <PHON kindOf="standard">koʃa</PHON>
             <TRANSL xml:lang="zho">&lt;主焦&gt;說</TRANSL>
-            <TRANSL xml:lang="en">say</TRANSL>
-            <M id="SaiNr-anhi_S_3_W5_M0_0">
+            <TRANSL xml:lang="eng">say</TRANSL>
+            <M id="SaiNr-anhi_S_3_W5M1">
                 <FORM kindOf="original">koSa</FORM>
                 <PHON kindOf="original">koʃa</PHON>
                 <FORM kindOf="standard">koSa</FORM>
                 <PHON kindOf="standard">koʃa</PHON>
-                <TRANSL xml:lang="en">say</TRANSL>
+                <TRANSL xml:lang="eng">say</TRANSL>
                 <TRANSL xml:lang="zho">&lt;主焦&gt;說</TRANSL>
             </M>
         </W>
@@ -501,29 +501,29 @@
             <FORM kindOf="standard">ka-pa-hila</FORM>
             <PHON kindOf="standard">ka-pa-hila</PHON>
             <TRANSL xml:lang="zho">KA-使役-日曬</TRANSL>
-            <TRANSL xml:lang="en">KA-CAU-sun</TRANSL>
-            <M id="SaiNr-anhi_S_3_W6_M0_0">
+            <TRANSL xml:lang="eng">KA-CAU-sun</TRANSL>
+            <M id="SaiNr-anhi_S_3_W6M1">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
-                <TRANSL xml:lang="en">KA</TRANSL>
+                <TRANSL xml:lang="eng">KA</TRANSL>
                 <TRANSL xml:lang="zho">KA</TRANSL>
             </M>
-            <M id="SaiNr-anhi_S_3_W6_M1_0">
+            <M id="SaiNr-anhi_S_3_W6M2">
                 <FORM kindOf="original">pa</FORM>
                 <PHON kindOf="original">pa</PHON>
                 <FORM kindOf="standard">pa</FORM>
                 <PHON kindOf="standard">pa</PHON>
-                <TRANSL xml:lang="en">CAU</TRANSL>
+                <TRANSL xml:lang="eng">CAU</TRANSL>
                 <TRANSL xml:lang="zho">使役</TRANSL>
             </M>
-            <M id="SaiNr-anhi_S_3_W6_M2_0">
+            <M id="SaiNr-anhi_S_3_W6M3">
                 <FORM kindOf="original">hila</FORM>
                 <PHON kindOf="original">hila</PHON>
                 <FORM kindOf="standard">hila</FORM>
                 <PHON kindOf="standard">hila</PHON>
-                <TRANSL xml:lang="en">sun</TRANSL>
+                <TRANSL xml:lang="eng">sun</TRANSL>
                 <TRANSL xml:lang="zho">日曬</TRANSL>
             </M>
         </W>
@@ -533,13 +533,13 @@
             <FORM kindOf="standard">'aewhay</FORM>
             <PHON kindOf="standard">ʔæwhaj</PHON>
             <TRANSL xml:lang="zho">壞</TRANSL>
-            <TRANSL xml:lang="en">bad</TRANSL>
-            <M id="SaiNr-anhi_S_3_W7_M0_0">
+            <TRANSL xml:lang="eng">bad</TRANSL>
+            <M id="SaiNr-anhi_S_3_W7M1">
                 <FORM kindOf="original">'aewhay</FORM>
                 <PHON kindOf="original">ʔæwhaj</PHON>
                 <FORM kindOf="standard">'aewhay</FORM>
                 <PHON kindOf="standard">ʔæwhaj</PHON>
-                <TRANSL xml:lang="en">bad</TRANSL>
+                <TRANSL xml:lang="eng">bad</TRANSL>
                 <TRANSL xml:lang="zho">壞</TRANSL>
             </M>
         </W>
@@ -549,13 +549,13 @@
             <FORM kindOf="standard">ka</FORM>
             <PHON kindOf="standard">ka</PHON>
             <TRANSL xml:lang="zho">主格</TRANSL>
-            <TRANSL xml:lang="en">NOM</TRANSL>
-            <M id="SaiNr-anhi_S_3_W8_M0_0">
+            <TRANSL xml:lang="eng">NOM</TRANSL>
+            <M id="SaiNr-anhi_S_3_W8M1">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
-                <TRANSL xml:lang="en">NOM</TRANSL>
+                <TRANSL xml:lang="eng">NOM</TRANSL>
                 <TRANSL xml:lang="zho">主格</TRANSL>
             </M>
         </W>
@@ -565,13 +565,13 @@
             <FORM kindOf="standard">kawaS</FORM>
             <PHON kindOf="standard">kawaʃ</PHON>
             <TRANSL xml:lang="zho">天氣</TRANSL>
-            <TRANSL xml:lang="en">weather</TRANSL>
-            <M id="SaiNr-anhi_S_3_W9_M0_0">
+            <TRANSL xml:lang="eng">weather</TRANSL>
+            <M id="SaiNr-anhi_S_3_W9M1">
                 <FORM kindOf="original">kawaS</FORM>
                 <PHON kindOf="original">kawaʃ</PHON>
                 <FORM kindOf="standard">kawaS</FORM>
                 <PHON kindOf="standard">kawaʃ</PHON>
-                <TRANSL xml:lang="en">weather</TRANSL>
+                <TRANSL xml:lang="eng">weather</TRANSL>
                 <TRANSL xml:lang="zho">天氣</TRANSL>
             </M>
         </W>
@@ -581,29 +581,29 @@
             <FORM kindOf="standard">in-timo-en</FORM>
             <PHON kindOf="standard">in-timo-ən</PHON>
             <TRANSL xml:lang="zho">完成-加鹽醃</TRANSL>
-            <TRANSL xml:lang="en">PFV-salt-PF</TRANSL>
-            <M id="SaiNr-anhi_S_3_W10_M0_0">
+            <TRANSL xml:lang="eng">PFV-salt-PF</TRANSL>
+            <M id="SaiNr-anhi_S_3_W10M1">
                 <FORM kindOf="original">in</FORM>
                 <PHON kindOf="original">in</PHON>
                 <FORM kindOf="standard">in</FORM>
                 <PHON kindOf="standard">in</PHON>
-                <TRANSL xml:lang="en">PFV</TRANSL>
+                <TRANSL xml:lang="eng">PFV</TRANSL>
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
-            <M id="SaiNr-anhi_S_3_W10_M1_0">
+            <M id="SaiNr-anhi_S_3_W10M2">
                 <FORM kindOf="original">timo</FORM>
                 <PHON kindOf="original">timo</PHON>
                 <FORM kindOf="standard">timo</FORM>
                 <PHON kindOf="standard">timo</PHON>
-                <TRANSL xml:lang="en">salt</TRANSL>
+                <TRANSL xml:lang="eng">salt</TRANSL>
                 <TRANSL xml:lang="zho">加鹽醃</TRANSL>
             </M>
-            <M id="SaiNr-anhi_S_3_W10_M2_0">
+            <M id="SaiNr-anhi_S_3_W10M3">
                 <FORM kindOf="original">en</FORM>
                 <PHON kindOf="original">ən</PHON>
                 <FORM kindOf="standard">en</FORM>
                 <PHON kindOf="standard">ən</PHON>
-                <TRANSL xml:lang="en">PF</TRANSL>
+                <TRANSL xml:lang="eng">PF</TRANSL>
                 <TRANSL xml:lang="zho"/>
             </M>
         </W>
@@ -613,13 +613,13 @@
             <FORM kindOf="standard">sowiti'</FORM>
             <PHON kindOf="standard">s~θowitiʔ</PHON>
             <TRANSL xml:lang="zho">一點</TRANSL>
-            <TRANSL xml:lang="en">a.bit</TRANSL>
-            <M id="SaiNr-anhi_S_3_W11_M0_0">
+            <TRANSL xml:lang="eng">a.bit</TRANSL>
+            <M id="SaiNr-anhi_S_3_W11M1">
                 <FORM kindOf="original">sowiti'</FORM>
                 <PHON kindOf="original">s~θowitiʔ</PHON>
                 <FORM kindOf="standard">sowiti'</FORM>
                 <PHON kindOf="standard">s~θowitiʔ</PHON>
-                <TRANSL xml:lang="en">a.bit</TRANSL>
+                <TRANSL xml:lang="eng">a.bit</TRANSL>
                 <TRANSL xml:lang="zho">一點</TRANSL>
             </M>
         </W>
@@ -629,21 +629,21 @@
             <FORM kindOf="standard">m-wai'</FORM>
             <PHON kindOf="standard">m-waiʔ</PHON>
             <TRANSL xml:lang="zho">主焦-來</TRANSL>
-            <TRANSL xml:lang="en">AF-come</TRANSL>
-            <M id="SaiNr-anhi_S_3_W12_M0_0">
+            <TRANSL xml:lang="eng">AF-come</TRANSL>
+            <M id="SaiNr-anhi_S_3_W12M1">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="en">AF</TRANSL>
+                <TRANSL xml:lang="eng">AF</TRANSL>
                 <TRANSL xml:lang="zho">主焦</TRANSL>
             </M>
-            <M id="SaiNr-anhi_S_3_W12_M1_0">
+            <M id="SaiNr-anhi_S_3_W12M2">
                 <FORM kindOf="original">wai'</FORM>
                 <PHON kindOf="original">waiʔ</PHON>
                 <FORM kindOf="standard">wai'</FORM>
                 <PHON kindOf="standard">waiʔ</PHON>
-                <TRANSL xml:lang="en">come</TRANSL>
+                <TRANSL xml:lang="eng">come</TRANSL>
                 <TRANSL xml:lang="zho">來</TRANSL>
             </M>
         </W>
@@ -653,13 +653,13 @@
             <FORM kindOf="standard">kayzaeh</FORM>
             <PHON kindOf="standard">kajz~ðæh</PHON>
             <TRANSL xml:lang="zho">好</TRANSL>
-            <TRANSL xml:lang="en">good</TRANSL>
-            <M id="SaiNr-anhi_S_3_W13_M0_0">
+            <TRANSL xml:lang="eng">good</TRANSL>
+            <M id="SaiNr-anhi_S_3_W13M1">
                 <FORM kindOf="original">kayzaeh</FORM>
                 <PHON kindOf="original">kajz~ðæh</PHON>
                 <FORM kindOf="standard">kayzaeh</FORM>
                 <PHON kindOf="standard">kajz~ðæh</PHON>
-                <TRANSL xml:lang="en">good</TRANSL>
+                <TRANSL xml:lang="eng">good</TRANSL>
                 <TRANSL xml:lang="zho">好</TRANSL>
             </M>
         </W>
@@ -669,13 +669,13 @@
             <FORM kindOf="standard">'okik</FORM>
             <PHON kindOf="standard">ʔokik</PHON>
             <TRANSL xml:lang="zho">否定</TRANSL>
-            <TRANSL xml:lang="en">NEG</TRANSL>
-            <M id="SaiNr-anhi_S_3_W14_M0_0">
+            <TRANSL xml:lang="eng">NEG</TRANSL>
+            <M id="SaiNr-anhi_S_3_W14M1">
                 <FORM kindOf="original">'okik</FORM>
                 <PHON kindOf="original">ʔokik</PHON>
                 <FORM kindOf="standard">'okik</FORM>
                 <PHON kindOf="standard">ʔokik</PHON>
-                <TRANSL xml:lang="en">NEG</TRANSL>
+                <TRANSL xml:lang="eng">NEG</TRANSL>
                 <TRANSL xml:lang="zho">否定</TRANSL>
             </M>
         </W>
@@ -685,13 +685,13 @@
             <FORM kindOf="standard">book</FORM>
             <PHON kindOf="standard">βook</PHON>
             <TRANSL xml:lang="zho">腐爛</TRANSL>
-            <TRANSL xml:lang="en">rot</TRANSL>
-            <M id="SaiNr-anhi_S_3_W15_M0_0">
+            <TRANSL xml:lang="eng">rot</TRANSL>
+            <M id="SaiNr-anhi_S_3_W15M1">
                 <FORM kindOf="original">book</FORM>
                 <PHON kindOf="original">βook</PHON>
                 <FORM kindOf="standard">book</FORM>
                 <PHON kindOf="standard">βook</PHON>
-                <TRANSL xml:lang="en">rot</TRANSL>
+                <TRANSL xml:lang="eng">rot</TRANSL>
                 <TRANSL xml:lang="zho">腐爛</TRANSL>
             </M>
         </W>
@@ -702,20 +702,20 @@
         <FORM kindOf="standard">haysani' 'alikaeh sowiti' ma' isaa So taleken ila kayzaeh ila mari'in taboeon ray hobos.</FORM>
         <PHON kindOf="standard">hajs~θaniʔ ʔalikæh s~θowitiʔ maʔ is~θaa ʃo taləkən ila kajz~ðæh ila mariʔin taβœon raj hoβos~θ.</PHON>
         <TRANSL xml:lang="zho">煮過的竹筍就裝在袋子裡.</TRANSL>
-        <TRANSL xml:lang="en">&quot;The bamboo shoots are heated and put in a container.&quot;</TRANSL>
+        <TRANSL xml:lang="eng">"The bamboo shoots are heated and put in a container."</TRANSL>
         <W id="SaiNr-anhi_S_4_W0">
             <FORM kindOf="original">haysani'</FORM>
             <PHON kindOf="original">hajs~θaniʔ</PHON>
             <FORM kindOf="standard">haysani'</FORM>
             <PHON kindOf="standard">hajs~θaniʔ</PHON>
             <TRANSL xml:lang="zho">現在</TRANSL>
-            <TRANSL xml:lang="en">now</TRANSL>
-            <M id="SaiNr-anhi_S_4_W0_M0_0">
+            <TRANSL xml:lang="eng">now</TRANSL>
+            <M id="SaiNr-anhi_S_4_W0M1">
                 <FORM kindOf="original">haysani'</FORM>
                 <PHON kindOf="original">hajs~θaniʔ</PHON>
                 <FORM kindOf="standard">haysani'</FORM>
                 <PHON kindOf="standard">hajs~θaniʔ</PHON>
-                <TRANSL xml:lang="en">now</TRANSL>
+                <TRANSL xml:lang="eng">now</TRANSL>
                 <TRANSL xml:lang="zho">現在</TRANSL>
             </M>
         </W>
@@ -725,13 +725,13 @@
             <FORM kindOf="standard">'alikaeh</FORM>
             <PHON kindOf="standard">ʔalikæh</PHON>
             <TRANSL xml:lang="zho">快</TRANSL>
-            <TRANSL xml:lang="en">quick</TRANSL>
-            <M id="SaiNr-anhi_S_4_W1_M0_0">
+            <TRANSL xml:lang="eng">quick</TRANSL>
+            <M id="SaiNr-anhi_S_4_W1M1">
                 <FORM kindOf="original">'alikaeh</FORM>
                 <PHON kindOf="original">ʔalikæh</PHON>
                 <FORM kindOf="standard">'alikaeh</FORM>
                 <PHON kindOf="standard">ʔalikæh</PHON>
-                <TRANSL xml:lang="en">quick</TRANSL>
+                <TRANSL xml:lang="eng">quick</TRANSL>
                 <TRANSL xml:lang="zho">快</TRANSL>
             </M>
         </W>
@@ -741,13 +741,13 @@
             <FORM kindOf="standard">sowiti'</FORM>
             <PHON kindOf="standard">s~θowitiʔ</PHON>
             <TRANSL xml:lang="zho">一點</TRANSL>
-            <TRANSL xml:lang="en">a.bit</TRANSL>
-            <M id="SaiNr-anhi_S_4_W2_M0_0">
+            <TRANSL xml:lang="eng">a.bit</TRANSL>
+            <M id="SaiNr-anhi_S_4_W2M1">
                 <FORM kindOf="original">sowiti'</FORM>
                 <PHON kindOf="original">s~θowitiʔ</PHON>
                 <FORM kindOf="standard">sowiti'</FORM>
                 <PHON kindOf="standard">s~θowitiʔ</PHON>
-                <TRANSL xml:lang="en">a.bit</TRANSL>
+                <TRANSL xml:lang="eng">a.bit</TRANSL>
                 <TRANSL xml:lang="zho">一點</TRANSL>
             </M>
         </W>
@@ -757,13 +757,13 @@
             <FORM kindOf="standard">ma'</FORM>
             <PHON kindOf="standard">maʔ</PHON>
             <TRANSL xml:lang="zho">DM</TRANSL>
-            <TRANSL xml:lang="en">DM</TRANSL>
-            <M id="SaiNr-anhi_S_4_W3_M0_0">
+            <TRANSL xml:lang="eng">DM</TRANSL>
+            <M id="SaiNr-anhi_S_4_W3M1">
                 <FORM kindOf="original">ma'</FORM>
                 <PHON kindOf="original">maʔ</PHON>
                 <FORM kindOf="standard">ma'</FORM>
                 <PHON kindOf="standard">maʔ</PHON>
-                <TRANSL xml:lang="en">DM</TRANSL>
+                <TRANSL xml:lang="eng">DM</TRANSL>
                 <TRANSL xml:lang="zho">DM</TRANSL>
             </M>
         </W>
@@ -773,13 +773,13 @@
             <FORM kindOf="standard">isaa=</FORM>
             <PHON kindOf="standard">is~θaa=</PHON>
             <TRANSL xml:lang="zho">那</TRANSL>
-            <TRANSL xml:lang="en">that</TRANSL>
-            <M id="SaiNr-anhi_S_4_W4_M0_0">
+            <TRANSL xml:lang="eng">that</TRANSL>
+            <M id="SaiNr-anhi_S_4_W4M1">
                 <FORM kindOf="original">isaa</FORM>
                 <PHON kindOf="original">is~θaa</PHON>
                 <FORM kindOf="standard">isaa</FORM>
                 <PHON kindOf="standard">is~θaa</PHON>
-                <TRANSL xml:lang="en">that</TRANSL>
+                <TRANSL xml:lang="eng">that</TRANSL>
                 <TRANSL xml:lang="zho">那</TRANSL>
             </M>
         </W>
@@ -789,13 +789,13 @@
             <FORM kindOf="standard">So</FORM>
             <PHON kindOf="standard">ʃo</PHON>
             <TRANSL xml:lang="zho">條件詞</TRANSL>
-            <TRANSL xml:lang="en">COND</TRANSL>
-            <M id="SaiNr-anhi_S_4_W5_M0_0">
+            <TRANSL xml:lang="eng">COND</TRANSL>
+            <M id="SaiNr-anhi_S_4_W5M1">
                 <FORM kindOf="original">So</FORM>
                 <PHON kindOf="original">ʃo</PHON>
                 <FORM kindOf="standard">So</FORM>
                 <PHON kindOf="standard">ʃo</PHON>
-                <TRANSL xml:lang="en">COND</TRANSL>
+                <TRANSL xml:lang="eng">COND</TRANSL>
                 <TRANSL xml:lang="zho">條件詞</TRANSL>
             </M>
         </W>
@@ -805,21 +805,21 @@
             <FORM kindOf="standard">talek-en</FORM>
             <PHON kindOf="standard">talək-ən</PHON>
             <TRANSL xml:lang="zho">&lt;完成&gt;加熱-受焦</TRANSL>
-            <TRANSL xml:lang="en">heat-PF</TRANSL>
-            <M id="SaiNr-anhi_S_4_W6_M0_0">
+            <TRANSL xml:lang="eng">heat-PF</TRANSL>
+            <M id="SaiNr-anhi_S_4_W6M1">
                 <FORM kindOf="original">talek</FORM>
                 <PHON kindOf="original">talək</PHON>
                 <FORM kindOf="standard">talek</FORM>
                 <PHON kindOf="standard">talək</PHON>
-                <TRANSL xml:lang="en">heat</TRANSL>
+                <TRANSL xml:lang="eng">heat</TRANSL>
                 <TRANSL xml:lang="zho">&lt;完成&gt;加熱</TRANSL>
             </M>
-            <M id="SaiNr-anhi_S_4_W6_M1_0">
+            <M id="SaiNr-anhi_S_4_W6M2">
                 <FORM kindOf="original">en</FORM>
                 <PHON kindOf="original">ən</PHON>
                 <FORM kindOf="standard">en</FORM>
                 <PHON kindOf="standard">ən</PHON>
-                <TRANSL xml:lang="en">PF</TRANSL>
+                <TRANSL xml:lang="eng">PF</TRANSL>
                 <TRANSL xml:lang="zho">受焦</TRANSL>
             </M>
         </W>
@@ -829,13 +829,13 @@
             <FORM kindOf="standard">ila</FORM>
             <PHON kindOf="standard">ila</PHON>
             <TRANSL xml:lang="zho">完成</TRANSL>
-            <TRANSL xml:lang="en">PFV</TRANSL>
-            <M id="SaiNr-anhi_S_4_W7_M0_0">
+            <TRANSL xml:lang="eng">PFV</TRANSL>
+            <M id="SaiNr-anhi_S_4_W7M1">
                 <FORM kindOf="original">ila</FORM>
                 <PHON kindOf="original">ila</PHON>
                 <FORM kindOf="standard">ila</FORM>
                 <PHON kindOf="standard">ila</PHON>
-                <TRANSL xml:lang="en">PFV</TRANSL>
+                <TRANSL xml:lang="eng">PFV</TRANSL>
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
@@ -845,13 +845,13 @@
             <FORM kindOf="standard">kayzaeh</FORM>
             <PHON kindOf="standard">kajz~ðæh</PHON>
             <TRANSL xml:lang="zho">好</TRANSL>
-            <TRANSL xml:lang="en">good</TRANSL>
-            <M id="SaiNr-anhi_S_4_W8_M0_0">
+            <TRANSL xml:lang="eng">good</TRANSL>
+            <M id="SaiNr-anhi_S_4_W8M1">
                 <FORM kindOf="original">kayzaeh</FORM>
                 <PHON kindOf="original">kajz~ðæh</PHON>
                 <FORM kindOf="standard">kayzaeh</FORM>
                 <PHON kindOf="standard">kajz~ðæh</PHON>
-                <TRANSL xml:lang="en">good</TRANSL>
+                <TRANSL xml:lang="eng">good</TRANSL>
                 <TRANSL xml:lang="zho">好</TRANSL>
             </M>
         </W>
@@ -861,13 +861,13 @@
             <FORM kindOf="standard">ila</FORM>
             <PHON kindOf="standard">ila</PHON>
             <TRANSL xml:lang="zho">完成</TRANSL>
-            <TRANSL xml:lang="en">PFV</TRANSL>
-            <M id="SaiNr-anhi_S_4_W9_M0_0">
+            <TRANSL xml:lang="eng">PFV</TRANSL>
+            <M id="SaiNr-anhi_S_4_W9M1">
                 <FORM kindOf="original">ila</FORM>
                 <PHON kindOf="original">ila</PHON>
                 <FORM kindOf="standard">ila</FORM>
                 <PHON kindOf="standard">ila</PHON>
-                <TRANSL xml:lang="en">PFV</TRANSL>
+                <TRANSL xml:lang="eng">PFV</TRANSL>
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
@@ -877,21 +877,21 @@
             <FORM kindOf="standard">mari'-in</FORM>
             <PHON kindOf="standard">mariʔ-in</PHON>
             <TRANSL xml:lang="zho">拿-受焦</TRANSL>
-            <TRANSL xml:lang="en">take-PF</TRANSL>
-            <M id="SaiNr-anhi_S_4_W10_M0_0">
+            <TRANSL xml:lang="eng">take-PF</TRANSL>
+            <M id="SaiNr-anhi_S_4_W10M1">
                 <FORM kindOf="original">mari'</FORM>
                 <PHON kindOf="original">mariʔ</PHON>
                 <FORM kindOf="standard">mari'</FORM>
                 <PHON kindOf="standard">mariʔ</PHON>
-                <TRANSL xml:lang="en">take</TRANSL>
+                <TRANSL xml:lang="eng">take</TRANSL>
                 <TRANSL xml:lang="zho">拿</TRANSL>
             </M>
-            <M id="SaiNr-anhi_S_4_W10_M1_0">
+            <M id="SaiNr-anhi_S_4_W10M2">
                 <FORM kindOf="original">in</FORM>
                 <PHON kindOf="original">in</PHON>
                 <FORM kindOf="standard">in</FORM>
                 <PHON kindOf="standard">in</PHON>
-                <TRANSL xml:lang="en">PF</TRANSL>
+                <TRANSL xml:lang="eng">PF</TRANSL>
                 <TRANSL xml:lang="zho">受焦</TRANSL>
             </M>
         </W>
@@ -901,21 +901,21 @@
             <FORM kindOf="standard">taboe-on</FORM>
             <PHON kindOf="standard">taβœ-on</PHON>
             <TRANSL xml:lang="zho">放-受焦</TRANSL>
-            <TRANSL xml:lang="en">put-PF</TRANSL>
-            <M id="SaiNr-anhi_S_4_W11_M0_0">
+            <TRANSL xml:lang="eng">put-PF</TRANSL>
+            <M id="SaiNr-anhi_S_4_W11M1">
                 <FORM kindOf="original">taboe</FORM>
                 <PHON kindOf="original">taβœ</PHON>
                 <FORM kindOf="standard">taboe</FORM>
                 <PHON kindOf="standard">taβœ</PHON>
-                <TRANSL xml:lang="en">put</TRANSL>
+                <TRANSL xml:lang="eng">put</TRANSL>
                 <TRANSL xml:lang="zho">放</TRANSL>
             </M>
-            <M id="SaiNr-anhi_S_4_W11_M1_0">
+            <M id="SaiNr-anhi_S_4_W11M2">
                 <FORM kindOf="original">on</FORM>
                 <PHON kindOf="original">on</PHON>
                 <FORM kindOf="standard">on</FORM>
                 <PHON kindOf="standard">on</PHON>
-                <TRANSL xml:lang="en">PF</TRANSL>
+                <TRANSL xml:lang="eng">PF</TRANSL>
                 <TRANSL xml:lang="zho">受焦</TRANSL>
             </M>
         </W>
@@ -925,13 +925,13 @@
             <FORM kindOf="standard">ray</FORM>
             <PHON kindOf="standard">raj</PHON>
             <TRANSL xml:lang="zho">處格</TRANSL>
-            <TRANSL xml:lang="en">LOC</TRANSL>
-            <M id="SaiNr-anhi_S_4_W12_M0_0">
+            <TRANSL xml:lang="eng">LOC</TRANSL>
+            <M id="SaiNr-anhi_S_4_W12M1">
                 <FORM kindOf="original">ray</FORM>
                 <PHON kindOf="original">raj</PHON>
                 <FORM kindOf="standard">ray</FORM>
                 <PHON kindOf="standard">raj</PHON>
-                <TRANSL xml:lang="en">LOC</TRANSL>
+                <TRANSL xml:lang="eng">LOC</TRANSL>
                 <TRANSL xml:lang="zho">處格</TRANSL>
             </M>
         </W>
@@ -941,13 +941,13 @@
             <FORM kindOf="standard">hobos</FORM>
             <PHON kindOf="standard">hoβos~θ</PHON>
             <TRANSL xml:lang="zho">袋</TRANSL>
-            <TRANSL xml:lang="en">bag</TRANSL>
-            <M id="SaiNr-anhi_S_4_W13_M0_0">
+            <TRANSL xml:lang="eng">bag</TRANSL>
+            <M id="SaiNr-anhi_S_4_W13M1">
                 <FORM kindOf="original">hobos</FORM>
                 <PHON kindOf="original">hoβos~θ</PHON>
                 <FORM kindOf="standard">hobos</FORM>
                 <PHON kindOf="standard">hoβos~θ</PHON>
-                <TRANSL xml:lang="en">bag</TRANSL>
+                <TRANSL xml:lang="eng">bag</TRANSL>
                 <TRANSL xml:lang="zho">袋</TRANSL>
             </M>
         </W>
@@ -958,20 +958,20 @@
         <FORM kindOf="standard">noka bato' kopiyaken kopiyak sipanpanibih kayzaeh 'alikah ka ralom raiw.</FORM>
         <PHON kindOf="standard">noka βatoʔ kopijakən kopijak s~θipanpaniβih kajz~ðæh ʔalikah ka ralom raiw.</PHON>
         <TRANSL xml:lang="zho">用石頭壓,重複翻面,讓水分跑出來.</TRANSL>
-        <TRANSL xml:lang="en">&quot;They are turned around repeatedly using a stone to press water away.&quot;</TRANSL>
+        <TRANSL xml:lang="eng">"They are turned around repeatedly using a stone to press water away."</TRANSL>
         <W id="SaiNr-anhi_S_5_W0">
             <FORM kindOf="original">noka</FORM>
             <PHON kindOf="original">noka</PHON>
             <FORM kindOf="standard">noka</FORM>
             <PHON kindOf="standard">noka</PHON>
             <TRANSL xml:lang="zho">屬格</TRANSL>
-            <TRANSL xml:lang="en">GEN</TRANSL>
-            <M id="SaiNr-anhi_S_5_W0_M0_0">
+            <TRANSL xml:lang="eng">GEN</TRANSL>
+            <M id="SaiNr-anhi_S_5_W0M1">
                 <FORM kindOf="original">noka</FORM>
                 <PHON kindOf="original">noka</PHON>
                 <FORM kindOf="standard">noka</FORM>
                 <PHON kindOf="standard">noka</PHON>
-                <TRANSL xml:lang="en">GEN</TRANSL>
+                <TRANSL xml:lang="eng">GEN</TRANSL>
                 <TRANSL xml:lang="zho">屬格</TRANSL>
             </M>
         </W>
@@ -981,13 +981,13 @@
             <FORM kindOf="standard">bato'</FORM>
             <PHON kindOf="standard">βatoʔ</PHON>
             <TRANSL xml:lang="zho">石頭</TRANSL>
-            <TRANSL xml:lang="en">stone</TRANSL>
-            <M id="SaiNr-anhi_S_5_W1_M0_0">
+            <TRANSL xml:lang="eng">stone</TRANSL>
+            <M id="SaiNr-anhi_S_5_W1M1">
                 <FORM kindOf="original">bato'</FORM>
                 <PHON kindOf="original">βatoʔ</PHON>
                 <FORM kindOf="standard">bato'</FORM>
                 <PHON kindOf="standard">βatoʔ</PHON>
-                <TRANSL xml:lang="en">stone</TRANSL>
+                <TRANSL xml:lang="eng">stone</TRANSL>
                 <TRANSL xml:lang="zho">石頭</TRANSL>
             </M>
         </W>
@@ -997,21 +997,21 @@
             <FORM kindOf="standard">kopiyak-en</FORM>
             <PHON kindOf="standard">kopijak-ən</PHON>
             <TRANSL xml:lang="zho">壓-受焦</TRANSL>
-            <TRANSL xml:lang="en">press-PF</TRANSL>
-            <M id="SaiNr-anhi_S_5_W2_M0_0">
+            <TRANSL xml:lang="eng">press-PF</TRANSL>
+            <M id="SaiNr-anhi_S_5_W2M1">
                 <FORM kindOf="original">kopiyak</FORM>
                 <PHON kindOf="original">kopijak</PHON>
                 <FORM kindOf="standard">kopiyak</FORM>
                 <PHON kindOf="standard">kopijak</PHON>
-                <TRANSL xml:lang="en">press</TRANSL>
+                <TRANSL xml:lang="eng">press</TRANSL>
                 <TRANSL xml:lang="zho">壓</TRANSL>
             </M>
-            <M id="SaiNr-anhi_S_5_W2_M1_0">
+            <M id="SaiNr-anhi_S_5_W2M2">
                 <FORM kindOf="original">en</FORM>
                 <PHON kindOf="original">ən</PHON>
                 <FORM kindOf="standard">en</FORM>
                 <PHON kindOf="standard">ən</PHON>
-                <TRANSL xml:lang="en">PF</TRANSL>
+                <TRANSL xml:lang="eng">PF</TRANSL>
                 <TRANSL xml:lang="zho">受焦</TRANSL>
             </M>
         </W>
@@ -1021,13 +1021,13 @@
             <FORM kindOf="standard">kopiyak</FORM>
             <PHON kindOf="standard">kopijak</PHON>
             <TRANSL xml:lang="zho">&lt;完成&gt;壓</TRANSL>
-            <TRANSL xml:lang="en">press</TRANSL>
-            <M id="SaiNr-anhi_S_5_W3_M0_0">
+            <TRANSL xml:lang="eng">press</TRANSL>
+            <M id="SaiNr-anhi_S_5_W3M1">
                 <FORM kindOf="original">kopiyak</FORM>
                 <PHON kindOf="original">kopijak</PHON>
                 <FORM kindOf="standard">kopiyak</FORM>
                 <PHON kindOf="standard">kopijak</PHON>
-                <TRANSL xml:lang="en">press</TRANSL>
+                <TRANSL xml:lang="eng">press</TRANSL>
                 <TRANSL xml:lang="zho">&lt;完成&gt;壓</TRANSL>
             </M>
         </W>
@@ -1037,29 +1037,29 @@
             <FORM kindOf="standard">si-pan-panibih</FORM>
             <PHON kindOf="standard">s~θi-pan-paniβih</PHON>
             <TRANSL xml:lang="zho">指焦-重複-翻面</TRANSL>
-            <TRANSL xml:lang="en">RF-RED-turn.around</TRANSL>
-            <M id="SaiNr-anhi_S_5_W4_M0_0">
+            <TRANSL xml:lang="eng">RF-RED-turn.around</TRANSL>
+            <M id="SaiNr-anhi_S_5_W4M1">
                 <FORM kindOf="original">si</FORM>
                 <PHON kindOf="original">s~θi</PHON>
                 <FORM kindOf="standard">si</FORM>
                 <PHON kindOf="standard">s~θi</PHON>
-                <TRANSL xml:lang="en">RF</TRANSL>
+                <TRANSL xml:lang="eng">RF</TRANSL>
                 <TRANSL xml:lang="zho">指焦</TRANSL>
             </M>
-            <M id="SaiNr-anhi_S_5_W4_M1_0">
+            <M id="SaiNr-anhi_S_5_W4M2">
                 <FORM kindOf="original">pan</FORM>
                 <PHON kindOf="original">pan</PHON>
                 <FORM kindOf="standard">pan</FORM>
                 <PHON kindOf="standard">pan</PHON>
-                <TRANSL xml:lang="en">RED</TRANSL>
+                <TRANSL xml:lang="eng">RED</TRANSL>
                 <TRANSL xml:lang="zho">重複</TRANSL>
             </M>
-            <M id="SaiNr-anhi_S_5_W4_M2_0">
+            <M id="SaiNr-anhi_S_5_W4M3">
                 <FORM kindOf="original">panibih</FORM>
                 <PHON kindOf="original">paniβih</PHON>
                 <FORM kindOf="standard">panibih</FORM>
                 <PHON kindOf="standard">paniβih</PHON>
-                <TRANSL xml:lang="en">turn.around</TRANSL>
+                <TRANSL xml:lang="eng">turn.around</TRANSL>
                 <TRANSL xml:lang="zho">翻面</TRANSL>
             </M>
         </W>
@@ -1069,13 +1069,13 @@
             <FORM kindOf="standard">kayzaeh</FORM>
             <PHON kindOf="standard">kajz~ðæh</PHON>
             <TRANSL xml:lang="zho">好</TRANSL>
-            <TRANSL xml:lang="en">good</TRANSL>
-            <M id="SaiNr-anhi_S_5_W5_M0_0">
+            <TRANSL xml:lang="eng">good</TRANSL>
+            <M id="SaiNr-anhi_S_5_W5M1">
                 <FORM kindOf="original">kayzaeh</FORM>
                 <PHON kindOf="original">kajz~ðæh</PHON>
                 <FORM kindOf="standard">kayzaeh</FORM>
                 <PHON kindOf="standard">kajz~ðæh</PHON>
-                <TRANSL xml:lang="en">good</TRANSL>
+                <TRANSL xml:lang="eng">good</TRANSL>
                 <TRANSL xml:lang="zho">好</TRANSL>
             </M>
         </W>
@@ -1085,13 +1085,13 @@
             <FORM kindOf="standard">'alikah</FORM>
             <PHON kindOf="standard">ʔalikah</PHON>
             <TRANSL xml:lang="zho">快</TRANSL>
-            <TRANSL xml:lang="en">quick</TRANSL>
-            <M id="SaiNr-anhi_S_5_W6_M0_0">
+            <TRANSL xml:lang="eng">quick</TRANSL>
+            <M id="SaiNr-anhi_S_5_W6M1">
                 <FORM kindOf="original">'alikah</FORM>
                 <PHON kindOf="original">ʔalikah</PHON>
                 <FORM kindOf="standard">'alikah</FORM>
                 <PHON kindOf="standard">ʔalikah</PHON>
-                <TRANSL xml:lang="en">quick</TRANSL>
+                <TRANSL xml:lang="eng">quick</TRANSL>
                 <TRANSL xml:lang="zho">快</TRANSL>
             </M>
         </W>
@@ -1101,13 +1101,13 @@
             <FORM kindOf="standard">ka</FORM>
             <PHON kindOf="standard">ka</PHON>
             <TRANSL xml:lang="zho">主格</TRANSL>
-            <TRANSL xml:lang="en">NOM</TRANSL>
-            <M id="SaiNr-anhi_S_5_W7_M0_0">
+            <TRANSL xml:lang="eng">NOM</TRANSL>
+            <M id="SaiNr-anhi_S_5_W7M1">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
-                <TRANSL xml:lang="en">NOM</TRANSL>
+                <TRANSL xml:lang="eng">NOM</TRANSL>
                 <TRANSL xml:lang="zho">主格</TRANSL>
             </M>
         </W>
@@ -1117,13 +1117,13 @@
             <FORM kindOf="standard">ralom</FORM>
             <PHON kindOf="standard">ralom</PHON>
             <TRANSL xml:lang="zho">水</TRANSL>
-            <TRANSL xml:lang="en">water</TRANSL>
-            <M id="SaiNr-anhi_S_5_W8_M0_0">
+            <TRANSL xml:lang="eng">water</TRANSL>
+            <M id="SaiNr-anhi_S_5_W8M1">
                 <FORM kindOf="original">ralom</FORM>
                 <PHON kindOf="original">ralom</PHON>
                 <FORM kindOf="standard">ralom</FORM>
                 <PHON kindOf="standard">ralom</PHON>
-                <TRANSL xml:lang="en">water</TRANSL>
+                <TRANSL xml:lang="eng">water</TRANSL>
                 <TRANSL xml:lang="zho">水</TRANSL>
             </M>
         </W>
@@ -1133,13 +1133,13 @@
             <FORM kindOf="standard">raiw</FORM>
             <PHON kindOf="standard">raiw</PHON>
             <TRANSL xml:lang="zho">主焦.離開</TRANSL>
-            <TRANSL xml:lang="en">AF.leave</TRANSL>
-            <M id="SaiNr-anhi_S_5_W9_M0_0">
+            <TRANSL xml:lang="eng">AF.leave</TRANSL>
+            <M id="SaiNr-anhi_S_5_W9M1">
                 <FORM kindOf="original">raiw</FORM>
                 <PHON kindOf="original">raiw</PHON>
                 <FORM kindOf="standard">raiw</FORM>
                 <PHON kindOf="standard">raiw</PHON>
-                <TRANSL xml:lang="en">AF.leave</TRANSL>
+                <TRANSL xml:lang="eng">AF.leave</TRANSL>
                 <TRANSL xml:lang="zho">主焦.離開</TRANSL>
             </M>
         </W>
@@ -1150,28 +1150,28 @@
         <FORM kindOf="standard">mwai' min'itol 'aehae' hahila ma sipahila hayzaeh ka hahila 'aehae' ila So 'aboe' ka hahila 'aehae' ila ma 'ae'aeiw ila.</FORM>
         <PHON kindOf="standard">mwaiʔ minʔitol ʔæhæʔ hahila ma s~θipahila hajz~ðæh ka hahila ʔæhæʔ ila ʃo ʔaβœʔ ka hahila ʔæhæʔ ila ma ʔæʔæiw ila.</PHON>
         <TRANSL xml:lang="zho">還有另一個方式,就是第二天當太陽昇起,可以把竹筍曬乾.</TRANSL>
-        <TRANSL xml:lang="en">&quot;There is another way, which is, the next day when the sun is up, one can go and dry up the bamboo shoots.&quot;</TRANSL>
+        <TRANSL xml:lang="eng">"There is another way, which is, the next day when the sun is up, one can go and dry up the bamboo shoots."</TRANSL>
         <W id="SaiNr-anhi_S_6_W0">
             <FORM kindOf="original">m-wai'</FORM>
             <PHON kindOf="original">m-waiʔ</PHON>
             <FORM kindOf="standard">m-wai'</FORM>
             <PHON kindOf="standard">m-waiʔ</PHON>
             <TRANSL xml:lang="zho">主焦-來</TRANSL>
-            <TRANSL xml:lang="en">AF-come</TRANSL>
-            <M id="SaiNr-anhi_S_6_W0_M0_0">
+            <TRANSL xml:lang="eng">AF-come</TRANSL>
+            <M id="SaiNr-anhi_S_6_W0M1">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="en">AF</TRANSL>
+                <TRANSL xml:lang="eng">AF</TRANSL>
                 <TRANSL xml:lang="zho">主焦</TRANSL>
             </M>
-            <M id="SaiNr-anhi_S_6_W0_M1_0">
+            <M id="SaiNr-anhi_S_6_W0M2">
                 <FORM kindOf="original">wai'</FORM>
                 <PHON kindOf="original">waiʔ</PHON>
                 <FORM kindOf="standard">wai'</FORM>
                 <PHON kindOf="standard">waiʔ</PHON>
-                <TRANSL xml:lang="en">come</TRANSL>
+                <TRANSL xml:lang="eng">come</TRANSL>
                 <TRANSL xml:lang="zho">來</TRANSL>
             </M>
         </W>
@@ -1181,21 +1181,21 @@
             <FORM kindOf="standard">min-'itol</FORM>
             <PHON kindOf="standard">min-ʔitol</PHON>
             <TRANSL xml:lang="zho">MIN-起來</TRANSL>
-            <TRANSL xml:lang="en">MIN-up</TRANSL>
-            <M id="SaiNr-anhi_S_6_W1_M0_0">
+            <TRANSL xml:lang="eng">MIN-up</TRANSL>
+            <M id="SaiNr-anhi_S_6_W1M1">
                 <FORM kindOf="original">min</FORM>
                 <PHON kindOf="original">min</PHON>
                 <FORM kindOf="standard">min</FORM>
                 <PHON kindOf="standard">min</PHON>
-                <TRANSL xml:lang="en">MIN</TRANSL>
+                <TRANSL xml:lang="eng">MIN</TRANSL>
                 <TRANSL xml:lang="zho">MIN</TRANSL>
             </M>
-            <M id="SaiNr-anhi_S_6_W1_M1_0">
+            <M id="SaiNr-anhi_S_6_W1M2">
                 <FORM kindOf="original">'itol</FORM>
                 <PHON kindOf="original">ʔitol</PHON>
                 <FORM kindOf="standard">'itol</FORM>
                 <PHON kindOf="standard">ʔitol</PHON>
-                <TRANSL xml:lang="en">up</TRANSL>
+                <TRANSL xml:lang="eng">up</TRANSL>
                 <TRANSL xml:lang="zho">起來</TRANSL>
             </M>
         </W>
@@ -1205,13 +1205,13 @@
             <FORM kindOf="standard">'aehae'</FORM>
             <PHON kindOf="standard">ʔæhæʔ</PHON>
             <TRANSL xml:lang="zho">一</TRANSL>
-            <TRANSL xml:lang="en">one</TRANSL>
-            <M id="SaiNr-anhi_S_6_W2_M0_0">
+            <TRANSL xml:lang="eng">one</TRANSL>
+            <M id="SaiNr-anhi_S_6_W2M1">
                 <FORM kindOf="original">'aehae'</FORM>
                 <PHON kindOf="original">ʔæhæʔ</PHON>
                 <FORM kindOf="standard">'aehae'</FORM>
                 <PHON kindOf="standard">ʔæhæʔ</PHON>
-                <TRANSL xml:lang="en">one</TRANSL>
+                <TRANSL xml:lang="eng">one</TRANSL>
                 <TRANSL xml:lang="zho">一</TRANSL>
             </M>
         </W>
@@ -1221,21 +1221,21 @@
             <FORM kindOf="standard">ha-hila</FORM>
             <PHON kindOf="standard">ha-hila</PHON>
             <TRANSL xml:lang="zho">Ca重疊-日</TRANSL>
-            <TRANSL xml:lang="en">Ca-sun</TRANSL>
-            <M id="SaiNr-anhi_S_6_W3_M0_0">
+            <TRANSL xml:lang="eng">Ca-sun</TRANSL>
+            <M id="SaiNr-anhi_S_6_W3M1">
                 <FORM kindOf="original">ha</FORM>
                 <PHON kindOf="original">ha</PHON>
                 <FORM kindOf="standard">ha</FORM>
                 <PHON kindOf="standard">ha</PHON>
-                <TRANSL xml:lang="en">Ca</TRANSL>
+                <TRANSL xml:lang="eng">Ca</TRANSL>
                 <TRANSL xml:lang="zho">Ca重疊</TRANSL>
             </M>
-            <M id="SaiNr-anhi_S_6_W3_M1_0">
+            <M id="SaiNr-anhi_S_6_W3M2">
                 <FORM kindOf="original">hila</FORM>
                 <PHON kindOf="original">hila</PHON>
                 <FORM kindOf="standard">hila</FORM>
                 <PHON kindOf="standard">hila</PHON>
-                <TRANSL xml:lang="en">sun</TRANSL>
+                <TRANSL xml:lang="eng">sun</TRANSL>
                 <TRANSL xml:lang="zho">日</TRANSL>
             </M>
         </W>
@@ -1245,13 +1245,13 @@
             <FORM kindOf="standard">ma</FORM>
             <PHON kindOf="standard">ma</PHON>
             <TRANSL xml:lang="zho">DM</TRANSL>
-            <TRANSL xml:lang="en">DM</TRANSL>
-            <M id="SaiNr-anhi_S_6_W4_M0_0">
+            <TRANSL xml:lang="eng">DM</TRANSL>
+            <M id="SaiNr-anhi_S_6_W4M1">
                 <FORM kindOf="original">ma</FORM>
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
-                <TRANSL xml:lang="en">DM</TRANSL>
+                <TRANSL xml:lang="eng">DM</TRANSL>
                 <TRANSL xml:lang="zho">DM</TRANSL>
             </M>
         </W>
@@ -1261,29 +1261,29 @@
             <FORM kindOf="standard">si-pa-hila</FORM>
             <PHON kindOf="standard">s~θi-pa-hila</PHON>
             <TRANSL xml:lang="zho">指焦-使役-日曬</TRANSL>
-            <TRANSL xml:lang="en">RF-CAU-sun</TRANSL>
-            <M id="SaiNr-anhi_S_6_W5_M0_0">
+            <TRANSL xml:lang="eng">RF-CAU-sun</TRANSL>
+            <M id="SaiNr-anhi_S_6_W5M1">
                 <FORM kindOf="original">si</FORM>
                 <PHON kindOf="original">s~θi</PHON>
                 <FORM kindOf="standard">si</FORM>
                 <PHON kindOf="standard">s~θi</PHON>
-                <TRANSL xml:lang="en">RF</TRANSL>
+                <TRANSL xml:lang="eng">RF</TRANSL>
                 <TRANSL xml:lang="zho">指焦</TRANSL>
             </M>
-            <M id="SaiNr-anhi_S_6_W5_M1_0">
+            <M id="SaiNr-anhi_S_6_W5M2">
                 <FORM kindOf="original">pa</FORM>
                 <PHON kindOf="original">pa</PHON>
                 <FORM kindOf="standard">pa</FORM>
                 <PHON kindOf="standard">pa</PHON>
-                <TRANSL xml:lang="en">CAU</TRANSL>
+                <TRANSL xml:lang="eng">CAU</TRANSL>
                 <TRANSL xml:lang="zho">使役</TRANSL>
             </M>
-            <M id="SaiNr-anhi_S_6_W5_M2_0">
+            <M id="SaiNr-anhi_S_6_W5M3">
                 <FORM kindOf="original">hila</FORM>
                 <PHON kindOf="original">hila</PHON>
                 <FORM kindOf="standard">hila</FORM>
                 <PHON kindOf="standard">hila</PHON>
-                <TRANSL xml:lang="en">sun</TRANSL>
+                <TRANSL xml:lang="eng">sun</TRANSL>
                 <TRANSL xml:lang="zho">日曬</TRANSL>
             </M>
         </W>
@@ -1293,13 +1293,13 @@
             <FORM kindOf="standard">hayzaeh</FORM>
             <PHON kindOf="standard">hajz~ðæh</PHON>
             <TRANSL xml:lang="zho">好</TRANSL>
-            <TRANSL xml:lang="en">good</TRANSL>
-            <M id="SaiNr-anhi_S_6_W6_M0_0">
+            <TRANSL xml:lang="eng">good</TRANSL>
+            <M id="SaiNr-anhi_S_6_W6M1">
                 <FORM kindOf="original">hayzaeh</FORM>
                 <PHON kindOf="original">hajz~ðæh</PHON>
                 <FORM kindOf="standard">hayzaeh</FORM>
                 <PHON kindOf="standard">hajz~ðæh</PHON>
-                <TRANSL xml:lang="en">good</TRANSL>
+                <TRANSL xml:lang="eng">good</TRANSL>
                 <TRANSL xml:lang="zho">好</TRANSL>
             </M>
         </W>
@@ -1309,13 +1309,13 @@
             <FORM kindOf="standard">ka</FORM>
             <PHON kindOf="standard">ka</PHON>
             <TRANSL xml:lang="zho">主格</TRANSL>
-            <TRANSL xml:lang="en">NOM</TRANSL>
-            <M id="SaiNr-anhi_S_6_W7_M0_0">
+            <TRANSL xml:lang="eng">NOM</TRANSL>
+            <M id="SaiNr-anhi_S_6_W7M1">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
-                <TRANSL xml:lang="en">NOM</TRANSL>
+                <TRANSL xml:lang="eng">NOM</TRANSL>
                 <TRANSL xml:lang="zho">主格</TRANSL>
             </M>
         </W>
@@ -1325,21 +1325,21 @@
             <FORM kindOf="standard">ha-hila</FORM>
             <PHON kindOf="standard">ha-hila</PHON>
             <TRANSL xml:lang="zho">Ca重疊-日</TRANSL>
-            <TRANSL xml:lang="en">Ca-sun</TRANSL>
-            <M id="SaiNr-anhi_S_6_W8_M0_0">
+            <TRANSL xml:lang="eng">Ca-sun</TRANSL>
+            <M id="SaiNr-anhi_S_6_W8M1">
                 <FORM kindOf="original">ha</FORM>
                 <PHON kindOf="original">ha</PHON>
                 <FORM kindOf="standard">ha</FORM>
                 <PHON kindOf="standard">ha</PHON>
-                <TRANSL xml:lang="en">Ca</TRANSL>
+                <TRANSL xml:lang="eng">Ca</TRANSL>
                 <TRANSL xml:lang="zho">Ca重疊</TRANSL>
             </M>
-            <M id="SaiNr-anhi_S_6_W8_M1_0">
+            <M id="SaiNr-anhi_S_6_W8M2">
                 <FORM kindOf="original">hila</FORM>
                 <PHON kindOf="original">hila</PHON>
                 <FORM kindOf="standard">hila</FORM>
                 <PHON kindOf="standard">hila</PHON>
-                <TRANSL xml:lang="en">sun</TRANSL>
+                <TRANSL xml:lang="eng">sun</TRANSL>
                 <TRANSL xml:lang="zho">日</TRANSL>
             </M>
         </W>
@@ -1349,13 +1349,13 @@
             <FORM kindOf="standard">'aehae'</FORM>
             <PHON kindOf="standard">ʔæhæʔ</PHON>
             <TRANSL xml:lang="zho">一</TRANSL>
-            <TRANSL xml:lang="en">one</TRANSL>
-            <M id="SaiNr-anhi_S_6_W9_M0_0">
+            <TRANSL xml:lang="eng">one</TRANSL>
+            <M id="SaiNr-anhi_S_6_W9M1">
                 <FORM kindOf="original">'aehae'</FORM>
                 <PHON kindOf="original">ʔæhæʔ</PHON>
                 <FORM kindOf="standard">'aehae'</FORM>
                 <PHON kindOf="standard">ʔæhæʔ</PHON>
-                <TRANSL xml:lang="en">one</TRANSL>
+                <TRANSL xml:lang="eng">one</TRANSL>
                 <TRANSL xml:lang="zho">一</TRANSL>
             </M>
         </W>
@@ -1365,13 +1365,13 @@
             <FORM kindOf="standard">ila</FORM>
             <PHON kindOf="standard">ila</PHON>
             <TRANSL xml:lang="zho">完成</TRANSL>
-            <TRANSL xml:lang="en">PFV</TRANSL>
-            <M id="SaiNr-anhi_S_6_W10_M0_0">
+            <TRANSL xml:lang="eng">PFV</TRANSL>
+            <M id="SaiNr-anhi_S_6_W10M1">
                 <FORM kindOf="original">ila</FORM>
                 <PHON kindOf="original">ila</PHON>
                 <FORM kindOf="standard">ila</FORM>
                 <PHON kindOf="standard">ila</PHON>
-                <TRANSL xml:lang="en">PFV</TRANSL>
+                <TRANSL xml:lang="eng">PFV</TRANSL>
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
@@ -1381,13 +1381,13 @@
             <FORM kindOf="standard">So</FORM>
             <PHON kindOf="standard">ʃo</PHON>
             <TRANSL xml:lang="zho">條件詞</TRANSL>
-            <TRANSL xml:lang="en">COND</TRANSL>
-            <M id="SaiNr-anhi_S_6_W11_M0_0">
+            <TRANSL xml:lang="eng">COND</TRANSL>
+            <M id="SaiNr-anhi_S_6_W11M1">
                 <FORM kindOf="original">So</FORM>
                 <PHON kindOf="original">ʃo</PHON>
                 <FORM kindOf="standard">So</FORM>
                 <PHON kindOf="standard">ʃo</PHON>
-                <TRANSL xml:lang="en">COND</TRANSL>
+                <TRANSL xml:lang="eng">COND</TRANSL>
                 <TRANSL xml:lang="zho">條件詞</TRANSL>
             </M>
         </W>
@@ -1397,13 +1397,13 @@
             <FORM kindOf="standard">'aboe'</FORM>
             <PHON kindOf="standard">ʔaβœʔ</PHON>
             <TRANSL xml:lang="zho">強</TRANSL>
-            <TRANSL xml:lang="en">strong</TRANSL>
-            <M id="SaiNr-anhi_S_6_W12_M0_0">
+            <TRANSL xml:lang="eng">strong</TRANSL>
+            <M id="SaiNr-anhi_S_6_W12M1">
                 <FORM kindOf="original">'aboe'</FORM>
                 <PHON kindOf="original">ʔaβœʔ</PHON>
                 <FORM kindOf="standard">'aboe'</FORM>
                 <PHON kindOf="standard">ʔaβœʔ</PHON>
-                <TRANSL xml:lang="en">strong</TRANSL>
+                <TRANSL xml:lang="eng">strong</TRANSL>
                 <TRANSL xml:lang="zho">強</TRANSL>
             </M>
         </W>
@@ -1413,13 +1413,13 @@
             <FORM kindOf="standard">ka=</FORM>
             <PHON kindOf="standard">ka=</PHON>
             <TRANSL xml:lang="zho">主格</TRANSL>
-            <TRANSL xml:lang="en">NOM</TRANSL>
-            <M id="SaiNr-anhi_S_6_W13_M0_0">
+            <TRANSL xml:lang="eng">NOM</TRANSL>
+            <M id="SaiNr-anhi_S_6_W13M1">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
-                <TRANSL xml:lang="en">NOM</TRANSL>
+                <TRANSL xml:lang="eng">NOM</TRANSL>
                 <TRANSL xml:lang="zho">主格</TRANSL>
             </M>
         </W>
@@ -1429,21 +1429,21 @@
             <FORM kindOf="standard">ha-hila</FORM>
             <PHON kindOf="standard">ha-hila</PHON>
             <TRANSL xml:lang="zho">Ca重疊-日</TRANSL>
-            <TRANSL xml:lang="en">Ca-sun</TRANSL>
-            <M id="SaiNr-anhi_S_6_W14_M0_0">
+            <TRANSL xml:lang="eng">Ca-sun</TRANSL>
+            <M id="SaiNr-anhi_S_6_W14M1">
                 <FORM kindOf="original">ha</FORM>
                 <PHON kindOf="original">ha</PHON>
                 <FORM kindOf="standard">ha</FORM>
                 <PHON kindOf="standard">ha</PHON>
-                <TRANSL xml:lang="en">Ca</TRANSL>
+                <TRANSL xml:lang="eng">Ca</TRANSL>
                 <TRANSL xml:lang="zho">Ca重疊</TRANSL>
             </M>
-            <M id="SaiNr-anhi_S_6_W14_M1_0">
+            <M id="SaiNr-anhi_S_6_W14M2">
                 <FORM kindOf="original">hila</FORM>
                 <PHON kindOf="original">hila</PHON>
                 <FORM kindOf="standard">hila</FORM>
                 <PHON kindOf="standard">hila</PHON>
-                <TRANSL xml:lang="en">sun</TRANSL>
+                <TRANSL xml:lang="eng">sun</TRANSL>
                 <TRANSL xml:lang="zho">日</TRANSL>
             </M>
         </W>
@@ -1453,13 +1453,13 @@
             <FORM kindOf="standard">'aehae'</FORM>
             <PHON kindOf="standard">ʔæhæʔ</PHON>
             <TRANSL xml:lang="zho">一</TRANSL>
-            <TRANSL xml:lang="en">one</TRANSL>
-            <M id="SaiNr-anhi_S_6_W15_M0_0">
+            <TRANSL xml:lang="eng">one</TRANSL>
+            <M id="SaiNr-anhi_S_6_W15M1">
                 <FORM kindOf="original">'aehae'</FORM>
                 <PHON kindOf="original">ʔæhæʔ</PHON>
                 <FORM kindOf="standard">'aehae'</FORM>
                 <PHON kindOf="standard">ʔæhæʔ</PHON>
-                <TRANSL xml:lang="en">one</TRANSL>
+                <TRANSL xml:lang="eng">one</TRANSL>
                 <TRANSL xml:lang="zho">一</TRANSL>
             </M>
         </W>
@@ -1469,13 +1469,13 @@
             <FORM kindOf="standard">ila</FORM>
             <PHON kindOf="standard">ila</PHON>
             <TRANSL xml:lang="zho">完成</TRANSL>
-            <TRANSL xml:lang="en">PFV</TRANSL>
-            <M id="SaiNr-anhi_S_6_W16_M0_0">
+            <TRANSL xml:lang="eng">PFV</TRANSL>
+            <M id="SaiNr-anhi_S_6_W16M1">
                 <FORM kindOf="original">ila</FORM>
                 <PHON kindOf="original">ila</PHON>
                 <FORM kindOf="standard">ila</FORM>
                 <PHON kindOf="standard">ila</PHON>
-                <TRANSL xml:lang="en">PFV</TRANSL>
+                <TRANSL xml:lang="eng">PFV</TRANSL>
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>
@@ -1485,13 +1485,13 @@
             <FORM kindOf="standard">ma</FORM>
             <PHON kindOf="standard">ma</PHON>
             <TRANSL xml:lang="zho">DM</TRANSL>
-            <TRANSL xml:lang="en">DM</TRANSL>
-            <M id="SaiNr-anhi_S_6_W17_M0_0">
+            <TRANSL xml:lang="eng">DM</TRANSL>
+            <M id="SaiNr-anhi_S_6_W17M1">
                 <FORM kindOf="original">ma</FORM>
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
-                <TRANSL xml:lang="en">DM</TRANSL>
+                <TRANSL xml:lang="eng">DM</TRANSL>
                 <TRANSL xml:lang="zho">DM</TRANSL>
             </M>
         </W>
@@ -1501,13 +1501,13 @@
             <FORM kindOf="standard">'ae'aeiw</FORM>
             <PHON kindOf="standard">ʔæʔæiw</PHON>
             <TRANSL xml:lang="zho">乾</TRANSL>
-            <TRANSL xml:lang="en">dry</TRANSL>
-            <M id="SaiNr-anhi_S_6_W18_M0_0">
+            <TRANSL xml:lang="eng">dry</TRANSL>
+            <M id="SaiNr-anhi_S_6_W18M1">
                 <FORM kindOf="original">'ae'aeiw</FORM>
                 <PHON kindOf="original">ʔæʔæiw</PHON>
                 <FORM kindOf="standard">'ae'aeiw</FORM>
                 <PHON kindOf="standard">ʔæʔæiw</PHON>
-                <TRANSL xml:lang="en">dry</TRANSL>
+                <TRANSL xml:lang="eng">dry</TRANSL>
                 <TRANSL xml:lang="zho">乾</TRANSL>
             </M>
         </W>
@@ -1517,13 +1517,13 @@
             <FORM kindOf="standard">ila</FORM>
             <PHON kindOf="standard">ila</PHON>
             <TRANSL xml:lang="zho">完成</TRANSL>
-            <TRANSL xml:lang="en">PFV</TRANSL>
-            <M id="SaiNr-anhi_S_6_W19_M0_0">
+            <TRANSL xml:lang="eng">PFV</TRANSL>
+            <M id="SaiNr-anhi_S_6_W19M1">
                 <FORM kindOf="original">ila</FORM>
                 <PHON kindOf="original">ila</PHON>
                 <FORM kindOf="standard">ila</FORM>
                 <PHON kindOf="standard">ila</PHON>
-                <TRANSL xml:lang="en">PFV</TRANSL>
+                <TRANSL xml:lang="eng">PFV</TRANSL>
                 <TRANSL xml:lang="zho">完成</TRANSL>
             </M>
         </W>

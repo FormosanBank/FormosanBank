@@ -34,6 +34,19 @@ python QC/utilities/standardize.py \
 
 The TSV must include an `original` column and a target column such as `standard` or a dialect name. Replacements are applied globally and sequentially with Python string replacement, so review the diff after running it.
 
+## Validation pipeline (staged)
+
+The validator suite is a **staged pipeline** of separate executables that share a Finding/Severity framework but are run independently. XML format must pass before later stages produce meaningful output.
+
+| Stage | Validator | Rule module | What it checks |
+|---|---|---|---|
+| 1 | `QC/validation/validate_xml.py` | `QC/validation/rules/hard.py` | XML format: schema, IDs, attributes, structural validity. |
+| 1 | `QC/validation/validate_dialect.py` | (n/a — informational) | Prints a `(xml:lang, dialect) -> count` summary. Run right after `validate_xml.py`; requires human eyeballing to confirm the distribution looks right. |
+| 2 | `QC/validation/validate_glosses.py` | `QC/validation/rules/gloss.py` | Gloss artifacts: V060–V065. SOFT rules emit warnings; HARD rules cause nonzero exit. |
+| 2 | `QC/validation/validate_punct.py` | (legacy script) | Punctuation/processing artifacts. |
+
+Gloss validation can be **run on any corpus**, including unsegmented ones — rules naturally no-op when iterating empty `W`/`M` lists. SOFT rules (V060/V061/V065) are review-not-gate: they surface candidate cleanups without blocking the build.
+
 ## Basic Flow
 
 Run XML validation first:
@@ -43,12 +56,59 @@ python QC/validation/validate_xml.py by_path \
   --path /path/to/Final_XML
 ```
 
-Run punctuation validation after `FORM kindOf="standard"` exists:
+If the corpus has audio, validate audio next. `validate_audio.py` is an
+always-on, lightweight check (no ML deps) that produces a single
+`broken_audio.csv` with a `kind` column (`missing`, `unloadable`,
+`silent`, `invalid_range`). HARD findings (V100-V103) cause non-zero
+exit; SOFT findings (V104-V105, words-per-sec out of range) warn but
+don't fail.
 
 ```bash
-python QC/validation/validate_punct.py by_path \
+python QC/validation/validate_audio.py \
+  --xml_path /path/to/corpus/XML \
+  --path /path/to/corpus/Audio \
+  --log_dir /path/to/qc-output/logs \
+  [--check_silence]
+```
+
+Silence detection covers WAV (via RMS) and MP3 (via `ffprobe -af
+silencedetect`). The MP3 path requires `ffmpeg`/`ffprobe` on `$PATH`.
+Pass `--check_silence` to enable; otherwise silence is skipped to keep
+the check fast for large corpora.
+
+To remove broken entries afterward, run `clean_audio.py` against the
+generated `broken_audio.csv`:
+
+```bash
+python QC/cleaning/clean_audio.py \
+  --corpus_path /path/to/corpus \
+  --broken_csv  /path/to/qc-output/logs/broken_audio.csv \
+  --apply              # default is --dry-run
+  [--also-delete-files]
+```
+
+`--apply` modifies the XML in place by removing each listed `<AUDIO>`
+element. `--also-delete-files` also deletes the matching audio file
+from `<corpus>/Audio/`. Default is `--dry-run`: print the intended
+changes, modify nothing.
+
+Run text-content validation after `FORM kindOf="standard"` exists:
+
+```bash
+python QC/validation/validate_text.py by_path \
   --path /path/to/Final_XML
 ```
+
+`validate_text.py` (added in B9.4) consolidates the legacy
+`validate_punct.py` and `non_ascii_counts.py` scripts under one
+Finding-framework-aware validator. It checks the *textual content* of
+`<FORM>` and `<TRANSL>`: smart quotes, imbalanced parentheses,
+repeated punctuation, consecutive dashes, multiple whitespace,
+mismatched smart quotes, non-ASCII characters (excluding CJK),
+null-symbol propagation between W/M/S tiers, parens/slashes in W/M
+FORM (HARD), parens/slashes anywhere (SOFT), and `=` leftovers in the
+S-level standard tier. HARD findings exit 1; SOFT findings go to a
+CSV artifact (`--soft-csv`) for review.
 
 Extract orthographic information from the standard tier:
 
@@ -74,27 +134,173 @@ python QC/validation/validate_vocabulary.py \
   --reference QC/validation/reference
 ```
 
-Run gloss validation only when the corpus is expected to contain word-level `W` elements, and morpheme validation only when `M` elements are expected:
+Run gloss validation on any corpus; rules naturally no-op on unsegmented ones. Six rules are registered (see `QC/validation/rules/gloss.py`):
+
+| Rule | Severity | What it flags |
+|---|---|---|
+| V060 | SOFT | `<W>` count does not match the whitespace-delimited word count in S-level `FORM[@kindOf="original"]`. |
+| V061 | SOFT | `<M>` count does not match the morpheme count implied by W's FORM segmentation markers (`-`, `=`, `<...>`). |
+| V062 | HARD | `<M>` with infix-shaped FORM (`-X-`) requires an angle-bracket gloss (`<X>`) in the parent W's TRANSL. |
+| V063 | HARD | When the S-level FORM has > 3 segmentation markers, the W children's FORMs must collectively retain at least N/2 markers in each tier. |
+| V064 | HARD | Every `<M>` element must have at least one `<TRANSL>` child. |
+| V065 | SOFT | Every `<W>` element should have at least one `<TRANSL>` child. |
+
+Exit code: 1 if any HARD finding (V062/V063/V064); 0 otherwise. SOFT findings (V060/V061/V065) emit warnings to stderr but do not fail the run.
 
 ```bash
-python QC/validation/validate_glosses.py /path/to/Final_XML \
+# Validate one XML file
+python QC/validation/validate_glosses.py by_path --path /path/to/file.xml \
   --output_dir /path/to/qc-output
 
-python QC/validation/validate_glosses.py /path/to/Final_XML \
+# Validate a directory tree
+python QC/validation/validate_glosses.py by_path --path /path/to/Final_XML \
   --check_morpho \
+  --output_dir /path/to/qc-output
+
+# Validate one corpus by name (walks its canonical XML/)
+python QC/validation/validate_glosses.py by_corpus \
+  --corpus ePark --corpora_path Corpora \
+  --output_dir /path/to/qc-output
+
+# Validate every file across all corpora whose root xml:lang matches
+python QC/validation/validate_glosses.py by_language \
+  --language ami --corpora_path Corpora \
   --output_dir /path/to/qc-output
 ```
 
-For verse-level or sentence-only corpora with no `W`/`M` segmentation, `validate_glosses.py` will report sentence/W mismatches. Treat those as "not applicable" unless word segmentation is required for that corpus.
+For verse-level or sentence-only corpora with no `W`/`M` segmentation, V060–V065 either no-op (no W/M to iterate) or surface SOFT findings that should be treated as "not applicable". The two legacy CSV artifacts (`validation_results.csv` for V060, `validation_m_mismatches.csv` for V061) are preserved for backward compatibility with prior callers.
+
+Detect duplicate `<S>` sentences within a corpus (within-file matches are HARD findings; cross-file matches in the same corpus are SOFT):
+
+```bash
+python QC/validation/validate_duplicate_sentences.py by_path \
+  --path /path/to/Final_XML \
+  --output /path/to/qc-output/duplicate_sentences.csv
+```
+
+The validator compares whitespace-normalized FORM text on the `kindOf="standard"` tier by default; pass `--tier original` to compare the source tier. Cross-corpus duplicate detection (e.g. "is this Glosbe sentence also in ePark?") is a separate tool: see `QC/utilities/find_duplicate_sentences.py`.
+
+## Cleaning
+
+Before running other cleaners, re-apply any recorded hand edits:
+
+```bash
+python QC/cleaning/apply_manual_edits.py --corpora_path <XML-dir>
+```
+
+No-op (prints "nothing to do" and exits 0) if the corpus has no `CodeAndDocs/manual_edits.xml`. See "Manual edits" below for how to record edits in the first place.
+
+`QC/cleaning/clean_xml.py` normalizes unicode and HTML entities in place.
+
+`QC/cleaning/remove_duplicate_sentences.py` removes duplicate `<S>` elements detected by the validator above. **It modifies XML in place** — the default is `--dry-run`; pass `--apply` to actually mutate files. Within each duplicate group it deterministically keeps the first occurrence by `(file, S id)` sort order.
+
+```bash
+# Plan only (default; nothing is written):
+python QC/cleaning/remove_duplicate_sentences.py by_path \
+  --path /path/to/Final_XML
+
+# After reviewing the dry-run plan, actually remove:
+python QC/cleaning/remove_duplicate_sentences.py by_path \
+  --path /path/to/Final_XML --apply
+
+# Include cross-file duplicates within the corpus (default scope is file-only):
+python QC/cleaning/remove_duplicate_sentences.py by_path \
+  --path /path/to/Final_XML --scope corpus --apply
+```
+
+### Manual edits (reproducible hand edits)
+
+Some corrections (often surfaced by `validate_text`/`validate_glosses`) can only be made by hand. To keep them reproducible across rebuilds, record them instead of editing the published XML ad hoc:
+
+1. Hand-edit the `<S>` blocks in the corpus XML directly.
+2. Run `python QC/utilities/capture_manual_edits.py --corpora_path <XML-dir>`. It diffs the working tree against the git baseline (`--baseline-ref`, default `HEAD`) and records each changed/added/deleted `<S>` into `<corpus-root>/CodeAndDocs/manual_edits.xml` (standard tier + PHON stripped; new sentences get an `after` placement hint).
+3. Commit `manual_edits.xml`.
+4. On every rebuild, `python QC/cleaning/apply_manual_edits.py --corpora_path <XML-dir>` re-applies them (first in the cleaning pipeline), prunes entries that have become no-ops (printing a `pruned no-op` warning for each), and regenerates the readable `CodeAndDocs/manual_edits.md` changelog.
+
+Splitting a multi-option sentence: edit the original `<S>` to a single variant and add new `<S>` (with fresh ids) for the others; `capture`/`apply` keep them adjacent via the `after` hint.
+
+**Discipline:** `apply` expects the XML to be fresh pre-manual build output. Run it on a freshly rebuilt tree; re-running it on already-applied XML prunes entries as no-ops (recoverable via git, and announced by warnings).
+
+## Dialect detection (informational)
+
+Guess `TEXT/@dialect` for the multi-dialect languages (Amis, Atayal, Bunun, Paiwan, Puyuma, Rukai, and `trv`=Truku+Seediq) from the **standard** tier. This is a maintainer aid, not a CI gate — it never mutates XML. It builds one model per language from the already-labeled XMLs (grapheme-aware orthography + character + bigram + word evidence, combined by a small learned per-language weighting) and reports a full ranked dialect list with calibrated probabilities and a per-component breakdown; it returns `unknown` when the top probability is below the model threshold or the file has no standard tier.
+
+```bash
+# (Re)train per-language models from the labeled corpus (writes QC/utilities/dialect_models/*.json).
+# Run this when new labeled XMLs land so the models grow with FormosanBank.
+PYTHONPATH=. python -m QC.utilities.dialect_detector train
+
+# Guess the dialect of one file or a directory of files.
+PYTHONPATH=. python -m QC.utilities.dialect_detector predict --path Corpora/<Corpus>/XML/<file>.xml
+
+# Honest held-out accuracy (stratified per-dialect 5-fold; refits per fold).
+PYTHONPATH=. python -m QC.utilities.dialect_detector crossvalidate [--language ami]
+
+# Apparent (train=test) accuracy — optimistic; prefer `crossvalidate` above.
+PYTHONPATH=. python -m QC.utilities.dialect_detector evaluate [--language ami]
+```
+
+The committed models live under `QC/utilities/dialect_models/` and are regenerated by `train`, which also **calibrates each language's `unknown` threshold** from a held-out cross-validation (maximize coverage while keeping accuracy-on-committed ≥ 0.95).
+
+Use **`crossvalidate`** for honest numbers — `evaluate` is train-on-test and optimistic (a file's own words sit in its dialect's profile). Held-out top-1 is **1.000 for Atayal/Bunun/Puyuma/Rukai/Seediq, ~0.85 Paiwan, ~0.82 Amis**. With the calibrated thresholds, the five strong languages commit everything at ~1.0 precision; **Amis and Paiwan commit ~70%/~66%** and return `unknown` on the rest. This is expected: the Amis "common-orthography" cluster and the Paiwan dialects are written with *identical letter inventories*, so they can only be separated lexically and short or genre-neutral text legitimately comes back `unknown`.
+
+**Full documentation** (usage, retraining, interpreting output, how it works): [QC/utilities/dialect_detector/README.md](utilities/dialect_detector/README.md).
 
 ## Corpus Metrics
 
-Generate corpus-wide facts, figures, and plots from XML files under `Corpora/`:
+**Shared counting rules** live in `QC/corpus_counts.py`: tokens are whitespace-separated chunks containing at least one Unicode letter or digit (digit-only chunks count; punctuation-only chunks like `?` do not); per sentence, the `standard` FORM is used if non-empty, otherwise the `original` FORM, otherwise 0; language identity comes from `xml:lang` + `dialect` attributes (`trv` + `Truku` dialect → Truku, otherwise Seediq). This module is imported by `get_corpus_stats.py`, `corpus_metrics.py`, and `count_tokens.py`.
+
+The statistics pipeline is **inverted**: `get_corpus_stats.py` counts and writes per-corpus CSVs; `corpus_metrics.py` aggregates those CSVs for snapshots and appends to the size-over-time history.
+
+**Step 1 — generate per-corpus CSVs** (writes `statistics/<Corpus>_corpora_stats.csv` for each corpus):
+
+```bash
+python QC/utilities/get_corpus_stats.py Corpora/ePark   # one corpus
+python QC/utilities/get_corpus_stats.py --all            # all corpora under Corpora/
+python QC/utilities/get_corpus_stats.py --all --strict   # exit nonzero if any XML fails to parse
+```
+
+Audio *seconds* columns (`transcribed_audio_seconds`, `untranscribed_audio_seconds`) are **never computed** by `get_corpus_stats.py` — CI has no audio files. They carry forward from the existing committed CSV. To refresh them from local audio files, run the manual command:
+
+```bash
+python QC/utilities/update_audio_stats.py Corpora/ePark  # one corpus
+python QC/utilities/update_audio_stats.py --all           # all corpora
+```
+
+`update_audio_stats.py <corpus>` recomputes durations from already-local audio and writes them to `statistics/audio_durations.csv` directly (no per-corpus CSV needs to exist first). Buckets with no audio found on disk keep their previous seconds — running without audio downloaded will not zero out good data.
+
+### Audio-seconds source of truth
+
+`statistics/audio_durations.csv` is the persistent source of truth for audio seconds, keyed by `(corpus, language, dialect)`. It holds the seconds plus `count_at_compute` (the XML audio-element count at the time of measurement) and a date. CI reads it but **never writes it**.
+
+`get_corpus_stats.py` fills the seconds columns from this file and prints a `STALE AUDIO` warning whenever a corpus's current XML audio-count no longer matches `count_at_compute`. To see the full worklist:
+
+```bash
+python QC/utilities/get_corpus_stats.py --report-stale-audio
+```
+
+To refresh one corpus whose audio changed (pulls HF audio, recomputes, deletes the download):
+
+```bash
+python QC/utilities/refresh_audio_stats.py <corpus>        # add --keep-audio to retain the download
+```
+
+To recompute from already-local audio without downloading:
+
+```bash
+python QC/utilities/update_audio_stats.py <corpus>         # or --all
+```
+
+After either command, commit `statistics/audio_durations.csv` and the per-corpus CSV. The history audio series updates on the next CI push.
+
+**Step 2 — aggregate CSVs and generate metrics** (reads `statistics/` rather than walking XML):
 
 ```bash
 python QC/corpus_metrics.py Corpora \
+  --stats-dir statistics \
   --output-dir corpus-metrics \
-  --history
+  --history-extend \
+  --history-cache statistics/corpus_size_history.csv
 ```
 
 The script writes:
@@ -104,26 +310,32 @@ The script writes:
 - `corpus_language_tokens.png`
 - `corpus_source_tokens.png`
 - `corpus_benchmark_comparison.png`
-- `corpus_size_history.csv` and `corpus_size_over_time.png` when `--history` is used
+- `corpus_size_history.csv` when `--history` is used, plus four time-series PNGs: `corpus_size_over_time.png` (tokens), `corpus_transcribed_audio_over_time.png` (hours), `corpus_mandarin_words_over_time.png`, and `corpus_glossed_words_over_time.png`
 
-By default, token counts use the first direct sentence-level `FORM` in each `S`, matching the legacy token counter. Use `--form-kind standard`, `--form-kind original`, or `--form-kind auto` when a different sentence tier is needed.
+The history CSV carries, per commit: `tokens`, `sentences`, `xml_files`, `sources`, `languages`, `parse_errors`, `transcribed_audio_seconds`, `zho_transl_count`, and `glossed_words`. The `transcribed_audio_seconds` series is **forward-only**: audio durations cannot be reconstructed from git history (audio files are not in the repo), so `--history-rebuild` writes 0 for historical rows and the series accumulates from rollout onward. Keep it current by running [QC/utilities/update_audio_stats.py](utilities/update_audio_stats.py) against downloaded audio so the per-corpus CSVs carry real seconds; the normal CI `--history` append then picks them up.
 
-History mode samples first-parent commits where XML files under `Corpora/**/XML/` were added, deleted, or modified. It uses the full XML-changing history by default; pass `--max-history-commits N` to sample only the most recent `N` XML-changing commits.
+There are three history modes, in increasing cost:
 
-For routine updates, reuse the existing history CSV so the script only applies XML-changing commits after the last recorded commit:
+- `--history` appends **one row at HEAD** to the size-over-time CSV (replacing the row if re-run on the same commit). Cheapest; skips any commits between runs.
+- `--history-extend` resumes from the cached CSV and adds **one row per XML-changing commit since its last entry**, so no commits are skipped even if several land between runs. It snapshots the corpus once at the cached commit, then walks forward applying per-commit diffs. If the cache is empty, its tip is not an ancestor of HEAD (rewritten/diverged history), or there is no gap (≤1 new commit), it safely falls back to a single `--history`-style HEAD append. This is what CI uses. New rows reuse the current counting rules; older cached rows are left untouched.
+- `--history-rebuild` restates the **entire** history from git blobs under the current counting rules (slow full first-parent walk; XML mode only, omit `--stats-dir`):
 
 ```bash
 python QC/corpus_metrics.py Corpora \
   --output-dir corpus-metrics \
-  --history \
+  --history-rebuild \
   --history-cache statistics/corpus_size_history.csv
 ```
 
-During history runs, `corpus_metrics.py` prints progress to stderr for the current corpus and each sampled commit, so long runs show `[current/total]` status instead of appearing hung. The GitHub workflow uploads the full `corpus-metrics/` directory as a 30-day Actions artifact; on pushes to `main`, only `statistics/corpus_size_history.csv` and `statistics/corpus_size_over_time.png` are committed back for the README graph.
+History rows written before 2026-06 used different counting rules (first FORM, all whitespace chunks); a `--history-rebuild` run restates all rows under the current rules.
+
+During history rebuild, `corpus_metrics.py` prints progress to stderr for each sampled commit so long runs show status instead of appearing hung. The GitHub workflow uploads the full `corpus-metrics/` directory as a 30-day Actions artifact; on pushes to `main`, the per-corpus CSVs, `statistics/corpus_size_history.csv`, and the four time-series PNGs are committed back.
 
 ## Token Delta Regression
 
-Generate the same language/dialect token JSON used by the token delta workflow:
+`QC/count_tokens.py` counts tokens from XML via `corpus_counts.py` (not from the per-corpus CSVs, because it runs on arbitrary checkouts — e.g. a PR base in a git worktree — where committed CSVs may be stale or absent). Output shape `{LanguageName: [total, {dialect: tokens}]}` is consumed by `tokens_delta.py`, `plot_counts.py`, `plot_deltas.py`, and the token-comparison workflow.
+
+Generate the language/dialect token JSON used by the token delta workflow:
 
 ```bash
 mkdir -p token-count-artifacts
@@ -180,6 +392,69 @@ python QC/validation/validate_punct.py by_path \
 
 - `validation_results.csv`
 - `validation_m_mismatches.csv`
+
+## MT Data Prep: On-Demand Audio Quality Scoring
+
+For corpora destined for machine translation training, run the
+on-demand audio quality pipeline ported from Jacob Ye's
+`Formosan-ILRDF_Dicts/data_validation/`. This is NOT part of the
+always-on QC suite (it has heavy ML dependencies and takes hours).
+
+**Heavy dependencies** (not in `requirements.txt`; see
+`requirements-audio-mt.txt`): `torch`, `torchaudio`, `torchcodec`,
+`allosaurus`, `Levenshtein`, `unidecode`.
+
+```bash
+pip install -r requirements-audio-mt.txt
+```
+
+The CTC pipeline also requires a sibling clone of Jacob's
+`data_quality_eval` repo (for the `utils_CTC.get_trellis` /
+`backtrack` helpers):
+
+```bash
+# clone next to FormosanBank so the default path resolves
+cd "$(dirname "$(pwd)")"
+git clone https://github.com/AI4CommSci/data_quality_eval
+```
+
+Stage 1 — score each `(audio, transcript)` pair on four mismatch metrics
+(`ctc`, `wer`, `cer`, `pdm`). Resumable: re-running skips
+sentence_ids already in `--out-csv`.
+
+```bash
+python QC/validation/validate_audio_quality.py \
+  --corpus_path Corpora/ePark \
+  --out-csv     Corpora/ePark/results/scores.csv \
+  --metrics     all
+```
+
+Stage 2 — turn the raw scores into a worklist by rank-normalizing each
+metric per-language and flagging the worst K%%. Output is
+`suspect_audio.csv`, sorted worst-first.
+
+```bash
+python QC/validation/flag_audio_suspicious.py \
+  --scores  Corpora/ePark/results/scores.csv \
+  --out     Corpora/ePark/results/suspect_audio.csv \
+  --worst-pct 5 --min-agreement 1
+```
+
+Stage 3 — interactive human triage of the worklist. Plays each clip,
+prompts for a single-key verdict (`c`/`w`/`u`/`s`/`p`/`n`/`b`/`q`),
+writes to `{Lang}_verdicts.csv`. Resumes from the first unverified
+row on re-run.
+
+```bash
+python QC/utilities/audio_manual_verify.py \
+  --suspicious Corpora/ePark/results/suspect_audio.csv \
+  --verdicts   Corpora/ePark/results/Amis_verdicts.csv
+```
+
+NOTE: the off-the-shelf wav2vec2 BASE_960H model is English-trained,
+so the absolute CTC/WER/CER values are meaningless — only the
+*relative* ranking within a language matters. A Formosan-tuned ASR
+model would turn this into absolute quality scoring; that's deferred.
 
 ## Interpreting Common Warnings
 

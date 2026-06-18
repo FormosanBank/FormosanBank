@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  C027 fixture (added 2026-06-12): the four zero-width / BOM codepoints
+  (U+200B ZERO WIDTH SPACE, U+200C ZERO WIDTH NON-JOINER, U+200D ZERO
+  WIDTH JOINER, U+FEFF ZERO WIDTH NO-BREAK SPACE / BOM) are invisible
+  source residue and must be stripped from EVERY tier: FORM (both kindOf
+  values) and TRANSL with ANY xml:lang including 'zho'. This is the
+  cleaner-side companion to the validator's HARD V131 / TR16 check.
+
+  Like NFC normalization (C010) it is a silent mechanical fix: no
+  CleanerWarnings row is emitted, and a second clean pass is a no-op
+  (idempotent). Entities are written numerically so the codepoints are
+  explicit and reviewable in source.
+-->
+<TEXT id="TEST_C027" citation="test" BibTeX_citation="@test{test}"
+      copyright="test" xml:lang="ami" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original">a&#x200B;b&#x200C;c&#x200D;d&#xFEFF;e</FORM>
+    <FORM kindOf="standard">a&#x200B;b&#x200C;c&#x200D;d&#xFEFF;e</FORM>
+    <TRANSL xml:lang="eng">zwsp&#x200B; zwnj&#x200C; zwj&#x200D; bom&#xFEFF;</TRANSL>
+    <TRANSL xml:lang="zho">&#x200B;&#x200C;&#x200D;&#xFEFF;</TRANSL>
+  </S>
+</TEXT>

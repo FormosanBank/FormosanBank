@@ -8,6 +8,13 @@ import sys
 import string
 from pathlib import Path
 
+# Make the QC package importable so we can reuse the shared dialect inventory
+# (the same single-vs-multi-dialect source used by fix_dialects.py and V036).
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+from QC.validation._dialect_inventory import is_multi_dialect_language
+
 
 '''
 def prettify(elem):
@@ -155,20 +162,34 @@ def main(args):
                         reader = csv.DictReader(f, delimiter='\t')
                         available_columns = reader.fieldnames
                     
-                    # Check that the available columns include the dialect name or IPA for default
-                    if dialect and dialect != "default":
-                        if dialect not in available_columns:
-                            print(f"Error: Dialect '{dialect}' not found in TSV columns for {language}: {available_columns}")
-                            continue
-                        target_column = dialect
-                    else:
-                        # No specific dialect: prefer 'IPA', fall back to 'default' column
-                        if 'IPA' in available_columns:
-                            target_column = 'IPA'
-                        elif 'default' in available_columns:
+                    # Pick the TSV column to read IPA from, driven by whether the
+                    # language actually has multiple dialects (per dialects.csv).
+                    # Single-dialect languages follow the convention dialect == the
+                    # language name (e.g. dialect="Yami"), so the dialect attribute is
+                    # NOT a column selector — we use the sole value column. Multi-dialect
+                    # languages select the column by dialect, falling back to 'default'.
+                    value_columns = [c for c in (available_columns or []) if c != 'letter']
+                    if is_multi_dialect_language(language):
+                        if dialect and dialect != "default" and dialect in value_columns:
+                            target_column = dialect
+                        elif 'default' in value_columns:
+                            if dialect and dialect not in ("default", "unknown"):
+                                print(f"Warning: Dialect '{dialect}' not found in TSV columns for {language}; using 'default' column: {available_columns}")
                             target_column = 'default'
                         else:
-                            print(f"Error: Neither 'IPA' nor 'default' column found in TSV for default encoding in {language}: {available_columns}")
+                            print(f"Error: Dialect '{dialect}' not found and no 'default' column in TSV for multi-dialect {language}: {available_columns}")
+                            continue
+                    else:
+                        # Single-dialect language: use the sole value column, whatever it
+                        # is named ('IPA', 'default', ...).
+                        if len(value_columns) == 1:
+                            target_column = value_columns[0]
+                        elif 'IPA' in value_columns:
+                            target_column = 'IPA'
+                        elif 'default' in value_columns:
+                            target_column = 'default'
+                        else:
+                            print(f"Error: No usable value column in TSV for single-dialect {language}: {available_columns}")
                             continue
                     
                     # Create array of pairs from 'letter' column and target column
@@ -189,19 +210,18 @@ def main(args):
                                         for char in target_value:
                                             ipa_characters.add(char)
                     
+                    # Map each element to its parent once (O(n)); ElementTree has
+                    # no getparent(), and scanning root.iter() per FORM made this
+                    # O(n^2) -- ~33 min on a 49k-sentence corpus.
+                    parent_map = {child: parent for parent in root.iter() for child in parent}
+
                     # Find all <FORM> elements with kindOf="standard"
                     standard_forms = root.findall('.//FORM[@kindOf="standard"]')
-                    
+
                     for form_element in standard_forms:
                         # Check if there's already a sister <PHON> element with kindOf="standard"
-                        parent = form_element.getparent() if hasattr(form_element, 'getparent') else None
-                        if parent is None:
-                            # Find parent using the tree structure
-                            for elem in root.iter():
-                                if form_element in list(elem):
-                                    parent = elem
-                                    break
-                        
+                        parent = parent_map.get(form_element)
+
                         if parent is not None:
                             # Check for existing standard PHON element
                             existing_phon = parent.find('PHON[@kindOf="standard"]')
@@ -250,6 +270,10 @@ def main(args):
                             if dialect and dialect != "default":
                                 if dialect in custom_available_columns:
                                     custom_target_column = dialect
+                                elif 'default' in custom_available_columns:
+                                    # Unknown dialect: fall back to the 'default' column
+                                    print(f"Warning: Dialect '{dialect}' not found in custom orthography for {language}; using 'default' column")
+                                    custom_target_column = 'default'
                                 elif 'IPA' in custom_available_columns:
                                     custom_target_column = 'IPA'
                                 else:
@@ -287,14 +311,8 @@ def main(args):
                                 
                                 for form_element in original_forms:
                                     # Check if there's already a sister <PHON> element with kindOf="original"
-                                    parent = form_element.getparent() if hasattr(form_element, 'getparent') else None
-                                    if parent is None:
-                                        # Find parent using the tree structure
-                                        for elem in root.iter():
-                                            if form_element in list(elem):
-                                                parent = elem
-                                                break
-                                    
+                                    parent = parent_map.get(form_element)
+
                                     if parent is not None:
                                         # Check for existing original PHON element
                                         existing_phon = parent.find('PHON[@kindOf="original"]')

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  C002 Branch B fixture: Chinese TRANSL containing title marks 《》 (書名號,
+  whole-work) and 〈〉 (篇名號, part-work) alongside a genuine corner-bracket
+  quotation 「」.
+
+  Expected after cleaning: 《》 and 〈〉 are TITLE marks, not quotes, and are
+  left untouched; the corner-bracket quotation 「讚」 collapses to the
+  full-width straight double quote U+FF02 (＂讚＂).
+-->
+<TEXT id="TEST_C002_ZH_TITLE" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original">Halo.</FORM>
+    <FORM kindOf="standard">Halo.</FORM>
+    <TRANSL xml:lang="zho">他讀《紅樓夢》的〈好了歌〉，說「讚」。</TRANSL>
+  </S>
+</TEXT>

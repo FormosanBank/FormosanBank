@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Negative fixture for V003 (S only appears as a direct child of TEXT).
+
+  Shape: a W contains an S child, which is forbidden.
+
+  Exercises: validate_xml.py should reject (currently does, via XSD).
+-->
+<TEXT id="V003_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original">Halo.</FORM>
+    <W id="S_1_W_1">
+      <FORM kindOf="original">Halo</FORM>
+      <S id="S_NESTED"><FORM kindOf="original">nope</FORM></S>
+    </W>
+  </S>
+</TEXT>

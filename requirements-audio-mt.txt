@@ -1,0 +1,24 @@
+# Heavy ML deps for the on-demand audio quality scoring pipeline:
+#   QC/validation/validate_audio_quality.py  (wav2vec2 + Allosaurus)
+#   QC/validation/flag_audio_suspicious.py   (rank-normalizes scores; pure-Python)
+#   QC/utilities/audio_manual_verify.py      (interactive triage)
+#
+# These are NOT installed by `pip install -r requirements.txt` because they
+# pull large model weights and take a long time. Install only when running
+# the MT data prep pipeline:
+#
+#     pip install -r requirements-audio-mt.txt
+#
+# Also required: a sibling clone of `data_quality_eval` next to
+# FormosanBank/, for the CTC alignment helpers. See QC/README.md.
+
+torch>=2.1
+torchaudio>=2.1
+# torchcodec is the modern decoder backend torchaudio is migrating to.
+# Pin only if the upstream wav2vec2 pipeline starts requiring it.
+torchcodec
+allosaurus
+Levenshtein
+unidecode
+# optional but recommended for the interactive verifier (single-keypress UX)
+readchar

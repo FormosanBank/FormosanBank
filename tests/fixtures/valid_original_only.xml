@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Positive fixture for the standardize copy-mode "add standard tier"
+  behavior, exercised at S, W, and M levels.
+
+  Shape: two TEXT-level sentences. S_2 has W (word-level) and M
+  (morpheme-level) structure, each with their own ORIGINAL-only FORM
+  tiers. No standard tier anywhere.
+
+  Exercises: standardize.py walks every element with a FORM child
+  (via XPath `.//FORM/..`), so S, W, and M all get standard tiers
+  added in copy mode. Catches a regression where the script only
+  operates at the S level.
+-->
+<TEXT id="TEST_OO" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original">Halo, hapinangha.</FORM>
+  </S>
+  <S id="S_2">
+    <FORM kindOf="original">Nawhani kako tayni i toron.</FORM>
+    <W id="S_2_W_1">
+      <FORM kindOf="original">Nawhani</FORM>
+      <M id="S_2_W_1_M_1">
+        <FORM kindOf="original">Naw</FORM>
+      </M>
+      <M id="S_2_W_1_M_2">
+        <FORM kindOf="original">hani</FORM>
+      </M>
+    </W>
+    <W id="S_2_W_2">
+      <FORM kindOf="original">kako</FORM>
+    </W>
+  </S>
+</TEXT>

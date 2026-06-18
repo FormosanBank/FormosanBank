@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  C001 positive fixture: full-width parentheses survive in Chinese TRANSL.
+
+  Shape: one S, both FORM tiers (no full-width content), plus an S-level
+  TRANSL with xml:lang="zho" carrying full-width parens. Root TEXT is
+  xml:lang="ami".
+  Exercises: clean_trans intentionally skips swap_punctuation, so even
+  without language-awareness the cleaner leaves Chinese TRANSL alone.
+  This is the desired behavior today; the cleaner gets the right answer
+  for the wrong reason (the asymmetry is implicit, not language-aware).
+-->
+<TEXT id="TEST_C001_ZH" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original">Halo.</FORM>
+    <FORM kindOf="standard">Halo.</FORM>
+    <TRANSL xml:lang="zho">你好（世界）。</TRANSL>
+  </S>
+</TEXT>

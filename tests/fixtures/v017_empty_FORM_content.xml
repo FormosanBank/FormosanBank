@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Negative fixture for V017 (FORM has non-empty text content).
+
+  Shape: a FORM with kindOf="original" and empty text content.
+
+  Exercises: validate_xml.py should reject. Currently XSD allows xs:string
+  with no minLength so this is NOT enforced; xfail.
+-->
+<TEXT id="V017_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original"></FORM>
+  </S>
+</TEXT>

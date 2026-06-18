@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  C019 positive pin: non-standard letterform đ (U+0111, LATIN SMALL
+  LETTER D WITH STROKE) in Bunun FORM survives cleaning byte-exact.
+
+  Shape: one S, both FORM tiers, each carrying đ in a Bunun-looking
+  word. xml:lang="bnn".
+  Exercises: the cleaner must not silently substitute đ for "d" or
+  anything else. The pin guards against a future re-enabling of the
+  dead remove_nonlatin function or addition of a "standardize-non-ASCII"
+  rule. Today this passes trivially (the cleaner has no rule against
+  đ); the pin documents the requirement.
+-->
+<TEXT id="TEST_C019" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="bnn" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original">manaq đaiŋaz.</FORM>
+    <FORM kindOf="standard">manaq đaiŋaz.</FORM>
+  </S>
+</TEXT>

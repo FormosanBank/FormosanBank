@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Negative fixture for V016 (FORM/@kindOf is a known value).
+
+  Shape: a FORM with kindOf="draft", which is not in the enum
+  {original, standard, alternate}.
+
+  Exercises: validate_xml.py should reject (currently does, via XSD enum).
+-->
+<TEXT id="V016_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="draft">Halo.</FORM>
+  </S>
+</TEXT>

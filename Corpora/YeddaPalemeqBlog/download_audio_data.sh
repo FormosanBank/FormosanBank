@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# Script to download all FormosanBank ILRDF_Dict datasets using git lfs clone
-# This script finds all datasets starting with "ILRDF_Dict" and downloads them one by one
+# Script to download all FormosanBank YeddaPalemeqBlog datasets using git lfs clone
+# This script finds all datasets starting with "YeddaPalemeqBlog" and downloads them one by one
 
 
 # Exit on any error (except for debug block below)
 set -e
 
-echo "🔍 Finding all FormosanBank ILRDF_Dict datasets..."
+echo "🔍 Finding all FormosanBank YeddaPalemeqBlog datasets..."
 
 # Check if git is installed
 echo "🔧 Checking prerequisites..."
@@ -45,21 +45,21 @@ if ! git lfs install; then
     exit 1
 fi
 
-# Get list of all FormosanBank datasets and filter for ILRDF_Dict ones
+# Get list of all FormosanBank datasets and filter for YeddaPalemeqBlog ones
 echo "Fetching dataset list from FormosanBank organization..."
 
-# Get list of all FormosanBank datasets and filter for ILRDF_Dict ones
-datasets=$(hf datasets ls --author FormosanBank --limit 1000 --format json 2>/dev/null | jq -r '.[] | select(.id | startswith("FormosanBank/ILRDF_Dict_")) | .id | sub("FormosanBank/"; "")')
+# Get list of all FormosanBank datasets and filter for YeddaPalemeqBlog ones
+datasets=$(hf datasets ls --author FormosanBank --limit 1000 --format json | jq -r '.[] | select(.id | startswith("FormosanBank/YeddaPalemeqBlog_")) | .id | sub("FormosanBank/"; "")')
 
 if [[ -z "$datasets" ]]; then
-    echo "❌ No ILRDF_Dict datasets found or unable to fetch dataset list."
+    echo "❌ No YeddaPalemeqBlog datasets found or unable to fetch dataset list."
     echo "💡 Make sure you're logged in: hf auth login"
     echo "💡 And that the FormosanBank organization exists and has public datasets"
     echo "💡 Also check if jq is installed: brew install jq"
     exit 1
 fi
 
-echo "📋 Found the following ILRDF_Dict datasets:"
+echo "📋 Found the following YeddaPalemeqBlog datasets:"
 echo "$datasets"
 echo ""
 
@@ -76,8 +76,8 @@ current=1
 for dataset in $datasets; do
     echo "📦 [$current/$total_datasets] Downloading: FormosanBank/$dataset"
     
-    # Clean up dataset name for directory (remove ILRDF_Dict_ prefix and replace any forward slashes with underscores)
-    clean_name=$(echo "$dataset" | sed 's/^ILRDF_Dict_//' | tr '/' '_')
+    # Clean up dataset name for directory (remove YeddaPalemeqBlog_ prefix and replace any forward slashes with underscores)
+    clean_name=$(echo "$dataset" | sed 's/^YeddaPalemeqBlog_//' | tr '/' '_')
     target_dir="$download_dir/$clean_name"
     
     # Skip if already exists
@@ -130,7 +130,7 @@ echo "📁 All datasets downloaded to: $download_dir"
 # Summary
 echo ""
 echo "📊 Summary:"
-echo "Total ILRDF_Dict datasets found: $total_datasets"
+echo "Total YeddaPalemeqBlog datasets found: $total_datasets"
 downloaded=$(find "$download_dir" -maxdepth 1 -type d ! -path "$download_dir" | wc -l)
 echo "Successfully downloaded: $downloaded"
 

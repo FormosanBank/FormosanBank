@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Test fixture for QC/validation/fix_ids.py.
+
+  W1: M-id collision (two <M id="W1M2"> in a row). After renumber-by-
+      position, M ids should be W1M1, W1M2, W1M3, W1M4.
+  W2: M-id gap (M1, M2, M4 — no M3). After renumber-by-position,
+      M ids should be W2M1, W2M2, W2M3.
+  W3: already sequential (W3M1, W3M2). fix_ids.py should leave these
+      alone (the per-M check `old != new` makes it a no-op for this W).
+
+  S has no FORM siblings here for compactness; the V010 SOFT rule
+  counts that but it's not relevant to fix_ids.py behavior.
+-->
+<TEXT id="fixids_test" citation="t" BibTeX_citation="@t{t}" copyright="t" xml:lang="ami" dialect="unknown">
+  <S id="S1">
+    <FORM kindOf="original">x</FORM>
+    <FORM kindOf="standard">x</FORM>
+    <W id="W1">
+      <FORM kindOf="original">w1</FORM>
+      <M id="W1M1"><FORM kindOf="original">a</FORM></M>
+      <M id="W1M2"><FORM kindOf="original">b</FORM></M>
+      <M id="W1M2"><FORM kindOf="original">c</FORM></M>
+      <M id="W1M4"><FORM kindOf="original">d</FORM></M>
+    </W>
+    <W id="W2">
+      <FORM kindOf="original">w2</FORM>
+      <M id="W2M1"><FORM kindOf="original">p</FORM></M>
+      <M id="W2M2"><FORM kindOf="original">q</FORM></M>
+      <M id="W2M4"><FORM kindOf="original">r</FORM></M>
+    </W>
+    <W id="W3">
+      <FORM kindOf="original">w3</FORM>
+      <M id="W3M1"><FORM kindOf="original">y</FORM></M>
+      <M id="W3M2"><FORM kindOf="original">z</FORM></M>
+    </W>
+  </S>
+</TEXT>

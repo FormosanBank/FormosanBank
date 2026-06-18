@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Negative fixture for V004 (W only appears as a child of S).
+
+  Shape: a W appears as a direct child of TEXT, without an enclosing S.
+
+  Exercises: validate_xml.py should reject (currently does, via XSD).
+-->
+<TEXT id="V004_NEG" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="ami" dialect="unknown">
+  <W id="W_1">
+    <FORM kindOf="original">Halo</FORM>
+  </W>
+</TEXT>
