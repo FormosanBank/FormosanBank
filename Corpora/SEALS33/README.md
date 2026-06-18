@@ -1,5 +1,9 @@
 # SEALS conference website
 
+## License and AI Use
+
+This corpus is subject to its source license and the central FormosanBank terms in [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI Use is prohibited without prior written permission.
+
 This repository contains the translated sections of the [2024 SEALS conference](https://sites.google.com/view/seals33/national-languages?authuser=0), graciously provided by the authors. 
 
 The 2024 South East Asian Linguistic Society meeting took place in Taipei. The main page of the website were available in Seediq and Saisiyat, as well as Mandarin and English. 

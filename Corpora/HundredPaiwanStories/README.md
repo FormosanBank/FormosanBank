@@ -1,3 +1,7 @@
+## License and AI Use
+
+This corpus is subject to its source license and the central FormosanBank terms in [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI Use is prohibited without prior written permission.
+
 An original Word document was provided by R. J. Early. Preparation involved the following steps:
 
 1. The free translation was not always on its own line. This was fixed manually, the result being `Original/Paiwan Ch2.docx`. 

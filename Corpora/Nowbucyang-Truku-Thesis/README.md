@@ -1,5 +1,9 @@
 # Formosan-Lowking-Truku-WordFormation
 
+## License and AI Use
+
+This corpus is subject to its source license and the central FormosanBank terms in [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI Use is prohibited without prior written permission.
+
 This package extracts XML-eligible Truku linguistic examples from Lowking Wei-Cheng Hsu / 許韋晟, 2008, 太魯閣語構詞法研究 [Word Formation in Truku].
 
 The workflow uses qpdf decryption and PDF text-layer extraction (`pdftotext -layout`, PyMuPDF, pdfplumber). OCR was not used.

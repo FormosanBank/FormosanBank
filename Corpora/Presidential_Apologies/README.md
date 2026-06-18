@@ -1,5 +1,9 @@
-
 # Presidential Apologies Data
+
+## License and AI Use
+
+This corpus is subject to its source license and the central FormosanBank terms in [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI Use is prohibited without prior written permission.
+
 
 This repository contains code and data for processing and structuring translations of the Presidential Apology issued by the President of Taiwan towards Indigenous communities. The apology is available in the 16 official Formosan languages, as well as in Chinese and English translations. The data is organized to facilitate linguistic analysis and cultural preservation.
 

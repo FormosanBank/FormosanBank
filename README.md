@@ -1,5 +1,9 @@
 # Corpora
 
+## License and AI Use
+
+FormosanBank materials are subject to corpus-specific source licenses and the central terms in [LICENSE.md](LICENSE.md), [NOTICE-AI.md](NOTICE-AI.md), and [AI-USE-ADDENDUM.md](AI-USE-ADDENDUM.md). Commercial AI Use is prohibited without prior written permission.
+
 ## Corpus Growth
 
 ![FormosanBank corpus size over time](statistics/corpus_size_over_time.png)

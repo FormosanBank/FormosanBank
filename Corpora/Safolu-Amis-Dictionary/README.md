@@ -1,5 +1,9 @@
 # Safolu Amis Dictionary
 
+## License and AI Use
+
+This corpus is subject to its source license and the central FormosanBank terms in [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI Use is prohibited without prior written permission.
+
 The **Safolu (Tsai Chung-Han / 蔡中涵) Amis dictionary** from the g0v Amis Moedict
 project, converted into valid FormosanBank XML.
 

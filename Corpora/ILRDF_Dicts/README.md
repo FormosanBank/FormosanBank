@@ -1,5 +1,9 @@
-
 # ILRDF Data
+
+## License and AI Use
+
+This corpus is subject to its source license and the central FormosanBank terms in [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI Use is prohibited without prior written permission.
+
 
 This repository contains code and data for processing and structuring Formosan language dictionaries provided by the Indigenous Languages Research and Development Foundation ([ILRDF](https://www.ilrdf.org.tw/)). The project includes handling dictionary data, downloading audio for words, and organizing the data into structured XML format.
 

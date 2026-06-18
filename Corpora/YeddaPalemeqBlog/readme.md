@@ -1,5 +1,9 @@
 # Yedda Palemek's Blog 
 
+## License and AI Use
+
+This corpus is subject to its source license and the central FormosanBank terms in [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI Use is prohibited without prior written permission.
+
 This repository contains code and data for scraping and processing Formosan videos of the Paiwan Language (Southern Dialect); The blog can be found [here](https://yeddapalemeq.blogspot.com/). This scrape entails all of the 'Paiwan Every Day' posts, of which there are roughly 660
 
 > [!WARNING]
