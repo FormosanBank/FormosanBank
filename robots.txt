@@ -1,0 +1,28 @@
+# FormosanBank crawler and AI-use policy template
+#
+# This file is intended for FormosanBank-controlled web hosts and mirrors.
+# GitHub itself may not serve repository-level robots.txt as a site policy.
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: *
+Allow: /
+
+# Search indexing is allowed. AI training and AI input use are not.
+Content-Signal: search=yes, ai-train=no, ai-input=no

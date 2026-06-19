@@ -1,5 +1,9 @@
 # Formosan-Tang-Recordings-of-Taroko
 
+## License and AI Use
+
+This corpus is subject to its source license and the central FormosanBank terms in [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI Use is prohibited without prior written permission.
+
 These audio files were collected by Prof. Apay Tang, a member of the Truku tribe and a prominent perservationist and revitalizationist in the community. While permanently archived at Paradisec, Prof. Tang graciously agreed to include the audio in FormosaBank.
 
 None of the audio are transcribed. There is slightly more meta-data at Paradisec, but not much.

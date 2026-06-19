@@ -1,5 +1,9 @@
 # NTU Paiwan ASR Corpus
 
+## License and AI Use
+
+This corpus is subject to its source license and the central FormosanBank terms in [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI Use is prohibited without prior written permission.
+
 Paiwan (`pwn`) speech data collected by [Professor Li-May Sung](https://homepage.ntu.edu.tw/~gilntu/Faculty/Li-May_Sung.html)
 at National Taiwan University, comprising **read text** (participants reading prepared passages) and
 **spontaneous speech** (elicited narratives and topics). Collected over two field years and published

@@ -1,5 +1,9 @@
 # Siraya Gospels of Gravius
 
+## License and AI Use
+
+This corpus is subject to its source license and the central FormosanBank terms in [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI Use is prohibited without prior written permission.
+
 In the 1600s, Gravius translated John and Matthew to Siraya. The translations were published side-by-side with a Dutch translation.
 
 These were digitized through a combination of OCR and hand correction (though the Dutch has not yet been fully corrected.)

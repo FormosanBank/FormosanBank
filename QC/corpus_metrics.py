@@ -107,6 +107,16 @@ def repo_root_from(path: Path) -> Path:
     return Path(root) if root else path.resolve()
 
 
+def git_metadata(corpora_path: Path) -> dict[str, str | None]:
+    """Return git metadata for the repo that contains the corpus path."""
+    return {
+        "commit": git_value(["rev-parse", "HEAD"], corpora_path)
+        or os.environ.get("GITHUB_SHA"),
+        "ref": git_value(["branch", "--show-current"], corpora_path)
+        or os.environ.get("GITHUB_REF_NAME"),
+    }
+
+
 def find_xml_files(corpora_path: Path) -> list[Path]:
     xml_files = []
     for xml_file in corpora_path.rglob("*.xml"):
@@ -225,12 +235,7 @@ def build_metrics(corpora_path: Path, records: list[dict[str, Any]], parse_error
         "generated_at": now_utc(),
         "corpora_path": str(corpora_path),
         "counting": "standard tier (original fallback); tokens are whitespace chunks containing a letter or digit",
-        "git": {
-            "commit": os.environ.get("GITHUB_SHA")
-            or git_value(["rev-parse", "HEAD"], corpora_path),
-            "ref": os.environ.get("GITHUB_REF_NAME")
-            or git_value(["branch", "--show-current"], corpora_path),
-        },
+        "git": git_metadata(corpora_path),
         "totals": totals,
         "by_source": by_source,
         "by_language": by_language,

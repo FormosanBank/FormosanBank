@@ -1,5 +1,9 @@
-
 # GitBook Translations
+
+## License and AI Use
+
+This corpus is subject to its source license and the central FormosanBank terms in [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI Use is prohibited without prior written permission.
+
 
 These are translations of the FormosanBank GitBook into Formosan languages. So far, there is only Eastern Paiwan, generously contributed by Ruan Xuan.
 

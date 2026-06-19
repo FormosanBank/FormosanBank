@@ -1,5 +1,9 @@
 # ePark Data
 
+## License and AI Use
+
+This corpus is subject to its source license and the central FormosanBank terms in [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI Use is prohibited without prior written permission.
+
 This repository contains code and data for processing and structuring the ePark dataset into the [FormosanBank XML format](https://ai4commsci.gitbook.io/formosanbank/the-bank-architecture/formosanbank-xml-format). The dataset includes various Formosan dialects and is organized to assist in linguistic research and language preservation.
 
 ## Project Structure
