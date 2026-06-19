@@ -1,8 +1,7 @@
 # FormosanBank AI Use Addendum
 
-Draft version: 0.1
+Version: 0.1
 Date: 2026-06-18
-Status: review draft, not legal advice
 
 This addendum clarifies FormosanBank's existing Terms of Use and contributor expectations. It is intended to make commercial AI mining of FormosanBank corpora expressly outside the public permission grant.
 
@@ -68,7 +67,7 @@ The following uses are not licensed without prior written permission:
 8. Laundering the Materials through paraphrase, translation, synthetic-data generation, OCR, ASR, normalization, tokenization, deduplication, aggregation, or format conversion to evade these terms.
 9. Claiming a model, dataset, or product is unconnected to FormosanBank when the Materials were used directly or indirectly in its creation, training, evaluation, validation, or improvement.
 
-## Aggressive Clause: Unauthorized Commercial AI Use
+## Unauthorized Commercial AI Use
 
 This section is intended for access flows where users have notice of this addendum, especially gated downloads, account-based downloads, API access, dataset-card acceptance, or other clickwrap-like access flows.
 
