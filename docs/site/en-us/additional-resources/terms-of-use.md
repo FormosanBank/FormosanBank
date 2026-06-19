@@ -10,7 +10,9 @@ You are free to use and redistribute FormosanBank materials subject to the follo
 
 ### No Commercial AI Use
 
-The corpora of FormosanBank, or any derivative works thereof, may not be used, in whole or in part, for the development, training, testing, or deployment of artificial intelligence systems, algorithms, or models intended for commercial purposes. This includes, but not limited to, technologies designed to generate text for commercial purposes or capable of creating works in the same style or genre as the corpus.
+The corpora of FormosanBank, or any derivative works thereof, may not be used, in whole or in part, for the development, training, testing, or deployment of artificial intelligence systems, algorithms, or models intended for commercial purposes. This includes, but is not limited to, technologies designed to generate text for commercial purposes or capable of creating works in the same style or genre as the corpus.
+
+For definitions, examples, and the permission process, see [AI Use and Commercial Licensing](ai-use-and-commercial-licensing.md).
 
 ***
 

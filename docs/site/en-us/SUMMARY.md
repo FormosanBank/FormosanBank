@@ -82,5 +82,6 @@
   * [Septemper 2023](additional-resources/newsletters/septemper-2023.md)
 * [Publications](additional-resources/publications.md)
 * [Terms of Use](additional-resources/terms-of-use.md)
+* [AI Use and Commercial Licensing](additional-resources/ai-use-and-commercial-licensing.md)
 * [Acknowledgements](additional-resources/acknowledgements.md)
 * [Contributing to FormosanBank](additional-resources/contributing-to-formosanbank.md)
