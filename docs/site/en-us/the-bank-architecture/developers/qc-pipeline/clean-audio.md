@@ -8,15 +8,15 @@ icon: broom
 
 ## What it's for
 
-`clean_audio.py` is the cleanup half of the audio-validation loop. [validate_audio.py](validate-audio.md) inspects a corpus's `<AUDIO>` references and writes a `broken_audio.csv` of entries that are missing, unreadable, or otherwise unusable. This script consumes that CSV and surgically removes each listed `<AUDIO>` element from its containing XML file, so the published corpus no longer points at audio that does not work.
+`clean_audio.py` is the cleanup half of the audio-validation loop. [validate_audio.py](validate-audio.md) inspects a corpus's `<AUDIO>` references and writes a `broken_audio.csv` of entries that are missing, unreadable, or otherwise unusable. This script consumes that CSV and removes each listed `<AUDIO>` element from its containing XML file, so the published corpus no longer points at audio that does not work.
 
 It replaces the legacy `remove_non_working_audio.py`, which hardcoded ePark's `Final_audio`/`Final_XML` paths, had no CLI, and silently failed to delete audio files on disk.
 
 ## How it works
 
-The script reads `--broken_csv` (expected columns: `xml_file`, `audio_file`, `kind`; extra columns are preserved). Rows are grouped by `xml_file` so each XML is opened at most once. The `xml_file` column is trusted as an absolute path and used directly.
+The script reads `--broken_csv`. Current validator output includes `xml_file`, `audio_file`, `element_id`, `start`, `end`, and `kind`; legacy CSVs with only `xml_file`, `audio_file`, and `kind` are still accepted. Rows are grouped by `xml_file` so each XML is opened at most once. The `xml_file` column is trusted as an absolute path and used directly.
 
-For each XML file, it parses with `lxml`, collects every `<AUDIO>` element whose `file` attribute matches one of the broken `audio_file` names for that file, and removes those elements from their parents. The tree is then written back with `tree.write(..., encoding="utf-8", xml_declaration=True)`. Any target audio filename that was *not* found in the XML is reported as a warning (so an operator can investigate) rather than silently ignored.
+For each XML file, it parses with `lxml` and removes the matching `<AUDIO>` element. When locator columns are present, matching is scoped by `element_id` plus `start`/`end`, so repeated references to the same audio file are not all removed by accident. When locator columns are absent, it falls back to the older filename-only behavior. The tree is then written back with `tree.write(..., encoding="utf-8", xml_declaration=True)`. Any target reference that was *not* found in the XML is reported as a warning (so an operator can investigate) rather than silently ignored.
 
 If `--also-delete-files` is set, the script searches recursively under `<corpus_path>/Audio/` (via `rglob`, because corpora often nest by sub-corpus/language) for each broken filename and deletes every match. Missing files and `OSError`s are reported as warnings.
 
