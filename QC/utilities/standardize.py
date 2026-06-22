@@ -56,6 +56,14 @@ def get_files(path, language):
 
     return to_check
 
+
+def get_exploration_targets(corpora_path, corpus=None):
+    if corpus:
+        return [os.path.join(corpora_path, corpus)]
+    if os.path.isfile(corpora_path) and corpora_path.endswith('.xml'):
+        return [corpora_path]
+    return [os.path.join(corpora_path, x) for x in os.listdir(corpora_path)]
+
 def apply_standard(s_element, standard):
     form = s_element.find("FORM[@kindOf='standard']")
     if form.text:
@@ -119,11 +127,7 @@ def main(args):
             reader = csv.DictReader(f, delimiter='\t')
             available_columns = reader.fieldnames
     
-    if args.corpus:
-        to_explore = [os.path.join(args.corpora_path, args.corpus)]
-    else:
-        to_explore = os.listdir(args.corpora_path)
-        to_explore = [os.path.join(args.corpora_path, x) for x in to_explore]
+    to_explore = get_exploration_targets(args.corpora_path, args.corpus)
 
     for corpus in to_explore:
         print(f"Processing corpus: {corpus}")
@@ -263,6 +267,8 @@ if __name__ == "__main__":
     if not os.path.exists(args.corpora_path):
         parser.error(f"The entered corpora path doesn't exists: {args.corpora_path}")
     if args.corpus:
+        if os.path.isfile(args.corpora_path):
+            parser.error("--corpus cannot be used when --corpora_path is a file.")
         if not os.path.exists(os.path.join(args.corpora_path, args.corpus)):
             parser.error(f"The entered corpus doesn't exist: {os.path.join(args.corpora_path, args.corpus)}")
     if args.language and args.language not in langs:

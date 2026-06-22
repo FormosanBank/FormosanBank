@@ -125,6 +125,44 @@ def test_missing_audio_file_lands_with_kind_missing(tmp_path):
     assert any(r["audio_file"] == "does_not_exist.wav" and r["kind"] == "missing" for r in rows), (
         f"expected kind=missing entry; rows={rows}"
     )
+    row = next(r for r in rows if r["audio_file"] == "does_not_exist.wav")
+    assert row["element_id"] == "S_1"
+    assert row["start"] == "0"
+    assert row["end"] == "1"
+
+
+def test_text_audio_attribute_fileless_child_refs_are_validated(tmp_path):
+    """TEXT/@audio is the shared-file pattern allowed by validate_xml.py.
+
+    Sentence/word AUDIO elements in this mode carry start/end but no own
+    file attribute. validate_audio must still resolve/check the shared
+    TEXT-level file rather than silently skipping the child range.
+    """
+    corpus, xml_dir, audio_dir = _make_corpus(tmp_path)
+    xml = xml_dir / "test.xml"
+    root = ET.Element("TEXT", attrib={
+        "id": "TEST",
+        "citation": "t",
+        "BibTeX_citation": "@t{t}",
+        "copyright": "t",
+        "xml:lang": "ami",
+        "audio": "shared.wav",
+    })
+    s = ET.SubElement(root, "S", attrib={"id": "S_1"})
+    ET.SubElement(s, "FORM", attrib={"kindOf": "original"}).text = "Halo."
+    ET.SubElement(s, "AUDIO", attrib={"start": "0", "end": "1"})
+    ET.ElementTree(root).write(str(xml), encoding="utf-8", xml_declaration=True)
+
+    log_dir = tmp_path / "logs"
+    proc = _run(xml_dir, audio_dir, log_dir)
+    assert proc.returncode != 0, "missing shared TEXT/@audio file should be HARD"
+    rows = _read_broken_csv(log_dir)
+    assert any(
+        r["audio_file"] == "shared.wav"
+        and r["element_id"] == "S_1"
+        and r["kind"] == "missing"
+        for r in rows
+    ), f"expected missing row for shared TEXT/@audio child ref; rows={rows}"
 
 
 def test_unloadable_audio_file_lands_with_kind_unloadable(tmp_path):

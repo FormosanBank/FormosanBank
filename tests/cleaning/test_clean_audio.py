@@ -53,7 +53,10 @@ def _audio_refs(xml_path: Path) -> list[str]:
 def _write_broken_csv(path: Path, rows: list[dict]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=["xml_file", "audio_file", "kind"])
+        writer = csv.DictWriter(
+            f,
+            fieldnames=["xml_file", "audio_file", "element_id", "start", "end", "kind"],
+        )
         writer.writeheader()
         writer.writerows(rows)
 
@@ -130,6 +133,53 @@ def test_apply_removes_audio_element(tmp_path):
     refs = _audio_refs(xml)
     assert audio_filename not in refs, f"broken audio not removed; refs={refs}"
     assert "good.wav" in refs, "untargeted audio incorrectly removed"
+
+
+def test_apply_uses_locator_columns_for_repeated_audio_filename(tmp_path):
+    corpus, xml_dir, audio_dir = _make_corpus(tmp_path)
+    audio_filename = "shared.wav"
+    (audio_dir / audio_filename).write_bytes(b"")
+
+    xml = xml_dir / "test.xml"
+    root = ET.Element("TEXT", attrib={
+        "id": "TEST_AUDIO",
+        "citation": "test",
+        "BibTeX_citation": "@test{test}",
+        "copyright": "test",
+        "xml:lang": "ami",
+    })
+    for s_id, start, end in (("S_1", "0", "1"), ("S_2", "1", "2")):
+        s = ET.SubElement(root, "S", attrib={"id": s_id})
+        ET.SubElement(s, "FORM", attrib={"kindOf": "original"}).text = s_id
+        ET.SubElement(s, "FORM", attrib={"kindOf": "standard"}).text = s_id
+        ET.SubElement(s, "AUDIO", attrib={
+            "file": audio_filename,
+            "start": start,
+            "end": end,
+        })
+    ET.ElementTree(root).write(str(xml), encoding="utf-8", xml_declaration=True)
+
+    broken_csv = tmp_path / "broken_audio.csv"
+    _write_broken_csv(broken_csv, [{
+        "xml_file": str(xml),
+        "audio_file": audio_filename,
+        "element_id": "S_2",
+        "start": "1",
+        "end": "2",
+        "kind": "invalid_range",
+    }])
+
+    proc = _run(corpus, broken_csv, "--apply")
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    root = ET.parse(xml).getroot()
+    remaining = [
+        (s.get("id"), s.find("AUDIO").get("start"))
+        for s in root.findall(".//S")
+        if s.find("AUDIO") is not None
+    ]
+    assert remaining == [("S_1", "0")], (
+        "locator row should remove only S_2's AUDIO, not every shared.wav reference"
+    )
 
 
 def test_apply_removes_regardless_of_kind(tmp_path):

@@ -68,6 +68,31 @@ def test_html_entities_round_trip_without_double_encoding(tmp_path, fixtures_dir
         )
 
 
+def test_html_unescape_happens_before_other_form_cleanups(tmp_path):
+    """A FORM needing both html.unescape and whitespace cleanup should keep both.
+
+    Regression pin for the branch where the cleaner wrote the unescaped text,
+    then ran clean_text on the original escaped string and could overwrite the
+    unescape when whitespace/punctuation cleanup also changed the same FORM.
+    """
+    work = tmp_path / "double_encoded.xml"
+    work.write_text(
+        '<?xml version="1.0" encoding="utf-8"?>\n'
+        '<TEXT id="T" citation="t" BibTeX_citation="@t{t}" '
+        'copyright="t" xml:lang="ami">'
+        '<S id="S_1">'
+        '<FORM kindOf="original">&amp;quot;foo  bar&amp;quot;</FORM>'
+        '<TRANSL xml:lang="eng">x</TRANSL>'
+        '</S>'
+        '</TEXT>',
+        encoding="utf-8",
+    )
+    proc = _run_clean(tmp_path)
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    forms = _form_texts(work)
+    assert forms == ['"foo bar"'], f"expected unescaped and whitespace-cleaned FORM: {forms!r}"
+
+
 def test_whitespace_is_normalized(tmp_path, fixtures_dir, copy_fixture):
     work = copy_fixture(fixtures_dir / "xml_with_whitespace_problems.xml", tmp_path)
     proc = _run_clean(tmp_path)

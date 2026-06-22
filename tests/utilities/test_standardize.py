@@ -72,6 +72,13 @@ def test_copy_adds_standard_tier_when_only_original_exists(tmp_path, fixtures_di
     ]
 
 
+def test_copy_accepts_single_xml_corpora_path(tmp_path, fixtures_dir, copy_fixture):
+    work = copy_fixture(fixtures_dir / "valid_original_only.xml", tmp_path)
+    proc = _run_standardize(["--copy", "--corpora_path", str(work)])
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    assert _standard_forms(work) == _original_forms(work)
+
+
 def test_copy_overwrites_existing_standard_tier(tmp_path, fixtures_dir, copy_fixture):
     work = copy_fixture(fixtures_dir / "valid_both_tiers.xml", tmp_path)
     proc = _run_standardize(["--copy", "--corpora_path", str(tmp_path)])

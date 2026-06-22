@@ -568,7 +568,10 @@ def analyze_and_modify_xml_file(
                 modified = False
 
                 for sentence in root.findall('.//S'):
+                    # Intentionally includes descendant W/M FORM tiers; they
+                    # receive the same punctuation/Unicode cleanup as S FORM.
                     form_elements = sentence.findall('.//FORM')
+                    sentence_removed = False
                     for form_element in form_elements:
                         if form_element is not None:
                             form_text = form_element.text
@@ -577,42 +580,50 @@ def analyze_and_modify_xml_file(
                             if warnings is not None:
                                 for ch, pos in _find_bopomofo(form_text):
                                     warnings.add("c007", xml_file, sentence.get("id"), ch, pos)
-                            if form_text != unicodedata.normalize("NFC", form_text):
-                                form_element.text = unicodedata.normalize("NFC", form_text)
+                            working_text = unicodedata.normalize("NFC", form_text)
+                            if form_text != working_text:
+                                form_element.text = working_text
                                 modified = True
 
                             # Handle specific <FORM> cases
-                            if "456otca" in form_text:  # Remove <S> if text contains 456otca
+                            if "456otca" in working_text:  # Remove <S> if text contains 456otca
                                 root.remove(sentence)
                                 modified = True
+                                sentence_removed = True
+                                break
                             else:
-                                if html.unescape(form_text) != form_text:  # Replace HTML entities
+                                unescaped_text = html.unescape(working_text)
+                                if unescaped_text != working_text:  # Replace HTML entities
                                     print('HTML entities found')
                                     # log the change
                                     with open(os.path.join(corpora_dir,"html_entities.log"), "a") as f:
                                         f.write(f"{xml_file}:\n")
-                                        f.write(f"Original: {form_text}\n")
-                                        f.write(f"Modified: {html.unescape(form_text)}\n\n")
-                                    form_element.text = html.unescape(form_text)
+                                        f.write(f"Original: {working_text}\n")
+                                        f.write(f"Modified: {unescaped_text}\n\n")
+                                    working_text = unescaped_text
+                                    form_element.text = working_text
                                     modified = True
                                 cleaned_form_text = clean_text(
-                                    form_text,
+                                    working_text,
                                     lang="na",
                                     xml_file=xml_file,
                                     s_id=sentence.get("id"),
                                     warnings=warnings,
                                     counter=counter,
                                 )
-                                if cleaned_form_text != form_text:
+                                if cleaned_form_text != working_text:
                                     form_element.text = cleaned_form_text
                                     modified = True
 
                                 # C022: warn on each '*' in any FORM (any position).
                                 # FORM text is preserved (no removal).
-                                if warnings is not None and "*" in form_text:
-                                    for i, ch in enumerate(form_text):
+                                if warnings is not None and "*" in cleaned_form_text:
+                                    for i, ch in enumerate(cleaned_form_text):
                                         if ch == "*":
                                             warnings.add("c022", xml_file, sentence.get("id"), ch, i)
+
+                    if sentence_removed:
+                        continue
 
                     # C012: handle hyphens in S-level FORM[@kindOf="standard"] only.
                     # Must run AFTER clean_text so any clean_text output is included.

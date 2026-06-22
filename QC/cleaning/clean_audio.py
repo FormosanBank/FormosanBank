@@ -2,6 +2,9 @@
 
 Consumes a `broken_audio.csv` produced by `QC/validation/validate_audio.py`
 and removes each listed `<AUDIO>` element from its containing XML file.
+When the CSV includes `element_id`, `start`, and `end` locator columns,
+the removal is scoped to that exact reference; legacy CSVs with only
+`xml_file`, `audio_file`, and `kind` still fall back to filename matching.
 Optionally also deletes the audio file from disk.
 
 CLI shape:
@@ -57,31 +60,90 @@ def group_by_xml(rows: list[dict]) -> dict[Path, list[dict]]:
     return out
 
 
+def _row_label(row: dict) -> str:
+    bits = [row.get("audio_file", "")]
+    if row.get("element_id"):
+        bits.append(f"id={row['element_id']}")
+    if row.get("start") or row.get("end"):
+        bits.append(f"{row.get('start', '')}-{row.get('end', '')}")
+    return " ".join(bit for bit in bits if bit)
+
+
+def _candidate_parents(root: etree._Element, row: dict) -> list[etree._Element]:
+    element_id = row.get("element_id", "")
+    if not element_id:
+        return [root]
+    if element_id == "TEXT":
+        return [root]
+    matches = [elem for elem in root.iter() if elem.get("id") == element_id]
+    return matches
+
+
+def _matches_audio_row(audio_elem: etree._Element, row: dict, root_audio: str | None) -> bool:
+    audio_file = row.get("audio_file", "")
+    if not audio_file:
+        return False
+
+    elem_file = audio_elem.get("file")
+    if elem_file:
+        if elem_file != audio_file:
+            return False
+    elif root_audio != audio_file:
+        return False
+
+    for attr in ("start", "end"):
+        expected = row.get(attr, "")
+        if expected and audio_elem.get(attr, "") != expected:
+            return False
+
+    return True
+
+
 def remove_audio_elements(
     xml_path: Path,
-    audio_filenames: list[str],
+    rows: list[dict],
 ) -> tuple[int, list[str]]:
-    """Remove every `<AUDIO file="<name>">` whose name is in `audio_filenames`.
+    """Remove the listed `<AUDIO>` elements from an XML file.
+
+    New `broken_audio.csv` rows carry element/range locators so duplicate
+    references to the same filename are not all removed by accident. Older
+    rows without locator columns intentionally preserve the historical
+    filename-only behavior.
 
     Returns (n_removed, missing_targets) — missing_targets is the
-    audio_filenames that were not found in the file (so the operator
+    rows that were not found in the file (so the operator
     can investigate, rather than silently ignored).
     """
     tree = etree.parse(str(xml_path))
     root = tree.getroot()
-    targets = set(audio_filenames)
-    found: set[str] = set()
+    root_audio = root.get("audio")
+    missing: list[str] = []
     n_removed = 0
-    # iter() is safe for removal because we collect first, then remove.
-    to_remove = [a for a in root.iter("AUDIO") if a.get("file") in targets]
-    for elem in to_remove:
-        found.add(elem.get("file"))
-        parent = elem.getparent()
-        if parent is not None:
-            parent.remove(elem)
-            n_removed += 1
+
+    for row in rows:
+        candidates: list[etree._Element] = []
+        for parent in _candidate_parents(root, row):
+            audio_iter = (
+                parent.findall("AUDIO")
+                if row.get("element_id") == "TEXT"
+                else parent.iter("AUDIO")
+            )
+            candidates.extend(
+                a for a in audio_iter
+                if _matches_audio_row(a, row, root_audio)
+            )
+
+        if not candidates:
+            missing.append(_row_label(row))
+            continue
+
+        for elem in candidates:
+            parent = elem.getparent()
+            if parent is not None:
+                parent.remove(elem)
+                n_removed += 1
+
     tree.write(str(xml_path), encoding="utf-8", xml_declaration=True)
-    missing = sorted(targets - found)
     return n_removed, missing
 
 
@@ -131,9 +193,9 @@ def main(argv: list[str] | None = None) -> int:
         audio_targets = [r["audio_file"] for r in xml_rows]
         kinds = [r.get("kind", "") for r in xml_rows]
         print(f"  {xml_path}")
-        for fname, kind in zip(audio_targets, kinds):
+        for row, kind in zip(xml_rows, kinds):
             tag = f" [{kind}]" if kind else ""
-            print(f"    - {fname}{tag}")
+            print(f"    - {_row_label(row)}{tag}")
 
         if not args.apply:
             continue
@@ -142,7 +204,7 @@ def main(argv: list[str] | None = None) -> int:
             print(f"    WARNING: XML file not found, skipping: {xml_path}", file=sys.stderr)
             continue
 
-        n_removed, missing = remove_audio_elements(xml_path, audio_targets)
+        n_removed, missing = remove_audio_elements(xml_path, xml_rows)
         n_removed_total += n_removed
         if missing:
             print(
