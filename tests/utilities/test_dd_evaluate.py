@@ -67,3 +67,22 @@ def test_cross_validate_held_out_separates_toy(tmp_path, monkeypatch):
     rep = cross_validate("toy", corp, orth, k=2, top_n=100)
     assert rep["n"] == 8           # 4 Alpha + 4 Beta, all scored held-out
     assert rep["top1"] == 1.0      # separable -> held-out still perfect
+
+
+def test_cross_validate_collects_unknown_holdout_for_kl(tmp_path, monkeypatch):
+    import QC.utilities.dialect_detector.candidates as cand
+    monkeypatch.setattr(cand, "candidate_dialects", lambda lc: ["Alpha", "Beta"])
+    import QC.utilities.dialect_detector.model as m
+    monkeypatch.setattr(m, "language_name_for", lambda lc: "Toy")
+    from tests.utilities.test_dd_model import _toy_tsv, _toy_corpus
+    orth = tmp_path / "orth"; _toy_tsv(orth)
+    corp = tmp_path / "corp"; _toy_corpus(corp)
+    extra = corp / "XML" / "u0.xml"
+    extra.write_text(
+        '<TEXT xml:lang="toy" dialect="unknown">'
+        '<S id="1"><FORM kindOf="standard">vik fifa</FORM></S></TEXT>',
+        encoding="utf-8",
+    )
+    rep = cross_validate("toy", corp, orth, k=2, top_n=100)
+    assert len(rep["unknown_records_kl"]) == 1
+    assert 0.0 <= rep["unknown_records_kl"][0] <= 1.0

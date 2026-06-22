@@ -1,5 +1,9 @@
 from pathlib import Path
-from QC.utilities.dialect_detector.data import iter_labeled_documents, extract_standard_text
+from QC.utilities.dialect_detector.data import (
+    iter_labeled_documents,
+    iter_unknown_documents,
+    extract_standard_text,
+)
 import xml.etree.ElementTree as ET
 
 def _xml(lang, dialect, *std):
@@ -22,6 +26,15 @@ def test_iterates_labeled_standard_text_and_skips_unknown_empty(tmp_path):
     assert [d.dialect for d in docs] == ["Coastal"]
     assert docs[0].text == "fafa tata"
     assert dropped == []
+
+
+def test_iterates_unknown_documents_separately(tmp_path):
+    _write(tmp_path, "XML/a.xml", _xml("ami", "unknown", "fafa"))
+    _write(tmp_path, "XML/b.xml", _xml("ami", None, "tata"))
+    _write(tmp_path, "XML/c.xml", _xml("ami", "Coastal", "lala"))
+    docs = iter_unknown_documents(tmp_path, "ami")
+    assert [d.dialect for d in docs] == ["unknown", "unknown"]
+    assert [d.text for d in docs] == ["fafa", "tata"]
 
 def test_unmappable_label_is_reported_not_silently_dropped(tmp_path):
     _write(tmp_path, "XML/x.xml", _xml("pyu", "Bogus", "aaaa"))

@@ -65,3 +65,23 @@ def iter_labeled_documents(
         else:
             kept.append(LabeledDoc(path, canon, text))
     return kept, dropped
+
+
+def iter_unknown_documents(corpora_path: Path, lang_code: str) -> list[LabeledDoc]:
+    """Return same-language docs whose dialect is missing or marked unknown.
+
+    These docs are excluded from supervised training, but they can be used to
+    measure whether calibrated thresholds correctly abstain on held-out unknowns.
+    """
+    unknown: list[LabeledDoc] = []
+    for path, root in _iter_text_roots(corpora_path):
+        if xml_lang(root) != lang_code.lower():
+            continue
+        raw = (root.get("dialect") or "").strip()
+        if raw not in _UNLABELED:
+            continue
+        text = extract_standard_text(root)
+        if not text:
+            continue
+        unknown.append(LabeledDoc(path, "unknown", text))
+    return unknown

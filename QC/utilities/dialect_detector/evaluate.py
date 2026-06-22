@@ -3,7 +3,7 @@ from __future__ import annotations
 import warnings
 from pathlib import Path
 from collections import defaultdict
-from QC.utilities.dialect_detector.data import iter_labeled_documents
+from QC.utilities.dialect_detector.data import iter_labeled_documents, iter_unknown_documents
 
 
 def evaluate_language(lang_code: str, model, corpora_path: Path) -> dict:
@@ -116,13 +116,24 @@ def _fold_assignment(kept, present, k):
     return labeled
 
 
+def _assign_unknown_holdout(unknown_docs, k):
+    """Deterministically spread unknown docs across folds by path."""
+    return [
+        (doc, i % k)
+        for i, doc in enumerate(sorted(unknown_docs, key=lambda x: str(x.path)))
+    ]
+
+
 def cross_validate(lang_code, corpora_path, orthographies_path, k: int = 5,
                    top_n: int = 2000) -> dict | None:
     """Honest held-out evaluation: stratified per-dialect K-fold, refitting the
     profiles AND combiner on each fold's training split (no test leakage).
 
-    Returns {language, n, top1, confusion, records}, where `records` is a list
-    of (top_prob, is_correct) for threshold calibration. None if the language is
+    Returns {language, n, top1, top1_kl, confusion, confusion_kl, records,
+    records_kl, unknown_records_kl}, where `records` and `records_kl` are lists
+    of (score, is_correct) for threshold calibration (softmax and KL
+    respectively), and `unknown_records_kl` are held-out KL confidence scores on
+    same-language docs whose dialect is marked unknown. None if the language is
     out of scope or has <2 attested dialects.
     """
     from QC.utilities.dialect_detector.model import (
@@ -137,34 +148,56 @@ def cross_validate(lang_code, corpora_path, orthographies_path, k: int = 5,
     if not inventories:
         return None
     kept, _dropped = iter_labeled_documents(corpora_path, lang_code)
+    unknown_docs = iter_unknown_documents(corpora_path, lang_code)
     present = sorted({d.dialect for d in kept})
     if len(present) < 2:
         return None
     labeled = _fold_assignment(kept, present, k)
+    unknown_labeled = _assign_unknown_holdout(unknown_docs, k)
 
     confusion: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
-    records: list[tuple[float, bool]] = []
+    confusion_kl: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
+    records: list[tuple[float, bool]] = []  # (softmax_prob, is_correct)
+    records_kl: list[tuple[float, bool]] = []  # (kl_confidence, is_correct)
+    unknown_records_kl: list[float] = []  # held-out KL confidence on unknown-marked docs
     for f in range(k):
         train = [doc for doc, fold in labeled if fold != f]
         test = [doc for doc, fold in labeled if fold == f]
+        unknown_test = [doc for doc, fold in unknown_labeled if fold == f]
         if not test:
             continue
         model = fit_model_from_docs(lang_code, name, inventories, train, top_n=top_n)
         if model is None:
             continue
         for doc in test:
+            # Softmax-based prediction
             ranked = model.score_text(doc.text)
-            if not ranked:
-                continue
-            pred, prob, _ = ranked[0]
-            confusion[doc.dialect][pred] += 1
-            records.append((prob, pred == doc.dialect))
+            if ranked:
+                pred, prob, _ = ranked[0]
+                confusion[doc.dialect][pred] += 1
+                records.append((prob, pred == doc.dialect))
+            
+            # KL divergence-based prediction
+            pred_kl, conf_kl, ranked_kl = model.score_text_kl(doc.text)
+            if pred_kl is not None:
+                confusion_kl[doc.dialect][pred_kl] += 1
+                records_kl.append((conf_kl, pred_kl == doc.dialect))
+        for doc in unknown_test:
+            pred_kl, conf_kl, ranked_kl = model.score_text_kl(doc.text)
+            if pred_kl is not None:
+                unknown_records_kl.append(conf_kl)
+    
     n = len(records)
     top1 = sum(1 for _, c in records if c) / n if n else 0.0
+    top1_kl = sum(1 for _, c in records_kl if c) / len(records_kl) if records_kl else 0.0
     return {
         "language": name,
         "n": n,
         "top1": top1,
+        "top1_kl": top1_kl,
         "confusion": {kk: dict(vv) for kk, vv in confusion.items()},
+        "confusion_kl": {kk: dict(vv) for kk, vv in confusion_kl.items()},
         "records": records,
+        "records_kl": records_kl,
+        "unknown_records_kl": unknown_records_kl,
     }

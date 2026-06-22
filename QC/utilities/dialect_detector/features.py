@@ -61,12 +61,43 @@ def log_prob_score(
 
 def extract_counts(
     graphemes: list[str], text: str
-) -> tuple[Counter[str], Counter[str], Counter[str]]:
-    """Return (unigram, bigram, word) count bags. Bigrams are space-joined
-    grapheme pairs; words are casefolded \\w+ runs of the raw text."""
+) -> tuple[Counter[str], Counter[str], Counter[str], Counter[str]]:
+    """Return (unigram, bigram, word, word_bigram) count bags. Bigrams are space-joined
+    grapheme pairs; words are casefolded \\w+ runs of the raw text; word_bigrams are
+    space-joined adjacent word pairs."""
     uni = Counter(graphemes)
     bi = Counter(
         f"{graphemes[i]} {graphemes[i + 1]}" for i in range(len(graphemes) - 1)
     )
-    words = Counter(_WORD_RE.findall(text.casefold()))
-    return uni, bi, words
+    word_list = _WORD_RE.findall(text.casefold())
+    words = Counter(word_list)
+    word_bi = Counter(
+        f"{word_list[i]} {word_list[i + 1]}" for i in range(len(word_list) - 1)
+    )
+    return uni, bi, words, word_bi
+
+def kl_divergence(
+    counts: Counter[str],
+    profile_counts: Counter[str],
+    profile_total: int,
+    vocab_size: int,
+    smoothing: float = 1.0,
+) -> float:
+    """Average KL divergence of `counts` from a profile."""
+    n = sum(counts.values())
+    if n == 0:
+        return 0.0
+    denom = profile_total + smoothing * max(vocab_size, 1)
+    kl = 0.0
+    for item, c in counts.items():
+        p = (profile_counts.get(item, 0) + smoothing) / denom
+        q = c / n
+        kl += p * math.log(p / q)
+    return kl
+
+def overlap_coefficient(set1: frozenset[str], set2: frozenset[str]) -> float:
+    """Overlap coefficient of two sets: |intersection| / min(|set1|, |set2|)."""
+    if not set1 or not set2:
+        return 0.0
+    intersection = len(set1 & set2)
+    return intersection / min(len(set1), len(set2))

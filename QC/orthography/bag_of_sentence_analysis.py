@@ -146,7 +146,7 @@ def compute_ngram_similarity_metrics(ref_tokens, target_tokens, gram_length, lap
         "n": gram_length,
         "jaccard_similarity": float(jaccard_similarity(ref_ngrams_set, target_ngrams_set)),
         "overlap_coefficient": float(overlap_coefficient(ref_ngrams_set, target_ngrams_set)),
-        "cosine_similarity": float(cosine_similarity([ref_freq_vector], [target_freq_vector])[0][0]),
+        "cosine_similarity": float(cosine_similarity(np.array([ref_freq_vector]), np.array([target_freq_vector]))[0][0]),
         "euclidean_distance": float(euclidean(ref_freq_vector, target_freq_vector)),
         "kl_divergence": float(kl_divergence(ref_freq_vector, target_freq_vector)),
         "ref_unique_ngram_count": len(ref_ngrams_set),
@@ -164,20 +164,23 @@ def safe_normalize_vector(vector):
         return np.full(vector.shape, 1.0 / len(vector), dtype=float)
     return vector / total
 
+def char_tokenize(corpus):
+    return [char for char in corpus if not char.isspace()]
+
+# take a corpus and turn it into a list of words
+def word_tokenize(corpus, lang):
+    lang_ortho_table = pd.read_csv("Orthographies/Ortho113/" + lang + ".tsv", sep='\t')
+        # currently (Ortho113) there is no such english punctuation characher that is used as part of a letter that does not have its own letter as well 
+        # this may be subject to change with different/updated orthographies
+        # example: Atayal has the letter 'n_g', which uses '_' but also has the letter '_'
+    special_chars = set(string.punctuation).intersection(set(lang_ortho_table['letter'].to_list()))
+    regex = r"[\w" + "".join(special_chars) + r"]+" # remove all puncutation except the ones used as characters for the language and tokenize words
+    return re.findall(regex, corpus)
 
 # n_gram analysis at the word level
 def n_gram_analysis(lang, ref_corpus, target_corpus, logs_dir, n=2, laplace=True, save_plots=True, verbose=True):
-    # take a corpus and turn it into a list of words
-    def word_tokenize(corpus):
-        if not is_lang(lang):
-            raise ValueError("Target language not recognized list of langauges. Verify your spelling and capitalization of first letter")
-        lang_ortho_table = pd.read_csv("Orthographies/Ortho113/" + lang + ".tsv", sep='\t')
-         # currently (Ortho113) there is no such english punctuation characher that is used as part of a letter that does not have its own letter as well 
-         # this may be subject to change with different/updated orthographies
-         # example: Atayal has the letter 'n_g', which uses '_' but also has the letter '_'
-        special_chars = set(string.punctuation).intersection(set(lang_ortho_table['letter'].to_list()))
-        regex = r"[\w" + "".join(special_chars) + r"]+" # remove all puncutation except the ones used as characters for the language and tokenize words
-        return re.findall(regex, corpus)
+    if not is_lang(lang):
+        raise ValueError("Target language not recognized list of langauges. Verify your spelling and capitalization of first letter")
     # from tokens create n-gram counts for all discrete gram lengths within [1, n].
     # TBD: speed up this portion by making the grams in one loop of tokens
     def get_n_grams(tokens):
@@ -187,13 +190,10 @@ def n_gram_analysis(lang, ref_corpus, target_corpus, logs_dir, n=2, laplace=True
             n_grams = [tuple(tokens[i:i+gram_length]) for i in range(len(tokens) - gram_length + 1)] 
             counters.append(Counter(n_grams))
         return counters
-    
-    def char_tokenize(corpus):
-        return [char for char in corpus if not char.isspace()]
 
     # tokenize and get the ngrams from n=1 to n=n from reference and target
-    ref_tokens = word_tokenize(ref_corpus)
-    target_tokens = word_tokenize(target_corpus)
+    ref_tokens = word_tokenize(ref_corpus, lang)
+    target_tokens = word_tokenize(target_corpus, lang)
     ref_char_tokens = char_tokenize(ref_corpus)
     target_char_tokens = char_tokenize(target_corpus)
     ref_n_grams_counts = get_n_grams(ref_tokens)
@@ -294,29 +294,26 @@ def n_gram_analysis(lang, ref_corpus, target_corpus, logs_dir, n=2, laplace=True
 
     # calculating jaccard similarity
     word_jaccard_similarity = jaccard_similarity(ref_n_grams_set, target_n_grams_set)
-    if verbose:
-        print(f"Jaccard Similarity of unique {n}-grams: {word_jaccard_similarity:.2f}")
 
     # calculating overlap
     word_overlap_coefficient = overlap_coefficient(ref_n_grams_set, target_n_grams_set)
-    if verbose:
-        print(f"Overlap Coefficient of unique {n}-grams: {word_overlap_coefficient:.2f}")
 
     # calculating cosine similarity
-    cosine_sim = cosine_similarity([ref_freq_vector], [target_freq_vector])[0][0]
-    if verbose:
-        print(f"Cosine Similarity of word {n}-grams: {cosine_sim:.2f}")
+    cosine_sim = cosine_similarity(np.array([ref_freq_vector]), np.array([target_freq_vector]))[0][0]
 
     # calculating euclidean distance
     euclidean_dist = euclidean(ref_freq_vector, target_freq_vector)
-    if verbose:
-        print(f"Euclidean Distance of word {n}-grams: {euclidean_dist:.2f}")
 
     # calculating kl divergence
     kl_div = kl_divergence(ref_freq_vector, target_freq_vector)
-    if verbose:
-        print(f"KL Divergence of word {n}-grams: {kl_div:.2f}")
 
+    # if verbose:
+    #     print(f"Jaccard Similarity of unique {n}-grams: {word_jaccard_similarity:.2f}")
+    #     print(f"Overlap Coefficient of unique {n}-grams: {word_overlap_coefficient:.2f}")
+    #     print(f"Cosine Similarity of word {n}-grams: {cosine_sim:.2f}")
+    #     print(f"Euclidean Distance of word {n}-grams: {euclidean_dist:.2f}")
+    #     print(f"KL Divergence of word {n}-grams: {kl_div:.2f}")
+    
     # Relative/Absolute Frequency visualizations for unigrams and n-grams (if not unigram)
     if save_plots:
         os.makedirs(logs_dir, exist_ok=True)
@@ -427,7 +424,7 @@ def n_gram_analysis(lang, ref_corpus, target_corpus, logs_dir, n=2, laplace=True
 
     def compare_next_word_distributions(ref_counters, target_counters, top_contexts):
         """
-        Compare P(next_word | context) for each context using Jensen-Shannon distance.
+        Compare P(next_word | context) for each context using KL distance.
         """
         if n < 2:
             return {}, None

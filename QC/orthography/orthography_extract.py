@@ -25,21 +25,13 @@ plt.switch_backend('Agg')  # Use a non-GUI backend
 # Set the font properties globally
 #plt.rcParams['font.family'] = 'Noto Sans'
 
-
-def _dialects_path():
-    candidate = Path(__file__).resolve().parents[2] / "dialects.csv"
-    if candidate.exists():
-        return candidate
-    return Path("dialects.csv")
-
-
 def is_dialect(lang, dialect):
-    dialect_csv = pd.read_csv(_dialects_path())
-    return (dialect in dialect_csv[dialect_csv['Language'] == lang]['Official'].unique())
+    dialect_csv = pd.read_csv("dialects.csv")
+    return dialect in dialect_csv[dialect_csv['Language'] == lang]['Official'].unique()
 
 
 def is_lang(lang):
-    dialect_csv = pd.read_csv(_dialects_path())
+    dialect_csv = pd.read_csv("dialects.csv")
     return lang in dialect_csv['Language'].unique()
 
 
