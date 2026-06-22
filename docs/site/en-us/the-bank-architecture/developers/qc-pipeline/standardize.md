@@ -60,11 +60,11 @@ python QC/utilities/standardize.py \
 
 ### Single-file wrapper
 
-`QC/utilities/standardize_single_file.py` runs the TSV path on one XML file: it copies the file into a temp directory, invokes `standardize.py --corpora_path <tempdir> --tsv_path …`, then writes the result back. Flags: `--xml_path`, `--tsv_path`, `--target_column`. (It has no `--copy` mode.)
+`standardize.py --corpora_path <file.xml>` can operate on one XML file directly. `QC/utilities/standardize_single_file.py` is still available as a wrapper for workflows that prefer an explicit `--xml_path`; it copies the file into a temp directory, invokes `standardize.py --corpora_path <tempdir> --tsv_path …`, then writes the result back. Flags: `--xml_path`, `--tsv_path`, `--target_column`. (It has no `--copy` mode.)
 
 ## Output & side effects
 
-**Modifies XML in place.** Each processed file is re-serialized (pretty-printed, blank lines stripped) and overwritten, with a new `FORM kindOf="standard"` element added to every sentence. Always `git diff` before committing — in TSV mode especially, confirm the transliteration did what you expected.
+**Modifies XML in place.** Each processed file is re-serialized (pretty-printed, blank lines stripped) and overwritten, with a new `FORM kindOf="standard"` element added to every element that has an original FORM (S/W/M, not just sentence level). Always `git diff` before committing — in TSV mode especially, confirm the transliteration did what you expected.
 
 ## When to run it
 
