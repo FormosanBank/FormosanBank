@@ -89,6 +89,24 @@ def test_single_dialect_label_resolves_to_lone_ipa_column(tmp_path):
     )
 
 
+def test_accepts_single_xml_corpora_path(tmp_path):
+    xml_path = tmp_path / "y.xml"
+    xml_path.write_text(
+        '<TEXT xml:lang="tao" dialect="Yami">'
+        '<S id="1">'
+        '<FORM kindOf="original">ngaro</FORM>'
+        '<FORM kindOf="standard">ngaro</FORM>'
+        "</S></TEXT>",
+        encoding="utf-8",
+    )
+    proc = _run(xml_path)
+    combined = proc.stdout + proc.stderr
+    assert "Error" not in combined, f"unexpected error: {combined!r}"
+    assert _phon_texts(xml_path, "standard"), (
+        f"no standard PHON added for direct XML path; output: {combined!r}"
+    )
+
+
 def test_multi_dialect_resolves_via_dialect_column(tmp_path):
     """Amis (multi-dialect) with dialect="Coastal" resolves the Coastal column.
 

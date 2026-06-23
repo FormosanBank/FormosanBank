@@ -56,6 +56,12 @@ def get_files(path, language):
 
     return to_check
 
+
+def get_exploration_targets(corpora_path):
+    if os.path.isfile(corpora_path) and corpora_path.endswith('.xml'):
+        return [corpora_path]
+    return [os.path.join(corpora_path, x) for x in os.listdir(corpora_path)]
+
 def apply_standard(s_element, standard):
     form = s_element.find("FORM[@kindOf='standard']")
     if form.text:
@@ -86,8 +92,7 @@ def main(args):
     if not os.path.exists(standard_path):
         parser.error(f"The standard orthography files can't be found: {standard_path}")
     
-    to_explore = os.listdir(args.corpora_path)
-    to_explore = [os.path.join(args.corpora_path, x) for x in to_explore]
+    to_explore = get_exploration_targets(args.corpora_path)
 
     for corpus in to_explore:
         print(f"Processing corpus: {corpus}")
