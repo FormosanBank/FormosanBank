@@ -379,19 +379,20 @@ def visualize(o_info, output_folder):
     # Limit to top N bigrams
     N = 30
     top_bigrams = sorted_bigrams[:N]
-    bigrams_list, frequencies = zip(*top_bigrams)
+    if top_bigrams:
+        bigrams_list, frequencies = zip(*top_bigrams)
 
-    plt.figure(figsize=(12, 6))
-    sns.barplot(x=list(bigrams_list), y=list(frequencies), palette="magma", legend=False, dodge=False, hue=list(bigrams_list))
-    plt.xlabel('Bigrams')
-    plt.ylabel('Frequency')
-    plt.title('Top Bigrams')
-    plt.xticks(rotation=90)
+        plt.figure(figsize=(12, 6))
+        sns.barplot(x=list(bigrams_list), y=list(frequencies), palette="magma", legend=False, dodge=False, hue=list(bigrams_list))
+        plt.xlabel('Bigrams')
+        plt.ylabel('Frequency')
+        plt.title('Top Bigrams')
+        plt.xticks(rotation=90)
 
-    # Save the figure
-    plt.tight_layout()
-    plt.savefig(os.path.join(output_folder, 'top_bigrams.png'))
-    plt.close()
+        # Save the figure
+        plt.tight_layout()
+        plt.savefig(os.path.join(output_folder, 'top_bigrams.png'))
+        plt.close()
 
     """
     Visualize Punctuation Frequency Distribution
@@ -400,18 +401,19 @@ def visualize(o_info, output_folder):
 
     # Sort punctuation by frequency
     sorted_punct = sorted(punctuation.items(), key=lambda x: x[1], reverse=True)
-    punct_marks, frequencies = zip(*sorted_punct)
+    if sorted_punct:
+        punct_marks, frequencies = zip(*sorted_punct)
 
-    plt.figure(figsize=(8, 4))
-    sns.barplot(x=list(punct_marks), y=list(frequencies), palette="cool", legend=False, dodge=False, hue=list(punct_marks))
-    plt.xlabel('Punctuation Marks')
-    plt.ylabel('Frequency')
-    plt.title('Punctuation Frequencies')
+        plt.figure(figsize=(8, 4))
+        sns.barplot(x=list(punct_marks), y=list(frequencies), palette="cool", legend=False, dodge=False, hue=list(punct_marks))
+        plt.xlabel('Punctuation Marks')
+        plt.ylabel('Frequency')
+        plt.title('Punctuation Frequencies')
 
-    # Save the figure
-    plt.tight_layout()
-    plt.savefig(os.path.join(output_folder, 'punctuation_frequencies.png'))
-    plt.close()
+        # Save the figure
+        plt.tight_layout()
+        plt.savefig(os.path.join(output_folder, 'punctuation_frequencies.png'))
+        plt.close()
 
     """
     Visualize Word Frequency Distribution
@@ -420,19 +422,20 @@ def visualize(o_info, output_folder):
 
     # Bar Chart of Top Words
     sorted_word_freq = word_freq.most_common(20)
-    words, frequencies = zip(*sorted_word_freq)
+    if sorted_word_freq:
+        words, frequencies = zip(*sorted_word_freq)
 
-    plt.figure(figsize=(12, 6))
-    sns.barplot(x=list(words), y=list(frequencies), palette="viridis", legend=False, dodge=False, hue=list(words))
-    plt.xlabel('Words')
-    plt.ylabel('Frequency')
-    plt.title('Top 20 Words')
-    plt.xticks(rotation=45)
+        plt.figure(figsize=(12, 6))
+        sns.barplot(x=list(words), y=list(frequencies), palette="viridis", legend=False, dodge=False, hue=list(words))
+        plt.xlabel('Words')
+        plt.ylabel('Frequency')
+        plt.title('Top 20 Words')
+        plt.xticks(rotation=45)
 
-    # Save the figure
-    plt.tight_layout()
-    plt.savefig(os.path.join(output_folder, 'top_words.png'))
-    plt.close()
+        # Save the figure
+        plt.tight_layout()
+        plt.savefig(os.path.join(output_folder, 'top_words.png'))
+        plt.close()
 
 def main(args, langs):
     if args.corpus == "all":

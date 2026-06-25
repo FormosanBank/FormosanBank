@@ -158,6 +158,9 @@ def v060_W_count_matches_word_count(
     tier (tokenized). Reporting these is informational, not a corpus
     bug per se.
     """
+    if tree.find(".//W") is None and tree.find(".//M") is None:
+        return []
+
     findings: list[Finding] = []
     for s in tree.iter("S"):
         s_id = s.get("id")

@@ -117,6 +117,19 @@ def test_V060_no_FORM_at_all_emits_nothing():
     assert findings == [], f"expected no V060 finding; got {findings!r}"
 
 
+def test_V060_sentence_only_file_emits_nothing():
+    """Sentence-only XML has no W/M tier, so V060 is not applicable."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">a b c</FORM>
+      </S>
+      <S id="S2">
+        <FORM kindOf="original">d e</FORM>
+      </S>""")
+    findings = _findings_for(gloss_rules.v060_W_count_matches_word_count, xml)
+    assert findings == [], f"expected no V060 finding; got {findings!r}"
+
+
 # ---------------------------------------------------------------------------
 # V061: M-count vs. implied-morpheme-count (SOFT)
 # ---------------------------------------------------------------------------
@@ -781,6 +794,28 @@ def test_validate_glosses_W_mismatch_emits_finding_and_csv_row(tmp_path):
     contents = csv_path.read_text(encoding="utf-8")
     assert "V060" in contents and "S1" in contents, (
         f"expected a V060 row for S1 in CSV; got {contents!r}"
+    )
+
+
+def test_validate_glosses_sentence_only_no_v060_noise(tmp_path):
+    """Sentence-only XML should not emit one V060 row per S."""
+    _write_xml(tmp_path, "sentence_only.xml", """
+      <S id="S1">
+        <FORM kindOf="original">a b c</FORM>
+      </S>
+      <S id="S2">
+        <FORM kindOf="original">d e</FORM>
+      </S>""")
+    out = tmp_path / "out"
+    proc = _run_validate_glosses(tmp_path / "XML", output_dir=out)
+    assert proc.returncode == 0, (
+        f"sentence-only run should exit 0; stdout={proc.stdout!r} "
+        f"stderr={proc.stderr!r}"
+    )
+    assert "No issues found." in proc.stdout
+    contents = (out / "validate_glosses_findings.csv").read_text(encoding="utf-8")
+    assert "V060" not in contents, (
+        f"sentence-only XML should not emit V060; got {contents!r}"
     )
 
 

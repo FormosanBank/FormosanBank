@@ -168,7 +168,7 @@ python QC/validation/validate_glosses.py by_language \
   --output_dir /path/to/qc-output
 ```
 
-For verse-level or sentence-only corpora with no `W`/`M` segmentation, V060–V065 either no-op (no W/M to iterate) or surface SOFT findings that should be treated as "not applicable". The two legacy CSV artifacts (`validation_results.csv` for V060, `validation_m_mismatches.csv` for V061) are preserved for backward compatibility with prior callers.
+For verse-level or sentence-only corpora with no `W`/`M` segmentation, V060–V065 no-op because gloss-tier checks are not applicable. The two legacy CSV artifacts (`validation_results.csv` for V060, `validation_m_mismatches.csv` for V061) are preserved for backward compatibility with prior callers.
 
 Detect duplicate `<S>` sentences within a corpus (within-file matches are HARD findings; cross-file matches in the same corpus are SOFT):
 
