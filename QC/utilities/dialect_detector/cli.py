@@ -123,11 +123,45 @@ def _cmd_crossvalidate(a) -> int:
         cov = len(committed) / len(recs)
         accc = sum(committed) / len(committed) if committed else 0.0
         cv["softmax_holdout"] = 1 - cov
+        cv["softmax_coverage"] = cov
+        cv["softmax_accuracy"] = accc
         print(f"{cv['language']:<10}{cv['n']:>5}{cv['top1']:>10.3f}"
               f"{t:>7.3f}{cov:>10.3f}{accc:>12.3f}")
     
-    print(f"\n{'KL DIVERGENCE-BASED':<60}")
-    print(f"{'language':<10}{'n':>5}{'heldout1':>10}{'thr':>7}{'coverage':>10}{'acc|commit':>12}{'unk|holdout':>12}{'unk|coverage':>12}{'unk|acc|commit':>12}")
+    # print(f"\n{'KL DIVERGENCE-BASED':<60}")
+    # print(f"{'language':<10}{'n':>5}{'heldout1':>10}{'thr':>7}{'coverage':>10}{'acc|commit':>12}{'unk|heldout1':>12}{'unk|coverage':>12}{'unk|acc|commit':>12}")
+    # for cv in cv_results:
+    #     recs_kl = cv.get("records_kl", [])
+    #     if not recs_kl:
+    #         continue
+    #     t_kl = calibrate_threshold(recs_kl, a.precision_floor)
+    #     committed_kl = [c for p, c in recs_kl if p >= t_kl]
+    #     cov_kl = len(committed_kl) / len(recs_kl)
+    #     accc_kl = sum(committed_kl) / len(committed_kl) if committed_kl else 0.0
+    #     unknown_recs_kl = cv.get("unknown_records_kl", [])
+    #     unknown_heldout_kl = (
+    #         sum(unknown_recs_kl) / len(unknown_recs_kl)
+    #         if unknown_recs_kl else 0.0
+    #     )
+    #     cv["kl_heldout_on_unknowns"] = unknown_heldout_kl
+    #     unknown_committed_kl = [p for p in unknown_recs_kl if p >= t_kl]
+    #     unk_coverage_kl = len(unknown_committed_kl) / len(unknown_recs_kl) if unknown_recs_kl else 0.0
+    #     unk_accc_kl = sum(unknown_committed_kl) / len(unknown_committed_kl) if unknown_committed_kl else 0.0
+    #     print(f"{cv['language']:<10}{len(recs_kl):>5}{cv['top1_kl']:>10.3f}"
+    #           f"{t_kl:>7.3f}{cov_kl:>10.3f}{accc_kl:>12.3f}{unknown_heldout_kl:>12.3f}"
+    #           f"{unk_coverage_kl:>12.3f}{unk_accc_kl:>12.3f}")
+    
+    # print(f"\n{'COMBINED (softmax confident + KL on unknowns)':<60}")
+    # print(f"{'language':<10}{'n':>5}{'heldout1':>10}")
+    # for cv in cv_results:
+    #     cov = cv.get("softmax_coverage", 0.0)
+    #     accc = cv.get("softmax_accuracy", 0.0)
+    #     kl_heldout_on_unknowns = cv.get("kl_heldout_on_unknowns", 0.0)
+    #     combined_heldout = cov * accc + (1 - cov) * kl_heldout_on_unknowns
+    #     print(f"{cv['language']:<10}{cv['n']:>5}{combined_heldout:>10.3f}")
+
+    print("\nNEXT WORD PREDICTION (KL divergence of next word given n-1-gram context)")
+    print(f"{'language':<10}{'n':>5}{'heldout1':>10}{'thr':>7}{'coverage':>10}{'acc|commit':>12}{'unk|heldout1':>12}{'unk|coverage':>12}{'unk|acc|commit':>12}")
     for cv in cv_results:
         recs_kl = cv.get("records_kl", [])
         if not recs_kl:
@@ -137,25 +171,27 @@ def _cmd_crossvalidate(a) -> int:
         cov_kl = len(committed_kl) / len(recs_kl)
         accc_kl = sum(committed_kl) / len(committed_kl) if committed_kl else 0.0
         unknown_recs_kl = cv.get("unknown_records_kl", [])
-        unknown_holdout_kl = (
-            sum(1 for p in unknown_recs_kl if p < t_kl) / len(unknown_recs_kl)
+        unknown_heldout_kl = (
+            sum(unknown_recs_kl) / len(unknown_recs_kl)
             if unknown_recs_kl else 0.0
         )
-        cv["kl_holdout_on_unknowns"] = unknown_holdout_kl
+        cv["kl_heldout_on_unknowns"] = unknown_heldout_kl
         unknown_committed_kl = [p for p in unknown_recs_kl if p >= t_kl]
         unk_coverage_kl = len(unknown_committed_kl) / len(unknown_recs_kl) if unknown_recs_kl else 0.0
-        unk_accc_kl = 0.0  # unknowns should never be correct (they're unknowns)
-        print(f"{cv['language']:<10}{len(recs_kl):>5}{cv['top1_kl']:>10.3f}"
-              f"{t_kl:>7.3f}{cov_kl:>10.3f}{accc_kl:>12.3f}{unknown_holdout_kl:>12.3f}"
+        unk_accc_kl = sum(unknown_committed_kl) / len(unknown_committed_kl) if unknown_committed_kl else 0.0
+        print(f"{cv['language']:<10}{len(recs_kl):>5}{cv.get('top1_kl', cv['top1']):>10.3f}"
+              f"{t_kl:>7.3f}{cov_kl:>10.3f}{accc_kl:>12.3f}{unknown_heldout_kl:>12.3f}"
               f"{unk_coverage_kl:>12.3f}{unk_accc_kl:>12.3f}")
     
     print(f"\n{'COMBINED (softmax confident + KL on unknowns)':<60}")
-    print(f"{'language':<10}{'n':>5}{'holdout':>10}")
+    print(f"{'language':<10}{'n':>5}{'heldout1':>10}")
     for cv in cv_results:
-        softmax_holdout = cv.get("softmax_holdout", 0.0)
-        kl_holdout_on_unknowns = cv.get("kl_holdout_on_unknowns", 0.0)
-        combined_holdout = softmax_holdout + (1 - softmax_holdout) * kl_holdout_on_unknowns
-        print(f"{cv['language']:<10}{cv['n']:>5}{combined_holdout:>10.3f}")
+        cov = cv.get("softmax_coverage", 0.0)
+        accc = cv.get("softmax_accuracy", 0.0)
+        kl_heldout_on_unknowns = cv.get("kl_heldout_on_unknowns", 0.0)
+        combined_heldout = cov * accc + (1 - cov) * kl_heldout_on_unknowns
+        print(f"{cv['language']:<10}{len(cv.get('records_kl', [])):>5}{combined_heldout:>10.3f}")
+
     return 0
 
 

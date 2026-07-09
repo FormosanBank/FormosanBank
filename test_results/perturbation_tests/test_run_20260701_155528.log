@@ -1,0 +1,195 @@
+2026-07-01 15:55:28,449 - INFO - Starting Character Perturbation Robustness Test Suite
+2026-07-01 15:55:28,472 - INFO - Testing languages: ['Amis', 'Atayal', 'Bunun', 'Paiwan', 'Puyuma', 'Rukai', 'Seediq']
+2026-07-01 15:55:28,474 - INFO - Testing sources: ['ePark/', 'ILRDF_Dicts/', 'Paiwan_Stories/', 'NTUFormosanCorpus/']
+2026-07-01 15:55:28,474 - INFO - Number of swaps per test: 5
+2026-07-01 15:55:28,474 - INFO - Epsilon for per-language thresholds: 0.1
+2026-07-01 15:55:28,476 - INFO - 
+Testing ami/Coastal with 5 random character swaps...
+2026-07-01 15:55:29,393 - INFO - Analyzing baseline for ami/Coastal...
+2026-07-01 15:55:29,793 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:55:29,793 - INFO -   Swap 1/5: 'a' -> 'y'
+2026-07-01 15:55:30,207 - INFO -   Swap 2/5: 'a' -> 'i'
+2026-07-01 15:55:30,611 - INFO -   Swap 3/5: 'a' -> '1'
+2026-07-01 15:55:31,016 - INFO -   Swap 4/5: 'a' -> '/'
+2026-07-01 15:55:31,400 - INFO -   Swap 5/5: 'a' -> 'm'
+2026-07-01 15:55:31,756 - INFO - ================================================================================
+Test Results: AMI/Coastal
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 6019
+  Reference sentences: 4816
+  Target sentences: 1203
+  Total characters: 394352
+  Unique characters: 34
+
+Perturbation:
+  Max frequency character: 'a'
+  Character frequency: 17341
+  Number of random swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence across 5 swaps):
+  Character Level:
+    1-gram:
+      D Cosine Similarity: 0.538576
+      D KL Divergence: 2.175839
+    2-gram:
+      D Cosine Similarity: 0.631746
+      D KL Divergence: 2.985295
+    3-gram:
+      D Cosine Similarity: 0.754996
+      D KL Divergence: 2.566563
+
+  Word Level:
+    1-gram:
+      D Cosine Similarity: 0.384309
+      D KL Divergence: 1.583965
+    2-gram:
+      D Cosine Similarity: 0.467896
+      D KL Divergence: 0.382349
+    3-gram:
+      D Cosine Similarity: 0.145451
+      D KL Divergence: 0.084960
+2026-07-01 15:55:31,759 - INFO - 
+Testing ami/Hengchun with 5 random character swaps...
+2026-07-01 15:55:32,739 - INFO - Analyzing baseline for ami/Hengchun...
+2026-07-01 15:55:32,991 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:55:32,991 - INFO -   Swap 1/5: 'a' -> '1'
+2026-07-01 15:55:33,214 - INFO -   Swap 2/5: 'a' -> '"'
+2026-07-01 15:55:33,484 - INFO -   Swap 3/5: 'a' -> '.'
+2026-07-01 15:55:33,708 - INFO -   Swap 4/5: 'a' -> 'e'
+2026-07-01 15:55:33,920 - INFO -   Swap 5/5: 'a' -> 'g'
+2026-07-01 15:55:34,128 - INFO - ================================================================================
+Test Results: AMI/Hengchun
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3832
+  Reference sentences: 3066
+  Target sentences: 766
+  Total characters: 223513
+  Unique characters: 34
+
+Perturbation:
+  Max frequency character: 'a'
+  Character frequency: 8507
+  Number of random swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence across 5 swaps):
+  Character Level:
+    1-gram:
+      D Cosine Similarity: 0.531057
+      D KL Divergence: 1.951048
+    2-gram:
+      D Cosine Similarity: 0.592975
+      D KL Divergence: 2.569412
+    3-gram:
+      D Cosine Similarity: 0.712315
+      D KL Divergence: 2.092342
+
+  Word Level:
+    1-gram:
+      D Cosine Similarity: 0.406678
+      D KL Divergence: 1.199130
+    2-gram:
+      D Cosine Similarity: 0.387338
+      D KL Divergence: 0.301005
+    3-gram:
+      D Cosine Similarity: 0.125975
+      D KL Divergence: 0.083099
+2026-07-01 15:55:34,128 - INFO - 
+Testing ami/Malan with 5 random character swaps...
+2026-07-01 15:55:35,054 - INFO - Analyzing baseline for ami/Malan...
+2026-07-01 15:55:35,303 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:55:35,307 - INFO -   Swap 1/5: 'a' -> 'r'
+2026-07-01 15:55:35,513 - INFO -   Swap 2/5: 'a' -> 'k'
+2026-07-01 15:55:35,702 - INFO -   Swap 3/5: 'a' -> '^'
+2026-07-01 15:55:35,931 - INFO -   Swap 4/5: 'a' -> '''
+2026-07-01 15:55:36,165 - INFO -   Swap 5/5: 'a' -> 'e'
+2026-07-01 15:55:36,335 - INFO - ================================================================================
+Test Results: AMI/Malan
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3969
+  Reference sentences: 3176
+  Target sentences: 793
+  Total characters: 216908
+  Unique characters: 29
+
+Perturbation:
+  Max frequency character: 'a'
+  Character frequency: 8605
+  Number of random swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence across 5 swaps):
+  Character Level:
+    1-gram:
+      D Cosine Similarity: 0.526664
+      D KL Divergence: 1.944200
+    2-gram:
+      D Cosine Similarity: 0.614442
+      D KL Divergence: 2.570729
+    3-gram:
+      D Cosine Similarity: 0.728661
+      D KL Divergence: 2.112855
+
+  Word Level:
+    1-gram:
+      D Cosine Similarity: 0.404786
+      D KL Divergence: 1.221157
+    2-gram:
+      D Cosine Similarity: 0.412181
+      D KL Divergence: 0.332267
+    3-gram:
+      D Cosine Similarity: 0.132872
+      D KL Divergence: 0.092568
+2026-07-01 15:55:36,335 - INFO - 
+Testing ami/Southern with 5 random character swaps...
+2026-07-01 15:55:37,301 - INFO - Analyzing baseline for ami/Southern...
+2026-07-01 15:55:37,580 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:55:37,580 - INFO -   Swap 1/5: 'a' -> 'u'
+2026-07-01 15:55:37,780 - INFO -   Swap 2/5: 'a' -> '"'
+2026-07-01 15:55:37,982 - INFO -   Swap 3/5: 'a' -> 'p'
+2026-07-01 15:55:38,195 - INFO -   Swap 4/5: 'a' -> 'w'
+2026-07-01 15:55:38,391 - INFO -   Swap 5/5: 'a' -> '9'
+2026-07-01 15:55:38,569 - INFO - ================================================================================
+Test Results: AMI/Southern
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3894
+  Reference sentences: 3116
+  Target sentences: 778
+  Total characters: 209599
+  Unique characters: 33
+
+Perturbation:
+  Max frequency character: 'a'
+  Character frequency: 7496
+  Number of random swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence across 5 swaps):
+  Character Level:
+    1-gram:
+      D Cosine Similarity: 0.542882
+      D KL Divergence: 2.008592
+    2-gram:
+      D Cosine Similarity: 0.614656
+      D KL Divergence: 2.604822
+    3-gram:
+      D Cosine Similarity: 0.729721
+      D KL Divergence: 2.115755
+
+  Word Level:
+    1-gram:
+      D Cosine Similarity: 0.374237
+      D KL Divergence: 1.289583
+    2-gram:
+      D Cosine Similarity: 0.458914
+      D KL Divergence: 0.370825
+    3-gram:
+      D Cosine Similarity: 0.138062
+      D KL Divergence: 0.093911
+2026-07-01 15:55:38,569 - INFO - 
+Testing ami/Xiuguluan with 5 random character swaps...

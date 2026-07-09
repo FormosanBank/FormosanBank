@@ -1,0 +1,47 @@
+{
+  "language": "pwn",
+  "dialect": "Southern",
+  "validation_checks": [
+    {
+      "name": "pwn/Southern - Character 1-gram Deltas",
+      "status": "FAIL",
+      "message": "Anomalously high deltas (cosine=0.5423, kl=2.0547)",
+      "deltas": {
+        "cosine_similarity": 0.5423440501016035,
+        "kl_divergence": 2.054667211691309
+      }
+    }
+  ],
+  "corpus_integrity_issues": [
+    "pwn/Southern has high deltas (cosine=0.5423, kl=2.0547). Possible corpus contamination or validation issues."
+  ],
+  "cross_language_warnings": [],
+  "cross_language_overlaps": {
+    "corpus_unique_chars": [
+      "7",
+      "8",
+      ";",
+      "I",
+      "w",
+      "u",
+      "b",
+      "…",
+      "o",
+      "n"
+    ],
+    "char_count": 70,
+    "language_overlaps": [
+      {
+        "language": "Amis",
+        "char_overlap_count": 59,
+        "overlap_percentage": 84.3
+      },
+      {
+        "language": "Atayal",
+        "char_overlap_count": 63,
+        "overlap_percentage": 90.0
+      }
+    ]
+  },
+  "language_full_name": "Paiwan"
+}

@@ -1,0 +1,212 @@
+2026-07-02 09:42:57,464 - INFO - ================================================================================
+2026-07-02 09:42:57,464 - INFO - Validating All Corpora with Per-Language Thresholds
+2026-07-02 09:42:57,464 - INFO - Language filter: PWN
+2026-07-02 09:42:57,464 - INFO - ================================================================================
+2026-07-02 09:42:57,464 - INFO - Loaded thresholds from test_results/perturbation_tests/statistical_thresholds.json
+2026-07-02 09:42:57,464 - INFO - Available languages: ['ami', 'tay', 'bnn', 'pwn', 'pyu', 'dru', 'trv']
+2026-07-02 09:42:57,624 - INFO - Found 14592 XML files in published corpora (Corpora/*/XML/)
+2026-07-02 09:42:57,625 - INFO - Loading all corpus files by language...
+2026-07-02 09:46:33,673 - INFO - Loaded corpora by language: [('ami', 2083), ('tay', 3131), ('bnn', 67), ('xnb', 34), ('ckv', 44), ('pwn', 829), ('pyu', 43), ('dru', 86), ('sxr', 13), ('xsy', 34), ('szy', 5744), ('trv', 2135), ('ssf', 13), ('tsu', 25), ('tao', 39), ('fos', 49)]
+2026-07-02 09:46:33,702 - INFO - Filtered to PWN: 829 files
+2026-07-02 09:46:33,703 - INFO - 
+Validating 829 PWN files...
+2026-07-02 09:46:34,801 - INFO - 
+Processing Northern_Paiwan/pwn/Northern (1/829)...
+2026-07-02 09:46:39,713 - INFO -   [X] Northern_Paiwan/pwn/Northern: FAIL
+2026-07-02 09:46:39,715 - INFO -       Own language: 0/4 checks passed
+2026-07-02 09:46:39,715 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 09:46:39,715 - INFO -         Character Unigram: FAIL (value=0.9952, bounds=[0.0000, 0.1481])
+2026-07-02 09:46:39,715 - INFO -         Character Bigram: FAIL (value=0.9621, bounds=[0.0000, 0.1481])
+2026-07-02 09:46:39,715 - INFO -         Character Trigram: FAIL (value=0.9329, bounds=[0.0000, 0.1481])
+2026-07-02 09:46:39,715 - INFO -         Word Unigram: FAIL (value=0.9667, bounds=[0.0000, 0.1701])
+2026-07-02 09:46:40,766 - INFO - 
+Processing Central_Paiwan/pwn/Central (2/829)...
+2026-07-02 09:46:45,467 - INFO -   [X] Central_Paiwan/pwn/Central: FAIL
+2026-07-02 09:46:45,470 - INFO -       Own language: 0/4 checks passed
+2026-07-02 09:46:45,470 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 09:46:45,470 - INFO -         Character Unigram: FAIL (value=0.9982, bounds=[0.0000, 0.1481])
+2026-07-02 09:46:45,470 - INFO -         Character Bigram: FAIL (value=0.9871, bounds=[0.0000, 0.1481])
+2026-07-02 09:46:45,470 - INFO -         Character Trigram: FAIL (value=0.9522, bounds=[0.0000, 0.1481])
+2026-07-02 09:46:45,470 - INFO -         Word Unigram: FAIL (value=0.9527, bounds=[0.0000, 0.1701])
+2026-07-02 09:46:46,555 - INFO - 
+Processing Eastern_Paiwan/pwn/Eastern (3/829)...
+2026-07-02 09:46:51,197 - INFO -   [X] Eastern_Paiwan/pwn/Eastern: FAIL
+2026-07-02 09:46:51,199 - INFO -       Own language: 0/4 checks passed
+2026-07-02 09:46:51,199 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 09:46:51,199 - INFO -         Character Unigram: FAIL (value=0.9977, bounds=[0.0000, 0.1481])
+2026-07-02 09:46:51,199 - INFO -         Character Bigram: FAIL (value=0.9844, bounds=[0.0000, 0.1481])
+2026-07-02 09:46:51,199 - INFO -         Character Trigram: FAIL (value=0.9467, bounds=[0.0000, 0.1481])
+2026-07-02 09:46:51,199 - INFO -         Word Unigram: FAIL (value=0.9390, bounds=[0.0000, 0.1701])
+2026-07-02 09:46:52,056 - INFO - 
+Processing Northern_Paiwan/pwn/Northern (4/829)...
+2026-07-02 09:46:56,420 - INFO -   [X] Northern_Paiwan/pwn/Northern: FAIL
+2026-07-02 09:46:56,420 - INFO -       Own language: 0/4 checks passed
+2026-07-02 09:46:56,420 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 09:46:56,420 - INFO -         Character Unigram: FAIL (value=0.9955, bounds=[0.0000, 0.1481])
+2026-07-02 09:46:56,420 - INFO -         Character Bigram: FAIL (value=0.9650, bounds=[0.0000, 0.1481])
+2026-07-02 09:46:56,420 - INFO -         Character Trigram: FAIL (value=0.9213, bounds=[0.0000, 0.1481])
+2026-07-02 09:46:56,420 - INFO -         Word Unigram: FAIL (value=0.9558, bounds=[0.0000, 0.1701])
+2026-07-02 09:46:57,448 - INFO - 
+Processing Southern_Paiwan/pwn/Southern (5/829)...
+2026-07-02 09:47:02,333 - INFO -   [X] Southern_Paiwan/pwn/Southern: FAIL
+2026-07-02 09:47:02,333 - INFO -       Own language: 0/4 checks passed
+2026-07-02 09:47:02,333 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 09:47:02,333 - INFO -         Character Unigram: FAIL (value=0.9969, bounds=[0.0000, 0.1481])
+2026-07-02 09:47:02,333 - INFO -         Character Bigram: FAIL (value=0.9756, bounds=[0.0000, 0.1481])
+2026-07-02 09:47:02,333 - INFO -         Character Trigram: FAIL (value=0.9318, bounds=[0.0000, 0.1481])
+2026-07-02 09:47:02,333 - INFO -         Word Unigram: FAIL (value=0.9469, bounds=[0.0000, 0.1701])
+2026-07-02 09:47:03,431 - INFO - 
+Processing Central_Paiwan/pwn/Central (6/829)...
+2026-07-02 09:47:08,248 - INFO -   [X] Central_Paiwan/pwn/Central: FAIL
+2026-07-02 09:47:08,248 - INFO -       Own language: 0/4 checks passed
+2026-07-02 09:47:08,248 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 09:47:08,248 - INFO -         Character Unigram: FAIL (value=0.9837, bounds=[0.0000, 0.1481])
+2026-07-02 09:47:08,248 - INFO -         Character Bigram: FAIL (value=0.9337, bounds=[0.0000, 0.1481])
+2026-07-02 09:47:08,248 - INFO -         Character Trigram: FAIL (value=0.8170, bounds=[0.0000, 0.1481])
+2026-07-02 09:47:08,248 - INFO -         Word Unigram: FAIL (value=0.8303, bounds=[0.0000, 0.1701])
+2026-07-02 09:47:09,345 - INFO - 
+Processing Eastern_Paiwan/pwn/Eastern (7/829)...
+2026-07-02 09:47:13,981 - INFO -   [X] Eastern_Paiwan/pwn/Eastern: FAIL
+2026-07-02 09:47:13,981 - INFO -       Own language: 0/4 checks passed
+2026-07-02 09:47:13,984 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 09:47:13,984 - INFO -         Character Unigram: FAIL (value=0.9907, bounds=[0.0000, 0.1481])
+2026-07-02 09:47:13,984 - INFO -         Character Bigram: FAIL (value=0.9436, bounds=[0.0000, 0.1481])
+2026-07-02 09:47:13,984 - INFO -         Character Trigram: FAIL (value=0.8247, bounds=[0.0000, 0.1481])
+2026-07-02 09:47:13,984 - INFO -         Word Unigram: FAIL (value=0.8634, bounds=[0.0000, 0.1701])
+2026-07-02 09:47:14,922 - INFO - 
+Processing Northern_Paiwan/pwn/Northern (8/829)...
+2026-07-02 09:47:19,332 - INFO -   [X] Northern_Paiwan/pwn/Northern: FAIL
+2026-07-02 09:47:19,332 - INFO -       Own language: 0/4 checks passed
+2026-07-02 09:47:19,334 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 09:47:19,334 - INFO -         Character Unigram: FAIL (value=0.9872, bounds=[0.0000, 0.1481])
+2026-07-02 09:47:19,334 - INFO -         Character Bigram: FAIL (value=0.9155, bounds=[0.0000, 0.1481])
+2026-07-02 09:47:19,334 - INFO -         Character Trigram: FAIL (value=0.7914, bounds=[0.0000, 0.1481])
+2026-07-02 09:47:19,334 - INFO -         Word Unigram: FAIL (value=0.8942, bounds=[0.0000, 0.1701])
+2026-07-02 09:47:20,355 - INFO - 
+Processing Southern_Paiwan/pwn/Southern (9/829)...
+2026-07-02 09:47:25,156 - INFO -   [X] Southern_Paiwan/pwn/Southern: FAIL
+2026-07-02 09:47:25,156 - INFO -       Own language: 0/4 checks passed
+2026-07-02 09:47:25,156 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 09:47:25,156 - INFO -         Character Unigram: FAIL (value=0.9901, bounds=[0.0000, 0.1481])
+2026-07-02 09:47:25,156 - INFO -         Character Bigram: FAIL (value=0.9462, bounds=[0.0000, 0.1481])
+2026-07-02 09:47:25,156 - INFO -         Character Trigram: FAIL (value=0.8332, bounds=[0.0000, 0.1481])
+2026-07-02 09:47:25,156 - INFO -         Word Unigram: FAIL (value=0.8994, bounds=[0.0000, 0.1701])
+2026-07-02 09:47:26,236 - INFO - 
+Processing Central_Paiwan/pwn/Central (10/829)...
+2026-07-02 09:47:31,116 - INFO -   [X] Central_Paiwan/pwn/Central: FAIL
+2026-07-02 09:47:31,116 - INFO -       Own language: 0/4 checks passed
+2026-07-02 09:47:31,116 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 09:47:31,116 - INFO -         Character Unigram: FAIL (value=0.9835, bounds=[0.0000, 0.1481])
+2026-07-02 09:47:31,116 - INFO -         Character Bigram: FAIL (value=0.9283, bounds=[0.0000, 0.1481])
+2026-07-02 09:47:31,120 - INFO -         Character Trigram: FAIL (value=0.7948, bounds=[0.0000, 0.1481])
+2026-07-02 09:47:31,120 - INFO -         Word Unigram: FAIL (value=0.7957, bounds=[0.0000, 0.1701])
+2026-07-02 09:47:32,263 - INFO - 
+Processing Eastern_Paiwan/pwn/Eastern (11/829)...
+2026-07-02 09:47:36,873 - INFO -   [X] Eastern_Paiwan/pwn/Eastern: FAIL
+2026-07-02 09:47:36,873 - INFO -       Own language: 0/4 checks passed
+2026-07-02 09:47:36,873 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 09:47:36,873 - INFO -         Character Unigram: FAIL (value=0.9882, bounds=[0.0000, 0.1481])
+2026-07-02 09:47:36,873 - INFO -         Character Bigram: FAIL (value=0.9341, bounds=[0.0000, 0.1481])
+2026-07-02 09:47:36,873 - INFO -         Character Trigram: FAIL (value=0.7906, bounds=[0.0000, 0.1481])
+2026-07-02 09:47:36,873 - INFO -         Word Unigram: FAIL (value=0.8242, bounds=[0.0000, 0.1701])
+2026-07-02 09:47:37,774 - INFO - 
+Processing Northern_Paiwan/pwn/Northern (12/829)...
+2026-07-02 09:47:42,233 - INFO -   [X] Northern_Paiwan/pwn/Northern: FAIL
+2026-07-02 09:47:42,233 - INFO -       Own language: 0/4 checks passed
+2026-07-02 09:47:42,233 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 09:47:42,233 - INFO -         Character Unigram: FAIL (value=0.9843, bounds=[0.0000, 0.1481])
+2026-07-02 09:47:42,233 - INFO -         Character Bigram: FAIL (value=0.8937, bounds=[0.0000, 0.1481])
+2026-07-02 09:47:42,233 - INFO -         Character Trigram: FAIL (value=0.7382, bounds=[0.0000, 0.1481])
+2026-07-02 09:47:42,233 - INFO -         Word Unigram: FAIL (value=0.8753, bounds=[0.0000, 0.1701])
+2026-07-02 09:47:43,351 - INFO - 
+Processing Southern_Paiwan/pwn/Southern (13/829)...
+2026-07-02 09:47:48,084 - INFO -   [X] Southern_Paiwan/pwn/Southern: FAIL
+2026-07-02 09:47:48,085 - INFO -       Own language: 0/4 checks passed
+2026-07-02 09:47:48,085 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 09:47:48,085 - INFO -         Character Unigram: FAIL (value=0.9880, bounds=[0.0000, 0.1481])
+2026-07-02 09:47:48,086 - INFO -         Character Bigram: FAIL (value=0.9452, bounds=[0.0000, 0.1481])
+2026-07-02 09:47:48,086 - INFO -         Character Trigram: FAIL (value=0.8108, bounds=[0.0000, 0.1481])
+2026-07-02 09:47:48,086 - INFO -         Word Unigram: FAIL (value=0.8673, bounds=[0.0000, 0.1701])
+2026-07-02 09:47:49,098 - INFO - 
+Processing Central_Paiwan/pwn/Central (14/829)...
+2026-07-02 09:47:53,826 - INFO -   [X] Central_Paiwan/pwn/Central: FAIL
+2026-07-02 09:47:53,826 - INFO -       Own language: 0/4 checks passed
+2026-07-02 09:47:53,826 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 09:47:53,826 - INFO -         Character Unigram: FAIL (value=0.9941, bounds=[0.0000, 0.1481])
+2026-07-02 09:47:53,826 - INFO -         Character Bigram: FAIL (value=0.9701, bounds=[0.0000, 0.1481])
+2026-07-02 09:47:53,826 - INFO -         Character Trigram: FAIL (value=0.9015, bounds=[0.0000, 0.1481])
+2026-07-02 09:47:53,826 - INFO -         Word Unigram: FAIL (value=0.9273, bounds=[0.0000, 0.1701])
+2026-07-02 09:47:54,892 - INFO - 
+Processing Eastern_Paiwan/pwn/Eastern (15/829)...
+2026-07-02 09:47:59,854 - INFO -   [X] Eastern_Paiwan/pwn/Eastern: FAIL
+2026-07-02 09:47:59,854 - INFO -       Own language: 0/4 checks passed
+2026-07-02 09:47:59,854 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 09:47:59,857 - INFO -         Character Unigram: FAIL (value=0.9941, bounds=[0.0000, 0.1481])
+2026-07-02 09:47:59,857 - INFO -         Character Bigram: FAIL (value=0.9637, bounds=[0.0000, 0.1481])
+2026-07-02 09:47:59,857 - INFO -         Character Trigram: FAIL (value=0.8955, bounds=[0.0000, 0.1481])
+2026-07-02 09:47:59,857 - INFO -         Word Unigram: FAIL (value=0.8772, bounds=[0.0000, 0.1701])
+2026-07-02 09:48:00,734 - INFO - 
+Processing Northern_Paiwan/pwn/Northern (16/829)...
+2026-07-02 09:48:05,361 - INFO -   [X] Northern_Paiwan/pwn/Northern: FAIL
+2026-07-02 09:48:05,361 - INFO -       Own language: 0/4 checks passed
+2026-07-02 09:48:05,361 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 09:48:05,361 - INFO -         Character Unigram: FAIL (value=0.9939, bounds=[0.0000, 0.1481])
+2026-07-02 09:48:05,361 - INFO -         Character Bigram: FAIL (value=0.9673, bounds=[0.0000, 0.1481])
+2026-07-02 09:48:05,361 - INFO -         Character Trigram: FAIL (value=0.8981, bounds=[0.0000, 0.1481])
+2026-07-02 09:48:05,361 - INFO -         Word Unigram: FAIL (value=0.9098, bounds=[0.0000, 0.1701])
+2026-07-02 09:48:06,372 - INFO - 
+Processing Southern_Paiwan/pwn/Southern (17/829)...
+2026-07-02 09:48:10,961 - INFO -   [X] Southern_Paiwan/pwn/Southern: FAIL
+2026-07-02 09:48:10,961 - INFO -       Own language: 0/4 checks passed
+2026-07-02 09:48:10,961 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 09:48:10,961 - INFO -         Character Unigram: FAIL (value=0.9935, bounds=[0.0000, 0.1481])
+2026-07-02 09:48:10,961 - INFO -         Character Bigram: FAIL (value=0.9699, bounds=[0.0000, 0.1481])
+2026-07-02 09:48:10,961 - INFO -         Character Trigram: FAIL (value=0.9000, bounds=[0.0000, 0.1481])
+2026-07-02 09:48:10,961 - INFO -         Word Unigram: FAIL (value=0.9313, bounds=[0.0000, 0.1701])
+2026-07-02 09:48:12,011 - INFO - 
+Processing Central_Paiwan/pwn/Central (18/829)...
+2026-07-02 09:48:16,841 - INFO -   [X] Central_Paiwan/pwn/Central: FAIL
+2026-07-02 09:48:16,841 - INFO -       Own language: 0/4 checks passed
+2026-07-02 09:48:16,842 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 09:48:16,842 - INFO -         Character Unigram: FAIL (value=0.9960, bounds=[0.0000, 0.1481])
+2026-07-02 09:48:16,842 - INFO -         Character Bigram: FAIL (value=0.9715, bounds=[0.0000, 0.1481])
+2026-07-02 09:48:16,842 - INFO -         Character Trigram: FAIL (value=0.9099, bounds=[0.0000, 0.1481])
+2026-07-02 09:48:16,842 - INFO -         Word Unigram: FAIL (value=0.8457, bounds=[0.0000, 0.1701])
+2026-07-02 09:48:17,935 - INFO - 
+Processing Eastern_Paiwan/pwn/Eastern (19/829)...
+2026-07-02 09:48:22,679 - INFO -   [X] Eastern_Paiwan/pwn/Eastern: FAIL
+2026-07-02 09:48:22,681 - INFO -       Own language: 0/4 checks passed
+2026-07-02 09:48:22,682 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 09:48:22,682 - INFO -         Character Unigram: FAIL (value=0.9968, bounds=[0.0000, 0.1481])
+2026-07-02 09:48:22,682 - INFO -         Character Bigram: FAIL (value=0.9808, bounds=[0.0000, 0.1481])
+2026-07-02 09:48:22,682 - INFO -         Character Trigram: FAIL (value=0.9325, bounds=[0.0000, 0.1481])
+2026-07-02 09:48:22,682 - INFO -         Word Unigram: FAIL (value=0.8773, bounds=[0.0000, 0.1701])
+2026-07-02 09:48:23,567 - INFO - 
+Processing Northern_Paiwan/pwn/Northern (20/829)...
+2026-07-02 09:48:27,971 - INFO -   [X] Northern_Paiwan/pwn/Northern: FAIL
+2026-07-02 09:48:27,971 - INFO -       Own language: 0/4 checks passed
+2026-07-02 09:48:27,972 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 09:48:27,972 - INFO -         Character Unigram: FAIL (value=0.9965, bounds=[0.0000, 0.1481])
+2026-07-02 09:48:27,973 - INFO -         Character Bigram: FAIL (value=0.9788, bounds=[0.0000, 0.1481])
+2026-07-02 09:48:27,973 - INFO -         Character Trigram: FAIL (value=0.9256, bounds=[0.0000, 0.1481])
+2026-07-02 09:48:27,973 - INFO -         Word Unigram: FAIL (value=0.8348, bounds=[0.0000, 0.1701])
+2026-07-02 09:48:28,941 - INFO - 
+Processing Southern_Paiwan/pwn/Southern (21/829)...
+2026-07-02 09:48:33,689 - INFO -   [X] Southern_Paiwan/pwn/Southern: FAIL
+2026-07-02 09:48:33,689 - INFO -       Own language: 0/4 checks passed
+2026-07-02 09:48:33,690 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 09:48:33,690 - INFO -         Character Unigram: FAIL (value=0.9961, bounds=[0.0000, 0.1481])
+2026-07-02 09:48:33,690 - INFO -         Character Bigram: FAIL (value=0.9808, bounds=[0.0000, 0.1481])
+2026-07-02 09:48:33,690 - INFO -         Character Trigram: FAIL (value=0.9305, bounds=[0.0000, 0.1481])
+2026-07-02 09:48:33,690 - INFO -         Word Unigram: FAIL (value=0.8800, bounds=[0.0000, 0.1701])
+2026-07-02 09:48:34,610 - INFO - 
+Processing Central_Paiwan/pwn/Central (22/829)...
+2026-07-02 09:48:39,275 - INFO -   [X] Central_Paiwan/pwn/Central: FAIL
+2026-07-02 09:48:39,275 - INFO -       Own language: 0/4 checks passed
+2026-07-02 09:48:39,275 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 09:48:39,275 - INFO -         Character Unigram: FAIL (value=0.9945, bounds=[0.0000, 0.1481])
+2026-07-02 09:48:39,275 - INFO -         Character Bigram: FAIL (value=0.9334, bounds=[0.0000, 0.1481])
+2026-07-02 09:48:39,275 - INFO -         Character Trigram: FAIL (value=0.8367, bounds=[0.0000, 0.1481])
+2026-07-02 09:48:39,275 - INFO -         Word Unigram: FAIL (value=0.8952, bounds=[0.0000, 0.1701])
+2026-07-02 09:48:40,258 - INFO - 
+Processing Eastern_Paiwan/pwn/Eastern (23/829)...

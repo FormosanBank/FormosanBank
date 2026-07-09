@@ -1,0 +1,450 @@
+2026-07-01 16:19:57,186 - INFO - Starting Character Perturbation Robustness Test Suite
+2026-07-01 16:19:57,186 - INFO - Loading pre-computed thresholds from test_results/perturbation_tests/statistical_thresholds.json
+2026-07-01 16:19:57,186 - INFO - Thresholds loaded successfully. Skipping test recomputation.
+2026-07-01 16:19:57,224 - INFO - Testing languages: ['Amis', 'Atayal', 'Bunun', 'Paiwan', 'Puyuma', 'Rukai', 'Seediq']
+2026-07-01 16:19:57,224 - INFO - Testing sources: ['ePark/', 'ILRDF_Dicts/', 'Paiwan_Stories/', 'NTUFormosanCorpus/']
+2026-07-01 16:19:57,224 - INFO - Number of swaps per test: 5
+2026-07-01 16:19:57,224 - INFO - Epsilon for per-language thresholds: 0.1
+2026-07-01 16:19:57,224 - INFO - 
+================================================================================
+2026-07-01 16:19:57,224 - INFO - Skipping test suite execution (using pre-loaded thresholds)
+2026-07-01 16:19:57,224 - INFO - ================================================================================
+
+2026-07-01 16:19:57,224 - INFO - 
+================================================================================
+2026-07-01 16:19:57,224 - INFO - Using pre-loaded thresholds (skipped recomputation)
+2026-07-01 16:19:57,224 - INFO - ================================================================================
+
+2026-07-01 16:19:57,224 - INFO - Per-Language Thresholds (epsilon=0.1):
+2026-07-01 16:19:57,240 - INFO -   ami:
+2026-07-01 16:19:57,240 - INFO -     character_cosine:
+2026-07-01 16:19:57,240 - INFO -       Mean: 0.0785, Std: 0.0475
+2026-07-01 16:19:57,240 - INFO -       Lower (healthy): -0.0215, Upper (anomalous): 0.1785
+2026-07-01 16:19:57,240 - INFO -     character_kl:
+2026-07-01 16:19:57,240 - INFO -       Mean: 0.4429, Std: 0.1676
+2026-07-01 16:19:57,240 - INFO -       Lower (healthy): 0.3429, Upper (anomalous): 0.5429
+2026-07-01 16:19:57,241 - INFO -     word_cosine:
+2026-07-01 16:19:57,241 - INFO -       Mean: 0.0827, Std: 0.0568
+2026-07-01 16:19:57,241 - INFO -       Lower (healthy): -0.0173, Upper (anomalous): 0.1827
+2026-07-01 16:19:57,241 - INFO -     word_kl:
+2026-07-01 16:19:57,241 - INFO -       Mean: 0.3593, Std: 0.1306
+2026-07-01 16:19:57,241 - INFO -       Lower (healthy): 0.2593, Upper (anomalous): 0.4593
+2026-07-01 16:19:57,241 - INFO -   tay:
+2026-07-01 16:19:57,241 - INFO -     character_cosine:
+2026-07-01 16:19:57,241 - INFO -       Mean: 0.0190, Std: 0.0160
+2026-07-01 16:19:57,241 - INFO -       Lower (healthy): -0.0810, Upper (anomalous): 0.1190
+2026-07-01 16:19:57,241 - INFO -     character_kl:
+2026-07-01 16:19:57,241 - INFO -       Mean: 0.2149, Std: 0.1018
+2026-07-01 16:19:57,241 - INFO -       Lower (healthy): 0.1149, Upper (anomalous): 0.3149
+2026-07-01 16:19:57,241 - INFO -     word_cosine:
+2026-07-01 16:19:57,241 - INFO -       Mean: 0.0813, Std: 0.0523
+2026-07-01 16:19:57,242 - INFO -       Lower (healthy): -0.0187, Upper (anomalous): 0.1813
+2026-07-01 16:19:57,242 - INFO -     word_kl:
+2026-07-01 16:19:57,242 - INFO -       Mean: 0.2961, Std: 0.1277
+2026-07-01 16:19:57,242 - INFO -       Lower (healthy): 0.1961, Upper (anomalous): 0.3961
+2026-07-01 16:19:57,242 - INFO -   bnn:
+2026-07-01 16:19:57,243 - INFO -     character_cosine:
+2026-07-01 16:19:57,243 - INFO -       Mean: 0.0097, Std: 0.0060
+2026-07-01 16:19:57,244 - INFO -       Lower (healthy): -0.0903, Upper (anomalous): 0.1097
+2026-07-01 16:19:57,244 - INFO -     character_kl:
+2026-07-01 16:19:57,244 - INFO -       Mean: 0.1684, Std: 0.0771
+2026-07-01 16:19:57,244 - INFO -       Lower (healthy): 0.0684, Upper (anomalous): 0.2684
+2026-07-01 16:19:57,244 - INFO -     word_cosine:
+2026-07-01 16:19:57,244 - INFO -       Mean: 0.0506, Std: 0.0536
+2026-07-01 16:19:57,244 - INFO -       Lower (healthy): -0.0494, Upper (anomalous): 0.1506
+2026-07-01 16:19:57,246 - INFO -     word_kl:
+2026-07-01 16:19:57,246 - INFO -       Mean: 0.1627, Std: 0.0867
+2026-07-01 16:19:57,246 - INFO -       Lower (healthy): 0.0627, Upper (anomalous): 0.2627
+2026-07-01 16:19:57,246 - INFO -   pwn:
+2026-07-01 16:19:57,246 - INFO -     character_cosine:
+2026-07-01 16:19:57,246 - INFO -       Mean: 0.0481, Std: 0.0546
+2026-07-01 16:19:57,247 - INFO -       Lower (healthy): -0.0519, Upper (anomalous): 0.1481
+2026-07-01 16:19:57,247 - INFO -     character_kl:
+2026-07-01 16:19:57,247 - INFO -       Mean: 0.3446, Std: 0.2375
+2026-07-01 16:19:57,247 - INFO -       Lower (healthy): 0.2446, Upper (anomalous): 0.4446
+2026-07-01 16:19:57,247 - INFO -     word_cosine:
+2026-07-01 16:19:57,247 - INFO -       Mean: 0.0701, Std: 0.0844
+2026-07-01 16:19:57,249 - INFO -       Lower (healthy): -0.0299, Upper (anomalous): 0.1701
+2026-07-01 16:19:57,249 - INFO -     word_kl:
+2026-07-01 16:19:57,249 - INFO -       Mean: 0.3441, Std: 0.2525
+2026-07-01 16:19:57,249 - INFO -       Lower (healthy): 0.2441, Upper (anomalous): 0.4441
+2026-07-01 16:19:57,249 - INFO -   pyu:
+2026-07-01 16:19:57,249 - INFO -     character_cosine:
+2026-07-01 16:19:57,250 - INFO -       Mean: 0.0353, Std: 0.0435
+2026-07-01 16:19:57,250 - INFO -       Lower (healthy): -0.0647, Upper (anomalous): 0.1353
+2026-07-01 16:19:57,250 - INFO -     character_kl:
+2026-07-01 16:19:57,250 - INFO -       Mean: 0.2552, Std: 0.1655
+2026-07-01 16:19:57,250 - INFO -       Lower (healthy): 0.1552, Upper (anomalous): 0.3552
+2026-07-01 16:19:57,250 - INFO -     word_cosine:
+2026-07-01 16:19:57,250 - INFO -       Mean: 0.0611, Std: 0.0542
+2026-07-01 16:19:57,251 - INFO -       Lower (healthy): -0.0389, Upper (anomalous): 0.1611
+2026-07-01 16:19:57,251 - INFO -     word_kl:
+2026-07-01 16:19:57,251 - INFO -       Mean: 0.2643, Std: 0.1548
+2026-07-01 16:19:57,251 - INFO -       Lower (healthy): 0.1643, Upper (anomalous): 0.3643
+2026-07-01 16:19:57,251 - INFO -   dru:
+2026-07-01 16:19:57,251 - INFO -     character_cosine:
+2026-07-01 16:19:57,251 - INFO -       Mean: 0.0330, Std: 0.0374
+2026-07-01 16:19:57,251 - INFO -       Lower (healthy): -0.0670, Upper (anomalous): 0.1330
+2026-07-01 16:19:57,251 - INFO -     character_kl:
+2026-07-01 16:19:57,252 - INFO -       Mean: 0.2930, Std: 0.2295
+2026-07-01 16:19:57,252 - INFO -       Lower (healthy): 0.1930, Upper (anomalous): 0.3930
+2026-07-01 16:19:57,252 - INFO -     word_cosine:
+2026-07-01 16:19:57,252 - INFO -       Mean: 0.0885, Std: 0.0605
+2026-07-01 16:19:57,252 - INFO -       Lower (healthy): -0.0115, Upper (anomalous): 0.1885
+2026-07-01 16:19:57,252 - INFO -     word_kl:
+2026-07-01 16:19:57,252 - INFO -       Mean: 0.2529, Std: 0.2046
+2026-07-01 16:19:57,252 - INFO -       Lower (healthy): 0.1529, Upper (anomalous): 0.3529
+2026-07-01 16:19:57,252 - INFO -   trv:
+2026-07-01 16:19:57,253 - INFO -     character_cosine:
+2026-07-01 16:19:57,253 - INFO -       Mean: 0.0520, Std: 0.0342
+2026-07-01 16:19:57,253 - INFO -       Lower (healthy): -0.0480, Upper (anomalous): 0.1520
+2026-07-01 16:19:57,253 - INFO -     character_kl:
+2026-07-01 16:19:57,253 - INFO -       Mean: 0.3267, Std: 0.1022
+2026-07-01 16:19:57,253 - INFO -       Lower (healthy): 0.2267, Upper (anomalous): 0.4267
+2026-07-01 16:19:57,253 - INFO -     word_cosine:
+2026-07-01 16:19:57,253 - INFO -       Mean: 0.0916, Std: 0.0637
+2026-07-01 16:19:57,254 - INFO -       Lower (healthy): -0.0084, Upper (anomalous): 0.1916
+2026-07-01 16:19:57,254 - INFO -     word_kl:
+2026-07-01 16:19:57,254 - INFO -       Mean: 0.3677, Std: 0.1220
+2026-07-01 16:19:57,254 - INFO -       Lower (healthy): 0.2677, Upper (anomalous): 0.4677
+2026-07-01 16:19:57,254 - INFO - 
+Global Thresholds (fallback, mean ± 1 std):
+2026-07-01 16:19:57,254 - INFO -   character_cosine:
+2026-07-01 16:19:57,255 - INFO -     Mean: 0.0377, Std: 0.0426
+2026-07-01 16:19:57,255 - INFO -     Healthy: -0.0050, Anomalous: 0.0803
+2026-07-01 16:19:57,255 - INFO -   character_kl:
+2026-07-01 16:19:57,255 - INFO -     Mean: 0.2874, Std: 0.1875
+2026-07-01 16:19:57,255 - INFO -     Healthy: 0.0999, Anomalous: 0.4748
+2026-07-01 16:19:57,255 - INFO -   word_cosine:
+2026-07-01 16:19:57,256 - INFO -     Mean: 0.0753, Std: 0.0622
+2026-07-01 16:19:57,256 - INFO -     Healthy: 0.0131, Anomalous: 0.1375
+2026-07-01 16:19:57,256 - INFO -   word_kl:
+2026-07-01 16:19:57,256 - INFO -     Mean: 0.2861, Std: 0.1752
+2026-07-01 16:19:57,256 - INFO -     Healthy: 0.1109, Anomalous: 0.4613
+2026-07-01 16:19:57,256 - INFO - 
+================================================================================
+2026-07-01 16:19:57,256 - INFO - Running XML Corpus Integrity Validation Tests
+2026-07-01 16:19:57,257 - INFO - ================================================================================
+
+2026-07-01 16:19:57,258 - INFO - [VALIDATION] Checking XML integrity for ami/Coastal (using 5 swaps per perturbation)...
+2026-07-01 16:20:36,165 - INFO - Analyzing baseline for ami/Coastal...
+2026-07-01 16:20:36,525 - INFO - Testing 5 random character swaps...
+2026-07-01 16:20:36,525 - INFO -   Swap 1/5: 'i' -> 'c'
+2026-07-01 16:20:36,882 - INFO -   Swap 2/5: 'u' -> '9'
+2026-07-01 16:20:37,244 - INFO -   Swap 3/5: 'i' -> '1'
+2026-07-01 16:20:37,594 - INFO -   Swap 4/5: 's' -> 'w'
+2026-07-01 16:20:37,944 - INFO -   Swap 5/5: 'l' -> 'p'
+2026-07-01 16:20:38,343 - INFO -   [!] ami/Coastal - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-01 16:20:38,343 - INFO - [VALIDATION] Checking XML integrity for ami/Hengchun (using 5 swaps per perturbation)...
+2026-07-01 16:20:39,162 - INFO - Analyzing baseline for ami/Hengchun...
+2026-07-01 16:20:39,395 - INFO - Testing 5 random character swaps...
+2026-07-01 16:20:39,397 - INFO -   Swap 1/5: 'p' -> 's'
+2026-07-01 16:20:39,648 - INFO -   Swap 2/5: 'p' -> 'g'
+2026-07-01 16:20:39,833 - INFO -   Swap 3/5: 'h' -> 'o'
+2026-07-01 16:20:40,020 - INFO -   Swap 4/5: 'y' -> 'f'
+2026-07-01 16:20:40,208 - INFO -   Swap 5/5: '5' -> 'c'
+2026-07-01 16:20:40,386 - INFO -   [!] ami/Hengchun - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-01 16:20:40,386 - INFO - [VALIDATION] Checking XML integrity for ami/Malan (using 5 swaps per perturbation)...
+2026-07-01 16:20:41,177 - INFO - Analyzing baseline for ami/Malan...
+2026-07-01 16:20:41,404 - INFO - Testing 5 random character swaps...
+2026-07-01 16:20:41,404 - INFO -   Swap 1/5: 'r' -> 'k'
+2026-07-01 16:20:41,591 - INFO -   Swap 2/5: 'a' -> 'c'
+2026-07-01 16:20:41,766 - INFO -   Swap 3/5: 'p' -> 's'
+2026-07-01 16:20:41,945 - INFO -   Swap 4/5: 'g' -> 'h'
+2026-07-01 16:20:42,138 - INFO -   Swap 5/5: 'o' -> 'g'
+2026-07-01 16:20:42,319 - INFO -   [X] ami/Malan - Character 1-gram Deltas (avg of 5 swaps): FAIL
+2026-07-01 16:20:42,321 - INFO - [VALIDATION] Checking XML integrity for ami/Southern (using 5 swaps per perturbation)...
+2026-07-01 16:20:43,047 - INFO - Analyzing baseline for ami/Southern...
+2026-07-01 16:20:43,268 - INFO - Testing 5 random character swaps...
+2026-07-01 16:20:43,268 - INFO -   Swap 1/5: 'l' -> 'w'
+2026-07-01 16:20:43,464 - INFO -   Swap 2/5: 'n' -> 'g'
+2026-07-01 16:20:43,628 - INFO -   Swap 3/5: 'y' -> '1'
+2026-07-01 16:20:43,796 - INFO -   Swap 4/5: 'r' -> 'g'
+2026-07-01 16:20:43,951 - INFO -   Swap 5/5: 'w' -> 'h'
+2026-07-01 16:20:44,139 - INFO -   [!] ami/Southern - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-01 16:20:44,139 - INFO - [VALIDATION] Checking XML integrity for ami/Xiuguluan (using 5 swaps per perturbation)...
+2026-07-01 16:20:44,912 - INFO - Analyzing baseline for ami/Xiuguluan...
+2026-07-01 16:20:45,335 - INFO - Testing 5 random character swaps...
+2026-07-01 16:20:45,335 - INFO -   Swap 1/5: 'f' -> '1'
+2026-07-01 16:20:45,698 - INFO -   Swap 2/5: '1' -> 's'
+2026-07-01 16:20:46,128 - INFO -   Swap 3/5: 'p' -> 'f'
+2026-07-01 16:20:46,518 - INFO -   Swap 4/5: '1' -> 'a'
+2026-07-01 16:20:46,902 - INFO -   Swap 5/5: 'g' -> 'k'
+2026-07-01 16:20:47,291 - INFO -   [!] ami/Xiuguluan - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-01 16:20:47,294 - INFO - [VALIDATION] Checking XML integrity for tay/FourSeasons (using 5 swaps per perturbation)...
+2026-07-01 16:21:49,314 - INFO - Analyzing baseline for tay/FourSeasons...
+2026-07-01 16:21:49,556 - INFO - Testing 5 random character swaps...
+2026-07-01 16:21:49,556 - INFO -   Swap 1/5: 'g' -> 'a'
+2026-07-01 16:21:49,743 - INFO -   Swap 2/5: 'h' -> 'o'
+2026-07-01 16:21:49,925 - INFO -   Swap 3/5: 'w' -> 'e'
+2026-07-01 16:21:50,119 - INFO -   Swap 4/5: 'c' -> 'k'
+2026-07-01 16:21:50,296 - INFO -   Swap 5/5: 'w' -> 'u'
+2026-07-01 16:21:50,460 - INFO -   [!] tay/FourSeasons - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-01 16:21:50,460 - INFO - [VALIDATION] Checking XML integrity for tay/Sekolik (using 5 swaps per perturbation)...
+2026-07-01 16:21:51,322 - INFO - Analyzing baseline for tay/Sekolik...
+2026-07-01 16:21:52,027 - INFO - Testing 5 random character swaps...
+2026-07-01 16:21:52,027 - INFO -   Swap 1/5: 'n' -> 'e'
+2026-07-01 16:21:52,668 - INFO -   Swap 2/5: 'g' -> 'b'
+2026-07-01 16:21:53,299 - INFO -   Swap 3/5: 'x' -> 'i'
+2026-07-01 16:21:53,937 - INFO -   Swap 4/5: 'y' -> 'r'
+2026-07-01 16:21:54,572 - INFO -   Swap 5/5: 'z' -> 'x'
+2026-07-01 16:21:55,202 - INFO -   [!] tay/Sekolik - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-01 16:21:55,202 - INFO - [VALIDATION] Checking XML integrity for tay/Wanda (using 5 swaps per perturbation)...
+2026-07-01 16:21:56,189 - INFO - Analyzing baseline for tay/Wanda...
+2026-07-01 16:21:56,387 - INFO - Testing 5 random character swaps...
+2026-07-01 16:21:56,387 - INFO -   Swap 1/5: 'k' -> 's'
+2026-07-01 16:21:56,563 - INFO -   Swap 2/5: 'r' -> 'h'
+2026-07-01 16:21:56,714 - INFO -   Swap 3/5: 'a' -> 'g'
+2026-07-01 16:21:56,864 - INFO -   Swap 4/5: 'g' -> 'e'
+2026-07-01 16:21:57,026 - INFO -   Swap 5/5: 'h' -> 'o'
+2026-07-01 16:21:57,179 - INFO -   [X] tay/Wanda - Character 1-gram Deltas (avg of 5 swaps): FAIL
+2026-07-01 16:21:57,179 - INFO - [VALIDATION] Checking XML integrity for tay/Wenshui (using 5 swaps per perturbation)...
+2026-07-01 16:21:58,050 - INFO - Analyzing baseline for tay/Wenshui...
+2026-07-01 16:21:58,342 - INFO - Testing 5 random character swaps...
+2026-07-01 16:21:58,342 - INFO -   Swap 1/5: 'b' -> 'i'
+2026-07-01 16:21:58,553 - INFO -   Swap 2/5: 'v' -> 'p'
+2026-07-01 16:21:58,791 - INFO -   Swap 3/5: 't' -> 'b'
+2026-07-01 16:21:58,992 - INFO -   Swap 4/5: 'o' -> 'k'
+2026-07-01 16:21:59,205 - INFO -   Swap 5/5: 'u' -> 'b'
+2026-07-01 16:21:59,452 - INFO -   [!] tay/Wenshui - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-01 16:21:59,452 - INFO - [VALIDATION] Checking XML integrity for tay/YilanZeaol (using 5 swaps per perturbation)...
+2026-07-01 16:22:00,410 - INFO - Analyzing baseline for tay/YilanZeaol...
+2026-07-01 16:22:00,684 - INFO - Testing 5 random character swaps...
+2026-07-01 16:22:00,684 - INFO -   Swap 1/5: 'm' -> 'g'
+2026-07-01 16:22:00,898 - INFO -   Swap 2/5: 't' -> 'h'
+2026-07-01 16:22:01,065 - INFO -   Swap 3/5: 'y' -> 'e'
+2026-07-01 16:22:01,262 - INFO -   Swap 4/5: 'x' -> 't'
+2026-07-01 16:22:01,438 - INFO -   Swap 5/5: 'l' -> 'e'
+2026-07-01 16:22:01,616 - INFO -   [!] tay/YilanZeaol - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-01 16:22:01,616 - INFO - [VALIDATION] Checking XML integrity for tay/Zeaol (using 5 swaps per perturbation)...
+2026-07-01 16:22:02,500 - INFO - Analyzing baseline for tay/Zeaol...
+2026-07-01 16:22:02,752 - INFO - Testing 5 random character swaps...
+2026-07-01 16:22:02,752 - INFO -   Swap 1/5: 'r' -> 'g'
+2026-07-01 16:22:02,949 - INFO -   Swap 2/5: 'z' -> 'm'
+2026-07-01 16:22:03,133 - INFO -   Swap 3/5: 'm' -> 'g'
+2026-07-01 16:22:03,308 - INFO -   Swap 4/5: 'w' -> 'h'
+2026-07-01 16:22:03,499 - INFO -   Swap 5/5: 'q' -> 'e'
+2026-07-01 16:22:03,704 - INFO -   [!] tay/Zeaol - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-01 16:22:03,711 - INFO - [VALIDATION] Checking XML integrity for bnn/Junqun (using 5 swaps per perturbation)...
+2026-07-01 16:22:51,113 - INFO - Analyzing baseline for bnn/Junqun...
+2026-07-01 16:22:52,048 - INFO - Testing 5 random character swaps...
+2026-07-01 16:22:52,048 - INFO -   Swap 1/5: '0' -> 'n'
+2026-07-01 16:22:52,888 - INFO -   Swap 2/5: '1' -> 'k'
+2026-07-01 16:22:53,762 - INFO -   Swap 3/5: 'b' -> '2'
+2026-07-01 16:22:54,620 - INFO -   Swap 4/5: 'k' -> 't'
+2026-07-01 16:22:55,446 - INFO -   Swap 5/5: 'v' -> '2'
+2026-07-01 16:22:56,244 - INFO -   [!] bnn/Junqun - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-01 16:22:56,244 - INFO - [VALIDATION] Checking XML integrity for bnn/Kaqun (using 5 swaps per perturbation)...
+2026-07-01 16:22:57,429 - INFO - Analyzing baseline for bnn/Kaqun...
+2026-07-01 16:22:57,628 - INFO - Testing 5 random character swaps...
+2026-07-01 16:22:57,628 - INFO -   Swap 1/5: 'm' -> 'g'
+2026-07-01 16:22:57,818 - INFO -   Swap 2/5: 'n' -> 'd'
+2026-07-01 16:22:57,986 - INFO -   Swap 3/5: 'l' -> 'm'
+2026-07-01 16:22:58,188 - INFO -   Swap 4/5: 't' -> 'a'
+2026-07-01 16:22:58,352 - INFO -   Swap 5/5: 'b' -> 's'
+2026-07-01 16:22:58,525 - INFO -   [X] bnn/Kaqun - Character 1-gram Deltas (avg of 5 swaps): FAIL
+2026-07-01 16:22:58,526 - INFO - [VALIDATION] Checking XML integrity for bnn/Luanqun (using 5 swaps per perturbation)...
+2026-07-01 16:22:59,699 - INFO - Analyzing baseline for bnn/Luanqun...
+2026-07-01 16:22:59,913 - INFO - Testing 5 random character swaps...
+2026-07-01 16:22:59,913 - INFO -   Swap 1/5: 'e' -> 'z'
+2026-07-01 16:23:00,094 - INFO -   Swap 2/5: 'b' -> 's'
+2026-07-01 16:23:00,290 - INFO -   Swap 3/5: 'g' -> 'h'
+2026-07-01 16:23:00,537 - INFO -   Swap 4/5: 'm' -> 'g'
+2026-07-01 16:23:00,691 - INFO -   Swap 5/5: 'n' -> 'd'
+2026-07-01 16:23:00,871 - INFO -   [!] bnn/Luanqun - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-01 16:23:00,871 - INFO - [VALIDATION] Checking XML integrity for bnn/Tanqun (using 5 swaps per perturbation)...
+2026-07-01 16:23:02,040 - INFO - Analyzing baseline for bnn/Tanqun...
+2026-07-01 16:23:02,256 - INFO - Testing 5 random character swaps...
+2026-07-01 16:23:02,256 - INFO -   Swap 1/5: 'o' -> 'g'
+2026-07-01 16:23:02,441 - INFO -   Swap 2/5: '1' -> 'h'
+2026-07-01 16:23:02,594 - INFO -   Swap 3/5: 'u' -> 'v'
+2026-07-01 16:23:02,770 - INFO -   Swap 4/5: 'z' -> 'u'
+2026-07-01 16:23:02,962 - INFO -   Swap 5/5: 'l' -> 'v'
+2026-07-01 16:23:03,127 - INFO -   [!] bnn/Tanqun - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-01 16:23:03,127 - INFO - [VALIDATION] Checking XML integrity for bnn/Zhuoqun (using 5 swaps per perturbation)...
+2026-07-01 16:23:04,300 - INFO - Analyzing baseline for bnn/Zhuoqun...
+2026-07-01 16:23:04,512 - INFO - Testing 5 random character swaps...
+2026-07-01 16:23:04,512 - INFO -   Swap 1/5: 'l' -> 'm'
+2026-07-01 16:23:04,704 - INFO -   Swap 2/5: 't' -> 'a'
+2026-07-01 16:23:04,868 - INFO -   Swap 3/5: 'b' -> 's'
+2026-07-01 16:23:05,045 - INFO -   Swap 4/5: 't' -> 'e'
+2026-07-01 16:23:05,247 - INFO -   Swap 5/5: 'o' -> 'l'
+2026-07-01 16:23:05,426 - INFO -   [!] bnn/Zhuoqun - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-01 16:23:05,442 - INFO - [VALIDATION] Checking XML integrity for pwn/Central (using 5 swaps per perturbation)...
+2026-07-01 16:23:15,759 - INFO - Analyzing baseline for pwn/Central...
+2026-07-01 16:23:16,001 - INFO - Testing 5 random character swaps...
+2026-07-01 16:23:16,001 - INFO -   Swap 1/5: 'n' -> 'p'
+2026-07-01 16:23:16,167 - INFO -   Swap 2/5: 'd' -> 'p'
+2026-07-01 16:23:16,367 - INFO -   Swap 3/5: 'y' -> 'h'
+2026-07-01 16:23:16,560 - INFO -   Swap 4/5: 'e' -> 'd'
+2026-07-01 16:23:16,725 - INFO -   Swap 5/5: 'z' -> 'y'
+2026-07-01 16:23:16,906 - INFO -   [!] pwn/Central - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-01 16:23:16,919 - INFO - [VALIDATION] Checking XML integrity for pwn/Eastern (using 5 swaps per perturbation)...
+2026-07-01 16:23:17,548 - INFO - Analyzing baseline for pwn/Eastern...
+2026-07-01 16:23:17,827 - INFO - Testing 5 random character swaps...
+2026-07-01 16:23:17,827 - INFO -   Swap 1/5: '﹐' -> 'z'
+2026-07-01 16:23:18,020 - INFO -   Swap 2/5: 'l' -> 'e'
+2026-07-01 16:23:18,228 - INFO -   Swap 3/5: 'n' -> 'g'
+2026-07-01 16:23:18,429 - INFO -   Swap 4/5: 'u' -> 'm'
+2026-07-01 16:23:18,631 - INFO -   Swap 5/5: 'n' -> 'b'
+2026-07-01 16:23:18,838 - INFO -   [X] pwn/Eastern - Character 1-gram Deltas (avg of 5 swaps): FAIL
+2026-07-01 16:23:18,838 - INFO - [VALIDATION] Checking XML integrity for pwn/Northern (using 5 swaps per perturbation)...
+2026-07-01 16:23:19,588 - INFO - Analyzing baseline for pwn/Northern...
+2026-07-01 16:23:20,252 - INFO - Testing 5 random character swaps...
+2026-07-01 16:23:20,252 - INFO -   Swap 1/5: 'n' -> 'd'
+2026-07-01 16:23:20,855 - INFO -   Swap 2/5: '1' -> 'a'
+2026-07-01 16:23:21,461 - INFO -   Swap 3/5: 'd' -> 'm'
+2026-07-01 16:23:22,065 - INFO -   Swap 4/5: 'a' -> 'n'
+2026-07-01 16:23:22,719 - INFO -   Swap 5/5: 'p' -> 'j'
+2026-07-01 16:23:23,303 - INFO -   [X] pwn/Northern - Character 1-gram Deltas (avg of 5 swaps): FAIL
+2026-07-01 16:23:23,303 - INFO - [VALIDATION] Checking XML integrity for pwn/Southern (using 5 swaps per perturbation)...
+2026-07-01 16:23:23,933 - INFO - Analyzing baseline for pwn/Southern...
+2026-07-01 16:23:24,130 - INFO - Testing 5 random character swaps...
+2026-07-01 16:23:24,130 - INFO -   Swap 1/5: 'a' -> '2'
+2026-07-01 16:23:24,352 - INFO -   Swap 2/5: 'w' -> '5'
+2026-07-01 16:23:24,577 - INFO -   Swap 3/5: 'g' -> 'h'
+2026-07-01 16:23:24,802 - INFO -   Swap 4/5: 'r' -> 'g'
+2026-07-01 16:23:25,012 - INFO -   Swap 5/5: '0' -> 'k'
+2026-07-01 16:23:25,236 - INFO -   [X] pwn/Southern - Character 1-gram Deltas (avg of 5 swaps): FAIL
+2026-07-01 16:23:25,245 - INFO - [VALIDATION] Checking XML integrity for pyu/Jianhe (using 5 swaps per perturbation)...
+2026-07-01 16:23:33,004 - INFO - Analyzing baseline for pyu/Jianhe...
+2026-07-01 16:23:33,246 - INFO - Testing 5 random character swaps...
+2026-07-01 16:23:33,246 - INFO -   Swap 1/5: 'l' -> 'u'
+2026-07-01 16:23:33,508 - INFO -   Swap 2/5: 'n' -> 'g'
+2026-07-01 16:23:33,712 - INFO -   Swap 3/5: 'y' -> 'm'
+2026-07-01 16:23:33,892 - INFO -   Swap 4/5: 'n' -> 'p'
+2026-07-01 16:23:34,115 - INFO -   Swap 5/5: 'd' -> 'p'
+2026-07-01 16:23:34,340 - INFO -   [X] pyu/Jianhe - Character 1-gram Deltas (avg of 5 swaps): FAIL
+2026-07-01 16:23:34,340 - INFO - [VALIDATION] Checking XML integrity for pyu/Nanwang (using 5 swaps per perturbation)...
+2026-07-01 16:23:35,024 - INFO - Analyzing baseline for pyu/Nanwang...
+2026-07-01 16:23:35,891 - INFO - Testing 5 random character swaps...
+2026-07-01 16:23:35,891 - INFO -   Swap 1/5: '4' -> 'i'
+2026-07-01 16:23:36,666 - INFO -   Swap 2/5: 'ē' -> 'p'
+2026-07-01 16:23:37,429 - INFO -   Swap 3/5: 'z' -> '4'
+2026-07-01 16:23:38,179 - INFO -   Swap 4/5: 'z' -> 'b'
+2026-07-01 16:23:38,859 - INFO -   Swap 5/5: 'y' -> 'ē'
+2026-07-01 16:23:39,686 - INFO -   [!] pyu/Nanwang - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-01 16:23:39,686 - INFO - [VALIDATION] Checking XML integrity for pyu/Xiqun (using 5 swaps per perturbation)...
+2026-07-01 16:23:40,367 - INFO - Analyzing baseline for pyu/Xiqun...
+2026-07-01 16:23:40,667 - INFO - Testing 5 random character swaps...
+2026-07-01 16:23:40,667 - INFO -   Swap 1/5: 'a' -> '1'
+2026-07-01 16:23:40,973 - INFO -   Swap 2/5: 't' -> 'c'
+2026-07-01 16:23:41,188 - INFO -   Swap 3/5: 'g' -> 'h'
+2026-07-01 16:23:41,383 - INFO -   Swap 4/5: 'o' -> 'g'
+2026-07-01 16:23:41,610 - INFO -   Swap 5/5: 's' -> 'ē'
+2026-07-01 16:23:41,864 - INFO -   [X] pyu/Xiqun - Character 1-gram Deltas (avg of 5 swaps): FAIL
+2026-07-01 16:23:41,864 - INFO - [VALIDATION] Checking XML integrity for pyu/Zhiben (using 5 swaps per perturbation)...
+2026-07-01 16:23:42,482 - INFO - Analyzing baseline for pyu/Zhiben...
+2026-07-01 16:23:42,806 - INFO - Testing 5 random character swaps...
+2026-07-01 16:23:42,838 - INFO -   Swap 1/5: 'a' -> 'c'
+2026-07-01 16:23:43,093 - INFO -   Swap 2/5: 'l' -> 'e'
+2026-07-01 16:23:43,313 - INFO -   Swap 3/5: 'n' -> 'g'
+2026-07-01 16:23:43,513 - INFO -   Swap 4/5: 'y' -> 'm'
+2026-07-01 16:23:43,818 - INFO -   Swap 5/5: 'n' -> 'b'
+2026-07-01 16:23:43,997 - INFO -   [X] pyu/Zhiben - Character 1-gram Deltas (avg of 5 swaps): FAIL
+2026-07-01 16:23:43,997 - INFO - [VALIDATION] Checking XML integrity for dru/Dawu (using 5 swaps per perturbation)...
+2026-07-01 16:23:58,551 - INFO - Analyzing baseline for dru/Dawu...
+2026-07-01 16:23:58,802 - INFO - Testing 5 random character swaps...
+2026-07-01 16:23:58,819 - INFO -   Swap 1/5: 'e' -> 's'
+2026-07-01 16:23:58,981 - INFO -   Swap 2/5: 'l' -> 'w'
+2026-07-01 16:23:59,185 - INFO -   Swap 3/5: 'n' -> 'g'
+2026-07-01 16:23:59,364 - INFO -   Swap 4/5: 'y' -> 'z'
+2026-07-01 16:23:59,543 - INFO -   Swap 5/5: 'r' -> 'g'
+2026-07-01 16:23:59,711 - INFO -   [!] dru/Dawu - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-01 16:23:59,711 - INFO - [VALIDATION] Checking XML integrity for dru/Dona (using 5 swaps per perturbation)...
+2026-07-01 16:24:01,040 - INFO - Analyzing baseline for dru/Dona...
+2026-07-01 16:24:01,286 - INFO - Testing 5 random character swaps...
+2026-07-01 16:24:01,286 - INFO -   Swap 1/5: 't' -> 'c'
+2026-07-01 16:24:01,488 - INFO -   Swap 2/5: 'g' -> 'h'
+2026-07-01 16:24:01,681 - INFO -   Swap 3/5: 'o' -> 'g'
+2026-07-01 16:24:01,911 - INFO -   Swap 4/5: 'n' -> 's'
+2026-07-01 16:24:02,089 - INFO -   Swap 5/5: 'd' -> 'p'
+2026-07-01 16:24:02,268 - INFO -   [!] dru/Dona - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-01 16:24:02,268 - INFO - [VALIDATION] Checking XML integrity for dru/Eastern (using 5 swaps per perturbation)...
+2026-07-01 16:24:03,508 - INFO - Analyzing baseline for dru/Eastern...
+2026-07-01 16:24:03,803 - INFO - Testing 5 random character swaps...
+2026-07-01 16:24:03,803 - INFO -   Swap 1/5: 'k' -> 'c'
+2026-07-01 16:24:03,990 - INFO -   Swap 2/5: 'g' -> 'h'
+2026-07-01 16:24:04,183 - INFO -   Swap 3/5: 'o' -> 'g'
+2026-07-01 16:24:04,364 - INFO -   Swap 4/5: 'n' -> 's'
+2026-07-01 16:24:04,524 - INFO -   Swap 5/5: 'l' -> 'o'
+2026-07-01 16:24:04,728 - INFO -   [!] dru/Eastern - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-01 16:24:04,728 - INFO - [VALIDATION] Checking XML integrity for dru/Maolin (using 5 swaps per perturbation)...
+2026-07-01 16:24:05,936 - INFO - Analyzing baseline for dru/Maolin...
+2026-07-01 16:24:06,159 - INFO - Testing 5 random character swaps...
+2026-07-01 16:24:06,161 - INFO -   Swap 1/5: 'w' -> 'ɨ'
+2026-07-01 16:24:06,357 - INFO -   Swap 2/5: 'g' -> 'h'
+2026-07-01 16:24:06,542 - INFO -   Swap 3/5: 'r' -> 'g'
+2026-07-01 16:24:06,705 - INFO -   Swap 4/5: 'b' -> 'k'
+2026-07-01 16:24:06,868 - INFO -   Swap 5/5: 'b' -> 'g'
+2026-07-01 16:24:07,030 - INFO -   [!] dru/Maolin - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-01 16:24:07,030 - INFO - [VALIDATION] Checking XML integrity for dru/Wanshan (using 5 swaps per perturbation)...
+2026-07-01 16:24:08,211 - INFO - Analyzing baseline for dru/Wanshan...
+2026-07-01 16:24:08,455 - INFO - Testing 5 random character swaps...
+2026-07-01 16:24:08,455 - INFO -   Swap 1/5: 'b' -> 'l'
+2026-07-01 16:24:08,662 - INFO -   Swap 2/5: 'n' -> 's'
+2026-07-01 16:24:08,840 - INFO -   Swap 3/5: 'a' -> 'h'
+2026-07-01 16:24:09,015 - INFO -   Swap 4/5: 'z' -> 'k'
+2026-07-01 16:24:09,183 - INFO -   Swap 5/5: 'd' -> 'r'
+2026-07-01 16:24:09,356 - INFO -   [X] dru/Wanshan - Character 1-gram Deltas (avg of 5 swaps): FAIL
+2026-07-01 16:24:09,356 - INFO - [VALIDATION] Checking XML integrity for dru/Wutai (using 5 swaps per perturbation)...
+2026-07-01 16:24:10,464 - INFO - Analyzing baseline for dru/Wutai...
+2026-07-01 16:24:11,393 - INFO - Testing 5 random character swaps...
+2026-07-01 16:24:11,393 - INFO -   Swap 1/5: 'd' -> 'z'
+2026-07-01 16:24:12,373 - INFO -   Swap 2/5: 't' -> 'w'
+2026-07-01 16:24:13,246 - INFO -   Swap 3/5: 'c' -> 'a'
+2026-07-01 16:24:14,170 - INFO -   Swap 4/5: 'i' -> 't'
+2026-07-01 16:24:15,025 - INFO -   Swap 5/5: 'p' -> 'n'
+2026-07-01 16:24:15,898 - INFO -   [!] dru/Wutai - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-01 16:24:15,898 - INFO - [VALIDATION] Checking XML integrity for trv/DeluValley (using 5 swaps per perturbation)...
+2026-07-01 16:25:19,974 - INFO - Analyzing baseline for trv/DeluValley...
+2026-07-01 16:25:20,238 - INFO - Testing 5 random character swaps...
+2026-07-01 16:25:20,238 - INFO -   Swap 1/5: 'b' -> 'o'
+2026-07-01 16:25:20,422 - INFO -   Swap 2/5: 'r' -> 's'
+2026-07-01 16:25:20,606 - INFO -   Swap 3/5: 'j' -> 'b'
+2026-07-01 16:25:20,793 - INFO -   Swap 4/5: 'o' -> 'x'
+2026-07-01 16:25:20,993 - INFO -   Swap 5/5: 'p' -> 'q'
+2026-07-01 16:25:21,165 - INFO -   [!] trv/DeluValley - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-01 16:25:21,167 - INFO - [VALIDATION] Checking XML integrity for trv/Duda (using 5 swaps per perturbation)...
+2026-07-01 16:25:22,100 - INFO - Analyzing baseline for trv/Duda...
+2026-07-01 16:25:22,351 - INFO - Testing 5 random character swaps...
+2026-07-01 16:25:22,351 - INFO -   Swap 1/5: 'l' -> 'e'
+2026-07-01 16:25:22,563 - INFO -   Swap 2/5: 'e' -> 't'
+2026-07-01 16:25:22,771 - INFO -   Swap 3/5: 'h' -> 'g'
+2026-07-01 16:25:22,976 - INFO -   Swap 4/5: 'a' -> 'c'
+2026-07-01 16:25:23,163 - INFO -   Swap 5/5: 'd' -> 'a'
+2026-07-01 16:25:23,347 - INFO -   [X] trv/Duda - Character 1-gram Deltas (avg of 5 swaps): FAIL
+2026-07-01 16:25:23,349 - INFO - [VALIDATION] Checking XML integrity for trv/Tegudaya (using 5 swaps per perturbation)...
+2026-07-01 16:25:24,249 - INFO - Analyzing baseline for trv/Tegudaya...
+2026-07-01 16:25:24,976 - INFO - Testing 5 random character swaps...
+2026-07-01 16:25:24,976 - INFO -   Swap 1/5: 'h' -> '9'
+2026-07-01 16:25:25,693 - INFO -   Swap 2/5: 'w' -> 'y'
+2026-07-01 16:25:26,376 - INFO -   Swap 3/5: 'z' -> 'o'
+2026-07-01 16:25:27,066 - INFO -   Swap 4/5: 'k' -> 'x'
+2026-07-01 16:25:27,791 - INFO -   Swap 5/5: 'l' -> 'p'
+2026-07-01 16:25:28,513 - INFO -   [!] trv/Tegudaya - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-01 16:25:28,515 - INFO - 
+================================================================================
+2026-07-01 16:25:28,517 - INFO - Running Cross-Language Discrimination Tests
+2026-07-01 16:25:28,517 - INFO - ================================================================================
+
+2026-07-01 16:25:28,518 - INFO - [CROSS-LANG] Testing discrimination for ami/Coastal against other languages...
+2026-07-01 16:26:18,781 - INFO - [CROSS-LANG] Testing discrimination for tay/FourSeasons against other languages...
+2026-07-01 16:27:06,059 - INFO - [CROSS-LANG] Testing discrimination for bnn/Junqun against other languages...
+2026-07-01 16:27:58,864 - INFO - [CROSS-LANG] Testing discrimination for pwn/Central against other languages...
+2026-07-01 16:28:47,669 - INFO - [CROSS-LANG] Testing discrimination for pyu/Jianhe against other languages...
+2026-07-01 16:29:40,435 - INFO - [CROSS-LANG] Testing discrimination for dru/Dawu against other languages...
+2026-07-01 16:30:30,722 - INFO - [CROSS-LANG] Testing discrimination for trv/DeluValley against other languages...
+2026-07-01 16:31:20,310 - INFO - 
+================================================================================
+2026-07-01 16:31:20,311 - INFO - Computing Prediction Efficacy Metrics
+2026-07-01 16:31:20,311 - INFO - ================================================================================
+
+2026-07-01 16:31:20,311 - INFO - Could not compute predictive power (insufficient validation variety)
+2026-07-01 16:31:20,327 - INFO - 
+================================================================================
+2026-07-01 16:31:20,328 - INFO - Test suite complete. Results saved to test_results/perturbation_tests
+2026-07-01 16:31:20,328 - INFO -   Total tests: 0
+2026-07-01 16:31:20,329 - INFO -   Successful: 0
+2026-07-01 16:31:20,330 - INFO -   Failed: 0
+2026-07-01 16:31:20,331 - INFO - ================================================================================

@@ -1,0 +1,213 @@
+2026-07-02 11:02:54,795 - INFO - ================================================================================
+2026-07-02 11:02:54,795 - INFO - Validating All Corpora with Per-Language Thresholds
+2026-07-02 11:02:54,795 - INFO - Language filter: PWN
+2026-07-02 11:02:54,795 - INFO - ================================================================================
+2026-07-02 11:02:54,795 - INFO - Loaded thresholds from test_results/perturbation_tests/statistical_thresholds.json
+2026-07-02 11:02:54,795 - INFO - Available languages: ['ami', 'tay', 'bnn', 'pwn', 'pyu', 'dru', 'trv']
+2026-07-02 11:02:54,936 - INFO - Found 14592 XML files in published corpora (Corpora/*/XML/)
+2026-07-02 11:02:54,938 - INFO - Loading all corpus files by language...
+2026-07-02 11:03:09,420 - INFO - Loaded corpora by language: [('ami', 2083), ('tay', 3131), ('bnn', 67), ('xnb', 34), ('ckv', 44), ('pwn', 829), ('pyu', 43), ('dru', 86), ('sxr', 13), ('xsy', 34), ('szy', 5744), ('trv', 2135), ('ssf', 13), ('tsu', 25), ('tao', 39), ('fos', 49)]
+2026-07-02 11:03:09,420 - INFO - Filtered mode: Using PWN as reference (829 files)
+2026-07-02 11:03:09,420 - INFO - Validating ALL files across all languages against PWN thresholds
+2026-07-02 11:03:09,423 - INFO - 
+Validating 2083 AMI (vs PWN reference) files...
+2026-07-02 11:03:09,428 - INFO - 
+Processing Coastal_Amis/ami/Coastal (1/2083)...
+2026-07-02 11:03:14,905 - INFO -   [X] Coastal_Amis/ami/Coastal: FAIL
+2026-07-02 11:03:14,905 - INFO -       Own language: 0/4 checks passed
+2026-07-02 11:03:14,906 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 11:03:14,916 - INFO -         Character Unigram: FAIL (KL_div=1.306720, upper_bound=0.443601)
+2026-07-02 11:03:14,918 - INFO -         Character Bigram: FAIL (KL_div=2.424313, upper_bound=0.443601)
+2026-07-02 11:03:14,925 - INFO -         Character Trigram: FAIL (KL_div=2.819340, upper_bound=0.443601)
+2026-07-02 11:03:14,932 - INFO -         Word Unigram: FAIL (KL_div=2.681051, upper_bound=0.443140)
+2026-07-02 11:03:14,938 - INFO - 
+Processing Coastal_Amis/ami/Coastal (2/2083)...
+2026-07-02 11:03:19,910 - INFO -   [X] Coastal_Amis/ami/Coastal: FAIL
+2026-07-02 11:03:19,912 - INFO -       Own language: 0/4 checks passed
+2026-07-02 11:03:19,912 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 11:03:19,913 - INFO -         Character Unigram: FAIL (KL_div=1.100577, upper_bound=0.443601)
+2026-07-02 11:03:19,913 - INFO -         Character Bigram: FAIL (KL_div=1.957110, upper_bound=0.443601)
+2026-07-02 11:03:19,913 - INFO -         Character Trigram: FAIL (KL_div=2.253595, upper_bound=0.443601)
+2026-07-02 11:03:19,913 - INFO -         Word Unigram: FAIL (KL_div=2.518329, upper_bound=0.443140)
+2026-07-02 11:03:19,915 - INFO - 
+Processing Hengchun_Amis/ami/Hengchun (3/2083)...
+2026-07-02 11:03:24,762 - INFO -   [X] Hengchun_Amis/ami/Hengchun: FAIL
+2026-07-02 11:03:24,762 - INFO -       Own language: 0/4 checks passed
+2026-07-02 11:03:24,762 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 11:03:24,764 - INFO -         Character Unigram: FAIL (KL_div=1.367178, upper_bound=0.443601)
+2026-07-02 11:03:24,764 - INFO -         Character Bigram: FAIL (KL_div=2.022493, upper_bound=0.443601)
+2026-07-02 11:03:24,764 - INFO -         Character Trigram: FAIL (KL_div=2.284021, upper_bound=0.443601)
+2026-07-02 11:03:24,764 - INFO -         Word Unigram: FAIL (KL_div=2.495497, upper_bound=0.443140)
+2026-07-02 11:03:24,768 - INFO - 
+Processing Malan_Amis/ami/Malan (4/2083)...
+2026-07-02 11:03:29,838 - INFO -   [X] Malan_Amis/ami/Malan: FAIL
+2026-07-02 11:03:29,838 - INFO -       Own language: 0/4 checks passed
+2026-07-02 11:03:29,838 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 11:03:29,838 - INFO -         Character Unigram: FAIL (KL_div=1.373042, upper_bound=0.443601)
+2026-07-02 11:03:29,838 - INFO -         Character Bigram: FAIL (KL_div=2.030068, upper_bound=0.443601)
+2026-07-02 11:03:29,838 - INFO -         Character Trigram: FAIL (KL_div=2.275758, upper_bound=0.443601)
+2026-07-02 11:03:29,838 - INFO -         Word Unigram: FAIL (KL_div=2.492014, upper_bound=0.443140)
+2026-07-02 11:03:29,844 - INFO - 
+Processing Southern_Amis/ami/Southern (5/2083)...
+2026-07-02 11:03:34,783 - INFO -   [X] Southern_Amis/ami/Southern: FAIL
+2026-07-02 11:03:34,790 - INFO -       Own language: 0/4 checks passed
+2026-07-02 11:03:34,795 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 11:03:34,820 - INFO -         Character Unigram: FAIL (KL_div=0.517161, upper_bound=0.443601)
+2026-07-02 11:03:34,846 - INFO -         Character Bigram: FAIL (KL_div=1.064207, upper_bound=0.443601)
+2026-07-02 11:03:34,858 - INFO -         Character Trigram: FAIL (KL_div=1.659988, upper_bound=0.443601)
+2026-07-02 11:03:34,858 - INFO -         Word Unigram: FAIL (KL_div=2.310044, upper_bound=0.443140)
+2026-07-02 11:03:34,862 - INFO - 
+Processing Xiuguluan_Amis/ami/Xiuguluan (6/2083)...
+2026-07-02 11:03:39,895 - INFO -   [X] Xiuguluan_Amis/ami/Xiuguluan: FAIL
+2026-07-02 11:03:39,895 - INFO -       Own language: 0/4 checks passed
+2026-07-02 11:03:39,923 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 11:03:39,923 - INFO -         Character Unigram: FAIL (KL_div=1.174531, upper_bound=0.443601)
+2026-07-02 11:03:39,935 - INFO -         Character Bigram: FAIL (KL_div=2.033825, upper_bound=0.443601)
+2026-07-02 11:03:39,935 - INFO -         Character Trigram: FAIL (KL_div=2.337890, upper_bound=0.443601)
+2026-07-02 11:03:39,935 - INFO -         Word Unigram: FAIL (KL_div=2.458697, upper_bound=0.443140)
+2026-07-02 11:03:39,947 - INFO - 
+Processing Coastal_Amis/ami/Coastal (7/2083)...
+2026-07-02 11:03:44,837 - INFO -   [X] Coastal_Amis/ami/Coastal: FAIL
+2026-07-02 11:03:44,837 - INFO -       Own language: 0/4 checks passed
+2026-07-02 11:03:44,837 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 11:03:44,837 - INFO -         Character Unigram: FAIL (KL_div=1.444408, upper_bound=0.443601)
+2026-07-02 11:03:44,837 - INFO -         Character Bigram: FAIL (KL_div=2.182935, upper_bound=0.443601)
+2026-07-02 11:03:44,837 - INFO -         Character Trigram: FAIL (KL_div=2.492754, upper_bound=0.443601)
+2026-07-02 11:03:44,837 - INFO -         Word Unigram: FAIL (KL_div=2.721770, upper_bound=0.443140)
+2026-07-02 11:03:44,837 - INFO - 
+Processing Hengchun_Amis/ami/Hengchun (8/2083)...
+2026-07-02 11:03:49,792 - INFO -   [X] Hengchun_Amis/ami/Hengchun: FAIL
+2026-07-02 11:03:49,807 - INFO -       Own language: 0/4 checks passed
+2026-07-02 11:03:49,807 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 11:03:49,807 - INFO -         Character Unigram: FAIL (KL_div=1.484204, upper_bound=0.443601)
+2026-07-02 11:03:49,807 - INFO -         Character Bigram: FAIL (KL_div=2.236066, upper_bound=0.443601)
+2026-07-02 11:03:49,807 - INFO -         Character Trigram: FAIL (KL_div=2.529296, upper_bound=0.443601)
+2026-07-02 11:03:49,807 - INFO -         Word Unigram: FAIL (KL_div=2.609286, upper_bound=0.443140)
+2026-07-02 11:03:49,807 - INFO - 
+Processing Malan_Amis/ami/Malan (9/2083)...
+2026-07-02 11:03:54,810 - INFO -   [X] Malan_Amis/ami/Malan: FAIL
+2026-07-02 11:03:54,810 - INFO -       Own language: 0/4 checks passed
+2026-07-02 11:03:54,810 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 11:03:54,810 - INFO -         Character Unigram: FAIL (KL_div=1.487470, upper_bound=0.443601)
+2026-07-02 11:03:54,810 - INFO -         Character Bigram: FAIL (KL_div=2.239824, upper_bound=0.443601)
+2026-07-02 11:03:54,810 - INFO -         Character Trigram: FAIL (KL_div=2.517460, upper_bound=0.443601)
+2026-07-02 11:03:54,810 - INFO -         Word Unigram: FAIL (KL_div=2.612169, upper_bound=0.443140)
+2026-07-02 11:03:54,810 - INFO - 
+Processing Southern_Amis/ami/Southern (10/2083)...
+2026-07-02 11:03:59,664 - INFO -   [X] Southern_Amis/ami/Southern: FAIL
+2026-07-02 11:03:59,664 - INFO -       Own language: 0/4 checks passed
+2026-07-02 11:03:59,664 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 11:03:59,664 - INFO -         Character Unigram: FAIL (KL_div=0.566515, upper_bound=0.443601)
+2026-07-02 11:03:59,664 - INFO -         Character Bigram: FAIL (KL_div=1.172852, upper_bound=0.443601)
+2026-07-02 11:03:59,664 - INFO -         Character Trigram: FAIL (KL_div=1.876482, upper_bound=0.443601)
+2026-07-02 11:03:59,664 - INFO -         Word Unigram: FAIL (KL_div=2.427558, upper_bound=0.443140)
+2026-07-02 11:03:59,664 - INFO - 
+Processing Xiuguluan_Amis/ami/Xiuguluan (11/2083)...
+2026-07-02 11:04:04,437 - INFO -   [X] Xiuguluan_Amis/ami/Xiuguluan: FAIL
+2026-07-02 11:04:04,437 - INFO -       Own language: 0/4 checks passed
+2026-07-02 11:04:04,437 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 11:04:04,437 - INFO -         Character Unigram: FAIL (KL_div=1.462248, upper_bound=0.443601)
+2026-07-02 11:04:04,437 - INFO -         Character Bigram: FAIL (KL_div=2.219958, upper_bound=0.443601)
+2026-07-02 11:04:04,437 - INFO -         Character Trigram: FAIL (KL_div=2.502692, upper_bound=0.443601)
+2026-07-02 11:04:04,437 - INFO -         Word Unigram: FAIL (KL_div=2.618266, upper_bound=0.443140)
+2026-07-02 11:04:04,453 - INFO - 
+Processing Coastal_Amis/ami/Coastal (12/2083)...
+2026-07-02 11:04:08,949 - INFO -   [X] Coastal_Amis/ami/Coastal: FAIL
+2026-07-02 11:04:08,949 - INFO -       Own language: 0/4 checks passed
+2026-07-02 11:04:08,949 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 11:04:08,949 - INFO -         Character Unigram: FAIL (KL_div=1.378927, upper_bound=0.443601)
+2026-07-02 11:04:08,949 - INFO -         Character Bigram: FAIL (KL_div=2.100283, upper_bound=0.443601)
+2026-07-02 11:04:08,949 - INFO -         Character Trigram: FAIL (KL_div=2.462591, upper_bound=0.443601)
+2026-07-02 11:04:08,949 - INFO -         Word Unigram: FAIL (KL_div=2.742927, upper_bound=0.443140)
+2026-07-02 11:04:08,956 - INFO - 
+Processing Hengchun_Amis/ami/Hengchun (13/2083)...
+2026-07-02 11:04:13,608 - INFO -   [X] Hengchun_Amis/ami/Hengchun: FAIL
+2026-07-02 11:04:13,608 - INFO -       Own language: 0/4 checks passed
+2026-07-02 11:04:13,608 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 11:04:13,610 - INFO -         Character Unigram: FAIL (KL_div=0.903205, upper_bound=0.443601)
+2026-07-02 11:04:13,610 - INFO -         Character Bigram: FAIL (KL_div=1.927220, upper_bound=0.443601)
+2026-07-02 11:04:13,610 - INFO -         Character Trigram: FAIL (KL_div=2.454709, upper_bound=0.443601)
+2026-07-02 11:04:13,612 - INFO -         Word Unigram: FAIL (KL_div=2.701263, upper_bound=0.443140)
+2026-07-02 11:04:13,619 - INFO - 
+Processing Malan_Amis/ami/Malan (14/2083)...
+2026-07-02 11:04:18,189 - INFO -   [X] Malan_Amis/ami/Malan: FAIL
+2026-07-02 11:04:18,189 - INFO -       Own language: 0/4 checks passed
+2026-07-02 11:04:18,189 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 11:04:18,189 - INFO -         Character Unigram: FAIL (KL_div=1.416969, upper_bound=0.443601)
+2026-07-02 11:04:18,189 - INFO -         Character Bigram: FAIL (KL_div=2.167281, upper_bound=0.443601)
+2026-07-02 11:04:18,189 - INFO -         Character Trigram: FAIL (KL_div=2.480482, upper_bound=0.443601)
+2026-07-02 11:04:18,189 - INFO -         Word Unigram: FAIL (KL_div=2.645527, upper_bound=0.443140)
+2026-07-02 11:04:18,193 - INFO - 
+Processing Southern_Amis/ami/Southern (15/2083)...
+2026-07-02 11:04:22,775 - INFO -   [X] Southern_Amis/ami/Southern: FAIL
+2026-07-02 11:04:22,775 - INFO -       Own language: 0/4 checks passed
+2026-07-02 11:04:22,777 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 11:04:22,777 - INFO -         Character Unigram: FAIL (KL_div=0.541442, upper_bound=0.443601)
+2026-07-02 11:04:22,777 - INFO -         Character Bigram: FAIL (KL_div=1.167937, upper_bound=0.443601)
+2026-07-02 11:04:22,777 - INFO -         Character Trigram: FAIL (KL_div=1.937863, upper_bound=0.443601)
+2026-07-02 11:04:22,777 - INFO -         Word Unigram: FAIL (KL_div=2.480672, upper_bound=0.443140)
+2026-07-02 11:04:22,781 - INFO - 
+Processing Xiuguluan_Amis/ami/Xiuguluan (16/2083)...
+2026-07-02 11:04:27,317 - INFO -   [X] Xiuguluan_Amis/ami/Xiuguluan: FAIL
+2026-07-02 11:04:27,319 - INFO -       Own language: 0/4 checks passed
+2026-07-02 11:04:27,319 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 11:04:27,319 - INFO -         Character Unigram: FAIL (KL_div=1.398000, upper_bound=0.443601)
+2026-07-02 11:04:27,319 - INFO -         Character Bigram: FAIL (KL_div=2.136139, upper_bound=0.443601)
+2026-07-02 11:04:27,319 - INFO -         Character Trigram: FAIL (KL_div=2.464317, upper_bound=0.443601)
+2026-07-02 11:04:27,319 - INFO -         Word Unigram: FAIL (KL_div=2.670951, upper_bound=0.443140)
+2026-07-02 11:04:27,324 - INFO - 
+Processing Coastal_Amis/ami/Coastal (17/2083)...
+2026-07-02 11:04:31,965 - INFO -   [X] Coastal_Amis/ami/Coastal: FAIL
+2026-07-02 11:04:31,965 - INFO -       Own language: 0/4 checks passed
+2026-07-02 11:04:31,965 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 11:04:31,967 - INFO -         Character Unigram: FAIL (KL_div=1.283153, upper_bound=0.443601)
+2026-07-02 11:04:31,967 - INFO -         Character Bigram: FAIL (KL_div=2.137700, upper_bound=0.443601)
+2026-07-02 11:04:31,967 - INFO -         Character Trigram: FAIL (KL_div=2.418040, upper_bound=0.443601)
+2026-07-02 11:04:31,967 - INFO -         Word Unigram: FAIL (KL_div=2.466603, upper_bound=0.443140)
+2026-07-02 11:04:31,971 - INFO - 
+Processing Hengchun_Amis/ami/Hengchun (18/2083)...
+2026-07-02 11:04:36,601 - INFO -   [X] Hengchun_Amis/ami/Hengchun: FAIL
+2026-07-02 11:04:36,601 - INFO -       Own language: 0/4 checks passed
+2026-07-02 11:04:36,603 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 11:04:36,604 - INFO -         Character Unigram: FAIL (KL_div=1.242410, upper_bound=0.443601)
+2026-07-02 11:04:36,606 - INFO -         Character Bigram: FAIL (KL_div=2.144948, upper_bound=0.443601)
+2026-07-02 11:04:36,606 - INFO -         Character Trigram: FAIL (KL_div=2.416694, upper_bound=0.443601)
+2026-07-02 11:04:36,606 - INFO -         Word Unigram: FAIL (KL_div=2.522225, upper_bound=0.443140)
+2026-07-02 11:04:36,619 - INFO - 
+Processing Malan_Amis/ami/Malan (19/2083)...
+2026-07-02 11:04:41,143 - INFO -   [X] Malan_Amis/ami/Malan: FAIL
+2026-07-02 11:04:41,145 - INFO -       Own language: 0/4 checks passed
+2026-07-02 11:04:41,145 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 11:04:41,145 - INFO -         Character Unigram: FAIL (KL_div=1.265348, upper_bound=0.443601)
+2026-07-02 11:04:41,145 - INFO -         Character Bigram: FAIL (KL_div=2.187428, upper_bound=0.443601)
+2026-07-02 11:04:41,145 - INFO -         Character Trigram: FAIL (KL_div=2.452352, upper_bound=0.443601)
+2026-07-02 11:04:41,145 - INFO -         Word Unigram: FAIL (KL_div=2.491037, upper_bound=0.443140)
+2026-07-02 11:04:41,152 - INFO - 
+Processing Southern_Amis/ami/Southern (20/2083)...
+2026-07-02 11:04:45,675 - INFO -   [X] Southern_Amis/ami/Southern: FAIL
+2026-07-02 11:04:45,677 - INFO -       Own language: 0/4 checks passed
+2026-07-02 11:04:45,678 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 11:04:45,679 - INFO -         Character Unigram: FAIL (KL_div=0.577285, upper_bound=0.443601)
+2026-07-02 11:04:45,679 - INFO -         Character Bigram: FAIL (KL_div=1.122358, upper_bound=0.443601)
+2026-07-02 11:04:45,679 - INFO -         Character Trigram: FAIL (KL_div=1.657174, upper_bound=0.443601)
+2026-07-02 11:04:45,681 - INFO -         Word Unigram: FAIL (KL_div=2.298367, upper_bound=0.443140)
+2026-07-02 11:04:45,693 - INFO - 
+Processing Xiuguluan_Amis/ami/Xiuguluan (21/2083)...
+2026-07-02 11:04:50,424 - INFO -   [X] Xiuguluan_Amis/ami/Xiuguluan: FAIL
+2026-07-02 11:04:50,424 - INFO -       Own language: 0/4 checks passed
+2026-07-02 11:04:50,426 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 11:04:50,426 - INFO -         Character Unigram: FAIL (KL_div=1.183950, upper_bound=0.443601)
+2026-07-02 11:04:50,426 - INFO -         Character Bigram: FAIL (KL_div=2.162722, upper_bound=0.443601)
+2026-07-02 11:04:50,426 - INFO -         Character Trigram: FAIL (KL_div=2.479943, upper_bound=0.443601)
+2026-07-02 11:04:50,426 - INFO -         Word Unigram: FAIL (KL_div=2.443166, upper_bound=0.443140)
+2026-07-02 11:04:50,429 - INFO - 
+Processing Coastal_Amis/ami/Coastal (22/2083)...
+2026-07-02 11:04:55,569 - INFO -   [X] Coastal_Amis/ami/Coastal: FAIL
+2026-07-02 11:04:55,569 - INFO -       Own language: 0/4 checks passed
+2026-07-02 11:04:55,569 - INFO -       Other languages: 24/24 checks passed
+2026-07-02 11:04:55,570 - INFO -         Character Unigram: FAIL (KL_div=1.320562, upper_bound=0.443601)
+2026-07-02 11:04:55,570 - INFO -         Character Bigram: FAIL (KL_div=1.957366, upper_bound=0.443601)
+2026-07-02 11:04:55,570 - INFO -         Character Trigram: FAIL (KL_div=2.236704, upper_bound=0.443601)
+2026-07-02 11:04:55,570 - INFO -         Word Unigram: FAIL (KL_div=2.624967, upper_bound=0.443140)
+2026-07-02 11:04:55,573 - INFO - 
+Processing Hengchun_Amis/ami/Hengchun (23/2083)...

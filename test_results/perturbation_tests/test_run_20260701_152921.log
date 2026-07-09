@@ -1,0 +1,1045 @@
+2026-07-01 15:29:21,443 - INFO - Starting Character Perturbation Robustness Test Suite
+2026-07-01 15:29:21,462 - INFO - Testing languages: ['Amis', 'Atayal', 'Bunun', 'Paiwan', 'Puyuma', 'Rukai', 'Seediq']
+2026-07-01 15:29:21,462 - INFO - Testing sources: ['ePark/', 'ILRDF_Dicts/', 'Paiwan_Stories/', 'NTUFormosanCorpus/']
+2026-07-01 15:29:21,462 - INFO - Number of swaps per test: 5
+2026-07-01 15:29:21,463 - INFO - Epsilon for per-language thresholds: 0.1
+2026-07-01 15:29:21,464 - INFO - 
+Testing ami/Coastal with 5 random character swaps...
+2026-07-01 15:29:22,829 - INFO - Analyzing baseline for ami/Coastal...
+2026-07-01 15:29:22,847 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:22,850 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:23,226 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:29:23,226 - INFO -   Swap 1/5: 'a' -> ':'
+2026-07-01 15:29:23,245 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:23,267 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:23,616 - INFO -   Swap 2/5: 'a' -> 'p'
+2026-07-01 15:29:23,646 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:23,674 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:24,018 - INFO -   Swap 3/5: 'a' -> '1'
+2026-07-01 15:29:24,039 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:24,051 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:24,371 - INFO -   Swap 4/5: 'a' -> 'o'
+2026-07-01 15:29:24,405 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:24,425 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:24,767 - INFO -   Swap 5/5: 'a' -> '!'
+2026-07-01 15:29:24,785 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:24,800 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:25,234 - INFO - 
+Testing ami/Hengchun with 5 random character swaps...
+2026-07-01 15:29:26,038 - INFO - Analyzing baseline for ami/Hengchun...
+2026-07-01 15:29:26,038 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:26,067 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:26,304 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:29:26,304 - INFO -   Swap 1/5: 'a' -> '''
+2026-07-01 15:29:26,313 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:26,325 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:26,509 - INFO -   Swap 2/5: 'a' -> 'f'
+2026-07-01 15:29:26,527 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:26,536 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:26,723 - INFO -   Swap 3/5: 'a' -> 'r'
+2026-07-01 15:29:26,723 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:26,749 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:26,918 - INFO -   Swap 4/5: 'a' -> 'e'
+2026-07-01 15:29:26,938 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:26,943 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:27,133 - INFO -   Swap 5/5: 'a' -> 'y'
+2026-07-01 15:29:27,157 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:27,163 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:27,341 - INFO - 
+Testing ami/Malan with 5 random character swaps...
+2026-07-01 15:29:28,136 - INFO - Analyzing baseline for ami/Malan...
+2026-07-01 15:29:28,136 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:28,154 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:28,396 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:29:28,396 - INFO -   Swap 1/5: 'a' -> 'l'
+2026-07-01 15:29:28,412 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:28,421 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:28,578 - INFO -   Swap 2/5: 'a' -> 'g'
+2026-07-01 15:29:28,594 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:28,613 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:28,788 - INFO -   Swap 3/5: 'a' -> 't'
+2026-07-01 15:29:28,799 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:28,807 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:28,976 - INFO -   Swap 4/5: 'a' -> '?'
+2026-07-01 15:29:28,976 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:28,991 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:29,163 - INFO -   Swap 5/5: 'a' -> 'm'
+2026-07-01 15:29:29,163 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:29,184 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:29,364 - INFO - 
+Testing ami/Southern with 5 random character swaps...
+2026-07-01 15:29:30,165 - INFO - Analyzing baseline for ami/Southern...
+2026-07-01 15:29:30,181 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:30,265 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:30,462 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:29:30,462 - INFO -   Swap 1/5: 'a' -> '.'
+2026-07-01 15:29:30,478 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:30,501 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:30,656 - INFO -   Swap 2/5: 'a' -> ')'
+2026-07-01 15:29:30,684 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:30,692 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:30,851 - INFO -   Swap 3/5: 'a' -> '?'
+2026-07-01 15:29:30,856 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:30,872 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:31,043 - INFO -   Swap 4/5: 'a' -> 'r'
+2026-07-01 15:29:31,043 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:31,062 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:31,218 - INFO -   Swap 5/5: 'a' -> 'v'
+2026-07-01 15:29:31,238 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:31,242 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:31,418 - INFO - 
+Testing ami/Xiuguluan with 5 random character swaps...
+2026-07-01 15:29:32,270 - INFO - Analyzing baseline for ami/Xiuguluan...
+2026-07-01 15:29:32,298 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:32,313 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:32,778 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:29:32,778 - INFO -   Swap 1/5: 'a' -> 'k'
+2026-07-01 15:29:32,794 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:32,825 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:33,183 - INFO -   Swap 2/5: 'a' -> '?'
+2026-07-01 15:29:33,199 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:33,230 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:33,683 - INFO -   Swap 3/5: 'a' -> 'g'
+2026-07-01 15:29:33,702 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:33,711 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:34,104 - INFO -   Swap 4/5: 'a' -> 'y'
+2026-07-01 15:29:34,129 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:34,142 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:34,549 - INFO -   Swap 5/5: 'a' -> '''
+2026-07-01 15:29:34,569 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:34,585 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:29:34,998 - INFO - 
+Testing tay/FourSeasons with 5 random character swaps...
+2026-07-01 15:29:55,332 - INFO - Analyzing baseline for tay/FourSeasons...
+2026-07-01 15:29:55,348 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:29:55,363 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:29:55,561 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:29:55,561 - INFO -   Swap 1/5: 'a' -> ','
+2026-07-01 15:29:55,561 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:29:55,581 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:29:55,757 - INFO -   Swap 2/5: 'a' -> 'r'
+2026-07-01 15:29:55,757 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:29:55,784 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:29:55,958 - INFO -   Swap 3/5: 'a' -> 'e'
+2026-07-01 15:29:55,958 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:29:55,973 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:29:56,135 - INFO -   Swap 4/5: 'a' -> 'r'
+2026-07-01 15:29:56,150 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:29:56,156 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:29:56,334 - INFO -   Swap 5/5: 'a' -> 'u'
+2026-07-01 15:29:56,334 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:29:56,356 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:29:56,531 - INFO - 
+Testing tay/Sekolik with 5 random character swaps...
+2026-07-01 15:29:57,499 - INFO - Analyzing baseline for tay/Sekolik...
+2026-07-01 15:29:57,546 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:29:57,567 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:29:58,299 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:29:58,299 - INFO -   Swap 1/5: 'a' -> 'b'
+2026-07-01 15:29:58,333 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:29:58,357 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:29:58,950 - INFO -   Swap 2/5: 'a' -> '?'
+2026-07-01 15:29:58,983 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:29:59,005 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:29:59,648 - INFO -   Swap 3/5: 'a' -> 'w'
+2026-07-01 15:29:59,683 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:29:59,699 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:00,309 - INFO -   Swap 4/5: 'a' -> '!'
+2026-07-01 15:30:00,356 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:00,359 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:01,054 - INFO -   Swap 5/5: 'a' -> 'i'
+2026-07-01 15:30:01,089 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:01,106 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:01,724 - INFO - 
+Testing tay/Wanda with 5 random character swaps...
+2026-07-01 15:30:02,642 - INFO - Analyzing baseline for tay/Wanda...
+2026-07-01 15:30:02,642 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:02,664 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:02,869 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:30:02,869 - INFO -   Swap 1/5: 'a' -> 'm'
+2026-07-01 15:30:02,869 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:02,885 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:03,033 - INFO -   Swap 2/5: 'a' -> 'y'
+2026-07-01 15:30:03,033 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:03,063 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:03,206 - INFO -   Swap 3/5: 'a' -> ';'
+2026-07-01 15:30:03,227 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:03,233 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:03,382 - INFO -   Swap 4/5: 'a' -> 'e'
+2026-07-01 15:30:03,396 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:03,401 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:03,549 - INFO -   Swap 5/5: 'a' -> 'e'
+2026-07-01 15:30:03,565 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:03,570 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:03,733 - INFO - 
+Testing tay/Wenshui with 5 random character swaps...
+2026-07-01 15:30:04,672 - INFO - Analyzing baseline for tay/Wenshui...
+2026-07-01 15:30:04,688 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:04,703 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:04,954 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:30:04,954 - INFO -   Swap 1/5: 'a' -> '!'
+2026-07-01 15:30:04,967 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:04,972 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:05,173 - INFO -   Swap 2/5: 'a' -> 'y'
+2026-07-01 15:30:05,200 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:05,207 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:05,420 - INFO -   Swap 3/5: 'a' -> 'o'
+2026-07-01 15:30:05,439 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:05,446 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:05,634 - INFO -   Swap 4/5: 'a' -> 'b'
+2026-07-01 15:30:05,650 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:05,667 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:05,864 - INFO -   Swap 5/5: 'a' -> 'k'
+2026-07-01 15:30:05,887 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:05,899 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:06,084 - INFO - 
+Testing tay/YilanZeaol with 5 random character swaps...
+2026-07-01 15:30:07,195 - INFO - Analyzing baseline for tay/YilanZeaol...
+2026-07-01 15:30:07,213 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:07,221 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:07,499 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:30:07,499 - INFO -   Swap 1/5: 'a' -> 'e'
+2026-07-01 15:30:07,509 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:07,519 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:07,709 - INFO -   Swap 2/5: 'a' -> 'l'
+2026-07-01 15:30:07,715 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:07,734 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:07,910 - INFO -   Swap 3/5: 'a' -> 't'
+2026-07-01 15:30:07,910 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:07,933 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:08,110 - INFO -   Swap 4/5: 'a' -> ':'
+2026-07-01 15:30:08,131 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:08,136 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:08,311 - INFO -   Swap 5/5: 'a' -> '''
+2026-07-01 15:30:08,333 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:08,342 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:08,541 - INFO - 
+Testing tay/Zeaol with 5 random character swaps...
+2026-07-01 15:30:09,600 - INFO - Analyzing baseline for tay/Zeaol...
+2026-07-01 15:30:09,631 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:09,648 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:09,883 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:30:09,883 - INFO -   Swap 1/5: 'a' -> 'e'
+2026-07-01 15:30:09,901 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:09,912 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:10,100 - INFO -   Swap 2/5: 'a' -> 'e'
+2026-07-01 15:30:10,114 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:10,135 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:10,325 - INFO -   Swap 3/5: 'a' -> 't'
+2026-07-01 15:30:10,325 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:10,343 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:10,515 - INFO -   Swap 4/5: 'a' -> 'm'
+2026-07-01 15:30:10,533 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:10,539 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:10,744 - INFO -   Swap 5/5: 'a' -> 'b'
+2026-07-01 15:30:10,757 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:10,763 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:30:10,954 - INFO - 
+Testing bnn/Junqun with 5 random character swaps...
+2026-07-01 15:30:26,044 - INFO - Analyzing baseline for bnn/Junqun...
+2026-07-01 15:30:26,072 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:26,092 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:27,017 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:30:27,017 - INFO -   Swap 1/5: 'a' -> 'e'
+2026-07-01 15:30:27,067 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:27,101 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:27,923 - INFO -   Swap 2/5: 'a' -> 'm'
+2026-07-01 15:30:27,954 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:27,970 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:28,846 - INFO -   Swap 3/5: 'a' -> 'y'
+2026-07-01 15:30:28,877 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:28,887 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:29,739 - INFO -   Swap 4/5: 'a' -> 'k'
+2026-07-01 15:30:29,776 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:29,795 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:30,652 - INFO -   Swap 5/5: 'a' -> 'k'
+2026-07-01 15:30:30,696 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:30,718 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:31,520 - INFO - 
+Testing bnn/Kaqun with 5 random character swaps...
+2026-07-01 15:30:32,869 - INFO - Analyzing baseline for bnn/Kaqun...
+2026-07-01 15:30:32,876 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:32,880 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:33,136 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:30:33,137 - INFO -   Swap 1/5: 'a' -> '.'
+2026-07-01 15:30:33,143 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:33,158 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:33,344 - INFO -   Swap 2/5: 'a' -> 't'
+2026-07-01 15:30:33,344 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:33,361 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:33,550 - INFO -   Swap 3/5: 'a' -> ','
+2026-07-01 15:30:33,561 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:33,568 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:33,741 - INFO -   Swap 4/5: 'a' -> 'l'
+2026-07-01 15:30:33,741 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:33,755 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:33,951 - INFO -   Swap 5/5: 'a' -> '.'
+2026-07-01 15:30:33,960 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:33,965 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:34,152 - INFO - 
+Testing bnn/Luanqun with 5 random character swaps...
+2026-07-01 15:30:35,557 - INFO - Analyzing baseline for bnn/Luanqun...
+2026-07-01 15:30:35,557 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:35,570 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:35,787 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:30:35,789 - INFO -   Swap 1/5: 'a' -> ';'
+2026-07-01 15:30:35,799 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:35,804 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:35,971 - INFO -   Swap 2/5: 'a' -> 'm'
+2026-07-01 15:30:35,989 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:35,997 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:36,151 - INFO -   Swap 3/5: 'a' -> 'g'
+2026-07-01 15:30:36,151 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:36,170 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:36,359 - INFO -   Swap 4/5: 'a' -> '.'
+2026-07-01 15:30:36,362 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:36,372 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:36,577 - INFO -   Swap 5/5: 'a' -> ')'
+2026-07-01 15:30:36,583 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:36,592 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:36,768 - INFO - 
+Testing bnn/Tanqun with 5 random character swaps...
+2026-07-01 15:30:38,096 - INFO - Analyzing baseline for bnn/Tanqun...
+2026-07-01 15:30:38,107 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:38,117 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:38,334 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:30:38,335 - INFO -   Swap 1/5: 'a' -> '.'
+2026-07-01 15:30:38,346 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:38,357 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:38,545 - INFO -   Swap 2/5: 'a' -> 'v'
+2026-07-01 15:30:38,550 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:38,557 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:38,723 - INFO -   Swap 3/5: 'a' -> 't'
+2026-07-01 15:30:38,744 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:38,750 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:38,901 - INFO -   Swap 4/5: 'a' -> 'p'
+2026-07-01 15:30:38,917 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:38,926 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:39,095 - INFO -   Swap 5/5: 'a' -> 'o'
+2026-07-01 15:30:39,095 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:39,112 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:39,277 - INFO - 
+Testing bnn/Zhuoqun with 5 random character swaps...
+2026-07-01 15:30:40,691 - INFO - Analyzing baseline for bnn/Zhuoqun...
+2026-07-01 15:30:40,697 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:40,703 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:40,955 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:30:40,958 - INFO -   Swap 1/5: 'a' -> '/'
+2026-07-01 15:30:40,963 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:40,973 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:41,130 - INFO -   Swap 2/5: 'a' -> ':'
+2026-07-01 15:30:41,140 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:41,146 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:41,302 - INFO -   Swap 3/5: 'a' -> ','
+2026-07-01 15:30:41,302 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:41,322 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:41,505 - INFO -   Swap 4/5: 'a' -> ','
+2026-07-01 15:30:41,517 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:41,524 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:41,680 - INFO -   Swap 5/5: 'a' -> 'g'
+2026-07-01 15:30:41,685 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:41,691 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:30:41,850 - INFO - 
+Testing pwn/Central with 5 random character swaps...
+2026-07-01 15:30:42,562 - INFO - Analyzing baseline for pwn/Central...
+2026-07-01 15:30:42,571 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:42,583 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:42,846 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:30:42,846 - INFO -   Swap 1/5: 'a' -> 'z'
+2026-07-01 15:30:42,860 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:42,868 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:43,054 - INFO -   Swap 2/5: 'a' -> '.'
+2026-07-01 15:30:43,069 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:43,075 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:43,253 - INFO -   Swap 3/5: 'a' -> 'z'
+2026-07-01 15:30:43,265 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:43,275 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:43,465 - INFO -   Swap 4/5: 'a' -> 'j'
+2026-07-01 15:30:43,475 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:43,482 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:43,686 - INFO -   Swap 5/5: 'a' -> 's'
+2026-07-01 15:30:43,697 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:43,702 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:43,936 - INFO - 
+Testing pwn/Eastern with 5 random character swaps...
+2026-07-01 15:30:44,613 - INFO - Analyzing baseline for pwn/Eastern...
+2026-07-01 15:30:44,622 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:44,627 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:44,851 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:30:44,851 - INFO -   Swap 1/5: 'a' -> 'g'
+2026-07-01 15:30:44,865 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:44,865 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:45,062 - INFO -   Swap 2/5: 'a' -> 'u'
+2026-07-01 15:30:45,081 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:45,089 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:45,282 - INFO -   Swap 3/5: 'a' -> 'n'
+2026-07-01 15:30:45,282 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:45,303 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:45,491 - INFO -   Swap 4/5: 'a' -> 'e'
+2026-07-01 15:30:45,491 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:45,508 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:45,697 - INFO -   Swap 5/5: 'a' -> ')'
+2026-07-01 15:30:45,724 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:45,729 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:45,931 - INFO - 
+Testing pwn/Northern with 5 random character swaps...
+2026-07-01 15:30:46,574 - INFO - Analyzing baseline for pwn/Northern...
+2026-07-01 15:30:46,605 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:46,622 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:47,243 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:30:47,243 - INFO -   Swap 1/5: 'a' -> 'n'
+2026-07-01 15:30:47,279 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:47,279 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:47,919 - INFO -   Swap 2/5: 'a' -> ')'
+2026-07-01 15:30:47,957 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:47,970 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:48,608 - INFO -   Swap 3/5: 'a' -> ','
+2026-07-01 15:30:48,640 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:48,653 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:49,406 - INFO -   Swap 4/5: 'a' -> 'c'
+2026-07-01 15:30:49,430 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:49,444 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:50,046 - INFO -   Swap 5/5: 'a' -> 'o'
+2026-07-01 15:30:50,088 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:50,113 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:50,757 - INFO - 
+Testing pwn/Southern with 5 random character swaps...
+2026-07-01 15:30:51,560 - INFO - Analyzing baseline for pwn/Southern...
+2026-07-01 15:30:51,569 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:51,576 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:51,800 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:30:51,800 - INFO -   Swap 1/5: 'a' -> '/'
+2026-07-01 15:30:51,817 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:51,821 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:52,041 - INFO -   Swap 2/5: 'a' -> '''
+2026-07-01 15:30:52,058 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:52,063 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:52,276 - INFO -   Swap 3/5: 'a' -> 'm'
+2026-07-01 15:30:52,290 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:52,297 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:52,495 - INFO -   Swap 4/5: 'a' -> 'e'
+2026-07-01 15:30:52,518 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:52,523 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:52,769 - INFO -   Swap 5/5: 'a' -> '?'
+2026-07-01 15:30:52,779 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:52,785 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-07-01 15:30:53,021 - INFO - 
+Testing pyu/Jianhe with 5 random character swaps...
+2026-07-01 15:30:55,565 - INFO - Analyzing baseline for pyu/Jianhe...
+2026-07-01 15:30:55,572 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:30:55,579 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:30:55,861 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:30:55,861 - INFO -   Swap 1/5: 'a' -> 's'
+2026-07-01 15:30:55,872 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:30:55,880 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:30:56,065 - INFO -   Swap 2/5: 'a' -> 'i'
+2026-07-01 15:30:56,076 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:30:56,087 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:30:56,298 - INFO -   Swap 3/5: 'a' -> '.'
+2026-07-01 15:30:56,309 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:30:56,315 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:30:56,510 - INFO -   Swap 4/5: 'a' -> '/'
+2026-07-01 15:30:56,522 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:30:56,533 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:30:56,735 - INFO -   Swap 5/5: 'a' -> '/'
+2026-07-01 15:30:56,753 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:30:56,767 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:30:56,951 - INFO - 
+Testing pyu/Nanwang with 5 random character swaps...
+2026-07-01 15:30:57,688 - INFO - Analyzing baseline for pyu/Nanwang...
+2026-07-01 15:30:57,735 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:30:57,752 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:30:58,529 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:30:58,529 - INFO -   Swap 1/5: 'a' -> '2'
+2026-07-01 15:30:58,571 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:30:58,593 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:30:59,248 - INFO -   Swap 2/5: 'a' -> ','
+2026-07-01 15:30:59,283 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:30:59,306 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:31:00,067 - INFO -   Swap 3/5: 'a' -> 'm'
+2026-07-01 15:31:00,101 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:31:00,123 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:31:00,807 - INFO -   Swap 4/5: 'a' -> 'n'
+2026-07-01 15:31:00,856 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:31:00,877 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:31:01,573 - INFO -   Swap 5/5: 'a' -> 'n'
+2026-07-01 15:31:01,632 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:31:01,664 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:31:02,398 - INFO - 
+Testing pyu/Xiqun with 5 random character swaps...
+2026-07-01 15:31:03,160 - INFO - Analyzing baseline for pyu/Xiqun...
+2026-07-01 15:31:03,160 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:31:03,175 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:31:03,415 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:31:03,415 - INFO -   Swap 1/5: 'a' -> 'o'
+2026-07-01 15:31:03,440 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:31:03,451 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:31:03,633 - INFO -   Swap 2/5: 'a' -> 'g'
+2026-07-01 15:31:03,651 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:31:03,661 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:31:03,860 - INFO -   Swap 3/5: 'a' -> 'u'
+2026-07-01 15:31:03,860 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:31:03,882 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:31:04,093 - INFO -   Swap 4/5: 'a' -> '.'
+2026-07-01 15:31:04,105 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:31:04,112 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:31:04,315 - INFO -   Swap 5/5: 'a' -> ')'
+2026-07-01 15:31:04,327 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:31:04,335 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:31:04,531 - INFO - 
+Testing pyu/Zhiben with 5 random character swaps...
+2026-07-01 15:31:05,324 - INFO - Analyzing baseline for pyu/Zhiben...
+2026-07-01 15:31:05,329 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:31:05,338 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:31:05,612 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:31:05,612 - INFO -   Swap 1/5: 'a' -> '''
+2026-07-01 15:31:05,628 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:31:05,635 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:31:05,883 - INFO -   Swap 2/5: 'a' -> 'm'
+2026-07-01 15:31:05,897 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:31:05,904 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:31:06,127 - INFO -   Swap 3/5: 'a' -> 'e'
+2026-07-01 15:31:06,157 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:31:06,162 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:31:06,390 - INFO -   Swap 4/5: 'a' -> '?'
+2026-07-01 15:31:06,392 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:31:06,406 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:31:06,607 - INFO -   Swap 5/5: 'a' -> 'h'
+2026-07-01 15:31:06,623 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:31:06,687 - WARNING - Error tokenizing with orthography for pyu: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pyu.tsv'. Using basic tokenization.
+2026-07-01 15:31:06,912 - INFO - 
+Testing dru/Dawu with 5 random character swaps...
+2026-07-01 15:31:19,425 - INFO - Analyzing baseline for dru/Dawu...
+2026-07-01 15:31:19,436 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:19,441 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:19,755 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:31:19,755 - INFO -   Swap 1/5: 'a' -> '?'
+2026-07-01 15:31:19,769 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:19,774 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:19,963 - INFO -   Swap 2/5: 'a' -> '?'
+2026-07-01 15:31:19,986 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:19,993 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:20,179 - INFO -   Swap 3/5: 'a' -> 'v'
+2026-07-01 15:31:20,190 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:20,196 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:20,358 - INFO -   Swap 4/5: 'a' -> ':'
+2026-07-01 15:31:20,374 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:20,393 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:20,559 - INFO -   Swap 5/5: 'a' -> '.'
+2026-07-01 15:31:20,575 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:20,589 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:20,789 - INFO - 
+Testing dru/Dona with 5 random character swaps...
+2026-07-01 15:31:22,262 - INFO - Analyzing baseline for dru/Dona...
+2026-07-01 15:31:22,277 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:22,289 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:22,521 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:31:22,521 - INFO -   Swap 1/5: 'a' -> 'g'
+2026-07-01 15:31:22,537 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:22,546 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:22,729 - INFO -   Swap 2/5: 'a' -> 'e'
+2026-07-01 15:31:22,729 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:22,745 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:22,938 - INFO -   Swap 3/5: 'a' -> '?'
+2026-07-01 15:31:22,953 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:22,959 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:23,135 - INFO -   Swap 4/5: 'a' -> 'h'
+2026-07-01 15:31:23,151 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:23,161 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:23,357 - INFO -   Swap 5/5: 'a' -> 'k'
+2026-07-01 15:31:23,364 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:23,371 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:23,552 - INFO - 
+Testing dru/Eastern with 5 random character swaps...
+2026-07-01 15:31:24,975 - INFO - Analyzing baseline for dru/Eastern...
+2026-07-01 15:31:24,991 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:25,003 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:25,266 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:31:25,266 - INFO -   Swap 1/5: 'a' -> 'w'
+2026-07-01 15:31:25,266 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:25,285 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:25,449 - INFO -   Swap 2/5: 'a' -> 'y'
+2026-07-01 15:31:25,465 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:25,476 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:25,637 - INFO -   Swap 3/5: 'a' -> '.'
+2026-07-01 15:31:25,653 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:25,658 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:25,846 - INFO -   Swap 4/5: 'a' -> '/'
+2026-07-01 15:31:25,846 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:25,863 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:26,033 - INFO -   Swap 5/5: 'a' -> '/'
+2026-07-01 15:31:26,033 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:26,053 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:26,232 - INFO - 
+Testing dru/Maolin with 5 random character swaps...
+2026-07-01 15:31:27,682 - INFO - Analyzing baseline for dru/Maolin...
+2026-07-01 15:31:27,699 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:27,705 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:27,973 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:31:27,973 - INFO -   Swap 1/5: 'a' -> 'm'
+2026-07-01 15:31:27,973 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:27,997 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:28,178 - INFO -   Swap 2/5: 'a' -> '.'
+2026-07-01 15:31:28,201 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:28,207 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:28,403 - INFO -   Swap 3/5: 'a' -> ')'
+2026-07-01 15:31:28,403 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:28,420 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:28,652 - INFO -   Swap 4/5: 'a' -> '?'
+2026-07-01 15:31:28,669 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:28,675 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:28,917 - INFO -   Swap 5/5: 'a' -> 'l'
+2026-07-01 15:31:28,937 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:28,942 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:29,131 - INFO - 
+Testing dru/Wanshan with 5 random character swaps...
+2026-07-01 15:31:30,554 - INFO - Analyzing baseline for dru/Wanshan...
+2026-07-01 15:31:30,570 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:30,575 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:30,821 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:31:30,821 - INFO -   Swap 1/5: 'a' -> 'p'
+2026-07-01 15:31:30,829 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:30,838 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:31,040 - INFO -   Swap 2/5: 'a' -> 'g'
+2026-07-01 15:31:31,040 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:31,058 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:31,246 - INFO -   Swap 3/5: 'a' -> 'w'
+2026-07-01 15:31:31,250 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:31,259 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:31,446 - INFO -   Swap 4/5: 'a' -> 'y'
+2026-07-01 15:31:31,450 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:31,461 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:31,642 - INFO -   Swap 5/5: 'a' -> '('
+2026-07-01 15:31:31,650 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:31,658 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:31,854 - INFO - 
+Testing dru/Wutai with 5 random character swaps...
+2026-07-01 15:31:33,305 - INFO - Analyzing baseline for dru/Wutai...
+2026-07-01 15:31:33,342 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:33,363 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:34,438 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:31:34,438 - INFO -   Swap 1/5: 'a' -> ';'
+2026-07-01 15:31:34,484 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:34,505 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:35,472 - INFO -   Swap 2/5: 'a' -> 'r'
+2026-07-01 15:31:35,513 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:35,534 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:36,513 - INFO -   Swap 3/5: 'a' -> 'n'
+2026-07-01 15:31:36,555 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:36,576 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:37,600 - INFO -   Swap 4/5: 'a' -> '!'
+2026-07-01 15:31:37,647 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:37,667 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:38,767 - INFO -   Swap 5/5: 'a' -> 't'
+2026-07-01 15:31:38,813 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:38,831 - WARNING - Error tokenizing with orthography for dru: [Errno 2] No such file or directory: 'Orthographies/Ortho113/dru.tsv'. Using basic tokenization.
+2026-07-01 15:31:39,855 - INFO - 
+Testing trv/DeluValley with 5 random character swaps...
+2026-07-01 15:31:43,381 - INFO - Analyzing baseline for trv/DeluValley...
+2026-07-01 15:31:43,392 - WARNING - Error tokenizing with orthography for trv: [Errno 2] No such file or directory: 'Orthographies/Ortho113/trv.tsv'. Using basic tokenization.
+2026-07-01 15:31:43,398 - WARNING - Error tokenizing with orthography for trv: [Errno 2] No such file or directory: 'Orthographies/Ortho113/trv.tsv'. Using basic tokenization.
+2026-07-01 15:31:43,686 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:31:43,686 - INFO -   Swap 1/5: 'a' -> 'y'
+2026-07-01 15:31:43,694 - WARNING - Error tokenizing with orthography for trv: [Errno 2] No such file or directory: 'Orthographies/Ortho113/trv.tsv'. Using basic tokenization.
+2026-07-01 15:31:43,701 - WARNING - Error tokenizing with orthography for trv: [Errno 2] No such file or directory: 'Orthographies/Ortho113/trv.tsv'. Using basic tokenization.
+2026-07-01 15:31:43,894 - INFO -   Swap 2/5: 'a' -> '"'
+2026-07-01 15:31:43,903 - WARNING - Error tokenizing with orthography for trv: [Errno 2] No such file or directory: 'Orthographies/Ortho113/trv.tsv'. Using basic tokenization.
+2026-07-01 15:31:43,909 - WARNING - Error tokenizing with orthography for trv: [Errno 2] No such file or directory: 'Orthographies/Ortho113/trv.tsv'. Using basic tokenization.
+2026-07-01 15:31:44,124 - INFO -   Swap 3/5: 'a' -> 't'
+2026-07-01 15:31:44,137 - WARNING - Error tokenizing with orthography for trv: [Errno 2] No such file or directory: 'Orthographies/Ortho113/trv.tsv'. Using basic tokenization.
+2026-07-01 15:31:44,142 - WARNING - Error tokenizing with orthography for trv: [Errno 2] No such file or directory: 'Orthographies/Ortho113/trv.tsv'. Using basic tokenization.
+2026-07-01 15:31:44,349 - INFO -   Swap 4/5: 'a' -> ':'
+2026-07-01 15:31:44,359 - WARNING - Error tokenizing with orthography for trv: [Errno 2] No such file or directory: 'Orthographies/Ortho113/trv.tsv'. Using basic tokenization.
+2026-07-01 15:31:44,368 - WARNING - Error tokenizing with orthography for trv: [Errno 2] No such file or directory: 'Orthographies/Ortho113/trv.tsv'. Using basic tokenization.
+2026-07-01 15:31:44,585 - INFO -   Swap 5/5: 'a' -> '"'
+2026-07-01 15:31:44,596 - WARNING - Error tokenizing with orthography for trv: [Errno 2] No such file or directory: 'Orthographies/Ortho113/trv.tsv'. Using basic tokenization.
+2026-07-01 15:31:44,600 - WARNING - Error tokenizing with orthography for trv: [Errno 2] No such file or directory: 'Orthographies/Ortho113/trv.tsv'. Using basic tokenization.
+2026-07-01 15:31:44,804 - INFO - 
+Testing trv/Duda with 5 random character swaps...
+2026-07-01 15:31:45,980 - INFO - Analyzing baseline for trv/Duda...
+2026-07-01 15:31:45,988 - WARNING - Error tokenizing with orthography for trv: [Errno 2] No such file or directory: 'Orthographies/Ortho113/trv.tsv'. Using basic tokenization.
+2026-07-01 15:31:45,996 - WARNING - Error tokenizing with orthography for trv: [Errno 2] No such file or directory: 'Orthographies/Ortho113/trv.tsv'. Using basic tokenization.
+2026-07-01 15:31:46,305 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:31:46,311 - INFO -   Swap 1/5: 'a' -> 'b'
+2026-07-01 15:31:46,322 - WARNING - Error tokenizing with orthography for trv: [Errno 2] No such file or directory: 'Orthographies/Ortho113/trv.tsv'. Using basic tokenization.
+2026-07-01 15:31:46,330 - WARNING - Error tokenizing with orthography for trv: [Errno 2] No such file or directory: 'Orthographies/Ortho113/trv.tsv'. Using basic tokenization.
+2026-07-01 15:31:46,559 - INFO -   Swap 2/5: 'a' -> 's'
+2026-07-01 15:31:46,571 - WARNING - Error tokenizing with orthography for trv: [Errno 2] No such file or directory: 'Orthographies/Ortho113/trv.tsv'. Using basic tokenization.
+2026-07-01 15:31:46,579 - WARNING - Error tokenizing with orthography for trv: [Errno 2] No such file or directory: 'Orthographies/Ortho113/trv.tsv'. Using basic tokenization.
+2026-07-01 15:31:46,805 - INFO -   Swap 3/5: 'a' -> 'g'
+2026-07-01 15:31:46,816 - WARNING - Error tokenizing with orthography for trv: [Errno 2] No such file or directory: 'Orthographies/Ortho113/trv.tsv'. Using basic tokenization.
+2026-07-01 15:31:46,822 - WARNING - Error tokenizing with orthography for trv: [Errno 2] No such file or directory: 'Orthographies/Ortho113/trv.tsv'. Using basic tokenization.
+2026-07-01 15:31:47,047 - INFO -   Swap 4/5: 'a' -> ')'
+2026-07-01 15:31:47,057 - WARNING - Error tokenizing with orthography for trv: [Errno 2] No such file or directory: 'Orthographies/Ortho113/trv.tsv'. Using basic tokenization.
+2026-07-01 15:31:47,063 - WARNING - Error tokenizing with orthography for trv: [Errno 2] No such file or directory: 'Orthographies/Ortho113/trv.tsv'. Using basic tokenization.
+2026-07-01 15:31:47,267 - INFO -   Swap 5/5: 'a' -> 'e'
+2026-07-01 15:31:47,277 - WARNING - Error tokenizing with orthography for trv: [Errno 2] No such file or directory: 'Orthographies/Ortho113/trv.tsv'. Using basic tokenization.
+2026-07-01 15:31:47,285 - WARNING - Error tokenizing with orthography for trv: [Errno 2] No such file or directory: 'Orthographies/Ortho113/trv.tsv'. Using basic tokenization.
+2026-07-01 15:31:47,502 - INFO - 
+Testing trv/Tegudaya with 5 random character swaps...
+2026-07-01 15:31:48,500 - INFO - Analyzing baseline for trv/Tegudaya...
+2026-07-01 15:31:48,526 - WARNING - Error tokenizing with orthography for trv: [Errno 2] No such file or directory: 'Orthographies/Ortho113/trv.tsv'. Using basic tokenization.
+2026-07-01 15:31:48,548 - WARNING - Error tokenizing with orthography for trv: [Errno 2] No such file or directory: 'Orthographies/Ortho113/trv.tsv'. Using basic tokenization.
+2026-07-01 15:31:49,434 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:31:49,434 - INFO -   Swap 1/5: 'a' -> '.'
+2026-07-01 15:31:49,476 - WARNING - Error tokenizing with orthography for trv: [Errno 2] No such file or directory: 'Orthographies/Ortho113/trv.tsv'. Using basic tokenization.
+2026-07-01 15:31:49,493 - WARNING - Error tokenizing with orthography for trv: [Errno 2] No such file or directory: 'Orthographies/Ortho113/trv.tsv'. Using basic tokenization.
+2026-07-01 15:31:50,325 - INFO -   Swap 2/5: 'a' -> 'i'
+2026-07-01 15:31:50,359 - WARNING - Error tokenizing with orthography for trv: [Errno 2] No such file or directory: 'Orthographies/Ortho113/trv.tsv'. Using basic tokenization.
+2026-07-01 15:31:50,381 - WARNING - Error tokenizing with orthography for trv: [Errno 2] No such file or directory: 'Orthographies/Ortho113/trv.tsv'. Using basic tokenization.
+2026-07-01 15:31:51,225 - INFO -   Swap 3/5: 'a' -> 'd'
+2026-07-01 15:31:51,263 - WARNING - Error tokenizing with orthography for trv: [Errno 2] No such file or directory: 'Orthographies/Ortho113/trv.tsv'. Using basic tokenization.
+2026-07-01 15:31:51,281 - WARNING - Error tokenizing with orthography for trv: [Errno 2] No such file or directory: 'Orthographies/Ortho113/trv.tsv'. Using basic tokenization.
+2026-07-01 15:31:52,130 - INFO -   Swap 4/5: 'a' -> 'p'
+2026-07-01 15:31:52,171 - WARNING - Error tokenizing with orthography for trv: [Errno 2] No such file or directory: 'Orthographies/Ortho113/trv.tsv'. Using basic tokenization.
+2026-07-01 15:31:52,188 - WARNING - Error tokenizing with orthography for trv: [Errno 2] No such file or directory: 'Orthographies/Ortho113/trv.tsv'. Using basic tokenization.
+2026-07-01 15:31:53,017 - INFO -   Swap 5/5: 'a' -> 'w'
+2026-07-01 15:31:53,050 - WARNING - Error tokenizing with orthography for trv: [Errno 2] No such file or directory: 'Orthographies/Ortho113/trv.tsv'. Using basic tokenization.
+2026-07-01 15:31:53,068 - WARNING - Error tokenizing with orthography for trv: [Errno 2] No such file or directory: 'Orthographies/Ortho113/trv.tsv'. Using basic tokenization.
+2026-07-01 15:31:53,867 - INFO - 
+================================================================================
+2026-07-01 15:31:53,867 - INFO - Computing Per-Language Thresholds (mean ± epsilon) for Validation
+2026-07-01 15:31:53,867 - INFO - ================================================================================
+
+2026-07-01 15:31:53,869 - INFO - Per-Language Thresholds (epsilon=0.1):
+2026-07-01 15:31:53,880 - INFO -   ami:
+2026-07-01 15:31:53,882 - INFO -     character_cosine:
+2026-07-01 15:31:53,886 - INFO -       Mean: 0.5340, Std: 0.0205
+2026-07-01 15:31:53,886 - INFO -       Lower (healthy): 0.4340, Upper (anomalous): 0.6340
+2026-07-01 15:31:53,886 - INFO -     character_kl:
+2026-07-01 15:31:53,886 - INFO -       Mean: 2.0266, Std: 0.0960
+2026-07-01 15:31:53,886 - INFO -       Lower (healthy): 1.9266, Upper (anomalous): 2.1266
+2026-07-01 15:31:53,888 - INFO -     word_cosine:
+2026-07-01 15:31:53,894 - INFO -       Mean: 0.3929, Std: 0.0636
+2026-07-01 15:31:53,896 - INFO -       Lower (healthy): 0.2929, Upper (anomalous): 0.4929
+2026-07-01 15:31:53,898 - INFO -     word_kl:
+2026-07-01 15:31:53,898 - INFO -       Mean: 1.3602, Std: 0.1947
+2026-07-01 15:31:53,898 - INFO -       Lower (healthy): 1.2602, Upper (anomalous): 1.4602
+2026-07-01 15:31:53,898 - INFO -   tay:
+2026-07-01 15:31:53,900 - INFO -     character_cosine:
+2026-07-01 15:31:53,903 - INFO -       Mean: 0.4534, Std: 0.0297
+2026-07-01 15:31:53,903 - INFO -       Lower (healthy): 0.3534, Upper (anomalous): 0.5534
+2026-07-01 15:31:53,903 - INFO -     character_kl:
+2026-07-01 15:31:53,903 - INFO -       Mean: 1.6837, Std: 0.0844
+2026-07-01 15:31:53,903 - INFO -       Lower (healthy): 1.5837, Upper (anomalous): 1.7837
+2026-07-01 15:31:53,903 - INFO -     word_cosine:
+2026-07-01 15:31:53,904 - INFO -       Mean: 0.6163, Std: 0.1066
+2026-07-01 15:31:53,904 - INFO -       Lower (healthy): 0.5163, Upper (anomalous): 0.7163
+2026-07-01 15:31:53,906 - INFO -     word_kl:
+2026-07-01 15:31:53,912 - INFO -       Mean: 1.7328, Std: 0.2400
+2026-07-01 15:31:53,920 - INFO -       Lower (healthy): 1.6328, Upper (anomalous): 1.8328
+2026-07-01 15:31:53,921 - INFO -   bnn:
+2026-07-01 15:31:53,925 - INFO -     character_cosine:
+2026-07-01 15:31:53,930 - INFO -       Mean: 0.5329, Std: 0.0181
+2026-07-01 15:31:53,933 - INFO -       Lower (healthy): 0.4329, Upper (anomalous): 0.6329
+2026-07-01 15:31:53,938 - INFO -     character_kl:
+2026-07-01 15:31:53,949 - INFO -       Mean: 2.1629, Std: 0.1991
+2026-07-01 15:31:53,950 - INFO -       Lower (healthy): 2.0629, Upper (anomalous): 2.2629
+2026-07-01 15:31:53,951 - INFO -     word_cosine:
+2026-07-01 15:31:53,951 - INFO -       Mean: 0.6791, Std: 0.1165
+2026-07-01 15:31:53,951 - INFO -       Lower (healthy): 0.5791, Upper (anomalous): 0.7791
+2026-07-01 15:31:53,951 - INFO -     word_kl:
+2026-07-01 15:31:53,953 - INFO -       Mean: 1.6153, Std: 0.3087
+2026-07-01 15:31:53,953 - INFO -       Lower (healthy): 1.5153, Upper (anomalous): 1.7153
+2026-07-01 15:31:53,953 - INFO -   pwn:
+2026-07-01 15:31:53,953 - INFO -     character_cosine:
+2026-07-01 15:31:53,953 - INFO -       Mean: 0.5461, Std: 0.0194
+2026-07-01 15:31:53,953 - INFO -       Lower (healthy): 0.4461, Upper (anomalous): 0.6461
+2026-07-01 15:31:53,953 - INFO -     character_kl:
+2026-07-01 15:31:53,953 - INFO -       Mean: 2.1484, Std: 0.1513
+2026-07-01 15:31:53,954 - INFO -       Lower (healthy): 2.0484, Upper (anomalous): 2.2484
+2026-07-01 15:31:53,955 - INFO -     word_cosine:
+2026-07-01 15:31:53,955 - INFO -       Mean: 0.9239, Std: 0.0169
+2026-07-01 15:31:53,955 - INFO -       Lower (healthy): 0.8239, Upper (anomalous): 1.0239
+2026-07-01 15:31:53,955 - INFO -     word_kl:
+2026-07-01 15:31:53,957 - INFO -       Mean: 2.0175, Std: 0.2937
+2026-07-01 15:31:53,957 - INFO -       Lower (healthy): 1.9175, Upper (anomalous): 2.1175
+2026-07-01 15:31:53,957 - INFO -   pyu:
+2026-07-01 15:31:53,957 - INFO -     character_cosine:
+2026-07-01 15:31:53,957 - INFO -       Mean: 0.5377, Std: 0.0098
+2026-07-01 15:31:53,957 - INFO -       Lower (healthy): 0.4377, Upper (anomalous): 0.6377
+2026-07-01 15:31:53,957 - INFO -     character_kl:
+2026-07-01 15:31:53,957 - INFO -       Mean: 2.1566, Std: 0.1264
+2026-07-01 15:31:53,957 - INFO -       Lower (healthy): 2.0566, Upper (anomalous): 2.2566
+2026-07-01 15:31:53,957 - INFO -     word_cosine:
+2026-07-01 15:31:53,957 - INFO -       Mean: 0.6746, Std: 0.0370
+2026-07-01 15:31:53,959 - INFO -       Lower (healthy): 0.5746, Upper (anomalous): 0.7746
+2026-07-01 15:31:53,965 - INFO -     word_kl:
+2026-07-01 15:31:53,970 - INFO -       Mean: 2.0391, Std: 0.2696
+2026-07-01 15:31:53,970 - INFO -       Lower (healthy): 1.9391, Upper (anomalous): 2.1391
+2026-07-01 15:31:53,970 - INFO -   dru:
+2026-07-01 15:31:53,970 - INFO -     character_cosine:
+2026-07-01 15:31:53,973 - INFO -       Mean: 0.4868, Std: 0.0646
+2026-07-01 15:31:53,976 - INFO -       Lower (healthy): 0.3868, Upper (anomalous): 0.5868
+2026-07-01 15:31:53,976 - INFO -     character_kl:
+2026-07-01 15:31:53,978 - INFO -       Mean: 1.9234, Std: 0.3150
+2026-07-01 15:31:53,979 - INFO -       Lower (healthy): 1.8234, Upper (anomalous): 2.0234
+2026-07-01 15:31:53,983 - INFO -     word_cosine:
+2026-07-01 15:31:53,984 - INFO -       Mean: 0.6428, Std: 0.1375
+2026-07-01 15:31:53,987 - INFO -       Lower (healthy): 0.5428, Upper (anomalous): 0.7428
+2026-07-01 15:31:53,987 - INFO -     word_kl:
+2026-07-01 15:31:53,987 - INFO -       Mean: 1.3202, Std: 0.2953
+2026-07-01 15:31:53,989 - INFO -       Lower (healthy): 1.2202, Upper (anomalous): 1.4202
+2026-07-01 15:31:53,989 - INFO -   trv:
+2026-07-01 15:31:53,989 - INFO -     character_cosine:
+2026-07-01 15:31:53,990 - INFO -       Mean: 0.4525, Std: 0.0318
+2026-07-01 15:31:53,990 - INFO -       Lower (healthy): 0.3525, Upper (anomalous): 0.5525
+2026-07-01 15:31:53,990 - INFO -     character_kl:
+2026-07-01 15:31:53,990 - INFO -       Mean: 1.6471, Std: 0.0361
+2026-07-01 15:31:53,990 - INFO -       Lower (healthy): 1.5471, Upper (anomalous): 1.7471
+2026-07-01 15:31:53,990 - INFO -     word_cosine:
+2026-07-01 15:31:53,990 - INFO -       Mean: 0.8158, Std: 0.0117
+2026-07-01 15:31:53,991 - INFO -       Lower (healthy): 0.7158, Upper (anomalous): 0.9158
+2026-07-01 15:31:53,991 - INFO -     word_kl:
+2026-07-01 15:31:53,991 - INFO -       Mean: 1.8653, Std: 0.1993
+2026-07-01 15:31:53,991 - INFO -       Lower (healthy): 1.7653, Upper (anomalous): 1.9653
+2026-07-01 15:31:53,991 - INFO - 
+Global Thresholds (fallback, mean ± 1 std):
+2026-07-01 15:31:53,991 - INFO -   character_cosine:
+2026-07-01 15:31:53,991 - INFO -     Mean: 0.5051, Std: 0.0506
+2026-07-01 15:31:53,991 - INFO -     Healthy: 0.4545, Anomalous: 0.5557
+2026-07-01 15:31:53,991 - INFO -   character_kl:
+2026-07-01 15:31:53,991 - INFO -     Mean: 1.9622, Std: 0.2655
+2026-07-01 15:31:53,991 - INFO -     Healthy: 1.6967, Anomalous: 2.2277
+2026-07-01 15:31:53,991 - INFO -   word_cosine:
+2026-07-01 15:31:53,992 - INFO -     Mean: 0.6593, Std: 0.1741
+2026-07-01 15:31:53,992 - INFO -     Healthy: 0.4851, Anomalous: 0.8334
+2026-07-01 15:31:53,992 - INFO -   word_kl:
+2026-07-01 15:31:53,993 - INFO -     Mean: 1.6672, Std: 0.3768
+2026-07-01 15:31:53,993 - INFO -     Healthy: 1.2904, Anomalous: 2.0440
+2026-07-01 15:31:53,998 - INFO - 
+================================================================================
+2026-07-01 15:31:53,998 - INFO - Running XML Corpus Integrity Validation Tests
+2026-07-01 15:31:53,998 - INFO - ================================================================================
+
+2026-07-01 15:31:54,000 - INFO - [VALIDATION] Checking XML integrity for ami/Coastal (using 5 swaps per perturbation)...
+2026-07-01 15:31:55,163 - INFO - Analyzing baseline for ami/Coastal...
+2026-07-01 15:31:55,181 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:31:55,192 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:31:55,764 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:31:55,765 - INFO -   Swap 1/5: 'a' -> ':'
+2026-07-01 15:31:55,788 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:31:55,798 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:31:56,268 - INFO -   Swap 2/5: 'a' -> 'p'
+2026-07-01 15:31:56,288 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:31:56,297 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:31:56,721 - INFO -   Swap 3/5: 'a' -> '1'
+2026-07-01 15:31:56,740 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:31:56,746 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:31:57,213 - INFO -   Swap 4/5: 'a' -> 'o'
+2026-07-01 15:31:57,238 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:31:57,242 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:31:57,683 - INFO -   Swap 5/5: 'a' -> '!'
+2026-07-01 15:31:57,705 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:31:57,717 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:31:58,121 - INFO - [VALIDATION] Checking XML integrity for ami/Hengchun (using 5 swaps per perturbation)...
+2026-07-01 15:31:59,088 - INFO - Analyzing baseline for ami/Hengchun...
+2026-07-01 15:31:59,102 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:31:59,107 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:31:59,408 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:31:59,408 - INFO -   Swap 1/5: 'a' -> '''
+2026-07-01 15:31:59,419 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:31:59,426 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:31:59,642 - INFO -   Swap 2/5: 'a' -> 'f'
+2026-07-01 15:31:59,654 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:31:59,658 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:31:59,913 - INFO -   Swap 3/5: 'a' -> 'r'
+2026-07-01 15:31:59,927 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:31:59,938 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:00,146 - INFO -   Swap 4/5: 'a' -> 'e'
+2026-07-01 15:32:00,167 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:00,173 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:00,385 - INFO -   Swap 5/5: 'a' -> 'y'
+2026-07-01 15:32:00,388 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:00,406 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:00,633 - INFO - [VALIDATION] Checking XML integrity for ami/Malan (using 5 swaps per perturbation)...
+2026-07-01 15:32:01,596 - INFO - Analyzing baseline for ami/Malan...
+2026-07-01 15:32:01,596 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:01,613 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:01,896 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:32:01,896 - INFO -   Swap 1/5: 'a' -> 'l'
+2026-07-01 15:32:01,896 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:01,913 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:02,129 - INFO -   Swap 2/5: 'a' -> 'g'
+2026-07-01 15:32:02,144 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:02,150 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:02,364 - INFO -   Swap 3/5: 'a' -> 't'
+2026-07-01 15:32:02,377 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:02,384 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:02,595 - INFO -   Swap 4/5: 'a' -> '?'
+2026-07-01 15:32:02,611 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:02,624 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:02,837 - INFO -   Swap 5/5: 'a' -> 'm'
+2026-07-01 15:32:02,838 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:02,854 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:03,067 - INFO - [VALIDATION] Checking XML integrity for ami/Southern (using 5 swaps per perturbation)...
+2026-07-01 15:32:04,004 - INFO - Analyzing baseline for ami/Southern...
+2026-07-01 15:32:04,016 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:04,021 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:04,272 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:32:04,272 - INFO -   Swap 1/5: 'a' -> '.'
+2026-07-01 15:32:04,281 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:04,287 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:04,535 - INFO -   Swap 2/5: 'a' -> ')'
+2026-07-01 15:32:04,544 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:04,551 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:04,804 - INFO -   Swap 3/5: 'a' -> '?'
+2026-07-01 15:32:04,815 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:04,821 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:05,139 - INFO -   Swap 4/5: 'a' -> 'r'
+2026-07-01 15:32:05,147 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:05,153 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:05,333 - INFO -   Swap 5/5: 'a' -> 'v'
+2026-07-01 15:32:05,354 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:05,359 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:05,577 - INFO - [VALIDATION] Checking XML integrity for ami/Xiuguluan (using 5 swaps per perturbation)...
+2026-07-01 15:32:06,650 - INFO - Analyzing baseline for ami/Xiuguluan...
+2026-07-01 15:32:06,667 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:06,680 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:07,200 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:32:07,200 - INFO -   Swap 1/5: 'a' -> 'k'
+2026-07-01 15:32:07,221 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:07,234 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:07,709 - INFO -   Swap 2/5: 'a' -> '?'
+2026-07-01 15:32:07,734 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:07,746 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:08,230 - INFO -   Swap 3/5: 'a' -> 'g'
+2026-07-01 15:32:08,251 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:08,263 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:08,688 - INFO -   Swap 4/5: 'a' -> 'y'
+2026-07-01 15:32:08,709 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:08,721 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:09,175 - INFO -   Swap 5/5: 'a' -> '''
+2026-07-01 15:32:09,196 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:09,213 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-07-01 15:32:09,696 - INFO - [VALIDATION] Checking XML integrity for tay/FourSeasons (using 5 swaps per perturbation)...
+2026-07-01 15:32:10,888 - INFO - Analyzing baseline for tay/FourSeasons...
+2026-07-01 15:32:10,900 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:10,905 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:11,180 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:32:11,180 - INFO -   Swap 1/5: 'a' -> ','
+2026-07-01 15:32:11,188 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:11,192 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:11,406 - INFO -   Swap 2/5: 'a' -> 'r'
+2026-07-01 15:32:11,415 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:11,421 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:11,631 - INFO -   Swap 3/5: 'a' -> 'e'
+2026-07-01 15:32:11,640 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:11,646 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:11,851 - INFO -   Swap 4/5: 'a' -> 'r'
+2026-07-01 15:32:11,859 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:11,867 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:12,076 - INFO -   Swap 5/5: 'a' -> 'u'
+2026-07-01 15:32:12,084 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:12,094 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:12,305 - INFO - [VALIDATION] Checking XML integrity for tay/Sekolik (using 5 swaps per perturbation)...
+2026-07-01 15:32:13,438 - INFO - Analyzing baseline for tay/Sekolik...
+2026-07-01 15:32:13,467 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:13,488 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:14,569 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:32:14,570 - INFO -   Swap 1/5: 'a' -> 'b'
+2026-07-01 15:32:14,614 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:14,638 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:15,835 - INFO -   Swap 2/5: 'a' -> '?'
+2026-07-01 15:32:15,882 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:15,905 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:17,241 - INFO -   Swap 3/5: 'a' -> 'w'
+2026-07-01 15:32:17,289 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:17,318 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:18,758 - INFO -   Swap 4/5: 'a' -> '!'
+2026-07-01 15:32:18,814 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:18,844 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:20,192 - INFO -   Swap 5/5: 'a' -> 'i'
+2026-07-01 15:32:20,228 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:20,250 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:23,260 - INFO - [VALIDATION] Checking XML integrity for tay/Wanda (using 5 swaps per perturbation)...
+2026-07-01 15:32:26,524 - INFO - Analyzing baseline for tay/Wanda...
+2026-07-01 15:32:26,538 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:26,551 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:27,136 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:32:27,137 - INFO -   Swap 1/5: 'a' -> 'm'
+2026-07-01 15:32:27,152 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:27,165 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:27,572 - INFO -   Swap 2/5: 'a' -> 'y'
+2026-07-01 15:32:27,589 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:27,599 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:28,065 - INFO -   Swap 3/5: 'a' -> ';'
+2026-07-01 15:32:28,085 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:28,101 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:28,474 - INFO -   Swap 4/5: 'a' -> 'e'
+2026-07-01 15:32:28,491 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:28,498 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:28,955 - INFO -   Swap 5/5: 'a' -> 'e'
+2026-07-01 15:32:28,966 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:28,974 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:29,225 - INFO - [VALIDATION] Checking XML integrity for tay/Wenshui (using 5 swaps per perturbation)...
+2026-07-01 15:32:30,444 - INFO - Analyzing baseline for tay/Wenshui...
+2026-07-01 15:32:30,454 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:30,461 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:30,769 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:32:30,769 - INFO -   Swap 1/5: 'a' -> '!'
+2026-07-01 15:32:30,783 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:30,789 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:31,050 - INFO -   Swap 2/5: 'a' -> 'y'
+2026-07-01 15:32:31,062 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:31,069 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:31,321 - INFO -   Swap 3/5: 'a' -> 'o'
+2026-07-01 15:32:31,332 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:31,339 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:31,567 - INFO -   Swap 4/5: 'a' -> 'b'
+2026-07-01 15:32:31,586 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:31,596 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:31,827 - INFO -   Swap 5/5: 'a' -> 'k'
+2026-07-01 15:32:31,838 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:31,845 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:32,079 - INFO - [VALIDATION] Checking XML integrity for tay/YilanZeaol (using 5 swaps per perturbation)...
+2026-07-01 15:32:33,134 - INFO - Analyzing baseline for tay/YilanZeaol...
+2026-07-01 15:32:33,142 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:33,149 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:33,410 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:32:33,410 - INFO -   Swap 1/5: 'a' -> 'e'
+2026-07-01 15:32:33,421 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:33,427 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:33,619 - INFO -   Swap 2/5: 'a' -> 'l'
+2026-07-01 15:32:33,628 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:33,640 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:33,839 - INFO -   Swap 3/5: 'a' -> 't'
+2026-07-01 15:32:33,855 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:33,860 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:34,078 - INFO -   Swap 4/5: 'a' -> ':'
+2026-07-01 15:32:34,089 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:34,097 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:34,305 - INFO -   Swap 5/5: 'a' -> '''
+2026-07-01 15:32:34,314 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:34,321 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:34,554 - INFO - [VALIDATION] Checking XML integrity for tay/Zeaol (using 5 swaps per perturbation)...
+2026-07-01 15:32:35,750 - INFO - Analyzing baseline for tay/Zeaol...
+2026-07-01 15:32:35,752 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:35,773 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:36,064 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:32:36,064 - INFO -   Swap 1/5: 'a' -> 'e'
+2026-07-01 15:32:36,077 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:36,087 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:36,310 - INFO -   Swap 2/5: 'a' -> 'e'
+2026-07-01 15:32:36,326 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:36,332 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:36,558 - INFO -   Swap 3/5: 'a' -> 't'
+2026-07-01 15:32:36,569 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:36,577 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:36,810 - INFO -   Swap 4/5: 'a' -> 'm'
+2026-07-01 15:32:36,821 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:36,828 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:37,051 - INFO -   Swap 5/5: 'a' -> 'b'
+2026-07-01 15:32:37,052 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:37,068 - WARNING - Error tokenizing with orthography for tay: [Errno 2] No such file or directory: 'Orthographies/Ortho113/tay.tsv'. Using basic tokenization.
+2026-07-01 15:32:37,262 - INFO - [VALIDATION] Checking XML integrity for bnn/Junqun (using 5 swaps per perturbation)...
+2026-07-01 15:32:38,580 - INFO - Analyzing baseline for bnn/Junqun...
+2026-07-01 15:32:38,620 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:32:38,642 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:32:39,692 - INFO - Testing 5 random character swaps with 'a'...
+2026-07-01 15:32:39,692 - INFO -   Swap 1/5: 'a' -> 'e'
+2026-07-01 15:32:39,725 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:32:39,744 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:32:40,682 - INFO -   Swap 2/5: 'a' -> 'm'
+2026-07-01 15:32:40,715 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.
+2026-07-01 15:32:40,738 - WARNING - Error tokenizing with orthography for bnn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/bnn.tsv'. Using basic tokenization.

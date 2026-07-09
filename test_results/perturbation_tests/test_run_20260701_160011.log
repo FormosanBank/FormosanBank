@@ -1,0 +1,151 @@
+2026-07-01 16:00:11,179 - INFO - Starting Character Perturbation Robustness Test Suite
+2026-07-01 16:00:11,200 - INFO - Testing languages: ['Amis', 'Atayal', 'Bunun', 'Paiwan', 'Puyuma', 'Rukai', 'Seediq']
+2026-07-01 16:00:11,200 - INFO - Testing sources: ['ePark/', 'ILRDF_Dicts/', 'Paiwan_Stories/', 'NTUFormosanCorpus/']
+2026-07-01 16:00:11,200 - INFO - Number of swaps per test: 5
+2026-07-01 16:00:11,200 - INFO - Epsilon for per-language thresholds: 0.1
+2026-07-01 16:00:11,203 - INFO - 
+Testing ami/Coastal with 5 random character swaps...
+2026-07-01 16:00:12,182 - INFO - Analyzing baseline for ami/Coastal...
+2026-07-01 16:00:12,584 - INFO - Testing 5 random character swaps...
+2026-07-01 16:00:12,584 - ERROR - Error testing ami/Coastal: 'str' object has no attribute 'difference'
+Traceback (most recent call last):
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 1108, in main
+    results = test_language_dialect(lang_full_name, lang_code, dialect, sources, output_dir,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 462, in test_language_dialect
+    random_char = random.choice(available_chars).difference(string.punctuation)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'difference'
+2026-07-01 16:00:12,598 - INFO - 
+Testing ami/Hengchun with 5 random character swaps...
+2026-07-01 16:00:13,369 - INFO - Analyzing baseline for ami/Hengchun...
+2026-07-01 16:00:13,626 - INFO - Testing 5 random character swaps...
+2026-07-01 16:00:13,626 - ERROR - Error testing ami/Hengchun: 'str' object has no attribute 'difference'
+Traceback (most recent call last):
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 1108, in main
+    results = test_language_dialect(lang_full_name, lang_code, dialect, sources, output_dir,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 462, in test_language_dialect
+    random_char = random.choice(available_chars).difference(string.punctuation)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'difference'
+2026-07-01 16:00:13,627 - INFO - 
+Testing ami/Malan with 5 random character swaps...
+2026-07-01 16:00:14,477 - INFO - Analyzing baseline for ami/Malan...
+2026-07-01 16:00:14,734 - INFO - Testing 5 random character swaps...
+2026-07-01 16:00:14,734 - ERROR - Error testing ami/Malan: 'str' object has no attribute 'difference'
+Traceback (most recent call last):
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 1108, in main
+    results = test_language_dialect(lang_full_name, lang_code, dialect, sources, output_dir,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 462, in test_language_dialect
+    random_char = random.choice(available_chars).difference(string.punctuation)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'difference'
+2026-07-01 16:00:14,741 - INFO - 
+Testing ami/Southern with 5 random character swaps...
+2026-07-01 16:00:15,612 - INFO - Analyzing baseline for ami/Southern...
+2026-07-01 16:00:15,932 - INFO - Testing 5 random character swaps...
+2026-07-01 16:00:15,932 - ERROR - Error testing ami/Southern: 'str' object has no attribute 'difference'
+Traceback (most recent call last):
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 1108, in main
+    results = test_language_dialect(lang_full_name, lang_code, dialect, sources, output_dir,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 462, in test_language_dialect
+    random_char = random.choice(available_chars).difference(string.punctuation)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'difference'
+2026-07-01 16:00:15,934 - INFO - 
+Testing ami/Xiuguluan with 5 random character swaps...
+2026-07-01 16:00:16,843 - INFO - Analyzing baseline for ami/Xiuguluan...
+2026-07-01 16:00:17,314 - INFO - Testing 5 random character swaps...
+2026-07-01 16:00:17,314 - ERROR - Error testing ami/Xiuguluan: 'str' object has no attribute 'difference'
+Traceback (most recent call last):
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 1108, in main
+    results = test_language_dialect(lang_full_name, lang_code, dialect, sources, output_dir,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 462, in test_language_dialect
+    random_char = random.choice(available_chars).difference(string.punctuation)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'difference'
+2026-07-01 16:00:17,325 - INFO - 
+Testing tay/FourSeasons with 5 random character swaps...
+2026-07-01 16:00:18,194 - INFO - Analyzing baseline for tay/FourSeasons...
+2026-07-01 16:00:18,437 - INFO - Testing 5 random character swaps...
+2026-07-01 16:00:18,439 - ERROR - Error testing tay/FourSeasons: 'str' object has no attribute 'difference'
+Traceback (most recent call last):
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 1108, in main
+    results = test_language_dialect(lang_full_name, lang_code, dialect, sources, output_dir,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 462, in test_language_dialect
+    random_char = random.choice(available_chars).difference(string.punctuation)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'difference'
+2026-07-01 16:00:18,441 - INFO - 
+Testing tay/Sekolik with 5 random character swaps...
+2026-07-01 16:00:19,350 - INFO - Analyzing baseline for tay/Sekolik...
+2026-07-01 16:00:20,008 - INFO - Testing 5 random character swaps...
+2026-07-01 16:00:20,008 - ERROR - Error testing tay/Sekolik: 'str' object has no attribute 'difference'
+Traceback (most recent call last):
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 1108, in main
+    results = test_language_dialect(lang_full_name, lang_code, dialect, sources, output_dir,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 462, in test_language_dialect
+    random_char = random.choice(available_chars).difference(string.punctuation)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'difference'
+2026-07-01 16:00:20,024 - INFO - 
+Testing tay/Wanda with 5 random character swaps...
+2026-07-01 16:00:20,904 - INFO - Analyzing baseline for tay/Wanda...
+2026-07-01 16:00:21,112 - INFO - Testing 5 random character swaps...
+2026-07-01 16:00:21,112 - ERROR - Error testing tay/Wanda: 'str' object has no attribute 'difference'
+Traceback (most recent call last):
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 1108, in main
+    results = test_language_dialect(lang_full_name, lang_code, dialect, sources, output_dir,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 462, in test_language_dialect
+    random_char = random.choice(available_chars).difference(string.punctuation)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'difference'
+2026-07-01 16:00:21,112 - INFO - 
+Testing tay/Wenshui with 5 random character swaps...
+2026-07-01 16:00:22,032 - INFO - Analyzing baseline for tay/Wenshui...
+2026-07-01 16:00:22,311 - INFO - Testing 5 random character swaps...
+2026-07-01 16:00:22,311 - ERROR - Error testing tay/Wenshui: 'str' object has no attribute 'difference'
+Traceback (most recent call last):
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 1108, in main
+    results = test_language_dialect(lang_full_name, lang_code, dialect, sources, output_dir,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 462, in test_language_dialect
+    random_char = random.choice(available_chars).difference(string.punctuation)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'difference'
+2026-07-01 16:00:22,311 - INFO - 
+Testing tay/YilanZeaol with 5 random character swaps...
+2026-07-01 16:00:23,195 - INFO - Analyzing baseline for tay/YilanZeaol...
+2026-07-01 16:00:23,479 - INFO - Testing 5 random character swaps...
+2026-07-01 16:00:23,479 - ERROR - Error testing tay/YilanZeaol: 'str' object has no attribute 'difference'
+Traceback (most recent call last):
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 1108, in main
+    results = test_language_dialect(lang_full_name, lang_code, dialect, sources, output_dir,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 462, in test_language_dialect
+    random_char = random.choice(available_chars).difference(string.punctuation)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'difference'
+2026-07-01 16:00:23,483 - INFO - 
+Testing tay/Zeaol with 5 random character swaps...
+2026-07-01 16:00:24,536 - INFO - Analyzing baseline for tay/Zeaol...
+2026-07-01 16:00:24,792 - INFO - Testing 5 random character swaps...
+2026-07-01 16:00:24,792 - ERROR - Error testing tay/Zeaol: 'str' object has no attribute 'difference'
+Traceback (most recent call last):
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 1108, in main
+    results = test_language_dialect(lang_full_name, lang_code, dialect, sources, output_dir,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 462, in test_language_dialect
+    random_char = random.choice(available_chars).difference(string.punctuation)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'difference'
+2026-07-01 16:00:24,795 - INFO - 
+Testing bnn/Junqun with 5 random character swaps...
+2026-07-01 16:00:26,286 - INFO - Analyzing baseline for bnn/Junqun...

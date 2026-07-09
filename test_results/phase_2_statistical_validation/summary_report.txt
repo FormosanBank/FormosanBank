@@ -1,0 +1,249 @@
+Character Perturbation Robustness Test Suite - Summary Report
+Generated: 2026-06-29T16:54:37.104091
+================================================================================
+
+Robustness Test Statistics:
+  Total tests: 9
+  Successful: 9
+  Failed: 0
+
+================================================================================
+Dynamic Thresholds (computed from corpus distribution, mean ± 1 std):
+================================================================================
+
+character_cosine:
+  Mean: 0.545652
+  Std Dev: 0.027975
+  Healthy (< mean - 1*std): 0.517677
+  Anomalous (> mean + 1*std): 0.573627
+
+character_kl:
+  Mean: 2.080175
+  Std Dev: 0.151018
+  Healthy (< mean - 1*std): 1.929157
+  Anomalous (> mean + 1*std): 2.231193
+
+word_cosine:
+  Mean: 0.603848
+  Std Dev: 0.307617
+  Healthy (< mean - 1*std): 0.296231
+  Anomalous (> mean + 1*std): 0.911465
+
+word_kl:
+  Mean: 1.646263
+  Std Dev: 0.498536
+  Healthy (< mean - 1*std): 1.147726
+  Anomalous (> mean + 1*std): 2.144799
+
+================================================================================
+Prediction Efficacy Metrics:
+================================================================================
+
+Character-Word Correlation (indicates joint predictive power):
+  Cosine Similarity: 0.4399
+    (1.0 = perfect correlation, 0.0 = no correlation, -1.0 = inverse)
+  KL Divergence: 0.8781
+
+Classification Efficacy (how well metrics predict corpus quality):
+  Class Separation: 2.0483
+    (how many std devs apart PASS and FAIL clusters are)
+  PASS Mean Delta: 0.5147
+  FAIL Mean Delta: 0.5875
+
+XML Corpus Integrity Validation Statistics:
+  Validation checks passed: 1
+  Validation checks warned: 6
+  Validation checks failed: 2
+
+================================================================================
+XML Corpus Integrity Validation Results:
+================================================================================
+
+AMI/Coastal:
+  ⚠ ami/Coastal - Character 1-gram Deltas: Within ±1 std of mean (cosine=0.5701, kl=2.1893)
+      Thresholds: cosine [0.5177, 0.5736], kl [1.9292, 2.2312]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.630313
+    KL: 1.862377
+
+AMI/Hengchun:
+  ⚠ ami/Hengchun - Character 1-gram Deltas: Within ±1 std of mean (cosine=0.5228, kl=1.9349)
+      Thresholds: cosine [0.5177, 0.5736], kl [1.9292, 2.2312]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.263656
+    KL: 1.078422
+
+AMI/Malan:
+  ✓ ami/Malan - Character 1-gram Deltas: Well below mean (cosine=0.5147 < 0.5177, kl=1.9268 < 1.9292)
+      Thresholds: cosine [0.5177, 0.5736], kl [1.9292, 2.2312]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.252158
+    KL: 1.089352
+
+AMI/Southern:
+  ⚠ ami/Southern - Character 1-gram Deltas: Within ±1 std of mean (cosine=0.5393, kl=1.9903)
+      Thresholds: cosine [0.5177, 0.5736], kl [1.9292, 2.2312]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.327005
+    KL: 1.231326
+
+AMI/Xiuguluan:
+  ⚠ ami/Xiuguluan - Character 1-gram Deltas: Within ±1 std of mean (cosine=0.5454, kl=2.1031)
+      Thresholds: cosine [0.5177, 0.5736], kl [1.9292, 2.2312]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.258333
+    KL: 1.324302
+
+PWN/Central:
+  ⚠ pwn/Central - Character 1-gram Deltas: Within ±1 std of mean (cosine=0.5187, kl=2.0256)
+      Thresholds: cosine [0.5177, 0.5736], kl [1.9292, 2.2312]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.901505
+    KL: 1.716739
+
+PWN/Eastern:
+  ✗ pwn/Eastern - Character 1-gram Deltas: Beyond ±1 std of mean (cosine=0.5762 > 0.5736, kl=2.0637 > 2.2312)
+      Thresholds: cosine [0.5177, 0.5736], kl [1.9292, 2.2312]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.925430
+    KL: 2.007742
+  Issues:
+    - pwn/Eastern: Beyond ±1 std of mean (cosine=0.5762 > 0.5736, kl=2.0637 > 2.2312)
+
+PWN/Northern:
+  ✗ pwn/Northern - Character 1-gram Deltas: Beyond ±1 std of mean (cosine=0.5989 > 0.5736, kl=2.4479 > 2.2312)
+      Thresholds: cosine [0.5177, 0.5736], kl [1.9292, 2.2312]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.941838
+    KL: 2.705654
+  Issues:
+    - pwn/Northern: Beyond ±1 std of mean (cosine=0.5989 > 0.5736, kl=2.4479 > 2.2312)
+
+PWN/Southern:
+  ⚠ pwn/Southern - Character 1-gram Deltas: Within ±1 std of mean (cosine=0.5248, kl=2.0400)
+      Thresholds: cosine [0.5177, 0.5736], kl [1.9292, 2.2312]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.934394
+    KL: 1.800451
+
+================================================================================
+Detailed Robustness Test Results (sampling):
+================================================================================
+
+================================================================================
+Test Results: AMI/Coastal
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 5263
+  Reference sentences: 4211
+  Target sentences: 1052
+  Total characters: 351514
+  Unique characters: 32
+
+Perturbation:
+  Max frequency character: 'a'
+  Character frequency: 15745
+  Swapped with: '"'
+
+Metric Changes (Cosine Similarity & KL Divergence):
+  Character Level:
+    1-gram:
+      Δ Cosine Similarity: 0.570084
+      Δ KL Divergence: 2.189268
+    2-gram:
+      Δ Cosine Similarity: 0.638528
+      Δ KL Divergence: 2.984973
+    3-gram:
+      Δ Cosine Similarity: 0.768895
+      Δ KL Divergence: 2.570463
+
+  Word Level:
+    1-gram:
+      Δ Cosine Similarity: 0.630313
+      Δ KL Divergence: 1.862377
+    2-gram:
+      Δ Cosine Similarity: 0.660545
+      Δ KL Divergence: 0.564826
+    3-gram:
+      Δ Cosine Similarity: 0.290356
+      Δ KL Divergence: 0.166714
+
+================================================================================
+Test Results: AMI/Hengchun
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3832
+  Reference sentences: 3066
+  Target sentences: 766
+  Total characters: 223513
+  Unique characters: 34
+
+Perturbation:
+  Max frequency character: 'a'
+  Character frequency: 8507
+  Swapped with: 'd'
+
+Metric Changes (Cosine Similarity & KL Divergence):
+  Character Level:
+    1-gram:
+      Δ Cosine Similarity: 0.522771
+      Δ KL Divergence: 1.934872
+    2-gram:
+      Δ Cosine Similarity: 0.609475
+      Δ KL Divergence: 2.576416
+    3-gram:
+      Δ Cosine Similarity: 0.721169
+      Δ KL Divergence: 2.102994
+
+  Word Level:
+    1-gram:
+      Δ Cosine Similarity: 0.263656
+      Δ KL Divergence: 1.078422
+    2-gram:
+      Δ Cosine Similarity: 0.291640
+      Δ KL Divergence: 0.240999
+    3-gram:
+      Δ Cosine Similarity: 0.081846
+      Δ KL Divergence: 0.053325
+
+================================================================================
+Test Results: AMI/Malan
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3969
+  Reference sentences: 3176
+  Target sentences: 793
+  Total characters: 216908
+  Unique characters: 29
+
+Perturbation:
+  Max frequency character: 'a'
+  Character frequency: 8605
+  Swapped with: 'y'
+
+Metric Changes (Cosine Similarity & KL Divergence):
+  Character Level:
+    1-gram:
+      Δ Cosine Similarity: 0.514668
+      Δ KL Divergence: 1.926825
+    2-gram:
+      Δ Cosine Similarity: 0.630125
+      Δ KL Divergence: 2.567318
+    3-gram:
+      Δ Cosine Similarity: 0.723213
+      Δ KL Divergence: 2.117128
+
+  Word Level:
+    1-gram:
+      Δ Cosine Similarity: 0.252158
+      Δ KL Divergence: 1.089352
+    2-gram:
+      Δ Cosine Similarity: 0.318904
+      Δ KL Divergence: 0.267112
+    3-gram:
+      Δ Cosine Similarity: 0.084775
+      Δ KL Divergence: 0.059811
+

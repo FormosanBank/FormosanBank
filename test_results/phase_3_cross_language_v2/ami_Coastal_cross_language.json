@@ -1,0 +1,18 @@
+{
+  "target_language": "ami",
+  "target_dialect": "Coastal",
+  "discrimination_checks": [
+    {
+      "name": "ami/Coastal vs pwn (discrimination test)",
+      "status": "PASS",
+      "message": "Correctly identified as non-target (cosine=0.5772 > 0.5737, kl=2.4064 > 2.2184)",
+      "target_language": "ami",
+      "test_language": "pwn",
+      "deltas": {
+        "cosine_similarity": 0.5771962832450959,
+        "kl_divergence": 2.4063778166463585
+      }
+    }
+  ],
+  "discrimination_issues": []
+}

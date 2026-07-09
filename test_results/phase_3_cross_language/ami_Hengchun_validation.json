@@ -1,0 +1,54 @@
+{
+  "language": "ami",
+  "dialect": "Hengchun",
+  "validation_checks": [
+    {
+      "name": "ami/Hengchun - Character 1-gram Deltas",
+      "status": "PASS",
+      "message": "Well below mean (cosine=0.4969 < 0.5104, kl=1.9085 < 1.9441)",
+      "deltas": {
+        "cosine_similarity": 0.4968921584681967,
+        "kl_divergence": 1.9085218878900299
+      },
+      "thresholds": {
+        "cosine_healthy": 0.5103726401732068,
+        "cosine_anomalous": 0.5580471017544858,
+        "kl_healthy": 1.9440764147647653,
+        "kl_anomalous": 2.192930155628506
+      }
+    }
+  ],
+  "corpus_integrity_issues": [],
+  "thresholds_used": {
+    "character_cosine": {
+      "mean": 0.5342098709638463,
+      "std": 0.02383723079063952,
+      "healthy": 0.5103726401732068,
+      "anomalous": 0.5580471017544858
+    },
+    "character_kl": {
+      "mean": 2.068503285196636,
+      "std": 0.12442687043187046,
+      "healthy": 1.9440764147647653,
+      "anomalous": 2.192930155628506
+    },
+    "word_cosine": {
+      "mean": 0.6274713413044362,
+      "std": 0.2722577632564537,
+      "healthy": 0.3552135780479825,
+      "anomalous": 0.8997291045608898
+    },
+    "word_kl": {
+      "mean": 1.5977439315103412,
+      "std": 0.34571187556030253,
+      "healthy": 1.2520320559500386,
+      "anomalous": 1.9434558070706438
+    }
+  },
+  "additional_metrics": {
+    "word_cosine_delta": 0.264055774221417,
+    "word_kl_delta": 1.0779761980323066,
+    "char_word_correlation_potential": true
+  },
+  "language_full_name": "Amis"
+}

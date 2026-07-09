@@ -1,0 +1,54 @@
+{
+  "language": "ami",
+  "dialect": "Malan",
+  "validation_checks": [
+    {
+      "name": "ami/Malan - Character 1-gram Deltas",
+      "status": "WARN",
+      "message": "Within ±1 std of mean (cosine=0.5589, kl=1.9886)",
+      "deltas": {
+        "cosine_similarity": 0.5588991371743666,
+        "kl_divergence": 1.9886240611020507
+      },
+      "thresholds": {
+        "cosine_healthy": 0.5404438032603622,
+        "cosine_anomalous": 0.5737134703361133,
+        "kl_healthy": 1.9688012741026002,
+        "kl_anomalous": 2.2184464767759895
+      }
+    }
+  ],
+  "corpus_integrity_issues": [],
+  "thresholds_used": {
+    "character_cosine": {
+      "mean": 0.5570786367982378,
+      "std": 0.016634833537875544,
+      "healthy": 0.5404438032603622,
+      "anomalous": 0.5737134703361133
+    },
+    "character_kl": {
+      "mean": 2.093623875439295,
+      "std": 0.12482260133669476,
+      "healthy": 1.9688012741026002,
+      "anomalous": 2.2184464767759895
+    },
+    "word_cosine": {
+      "mean": 0.648187755072827,
+      "std": 0.2831281523311189,
+      "healthy": 0.3650596027417081,
+      "anomalous": 0.9313159074039459
+    },
+    "word_kl": {
+      "mean": 1.650710911196487,
+      "std": 0.39576967305197097,
+      "healthy": 1.2549412381445162,
+      "anomalous": 2.046480584248458
+    }
+  },
+  "additional_metrics": {
+    "word_cosine_delta": 0.6339397400239443,
+    "word_kl_delta": 1.4195834645270462,
+    "char_word_correlation_potential": true
+  },
+  "language_full_name": "Amis"
+}

@@ -149,6 +149,121 @@ class DialectModel:
         
         return self.dialects[best_idx], confidence, ranked
 
+    def score_text_next_word_kl(self, text: str, limit: int = 40, smoothing: float = 1.0) -> tuple[str | None, float, list[tuple[str, float, dict[str, float]]]]:
+        """Predict dialect using next-word KL divergence: average KL divergence of next-word 
+        probability distributions given top (n-1)-grams.
+        
+        For each of the top `limit` word unigrams (prefixes) in the model's training data:
+        1. Extract all word bigrams with that prefix from both model and target text
+        2. Compute probability distribution of the next word for each dialect
+        3. Calculate KL divergence between reference dialect and target distributions
+        4. Average the KL divergences across all prefixes
+        
+        Returns (predicted_dialect, confidence, ranked_list) where predicted_dialect is 
+        the one with minimum average next-word KL divergence, and confidence is based on 
+        the spread of scores.
+        
+        Args:
+            text: The text to analyze
+            limit: Number of top word unigrams to consider from reference data
+            smoothing: Laplace smoothing parameter for probability estimation
+        """
+        target_tokens = text.split()
+        if len(target_tokens) < 2:
+            return None, 0.0, []
+        
+        # Create target word bigrams
+        target_bigrams = Counter(
+            tuple(target_tokens[i:i+2]) for i in range(len(target_tokens) - 1)
+        )
+        
+        # Get all possible next-word contexts for each dialect
+        avg_kl_divs = []
+        
+        for d in self.dialects:
+            kl_divs_next_word = []
+            
+            # Get top word unigrams from reference (first word of bigrams)
+            # Count first words in the dialect's bigrams
+            prefix_counts = Counter()
+            for (w1, w2) in self.word_bi[d].elements():
+                prefix_counts[w1] += 1
+            
+            top_prefixes = prefix_counts.most_common(limit)
+            
+            for prefix, _ in top_prefixes:
+                # Get all bigrams with this prefix in both reference and target
+                ref_next_words = {}
+                target_next_words = {}
+                
+                # From reference dialect data
+                for (w1, w2), count in self.word_bi[d].items():
+                    if w1 == prefix:
+                        # P(w2 | w1) = count(w1, w2) / count(w1)
+                        ref_next_words[(w1, w2)] = count / (prefix_counts[prefix] + smoothing)
+                
+                # From target text
+                for (w1, w2), count in target_bigrams.items():
+                    if w1 == prefix:
+                        prefix_target_count = sum(
+                            c for (tw1, tw2), c in target_bigrams.items() if tw1 == prefix
+                        )
+                        target_next_words[(w1, w2)] = count / (prefix_target_count + smoothing)
+                
+                # Get all unique bigrams with this prefix
+                all_bigrams = set(ref_next_words.keys()).union(set(target_next_words.keys()))
+                
+                if len(all_bigrams) > 0:
+                    # Create probability vectors with smoothing for unseen bigrams
+                    smoothing_prob = smoothing / (smoothing * len(all_bigrams) + 1)
+                    ref_prob_vector = np.array([
+                        ref_next_words.get(bigram, smoothing_prob) for bigram in all_bigrams
+                    ])
+                    target_prob_vector = np.array([
+                        target_next_words.get(bigram, smoothing_prob) for bigram in all_bigrams
+                    ])
+                    
+                    # Normalize to valid probability distributions
+                    ref_prob_vector = ref_prob_vector / (np.sum(ref_prob_vector) + 1e-10)
+                    target_prob_vector = target_prob_vector / (np.sum(target_prob_vector) + 1e-10)
+                    
+                    # Calculate KL divergence using same approach as features.py
+                    # KL(ref || target) = sum(ref * log(ref / target))
+                    kl_div = np.sum(
+                        ref_prob_vector * (np.log(ref_prob_vector + 1e-10) - np.log(target_prob_vector + 1e-10))
+                    )
+                    kl_divs_next_word.append(float(kl_div))
+            
+            avg_kl = np.mean(kl_divs_next_word) if kl_divs_next_word else float('inf')
+            avg_kl_divs.append(avg_kl)
+        
+        avg_kl_divs = np.array(avg_kl_divs)
+        
+        # Handle all-inf or all-nan cases
+        if np.all(np.isnan(avg_kl_divs)) or np.all(np.isinf(avg_kl_divs)):
+            return None, 0.0, []
+        
+        # Replace inf/nan with a large value
+        avg_kl_divs_safe = np.nan_to_num(avg_kl_divs, nan=1e10, posinf=1e10, neginf=-1e10)
+        
+        # Find dialect with minimum average KL divergence (best match)
+        best_idx = np.argmin(avg_kl_divs_safe)
+        
+        # Compute confidence using inverse of the spread
+        min_kl = avg_kl_divs_safe[best_idx]
+        kl_diffs = avg_kl_divs_safe - min_kl
+        denominator = np.sum(kl_diffs)
+        confidence = 1.0 / (1.0 + (denominator / (len(self.dialects) * max(min_kl, 0.1)))) if denominator > 0 else 1.0
+        
+        # Create ranked list sorted by average KL divergence (ascending)
+        ranked = [
+            (self.dialects[i], float(avg_kl_divs_safe[i]), {"avg_kl_next_word": float(avg_kl_divs_safe[i])})
+            for i in range(len(self.dialects))
+        ]
+        ranked.sort(key=lambda r: r[1])
+        
+        return self.dialects[best_idx], confidence, ranked
+
 
 def _prune(counter: Counter, top_n: int) -> Counter:
     '''
@@ -356,3 +471,23 @@ def predict_root(model: DialectModel, root) -> Prediction:
     ranked = model.score_text(text)
     top, prob, _ = ranked[0]
     return Prediction(top, prob, ranked, prob < model.threshold)
+
+
+def predict_root_next_word_kl(model: DialectModel, root, limit: int = 40) -> Prediction:
+    """Predict dialect using next-word KL divergence method.
+    
+    Args:
+        model: DialectModel instance
+        root: XML element with text content
+        limit: Number of top word unigrams to consider
+        
+    Returns:
+        Prediction with results from next-word KL divergence scoring
+    """
+    text = extract_standard_text(root)
+    if not text:
+        return Prediction(None, 0.0, [], True)
+    top, prob, ranked = model.score_text_next_word_kl(text, limit=limit)
+    is_unknown = prob < model.kl_threshold
+    return Prediction(top, prob, ranked, is_unknown)
+

@@ -44,7 +44,7 @@ def parse_bool(value):
         return False
     raise argparse.ArgumentTypeError("Expected a boolean value such as true or false.")
 
-def generate_corpus(language_to_process, to_check_path, kindOf, by_dialect=False):
+def generate_corpus(language_to_process, to_check_path, kindOf, by_dialect=False, phonetic=False):
     corpus = {}
     if not by_dialect:
         corpus["default"] = ""
@@ -57,15 +57,20 @@ def generate_corpus(language_to_process, to_check_path, kindOf, by_dialect=False
                 root_to_read = tree.getroot()
                 
                 text = ""        
-
                 # Iterate over all <S> elements
                 for s in root_to_read.findall('.//S'):
                     # Find the <FORM> element within the <S> element
                     if kindOf:
-                        form = s.find(f"FORM[@kindOf='{kindOf}']")
-                        if form is not None:
-                            if form.text:
-                                text += " " + form.text
+                        if not phonetic:
+                            form = s.find(f"FORM[@kindOf='{kindOf}']")
+                            if form is not None:
+                                if form.text:
+                                    text += " " + form.text
+                        else:
+                            form = s.find(f"PHON[@kindOf='{kindOf}']")
+                            if form is not None:
+                                if form.text:
+                                    text += " " + form.text
                     else:
                         #if the kindOf attribute is not specified, add the form text to the corpus
                         forms = s.findall('FORM')

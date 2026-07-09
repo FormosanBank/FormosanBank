@@ -1,0 +1,40 @@
+[
+  {
+    "target_language": "ami",
+    "target_dialect": "Coastal",
+    "discrimination_checks": [
+      {
+        "name": "ami/Coastal vs pwn (discrimination test)",
+        "status": "PASS",
+        "message": "Correctly identified as non-target (cosine=0.5772 > 0.5737, kl=2.4064 > 2.2184)",
+        "target_language": "ami",
+        "test_language": "pwn",
+        "deltas": {
+          "cosine_similarity": 0.5771962832450959,
+          "kl_divergence": 2.4063778166463585
+        }
+      }
+    ],
+    "discrimination_issues": []
+  },
+  {
+    "target_language": "pwn",
+    "target_dialect": "Central",
+    "discrimination_checks": [
+      {
+        "name": "pwn/Central vs ami (discrimination test)",
+        "status": "FAIL",
+        "message": "Failed to discriminate (cosine=0.5296 <= 0.5737, kl=2.1691 <= 2.2184)",
+        "target_language": "pwn",
+        "test_language": "ami",
+        "deltas": {
+          "cosine_similarity": 0.5296380847610594,
+          "kl_divergence": 2.1690872256851255
+        }
+      }
+    ],
+    "discrimination_issues": [
+      "Discrimination failed: pwn vs ami: Failed to discriminate (cosine=0.5296 <= 0.5737, kl=2.1691 <= 2.2184)"
+    ]
+  }
+]

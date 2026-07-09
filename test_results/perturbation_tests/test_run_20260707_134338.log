@@ -1,0 +1,15 @@
+2026-07-07 13:43:38,652 - INFO - Starting Character Perturbation Robustness Test Suite
+2026-07-07 13:43:38,669 - INFO - Testing languages: ['Amis', 'Atayal', 'Bunun', 'Paiwan', 'Puyuma', 'Rukai', 'Seediq']
+2026-07-07 13:43:38,670 - INFO - Testing sources: ['ePark/', 'ILRDF_Dicts/', 'Paiwan_Stories/', 'NTUFormosanCorpus/']
+2026-07-07 13:43:38,670 - INFO - Number of swaps per test: 5
+2026-07-07 13:43:38,670 - INFO - Epsilon for per-language thresholds: 0.1
+2026-07-07 13:43:38,671 - INFO - 
+================================================================================
+2026-07-07 13:43:38,672 - INFO - Running robustness tests with 5 swaps per dialect
+2026-07-07 13:43:38,672 - INFO - ================================================================================
+
+2026-07-07 13:43:38,674 - INFO - 
+Testing ami/Coastal with 5 random character swaps...
+2026-07-07 13:43:39,617 - INFO - Analyzing baseline for ami/Coastal...
+2026-07-07 13:43:40,013 - INFO - Testing 5 random character swaps...
+2026-07-07 13:43:40,013 - INFO -   Swap 1/5: 'c' -> 'e'

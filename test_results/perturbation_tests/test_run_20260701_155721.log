@@ -1,0 +1,139 @@
+2026-07-01 15:57:21,611 - INFO - Starting Character Perturbation Robustness Test Suite
+2026-07-01 15:57:21,628 - INFO - Testing languages: ['Amis', 'Atayal', 'Bunun', 'Paiwan', 'Puyuma', 'Rukai', 'Seediq']
+2026-07-01 15:57:21,628 - INFO - Testing sources: ['ePark/', 'ILRDF_Dicts/', 'Paiwan_Stories/', 'NTUFormosanCorpus/']
+2026-07-01 15:57:21,628 - INFO - Number of swaps per test: 5
+2026-07-01 15:57:21,628 - INFO - Epsilon for per-language thresholds: 0.1
+2026-07-01 15:57:21,632 - INFO - 
+Testing ami/Coastal with 5 random character swaps...
+2026-07-01 15:57:22,551 - INFO - Analyzing baseline for ami/Coastal...
+2026-07-01 15:57:22,960 - ERROR - Error testing ami/Coastal: name 'max_freq_char' is not defined
+Traceback (most recent call last):
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 1113, in main
+    results = test_language_dialect(lang_full_name, lang_code, dialect, sources, output_dir,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 456, in test_language_dialect
+    logger.info(f"Testing {num_swaps} random character swaps with '{max_freq_char}'...")
+                                                                    ^^^^^^^^^^^^^
+NameError: name 'max_freq_char' is not defined
+2026-07-01 15:57:22,966 - INFO - 
+Testing ami/Hengchun with 5 random character swaps...
+2026-07-01 15:57:23,913 - INFO - Analyzing baseline for ami/Hengchun...
+2026-07-01 15:57:24,186 - ERROR - Error testing ami/Hengchun: name 'max_freq_char' is not defined
+Traceback (most recent call last):
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 1113, in main
+    results = test_language_dialect(lang_full_name, lang_code, dialect, sources, output_dir,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 456, in test_language_dialect
+    logger.info(f"Testing {num_swaps} random character swaps with '{max_freq_char}'...")
+                                                                    ^^^^^^^^^^^^^
+NameError: name 'max_freq_char' is not defined
+2026-07-01 15:57:24,188 - INFO - 
+Testing ami/Malan with 5 random character swaps...
+2026-07-01 15:57:25,174 - INFO - Analyzing baseline for ami/Malan...
+2026-07-01 15:57:25,433 - ERROR - Error testing ami/Malan: name 'max_freq_char' is not defined
+Traceback (most recent call last):
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 1113, in main
+    results = test_language_dialect(lang_full_name, lang_code, dialect, sources, output_dir,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 456, in test_language_dialect
+    logger.info(f"Testing {num_swaps} random character swaps with '{max_freq_char}'...")
+                                                                    ^^^^^^^^^^^^^
+NameError: name 'max_freq_char' is not defined
+2026-07-01 15:57:25,433 - INFO - 
+Testing ami/Southern with 5 random character swaps...
+2026-07-01 15:57:26,353 - INFO - Analyzing baseline for ami/Southern...
+2026-07-01 15:57:26,608 - ERROR - Error testing ami/Southern: name 'max_freq_char' is not defined
+Traceback (most recent call last):
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 1113, in main
+    results = test_language_dialect(lang_full_name, lang_code, dialect, sources, output_dir,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 456, in test_language_dialect
+    logger.info(f"Testing {num_swaps} random character swaps with '{max_freq_char}'...")
+                                                                    ^^^^^^^^^^^^^
+NameError: name 'max_freq_char' is not defined
+2026-07-01 15:57:26,610 - INFO - 
+Testing ami/Xiuguluan with 5 random character swaps...
+2026-07-01 15:57:27,486 - INFO - Analyzing baseline for ami/Xiuguluan...
+2026-07-01 15:57:27,932 - ERROR - Error testing ami/Xiuguluan: name 'max_freq_char' is not defined
+Traceback (most recent call last):
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 1113, in main
+    results = test_language_dialect(lang_full_name, lang_code, dialect, sources, output_dir,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 456, in test_language_dialect
+    logger.info(f"Testing {num_swaps} random character swaps with '{max_freq_char}'...")
+                                                                    ^^^^^^^^^^^^^
+NameError: name 'max_freq_char' is not defined
+2026-07-01 15:57:27,938 - INFO - 
+Testing tay/FourSeasons with 5 random character swaps...
+2026-07-01 15:57:29,003 - INFO - Analyzing baseline for tay/FourSeasons...
+2026-07-01 15:57:29,239 - ERROR - Error testing tay/FourSeasons: name 'max_freq_char' is not defined
+Traceback (most recent call last):
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 1113, in main
+    results = test_language_dialect(lang_full_name, lang_code, dialect, sources, output_dir,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 456, in test_language_dialect
+    logger.info(f"Testing {num_swaps} random character swaps with '{max_freq_char}'...")
+                                                                    ^^^^^^^^^^^^^
+NameError: name 'max_freq_char' is not defined
+2026-07-01 15:57:29,243 - INFO - 
+Testing tay/Sekolik with 5 random character swaps...
+2026-07-01 15:57:30,233 - INFO - Analyzing baseline for tay/Sekolik...
+2026-07-01 15:57:30,908 - ERROR - Error testing tay/Sekolik: name 'max_freq_char' is not defined
+Traceback (most recent call last):
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 1113, in main
+    results = test_language_dialect(lang_full_name, lang_code, dialect, sources, output_dir,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 456, in test_language_dialect
+    logger.info(f"Testing {num_swaps} random character swaps with '{max_freq_char}'...")
+                                                                    ^^^^^^^^^^^^^
+NameError: name 'max_freq_char' is not defined
+2026-07-01 15:57:30,912 - INFO - 
+Testing tay/Wanda with 5 random character swaps...
+2026-07-01 15:57:31,871 - INFO - Analyzing baseline for tay/Wanda...
+2026-07-01 15:57:32,105 - ERROR - Error testing tay/Wanda: name 'max_freq_char' is not defined
+Traceback (most recent call last):
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 1113, in main
+    results = test_language_dialect(lang_full_name, lang_code, dialect, sources, output_dir,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 456, in test_language_dialect
+    logger.info(f"Testing {num_swaps} random character swaps with '{max_freq_char}'...")
+                                                                    ^^^^^^^^^^^^^
+NameError: name 'max_freq_char' is not defined
+2026-07-01 15:57:32,109 - INFO - 
+Testing tay/Wenshui with 5 random character swaps...
+2026-07-01 15:57:33,186 - INFO - Analyzing baseline for tay/Wenshui...
+2026-07-01 15:57:33,493 - ERROR - Error testing tay/Wenshui: name 'max_freq_char' is not defined
+Traceback (most recent call last):
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 1113, in main
+    results = test_language_dialect(lang_full_name, lang_code, dialect, sources, output_dir,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 456, in test_language_dialect
+    logger.info(f"Testing {num_swaps} random character swaps with '{max_freq_char}'...")
+                                                                    ^^^^^^^^^^^^^
+NameError: name 'max_freq_char' is not defined
+2026-07-01 15:57:33,498 - INFO - 
+Testing tay/YilanZeaol with 5 random character swaps...
+2026-07-01 15:57:34,680 - INFO - Analyzing baseline for tay/YilanZeaol...
+2026-07-01 15:57:35,001 - ERROR - Error testing tay/YilanZeaol: name 'max_freq_char' is not defined
+Traceback (most recent call last):
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 1113, in main
+    results = test_language_dialect(lang_full_name, lang_code, dialect, sources, output_dir,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 456, in test_language_dialect
+    logger.info(f"Testing {num_swaps} random character swaps with '{max_freq_char}'...")
+                                                                    ^^^^^^^^^^^^^
+NameError: name 'max_freq_char' is not defined
+2026-07-01 15:57:35,004 - INFO - 
+Testing tay/Zeaol with 5 random character swaps...
+2026-07-01 15:57:36,163 - INFO - Analyzing baseline for tay/Zeaol...
+2026-07-01 15:57:36,434 - ERROR - Error testing tay/Zeaol: name 'max_freq_char' is not defined
+Traceback (most recent call last):
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 1113, in main
+    results = test_language_dialect(lang_full_name, lang_code, dialect, sources, output_dir,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 456, in test_language_dialect
+    logger.info(f"Testing {num_swaps} random character swaps with '{max_freq_char}'...")
+                                                                    ^^^^^^^^^^^^^
+NameError: name 'max_freq_char' is not defined
+2026-07-01 15:57:36,440 - INFO - 
+Testing bnn/Junqun with 5 random character swaps...

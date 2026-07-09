@@ -1,0 +1,11 @@
+{
+  "optimal_weights": {
+    "char_uni": 0.2547,
+    "char_bi": 0.2547,
+    "char_tri": 0.2360,
+    "word_uni": 0.2547
+  },
+  "f1_score": 0.9834,
+  "generated": "2026-07-08T12:57:10.961000",
+  "description": "Optimized weights for language discrimination (minimized function to maximize F1 score). These weights were derived by optimizing a weighted KL divergence function across all 14370 documents and 7 target languages to achieve 98.34% F1 score in language prediction."
+}

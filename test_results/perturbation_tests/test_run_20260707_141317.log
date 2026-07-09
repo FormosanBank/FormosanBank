@@ -1,0 +1,2321 @@
+2026-07-07 14:13:17,929 - INFO - Starting Character Perturbation Robustness Test Suite
+2026-07-07 14:13:17,941 - INFO - Testing languages: ['Amis', 'Atayal', 'Bunun', 'Paiwan', 'Puyuma', 'Rukai', 'Seediq']
+2026-07-07 14:13:17,941 - INFO - Testing sources: ['ePark/', 'ILRDF_Dicts/', 'Paiwan_Stories/', 'NTUFormosanCorpus/']
+2026-07-07 14:13:17,941 - INFO - Number of swaps per test: 5
+2026-07-07 14:13:17,942 - INFO - Epsilon for per-language thresholds: 0.1
+2026-07-07 14:13:17,942 - INFO - 
+================================================================================
+2026-07-07 14:13:17,944 - INFO - Running robustness tests with 5 swaps per dialect
+2026-07-07 14:13:17,944 - INFO - ================================================================================
+
+2026-07-07 14:13:17,945 - INFO - 
+Testing ami/Coastal with 5 random character swaps...
+2026-07-07 14:13:18,749 - INFO - Analyzing baseline for ami/Coastal...
+2026-07-07 14:13:19,126 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:13:19,126 - INFO -   Swap 1/5: 'e' -> 'o'
+2026-07-07 14:13:19,633 - INFO -   Swap 2/5: 'n' -> 't'
+2026-07-07 14:13:19,989 - INFO -   Swap 3/5: 'e' -> '0'
+2026-07-07 14:13:20,451 - INFO -   Swap 4/5: 'p' -> 'x'
+2026-07-07 14:13:20,979 - INFO -   Swap 5/5: 'r' -> 'i'
+2026-07-07 14:13:21,427 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:13:21,431 - INFO -   Swap 1/5: 'adhan' <-> 'mi'
+2026-07-07 14:13:21,937 - INFO -   Swap 2/5: 'kafer' <-> 'hikoki'
+2026-07-07 14:13:22,343 - INFO -   Swap 3/5: 'a' <-> 'kahemhem'
+2026-07-07 14:13:22,776 - INFO -   Swap 4/5: 'takula' <-> 'ko'
+2026-07-07 14:13:23,196 - INFO -   Swap 5/5: 'marohem' <-> 'Foyan'
+2026-07-07 14:13:23,677 - INFO - ================================================================================
+Test Results: AMI/Coastal
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 6019
+  Reference sentences: 4816
+  Target sentences: 1203
+  Total characters: 394352
+  Unique characters: 34
+
+Perturbation:
+  Character swaps performed: 5
+  Word swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence):
+  Character Level (from character swaps):
+    1-gram:
+      D Cosine Similarity: 0.018608
+      D KL Divergence: 0.261339
+    2-gram:
+      D Cosine Similarity: 0.059800
+      D KL Divergence: 0.383282
+    3-gram:
+      D Cosine Similarity: 0.078881
+      D KL Divergence: 0.357821
+
+  Word Level (from word swaps):
+    1-gram:
+      D Cosine Similarity: 0.093848
+      D KL Divergence: 0.092697
+    2-gram:
+      D Cosine Similarity: 0.054087
+      D KL Divergence: 0.032493
+    3-gram:
+      D Cosine Similarity: 0.013355
+      D KL Divergence: 0.007595
+2026-07-07 14:13:23,681 - INFO - 
+Testing ami/Hengchun with 5 random character swaps...
+2026-07-07 14:13:24,817 - INFO - Analyzing baseline for ami/Hengchun...
+2026-07-07 14:13:25,083 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:13:25,083 - INFO -   Swap 1/5: 'i' -> 'a'
+2026-07-07 14:13:25,272 - INFO -   Swap 2/5: 'i' -> 'c'
+2026-07-07 14:13:25,463 - INFO -   Swap 3/5: 'm' -> 's'
+2026-07-07 14:13:25,644 - INFO -   Swap 4/5: 'd' -> 'r'
+2026-07-07 14:13:25,824 - INFO -   Swap 5/5: 'g' -> 'o'
+2026-07-07 14:13:26,013 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:13:26,015 - INFO -   Swap 1/5: 'mifana' <-> 'ko'
+2026-07-07 14:13:26,200 - INFO -   Swap 2/5: 'tamdawan' <-> 'mihecaan'
+2026-07-07 14:13:26,379 - INFO -   Swap 3/5: 'Wa' <-> 'cikay'
+2026-07-07 14:13:26,562 - INFO -   Swap 4/5: 'Pinaay' <-> 'ma'
+2026-07-07 14:13:26,738 - INFO -   Swap 5/5: 'fiting' <-> 'selal'
+2026-07-07 14:13:26,954 - INFO - ================================================================================
+Test Results: AMI/Hengchun
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3832
+  Reference sentences: 3066
+  Target sentences: 766
+  Total characters: 223513
+  Unique characters: 34
+
+Perturbation:
+  Character swaps performed: 5
+  Word swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence):
+  Character Level (from character swaps):
+    1-gram:
+      D Cosine Similarity: 0.034858
+      D KL Divergence: 0.367951
+    2-gram:
+      D Cosine Similarity: 0.071797
+      D KL Divergence: 0.492801
+    3-gram:
+      D Cosine Similarity: 0.121276
+      D KL Divergence: 0.440197
+
+  Word Level (from word swaps):
+    1-gram:
+      D Cosine Similarity: 0.057985
+      D KL Divergence: 0.052753
+    2-gram:
+      D Cosine Similarity: 0.025271
+      D KL Divergence: 0.015437
+    3-gram:
+      D Cosine Similarity: 0.007980
+      D KL Divergence: 0.004509
+2026-07-07 14:13:26,956 - INFO - 
+Testing ami/Malan with 5 random character swaps...
+2026-07-07 14:13:27,670 - INFO - Analyzing baseline for ami/Malan...
+2026-07-07 14:13:27,916 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:13:27,916 - INFO -   Swap 1/5: 'h' -> 'y'
+2026-07-07 14:13:28,099 - INFO -   Swap 2/5: 'n' -> 'o'
+2026-07-07 14:13:28,283 - INFO -   Swap 3/5: 'i' -> 'a'
+2026-07-07 14:13:28,466 - INFO -   Swap 4/5: 'c' -> 'f'
+2026-07-07 14:13:28,642 - INFO -   Swap 5/5: 'k' -> 'c'
+2026-07-07 14:13:28,829 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:13:28,833 - INFO -   Swap 1/5: 'mamilifet' <-> 'naira'
+2026-07-07 14:13:29,011 - INFO -   Swap 2/5: 'Cima' <-> 'ngangan'
+2026-07-07 14:13:29,222 - INFO -   Swap 3/5: 'I' <-> 'nga'
+2026-07-07 14:13:29,395 - INFO -   Swap 4/5: 'no' <-> 'ko'
+2026-07-07 14:13:29,604 - INFO -   Swap 5/5: 'konga' <-> 'no'
+2026-07-07 14:13:29,767 - INFO - ================================================================================
+Test Results: AMI/Malan
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3969
+  Reference sentences: 3176
+  Target sentences: 793
+  Total characters: 216908
+  Unique characters: 29
+
+Perturbation:
+  Character swaps performed: 5
+  Word swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence):
+  Character Level (from character swaps):
+    1-gram:
+      D Cosine Similarity: 0.032037
+      D KL Divergence: 0.369498
+    2-gram:
+      D Cosine Similarity: 0.106071
+      D KL Divergence: 0.519877
+    3-gram:
+      D Cosine Similarity: 0.138859
+      D KL Divergence: 0.457235
+
+  Word Level (from word swaps):
+    1-gram:
+      D Cosine Similarity: 0.033584
+      D KL Divergence: 0.028886
+    2-gram:
+      D Cosine Similarity: 0.042213
+      D KL Divergence: 0.029512
+    3-gram:
+      D Cosine Similarity: 0.016115
+      D KL Divergence: 0.010082
+2026-07-07 14:13:29,770 - INFO - 
+Testing ami/Southern with 5 random character swaps...
+2026-07-07 14:13:30,660 - INFO - Analyzing baseline for ami/Southern...
+2026-07-07 14:13:30,860 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:13:30,860 - INFO -   Swap 1/5: 'm' -> 'v'
+2026-07-07 14:13:31,020 - INFO -   Swap 2/5: 'w' -> 's'
+2026-07-07 14:13:31,183 - INFO -   Swap 3/5: 'd' -> '0'
+2026-07-07 14:13:31,391 - INFO -   Swap 4/5: 'c' -> 's'
+2026-07-07 14:13:31,552 - INFO -   Swap 5/5: 'v' -> 'w'
+2026-07-07 14:13:31,718 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:13:31,719 - INFO -   Swap 1/5: 'u' <-> 'Hualien'
+2026-07-07 14:13:31,913 - INFO -   Swap 2/5: 'i' <-> 'nipaveli'
+2026-07-07 14:13:32,081 - INFO -   Swap 3/5: 'a' <-> 'ku'
+2026-07-07 14:13:32,275 - INFO -   Swap 4/5: 'tu' <-> 'i'
+2026-07-07 14:13:32,449 - INFO -   Swap 5/5: 'makautuvay' <-> 'aku'
+2026-07-07 14:13:32,621 - INFO - ================================================================================
+Test Results: AMI/Southern
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3894
+  Reference sentences: 3116
+  Target sentences: 778
+  Total characters: 209599
+  Unique characters: 33
+
+Perturbation:
+  Character swaps performed: 5
+  Word swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence):
+  Character Level (from character swaps):
+    1-gram:
+      D Cosine Similarity: 0.007568
+      D KL Divergence: 0.154498
+    2-gram:
+      D Cosine Similarity: 0.039850
+      D KL Divergence: 0.229961
+    3-gram:
+      D Cosine Similarity: 0.056913
+      D KL Divergence: 0.201696
+
+  Word Level (from word swaps):
+    1-gram:
+      D Cosine Similarity: 0.017199
+      D KL Divergence: 0.031708
+    2-gram:
+      D Cosine Similarity: 0.034240
+      D KL Divergence: 0.031088
+    3-gram:
+      D Cosine Similarity: 0.015968
+      D KL Divergence: 0.011323
+2026-07-07 14:13:32,621 - INFO - 
+Testing ami/Xiuguluan with 5 random character swaps...
+2026-07-07 14:13:33,338 - INFO - Analyzing baseline for ami/Xiuguluan...
+2026-07-07 14:13:33,835 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:13:33,835 - INFO -   Swap 1/5: 'f' -> '0'
+2026-07-07 14:13:34,204 - INFO -   Swap 2/5: 'd' -> 'a'
+2026-07-07 14:13:34,564 - INFO -   Swap 3/5: 'i' -> 'r'
+2026-07-07 14:13:34,932 - INFO -   Swap 4/5: 'd' -> '1'
+2026-07-07 14:13:35,305 - INFO -   Swap 5/5: 'w' -> 'y'
+2026-07-07 14:13:35,736 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:13:35,741 - INFO -   Swap 1/5: 'faliyos' <-> 'paliding'
+2026-07-07 14:13:36,275 - INFO -   Swap 2/5: 'no' <-> 'ko'
+2026-07-07 14:13:36,679 - INFO -   Swap 3/5: 'folo' <-> 'a'
+2026-07-07 14:13:37,137 - INFO -   Swap 4/5: 'kakalimelaan' <-> 'Sadamsayen'
+2026-07-07 14:13:37,553 - INFO -   Swap 5/5: 'kako' <-> 'malekaka'
+2026-07-07 14:13:37,943 - INFO - ================================================================================
+Test Results: AMI/Xiuguluan
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 9348
+  Reference sentences: 7479
+  Target sentences: 1869
+  Total characters: 430339
+  Unique characters: 35
+
+Perturbation:
+  Character swaps performed: 5
+  Word swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence):
+  Character Level (from character swaps):
+    1-gram:
+      D Cosine Similarity: 0.020367
+      D KL Divergence: 0.244796
+    2-gram:
+      D Cosine Similarity: 0.041353
+      D KL Divergence: 0.348457
+    3-gram:
+      D Cosine Similarity: 0.065953
+      D KL Divergence: 0.319602
+
+  Word Level (from word swaps):
+    1-gram:
+      D Cosine Similarity: 0.043975
+      D KL Divergence: 0.061847
+    2-gram:
+      D Cosine Similarity: 0.077605
+      D KL Divergence: 0.039573
+    3-gram:
+      D Cosine Similarity: 0.021343
+      D KL Divergence: 0.011190
+2026-07-07 14:13:37,945 - INFO - 
+Testing tay/FourSeasons with 5 random character swaps...
+2026-07-07 14:13:39,003 - INFO - Analyzing baseline for tay/FourSeasons...
+2026-07-07 14:13:39,220 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:13:39,220 - INFO -   Swap 1/5: 'q' -> 'u'
+2026-07-07 14:13:39,407 - INFO -   Swap 2/5: 'm' -> 'z'
+2026-07-07 14:13:39,567 - INFO -   Swap 3/5: 'b' -> 'q'
+2026-07-07 14:13:39,753 - INFO -   Swap 4/5: 'y' -> 'a'
+2026-07-07 14:13:39,958 - INFO -   Swap 5/5: 'b' -> 'h'
+2026-07-07 14:13:40,157 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:13:40,164 - INFO -   Swap 1/5: 'qaca' <-> 'maki'
+2026-07-07 14:13:40,356 - INFO -   Swap 2/5: 'tqiyay' <-> 'gamil'
+2026-07-07 14:13:40,521 - INFO -   Swap 3/5: 'sesiy' <-> 'ktu'
+2026-07-07 14:13:40,689 - INFO -   Swap 4/5: 'ga' <-> 'mqwas'
+2026-07-07 14:13:40,880 - INFO -   Swap 5/5: 'qbhniq' <-> 'miq'
+2026-07-07 14:13:41,069 - INFO - ================================================================================
+Test Results: TAY/FourSeasons
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3715
+  Reference sentences: 2972
+  Target sentences: 743
+  Total characters: 207667
+  Unique characters: 30
+
+Perturbation:
+  Character swaps performed: 5
+  Word swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence):
+  Character Level (from character swaps):
+    1-gram:
+      D Cosine Similarity: 0.021438
+      D KL Divergence: 0.278202
+    2-gram:
+      D Cosine Similarity: 0.084495
+      D KL Divergence: 0.383991
+    3-gram:
+      D Cosine Similarity: 0.109563
+      D KL Divergence: 0.328719
+
+  Word Level (from word swaps):
+    1-gram:
+      D Cosine Similarity: 0.041947
+      D KL Divergence: 0.017086
+    2-gram:
+      D Cosine Similarity: 0.038982
+      D KL Divergence: 0.019115
+    3-gram:
+      D Cosine Similarity: 0.004212
+      D KL Divergence: 0.003184
+2026-07-07 14:13:41,069 - INFO - 
+Testing tay/Sekolik with 5 random character swaps...
+2026-07-07 14:13:41,972 - INFO - Analyzing baseline for tay/Sekolik...
+2026-07-07 14:13:42,572 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:13:42,572 - INFO -   Swap 1/5: 'm' -> '1'
+2026-07-07 14:13:43,220 - INFO -   Swap 2/5: 'u' -> 'g'
+2026-07-07 14:13:43,908 - INFO -   Swap 3/5: '0' -> 'e'
+2026-07-07 14:13:44,559 - INFO -   Swap 4/5: 'x' -> 's'
+2026-07-07 14:13:45,427 - INFO -   Swap 5/5: 'b' -> 'x'
+2026-07-07 14:13:46,117 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:13:46,123 - INFO -   Swap 1/5: 'pniqi' <-> 'ki'
+2026-07-07 14:13:46,734 - INFO -   Swap 2/5: 'la' <-> 'na'
+2026-07-07 14:13:47,336 - INFO -   Swap 3/5: 'plqwi' <-> 'ma'
+2026-07-07 14:13:47,996 - INFO -   Swap 4/5: 'ga' <-> 'yutas'
+2026-07-07 14:13:48,586 - INFO -   Swap 5/5: 'kbsyaq' <-> 'sgaliq'
+2026-07-07 14:13:49,323 - INFO - ================================================================================
+Test Results: TAY/Sekolik
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 14888
+  Reference sentences: 11911
+  Target sentences: 2977
+  Total characters: 628918
+  Unique characters: 35
+
+Perturbation:
+  Character swaps performed: 5
+  Word swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence):
+  Character Level (from character swaps):
+    1-gram:
+      D Cosine Similarity: 0.025837
+      D KL Divergence: 0.256255
+    2-gram:
+      D Cosine Similarity: 0.047781
+      D KL Divergence: 0.359131
+    3-gram:
+      D Cosine Similarity: 0.076195
+      D KL Divergence: 0.329075
+
+  Word Level (from word swaps):
+    1-gram:
+      D Cosine Similarity: 0.018404
+      D KL Divergence: 0.017152
+    2-gram:
+      D Cosine Similarity: 0.033361
+      D KL Divergence: 0.017567
+    3-gram:
+      D Cosine Similarity: 0.002811
+      D KL Divergence: 0.002201
+2026-07-07 14:13:49,326 - INFO - 
+Testing tay/Wanda with 5 random character swaps...
+2026-07-07 14:13:50,127 - INFO - Analyzing baseline for tay/Wanda...
+2026-07-07 14:13:50,306 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:13:50,306 - INFO -   Swap 1/5: 'a' -> 'r'
+2026-07-07 14:13:50,447 - INFO -   Swap 2/5: 'c' -> 'w'
+2026-07-07 14:13:50,597 - INFO -   Swap 3/5: 'k' -> 's'
+2026-07-07 14:13:50,748 - INFO -   Swap 4/5: 'w' -> 'h'
+2026-07-07 14:13:50,893 - INFO -   Swap 5/5: 'm' -> 'b'
+2026-07-07 14:13:51,053 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:13:51,054 - INFO -   Swap 1/5: 'su' <-> 'maras'
+2026-07-07 14:13:51,198 - INFO -   Swap 2/5: 'hani' <-> 'ka'
+2026-07-07 14:13:51,339 - INFO -   Swap 3/5: 'tana' <-> 'laluhing'
+2026-07-07 14:13:51,495 - INFO -   Swap 4/5: 'buṟating' <-> 'su'
+2026-07-07 14:13:51,641 - INFO -   Swap 5/5: 'la' <-> 'cuxan'
+2026-07-07 14:13:51,807 - INFO - ================================================================================
+Test Results: TAY/Wanda
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3566
+  Reference sentences: 2853
+  Target sentences: 713
+  Total characters: 178317
+  Unique characters: 29
+
+Perturbation:
+  Character swaps performed: 5
+  Word swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence):
+  Character Level (from character swaps):
+    1-gram:
+      D Cosine Similarity: 0.113778
+      D KL Divergence: 0.519151
+    2-gram:
+      D Cosine Similarity: 0.179087
+      D KL Divergence: 0.707668
+    3-gram:
+      D Cosine Similarity: 0.198795
+      D KL Divergence: 0.570962
+
+  Word Level (from word swaps):
+    1-gram:
+      D Cosine Similarity: 0.090524
+      D KL Divergence: 0.055195
+    2-gram:
+      D Cosine Similarity: 0.035683
+      D KL Divergence: 0.029451
+    3-gram:
+      D Cosine Similarity: 0.010986
+      D KL Divergence: 0.007783
+2026-07-07 14:13:51,809 - INFO - 
+Testing tay/Wenshui with 5 random character swaps...
+2026-07-07 14:13:52,687 - INFO - Analyzing baseline for tay/Wenshui...
+2026-07-07 14:13:53,036 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:13:53,036 - INFO -   Swap 1/5: 'a' -> 'e'
+2026-07-07 14:13:53,279 - INFO -   Swap 2/5: 'r' -> 'i'
+2026-07-07 14:13:53,546 - INFO -   Swap 3/5: 'g' -> 't'
+2026-07-07 14:13:53,791 - INFO -   Swap 4/5: 's' -> 'a'
+2026-07-07 14:13:54,013 - INFO -   Swap 5/5: 'n' -> 't'
+2026-07-07 14:13:54,273 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:13:54,276 - INFO -   Swap 1/5: 'ku' <-> 'kinsat'
+2026-07-07 14:13:54,562 - INFO -   Swap 2/5: 'Paquwli' <-> 'cuquleq'
+2026-07-07 14:13:54,839 - INFO -   Swap 3/5: 'su' <-> 'sapat'
+2026-07-07 14:13:55,066 - INFO -   Swap 4/5: 'qaqasinug' <-> 'kahavaw'
+2026-07-07 14:13:55,348 - INFO -   Swap 5/5: 'kannuwan' <-> 'mha'
+2026-07-07 14:13:55,643 - INFO - ================================================================================
+Test Results: TAY/Wenshui
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 4580
+  Reference sentences: 3664
+  Target sentences: 916
+  Total characters: 251687
+  Unique characters: 30
+
+Perturbation:
+  Character swaps performed: 5
+  Word swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence):
+  Character Level (from character swaps):
+    1-gram:
+      D Cosine Similarity: 0.118158
+      D KL Divergence: 0.585008
+    2-gram:
+      D Cosine Similarity: 0.176526
+      D KL Divergence: 0.796222
+    3-gram:
+      D Cosine Similarity: 0.207331
+      D KL Divergence: 0.673928
+
+  Word Level (from word swaps):
+    1-gram:
+      D Cosine Similarity: 0.049838
+      D KL Divergence: 0.064607
+    2-gram:
+      D Cosine Similarity: 0.019262
+      D KL Divergence: 0.017392
+    3-gram:
+      D Cosine Similarity: 0.005663
+      D KL Divergence: 0.004130
+2026-07-07 14:13:55,644 - INFO - 
+Testing tay/YilanZeaol with 5 random character swaps...
+2026-07-07 14:13:56,515 - INFO - Analyzing baseline for tay/YilanZeaol...
+2026-07-07 14:13:56,738 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:13:56,742 - INFO -   Swap 1/5: 'h' -> 's'
+2026-07-07 14:13:56,947 - INFO -   Swap 2/5: 'g' -> 'w'
+2026-07-07 14:13:57,155 - INFO -   Swap 3/5: 'x' -> 'h'
+2026-07-07 14:13:57,357 - INFO -   Swap 4/5: 'o' -> 'g'
+2026-07-07 14:13:57,545 - INFO -   Swap 5/5: 'r' -> 'h'
+2026-07-07 14:13:57,728 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:13:57,730 - INFO -   Swap 1/5: 'ptyawun' <-> 'baha'
+2026-07-07 14:13:57,905 - INFO -   Swap 2/5: 'naha' <-> 'utux'
+2026-07-07 14:13:58,092 - INFO -   Swap 3/5: 'ongat' <-> 'psba'
+2026-07-07 14:13:58,271 - INFO -   Swap 4/5: 'was' <-> 'skahun'
+2026-07-07 14:13:58,448 - INFO -   Swap 5/5: 'la' <-> 'na'
+2026-07-07 14:13:58,632 - INFO - ================================================================================
+Test Results: TAY/YilanZeaol
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3774
+  Reference sentences: 3020
+  Target sentences: 754
+  Total characters: 214045
+  Unique characters: 29
+
+Perturbation:
+  Character swaps performed: 5
+  Word swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence):
+  Character Level (from character swaps):
+    1-gram:
+      D Cosine Similarity: 0.009638
+      D KL Divergence: 0.155582
+    2-gram:
+      D Cosine Similarity: 0.035706
+      D KL Divergence: 0.205857
+    3-gram:
+      D Cosine Similarity: 0.066719
+      D KL Divergence: 0.184515
+
+  Word Level (from word swaps):
+    1-gram:
+      D Cosine Similarity: 0.001312
+      D KL Divergence: 0.003203
+    2-gram:
+      D Cosine Similarity: 0.019778
+      D KL Divergence: 0.013408
+    3-gram:
+      D Cosine Similarity: 0.005291
+      D KL Divergence: 0.003607
+2026-07-07 14:13:58,634 - INFO - 
+Testing tay/Zeaol with 5 random character swaps...
+2026-07-07 14:13:59,438 - INFO - Analyzing baseline for tay/Zeaol...
+2026-07-07 14:13:59,672 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:13:59,672 - INFO -   Swap 1/5: 'w' -> 's'
+2026-07-07 14:13:59,860 - INFO -   Swap 2/5: 'x' -> 'b'
+2026-07-07 14:14:00,043 - INFO -   Swap 3/5: 'c' -> 's'
+2026-07-07 14:14:00,238 - INFO -   Swap 4/5: 'b' -> 'w'
+2026-07-07 14:14:00,424 - INFO -   Swap 5/5: 'n' -> 'q'
+2026-07-07 14:14:00,617 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:14:00,619 - INFO -   Swap 1/5: 'hnasiy' <-> 'kya'
+2026-07-07 14:14:00,812 - INFO -   Swap 2/5: 'maha' <-> 'mtyaw'
+2026-07-07 14:14:00,995 - INFO -   Swap 3/5: 'ngyat' <-> 'may'
+2026-07-07 14:14:01,186 - INFO -   Swap 4/5: 'ku' <-> 'nblay'
+2026-07-07 14:14:01,371 - INFO -   Swap 5/5: 'hani' <-> 'hiyay'
+2026-07-07 14:14:01,551 - INFO - ================================================================================
+Test Results: TAY/Zeaol
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3880
+  Reference sentences: 3104
+  Target sentences: 776
+  Total characters: 216003
+  Unique characters: 31
+
+Perturbation:
+  Character swaps performed: 5
+  Word swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence):
+  Character Level (from character swaps):
+    1-gram:
+      D Cosine Similarity: 0.028696
+      D KL Divergence: 0.241134
+    2-gram:
+      D Cosine Similarity: 0.079395
+      D KL Divergence: 0.327644
+    3-gram:
+      D Cosine Similarity: 0.100035
+      D KL Divergence: 0.278217
+
+  Word Level (from word swaps):
+    1-gram:
+      D Cosine Similarity: 0.033873
+      D KL Divergence: 0.034400
+    2-gram:
+      D Cosine Similarity: 0.017580
+      D KL Divergence: 0.009891
+    3-gram:
+      D Cosine Similarity: 0.005110
+      D KL Divergence: 0.003092
+2026-07-07 14:14:01,554 - INFO - 
+Testing bnn/Junqun with 5 random character swaps...
+2026-07-07 14:14:02,815 - INFO - Analyzing baseline for bnn/Junqun...
+2026-07-07 14:14:03,668 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:14:03,668 - INFO -   Swap 1/5: 'a' -> 'c'
+2026-07-07 14:14:04,519 - INFO -   Swap 2/5: 'v' -> 'y'
+2026-07-07 14:14:05,361 - INFO -   Swap 3/5: 't' -> 'z'
+2026-07-07 14:14:06,237 - INFO -   Swap 4/5: 'y' -> '9'
+2026-07-07 14:14:07,103 - INFO -   Swap 5/5: '2' -> 'z'
+2026-07-07 14:14:07,988 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:14:07,998 - INFO -   Swap 1/5: 'sanavan' <-> 'tasipdat'
+2026-07-07 14:14:08,853 - INFO -   Swap 2/5: 'Aunpatazun' <-> 'habasang'
+2026-07-07 14:14:09,665 - INFO -   Swap 3/5: 'tu' <-> 'atal'
+2026-07-07 14:14:10,560 - INFO -   Swap 4/5: 'kadimanun' <-> 'mas'
+2026-07-07 14:14:11,352 - INFO -   Swap 5/5: 'andii' <-> 'pindusaun'
+2026-07-07 14:14:12,149 - INFO - ================================================================================
+Test Results: BNN/Junqun
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 16837
+  Reference sentences: 13470
+  Target sentences: 3367
+  Total characters: 874218
+  Unique characters: 37
+
+Perturbation:
+  Character swaps performed: 5
+  Word swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence):
+  Character Level (from character swaps):
+    1-gram:
+      D Cosine Similarity: 0.110471
+      D KL Divergence: 0.599304
+    2-gram:
+      D Cosine Similarity: 0.148311
+      D KL Divergence: 0.881672
+    3-gram:
+      D Cosine Similarity: 0.183087
+      D KL Divergence: 0.849124
+
+  Word Level (from word swaps):
+    1-gram:
+      D Cosine Similarity: 0.123003
+      D KL Divergence: 0.126183
+    2-gram:
+      D Cosine Similarity: 0.059247
+      D KL Divergence: 0.037106
+    3-gram:
+      D Cosine Similarity: 0.024004
+      D KL Divergence: 0.009014
+2026-07-07 14:14:12,151 - INFO - 
+Testing bnn/Kaqun with 5 random character swaps...
+2026-07-07 14:14:13,348 - INFO - Analyzing baseline for bnn/Kaqun...
+2026-07-07 14:14:13,585 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:14:13,596 - INFO -   Swap 1/5: 'k' -> 'l'
+2026-07-07 14:14:13,787 - INFO -   Swap 2/5: 'c' -> 'h'
+2026-07-07 14:14:13,963 - INFO -   Swap 3/5: 'u' -> 'z'
+2026-07-07 14:14:14,156 - INFO -   Swap 4/5: 'g' -> 'k'
+2026-07-07 14:14:14,345 - INFO -   Swap 5/5: 'p' -> 'u'
+2026-07-07 14:14:14,517 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:14:14,519 - INFO -   Swap 1/5: 'masaingu' <-> 'du'
+2026-07-07 14:14:14,687 - INFO -   Swap 2/5: 'qancepun' <-> 'kaupa'
+2026-07-07 14:14:14,869 - INFO -   Swap 3/5: 'cin' <-> 'qaludung'
+2026-07-07 14:14:15,054 - INFO -   Swap 4/5: 'boqboqcak' <-> 'tu'
+2026-07-07 14:14:15,254 - INFO -   Swap 5/5: 'pakadedaz' <-> 'tama'
+2026-07-07 14:14:15,496 - INFO - ================================================================================
+Test Results: BNN/Kaqun
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3840
+  Reference sentences: 3072
+  Target sentences: 768
+  Total characters: 195402
+  Unique characters: 29
+
+Perturbation:
+  Character swaps performed: 5
+  Word swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence):
+  Character Level (from character swaps):
+    1-gram:
+      D Cosine Similarity: 0.026536
+      D KL Divergence: 0.286846
+    2-gram:
+      D Cosine Similarity: 0.062006
+      D KL Divergence: 0.391171
+    3-gram:
+      D Cosine Similarity: 0.102126
+      D KL Divergence: 0.331660
+
+  Word Level (from word swaps):
+    1-gram:
+      D Cosine Similarity: 0.049122
+      D KL Divergence: 0.028541
+    2-gram:
+      D Cosine Similarity: 0.006191
+      D KL Divergence: 0.004150
+    3-gram:
+      D Cosine Similarity: 0.000786
+      D KL Divergence: 0.000643
+2026-07-07 14:14:15,498 - INFO - 
+Testing bnn/Luanqun with 5 random character swaps...
+2026-07-07 14:14:16,638 - INFO - Analyzing baseline for bnn/Luanqun...
+2026-07-07 14:14:16,859 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:14:16,859 - INFO -   Swap 1/5: 'd' -> 'o'
+2026-07-07 14:14:17,049 - INFO -   Swap 2/5: 'p' -> 'u'
+2026-07-07 14:14:17,231 - INFO -   Swap 3/5: 's' -> 'm'
+2026-07-07 14:14:17,408 - INFO -   Swap 4/5: 'k' -> 'l'
+2026-07-07 14:14:17,577 - INFO -   Swap 5/5: 'q' -> 'h'
+2026-07-07 14:14:17,769 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:14:17,770 - INFO -   Swap 1/5: 'Asa' <-> 'ata'
+2026-07-07 14:14:17,929 - INFO -   Swap 2/5: 'tunahaan' <-> 'daankuis'
+2026-07-07 14:14:18,101 - INFO -   Swap 3/5: 'tis' <-> 'naipa'
+2026-07-07 14:14:18,269 - INFO -   Swap 4/5: 'mininhamu' <-> 'tu'
+2026-07-07 14:14:18,449 - INFO -   Swap 5/5: 'Bununtuza' <-> 'mapatas'
+2026-07-07 14:14:18,621 - INFO - ================================================================================
+Test Results: BNN/Luanqun
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 4018
+  Reference sentences: 3215
+  Target sentences: 803
+  Total characters: 204372
+  Unique characters: 33
+
+Perturbation:
+  Character swaps performed: 5
+  Word swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence):
+  Character Level (from character swaps):
+    1-gram:
+      D Cosine Similarity: 0.014014
+      D KL Divergence: 0.221571
+    2-gram:
+      D Cosine Similarity: 0.050194
+      D KL Divergence: 0.316422
+    3-gram:
+      D Cosine Similarity: 0.074278
+      D KL Divergence: 0.281297
+
+  Word Level (from word swaps):
+    1-gram:
+      D Cosine Similarity: 0.062805
+      D KL Divergence: 0.050615
+    2-gram:
+      D Cosine Similarity: 0.014385
+      D KL Divergence: 0.011809
+    3-gram:
+      D Cosine Similarity: 0.006210
+      D KL Divergence: 0.003213
+2026-07-07 14:14:18,624 - INFO - 
+Testing bnn/Tanqun with 5 random character swaps...
+2026-07-07 14:14:19,863 - INFO - Analyzing baseline for bnn/Tanqun...
+2026-07-07 14:14:20,069 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:14:20,069 - INFO -   Swap 1/5: 'q' -> '3'
+2026-07-07 14:14:20,245 - INFO -   Swap 2/5: 'v' -> 'm'
+2026-07-07 14:14:20,438 - INFO -   Swap 3/5: 'l' -> '1'
+2026-07-07 14:14:20,601 - INFO -   Swap 4/5: 'z' -> 'n'
+2026-07-07 14:14:20,769 - INFO -   Swap 5/5: '2' -> '1'
+2026-07-07 14:14:20,934 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:14:20,938 - INFO -   Swap 1/5: 'suu' <-> 'ki'
+2026-07-07 14:14:21,095 - INFO -   Swap 2/5: 'zaku' <-> 'ki'
+2026-07-07 14:14:21,274 - INFO -   Swap 3/5: 'manaq' <-> 'qani'
+2026-07-07 14:14:21,434 - INFO -   Swap 4/5: 'i' <-> 'maluvluv'
+2026-07-07 14:14:21,605 - INFO -   Swap 5/5: 'ta' <-> 'Simulun'
+2026-07-07 14:14:21,772 - INFO - ================================================================================
+Test Results: BNN/Tanqun
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3795
+  Reference sentences: 3036
+  Target sentences: 759
+  Total characters: 197939
+  Unique characters: 32
+
+Perturbation:
+  Character swaps performed: 5
+  Word swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence):
+  Character Level (from character swaps):
+    1-gram:
+      D Cosine Similarity: 0.003973
+      D KL Divergence: 0.112133
+    2-gram:
+      D Cosine Similarity: 0.019383
+      D KL Divergence: 0.159944
+    3-gram:
+      D Cosine Similarity: 0.031248
+      D KL Divergence: 0.138000
+
+  Word Level (from word swaps):
+    1-gram:
+      D Cosine Similarity: 0.012260
+      D KL Divergence: 0.017210
+    2-gram:
+      D Cosine Similarity: 0.005605
+      D KL Divergence: 0.004648
+    3-gram:
+      D Cosine Similarity: 0.001071
+      D KL Divergence: 0.000868
+2026-07-07 14:14:21,776 - INFO - 
+Testing bnn/Zhuoqun with 5 random character swaps...
+2026-07-07 14:14:22,918 - INFO - Analyzing baseline for bnn/Zhuoqun...
+2026-07-07 14:14:23,134 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:14:23,134 - INFO -   Swap 1/5: 'u' -> 'z'
+2026-07-07 14:14:23,295 - INFO -   Swap 2/5: 'g' -> 'k'
+2026-07-07 14:14:23,455 - INFO -   Swap 3/5: 'p' -> 'u'
+2026-07-07 14:14:23,620 - INFO -   Swap 4/5: 'g' -> 'n'
+2026-07-07 14:14:23,778 - INFO -   Swap 5/5: 'k' -> 'm'
+2026-07-07 14:14:23,939 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:14:23,943 - INFO -   Swap 1/5: 'maqtu' <-> 'siva'
+2026-07-07 14:14:24,093 - INFO -   Swap 2/5: 'ni' <-> 'hala'
+2026-07-07 14:14:24,248 - INFO -   Swap 3/5: 'palangan' <-> 'ca'
+2026-07-07 14:14:24,408 - INFO -   Swap 4/5: 'haiva' <-> 'ata'
+2026-07-07 14:14:24,559 - INFO -   Swap 5/5: 'kukua' <-> 'maiup'
+2026-07-07 14:14:24,724 - INFO - ================================================================================
+Test Results: BNN/Zhuoqun
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3760
+  Reference sentences: 3008
+  Target sentences: 752
+  Total characters: 190346
+  Unique characters: 30
+
+Perturbation:
+  Character swaps performed: 5
+  Word swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence):
+  Character Level (from character swaps):
+    1-gram:
+      D Cosine Similarity: 0.024352
+      D KL Divergence: 0.258113
+    2-gram:
+      D Cosine Similarity: 0.051969
+      D KL Divergence: 0.360382
+    3-gram:
+      D Cosine Similarity: 0.091233
+      D KL Divergence: 0.325301
+
+  Word Level (from word swaps):
+    1-gram:
+      D Cosine Similarity: 0.091484
+      D KL Divergence: 0.047835
+    2-gram:
+      D Cosine Similarity: 0.019987
+      D KL Divergence: 0.013304
+    3-gram:
+      D Cosine Similarity: 0.004941
+      D KL Divergence: 0.003478
+2026-07-07 14:14:24,729 - INFO - 
+Testing pwn/Central with 5 random character swaps...
+2026-07-07 14:14:25,317 - INFO - Analyzing baseline for pwn/Central...
+2026-07-07 14:14:25,509 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:14:25,509 - INFO -   Swap 1/5: 'w' -> 'i'
+2026-07-07 14:14:25,688 - INFO -   Swap 2/5: 'c' -> 'i'
+2026-07-07 14:14:25,863 - INFO -   Swap 3/5: 'v' -> 'w'
+2026-07-07 14:14:26,052 - INFO -   Swap 4/5: 'l' -> 'u'
+2026-07-07 14:14:26,239 - INFO -   Swap 5/5: 'z' -> 'n'
+2026-07-07 14:14:26,435 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:14:26,437 - INFO -   Swap 1/5: 'vaik' <-> 'anga'
+2026-07-07 14:14:26,639 - INFO -   Swap 2/5: 'tjavulung' <-> 'qarengan'
+2026-07-07 14:14:26,808 - INFO -   Swap 3/5: 'aken' <-> 'zemzem'
+2026-07-07 14:14:26,986 - INFO -   Swap 4/5: 'a' <-> 'neka'
+2026-07-07 14:14:27,157 - INFO -   Swap 5/5: 'sikalja' <-> 'parekisusenglinglitan'
+2026-07-07 14:14:27,382 - INFO - ================================================================================
+Test Results: PWN/Central
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3747
+  Reference sentences: 2998
+  Target sentences: 749
+  Total characters: 218302
+  Unique characters: 32
+
+Perturbation:
+  Character swaps performed: 5
+  Word swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence):
+  Character Level (from character swaps):
+    1-gram:
+      D Cosine Similarity: 0.007402
+      D KL Divergence: 0.131812
+    2-gram:
+      D Cosine Similarity: 0.037678
+      D KL Divergence: 0.214148
+    3-gram:
+      D Cosine Similarity: 0.059840
+      D KL Divergence: 0.199970
+
+  Word Level (from word swaps):
+    1-gram:
+      D Cosine Similarity: 0.151884
+      D KL Divergence: 0.091139
+    2-gram:
+      D Cosine Similarity: 0.057071
+      D KL Divergence: 0.033434
+    3-gram:
+      D Cosine Similarity: 0.010171
+      D KL Divergence: 0.007444
+2026-07-07 14:14:27,385 - INFO - 
+Testing pwn/Eastern with 5 random character swaps...
+2026-07-07 14:14:27,952 - INFO - Analyzing baseline for pwn/Eastern...
+2026-07-07 14:14:28,209 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:14:28,209 - INFO -   Swap 1/5: 'h' -> 'b'
+2026-07-07 14:14:28,411 - INFO -   Swap 2/5: 'm' -> 'q'
+2026-07-07 14:14:28,632 - INFO -   Swap 3/5: '﹐' -> 'c'
+2026-07-07 14:14:28,827 - INFO -   Swap 4/5: 'j' -> 'l'
+2026-07-07 14:14:29,032 - INFO -   Swap 5/5: '﹐' -> 'g'
+2026-07-07 14:14:29,241 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:14:29,241 - INFO -   Swap 1/5: 'a' <-> 'i'
+2026-07-07 14:14:29,457 - INFO -   Swap 2/5: 'tigami' <-> 'katua'
+2026-07-07 14:14:29,662 - INFO -   Swap 3/5: 'mangetjez' <-> 'djuma'
+2026-07-07 14:14:29,836 - INFO -   Swap 4/5: 'isan' <-> 'na'
+2026-07-07 14:14:30,025 - INFO -   Swap 5/5: 'a' <-> 'sineljavakan'
+2026-07-07 14:14:30,229 - INFO - ================================================================================
+Test Results: PWN/Eastern
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3940
+  Reference sentences: 3152
+  Target sentences: 788
+  Total characters: 232691
+  Unique characters: 38
+
+Perturbation:
+  Character swaps performed: 5
+  Word swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence):
+  Character Level (from character swaps):
+    1-gram:
+      D Cosine Similarity: 0.007041
+      D KL Divergence: 0.112464
+    2-gram:
+      D Cosine Similarity: 0.041011
+      D KL Divergence: 0.186391
+    3-gram:
+      D Cosine Similarity: 0.066406
+      D KL Divergence: 0.187366
+
+  Word Level (from word swaps):
+    1-gram:
+      D Cosine Similarity: 0.277811
+      D KL Divergence: 0.151714
+    2-gram:
+      D Cosine Similarity: 0.095794
+      D KL Divergence: 0.053979
+    3-gram:
+      D Cosine Similarity: 0.013942
+      D KL Divergence: 0.009690
+2026-07-07 14:14:30,234 - INFO - 
+Testing pwn/Northern with 5 random character swaps...
+2026-07-07 14:14:30,822 - INFO - Analyzing baseline for pwn/Northern...
+2026-07-07 14:14:31,415 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:14:31,415 - INFO -   Swap 1/5: 'w' -> '1'
+2026-07-07 14:14:32,001 - INFO -   Swap 2/5: 'v' -> 'q'
+2026-07-07 14:14:32,584 - INFO -   Swap 3/5: 'c' -> 'z'
+2026-07-07 14:14:33,140 - INFO -   Swap 4/5: 'j' -> 'c'
+2026-07-07 14:14:33,709 - INFO -   Swap 5/5: 'i' -> 'j'
+2026-07-07 14:14:34,279 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:14:34,279 - INFO -   Swap 1/5: 'tjumaq' <-> 'a'
+2026-07-07 14:14:34,982 - INFO -   Swap 2/5: 'a' <-> 'mapelju'
+2026-07-07 14:14:35,510 - INFO -   Swap 3/5: 'qemucequc' <-> 'raikin'
+2026-07-07 14:14:36,065 - INFO -   Swap 4/5: 'pualju' <-> 'kisamulja'
+2026-07-07 14:14:36,650 - INFO -   Swap 5/5: 'a' <-> 'zaljum'
+2026-07-07 14:14:37,171 - INFO - ================================================================================
+Test Results: PWN/Northern
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 10800
+  Reference sentences: 8640
+  Target sentences: 2160
+  Total characters: 620506
+  Unique characters: 35
+
+Perturbation:
+  Character swaps performed: 5
+  Word swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence):
+  Character Level (from character swaps):
+    1-gram:
+      D Cosine Similarity: 0.019165
+      D KL Divergence: 0.279444
+    2-gram:
+      D Cosine Similarity: 0.052477
+      D KL Divergence: 0.433014
+    3-gram:
+      D Cosine Similarity: 0.090097
+      D KL Divergence: 0.442249
+
+  Word Level (from word swaps):
+    1-gram:
+      D Cosine Similarity: 0.493612
+      D KL Divergence: 0.402158
+    2-gram:
+      D Cosine Similarity: 0.309790
+      D KL Divergence: 0.139689
+    3-gram:
+      D Cosine Similarity: 0.032731
+      D KL Divergence: 0.020550
+2026-07-07 14:14:37,179 - INFO - 
+Testing pwn/Southern with 5 random character swaps...
+2026-07-07 14:14:37,712 - INFO - Analyzing baseline for pwn/Southern...
+2026-07-07 14:14:37,911 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:14:37,911 - INFO -   Swap 1/5: 'k' -> 'd'
+2026-07-07 14:14:38,128 - INFO -   Swap 2/5: 'b' -> 'z'
+2026-07-07 14:14:38,349 - INFO -   Swap 3/5: 'w' -> 'm'
+2026-07-07 14:14:38,568 - INFO -   Swap 4/5: 's' -> 'c'
+2026-07-07 14:14:38,761 - INFO -   Swap 5/5: 'a' -> '0'
+2026-07-07 14:14:38,953 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:14:38,964 - INFO -   Swap 1/5: 'vuluvulung' <-> 'tjakadjan'
+2026-07-07 14:14:39,155 - INFO -   Swap 2/5: 'milingan' <-> 'ken'
+2026-07-07 14:14:39,353 - INFO -   Swap 3/5: 'avan' <-> 'ljinizaw'
+2026-07-07 14:14:39,573 - INFO -   Swap 4/5: 'a' <-> 'a'
+2026-07-07 14:14:39,765 - INFO -   Swap 5/5: 'a' <-> 'caquin'
+2026-07-07 14:14:39,957 - INFO - ================================================================================
+Test Results: PWN/Southern
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3958
+  Reference sentences: 3167
+  Target sentences: 791
+  Total characters: 238158
+  Unique characters: 34
+
+Perturbation:
+  Character swaps performed: 5
+  Word swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence):
+  Character Level (from character swaps):
+    1-gram:
+      D Cosine Similarity: 0.123465
+      D KL Divergence: 0.530050
+    2-gram:
+      D Cosine Similarity: 0.163796
+      D KL Divergence: 0.731571
+    3-gram:
+      D Cosine Similarity: 0.196637
+      D KL Divergence: 0.629702
+
+  Word Level (from word swaps):
+    1-gram:
+      D Cosine Similarity: 0.166223
+      D KL Divergence: 0.137405
+    2-gram:
+      D Cosine Similarity: 0.059946
+      D KL Divergence: 0.034979
+    3-gram:
+      D Cosine Similarity: 0.010620
+      D KL Divergence: 0.006811
+2026-07-07 14:14:39,961 - INFO - 
+Testing pyu/Jianhe with 5 random character swaps...
+2026-07-07 14:14:40,540 - INFO - Analyzing baseline for pyu/Jianhe...
+2026-07-07 14:14:40,775 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:14:40,787 - INFO -   Swap 1/5: 'm' -> 'v'
+2026-07-07 14:14:40,963 - INFO -   Swap 2/5: 'w' -> 's'
+2026-07-07 14:14:41,161 - INFO -   Swap 3/5: 'v' -> 'z'
+2026-07-07 14:14:41,347 - INFO -   Swap 4/5: 'w' -> 'i'
+2026-07-07 14:14:41,521 - INFO -   Swap 5/5: 's' -> 'i'
+2026-07-07 14:14:41,707 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:14:41,707 - INFO -   Swap 1/5: 'tukasayasayaw' <-> 'anlri'
+2026-07-07 14:14:41,891 - INFO -   Swap 2/5: 'henan' <-> 'da'
+2026-07-07 14:14:42,059 - INFO -   Swap 3/5: 'yawa' <-> 'kasaharan'
+2026-07-07 14:14:42,234 - INFO -   Swap 4/5: 'i' <-> 'na'
+2026-07-07 14:14:42,424 - INFO -   Swap 5/5: 'u' <-> 'adayaw'
+2026-07-07 14:14:42,607 - INFO - ================================================================================
+Test Results: PYU/Jianhe
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3894
+  Reference sentences: 3116
+  Target sentences: 778
+  Total characters: 219398
+  Unique characters: 30
+
+Perturbation:
+  Character swaps performed: 5
+  Word swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence):
+  Character Level (from character swaps):
+    1-gram:
+      D Cosine Similarity: 0.010502
+      D KL Divergence: 0.188483
+    2-gram:
+      D Cosine Similarity: 0.045619
+      D KL Divergence: 0.291430
+    3-gram:
+      D Cosine Similarity: 0.067455
+      D KL Divergence: 0.270819
+
+  Word Level (from word swaps):
+    1-gram:
+      D Cosine Similarity: 0.021077
+      D KL Divergence: 0.020054
+    2-gram:
+      D Cosine Similarity: 0.049019
+      D KL Divergence: 0.029825
+    3-gram:
+      D Cosine Similarity: 0.018764
+      D KL Divergence: 0.010048
+2026-07-07 14:14:42,609 - INFO - 
+Testing pyu/Nanwang with 5 random character swaps...
+2026-07-07 14:14:43,221 - INFO - Analyzing baseline for pyu/Nanwang...
+2026-07-07 14:14:43,967 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:14:43,967 - INFO -   Swap 1/5: 'ē' -> 'e'
+2026-07-07 14:14:44,660 - INFO -   Swap 2/5: 'a' -> 'i'
+2026-07-07 14:14:45,308 - INFO -   Swap 3/5: 'v' -> 'y'
+2026-07-07 14:14:45,958 - INFO -   Swap 4/5: 'v' -> 'p'
+2026-07-07 14:14:46,615 - INFO -   Swap 5/5: 'v' -> 'u'
+2026-07-07 14:14:47,233 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:14:47,237 - INFO -   Swap 1/5: 'adri' <-> 'kana'
+2026-07-07 14:14:47,859 - INFO -   Swap 2/5: 'a' <-> 'tilibi'
+2026-07-07 14:14:48,473 - INFO -   Swap 3/5: 'adri' <-> 'tu'
+2026-07-07 14:14:49,160 - INFO -   Swap 4/5: 'barasa' <-> 'India'
+2026-07-07 14:14:49,771 - INFO -   Swap 5/5: 'na' <-> 'manay'
+2026-07-07 14:14:50,426 - INFO - ================================================================================
+Test Results: PYU/Nanwang
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 17491
+  Reference sentences: 13993
+  Target sentences: 3498
+  Total characters: 727879
+  Unique characters: 36
+
+Perturbation:
+  Character swaps performed: 5
+  Word swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence):
+  Character Level (from character swaps):
+    1-gram:
+      D Cosine Similarity: 0.097224
+      D KL Divergence: 0.467734
+    2-gram:
+      D Cosine Similarity: 0.117611
+      D KL Divergence: 0.673167
+    3-gram:
+      D Cosine Similarity: 0.149099
+      D KL Divergence: 0.641528
+
+  Word Level (from word swaps):
+    1-gram:
+      D Cosine Similarity: 0.054588
+      D KL Divergence: 0.051392
+    2-gram:
+      D Cosine Similarity: 0.071293
+      D KL Divergence: 0.046071
+    3-gram:
+      D Cosine Similarity: 0.021017
+      D KL Divergence: 0.011527
+2026-07-07 14:14:50,427 - INFO - 
+Testing pyu/Xiqun with 5 random character swaps...
+2026-07-07 14:14:51,019 - INFO - Analyzing baseline for pyu/Xiqun...
+2026-07-07 14:14:51,253 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:14:51,254 - INFO -   Swap 1/5: 'l' -> 'b'
+2026-07-07 14:14:51,443 - INFO -   Swap 2/5: 'b' -> 'y'
+2026-07-07 14:14:51,629 - INFO -   Swap 3/5: '1' -> 'w'
+2026-07-07 14:14:51,813 - INFO -   Swap 4/5: 'h' -> 's'
+2026-07-07 14:14:52,012 - INFO -   Swap 5/5: 'p' -> 'r'
+2026-07-07 14:14:52,213 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:14:52,216 - INFO -   Swap 1/5: 'lruwatra' <-> 'patrungutrungulr'
+2026-07-07 14:14:52,419 - INFO -   Swap 2/5: 'na' <-> 'valruvalrulren'
+2026-07-07 14:14:52,605 - INFO -   Swap 3/5: 'tayhin' <-> 'mu'
+2026-07-07 14:14:52,785 - INFO -   Swap 4/5: 'i' <-> 'walru'
+2026-07-07 14:14:52,977 - INFO -   Swap 5/5: 'lra' <-> 'nu'
+2026-07-07 14:14:53,176 - INFO - ================================================================================
+Test Results: PYU/Xiqun
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3999
+  Reference sentences: 3200
+  Target sentences: 799
+  Total characters: 230296
+  Unique characters: 35
+
+Perturbation:
+  Character swaps performed: 5
+  Word swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence):
+  Character Level (from character swaps):
+    1-gram:
+      D Cosine Similarity: 0.004062
+      D KL Divergence: 0.078763
+    2-gram:
+      D Cosine Similarity: 0.019457
+      D KL Divergence: 0.121198
+    3-gram:
+      D Cosine Similarity: 0.038246
+      D KL Divergence: 0.116849
+
+  Word Level (from word swaps):
+    1-gram:
+      D Cosine Similarity: 0.103811
+      D KL Divergence: 0.114946
+    2-gram:
+      D Cosine Similarity: 0.066186
+      D KL Divergence: 0.044570
+    3-gram:
+      D Cosine Similarity: 0.024122
+      D KL Divergence: 0.013029
+2026-07-07 14:14:53,180 - INFO - 
+Testing pyu/Zhiben with 5 random character swaps...
+2026-07-07 14:14:53,756 - INFO - Analyzing baseline for pyu/Zhiben...
+2026-07-07 14:14:53,961 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:14:53,961 - INFO -   Swap 1/5: 'l' -> 'y'
+2026-07-07 14:14:54,185 - INFO -   Swap 2/5: 'm' -> 'n'
+2026-07-07 14:14:54,440 - INFO -   Swap 3/5: 'w' -> 's'
+2026-07-07 14:14:54,682 - INFO -   Swap 4/5: 'd' -> 'z'
+2026-07-07 14:14:54,895 - INFO -   Swap 5/5: 'w' -> 'p'
+2026-07-07 14:14:55,098 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:14:55,100 - INFO -   Swap 1/5: 'maranger' <-> 'ini'
+2026-07-07 14:14:55,298 - INFO -   Swap 2/5: 'an' <-> 'ma'
+2026-07-07 14:14:55,501 - INFO -   Swap 3/5: 'marum' <-> 'inavayan'
+2026-07-07 14:14:55,749 - INFO -   Swap 4/5: 'virvir' <-> 'lralrak'
+2026-07-07 14:14:55,940 - INFO -   Swap 5/5: 'zi' <-> 'ap'
+2026-07-07 14:14:56,145 - INFO - ================================================================================
+Test Results: PYU/Zhiben
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 4011
+  Reference sentences: 3209
+  Target sentences: 802
+  Total characters: 242246
+  Unique characters: 33
+
+Perturbation:
+  Character swaps performed: 5
+  Word swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence):
+  Character Level (from character swaps):
+    1-gram:
+      D Cosine Similarity: 0.012152
+      D KL Divergence: 0.209570
+    2-gram:
+      D Cosine Similarity: 0.053552
+      D KL Divergence: 0.328980
+    3-gram:
+      D Cosine Similarity: 0.090453
+      D KL Divergence: 0.314576
+
+  Word Level (from word swaps):
+    1-gram:
+      D Cosine Similarity: 0.003681
+      D KL Divergence: 0.011409
+    2-gram:
+      D Cosine Similarity: 0.015332
+      D KL Divergence: 0.008463
+    3-gram:
+      D Cosine Similarity: 0.008408
+      D KL Divergence: 0.002754
+2026-07-07 14:14:56,150 - INFO - 
+Testing dru/Dawu with 5 random character swaps...
+2026-07-07 14:14:57,246 - INFO - Analyzing baseline for dru/Dawu...
+2026-07-07 14:14:57,466 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:14:57,466 - INFO -   Swap 1/5: 'n' -> 'a'
+2026-07-07 14:14:57,686 - INFO -   Swap 2/5: 'm' -> 'g'
+2026-07-07 14:14:57,890 - INFO -   Swap 3/5: 'w' -> 's'
+2026-07-07 14:14:58,082 - INFO -   Swap 4/5: 'v' -> 'z'
+2026-07-07 14:14:58,263 - INFO -   Swap 5/5: 'h' -> 's'
+2026-07-07 14:14:58,439 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:14:58,441 - INFO -   Swap 1/5: 'ka' <-> 'Ngudradrekai'
+2026-07-07 14:14:58,611 - INFO -   Swap 2/5: 'tuhamuhu' <-> 'naganesu'
+2026-07-07 14:14:58,787 - INFO -   Swap 3/5: 'ku' <-> 'ikai'
+2026-07-07 14:14:58,958 - INFO -   Swap 4/5: 'amani' <-> 'ai'
+2026-07-07 14:14:59,145 - INFO -   Swap 5/5: 'buhasi' <-> 'ngipusale'
+2026-07-07 14:14:59,340 - INFO - ================================================================================
+Test Results: DRU/Dawu
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3573
+  Reference sentences: 2859
+  Target sentences: 714
+  Total characters: 216949
+  Unique characters: 29
+
+Perturbation:
+  Character swaps performed: 5
+  Word swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence):
+  Character Level (from character swaps):
+    1-gram:
+      D Cosine Similarity: 0.007639
+      D KL Divergence: 0.165787
+    2-gram:
+      D Cosine Similarity: 0.046800
+      D KL Divergence: 0.273695
+    3-gram:
+      D Cosine Similarity: 0.061643
+      D KL Divergence: 0.267888
+
+  Word Level (from word swaps):
+    1-gram:
+      D Cosine Similarity: 0.106395
+      D KL Divergence: 0.045915
+    2-gram:
+      D Cosine Similarity: 0.040532
+      D KL Divergence: 0.021080
+    3-gram:
+      D Cosine Similarity: 0.007434
+      D KL Divergence: 0.004160
+2026-07-07 14:14:59,343 - INFO - 
+Testing dru/Dona with 5 random character swaps...
+2026-07-07 14:15:00,684 - INFO - Analyzing baseline for dru/Dona...
+2026-07-07 14:15:00,918 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:15:00,918 - INFO -   Swap 1/5: 'o' -> 'y'
+2026-07-07 14:15:01,097 - INFO -   Swap 2/5: '1' -> 'w'
+2026-07-07 14:15:01,278 - INFO -   Swap 3/5: 'h' -> 's'
+2026-07-07 14:15:01,463 - INFO -   Swap 4/5: '1' -> 'r'
+2026-07-07 14:15:01,651 - INFO -   Swap 5/5: 'c' -> 'i'
+2026-07-07 14:15:01,826 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:15:01,828 - INFO -   Swap 1/5: 'ma' <-> 'na'
+2026-07-07 14:15:02,012 - INFO -   Swap 2/5: 'gakoname' <-> 'sesane'
+2026-07-07 14:15:02,207 - INFO -   Swap 3/5: 'ko' <-> 'ka'
+2026-07-07 14:15:02,393 - INFO -   Swap 4/5: 'ma' <-> 'amimosoa'
+2026-07-07 14:15:02,594 - INFO -   Swap 5/5: 'na' <-> 'ka'
+2026-07-07 14:15:02,783 - INFO - ================================================================================
+Test Results: DRU/Dona
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3604
+  Reference sentences: 2884
+  Target sentences: 720
+  Total characters: 213647
+  Unique characters: 35
+
+Perturbation:
+  Character swaps performed: 5
+  Word swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence):
+  Character Level (from character swaps):
+    1-gram:
+      D Cosine Similarity: 0.010867
+      D KL Divergence: 0.117085
+    2-gram:
+      D Cosine Similarity: 0.015495
+      D KL Divergence: 0.154470
+    3-gram:
+      D Cosine Similarity: 0.023055
+      D KL Divergence: 0.136285
+
+  Word Level (from word swaps):
+    1-gram:
+      D Cosine Similarity: 0.081758
+      D KL Divergence: 0.032626
+    2-gram:
+      D Cosine Similarity: 0.051757
+      D KL Divergence: 0.036631
+    3-gram:
+      D Cosine Similarity: 0.017414
+      D KL Divergence: 0.011386
+2026-07-07 14:15:02,784 - INFO - 
+Testing dru/Eastern with 5 random character swaps...
+2026-07-07 14:15:04,004 - INFO - Analyzing baseline for dru/Eastern...
+2026-07-07 14:15:04,237 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:15:04,238 - INFO -   Swap 1/5: 't' -> 'y'
+2026-07-07 14:15:04,416 - INFO -   Swap 2/5: 'c' -> 'w'
+2026-07-07 14:15:04,584 - INFO -   Swap 3/5: 'k' -> 's'
+2026-07-07 14:15:04,780 - INFO -   Swap 4/5: 'c' -> 'r'
+2026-07-07 14:15:04,956 - INFO -   Swap 5/5: 'm' -> 'd'
+2026-07-07 14:15:05,141 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:15:05,142 - INFO -   Swap 1/5: 'ka' <-> 'kaneako'
+2026-07-07 14:15:05,322 - INFO -   Swap 2/5: 'makalrana' <-> 'lraiya'
+2026-07-07 14:15:05,499 - INFO -   Swap 3/5: 'sa' <-> 'yakai'
+2026-07-07 14:15:05,677 - INFO -   Swap 4/5: 'talragi' <-> 'malangelang'
+2026-07-07 14:15:05,858 - INFO -   Swap 5/5: 'kalralreketeta' <-> 'ai'
+2026-07-07 14:15:06,034 - INFO - ================================================================================
+Test Results: DRU/Eastern
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3271
+  Reference sentences: 2617
+  Target sentences: 654
+  Total characters: 207190
+  Unique characters: 29
+
+Perturbation:
+  Character swaps performed: 5
+  Word swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence):
+  Character Level (from character swaps):
+    1-gram:
+      D Cosine Similarity: 0.015508
+      D KL Divergence: 0.205655
+    2-gram:
+      D Cosine Similarity: 0.061819
+      D KL Divergence: 0.320227
+    3-gram:
+      D Cosine Similarity: 0.079928
+      D KL Divergence: 0.302949
+
+  Word Level (from word swaps):
+    1-gram:
+      D Cosine Similarity: 0.052472
+      D KL Divergence: 0.045490
+    2-gram:
+      D Cosine Similarity: 0.029184
+      D KL Divergence: 0.013802
+    3-gram:
+      D Cosine Similarity: 0.004411
+      D KL Divergence: 0.003160
+2026-07-07 14:15:06,036 - INFO - 
+Testing dru/Maolin with 5 random character swaps...
+2026-07-07 14:15:07,334 - INFO - Analyzing baseline for dru/Maolin...
+2026-07-07 14:15:07,561 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:15:07,561 - INFO -   Swap 1/5: 'z' -> 'o'
+2026-07-07 14:15:07,732 - INFO -   Swap 2/5: 'u' -> 'é'
+2026-07-07 14:15:07,904 - INFO -   Swap 3/5: '1' -> 'c'
+2026-07-07 14:15:08,067 - INFO -   Swap 4/5: 't' -> 'a'
+2026-07-07 14:15:08,259 - INFO -   Swap 5/5: 'a' -> 'c'
+2026-07-07 14:15:08,421 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:15:08,423 - INFO -   Swap 1/5: 'bɨrɨ' <-> 'até'
+2026-07-07 14:15:08,599 - INFO -   Swap 2/5: 'iku' <-> 'krara'
+2026-07-07 14:15:08,750 - INFO -   Swap 3/5: 'tumaradra' <-> 'Lélada'
+2026-07-07 14:15:08,915 - INFO -   Swap 4/5: 'Drukai' <-> 'si'
+2026-07-07 14:15:09,073 - INFO -   Swap 5/5: 'ki' <-> 'késédeme'
+2026-07-07 14:15:09,237 - INFO - ================================================================================
+Test Results: DRU/Maolin
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3916
+  Reference sentences: 3133
+  Target sentences: 783
+  Total characters: 188449
+  Unique characters: 34
+
+Perturbation:
+  Character swaps performed: 5
+  Word swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence):
+  Character Level (from character swaps):
+    1-gram:
+      D Cosine Similarity: 0.089377
+      D KL Divergence: 0.394353
+    2-gram:
+      D Cosine Similarity: 0.125677
+      D KL Divergence: 0.515700
+    3-gram:
+      D Cosine Similarity: 0.154101
+      D KL Divergence: 0.397880
+
+  Word Level (from word swaps):
+    1-gram:
+      D Cosine Similarity: 0.008818
+      D KL Divergence: 0.008330
+    2-gram:
+      D Cosine Similarity: 0.001148
+      D KL Divergence: 0.000942
+    3-gram:
+      D Cosine Similarity: 0.000194
+      D KL Divergence: 0.000165
+2026-07-07 14:15:09,238 - INFO - 
+Testing dru/Wanshan with 5 random character swaps...
+2026-07-07 14:15:10,492 - INFO - Analyzing baseline for dru/Wanshan...
+2026-07-07 14:15:10,743 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:15:10,743 - INFO -   Swap 1/5: 'a' -> 'm'
+2026-07-07 14:15:10,918 - INFO -   Swap 2/5: 'c' -> 'a'
+2026-07-07 14:15:11,107 - INFO -   Swap 3/5: 'd' -> 'w'
+2026-07-07 14:15:11,290 - INFO -   Swap 4/5: 'z' -> 'y'
+2026-07-07 14:15:11,469 - INFO -   Swap 5/5: 'h' -> 'l'
+2026-07-07 14:15:11,694 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:15:11,695 - INFO -   Swap 1/5: 'ina' <-> 'mani'
+2026-07-07 14:15:11,875 - INFO -   Swap 2/5: 'maka' <-> 'so'
+2026-07-07 14:15:12,050 - INFO -   Swap 3/5: 'toladhekae' <-> 'tapekece'
+2026-07-07 14:15:12,242 - INFO -   Swap 4/5: 'ongalaimiya' <-> 'avai'
+2026-07-07 14:15:12,414 - INFO -   Swap 5/5: 'paiso' <-> 'tapekece'
+2026-07-07 14:15:12,601 - INFO - ================================================================================
+Test Results: DRU/Wanshan
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 4397
+  Reference sentences: 3518
+  Target sentences: 879
+  Total characters: 213417
+  Unique characters: 32
+
+Perturbation:
+  Character swaps performed: 5
+  Word swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence):
+  Character Level (from character swaps):
+    1-gram:
+      D Cosine Similarity: 0.092169
+      D KL Divergence: 0.473939
+    2-gram:
+      D Cosine Similarity: 0.139649
+      D KL Divergence: 0.684975
+    3-gram:
+      D Cosine Similarity: 0.198975
+      D KL Divergence: 0.642704
+
+  Word Level (from word swaps):
+    1-gram:
+      D Cosine Similarity: 0.000821
+      D KL Divergence: 0.002318
+    2-gram:
+      D Cosine Similarity: 0.003712
+      D KL Divergence: 0.003174
+    3-gram:
+      D Cosine Similarity: 0.000871
+      D KL Divergence: 0.000680
+2026-07-07 14:15:12,603 - INFO - 
+Testing dru/Wutai with 5 random character swaps...
+2026-07-07 14:15:13,798 - INFO - Analyzing baseline for dru/Wutai...
+2026-07-07 14:15:14,855 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:15:14,855 - INFO -   Swap 1/5: 's' -> 'b'
+2026-07-07 14:15:15,791 - INFO -   Swap 2/5: 'o' -> 'g'
+2026-07-07 14:15:16,759 - INFO -   Swap 3/5: 'y' -> 'h'
+2026-07-07 14:15:17,683 - INFO -   Swap 4/5: 'e' -> 't'
+2026-07-07 14:15:18,620 - INFO -   Swap 5/5: 'i' -> 'c'
+2026-07-07 14:15:19,578 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:15:19,595 - INFO -   Swap 1/5: 'apakiragadhaneli' <-> 'kay'
+2026-07-07 14:15:20,504 - INFO -   Swap 2/5: 'Cumay' <-> 'ki'
+2026-07-07 14:15:21,401 - INFO -   Swap 3/5: 'kwi' <-> 'ani'
+2026-07-07 14:15:22,343 - INFO -   Swap 4/5: 'mwabelebelenge' <-> 'anu'
+2026-07-07 14:15:23,453 - INFO -   Swap 5/5: 'akutikia' <-> 'ku'
+2026-07-07 14:15:24,354 - INFO - ================================================================================
+Test Results: DRU/Wutai
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 18164
+  Reference sentences: 14532
+  Target sentences: 3632
+  Total characters: 934699
+  Unique characters: 34
+
+Perturbation:
+  Character swaps performed: 5
+  Word swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence):
+  Character Level (from character swaps):
+    1-gram:
+      D Cosine Similarity: 0.032676
+      D KL Divergence: 0.388895
+    2-gram:
+      D Cosine Similarity: 0.060694
+      D KL Divergence: 0.585711
+    3-gram:
+      D Cosine Similarity: 0.114895
+      D KL Divergence: 0.617239
+
+  Word Level (from word swaps):
+    1-gram:
+      D Cosine Similarity: 0.144602
+      D KL Divergence: 0.180093
+    2-gram:
+      D Cosine Similarity: 0.055655
+      D KL Divergence: 0.035918
+    3-gram:
+      D Cosine Similarity: 0.010650
+      D KL Divergence: 0.005068
+2026-07-07 14:15:24,359 - INFO - 
+Testing trv/DeluValley with 5 random character swaps...
+2026-07-07 14:15:25,267 - INFO - Analyzing baseline for trv/DeluValley...
+2026-07-07 14:15:25,512 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:15:25,514 - INFO -   Swap 1/5: 'a' -> 'd'
+2026-07-07 14:15:25,703 - INFO -   Swap 2/5: 's' -> 'a'
+2026-07-07 14:15:25,911 - INFO -   Swap 3/5: 'c' -> 't'
+2026-07-07 14:15:26,113 - INFO -   Swap 4/5: 'h' -> 'g'
+2026-07-07 14:15:26,325 - INFO -   Swap 5/5: 'i' -> 'p'
+2026-07-07 14:15:26,523 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:15:26,525 - INFO -   Swap 1/5: 'balay' <-> 'miri'
+2026-07-07 14:15:26,747 - INFO -   Swap 2/5: 'kdawi' <-> 'ksun'
+2026-07-07 14:15:26,950 - INFO -   Swap 3/5: 'misan' <-> 'qmita'
+2026-07-07 14:15:27,127 - INFO -   Swap 4/5: 'ta' <-> 'ka'
+2026-07-07 14:15:27,308 - INFO -   Swap 5/5: 'mngari' <-> 'Iq'
+2026-07-07 14:15:27,538 - INFO - ================================================================================
+Test Results: TRV/DeluValley
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 4522
+  Reference sentences: 3618
+  Target sentences: 904
+  Total characters: 216268
+  Unique characters: 32
+
+Perturbation:
+  Character swaps performed: 5
+  Word swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence):
+  Character Level (from character swaps):
+    1-gram:
+      D Cosine Similarity: 0.116583
+      D KL Divergence: 0.550024
+    2-gram:
+      D Cosine Similarity: 0.184312
+      D KL Divergence: 0.715779
+    3-gram:
+      D Cosine Similarity: 0.233819
+      D KL Divergence: 0.568103
+
+  Word Level (from word swaps):
+    1-gram:
+      D Cosine Similarity: 0.099417
+      D KL Divergence: 0.038025
+    2-gram:
+      D Cosine Similarity: 0.050183
+      D KL Divergence: 0.028557
+    3-gram:
+      D Cosine Similarity: 0.010208
+      D KL Divergence: 0.007059
+2026-07-07 14:15:27,540 - INFO - 
+Testing trv/Duda with 5 random character swaps...
+2026-07-07 14:15:28,468 - INFO - Analyzing baseline for trv/Duda...
+2026-07-07 14:15:28,731 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:15:28,731 - INFO -   Swap 1/5: 'r' -> 'q'
+2026-07-07 14:15:28,931 - INFO -   Swap 2/5: 'l' -> 'x'
+2026-07-07 14:15:29,118 - INFO -   Swap 3/5: 'm' -> 's'
+2026-07-07 14:15:29,317 - INFO -   Swap 4/5: 'j' -> 'o'
+2026-07-07 14:15:29,509 - INFO -   Swap 5/5: 'c' -> 'u'
+2026-07-07 14:15:29,704 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:15:29,708 - INFO -   Swap 1/5: 'hu' <-> 'tuki'
+2026-07-07 14:15:29,910 - INFO -   Swap 2/5: 'so' <-> 'balay'
+2026-07-07 14:15:30,098 - INFO -   Swap 3/5: 'kiya' <-> 'balay'
+2026-07-07 14:15:30,329 - INFO -   Swap 4/5: 'Uxay' <-> 'Ado'
+2026-07-07 14:15:30,538 - INFO -   Swap 5/5: 'nanaq' <-> 'musa'
+2026-07-07 14:15:30,747 - INFO - ================================================================================
+Test Results: TRV/Duda
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 4321
+  Reference sentences: 3457
+  Target sentences: 864
+  Total characters: 222483
+  Unique characters: 33
+
+Perturbation:
+  Character swaps performed: 5
+  Word swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence):
+  Character Level (from character swaps):
+    1-gram:
+      D Cosine Similarity: 0.009765
+      D KL Divergence: 0.142213
+    2-gram:
+      D Cosine Similarity: 0.027149
+      D KL Divergence: 0.180972
+    3-gram:
+      D Cosine Similarity: 0.036143
+      D KL Divergence: 0.138852
+
+  Word Level (from word swaps):
+    1-gram:
+      D Cosine Similarity: 0.002925
+      D KL Divergence: 0.005936
+    2-gram:
+      D Cosine Similarity: 0.009543
+      D KL Divergence: 0.006884
+    3-gram:
+      D Cosine Similarity: 0.002317
+      D KL Divergence: 0.001746
+2026-07-07 14:15:30,748 - INFO - 
+Testing trv/Tegudaya with 5 random character swaps...
+2026-07-07 14:15:31,753 - INFO - Analyzing baseline for trv/Tegudaya...
+2026-07-07 14:15:32,571 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:15:32,571 - INFO -   Swap 1/5: '2' -> 'g'
+2026-07-07 14:15:33,340 - INFO -   Swap 2/5: 'z' -> 'k'
+2026-07-07 14:15:34,037 - INFO -   Swap 3/5: '9' -> 'j'
+2026-07-07 14:15:34,764 - INFO -   Swap 4/5: 't' -> '9'
+2026-07-07 14:15:35,450 - INFO -   Swap 5/5: 'r' -> 'i'
+2026-07-07 14:15:36,134 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:15:36,142 - INFO -   Swap 1/5: 'ka' <-> 'mqiyuc'
+2026-07-07 14:15:36,816 - INFO -   Swap 2/5: 'Pae' <-> 'meniq'
+2026-07-07 14:15:37,531 - INFO -   Swap 3/5: 'dmngedang' <-> 'ini'
+2026-07-07 14:15:38,204 - INFO -   Swap 4/5: 'Ini' <-> 'niqan'
+2026-07-07 14:15:38,948 - INFO -   Swap 5/5: 'laqi' <-> 'knuudus'
+2026-07-07 14:15:39,660 - INFO - ================================================================================
+Test Results: TRV/Tegudaya
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 14452
+  Reference sentences: 11562
+  Target sentences: 2890
+  Total characters: 709595
+  Unique characters: 36
+
+Perturbation:
+  Character swaps performed: 5
+  Word swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence):
+  Character Level (from character swaps):
+    1-gram:
+      D Cosine Similarity: 0.003300
+      D KL Divergence: 0.073429
+    2-gram:
+      D Cosine Similarity: 0.011693
+      D KL Divergence: 0.105594
+    3-gram:
+      D Cosine Similarity: 0.016635
+      D KL Divergence: 0.093887
+
+  Word Level (from word swaps):
+    1-gram:
+      D Cosine Similarity: 0.107595
+      D KL Divergence: 0.096509
+    2-gram:
+      D Cosine Similarity: 0.068166
+      D KL Divergence: 0.034598
+    3-gram:
+      D Cosine Similarity: 0.009304
+      D KL Divergence: 0.005514
+2026-07-07 14:15:39,662 - INFO - 
+================================================================================
+2026-07-07 14:15:39,662 - INFO - Computing Per-Language Thresholds (mean ± epsilon) for Validation
+2026-07-07 14:15:39,662 - INFO - ================================================================================
+
+2026-07-07 14:15:39,663 - INFO - Per-Language Thresholds (epsilon=0.1):
+2026-07-07 14:15:39,663 - INFO -   ami:
+2026-07-07 14:15:39,663 - INFO -     character_kl:
+2026-07-07 14:15:39,663 - INFO -       Mean: 0.3433, Std: 0.1047
+2026-07-07 14:15:39,663 - INFO -       Lower (healthy): 0.2433, Upper (anomalous): 0.4433
+2026-07-07 14:15:39,663 - INFO -     word_kl:
+2026-07-07 14:15:39,663 - INFO -       Mean: 0.0416, Std: 0.0211
+2026-07-07 14:15:39,663 - INFO -       Lower (healthy): 0.0010, Upper (anomalous): 0.1416
+2026-07-07 14:15:39,663 - INFO -   tay:
+2026-07-07 14:15:39,663 - INFO -     character_kl:
+2026-07-07 14:15:39,663 - INFO -       Mean: 0.3990, Std: 0.1887
+2026-07-07 14:15:39,663 - INFO -       Lower (healthy): 0.2990, Upper (anomalous): 0.4990
+2026-07-07 14:15:39,663 - INFO -     word_kl:
+2026-07-07 14:15:39,663 - INFO -       Mean: 0.0249, Std: 0.0176
+2026-07-07 14:15:39,663 - INFO -       Lower (healthy): 0.0010, Upper (anomalous): 0.1249
+2026-07-07 14:15:39,663 - INFO -   bnn:
+2026-07-07 14:15:39,663 - INFO -     character_kl:
+2026-07-07 14:15:39,664 - INFO -       Mean: 0.3675, Std: 0.2258
+2026-07-07 14:15:39,664 - INFO -       Lower (healthy): 0.2675, Upper (anomalous): 0.4675
+2026-07-07 14:15:39,664 - INFO -     word_kl:
+2026-07-07 14:15:39,664 - INFO -       Mean: 0.0341, Std: 0.0346
+2026-07-07 14:15:39,664 - INFO -       Lower (healthy): 0.0010, Upper (anomalous): 0.1341
+2026-07-07 14:15:39,664 - INFO -   pwn:
+2026-07-07 14:15:39,664 - INFO -     character_kl:
+2026-07-07 14:15:39,664 - INFO -       Mean: 0.3398, Std: 0.1987
+2026-07-07 14:15:39,665 - INFO -       Lower (healthy): 0.2398, Upper (anomalous): 0.4398
+2026-07-07 14:15:39,665 - INFO -     word_kl:
+2026-07-07 14:15:39,665 - INFO -       Mean: 0.1306, Std: 0.1120
+2026-07-07 14:15:39,665 - INFO -       Lower (healthy): 0.0306, Upper (anomalous): 0.2306
+2026-07-07 14:15:39,665 - INFO -   pyu:
+2026-07-07 14:15:39,665 - INFO -     character_kl:
+2026-07-07 14:15:39,665 - INFO -       Mean: 0.3086, Std: 0.1871
+2026-07-07 14:15:39,665 - INFO -       Lower (healthy): 0.2086, Upper (anomalous): 0.4086
+2026-07-07 14:15:39,665 - INFO -     word_kl:
+2026-07-07 14:15:39,665 - INFO -       Mean: 0.0408, Std: 0.0318
+2026-07-07 14:15:39,665 - INFO -       Lower (healthy): 0.0010, Upper (anomalous): 0.1408
+2026-07-07 14:15:39,666 - INFO -   dru:
+2026-07-07 14:15:39,666 - INFO -     character_kl:
+2026-07-07 14:15:39,666 - INFO -       Mean: 0.3692, Std: 0.1788
+2026-07-07 14:15:39,667 - INFO -       Lower (healthy): 0.2692, Upper (anomalous): 0.4692
+2026-07-07 14:15:39,667 - INFO -     word_kl:
+2026-07-07 14:15:39,667 - INFO -       Mean: 0.0355, Std: 0.0464
+2026-07-07 14:15:39,667 - INFO -       Lower (healthy): 0.0010, Upper (anomalous): 0.1355
+2026-07-07 14:15:39,668 - INFO -   trv:
+2026-07-07 14:15:39,668 - INFO -     character_kl:
+2026-07-07 14:15:39,668 - INFO -       Mean: 0.2854, Std: 0.2362
+2026-07-07 14:15:39,668 - INFO -       Lower (healthy): 0.1854, Upper (anomalous): 0.3854
+2026-07-07 14:15:39,668 - INFO -     word_kl:
+2026-07-07 14:15:39,668 - INFO -       Mean: 0.0351, Std: 0.0302
+2026-07-07 14:15:39,668 - INFO -       Lower (healthy): 0.0010, Upper (anomalous): 0.1351
+2026-07-07 14:15:39,668 - INFO - 
+Global Thresholds (fallback, mean ± 1 std):
+2026-07-07 14:15:39,668 - INFO -   character_kl:
+2026-07-07 14:15:39,669 - INFO -     Mean: 0.3519, Std: 0.1922
+2026-07-07 14:15:39,669 - INFO -     Healthy: 0.1598, Anomalous: 0.5441
+2026-07-07 14:15:39,669 - INFO -   word_kl:
+2026-07-07 14:15:39,669 - INFO -     Mean: 0.0464, Std: 0.0586
+2026-07-07 14:15:39,669 - INFO -     Healthy: 0.0010, Anomalous: 0.1050
+2026-07-07 14:15:39,669 - INFO - 
+================================================================================
+2026-07-07 14:15:39,669 - INFO - Running XML Corpus Integrity Validation Tests
+2026-07-07 14:15:39,669 - INFO - ================================================================================
+
+2026-07-07 14:15:39,673 - INFO - [VALIDATION] Checking XML integrity for ami/Coastal (using 5 swaps per perturbation)...
+2026-07-07 14:15:40,542 - INFO - Analyzing baseline for ami/Coastal...
+2026-07-07 14:15:40,972 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:15:40,973 - INFO -   Swap 1/5: 'e' -> 'o'
+2026-07-07 14:15:41,411 - INFO -   Swap 2/5: 'n' -> 't'
+2026-07-07 14:15:41,782 - INFO -   Swap 3/5: 'e' -> '0'
+2026-07-07 14:15:42,160 - INFO -   Swap 4/5: 'p' -> 'x'
+2026-07-07 14:15:42,532 - INFO -   Swap 5/5: 'r' -> 'i'
+2026-07-07 14:15:42,893 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:15:42,897 - INFO -   Swap 1/5: 'adhan' <-> 'mi'
+2026-07-07 14:15:43,265 - INFO -   Swap 2/5: 'kafer' <-> 'hikoki'
+2026-07-07 14:15:43,651 - INFO -   Swap 3/5: 'a' <-> 'kahemhem'
+2026-07-07 14:15:44,089 - INFO -   Swap 4/5: 'takula' <-> 'ko'
+2026-07-07 14:15:44,454 - INFO -   Swap 5/5: 'marohem' <-> 'Foyan'
+2026-07-07 14:15:44,814 - INFO -   [!] ami/Coastal - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-07 14:15:44,815 - INFO - [VALIDATION] Checking XML integrity for ami/Hengchun (using 5 swaps per perturbation)...
+2026-07-07 14:15:45,626 - INFO - Analyzing baseline for ami/Hengchun...
+2026-07-07 14:15:45,876 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:15:45,877 - INFO -   Swap 1/5: 'i' -> 'a'
+2026-07-07 14:15:46,072 - INFO -   Swap 2/5: 'i' -> 'c'
+2026-07-07 14:15:46,301 - INFO -   Swap 3/5: 'm' -> 's'
+2026-07-07 14:15:46,488 - INFO -   Swap 4/5: 'd' -> 'r'
+2026-07-07 14:15:46,676 - INFO -   Swap 5/5: 'g' -> 'o'
+2026-07-07 14:15:46,872 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:15:46,874 - INFO -   Swap 1/5: 'mifana' <-> 'ko'
+2026-07-07 14:15:47,070 - INFO -   Swap 2/5: 'tamdawan' <-> 'mihecaan'
+2026-07-07 14:15:47,262 - INFO -   Swap 3/5: 'Wa' <-> 'cikay'
+2026-07-07 14:15:47,451 - INFO -   Swap 4/5: 'Pinaay' <-> 'ma'
+2026-07-07 14:15:47,644 - INFO -   Swap 5/5: 'fiting' <-> 'selal'
+2026-07-07 14:15:47,850 - INFO -   [!] ami/Hengchun - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-07 14:15:47,851 - INFO - [VALIDATION] Checking XML integrity for ami/Malan (using 5 swaps per perturbation)...
+2026-07-07 14:15:48,657 - INFO - Analyzing baseline for ami/Malan...
+2026-07-07 14:15:48,926 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:15:48,926 - INFO -   Swap 1/5: 'h' -> 'y'
+2026-07-07 14:15:49,112 - INFO -   Swap 2/5: 'n' -> 'o'
+2026-07-07 14:15:49,313 - INFO -   Swap 3/5: 'i' -> 'a'
+2026-07-07 14:15:49,526 - INFO -   Swap 4/5: 'c' -> 'f'
+2026-07-07 14:15:49,752 - INFO -   Swap 5/5: 'k' -> 'c'
+2026-07-07 14:15:49,961 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:15:49,963 - INFO -   Swap 1/5: 'mamilifet' <-> 'naira'
+2026-07-07 14:15:50,153 - INFO -   Swap 2/5: 'Cima' <-> 'ngangan'
+2026-07-07 14:15:50,386 - INFO -   Swap 3/5: 'I' <-> 'nga'
+2026-07-07 14:15:50,600 - INFO -   Swap 4/5: 'no' <-> 'ko'
+2026-07-07 14:15:50,787 - INFO -   Swap 5/5: 'konga' <-> 'no'
+2026-07-07 14:15:50,979 - INFO -   [!] ami/Malan - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-07 14:15:50,980 - INFO - [VALIDATION] Checking XML integrity for ami/Southern (using 5 swaps per perturbation)...
+2026-07-07 14:15:51,906 - INFO - Analyzing baseline for ami/Southern...
+2026-07-07 14:15:52,130 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:15:52,130 - INFO -   Swap 1/5: 'm' -> 'v'
+2026-07-07 14:15:52,302 - INFO -   Swap 2/5: 'w' -> 's'
+2026-07-07 14:15:52,537 - INFO -   Swap 3/5: 'd' -> '0'
+2026-07-07 14:15:52,721 - INFO -   Swap 4/5: 'c' -> 's'
+2026-07-07 14:15:52,963 - INFO -   Swap 5/5: 'v' -> 'w'
+2026-07-07 14:15:53,129 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:15:53,131 - INFO -   Swap 1/5: 'u' <-> 'Hualien'
+2026-07-07 14:15:53,310 - INFO -   Swap 2/5: 'i' <-> 'nipaveli'
+2026-07-07 14:15:53,489 - INFO -   Swap 3/5: 'a' <-> 'ku'
+2026-07-07 14:15:53,666 - INFO -   Swap 4/5: 'tu' <-> 'i'
+2026-07-07 14:15:53,836 - INFO -   Swap 5/5: 'makautuvay' <-> 'aku'
+2026-07-07 14:15:54,016 - INFO -   [OK] ami/Southern - Character 1-gram Deltas (avg of 5 swaps): PASS
+2026-07-07 14:15:54,016 - INFO - [VALIDATION] Checking XML integrity for ami/Xiuguluan (using 5 swaps per perturbation)...
+2026-07-07 14:15:54,844 - INFO - Analyzing baseline for ami/Xiuguluan...
+2026-07-07 14:15:55,290 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:15:55,290 - INFO -   Swap 1/5: 'f' -> '0'
+2026-07-07 14:15:55,687 - INFO -   Swap 2/5: 'd' -> 'a'
+2026-07-07 14:15:56,081 - INFO -   Swap 3/5: 'i' -> 'r'
+2026-07-07 14:15:56,499 - INFO -   Swap 4/5: 'd' -> '1'
+2026-07-07 14:15:56,939 - INFO -   Swap 5/5: 'w' -> 'y'
+2026-07-07 14:15:57,363 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:15:57,366 - INFO -   Swap 1/5: 'faliyos' <-> 'paliding'
+2026-07-07 14:15:57,765 - INFO -   Swap 2/5: 'no' <-> 'ko'
+2026-07-07 14:15:58,157 - INFO -   Swap 3/5: 'folo' <-> 'a'
+2026-07-07 14:15:58,573 - INFO -   Swap 4/5: 'kakalimelaan' <-> 'Sadamsayen'
+2026-07-07 14:15:58,994 - INFO -   Swap 5/5: 'kako' <-> 'malekaka'
+2026-07-07 14:15:59,374 - INFO -   [!] ami/Xiuguluan - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-07 14:15:59,377 - INFO - [VALIDATION] Checking XML integrity for tay/FourSeasons (using 5 swaps per perturbation)...
+2026-07-07 14:16:00,366 - INFO - Analyzing baseline for tay/FourSeasons...
+2026-07-07 14:16:00,592 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:16:00,609 - INFO -   Swap 1/5: 'q' -> 'u'
+2026-07-07 14:16:00,811 - INFO -   Swap 2/5: 'm' -> 'z'
+2026-07-07 14:16:01,018 - INFO -   Swap 3/5: 'b' -> 'q'
+2026-07-07 14:16:01,238 - INFO -   Swap 4/5: 'y' -> 'a'
+2026-07-07 14:16:01,411 - INFO -   Swap 5/5: 'b' -> 'h'
+2026-07-07 14:16:01,610 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:16:01,613 - INFO -   Swap 1/5: 'qaca' <-> 'maki'
+2026-07-07 14:16:01,787 - INFO -   Swap 2/5: 'tqiyay' <-> 'gamil'
+2026-07-07 14:16:01,969 - INFO -   Swap 3/5: 'sesiy' <-> 'ktu'
+2026-07-07 14:16:02,151 - INFO -   Swap 4/5: 'ga' <-> 'mqwas'
+2026-07-07 14:16:02,379 - INFO -   Swap 5/5: 'qbhniq' <-> 'miq'
+2026-07-07 14:16:02,567 - INFO -   [OK] tay/FourSeasons - Character 1-gram Deltas (avg of 5 swaps): PASS
+2026-07-07 14:16:02,568 - INFO - [VALIDATION] Checking XML integrity for tay/Sekolik (using 5 swaps per perturbation)...
+2026-07-07 14:16:03,533 - INFO - Analyzing baseline for tay/Sekolik...
+2026-07-07 14:16:04,295 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:16:04,296 - INFO -   Swap 1/5: 'm' -> '1'
+2026-07-07 14:16:05,002 - INFO -   Swap 2/5: 'u' -> 'g'
+2026-07-07 14:16:05,732 - INFO -   Swap 3/5: '0' -> 'e'
+2026-07-07 14:16:06,367 - INFO -   Swap 4/5: 'x' -> 's'
+2026-07-07 14:16:07,080 - INFO -   Swap 5/5: 'b' -> 'x'
+2026-07-07 14:16:07,803 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:16:07,809 - INFO -   Swap 1/5: 'pniqi' <-> 'ki'
+2026-07-07 14:16:08,487 - INFO -   Swap 2/5: 'la' <-> 'na'
+2026-07-07 14:16:09,143 - INFO -   Swap 3/5: 'plqwi' <-> 'ma'
+2026-07-07 14:16:09,866 - INFO -   Swap 4/5: 'ga' <-> 'yutas'
+2026-07-07 14:16:10,453 - INFO -   Swap 5/5: 'kbsyaq' <-> 'sgaliq'
+2026-07-07 14:16:11,050 - INFO -   [OK] tay/Sekolik - Character 1-gram Deltas (avg of 5 swaps): PASS
+2026-07-07 14:16:11,051 - INFO - [VALIDATION] Checking XML integrity for tay/Wanda (using 5 swaps per perturbation)...
+2026-07-07 14:16:11,932 - INFO - Analyzing baseline for tay/Wanda...
+2026-07-07 14:16:12,124 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:16:12,124 - INFO -   Swap 1/5: 'a' -> 'r'
+2026-07-07 14:16:12,272 - INFO -   Swap 2/5: 'c' -> 'w'
+2026-07-07 14:16:12,443 - INFO -   Swap 3/5: 'k' -> 's'
+2026-07-07 14:16:12,608 - INFO -   Swap 4/5: 'w' -> 'h'
+2026-07-07 14:16:12,771 - INFO -   Swap 5/5: 'm' -> 'b'
+2026-07-07 14:16:12,921 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:16:12,922 - INFO -   Swap 1/5: 'su' <-> 'maras'
+2026-07-07 14:16:13,095 - INFO -   Swap 2/5: 'hani' <-> 'ka'
+2026-07-07 14:16:13,237 - INFO -   Swap 3/5: 'tana' <-> 'laluhing'
+2026-07-07 14:16:13,379 - INFO -   Swap 4/5: 'buṟating' <-> 'su'
+2026-07-07 14:16:13,519 - INFO -   Swap 5/5: 'la' <-> 'cuxan'
+2026-07-07 14:16:13,677 - INFO -   [X] tay/Wanda - Character 1-gram Deltas (avg of 5 swaps): FAIL
+2026-07-07 14:16:13,678 - INFO - [VALIDATION] Checking XML integrity for tay/Wenshui (using 5 swaps per perturbation)...
+2026-07-07 14:16:14,533 - INFO - Analyzing baseline for tay/Wenshui...
+2026-07-07 14:16:14,834 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:16:14,835 - INFO -   Swap 1/5: 'a' -> 'e'
+2026-07-07 14:16:15,045 - INFO -   Swap 2/5: 'r' -> 'i'
+2026-07-07 14:16:15,268 - INFO -   Swap 3/5: 'g' -> 't'
+2026-07-07 14:16:15,481 - INFO -   Swap 4/5: 's' -> 'a'
+2026-07-07 14:16:15,704 - INFO -   Swap 5/5: 'n' -> 't'
+2026-07-07 14:16:15,942 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:16:15,944 - INFO -   Swap 1/5: 'ku' <-> 'kinsat'
+2026-07-07 14:16:16,150 - INFO -   Swap 2/5: 'Paquwli' <-> 'cuquleq'
+2026-07-07 14:16:16,379 - INFO -   Swap 3/5: 'su' <-> 'sapat'
+2026-07-07 14:16:16,598 - INFO -   Swap 4/5: 'qaqasinug' <-> 'kahavaw'
+2026-07-07 14:16:16,809 - INFO -   Swap 5/5: 'kannuwan' <-> 'mha'
+2026-07-07 14:16:17,012 - INFO -   [X] tay/Wenshui - Character 1-gram Deltas (avg of 5 swaps): FAIL
+2026-07-07 14:16:17,013 - INFO - [VALIDATION] Checking XML integrity for tay/YilanZeaol (using 5 swaps per perturbation)...
+2026-07-07 14:16:18,089 - INFO - Analyzing baseline for tay/YilanZeaol...
+2026-07-07 14:16:18,377 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:16:18,377 - INFO -   Swap 1/5: 'h' -> 's'
+2026-07-07 14:16:18,581 - INFO -   Swap 2/5: 'g' -> 'w'
+2026-07-07 14:16:18,770 - INFO -   Swap 3/5: 'x' -> 'h'
+2026-07-07 14:16:18,954 - INFO -   Swap 4/5: 'o' -> 'g'
+2026-07-07 14:16:19,131 - INFO -   Swap 5/5: 'r' -> 'h'
+2026-07-07 14:16:19,324 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:16:19,325 - INFO -   Swap 1/5: 'ptyawun' <-> 'baha'
+2026-07-07 14:16:19,512 - INFO -   Swap 2/5: 'naha' <-> 'utux'
+2026-07-07 14:16:19,698 - INFO -   Swap 3/5: 'ongat' <-> 'psba'
+2026-07-07 14:16:19,879 - INFO -   Swap 4/5: 'was' <-> 'skahun'
+2026-07-07 14:16:20,088 - INFO -   Swap 5/5: 'la' <-> 'na'
+2026-07-07 14:16:20,261 - INFO -   [OK] tay/YilanZeaol - Character 1-gram Deltas (avg of 5 swaps): PASS
+2026-07-07 14:16:20,263 - INFO - [VALIDATION] Checking XML integrity for tay/Zeaol (using 5 swaps per perturbation)...
+2026-07-07 14:16:21,108 - INFO - Analyzing baseline for tay/Zeaol...
+2026-07-07 14:16:21,347 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:16:21,348 - INFO -   Swap 1/5: 'w' -> 's'
+2026-07-07 14:16:21,537 - INFO -   Swap 2/5: 'x' -> 'b'
+2026-07-07 14:16:21,744 - INFO -   Swap 3/5: 'c' -> 's'
+2026-07-07 14:16:21,951 - INFO -   Swap 4/5: 'b' -> 'w'
+2026-07-07 14:16:22,136 - INFO -   Swap 5/5: 'n' -> 'q'
+2026-07-07 14:16:22,315 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:16:22,315 - INFO -   Swap 1/5: 'hnasiy' <-> 'kya'
+2026-07-07 14:16:22,512 - INFO -   Swap 2/5: 'maha' <-> 'mtyaw'
+2026-07-07 14:16:22,702 - INFO -   Swap 3/5: 'ngyat' <-> 'may'
+2026-07-07 14:16:22,916 - INFO -   Swap 4/5: 'ku' <-> 'nblay'
+2026-07-07 14:16:23,116 - INFO -   Swap 5/5: 'hani' <-> 'hiyay'
+2026-07-07 14:16:23,298 - INFO -   [OK] tay/Zeaol - Character 1-gram Deltas (avg of 5 swaps): PASS
+2026-07-07 14:16:23,301 - INFO - [VALIDATION] Checking XML integrity for bnn/Junqun (using 5 swaps per perturbation)...
+2026-07-07 14:16:24,545 - INFO - Analyzing baseline for bnn/Junqun...
+2026-07-07 14:16:25,499 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:16:25,501 - INFO -   Swap 1/5: 'a' -> 'c'
+2026-07-07 14:16:26,350 - INFO -   Swap 2/5: 'v' -> 'y'
+2026-07-07 14:16:27,192 - INFO -   Swap 3/5: 't' -> 'z'
+2026-07-07 14:16:28,085 - INFO -   Swap 4/5: 'y' -> '9'
+2026-07-07 14:16:28,923 - INFO -   Swap 5/5: '2' -> 'z'
+2026-07-07 14:16:29,774 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:16:29,779 - INFO -   Swap 1/5: 'sanavan' <-> 'tasipdat'
+2026-07-07 14:16:30,625 - INFO -   Swap 2/5: 'Aunpatazun' <-> 'habasang'
+2026-07-07 14:16:31,482 - INFO -   Swap 3/5: 'tu' <-> 'atal'
+2026-07-07 14:16:32,309 - INFO -   Swap 4/5: 'kadimanun' <-> 'mas'
+2026-07-07 14:16:33,176 - INFO -   Swap 5/5: 'andii' <-> 'pindusaun'
+2026-07-07 14:16:34,055 - INFO -   [X] bnn/Junqun - Character 1-gram Deltas (avg of 5 swaps): FAIL
+2026-07-07 14:16:34,056 - INFO - [VALIDATION] Checking XML integrity for bnn/Kaqun (using 5 swaps per perturbation)...
+2026-07-07 14:16:35,539 - INFO - Analyzing baseline for bnn/Kaqun...
+2026-07-07 14:16:35,798 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:16:35,799 - INFO -   Swap 1/5: 'k' -> 'l'
+2026-07-07 14:16:36,003 - INFO -   Swap 2/5: 'c' -> 'h'
+2026-07-07 14:16:36,185 - INFO -   Swap 3/5: 'u' -> 'z'
+2026-07-07 14:16:36,362 - INFO -   Swap 4/5: 'g' -> 'k'
+2026-07-07 14:16:36,551 - INFO -   Swap 5/5: 'p' -> 'u'
+2026-07-07 14:16:36,730 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:16:36,732 - INFO -   Swap 1/5: 'masaingu' <-> 'du'
+2026-07-07 14:16:36,918 - INFO -   Swap 2/5: 'qancepun' <-> 'kaupa'
+2026-07-07 14:16:37,080 - INFO -   Swap 3/5: 'cin' <-> 'qaludung'
+2026-07-07 14:16:37,246 - INFO -   Swap 4/5: 'boqboqcak' <-> 'tu'
+2026-07-07 14:16:37,410 - INFO -   Swap 5/5: 'pakadedaz' <-> 'tama'
+2026-07-07 14:16:37,578 - INFO -   [!] bnn/Kaqun - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-07 14:16:37,579 - INFO - [VALIDATION] Checking XML integrity for bnn/Luanqun (using 5 swaps per perturbation)...
+2026-07-07 14:16:38,798 - INFO - Analyzing baseline for bnn/Luanqun...
+2026-07-07 14:16:39,023 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:16:39,024 - INFO -   Swap 1/5: 'd' -> 'o'
+2026-07-07 14:16:39,196 - INFO -   Swap 2/5: 'p' -> 'u'
+2026-07-07 14:16:39,359 - INFO -   Swap 3/5: 's' -> 'm'
+2026-07-07 14:16:39,539 - INFO -   Swap 4/5: 'k' -> 'l'
+2026-07-07 14:16:39,714 - INFO -   Swap 5/5: 'q' -> 'h'
+2026-07-07 14:16:39,884 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:16:39,886 - INFO -   Swap 1/5: 'Asa' <-> 'ata'
+2026-07-07 14:16:40,061 - INFO -   Swap 2/5: 'tunahaan' <-> 'daankuis'
+2026-07-07 14:16:40,218 - INFO -   Swap 3/5: 'tis' <-> 'naipa'
+2026-07-07 14:16:40,387 - INFO -   Swap 4/5: 'mininhamu' <-> 'tu'
+2026-07-07 14:16:40,584 - INFO -   Swap 5/5: 'Bununtuza' <-> 'mapatas'
+2026-07-07 14:16:40,759 - INFO -   [OK] bnn/Luanqun - Character 1-gram Deltas (avg of 5 swaps): PASS
+2026-07-07 14:16:40,760 - INFO - [VALIDATION] Checking XML integrity for bnn/Tanqun (using 5 swaps per perturbation)...
+2026-07-07 14:16:42,089 - INFO - Analyzing baseline for bnn/Tanqun...
+2026-07-07 14:16:42,400 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:16:42,402 - INFO -   Swap 1/5: 'q' -> '3'
+2026-07-07 14:16:42,658 - INFO -   Swap 2/5: 'v' -> 'm'
+2026-07-07 14:16:42,957 - INFO -   Swap 3/5: 'l' -> '1'
+2026-07-07 14:16:43,161 - INFO -   Swap 4/5: 'z' -> 'n'
+2026-07-07 14:16:43,353 - INFO -   Swap 5/5: '2' -> '1'
+2026-07-07 14:16:43,536 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:16:43,538 - INFO -   Swap 1/5: 'suu' <-> 'ki'
+2026-07-07 14:16:43,735 - INFO -   Swap 2/5: 'zaku' <-> 'ki'
+2026-07-07 14:16:43,908 - INFO -   Swap 3/5: 'manaq' <-> 'qani'
+2026-07-07 14:16:44,086 - INFO -   Swap 4/5: 'i' <-> 'maluvluv'
+2026-07-07 14:16:44,294 - INFO -   Swap 5/5: 'ta' <-> 'Simulun'
+2026-07-07 14:16:44,494 - INFO -   [OK] bnn/Tanqun - Character 1-gram Deltas (avg of 5 swaps): PASS
+2026-07-07 14:16:44,496 - INFO - [VALIDATION] Checking XML integrity for bnn/Zhuoqun (using 5 swaps per perturbation)...
+2026-07-07 14:16:45,798 - INFO - Analyzing baseline for bnn/Zhuoqun...
+2026-07-07 14:16:46,029 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:16:46,030 - INFO -   Swap 1/5: 'u' -> 'z'
+2026-07-07 14:16:46,204 - INFO -   Swap 2/5: 'g' -> 'k'
+2026-07-07 14:16:46,385 - INFO -   Swap 3/5: 'p' -> 'u'
+2026-07-07 14:16:46,561 - INFO -   Swap 4/5: 'g' -> 'n'
+2026-07-07 14:16:46,746 - INFO -   Swap 5/5: 'k' -> 'm'
+2026-07-07 14:16:46,909 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:16:46,911 - INFO -   Swap 1/5: 'maqtu' <-> 'siva'
+2026-07-07 14:16:47,079 - INFO -   Swap 2/5: 'ni' <-> 'hala'
+2026-07-07 14:16:47,233 - INFO -   Swap 3/5: 'palangan' <-> 'ca'
+2026-07-07 14:16:47,396 - INFO -   Swap 4/5: 'haiva' <-> 'ata'
+2026-07-07 14:16:47,562 - INFO -   Swap 5/5: 'kukua' <-> 'maiup'
+2026-07-07 14:16:47,726 - INFO -   [OK] bnn/Zhuoqun - Character 1-gram Deltas (avg of 5 swaps): PASS
+2026-07-07 14:16:47,729 - INFO - [VALIDATION] Checking XML integrity for pwn/Central (using 5 swaps per perturbation)...
+2026-07-07 14:16:48,310 - INFO - Analyzing baseline for pwn/Central...
+2026-07-07 14:16:48,499 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:16:48,500 - INFO -   Swap 1/5: 'w' -> 'i'
+2026-07-07 14:16:48,684 - INFO -   Swap 2/5: 'c' -> 'i'
+2026-07-07 14:16:48,868 - INFO -   Swap 3/5: 'v' -> 'w'
+2026-07-07 14:16:49,049 - INFO -   Swap 4/5: 'l' -> 'u'
+2026-07-07 14:16:49,241 - INFO -   Swap 5/5: 'z' -> 'n'
+2026-07-07 14:16:49,419 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:16:49,420 - INFO -   Swap 1/5: 'vaik' <-> 'anga'
+2026-07-07 14:16:49,623 - INFO -   Swap 2/5: 'tjavulung' <-> 'qarengan'
+2026-07-07 14:16:49,811 - INFO -   Swap 3/5: 'aken' <-> 'zemzem'
+2026-07-07 14:16:49,996 - INFO -   Swap 4/5: 'a' <-> 'neka'
+2026-07-07 14:16:50,271 - INFO -   Swap 5/5: 'sikalja' <-> 'parekisusenglinglitan'
+2026-07-07 14:16:50,455 - INFO -   [OK] pwn/Central - Character 1-gram Deltas (avg of 5 swaps): PASS
+2026-07-07 14:16:50,456 - INFO - [VALIDATION] Checking XML integrity for pwn/Eastern (using 5 swaps per perturbation)...
+2026-07-07 14:16:51,069 - INFO - Analyzing baseline for pwn/Eastern...
+2026-07-07 14:16:51,297 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:16:51,297 - INFO -   Swap 1/5: 'h' -> 'b'
+2026-07-07 14:16:51,516 - INFO -   Swap 2/5: 'm' -> 'q'
+2026-07-07 14:16:51,724 - INFO -   Swap 3/5: '﹐' -> 'c'
+2026-07-07 14:16:51,911 - INFO -   Swap 4/5: 'j' -> 'l'
+2026-07-07 14:16:52,102 - INFO -   Swap 5/5: '﹐' -> 'g'
+2026-07-07 14:16:52,307 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:16:52,309 - INFO -   Swap 1/5: 'a' <-> 'i'
+2026-07-07 14:16:52,492 - INFO -   Swap 2/5: 'tigami' <-> 'katua'
+2026-07-07 14:16:52,693 - INFO -   Swap 3/5: 'mangetjez' <-> 'djuma'
+2026-07-07 14:16:52,888 - INFO -   Swap 4/5: 'isan' <-> 'na'
+2026-07-07 14:16:53,099 - INFO -   Swap 5/5: 'a' <-> 'sineljavakan'
+2026-07-07 14:16:53,303 - INFO -   [OK] pwn/Eastern - Character 1-gram Deltas (avg of 5 swaps): PASS
+2026-07-07 14:16:53,304 - INFO - [VALIDATION] Checking XML integrity for pwn/Northern (using 5 swaps per perturbation)...
+2026-07-07 14:16:53,884 - INFO - Analyzing baseline for pwn/Northern...
+2026-07-07 14:16:54,489 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:16:54,490 - INFO -   Swap 1/5: 'w' -> '1'
+2026-07-07 14:16:55,042 - INFO -   Swap 2/5: 'v' -> 'q'
+2026-07-07 14:16:55,588 - INFO -   Swap 3/5: 'c' -> 'z'
+2026-07-07 14:16:56,136 - INFO -   Swap 4/5: 'j' -> 'c'
+2026-07-07 14:16:56,754 - INFO -   Swap 5/5: 'i' -> 'j'
+2026-07-07 14:16:57,348 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:16:57,354 - INFO -   Swap 1/5: 'tjumaq' <-> 'a'
+2026-07-07 14:16:57,943 - INFO -   Swap 2/5: 'a' <-> 'mapelju'
+2026-07-07 14:16:58,512 - INFO -   Swap 3/5: 'qemucequc' <-> 'raikin'
+2026-07-07 14:16:59,085 - INFO -   Swap 4/5: 'pualju' <-> 'kisamulja'
+2026-07-07 14:16:59,611 - INFO -   Swap 5/5: 'a' <-> 'zaljum'
+2026-07-07 14:17:00,158 - INFO -   [!] pwn/Northern - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-07 14:17:00,159 - INFO - [VALIDATION] Checking XML integrity for pwn/Southern (using 5 swaps per perturbation)...
+2026-07-07 14:17:00,754 - INFO - Analyzing baseline for pwn/Southern...
+2026-07-07 14:17:00,988 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:17:00,988 - INFO -   Swap 1/5: 'k' -> 'd'
+2026-07-07 14:17:01,181 - INFO -   Swap 2/5: 'b' -> 'z'
+2026-07-07 14:17:01,387 - INFO -   Swap 3/5: 'w' -> 'm'
+2026-07-07 14:17:01,586 - INFO -   Swap 4/5: 's' -> 'c'
+2026-07-07 14:17:01,813 - INFO -   Swap 5/5: 'a' -> '0'
+2026-07-07 14:17:02,020 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:17:02,022 - INFO -   Swap 1/5: 'vuluvulung' <-> 'tjakadjan'
+2026-07-07 14:17:02,225 - INFO -   Swap 2/5: 'milingan' <-> 'ken'
+2026-07-07 14:17:02,423 - INFO -   Swap 3/5: 'avan' <-> 'ljinizaw'
+2026-07-07 14:17:02,631 - INFO -   Swap 4/5: 'a' <-> 'a'
+2026-07-07 14:17:02,845 - INFO -   Swap 5/5: 'a' <-> 'caquin'
+2026-07-07 14:17:03,044 - INFO -   [X] pwn/Southern - Character 1-gram Deltas (avg of 5 swaps): FAIL
+2026-07-07 14:17:03,048 - INFO - [VALIDATION] Checking XML integrity for pyu/Jianhe (using 5 swaps per perturbation)...
+2026-07-07 14:17:03,645 - INFO - Analyzing baseline for pyu/Jianhe...
+2026-07-07 14:17:03,838 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:17:03,838 - INFO -   Swap 1/5: 'm' -> 'v'
+2026-07-07 14:17:04,014 - INFO -   Swap 2/5: 'w' -> 's'
+2026-07-07 14:17:04,189 - INFO -   Swap 3/5: 'v' -> 'z'
+2026-07-07 14:17:04,376 - INFO -   Swap 4/5: 'w' -> 'i'
+2026-07-07 14:17:04,568 - INFO -   Swap 5/5: 's' -> 'i'
+2026-07-07 14:17:04,745 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:17:04,747 - INFO -   Swap 1/5: 'tukasayasayaw' <-> 'anlri'
+2026-07-07 14:17:04,924 - INFO -   Swap 2/5: 'henan' <-> 'da'
+2026-07-07 14:17:05,103 - INFO -   Swap 3/5: 'yawa' <-> 'kasaharan'
+2026-07-07 14:17:05,287 - INFO -   Swap 4/5: 'i' <-> 'na'
+2026-07-07 14:17:05,458 - INFO -   Swap 5/5: 'u' <-> 'adayaw'
+2026-07-07 14:17:05,652 - INFO -   [OK] pyu/Jianhe - Character 1-gram Deltas (avg of 5 swaps): PASS
+2026-07-07 14:17:05,653 - INFO - [VALIDATION] Checking XML integrity for pyu/Nanwang (using 5 swaps per perturbation)...
+2026-07-07 14:17:06,290 - INFO - Analyzing baseline for pyu/Nanwang...
+2026-07-07 14:17:07,074 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:17:07,075 - INFO -   Swap 1/5: 'ē' -> 'e'
+2026-07-07 14:17:07,688 - INFO -   Swap 2/5: 'a' -> 'i'
+2026-07-07 14:17:08,349 - INFO -   Swap 3/5: 'v' -> 'y'
+2026-07-07 14:17:09,020 - INFO -   Swap 4/5: 'v' -> 'p'
+2026-07-07 14:17:09,680 - INFO -   Swap 5/5: 'v' -> 'u'
+2026-07-07 14:17:10,350 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:17:10,357 - INFO -   Swap 1/5: 'adri' <-> 'kana'
+2026-07-07 14:17:11,033 - INFO -   Swap 2/5: 'a' <-> 'tilibi'
+2026-07-07 14:17:11,688 - INFO -   Swap 3/5: 'adri' <-> 'tu'
+2026-07-07 14:17:12,360 - INFO -   Swap 4/5: 'barasa' <-> 'India'
+2026-07-07 14:17:12,991 - INFO -   Swap 5/5: 'na' <-> 'manay'
+2026-07-07 14:17:13,648 - INFO -   [X] pyu/Nanwang - Character 1-gram Deltas (avg of 5 swaps): FAIL
+2026-07-07 14:17:13,650 - INFO - [VALIDATION] Checking XML integrity for pyu/Xiqun (using 5 swaps per perturbation)...
+2026-07-07 14:17:14,286 - INFO - Analyzing baseline for pyu/Xiqun...
+2026-07-07 14:17:14,511 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:17:14,511 - INFO -   Swap 1/5: 'l' -> 'b'
+2026-07-07 14:17:14,719 - INFO -   Swap 2/5: 'b' -> 'y'
+2026-07-07 14:17:14,930 - INFO -   Swap 3/5: '1' -> 'w'
+2026-07-07 14:17:15,126 - INFO -   Swap 4/5: 'h' -> 's'
+2026-07-07 14:17:15,335 - INFO -   Swap 5/5: 'p' -> 'r'
+2026-07-07 14:17:15,534 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:17:15,538 - INFO -   Swap 1/5: 'lruwatra' <-> 'patrungutrungulr'
+2026-07-07 14:17:15,807 - INFO -   Swap 2/5: 'na' <-> 'valruvalrulren'
+2026-07-07 14:17:16,004 - INFO -   Swap 3/5: 'tayhin' <-> 'mu'
+2026-07-07 14:17:16,206 - INFO -   Swap 4/5: 'i' <-> 'walru'
+2026-07-07 14:17:16,401 - INFO -   Swap 5/5: 'lra' <-> 'nu'
+2026-07-07 14:17:16,592 - INFO -   [OK] pyu/Xiqun - Character 1-gram Deltas (avg of 5 swaps): PASS
+2026-07-07 14:17:16,593 - INFO - [VALIDATION] Checking XML integrity for pyu/Zhiben (using 5 swaps per perturbation)...
+2026-07-07 14:17:17,254 - INFO - Analyzing baseline for pyu/Zhiben...
+2026-07-07 14:17:17,519 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:17:17,519 - INFO -   Swap 1/5: 'l' -> 'y'
+2026-07-07 14:17:17,731 - INFO -   Swap 2/5: 'm' -> 'n'
+2026-07-07 14:17:17,936 - INFO -   Swap 3/5: 'w' -> 's'
+2026-07-07 14:17:18,132 - INFO -   Swap 4/5: 'd' -> 'z'
+2026-07-07 14:17:18,348 - INFO -   Swap 5/5: 'w' -> 'p'
+2026-07-07 14:17:18,539 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:17:18,542 - INFO -   Swap 1/5: 'maranger' <-> 'ini'
+2026-07-07 14:17:18,752 - INFO -   Swap 2/5: 'an' <-> 'ma'
+2026-07-07 14:17:18,946 - INFO -   Swap 3/5: 'marum' <-> 'inavayan'
+2026-07-07 14:17:19,148 - INFO -   Swap 4/5: 'virvir' <-> 'lralrak'
+2026-07-07 14:17:19,365 - INFO -   Swap 5/5: 'zi' <-> 'ap'
+2026-07-07 14:17:19,563 - INFO -   [!] pyu/Zhiben - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-07 14:17:19,567 - INFO - [VALIDATION] Checking XML integrity for dru/Dawu (using 5 swaps per perturbation)...
+2026-07-07 14:17:20,759 - INFO - Analyzing baseline for dru/Dawu...
+2026-07-07 14:17:21,016 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:17:21,016 - INFO -   Swap 1/5: 'n' -> 'a'
+2026-07-07 14:17:21,211 - INFO -   Swap 2/5: 'm' -> 'g'
+2026-07-07 14:17:21,408 - INFO -   Swap 3/5: 'w' -> 's'
+2026-07-07 14:17:21,587 - INFO -   Swap 4/5: 'v' -> 'z'
+2026-07-07 14:17:21,756 - INFO -   Swap 5/5: 'h' -> 's'
+2026-07-07 14:17:21,941 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:17:21,945 - INFO -   Swap 1/5: 'ka' <-> 'Ngudradrekai'
+2026-07-07 14:17:22,125 - INFO -   Swap 2/5: 'tuhamuhu' <-> 'naganesu'
+2026-07-07 14:17:22,304 - INFO -   Swap 3/5: 'ku' <-> 'ikai'
+2026-07-07 14:17:22,475 - INFO -   Swap 4/5: 'amani' <-> 'ai'
+2026-07-07 14:17:22,650 - INFO -   Swap 5/5: 'buhasi' <-> 'ngipusale'
+2026-07-07 14:17:22,829 - INFO -   [OK] dru/Dawu - Character 1-gram Deltas (avg of 5 swaps): PASS
+2026-07-07 14:17:22,830 - INFO - [VALIDATION] Checking XML integrity for dru/Dona (using 5 swaps per perturbation)...
+2026-07-07 14:17:24,012 - INFO - Analyzing baseline for dru/Dona...
+2026-07-07 14:17:24,241 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:17:24,241 - INFO -   Swap 1/5: 'o' -> 'y'
+2026-07-07 14:17:24,425 - INFO -   Swap 2/5: '1' -> 'w'
+2026-07-07 14:17:24,613 - INFO -   Swap 3/5: 'h' -> 's'
+2026-07-07 14:17:24,794 - INFO -   Swap 4/5: '1' -> 'r'
+2026-07-07 14:17:24,976 - INFO -   Swap 5/5: 'c' -> 'i'
+2026-07-07 14:17:25,159 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:17:25,161 - INFO -   Swap 1/5: 'ma' <-> 'na'
+2026-07-07 14:17:25,358 - INFO -   Swap 2/5: 'gakoname' <-> 'sesane'
+2026-07-07 14:17:25,533 - INFO -   Swap 3/5: 'ko' <-> 'ka'
+2026-07-07 14:17:25,763 - INFO -   Swap 4/5: 'ma' <-> 'amimosoa'
+2026-07-07 14:17:25,938 - INFO -   Swap 5/5: 'na' <-> 'ka'
+2026-07-07 14:17:26,136 - INFO -   [OK] dru/Dona - Character 1-gram Deltas (avg of 5 swaps): PASS
+2026-07-07 14:17:26,137 - INFO - [VALIDATION] Checking XML integrity for dru/Eastern (using 5 swaps per perturbation)...
+2026-07-07 14:17:27,478 - INFO - Analyzing baseline for dru/Eastern...
+2026-07-07 14:17:27,727 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:17:27,727 - INFO -   Swap 1/5: 't' -> 'y'
+2026-07-07 14:17:27,904 - INFO -   Swap 2/5: 'c' -> 'w'
+2026-07-07 14:17:28,070 - INFO -   Swap 3/5: 'k' -> 's'
+2026-07-07 14:17:28,247 - INFO -   Swap 4/5: 'c' -> 'r'
+2026-07-07 14:17:28,434 - INFO -   Swap 5/5: 'm' -> 'd'
+2026-07-07 14:17:28,629 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:17:28,632 - INFO -   Swap 1/5: 'ka' <-> 'kaneako'
+2026-07-07 14:17:28,814 - INFO -   Swap 2/5: 'makalrana' <-> 'lraiya'
+2026-07-07 14:17:28,977 - INFO -   Swap 3/5: 'sa' <-> 'yakai'
+2026-07-07 14:17:29,160 - INFO -   Swap 4/5: 'talragi' <-> 'malangelang'
+2026-07-07 14:17:29,342 - INFO -   Swap 5/5: 'kalralreketeta' <-> 'ai'
+2026-07-07 14:17:29,546 - INFO -   [OK] dru/Eastern - Character 1-gram Deltas (avg of 5 swaps): PASS
+2026-07-07 14:17:29,548 - INFO - [VALIDATION] Checking XML integrity for dru/Maolin (using 5 swaps per perturbation)...
+2026-07-07 14:17:30,764 - INFO - Analyzing baseline for dru/Maolin...
+2026-07-07 14:17:31,014 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:17:31,014 - INFO -   Swap 1/5: 'z' -> 'o'
+2026-07-07 14:17:31,190 - INFO -   Swap 2/5: 'u' -> 'é'
+2026-07-07 14:17:31,360 - INFO -   Swap 3/5: '1' -> 'c'
+2026-07-07 14:17:31,518 - INFO -   Swap 4/5: 't' -> 'a'
+2026-07-07 14:17:31,691 - INFO -   Swap 5/5: 'a' -> 'c'
+2026-07-07 14:17:31,843 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:17:31,846 - INFO -   Swap 1/5: 'bɨrɨ' <-> 'até'
+2026-07-07 14:17:32,024 - INFO -   Swap 2/5: 'iku' <-> 'krara'
+2026-07-07 14:17:32,211 - INFO -   Swap 3/5: 'tumaradra' <-> 'Lélada'
+2026-07-07 14:17:32,376 - INFO -   Swap 4/5: 'Drukai' <-> 'si'
+2026-07-07 14:17:32,544 - INFO -   Swap 5/5: 'ki' <-> 'késédeme'
+2026-07-07 14:17:32,714 - INFO -   [!] dru/Maolin - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-07 14:17:32,716 - INFO - [VALIDATION] Checking XML integrity for dru/Wanshan (using 5 swaps per perturbation)...
+2026-07-07 14:17:33,990 - INFO - Analyzing baseline for dru/Wanshan...
+2026-07-07 14:17:34,237 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:17:34,237 - INFO -   Swap 1/5: 'a' -> 'm'
+2026-07-07 14:17:34,426 - INFO -   Swap 2/5: 'c' -> 'a'
+2026-07-07 14:17:34,626 - INFO -   Swap 3/5: 'd' -> 'w'
+2026-07-07 14:17:34,817 - INFO -   Swap 4/5: 'z' -> 'y'
+2026-07-07 14:17:35,017 - INFO -   Swap 5/5: 'h' -> 'l'
+2026-07-07 14:17:35,209 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:17:35,210 - INFO -   Swap 1/5: 'ina' <-> 'mani'
+2026-07-07 14:17:35,395 - INFO -   Swap 2/5: 'maka' <-> 'so'
+2026-07-07 14:17:35,568 - INFO -   Swap 3/5: 'toladhekae' <-> 'tapekece'
+2026-07-07 14:17:35,759 - INFO -   Swap 4/5: 'ongalaimiya' <-> 'avai'
+2026-07-07 14:17:35,941 - INFO -   Swap 5/5: 'paiso' <-> 'tapekece'
+2026-07-07 14:17:36,119 - INFO -   [X] dru/Wanshan - Character 1-gram Deltas (avg of 5 swaps): FAIL
+2026-07-07 14:17:36,120 - INFO - [VALIDATION] Checking XML integrity for dru/Wutai (using 5 swaps per perturbation)...
+2026-07-07 14:17:37,396 - INFO - Analyzing baseline for dru/Wutai...
+2026-07-07 14:17:38,427 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:17:38,427 - INFO -   Swap 1/5: 's' -> 'b'
+2026-07-07 14:17:39,315 - INFO -   Swap 2/5: 'o' -> 'g'
+2026-07-07 14:17:40,281 - INFO -   Swap 3/5: 'y' -> 'h'
+2026-07-07 14:17:41,298 - INFO -   Swap 4/5: 'e' -> 't'
+2026-07-07 14:17:42,228 - INFO -   Swap 5/5: 'i' -> 'c'
+2026-07-07 14:17:43,164 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:17:43,171 - INFO -   Swap 1/5: 'apakiragadhaneli' <-> 'kay'
+2026-07-07 14:17:44,096 - INFO -   Swap 2/5: 'Cumay' <-> 'ki'
+2026-07-07 14:17:45,026 - INFO -   Swap 3/5: 'kwi' <-> 'ani'
+2026-07-07 14:17:45,917 - INFO -   Swap 4/5: 'mwabelebelenge' <-> 'anu'
+2026-07-07 14:17:46,856 - INFO -   Swap 5/5: 'akutikia' <-> 'ku'
+2026-07-07 14:17:47,768 - INFO -   [!] dru/Wutai - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-07 14:17:47,772 - INFO - [VALIDATION] Checking XML integrity for trv/DeluValley (using 5 swaps per perturbation)...
+2026-07-07 14:17:48,763 - INFO - Analyzing baseline for trv/DeluValley...
+2026-07-07 14:17:49,034 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:17:49,034 - INFO -   Swap 1/5: 'a' -> 'd'
+2026-07-07 14:17:49,219 - INFO -   Swap 2/5: 's' -> 'a'
+2026-07-07 14:17:49,406 - INFO -   Swap 3/5: 'c' -> 't'
+2026-07-07 14:17:49,623 - INFO -   Swap 4/5: 'h' -> 'g'
+2026-07-07 14:17:49,812 - INFO -   Swap 5/5: 'i' -> 'p'
+2026-07-07 14:17:50,017 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:17:50,020 - INFO -   Swap 1/5: 'balay' <-> 'miri'
+2026-07-07 14:17:50,222 - INFO -   Swap 2/5: 'kdawi' <-> 'ksun'
+2026-07-07 14:17:50,420 - INFO -   Swap 3/5: 'misan' <-> 'qmita'
+2026-07-07 14:17:50,610 - INFO -   Swap 4/5: 'ta' <-> 'ka'
+2026-07-07 14:17:50,794 - INFO -   Swap 5/5: 'mngari' <-> 'Iq'
+2026-07-07 14:17:50,994 - INFO -   [X] trv/DeluValley - Character 1-gram Deltas (avg of 5 swaps): FAIL
+2026-07-07 14:17:50,996 - INFO - [VALIDATION] Checking XML integrity for trv/Duda (using 5 swaps per perturbation)...
+2026-07-07 14:17:51,893 - INFO - Analyzing baseline for trv/Duda...
+2026-07-07 14:17:52,202 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:17:52,203 - INFO -   Swap 1/5: 'r' -> 'q'
+2026-07-07 14:17:52,413 - INFO -   Swap 2/5: 'l' -> 'x'
+2026-07-07 14:17:52,613 - INFO -   Swap 3/5: 'm' -> 's'
+2026-07-07 14:17:52,884 - INFO -   Swap 4/5: 'j' -> 'o'
+2026-07-07 14:17:53,086 - INFO -   Swap 5/5: 'c' -> 'u'
+2026-07-07 14:17:53,309 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:17:53,313 - INFO -   Swap 1/5: 'hu' <-> 'tuki'
+2026-07-07 14:17:53,693 - INFO -   Swap 2/5: 'so' <-> 'balay'
+2026-07-07 14:17:53,890 - INFO -   Swap 3/5: 'kiya' <-> 'balay'
+2026-07-07 14:17:54,076 - INFO -   Swap 4/5: 'Uxay' <-> 'Ado'
+2026-07-07 14:17:54,281 - INFO -   Swap 5/5: 'nanaq' <-> 'musa'
+2026-07-07 14:17:54,481 - INFO -   [OK] trv/Duda - Character 1-gram Deltas (avg of 5 swaps): PASS
+2026-07-07 14:17:54,482 - INFO - [VALIDATION] Checking XML integrity for trv/Tegudaya (using 5 swaps per perturbation)...
+2026-07-07 14:17:55,442 - INFO - Analyzing baseline for trv/Tegudaya...
+2026-07-07 14:17:56,227 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:17:56,227 - INFO -   Swap 1/5: '2' -> 'g'
+2026-07-07 14:17:56,962 - INFO -   Swap 2/5: 'z' -> 'k'
+2026-07-07 14:17:57,697 - INFO -   Swap 3/5: '9' -> 'j'
+2026-07-07 14:17:58,453 - INFO -   Swap 4/5: 't' -> '9'
+2026-07-07 14:17:59,165 - INFO -   Swap 5/5: 'r' -> 'i'
+2026-07-07 14:17:59,903 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:17:59,908 - INFO -   Swap 1/5: 'ka' <-> 'mqiyuc'
+2026-07-07 14:18:00,652 - INFO -   Swap 2/5: 'Pae' <-> 'meniq'
+2026-07-07 14:18:01,374 - INFO -   Swap 3/5: 'dmngedang' <-> 'ini'
+2026-07-07 14:18:02,094 - INFO -   Swap 4/5: 'Ini' <-> 'niqan'
+2026-07-07 14:18:02,853 - INFO -   Swap 5/5: 'laqi' <-> 'knuudus'
+2026-07-07 14:18:03,539 - INFO -   [OK] trv/Tegudaya - Character 1-gram Deltas (avg of 5 swaps): PASS
+2026-07-07 14:18:03,542 - INFO - 
+================================================================================
+2026-07-07 14:18:03,542 - INFO - Running Cross-Language Discrimination Tests
+2026-07-07 14:18:03,542 - INFO - ================================================================================
+
+2026-07-07 14:18:03,544 - INFO - [CROSS-LANG] Testing discrimination for ami/Coastal against other languages...
+2026-07-07 14:18:52,783 - INFO - [CROSS-LANG] Testing discrimination for tay/FourSeasons against other languages...
+2026-07-07 14:19:44,610 - INFO - [CROSS-LANG] Testing discrimination for bnn/Junqun against other languages...
+2026-07-07 14:20:30,621 - INFO - [CROSS-LANG] Testing discrimination for pwn/Central against other languages...
+2026-07-07 14:21:18,527 - INFO - [CROSS-LANG] Testing discrimination for pyu/Jianhe against other languages...
+2026-07-07 14:22:07,197 - INFO - [CROSS-LANG] Testing discrimination for dru/Dawu against other languages...
+2026-07-07 14:22:55,190 - INFO - [CROSS-LANG] Testing discrimination for trv/DeluValley against other languages...
+2026-07-07 14:23:45,599 - INFO - 
+================================================================================
+2026-07-07 14:23:45,599 - INFO - Computing Prediction Efficacy Metrics
+2026-07-07 14:23:45,599 - INFO - ================================================================================
+
+2026-07-07 14:23:45,603 - INFO - Metric Correlations (character ↔ word deltas):
+2026-07-07 14:23:45,603 - INFO -   Cosine Similarity Correlation: -0.0176
+2026-07-07 14:23:45,603 - INFO -   KL Divergence Correlation: 0.0728
+2026-07-07 14:23:45,604 - INFO - 
+Predictive Power Analysis:
+2026-07-07 14:23:45,604 - INFO -   Class Separation (PASS vs FAIL): 2.1592
+2026-07-07 14:23:45,604 - INFO -   PASS Mean Delta: 0.0124
+2026-07-07 14:23:45,604 - INFO -   FAIL Mean Delta: 0.1103
+2026-07-07 14:23:45,645 - INFO - 
+================================================================================
+2026-07-07 14:23:45,645 - INFO - Test suite complete. Results saved to test_results/perturbation_tests
+2026-07-07 14:23:45,645 - INFO -   Total tests: 33
+2026-07-07 14:23:45,646 - INFO -   Successful: 33
+2026-07-07 14:23:45,646 - INFO -   Failed: 0
+2026-07-07 14:23:45,646 - INFO - ================================================================================

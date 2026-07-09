@@ -1,0 +1,195 @@
+2026-06-29 16:59:30,302 - INFO - Starting Character Perturbation Robustness Test Suite
+2026-06-29 16:59:30,310 - INFO - Testing languages: ['Amis', 'Paiwan']
+2026-06-29 16:59:30,312 - INFO - Testing sources: ['ePark/', 'ILRDF_Dicts/']
+2026-06-29 16:59:30,318 - INFO - 
+Testing ami/Coastal...
+2026-06-29 16:59:31,029 - INFO - Analyzing baseline for ami/Coastal...
+2026-06-29 16:59:31,037 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:31,051 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:31,493 - INFO - Testing character swap: 'a' -> '0'
+2026-06-29 16:59:31,511 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:31,519 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:31,864 - INFO - 
+Testing ami/Hengchun...
+2026-06-29 16:59:32,663 - INFO - Analyzing baseline for ami/Hengchun...
+2026-06-29 16:59:32,672 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:32,680 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:32,958 - INFO - Testing character swap: 'a' -> 'y'
+2026-06-29 16:59:32,970 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:32,978 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:33,190 - INFO - 
+Testing ami/Malan...
+2026-06-29 16:59:33,972 - INFO - Analyzing baseline for ami/Malan...
+2026-06-29 16:59:33,979 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:33,986 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:34,246 - INFO - Testing character swap: 'a' -> '''
+2026-06-29 16:59:34,258 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:34,262 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:34,476 - INFO - 
+Testing ami/Southern...
+2026-06-29 16:59:35,247 - INFO - Analyzing baseline for ami/Southern...
+2026-06-29 16:59:35,254 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:35,259 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:35,509 - INFO - Testing character swap: 'a' -> 'w'
+2026-06-29 16:59:35,518 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:35,524 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:35,718 - INFO - 
+Testing ami/Xiuguluan...
+2026-06-29 16:59:36,521 - INFO - Analyzing baseline for ami/Xiuguluan...
+2026-06-29 16:59:36,539 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:36,548 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:37,012 - INFO - Testing character swap: 'a' -> '?'
+2026-06-29 16:59:37,036 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:37,044 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:37,517 - INFO - 
+Testing pwn/Central...
+2026-06-29 16:59:38,194 - INFO - Analyzing baseline for pwn/Central...
+2026-06-29 16:59:38,201 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-06-29 16:59:38,207 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-06-29 16:59:38,414 - INFO - Testing character swap: 'a' -> 'y'
+2026-06-29 16:59:38,423 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-06-29 16:59:38,429 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-06-29 16:59:38,641 - INFO - 
+Testing pwn/Eastern...
+2026-06-29 16:59:39,356 - INFO - Analyzing baseline for pwn/Eastern...
+2026-06-29 16:59:39,363 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-06-29 16:59:39,369 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-06-29 16:59:39,590 - INFO - Testing character swap: 'a' -> 'k'
+2026-06-29 16:59:39,600 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-06-29 16:59:39,607 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-06-29 16:59:39,819 - INFO - 
+Testing pwn/Northern...
+2026-06-29 16:59:40,514 - INFO - Analyzing baseline for pwn/Northern...
+2026-06-29 16:59:40,540 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-06-29 16:59:40,554 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-06-29 16:59:41,304 - INFO - Testing character swap: 'a' -> 'i'
+2026-06-29 16:59:41,336 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-06-29 16:59:41,354 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-06-29 16:59:42,010 - INFO - 
+Testing pwn/Southern...
+2026-06-29 16:59:42,715 - INFO - Analyzing baseline for pwn/Southern...
+2026-06-29 16:59:42,724 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-06-29 16:59:42,733 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-06-29 16:59:42,952 - INFO - Testing character swap: 'a' -> 's'
+2026-06-29 16:59:42,963 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-06-29 16:59:42,969 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-06-29 16:59:43,195 - INFO - 
+================================================================================
+2026-06-29 16:59:43,196 - INFO - Computing Statistical Thresholds for Validation
+2026-06-29 16:59:43,196 - INFO - ================================================================================
+
+2026-06-29 16:59:43,197 - INFO - Dynamic Thresholds (mean ± 1 std):
+2026-06-29 16:59:43,197 - INFO -   character_cosine:
+2026-06-29 16:59:43,197 - INFO -     Mean: 0.5342, Std: 0.0238
+2026-06-29 16:59:43,197 - INFO -     Healthy: 0.5104, Anomalous: 0.5580
+2026-06-29 16:59:43,197 - INFO -   character_kl:
+2026-06-29 16:59:43,197 - INFO -     Mean: 2.0685, Std: 0.1244
+2026-06-29 16:59:43,197 - INFO -     Healthy: 1.9441, Anomalous: 2.1929
+2026-06-29 16:59:43,199 - INFO -   word_cosine:
+2026-06-29 16:59:43,199 - INFO -     Mean: 0.6275, Std: 0.2723
+2026-06-29 16:59:43,199 - INFO -     Healthy: 0.3552, Anomalous: 0.8997
+2026-06-29 16:59:43,199 - INFO -   word_kl:
+2026-06-29 16:59:43,199 - INFO -     Mean: 1.5977, Std: 0.3457
+2026-06-29 16:59:43,199 - INFO -     Healthy: 1.2520, Anomalous: 1.9435
+2026-06-29 16:59:43,199 - INFO - 
+================================================================================
+2026-06-29 16:59:43,199 - INFO - Running XML Corpus Integrity Validation Tests
+2026-06-29 16:59:43,199 - INFO - ================================================================================
+
+2026-06-29 16:59:43,202 - INFO - [VALIDATION] Checking XML integrity for ami/Coastal...
+2026-06-29 16:59:43,987 - INFO - Analyzing baseline for ami/Coastal...
+2026-06-29 16:59:43,999 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:44,009 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:44,431 - INFO - Testing character swap: 'a' -> '0'
+2026-06-29 16:59:44,452 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:44,462 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:44,824 - INFO - [VALIDATION] Checking XML integrity for ami/Hengchun...
+2026-06-29 16:59:45,633 - INFO - Analyzing baseline for ami/Hengchun...
+2026-06-29 16:59:45,645 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:45,654 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:45,877 - INFO - Testing character swap: 'a' -> 'y'
+2026-06-29 16:59:45,887 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:45,892 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:46,152 - INFO - [VALIDATION] Checking XML integrity for ami/Malan...
+2026-06-29 16:59:46,955 - INFO - Analyzing baseline for ami/Malan...
+2026-06-29 16:59:46,961 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:46,967 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:47,225 - INFO - Testing character swap: 'a' -> '''
+2026-06-29 16:59:47,234 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:47,240 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:47,472 - INFO - [VALIDATION] Checking XML integrity for ami/Southern...
+2026-06-29 16:59:48,238 - INFO - Analyzing baseline for ami/Southern...
+2026-06-29 16:59:48,246 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:48,253 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:48,441 - INFO - Testing character swap: 'a' -> 'w'
+2026-06-29 16:59:48,449 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:48,453 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:48,641 - INFO - [VALIDATION] Checking XML integrity for ami/Xiuguluan...
+2026-06-29 16:59:49,394 - INFO - Analyzing baseline for ami/Xiuguluan...
+2026-06-29 16:59:49,413 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:49,424 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:49,925 - INFO - Testing character swap: 'a' -> '?'
+2026-06-29 16:59:49,946 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:49,957 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:50,403 - INFO - [VALIDATION] Checking XML integrity for pwn/Central...
+2026-06-29 16:59:51,095 - INFO - Analyzing baseline for pwn/Central...
+2026-06-29 16:59:51,101 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-06-29 16:59:51,109 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-06-29 16:59:51,363 - INFO - Testing character swap: 'a' -> 'y'
+2026-06-29 16:59:51,373 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-06-29 16:59:51,380 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-06-29 16:59:51,578 - INFO - [VALIDATION] Checking XML integrity for pwn/Eastern...
+2026-06-29 16:59:52,247 - INFO - Analyzing baseline for pwn/Eastern...
+2026-06-29 16:59:52,256 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-06-29 16:59:52,263 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-06-29 16:59:52,451 - INFO - Testing character swap: 'a' -> 'k'
+2026-06-29 16:59:52,461 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-06-29 16:59:52,467 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-06-29 16:59:52,678 - INFO - [VALIDATION] Checking XML integrity for pwn/Northern...
+2026-06-29 16:59:53,402 - INFO - Analyzing baseline for pwn/Northern...
+2026-06-29 16:59:53,431 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-06-29 16:59:53,444 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-06-29 16:59:54,112 - INFO - Testing character swap: 'a' -> 'i'
+2026-06-29 16:59:54,138 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-06-29 16:59:54,152 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-06-29 16:59:54,726 - INFO - [VALIDATION] Checking XML integrity for pwn/Southern...
+2026-06-29 16:59:55,452 - INFO - Analyzing baseline for pwn/Southern...
+2026-06-29 16:59:55,462 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-06-29 16:59:55,467 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-06-29 16:59:55,761 - INFO - Testing character swap: 'a' -> 's'
+2026-06-29 16:59:55,770 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-06-29 16:59:55,776 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-06-29 16:59:56,008 - INFO - 
+================================================================================
+2026-06-29 16:59:56,009 - INFO - Running Cross-Language Discrimination Tests
+2026-06-29 16:59:56,009 - INFO - ================================================================================
+
+2026-06-29 16:59:56,011 - INFO - [CROSS-LANG] Testing discrimination for ami/Coastal against other languages...
+2026-06-29 16:59:56,995 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-06-29 16:59:56,996 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-06-29 16:59:57,041 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-06-29 16:59:57,042 - WARNING - Error tokenizing with orthography for pwn: [Errno 2] No such file or directory: 'Orthographies/Ortho113/pwn.tsv'. Using basic tokenization.
+2026-06-29 16:59:57,064 - INFO - [CROSS-LANG] Testing discrimination for pwn/Central against other languages...
+2026-06-29 16:59:58,005 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:58,005 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:58,052 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:58,053 - WARNING - Error tokenizing with orthography for ami: [Errno 2] No such file or directory: 'Orthographies/Ortho113/ami.tsv'. Using basic tokenization.
+2026-06-29 16:59:58,073 - INFO - 
+================================================================================
+2026-06-29 16:59:58,073 - INFO - Computing Prediction Efficacy Metrics
+2026-06-29 16:59:58,073 - INFO - ================================================================================
+
+2026-06-29 16:59:58,076 - INFO -   Cosine Similarity Correlation: -0.1639
+2026-06-29 16:59:58,076 - INFO -   KL Divergence Correlation: 0.7819
+2026-06-29 16:59:58,076 - INFO - 
+Predictive Power Analysis:
+2026-06-29 16:59:58,076 - INFO -   Class Separation (PASS vs FAIL): 0.9931
+2026-06-29 16:59:58,077 - INFO -   PASS Mean Delta: 0.4969
+2026-06-29 16:59:58,077 - INFO -   FAIL Mean Delta: 0.5341
+2026-06-29 16:59:58,087 - INFO - 
+================================================================================
+2026-06-29 16:59:58,087 - INFO - Test suite complete. Results saved to test_results/phase_3_cross_language
+2026-06-29 16:59:58,087 - INFO -   Total tests: 9
+2026-06-29 16:59:58,087 - INFO -   Successful: 9
+2026-06-29 16:59:58,088 - INFO -   Failed: 0
+2026-06-29 16:59:58,088 - INFO - ================================================================================

@@ -1,0 +1,69 @@
+2026-06-29 16:26:23,533 - INFO - Starting Character Perturbation Robustness Test Suite
+2026-06-29 16:26:23,543 - INFO - Testing languages: ['Amis', 'Paiwan']
+2026-06-29 16:26:23,543 - INFO - Testing sources: ['ePark/', 'ILRDF_Dicts/']
+2026-06-29 16:26:23,546 - INFO - 
+Testing ami/Coastal...
+2026-06-29 16:26:24,301 - ERROR - No corpus found for ami/Coastal in sources
+2026-06-29 16:26:24,301 - WARNING - Failed to test ami/Coastal
+2026-06-29 16:26:24,301 - INFO - 
+Testing ami/Hengchun...
+2026-06-29 16:26:24,588 - ERROR - No corpus found for ami/Hengchun in sources
+2026-06-29 16:26:24,588 - WARNING - Failed to test ami/Hengchun
+2026-06-29 16:26:24,590 - INFO - 
+Testing ami/Malan...
+2026-06-29 16:26:24,884 - ERROR - No corpus found for ami/Malan in sources
+2026-06-29 16:26:24,884 - WARNING - Failed to test ami/Malan
+2026-06-29 16:26:24,884 - INFO - 
+Testing ami/Southern...
+2026-06-29 16:26:25,166 - ERROR - No corpus found for ami/Southern in sources
+2026-06-29 16:26:25,167 - WARNING - Failed to test ami/Southern
+2026-06-29 16:26:25,168 - INFO - 
+Testing ami/Xiuguluan...
+2026-06-29 16:26:25,513 - ERROR - No corpus found for ami/Xiuguluan in sources
+2026-06-29 16:26:25,513 - WARNING - Failed to test ami/Xiuguluan
+2026-06-29 16:26:25,518 - INFO - 
+Testing pwn/Central...
+2026-06-29 16:26:25,576 - ERROR - No corpus found for pwn/Central in sources
+2026-06-29 16:26:25,576 - WARNING - Failed to test pwn/Central
+2026-06-29 16:26:25,577 - INFO - 
+Testing pwn/Eastern...
+2026-06-29 16:26:25,625 - ERROR - No corpus found for pwn/Eastern in sources
+2026-06-29 16:26:25,626 - WARNING - Failed to test pwn/Eastern
+2026-06-29 16:26:25,626 - INFO - 
+Testing pwn/Northern...
+2026-06-29 16:26:25,673 - ERROR - No corpus found for pwn/Northern in sources
+2026-06-29 16:26:25,673 - WARNING - Failed to test pwn/Northern
+2026-06-29 16:26:25,673 - INFO - 
+Testing pwn/Southern...
+2026-06-29 16:26:25,721 - ERROR - No corpus found for pwn/Southern in sources
+2026-06-29 16:26:25,721 - WARNING - Failed to test pwn/Southern
+2026-06-29 16:26:25,721 - INFO - 
+================================================================================
+2026-06-29 16:26:25,721 - INFO - Running XML Corpus Integrity Validation Tests
+2026-06-29 16:26:25,721 - INFO - ================================================================================
+
+2026-06-29 16:26:25,723 - INFO - [VALIDATION] Checking XML integrity for ami/Coastal...
+2026-06-29 16:26:26,014 - ERROR - No corpus found for ami/Coastal in sources
+2026-06-29 16:26:26,017 - INFO - [VALIDATION] Checking XML integrity for ami/Hengchun...
+2026-06-29 16:26:26,324 - ERROR - No corpus found for ami/Hengchun in sources
+2026-06-29 16:26:26,326 - INFO - [VALIDATION] Checking XML integrity for ami/Malan...
+2026-06-29 16:26:26,606 - ERROR - No corpus found for ami/Malan in sources
+2026-06-29 16:26:26,606 - INFO - [VALIDATION] Checking XML integrity for ami/Southern...
+2026-06-29 16:26:26,909 - ERROR - No corpus found for ami/Southern in sources
+2026-06-29 16:26:26,909 - INFO - [VALIDATION] Checking XML integrity for ami/Xiuguluan...
+2026-06-29 16:26:27,194 - ERROR - No corpus found for ami/Xiuguluan in sources
+2026-06-29 16:26:27,197 - INFO - [VALIDATION] Checking XML integrity for pwn/Central...
+2026-06-29 16:26:27,244 - ERROR - No corpus found for pwn/Central in sources
+2026-06-29 16:26:27,246 - INFO - [VALIDATION] Checking XML integrity for pwn/Eastern...
+2026-06-29 16:26:27,293 - ERROR - No corpus found for pwn/Eastern in sources
+2026-06-29 16:26:27,293 - INFO - [VALIDATION] Checking XML integrity for pwn/Northern...
+2026-06-29 16:26:27,344 - ERROR - No corpus found for pwn/Northern in sources
+2026-06-29 16:26:27,344 - INFO - [VALIDATION] Checking XML integrity for pwn/Southern...
+2026-06-29 16:26:27,396 - ERROR - No corpus found for pwn/Southern in sources
+2026-06-29 16:26:27,398 - INFO - 
+================================================================================
+2026-06-29 16:26:27,398 - INFO - Test suite complete. Results saved to test_results/phase_2_validation_v3
+2026-06-29 16:26:27,400 - INFO -   Total tests: 9
+2026-06-29 16:26:27,400 - INFO -   Successful: 0
+2026-06-29 16:26:27,400 - INFO -   Failed: 9
+2026-06-29 16:26:27,400 - INFO - ================================================================================

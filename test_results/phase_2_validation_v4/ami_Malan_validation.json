@@ -1,0 +1,47 @@
+{
+  "language": "ami",
+  "dialect": "Malan",
+  "validation_checks": [
+    {
+      "name": "ami/Malan - Character 1-gram Deltas",
+      "status": "FAIL",
+      "message": "Anomalously high deltas (cosine=0.5403, kl=1.9533)",
+      "deltas": {
+        "cosine_similarity": 0.5402771905319605,
+        "kl_divergence": 1.9532622612236357
+      }
+    }
+  ],
+  "corpus_integrity_issues": [
+    "ami/Malan has high deltas (cosine=0.5403, kl=1.9533). Possible corpus contamination or validation issues."
+  ],
+  "cross_language_warnings": [],
+  "cross_language_overlaps": {
+    "corpus_unique_chars": [
+      "7",
+      "8",
+      ";",
+      "I",
+      "w",
+      "b",
+      "…",
+      "u",
+      "E",
+      "o"
+    ],
+    "char_count": 65,
+    "language_overlaps": [
+      {
+        "language": "Atayal",
+        "char_overlap_count": 58,
+        "overlap_percentage": 89.2
+      },
+      {
+        "language": "Bunun",
+        "char_overlap_count": 60,
+        "overlap_percentage": 92.3
+      }
+    ]
+  },
+  "language_full_name": "Amis"
+}

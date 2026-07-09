@@ -1,3 +1,5 @@
+from ast import pattern
+
 from orthography_extract import generate_corpus, extract_orthographic_info, is_dialect, remove_chinese_characters
 from orthography_compare import jaccard_similarity, overlap_coefficient, normalize_vector, cosine_similarity, euclidean, kl_divergence, vis_diff
 import numpy as np
@@ -23,6 +25,29 @@ def is_lang(lang):
     # reading from the csv would better support changes in recognized langauge/dialect
     dialect_csv = pd.read_csv("dialects.csv")
     return lang in dialect_csv['Language'].unique()
+
+
+# sanitize characters for use in filenames/directory names
+def sanitize_for_filename(char):
+    """
+    Replace illegal filename characters with safe representations.
+    Illegal characters: < > : " / \ | ? *
+    """
+    illegal_chars = {
+        '<': 'lt',
+        '>': 'gt',
+        ':': 'colon',
+        '"': 'quote',
+        '/': 'slash',
+        '\\': 'backslash',
+        '|': 'pipe',
+        '?': 'question',
+        '*': 'asterisk',
+    }
+    
+    if char in illegal_chars:
+        return f"_{illegal_chars[char]}_"
+    return char
 
 
 # plotting helper
@@ -120,7 +145,7 @@ def w_vis_diff(ref_freq: Counter, target_freq: Counter, logs_dir, ref_name="refe
                output=output_path,
                filename=f'{gram_length}_gram_abs_frequency_comparison_{ref_name}_{target_name}.png')
 
-def compute_ngram_similarity_metrics(ref_tokens, target_tokens, gram_length, laplace=True):
+def compute_ngram_similarity_metrics(ref_tokens, target_tokens, gram_length, laplace=True, verbose=True):
     def get_ngrams(tokens):
         ngrams = [tuple(tokens[i:i + gram_length]) for i in range(len(tokens) - gram_length + 1)]
         return Counter(ngrams)
@@ -141,6 +166,13 @@ def compute_ngram_similarity_metrics(ref_tokens, target_tokens, gram_length, lap
 
     ref_freq_vector = normalize_vector(ref_freq_vector)
     target_freq_vector = normalize_vector(target_freq_vector)
+
+    if verbose:
+        print(f"Jaccard Similarity of unique {gram_length}-grams: {jaccard_similarity(ref_ngrams_set, target_ngrams_set):.2f}")
+        print(f"Overlap Coefficient of unique {gram_length}-grams: {overlap_coefficient(ref_ngrams_set, target_ngrams_set):.2f}")
+        print(f"Cosine Similarity of {gram_length}-gram frequencies: {cosine_similarity(np.array([ref_freq_vector]), np.array([target_freq_vector]))[0][0]:.2f}")
+        print(f"Euclidean Distance of {gram_length}-gram frequencies: {euclidean(ref_freq_vector, target_freq_vector):.2f}")
+        print(f"KL Divergence of {gram_length}-gram frequencies: {kl_divergence(ref_freq_vector, target_freq_vector):.2f}")
 
     return {
         "n": gram_length,
@@ -178,7 +210,7 @@ def word_tokenize(corpus, lang):
     return re.findall(regex, corpus)
 
 # n_gram analysis at the word level
-def n_gram_analysis(lang, ref_corpus, target_corpus, logs_dir, n=2, laplace=True, save_plots=True, verbose=True):
+def n_gram_analysis(lang, ref_corpus, target_corpus, logs_dir, n=2, laplace=True, save_plots=True, verbose=True, limit=40):
     if not is_lang(lang):
         raise ValueError("Target language not recognized list of langauges. Verify your spelling and capitalization of first letter")
     # from tokens create n-gram counts for all discrete gram lengths within [1, n].
@@ -190,6 +222,19 @@ def n_gram_analysis(lang, ref_corpus, target_corpus, logs_dir, n=2, laplace=True
             n_grams = [tuple(tokens[i:i+gram_length]) for i in range(len(tokens) - gram_length + 1)] 
             counters.append(Counter(n_grams))
         return counters
+    
+    def normalized_token_perplexity(counters):
+        perplexities = []
+        for gram_length in range(1, n + 1):
+            total_count = counters[gram_length - 1].total()
+            if total_count == 0:
+                perplexities.append(float('inf'))
+                continue
+            entropy = -sum((count / total_count) * math.log2(count / total_count) for count in counters[gram_length - 1].values())
+            perplexity = 2 ** entropy
+            normalized_perplexity = perplexity / total_count
+            perplexities.append(normalized_perplexity)
+        return perplexities
 
     # tokenize and get the ngrams from n=1 to n=n from reference and target
     ref_tokens = word_tokenize(ref_corpus, lang)
@@ -307,12 +352,12 @@ def n_gram_analysis(lang, ref_corpus, target_corpus, logs_dir, n=2, laplace=True
     # calculating kl divergence
     kl_div = kl_divergence(ref_freq_vector, target_freq_vector)
 
-    # if verbose:
-    #     print(f"Jaccard Similarity of unique {n}-grams: {word_jaccard_similarity:.2f}")
-    #     print(f"Overlap Coefficient of unique {n}-grams: {word_overlap_coefficient:.2f}")
-    #     print(f"Cosine Similarity of word {n}-grams: {cosine_sim:.2f}")
-    #     print(f"Euclidean Distance of word {n}-grams: {euclidean_dist:.2f}")
-    #     print(f"KL Divergence of word {n}-grams: {kl_div:.2f}")
+    if verbose:
+        print(f"Jaccard Similarity of unique {n}-grams: {word_jaccard_similarity:.2f}")
+        print(f"Overlap Coefficient of unique {n}-grams: {word_overlap_coefficient:.2f}")
+        print(f"Cosine Similarity of word {n}-grams: {cosine_sim:.2f}")
+        print(f"Euclidean Distance of word {n}-grams: {euclidean_dist:.2f}")
+        print(f"KL Divergence of word {n}-grams: {kl_div:.2f}")
     
     # Relative/Absolute Frequency visualizations for unigrams and n-grams (if not unigram)
     if save_plots:
@@ -361,49 +406,48 @@ def n_gram_analysis(lang, ref_corpus, target_corpus, logs_dir, n=2, laplace=True
     # calculate the probability of n_grams using conditional probability
     def calc_n_gram_probs(counters, n_grams):
         return {n_gram: calc_n_gram_prob(counters, n_gram) for n_gram in n_grams}
-
-    interpolated_weights = em(ref_n_grams_counts)
-
-    limit = 40
+    
     total_counter = ref_n_grams + target_n_grams
     top_limit_grams = [g for g, _ in total_counter.most_common(limit)]
 
-    inter_probs = calc_n_gram_probs_from_inter(
-        target_n_grams_counts, top_limit_grams, interpolated_weights
-    )
-    cond_probs = calc_n_gram_probs(target_n_grams_counts, top_limit_grams)
+    # interpolated_weights = em(ref_n_grams_counts)
 
-    percentage_probs = {n_gram: (inter_probs[n_gram] / cond_probs[n_gram]) * 100 for n_gram in top_limit_grams}
-    valid_ratio_values = [
-        inter_probs[n_gram] / cond_probs[n_gram]
-        for n_gram in top_limit_grams
-        if np.isfinite(cond_probs[n_gram]) and cond_probs[n_gram] > 0 and np.isfinite(inter_probs[n_gram])
-    ]
-    average_interpolated_conditional_probability_proportion = (
-        float(np.mean(valid_ratio_values)) if valid_ratio_values else None
-    )
+    # inter_probs = calc_n_gram_probs_from_inter(
+    #     target_n_grams_counts, top_limit_grams, interpolated_weights
+    # )
+    # cond_probs = calc_n_gram_probs(target_n_grams_counts, top_limit_grams)
 
-    if save_plots:
-        x = np.arange(limit)  # label locations
-        width = 0.35  # width of the bars
+    # percentage_probs = {n_gram: (inter_probs[n_gram] / cond_probs[n_gram]) * 100 for n_gram in top_limit_grams}
+    # valid_ratio_values = [
+    #     inter_probs[n_gram] / cond_probs[n_gram]
+    #     for n_gram in top_limit_grams
+    #     if np.isfinite(cond_probs[n_gram]) and cond_probs[n_gram] > 0 and np.isfinite(inter_probs[n_gram])
+    # ]
+    # average_interpolated_conditional_probability_proportion = (
+    #     float(np.mean(valid_ratio_values)) if valid_ratio_values else None
+    # )
 
-        fig, ax = plt.subplots(figsize=(15, 5))
-        rects1 = ax.bar(
-        x - width / 2,
-        [p if p is not None else 0 for p in percentage_probs.values()],  # Replace `None` with 0 for plotting (does not happen anymore)
-        width,
-        alpha=0.7)
-        ax.plot(x - width / 2, [100] * len(x), color='red', linewidth=2)
-        # Add labels and title
-        ax.set_ylabel('Interpolated Probabilities Percentage of Conditional Probability')
-        ax.set_title(f'Interploted Probabilites Over Conditional Probabilities for Top {limit} n-grams')
-        ax.set_xticks(x)
-        ax.set_xticklabels(top_limit_grams)
-        # Rotate x-axis labels for better readability
-        plt.xticks(rotation=90)
-        plt.tight_layout()
-        plt.savefig(os.path.join(logs_dir, f'{n}_probability_comparison.png'))
-        plt.close()
+    # if save_plots:
+    #     x = np.arange(limit)  # label locations
+    #     width = 0.35  # width of the bars
+
+    #     fig, ax = plt.subplots(figsize=(15, 5))
+    #     rects1 = ax.bar(
+    #     x - width / 2,
+    #     [p if p is not None else 0 for p in percentage_probs.values()],  # Replace `None` with 0 for plotting (does not happen anymore)
+    #     width,
+    #     alpha=0.7)
+    #     ax.plot(x - width / 2, [100] * len(x), color='red', linewidth=2)
+    #     # Add labels and title
+    #     ax.set_ylabel('Interpolated Probabilities Percentage of Conditional Probability')
+    #     ax.set_title(f'Interploted Probabilites Over Conditional Probabilities for Top {limit} n-grams')
+    #     ax.set_xticks(x)
+    #     ax.set_xticklabels(top_limit_grams)
+    #     # Rotate x-axis labels for better readability
+    #     plt.xticks(rotation=90)
+    #     plt.tight_layout()
+    #     plt.savefig(os.path.join(logs_dir, f'{n}_probability_comparison.png'))
+    #     plt.close()
 
     def build_next_word_distributions(ngram_counter, context_length):
         distributions = {}
@@ -559,23 +603,23 @@ def n_gram_analysis(lang, ref_corpus, target_corpus, logs_dir, n=2, laplace=True
             filename=f"{n}_next_word_kl_divergence.png",
         )
 
-    inter_kl_by_context, inter_mean_kl = compare_interpolated_next_word_distributions(
-        ref_n_grams_counts, target_n_grams_counts, top_contexts, interpolated_weights
-    )
-    if inter_mean_kl is not None and verbose:
-        print(
-            f"Mean KL divergence of interpolated next-word distributions "
-            f"for top {limit} {context_label}s: {inter_mean_kl:.4f}"
-        )
-    if inter_mean_kl is not None and save_plots:
-        plot_next_word_kl_distances(
-            inter_kl_by_context,
-            title=(
-                f"Interpolated Next-Word Distribution KL Divergence for Top {limit} "
-                f"{context_label}s (given {n}-gram context)"
-            ),
-            filename=f"{n}_interpolated_next_word_kl_divergence.png",
-        )
+    # inter_kl_by_context, inter_mean_kl = compare_interpolated_next_word_distributions(
+    #     ref_n_grams_counts, target_n_grams_counts, top_contexts, interpolated_weights
+    # )
+    # if inter_mean_kl is not None and verbose:
+    #     print(
+    #         f"Mean KL divergence of interpolated next-word distributions "
+    #         f"for top {limit} {context_label}s: {inter_mean_kl:.4f}"
+    #     )
+    # if inter_mean_kl is not None and save_plots:
+    #     plot_next_word_kl_distances(
+    #         inter_kl_by_context,
+    #         title=(
+    #             f"Interpolated Next-Word Distribution KL Divergence for Top {limit} "
+    #             f"{context_label}s (given {n}-gram context)"
+    #         ),
+    #         filename=f"{n}_interpolated_next_word_kl_divergence.png",
+    #     )
 
     n_gram_statistics = {}
     for gram_length in range(1, n + 1):
@@ -588,6 +632,9 @@ def n_gram_analysis(lang, ref_corpus, target_corpus, logs_dir, n=2, laplace=True
             ),
         }
 
+    print("Perplexity of reference corpus:", normalized_token_perplexity(ref_n_grams_counts))
+    print("Perplexity of target corpus:", normalized_token_perplexity(target_n_grams_counts))
+
     return {
         "n": n,
         "jaccard_similarity": float(word_jaccard_similarity),
@@ -596,15 +643,65 @@ def n_gram_analysis(lang, ref_corpus, target_corpus, logs_dir, n=2, laplace=True
         "euclidean_distance": float(euclidean_dist),
         "kl_divergence": float(kl_div),
         "mean_next_word_kl_divergence": None if mean_kl is None else float(mean_kl),
-        "mean_interpolated_next_word_kl_divergence": None if inter_mean_kl is None else float(inter_mean_kl),
+        # "mean_interpolated_next_word_kl_divergence": None if inter_mean_kl is None else float(inter_mean_kl),
         "ref_token_count": len(ref_tokens),
         "target_token_count": len(target_tokens),
         "ref_unique_ngram_count": len(ref_n_grams_set),
         "target_unique_ngram_count": len(target_n_grams_set),
-        "average_interpolated_conditional_probability_proportion": average_interpolated_conditional_probability_proportion,
+        # "average_interpolated_conditional_probability_proportion": average_interpolated_conditional_probability_proportion,
         "n_gram_statistics": n_gram_statistics,
     }
 
+def compute_average_stat_changes(actual_stats, swapped_stats, n, level='character'):
+    """
+    Compute average absolute change in statistics across all gram-lengths and metrics.
+    level can be 'character' or 'word'
+    """
+    metrics = ['jaccard_similarity', 'overlap_coefficient', 'cosine_similarity', 
+               'euclidean_distance', 'kl_divergence']
+    
+    changes_by_gram = {}
+    for gram_length in range(1, n + 1):
+        actual = actual_stats['n_gram_statistics'][str(gram_length)][level]
+        swapped = swapped_stats['n_gram_statistics'][str(gram_length)][level]
+        
+        changes = {}
+        for metric in metrics:
+            change = (swapped[metric] - actual[metric])
+            changes[metric] = (change)
+        
+        changes_by_gram[gram_length] = changes
+    
+    return changes_by_gram
+
+
+def print_average_changes_summary(changes_by_gram, n, level, scenario):
+    """
+    Print a summary of average changes across gram-lengths.
+    """
+    metrics = ['jaccard_similarity', 'overlap_coefficient', 'cosine_similarity', 
+               'euclidean_distance', 'kl_divergence']
+    
+    print(f"\n=== AVERAGE CHANGES BY GRAM-LENGTH ({level.upper()} LEVEL) - {scenario} ===")
+    
+    # Compute average change per metric across all gram-lengths
+    metric_averages = {}
+    for metric in metrics:
+        avg_change = np.mean([changes_by_gram[g][metric] for g in changes_by_gram])
+        metric_averages[metric] = avg_change
+    
+    print(f"\nAverage change across all {n}-grams ({level} level):")
+    for metric in metrics:
+        print(f"  {metric}: {metric_averages[metric]:.4f}")
+    
+    # Print per gram-length summaries
+    print(f"\nAverage change per gram-length ({level} level):")
+    for gram_length in range(1, n + 1):
+        changes = changes_by_gram[gram_length]
+        avg_per_gram = np.mean(list(changes.values()))
+        print(f"  {gram_length}-gram: {avg_per_gram:.4f} (avg across metrics)")
+        for metric in metrics:
+            print(f"    {metric}: {changes[metric]:.4f}")
 
 # INVARIANT: args input is validated
 def main(args):
@@ -618,6 +715,7 @@ def main(args):
     dialect = args.dialect
     # TBD save functionality for analyisi (JSON?)
     # save = False if not args.save else args.save
+    perturb_types = args.perturb_types
 
     # generate corpus from directory (or directories) looking for a specific dialect
     # note that generate_corpus when set to standard does not handle cases where the original is the same as the standard, since in those cases standard is ommitted
@@ -625,7 +723,7 @@ def main(args):
 
     dialect_corpus = ""
     for path in corpora_paths:
-        corpus = generate_corpus(lang, path, "standard", by_dialect=True) # output is a dictionary where the keys are the dialect and the values are the totality of text for that dialect as a string
+        corpus = generate_corpus(lang, path, "standard", by_dialect=True, phonetic=False) # output is a dictionary where the keys are the dialect and the values are the totality of text for that dialect as a string
         if dialect in corpus.keys():
             dialect_corpus += corpus[dialect]
      
@@ -637,6 +735,18 @@ def main(args):
     num_sim = 5 # number of simulations
     ref_ratio = 0.8 # the percentage of the partition to be used as the "reference" corpus
 
+    # Initialize accumulators for tracking changes across simulations
+    # Structure: {scenario: {level: {gram_length: {metric: [changes_across_sims]}}}}
+    all_changes = {
+        'max': {'character': {}, 'word': {}},
+        'min': {'character': {}, 'word': {}},
+        'rand': {'character': {}, 'word': {}}
+    }
+    
+    # Initialize nested dictionaries for each gram length
+    metrics = ['jaccard_similarity', 'overlap_coefficient', 'cosine_similarity', 
+               'euclidean_distance', 'kl_divergence']
+    
     # for num_sim times, split the corpus into reference corpus and target corpus, comparing them both
     random.seed(0) # set seed for testing purposes
     for sim in range(num_sim):
@@ -649,27 +759,29 @@ def main(args):
         ref_text = "".join(ref)
         target_text = "".join(target)
 
-        # ref_info = extract_orthographic_info(ref_text)
-        # target_info = extract_orthographic_info(target_text)
+        ref_info = extract_orthographic_info(ref_text)
+        target_info = extract_orthographic_info(target_text)
 
-        # # the following code is copied from orthography_compare.py with minor edits to pathing and more documentation
+        # the following code is copied from orthography_compare.py with minor edits to pathing and more documentation
 
-        # # calculating jaccard similarity
-        # char_jaccard_similarity = jaccard_similarity(set(ref_info['unique_characters']), set(target_info['unique_characters']))
-        # print(f"Jaccard Similarity of unique characters: {char_jaccard_similarity:.2f}")
+        # calculating jaccard similarity
+        char_jaccard_similarity = jaccard_similarity(set(ref_info['unique_characters']), set(target_info['unique_characters']))
+        print(f"Jaccard Similarity of unique characters: {char_jaccard_similarity:.2f}")
 
-        # # calculating overlap
-        # char_overlap_coefficient = overlap_coefficient(set(ref_info['unique_characters']), set(target_info['unique_characters']))
-        # print(f"Overlap Coefficient of unique characters: {char_overlap_coefficient:.2f}")
+        # calculating overlap
+        char_overlap_coefficient = overlap_coefficient(set(ref_info['unique_characters']), set(target_info['unique_characters']))
+        print(f"Overlap Coefficient of unique characters: {char_overlap_coefficient:.2f}")
 
-        # # set of characters that appear in both corpus, which is all characters in the original corpus before being partitioned
-        # all_chars = set(ref_info['unique_characters']).union(set(target_info['unique_characters']))
+        # set of characters that appear in both corpus, which is all characters in the original corpus before being partitioned
+        all_chars = set(ref_info['unique_characters']).union(set(target_info['unique_characters']))
 
-        # # create and normalize frequency vectors for the characters
-        # c1_freq_vector = np.array([ref_info['character_frequency'].get(char, 0) for char in all_chars])
-        # c2_freq_vector = np.array([target_info['character_frequency'].get(char, 0) for char in all_chars])
-        # c1_freq_vector = normalize_vector(c1_freq_vector)
-        # c2_freq_vector = normalize_vector(c2_freq_vector)
+        # create and normalize frequency vectors for the characters
+        c1_freq_vector = np.array([ref_info['character_frequency'].get(char, 0) for char in all_chars])
+        c2_freq_vector = np.array([target_info['character_frequency'].get(char, 0) for char in all_chars])
+        c1_freq_vector = normalize_vector(c1_freq_vector)
+        c2_freq_vector = normalize_vector(c2_freq_vector)
+
+        compute_ngram_similarity_metrics(ref_info['unique_characters'], target_info['unique_characters'], 1, laplace=True)
 
         # # calculating cosine similarity
         # cosine_sim = cosine_similarity([c1_freq_vector], [c2_freq_vector])[0][0]
@@ -683,20 +795,22 @@ def main(args):
         # kl_div = kl_divergence(c1_freq_vector, c2_freq_vector)
         # print(f"KL Divergence of character frequencies: {kl_div:.2f}")
 
-        # # calculating bigram statistics
-        # c1_bigrams = ref_info['2-grams']
-        # c2_bigrams = target_info['2-grams']
+        # calculating bigram statistics
+        c1_bigrams = ref_info['2-grams']
+        c2_bigrams = target_info['2-grams']
 
-        # # Create a set of all bigrams
-        # all_bigrams = set(c1_bigrams.keys()).union(set(c2_bigrams.keys()))
+        # Create a set of all bigrams
+        all_bigrams = set(c1_bigrams.keys()).union(set(c2_bigrams.keys()))
 
-        # c1_bigram_vector = np.array([c1_bigrams.get(bigram, 0) for bigram in all_bigrams])
-        # c2_bigram_vector = np.array([c2_bigrams.get(bigram, 0) for bigram in all_bigrams])
-        # # Normalize and compute similarity measures as before
-        # c1_bigram_vector = normalize_vector(c1_bigram_vector)
-        # c2_bigram_vector = normalize_vector(c2_bigram_vector)
+        c1_bigram_vector = np.array([c1_bigrams.get(bigram, 0) for bigram in all_bigrams])
+        c2_bigram_vector = np.array([c2_bigrams.get(bigram, 0) for bigram in all_bigrams])
+        # Normalize and compute similarity measures as before
+        c1_bigram_vector = normalize_vector(c1_bigram_vector)
+        c2_bigram_vector = normalize_vector(c2_bigram_vector)
 
-        # # compute cosine similarity for bigrams
+        compute_ngram_similarity_metrics(list(c1_bigrams.keys()), list(c2_bigrams.keys()), 2, laplace=True)
+
+        # compute cosine similarity for bigrams
         # bigram_cosine_sim = cosine_similarity([c1_bigram_vector], [c2_bigram_vector])[0][0]
         # print(f"Cosine Similarity of bigram frequencies: {bigram_cosine_sim:.2f}")
 
@@ -704,9 +818,235 @@ def main(args):
         # bigram_euclidean_dist = euclidean(c1_bigram_vector, c2_bigram_vector)
         # print(f"Euclidean Distance of bigram frequencies: {bigram_euclidean_dist:.2f}")
 
-        # vis_diff(all_chars, ref_info['character_frequency'], target_info['character_frequency'], "reference", "target", "QC/orthography", lang + "_" + dialect + "_" +  str(sim + 1))
+        vis_diff(all_chars, ref_info['character_frequency'], target_info['character_frequency'], "reference", "target", "QC/orthography", lang + "_" + dialect + "_" +  str(sim + 1))
 
-        n_gram_analysis(lang=lang, ref_corpus=ref_text, target_corpus=target_text, logs_dir="QC/orthography/" + lang + "_" + dialect + "_" +  str(sim + 1), n=2, laplace=True)
+        actual_stats = n_gram_analysis(lang=lang, ref_corpus=ref_text, target_corpus=target_text, logs_dir=f"QC/orthography/{lang}_{dialect}_{sim + 1}", n=3, laplace=True, verbose=False)
+
+        if 'swap' in perturb_types:
+            print()
+            print("SINGLE SWAPPED CHARACTERS (MAX FREQUENCY)")
+            print()
+            max_freq_char = max(target_info['character_frequency'], key=target_info['character_frequency'].get)
+            random_char = random.choice(list(set(target_info['unique_characters']) - {max_freq_char}))
+            print(f"Swapping the most frequent character '{max_freq_char}' with a random character '{random_char}' in the target corpus.")
+            swapped_target_translation = target_text.maketrans(max_freq_char, random_char)
+            sanitized_max_char = sanitize_for_filename(max_freq_char)
+            sanitized_random_char = sanitize_for_filename(random_char)
+            swapped_stats_max = n_gram_analysis(lang=lang, ref_corpus=ref_text, target_corpus=target_text.translate(swapped_target_translation), logs_dir=f"QC/orthography/{lang}_{dialect}_{sim + 1}/swapped/{sanitized_max_char}_with_{sanitized_random_char}", n=3, laplace=True, verbose=False)
+
+            print()
+            print("CHANGE IN STATS AFTER SWAPPING CHARACTERS (MAX FREQUENCY)")
+            print()
+            for gram_length in range(1, actual_stats['n'] + 1):
+                print(f"\n=== {gram_length}-gram ===")
+                print(f"Character Level:")
+                char_stats_actual = actual_stats['n_gram_statistics'][str(gram_length)]['character']
+                char_stats_swapped = swapped_stats_max['n_gram_statistics'][str(gram_length)]['character']
+                print(f"  Jaccard Similarity: {char_stats_actual['jaccard_similarity']:.2f} -> {char_stats_swapped['jaccard_similarity']:.2f}")
+                print(f"  Overlap Coefficient: {char_stats_actual['overlap_coefficient']:.2f} -> {char_stats_swapped['overlap_coefficient']:.2f}")
+                print(f"  Cosine Similarity: {char_stats_actual['cosine_similarity']:.2f} -> {char_stats_swapped['cosine_similarity']:.2f}")
+                print(f"  Euclidean Distance: {char_stats_actual['euclidean_distance']:.2f} -> {char_stats_swapped['euclidean_distance']:.2f}")
+                print(f"  KL Divergence: {char_stats_actual['kl_divergence']:.2f} -> {char_stats_swapped['kl_divergence']:.2f}")
+                
+                print(f"Word Level:")
+                word_stats_actual = actual_stats['n_gram_statistics'][str(gram_length)]['word']
+                word_stats_swapped = swapped_stats_max['n_gram_statistics'][str(gram_length)]['word']
+                print(f"  Jaccard Similarity: {word_stats_actual['jaccard_similarity']:.2f} -> {word_stats_swapped['jaccard_similarity']:.2f}")
+                print(f"  Overlap Coefficient: {word_stats_actual['overlap_coefficient']:.2f} -> {word_stats_swapped['overlap_coefficient']:.2f}")
+                print(f"  Cosine Similarity: {word_stats_actual['cosine_similarity']:.2f} -> {word_stats_swapped['cosine_similarity']:.2f}")
+                print(f"  Euclidean Distance: {word_stats_actual['euclidean_distance']:.2f} -> {word_stats_swapped['euclidean_distance']:.2f}")
+                print(f"  KL Divergence: {word_stats_actual['kl_divergence']:.2f} -> {word_stats_swapped['kl_divergence']:.2f}")
+
+            # Compute and accumulate changes for MAX frequency swap
+            char_changes_max = compute_average_stat_changes(actual_stats, swapped_stats_max, actual_stats['n'], 'character')
+            word_changes_max = compute_average_stat_changes(actual_stats, swapped_stats_max, actual_stats['n'], 'word')
+            
+            for gram_length in char_changes_max:
+                if gram_length not in all_changes['max']['character']:
+                    all_changes['max']['character'][gram_length] = {metric: [] for metric in metrics}
+                for metric in metrics:
+                    all_changes['max']['character'][gram_length][metric].append(char_changes_max[gram_length][metric])
+            
+            for gram_length in word_changes_max:
+                if gram_length not in all_changes['max']['word']:
+                    all_changes['max']['word'][gram_length] = {metric: [] for metric in metrics}
+                for metric in metrics:
+                    all_changes['max']['word'][gram_length][metric].append(word_changes_max[gram_length][metric])
+
+            print()
+            print("SINGLE SWAPPED CHARACTERS (MIN FREQUENCY)")
+            print()
+            min_freq_char = min(target_info['character_frequency'], key=target_info['character_frequency'].get)
+            random_char = random.choice(list(set(target_info['unique_characters']) - {min_freq_char}))
+            print(f"Swapping the least frequent character '{min_freq_char}' with a random character '{random_char}' in the target corpus.")
+            swapped_target_translation = target_text.maketrans(min_freq_char, random_char)
+            sanitized_min_char = sanitize_for_filename(min_freq_char)
+            sanitized_random_char = sanitize_for_filename(random_char)
+            swapped_stats_min = n_gram_analysis(lang=lang, ref_corpus=ref_text, target_corpus=target_text.translate(swapped_target_translation), logs_dir=f"QC/orthography/{lang}_{dialect}_{sim + 1}/swapped/{sanitized_min_char}_with_{sanitized_random_char}", n=3, laplace=True, verbose=False)
+
+            print()
+            print("CHANGE IN STATS AFTER SWAPPING CHARACTERS (MIN FREQUENCY)")
+            print()
+            for gram_length in range(1, actual_stats['n'] + 1):
+                print(f"\n=== {gram_length}-gram ===")
+                print(f"Character Level:")
+                char_stats_actual = actual_stats['n_gram_statistics'][str(gram_length)]['character']
+                char_stats_swapped = swapped_stats_min['n_gram_statistics'][str(gram_length)]['character']
+                print(f"  Jaccard Similarity: {char_stats_actual['jaccard_similarity']:.2f} -> {char_stats_swapped['jaccard_similarity']:.2f}")
+                print(f"  Overlap Coefficient: {char_stats_actual['overlap_coefficient']:.2f} -> {char_stats_swapped['overlap_coefficient']:.2f}")
+                print(f"  Cosine Similarity: {char_stats_actual['cosine_similarity']:.2f} -> {char_stats_swapped['cosine_similarity']:.2f}")
+                print(f"  Euclidean Distance: {char_stats_actual['euclidean_distance']:.2f} -> {char_stats_swapped['euclidean_distance']:.2f}")
+                print(f"  KL Divergence: {char_stats_actual['kl_divergence']:.2f} -> {char_stats_swapped['kl_divergence']:.2f}")
+                
+                print(f"Word Level:")
+                word_stats_actual = actual_stats['n_gram_statistics'][str(gram_length)]['word']
+                word_stats_swapped = swapped_stats_min['n_gram_statistics'][str(gram_length)]['word']
+                print(f"  Jaccard Similarity: {word_stats_actual['jaccard_similarity']:.2f} -> {word_stats_swapped['jaccard_similarity']:.2f}")
+                print(f"  Overlap Coefficient: {word_stats_actual['overlap_coefficient']:.2f} -> {word_stats_swapped['overlap_coefficient']:.2f}")
+                print(f"  Cosine Similarity: {word_stats_actual['cosine_similarity']:.2f} -> {word_stats_swapped['cosine_similarity']:.2f}")
+                print(f"  Euclidean Distance: {word_stats_actual['euclidean_distance']:.2f} -> {word_stats_swapped['euclidean_distance']:.2f}")
+                print(f"  KL Divergence: {word_stats_actual['kl_divergence']:.2f} -> {word_stats_swapped['kl_divergence']:.2f}")
+
+            # Compute and accumulate changes for MIN frequency swap
+            char_changes_min = compute_average_stat_changes(actual_stats, swapped_stats_min, actual_stats['n'], 'character')
+            word_changes_min = compute_average_stat_changes(actual_stats, swapped_stats_min, actual_stats['n'], 'word')
+
+            for gram_length in char_changes_min:
+                if gram_length not in all_changes['min']['character']:
+                    all_changes['min']['character'][gram_length] = {metric: [] for metric in metrics}
+                for metric in metrics:
+                    all_changes['min']['character'][gram_length][metric].append(char_changes_min[gram_length][metric])
+            
+            for gram_length in word_changes_min:
+                if gram_length not in all_changes['min']['word']:
+                    all_changes['min']['word'][gram_length] = {metric: [] for metric in metrics}
+                for metric in metrics:
+                    all_changes['min']['word'][gram_length][metric].append(word_changes_min[gram_length][metric])
+
+            print()
+            print("RANDOM SWAP")
+            print()
+
+            other_random_char = random.choice(list(set(target_info['unique_characters']) - {min_freq_char, max_freq_char, random_char}))
+            print(f"Swapping the least frequent character '{other_random_char}' with a random character '{random_char}' in the target corpus.")
+            swapped_target_translation = target_text.maketrans(other_random_char, random_char)
+            sanitized_other_random_char = sanitize_for_filename(other_random_char)
+            swapped_stats_rand = n_gram_analysis(lang=lang, ref_corpus=ref_text, target_corpus=target_text.translate(swapped_target_translation), logs_dir=f"QC/orthography/{lang}_{dialect}_{sim + 1}/swapped/{sanitized_other_random_char}_with_{sanitized_random_char}", n=3, laplace=True, verbose=False)
+
+            for gram_length in range(1, actual_stats['n'] + 1):
+                print(f"\n=== {gram_length}-gram ===")
+                print(f"Character Level:")
+                char_stats_actual = actual_stats['n_gram_statistics'][str(gram_length)]['character']
+                char_stats_swapped = swapped_stats_min['n_gram_statistics'][str(gram_length)]['character']
+                print(f"  Jaccard Similarity: {char_stats_actual['jaccard_similarity']:.2f} -> {char_stats_swapped['jaccard_similarity']:.2f}")
+                print(f"  Overlap Coefficient: {char_stats_actual['overlap_coefficient']:.2f} -> {char_stats_swapped['overlap_coefficient']:.2f}")
+                print(f"  Cosine Similarity: {char_stats_actual['cosine_similarity']:.2f} -> {char_stats_swapped['cosine_similarity']:.2f}")
+                print(f"  Euclidean Distance: {char_stats_actual['euclidean_distance']:.2f} -> {char_stats_swapped['euclidean_distance']:.2f}")
+                print(f"  KL Divergence: {char_stats_actual['kl_divergence']:.2f} -> {char_stats_swapped['kl_divergence']:.2f}")
+                
+                print(f"Word Level:")
+                word_stats_actual = actual_stats['n_gram_statistics'][str(gram_length)]['word']
+                word_stats_swapped = swapped_stats_min['n_gram_statistics'][str(gram_length)]['word']
+                print(f"  Jaccard Similarity: {word_stats_actual['jaccard_similarity']:.2f} -> {word_stats_swapped['jaccard_similarity']:.2f}")
+                print(f"  Overlap Coefficient: {word_stats_actual['overlap_coefficient']:.2f} -> {word_stats_swapped['overlap_coefficient']:.2f}")
+                print(f"  Cosine Similarity: {word_stats_actual['cosine_similarity']:.2f} -> {word_stats_swapped['cosine_similarity']:.2f}")
+                print(f"  Euclidean Distance: {word_stats_actual['euclidean_distance']:.2f} -> {word_stats_swapped['euclidean_distance']:.2f}")
+                print(f"  KL Divergence: {word_stats_actual['kl_divergence']:.2f} -> {word_stats_swapped['kl_divergence']:.2f}")
+            # Compute and accumulate changes for RANDOM swap
+            char_changes_rand = compute_average_stat_changes(actual_stats, swapped_stats_rand, actual_stats['n'], 'character')
+            word_changes_rand = compute_average_stat_changes(actual_stats, swapped_stats_rand, actual_stats['n'], 'word')
+
+            for gram_length in char_changes_rand:
+                if gram_length not in all_changes['rand']['character']:
+                    all_changes['rand']['character'][gram_length] = {metric: [] for metric in metrics}
+                for metric in metrics:
+                    all_changes['rand']['character'][gram_length][metric].append(char_changes_rand[gram_length][metric])
+                
+            for gram_length in word_changes_rand:
+                if gram_length not in all_changes['rand']['word']:
+                    all_changes['rand']['word'][gram_length] = {metric: [] for metric in metrics}
+                for metric in metrics:
+                    all_changes['rand']['word'][gram_length][metric].append(word_changes_rand[gram_length][metric])
+
+
+
+            # Print aggregated averages across all simulations
+            print("\n" + "="*80)
+            print("SUMMARY: AVERAGE CHANGES ACROSS ALL SIMULATIONS")
+            print("="*80)
+            
+            for scenario, scenario_name in [('max', 'MAX FREQUENCY SWAP'), ('min', 'MIN FREQUENCY SWAP'), ('rand', 'RANDOM SWAP')]:
+                print(f"\n{'='*80}")
+                print(f"{scenario_name}")
+                print(f"{'='*80}")
+                
+                for level in ['character', 'word']:
+                    print(f"\n{level.upper()} LEVEL:")
+                    level_data = all_changes[scenario][level]
+                    
+                    if not level_data:
+                        print(f"  No data for {level} level")
+                        continue
+                    
+                    # Calculate averages across simulations for each gram-length and metric
+                    for gram_length in sorted(level_data.keys()):
+                        print(f"\n  {gram_length}-gram:")
+                        gram_metrics = level_data[gram_length]
+                        gram_avg_across_metrics = []
+                        
+                        for metric in metrics:
+                            if metric in gram_metrics:
+                                values = gram_metrics[metric]
+                                avg_value = np.mean(values)
+                                gram_avg_across_metrics.append(avg_value)
+                                print(f"    {metric}: {avg_value:.4f}")
+        if 'orthographic' in perturb_types:
+            print()
+            print("ORTHOGRAPHIC PERTURBATION")
+            print()
+            TO_ORTHO = args.to_ortho
+            conversion_table = pd.read_csv(f"Orthographies/ConversionTables/{lang}_{TO_ORTHO}_113.tsv", sep="\t")
+
+            def create_map_pattern(ct):
+                mapping = {}
+                for _, row in ct.iterrows():
+                    standard = row['standard']
+                    original = row['original']
+                    # Filter out NaN and empty strings in both columns
+                    if pd.notna(standard) and pd.notna(original) and str(standard).strip() and str(original).strip():
+                        mapping[str(standard)] = str(original)  # we are reconverting standard back to original-like
+                
+                if not mapping:
+                    return None, None  # Return None if no valid mappings
+                
+                return mapping, re.compile(r'\b(' + '|'.join(re.escape(key) for key in mapping.keys()) + r')\b')
+
+            mapping, pattern = create_map_pattern(conversion_table)
+            if mapping is None or pattern is None:
+                print("WARNING: No valid conversion mappings found in the conversion table. Skipping orthographic perturbation.")
+            else:
+                perturbed_target_text = re.sub(pattern, lambda m: mapping[m.group(0)], target_text)
+                perturbed_stats = n_gram_analysis(lang=lang, ref_corpus=ref_text, target_corpus=perturbed_target_text, logs_dir=f"QC/orthography/{lang}_{dialect}_{sim + 1}/orthographic", n=3, laplace=True, verbose=False)
+                print(f"\nCHANGE IN STATS AFTER ORTHOGRAPHIC PERTURBATION")
+                for gram_length in range(1, actual_stats['n'] + 1):
+                    print(f"\n=== {gram_length}-gram ===")
+                    print(f"Character Level:")
+                    char_stats_actual = actual_stats['n_gram_statistics'][str(gram_length)]['character']
+                    char_stats_perturbed = perturbed_stats['n_gram_statistics'][str(gram_length)]['character']
+                    print(f"  Jaccard Similarity: {char_stats_actual['jaccard_similarity']:.2f} -> {char_stats_perturbed['jaccard_similarity']:.2f}")
+                    print(f"  Overlap Coefficient: {char_stats_actual['overlap_coefficient']:.2f} -> {char_stats_perturbed['overlap_coefficient']:.2f}")
+                    print(f"  Cosine Similarity: {char_stats_actual['cosine_similarity']:.2f} -> {char_stats_perturbed['cosine_similarity']:.2f}")
+                    print(f"  Euclidean Distance: {char_stats_actual['euclidean_distance']:.2f} -> {char_stats_perturbed['euclidean_distance']:.2f}")
+                    print(f"  KL Divergence: {char_stats_actual['kl_divergence']:.2f} -> {char_stats_perturbed['kl_divergence']:.2f}")
+                    
+                    print(f"Word Level:")
+                    word_stats_actual = actual_stats['n_gram_statistics'][str(gram_length)]['word']
+                    word_stats_perturbed = perturbed_stats['n_gram_statistics'][str(gram_length)]['word']
+                    print(f"  Jaccard Similarity: {word_stats_actual['jaccard_similarity']:.2f} -> {word_stats_perturbed['jaccard_similarity']:.2f}")
+                    print(f"  Overlap Coefficient: {word_stats_actual['overlap_coefficient']:.2f} -> {word_stats_perturbed['overlap_coefficient']:.2f}")
+                    print(f"  Cosine Similarity: {word_stats_actual['cosine_similarity']:.2f} -> {word_stats_perturbed['cosine_similarity']:.2f}")
+                    print(f"  Euclidean Distance: {word_stats_actual['euclidean_distance']:.2f} -> {word_stats_perturbed['euclidean_distance']:.2f}")
+                    print(f"  KL Divergence: {word_stats_actual['kl_divergence']:.2f} -> {word_stats_perturbed['kl_divergence']:.2f}")
     return
 
 
@@ -715,6 +1055,8 @@ if __name__ == "__main__":
     # parser.add_argument('--path', help='path of the corpus you would like to analyze')
     parser.add_argument('--lang', help='name of the language you are analyzing the dialect of')
     parser.add_argument('--dialect', help='the target dialect of the text you are analyzing')
+    parser.add_argument('--perturb_types', help='the types of perturbations to apply and compare with reference', default=None, required=False)
+    parser.add_argument('--to_ortho', help='the orthography to convert to for orthographic perturbation', default='94', required=False)
 
     args = parser.parse_args()
 
@@ -729,5 +1071,8 @@ if __name__ == "__main__":
     # TBD: change this to include dialects that are in OtherNames
     elif not is_dialect(args.lang, args.dialect):
         parser.error("Target dialect not recognized for target language. Verify your spelling and capitalization of first letter")
+    elif args.perturb_types and not args.to_ortho:
+        parser.error("Orthographic perturbation requires a target orthography to convert to. Please provide --to_ortho argument.")
+
 
     main(args)

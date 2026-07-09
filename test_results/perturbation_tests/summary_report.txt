@@ -1,0 +1,659 @@
+Character Perturbation Robustness Test Suite - Summary Report
+Generated: 2026-07-07T16:15:00.382386
+================================================================================
+
+Robustness Test Statistics:
+  Total tests: 33
+  Successful: 33
+  Failed: 0
+
+================================================================================
+Per-Language Thresholds (mean ± epsilon, epsilon=0.1)):
+================================================================================
+
+ami:
+  character_kl_1gram:
+    Mean: 2.017712
+    Std Dev: 0.102806
+    Lower (healthy): 1.917712
+    Upper (anomalous): 2.117712
+  character_kl_2gram:
+    Mean: 2.681889
+    Std Dev: 0.178619
+    Lower (healthy): 2.581889
+    Upper (anomalous): 2.781889
+  character_kl_3gram:
+    Mean: 2.244157
+    Std Dev: 0.204413
+    Lower (healthy): 2.144157
+    Upper (anomalous): 2.344157
+  word_kl_1gram:
+    Mean: 0.297474
+    Std Dev: 0.032437
+    Lower (healthy): 0.197474
+    Upper (anomalous): 0.397474
+  word_kl_2gram:
+    Mean: 0.080002
+    Std Dev: 0.007575
+    Lower (healthy): 0.001000
+    Upper (anomalous): 0.180002
+
+tay:
+  character_kl_1gram:
+    Mean: 1.680619
+    Std Dev: 0.080714
+    Lower (healthy): 1.580619
+    Upper (anomalous): 1.780619
+  character_kl_2gram:
+    Mean: 2.286590
+    Std Dev: 0.108521
+    Lower (healthy): 2.186590
+    Upper (anomalous): 2.386590
+  character_kl_3gram:
+    Mean: 1.831221
+    Std Dev: 0.162578
+    Lower (healthy): 1.731221
+    Upper (anomalous): 1.931221
+  word_kl_1gram:
+    Mean: 0.198794
+    Std Dev: 0.047991
+    Lower (healthy): 0.098794
+    Upper (anomalous): 0.298794
+  word_kl_2gram:
+    Mean: 0.064313
+    Std Dev: 0.009871
+    Lower (healthy): 0.001000
+    Upper (anomalous): 0.164313
+
+bnn:
+  character_kl_1gram:
+    Mean: 2.159848
+    Std Dev: 0.208891
+    Lower (healthy): 2.059848
+    Upper (anomalous): 2.259848
+  character_kl_2gram:
+    Mean: 2.893008
+    Std Dev: 0.401472
+    Lower (healthy): 2.793008
+    Upper (anomalous): 2.993008
+  character_kl_3gram:
+    Mean: 2.409509
+    Std Dev: 0.535656
+    Lower (healthy): 2.309509
+    Upper (anomalous): 2.509509
+  word_kl_1gram:
+    Mean: 0.253025
+    Std Dev: 0.109170
+    Lower (healthy): 0.153025
+    Upper (anomalous): 0.353025
+  word_kl_2gram:
+    Mean: 0.060169
+    Std Dev: 0.037102
+    Lower (healthy): 0.001000
+    Upper (anomalous): 0.160169
+
+pwn:
+  character_kl_1gram:
+    Mean: 2.146224
+    Std Dev: 0.150410
+    Lower (healthy): 2.046224
+    Upper (anomalous): 2.246224
+  character_kl_2gram:
+    Mean: 2.946856
+    Std Dev: 0.264946
+    Lower (healthy): 2.846856
+    Upper (anomalous): 3.046856
+  character_kl_3gram:
+    Mean: 2.579622
+    Std Dev: 0.328140
+    Lower (healthy): 2.479622
+    Upper (anomalous): 2.679622
+  word_kl_1gram:
+    Mean: 0.660354
+    Std Dev: 0.105721
+    Lower (healthy): 0.560354
+    Upper (anomalous): 0.760354
+  word_kl_2gram:
+    Mean: 0.170255
+    Std Dev: 0.038483
+    Lower (healthy): 0.070255
+    Upper (anomalous): 0.270255
+
+pyu:
+  character_kl_1gram:
+    Mean: 2.178868
+    Std Dev: 0.146361
+    Lower (healthy): 2.078868
+    Upper (anomalous): 2.278868
+  character_kl_2gram:
+    Mean: 3.054468
+    Std Dev: 0.279989
+    Lower (healthy): 2.954468
+    Upper (anomalous): 3.154468
+  character_kl_3gram:
+    Mean: 2.715541
+    Std Dev: 0.374959
+    Lower (healthy): 2.615541
+    Upper (anomalous): 2.815541
+  word_kl_1gram:
+    Mean: 0.308170
+    Std Dev: 0.059048
+    Lower (healthy): 0.208170
+    Upper (anomalous): 0.408170
+  word_kl_2gram:
+    Mean: 0.100873
+    Std Dev: 0.020475
+    Lower (healthy): 0.001000
+    Upper (anomalous): 0.200873
+
+dru:
+  character_kl_1gram:
+    Mean: 1.913995
+    Std Dev: 0.313498
+    Lower (healthy): 1.813995
+    Upper (anomalous): 2.013995
+  character_kl_2gram:
+    Mean: 2.621546
+    Std Dev: 0.493392
+    Lower (healthy): 2.521546
+    Upper (anomalous): 2.721546
+  character_kl_3gram:
+    Mean: 2.340909
+    Std Dev: 0.566819
+    Lower (healthy): 2.240909
+    Upper (anomalous): 2.440909
+  word_kl_1gram:
+    Mean: 0.264969
+    Std Dev: 0.099834
+    Lower (healthy): 0.164969
+    Upper (anomalous): 0.364969
+  word_kl_2gram:
+    Mean: 0.053872
+    Std Dev: 0.018927
+    Lower (healthy): 0.001000
+    Upper (anomalous): 0.153872
+
+trv:
+  character_kl_1gram:
+    Mean: 1.644124
+    Std Dev: 0.060207
+    Lower (healthy): 1.544124
+    Upper (anomalous): 1.744124
+  character_kl_2gram:
+    Mean: 2.206739
+    Std Dev: 0.130273
+    Lower (healthy): 2.106739
+    Upper (anomalous): 2.306739
+  character_kl_3gram:
+    Mean: 1.771800
+    Std Dev: 0.194756
+    Lower (healthy): 1.671800
+    Upper (anomalous): 1.871800
+  word_kl_1gram:
+    Mean: 0.396518
+    Std Dev: 0.008866
+    Lower (healthy): 0.296518
+    Upper (anomalous): 0.496518
+  word_kl_2gram:
+    Mean: 0.133853
+    Std Dev: 0.005938
+    Lower (healthy): 0.033853
+    Upper (anomalous): 0.233853
+
+
+Global Thresholds (fallback, mean ± 1 std):
+  character_kl_1gram:
+    Mean: 1.960249
+    Std Dev: 0.270459
+    Healthy: 1.689790
+    Anomalous: 2.230708
+  character_kl_2gram:
+    Mean: 2.665116
+    Std Dev: 0.420258
+    Healthy: 2.244858
+    Anomalous: 3.085374
+  character_kl_3gram:
+    Mean: 2.266580
+    Std Dev: 0.493731
+    Healthy: 1.772849
+    Anomalous: 2.760312
+  word_kl_1gram:
+    Mean: 0.321173
+    Std Dev: 0.156678
+    Healthy: 0.164495
+    Anomalous: 0.477852
+  word_kl_2gram:
+    Mean: 0.087759
+    Std Dev: 0.044785
+    Healthy: 0.042973
+    Anomalous: 0.132544
+
+================================================================================
+Prediction Efficacy Metrics:
+================================================================================
+
+Character-Word Correlation (indicates joint predictive power):
+  Cosine Similarity: 0.1952
+    (1.0 = perfect correlation, 0.0 = no correlation, -1.0 = inverse)
+  KL Divergence: 0.4391
+
+XML Corpus Integrity Validation Statistics:
+  Validation checks passed: 0
+  Validation checks warned: 13
+  Validation checks failed: 20
+
+================================================================================
+XML Corpus Integrity Validation Results:
+================================================================================
+
+AMI/Coastal:
+  [X] ami/Coastal - Character 1-gram Deltas (avg of 5 swaps): Beyond upper threshold (cosine=0.5491 > 0.5000, kl=2.1873 > 2.0000)
+      Thresholds: cosine [0.2000, 0.5000], kl [0.5000, 2.0000]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.249129
+    KL: 0.267453
+  Issues:
+    - ami/Coastal: Beyond upper threshold (cosine=0.5491 > 0.5000, kl=2.1873 > 2.0000)
+
+AMI/Hengchun:
+  [!] ami/Hengchun - Character 1-gram Deltas (avg of 5 swaps): Within epsilon bounds (cosine=0.4965, kl=1.9252)
+      Thresholds: cosine [0.2000, 0.5000], kl [0.5000, 2.0000]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.289825
+    KL: 0.275213
+
+AMI/Malan:
+  [!] ami/Malan - Character 1-gram Deltas (avg of 5 swaps): Within epsilon bounds (cosine=0.4784, kl=1.9061)
+      Thresholds: cosine [0.2000, 0.5000], kl [0.5000, 2.0000]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.337884
+    KL: 0.301350
+
+AMI/Southern:
+  [X] ami/Southern - Character 1-gram Deltas (avg of 5 swaps): Beyond upper threshold (cosine=0.5293 > 0.5000, kl=1.9997 > 2.0000)
+      Thresholds: cosine [0.2000, 0.5000], kl [0.5000, 2.0000]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.240333
+    KL: 0.285090
+  Issues:
+    - ami/Southern: Beyond upper threshold (cosine=0.5293 > 0.5000, kl=1.9997 > 2.0000)
+
+AMI/Xiuguluan:
+  [X] ami/Xiuguluan - Character 1-gram Deltas (avg of 5 swaps): Beyond upper threshold (cosine=0.5160 > 0.5000, kl=2.0703 > 2.0000)
+      Thresholds: cosine [0.2000, 0.5000], kl [0.5000, 2.0000]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.303004
+    KL: 0.358264
+  Issues:
+    - ami/Xiuguluan: Beyond upper threshold (cosine=0.5160 > 0.5000, kl=2.0703 > 2.0000)
+
+TAY/FourSeasons:
+  [!] tay/FourSeasons - Character 1-gram Deltas (avg of 5 swaps): Within epsilon bounds (cosine=0.4531, kl=1.7073)
+      Thresholds: cosine [0.2000, 0.5000], kl [0.5000, 2.0000]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.252017
+    KL: 0.169296
+
+TAY/Sekolik:
+  [!] tay/Sekolik - Character 1-gram Deltas (avg of 5 swaps): Within epsilon bounds (cosine=0.4218, kl=1.6663)
+      Thresholds: cosine [0.2000, 0.5000], kl [0.5000, 2.0000]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.219876
+    KL: 0.217710
+
+TAY/Wanda:
+  [!] tay/Wanda - Character 1-gram Deltas (avg of 5 swaps): Within epsilon bounds (cosine=0.4760, kl=1.6834)
+      Thresholds: cosine [0.2000, 0.5000], kl [0.5000, 2.0000]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.380278
+    KL: 0.275940
+
+TAY/Wenshui:
+  [!] tay/Wenshui - Character 1-gram Deltas (avg of 5 swaps): Within epsilon bounds (cosine=0.4724, kl=1.8347)
+      Thresholds: cosine [0.2000, 0.5000], kl [0.5000, 2.0000]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.216790
+    KL: 0.234149
+
+TAY/YilanZeaol:
+  [!] tay/YilanZeaol - Character 1-gram Deltas (avg of 5 swaps): Within epsilon bounds (cosine=0.4401, kl=1.6032)
+      Thresholds: cosine [0.2000, 0.5000], kl [0.5000, 2.0000]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.223803
+    KL: 0.157724
+
+TAY/Zeaol:
+  [!] tay/Zeaol - Character 1-gram Deltas (avg of 5 swaps): Within epsilon bounds (cosine=0.4198, kl=1.5888)
+      Thresholds: cosine [0.2000, 0.5000], kl [0.5000, 2.0000]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.204593
+    KL: 0.137946
+
+BNN/Junqun:
+  [X] bnn/Junqun - Character 1-gram Deltas (avg of 5 swaps): Beyond upper threshold (cosine=0.5363 > 0.5000, kl=2.5314 > 2.0000)
+      Thresholds: cosine [0.2000, 0.5000], kl [0.5000, 2.0000]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.468489
+    KL: 0.451826
+  Issues:
+    - bnn/Junqun: Beyond upper threshold (cosine=0.5363 > 0.5000, kl=2.5314 > 2.0000)
+
+BNN/Kaqun:
+  [X] bnn/Kaqun - Character 1-gram Deltas (avg of 5 swaps): Beyond upper threshold (cosine=0.5026 > 0.5000, kl=1.9229 > 2.0000)
+      Thresholds: cosine [0.2000, 0.5000], kl [0.5000, 2.0000]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.235202
+    KL: 0.123622
+  Issues:
+    - bnn/Kaqun: Beyond upper threshold (cosine=0.5026 > 0.5000, kl=1.9229 > 2.0000)
+
+BNN/Luanqun:
+  [X] bnn/Luanqun - Character 1-gram Deltas (avg of 5 swaps): Beyond upper threshold (cosine=0.5126 > 0.5000, kl=2.0130 > 2.0000)
+      Thresholds: cosine [0.2000, 0.5000], kl [0.5000, 2.0000]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.304773
+    KL: 0.211345
+  Issues:
+    - bnn/Luanqun: Beyond upper threshold (cosine=0.5126 > 0.5000, kl=2.0130 > 2.0000)
+
+BNN/Tanqun:
+  [X] bnn/Tanqun - Character 1-gram Deltas (avg of 5 swaps): Beyond upper threshold (cosine=0.5379 > 0.5000, kl=2.1317 > 2.0000)
+      Thresholds: cosine [0.2000, 0.5000], kl [0.5000, 2.0000]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.372704
+    KL: 0.214651
+  Issues:
+    - bnn/Tanqun: Beyond upper threshold (cosine=0.5379 > 0.5000, kl=2.1317 > 2.0000)
+
+BNN/Zhuoqun:
+  [X] bnn/Zhuoqun - Character 1-gram Deltas (avg of 5 swaps): Beyond upper threshold (cosine=0.5358 > 0.5000, kl=2.2002 > 2.0000)
+      Thresholds: cosine [0.2000, 0.5000], kl [0.5000, 2.0000]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.457841
+    KL: 0.263682
+  Issues:
+    - bnn/Zhuoqun: Beyond upper threshold (cosine=0.5358 > 0.5000, kl=2.2002 > 2.0000)
+
+PWN/Central:
+  [X] pwn/Central - Character 1-gram Deltas (avg of 5 swaps): Beyond upper threshold (cosine=0.5118 > 0.5000, kl=2.0316 > 2.0000)
+      Thresholds: cosine [0.2000, 0.5000], kl [0.5000, 2.0000]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.764973
+    KL: 0.578762
+  Issues:
+    - pwn/Central: Beyond upper threshold (cosine=0.5118 > 0.5000, kl=2.0316 > 2.0000)
+
+PWN/Eastern:
+  [X] pwn/Eastern - Character 1-gram Deltas (avg of 5 swaps): Beyond upper threshold (cosine=0.5329 > 0.5000, kl=2.0682 > 2.0000)
+      Thresholds: cosine [0.2000, 0.5000], kl [0.5000, 2.0000]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.778858
+    KL: 0.562795
+  Issues:
+    - pwn/Eastern: Beyond upper threshold (cosine=0.5329 > 0.5000, kl=2.0682 > 2.0000)
+
+PWN/Northern:
+  [X] pwn/Northern - Character 1-gram Deltas (avg of 5 swaps): Beyond upper threshold (cosine=0.5641 > 0.5000, kl=2.4049 > 2.0000)
+      Thresholds: cosine [0.2000, 0.5000], kl [0.5000, 2.0000]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.830007
+    KL: 0.828939
+  Issues:
+    - pwn/Northern: Beyond upper threshold (cosine=0.5641 > 0.5000, kl=2.4049 > 2.0000)
+
+PWN/Southern:
+  [X] pwn/Southern - Character 1-gram Deltas (avg of 5 swaps): Beyond upper threshold (cosine=0.5530 > 0.5000, kl=2.0802 > 2.0000)
+      Thresholds: cosine [0.2000, 0.5000], kl [0.5000, 2.0000]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.829492
+    KL: 0.670921
+  Issues:
+    - pwn/Southern: Beyond upper threshold (cosine=0.5530 > 0.5000, kl=2.0802 > 2.0000)
+
+PYU/Jianhe:
+  [X] pyu/Jianhe - Character 1-gram Deltas (avg of 5 swaps): Beyond upper threshold (cosine=0.5526 > 0.5000, kl=2.0854 > 2.0000)
+      Thresholds: cosine [0.2000, 0.5000], kl [0.5000, 2.0000]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.328005
+    KL: 0.268278
+  Issues:
+    - pyu/Jianhe: Beyond upper threshold (cosine=0.5526 > 0.5000, kl=2.0854 > 2.0000)
+
+PYU/Nanwang:
+  [X] pyu/Nanwang - Character 1-gram Deltas (avg of 5 swaps): Beyond upper threshold (cosine=0.5749 > 0.5000, kl=2.4322 > 2.0000)
+      Thresholds: cosine [0.2000, 0.5000], kl [0.5000, 2.0000]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.289638
+    KL: 0.405846
+  Issues:
+    - pyu/Nanwang: Beyond upper threshold (cosine=0.5749 > 0.5000, kl=2.4322 > 2.0000)
+
+PYU/Xiqun:
+  [X] pyu/Xiqun - Character 1-gram Deltas (avg of 5 swaps): Beyond upper threshold (cosine=0.5577 > 0.5000, kl=2.0953 > 2.0000)
+      Thresholds: cosine [0.2000, 0.5000], kl [0.5000, 2.0000]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.287690
+    KL: 0.255349
+  Issues:
+    - pyu/Xiqun: Beyond upper threshold (cosine=0.5577 > 0.5000, kl=2.0953 > 2.0000)
+
+PYU/Zhiben:
+  [X] pyu/Zhiben - Character 1-gram Deltas (avg of 5 swaps): Beyond upper threshold (cosine=0.5385 > 0.5000, kl=2.1026 > 2.0000)
+      Thresholds: cosine [0.2000, 0.5000], kl [0.5000, 2.0000]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.328405
+    KL: 0.303206
+  Issues:
+    - pyu/Zhiben: Beyond upper threshold (cosine=0.5385 > 0.5000, kl=2.1026 > 2.0000)
+
+DRU/Dawu:
+  [X] dru/Dawu - Character 1-gram Deltas (avg of 5 swaps): Beyond upper threshold (cosine=0.4972 > 0.5000, kl=2.0314 > 2.0000)
+      Thresholds: cosine [0.2000, 0.5000], kl [0.5000, 2.0000]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.578877
+    KL: 0.447642
+  Issues:
+    - dru/Dawu: Beyond upper threshold (cosine=0.4972 > 0.5000, kl=2.0314 > 2.0000)
+
+DRU/Dona:
+  [X] dru/Dona - Character 1-gram Deltas (avg of 5 swaps): Beyond upper threshold (cosine=0.5327 > 0.5000, kl=1.9995 > 2.0000)
+      Thresholds: cosine [0.2000, 0.5000], kl [0.5000, 2.0000]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.369736
+    KL: 0.281446
+  Issues:
+    - dru/Dona: Beyond upper threshold (cosine=0.5327 > 0.5000, kl=1.9995 > 2.0000)
+
+DRU/Eastern:
+  [X] dru/Eastern - Character 1-gram Deltas (avg of 5 swaps): Beyond upper threshold (cosine=0.5258 > 0.5000, kl=2.0163 > 2.0000)
+      Thresholds: cosine [0.2000, 0.5000], kl [0.5000, 2.0000]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.243856
+    KL: 0.177955
+  Issues:
+    - dru/Eastern: Beyond upper threshold (cosine=0.5258 > 0.5000, kl=2.0163 > 2.0000)
+
+DRU/Maolin:
+  [!] dru/Maolin - Character 1-gram Deltas (avg of 5 swaps): Within epsilon bounds (cosine=0.3464, kl=1.2545)
+      Thresholds: cosine [0.2000, 0.5000], kl [0.5000, 2.0000]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.411089
+    KL: 0.197907
+
+DRU/Wanshan:
+  [!] dru/Wanshan - Character 1-gram Deltas (avg of 5 swaps): Within epsilon bounds (cosine=0.4565, kl=1.9174)
+      Thresholds: cosine [0.2000, 0.5000], kl [0.5000, 2.0000]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.276635
+    KL: 0.161575
+
+DRU/Wutai:
+  [X] dru/Wutai - Character 1-gram Deltas (avg of 5 swaps): Beyond upper threshold (cosine=0.4996 > 0.5000, kl=2.2649 > 2.0000)
+      Thresholds: cosine [0.2000, 0.5000], kl [0.5000, 2.0000]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.265607
+    KL: 0.323289
+  Issues:
+    - dru/Wutai: Beyond upper threshold (cosine=0.4996 > 0.5000, kl=2.2649 > 2.0000)
+
+TRV/DeluValley:
+  [!] trv/DeluValley - Character 1-gram Deltas (avg of 5 swaps): Within epsilon bounds (cosine=0.4489, kl=1.5767)
+      Thresholds: cosine [0.2000, 0.5000], kl [0.5000, 2.0000]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.579720
+    KL: 0.384835
+
+TRV/Duda:
+  [!] trv/Duda - Character 1-gram Deltas (avg of 5 swaps): Within epsilon bounds (cosine=0.4636, kl=1.6329)
+      Thresholds: cosine [0.2000, 0.5000], kl [0.5000, 2.0000]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.622876
+    KL: 0.398419
+
+TRV/Tegudaya:
+  [!] trv/Tegudaya - Character 1-gram Deltas (avg of 5 swaps): Within epsilon bounds (cosine=0.4305, kl=1.7228)
+      Thresholds: cosine [0.2000, 0.5000], kl [0.5000, 2.0000]
+  Word-level deltas (for efficacy analysis):
+    Cosine: 0.520345
+    KL: 0.406300
+
+================================================================================
+Cross-Language Discrimination Test Results:
+================================================================================
+
+Discrimination Statistics:
+  Discriminations passed (correctly identified non-target languages): 0
+  Discriminations failed (incorrectly similar to target language): 0
+
+AMI/Coastal:
+
+TAY/FourSeasons:
+
+BNN/Junqun:
+
+PWN/Central:
+
+PYU/Jianhe:
+
+DRU/Dawu:
+
+TRV/DeluValley:
+
+================================================================================
+Detailed Robustness Test Results (sampling):
+================================================================================
+
+================================================================================
+Test Results: AMI/Coastal
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 6019
+  Reference sentences: 4816
+  Target sentences: 1203
+  Total characters: 394352
+  Unique characters: 34
+
+Perturbation:
+  Character swaps performed: 5
+  Word swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence):
+  Character Level (from character swaps):
+    1-gram:
+      D Cosine Similarity: 0.549096
+      D KL Divergence: 2.187272
+    2-gram:
+      D Cosine Similarity: 0.618459
+      D KL Divergence: 2.982320
+    3-gram:
+      D Cosine Similarity: 0.752275
+      D KL Divergence: 2.563705
+
+  Word Level (from word swaps):
+    1-gram:
+      D Cosine Similarity: 0.249129
+      D KL Divergence: 0.267453
+    2-gram:
+      D Cosine Similarity: 0.176793
+      D KL Divergence: 0.086983
+    3-gram:
+      D Cosine Similarity: 0.034075
+      D KL Divergence: 0.020523
+
+================================================================================
+Test Results: AMI/Hengchun
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3832
+  Reference sentences: 3066
+  Target sentences: 766
+  Total characters: 223513
+  Unique characters: 34
+
+Perturbation:
+  Character swaps performed: 5
+  Word swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence):
+  Character Level (from character swaps):
+    1-gram:
+      D Cosine Similarity: 0.496493
+      D KL Divergence: 1.925226
+    2-gram:
+      D Cosine Similarity: 0.575068
+      D KL Divergence: 2.540987
+    3-gram:
+      D Cosine Similarity: 0.701908
+      D KL Divergence: 2.072248
+
+  Word Level (from word swaps):
+    1-gram:
+      D Cosine Similarity: 0.289825
+      D KL Divergence: 0.275213
+    2-gram:
+      D Cosine Similarity: 0.117195
+      D KL Divergence: 0.070267
+    3-gram:
+      D Cosine Similarity: 0.031873
+      D KL Divergence: 0.018828
+
+================================================================================
+Test Results: AMI/Malan
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3969
+  Reference sentences: 3176
+  Target sentences: 793
+  Total characters: 216908
+  Unique characters: 29
+
+Perturbation:
+  Character swaps performed: 5
+  Word swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence):
+  Character Level (from character swaps):
+    1-gram:
+      D Cosine Similarity: 0.478388
+      D KL Divergence: 1.906121
+    2-gram:
+      D Cosine Similarity: 0.563027
+      D KL Divergence: 2.504545
+    3-gram:
+      D Cosine Similarity: 0.698315
+      D KL Divergence: 2.064244
+
+  Word Level (from word swaps):
+    1-gram:
+      D Cosine Similarity: 0.337884
+      D KL Divergence: 0.301350
+    2-gram:
+      D Cosine Similarity: 0.110231
+      D KL Divergence: 0.081757
+    3-gram:
+      D Cosine Similarity: 0.041771
+      D KL Divergence: 0.025598
+

@@ -25,6 +25,7 @@ import sys
 from dataclasses import dataclass
 from pathlib import Path
 import pandas as pd
+import numpy as np
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 REPO_ROOT = SCRIPT_DIR.parent.parent
@@ -40,6 +41,7 @@ DEFAULT_CORPORA_SUBFOLDERS = [
 LANG = "Paiwan"
 REFERENCE_DIALECT = "Northern"
 REFERENCE_KIND = "standard"
+LIMIT = 200
 
 
 @dataclass(frozen=True)
@@ -220,6 +222,7 @@ def run_comparison(
         laplace=laplace,
         save_plots=save_plots,
         verbose=verbose,
+        limit=LIMIT,
     )
     compact_statistics = {
         "n": stats.get("n"),
@@ -299,7 +302,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
             "Run Northern Paiwan corpus QC comparisons using bag-of-sentence "
-            "n-gram statistics."
+            "n-gram statistics. Optionally run dialect prediction on ePark XML files."
         )
     )
     parser.add_argument(
@@ -310,9 +313,10 @@ def parse_args() -> argparse.Namespace:
             "same_lang_dialect_diff_orthography",
             "diff_lang_correct_orthography",
             "all",
+            "epark_paiwan_dialect_prediction",
         ],
         default="all",
-        help="Which predefined Northern Paiwan scenario to run.",
+        help="Which predefined Northern Paiwan scenario to run, or 'epark_paiwan_dialect_prediction' for dialect detection.",
     )
     parser.add_argument(
         "--ref-corpus",
@@ -366,9 +370,325 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
+def load_xml_text_by_dialect(xml_path: str, target_dialect: str = None) -> str:
+    """Load text from an XML file directory using generate_corpus, extracting target dialect."""
+    from orthography_extract import generate_corpus, remove_chinese_characters
+    from pathlib import Path
+    
+    # Get the directory containing the XML file
+    xml_dir = str(Path(xml_path).parent)
+    
+    # Use generate_corpus to extract from this directory
+    by_dialect = generate_corpus(LANG, xml_dir, REFERENCE_KIND, by_dialect=True)
+    
+    # Extract the specified dialect (or reference dialect if not specified)
+    dialect_to_extract = target_dialect if target_dialect else REFERENCE_DIALECT
+    text = by_dialect.get(dialect_to_extract, "")
+    return remove_chinese_characters(text)
+
+
+def print_confusion_matrix(predictions: list[tuple[str, str]], dialects: list[str]) -> None:
+    """
+    Print a confusion matrix from (actual_dialect, predicted_dialect) pairs.
+    
+    Args:
+        predictions: List of (actual, predicted) dialect tuples
+        dialects: List of dialect names to use as rows/columns
+    """
+    # Build confusion matrix
+    matrix = {actual: {pred: 0 for pred in dialects} for actual in dialects}
+    
+    for actual, predicted in predictions:
+        if actual in matrix and predicted in matrix[actual]:
+            matrix[actual][predicted] += 1
+    
+    # Print header
+    print(f"\n{'Actual':>12} | " + " | ".join(f"{d:>12}" for d in dialects))
+    print("-" * (15 + len(dialects) * 16))
+    
+    # Print rows
+    for actual in dialects:
+        row_vals = [str(matrix[actual][pred]) for pred in dialects]
+        print(f"{actual:>12} | " + " | ".join(f"{val:>12}" for val in row_vals))
+    
+    print()
+
+
+def get_epark_paiwan_directories_with_all_dialects() -> dict[str, dict[str, str]]:
+    """
+    Find all directories in ePark/XML that have files for all 4 Paiwan dialects.
+    
+    Returns:
+        Dict mapping directory path to dict of dialect -> file path.
+        E.g., {
+            'ePark/XML/jiu_jie_jiao_cai_nine_level_materials/Paiwan': {
+                'Northern': 'path/to/Northern_Paiwan.xml',
+                'Central': 'path/to/Central_Paiwan.xml',
+                ...
+            }
+        }
+    """
+    from pathlib import Path
+    
+    epark_root = Path(REPO_ROOT) / "Corpora" / "ePark" / "XML"
+    if not epark_root.exists():
+        return {}
+    
+    required_dialects = {"Northern", "Central", "Eastern", "Southern"}
+    results = {}
+    
+    # Walk through all subdirectories
+    for item in epark_root.iterdir():
+        if not item.is_dir():
+            continue
+        paiwan_dir = item / "Paiwan"
+        if not paiwan_dir.exists():
+            continue
+        
+        # Find all XML files in this Paiwan directory
+        dialect_files = {}
+        for xml_file in paiwan_dir.glob("*.xml"):
+            # Extract dialect from filename (e.g., "Northern_Paiwan.xml" -> "Northern")
+            filename = xml_file.stem
+            for dialect in required_dialects:
+                if dialect in filename:
+                    dialect_files[dialect] = str(xml_file)
+                    break
+        
+        # Only include if all 4 dialects are present
+        if set(dialect_files.keys()) == required_dialects:
+            results[str(paiwan_dir)] = dialect_files
+    
+    return results
+
+
+def run_ePark_paiwan_dialect_prediction() -> None:
+    """
+    For each ePark directory with all 4 Paiwan dialects:
+    - For each actual XML file (with known actual dialect)
+    - Extract it using its actual dialect
+    - Compare against all 4 dialect references
+    - Predict the dialect using two methods:
+      1. Based on KL divergence (original)
+      2. Based on overlap coefficient of top LIMIT n-grams
+    """
+    from orthography_extract import generate_corpus, remove_chinese_characters
+    
+    ensure_repo_root()
+    
+    # Load reference corpora for all 4 dialects using generate_corpus directly
+    ref_dialects = {}
+    epark_path = "Corpora/ePark"
+    by_dialect = generate_corpus(LANG, epark_path, REFERENCE_KIND, by_dialect=True)
+    
+    for dialect in ["Northern", "Central", "Eastern", "Southern"]:
+        ref_text = by_dialect.get(dialect, "")
+        ref_dialects[dialect] = remove_chinese_characters(ref_text)
+    
+    directories = get_epark_paiwan_directories_with_all_dialects()
+    
+    if not directories:
+        print("No ePark directories found with all 4 Paiwan dialects.")
+        return
+    
+    print(f"\nFound {len(directories)} ePark Paiwan directories with all 4 dialects.\n")
+    
+    all_results = []
+    total_correct_kl = 0
+    total_correct_overlap = 0
+    total_files = 0
+    
+    kl_predictions = []  # For confusion matrix
+    overlap_predictions = []  # For confusion matrix
+    
+    for dir_path, dialect_files in sorted(directories.items()):
+        print(f"\n{'='*80}")
+        print(f"Directory: {dir_path}")
+        print(f"{'='*80}")
+        
+        dir_results = {
+            "directory": dir_path,
+            "file_predictions": {}
+        }
+        
+        # For each actual dialect file in this directory
+        for actual_dialect in ["Northern", "Central", "Eastern", "Southern"]:
+            xml_path = dialect_files[actual_dialect]
+            
+            print(f"\n  File: {actual_dialect}_Paiwan.xml (actual dialect: {actual_dialect})")
+            
+            # Extract this file using its actual dialect
+            target_text = load_xml_text_by_dialect(xml_path, target_dialect=actual_dialect)
+            
+            if not target_text.strip():
+                print(f"    Warning: No text found for {actual_dialect}")
+                continue
+            
+            # Compare this extraction against all 4 reference dialects
+            kl_divergences = {}
+            overlap_coefficients = {}
+            
+            for ref_dialect in ["Northern", "Central", "Eastern", "Southern"]:
+                pair = CorpusPair(
+                    case_id=f"{actual_dialect}_vs_{ref_dialect}",
+                    description=f"File {actual_dialect} vs {ref_dialect} reference",
+                    reference=ref_dialects[ref_dialect],
+                    target=target_text,
+                    reference_label=f"{ref_dialect} reference",
+                    target_label=f"{actual_dialect} file",
+                )
+                
+                result = run_comparison(
+                    pair,
+                    n=2,
+                    output_dir=Path(REPO_ROOT) / "QC" / "corpus_qc_results",
+                    save_plots=False,
+                    verbose=False,
+                )
+                
+                # Extract metrics from result
+                stats = result.get("analysis_statistics", {})
+                n_gram_stats = stats.get("n_gram_statistics", {}).get("2", {})
+                word_stats = n_gram_stats.get("word", {})
+                
+                kl_div = word_stats.get("kl_divergence")
+                overlap_coef = word_stats.get("overlap_coefficient")
+                
+                kl_divergences[ref_dialect] = kl_div
+                overlap_coefficients[ref_dialect] = overlap_coef
+            
+            # Prediction 1: Using KL divergence (lower is better, so minimize)
+            predicted_dialect_kl = min(kl_divergences, key=lambda d: kl_divergences[d] if kl_divergences[d] is not None else float('inf'))
+            min_kl = kl_divergences[predicted_dialect_kl]
+            is_correct_kl = (actual_dialect == predicted_dialect_kl)
+            
+            # Prediction 2: Using overlap coefficient (higher is better, so maximize)
+            predicted_dialect_overlap = max(overlap_coefficients, key=lambda d: overlap_coefficients[d] if overlap_coefficients[d] is not None else float('-inf'))
+            max_overlap = overlap_coefficients[predicted_dialect_overlap]
+            is_correct_overlap = (actual_dialect == predicted_dialect_overlap)
+            
+            total_files += 1
+            if is_correct_kl:
+                total_correct_kl += 1
+            if is_correct_overlap:
+                total_correct_overlap += 1
+            
+            # Track for confusion matrices
+            kl_predictions.append((actual_dialect, predicted_dialect_kl))
+            overlap_predictions.append((actual_dialect, predicted_dialect_overlap))
+            
+            status_kl = "[CORRECT]" if is_correct_kl else "[WRONG]"
+            status_overlap = "[CORRECT]" if is_correct_overlap else "[WRONG]"
+            
+            print(f"    KL Divergence prediction: {predicted_dialect_kl} (KL: {min_kl:.6f}) {status_kl}")
+            print(f"    Overlap Coeff prediction: {predicted_dialect_overlap} (overlap: {max_overlap:.6f}) {status_overlap}")
+            print(f"      KL divergences: {', '.join(f'{d}={kl_divergences[d]:.6f}' for d in ['Northern', 'Central', 'Eastern', 'Southern'])}")
+            print(f"      Overlap coeffs: {', '.join(f'{d}={overlap_coefficients[d]:.6f}' for d in ['Northern', 'Central', 'Eastern', 'Southern'])}")
+            
+            dir_results["file_predictions"][actual_dialect] = {
+                "predicted_dialect_kl": predicted_dialect_kl,
+                "predicted_dialect_overlap": predicted_dialect_overlap,
+                "min_kl": min_kl,
+                "max_overlap": max_overlap,
+                "is_correct_kl": is_correct_kl,
+                "is_correct_overlap": is_correct_overlap,
+                "all_kl_divergences": kl_divergences,
+                "all_overlap_coefficients": overlap_coefficients
+            }
+        
+        all_results.append(dir_results)
+    
+    # Print summary
+    print(f"\n\n{'='*80}")
+    print("SUMMARY - KL DIVERGENCE METHOD")
+    print(f"{'='*80}")
+    print(f"Total files tested: {total_files}")
+    print(f"Correct predictions: {total_correct_kl}")
+    if total_files > 0:
+        accuracy_kl = 100.0 * total_correct_kl / total_files
+        print(f"Accuracy: {accuracy_kl:.1f}%")
+    
+    print(f"\n{'='*80}")
+    print("SUMMARY - OVERLAP COEFFICIENT METHOD")
+    print(f"{'='*80}")
+    print(f"Total files tested: {total_files}")
+    print(f"Correct predictions: {total_correct_overlap}")
+    if total_files > 0:
+        accuracy_overlap = 100.0 * total_correct_overlap / total_files
+        print(f"Accuracy: {accuracy_overlap:.1f}%")
+    
+    # Save results to CSV
+    output_dir = Path(REPO_ROOT) / "QC" / "corpus_qc_results"
+    output_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Flatten results for CSV output
+    csv_rows = []
+    all_dialects = ["Northern", "Central", "Eastern", "Southern"]
+    
+    for dir_result in all_results:
+        dir_path = dir_result["directory"]
+        for actual_dialect, prediction in dir_result["file_predictions"].items():
+            row = {
+                "directory": dir_path,
+                "actual_dialect": actual_dialect,
+                "predicted_dialect_kl": prediction["predicted_dialect_kl"],
+                "predicted_dialect_overlap": prediction["predicted_dialect_overlap"],
+                "correct_kl": prediction["is_correct_kl"],
+                "correct_overlap": prediction["is_correct_overlap"],
+                "min_kl": prediction["min_kl"],
+                "max_overlap": prediction["max_overlap"],
+            }
+            csv_rows.append(row)
+    
+    if csv_rows:
+        csv_path = output_dir / "ePark_paiwan_dialect_prediction.csv"
+        pd.DataFrame(csv_rows).to_csv(csv_path, index=False)
+        print(f"\nDetailed results saved to: {csv_path}")
+        
+        # Print confusion matrices
+        print(f"\n{'='*80}")
+        print("CONFUSION MATRIX - KL DIVERGENCE METHOD")
+        print(f"{'='*80}")
+        print_confusion_matrix(kl_predictions, all_dialects)
+        
+        print(f"\n{'='*80}")
+        print("CONFUSION MATRIX - OVERLAP COEFFICIENT METHOD")
+        print(f"{'='*80}")
+        print_confusion_matrix(overlap_predictions, all_dialects)
+        
+        # Calculate accuracy by actual dialect
+        print(f"\n{'='*80}")
+        print("ACCURACY BY DIALECT - KL DIVERGENCE METHOD")
+        print(f"{'='*80}")
+        for dialect in all_dialects:
+            dialect_rows = [r for r in csv_rows if r["actual_dialect"] == dialect]
+            if dialect_rows:
+                correct = sum(1 for r in dialect_rows if r["correct_kl"])
+                total = len(dialect_rows)
+                acc = 100.0 * correct / total
+                print(f"  {dialect:12s}: {acc:5.1f}% ({correct}/{total})")
+        
+        print(f"\n{'='*80}")
+        print("ACCURACY BY DIALECT - OVERLAP COEFFICIENT METHOD")
+        print(f"{'='*80}")
+        for dialect in all_dialects:
+            dialect_rows = [r for r in csv_rows if r["actual_dialect"] == dialect]
+            if dialect_rows:
+                correct = sum(1 for r in dialect_rows if r["correct_overlap"])
+                total = len(dialect_rows)
+                acc = 100.0 * correct / total
+                print(f"  {dialect:12s}: {acc:5.1f}% ({correct}/{total})")
+
+
+
 def main() -> None:
     args = parse_args()
     ensure_repo_root()
+
+    # Special case: ePark Paiwan dialect prediction
+    if args.case == "epark_paiwan_dialect_prediction":
+        run_ePark_paiwan_dialect_prediction()
+        return
 
     if args.ref_corpus or args.target_corpus:
         if not args.ref_corpus or not args.target_corpus:

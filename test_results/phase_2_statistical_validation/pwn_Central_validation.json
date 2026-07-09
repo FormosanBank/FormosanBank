@@ -1,0 +1,54 @@
+{
+  "language": "pwn",
+  "dialect": "Central",
+  "validation_checks": [
+    {
+      "name": "pwn/Central - Character 1-gram Deltas",
+      "status": "WARN",
+      "message": "Within ±1 std of mean (cosine=0.5187, kl=2.0256)",
+      "deltas": {
+        "cosine_similarity": 0.5187487489847622,
+        "kl_divergence": 2.0255590293276624
+      },
+      "thresholds": {
+        "cosine_healthy": 0.5176766737338168,
+        "cosine_anomalous": 0.5736267412994376,
+        "kl_healthy": 1.9291566124364428,
+        "kl_anomalous": 2.231192582063369
+      }
+    }
+  ],
+  "corpus_integrity_issues": [],
+  "thresholds_used": {
+    "character_cosine": {
+      "mean": 0.5456517075166272,
+      "std": 0.027975033782810455,
+      "healthy": 0.5176766737338168,
+      "anomalous": 0.5736267412994376
+    },
+    "character_kl": {
+      "mean": 2.080174597249906,
+      "std": 0.15101798481346315,
+      "healthy": 1.9291566124364428,
+      "anomalous": 2.231192582063369
+    },
+    "word_cosine": {
+      "mean": 0.6038481277773262,
+      "std": 0.30761666344927874,
+      "healthy": 0.2962314643280475,
+      "anomalous": 0.911464791226605
+    },
+    "word_kl": {
+      "mean": 1.6462628038435763,
+      "std": 0.4985363387447072,
+      "healthy": 1.147726465098869,
+      "anomalous": 2.1447991425882833
+    }
+  },
+  "additional_metrics": {
+    "word_cosine_delta": 0.9015054956961608,
+    "word_kl_delta": 1.7167390593258236,
+    "char_word_correlation_potential": true
+  },
+  "language_full_name": "Paiwan"
+}

@@ -1,0 +1,425 @@
+{
+  "language": "bnn",
+  "dialect": "Kaqun",
+  "validation_checks": [
+    {
+      "name": "bnn/Kaqun - Character 1-gram Deltas (avg of 5 swaps)",
+      "status": "FAIL",
+      "message": "Beyond upper threshold (cosine=0.5026 > 0.5000, kl=1.9229 > 2.0000)",
+      "deltas": {
+        "cosine_similarity": 0.5026278132782332,
+        "kl_divergence": 1.9229454939731832
+      },
+      "thresholds": {
+        "cosine_lower": 0.2,
+        "cosine_upper": 0.5,
+        "kl_lower": 0.5,
+        "kl_upper": 2.0
+      }
+    }
+  ],
+  "corpus_integrity_issues": [
+    "bnn/Kaqun: Beyond upper threshold (cosine=0.5026 > 0.5000, kl=1.9229 > 2.0000)"
+  ],
+  "thresholds_used": {
+    "epsilon": 0.1,
+    "per_language": {
+      "ami": {
+        "character_kl_1gram": {
+          "mean": 2.017711738955275,
+          "std": 0.1028060469558763,
+          "epsilon": 0.1,
+          "lower_threshold": 1.917711738955275,
+          "upper_threshold": 2.117711738955275,
+          "n_samples": 5
+        },
+        "character_kl_2gram": {
+          "mean": 2.6818887630341264,
+          "std": 0.17861882694551356,
+          "epsilon": 0.1,
+          "lower_threshold": 2.5818887630341263,
+          "upper_threshold": 2.7818887630341265,
+          "n_samples": 5
+        },
+        "character_kl_3gram": {
+          "mean": 2.2441566210311237,
+          "std": 0.20441291477567017,
+          "epsilon": 0.1,
+          "lower_threshold": 2.1441566210311236,
+          "upper_threshold": 2.3441566210311238,
+          "n_samples": 5
+        },
+        "word_kl_1gram": {
+          "mean": 0.29747376320341984,
+          "std": 0.03243651433181023,
+          "epsilon": 0.1,
+          "lower_threshold": 0.19747376320341983,
+          "upper_threshold": 0.39747376320341987,
+          "n_samples": 5
+        },
+        "word_kl_2gram": {
+          "mean": 0.08000244728627079,
+          "std": 0.007575076488342802,
+          "epsilon": 0.1,
+          "lower_threshold": 0.001,
+          "upper_threshold": 0.1800024472862708,
+          "n_samples": 5
+        }
+      },
+      "tay": {
+        "character_kl_1gram": {
+          "mean": 1.6806186281307693,
+          "std": 0.0807142695714082,
+          "epsilon": 0.1,
+          "lower_threshold": 1.5806186281307693,
+          "upper_threshold": 1.7806186281307694,
+          "n_samples": 6
+        },
+        "character_kl_2gram": {
+          "mean": 2.28659026125202,
+          "std": 0.10852075858564797,
+          "epsilon": 0.1,
+          "lower_threshold": 2.18659026125202,
+          "upper_threshold": 2.38659026125202,
+          "n_samples": 6
+        },
+        "character_kl_3gram": {
+          "mean": 1.8312210165399936,
+          "std": 0.16257817277709416,
+          "epsilon": 0.1,
+          "lower_threshold": 1.7312210165399935,
+          "upper_threshold": 1.9312210165399937,
+          "n_samples": 6
+        },
+        "word_kl_1gram": {
+          "mean": 0.19879409214085328,
+          "std": 0.047990750795354725,
+          "epsilon": 0.1,
+          "lower_threshold": 0.09879409214085327,
+          "upper_threshold": 0.2987940921408533,
+          "n_samples": 6
+        },
+        "word_kl_2gram": {
+          "mean": 0.06431311521746359,
+          "std": 0.009871067321667776,
+          "epsilon": 0.1,
+          "lower_threshold": 0.001,
+          "upper_threshold": 0.1643131152174636,
+          "n_samples": 6
+        }
+      },
+      "bnn": {
+        "character_kl_1gram": {
+          "mean": 2.159847869335593,
+          "std": 0.20889093313132487,
+          "epsilon": 0.1,
+          "lower_threshold": 2.059847869335593,
+          "upper_threshold": 2.259847869335593,
+          "n_samples": 5
+        },
+        "character_kl_2gram": {
+          "mean": 2.893008011220781,
+          "std": 0.401471729705657,
+          "epsilon": 0.1,
+          "lower_threshold": 2.793008011220781,
+          "upper_threshold": 2.9930080112207813,
+          "n_samples": 5
+        },
+        "character_kl_3gram": {
+          "mean": 2.4095093945342483,
+          "std": 0.5356564509696925,
+          "epsilon": 0.1,
+          "lower_threshold": 2.309509394534248,
+          "upper_threshold": 2.5095093945342484,
+          "n_samples": 5
+        },
+        "word_kl_1gram": {
+          "mean": 0.2530253546112825,
+          "std": 0.1091699367332295,
+          "epsilon": 0.1,
+          "lower_threshold": 0.1530253546112825,
+          "upper_threshold": 0.3530253546112825,
+          "n_samples": 5
+        },
+        "word_kl_2gram": {
+          "mean": 0.06016898506955144,
+          "std": 0.03710249480042575,
+          "epsilon": 0.1,
+          "lower_threshold": 0.001,
+          "upper_threshold": 0.16016898506955146,
+          "n_samples": 5
+        }
+      },
+      "pwn": {
+        "character_kl_1gram": {
+          "mean": 2.1462235971340404,
+          "std": 0.15041030195174532,
+          "epsilon": 0.1,
+          "lower_threshold": 2.0462235971340403,
+          "upper_threshold": 2.2462235971340405,
+          "n_samples": 4
+        },
+        "character_kl_2gram": {
+          "mean": 2.94685631069706,
+          "std": 0.2649457481770634,
+          "epsilon": 0.1,
+          "lower_threshold": 2.84685631069706,
+          "upper_threshold": 3.04685631069706,
+          "n_samples": 4
+        },
+        "character_kl_3gram": {
+          "mean": 2.579621597843558,
+          "std": 0.3281404674443781,
+          "epsilon": 0.1,
+          "lower_threshold": 2.479621597843558,
+          "upper_threshold": 2.6796215978435582,
+          "n_samples": 4
+        },
+        "word_kl_1gram": {
+          "mean": 0.6603542332062193,
+          "std": 0.105720840866254,
+          "epsilon": 0.1,
+          "lower_threshold": 0.5603542332062194,
+          "upper_threshold": 0.7603542332062193,
+          "n_samples": 4
+        },
+        "word_kl_2gram": {
+          "mean": 0.17025471163906694,
+          "std": 0.03848294032839562,
+          "epsilon": 0.1,
+          "lower_threshold": 0.07025471163906694,
+          "upper_threshold": 0.27025471163906695,
+          "n_samples": 4
+        }
+      },
+      "pyu": {
+        "character_kl_1gram": {
+          "mean": 2.1788676084828658,
+          "std": 0.14636083444528308,
+          "epsilon": 0.1,
+          "lower_threshold": 2.0788676084828657,
+          "upper_threshold": 2.278867608482866,
+          "n_samples": 4
+        },
+        "character_kl_2gram": {
+          "mean": 3.0544684377182865,
+          "std": 0.27998919491539037,
+          "epsilon": 0.1,
+          "lower_threshold": 2.9544684377182864,
+          "upper_threshold": 3.1544684377182866,
+          "n_samples": 4
+        },
+        "character_kl_3gram": {
+          "mean": 2.7155408398406946,
+          "std": 0.3749592318144576,
+          "epsilon": 0.1,
+          "lower_threshold": 2.6155408398406945,
+          "upper_threshold": 2.8155408398406947,
+          "n_samples": 4
+        },
+        "word_kl_1gram": {
+          "mean": 0.3081697600037421,
+          "std": 0.05904810050101104,
+          "epsilon": 0.1,
+          "lower_threshold": 0.20816976000374207,
+          "upper_threshold": 0.40816976000374205,
+          "n_samples": 4
+        },
+        "word_kl_2gram": {
+          "mean": 0.10087268367529718,
+          "std": 0.020474564197576067,
+          "epsilon": 0.1,
+          "lower_threshold": 0.001,
+          "upper_threshold": 0.2008726836752972,
+          "n_samples": 4
+        }
+      },
+      "dru": {
+        "character_kl_1gram": {
+          "mean": 1.9139950829682881,
+          "std": 0.3134975944523253,
+          "epsilon": 0.1,
+          "lower_threshold": 1.813995082968288,
+          "upper_threshold": 2.013995082968288,
+          "n_samples": 6
+        },
+        "character_kl_2gram": {
+          "mean": 2.6215461880978004,
+          "std": 0.493392410301023,
+          "epsilon": 0.1,
+          "lower_threshold": 2.5215461880978003,
+          "upper_threshold": 2.7215461880978005,
+          "n_samples": 6
+        },
+        "character_kl_3gram": {
+          "mean": 2.340908528746955,
+          "std": 0.5668192802750711,
+          "epsilon": 0.1,
+          "lower_threshold": 2.240908528746955,
+          "upper_threshold": 2.440908528746955,
+          "n_samples": 6
+        },
+        "word_kl_1gram": {
+          "mean": 0.2649690071963961,
+          "std": 0.09983430726549708,
+          "epsilon": 0.1,
+          "lower_threshold": 0.1649690071963961,
+          "upper_threshold": 0.36496900719639613,
+          "n_samples": 6
+        },
+        "word_kl_2gram": {
+          "mean": 0.05387222225391145,
+          "std": 0.01892686140671827,
+          "epsilon": 0.1,
+          "lower_threshold": 0.001,
+          "upper_threshold": 0.15387222225391145,
+          "n_samples": 6
+        }
+      },
+      "trv": {
+        "character_kl_1gram": {
+          "mean": 1.64412354572369,
+          "std": 0.06020683080151822,
+          "epsilon": 0.1,
+          "lower_threshold": 1.54412354572369,
+          "upper_threshold": 1.74412354572369,
+          "n_samples": 3
+        },
+        "character_kl_2gram": {
+          "mean": 2.20673867626479,
+          "std": 0.13027263890300417,
+          "epsilon": 0.1,
+          "lower_threshold": 2.10673867626479,
+          "upper_threshold": 2.30673867626479,
+          "n_samples": 3
+        },
+        "character_kl_3gram": {
+          "mean": 1.77179968913344,
+          "std": 0.19475574327001888,
+          "epsilon": 0.1,
+          "lower_threshold": 1.67179968913344,
+          "upper_threshold": 1.87179968913344,
+          "n_samples": 3
+        },
+        "word_kl_1gram": {
+          "mean": 0.3965180528331273,
+          "std": 0.00886569095451118,
+          "epsilon": 0.1,
+          "lower_threshold": 0.29651805283312727,
+          "upper_threshold": 0.49651805283312733,
+          "n_samples": 3
+        },
+        "word_kl_2gram": {
+          "mean": 0.13385341394089176,
+          "std": 0.005938286313747079,
+          "epsilon": 0.1,
+          "lower_threshold": 0.03385341394089175,
+          "upper_threshold": 0.23385341394089176,
+          "n_samples": 3
+        }
+      }
+    },
+    "per_language_baselines": {
+      "ami": {
+        "character_1gram_baseline_kl": 0.0026671297151695766,
+        "character_2gram_baseline_kl": 0.01893473163163088,
+        "character_3gram_baseline_kl": 0.07087731215741568,
+        "word_1gram_baseline_kl": 0.1706735470917362,
+        "word_2gram_baseline_kl": 0.19866738812602136
+      },
+      "tay": {
+        "character_1gram_baseline_kl": 0.0020439931058994125,
+        "character_2gram_baseline_kl": 0.017285474608585333,
+        "character_3gram_baseline_kl": 0.0804158689599281,
+        "word_1gram_baseline_kl": 0.1326284536114021,
+        "word_2gram_baseline_kl": 0.19409894666018748
+      },
+      "bnn": {
+        "character_1gram_baseline_kl": 0.0045142142417626,
+        "character_2gram_baseline_kl": 0.021273650901400213,
+        "character_3gram_baseline_kl": 0.07130460957645864,
+        "word_1gram_baseline_kl": 0.17189819011155277,
+        "word_2gram_baseline_kl": 0.1853592601323293
+      },
+      "pwn": {
+        "character_1gram_baseline_kl": 0.0024123845673933346,
+        "character_2gram_baseline_kl": 0.014137407706869715,
+        "character_3gram_baseline_kl": 0.05872796815263086,
+        "word_1gram_baseline_kl": 0.17522282678737733,
+        "word_2gram_baseline_kl": 0.18924001400892876
+      },
+      "pyu": {
+        "character_1gram_baseline_kl": 0.002141896440753294,
+        "character_2gram_baseline_kl": 0.014007202991676416,
+        "character_3gram_baseline_kl": 0.05726059423279095,
+        "word_1gram_baseline_kl": 0.15315908104710235,
+        "word_2gram_baseline_kl": 0.20248741624105326
+      },
+      "dru": {
+        "character_1gram_baseline_kl": 0.0025439754975999274,
+        "character_2gram_baseline_kl": 0.014084673539130179,
+        "character_3gram_baseline_kl": 0.057479863713649965,
+        "word_1gram_baseline_kl": 0.19035987617023345,
+        "word_2gram_baseline_kl": 0.18226517140675433
+      },
+      "trv": {
+        "character_1gram_baseline_kl": 0.0015916293854464833,
+        "character_2gram_baseline_kl": 0.018428779146653078,
+        "character_3gram_baseline_kl": 0.08395467553129038,
+        "word_1gram_baseline_kl": 0.13098613563243475,
+        "word_2gram_baseline_kl": 0.18129641087602621
+      }
+    },
+    "global": {
+      "character_kl_1gram": {
+        "mean": 1.9602489626571933,
+        "std": 0.2704587362168515,
+        "healthy": 1.6897902264403417,
+        "anomalous": 2.2307076988740446,
+        "n_samples": 33
+      },
+      "character_kl_2gram": {
+        "mean": 2.6651156845402793,
+        "std": 0.4202579894496633,
+        "healthy": 2.244857695090616,
+        "anomalous": 3.0853736739899427,
+        "n_samples": 33
+      },
+      "character_kl_3gram": {
+        "mean": 2.266580489929875,
+        "std": 0.4937311871439874,
+        "healthy": 1.7728493027858878,
+        "anomalous": 2.7603116770738625,
+        "n_samples": 33
+      },
+      "word_kl_1gram": {
+        "mean": 0.3211734641344314,
+        "std": 0.15667815053327636,
+        "healthy": 0.16449531360115502,
+        "anomalous": 0.47785161466770776,
+        "n_samples": 33
+      },
+      "word_kl_2gram": {
+        "mean": 0.08775875786931799,
+        "std": 0.04478547197420364,
+        "healthy": 0.042973285895114344,
+        "anomalous": 0.13254422984352163,
+        "n_samples": 33
+      }
+    },
+    "metrics_included": [
+      "character_kl_1gram",
+      "character_kl_2gram",
+      "character_kl_3gram",
+      "word_kl_1gram",
+      "word_kl_2gram"
+    ]
+  },
+  "additional_metrics": {
+    "word_cosine_delta": 0.2352017656176975,
+    "word_kl_delta": 0.12362176504521485,
+    "num_swaps_used": 5,
+    "char_word_correlation_potential": true
+  },
+  "language_full_name": "Bunun"
+}

@@ -1,0 +1,160 @@
+2026-07-07 13:59:58,776 - INFO - Starting Character Perturbation Robustness Test Suite
+2026-07-07 13:59:58,830 - INFO - Testing languages: ['Amis', 'Atayal', 'Bunun', 'Paiwan', 'Puyuma', 'Rukai', 'Seediq']
+2026-07-07 13:59:58,831 - INFO - Testing sources: ['ePark/', 'ILRDF_Dicts/', 'Paiwan_Stories/', 'NTUFormosanCorpus/']
+2026-07-07 13:59:58,833 - INFO - Number of swaps per test: 5
+2026-07-07 13:59:58,836 - INFO - Epsilon for per-language thresholds: 0.1
+2026-07-07 13:59:58,840 - INFO - 
+================================================================================
+2026-07-07 13:59:58,843 - INFO - Running robustness tests with 5 swaps per dialect
+2026-07-07 13:59:58,843 - INFO - ================================================================================
+
+2026-07-07 13:59:58,845 - INFO - 
+Testing ami/Coastal with 5 random character swaps...
+2026-07-07 13:59:59,753 - INFO - Analyzing baseline for ami/Coastal...
+2026-07-07 14:00:00,143 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:00:00,144 - INFO -   Swap 1/5: 's' -> 'l'
+2026-07-07 14:00:00,548 - INFO -   Swap 2/5: 'f' -> '9'
+2026-07-07 14:00:00,924 - INFO -   Swap 3/5: 's' -> 'w'
+2026-07-07 14:00:01,355 - INFO -   Swap 4/5: 'k' -> 'n'
+2026-07-07 14:00:01,741 - INFO -   Swap 5/5: '1' -> 'a'
+2026-07-07 14:00:02,168 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:00:02,171 - INFO -   Swap 1/5: 'adhan' <-> 'mi'
+2026-07-07 14:00:02,517 - INFO -   Swap 2/5: 'kafer' <-> 'hikoki'
+2026-07-07 14:00:02,874 - INFO -   Swap 3/5: 'a' <-> 'kahemhem'
+2026-07-07 14:00:03,207 - INFO -   Swap 4/5: 'takula' <-> 'ko'
+2026-07-07 14:00:03,552 - INFO -   Swap 5/5: 'marohem' <-> 'Foyan'
+2026-07-07 14:00:03,924 - ERROR - Error testing ami/Coastal: 'num_swaps_performed'
+Traceback (most recent call last):
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 1216, in main
+    logger.info(format_results_summary(results))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 597, in format_results_summary
+    lines.append(f"  Number of random swaps performed: {results['perturbation']['num_swaps_performed']}")
+                                                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'num_swaps_performed'
+2026-07-07 14:00:03,926 - INFO - 
+Testing ami/Hengchun with 5 random character swaps...
+2026-07-07 14:00:04,743 - INFO - Analyzing baseline for ami/Hengchun...
+2026-07-07 14:00:04,981 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:00:04,981 - INFO -   Swap 1/5: 'a' -> 'i'
+2026-07-07 14:00:05,162 - INFO -   Swap 2/5: 'a' -> '5'
+2026-07-07 14:00:05,346 - INFO -   Swap 3/5: 'x' -> 'e'
+2026-07-07 14:00:05,525 - INFO -   Swap 4/5: 'f' -> 'd'
+2026-07-07 14:00:05,731 - INFO -   Swap 5/5: 'm' -> 'g'
+2026-07-07 14:00:05,925 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:00:05,927 - INFO -   Swap 1/5: 'mifana' <-> 'ko'
+2026-07-07 14:00:06,122 - INFO -   Swap 2/5: 'tamdawan' <-> 'mihecaan'
+2026-07-07 14:00:06,315 - INFO -   Swap 3/5: 'Wa' <-> 'cikay'
+2026-07-07 14:00:06,553 - INFO -   Swap 4/5: 'Pinaay' <-> 'ma'
+2026-07-07 14:00:06,749 - INFO -   Swap 5/5: 'fiting' <-> 'selal'
+2026-07-07 14:00:06,973 - ERROR - Error testing ami/Hengchun: 'num_swaps_performed'
+Traceback (most recent call last):
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 1216, in main
+    logger.info(format_results_summary(results))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 597, in format_results_summary
+    lines.append(f"  Number of random swaps performed: {results['perturbation']['num_swaps_performed']}")
+                                                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'num_swaps_performed'
+2026-07-07 14:00:06,975 - INFO - 
+Testing ami/Malan with 5 random character swaps...
+2026-07-07 14:00:07,963 - INFO - Analyzing baseline for ami/Malan...
+2026-07-07 14:00:08,256 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:00:08,256 - INFO -   Swap 1/5: 'p' -> 'i'
+2026-07-07 14:00:08,455 - INFO -   Swap 2/5: 'y' -> 'h'
+2026-07-07 14:00:08,650 - INFO -   Swap 3/5: 'a' -> 'd'
+2026-07-07 14:00:08,836 - INFO -   Swap 4/5: 'n' -> 'c'
+2026-07-07 14:00:09,051 - INFO -   Swap 5/5: 'f' -> 'p'
+2026-07-07 14:00:09,236 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:00:09,239 - INFO -   Swap 1/5: 'mamilifet' <-> 'naira'
+2026-07-07 14:00:09,424 - INFO -   Swap 2/5: 'Cima' <-> 'ngangan'
+2026-07-07 14:00:09,665 - INFO -   Swap 3/5: 'I' <-> 'nga'
+2026-07-07 14:00:09,872 - INFO -   Swap 4/5: 'no' <-> 'ko'
+2026-07-07 14:00:10,065 - INFO -   Swap 5/5: 'konga' <-> 'no'
+2026-07-07 14:00:10,237 - ERROR - Error testing ami/Malan: 'num_swaps_performed'
+Traceback (most recent call last):
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 1216, in main
+    logger.info(format_results_summary(results))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 597, in format_results_summary
+    lines.append(f"  Number of random swaps performed: {results['perturbation']['num_swaps_performed']}")
+                                                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'num_swaps_performed'
+2026-07-07 14:00:10,238 - INFO - 
+Testing ami/Southern with 5 random character swaps...
+2026-07-07 14:00:10,985 - INFO - Analyzing baseline for ami/Southern...
+2026-07-07 14:00:11,197 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:00:11,197 - INFO -   Swap 1/5: 'r' -> 'n'
+2026-07-07 14:00:11,371 - INFO -   Swap 2/5: 'v' -> 'u'
+2026-07-07 14:00:11,541 - INFO -   Swap 3/5: '9' -> 'p'
+2026-07-07 14:00:11,702 - INFO -   Swap 4/5: 'n' -> 'u'
+2026-07-07 14:00:11,865 - INFO -   Swap 5/5: 'l' -> 'v'
+2026-07-07 14:00:12,033 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:00:12,035 - INFO -   Swap 1/5: 'u' <-> 'Hualien'
+2026-07-07 14:00:12,206 - INFO -   Swap 2/5: 'i' <-> 'nipaveli'
+2026-07-07 14:00:12,379 - INFO -   Swap 3/5: 'a' <-> 'ku'
+2026-07-07 14:00:12,542 - INFO -   Swap 4/5: 'tu' <-> 'i'
+2026-07-07 14:00:12,728 - INFO -   Swap 5/5: 'makautuvay' <-> 'aku'
+2026-07-07 14:00:12,907 - ERROR - Error testing ami/Southern: 'num_swaps_performed'
+Traceback (most recent call last):
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 1216, in main
+    logger.info(format_results_summary(results))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 597, in format_results_summary
+    lines.append(f"  Number of random swaps performed: {results['perturbation']['num_swaps_performed']}")
+                                                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'num_swaps_performed'
+2026-07-07 14:00:12,908 - INFO - 
+Testing ami/Xiuguluan with 5 random character swaps...
+2026-07-07 14:00:13,639 - INFO - Analyzing baseline for ami/Xiuguluan...
+2026-07-07 14:00:14,055 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:00:14,055 - INFO -   Swap 1/5: 'r' -> 'p'
+2026-07-07 14:00:14,446 - INFO -   Swap 2/5: 'f' -> 'g'
+2026-07-07 14:00:14,819 - INFO -   Swap 3/5: 'a' -> 'h'
+2026-07-07 14:00:15,207 - INFO -   Swap 4/5: 'p' -> 'd'
+2026-07-07 14:00:15,580 - INFO -   Swap 5/5: 'o' -> 'l'
+2026-07-07 14:00:15,942 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:00:15,945 - INFO -   Swap 1/5: 'faliyos' <-> 'paliding'
+2026-07-07 14:00:16,396 - INFO -   Swap 2/5: 'no' <-> 'ko'
+2026-07-07 14:00:16,741 - INFO -   Swap 3/5: 'folo' <-> 'a'
+2026-07-07 14:00:17,092 - INFO -   Swap 4/5: 'kakalimelaan' <-> 'Sadamsayen'
+2026-07-07 14:00:17,451 - INFO -   Swap 5/5: 'kako' <-> 'malekaka'
+2026-07-07 14:00:17,820 - ERROR - Error testing ami/Xiuguluan: 'num_swaps_performed'
+Traceback (most recent call last):
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 1216, in main
+    logger.info(format_results_summary(results))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 597, in format_results_summary
+    lines.append(f"  Number of random swaps performed: {results['perturbation']['num_swaps_performed']}")
+                                                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'num_swaps_performed'
+2026-07-07 14:00:17,822 - INFO - 
+Testing tay/FourSeasons with 5 random character swaps...
+2026-07-07 14:00:18,658 - INFO - Analyzing baseline for tay/FourSeasons...
+2026-07-07 14:00:18,888 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:00:18,888 - INFO -   Swap 1/5: 'c' -> 's'
+2026-07-07 14:00:19,071 - INFO -   Swap 2/5: 'r' -> 'w'
+2026-07-07 14:00:19,242 - INFO -   Swap 3/5: 'l' -> 'x'
+2026-07-07 14:00:19,403 - INFO -   Swap 4/5: 'h' -> 'i'
+2026-07-07 14:00:19,569 - INFO -   Swap 5/5: 'l' -> 't'
+2026-07-07 14:00:19,740 - INFO - Testing 5 random word swaps for word-level metrics...
+2026-07-07 14:00:19,742 - INFO -   Swap 1/5: 'qaca' <-> 'maki'
+2026-07-07 14:00:19,914 - INFO -   Swap 2/5: 'tqiyay' <-> 'gamil'
+2026-07-07 14:00:20,094 - INFO -   Swap 3/5: 'sesiy' <-> 'ktu'
+2026-07-07 14:00:20,259 - INFO -   Swap 4/5: 'ga' <-> 'mqwas'
+2026-07-07 14:00:20,432 - INFO -   Swap 5/5: 'qbhniq' <-> 'miq'
+2026-07-07 14:00:20,598 - ERROR - Error testing tay/FourSeasons: 'num_swaps_performed'
+Traceback (most recent call last):
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 1216, in main
+    logger.info(format_results_summary(results))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zakir\Documents\GitHub\FormosanBank\QC\orthography\test_character_perturbation_robustness.py", line 597, in format_results_summary
+    lines.append(f"  Number of random swaps performed: {results['perturbation']['num_swaps_performed']}")
+                                                        ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'num_swaps_performed'
+2026-07-07 14:00:20,598 - INFO - 
+Testing tay/Sekolik with 5 random character swaps...
+2026-07-07 14:00:21,463 - INFO - Analyzing baseline for tay/Sekolik...
+2026-07-07 14:00:22,128 - INFO - Testing 5 random character swaps for character-level metrics...
+2026-07-07 14:00:22,128 - INFO -   Swap 1/5: 't' -> 'x'
+2026-07-07 14:00:22,780 - INFO -   Swap 2/5: 't' -> 'y'

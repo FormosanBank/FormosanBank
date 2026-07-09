@@ -1,0 +1,454 @@
+Character Perturbation Robustness Test Suite - Summary Report
+Generated: 2026-06-29T16:31:16.984633
+================================================================================
+
+Robustness Test Statistics:
+  Total tests: 9
+  Successful: 9
+  Failed: 0
+
+XML Corpus Integrity Validation Statistics:
+  Validation checks passed: 0
+  Validation checks warned: 0
+  Validation checks failed: 9
+
+================================================================================
+XML Corpus Integrity Validation Results:
+================================================================================
+
+AMI/Coastal:
+  ✗ ami/Coastal - Character 1-gram Deltas: Anomalously high deltas (cosine=0.5701, kl=2.1893)
+  Issues:
+    - ami/Coastal has high deltas (cosine=0.5701, kl=2.1893). Possible corpus contamination or validation issues.
+  Character Set: 68 unique characters
+  Cross-Language Overlaps:
+    - Atayal: 86.8% overlap
+    - Bunun: 88.2% overlap
+
+AMI/Hengchun:
+  ✗ ami/Hengchun - Character 1-gram Deltas: Anomalously high deltas (cosine=0.5472, kl=1.9815)
+  Issues:
+    - ami/Hengchun has high deltas (cosine=0.5472, kl=1.9815). Possible corpus contamination or validation issues.
+  Character Set: 66 unique characters
+  Cross-Language Overlaps:
+    - Atayal: 90.9% overlap
+    - Bunun: 90.9% overlap
+
+AMI/Malan:
+  ✗ ami/Malan - Character 1-gram Deltas: Anomalously high deltas (cosine=0.5403, kl=1.9533)
+  Issues:
+    - ami/Malan has high deltas (cosine=0.5403, kl=1.9533). Possible corpus contamination or validation issues.
+  Character Set: 65 unique characters
+  Cross-Language Overlaps:
+    - Atayal: 89.2% overlap
+    - Bunun: 92.3% overlap
+
+AMI/Southern:
+  ✗ ami/Southern - Character 1-gram Deltas: Anomalously high deltas (cosine=0.5798, kl=2.0533)
+  Issues:
+    - ami/Southern has high deltas (cosine=0.5798, kl=2.0533). Possible corpus contamination or validation issues.
+  Character Set: 65 unique characters
+  Cross-Language Overlaps:
+    - Atayal: 89.2% overlap
+    - Bunun: 93.8% overlap
+
+AMI/Xiuguluan:
+  ✗ ami/Xiuguluan - Character 1-gram Deltas: Anomalously high deltas (cosine=0.5202, kl=2.0555)
+  Issues:
+    - ami/Xiuguluan has high deltas (cosine=0.5202, kl=2.0555). Possible corpus contamination or validation issues.
+  Character Set: 72 unique characters
+  Cross-Language Overlaps:
+    - Atayal: 84.7% overlap
+    - Bunun: 83.3% overlap
+
+PWN/Central:
+  ✗ pwn/Central - Character 1-gram Deltas: Anomalously high deltas (cosine=0.5385, kl=2.0465)
+  Issues:
+    - pwn/Central has high deltas (cosine=0.5385, kl=2.0465). Possible corpus contamination or validation issues.
+  Character Set: 70 unique characters
+  Cross-Language Overlaps:
+    - Amis: 81.4% overlap
+    - Atayal: 87.1% overlap
+
+PWN/Eastern:
+  ✗ pwn/Eastern - Character 1-gram Deltas: Anomalously high deltas (cosine=0.5368, kl=2.0234)
+  Issues:
+    - pwn/Eastern has high deltas (cosine=0.5368, kl=2.0234). Possible corpus contamination or validation issues.
+  Character Set: 65 unique characters
+  Cross-Language Overlaps:
+    - Amis: 86.2% overlap
+    - Atayal: 89.2% overlap
+
+PWN/Northern:
+  ✗ pwn/Northern - Character 1-gram Deltas: Anomalously high deltas (cosine=0.5772, kl=2.4064)
+  Issues:
+    - pwn/Northern has high deltas (cosine=0.5772, kl=2.4064). Possible corpus contamination or validation issues.
+  Character Set: 77 unique characters
+  Cross-Language Overlaps:
+    - Amis: 77.9% overlap
+    - Atayal: 81.8% overlap
+
+PWN/Southern:
+  ✗ pwn/Southern - Character 1-gram Deltas: Anomalously high deltas (cosine=0.5423, kl=2.0547)
+  Issues:
+    - pwn/Southern has high deltas (cosine=0.5423, kl=2.0547). Possible corpus contamination or validation issues.
+  Character Set: 70 unique characters
+  Cross-Language Overlaps:
+    - Amis: 84.3% overlap
+    - Atayal: 90.0% overlap
+
+================================================================================
+Detailed Robustness Test Results:
+================================================================================
+
+================================================================================
+Test Results: AMI/Coastal
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 5263
+  Reference sentences: 4211
+  Target sentences: 1052
+  Total characters: 351514
+  Unique characters: 32
+
+Perturbation:
+  Max frequency character: 'a'
+  Character frequency: 15745
+  Swapped with: '"'
+
+Metric Changes (Cosine Similarity & KL Divergence):
+  Character Level:
+    1-gram:
+      Δ Cosine Similarity: 0.570084
+      Δ KL Divergence: 2.189268
+    2-gram:
+      Δ Cosine Similarity: 0.638528
+      Δ KL Divergence: 2.984973
+    3-gram:
+      Δ Cosine Similarity: 0.768895
+      Δ KL Divergence: 2.570463
+
+  Word Level:
+    1-gram:
+      Δ Cosine Similarity: 0.630313
+      Δ KL Divergence: 1.862377
+    2-gram:
+      Δ Cosine Similarity: 0.660545
+      Δ KL Divergence: 0.564826
+    3-gram:
+      Δ Cosine Similarity: 0.290356
+      Δ KL Divergence: 0.166714
+
+================================================================================
+Test Results: AMI/Hengchun
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3832
+  Reference sentences: 3066
+  Target sentences: 766
+  Total characters: 223513
+  Unique characters: 34
+
+Perturbation:
+  Max frequency character: 'a'
+  Character frequency: 8507
+  Swapped with: '3'
+
+Metric Changes (Cosine Similarity & KL Divergence):
+  Character Level:
+    1-gram:
+      Δ Cosine Similarity: 0.547228
+      Δ KL Divergence: 1.981503
+    2-gram:
+      Δ Cosine Similarity: 0.607321
+      Δ KL Divergence: 2.601386
+    3-gram:
+      Δ Cosine Similarity: 0.720588
+      Δ KL Divergence: 2.111381
+
+  Word Level:
+    1-gram:
+      Δ Cosine Similarity: 0.263908
+      Δ KL Divergence: 1.078051
+    2-gram:
+      Δ Cosine Similarity: 0.291690
+      Δ KL Divergence: 0.240994
+    3-gram:
+      Δ Cosine Similarity: 0.081846
+      Δ KL Divergence: 0.053325
+
+================================================================================
+Test Results: AMI/Malan
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3969
+  Reference sentences: 3176
+  Target sentences: 793
+  Total characters: 216908
+  Unique characters: 29
+
+Perturbation:
+  Max frequency character: 'a'
+  Character frequency: 8605
+  Swapped with: 'd'
+
+Metric Changes (Cosine Similarity & KL Divergence):
+  Character Level:
+    1-gram:
+      Δ Cosine Similarity: 0.540277
+      Δ KL Divergence: 1.953262
+    2-gram:
+      Δ Cosine Similarity: 0.625210
+      Δ KL Divergence: 2.587016
+    3-gram:
+      Δ Cosine Similarity: 0.736148
+      Δ KL Divergence: 2.126945
+
+  Word Level:
+    1-gram:
+      Δ Cosine Similarity: 0.251999
+      Δ KL Divergence: 1.089184
+    2-gram:
+      Δ Cosine Similarity: 0.318904
+      Δ KL Divergence: 0.267112
+    3-gram:
+      Δ Cosine Similarity: 0.084775
+      Δ KL Divergence: 0.059811
+
+================================================================================
+Test Results: AMI/Southern
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3894
+  Reference sentences: 3116
+  Target sentences: 778
+  Total characters: 209599
+  Unique characters: 33
+
+Perturbation:
+  Max frequency character: 'a'
+  Character frequency: 7496
+  Swapped with: '9'
+
+Metric Changes (Cosine Similarity & KL Divergence):
+  Character Level:
+    1-gram:
+      Δ Cosine Similarity: 0.579825
+      Δ KL Divergence: 2.053293
+    2-gram:
+      Δ Cosine Similarity: 0.640701
+      Δ KL Divergence: 2.655486
+    3-gram:
+      Δ Cosine Similarity: 0.747406
+      Δ KL Divergence: 2.148783
+
+  Word Level:
+    1-gram:
+      Δ Cosine Similarity: 0.327514
+      Δ KL Divergence: 1.234259
+    2-gram:
+      Δ Cosine Similarity: 0.421540
+      Δ KL Divergence: 0.339990
+    3-gram:
+      Δ Cosine Similarity: 0.109013
+      Δ KL Divergence: 0.077954
+
+================================================================================
+Test Results: AMI/Xiuguluan
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 9348
+  Reference sentences: 7479
+  Target sentences: 1869
+  Total characters: 430339
+  Unique characters: 35
+
+Perturbation:
+  Max frequency character: 'a'
+  Character frequency: 14250
+  Swapped with: 'g'
+
+Metric Changes (Cosine Similarity & KL Divergence):
+  Character Level:
+    1-gram:
+      Δ Cosine Similarity: 0.520158
+      Δ KL Divergence: 2.055515
+    2-gram:
+      Δ Cosine Similarity: 0.577111
+      Δ KL Divergence: 2.793206
+    3-gram:
+      Δ Cosine Similarity: 0.736963
+      Δ KL Divergence: 2.421115
+
+  Word Level:
+    1-gram:
+      Δ Cosine Similarity: 0.258253
+      Δ KL Divergence: 1.323984
+    2-gram:
+      Δ Cosine Similarity: 0.505066
+      Δ KL Divergence: 0.383520
+    3-gram:
+      Δ Cosine Similarity: 0.133406
+      Δ KL Divergence: 0.076007
+
+================================================================================
+Test Results: PWN/Central
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3747
+  Reference sentences: 2998
+  Target sentences: 749
+  Total characters: 218302
+  Unique characters: 32
+
+Perturbation:
+  Max frequency character: 'a'
+  Character frequency: 8263
+  Swapped with: 'q'
+
+Metric Changes (Cosine Similarity & KL Divergence):
+  Character Level:
+    1-gram:
+      Δ Cosine Similarity: 0.538505
+      Δ KL Divergence: 2.046530
+    2-gram:
+      Δ Cosine Similarity: 0.644265
+      Δ KL Divergence: 2.783201
+    3-gram:
+      Δ Cosine Similarity: 0.784550
+      Δ KL Divergence: 2.368666
+
+  Word Level:
+    1-gram:
+      Δ Cosine Similarity: 0.901588
+      Δ KL Divergence: 1.716740
+    2-gram:
+      Δ Cosine Similarity: 0.336140
+      Δ KL Divergence: 0.242040
+    3-gram:
+      Δ Cosine Similarity: 0.058303
+      Δ KL Divergence: 0.045151
+
+================================================================================
+Test Results: PWN/Eastern
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3892
+  Reference sentences: 3114
+  Target sentences: 778
+  Total characters: 229164
+  Unique characters: 34
+
+Perturbation:
+  Max frequency character: 'a'
+  Character frequency: 8188
+  Swapped with: 'm'
+
+Metric Changes (Cosine Similarity & KL Divergence):
+  Character Level:
+    1-gram:
+      Δ Cosine Similarity: 0.536761
+      Δ KL Divergence: 2.023359
+    2-gram:
+      Δ Cosine Similarity: 0.687245
+      Δ KL Divergence: 2.793277
+    3-gram:
+      Δ Cosine Similarity: 0.814927
+      Δ KL Divergence: 2.381636
+
+  Word Level:
+    1-gram:
+      Δ Cosine Similarity: 0.917299
+      Δ KL Divergence: 1.734307
+    2-gram:
+      Δ Cosine Similarity: 0.327051
+      Δ KL Divergence: 0.225194
+    3-gram:
+      Δ Cosine Similarity: 0.046851
+      Δ KL Divergence: 0.034388
+
+================================================================================
+Test Results: PWN/Northern
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 10800
+  Reference sentences: 8640
+  Target sentences: 2160
+  Total characters: 620506
+  Unique characters: 35
+
+Perturbation:
+  Max frequency character: 'a'
+  Character frequency: 26213
+  Swapped with: 'r'
+
+Metric Changes (Cosine Similarity & KL Divergence):
+  Character Level:
+    1-gram:
+      Δ Cosine Similarity: 0.577196
+      Δ KL Divergence: 2.406378
+    2-gram:
+      Δ Cosine Similarity: 0.686370
+      Δ KL Divergence: 3.427416
+    3-gram:
+      Δ Cosine Similarity: 0.836749
+      Δ KL Divergence: 3.170168
+
+  Word Level:
+    1-gram:
+      Δ Cosine Similarity: 0.951760
+      Δ KL Divergence: 2.384185
+    2-gram:
+      Δ Cosine Similarity: 0.618820
+      Δ KL Divergence: 0.368234
+    3-gram:
+      Δ Cosine Similarity: 0.069953
+      Δ KL Divergence: 0.046223
+
+================================================================================
+Test Results: PWN/Southern
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3958
+  Reference sentences: 3167
+  Target sentences: 791
+  Total characters: 238158
+  Unique characters: 34
+
+Perturbation:
+  Max frequency character: 'a'
+  Character frequency: 8743
+  Swapped with: 's'
+
+Metric Changes (Cosine Similarity & KL Divergence):
+  Character Level:
+    1-gram:
+      Δ Cosine Similarity: 0.542344
+      Δ KL Divergence: 2.054667
+    2-gram:
+      Δ Cosine Similarity: 0.668438
+      Δ KL Divergence: 2.819286
+    3-gram:
+      Δ Cosine Similarity: 0.812439
+      Δ KL Divergence: 2.423396
+
+  Word Level:
+    1-gram:
+      Δ Cosine Similarity: 0.934387
+      Δ KL Divergence: 1.800369
+    2-gram:
+      Δ Cosine Similarity: 0.351314
+      Δ KL Divergence: 0.249468
+    3-gram:
+      Δ Cosine Similarity: 0.059144
+      Δ KL Divergence: 0.041128
+

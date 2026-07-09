@@ -1,0 +1,1768 @@
+[
+  {
+    "language": "ami",
+    "dialect": "Coastal",
+    "sources": [
+      "ePark/"
+    ],
+    "corpus_stats": {
+      "total_sentences": 5263,
+      "reference_sentences": 4211,
+      "target_sentences": 1052,
+      "test_ratio": 0.2,
+      "total_characters": 351514,
+      "unique_characters": 32
+    },
+    "perturbation": {
+      "max_freq_character": "a",
+      "swapped_with_character": "0",
+      "character_frequency": 15745
+    },
+    "baseline_metrics": {
+      "character": {
+        "1": {
+          "n": 1,
+          "jaccard_similarity": 0.8676470588235294,
+          "overlap_coefficient": 0.9833333333333333,
+          "cosine_similarity": 0.9995232611141577,
+          "euclidean_distance": 0.009376234046181979,
+          "kl_divergence": 0.0024655192228450035,
+          "ref_unique_ngram_count": 67,
+          "target_unique_ngram_count": 60
+        },
+        "2": {
+          "n": 2,
+          "jaccard_similarity": 0.6598984771573604,
+          "overlap_coefficient": 0.9274673008323424,
+          "cosine_similarity": 0.9973153699335331,
+          "euclidean_distance": 0.007663612227296369,
+          "kl_divergence": 0.014686912693355597,
+          "ref_unique_ngram_count": 1121,
+          "target_unique_ngram_count": 841
+        },
+        "3": {
+          "n": 3,
+          "jaccard_similarity": 0.5700316364682197,
+          "overlap_coefficient": 0.8756350784183786,
+          "cosine_similarity": 0.9907631525968748,
+          "euclidean_distance": 0.006427801517106985,
+          "kl_divergence": 0.055490345584937914,
+          "ref_unique_ngram_count": 6391,
+          "target_unique_ngram_count": 4527
+        }
+      },
+      "word": {
+        "1": {
+          "n": 1,
+          "jaccard_similarity": 0.33763473508425684,
+          "overlap_coefficient": 0.6743480897513645,
+          "cosine_similarity": 0.9941899454252567,
+          "euclidean_distance": 0.029895812071508678,
+          "kl_divergence": 0.1531451314572763,
+          "ref_unique_ngram_count": 5513,
+          "target_unique_ngram_count": 3298
+        },
+        "2": {
+          "n": 2,
+          "jaccard_similarity": 0.12150282340862423,
+          "overlap_coefficient": 0.38006824568446407,
+          "cosine_similarity": 0.856264123627499,
+          "euclidean_distance": 0.006261038541093773,
+          "kl_divergence": 0.20938358077043795,
+          "ref_unique_ngram_count": 24991,
+          "target_unique_ngram_count": 9964
+        },
+        "3": {
+          "n": 3,
+          "jaccard_similarity": 0.04981387343393508,
+          "overlap_coefficient": 0.19020327067094606,
+          "cosine_similarity": 0.8203232720914679,
+          "euclidean_distance": 0.0030609292697566255,
+          "kl_divergence": 0.17110772993378326,
+          "ref_unique_ngram_count": 39369,
+          "target_unique_ngram_count": 13086
+        }
+      },
+      "token_counts": {
+        "ref_char_tokens": 223629,
+        "target_char_tokens": 68757,
+        "ref_word_tokens": 47930,
+        "target_word_tokens": 14305
+      }
+    },
+    "perturbed_metrics": {
+      "character": {
+        "1": {
+          "n": 1,
+          "jaccard_similarity": 0.8529411764705882,
+          "overlap_coefficient": 0.9830508474576272,
+          "cosine_similarity": 0.4249210449784972,
+          "euclidean_distance": 0.3220638078884782,
+          "kl_divergence": 2.20435460470621,
+          "ref_unique_ngram_count": 67,
+          "target_unique_ngram_count": 59
+        },
+        "2": {
+          "n": 2,
+          "jaccard_similarity": 0.5642458100558659,
+          "overlap_coefficient": 0.8426698450536353,
+          "cosine_similarity": 0.358058547029917,
+          "euclidean_distance": 0.11471089778211024,
+          "kl_divergence": 3.0052349628044226,
+          "ref_unique_ngram_count": 1121,
+          "target_unique_ngram_count": 839
+        },
+        "3": {
+          "n": 3,
+          "jaccard_similarity": 0.3169642857142857,
+          "overlap_coefficient": 0.5806808134394341,
+          "cosine_similarity": 0.2217276623638228,
+          "euclidean_distance": 0.05004250072259536,
+          "kl_divergence": 2.627013264881437,
+          "ref_unique_ngram_count": 6391,
+          "target_unique_ngram_count": 4524
+        }
+      },
+      "word": {
+        "1": {
+          "n": 1,
+          "jaccard_similarity": 0.046437054631828976,
+          "overlap_coefficient": 0.11855670103092783,
+          "cosine_similarity": 0.716134301257554,
+          "euclidean_distance": 0.07011146020913435,
+          "kl_divergence": 1.6190531851723762,
+          "ref_unique_ngram_count": 5513,
+          "target_unique_ngram_count": 3298
+        },
+        "2": {
+          "n": 2,
+          "jaccard_similarity": 0.011517203460948578,
+          "overlap_coefficient": 0.03994379767161783,
+          "cosine_similarity": 0.4279246376668746,
+          "euclidean_distance": 0.010347187462075701,
+          "kl_divergence": 0.5685687320902032,
+          "ref_unique_ngram_count": 24991,
+          "target_unique_ngram_count": 9964
+        },
+        "3": {
+          "n": 3,
+          "jaccard_similarity": 0.0021588781475679187,
+          "overlap_coefficient": 0.00863518263793367,
+          "cosine_similarity": 0.6998577986399805,
+          "euclidean_distance": 0.0038620126132824575,
+          "kl_divergence": 0.24355376883498597,
+          "ref_unique_ngram_count": 39369,
+          "target_unique_ngram_count": 13086
+        }
+      },
+      "token_counts": {
+        "ref_char_tokens": 223629,
+        "target_char_tokens": 68757,
+        "ref_word_tokens": 47930,
+        "target_word_tokens": 14305
+      }
+    },
+    "metric_deltas": {
+      "character": {
+        "1": {
+          "cosine_similarity": 0.5746022161356605,
+          "kl_divergence": 2.201889085483365
+        },
+        "2": {
+          "cosine_similarity": 0.6392568229036161,
+          "kl_divergence": 2.990548050111067
+        },
+        "3": {
+          "cosine_similarity": 0.769035490233052,
+          "kl_divergence": 2.5715229192964992
+        }
+      },
+      "word": {
+        "1": {
+          "cosine_similarity": 0.2780556441677028,
+          "kl_divergence": 1.4659080537151
+        },
+        "2": {
+          "cosine_similarity": 0.42833948596062443,
+          "kl_divergence": 0.35918515131976525
+        },
+        "3": {
+          "cosine_similarity": 0.12046547345148739,
+          "kl_divergence": 0.07244603890120271
+        }
+      }
+    },
+    "timestamp": "2026-06-29T16:59:31.858812",
+    "language_full_name": "Amis"
+  },
+  {
+    "language": "ami",
+    "dialect": "Hengchun",
+    "sources": [
+      "ePark/"
+    ],
+    "corpus_stats": {
+      "total_sentences": 3832,
+      "reference_sentences": 3066,
+      "target_sentences": 766,
+      "test_ratio": 0.2,
+      "total_characters": 223513,
+      "unique_characters": 34
+    },
+    "perturbation": {
+      "max_freq_character": "a",
+      "swapped_with_character": "y",
+      "character_frequency": 8507
+    },
+    "baseline_metrics": {
+      "character": {
+        "1": {
+          "n": 1,
+          "jaccard_similarity": 0.9393939393939394,
+          "overlap_coefficient": 1.0,
+          "cosine_similarity": 0.9995979550685634,
+          "euclidean_distance": 0.008735578153479216,
+          "kl_divergence": 0.003479096958059695,
+          "ref_unique_ngram_count": 66,
+          "target_unique_ngram_count": 62
+        },
+        "2": {
+          "n": 2,
+          "jaccard_similarity": 0.6394389438943895,
+          "overlap_coefficient": 0.8959537572254336,
+          "cosine_similarity": 0.9976361136192986,
+          "euclidean_distance": 0.007419448827978655,
+          "kl_divergence": 0.0237930546594707,
+          "ref_unique_ngram_count": 1122,
+          "target_unique_ngram_count": 865
+        },
+        "3": {
+          "n": 3,
+          "jaccard_similarity": 0.5056294779938587,
+          "overlap_coefficient": 0.8378967773200873,
+          "cosine_similarity": 0.9881937939110736,
+          "euclidean_distance": 0.0077020027383157,
+          "kl_divergence": 0.08534922536849893,
+          "ref_unique_ngram_count": 6170,
+          "target_unique_ngram_count": 4127
+        }
+      },
+      "word": {
+        "1": {
+          "n": 1,
+          "jaccard_similarity": 0.2732385047965597,
+          "overlap_coefficient": 0.6537396121883656,
+          "cosine_similarity": 0.9882339236117009,
+          "euclidean_distance": 0.039313127425782954,
+          "kl_divergence": 0.19897609741172548,
+          "ref_unique_ngram_count": 5171,
+          "target_unique_ngram_count": 2527
+        },
+        "2": {
+          "n": 2,
+          "jaccard_similarity": 0.09494584837545127,
+          "overlap_coefficient": 0.3443535188216039,
+          "cosine_similarity": 0.8064988666788454,
+          "euclidean_distance": 0.0068519076095803315,
+          "kl_divergence": 0.20606970073503156,
+          "ref_unique_ngram_count": 18154,
+          "target_unique_ngram_count": 6110
+        },
+        "3": {
+          "n": 3,
+          "jaccard_similarity": 0.038461538461538464,
+          "overlap_coefficient": 0.1673177960393372,
+          "cosine_similarity": 0.825307783256124,
+          "euclidean_distance": 0.0036461029447012417,
+          "kl_divergence": 0.16213681990892986,
+          "ref_unique_ngram_count": 26111,
+          "target_unique_ngram_count": 7423
+        }
+      },
+      "token_counts": {
+        "ref_char_tokens": 147850,
+        "target_char_tokens": 38865,
+        "ref_word_tokens": 31398,
+        "target_word_tokens": 7964
+      }
+    },
+    "perturbed_metrics": {
+      "character": {
+        "1": {
+          "n": 1,
+          "jaccard_similarity": 0.9242424242424242,
+          "overlap_coefficient": 1.0,
+          "cosine_similarity": 0.5027057966003667,
+          "euclidean_distance": 0.30603462876786636,
+          "kl_divergence": 1.9120009848480894,
+          "ref_unique_ngram_count": 66,
+          "target_unique_ngram_count": 61
+        },
+        "2": {
+          "n": 2,
+          "jaccard_similarity": 0.5663716814159292,
+          "overlap_coefficient": 0.8533333333333334,
+          "cosine_similarity": 0.3864531098957791,
+          "euclidean_distance": 0.11481074782522734,
+          "kl_divergence": 2.578327794697238,
+          "ref_unique_ngram_count": 1122,
+          "target_unique_ngram_count": 825
+        },
+        "3": {
+          "n": 3,
+          "jaccard_similarity": 0.2854413450515858,
+          "overlap_coefficient": 0.571392146863845,
+          "cosine_similarity": 0.28127098598264305,
+          "euclidean_distance": 0.04782785504483737,
+          "kl_divergence": 2.1760691681846476,
+          "ref_unique_ngram_count": 6170,
+          "target_unique_ngram_count": 3922
+        }
+      },
+      "word": {
+        "1": {
+          "n": 1,
+          "jaccard_similarity": 0.040990259740259744,
+          "overlap_coefficient": 0.12004754358161648,
+          "cosine_similarity": 0.7241781493902839,
+          "euclidean_distance": 0.06567021165916939,
+          "kl_divergence": 1.276952295444032,
+          "ref_unique_ngram_count": 5171,
+          "target_unique_ngram_count": 2524
+        },
+        "2": {
+          "n": 2,
+          "jaccard_similarity": 0.010116990715683418,
+          "overlap_coefficient": 0.039783889980353634,
+          "cosine_similarity": 0.5146240724859715,
+          "euclidean_distance": 0.009737909908627287,
+          "kl_divergence": 0.4471078032651733,
+          "ref_unique_ngram_count": 18154,
+          "target_unique_ngram_count": 6108
+        },
+        "3": {
+          "n": 3,
+          "jaccard_similarity": 0.0014334348683031715,
+          "overlap_coefficient": 0.006466388252728008,
+          "cosine_similarity": 0.7434613733104062,
+          "euclidean_distance": 0.004341284325911439,
+          "kl_divergence": 0.21546216998248596,
+          "ref_unique_ngram_count": 26111,
+          "target_unique_ngram_count": 7423
+        }
+      },
+      "token_counts": {
+        "ref_char_tokens": 147850,
+        "target_char_tokens": 38865,
+        "ref_word_tokens": 31398,
+        "target_word_tokens": 7964
+      }
+    },
+    "metric_deltas": {
+      "character": {
+        "1": {
+          "cosine_similarity": 0.4968921584681967,
+          "kl_divergence": 1.9085218878900299
+        },
+        "2": {
+          "cosine_similarity": 0.6111830037235195,
+          "kl_divergence": 2.5545347400377674
+        },
+        "3": {
+          "cosine_similarity": 0.7069228079284307,
+          "kl_divergence": 2.0907199428161487
+        }
+      },
+      "word": {
+        "1": {
+          "cosine_similarity": 0.264055774221417,
+          "kl_divergence": 1.0779761980323066
+        },
+        "2": {
+          "cosine_similarity": 0.2918747941928739,
+          "kl_divergence": 0.24103810253014174
+        },
+        "3": {
+          "cosine_similarity": 0.08184640994571779,
+          "kl_divergence": 0.0533253500735561
+        }
+      }
+    },
+    "timestamp": "2026-06-29T16:59:33.185520",
+    "language_full_name": "Amis"
+  },
+  {
+    "language": "ami",
+    "dialect": "Malan",
+    "sources": [
+      "ePark/"
+    ],
+    "corpus_stats": {
+      "total_sentences": 3969,
+      "reference_sentences": 3176,
+      "target_sentences": 793,
+      "test_ratio": 0.2,
+      "total_characters": 216908,
+      "unique_characters": 29
+    },
+    "perturbation": {
+      "max_freq_character": "a",
+      "swapped_with_character": "'",
+      "character_frequency": 8605
+    },
+    "baseline_metrics": {
+      "character": {
+        "1": {
+          "n": 1,
+          "jaccard_similarity": 0.8615384615384616,
+          "overlap_coefficient": 1.0,
+          "cosine_similarity": 0.999191631242468,
+          "euclidean_distance": 0.012420783747111691,
+          "kl_divergence": 0.002892480367819765,
+          "ref_unique_ngram_count": 65,
+          "target_unique_ngram_count": 56
+        },
+        "2": {
+          "n": 2,
+          "jaccard_similarity": 0.5891608391608392,
+          "overlap_coefficient": 0.9132791327913279,
+          "cosine_similarity": 0.9961739317528946,
+          "euclidean_distance": 0.008801037164336228,
+          "kl_divergence": 0.02036977444628571,
+          "ref_unique_ngram_count": 1080,
+          "target_unique_ngram_count": 738
+        },
+        "3": {
+          "n": 3,
+          "jaccard_similarity": 0.50768,
+          "overlap_coefficient": 0.879922351636162,
+          "cosine_similarity": 0.9876919514357717,
+          "euclidean_distance": 0.007344284480868251,
+          "kl_divergence": 0.07589837128990726,
+          "ref_unique_ngram_count": 5817,
+          "target_unique_ngram_count": 3606
+        }
+      },
+      "word": {
+        "1": {
+          "n": 1,
+          "jaccard_similarity": 0.3051483732570611,
+          "overlap_coefficient": 0.7389610389610389,
+          "cosine_similarity": 0.988269482762051,
+          "euclidean_distance": 0.03769134593498066,
+          "kl_divergence": 0.18971387249799604,
+          "ref_unique_ngram_count": 4991,
+          "target_unique_ngram_count": 2310
+        },
+        "2": {
+          "n": 2,
+          "jaccard_similarity": 0.09828604628643361,
+          "overlap_coefficient": 0.3601845280340667,
+          "cosine_similarity": 0.7978830656475099,
+          "euclidean_distance": 0.007435442372059631,
+          "kl_divergence": 0.2087649150492051,
+          "ref_unique_ngram_count": 17048,
+          "target_unique_ngram_count": 5636
+        },
+        "3": {
+          "n": 3,
+          "jaccard_similarity": 0.041591081500049476,
+          "overlap_coefficient": 0.1808403843395956,
+          "cosine_similarity": 0.8122721702029588,
+          "euclidean_distance": 0.003955813796403738,
+          "kl_divergence": 0.16842741919027018,
+          "ref_unique_ngram_count": 24607,
+          "target_unique_ngram_count": 6973
+        }
+      },
+      "token_counts": {
+        "ref_char_tokens": 143375,
+        "target_char_tokens": 37333,
+        "ref_word_tokens": 30437,
+        "target_word_tokens": 7517
+      }
+    },
+    "perturbed_metrics": {
+      "character": {
+        "1": {
+          "n": 1,
+          "jaccard_similarity": 0.8461538461538461,
+          "overlap_coefficient": 1.0,
+          "cosine_similarity": 0.4666696970484912,
+          "euclidean_distance": 0.31486666588588497,
+          "kl_divergence": 1.9486213018450311,
+          "ref_unique_ngram_count": 65,
+          "target_unique_ngram_count": 55
+        },
+        "2": {
+          "n": 2,
+          "jaccard_similarity": 0.5248287671232876,
+          "overlap_coefficient": 0.8744650499286734,
+          "cosine_similarity": 0.37609310328249707,
+          "euclidean_distance": 0.11403251413956413,
+          "kl_divergence": 2.6017145449483428,
+          "ref_unique_ngram_count": 1080,
+          "target_unique_ngram_count": 701
+        },
+        "3": {
+          "n": 3,
+          "jaccard_similarity": 0.2894002789400279,
+          "overlap_coefficient": 0.6053092182030338,
+          "cosine_similarity": 0.25538809612551905,
+          "euclidean_distance": 0.048659575049755925,
+          "kl_divergence": 2.1969244016431553,
+          "ref_unique_ngram_count": 5817,
+          "target_unique_ngram_count": 3428
+        }
+      },
+      "word": {
+        "1": {
+          "n": 1,
+          "jaccard_similarity": 0.06335232176765061,
+          "overlap_coefficient": 0.31394354148845166,
+          "cosine_similarity": 0.354329742738112,
+          "euclidean_distance": 0.1200219697960095,
+          "kl_divergence": 1.6092973370250423,
+          "ref_unique_ngram_count": 4991,
+          "target_unique_ngram_count": 1169
+        },
+        "2": {
+          "n": 2,
+          "jaccard_similarity": 0.012031171672059427,
+          "overlap_coefficient": 0.0511727078891258,
+          "cosine_similarity": 0.24569108148107724,
+          "euclidean_distance": 0.01639709470903283,
+          "kl_divergence": 0.6388495307235089,
+          "ref_unique_ngram_count": 17048,
+          "target_unique_ngram_count": 5159
+        },
+        "3": {
+          "n": 3,
+          "jaccard_similarity": 0.001727570859686109,
+          "overlap_coefficient": 0.006143273635985006,
+          "cosine_similarity": 0.6072547523636331,
+          "euclidean_distance": 0.005756237269855953,
+          "kl_divergence": 0.3101291430281135,
+          "ref_unique_ngram_count": 24607,
+          "target_unique_ngram_count": 9604
+        }
+      },
+      "token_counts": {
+        "ref_char_tokens": 143375,
+        "target_char_tokens": 37333,
+        "ref_word_tokens": 30437,
+        "target_word_tokens": 13190
+      }
+    },
+    "metric_deltas": {
+      "character": {
+        "1": {
+          "cosine_similarity": 0.5325219341939769,
+          "kl_divergence": 1.9457288214772113
+        },
+        "2": {
+          "cosine_similarity": 0.6200808284703976,
+          "kl_divergence": 2.581344770502057
+        },
+        "3": {
+          "cosine_similarity": 0.7323038553102527,
+          "kl_divergence": 2.121026030353248
+        }
+      },
+      "word": {
+        "1": {
+          "cosine_similarity": 0.6339397400239389,
+          "kl_divergence": 1.4195834645270462
+        },
+        "2": {
+          "cosine_similarity": 0.5521919841664327,
+          "kl_divergence": 0.4300846156743038
+        },
+        "3": {
+          "cosine_similarity": 0.2050174178393257,
+          "kl_divergence": 0.14170172383784332
+        }
+      }
+    },
+    "timestamp": "2026-06-29T16:59:34.472690",
+    "language_full_name": "Amis"
+  },
+  {
+    "language": "ami",
+    "dialect": "Southern",
+    "sources": [
+      "ePark/"
+    ],
+    "corpus_stats": {
+      "total_sentences": 3894,
+      "reference_sentences": 3116,
+      "target_sentences": 778,
+      "test_ratio": 0.2,
+      "total_characters": 209599,
+      "unique_characters": 33
+    },
+    "perturbation": {
+      "max_freq_character": "a",
+      "swapped_with_character": "w",
+      "character_frequency": 7496
+    },
+    "baseline_metrics": {
+      "character": {
+        "1": {
+          "n": 1,
+          "jaccard_similarity": 0.9538461538461539,
+          "overlap_coefficient": 1.0,
+          "cosine_similarity": 0.9998135929337701,
+          "euclidean_distance": 0.006401135278329108,
+          "kl_divergence": 0.0023469780534513527,
+          "ref_unique_ngram_count": 65,
+          "target_unique_ngram_count": 62
+        },
+        "2": {
+          "n": 2,
+          "jaccard_similarity": 0.6037234042553191,
+          "overlap_coefficient": 0.8844155844155844,
+          "cosine_similarity": 0.9973695486658544,
+          "euclidean_distance": 0.007985688872361145,
+          "kl_divergence": 0.02204238623284406,
+          "ref_unique_ngram_count": 1039,
+          "target_unique_ngram_count": 770
+        },
+        "3": {
+          "n": 3,
+          "jaccard_similarity": 0.4827416980206118,
+          "overlap_coefficient": 0.8616058394160584,
+          "cosine_similarity": 0.9858251859907994,
+          "euclidean_distance": 0.007919415152093448,
+          "kl_divergence": 0.08340437446977565,
+          "ref_unique_ngram_count": 5639,
+          "target_unique_ngram_count": 3425
+        }
+      },
+      "word": {
+        "1": {
+          "n": 1,
+          "jaccard_similarity": 0.23544353262993356,
+          "overlap_coefficient": 0.7013969732246799,
+          "cosine_similarity": 0.9932512310479439,
+          "euclidean_distance": 0.033465373792386496,
+          "kl_divergence": 0.15185096688270966,
+          "ref_unique_ngram_count": 4605,
+          "target_unique_ngram_count": 1718
+        },
+        "2": {
+          "n": 2,
+          "jaccard_similarity": 0.10878683024011744,
+          "overlap_coefficient": 0.42863044825449287,
+          "cosine_similarity": 0.8484561363245943,
+          "euclidean_distance": 0.008378106778561678,
+          "kl_divergence": 0.1874790453884861,
+          "ref_unique_ngram_count": 16308,
+          "target_unique_ngram_count": 4841
+        },
+        "3": {
+          "n": 3,
+          "jaccard_similarity": 0.052783476476928964,
+          "overlap_coefficient": 0.240761300555115,
+          "cosine_similarity": 0.8277324645302605,
+          "euclidean_distance": 0.003911232465834802,
+          "kl_divergence": 0.15666241439206224,
+          "ref_unique_ngram_count": 23972,
+          "target_unique_ngram_count": 6305
+        }
+      },
+      "token_counts": {
+        "ref_char_tokens": 140681,
+        "target_char_tokens": 32545,
+        "ref_word_tokens": 30163,
+        "target_word_tokens": 7117
+      }
+    },
+    "perturbed_metrics": {
+      "character": {
+        "1": {
+          "n": 1,
+          "jaccard_similarity": 0.9384615384615385,
+          "overlap_coefficient": 1.0,
+          "cosine_similarity": 0.4523809167058755,
+          "euclidean_distance": 0.3234506272626597,
+          "kl_divergence": 2.0009545843489365,
+          "ref_unique_ngram_count": 65,
+          "target_unique_ngram_count": 61
+        },
+        "2": {
+          "n": 2,
+          "jaccard_similarity": 0.5314384151593454,
+          "overlap_coefficient": 0.8349120433017592,
+          "cosine_similarity": 0.35268646092308986,
+          "euclidean_distance": 0.11563629639886329,
+          "kl_divergence": 2.6451844988514086,
+          "ref_unique_ngram_count": 1039,
+          "target_unique_ngram_count": 739
+        },
+        "3": {
+          "n": 3,
+          "jaccard_similarity": 0.2710946408209806,
+          "overlap_coefficient": 0.5800548947849954,
+          "cosine_similarity": 0.24567993450827275,
+          "euclidean_distance": 0.048775941753030926,
+          "kl_divergence": 2.216921821482574,
+          "ref_unique_ngram_count": 5639,
+          "target_unique_ngram_count": 3279
+        }
+      },
+      "word": {
+        "1": {
+          "n": 1,
+          "jaccard_similarity": 0.03165279817262196,
+          "overlap_coefficient": 0.11292200232828871,
+          "cosine_similarity": 0.6657370995106939,
+          "euclidean_distance": 0.07734587100570624,
+          "kl_divergence": 1.3861095425746028,
+          "ref_unique_ngram_count": 4605,
+          "target_unique_ngram_count": 1718
+        },
+        "2": {
+          "n": 2,
+          "jaccard_similarity": 0.010029132241272267,
+          "overlap_coefficient": 0.04337946705226193,
+          "cosine_similarity": 0.4269166071114995,
+          "euclidean_distance": 0.013400627744404656,
+          "kl_divergence": 0.5274686760267693,
+          "ref_unique_ngram_count": 16308,
+          "target_unique_ngram_count": 4841
+        },
+        "3": {
+          "n": 3,
+          "jaccard_similarity": 0.0019193222806843378,
+          "overlap_coefficient": 0.009199048374306107,
+          "cosine_similarity": 0.7187196128799285,
+          "euclidean_distance": 0.004876077040954017,
+          "kl_divergence": 0.23461609707265968,
+          "ref_unique_ngram_count": 23972,
+          "target_unique_ngram_count": 6305
+        }
+      },
+      "token_counts": {
+        "ref_char_tokens": 140681,
+        "target_char_tokens": 32545,
+        "ref_word_tokens": 30163,
+        "target_word_tokens": 7117
+      }
+    },
+    "metric_deltas": {
+      "character": {
+        "1": {
+          "cosine_similarity": 0.5474326762278947,
+          "kl_divergence": 1.9986076062954852
+        },
+        "2": {
+          "cosine_similarity": 0.6446830877427645,
+          "kl_divergence": 2.6231421126185643
+        },
+        "3": {
+          "cosine_similarity": 0.7401452514825266,
+          "kl_divergence": 2.1335174470127987
+        }
+      },
+      "word": {
+        "1": {
+          "cosine_similarity": 0.32751413153724995,
+          "kl_divergence": 1.2342585756918931
+        },
+        "2": {
+          "cosine_similarity": 0.4215395292130948,
+          "kl_divergence": 0.3399896306382832
+        },
+        "3": {
+          "cosine_similarity": 0.10901285165033203,
+          "kl_divergence": 0.07795368268059744
+        }
+      }
+    },
+    "timestamp": "2026-06-29T16:59:35.713567",
+    "language_full_name": "Amis"
+  },
+  {
+    "language": "ami",
+    "dialect": "Xiuguluan",
+    "sources": [
+      "ePark/",
+      "ILRDF_Dicts/"
+    ],
+    "corpus_stats": {
+      "total_sentences": 9348,
+      "reference_sentences": 7479,
+      "target_sentences": 1869,
+      "test_ratio": 0.2,
+      "total_characters": 430339,
+      "unique_characters": 35
+    },
+    "perturbation": {
+      "max_freq_character": "a",
+      "swapped_with_character": "?",
+      "character_frequency": 14250
+    },
+    "baseline_metrics": {
+      "character": {
+        "1": {
+          "n": 1,
+          "jaccard_similarity": 0.8611111111111112,
+          "overlap_coefficient": 0.96875,
+          "cosine_similarity": 0.9997706964336449,
+          "euclidean_distance": 0.006376242374211747,
+          "kl_divergence": 0.0021958988521566074,
+          "ref_unique_ngram_count": 70,
+          "target_unique_ngram_count": 64
+        },
+        "2": {
+          "n": 2,
+          "jaccard_similarity": 0.5893987341772152,
+          "overlap_coefficient": 0.9197530864197531,
+          "cosine_similarity": 0.9982130344342803,
+          "euclidean_distance": 0.005963913937868037,
+          "kl_divergence": 0.014302882122878146,
+          "ref_unique_ngram_count": 1199,
+          "target_unique_ngram_count": 810
+        },
+        "3": {
+          "n": 3,
+          "jaccard_similarity": 0.513225424397947,
+          "overlap_coefficient": 0.9009009009009009,
+          "cosine_similarity": 0.9930505041244504,
+          "euclidean_distance": 0.0051495469037820246,
+          "kl_divergence": 0.05449896160895383,
+          "ref_unique_ngram_count": 7170,
+          "target_unique_ngram_count": 4329
+        }
+      },
+      "word": {
+        "1": {
+          "n": 1,
+          "jaccard_similarity": 0.17970886634318484,
+          "overlap_coefficient": 0.5937044593412999,
+          "cosine_similarity": 0.9965784037446905,
+          "euclidean_distance": 0.03235071220553208,
+          "kl_divergence": 0.16060676698881782,
+          "ref_unique_ngram_count": 9941,
+          "target_unique_ngram_count": 3431
+        },
+        "2": {
+          "n": 2,
+          "jaccard_similarity": 0.0954121092283433,
+          "overlap_coefficient": 0.3961754313032634,
+          "cosine_similarity": 0.8767952547244208,
+          "euclidean_distance": 0.006047588285037561,
+          "kl_divergence": 0.1836894938108805,
+          "ref_unique_ngram_count": 34143,
+          "target_unique_ngram_count": 9622
+        },
+        "3": {
+          "n": 3,
+          "jaccard_similarity": 0.04111401606937891,
+          "overlap_coefficient": 0.19770026830203144,
+          "cosine_similarity": 0.8346543986295097,
+          "euclidean_distance": 0.0026516207047934275,
+          "kl_divergence": 0.14802834416335647,
+          "ref_unique_ngram_count": 52262,
+          "target_unique_ngram_count": 13045
+        }
+      },
+      "token_counts": {
+        "ref_char_tokens": 291553,
+        "target_char_tokens": 64409,
+        "ref_word_tokens": 63783,
+        "target_word_tokens": 14486
+      }
+    },
+    "perturbed_metrics": {
+      "character": {
+        "1": {
+          "n": 1,
+          "jaccard_similarity": 0.8472222222222222,
+          "overlap_coefficient": 0.9682539682539683,
+          "cosine_similarity": 0.45868256630612253,
+          "euclidean_distance": 0.3108556177458887,
+          "kl_divergence": 2.0909656208913607,
+          "ref_unique_ngram_count": 70,
+          "target_unique_ngram_count": 63
+        },
+        "2": {
+          "n": 2,
+          "jaccard_similarity": 0.5211375864719446,
+          "overlap_coefficient": 0.8692307692307693,
+          "cosine_similarity": 0.4003449591828556,
+          "euclidean_distance": 0.10861911502341304,
+          "kl_divergence": 2.837621756529081,
+          "ref_unique_ngram_count": 1199,
+          "target_unique_ngram_count": 780
+        },
+        "3": {
+          "n": 3,
+          "jaccard_similarity": 0.2960362400906002,
+          "overlap_coefficient": 0.6116050538137576,
+          "cosine_similarity": 0.24053656336492718,
+          "euclidean_distance": 0.04907954312043489,
+          "kl_divergence": 2.498721505868222,
+          "ref_unique_ngram_count": 7170,
+          "target_unique_ngram_count": 4274
+        }
+      },
+      "word": {
+        "1": {
+          "n": 1,
+          "jaccard_similarity": 0.048164726947179944,
+          "overlap_coefficient": 0.3044708545557442,
+          "cosine_similarity": 0.4751996301325295,
+          "euclidean_distance": 0.10937773970694578,
+          "kl_divergence": 1.7514859042197095,
+          "ref_unique_ngram_count": 9941,
+          "target_unique_ngram_count": 1767
+        },
+        "2": {
+          "n": 2,
+          "jaccard_similarity": 0.01221392435557697,
+          "overlap_coefficient": 0.06438912877825756,
+          "cosine_similarity": 0.18877836137961398,
+          "euclidean_distance": 0.015734163702492088,
+          "kl_divergence": 0.714534077852388,
+          "ref_unique_ngram_count": 34143,
+          "target_unique_ngram_count": 7874
+        },
+        "3": {
+          "n": 3,
+          "jaccard_similarity": 0.001934407347794628,
+          "overlap_coefficient": 0.008402822322001282,
+          "cosine_similarity": 0.5373728031393797,
+          "euclidean_distance": 0.004779553702269598,
+          "kl_divergence": 0.2993790651252311,
+          "ref_unique_ngram_count": 52262,
+          "target_unique_ngram_count": 15590
+        }
+      },
+      "token_counts": {
+        "ref_char_tokens": 291553,
+        "target_char_tokens": 64409,
+        "ref_word_tokens": 63783,
+        "target_word_tokens": 23310
+      }
+    },
+    "metric_deltas": {
+      "character": {
+        "1": {
+          "cosine_similarity": 0.5410881301275223,
+          "kl_divergence": 2.088769722039204
+        },
+        "2": {
+          "cosine_similarity": 0.5978680752514247,
+          "kl_divergence": 2.823318874406203
+        },
+        "3": {
+          "cosine_similarity": 0.7525139407595232,
+          "kl_divergence": 2.444222544259268
+        }
+      },
+      "word": {
+        "1": {
+          "cosine_similarity": 0.521378773612161,
+          "kl_divergence": 1.5908791372308917
+        },
+        "2": {
+          "cosine_similarity": 0.6880168933448068,
+          "kl_divergence": 0.5308445840415075
+        },
+        "3": {
+          "cosine_similarity": 0.29728159549013,
+          "kl_divergence": 0.15135072096187463
+        }
+      }
+    },
+    "timestamp": "2026-06-29T16:59:37.511335",
+    "language_full_name": "Amis"
+  },
+  {
+    "language": "pwn",
+    "dialect": "Central",
+    "sources": [
+      "ePark/"
+    ],
+    "corpus_stats": {
+      "total_sentences": 3747,
+      "reference_sentences": 2998,
+      "target_sentences": 749,
+      "test_ratio": 0.2,
+      "total_characters": 218302,
+      "unique_characters": 32
+    },
+    "perturbation": {
+      "max_freq_character": "a",
+      "swapped_with_character": "y",
+      "character_frequency": 8263
+    },
+    "baseline_metrics": {
+      "character": {
+        "1": {
+          "n": 1,
+          "jaccard_similarity": 0.8285714285714286,
+          "overlap_coefficient": 0.9354838709677419,
+          "cosine_similarity": 0.998347437981435,
+          "euclidean_distance": 0.019677733902819,
+          "kl_divergence": 0.004136504745490349,
+          "ref_unique_ngram_count": 66,
+          "target_unique_ngram_count": 62
+        },
+        "2": {
+          "n": 2,
+          "jaccard_similarity": 0.6692392502756339,
+          "overlap_coefficient": 0.9281345565749235,
+          "cosine_similarity": 0.9954444179904608,
+          "euclidean_distance": 0.010605119754687706,
+          "kl_divergence": 0.02135033829771826,
+          "ref_unique_ngram_count": 860,
+          "target_unique_ngram_count": 654
+        },
+        "3": {
+          "n": 3,
+          "jaccard_similarity": 0.5571507454445058,
+          "overlap_coefficient": 0.86559908492994,
+          "cosine_similarity": 0.9865149748326398,
+          "euclidean_distance": 0.00875284182459758,
+          "kl_divergence": 0.07728788293750832,
+          "ref_unique_ngram_count": 4963,
+          "target_unique_ngram_count": 3497
+        }
+      },
+      "word": {
+        "1": {
+          "n": 1,
+          "jaccard_similarity": 0.2507183908045977,
+          "overlap_coefficient": 0.6232142857142857,
+          "cosine_similarity": 0.9902644243987807,
+          "euclidean_distance": 0.05023107334888415,
+          "kl_divergence": 0.20613677501395017,
+          "ref_unique_ngram_count": 4724,
+          "target_unique_ngram_count": 2240
+        },
+        "2": {
+          "n": 2,
+          "jaccard_similarity": 0.09336027998225464,
+          "overlap_coefficient": 0.35106580166821133,
+          "cosine_similarity": 0.7983105174957833,
+          "euclidean_distance": 0.006961155830664172,
+          "kl_divergence": 0.19671334481856878,
+          "ref_unique_ngram_count": 16786,
+          "target_unique_ngram_count": 5395
+        },
+        "3": {
+          "n": 3,
+          "jaccard_similarity": 0.04010129392583342,
+          "overlap_coefficient": 0.17861557478368356,
+          "cosine_similarity": 0.8312362419661987,
+          "euclidean_distance": 0.00371628613615883,
+          "kl_divergence": 0.1540899138533459,
+          "ref_unique_ngram_count": 23511,
+          "target_unique_ngram_count": 6472
+        }
+      },
+      "token_counts": {
+        "ref_char_tokens": 145636,
+        "target_char_tokens": 37867,
+        "ref_word_tokens": 27603,
+        "target_word_tokens": 6807
+      }
+    },
+    "perturbed_metrics": {
+      "character": {
+        "1": {
+          "n": 1,
+          "jaccard_similarity": 0.8142857142857143,
+          "overlap_coefficient": 0.9344262295081968,
+          "cosine_similarity": 0.4521072295339694,
+          "euclidean_distance": 0.3177733464387423,
+          "kl_divergence": 2.0630022873443523,
+          "ref_unique_ngram_count": 66,
+          "target_unique_ngram_count": 61
+        },
+        "2": {
+          "n": 2,
+          "jaccard_similarity": 0.5744456177402323,
+          "overlap_coefficient": 0.8621236133122029,
+          "cosine_similarity": 0.3484832110925852,
+          "euclidean_distance": 0.11832970241515338,
+          "kl_divergence": 2.8166447742754026,
+          "ref_unique_ngram_count": 860,
+          "target_unique_ngram_count": 631
+        },
+        "3": {
+          "n": 3,
+          "jaccard_similarity": 0.31557312252964426,
+          "overlap_coefficient": 0.5944014294222751,
+          "cosine_similarity": 0.2011213695296689,
+          "euclidean_distance": 0.05446502450662567,
+          "kl_divergence": 2.4512422516956236,
+          "ref_unique_ngram_count": 4963,
+          "target_unique_ngram_count": 3358
+        }
+      },
+      "word": {
+        "1": {
+          "n": 1,
+          "jaccard_similarity": 0.036001190121987506,
+          "overlap_coefficient": 0.10803571428571429,
+          "cosine_similarity": 0.08867536223561243,
+          "euclidean_distance": 0.1245951616870738,
+          "kl_divergence": 1.922920923143366,
+          "ref_unique_ngram_count": 4724,
+          "target_unique_ngram_count": 2240
+        },
+        "2": {
+          "n": 2,
+          "jaccard_similarity": 0.004801812004530012,
+          "overlap_coefficient": 0.01964782205746061,
+          "cosine_similarity": 0.462170663633054,
+          "euclidean_distance": 0.010224574820524033,
+          "kl_divergence": 0.43875376588482534,
+          "ref_unique_ngram_count": 16786,
+          "target_unique_ngram_count": 5395
+        },
+        "3": {
+          "n": 3,
+          "jaccard_similarity": 0.0005339206460439817,
+          "overlap_coefficient": 0.002472187886279357,
+          "cosine_similarity": 0.7729335987882221,
+          "euclidean_distance": 0.004233584515008593,
+          "kl_divergence": 0.199241039901258,
+          "ref_unique_ngram_count": 23511,
+          "target_unique_ngram_count": 6472
+        }
+      },
+      "token_counts": {
+        "ref_char_tokens": 145636,
+        "target_char_tokens": 37867,
+        "ref_word_tokens": 27603,
+        "target_word_tokens": 6807
+      }
+    },
+    "metric_deltas": {
+      "character": {
+        "1": {
+          "cosine_similarity": 0.5462402084474656,
+          "kl_divergence": 2.058865782598862
+        },
+        "2": {
+          "cosine_similarity": 0.6469612068978756,
+          "kl_divergence": 2.7952944359776843
+        },
+        "3": {
+          "cosine_similarity": 0.785393605302971,
+          "kl_divergence": 2.373954368758115
+        }
+      },
+      "word": {
+        "1": {
+          "cosine_similarity": 0.9015890621631683,
+          "kl_divergence": 1.7167841481294157
+        },
+        "2": {
+          "cosine_similarity": 0.3361398538627293,
+          "kl_divergence": 0.24204042106625656
+        },
+        "3": {
+          "cosine_similarity": 0.05830264317797662,
+          "kl_divergence": 0.045151126047912105
+        }
+      }
+    },
+    "timestamp": "2026-06-29T16:59:38.638218",
+    "language_full_name": "Paiwan"
+  },
+  {
+    "language": "pwn",
+    "dialect": "Eastern",
+    "sources": [
+      "ePark/"
+    ],
+    "corpus_stats": {
+      "total_sentences": 3892,
+      "reference_sentences": 3114,
+      "target_sentences": 778,
+      "test_ratio": 0.2,
+      "total_characters": 229164,
+      "unique_characters": 34
+    },
+    "perturbation": {
+      "max_freq_character": "a",
+      "swapped_with_character": "k",
+      "character_frequency": 8188
+    },
+    "baseline_metrics": {
+      "character": {
+        "1": {
+          "n": 1,
+          "jaccard_similarity": 0.8461538461538461,
+          "overlap_coefficient": 1.0,
+          "cosine_similarity": 0.9993318913713288,
+          "euclidean_distance": 0.01241419148147554,
+          "kl_divergence": 0.0025458179572835507,
+          "ref_unique_ngram_count": 65,
+          "target_unique_ngram_count": 55
+        },
+        "2": {
+          "n": 2,
+          "jaccard_similarity": 0.5492505353319058,
+          "overlap_coefficient": 0.9361313868613139,
+          "cosine_similarity": 0.9962515447173232,
+          "euclidean_distance": 0.009201057664854306,
+          "kl_divergence": 0.017670302000981936,
+          "ref_unique_ngram_count": 899,
+          "target_unique_ngram_count": 548
+        },
+        "3": {
+          "n": 3,
+          "jaccard_similarity": 0.48566176470588235,
+          "overlap_coefficient": 0.9026306798770072,
+          "cosine_similarity": 0.9869360954792779,
+          "euclidean_distance": 0.007856920473508933,
+          "kl_divergence": 0.071429607425091,
+          "ref_unique_ngram_count": 5155,
+          "target_unique_ngram_count": 2927
+        }
+      },
+      "word": {
+        "1": {
+          "n": 1,
+          "jaccard_similarity": 0.21709251101321586,
+          "overlap_coefficient": 0.6833056017748197,
+          "cosine_similarity": 0.9941438221316813,
+          "euclidean_distance": 0.03200064183613153,
+          "kl_divergence": 0.1661134398208538,
+          "ref_unique_ngram_count": 5104,
+          "target_unique_ngram_count": 1803
+        },
+        "2": {
+          "n": 2,
+          "jaccard_similarity": 0.08299226921327876,
+          "overlap_coefficient": 0.35700312989045385,
+          "cosine_similarity": 0.8110248235391089,
+          "euclidean_distance": 0.006160599215155611,
+          "kl_divergence": 0.17677561876932782,
+          "ref_unique_ngram_count": 18703,
+          "target_unique_ngram_count": 5112
+        },
+        "3": {
+          "n": 3,
+          "jaccard_similarity": 0.029986751542960547,
+          "overlap_coefficient": 0.147278209807967,
+          "cosine_similarity": 0.8323181148235462,
+          "euclidean_distance": 0.0035582599224344143,
+          "kl_divergence": 0.1475082106714608,
+          "ref_unique_ngram_count": 25574,
+          "target_unique_ngram_count": 6301
+        }
+      },
+      "token_counts": {
+        "ref_char_tokens": 159139,
+        "target_char_tokens": 33985,
+        "ref_word_tokens": 29433,
+        "target_word_tokens": 6621
+      }
+    },
+    "perturbed_metrics": {
+      "character": {
+        "1": {
+          "n": 1,
+          "jaccard_similarity": 0.8307692307692308,
+          "overlap_coefficient": 1.0,
+          "cosine_similarity": 0.4661186758511109,
+          "euclidean_distance": 0.336577314234918,
+          "kl_divergence": 2.0233020797468426,
+          "ref_unique_ngram_count": 65,
+          "target_unique_ngram_count": 54
+        },
+        "2": {
+          "n": 2,
+          "jaccard_similarity": 0.48785638859556496,
+          "overlap_coefficient": 0.9058823529411765,
+          "cosine_similarity": 0.31520832565920176,
+          "euclidean_distance": 0.12991872867227633,
+          "kl_divergence": 2.800026444761849,
+          "ref_unique_ngram_count": 899,
+          "target_unique_ngram_count": 510
+        },
+        "3": {
+          "n": 3,
+          "jaccard_similarity": 0.291529334212261,
+          "overlap_coefficient": 0.6595824011931395,
+          "cosine_similarity": 0.17460867157722185,
+          "euclidean_distance": 0.05845651091489683,
+          "kl_divergence": 2.4443808333012207,
+          "ref_unique_ngram_count": 5155,
+          "target_unique_ngram_count": 2682
+        }
+      },
+      "word": {
+        "1": {
+          "n": 1,
+          "jaccard_similarity": 0.029832935560859187,
+          "overlap_coefficient": 0.1111111111111111,
+          "cosine_similarity": 0.07684867698774878,
+          "euclidean_distance": 0.12416044766886834,
+          "kl_divergence": 1.9004781971035865,
+          "ref_unique_ngram_count": 5104,
+          "target_unique_ngram_count": 1800
+        },
+        "2": {
+          "n": 2,
+          "jaccard_similarity": 0.0034551047065267773,
+          "overlap_coefficient": 0.016040688575899843,
+          "cosine_similarity": 0.48397959840454347,
+          "euclidean_distance": 0.009301967570315215,
+          "kl_divergence": 0.40196015093166476,
+          "ref_unique_ngram_count": 18703,
+          "target_unique_ngram_count": 5112
+        },
+        "3": {
+          "n": 3,
+          "jaccard_similarity": 0.00021965608133550898,
+          "overlap_coefficient": 0.0011109347722583717,
+          "cosine_similarity": 0.7854676069275114,
+          "euclidean_distance": 0.003970228601531683,
+          "kl_divergence": 0.18189593674803678,
+          "ref_unique_ngram_count": 25574,
+          "target_unique_ngram_count": 6301
+        }
+      },
+      "token_counts": {
+        "ref_char_tokens": 159139,
+        "target_char_tokens": 33985,
+        "ref_word_tokens": 29433,
+        "target_word_tokens": 6621
+      }
+    },
+    "metric_deltas": {
+      "character": {
+        "1": {
+          "cosine_similarity": 0.5332132155202179,
+          "kl_divergence": 2.020756261789559
+        },
+        "2": {
+          "cosine_similarity": 0.6810432190581215,
+          "kl_divergence": 2.782356142760867
+        },
+        "3": {
+          "cosine_similarity": 0.812327423902056,
+          "kl_divergence": 2.37295122587613
+        }
+      },
+      "word": {
+        "1": {
+          "cosine_similarity": 0.9172951451439325,
+          "kl_divergence": 1.7343647572827328
+        },
+        "2": {
+          "cosine_similarity": 0.3270452251345654,
+          "kl_divergence": 0.22518453216233694
+        },
+        "3": {
+          "cosine_similarity": 0.04685050789603484,
+          "kl_divergence": 0.034387726076575975
+        }
+      }
+    },
+    "timestamp": "2026-06-29T16:59:39.815365",
+    "language_full_name": "Paiwan"
+  },
+  {
+    "language": "pwn",
+    "dialect": "Northern",
+    "sources": [
+      "ePark/",
+      "ILRDF_Dicts/"
+    ],
+    "corpus_stats": {
+      "total_sentences": 10800,
+      "reference_sentences": 8640,
+      "target_sentences": 2160,
+      "test_ratio": 0.2,
+      "total_characters": 620506,
+      "unique_characters": 35
+    },
+    "perturbation": {
+      "max_freq_character": "a",
+      "swapped_with_character": "i",
+      "character_frequency": 26213
+    },
+    "baseline_metrics": {
+      "character": {
+        "1": {
+          "n": 1,
+          "jaccard_similarity": 0.7792207792207793,
+          "overlap_coefficient": 0.9523809523809523,
+          "cosine_similarity": 0.9999317651152086,
+          "euclidean_distance": 0.003828562231610975,
+          "kl_divergence": 0.000638845301540536,
+          "ref_unique_ngram_count": 74,
+          "target_unique_ngram_count": 63
+        },
+        "2": {
+          "n": 2,
+          "jaccard_similarity": 0.6320346320346321,
+          "overlap_coefficient": 0.9263959390862944,
+          "cosine_similarity": 0.9993992197640539,
+          "euclidean_distance": 0.003920104514723091,
+          "kl_divergence": 0.006254941931666499,
+          "ref_unique_ngram_count": 1097,
+          "target_unique_ngram_count": 788
+        },
+        "3": {
+          "n": 3,
+          "jaccard_similarity": 0.5794999309296864,
+          "overlap_coefficient": 0.902344590234459,
+          "cosine_similarity": 0.997064639415154,
+          "euclidean_distance": 0.004291973503402703,
+          "kl_divergence": 0.03248165470856152,
+          "ref_unique_ngram_count": 6785,
+          "target_unique_ngram_count": 4649
+        }
+      },
+      "word": {
+        "1": {
+          "n": 1,
+          "jaccard_similarity": 0.2281355203781964,
+          "overlap_coefficient": 0.623898139079334,
+          "cosine_similarity": 0.9983560844355485,
+          "euclidean_distance": 0.04021453707573117,
+          "kl_divergence": 0.15846683901338054,
+          "ref_unique_ngram_count": 12041,
+          "target_unique_ngram_count": 5105
+        },
+        "2": {
+          "n": 2,
+          "jaccard_similarity": 0.09199727627853636,
+          "overlap_coefficient": 0.34124293785310733,
+          "cosine_similarity": 0.8702330650787539,
+          "euclidean_distance": 0.00563979243968211,
+          "kl_divergence": 0.19336397153828205,
+          "ref_unique_ngram_count": 45895,
+          "target_unique_ngram_count": 15045
+        },
+        "3": {
+          "n": 3,
+          "jaccard_similarity": 0.033168856436281806,
+          "overlap_coefficient": 0.14509844134536506,
+          "cosine_similarity": 0.8315981341834597,
+          "euclidean_distance": 0.002172563829094228,
+          "kl_divergence": 0.15508521666984795,
+          "ref_unique_ngram_count": 68647,
+          "target_unique_ngram_count": 19504
+        }
+      },
+      "token_counts": {
+        "ref_char_tokens": 412273,
+        "target_char_tokens": 109955,
+        "ref_word_tokens": 78923,
+        "target_word_tokens": 20872
+      }
+    },
+    "perturbed_metrics": {
+      "character": {
+        "1": {
+          "n": 1,
+          "jaccard_similarity": 0.7662337662337663,
+          "overlap_coefficient": 0.9516129032258065,
+          "cosine_similarity": 0.5063775156631293,
+          "euclidean_distance": 0.33900902091500107,
+          "kl_divergence": 2.339362032806238,
+          "ref_unique_ngram_count": 74,
+          "target_unique_ngram_count": 62
+        },
+        "2": {
+          "n": 2,
+          "jaccard_similarity": 0.5641688199827735,
+          "overlap_coefficient": 0.9109874826147427,
+          "cosine_similarity": 0.4152091635552891,
+          "euclidean_distance": 0.127360771567346,
+          "kl_divergence": 3.2783976235560877,
+          "ref_unique_ngram_count": 1097,
+          "target_unique_ngram_count": 719
+        },
+        "3": {
+          "n": 3,
+          "jaccard_similarity": 0.4033252882810405,
+          "overlap_coefficient": 0.8171692474870959,
+          "cosine_similarity": 0.2395222817994764,
+          "euclidean_distance": 0.06580519269243619,
+          "kl_divergence": 3.0683195168918886,
+          "ref_unique_ngram_count": 6785,
+          "target_unique_ngram_count": 3681
+        }
+      },
+      "word": {
+        "1": {
+          "n": 1,
+          "jaccard_similarity": 0.03697622088426686,
+          "overlap_coefficient": 0.12135728542914172,
+          "cosine_similarity": 0.12932911927961882,
+          "euclidean_distance": 0.14695515435528073,
+          "kl_divergence": 2.4980384558211823,
+          "ref_unique_ngram_count": 12041,
+          "target_unique_ngram_count": 5010
+        },
+        "2": {
+          "n": 2,
+          "jaccard_similarity": 0.004666401906274821,
+          "overlap_coefficient": 0.01902962413118294,
+          "cosine_similarity": 0.2469984852969001,
+          "euclidean_distance": 0.010186027780874502,
+          "kl_divergence": 0.5619968866843821,
+          "ref_unique_ngram_count": 45895,
+          "target_unique_ngram_count": 14819
+        },
+        "3": {
+          "n": 3,
+          "jaccard_similarity": 0.0004542976558240959,
+          "overlap_coefficient": 0.002057507329869863,
+          "cosine_similarity": 0.7611727522690774,
+          "euclidean_distance": 0.0025501955715332824,
+          "kl_divergence": 0.20135841982195835,
+          "ref_unique_ngram_count": 68647,
+          "target_unique_ngram_count": 19441
+        }
+      },
+      "token_counts": {
+        "ref_char_tokens": 412273,
+        "target_char_tokens": 109955,
+        "ref_word_tokens": 78923,
+        "target_word_tokens": 20872
+      }
+    },
+    "metric_deltas": {
+      "character": {
+        "1": {
+          "cosine_similarity": 0.4935542494520794,
+          "kl_divergence": 2.3387231875046974
+        },
+        "2": {
+          "cosine_similarity": 0.5841900562087647,
+          "kl_divergence": 3.272142681624421
+        },
+        "3": {
+          "cosine_similarity": 0.7575423576156776,
+          "kl_divergence": 3.0358378621833273
+        }
+      },
+      "word": {
+        "1": {
+          "cosine_similarity": 0.8690269651559297,
+          "kl_divergence": 2.3395716168078016
+        },
+        "2": {
+          "cosine_similarity": 0.6232345797818537,
+          "kl_divergence": 0.3686329151461
+        },
+        "3": {
+          "cosine_similarity": 0.0704253819143823,
+          "kl_divergence": 0.04627320315211039
+        }
+      }
+    },
+    "timestamp": "2026-06-29T16:59:42.006594",
+    "language_full_name": "Paiwan"
+  },
+  {
+    "language": "pwn",
+    "dialect": "Southern",
+    "sources": [
+      "ePark/"
+    ],
+    "corpus_stats": {
+      "total_sentences": 3958,
+      "reference_sentences": 3167,
+      "target_sentences": 791,
+      "test_ratio": 0.2,
+      "total_characters": 238158,
+      "unique_characters": 34
+    },
+    "perturbation": {
+      "max_freq_character": "a",
+      "swapped_with_character": "s",
+      "character_frequency": 8743
+    },
+    "baseline_metrics": {
+      "character": {
+        "1": {
+          "n": 1,
+          "jaccard_similarity": 0.8,
+          "overlap_coefficient": 1.0,
+          "cosine_similarity": 0.9995376616219539,
+          "euclidean_distance": 0.009958770124877416,
+          "kl_divergence": 0.0035492481004224,
+          "ref_unique_ngram_count": 70,
+          "target_unique_ngram_count": 56
+        },
+        "2": {
+          "n": 2,
+          "jaccard_similarity": 0.5448207171314741,
+          "overlap_coefficient": 0.9239864864864865,
+          "cosine_similarity": 0.9969175331683156,
+          "euclidean_distance": 0.008299749327255166,
+          "kl_divergence": 0.016552322424055438,
+          "ref_unique_ngram_count": 959,
+          "target_unique_ngram_count": 592
+        },
+        "3": {
+          "n": 3,
+          "jaccard_similarity": 0.4714484679665738,
+          "overlap_coefficient": 0.9050802139037433,
+          "cosine_similarity": 0.9896144281125334,
+          "euclidean_distance": 0.007429147854820773,
+          "kl_divergence": 0.06363267123081336,
+          "ref_unique_ngram_count": 5460,
+          "target_unique_ngram_count": 2992
+        }
+      },
+      "word": {
+        "1": {
+          "n": 1,
+          "jaccard_similarity": 0.22267939433838052,
+          "overlap_coefficient": 0.6924257932446264,
+          "cosine_similarity": 0.9955967830908078,
+          "euclidean_distance": 0.038870925850872685,
+          "kl_divergence": 0.16108078748366222,
+          "ref_unique_ngram_count": 5475,
+          "target_unique_ngram_count": 1954
+        },
+        "2": {
+          "n": 2,
+          "jaccard_similarity": 0.08577799151838413,
+          "overlap_coefficient": 0.3607280750137893,
+          "cosine_similarity": 0.8100955415144138,
+          "euclidean_distance": 0.00631076566835897,
+          "kl_divergence": 0.17867772598350504,
+          "ref_unique_ngram_count": 19396,
+          "target_unique_ngram_count": 5439
+        },
+        "3": {
+          "n": 3,
+          "jaccard_similarity": 0.031962209748167235,
+          "overlap_coefficient": 0.15522121257262028,
+          "cosine_similarity": 0.8370607090448142,
+          "euclidean_distance": 0.0034320690439958953,
+          "kl_divergence": 0.1450979464063055,
+          "ref_unique_ngram_count": 26930,
+          "target_unique_ngram_count": 6713
+        }
+      },
+      "token_counts": {
+        "ref_char_tokens": 163247,
+        "target_char_tokens": 36729,
+        "ref_word_tokens": 31165,
+        "target_word_tokens": 7107
+      }
+    },
+    "perturbed_metrics": {
+      "character": {
+        "1": {
+          "n": 1,
+          "jaccard_similarity": 0.7857142857142857,
+          "overlap_coefficient": 1.0,
+          "cosine_similarity": 0.457193611520351,
+          "euclidean_distance": 0.3345233720733342,
+          "kl_divergence": 2.0582164597917316,
+          "ref_unique_ngram_count": 70,
+          "target_unique_ngram_count": 55
+        },
+        "2": {
+          "n": 2,
+          "jaccard_similarity": 0.47517039922103216,
+          "overlap_coefficient": 0.8776978417266187,
+          "cosine_similarity": 0.32847928618579136,
+          "euclidean_distance": 0.1262243004734799,
+          "kl_divergence": 2.8358388082280026,
+          "ref_unique_ngram_count": 959,
+          "target_unique_ngram_count": 556
+        },
+        "3": {
+          "n": 3,
+          "jaccard_similarity": 0.28406069138119816,
+          "overlap_coefficient": 0.6606038559476173,
+          "cosine_similarity": 0.17717541738491102,
+          "euclidean_distance": 0.05791793019502729,
+          "kl_divergence": 2.4870287022335864,
+          "ref_unique_ngram_count": 5460,
+          "target_unique_ngram_count": 2749
+        }
+      },
+      "word": {
+        "1": {
+          "n": 1,
+          "jaccard_similarity": 0.0336812804453723,
+          "overlap_coefficient": 0.12397540983606557,
+          "cosine_similarity": 0.06120994737638296,
+          "euclidean_distance": 0.13492338493389933,
+          "kl_divergence": 1.9614502196595442,
+          "ref_unique_ngram_count": 5475,
+          "target_unique_ngram_count": 1952
+        },
+        "2": {
+          "n": 2,
+          "jaccard_similarity": 0.004367871875758311,
+          "overlap_coefficient": 0.01986024273630011,
+          "cosine_similarity": 0.4587811124877443,
+          "euclidean_distance": 0.009609616904408053,
+          "kl_divergence": 0.4281461450252793,
+          "ref_unique_ngram_count": 19396,
+          "target_unique_ngram_count": 5438
+        },
+        "3": {
+          "n": 3,
+          "jaccard_similarity": 0.0003568242640499554,
+          "overlap_coefficient": 0.0017878426698450535,
+          "cosine_similarity": 0.7779166870747799,
+          "euclidean_distance": 0.003948932426222951,
+          "kl_divergence": 0.18622614578998145,
+          "ref_unique_ngram_count": 26930,
+          "target_unique_ngram_count": 6712
+        }
+      },
+      "token_counts": {
+        "ref_char_tokens": 163247,
+        "target_char_tokens": 36729,
+        "ref_word_tokens": 31165,
+        "target_word_tokens": 7107
+      }
+    },
+    "metric_deltas": {
+      "character": {
+        "1": {
+          "cosine_similarity": 0.5423440501016029,
+          "kl_divergence": 2.054667211691309
+        },
+        "2": {
+          "cosine_similarity": 0.6684382469825242,
+          "kl_divergence": 2.8192864858039473
+        },
+        "3": {
+          "cosine_similarity": 0.8124390107276224,
+          "kl_divergence": 2.423396031002773
+        }
+      },
+      "word": {
+        "1": {
+          "cosine_similarity": 0.9343868357144248,
+          "kl_divergence": 1.800369432175882
+        },
+        "2": {
+          "cosine_similarity": 0.3513144290266695,
+          "kl_divergence": 0.24946841904177428
+        },
+        "3": {
+          "cosine_similarity": 0.05914402197003432,
+          "kl_divergence": 0.041128199383675956
+        }
+      }
+    },
+    "timestamp": "2026-06-29T16:59:43.192375",
+    "language_full_name": "Paiwan"
+  }
+]

@@ -1,0 +1,1892 @@
+2026-07-02 11:05:14,317 - INFO - Starting Character Perturbation Robustness Test Suite
+2026-07-02 11:05:14,344 - INFO - Testing languages: ['Amis', 'Atayal', 'Bunun', 'Paiwan', 'Puyuma', 'Rukai', 'Seediq']
+2026-07-02 11:05:14,345 - INFO - Testing sources: ['ePark/', 'ILRDF_Dicts/', 'Paiwan_Stories/', 'NTUFormosanCorpus/']
+2026-07-02 11:05:14,345 - INFO - Number of swaps per test: 5
+2026-07-02 11:05:14,346 - INFO - Epsilon for per-language thresholds: 0.1
+2026-07-02 11:05:14,346 - INFO - 
+================================================================================
+2026-07-02 11:05:14,346 - INFO - Running robustness tests with 5 swaps per dialect
+2026-07-02 11:05:14,346 - INFO - ================================================================================
+
+2026-07-02 11:05:14,349 - INFO - 
+Testing ami/Coastal with 5 random character swaps...
+2026-07-02 11:05:15,248 - INFO - Analyzing baseline for ami/Coastal...
+2026-07-02 11:05:15,663 - INFO - Testing 5 random character swaps...
+2026-07-02 11:05:15,663 - INFO -   Swap 1/5: 'a' -> 'u'
+2026-07-02 11:05:16,114 - INFO -   Swap 2/5: 'r' -> 'p'
+2026-07-02 11:05:16,541 - INFO -   Swap 3/5: 'a' -> 'y'
+2026-07-02 11:05:16,892 - INFO -   Swap 4/5: 'n' -> 'm'
+2026-07-02 11:05:17,272 - INFO -   Swap 5/5: 'x' -> 'h'
+2026-07-02 11:05:17,620 - INFO - ================================================================================
+Test Results: AMI/Coastal
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 6019
+  Reference sentences: 4816
+  Target sentences: 1203
+  Total characters: 394352
+  Unique characters: 34
+
+Perturbation:
+  Number of random swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence across 5 swaps):
+  Character Level:
+    1-gram:
+      D Cosine Similarity: 0.235521
+      D KL Divergence: 1.039216
+    2-gram:
+      D Cosine Similarity: 0.310381
+      D KL Divergence: 1.449463
+    3-gram:
+      D Cosine Similarity: 0.369259
+      D KL Divergence: 1.268356
+
+  Word Level:
+    1-gram:
+      D Cosine Similarity: 0.155925
+      D KL Divergence: 0.787331
+    2-gram:
+      D Cosine Similarity: 0.225294
+      D KL Divergence: 0.186848
+    3-gram:
+      D Cosine Similarity: 0.062729
+      D KL Divergence: 0.038580
+2026-07-02 11:05:17,622 - INFO - 
+Testing ami/Hengchun with 5 random character swaps...
+2026-07-02 11:05:18,584 - INFO - Analyzing baseline for ami/Hengchun...
+2026-07-02 11:05:18,820 - INFO - Testing 5 random character swaps...
+2026-07-02 11:05:18,821 - INFO -   Swap 1/5: 'k' -> 'n'
+2026-07-02 11:05:19,007 - INFO -   Swap 2/5: 'n' -> 'c'
+2026-07-02 11:05:19,195 - INFO -   Swap 3/5: 'd' -> 'r'
+2026-07-02 11:05:19,379 - INFO -   Swap 4/5: 'e' -> 'x'
+2026-07-02 11:05:19,563 - INFO -   Swap 5/5: 'p' -> 'u'
+2026-07-02 11:05:19,750 - INFO - ================================================================================
+Test Results: AMI/Hengchun
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3832
+  Reference sentences: 3066
+  Target sentences: 766
+  Total characters: 223513
+  Unique characters: 34
+
+Perturbation:
+  Number of random swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence across 5 swaps):
+  Character Level:
+    1-gram:
+      D Cosine Similarity: 0.024349
+      D KL Divergence: 0.280032
+    2-gram:
+      D Cosine Similarity: 0.085963
+      D KL Divergence: 0.406219
+    3-gram:
+      D Cosine Similarity: 0.108318
+      D KL Divergence: 0.355203
+
+  Word Level:
+    1-gram:
+      D Cosine Similarity: 0.082918
+      D KL Divergence: 0.240618
+    2-gram:
+      D Cosine Similarity: 0.083855
+      D KL Divergence: 0.064267
+    3-gram:
+      D Cosine Similarity: 0.026997
+      D KL Divergence: 0.017288
+2026-07-02 11:05:19,752 - INFO - 
+Testing ami/Malan with 5 random character swaps...
+2026-07-02 11:05:20,495 - INFO - Analyzing baseline for ami/Malan...
+2026-07-02 11:05:20,730 - INFO - Testing 5 random character swaps...
+2026-07-02 11:05:20,735 - INFO -   Swap 1/5: 'm' -> 'n'
+2026-07-02 11:05:20,909 - INFO -   Swap 2/5: 's' -> 'k'
+2026-07-02 11:05:21,083 - INFO -   Swap 3/5: 'n' -> 'd'
+2026-07-02 11:05:21,276 - INFO -   Swap 4/5: 'c' -> 'i'
+2026-07-02 11:05:21,449 - INFO -   Swap 5/5: 'm' -> 'r'
+2026-07-02 11:05:21,638 - INFO - ================================================================================
+Test Results: AMI/Malan
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3969
+  Reference sentences: 3176
+  Target sentences: 793
+  Total characters: 216908
+  Unique characters: 29
+
+Perturbation:
+  Number of random swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence across 5 swaps):
+  Character Level:
+    1-gram:
+      D Cosine Similarity: 0.023807
+      D KL Divergence: 0.282753
+    2-gram:
+      D Cosine Similarity: 0.088027
+      D KL Divergence: 0.414006
+    3-gram:
+      D Cosine Similarity: 0.105893
+      D KL Divergence: 0.363798
+
+  Word Level:
+    1-gram:
+      D Cosine Similarity: 0.037066
+      D KL Divergence: 0.238486
+    2-gram:
+      D Cosine Similarity: 0.102644
+      D KL Divergence: 0.082560
+    3-gram:
+      D Cosine Similarity: 0.030922
+      D KL Divergence: 0.022518
+2026-07-02 11:05:21,638 - INFO - 
+Testing ami/Southern with 5 random character swaps...
+2026-07-02 11:05:22,455 - INFO - Analyzing baseline for ami/Southern...
+2026-07-02 11:05:22,689 - INFO - Testing 5 random character swaps...
+2026-07-02 11:05:22,691 - INFO -   Swap 1/5: 'g' -> 'l'
+2026-07-02 11:05:22,873 - INFO -   Swap 2/5: '9' -> 'v'
+2026-07-02 11:05:23,050 - INFO -   Swap 3/5: 'r' -> 's'
+2026-07-02 11:05:23,220 - INFO -   Swap 4/5: '1' -> 'v'
+2026-07-02 11:05:23,388 - INFO -   Swap 5/5: 'e' -> 'i'
+2026-07-02 11:05:23,555 - INFO - ================================================================================
+Test Results: AMI/Southern
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3894
+  Reference sentences: 3116
+  Target sentences: 778
+  Total characters: 209599
+  Unique characters: 33
+
+Perturbation:
+  Number of random swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence across 5 swaps):
+  Character Level:
+    1-gram:
+      D Cosine Similarity: 0.003549
+      D KL Divergence: 0.079326
+    2-gram:
+      D Cosine Similarity: 0.015407
+      D KL Divergence: 0.112232
+    3-gram:
+      D Cosine Similarity: 0.031282
+      D KL Divergence: 0.102914
+
+  Word Level:
+    1-gram:
+      D Cosine Similarity: 0.003921
+      D KL Divergence: 0.062258
+    2-gram:
+      D Cosine Similarity: 0.025177
+      D KL Divergence: 0.027342
+    3-gram:
+      D Cosine Similarity: 0.010487
+      D KL Divergence: 0.008030
+2026-07-02 11:05:23,555 - INFO - 
+Testing ami/Xiuguluan with 5 random character swaps...
+2026-07-02 11:05:24,313 - INFO - Analyzing baseline for ami/Xiuguluan...
+2026-07-02 11:05:24,745 - INFO - Testing 5 random character swaps...
+2026-07-02 11:05:24,745 - INFO -   Swap 1/5: 'g' -> 'y'
+2026-07-02 11:05:25,151 - INFO -   Swap 2/5: 's' -> 'n'
+2026-07-02 11:05:25,542 - INFO -   Swap 3/5: '0' -> '9'
+2026-07-02 11:05:25,932 - INFO -   Swap 4/5: 's' -> 'x'
+2026-07-02 11:05:26,333 - INFO -   Swap 5/5: '9' -> 'k'
+2026-07-02 11:05:26,755 - INFO - ================================================================================
+Test Results: AMI/Xiuguluan
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 9348
+  Reference sentences: 7479
+  Target sentences: 1869
+  Total characters: 430339
+  Unique characters: 35
+
+Perturbation:
+  Number of random swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence across 5 swaps):
+  Character Level:
+    1-gram:
+      D Cosine Similarity: 0.003848
+      D KL Divergence: 0.098164
+    2-gram:
+      D Cosine Similarity: 0.020667
+      D KL Divergence: 0.151656
+    3-gram:
+      D Cosine Similarity: 0.034457
+      D KL Divergence: 0.146399
+
+  Word Level:
+    1-gram:
+      D Cosine Similarity: 0.003644
+      D KL Divergence: 0.079192
+    2-gram:
+      D Cosine Similarity: 0.043439
+      D KL Divergence: 0.033939
+    3-gram:
+      D Cosine Similarity: 0.014627
+      D KL Divergence: 0.009455
+2026-07-02 11:05:26,755 - INFO - 
+Testing tay/FourSeasons with 5 random character swaps...
+2026-07-02 11:05:27,681 - INFO - Analyzing baseline for tay/FourSeasons...
+2026-07-02 11:05:27,903 - INFO - Testing 5 random character swaps...
+2026-07-02 11:05:27,904 - INFO -   Swap 1/5: 'z' -> 'n'
+2026-07-02 11:05:28,105 - INFO -   Swap 2/5: 'g' -> 'q'
+2026-07-02 11:05:28,295 - INFO -   Swap 3/5: 'e' -> 'x'
+2026-07-02 11:05:28,480 - INFO -   Swap 4/5: 'p' -> 'u'
+2026-07-02 11:05:28,673 - INFO -   Swap 5/5: 'e' -> 'g'
+2026-07-02 11:05:28,852 - INFO - ================================================================================
+Test Results: TAY/FourSeasons
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3715
+  Reference sentences: 2972
+  Target sentences: 743
+  Total characters: 207667
+  Unique characters: 30
+
+Perturbation:
+  Number of random swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence across 5 swaps):
+  Character Level:
+    1-gram:
+      D Cosine Similarity: 0.005416
+      D KL Divergence: 0.092114
+    2-gram:
+      D Cosine Similarity: 0.019448
+      D KL Divergence: 0.120118
+    3-gram:
+      D Cosine Similarity: 0.032746
+      D KL Divergence: 0.101582
+
+  Word Level:
+    1-gram:
+      D Cosine Similarity: 0.054087
+      D KL Divergence: 0.122541
+    2-gram:
+      D Cosine Similarity: 0.039941
+      D KL Divergence: 0.026732
+    3-gram:
+      D Cosine Similarity: 0.005912
+      D KL Divergence: 0.005113
+2026-07-02 11:05:28,853 - INFO - 
+Testing tay/Sekolik with 5 random character swaps...
+2026-07-02 11:05:29,666 - INFO - Analyzing baseline for tay/Sekolik...
+2026-07-02 11:05:30,304 - INFO - Testing 5 random character swaps...
+2026-07-02 11:05:30,304 - INFO -   Swap 1/5: 'w' -> '2'
+2026-07-02 11:05:30,887 - INFO -   Swap 2/5: 'w' -> 't'
+2026-07-02 11:05:31,465 - INFO -   Swap 3/5: 'y' -> 'a'
+2026-07-02 11:05:32,095 - INFO -   Swap 4/5: 'q' -> 'b'
+2026-07-02 11:05:32,701 - INFO -   Swap 5/5: 'e' -> 'm'
+2026-07-02 11:05:33,350 - INFO - ================================================================================
+Test Results: TAY/Sekolik
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 14888
+  Reference sentences: 11911
+  Target sentences: 2977
+  Total characters: 628918
+  Unique characters: 35
+
+Perturbation:
+  Number of random swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence across 5 swaps):
+  Character Level:
+    1-gram:
+      D Cosine Similarity: 0.015017
+      D KL Divergence: 0.230503
+    2-gram:
+      D Cosine Similarity: 0.065560
+      D KL Divergence: 0.331820
+    3-gram:
+      D Cosine Similarity: 0.085306
+      D KL Divergence: 0.313309
+
+  Word Level:
+    1-gram:
+      D Cosine Similarity: 0.093985
+      D KL Divergence: 0.354670
+    2-gram:
+      D Cosine Similarity: 0.097026
+      D KL Divergence: 0.078022
+    3-gram:
+      D Cosine Similarity: 0.012979
+      D KL Divergence: 0.010112
+2026-07-02 11:05:33,350 - INFO - 
+Testing tay/Wanda with 5 random character swaps...
+2026-07-02 11:05:34,355 - INFO - Analyzing baseline for tay/Wanda...
+2026-07-02 11:05:34,553 - INFO - Testing 5 random character swaps...
+2026-07-02 11:05:34,553 - INFO -   Swap 1/5: 'p' -> 'k'
+2026-07-02 11:05:34,712 - INFO -   Swap 2/5: 'w' -> 'i'
+2026-07-02 11:05:34,877 - INFO -   Swap 3/5: 'l' -> 'b'
+2026-07-02 11:05:35,031 - INFO -   Swap 4/5: 'i' -> 'x'
+2026-07-02 11:05:35,242 - INFO -   Swap 5/5: 'g' -> 's'
+2026-07-02 11:05:35,420 - INFO - ================================================================================
+Test Results: TAY/Wanda
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3566
+  Reference sentences: 2853
+  Target sentences: 713
+  Total characters: 178317
+  Unique characters: 29
+
+Perturbation:
+  Number of random swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence across 5 swaps):
+  Character Level:
+    1-gram:
+      D Cosine Similarity: 0.025167
+      D KL Divergence: 0.256311
+    2-gram:
+      D Cosine Similarity: 0.064336
+      D KL Divergence: 0.346761
+    3-gram:
+      D Cosine Similarity: 0.095295
+      D KL Divergence: 0.300420
+
+  Word Level:
+    1-gram:
+      D Cosine Similarity: 0.075210
+      D KL Divergence: 0.323843
+    2-gram:
+      D Cosine Similarity: 0.090452
+      D KL Divergence: 0.075510
+    3-gram:
+      D Cosine Similarity: 0.034746
+      D KL Divergence: 0.022262
+2026-07-02 11:05:35,420 - INFO - 
+Testing tay/Wenshui with 5 random character swaps...
+2026-07-02 11:05:36,279 - INFO - Analyzing baseline for tay/Wenshui...
+2026-07-02 11:05:36,539 - INFO - Testing 5 random character swaps...
+2026-07-02 11:05:36,539 - INFO -   Swap 1/5: 'h' -> 'a'
+2026-07-02 11:05:36,748 - INFO -   Swap 2/5: 'x' -> 'h'
+2026-07-02 11:05:36,945 - INFO -   Swap 3/5: 'y' -> 'o'
+2026-07-02 11:05:37,150 - INFO -   Swap 4/5: 'l' -> 'e'
+2026-07-02 11:05:37,384 - INFO -   Swap 5/5: 'r' -> 'o'
+2026-07-02 11:05:37,614 - INFO - ================================================================================
+Test Results: TAY/Wenshui
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 4580
+  Reference sentences: 3664
+  Target sentences: 916
+  Total characters: 251687
+  Unique characters: 30
+
+Perturbation:
+  Number of random swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence across 5 swaps):
+  Character Level:
+    1-gram:
+      D Cosine Similarity: 0.007156
+      D KL Divergence: 0.153815
+    2-gram:
+      D Cosine Similarity: 0.039978
+      D KL Divergence: 0.227136
+    3-gram:
+      D Cosine Similarity: 0.062196
+      D KL Divergence: 0.211626
+
+  Word Level:
+    1-gram:
+      D Cosine Similarity: 0.031598
+      D KL Divergence: 0.207984
+    2-gram:
+      D Cosine Similarity: 0.084053
+      D KL Divergence: 0.066859
+    3-gram:
+      D Cosine Similarity: 0.022700
+      D KL Divergence: 0.016934
+2026-07-02 11:05:37,614 - INFO - 
+Testing tay/YilanZeaol with 5 random character swaps...
+2026-07-02 11:05:38,462 - INFO - Analyzing baseline for tay/YilanZeaol...
+2026-07-02 11:05:38,680 - INFO - Testing 5 random character swaps...
+2026-07-02 11:05:38,680 - INFO -   Swap 1/5: 'c' -> 'b'
+2026-07-02 11:05:38,880 - INFO -   Swap 2/5: 'o' -> 'i'
+2026-07-02 11:05:39,049 - INFO -   Swap 3/5: 'r' -> 'g'
+2026-07-02 11:05:39,251 - INFO -   Swap 4/5: 'y' -> 't'
+2026-07-02 11:05:39,452 - INFO -   Swap 5/5: 'x' -> 'g'
+2026-07-02 11:05:39,631 - INFO - ================================================================================
+Test Results: TAY/YilanZeaol
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3774
+  Reference sentences: 3020
+  Target sentences: 754
+  Total characters: 214045
+  Unique characters: 29
+
+Perturbation:
+  Number of random swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence across 5 swaps):
+  Character Level:
+    1-gram:
+      D Cosine Similarity: 0.013964
+      D KL Divergence: 0.177214
+    2-gram:
+      D Cosine Similarity: 0.052341
+      D KL Divergence: 0.237763
+    3-gram:
+      D Cosine Similarity: 0.077805
+      D KL Divergence: 0.211111
+
+  Word Level:
+    1-gram:
+      D Cosine Similarity: 0.075772
+      D KL Divergence: 0.280008
+    2-gram:
+      D Cosine Similarity: 0.096128
+      D KL Divergence: 0.074328
+    3-gram:
+      D Cosine Similarity: 0.027162
+      D KL Divergence: 0.018798
+2026-07-02 11:05:39,631 - INFO - 
+Testing tay/Zeaol with 5 random character swaps...
+2026-07-02 11:05:40,512 - INFO - Analyzing baseline for tay/Zeaol...
+2026-07-02 11:05:40,725 - INFO - Testing 5 random character swaps...
+2026-07-02 11:05:40,725 - INFO -   Swap 1/5: 'z' -> 'b'
+2026-07-02 11:05:40,925 - INFO -   Swap 2/5: 'q' -> 's'
+2026-07-02 11:05:41,106 - INFO -   Swap 3/5: 'c' -> 'b'
+2026-07-02 11:05:41,302 - INFO -   Swap 4/5: 'e' -> 'i'
+2026-07-02 11:05:41,480 - INFO -   Swap 5/5: 'r' -> 'x'
+2026-07-02 11:05:41,671 - INFO - ================================================================================
+Test Results: TAY/Zeaol
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3880
+  Reference sentences: 3104
+  Target sentences: 776
+  Total characters: 216003
+  Unique characters: 31
+
+Perturbation:
+  Number of random swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence across 5 swaps):
+  Character Level:
+    1-gram:
+      D Cosine Similarity: 0.001387
+      D KL Divergence: 0.038016
+    2-gram:
+      D Cosine Similarity: 0.003993
+      D KL Divergence: 0.048235
+    3-gram:
+      D Cosine Similarity: 0.008526
+      D KL Divergence: 0.041586
+
+  Word Level:
+    1-gram:
+      D Cosine Similarity: 0.013991
+      D KL Divergence: 0.056743
+    2-gram:
+      D Cosine Similarity: 0.009344
+      D KL Divergence: 0.010193
+    3-gram:
+      D Cosine Similarity: 0.004344
+      D KL Divergence: 0.003010
+2026-07-02 11:05:41,677 - INFO - 
+Testing bnn/Junqun with 5 random character swaps...
+2026-07-02 11:05:42,848 - INFO - Analyzing baseline for bnn/Junqun...
+2026-07-02 11:05:43,829 - INFO - Testing 5 random character swaps...
+2026-07-02 11:05:43,829 - INFO -   Swap 1/5: 'k' -> 'v'
+2026-07-02 11:05:44,663 - INFO -   Swap 2/5: 's' -> 'k'
+2026-07-02 11:05:45,548 - INFO -   Swap 3/5: 'h' -> 'q'
+2026-07-02 11:05:46,368 - INFO -   Swap 4/5: 'p' -> 'l'
+2026-07-02 11:05:47,170 - INFO -   Swap 5/5: '2' -> 'q'
+2026-07-02 11:05:48,033 - INFO - ================================================================================
+Test Results: BNN/Junqun
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 16837
+  Reference sentences: 13470
+  Target sentences: 3367
+  Total characters: 874218
+  Unique characters: 37
+
+Perturbation:
+  Number of random swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence across 5 swaps):
+  Character Level:
+    1-gram:
+      D Cosine Similarity: 0.014645
+      D KL Divergence: 0.269242
+    2-gram:
+      D Cosine Similarity: 0.051732
+      D KL Divergence: 0.417945
+    3-gram:
+      D Cosine Similarity: 0.092332
+      D KL Divergence: 0.447137
+
+  Word Level:
+    1-gram:
+      D Cosine Similarity: 0.085549
+      D KL Divergence: 0.372528
+    2-gram:
+      D Cosine Similarity: 0.104759
+      D KL Divergence: 0.082318
+    3-gram:
+      D Cosine Similarity: 0.037927
+      D KL Divergence: 0.017968
+2026-07-02 11:05:48,033 - INFO - 
+Testing bnn/Kaqun with 5 random character swaps...
+2026-07-02 11:05:49,268 - INFO - Analyzing baseline for bnn/Kaqun...
+2026-07-02 11:05:49,496 - INFO - Testing 5 random character swaps...
+2026-07-02 11:05:49,496 - INFO -   Swap 1/5: 'l' -> 'b'
+2026-07-02 11:05:49,687 - INFO -   Swap 2/5: 'v' -> 'g'
+2026-07-02 11:05:49,857 - INFO -   Swap 3/5: 'g' -> 'q'
+2026-07-02 11:05:50,033 - INFO -   Swap 4/5: 'o' -> 'z'
+2026-07-02 11:05:50,219 - INFO -   Swap 5/5: 'h' -> 'n'
+2026-07-02 11:05:50,400 - INFO - ================================================================================
+Test Results: BNN/Kaqun
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3840
+  Reference sentences: 3072
+  Target sentences: 768
+  Total characters: 195402
+  Unique characters: 29
+
+Perturbation:
+  Number of random swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence across 5 swaps):
+  Character Level:
+    1-gram:
+      D Cosine Similarity: 0.003747
+      D KL Divergence: 0.098410
+    2-gram:
+      D Cosine Similarity: 0.020204
+      D KL Divergence: 0.140405
+    3-gram:
+      D Cosine Similarity: 0.040373
+      D KL Divergence: 0.124565
+
+  Word Level:
+    1-gram:
+      D Cosine Similarity: 0.009484
+      D KL Divergence: 0.066075
+    2-gram:
+      D Cosine Similarity: 0.014740
+      D KL Divergence: 0.010970
+    3-gram:
+      D Cosine Similarity: 0.003584
+      D KL Divergence: 0.003129
+2026-07-02 11:05:50,400 - INFO - 
+Testing bnn/Luanqun with 5 random character swaps...
+2026-07-02 11:05:51,570 - INFO - Analyzing baseline for bnn/Luanqun...
+2026-07-02 11:05:51,768 - INFO - Testing 5 random character swaps...
+2026-07-02 11:05:51,768 - INFO -   Swap 1/5: 'b' -> 'k'
+2026-07-02 11:05:51,958 - INFO -   Swap 2/5: 'k' -> '2'
+2026-07-02 11:05:52,128 - INFO -   Swap 3/5: 'z' -> 'v'
+2026-07-02 11:05:52,306 - INFO -   Swap 4/5: 'l' -> 's'
+2026-07-02 11:05:52,470 - INFO -   Swap 5/5: 'i' -> 'g'
+2026-07-02 11:05:52,653 - INFO - ================================================================================
+Test Results: BNN/Luanqun
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 4018
+  Reference sentences: 3215
+  Target sentences: 803
+  Total characters: 204372
+  Unique characters: 33
+
+Perturbation:
+  Number of random swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence across 5 swaps):
+  Character Level:
+    1-gram:
+      D Cosine Similarity: 0.020862
+      D KL Divergence: 0.244806
+    2-gram:
+      D Cosine Similarity: 0.046344
+      D KL Divergence: 0.328118
+    3-gram:
+      D Cosine Similarity: 0.065319
+      D KL Divergence: 0.275506
+
+  Word Level:
+    1-gram:
+      D Cosine Similarity: 0.044764
+      D KL Divergence: 0.214846
+    2-gram:
+      D Cosine Similarity: 0.051385
+      D KL Divergence: 0.045785
+    3-gram:
+      D Cosine Similarity: 0.017761
+      D KL Divergence: 0.012628
+2026-07-02 11:05:52,653 - INFO - 
+Testing bnn/Tanqun with 5 random character swaps...
+2026-07-02 11:05:53,833 - INFO - Analyzing baseline for bnn/Tanqun...
+2026-07-02 11:05:54,063 - INFO - Testing 5 random character swaps...
+2026-07-02 11:05:54,064 - INFO -   Swap 1/5: '1' -> 'c'
+2026-07-02 11:05:54,240 - INFO -   Swap 2/5: 's' -> '1'
+2026-07-02 11:05:54,485 - INFO -   Swap 3/5: 'm' -> '2'
+2026-07-02 11:05:54,652 - INFO -   Swap 4/5: 'q' -> 'l'
+2026-07-02 11:05:54,815 - INFO -   Swap 5/5: 'd' -> '2'
+2026-07-02 11:05:54,983 - INFO - ================================================================================
+Test Results: BNN/Tanqun
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3795
+  Reference sentences: 3036
+  Target sentences: 759
+  Total characters: 197939
+  Unique characters: 32
+
+Perturbation:
+  Number of random swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence across 5 swaps):
+  Character Level:
+    1-gram:
+      D Cosine Similarity: 0.013370
+      D KL Divergence: 0.220268
+    2-gram:
+      D Cosine Similarity: 0.057511
+      D KL Divergence: 0.322393
+    3-gram:
+      D Cosine Similarity: 0.084216
+      D KL Divergence: 0.294213
+
+  Word Level:
+    1-gram:
+      D Cosine Similarity: 0.028291
+      D KL Divergence: 0.178215
+    2-gram:
+      D Cosine Similarity: 0.052605
+      D KL Divergence: 0.037466
+    3-gram:
+      D Cosine Similarity: 0.012970
+      D KL Divergence: 0.009218
+2026-07-02 11:05:54,983 - INFO - 
+Testing bnn/Zhuoqun with 5 random character swaps...
+2026-07-02 11:05:56,209 - INFO - Analyzing baseline for bnn/Zhuoqun...
+2026-07-02 11:05:56,425 - INFO - Testing 5 random character swaps...
+2026-07-02 11:05:56,425 - INFO -   Swap 1/5: 'g' -> 'q'
+2026-07-02 11:05:56,596 - INFO -   Swap 2/5: 'o' -> 'z'
+2026-07-02 11:05:56,770 - INFO -   Swap 3/5: 'h' -> 'n'
+2026-07-02 11:05:56,935 - INFO -   Swap 4/5: 'o' -> 'l'
+2026-07-02 11:05:57,099 - INFO -   Swap 5/5: 'l' -> 'i'
+2026-07-02 11:05:57,245 - INFO - ================================================================================
+Test Results: BNN/Zhuoqun
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3760
+  Reference sentences: 3008
+  Target sentences: 752
+  Total characters: 190346
+  Unique characters: 30
+
+Perturbation:
+  Number of random swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence across 5 swaps):
+  Character Level:
+    1-gram:
+      D Cosine Similarity: 0.002507
+      D KL Divergence: 0.064818
+    2-gram:
+      D Cosine Similarity: 0.014122
+      D KL Divergence: 0.097657
+    3-gram:
+      D Cosine Similarity: 0.030340
+      D KL Divergence: 0.092842
+
+  Word Level:
+    1-gram:
+      D Cosine Similarity: 0.005567
+      D KL Divergence: 0.053215
+    2-gram:
+      D Cosine Similarity: 0.010423
+      D KL Divergence: 0.009932
+    3-gram:
+      D Cosine Similarity: 0.003668
+      D KL Divergence: 0.003174
+2026-07-02 11:05:57,261 - INFO - 
+Testing pwn/Central with 5 random character swaps...
+2026-07-02 11:05:57,877 - INFO - Analyzing baseline for pwn/Central...
+2026-07-02 11:05:58,115 - INFO - Testing 5 random character swaps...
+2026-07-02 11:05:58,115 - INFO -   Swap 1/5: 'z' -> 'h'
+2026-07-02 11:05:58,296 - INFO -   Swap 2/5: 'v' -> 'h'
+2026-07-02 11:05:58,472 - INFO -   Swap 3/5: 's' -> 'i'
+2026-07-02 11:05:58,648 - INFO -   Swap 4/5: 't' -> 'k'
+2026-07-02 11:05:58,844 - INFO -   Swap 5/5: 'e' -> 'z'
+2026-07-02 11:05:59,013 - INFO - ================================================================================
+Test Results: PWN/Central
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3747
+  Reference sentences: 2998
+  Target sentences: 749
+  Total characters: 218302
+  Unique characters: 32
+
+Perturbation:
+  Number of random swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence across 5 swaps):
+  Character Level:
+    1-gram:
+      D Cosine Similarity: 0.015224
+      D KL Divergence: 0.228933
+    2-gram:
+      D Cosine Similarity: 0.048571
+      D KL Divergence: 0.344755
+    3-gram:
+      D Cosine Similarity: 0.075549
+      D KL Divergence: 0.318887
+
+  Word Level:
+    1-gram:
+      D Cosine Similarity: 0.025389
+      D KL Divergence: 0.220158
+    2-gram:
+      D Cosine Similarity: 0.073972
+      D KL Divergence: 0.057261
+    3-gram:
+      D Cosine Similarity: 0.020362
+      D KL Divergence: 0.016059
+2026-07-02 11:05:59,013 - INFO - 
+Testing pwn/Eastern with 5 random character swaps...
+2026-07-02 11:05:59,663 - INFO - Analyzing baseline for pwn/Eastern...
+2026-07-02 11:05:59,874 - INFO - Testing 5 random character swaps...
+2026-07-02 11:05:59,874 - INFO -   Swap 1/5: 'l' -> 's'
+2026-07-02 11:06:00,074 - INFO -   Swap 2/5: 'g' -> '0'
+2026-07-02 11:06:00,256 - INFO -   Swap 3/5: '﹐' -> '1'
+2026-07-02 11:06:00,461 - INFO -   Swap 4/5: 't' -> 'b'
+2026-07-02 11:06:00,719 - INFO -   Swap 5/5: '﹐' -> 'm'
+2026-07-02 11:06:00,901 - INFO - ================================================================================
+Test Results: PWN/Eastern
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3940
+  Reference sentences: 3152
+  Target sentences: 788
+  Total characters: 232691
+  Unique characters: 38
+
+Perturbation:
+  Number of random swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence across 5 swaps):
+  Character Level:
+    1-gram:
+      D Cosine Similarity: 0.008787
+      D KL Divergence: 0.154758
+    2-gram:
+      D Cosine Similarity: 0.043556
+      D KL Divergence: 0.241854
+    3-gram:
+      D Cosine Similarity: 0.079264
+      D KL Divergence: 0.234749
+
+  Word Level:
+    1-gram:
+      D Cosine Similarity: 0.017683
+      D KL Divergence: 0.147356
+    2-gram:
+      D Cosine Similarity: 0.033963
+      D KL Divergence: 0.030310
+    3-gram:
+      D Cosine Similarity: 0.011466
+      D KL Divergence: 0.008125
+2026-07-02 11:06:00,901 - INFO - 
+Testing pwn/Northern with 5 random character swaps...
+2026-07-02 11:06:01,520 - INFO - Analyzing baseline for pwn/Northern...
+2026-07-02 11:06:02,143 - INFO - Testing 5 random character swaps...
+2026-07-02 11:06:02,143 - INFO -   Swap 1/5: 'z' -> 'n'
+2026-07-02 11:06:02,715 - INFO -   Swap 2/5: 's' -> 'd'
+2026-07-02 11:06:03,272 - INFO -   Swap 3/5: '1' -> 'q'
+2026-07-02 11:06:03,813 - INFO -   Swap 4/5: 't' -> '1'
+2026-07-02 11:06:04,402 - INFO -   Swap 5/5: 'n' -> 'c'
+2026-07-02 11:06:05,015 - INFO - ================================================================================
+Test Results: PWN/Northern
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 10800
+  Reference sentences: 8640
+  Target sentences: 2160
+  Total characters: 620506
+  Unique characters: 35
+
+Perturbation:
+  Number of random swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence across 5 swaps):
+  Character Level:
+    1-gram:
+      D Cosine Similarity: 0.020381
+      D KL Divergence: 0.281878
+    2-gram:
+      D Cosine Similarity: 0.072988
+      D KL Divergence: 0.437693
+    3-gram:
+      D Cosine Similarity: 0.091526
+      D KL Divergence: 0.441066
+
+  Word Level:
+    1-gram:
+      D Cosine Similarity: 0.027733
+      D KL Divergence: 0.326506
+    2-gram:
+      D Cosine Similarity: 0.075273
+      D KL Divergence: 0.072685
+    3-gram:
+      D Cosine Similarity: 0.015867
+      D KL Divergence: 0.011882
+2026-07-02 11:06:05,015 - INFO - 
+Testing pwn/Southern with 5 random character swaps...
+2026-07-02 11:06:05,748 - INFO - Analyzing baseline for pwn/Southern...
+2026-07-02 11:06:05,948 - INFO - Testing 5 random character swaps...
+2026-07-02 11:06:05,948 - INFO -   Swap 1/5: 'm' -> 's'
+2026-07-02 11:06:06,148 - INFO -   Swap 2/5: 'u' -> 'y'
+2026-07-02 11:06:06,340 - INFO -   Swap 3/5: 'w' -> 'i'
+2026-07-02 11:06:06,576 - INFO -   Swap 4/5: 'v' -> 'c'
+2026-07-02 11:06:06,788 - INFO -   Swap 5/5: 'k' -> 'j'
+2026-07-02 11:06:06,988 - INFO - ================================================================================
+Test Results: PWN/Southern
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3958
+  Reference sentences: 3167
+  Target sentences: 791
+  Total characters: 238158
+  Unique characters: 34
+
+Perturbation:
+  Number of random swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence across 5 swaps):
+  Character Level:
+    1-gram:
+      D Cosine Similarity: 0.025368
+      D KL Divergence: 0.283838
+    2-gram:
+      D Cosine Similarity: 0.066229
+      D KL Divergence: 0.410426
+    3-gram:
+      D Cosine Similarity: 0.084784
+      D KL Divergence: 0.367953
+
+  Word Level:
+    1-gram:
+      D Cosine Similarity: 0.019983
+      D KL Divergence: 0.257614
+    2-gram:
+      D Cosine Similarity: 0.079271
+      D KL Divergence: 0.062255
+    3-gram:
+      D Cosine Similarity: 0.020872
+      D KL Divergence: 0.014823
+2026-07-02 11:06:06,990 - INFO - 
+Testing pyu/Jianhe with 5 random character swaps...
+2026-07-02 11:06:07,547 - INFO - Analyzing baseline for pyu/Jianhe...
+2026-07-02 11:06:07,738 - INFO - Testing 5 random character swaps...
+2026-07-02 11:06:07,738 - INFO -   Swap 1/5: 'g' -> 'm'
+2026-07-02 11:06:07,909 - INFO -   Swap 2/5: 'z' -> 'c'
+2026-07-02 11:06:08,086 - INFO -   Swap 3/5: 'r' -> 's'
+2026-07-02 11:06:08,261 - INFO -   Swap 4/5: 'z' -> 'h'
+2026-07-02 11:06:08,442 - INFO -   Swap 5/5: 'v' -> 'h'
+2026-07-02 11:06:08,620 - INFO - ================================================================================
+Test Results: PYU/Jianhe
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3894
+  Reference sentences: 3116
+  Target sentences: 778
+  Total characters: 219398
+  Unique characters: 30
+
+Perturbation:
+  Number of random swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence across 5 swaps):
+  Character Level:
+    1-gram:
+      D Cosine Similarity: 0.005763
+      D KL Divergence: 0.104241
+    2-gram:
+      D Cosine Similarity: 0.027772
+      D KL Divergence: 0.164577
+    3-gram:
+      D Cosine Similarity: 0.054575
+      D KL Divergence: 0.161857
+
+  Word Level:
+    1-gram:
+      D Cosine Similarity: 0.013397
+      D KL Divergence: 0.097814
+    2-gram:
+      D Cosine Similarity: 0.034550
+      D KL Divergence: 0.030333
+    3-gram:
+      D Cosine Similarity: 0.013328
+      D KL Divergence: 0.008708
+2026-07-02 11:06:08,620 - INFO - 
+Testing pyu/Nanwang with 5 random character swaps...
+2026-07-02 11:06:09,236 - INFO - Analyzing baseline for pyu/Nanwang...
+2026-07-02 11:06:09,900 - INFO - Testing 5 random character swaps...
+2026-07-02 11:06:09,900 - INFO -   Swap 1/5: 's' -> '4'
+2026-07-02 11:06:10,524 - INFO -   Swap 2/5: 'k' -> 'h'
+2026-07-02 11:06:11,141 - INFO -   Swap 3/5: 'r' -> 'y'
+2026-07-02 11:06:11,810 - INFO -   Swap 4/5: 'r' -> 'p'
+2026-07-02 11:06:12,502 - INFO -   Swap 5/5: 'b' -> 'n'
+2026-07-02 11:06:13,148 - INFO - ================================================================================
+Test Results: PYU/Nanwang
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 17491
+  Reference sentences: 13993
+  Target sentences: 3498
+  Total characters: 727879
+  Unique characters: 36
+
+Perturbation:
+  Number of random swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence across 5 swaps):
+  Character Level:
+    1-gram:
+      D Cosine Similarity: 0.036094
+      D KL Divergence: 0.449514
+    2-gram:
+      D Cosine Similarity: 0.124582
+      D KL Divergence: 0.731025
+    3-gram:
+      D Cosine Similarity: 0.187441
+      D KL Divergence: 0.776767
+
+  Word Level:
+    1-gram:
+      D Cosine Similarity: 0.109423
+      D KL Divergence: 0.601882
+    2-gram:
+      D Cosine Similarity: 0.205596
+      D KL Divergence: 0.181151
+    3-gram:
+      D Cosine Similarity: 0.055598
+      D KL Divergence: 0.033735
+2026-07-02 11:06:13,150 - INFO - 
+Testing pyu/Xiqun with 5 random character swaps...
+2026-07-02 11:06:13,762 - INFO - Analyzing baseline for pyu/Xiqun...
+2026-07-02 11:06:13,962 - INFO - Testing 5 random character swaps...
+2026-07-02 11:06:13,962 - INFO -   Swap 1/5: 'l' -> 's'
+2026-07-02 11:06:14,156 - INFO -   Swap 2/5: 'e' -> 'y'
+2026-07-02 11:06:14,338 - INFO -   Swap 3/5: '9' -> 'i'
+2026-07-02 11:06:14,527 - INFO -   Swap 4/5: '1' -> 'v'
+2026-07-02 11:06:14,707 - INFO -   Swap 5/5: 'h' -> 'k'
+2026-07-02 11:06:14,905 - INFO - ================================================================================
+Test Results: PYU/Xiqun
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3999
+  Reference sentences: 3200
+  Target sentences: 799
+  Total characters: 230296
+  Unique characters: 35
+
+Perturbation:
+  Number of random swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence across 5 swaps):
+  Character Level:
+    1-gram:
+      D Cosine Similarity: 0.007093
+      D KL Divergence: 0.113585
+    2-gram:
+      D Cosine Similarity: 0.024162
+      D KL Divergence: 0.173342
+    3-gram:
+      D Cosine Similarity: 0.050642
+      D KL Divergence: 0.169980
+
+  Word Level:
+    1-gram:
+      D Cosine Similarity: 0.011765
+      D KL Divergence: 0.105395
+    2-gram:
+      D Cosine Similarity: 0.034207
+      D KL Divergence: 0.034268
+    3-gram:
+      D Cosine Similarity: 0.014414
+      D KL Divergence: 0.010538
+2026-07-02 11:06:14,905 - INFO - 
+Testing pyu/Zhiben with 5 random character swaps...
+2026-07-02 11:06:15,543 - INFO - Analyzing baseline for pyu/Zhiben...
+2026-07-02 11:06:15,782 - INFO - Testing 5 random character swaps...
+2026-07-02 11:06:15,782 - INFO -   Swap 1/5: 'm' -> 'y'
+2026-07-02 11:06:15,980 - INFO -   Swap 2/5: 'd' -> 'l'
+2026-07-02 11:06:16,179 - INFO -   Swap 3/5: 'w' -> 'v'
+2026-07-02 11:06:16,385 - INFO -   Swap 4/5: 'b' -> 'r'
+2026-07-02 11:06:16,584 - INFO -   Swap 5/5: 'w' -> 'p'
+2026-07-02 11:06:16,774 - INFO - ================================================================================
+Test Results: PYU/Zhiben
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 4011
+  Reference sentences: 3209
+  Target sentences: 802
+  Total characters: 242246
+  Unique characters: 33
+
+Perturbation:
+  Number of random swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence across 5 swaps):
+  Character Level:
+    1-gram:
+      D Cosine Similarity: 0.010279
+      D KL Divergence: 0.166676
+    2-gram:
+      D Cosine Similarity: 0.043989
+      D KL Divergence: 0.260753
+    3-gram:
+      D Cosine Similarity: 0.064062
+      D KL Divergence: 0.250315
+
+  Word Level:
+    1-gram:
+      D Cosine Similarity: 0.044051
+      D KL Divergence: 0.215292
+    2-gram:
+      D Cosine Similarity: 0.113837
+      D KL Divergence: 0.075630
+    3-gram:
+      D Cosine Similarity: 0.043081
+      D KL Divergence: 0.021225
+2026-07-02 11:06:16,777 - INFO - 
+Testing dru/Dawu with 5 random character swaps...
+2026-07-02 11:06:17,916 - INFO - Analyzing baseline for dru/Dawu...
+2026-07-02 11:06:18,141 - INFO - Testing 5 random character swaps...
+2026-07-02 11:06:18,141 - INFO -   Swap 1/5: 't' -> 'u'
+2026-07-02 11:06:18,321 - INFO -   Swap 2/5: 'g' -> 'm'
+2026-07-02 11:06:18,506 - INFO -   Swap 3/5: 'z' -> 'c'
+2026-07-02 11:06:18,698 - INFO -   Swap 4/5: 'r' -> 's'
+2026-07-02 11:06:18,870 - INFO -   Swap 5/5: 'v' -> 'c'
+2026-07-02 11:06:19,045 - INFO - ================================================================================
+Test Results: DRU/Dawu
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3573
+  Reference sentences: 2859
+  Target sentences: 714
+  Total characters: 216949
+  Unique characters: 29
+
+Perturbation:
+  Number of random swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence across 5 swaps):
+  Character Level:
+    1-gram:
+      D Cosine Similarity: 0.006430
+      D KL Divergence: 0.127153
+    2-gram:
+      D Cosine Similarity: 0.036893
+      D KL Divergence: 0.216791
+    3-gram:
+      D Cosine Similarity: 0.065635
+      D KL Divergence: 0.228564
+
+  Word Level:
+    1-gram:
+      D Cosine Similarity: 0.003634
+      D KL Divergence: 0.073491
+    2-gram:
+      D Cosine Similarity: 0.019588
+      D KL Divergence: 0.018837
+    3-gram:
+      D Cosine Similarity: 0.005665
+      D KL Divergence: 0.005162
+2026-07-02 11:06:19,047 - INFO - 
+Testing dru/Dona with 5 random character swaps...
+2026-07-02 11:06:20,286 - INFO - Analyzing baseline for dru/Dona...
+2026-07-02 11:06:20,489 - INFO - Testing 5 random character swaps...
+2026-07-02 11:06:20,491 - INFO -   Swap 1/5: 'u' -> 'y'
+2026-07-02 11:06:20,678 - INFO -   Swap 2/5: 'z' -> 'i'
+2026-07-02 11:06:20,843 - INFO -   Swap 3/5: 'c' -> 'v'
+2026-07-02 11:06:21,017 - INFO -   Swap 4/5: 'z' -> 'k'
+2026-07-02 11:06:21,189 - INFO -   Swap 5/5: '1' -> 'h'
+2026-07-02 11:06:21,357 - INFO - ================================================================================
+Test Results: DRU/Dona
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3604
+  Reference sentences: 2884
+  Target sentences: 720
+  Total characters: 213647
+  Unique characters: 35
+
+Perturbation:
+  Number of random swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence across 5 swaps):
+  Character Level:
+    1-gram:
+      D Cosine Similarity: 0.000351
+      D KL Divergence: 0.014874
+    2-gram:
+      D Cosine Similarity: 0.001479
+      D KL Divergence: 0.021682
+    3-gram:
+      D Cosine Similarity: 0.002383
+      D KL Divergence: 0.018799
+
+  Word Level:
+    1-gram:
+      D Cosine Similarity: 0.000567
+      D KL Divergence: 0.010055
+    2-gram:
+      D Cosine Similarity: 0.003876
+      D KL Divergence: 0.003740
+    3-gram:
+      D Cosine Similarity: 0.001161
+      D KL Divergence: 0.000938
+2026-07-02 11:06:21,359 - INFO - 
+Testing dru/Eastern with 5 random character swaps...
+2026-07-02 11:06:22,428 - INFO - Analyzing baseline for dru/Eastern...
+2026-07-02 11:06:22,628 - INFO - Testing 5 random character swaps...
+2026-07-02 11:06:22,628 - INFO -   Swap 1/5: 'p' -> 'y'
+2026-07-02 11:06:22,823 - INFO -   Swap 2/5: 'z' -> 'i'
+2026-07-02 11:06:23,012 - INFO -   Swap 3/5: 'c' -> 'v'
+2026-07-02 11:06:23,172 - INFO -   Swap 4/5: 'z' -> 'n'
+2026-07-02 11:06:23,365 - INFO -   Swap 5/5: 'g' -> 'b'
+2026-07-02 11:06:23,528 - INFO - ================================================================================
+Test Results: DRU/Eastern
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3271
+  Reference sentences: 2617
+  Target sentences: 654
+  Total characters: 207190
+  Unique characters: 29
+
+Perturbation:
+  Number of random swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence across 5 swaps):
+  Character Level:
+    1-gram:
+      D Cosine Similarity: 0.001649
+      D KL Divergence: 0.048210
+    2-gram:
+      D Cosine Similarity: 0.010225
+      D KL Divergence: 0.076812
+    3-gram:
+      D Cosine Similarity: 0.017152
+      D KL Divergence: 0.074222
+
+  Word Level:
+    1-gram:
+      D Cosine Similarity: 0.002007
+      D KL Divergence: 0.026765
+    2-gram:
+      D Cosine Similarity: 0.008464
+      D KL Divergence: 0.008032
+    3-gram:
+      D Cosine Similarity: 0.003609
+      D KL Divergence: 0.003064
+2026-07-02 11:06:23,530 - INFO - 
+Testing dru/Maolin with 5 random character swaps...
+2026-07-02 11:06:24,690 - INFO - Analyzing baseline for dru/Maolin...
+2026-07-02 11:06:24,904 - INFO - Testing 5 random character swaps...
+2026-07-02 11:06:24,905 - INFO -   Swap 1/5: 's' -> 'e'
+2026-07-02 11:06:25,071 - INFO -   Swap 2/5: '9' -> 'i'
+2026-07-02 11:06:25,248 - INFO -   Swap 3/5: 'i' -> 'v'
+2026-07-02 11:06:25,404 - INFO -   Swap 4/5: 'h' -> 'u'
+2026-07-02 11:06:25,559 - INFO -   Swap 5/5: 'h' -> 'v'
+2026-07-02 11:06:25,711 - INFO - ================================================================================
+Test Results: DRU/Maolin
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 3916
+  Reference sentences: 3133
+  Target sentences: 783
+  Total characters: 188449
+  Unique characters: 34
+
+Perturbation:
+  Number of random swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence across 5 swaps):
+  Character Level:
+    1-gram:
+      D Cosine Similarity: 0.024166
+      D KL Divergence: 0.186770
+    2-gram:
+      D Cosine Similarity: 0.041180
+      D KL Divergence: 0.249349
+    3-gram:
+      D Cosine Similarity: 0.053812
+      D KL Divergence: 0.196166
+
+  Word Level:
+    1-gram:
+      D Cosine Similarity: 0.041168
+      D KL Divergence: 0.118163
+    2-gram:
+      D Cosine Similarity: 0.019186
+      D KL Divergence: 0.014353
+    3-gram:
+      D Cosine Similarity: 0.003416
+      D KL Divergence: 0.002869
+2026-07-02 11:06:25,711 - INFO - 
+Testing dru/Wanshan with 5 random character swaps...
+2026-07-02 11:06:26,819 - INFO - Analyzing baseline for dru/Wanshan...
+2026-07-02 11:06:27,028 - INFO - Testing 5 random character swaps...
+2026-07-02 11:06:27,028 - INFO -   Swap 1/5: 'h' -> 'w'
+2026-07-02 11:06:27,211 - INFO -   Swap 2/5: '9' -> 'n'
+2026-07-02 11:06:27,374 - INFO -   Swap 3/5: 'm' -> 'i'
+2026-07-02 11:06:27,540 - INFO -   Swap 4/5: 'r' -> 'k'
+2026-07-02 11:06:27,708 - INFO -   Swap 5/5: 'i' -> 'b'
+2026-07-02 11:06:27,882 - INFO - ================================================================================
+Test Results: DRU/Wanshan
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 4397
+  Reference sentences: 3518
+  Target sentences: 879
+  Total characters: 213417
+  Unique characters: 32
+
+Perturbation:
+  Number of random swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence across 5 swaps):
+  Character Level:
+    1-gram:
+      D Cosine Similarity: 0.029938
+      D KL Divergence: 0.315534
+    2-gram:
+      D Cosine Similarity: 0.079262
+      D KL Divergence: 0.472166
+    3-gram:
+      D Cosine Similarity: 0.124686
+      D KL Divergence: 0.462646
+
+  Word Level:
+    1-gram:
+      D Cosine Similarity: 0.073359
+      D KL Divergence: 0.226705
+    2-gram:
+      D Cosine Similarity: 0.064846
+      D KL Divergence: 0.045888
+    3-gram:
+      D Cosine Similarity: 0.014749
+      D KL Divergence: 0.011847
+2026-07-02 11:06:27,882 - INFO - 
+Testing dru/Wutai with 5 random character swaps...
+2026-07-02 11:06:29,127 - INFO - Analyzing baseline for dru/Wutai...
+2026-07-02 11:06:30,155 - INFO - Testing 5 random character swaps...
+2026-07-02 11:06:30,155 - INFO -   Swap 1/5: 'v' -> 'y'
+2026-07-02 11:06:30,975 - INFO -   Swap 2/5: 'u' -> 't'
+2026-07-02 11:06:31,811 - INFO -   Swap 3/5: 'p' -> 'g'
+2026-07-02 11:06:32,622 - INFO -   Swap 4/5: 'a' -> 'o'
+2026-07-02 11:06:33,466 - INFO -   Swap 5/5: 'n' -> 'v'
+2026-07-02 11:06:34,297 - INFO - ================================================================================
+Test Results: DRU/Wutai
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 18164
+  Reference sentences: 14532
+  Target sentences: 3632
+  Total characters: 934699
+  Unique characters: 34
+
+Perturbation:
+  Number of random swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence across 5 swaps):
+  Character Level:
+    1-gram:
+      D Cosine Similarity: 0.126780
+      D KL Divergence: 0.743476
+    2-gram:
+      D Cosine Similarity: 0.180431
+      D KL Divergence: 1.114128
+    3-gram:
+      D Cosine Similarity: 0.240548
+      D KL Divergence: 1.121666
+
+  Word Level:
+    1-gram:
+      D Cosine Similarity: 0.146784
+      D KL Divergence: 0.582919
+    2-gram:
+      D Cosine Similarity: 0.187234
+      D KL Divergence: 0.114907
+    3-gram:
+      D Cosine Similarity: 0.024645
+      D KL Divergence: 0.015118
+2026-07-02 11:06:34,301 - INFO - 
+Testing trv/DeluValley with 5 random character swaps...
+2026-07-02 11:06:35,133 - INFO - Analyzing baseline for trv/DeluValley...
+2026-07-02 11:06:35,380 - INFO - Testing 5 random character swaps...
+2026-07-02 11:06:35,380 - INFO -   Swap 1/5: 'j' -> 's'
+2026-07-02 11:06:35,564 - INFO -   Swap 2/5: 'l' -> 'j'
+2026-07-02 11:06:35,777 - INFO -   Swap 3/5: 'c' -> 'o'
+2026-07-02 11:06:36,017 - INFO -   Swap 4/5: 'm' -> 't'
+2026-07-02 11:06:36,225 - INFO -   Swap 5/5: 'n' -> 'p'
+2026-07-02 11:06:36,449 - INFO - ================================================================================
+Test Results: TRV/DeluValley
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 4522
+  Reference sentences: 3618
+  Target sentences: 904
+  Total characters: 216268
+  Unique characters: 32
+
+Perturbation:
+  Number of random swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence across 5 swaps):
+  Character Level:
+    1-gram:
+      D Cosine Similarity: 0.025635
+      D KL Divergence: 0.229950
+    2-gram:
+      D Cosine Similarity: 0.075814
+      D KL Divergence: 0.304498
+    3-gram:
+      D Cosine Similarity: 0.084319
+      D KL Divergence: 0.247760
+
+  Word Level:
+    1-gram:
+      D Cosine Similarity: 0.034155
+      D KL Divergence: 0.233721
+    2-gram:
+      D Cosine Similarity: 0.056926
+      D KL Divergence: 0.053169
+    3-gram:
+      D Cosine Similarity: 0.020459
+      D KL Divergence: 0.015402
+2026-07-02 11:06:36,449 - INFO - 
+Testing trv/Duda with 5 random character swaps...
+2026-07-02 11:06:37,301 - INFO - Analyzing baseline for trv/Duda...
+2026-07-02 11:06:37,544 - INFO - Testing 5 random character swaps...
+2026-07-02 11:06:37,545 - INFO -   Swap 1/5: 'd' -> 'x'
+2026-07-02 11:06:37,757 - INFO -   Swap 2/5: 'q' -> 'm'
+2026-07-02 11:06:38,027 - INFO -   Swap 3/5: 'd' -> 'b'
+2026-07-02 11:06:38,231 - INFO -   Swap 4/5: 'b' -> 'y'
+2026-07-02 11:06:38,432 - INFO -   Swap 5/5: 'i' -> 'n'
+2026-07-02 11:06:38,612 - INFO - ================================================================================
+Test Results: TRV/Duda
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 4321
+  Reference sentences: 3457
+  Target sentences: 864
+  Total characters: 222483
+  Unique characters: 33
+
+Perturbation:
+  Number of random swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence across 5 swaps):
+  Character Level:
+    1-gram:
+      D Cosine Similarity: 0.023140
+      D KL Divergence: 0.257614
+    2-gram:
+      D Cosine Similarity: 0.054206
+      D KL Divergence: 0.329910
+    3-gram:
+      D Cosine Similarity: 0.102804
+      D KL Divergence: 0.279517
+
+  Word Level:
+    1-gram:
+      D Cosine Similarity: 0.050989
+      D KL Divergence: 0.322648
+    2-gram:
+      D Cosine Similarity: 0.078894
+      D KL Divergence: 0.063397
+    3-gram:
+      D Cosine Similarity: 0.018685
+      D KL Divergence: 0.014183
+2026-07-02 11:06:38,618 - INFO - 
+Testing trv/Tegudaya with 5 random character swaps...
+2026-07-02 11:06:39,467 - INFO - Analyzing baseline for trv/Tegudaya...
+2026-07-02 11:06:40,179 - INFO - Testing 5 random character swaps...
+2026-07-02 11:06:40,180 - INFO -   Swap 1/5: 'x' -> 'o'
+2026-07-02 11:06:40,845 - INFO -   Swap 2/5: 'o' -> 'z'
+2026-07-02 11:06:41,570 - INFO -   Swap 3/5: 'e' -> 'q'
+2026-07-02 11:06:42,315 - INFO -   Swap 4/5: 'h' -> 't'
+2026-07-02 11:06:43,054 - INFO -   Swap 5/5: '2' -> 'h'
+2026-07-02 11:06:43,849 - INFO - ================================================================================
+Test Results: TRV/Tegudaya
+================================================================================
+
+Corpus Statistics:
+  Total sentences: 14452
+  Reference sentences: 11562
+  Target sentences: 2890
+  Total characters: 709595
+  Unique characters: 36
+
+Perturbation:
+  Number of random swaps performed: 5
+
+Metric Changes (Averaged Cosine Similarity & KL Divergence across 5 swaps):
+  Character Level:
+    1-gram:
+      D Cosine Similarity: 0.011299
+      D KL Divergence: 0.169472
+    2-gram:
+      D Cosine Similarity: 0.022282
+      D KL Divergence: 0.221208
+    3-gram:
+      D Cosine Similarity: 0.046547
+      D KL Divergence: 0.205082
+
+  Word Level:
+    1-gram:
+      D Cosine Similarity: 0.019244
+      D KL Divergence: 0.210523
+    2-gram:
+      D Cosine Similarity: 0.057188
+      D KL Divergence: 0.044993
+    3-gram:
+      D Cosine Similarity: 0.011521
+      D KL Divergence: 0.007384
+2026-07-02 11:06:43,849 - INFO - 
+================================================================================
+2026-07-02 11:06:43,849 - INFO - Computing Per-Language Thresholds (mean ± epsilon) for Validation
+2026-07-02 11:06:43,849 - INFO - ================================================================================
+
+2026-07-02 11:06:43,849 - INFO - Per-Language Thresholds (epsilon=0.1):
+2026-07-02 11:06:43,849 - INFO -   ami:
+2026-07-02 11:06:43,849 - INFO -     character_kl:
+2026-07-02 11:06:43,849 - INFO -       Mean: 0.3559, Std: 0.3524
+2026-07-02 11:06:43,849 - INFO -       Lower (healthy): 0.2559, Upper (anomalous): 0.4559
+2026-07-02 11:06:43,849 - INFO -     word_kl:
+2026-07-02 11:06:43,849 - INFO -       Mean: 0.2816, Std: 0.2640
+2026-07-02 11:06:43,849 - INFO -       Lower (healthy): 0.1816, Upper (anomalous): 0.3816
+2026-07-02 11:06:43,849 - INFO -   tay:
+2026-07-02 11:06:43,849 - INFO -     character_kl:
+2026-07-02 11:06:43,849 - INFO -       Mean: 0.1580, Std: 0.0753
+2026-07-02 11:06:43,849 - INFO -       Lower (healthy): 0.0580, Upper (anomalous): 0.2580
+2026-07-02 11:06:43,849 - INFO -     word_kl:
+2026-07-02 11:06:43,861 - INFO -       Mean: 0.2243, Std: 0.1070
+2026-07-02 11:06:43,864 - INFO -       Lower (healthy): 0.1243, Upper (anomalous): 0.3243
+2026-07-02 11:06:43,864 - INFO -   bnn:
+2026-07-02 11:06:43,864 - INFO -     character_kl:
+2026-07-02 11:06:43,864 - INFO -       Mean: 0.1795, Std: 0.0821
+2026-07-02 11:06:43,864 - INFO -       Lower (healthy): 0.0795, Upper (anomalous): 0.2795
+2026-07-02 11:06:43,864 - INFO -     word_kl:
+2026-07-02 11:06:43,864 - INFO -       Mean: 0.1770, Std: 0.1160
+2026-07-02 11:06:43,864 - INFO -       Lower (healthy): 0.0770, Upper (anomalous): 0.2770
+2026-07-02 11:06:43,865 - INFO -   pwn:
+2026-07-02 11:06:43,865 - INFO -     character_kl:
+2026-07-02 11:06:43,865 - INFO -       Mean: 0.2374, Std: 0.0525
+2026-07-02 11:06:43,865 - INFO -       Lower (healthy): 0.1374, Upper (anomalous): 0.3374
+2026-07-02 11:06:43,865 - INFO -     word_kl:
+2026-07-02 11:06:43,865 - INFO -       Mean: 0.2379, Std: 0.0647
+2026-07-02 11:06:43,865 - INFO -       Lower (healthy): 0.1379, Upper (anomalous): 0.3379
+2026-07-02 11:06:43,865 - INFO -   pyu:
+2026-07-02 11:06:43,865 - INFO -     character_kl:
+2026-07-02 11:06:43,865 - INFO -       Mean: 0.2085, Std: 0.1412
+2026-07-02 11:06:43,866 - INFO -       Lower (healthy): 0.1085, Upper (anomalous): 0.3085
+2026-07-02 11:06:43,866 - INFO -     word_kl:
+2026-07-02 11:06:43,866 - INFO -       Mean: 0.2551, Std: 0.2055
+2026-07-02 11:06:43,866 - INFO -       Lower (healthy): 0.1551, Upper (anomalous): 0.3551
+2026-07-02 11:06:43,866 - INFO -   dru:
+2026-07-02 11:06:43,866 - INFO -     character_kl:
+2026-07-02 11:06:43,866 - INFO -       Mean: 0.2393, Std: 0.2457
+2026-07-02 11:06:43,866 - INFO -       Lower (healthy): 0.1393, Upper (anomalous): 0.3393
+2026-07-02 11:06:43,866 - INFO -     word_kl:
+2026-07-02 11:06:43,866 - INFO -       Mean: 0.1730, Std: 0.1965
+2026-07-02 11:06:43,866 - INFO -       Lower (healthy): 0.0730, Upper (anomalous): 0.2730
+2026-07-02 11:06:43,867 - INFO -   trv:
+2026-07-02 11:06:43,867 - INFO -     character_kl:
+2026-07-02 11:06:43,867 - INFO -       Mean: 0.2190, Std: 0.0368
+2026-07-02 11:06:43,867 - INFO -       Lower (healthy): 0.1190, Upper (anomalous): 0.3190
+2026-07-02 11:06:43,868 - INFO -     word_kl:
+2026-07-02 11:06:43,868 - INFO -       Mean: 0.2556, Std: 0.0483
+2026-07-02 11:06:43,868 - INFO -       Lower (healthy): 0.1556, Upper (anomalous): 0.3556
+2026-07-02 11:06:43,868 - INFO - 
+Global Thresholds (fallback, mean ± 1 std):
+2026-07-02 11:06:43,868 - INFO -   character_kl:
+2026-07-02 11:06:43,868 - INFO -     Mean: 0.2273, Std: 0.1963
+2026-07-02 11:06:43,869 - INFO -     Healthy: 0.0310, Anomalous: 0.4236
+2026-07-02 11:06:43,869 - INFO -   word_kl:
+2026-07-02 11:06:43,869 - INFO -     Mean: 0.2247, Std: 0.1705
+2026-07-02 11:06:43,869 - INFO -     Healthy: 0.0542, Anomalous: 0.3953
+2026-07-02 11:06:43,870 - INFO - 
+================================================================================
+2026-07-02 11:06:43,870 - INFO - Running XML Corpus Integrity Validation Tests
+2026-07-02 11:06:43,870 - INFO - ================================================================================
+
+2026-07-02 11:06:43,872 - INFO - [VALIDATION] Checking XML integrity for ami/Coastal (using 5 swaps per perturbation)...
+2026-07-02 11:06:44,808 - INFO - Analyzing baseline for ami/Coastal...
+2026-07-02 11:06:45,226 - INFO - Testing 5 random character swaps...
+2026-07-02 11:06:45,226 - INFO -   Swap 1/5: 'a' -> 'u'
+2026-07-02 11:06:45,608 - INFO -   Swap 2/5: 'r' -> 'p'
+2026-07-02 11:06:45,995 - INFO -   Swap 3/5: 'a' -> 'y'
+2026-07-02 11:06:46,371 - INFO -   Swap 4/5: 'n' -> 'm'
+2026-07-02 11:06:46,782 - INFO -   Swap 5/5: 'x' -> 'h'
+2026-07-02 11:06:47,214 - INFO -   [X] ami/Coastal - Character 1-gram Deltas (avg of 5 swaps): FAIL
+2026-07-02 11:06:47,214 - INFO - [VALIDATION] Checking XML integrity for ami/Hengchun (using 5 swaps per perturbation)...
+2026-07-02 11:06:48,105 - INFO - Analyzing baseline for ami/Hengchun...
+2026-07-02 11:06:48,364 - INFO - Testing 5 random character swaps...
+2026-07-02 11:06:48,364 - INFO -   Swap 1/5: 'k' -> 'n'
+2026-07-02 11:06:48,584 - INFO -   Swap 2/5: 'n' -> 'c'
+2026-07-02 11:06:48,780 - INFO -   Swap 3/5: 'd' -> 'r'
+2026-07-02 11:06:49,004 - INFO -   Swap 4/5: 'e' -> 'x'
+2026-07-02 11:06:49,210 - INFO -   Swap 5/5: 'p' -> 'u'
+2026-07-02 11:06:49,435 - INFO -   [!] ami/Hengchun - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-02 11:06:49,437 - INFO - [VALIDATION] Checking XML integrity for ami/Malan (using 5 swaps per perturbation)...
+2026-07-02 11:06:50,338 - INFO - Analyzing baseline for ami/Malan...
+2026-07-02 11:06:50,600 - INFO - Testing 5 random character swaps...
+2026-07-02 11:06:50,600 - INFO -   Swap 1/5: 'm' -> 'n'
+2026-07-02 11:06:50,778 - INFO -   Swap 2/5: 's' -> 'k'
+2026-07-02 11:06:50,958 - INFO -   Swap 3/5: 'n' -> 'd'
+2026-07-02 11:06:51,145 - INFO -   Swap 4/5: 'c' -> 'i'
+2026-07-02 11:06:51,359 - INFO -   Swap 5/5: 'm' -> 'r'
+2026-07-02 11:06:51,542 - INFO -   [!] ami/Malan - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-02 11:06:51,542 - INFO - [VALIDATION] Checking XML integrity for ami/Southern (using 5 swaps per perturbation)...
+2026-07-02 11:06:52,425 - INFO - Analyzing baseline for ami/Southern...
+2026-07-02 11:06:52,661 - INFO - Testing 5 random character swaps...
+2026-07-02 11:06:52,661 - INFO -   Swap 1/5: 'g' -> 'l'
+2026-07-02 11:06:52,842 - INFO -   Swap 2/5: '9' -> 'v'
+2026-07-02 11:06:53,038 - INFO -   Swap 3/5: 'r' -> 's'
+2026-07-02 11:06:53,213 - INFO -   Swap 4/5: '1' -> 'v'
+2026-07-02 11:06:53,392 - INFO -   Swap 5/5: 'e' -> 'i'
+2026-07-02 11:06:53,567 - INFO -   [OK] ami/Southern - Character 1-gram Deltas (avg of 5 swaps): PASS
+2026-07-02 11:06:53,567 - INFO - [VALIDATION] Checking XML integrity for ami/Xiuguluan (using 5 swaps per perturbation)...
+2026-07-02 11:06:54,489 - INFO - Analyzing baseline for ami/Xiuguluan...
+2026-07-02 11:06:54,931 - INFO - Testing 5 random character swaps...
+2026-07-02 11:06:54,931 - INFO -   Swap 1/5: 'g' -> 'y'
+2026-07-02 11:06:55,373 - INFO -   Swap 2/5: 's' -> 'n'
+2026-07-02 11:06:55,750 - INFO -   Swap 3/5: '0' -> '9'
+2026-07-02 11:06:56,201 - INFO -   Swap 4/5: 's' -> 'x'
+2026-07-02 11:06:56,659 - INFO -   Swap 5/5: '9' -> 'k'
+2026-07-02 11:06:57,087 - INFO -   [OK] ami/Xiuguluan - Character 1-gram Deltas (avg of 5 swaps): PASS
+2026-07-02 11:06:57,087 - INFO - [VALIDATION] Checking XML integrity for tay/FourSeasons (using 5 swaps per perturbation)...
+2026-07-02 11:06:58,072 - INFO - Analyzing baseline for tay/FourSeasons...
+2026-07-02 11:06:58,298 - INFO - Testing 5 random character swaps...
+2026-07-02 11:06:58,298 - INFO -   Swap 1/5: 'z' -> 'n'
+2026-07-02 11:06:58,506 - INFO -   Swap 2/5: 'g' -> 'q'
+2026-07-02 11:06:58,699 - INFO -   Swap 3/5: 'e' -> 'x'
+2026-07-02 11:06:58,900 - INFO -   Swap 4/5: 'p' -> 'u'
+2026-07-02 11:06:59,087 - INFO -   Swap 5/5: 'e' -> 'g'
+2026-07-02 11:06:59,285 - INFO -   [!] tay/FourSeasons - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-02 11:06:59,285 - INFO - [VALIDATION] Checking XML integrity for tay/Sekolik (using 5 swaps per perturbation)...
+2026-07-02 11:07:00,328 - INFO - Analyzing baseline for tay/Sekolik...
+2026-07-02 11:07:01,107 - INFO - Testing 5 random character swaps...
+2026-07-02 11:07:01,107 - INFO -   Swap 1/5: 'w' -> '2'
+2026-07-02 11:07:01,743 - INFO -   Swap 2/5: 'w' -> 't'
+2026-07-02 11:07:02,412 - INFO -   Swap 3/5: 'y' -> 'a'
+2026-07-02 11:07:03,037 - INFO -   Swap 4/5: 'q' -> 'b'
+2026-07-02 11:07:03,693 - INFO -   Swap 5/5: 'e' -> 'm'
+2026-07-02 11:07:04,353 - INFO -   [!] tay/Sekolik - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-02 11:07:04,353 - INFO - [VALIDATION] Checking XML integrity for tay/Wanda (using 5 swaps per perturbation)...
+2026-07-02 11:07:05,360 - INFO - Analyzing baseline for tay/Wanda...
+2026-07-02 11:07:05,579 - INFO - Testing 5 random character swaps...
+2026-07-02 11:07:05,581 - INFO -   Swap 1/5: 'p' -> 'k'
+2026-07-02 11:07:05,739 - INFO -   Swap 2/5: 'w' -> 'i'
+2026-07-02 11:07:05,907 - INFO -   Swap 3/5: 'l' -> 'b'
+2026-07-02 11:07:06,046 - INFO -   Swap 4/5: 'i' -> 'x'
+2026-07-02 11:07:06,200 - INFO -   Swap 5/5: 'g' -> 's'
+2026-07-02 11:07:06,366 - INFO -   [!] tay/Wanda - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-02 11:07:06,366 - INFO - [VALIDATION] Checking XML integrity for tay/Wenshui (using 5 swaps per perturbation)...
+2026-07-02 11:07:07,402 - INFO - Analyzing baseline for tay/Wenshui...
+2026-07-02 11:07:07,696 - INFO - Testing 5 random character swaps...
+2026-07-02 11:07:07,696 - INFO -   Swap 1/5: 'h' -> 'a'
+2026-07-02 11:07:07,906 - INFO -   Swap 2/5: 'x' -> 'h'
+2026-07-02 11:07:08,127 - INFO -   Swap 3/5: 'y' -> 'o'
+2026-07-02 11:07:08,349 - INFO -   Swap 4/5: 'l' -> 'e'
+2026-07-02 11:07:08,563 - INFO -   Swap 5/5: 'r' -> 'o'
+2026-07-02 11:07:08,769 - INFO -   [!] tay/Wenshui - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-02 11:07:08,780 - INFO - [VALIDATION] Checking XML integrity for tay/YilanZeaol (using 5 swaps per perturbation)...
+2026-07-02 11:07:09,708 - INFO - Analyzing baseline for tay/YilanZeaol...
+2026-07-02 11:07:09,975 - INFO - Testing 5 random character swaps...
+2026-07-02 11:07:09,976 - INFO -   Swap 1/5: 'c' -> 'b'
+2026-07-02 11:07:10,163 - INFO -   Swap 2/5: 'o' -> 'i'
+2026-07-02 11:07:10,346 - INFO -   Swap 3/5: 'r' -> 'g'
+2026-07-02 11:07:10,573 - INFO -   Swap 4/5: 'y' -> 't'
+2026-07-02 11:07:10,755 - INFO -   Swap 5/5: 'x' -> 'g'
+2026-07-02 11:07:10,963 - INFO -   [!] tay/YilanZeaol - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-02 11:07:10,963 - INFO - [VALIDATION] Checking XML integrity for tay/Zeaol (using 5 swaps per perturbation)...
+2026-07-02 11:07:12,004 - INFO - Analyzing baseline for tay/Zeaol...
+2026-07-02 11:07:12,272 - INFO - Testing 5 random character swaps...
+2026-07-02 11:07:12,272 - INFO -   Swap 1/5: 'z' -> 'b'
+2026-07-02 11:07:12,497 - INFO -   Swap 2/5: 'q' -> 's'
+2026-07-02 11:07:12,685 - INFO -   Swap 3/5: 'c' -> 'b'
+2026-07-02 11:07:12,866 - INFO -   Swap 4/5: 'e' -> 'i'
+2026-07-02 11:07:13,068 - INFO -   Swap 5/5: 'r' -> 'x'
+2026-07-02 11:07:13,266 - INFO -   [OK] tay/Zeaol - Character 1-gram Deltas (avg of 5 swaps): PASS
+2026-07-02 11:07:13,282 - INFO - [VALIDATION] Checking XML integrity for bnn/Junqun (using 5 swaps per perturbation)...
+2026-07-02 11:07:14,655 - INFO - Analyzing baseline for bnn/Junqun...
+2026-07-02 11:07:15,615 - INFO - Testing 5 random character swaps...
+2026-07-02 11:07:15,615 - INFO -   Swap 1/5: 'k' -> 'v'
+2026-07-02 11:07:16,474 - INFO -   Swap 2/5: 's' -> 'k'
+2026-07-02 11:07:17,333 - INFO -   Swap 3/5: 'h' -> 'q'
+2026-07-02 11:07:18,174 - INFO -   Swap 4/5: 'p' -> 'l'
+2026-07-02 11:07:19,154 - INFO -   Swap 5/5: '2' -> 'q'
+2026-07-02 11:07:20,151 - INFO -   [!] bnn/Junqun - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-02 11:07:20,151 - INFO - [VALIDATION] Checking XML integrity for bnn/Kaqun (using 5 swaps per perturbation)...
+2026-07-02 11:07:21,714 - INFO - Analyzing baseline for bnn/Kaqun...
+2026-07-02 11:07:21,958 - INFO - Testing 5 random character swaps...
+2026-07-02 11:07:21,958 - INFO -   Swap 1/5: 'l' -> 'b'
+2026-07-02 11:07:22,147 - INFO -   Swap 2/5: 'v' -> 'g'
+2026-07-02 11:07:22,318 - INFO -   Swap 3/5: 'g' -> 'q'
+2026-07-02 11:07:22,533 - INFO -   Swap 4/5: 'o' -> 'z'
+2026-07-02 11:07:22,732 - INFO -   Swap 5/5: 'h' -> 'n'
+2026-07-02 11:07:22,906 - INFO -   [!] bnn/Kaqun - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-02 11:07:22,910 - INFO - [VALIDATION] Checking XML integrity for bnn/Luanqun (using 5 swaps per perturbation)...
+2026-07-02 11:07:24,320 - INFO - Analyzing baseline for bnn/Luanqun...
+2026-07-02 11:07:24,562 - INFO - Testing 5 random character swaps...
+2026-07-02 11:07:24,563 - INFO -   Swap 1/5: 'b' -> 'k'
+2026-07-02 11:07:24,760 - INFO -   Swap 2/5: 'k' -> '2'
+2026-07-02 11:07:24,969 - INFO -   Swap 3/5: 'z' -> 'v'
+2026-07-02 11:07:25,199 - INFO -   Swap 4/5: 'l' -> 's'
+2026-07-02 11:07:25,369 - INFO -   Swap 5/5: 'i' -> 'g'
+2026-07-02 11:07:25,564 - INFO -   [!] bnn/Luanqun - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-02 11:07:25,566 - INFO - [VALIDATION] Checking XML integrity for bnn/Tanqun (using 5 swaps per perturbation)...
+2026-07-02 11:07:26,941 - INFO - Analyzing baseline for bnn/Tanqun...
+2026-07-02 11:07:27,167 - INFO - Testing 5 random character swaps...
+2026-07-02 11:07:27,168 - INFO -   Swap 1/5: '1' -> 'c'
+2026-07-02 11:07:27,333 - INFO -   Swap 2/5: 's' -> '1'
+2026-07-02 11:07:27,512 - INFO -   Swap 3/5: 'm' -> '2'
+2026-07-02 11:07:27,688 - INFO -   Swap 4/5: 'q' -> 'l'
+2026-07-02 11:07:27,873 - INFO -   Swap 5/5: 'd' -> '2'
+2026-07-02 11:07:28,071 - INFO -   [!] bnn/Tanqun - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-02 11:07:28,073 - INFO - [VALIDATION] Checking XML integrity for bnn/Zhuoqun (using 5 swaps per perturbation)...
+2026-07-02 11:07:29,389 - INFO - Analyzing baseline for bnn/Zhuoqun...
+2026-07-02 11:07:29,606 - INFO - Testing 5 random character swaps...
+2026-07-02 11:07:29,606 - INFO -   Swap 1/5: 'g' -> 'q'
+2026-07-02 11:07:29,806 - INFO -   Swap 2/5: 'o' -> 'z'
+2026-07-02 11:07:29,973 - INFO -   Swap 3/5: 'h' -> 'n'
+2026-07-02 11:07:30,143 - INFO -   Swap 4/5: 'o' -> 'l'
+2026-07-02 11:07:30,305 - INFO -   Swap 5/5: 'l' -> 'i'
+2026-07-02 11:07:30,535 - INFO -   [OK] bnn/Zhuoqun - Character 1-gram Deltas (avg of 5 swaps): PASS
+2026-07-02 11:07:30,538 - INFO - [VALIDATION] Checking XML integrity for pwn/Central (using 5 swaps per perturbation)...
+2026-07-02 11:07:31,235 - INFO - Analyzing baseline for pwn/Central...
+2026-07-02 11:07:31,433 - INFO - Testing 5 random character swaps...
+2026-07-02 11:07:31,439 - INFO -   Swap 1/5: 'z' -> 'h'
+2026-07-02 11:07:31,620 - INFO -   Swap 2/5: 'v' -> 'h'
+2026-07-02 11:07:31,813 - INFO -   Swap 3/5: 's' -> 'i'
+2026-07-02 11:07:32,005 - INFO -   Swap 4/5: 't' -> 'k'
+2026-07-02 11:07:32,195 - INFO -   Swap 5/5: 'e' -> 'z'
+2026-07-02 11:07:32,397 - INFO -   [!] pwn/Central - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-02 11:07:32,397 - INFO - [VALIDATION] Checking XML integrity for pwn/Eastern (using 5 swaps per perturbation)...
+2026-07-02 11:07:33,149 - INFO - Analyzing baseline for pwn/Eastern...
+2026-07-02 11:07:33,410 - INFO - Testing 5 random character swaps...
+2026-07-02 11:07:33,410 - INFO -   Swap 1/5: 'l' -> 's'
+2026-07-02 11:07:33,617 - INFO -   Swap 2/5: 'g' -> '0'
+2026-07-02 11:07:33,878 - INFO -   Swap 3/5: '﹐' -> '1'
+2026-07-02 11:07:34,092 - INFO -   Swap 4/5: 't' -> 'b'
+2026-07-02 11:07:34,295 - INFO -   Swap 5/5: '﹐' -> 'm'
+2026-07-02 11:07:34,496 - INFO -   [!] pwn/Eastern - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-02 11:07:34,496 - INFO - [VALIDATION] Checking XML integrity for pwn/Northern (using 5 swaps per perturbation)...
+2026-07-02 11:07:35,219 - INFO - Analyzing baseline for pwn/Northern...
+2026-07-02 11:07:35,915 - INFO - Testing 5 random character swaps...
+2026-07-02 11:07:35,915 - INFO -   Swap 1/5: 'z' -> 'n'
+2026-07-02 11:07:36,484 - INFO -   Swap 2/5: 's' -> 'd'
+2026-07-02 11:07:37,056 - INFO -   Swap 3/5: '1' -> 'q'
+2026-07-02 11:07:37,634 - INFO -   Swap 4/5: 't' -> '1'
+2026-07-02 11:07:38,266 - INFO -   Swap 5/5: 'n' -> 'c'
+2026-07-02 11:07:38,872 - INFO -   [!] pwn/Northern - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-02 11:07:38,872 - INFO - [VALIDATION] Checking XML integrity for pwn/Southern (using 5 swaps per perturbation)...
+2026-07-02 11:07:39,531 - INFO - Analyzing baseline for pwn/Southern...
+2026-07-02 11:07:39,785 - INFO - Testing 5 random character swaps...
+2026-07-02 11:07:39,785 - INFO -   Swap 1/5: 'm' -> 's'
+2026-07-02 11:07:39,989 - INFO -   Swap 2/5: 'u' -> 'y'
+2026-07-02 11:07:40,199 - INFO -   Swap 3/5: 'w' -> 'i'
+2026-07-02 11:07:40,433 - INFO -   Swap 4/5: 'v' -> 'c'
+2026-07-02 11:07:40,646 - INFO -   Swap 5/5: 'k' -> 'j'
+2026-07-02 11:07:40,860 - INFO -   [!] pwn/Southern - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-02 11:07:40,876 - INFO - [VALIDATION] Checking XML integrity for pyu/Jianhe (using 5 swaps per perturbation)...
+2026-07-02 11:07:41,625 - INFO - Analyzing baseline for pyu/Jianhe...
+2026-07-02 11:07:41,885 - INFO - Testing 5 random character swaps...
+2026-07-02 11:07:41,885 - INFO -   Swap 1/5: 'g' -> 'm'
+2026-07-02 11:07:42,073 - INFO -   Swap 2/5: 'z' -> 'c'
+2026-07-02 11:07:42,335 - INFO -   Swap 3/5: 'r' -> 's'
+2026-07-02 11:07:42,555 - INFO -   Swap 4/5: 'z' -> 'h'
+2026-07-02 11:07:42,763 - INFO -   Swap 5/5: 'v' -> 'h'
+2026-07-02 11:07:42,953 - INFO -   [OK] pyu/Jianhe - Character 1-gram Deltas (avg of 5 swaps): PASS
+2026-07-02 11:07:42,953 - INFO - [VALIDATION] Checking XML integrity for pyu/Nanwang (using 5 swaps per perturbation)...
+2026-07-02 11:07:43,660 - INFO - Analyzing baseline for pyu/Nanwang...
+2026-07-02 11:07:44,458 - INFO - Testing 5 random character swaps...
+2026-07-02 11:07:44,458 - INFO -   Swap 1/5: 's' -> '4'
+2026-07-02 11:07:45,121 - INFO -   Swap 2/5: 'k' -> 'h'
+2026-07-02 11:07:45,889 - INFO -   Swap 3/5: 'r' -> 'y'
+2026-07-02 11:07:46,619 - INFO -   Swap 4/5: 'r' -> 'p'
+2026-07-02 11:07:47,350 - INFO -   Swap 5/5: 'b' -> 'n'
+2026-07-02 11:07:48,020 - INFO -   [X] pyu/Nanwang - Character 1-gram Deltas (avg of 5 swaps): FAIL
+2026-07-02 11:07:48,020 - INFO - [VALIDATION] Checking XML integrity for pyu/Xiqun (using 5 swaps per perturbation)...
+2026-07-02 11:07:48,870 - INFO - Analyzing baseline for pyu/Xiqun...
+2026-07-02 11:07:49,151 - INFO - Testing 5 random character swaps...
+2026-07-02 11:07:49,151 - INFO -   Swap 1/5: 'l' -> 's'
+2026-07-02 11:07:49,377 - INFO -   Swap 2/5: 'e' -> 'y'
+2026-07-02 11:07:49,580 - INFO -   Swap 3/5: '9' -> 'i'
+2026-07-02 11:07:49,783 - INFO -   Swap 4/5: '1' -> 'v'
+2026-07-02 11:07:49,989 - INFO -   Swap 5/5: 'h' -> 'k'
+2026-07-02 11:07:50,276 - INFO -   [!] pyu/Xiqun - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-02 11:07:50,276 - INFO - [VALIDATION] Checking XML integrity for pyu/Zhiben (using 5 swaps per perturbation)...
+2026-07-02 11:07:51,026 - INFO - Analyzing baseline for pyu/Zhiben...
+2026-07-02 11:07:51,325 - INFO - Testing 5 random character swaps...
+2026-07-02 11:07:51,325 - INFO -   Swap 1/5: 'm' -> 'y'
+2026-07-02 11:07:51,554 - INFO -   Swap 2/5: 'd' -> 'l'
+2026-07-02 11:07:51,779 - INFO -   Swap 3/5: 'w' -> 'v'
+2026-07-02 11:07:52,026 - INFO -   Swap 4/5: 'b' -> 'r'
+2026-07-02 11:07:52,289 - INFO -   Swap 5/5: 'w' -> 'p'
+2026-07-02 11:07:52,509 - INFO -   [!] pyu/Zhiben - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-02 11:07:52,515 - INFO - [VALIDATION] Checking XML integrity for dru/Dawu (using 5 swaps per perturbation)...
+2026-07-02 11:07:53,925 - INFO - Analyzing baseline for dru/Dawu...
+2026-07-02 11:07:54,182 - INFO - Testing 5 random character swaps...
+2026-07-02 11:07:54,183 - INFO -   Swap 1/5: 't' -> 'u'
+2026-07-02 11:07:54,360 - INFO -   Swap 2/5: 'g' -> 'm'
+2026-07-02 11:07:54,548 - INFO -   Swap 3/5: 'z' -> 'c'
+2026-07-02 11:07:54,729 - INFO -   Swap 4/5: 'r' -> 's'
+2026-07-02 11:07:54,931 - INFO -   Swap 5/5: 'v' -> 'c'
+2026-07-02 11:07:55,154 - INFO -   [OK] dru/Dawu - Character 1-gram Deltas (avg of 5 swaps): PASS
+2026-07-02 11:07:55,157 - INFO - [VALIDATION] Checking XML integrity for dru/Dona (using 5 swaps per perturbation)...
+2026-07-02 11:07:56,429 - INFO - Analyzing baseline for dru/Dona...
+2026-07-02 11:07:56,656 - INFO - Testing 5 random character swaps...
+2026-07-02 11:07:56,657 - INFO -   Swap 1/5: 'u' -> 'y'
+2026-07-02 11:07:56,845 - INFO -   Swap 2/5: 'z' -> 'i'
+2026-07-02 11:07:57,029 - INFO -   Swap 3/5: 'c' -> 'v'
+2026-07-02 11:07:57,209 - INFO -   Swap 4/5: 'z' -> 'k'
+2026-07-02 11:07:57,389 - INFO -   Swap 5/5: '1' -> 'h'
+2026-07-02 11:07:57,622 - INFO -   [OK] dru/Dona - Character 1-gram Deltas (avg of 5 swaps): PASS
+2026-07-02 11:07:57,629 - INFO - [VALIDATION] Checking XML integrity for dru/Eastern (using 5 swaps per perturbation)...
+2026-07-02 11:07:58,792 - INFO - Analyzing baseline for dru/Eastern...
+2026-07-02 11:07:58,990 - INFO - Testing 5 random character swaps...
+2026-07-02 11:07:58,990 - INFO -   Swap 1/5: 'p' -> 'y'
+2026-07-02 11:07:59,156 - INFO -   Swap 2/5: 'z' -> 'i'
+2026-07-02 11:07:59,333 - INFO -   Swap 3/5: 'c' -> 'v'
+2026-07-02 11:07:59,525 - INFO -   Swap 4/5: 'z' -> 'n'
+2026-07-02 11:07:59,701 - INFO -   Swap 5/5: 'g' -> 'b'
+2026-07-02 11:07:59,883 - INFO -   [OK] dru/Eastern - Character 1-gram Deltas (avg of 5 swaps): PASS
+2026-07-02 11:07:59,883 - INFO - [VALIDATION] Checking XML integrity for dru/Maolin (using 5 swaps per perturbation)...
+2026-07-02 11:08:01,081 - INFO - Analyzing baseline for dru/Maolin...
+2026-07-02 11:08:01,367 - INFO - Testing 5 random character swaps...
+2026-07-02 11:08:01,367 - INFO -   Swap 1/5: 's' -> 'e'
+2026-07-02 11:08:01,573 - INFO -   Swap 2/5: '9' -> 'i'
+2026-07-02 11:08:01,764 - INFO -   Swap 3/5: 'i' -> 'v'
+2026-07-02 11:08:01,976 - INFO -   Swap 4/5: 'h' -> 'u'
+2026-07-02 11:08:02,185 - INFO -   Swap 5/5: 'h' -> 'v'
+2026-07-02 11:08:02,397 - INFO -   [!] dru/Maolin - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-02 11:08:02,398 - INFO - [VALIDATION] Checking XML integrity for dru/Wanshan (using 5 swaps per perturbation)...
+2026-07-02 11:08:03,639 - INFO - Analyzing baseline for dru/Wanshan...
+2026-07-02 11:08:03,946 - INFO - Testing 5 random character swaps...
+2026-07-02 11:08:03,946 - INFO -   Swap 1/5: 'h' -> 'w'
+2026-07-02 11:08:04,232 - INFO -   Swap 2/5: '9' -> 'n'
+2026-07-02 11:08:04,517 - INFO -   Swap 3/5: 'm' -> 'i'
+2026-07-02 11:08:04,772 - INFO -   Swap 4/5: 'r' -> 'k'
+2026-07-02 11:08:04,993 - INFO -   Swap 5/5: 'i' -> 'b'
+2026-07-02 11:08:05,202 - INFO -   [!] dru/Wanshan - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-02 11:08:05,203 - INFO - [VALIDATION] Checking XML integrity for dru/Wutai (using 5 swaps per perturbation)...
+2026-07-02 11:08:06,698 - INFO - Analyzing baseline for dru/Wutai...
+2026-07-02 11:08:07,715 - INFO - Testing 5 random character swaps...
+2026-07-02 11:08:07,715 - INFO -   Swap 1/5: 'v' -> 'y'
+2026-07-02 11:08:08,677 - INFO -   Swap 2/5: 'u' -> 't'
+2026-07-02 11:08:09,666 - INFO -   Swap 3/5: 'p' -> 'g'
+2026-07-02 11:08:10,743 - INFO -   Swap 4/5: 'a' -> 'o'
+2026-07-02 11:08:12,251 - INFO -   Swap 5/5: 'n' -> 'v'
+2026-07-02 11:08:13,556 - INFO -   [X] dru/Wutai - Character 1-gram Deltas (avg of 5 swaps): FAIL
+2026-07-02 11:08:13,556 - INFO - [VALIDATION] Checking XML integrity for trv/DeluValley (using 5 swaps per perturbation)...
+2026-07-02 11:08:14,613 - INFO - Analyzing baseline for trv/DeluValley...
+2026-07-02 11:08:14,880 - INFO - Testing 5 random character swaps...
+2026-07-02 11:08:14,880 - INFO -   Swap 1/5: 'j' -> 's'
+2026-07-02 11:08:15,110 - INFO -   Swap 2/5: 'l' -> 'j'
+2026-07-02 11:08:15,357 - INFO -   Swap 3/5: 'c' -> 'o'
+2026-07-02 11:08:15,617 - INFO -   Swap 4/5: 'm' -> 't'
+2026-07-02 11:08:15,836 - INFO -   Swap 5/5: 'n' -> 'p'
+2026-07-02 11:08:16,050 - INFO -   [!] trv/DeluValley - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-02 11:08:16,050 - INFO - [VALIDATION] Checking XML integrity for trv/Duda (using 5 swaps per perturbation)...
+2026-07-02 11:08:16,940 - INFO - Analyzing baseline for trv/Duda...
+2026-07-02 11:08:17,195 - INFO - Testing 5 random character swaps...
+2026-07-02 11:08:17,195 - INFO -   Swap 1/5: 'd' -> 'x'
+2026-07-02 11:08:17,389 - INFO -   Swap 2/5: 'q' -> 'm'
+2026-07-02 11:08:17,610 - INFO -   Swap 3/5: 'd' -> 'b'
+2026-07-02 11:08:17,868 - INFO -   Swap 4/5: 'b' -> 'y'
+2026-07-02 11:08:18,083 - INFO -   Swap 5/5: 'i' -> 'n'
+2026-07-02 11:08:18,314 - INFO -   [!] trv/Duda - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-02 11:08:18,316 - INFO - [VALIDATION] Checking XML integrity for trv/Tegudaya (using 5 swaps per perturbation)...
+2026-07-02 11:08:19,325 - INFO - Analyzing baseline for trv/Tegudaya...
+2026-07-02 11:08:20,139 - INFO - Testing 5 random character swaps...
+2026-07-02 11:08:20,139 - INFO -   Swap 1/5: 'x' -> 'o'
+2026-07-02 11:08:20,901 - INFO -   Swap 2/5: 'o' -> 'z'
+2026-07-02 11:08:21,608 - INFO -   Swap 3/5: 'e' -> 'q'
+2026-07-02 11:08:22,328 - INFO -   Swap 4/5: 'h' -> 't'
+2026-07-02 11:08:23,042 - INFO -   Swap 5/5: '2' -> 'h'
+2026-07-02 11:08:23,809 - INFO -   [!] trv/Tegudaya - Character 1-gram Deltas (avg of 5 swaps): WARN
+2026-07-02 11:08:23,809 - INFO - 
+================================================================================
+2026-07-02 11:08:23,809 - INFO - Running Cross-Language Discrimination Tests
+2026-07-02 11:08:23,809 - INFO - ================================================================================
+
+2026-07-02 11:08:23,814 - INFO - [CROSS-LANG] Testing discrimination for ami/Coastal against other languages...
+2026-07-02 11:09:10,938 - INFO - [CROSS-LANG] Testing discrimination for tay/FourSeasons against other languages...
+2026-07-02 11:09:58,215 - INFO - [CROSS-LANG] Testing discrimination for bnn/Junqun against other languages...
+2026-07-02 11:10:41,566 - INFO - [CROSS-LANG] Testing discrimination for pwn/Central against other languages...
+2026-07-02 11:11:32,234 - INFO - [CROSS-LANG] Testing discrimination for pyu/Jianhe against other languages...
+2026-07-02 11:12:28,240 - INFO - [CROSS-LANG] Testing discrimination for dru/Dawu against other languages...
+2026-07-02 11:13:18,740 - INFO - [CROSS-LANG] Testing discrimination for trv/DeluValley against other languages...
+2026-07-02 11:14:13,016 - INFO - 
+================================================================================
+2026-07-02 11:14:13,016 - INFO - Computing Prediction Efficacy Metrics
+2026-07-02 11:14:13,016 - INFO - ================================================================================
+
+2026-07-02 11:14:13,020 - INFO - Metric Correlations (character ↔ word deltas):
+2026-07-02 11:14:13,020 - INFO -   Cosine Similarity Correlation: 0.7486
+2026-07-02 11:14:13,020 - INFO -   KL Divergence Correlation: 0.9226
+2026-07-02 11:14:13,020 - INFO - 
+Predictive Power Analysis:
+2026-07-02 11:14:13,020 - INFO -   Class Separation (PASS vs FAIL): 1.8065
+2026-07-02 11:14:13,020 - INFO -   PASS Mean Delta: 0.0032
+2026-07-02 11:14:13,023 - INFO -   FAIL Mean Delta: 0.1328
+2026-07-02 11:14:13,056 - INFO - 
+================================================================================
+2026-07-02 11:14:13,058 - INFO - Test suite complete. Results saved to test_results/perturbation_tests
+2026-07-02 11:14:13,058 - INFO -   Total tests: 33
+2026-07-02 11:14:13,059 - INFO -   Successful: 33
+2026-07-02 11:14:13,059 - INFO -   Failed: 0
+2026-07-02 11:14:13,059 - INFO - ================================================================================

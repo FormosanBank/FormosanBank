@@ -1,0 +1,225 @@
+====================================================================================================
+Character Perturbation Robustness Test Suite - Comparative Analysis
+Generated: 2026-06-29T16:55:56.007999
+====================================================================================================
+
+Total Test Results: 9
+Languages tested: 2
+Dialects tested: 9
+
+====================================================================================================
+RESULTS BY LANGUAGE
+====================================================================================================
+
+AMI (5 dialect(s)):
+----------------------------------------------------------------------------------------------------
+
+  Coastal:
+    Corpus: 5263 sentences, 351514 chars, 32 unique
+    Perturbation: 'a' (freq=15745) -> '"'
+    Character-level changes (Δcosine / ΔKL):
+      1-gram: 0.570084 / 2.189268
+      2-gram: 0.638528 / 2.984973
+      3-gram: 0.768895 / 2.570463
+    Word-level changes (Δcosine / ΔKL):
+      1-gram: 0.630313 / 1.862377
+      2-gram: 0.660545 / 0.564826
+      3-gram: 0.290356 / 0.166714
+
+  Hengchun:
+    Corpus: 3832 sentences, 223513 chars, 34 unique
+    Perturbation: 'a' (freq=8507) -> '3'
+    Character-level changes (Δcosine / ΔKL):
+      1-gram: 0.547228 / 1.981503
+      2-gram: 0.607321 / 2.601386
+      3-gram: 0.720588 / 2.111381
+    Word-level changes (Δcosine / ΔKL):
+      1-gram: 0.263908 / 1.078051
+      2-gram: 0.291690 / 0.240994
+      3-gram: 0.081846 / 0.053325
+
+  Malan:
+    Corpus: 3969 sentences, 216908 chars, 29 unique
+    Perturbation: 'a' (freq=8605) -> 'd'
+    Character-level changes (Δcosine / ΔKL):
+      1-gram: 0.540277 / 1.953262
+      2-gram: 0.625210 / 2.587016
+      3-gram: 0.736148 / 2.126945
+    Word-level changes (Δcosine / ΔKL):
+      1-gram: 0.251999 / 1.089184
+      2-gram: 0.318904 / 0.267112
+      3-gram: 0.084775 / 0.059811
+
+  Southern:
+    Corpus: 3894 sentences, 209599 chars, 33 unique
+    Perturbation: 'a' (freq=7496) -> '9'
+    Character-level changes (Δcosine / ΔKL):
+      1-gram: 0.579825 / 2.053293
+      2-gram: 0.640701 / 2.655486
+      3-gram: 0.747406 / 2.148783
+    Word-level changes (Δcosine / ΔKL):
+      1-gram: 0.327514 / 1.234259
+      2-gram: 0.421540 / 0.339990
+      3-gram: 0.109013 / 0.077954
+
+  Xiuguluan:
+    Corpus: 9348 sentences, 430339 chars, 35 unique
+    Perturbation: 'a' (freq=14250) -> 'g'
+    Character-level changes (Δcosine / ΔKL):
+      1-gram: 0.520158 / 2.055515
+      2-gram: 0.577111 / 2.793206
+      3-gram: 0.736963 / 2.421115
+    Word-level changes (Δcosine / ΔKL):
+      1-gram: 0.258253 / 1.323984
+      2-gram: 0.505066 / 0.383520
+      3-gram: 0.133406 / 0.076007
+
+PWN (4 dialect(s)):
+----------------------------------------------------------------------------------------------------
+
+  Central:
+    Corpus: 3747 sentences, 218302 chars, 32 unique
+    Perturbation: 'a' (freq=8263) -> 'q'
+    Character-level changes (Δcosine / ΔKL):
+      1-gram: 0.538505 / 2.046530
+      2-gram: 0.644265 / 2.783201
+      3-gram: 0.784550 / 2.368666
+    Word-level changes (Δcosine / ΔKL):
+      1-gram: 0.901588 / 1.716740
+      2-gram: 0.336140 / 0.242040
+      3-gram: 0.058303 / 0.045151
+
+  Eastern:
+    Corpus: 3892 sentences, 229164 chars, 34 unique
+    Perturbation: 'a' (freq=8188) -> 'm'
+    Character-level changes (Δcosine / ΔKL):
+      1-gram: 0.536761 / 2.023359
+      2-gram: 0.687245 / 2.793277
+      3-gram: 0.814927 / 2.381636
+    Word-level changes (Δcosine / ΔKL):
+      1-gram: 0.917299 / 1.734307
+      2-gram: 0.327051 / 0.225194
+      3-gram: 0.046851 / 0.034388
+
+  Northern:
+    Corpus: 10800 sentences, 620506 chars, 35 unique
+    Perturbation: 'a' (freq=26213) -> 'r'
+    Character-level changes (Δcosine / ΔKL):
+      1-gram: 0.577196 / 2.406378
+      2-gram: 0.686370 / 3.427416
+      3-gram: 0.836749 / 3.170168
+    Word-level changes (Δcosine / ΔKL):
+      1-gram: 0.951760 / 2.384185
+      2-gram: 0.618820 / 0.368234
+      3-gram: 0.069953 / 0.046223
+
+  Southern:
+    Corpus: 3958 sentences, 238158 chars, 34 unique
+    Perturbation: 'a' (freq=8743) -> 's'
+    Character-level changes (Δcosine / ΔKL):
+      1-gram: 0.542344 / 2.054667
+      2-gram: 0.668438 / 2.819286
+      3-gram: 0.812439 / 2.423396
+    Word-level changes (Δcosine / ΔKL):
+      1-gram: 0.934387 / 1.800369
+      2-gram: 0.351314 / 0.249468
+      3-gram: 0.059144 / 0.041128
+
+====================================================================================================
+STATISTICAL SUMMARY
+====================================================================================================
+
+Overall Metric Changes (all tests combined):
+----------------------------------------------------------------------------------------------------
+  character_cosine_similarity:
+    Mean: 0.655046
+    Std Dev: 0.096884
+    Min: 0.520158
+    Max: 0.836749
+    Median: 0.640701
+  character_kl_divergence:
+    Mean: 2.441910
+    Std Dev: 0.385509
+    Min: 1.953262
+    Max: 3.427416
+    Median: 2.406378
+  word_cosine_similarity:
+    Mean: 0.377842
+    Std Dev: 0.285906
+    Min: 0.046851
+    Max: 0.951760
+    Median: 0.318904
+  word_kl_divergence:
+    Mean: 0.655761
+    Std Dev: 0.705396
+    Min: 0.034388
+    Max: 2.384185
+    Median: 0.267112
+
+By Grammar Length:
+----------------------------------------------------------------------------------------------------
+  1-grams:
+    character_cosine_similarity: mean=0.550264, std=0.019410, max=0.579825
+    character_kl_divergence: mean=2.084864, std=0.129227, max=2.406378
+    word_cosine_similarity: mean=0.604113, std=0.307869, max=0.951760
+    word_kl_divergence: mean=1.580384, std=0.407629, max=2.384185
+  2-grams:
+    character_cosine_similarity: mean=0.641688, std=0.034039, max=0.687245
+    character_kl_divergence: mean=2.827250, std=0.242125, max=3.427416
+    word_cosine_similarity: mean=0.425674, std=0.129706, max=0.660545
+    word_kl_divergence: mean=0.320153, std=0.103161, max=0.564826
+  3-grams:
+    character_cosine_similarity: mean=0.773185, std=0.038853, max=0.836749
+    character_kl_divergence: mean=2.413617, std=0.306201, max=3.170168
+    word_cosine_similarity: mean=0.103738, std=0.070714, max=0.290356
+    word_kl_divergence: mean=0.066745, std=0.038041, max=0.166714
+
+====================================================================================================
+XML CORPUS INTEGRITY VALIDATION SUMMARY
+====================================================================================================
+
+Validation Checks:
+  Passed: 0
+  Warned: 0
+  Failed: 9
+
+Corpus Integrity Issues:
+  - AMI/Coastal: ami/Coastal has high deltas (cosine=0.5701, kl=2.1893). Possible corpus contamination or validation issues.
+  - AMI/Hengchun: ami/Hengchun has high deltas (cosine=0.5472, kl=1.9815). Possible corpus contamination or validation issues.
+  - AMI/Malan: ami/Malan has high deltas (cosine=0.5403, kl=1.9533). Possible corpus contamination or validation issues.
+  - AMI/Southern: ami/Southern has high deltas (cosine=0.5798, kl=2.0533). Possible corpus contamination or validation issues.
+  - AMI/Xiuguluan: ami/Xiuguluan has high deltas (cosine=0.5202, kl=2.0555). Possible corpus contamination or validation issues.
+  - PWN/Central: pwn/Central has high deltas (cosine=0.5385, kl=2.0465). Possible corpus contamination or validation issues.
+  - PWN/Eastern: pwn/Eastern has high deltas (cosine=0.5368, kl=2.0234). Possible corpus contamination or validation issues.
+  - PWN/Northern: pwn/Northern has high deltas (cosine=0.5772, kl=2.4064). Possible corpus contamination or validation issues.
+  - PWN/Southern: pwn/Southern has high deltas (cosine=0.5423, kl=2.0547). Possible corpus contamination or validation issues.
+
+Cross-Language Character Set Analysis:
+  AMI/Coastal: 68 unique characters
+    - Atayal: 86.8% overlap
+    - Bunun: 88.2% overlap
+  AMI/Hengchun: 66 unique characters
+    - Atayal: 90.9% overlap
+    - Bunun: 90.9% overlap
+  AMI/Malan: 65 unique characters
+    - Atayal: 89.2% overlap
+    - Bunun: 92.3% overlap
+  AMI/Southern: 65 unique characters
+    - Atayal: 89.2% overlap
+    - Bunun: 93.8% overlap
+  AMI/Xiuguluan: 72 unique characters
+    - Atayal: 84.7% overlap
+    - Bunun: 83.3% overlap
+  PWN/Central: 70 unique characters
+    - Amis: 81.4% overlap
+    - Atayal: 87.1% overlap
+  PWN/Eastern: 65 unique characters
+    - Amis: 86.2% overlap
+    - Atayal: 89.2% overlap
+  PWN/Northern: 77 unique characters
+    - Amis: 77.9% overlap
+    - Atayal: 81.8% overlap
+  PWN/Southern: 70 unique characters
+    - Amis: 84.3% overlap
+    - Atayal: 90.0% overlap
+

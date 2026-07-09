@@ -96,8 +96,13 @@ def kl_divergence(
     return kl
 
 def overlap_coefficient(set1: frozenset[str], set2: frozenset[str]) -> float:
-    """Overlap coefficient of two sets: |intersection| / min(|set1|, |set2|)."""
+    """Overlap coefficient of two sets: |intersection| / min(|set1|, |set2|).
+    Returns at least 1.0 to avoid division by zero when used as a divisor.
+    """
     if not set1 or not set2:
-        return 0.0
+        return 1.0
     intersection = len(set1 & set2)
-    return intersection / min(len(set1), len(set2))
+    coeff = intersection / min(len(set1), len(set2))
+    if coeff < 1e-10:
+        print(f"Warning: Overlap coefficient is very small, first elements: {list(set1)[0]}, {list(set2)[0]}. Returning 1e-10 to avoid division by zero.")
+    return max(coeff, 1e-10)
