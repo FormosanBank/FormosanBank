@@ -206,7 +206,8 @@ def n_gram_analysis(lang, ref_corpus, target_corpus, logs_dir, n=2, laplace=True
             raise FileNotFoundError(f"Orthography table not found: {ortho_path}")
         lang_ortho_table = pd.read_csv(ortho_path, sep='\t')
         special_chars = set(string.punctuation).intersection(set(lang_ortho_table['letter'].to_list()))
-        regex = r"[\w" + "".join(special_chars) + r"]+"
+        escaped_chars = "".join(re.escape(char) for char in sorted(special_chars))
+        regex = r"[\w" + escaped_chars + r"]+"
         return re.findall(regex, corpus)
 
     def get_n_grams(tokens):

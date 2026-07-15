@@ -17,17 +17,13 @@ from QC.utilities.dialect_detector.graphemes import (
     alphabet_of, load_letter_inventories, tokenize_graphemes,
 )
 
+COMPONENTS = ["orthography", "char", "bigram", "word"]
+DEFAULT_UNKNOWN_THRESHOLD = 0.50
 
-COMPONENTS = ["orthography", "char", "bigram", "word", "word_bigram"] # unigram/bigram for both chars and words
-DEFAULT_UNKNOWN_THRESHOLD = 0.50 # default threshold for predicting "unknown" (tuned via cross-validation)
-
-IN_SCOPE_LANGS = ["ami", "tay", "bnn", "pwn", "pyu", "dru", "trv"] # codes for languages
+IN_SCOPE_LANGS = ["ami", "tay", "bnn", "pwn", "pyu", "dru", "trv"]
 
 
 def language_name_for(lang_code: str) -> str | None:
-    '''
-    Return the language name for a given ISO language code.
-    '''
     if lang_code == "trv":
         return "Seediq"   # the TSV that carries Truku + Seediq dialect columns
     return ISO_TO_LANGUAGE.get(lang_code)
@@ -44,65 +40,34 @@ class DialectModel:
     uni: dict[str, Counter]                    # per-dialect profiles
     bi: dict[str, Counter]
     words: dict[str, Counter]
-    word_bi: dict[str, Counter]
     uni_total: dict[str, int]
     bi_total: dict[str, int]
     word_total: dict[str, int]
-    word_bi_total: dict[str, int]
     uni_vocab: int
     bi_vocab: int
     word_vocab: int
-    word_bi_vocab: int
     weights: list[float]
     bias: list[float]
     threshold: float = DEFAULT_UNKNOWN_THRESHOLD
-    kl_threshold: float = DEFAULT_UNKNOWN_THRESHOLD
     components: list[str] = field(default_factory=lambda: list(COMPONENTS))
 
-    '''
-    A DialectModel encapsulates all data and parameters needed to score new texts for dialect prediction. It includes:
-    - Metadata: language code, language name, list of dialects, and their orthographic inventories
-    - Feature profiles: unigram and bigram counts for characters and words, along with their totals and vocabulary sizes for smoothing
-    - Combiner parameters: weights and bias for the logistic regression combiner, as well as thresholds for predicting "unknown" dialects based on softmax probabilities and KL divergence scores
-    The model provides methods to extract features from new texts, compute component scores, and make predictions based on both softmax probabilities and KL divergence.
-    '''
-
-    def _extract_features(self, text: str):
-        """Extract all features once; returns (uni, bi, words, word_bi)."""
+    def _score_matrix(self, text: str) -> np.ndarray:
         graphemes = tokenize_graphemes(text, self.alphabet)
-        return F.extract_counts(graphemes, text)
-
-    def _score_matrix(self, uni, bi, words, word_bi) -> np.ndarray:
-        """Compute feature scores for each dialect (pre-extracted features)."""
+        uni, bi, words, _word_bi = F.extract_counts(graphemes, text)
         rows = []
         n = len(self.dialects)
         for d in self.dialects:
             o, _, _ = F.orthography_score(uni, self.inventories.get(d, frozenset()),
                                           self.support_count, n)
-            # Calculate log-probability scores for each component using the model's profiles and totals, with smoothing based on the observed vocabulary size
             c = F.log_prob_score(uni, self.uni[d], self.uni_total[d], self.uni_vocab)
             b = F.log_prob_score(bi, self.bi[d], self.bi_total[d], self.bi_vocab)
             w = F.log_prob_score(words, self.words[d], self.word_total[d], self.word_vocab)
-            wb = F.log_prob_score(word_bi, self.word_bi[d], self.word_bi_total[d], self.word_bi_vocab)
-            rows.append([o, c, b, w, wb])
-        return np.asarray(rows, dtype=float)
-
-    def _kl_matrix(self, uni, bi, words, word_bi) -> np.ndarray:
-        """Compute KL divergence scores for each component and dialect (pre-extracted features)."""
-        rows = []
-        for d in self.dialects:
-            # Calculate KL divergence scores for each component using the model's profiles and totals, with smoothing based on the observed vocabulary size
-            kl_uni = F.kl_divergence(uni, self.uni[d], self.uni_total[d], self.uni_vocab)
-            kl_bi = F.kl_divergence(bi, self.bi[d], self.bi_total[d], self.bi_vocab)
-            kl_w = F.kl_divergence(words, self.words[d], self.word_total[d], self.word_vocab)
-            kl_wb = F.kl_divergence(word_bi, self.word_bi[d], self.word_bi_total[d], self.word_bi_vocab)
-            rows.append([kl_uni, kl_bi, kl_w, kl_wb])
+            rows.append([o, c, b, w])
         return np.asarray(rows, dtype=float)
 
     def score_text(self, text: str) -> list[tuple[str, float, dict[str, float]]]:
-        """Return [(dialect, probability, {component: score}), ...] best-first using softmax."""
-        uni, bi, words, word_bi = self._extract_features(text)
-        X = self._score_matrix(uni, bi, words, word_bi)
+        """Return [(dialect, probability, {component: score}), ...] best-first."""
+        X = self._score_matrix(text)
         p = predict_proba(np.asarray(self.weights), np.asarray(self.bias), X)
         out = [
             (d, float(p[i]), dict(zip(self.components, X[i].tolist())))
@@ -111,164 +76,8 @@ class DialectModel:
         out.sort(key=lambda r: (-r[1], r[0]))
         return out
 
-    def score_text_kl(self, text: str) -> tuple[str | None, float, list[tuple[str, float, dict[str, float]]]]:
-        """Predict dialect using KL divergence: minimum sum of KL divergences wins.
-        
-        Returns (predicted_dialect, confidence, ranked_list) where confidence is computed as:
-        sqrt(sum_kl_best) / sum_across_dialects(sqrt(sum_kl_d))
-        """
-        uni, bi, words, word_bi = self._extract_features(text)
-        kl = self._kl_matrix(uni, bi, words, word_bi)
-        # Sum KL divergences across all components for each dialect
-        kl_sums = np.sum(kl, axis=1)  # shape: (n_dialects,)
-        
-        if np.all(np.isnan(kl_sums)) or np.all(np.isinf(kl_sums)):
-            return None, 0.0, []
-        
-        # Replace inf with a large value for computation
-        kl_sums_safe = np.nan_to_num(kl_sums, nan=1e10, posinf=1e10, neginf=-1e10)
-        
-        # Find dialect with minimum KL divergence
-        best_idx = np.argmin(kl_sums_safe)
-        best_kl = kl_sums_safe[best_idx]
-        
-        # Compute confidence using sqrt-based weighting
-        kls = (np.abs(kl_sums_safe))
-        denominator = np.sum(kls)
-        confidence = np.sqrt(float(kls[best_idx] / denominator)) if denominator > 0 else 0.0
-        
-        # Create ranked list
-        ranked = [
-            (self.dialects[i], float(kl_sums_safe[i]), 
-             {"kl_uni": float(kl[i][0]), "kl_bi": float(kl[i][1]), 
-              "kl_word": float(kl[i][2]), "kl_word_bi": float(kl[i][3])})
-            for i in range(len(self.dialects))
-        ]
-        # Sort by KL sum ascending (lower is better)
-        ranked.sort(key=lambda r: r[1])
-        
-        return self.dialects[best_idx], confidence, ranked
-
-    def score_text_next_word_kl(self, text: str, limit: int = 40, smoothing: float = 1.0) -> tuple[str | None, float, list[tuple[str, float, dict[str, float]]]]:
-        """Predict dialect using next-word KL divergence: average KL divergence of next-word 
-        probability distributions given top (n-1)-grams.
-        
-        For each of the top `limit` word unigrams (prefixes) in the model's training data:
-        1. Extract all word bigrams with that prefix from both model and target text
-        2. Compute probability distribution of the next word for each dialect
-        3. Calculate KL divergence between reference dialect and target distributions
-        4. Average the KL divergences across all prefixes
-        
-        Returns (predicted_dialect, confidence, ranked_list) where predicted_dialect is 
-        the one with minimum average next-word KL divergence, and confidence is based on 
-        the spread of scores.
-        
-        Args:
-            text: The text to analyze
-            limit: Number of top word unigrams to consider from reference data
-            smoothing: Laplace smoothing parameter for probability estimation
-        """
-        target_tokens = text.split()
-        if len(target_tokens) < 2:
-            return None, 0.0, []
-        
-        # Create target word bigrams
-        target_bigrams = Counter(
-            tuple(target_tokens[i:i+2]) for i in range(len(target_tokens) - 1)
-        )
-        
-        # Get all possible next-word contexts for each dialect
-        avg_kl_divs = []
-        
-        for d in self.dialects:
-            kl_divs_next_word = []
-            
-            # Get top word unigrams from reference (first word of bigrams)
-            # Count first words in the dialect's bigrams
-            prefix_counts = Counter()
-            for (w1, w2) in self.word_bi[d].elements():
-                prefix_counts[w1] += 1
-            
-            top_prefixes = prefix_counts.most_common(limit)
-            
-            for prefix, _ in top_prefixes:
-                # Get all bigrams with this prefix in both reference and target
-                ref_next_words = {}
-                target_next_words = {}
-                
-                # From reference dialect data
-                for (w1, w2), count in self.word_bi[d].items():
-                    if w1 == prefix:
-                        # P(w2 | w1) = count(w1, w2) / count(w1)
-                        ref_next_words[(w1, w2)] = count / (prefix_counts[prefix] + smoothing)
-                
-                # From target text
-                for (w1, w2), count in target_bigrams.items():
-                    if w1 == prefix:
-                        prefix_target_count = sum(
-                            c for (tw1, tw2), c in target_bigrams.items() if tw1 == prefix
-                        )
-                        target_next_words[(w1, w2)] = count / (prefix_target_count + smoothing)
-                
-                # Get all unique bigrams with this prefix
-                all_bigrams = set(ref_next_words.keys()).union(set(target_next_words.keys()))
-                
-                if len(all_bigrams) > 0:
-                    # Create probability vectors with smoothing for unseen bigrams
-                    smoothing_prob = smoothing / (smoothing * len(all_bigrams) + 1)
-                    ref_prob_vector = np.array([
-                        ref_next_words.get(bigram, smoothing_prob) for bigram in all_bigrams
-                    ])
-                    target_prob_vector = np.array([
-                        target_next_words.get(bigram, smoothing_prob) for bigram in all_bigrams
-                    ])
-                    
-                    # Normalize to valid probability distributions
-                    ref_prob_vector = ref_prob_vector / (np.sum(ref_prob_vector) + 1e-10)
-                    target_prob_vector = target_prob_vector / (np.sum(target_prob_vector) + 1e-10)
-                    
-                    # Calculate KL divergence using same approach as features.py
-                    # KL(ref || target) = sum(ref * log(ref / target))
-                    kl_div = np.sum(
-                        ref_prob_vector * (np.log(ref_prob_vector + 1e-10) - np.log(target_prob_vector + 1e-10))
-                    )
-                    kl_divs_next_word.append(float(kl_div))
-            
-            avg_kl = np.mean(kl_divs_next_word) if kl_divs_next_word else float('inf')
-            avg_kl_divs.append(avg_kl)
-        
-        avg_kl_divs = np.array(avg_kl_divs)
-        
-        # Handle all-inf or all-nan cases
-        if np.all(np.isnan(avg_kl_divs)) or np.all(np.isinf(avg_kl_divs)):
-            return None, 0.0, []
-        
-        # Replace inf/nan with a large value
-        avg_kl_divs_safe = np.nan_to_num(avg_kl_divs, nan=1e10, posinf=1e10, neginf=-1e10)
-        
-        # Find dialect with minimum average KL divergence (best match)
-        best_idx = np.argmin(avg_kl_divs_safe)
-        
-        # Compute confidence using inverse of the spread
-        min_kl = avg_kl_divs_safe[best_idx]
-        kl_diffs = avg_kl_divs_safe - min_kl
-        denominator = np.sum(kl_diffs)
-        confidence = 1.0 / (1.0 + (denominator / (len(self.dialects) * max(min_kl, 0.1)))) if denominator > 0 else 1.0
-        
-        # Create ranked list sorted by average KL divergence (ascending)
-        ranked = [
-            (self.dialects[i], float(avg_kl_divs_safe[i]), {"avg_kl_next_word": float(avg_kl_divs_safe[i])})
-            for i in range(len(self.dialects))
-        ]
-        ranked.sort(key=lambda r: r[1])
-        
-        return self.dialects[best_idx], confidence, ranked
-
 
 def _prune(counter: Counter, top_n: int) -> Counter:
-    '''
-    Return a new Counter containing only the top_n most common items from the input counter.
-    '''
     return Counter(dict(counter.most_common(top_n)))
 
 
@@ -278,14 +87,10 @@ def build_model(
     orthographies_path: Path,
     top_n: int = 2000,
 ) -> DialectModel | None:
-    '''
-    Build a DialectModel for a given language code by loading the relevant data and fitting the model parameters. 
-    Returns None if the language is out of scope or if there are insufficient dialects with data.
-    '''
     name = language_name_for(lang_code)
     if name is None:
         return None
-    inventories = load_letter_inventories(name, orthographies_path) # returns dict of dialect -> set of graphemes; may be empty if no inventories or no dialects with inventories
+    inventories = load_letter_inventories(name, orthographies_path)
     if not inventories:
         return None
     cands = C.candidate_dialects(lang_code)
@@ -328,16 +133,14 @@ def fit_model_from_docs(
     uni = {d: Counter() for d in present}
     bi = {d: Counter() for d in present}
     words = {d: Counter() for d in present}
-    word_bi = {d: Counter() for d in present}
     for doc in docs:
         if doc.dialect not in uni:
             continue
         g = tokenize_graphemes(doc.text, alphabet)
-        u, b, w, wb = F.extract_counts(g, doc.text)
+        u, b, w, _wb = F.extract_counts(g, doc.text)
         uni[doc.dialect] += u
         bi[doc.dialect] += b
         words[doc.dialect] += w
-        word_bi[doc.dialect] += wb
 
     # Vocab sizes are the smoothing denominators, so they must reflect the FULL
     # observed vocabulary, not the per-dialect top_n-pruned profiles (pruning
@@ -348,28 +151,22 @@ def fit_model_from_docs(
     uni_vocab = len({k for c in uni.values() for k in c}) or 1
     bi_vocab = len({k for c in bi.values() for k in c}) or 1
     word_vocab = len({k for c in words.values() for k in c}) or 1
-    word_bi_vocab = len({k for c in word_bi.values() for k in c}) or 1
 
     uni = {d: _prune(c, top_n) for d, c in uni.items()}
     bi = {d: _prune(c, top_n) for d, c in bi.items()}
     words = {d: _prune(c, top_n) for d, c in words.items()}
-    word_bi = {d: _prune(c, top_n) for d, c in word_bi.items()}
     uni_total = {d: sum(c.values()) for d, c in uni.items()}
     bi_total = {d: sum(c.values()) for d, c in bi.items()}
     word_total = {d: sum(c.values()) for d, c in words.items()}
-    word_bi_total = {d: sum(c.values()) for d, c in word_bi.items()}
 
     model = DialectModel(
         lang_code=lang_code, language_name=name, dialects=present,
         inventories={d: inventories.get(d, frozenset()) for d in present},
         alphabet=alphabet, support_count=dict(support_count),
-        uni=uni, bi=bi, words=words, word_bi=word_bi,
+        uni=uni, bi=bi, words=words,
         uni_total=uni_total, bi_total=bi_total, word_total=word_total,
-        word_bi_total=word_bi_total,
         uni_vocab=uni_vocab, bi_vocab=bi_vocab, word_vocab=word_vocab,
-        word_bi_vocab=word_bi_vocab,
         weights=[0.0] * len(COMPONENTS), bias=[0.0] * len(present),
-        threshold=DEFAULT_UNKNOWN_THRESHOLD, kl_threshold=DEFAULT_UNKNOWN_THRESHOLD,
     )
 
     Xs, ys = [], []
@@ -377,8 +174,7 @@ def fit_model_from_docs(
     for doc in docs:
         if doc.dialect not in index:
             continue
-        uni, bi, words, word_bi = model._extract_features(doc.text)
-        Xs.append(model._score_matrix(uni, bi, words, word_bi))
+        Xs.append(model._score_matrix(doc.text))
         ys.append(index[doc.dialect])
     w, bias = fit_combiner(Xs, ys, n_dialects=len(present), l2=1.0)
     model.weights = w.tolist()
@@ -398,14 +194,12 @@ def save_model(model: DialectModel, path: Path) -> None:
         "uni": {d: dict(c) for d, c in model.uni.items()},
         "bi": {d: dict(c) for d, c in model.bi.items()},
         "words": {d: dict(c) for d, c in model.words.items()},
-        "word_bi": {d: dict(c) for d, c in model.word_bi.items()},
         "uni_total": model.uni_total, "bi_total": model.bi_total,
-        "word_total": model.word_total, "word_bi_total": model.word_bi_total,
+        "word_total": model.word_total,
         "uni_vocab": model.uni_vocab, "bi_vocab": model.bi_vocab,
-        "word_vocab": model.word_vocab, "word_bi_vocab": model.word_bi_vocab,
+        "word_vocab": model.word_vocab,
         "weights": model.weights, "bias": model.bias,
-        "threshold": model.threshold, "kl_threshold": model.kl_threshold,
-        "components": model.components,
+        "threshold": model.threshold, "components": model.components,
     }
     Path(path).write_text(json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
 
@@ -420,14 +214,10 @@ def load_model(path: Path) -> DialectModel:
         uni={k: Counter(v) for k, v in d["uni"].items()},
         bi={k: Counter(v) for k, v in d["bi"].items()},
         words={k: Counter(v) for k, v in d["words"].items()},
-        word_bi={k: Counter(v) for k, v in d.get("word_bi", {}).items()},
         uni_total=d["uni_total"], bi_total=d["bi_total"], word_total=d["word_total"],
-        word_bi_total=d.get("word_bi_total", {}),
         uni_vocab=d["uni_vocab"], bi_vocab=d["bi_vocab"], word_vocab=d["word_vocab"],
-        word_bi_vocab=d.get("word_bi_vocab", 1),
         weights=d["weights"], bias=d["bias"],
         threshold=d.get("threshold", DEFAULT_UNKNOWN_THRESHOLD),
-        kl_threshold=d.get("kl_threshold", DEFAULT_UNKNOWN_THRESHOLD),
         components=d.get("components", list(COMPONENTS)),
     )
 
@@ -435,8 +225,9 @@ def load_model(path: Path) -> DialectModel:
 def train_all(corpora_path, orthographies_path, models_dir, top_n=2000,
               calibrate=True, precision_floor=0.95, k=5) -> list[str]:
     """Build and persist one model per in-scope language. When `calibrate`,
-    set each model's softmax and KL thresholds from held-out cross-validation.
-    """
+    set each model's `unknown` threshold from a held-out cross-validation so the
+    committed model commits as much as it can while keeping accuracy-on-committed
+    >= precision_floor."""
     from QC.utilities.dialect_detector.evaluate import (
         calibrate_threshold, cross_validate,
     )
@@ -449,8 +240,6 @@ def train_all(corpora_path, orthographies_path, models_dir, top_n=2000,
             cv = cross_validate(lc, corpora_path, orthographies_path, k=k, top_n=top_n)
             if cv and cv["records"]:
                 model.threshold = calibrate_threshold(cv["records"], precision_floor)
-            if cv and cv.get("records_kl"):
-                model.kl_threshold = calibrate_threshold(cv["records_kl"], precision_floor)
         save_model(model, Path(models_dir) / f"{model.language_name}.json")
         trained.append(lc)
     return trained
@@ -471,23 +260,3 @@ def predict_root(model: DialectModel, root) -> Prediction:
     ranked = model.score_text(text)
     top, prob, _ = ranked[0]
     return Prediction(top, prob, ranked, prob < model.threshold)
-
-
-def predict_root_next_word_kl(model: DialectModel, root, limit: int = 40) -> Prediction:
-    """Predict dialect using next-word KL divergence method.
-    
-    Args:
-        model: DialectModel instance
-        root: XML element with text content
-        limit: Number of top word unigrams to consider
-        
-    Returns:
-        Prediction with results from next-word KL divergence scoring
-    """
-    text = extract_standard_text(root)
-    if not text:
-        return Prediction(None, 0.0, [], True)
-    top, prob, ranked = model.score_text_next_word_kl(text, limit=limit)
-    is_unknown = prob < model.kl_threshold
-    return Prediction(top, prob, ranked, is_unknown)
-

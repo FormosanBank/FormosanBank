@@ -1,0 +1,205 @@
+{
+  "epsilon": 0.1,
+  "per_dialect": {
+    "Central": {
+      "character_kl_1gram": {
+        "mean": 2.0583285055331952,
+        "std": 0.0,
+        "epsilon": 0.1,
+        "lower_threshold": 1.9583285055331952,
+        "upper_threshold": 2.1583285055331953,
+        "n_samples": 1
+      },
+      "character_kl_2gram": {
+        "mean": 2.790763759504685,
+        "std": 0.0,
+        "epsilon": 0.1,
+        "lower_threshold": 2.690763759504685,
+        "upper_threshold": 2.890763759504685,
+        "n_samples": 1
+      },
+      "character_kl_3gram": {
+        "mean": 2.370729653571052,
+        "std": 0.0,
+        "epsilon": 0.1,
+        "lower_threshold": 2.2707296535710517,
+        "upper_threshold": 2.470729653571052,
+        "n_samples": 1
+      },
+      "word_kl_1gram": {
+        "mean": 0.5814467986138865,
+        "std": 0.0,
+        "epsilon": 0.1,
+        "lower_threshold": 0.4814467986138865,
+        "upper_threshold": 0.6814467986138865,
+        "n_samples": 1
+      },
+      "word_kl_2gram": {
+        "mean": 0.1440854372023223,
+        "std": 0.0,
+        "epsilon": 0.1,
+        "lower_threshold": 0.0440854372023223,
+        "upper_threshold": 0.24408543720232231,
+        "n_samples": 1
+      }
+    },
+    "Eastern": {
+      "character_kl_1gram": {
+        "mean": 2.0805574461285197,
+        "std": 0.0,
+        "epsilon": 0.1,
+        "lower_threshold": 1.9805574461285196,
+        "upper_threshold": 2.1805574461285198,
+        "n_samples": 1
+      },
+      "character_kl_2gram": {
+        "mean": 2.86308499254467,
+        "std": 0.0,
+        "epsilon": 0.1,
+        "lower_threshold": 2.76308499254467,
+        "upper_threshold": 2.9630849925446703,
+        "n_samples": 1
+      },
+      "character_kl_3gram": {
+        "mean": 2.4567656300070846,
+        "std": 0.0,
+        "epsilon": 0.1,
+        "lower_threshold": 2.3567656300070845,
+        "upper_threshold": 2.5567656300070847,
+        "n_samples": 1
+      },
+      "word_kl_1gram": {
+        "mean": 0.5905075162967315,
+        "std": 0.0,
+        "epsilon": 0.1,
+        "lower_threshold": 0.4905075162967315,
+        "upper_threshold": 0.6905075162967315,
+        "n_samples": 1
+      },
+      "word_kl_2gram": {
+        "mean": 0.13619952226636073,
+        "std": 0.0,
+        "epsilon": 0.1,
+        "lower_threshold": 0.03619952226636072,
+        "upper_threshold": 0.23619952226636073,
+        "n_samples": 1
+      }
+    },
+    "Northern": {
+      "character_kl_1gram": {
+        "mean": 2.377769387434877,
+        "std": 0.0,
+        "epsilon": 0.1,
+        "lower_threshold": 2.277769387434877,
+        "upper_threshold": 2.477769387434877,
+        "n_samples": 1
+      },
+      "character_kl_2gram": {
+        "mean": 3.405886316588922,
+        "std": 0.0,
+        "epsilon": 0.1,
+        "lower_threshold": 3.305886316588922,
+        "upper_threshold": 3.505886316588922,
+        "n_samples": 1
+      },
+      "character_kl_3gram": {
+        "mean": 3.1540676710346043,
+        "std": 0.0,
+        "epsilon": 0.1,
+        "lower_threshold": 3.054067671034604,
+        "upper_threshold": 3.2540676710346044,
+        "n_samples": 1
+      },
+      "word_kl_1gram": {
+        "mean": 0.8388308186944566,
+        "std": 0.0,
+        "epsilon": 0.1,
+        "lower_threshold": 0.7388308186944567,
+        "upper_threshold": 0.9388308186944566,
+        "n_samples": 1
+      },
+      "word_kl_2gram": {
+        "mean": 0.23484671440091684,
+        "std": 0.0,
+        "epsilon": 0.1,
+        "lower_threshold": 0.13484671440091683,
+        "upper_threshold": 0.33484671440091685,
+        "n_samples": 1
+      }
+    },
+    "Southern": {
+      "character_kl_1gram": {
+        "mean": 2.0515128395811013,
+        "std": 0.0,
+        "epsilon": 0.1,
+        "lower_threshold": 1.9515128395811012,
+        "upper_threshold": 2.1515128395811014,
+        "n_samples": 1
+      },
+      "character_kl_2gram": {
+        "mean": 2.7739138709567386,
+        "std": 0.0,
+        "epsilon": 0.1,
+        "lower_threshold": 2.6739138709567385,
+        "upper_threshold": 2.8739138709567387,
+        "n_samples": 1
+      },
+      "character_kl_3gram": {
+        "mean": 2.383153858578542,
+        "std": 0.0,
+        "epsilon": 0.1,
+        "lower_threshold": 2.283153858578542,
+        "upper_threshold": 2.483153858578542,
+        "n_samples": 1
+      },
+      "word_kl_1gram": {
+        "mean": 0.6082994449018198,
+        "std": 0.0,
+        "epsilon": 0.1,
+        "lower_threshold": 0.5082994449018198,
+        "upper_threshold": 0.7082994449018197,
+        "n_samples": 1
+      },
+      "word_kl_2gram": {
+        "mean": 0.16564456982395231,
+        "std": 0.0,
+        "epsilon": 0.1,
+        "lower_threshold": 0.06564456982395231,
+        "upper_threshold": 0.26564456982395235,
+        "n_samples": 1
+      }
+    }
+  },
+  "per_dialect_baselines": {
+    "Central": {
+      "character_1gram_baseline_kl": 0.004136504745490353,
+      "character_2gram_baseline_kl": 0.021350338297718263,
+      "character_3gram_baseline_kl": 0.07728788293750832,
+      "word_1gram_baseline_kl": 0.20613677501395017,
+      "word_2gram_baseline_kl": 0.19671334481856878
+    },
+    "Eastern": {
+      "character_1gram_baseline_kl": 0.001324940122120057,
+      "character_2gram_baseline_kl": 0.012392028174038658,
+      "character_3gram_baseline_kl": 0.06150966373364024,
+      "word_1gram_baseline_kl": 0.1752069056385164,
+      "word_2gram_baseline_kl": 0.1882050136953591
+    },
+    "Northern": {
+      "character_1gram_baseline_kl": 0.0006388453015405357,
+      "character_2gram_baseline_kl": 0.006254941931666499,
+      "character_3gram_baseline_kl": 0.03248165470856152,
+      "word_1gram_baseline_kl": 0.15846683901338054,
+      "word_2gram_baseline_kl": 0.19336397153828208
+    },
+    "Southern": {
+      "character_1gram_baseline_kl": 0.0035492481004223988,
+      "character_2gram_baseline_kl": 0.016552322424055445,
+      "character_3gram_baseline_kl": 0.06363267123081336,
+      "word_1gram_baseline_kl": 0.16108078748366222,
+      "word_2gram_baseline_kl": 0.17867772598350506
+    }
+  },
+  "language": "pwn",
+  "language_full_name": "Paiwan"
+}

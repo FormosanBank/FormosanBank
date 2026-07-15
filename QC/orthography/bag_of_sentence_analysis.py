@@ -206,7 +206,8 @@ def word_tokenize(corpus, lang):
         # this may be subject to change with different/updated orthographies
         # example: Atayal has the letter 'n_g', which uses '_' but also has the letter '_'
     special_chars = set(string.punctuation).intersection(set(lang_ortho_table['letter'].to_list()))
-    regex = r"[\w" + "".join(special_chars) + r"]+" # remove all puncutation except the ones used as characters for the language and tokenize words
+    escaped_chars = "".join(re.escape(char) for char in sorted(special_chars))
+    regex = r"[\w" + escaped_chars + r"]+" # remove all punctuation except chars used as letters in the language, then tokenize words
     return re.findall(regex, corpus)
 
 # n_gram analysis at the word level

@@ -1,0 +1,483 @@
+{
+  "language": "pwn",
+  "language_full_name": "Paiwan",
+  "dialect": "Eastern",
+  "sources": [
+    "ePark/",
+    "Paiwan_Stories/"
+  ],
+  "corpus_stats": {
+    "total_sentences": 3940,
+    "reference_sentences": 3152,
+    "target_sentences": 788,
+    "test_ratio": 0.2,
+    "total_characters": 232691,
+    "unique_characters": 38
+  },
+  "perturbation": {
+    "num_swaps_requested": 5,
+    "char_swaps_performed": 5,
+    "word_swaps_performed": 5
+  },
+  "baseline_metrics": {
+    "character": {
+      "1": {
+        "n": 1,
+        "jaccard_similarity": 0.8769230769230769,
+        "overlap_coefficient": 1.0,
+        "cosine_similarity": 0.999807068701011,
+        "euclidean_distance": 0.006301452043408141,
+        "kl_divergence": 0.001324940122120057,
+        "ref_unique_ngram_count": 65,
+        "target_unique_ngram_count": 57
+      },
+      "2": {
+        "n": 2,
+        "jaccard_similarity": 0.5961538461538461,
+        "overlap_coefficient": 0.9223140495867769,
+        "cosine_similarity": 0.9982758092000382,
+        "euclidean_distance": 0.006231977610937635,
+        "kl_divergence": 0.012392028174038658,
+        "ref_unique_ngram_count": 889,
+        "target_unique_ngram_count": 605
+      },
+      "3": {
+        "n": 3,
+        "jaccard_similarity": 0.5150018294914014,
+        "overlap_coefficient": 0.8911047799936689,
+        "cosine_similarity": 0.9909094633981355,
+        "euclidean_distance": 0.006848108336945534,
+        "kl_divergence": 0.06150966373364024,
+        "ref_unique_ngram_count": 5122,
+        "target_unique_ngram_count": 3159
+      }
+    },
+    "word": {
+      "1": {
+        "n": 1,
+        "jaccard_similarity": 0.24489795918367346,
+        "overlap_coefficient": 0.6937775600195982,
+        "cosine_similarity": 0.9934451653892638,
+        "euclidean_distance": 0.03706675936360022,
+        "kl_divergence": 0.1752069056385164,
+        "ref_unique_ngram_count": 5157,
+        "target_unique_ngram_count": 2041
+      },
+      "2": {
+        "n": 2,
+        "jaccard_similarity": 0.08353072625698324,
+        "overlap_coefficient": 0.33226666666666665,
+        "cosine_similarity": 0.8052696228447749,
+        "euclidean_distance": 0.006224205039586314,
+        "kl_divergence": 0.1882050136953591,
+        "ref_unique_ngram_count": 18619,
+        "target_unique_ngram_count": 5625
+      },
+      "3": {
+        "n": 3,
+        "jaccard_similarity": 0.029391204880528723,
+        "overlap_coefficient": 0.13499708114419148,
+        "cosine_similarity": 0.8257958853934194,
+        "euclidean_distance": 0.0036023202335171084,
+        "kl_divergence": 0.15578684623419067,
+        "ref_unique_ngram_count": 25545,
+        "target_unique_ngram_count": 6852
+      }
+    }
+  },
+  "character_perturbations": [
+    {
+      "swap_number": 1,
+      "max_frequency_character": "a",
+      "character_frequency": 9068,
+      "swapped_with_character": "r",
+      "metric_deltas": {
+        "character": {
+          "1": {
+            "cosine_similarity": 0.5711998368442831,
+            "kl_divergence": 2.0958090124155184
+          },
+          "2": {
+            "cosine_similarity": 0.6744403331359207,
+            "kl_divergence": 2.8682876928186887
+          },
+          "3": {
+            "cosine_similarity": 0.8152642769267855,
+            "kl_divergence": 2.4594965319974267
+          }
+        },
+        "word": {
+          "1": {
+            "cosine_similarity": 0.9168833588072973,
+            "kl_divergence": 1.7653135512678126
+          },
+          "2": {
+            "cosine_similarity": 0.32616383168971774,
+            "kl_divergence": 0.22576946698129305
+          },
+          "3": {
+            "cosine_similarity": 0.045992200904701686,
+            "kl_divergence": 0.03408157291502062
+          }
+        }
+      }
+    },
+    {
+      "swap_number": 2,
+      "max_frequency_character": "a",
+      "character_frequency": 9068,
+      "swapped_with_character": "z",
+      "metric_deltas": {
+        "character": {
+          "1": {
+            "cosine_similarity": 0.5721061416162764,
+            "kl_divergence": 2.097074535883016
+          },
+          "2": {
+            "cosine_similarity": 0.6760493244752883,
+            "kl_divergence": 2.8720919501762965
+          },
+          "3": {
+            "cosine_similarity": 0.8170705410885036,
+            "kl_divergence": 2.4647323058051165
+          }
+        },
+        "word": {
+          "1": {
+            "cosine_similarity": 0.9168881159985335,
+            "kl_divergence": 1.7654183204372143
+          },
+          "2": {
+            "cosine_similarity": 0.32616383168971863,
+            "kl_divergence": 0.22576946698129305
+          },
+          "3": {
+            "cosine_similarity": 0.045992200904701686,
+            "kl_divergence": 0.03408157291502062
+          }
+        }
+      }
+    },
+    {
+      "swap_number": 3,
+      "max_frequency_character": "a",
+      "character_frequency": 9068,
+      "swapped_with_character": "w",
+      "metric_deltas": {
+        "character": {
+          "1": {
+            "cosine_similarity": 0.5798882579834768,
+            "kl_divergence": 2.1100325752330154
+          },
+          "2": {
+            "cosine_similarity": 0.6784157466806159,
+            "kl_divergence": 2.873953632869861
+          },
+          "3": {
+            "cosine_similarity": 0.8166567624784207,
+            "kl_divergence": 2.4639805007388866
+          }
+        },
+        "word": {
+          "1": {
+            "cosine_similarity": 0.9168895886650348,
+            "kl_divergence": 1.7655184482623523
+          },
+          "2": {
+            "cosine_similarity": 0.3261638316897174,
+            "kl_divergence": 0.22576946698129305
+          },
+          "3": {
+            "cosine_similarity": 0.04599220090470135,
+            "kl_divergence": 0.03408157291502062
+          }
+        }
+      }
+    },
+    {
+      "swap_number": 4,
+      "max_frequency_character": "a",
+      "character_frequency": 9068,
+      "swapped_with_character": "j",
+      "metric_deltas": {
+        "character": {
+          "1": {
+            "cosine_similarity": 0.5270791187083541,
+            "kl_divergence": 2.0506369207483077
+          },
+          "2": {
+            "cosine_similarity": 0.6552018359234109,
+            "kl_divergence": 2.848998141748743
+          },
+          "3": {
+            "cosine_similarity": 0.8117641997272222,
+            "kl_divergence": 2.4464993086336895
+          }
+        },
+        "word": {
+          "1": {
+            "cosine_similarity": 0.9168884564161077,
+            "kl_divergence": 1.7654452677728125
+          },
+          "2": {
+            "cosine_similarity": 0.32616383168971885,
+            "kl_divergence": 0.22576946698129305
+          },
+          "3": {
+            "cosine_similarity": 0.04599220090470124,
+            "kl_divergence": 0.03408157291502062
+          }
+        }
+      }
+    },
+    {
+      "swap_number": 5,
+      "max_frequency_character": "a",
+      "character_frequency": 9068,
+      "swapped_with_character": "l",
+      "metric_deltas": {
+        "character": {
+          "1": {
+            "cosine_similarity": 0.525429314588397,
+            "kl_divergence": 2.0492341863627432
+          },
+          "2": {
+            "cosine_similarity": 0.6659573755043725,
+            "kl_divergence": 2.8520935451097613
+          },
+          "3": {
+            "cosine_similarity": 0.8103820508226277,
+            "kl_divergence": 2.449119502860304
+          }
+        },
+        "word": {
+          "1": {
+            "cosine_similarity": 0.9168885517649866,
+            "kl_divergence": 1.765485697143228
+          },
+          "2": {
+            "cosine_similarity": 0.3261638316897175,
+            "kl_divergence": 0.2257694669812931
+          },
+          "3": {
+            "cosine_similarity": 0.045992200904701686,
+            "kl_divergence": 0.03408157291502062
+          }
+        }
+      }
+    }
+  ],
+  "word_perturbations": [
+    {
+      "swap_number": 1,
+      "max_frequency_word": "a",
+      "word_frequency": 862,
+      "swapped_with_word": "king",
+      "metric_deltas": {
+        "character": {
+          "1": {
+            "cosine_similarity": 0.013807222948704179,
+            "kl_divergence": 0.015655766315851333
+          },
+          "2": {
+            "cosine_similarity": 0.06488448483366882,
+            "kl_divergence": 0.05197848091977118
+          },
+          "3": {
+            "cosine_similarity": 0.18991066875519436,
+            "kl_divergence": 0.08824747804109247
+          }
+        },
+        "word": {
+          "1": {
+            "cosine_similarity": 0.7794857629488134,
+            "kl_divergence": 0.5585749595346599
+          },
+          "2": {
+            "cosine_similarity": 0.24046037564233702,
+            "kl_divergence": 0.13618361581404695
+          },
+          "3": {
+            "cosine_similarity": 0.03365226210810224,
+            "kl_divergence": 0.02318631447722541
+          }
+        }
+      }
+    },
+    {
+      "swap_number": 2,
+      "max_frequency_word": "a",
+      "word_frequency": 862,
+      "swapped_with_word": "namaviljvilj",
+      "metric_deltas": {
+        "character": {
+          "1": {
+            "cosine_similarity": 0.023540823968076885,
+            "kl_divergence": 0.03727454212039498
+          },
+          "2": {
+            "cosine_similarity": 0.1666010002729703,
+            "kl_divergence": 0.13681650008142726
+          },
+          "3": {
+            "cosine_similarity": 0.4320832902724717,
+            "kl_divergence": 0.19780207894951318
+          }
+        },
+        "word": {
+          "1": {
+            "cosine_similarity": 0.78039214174294,
+            "kl_divergence": 0.5985768064380896
+          },
+          "2": {
+            "cosine_similarity": 0.2404848327174266,
+            "kl_divergence": 0.13622602548283644
+          },
+          "3": {
+            "cosine_similarity": 0.03365226210810279,
+            "kl_divergence": 0.02318631447722541
+          }
+        }
+      }
+    },
+    {
+      "swap_number": 3,
+      "max_frequency_word": "a",
+      "word_frequency": 862,
+      "swapped_with_word": "nguanguaq",
+      "metric_deltas": {
+        "character": {
+          "1": {
+            "cosine_similarity": 0.018799371984863256,
+            "kl_divergence": 0.030669298491582907
+          },
+          "2": {
+            "cosine_similarity": 0.14118430310632446,
+            "kl_divergence": 0.10454108268770886
+          },
+          "3": {
+            "cosine_similarity": 0.3997754524442534,
+            "kl_divergence": 0.16562944558236803
+          }
+        },
+        "word": {
+          "1": {
+            "cosine_similarity": 0.779718227976321,
+            "kl_divergence": 0.5980599007330482
+          },
+          "2": {
+            "cosine_similarity": 0.24048659671245975,
+            "kl_divergence": 0.1362286706514277
+          },
+          "3": {
+            "cosine_similarity": 0.03365226210810246,
+            "kl_divergence": 0.02318631447722541
+          }
+        }
+      }
+    },
+    {
+      "swap_number": 4,
+      "max_frequency_word": "a",
+      "word_frequency": 862,
+      "swapped_with_word": "namenaludjuludju",
+      "metric_deltas": {
+        "character": {
+          "1": {
+            "cosine_similarity": 0.03623467224880905,
+            "kl_divergence": 0.04892475493131444
+          },
+          "2": {
+            "cosine_similarity": 0.2096125756835191,
+            "kl_divergence": 0.1601421411307784
+          },
+          "3": {
+            "cosine_similarity": 0.4869372983549205,
+            "kl_divergence": 0.23609435330458028
+          }
+        },
+        "word": {
+          "1": {
+            "cosine_similarity": 0.7803921417429408,
+            "kl_divergence": 0.5985768064380896
+          },
+          "2": {
+            "cosine_similarity": 0.24035619550904685,
+            "kl_divergence": 0.13615447752472679
+          },
+          "3": {
+            "cosine_similarity": 0.03365226210810257,
+            "kl_divergence": 0.02318631447722544
+          }
+        }
+      }
+    },
+    {
+      "swap_number": 5,
+      "max_frequency_word": "a",
+      "word_frequency": 862,
+      "swapped_with_word": "ikanga",
+      "metric_deltas": {
+        "character": {
+          "1": {
+            "cosine_similarity": 0.006341801194138297,
+            "kl_divergence": 0.012183769151344078
+          },
+          "2": {
+            "cosine_similarity": 0.06184827966202622,
+            "kl_divergence": 0.04155577770752898
+          },
+          "3": {
+            "cosine_similarity": 0.1928931201335642,
+            "kl_divergence": 0.08058802204704658
+          }
+        },
+        "word": {
+          "1": {
+            "cosine_similarity": 0.7806167796651451,
+            "kl_divergence": 0.5987491083397702
+          },
+          "2": {
+            "cosine_similarity": 0.24047260450691643,
+            "kl_divergence": 0.13620482185876584
+          },
+          "3": {
+            "cosine_similarity": 0.03365226210810257,
+            "kl_divergence": 0.02318631447722541
+          }
+        }
+      }
+    }
+  ],
+  "metric_deltas_averaged": {
+    "character": {
+      "1": {
+        "cosine_similarity": 0.5551405339481574,
+        "kl_divergence": 2.0805574461285197
+      },
+      "2": {
+        "cosine_similarity": 0.6700129231439217,
+        "kl_divergence": 2.86308499254467
+      },
+      "3": {
+        "cosine_similarity": 0.814227566208712,
+        "kl_divergence": 2.4567656300070846
+      }
+    },
+    "word": {
+      "1": {
+        "cosine_similarity": 0.7801210108152321,
+        "kl_divergence": 0.5905075162967315
+      },
+      "2": {
+        "cosine_similarity": 0.2404521210176373,
+        "kl_divergence": 0.13619952226636073
+      },
+      "3": {
+        "cosine_similarity": 0.03365226210810253,
+        "kl_divergence": 0.02318631447722542
+      }
+    }
+  },
+  "timestamp": "2026-07-13T13:08:22.204413"
+}

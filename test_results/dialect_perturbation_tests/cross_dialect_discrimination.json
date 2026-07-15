@@ -1,0 +1,98 @@
+[
+  {
+    "target_dialect": "Central",
+    "test_dialect": "Eastern",
+    "status": "FAIL",
+    "message": "Eastern does not exceed Central upper threshold (2.080557 <= 2.158329)",
+    "character_kl_1gram": 2.0805574461285197,
+    "target_upper_threshold": 2.1583285055331953
+  },
+  {
+    "target_dialect": "Central",
+    "test_dialect": "Northern",
+    "status": "PASS",
+    "message": "Northern exceeds Central upper threshold (2.377769 > 2.158329)",
+    "character_kl_1gram": 2.377769387434877,
+    "target_upper_threshold": 2.1583285055331953
+  },
+  {
+    "target_dialect": "Central",
+    "test_dialect": "Southern",
+    "status": "FAIL",
+    "message": "Southern does not exceed Central upper threshold (2.051513 <= 2.158329)",
+    "character_kl_1gram": 2.0515128395811013,
+    "target_upper_threshold": 2.1583285055331953
+  },
+  {
+    "target_dialect": "Eastern",
+    "test_dialect": "Central",
+    "status": "FAIL",
+    "message": "Central does not exceed Eastern upper threshold (2.058329 <= 2.180557)",
+    "character_kl_1gram": 2.0583285055331952,
+    "target_upper_threshold": 2.1805574461285198
+  },
+  {
+    "target_dialect": "Eastern",
+    "test_dialect": "Northern",
+    "status": "PASS",
+    "message": "Northern exceeds Eastern upper threshold (2.377769 > 2.180557)",
+    "character_kl_1gram": 2.377769387434877,
+    "target_upper_threshold": 2.1805574461285198
+  },
+  {
+    "target_dialect": "Eastern",
+    "test_dialect": "Southern",
+    "status": "FAIL",
+    "message": "Southern does not exceed Eastern upper threshold (2.051513 <= 2.180557)",
+    "character_kl_1gram": 2.0515128395811013,
+    "target_upper_threshold": 2.1805574461285198
+  },
+  {
+    "target_dialect": "Northern",
+    "test_dialect": "Central",
+    "status": "FAIL",
+    "message": "Central does not exceed Northern upper threshold (2.058329 <= 2.477769)",
+    "character_kl_1gram": 2.0583285055331952,
+    "target_upper_threshold": 2.477769387434877
+  },
+  {
+    "target_dialect": "Northern",
+    "test_dialect": "Eastern",
+    "status": "FAIL",
+    "message": "Eastern does not exceed Northern upper threshold (2.080557 <= 2.477769)",
+    "character_kl_1gram": 2.0805574461285197,
+    "target_upper_threshold": 2.477769387434877
+  },
+  {
+    "target_dialect": "Northern",
+    "test_dialect": "Southern",
+    "status": "FAIL",
+    "message": "Southern does not exceed Northern upper threshold (2.051513 <= 2.477769)",
+    "character_kl_1gram": 2.0515128395811013,
+    "target_upper_threshold": 2.477769387434877
+  },
+  {
+    "target_dialect": "Southern",
+    "test_dialect": "Central",
+    "status": "FAIL",
+    "message": "Central does not exceed Southern upper threshold (2.058329 <= 2.151513)",
+    "character_kl_1gram": 2.0583285055331952,
+    "target_upper_threshold": 2.1515128395811014
+  },
+  {
+    "target_dialect": "Southern",
+    "test_dialect": "Eastern",
+    "status": "FAIL",
+    "message": "Eastern does not exceed Southern upper threshold (2.080557 <= 2.151513)",
+    "character_kl_1gram": 2.0805574461285197,
+    "target_upper_threshold": 2.1515128395811014
+  },
+  {
+    "target_dialect": "Southern",
+    "test_dialect": "Northern",
+    "status": "PASS",
+    "message": "Northern exceeds Southern upper threshold (2.377769 > 2.151513)",
+    "character_kl_1gram": 2.377769387434877,
+    "target_upper_threshold": 2.1515128395811014
+  }
+]

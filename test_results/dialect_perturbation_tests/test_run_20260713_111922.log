@@ -1,0 +1,18 @@
+2026-07-13 11:19:22,339 - INFO - ================================================================================
+2026-07-13 11:19:22,339 - INFO - Dialect Perturbation Robustness Test Suite
+2026-07-13 11:19:22,339 - INFO - ================================================================================
+2026-07-13 11:19:22,339 - INFO - Language: Paiwan (pwn)
+2026-07-13 11:19:22,341 - INFO - Dialects: ['Central', 'Eastern', 'Northern', 'Southern']
+2026-07-13 11:19:22,341 - INFO - Sources: ['ePark/', 'ILRDF_Dicts/', 'Paiwan_Stories/', 'NTUFormosanCorpus/']
+2026-07-13 11:19:22,341 - INFO - Number of swaps: 5
+2026-07-13 11:19:22,343 - INFO - Epsilon: 0.1
+2026-07-13 11:19:22,343 - INFO - Testing pwn/Central...
+2026-07-13 11:19:24,856 - INFO - Testing pwn/Eastern...
+2026-07-13 11:19:27,690 - INFO - Testing pwn/Northern...
+2026-07-13 11:19:34,677 - INFO - Testing pwn/Southern...
+2026-07-13 11:19:37,396 - INFO - ================================================================================
+2026-07-13 11:19:37,396 - INFO - Complete. Results saved to test_results/dialect_perturbation_tests
+2026-07-13 11:19:37,396 - INFO - Dialects tested: 4
+2026-07-13 11:19:37,396 - INFO - Validation PASS/WARN/FAIL: 0/4/0
+2026-07-13 11:19:37,396 - INFO - Cross-dialect PASS/FAIL: 3/9
+2026-07-13 11:19:37,396 - INFO - ================================================================================

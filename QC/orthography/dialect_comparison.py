@@ -496,11 +496,11 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Compare Partitions of a Corpora")
     parser.add_argument('--ref_lang', help='name of the language you are analyzing the dialect of', required=True)
     parser.add_argument('--ref_dialect', help='the target dialect of the text you are analyzing', required=False)
-    parser.add_argument('--tar_is_file', type=parse_bool, help='whether the target is a file, if not TARGET_SUBDIRS will be used to make the target corpus', required=True, default=False)
+    parser.add_argument('--tar_is_file', type=parse_bool, help='whether the target is a file, if not TARGET_SUBDIRS will be used to make the target corpus', default=False)
     parser.add_argument('--tar_path', help='the path to the target file or directory', required=False)
     parser.add_argument('--tar_lang', help='the language of the target corpus, if different from the reference language', required=False)
     parser.add_argument('--tar_dialect', help='the dialect of the target corpus, if different from the reference dialect', required=False)
-    parser.add_argument('--perturb_type', help='the type of perturbation to apply to the reference corpus (e.g., swap, orthographic)', required=False, default=FileNotFoundError)
+    parser.add_argument('--perturb_type', help='the type of perturbation to apply to the reference corpus (e.g., swap, orthographic)', required=False, default=None)
     parser.add_argument('--to_ortho', help='convert the reference corpus to this orthography', required=False, default='MinED')
     
     args = parser.parse_args()
@@ -512,7 +512,7 @@ if __name__ == "__main__":
     if args.tar_is_file:
         if not args.tar_path:
             raise ValueError("If tar_is_file is True, tar_path must be provided")
-    if args.perturb_type not in ['None', 'swap', 'orthographic']:
-        raise ValueError(f"{args.perturb_type} is not a valid perturbation type. Choose from 'None', 'swap', or 'orthographic'.")
+    if args.perturb_type not in [None, 'swap', 'orthographic']:
+        raise ValueError(f"{args.perturb_type} is not a valid perturbation type. Choose from None, 'swap', or 'orthographic'.")
 
     main(args)

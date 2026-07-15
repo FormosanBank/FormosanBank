@@ -174,6 +174,7 @@ def main(args):
     num_correct = 0
     incorrect_pred_diffs = []
     incorrect_kl_divs_from_holdout = []
+    correct_kl_divs_from_holdout = []
     for i in range(len(document_languages)):
         holdout_path = list(document_languages.keys())[i]
         holdout_lang = document_languages[holdout_path]
@@ -209,11 +210,14 @@ def main(args):
         print(f"  Holdout Prediction: {h_pred}")
         print(f"  Perturbed Prediction: {p_pred}")
 
-        if h_pred < p_pred:
+        kl_divs = [kl_divergence(h, p) for h, p in zip(h_grams, p_grams)]
+
+
+        if h_pred <= p_pred:
             num_correct += 1
+            correct_kl_divs_from_holdout.append(kl_divs)
         else:
             incorrect_pred_diffs.append(abs(h_pred - p_pred))
-            kl_divs = [kl_divergence(h, p) for h, p in zip(h_grams, p_grams)]
             incorrect_kl_divs_from_holdout.append(kl_divs)
 
         holdout_corpus[holdout_lang][holdout_path] = holdout_text
@@ -222,7 +226,8 @@ def main(args):
     print(f"Number of correct predictions: {num_correct} out of {len(document_languages)} or {num_correct / len(document_languages) * 100:.2f}%")
     print(f"Average difference for incorrect predictions: {np.mean(incorrect_pred_diffs) if len(incorrect_pred_diffs) > 0 else 0:.4f}")
     print(f"Average KL divergences between original and perturbed for incorrect predictions: {np.mean(incorrect_kl_divs_from_holdout, axis=0) if len(incorrect_kl_divs_from_holdout) > 0 else [0]*4}")
-    return num_correct
+    print(f"Average KL divergences between original and perturbed for correct predictions: {np.mean(correct_kl_divs_from_holdout, axis=0) if len(correct_kl_divs_from_holdout) > 0 else [0]*4}")
+    return 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Get function weights from validation results.")

@@ -160,38 +160,15 @@ def _cmd_crossvalidate(a) -> int:
     #     combined_heldout = cov * accc + (1 - cov) * kl_heldout_on_unknowns
     #     print(f"{cv['language']:<10}{cv['n']:>5}{combined_heldout:>10.3f}")
 
-    print("\nNEXT WORD PREDICTION (KL divergence of next word given n-1-gram context)")
-    print(f"{'language':<10}{'n':>5}{'heldout1':>10}{'thr':>7}{'coverage':>10}{'acc|commit':>12}{'unk|heldout1':>12}{'unk|coverage':>12}{'unk|acc|commit':>12}")
+    print("\nSECOND-STAGE MULTICLASS SVM")
+    print("(train on all known-label docs via TF-IDF word 1-2 grams + SVD; evaluate on originally unknown OOF docs)")
+    print(f"{'language':<10}{'n_unknown':>12}{'acc_unknown':>12}")
     for cv in cv_results:
-        recs_kl = cv.get("records_kl", [])
-        if not recs_kl:
-            continue
-        t_kl = calibrate_threshold(recs_kl, a.precision_floor)
-        committed_kl = [c for p, c in recs_kl if p >= t_kl]
-        cov_kl = len(committed_kl) / len(recs_kl)
-        accc_kl = sum(committed_kl) / len(committed_kl) if committed_kl else 0.0
-        unknown_recs_kl = cv.get("unknown_records_kl", [])
-        unknown_heldout_kl = (
-            sum(unknown_recs_kl) / len(unknown_recs_kl)
-            if unknown_recs_kl else 0.0
+        print(
+            f"{cv['language']:<10}{cv.get('svm_unknown_n', 0):>12}"
+            f"{cv.get('svm_unknown_accuracy', 0.0):>12.3f}"
         )
-        cv["kl_heldout_on_unknowns"] = unknown_heldout_kl
-        unknown_committed_kl = [p for p in unknown_recs_kl if p >= t_kl]
-        unk_coverage_kl = len(unknown_committed_kl) / len(unknown_recs_kl) if unknown_recs_kl else 0.0
-        unk_accc_kl = sum(unknown_committed_kl) / len(unknown_committed_kl) if unknown_committed_kl else 0.0
-        print(f"{cv['language']:<10}{len(recs_kl):>5}{cv.get('top1_kl', cv['top1']):>10.3f}"
-              f"{t_kl:>7.3f}{cov_kl:>10.3f}{accc_kl:>12.3f}{unknown_heldout_kl:>12.3f}"
-              f"{unk_coverage_kl:>12.3f}{unk_accc_kl:>12.3f}")
     
-    print(f"\n{'COMBINED (softmax confident + KL on unknowns)':<60}")
-    print(f"{'language':<10}{'n':>5}{'heldout1':>10}")
-    for cv in cv_results:
-        cov = cv.get("softmax_coverage", 0.0)
-        accc = cv.get("softmax_accuracy", 0.0)
-        kl_heldout_on_unknowns = cv.get("kl_heldout_on_unknowns", 0.0)
-        combined_heldout = cov * accc + (1 - cov) * kl_heldout_on_unknowns
-        print(f"{cv['language']:<10}{len(cv.get('records_kl', [])):>5}{combined_heldout:>10.3f}")
-
     return 0
 
 

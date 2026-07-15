@@ -1,0 +1,5513 @@
+Corpora Validation Summary (Per-Dialect)
+Generated: 2026-07-13T13:57:41.701152
+Language: PWN
+================================================================================
+
+DIALECT DISCRIMINATION (Best Feature Subset + Optimized Weights)
+  selected_features: char_uni, char_tri
+  best_f1: 0.5127
+  char_uni: 0.9458
+  char_tri: 0.0542
+================================================================================
+
+Total files: 829
+Passed: 204 (24.6%)
+Failed: 147 (17.7%)
+Skipped: 478
+
+================================================================================
+Details:
+
+Central_Paiwan (PWN/Central):
+  Status: FAIL
+  char_uni_kl: 0.014922
+  char_bi_kl: 0.057925
+  char_tri_kl: 0.213479
+  word_uni_kl: 0.765727
+  word_bi_kl: 1.978118
+  Issues:
+    - Dialect mismatch: predicted Southern, true Central
+
+Central_Paiwan (PWN/Central):
+  Status: PASS
+  char_uni_kl: 0.038088
+  char_bi_kl: 0.134096
+  char_tri_kl: 0.401322
+  word_uni_kl: 0.983453
+  word_bi_kl: 1.900570
+
+Central_Paiwan (PWN/Central):
+  Status: PASS
+  char_uni_kl: 0.045256
+  char_bi_kl: 0.155569
+  char_tri_kl: 0.478158
+  word_uni_kl: 1.102977
+  word_bi_kl: 2.133043
+
+Central_Paiwan (PWN/Central):
+  Status: PASS
+  char_uni_kl: 0.016940
+  char_bi_kl: 0.073320
+  char_tri_kl: 0.230451
+  word_uni_kl: 0.686606
+  word_bi_kl: 1.568568
+
+Central_Paiwan (PWN/Central):
+  Status: PASS
+  char_uni_kl: 0.017810
+  char_bi_kl: 0.072627
+  char_tri_kl: 0.268384
+  word_uni_kl: 1.063409
+  word_bi_kl: 2.303583
+
+Central_Paiwan (PWN/Central):
+  Status: FAIL
+  char_uni_kl: 0.045894
+  char_bi_kl: 0.162990
+  char_tri_kl: 0.499015
+  word_uni_kl: 1.461456
+  word_bi_kl: 2.840627
+  Issues:
+    - Dialect mismatch: predicted Southern, true Central
+
+Central_Paiwan (PWN/Central):
+  Status: PASS
+  char_uni_kl: 0.025608
+  char_bi_kl: 0.089250
+  char_tri_kl: 0.253199
+  word_uni_kl: 0.924821
+  word_bi_kl: 1.736696
+
+Central_Paiwan (PWN/Central):
+  Status: PASS
+  char_uni_kl: 0.105679
+  char_bi_kl: 0.306894
+  char_tri_kl: 0.643027
+  word_uni_kl: 1.947908
+  word_bi_kl: 3.109075
+
+Central_Paiwan (PWN/Central):
+  Status: PASS
+  char_uni_kl: 0.022591
+  char_bi_kl: 0.072962
+  char_tri_kl: 0.225990
+  word_uni_kl: 0.909586
+  word_bi_kl: 1.941084
+
+Central_Paiwan (PWN/Central):
+  Status: PASS
+  char_uni_kl: 0.017041
+  char_bi_kl: 0.090878
+  char_tri_kl: 0.320634
+  word_uni_kl: 0.969502
+  word_bi_kl: 2.303762
+
+PaiwanCh2_042 (PWN/Central):
+  Status: FAIL
+  char_uni_kl: 0.109961
+  char_bi_kl: 0.488964
+  char_tri_kl: 1.426023
+  word_uni_kl: 2.372989
+  word_bi_kl: 4.444339
+  Issues:
+    - Dialect mismatch: predicted unknown, true Central
+
+PaiwanCh2_043 (PWN/Central):
+  Status: FAIL
+  char_uni_kl: 0.153183
+  char_bi_kl: 0.595501
+  char_tri_kl: 1.498544
+  word_uni_kl: 2.439613
+  word_bi_kl: 4.877214
+  Issues:
+    - Dialect mismatch: predicted unknown, true Central
+
+PaiwanCh2_044 (PWN/Central):
+  Status: FAIL
+  char_uni_kl: 0.171916
+  char_bi_kl: 0.669222
+  char_tri_kl: 1.668048
+  word_uni_kl: 2.612722
+  word_bi_kl: 5.065443
+  Issues:
+    - Dialect mismatch: predicted unknown, true Central
+
+PaiwanCh2_045 (PWN/Central):
+  Status: FAIL
+  char_uni_kl: 0.160658
+  char_bi_kl: 1.121580
+  char_tri_kl: 2.925117
+  word_uni_kl: 3.311045
+  word_bi_kl: 6.667898
+  Issues:
+    - char_tri_delta exceeded dialect upper threshold
+    - Dialect mismatch: predicted Southern, true Central
+
+PaiwanCh2_046 (PWN/Central):
+  Status: FAIL
+  char_uni_kl: 0.105929
+  char_bi_kl: 0.519224
+  char_tri_kl: 1.617189
+  word_uni_kl: 2.755297
+  word_bi_kl: 5.245380
+  Issues:
+    - Dialect mismatch: predicted Southern, true Central
+
+PaiwanCh2_047 (PWN/Central):
+  Status: FAIL
+  char_uni_kl: 0.108978
+  char_bi_kl: 0.535502
+  char_tri_kl: 1.498520
+  word_uni_kl: 2.246508
+  word_bi_kl: 4.596690
+  Issues:
+    - Dialect mismatch: predicted unknown, true Central
+
+PaiwanCh2_048 (PWN/Central):
+  Status: FAIL
+  char_uni_kl: 0.189257
+  char_bi_kl: 0.802759
+  char_tri_kl: 2.232932
+  word_uni_kl: 3.238450
+  word_bi_kl: 5.868166
+  Issues:
+    - Dialect mismatch: predicted unknown, true Central
+
+PaiwanCh2_049 (PWN/Central):
+  Status: FAIL
+  char_uni_kl: 0.107994
+  char_bi_kl: 0.473012
+  char_tri_kl: 1.337968
+  word_uni_kl: 2.311143
+  word_bi_kl: 4.571567
+  Issues:
+    - Dialect mismatch: predicted unknown, true Central
+
+PaiwanCh2_050 (PWN/Central):
+  Status: FAIL
+  char_uni_kl: 0.104981
+  char_bi_kl: 0.398044
+  char_tri_kl: 1.040376
+  word_uni_kl: 1.915382
+  word_bi_kl: 3.856523
+  Issues:
+    - Dialect mismatch: predicted unknown, true Central
+
+PaiwanCh2_051 (PWN/Central):
+  Status: PASS
+  char_uni_kl: 0.109614
+  char_bi_kl: 0.475708
+  char_tri_kl: 1.357938
+  word_uni_kl: 2.285718
+  word_bi_kl: 4.574619
+
+PaiwanCh2_058 (PWN/Central):
+  Status: FAIL
+  char_uni_kl: 0.095296
+  char_bi_kl: 0.324345
+  char_tri_kl: 0.897230
+  word_uni_kl: 1.799299
+  word_bi_kl: 3.586916
+  Issues:
+    - Dialect mismatch: predicted unknown, true Central
+
+PaiwanCh2_059 (PWN/Central):
+  Status: FAIL
+  char_uni_kl: 0.157875
+  char_bi_kl: 0.483115
+  char_tri_kl: 1.365831
+  word_uni_kl: 2.452089
+  word_bi_kl: 4.496194
+  Issues:
+    - Dialect mismatch: predicted unknown, true Central
+
+PaiwanCh2_060 (PWN/Central):
+  Status: FAIL
+  char_uni_kl: 0.200157
+  char_bi_kl: 0.994682
+  char_tri_kl: 2.332071
+  word_uni_kl: 3.429896
+  word_bi_kl: 5.982841
+  Issues:
+    - Dialect mismatch: predicted unknown, true Central
+
+PaiwanCh2_061 (PWN/Central):
+  Status: FAIL
+  char_uni_kl: 0.100093
+  char_bi_kl: 0.457413
+  char_tri_kl: 1.296919
+  word_uni_kl: 2.351663
+  word_bi_kl: 4.656370
+  Issues:
+    - Dialect mismatch: predicted unknown, true Central
+
+PaiwanCh2_062 (PWN/Central):
+  Status: FAIL
+  char_uni_kl: 0.080325
+  char_bi_kl: 0.386416
+  char_tri_kl: 1.274905
+  word_uni_kl: 2.331395
+  word_bi_kl: 4.765975
+  Issues:
+    - Dialect mismatch: predicted Southern, true Central
+
+PaiwanCh2_095 (PWN/Central):
+  Status: FAIL
+  char_uni_kl: 0.102830
+  char_bi_kl: 0.542922
+  char_tri_kl: 1.622318
+  word_uni_kl: 2.731499
+  word_bi_kl: 5.157479
+  Issues:
+    - Dialect mismatch: predicted unknown, true Central
+
+PaiwanCh2_098 (PWN/Central):
+  Status: FAIL
+  char_uni_kl: 0.065925
+  char_bi_kl: 0.496114
+  char_tri_kl: 1.498020
+  word_uni_kl: 2.433380
+  word_bi_kl: 4.935631
+  Issues:
+    - Dialect mismatch: predicted unknown, true Central
+
+02SC105-1_Belmira (PWN/Central):
+  Status: FAIL
+  char_uni_kl: 0.065428
+  char_bi_kl: 0.307070
+  char_tri_kl: 0.977696
+  word_uni_kl: 2.030224
+  word_bi_kl: 4.006840
+  Issues:
+    - Dialect mismatch: predicted Northern, true Central
+
+02SC105-2_Belmira (PWN/Central):
+  Status: FAIL
+  char_uni_kl: 0.095134
+  char_bi_kl: 0.309929
+  char_tri_kl: 0.909162
+  word_uni_kl: 2.012066
+  word_bi_kl: 4.063101
+  Issues:
+    - Dialect mismatch: predicted Northern, true Central
+
+02SC105-3_Belmira (PWN/Central):
+  Status: FAIL
+  char_uni_kl: 0.093980
+  char_bi_kl: 0.312734
+  char_tri_kl: 0.965162
+  word_uni_kl: 2.143298
+  word_bi_kl: 4.205916
+  Issues:
+    - Dialect mismatch: predicted Northern, true Central
+
+02SC106-1_Belmira (PWN/Central):
+  Status: FAIL
+  char_uni_kl: 0.128494
+  char_bi_kl: 0.389341
+  char_tri_kl: 1.068928
+  word_uni_kl: 2.197358
+  word_bi_kl: 4.156831
+  Issues:
+    - Dialect mismatch: predicted Northern, true Central
+
+02SC106-2_Belmira (PWN/Central):
+  Status: FAIL
+  char_uni_kl: 0.149272
+  char_bi_kl: 0.435173
+  char_tri_kl: 1.050732
+  word_uni_kl: 2.020647
+  word_bi_kl: 3.865159
+  Issues:
+    - Dialect mismatch: predicted Northern, true Central
+
+02SC106-3_Belmira (PWN/Central):
+  Status: FAIL
+  char_uni_kl: 0.119376
+  char_bi_kl: 0.432739
+  char_tri_kl: 1.160554
+  word_uni_kl: 2.122214
+  word_bi_kl: 4.168573
+  Issues:
+    - Dialect mismatch: predicted unknown, true Central
+
+02SC107-3_Belmira (PWN/Central):
+  Status: FAIL
+  char_uni_kl: 0.143913
+  char_bi_kl: 0.450794
+  char_tri_kl: 1.125533
+  word_uni_kl: 2.333112
+  word_bi_kl: 4.101647
+  Issues:
+    - Dialect mismatch: predicted Northern, true Central
+
+02SC107-4_Belmira (PWN/Central):
+  Status: FAIL
+  char_uni_kl: 0.135822
+  char_bi_kl: 0.398034
+  char_tri_kl: 1.075822
+  word_uni_kl: 2.083958
+  word_bi_kl: 3.942239
+  Issues:
+    - Dialect mismatch: predicted Northern, true Central
+
+frog_Garven (PWN/Central):
+  Status: FAIL
+  char_uni_kl: 0.072241
+  char_bi_kl: 0.419639
+  char_tri_kl: 1.495461
+  word_uni_kl: 2.728323
+  word_bi_kl: 5.377967
+  Issues:
+    - Dialect mismatch: predicted Eastern, true Central
+
+masalut_Garven (PWN/Central):
+  Status: FAIL
+  char_uni_kl: 0.105699
+  char_bi_kl: 0.619116
+  char_tri_kl: 1.714042
+  word_uni_kl: 2.505368
+  word_bi_kl: 5.037001
+  Issues:
+    - Dialect mismatch: predicted Southern, true Central
+
+pear_Garven (PWN/Central):
+  Status: FAIL
+  char_uni_kl: 0.065696
+  char_bi_kl: 0.428766
+  char_tri_kl: 1.410676
+  word_uni_kl: 2.464618
+  word_bi_kl: 5.054180
+  Issues:
+    - Dialect mismatch: predicted Southern, true Central
+
+self_introduction_Garven (PWN/Central):
+  Status: FAIL
+  char_uni_kl: 0.094277
+  char_bi_kl: 0.483364
+  char_tri_kl: 1.441967
+  word_uni_kl: 2.328609
+  word_bi_kl: 4.740599
+  Issues:
+    - Dialect mismatch: predicted Northern, true Central
+
+Paiwan (PWN/Central):
+  Status: PASS
+  char_uni_kl: 0.040965
+  char_bi_kl: 0.163063
+  char_tri_kl: 0.475874
+  word_uni_kl: 1.331646
+  word_bi_kl: 2.549873
+
+Eastern_Paiwan (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.013933
+  char_bi_kl: 0.064930
+  char_tri_kl: 0.235889
+  word_uni_kl: 0.942518
+  word_bi_kl: 2.316051
+  Issues:
+    - Dialect mismatch: predicted Central, true Eastern
+
+Eastern_Paiwan (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.036171
+  char_bi_kl: 0.147119
+  char_tri_kl: 0.474542
+  word_uni_kl: 1.135793
+  word_bi_kl: 2.289781
+  Issues:
+    - Dialect mismatch: predicted Southern, true Eastern
+
+Eastern_Paiwan (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.049537
+  char_bi_kl: 0.182755
+  char_tri_kl: 0.574885
+  word_uni_kl: 1.254570
+  word_bi_kl: 2.511089
+  Issues:
+    - Dialect mismatch: predicted Southern, true Eastern
+
+Eastern_Paiwan (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.021197
+  char_bi_kl: 0.080439
+  char_tri_kl: 0.253927
+  word_uni_kl: 0.855423
+  word_bi_kl: 1.888645
+
+Eastern_Paiwan (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.014465
+  char_bi_kl: 0.064734
+  char_tri_kl: 0.256731
+  word_uni_kl: 1.058513
+  word_bi_kl: 2.447143
+
+Eastern_Paiwan (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.020037
+  char_bi_kl: 0.125067
+  char_tri_kl: 0.524017
+  word_uni_kl: 1.499641
+  word_bi_kl: 3.495761
+  Issues:
+    - Dialect mismatch: predicted Southern, true Eastern
+
+Eastern_Paiwan (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.016554
+  char_bi_kl: 0.061423
+  char_tri_kl: 0.175302
+  word_uni_kl: 0.694331
+  word_bi_kl: 1.540915
+
+Eastern_Paiwan (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.098515
+  char_bi_kl: 0.321283
+  char_tri_kl: 0.710919
+  word_uni_kl: 2.237903
+  word_bi_kl: 3.543803
+  Issues:
+    - Dialect mismatch: predicted Central, true Eastern
+
+Eastern_Paiwan (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.012683
+  char_bi_kl: 0.046902
+  char_tri_kl: 0.169270
+  word_uni_kl: 0.758805
+  word_bi_kl: 1.833007
+
+Eastern_Paiwan (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.015729
+  char_bi_kl: 0.081232
+  char_tri_kl: 0.320199
+  word_uni_kl: 1.119072
+  word_bi_kl: 2.637755
+
+Contributing_to_FormosanBank (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.455013
+  char_bi_kl: 1.080635
+  char_tri_kl: 1.956142
+  word_uni_kl: 3.227762
+  word_bi_kl: 4.779455
+
+Contributors (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.415373
+  char_bi_kl: 0.989202
+  char_tri_kl: 1.952899
+  word_uni_kl: 3.276894
+  word_bi_kl: 5.482679
+
+Formosan_Languages (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.309328
+  char_bi_kl: 0.742940
+  char_tri_kl: 1.456023
+  word_uni_kl: 2.697344
+  word_bi_kl: 4.585899
+
+FormosanBank (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.331101
+  char_bi_kl: 0.766549
+  char_tri_kl: 1.446903
+  word_uni_kl: 2.636166
+  word_bi_kl: 4.200113
+
+Terms_of_Use (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.480545
+  char_bi_kl: 1.136261
+  char_tri_kl: 2.084001
+  word_uni_kl: 3.074144
+  word_bi_kl: 5.023099
+
+Welcome (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.329144
+  char_bi_kl: 0.787889
+  char_tri_kl: 1.613990
+  word_uni_kl: 2.792519
+  word_bi_kl: 5.008297
+
+PaiwanCh2_052 (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.086137
+  char_bi_kl: 0.390505
+  char_tri_kl: 1.281702
+  word_uni_kl: 2.525994
+  word_bi_kl: 5.195781
+  Issues:
+    - Dialect mismatch: predicted Southern, true Eastern
+
+PaiwanCh2_053 (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.050352
+  char_bi_kl: 0.284492
+  char_tri_kl: 1.065084
+  word_uni_kl: 2.396688
+  word_bi_kl: 4.914722
+  Issues:
+    - Dialect mismatch: predicted Southern, true Eastern
+
+PaiwanCh2_054 (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.070209
+  char_bi_kl: 0.366705
+  char_tri_kl: 1.191616
+  word_uni_kl: 2.430583
+  word_bi_kl: 4.837501
+  Issues:
+    - Dialect mismatch: predicted Southern, true Eastern
+
+PaiwanCh2_055 (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.119079
+  char_bi_kl: 0.596815
+  char_tri_kl: 1.760956
+  word_uni_kl: 2.895461
+  word_bi_kl: 5.406558
+  Issues:
+    - Dialect mismatch: predicted Southern, true Eastern
+
+PaiwanCh2_056 (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.146069
+  char_bi_kl: 0.522829
+  char_tri_kl: 1.467271
+  word_uni_kl: 2.400625
+  word_bi_kl: 4.612524
+  Issues:
+    - Dialect mismatch: predicted Southern, true Eastern
+
+PaiwanCh2_057 (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.134847
+  char_bi_kl: 0.607956
+  char_tri_kl: 1.789170
+  word_uni_kl: 2.717475
+  word_bi_kl: 5.639378
+  Issues:
+    - Dialect mismatch: predicted Southern, true Eastern
+
+02SE105-1_Falin (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.031293
+  char_bi_kl: 0.210719
+  char_tri_kl: 0.847011
+  word_uni_kl: 1.908087
+  word_bi_kl: 4.000414
+
+02SE105-2_Falin_1st_v (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.078286
+  char_bi_kl: 0.421584
+  char_tri_kl: 1.444604
+  word_uni_kl: 2.358841
+  word_bi_kl: 4.914666
+
+02SE105-2_Falin_2nd_v (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.051790
+  char_bi_kl: 0.348142
+  char_tri_kl: 1.271017
+  word_uni_kl: 2.215405
+  word_bi_kl: 4.752849
+
+02SE105-2_Falin_3rd_v (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.043013
+  char_bi_kl: 0.249462
+  char_tri_kl: 0.935419
+  word_uni_kl: 1.953211
+  word_bi_kl: 4.172805
+
+02SE105-3_Falin (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.030291
+  char_bi_kl: 0.180851
+  char_tri_kl: 0.753752
+  word_uni_kl: 1.956882
+  word_bi_kl: 4.151605
+
+frog_Falin (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.051948
+  char_bi_kl: 0.426761
+  char_tri_kl: 1.504558
+  word_uni_kl: 2.469484
+  word_bi_kl: 5.197394
+
+my_life_Falin (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.076434
+  char_bi_kl: 0.508279
+  char_tri_kl: 1.508103
+  word_uni_kl: 2.328694
+  word_bi_kl: 5.214134
+
+02SE105-1_Halmir (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.035517
+  char_bi_kl: 0.210253
+  char_tri_kl: 0.818406
+  word_uni_kl: 1.859688
+  word_bi_kl: 3.904286
+  Issues:
+    - Dialect mismatch: predicted Southern, true Eastern
+
+02SE105-4_Halmir (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.051455
+  char_bi_kl: 0.272228
+  char_tri_kl: 0.996376
+  word_uni_kl: 2.258528
+  word_bi_kl: 4.217437
+
+02SE111-1_Halmir (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.025916
+  char_bi_kl: 0.200661
+  char_tri_kl: 0.798737
+  word_uni_kl: 1.803613
+  word_bi_kl: 4.030753
+
+02SE112-1_Halmir (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.038293
+  char_bi_kl: 0.190588
+  char_tri_kl: 0.788536
+  word_uni_kl: 1.877029
+  word_bi_kl: 4.112346
+
+fishing_methods_Halmir (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.072415
+  char_bi_kl: 0.487733
+  char_tri_kl: 1.678347
+  word_uni_kl: 2.548071
+  word_bi_kl: 5.323672
+  Issues:
+    - Dialect mismatch: predicted Southern, true Eastern
+
+frog_Halmir (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.058190
+  char_bi_kl: 0.571518
+  char_tri_kl: 1.914178
+  word_uni_kl: 2.784991
+  word_bi_kl: 5.471760
+  Issues:
+    - Dialect mismatch: predicted Southern, true Eastern
+
+slate_houses_Halmir (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.050497
+  char_bi_kl: 0.356826
+  char_tri_kl: 1.311001
+  word_uni_kl: 2.264184
+  word_bi_kl: 5.049535
+  Issues:
+    - Dialect mismatch: predicted Southern, true Eastern
+
+the_meaning_of_spear_ball_Halmir (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.088288
+  char_bi_kl: 0.444598
+  char_tri_kl: 1.433163
+  word_uni_kl: 2.797039
+  word_bi_kl: 5.627408
+  Issues:
+    - Dialect mismatch: predicted Southern, true Eastern
+
+vassal_system_Halmir (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.114163
+  char_bi_kl: 0.500489
+  char_tri_kl: 1.388649
+  word_uni_kl: 2.389586
+  word_bi_kl: 5.229108
+  Issues:
+    - Dialect mismatch: predicted Southern, true Eastern
+
+02EN106-1_Ilvane (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.033940
+  char_bi_kl: 0.273796
+  char_tri_kl: 0.920636
+  word_uni_kl: 2.206981
+  word_bi_kl: 4.436322
+
+02EN110-1_Ilvane (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.050264
+  char_bi_kl: 0.268419
+  char_tri_kl: 0.911156
+  word_uni_kl: 1.975180
+  word_bi_kl: 4.120043
+  Issues:
+    - Dialect mismatch: predicted Northern, true Eastern
+
+02JN105-1_Ilvane (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.076927
+  char_bi_kl: 0.309433
+  char_tri_kl: 0.912671
+  word_uni_kl: 2.287420
+  word_bi_kl: 4.376966
+  Issues:
+    - Dialect mismatch: predicted Northern, true Eastern
+
+02JN111-2_Ilvane (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.076440
+  char_bi_kl: 0.313757
+  char_tri_kl: 0.934083
+  word_uni_kl: 2.022003
+  word_bi_kl: 4.205503
+  Issues:
+    - Dialect mismatch: predicted Northern, true Eastern
+
+02JN112-4_Ilvane (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.069185
+  char_bi_kl: 0.273364
+  char_tri_kl: 0.868013
+  word_uni_kl: 2.205005
+  word_bi_kl: 4.330959
+  Issues:
+    - Dialect mismatch: predicted Northern, true Eastern
+
+02SN112-1_Ilvane (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.091133
+  char_bi_kl: 0.358749
+  char_tri_kl: 1.068509
+  word_uni_kl: 2.203324
+  word_bi_kl: 4.333151
+  Issues:
+    - Dialect mismatch: predicted Northern, true Eastern
+
+savanguljan_Ilvane (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.077865
+  char_bi_kl: 0.496485
+  char_tri_kl: 1.447441
+  word_uni_kl: 2.491088
+  word_bi_kl: 5.283750
+  Issues:
+    - Dialect mismatch: predicted Southern, true Eastern
+
+self_introduction_Ilvane (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.055807
+  char_bi_kl: 0.401524
+  char_tri_kl: 1.407212
+  word_uni_kl: 2.224060
+  word_bi_kl: 5.314749
+
+the_placename_of_tjavuqel_Ilvane (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.047413
+  char_bi_kl: 0.412776
+  char_tri_kl: 1.455939
+  word_uni_kl: 2.549550
+  word_bi_kl: 5.395497
+  Issues:
+    - Dialect mismatch: predicted Southern, true Eastern
+
+01_P01_Loris (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.035992
+  char_bi_kl: 0.204066
+  char_tri_kl: 0.772254
+  word_uni_kl: 2.011347
+  word_bi_kl: 3.959386
+
+02JE105-1_Loris (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.041484
+  char_bi_kl: 0.238952
+  char_tri_kl: 0.798326
+  word_uni_kl: 1.806408
+  word_bi_kl: 3.967174
+
+02JE105-2_Loris (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.028051
+  char_bi_kl: 0.201813
+  char_tri_kl: 0.792189
+  word_uni_kl: 1.943622
+  word_bi_kl: 4.096131
+
+02JE105-3_Loris (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.025132
+  char_bi_kl: 0.175494
+  char_tri_kl: 0.795199
+  word_uni_kl: 1.962086
+  word_bi_kl: 4.187797
+
+02JE105-4_Loris (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.023926
+  char_bi_kl: 0.240295
+  char_tri_kl: 0.863572
+  word_uni_kl: 2.054879
+  word_bi_kl: 4.224562
+
+02JE106-1_Loris (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.028746
+  char_bi_kl: 0.165207
+  char_tri_kl: 0.696590
+  word_uni_kl: 1.892660
+  word_bi_kl: 4.240482
+
+02JE106-2_Loris (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.032053
+  char_bi_kl: 0.156830
+  char_tri_kl: 0.665166
+  word_uni_kl: 1.912728
+  word_bi_kl: 4.100594
+
+02JE107-3_Loris (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.050409
+  char_bi_kl: 0.269550
+  char_tri_kl: 0.944327
+  word_uni_kl: 2.313462
+  word_bi_kl: 4.506179
+
+02JE108-1_Loris (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.056913
+  char_bi_kl: 0.259586
+  char_tri_kl: 0.903492
+  word_uni_kl: 1.906719
+  word_bi_kl: 4.365222
+
+02JE110-3_Loris (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.098214
+  char_bi_kl: 0.528399
+  char_tri_kl: 1.581470
+  word_uni_kl: 2.763166
+  word_bi_kl: 5.538215
+  Issues:
+    - Dialect mismatch: predicted Central, true Eastern
+
+02JE110-4_Loris (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.054156
+  char_bi_kl: 0.250357
+  char_tri_kl: 0.882277
+  word_uni_kl: 2.135406
+  word_bi_kl: 4.626212
+
+02JE111-2_Loris (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.044544
+  char_bi_kl: 0.288631
+  char_tri_kl: 1.105163
+  word_uni_kl: 2.494802
+  word_bi_kl: 4.970465
+
+02SE105-1_Loris (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.035295
+  char_bi_kl: 0.233960
+  char_tri_kl: 0.881940
+  word_uni_kl: 1.858480
+  word_bi_kl: 3.882977
+
+02SE105-2_Loris (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.037884
+  char_bi_kl: 0.212820
+  char_tri_kl: 0.825605
+  word_uni_kl: 1.832436
+  word_bi_kl: 4.085493
+
+02SE105-3_Loris (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.034398
+  char_bi_kl: 0.182012
+  char_tri_kl: 0.739446
+  word_uni_kl: 1.953048
+  word_bi_kl: 4.141985
+
+02SE105-4_Loris (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.072232
+  char_bi_kl: 0.344048
+  char_tri_kl: 1.129926
+  word_uni_kl: 2.151399
+  word_bi_kl: 4.243427
+
+02SE111-1_Loris (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.025026
+  char_bi_kl: 0.199409
+  char_tri_kl: 0.818681
+  word_uni_kl: 1.854729
+  word_bi_kl: 4.094912
+
+02SE111-2_Loris (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.037798
+  char_bi_kl: 0.212580
+  char_tri_kl: 0.823320
+  word_uni_kl: 2.083353
+  word_bi_kl: 4.482603
+
+02SE112-1_Loris (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.030975
+  char_bi_kl: 0.185188
+  char_tri_kl: 0.790728
+  word_uni_kl: 1.944997
+  word_bi_kl: 4.208428
+
+frog_Loris (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.118684
+  char_bi_kl: 0.565686
+  char_tri_kl: 1.840230
+  word_uni_kl: 2.706454
+  word_bi_kl: 5.615195
+  Issues:
+    - Dialect mismatch: predicted Southern, true Eastern
+
+my_father_Loris (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.074731
+  char_bi_kl: 0.496471
+  char_tri_kl: 1.651222
+  word_uni_kl: 2.344212
+  word_bi_kl: 5.192653
+
+Our_cattle_Loris (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.101519
+  char_bi_kl: 0.581351
+  char_tri_kl: 1.892595
+  word_uni_kl: 2.578879
+  word_bi_kl: 5.349546
+  Issues:
+    - Dialect mismatch: predicted Southern, true Eastern
+
+pear_Loris (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.048997
+  char_bi_kl: 0.434844
+  char_tri_kl: 1.486448
+  word_uni_kl: 2.639629
+  word_bi_kl: 5.288214
+  Issues:
+    - Dialect mismatch: predicted Southern, true Eastern
+
+02JE105-1_Sarnix (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.043353
+  char_bi_kl: 0.223906
+  char_tri_kl: 0.781837
+  word_uni_kl: 1.761813
+  word_bi_kl: 3.846507
+
+02JE105-2_Sarnix (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.028434
+  char_bi_kl: 0.203010
+  char_tri_kl: 0.767982
+  word_uni_kl: 1.898656
+  word_bi_kl: 4.033738
+
+02JE105-3_Sarnix (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.036178
+  char_bi_kl: 0.190013
+  char_tri_kl: 0.808145
+  word_uni_kl: 2.006445
+  word_bi_kl: 4.110886
+
+02JE105-4_Sarnix (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.034299
+  char_bi_kl: 0.244814
+  char_tri_kl: 0.851937
+  word_uni_kl: 2.038415
+  word_bi_kl: 4.215344
+
+02JE106-1_Sarnix (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.039430
+  char_bi_kl: 0.180208
+  char_tri_kl: 0.706474
+  word_uni_kl: 1.796300
+  word_bi_kl: 4.095193
+
+02JE106-2_Sarnix (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.035633
+  char_bi_kl: 0.164311
+  char_tri_kl: 0.679214
+  word_uni_kl: 1.896429
+  word_bi_kl: 3.973318
+
+02JE107-3_Sarnix (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.051168
+  char_bi_kl: 0.278402
+  char_tri_kl: 0.974014
+  word_uni_kl: 2.372734
+  word_bi_kl: 4.608865
+
+02JE108-1_Sarnix (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.055879
+  char_bi_kl: 0.252637
+  char_tri_kl: 0.859788
+  word_uni_kl: 1.903119
+  word_bi_kl: 4.258362
+
+a_story_about_drungdrung_Sarnix (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.094812
+  char_bi_kl: 0.651238
+  char_tri_kl: 1.858780
+  word_uni_kl: 2.329817
+  word_bi_kl: 5.122410
+  Issues:
+    - Dialect mismatch: predicted Southern, true Eastern
+
+hunting.god_legend_Sarnix (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.053321
+  char_bi_kl: 0.434606
+  char_tri_kl: 1.541011
+  word_uni_kl: 2.224129
+  word_bi_kl: 5.163355
+
+when_I_was_7_Sarnix (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.109808
+  char_bi_kl: 0.676298
+  char_tri_kl: 1.943335
+  word_uni_kl: 2.931569
+  word_bi_kl: 5.599853
+
+02JN105-1_Tavora (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.101396
+  char_bi_kl: 0.335357
+  char_tri_kl: 0.946195
+  word_uni_kl: 2.319612
+  word_bi_kl: 4.426568
+  Issues:
+    - Dialect mismatch: predicted Northern, true Eastern
+
+02JN106-2_Tavora (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.055324
+  char_bi_kl: 0.237734
+  char_tri_kl: 0.781450
+  word_uni_kl: 2.499761
+  word_bi_kl: 4.678771
+  Issues:
+    - Dialect mismatch: predicted Northern, true Eastern
+
+02JN106-3_Tavora (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.126067
+  char_bi_kl: 0.373216
+  char_tri_kl: 1.002342
+  word_uni_kl: 2.318858
+  word_bi_kl: 4.453592
+  Issues:
+    - Dialect mismatch: predicted Northern, true Eastern
+
+02JN108-3_Tavora (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.088987
+  char_bi_kl: 0.343702
+  char_tri_kl: 1.023278
+  word_uni_kl: 2.196557
+  word_bi_kl: 4.346914
+  Issues:
+    - Dialect mismatch: predicted Northern, true Eastern
+
+02JN112-1_Tavora (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.064730
+  char_bi_kl: 0.259563
+  char_tri_kl: 0.835828
+  word_uni_kl: 2.177839
+  word_bi_kl: 4.446994
+  Issues:
+    - Dialect mismatch: predicted Northern, true Eastern
+
+02JN112-2_Tavora (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.099625
+  char_bi_kl: 0.323218
+  char_tri_kl: 0.918975
+  word_uni_kl: 2.165087
+  word_bi_kl: 4.255610
+  Issues:
+    - Dialect mismatch: predicted Northern, true Eastern
+
+02JN112-4_Tavora (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.092210
+  char_bi_kl: 0.301875
+  char_tri_kl: 0.930010
+  word_uni_kl: 2.311965
+  word_bi_kl: 4.428790
+  Issues:
+    - Dialect mismatch: predicted Northern, true Eastern
+
+02SN105-1_Tavora (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.092959
+  char_bi_kl: 0.292521
+  char_tri_kl: 0.872277
+  word_uni_kl: 2.315171
+  word_bi_kl: 4.516418
+  Issues:
+    - Dialect mismatch: predicted Northern, true Eastern
+
+02SN106-2_Tavora (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.084149
+  char_bi_kl: 0.280191
+  char_tri_kl: 0.862339
+  word_uni_kl: 2.296123
+  word_bi_kl: 4.520200
+  Issues:
+    - Dialect mismatch: predicted Northern, true Eastern
+
+02SN106-3_Tavora (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.107040
+  char_bi_kl: 0.344757
+  char_tri_kl: 1.001876
+  word_uni_kl: 2.086756
+  word_bi_kl: 4.377424
+  Issues:
+    - Dialect mismatch: predicted Northern, true Eastern
+
+five_year_festival_square_Tavora (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.052314
+  char_bi_kl: 0.452918
+  char_tri_kl: 1.441578
+  word_uni_kl: 2.263669
+  word_bi_kl: 5.082669
+
+labor_exchage_Tavora (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.065906
+  char_bi_kl: 0.493278
+  char_tri_kl: 1.509280
+  word_uni_kl: 2.307178
+  word_bi_kl: 4.883044
+
+my_parents_Tavora (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.059339
+  char_bi_kl: 0.539253
+  char_tri_kl: 1.629424
+  word_uni_kl: 2.293560
+  word_bi_kl: 5.028415
+
+self-introduction_Tavora (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.084978
+  char_bi_kl: 0.565116
+  char_tri_kl: 1.589378
+  word_uni_kl: 2.425632
+  word_bi_kl: 5.001361
+
+tattoos_Tavora (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.106785
+  char_bi_kl: 0.622809
+  char_tri_kl: 1.673996
+  word_uni_kl: 2.287480
+  word_bi_kl: 4.973846
+
+the_church_and_the_tribe_Tavora (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.055723
+  char_bi_kl: 0.467971
+  char_tri_kl: 1.523543
+  word_uni_kl: 2.383389
+  word_bi_kl: 5.019956
+
+DingDing (PWN/Eastern):
+  Status: PASS
+  char_uni_kl: 0.028763
+  char_bi_kl: 0.253431
+  char_tri_kl: 1.020625
+  word_uni_kl: 2.309571
+  word_bi_kl: 4.917233
+
+kavatjes ni vuvu (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.034464
+  char_bi_kl: 0.293573
+  char_tri_kl: 1.221785
+  word_uni_kl: 3.055988
+  word_bi_kl: 5.668783
+  Issues:
+    - Dialect mismatch: predicted Southern, true Eastern
+
+maljialjian a qaciljay (PWN/Eastern):
+  Status: FAIL
+  char_uni_kl: 0.040123
+  char_bi_kl: 0.233178
+  char_tri_kl: 0.975824
+  word_uni_kl: 2.361308
+  word_bi_kl: 4.834456
+  Issues:
+    - Dialect mismatch: predicted Central, true Eastern
+
+Northern_Paiwan (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.024259
+  char_bi_kl: 0.069646
+  char_tri_kl: 0.161075
+  word_uni_kl: 0.565971
+  word_bi_kl: 1.329646
+
+Northern_Paiwan (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.024895
+  char_bi_kl: 0.085242
+  char_tri_kl: 0.267457
+  word_uni_kl: 1.009618
+  word_bi_kl: 2.607991
+
+Northern_Paiwan (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.078281
+  char_bi_kl: 0.232081
+  char_tri_kl: 0.597355
+  word_uni_kl: 1.283439
+  word_bi_kl: 2.705078
+
+Northern_Paiwan (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.092787
+  char_bi_kl: 0.274182
+  char_tri_kl: 0.718090
+  word_uni_kl: 1.385071
+  word_bi_kl: 2.935617
+
+Northern_Paiwan (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.023658
+  char_bi_kl: 0.088396
+  char_tri_kl: 0.290076
+  word_uni_kl: 1.050940
+  word_bi_kl: 2.417059
+  Issues:
+    - Dialect mismatch: predicted Central, true Northern
+
+Northern_Paiwan (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.031656
+  char_bi_kl: 0.126826
+  char_tri_kl: 0.384748
+  word_uni_kl: 1.523884
+  word_bi_kl: 3.265400
+  Issues:
+    - Dialect mismatch: predicted Central, true Northern
+
+Northern_Paiwan (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.027989
+  char_bi_kl: 0.120788
+  char_tri_kl: 0.441959
+  word_uni_kl: 1.463444
+  word_bi_kl: 3.681967
+  Issues:
+    - Dialect mismatch: predicted Southern, true Northern
+
+Northern_Paiwan (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.028523
+  char_bi_kl: 0.097153
+  char_tri_kl: 0.236266
+  word_uni_kl: 0.937469
+  word_bi_kl: 2.115312
+  Issues:
+    - Dialect mismatch: predicted Eastern, true Northern
+
+Northern_Paiwan (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.101854
+  char_bi_kl: 0.352614
+  char_tri_kl: 0.777966
+  word_uni_kl: 2.365591
+  word_bi_kl: 4.149794
+
+Northern_Paiwan (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.030557
+  char_bi_kl: 0.100335
+  char_tri_kl: 0.267627
+  word_uni_kl: 1.187177
+  word_bi_kl: 2.712152
+  Issues:
+    - Dialect mismatch: predicted Central, true Northern
+
+Northern_Paiwan (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.019806
+  char_bi_kl: 0.094208
+  char_tri_kl: 0.337104
+  word_uni_kl: 1.313621
+  word_bi_kl: 3.135583
+  Issues:
+    - Dialect mismatch: predicted Central, true Northern
+
+PaiwanCh2_063 (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.243206
+  char_bi_kl: 1.010792
+  char_tri_kl: 2.497265
+  word_uni_kl: 4.436723
+  word_bi_kl: 7.215523
+  Issues:
+    - Dialect mismatch: predicted unknown, true Northern
+
+PaiwanCh2_064 (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.174472
+  char_bi_kl: 0.892910
+  char_tri_kl: 2.242328
+  word_uni_kl: 3.091821
+  word_bi_kl: 6.731784
+  Issues:
+    - Dialect mismatch: predicted Southern, true Northern
+
+PaiwanCh2_065 (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.137267
+  char_bi_kl: 0.584313
+  char_tri_kl: 1.799120
+  word_uni_kl: 3.285105
+  word_bi_kl: 6.152739
+  Issues:
+    - Dialect mismatch: predicted unknown, true Northern
+
+PaiwanCh2_066 (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.102412
+  char_bi_kl: 0.589532
+  char_tri_kl: 1.775093
+  word_uni_kl: 2.933192
+  word_bi_kl: 6.220827
+  Issues:
+    - Dialect mismatch: predicted Southern, true Northern
+
+PaiwanCh2_067 (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.252562
+  char_bi_kl: 1.027538
+  char_tri_kl: 2.410795
+  word_uni_kl: 3.225158
+  word_bi_kl: 6.520143
+  Issues:
+    - Dialect mismatch: predicted unknown, true Northern
+
+PaiwanCh2_068 (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.152807
+  char_bi_kl: 0.576890
+  char_tri_kl: 1.533532
+  word_uni_kl: 2.857452
+  word_bi_kl: 5.784756
+  Issues:
+    - Dialect mismatch: predicted unknown, true Northern
+
+PaiwanCh2_069 (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.097826
+  char_bi_kl: 0.483701
+  char_tri_kl: 1.507539
+  word_uni_kl: 2.986166
+  word_bi_kl: 6.208619
+  Issues:
+    - Dialect mismatch: predicted Southern, true Northern
+
+PaiwanCh2_070 (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.105588
+  char_bi_kl: 0.507091
+  char_tri_kl: 1.507788
+  word_uni_kl: 2.834393
+  word_bi_kl: 5.883125
+  Issues:
+    - Dialect mismatch: predicted Southern, true Northern
+
+PaiwanCh2_071 (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.132092
+  char_bi_kl: 0.456238
+  char_tri_kl: 1.265126
+  word_uni_kl: 2.284191
+  word_bi_kl: 4.858283
+  Issues:
+    - Dialect mismatch: predicted unknown, true Northern
+
+PaiwanCh2_072 (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.105415
+  char_bi_kl: 0.364961
+  char_tri_kl: 1.142508
+  word_uni_kl: 2.449332
+  word_bi_kl: 5.266156
+  Issues:
+    - Dialect mismatch: predicted unknown, true Northern
+
+PaiwanCh2_073 (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.116546
+  char_bi_kl: 0.379768
+  char_tri_kl: 1.063904
+  word_uni_kl: 2.101955
+  word_bi_kl: 4.708605
+  Issues:
+    - Dialect mismatch: predicted unknown, true Northern
+
+PaiwanCh2_074 (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.095855
+  char_bi_kl: 0.377854
+  char_tri_kl: 1.142551
+  word_uni_kl: 2.129555
+  word_bi_kl: 4.769192
+  Issues:
+    - Dialect mismatch: predicted Southern, true Northern
+
+PaiwanCh2_075 (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.165165
+  char_bi_kl: 0.703381
+  char_tri_kl: 1.712391
+  word_uni_kl: 2.799699
+  word_bi_kl: 4.868584
+  Issues:
+    - Dialect mismatch: predicted unknown, true Northern
+
+PaiwanCh2_076 (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.105801
+  char_bi_kl: 0.424351
+  char_tri_kl: 1.261656
+  word_uni_kl: 2.681546
+  word_bi_kl: 5.349501
+  Issues:
+    - Dialect mismatch: predicted Southern, true Northern
+
+PaiwanCh2_077 (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.062563
+  char_bi_kl: 0.379785
+  char_tri_kl: 1.160042
+  word_uni_kl: 2.578320
+  word_bi_kl: 5.200865
+  Issues:
+    - Dialect mismatch: predicted Southern, true Northern
+
+PaiwanCh2_078 (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.127431
+  char_bi_kl: 0.505441
+  char_tri_kl: 1.431296
+  word_uni_kl: 3.185637
+  word_bi_kl: 5.709757
+  Issues:
+    - Dialect mismatch: predicted Southern, true Northern
+
+PaiwanCh2_079 (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.059864
+  char_bi_kl: 0.224134
+  char_tri_kl: 0.677556
+  word_uni_kl: 1.778505
+  word_bi_kl: 3.975013
+  Issues:
+    - Dialect mismatch: predicted unknown, true Northern
+
+PaiwanCh2_080 (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.113490
+  char_bi_kl: 0.470891
+  char_tri_kl: 1.411588
+  word_uni_kl: 2.563205
+  word_bi_kl: 5.492956
+  Issues:
+    - Dialect mismatch: predicted unknown, true Northern
+
+PaiwanCh2_081 (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.066946
+  char_bi_kl: 0.352391
+  char_tri_kl: 1.137883
+  word_uni_kl: 2.529729
+  word_bi_kl: 5.482594
+  Issues:
+    - Dialect mismatch: predicted Southern, true Northern
+
+PaiwanCh2_082 (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.115297
+  char_bi_kl: 0.582615
+  char_tri_kl: 1.630258
+  word_uni_kl: 2.873671
+  word_bi_kl: 5.901368
+  Issues:
+    - Dialect mismatch: predicted Central, true Northern
+
+PaiwanCh2_083 (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.058025
+  char_bi_kl: 0.344926
+  char_tri_kl: 1.202723
+  word_uni_kl: 2.359255
+  word_bi_kl: 5.204917
+  Issues:
+    - Dialect mismatch: predicted Southern, true Northern
+
+PaiwanCh2_084 (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.193978
+  char_bi_kl: 0.680829
+  char_tri_kl: 1.616499
+  word_uni_kl: 2.685950
+  word_bi_kl: 5.371634
+  Issues:
+    - Dialect mismatch: predicted unknown, true Northern
+
+PaiwanCh2_085 (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.037351
+  char_bi_kl: 0.233837
+  char_tri_kl: 0.841896
+  word_uni_kl: 2.370225
+  word_bi_kl: 5.075688
+  Issues:
+    - Dialect mismatch: predicted Southern, true Northern
+
+PaiwanCh2_086 (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.071454
+  char_bi_kl: 0.466193
+  char_tri_kl: 1.518158
+  word_uni_kl: 2.996038
+  word_bi_kl: 6.012013
+  Issues:
+    - Dialect mismatch: predicted Southern, true Northern
+
+PaiwanCh2_087 (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.058622
+  char_bi_kl: 0.313397
+  char_tri_kl: 1.056899
+  word_uni_kl: 2.449255
+  word_bi_kl: 5.071290
+  Issues:
+    - Dialect mismatch: predicted Southern, true Northern
+
+PaiwanCh2_088 (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.037960
+  char_bi_kl: 0.295615
+  char_tri_kl: 1.122691
+  word_uni_kl: 2.784730
+  word_bi_kl: 5.435258
+  Issues:
+    - Dialect mismatch: predicted Southern, true Northern
+
+PaiwanCh2_089 (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.194690
+  char_bi_kl: 0.693951
+  char_tri_kl: 1.725086
+  word_uni_kl: 2.833414
+  word_bi_kl: 5.914406
+  Issues:
+    - Dialect mismatch: predicted unknown, true Northern
+
+PaiwanCh2_092 (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.034322
+  char_bi_kl: 0.184221
+  char_tri_kl: 0.628425
+  word_uni_kl: 1.808850
+  word_bi_kl: 4.137805
+  Issues:
+    - Dialect mismatch: predicted unknown, true Northern
+
+PaiwanCh2_093 (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.120300
+  char_bi_kl: 0.455965
+  char_tri_kl: 1.263905
+  word_uni_kl: 2.220218
+  word_bi_kl: 4.874712
+  Issues:
+    - Dialect mismatch: predicted unknown, true Northern
+
+PaiwanCh2_094 (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.095575
+  char_bi_kl: 0.385669
+  char_tri_kl: 1.150160
+  word_uni_kl: 2.103201
+  word_bi_kl: 4.714640
+  Issues:
+    - Dialect mismatch: predicted unknown, true Northern
+
+PaiwanCh2_096 (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.070847
+  char_bi_kl: 0.285142
+  char_tri_kl: 0.812231
+  word_uni_kl: 1.869293
+  word_bi_kl: 4.210983
+  Issues:
+    - Dialect mismatch: predicted unknown, true Northern
+
+PaiwanCh2_100 (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.060072
+  char_bi_kl: 0.281520
+  char_tri_kl: 0.915749
+  word_uni_kl: 1.978556
+  word_bi_kl: 4.583463
+  Issues:
+    - Dialect mismatch: predicted unknown, true Northern
+
+Paiwan (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.028122
+  char_bi_kl: 0.066572
+  char_tri_kl: 0.130698
+  word_uni_kl: 0.375732
+  word_bi_kl: 0.930589
+  Issues:
+    - Dialect mismatch: predicted Southern, true Northern
+
+02JN112-1_Calina (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.034182
+  char_bi_kl: 0.189204
+  char_tri_kl: 0.736052
+  word_uni_kl: 2.053991
+  word_bi_kl: 4.625241
+  Issues:
+    - Dialect mismatch: predicted Eastern, true Northern
+
+02JN112-2_Calina (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.036598
+  char_bi_kl: 0.196966
+  char_tri_kl: 0.694337
+  word_uni_kl: 2.198540
+  word_bi_kl: 4.565867
+
+02JN112-3_Calina (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.140797
+  char_bi_kl: 0.600486
+  char_tri_kl: 1.539185
+  word_uni_kl: 2.544379
+  word_bi_kl: 4.600266
+  Issues:
+    - Dialect mismatch: predicted unknown, true Northern
+
+frog_Calina (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.067111
+  char_bi_kl: 0.592231
+  char_tri_kl: 1.909815
+  word_uni_kl: 3.056861
+  word_bi_kl: 6.120167
+  Issues:
+    - Dialect mismatch: predicted Southern, true Northern
+
+my_father_Calina (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.054454
+  char_bi_kl: 0.406094
+  char_tri_kl: 1.445698
+  word_uni_kl: 2.403561
+  word_bi_kl: 5.878094
+
+self_introduction_Calina (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.075997
+  char_bi_kl: 0.525596
+  char_tri_kl: 1.490477
+  word_uni_kl: 2.916112
+  word_bi_kl: 5.838015
+
+02EN108-2_Edran (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.026090
+  char_bi_kl: 0.178146
+  char_tri_kl: 0.736118
+  word_uni_kl: 2.180692
+  word_bi_kl: 4.834810
+  Issues:
+    - Dialect mismatch: predicted Eastern, true Northern
+
+02EN110-1_Edran (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.042326
+  char_bi_kl: 0.239794
+  char_tri_kl: 0.854710
+  word_uni_kl: 2.082034
+  word_bi_kl: 4.553225
+  Issues:
+    - Dialect mismatch: predicted Eastern, true Northern
+
+02EN112-2_Edran (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.050443
+  char_bi_kl: 0.242213
+  char_tri_kl: 0.835854
+  word_uni_kl: 2.010594
+  word_bi_kl: 4.854598
+  Issues:
+    - Dialect mismatch: predicted Southern, true Northern
+
+frog_Edran (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.171085
+  char_bi_kl: 0.686445
+  char_tri_kl: 2.036732
+  word_uni_kl: 3.196760
+  word_bi_kl: 6.204069
+  Issues:
+    - Dialect mismatch: predicted Southern, true Northern
+
+when_I_was_eight_Edran (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.054265
+  char_bi_kl: 0.415670
+  char_tri_kl: 1.404510
+  word_uni_kl: 2.897447
+  word_bi_kl: 5.989201
+  Issues:
+    - Dialect mismatch: predicted Southern, true Northern
+
+02SN111-2_Kerris (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.031717
+  char_bi_kl: 0.192008
+  char_tri_kl: 0.742299
+  word_uni_kl: 2.098768
+  word_bi_kl: 4.502024
+
+02SN111-3_Kerris (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.080218
+  char_bi_kl: 0.306115
+  char_tri_kl: 1.014606
+  word_uni_kl: 2.170141
+  word_bi_kl: 4.357386
+
+02SN112-1_Kerris (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.052739
+  char_bi_kl: 0.292901
+  char_tri_kl: 0.978737
+  word_uni_kl: 2.088907
+  word_bi_kl: 4.278133
+
+02SN112-2_Kerris (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.042513
+  char_bi_kl: 0.251429
+  char_tri_kl: 0.869422
+  word_uni_kl: 2.121240
+  word_bi_kl: 4.507128
+
+02SN112-4_Kerris (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.031552
+  char_bi_kl: 0.177078
+  char_tri_kl: 0.709860
+  word_uni_kl: 1.883406
+  word_bi_kl: 4.344188
+
+frog_Kerris (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.072108
+  char_bi_kl: 0.634789
+  char_tri_kl: 1.806221
+  word_uni_kl: 2.663134
+  word_bi_kl: 5.717363
+  Issues:
+    - Dialect mismatch: predicted Southern, true Northern
+
+local_daycare_and_language_revitalization_Kerris (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.068163
+  char_bi_kl: 0.501269
+  char_tri_kl: 1.406731
+  word_uni_kl: 2.291897
+  word_bi_kl: 5.168694
+
+self_introduction_Kerris (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.068823
+  char_bi_kl: 0.513791
+  char_tri_kl: 1.589525
+  word_uni_kl: 2.689160
+  word_bi_kl: 5.859807
+  Issues:
+    - Dialect mismatch: predicted Southern, true Northern
+
+a_little_story_about_assembly_hall_Maron (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.107228
+  char_bi_kl: 0.516979
+  char_tri_kl: 1.559902
+  word_uni_kl: 2.834554
+  word_bi_kl: 5.989347
+  Issues:
+    - Dialect mismatch: predicted Southern, true Northern
+
+creators_of_ancestors_Maron (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.113472
+  char_bi_kl: 0.497295
+  char_tri_kl: 1.496952
+  word_uni_kl: 2.625828
+  word_bi_kl: 5.549068
+  Issues:
+    - Dialect mismatch: predicted Southern, true Northern
+
+past_interactions_with_Kasavakan_Maron (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.153322
+  char_bi_kl: 0.553143
+  char_tri_kl: 1.610175
+  word_uni_kl: 2.615754
+  word_bi_kl: 5.650891
+
+taboos_of_dystocia_Maron (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.081111
+  char_bi_kl: 0.514587
+  char_tri_kl: 1.607991
+  word_uni_kl: 2.558310
+  word_bi_kl: 5.401105
+  Issues:
+    - Dialect mismatch: predicted Southern, true Northern
+
+taboos_of_going_to_the_beach1_Maron (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.104088
+  char_bi_kl: 0.646940
+  char_tri_kl: 1.868461
+  word_uni_kl: 2.776511
+  word_bi_kl: 5.694851
+  Issues:
+    - Dialect mismatch: predicted Eastern, true Northern
+
+taboos_of_going_to_the_beach2_Maron (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.176807
+  char_bi_kl: 0.783965
+  char_tri_kl: 2.289205
+  word_uni_kl: 3.479852
+  word_bi_kl: 6.377788
+  Issues:
+    - Dialect mismatch: predicted Southern, true Northern
+
+the_man_who_killed_typhoon_Maron (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.135164
+  char_bi_kl: 0.535278
+  char_tri_kl: 1.580118
+  word_uni_kl: 2.903212
+  word_bi_kl: 5.822905
+  Issues:
+    - Dialect mismatch: predicted Southern, true Northern
+
+the_migration_history_of_tjavuqel_Maron (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.101252
+  char_bi_kl: 0.572727
+  char_tri_kl: 1.765249
+  word_uni_kl: 2.927363
+  word_bi_kl: 5.877647
+  Issues:
+    - Dialect mismatch: predicted Southern, true Northern
+
+02JN105-1_Nira (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.058574
+  char_bi_kl: 0.260233
+  char_tri_kl: 0.848791
+  word_uni_kl: 2.082634
+  word_bi_kl: 4.580613
+
+02JN105-2_Nira (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.038855
+  char_bi_kl: 0.198193
+  char_tri_kl: 0.724811
+  word_uni_kl: 2.019719
+  word_bi_kl: 4.463777
+
+02JN105-3_Nira (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.036949
+  char_bi_kl: 0.205962
+  char_tri_kl: 0.815944
+  word_uni_kl: 2.109394
+  word_bi_kl: 4.805270
+
+02JN106-1_Nira (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.066086
+  char_bi_kl: 0.278890
+  char_tri_kl: 0.938165
+  word_uni_kl: 2.107095
+  word_bi_kl: 4.595392
+
+02JN106-2_Nira (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.041429
+  char_bi_kl: 0.203460
+  char_tri_kl: 0.722538
+  word_uni_kl: 2.315118
+  word_bi_kl: 4.759802
+
+02JN106-3_Nira (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.053628
+  char_bi_kl: 0.252853
+  char_tri_kl: 0.844213
+  word_uni_kl: 2.170103
+  word_bi_kl: 4.591436
+
+02JN107-4_Nira (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.065690
+  char_bi_kl: 0.306883
+  char_tri_kl: 0.957800
+  word_uni_kl: 2.081991
+  word_bi_kl: 4.545930
+
+02JN108-1_Nira (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.049544
+  char_bi_kl: 0.204554
+  char_tri_kl: 0.702581
+  word_uni_kl: 2.128800
+  word_bi_kl: 4.591699
+
+02JN108-3_Nira (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.052800
+  char_bi_kl: 0.287349
+  char_tri_kl: 0.926987
+  word_uni_kl: 1.995106
+  word_bi_kl: 4.351926
+
+02JN110-1_Nira (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.045879
+  char_bi_kl: 0.215180
+  char_tri_kl: 0.754233
+  word_uni_kl: 2.186570
+  word_bi_kl: 4.724574
+
+02JN112-1_Nira (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.032949
+  char_bi_kl: 0.194632
+  char_tri_kl: 0.734263
+  word_uni_kl: 1.992613
+  word_bi_kl: 4.436318
+
+02JN112-2_Nira (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.042421
+  char_bi_kl: 0.212599
+  char_tri_kl: 0.750533
+  word_uni_kl: 2.021333
+  word_bi_kl: 4.499084
+
+02JN112-3_Nira (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.152978
+  char_bi_kl: 0.640372
+  char_tri_kl: 1.581953
+  word_uni_kl: 2.811676
+  word_bi_kl: 4.716018
+
+02JN112-4_Nira (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.041986
+  char_bi_kl: 0.226140
+  char_tri_kl: 0.861976
+  word_uni_kl: 2.325864
+  word_bi_kl: 4.891547
+
+02SN105-1_Nira (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.047483
+  char_bi_kl: 0.212908
+  char_tri_kl: 0.790310
+  word_uni_kl: 2.206272
+  word_bi_kl: 4.773600
+
+02SN105-2_Nira (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.057970
+  char_bi_kl: 0.242261
+  char_tri_kl: 0.828291
+  word_uni_kl: 1.975310
+  word_bi_kl: 4.398733
+
+02SN105-3_Nira (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.052800
+  char_bi_kl: 0.219486
+  char_tri_kl: 0.761878
+  word_uni_kl: 2.096659
+  word_bi_kl: 4.670791
+
+02SN106-1_Nira (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.039895
+  char_bi_kl: 0.196273
+  char_tri_kl: 0.743039
+  word_uni_kl: 2.089585
+  word_bi_kl: 4.557492
+
+02SN106-2_Nira (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.046574
+  char_bi_kl: 0.208296
+  char_tri_kl: 0.760359
+  word_uni_kl: 2.139266
+  word_bi_kl: 4.614783
+
+02SN106-3_Nira (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.061278
+  char_bi_kl: 0.269802
+  char_tri_kl: 0.909252
+  word_uni_kl: 2.014008
+  word_bi_kl: 4.498828
+
+02SN107-4_Nira (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.060886
+  char_bi_kl: 0.297525
+  char_tri_kl: 0.944479
+  word_uni_kl: 2.018005
+  word_bi_kl: 4.361414
+
+02SN108-2_Nira (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.042798
+  char_bi_kl: 0.208419
+  char_tri_kl: 0.752869
+  word_uni_kl: 2.035813
+  word_bi_kl: 4.502205
+
+02SN108-3_Nira (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.055973
+  char_bi_kl: 0.262005
+  char_tri_kl: 0.927138
+  word_uni_kl: 2.133029
+  word_bi_kl: 4.549645
+
+02SN108-7_Nira (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.054372
+  char_bi_kl: 0.291916
+  char_tri_kl: 0.903917
+  word_uni_kl: 2.019328
+  word_bi_kl: 4.526353
+
+02SN111-2_Nira (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.029310
+  char_bi_kl: 0.190952
+  char_tri_kl: 0.751659
+  word_uni_kl: 2.164561
+  word_bi_kl: 4.584494
+
+02SN111-3_Nira (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.090799
+  char_bi_kl: 0.343022
+  char_tri_kl: 1.084647
+  word_uni_kl: 2.193325
+  word_bi_kl: 4.343867
+
+02SN112-1_Nira (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.060503
+  char_bi_kl: 0.316785
+  char_tri_kl: 1.025400
+  word_uni_kl: 2.110577
+  word_bi_kl: 4.236308
+
+02SN112-2_Nira (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.048400
+  char_bi_kl: 0.285249
+  char_tri_kl: 0.928715
+  word_uni_kl: 2.245324
+  word_bi_kl: 4.575017
+
+02SN112-4_Nira (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.033434
+  char_bi_kl: 0.177069
+  char_tri_kl: 0.725414
+  word_uni_kl: 1.979695
+  word_bi_kl: 4.431132
+
+frog_Nira (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.073459
+  char_bi_kl: 0.528963
+  char_tri_kl: 1.679537
+  word_uni_kl: 2.856730
+  word_bi_kl: 5.977176
+  Issues:
+    - Dialect mismatch: predicted Eastern, true Northern
+
+02JN105-1_Zendar (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.057942
+  char_bi_kl: 0.249862
+  char_tri_kl: 0.832375
+  word_uni_kl: 2.311260
+  word_bi_kl: 4.703722
+
+02JN105-2_Zendar (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.038202
+  char_bi_kl: 0.196120
+  char_tri_kl: 0.701603
+  word_uni_kl: 2.203754
+  word_bi_kl: 4.594075
+
+02JN105-3_Zendar (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.037012
+  char_bi_kl: 0.204574
+  char_tri_kl: 0.801690
+  word_uni_kl: 2.277746
+  word_bi_kl: 4.865340
+
+02JN106-1_Zendar (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.058560
+  char_bi_kl: 0.262868
+  char_tri_kl: 0.918269
+  word_uni_kl: 2.215753
+  word_bi_kl: 4.668552
+
+02JN106-2_Zendar (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.037562
+  char_bi_kl: 0.191435
+  char_tri_kl: 0.703172
+  word_uni_kl: 2.434908
+  word_bi_kl: 4.887571
+
+02JN106-3_Zendar (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.058442
+  char_bi_kl: 0.247714
+  char_tri_kl: 0.810954
+  word_uni_kl: 2.241267
+  word_bi_kl: 4.661325
+
+02JN107-4_Zendar (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.064050
+  char_bi_kl: 0.300932
+  char_tri_kl: 0.941732
+  word_uni_kl: 2.130773
+  word_bi_kl: 4.570603
+
+02JN108-1_Zendar (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.046848
+  char_bi_kl: 0.201107
+  char_tri_kl: 0.706852
+  word_uni_kl: 2.288628
+  word_bi_kl: 4.686773
+
+02JN108-3_Zendar (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.050228
+  char_bi_kl: 0.271523
+  char_tri_kl: 0.889835
+  word_uni_kl: 1.976645
+  word_bi_kl: 4.355139
+
+02JN110-1_Zendar (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.044573
+  char_bi_kl: 0.209561
+  char_tri_kl: 0.746084
+  word_uni_kl: 2.239241
+  word_bi_kl: 4.755355
+
+02JN112-1_Zendar (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.033642
+  char_bi_kl: 0.202918
+  char_tri_kl: 0.733338
+  word_uni_kl: 2.075423
+  word_bi_kl: 4.505930
+
+02JN112-2_Zendar (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.045540
+  char_bi_kl: 0.212607
+  char_tri_kl: 0.744291
+  word_uni_kl: 2.043922
+  word_bi_kl: 4.495724
+
+02JN112-3_Zendar (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.143178
+  char_bi_kl: 0.606935
+  char_tri_kl: 1.517666
+  word_uni_kl: 2.837123
+  word_bi_kl: 4.774716
+
+02JN112-4_Zendar (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.038701
+  char_bi_kl: 0.224164
+  char_tri_kl: 0.840369
+  word_uni_kl: 2.377431
+  word_bi_kl: 4.878411
+
+02SN105-1_Zendar (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.043829
+  char_bi_kl: 0.204171
+  char_tri_kl: 0.761913
+  word_uni_kl: 2.361354
+  word_bi_kl: 4.813210
+
+02SN105-2_Zendar (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.054029
+  char_bi_kl: 0.234974
+  char_tri_kl: 0.817039
+  word_uni_kl: 2.114904
+  word_bi_kl: 4.537527
+
+02SN105-3_Zendar (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.053094
+  char_bi_kl: 0.221880
+  char_tri_kl: 0.781012
+  word_uni_kl: 2.274594
+  word_bi_kl: 4.751291
+
+02SN106-1_Zendar (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.038522
+  char_bi_kl: 0.189342
+  char_tri_kl: 0.718671
+  word_uni_kl: 2.123058
+  word_bi_kl: 4.618227
+
+02SN106-2_Zendar (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.044685
+  char_bi_kl: 0.204847
+  char_tri_kl: 0.742995
+  word_uni_kl: 2.358612
+  word_bi_kl: 4.833940
+
+02SN106-3_Zendar (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.062784
+  char_bi_kl: 0.255631
+  char_tri_kl: 0.860839
+  word_uni_kl: 1.958829
+  word_bi_kl: 4.461542
+
+02SN107-4_Zendar (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.061547
+  char_bi_kl: 0.299347
+  char_tri_kl: 0.944830
+  word_uni_kl: 2.017842
+  word_bi_kl: 4.339095
+
+02SN108-2_Zendar (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.039051
+  char_bi_kl: 0.198192
+  char_tri_kl: 0.727268
+  word_uni_kl: 2.158711
+  word_bi_kl: 4.573109
+
+02SN108-3_Zendar (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.050847
+  char_bi_kl: 0.248163
+  char_tri_kl: 0.905111
+  word_uni_kl: 2.224891
+  word_bi_kl: 4.600954
+
+02SN108-7_Zendar (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.057943
+  char_bi_kl: 0.297066
+  char_tri_kl: 0.898452
+  word_uni_kl: 2.089257
+  word_bi_kl: 4.543635
+
+02SN111-2_Zendar (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.030541
+  char_bi_kl: 0.185089
+  char_tri_kl: 0.729652
+  word_uni_kl: 2.249722
+  word_bi_kl: 4.583833
+
+02SN111-3_Zendar (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.086208
+  char_bi_kl: 0.327806
+  char_tri_kl: 1.035392
+  word_uni_kl: 2.133694
+  word_bi_kl: 4.297844
+
+02SN112-1_Zendar (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.057690
+  char_bi_kl: 0.309169
+  char_tri_kl: 1.004056
+  word_uni_kl: 2.132240
+  word_bi_kl: 4.246720
+
+02SN112-2_Zendar (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.043243
+  char_bi_kl: 0.261249
+  char_tri_kl: 0.906993
+  word_uni_kl: 2.329274
+  word_bi_kl: 4.687866
+
+02SN112-4_Zendar (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.034599
+  char_bi_kl: 0.178044
+  char_tri_kl: 0.715128
+  word_uni_kl: 2.152655
+  word_bi_kl: 4.544371
+
+frog_Zendar (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.108472
+  char_bi_kl: 0.672608
+  char_tri_kl: 1.966048
+  word_uni_kl: 3.107122
+  word_bi_kl: 6.108720
+  Issues:
+    - Dialect mismatch: predicted Eastern, true Northern
+
+my_job_Zendar (PWN/Northern):
+  Status: PASS
+  char_uni_kl: 0.054464
+  char_bi_kl: 0.426038
+  char_tri_kl: 1.397914
+  word_uni_kl: 2.799706
+  word_bi_kl: 5.691032
+
+my_life_Zendar (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.064008
+  char_bi_kl: 0.387842
+  char_tri_kl: 1.285215
+  word_uni_kl: 2.685667
+  word_bi_kl: 5.795170
+  Issues:
+    - Dialect mismatch: predicted Eastern, true Northern
+
+my_mother_Zendar (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.057369
+  char_bi_kl: 0.379066
+  char_tri_kl: 1.265203
+  word_uni_kl: 2.360756
+  word_bi_kl: 5.580221
+  Issues:
+    - Dialect mismatch: predicted Eastern, true Northern
+
+pear_Zendar (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.065659
+  char_bi_kl: 0.577625
+  char_tri_kl: 1.822792
+  word_uni_kl: 3.266480
+  word_bi_kl: 6.004567
+  Issues:
+    - Dialect mismatch: predicted Southern, true Northern
+
+White_owl_and_brown_owl_006_Zendar (PWN/Northern):
+  Status: FAIL
+  char_uni_kl: 0.086862
+  char_bi_kl: 0.577815
+  char_tri_kl: 1.746367
+  word_uni_kl: 2.478318
+  word_bi_kl: 5.762697
+  Issues:
+    - Dialect mismatch: predicted Southern, true Northern
+
+Southern_Paiwan (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.009738
+  char_bi_kl: 0.059310
+  char_tri_kl: 0.231892
+  word_uni_kl: 0.832635
+  word_bi_kl: 2.121351
+
+Southern_Paiwan (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.031862
+  char_bi_kl: 0.128137
+  char_tri_kl: 0.423187
+  word_uni_kl: 1.005858
+  word_bi_kl: 2.135000
+
+Southern_Paiwan (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.039061
+  char_bi_kl: 0.152693
+  char_tri_kl: 0.507772
+  word_uni_kl: 1.123818
+  word_bi_kl: 2.360645
+
+Southern_Paiwan (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.017218
+  char_bi_kl: 0.073210
+  char_tri_kl: 0.238241
+  word_uni_kl: 0.740573
+  word_bi_kl: 1.759357
+
+Southern_Paiwan (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.015036
+  char_bi_kl: 0.079406
+  char_tri_kl: 0.291742
+  word_uni_kl: 1.172861
+  word_bi_kl: 2.490127
+
+Southern_Paiwan (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.025993
+  char_bi_kl: 0.116994
+  char_tri_kl: 0.454479
+  word_uni_kl: 1.409973
+  word_bi_kl: 3.324743
+
+Southern_Paiwan (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.021984
+  char_bi_kl: 0.071794
+  char_tri_kl: 0.194891
+  word_uni_kl: 0.669796
+  word_bi_kl: 1.433665
+
+Southern_Paiwan (PWN/Southern):
+  Status: FAIL
+  char_uni_kl: 0.136633
+  char_bi_kl: 0.369945
+  char_tri_kl: 0.732821
+  word_uni_kl: 1.968280
+  word_bi_kl: 3.304217
+  Issues:
+    - Dialect mismatch: predicted Central, true Southern
+
+Southern_Paiwan (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.014603
+  char_bi_kl: 0.055688
+  char_tri_kl: 0.186213
+  word_uni_kl: 0.816264
+  word_bi_kl: 1.911489
+
+Southern_Paiwan (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.017880
+  char_bi_kl: 0.087039
+  char_tri_kl: 0.307347
+  word_uni_kl: 0.988620
+  word_bi_kl: 2.478825
+
+PaiwanCh2_001 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.073925
+  char_bi_kl: 0.329931
+  char_tri_kl: 0.983653
+  word_uni_kl: 1.977302
+  word_bi_kl: 4.133256
+
+PaiwanCh2_002 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.049565
+  char_bi_kl: 0.253679
+  char_tri_kl: 0.846932
+  word_uni_kl: 1.808823
+  word_bi_kl: 3.813364
+
+PaiwanCh2_003 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.067999
+  char_bi_kl: 0.294749
+  char_tri_kl: 0.923926
+  word_uni_kl: 1.751682
+  word_bi_kl: 3.804338
+
+PaiwanCh2_004 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.049339
+  char_bi_kl: 0.304106
+  char_tri_kl: 1.063028
+  word_uni_kl: 1.993615
+  word_bi_kl: 4.359131
+
+PaiwanCh2_005 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.077003
+  char_bi_kl: 0.399253
+  char_tri_kl: 1.169810
+  word_uni_kl: 1.989358
+  word_bi_kl: 4.082575
+
+PaiwanCh2_006 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.061349
+  char_bi_kl: 0.315527
+  char_tri_kl: 1.058310
+  word_uni_kl: 2.042303
+  word_bi_kl: 4.428815
+
+PaiwanCh2_007 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.077939
+  char_bi_kl: 0.411686
+  char_tri_kl: 1.273970
+  word_uni_kl: 2.162875
+  word_bi_kl: 4.651229
+
+PaiwanCh2_008 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.103803
+  char_bi_kl: 0.442362
+  char_tri_kl: 1.230496
+  word_uni_kl: 2.043074
+  word_bi_kl: 4.329293
+
+PaiwanCh2_009 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.104395
+  char_bi_kl: 0.422401
+  char_tri_kl: 1.198874
+  word_uni_kl: 2.103231
+  word_bi_kl: 4.215362
+
+PaiwanCh2_010 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.058427
+  char_bi_kl: 0.345125
+  char_tri_kl: 1.165753
+  word_uni_kl: 2.276347
+  word_bi_kl: 4.442902
+
+PaiwanCh2_011 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.049140
+  char_bi_kl: 0.241900
+  char_tri_kl: 0.793864
+  word_uni_kl: 1.636593
+  word_bi_kl: 3.611368
+
+PaiwanCh2_012 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.085498
+  char_bi_kl: 0.420773
+  char_tri_kl: 1.358380
+  word_uni_kl: 2.395222
+  word_bi_kl: 5.014262
+
+PaiwanCh2_013 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.096446
+  char_bi_kl: 0.434984
+  char_tri_kl: 1.180925
+  word_uni_kl: 2.075743
+  word_bi_kl: 4.226752
+
+PaiwanCh2_014 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.102975
+  char_bi_kl: 0.600547
+  char_tri_kl: 1.813210
+  word_uni_kl: 3.124440
+  word_bi_kl: 5.497898
+
+PaiwanCh2_015 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.066095
+  char_bi_kl: 0.456271
+  char_tri_kl: 1.523261
+  word_uni_kl: 2.668640
+  word_bi_kl: 5.423522
+
+PaiwanCh2_016 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.041639
+  char_bi_kl: 0.235502
+  char_tri_kl: 0.812253
+  word_uni_kl: 1.679342
+  word_bi_kl: 3.851448
+
+PaiwanCh2_017 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.050051
+  char_bi_kl: 0.342044
+  char_tri_kl: 1.151074
+  word_uni_kl: 1.944470
+  word_bi_kl: 4.603466
+
+PaiwanCh2_018 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.091244
+  char_bi_kl: 0.417076
+  char_tri_kl: 1.327140
+  word_uni_kl: 2.250835
+  word_bi_kl: 4.761423
+
+PaiwanCh2_019 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.116829
+  char_bi_kl: 0.700823
+  char_tri_kl: 1.840341
+  word_uni_kl: 2.602491
+  word_bi_kl: 5.765034
+
+PaiwanCh2_020 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.105090
+  char_bi_kl: 0.668051
+  char_tri_kl: 1.875598
+  word_uni_kl: 3.383569
+  word_bi_kl: 6.439873
+
+PaiwanCh2_021 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.082329
+  char_bi_kl: 0.460028
+  char_tri_kl: 1.567907
+  word_uni_kl: 2.502572
+  word_bi_kl: 5.623790
+
+PaiwanCh2_022 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.107087
+  char_bi_kl: 0.593872
+  char_tri_kl: 1.770154
+  word_uni_kl: 2.842465
+  word_bi_kl: 5.858522
+
+PaiwanCh2_023 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.059943
+  char_bi_kl: 0.423271
+  char_tri_kl: 1.322324
+  word_uni_kl: 2.366267
+  word_bi_kl: 4.978919
+
+PaiwanCh2_024 (PWN/Southern):
+  Status: FAIL
+  char_uni_kl: 0.054626
+  char_bi_kl: 0.520776
+  char_tri_kl: 1.701025
+  word_uni_kl: 3.115050
+  word_bi_kl: 5.761323
+  Issues:
+    - Dialect mismatch: predicted unknown, true Southern
+
+PaiwanCh2_025 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.077262
+  char_bi_kl: 0.363740
+  char_tri_kl: 1.246760
+  word_uni_kl: 2.380236
+  word_bi_kl: 4.980875
+
+PaiwanCh2_026 (PWN/Southern):
+  Status: FAIL
+  char_uni_kl: 0.166334
+  char_bi_kl: 0.752717
+  char_tri_kl: 2.064742
+  word_uni_kl: 2.659213
+  word_bi_kl: 5.890012
+  Issues:
+    - Dialect mismatch: predicted unknown, true Southern
+
+PaiwanCh2_027 (PWN/Southern):
+  Status: FAIL
+  char_uni_kl: 0.088171
+  char_bi_kl: 0.458637
+  char_tri_kl: 1.403425
+  word_uni_kl: 2.087613
+  word_bi_kl: 4.484471
+  Issues:
+    - Dialect mismatch: predicted unknown, true Southern
+
+PaiwanCh2_028 (PWN/Southern):
+  Status: FAIL
+  char_uni_kl: 0.258617
+  char_bi_kl: 1.232480
+  char_tri_kl: 2.831779
+  word_uni_kl: 3.358427
+  word_bi_kl: 6.400492
+  Issues:
+    - char_tri_delta exceeded dialect upper threshold
+    - Dialect mismatch: predicted unknown, true Southern
+
+PaiwanCh2_029 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.125978
+  char_bi_kl: 0.722174
+  char_tri_kl: 1.953275
+  word_uni_kl: 2.817813
+  word_bi_kl: 5.722487
+
+PaiwanCh2_030 (PWN/Southern):
+  Status: FAIL
+  char_uni_kl: 0.071036
+  char_bi_kl: 0.571385
+  char_tri_kl: 1.797358
+  word_uni_kl: 3.042114
+  word_bi_kl: 5.943684
+  Issues:
+    - Dialect mismatch: predicted unknown, true Southern
+
+PaiwanCh2_031 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.060500
+  char_bi_kl: 0.430852
+  char_tri_kl: 1.483602
+  word_uni_kl: 2.473572
+  word_bi_kl: 5.152430
+
+PaiwanCh2_032 (PWN/Southern):
+  Status: FAIL
+  char_uni_kl: 0.106903
+  char_bi_kl: 0.556951
+  char_tri_kl: 1.570832
+  word_uni_kl: 2.435745
+  word_bi_kl: 4.998115
+  Issues:
+    - Dialect mismatch: predicted unknown, true Southern
+
+PaiwanCh2_033 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.087492
+  char_bi_kl: 0.468493
+  char_tri_kl: 1.538778
+  word_uni_kl: 2.380321
+  word_bi_kl: 5.075467
+
+PaiwanCh2_034 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.140234
+  char_bi_kl: 0.572972
+  char_tri_kl: 1.613223
+  word_uni_kl: 2.644527
+  word_bi_kl: 5.080173
+
+PaiwanCh2_035 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.122149
+  char_bi_kl: 0.569976
+  char_tri_kl: 1.601461
+  word_uni_kl: 2.800286
+  word_bi_kl: 5.605156
+
+PaiwanCh2_036 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.056894
+  char_bi_kl: 0.384527
+  char_tri_kl: 1.224412
+  word_uni_kl: 2.110638
+  word_bi_kl: 4.791394
+
+PaiwanCh2_037 (PWN/Southern):
+  Status: FAIL
+  char_uni_kl: 0.064068
+  char_bi_kl: 0.353731
+  char_tri_kl: 1.084796
+  word_uni_kl: 2.130471
+  word_bi_kl: 4.431343
+  Issues:
+    - Dialect mismatch: predicted unknown, true Southern
+
+PaiwanCh2_038 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.056586
+  char_bi_kl: 0.326733
+  char_tri_kl: 1.166039
+  word_uni_kl: 2.179193
+  word_bi_kl: 4.713565
+
+PaiwanCh2_039 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.073746
+  char_bi_kl: 0.373711
+  char_tri_kl: 1.210952
+  word_uni_kl: 2.429296
+  word_bi_kl: 5.108394
+
+PaiwanCh2_040 (PWN/Southern):
+  Status: FAIL
+  char_uni_kl: 0.089558
+  char_bi_kl: 0.351235
+  char_tri_kl: 1.020737
+  word_uni_kl: 1.924041
+  word_bi_kl: 3.997587
+  Issues:
+    - Dialect mismatch: predicted unknown, true Southern
+
+PaiwanCh2_041 (PWN/Southern):
+  Status: FAIL
+  char_uni_kl: 0.130346
+  char_bi_kl: 0.594572
+  char_tri_kl: 1.623972
+  word_uni_kl: 2.455867
+  word_bi_kl: 5.129019
+  Issues:
+    - Dialect mismatch: predicted unknown, true Southern
+
+frog_Doriel (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.041978
+  char_bi_kl: 0.554918
+  char_tri_kl: 1.779267
+  word_uni_kl: 2.680679
+  word_bi_kl: 5.179082
+
+kiukay_Doriel (PWN/Southern):
+  Status: FAIL
+  char_uni_kl: 0.113945
+  char_bi_kl: 0.621311
+  char_tri_kl: 1.728772
+  word_uni_kl: 2.572114
+  word_bi_kl: 5.277571
+  Issues:
+    - Dialect mismatch: predicted Eastern, true Southern
+
+mazazeliyulj_Doriel (PWN/Southern):
+  Status: FAIL
+  char_uni_kl: 0.075658
+  char_bi_kl: 0.411597
+  char_tri_kl: 1.377104
+  word_uni_kl: 2.257864
+  word_bi_kl: 4.892044
+  Issues:
+    - Dialect mismatch: predicted Central, true Southern
+
+pear_Doriel (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.076397
+  char_bi_kl: 0.538733
+  char_tri_kl: 1.601734
+  word_uni_kl: 2.834355
+  word_bi_kl: 5.456637
+
+02_Orsen_01 (PWN/Southern):
+  Status: FAIL
+  char_uni_kl: 0.077473
+  char_bi_kl: 0.294200
+  char_tri_kl: 0.958059
+  word_uni_kl: 2.048023
+  word_bi_kl: 4.491057
+  Issues:
+    - Dialect mismatch: predicted Northern, true Southern
+
+02_Orsen_02 (PWN/Southern):
+  Status: FAIL
+  char_uni_kl: 0.109172
+  char_bi_kl: 0.408768
+  char_tri_kl: 1.169494
+  word_uni_kl: 1.993059
+  word_bi_kl: 4.256091
+  Issues:
+    - Dialect mismatch: predicted Northern, true Southern
+
+02_Orsen_03 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.058615
+  char_bi_kl: 0.269586
+  char_tri_kl: 0.958588
+  word_uni_kl: 1.926887
+  word_bi_kl: 4.356526
+
+02_Orsen_04 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.052439
+  char_bi_kl: 0.273630
+  char_tri_kl: 0.929733
+  word_uni_kl: 2.086094
+  word_bi_kl: 4.434161
+
+02_Orsen_05 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.069924
+  char_bi_kl: 0.326441
+  char_tri_kl: 1.045315
+  word_uni_kl: 2.106888
+  word_bi_kl: 4.414190
+
+02_Orsen_06 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.070691
+  char_bi_kl: 0.287156
+  char_tri_kl: 1.041104
+  word_uni_kl: 2.080776
+  word_bi_kl: 4.263656
+
+02_Orsen_07 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.071391
+  char_bi_kl: 0.315032
+  char_tri_kl: 0.972482
+  word_uni_kl: 2.041782
+  word_bi_kl: 4.393671
+
+02_Orsen_08 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.035971
+  char_bi_kl: 0.228546
+  char_tri_kl: 0.910909
+  word_uni_kl: 1.876989
+  word_bi_kl: 4.342603
+
+02_Orsen_09 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.049736
+  char_bi_kl: 0.297468
+  char_tri_kl: 0.972246
+  word_uni_kl: 2.021919
+  word_bi_kl: 4.254691
+
+02_Orsen_10 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.068191
+  char_bi_kl: 0.279202
+  char_tri_kl: 0.915028
+  word_uni_kl: 1.846803
+  word_bi_kl: 4.231636
+
+02_Orsen_11 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.054464
+  char_bi_kl: 0.228434
+  char_tri_kl: 0.790529
+  word_uni_kl: 1.942063
+  word_bi_kl: 4.306165
+
+02_Orsen_12 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.062706
+  char_bi_kl: 0.251251
+  char_tri_kl: 0.853417
+  word_uni_kl: 1.935487
+  word_bi_kl: 4.284548
+
+02_Orsen_13 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.067307
+  char_bi_kl: 0.316059
+  char_tri_kl: 1.043758
+  word_uni_kl: 2.186628
+  word_bi_kl: 4.687814
+
+02_Orsen_14 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.070959
+  char_bi_kl: 0.306153
+  char_tri_kl: 0.996333
+  word_uni_kl: 1.833746
+  word_bi_kl: 4.166024
+
+02_Orsen_15 (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.064348
+  char_bi_kl: 0.295249
+  char_tri_kl: 0.977911
+  word_uni_kl: 2.056889
+  word_bi_kl: 4.504576
+
+hand_tattoos_in_Paiwan_Orsen (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.083430
+  char_bi_kl: 0.569871
+  char_tri_kl: 1.700995
+  word_uni_kl: 2.460177
+  word_bi_kl: 5.159833
+
+Learning_languages_Orsen (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.133779
+  char_bi_kl: 0.655539
+  char_tri_kl: 1.727331
+  word_uni_kl: 2.267282
+  word_bi_kl: 5.030422
+
+naming_in_Paiwan_Orsen (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.073535
+  char_bi_kl: 0.674338
+  char_tri_kl: 1.918808
+  word_uni_kl: 2.452966
+  word_bi_kl: 4.950499
+
+self-introduction_Orsen (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.103084
+  char_bi_kl: 0.570814
+  char_tri_kl: 1.635624
+  word_uni_kl: 2.222190
+  word_bi_kl: 5.236643
+
+Paiwan_Yedda_Blog (PWN/Southern):
+  Status: PASS
+  char_uni_kl: 0.010084
+  char_bi_kl: 0.047275
+  char_tri_kl: 0.161599
+  word_uni_kl: 0.661903
+  word_bi_kl: 1.723442
+
+1984 (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+a_nia_cemekeljan_kata_nia_'inaljan_(sekazazaljan)) (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+a_ramaljeng_katua_ljavek (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+abaya (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+abulakili (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Akira_Suzuki (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+akuamin (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Alishan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+aljak_na_mazazangiljan_a_ti_paisi (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Aljazair (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Aljenljeng_Tjaluvie (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Amit_Kulilay (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+anna_karinina (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Antoni_Gaudi (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+aradj (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+ariki (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Asiya (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+atia (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+atlantis (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+bacang (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Baliwakes_Raera (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+barcelona_a_lizuk (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Basu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Beinan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Beltane (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Biung_Tak-Banuaz (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+blackpink (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Blocked_Drains_Crawley (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+budu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+buksing_a_kinateveteveljan_a_semenay (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Bunun (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+cabukan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+calavi (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Camake_de_Feisingtusi (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+cawtun (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+cekecek (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+cemaucauan_a_semanpazangal_tua_kakaian_nua_kuni (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Centre_Georges-Pompidou_a_umaq (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+cepeng (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Changbin (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Chenggong (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Chin-Min_Yang (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Chishang (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Chunri (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+cia (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+cinavu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+cinunan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+citengseng (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+clarke_quay (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+CNN (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Corbin_Bleu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+COVID-19 (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Cudjuy_Patjidres (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+cuqu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Daren (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Datong (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Dawu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+disiaba_i_calaviq (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+djalunay (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+djaqas (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+djemuljat (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+djilung (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+djulis (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Donghe (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Doraemon (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+drakes (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+dralik (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+drangadrang_sung (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Drangadrang_Yang (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Dripun (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Edirne (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+el_niniyu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Euphrase_Kezilahabi (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Fengbin (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Fenglin (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Finland (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+France (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Fuli (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Fuxing (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+gingningmu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+google_meet (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+gst_calculator (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Guangfu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Guanshan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Guanxi (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+guciu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+gung (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+hada_nua_kuga_na_ukeran (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Haiduan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Haley_Joel_Osment (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Halloween (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Halloween_costume (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+hangul (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Heping (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Hideki_Yukawa (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+hiniberayan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+hip_hap (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Hu_Tai-Li (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Hualien (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Hung_Rui-lin (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Idjiputu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Ijumu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+ika_mapapatjavat_a_paysu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+ika_mapavalit_a_paysu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Ilaro (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+iliyad (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+imanuli (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+INigeria (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+inpic (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Ipokia (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Israil (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Isubya (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+iyubaike (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+iyurupu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+JavaScript (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Jianshi (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Jinfeng (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Ji’an (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+kacalisian (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+kacu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+kai (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Kai_nua_Cemas (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+kai_nua_ukelan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Kaidi (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Kalinku_king (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+kaljaljaljeqelan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+kaljaljuljalju (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+kaljapang (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+kaljavevean_i_prague (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+kalulingay (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Kam (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Kamala_Harris (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+kamilami (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+kamutu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+kanadunadung (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+kanalung (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+karai (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+karuveljevalj (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+karuveljevelj (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+kasiwtu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Kasugagu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+kataljap (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+kavayan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+kaviyangan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Kavulungan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Kawabata_Yasunari (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Kebalan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+kebaya (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+kinacemkeljan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+kinaizuanan_nua_kakukakudan_nua_sekacalisian (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+kinala (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+kinateveteveljan_nua_laiun (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Kinezang,_Taitu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+kipapacay_tjai_tjiung_kingkuk (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Kiparuk_tua_ramaji (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+kiukay (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+kivecik (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+kon_tiki_a_pasacadja (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+kulisimas (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+kuljaljau (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Kuo_Hsing-Chun (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Lagos (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Lagos_State (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Laiyi (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+lalang (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+lami (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+langalj (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Lanyu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Lee_Yi-hsiu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+liaw_tiamting (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Lidaku_Mabaliu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Liglav_A-wu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+likisi (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+likuljaw (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+line (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+linugus (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+liuktui (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+lizuk_a_didjun (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+lizuk_a_lamtaw (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+lizuk_a_lundun (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+ljabecubecuq (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+ljadjulidjulis (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+ljakidjur (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+ljalici (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+ljameljam (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+ljamudu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+ljapicupicul (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+ljapupuk (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+ljasaras (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+ljavangas (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+ljaves (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+ljavilu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+ljavucuvucu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+ljawzung (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+ljayaz (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+ljemaljeqelan_nu_salilim (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+ljisava (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+ljivakung (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+ljivanger (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+ljumay (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+ljungpav (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+louvre_a_umaq (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+lukuc (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Luye (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+maca (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Macia (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+madjulu_a_sisupuan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Majia (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+maka_kuzulj_sa_italj_a_siniuljayan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Makagu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+makav (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+makawanglu_a_tigami (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+makazayazaya (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Malailaing_a_Inuli (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Malaki_(Kai_nua_Cemas) (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Malaysia (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+mali (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+maljeveq (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+mamazangiljan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+mamazangiljan_ti_idipus (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Manzhou (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Maolin (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+mapareumalj_a_quantum (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+marekakunian (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+mareusayan_a_lucuiki (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+masalu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Masalut (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Masilidj (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Maui (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Maysang_Kalimud (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+mazazeliuliulj (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+medea (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Miauli_king (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Mikaoji_Kung'yu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Mikawci_Kung'yu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+milimilingan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+miliq (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+minamilingan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Mudan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+mukav (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+mulaciu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+mumalj_a_palalaut (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+namacai_a_ljavek (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+namasan_nitjen_a_sikakaiyan_a_sipatjevarungan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Namasia (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+namaya_ta_makatjukutjuku_a_sidjakadjak (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Nanzhuang (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Nan’ao (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+nasi_lemak (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+NewJeans (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+ngat (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Ngerenger_Kazangiljan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+nginaingayan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+nia_cemekeljan_kata_nia_'inaljan_(se'apedang) (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Niger_State (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+nu_sesingvaudjan_a_tjaucikel (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Paelabang_Danapan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Pairang (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Paiwan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+pakituluan_tua_ljingav_nua_tja_kai (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+palaingan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+palisian_nua_zaljum (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+paljaqic (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Panai_Kusui (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Panama (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+pangangac (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+papuligu_ni_nuabil_tua_venecik_ta_kininemeneman (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+paqaljay (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+paris (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+pasakacedas_tua_asiya (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Paudull (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+pauljay (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+paumeli (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Picul_(tiribi) (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Pilipinas (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+piljay (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+pinairangan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+pinarasudjan_a_mareka_kalaingan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+pinayuanan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+pinaywanan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+pinpu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+pinudjalanan_nua_sebaletik (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+piwidji (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+pizza (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+ptt (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+pucavilj (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Pucevuljan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+pugupugu_a_drail (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+puhikukian_nua_changi (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+puk (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+pulima (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+pulingaw (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+pulinisiya (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+puljesek (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+puluc (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+puvarukuran_a_ealiaw (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+qaciljai (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+qadavan_nua_kacalisiyan_i_kacawan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Qadaw (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Qakaw_king (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+qalici (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+qaljic_a_busi (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+qaljic_a_tjalupung (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+qaqaljupan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+qaris (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+qasi (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+qata (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+qau (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+qaynguway (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+qayu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+qazavay (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+qinaciljai (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+qudjilj (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+quljicaca (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+quljivangraw (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+qungalj (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+qungcuy (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+quway (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+rak_in_rul (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+rali (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+ramis (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+ravuc (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Ren’ai (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+rigi (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Ruisui (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+rumazi (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+rumicing (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+ruquaguagu_ta_iyu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+rusung (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+saizalu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Sakizaya (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+sakudra (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+saluda (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+samaq (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Samata_Sakuma (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+sameci (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Samhain (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+samiyan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+sanasay (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Sandimen (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+sangasangasan_a_natjemaza (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+sangpuru (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Sangpuy_Katatepan_Mavaliyw (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+sanguljingulji (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+sapeljik (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+sapulju (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+sapuy (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+saseljavakan_a_MeToo (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+sasiq (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+sasusuan_ni_pitaguras (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+saviki (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+sekazu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+sekuskus_a_kinateveteveljan_a_semenay (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+sengcingyian (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+senupy (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+sesiraya (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+setjimur_a_kinateveteveljan_a_semanziyan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Shitan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Shizi (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Shoufeng (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+sikakan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+sikaw (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+sinan_drukudrukung_simintu_a_paljing (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Sinaseljang_a_tasi (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Singapura (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+singelitanga'en_ta_'u_'inaljan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+sinkiu_nua_cungtung_nua_pinuveqeveqan_nua_taqaljaqaljan_i_ciuka_ka_2024_a_caviljan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Sinvaudjan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+sisataigaku_a_siking (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+sisekingan_tua_caquan_a_pakatjanu_kai_a_kinacalisiyanan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+sisekingan_tua_caquan_a_pakatjanu_kai_nua_amilika (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+sisekingan_tua_caquan_a_pakatjanu_pinairangan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Suming_Rupi (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+susi (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Syaman_Rapongan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Tadren (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+taibun_tungsin_bungpu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+taicitiyan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+taigaku_nua_qakaw (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+taihuku (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Tailiku (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Taimali (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Taitu_king (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Taitung (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Taiwan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Taiwu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Tai’an (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+talau_a_vacalj (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Taoyuan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+tirana (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Tiribi_na_Kacalisian (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+tjainan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+tjakudrang_i_tjuabar (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Tjaljaqavus (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+tjaljum (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+tjalupung (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+tjamaku (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+tjanaq (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+tjava (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Tjavualji (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+tjavuqel (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+tjavuvuk (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+tjeves (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+tjevus (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Tjimur (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+tjiuceng (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Tjuku_Tsai (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+tjumaljiaqaljan_a_caucau (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+tjuqulj (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Tsai_I-lin (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+tuaki (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+tuki (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+tunis (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Tuvalu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Tân_Tîng-Pho (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Tēnn_Lâm-iông (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+ukelan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+umaq (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Uong'e_Yatauyungana (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+vacinga (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+vaduvadu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+valangaw (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+valeng (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+valjanay (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+valjangatju (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+valjevalj (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+valjingat (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+valulju (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+vanaq (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Vangecul (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+vaqu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+vaquan_a_tjekeza (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+vasa (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+vatjuljayan_a_papukakeljanganan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+vatu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+vaw (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+veljevelj (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+venarung_ta_kai_a_pakasaseljangan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+veneve (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+verdjinia_wuv (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Viet (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+viljauljaul (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+viljuaq (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+viniqu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+vinlan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Vinqacan_(Kai_nua_Cemas) (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+vuciyulj (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+vungu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+vurasi (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Wanrong (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Wu_Ming-Yi (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Wufeng (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Wulai (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Wutai (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Xincheng (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Xinyi (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Xiongchumo (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Xiulin (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Yang_Yung-wei (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Yanping (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Yasunari_Kawabata (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Yewa (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Yorubaland (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Yuchi (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Yuli (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+yuzilu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+zakilj (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+zangav (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+zaqu (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+Zhuoxi (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+zintun_a_wazaqan (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+ziyaguitiyaw (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+zuga (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+zungulj (PWN/default):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect default
+
+PaiwanCh2_090 (PWN/unknown):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect unknown
+
+PaiwanCh2_091 (PWN/unknown):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect unknown
+
+PaiwanCh2_097 (PWN/unknown):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect unknown
+
+PaiwanCh2_099 (PWN/unknown):
+  Status: SKIP
+  Issues:
+    - No thresholds for dialect unknown

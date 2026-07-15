@@ -1,0 +1,17 @@
+2026-07-13 11:39:04,161 - INFO - ================================================================================
+2026-07-13 11:39:04,161 - INFO - Validating Corpora with Per-Dialect Thresholds
+2026-07-13 11:39:04,162 - INFO - ================================================================================
+2026-07-13 11:39:04,305 - INFO - Found 18250 XML files total
+2026-07-13 11:39:16,361 - INFO - Loaded 67 documents across 5 dialects for language BNN
+2026-07-13 11:39:16,479 - INFO - ================================================================================
+2026-07-13 11:39:16,479 - INFO - Optimizing dialect discrimination weights...
+2026-07-13 11:39:16,482 - INFO - Optimizing weights for dialect discrimination...
+2026-07-13 11:39:40,136 - INFO - Optimal weights: char_uni=0.3252, char_bi=0.1214, char_tri=0.4982, word_uni=0.0552
+2026-07-13 11:39:40,136 - INFO - Best dialect F1: 0.9851
+2026-07-13 11:39:40,497 - INFO - ================================================================================
+2026-07-13 11:39:40,497 - INFO - Validation Complete
+2026-07-13 11:39:40,497 - INFO - Total files: 67
+2026-07-13 11:39:40,497 - INFO - Passed: 66
+2026-07-13 11:39:40,497 - INFO - Failed: 1
+2026-07-13 11:39:40,497 - INFO - Results saved to test_results/corpora_dialect_validation
+2026-07-13 11:39:40,497 - INFO - ================================================================================

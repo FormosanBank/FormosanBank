@@ -3,7 +3,8 @@ from __future__ import annotations
 import warnings
 from pathlib import Path
 from collections import defaultdict
-from QC.utilities.dialect_detector.data import iter_labeled_documents, iter_unknown_documents
+from typing import Any, cast
+from QC.utilities.dialect_detector.data import iter_labeled_documents
 
 
 def evaluate_language(lang_code: str, model, corpora_path: Path) -> dict:
@@ -116,30 +117,28 @@ def _fold_assignment(kept, present, k):
     return labeled
 
 
-def _assign_unknown_holdout(unknown_docs, k):
-    """Deterministically spread unknown docs across folds by path."""
-    return [
-        (doc, i % k)
-        for i, doc in enumerate(sorted(unknown_docs, key=lambda x: str(x.path)))
-    ]
-
-
 def cross_validate(lang_code, corpora_path, orthographies_path, k: int = 5,
                    top_n: int = 2000) -> dict | None:
     """Honest held-out evaluation: stratified per-dialect K-fold, refitting the
     profiles AND combiner on each fold's training split (no test leakage).
 
     Returns {language, n, top1, top1_kl, confusion, confusion_kl, records,
-    records_kl, unknown_records_kl}, where `records` and `records_kl` are lists
-    of (score, is_correct) for threshold calibration (softmax and KL
-    respectively), and `unknown_records_kl` are held-out KL confidence scores on
-    same-language docs whose dialect is marked unknown. None if the language is
+    records_kl, svm_unknown_accuracy, svm_unknown_n}, where `records` and
+    `records_kl` are lists of (score, is_correct) for threshold calibration
+    (softmax and KL respectively), and `svm_unknown_*` evaluate a second-stage
+    multiclass SVM trained on all known-label documents for the language
+    (excluding unknown labels), using TF-IDF word unigram/bigram features and
+    SVD reduction (target 200 dims), then scored on originally unknown
+    held-out predictions (against their true labels). None if the language is
     out of scope or has <2 attested dialects.
     """
     from QC.utilities.dialect_detector.model import (
         fit_model_from_docs, language_name_for,
     )
     from QC.utilities.dialect_detector.graphemes import load_letter_inventories
+    from sklearn.decomposition import TruncatedSVD
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    from sklearn.svm import SVC
 
     name = language_name_for(lang_code)
     if name is None:
@@ -148,27 +147,30 @@ def cross_validate(lang_code, corpora_path, orthographies_path, k: int = 5,
     if not inventories:
         return None
     kept, _dropped = iter_labeled_documents(corpora_path, lang_code)
-    unknown_docs = iter_unknown_documents(corpora_path, lang_code)
     present = sorted({d.dialect for d in kept})
     if len(present) < 2:
         return None
     labeled = _fold_assignment(kept, present, k)
-    unknown_labeled = _assign_unknown_holdout(unknown_docs, k)
 
     confusion: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
     confusion_kl: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
     records: list[tuple[float, bool]] = []  # (softmax_prob, is_correct)
     records_kl: list[tuple[float, bool]] = []  # (kl_confidence, is_correct)
-    unknown_records_kl: list[float] = []  # held-out KL confidence on unknown-marked docs
+    # Second-stage SVM evaluation set from out-of-fold unknown predictions.
+    svm_unknown_texts: list[str] = []
+    svm_unknown_true: list[str] = []
+    # Train SVM on all known-label docs for this language (unknown labels excluded by iterator).
+    svm_train_texts = [doc.text for doc in kept]
+    svm_train_y = [doc.dialect for doc in kept]
     for f in range(k):
         train = [doc for doc, fold in labeled if fold != f]
         test = [doc for doc, fold in labeled if fold == f]
-        unknown_test = [doc for doc, fold in unknown_labeled if fold == f]
         if not test:
             continue
         model = fit_model_from_docs(lang_code, name, inventories, train, top_n=top_n)
         if model is None:
             continue
+        score_text_kl = getattr(model, "score_text_kl", None)
         for doc in test:
             # Softmax-based prediction
             ranked = model.score_text(doc.text)
@@ -176,16 +178,35 @@ def cross_validate(lang_code, corpora_path, orthographies_path, k: int = 5,
                 pred, prob, _ = ranked[0]
                 confusion[doc.dialect][pred] += 1
                 records.append((prob, pred == doc.dialect))
+                if prob < model.threshold:
+                    svm_unknown_texts.append(doc.text)
+                    svm_unknown_true.append(doc.dialect)
             
             # KL divergence-based prediction
-            pred_kl, conf_kl, ranked_kl = model.score_text_kl(doc.text)
-            if pred_kl is not None:
-                confusion_kl[doc.dialect][pred_kl] += 1
-                records_kl.append((conf_kl, pred_kl == doc.dialect))
-        for doc in unknown_test:
-            pred_kl, conf_kl, ranked_kl = model.score_text_kl(doc.text)
-            if pred_kl is not None:
-                unknown_records_kl.append(conf_kl)
+            if callable(score_text_kl):
+                pred_kl, conf_kl, ranked_kl = cast(Any, score_text_kl(doc.text))
+                if pred_kl is not None:
+                    confusion_kl[doc.dialect][pred_kl] += 1
+                    records_kl.append((conf_kl, pred_kl == doc.dialect))
+
+    svm_unknown_accuracy = 0.0
+    svm_unknown_n = len(svm_unknown_true)
+    if svm_train_texts and svm_unknown_texts and len(set(svm_train_y)) >= 2:
+        vectorizer = TfidfVectorizer(ngram_range=(1, 2), analyzer="word")
+        svm_train_x = vectorizer.fit_transform(svm_train_texts)
+        svm_unknown_x = vectorizer.transform(svm_unknown_texts)
+
+        max_components = min(200, svm_train_x.shape[0] - 1, svm_train_x.shape[1] - 1)
+        if max_components >= 1:
+            svd = TruncatedSVD(n_components=max_components, random_state=0)
+            svm_train_x = svd.fit_transform(svm_train_x)
+            svm_unknown_x = svd.transform(svm_unknown_x)
+
+        svm = SVC(kernel="rbf", gamma="scale", decision_function_shape="ovr", random_state=0)
+        svm.fit(svm_train_x, svm_train_y)
+        svm_pred_unknown = svm.predict(svm_unknown_x)
+        correct = sum(p == t for p, t in zip(svm_pred_unknown, svm_unknown_true))
+        svm_unknown_accuracy = correct / svm_unknown_n if svm_unknown_n else 0.0
     
     n = len(records)
     top1 = sum(1 for _, c in records if c) / n if n else 0.0
@@ -199,5 +220,6 @@ def cross_validate(lang_code, corpora_path, orthographies_path, k: int = 5,
         "confusion_kl": {kk: dict(vv) for kk, vv in confusion_kl.items()},
         "records": records,
         "records_kl": records_kl,
-        "unknown_records_kl": unknown_records_kl,
+        "svm_unknown_accuracy": svm_unknown_accuracy,
+        "svm_unknown_n": svm_unknown_n,
     }

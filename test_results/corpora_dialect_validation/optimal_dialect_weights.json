@@ -1,0 +1,13 @@
+{
+  "optimal_weights": {
+    "char_uni": 0.9458288941170652,
+    "char_tri": 0.05417110588293483
+  },
+  "selected_features": [
+    "char_uni",
+    "char_tri"
+  ],
+  "best_f1": 0.5126658624849216,
+  "generated": "2026-07-13T13:57:41.685366",
+  "description": "Best-subset optimized weights for dialect discrimination"
+}

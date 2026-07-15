@@ -1,0 +1,19 @@
+2026-07-13 11:38:33,973 - INFO - ================================================================================
+2026-07-13 11:38:33,973 - INFO - Dialect Perturbation Robustness Test Suite
+2026-07-13 11:38:33,973 - INFO - ================================================================================
+2026-07-13 11:38:33,973 - INFO - Language: Bunun (bnn)
+2026-07-13 11:38:33,973 - INFO - Dialects: ['Junqun', 'Kaqun', 'Luanqun', 'Tanqun', 'Zhuoqun']
+2026-07-13 11:38:33,973 - INFO - Sources: ['ePark/', 'ILRDF_Dicts/', 'Paiwan_Stories/', 'NTUFormosanCorpus/']
+2026-07-13 11:38:33,973 - INFO - Number of swaps: 5
+2026-07-13 11:38:33,973 - INFO - Epsilon: 0.1
+2026-07-13 11:38:33,973 - INFO - Testing bnn/Junqun...
+2026-07-13 11:38:43,925 - INFO - Testing bnn/Kaqun...
+2026-07-13 11:38:46,979 - INFO - Testing bnn/Luanqun...
+2026-07-13 11:38:49,885 - INFO - Testing bnn/Tanqun...
+2026-07-13 11:38:52,819 - INFO - Testing bnn/Zhuoqun...
+2026-07-13 11:38:55,729 - INFO - ================================================================================
+2026-07-13 11:38:55,731 - INFO - Complete. Results saved to test_results/dialect_perturbation_tests
+2026-07-13 11:38:55,731 - INFO - Dialects tested: 5
+2026-07-13 11:38:55,731 - INFO - Validation PASS/WARN/FAIL: 0/5/0
+2026-07-13 11:38:55,731 - INFO - Cross-dialect PASS/FAIL: 9/11
+2026-07-13 11:38:55,731 - INFO - ================================================================================

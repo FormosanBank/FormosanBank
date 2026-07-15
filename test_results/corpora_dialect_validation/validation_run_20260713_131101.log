@@ -1,0 +1,19 @@
+2026-07-13 13:11:01,318 - INFO - ================================================================================
+2026-07-13 13:11:01,318 - INFO - Validating Corpora with Per-Dialect Thresholds
+2026-07-13 13:11:01,319 - INFO - ================================================================================
+2026-07-13 13:11:01,479 - INFO - Found 18250 XML files total
+2026-07-13 13:32:33,038 - INFO - Loaded 829 documents across 6 dialects for language PWN
+2026-07-13 13:32:33,238 - INFO - ================================================================================
+2026-07-13 13:32:33,239 - INFO - Selecting best metric subset and optimizing dialect discrimination weights...
+2026-07-13 13:32:33,239 - INFO - Optimizing dialect discrimination with feature subset search...
+2026-07-13 13:57:40,792 - INFO - Selected feature subset: char_uni, char_tri
+2026-07-13 13:57:40,792 - INFO - Best dialect F1: 0.5127
+2026-07-13 13:57:40,792 - INFO - Optimized subset weights: char_uni=0.9458, char_tri=0.0542
+2026-07-13 13:57:41,701 - INFO - ================================================================================
+2026-07-13 13:57:41,701 - INFO - Validation Complete
+2026-07-13 13:57:41,701 - INFO - Total files: 829
+2026-07-13 13:57:41,701 - INFO - Passed: 204
+2026-07-13 13:57:41,701 - INFO - Failed: 147
+2026-07-13 13:57:41,701 - INFO - Skipped: 478
+2026-07-13 13:57:41,701 - INFO - Results saved to test_results/corpora_dialect_validation
+2026-07-13 13:57:41,701 - INFO - ================================================================================

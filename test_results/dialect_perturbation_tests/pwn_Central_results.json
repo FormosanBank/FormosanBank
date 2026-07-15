@@ -1,0 +1,482 @@
+{
+  "language": "pwn",
+  "language_full_name": "Paiwan",
+  "dialect": "Central",
+  "sources": [
+    "ePark/"
+  ],
+  "corpus_stats": {
+    "total_sentences": 3747,
+    "reference_sentences": 2998,
+    "target_sentences": 749,
+    "test_ratio": 0.2,
+    "total_characters": 218302,
+    "unique_characters": 32
+  },
+  "perturbation": {
+    "num_swaps_requested": 5,
+    "char_swaps_performed": 5,
+    "word_swaps_performed": 5
+  },
+  "baseline_metrics": {
+    "character": {
+      "1": {
+        "n": 1,
+        "jaccard_similarity": 0.8285714285714286,
+        "overlap_coefficient": 0.9354838709677419,
+        "cosine_similarity": 0.9983474379814351,
+        "euclidean_distance": 0.019677733902819,
+        "kl_divergence": 0.004136504745490353,
+        "ref_unique_ngram_count": 66,
+        "target_unique_ngram_count": 62
+      },
+      "2": {
+        "n": 2,
+        "jaccard_similarity": 0.6692392502756339,
+        "overlap_coefficient": 0.9281345565749235,
+        "cosine_similarity": 0.9954444179904612,
+        "euclidean_distance": 0.010605119754687715,
+        "kl_divergence": 0.021350338297718263,
+        "ref_unique_ngram_count": 860,
+        "target_unique_ngram_count": 654
+      },
+      "3": {
+        "n": 3,
+        "jaccard_similarity": 0.5571507454445058,
+        "overlap_coefficient": 0.86559908492994,
+        "cosine_similarity": 0.9865149748326387,
+        "euclidean_distance": 0.008752841824597573,
+        "kl_divergence": 0.07728788293750832,
+        "ref_unique_ngram_count": 4963,
+        "target_unique_ngram_count": 3497
+      }
+    },
+    "word": {
+      "1": {
+        "n": 1,
+        "jaccard_similarity": 0.2507183908045977,
+        "overlap_coefficient": 0.6232142857142857,
+        "cosine_similarity": 0.9902644243987664,
+        "euclidean_distance": 0.050231073348883624,
+        "kl_divergence": 0.20613677501395017,
+        "ref_unique_ngram_count": 4724,
+        "target_unique_ngram_count": 2240
+      },
+      "2": {
+        "n": 2,
+        "jaccard_similarity": 0.09336027998225464,
+        "overlap_coefficient": 0.35106580166821133,
+        "cosine_similarity": 0.7983105174957847,
+        "euclidean_distance": 0.0069611558306641496,
+        "kl_divergence": 0.19671334481856878,
+        "ref_unique_ngram_count": 16786,
+        "target_unique_ngram_count": 5395
+      },
+      "3": {
+        "n": 3,
+        "jaccard_similarity": 0.04010129392583342,
+        "overlap_coefficient": 0.17861557478368356,
+        "cosine_similarity": 0.8312362419661984,
+        "euclidean_distance": 0.0037162861361588343,
+        "kl_divergence": 0.1540899138533459,
+        "ref_unique_ngram_count": 23511,
+        "target_unique_ngram_count": 6472
+      }
+    }
+  },
+  "character_perturbations": [
+    {
+      "swap_number": 1,
+      "max_frequency_character": "a",
+      "character_frequency": 8263,
+      "swapped_with_character": "h",
+      "metric_deltas": {
+        "character": {
+          "1": {
+            "cosine_similarity": 0.5614246790772639,
+            "kl_divergence": 2.0916430962627666
+          },
+          "2": {
+            "cosine_similarity": 0.6464286837406145,
+            "kl_divergence": 2.8083549048032608
+          },
+          "3": {
+            "cosine_similarity": 0.7855310311988799,
+            "kl_divergence": 2.3795748096780738
+          }
+        },
+        "word": {
+          "1": {
+            "cosine_similarity": 0.9015891264987824,
+            "kl_divergence": 1.7167659780142488
+          },
+          "2": {
+            "cosine_similarity": 0.33613985386273026,
+            "kl_divergence": 0.2420404210662565
+          },
+          "3": {
+            "cosine_similarity": 0.05830264317797618,
+            "kl_divergence": 0.045151126047912105
+          }
+        }
+      }
+    },
+    {
+      "swap_number": 2,
+      "max_frequency_character": "a",
+      "character_frequency": 8263,
+      "swapped_with_character": "j",
+      "metric_deltas": {
+        "character": {
+          "1": {
+            "cosine_similarity": 0.5037016867574116,
+            "kl_divergence": 2.012687756456291
+          },
+          "2": {
+            "cosine_similarity": 0.6194857369834492,
+            "kl_divergence": 2.7682681087011196
+          },
+          "3": {
+            "cosine_similarity": 0.7799802027555389,
+            "kl_divergence": 2.3561970484250683
+          }
+        },
+        "word": {
+          "1": {
+            "cosine_similarity": 0.901589487525188,
+            "kl_divergence": 1.7168127229032852
+          },
+          "2": {
+            "cosine_similarity": 0.3361398538627317,
+            "kl_divergence": 0.24204042106625656
+          },
+          "3": {
+            "cosine_similarity": 0.05830264317797551,
+            "kl_divergence": 0.04515112604791208
+          }
+        }
+      }
+    },
+    {
+      "swap_number": 3,
+      "max_frequency_character": "a",
+      "character_frequency": 8263,
+      "swapped_with_character": "c",
+      "metric_deltas": {
+        "character": {
+          "1": {
+            "cosine_similarity": 0.5379029339173406,
+            "kl_divergence": 2.046161743539307
+          },
+          "2": {
+            "cosine_similarity": 0.640816350914834,
+            "kl_divergence": 2.782611033368499
+          },
+          "3": {
+            "cosine_similarity": 0.7818106591438697,
+            "kl_divergence": 2.3664601337629145
+          }
+        },
+        "word": {
+          "1": {
+            "cosine_similarity": 0.9015812137975885,
+            "kl_divergence": 1.716743417797386
+          },
+          "2": {
+            "cosine_similarity": 0.33613985386273054,
+            "kl_divergence": 0.2420404210662565
+          },
+          "3": {
+            "cosine_similarity": 0.058302643177974955,
+            "kl_divergence": 0.045151126047912105
+          }
+        }
+      }
+    },
+    {
+      "swap_number": 4,
+      "max_frequency_character": "a",
+      "character_frequency": 8263,
+      "swapped_with_character": "z",
+      "metric_deltas": {
+        "character": {
+          "1": {
+            "cosine_similarity": 0.5472810255630618,
+            "kl_divergence": 2.0598607127290536
+          },
+          "2": {
+            "cosine_similarity": 0.642440648176532,
+            "kl_divergence": 2.7924406404174795
+          },
+          "3": {
+            "cosine_similarity": 0.7849288553551715,
+            "kl_divergence": 2.3743957360331516
+          }
+        },
+        "word": {
+          "1": {
+            "cosine_similarity": 0.9015887596108343,
+            "kl_divergence": 1.7167639544949187
+          },
+          "2": {
+            "cosine_similarity": 0.33613985386273015,
+            "kl_divergence": 0.2420404210662565
+          },
+          "3": {
+            "cosine_similarity": 0.0583026431779754,
+            "kl_divergence": 0.045151126047912105
+          }
+        }
+      }
+    },
+    {
+      "swap_number": 5,
+      "max_frequency_character": "a",
+      "character_frequency": 8263,
+      "swapped_with_character": "w",
+      "metric_deltas": {
+        "character": {
+          "1": {
+            "cosine_similarity": 0.5577951142911362,
+            "kl_divergence": 2.081289218678558
+          },
+          "2": {
+            "cosine_similarity": 0.6450027280515317,
+            "kl_divergence": 2.8021441102330646
+          },
+          "3": {
+            "cosine_similarity": 0.7844276801835134,
+            "kl_divergence": 2.3770205399560513
+          }
+        },
+        "word": {
+          "1": {
+            "cosine_similarity": 0.9015890621631558,
+            "kl_divergence": 1.716784148129416
+          },
+          "2": {
+            "cosine_similarity": 0.3361398538627301,
+            "kl_divergence": 0.2420404210662565
+          },
+          "3": {
+            "cosine_similarity": 0.05830264317797529,
+            "kl_divergence": 0.04515112604791213
+          }
+        }
+      }
+    }
+  ],
+  "word_perturbations": [
+    {
+      "swap_number": 1,
+      "max_frequency_word": "a",
+      "word_frequency": 732,
+      "swapped_with_word": "papungadani",
+      "metric_deltas": {
+        "character": {
+          "1": {
+            "cosine_similarity": 0.010341547149418928,
+            "kl_divergence": 0.023879721042619352
+          },
+          "2": {
+            "cosine_similarity": 0.10357036755145377,
+            "kl_divergence": 0.08541768068932427
+          },
+          "3": {
+            "cosine_similarity": 0.32423321764781077,
+            "kl_divergence": 0.15005345950462606
+          }
+        },
+        "word": {
+          "1": {
+            "cosine_similarity": 0.765711417770282,
+            "kl_divergence": 0.5742039227137405
+          },
+          "2": {
+            "cosine_similarity": 0.247745004019982,
+            "kl_divergence": 0.1436093000447103
+          },
+          "3": {
+            "cosine_similarity": 0.03947601055730243,
+            "kl_divergence": 0.02858253683296416
+          }
+        }
+      }
+    },
+    {
+      "swap_number": 2,
+      "max_frequency_word": "a",
+      "word_frequency": 732,
+      "swapped_with_word": "uqaljaqaljai",
+      "metric_deltas": {
+        "character": {
+          "1": {
+            "cosine_similarity": 0.012900381542661599,
+            "kl_divergence": 0.027008577130245397
+          },
+          "2": {
+            "cosine_similarity": 0.13906938948708847,
+            "kl_divergence": 0.08980013807878857
+          },
+          "3": {
+            "cosine_similarity": 0.30580481522839653,
+            "kl_divergence": 0.1401220563573121
+          }
+        },
+        "word": {
+          "1": {
+            "cosine_similarity": 0.7595372048054847,
+            "kl_divergence": 0.4844598664517395
+          },
+          "2": {
+            "cosine_similarity": 0.24789242374008946,
+            "kl_divergence": 0.14385791507976325
+          },
+          "3": {
+            "cosine_similarity": 0.039508248952786484,
+            "kl_divergence": 0.028615823523879064
+          }
+        }
+      }
+    },
+    {
+      "swap_number": 3,
+      "max_frequency_word": "a",
+      "word_frequency": 732,
+      "swapped_with_word": "tjaiamadju",
+      "metric_deltas": {
+        "character": {
+          "1": {
+            "cosine_similarity": 0.007738883756726267,
+            "kl_divergence": 0.014729751046770868
+          },
+          "2": {
+            "cosine_similarity": 0.08591967744176965,
+            "kl_divergence": 0.06362441359747792
+          },
+          "3": {
+            "cosine_similarity": 0.26415125546580664,
+            "kl_divergence": 0.11776340280119002
+          }
+        },
+        "word": {
+          "1": {
+            "cosine_similarity": 0.7667603375206518,
+            "kl_divergence": 0.6165460414330148
+          },
+          "2": {
+            "cosine_similarity": 0.24824089311395647,
+            "kl_divergence": 0.1443076998912875
+          },
+          "3": {
+            "cosine_similarity": 0.03947601055730532,
+            "kl_divergence": 0.02858253683296416
+          }
+        }
+      }
+    },
+    {
+      "swap_number": 4,
+      "max_frequency_word": "a",
+      "word_frequency": 732,
+      "swapped_with_word": "makeljan",
+      "metric_deltas": {
+        "character": {
+          "1": {
+            "cosine_similarity": 0.008728678067487672,
+            "kl_divergence": 0.012580022718028647
+          },
+          "2": {
+            "cosine_similarity": 0.05888908918823732,
+            "kl_divergence": 0.05414340336980267
+          },
+          "3": {
+            "cosine_similarity": 0.2276773449562095,
+            "kl_divergence": 0.10320274368205301
+          }
+        },
+        "word": {
+          "1": {
+            "cosine_similarity": 0.7663176352472557,
+            "kl_divergence": 0.6161900679679841
+          },
+          "2": {
+            "cosine_similarity": 0.24824719524650318,
+            "kl_divergence": 0.14431896630960805
+          },
+          "3": {
+            "cosine_similarity": 0.03947601055730543,
+            "kl_divergence": 0.028582536832964134
+          }
+        }
+      }
+    },
+    {
+      "swap_number": 5,
+      "max_frequency_word": "a",
+      "word_frequency": 732,
+      "swapped_with_word": "patekuteku",
+      "metric_deltas": {
+        "character": {
+          "1": {
+            "cosine_similarity": 0.03053933308510859,
+            "kl_divergence": 0.03421368205348947
+          },
+          "2": {
+            "cosine_similarity": 0.18043787565291936,
+            "kl_divergence": 0.12042631460421949
+          },
+          "3": {
+            "cosine_similarity": 0.4398385676019776,
+            "kl_divergence": 0.16588245433150722
+          }
+        },
+        "word": {
+          "1": {
+            "cosine_similarity": 0.7658749329738601,
+            "kl_divergence": 0.6158340945029535
+          },
+          "2": {
+            "cosine_similarity": 0.24825524970775292,
+            "kl_divergence": 0.14433330468624256
+          },
+          "3": {
+            "cosine_similarity": 0.03948675701062676,
+            "kl_divergence": 0.028593632888870762
+          }
+        }
+      }
+    }
+  ],
+  "metric_deltas_averaged": {
+    "character": {
+      "1": {
+        "cosine_similarity": 0.5416210879212427,
+        "kl_divergence": 2.0583285055331952
+      },
+      "2": {
+        "cosine_similarity": 0.6388348295733923,
+        "kl_divergence": 2.790763759504685
+      },
+      "3": {
+        "cosine_similarity": 0.7833356857273948,
+        "kl_divergence": 2.370729653571052
+      }
+    },
+    "word": {
+      "1": {
+        "cosine_similarity": 0.7648403056635068,
+        "kl_divergence": 0.5814467986138865
+      },
+      "2": {
+        "cosine_similarity": 0.2480761531656568,
+        "kl_divergence": 0.1440854372023223
+      },
+      "3": {
+        "cosine_similarity": 0.039484607527065285,
+        "kl_divergence": 0.028591413382328457
+      }
+    }
+  },
+  "timestamp": "2026-07-13T13:08:19.484741"
+}
