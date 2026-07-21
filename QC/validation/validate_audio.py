@@ -355,6 +355,15 @@ def _check_invalid_range(start, end) -> bool:
     return s >= e
 
 
+def _effective_ref_duration(ref: AudioRef, audio_path: str) -> float | None:
+    """Use a clip's start/end range for rate checks, falling back to the file."""
+    start = _try_float(ref.start)
+    end = _try_float(ref.end)
+    if start is not None and end is not None and end > start:
+        return end - start
+    return get_audio_duration(audio_path)
+
+
 def _check_unloadable(audio_path: str) -> bool:
     """Return True if mutagen/wave cannot decode the file."""
     suffix = Path(audio_path).suffix.lower()
@@ -460,7 +469,7 @@ def validate_corpus(xml_root: Path, audio_root: Path,
                 # audio shouldn't suppress that signal.
 
         # SOFT: words/sec + chars/sec
-        duration = get_audio_duration(audio_path)
+        duration = _effective_ref_duration(ref, audio_path)
         # Skip the cps/wps check when there is no transcribed text — e.g.
         # a FORM containing only <UNCLEAR/>. Counting "0 words / N seconds"
         # would unconditionally trip the wps < 0.1 threshold and emit a

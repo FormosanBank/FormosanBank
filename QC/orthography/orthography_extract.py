@@ -400,10 +400,14 @@ def visualize(o_info, output_folder):
 
     # Sort punctuation by frequency
     sorted_punct = sorted(punctuation.items(), key=lambda x: x[1], reverse=True)
-    punct_marks, frequencies = zip(*sorted_punct)
-
     plt.figure(figsize=(8, 4))
-    sns.barplot(x=list(punct_marks), y=list(frequencies), palette="cool", legend=False, dodge=False, hue=list(punct_marks))
+    if sorted_punct:
+        punct_marks, frequencies = zip(*sorted_punct)
+        sns.barplot(x=list(punct_marks), y=list(frequencies), palette="cool", legend=False, dodge=False, hue=list(punct_marks))
+    else:
+        plt.text(0.5, 0.5, 'No punctuation found', ha='center', va='center')
+        plt.xticks([])
+        plt.yticks([])
     plt.xlabel('Punctuation Marks')
     plt.ylabel('Frequency')
     plt.title('Punctuation Frequencies')

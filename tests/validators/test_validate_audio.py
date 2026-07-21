@@ -106,6 +106,14 @@ def _read_broken_csv(log_dir: Path) -> list[dict]:
         return list(csv.DictReader(f))
 
 
+def _read_duration_csv(log_dir: Path) -> list[dict]:
+    csv_path = log_dir / "audio_duration_issues.csv"
+    if not csv_path.is_file():
+        return []
+    with open(csv_path, newline="", encoding="utf-8") as f:
+        return list(csv.DictReader(f))
+
+
 # -----------------------------------------------------------------------------
 # W2: unified broken_audio.csv
 # -----------------------------------------------------------------------------
@@ -355,6 +363,26 @@ def test_no_findings_means_clean_exit(tmp_path):
         f"expected exit 0 on clean corpus; got {proc.returncode}, "
         f"stdout={proc.stdout!r}, stderr={proc.stderr!r}"
     )
+
+
+def test_words_per_second_uses_clip_range_not_whole_file(tmp_path):
+    """Shared whole-file audio must use each AUDIO start/end for V105 rates."""
+    corpus, xml_dir, audio_dir = _make_corpus(tmp_path)
+    good = audio_dir / "whole.wav"
+    _make_audible_wav(good, duration_sec=12.0)
+    xml = xml_dir / "test.xml"
+    _write_text(xml, [{
+        "id": "S_1",
+        "file": "whole.wav",
+        "start": "4",
+        "end": "5",
+        "form": "two words",
+    }])
+
+    log_dir = tmp_path / "logs"
+    proc = _run(xml_dir, audio_dir, log_dir)
+    assert proc.returncode == 0
+    assert _read_duration_csv(log_dir) == []
 
 
 def test_no_V105_when_FORM_is_UNCLEAR_only(tmp_path):
