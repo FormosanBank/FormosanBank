@@ -35,16 +35,19 @@ def _write_corpus(root: Path, language_dir: str, filename: str, xml_text: str) -
     return xml_path
 
 
-def _run(corpora_path: Path) -> subprocess.CompletedProcess:
+def _run(corpora_path: Path, *, target_column: str | None = None) -> subprocess.CompletedProcess:
+    command = [
+        sys.executable,
+        str(ADD_PHONOLOGY),
+        "--corpora_path",
+        str(corpora_path),
+        "--orthography",
+        "Ortho113",
+    ]
+    if target_column:
+        command.extend(["--target_column", target_column])
     return subprocess.run(
-        [
-            sys.executable,
-            str(ADD_PHONOLOGY),
-            "--corpora_path",
-            str(corpora_path),
-            "--orthography",
-            "Ortho113",
-        ],
+        command,
         capture_output=True,
         text=True,
     )
@@ -130,6 +133,24 @@ def test_multi_dialect_resolves_via_dialect_column(tmp_path):
     assert _phon_texts(xml_path, "standard"), (
         f"no standard PHON added for multi-dialect Amis; output: {combined!r}"
     )
+
+
+def test_explicit_target_column_overrides_dialect_column(tmp_path):
+    corpus = tmp_path / "corpus"
+    xml_path = _write_corpus(
+        corpus,
+        "Bunun",
+        "b.xml",
+        '<TEXT xml:lang="bnn" dialect="Tanqun">'
+        '<S id="1"><FORM kindOf="standard">e</FORM></S>'
+        "</TEXT>",
+    )
+
+    proc = _run(corpus, target_column="default")
+
+    combined = proc.stdout + proc.stderr
+    assert proc.returncode == 0, combined
+    assert _phon_texts(xml_path, "standard") == ["e"]
 
 
 def test_does_not_inject_whitespace_into_partial_UNCLEAR(tmp_path):

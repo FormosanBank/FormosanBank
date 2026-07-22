@@ -156,14 +156,22 @@ def main(args):
                         reader = csv.DictReader(f, delimiter='\t')
                         available_columns = reader.fieldnames
                     
-                    # Pick the TSV column to read IPA from, driven by whether the
-                    # language actually has multiple dialects (per dialects.csv).
+                    # Pick the TSV column to read IPA from. An explicit CLI
+                    # override takes precedence; otherwise use dialect metadata.
                     # Single-dialect languages follow the convention dialect == the
                     # language name (e.g. dialect="Yami"), so the dialect attribute is
                     # NOT a column selector — we use the sole value column. Multi-dialect
                     # languages select the column by dialect, falling back to 'default'.
                     value_columns = [c for c in (available_columns or []) if c != 'letter']
-                    if is_multi_dialect_language(language):
+                    if args.target_column:
+                        if args.target_column not in value_columns:
+                            print(
+                                f"Error: Target column '{args.target_column}' not found "
+                                f"for {language}: {available_columns}"
+                            )
+                            continue
+                        target_column = args.target_column
+                    elif is_multi_dialect_language(language):
                         if dialect and dialect != "default" and dialect in value_columns:
                             target_column = dialect
                         elif 'default' in value_columns:
