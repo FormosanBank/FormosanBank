@@ -1,12 +1,13 @@
 import os
 import xml.etree.ElementTree as ET
-from xml.dom import minidom
 import argparse
 import re
 import csv
 import sys
 import string
 from pathlib import Path
+
+from lxml import etree
 
 # Make the QC package importable so we can reuse the shared dialect inventory
 # (the same single-vs-multi-dialect source used by fix_dialects.py and V036).
@@ -16,28 +17,16 @@ if str(_REPO_ROOT) not in sys.path:
 from QC.validation._dialect_inventory import is_multi_dialect_language
 
 
-'''
 def prettify(elem):
-    """Return a pretty-printed XML string for the Element using lxml."""
-    rough_string = etree.tostring(elem, encoding='utf-8')
-    parser = etree.XMLParser(remove_blank_text=True)
-    reparsed = etree.fromstring(rough_string, parser)
-    return etree.tostring(reparsed, pretty_print=True, encoding='utf-8').decode('utf-8')
-'''
-
-def prettify(elem):
-    """
-    Return a pretty-printed XML string for the Element.
-
-    Args:
-        elem (xml.etree.ElementTree.Element): The XML element to pretty-print.
-
-    Returns:
-        str: A pretty-printed XML string.
-    """
-    rough_string = ET.tostring(elem, 'utf-8')  # Convert the Element to a byte string
-    reparsed = minidom.parseString(rough_string)  # Parse the byte string using minidom
-    return reparsed.toprettyxml(indent="    ")  # Return the pretty-printed XML string
+    """Pretty-print XML without adding whitespace inside mixed content."""
+    rough_string = ET.tostring(elem, encoding="utf-8")
+    reparsed = etree.fromstring(rough_string, etree.XMLParser(remove_blank_text=True))
+    body = etree.tostring(reparsed, encoding="unicode", pretty_print=True)
+    body = "\n".join(
+        re.sub(r"^( +)", lambda match: match.group(1) * 2, line)
+        for line in body.splitlines()
+    )
+    return f'<?xml version="1.0" ?>\n{body}\n'
 
 
 def get_files(path, language):

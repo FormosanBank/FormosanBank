@@ -155,6 +155,29 @@ def test_copy_preserves_UNCLEAR_child_when_creating_standard(
     )
 
 
+def test_copy_does_not_inject_whitespace_into_partial_UNCLEAR(tmp_path):
+    corpus = tmp_path / "corpus"
+    work = _write_corpus_xml(
+        corpus,
+        "partial.xml",
+        '<TEXT xml:lang="pwn" dialect="Eastern"><S id="1">'
+        '<FORM kindOf="original">sa izua<UNCLEAR/></FORM>'
+        "</S></TEXT>",
+    )
+    proc = _run_standardize(["--copy", "--corpora_path", str(corpus)])
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    proc = _run_standardize(["--copy", "--corpora_path", str(corpus)])
+    assert proc.returncode == 0, f"second run stderr: {proc.stderr}"
+    root = ET.parse(work).getroot()
+    forms = root.findall(".//FORM")
+    assert len(forms) == 2
+    assert ["".join(form.itertext()) for form in forms] == ["sa izua", "sa izua"]
+    serialized = work.read_text(encoding="utf-8")
+    assert "\n    <S id=\"1\">" in serialized
+    assert "\n        <FORM" in serialized
+    assert "sa izua<UNCLEAR/></FORM>" in serialized
+
+
 def test_errors_when_no_original_tier(tmp_path, fixtures_dir, copy_fixture):
     work = copy_fixture(fixtures_dir / "valid_no_original_tier.xml", tmp_path)
     before = work.read_text()

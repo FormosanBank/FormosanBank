@@ -130,3 +130,29 @@ def test_multi_dialect_resolves_via_dialect_column(tmp_path):
     assert _phon_texts(xml_path, "standard"), (
         f"no standard PHON added for multi-dialect Amis; output: {combined!r}"
     )
+
+
+def test_does_not_inject_whitespace_into_partial_UNCLEAR(tmp_path):
+    corpus = tmp_path / "corpus"
+    xml_path = _write_corpus(
+        corpus,
+        "Paiwan",
+        "p.xml",
+        '<TEXT xml:lang="pwn" dialect="Eastern"><S id="1">'
+        '<FORM kindOf="original">sa izua<UNCLEAR/></FORM>'
+        '<FORM kindOf="standard">sa izua<UNCLEAR/></FORM>'
+        "</S></TEXT>",
+    )
+    proc = _run(corpus)
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    proc = _run(corpus)
+    assert proc.returncode == 0, f"second run stderr: {proc.stderr}"
+    root = ET.parse(xml_path).getroot()
+    assert ["".join(form.itertext()) for form in root.findall(".//FORM")] == [
+        "sa izua",
+        "sa izua",
+    ]
+    serialized = xml_path.read_text(encoding="utf-8")
+    assert "\n    <S id=\"1\">" in serialized
+    assert "\n        <FORM" in serialized
+    assert serialized.count("sa izua<UNCLEAR/></FORM>") == 2
