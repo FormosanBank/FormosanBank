@@ -88,8 +88,7 @@ class OpenPage(ttk.Frame):
 
         #Print data from last session if it exists
         #First make a label to print the data
-        sessionLabel = ttk.Label(self)
-        sessionLabel.config(anchor="center", justify="center", font=("", 14), textvariable=self.sessionLabelText, wraplength=500)
+        sessionLabel = ttk.Label(self, anchor="center", justify="center", font=("", 14), textvariable=self.sessionLabelText, wraplength=500)
         #Pack the label into the grid
         sessionLabel.grid(row=0, column=0, sticky="ew")
 
@@ -171,29 +170,44 @@ class OpenPage(ttk.Frame):
     #Export review
     def exportReview(self):
         #Export CSV Errors
+        #Ask where to put the file
         errorsPath = filedialog.asksaveasfilename(defaultextension=".csv", filetypes=[("CSV Files", "*.csv"), ("All Files", "*.*")],
             initialfile="errors.csv")
+        #Once a path has been given
         if errorsPath:
+            #Try to grab the path to errors CSV
             try:
-                shutil.copy("data/errors.csv", errorsPath)
+                #Shutil allows copying files
+                shutil.copy(self.sessionData.errors, errorsPath)
+            #If the path is broken, make a new blank CSV
             except:
                 with open("data/errors.csv", "w", newline="", encoding="utf-8") as file:
                     pass
+                #Try again
                 try:
                     shutil.copy("data/errors.csv", errorsPath)
+                #Worst case
                 except:
                     self.sessionLabelText.set("Unexpected error occured exporting data. Restoring errors.csv path failed.")
-        
+
+        #Export CSV ErrorFreq
+        #Ask where to put the file
         errorFreqPath = filedialog.asksaveasfilename(defaultextension=".csv", filetypes=[("CSV Files", "*.csv"), ("All Files", "*.*")],
             initialfile="errorFrequency.csv")
+        #Once a path has been given
         if errorFreqPath:
+            #Try to grab the errorFreq CSV
             try:
-                shutil.copy("data/errorFreq.csv", errorFreqPath)
+                #Shutil allows copying files
+                shutil.copy(self.sessionData.errorFreq, errorFreqPath)
+            #If the path is broken, make a new blank csv
             except:
                 with open("data/errorFreq.csv", "w", newline="", encoding="utf-8") as file:
                     pass
+                #Try again
                 try:
                     shutil.copy("data/errorFreq.csv", errorsPath)
+                #Worst case
                 except:
                     self.sessionLabelText.set("Unexpected error occured exporting data. Restoring errorFreq.csv path failed.")
 
@@ -219,14 +233,21 @@ class OpenPage(ttk.Frame):
         #Otherwise print the session data
         else:
             #Text for status based on if the file was marked complete or not
-            status = "COMPLETED"
-            #If the status is not finished, then we should make the resume button available
-            if not self.sessionData.finished:
+            status = ""
+            #If the status is completed, set the text to "completed"
+            if status.sessionData.finished:
+                status = "COMPLETED"
+                #Move the currentLine to 0 for convenience and so the program doesn't immediately kick you out upon
+                #   loading a completed file
+                self.sessionData.currentLine = 0
+            #If the status is not finished, set the text to incomplete
+            else:
                 status = "INCOMPLETE"
-                self.resumeBut.state(["!disabled"])
+            #Allow the user to resume the last file
+            self.resumeBut.state(["!disabled"])
             #If the session was not finished, 
             displayText = ("Last session data found.\nStatus:\t"+str(status)+"\nEnded on line "
-                           +str(self.sessionData.currentLine)+"\Textfile name:\t"+str(self.sessionData.lastFileName))
+                           +str(self.sessionData.currentLine)+"\nTextfile name:\t"+str(self.sessionData.lastFileName))
             self.sessionLabelText.set(displayText)
 
 
@@ -461,7 +482,7 @@ class AuditPage(ttk.Frame):
     #Missing text button
     def missingText(self):
         #Make an error entry pop up with no correction
-        self.displayErrorPop("Missing Text", True)
+        self.displayErrorPop("Missing Text", False)
 
     #=====================================================================================
     #Extra text button
@@ -608,13 +629,20 @@ class AuditPage(ttk.Frame):
     def completeAudit(self, end=False):
         #If this is the end of the audit, set session data's finished variable to true and update the CSVs
         if end:
+            #Update the text to show the file is complete
             self.lastUpdateLabelText.set("Text completed, updating files for export...")
-            self.controller.after(2000)
+            #Set finished to true
             self.sessionData.finished = True
+            #Wait a hot second so the user can read the text (and the illusion of loading)
+            self.controller.after(2000)
+            #Update CSV
             self.sessionData.updateCSV()
             
         #Run session data's update method
         self.sessionData.finishSessionUpdate()
+
+        #Set the last update label text to nothing for the next file opened
+        self.lastUpdateLabelText.set("")
 
         #Open home page again
         #We also need to access the home page's object and update the buttons
@@ -640,9 +668,9 @@ class WarningPopUp(tk.Toplevel):
         self.grab_set()
         #Elements in the window
         #The warning label is whatever text was passed to the init method when called
-        warningLabel = ttk.Label(self, text=displaytext)
-        yesBut = ttk.Button(self, text="Yes", width=20, command=self.yesPress)
-        noBut = ttk.Button(self, text="No", width=20, command=self.noPress)
+        warningLabel = ttk.Label(self, text=displaytext, wraplength=50)
+        yesBut = ttk.Button(self, text="Yes", width=25, command=self.yesPress)
+        noBut = ttk.Button(self, text="No", width=25, command=self.noPress)
         #Placing elements
         warningLabel.grid(row=0, column=0, columnspan=2, sticky="ew")
         yesBut.grid(row=1, column=1, sticky="e")
