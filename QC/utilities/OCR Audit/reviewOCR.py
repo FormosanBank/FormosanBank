@@ -235,7 +235,7 @@ class OpenPage(ttk.Frame):
             #Text for status based on if the file was marked complete or not
             status = ""
             #If the status is completed, set the text to "completed"
-            if status.sessionData.finished:
+            if self.sessionData.finished:
                 status = "COMPLETED"
                 #Move the currentLine to 0 for convenience and so the program doesn't immediately kick you out upon
                 #   loading a completed file
@@ -633,8 +633,6 @@ class AuditPage(ttk.Frame):
             self.lastUpdateLabelText.set("Text completed, updating files for export...")
             #Set finished to true
             self.sessionData.finished = True
-            #Wait a hot second so the user can read the text (and the illusion of loading)
-            self.controller.after(2000)
             #Update CSV
             self.sessionData.updateCSV()
             
@@ -668,13 +666,17 @@ class WarningPopUp(tk.Toplevel):
         self.grab_set()
         #Elements in the window
         #The warning label is whatever text was passed to the init method when called
-        warningLabel = ttk.Label(self, text=displaytext, wraplength=50)
+        warningLabel = ttk.Label(self, text=displaytext)
         yesBut = ttk.Button(self, text="Yes", width=25, command=self.yesPress)
         noBut = ttk.Button(self, text="No", width=25, command=self.noPress)
         #Placing elements
+        yesBut.grid(row=1, column=1)
+        noBut.grid(row=1, column=0)
+        #Make the warning label wrap at the window width
+        self.update_idletasks()
+        warningLabel.config(wraplength=self.winfo_width())
+        #Place the warning label
         warningLabel.grid(row=0, column=0, columnspan=2, sticky="ew")
-        yesBut.grid(row=1, column=1, sticky="e")
-        noBut.grid(row=1, column=0, sticky="e")
 
     #=====================================================================================
     #Button commands
