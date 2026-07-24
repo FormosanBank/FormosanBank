@@ -9,7 +9,7 @@ This is a code that simplifies and automates some of the OCR review process. Not
 The main application is saved in /dist.
 #### THE DATA FOLDER AND ITS CONTENTS MUST BE IN THE SAME DIRECTORY AS THE APPLICATION OR CODE TO RUN
 The data folder has 3 files: "lastsession.json", "errors.csv", and "errorFreq.csv".
-The VS code workspace and venv are also provided, but the data folder will have to be pulled from dist.
+The VS code workspace and venv are also provided, and a copy of the data folder is available in the main folder so that if you download the entire folder, the code runs.
 
 ## Version History
 7/22/2026: V1.0: Code finished and operational with all functions intact. Readme created and all files uploaded to FormosanBank QC utilities (M.B.)
