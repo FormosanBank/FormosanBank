@@ -15,3 +15,5 @@ The VS code workspace and venv are also provided, and a copy of the data folder 
 7/22/2026: V1.0: Code finished and operational with all functions intact. Readme created and all files uploaded to FormosanBank QC utilities (M.B.)
 
 7/24/2026: V1.1: Fixed minor visual and text errors. Added ability to reload a completed file. (M.B.)
+
+7/27/2026: V1.2: Added the XML tag to the cleaned review text in readable format (Formosan Text, Phonetic Form, or Translation). (M.B.)
