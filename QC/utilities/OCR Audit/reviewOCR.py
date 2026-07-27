@@ -611,8 +611,9 @@ class AuditPage(ttk.Frame):
         #Formatting the text over a few variables for readability
         #The text is in session data allText[currentLine][1][2][3] ([0] is the XML line number)
         line = self.sessionData.currentLine
-        currentTextFormat = ("TEXT: "+str(self.sessionData.allText[line][1])+"\nKIND OF TEXT = "+str(self.sessionData.allText[line][2])+
-                             "\nSOURCE NOTES: "+self.sessionData.allText[line][3])
+        currentTextFormat = ("TYPE: "+str(self.sessionData.allText[line][4])+"\nTEXT: "+str(self.sessionData.allText[line][1])+
+                             "\nKIND OF TEXT = "+str(self.sessionData.allText[line][2])+"\nSOURCE NOTES: "+
+                             str(self.sessionData.allText[line][3]))
         self.currentText.insert("1.0", currentTextFormat)
         #Re-disable the text
         self.currentText.config(state="disabled")
@@ -763,6 +764,20 @@ class FileData:
                 #Only proceed if the line has information and doesn't match bad start
                 if not re.search(badStart, line) and line:
 
+                    #Get entry type by first 4 characters
+                    entryType = line.lstrip()[1:5]
+                    #Check for FORM
+                    if entryType == "FORM":
+                        entryType = "Formosan Text"
+                    #Check for PHON
+                    elif entryType == "PHON":
+                        entryType = "Phonetic Form"
+                    #Check for TRANSL
+                    elif entryType == "TRAN":
+                        entryType = "Translation"
+                    else:
+                        entryType = "Other"
+
                     #Getting notes and kindOf data
                     #Initialize notes and kindOf data
                     notes=""
@@ -782,9 +797,9 @@ class FileData:
                         data = dataMatch.group()[1:-1]
                     
                     #Make the row entry by appending a tuple
-                    #Order is lineNo, text, kind of, and then notes
+                    #Order is lineNo, text, kind of, notes, then entry type
                     #Line number is index + 1 since rows start at 0 in python
-                    self.allText.append((i+1, data, kindOf, notes))
+                    self.allText.append((i+1, data, kindOf, notes, entryType))
                 
 
     #=====================================================================================
