@@ -17,3 +17,9 @@ The VS code workspace and venv are also provided, and a copy of the data folder 
 7/24/2026: V1.1: Fixed minor visual and text errors. Added ability to reload a completed file. (M.B.)
 
 7/27/2026: V1.2: Added the XML tag to the cleaned review text in readable format (Formosan Text, Phonetic Form, or Translation). (M.B.)
+
+7/28/2026: V1.3: Now adds unit type to XML tag from V1.2 (word, morpheme, or phrase). 
+                Better storage of allText in only data/allText.csv for loading and storage efficiency. allText no longer stored in json
+                Clean XML special characters to reflect plaintext in review textbox
+                Fixed last session line data on home page.
+                (M.B.)
