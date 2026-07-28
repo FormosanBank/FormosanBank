@@ -237,9 +237,10 @@ class OpenPage(ttk.Frame):
             #If the status is completed, set the text to "completed"
             if self.sessionData.finished:
                 status = "COMPLETED"
-                #Move the currentLine to 0 for convenience and so the program doesn't immediately kick you out upon
-                #   loading a completed file
-                self.sessionData.currentLine = 0
+                #If the current line was at the end, move the currentLine to the last line for convenience and so the program doesn't 
+                #   immediately kick you out upon loading a completed file
+                if self.sessionData.currentLine >= len(self.sessionData.allText):
+                    self.sessionData.currentLine = len(self.sessionData.allText)-1
             #If the status is not finished, set the text to incomplete
             else:
                 status = "INCOMPLETE"
@@ -247,7 +248,7 @@ class OpenPage(ttk.Frame):
             self.resumeBut.state(["!disabled"])
             #If the session was not finished, 
             displayText = ("Last session data found.\nStatus:\t"+str(status)+"\nEnded on line "
-                           +str(self.sessionData.currentLine)+"\nTextfile name:\t"+str(self.sessionData.lastFileName))
+                           +str(self.sessionData.currentLine+1)+"\nTextfile name:\t"+str(self.sessionData.lastFileName))
             self.sessionLabelText.set(displayText)
 
 
@@ -717,7 +718,8 @@ class FileData:
         try:
             self.finished = bool(self.sessionData["finished"])
             self.currentLine = int(self.sessionData["currentLine"])
-            self.allText = list(self.sessionData["allText"])
+            #Text is stored cleaned in allText CSV
+            self.loadText()
             self.currentFreq = Counter(dict(self.sessionData["currentFreq"]))
             self.currentErrors = list(self.sessionData["currentErrors"])
             self.lastFileName = str(self.sessionData["lastFileName"])
@@ -744,7 +746,7 @@ class FileData:
     #=====================================================================================
     #SESSION DATA CLASS FUNCTIONS
     #=====================================================================================
-    #Open text - open a new XML file and process it into a text file
+    #Open text - open a new XML file and process it into a csv file and list
     def openText(self):
         #Make sure the all text variable is empty
         self.allText = []
@@ -757,8 +759,13 @@ class FileData:
         kindOfMark = r"kindOf=\"(.*?)\""
         #For extracting the text from between the ><
         dataMark = r"\>(.*?)\<"
+        #For finding and replacing XML special characters
+        specialCharXML = ["&lt;", "&gt;", "&amp;", "&apos;", "&quot;"]
+        specialCharPT = ["<", ">", "&", "\'", "\""]
 
         with open(self.lastFileName, "r", encoding="utf-8") as file:
+            #Initialize a variable that tracks what unit the lines with contents are recording
+            unitType = ""
             #Go through each line
             for i, line in enumerate(file):
                 #Only proceed if the line has information and doesn't match bad start
@@ -795,12 +802,38 @@ class FileData:
                         kindOf = kindOfMatch.group()[8:-1]
                     if dataMatch:
                         data = dataMatch.group()[1:-1]
+
+                    #Replace all special XML characters in data
+                    #Check that something was found
+                    if data:
+                        #Go through each special character in the list of XML special characters
+                        for i, specialChar in enumerate(specialCharXML):
+                            #Change each instance to its corresponding plain text
+                            data = data.replace(specialChar, specialCharPT[i])
                     
                     #Make the row entry by appending a tuple
-                    #Order is lineNo, text, kind of, notes, then entry type
+                    #Order is lineNo, text, kind of, notes, then the unit and type of entry
                     #Line number is index + 1 since rows start at 0 in python
-                    self.allText.append((i+1, data, kindOf, notes, entryType))
-                
+                    self.allText.append((i+1, data, kindOf, notes, (unitType+entryType)))
+
+                #If its not a content line, update the unit type (check for <S, <W, or <M)
+                else:
+                    #Get the character immediately after the opening carat
+                    firstChar = line.lstrip()[1]
+                    #Type = S (phrase)
+                    if firstChar == "S":
+                        unitType = "Phrase; "
+                    #Type = W (word)
+                    elif firstChar == "W":
+                        unitType = "Word; "
+                    #Type = M (morpheme)
+                    elif firstChar == "M":
+                        unitType = "Morpheme; "
+                    else:
+                        unitType = ""
+
+        #Finally, save the data to the allText CSV
+        self.writeAllText()
 
     #=====================================================================================
     #Update data
@@ -822,13 +855,29 @@ class FileData:
             self.openText()
     
     #=====================================================================================
+    #Load text from allText.csv
+    def loadText(self):
+        #Clear allText variable
+        self.allText = []
+        with open(self.allTextCSV, "r", encoding="utf-8") as file:
+            reader = csv.reader(file)
+            #Read each line in a tuple format
+            self.allText = [tuple(row) for row in reader]
+
+    #=====================================================================================
+    #Update the currentText csv so that it contains the currentText
+    def writeAllText(self):
+        with open(self.allTextCSV, "w", newline="", encoding="utf-8") as file:
+            writer = csv.writer(file)
+            writer.writerows(self.allText)
+
+    #=====================================================================================
     #Finish Session Update
     # When the application is done, set the values in the dictionary sessionData and write the dict to the json
     def finishSessionUpdate(self):
         #Update the dictionary of session data
         self.sessionData["finished"] = self.finished
         self.sessionData["currentLine"] = self.currentLine
-        self.sessionData["allText"] = self.allText
         #Counter object must be saved as dictionary
         self.sessionData["currentFreq"] = dict(self.currentFreq)
         self.sessionData["currentErrors"] = self.currentErrors
@@ -843,10 +892,6 @@ class FileData:
     #Update CSV
     # When the file has been fully processed, update the CSV files
     def updateCSV(self):
-        #Update the currentText csv so that it contains the currentText
-        with open(self.allTextCSV, "w", newline="", encoding="utf-8") as file:
-            writer = csv.writer(file)
-            writer.writerows(self.allText)
         
         #Update the errors csv
         with open(self.errors, "w", newline="", encoding="utf-8") as file:
