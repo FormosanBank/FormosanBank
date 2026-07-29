@@ -99,9 +99,20 @@ python3 -m pip install -r requirements.txt
 ```
 
 The audio datasets are public. No Hugging Face login, private repository
-access, Git LFS, or `jq` is required. Downloads are resumable and pinned to
-the revisions in [`audio_sources.json`](audio_sources.json). To check every
-public dataset without downloading the audio, run:
+access, `hf` CLI, or `jq` is required. Downloads use Git LFS's public batch
+transport and are pinned to the revisions in
+[`audio_sources.json`](audio_sources.json). Install Git LFS once if it is not
+already available:
+
+```bash
+# macOS
+brew install git-lfs
+
+# Debian/Ubuntu
+sudo apt-get install git-lfs
+```
+
+To check every public dataset without downloading the audio, run:
 
 ```bash
 ./run_audio_downloads.sh --dry-run

@@ -4,19 +4,18 @@
 from __future__ import annotations
 
 import argparse
+import os
 import shutil
 import subprocess
 import sys
 from pathlib import Path
-
-from huggingface_hub import snapshot_download
-
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO_ROOT))
 
 from QC.validation.validate_hf_audio import (  # noqa: E402
     AUDIO_SUFFIXES,
+    is_audio,
     load_contract,
     local_audio_paths,
     selected_datasets,
@@ -30,6 +29,68 @@ def allow_patterns() -> list[str]:
     for suffix in sorted(AUDIO_SUFFIXES):
         result.extend((f"*{suffix}", f"**/*{suffix}"))
     return result
+
+
+def run_git(directory: Path, *arguments: str) -> None:
+    env = {
+        **os.environ,
+        "GIT_LFS_SKIP_SMUDGE": "1",
+        "GIT_TERMINAL_PROMPT": "0",
+    }
+    subprocess.run(
+        ["git", "-c", "credential.helper=", *arguments],
+        cwd=directory,
+        env=env,
+        check=True,
+    )
+
+
+def require_git_lfs() -> None:
+    if shutil.which("git") is None:
+        raise RuntimeError("git is required to download public audio")
+    if shutil.which("git-lfs") is None:
+        raise RuntimeError(
+            "git-lfs is required to download public audio; "
+            "install it from https://git-lfs.com/"
+        )
+
+
+def is_lfs_pointer(path: Path) -> bool:
+    if path.stat().st_size > 1024:
+        return False
+    return path.read_bytes().startswith(b"version https://git-lfs.github.com/spec/")
+
+
+def move_audio_files(
+    source: Path, destination: Path, expected_count: int
+) -> int:
+    audio_files = [
+        path
+        for path in source.rglob("*")
+        if path.is_file() and is_audio(path)
+    ]
+    if len(audio_files) != expected_count:
+        raise RuntimeError(
+            f"staged checkout has {len(audio_files)} audio files; "
+            f"expected {expected_count}"
+        )
+    pointers = [path for path in audio_files if is_lfs_pointer(path)]
+    if pointers:
+        raise RuntimeError(
+            f"Git LFS left {len(pointers)} audio pointers unresolved; "
+            f"first: {pointers[0].relative_to(source)}"
+        )
+
+    moved = 0
+    for path in audio_files:
+        relative = path.relative_to(source)
+        target = destination / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        if target.is_file() and target.stat().st_size == path.stat().st_size:
+            continue
+        shutil.move(path, target)
+        moved += 1
+    return moved
 
 
 def destination_counts(datasets: list[dict]) -> dict[str, int]:
@@ -51,6 +112,8 @@ def run_post_download(commands: list[list[str]]) -> None:
 
 
 def download_datasets(datasets: list[dict], workers: int = 32) -> None:
+    include = ",".join(allow_patterns())
+    cache_root = REPO_ROOT / ".audio-download-cache"
     for dataset in datasets:
         destination = REPO_ROOT / dataset["destination"]
         destination.mkdir(parents=True, exist_ok=True)
@@ -58,21 +121,45 @@ def download_datasets(datasets: list[dict], workers: int = 32) -> None:
             f"Downloading {dataset['repo_id']}@{dataset['revision'][:12]} "
             f"to {dataset['destination']}"
         )
-        snapshot_download(
-            dataset["repo_id"],
-            repo_type="dataset",
-            revision=dataset["revision"],
-            local_dir=destination,
-            allow_patterns=allow_patterns(),
-            token=False,
-            max_workers=workers,
+        cache_name = (
+            dataset["repo_id"].replace("/", "__") + "-" + dataset["revision"][:12]
         )
-        cache = destination / ".cache" / "huggingface"
-        if cache.exists():
-            shutil.rmtree(cache)
-        parent = cache.parent
-        if parent.is_dir() and not any(parent.iterdir()):
-            parent.rmdir()
+        checkout = cache_root / cache_name
+        checkout.mkdir(parents=True, exist_ok=True)
+        if not (checkout / ".git").is_dir():
+            run_git(checkout, "init", "--quiet")
+            run_git(
+                checkout,
+                "remote",
+                "add",
+                "origin",
+                f"https://huggingface.co/datasets/{dataset['repo_id']}",
+            )
+        run_git(
+            checkout,
+            "config",
+            "lfs.concurrenttransfers",
+            str(workers),
+        )
+        run_git(
+            checkout,
+            "fetch",
+            "--quiet",
+            "--depth=1",
+            "origin",
+            dataset["revision"],
+        )
+        run_git(checkout, "checkout", "--quiet", "--force", "--detach", "FETCH_HEAD")
+        run_git(checkout, "lfs", "pull", f"--include={include}")
+        moved = move_audio_files(
+            checkout,
+            destination,
+            expected_count=dataset["expected_audio_files"],
+        )
+        shutil.rmtree(checkout)
+        if cache_root.is_dir() and not any(cache_root.iterdir()):
+            cache_root.rmdir()
+        print(f"Installed {moved} new or changed audio files.")
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -117,6 +204,7 @@ def main(argv: list[str] | None = None) -> int:
                 )
             return 0
 
+        require_git_lfs()
         before = destination_counts(datasets)
         download_datasets(datasets, workers=args.workers)
         after_download = destination_counts(datasets)
