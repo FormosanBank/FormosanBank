@@ -143,3 +143,51 @@ def test_cleaner_is_idempotent(tmp_path, fixtures_dir, copy_fixture):
     assert work_a.read_text() == work_b.read_text(), (
         "cleaner is not idempotent — running twice differs from running once"
     )
+
+
+def test_translation_language_aliases_are_canonicalized(tmp_path):
+    work = tmp_path / "aliases.xml"
+    work.write_text(
+        '<?xml version="1.0" encoding="utf-8"?>\n'
+        '<TEXT id="T" xml:lang="pwn"><S id="S_1">'
+        '<FORM kindOf="original">qema</FORM>'
+        '<TRANSL xml:lang="en">work</TRANSL>'
+        '<TRANSL xml:lang="zh">工作</TRANSL>'
+        '<M id="M_1"><FORM kindOf="original">qema</FORM>'
+        '<TRANSL>untagged</TRANSL></M>'
+        '</S></TEXT>',
+        encoding="utf-8",
+    )
+
+    proc = _run_clean(tmp_path)
+
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    translations = etree.parse(str(work)).findall(".//TRANSL")
+    assert [
+        transl.get("{http://www.w3.org/XML/1998/namespace}lang")
+        for transl in translations
+    ] == ["eng", "zho", None]
+
+
+def test_hundred_paiwan_missing_gloss_language_is_english(tmp_path):
+    corpus = tmp_path / "Formosan-100_Paiwan_Texts" / "Final_XML"
+    corpus.mkdir(parents=True)
+    work = corpus / "story.xml"
+    work.write_text(
+        '<?xml version="1.0" encoding="utf-8"?>\n'
+        '<TEXT id="T" xml:lang="pwn"><S id="S_1">'
+        '<FORM kindOf="original">qema</FORM>'
+        '<M id="M_1"><FORM kindOf="original">qema</FORM>'
+        '<TRANSL>af</TRANSL></M>'
+        '</S></TEXT>',
+        encoding="utf-8",
+    )
+
+    proc = _run_clean(tmp_path)
+
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    transl = etree.parse(str(work)).find(".//TRANSL")
+    assert transl is not None
+    assert transl.get(
+        "{http://www.w3.org/XML/1998/namespace}lang"
+    ) == "eng"
