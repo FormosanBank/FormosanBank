@@ -7,11 +7,11 @@ name: xml-validation
 # Two trigger paths with different strictness:
 #
 # 1. **PR-changed files** (PR trigger): runs the validators on EVERY
-#    .xml file the PR touches under `Corpora/*/XML/`. Exits nonzero on
-#    any HARD finding. This BLOCKS the PR if a contributor adds or
-#    modifies XML that violates the rules. The "changed files only"
-#    scope means existing legacy bad data in unrelated corpora does
-#    NOT block unrelated PRs.
+#    .xml file the PR touches under `Corpora/*/XML/`. Modified files
+#    block only HARD finding fingerprints absent from the PR base.
+#    Added files have an empty baseline and must contain no HARD
+#    findings. Existing legacy findings remain visible without forcing
+#    contributors to delete or rewrite valid archival records.
 #
 # 2. **Full-corpus baseline** (push-to-main + scheduled): runs the
 #    validator against all of `Corpora/` in informational mode
@@ -73,32 +73,49 @@ jobs:
             echo "Files:"
             cat changed_xml.txt
           fi
-      - name: Validate each changed XML file
+      - name: Block newly introduced hard XML and text findings
         if: steps.changed.outputs.count != '0'
         run: |
-          # Run validate_xml.py + validate_text.py by_path on each
-          # changed file. Default behavior (exit 1 on HARD findings)
-          # blocks the PR if any of the changed files violate the
-          # rules. validate_text.py (B9.4) consolidates the old
-          # validate_punct.py + non_ascii_counts.py; runs as a stage-2
-          # text-content validator.
+          # Validate candidate and base versions independently. Finding
+          # identity excludes the temporary file path, so unchanged
+          # rule/location fingerprints compare cleanly.
           fail=0
+          index=0
           while IFS= read -r file; do
             [ -z "$file" ] && continue
-            echo "::group::validate_xml $file"
-            if ! python QC/validation/validate_xml.py by_path \
-                 --path "$file" \
-                 --soft-csv "/tmp/soft-xml-$(basename "$file").csv"; then
-              fail=1
-            fi
-            echo "::endgroup::"
-            echo "::group::validate_text $file"
-            if ! python QC/validation/validate_text.py by_path \
-                 --path "$file" \
-                 --soft-csv "/tmp/soft-text-$(basename "$file").csv"; then
-              fail=1
-            fi
-            echo "::endgroup::"
+            index=$((index + 1))
+            base_file="/tmp/xml-base-files/$file"
+
+            for validator in validate_xml validate_text; do
+              candidate="/tmp/$validator-head-$index.csv"
+              baseline="/tmp/$validator-base-$index.csv"
+
+              echo "::group::$validator $file"
+              python "QC/validation/$validator.py" \
+                --no-exit-on-hard \
+                by_path --path "$file" \
+                --csv "$candidate"
+
+              compare_args=(
+                --candidate "$candidate"
+                --severity HARD
+              )
+              if git cat-file -e "origin/${{ github.base_ref }}:$file"; then
+                mkdir -p "$(dirname "$base_file")"
+                git show "origin/${{ github.base_ref }}:$file" > "$base_file"
+                python "QC/validation/$validator.py" \
+                  --no-exit-on-hard \
+                  by_path --path "$base_file" \
+                  --csv "$baseline"
+                compare_args+=(--baseline "$baseline")
+              fi
+
+              if ! python QC/validation/compare_findings.py \
+                   "${compare_args[@]}"; then
+                fail=1
+              fi
+              echo "::endgroup::"
+            done
           done < changed_xml.txt
           exit $fail
         env:
