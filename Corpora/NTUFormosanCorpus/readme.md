@@ -8,6 +8,19 @@ This corpus is subject to its source license and the central FormosanBank terms 
 
 ## Notes
 
+### Public audio
+
+Run `./download_audio_data.sh` from this corpus directory to download the
+public Grammar and Stories datasets from Hugging Face. The download is pinned
+by the repository-level `audio_sources.json` contract and does not require a
+Hugging Face account.
+
+The Grammar source currently has 3,754 usable recordings. One Seediq URL was
+corrected to the filename that is actually published by NTU. Two source URLs
+return 404 and one returns an empty response; their unusable `AUDIO` references
+were removed and remain documented in `missing_audio.csv` and the per-language
+`failed_audio.csv` files.
+
 ### Major issues, user beware
 
 * It is known that the audio does not always match the text. It is not clear how common this is. 

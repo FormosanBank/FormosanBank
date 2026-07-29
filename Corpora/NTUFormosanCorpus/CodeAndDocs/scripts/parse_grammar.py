@@ -16,6 +16,7 @@ import csv
 import re
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
+from urllib.parse import unquote, urlsplit
 import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from utils import clean_punctuation, add_transl_element, SPEAKER_TOKENS, is_speaker_token, strip_speaker_labels_from_translation, PAREN_TOKEN_RE, UNGRAMMATICAL_PAREN_RE, _drop_starred_slash, filter_punct_words, is_punct_only, fill_propername_gloss, _norm_paren, join_ori_tokens, insert_xxxx_tokens, strip_l2m, strip_prosodic_markers, expand_infixes
@@ -93,6 +94,36 @@ _FORM_OVERRIDES = {
     ("Kanakanavu", "15", 24): "vanai tia 'apacangcangarʉʉn Pi'i, tia paracani Pani nukai 'utori.",
     ("Kanakanavu", "15", 25): "vanai tia 'apacangcangarʉ Pi'i, tia paracani Pani saa 'utori?",
 }
+
+# The public NTU server has three A2 entries whose audio is not usable and one
+# entry whose published URL omitted the source file's ``00_`` prefix. Keep
+# these source-level exceptions here so regenerating the XML cannot recreate
+# broken AUDIO references.
+_AUDIO_URL_OVERRIDES = {
+    "https://formosanbank.linguistics.ntu.edu.tw/files/audio/"
+    "Seediq_A2-3-3%20n.mp3": (
+        "https://formosanbank.linguistics.ntu.edu.tw/files/audio/"
+        "00_Seediq_A2-3-3%20n.mp3"
+    ),
+    "https://formosanbank.linguistics.ntu.edu.tw/files/audio/"
+    "Seediq_A2-7-14.mp3": None,
+    "https://formosanbank.linguistics.ntu.edu.tw/files/audio/"
+    "Sakizaya_A2-10-144.mp3": None,
+    "https://formosanbank.linguistics.ntu.edu.tw/files/audio/"
+    "Sakizaya_A2-10-164.mp3": None,
+}
+
+
+def public_audio_url(url):
+    """Return the usable public audio URL, or None for unavailable sources."""
+    if not url:
+        return None
+    return _AUDIO_URL_OVERRIDES.get(url, url)
+
+
+def public_audio_filename(url):
+    """Return the decoded filename represented by a public audio URL."""
+    return unquote(urlsplit(url).path.rsplit("/", 1)[-1])
 
 
 # ---------------------------------------------------------------------------
@@ -418,11 +449,12 @@ def main(lang_codes):
                                         mzh_elem = ET.SubElement(m_element, "TRANSL")
                                         mzh_elem.set('xml:lang', 'zho')
                                         mzh_elem.text = pc
-                        if 'audio' in s:
-                            a_name = s['audio'].split('/')[-1]
+                        audio_url = public_audio_url(s.get('audio'))
+                        if audio_url:
+                            a_name = public_audio_filename(audio_url)
                             audio_element = ET.SubElement(s_element, "AUDIO")
                             audio_element.set("file", a_name)
-                            audio_element.set("url",  s['audio'])
+                            audio_element.set("url", audio_url)
                     continue  # skip normal processing for this sentence
 
                 # For A2 files with slash-separated variant forms, emit one <S> per variant.
@@ -522,11 +554,12 @@ def main(lang_codes):
                                         mzh.text = pc
 
                     # Record the audio URL in the XML so the downloader can find it.
-                    if 'audio' in s:
-                        a_name = s['audio'].split('/')[-1]
+                    audio_url = public_audio_url(s.get('audio'))
+                    if audio_url:
+                        a_name = public_audio_filename(audio_url)
                         audio_element = ET.SubElement(s_element, "AUDIO")
                         audio_element.set("file", a_name)
-                        audio_element.set("url",  s['audio'])
+                        audio_element.set("url", audio_url)
 
         try:
             xml_string = prettify(root)
