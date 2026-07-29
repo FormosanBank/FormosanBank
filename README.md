@@ -92,18 +92,26 @@ Tkinter is included with the standard Python distribution for Windows. No additi
 Clone the repository and install dependencies.
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/FormosanBank/FormosanBank.git
 cd FormosanBank
-pip install -r requirements.txt
+python3 -m pip install -r requirements.txt
 ./run_audio_downloads.sh
 ```
 
-Note that `run_audio_downloads.sh` depends on having git, git-lfs, jq, and hf (the huggingface cli) installed. On a Mac, use:
+The audio datasets are public. No Hugging Face login, private repository
+access, Git LFS, or `jq` is required. Downloads are resumable and pinned to
+the revisions in [`audio_sources.json`](audio_sources.json). To check every
+public dataset without downloading the audio, run:
 
 ```bash
-brew install git git-lfs jq
-pip install huggingface_hub[cli]  # This installs the 'hf' command
+./run_audio_downloads.sh --dry-run
 ```
+
+Each corpus-level `download_audio_data.sh` uses the same manifest and can also
+be run independently. [`audio_extras.json`](audio_extras.json) records public
+Hugging Face files that are intentionally retained even though the current XML
+does not reference them. The canonical datasets are collected in
+[Formosan Audio on Hugging Face](https://huggingface.co/collections/FormosanBank/formosan-audio-67c20fa45cd8f4d1a99647d4).
 
 ---
 

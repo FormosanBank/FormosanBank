@@ -11,13 +11,9 @@ name: audio-validation
 # 2. Full-Corpora baseline (push to main): runs informationally
 #    (--no-exit-on-hard) and uploads the broken_audio.csv as an artifact.
 #
-# Audio files are gitignored; this CI cannot validate the actual audio
-# binaries unless the runner pulls them. Per the B9.2 plan we treat
-# this as a structural check only: missing/invalid-range checks run
-# off the XML alone; unloadable/silent only fire when audio files are
-# present on the runner. The full-Corpora baseline does NOT download
-# audio (it would take too long) — see run_audio_downloads.sh for the
-# local workflow.
+# Audio files are gitignored, so this workflow validates binaries only when
+# they are present. Exact public XML-to-Hugging-Face file parity is enforced
+# separately by hf-audio-parity.yaml.
 
 on:
   pull_request:
@@ -85,10 +81,10 @@ jobs:
               echo "::warning::Skipping $corpus — no XML/ dir."
               continue
             fi
-            # If Audio/ doesn't exist either, point at XML/ so the
-            # validator's recursive search finds nothing — every ref
-            # falls into kind=missing, which the operator can review.
-            [ -d "$audio_dir" ] || audio_dir="$xml_dir"
+            if [ ! -d "$audio_dir" ]; then
+              echo "::notice::Skipping binary validation for $corpus — Audio/ is downloaded separately."
+              continue
+            fi
             echo "::group::validate_audio $corpus"
             log_dir="/tmp/audio-logs/$(basename "$corpus")"
             if ! python QC/validation/validate_audio.py \

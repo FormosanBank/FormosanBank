@@ -26,6 +26,14 @@ This repository contains code and data for processing and structuring the Paiwan
    pip install -r requirements.txt
    ```
 
+4. Download the three public source recordings:
+   ```bash
+   ./download_audio_data.sh
+   ```
+
+   The download comes from the public `FormosanBank/Paiwan_Stories` Hugging
+   Face dataset and does not require an account.
+
 ## Usage
 
 The XMLs were created by hand from the PDF. No automatic processing.
