@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "description": "Public audio present on Hugging Face but not referenced by the current public XML. These files are intentionally retained and downloaded.",
+  "description": "Public audio present on Hugging Face but not referenced by the current public XML. These files are intentionally retained and downloaded; this includes the one senior-high Saisiyat recording from the public CodeAndDocs source-audio tree.",
   "repositories": {
     "FormosanBank/ePark_hui_ben_ping_tai_picture_book_platform": [
       "Bunun/Junqun_Bunun/hui_ben_ping_tai_picture_book_platform_Junqun_Bunun_520864.wav",
@@ -15,6 +15,9 @@
       "Atayal/YilanZeaol_Atayal/jiu_jie_jiao_cai_nine_level_materials_YilanZeaol_Atayal_1406-1408.wav",
       "Saisiyat/Saisiyat/jiu_jie_jiao_cai_nine_level_materials_Saisiyat_322.wav",
       "Saisiyat/Saisiyat/jiu_jie_jiao_cai_nine_level_materials_Saisiyat_380-386.wav"
+    ],
+    "FormosanBank/ePark_ju_xing_pian_gao_zhong_sentence_patterns_senior_high": [
+      "Saisiyat/Saisiyat/1_2_E.wav"
     ],
     "FormosanBank/ePark_ju_xing_pian_guo_zhong_sentence_patterns_junior_high": [
       "Amis/Xiuguluan_Amis/9791.wav",
