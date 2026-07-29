@@ -111,7 +111,7 @@ def run_post_download(commands: list[list[str]]) -> None:
         subprocess.run(expanded, cwd=REPO_ROOT, check=True)
 
 
-def download_datasets(datasets: list[dict], workers: int = 32) -> None:
+def download_datasets(datasets: list[dict], workers: int = 64) -> None:
     include = ",".join(allow_patterns())
     cache_root = REPO_ROOT / ".audio-download-cache"
     for dataset in datasets:
@@ -178,8 +178,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--workers",
         type=int,
-        default=32,
-        help="Concurrent Hugging Face file downloads (default: 32).",
+        default=64,
+        help="Concurrent Git LFS transfers (default: 64).",
     )
     return parser
 

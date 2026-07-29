@@ -124,6 +124,11 @@ Hugging Face files that are intentionally retained even though the current XML
 does not reference them. The canonical datasets are collected in
 [Formosan Audio on Hugging Face](https://huggingface.co/collections/FormosanBank/formosan-audio-67c20fa45cd8f4d1a99647d4).
 
+The complete 21-dataset audio download is approximately 105.3 GiB. Allow at
+least 120 GiB of free space for the temporary Git LFS checkout used while each
+dataset is installed. Interrupted transfers resume from
+`.audio-download-cache/`; successful datasets remove their cache automatically.
+
 ---
 
 ## Usage
