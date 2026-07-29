@@ -610,7 +610,7 @@ class AuditPage(ttk.Frame):
         self.currentText.config(state="normal")
         self.currentText.delete("1.0", tk.END)
         #Formatting the text over a few variables for readability
-        #The text is in session data allText[currentLine][1][2][3] ([0] is the XML line number)
+        #The text is in session data allText[currentLine][1][2][3][4] ([0] is the XML line number)
         line = self.sessionData.currentLine
         currentTextFormat = ("TYPE: "+str(self.sessionData.allText[line][4])+"\nTEXT: "+str(self.sessionData.allText[line][1])+
                              "\nKIND OF TEXT = "+str(self.sessionData.allText[line][2])+"\nSOURCE NOTES: "+
@@ -807,9 +807,9 @@ class FileData:
                     #Check that something was found
                     if data:
                         #Go through each special character in the list of XML special characters
-                        for i, specialChar in enumerate(specialCharXML):
+                        for j, specialChar in enumerate(specialCharXML):
                             #Change each instance to its corresponding plain text
-                            data = data.replace(specialChar, specialCharPT[i])
+                            data = data.replace(specialChar, specialCharPT[j])
                     
                     #Make the row entry by appending a tuple
                     #Order is lineNo, text, kind of, notes, then the unit and type of entry
