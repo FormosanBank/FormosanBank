@@ -297,6 +297,37 @@ def test_V017_empty_FORM_content_negative(tmp_path, fixtures_dir, copy_fixture):
     )
 
 
+def test_empty_transcription_tiers_are_valid_for_audio_only_sentence():
+    """Audio records without a transcription remain valid corpus records."""
+    from io import BytesIO
+
+    from lxml import etree as _etree
+
+    from QC.validation.rules import hard as hard_rules
+
+    xml = (
+        '<?xml version="1.0" encoding="utf-8"?>'
+        '<TEXT id="T1" citation="t" BibTeX_citation="@t{t}" '
+        'copyright="t" xml:lang="pwn">'
+        '<S id="Paiwan_4557">'
+        '<FORM kindOf="original"/>'
+        '<PHON kindOf="original"/>'
+        '<FORM kindOf="standard"/>'
+        '<PHON kindOf="standard"/>'
+        '<TRANSL xml:lang="zho">你的小腿肚之前怎麼了。</TRANSL>'
+        '<AUDIO file="Paiwan_4557.mp3" start="0" end="4.69"/>'
+        '</S></TEXT>'
+    )
+    tree = _etree.parse(BytesIO(xml.encode("utf-8")))
+
+    assert hard_rules.v017_form_must_have_content(
+        tree, Path("test.xml"), None
+    ) == []
+    assert hard_rules.v073_phon_non_empty(
+        tree, Path("test.xml"), None
+    ) == []
+
+
 # -----------------------------------------------------------------------------
 # TRANSL: V022, V023, V024, V026
 # (V021 removed 2026-05-31 — TRANSL does not need kindOf at all; per user

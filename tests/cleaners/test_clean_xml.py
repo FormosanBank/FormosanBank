@@ -93,6 +93,27 @@ def test_html_unescape_happens_before_other_form_cleanups(tmp_path):
     assert forms == ['"foo bar"'], f"expected unescaped and whitespace-cleaned FORM: {forms!r}"
 
 
+def test_source_artifact_marker_does_not_delete_sentence(tmp_path):
+    """Cleaning preserves archival records even when MT later rejects a row."""
+    work = tmp_path / "artifact.xml"
+    work.write_text(
+        '<?xml version="1.0" encoding="utf-8"?>'
+        '<TEXT id="T" citation="t" BibTeX_citation="@t{t}" '
+        'copyright="t" xml:lang="ami">'
+        '<S id="S_1"><FORM kindOf="standard">456otca</FORM>'
+        '<TRANSL xml:lang="eng">artifact</TRANSL></S>'
+        '</TEXT>',
+        encoding="utf-8",
+    )
+
+    proc = _run_clean(tmp_path)
+
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    tree = etree.parse(str(work))
+    assert tree.find(".//S[@id='S_1']") is not None
+    assert _form_texts(work) == ["456otca"]
+
+
 def test_whitespace_is_normalized(tmp_path, fixtures_dir, copy_fixture):
     work = copy_fixture(fixtures_dir / "xml_with_whitespace_problems.xml", tmp_path)
     proc = _run_clean(tmp_path)
