@@ -50,7 +50,7 @@ def run_post_download(commands: list[list[str]]) -> None:
         subprocess.run(expanded, cwd=REPO_ROOT, check=True)
 
 
-def download_datasets(datasets: list[dict]) -> None:
+def download_datasets(datasets: list[dict], workers: int = 32) -> None:
     for dataset in datasets:
         destination = REPO_ROOT / dataset["destination"]
         destination.mkdir(parents=True, exist_ok=True)
@@ -65,6 +65,7 @@ def download_datasets(datasets: list[dict]) -> None:
             local_dir=destination,
             allow_patterns=allow_patterns(),
             token=False,
+            max_workers=workers,
         )
         cache = destination / ".cache" / "huggingface"
         if cache.exists():
@@ -87,12 +88,20 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Check the remote contract without downloading audio.",
     )
+    parser.add_argument(
+        "--workers",
+        type=int,
+        default=32,
+        help="Concurrent Hugging Face file downloads (default: 32).",
+    )
     return parser
 
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     try:
+        if args.workers < 1:
+            raise ValueError("--workers must be at least 1")
         manifest, extras = load_contract(args.manifest)
         datasets = selected_datasets(manifest, args.corpus)
         failures = validate_online(datasets, extras)
@@ -109,7 +118,7 @@ def main(argv: list[str] | None = None) -> int:
             return 0
 
         before = destination_counts(datasets)
-        download_datasets(datasets)
+        download_datasets(datasets, workers=args.workers)
         after_download = destination_counts(datasets)
 
         commands = []

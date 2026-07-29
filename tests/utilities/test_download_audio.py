@@ -65,7 +65,8 @@ def test_download_is_pinned_and_explicitly_anonymous(tmp_path, monkeypatch):
                 "revision": "abc123",
                 "destination": "Corpora/Test/Audio",
             }
-        ]
+        ],
+        workers=17,
     )
 
     args, kwargs = calls[0]
@@ -73,3 +74,4 @@ def test_download_is_pinned_and_explicitly_anonymous(tmp_path, monkeypatch):
     assert kwargs["repo_type"] == "dataset"
     assert kwargs["revision"] == "abc123"
     assert kwargs["token"] is False
+    assert kwargs["max_workers"] == 17
