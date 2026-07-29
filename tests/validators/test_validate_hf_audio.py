@@ -21,6 +21,83 @@ class FakeFileLister:
         return self.files[repo_id]
 
 
+def _write_contract(
+    root: Path,
+    *,
+    permission_status: str = "verified_public",
+    evidence: list[dict] | None = None,
+) -> Path:
+    evidence_path = root / "Corpora/Test/README.md"
+    evidence_path.parent.mkdir(parents=True, exist_ok=True)
+    evidence_path.write_text("Permission granted.", encoding="utf-8")
+    if evidence is None:
+        evidence = [
+            {
+                "type": "repository",
+                "path": "Corpora/Test/README.md",
+            }
+        ]
+    (root / "extras.json").write_text(
+        json.dumps({"schema_version": 1, "repositories": {}}),
+        encoding="utf-8",
+    )
+    (root / "permissions.json").write_text(
+        json.dumps(
+            {
+                "schema_version": 1,
+                "hf_organization": "FormosanBank",
+                "public_non_audio_datasets": ["FormosanBank/formosan-mt"],
+                "sources": [
+                    {
+                        "permission_id": "test-source",
+                        "corpus": "Test",
+                        "status": permission_status,
+                        "license": (
+                            "CC BY-NC"
+                            if permission_status == "verified_public"
+                            else None
+                        ),
+                        "basis": "Direct permission.",
+                        "evidence": evidence,
+                        "hf_repositories": [
+                            {
+                                "repo_id": "FormosanBank/Test",
+                                "access": (
+                                    "public"
+                                    if permission_status == "verified_public"
+                                    else "private"
+                                ),
+                            }
+                        ],
+                    }
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+    manifest = root / "manifest.json"
+    manifest.write_text(
+        json.dumps(
+            {
+                "schema_version": 1,
+                "permissions": "permissions.json",
+                "declared_extras": "extras.json",
+                "datasets": [
+                    {
+                        "corpus": "Test",
+                        "permission_id": "test-source",
+                        "repo_id": "FormosanBank/Test",
+                        "revision": "a" * 40,
+                        "expected_audio_files": 1,
+                    }
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+    return manifest
+
+
 def test_online_parity_accepts_declared_extra(tmp_path, monkeypatch):
     monkeypatch.setattr(parity, "REPO_ROOT", tmp_path)
     _write_xml(tmp_path / "Corpora/Test/XML/Amis/text.xml", ["clip.wav"])
@@ -132,3 +209,135 @@ def test_contract_requires_pinned_commit_sha(tmp_path, monkeypatch):
 
     with pytest.raises(ValueError, match="40-character commit SHA"):
         parity.load_contract(manifest)
+
+
+def test_contract_accepts_source_specific_permission_evidence(
+    tmp_path, monkeypatch
+):
+    monkeypatch.setattr(parity, "REPO_ROOT", tmp_path)
+    manifest_path = _write_contract(tmp_path)
+
+    manifest, extras, permissions = parity.load_contract(manifest_path)
+
+    assert manifest["datasets"][0]["permission_id"] == "test-source"
+    assert extras == {}
+    assert permissions["sources"][0]["status"] == "verified_public"
+
+
+def test_contract_rejects_pending_permission_in_public_manifest(
+    tmp_path, monkeypatch
+):
+    monkeypatch.setattr(parity, "REPO_ROOT", tmp_path)
+    manifest_path = _write_contract(
+        tmp_path,
+        permission_status="withheld_pending_permission",
+    )
+
+    with pytest.raises(ValueError, match="not verified for public distribution"):
+        parity.load_contract(manifest_path)
+
+
+def test_contract_requires_permission_evidence_inside_formosanbank(
+    tmp_path, monkeypatch
+):
+    monkeypatch.setattr(parity, "REPO_ROOT", tmp_path)
+    manifest_path = _write_contract(
+        tmp_path,
+        evidence=[
+            {
+                "type": "web",
+                "url": "https://example.com/license",
+            }
+        ],
+    )
+
+    with pytest.raises(ValueError, match="requires permission evidence in FormosanBank"):
+        parity.load_contract(manifest_path)
+
+
+class FakeInfo:
+    def __init__(
+        self,
+        repo_id: str,
+        *,
+        private: bool = False,
+        gated: bool | str = False,
+    ) -> None:
+        self.id = repo_id
+        self.private = private
+        self.gated = gated
+
+
+class FakeApi:
+    def __init__(
+        self,
+        *,
+        extra_dataset: bool = False,
+        model_audio: bool = False,
+    ) -> None:
+        self.extra_dataset = extra_dataset
+        self.model_audio = model_audio
+
+    def list_datasets(self, author: str, full: bool):
+        assert author == "FormosanBank"
+        assert full is True
+        result = [
+            FakeInfo("FormosanBank/Test"),
+            FakeInfo("FormosanBank/formosan-mt"),
+            FakeInfo("FormosanBank/Restricted", gated="manual"),
+        ]
+        if self.extra_dataset:
+            result.append(FakeInfo("FormosanBank/Unexpected"))
+        return result
+
+    def list_models(self, author: str, full: bool):
+        return [FakeInfo("FormosanBank/asr-model")]
+
+    def list_spaces(self, author: str, full: bool):
+        return [FakeInfo("FormosanBank/asr-space")]
+
+    def list_repo_files(
+        self,
+        repo_id: str,
+        *,
+        repo_type: str,
+        token: bool,
+    ):
+        assert token is False
+        if repo_id == "FormosanBank/asr-model" and self.model_audio:
+            return ["examples/clip.wav"]
+        return ["README.md"]
+
+
+def test_hf_inventory_accepts_exact_public_allowlist():
+    manifest = {"datasets": [{"repo_id": "FormosanBank/Test"}]}
+    permissions = {
+        "hf_organization": "FormosanBank",
+        "public_non_audio_datasets": ["FormosanBank/formosan-mt"],
+    }
+
+    failures = parity.validate_hf_inventory(
+        manifest,
+        permissions,
+        api=FakeApi(),
+    )
+
+    assert failures == []
+
+
+def test_hf_inventory_rejects_unapproved_dataset_and_model_audio():
+    manifest = {"datasets": [{"repo_id": "FormosanBank/Test"}]}
+    permissions = {
+        "hf_organization": "FormosanBank",
+        "public_non_audio_datasets": ["FormosanBank/formosan-mt"],
+    }
+
+    failures = parity.validate_hf_inventory(
+        manifest,
+        permissions,
+        api=FakeApi(extra_dataset=True, model_audio=True),
+    )
+
+    message = "\n".join(failures)
+    assert "FormosanBank/Unexpected" in message
+    assert "examples/clip.wav" in message

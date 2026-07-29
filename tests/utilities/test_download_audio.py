@@ -141,3 +141,39 @@ def test_move_audio_rejects_unresolved_lfs_pointer(tmp_path):
 
     with pytest.raises(RuntimeError, match="audio pointers unresolved"):
         download_audio.move_audio_files(source, tmp_path / "destination", 1)
+
+
+def test_main_reports_permission_pending_corpus_as_withheld(
+    tmp_path, monkeypatch, capsys
+):
+    monkeypatch.setattr(
+        download_audio,
+        "load_contract",
+        lambda path: (
+            {"datasets": []},
+            {},
+            {
+                "sources": [
+                    {
+                        "corpus": "Restricted",
+                        "status": "withheld_pending_permission",
+                    }
+                ]
+            },
+        ),
+    )
+
+    result = download_audio.main(
+        [
+            "--manifest",
+            str(tmp_path / "manifest.json"),
+            "--corpus",
+            "Restricted",
+            "--dry-run",
+        ]
+    )
+
+    assert result == 3
+    assert "source-specific redistribution permission is not verified" in (
+        capsys.readouterr().err
+    )

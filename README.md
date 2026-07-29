@@ -98,11 +98,11 @@ python3 -m pip install -r requirements.txt
 ./run_audio_downloads.sh
 ```
 
-The audio datasets are public. No Hugging Face login, private repository
-access, `hf` CLI, or `jq` is required. Downloads use Git LFS's public batch
-transport and are pinned to the revisions in
-[`audio_sources.json`](audio_sources.json). Install Git LFS once if it is not
-already available:
+Three source-permission-verified audio datasets are public. No Hugging Face
+login, private repository access, `hf` CLI, or `jq` is required for them.
+Downloads use Git LFS's public batch transport and are pinned to the revisions
+in [`audio_sources.json`](audio_sources.json). Install Git LFS once if it is
+not already available:
 
 ```bash
 # macOS
@@ -119,14 +119,20 @@ To check every public dataset without downloading the audio, run:
 ```
 
 Each corpus-level `download_audio_data.sh` uses the same manifest and can also
-be run independently. [`audio_extras.json`](audio_extras.json) records public
-Hugging Face files that are intentionally retained even though the current XML
-does not reference them. The canonical datasets are collected in
-[Formosan Audio on Hugging Face](https://huggingface.co/collections/FormosanBank/formosan-audio-67c20fa45cd8f4d1a99647d4).
+be run independently. A wrapper whose source-specific redistribution
+permission is not verified exits as withheld without requesting protected
+audio. [`audio_permissions.json`](audio_permissions.json) is the authoritative
+source-by-source permission ledger, and
+[`AUDIO-PERMISSIONS.md`](AUDIO-PERMISSIONS.md) explains the evidence standard
+and withheld sources. [`audio_extras.json`](audio_extras.json) records
+permission-covered Hugging Face files intentionally retained even though the
+current XML does not reference them. The public datasets are collected in
+[Permission-Verified Formosan Audio on Hugging Face](https://huggingface.co/collections/FormosanBank/formosan-audio-67c20fa45cd8f4d1a99647d4).
 
-The complete 21-dataset audio download is approximately 105.3 GiB. Allow at
-least 120 GiB of free space for the temporary Git LFS checkout used while each
-dataset is installed. Interrupted transfers resume from
+The complete three-dataset public download contains 3,215 audio files and is
+approximately 29.4 GiB. Allow at least 50 GiB of free space for the temporary
+Git LFS checkout used while each dataset is installed. Interrupted transfers
+resume from
 `.audio-download-cache/`; successful datasets remove their cache automatically.
 
 ---

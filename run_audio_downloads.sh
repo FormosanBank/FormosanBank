@@ -12,6 +12,7 @@ fi
 
 found_count=0
 succeeded_count=0
+withheld_corpora=()
 failed_corpora=()
 
 for corpus_dir in "$CORPORA_DIR"/*; do
@@ -26,13 +27,19 @@ for corpus_dir in "$CORPORA_DIR"/*; do
     if "$script_path" "$@"; then
         ((succeeded_count += 1))
     else
-        failed_corpora+=("$corpus_name")
+        status=$?
+        if ((status == 3)); then
+            withheld_corpora+=("$corpus_name")
+        else
+            failed_corpora+=("$corpus_name")
+        fi
     fi
 done
 
+withheld_count=${#withheld_corpora[@]}
 failed_count=${#failed_corpora[@]}
 echo
-echo "Audio download summary: found=$found_count succeeded=$succeeded_count failed=$failed_count"
+echo "Audio download summary: found=$found_count succeeded=$succeeded_count withheld=$withheld_count failed=$failed_count"
 
 if ((found_count == 0)); then
     echo "No corpus audio download scripts were found." >&2
@@ -44,4 +51,8 @@ if ((failed_count > 0)); then
     exit 1
 fi
 
-echo "All public audio downloads completed successfully."
+if ((withheld_count > 0)); then
+    printf 'Withheld pending permission: %s\n' "${withheld_corpora[*]}"
+fi
+
+echo "All permission-verified public audio downloads completed successfully."

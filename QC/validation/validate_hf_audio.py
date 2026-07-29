@@ -15,7 +15,21 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Iterable
 
-AUDIO_SUFFIXES = {".aac", ".flac", ".m4a", ".mp3", ".ogg", ".wav"}
+AUDIO_SUFFIXES = {
+    ".aac",
+    ".aif",
+    ".aiff",
+    ".flac",
+    ".m4a",
+    ".mov",
+    ".mp3",
+    ".mp4",
+    ".ogg",
+    ".opus",
+    ".wav",
+    ".webm",
+    ".wma",
+}
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
 
@@ -31,7 +45,9 @@ def load_json(path: Path) -> dict:
     return value
 
 
-def load_contract(manifest_path: Path) -> tuple[dict, dict[str, set[str]]]:
+def load_contract(
+    manifest_path: Path,
+) -> tuple[dict, dict[str, set[str]], dict]:
     manifest = load_json(manifest_path)
     if manifest.get("schema_version") != 1:
         raise ValueError(f"unsupported manifest schema: {manifest.get('schema_version')}")
@@ -50,11 +66,133 @@ def load_contract(manifest_path: Path) -> tuple[dict, dict[str, set[str]]]:
             raise ValueError(f"{repo_id}: revision must be a 40-character commit SHA")
         if not isinstance(dataset.get("expected_audio_files"), int):
             raise ValueError(f"{repo_id}: expected_audio_files must be an integer")
+        permission_id = dataset.get("permission_id")
+        if not isinstance(permission_id, str) or not permission_id:
+            raise ValueError(f"{repo_id}: permission_id must be a non-empty string")
         batch_2 = dataset.get("rukai_batch_2_files", [])
         if not isinstance(batch_2, list) or not all(
             isinstance(path, str) and is_audio(path) for path in batch_2
         ):
             raise ValueError(f"{repo_id}: rukai_batch_2_files must be audio filenames")
+
+    permissions_path = REPO_ROOT / manifest["permissions"]
+    permissions = load_json(permissions_path)
+    if permissions.get("schema_version") != 1:
+        raise ValueError("unsupported audio-permissions schema")
+    sources = permissions.get("sources")
+    if not isinstance(sources, list) or not sources:
+        raise ValueError("audio permissions sources must be a non-empty list")
+    permission_ids = [source.get("permission_id") for source in sources]
+    if len(permission_ids) != len(set(permission_ids)):
+        raise ValueError("audio permission_id values must be unique")
+    source_by_id: dict[str, dict] = {}
+    permission_repo_ids: set[str] = set()
+    for source in sources:
+        permission_id = source.get("permission_id")
+        if not isinstance(permission_id, str) or not permission_id:
+            raise ValueError("audio permission_id must be a non-empty string")
+        status = source.get("status")
+        if status not in {"verified_public", "withheld_pending_permission"}:
+            raise ValueError(f"{permission_id}: invalid permission status {status!r}")
+        if not isinstance(source.get("corpus"), str) or not source["corpus"]:
+            raise ValueError(f"{permission_id}: corpus must be a non-empty string")
+        if not isinstance(source.get("basis"), str) or not source["basis"]:
+            raise ValueError(f"{permission_id}: basis must be a non-empty string")
+        evidence = source.get("evidence")
+        if not isinstance(evidence, list):
+            raise ValueError(f"{permission_id}: evidence must be a list")
+        repository_evidence = []
+        for item in evidence:
+            if not isinstance(item, dict):
+                raise ValueError(f"{permission_id}: evidence entries must be objects")
+            if item.get("type") == "repository":
+                path = item.get("path")
+                if not isinstance(path, str) or not path:
+                    raise ValueError(
+                        f"{permission_id}: repository evidence requires a path"
+                    )
+                if not (REPO_ROOT / path).is_file():
+                    raise ValueError(
+                        f"{permission_id}: permission evidence does not exist: {path}"
+                    )
+                repository_evidence.append(path)
+            elif item.get("type") == "web":
+                url = item.get("url")
+                if not isinstance(url, str) or not url.startswith("https://"):
+                    raise ValueError(
+                        f"{permission_id}: web evidence requires an HTTPS URL"
+                    )
+            else:
+                raise ValueError(
+                    f"{permission_id}: unknown evidence type {item.get('type')!r}"
+                )
+        repositories = source.get("hf_repositories")
+        if not isinstance(repositories, list) or not repositories:
+            raise ValueError(
+                f"{permission_id}: hf_repositories must be a non-empty list"
+            )
+        for repository in repositories:
+            if not isinstance(repository, dict):
+                raise ValueError(
+                    f"{permission_id}: hf_repositories entries must be objects"
+                )
+            repo_id = repository.get("repo_id")
+            access = repository.get("access")
+            if not isinstance(repo_id, str) or "/" not in repo_id:
+                raise ValueError(f"{permission_id}: invalid HF repo_id {repo_id!r}")
+            if repo_id in permission_repo_ids:
+                raise ValueError(
+                    f"{repo_id}: appears in multiple audio permission sources"
+                )
+            permission_repo_ids.add(repo_id)
+            if access not in {"public", "private", "manual_gate"}:
+                raise ValueError(
+                    f"{repo_id}: invalid Hugging Face access state {access!r}"
+                )
+            if status == "verified_public" and access != "public":
+                raise ValueError(
+                    f"{permission_id}: verified repositories must be public"
+                )
+            if status == "withheld_pending_permission" and access == "public":
+                raise ValueError(
+                    f"{permission_id}: pending repositories cannot be public"
+                )
+        if status == "verified_public":
+            if not isinstance(source.get("license"), str) or not source["license"]:
+                raise ValueError(
+                    f"{permission_id}: verified public source requires a license"
+                )
+            if not repository_evidence:
+                raise ValueError(
+                    f"{permission_id}: verified public source requires "
+                    "permission evidence in FormosanBank"
+                )
+        source_by_id[permission_id] = source
+
+    for dataset in datasets:
+        repo_id = dataset["repo_id"]
+        permission_id = dataset["permission_id"]
+        source = source_by_id.get(permission_id)
+        if source is None:
+            raise ValueError(
+                f"{repo_id}: permission_id {permission_id!r} is not in "
+                "audio_permissions.json"
+            )
+        if source["status"] != "verified_public":
+            raise ValueError(
+                f"{repo_id}: permission source {permission_id!r} is not "
+                "verified for public distribution"
+            )
+        public_repositories = {
+            repository["repo_id"]
+            for repository in source["hf_repositories"]
+            if repository["access"] == "public"
+        }
+        if repo_id not in public_repositories:
+            raise ValueError(
+                f"{repo_id}: is not a public repository under permission "
+                f"{permission_id!r}"
+            )
 
     extras_path = REPO_ROOT / manifest["declared_extras"]
     extras_document = load_json(extras_path)
@@ -74,7 +212,7 @@ def load_contract(manifest_path: Path) -> tuple[dict, dict[str, set[str]]]:
         if len(paths) != len(set(paths)):
             raise ValueError(f"{repo_id}: declared extras contain duplicate paths")
         extras[repo_id] = set(paths)
-    return manifest, extras
+    return manifest, extras, permissions
 
 
 def xml_audio_elements(xml_root: Path) -> Iterable[tuple[Path, ET.Element, ET.Element]]:
@@ -253,6 +391,80 @@ def validate_online(
     return failures
 
 
+def validate_hf_inventory(manifest: dict, permissions: dict, api=None) -> list[str]:
+    """Reject unmanifested public datasets and committed audio in models/Spaces."""
+    if api is None:
+        from huggingface_hub import HfApi
+
+        api = HfApi(token=False)
+
+    organization = permissions["hf_organization"]
+    public_datasets = {
+        item.id
+        for item in api.list_datasets(author=organization, full=True)
+        if not getattr(item, "private", False) and not getattr(item, "gated", False)
+    }
+    manifested = {dataset["repo_id"] for dataset in manifest["datasets"]}
+    public_non_audio = permissions.get("public_non_audio_datasets")
+    if not isinstance(public_non_audio, list) or not all(
+        isinstance(repo_id, str) and "/" in repo_id
+        for repo_id in public_non_audio
+    ):
+        raise ValueError("public_non_audio_datasets must be a list of repo IDs")
+    allowed = manifested | set(public_non_audio)
+
+    failures: list[str] = []
+    failures.extend(
+        format_delta(
+            "unapproved public Hugging Face datasets",
+            public_datasets - allowed,
+        )
+    )
+    failures.extend(
+        format_delta(
+            "permissioned datasets not anonymously public",
+            manifested - public_datasets,
+        )
+    )
+
+    for repo_id in public_non_audio:
+        files = api.list_repo_files(
+            repo_id,
+            repo_type="dataset",
+            token=False,
+        )
+        audio = {path for path in files if is_audio(path)}
+        failures.extend(
+            format_delta(f"{repo_id} declared non-audio but contains audio", audio)
+        )
+
+    public_models = [
+        item
+        for item in api.list_models(author=organization, full=True)
+        if not getattr(item, "private", False) and not getattr(item, "gated", False)
+    ]
+    public_spaces = [
+        item
+        for item in api.list_spaces(author=organization, full=True)
+        if not getattr(item, "private", False) and not getattr(item, "gated", False)
+    ]
+    for repo_type, items in (("model", public_models), ("space", public_spaces)):
+        for item in items:
+            files = api.list_repo_files(
+                item.id,
+                repo_type=repo_type,
+                token=False,
+            )
+            audio = {path for path in files if is_audio(path)}
+            failures.extend(
+                format_delta(
+                    f"{item.id} public {repo_type} contains unapproved audio",
+                    audio,
+                )
+            )
+    return failures
+
+
 def local_audio_paths(destination: Path) -> set[str]:
     if not destination.is_dir():
         return set()
@@ -310,12 +522,13 @@ def build_parser() -> argparse.ArgumentParser:
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     try:
-        manifest, extras = load_contract(args.manifest)
+        manifest, extras, permissions = load_contract(args.manifest)
         datasets = selected_datasets(manifest, args.corpus)
         if args.local:
             failures = validate_local(datasets, extras)
         else:
-            failures = validate_online(datasets, extras)
+            failures = validate_hf_inventory(manifest, permissions)
+            failures.extend(validate_online(datasets, extras))
     except Exception as exc:
         print(f"audio parity error: {exc}", file=sys.stderr)
         return 2
