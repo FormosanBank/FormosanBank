@@ -365,6 +365,10 @@ def v017_form_must_have_content(
         if form.find("UNCLEAR") is not None:
             continue
         parent = form.getparent()
+        if parent is not None and _is_untranscribed_audio_sentence(
+            parent
+        ):
+            continue
         parent_id = parent.get("id") if parent is not None else None
         parent_tag = parent.tag if parent is not None else "FORM"
         kind = form.get("kindOf") or "(no kindOf)"
@@ -783,6 +787,10 @@ def v073_phon_non_empty(
         # PHON itself). Added 2026-06-08.
         if parent is not None and _parent_form_is_unclear(parent):
             continue
+        if parent is not None and _is_untranscribed_audio_sentence(
+            parent
+        ):
+            continue
         p_id = parent.get("id") if parent is not None else None
         p_tag = parent.tag if parent is not None else "?"
         findings.append(Finding(
@@ -821,6 +829,24 @@ def _parent_form_is_unclear(parent: etree._Element) -> bool:
         if child.tag == "FORM" and child.find("UNCLEAR") is not None:
             return True
     return False
+
+
+def _is_untranscribed_audio_sentence(
+    parent: etree._Element,
+) -> bool:
+    """True for an audio-backed S with no transcribed FORM/PHON content."""
+    if parent.tag != "S" or parent.find("AUDIO") is None:
+        return False
+    transcription_tiers = [
+        child
+        for child in parent
+        if child.tag in {"FORM", "PHON"}
+    ]
+    return bool(transcription_tiers) and all(
+        not "".join(tier.itertext()).strip()
+        and tier.find("UNCLEAR") is None
+        for tier in transcription_tiers
+    )
 
 
 # Allowed values for TRANSL/@ver. Per user direction (2026-06-01 follow-up to
