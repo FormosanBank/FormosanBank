@@ -83,8 +83,11 @@ jobs:
               echo "::warning::Skipping $corpus — no XML/ dir."
               continue
             fi
-            if [ ! -d "$audio_dir" ]; then
-              echo "::notice::Skipping local-audio checks for $corpus — no Audio/ directory."
+            if [ ! -d "$audio_dir" ] || ! find "$audio_dir" -type f \
+                 \( -iname '*.mp3' -o -iname '*.wav' -o -iname '*.flac' \
+                    -o -iname '*.ogg' -o -iname '*.m4a' \) -print -quit \
+                 | grep -q .; then
+              echo "::notice::Skipping local-audio checks for $corpus — no local audio files."
               continue
             fi
             echo "::group::validate_audio $corpus"
@@ -132,8 +135,11 @@ jobs:
             xml_dir="$corpus/XML"
             audio_dir="$corpus/Audio"
             [ -d "$xml_dir" ] || continue
-            if [ ! -d "$audio_dir" ]; then
-              echo "Skipping $corpus — no local Audio/ directory."
+            if [ ! -d "$audio_dir" ] || ! find "$audio_dir" -type f \
+                 \( -iname '*.mp3' -o -iname '*.wav' -o -iname '*.flac' \
+                    -o -iname '*.ogg' -o -iname '*.m4a' \) -print -quit \
+                 | grep -q .; then
+              echo "Skipping $corpus — no local audio files."
               continue
             fi
             log_dir="/tmp/audio-logs/$(basename "$corpus")"
