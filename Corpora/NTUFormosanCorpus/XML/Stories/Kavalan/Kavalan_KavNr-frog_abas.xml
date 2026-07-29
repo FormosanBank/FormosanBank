@@ -4233,6 +4233,30 @@
                 <TRANSL xml:lang="eng">LOC</TRANSL>
                 <TRANSL xml:lang="zho">處格</TRANSL>
             </M>
+            <M id="KavNr-frog_abas_S_18_W4M2">
+                <FORM kindOf="original"/>
+                <PHON kindOf="original"/>
+                <FORM kindOf="standard"/>
+                <PHON kindOf="standard"/>
+                <TRANSL xml:lang="eng">window</TRANSL>
+                <TRANSL xml:lang="zho">窗戶</TRANSL>
+            </M>
+            <M id="KavNr-frog_abas_S_18_W4M3">
+                <FORM kindOf="original"/>
+                <PHON kindOf="original"/>
+                <FORM kindOf="standard"/>
+                <PHON kindOf="standard"/>
+                <TRANSL xml:lang="eng">LOC</TRANSL>
+                <TRANSL xml:lang="zho">處格</TRANSL>
+            </M>
+            <M id="KavNr-frog_abas_S_18_W4M4">
+                <FORM kindOf="original"/>
+                <PHON kindOf="original"/>
+                <FORM kindOf="standard"/>
+                <PHON kindOf="standard"/>
+                <TRANSL xml:lang="eng">3SG.GEN</TRANSL>
+                <TRANSL xml:lang="zho">33SG.屬格</TRANSL>
+            </M>
         </W>
         <W id="KavNr-frog_abas_S_18_W5">
             <FORM kindOf="original">wasu</FORM>
@@ -14293,6 +14317,14 @@
                 <TRANSL xml:lang="eng">AF</TRANSL>
                 <TRANSL xml:lang="zho">主焦</TRANSL>
             </M>
+            <M id="KavNr-frog_abas_S_62_W7M2">
+                <FORM kindOf="original"/>
+                <PHON kindOf="original"/>
+                <FORM kindOf="standard"/>
+                <PHON kindOf="standard"/>
+                <TRANSL xml:lang="eng">swim</TRANSL>
+                <TRANSL xml:lang="zho">游泳</TRANSL>
+            </M>
         </W>
         <W id="KavNr-frog_abas_S_62_W8">
             <FORM kindOf="original">wasu-na</FORM>
@@ -17888,6 +17920,30 @@
         <TRANSL xml:lang="zho">沒了嗎?</TRANSL>
         <TRANSL xml:lang="eng">Is it over?</TRANSL>
         <AUDIO file="KavNr-frog_abas_S80.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-frog_abas.mp3" start="649.3" end="651.24"/>
+        <W id="KavNr-frog_abas_S_80_W0">
+            <FORM kindOf="original">((VOICEOVERmai=ti))</FORM>
+            <PHON kindOf="original">((**iʦə**əʁmai=ti))</PHON>
+            <FORM kindOf="standard">((VOICEOVERmai=ti))</FORM>
+            <PHON kindOf="standard">((**iʦə**əʁmai=ti))</PHON>
+            <TRANSL xml:lang="zho">否定=完成</TRANSL>
+            <TRANSL xml:lang="eng">NEG=PFV</TRANSL>
+            <M id="KavNr-frog_abas_S_80_W0M1">
+                <FORM kindOf="original">((VOICEOVERmai</FORM>
+                <PHON kindOf="original">((**iʦə**əʁmai</PHON>
+                <FORM kindOf="standard">((VOICEOVERmai</FORM>
+                <PHON kindOf="standard">((**iʦə**əʁmai</PHON>
+                <TRANSL xml:lang="eng">NEG</TRANSL>
+                <TRANSL xml:lang="zho">否定</TRANSL>
+            </M>
+            <M id="KavNr-frog_abas_S_80_W0M2">
+                <FORM kindOf="original">ti))</FORM>
+                <PHON kindOf="original">ti))</PHON>
+                <FORM kindOf="standard">ti))</FORM>
+                <PHON kindOf="standard">ti))</PHON>
+                <TRANSL xml:lang="eng">PFV</TRANSL>
+                <TRANSL xml:lang="zho">完成</TRANSL>
+            </M>
+        </W>
     </S>
     <S id="KavNr-frog_abas_S_81">
         <FORM kindOf="original">maiti haw.</FORM>
