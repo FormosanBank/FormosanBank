@@ -7,10 +7,11 @@ name: xml-validation
 # Two trigger paths with different strictness:
 #
 # 1. **PR-changed files** (PR trigger): runs the validators on EVERY
-#    .xml file the PR touches under `Corpora/*/XML/`. Exits nonzero on
-#    any new HARD finding relative to the PR base. This lets contributors
-#    repair files with known legacy findings without making the baseline
-#    worse.
+#    .xml file the PR touches under `Corpora/*/XML/`. Modified files
+#    block only HARD finding fingerprints absent from the PR base.
+#    Added files have an empty baseline and must contain no HARD
+#    findings. Existing legacy findings remain visible without forcing
+#    contributors to delete or rewrite valid archival records.
 #
 # 2. **Full-corpus baseline** (push-to-main + scheduled): runs the
 #    validator against all of `Corpora/` in informational mode
@@ -21,11 +22,11 @@ name: xml-validation
 #    baseline reaches zero we can switch the full-corpus job to
 #    blocking mode and retire the PR-changed-files scoping.
 #
-# Gloss-validation severity policy (B9.3):
-# - HARD (V062/V063/V064): blocking on the PR path (nonzero exit).
-# - SOFT (V060/V061/V065): emitted as warnings to stderr but do NOT
-#   fail the job. Gloss checks are review-not-gate; SOFT findings
-#   surface candidate cleanups without blocking contribution.
+# Gloss-validation severity policy:
+# - New HARD findings block the PR. Existing HARD findings in modified
+#   legacy files remain visible but do not prevent unrelated repairs.
+# - SOFT findings are emitted as warnings but do not fail the job.
+#   Added files have no baseline, so every HARD finding is new.
 
 on:
   pull_request:
@@ -72,82 +73,92 @@ jobs:
             echo "Files:"
             cat changed_xml.txt
           fi
-      - name: Validate each changed XML file
+      - name: Block newly introduced hard XML and text findings
         if: steps.changed.outputs.count != '0'
         run: |
+          # Validate candidate and base versions independently. Finding
+          # identity excludes the temporary file path, so unchanged
+          # rule/location fingerprints compare cleanly.
           fail=0
-          mkdir -p /tmp/xml-validation
+          index=0
           while IFS= read -r file; do
             [ -z "$file" ] && continue
-            key=$(printf '%s' "$file" | sha256sum | cut -d' ' -f1)
-            base_file="/tmp/xml-validation/$key-base.xml"
-            if ! git show "origin/${{ github.base_ref }}:$file" > "$base_file"; then
-              : > "$base_file"
-            fi
+            index=$((index + 1))
+            base_file="/tmp/xml-base-files/$file"
 
-            echo "::group::validate_xml $file"
-            current_csv="/tmp/xml-validation/$key-current-xml.csv"
-            base_csv="/tmp/xml-validation/$key-base-xml.csv"
-            python QC/validation/validate_xml.py by_path \
-              --path "$file" --no-exit-on-hard --soft-csv "$current_csv"
-            if [ -s "$base_file" ]; then
-              python QC/validation/validate_xml.py by_path \
-                --path "$base_file" --no-exit-on-hard --soft-csv "$base_csv"
-            else
-              : > "$base_csv"
-            fi
-            if ! python QC/validation/compare_findings.py "$current_csv" "$base_csv"; then
-              fail=1
-            fi
-            echo "::endgroup::"
+            for validator in validate_xml validate_text; do
+              candidate="/tmp/$validator-head-$index.csv"
+              baseline="/tmp/$validator-base-$index.csv"
 
-            echo "::group::validate_text $file"
-            current_csv="/tmp/xml-validation/$key-current-text.csv"
-            base_csv="/tmp/xml-validation/$key-base-text.csv"
-            python QC/validation/validate_text.py by_path \
-              --path "$file" --no-exit-on-hard --soft-csv "$current_csv"
-            if [ -s "$base_file" ]; then
-              python QC/validation/validate_text.py by_path \
-                --path "$base_file" --no-exit-on-hard --soft-csv "$base_csv"
-            else
-              : > "$base_csv"
-            fi
-            if ! python QC/validation/compare_findings.py "$current_csv" "$base_csv"; then
-              fail=1
-            fi
-            echo "::endgroup::"
+              echo "::group::$validator $file"
+              python "QC/validation/$validator.py" \
+                --no-exit-on-hard \
+                by_path --path "$file" \
+                --csv "$candidate"
+
+              compare_args=(
+                --candidate "$candidate"
+                --severity HARD
+              )
+              if git cat-file -e "origin/${{ github.base_ref }}:$file"; then
+                mkdir -p "$(dirname "$base_file")"
+                git show "origin/${{ github.base_ref }}:$file" > "$base_file"
+                python "QC/validation/$validator.py" \
+                  --no-exit-on-hard \
+                  by_path --path "$base_file" \
+                  --csv "$baseline"
+                compare_args+=(--baseline "$baseline")
+              fi
+
+              if ! python QC/validation/compare_findings.py \
+                   "${compare_args[@]}"; then
+                fail=1
+              fi
+              echo "::endgroup::"
+            done
           done < changed_xml.txt
           exit $fail
         env:
           PYTHONPATH: ${{ github.workspace }}
 
-      - name: Run gloss validator on changed files (stage 2)
+      - name: Block newly introduced hard gloss findings (stage 2)
         if: steps.changed.outputs.count != '0'
         run: |
+          # Modified legacy XML may already contain hard gloss findings.
+          # Validate the candidate and its base version independently,
+          # then block only hard rule/location fingerprints introduced
+          # by the PR. Added files have an empty baseline and therefore
+          # must contain no hard gloss findings.
           fail=0
-          mkdir -p /tmp/gloss-validation
+          index=0
           while IFS= read -r file; do
             [ -z "$file" ] && continue
-            key=$(printf '%s' "$file" | sha256sum | cut -d' ' -f1)
-            base_file="/tmp/gloss-validation/$key-base.xml"
-            current_dir="/tmp/gloss-validation/$key-current"
-            base_dir="/tmp/gloss-validation/$key-base"
-            if ! git show "origin/${{ github.base_ref }}:$file" > "$base_file"; then
-              : > "$base_file"
-            fi
+            index=$((index + 1))
+            head_dir="/tmp/gloss-head-$index"
+            base_dir="/tmp/gloss-base-$index"
+            base_file="/tmp/gloss-base-files/$file"
 
             echo "::group::validate_glosses $file"
             python QC/validation/validate_glosses.py \
-              by_path --path "$file" --output_dir "$current_dir" || true
-            if [ -s "$base_file" ]; then
+              by_path --path "$file" \
+              --output_dir "$head_dir" \
+              --no-exit-on-hard
+
+            compare_args=(
+              --candidate "$head_dir/validate_glosses_findings.csv"
+              --severity HARD
+            )
+            if git cat-file -e "origin/${{ github.base_ref }}:$file"; then
+              mkdir -p "$(dirname "$base_file")"
+              git show "origin/${{ github.base_ref }}:$file" > "$base_file"
               python QC/validation/validate_glosses.py \
-                by_path --path "$base_file" --output_dir "$base_dir" || true
-            else
-              mkdir -p "$base_dir"
+                by_path --path "$base_file" \
+                --output_dir "$base_dir" \
+                --no-exit-on-hard
+              compare_args+=(--baseline "$base_dir/validate_glosses_findings.csv")
             fi
-            if ! python QC/validation/compare_findings.py \
-              "$current_dir/validate_glosses_findings.csv" \
-              "$base_dir/validate_glosses_findings.csv"; then
+
+            if ! python QC/validation/compare_findings.py "${compare_args[@]}"; then
               fail=1
             fi
             echo "::endgroup::"

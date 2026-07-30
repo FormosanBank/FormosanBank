@@ -14,6 +14,14 @@ XML_LANG_ATTR = "{http://www.w3.org/XML/1998/namespace}lang"
 _CHINESE_LANGS = frozenset({
     "zho", "zh", "cmn", "yue", "wuu", "hak", "nan",
 })
+_TRANSL_LANG_ALIASES = {
+    "en": "eng",
+    "zh": "zho",
+}
+_ENGLISH_GLOSS_CORPUS_PATHS = frozenset({
+    "Formosan-100_Paiwan_Texts",
+    "HundredPaiwanStories",
+})
 
 
 def _get_xml_lang(element) -> str | None:
@@ -40,6 +48,34 @@ def _is_chinese(lang: str | None) -> bool:
     if lang is None:
         return False
     return lang.lower() in _CHINESE_LANGS or lang.lower().startswith("zh")
+
+
+def normalize_translation_language_metadata(
+    root,
+    xml_file: str,
+) -> dict[str, int]:
+    """Canonicalize known TRANSL language metadata without guessing broadly.
+
+    ISO 639-1 aliases ``en`` and ``zh`` are normalized to the repository's
+    ISO 639-3 convention. The Hundred Paiwan Stories source is the only
+    corpus where missing TRANSL languages are inferred: its bare morpheme
+    glosses are documented as English in the corpus migration script.
+    """
+    counts: defaultdict[str, int] = defaultdict(int)
+    infer_english = any(
+        part in _ENGLISH_GLOSS_CORPUS_PATHS
+        for part in Path(xml_file).parts
+    )
+    for transl in root.iter("TRANSL"):
+        raw = (transl.get(XML_LANG_ATTR) or "").strip()
+        canonical = _TRANSL_LANG_ALIASES.get(raw.lower())
+        if canonical and canonical != raw:
+            transl.set(XML_LANG_ATTR, canonical)
+            counts[f"normalize_translation_language_{raw.lower()}_to_{canonical}"] += 1
+        elif not raw and infer_english:
+            transl.set(XML_LANG_ATTR, "eng")
+            counts["infer_hundred_paiwan_gloss_language_eng"] += 1
+    return dict(counts)
 
 
 _ISO_TO_LANG_NAME = {
@@ -539,6 +575,7 @@ def analyze_and_modify_xml_file(
     corpora_dir,
     warnings: CleanerWarnings | None = None,
     counter: TransformCounter | None = None,
+    metadata_counter: dict[str, int] | None = None,
     hard_remove_segmentation: bool = False,
     ortho_path: str | None = None,
 ):
@@ -566,12 +603,22 @@ def analyze_and_modify_xml_file(
                 tree = etree.parse(xml_file)
                 root = tree.getroot()
                 modified = False
+                metadata_repairs = normalize_translation_language_metadata(
+                    root,
+                    xml_file,
+                )
+                if metadata_repairs:
+                    modified = True
+                    if metadata_counter is not None:
+                        for rule, count in metadata_repairs.items():
+                            metadata_counter[rule] = (
+                                metadata_counter.get(rule, 0) + count
+                            )
 
                 for sentence in root.findall('.//S'):
                     # Intentionally includes descendant W/M FORM tiers; they
                     # receive the same punctuation/Unicode cleanup as S FORM.
                     form_elements = sentence.findall('.//FORM')
-                    sentence_removed = False
                     for form_element in form_elements:
                         if form_element is not None:
                             form_text = form_element.text
@@ -585,45 +632,35 @@ def analyze_and_modify_xml_file(
                                 form_element.text = working_text
                                 modified = True
 
-                            # Handle specific <FORM> cases
-                            if "456otca" in working_text:  # Remove <S> if text contains 456otca
-                                root.remove(sentence)
+                            unescaped_text = html.unescape(working_text)
+                            if unescaped_text != working_text:  # Replace HTML entities
+                                print('HTML entities found')
+                                # log the change
+                                with open(os.path.join(corpora_dir,"html_entities.log"), "a") as f:
+                                    f.write(f"{xml_file}:\n")
+                                    f.write(f"Original: {working_text}\n")
+                                    f.write(f"Modified: {unescaped_text}\n\n")
+                                working_text = unescaped_text
+                                form_element.text = working_text
                                 modified = True
-                                sentence_removed = True
-                                break
-                            else:
-                                unescaped_text = html.unescape(working_text)
-                                if unescaped_text != working_text:  # Replace HTML entities
-                                    print('HTML entities found')
-                                    # log the change
-                                    with open(os.path.join(corpora_dir,"html_entities.log"), "a") as f:
-                                        f.write(f"{xml_file}:\n")
-                                        f.write(f"Original: {working_text}\n")
-                                        f.write(f"Modified: {unescaped_text}\n\n")
-                                    working_text = unescaped_text
-                                    form_element.text = working_text
-                                    modified = True
-                                cleaned_form_text = clean_text(
-                                    working_text,
-                                    lang="na",
-                                    xml_file=xml_file,
-                                    s_id=sentence.get("id"),
-                                    warnings=warnings,
-                                    counter=counter,
-                                )
-                                if cleaned_form_text != working_text:
-                                    form_element.text = cleaned_form_text
-                                    modified = True
+                            cleaned_form_text = clean_text(
+                                working_text,
+                                lang="na",
+                                xml_file=xml_file,
+                                s_id=sentence.get("id"),
+                                warnings=warnings,
+                                counter=counter,
+                            )
+                            if cleaned_form_text != working_text:
+                                form_element.text = cleaned_form_text
+                                modified = True
 
-                                # C022: warn on each '*' in any FORM (any position).
-                                # FORM text is preserved (no removal).
-                                if warnings is not None and "*" in cleaned_form_text:
-                                    for i, ch in enumerate(cleaned_form_text):
-                                        if ch == "*":
-                                            warnings.add("c022", xml_file, sentence.get("id"), ch, i)
-
-                    if sentence_removed:
-                        continue
+                            # C022: warn on each '*' in any FORM (any position).
+                            # FORM text is preserved (no removal).
+                            if warnings is not None and "*" in cleaned_form_text:
+                                for i, ch in enumerate(cleaned_form_text):
+                                    if ch == "*":
+                                        warnings.add("c022", xml_file, sentence.get("id"), ch, i)
 
                     # C012: handle hyphens in S-level FORM[@kindOf="standard"] only.
                     # Must run AFTER clean_text so any clean_text output is included.
@@ -671,16 +708,22 @@ def main(args):
     warnings_path = Path(args.corpora_path) / "cleaner_warnings.csv"
     warnings = CleanerWarnings(warnings_path)
     counter = TransformCounter()
+    metadata_counter: dict[str, int] = {}
     analyze_and_modify_xml_file(
         args.corpora_path,
         args.corpora_path,
         warnings=warnings,
         counter=counter,
+        metadata_counter=metadata_counter,
         hard_remove_segmentation=getattr(args, "hard_remove_segmentation", False),
         ortho_path=getattr(args, "ortho_path", None),
     )
     warnings.write_csv()
     counter.print_summary()
+    if metadata_counter:
+        print("\nMetadata repair summary (rule : count):")
+        for rule, count in sorted(metadata_counter.items()):
+            print(f"  {rule} : {count}")
 
 
 if __name__ == "__main__":

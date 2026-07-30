@@ -11,9 +11,13 @@ name: audio-validation
 # 2. Full-Corpora baseline (push to main): runs informationally
 #    (--no-exit-on-hard) and uploads the broken_audio.csv as an artifact.
 #
-# Audio files are gitignored, so this workflow validates binaries only when
-# they are present. Exact public XML-to-Hugging-Face file parity is enforced
-# separately by hf-audio-parity.yaml.
+# Audio files are gitignored; this CI cannot validate the actual audio
+# binaries unless a corpus has an Audio/ directory checked in. XML QC
+# owns structural range validation. File existence, decoding, and silence
+# checks run only where local audio is actually available. Exact public
+# XML-to-Hugging-Face file parity and source permissions are enforced by
+# hf-audio-parity.yaml. The full-Corpora baseline does not download audio;
+# see run_audio_downloads.sh for the local workflow.
 
 on:
   pull_request:
@@ -66,10 +70,9 @@ jobs:
         if: steps.changed.outputs.count != '0'
         run: |
           # HARD findings (V100-V103) block the PR; SOFT findings warn.
-          # If the corpus has no Audio/ dir checked in, the "missing"
-          # check still flags every <AUDIO file=…> ref as missing,
-          # which is itself a useful signal (catches typos in the XML
-          # filenames).
+          # Do not manufacture V100 failures when no local audio exists:
+          # most release corpora reference remote or externally stored files.
+          # validate_xml.py independently owns AUDIO start/end validation.
           fail=0
           mkdir -p /tmp/audio-logs
           while IFS= read -r corpus; do
@@ -81,8 +84,11 @@ jobs:
               echo "::warning::Skipping $corpus — no XML/ dir."
               continue
             fi
-            if [ ! -d "$audio_dir" ]; then
-              echo "::notice::Skipping binary validation for $corpus — Audio/ is downloaded separately."
+            if [ ! -d "$audio_dir" ] || ! find "$audio_dir" -type f \
+                 \( -iname '*.mp3' -o -iname '*.wav' -o -iname '*.flac' \
+                    -o -iname '*.ogg' -o -iname '*.m4a' \) -print -quit \
+                 | grep -q .; then
+              echo "::notice::Skipping local-audio checks for $corpus — no local audio files."
               continue
             fi
             echo "::group::validate_audio $corpus"
@@ -130,7 +136,13 @@ jobs:
             xml_dir="$corpus/XML"
             audio_dir="$corpus/Audio"
             [ -d "$xml_dir" ] || continue
-            [ -d "$audio_dir" ] || audio_dir="$xml_dir"
+            if [ ! -d "$audio_dir" ] || ! find "$audio_dir" -type f \
+                 \( -iname '*.mp3' -o -iname '*.wav' -o -iname '*.flac' \
+                    -o -iname '*.ogg' -o -iname '*.m4a' \) -print -quit \
+                 | grep -q .; then
+              echo "Skipping $corpus — no local audio files."
+              continue
+            fi
             log_dir="/tmp/audio-logs/$(basename "$corpus")"
             echo "=== $corpus ==="
             python QC/validation/validate_audio.py \

@@ -1,8 +1,7 @@
-"""fix_dialects.py — populate missing TEXT/@dialect attributes in XMLs under a path.
+"""Populate and canonicalize TEXT/@dialect attributes under a path.
 
 For every .xml file under --path:
-  - If the root <TEXT> already has a non-empty `dialect` attribute,
-    skip the file (no change).
+  - Normalize documented legacy aliases to the official dialect inventory.
   - Otherwise, set `dialect` to:
       * the language name itself, for single-dialect languages (e.g.,
         xml:lang="tsu" -> dialect="Tsou"),
@@ -10,9 +9,8 @@ For every .xml file under --path:
         (ambiguous between Truku and Seediq).
     The choice is driven by QC/validation/_dialect_inventory.py.
 
-The script is idempotent: re-running it never touches a file that already
-has a dialect set. Files are rewritten in place (matching the convention
-used by standardize.py and clean_xml.py); diff before committing.
+The script is idempotent. Files are rewritten in place (matching the
+convention used by standardize.py and clean_xml.py); diff before committing.
 
 Non-XML files, parse errors, and roots that aren't <TEXT> are skipped and
 reported on stderr; they do not abort the run.
@@ -30,7 +28,7 @@ _REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
-from QC.validation._dialect_inventory import default_dialect_for_lang_code
+from QC.validation._dialect_inventory import default_dialect_for_lang_code  # noqa: E402
 
 _XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
 
@@ -42,6 +40,23 @@ _TEXT_OPEN_TAG = re.compile(
     rb'<TEXT\b((?:\s+[\w:.-]+\s*=\s*(?:"[^"]*"|\'[^\']*\'))*)(\s*/?>)',
     re.DOTALL,
 )
+_DIALECT_ATTRIBUTE = re.compile(
+    rb'(\bdialect\s*=\s*)(["\'])(.*?)\2',
+    re.DOTALL,
+)
+
+# Source-specific labels that have appeared in released Paiwan XML. The
+# targets are the official values in dialects.csv.
+_DIALECT_ALIASES: dict[str, dict[str, str]] = {
+    "pwn": {
+        "Northern Paiwan": "Northern",
+        "Eastern Paiwan": "Eastern",
+        "Central Paiwan": "Central",
+        "Southern Paiwan": "Southern",
+        "North Western": "Northern",
+        "Sothern": "Southern",
+    },
+}
 
 
 def _discover_xml(path: Path) -> list[Path]:
@@ -51,10 +66,11 @@ def _discover_xml(path: Path) -> list[Path]:
 
 
 def fix_file(file: Path) -> tuple[str, str | None]:
-    """Mutate `file` in place if its TEXT root is missing @dialect.
+    """Mutate `file` if its TEXT root dialect is missing or non-canonical.
 
     Returns (status, dialect_set):
       ("set", "<value>")   — dialect was added; value is what was written.
+      ("normalized", "<value>") — a documented alias was canonicalized.
       ("kept", None)       — dialect already present, no change.
       ("skipped:<reason>", None) — file ignored (not TEXT root, parse error, etc.).
     """
@@ -65,10 +81,18 @@ def fix_file(file: Path) -> tuple[str, str | None]:
     root = tree.getroot()
     if root.tag != "TEXT":
         return f"skipped:root-is-{root.tag}", None
-    if root.get("dialect"):
-        return "kept", None
     lang_code = root.get(_XML_LANG) or ""
-    new_value = default_dialect_for_lang_code(lang_code)
+    current_value = (root.get("dialect") or "").strip()
+    new_value = _DIALECT_ALIASES.get(lang_code, {}).get(
+        current_value,
+        current_value,
+    )
+    status = "normalized"
+    if not new_value:
+        new_value = default_dialect_for_lang_code(lang_code)
+        status = "set"
+    elif new_value == current_value:
+        return "kept", None
 
     raw = file.read_bytes()
     match = _TEXT_OPEN_TAG.search(raw)
@@ -79,10 +103,24 @@ def fix_file(file: Path) -> tuple[str, str | None]:
         return "skipped:could-not-locate-TEXT-opening-tag", None
     attrs = match.group(1)
     close = match.group(2)
-    insert = b' dialect="' + new_value.encode("utf-8") + b'"'
-    new_tag = b"<TEXT" + attrs + insert + close
+    encoded_value = new_value.encode("utf-8")
+    if status == "set":
+        attrs += b' dialect="' + encoded_value + b'"'
+    else:
+        dialect_match = _DIALECT_ATTRIBUTE.search(attrs)
+        if dialect_match is None:
+            return "skipped:could-not-locate-dialect-attribute", None
+        attrs = (
+            attrs[:dialect_match.start()]
+            + dialect_match.group(1)
+            + dialect_match.group(2)
+            + encoded_value
+            + dialect_match.group(2)
+            + attrs[dialect_match.end():]
+        )
+    new_tag = b"<TEXT" + attrs + close
     file.write_bytes(raw[: match.start()] + new_tag + raw[match.end():])
-    return "set", new_value
+    return status, new_value
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -107,6 +145,7 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     set_count = 0
+    normalized_count = 0
     kept_count = 0
     skipped_count = 0
     set_by_value: dict[str, int] = {}
@@ -116,6 +155,10 @@ def main(argv: list[str] | None = None) -> int:
             set_count += 1
             set_by_value[value or ""] = set_by_value.get(value or "", 0) + 1
             print(f"set dialect={value!r}: {file}", file=sys.stderr)
+        elif status == "normalized":
+            normalized_count += 1
+            set_by_value[value or ""] = set_by_value.get(value or "", 0) + 1
+            print(f"normalized dialect={value!r}: {file}", file=sys.stderr)
         elif status == "kept":
             kept_count += 1
         else:
@@ -124,7 +167,9 @@ def main(argv: list[str] | None = None) -> int:
 
     print(file=sys.stderr)
     print(f"Files scanned:  {len(files)}", file=sys.stderr)
-    print(f"Files updated:  {set_count}", file=sys.stderr)
+    print(f"Files updated:  {set_count + normalized_count}", file=sys.stderr)
+    print(f"Missing set:    {set_count}", file=sys.stderr)
+    print(f"Aliases fixed:  {normalized_count}", file=sys.stderr)
     print(f"Already set:    {kept_count}", file=sys.stderr)
     print(f"Skipped:        {skipped_count}", file=sys.stderr)
     if set_by_value:

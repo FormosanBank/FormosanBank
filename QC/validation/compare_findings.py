@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail when a validation CSV contains HARD findings absent from a baseline."""
+"""Fail when a validator CSV contains findings absent from its baseline."""
 
 from __future__ import annotations
 
@@ -9,38 +9,67 @@ from collections import Counter
 from pathlib import Path
 
 
-KEY_FIELDS = ("rule_id", "title", "location", "language", "character", "message")
+FINGERPRINT_FIELDS = ("rule_id", "location", "language", "character")
 
 
-def hard_findings(path: Path) -> Counter[tuple[str, ...]]:
-    if not path.is_file() or path.stat().st_size == 0:
+def _read_fingerprints(path: Path | None, severity: str) -> Counter[tuple[str, ...]]:
+    if path is None:
         return Counter()
+
     with path.open(encoding="utf-8-sig", newline="") as handle:
+        rows = csv.DictReader(handle)
         return Counter(
-            tuple(row.get(field, "") for field in KEY_FIELDS)
-            for row in csv.DictReader(handle)
-            if row.get("severity") == "HARD"
+            tuple(row.get(field, "") for field in FINGERPRINT_FIELDS)
+            for row in rows
+            if row.get("severity") == severity
         )
 
 
-def new_findings(current: Path, baseline: Path) -> Counter[tuple[str, ...]]:
-    return hard_findings(current) - hard_findings(baseline)
+def new_findings(
+    baseline: Path | None,
+    candidate: Path,
+    severity: str = "HARD",
+) -> Counter[tuple[str, ...]]:
+    """Return candidate finding fingerprints not present in the baseline."""
+    return _read_fingerprints(candidate, severity) - _read_fingerprints(
+        baseline, severity
+    )
 
 
-def main() -> int:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("current", type=Path)
-    parser.add_argument("baseline", type=Path)
-    args = parser.parse_args()
+def _build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        description="Compare finding CSVs and fail on newly introduced findings."
+    )
+    parser.add_argument(
+        "--baseline",
+        type=Path,
+        help="Baseline findings CSV. Omit for a newly added source file.",
+    )
+    parser.add_argument("--candidate", type=Path, required=True)
+    parser.add_argument(
+        "--severity",
+        choices=("HARD", "SOFT", "WARN"),
+        default="HARD",
+    )
+    return parser
 
-    added = new_findings(args.current, args.baseline)
-    for finding, count in sorted(added.items()):
-        values = dict(zip(KEY_FIELDS, finding))
-        print(
-            f"NEW HARD x{count}: {values['rule_id']} "
-            f"{values['location']} — {values['message']}"
+
+def main(argv: list[str] | None = None) -> int:
+    args = _build_parser().parse_args(argv)
+    introduced = new_findings(args.baseline, args.candidate, args.severity)
+    if not introduced:
+        print(f"No new {args.severity} findings.")
+        return 0
+
+    print(f"New {args.severity} findings: {sum(introduced.values())}")
+    for fingerprint, count in sorted(introduced.items()):
+        details = ", ".join(
+            f"{field}={value!r}"
+            for field, value in zip(FINGERPRINT_FIELDS, fingerprint, strict=True)
+            if value
         )
-    return 1 if added else 0
+        print(f"  {count} x {details}")
+    return 1
 
 
 if __name__ == "__main__":

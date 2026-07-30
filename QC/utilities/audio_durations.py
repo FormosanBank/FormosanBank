@@ -21,6 +21,11 @@ AUDIO_DURATIONS_HEADER = [
 ]
 
 
+def _canonical_dialect(value: str | None) -> str:
+    """Match the XML/QC convention for an unspecified dialect."""
+    return (value or "").strip() or "unknown"
+
+
 def audio_durations_path(stats_dir: Path) -> Path:
     return Path(stats_dir) / AUDIO_DURATIONS_FILENAME
 
@@ -40,7 +45,11 @@ def load_audio_durations(stats_dir: Path) -> dict:
         return out
     with open(path, newline="", encoding="utf-8") as f:
         for row in csv.DictReader(f):
-            key = (row.get("corpus", ""), row.get("language", ""), row.get("dialect", ""))
+            key = (
+                row.get("corpus", ""),
+                row.get("language", ""),
+                _canonical_dialect(row.get("dialect")),
+            )
             out[key] = {
                 "transcribed_audio_seconds": float(row.get("transcribed_audio_seconds") or 0),
                 "untranscribed_audio_seconds": float(row.get("untranscribed_audio_seconds") or 0),
@@ -54,9 +63,10 @@ def load_audio_durations(stats_dir: Path) -> dict:
 def load_for_corpus(stats_dir: Path, corpus: str) -> dict:
     """Return {(language, dialect): entry} for one corpus."""
     return {
-        (c, l, d)[1:]: entry
-        for (c, l, d), entry in load_audio_durations(stats_dir).items()
-        if c == corpus
+        (language, dialect): entry
+        for (corpus_name, language, dialect), entry
+        in load_audio_durations(stats_dir).items()
+        if corpus_name == corpus
     }
 
 
@@ -90,7 +100,7 @@ def upsert_audio_durations(stats_dir: Path, corpus: str, rows: list, computed_at
     # Drop this corpus's existing rows, then add the new ones.
     merged = {k: v for k, v in existing.items() if k[0] != corpus}
     for r in rows:
-        key = (corpus, r["language"], r["dialect"])
+        key = (corpus, r["language"], _canonical_dialect(r["dialect"]))
         merged[key] = {
             "transcribed_audio_seconds": float(r["transcribed_audio_seconds"]),
             "untranscribed_audio_seconds": float(r["untranscribed_audio_seconds"]),
@@ -103,16 +113,18 @@ def upsert_audio_durations(stats_dir: Path, corpus: str, rows: list, computed_at
     with open(path, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=AUDIO_DURATIONS_HEADER)
         writer.writeheader()
-        for (c, l, d) in sorted(merged):
-            e = merged[(c, l, d)]
+        for corpus_name, language, dialect in sorted(merged):
+            entry = merged[(corpus_name, language, dialect)]
             writer.writerow({
-                "corpus": c, "language": l, "dialect": d,
-                "transcribed_audio_seconds": round(e["transcribed_audio_seconds"], 1),
-                "untranscribed_audio_seconds": round(e["untranscribed_audio_seconds"], 1),
-                "transcribed_audio_count": "" if e["transcribed_audio_count"] is None
-                else e["transcribed_audio_count"],
-                "untranscribed_audio_count": "" if e["untranscribed_audio_count"] is None
-                else e["untranscribed_audio_count"],
-                "computed_at": e["computed_at"],
+                "corpus": corpus_name, "language": language, "dialect": dialect,
+                "transcribed_audio_seconds": round(entry["transcribed_audio_seconds"], 1),
+                "untranscribed_audio_seconds": round(entry["untranscribed_audio_seconds"], 1),
+                "transcribed_audio_count": ""
+                if entry["transcribed_audio_count"] is None
+                else entry["transcribed_audio_count"],
+                "untranscribed_audio_count": ""
+                if entry["untranscribed_audio_count"] is None
+                else entry["untranscribed_audio_count"],
+                "computed_at": entry["computed_at"],
             })
     return path

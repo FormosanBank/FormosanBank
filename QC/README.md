@@ -105,8 +105,8 @@ Finding-framework-aware validator. It checks the *textual content* of
 `<FORM>` and `<TRANSL>`: smart quotes, imbalanced parentheses,
 repeated punctuation, consecutive dashes, multiple whitespace,
 mismatched smart quotes, non-ASCII characters (excluding CJK),
-null-symbol propagation between W/M/S tiers, parens/slashes in W/M
-FORM (HARD), parens/slashes anywhere (SOFT), and `=` leftovers in the
+null-symbol propagation between W/M/S tiers, parens/slashes in source
+forms (SOFT review diagnostics), and `=` leftovers in the
 S-level standard tier. HARD findings exit 1; SOFT findings go to a
 CSV artifact (`--soft-csv`) for review.
 
