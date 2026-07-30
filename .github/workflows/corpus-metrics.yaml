@@ -9,16 +9,20 @@ on:
       - "Corpora/**"
       - "QC/corpus_metrics.py"
       - "QC/corpus_counts.py"
+      - "QC/utilities/audio_durations.py"
       - "QC/utilities/get_corpus_stats.py"
       - "QC/reference/corpus_benchmarks.json"
+      - "statistics/audio_durations.csv"
       - ".github/workflows/corpus-metrics.yaml"
   pull_request:
     paths:
       - "Corpora/**"
       - "QC/corpus_metrics.py"
       - "QC/corpus_counts.py"
+      - "QC/utilities/audio_durations.py"
       - "QC/utilities/get_corpus_stats.py"
       - "QC/reference/corpus_benchmarks.json"
+      - "statistics/audio_durations.csv"
       - ".github/workflows/corpus-metrics.yaml"
 
 jobs:

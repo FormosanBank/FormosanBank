@@ -22,8 +22,7 @@ Rule ID assignments (B9.4):
       V115 mismatched_quotes
   W2: V116 non_ascii_in_form
   W4: V120 TR1 null in S-standard FORM (HARD)
-  W5: V121 TR2 parens/'/' in W/M FORM (HARD)
-      V122 TR3 parens/'/' anywhere in FORM/TRANSL (SOFT)
+  W5: V122 TR3 parens/'/' anywhere in FORM/TRANSL (SOFT)
   W6: V123 TR4 null in W/M std FORM ⇒ also in sister original (HARD)
   W7: V124 TR5 null in M FORM ⇒ also in parent W AND S-original (HARD)
   W8: V125 TR6 null in W FORM ⇒ also in some child M AND S-original (HARD)
@@ -532,44 +531,8 @@ def v120_null_in_S_standard(
 
 
 # ---------------------------------------------------------------------------
-# W5: TR2 + TR3 — parens/slashes in W/M FORM (HARD) and anywhere SOFT
+# W5: TR3 — parens/slashes anywhere (SOFT)
 # ---------------------------------------------------------------------------
-
-_PAREN_OR_SLASH_RE = re.compile(r"[()/]")
-
-
-def v121_parens_slashes_in_W_or_M_FORM(
-    tree: etree._ElementTree,
-    path: Path,
-    index: CorpusIndex | None,
-) -> list[Finding]:
-    """V121 HARD (TR2): parens or '/' in W- or M-level FORM is forbidden.
-
-    W/M FORM elements are token / morpheme surface forms. Parens and
-    slashes there indicate stray metalinguistic annotation that escaped
-    cleaning.
-    """
-    findings: list[Finding] = []
-    for parent in tree.iter("W", "M"):
-        for child in parent:
-            if child.tag != "FORM":
-                continue
-            text = child.text or ""
-            if _PAREN_OR_SLASH_RE.search(text):
-                p_id = parent.get("id") or ""
-                findings.append(Finding(
-                    rule_id="V121",
-                    severity=Severity.HARD,
-                    message=(
-                        f"V121 HARD: parens or slash in W/M FORM "
-                        f"(paren in w/m or slash in w/m); {parent.tag} id={p_id!r} "
-                        f"FORM kindOf={child.get('kindOf')!r}"
-                    ),
-                    path=path,
-                    location=f"{parent.tag}={p_id}" if p_id else parent.tag,
-                ))
-    return findings
-
 
 def v122_parens_slashes_anywhere(
     tree: etree._ElementTree,
@@ -1551,9 +1514,8 @@ RULES: list = [
     v115_mismatched_quotes,
     # W2 (V116): ported from non_ascii_counts.py
     v116_non_ascii_in_form,
-    # W4-W9 (V120-V126): TR1-TR7 user-specified rules
+    # W4-W9 (V120-V126): source-text quality rules
     v120_null_in_S_standard,
-    v121_parens_slashes_in_W_or_M_FORM,
     v122_parens_slashes_anywhere,
     v123_null_in_WM_std_requires_sister_original_null,
     v124_null_in_M_requires_parent_W_and_S_original,
