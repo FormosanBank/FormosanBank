@@ -34,18 +34,18 @@ The NTU Corpus is a comprehensive and meticulously curated dataset representing 
   * **Rukai:** 22 TWAs, 2,275 elicited sentences
   * **Sakizaya:** 30 TWAs, 1,531 grammar examples
 
-The **total audio time** for all languages is **17 hours, 47 minutes, and 36 seconds**. Below is the breakdown of audio time per language:
+The current public corpus contains **149,565 words** and **20 hours and 43 minutes of transcribed audio**. The current audio breakdown is:
 
-* **Amis (Ciwkangan):** 1 hour, 10 minutes, 17 seconds
-* **Atayal (Mayrinax):** 1 hour, 7 minutes, 23 seconds
-* **Saisiyat (Tong-he):** 2 hours, 1 minute, 4 seconds
-* **Tsou:** 1 hour, 0 minutes, 14 seconds
-* **Bunun (Isbukun):** 1 hour, 37 minutes, 43 seconds
-* **Kanakanavu:** 2 hours, 24 minutes, 50 seconds
-* **Seediq (Tgdaya):** 2 hours, 27 minutes, 41 seconds
-* **Kavalan (Xinshe):** 2 hours, 57 minutes, 42 seconds
-* **Rukai (Vedai):** 1 hour, 42 minutes, 35 seconds
-* **Sakizaya:** 1 hour, 18 minutes, 7 seconds
+* **Amis (Coastal):** 1 hour, 9 minutes, 19 seconds
+* **Atayal (Wenshui):** 1 hour, 4 minutes, 34 seconds
+* **Saisiyat:** 1 hour, 47 minutes, 6 seconds
+* **Tsou:** 57 minutes, 38 seconds
+* **Bunun (Junqun):** 1 hour, 37 minutes, 13 seconds
+* **Kanakanavu:** 3 hours, 58 minutes
+* **Seediq (Tegudaya):** 3 hours, 19 minutes, 14 seconds
+* **Kavalan:** 2 hours, 52 minutes, 50 seconds
+* **Rukai (Wutai):** 1 hour, 38 minutes, 56 seconds
+* **Sakizaya:** 2 hours, 18 minutes, 10 seconds
 
 The NTU Corpus also includes **free translations** of texts and sentences in **English** and **Chinese**
 
@@ -161,8 +161,6 @@ In order to comply with the official Romanization system promulgated by the Coun
 ***
 
 ## **Corpus Notes**
-
-This section will be used to describe any notes regarding the corpus (e.g. explaining the presence of characters that aren't part of the standard orthography)
 
 *   In our efforts to maintain the integrity of the corpus, we occasionally reconstructed the original text when only morphologically-segmented text was available. The aim is to provide a comprehensive linguistic resource that remains true to the original usage and syntactic structuring. For instance, consider these components in the NTU Corpus:
 

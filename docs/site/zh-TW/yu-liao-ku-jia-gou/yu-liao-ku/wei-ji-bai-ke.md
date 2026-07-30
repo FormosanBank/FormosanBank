@@ -89,6 +89,7 @@
 ### **處理附註**
 
 * 鑑於維基百科文章的多語言特性，使用者應注意偶爾出現的非臺灣南島語文本（例如英語字母或華語文本）。儘管這些情況已被最小化，但仍可能出現。
+* 目前維基百科XML未記錄`dialect`屬性。新增或修復檔案時，若無法辨識來源方言，應依現行驗證器要求使用`dialect="unknown"`。
 
 ***
 
@@ -141,10 +142,6 @@
 
 ### **引用說明**
 
-依據我們的[使用條款](../../qi-ta-zi-yuan/shi-yong-tiao-kuan.md)，若您在任何出版物中使用此語料庫或任何由此語料庫衍生的產品，您必須同時引用FormosanBank和所使用的維基百科（對應具體語言）：
+依據我們的[使用條款](../../qi-ta-zi-yuan/shi-yong-tiao-kuan.md)，若您使用此語料庫或其衍生產品，請引用FormosanBank及實際使用的各語言維基百科。現行XML採用以下格式：
 
-* 阿美語："Wikipedia: The free encyclopedia \[Amis version]. (2004, July 22). FL: Wikimedia Foundation, Inc. Retrieved Dec, 2024, from [https://ami.wikipedia.org](https://ami.wikipedia.org)"
-* 泰雅語："Wikipedia: The free encyclopedia \[Atayal version]. (2004, July 22). FL: Wikimedia Foundation, Inc. Retrieved Dec, 2024, from [https://tay.wikipedia.org](https://tay.wikipedia.org)"
-* 賽德克語："Wikipedia: The free encyclopedia \[Seediq version]. (2004, July 22). FL: Wikimedia Foundation, Inc. Retrieved Dec, 2024, from [https://trv.wikipedia.org](https://trv.wikipedia.org)"
-* 排灣語："Wikipedia: The free encyclopedia \[Paiwan version]. (2004, July 22). FL: Wikimedia Foundation, Inc. Retrieved Dec, 2024, from [https://pwn.wikipedia.org](https://pwn.wikipedia.org)"
-* 撒奇萊雅語："Wikipedia: The free encyclopedia \[Sakizaya version]. (2004, July 22). FL: Wikimedia Foundation, Inc. Retrieved Dec, 2024, from [https://szy.wikipedia.org](https://szy.wikipedia.org)"
+* Wikipedia contributors. (2026). *[語言] Wikipedia*. Wikimedia Foundation. Retrieved June 9, 2026, from the corresponding language-edition URL.

@@ -4,6 +4,8 @@
 
 The Paiwan Stories corpus is a small collection of children’s stories told in Eastern Paiwan. Drawn from three storybooks, these narratives provide valuable cultural and linguistic insights into the Paiwan language as it is used in accessible, community-oriented contexts. Their inclusion in FormosanBank broadens the range of available materials, offering a glimpse into traditional knowledge, everyday life, and childhood learning in a Paiwan-speaking environment.&#x20;
 
+**Audio is available as part of the repo and does not need to be downloaded from Hugging Face. The current XML does not yet link to those recordings, so the generated statistics report zero audio.**
+
 #### Source Materials
 
 * giling, gesi & giling tjaiwan (2020) _vuvu 的寶物 / kavatjes ni vuvu_
@@ -19,7 +21,7 @@ The Paiwan Stories were integrated into FormosanBank’s standardized XML format
 #### Processing Notes
 
 * **Manual Conversion:** Due to the small size and narrative complexity of these texts in addition to having the source material in PDFs which isn't the easiest to parse, the XML was created by hand rather than through automated scripts.
-* **Cleaning and Standrdization:** This isn't necessary because everything was already standardized when it was processed manually.
+* **Cleaning and Standardization:** This was not necessary because everything was already standardized when it was processed manually.
 * **Minimal Editing:** Orthographic and formatting adjustments were kept to a minimum, preserving the authors’ original representations of the language. Light cleaning, such as removing empty elements and standardizing punctuation, was applied to maintain data consistency.
 
 ***

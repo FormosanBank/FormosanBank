@@ -34,8 +34,6 @@ The Presidential Apology corpus was developed using officially released translat
 
 ### **Corpus Notes**
 
-This section will be used to describe any notes regarding the corpus (e.g. explaining the presence of characters that aren't part of the standard orthography)
-
 * **Amis**: The presidential apology in Amis has a couple of occurances of the letter 'b' which isn't part of the standard orthography of the language. all the occurances can be found in two words: Balay and Sbalay. Both of these words are Atayal words that are quoted in the original apology, and they were used in the same form in the Amis translation. This is an example from the English translation: "In the Atayal language, truth is called 'Balay', and reconciliation is called 'Sbalay'"
 * **Kanakanavu**: This corpus uses a small number of h's and f's, which are controversial. None of the words involving h's or f's appear in the reference ILRDF Dictionary corpus, with or without the h's and f's. Thus, we have chosen to leave them in.
 * **Puyuma**: This corpus has a number of appearances of ē. Almost all of these are due to yēncumin (which is marked as a foreign word) and sēhu. Thus, this has not been homogenized.

@@ -2,7 +2,7 @@
 
 ### **概述**
 
-國立臺灣大學（以下簡稱臺大）排灣語自動語音辨識語料庫是以語言學為基底的語料集，以擴充FormosanBank為目標而創建的。身為FormosanBank計畫的協同主持人之一，此語料庫由臺大[宋麗梅博士](https://drive.google.com/file/d/1pkqbvFYHUydbiGRhPIgkBigkh2hpSCYi/view)與其他研究夥伴共同合作開發，用以提高FormosanBank語料的豐富性及完整性。
+國立臺灣大學排灣語自動語音辨識語料庫包含宋麗梅教授於兩個田野年度蒐集的排灣語朗讀及自發性語音。
 
 此語料庫主要收集排灣語的朗讀語音（含與其對齊的文本）以及少量的自發性語音錄音。其旨為促進語言保存與語言學研究，並特別致力於開發專門針對排灣語的自動語音辨識（ASR）工具。
 
@@ -10,51 +10,19 @@
 
 * 涵蓋語言：排灣語
 * 語料庫內容：
-* 文本與對齊的朗讀語音
-* 自發性語音錄音
-* 語料貢獻者：六位排灣族人（使用化名以保持匿名）
+  * 具有句級文本及音檔對齊的朗讀語音
+  * 含已轉寫片段及未轉寫剩餘部分XML檔案的自發性語音
+* 語料貢獻者：兩個田野年度共16位錄音人員，公開資料全程使用化名
 
-#### 語料摘要
-
-| 項目  | 朗讀語音    | 自發性語音   | 總計       |
-| --- | ------- | ------- | -------- |
-| 主題  | 11      | 51      | 62       |
-| 音檔數 | 16      | 98      | 114      |
-| 長度  | 1:24:10 | 9:10:33 | 10:34:43 |
-
-#### 依參與者分類的語料概述
-
-以下是每位錄音人員的語料詳細描述，包括錄音數量以及總時數。如前所述，為了保護隱私，錄音人員的姓名使用化名。
-
-| 錄音人員    | 錄音數量 | 總時數     |
-| ------- | ---- | ------- |
-| Loris   | 23   | 2:05:16 |
-| Zendar  | 35   | 3:01:01 |
-| Nira    | 30   | 2:29:31 |
-| Belmira | 8    | 1:00:57 |
-| Falin   | 7    | 0:51:48 |
-| Sarnix  | 11   | 1:06:10 |
+目前公開語料庫包含260個XML檔案，涵蓋北排灣、中排灣、東排灣及南排灣。
 
 ***
 
 ### **語料庫處理**
 
-為確保與FormosanBank的標準相容，同時保持準確性和可用性，這些語料皆經過完善處理。宋麗梅博士所收集的語料都先進行結構化處理，將每位錄音人員與每項主題及其對應的朗讀語音和文本進行聯結，隨後轉換為[FormosanBank XML格式](../formosanbank-de-xml-ge-shi.md)。以下是處理過程的詳細描述：
+朗讀語音的XML由ELAN來源建立。第二個田野年度及自發性語音則由`CodeAndDocs/build_y2_and_spontaneous.py`建立，之後執行標準清理、拼寫法、音韻及驗證流程。公開程式會套用化名，且不含錄音人員的真實姓名。
 
-1. XML 轉換過程
-   * 轉寫的文本檔案經處理後轉換成XML格式，確保與FormosanBank其他語料庫的兼容性。
-   * 錄音人員的每項主題都會對應到一個XML檔案，各個檔案包含以下元素：
-     * `<FORM>`：包含排灣語的原始句子。
-     * `<AUDIO>`：與該句子對應的音訊檔案名稱。
-2. 清理與標準化
-   * XML檔案經過進一步清理，移除空元素並標準化標點符號及拼寫法。
-   * 將HTML轉義碼替換為對應的字元，並且將`kindOf="standard"` 屬性新增到`<FORM>`元素中。原始文本標記為`<FORM kindOf="original">`，標準化的文本則標記為`<FORM kindOf="standard">`。
-3. 品質管控
-   * 執行品質管控，步驟包括：
-     * 交叉參照詞彙清單與API結果，確保所有條目都成功處理。
-     * 驗證XML結構，以確保符合FormosanBank標準。
-     * 隨機樣本的手動檢查，以驗證資料的完整性。
-     * 進行字詞頻率分析，將[官方拼寫法](https://yongfu.name/temp-data/pdf/writingsystemsdoc.pdf)及[原語會族語辭典語料庫](https://docs.google.com/document/d/1eXZzq4oKyJD2CIsgI6vB6sZi9e0CoYoO/edit#heading=h.ihv636)進行對比，以檢查是否存在任何異常。
+音檔存放於Hugging Face，而非提交至Git。執行語料庫中的`download_audio_data.sh`會下載完整錄音，再由`CodeAndDocs/extract_audio_clips.py`重建XML所引用的句級音檔。若要完整重建語料庫，仍需要未公開的原始錄音及錄音人員對照表。
 
 ***
 
@@ -72,14 +40,13 @@
 
 ### **存取資訊**
 
-* 該語料庫作為FormosanBank的一部分，可以從[這裡](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/NTU_Paiwan_ASR/XML)取得。
-* 您可以在[此處](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/NTU_Paiwan_ASR/CodeAndDocs)找到FormosanBank中臺大排灣語自動語音辨識語料庫的儲存庫以及重建語料庫的程式碼。&#x20;
+* XML、處理文件及音檔下載程式可於[FormosanBank](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/NTU_Paiwan_ASR)取得。
 
 ***
 
 ### **版權**
 
-由於此語料庫最初是作為FormosanBank的一部分而建置的，因此版權限制與FormosanBank的規範相同（詳見下文）。
+目前公開XML將此語料庫標示為CC BY。FormosanBank的使用條款及AI使用附錄亦適用。
 
 ***
 

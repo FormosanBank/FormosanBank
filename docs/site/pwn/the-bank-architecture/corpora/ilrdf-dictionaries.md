@@ -58,8 +58,7 @@ Below, we outline the processing pipeline and quality control (QC) measures that
      * `<TRANSL>`: Chinese translations of the word or examples.
      * `<AUDIO>`: Links to or paths for audio files.
 4. **Audio Download and Integration**
-   * Audio files were downloaded using the API links and stored in language-specific subfolders under `XML/audio`.
-   * The corresponding XML files were updated to include local paths to the audio files for seamless integration.
+   * Audio files are not committed to Git. The corpus's `download_audio_data.sh` script retrieves them from Hugging Face, and the XML records the corresponding filenames.
 5. **Cleaning and Standardization**
    * XML files underwent further cleaning to remove empty elements and standardize punctuation and orthography.
    * HTML escape codes were replaced with the corresponding characters, and a `kindOf="standard"` attribute was added to `<FORM>` elements. The original text would be `<FORM kindOf="original">`  and any text that will be standardized from this point will be in `<FORM kindOf="standard">`
@@ -75,7 +74,7 @@ Below, we outline the processing pipeline and quality control (QC) measures that
 ### Key Features of the Corpus
 
 1. **Comprehensive Data**
-   * The corpus contains a total of **659295 tokens** and over **135 hours of audio**, offering a rich and comprehensive resource for the study of Formosan languages. Its quality is ensured by the extensive effort and meticulous processes involved in its creation. Below is a breakdown of the token count and audio duration for each language:
+   * The current corpus contains **658,447 words** and nearly **149 hours of transcribed audio**, offering a rich resource for the study of Formosan languages.
 2. **Audio Integration**
    * High-quality audio files accompany most example sentences, providing an invaluable resource for analyzing pronunciation, phonology, and spoken language contexts.
 3. **Translation Availability**
