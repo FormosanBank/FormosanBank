@@ -18,7 +18,7 @@ Refreshing audio durations is **always manual / on-demand — never part of CI o
 
 ## audio_durations.py — the source-of-truth library
 
-**Library, not a CLI.** `QC/utilities/audio_durations.py` reads and writes `statistics/audio_durations.csv`. Columns: `corpus, language, dialect, transcribed_audio_seconds, untranscribed_audio_seconds, transcribed_audio_count, untranscribed_audio_count, computed_at`.
+**Library, not a CLI.** `QC/utilities/audio_durations.py` reads and writes `statistics/audio_durations.csv`. Columns: `corpus, language, dialect, transcribed_audio_seconds, untranscribed_audio_seconds, transcribed_audio_count, untranscribed_audio_count, computed_at`. Blank dialect keys are normalized to `unknown` when read or written.
 
 Key calls: `load_for_corpus` returns one corpus's rows keyed by `(language, dialect)`; `upsert_audio_durations` replaces all rows for a corpus while preserving other corpora's rows; `is_stale` decides whether a bucket's seconds are stale versus the current XML audio-counts. A bucket is **stale** when there is no entry but the corpus now has audio, when either count differs from `count_at_compute` (a blank/`None` anchor always differs), or when the corpus has audio but the recorded seconds are still 0 (never computed). Because nothing auto-regenerates this file, CI cannot clobber it.
 

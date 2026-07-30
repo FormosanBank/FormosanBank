@@ -19,7 +19,7 @@ From a Claude Code session opened in your FormosanBank clone, either:
 Several skills operate across **two repositories at once** — a sibling `Formosan-<Name>/` dev repo and FormosanBank, or FormosanBank and this GitBook repo. Start Claude Code in FormosanBank and grant access to the other directory (Claude Code's `--add-dir` / additional-directories setting) so the scripts and the data are both in scope.
 {% endhint %}
 
-The skills make **working-tree changes only** — they do not commit or push. You review the diffs and open the pull requests yourself.
+The corpus-processing skills make **working-tree changes only**. They do not commit or push, so you review the diffs and open the pull requests yourself. The one exception is `setup-new-dev-repo`, which creates an initial local scaffold commit and asks before any push.
 
 ## The corpus lifecycle
 
@@ -60,7 +60,7 @@ Wraps [refresh_audio_stats.py](qc-pipeline/audio-duration-stats.md) to recompute
 
 ## What the skills are not
 
-- **Not committers.** They edit the working tree; you commit and open PRs.
+- **Not committers for corpus or GitBook changes.** You commit those working-tree edits and open the PRs. `setup-new-dev-repo` only creates the new repository's initial scaffold commit.
 - **Not fix-it tools.** `run-qc-pipeline` and `audit-dev-repo` *report*; you decide what to fix, and fixes happen in the dev repo's reproduction scripts so regeneration preserves them.
 - **Not a substitute for understanding the scripts.** When a skill does something surprising, the per-script pages in the [QC Pipeline](qc-pipeline/README.md) section are the ground truth.
 

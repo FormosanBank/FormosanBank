@@ -64,6 +64,7 @@
     * [Fix-up utilities](the-bank-architecture/developers/qc-pipeline/fix-up-utilities.md)
     * [sample\_sentences.py](the-bank-architecture/developers/qc-pipeline/sample-sentences.md)
     * [find\_duplicate\_sentences.py](the-bank-architecture/developers/qc-pipeline/find-duplicate-sentences.md)
+    * [OCR Review Tool](the-bank-architecture/developers/qc-pipeline/ocr-review-tool.md)
     * [Audio quality triage](the-bank-architecture/developers/qc-pipeline/audio-quality-triage.md)
     * [BLEU evaluation](the-bank-architecture/developers/qc-pipeline/bleu-evaluation.md)
     * [get\_corpus\_stats.py](the-bank-architecture/developers/qc-pipeline/get-corpus-stats.md)
@@ -79,7 +80,7 @@
 
 * [Newsletters](additional-resources/newsletters/README.md)
   * [October 2024](additional-resources/newsletters/october-2024.md)
-  * [Septemper 2023](additional-resources/newsletters/septemper-2023.md)
+  * [September 2023](additional-resources/newsletters/septemper-2023.md)
 * [Publications](additional-resources/publications.md)
 * [Terms of Use](additional-resources/terms-of-use.md)
 * [AI Use and Commercial Licensing](additional-resources/ai-use-and-commercial-licensing.md)

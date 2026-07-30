@@ -4,188 +4,220 @@ icon: file-lines
 
 # FormosanBank XML Format
 
-The **XML format** used in FormosanBank is a standardized structure based on the **Pangloss Collection**, designed to ensure consistency and facilitate computational processing across the entire corpus. This format enables detailed linguistic annotation and metadata management, allowing researchers, language enthusiasts, and developers to easily navigate, analyze, and integrate the data. By adopting a uniform format, FormosanBank supports transparency, proper attribution, and interoperability with other linguistic tools and resources, making it an essential component of the project's technical architecture.
+The **XML format** used in FormosanBank is a standardized structure based on the **Pangloss Collection**. It provides one consistent representation for source text, standardized text, translations, linguistic annotation, audio alignment, and source metadata across the corpora.
+
+The canonical schema is [`QC/validation/xml_template.xsd`](https://github.com/FormosanBank/FormosanBank/blob/main/QC/validation/xml_template.xsd). The Python validator adds rules that the XSD cannot express. New or changed XML should pass [`validate_xml.py`](developers/qc-pipeline/validate-xml.md) before any other quality-control step.
 
 ***
 
 ### Basic Structure
 
-The XML format follows a hierarchical structure, with the primary elements organized as follows:
+A minimal text file has a `<TEXT>` root, required source metadata, and at least one sentence:
 
 ```xml
-<TEXT xml:lang="fr" source="" audio="">
-    <S>
-        <W>
-            <M>
-            </M>
-        </W>
+<?xml version="1.0" encoding="UTF-8"?>
+<TEXT
+    id="sample_amis_text"
+    citation="Example source citation."
+    BibTeX_citation="@misc{sample_amis_text}"
+    copyright="CC BY-NC 4.0"
+    xml:lang="ami"
+    dialect="Coastal">
+    <S id="sample_amis_text_S1">
+        <FORM kindOf="original">O maan ko ngangan iso?</FORM>
+        <FORM kindOf="standard">O maan ko ngangan iso?</FORM>
+        <TRANSL xml:lang="eng">What is your name?</TRANSL>
     </S>
 </TEXT>
 ```
 
-***
+`xml:lang` uses ISO 639-3 codes, so translations use values such as `eng` and `zho`, not two-letter codes such as `en` and `zh`.
 
-### Example with ID Attributes
+The hierarchy is:
 
-Each element includes unique identifiers (`id`), enabling easy reference:
-
-```xml
-<TEXT xml:lang="ami" id="story1">
-    <S id="S1">
-        <W id="S1W1">
-            <M id="S1W1M1">
-            </M>
-        </W>
-    </S>
-</TEXT>
+```text
+TEXT
+├── AUDIO*                 optional document-level audio
+└── S*                     sentence or utterance
+    ├── FORM*
+    ├── PHON*
+    ├── TRANSL*
+    ├── AUDIO*
+    └── W*                 word
+        ├── FORM*
+        ├── PHON*
+        ├── TRANSL*
+        ├── AUDIO*
+        └── M*             morpheme
+            ├── FORM*
+            ├── PHON*
+            ├── TRANSL*
+            └── AUDIO*
 ```
 
-***
-
-### The `<TEXT>` Element&#x20;
-
-The `<TEXT>` represents the entire document. It is the root element, and it can only have \<S> tag as a sub-element. `<TEXT>` element must include these attributes:
-
-* `id:`The unique identifier of the text; unique across resources
-* `citation`: An APA-style citation of the original source. Users of the text in this XML are required to include this citation _along with_ a citation to FormosanBank. In case there are more than one citation associated with the corpus (the XML file), the citations will be seperated by a `|` delimter.
-* `BibTeX_citation`: BibTeX citation of the original source. In case there are more than one citation associated with the corpus (the XML file), the citations will be seperated by a `,` delimter.
-* `copyright`: The copyright or license information (e.g., CC BY).
-* `xml:lang`: The language code using the ISO 639-3 standard.
-* `dialect`: The dialect of the Formosan language in use. Required on every `<TEXT>` element. Allowed values:
-  * One of the officially recognized dialects for the language (see [Formosan Dialects](formosan-dialects.md) and the [dialects.csv](https://github.com/FormosanBank/FormosanBank/blob/main/dialects.csv) reference).
-  * For languages with only one recognized dialect (e.g., Tsou, Yami, Kavalan, Thao, Saaroa, Saisiyat, Sakizaya, Kanakanavu, Siraya), the dialect value is simply the language name itself (`dialect="Tsou"`, `dialect="Yami"`, etc.). This convention removes branching code throughout the toolchain — every `<TEXT>` has a meaningful dialect even when the language is monodialectal.
-  * `"unknown"` when the dialect cannot be identified. This sentinel exists so that "we don't know the dialect" is distinguishable from "we forgot to record it"; the latter is rejected by the validator.
-  * For `xml:lang="trv"` (which ISO 639-3 lumps together as Truku and Seediq), the allowed values are `"Truku"` plus the three official Seediq dialects (`Tegudaya`, `Duda`, `DeluValley`) plus `"unknown"`.
-
-Optional attributes may include:
-
-* `source`: Description of the original file, chapter, or other relevant details. If this file contains everything in the original source, then this attribute is redundant with `citation` and won't be used. There is no specific format for `source`; it would contain enough information that the user can match what is in the XML against the original source.
-* `audio`: Name of the associated audio file. If the audio is already segmented and there is no single audio file corresponding to the entire XML, this will be set to "segmented"
-* `glottocode`: The [Glottolog](https://glottolog.org/) code if specifying a specific dialect.
+Document-level `<AUDIO>` elements must appear before `<S>` elements. Within `<S>`, `<W>`, and `<M>`, the order of sibling FORM, PHON, TRANSL, AUDIO, W, or M elements is not enforced.
 
 ***
 
-### The `<S>, <W>, and <M>` Elemenets
+### The `<TEXT>` Element
 
-* `<S>`: Represents a sentence or utterance. It can only be a sub-element of the `<TEXT>` element.
-* `<W>`: Represents a word. It can only be a sub-element of the `<S>` element.
-* `<M>`: Represents a morpheme. It can only be a sub-element of the `<W>` element
+`<TEXT>` represents one document. It has five attributes required by the XSD:
 
-The only attribute these three elements take (and require) is the `id` attribute.
+* `id`: A stable identifier for the text. It must not collide with a published `TEXT/@id`.
+* `citation`: The human-readable citation for the original source. Users must cite this source along with FormosanBank where required.
+* `BibTeX_citation`: The corresponding BibTeX citation.
+* `copyright`: The copyright or license notice that applies to the file.
+* `xml:lang`: The source language as an ISO 639-3 code.
+
+The validator also requires:
+
+* `dialect`: An official FormosanBank dialect value for the language, or `unknown` when the dialect cannot be identified. See [Formosan Dialects](formosan-dialects.md) and [`dialects.csv`](https://github.com/FormosanBank/FormosanBank/blob/main/dialects.csv). For `xml:lang="trv"`, this value distinguishes Truku from the three Seediq dialects.
+
+Optional attributes are:
+
+* `source`: A more specific source location, chapter, file, or other provenance note.
+* `audio`: The document-level audio filename, or `segmented` when separate clips are used.
+* `glottocode`: A Glottolog code when one is useful for the variety represented.
+
+A text-only file normally contains one or more `<S>` elements. An audio-only file may instead contain document-level `<AUDIO>` elements and no sentences.
+
+***
+
+### The `<S>`, `<W>`, and `<M>` Elements
+
+* `<S>` represents a sentence or utterance and is a direct child of `<TEXT>`.
+* `<W>` represents a word and is a direct child of `<S>`.
+* `<M>` represents a morpheme and is a direct child of `<W>`.
+
+All three require an `id`. IDs for S, W, and M elements must be unique within the XML file.
+
+`<S>` may also have:
+
+* `audio_url`: A source URL for sentence-level audio.
+* `source`: A sentence-specific provenance note.
+
+`<W>` and `<M>` may also have:
+
+* `class`: A grammatical class label.
+* `sclass`: A grammatical subclass label.
+
+The schema does not impose a controlled vocabulary on `class` or `sclass`.
+
+An `<S>` may be empty when an utterance has not yet been transcribed, although the validator reports this as a soft finding. Every `<W>` and `<M>` must contain at least one `<FORM>`.
 
 ***
 
 ### The `<FORM>` Element
 
-At the lowest level of `<S>,` `<W>,` and `<M>`, a `<FORM>` element must be used to represent the text content.  `<FORM>` element can only be a sub-element of `<S>, <W>, and <M>` elements. `<FORM>` must be included at the lowest level of the hierarchy, but it could exist on multiple levels:
+`<FORM>` contains the linguistic form at sentence, word, or morpheme level. Its required `kindOf` attribute accepts:
+
+* `original`: The source form, preserving the source's orthographic choices after limited punctuation, entity, and Unicode cleanup.
+* `standard`: The same content converted as far as possible to FormosanBank's common standard orthography.
+* `alternate`: A genuine alternate form retained alongside the main tiers.
+
+An optional `notes` attribute can record a transcription note, review status, or other human-readable qualification.
+
+If an `<S>` has any FORM, exactly one must be `kindOf="original"`. A standard FORM is expected by much of the downstream tooling, but its absence is a soft validation finding. W and M elements also require a FORM, although their tier combinations can vary with the source annotation.
 
 ```xml
-<S id="S14">
-    <FORM>tɐrú kə mənaŋorɐ nə...</FORM>
-    <W>
-        <FORM>tɐrú</FORM>
-    </W>
-    <W>
-        <FORM>kə</FORM>
-    </W>
-    <W>
-        <FORM>mənaŋorɐ</FORM>
-    </W>
+<S id="sample_S1">
+    <FORM kindOf="original" notes="Source spelling retained.">...</FORM>
+    <FORM kindOf="standard">...</FORM>
 </S>
 ```
 
-The `<FORM>` element has one attribute, `kindOf`, which has two use cases:
-
-**original** This is the text as it appeared in the original source. The only differences should be punctuation standardization. If there were listed errata, the `original` text should be updated to address those errata. Otherwise, this should be left as-is. In most cases, the `original` FORMs exist as a historical record and for reproducibility. They are not used in analysis and can be safely ignored by most end-users.
-
-**standard** This is text that has been normalized as much as possible, including standardizing the orthography and spelling. For `S`-level FORMs only, this includes removing any morphological segmentation (other than morphological segmentation that may be indicated by the orthography rules themselves). For `W`-level forms, morphological segmentation should be retained.
+***
 
 ### The `<PHON>` Element
 
-This is an analog to `<FORM>` and contains IPA transliterations of the text. Note that these are almost always transliterations rather than actual transcriptions, being derived from the content of `<FORM>`.
+`<PHON>` contains an IPA representation of a FORM. In most corpora this is an automatic transliteration, not a phonetic transcription.
 
-Like `<FORM>`, `<PHON>` should have a `kindOf` attribute set to `original` or `standard`, indicating which text it is transliterated from. If this is a transcription not a transliteration, use `standard`.
+Its optional `kindOf` attribute may be `original` or `standard`, identifying the FORM tier from which it was derived. A parent may have at most one PHON for each `kindOf` value.
 
-***
-
-### The `<AUDIO>` Element
-
-The `<AUDIO>` element links specific audio segments to linguistic elements in the XML, such as sentences, words, or morphemes. It ensures that users can align the textual data with the corresponding audio.
-
-Attributes:
-
-* **`start`** and **`end`**: Must always be set when there is a single, large audio file associated with the entire XML document. These attributes indicate the start and end times of the audio segment in seconds, measured from the beginning of the file. When audio files are segmented, start would be 0 and end would be the length of the audio file associated with the element.
-* **`file`** and **`url`**: Used when the audio is **segmented**—that is, there are separate audio files for individual elements (e.g., each sentence or word). The `file` attribute specifies the audio file for the segment, and the `url` attribute (optional) provides a web link for accessing the file.
-
-Usage Scenarios:
-
-1.  **Single Large Audio File**: When a single audio file covers the entire XML document (referenced in the `audio` attribute of the `<TEXT>` tag), the `<AUDIO>` element would include the `start` and `end` attributes to indicate the relevant segment's time range.
-
-    Example:
-
-    ```xml
-    <AUDIO start="10.5" end="12.8"/>
-    ```
-2.  **Segmented Audio Files**: If individual audio files are provided for each element (sentence, word, etc.), the `audio` attribute of the `<TEXT>` tag would be set to "segmented." In this case, the `<AUDIO>` element would use the `file` attribute to indicate the corresponding audio file, and the `url` attribute can be included if the file is available online; this is in addition to start and end.&#x20;
-
-    Example:
-
-    ```xml
-    <AUDIO start="0" end="4.23" file="sentence1_audio.mp3" url="https://example.com/audio/sentence1_audio.mp3"/>
-    ```
+```xml
+<PHON kindOf="standard">o maan ko ŋaŋan iso</PHON>
+```
 
 ***
 
 ### The `<TRANSL>` Element
 
-The `<TRANSL>` element is used to provide translations of linguistic elements, such as sentences, words, or morphemes. It can be placed within different levels of the XML structure to specify translations at the appropriate granularity.
+`<TRANSL>` provides a translation at sentence, word, or morpheme level. Every translation requires `xml:lang` using an ISO 639-3 code.
 
-Attributes:
+Optional attributes are:
 
-* **`xml:lang`**: The language code for the translation, using the ISO 639-3 standard.
-* **`kindOf`** (optional): Specifies the method or tool used to generate the translation, such as a pivot language or translation software (e.g., `kindOf="DeepL"`). Including the software version, if applicable, is encouraged for more detailed documentation.
-* **`ver`** (optional): Distinguishes multiple translations into the *same* language on the same element. When an element carries more than one `<TRANSL>` with the same `xml:lang`, the primary translation is left unmarked and each additional one is marked `ver="alt"`. (`alt` is currently the only defined value.)
-* **`notes`** (optional): Free-text annotation on the translation — e.g., the translator, a review status, or a caveat. It is for human documentation only and is not interpreted by tooling. This parallels the `notes` attribute on `<FORM>`.
+* `kindOf`: The translation type, method, or provenance. At morpheme level, the validator limits this to `original` or `standard`.
+* `ver`: Distinguishes multiple translations into the same language on the same parent. The current allowed value is `alt`.
+* `notes`: A translator, review status, caveat, or other human-readable note.
 
-Usage Guidelines:
+When a parent contains more than one translation with the same `xml:lang`, at least one must have a `ver` value:
 
-1.  **Sentence-Level Translation**: When placed within the `<S>` element, the `<TRANSL>` tag provides a translation for the entire sentence or utterance.
+```xml
+<TRANSL xml:lang="eng">What is your name?</TRANSL>
+<TRANSL xml:lang="eng" ver="alt">What are you called?</TRANSL>
+<TRANSL xml:lang="zho">你叫什麼名字？</TRANSL>
+```
 
-    Example:
+Morpheme glosses are represented as translations within `<M>`:
 
-    ```xml
-    <S id="S1">
-        <FORM>This is a sentence.</FORM>
-        <TRANSL xml:lang="en">This is a sentence.</TRANSL>
-        <TRANSL xml:lang="fr" kindOf="manual">Ceci est une phrase.</TRANSL>
+```xml
+<M id="sample_S1_W1_M1" class="pronoun">
+    <FORM kindOf="original">ako</FORM>
+    <TRANSL xml:lang="eng" kindOf="original">1SG.GEN</TRANSL>
+</M>
+```
+
+Original source glosses should be preserved. A standardized gloss can be added as a separate `kindOf="standard"` translation.
+
+***
+
+### The `<AUDIO>` Element
+
+`<AUDIO>` links a document, sentence, word, or morpheme to audio. It accepts:
+
+* `start` and `end`: Numeric offsets in seconds.
+* `file`: A non-empty audio filename.
+* `url`: A web location for the audio.
+* `source`: Additional audio provenance.
+
+For a segment within one document-level recording, set `TEXT/@audio` and provide `start` and `end`:
+
+```xml
+<TEXT
+    id="sample_recording"
+    citation="Example source citation."
+    BibTeX_citation="@misc{sample_recording}"
+    copyright="CC BY-NC 4.0"
+    xml:lang="ami"
+    dialect="Coastal"
+    audio="recording.wav">
+    <S id="sample_recording_S1">
+        <FORM kindOf="original">...</FORM>
+        <AUDIO start="10.5" end="12.8"/>
     </S>
-    ```
-2.  **Word-Level Translation**: When placed within the `<W>` element, it provides a translation for that specific word.
+</TEXT>
+```
 
-    Example:
+For separate clips, use `file`. Start and end may describe the used region of that clip:
 
-    ```xml
-    <W id="W1">
-        <FORM>ʕa</FORM>
-        <TRANSL xml:lang="en">I</TRANSL>
-    </W>
-    ```
-3.  **Morpheme-Level Translation (glosses)**: For linguistic glosses following the Leipzig Glossing Rules, use the `<TRANSL>` element within the `<M>` element to provide morpheme-level glosses.
+```xml
+<AUDIO start="0" end="4.23" file="sentence1.wav"/>
+```
 
-    Example:
+The validator requires `start < end`. An AUDIO without its own `file` must have both offsets and a document-level `TEXT/@audio`. A `url` supplements the local or document-level reference; it does not replace these structural requirements.
 
-    ```xml
-    <W>
-        <M>
-            <FORM>ʕa</FORM>
-            <TRANSL xml:lang="en">1SG</TRANSL>
-        </M>
-    </W>
-    ```
+***
 
-Importantly, the `M`-level `TRANSL` can have a `kindOf` attribute. Many of the older texts uses non-standard glosses, and even those that use Leipzig format may use different abbreviations for the same constructs. The original glosses should be left as is and indicated as `original` if necessary. Updated glosses should be `kidof="standard"`.
+### The `<UNCLEAR>` Element
 
-Note: didn't include class or sclass attrs for W and M.
+`<UNCLEAR/>` marks audio or text that was actively reviewed but could not be transcribed or translated. It can replace the whole content of a FORM, PHON, or TRANSL, or appear inline:
+
+```xml
+<FORM kindOf="original"><UNCLEAR/></FORM>
+<FORM kindOf="original">misa <UNCLEAR/> kako</FORM>
+```
+
+This is different from a missing FORM. A missing FORM means that no transcription is available; `<UNCLEAR/>` records that transcription was attempted but the content could not be recovered. Token-counting tools do not count it as a token.
 
 ***
 
@@ -193,10 +225,23 @@ Note: didn't include class or sclass attrs for W and M.
 
 #### Infixes and circumfixes
 
-When creating the `M` levels for words that have infixes, the `FORM` for the infix should start and stop with a `-`, indicating that it is in an infix. The `FORM` for the morpheme that surrounded the infix should have a `-` where the infix went. So: `a-b-c` would result in `M`s of `a-c` and `-b-`. 
+When creating M levels for a word with an infix, the infix FORM should begin and end with `-`. The FORM for the surrounding morpheme should use `-` where the infix occurred. For example, `a-b-c` is represented by morpheme FORMs `a-c` and `-b-`.
 
-Circumfixes can be handled in an analogous way, though many glossing conventions treat the two parts of a circumfix as a prefix and a suffix. This should be standardized at some point. 
+Circumfixes can be handled in an analogous way, although some source glossing conventions treat their two parts as a prefix and a suffix.
 
 #### Clitics
 
-Formosan languages have not standardized whether clitics are written as the same word or different, and probabilistic conventions have changed over time. When writing the `M` FORM for a clitic, include the `=` whether or not it was actually attached to the head word.
+Formosan sources do not use one consistent convention for writing clitics as attached or separate words. In an M-level FORM for a clitic, retain the `=` marker whether or not the source wrote the clitic together with its host.
+
+***
+
+### Validation
+
+Run the structural validator from the public FormosanBank repository before using the other QC tools:
+
+```bash
+source .venv/bin/activate
+python QC/validation/validate_xml.py by_path --path Corpora/<CorpusName>/XML
+```
+
+The validator checks the XSD, required dialect and language metadata, FORM and TRANSL rules, audio modes, ID uniqueness, and other cross-file constraints. See the [`validate_xml.py` documentation](developers/qc-pipeline/validate-xml.md) for the complete rule list and output format.

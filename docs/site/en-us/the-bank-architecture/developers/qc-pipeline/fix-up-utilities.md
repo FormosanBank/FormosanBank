@@ -16,14 +16,14 @@ All three **mutate XML in place** (the same convention as `standardize.py` and `
 
 ### How it works
 
-For every `.xml` file under `--path`, it inspects the root `<TEXT>`. If `TEXT/@dialect` is already non-empty, the file is left untouched (the script is idempotent). Otherwise it sets `@dialect` based on the `xml:lang` code, driven by `QC/validation/_dialect_inventory.py`:
+For every `.xml` file under `--path`, it inspects the root `<TEXT>`. It first normalizes documented legacy Paiwan labels to the official inventory, including `Northern Paiwan` and `North Western` to `Northern`, and the misspelling `Sothern` to `Southern`. Other non-empty values are left untouched. If `TEXT/@dialect` is missing or empty, the script sets it from the `xml:lang` code, driven by `QC/validation/_dialect_inventory.py`:
 
 - **Single-dialect languages** → the language name itself (e.g. `xml:lang="tsu"` → `dialect="Tsou"`).
 - **Multi-dialect languages, and `xml:lang="trv"`** (ambiguous between Truku and Seediq) → `dialect="unknown"`.
 
 Files whose root is not `<TEXT>`, that fail to parse, or whose opening tag the byte-level regex can't locate, are skipped and reported on stderr without aborting the run.
 
-This answers **missing-`@dialect` findings from `validate_dialect.py`** (see [validate_dialect.py](validate-dialect.md)).
+This answers missing-`@dialect` findings from [validate_dialect.py](validate-dialect.md) and canonicalizes the source-specific aliases above.
 
 ### Usage
 
@@ -38,7 +38,7 @@ python QC/utilities/fix_dialects.py --path Corpora/ePark/XML
 
 ### Output & side effects
 
-In place, no dry-run. Per-file `set dialect=...` / skip lines go to stderr, followed by a summary (scanned / updated / already-set / skipped, plus a breakdown of new dialect values). `"unknown"` rows should then be resolved to a real dialect by a human or by [dialect_detector.py](dialect-detector.md). Diff before committing.
+In place, no dry-run. Per-file `set dialect=...`, `normalized dialect=...`, and skip lines go to stderr, followed by a summary of scanned, updated, newly set, normalized, already-set, and skipped files. `"unknown"` rows should then be resolved to a real dialect by a human or by [dialect_detector.py](dialect-detector.md). Diff before committing.
 
 ## fix_ids.py
 

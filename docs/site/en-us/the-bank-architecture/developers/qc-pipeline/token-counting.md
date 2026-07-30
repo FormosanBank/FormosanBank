@@ -77,7 +77,7 @@ python QC/plot_deltas.py token_delta.json
 
 ## The Token Count Delta GitHub Action
 
-`.github/workflows/token-comparison.yaml` runs on PRs and on pushes to `main`/`v1.*` tags. It checks out the compare ref, resolves a base ref (PR base SHA, or the push's "before" SHA, or `origin/main`), runs `count_tokens.py` on both (the base in a detached `git worktree`), computes the delta with `tokens_delta.py`, writes a Markdown delta summary to the job summary, and renders the three plots. Artifacts (`current_token_count.json`, `base_token_count.json`, `token_delta.json`, and the PNGs) are uploaded; this workflow has read-only permissions and **commits nothing**.
+`.github/workflows/token-comparison.yaml` runs on PRs and on pushes to `main`/`v1.*` tags. It checks out the compare ref, resolves a base ref (PR base SHA, the push's "before" SHA, or `origin/main`), and explicitly fetches that ref if it is not local. If rewritten history makes the requested base unreachable, it falls back to `HEAD^`, or to `HEAD` when no parent exists. The job summary reports which baseline source was used. The workflow runs `count_tokens.py` on both refs (the base in a detached `git worktree`), computes the delta with `tokens_delta.py`, writes a Markdown delta summary, and renders the three plots. Artifacts (`current_token_count.json`, `base_token_count.json`, `token_delta.json`, and the PNGs) are uploaded; this workflow has read-only permissions and **commits nothing**.
 
 ## Related
 
