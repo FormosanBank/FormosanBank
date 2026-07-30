@@ -6,6 +6,7 @@ from typing import Counter
 import random
 import string
 import numpy as np
+from sklearn.metrics import f1_score
 
 
 from language_clustering import get_language_from_file, load_file
@@ -172,13 +173,16 @@ def main(args):
     prev_holdout_path = {}
     holdout_corpus = {}
     num_correct = 0
-    incorrect_pred_diffs = []
-    incorrect_kl_divs_from_holdout = []
-    correct_kl_divs_from_holdout = []
+    incorrect_pred_diffs = {lang: [] for lang in set(document_languages.values())} if document_languages else {}
+    incorrect_kl_divs_from_holdout = {lang: [] for lang in set(document_languages.values())} if document_languages else {}
+    correct_kl_divs_from_holdout = {lang: [] for lang in set(document_languages.values())} if document_languages else {}
+    language_results = {lang: {"y_true": [], "y_pred": []} for lang in set(document_languages.values())} if document_languages else {}
     for i in range(len(document_languages)):
         holdout_path = list(document_languages.keys())[i]
         holdout_lang = document_languages[holdout_path]
         holdout_text = document_texts[holdout_path]
+        if holdout_lang not in language_results:
+            language_results[holdout_lang] = {"y_true": [], "y_pred": []}
         if holdout_lang not in holdout_corpus:
             holdout_corpus[holdout_lang] = {document_path: document_texts[document_path] \
                                             for document_path, doc_lang in document_languages.items() if doc_lang == holdout_lang}
@@ -213,20 +217,31 @@ def main(args):
         kl_divs = [kl_divergence(h, p) for h, p in zip(h_grams, p_grams)]
 
 
-        if h_pred <= p_pred:
+        if h_pred < p_pred:
             num_correct += 1
-            correct_kl_divs_from_holdout.append(kl_divs)
+            correct_kl_divs_from_holdout[holdout_lang].append(kl_divs)
+            language_results[holdout_lang]["y_true"].append(1)
+            language_results[holdout_lang]["y_pred"].append(1)
         else:
-            incorrect_pred_diffs.append(abs(h_pred - p_pred))
-            incorrect_kl_divs_from_holdout.append(kl_divs)
+            incorrect_pred_diffs[holdout_lang].append(abs(h_pred - p_pred))
+            incorrect_kl_divs_from_holdout[holdout_lang].append(kl_divs)
+            language_results[holdout_lang]["y_true"].append(1)
+            language_results[holdout_lang]["y_pred"].append(0)
 
         holdout_corpus[holdout_lang][holdout_path] = holdout_text
 
     
     print(f"Number of correct predictions: {num_correct} out of {len(document_languages)} or {num_correct / len(document_languages) * 100:.2f}%")
-    print(f"Average difference for incorrect predictions: {np.mean(incorrect_pred_diffs) if len(incorrect_pred_diffs) > 0 else 0:.4f}")
-    print(f"Average KL divergences between original and perturbed for incorrect predictions: {np.mean(incorrect_kl_divs_from_holdout, axis=0) if len(incorrect_kl_divs_from_holdout) > 0 else [0]*4}")
-    print(f"Average KL divergences between original and perturbed for correct predictions: {np.mean(correct_kl_divs_from_holdout, axis=0) if len(correct_kl_divs_from_holdout) > 0 else [0]*4}")
+    if lang == 'all':
+        print("F1 score by language:")
+        for language in sorted(language_results):
+            y_true = language_results[language]["y_true"]
+            y_pred = language_results[language]["y_pred"]
+            score = float(f1_score(y_true, y_pred, zero_division=0)) if y_true else 0.0
+            print(f"  {language}: {score:.4f}")
+    print(f"Average difference for incorrect predictions: {np.mean([val for sublist in incorrect_pred_diffs.values() for val in sublist]) if any(incorrect_pred_diffs.values()) else 0:.4f}")
+    print(f"Average KL divergences between original and perturbed for incorrect predictions: {np.mean([val for sublist in incorrect_kl_divs_from_holdout.values() for val in sublist], axis=0) if any(incorrect_kl_divs_from_holdout.values()) else [0]*4}")
+    print(f"Average KL divergences between original and perturbed for correct predictions: {np.mean([val for sublist in correct_kl_divs_from_holdout.values() for val in sublist], axis=0) if any(correct_kl_divs_from_holdout.values()) else [0]*4}")
     return 
 
 if __name__ == "__main__":

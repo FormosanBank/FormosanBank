@@ -14,6 +14,7 @@ from matplotlib import cm
 import warnings
 from collections import Counter
 from sklearn.cluster import DBSCAN, KMeans
+from sklearn.metrics import f1_score
 from sklearn.svm import SVC
 from sklearn.preprocessing import LabelEncoder
 from orthography_compare import is_dialect
@@ -47,13 +48,13 @@ ISO_TO_LANGUAGE: dict[str, str] = {
 IN_SCOPE_NAMES = {ISO_TO_LANGUAGE[iso] for iso in IN_SCOPE_LANGS}
 
 
-def load_file(tar_path):
+def load_file(tar_path, kind_of="standard"):
     if tar_path.lower().endswith('.xml'):
         tree = ET.parse(tar_path)
         root = tree.getroot()
         text = []
         for sentence in root.findall('.//S'):
-            form = sentence.find("FORM[@kindOf='standard']")
+            form = sentence.find(f"FORM[@kindOf='{kind_of}']")
             if form is not None and form.text:
                 text.append(form.text)
         return " ".join(text)
@@ -114,7 +115,44 @@ def get_dialect_from_file(tar_path):
             return dialect
     return 'Unknown'
 
-def get_document_texts_by_dialect(target_lang, debug=False, limit=None):
+
+def _format_confidence(value):
+    return f"{value:.1%}"
+
+
+def _format_confidence_summary(confidences):
+    if not confidences:
+        return "conf=n/a"
+    if len(confidences) == 1:
+        return f"conf={_format_confidence(confidences[0])}"
+    return (
+        f"conf={_format_confidence(float(np.mean(confidences)))} "
+        f"(min={_format_confidence(float(np.min(confidences)))}, "
+        f"max={_format_confidence(float(np.max(confidences)))})"
+    )
+
+
+def _print_confidence_metrics(prefix, predicted_confidences, misclassified):
+    correct_confidences = [conf for i, conf in enumerate(predicted_confidences) if i not in misclassified]
+    incorrect_confidences = [conf for i, conf in enumerate(predicted_confidences) if i in misclassified]
+    print(f"{prefix} average confidence: {_format_confidence(float(np.mean(predicted_confidences)))}")
+    print(f"{prefix} correct-prediction confidence: {_format_confidence(float(np.mean(correct_confidences)))}")
+    if incorrect_confidences:
+        print(f"{prefix} incorrect-prediction confidence: {_format_confidence(float(np.mean(incorrect_confidences)))}")
+    else:
+        print(f"{prefix} incorrect-prediction confidence: n/a")
+
+
+def _softmax_confidence_from_distances(distances):
+    stabilized = -distances + np.max(-distances, axis=1, keepdims=True)
+    weights = np.exp(stabilized)
+    return weights / np.sum(weights, axis=1, keepdims=True)
+
+
+def _compute_macro_f1(true_labels, predicted_labels):
+    return float(f1_score(true_labels, predicted_labels, average='macro', zero_division=0))
+
+def get_document_texts_by_dialect(target_lang, debug=False, limit=None, kind_of="standard"):
     document_texts = {}
     document_dialects = {}
     character_counts = {}
@@ -132,7 +170,7 @@ def get_document_texts_by_dialect(target_lang, debug=False, limit=None):
                             return document_texts, character_counts, document_dialects
                         document_path = os.path.join(root, file)
                         try:
-                            text = load_file(document_path)
+                            text = load_file(document_path, kind_of=kind_of)
                             dialect = get_dialect_from_file(document_path)
                             if text and dialect and is_dialect(ISO_TO_LANGUAGE[target_lang], dialect):
                                 language = get_language_from_file(document_path)
@@ -152,7 +190,7 @@ def get_document_texts_by_dialect(target_lang, debug=False, limit=None):
     return document_texts, character_counts, document_dialects
 
 
-def texts_to_vectors(document_texts, vector_type: sklearn.feature_extraction.text=CountVectorizer):
+def texts_to_vectors(document_texts, vector_type: type= TfidfVectorizer):
     """Convert texts to feature vectors using CountVectorizer"""
     doc_paths = list(document_texts.keys())
     texts = list(document_texts.values())
@@ -166,12 +204,12 @@ def texts_to_vectors(document_texts, vector_type: sklearn.feature_extraction.tex
     # Keep sparse representation to avoid large memory spikes.
     return vectors, doc_paths, vectorizer.get_feature_names_out()
 
-def texts_to_char_vectors(document_texts, vector_type: sklearn.feature_extraction.text=CountVectorizer):
-    """Convert texts to character n-gram feature vectors using CountVectorizer"""
+def texts_to_char_vectors(document_texts, vector_type: type= TfidfVectorizer):
+    """Convert texts to character n-gram feature vectors using vectorizer"""
     doc_paths = list(document_texts.keys())
     texts = list(document_texts.values())
     
-    # Use CountVectorizer with character analyzer to convert texts to char n-grams
+    # Use vectorizer with character analyzer to convert texts to char n-grams
     vectorizer = vector_type(analyzer='char', ngram_range=(1, 3))  # Using 1-3 char n-grams
     vectors = vectorizer.fit_transform(texts)
     
@@ -180,16 +218,17 @@ def texts_to_char_vectors(document_texts, vector_type: sklearn.feature_extractio
     # Keep sparse representation to avoid large memory spikes.
     return vectors, doc_paths, vectorizer.get_feature_names_out()
 
-def calculate_cluster_accuracy(reduced_points, languages, doc_paths):
+def calculate_cluster_accuracy(reduced_points, languages, doc_paths, confidence_source='cluster'):
     """
-    Calculate clustering accuracy using KMeans clustering.
+    Calculate KMeans cluster-label predictions and macro F1.
     Assigns documents to clusters and checks if each document's language
     matches the dominant language in its assigned cluster.
 
     Returns:
-    - accuracy: float between 0 and 1
+    - macro_f1: float between 0 and 1
     - misclassified: list of indices that are misclassified
     - predicted_langs: list[str], dominant-language prediction per document index
+    - predicted_confidences: list[float], confidence per document index
     """
     from sklearn.cluster import KMeans
     from collections import Counter
@@ -206,37 +245,43 @@ def calculate_cluster_accuracy(reduced_points, languages, doc_paths):
 
     # For each cluster, find the dominant language
     cluster_to_dominant_lang = {}
+    cluster_to_confidence = {}
     for cluster_id in range(n_clusters):
         docs_in_cluster = [i for i, c in enumerate(cluster_assignments) if c == cluster_id]
         langs_in_cluster = [languages[doc_paths[i]] for i in docs_in_cluster]
         lang_counts = Counter(langs_in_cluster)
-        cluster_to_dominant_lang[cluster_id] = lang_counts.most_common(1)[0][0]
+        dominant_lang, dominant_count = lang_counts.most_common(1)[0]
+        cluster_to_dominant_lang[cluster_id] = dominant_lang
+        cluster_to_confidence[cluster_id] = dominant_count / len(docs_in_cluster)
 
     # Predicted language (cluster dominant language) per point
     predicted_langs = [cluster_to_dominant_lang[c] for c in cluster_assignments]
+    if confidence_source == 'cluster':
+        predicted_confidences = [cluster_to_confidence[c] for c in cluster_assignments]
+    elif confidence_source == 'distance':
+        cluster_probabilities = _softmax_confidence_from_distances(kmeans.transform(reduced_points))
+        predicted_confidences = cluster_probabilities[np.arange(len(cluster_assignments)), cluster_assignments].tolist()
+    else:
+        raise ValueError(f"Unsupported confidence source: {confidence_source}")
 
-    # Check accuracy
-    correctly_classified = 0
+    true_langs = [languages[doc_paths[i]] for i in range(len(doc_paths))]
     misclassified = []
 
     for i in range(len(doc_paths)):
-        doc_lang = languages[doc_paths[i]]
-        if doc_lang == predicted_langs[i]:
-            correctly_classified += 1
-        else:
+        if true_langs[i] != predicted_langs[i]:
             misclassified.append(i)
 
-    accuracy = correctly_classified / len(doc_paths)
-    return accuracy, misclassified, predicted_langs
+    macro_f1 = _compute_macro_f1(true_langs, predicted_langs)
+    return macro_f1, misclassified, predicted_langs, predicted_confidences
 
 def calculate_dbscan_accuracy(cluster_labels, doc_paths, languages):
     """
-    Calculate clustering accuracy for DBSCAN clusters.
+    Calculate DBSCAN cluster-label predictions and macro F1.
     For each clustered point (cluster != -1), checks if its language matches 
     the dominant language in that cluster. Noise points (-1) are counted as misclassified.
     
     Returns:
-    - accuracy: float between 0 and 1
+    - macro_f1: float between 0 and 1
     - misclassified: list of indices that are misclassified or noise
     - noise_points: list of noise point indices (cluster == -1)
     """
@@ -254,29 +299,30 @@ def calculate_dbscan_accuracy(cluster_labels, doc_paths, languages):
         lang_counts = Counter(langs_in_cluster)
         cluster_to_dominant_lang[cluster_id] = lang_counts.most_common(1)[0][0]
     
-    # Check accuracy: document language should match cluster's dominant language
-    correctly_classified = 0
+    # Compute predicted labels from cluster dominant languages.
+    true_langs = [languages[doc_paths[i]] for i in range(len(doc_paths))]
+    predicted_langs = []
     misclassified = []
     noise_points = []
+    noise_label = '__noise__'
     
     for i in range(len(doc_paths)):
         assigned_cluster = cluster_labels[i]
         
         if assigned_cluster == -1:
             # Noise points are counted as misclassified
+            predicted_langs.append(noise_label)
             misclassified.append(i)
             noise_points.append(i)
         else:
             cluster_dominant_lang = cluster_to_dominant_lang[assigned_cluster]
-            doc_lang = languages[doc_paths[i]]
-            
-            if doc_lang == cluster_dominant_lang:
-                correctly_classified += 1
-            else:
+            predicted_langs.append(cluster_dominant_lang)
+
+            if true_langs[i] != cluster_dominant_lang:
                 misclassified.append(i)
-    
-    accuracy = correctly_classified / len(doc_paths)
-    return accuracy, misclassified, noise_points
+
+    macro_f1 = _compute_macro_f1(true_langs, predicted_langs)
+    return macro_f1, misclassified, noise_points
 
 def apply_dimensionality_reduction(vectors, method='SVD', n_components=100, label='features'):
     """Apply dimensionality reduction and return reduced vectors with explained variance"""
@@ -306,9 +352,15 @@ def visualize_tsne(doc_paths, languages, title, output_file, vectors_reduced, p=
     tsne = TSNE(n_components=2, random_state=0, n_iter=10000, perplexity=p, metric=sim_metric)
     reduced = tsne.fit_transform(vectors_reduced)
 
-    # Calculate cluster accuracy using KMeans
-    accuracy, misclassified, predicted_langs = calculate_cluster_accuracy(reduced, languages, doc_paths)
-    print(f"Cluster Accuracy: {accuracy:.2%} ({len(doc_paths) - len(misclassified)}/{len(doc_paths)} correctly clustered)")
+    # Calculate cluster macro F1 using KMeans-derived labels
+    macro_f1, misclassified, predicted_langs, predicted_confidences = calculate_cluster_accuracy(
+        reduced,
+        languages,
+        doc_paths,
+        confidence_source='cluster',
+    )
+    print(f"Cluster Macro F1: {macro_f1:.2%} ({len(doc_paths) - len(misclassified)}/{len(doc_paths)} exact-label matches)")
+    _print_confidence_metrics("t-SNE", predicted_confidences, set(misclassified))
 
     # Create unique colors for each language
     unique_langs = sorted(set(languages.values()))
@@ -364,12 +416,12 @@ def visualize_dbscan(doc_paths, languages, title, output_file, vectors_reduced, 
     dbscan = DBSCAN(eps=eps, min_samples=min_samples, metric=sim_metric)
     cluster_labels = dbscan.fit_predict(vectors_reduced)
     
-    # Calculate accuracy
-    accuracy, misclassified, noise_points = calculate_dbscan_accuracy(cluster_labels, doc_paths, languages)
+    # Calculate macro F1
+    macro_f1, misclassified, noise_points = calculate_dbscan_accuracy(cluster_labels, doc_paths, languages)
     n_clusters = len(set(cluster_labels)) - (1 if -1 in cluster_labels else 0)
     n_noise = sum(1 for c in cluster_labels if c == -1)
     print(f"DBSCAN found {n_clusters} clusters with {n_noise} noise points")
-    print(f"Cluster Accuracy: {accuracy:.2%} ({len(doc_paths) - len(misclassified)}/{len(doc_paths)} correctly clustered)")
+    print(f"Cluster Macro F1: {macro_f1:.2%} ({len(doc_paths) - len(misclassified)}/{len(doc_paths)} exact-label matches)")
     if n_noise > 0:
         print(f"  - {n_noise} noise points (treated as misclassified)")
     
@@ -411,7 +463,7 @@ def visualize_dbscan(doc_paths, languages, title, output_file, vectors_reduced, 
     
     ax.set_xlabel('SVD Component 1')
     ax.set_ylabel('SVD Component 2')
-    ax.set_title(f'{title}\nAccuracy: {accuracy:.2%}')
+    ax.set_title(f'{title}\nMacro F1: {macro_f1:.2%}')
     ax.legend(bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=7)
     ax.grid(True, alpha=0.3)
     
@@ -446,7 +498,7 @@ def visualize_dbscan(doc_paths, languages, title, output_file, vectors_reduced, 
         
         ax.set_xlabel('SVD Component 1')
         ax.set_ylabel('SVD Component 2')
-        ax.set_title(f'{title} (Clustered Points Only)\nAccuracy: {accuracy:.2%}')
+        ax.set_title(f'{title} (Clustered Points Only)\nMacro F1: {macro_f1:.2%}')
         ax.legend(bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=7)
         ax.grid(True, alpha=0.3)
         
@@ -459,8 +511,14 @@ def visualize_dbscan(doc_paths, languages, title, output_file, vectors_reduced, 
 def visualize_kmeans(doc_paths, languages, title, output_file, vectors_reduced, vectors_2d):
     """Apply KMeans to pre-reduced vectors and create visualization"""
 
-    accuracy, misclassified, predicted_langs = calculate_cluster_accuracy(vectors_reduced, languages, doc_paths)
-    print(f"Cluster Accuracy: {accuracy:.2%} ({len(doc_paths) - len(misclassified)}/{len(doc_paths)} correctly clustered)")
+    macro_f1, misclassified, predicted_langs, predicted_confidences = calculate_cluster_accuracy(
+        vectors_reduced,
+        languages,
+        doc_paths,
+        confidence_source='distance',
+    )
+    print(f"Cluster Macro F1: {macro_f1:.2%} ({len(doc_paths) - len(misclassified)}/{len(doc_paths)} exact-label matches)")
+    _print_confidence_metrics("KMeans", predicted_confidences, set(misclassified))
 
     unique_langs = sorted(set(languages.values()))
     colors = cm.get_cmap('tab20', len(unique_langs))
@@ -509,19 +567,22 @@ def visualize_multiclass_svm(
     vectors_2d,
     kernel: Literal['linear', 'poly', 'rbf', 'sigmoid', 'precomputed'] = 'rbf',
 ):
-    """Train a multi-class SVM on reduced vectors and visualize predictions in 2D."""
+    """Train a multi-class SVM and visualize predictions in 2D."""
     y_labels = [languages[dp] for dp in doc_paths]
     label_encoder = LabelEncoder()
-    y = label_encoder.fit_transform(y_labels)
+    y = np.asarray(label_encoder.fit_transform(y_labels), dtype=np.int32)
 
-    clf = SVC(kernel=kernel, gamma='scale', decision_function_shape='ovr', random_state=0)
+    clf = SVC(kernel=kernel, gamma='scale', decision_function_shape='ovr', random_state=0, probability=True)
     clf.fit(reduced_vectors, y)
     y_pred = clf.predict(reduced_vectors)
+    y_prob = clf.predict_proba(reduced_vectors)
+    predicted_confidences = y_prob[np.arange(len(y_pred)), y_pred].tolist()
 
-    accuracy = float(np.mean(y_pred == y))
+    macro_f1 = float(f1_score(y, y_pred, average='macro', zero_division=0))
     misclassified = np.where(y_pred != y)[0]
     misclassified_set = set(misclassified.tolist())
-    print(f"SVM Accuracy: {accuracy:.2%} ({len(doc_paths) - len(misclassified)}/{len(doc_paths)} correctly classified)")
+    print(f"SVM Macro F1: {macro_f1:.2%} ({len(doc_paths) - len(misclassified)}/{len(doc_paths)} exact-label matches)")
+    _print_confidence_metrics("SVM", predicted_confidences, misclassified_set)
 
     unique_langs = list(label_encoder.classes_)
     colors = cm.get_cmap('tab20', len(unique_langs))
@@ -529,6 +590,7 @@ def visualize_multiclass_svm(
 
     fig, ax = plt.subplots(figsize=(10, 8))
 
+    # Plot documents with original correct/incorrect styling.
     for lang in unique_langs:
         correct_mask = [
             i for i, dp in enumerate(doc_paths)
@@ -555,9 +617,9 @@ def visualize_multiclass_svm(
 
     ax.set_xlabel('Component 1')
     ax.set_ylabel('Component 2')
-    ax.set_title(f'{title} (Multi-class SVM)')
+    ax.set_title(title)
+    ax.grid(True, alpha=0.2)
     ax.legend(bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=7)
-    ax.grid(True, alpha=0.3)
 
     plt.tight_layout()
     plt.savefig(output_file, dpi=150, bbox_inches='tight')
@@ -599,7 +661,7 @@ def main():
     # Create language mapping for doc_paths
     languages = {doc_paths[i]: langs[doc_paths[i]] for i in range(len(doc_paths))}
     
-    n_d = 200
+    n_d = 50
 
     word_reduced, _ = apply_dimensionality_reduction(word_vectors, method=args.dr, n_components=n_d, label='word vectors')
     word_2d, _ = apply_dimensionality_reduction(word_reduced, method=args.dr, n_components=2, label='word vectors (2D)')
@@ -610,37 +672,55 @@ def main():
     combined_reduced, _ = apply_dimensionality_reduction(combined_vectors, method=args.dr, n_components=n_d, label='word + char vectors')
     combined_2d, _ = apply_dimensionality_reduction(combined_reduced, method=args.dr, n_components=2, label='word + char vectors (2D)')
     
-    # # Visualize with t-SNE
-    # lang = args.lang if args.mode == 'dialect' else 'all'
-    # visualize_tsne(doc_paths, languages, 
-    #                f'Document Clustering by Language (Word-based Features) for {lang}', 
-    #                f'{args.mode}_word_tsne_clustering.png',
-    #                word_reduced,
-    #                p=30,
-    #                sim_metric='euclidean')
+    # Visualize with t-SNE
+    lang = args.lang if args.mode == 'dialect' else 'all languages'
+    visualize_tsne(doc_paths, languages, 
+                   f'Document Clustering by Language (Word-based Features) for {lang}', 
+                   f'{args.mode}_word_tsne_clustering.png',
+                   word_reduced,
+                   p=5,
+                   sim_metric='cosine')
     
-    # # Char n-gram TSNE visualzations
-    # visualize_tsne(doc_paths, languages, 
-    #                f'Document Clustering by Language (Char n-gram Features) for {lang}', 
-    #                f'{args.mode}_char_ngram_tsne_clustering.png',
-    #                char_reduced,
-    #                p=30,
-    #                sim_metric='euclidean')
+    # Char n-gram TSNE visualzations
+    visualize_tsne(doc_paths, languages, 
+                   f'Document Clustering by Language (Char n-gram Features) for {lang}', 
+                   f'{args.mode}_char_ngram_tsne_clustering.png',
+                   char_reduced,
+                   p=5,
+                   sim_metric='cosine')
     
-    # # word and char n-gram visualzations
-    # visualize_tsne(doc_paths, languages, 
-    #                f'Document Clustering by Language (Word + Char n-gram Features) for {lang}', 
-    #                f'{args.mode}_word_char_ngram_tsne_clustering.png',
-    #                combined_reduced,
-    #                p=30,
-    #                sim_metric='euclidean')
+    # word and char n-gram visualzations
+    visualize_tsne(doc_paths, languages, 
+                   f'Document Clustering by Language (Word + Char n-gram Features) for {lang}', 
+                   f'{args.mode}_word_char_ngram_tsne_clustering.png',
+                   combined_reduced,
+                   p=5,
+                   sim_metric='cosine')
 
     # # Visualize with DBSCAN
     # visualize_dbscan(doc_paths, languages,
     #                  f'DBSCAN Clustering of Documents by Language (Word-based Features) for {lang}',
     #                  f'{args.mode}_word_dbscan_clustering.png',
-    #                  vectors_reduced,
-    #                  vectors_2d,
+    #                  word_reduced,
+    #                  word_2d,
+    #                  eps=0.5,
+    #                  min_samples=5,
+    #                  sim_metric='euclidean')
+    
+    # visualize_dbscan(doc_paths, languages,
+    #                  f'DBSCAN Clustering of Documents by Language (Char n-gram Features) for {lang}',
+    #                  f'{args.mode}_char_ngram_dbscan_clustering.png',
+    #                  char_reduced,
+    #                  char_2d,
+    #                  eps=0.5,
+    #                  min_samples=5,
+    #                  sim_metric='euclidean')
+    
+    # visualize_dbscan(doc_paths, languages,
+    #                  f'DBSCAN Clustering of Documents by Language (Word + Char n-gram Features) for {lang}',
+    #                  f'{args.mode}_word_char_ngram_dbscan_clustering.png',
+    #                  combined_reduced,
+    #                  combined_2d,
     #                  eps=0.5,
     #                  min_samples=5,
     #                  sim_metric='euclidean')
@@ -664,24 +744,24 @@ def main():
     #                  combined_reduced,
     #                  combined_2d)
 
-    # Visualize with multi-class SVM (trained on reduced vectors)
-    visualize_multiclass_svm(doc_paths, languages,
-                             f'Document Classification by Language (Word-based Features) for {lang}',
-                             f'{args.mode}_word_svm_classification.png',
-                             word_reduced,
-                             word_2d)
+    # # Visualize with multi-class SVM (trained on reduced vectors)
+    # visualize_multiclass_svm(doc_paths, languages,
+    #                          f'Document Classification by Language (Word-based Features) for {lang}',
+    #                          f'{args.mode}_word_svm_classification.png',
+    #                          word_reduced,
+    #                          word_2d)
 
-    visualize_multiclass_svm(doc_paths, languages,
-                             f'Document Classification by Language (Char n-gram Features) for {lang}',
-                             f'{args.mode}_char_ngram_svm_classification.png',
-                             char_reduced,
-                             char_2d)
+    # visualize_multiclass_svm(doc_paths, languages,
+    #                          f'Document Classification by Language (Char n-gram Features) for {lang}',
+    #                          f'{args.mode}_char_ngram_svm_classification.png',
+    #                          char_reduced,
+    #                          char_2d)
 
-    visualize_multiclass_svm(doc_paths, languages,
-                             f'Document Classification by Language (Word + Char n-gram Features) for {lang}',
-                             f'{args.mode}_word_char_ngram_svm_classification.png',
-                             combined_reduced,
-                             combined_2d)
+    # visualize_multiclass_svm(doc_paths, languages,
+    #                          f'Document Classification by Language (Word + Char n-gram Features) for {lang}',
+    #                          f'{args.mode}_word_char_ngram_svm_classification.png',
+    #                          combined_reduced,
+    #                          combined_2d)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Document Clustering by Language")

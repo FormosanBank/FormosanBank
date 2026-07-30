@@ -40,12 +40,15 @@ class DialectModel:
     uni: dict[str, Counter]                    # per-dialect profiles
     bi: dict[str, Counter]
     words: dict[str, Counter]
+    word_bi: dict[str, Counter]
     uni_total: dict[str, int]
     bi_total: dict[str, int]
     word_total: dict[str, int]
+    word_bi_total: dict[str, int]
     uni_vocab: int
     bi_vocab: int
     word_vocab: int
+    word_bi_vocab: int
     weights: list[float]
     bias: list[float]
     threshold: float = DEFAULT_UNKNOWN_THRESHOLD
@@ -133,14 +136,16 @@ def fit_model_from_docs(
     uni = {d: Counter() for d in present}
     bi = {d: Counter() for d in present}
     words = {d: Counter() for d in present}
+    word_bi = {d: Counter() for d in present}
     for doc in docs:
         if doc.dialect not in uni:
             continue
         g = tokenize_graphemes(doc.text, alphabet)
-        u, b, w, _wb = F.extract_counts(g, doc.text)
+        u, b, w, wb = F.extract_counts(g, doc.text)
         uni[doc.dialect] += u
         bi[doc.dialect] += b
         words[doc.dialect] += w
+        word_bi[doc.dialect] += wb
 
     # Vocab sizes are the smoothing denominators, so they must reflect the FULL
     # observed vocabulary, not the per-dialect top_n-pruned profiles (pruning
@@ -151,21 +156,26 @@ def fit_model_from_docs(
     uni_vocab = len({k for c in uni.values() for k in c}) or 1
     bi_vocab = len({k for c in bi.values() for k in c}) or 1
     word_vocab = len({k for c in words.values() for k in c}) or 1
+    word_bi_vocab = len({k for c in word_bi.values() for k in c}) or 1
 
     uni = {d: _prune(c, top_n) for d, c in uni.items()}
     bi = {d: _prune(c, top_n) for d, c in bi.items()}
     words = {d: _prune(c, top_n) for d, c in words.items()}
+    word_bi = {d: _prune(c, top_n) for d, c in word_bi.items()}
     uni_total = {d: sum(c.values()) for d, c in uni.items()}
     bi_total = {d: sum(c.values()) for d, c in bi.items()}
     word_total = {d: sum(c.values()) for d, c in words.items()}
+    word_bi_total = {d: sum(c.values()) for d, c in word_bi.items()}
 
     model = DialectModel(
         lang_code=lang_code, language_name=name, dialects=present,
         inventories={d: inventories.get(d, frozenset()) for d in present},
         alphabet=alphabet, support_count=dict(support_count),
-        uni=uni, bi=bi, words=words,
+        uni=uni, bi=bi, words=words, word_bi=word_bi,
         uni_total=uni_total, bi_total=bi_total, word_total=word_total,
+        word_bi_total=word_bi_total,
         uni_vocab=uni_vocab, bi_vocab=bi_vocab, word_vocab=word_vocab,
+        word_bi_vocab=word_bi_vocab,
         weights=[0.0] * len(COMPONENTS), bias=[0.0] * len(present),
     )
 
@@ -194,10 +204,11 @@ def save_model(model: DialectModel, path: Path) -> None:
         "uni": {d: dict(c) for d, c in model.uni.items()},
         "bi": {d: dict(c) for d, c in model.bi.items()},
         "words": {d: dict(c) for d, c in model.words.items()},
+        "word_bi": {d: dict(c) for d, c in model.word_bi.items()},
         "uni_total": model.uni_total, "bi_total": model.bi_total,
-        "word_total": model.word_total,
+        "word_total": model.word_total, "word_bi_total": model.word_bi_total,
         "uni_vocab": model.uni_vocab, "bi_vocab": model.bi_vocab,
-        "word_vocab": model.word_vocab,
+        "word_vocab": model.word_vocab, "word_bi_vocab": model.word_bi_vocab,
         "weights": model.weights, "bias": model.bias,
         "threshold": model.threshold, "components": model.components,
     }
@@ -206,16 +217,22 @@ def save_model(model: DialectModel, path: Path) -> None:
 
 def load_model(path: Path) -> DialectModel:
     d = json.loads(Path(path).read_text(encoding="utf-8"))
+    dialects = d["dialects"]
+    word_bi_raw = d.get("word_bi", {})
+    word_bi_total_raw = d.get("word_bi_total", {})
     return DialectModel(
         lang_code=d["lang_code"], language_name=d["language_name"],
-        dialects=d["dialects"],
+        dialects=dialects,
         inventories={k: frozenset(v) for k, v in d["inventories"].items()},
         alphabet=frozenset(d["alphabet"]), support_count=d["support_count"],
         uni={k: Counter(v) for k, v in d["uni"].items()},
         bi={k: Counter(v) for k, v in d["bi"].items()},
         words={k: Counter(v) for k, v in d["words"].items()},
+        word_bi={k: Counter(word_bi_raw.get(k, {})) for k in dialects},
         uni_total=d["uni_total"], bi_total=d["bi_total"], word_total=d["word_total"],
+        word_bi_total={k: int(word_bi_total_raw.get(k, 0)) for k in dialects},
         uni_vocab=d["uni_vocab"], bi_vocab=d["bi_vocab"], word_vocab=d["word_vocab"],
+        word_bi_vocab=int(d.get("word_bi_vocab", 1)),
         weights=d["weights"], bias=d["bias"],
         threshold=d.get("threshold", DEFAULT_UNKNOWN_THRESHOLD),
         components=d.get("components", list(COMPONENTS)),

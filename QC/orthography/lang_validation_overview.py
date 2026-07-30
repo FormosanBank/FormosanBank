@@ -2,6 +2,7 @@ import json
 from seaborn import cm
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 import matplotlib.pyplot as plt
+from sklearn.metrics import f1_score
 
 
 RESULTS_PATH = "test_results/corpora_validation/validation_results.json"
@@ -40,12 +41,28 @@ def cm_from_results(results, save=True):
         
     return cm
 
+def f1_scores_from_cm(cm):
+    """
+    Computes the F1 scores for each class from the confusion matrix.
+    """
+    y_true = []
+    y_pred = []
+    for i, true_label in enumerate(IN_SCOPE_LANGS):
+        for j, pred_label in enumerate(IN_SCOPE_LANGS):
+            y_true.extend([true_label] * cm[i, j])
+            y_pred.extend([pred_label] * cm[i, j])
+    f1_scores = f1_score(y_true, y_pred, labels=IN_SCOPE_LANGS, average=None)
+    return dict(zip(IN_SCOPE_LANGS, f1_scores))
+
+
 def main():
     # Read the corpora validation results
     results = read_corpora_validation_results(RESULTS_PATH)
 
     # Construct the confusion matrix
     cm = cm_from_results(results, save=False)
+    f1_scores = f1_scores_from_cm(cm)
+    print(f1_scores)
     return
 
 if __name__ == "__main__":
