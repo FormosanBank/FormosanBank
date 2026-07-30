@@ -2,8 +2,6 @@
 import importlib.util
 from pathlib import Path
 
-import pytest
-
 _SPEC = importlib.util.spec_from_file_location(
     "audio_durations",
     Path(__file__).resolve().parents[2] / "QC" / "utilities" / "audio_durations.py",
@@ -33,6 +31,13 @@ def test_load_for_corpus_filters_and_keys(tmp_path):
 
 def test_load_for_corpus_missing_file_is_empty(tmp_path):
     assert audio_durations.load_for_corpus(tmp_path, "ePark") == {}
+
+
+def test_load_normalizes_legacy_blank_dialect_to_unknown(tmp_path):
+    _write(tmp_path, HEADER
+           + "ILRDF_Dicts,ckv,,39304.0,0.0,8241,0,2026-06-12\n")
+    got = audio_durations.load_for_corpus(tmp_path, "ILRDF_Dicts")
+    assert got[("ckv", "unknown")]["transcribed_audio_seconds"] == 39304.0
 
 
 def test_is_stale_no_entry_with_audio():
