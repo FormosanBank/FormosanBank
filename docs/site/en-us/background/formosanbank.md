@@ -10,7 +10,7 @@ Within each corpus, there is an `XML` folder, which contains one or more XML fil
 
 Each file contains text in one or more target languages. It may also include translations and morphosyntactic glosses. If there is associated audio, the XML indicates which audio files go with which segments of the text. The XML format is explained [here](https://ai4commsci.gitbook.io/formosanbank/the-bank-architecture/formosanbank-xml-format).
 
-Audio is distributed through HuggingFace. Each corpus that has audio also has a `download_audio_data.sh` script, which can be used to download the audio files. (You will need to be logged into HuggingFace; see the HuggingFace documentation.) In the root of the FormosanBank repo, the file `run_audio_downloads.sh` will download all audio for all corpora. 
+Most audio is distributed through Hugging Face. Each corpus whose audio is hosted there has a `download_audio_data.sh` script. Some small corpora keep audio directly in the repository instead. In the root of FormosanBank, `run_audio_downloads.sh` runs every available corpus download script.
 
 **Note**: XML filenames and audio filenames are *not* unique. Unless you really know what you are doing, we recommend keeping the same organization as in the FormosanBank repo. Simply delete any corpora you do not need. 
 
@@ -40,7 +40,7 @@ The `standard` tier standardizes the text as much as possible. In the case of or
 
 Creating a large corpus of Taiwanese indigenous languages raises a number of complications. The most significant are:
 
-* **Dialectal variation.** Several of the languges have multiple officially-recognized dialects. These vary from one another to greater or lesser degrees. In some cases (most notably Amis), they use slightly different orthographies. Where we can identify the dialect, it is indicated in a `dialect` attribute in the XML header. In some cases (such as Wikipedia) we cannot easily identify the dialect, and indeed there may be multiple dialects interspersed. In these cases, the `dialect` attribute is left blank. 
+* **Dialectal variation.** Several of the languages have multiple officially recognized dialects. These vary from one another to greater or lesser degrees. In some cases (most notably Amis), they use slightly different orthographies. Where we can identify the dialect, it is indicated in a `dialect` attribute in the XML header. When we cannot identify the dialect, the current convention is `dialect="unknown"`. The validator rejects a missing dialect attribute.
 
 * **Untranscribed audio.** Untranscribed audio files are nonetheless associated with XML files. These XML files have headers (in order to contain the necessary meta-data) but no text.
 
@@ -50,13 +50,13 @@ Creating a large corpus of Taiwanese indigenous languages raises a number of com
 
 ### Copyright and Licensing
 
-Each resource in FormosanBank has its own **copyright and licensing terms**, with most materials made available under **Creative Commons licenses** to encourage reuse and sharing. Licensing details, including copyright holders and usage restrictions, are provided on the individual resource pages and in each XML. This ensures transparency and respect for **intellectual property rights** while making the data as accessible as possible.
+Each resource in FormosanBank has its own **copyright and licensing terms**. There is no single blanket license for the corpus collection. Rights and usage restrictions are provided on the individual resource pages and in each XML, and stricter upstream or contributor notices control. See the [Terms of Use](../additional-resources/terms-of-use.md) and [AI Use and Commercial Licensing](../additional-resources/ai-use-and-commercial-licensing.md).
 
 ***
 
 ### Where Do I Find More Details?
 
-TBD
+Start with the [corpus pages](../the-bank-architecture/corpora/README.md) for source-specific notes and citations. The [XML format](../the-bank-architecture/formosanbank-xml-format.md) explains the data model. Contributors and developers can use the [developer documentation](../the-bank-architecture/developers/README.md) for folder layout, quality control, statistics, and porting workflows.
 
 ***
 

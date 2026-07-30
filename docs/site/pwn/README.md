@@ -33,6 +33,6 @@ nu neka tjuruvu a sikinakepuan katua maretimaljimalji a caucau na ljitaladj a pu
 * [Damián Blasi](https://www.damianblasi.org/)
 * Xuan Ruan
 * Ūi-iū Kán
-* [Yuyang Liu](https://ced.utaipei.edu.tw/teacher/info?id=100103)
+* [Yuyang Liu](https://utsus.utaipei.edu.tw/p/412-1112-9295.php?Lang=en)
 
 izuanan tjuruvu a caucau [nakipusaladj tjanuamen](background/mareka-pusaladjan.md).

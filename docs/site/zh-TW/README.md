@@ -22,6 +22,6 @@ icon: hand-wave
 * [Damián Blasi](https://www.damianblasi.org/)
 * 阮玄
 * Ūi-iū Kán
-* [劉宇陽](https://ced.utaipei.edu.tw/teacher/info?id=100103)
+* [劉宇陽](https://utsus.utaipei.edu.tw/p/412-1112-9242.php?Lang=zh-tw)
 
 以及[所有的貢獻者](bei-jing/gong-xian-zhe.md)。
