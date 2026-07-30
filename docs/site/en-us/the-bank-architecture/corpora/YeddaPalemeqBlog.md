@@ -1,4 +1,4 @@
-# ePark
+# Yedda Palemeq Blog
 
 ### Overview
 
@@ -28,7 +28,7 @@ Yedda Palemeq, a Paiwan-speaker and linguist, maintained a [blog](https://yeddap
 
 ### **Access Details**
 
-* The repo containing the ePark corpus in FormosanBank as well as the code to reconstruct the corpus can be found [here](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/YeddaPalemeqBlog).
+* The corpus XML and retained processing code are available [in FormosanBank](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/YeddaPalemeqBlog).
 
 ***
 
@@ -37,7 +37,7 @@ Yedda Palemeq, a Paiwan-speaker and linguist, maintained a [blog](https://yeddap
 * The scrape was not completely successful and a few blog posts are not included.
 * Sometimes the same word is spelled differently in the main text and the glosses. We have assumed that the main text is correct and the gloss is incorrect. In those cases, the gloss is ignored.
 * Examples are not necessarily glossed word-by-word; repeated words and some common function words are not always listed. We did our best to automatically match glosses within that specific example; we do not reuse glosses from other examples, since we cannot be sure that they are contextually correct. If no gloss can be found, the <W> element's <FORM> is just a copy of the word in the example and no gloss is provided (there is no <TRANSL> element).
-* Words are segmented in the glosses. These segments are preserved in the <M> elements. Note that the author did not provide morpheme-by-morpheme glosses, so no glossing is provided for individual morphemes. Not also that if we could not find a gloss for a word, it is assumed to be monomorphemic. This is almost certainly incorrect in some cases. 
+* Words are segmented in the glosses. These segments are preserved in the <M> elements. Note that the author did not provide morpheme-by-morpheme glosses, so no glossing is provided for individual morphemes. Also note that if we could not find a gloss for a word, it is assumed to be monomorphemic. This is almost certainly incorrect in some cases.
 
 ***
 

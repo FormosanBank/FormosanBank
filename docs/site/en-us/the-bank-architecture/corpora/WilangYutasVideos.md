@@ -31,7 +31,7 @@ All audio is available. If it is transcribed, it is also diarized.
 * Many of the videos lack transcripts. These have XMLs that point to the audio file, but there are no <S> elements.
 * Many other videos have only partial transcripts. In these cases, the main XML contains only the transcribed part of the audio. A second XML with the postfix "_untranscribed" has no <S>s and a reference to a file that contains the remaining audio.
 * Segments that were not transcribable are marked as <UNCLEAR>. 
-* Many videos involve multiple speakers. The original transcriptions have the second speaker's text in parentheses. We replaced the parentheses with periods so that the text will be standard. People who want to do diarization can inspect `make_xml.py` to figure out how to mark text by speaker (note that we don't have timestamps for seprate speakers).
+* Many videos involve multiple speakers. The original transcriptions have the second speaker's text in parentheses. We replaced the parentheses with periods so that the text will be standard. People who want to do diarization can inspect `make_xml.py` to figure out how to mark text by speaker (note that we don't have timestamps for separate speakers).
 * Time stamps are derived from the subtitles themselves. We do not guarantee that these align perfectly with the actual audio.
 
 ***
@@ -52,4 +52,4 @@ CC BY-NC
 
 In accordance with our [Terms of Use](../../additional-resources/terms-of-use.md), if you use this corpus or any product derived from this corpus in any publication, you must cite both FormosanBank and:
 
-* Glosbe. (n.d.). Glosbe dictionary. https://glosbe.com. Accessed 2025.
+* Wilang Yutas. (2019). *Wilang Yutas YouTube Channel*. YouTube. https://www.youtube.com/@wilangyutas9297
