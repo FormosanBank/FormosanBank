@@ -2,7 +2,7 @@
 
 ### **Overview**
 
-The [**Indigenous Languages Research and Development Foundation**](https://www.ilrdf.org.tw/en/) **(ILRDF)** dictionaries are a comprehensive digital resource designed to preserve and promote Taiwan’s indigenous languages. Built upon the foundational [writing systems ](https://yongfu.name/temp-data/pdf/writingsystemsdoc.pdf)announced in 2005 by the [Council of Indigenous Peoples](https://www.cip.gov.tw/en/index.html) and the Ministry of Education, these dictionaries represent the culmination of nearly seven years of collaborative effort involving hundreds of participants. The ILRDF dictionaries serve as an essential tool for language revitalization, education, and research, ensuring the cultural and linguistic heritage of Taiwan's indigenous peoples is preserved for future generations.&#x20;
+The [**Indigenous Languages Research and Development Foundation**](https://www.ilrdf.org.tw/) **(ILRDF)** dictionaries are a comprehensive digital resource designed to preserve and promote Taiwan’s indigenous languages. Built upon the foundational [writing systems ](https://yongfu.name/temp-data/pdf/writingsystemsdoc.pdf)announced in 2005 by the [Council of Indigenous Peoples](https://www.cip.gov.tw/en/index.html) and the Ministry of Education, these dictionaries represent the culmination of nearly seven years of collaborative effort involving hundreds of participants. The ILRDF dictionaries serve as an essential tool for language revitalization, education, and research, ensuring the cultural and linguistic heritage of Taiwan's indigenous peoples is preserved for future generations.&#x20;
 
 The **ILRDF Dictionaries Corpus** is an integral part of the FormosanBank project, providing a rich and structured dataset of the 16 officially recognized Formosan languages: **Amis**, **Atayal**, **Saisiyat**, **Thao**, **Seediq**, **Bunun**, **Paiwan**, **Rukai**, **Truku**, **Kavalan**, **Tsou**, **Kanakanavu**, **Saaroa**, **Puyuma**, **Yami**, and **Sakizaya**. These dictionaries are invaluable for documenting and preserving linguistic diversity. They include text, audio recordings, and translations, making them a comprehensive resource for research, education, and language revitalization.
 
@@ -58,8 +58,7 @@ Below, we outline the processing pipeline and quality control (QC) measures that
      * `<TRANSL>`: Chinese translations of the word or examples.
      * `<AUDIO>`: Links to or paths for audio files.
 4. **Audio Download and Integration**
-   * Audio files were downloaded using the API links and stored in language-specific subfolders under `XML/audio`.
-   * The corresponding XML files were updated to include local paths to the audio files for seamless integration.
+   * Audio files are not committed to Git. The corpus's `download_audio_data.sh` script retrieves them from Hugging Face, and the XML records the corresponding filenames.
 5. **Cleaning and Standardization**
    * XML files underwent further cleaning to remove empty elements and standardize punctuation and orthography.
    * HTML escape codes were replaced with the corresponding characters, and a `kindOf="standard"` attribute was added to `<FORM>` elements. The original text would be `<FORM kindOf="original">`  and any text that will be standardized from this point will be in `<FORM kindOf="standard">`
@@ -75,7 +74,7 @@ Below, we outline the processing pipeline and quality control (QC) measures that
 ### Key Features of the Corpus
 
 1. **Comprehensive Data**
-   * The corpus contains a total of **659295 tokens** and over **135 hours of audio**, offering a rich and comprehensive resource for the study of Formosan languages. Its quality is ensured by the extensive effort and meticulous processes involved in its creation. Below is a breakdown of the token count and audio duration for each language:
+   * The current corpus contains **658,447 words** and nearly **149 hours of transcribed audio**, offering a rich resource for the study of Formosan languages.
 2. **Audio Integration**
    * High-quality audio files accompany most example sentences, providing an invaluable resource for analyzing pronunciation, phonology, and spoken language contexts.
 3. **Translation Availability**
@@ -103,15 +102,13 @@ Below, we outline the processing pipeline and quality control (QC) measures that
 
 ### **Acknowledgments**
 
-This project is made possible through the collaboration of native speakers, linguists, and researchers. Special thanks to the **Indigenous Languages Research and Development Foundation** ([ILRDF](https://www.ilrdf.org.tw/en/)) for their invaluable contributions and to the broader Formosan communities for their support and engagement.
+This project is made possible through the collaboration of native speakers, linguists, and researchers. Special thanks to the **Indigenous Languages Research and Development Foundation** ([ILRDF](https://www.ilrdf.org.tw/)) for their invaluable contributions and to the broader Formosan communities for their support and engagement.
 
 ***
 
 ### **Copyright**
 
-According to the [copyrights page](https://e-dictionary.ilrdf.org.tw/copyright.htm) of the online dictionaries, work produced by the ILRDF, such as the dictionaries, is under "fair use" and can be reproduced:
-
-> \[Translated] The works published on this website and published in the name of the Association, that is, if the author is the Association, may be reproduced, publicly broadcast or publicly transmitted within a reasonable scope; When using, please indicate the source.
+The online dictionary's current [copyright statement](https://e-dictionary.ilrdf.org.tw/about?id=6c987092-47c7-ef11-bd58-00155db40116) says that ILRDF-authored works may be reproduced, publicly broadcast, or publicly transmitted within a reasonable scope when the source is identified. Other protected uses require permission unless an applicable fair-use provision applies. Users should consult the current statement and the source terms before reusing this corpus.
 
 ***
 

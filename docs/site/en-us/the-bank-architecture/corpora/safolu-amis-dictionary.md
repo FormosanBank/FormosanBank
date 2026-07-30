@@ -9,15 +9,15 @@ Each sentence carries the source text (`original` tier), a common-orthography co
 <!-- CORPUS STATS START -->
 ## Corpus Statistics
 
-| | Amis<br>unknown |
+| | Amis<br>Coastal |
 | --- | --- |
-| Word count | 243,640 |
+| Word count | 243,710 |
 | Total audio | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 |
 | Translated words |  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 242,621 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 242,691 |
 | Morphologically segmented | 0 |
 | Glossed words | 0 |
 

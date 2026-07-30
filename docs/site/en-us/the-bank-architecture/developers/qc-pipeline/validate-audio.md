@@ -35,7 +35,7 @@ Per file, checks run in order: invalid-range and missing are independent; for re
 
 **Silence detection** (`--check_silence` only): WAV files are judged by RMS amplitude below a threshold; encoded formats are probed with `ffmpeg`'s `silencedetect` filter and called silent when ≥95% of the duration is reported as silence. If the probe can't run, the result is `None` and the file is not flagged silent.
 
-**Words/sec SOFT range** (`V105`): for sentence/word audio with non-empty stripped FORM text and positive duration, it flags when `words_per_sec < 0.1` **or** `chars_per_sec > 17` **or** (`word_count < 5` and `duration > 10`) **or** (`word_count > 12` and `duration < 7`). FORMs with no transcribed text (e.g. only `<UNCLEAR/>`) are skipped to avoid a false "too slow" signal.
+**Words/sec SOFT range** (`V105`): for sentence/word audio with non-empty stripped FORM text and positive duration, the rate uses `end - start` when a valid clip range is declared, falling back to the full file duration otherwise. It flags when `words_per_sec < 0.1` **or** `chars_per_sec > 17` **or** (`word_count < 5` and `duration > 10`) **or** (`word_count > 12` and `duration < 7`). FORMs with no transcribed text (e.g. only `<UNCLEAR/>`) are skipped to avoid a false "too slow" signal.
 
 ## Usage
 

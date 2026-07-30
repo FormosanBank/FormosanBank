@@ -25,7 +25,7 @@
 ### Key Features of the Corpus in FormosanBank
 
 * **Comprehensive Data**
-  * The corpus contains a total of **2680175 tokens** and over **587 hours of audio**, offering a rich and comprehensive resource for the study of Formosan languages. Its quality is ensured by the extensive effort and meticulous processes involved in its creation. Below is a breakdown of the token count and audio duration for each language:
+  * The current corpus contains **1,782,446 words** and **475.7 hours of audio**, offering a rich resource for the study of Formosan languages. The canonical English corpus page provides the generated current breakdown.
 * **Audio Integration**
   * High-quality audio files accompany most example sentences, providing an invaluable resource for analyzing pronunciation, phonology, and spoken language contexts.
 * **Translation Availability**
@@ -60,8 +60,6 @@ The ePark corpus was developed through collaboration between ILRDF, educators, l
 
 ### **Corpus Notes**
 
-This section will be used to describe any notes regarding the corpus (e.g. explaining the presence of characters that aren't part of the standard orthography)
-
 * In the Amis corpus of ePark, the letter b occurs a number of times, even though it isn't part of the official orthography. Specifically, there are only 4 sentences with occurrences of the letter b, and the b's occur in two words: “Coylienboy” and Coy-lien-boy (which seems to be broken down version of the first word). Both of them are quoted, so this isn't an indication of an issue, orthography-wise, with the corpus.
 * Similar to b, there are 13 occurances in the Amis corpus of the letter z, even though it's not part of the orthography. all of the occurrences are happening in the two words Sakizaya and E-ziday, which seem to be quoted as well.
 * In the southern Amis dialect specifically, there are around \~3000 sentences/words with v's in them. That's the only dialect with the letter v among all the Amis dialect, and it's likely a letter that's used only in this dialect.
@@ -70,7 +68,7 @@ This section will be used to describe any notes regarding the corpus (e.g. expla
 
 ### Copyright
 
-The content of the ePark corpus is released under the creative commons liscence (CC BY-NC-SA 4.0), and further info can be found here: [https://web.klokah.tw/creativeCommons/](https://web.klokah.tw/creativeCommons/)
+The content of the ePark corpus is released under the Creative Commons CC BY-NC-SA 4.0 license. Further information is available at [https://web.klokah.tw/creativeCommons/](https://web.klokah.tw/creativeCommons/).
 
 ***
 

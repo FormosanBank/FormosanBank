@@ -26,7 +26,7 @@
 
 ### **Corpus Processing**
 
-This corpus was originally published as a book. Prof. Early graciously provided the original Word document, which we scraped. The following steps were followed:
+This corpus was originally published as a book. Prof. Early graciously provided the original Word document, which we scraped. The initial conversion involved the following steps:
 
 1. The free translation was not always on its own line in the docx file. This was fixed manually, the result being `Paiwan Ch2.docx`. 
 
@@ -46,13 +46,15 @@ story 095, sentence 008<br>
 story 096, sentence 049<br>
 story 097, sentence 022<br>
 
-5. The FormosanBank QC scripts `clean_xml.py` and `standardize.py` were run, as per usual procedure. This mostly standardizes punctuation.
+5. The FormosanBank cleaning and orthography tools were run. This normalized punctuation and created a standard orthography tier.
 
 6. Because the original used a slightly different orthography than the modern orthography, the local script `convert.py` was used to convert the orthography to the standard. A table showing the conversion of the original orthography to IPA is available in the book itself. We used a similar conversion table provided by ILRDF for the standard modern orthography we are using. Note that Early and Whitehorn describe a few of the phonemes slightly differently from ILRDF, perhaps reflecting dialectal differences.
 
+The published corpus has since received additional repairs. These include language tags for morpheme glosses, infix and reduplication segmentation, standard and phonological tiers for repaired morphemes, duplicate ID fixes, and several hand-corrected word and morpheme alignment errors. The [source README](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/HundredPaiwanStories) records the exact current pipeline and the manual corrections.
+
 ### **Corpus Notes**
 
-At present, the final XMLs have not been carefully checked against the published PDF. This was judged low-priority due to the fact we were working from the original docx file. Please report any errors spotted to the FormosanBank maintainers.
+The published PDF remains the reference for checking the XML. IPA in four texts whose dialect is currently unknown (`090`, `091`, `097`, and `099`) was generated with the default mapping and is provisional. Please report any errors to the FormosanBank maintainers.
 
 ### **Access Details**
 
@@ -62,4 +64,4 @@ Users of this corpus are encouraged to obtain a copy of the original text. A PDF
 
 Early, R. J., and Whitehorn, J. (2003). One hundred Paiwan texts. Pacific Linguistics, Research School of Pacific and Asian Studies, The Australian National University.
 
-This corpus is available CC BY-NC, with permission of the R. J. Early. The text itself is also freely available online from several sources.
+The corpus README states that the corpus is available CC BY-NC with permission from R. J. Early. The current XML files are labeled public domain. Until those notices are reconciled, users should follow the stricter CC BY-NC terms. The text itself is also freely available online from several sources.

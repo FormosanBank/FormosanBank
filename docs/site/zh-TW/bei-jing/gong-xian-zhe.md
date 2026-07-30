@@ -15,12 +15,12 @@ icon: user-group-simple
 感謝以下個人、學者、或機關單位授權或捐贈他們的語料給FormosanBank。部分語料因為仍在處理中，故尚未公開連結。
 
 * [宋麗梅](https://drive.google.com/file/d/1pkqbvFYHUydbiGRhPIgkBigkh2hpSCYi/view)
-* [原住民族語言研究發展基金會（ILRDF）](https://www.ilrdf.org.tw/en/)
-* [劉宇陽](https://ced.utaipei.edu.tw/teacher/info?id=100103)
+* [原住民族語言研究發展基金會（ILRDF）](https://www.ilrdf.org.tw/)
+* [劉宇陽](https://utsus.utaipei.edu.tw/p/412-1112-9242.php?Lang=zh-tw)
 * Juan T. F. & 阮玄
 * [何德華](https://rau.ccu.edu.tw/)
 * Wilang Yutas
-* [張永利](https://www.ling.sinica.edu.tw/main/en?act=researcher_manager\&code=show_member\&memberID=11)
+* [張永利](https://www.ling.sinica.edu.tw/main/en?act=researcher_manager&code=show_member&memberID=11)
 * Robert Early
 
 ***

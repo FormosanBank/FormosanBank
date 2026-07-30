@@ -158,7 +158,7 @@ def col_header(lang: str, dialect: str) -> str:
       - Empty language            → 'Unknown'
       - No-dialect language       → just the ISO code (e.g. 'ckv')
       - Multi-dialect + dialect   → 'lang<br>Dialect'
-      - Multi-dialect + no dialect→ 'lang<br>UK'  (UK = unknown)
+      - Multi-dialect + no dialect→ 'lang<br>unspecified'
     """
     lang    = lang.strip()
     dialect = dialect.strip()
@@ -171,7 +171,7 @@ def col_header(lang: str, dialect: str) -> str:
         return display
     if dialect:
         return f'{display}<br>{dialect}'
-    return f'{display}<br>UK'
+    return f'{display}<br>unspecified'
 
 
 def row_has_data(row: dict) -> bool:
@@ -421,7 +421,7 @@ def _aggregate_csvs() -> tuple[dict, dict]:
                     _accumulate(lang_stats[lang], row)
                     # Dialect breakdown only for multi-dialect languages
                     if lang not in NO_DIALECT_LANGS:
-                        label = dialect if dialect else 'UK'
+                        label = dialect if dialect else 'unspecified'
                         _accumulate(dial_stats[(lang, label)], row)
 
     return dict(lang_stats), dict(dial_stats)

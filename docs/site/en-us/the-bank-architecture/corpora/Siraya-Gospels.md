@@ -44,9 +44,9 @@ This corpus and associated documentation can be found [here](https://github.com/
 
 ***
 
-**Versificiation**
+**Versification**
 
-The Siraya John 1 has 52 verses, whereas more modern version (even King James) have 51. Claude Sonnet 4.6 used the Dutch translations to come up with this analysis:
+The Siraya John 1 has 52 verses, whereas more modern versions, including the King James Version, have 51. Comparing the Dutch and English translations shows the source of the difference:
 
 Looking at the KJV vs the Dutch translations in the XML, the divergence is clear at verse 38/39:
 
@@ -72,7 +72,7 @@ So when adding English translations, for John chapter 1, verses 1–37 map 1:1 d
 
 Quality Control Modifications
 
-Below is a list of preliminary lexical adjustments made to Siraya words broked up by line breaks in the text by hyphen -. 
+Below is a list of preliminary lexical adjustments made to Siraya words broken up by line breaks in the text with a hyphen.
 They have been consolidated based on full word appearances in surrounding verses. 
 
 A-lid -> Alid
@@ -213,4 +213,4 @@ We recommend you also cite:
 
 * The King James Bible
 
-* The Chinese Standard Version (of the Bible)
+* The Chinese Union Version of the Bible

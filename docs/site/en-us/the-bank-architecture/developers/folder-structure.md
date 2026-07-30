@@ -4,77 +4,81 @@ icon: folder-open
 
 # Folder structure
 
-To maintain consistency and ensure smooth processing, FormosanBank follows a specific folder structure for organizing its corpora, raw data, processed files, and associated audio. This structure is crucial for efficient QC operations and for developers who want to follow the existing codebase or build on top of it.
+FormosanBank keeps each published corpus in its own directory under `Corpora/`. Initial corpus development happens in a separate development repository. Only the approved, reproducible output is ported into the public repository.
 
-### Corpus Organization
+### Published Corpus Layout
 
-Each corpus is contained within its own folder, and inside each corpus folder, the following components are present:
+The standard published layout is:
 
-* **Raw Data**: The original dataset before processing.
-* **Processing Code**: Scripts used to convert raw data into the final structured corpus.
-* **Documentation**: Includes README files and requirements files.
-* **XML**: The processed corpus in XML format.
-* **Audio**: The corresponding audio files aligned with the XML data.
-* download_audio_data.sh: If and only if there is audio data, this script should contain the necessary code to retrieve the audio from HuggingFace.
+```text
+Corpora/<CorpusName>/
+├── README.md
+├── XML/
+├── CodeAndDocs/
+└── download_audio_data.sh    # only when remotely hosted audio exists
+```
 
-Note that the GitHub repo does not contain the `Audio` file, since the Audio should be stored on HuggingFace.
+* **`README.md`** describes the source, rights, known limitations, and how the published XML was produced.
+* **`XML/`** contains the canonical public data.
+* **`CodeAndDocs/`** contains the scripts and non-private source documentation needed to reproduce the XML.
+* **`download_audio_data.sh`** downloads audio that is stored outside Git, normally from Hugging Face. It is included only when needed.
+
+Older corpora do not always follow every part of this layout. New ports should follow it unless the source requires a documented exception.
+
+Raw or private development material does not belong in the public corpus directory. Development repositories may contain a `Private/` directory, but nothing from it is ever ported into FormosanBank.
 
 ### Structure of the `XML` Directory
 
-The `XML` folder houses the processed corpus files. While there is some flexibility in how this directory is structured, a critical requirement is that it must contain a subdirectory named after the specific Formosan language.
+The `XML` directory may be grouped in the way that best preserves the source and keeps filenames manageable. Common layouts include:
 
-#### Common Organizational Approaches:
+1. **By language**
 
-1. **Directly by Language** (e.g., ILRDF\_Dicts)
-   * `ILRDF/XML/Amis/`
-   * `ILRDF/XML/Paiwan/`
-   * `ILRDF/XML/Tsou/`
-2. **By Topic** (e.g., ePark)
-   * `ePark/XML/`ep1\_九階教材`/Amis`&#x20;
-3. **By Speaker** (e.g., NTU Paiwan ASR)
-   * `NTU_Paiwan_ASR/XML/Paiwan/`Belmira`/`
+   ```text
+   Corpora/ILRDF_Dicts/XML/Amis/Amis.xml
+   Corpora/ILRDF_Dicts/XML/Paiwan/Paiwan.xml
+   ```
 
-Regardless of the structure chosen, **every corpus must include a directory named after the Formosan language**. This can be a top-level directory or nested within another category. Even if a corpus contains only one language (e.g., NTU Paiwan ASR), a folder with the language name must be present for consistency.&#x20;
+2. **By subcorpus, then language**
 
-### Structure of the `Audio` Directory
+   ```text
+   Corpora/ePark/XML/ep1_九階教材/Amis/
+   ```
 
-For every `XML` directory, there exists a corresponding `Audio` directory that follows the same hierarchy.
+3. **By language, then speaker**
 
-*   If the path for XML files is:
+   ```text
+   Corpora/NTU_Paiwan_ASR/XML/Paiwan/Belmira/
+   ```
 
-    ```
-    path/to/XML
-    ```
+4. **By ISO 639-3 code**
 
-    Then the equivalent path for audio files is:
+   ```text
+   Corpora/Glosbe/XML/ami/
+   Corpora/Glosbe/XML/tay/
+   ```
 
-    ```
-    path/to/Audio
-    ```
+A language-named directory is common, but it is not a schema requirement. QC and statistics tools recursively walk `XML/`, so the important requirements are valid XML, stable paths, and a layout that can be reproduced from `CodeAndDocs/`.
 
-#### Mapping XML Files to Audio Files
+### Audio Layout
 
-The relationship between XML and audio files follows two main cases:
+Audio files are usually gitignored and downloaded into `Corpora/<CorpusName>/Audio/`. A few small legacy corpora keep audio directly in Git.
 
-1. **Segmented Audio** (Multiple audio files per XML)
-   * If an XML file contains multiple segments, a corresponding directory holds the segmented audio files.
-   *   Example:
+The XML records the filename or document-level audio reference. Download scripts should reconstruct a layout that the audio resolver can match. Mirroring the relative XML organization is the clearest option, but the current tools also support common layouts such as dropping the leading language directory or locating a unique filename recursively.
 
-       ```
-       ILRDF/XML/Amis/Amis.xml → ILRDF/Audio/Amis/Amis/
-       ```
+For segmented audio, an XML sentence, word, or morpheme references a separate clip:
 
-       * `ILRDF/Audio/Amis/Amis/` contains the audio files referenced in `ILRDF/XML/Amis/Amis.xml`.
-2. **Unsegmented Audio** (Single audio file per XML)
-   * If an XML file corresponds to a single audio file, the audio file is directly mapped to it.
-   *   Example:
+```text
+XML/Amis/example.xml
+Audio/Amis/example/example_S1.wav
+```
 
-       ```
-       NTU_Paiwan/XML/Paiwan/Belmira/02SC105-2_Belmira.xml → NTU_Paiwan/Audio/Paiwan/Belmira/[audio file]
-       ```
+For an unsegmented recording, `TEXT/@audio` identifies the document-level file and child AUDIO elements provide start and end offsets.
 
-### Importance of Following This Structure
+Do not assume that XML or audio basenames are globally unique. Keep the corpus directory structure intact unless you also update and validate every reference.
 
-This folder structure is integral to many of the quality control (QC) and processing scripts used in FormosanBank. Ensuring adherence to this format will allow for smooth execution of the existing code and prevent compatibility issues when extending or modifying the dataset.
+### Related Workflows
 
-By following this structure, developers and researchers can efficiently navigate, process, and expand upon the FormosanBank resources.
+* [Porting a Corpus In](porting-a-corpus.md) describes how a finished development repository becomes this published layout.
+* [FormosanBank XML Format](../formosanbank-xml-format.md) defines the file structure inside `XML/`.
+* [Hugging Face](huggingface.md) explains the audio download scripts.
+* [QC Pipeline](qc-pipeline/README.md) documents the recursive validators and statistics tools.

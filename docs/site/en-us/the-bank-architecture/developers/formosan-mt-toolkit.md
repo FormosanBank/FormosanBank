@@ -4,84 +4,95 @@ icon: language
 
 # Formosan MT Toolkit
 
-The Formosan MT Toolkit is the repository used to turn FormosanBank XML into machine-translation corpora and experiments. It is not a separate source corpus. Instead, it is a derived-data and modeling repository built on top of FormosanBank.
+The Formosan MT Toolkit turns FormosanBank XML into reproducible machine-translation corpora and NLLB-200 experiments. It is a derived-data and modeling repository, not a separate source corpus.
 
-The repository is available here: [FormosanBank/Formosan-MT-Toolkit](https://github.com/FormosanBank/Formosan-MT-Toolkit).
+The implementation is maintained in the private `FormosanBank/Formosan-MT-Toolkit` repository. The workflow below reflects its current `main` branch; repository access requires authorization from the FormosanBank organization.
 
-### What the Toolkit Contains
+### Current Production Workflow
 
-The released corpus files live in `processed_corpora/`. The current release contains 30 processed pairwise corpora: 15 Formosan-English corpora and 15 Formosan-Traditional Chinese corpora. These files are the training-ready CSVs used by the FormosanMT work.
-
-Each processed CSV keeps the Formosan text, the target translation, and metadata needed for downstream experiments:
-
-* `source`: the original FormosanBank source file or text.
-* `kindOf`: the translation type or origin, when known.
-* `dialect`: the Formosan dialect label.
-* `row_type`: whether the row is a sentence-level pair or a lexical entry.
-* `split`: the released train, validate, or test split.
-* `group_id`: the shared grouping used to reduce train/evaluation leakage.
-
-Lexical rows are routed to training only. Sentence splits are assigned with shared source or target strings in mind, which helps avoid evaluating on examples that are nearly duplicated in training.
-
-### Rebuilding Corpora from FormosanBank
-
-The main corpus pipeline is:
+Corpus pipeline v2 is the first supported release path. It:
 
 ```text
-FormosanBank XML -> fetch_xml.py -> clean_xml.py -> make_corpus.py -> filter_split_corpus.py -> processed CSV
+FormosanBank XML
+  -> immutable source repository and commit inventory
+  -> pinned FormosanBank QC
+  -> standard-tier parallel-pair extraction
+  -> conservative cleaning and rejection logging
+  -> English and Traditional Chinese aggregates
+  -> validated DeepL pivot completion
+  -> document- and group-aware in_domain_hard split
+  -> independent validation and TAME-MT exposure audit
+  -> checksummed training bundle
+  -> SPM8k NLLB setup
+  -> four directional training and evaluation runs
 ```
 
-The pipeline downloads XML from FormosanBank, runs the standard XML cleaning utilities, extracts parallel pairs, filters noisy rows, labels lexical entries and sentence pairs, deduplicates examples, and writes the released CSV format.
+The July 2026 v1 manifests remain in `formosan_mt_experiments/manifests/` as historical experiment records. Their corpora are not current v2 training inputs.
 
-To rebuild all released corpora:
+### Repository Layout
+
+* `build_corpora.sh`: Stable wrapper for the end-to-end corpus builder.
+* `scripts/local/`: Source acquisition, QC, XML extraction, filtering, pivoting, aggregation, and orchestration.
+* `formosan_mt_experiments/`: Current splitting, validation, SPM8k setup, training, evaluation, and Slurm tooling.
+* `corpus_builds/<name>/`: Ignored, self-contained generated builds.
+* `protected_corpora/`: Paid-pivot snapshots and tracked checksums. This is retained for protection and provenance, not used as the current build namespace.
+
+There is no current top-level release of 30 pairwise CSV files. Intermediate `processed_corpora/` directories and final training files live inside named, ignored builds under `corpus_builds/`.
+
+### Building Corpora
+
+The normal release procedure creates separate public and private/all-repository variants, adds cached or newly generated English-Chinese pivots, and excludes the exact Taiwan Bible Society repository:
 
 ```bash
-./build_corpora.sh
+./build_corpora.sh --build-public-private --with-pivot --exclude-bible
 ```
 
-To rebuild a single language pair, run the local scripts in sequence. For example, the Amis-Chinese pipeline fetches Amis XML, cleans it, extracts Chinese translations, then filters and splits the result.
+The active orchestrator is `scripts/local/build_mt_corpus.py`. Named builds do not overwrite one another. Each build records the exact repository commits and blobs used, the pinned QC revision, row-level provenance, rejected rows, pivot outcomes, split decisions, validation reports, exposure audits, configuration, and checksums.
+
+The builder requires a clean checkout and stops when acquisition, parsing, QC, row conservation, pivot completion, split validation, exposure auditing, or provenance packaging is incomplete.
+
+DeepL-generated targets are transactional. Successful translations are cached with provenance. Provider errors, missing cache entries, exhausted quota, or deferred requests prevent final outputs from being promoted. Responses that fail script, identity, markup, or fertility checks are excluded and recorded in a quarantine ledger.
+
+### Model-Facing Corpora
+
+The supported model-facing files are:
+
+```text
+corpus_builds/<name>/pivot_corpora_final/big_corpus_en_in_domain_hard.csv
+corpus_builds/<name>/pivot_corpora_final/big_corpus_zh_in_domain_hard.csv
+```
+
+The split contract includes:
+
+* source text extracted from `FORM kindOf="standard"`
+* raw source, cleaned text, XML locator, source commit, QC commit, tier origin, and hashes retained for each row
+* XML lexemes and morphemes routed to training only
+* at least 7.5% test and 2.5% validation per language
+* DeepL-generated rows kept in training, with human references required for evaluation
+* source documents held out where enough eligible documents exist
+* exact and near-duplicate leakage checks across split boundaries
+* exact TAME-MT source, target, pair, and high-similarity exposure required to be zero
+* connected one-to-many and many-to-one groups kept in one split
+
+Each completed build includes `mt_build_manifest.json` and a portable `pivot_corpora_final/provenance/` bundle.
 
 ### Machine Translation Experiments
 
-The repository also contains the NLLB and OpenNMT experiment code used for FormosanMT. The older scripts under `scripts/mt/` support bilingual and multilingual NLLB-200 runs, multilingual tokenizer setup, evaluation, and OpenNMT baselines.
+The current experiment stack lives in `formosan_mt_experiments/`. It validates the English and Chinese corpora, creates or reuses the pinned train-only SPM8k tokenizer and NLLB base, then trains and evaluates four unidirectional models per corpus variant:
 
-The newer experiment stack lives in `formosan_mt_experiments/`. It adds leakage-resistant split generation, tiered evaluation sets, SentencePiece tokenizer sweeps, directional NLLB training, denoising autoencoder pre-adaptation, LoRA experiments, evaluation reports, and Andromeda Slurm templates.
+* `f2en`: Formosan to English
+* `en2f`: English to Formosan
+* `f2zh`: Formosan to Traditional Chinese
+* `zh2f`: Traditional Chinese to Formosan
 
-The headline workflow uses tiered splits such as:
+Generated corpora, caches, tokenizer artifacts, model checkpoints, predictions, reports, and Slurm logs remain in ignored output or cluster storage. Source code, small manifests, checksums, and historical records are the items retained in Git.
 
-* `lexical`: lexeme and template evaluation.
-* `in_domain_hard`: the main benchmark.
-* `hard_global`: a harder domain-transfer stress test.
+### Further Documentation
 
-Generated split files, tokenizer sweeps, model checkpoints, prediction files, and reports should stay in ignored output directories such as `formosan_mt_experiments/data/`, `formosan_mt_experiments/reports/`, or cluster scratch space.
-
-### Pivot Corpora
-
-The toolkit can also build DeepL pivot corpora, which add synthetic English or Traditional Chinese targets where only one target language is available. These outputs are expensive generated artifacts and are not ordinary source data.
-
-The canonical working location is:
-
-```text
-pivot_corpora_final/
-```
-
-Protected checksum copies and manifests live under:
-
-```text
-protected_corpora/deepl_pivots/
-```
-
-Before copying or using the protected pivot data, verify the checksums:
-
-```bash
-cd protected_corpora/deepl_pivots
-shasum -a 256 -c SHA256SUMS
-```
-
-Do not commit generated model artifacts, DeepL cache payloads, Slurm logs, prediction dumps, or regenerated pivot CSVs. Keep source scripts, configuration files, small manifests, checksums, and released processed corpora in git.
+For authorized contributors, the toolkit's `README.md` is the current operational reference. `docs/ARCHITECTURE.md` describes component ownership, `docs/NO_BIBLE_CORPUS_REBUILD.md` gives the release procedure, and `docs/CURRENT_EXPERIMENT.md` documents the superseded v1 flight.
 
 ### Citation
 
-If you use the processed corpora or models derived from them, cite FormosanBank and the underlying corpora. For the FormosanMT corpus and machine translation experiments, also cite:
+If you use a derived corpus or model, cite FormosanBank and the underlying source corpora. For the FormosanMT corpus and experiments, also cite:
 
-* Scheppat, H., Le Ferrand, É., Hartshorne, J., & Prud’hommeaux, E. (2025). [Integrating diverse corpora for training endangered language machine translation systems](https://aclanthology.org/2025.computel-main.19/). In _Proceedings of the Eighth Workshop on the Use of Computational Methods in the Study of Endangered Languages (ComputEL-8)_.
+* Scheppat, H., Hartshorne, J., Leddy, D., Le Ferrand, E., & Prudhommeaux, E. (2025). [Integrating diverse corpora for training an endangered language machine translation system](https://aclanthology.org/2025.computel-main.19/). In _Proceedings of the Eight Workshop on the Use of Computational Methods in the Study of Endangered Languages (ComputEL-8)_, 162–169.

@@ -2,7 +2,7 @@
 
 ### Overview
 
-[The ePark corpus](https://web.klokah.tw/) is a comprehensive and interactive resource for the preservation, learning, and revitalization of Indigenous languages of Taiwan. Developed by the Indigenous Languages Research and Development Foundation ([ILRDF](https://www.ilrdf.org.tw/)), this digital platform caters to a wide audience, including preschoolers, students, adults, and language teachers, with resources and tools designed to support various learning levels and linguistic goals. The corpus is available in all recognized 42 official dialects across the 16 different Formosan language. The corpus is invaluable for documenting and preserving linguistic diversity, and it includes text, audio recordings, and translations, making it a comprehensive resource for research, education, and language revitalization.
+[The ePark corpus](https://web.klokah.tw/) is a comprehensive and interactive resource for the preservation, learning, and revitalization of Indigenous languages of Taiwan. Developed by the Indigenous Languages Research and Development Foundation ([ILRDF](https://www.ilrdf.org.tw/)), this digital platform caters to a wide audience, including preschoolers, students, adults, and language teachers, with resources and tools designed to support various learning levels and linguistic goals. The corpus is available in all recognized 42 official dialects across the 16 different Formosan languages. The corpus is invaluable for documenting and preserving linguistic diversity, and it includes text, audio recordings, and translations, making it a comprehensive resource for research, education, and language revitalization.
 
 ***
 
@@ -49,7 +49,7 @@ The corpus appears to use the standard orthography ("Ortho113" in FormosanBank n
 
 ### Copyright
 
-The content of the ePark corpus is released under the creative commons liscence (CC BY-NC-SA 4.0), and further info can be found here: [https://web.klokah.tw/creativeCommons/](https://web.klokah.tw/creativeCommons/)
+The content of the ePark corpus is released under the Creative Commons CC BY-NC-SA 4.0 license. Further information is available at [https://web.klokah.tw/creativeCommons/](https://web.klokah.tw/creativeCommons/).
 
 ***
 

@@ -15,9 +15,9 @@ Once a corpus has passed [QC](qc-pipeline/README.md) and any [audit](running-an-
 A ported corpus lives at `Corpora/<Name>/` and contains:
 
 - `README.md` — what the corpus is, where the source came from, and how to reproduce `XML/`.
-- `XML/` — the canonical published data (the language-named subdirectory convention applies; see [Folder structure](folder-structure.md)).
+- `XML/`: the canonical published data, optionally grouped by language, subcorpus, or speaker (see [Folder structure](folder-structure.md)).
 - `CodeAndDocs/` — the scripts and docs needed to **reproduce** `XML/` from the source.
-- `download_audio_data.sh` — **only** if the corpus has audio.
+- `download_audio_data.sh`: **only** when remotely hosted audio must be retrieved.
 
 ## The hard invariant: nothing from `Private/`
 
@@ -88,10 +88,10 @@ python QC/validation/validate_xml.py by_path --path Corpora/<Name>/XML --no-exit
 
 ### 5. Add to GitBook
 
-Publishing into `Corpora/` is only half-done until the corpus appears in this GitBook. The mechanical wiring is done by the GitBook repo's helper, [`manage_corpus_pages.py`](https://github.com/FormosanBank/FormosanBankGitbook/blob/main/manage_corpus_pages.py); you then write the prose and inject the stats.
+Publishing into `Corpora/` is only half-done until the corpus appears in this GitBook. The mechanical wiring is done by the GitBook repo's `manage_corpus_pages.py` helper; you then write the prose and inject the stats.
 
 {% hint style="info" %}
-**Which branch does the GitBook publish from?** This is currently unresolved (`main` vs a language branch may diverge). Check the divergence and decide deliberately; make the page edits on a fresh feature branch off whichever branch the site publishes from. Do **not** hardcode a branch.
+The English GitBook is canonical and the repository's default branch is `en-us`. Make page edits on a fresh feature branch from the current `origin/en-us`. The translation branches are partial and should not be used as the source for English corpus pages.
 {% endhint %}
 
 1. **Decide the page identifiers**: the page `slug` (kebab-case + `.md`), the nav label, the page title, and the trailing parenthetical "descriptors" for the corpus list (e.g. `(text, audio, English, Mandarin)`) derived from the corpus's tiers/audio/translations.
@@ -129,7 +129,7 @@ Record what was created, what was dropped, the validation result, the privacy-le
 - README handling when the source has none.
 - Copy vs move of source files.
 - Whether the QC evidence is sufficient to proceed.
-- Which branch the GitBook publishes from.
+- Whether translation updates are in scope for the port. The English `en-us` branch remains canonical.
 - How to populate audio seconds (local vs HF vs defer).
 
 ## Related

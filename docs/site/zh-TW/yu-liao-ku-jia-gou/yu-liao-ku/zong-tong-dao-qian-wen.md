@@ -48,7 +48,7 @@
 
 ### **存取資訊** &#x20;
 
-* 有關道歉文的資訊、英語和華語的道歉文本以及16族臺灣南島語版本的文本，均可[於此](https://indigenous-justice.president.gov.tw/)公開獲取。 &#x20;
+* 總統府提供[官方英文道歉文](https://english.president.gov.tw/NEWS/4950)，原住民族委員會則提供[16族族語版本](https://www.cip.gov.tw/zh-tw/news/data-list/01F6453A792735EC/index.html?cumid=01F6453A792735EC)。 &#x20;
 * 您可在[此處](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/Presidential_Apologies)找到FormosanBank中總統道歉文語料庫的儲存庫以及重建語料庫的程式碼。&#x20;
 
 ***
@@ -77,5 +77,5 @@
 
 依據我們的[使用條款](../../qi-ta-zi-yuan/shi-yong-tiao-kuan.md)，若您在任何出版物中使用此語料庫或任何由此語料庫衍生的產品，您必須同時引用FormosanBank以及：
 
-* **引用道歉文文本（通用版）：**&#x54;sai, I. W. (2016, August 1). President Tsai Ing-wen's apology to the Indigenous Peoples on behalf of the government \[Speech transcript]. [https://indigenous-justice.president.gov.tw/](https://indigenous-justice.president.gov.tw/)
-* **引用道歉文文本（特定語言版）：**&#x54;sai, I. W. (2016, August 1). President Tsai Ing-wen's apology to the Indigenous Peoples on behalf of the government \[Speech transcript, Amis translation]. [https://indigenous-justice.president.gov.tw/](https://indigenous-justice.president.gov.tw/)
+* **引用道歉文文本（通用版）：**&#x54;sai, I. W. (2016, August 1). President Tsai Ing-wen's apology to the Indigenous Peoples on behalf of the government \[Speech transcript]. [Office of the President](https://english.president.gov.tw/NEWS/4950).
+* **引用道歉文文本（特定語言版）：**&#x54;sai, I. W. (2016, August 1). President Tsai Ing-wen's apology to the Indigenous Peoples on behalf of the government \[Speech transcript, Amis translation]. [Council of Indigenous Peoples](https://www.cip.gov.tw/zh-tw/news/data-list/01F6453A792735EC/index.html?cumid=01F6453A792735EC).

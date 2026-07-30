@@ -30,7 +30,7 @@ Tiers and attributes read: the document root `TEXT` (and its `xml:lang`, `dialec
 | `V012` | Every `M` must have at least one `FORM` child. |
 | `V013` | An `S` that has any `FORM` must have one with `kindOf="original"`. |
 | `V015` | An `S` may have at most one `FORM` with `kindOf="original"`. |
-| `V017` | Every `FORM` must have non-empty text (an `<UNCLEAR/>` child counts as content). |
+| `V017` | Every `FORM` must have non-empty text. An `<UNCLEAR/>` child counts as content, and a wholly untranscribed audio-backed `S` is exempt. |
 | `V022` | On an `M`, multiple `TRANSL kindOf="original"` must have distinct `xml:lang`. |
 | `V023` | Every `TRANSL` must carry an `xml:lang`. |
 | `V026` | `M`-level `TRANSL/@kindOf`, when set, must be `original` or `standard`. |
@@ -44,7 +44,7 @@ Tiers and attributes read: the document root `TEXT` (and its `xml:lang`, `dialec
 | `V070` | `PHON` is only permitted under `S`, `W`, or `M`. |
 | `V071` | `PHON/@kindOf`, when set, must be `original` or `standard`. |
 | `V072` | At most one `PHON` per `kindOf` value per parent. |
-| `V073` | `PHON` must have non-empty text (carve-outs: null-morpheme parents and `UNCLEAR` siblings). |
+| `V073` | `PHON` must have non-empty text (carve-outs: null-morpheme parents, `UNCLEAR` siblings, and wholly untranscribed audio-backed `S` elements). |
 | `V084` | `TRANSL/@ver`, when set, must be in the allow-list (currently `{alt}`). |
 | `V085` | Multiple same-`xml:lang` `TRANSL`s on one parent require at least one `ver` to discriminate them. |
 | `V081` | **Cross-file:** a `TEXT/@id` must not collide with any `TEXT/@id` in published `Corpora/`. |

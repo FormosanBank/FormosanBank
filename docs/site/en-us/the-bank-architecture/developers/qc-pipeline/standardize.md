@@ -64,7 +64,7 @@ python QC/utilities/standardize.py \
 
 ## Output & side effects
 
-**Modifies XML in place.** Each processed file is re-serialized (pretty-printed, blank lines stripped) and overwritten, with a new `FORM kindOf="standard"` element added to every element that has an original FORM (S/W/M, not just sentence level). Always `git diff` before committing — in TSV mode especially, confirm the transliteration did what you expected.
+**Modifies XML in place.** Each processed file is re-serialized (pretty-printed, blank lines stripped) and overwritten, with a new `FORM kindOf="standard"` element added to every element that has an original FORM (S/W/M, not just sentence level). The serializer preserves inline mixed content, including text around `<UNCLEAR/>`, without inserting formatting whitespace into the tier. Always `git diff` before committing. In TSV mode especially, confirm the transliteration did what you expected.
 
 ## When to run it
 

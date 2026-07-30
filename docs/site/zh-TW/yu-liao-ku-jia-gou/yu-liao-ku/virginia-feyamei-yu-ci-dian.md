@@ -84,6 +84,8 @@ Virginia Fey的阿美語辭典是一本重要的著作，詳盡記錄了阿美�
 
 > This work is licensed under the Creative Commons 姓名標示-非商業性 3.0 Unported License. To view a copy of this license, visit [http://creativecommons.org/licenses/by-nc/3.0/deed.zh\_TW](http://creativecommons.org/licenses/by-nc/3.0/deed.zh_TW).
 
+目前公開XML標示為CC BY-SA，與上述來源的CC BY-NC聲明衝突。在中繼資料完成調整前，使用者應遵循限制較嚴格的來源CC BY-NC條款。
+
 ***
 
 ### **致謝**

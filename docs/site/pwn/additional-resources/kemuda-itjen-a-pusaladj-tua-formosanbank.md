@@ -4,6 +4,10 @@ icon: hand-holding-hand
 
 # kemuda itjen a pusaladj tua FormosanBank?
 
+{% hint style="warning" %}
+This partial Paiwan translation is provided for convenience. Contributed data is available for permitted noncommercial uses under the canonical [English Terms of Use](https://ai4commsci.gitbook.io/formosanbank/additional-resources/terms-of-use) and [AI Use Addendum](https://ai4commsci.gitbook.io/formosanbank/additional-resources/ai-use-and-commercial-licensing). Commercial AI use requires prior written permission.
+{% endhint %}
+
 tjara ljemaui a su ziriu maqati a pavai tua kindri pasusu ta CC-BY-NC a hulic ([amilikan](https://creativecommons.org/licenses/by-nc/4.0/deed.en)|[ciniukukan](https://creativecommons.org/licenses/by-nc/4.0/deed.zh-hant)) sa sicekaw itua wanglu. nu saljinga sun a cemekaw emaya tua malji mun a kindri parutua open-source ayaya, maqati a mazepzep katua ringraku tjanuamen.
 
 ***

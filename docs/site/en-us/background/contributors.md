@@ -15,13 +15,13 @@ We are immensely grateful to the [Indigenous Languages Research and Development 
 The following have contributed data to FormosanBank. Note that in some cases, the data is still being processed and not yet publicly available.
 
 * [Li-May Sung](https://drive.google.com/file/d/1pkqbvFYHUydbiGRhPIgkBigkh2hpSCYi/view)&#x20;
-* [Indigenous Languages Research and Development Foundation](https://www.ilrdf.org.tw/en/) (ILRDF)
-* [劉宇陽](https://ced.utaipei.edu.tw/teacher/info?id=100103)
+* [Indigenous Languages Research and Development Foundation](https://www.ilrdf.org.tw/) (ILRDF)
+* [劉宇陽](https://utsus.utaipei.edu.tw/p/412-1112-9242.php?Lang=zh-tw)
 * Juan T. F. & Ruan X.
 * [Victoria Rau](https://rau.ccu.edu.tw/)
 * Wilang Simaw
 * Apay Tang
-* [Henry Chang](https://www.ling.sinica.edu.tw/main/en?act=researcher_manager\&code=show_member\&memberID=11)
+* [Henry Chang](https://www.ling.sinica.edu.tw/main/en?act=researcher_manager&code=show_member&memberID=11)
 * Robert Early
 * Yedda Palemeq
 
@@ -30,4 +30,3 @@ The following have contributed data to FormosanBank. Note that in some cases, th
 ### Funding
 
 We are also grateful for the financial support provided by the National Science Foundation (NSF) through award **#2319296.** This grant has been crucial in enabling us to undertake such an ambitious project, and it reaffirms the importance of our collective efforts in revitalizing and preserving endangered languages.
-
