@@ -34,7 +34,7 @@ on:
       - "QC/corpus_metrics.py"
       - "QC/corpus_counts.py"
       - ".github/workflows/token-comparison.yaml"
-    
+
 jobs:
   compare-token-counts:
     runs-on: ubuntu-latest
@@ -73,8 +73,35 @@ jobs:
           BASE_REF="${INPUT_BASE_REF:-origin/main}"
         fi
 
-        git rev-parse --verify "$BASE_REF^{commit}"
+        BASE_SOURCE="event"
+        if ! git rev-parse --verify "$BASE_REF^{commit}" >/dev/null 2>&1; then
+          echo "Requested base $BASE_REF is not available locally; attempting an explicit fetch."
+          git fetch --no-tags origin "$BASE_REF" || true
+        fi
+        if ! git rev-parse --verify "$BASE_REF^{commit}" >/dev/null 2>&1; then
+          if git rev-parse --verify "HEAD^{commit}^" >/dev/null 2>&1; then
+            echo "::warning::Base $BASE_REF is unreachable, likely after rewritten history; comparing with HEAD^."
+            BASE_REF="HEAD^"
+            BASE_SOURCE="first-parent-fallback"
+          else
+            echo "::warning::No base commit is available; comparing HEAD with itself."
+            BASE_REF="HEAD"
+            BASE_SOURCE="head-fallback"
+          fi
+        fi
+
+        RESOLVED_BASE="$(git rev-parse --verify "$BASE_REF^{commit}")"
+        RESOLVED_HEAD="$(git rev-parse --verify "HEAD^{commit}")"
+        if [[ "$RESOLVED_BASE" == "$RESOLVED_HEAD" && "$BASE_SOURCE" == "event" && "$EVENT_NAME" == "push" ]]; then
+          if git rev-parse --verify "HEAD^{commit}^" >/dev/null 2>&1; then
+            echo "::warning::Push base resolves to HEAD; comparing with HEAD^ instead."
+            BASE_REF="HEAD^"
+            BASE_SOURCE="first-parent-fallback"
+          fi
+        fi
+
         echo "base_ref=$BASE_REF" >> "$GITHUB_OUTPUT"
+        echo "base_source=$BASE_SOURCE" >> "$GITHUB_OUTPUT"
         git show -s --format='Base: %H %cI %s' "$BASE_REF"
         git show -s --format='Compare: %H %cI %s' HEAD
 
@@ -115,6 +142,7 @@ jobs:
 
         print("# Token Count Delta")
         print()
+        print("Baseline source: `${{ steps.base.outputs.base_source }}`")
         print(f"Base total: `{base_total:,}`")
         print(f"Current total: `{current_total:,}`")
         print(f"Delta: `{delta_total:+,}`")
