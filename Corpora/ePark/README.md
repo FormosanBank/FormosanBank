@@ -237,6 +237,20 @@ quotes `’→'` in both FORM tiers (otherwise validate_text flags V110/V127/V13
    python ../FormosanBank/QC/cleaning/clean_xml.py --corpora_path Final_XML
 ```
 
+Then derive one MT-facing surface reading from source fields that contain
+morpheme boundaries, slash-ordered variants, parenthetical teaching variants,
+or grammar templates. The source notation remains unchanged in
+`FORM kindOf="original"`:
+
+```bash
+   python CodeAndDocs/normalize_standard_forms.py --xml-dir XML --apply
+```
+
+The script changes direct `S/FORM[@kindOf="standard"]` text, plus two reviewed
+non-linguistic source artifacts identified in the script. It is deterministic
+and refuses to emit an empty standard. Run it once more without `--apply`; the
+expected result is `would change: 0 direct S-standard forms`.
+
 6. **More**
 
 So ePark is a very complex datasource. It contains repeated names. It also contains a lot of Chinese in filenames, which are problems for some computers. We have a series of scripts that clean this up. It would be better to do this much earlier in the process. Feel free to submit a pull request!
