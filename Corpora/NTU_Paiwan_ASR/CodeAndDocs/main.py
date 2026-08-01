@@ -58,7 +58,7 @@ def handle_participant(data_path, name, p_data, output_path):
             s_element = ET.SubElement(root, "S")
             s_element.set("id", id)
 
-            form_element = ET.SubElement(s_element, "FORM")
+            form_element = ET.SubElement(s_element, "FORM", {"kindOf": "original"})
             form_element.text = form
 
             audio_element = ET.SubElement(s_element, "AUDIO")
