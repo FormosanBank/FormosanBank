@@ -26,3 +26,10 @@ plot.png
 .claude/worktrees/
 coverage.xml
 .coverage
+
+# Build artifacts. Compiled GUI tools (e.g. QC/utilities/OCR Audit) are
+# distributed as GitHub Release assets, not committed to the repo.
+# See "QC/utilities/OCR Audit/RELEASING.md".
+*.exe
+*.pyz
+*.app/

@@ -31,7 +31,47 @@ This directory contains a set of Python scripts and resources for quality contro
     - [Orthography Scripts](#orthography-scripts)
     - [Validation Scripts](#validation-scripts)
     - [Additional Scripts](#additional-scripts)
-5. [Logs](#logs)
+5. [Prebuilt Tools (Downloads)](#prebuilt-tools-downloads)
+6. [Logs](#logs)
+
+---
+
+## Prebuilt Tools (Downloads)
+
+Some QC tools ship as a graphical application so that reviewers who don't run
+Python can use them. **These applications are not stored in this repository** —
+they are published as assets on the
+[Releases page](https://github.com/AI4CommSci/FormosanBank/releases).
+Only their source lives here, so that cloning FormosanBank doesn't drag down
+tens of megabytes of compiled binaries.
+
+| Tool | Source | Download |
+|---|---|---|
+| **reviewOCR** — GUI for reviewing and tagging OCR errors in corpus XML | [QC/utilities/OCR Audit/](QC/utilities/OCR%20Audit/) | Releases tagged `ocr-audit-v*` |
+
+### How to download and run
+
+1. Go to [the Releases page](https://github.com/AI4CommSci/FormosanBank/releases)
+   and open the newest release for the tool you want (e.g. **OCR Audit v1.3**).
+2. Under **Assets**, download the `.zip` for your operating system —
+   `…-windows.zip` or `…-macos.zip`.
+3. Unzip it. **Keep the `data/` folder in the same directory as the
+   application** — the tool reads and writes its session state there and will
+   not start without it.
+4. Launch it:
+   - **Windows:** double-click `reviewOCR.exe`. Windows SmartScreen may say
+     "Windows protected your PC" — click **More info** → **Run anyway**.
+   - **macOS:** the first launch must be right-click (or Control-click) →
+     **Open** → **Open**, because the app is not code-signed. Double-clicking
+     it the normal way will just show "cannot be opened because the developer
+     cannot be verified."
+
+Prefer to run from source instead? The tool is a normal Python script:
+`python3 "QC/utilities/OCR Audit/reviewOCR.py"` (requires Tkinter — see
+[Prerequisites](#prerequisites)).
+
+Maintainers publishing a new build should follow
+[QC/utilities/OCR Audit/RELEASING.md](QC/utilities/OCR%20Audit/RELEASING.md).
 
 ---
 
