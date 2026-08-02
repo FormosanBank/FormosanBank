@@ -1,0 +1,14 @@
+source_attachment	reported_xml_line	reported_text	reported_issue	expected_correction	source_locator	resolution	xml_id
+errorsSida.csv	79	(so) soa	Misformatted text	Separate source variants into distinct FORM tiers	Printed p. 315 / Vander Vlis Sideia / Two	Resolved: variants split; primary later corrected to "so" by OCR Review 2	S_vander_vlis_sideia_two
+errorsSida.csv	114	waligh	Skipped line(s)	Restore Sida Mouth "motaus" before the following Tooth row	Printed p. 316 / Sida / Mouth	Resolved: restored source-backed Mouth record	S_sida_mouth
+errorsSida.csv	154	rahpal, tiltil	Misformatted text	Separate source variants into distinct FORM tiers	Printed p. 318 / Sida / Foot	Resolved: original FORM "rahpal" and alternate FORM "tiltil"	S_sida_foot
+errorsFavorlang.csv	4	bahosa, sjam	Misformatted text	Separate source variants into distinct FORM tiers	Printed p. 316 / Favorlang / Man	Resolved: original FORM "bahosa" and alternate FORM "sjam"	S_favorlang_man
+errorsFavorlang.csv	14	tâu, ratta	Misformatted text	Separate source variants into distinct FORM tiers	Printed p. 316 / Favorlang / Hair	Resolved: original FORM "tâu" and alternate FORM "ratta"	S_favorlang_hair
+errorsFavorlang.csv	34	chârrina	Incorrect character: â	Use source acute accent á	Printed p. 316 / Favorlang / Ear	Resolved: FORM "chárrina"	S_favorlang_ear
+errorsFavorlang.csv	39	ranied, sabbacha	Misformatted text	Separate source variants into distinct FORM tiers	Printed p. 316 / Favorlang / Mouth	Resolved: original FORM "ranied" and alternate FORM "sabbacha"	S_favorlang_mouth
+errorsFavorlang.csv	59	bokkir, arribórri-bon	Misformatted text	Separate source variants into distinct FORM tiers	Printed p. 317 / Favorlang / Neck	Resolved: original FORM "bokkir" and alternate FORM "arribórribon"	S_favorlang_neck
+errorsFavorlang.csv	59	bokkir, arribórri-bon	Extra character: -	Remove source layout line-break hyphen	Printed p. 317 / Favorlang / Neck	Resolved: reconstructed alternate FORM "arribórribon"	S_favorlang_neck
+errorsFavorlang.csv	64	arrabis, zido	Misformatted text	Separate source variants into distinct FORM tiers	Printed p. 317 / Favorlang / Breast	Resolved: original FORM "arrabis" and alternate FORM "zido"	S_favorlang_breast
+errorsFavorlang.csv	69	châan	Incorrect character: â	Use source acute accent á	Printed p. 317 / Favorlang / Belly	Resolved: FORM "cháan"	S_favorlang_belly
+errorsFavorlang.csv	94	totto, tutta	Misformatted text	Separate source variants into distinct FORM tiers	Printed p. 318 / Favorlang / Heart	Resolved: original FORM "totto" and alternate FORM "tutta"	S_favorlang_heart
+OCR Review 2	80	(so)	Extra characters: parentheses	Remove parentheses from the primary FORM	Printed p. 315 / Vander Vlis Sideia / Two	Resolved: original FORM "so" and alternate FORM "soa"	S_vander_vlis_sideia_two
