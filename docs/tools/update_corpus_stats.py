@@ -111,6 +111,7 @@ CSV_TO_MD = {
     'NTUFormosanCorpus_corpora_stats.csv': 'NTUFormosanCorpus.md',
     'Nowbucyang-Truku-Thesis_corpora_stats.csv': 'nowbucyang-truku-thesis.md',
     'Safolu-Amis-Dictionary_corpora_stats.csv': 'safolu-amis-dictionary.md',
+    'Latham-1862_corpora_stats.csv': 'latham-1862.md',
 }
 
 # ---------------------------------------------------------------------------
