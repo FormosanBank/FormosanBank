@@ -16,6 +16,7 @@ Rule ID assignments for B9.4 (recorded in commit messages too):
   V115 = TR(W1) mismatched_quotes in S-standard FORM (SOFT)
   V116 = TR(W2) non_ascii_in_form across all tiers (SOFT)
   V120 = TR1 null symbol in S-level standard FORM (HARD)
+  V121 = TR2 parens or '/' in W- or M-level FORM (HARD)
   V122 = TR3 parens or '/' anywhere in FORM/TRANSL (SOFT)
   V123 = TR4 null in W/M std FORM ⇒ also in sister original (HARD)
   V124 = TR5 null in M FORM ⇒ also in parent W FORM AND in
@@ -573,33 +574,35 @@ def test_V120_null_in_W_level_FORM_does_not_trigger_V120(tmp_path):
 
 
 # -----------------------------------------------------------------------------
-# W5: parens/slashes in source forms are review-only
+# W5: TR2 (parens/slashes in W/M FORM, HARD) + TR3 (parens/slashes anywhere SOFT)
 # -----------------------------------------------------------------------------
 
 
-def test_parenthetical_morphology_in_W_FORM_is_soft(tmp_path):
-    """Parenthetical W morphology is valid source data, not a hard error."""
+def test_V121_parens_in_W_FORM_negative(tmp_path):
+    """V121 HARD: parens in W-level FORM is forbidden."""
     xml = (
         _TEXT_OPEN
         + '<S id="S1">'
         + '<FORM kindOf="original">orig</FORM>'
         + '<FORM kindOf="standard">stdtext</FORM>'
         + '<W id="W1">'
-        + '<FORM kindOf="original">\'arup(a)-ara</FORM>'
-        + '<FORM kindOf="standard">\'arup(a)-ara</FORM>'
+        + '<FORM kindOf="original">(hello)</FORM>'
+        + '<FORM kindOf="standard">hello</FORM>'
         + '</W>'
         + '</S>'
         + _TEXT_CLOSE
     )
     _write_xml(tmp_path, xml)
     proc = _run_validate_text(tmp_path)
-    assert proc.returncode == 0
-    assert "v121" not in combined_output(proc)
-    assert _has_text_finding(proc, ("v122", "paren or slash"))
+    assert _has_text_finding(
+        proc, ("v121", "parens in w", "parens in m", "paren in w/m", "slash in w/m")
+    ), (
+        f"expected V121 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
 
 
-def test_slash_and_parenthesis_in_M_FORM_are_soft(tmp_path):
-    """Slash and parenthesis notation in a morpheme remain review-only."""
+def test_V121_slash_in_M_FORM_negative(tmp_path):
+    """V121 HARD: forward slash in M-level FORM is forbidden."""
     xml = (
         _TEXT_OPEN
         + '<S id="S1">'
@@ -609,8 +612,8 @@ def test_slash_and_parenthesis_in_M_FORM_are_soft(tmp_path):
         + '<FORM kindOf="original">hello</FORM>'
         + '<FORM kindOf="standard">hello</FORM>'
         + '<M id="M1">'
-        + '<FORM kindOf="original">usa/bi(n</FORM>'
-        + '<FORM kindOf="standard">usa/bi(n</FORM>'
+        + '<FORM kindOf="original">a/b</FORM>'
+        + '<FORM kindOf="standard">a</FORM>'
         + '</M>'
         + '</W>'
         + '</S>'
@@ -618,9 +621,11 @@ def test_slash_and_parenthesis_in_M_FORM_are_soft(tmp_path):
     )
     _write_xml(tmp_path, xml)
     proc = _run_validate_text(tmp_path)
-    assert proc.returncode == 0
-    assert "v121" not in combined_output(proc)
-    assert _has_text_finding(proc, ("v122", "paren or slash"))
+    assert _has_text_finding(
+        proc, ("v121", "parens in w", "parens in m", "paren in w/m", "slash in w/m")
+    ), (
+        f"expected V121 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
 
 
 def test_V122_parens_in_S_standard_FORM_soft(tmp_path):
