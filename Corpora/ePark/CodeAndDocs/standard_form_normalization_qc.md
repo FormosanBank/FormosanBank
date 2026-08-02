@@ -63,6 +63,7 @@ The 25 retained non-ASCII dash rows are recorded in
 | XML validator | 436 files, no findings |
 | Text validator | 0 HARD findings |
 | Protected-content comparison | No unexpected differences across 436 files |
+| Public audio parity | Six licensed audio files for excluded non-surface rows are retained and declared in root `audio_extras.json` |
 
 The text validator still reports soft marker inventories, including V133 for
 the 5,482 retained hyphenated standards. That rule is a review signal. It does
