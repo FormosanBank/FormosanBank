@@ -6,48 +6,60 @@ from normalize_standard_forms import normalize_standard
 
 
 class NormalizeStandardTests(unittest.TestCase):
-    def test_removes_bunun_morpheme_boundaries(self) -> None:
+    def test_preserves_ambiguous_bunun_hyphens(self) -> None:
         value, _ = normalize_standard("Ma-aq tu siduq a ni-i tu papia ka?")
-        self.assertEqual(value, "Maaq tu siduq a nii tu papia ka?")
+        self.assertEqual(value, "Ma-aq tu siduq a ni-i tu papia ka?")
 
-    def test_selects_attached_lexical_alternative(self) -> None:
+    def test_preserves_thao_loanword_hyphens(self) -> None:
+        value, _ = normalize_standard("tian-sii")
+        self.assertEqual(value, "tian-sii")
+
+    def test_preserves_orthographic_underscore(self) -> None:
+        value, _ = normalize_standard("n_gyut m_yan ling_wa")
+        self.assertEqual(value, "n_gyut m_yan ling_wa")
+
+    def test_preserves_numeric_slashes(self) -> None:
+        value, _ = normalize_standard("lalu: Ciwas ryax: 2013/05/23")
+        self.assertEqual(value, "lalu: Ciwas ryax: 2013/05/23")
+
+    def test_preserves_attached_lexical_alternative(self) -> None:
         value, _ = normalize_standard("ya asa ka neyciyo/niciyo?")
-        self.assertEqual(value, "ya asa ka neyciyo?")
+        self.assertEqual(value, "ya asa ka neyciyo/niciyo?")
 
-    def test_selects_spaced_lexical_alternative(self) -> None:
+    def test_preserves_spaced_lexical_alternative(self) -> None:
         value, _ = normalize_standard("Smkuxul meuyas / matas patas ka hiya.")
-        self.assertEqual(value, "Smkuxul meuyas patas ka hiya.")
+        self.assertEqual(value, "Smkuxul meuyas / matas patas ka hiya.")
 
-    def test_selects_complete_clause_alternatives(self) -> None:
-        value, _ = normalize_standard(
-            "Mtilux karac saya hu? / Mcilux karac saya haw? "
-            "Uxay, msekuy saya. / Haray, mskuy ba saya."
-        )
-        self.assertEqual(
-            value, "Mtilux karac saya hu? Uxay, msekuy saya."
-        )
+    def test_substantive_parenthetical_is_preserved(self) -> None:
+        source = "sahuy linnglung (mmemung myulung na)"
+        value, _ = normalize_standard(source)
+        self.assertEqual(value, source)
 
-    def test_parenthetical_teaching_alternative_is_removed(self) -> None:
-        value, _ = normalize_standard(
-            "tanek kamo! kaminan kong! (maran kong! / kokay mo sinsi)"
-        )
-        self.assertEqual(value, "tanek kamo! kaminan kong!")
+    def test_short_parenthetical_is_preserved_without_review(self) -> None:
+        source = "sira pipia (piya) so kataotao"
+        value, _ = normalize_standard(source)
+        self.assertEqual(value, source)
+
+    def test_code_switched_cjk_is_preserved(self) -> None:
+        source = "anini sa pararid sa i 文化健康站 no niyaro' cingra"
+        value, _ = normalize_standard(source)
+        self.assertEqual(value, source)
 
     def test_explicit_template_surface_wins(self) -> None:
         value, reasons = normalize_standard("tam+人名", template_surface="tam")
         self.assertEqual(value, "tam")
         self.assertEqual(reasons, ("grammar-template",))
 
-    def test_complete_parenthetical_song_line_is_unwrapped(self) -> None:
-        value, _ = normalize_standard(
-            "(homayap 'ita:o Siboe, yata:ow Siboe i boe:oe)",
-            unwrap_outer_parentheses=True,
+    def test_splits_reviewed_puyuma_en_dash_boundary(self) -> None:
+        value, reasons = normalize_standard(
+            "na palribak–a trakubakuban.", split_puyuma_en_dash=True
         )
-        self.assertEqual(value, "homayap 'ita:o Siboe, yata:ow Siboe i boe:oe")
+        self.assertEqual(value, "na palribak a trakubakuban.")
+        self.assertEqual(reasons, ("Puyuma-en-dash-word-boundary",))
 
-    def test_unmatched_source_parenthesis_is_removed(self) -> None:
+    def test_unmatched_source_parenthesis_is_preserved_without_review(self) -> None:
         value, _ = normalize_standard("kaadihay (")
-        self.assertEqual(value, "kaadihay")
+        self.assertEqual(value, "kaadihay (")
 
 
 if __name__ == "__main__":

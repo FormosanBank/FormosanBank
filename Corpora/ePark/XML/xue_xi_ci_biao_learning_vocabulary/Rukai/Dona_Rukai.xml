@@ -3,7 +3,7 @@
     <S id="0">
         <FORM kindOf="original">nega / sesesane</FORM>
         <PHON kindOf="original">nəga / səsəsanə</PHON>
-        <FORM kindOf="standard">nega</FORM>
+        <FORM kindOf="standard">nega / sesesane</FORM>
         <PHON kindOf="standard">nəga / səsəsanə</PHON>
         <TRANSL xml:lang="zho">一</TRANSL>
         <TRANSL xml:lang="eng">one</TRANSL>
@@ -30,7 +30,7 @@
     <S id="3">
         <FORM kindOf="original">pate / thipate</FORM>
         <PHON kindOf="original">patə / θipatə</PHON>
-        <FORM kindOf="standard">pate</FORM>
+        <FORM kindOf="standard">pate / thipate</FORM>
         <PHON kindOf="standard">patə / θipatə</PHON>
         <TRANSL xml:lang="zho">四</TRANSL>
         <TRANSL xml:lang="eng">four</TRANSL>
@@ -84,7 +84,7 @@
     <S id="9">
         <FORM kindOf="original">poko/mangesale</FORM>
         <PHON kindOf="original">poko/maŋəsalə</PHON>
-        <FORM kindOf="standard">poko</FORM>
+        <FORM kindOf="standard">poko/mangesale</FORM>
         <PHON kindOf="standard">poko/maŋəsalə</PHON>
         <TRANSL xml:lang="zho">十</TRANSL>
         <TRANSL xml:lang="eng">ten</TRANSL>
@@ -399,7 +399,7 @@
     <S id="44">
         <FORM kindOf="original">ma'otiki / paamaw</FORM>
         <PHON kindOf="original">maʔotiki / paamaw</PHON>
-        <FORM kindOf="standard">ma'otiki</FORM>
+        <FORM kindOf="standard">ma'otiki / paamaw</FORM>
         <PHON kindOf="standard">maʔotiki / paamaw</PHON>
         <TRANSL xml:lang="zho">一半</TRANSL>
         <TRANSL xml:lang="eng">half</TRANSL>
@@ -579,7 +579,7 @@
     <S id="64">
         <FORM kindOf="original">nikwani / amiya</FORM>
         <PHON kindOf="original">nikwani / amija</PHON>
-        <FORM kindOf="standard">nikwani</FORM>
+        <FORM kindOf="standard">nikwani / amiya</FORM>
         <PHON kindOf="standard">nikwani / amija</PHON>
         <TRANSL xml:lang="zho">(像)這樣</TRANSL>
         <TRANSL xml:lang="eng">(like) this</TRANSL>
@@ -714,7 +714,7 @@
     <S id="79">
         <FORM kindOf="original">tatava/mao</FORM>
         <PHON kindOf="original">tatava/mao</PHON>
-        <FORM kindOf="standard">tatava</FORM>
+        <FORM kindOf="standard">tatava/mao</FORM>
         <PHON kindOf="standard">tatava/mao</PHON>
         <TRANSL xml:lang="zho">爸爸</TRANSL>
         <TRANSL xml:lang="eng">dad</TRANSL>
@@ -723,7 +723,7 @@
     <S id="80">
         <FORM kindOf="original">titina/niyaw</FORM>
         <PHON kindOf="original">titina/nijaw</PHON>
-        <FORM kindOf="standard">titina</FORM>
+        <FORM kindOf="standard">titina/niyaw</FORM>
         <PHON kindOf="standard">titina/nijaw</PHON>
         <TRANSL xml:lang="zho">媽媽</TRANSL>
         <TRANSL xml:lang="eng">mom</TRANSL>
@@ -741,7 +741,7 @@
     <S id="82">
         <FORM kindOf="original">tawmo/lawmomo</FORM>
         <PHON kindOf="original">tawmo/lawmomo</PHON>
-        <FORM kindOf="standard">tawmo</FORM>
+        <FORM kindOf="standard">tawmo/lawmomo</FORM>
         <PHON kindOf="standard">tawmo/lawmomo</PHON>
         <TRANSL xml:lang="zho">男性長輩(祖父；外公；岳父)</TRANSL>
         <TRANSL xml:lang="eng">male elder (grandfather; father-in-law)</TRANSL>
@@ -750,7 +750,7 @@
     <S id="83">
         <FORM kindOf="original">takawngo/lakawkawngo</FORM>
         <PHON kindOf="original">takawŋo/lakawkawŋo</PHON>
-        <FORM kindOf="standard">takawngo</FORM>
+        <FORM kindOf="standard">takawngo/lakawkawngo</FORM>
         <PHON kindOf="standard">takawŋo/lakawkawŋo</PHON>
         <TRANSL xml:lang="zho">女性長輩(祖母；外婆；岳母)</TRANSL>
         <TRANSL xml:lang="eng">female elder (grandmother; mother-in-law)</TRANSL>
@@ -876,7 +876,7 @@
     <S id="97">
         <FORM kindOf="original">kaka sa'oalay / kaka 'abayane</FORM>
         <PHON kindOf="original">kaka saʔoalaj / kaka ʔabajanə</PHON>
-        <FORM kindOf="standard">kaka sa'oalay 'abayane</FORM>
+        <FORM kindOf="standard">kaka sa'oalay / kaka 'abayane</FORM>
         <PHON kindOf="standard">kaka saʔoalaj / kaka ʔabajanə</PHON>
         <TRANSL xml:lang="zho">(哥哥；姊姊)通稱</TRANSL>
         <TRANSL xml:lang="eng">brother and sister</TRANSL>
@@ -903,7 +903,7 @@
     <S id="100">
         <FORM kindOf="original">lagili sa'oalay /lagili 'abayane</FORM>
         <PHON kindOf="original">lagili saʔoalaj /lagili ʔabajanə</PHON>
-        <FORM kindOf="standard">lagili sa'oalay 'abayane</FORM>
+        <FORM kindOf="standard">lagili sa'oalay /lagili 'abayane</FORM>
         <PHON kindOf="standard">lagili saʔoalaj /lagili ʔabajanə</PHON>
         <TRANSL xml:lang="zho">(弟弟；妹妹)通稱</TRANSL>
         <TRANSL xml:lang="eng">brother and sister</TRANSL>
@@ -930,7 +930,7 @@
     <S id="103">
         <FORM kindOf="original">lamama/mao</FORM>
         <PHON kindOf="original">lamama/mao</PHON>
-        <FORM kindOf="standard">lamama</FORM>
+        <FORM kindOf="standard">lamama/mao</FORM>
         <PHON kindOf="standard">lamama/mao</PHON>
         <TRANSL xml:lang="zho">(伯父；叔叔；舅舅)通稱</TRANSL>
         <TRANSL xml:lang="eng">uncle</TRANSL>
@@ -1119,7 +1119,7 @@
     <S id="124">
         <FORM kindOf="original">thabathabae / bawbaw</FORM>
         <PHON kindOf="original">θabaθabaə / bawbaw</PHON>
-        <FORM kindOf="standard">thabathabae</FORM>
+        <FORM kindOf="standard">thabathabae / bawbaw</FORM>
         <PHON kindOf="standard">θabaθabaə / bawbaw</PHON>
         <TRANSL xml:lang="zho">青年</TRANSL>
         <TRANSL xml:lang="eng">young people</TRANSL>
@@ -1452,7 +1452,7 @@
     <S id="161">
         <FORM kindOf="original">takacongavane/takadola'ane</FORM>
         <PHON kindOf="original">takaʦoŋavanə/takadolaʔanə</PHON>
-        <FORM kindOf="standard">takacongavane</FORM>
+        <FORM kindOf="standard">takacongavane/takadola'ane</FORM>
         <PHON kindOf="standard">takaʦoŋavanə/takadolaʔanə</PHON>
         <TRANSL xml:lang="zho">傷口</TRANSL>
         <TRANSL xml:lang="eng">wound</TRANSL>
@@ -2091,7 +2091,7 @@
     <S id="232">
         <FORM kindOf="original">lalalai / alasease</FORM>
         <PHON kindOf="original">lalalai / alasəasə</PHON>
-        <FORM kindOf="standard">lalalai</FORM>
+        <FORM kindOf="standard">lalalai / alasease</FORM>
         <PHON kindOf="standard">lalalai / alasəasə</PHON>
         <TRANSL xml:lang="zho">蟬</TRANSL>
         <TRANSL xml:lang="eng">cicada</TRANSL>
@@ -2154,7 +2154,7 @@
     <S id="239">
         <FORM kindOf="original">talwavai / ekepe</FORM>
         <PHON kindOf="original">talwavai / əkəpə</PHON>
-        <FORM kindOf="standard">talwavai</FORM>
+        <FORM kindOf="standard">talwavai / ekepe</FORM>
         <PHON kindOf="standard">talwavai / əkəpə</PHON>
         <TRANSL xml:lang="zho">老鷹</TRANSL>
         <TRANSL xml:lang="eng">eagle</TRANSL>
@@ -2334,7 +2334,7 @@
     <S id="259">
         <FORM kindOf="original">vengeay / hana</FORM>
         <PHON kindOf="original">vəŋəaj / hana</PHON>
-        <FORM kindOf="standard">vengeay</FORM>
+        <FORM kindOf="standard">vengeay / hana</FORM>
         <PHON kindOf="standard">vəŋəaj / hana</PHON>
         <TRANSL xml:lang="zho">花朵</TRANSL>
         <TRANSL xml:lang="eng">flower</TRANSL>
@@ -2901,7 +2901,7 @@
     <S id="322">
         <FORM kindOf="original">taisi/va'edre</FORM>
         <PHON kindOf="original">taisi/vaʔəɖə</PHON>
-        <FORM kindOf="standard">taisi</FORM>
+        <FORM kindOf="standard">taisi/va'edre</FORM>
         <PHON kindOf="standard">taisi/vaʔəɖə</PHON>
         <TRANSL xml:lang="zho">繩索</TRANSL>
         <TRANSL xml:lang="eng">rope</TRANSL>
@@ -3018,7 +3018,7 @@
     <S id="335">
         <FORM kindOf="original">sacalaebe/sakokobo</FORM>
         <PHON kindOf="original">saʦalaəbə/sakokobo</PHON>
-        <FORM kindOf="standard">sacalaebe</FORM>
+        <FORM kindOf="standard">sacalaebe/sakokobo</FORM>
         <PHON kindOf="standard">saʦalaəbə/sakokobo</PHON>
         <TRANSL xml:lang="zho">蓋子</TRANSL>
         <TRANSL xml:lang="eng">lid</TRANSL>
@@ -3072,7 +3072,7 @@
     <S id="341">
         <FORM kindOf="original">aai/ kapoco</FORM>
         <PHON kindOf="original">aai/ kapoʦo</PHON>
-        <FORM kindOf="standard">aai</FORM>
+        <FORM kindOf="standard">aai/ kapoco</FORM>
         <PHON kindOf="standard">aai/ kapoʦo</PHON>
         <TRANSL xml:lang="zho">網子</TRANSL>
         <TRANSL xml:lang="eng">net</TRANSL>
@@ -3549,7 +3549,7 @@
     <S id="394">
         <FORM kindOf="original">'ongsing/sangoapa'a</FORM>
         <PHON kindOf="original">ʔoŋsiŋ/saŋoapaʔa</PHON>
-        <FORM kindOf="standard">'ongsing</FORM>
+        <FORM kindOf="standard">'ongsing/sangoapa'a</FORM>
         <PHON kindOf="standard">ʔoŋsiŋ/saŋoapaʔa</PHON>
         <TRANSL xml:lang="zho">溫泉</TRANSL>
         <TRANSL xml:lang="eng">hot spring</TRANSL>
@@ -3873,7 +3873,7 @@
     <S id="430">
         <FORM kindOf="original">madraemedreme/ masongo</FORM>
         <PHON kindOf="original">maɖaəməɖəmə/ masoŋo</PHON>
-        <FORM kindOf="standard">madraemedreme</FORM>
+        <FORM kindOf="standard">madraemedreme/ masongo</FORM>
         <PHON kindOf="standard">maɖaəməɖəmə/ masoŋo</PHON>
         <TRANSL xml:lang="zho">天黑</TRANSL>
         <TRANSL xml:lang="eng">dusk</TRANSL>
@@ -3981,7 +3981,7 @@
     <S id="442">
         <FORM kindOf="original">tawbobokane/ bingzyo</FORM>
         <PHON kindOf="original">tawbobokanə/ biŋzjo</PHON>
-        <FORM kindOf="standard">tawbobokane</FORM>
+        <FORM kindOf="standard">tawbobokane/ bingzyo</FORM>
         <PHON kindOf="standard">tawbobokanə/ biŋzjo</PHON>
         <TRANSL xml:lang="zho">廁所</TRANSL>
         <TRANSL xml:lang="eng">toilet</TRANSL>
@@ -4062,7 +4062,7 @@
     <S id="451">
         <FORM kindOf="original">wa'aedre/ waavadre</FORM>
         <PHON kindOf="original">waʔaəɖə/ waavaɖə</PHON>
-        <FORM kindOf="standard">wa'aedre</FORM>
+        <FORM kindOf="standard">wa'aedre/ waavadre</FORM>
         <PHON kindOf="standard">waʔaəɖə/ waavaɖə</PHON>
         <TRANSL xml:lang="zho">搭建圍籬</TRANSL>
         <TRANSL xml:lang="eng">building a fence</TRANSL>
@@ -4224,7 +4224,7 @@
     <S id="469">
         <FORM kindOf="original">paelelanga /sapakathipatele</FORM>
         <PHON kindOf="original">paələlaŋa /sapakaθipatələ</PHON>
-        <FORM kindOf="standard">paelelanga</FORM>
+        <FORM kindOf="standard">paelelanga /sapakathipatele</FORM>
         <PHON kindOf="standard">paələlaŋa /sapakaθipatələ</PHON>
         <TRANSL xml:lang="zho">大後天</TRANSL>
         <TRANSL xml:lang="eng">three days later</TRANSL>
@@ -4278,7 +4278,7 @@
     <S id="475">
         <FORM kindOf="original">'abababawbaw / 'athathabathabae</FORM>
         <PHON kindOf="original">ʔabababawbaw / ʔaθaθabaθabaə</PHON>
-        <FORM kindOf="standard">'abababawbaw</FORM>
+        <FORM kindOf="standard">'abababawbaw / 'athathabathabae</FORM>
         <PHON kindOf="standard">ʔabababawbaw / ʔaθaθabaθabaə</PHON>
         <TRANSL xml:lang="zho">年輕時</TRANSL>
         <TRANSL xml:lang="eng">at an early age</TRANSL>
@@ -4431,7 +4431,7 @@
     <S id="492">
         <FORM kindOf="original">thacobo/aogane</FORM>
         <PHON kindOf="original">θaʦobo/aoganə</PHON>
-        <FORM kindOf="standard">thacobo</FORM>
+        <FORM kindOf="standard">thacobo/aogane</FORM>
         <PHON kindOf="standard">θaʦobo/aoganə</PHON>
         <TRANSL xml:lang="zho">頂</TRANSL>
         <TRANSL xml:lang="eng">top</TRANSL>
@@ -4827,7 +4827,7 @@
     <S id="536">
         <FORM kindOf="original">watako / waapidri</FORM>
         <PHON kindOf="original">watako / waapiɖi</PHON>
-        <FORM kindOf="standard">watako</FORM>
+        <FORM kindOf="standard">watako / waapidri</FORM>
         <PHON kindOf="standard">watako / waapiɖi</PHON>
         <TRANSL xml:lang="zho">編織</TRANSL>
         <TRANSL xml:lang="eng">weave</TRANSL>
@@ -5394,7 +5394,7 @@
     <S id="600">
         <FORM kindOf="original">tayceceenge/maycenge</FORM>
         <PHON kindOf="original">tajʦəʦəəŋə/majʦəŋə</PHON>
-        <FORM kindOf="standard">tayceceenge</FORM>
+        <FORM kindOf="standard">tayceceenge/maycenge</FORM>
         <PHON kindOf="standard">tajʦəʦəəŋə/majʦəŋə</PHON>
         <TRANSL xml:lang="zho">黑色</TRANSL>
         <TRANSL xml:lang="eng">black</TRANSL>
@@ -5484,7 +5484,7 @@
     <S id="610">
         <FORM kindOf="original">maamaw/amiya</FORM>
         <PHON kindOf="original">maamaw/amija</PHON>
-        <FORM kindOf="standard">maamaw</FORM>
+        <FORM kindOf="standard">maamaw/amiya</FORM>
         <PHON kindOf="standard">maamaw/amija</PHON>
         <TRANSL xml:lang="zho">相同</TRANSL>
         <TRANSL xml:lang="eng">identical</TRANSL>
@@ -5511,7 +5511,7 @@
     <S id="613">
         <FORM kindOf="original">e'e/esi</FORM>
         <PHON kindOf="original">əʔə/əsi</PHON>
-        <FORM kindOf="standard">e'e</FORM>
+        <FORM kindOf="standard">e'e/esi</FORM>
         <PHON kindOf="standard">əʔə/əsi</PHON>
         <TRANSL xml:lang="zho">是的</TRANSL>
         <TRANSL xml:lang="eng">yes</TRANSL>
@@ -5817,7 +5817,7 @@
     <S id="647">
         <FORM kindOf="original">'iga/paibate</FORM>
         <PHON kindOf="original">ʔiga/paibatə</PHON>
-        <FORM kindOf="standard">'iga</FORM>
+        <FORM kindOf="standard">'iga/paibate</FORM>
         <PHON kindOf="standard">ʔiga/paibatə</PHON>
         <TRANSL xml:lang="zho">讓開</TRANSL>
         <TRANSL xml:lang="eng">get out of the way</TRANSL>
@@ -5844,7 +5844,7 @@
     <S id="650">
         <FORM kindOf="original">maoo/mapisisi</FORM>
         <PHON kindOf="original">maoo/mapisisi</PHON>
-        <FORM kindOf="standard">maoo</FORM>
+        <FORM kindOf="standard">maoo/mapisisi</FORM>
         <PHON kindOf="standard">maoo/mapisisi</PHON>
         <TRANSL xml:lang="zho">(植物的果實)掉落</TRANSL>
         <TRANSL xml:lang="eng">drop</TRANSL>
@@ -5889,7 +5889,7 @@
     <S id="655">
         <FORM kindOf="original">wabolo / wadrodro'o</FORM>
         <PHON kindOf="original">wabolo / waɖoɖoʔo</PHON>
-        <FORM kindOf="standard">wabolo</FORM>
+        <FORM kindOf="standard">wabolo / wadrodro'o</FORM>
         <PHON kindOf="standard">wabolo / waɖoɖoʔo</PHON>
         <TRANSL xml:lang="zho">倒(水)</TRANSL>
         <TRANSL xml:lang="eng">pour</TRANSL>
@@ -6132,7 +6132,7 @@
     <S id="682">
         <FORM kindOf="original">'aangii (malri)</FORM>
         <PHON kindOf="original">ʔaaŋii (maɭi)</PHON>
-        <FORM kindOf="standard">'aangii</FORM>
+        <FORM kindOf="standard">'aangii (malri)</FORM>
         <PHON kindOf="standard">ʔaaŋii (maɭi)</PHON>
         <TRANSL xml:lang="zho">玩(球)</TRANSL>
         <TRANSL xml:lang="eng">play (e.g. ball)</TRANSL>
@@ -6654,7 +6654,7 @@
     <S id="740">
         <FORM kindOf="original">kyapisisi/ wapisisi</FORM>
         <PHON kindOf="original">kjapisisi/ wapisisi</PHON>
-        <FORM kindOf="standard">kyapisisi</FORM>
+        <FORM kindOf="standard">kyapisisi/ wapisisi</FORM>
         <PHON kindOf="standard">kjapisisi/ wapisisi</PHON>
         <TRANSL xml:lang="zho">採收</TRANSL>
         <TRANSL xml:lang="eng">harvest</TRANSL>
@@ -7500,7 +7500,7 @@
     <S id="835">
         <FORM kindOf="original">mathai/madaladalame</FORM>
         <PHON kindOf="original">maθai/madaladalamə</PHON>
-        <FORM kindOf="standard">mathai</FORM>
+        <FORM kindOf="standard">mathai/madaladalame</FORM>
         <PHON kindOf="standard">maθai/madaladalamə</PHON>
         <TRANSL xml:lang="zho">愛護</TRANSL>
         <TRANSL xml:lang="eng">love and care</TRANSL>
@@ -7563,7 +7563,7 @@
     <S id="842">
         <FORM kindOf="original">watangetangebe/watalawa</FORM>
         <PHON kindOf="original">wataŋətaŋəbə/watalawa</PHON>
-        <FORM kindOf="standard">watangetangebe</FORM>
+        <FORM kindOf="standard">watangetangebe/watalawa</FORM>
         <PHON kindOf="standard">wataŋətaŋəbə/watalawa</PHON>
         <TRANSL xml:lang="zho">浪費</TRANSL>
         <TRANSL xml:lang="eng">waste</TRANSL>
@@ -7572,7 +7572,7 @@
     <S id="843">
         <FORM kindOf="original">'iyacekale/'icekala</FORM>
         <PHON kindOf="original">ʔijaʦəkalə/ʔiʦəkala</PHON>
-        <FORM kindOf="standard">'iyacekale</FORM>
+        <FORM kindOf="standard">'iyacekale/'icekala</FORM>
         <PHON kindOf="standard">ʔijaʦəkalə/ʔiʦəkala</PHON>
         <TRANSL xml:lang="zho">起床</TRANSL>
         <TRANSL xml:lang="eng">get up</TRANSL>
@@ -7779,7 +7779,7 @@
     <S id="866">
         <FORM kindOf="original">wasenekete/seneketa</FORM>
         <PHON kindOf="original">wasənəkətə/sənəkəta</PHON>
-        <FORM kindOf="standard">wasenekete</FORM>
+        <FORM kindOf="standard">wasenekete/seneketa</FORM>
         <PHON kindOf="standard">wasənəkətə/sənəkəta</PHON>
         <TRANSL xml:lang="zho">收拾(祈使，如收拾東西)</TRANSL>
         <TRANSL xml:lang="eng">pack up (imperatives, as in pack up)</TRANSL>
@@ -7905,7 +7905,7 @@
     <S id="880">
         <FORM kindOf="original">wakacipi/wa'onoo</FORM>
         <PHON kindOf="original">wakaʦipi/waʔonoo</PHON>
-        <FORM kindOf="standard">wakacipi</FORM>
+        <FORM kindOf="standard">wakacipi/wa'onoo</FORM>
         <PHON kindOf="standard">wakaʦipi/waʔonoo</PHON>
         <TRANSL xml:lang="zho">剪(頭髮)</TRANSL>
         <TRANSL xml:lang="eng">cut (hair)</TRANSL>
@@ -7941,7 +7941,7 @@
     <S id="884">
         <FORM kindOf="original">wabaythi/pabaythi</FORM>
         <PHON kindOf="original">wabajθi/pabajθi</PHON>
-        <FORM kindOf="standard">wabaythi</FORM>
+        <FORM kindOf="standard">wabaythi/pabaythi</FORM>
         <PHON kindOf="standard">wabajθi/pabajθi</PHON>
         <TRANSL xml:lang="zho">替換(衣服)</TRANSL>
         <TRANSL xml:lang="eng">change (cloth)</TRANSL>
@@ -7959,7 +7959,7 @@
     <S id="886">
         <FORM kindOf="original">wasapa'a/wasekeseke</FORM>
         <PHON kindOf="original">wasapaʔa/wasəkəsəkə</PHON>
-        <FORM kindOf="standard">wasapa'a</FORM>
+        <FORM kindOf="standard">wasapa'a/wasekeseke</FORM>
         <PHON kindOf="standard">wasapaʔa/wasəkəsəkə</PHON>
         <TRANSL xml:lang="zho">鋪床</TRANSL>
         <TRANSL xml:lang="eng">make the bed</TRANSL>
@@ -8130,7 +8130,7 @@
     <S id="905">
         <FORM kindOf="original">madola'a/macongaw</FORM>
         <PHON kindOf="original">madolaʔa/maʦoŋaw</PHON>
-        <FORM kindOf="standard">madola'a</FORM>
+        <FORM kindOf="standard">madola'a/macongaw</FORM>
         <PHON kindOf="standard">madolaʔa/maʦoŋaw</PHON>
         <TRANSL xml:lang="zho">受傷</TRANSL>
         <TRANSL xml:lang="eng">wounded</TRANSL>
@@ -8220,7 +8220,7 @@
     <S id="915">
         <FORM kindOf="original">takacongavane / tay'asane</FORM>
         <PHON kindOf="original">takaʦoŋavanə / tajʔasanə</PHON>
-        <FORM kindOf="standard">takacongavane</FORM>
+        <FORM kindOf="standard">takacongavane / tay'asane</FORM>
         <PHON kindOf="standard">takaʦoŋavanə / tajʔasanə</PHON>
         <TRANSL xml:lang="zho">疤</TRANSL>
         <TRANSL xml:lang="eng">scar</TRANSL>
@@ -8517,7 +8517,7 @@
     <S id="948">
         <FORM kindOf="original">waleleape/patilikalikae</FORM>
         <PHON kindOf="original">walələapə/patilikalikaə</PHON>
-        <FORM kindOf="standard">waleleape</FORM>
+        <FORM kindOf="standard">waleleape/patilikalikae</FORM>
         <PHON kindOf="standard">walələapə/patilikalikaə</PHON>
         <TRANSL xml:lang="zho">明亮</TRANSL>
         <TRANSL xml:lang="eng">bright</TRANSL>
@@ -8526,7 +8526,7 @@
     <S id="949">
         <FORM kindOf="original">mamitee/mabotokolo</FORM>
         <PHON kindOf="original">mamitəə/mabotokolo</PHON>
-        <FORM kindOf="standard">mamitee</FORM>
+        <FORM kindOf="standard">mamitee/mabotokolo</FORM>
         <PHON kindOf="standard">mamitəə/mabotokolo</PHON>
         <TRANSL xml:lang="zho">胖(身形)</TRANSL>
         <TRANSL xml:lang="eng">fat</TRANSL>
@@ -8535,7 +8535,7 @@
     <S id="950">
         <FORM kindOf="original">mapacai/mala'o</FORM>
         <PHON kindOf="original">mapaʦai/malaʔo</PHON>
-        <FORM kindOf="standard">mapacai</FORM>
+        <FORM kindOf="standard">mapacai/mala'o</FORM>
         <PHON kindOf="standard">mapaʦai/malaʔo</PHON>
         <TRANSL xml:lang="zho">乾的</TRANSL>
         <TRANSL xml:lang="eng">dry</TRANSL>
@@ -8571,7 +8571,7 @@
     <S id="954">
         <FORM kindOf="original">aolaane / masopii</FORM>
         <PHON kindOf="original">aolaanə / masopii</PHON>
-        <FORM kindOf="standard">aolaane</FORM>
+        <FORM kindOf="standard">aolaane / masopii</FORM>
         <PHON kindOf="standard">aolaanə / masopii</PHON>
         <TRANSL xml:lang="zho">舊的</TRANSL>
         <TRANSL xml:lang="eng">old</TRANSL>
@@ -9057,7 +9057,7 @@
     <S id="1008">
         <FORM kindOf="original">wadrisidrisi/sadrisidrisi</FORM>
         <PHON kindOf="original">waɖisiɖisi/saɖisiɖisi</PHON>
-        <FORM kindOf="standard">wadrisidrisi</FORM>
+        <FORM kindOf="standard">wadrisidrisi/sadrisidrisi</FORM>
         <PHON kindOf="standard">waɖisiɖisi/saɖisiɖisi</PHON>
         <TRANSL xml:lang="zho">擦拭</TRANSL>
         <TRANSL xml:lang="eng">wipe</TRANSL>
@@ -9129,7 +9129,7 @@
     <S id="1016">
         <FORM kindOf="original">pa'ibo'ibo / pa'a'ibo</FORM>
         <PHON kindOf="original">paʔiboʔibo / paʔaʔibo</PHON>
-        <FORM kindOf="standard">pa'ibo'ibo</FORM>
+        <FORM kindOf="standard">pa'ibo'ibo / pa'a'ibo</FORM>
         <PHON kindOf="standard">paʔiboʔibo / paʔaʔibo</PHON>
         <TRANSL xml:lang="zho">混以某物</TRANSL>
         <TRANSL xml:lang="eng">mix sth. with sth.</TRANSL>
@@ -9174,7 +9174,7 @@
     <S id="1021">
         <FORM kindOf="original">watekepe/wateele</FORM>
         <PHON kindOf="original">watəkəpə/watəələ</PHON>
-        <FORM kindOf="standard">watekepe</FORM>
+        <FORM kindOf="standard">watekepe/wateele</FORM>
         <PHON kindOf="standard">watəkəpə/watəələ</PHON>
         <TRANSL xml:lang="zho">阻擋</TRANSL>
         <TRANSL xml:lang="eng">block</TRANSL>
@@ -9426,7 +9426,7 @@
     <S id="1049">
         <FORM kindOf="original">idoo / doiya</FORM>
         <PHON kindOf="original">idoo / doija</PHON>
-        <FORM kindOf="standard">idoo</FORM>
+        <FORM kindOf="standard">idoo / doiya</FORM>
         <PHON kindOf="standard">idoo / doija</PHON>
         <TRANSL xml:lang="zho">不可以</TRANSL>
         <TRANSL xml:lang="eng">can't</TRANSL>
@@ -9525,7 +9525,7 @@
     <S id="1060">
         <FORM kindOf="original">padodaw'o / wadodaw'o</FORM>
         <PHON kindOf="original">padodawʔo / wadodawʔo</PHON>
-        <FORM kindOf="standard">padodaw'o</FORM>
+        <FORM kindOf="standard">padodaw'o / wadodaw'o</FORM>
         <PHON kindOf="standard">padodawʔo / wadodawʔo</PHON>
         <TRANSL xml:lang="zho">立即</TRANSL>
         <TRANSL xml:lang="eng">immediately</TRANSL>
@@ -9543,7 +9543,7 @@
     <S id="1062">
         <FORM kindOf="original">kelea/ lawa/ no…la</FORM>
         <PHON kindOf="original">kələa/ lawa/ no*la</PHON>
-        <FORM kindOf="standard">kelea no…la</FORM>
+        <FORM kindOf="standard">kelea/ lawa/ no…la</FORM>
         <PHON kindOf="standard">kələa/ lawa/ no*la</PHON>
         <TRANSL xml:lang="zho">再</TRANSL>
         <TRANSL xml:lang="eng">again</TRANSL>
@@ -9660,7 +9660,7 @@
     <S id="1075">
         <FORM kindOf="original">layaasi/ nilavani</FORM>
         <PHON kindOf="original">lajaasi/ nilavani</PHON>
-        <FORM kindOf="standard">layaasi</FORM>
+        <FORM kindOf="standard">layaasi/ nilavani</FORM>
         <PHON kindOf="standard">lajaasi/ nilavani</PHON>
         <TRANSL xml:lang="zho">如果</TRANSL>
         <TRANSL xml:lang="eng">if</TRANSL>
@@ -9741,7 +9741,7 @@
     <S id="1084">
         <FORM kindOf="original">mya~/ka</FORM>
         <PHON kindOf="original">mja~/ka</PHON>
-        <FORM kindOf="standard">mya~</FORM>
+        <FORM kindOf="standard">mya~/ka</FORM>
         <PHON kindOf="standard">mja~/ka</PHON>
         <TRANSL xml:lang="zho">嗎</TRANSL>
         <TRANSL xml:lang="eng">(used in a question)</TRANSL>
@@ -9750,7 +9750,7 @@
     <S id="1085">
         <FORM kindOf="original">ka / ki /ko</FORM>
         <PHON kindOf="original">ka / ki /ko</PHON>
-        <FORM kindOf="standard">ka</FORM>
+        <FORM kindOf="standard">ka / ki /ko</FORM>
         <PHON kindOf="standard">ka / ki /ko</PHON>
         <TRANSL xml:lang="zho">主格標記</TRANSL>
         <TRANSL xml:lang="eng">main marker (in all ethnic languages)</TRANSL>
@@ -9759,7 +9759,7 @@
     <S id="1086">
         <FORM kindOf="original">ka / ki /ko/na</FORM>
         <PHON kindOf="original">ka / ki /ko/na</PHON>
-        <FORM kindOf="standard">ka</FORM>
+        <FORM kindOf="standard">ka / ki /ko/na</FORM>
         <PHON kindOf="standard">ka / ki /ko/na</PHON>
         <TRANSL xml:lang="zho">受格標記</TRANSL>
         <TRANSL xml:lang="eng">marked (in all ethnic languages)</TRANSL>
@@ -9777,7 +9777,7 @@
     <S id="1088">
         <FORM kindOf="original">'iyakay/nakay</FORM>
         <PHON kindOf="original">ʔijakaj/nakaj</PHON>
-        <FORM kindOf="standard">'iyakay</FORM>
+        <FORM kindOf="standard">'iyakay/nakay</FORM>
         <PHON kindOf="standard">ʔijakaj/nakaj</PHON>
         <TRANSL xml:lang="zho">在(這裡)</TRANSL>
         <TRANSL xml:lang="eng">in (here)</TRANSL>

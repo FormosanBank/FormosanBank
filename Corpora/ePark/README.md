@@ -237,19 +237,20 @@ quotes `’→'` in both FORM tiers (otherwise validate_text flags V110/V127/V13
    python ../FormosanBank/QC/cleaning/clean_xml.py --corpora_path Final_XML
 ```
 
-Then derive one MT-facing surface reading from source fields that contain
-morpheme boundaries, slash-ordered variants, parenthetical teaching variants,
-or grammar templates. The source notation remains unchanged in
-`FORM kindOf="original"`:
+Then apply the reviewed standard-tier repairs. Marker-only cleanup is unsafe in
+this corpus: hyphens can be orthographic, underscores can represent Atayal
+schwa, and slashes, parentheses, or CJK can be spoken or code-switched content.
+The script therefore resolves only the declared grammar templates and Puyuma
+en-dash word boundaries, plus the declared exclusions and technical fixes:
 
 ```bash
    python CodeAndDocs/normalize_standard_forms.py --xml-dir XML --apply
 ```
 
-The script changes direct `S/FORM[@kindOf="standard"]` text, plus two reviewed
-non-linguistic source artifacts identified in the script. It is deterministic
-and refuses to emit an empty standard. Run it once more without `--apply`; the
-expected result is `would change: 0 direct S-standard forms`.
+The source notation remains in `FORM kindOf="original"`. The script is
+deterministic and refuses to emit an empty standard. Run it once more without
+`--apply`; the expected result is
+`would change: 0 direct S-standard forms`.
 
 6. **More**
 

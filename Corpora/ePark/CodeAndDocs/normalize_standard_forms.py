@@ -1,11 +1,16 @@
 #!/usr/bin/env python3
-"""Derive one surface reading for each ePark sentence-level standard FORM.
+"""Apply reviewed ePark standard-form repairs without guessing boundaries.
 
-The ePark source preserves slash-ordered variants, parenthetical teaching
-alternatives, morphology templates, and explicit morpheme boundaries.  Those
-source strings stay in FORM[@kindOf="original"].  This script updates only the
-direct S/FORM[@kindOf="standard"] text, apart from two narrowly reviewed
-technical cleanups documented in ``TECHNICAL_SOURCE_FIXES``.
+The ePark source mixes alternatives, teaching notation, code-switching, and
+orthographic punctuation. Corpus-wide deletion of those markers is unsafe.
+This script therefore resolves only reviewed grammar templates and seven
+Puyuma en-dash word boundaries. It also performs the declared exclusions and
+technical fixes below.
+
+ASCII hyphens and underscores are deliberately preserved. Hyphens are part of
+the reviewed Bunun/Thao source orthographies, and underscore represents schwa
+in Atayal (among other source uses). Neither character can be removed safely by
+a corpus-wide rule.
 
 Run without --apply for a dry run.  A successful second dry run after applying
 must report zero changes.
@@ -14,20 +19,17 @@ must report zero changes.
 from __future__ import annotations
 
 import argparse
-import re
 from collections import Counter
 from pathlib import Path
 
 from lxml import etree
 
 
-CJK_RE = re.compile(r"[\u3400-\u4dbf\u4e00-\u9fff]+")
-PAREN_RE = re.compile(r"\([^()]*\)")
-SPACE_RE = re.compile(r"\s+")
-FULL_CLAUSE_ALT_RE = re.compile(r"(?<=[.!?])\s*/\s*")
-TOKEN_ALT_RE = re.compile(r"(?P<left>\S+?)\s*/\s*(?P<right>\S+)")
-TRAILING_PUNCT_RE = re.compile(r"([.!?,;:]+)$")
-ZERO_WIDTH_RE = re.compile("[\u200b\u200c\u200d\ufeff]")
+ZERO_WIDTH_CHARS = "\u200b\u200c\u200d\ufeff"
+
+
+def contains_cjk(text: str) -> bool:
+    return any("\u3400" <= char <= "\u9fff" for char in text)
 
 
 # The recordings for these vocabulary rows pronounce the listed primary form.
@@ -45,9 +47,10 @@ TEMPLATE_SURFACES = {
 }
 
 
-# These en dashes occur inside analyzed Puyuma words. Other non-ASCII dashes
-# are reviewed prose punctuation or sound notation and are intentionally kept.
-INTERNAL_EN_DASH_IDS = {
+# These en dashes separate a Puyuma word or particle from the preceding word.
+# Joining the two sides would invent unattested forms, so replace the boundary
+# with a space. Other non-ASCII dashes are retained as source punctuation.
+PUYUMA_EN_DASH_WORD_BOUNDARY_IDS = {
     ("wen_hua_pian_cultural_section/Puyuma/Nanwang_Puyuma.xml", value)
     for value in ("359", "364", "370", "375", "380", "428", "431")
 }
@@ -58,8 +61,22 @@ INTERNAL_EN_DASH_IDS = {
 # an MT-facing surface form and are excluded from the corpus. Their exact
 # source text remains recoverable in the checked-in source CSV/XML files.
 EXCLUDED_NON_SURFACE_IDS = {
-    ("ju_xing_pian_gao_zhong_sentence_patterns_senior_high/Bunun/Zhuoqun_Bunun.xml", "213_13232"),
-    ("ju_xing_pian_guo_zhong_sentence_patterns_junior_high/Bunun/Zhuoqun_Bunun.xml", "213_26506"),
+    (
+        "ju_xing_pian_gao_zhong_sentence_patterns_senior_high/Amis/Xiuguluan_Amis.xml",
+        "213_7614",
+    ),
+    (
+        "ju_xing_pian_gao_zhong_sentence_patterns_senior_high/Bunun/Zhuoqun_Bunun.xml",
+        "213_13232",
+    ),
+    (
+        "ju_xing_pian_guo_zhong_sentence_patterns_junior_high/Amis/Xiuguluan_Amis.xml",
+        "213_23036",
+    ),
+    (
+        "ju_xing_pian_guo_zhong_sentence_patterns_junior_high/Bunun/Zhuoqun_Bunun.xml",
+        "213_26506",
+    ),
     ("sheng_huo_hui_hua_pian_daily_conversation/Bunun/Zhuoqun_Bunun.xml", "748"),
     ("xue_xi_ci_biao_learning_vocabulary/Kanakanavu/Kanakanavu.xml", "520"),
     ("xue_xi_ci_biao_learning_vocabulary/Kanakanavu/Kanakanavu.xml", "563"),
@@ -73,23 +90,7 @@ EXCLUDED_NON_SURFACE_IDS = {
     ("xue_xi_ci_biao_learning_vocabulary/Truku/Truku.xml", "536"),
     ("xue_xi_ci_biao_learning_vocabulary/Truku/Truku.xml", "556"),
     ("xue_xi_ci_biao_learning_vocabulary/Yami/Yami.xml", "791"),
-    ("yue_du_shu_xie_pian_reading_writing/Amis/Hengchun_Amis.xml", "211"),
-    ("yue_du_shu_xie_pian_reading_writing/Atayal/YilanZeaol_Atayal.xml", "86"),
-    ("yue_du_shu_xie_pian_reading_writing/Kanakanavu/Kanakanavu.xml", "231"),
-    ("yue_du_shu_xie_pian_reading_writing/Kanakanavu/Kanakanavu.xml", "334"),
-    ("yue_du_shu_xie_pian_reading_writing/Kanakanavu/Kanakanavu.xml", "407"),
-    ("yue_du_shu_xie_pian_reading_writing/Paiwan/Central_Paiwan.xml", "26"),
-    ("yue_du_shu_xie_pian_reading_writing/Rukai/Dona_Rukai.xml", "7"),
-    ("yue_du_shu_xie_pian_reading_writing/Saisiyat/Saisiyat.xml", "41"),
-}
-
-
-# These are genuine Saisiyat song lines whose source presentation encloses the
-# complete line in parentheses. Keep the content and drop only the display
-# punctuation.
-UNWRAP_WHOLE_PAREN_IDS = {
-    ("wen_hua_pian_cultural_section/Saisiyat/Saisiyat.xml", str(value))
-    for value in range(380, 391)
+    ("yue_du_shu_xie_pian_reading_writing/Kanakanavu/Kanakanavu.xml", "249"),
 }
 
 
@@ -109,80 +110,18 @@ TECHNICAL_SOURCE_FIXES = {
 }
 
 
-def strip_parenthetical_alternatives(text: str) -> str:
-    previous = None
-    while text != previous:
-        previous = text
-        text = PAREN_RE.sub("", text)
-    return text
-
-
-def choose_first_slash_alternatives(text: str) -> str:
-    """Select the first source-ordered clause or lexical alternative."""
-    while match := FULL_CLAUSE_ALT_RE.search(text):
-        boundary = re.search(r"[.!?]", text[match.end() :])
-        if boundary is None:
-            text = text[: match.start()]
-            break
-        rejected_end = match.end() + boundary.end()
-        text = text[: match.start()] + text[rejected_end:]
-
-    def keep_left(match: re.Match[str]) -> str:
-        left = match.group("left")
-        right = match.group("right")
-        punctuation = TRAILING_PUNCT_RE.search(right)
-        if punctuation and not TRAILING_PUNCT_RE.search(left):
-            return left + punctuation.group(1)
-        return left
-
-    previous = None
-    while text != previous and "/" in text:
-        previous = text
-        text = TOKEN_ALT_RE.sub(keep_left, text)
-    return text.replace("/", "")
-
-
 def normalize_standard(
     text: str,
     *,
     template_surface: str | None = None,
-    remove_internal_en_dash: bool = False,
-    unwrap_outer_parentheses: bool = False,
+    split_puyuma_en_dash: bool = False,
 ) -> tuple[str, tuple[str, ...]]:
     if template_surface is not None:
         return template_surface, ("grammar-template",)
 
-    reasons: list[str] = []
-    normalized = text
-    if unwrap_outer_parentheses and normalized.startswith("(") and normalized.endswith(")"):
-        normalized = normalized[1:-1]
-        reasons.append("outer-display-parentheses")
-    if "(" in normalized or ")" in normalized:
-        normalized = strip_parenthetical_alternatives(normalized)
-        reasons.append("parenthetical-alternative")
-    if "(" in normalized or ")" in normalized:
-        normalized = normalized.replace("(", "").replace(")", "")
-        reasons.append("unmatched-parenthesis")
-    if "/" in normalized:
-        normalized = choose_first_slash_alternatives(normalized)
-        reasons.append("slash-alternative")
-    if "-" in normalized:
-        normalized = normalized.replace("-", "")
-        reasons.append("morpheme-boundary")
-    if "_" in normalized:
-        normalized = normalized.replace("_", "")
-        reasons.append("infix-placeholder")
-    if remove_internal_en_dash and "–" in normalized:
-        normalized = normalized.replace("–", "")
-        reasons.append("unicode-morpheme-boundary")
-    if CJK_RE.search(normalized):
-        normalized = CJK_RE.sub("", normalized)
-        reasons.append("inline-teaching-note")
-
-    normalized = SPACE_RE.sub(" ", normalized).strip()
-    normalized = re.sub(r"\s+([,.!?;:])", r"\1", normalized)
-    normalized = re.sub(r"([.!?])\1+", r"\1", normalized)
-    return normalized, tuple(reasons)
+    if split_puyuma_en_dash and "–" in text:
+        return text.replace("–", " "), ("Puyuma-en-dash-word-boundary",)
+    return text, ()
 
 
 def iter_xml_files(xml_dir: Path) -> list[Path]:
@@ -205,7 +144,9 @@ def apply_reviewed_source_fixes(
             changed = True
             reasons["technical-asterisk"] += 1
         elif action == "remove-zero-width" and element.text:
-            cleaned = ZERO_WIDTH_RE.sub("", element.text)
+            cleaned = element.text.translate(
+                {ord(char): None for char in ZERO_WIDTH_CHARS}
+            )
             if cleaned != element.text:
                 element.text = cleaned
                 changed = True
@@ -243,8 +184,7 @@ def process(xml_dir: Path, apply: bool) -> tuple[int, Counter[str]]:
             normalized, form_reasons = normalize_standard(
                 standard.text,
                 template_surface=TEMPLATE_SURFACES.get(key),
-                remove_internal_en_dash=key in INTERNAL_EN_DASH_IDS,
-                unwrap_outer_parentheses=key in UNWRAP_WHOLE_PAREN_IDS,
+                split_puyuma_en_dash=key in PUYUMA_EN_DASH_WORD_BOUNDARY_IDS,
             )
             if normalized == standard.text:
                 continue
@@ -268,11 +208,11 @@ def process(xml_dir: Path, apply: bool) -> tuple[int, Counter[str]]:
     return changed_forms, reasons
 
 
-def find_residuals(xml_dir: Path) -> Counter[str]:
+def inventory_retained_notation(xml_dir: Path) -> Counter[str]:
     parser = etree.XMLParser(remove_blank_text=False)
-    residuals: Counter[str] = Counter()
+    inventory: Counter[str] = Counter()
     markers = {
-        "-": "ASCII dash",
+        "-": "ASCII hyphen",
         "_": "underscore",
         "/": "slash",
         "+": "plus",
@@ -287,10 +227,12 @@ def find_residuals(xml_dir: Path) -> Counter[str]:
                 continue
             for marker, label in markers.items():
                 if marker in text:
-                    residuals[label] += 1
-            if CJK_RE.search(text):
-                residuals["CJK"] += 1
-    return residuals
+                    inventory[label] += 1
+            if "(" in text or ")" in text:
+                inventory["parenthesis"] += 1
+            if contains_cjk(text):
+                inventory["CJK"] += 1
+    return inventory
 
 
 def main() -> int:
@@ -307,13 +249,13 @@ def main() -> int:
         print(f"  {reason}: {count}")
 
     if args.apply:
-        residuals = find_residuals(args.xml_dir.resolve())
-        print("residual direct S-standard markers:")
-        if residuals:
-            for marker, count in sorted(residuals.items()):
+        inventory = inventory_retained_notation(args.xml_dir.resolve())
+        print("retained direct S-standard notation (review required):")
+        if inventory:
+            for marker, count in sorted(inventory.items()):
                 print(f"  {marker}: {count}")
-            return 1
-        print("  none")
+        else:
+            print("  none")
     return 0
 
 
