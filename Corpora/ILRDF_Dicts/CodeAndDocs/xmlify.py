@@ -4,6 +4,10 @@ from xml.dom import minidom
 import pickle
 import PyPDF2
 
+
+REQUIRED_SENTENCE_KEYS = ("Original", "Chinese", "File")
+
+
 def get_first_word(file_path):
     # Open the PDF
     with open(file_path, "rb") as pdf_file:
@@ -36,7 +40,7 @@ def getPickles(lang: str):
 
 def handleHelper(sent):
     # Check if sentence contains all necessary keys and return its components if valid
-    for key in ['Original', 'Chinese', 'File']:
+    for key in REQUIRED_SENTENCE_KEYS:
         if key not in sent.keys():
             return False
 
@@ -44,6 +48,10 @@ def handleHelper(sent):
     audio = sent['File']
     fr_tx = sent['Original']
     zh_tx = sent['Chinese']
+    if not isinstance(fr_tx, str) or not fr_tx.strip():
+        return False
+    if not isinstance(zh_tx, str) or not zh_tx.strip():
+        return False
     return [fr_tx, zh_tx, audio]
 
 
@@ -81,6 +89,9 @@ def wrapperXML(sent, root, count, seen, lang):
         else:
             seen.add(te)
             root.append(s)  # Add new entry to XML root
+    elif all(key in sent for key in REQUIRED_SENTENCE_KEYS):
+        # Keep later IDs stable when the upstream API has an empty sentence.
+        count += 1
     return count
 
 
