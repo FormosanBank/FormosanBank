@@ -14,9 +14,10 @@ name: audio-validation
 # Audio files are gitignored; this CI cannot validate the actual audio
 # binaries unless a corpus has an Audio/ directory checked in. XML QC
 # owns structural range validation. File existence, decoding, and silence
-# checks run only where local audio is actually available. The full-Corpora
-# baseline does NOT download audio (it would take too long) — see
-# run_audio_downloads.sh for the local workflow.
+# checks run only where local audio is actually available. Exact public
+# XML-to-Hugging-Face file parity and source permissions are enforced by
+# hf-audio-parity.yaml. The full-Corpora baseline does not download audio;
+# see run_audio_downloads.sh for the local workflow.
 
 on:
   pull_request:

@@ -132,18 +132,46 @@ Tkinter is included with the standard Python distribution for Windows. No additi
 Clone the repository and install dependencies.
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/FormosanBank/FormosanBank.git
 cd FormosanBank
-pip install -r requirements.txt
+python3 -m pip install -r requirements.txt
 ./run_audio_downloads.sh
 ```
 
-Note that `run_audio_downloads.sh` depends on having git, git-lfs, jq, and hf (the huggingface cli) installed. On a Mac, use:
+Audio associated with XML published in FormosanBank is public under the same
+license as the XML. No Hugging Face login, private repository access, `hf`
+CLI, or `jq` is required. Downloads use Git LFS's public batch transport and
+are pinned to the revisions in [`audio_sources.json`](audio_sources.json).
+Install Git LFS once if it is not already available:
 
 ```bash
-brew install git git-lfs jq
-pip install huggingface_hub[cli]  # This installs the 'hf' command
+# macOS
+brew install git-lfs
+
+# Debian/Ubuntu
+sudo apt-get install git-lfs
 ```
+
+To check every public dataset without downloading the audio, run:
+
+```bash
+./run_audio_downloads.sh --dry-run
+```
+
+Each corpus-level `download_audio_data.sh` uses the same manifest and can also
+be run independently. [`audio_permissions.json`](audio_permissions.json)
+records the publication status and XML license for each hosted audio source;
+[`AUDIO-PERMISSIONS.md`](AUDIO-PERMISSIONS.md) explains the publication rule.
+Raw audio from private development repositories stays private and is not
+licensed for reuse. [`audio_extras.json`](audio_extras.json) records public
+Hugging Face files intentionally retained even though the current XML does not
+reference them. The canonical datasets are collected in
+[Formosan Audio on Hugging Face](https://huggingface.co/collections/FormosanBank/formosan-audio-67c20fa45cd8f4d1a99647d4).
+
+The complete 21-dataset download is approximately 105.3 GiB. Allow at least
+120 GiB of free space for the temporary Git LFS checkout used while each
+dataset is installed. Interrupted transfers resume from
+`.audio-download-cache/`; successful datasets remove their cache automatically.
 
 ---
 
