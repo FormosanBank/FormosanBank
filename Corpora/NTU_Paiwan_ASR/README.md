@@ -56,6 +56,8 @@ This clones every `NTU_Paiwan_ASR_*` dataset into `Audio/` and then runs
 
 The Year-1 read-speech XML is reproduced from ELAN (`.eaf`) sources by the scripts in `CodeAndDocs/`
 (`main.py` → `add_dialect.py` → `add_citations.py` → standardize/`add_phonology` → `extract_audio_clips.py`).
+The ELAN builders emit `FORM kindOf="original"`; the standardization step then creates the
+`kindOf="standard"` comparison tier.
 
 The Year-2 read-speech and all spontaneous-speech XML are built from the raw ELAN sources by
 `CodeAndDocs/build_y2_and_spontaneous.py` (ELAN → FormosanBank XML, applying pseudonyms and the two-file
