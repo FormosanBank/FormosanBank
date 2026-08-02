@@ -24,19 +24,16 @@ class FakeFileLister:
 def _write_contract(
     root: Path,
     *,
-    permission_status: str = "verified_public",
-    evidence: list[dict] | None = None,
+    publication_status: str = "published_public",
+    xml_license: str = "CC BY-NC",
+    approval_record: str = "Basecamp corpus card",
 ) -> Path:
-    evidence_path = root / "Corpora/Test/README.md"
-    evidence_path.parent.mkdir(parents=True, exist_ok=True)
-    evidence_path.write_text("Permission granted.", encoding="utf-8")
-    if evidence is None:
-        evidence = [
-            {
-                "type": "repository",
-                "path": "Corpora/Test/README.md",
-            }
-        ]
+    xml_path = root / "Corpora/Test/XML/Amis/text.xml"
+    xml_path.parent.mkdir(parents=True, exist_ok=True)
+    xml_path.write_text(
+        f'<TEXT copyright="{xml_license}"><S /></TEXT>',
+        encoding="utf-8",
+    )
     (root / "extras.json").write_text(
         json.dumps({"schema_version": 1, "repositories": {}}),
         encoding="utf-8",
@@ -44,27 +41,33 @@ def _write_contract(
     (root / "permissions.json").write_text(
         json.dumps(
             {
-                "schema_version": 1,
+                "schema_version": 2,
                 "hf_organization": "FormosanBank",
                 "public_non_audio_datasets": ["FormosanBank/formosan-mt"],
                 "sources": [
                     {
                         "permission_id": "test-source",
                         "corpus": "Test",
-                        "status": permission_status,
+                        "status": publication_status,
                         "license": (
-                            "CC BY-NC"
-                            if permission_status == "verified_public"
+                            "CC BY-NC 4.0"
+                            if publication_status == "published_public"
                             else None
                         ),
-                        "basis": "Direct permission.",
-                        "evidence": evidence,
+                        "hf_license": (
+                            "cc-by-nc-4.0"
+                            if publication_status == "published_public"
+                            else "other"
+                        ),
+                        "basis": "Published XML and Basecamp approval.",
+                        "xml_path": "Corpora/Test/XML",
+                        "approval_record": approval_record,
                         "hf_repositories": [
                             {
                                 "repo_id": "FormosanBank/Test",
                                 "access": (
                                     "public"
-                                    if permission_status == "verified_public"
+                                    if publication_status == "published_public"
                                     else "private"
                                 ),
                             }
@@ -211,7 +214,7 @@ def test_contract_requires_pinned_commit_sha(tmp_path, monkeypatch):
         parity.load_contract(manifest)
 
 
-def test_contract_accepts_source_specific_permission_evidence(
+def test_contract_accepts_published_xml_license(
     tmp_path, monkeypatch
 ):
     monkeypatch.setattr(parity, "REPO_ROOT", tmp_path)
@@ -221,37 +224,40 @@ def test_contract_accepts_source_specific_permission_evidence(
 
     assert manifest["datasets"][0]["permission_id"] == "test-source"
     assert extras == {}
-    assert permissions["sources"][0]["status"] == "verified_public"
+    assert permissions["sources"][0]["status"] == "published_public"
 
 
-def test_contract_rejects_pending_permission_in_public_manifest(
+def test_contract_rejects_development_source_in_public_manifest(
     tmp_path, monkeypatch
 ):
     monkeypatch.setattr(parity, "REPO_ROOT", tmp_path)
     manifest_path = _write_contract(
         tmp_path,
-        permission_status="withheld_pending_permission",
+        publication_status="development_private",
     )
 
-    with pytest.raises(ValueError, match="not verified for public distribution"):
+    with pytest.raises(ValueError, match="is not published in FormosanBank"):
         parity.load_contract(manifest_path)
 
 
-def test_contract_requires_permission_evidence_inside_formosanbank(
+def test_contract_requires_xml_license_to_match_publication_license(
     tmp_path, monkeypatch
 ):
     monkeypatch.setattr(parity, "REPO_ROOT", tmp_path)
     manifest_path = _write_contract(
         tmp_path,
-        evidence=[
-            {
-                "type": "web",
-                "url": "https://example.com/license",
-            }
-        ],
+        xml_license="CC BY",
     )
 
-    with pytest.raises(ValueError, match="requires permission evidence in FormosanBank"):
+    with pytest.raises(ValueError, match="XML licenses.*do not match"):
+        parity.load_contract(manifest_path)
+
+
+def test_contract_requires_basecamp_approval_record(tmp_path, monkeypatch):
+    monkeypatch.setattr(parity, "REPO_ROOT", tmp_path)
+    manifest_path = _write_contract(tmp_path, approval_record="")
+
+    with pytest.raises(ValueError, match="requires an approval record"):
         parity.load_contract(manifest_path)
 
 
@@ -283,6 +289,7 @@ class FakeApi:
         assert full is True
         result = [
             FakeInfo("FormosanBank/Test"),
+            FakeInfo("FormosanBank/TestMirror"),
             FakeInfo("FormosanBank/formosan-mt"),
             FakeInfo("FormosanBank/Restricted", gated="manual"),
         ]
@@ -314,6 +321,15 @@ def test_hf_inventory_accepts_exact_public_allowlist():
     permissions = {
         "hf_organization": "FormosanBank",
         "public_non_audio_datasets": ["FormosanBank/formosan-mt"],
+        "sources": [
+            {
+                "status": "published_public",
+                "hf_repositories": [
+                    {"repo_id": "FormosanBank/Test"},
+                    {"repo_id": "FormosanBank/TestMirror"},
+                ],
+            }
+        ],
     }
 
     failures = parity.validate_hf_inventory(
@@ -330,6 +346,15 @@ def test_hf_inventory_rejects_unapproved_dataset_and_model_audio():
     permissions = {
         "hf_organization": "FormosanBank",
         "public_non_audio_datasets": ["FormosanBank/formosan-mt"],
+        "sources": [
+            {
+                "status": "published_public",
+                "hf_repositories": [
+                    {"repo_id": "FormosanBank/Test"},
+                    {"repo_id": "FormosanBank/TestMirror"},
+                ],
+            }
+        ],
     }
 
     failures = parity.validate_hf_inventory(

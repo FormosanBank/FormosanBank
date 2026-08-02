@@ -1,69 +1,53 @@
-# Audio Publication Permissions
+# Audio Publication Policy
 
-Hugging Face audio publication is approved source by source. A dataset may be
-public only when `audio_permissions.json` records either:
+FormosanBank uses the public repository as the publication boundary:
 
-1. a direct grant allowing FormosanBank to redistribute that source's audio; or
-2. an upstream license that explicitly covers the source audio and permits
-   redistribution.
+- If a corpus's XML is published under `Corpora/` in FormosanBank, its associated audio is public under the same license recorded in the XML.
+- Publication permission is recorded on the corresponding Basecamp corpus card.
+- Audio from a private development repository stays private and is not licensed for reuse.
+- When a development corpus is published into FormosanBank, its audio access and license must be updated at the same time.
 
-A generated XML `copyright` value, an accessible audio URL, a dataset-card
-license, or the general FormosanBank terms is not sufficient evidence. The
-central terms do not replace source rights.
+`audio_permissions.json` records this state for every FormosanBank Hugging Face audio repository. `audio_sources.json` lists the 21 canonical public datasets used by the download scripts. The 16 per-language ILRDF repositories are public compatibility mirrors, not additional canonical downloads.
 
-`audio_sources.json` is therefore an allowlist, not an inventory of everything
-ever uploaded. The validator rejects any public download source whose
-`permission_id` is absent, pending, lacks evidence, or does not name the exact
-Hugging Face repository.
+## License versions
 
-## Permission-verified public audio
+Use the latest version of the license named in the XML unless the publication permission comes from material already released under a specific Creative Commons version. In that case, retain the source's version.
 
-| Source | Permission basis in this repository | Source license recorded here | Hugging Face |
-| --- | --- | --- | --- |
-| Apay Tang / PARADISEC Taroko recordings | [Direct inclusion permission](Corpora/TangRecordingsOfTaroko/README.md) and [source-specific XML provenance](Corpora/TangRecordingsOfTaroko/XML/Truku/AIT1-002-1.xml) | CC BY-NC, version not specified | Public |
-| John Whitehorn / University of Cambridge collection | [Upstream collection record](Corpora/Whitehorn_Collection/README.md) and [item-specific audio provenance](Corpora/Whitehorn_Collection/XML/Paiwan/2_1144_side_a_whitehorn.xml) | CC BY-NC, version not specified | Public |
-| Wilang Yutas recordings | [Direct republication permission](Corpora/WilangYutasVideos/readme.md) and [CC BY-NC permission note](Corpora/WilangYutasVideos/CodeAndDocs/scripts/make_xml.py) | CC BY-NC, version not specified | Public |
+## Published audio
 
-These three repositories contain 3,215 audio files. The 36 files declared in
-`audio_extras.json` come from the same three permission scopes.
-
-## Withheld pending source-specific permission
-
-| Source | Why it is not public-downloadable | Current Hugging Face access |
+| Published XML | Audio license | Hugging Face repositories |
 | --- | --- | --- |
-| ILRDF dictionaries | The [official copyright notice](https://e-dictionary.ilrdf.org.tw/about?id=6c987092-47c7-ef11-bd58-00155db40116) requires permission outside its stated exceptions. The generated CC label is not independent evidence. | Private: aggregate plus 16 language repositories |
-| NTU Formosan Corpus grammar | No written audio redistribution grant was located. | Private |
-| NTU Formosan Corpus stories | No written audio redistribution grant was located. | Private |
-| NTU Paiwan ASR | No written audio redistribution grant was located. | Private: two processed repositories and one raw repository |
-| Paiwan Stories | No written audio redistribution grant was located. | Private |
-| Yedda Palemeq | Its processing script generates the license label; no independent redistribution grant was located. | Private |
-| ePark picture-book platform | The [official license](https://web.klokah.tw/creativeCommons/) contains exceptions for source-specific material, and the [official guide](https://web.klokah.tw/guide/) describes user recordings. Per-file coverage is unresolved. | Private |
-| ePark nine-level materials | Official-license exceptions have not been resolved per audio source. | Private |
-| ePark senior-high sentence patterns | Source files were supplied separately; no audio redistribution grant was located. | Private |
-| ePark junior-high sentence patterns | Official-license exceptions have not been resolved per audio source. | Manual gate |
-| ePark contextual materials | Official-license exceptions have not been resolved per audio source. | Manual gate |
-| ePark daily conversation | Official-license exceptions have not been resolved per audio source. | Manual gate |
-| ePark picture stories | Self-authored/source-specific exceptions have not been resolved per audio source. | Manual gate |
-| ePark cultural materials | Self-authored/source-specific exceptions have not been resolved per audio source. | Manual gate |
-| ePark vocabulary | Official-license exceptions have not been resolved per audio source. | Manual gate |
-| ePark reading and writing | Self-authored/source-specific exceptions have not been resolved per audio source. | Manual gate |
-| ePark essays | Self-authored/source-specific exceptions have not been resolved per audio source. | Manual gate |
-| Raw ePark package | Mixed sources have not received a file-level permission review. | Private |
+| ILRDF dictionaries | CC BY-NC 4.0 | Aggregate dataset plus 16 language mirrors |
+| NTU Formosan Corpus grammar | CC BY-NC 4.0 | Grammar dataset |
+| NTU Formosan Corpus stories | CC BY-NC 4.0 | Stories dataset |
+| NTU Paiwan ASR | CC BY 4.0 | Two published audio datasets |
+| Paiwan Stories | CC BY-NC 4.0 | One dataset; the three WAV files also remain in FormosanBank |
+| Apay Tang / PARADISEC Taroko recordings | CC BY-NC 4.0 | One dataset |
+| John Whitehorn / Cambridge recordings | CC BY-NC 4.0 | One dataset |
+| Wilang Yutas recordings | CC BY-NC 4.0 | One dataset |
+| Yedda Palemeq recordings | CC BY-NC 4.0 | One dataset |
+| ePark published topics | CC BY-NC-SA 4.0 | Eleven topic datasets |
 
-Manual-gated repositories require explicit owner approval before any file can be
-downloaded. They remain gated only because the Hugging Face organization cannot
-make more repositories private without exceeding its private-storage quota.
+The canonical download contains 525,770 audio files. Files listed in `audio_extras.json` belong to the same published corpora and use the same licenses.
 
-## Publication procedure
+## Private development audio
 
-Before making any additional audio public:
+These repositories remain private and are not licensed for reuse:
 
-1. Identify the exact source and rights holder for every audio file.
-2. Add the written grant or upstream audio license to the source's
-   `Corpora/<corpus>/README.md` or another stable source-specific record.
-3. Add or update the source entry in `audio_permissions.json`.
-4. Add the exact Hugging Face repository to `audio_sources.json`.
-5. Run `python QC/validation/validate_hf_audio.py` anonymously.
-6. Review the dataset card and publish only after the permission check passes.
+- `FormosanBank/NTU_Paiwan_Raw`
+- `FormosanBank/ePark3_Raw`
 
-If permission is unclear, the status remains `withheld_pending_permission`.
+Raw or working audio from any other private Formosan-X development repository follows the same rule.
+
+## Publishing a development corpus
+
+When a corpus moves from a private development repository into FormosanBank:
+
+1. Confirm publication approval on its Basecamp card.
+2. Add the final XML and its `copyright` license to `Corpora/<corpus>/`.
+3. Change the associated Hugging Face audio from private to public.
+4. Set the dataset-card license to match the XML, using the version rule above.
+5. Add the repository to `audio_permissions.json` and, if canonical, `audio_sources.json`.
+6. Run `python QC/validation/validate_hf_audio.py` anonymously.
+
+CI checks that published repositories are public, development repositories are private, and every canonical dataset matches its XML audio contract.

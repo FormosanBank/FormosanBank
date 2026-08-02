@@ -189,25 +189,8 @@ def main(argv: list[str] | None = None) -> int:
     try:
         if args.workers < 1:
             raise ValueError("--workers must be at least 1")
-        manifest, extras, permissions = load_contract(args.manifest)
-        try:
-            datasets = selected_datasets(manifest, args.corpus)
-        except ValueError:
-            withheld = [
-                source
-                for source in permissions["sources"]
-                if source["corpus"] == args.corpus
-                and source["status"] == "withheld_pending_permission"
-            ]
-            if not withheld:
-                raise
-            print(
-                f"Audio withheld for {args.corpus}: source-specific "
-                "redistribution permission is not verified. "
-                "See AUDIO-PERMISSIONS.md.",
-                file=sys.stderr,
-            )
-            return 3
+        manifest, extras, _ = load_contract(args.manifest)
+        datasets = selected_datasets(manifest, args.corpus)
         failures = validate_online(datasets, extras)
         if failures:
             print("\n".join(failures), file=sys.stderr)

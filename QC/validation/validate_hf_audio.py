@@ -45,6 +45,11 @@ def load_json(path: Path) -> dict:
     return value
 
 
+def license_family(value: str) -> str:
+    """Normalize spelling and omit the version for XML/license comparison."""
+    return " ".join(re.findall(r"[A-Z]+", value.upper()))
+
+
 def load_contract(
     manifest_path: Path,
 ) -> tuple[dict, dict[str, set[str]], dict]:
@@ -77,11 +82,13 @@ def load_contract(
 
     permissions_path = REPO_ROOT / manifest["permissions"]
     permissions = load_json(permissions_path)
-    if permissions.get("schema_version") != 1:
+    if permissions.get("schema_version") != 2:
         raise ValueError("unsupported audio-permissions schema")
     sources = permissions.get("sources")
     if not isinstance(sources, list) or not sources:
         raise ValueError("audio permissions sources must be a non-empty list")
+    if not all(isinstance(source, dict) for source in sources):
+        raise ValueError("audio permission sources must be objects")
     permission_ids = [source.get("permission_id") for source in sources]
     if len(permission_ids) != len(set(permission_ids)):
         raise ValueError("audio permission_id values must be unique")
@@ -92,40 +99,12 @@ def load_contract(
         if not isinstance(permission_id, str) or not permission_id:
             raise ValueError("audio permission_id must be a non-empty string")
         status = source.get("status")
-        if status not in {"verified_public", "withheld_pending_permission"}:
+        if status not in {"published_public", "development_private"}:
             raise ValueError(f"{permission_id}: invalid permission status {status!r}")
         if not isinstance(source.get("corpus"), str) or not source["corpus"]:
             raise ValueError(f"{permission_id}: corpus must be a non-empty string")
         if not isinstance(source.get("basis"), str) or not source["basis"]:
             raise ValueError(f"{permission_id}: basis must be a non-empty string")
-        evidence = source.get("evidence")
-        if not isinstance(evidence, list):
-            raise ValueError(f"{permission_id}: evidence must be a list")
-        repository_evidence = []
-        for item in evidence:
-            if not isinstance(item, dict):
-                raise ValueError(f"{permission_id}: evidence entries must be objects")
-            if item.get("type") == "repository":
-                path = item.get("path")
-                if not isinstance(path, str) or not path:
-                    raise ValueError(
-                        f"{permission_id}: repository evidence requires a path"
-                    )
-                if not (REPO_ROOT / path).is_file():
-                    raise ValueError(
-                        f"{permission_id}: permission evidence does not exist: {path}"
-                    )
-                repository_evidence.append(path)
-            elif item.get("type") == "web":
-                url = item.get("url")
-                if not isinstance(url, str) or not url.startswith("https://"):
-                    raise ValueError(
-                        f"{permission_id}: web evidence requires an HTTPS URL"
-                    )
-            else:
-                raise ValueError(
-                    f"{permission_id}: unknown evidence type {item.get('type')!r}"
-                )
         repositories = source.get("hf_repositories")
         if not isinstance(repositories, list) or not repositories:
             raise ValueError(
@@ -145,27 +124,50 @@ def load_contract(
                     f"{repo_id}: appears in multiple audio permission sources"
                 )
             permission_repo_ids.add(repo_id)
-            if access not in {"public", "private", "manual_gate"}:
+            if access not in {"public", "private"}:
                 raise ValueError(
                     f"{repo_id}: invalid Hugging Face access state {access!r}"
                 )
-            if status == "verified_public" and access != "public":
+            if status == "published_public" and access != "public":
                 raise ValueError(
-                    f"{permission_id}: verified repositories must be public"
+                    f"{permission_id}: published repositories must be public"
                 )
-            if status == "withheld_pending_permission" and access == "public":
+            if status == "development_private" and access != "private":
                 raise ValueError(
-                    f"{permission_id}: pending repositories cannot be public"
+                    f"{permission_id}: development repositories must be private"
                 )
-        if status == "verified_public":
+        if status == "published_public":
             if not isinstance(source.get("license"), str) or not source["license"]:
                 raise ValueError(
-                    f"{permission_id}: verified public source requires a license"
+                    f"{permission_id}: published source requires a license"
                 )
-            if not repository_evidence:
+            if not isinstance(source.get("hf_license"), str) or not source["hf_license"]:
                 raise ValueError(
-                    f"{permission_id}: verified public source requires "
-                    "permission evidence in FormosanBank"
+                    f"{permission_id}: published source requires an HF license id"
+                )
+            if not isinstance(source.get("approval_record"), str) or not source[
+                "approval_record"
+            ]:
+                raise ValueError(
+                    f"{permission_id}: published source requires an approval record"
+                )
+            xml_path = source.get("xml_path")
+            if not isinstance(xml_path, str) or not (REPO_ROOT / xml_path).is_dir():
+                raise ValueError(
+                    f"{permission_id}: published XML path does not exist: {xml_path}"
+                )
+            xml_files = sorted((REPO_ROOT / xml_path).rglob("*.xml"))
+            if not xml_files:
+                raise ValueError(f"{permission_id}: published XML path has no XML")
+            xml_licenses = {
+                license_family(ET.parse(path).getroot().get("copyright", ""))
+                for path in xml_files
+            }
+            expected_license = license_family(source["license"])
+            if xml_licenses != {expected_license}:
+                raise ValueError(
+                    f"{permission_id}: XML licenses {sorted(xml_licenses)!r} do not "
+                    f"match {source['license']!r}"
                 )
         source_by_id[permission_id] = source
 
@@ -178,10 +180,10 @@ def load_contract(
                 f"{repo_id}: permission_id {permission_id!r} is not in "
                 "audio_permissions.json"
             )
-        if source["status"] != "verified_public":
+        if source["status"] != "published_public":
             raise ValueError(
-                f"{repo_id}: permission source {permission_id!r} is not "
-                "verified for public distribution"
+                f"{repo_id}: source {permission_id!r} is not published in "
+                "FormosanBank"
             )
         public_repositories = {
             repository["repo_id"]
@@ -392,7 +394,7 @@ def validate_online(
 
 
 def validate_hf_inventory(manifest: dict, permissions: dict, api=None) -> list[str]:
-    """Reject unmanifested public datasets and committed audio in models/Spaces."""
+    """Enforce public published audio and private development audio on the Hub."""
     if api is None:
         from huggingface_hub import HfApi
 
@@ -405,13 +407,19 @@ def validate_hf_inventory(manifest: dict, permissions: dict, api=None) -> list[s
         if not getattr(item, "private", False) and not getattr(item, "gated", False)
     }
     manifested = {dataset["repo_id"] for dataset in manifest["datasets"]}
+    published = {
+        repository["repo_id"]
+        for source in permissions["sources"]
+        if source["status"] == "published_public"
+        for repository in source["hf_repositories"]
+    }
     public_non_audio = permissions.get("public_non_audio_datasets")
     if not isinstance(public_non_audio, list) or not all(
         isinstance(repo_id, str) and "/" in repo_id
         for repo_id in public_non_audio
     ):
         raise ValueError("public_non_audio_datasets must be a list of repo IDs")
-    allowed = manifested | set(public_non_audio)
+    allowed = published | set(public_non_audio)
 
     failures: list[str] = []
     failures.extend(
@@ -422,8 +430,14 @@ def validate_hf_inventory(manifest: dict, permissions: dict, api=None) -> list[s
     )
     failures.extend(
         format_delta(
-            "permissioned datasets not anonymously public",
-            manifested - public_datasets,
+            "published audio datasets not anonymously public",
+            published - public_datasets,
+        )
+    )
+    failures.extend(
+        format_delta(
+            "canonical audio datasets missing publication records",
+            manifested - published,
         )
     )
 

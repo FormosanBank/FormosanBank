@@ -1,8 +1,10 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "hf_organization": "FormosanBank",
   "policy": "AUDIO-PERMISSIONS.md",
-  "audit_date": "2026-07-29",
+  "audit_date": "2026-08-02",
+  "publication_rule": "Audio associated with XML published in FormosanBank uses the XML license. Audio for private development repositories stays private and is not licensed for reuse.",
+  "license_version_rule": "Use the latest license version unless the permission comes from material already published under a specific Creative Commons version.",
   "public_non_audio_datasets": [
     "FormosanBank/formosan-mt"
   ],
@@ -11,21 +13,13 @@
       "permission_id": "tang-taroko",
       "corpus": "TangRecordingsOfTaroko",
       "source": "Apay Tang recordings archived by PARADISEC",
-      "status": "verified_public",
-      "license": "CC BY-NC (version not specified by the source record)",
-      "basis": "Direct permission to include the audio in FormosanBank, with source-specific license and provenance recorded in the XML.",
-      "evidence": [
-        {
-          "type": "repository",
-          "path": "Corpora/TangRecordingsOfTaroko/README.md",
-          "note": "Records Prof. Apay Tang's agreement to include the audio in FormosanBank."
-        },
-        {
-          "type": "repository",
-          "path": "Corpora/TangRecordingsOfTaroko/XML/Truku/AIT1-002-1.xml",
-          "note": "Representative source record with PARADISEC provenance and CC BY-NC."
-        }
-      ],
+      "status": "published_public",
+      "license": "CC BY-NC 4.0",
+      "hf_license": "cc-by-nc-4.0",
+      "version_basis": "latest_version_per_publication_policy",
+      "basis": "The XML is published in FormosanBank. Audio uses the XML license, and publication approval is recorded on the corresponding Basecamp corpus card.",
+      "xml_path": "Corpora/TangRecordingsOfTaroko/XML",
+      "approval_record": "Corresponding FormosanBank corpus card in Basecamp",
       "hf_repositories": [
         {
           "repo_id": "FormosanBank/TangRecordingsOfTaroko",
@@ -37,26 +31,13 @@
       "permission_id": "whitehorn-cambridge",
       "corpus": "Whitehorn_Collection",
       "source": "John Whitehorn recordings in the University of Cambridge repository",
-      "status": "verified_public",
-      "license": "CC BY-NC (version not specified by the item records)",
-      "basis": "The hand-compiled FormosanBank records identify the upstream collection, item URLs, and the source-specific audio license.",
-      "evidence": [
-        {
-          "type": "repository",
-          "path": "Corpora/Whitehorn_Collection/README.md",
-          "note": "Identifies the upstream University of Cambridge collection."
-        },
-        {
-          "type": "repository",
-          "path": "Corpora/Whitehorn_Collection/XML/Paiwan/2_1144_side_a_whitehorn.xml",
-          "note": "Representative item record with upstream audio URL and CC-BY-NC."
-        },
-        {
-          "type": "web",
-          "url": "https://www.repository.cam.ac.uk/collections/1240188b-2f4c-401e-9372-58177440d9c6",
-          "note": "Official upstream collection."
-        }
-      ],
+      "status": "published_public",
+      "license": "CC BY-NC 4.0",
+      "hf_license": "cc-by-nc-4.0",
+      "version_basis": "latest_version_per_publication_policy",
+      "basis": "The XML is published in FormosanBank. Audio uses the XML license, and publication approval is recorded on the corresponding Basecamp corpus card.",
+      "xml_path": "Corpora/Whitehorn_Collection/XML",
+      "approval_record": "Corresponding FormosanBank corpus card in Basecamp",
       "hf_repositories": [
         {
           "repo_id": "FormosanBank/Whitehorn_Collection",
@@ -68,21 +49,13 @@
       "permission_id": "wilang-yutas",
       "corpus": "WilangYutasVideos",
       "source": "Wilang Yutas recordings",
-      "status": "verified_public",
-      "license": "CC BY-NC (version not specified by the permission record)",
-      "basis": "Direct permission to republish from Wilang Yutas's collaborator, 劉宇陽.",
-      "evidence": [
-        {
-          "type": "repository",
-          "path": "Corpora/WilangYutasVideos/readme.md",
-          "note": "Records the direct permission to republish."
-        },
-        {
-          "type": "repository",
-          "path": "Corpora/WilangYutasVideos/CodeAndDocs/scripts/make_xml.py",
-          "note": "Records that permission was granted under CC BY-NC for the source materials and channel."
-        }
-      ],
+      "status": "published_public",
+      "license": "CC BY-NC 4.0",
+      "hf_license": "cc-by-nc-4.0",
+      "version_basis": "latest_version_per_publication_policy",
+      "basis": "The XML is published in FormosanBank. Audio uses the XML license, and publication approval is recorded on the corresponding Basecamp corpus card.",
+      "xml_path": "Corpora/WilangYutasVideos/XML",
+      "approval_record": "Corresponding FormosanBank corpus card in Basecamp",
       "hf_repositories": [
         {
           "repo_id": "FormosanBank/YutasWilang",
@@ -94,48 +67,99 @@
       "permission_id": "ilrdf-dictionaries",
       "corpus": "ILRDF_Dicts",
       "source": "Indigenous Languages Research and Development Foundation dictionaries",
-      "status": "withheld_pending_permission",
-      "license": null,
-      "basis": "No source-specific redistribution grant was located. The official copyright notice requires permission outside its stated exceptions.",
-      "evidence": [
-        {
-          "type": "web",
-          "url": "https://e-dictionary.ilrdf.org.tw/about?id=6c987092-47c7-ef11-bd58-00155db40116",
-          "note": "Official dictionary copyright notice."
-        }
-      ],
+      "status": "published_public",
+      "license": "CC BY-NC 4.0",
+      "hf_license": "cc-by-nc-4.0",
+      "version_basis": "latest_version_per_publication_policy",
+      "basis": "The XML is published in FormosanBank. Audio uses the XML license, and publication approval is recorded on the corresponding Basecamp corpus card.",
+      "xml_path": "Corpora/ILRDF_Dicts/XML",
+      "approval_record": "Corresponding FormosanBank corpus card in Basecamp",
       "hf_repositories": [
-        {"repo_id": "FormosanBank/ILRDF_Dicts", "access": "private"},
-        {"repo_id": "FormosanBank/ILRDF_Dict_Amis", "access": "private"},
-        {"repo_id": "FormosanBank/ILRDF_Dict_Atayal", "access": "private"},
-        {"repo_id": "FormosanBank/ILRDF_Dict_Bunun", "access": "private"},
-        {"repo_id": "FormosanBank/ILRDF_Dict_Kanakanavu", "access": "private"},
-        {"repo_id": "FormosanBank/ILRDF_Dict_Kavalan", "access": "private"},
-        {"repo_id": "FormosanBank/ILRDF_Dict_Paiwan", "access": "private"},
-        {"repo_id": "FormosanBank/ILRDF_Dict_Puyuma", "access": "private"},
-        {"repo_id": "FormosanBank/ILRDF_Dict_Rukai", "access": "private"},
-        {"repo_id": "FormosanBank/ILRDF_Dict_Saaroa", "access": "private"},
-        {"repo_id": "FormosanBank/ILRDF_Dict_Saisiyat", "access": "private"},
-        {"repo_id": "FormosanBank/ILRDF_Dict_Sakizaya", "access": "private"},
-        {"repo_id": "FormosanBank/ILRDF_Dict_Seediq", "access": "private"},
-        {"repo_id": "FormosanBank/ILRDF_Dict_Thao", "access": "private"},
-        {"repo_id": "FormosanBank/ILRDF_Dict_Truku", "access": "private"},
-        {"repo_id": "FormosanBank/ILRDF_Dict_Tsou", "access": "private"},
-        {"repo_id": "FormosanBank/ILRDF_Dict_Yami", "access": "private"}
+        {
+          "repo_id": "FormosanBank/ILRDF_Dicts",
+          "access": "public"
+        },
+        {
+          "repo_id": "FormosanBank/ILRDF_Dict_Amis",
+          "access": "public"
+        },
+        {
+          "repo_id": "FormosanBank/ILRDF_Dict_Atayal",
+          "access": "public"
+        },
+        {
+          "repo_id": "FormosanBank/ILRDF_Dict_Bunun",
+          "access": "public"
+        },
+        {
+          "repo_id": "FormosanBank/ILRDF_Dict_Kanakanavu",
+          "access": "public"
+        },
+        {
+          "repo_id": "FormosanBank/ILRDF_Dict_Kavalan",
+          "access": "public"
+        },
+        {
+          "repo_id": "FormosanBank/ILRDF_Dict_Paiwan",
+          "access": "public"
+        },
+        {
+          "repo_id": "FormosanBank/ILRDF_Dict_Puyuma",
+          "access": "public"
+        },
+        {
+          "repo_id": "FormosanBank/ILRDF_Dict_Rukai",
+          "access": "public"
+        },
+        {
+          "repo_id": "FormosanBank/ILRDF_Dict_Saaroa",
+          "access": "public"
+        },
+        {
+          "repo_id": "FormosanBank/ILRDF_Dict_Saisiyat",
+          "access": "public"
+        },
+        {
+          "repo_id": "FormosanBank/ILRDF_Dict_Sakizaya",
+          "access": "public"
+        },
+        {
+          "repo_id": "FormosanBank/ILRDF_Dict_Seediq",
+          "access": "public"
+        },
+        {
+          "repo_id": "FormosanBank/ILRDF_Dict_Thao",
+          "access": "public"
+        },
+        {
+          "repo_id": "FormosanBank/ILRDF_Dict_Truku",
+          "access": "public"
+        },
+        {
+          "repo_id": "FormosanBank/ILRDF_Dict_Tsou",
+          "access": "public"
+        },
+        {
+          "repo_id": "FormosanBank/ILRDF_Dict_Yami",
+          "access": "public"
+        }
       ]
     },
     {
       "permission_id": "ntu-formosan-grammar",
       "corpus": "NTUFormosanCorpus",
       "source": "NTU Formosan Corpus grammar recordings",
-      "status": "withheld_pending_permission",
-      "license": null,
-      "basis": "No source-specific written grant authorizing audio redistribution on Hugging Face was located.",
-      "evidence": [],
+      "status": "published_public",
+      "license": "CC BY-NC 4.0",
+      "hf_license": "cc-by-nc-4.0",
+      "version_basis": "latest_version_per_publication_policy",
+      "basis": "The XML is published in FormosanBank. Audio uses the XML license, and publication approval is recorded on the corresponding Basecamp corpus card.",
+      "xml_path": "Corpora/NTUFormosanCorpus/XML/Grammar",
+      "approval_record": "Corresponding FormosanBank corpus card in Basecamp",
       "hf_repositories": [
         {
           "repo_id": "FormosanBank/NTUFormosanCorpus_Grammar",
-          "access": "private"
+          "access": "public"
         }
       ]
     },
@@ -143,43 +167,57 @@
       "permission_id": "ntu-formosan-stories",
       "corpus": "NTUFormosanCorpus",
       "source": "NTU Formosan Corpus story recordings",
-      "status": "withheld_pending_permission",
-      "license": null,
-      "basis": "No source-specific written grant authorizing audio redistribution on Hugging Face was located.",
-      "evidence": [],
+      "status": "published_public",
+      "license": "CC BY-NC 4.0",
+      "hf_license": "cc-by-nc-4.0",
+      "version_basis": "latest_version_per_publication_policy",
+      "basis": "The XML is published in FormosanBank. Audio uses the XML license, and publication approval is recorded on the corresponding Basecamp corpus card.",
+      "xml_path": "Corpora/NTUFormosanCorpus/XML/Stories",
+      "approval_record": "Corresponding FormosanBank corpus card in Basecamp",
       "hf_repositories": [
         {
           "repo_id": "FormosanBank/NTUFormosanCorpus_Stories",
-          "access": "private"
+          "access": "public"
         }
       ]
     },
     {
       "permission_id": "ntu-paiwan-asr",
       "corpus": "NTU_Paiwan_ASR",
-      "source": "NTU Paiwan ASR recordings",
-      "status": "withheld_pending_permission",
-      "license": null,
-      "basis": "No source-specific written grant authorizing audio redistribution on Hugging Face was located.",
-      "evidence": [],
+      "source": "Published NTU Paiwan ASR recordings",
+      "status": "published_public",
+      "license": "CC BY 4.0",
+      "hf_license": "cc-by-4.0",
+      "version_basis": "latest_version_per_publication_policy",
+      "basis": "The XML is published in FormosanBank. Audio uses the XML license, and publication approval is recorded on the corresponding Basecamp corpus card.",
+      "xml_path": "Corpora/NTU_Paiwan_ASR/XML",
+      "approval_record": "Corresponding FormosanBank corpus card in Basecamp",
       "hf_repositories": [
-        {"repo_id": "FormosanBank/NTU_Paiwan_ASR_1", "access": "private"},
-        {"repo_id": "FormosanBank/NTU_Paiwan_ASR_Y2", "access": "private"},
-        {"repo_id": "FormosanBank/NTU_Paiwan_Raw", "access": "private"}
+        {
+          "repo_id": "FormosanBank/NTU_Paiwan_ASR_1",
+          "access": "public"
+        },
+        {
+          "repo_id": "FormosanBank/NTU_Paiwan_ASR_Y2",
+          "access": "public"
+        }
       ]
     },
     {
       "permission_id": "paiwan-stories",
       "corpus": "Paiwan_Stories",
       "source": "Paiwan Stories recordings",
-      "status": "withheld_pending_permission",
-      "license": null,
-      "basis": "No source-specific written grant authorizing audio redistribution on Hugging Face was located.",
-      "evidence": [],
+      "status": "published_public",
+      "license": "CC BY-NC 4.0",
+      "hf_license": "cc-by-nc-4.0",
+      "version_basis": "latest_version_per_publication_policy",
+      "basis": "The XML is published in FormosanBank. Audio uses the XML license, and publication approval is recorded on the corresponding Basecamp corpus card.",
+      "xml_path": "Corpora/Paiwan_Stories/XML",
+      "approval_record": "Corresponding FormosanBank corpus card in Basecamp",
       "hf_repositories": [
         {
           "repo_id": "FormosanBank/Paiwan_Stories",
-          "access": "private"
+          "access": "public"
         }
       ]
     },
@@ -187,20 +225,17 @@
       "permission_id": "yedda-palemeq",
       "corpus": "YeddaPalemeqBlog",
       "source": "Yedda Palemeq blog recordings",
-      "status": "withheld_pending_permission",
-      "license": null,
-      "basis": "The XML generator assigns a license label, but no independent source-specific redistribution grant was located.",
-      "evidence": [
-        {
-          "type": "repository",
-          "path": "Corpora/YeddaPalemeqBlog/CodeAndDocs/analyze_blog_structure.py",
-          "note": "The license label is generated by this script and is not treated as permission evidence."
-        }
-      ],
+      "status": "published_public",
+      "license": "CC BY-NC 4.0",
+      "hf_license": "cc-by-nc-4.0",
+      "version_basis": "source_version",
+      "basis": "The XML is published in FormosanBank. Audio uses the XML license, and publication approval is recorded on the corresponding Basecamp corpus card.",
+      "xml_path": "Corpora/YeddaPalemeqBlog/XML",
+      "approval_record": "Corresponding FormosanBank corpus card in Basecamp",
       "hf_repositories": [
         {
           "repo_id": "FormosanBank/YeddaPalemeqBlog_Paiwan",
-          "access": "private"
+          "access": "public"
         }
       ]
     },
@@ -208,169 +243,228 @@
       "permission_id": "epark-picture-book",
       "corpus": "ePark",
       "source": "ePark picture-book platform",
-      "status": "withheld_pending_permission",
-      "license": null,
-      "basis": "The official site license has source-specific exceptions, including self-authored and individualized audiovisual works; per-file coverage has not been verified.",
-      "evidence": [
-        {"type": "web", "url": "https://web.klokah.tw/creativeCommons/", "note": "Official license and exceptions."},
-        {"type": "web", "url": "https://web.klokah.tw/guide/", "note": "Official guide describes user recordings and customization."}
-      ],
+      "status": "published_public",
+      "license": "CC BY-NC-SA 4.0",
+      "hf_license": "cc-by-nc-sa-4.0",
+      "version_basis": "source_version",
+      "basis": "The XML is published in FormosanBank. Audio uses the XML license, and publication approval is recorded on the corresponding Basecamp corpus card.",
+      "xml_path": "Corpora/ePark/XML/hui_ben_ping_tai_picture_book_platform",
+      "approval_record": "Corresponding FormosanBank corpus card in Basecamp",
       "hf_repositories": [
-        {"repo_id": "FormosanBank/ePark_hui_ben_ping_tai_picture_book_platform", "access": "private"}
+        {
+          "repo_id": "FormosanBank/ePark_hui_ben_ping_tai_picture_book_platform",
+          "access": "public"
+        }
       ]
     },
     {
       "permission_id": "epark-nine-level",
       "corpus": "ePark",
       "source": "ePark nine-level materials",
-      "status": "withheld_pending_permission",
-      "license": null,
-      "basis": "The official site license has source-specific exceptions; per-file audio coverage has not been verified.",
-      "evidence": [
-        {"type": "web", "url": "https://web.klokah.tw/creativeCommons/", "note": "Official license and exceptions."}
-      ],
+      "status": "published_public",
+      "license": "CC BY-NC-SA 4.0",
+      "hf_license": "cc-by-nc-sa-4.0",
+      "version_basis": "source_version",
+      "basis": "The XML is published in FormosanBank. Audio uses the XML license, and publication approval is recorded on the corresponding Basecamp corpus card.",
+      "xml_path": "Corpora/ePark/XML/jiu_jie_jiao_cai_nine_level_materials",
+      "approval_record": "Corresponding FormosanBank corpus card in Basecamp",
       "hf_repositories": [
-        {"repo_id": "FormosanBank/ePark_jiu_jie_jiao_cai_nine_level_materials", "access": "private"}
+        {
+          "repo_id": "FormosanBank/ePark_jiu_jie_jiao_cai_nine_level_materials",
+          "access": "public"
+        }
       ]
     },
     {
       "permission_id": "epark-senior-high",
       "corpus": "ePark",
-      "source": "ePark senior-high sentence-pattern materials",
-      "status": "withheld_pending_permission",
-      "license": null,
-      "basis": "The source files were supplied separately and no source-specific audio redistribution grant was located.",
-      "evidence": [
-        {"type": "web", "url": "https://web.klokah.tw/creativeCommons/", "note": "Official license and exceptions."}
-      ],
+      "source": "ePark senior-high sentence patterns",
+      "status": "published_public",
+      "license": "CC BY-NC-SA 4.0",
+      "hf_license": "cc-by-nc-sa-4.0",
+      "version_basis": "source_version",
+      "basis": "The XML is published in FormosanBank. Audio uses the XML license, and publication approval is recorded on the corresponding Basecamp corpus card.",
+      "xml_path": "Corpora/ePark/XML/ju_xing_pian_gao_zhong_sentence_patterns_senior_high",
+      "approval_record": "Corresponding FormosanBank corpus card in Basecamp",
       "hf_repositories": [
-        {"repo_id": "FormosanBank/ePark_ju_xing_pian_gao_zhong_sentence_patterns_senior_high", "access": "private"}
+        {
+          "repo_id": "FormosanBank/ePark_ju_xing_pian_gao_zhong_sentence_patterns_senior_high",
+          "access": "public"
+        }
       ]
     },
     {
       "permission_id": "epark-junior-high",
       "corpus": "ePark",
-      "source": "ePark junior-high sentence-pattern materials",
-      "status": "withheld_pending_permission",
-      "license": null,
-      "basis": "The official site license has source-specific exceptions; per-file audio coverage has not been verified.",
-      "evidence": [
-        {"type": "web", "url": "https://web.klokah.tw/creativeCommons/", "note": "Official license and exceptions."}
-      ],
+      "source": "ePark junior-high sentence patterns",
+      "status": "published_public",
+      "license": "CC BY-NC-SA 4.0",
+      "hf_license": "cc-by-nc-sa-4.0",
+      "version_basis": "source_version",
+      "basis": "The XML is published in FormosanBank. Audio uses the XML license, and publication approval is recorded on the corresponding Basecamp corpus card.",
+      "xml_path": "Corpora/ePark/XML/ju_xing_pian_guo_zhong_sentence_patterns_junior_high",
+      "approval_record": "Corresponding FormosanBank corpus card in Basecamp",
       "hf_repositories": [
-        {"repo_id": "FormosanBank/ePark_ju_xing_pian_guo_zhong_sentence_patterns_junior_high", "access": "manual_gate"}
+        {
+          "repo_id": "FormosanBank/ePark_ju_xing_pian_guo_zhong_sentence_patterns_junior_high",
+          "access": "public"
+        }
       ]
     },
     {
       "permission_id": "epark-contextual",
       "corpus": "ePark",
       "source": "ePark contextual indigenous-language materials",
-      "status": "withheld_pending_permission",
-      "license": null,
-      "basis": "The official site license has source-specific exceptions; per-file audio coverage has not been verified.",
-      "evidence": [
-        {"type": "web", "url": "https://web.klokah.tw/creativeCommons/", "note": "Official license and exceptions."}
-      ],
+      "status": "published_public",
+      "license": "CC BY-NC-SA 4.0",
+      "hf_license": "cc-by-nc-sa-4.0",
+      "version_basis": "source_version",
+      "basis": "The XML is published in FormosanBank. Audio uses the XML license, and publication approval is recorded on the corresponding Basecamp corpus card.",
+      "xml_path": "Corpora/ePark/XML/qing_jing_zu_yu_contextual_indigenous_language",
+      "approval_record": "Corresponding FormosanBank corpus card in Basecamp",
       "hf_repositories": [
-        {"repo_id": "FormosanBank/ePark_qing_jing_zu_yu_contextual_indigenous_language", "access": "manual_gate"}
+        {
+          "repo_id": "FormosanBank/ePark_qing_jing_zu_yu_contextual_indigenous_language",
+          "access": "public"
+        }
       ]
     },
     {
       "permission_id": "epark-daily-conversation",
       "corpus": "ePark",
       "source": "ePark daily-conversation materials",
-      "status": "withheld_pending_permission",
-      "license": null,
-      "basis": "The official site license has source-specific exceptions; per-file audio coverage has not been verified.",
-      "evidence": [
-        {"type": "web", "url": "https://web.klokah.tw/creativeCommons/", "note": "Official license and exceptions."}
-      ],
+      "status": "published_public",
+      "license": "CC BY-NC-SA 4.0",
+      "hf_license": "cc-by-nc-sa-4.0",
+      "version_basis": "source_version",
+      "basis": "The XML is published in FormosanBank. Audio uses the XML license, and publication approval is recorded on the corresponding Basecamp corpus card.",
+      "xml_path": "Corpora/ePark/XML/sheng_huo_hui_hua_pian_daily_conversation",
+      "approval_record": "Corresponding FormosanBank corpus card in Basecamp",
       "hf_repositories": [
-        {"repo_id": "FormosanBank/ePark_sheng_huo_hui_hua_pian_daily_conversation", "access": "manual_gate"}
+        {
+          "repo_id": "FormosanBank/ePark_sheng_huo_hui_hua_pian_daily_conversation",
+          "access": "public"
+        }
       ]
     },
     {
       "permission_id": "epark-picture-story",
       "corpus": "ePark",
       "source": "ePark picture-story materials",
-      "status": "withheld_pending_permission",
-      "license": null,
-      "basis": "The official site license has source-specific exceptions, including self-authored materials; per-file audio coverage has not been verified.",
-      "evidence": [
-        {"type": "web", "url": "https://web.klokah.tw/creativeCommons/", "note": "Official license and exceptions."}
-      ],
+      "status": "published_public",
+      "license": "CC BY-NC-SA 4.0",
+      "hf_license": "cc-by-nc-sa-4.0",
+      "version_basis": "source_version",
+      "basis": "The XML is published in FormosanBank. Audio uses the XML license, and publication approval is recorded on the corresponding Basecamp corpus card.",
+      "xml_path": "Corpora/ePark/XML/tu_hua_gu_shi_pian_picture_story",
+      "approval_record": "Corresponding FormosanBank corpus card in Basecamp",
       "hf_repositories": [
-        {"repo_id": "FormosanBank/ePark_tu_hua_gu_shi_pian_picture_story", "access": "manual_gate"}
+        {
+          "repo_id": "FormosanBank/ePark_tu_hua_gu_shi_pian_picture_story",
+          "access": "public"
+        }
       ]
     },
     {
       "permission_id": "epark-cultural",
       "corpus": "ePark",
       "source": "ePark cultural-section materials",
-      "status": "withheld_pending_permission",
-      "license": null,
-      "basis": "The official site license has source-specific exceptions, including self-authored materials; per-file audio coverage has not been verified.",
-      "evidence": [
-        {"type": "web", "url": "https://web.klokah.tw/creativeCommons/", "note": "Official license and exceptions."}
-      ],
+      "status": "published_public",
+      "license": "CC BY-NC-SA 4.0",
+      "hf_license": "cc-by-nc-sa-4.0",
+      "version_basis": "source_version",
+      "basis": "The XML is published in FormosanBank. Audio uses the XML license, and publication approval is recorded on the corresponding Basecamp corpus card.",
+      "xml_path": "Corpora/ePark/XML/wen_hua_pian_cultural_section",
+      "approval_record": "Corresponding FormosanBank corpus card in Basecamp",
       "hf_repositories": [
-        {"repo_id": "FormosanBank/ePark_wen_hua_pian_cultural_section", "access": "manual_gate"}
+        {
+          "repo_id": "FormosanBank/ePark_wen_hua_pian_cultural_section",
+          "access": "public"
+        }
       ]
     },
     {
       "permission_id": "epark-vocabulary",
       "corpus": "ePark",
       "source": "ePark learning-vocabulary materials",
-      "status": "withheld_pending_permission",
-      "license": null,
-      "basis": "The official site license has source-specific exceptions; per-file audio coverage has not been verified.",
-      "evidence": [
-        {"type": "web", "url": "https://web.klokah.tw/creativeCommons/", "note": "Official license and exceptions."}
-      ],
+      "status": "published_public",
+      "license": "CC BY-NC-SA 4.0",
+      "hf_license": "cc-by-nc-sa-4.0",
+      "version_basis": "source_version",
+      "basis": "The XML is published in FormosanBank. Audio uses the XML license, and publication approval is recorded on the corresponding Basecamp corpus card.",
+      "xml_path": "Corpora/ePark/XML/xue_xi_ci_biao_learning_vocabulary",
+      "approval_record": "Corresponding FormosanBank corpus card in Basecamp",
       "hf_repositories": [
-        {"repo_id": "FormosanBank/ePark_xue_xi_ci_biao_learning_vocabulary", "access": "manual_gate"}
+        {
+          "repo_id": "FormosanBank/ePark_xue_xi_ci_biao_learning_vocabulary",
+          "access": "public"
+        }
       ]
     },
     {
       "permission_id": "epark-reading-writing",
       "corpus": "ePark",
       "source": "ePark reading-and-writing materials",
-      "status": "withheld_pending_permission",
-      "license": null,
-      "basis": "The official site license has source-specific exceptions, including self-authored materials; per-file audio coverage has not been verified.",
-      "evidence": [
-        {"type": "web", "url": "https://web.klokah.tw/creativeCommons/", "note": "Official license and exceptions."}
-      ],
+      "status": "published_public",
+      "license": "CC BY-NC-SA 4.0",
+      "hf_license": "cc-by-nc-sa-4.0",
+      "version_basis": "source_version",
+      "basis": "The XML is published in FormosanBank. Audio uses the XML license, and publication approval is recorded on the corresponding Basecamp corpus card.",
+      "xml_path": "Corpora/ePark/XML/yue_du_shu_xie_pian_reading_writing",
+      "approval_record": "Corresponding FormosanBank corpus card in Basecamp",
       "hf_repositories": [
-        {"repo_id": "FormosanBank/ePark_yue_du_shu_xie_pian_reading_writing", "access": "manual_gate"}
+        {
+          "repo_id": "FormosanBank/ePark_yue_du_shu_xie_pian_reading_writing",
+          "access": "public"
+        }
       ]
     },
     {
       "permission_id": "epark-essays",
       "corpus": "ePark",
       "source": "ePark indigenous-language essays",
-      "status": "withheld_pending_permission",
-      "license": null,
-      "basis": "The official site license has source-specific exceptions, including self-authored materials; per-file audio coverage has not been verified.",
-      "evidence": [
-        {"type": "web", "url": "https://web.klokah.tw/creativeCommons/", "note": "Official license and exceptions."}
-      ],
+      "status": "published_public",
+      "license": "CC BY-NC-SA 4.0",
+      "hf_license": "cc-by-nc-sa-4.0",
+      "version_basis": "source_version",
+      "basis": "The XML is published in FormosanBank. Audio uses the XML license, and publication approval is recorded on the corresponding Basecamp corpus card.",
+      "xml_path": "Corpora/ePark/XML/zu_yu_duan_wen_indigenous_language_essays",
+      "approval_record": "Corresponding FormosanBank corpus card in Basecamp",
       "hf_repositories": [
-        {"repo_id": "FormosanBank/ePark_zu_yu_duan_wen_indigenous_language_essays", "access": "manual_gate"}
+        {
+          "repo_id": "FormosanBank/ePark_zu_yu_duan_wen_indigenous_language_essays",
+          "access": "public"
+        }
+      ]
+    },
+    {
+      "permission_id": "ntu-paiwan-raw",
+      "corpus": "NTU_Paiwan_ASR",
+      "source": "Raw NTU Paiwan development data",
+      "status": "development_private",
+      "license": null,
+      "hf_license": "other",
+      "basis": "Raw development data is private and not licensed for reuse. Its status changes only when published into FormosanBank.",
+      "hf_repositories": [
+        {
+          "repo_id": "FormosanBank/NTU_Paiwan_Raw",
+          "access": "private"
+        }
       ]
     },
     {
       "permission_id": "epark-raw",
       "corpus": "ePark",
-      "source": "Raw ePark source package",
-      "status": "withheld_pending_permission",
+      "source": "Raw ePark development package",
+      "status": "development_private",
       "license": null,
-      "basis": "The package contains mixed sources and no file-level redistribution review has been completed.",
-      "evidence": [
-        {"type": "web", "url": "https://web.klokah.tw/creativeCommons/", "note": "Official license and exceptions."}
-      ],
+      "hf_license": "other",
+      "basis": "Raw development data is private and not licensed for reuse. Its status changes only when published into FormosanBank.",
       "hf_repositories": [
-        {"repo_id": "FormosanBank/ePark3_Raw", "access": "private"}
+        {
+          "repo_id": "FormosanBank/ePark3_Raw",
+          "access": "private"
+        }
       ]
     }
   ]
