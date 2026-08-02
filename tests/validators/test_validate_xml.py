@@ -297,13 +297,11 @@ def test_V017_empty_FORM_content_negative(tmp_path, fixtures_dir, copy_fixture):
     )
 
 
-def test_empty_transcription_tiers_are_valid_for_audio_only_sentence():
-    """Audio records without a transcription remain valid corpus records."""
+def _audio_only_empty_tiers_tree():
+    """<S> with an <AUDIO> ref and all FORM/PHON tiers empty (untranscribed)."""
     from io import BytesIO
 
     from lxml import etree as _etree
-
-    from QC.validation.rules import hard as hard_rules
 
     xml = (
         '<?xml version="1.0" encoding="utf-8"?>'
@@ -318,14 +316,54 @@ def test_empty_transcription_tiers_are_valid_for_audio_only_sentence():
         '<AUDIO file="Paiwan_4557.mp3" start="0" end="4.69"/>'
         '</S></TEXT>'
     )
-    tree = _etree.parse(BytesIO(xml.encode("utf-8")))
+    return _etree.parse(BytesIO(xml.encode("utf-8")))
 
+
+def test_whole_file_shell_exempts_empty_tiers():
+    """A file that is entirely an untranscribed-audio shell (every <S> is an
+    audio ref with empty FORM/PHON) is exempt from V017/V073."""
+    from QC.validation.rules import hard as hard_rules
+
+    tree = _audio_only_empty_tiers_tree()  # single S: audio + empty tiers
     assert hard_rules.v017_form_must_have_content(
         tree, Path("test.xml"), None
     ) == []
     assert hard_rules.v073_phon_non_empty(
         tree, Path("test.xml"), None
     ) == []
+
+
+def test_blank_tier_in_transcribed_file_hard_fails():
+    """An empty FORM/PHON in a file that ALSO has real transcription is a HARD
+    error — the whole-file-shell carve-out does not apply, so accidentally
+    blanked transcriptions are still caught."""
+    from io import BytesIO
+
+    from lxml import etree as _etree
+
+    from QC.validation.rules import hard as hard_rules
+
+    xml = (
+        '<?xml version="1.0" encoding="utf-8"?>'
+        '<TEXT id="T1" citation="t" BibTeX_citation="@t{t}" '
+        'copyright="t" xml:lang="pwn">'
+        '<S id="S_ok">'
+        '<FORM kindOf="original">maleveleve</FORM>'
+        '<FORM kindOf="standard">maleveleve</FORM>'
+        '</S>'
+        '<S id="S_blank">'
+        '<FORM kindOf="original"/><PHON kindOf="original"/>'
+        '<FORM kindOf="standard"/><PHON kindOf="standard"/>'
+        '<AUDIO file="x.mp3" start="0" end="1"/>'
+        '</S></TEXT>'
+    )
+    tree = _etree.parse(BytesIO(xml.encode("utf-8")))
+    assert hard_rules.v017_form_must_have_content(
+        tree, Path("test.xml"), None
+    ), "empty FORM in a transcribed file must HARD-fail V017"
+    assert hard_rules.v073_phon_non_empty(
+        tree, Path("test.xml"), None
+    ), "empty PHON in a transcribed file must HARD-fail V073"
 
 
 # -----------------------------------------------------------------------------

@@ -365,8 +365,15 @@ def v017_form_must_have_content(
         if form.find("UNCLEAR") is not None:
             continue
         parent = form.getparent()
-        if parent is not None and _is_untranscribed_audio_sentence(
-            parent
+        # Untranscribed-audio carve-out: exempt an empty S-level FORM only
+        # when the WHOLE FILE is a shell — every <S> is an audio-backed
+        # sentence with empty FORM/PHON (a deliberate pointer to
+        # not-yet-transcribed audio). A blank tier in a file that has any
+        # real transcription is still a HARD error.
+        if (
+            parent is not None
+            and _is_untranscribed_audio_sentence(parent)
+            and _is_untranscribed_audio_shell_file(tree)
         ):
             continue
         parent_id = parent.get("id") if parent is not None else None
@@ -787,8 +794,14 @@ def v073_phon_non_empty(
         # PHON itself). Added 2026-06-08.
         if parent is not None and _parent_form_is_unclear(parent):
             continue
-        if parent is not None and _is_untranscribed_audio_sentence(
-            parent
+        # Untranscribed-audio carve-out: exempt an empty PHON only when the
+        # WHOLE FILE is a shell — every <S> is an audio-backed sentence with
+        # empty FORM/PHON. A blank tier in a file with any real
+        # transcription is still a HARD error.
+        if (
+            parent is not None
+            and _is_untranscribed_audio_sentence(parent)
+            and _is_untranscribed_audio_shell_file(tree)
         ):
             continue
         p_id = parent.get("id") if parent is not None else None
@@ -846,6 +859,22 @@ def _is_untranscribed_audio_sentence(
         not "".join(tier.itertext()).strip()
         and tier.find("UNCLEAR") is None
         for tier in transcription_tiers
+    )
+
+
+def _is_untranscribed_audio_shell_file(tree: etree._ElementTree) -> bool:
+    """True if the file is a deliberate untranscribed-audio shell.
+
+    A shell has at least one <S> and EVERY <S> is an untranscribed audio
+    sentence (an <AUDIO> child with all FORM/PHON tiers empty). Such files
+    are pointers to not-yet-transcribed audio, so their empty tiers are
+    expected. A file with any transcribed <S> is not a shell, so a blank
+    tier there stays a HARD V017/V073 finding (which catches accidental
+    blanks). No per-corpus configuration is needed — the file shape decides.
+    """
+    sentences = list(tree.iter("S"))
+    return bool(sentences) and all(
+        _is_untranscribed_audio_sentence(s) for s in sentences
     )
 
 
