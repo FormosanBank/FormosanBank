@@ -6,7 +6,13 @@ This is a code that simplifies and automates some of the OCR review process. Not
 4. Easy buttons with common issues that automatically formats CSV entries
 
 ## Using/Navigating
-The main application is saved in /dist.
+**The built application is no longer stored in this repository.** Download it from the
+[Releases page](https://github.com/AI4CommSci/FormosanBank/releases) (tags `ocr-audit-v*`),
+or build it yourself with `pyinstaller reviewOCR.spec` — output goes to `/dist` (Windows)
+or `/macos dist` (macOS), both of which are gitignored. To publish a new build, see
+[RELEASING.md](RELEASING.md).
+
+To run from source instead: `python3 reviewOCR.py`.
 #### THE DATA FOLDER AND ITS CONTENTS MUST BE IN THE SAME DIRECTORY AS THE APPLICATION OR CODE TO RUN
 The data folder has 3 files: "lastsession.json", "errors.csv", and "errorFreq.csv".
 The VS code workspace and venv are also provided, and a copy of the data folder is available in the main folder so that if you download the entire folder, the code runs.

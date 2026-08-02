@@ -31,7 +31,47 @@ This directory contains a set of Python scripts and resources for quality contro
     - [Orthography Scripts](#orthography-scripts)
     - [Validation Scripts](#validation-scripts)
     - [Additional Scripts](#additional-scripts)
-5. [Logs](#logs)
+5. [Prebuilt Tools (Downloads)](#prebuilt-tools-downloads)
+6. [Logs](#logs)
+
+---
+
+## Prebuilt Tools (Downloads)
+
+Some QC tools ship as a graphical application so that reviewers who don't run
+Python can use them. **These applications are not stored in this repository** —
+they are published as assets on the
+[Releases page](https://github.com/AI4CommSci/FormosanBank/releases).
+Only their source lives here, so that cloning FormosanBank doesn't drag down
+tens of megabytes of compiled binaries.
+
+| Tool | Source | Download |
+|---|---|---|
+| **reviewOCR** — GUI for reviewing and tagging OCR errors in corpus XML | [QC/utilities/OCR Audit/](QC/utilities/OCR%20Audit/) | Releases tagged `ocr-audit-v*` |
+
+### How to download and run
+
+1. Go to [the Releases page](https://github.com/AI4CommSci/FormosanBank/releases)
+   and open the newest release for the tool you want (e.g. **OCR Audit v1.3**).
+2. Under **Assets**, download the `.zip` for your operating system —
+   `…-windows.zip` or `…-macos.zip`.
+3. Unzip it. **Keep the `data/` folder in the same directory as the
+   application** — the tool reads and writes its session state there and will
+   not start without it.
+4. Launch it:
+   - **Windows:** double-click `reviewOCR.exe`. Windows SmartScreen may say
+     "Windows protected your PC" — click **More info** → **Run anyway**.
+   - **macOS:** the first launch must be right-click (or Control-click) →
+     **Open** → **Open**, because the app is not code-signed. Double-clicking
+     it the normal way will just show "cannot be opened because the developer
+     cannot be verified."
+
+Prefer to run from source instead? The tool is a normal Python script:
+`python3 "QC/utilities/OCR Audit/reviewOCR.py"` (requires Tkinter — see
+[Prerequisites](#prerequisites)).
+
+Maintainers publishing a new build should follow
+[QC/utilities/OCR Audit/RELEASING.md](QC/utilities/OCR%20Audit/RELEASING.md).
 
 ---
 
@@ -92,18 +132,46 @@ Tkinter is included with the standard Python distribution for Windows. No additi
 Clone the repository and install dependencies.
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/FormosanBank/FormosanBank.git
 cd FormosanBank
-pip install -r requirements.txt
+python3 -m pip install -r requirements.txt
 ./run_audio_downloads.sh
 ```
 
-Note that `run_audio_downloads.sh` depends on having git, git-lfs, jq, and hf (the huggingface cli) installed. On a Mac, use:
+Audio associated with XML published in FormosanBank is public under the same
+license as the XML. No Hugging Face login, private repository access, `hf`
+CLI, or `jq` is required. Downloads use Git LFS's public batch transport and
+are pinned to the revisions in [`audio_sources.json`](audio_sources.json).
+Install Git LFS once if it is not already available:
 
 ```bash
-brew install git git-lfs jq
-pip install huggingface_hub[cli]  # This installs the 'hf' command
+# macOS
+brew install git-lfs
+
+# Debian/Ubuntu
+sudo apt-get install git-lfs
 ```
+
+To check every public dataset without downloading the audio, run:
+
+```bash
+./run_audio_downloads.sh --dry-run
+```
+
+Each corpus-level `download_audio_data.sh` uses the same manifest and can also
+be run independently. [`audio_permissions.json`](audio_permissions.json)
+records the publication status and XML license for each hosted audio source;
+[`AUDIO-PERMISSIONS.md`](AUDIO-PERMISSIONS.md) explains the publication rule.
+Raw audio from private development repositories stays private and is not
+licensed for reuse. [`audio_extras.json`](audio_extras.json) records public
+Hugging Face files intentionally retained even though the current XML does not
+reference them. The canonical datasets are collected in
+[Formosan Audio on Hugging Face](https://huggingface.co/collections/FormosanBank/formosan-audio-67c20fa45cd8f4d1a99647d4).
+
+The complete 21-dataset download is approximately 105.3 GiB. Allow at least
+120 GiB of free space for the temporary Git LFS checkout used while each
+dataset is installed. Interrupted transfers resume from
+`.audio-download-cache/`; successful datasets remove their cache automatically.
 
 ---
 

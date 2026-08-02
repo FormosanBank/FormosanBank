@@ -38,6 +38,7 @@ LANG_CODE_TO_NAME = {
     "sxr": "Saaroa",
     "xnb": "Kanakanavu",
     "fos": "Siraya",
+    "bzg": "Babuza-Favorlang",
 }
 
 # All display names a record can resolve to (the 16 codes plus Truku,
