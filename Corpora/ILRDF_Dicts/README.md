@@ -116,20 +116,20 @@ This repository contains code and data for processing and structuring Formosan l
 
 7. **Normalize sentence-level standard forms**
 
-The ILRDF API sentence field preserves useful source notation, including
-morpheme boundaries, spelling alternatives, parenthetical alternatives, and
-occasional Chinese editor notes. Keep that source text in
-`FORM kindOf="original"`, then derive one surface reading for the MT-facing
-standard tier:
+The ILRDF API sentence field preserves spelling alternatives, parenthetical
+alternatives, extraction artifacts, and mixed-use punctuation. Keep that source
+text in `FORM kindOf="original"`, then apply the reviewed standard-tier repairs:
 
 ```bash
 python CodeAndDocs/normalize_standard_forms.py --apply
 ```
 
-The script changes only direct `S/FORM[@kindOf="standard"]` text. It chooses the
-first source-ordered alternative, removes inline analysis notation, refuses to
-emit an empty standard, and is idempotent. Run it once more without `--apply`;
-the expected result is `would change: 0 direct S-standard forms`.
+The script changes only direct `S/FORM[@kindOf="standard"]` text. It handles the
+reviewed alternatives and exact source repairs, refuses to emit an empty
+standard, and is idempotent. It deliberately preserves hyphens and underscores:
+their uses cannot be resolved safely with a corpus-wide deletion rule. Run the
+script once more without `--apply`; the expected result is
+`would change: 0 direct S-standard forms`.
 
 ## Code Breakdown
 

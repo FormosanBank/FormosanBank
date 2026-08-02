@@ -1,56 +1,59 @@
-# Standard-form normalization QC
+# Standard-form repair QC
 
 Baseline: FormosanBank `dc89d0899b92f1c884aa1b09d3e5d720201b5a71`.
 
-`normalize_standard_forms.py` changed 4,130 direct sentence-level standard
-forms while leaving all original forms, translations, PHON, AUDIO, attributes,
-IDs, and document structure unchanged. A canonical XML comparison verified the
-protected content across all 16 files.
+The first version of this change removed every hyphen and underscore. That was
+not correct. Hyphens have mixed uses in this dictionary corpus, including
+proper names such as `Tai-uan` and `Ma-Ing-Cyo`, punctuation, morphology, and
+Bunun/Thao notation. Underscores encode Atayal schwa. The corrected normalizer
+retains both.
+
+The corrected script changes 193 direct sentence-level standards while leaving
+all originals, translations, PHON, AUDIO, attributes, IDs, and structure
+unchanged. A canonical comparison verified the protected content across all 16
+files.
 
 ## Change inventory
 
-| Source pattern | Standards affected |
+| Reviewed source pattern | Standards affected |
 |---|---:|
-| ASCII morpheme boundary `-` | 3,118 |
-| Atayal infix placeholder `_` | 214 |
-| Parenthetical alternative or annotation | 148 |
+| Parenthetical alternative or annotation | 146 |
 | Slash-ordered alternative | 32 |
-| Inline Chinese editor note after parenthetical cleanup | 12 |
+| Exact source repair | 13 |
 | Equals-ordered alternative | 2 |
 
-Counts overlap when one standard contains more than one pattern. The output is
-idempotent: a second dry run reports zero changes.
+The 13 exact repairs include six Saaroa extraction failures, six unambiguous
+trailing Chinese editor notes, and the Sakizaya `101` building number. The
+Saaroa repairs are supported by dictionary headwords or a duplicate clean
+sentence. For example:
 
-The residual direct-standard inventory is zero for ASCII dash, underscore,
-slash, equals, plus, parentheses, angle brackets, CJK, asterisk, and zero-width
-characters. Four tildes remain because they are source-backed sound or
-hesitation notation rather than segmentation:
-
-| File | S id | Decision |
+| Corrupt standard | Repaired standard | Evidence |
 |---|---|---|
-| `Seediq/Seediq.xml` | `Seediq_1787` | Retain quoted `wing~` sound |
-| `Truku/Truku.xml` | `Truku_435` | Retain hesitation/prosodic notation |
-| `Truku/Truku.xml` | `Truku_757` | Retain hesitation/prosodic notation |
-| `Truku/Truku.xml` | `Truku_2168` | Retain hesitation/prosodic notation |
+| `u數詞u paapuhla...` | `ʉnʉmʉ paapuhla...` | Dictionary numeral headword `ʉnʉmʉ` |
+| `muasala isiparu tu數詞u...` | `muasala 'isiparʉtʉnʉmʉ...` | Exact clean duplicate in Saaroa S 92 |
+| `kapita數詞ia` | `kapitanʉia` | Dictionary headword `kapitanʉ` |
+| `luma' (101)` | `luma' 101` | Translation identifies the 101 building |
 
-## Validation
+## Retained notation
+
+| Notation | Direct standards retained | Decision |
+|---|---:|---|
+| ASCII hyphen | 3,118 | Mixed orthographic, name, punctuation, and morphology uses require review |
+| Underscore | 214 | Retain Atayal schwa notation |
+
+The remaining validator markers are therefore an inventory for review, not
+evidence that 3,118 sentences are mechanically segmentable.
+
+## Verification
 
 | Check | Result |
 |---|---|
-| Unit tests | 6 passed |
+| Unit tests | 9 passed |
 | Normalizer second dry run | 0 changes |
 | XML validator | 16 files, no findings |
-| Text validator | 0 HARD; V126 = 0; V133 = 0 |
-| Gloss validator | No structural W/M analysis exists; V060 emits its known sentence-only soft findings |
-| Dialect inventory | 16 files accounted for; unchanged from baseline |
-| Duplicate sentences | 225 same-file groups after normalization, versus 197 at baseline |
+| Text validator | 0 HARD findings |
+| Protected-content comparison | No unexpected differences across 16 files |
 
-The 28 new duplicate groups are expected collisions where distinct source
-records reduce to the same first surface reading after analytical boundaries or
-alternatives are removed. They retain distinct original text, translations,
-IDs, and audio metadata, so no source record was deleted.
-
-The text validator's remaining soft findings are outside direct standard-form
-segmentation: V116 (56), V122 (9,270), V135 (45), and V137 (14). V122 is in
-preserved original/translation text. V135 reflects the intentional difference
-between an original ending in an annotation delimiter and its clean standard.
+The text validator reports soft V133 findings for the retained hyphens. It also
+reports source notation in protected originals and translations. No validator
+HARD finding remains.

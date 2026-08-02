@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Derive clean sentence-level standard forms from ILRDF source forms.
+"""Apply reviewed ILRDF sentence-standard repairs without guessing boundaries.
 
-The source API mixes surface text with morphological boundaries, spelling
-alternatives, parenthetical alternatives, and occasional Chinese editor notes.
-Those strings remain unchanged in FORM[@kindOf="original"].  This script only
-updates direct S/FORM[@kindOf="standard"] elements.
+Hyphens have mixed uses in the dictionaries, including proper names,
+morphology, punctuation, and Bunun/Thao orthography. Underscores represent
+Atayal schwa. Both are retained. This script resolves the reviewed slash,
+equals, and parenthetical alternatives and applies explicit repairs for source
+extraction artifacts. FORM[@kindOf="original"] remains unchanged.
 
 Run without --apply for a dry run.  A successful second dry run after applying
 must report zero changes.
@@ -20,12 +21,69 @@ from pathlib import Path
 from lxml import etree
 
 
-CJK_RE = re.compile(r"[\u3400-\u4dbf\u4e00-\u9fff]+")
 PAREN_RE = re.compile(r"\([^()]*\)")
+CJK_RE = re.compile(r"[\u3400-\u4dbf\u4e00-\u9fff]+")
 SPACE_RE = re.compile(r"\s+")
 FULL_CLAUSE_ALT_RE = re.compile(r"(?<=[.!?])\s*/\s*")
 TOKEN_ALT_RE = re.compile(r"(?P<left>\S+?)\s*/\s*(?P<right>\S+)")
 TRAILING_PUNCT_RE = re.compile(r"([.!?,;:]+)$")
+
+
+REVIEWED_SLASH_IDS = {
+    "Atayal_2728",
+    "Atayal_4629",
+    "Atayal_4760",
+    "Atayal_5144",
+    "Bunun_4696",
+    "Bunun_4697",
+    "Bunun_4698",
+    "Bunun_4699",
+    "Bunun_4948",
+    "Bunun_4949",
+    "Bunun_4950",
+    "Bunun_4951",
+    "Bunun_4952",
+    "Bunun_4953",
+    "Bunun_5986",
+    "Bunun_6450",
+    "Bunun_7761",
+    "Bunun_7780",
+    "Bunun_8407",
+    "Bunun_8408",
+    "Paiwan_5128",
+    "Paiwan_5320",
+    "Sakizaya_5353",
+    "Tsou_148",
+    "Tsou_200",
+    "Tsou_561",
+    "Tsou_949",
+    "Tsou_1187",
+    "Tsou_1189",
+    "Tsou_1210",
+    "Tsou_2726",
+    "Tsou_2864",
+}
+
+REVIEWED_EQUALS_IDS = {"Thao_1332", "Thao_4429"}
+
+
+# Exact standard-tier repairs supported by the dictionary headword, a duplicate
+# clean example sentence, or an unambiguous Chinese editor-note boundary.
+STANDARD_OVERRIDES = {
+    "Kavalan_2291": "nikisasan na tangayaw ay mawtu zau.",
+    "Puyuma_888": "sagar mi mabareturetuk dratu buwa dra gamut.",
+    "Saaroa_341": "apuaʉnʉmʉ cucuana 'asaruna.",
+    "Saaroa_832": "kukicumia tʉnʉmʉa saliaisa hlakana'ana.",
+    "Saaroa_1716": "ʉnʉmʉ paapuhla ualuia laihla upatu.",
+    "Saaroa_2431": "muasala 'isiparʉtʉnʉmʉ mutatungusu saliamiapihlihli.",
+    "Saaroa_3575": "hla'alua maci kapitanʉia ihlaisa macahlia malialualu.",
+    "Saaroa_3988": "marua aʉnʉmʉ tapuhlacungu mucukuhlu tapikakua miararuma.",
+    "Sakizaya_2511": "u miasikay i satakalaway a luma' 101 ci Panay.",
+    "Thao_583": "finlhuqiza ihu buut? ua! finlhuqiza iaku, finlhuqiza mani ihu?",
+    "Thao_2539": "mataqaz yaku sa pazay.",
+    "Thao_3612": "uka mihu a patatash, haya naak a patatash arahu matash.",
+    "Yami_4596": "rarayan mo si wari mo no takzes.",
+}
 
 
 def strip_parenthetical_alternatives(text: str) -> str:
@@ -67,32 +125,30 @@ def choose_first_slash_alternatives(text: str) -> str:
     return text.replace("/", "")
 
 
-def normalize_standard(text: str) -> tuple[str, tuple[str, ...]]:
+def normalize_standard(
+    text: str, *, sentence_id: str | None = None
+) -> tuple[str, tuple[str, ...]]:
+    override = STANDARD_OVERRIDES.get(sentence_id or "")
+    if override is not None:
+        return override, ("reviewed-source-repair",)
+
     reasons: list[str] = []
     normalized = text
 
-    if "=" in normalized:
+    if sentence_id in REVIEWED_EQUALS_IDS and "=" in normalized:
         normalized = normalized.split("=", 1)[0]
         reasons.append("equals-alternative")
     if "(" in normalized or ")" in normalized:
         normalized = strip_parenthetical_alternatives(normalized)
         reasons.append("parenthetical-alternative")
-    if "/" in normalized:
+    if sentence_id in REVIEWED_SLASH_IDS and "/" in normalized:
         normalized = choose_first_slash_alternatives(normalized)
         reasons.append("slash-alternative")
-    if "-" in normalized:
-        normalized = normalized.replace("-", "")
-        reasons.append("morpheme-boundary")
-    if "_" in normalized:
-        normalized = normalized.replace("_", "")
-        reasons.append("infix-placeholder")
-    if CJK_RE.search(normalized):
-        normalized = CJK_RE.sub("", normalized)
-        reasons.append("inline-editor-note")
 
-    normalized = SPACE_RE.sub(" ", normalized).strip()
-    normalized = re.sub(r"\s+([,.!?;:])", r"\1", normalized)
-    normalized = re.sub(r"([.!?])\1+", r"\1", normalized)
+    if reasons:
+        normalized = SPACE_RE.sub(" ", normalized).strip()
+        normalized = re.sub(r"\s+([,.!?;:])", r"\1", normalized)
+        normalized = re.sub(r"([.!?])\1+", r"\1", normalized)
     return normalized, tuple(reasons)
 
 
@@ -112,7 +168,9 @@ def process(xml_dir: Path, apply: bool) -> tuple[int, Counter[str]]:
             standard = sentence.find('./FORM[@kindOf="standard"]')
             if standard is None or standard.text is None:
                 continue
-            normalized, form_reasons = normalize_standard(standard.text)
+            normalized, form_reasons = normalize_standard(
+                standard.text, sentence_id=sentence.get("id")
+            )
             if normalized == standard.text:
                 continue
             if not normalized:
@@ -135,9 +193,9 @@ def process(xml_dir: Path, apply: bool) -> tuple[int, Counter[str]]:
     return changed_forms, reasons
 
 
-def find_residuals(xml_dir: Path) -> Counter[str]:
+def inventory_retained_notation(xml_dir: Path) -> Counter[str]:
     parser = etree.XMLParser(remove_blank_text=False)
-    residuals: Counter[str] = Counter()
+    inventory: Counter[str] = Counter()
     markers = {"-": "dash", "_": "underscore", "/": "slash", "=": "equals"}
     for path in iter_xml_files(xml_dir):
         tree = etree.parse(str(path), parser)
@@ -148,10 +206,10 @@ def find_residuals(xml_dir: Path) -> Counter[str]:
                 continue
             for marker, label in markers.items():
                 if marker in text:
-                    residuals[label] += 1
+                    inventory[label] += 1
             if CJK_RE.search(text):
-                residuals["CJK"] += 1
-    return residuals
+                inventory["CJK"] += 1
+    return inventory
 
 
 def main() -> int:
@@ -168,13 +226,13 @@ def main() -> int:
         print(f"  {reason}: {count}")
 
     if args.apply:
-        residuals = find_residuals(args.xml_dir.resolve())
-        print("residual direct S-standard markers:")
-        if residuals:
-            for marker, count in sorted(residuals.items()):
+        inventory = inventory_retained_notation(args.xml_dir.resolve())
+        print("retained direct S-standard notation (review required):")
+        if inventory:
+            for marker, count in sorted(inventory.items()):
                 print(f"  {marker}: {count}")
-            return 1
-        print("  none")
+        else:
+            print("  none")
     return 0
 
 
