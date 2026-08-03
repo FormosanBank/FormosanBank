@@ -21,9 +21,14 @@ exhaustive checklist**. Anything else a step does to the data is equally fair ga
 
 - **(a) Eliminated orthography characters** — did it drop characters that are real
   letters in the language's orthography (glottal-stop apostrophe, `ŋ`, `ə`, `ɬ`,
-  barred/strokes, etc.)?
+  barred/strokes, etc.)? The benchmark is the **actual source text**, not the raw
+  scrape: an OCR/scrape *correction* toward the real spelling (e.g. `u`→`ʉ` where a
+  barred vowel was misread) is expected and good — the bug is dropping a letter the
+  source really has, or changing spelling away from what the source prints.
 - **(b) Suppressed punctuation** — did it strip punctuation/segmentation in ways
-  that disrupt the data, especially from the tier that must stay faithful?
+  that disrupt the data? Note: **punctuation normalization on the original tier is
+  fine** as long as it doesn't change spelling; the concern is punctuation the
+  *source has* silently vanishing, or segmentation markers being lost.
 - **(c) Other convention breaks** — schema, `kindOf`, `ver`, dialects, segmentation
   markers, id rules.
 - **(d) Source-extraction artifacts** — leftovers like sentences marked
@@ -31,11 +36,16 @@ exhaustive checklist**. Anything else a step does to the data is equally fair ga
 
 ## What "correct" looks like (our conventions)
 
-- **Two tiers.** `FORM[@kindOf="original"]` stays as close to the source as
-  possible (only minor punctuation/HTML-escape normalization). `FORM[@kindOf=
-  "standard"]` is the single common orthography. **The original tier is the
-  faithfulness anchor** — most of concerns (a)/(b)/(d) are "did the original tier
-  lose something the source had?"
+- **Two tiers.** `FORM[@kindOf="original"]` matches the **actual original source
+  text** — the printed page / true source, *not* necessarily the raw scrape. OCR and
+  scraping errors **should** be corrected (by hand-edit or script) so the tier matches
+  what the source prints; punctuation may be normalized too. What must be preserved is
+  the source's **spelling**. `FORM[@kindOf="standard"]` is the single common
+  orthography. **The original tier is the faithfulness anchor** — but "faithful" means
+  *faithful to the real source*, so the audit question is "does the original tier
+  match the actual printed source (spelling included)?", **not** "does it differ from
+  the scrape?" A correction that makes it match the source better is good; a change
+  that alters spelling or drops a real letter/punctuation is the bug.
 - **Segmentation markers** (`-`, `=`, `<…>`) belong in the **W** tier (both tiers)
   and in the S-level **original** FORM where the source had them. They are stripped
   from the S-level **standard** FORM only, and only for languages whose orthography

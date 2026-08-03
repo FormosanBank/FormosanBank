@@ -63,10 +63,18 @@ orthography deltas → (a); schema/V063/V068/V141 → (c)).
 
 ### 4. Diff the output against the source (concerns a, b, d)
 Sample sentences (use `sample_sentences.py` or pick representative ids). For each,
-compare the `FORM[@kindOf="original"]` to the raw source:
-- (a) Did any orthographic letter disappear? (Check the char inventory vs
-  `reference/<Language>/` and vs the source. Watch curly apostrophes → loss.)
-- (b) Did punctuation/segmentation in the original tier vanish vs the source?
+compare the `FORM[@kindOf="original"]` to the **actual original text** (the printed
+page image / true source — *not* merely the raw scrape). The original tier is meant
+to match the real source, so OCR/scrape-error corrections toward it are **expected
+and legitimate**; the check is fidelity to the true text, not "did it change the
+scrape?":
+- (a) Did any orthographic letter disappear vs the *source*? (Check the char
+  inventory vs `reference/<Language>/` and vs the source. Watch curly apostrophes →
+  loss.) A `u`→`ʉ`-type correction that matches the printed page is good — verify it
+  actually matches the page, don't flag it as a violation.
+- (b) Did punctuation/segmentation the *source has* vanish from the original tier?
+  (Punctuation *normalization* that preserves spelling is fine; the bug is source
+  punctuation/segmentation silently disappearing.)
 - (d) Are there sentence-initial `*` (ungrammatical — should have been excluded),
   footnote digit leaks, or out-of-language runs?
 ▣ Present concrete before/after samples per concern; get the maintainer's call on
