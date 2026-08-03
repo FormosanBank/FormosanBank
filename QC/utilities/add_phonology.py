@@ -59,9 +59,22 @@ def apply_standard(s_element, standard):
             form.text = form.text.replace(original, replacement)
 
 def apply_phonology_mappings(text, phonology_mappings, conversion_dict):
-    """Apply phonology mappings with capitalization handling"""
+    """Apply phonology mappings with capitalization handling.
+
+    Morphological segmentation markers are stripped first so PHON is clean IPA
+    even when the FORM tier carries segmentation. '=' (clitic) and the '<...>'
+    infix brackets are never orthographic letters and are always removed (the
+    infix content is kept, since it is pronounced); '-' is removed only when it
+    is not itself a letter in this language's orthography (Bunun/Thao use '-').
+    """
     result = text
-    
+
+    # Strip segmentation markers before mapping (see docstring).
+    mapped_letters = {letter for letter, _ in phonology_mappings}
+    result = result.replace("=", "").replace("<", "").replace(">", "")
+    if "-" not in mapped_letters:
+        result = result.replace("-", "")
+
     # Apply mappings in the original order from the TSV file
     for letter, ipa_value in phonology_mappings:
         # Apply exact mapping
