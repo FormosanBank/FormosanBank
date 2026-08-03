@@ -4,6 +4,10 @@ matplotlib==3.9.2
 mutagen==1.47.0
 numpy==2.2.6
 pandas==2.2.3
+# Source-alignment half of QC/validation/audit_gloss_scrape.py: pdfplumber
+# reads the source paper, rapidfuzz matches XML sentences back to it.
+pdfplumber==0.11.9
+rapidfuzz==3.14.5
 PyYAML==6.0.2
 regex==2024.11.6
 requests==2.32.3
