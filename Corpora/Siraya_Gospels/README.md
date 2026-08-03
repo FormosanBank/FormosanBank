@@ -170,3 +170,20 @@ After these changes were made by hand, we wrote code to accomplish the same thin
 * `hyphen_removals.csv` 
 
 This was set to be quite conservative and only apply if the version with the hyphen was infrequent and the alternative was very frequent. However, this does sometimes result in removing hyphens that were not the result of a line break. This is perhaps desirable behavior. To be safe, this is applied only to the "standard" tier.
+
+### Reproducing the `standard` tier
+
+`CodeAndDocs/regenerate_standard_tier.py` rebuilds the `standard` FORM of every
+sentence from its `original` FORM, applying **only** the documented line-break
+removals in `CodeAndDocs/hyphen_removals.csv` (158 distinct forms / 199
+occurrences). All other hyphens — the morpheme/orthographic ones — are kept, and
+the standard tier inherits the original tier's punctuation (e.g. editorial
+`(...)`, single `-`). Run it from the corpus root:
+
+```bash
+python CodeAndDocs/regenerate_standard_tier.py
+```
+
+The fixed CSV is applied (rather than re-deriving the removals by frequency)
+because later QC edits to the `original` tier shift token frequencies and would
+otherwise change which hyphens are treated as line breaks.
