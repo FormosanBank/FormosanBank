@@ -34,8 +34,6 @@ The Presidential Apology corpus was developed using officially released translat
 
 ### **Corpus Notes**
 
-This section will be used to describe any notes regarding the corpus (e.g. explaining the presence of characters that aren't part of the standard orthography)
-
 * **Amis**: The presidential apology in Amis has a couple of occurances of the letter 'b' which isn't part of the standard orthography of the language. all the occurances can be found in two words: Balay and Sbalay. Both of these words are Atayal words that are quoted in the original apology, and they were used in the same form in the Amis translation. This is an example from the English translation: "In the Atayal language, truth is called 'Balay', and reconciliation is called 'Sbalay'"
 * **Kanakanavu**: This corpus uses a small number of h's and f's, which are controversial. None of the words involving h's or f's appear in the reference ILRDF Dictionary corpus, with or without the h's and f's. Thus, we have chosen to leave them in.
 * **Puyuma**: This corpus has a number of appearances of ē. Almost all of these are due to yēncumin (which is marked as a foreign word) and sēhu. Thus, this has not been homogenized.
@@ -58,7 +56,7 @@ This corpus represents a critical step in preserving linguistic diversity and ma
 
 ### **Access Details**
 
-* Information about the apology, the apology text in English and Chinese as well as the 16 Formosan languages are all publicly available [here](https://indigenous-justice.president.gov.tw/).
+* The Office of the President provides the [official English apology](https://english.president.gov.tw/NEWS/4950), and the Council of Indigenous Peoples provides the [16 Formosan-language versions](https://www.cip.gov.tw/zh-tw/news/data-list/01F6453A792735EC/index.html?cumid=01F6453A792735EC).
 * The repo containing the ePark corpus in FormosanBank as well as the code to reconstruct the corpus can be found [here](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/Presidential_Apologies).
 
 ***
@@ -87,5 +85,5 @@ According to [Copyright rules by territory/Taiwan](https://commons.wikimedia.org
 
 In accordance with our [Terms of Use](../../additional-resources/tja-kipapawlingaven-a-cekaw-tua-ziriu-imaza.md), if you use this corpus or any product derived from this corpus in any publication, you must cite both FormosanBank and:
 
-* **Citing the apology in general**: Tsai, I. W. (2016, August 1). _President Tsai Ing-wen's apology to the Indigenous Peoples on behalf of the government_ \[Speech transcript]. [https://indigenous-justice.president.gov.tw/](https://indigenous-justice.president.gov.tw/)
-* **Language specific**: Tsai, I. W. (2016, August 1). _President Tsai Ing-wen's apology to the Indigenous Peoples on behalf of the government_ \[Speech transcript, Amis translation]. [https://indigenous-justice.president.gov.tw/](https://indigenous-justice.president.gov.tw/)
+* **Citing the apology in general**: Tsai, I. W. (2016, August 1). _President Tsai Ing-wen's apology to the Indigenous Peoples on behalf of the government_ \[Speech transcript]. [Office of the President](https://english.president.gov.tw/NEWS/4950).
+* **Language specific**: Tsai, I. W. (2016, August 1). _President Tsai Ing-wen's apology to the Indigenous Peoples on behalf of the government_ \[Speech transcript, Amis translation]. [Council of Indigenous Peoples](https://www.cip.gov.tw/zh-tw/news/data-list/01F6453A792735EC/index.html?cumid=01F6453A792735EC).

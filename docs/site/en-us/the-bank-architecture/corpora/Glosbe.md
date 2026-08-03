@@ -1,25 +1,25 @@
-# Presidential Apologies
+# Glosbe
 
 ## **Overview**
 
-This corpus comes from the crowdsourced online dictionary Glosbe. Currently we have only included Amis, which was (at time of checking) the only reasonably sized dictionary. 
+This corpus contains dictionary and translation-memory entries collected from the crowdsourced online dictionary Glosbe. The current public corpus includes Amis, Atayal, Truku, and Saisiyat data. Most entries are translated into English, with an additional Amis-Mandarin collection.
 
 ***
 
 <!-- CORPUS STATS START -->
 ## Corpus Statistics
 
-| | Amis<br>UK |
-| --- | --- |
-| Word count | 91,201 |
-| Total audio | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 |
-| Translated words |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 91,201 |
-| Morphologically segmented | 0 |
-| Glossed words | 0 |
+| | Amis<br>unknown | Atayal<br>unknown | Truku | Saisiyat |
+| --- | --- | --- | --- | --- |
+| Word count | 59,654 | 213 | 19 | 508 |
+| Total audio | 0 | 0 | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 | 0 | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 | 0 | 0 |
+| Translated words |  |  |  |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 59,276 | 213 | 19 | 508 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 378 | 0 | 0 | 0 |
+| Morphologically segmented | 0 | 0 | 0 | 0 |
+| Glossed words | 0 | 0 | 0 | 0 |
 
 ***
 
@@ -28,87 +28,13 @@ This corpus comes from the crowdsourced online dictionary Glosbe. Currently we h
 
 ## **Corpus Processing**
 
-The process involves several steps to extract, scrape, clean and format the data:
-
-1. **Extract Common Words**:
-```bash
-python work/scripts/extract_words.py
-```
-
-**Output**: Generates list of most frequent Amis words from reference corpus
-
-2. **Scrape Translations**:
-```bash
-python work/scripts/scrape_zh.py
-```
-
-**Output**: Raw translation pairs saved to JSON
-
-3. **Deduplicate Translations**:
-```bash
-python work/scripts/dedupe_zh.py
-```
-
-**Output**: Cleaned JSON file with unique translation pairs
-
-4. **Convert to XML Format**:
-```bash
-python work/scripts/make_xml.py
-```
-
-**Output**: FormosanBank XML format in `Final_XML/amis_glosbe.xml`
-
-5. **Validate XML** (Optional):
-```bash
-python work/scripts/validate.py
-```
-
-**Output**: Validation report of XML structure
-
-6. **Clean XML** (Optional):
-```bash
-   python work/scripts/clean_xml.py
-```
-
-**Output**: Standardized punctuation and cleaned XML
-
-7. **Update XML**
-
-Replace-all: <FORM> -> <FORM kindOf="original">
-
-8. **Add Traditional Chinese**
-
-This was done semi-automatically. It's not easily reproducible.
-
-9. **Standardize**
-
-It looks like it's Ortho94 (mostly). But conversion won't change anything relevant.
-
-```bash
-   python ../FormosanBank/QC/utilities/standardize.py --corpora_path Final_XML --copy
-```
-
-9. **Remove some colons**
-
-Colons are used for introducing quotes in this text. However, colons have a specific meaning in the standard orthography, so replace with commas. 
-
-```bash
-   python work/scripts/fix_colon_quote.py
-```
-
-10. **Add IPA**
-
-The IPA for Ortho94 is different from Ortho113, so go ahead and use it for the "original" tier.
-
-```bash
-   python ../FormosanBank/QC/utilities/add_phonology.py --corpora_path Final_XML --orthography Ortho94
-```
+The eight published XML files separate lexical entries from translation-memory entries and are organized by ISO 639-3 language code. The retained processing materials include scripts for scraping the Amis-Mandarin pair, deduplicating results, merging translations, building XML, fixing punctuation, and validating the output. The published files also include standardized FORM and PHON tiers where available.
 
 ***
 
 ## **Corpus Notes**
 
-Because this is a crowd-sourced dictionary, its accuracy is uncertain.
+Because this is a crowdsourced dictionary and translation memory, the linguistic accuracy and the rights attached to individual entries can vary. Treat entries as leads for review rather than as expert-verified dictionary records.
 
 ***
 
@@ -120,7 +46,7 @@ Because this is a crowd-sourced dictionary, its accuracy is uncertain.
 
 ## **Copyright**
 
-CC-BY-SA
+The current XML records Glosbe and its contributors or source corpora as rights holders. The material was collected for private research review, and redistribution remains subject to Glosbe's terms and any third-party source rights. This is not a blanket Creative Commons corpus.
 
 ***
 
@@ -128,4 +54,4 @@ CC-BY-SA
 
 In accordance with our [Terms of Use](../../additional-resources/terms-of-use.md), if you use this corpus or any product derived from this corpus in any publication, you must cite both FormosanBank and:
 
-* Glosbe. (n.d.). Glosbe dictionary. https://glosbe.com. Accessed 2025.
+* Glosbe. (2026). *Glosbe [language]-[translation language] dictionary and translation memory*. Cite the language pair, URL, and retrieval date recorded in the XML file used.

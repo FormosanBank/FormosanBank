@@ -92,6 +92,7 @@ In addition to the thorough work done during processing to ensure the resulting 
 ### **Processing Notes**
 
 * Given the multilingual nature of Wikipedia articles, users should note the presence of occasional non-Formosan text (e.g., English characters or Chinese text). While these have been minimized, they may still appear at low frequencies.
+* The current Wikipedia XML files do not record a `dialect` attribute. New and repaired files should use `dialect="unknown"` when the source variety cannot be identified, as required by the current validator.
 
 ***
 
@@ -130,7 +131,7 @@ Please beware that due to the nature of the wikipedias corpus (being collected f
   * Sakizaya: [https://szy.wikipedia.org](https://szy.wikipedia.org)
   * Seediq: [https://trv.wikipedia.org](https://trv.wikipedia.org)
   * Paiwan: [https://pwn.wikipedia.org](https://pwn.wikipedia.org)
-* The repo containing the ePark corpus in FormosanBank as well as the code to reconstruct the corpus can be found [here](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/Wikipedias).
+* The corpus XML and retained processing materials are available [in FormosanBank](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/Wikipedias).
 
 ***
 
@@ -144,10 +145,6 @@ According to [Wikipedia:Copyrights](https://en.wikipedia.org/wiki/Wikipedia:Copy
 
 ### Citation
 
-In accordance with our [Terms of Use](../../additional-resources/tja-kipapawlingaven-a-cekaw-tua-ziriu-imaza.md), if you use this corpus or any product derived from this corpus in any publication, you must cite both FormosanBank and the wikipedias that were used (corresponding to the specific languages):&#x20;
+In accordance with our [Terms of Use](../../additional-resources/tja-kipapawlingaven-a-cekaw-tua-ziriu-imaza.md), if you use this corpus or any product derived from it, cite FormosanBank and each Wikipedia language edition used. The current XML records a per-language citation in this form:
 
-* **Amis**: "_Wikipedia: The free encyclopedia \[Amis version]_. (2004, July 22). FL: Wikimedia Foundation, Inc. Retrieved Dec, 2024, from [https://ami.wikipedia.org](https://ami.wikipedia.org)"
-* &#x20;**Atayal**: "_Wikipedia: The free encyclopedia \[Atayal version]_. (2004, July 22). FL: Wikimedia Foundation, Inc. Retrieved Dec, 2024, from [https://tay.wikipedia.org](https://tay.wikipedia.org)"&#x20;
-* **Seediq**: "_Wikipedia: The free encyclopedia \[Seediq version]_. (2004, July 22). FL: Wikimedia Foundation, Inc. Retrieved Dec, 2024, from [https://trv.wikipedia.org](https://trv.wikipedia.org)"
-* **Paiwan**: "_Wikipedia: The free encyclopedia \[Paiwan version]_. (2004, July 22). FL: Wikimedia Foundation, Inc. Retrieved Dec, 2024, from [https://pwn.wikipedia.org](https://pwn.wikipedia.org)"
-* **Sakizaya**: "_Wikipedia: The free encyclopedia \[Sakizaya version]_. (2004, July 22). FL: Wikimedia Foundation, Inc. Retrieved Dec, 2024, from [https://szy.wikipedia.org](https://szy.wikipedia.org)"
+* Wikipedia contributors. (2026). *[Language] Wikipedia*. Wikimedia Foundation. Retrieved June 9, 2026, from the corresponding language-edition URL.

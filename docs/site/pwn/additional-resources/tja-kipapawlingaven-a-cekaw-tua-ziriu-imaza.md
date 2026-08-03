@@ -4,6 +4,10 @@ icon: book-section
 
 # tja kipapawlingaven a cekaw tua ziriu imaza
 
+{% hint style="warning" %}
+This partial Paiwan translation is provided for convenience. The canonical [English Terms of Use](https://ai4commsci.gitbook.io/formosanbank/additional-resources/terms-of-use) and [AI Use Addendum](https://ai4commsci.gitbook.io/formosanbank/additional-resources/ai-use-and-commercial-licensing) control. FormosanBank is a mixed-source repository, so there is no blanket right to redistribute all corpus material.
+{% endhint %}
+
 maqati a malaing a macekaw sa sicekaukau tua ziriu itua FormosanBank, ljakua izua matjapida a tjara uli tja sikinemenem.
 
 ***

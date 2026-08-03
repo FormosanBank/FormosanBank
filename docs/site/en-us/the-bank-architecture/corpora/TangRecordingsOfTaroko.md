@@ -1,6 +1,6 @@
-# Formosan-Tang-Recordings-of-Taroko
+# Tang Recordings of Taroko
 
-These audio files were collected by Prof. Apay Tang, a member of the Truku tribe and a prominent perservationist and revitalizationist in the community. While permanently archived at Paradisec, Prof. Tang graciously agreed to include the audio in FormosaBank.
+These audio files were collected by Prof. Apay Tang, a member of the Truku tribe and a prominent preservationist and revitalizationist in the community. While permanently archived at Paradisec, Prof. Tang graciously agreed to include the audio in FormosanBank.
 
 None of the audio are transcribed. There is slightly more meta-data at Paradisec, but not much.
 

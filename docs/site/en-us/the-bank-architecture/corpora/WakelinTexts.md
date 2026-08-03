@@ -38,7 +38,7 @@ This uses an unusual orthography, which has not yet been identified.
 
 # Copyright
 
-Authors cannot be located. This text was previously licensed as CC-BY-ND by publisher, which we have interpreted liberally. If you are a copyright owner, please reach out to us.
+The current public XML records this corpus as CC BY-NC-ND. The authors could not be located. If you are a copyright owner, please reach out to us.
 
 ***
 

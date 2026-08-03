@@ -6,19 +6,19 @@ icon: hand-holding-hand
 
 ### 您必須做什麼？
 
-您必須同意您的資料以 CC-BY-NC ([英文](https://creativecommons.org/licenses/by-nc/4.0/deed.en)；[中文](https://creativecommons.org/licenses/by-nc/4.0/deed.zh-hant)) 的開放原始碼授權條款發表。如果您偏好不同的開放源碼授權，請與我們討論
+您必須同意您的資料依創用CC CC-BY-NC授權條款（[英文](https://creativecommons.org/licenses/by-nc/4.0/deed.en)；[中文](https://creativecommons.org/licenses/by-nc/4.0/deed.zh-hant)）發布。如果您偏好不同的授權，請與我們討論。
 
 ***
 
 ### 人們可以如何使用您的資料？ <a href="#what-can-people-do-with-your-data" id="what-can-people-do-with-your-data"></a>
 
-任何人都可以為任何目的使用 FormosanBank 的資料，但有以下限制：
+任何人都可以依[使用條款](shi-yong-tiao-kuan.md)及[AI使用附錄](https://ai4commsci.gitbook.io/formosanbank/additional-resources/ai-use-and-commercial-licensing)，將捐贈資料用於允許的非商業目的，但有以下限制：
 
 * 任何人不得出售您的資料。
-* 任何人不得出售使用您的資料所訓練的人工智慧。
+* 商業AI使用須事先取得書面許可。
 * 任何使用您資料的人都必須承認您的工作。
 
-只要遵守這些規則，任何人都可以將您的資料用於科學研究、文化產品、創造人工智慧或任何其他目的。
+只要遵守這些規則，任何人都可以將您的資料用於科學研究、文化產品、非商業AI研究及其他允許的非商業目的。
 
 有些作者希望允許商業用途。如果您希望允許商業用途，請與我們討論。
 

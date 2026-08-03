@@ -72,6 +72,8 @@ Read-only with respect to the corpus XML — it never modifies the data. For eac
 - `bigram_heatmap.png`, `top_bigrams.png`
 - `punctuation_frequencies.png`, `top_words.png`
 
+An inventory with no punctuation still produces `punctuation_frequencies.png`, with a clear "No punctuation found" message instead of failing during visualization.
+
 ## When to run it
 
 In the QC pipeline this runs **after** the standard tier exists (create it with [standardize.py](standardize.md) `--copy` if needed) and after text validation, and **before** the reference-comparison validators. See the [Running an Audit](../running-an-audit.md) and [Porting a Corpus In](../porting-a-corpus.md) workflows for placement.

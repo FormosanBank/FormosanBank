@@ -37,6 +37,10 @@ These validators print a compact **per-rule summary** to the terminal and write 
 Not every validator uses this framework. [validate_dialect.py](validate-dialect.md), [validate_orthography.py](validate-orthography.md), [validate_vocabulary.py](validate-vocabulary.md), and [validate_duplicate_sentences.py](validate-duplicate-sentences.md) print their own reports and **always exit 0** — they are informational. Each page says which kind it is.
 {% endhint %}
 
+### Pull request baseline behavior
+
+The XML validation workflow runs `validate_xml.py`, `validate_text.py`, and `validate_glosses.py` on every added or modified file under `Corpora/*/XML/`. For a modified legacy file, `compare_findings.py` compares candidate and base findings by `rule_id`, `location`, `language`, and `character`; only newly introduced HARD findings block the pull request. An added file has an empty baseline and therefore must have no HARD findings. On pushes to `main`, the full-corpus run remains informational and uploads its findings as a longitudinal cleanup baseline.
+
 ## The `search_by` pattern
 
 Most validators and several utilities share a `search_by` positional with three modes:
@@ -106,7 +110,7 @@ Everything in the **cleaning & standardization** pipeline — plus the [fix-up u
 ### Cleaning
 
 * [Manual edits](manual-edits.md) — capture & replay reproducible hand edits (runs first)
-* [clean_xml.py](clean-xml.md) — unicode/entity normalization & sentinels
+* [clean_xml.py](clean-xml.md): Unicode, entity, punctuation, and translation-metadata normalization
 * [clean_audio.py](clean-audio.md) — remove broken `<AUDIO>` entries
 * [clean_filepaths.py](clean-filepaths.md) — sanitize cross-platform filenames
 * [remove_duplicate_sentences.py](remove-duplicate-sentences.md) — drop duplicate `<S>`
@@ -126,6 +130,7 @@ Everything in the **cleaning & standardization** pipeline — plus the [fix-up u
 * [Fix-up utilities](fix-up-utilities.md) — `fix_dialects`, `fix_ids`, `fix_multiple_translations`
 * [sample_sentences.py](sample-sentences.md) — random `<S>` sample for human review
 * [find_duplicate_sentences.py](find-duplicate-sentences.md) — cross-corpus duplicate detection
+* [OCR Review Tool](ocr-review-tool.md): guided, resumable human review of OCR-derived XML
 
 ### Audio quality & MT
 

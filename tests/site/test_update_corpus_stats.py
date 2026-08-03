@@ -37,3 +37,11 @@ def test_resolve_hard_errors_when_missing(tmp_path):
     with pytest.raises(SystemExit) as exc:
         ucs.resolve_stats_dir(cli_stats_dir=None, env={}, repo_root=tmp_path)
     assert "stats dir not found" in str(exc.value)
+
+
+def test_col_header_labels_blank_multi_dialect_as_unspecified():
+    assert ucs.col_header("ami", "") == "Amis<br>unspecified"
+
+
+def test_col_header_does_not_add_dialect_to_single_dialect_language():
+    assert ucs.col_header("ckv", "") == "Kavalan"

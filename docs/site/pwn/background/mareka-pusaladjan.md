@@ -15,12 +15,12 @@ masalu tua kinateveteveljan a pavai tua ziriu namaitucu a pazangal a vinecikan p
 masalu uta tua zuma a sinsi katua sitjaracaquan a kai a caucau:
 
 * [Li-May Sung](https://drive.google.com/file/d/1pkqbvFYHUydbiGRhPIgkBigkh2hpSCYi/view)&#x20;
-* [Indigenous Languages Research and Development Foundation](https://www.ilrdf.org.tw/en/) (ILRDF)
-* [劉宇陽](https://ced.utaipei.edu.tw/teacher/info?id=100103)
+* [Indigenous Languages Research and Development Foundation](https://www.ilrdf.org.tw/) (ILRDF)
+* [劉宇陽](https://utsus.utaipei.edu.tw/p/412-1112-9242.php?Lang=zh-tw)
 * Juan T. F. & Ruan X.
 * [Victoria Rau](https://rau.ccu.edu.tw/)
 * Wilang Yutas
-* [Henry Chang](https://www.ling.sinica.edu.tw/main/en?act=researcher_manager\&code=show_member\&memberID=11)
+* [Henry Chang](https://www.ling.sinica.edu.tw/main/en?act=researcher_manager&code=show_member&memberID=11)
 * Robert Early
 
 ***
@@ -28,4 +28,3 @@ masalu uta tua zuma a sinsi katua sitjaracaquan a kai a caucau:
 ### a paysu napaqeljing
 
 masalu uta tua kikingkai pinaka NSF kemasi Amilika. na ljemaui a pavai ta paisu sa papupicul tua aicu a venkatj. avansika namasan pazangal a maqepuqepu a tja kinatevteveljan a milazek katua kiruku taicu a kemacalisian.
-

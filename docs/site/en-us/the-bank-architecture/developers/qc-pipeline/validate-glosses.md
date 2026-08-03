@@ -10,7 +10,7 @@ icon: circle-check
 
 Only word-segmented corpora carry a `W`/`M` tier, and that tier has its own correctness conditions that the schema cannot express: word counts should match the sentence, morpheme counts should match the word's segmentation markers, infix morphemes need angle-bracket glosses, clitic boundaries must propagate from word to morpheme, and every morpheme needs a translation. `validate_glosses.py` checks all of these.
 
-It is a **stage-2** validator that runs *only* on corpora with `W`/`M` segmentation. Unsegmented corpora have nothing for it to check (most rules simply no-op).
+It is a **stage-2** validator that runs only on corpora with `W`/`M` segmentation. On an unsegmented corpus, `V060` would report every sentence's nonzero word count against zero `W` children, so the result would not be useful.
 
 ## How it works
 
@@ -83,7 +83,7 @@ If no files match the selection, it prints `No XML files matched the selection.`
 
 ## When to run it
 
-Run `validate_glosses.py` **last** in the validator sequence, and **only for corpora that have `W`/`M` segmentation** — on unsegmented corpora the rules no-op and it tells you nothing. It assumes well-formed XML, so run [validate_xml.py](validate-xml.md) first; it also pairs naturally with [validate_text.py](validate-text.md), which owns the text-content `W`/`M` checks (parens/slashes, null propagation) and the `S`->`W` reconstruction rule `V141`.
+Run `validate_glosses.py` **last** in the validator sequence, and **only for corpora that have `W`/`M` segmentation**. On an unsegmented corpus, `V060` produces expected but meaningless `W`-count mismatches. It assumes well-formed XML, so run [validate_xml.py](validate-xml.md) first; it also pairs naturally with [validate_text.py](validate-text.md), which owns the text-content `W`/`M` checks (parens/slashes, null propagation) and the `S`->`W` reconstruction rule `V141`.
 
 ## Related
 

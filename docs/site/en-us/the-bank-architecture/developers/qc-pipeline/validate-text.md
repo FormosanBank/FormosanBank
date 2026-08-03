@@ -8,7 +8,7 @@ icon: circle-check
 
 ## What it's for
 
-Where [validate_xml.py](validate-xml.md) checks that a file is *shaped* correctly, `validate_text.py` checks that the *text inside* the elements is clean. It catches the residue that survives ingestion and cleaning: curly smart quotes, doubled punctuation, footnote leaks from scraped sources, parentheses and slashes that escaped into token/morpheme forms, leftover `=` clitic markers, and inconsistent use of the null symbol `∅` across tiers.
+Where [validate_xml.py](validate-xml.md) checks that a file is *shaped* correctly, `validate_text.py` checks that the *text inside* the elements is clean. It catches the residue that survives ingestion and cleaning: curly smart quotes, doubled punctuation, footnote leaks from scraped sources, parentheses and slashes that need review, leftover `=` clitic markers, and inconsistent use of the null symbol `∅` across tiers.
 
 It is **stage 2** of the QC pipeline and consolidates two retired single-purpose scripts: the legacy `validate_punct.py` (punctuation checks, now `V110`–`V115`) and `non_ascii_counts.py` (non-ASCII counting, now `V116`). It assumes its input is already well-formed XML — run [validate_xml.py](validate-xml.md) first.
 
@@ -23,7 +23,6 @@ Tiers read: `FORM` (distinguishing `kindOf="original"` vs `kindOf="standard"`) a
 | Rule | Meaning |
 |------|---------|
 | `V120` | Null symbol `∅` in an `S`-level standard FORM (unresolved elision marker). |
-| `V121` | Parentheses or `/` in a `W`- or `M`-level FORM (stray annotation). |
 | `V123` | Null in a `W`/`M` standard FORM must also appear in that element's sister `original` FORM. |
 | `V124` | Null in an `M` FORM must propagate up to the parent `W` FORM **and** the `S`-level original FORM. |
 | `V125` | Null in a `W` FORM must appear in some child `M` FORM **and** the `S`-level original FORM. |
@@ -45,7 +44,7 @@ Tiers read: `FORM` (distinguishing `kindOf="original"` vs `kindOf="standard"`) a
 | `V114` | Two or more consecutive spaces in `S`-standard FORM. |
 | `V115` | Mismatched smart-quote pairs in `S`-standard FORM. |
 | `V116` | Non-ASCII characters in FORM (excluding CJK and the language's orthography letters; skips `original` tier). |
-| `V122` | Parentheses or `/` anywhere in FORM or TRANSL. |
+| `V122` | Parentheses or `/` anywhere in FORM or TRANSL. This is review-only so source records are not rejected solely for these characters. |
 | `V126` | `=` (leftover clitic marker) in `S`-standard FORM. |
 | `V132` | HTML entity-like residue (`&amp;`, `&lt;`, …) in FORM or TRANSL — likely double-encoded source. |
 | `V133` | `-` (leftover segmentation marker) in `S`-standard FORM. |

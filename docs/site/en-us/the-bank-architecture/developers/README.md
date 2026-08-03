@@ -10,7 +10,7 @@ This section is dedicated to developers who wish to contribute to the project, b
 
 This section is designed to provide technical documentation, guidelines, and resources to help developers navigate and work with FormosanBank efficiently. Here’s what you can expect:
 
-* **Data Access & API Usage** – Learn how to interact with the FormosanBank datasets, including retrieving, processing, and integrating data.
+* **Data Access & Tooling** – Learn how to retrieve, process, and integrate FormosanBank data and audio.
 * **Codebase & Repository Structure** – Understand the structure of the FormosanBank repositories and how to contribute to the development.
 * **Audio Processing & NLP** – Explore how to work with the provided audio and text corpora, including tools for transcription, speech synthesis, and natural language processing (NLP).
 * **Machine Translation** – Learn how FormosanBank XML is converted into released parallel corpora and machine translation experiments.

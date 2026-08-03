@@ -6,24 +6,24 @@ icon: hand-holding-hand
 
 ### **What must you do?**
 
-You must agree for your data to be published with the open-source license **CC-BY-NC** ([English](https://creativecommons.org/licenses/by-nc/4.0/deed.en) | [Chinese](https://creativecommons.org/licenses/by-nc/4.0/deed.zh-hant)). If you prefer a different open-source license, please discuss with us.
+You must agree for your data to be published under the Creative Commons **CC-BY-NC** license ([English](https://creativecommons.org/licenses/by-nc/4.0/deed.en) | [Chinese](https://creativecommons.org/licenses/by-nc/4.0/deed.zh-hant)). If you prefer a different license, please discuss it with us.
 
 ***
 
 ### **What can people do with your data?**
 
-Anyone can use data in FormosanBank for any purpose, with the following restrictions:
+Anyone can use contributed data for permitted noncommercial purposes, subject to the [Terms of Use](terms-of-use.md) and [AI Use Addendum](ai-use-and-commercial-licensing.md), with the following restrictions:
 
 * Nobody can sell your data.
-* Nobody can sell artificial intelligence trained using your data.
+* Commercial AI use requires prior written permission.
 * Anyone who uses your data must acknowledge your work.
 
 As long as they follow those rules, anyone may use your data for:
 
 * Scientific research
 * Cultural products
-* Creating artificial intelligence
-* Any other purpose
+* Noncommercial artificial intelligence research
+* Other permitted noncommercial purposes
 
 Some authors wish to allow for commercial uses. If you wish to allow commercial uses, please discuss with us.
 

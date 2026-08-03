@@ -2,9 +2,9 @@
 icon: police-box
 ---
 
-# Septemper 2023
+# September 2023
 
-Welcome to the Septemper 2023 edition of the FormosanBank newsletter! Here, we recap key achievements from the first months of our project, as we laid the groundwork for creating a machine-readable corpus of the Indigenous Formosan languages.
+Welcome to the September 2023 edition of the FormosanBank newsletter! Here, we recap key achievements from the first months of our project, as we laid the groundwork for creating a machine-readable corpus of the Indigenous Formosan languages.
 
 1. **Securing Funding**\
    We are thrilled to announce a 3-year grant from the U.S. National Science Foundation, which enables us to hire staff and conduct essential research trips. This support will accelerate our efforts to build and expand the FormosanBank corpus.

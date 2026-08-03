@@ -1,6 +1,6 @@
 # The Montgomery Texts
 
-This repository contains the 3 glossed texts [found here](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/MontgomeryTexts/CodeAndDocs/Original.pdf) from 
+This corpus contains three Amis texts with word-level segmentation and English translations, digitized from [this publication](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/MontgomeryTexts/CodeAndDocs/Original.pdf):
 
 > Tamih and Montgomery, Robert L. (1962) Amis text. Work Papers of the Summer Institute of Linguistics, University of North Dakota Session: Vol. 6, Article 6. 10.31356/silwp.vol06.06
 
@@ -64,7 +64,7 @@ tsiwro → ciwlo(“elders” / 長老— loanword  )
 
 # Copyright
 
-Authors cannot be located. This text was previously licensed as CC-BY-ND by publisher, which we have interpreted liberally. If you are a copyright owner, please reach out to us.
+The current public XML records this corpus as CC BY-NC-ND. The authors could not be located. If you are a copyright owner, please reach out to us.
 
 ***
 

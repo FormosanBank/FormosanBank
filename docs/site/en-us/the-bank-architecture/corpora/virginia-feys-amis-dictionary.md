@@ -72,8 +72,6 @@ The processing pipeline for converting the dictionary data into FormosanBank’s
 
 ### **Corpus Notes**
 
-This section will be used to describe any notes regarding the corpus (e.g. explaining the presence of characters that aren't part of the standard orthography)
-
 * According to Li et al. (2024), "Fey’s (1986) dictionary ... misses certain phonemic contrasts, such as the distinction between the glottal stop and the pharyngealized stop, for example, e.g., Central Amis ’op’op ‘frog’ vs. qopo ‘assemble’." However, the repo from which this corpus is derived states that "Thanks to Mr. Wu Ming-yi for rewriting the old Catholic spelling into the newer spelling of the original Minzu Kung Hui version." It is not clear whether this addressed the concerns raised by Li and colleagues, but the orthography seems to be a good match for our reference corpus.
 * There are often multiple translations into the same non-Formosan language for a particular sentence. Thus do not assume there is only one element per target language.
 
@@ -90,7 +88,7 @@ This section will be used to describe any notes regarding the corpus (e.g. expla
 ### Access Details
 
 * The original digital online dictionary that was used to generate the corpus in FormosanBank can be found here: [https://github.com/miaoski/amis-data](https://github.com/miaoski/amis-data)
-* The repo containing the ePark corpus in FormosanBank as well as the code to reconstruct the corpus can be found [here](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/Virginia_Fey_Dictionary).
+* The corpus XML and retained processing materials are available [in FormosanBank](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/Virginia_Fey_Dictionary).
 
 ***
 
@@ -103,6 +101,8 @@ According to [https://github.com/miaoski/amis-data](https://github.com/miaoski/a
 > 感謝吳明義老師將天主教的舊式拼法，改寫成原民會版本的新式拼法。
 
 > This work is licensed under the Creative Commons 姓名標示-非商業性 3.0 Unported License. To view a copy of this license, visit [http://creativecommons.org/licenses/by-nc/3.0/deed.zh\_TW](http://creativecommons.org/licenses/by-nc/3.0/deed.zh_TW).
+
+The public XML currently records CC BY-SA, which conflicts with the upstream CC BY-NC notice quoted above. Until that metadata is reconciled, users should follow the stricter upstream CC BY-NC terms.
 
 ***
 

@@ -2,9 +2,9 @@
 
 ### **Overview**
 
-The NTU Paiwan ASR Corpus is a linguistically rich dataset created as part of the efforts to enrich **FormosanBank**. The corpus was developed through a collaborative effort with one of the main collaborators of FormosanBank, [**Dr. Sung**](https://drive.google.com/file/d/1pkqbvFYHUydbiGRhPIgkBigkh2hpSCYi/view) from National Taiwan University and represents a pioneering contribution.
+The NTU Paiwan ASR Corpus contains Paiwan speech data collected by Professor Li-May Sung at National Taiwan University. It covers read text and spontaneous speech collected over two field years.
 
-This corpus includes mostly read speech aligned with its corresponding text in addition to a small collection of spontaneous speech recordings. It is designed to support language preservation, linguistic research, and, notably, the development of automated speech recognition (ASR) tools tailored specifically for Paiwan.
+The current public corpus contains 260 XML files from 16 speakers across Northern, Central, Eastern, and Southern Paiwan. Speaker names are pseudonyms, and the two field years represent distinct participants.
 
 #### **Content Summary**
 
@@ -38,22 +38,9 @@ This corpus includes mostly read speech aligned with its corresponding text in a
 
 ### Corpus Processing
 
-The data was processed thoroughly to ensure compatibility with FormosanBank standards while ensuring accuracy and usability. The corpus collected by Dr. Sung was structured by associating each topic with its corresponding audio recordings and transcriptions (for read speech) for each speaker.  This data was then processed to transform the data into [FormosanBank XML Format](../formosanbank-xml-format.md). Below is a detailed description of the process.
+Read-speech XML was built from ELAN sources. The second field year and spontaneous-speech data were built with `CodeAndDocs/build_y2_and_spontaneous.py`, followed by the standard cleaning, orthography, phonology, and validation steps. The public scripts apply pseudonyms and contain no real participant names.
 
-1. **XML Conversion**
-   * the transcribed text files were processed to create the XML files out of, ensuring compatibility with other corpora in FormosanBank.
-   * Each topic for each of the participant represent on file, and each file contained the following elements:
-     * `<FORM>`: Containing the original sentence in Paiwan
-     * `<AUDIO>`: Name of the audio file associated with the sentence
-2. **Cleaning and Standardization**
-   * XML files underwent further cleaning to remove empty elements and standardize punctuation and orthography.
-   * HTML escape codes were replaced with the corresponding characters, and a `kindOf="standard"` attribute was added to `<FORM>` elements. The original text would be `<FORM kindOf="original">`  and any text that will be standardized from this point will be in `<FORM kindOf="standard">`
-3. **Quality Control**
-   * Several QC steps were performed, including:
-     * **Cross-referencing word lists and API results** to ensure all entries were successfully processed.
-     * **Validation of XML structure** to confirm compliance with the FormosanBank schema.
-     * **Manual checks of random samples** to verify data integrity.
-     * **Character Frequency Analysis** to spot any abnormalities in the orthography with [the official orthography](https://yongfu.name/temp-data/pdf/writingsystemsdoc.pdf) as well as [the ILRDF Dictionaries Corpus](ilrdf-dictionaries.md) as references.
+Audio is hosted on Hugging Face rather than committed to Git. Running the corpus's `download_audio_data.sh` downloads the full recordings and uses `CodeAndDocs/extract_audio_clips.py` to recreate the sentence-level clips referenced by the XML. Complete reconstruction also requires the private raw recordings and speaker key, which are intentionally not public.
 
 ***
 
@@ -71,14 +58,13 @@ The NTU Paiwan ASR Corpus is a crucial resource for advancing research and techn
 
 ### **Access Details**
 
-* The corpus as part of FormosanBank can be accessed from [here](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/NTU_Paiwan_ASR/XML).
-* The repo containing the ePark corpus in FormosanBank as well as the code to reconstruct the corpus can be found [here](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/NTU_Paiwan_ASR/CodeAndDocs).
+* The XML, processing documentation, and audio download script are available [in FormosanBank](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/NTU_Paiwan_ASR).
 
 ***
 
 ### **Copyright**
 
-Since this corpus was collected as part of Formosan Bank in the first place, the copyright restrictions applied to it are the ones governing FormosanBank (see below).
+The current public XML records this corpus as CC BY. The central FormosanBank terms and AI-use addendum also apply.
 
 ***
 
@@ -93,4 +79,3 @@ This corpus was developed through a collaborative effort led by **Dr. Sung** at 
 In accordance with our [Terms of Use](../../additional-resources/terms-of-use.md), if you use this corpus or any product derived from this corpus in any publication, you must cite both FormosanBank and:
 
 * Le Ferrand, É., Prud'hommeaux, E., Hartshorne, J. K., & Sung, L.-M. (2024). _NTU Paiwan ASR Corpus_. _Electronic Resource_.
-

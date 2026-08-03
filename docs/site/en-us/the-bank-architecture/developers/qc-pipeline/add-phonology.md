@@ -14,7 +14,8 @@ icon: layer-group
 
 For each file it reads `TEXT/@xml:lang` (mapped to a language name) and `TEXT/@dialect`, then loads `Orthographies/Ortho113/<Language>.tsv`. That TSV has a `letter` column plus value columns; the column actually used is chosen by whether the language is multi-dialect (per `dialects.csv`):
 
-- **Multi-dialect**: the `dialect` attribute selects the column, falling back to a `default` column.
+- **Explicit override**: `--target_column` selects that value column for the standard Ortho113 table and takes precedence over dialect detection.
+- **Multi-dialect**: without an override, the `dialect` attribute selects the column, falling back to a `default` column.
 - **Single-dialect**: the sole value column, else `IPA`, else `default`.
 
 It builds an ordered list of `(letter → phoneme)` pairs (rows whose value is the literal `NA` are skipped), then for every `FORM[@kindOf="standard"]`:
@@ -50,15 +51,15 @@ python QC/utilities/add_phonology.py \
 | `--corpora_path` | (required) | Corpora root (iterated entry-by-entry), a corpus dir, or a single `.xml` file. |
 | `--orthography` | none | Folder name under `Orthographies/` used to also transcribe the **original** tier. Must exist. |
 | `--language` | none | Restrict to files whose path matches this language name. |
-| `--target_column` | none | Accepted by the parser; column selection is otherwise auto-detected from dialect/language. |
+| `--target_column` | none | Force a specific Ortho113 value column for the standard tier; otherwise auto-detect from dialect/language. |
 
 ### Single-file wrapper
 
-`QC/utilities/add_phonology_single_file.py` runs `add_phonology.py` on one file via a temp directory, copying the result back. Flags: `--xml_path`, `--orthography`, `--target_column`, `--language`.
+`add_phonology.py --corpora_path <file.xml>` can operate on one XML file directly. `QC/utilities/add_phonology_single_file.py` is still available as a wrapper for workflows that prefer an explicit `--xml_path`; it runs `add_phonology.py` on one file via a temp directory, copying the result back. Flags: `--xml_path`, `--orthography`, `--target_column`, `--language`.
 
 ## Output & side effects
 
-**Modifies XML in place.** A `PHON` element is inserted after each processed `FORM`, and each file is re-serialized and overwritten. Inspect the diff before committing — confirm the phonemic strings look right and that stray `*` markers (unmapped characters) are not hiding orthography problems. The standard tier's `Ortho113/<Language>.tsv` must exist for the language, or the file is skipped with a warning.
+**Modifies XML in place.** A `PHON` element is inserted after each processed `FORM`, and each file is re-serialized and overwritten. The serializer preserves inline mixed content without inserting formatting whitespace inside it. Inspect the diff before committing. Confirm the phonemic strings look right and that stray `*` markers (unmapped characters) are not hiding orthography problems. The standard tier's `Ortho113/<Language>.tsv` must exist for the language, or the file is skipped with a warning.
 
 ## When to run it
 
