@@ -307,6 +307,24 @@ def test_find_example_regions_splits_on_numbered_labels():
     assert regions[0].translations == ["Walk with him!", "Drive this car!"]
 
 
+def test_possessive_apostrophes_in_prose_are_not_translations():
+    """Regression: prose apostrophes were being counted as free translations.
+
+    On a real paper this turned "Baker and Stewart's analysis" into a
+    translation and inflated one example's count from 2 to 12, which then
+    drove a bogus G013 "translations collapsed" finding.
+    """
+    lines = [
+        "(1)",
+        "mi-lingatu ø-ci aki",
+        "AV-begin NOM-PPN Aki",
+        "'Aki began.'",
+        "This follows Baker and Stewart's analysis of Chang's data.",
+    ]
+    regions = _source_align.find_example_regions(lines)
+    assert regions[0].translations == ["Aki began."]
+
+
 def _align_clean(tmp_path: Path, xml: str = CLEAN_XML):
     source = tmp_path / "paper.txt"
     source.write_text(SOURCE_TXT, encoding="utf-8")
@@ -325,6 +343,33 @@ def test_g021_reports_source_example_missing_from_xml(tmp_path):
     g021 = [f for f in findings if f.rule_id == "G021"]
     assert len(g021) == 1
     assert "(2)" in g021[0].message
+
+
+def test_repeated_source_example_is_not_reported_as_dropped(tmp_path):
+    """A paper that repeats an example must not report the repeat as dropped.
+
+    Regression: the first implementation credited only each sentence's single
+    best-matching candidate, so the second appearance of a repeated example
+    looked unmatched. On the Amis SVC corpus that produced 8 spurious G021
+    rows out of 14 — in the bucket a reviewer trusts most.
+    """
+    source = tmp_path / "paper.txt"
+    source.write_text(
+        SOURCE_TXT + "\n(3)\nPa~pa<mi>kat-en k-u=ni na-a-pa paliding-∅!\n"
+        "CAU~<IMP>walk-UV NOM-NCM=this SG-LNK-SG car-OBL\n'Walk with him!'\n",
+        encoding="utf-8",
+    )
+    xml_path = tmp_path / "corpus.xml"
+    xml_path.write_text(CLEAN_XML, encoding="utf-8")
+    trees = [(xml_path, _tree(CLEAN_XML))]
+    lines, extractor = _source_align.extract_lines(source)
+    alignment = _source_align.align(trees, lines, extractor)
+    findings = _source_align.source_findings(trees, alignment, source)
+    dropped = {
+        f.message.split()[2] for f in findings if f.rule_id == "G021"
+    }
+    # (1) and its repeat (3) are both present; only (2) is genuinely absent.
+    assert dropped == {"(2)"}
 
 
 def test_g020_reports_xml_sentence_absent_from_source(tmp_path):

@@ -39,8 +39,13 @@ _ASCII_OF_INTEREST = set("^_:'*")
 
 # An interlinear example is conventionally introduced by a bracketed number.
 _EXAMPLE_LABEL = re.compile(r"^\s*\(?(\d{1,3})([a-z])?\)")
-# Free translations are conventionally single-quoted.
-_QUOTED = re.compile(r"['‘’“”\"]([^'‘’“”\"]{4,})['‘’“”\"]")
+# A free translation is a line that *opens* with a quote mark. Matching quotes
+# anywhere in the line instead would treat every possessive apostrophe in the
+# surrounding prose as a translation ("Baker and Stewart's analysis" yielding
+# "s analysis"), which on a real paper inflated one example's translation
+# count from 2 to 12. U+2019 is excluded as an opener precisely because it is
+# the possessive apostrophe.
+_TRANSL_LINE = re.compile(r"^\s*[‘'\"“]\s*([^'‘’\"”]{3,})\s*['’\"”]")
 
 
 # ---------------------------------------------------------------------------
@@ -116,7 +121,12 @@ class ExampleRegion:
 
     @property
     def translations(self) -> list[str]:
-        return [m.group(1).strip() for line in self.lines for m in _QUOTED.finditer(line)]
+        out: list[str] = []
+        for line in self.lines:
+            match = _TRANSL_LINE.match(line)
+            if match:
+                out.append(match.group(1).strip())
+        return out
 
 
 def build_candidates(lines: list[str], window: int = 2) -> list[SourceCandidate]:
@@ -193,6 +203,47 @@ def _s_text_for_matching(s: etree._Element) -> str:
     return " ".join(words)
 
 
+def mark_matched_regions(
+    regions: list[ExampleRegion],
+    sentence_skels: list[str],
+    threshold: int = DEFAULT_THRESHOLD,
+) -> None:
+    """Mark every region that contains any matched sentence.
+
+    Deliberately independent of which candidate a sentence matched *best*.
+    Papers repeat examples across sections — the same gloss appears as (6) in
+    one section and (22) in another — and a best-match-only pass credits just
+    one of them, reporting the duplicate as a dropped example. That produced
+    8 spurious G021 rows on the first real corpus this was run against, which
+    is precisely the "silent data loss" bucket a reviewer would take most
+    seriously, so it must not be noise.
+    """
+    from rapidfuzz import fuzz
+
+    if not sentence_skels:
+        return
+    for region in regions:
+        # Compare line by line, not against the region as a whole. A region
+        # holds the text line, the gloss line and the translation; a sentence
+        # corresponds to the text line only, so concatenating them dilutes the
+        # score. On the Amis SVC corpus that dilution put four genuinely
+        # present examples at 81.2-81.9 against a threshold of 82 — i.e. it
+        # manufactured "dropped example" findings out of rounding.
+        pieces = [ln for ln in region.lines if ln.strip()]
+        windows = pieces + [
+            " ".join(pieces[i:i + 2]) for i in range(len(pieces) - 1)
+        ]
+        piece_skels = [s for s in (skeleton(w) for w in windows) if len(s) >= MIN_SKELETON]
+        if not piece_skels:
+            continue
+        region.matched = any(
+            fuzz.partial_ratio(skel, piece) >= threshold
+            or fuzz.partial_ratio(piece, skel) >= threshold
+            for skel in sentence_skels
+            for piece in piece_skels
+        )
+
+
 def align(
     trees: list[tuple[Path, etree._ElementTree]],
     lines: list[str],
@@ -213,6 +264,7 @@ def align(
 
     matched: dict[str, tuple[SourceCandidate, float]] = {}
     unmatched: list[tuple[str, str]] = []
+    sentence_skels: list[str] = []
     sentence_count = 0
 
     for path, tree in trees:
@@ -233,9 +285,9 @@ def align(
             _, score, idx = hit
             candidate = candidates[idx]
             matched[key] = (candidate, score)
-            for region in regions:
-                if region.start <= candidate.start <= region.end:
-                    region.matched = True
+            sentence_skels.append(skel)
+
+    mark_matched_regions(regions, sentence_skels, threshold)
 
     return Alignment(
         extractor=extractor,
