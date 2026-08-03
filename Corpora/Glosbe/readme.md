@@ -1,152 +1,69 @@
-# Glosbe Amis-Chinese Dictionary Scraper
+# Glosbe Formosan Corpus
 
 ## License and AI Use
 
 This corpus is subject to its source license and the central FormosanBank terms in [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI Use is prohibited without prior written permission.
 
-This repository contains code for scraping and processing Amis-Chinese translations from the Glosbe online dictionary into the [FormosanBank XML format](https://app.gitbook.com/o/tZF822XPLvjWkTiqbQyF/s/VETgkt5DVZWXBIolTyjW/the-bank-architecture/xml-standardize-format).
+The published corpus contains Glosbe lexical and translation-memory material for Amis, Atayal, Saisiyat, and Truku. The XML includes English translations and restored Traditional Chinese translations for Amis.
 
-⚠️ **Important Note**: This project currently only handles Amis-to-Chinese translations from Glosbe. Other language pairs (including Amis-English) are not supported due to data quality and reliability concerns.
+## Restored Amis Chinese
 
-## Project Structure
+The newer Glosbe scrape retained only 25 Amis-Chinese rows because its build path did not merge the earlier reviewed conversion. This update restores the Traditional Chinese file contributed by Joseph Lin in [Formosan-Glosbe PR #1](https://github.com/FormosanBank/Formosan-Glosbe/pull/1) and makes the merge reproducible.
 
-- **work/**
-  - **json/**: Directory containing processed JSON data files
-    - `cleaned_amis_chinese_translations.json`: Cleaned and deduplicated translation pairs
-  - **reference_amis/**: Directory containing reference Amis corpus
-    - `Amis.xml`: Source XML corpus from ILRDF
-  - **scripts/**: Python scripts for scraping and processing
-    - `dedupe_zh.py`: Deduplicates collected translations
-    - `make_xml.py`: Converts JSON to FormosanBank XML format
-    - `scrape_zh.py`: Main scraping script for Amis-Chinese translations
-    - `validate.py`: Validates XML output
-    - `clean_xml.py`: Standardizes punctuation and cleans XML (optional)
-- **Final_XML/**: Directory containing final XML output
-  - `amis_glosbe.xml`: Final Amis-Chinese dataset
-  - `example.xml`: Example XML file for reference
+Restoration result:
 
-## Installation
+- 5,860 historical input rows
+- 2,321 distinct Amis-Traditional Chinese translations
+- 2,296 sentence elements
+- 3,539 exact duplicate historical rows omitted
+- 25 distinct alternate translations retained with `ver="alt"`
+- all 25 rows from the newer scrape matched Joseph's reviewed conversions
 
-1. Clone this repository:
+The build preserves every distinct reviewed translation and removes only exact Amis-translation duplicates. It converts a current Simplified Chinese row only when no reviewed Traditional Chinese counterpart exists. No new conversion was needed for the current 25 rows.
+
+## Zheng Lexical Audit
+
+The Zheng comparison applies only to Glosbe dictionary and headword candidates. It does not filter sentence-level translation-memory data, including the restored Amis-Chinese sentences.
+
+The audit uses Zheng as corroborating evidence:
+
+- a source form missing from Zheng is excluded from lexical XML under the conservative publication policy, but it is not declared linguistically wrong
+- a target is excluded when Zheng attests the source form but its mapped gloss supports a different sense
+- source and sense matches are retained, and multiple supported targets are merged
+- a single Glosbe target is retained when the Zheng source is attested but no curated Chinese-to-English sense rule applies
+
+The current audit covers 1,305 Glosbe lexical candidates. It retains 729 candidate rows, excludes 576 under the policy, and emits 667 merged lexical entries. See `CodeAndDocs/data/processed/zheng_glosbe_lexical_audit_report.md` for the rule definitions and counts.
+
+## Reproducibility
+
+The canonical development repository is [FormosanBank/Formosan-Glosbe](https://github.com/FormosanBank/Formosan-Glosbe). `CodeAndDocs/` preserves the current scripts, configuration, reviewed source file, tests, and audit sidecars used for this publication. The older one-off workflow remains under `CodeAndDocs/work/scripts/` for historical context.
+
+From `Corpora/Glosbe/CodeAndDocs`:
+
 ```bash
-git clone https://github.com/yourusername/glosbe-scraper.git
-cd glosbe-scraper
-```
-
-2. Set up a virtual environment (optional but recommended):
-```bash
-python3 -m venv venv
-source venv/bin/activate
-```
-
-3. Install dependencies:
-```bash
+python3 -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
+python scripts/build_formosanbank_xml.py --config scripts/config.yaml
+python scripts/validate_formosanbank_xml.py --config scripts/config.yaml
+python scripts/audit_final_xml_translations.py
 ```
 
-## Usage
+The Zheng lexical rebuild expects `Formosan-Zheng-ACL-2024` as a sibling clone of the public FormosanBank repository. Adjust `trusted_lexicon.zheng_repo` in `scripts/config.yaml` if the repositories are elsewhere.
 
-The process involves several steps to extract, scrape, clean and format the data:
+Key evidence files:
 
-1. **Extract Common Words**:
-```bash
-python work/scripts/extract_words.py
-```
+- `CodeAndDocs/data/processed/amis_chinese_restoration_report.md`
+- `CodeAndDocs/data/processed/amis_chinese_restoration_audit.csv`
+- `CodeAndDocs/data/processed/final_xml_translation_audit_report.md`
+- `CodeAndDocs/data/processed/final_xml_translation_audit.csv`
+- `CodeAndDocs/data/processed/zheng_glosbe_lexical_audit_report.md`
 
-**Output**: Generates list of most frequent Amis words from reference corpus
+## Rights and Source Notes
 
-2. **Scrape Translations**:
-```bash
-python work/scripts/scrape_zh.py
-```
-
-**Output**: Raw translation pairs saved to JSON
-
-3. **Deduplicate Translations**:
-```bash
-python work/scripts/dedupe_zh.py
-```
-
-**Output**: Cleaned JSON file with unique translation pairs
-
-4. **Convert to XML Format**:
-```bash
-python work/scripts/make_xml.py
-```
-
-**Output**: FormosanBank XML format in `Final_XML/amis_glosbe.xml`
-
-5. **Validate XML** (Optional):
-```bash
-python work/scripts/validate.py
-```
-
-**Output**: Validation report of XML structure
-
-6. **Clean XML** (Optional):
-```bash
-   python work/scripts/clean_xml.py
-```
-
-**Output**: Standardized punctuation and cleaned XML
-
-7. **Update XML**
-
-Replace-all: <FORM> -> <FORM kindOf="original">
-
-8. **Add Traditional Chinese**
-
-This was done semi-automatically. It's not easily reproducible.
-
-9. **Standardize**
-
-It looks like it's Ortho94 (mostly). But conversion won't change anything relevant.
-
-```bash
-   python ../FormosanBank/QC/utilities/standardize.py --corpora_path Final_XML --copy
-```
-
-9. **Remove some colons**
-
-Colons are used for introducing quotes in this text. However, colons have a specific meaning in the standard orthography, so replace with commas. 
-
-```bash
-   python work/scripts/fix_colon_quote.py
-```
-
-10. **Add IPA**
-
-The IPA for Ortho94 is different from Ortho113, so go ahead and use it for the "original" tier.
-
-```bash
-   python ../FormosanBank/QC/utilities/add_phonology.py --corpora_path Final_XML --orthography Ortho94
-```
-
-## Code Breakdown
-
-### scrape_zh.py
-Main scraping script that:
-- Extracts common Amis words from reference corpus
-- Handles web scraping with rotating User-Agent headers
-- Manages rate limiting and error handling
-
-### make_xml.py
-Converts JSON data to FormosanBank XML format with:
-- Proper XML structure and metadata
-- Language tags and IDs
-- Translation pair organization
-
-## Limitations & Ethical Considerations
-
-- **Website Access**: Glosbe has implemented anti-scraping measures. Permission should be obtained before scraping.
-- **Data Quality**: Only Amis-Chinese translations are included due to quality concerns with other language pairs.
-- **Terms of Service**: While collected for academic research, scraping may violate Glosbe's terms of service.
-
-## License
-
-The data is provided under the **CC-BY-SA 4.0 (Attribution-ShareAlike)** license, as per Glosbe's terms of use.
+FormosanBank records project-owner permission to scrape Glosbe for this work. Glosbe content can include third-party translation-memory sources, so users must also follow the source-corpus rights and the central FormosanBank terms.
 
 ## Acknowledgments
 
-- Initial Amis XML corpus provided by ILRDF (Indigenous Language Research Development Foundation)
-- Glosbe dictionary used as source for Amis-Chinese translations
+- Joseph Lin prepared the reviewed Traditional Chinese conversion restored here.
+- Glosbe and its contributors provided the dictionary and translation-memory source material.
