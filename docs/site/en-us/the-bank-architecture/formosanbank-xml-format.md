@@ -130,7 +130,7 @@ If an `<S>` has any FORM, exactly one must be `kindOf="original"`. A standard FO
 
 ### The `<PHON>` Element
 
-`<PHON>` contains an IPA representation of a FORM. In most corpora this is an automatic transliteration, not a phonetic transcription.
+`<PHON>` contains an IPA representation of a FORM. In most corpora this is an automatic transliteration, not a phonetic transcription. It is marker-free: morphological segmentation markers carried by a W/M FORM (`-`, `=`, and the `<...>` infix brackets) are not represented in `PHON`, though an infix's content is retained since it is pronounced.
 
 Its optional `kindOf` attribute may be `original` or `standard`, identifying the FORM tier from which it was derived. A parent may have at most one PHON for each `kindOf` value.
 
