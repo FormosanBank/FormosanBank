@@ -21,35 +21,44 @@ Restoration result:
 
 The build preserves every distinct reviewed translation and removes only exact Amis-translation duplicates. It converts a current Simplified Chinese row only when no reviewed Traditional Chinese counterpart exists. No new conversion was needed for the current 25 rows.
 
-## Zheng Lexical Audit
+## ILRDF Reference Audit
 
-The Zheng comparison applies only to Glosbe dictionary and headword candidates. It does not filter sentence-level translation-memory data, including the restored Amis-Chinese sentences.
+The files previously described as the "Zheng dictionary" are ILRDF dictionary data curated and repackaged by Zheng et al. They are not an independent lexical source. The comparison applies only to Glosbe dictionary and headword candidates. It does not filter sentence-level translation-memory data, including the restored Amis-Chinese sentences.
 
-The audit uses Zheng as corroborating evidence:
+The corrected policy uses the selected ILRDF-derived files as reference metadata:
 
-- a source form missing from Zheng is excluded from lexical XML under the conservative publication policy, but it is not declared linguistically wrong
-- a target is excluded when Zheng attests the source form but its mapped gloss supports a different sense
-- source and sense matches are retained, and multiple supported targets are merged
-- a single Glosbe target is retained when the Zheng source is attested but no curated Chinese-to-English sense rule applies
+- every structurally valid Glosbe source-target pair is retained
+- exact source-form overlap and the Chinese-to-English mapping are recorded only as review signals
+- distinct targets for one source form are preserved as separate translations, with `ver="alt"` after the first
+- missing, wrong-language, or non-ILRDF reference files stop the audit instead of silently producing non-matches
+- `trv` uses the Truku reference file only; Seediq is not mixed into the comparison
 
-The current audit covers 1,305 Glosbe lexical candidates. It retains 729 candidate rows, excludes 576 under the policy, and emits 667 merged lexical entries. See `CodeAndDocs/data/processed/zheng_glosbe_lexical_audit_report.md` for the rule definitions and counts.
+Final lexical result:
+
+- 1,319 deduplicated candidates
+- 1,305 retained translations in 1,156 sentence elements
+- 149 alternate translations
+- 14 concrete structural or cross-reference rejections
+- 0 exclusions based on ILRDF absence or gloss mapping
+
+Reference status is informational: 529 translations have an unattested source form, 528 have no applicable gloss mapping, 209 are mapping-supported, and 39 map to a different reference sense. All four statuses remain in XML. See `CodeAndDocs/data/processed/ildrf_glosbe_lexical_audit_report.md` for provenance, reference-file hashes, rule definitions, and pair counts.
 
 ## Reproducibility
 
-The canonical development repository is [FormosanBank/Formosan-Glosbe](https://github.com/FormosanBank/Formosan-Glosbe). `CodeAndDocs/` preserves the current scripts, configuration, reviewed source file, tests, and audit sidecars used for this publication. The older one-off workflow remains under `CodeAndDocs/work/scripts/` for historical context.
+The canonical development repository is [FormosanBank/Formosan-Glosbe](https://github.com/FormosanBank/Formosan-Glosbe). `CodeAndDocs/` preserves the current scripts, configuration, reviewed Amis-Chinese source file, tests, and final audit evidence used for this publication. The older one-off workflow remains under `CodeAndDocs/work/scripts/` for historical context.
 
-From `Corpora/Glosbe/CodeAndDocs`:
+For a full rebuild, clone `Formosan-Glosbe` and `Formosan-Zheng-ACL-2024` as siblings, retain the private Glosbe crawl cache and processed sidecars in the development repository, then run:
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-python scripts/build_formosanbank_xml.py --config scripts/config.yaml
+python scripts/glosbe_pipeline.py rebuild_lexical_reference_audit --config scripts/config.yaml
 python scripts/validate_formosanbank_xml.py --config scripts/config.yaml
 python scripts/audit_final_xml_translations.py
 ```
 
-The Zheng lexical rebuild expects `Formosan-Zheng-ACL-2024` as a sibling clone of the public FormosanBank repository. Adjust `trusted_lexicon.zheng_repo` in `scripts/config.yaml` if the repositories are elsewhere.
+The row-level crawl cache is not published because it contains private working data. The public corpus includes the generated audit CSVs, final XML, reference hashes, and concrete rejection list needed to review the policy and its output. Adjust `ildrf_reference_lexicon.derived_repo` in `scripts/config.yaml` if the reference repository is elsewhere.
 
 Key evidence files:
 
@@ -57,7 +66,10 @@ Key evidence files:
 - `CodeAndDocs/data/processed/amis_chinese_restoration_audit.csv`
 - `CodeAndDocs/data/processed/final_xml_translation_audit_report.md`
 - `CodeAndDocs/data/processed/final_xml_translation_audit.csv`
-- `CodeAndDocs/data/processed/zheng_glosbe_lexical_audit_report.md`
+- `CodeAndDocs/data/processed/ildrf_glosbe_lexical_audit_report.md`
+- `CodeAndDocs/data/processed/ildrf_glosbe_lexical_audit.csv`
+- `CodeAndDocs/data/processed/ildrf_glosbe_lexical_group_review.csv`
+- `CodeAndDocs/data/processed/lexical_xml_rejected.csv`
 
 ## Rights and Source Notes
 

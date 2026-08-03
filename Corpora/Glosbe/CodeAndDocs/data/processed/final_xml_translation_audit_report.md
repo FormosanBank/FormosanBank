@@ -5,8 +5,8 @@ Generated audit file: `data/processed/final_xml_translation_audit.csv`
 ## Scope
 
 - XML files audited: 8
-- XML units audited: 7145
-- pass: 7145
+- XML units audited: 7783
+- pass: 7783
 - review: 0
 - fail: 0
 

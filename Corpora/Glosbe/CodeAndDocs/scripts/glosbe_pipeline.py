@@ -385,6 +385,12 @@ def form_group_key(text: str) -> str:
     return re.sub(r"\s*'\s*", "'", text)
 
 
+def lexical_form_text_for_xml(text: str) -> str:
+    text = clean_text(text)
+    text = text.translate(str.maketrans({"ˈ": "'", "ʼ": "'", "’": "'", "‘": "'"}))
+    return re.sub(r"\s*'\s*", "'", text)
+
+
 def repo_path(value: str | Path) -> Path:
     path = Path(value)
     return path if path.is_absolute() else ROOT / path
@@ -1984,28 +1990,93 @@ def lexical_xml_rejection_reason(source: str, target: str, l2: str) -> str:
     return ""
 
 
-def load_zheng_trusted_lexicon(config: dict[str, Any]) -> dict[str, dict[str, set[str]]]:
-    repo = repo_path(config.get("trusted_lexicon", {}).get("zheng_repo", ""))
-    trusted: dict[str, dict[str, set[str]]] = defaultdict(lambda: defaultdict(set))
-    if not repo.exists():
-        return trusted
-    for path in sorted((repo / "Final_XML").rglob("Dictionary_*.xml")):
+@dataclass
+class IldrfReferenceLexicon:
+    glosses: dict[str, dict[str, set[str]]]
+    source_files: dict[str, dict[str, set[str]]]
+    file_stats: list[dict[str, Any]]
+
+
+def load_ildrf_reference_lexicon(config: dict[str, Any]) -> IldrfReferenceLexicon:
+    """Load the selected ILRDF-derived dictionary files used for comparison.
+
+    Zheng et al. extracted these files from ILRDF dictionaries for their ACL
+    2024 dataset. The files are useful reference metadata, but are not an
+    independent lexical authority. Exact file selection matters because Seediq
+    and Truku both use ``xml:lang="trv"`` in FormosanBank.
+    """
+    settings = config.get("ildrf_reference_lexicon", {})
+    repo_value = settings.get("derived_repo", "")
+    dictionary_files = settings.get("dictionary_files", {})
+    if not repo_value or not dictionary_files:
+        raise ValueError("ildrf_reference_lexicon must configure derived_repo and dictionary_files")
+
+    repo = repo_path(repo_value)
+    if not repo.is_dir():
+        raise FileNotFoundError(f"ILRDF-derived reference repository not found: {repo}")
+
+    glosses: dict[str, dict[str, set[str]]] = defaultdict(lambda: defaultdict(set))
+    source_files: dict[str, dict[str, set[str]]] = defaultdict(lambda: defaultdict(set))
+    file_stats: list[dict[str, Any]] = []
+    for expected_lang, relative_path in sorted(dictionary_files.items()):
+        path = repo / relative_path
+        if not path.is_file():
+            raise FileNotFoundError(f"Configured ILRDF-derived dictionary file not found: {path}")
         try:
             root = ET.parse(path).getroot()
-        except Exception:
-            continue
-        lang = root.get(f"{{{XML_NS}}}lang", "")
-        if not lang:
-            continue
-        for s in root.findall(".//S"):
-            glosses = [clean_text(t.text) for t in s.findall("TRANSL") if clean_text(t.text)]
-            if not glosses:
+        except Exception as exc:
+            raise ValueError(f"Could not parse ILRDF-derived dictionary file {path}: {exc}") from exc
+
+        actual_lang = root.get(f"{{{XML_NS}}}lang", "")
+        if actual_lang != expected_lang:
+            raise ValueError(
+                f"Configured ILRDF-derived dictionary {path} has xml:lang={actual_lang!r}; "
+                f"expected {expected_lang!r}"
+            )
+        provenance = " ".join(
+            [root.get("source", ""), root.get("citation", ""), root.get("BibTeX_citation", "")]
+        )
+        if "Indigenous Languages Research and Development Foundation" not in provenance:
+            raise ValueError(f"Configured reference file does not identify ILRDF provenance: {path}")
+
+        sentence_count = 0
+        translation_count = 0
+        source_keys: set[str] = set()
+        pair_keys: set[tuple[str, str]] = set()
+        relative_to_repo = str(path.relative_to(repo))
+        for sentence in root.findall(".//S"):
+            sentence_count += 1
+            sentence_glosses = [
+                clean_text(translation.text)
+                for translation in sentence.findall("TRANSL")
+                if clean_text(translation.text)
+            ]
+            translation_count += len(sentence_glosses)
+            if not sentence_glosses:
                 continue
-            for form in s.findall("FORM"):
-                form_text = clean_text(form.text)
-                if form_text:
-                    trusted[lang][dedupe_key(form_text)].update(glosses)
-    return trusted
+            original_forms = [
+                clean_text(form.text)
+                for form in sentence.findall("FORM")
+                if form.get("kindOf") == "original" and clean_text(form.text)
+            ]
+            for form_text in original_forms:
+                source_key = form_group_key(form_text)
+                source_keys.add(source_key)
+                glosses[expected_lang][source_key].update(sentence_glosses)
+                source_files[expected_lang][source_key].add(relative_to_repo)
+                pair_keys.update((source_key, dedupe_key(gloss)) for gloss in sentence_glosses)
+        file_stats.append(
+            {
+                "language": expected_lang,
+                "file": relative_to_repo,
+                "sha256": sha256_file(path),
+                "sentences": sentence_count,
+                "translations": translation_count,
+                "unique_source_forms": len(source_keys),
+                "unique_source_gloss_pairs": len(pair_keys),
+            }
+        )
+    return IldrfReferenceLexicon(glosses, source_files, file_stats)
 
 
 def citation_bits(config: dict[str, Any], l1: str, l2: str, suffix: str) -> tuple[str, str, str, str, str]:
@@ -2028,11 +2099,11 @@ def default_xml_dialect(l1: str) -> str:
     }.get(l1, "")
 
 
-# Curated sense evidence for the Zheng cross-source lexical audit. This is a
-# hand-built guardrail, not machine translation: a Glosbe English target is kept
-# only when a Zheng Chinese gloss contains one of these high-confidence evidence
-# strings or the row falls back to the old single-target source-attestation rule.
-ZHENG_GLOSS_TARGET_EVIDENCE: list[tuple[str, set[str]]] = [
+# Heuristic Chinese-to-English mappings for describing overlap with the
+# ILRDF-derived reference glosses. These mappings never decide XML inclusion.
+# They are incomplete, substring-based, and cannot distinguish homographs or
+# additional senses, so their output is review metadata only.
+ILRDF_GLOSS_TARGET_EVIDENCE: list[tuple[str, set[str]]] = [
     ("上帝", {"god", "deity"}),
     ("神", {"god", "spirit"}),
     ("靈界", {"spirit realm"}),
@@ -2253,25 +2324,22 @@ def target_gloss_variants(target: str) -> set[str]:
 
 
 def lexical_target_text_for_xml(target: str) -> str:
-    text = clean_text(target)
-    text = re.sub(r"\s*\(([^)]*)\)", r" \1", text)
-    text = re.sub(r"\s+", " ", text).strip()
-    return text
+    return clean_text(target)
 
 
-def zheng_supported_targets(zheng_glosses: list[str]) -> tuple[set[str], list[str]]:
-    gloss_text = "; ".join(zheng_glosses)
+def ildrf_supported_targets(ildrf_glosses: list[str]) -> tuple[set[str], list[str]]:
+    gloss_text = "; ".join(ildrf_glosses)
     supported: set[str] = set()
     evidence: list[str] = []
-    for marker, targets in ZHENG_GLOSS_TARGET_EVIDENCE:
+    for marker, targets in ILRDF_GLOSS_TARGET_EVIDENCE:
         if marker and marker in gloss_text:
             evidence.append(marker)
             supported.update(targets)
     return supported, evidence
 
 
-def target_supported_by_zheng(target: str, zheng_glosses: list[str]) -> tuple[str, str]:
-    supported, evidence = zheng_supported_targets(zheng_glosses)
+def target_ildrf_reference_status(target: str, ildrf_glosses: list[str]) -> tuple[str, str]:
+    supported, evidence = ildrf_supported_targets(ildrf_glosses)
     evidence_text = "; ".join(evidence)
     if not evidence:
         return "unmapped", ""
@@ -2302,10 +2370,11 @@ def lexical_rows_with_basic_rejections(dict_rows: list[dict[str, Any]]) -> tuple
                     "query_phrase": row.get("query_phrase", ""),
                     "source_url": row.get("source_url", ""),
                     "raw_path": row.get("raw_json_path") or row.get("raw_html_path", ""),
-                    "zheng_source_found": "",
-                    "zheng_chinese_glosses": "",
+                    "ildrf_source_found": "",
+                    "ildrf_reference_files": "",
+                    "ildrf_chinese_glosses": "",
                     "glosbe_targets_for_source": "",
-                    "sense_evidence": "",
+                    "mapping_evidence": "",
                     "xml_target_text": "",
                     "notes": "Excluded from lexical XML during final translation-quality filtering.",
                 }
@@ -2322,188 +2391,159 @@ def lexical_rows_with_basic_rejections(dict_rows: list[dict[str, Any]]) -> tuple
                     "query_phrase": row.get("query_phrase", ""),
                     "source_url": row.get("source_url", ""),
                     "raw_path": "",
-                    "zheng_source_found": "",
-                    "zheng_chinese_glosses": "",
+                    "ildrf_source_found": "",
+                    "ildrf_reference_files": "",
+                    "ildrf_chinese_glosses": "",
                     "glosbe_targets_for_source": "",
-                    "sense_evidence": "",
+                    "mapping_evidence": "",
                     "xml_target_text": "",
                     "notes": "Excluded from lexical XML during final translation-quality filtering.",
                 }
             )
             continue
-        prepped.append((row, source, target, dedupe_key(source)))
+        prepped.append((row, source, target, form_group_key(source)))
     return prepped, rejected
 
 
-def lexical_cross_source_decisions(config: dict[str, Any]) -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, Any]], list[dict[str, Any]]]:
+def lexical_reference_decisions(
+    config: dict[str, Any],
+) -> tuple[
+    list[dict[str, Any]],
+    list[dict[str, Any]],
+    list[dict[str, Any]],
+    list[dict[str, Any]],
+    IldrfReferenceLexicon,
+]:
     dict_rows = read_jsonl(PROCESSED / "dictionary_entries_deduped.jsonl")
     if not dict_rows:
         dict_rows = dedupe_dictionary_entries(read_jsonl(PROCESSED / "dictionary_entries_raw.jsonl"))
         write_jsonl(PROCESSED / "dictionary_entries_deduped.jsonl", dict_rows)
 
-    trusted = load_zheng_trusted_lexicon(config)
+    reference = load_ildrf_reference_lexicon(config)
     prepped, lexical_rejected = lexical_rows_with_basic_rejections(dict_rows)
     groups: dict[tuple[str, str, str], list[tuple[dict[str, Any], str, str, str]]] = defaultdict(list)
     for item in prepped:
         row, _, _, source_key = item
         groups[(row["l1"], row["l2"], source_key)].append(item)
 
-    require_zheng = config.get("trusted_lexicon", {}).get("require_zheng_source_for_lexical_xml", False)
-    exclude_multi = config.get("trusted_lexicon", {}).get("exclude_multi_target_lexical_forms", False)
     lexical_audit: list[dict[str, Any]] = []
     lexical_kept_groups: list[dict[str, Any]] = []
     review_rows: list[dict[str, Any]] = []
 
     for (l1, l2, source_key), items in groups.items():
-        first_row, source, _, _ = items[0]
-        zheng_glosses = sorted(trusted.get(l1, {}).get(source_key, set()))
-        glosbe_targets = []
-        seen_targets = set()
-        for _, _, target, _ in items:
-            key = dedupe_key(target)
-            if key not in seen_targets:
-                seen_targets.add(key)
-                glosbe_targets.append(target)
-        glosbe_targets_text = "; ".join(sorted(seen_targets))
-        supported_items: list[tuple[dict[str, Any], str, str, str]] = []
-        rejected_items: list[tuple[dict[str, Any], str, str, str, str, str]] = []
-        unmapped_items: list[tuple[dict[str, Any], str, str, str, str]] = []
-
-        for row, row_source, target, row_source_key in items:
-            if require_zheng and not zheng_glosses:
-                rejected_items.append((row, row_source, target, "source_not_attested_in_zheng_dictionary", ""))
+        first_row, first_source, _, _ = items[0]
+        source = lexical_form_text_for_xml(first_source)
+        ildrf_glosses = sorted(reference.glosses.get(l1, {}).get(source_key, set()))
+        ildrf_files = sorted(reference.source_files.get(l1, {}).get(source_key, set()))
+        targets: list[dict[str, Any]] = []
+        seen_target_keys: set[str] = set()
+        for row, row_source, target, _ in items:
+            xml_target = lexical_target_text_for_xml(target)
+            target_key = dedupe_key(xml_target)
+            if target_key in seen_target_keys:
                 continue
-            if row.get("l2") == "en":
-                support, evidence = target_supported_by_zheng(target, zheng_glosses)
-                if support == "supported":
-                    supported_items.append((row, row_source, target, evidence))
-                elif support == "unsupported":
-                    rejected_items.append((row, row_source, target, "target_not_supported_by_zheng_gloss", evidence))
+            seen_target_keys.add(target_key)
+            if not ildrf_glosses:
+                reference_status = "source_not_attested"
+                reason = "source_not_attested_in_ildrf_reference"
+                evidence = ""
+            elif row.get("l2") != "en":
+                reference_status = "not_compared"
+                reason = "non_english_target_not_compared_to_ildrf_gloss"
+                evidence = ""
+            else:
+                mapped_status, evidence = target_ildrf_reference_status(target, ildrf_glosses)
+                if mapped_status == "supported":
+                    reference_status = "target_supported_by_mapping"
+                    reason = "ildrf_source_attested_target_supported_by_mapping"
+                elif mapped_status == "unsupported":
+                    reference_status = "different_from_mapping"
+                    reason = "ildrf_source_attested_target_differs_from_mapping"
                 else:
-                    unmapped_items.append((row, row_source, target, row_source_key, evidence))
-            else:
-                supported_items.append((row, row_source, target, "non_english_target"))
-
-        if unmapped_items:
-            if len(items) == 1 or not exclude_multi:
-                for row, row_source, target, _, evidence in unmapped_items:
-                    supported_items.append((row, row_source, target, evidence))
-            else:
-                for row, row_source, target, _, evidence in unmapped_items:
-                    rejected_items.append((row, row_source, target, "ambiguous_glosbe_lexical_targets_unmapped_zheng_gloss", evidence))
-
-        target_text = ""
-        xml_record_id = ""
-        kept_target_values: list[str] = []
-        if supported_items:
-            for _, _, target, _ in supported_items:
-                xml_target = lexical_target_text_for_xml(target)
-                if xml_target not in kept_target_values:
-                    kept_target_values.append(xml_target)
-            target_text = "; ".join(kept_target_values)
-            xml_record_id = "GLOSBE_DICT_MERGED_" + sha256_text(f"{l1}|{l2}|{source}|{target_text}")[:16]
-            lexical_kept_groups.append(
+                    reference_status = "gloss_unmapped"
+                    reason = "ildrf_source_attested_gloss_unmapped"
+            targets.append(
                 {
-                    "l1": l1,
-                    "l2": l2,
-                    "pair": first_row.get("pair", ""),
-                    "source": source,
-                    "target_text": target_text,
-                    "rows": [row for row, _, _, _ in supported_items],
-                    "record_id": xml_record_id,
-                    "sense_evidence": "; ".join(sorted({ev for _, _, _, ev in supported_items if ev})),
-                    "zheng_glosses": zheng_glosses,
-                    "glosbe_targets": glosbe_targets_text,
-                }
-            )
-
-        kept_keys = {row.get("record_id", "") for row, _, _, _ in supported_items}
-        for row, row_source, target, evidence in supported_items:
-            if len(supported_items) > 1:
-                reason = "zheng_sense_attested_multi_target_merged"
-            elif len(items) > 1:
-                reason = "zheng_sense_attested_target_subset"
-            elif evidence:
-                reason = "zheng_sense_attested_single_target"
-            else:
-                reason = "single_glosbe_target_and_zheng_source_attested_unmapped_sense"
-            lexical_audit.append(
-                {
-                    "record_id": row.get("record_id", ""),
-                    "pair": row.get("pair", ""),
-                    "source_phrase_clean": row_source,
-                    "target_phrase_clean": target,
-                    "action": "keep_in_xml",
+                    "row": row,
+                    "row_source": row_source,
+                    "source_target": target,
+                    "xml_target": xml_target,
+                    "reference_status": reference_status,
                     "reason": reason,
-                    "zheng_source_found": "yes" if zheng_glosses else "no",
-                    "zheng_chinese_glosses": "; ".join(zheng_glosses[:20]),
-                    "glosbe_targets_for_source": glosbe_targets_text,
-                    "sense_evidence": evidence,
-                    "xml_record_id": xml_record_id,
-                    "xml_target_text": target_text,
-                    "source_url": row.get("source_url", ""),
-                    "raw_path": row.get("raw_json_path") or row.get("raw_html_path", ""),
+                    "evidence": evidence,
                 }
             )
 
-        for row, row_source, target, rejection, evidence in rejected_items:
+        target_text = "; ".join(target["xml_target"] for target in targets)
+        xml_record_id = "GLOSBE_DICT_GROUP_" + sha256_text(
+            f"{l1}|{l2}|{source}|" + "\n".join(target["xml_target"] for target in targets)
+        )[:16]
+        lexical_kept_groups.append(
+            {
+                "l1": l1,
+                "l2": l2,
+                "pair": first_row.get("pair", ""),
+                "source": source,
+                "targets": targets,
+                "record_id": xml_record_id,
+                "ildrf_glosses": ildrf_glosses,
+                "ildrf_files": ildrf_files,
+            }
+        )
+
+        for translation_index, target_info in enumerate(targets):
+            row = target_info["row"]
             lexical_audit.append(
                 {
                     "record_id": row.get("record_id", ""),
                     "pair": row.get("pair", ""),
-                    "source_phrase_clean": row_source,
-                    "target_phrase_clean": target,
-                    "action": "exclude_from_xml",
-                    "reason": rejection,
-                    "zheng_source_found": "yes" if zheng_glosses else "no",
-                    "zheng_chinese_glosses": "; ".join(zheng_glosses[:20]),
-                    "glosbe_targets_for_source": glosbe_targets_text,
-                    "sense_evidence": evidence,
+                    "source_phrase_clean": target_info["row_source"],
+                    "target_phrase_clean": target_info["source_target"],
+                    "action": "keep_in_xml",
+                    "reference_status": target_info["reference_status"],
+                    "reason": target_info["reason"],
+                    "ildrf_source_found": "yes" if ildrf_glosses else "no",
+                    "ildrf_reference_files": "; ".join(ildrf_files),
+                    "ildrf_chinese_glosses": "; ".join(ildrf_glosses[:20]),
+                    "glosbe_targets_for_source": target_text,
+                    "mapping_evidence": target_info["evidence"],
                     "xml_record_id": xml_record_id,
-                    "xml_target_text": target_text,
+                    "xml_target_text": target_info["xml_target"],
+                    "xml_translation_ver": "alt" if translation_index else "primary",
                     "source_url": row.get("source_url", ""),
                     "raw_path": row.get("raw_json_path") or row.get("raw_html_path", ""),
-                }
-            )
-            lexical_rejected.append(
-                {
-                    "record_id": row.get("record_id", ""),
-                    "pair": row.get("pair", ""),
-                    "rejection_reason": rejection,
-                    "source_phrase_clean": row_source,
-                    "target_phrase_clean": target,
-                    "query_phrase": row.get("query_phrase", ""),
-                    "source_url": row.get("source_url", ""),
-                    "raw_path": row.get("raw_json_path") or row.get("raw_html_path", ""),
-                    "zheng_source_found": "yes" if zheng_glosses else "no",
-                    "zheng_chinese_glosses": "; ".join(zheng_glosses[:20]),
-                    "glosbe_targets_for_source": glosbe_targets_text,
-                    "sense_evidence": evidence,
-                    "xml_target_text": target_text,
-                    "notes": "Excluded from lexical XML by Zheng source-plus-sense evidence policy.",
                 }
             )
 
+        status_targets: dict[str, list[str]] = defaultdict(list)
+        for target_info in targets:
+            status_targets[target_info["reference_status"]].append(target_info["xml_target"])
         review_rows.append(
             {
                 "pair": first_row.get("pair", ""),
                 "source_phrase_clean": source,
-                "zheng_source_found": "yes" if zheng_glosses else "no",
-                "zheng_chinese_glosses": "; ".join(zheng_glosses[:20]),
-                "glosbe_targets_for_source": glosbe_targets_text,
-                "kept_targets": target_text,
-                "rejected_targets": "; ".join(target for row, _, target, _, _ in rejected_items if row.get("record_id", "") not in kept_keys),
-                "sense_evidence": "; ".join(sorted({ev for _, _, _, ev in supported_items if ev} | {ev for _, _, _, _, ev in rejected_items if ev})),
-                "decision": "keep" if supported_items else "exclude",
+                "ildrf_source_found": "yes" if ildrf_glosses else "no",
+                "ildrf_reference_files": "; ".join(ildrf_files),
+                "ildrf_chinese_glosses": "; ".join(ildrf_glosses[:20]),
+                "glosbe_targets_for_source": target_text,
+                "mapping_supported_targets": "; ".join(status_targets["target_supported_by_mapping"]),
+                "mapping_different_targets": "; ".join(status_targets["different_from_mapping"]),
+                "unmapped_targets": "; ".join(status_targets["gloss_unmapped"]),
+                "unattested_source_targets": "; ".join(status_targets["source_not_attested"]),
+                "decision": "keep_all_structurally_valid_targets",
             }
         )
 
-    return lexical_kept_groups, lexical_audit, lexical_rejected, review_rows
+    return lexical_kept_groups, lexical_audit, lexical_rejected, review_rows, reference
 
 
-def write_lexical_cross_source_outputs(config: dict[str, Any], base_xml_index: list[dict[str, Any]] | None = None) -> list[dict[str, Any]]:
+def write_lexical_reference_outputs(
+    config: dict[str, Any], base_xml_index: list[dict[str, Any]] | None = None
+) -> list[dict[str, Any]]:
     final_dir = ROOT / config["xml"]["output_dir"]
-    lexical_kept_groups, lexical_audit, lexical_rejected, review_rows = lexical_cross_source_decisions(config)
+    lexical_kept_groups, lexical_audit, lexical_rejected, review_rows, reference = (
+        lexical_reference_decisions(config)
+    )
     xml_index = list(base_xml_index or [])
     rows_by_pair: dict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
     for row in lexical_kept_groups:
@@ -2533,54 +2573,59 @@ def write_lexical_cross_source_outputs(config: dict[str, Any], base_xml_index: l
         )
         for idx, row in enumerate(rows, 1):
             source = row["source"]
-            target = row["target_text"]
             sid = f"{text_id}_U{idx:06d}"
             s_el = ET.SubElement(root, "S", {"id": sid})
             form = ET.SubElement(s_el, "FORM", {"kindOf": "original"})
             form.text = source
-            transl = ET.SubElement(s_el, "TRANSL", {f"{{{XML_NS}}}lang": tgt_iso})
-            transl.text = target
-            pair_digest = sha256_text(source + "\n" + target)
-            source_rows = row["rows"]
-            first = source_rows[0]
-            xml_index.append(
-                {
-                    "xml_file": rel(out),
-                    "text_id": text_id,
-                    "sentence_id": sid,
-                    "record_id": row["record_id"],
-                    "pair": first["pair"],
-                    "l1": l1,
-                    "l2": l2,
-                    "source_language_name": source_name(config, l1),
-                    "target_language_name": target_name(config, l2),
-                    "source_iso_639_3": l1,
-                    "target_iso_639_3": tgt_iso,
-                    "query_phrase": first.get("query_phrase", ""),
-                    "tmBunchId": "",
-                    "authorId": ";".join(sorted({r.get("authorId", "") for r in source_rows if r.get("authorId", "")})),
-                    "author_label_if_known": ";".join(sorted({r.get("author_label_if_known", "") for r in source_rows if r.get("author_label_if_known", "")})),
-                    "domain": ";".join(sorted({r.get("part_of_speech", "") for r in source_rows if r.get("part_of_speech", "")})),
-                    "source_url": first.get("source_url", ""),
-                    "raw_json_path": first.get("raw_json_path", ""),
-                    "raw_html_path_if_any": first.get("raw_html_path", ""),
-                    "raw_sha256": first.get("raw_json_sha256") or first.get("raw_html_sha256", ""),
-                    "source_sentence_sha256": sha256_text(source),
-                    "target_sentence_sha256": sha256_text(target),
-                    "pair_sha256": pair_digest,
-                    "duplicate_group_id_if_any": "",
-                    "overlap_status": "",
-                    "quality_status": "lexical_entry",
-                    "parse_confidence": ";".join(sorted({r.get("parse_confidence", "") for r in source_rows if r.get("parse_confidence", "")})),
-                    "crawl_timestamp_utc": ";".join(sorted({r.get("crawl_timestamp_utc", "") for r in source_rows if r.get("crawl_timestamp_utc", "")})),
-                }
-            )
+            for translation_index, target_info in enumerate(row["targets"]):
+                target = target_info["xml_target"]
+                source_row = target_info["row"]
+                transl_attrs = {f"{{{XML_NS}}}lang": tgt_iso}
+                if translation_index:
+                    transl_attrs["ver"] = "alt"
+                transl = ET.SubElement(s_el, "TRANSL", transl_attrs)
+                transl.text = target
+                xml_index.append(
+                    {
+                        "xml_file": rel(out),
+                        "text_id": text_id,
+                        "sentence_id": sid,
+                        "record_id": source_row["record_id"],
+                        "pair": source_row["pair"],
+                        "l1": l1,
+                        "l2": l2,
+                        "source_language_name": source_name(config, l1),
+                        "target_language_name": target_name(config, l2),
+                        "source_iso_639_3": l1,
+                        "target_iso_639_3": tgt_iso,
+                        "query_phrase": source_row.get("query_phrase", ""),
+                        "tmBunchId": "",
+                        "authorId": source_row.get("authorId", ""),
+                        "author_label_if_known": source_row.get("author_label_if_known", ""),
+                        "domain": source_row.get("part_of_speech", ""),
+                        "source_url": source_row.get("source_url", ""),
+                        "raw_json_path": source_row.get("raw_json_path", ""),
+                        "raw_html_path_if_any": source_row.get("raw_html_path", ""),
+                        "raw_sha256": source_row.get("raw_json_sha256")
+                        or source_row.get("raw_html_sha256", ""),
+                        "source_sentence_sha256": sha256_text(source),
+                        "target_sentence_sha256": sha256_text(target),
+                        "pair_sha256": sha256_text(source + "\n" + target),
+                        "duplicate_group_id_if_any": "",
+                        "overlap_status": "",
+                        "quality_status": (
+                            "lexical_entry;ildrf_reference=" + target_info["reference_status"]
+                        ),
+                        "parse_confidence": source_row.get("parse_confidence", ""),
+                        "crawl_timestamp_utc": source_row.get("crawl_timestamp_utc", ""),
+                    }
+                )
         out.parent.mkdir(parents=True, exist_ok=True)
         ET.indent(root, space="  ")
         ET.ElementTree(root).write(out, encoding="utf-8", xml_declaration=True)
 
     write_csv(
-        PROCESSED / "zheng_glosbe_lexical_audit.csv",
+        PROCESSED / "ildrf_glosbe_lexical_audit.csv",
         lexical_audit,
         [
             "record_id",
@@ -2588,13 +2633,16 @@ def write_lexical_cross_source_outputs(config: dict[str, Any], base_xml_index: l
             "source_phrase_clean",
             "target_phrase_clean",
             "action",
+            "reference_status",
             "reason",
-            "zheng_source_found",
-            "zheng_chinese_glosses",
+            "ildrf_source_found",
+            "ildrf_reference_files",
+            "ildrf_chinese_glosses",
             "glosbe_targets_for_source",
-            "sense_evidence",
+            "mapping_evidence",
             "xml_record_id",
             "xml_target_text",
+            "xml_translation_ver",
             "source_url",
             "raw_path",
         ],
@@ -2611,119 +2659,136 @@ def write_lexical_cross_source_outputs(config: dict[str, Any], base_xml_index: l
             "query_phrase",
             "source_url",
             "raw_path",
-            "zheng_source_found",
-            "zheng_chinese_glosses",
+            "ildrf_source_found",
+            "ildrf_reference_files",
+            "ildrf_chinese_glosses",
             "glosbe_targets_for_source",
-            "sense_evidence",
+            "mapping_evidence",
             "xml_target_text",
             "notes",
         ],
     )
     write_csv(
-        PROCESSED / "zheng_glosbe_lexical_group_review.csv",
+        PROCESSED / "ildrf_glosbe_lexical_group_review.csv",
         review_rows,
         [
             "pair",
             "source_phrase_clean",
-            "zheng_source_found",
-            "zheng_chinese_glosses",
+            "ildrf_source_found",
+            "ildrf_reference_files",
+            "ildrf_chinese_glosses",
             "glosbe_targets_for_source",
-            "kept_targets",
-            "rejected_targets",
-            "sense_evidence",
+            "mapping_supported_targets",
+            "mapping_different_targets",
+            "unmapped_targets",
+            "unattested_source_targets",
             "decision",
         ],
     )
 
     if lexical_audit:
         action_counts = Counter(r["action"] for r in lexical_audit)
+        status_counts = Counter(r["reference_status"] for r in lexical_audit)
         reason_counts = Counter(r["reason"] for r in lexical_audit)
-        pair_counts = Counter((r["pair"], r["action"]) for r in lexical_audit)
+        pair_translation_counts = Counter(r["pair"] for r in lexical_audit)
         lexical_entry_counts = Counter(row["pair"] for row in lexical_kept_groups)
-        examples = [r for r in lexical_audit if r["action"] == "exclude_from_xml"][:30]
-        rescued = [r for r in lexical_audit if r["reason"] in {"zheng_sense_attested_multi_target_merged", "zheng_sense_attested_target_subset"}][:30]
-        report = f"""# Zheng Cross-Source Lexical Audit
+        alternate_translation_count = sum(
+            max(0, len(row["targets"]) - 1) for row in lexical_kept_groups
+        )
+        rejection_counts = Counter(r["rejection_reason"] for r in lexical_rejected)
+        review_examples = [
+            row for row in lexical_audit if row["reference_status"] == "different_from_mapping"
+        ][:30]
+        reference_table = chr(10).join(
+            "| {language} | `{file}` | `{sha256}` | {sentences} | {translations} | "
+            "{unique_source_forms} | {unique_source_gloss_pairs} |".format(**row)
+            for row in reference.file_stats
+        )
+        report = f"""# ILRDF Reference Audit For Glosbe Lexical Entries
 
 Generated: {now_utc()}
 
-Trusted source: `{config.get("trusted_lexicon", {}).get("zheng_repo", "")}`
+Reference repository: `{config.get("ildrf_reference_lexicon", {}).get("derived_repo", "")}`
 
-Policy:
+## Provenance Finding
 
-- require Zheng source-form attestation for Glosbe lexical XML: {config.get("trusted_lexicon", {}).get("require_zheng_source_for_lexical_xml", False)}
-- use curated Zheng Chinese gloss sense evidence for English lexical targets: True
-- merge multiple Zheng-supported Glosbe English targets into a single lexical XML entry: True
-- no machine translation is used; Zheng Chinese glosses are used only as source-form/sense evidence in sidecars.
+The files previously called the "Zheng dictionary" are not an independent dictionary. Zheng et al. state that they downloaded the Formosan lexicons from the ILRDF online dictionary, converted ILRDF PDFs to HTML, and extracted the Formosan-Mandarin entries. The local reference XML identifies ILRDF as its source and Zheng et al. as the curator of that derived release.
 
-## What This Audit Shows
+Primary paper: https://aclanthology.org/2024.findings-acl.670/
 
-This audit covers Glosbe dictionary/headword rows only. It does not filter sentence-level translation-memory data. Each CSV row records one Glosbe source-target candidate, the Zheng evidence consulted, the inclusion decision, and the exact reason code. An exclusion means the row did not meet this corpus's conservative corroboration threshold; it does not prove that the Glosbe entry is wrong.
+This audit therefore calls the data an **ILRDF-derived reference**. It does not treat a match as independent corroboration and does not treat absence or a different mapped gloss as proof that a Glosbe entry is wrong.
 
-The group review CSV combines every Glosbe target found for one source form so reviewers can see which senses were retained, merged, or excluded together.
+## Corrected Policy
 
-## Decision Rules
+- Exclude only concrete structural or provenance failures detected before reference comparison.
+- Keep every structurally valid Glosbe lexical source-target pair.
+- Record exact source-form overlap with the selected ILRDF-derived file as metadata.
+- Record the hand-built Chinese-to-English mapping as a heuristic review signal only. It is incomplete, substring-based, and cannot rule out homography, polysemy, or additional Glosbe senses.
+- Preserve distinct same-language targets as separate `TRANSL` elements. The first is primary and every additional target uses `ver="alt"`.
+- Abort when a configured reference repository or file is missing, has the wrong language, or lacks ILRDF provenance. A broken reference path can no longer silently turn every row into a non-match.
+- For `trv`, compare against the Truku dictionary only. The previous loader also included Seediq because both files use `xml:lang="trv"`.
 
-- Basic structural problems such as empty text, invalid notes, source-target identity, or the wrong writing system are excluded before the Zheng comparison.
-- `source_not_attested_in_zheng_dictionary`: Zheng has no matching source form. This is missing corroboration, not evidence that Glosbe is incorrect.
-- `target_not_supported_by_zheng_gloss`: Zheng attests the source form, but its Chinese gloss evidence maps to a different English sense.
-- `zheng_sense_attested_*`: the source and English sense are supported by the curated Zheng gloss evidence. Multiple supported targets are merged.
-- `single_glosbe_target_and_zheng_source_attested_unmapped_sense`: the source form is attested and Glosbe has one target, but no curated Chinese-to-English sense rule applies. The row is kept rather than guessed about.
+## Selected ILRDF-Derived Files
 
-## Main CSV Columns
+| Language | File | SHA-256 | S | TRANSL | Unique source forms | Unique source-gloss pairs |
+|---|---|---|---:|---:|---:|---:|
+{reference_table}
 
-- `source_phrase_clean` / `target_phrase_clean`: the Glosbe lexical candidate under review.
-- `action`: `keep_in_xml` or `exclude_from_xml`.
-- `reason`: the rule that produced the action.
-- `zheng_source_found`: whether the normalized source form occurs in the Zheng dictionary.
-- `zheng_chinese_glosses`: all Zheng Chinese glosses used as corroborating evidence.
-- `glosbe_targets_for_source`: all Glosbe English targets grouped under the same source form.
-- `sense_evidence`: the specific curated Zheng gloss fragments that mapped to an English target.
-- `xml_record_id` / `xml_target_text`: the emitted merged lexical entry when the row was retained.
-- `source_url` / `raw_path`: provenance back to the scraped Glosbe material.
+## Scope
 
-## Totals
+This audit covers Glosbe dictionary/headword rows only. It does not filter sentence-level translation-memory data, including the restored Amis-Chinese material. The row-level CSV records one candidate translation and its ILRDF reference status. The group review CSV places all Glosbe targets for one source form together.
 
-- audited Glosbe lexical rows: {len(lexical_audit)}
-- row-level kept/supported: {action_counts.get("keep_in_xml", 0)}
-- row-level excluded: {action_counts.get("exclude_from_xml", 0)}
-- lexical XML entries emitted after target merging: {len(lexical_kept_groups)}
+## Final Counts
 
-## Reasons
+- deduplicated Glosbe lexical candidates before structural filtering: {len(lexical_audit) + len(lexical_rejected)}
+- structurally valid candidate translations retained: {action_counts.get("keep_in_xml", 0)}
+- structurally invalid/cross-reference rows rejected: {len(lexical_rejected)}
+- candidate translations rejected because of ILRDF absence or gloss mapping: 0
+- lexical sentence elements emitted: {len(lexical_kept_groups)}
+- lexical `TRANSL` elements emitted: {len(lexical_audit)}
+- alternate `TRANSL ver="alt"` elements: {alternate_translation_count}
 
-{chr(10).join(f"- {reason}: {count}" for reason, count in reason_counts.most_common())}
+### Reference status
 
-## Pair Counts
+{chr(10).join(f"- {status}: {count}" for status, count in status_counts.most_common())}
 
-{chr(10).join(f"- {pair} {action}: {count}" for (pair, action), count in sorted(pair_counts.items()))}
+### Pair counts
 
-## Lexical XML Entry Counts
+{chr(10).join(f"- {pair}: {pair_translation_counts[pair]} translations in {lexical_entry_counts[pair]} sentence elements" for pair in sorted(pair_translation_counts))}
 
-{chr(10).join(f"- {pair}: {count}" for pair, count in sorted(lexical_entry_counts.items()))}
+### Structural rejection reasons
 
-## Rescued / Merged Examples
+{chr(10).join(f"- {reason}: {count}" for reason, count in rejection_counts.most_common()) or "- None"}
 
-{chr(10).join(f"- {r['pair']} `{r['source_phrase_clean']}` => `{r['target_phrase_clean']}` kept as `{r['xml_target_text']}`; Zheng glosses: {r['zheng_chinese_glosses']}; evidence: {r['sense_evidence']}" for r in rescued) or "- None"}
+## Reference Status Codes
 
-## Excluded Examples
+- `source_not_attested`: the exact normalized Glosbe source form is absent from the selected ILRDF-derived file. This is coverage metadata only.
+- `target_supported_by_mapping`: a hand-built mapping connects part of the ILRDF Chinese gloss to the Glosbe English target. This is heuristic support, not independent verification.
+- `gloss_unmapped`: the source is present, but no hand-built mapping applies to its Chinese gloss.
+- `different_from_mapping`: a mapping applies but points to another English target. The Glosbe target is retained because the mapping cannot rule out additional senses or homographs.
 
-{chr(10).join(f"- {r['pair']} `{r['source_phrase_clean']}` => `{r['target_phrase_clean']}`: {r['reason']}; Zheng glosses: {r['zheng_chinese_glosses'] or 'none'}; Glosbe targets: {r['glosbe_targets_for_source']}; evidence: {r['sense_evidence'] or 'none'}" for r in examples) or "- None"}
+## Different-Mapping Review Examples
 
-Full row-level audit: `data/processed/zheng_glosbe_lexical_audit.csv`
+{chr(10).join(f"- {r['pair']} `{r['source_phrase_clean']}` => `{r['target_phrase_clean']}`; ILRDF glosses: {r['ildrf_chinese_glosses']}; mapping evidence: {r['mapping_evidence'] or 'none'}" for r in review_examples) or "- None"}
 
-Group-level decisions: `data/processed/zheng_glosbe_lexical_group_review.csv`
+## Evidence Files
 
-Rejected lexical rows: `data/processed/lexical_xml_rejected.csv`
+Full row-level audit: `data/processed/ildrf_glosbe_lexical_audit.csv`
+
+Group review: `data/processed/ildrf_glosbe_lexical_group_review.csv`
+
+Concrete structural rejections: `data/processed/lexical_xml_rejected.csv`
 """
-        (PROCESSED / "zheng_glosbe_lexical_audit_report.md").write_text(report, encoding="utf-8")
+        (PROCESSED / "ildrf_glosbe_lexical_audit_report.md").write_text(report, encoding="utf-8")
 
     return xml_index
 
 
-def command_rebuild_lexical_cross_source(args: argparse.Namespace) -> None:
+def command_rebuild_lexical_reference_audit(args: argparse.Namespace) -> None:
     config = load_config(args.config)
     ensure_layout(config)
     existing_index = [row for row in read_csv(PROCESSED / "xml_index.csv") if "_lexical.xml" not in row.get("xml_file", "")]
-    xml_index = write_lexical_cross_source_outputs(config, existing_index)
+    xml_index = write_lexical_reference_outputs(config, existing_index)
     write_csv(PROCESSED / "xml_index.csv", xml_index)
 
 
@@ -3039,7 +3104,7 @@ def command_build_xml(args: argparse.Namespace) -> None:
         ET.indent(root, space="  ")
         ET.ElementTree(root).write(out, encoding="utf-8", xml_declaration=True)
     if config["xml"].get("include_dictionary_entries", False):
-        xml_index = write_lexical_cross_source_outputs(config, xml_index)
+        xml_index = write_lexical_reference_outputs(config, xml_index)
     write_csv(PROCESSED / "xml_index.csv", xml_index)
 
 
@@ -3509,8 +3574,8 @@ Unresolved rights/access issues:
 Unresolved parsing issues:
 
 - Static fragments provide author labels and translation IDs, but not the complete iapi JSON object.
-- Dictionary entries are retained in sidecars. Lexical XML is stricter than the raw Glosbe dictionary sidecar: it requires Zheng source-form attestation and uses curated Zheng Chinese gloss evidence to keep, merge, or reject English lexical targets.
-- Excluded Glosbe lexical rows are documented in `data/processed/zheng_glosbe_lexical_audit.csv`, `data/processed/zheng_glosbe_lexical_group_review.csv`, and `data/processed/lexical_xml_rejected.csv`.
+- Dictionary entries are retained in sidecars. Structurally valid lexical rows are emitted to XML; the ILRDF-derived comparison is reference metadata and never an exclusion criterion.
+- Lexical decisions are documented in `data/processed/ildrf_glosbe_lexical_audit.csv`, `data/processed/ildrf_glosbe_lexical_group_review.csv`, and `data/processed/lexical_xml_rejected.csv`.
 
 Assumptions:
 
@@ -3551,7 +3616,7 @@ def build_parser() -> argparse.ArgumentParser:
         "dedupe_against_formosanbank",
         "filter_quality",
         "build_formosanbank_xml",
-        "rebuild_lexical_cross_source",
+        "rebuild_lexical_reference_audit",
         "validate_formosanbank_xml",
         "generate_reports",
     ])
@@ -3582,7 +3647,7 @@ def main() -> None:
         "dedupe_against_formosanbank": command_dedupe_against_formosanbank,
         "filter_quality": command_filter_quality,
         "build_formosanbank_xml": command_build_xml,
-        "rebuild_lexical_cross_source": command_rebuild_lexical_cross_source,
+        "rebuild_lexical_reference_audit": command_rebuild_lexical_reference_audit,
         "validate_formosanbank_xml": command_validate_xml,
         "generate_reports": command_generate_reports,
     }
