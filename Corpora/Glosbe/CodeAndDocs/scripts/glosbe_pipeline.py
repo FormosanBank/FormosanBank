@@ -1846,7 +1846,7 @@ def command_dedupe_against_formosanbank(args: argparse.Namespace) -> None:
         if not repo_path.exists():
             continue
         files = []
-        for pattern in ["Final_XML/**/*.xml", "work/json/*.json", "data/processed/*.jsonl", "*.xml"]:
+        for pattern in ["Final_XML/**/*.xml", "../XML/**/*.xml", "work/json/*.json", "data/processed/*.jsonl", "*.xml"]:
             files.extend(repo_path.glob(pattern))
         for path in files[:200]:
             pairs = extract_existing_pairs_from_file(path)
@@ -3168,10 +3168,10 @@ def command_validate_xml(args: argparse.Namespace) -> None:
     id_seen = set()
     for path in sorted(final_dir.rglob("*")):
         if path.is_file() and path.suffix != ".xml":
-            failures.append((path, ["non-XML file in Final_XML"]))
+            failures.append((path, ["non-XML file in XML"]))
         if path.is_file() and path.suffix == ".xml":
             if path.parent.name not in {p[0] for p in config["target_pairs"]}:
-                failures.append((path, ["XML file not under Final_XML/<LANG ISO>/"]))
+                failures.append((path, ["XML file not under XML/<LANG ISO>/"]))
             errs = validate_xml_file(path, config)
             if not errs:
                 root = ET.parse(path).getroot()
@@ -3184,7 +3184,7 @@ def command_validate_xml(args: argparse.Namespace) -> None:
             if errs:
                 failures.append((path, errs))
     if failures:
-        draft = PROCESSED / "invalid_xml_removed_from_Final_XML"
+        draft = PROCESSED / "invalid_xml_removed_from_XML"
         draft.mkdir(parents=True, exist_ok=True)
         for path, errs in failures:
             if path.exists() and path.suffix == ".xml":
@@ -3444,7 +3444,7 @@ def generate_coverage_reports(config: dict[str, Any]) -> None:
                 "dictionary_entries_raw": len(raw_pair),
                 "dictionary_entries_deduped": len(ded_pair),
                 "top_authors": ";".join(k for k, _ in authors.most_common(5)),
-                "notes": "Dictionary/headword entries are exported to lexical XML because xml.include_dictionary_entries is enabled." if config["xml"].get("include_dictionary_entries", False) else "Dictionary/headword entries are sidecar data and excluded from Final_XML by default.",
+                "notes": "Dictionary/headword entries are exported to lexical XML because xml.include_dictionary_entries is enabled." if config["xml"].get("include_dictionary_entries", False) else "Dictionary/headword entries are sidecar data and excluded from the published XML by default.",
             }
         )
     write_csv(PROCESSED / "dictionary_coverage_by_pair.csv", dict_cov)
@@ -3552,10 +3552,10 @@ Generated: {now_utc()}
 Validation command used:
 
 ```bash
-python scripts/validate_formosanbank_xml.py --config scripts/config.yaml
+python scripts/glosbe_pipeline.py validate_formosanbank_xml --config scripts/config.yaml
 ```
 
-Validator: repository-local `scripts/validate_formosanbank_xml.py` / `scripts/glosbe_pipeline.py`.
+Validator: repository-local `scripts/glosbe_pipeline.py`.
 
 Files ready for import: {len(final_xml)}
 
@@ -3575,7 +3575,7 @@ Unresolved parsing issues:
 
 - Static fragments provide author labels and translation IDs, but not the complete iapi JSON object.
 - Dictionary entries are retained in sidecars. Structurally valid lexical rows are emitted to XML; the ILRDF-derived comparison is reference metadata and never an exclusion criterion.
-- Lexical decisions are documented in `data/processed/ildrf_glosbe_lexical_audit.csv`, `data/processed/ildrf_glosbe_lexical_group_review.csv`, and `data/processed/lexical_xml_rejected.csv`.
+- Lexical decisions are documented in `data/processed/ildrf_glosbe_lexical_audit.csv` and `data/processed/lexical_xml_rejected.csv`; grouped review output is a development-only artifact.
 
 Assumptions:
 
@@ -3584,7 +3584,7 @@ Assumptions:
 
 Recommendation:
 
-Import `Final_XML/<LANG>/Glosbe_<LANG>_<eng|zho>_tmem.xml` and `Final_XML/<LANG>/Glosbe_<LANG>_<eng|zho>_lexical.xml` as private FormosanBank review corpora pending publication-rights confirmation.
+Import `XML/<LANG>/Glosbe_<LANG>_<eng|zho>_tmem.xml` and `XML/<LANG>/Glosbe_<LANG>_<eng|zho>_lexical.xml` as private FormosanBank review corpora pending publication-rights confirmation.
 """
     (PROCESSED / "import_report.md").write_text(report, encoding="utf-8")
 

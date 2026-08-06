@@ -45,7 +45,9 @@ Reference status is informational: 529 translations have an unattested source fo
 
 ## Reproducibility
 
-The canonical development repository is [FormosanBank/Formosan-Glosbe](https://github.com/FormosanBank/Formosan-Glosbe). `CodeAndDocs/` preserves the current scripts, configuration, reviewed Amis-Chinese source file, tests, and final audit evidence used for this publication. The older one-off workflow remains under `CodeAndDocs/work/scripts/` for historical context.
+The canonical development repository is [FormosanBank/Formosan-Glosbe](https://github.com/FormosanBank/Formosan-Glosbe). `CodeAndDocs/` preserves the current pipeline, configuration, reviewed Amis-Chinese source file, tests, and compact audit evidence used for this publication. The older one-off workflow remains under `CodeAndDocs/work/scripts/` for historical context.
+
+The published copy of `scripts/config.yaml` writes generated XML to `../XML`, matching this repository's standard corpus layout. The development repository uses its own `Final_XML` directory.
 
 For a full rebuild, clone `Formosan-Glosbe` and `Formosan-Zheng-ACL-2024` as siblings, retain the private Glosbe crawl cache and processed sidecars in the development repository, then run:
 
@@ -54,22 +56,21 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 python scripts/glosbe_pipeline.py rebuild_lexical_reference_audit --config scripts/config.yaml
-python scripts/validate_formosanbank_xml.py --config scripts/config.yaml
-python scripts/audit_final_xml_translations.py
+python scripts/glosbe_pipeline.py validate_formosanbank_xml --config scripts/config.yaml
 ```
 
-The row-level crawl cache is not published because it contains private working data. The public corpus includes the generated audit CSVs, final XML, reference hashes, and concrete rejection list needed to review the policy and its output. Adjust `ildrf_reference_lexicon.derived_repo` in `scripts/config.yaml` if the reference repository is elsewhere.
+Run the full rebuild in the development repository, not from this published checkout. It requires the private Glosbe crawl cache, processed sidecars, and the sibling `Formosan-Zheng-ACL-2024` reference repository. Those inputs are not published. The public port retains the reviewed source, row-level restoration and lexical-policy evidence, compact reports, final XML, reference hashes, and concrete rejection list. Adjust `ildrf_reference_lexicon.derived_repo` in `scripts/config.yaml` if the reference repository is elsewhere.
 
 Key evidence files:
 
 - `CodeAndDocs/data/processed/amis_chinese_restoration_report.md`
 - `CodeAndDocs/data/processed/amis_chinese_restoration_audit.csv`
 - `CodeAndDocs/data/processed/final_xml_translation_audit_report.md`
-- `CodeAndDocs/data/processed/final_xml_translation_audit.csv`
 - `CodeAndDocs/data/processed/ildrf_glosbe_lexical_audit_report.md`
 - `CodeAndDocs/data/processed/ildrf_glosbe_lexical_audit.csv`
-- `CodeAndDocs/data/processed/ildrf_glosbe_lexical_group_review.csv`
 - `CodeAndDocs/data/processed/lexical_xml_rejected.csv`
+
+The full final-XML row audit and grouped ILRDF review are generated development-side artifacts. Their compact results are retained in the published reports; the complete files remain in the development repository's QC output.
 
 ## Rights and Source Notes
 

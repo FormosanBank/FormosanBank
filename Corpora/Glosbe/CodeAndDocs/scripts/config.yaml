@@ -177,7 +177,10 @@ quality:
   exclude_existing_formosan_glosbe_overlap_from_xml: false
 
 xml:
-  output_dir: "Final_XML"
+  # This copy is under FormosanBank/Corpora/Glosbe. The development repository
+  # keeps its generated files under Final_XML; the published port writes to the
+  # standard corpus XML directory instead.
+  output_dir: "../XML"
   validate_strict: true
   include_dictionary_entries: true
   include_audio_tags: false

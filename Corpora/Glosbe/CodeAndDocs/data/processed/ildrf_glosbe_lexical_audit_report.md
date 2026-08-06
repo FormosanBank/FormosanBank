@@ -33,7 +33,7 @@ This audit therefore calls the data an **ILRDF-derived reference**. It does not 
 
 ## Scope
 
-This audit covers Glosbe dictionary/headword rows only. It does not filter sentence-level translation-memory data, including the restored Amis-Chinese material. The row-level CSV records one candidate translation and its ILRDF reference status. The group review CSV places all Glosbe targets for one source form together.
+This audit covers Glosbe dictionary/headword rows only. It does not filter sentence-level translation-memory data, including the restored Amis-Chinese material. The row-level CSV records one candidate translation and its ILRDF reference status. Grouped review output is retained in the development repository and is not part of the published port.
 
 ## Final Counts
 
@@ -108,7 +108,5 @@ This audit covers Glosbe dictionary/headword rows only. It does not filter sente
 ## Evidence Files
 
 Full row-level audit: `data/processed/ildrf_glosbe_lexical_audit.csv`
-
-Group review: `data/processed/ildrf_glosbe_lexical_group_review.csv`
 
 Concrete structural rejections: `data/processed/lexical_xml_rejected.csv`

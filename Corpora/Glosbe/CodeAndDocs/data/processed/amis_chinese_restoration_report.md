@@ -2,6 +2,8 @@
 
 Reviewed source: `work/reference_glosbe/amis_glosbe_traditional.xml`
 
+Reviewed source SHA-256: `2a0a0a03f849332e84e8e191ed9d3fbf0ce656d31acf5045e8d757b80596a764`
+
 Contributor: Joseph Lin ([source pull request](https://github.com/FormosanBank/Formosan-Glosbe/pull/1))
 
 ## Result

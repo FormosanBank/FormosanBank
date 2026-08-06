@@ -1,9 +1,10 @@
-# Final XML Translation Audit
+# Final XML Translation Audit Summary
 
-Generated audit file: `data/processed/final_xml_translation_audit.csv`
+This is the compact result of the development-side final XML translation audit. The row-level output remains in the private development repository because it points to private crawl sidecars.
 
 ## Scope
 
+- XML directory audited: `XML/`
 - XML files audited: 8
 - XML units audited: 7783
 - pass: 7783
@@ -32,4 +33,4 @@ Generated audit file: `data/processed/final_xml_translation_audit.csv`
 
 ## Interpretation
 
-`fail` means the unit is not acceptable for Final_XML without remediation. `review` means the unit passed hard checks but may warrant human spot-checking because of conservative heuristics.
+`fail` means the unit is not acceptable for the published XML without remediation. `review` means the unit passed hard checks but may warrant human spot-checking because of conservative heuristics.

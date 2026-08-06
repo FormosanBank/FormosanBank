@@ -25,6 +25,13 @@ def config_with_reference_or_skip():
     return config
 
 
+def test_published_config_targets_standard_xml_directory():
+    config = load_config("scripts/config.yaml")
+
+    assert config["xml"]["output_dir"] == "../XML"
+    assert (ROOT / config["xml"]["output_dir"]).resolve() == (Path(ROOT).parent / "XML").resolve()
+
+
 def test_reference_files_are_explicit_and_truku_only_for_trv():
     reference = load_ildrf_reference_lexicon(config_with_reference_or_skip())
 
