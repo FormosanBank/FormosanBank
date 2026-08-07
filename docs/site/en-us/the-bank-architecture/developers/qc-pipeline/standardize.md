@@ -24,6 +24,8 @@ For every `<S>` (matched as any element containing a `FORM` child) the script ca
 
 In `--copy` mode that is the whole operation. In TSV mode it additionally runs `apply_standard`, doing ordered, global Python `str.replace` for each `(original → replacement)` pair on the standard tier's text. An empty replacement deletes the matched string.
 
+**Accents are stripped before the mapping is applied.** No Formosan orthography uses accents phonemically, so an accented vowel in a source text (for example Glosbe marks stress: `máduk`, `dálix`) is just the plain vowel wearing a diacritic. Before running the find-and-replace, `apply_standard` strips these accents from the **standard** tier — decomposing to NFD, removing the accent marks (currently the combining acute and breve; the set is easy to extend), then recomposing. This guarantees a mapping entry keyed on the bare vowel still matches: without it, a rule such as `us → os` would silently skip `ús`. The **original** tier is never touched — it keeps the source's exact spelling, accents and all. (In `--copy` mode no mapping runs, so the standard tier is a verbatim copy and accents are preserved there too; strip them by supplying a TSV map.)
+
 **Choosing the TSV column.** The mapping TSV has an `original` column plus one or more value columns. The target column is resolved as follows:
 
 - `--target_column` overrides everything.
