@@ -259,3 +259,70 @@ def test_auto_resolves_multi_dialect_to_dialect_column(tmp_path):
     )
     # The Coastal column was applied (a -> C), not 'standard' (a -> A).
     assert _standard_forms(work) == ["CmCCmC"]
+
+
+# --- Accent handling during standardization -----------------------------------
+#
+# No Formosan orthography uses accents phonemically, so an accented vowel in the
+# source (e.g. Glosbe marks stress: "máduk") is just the plain vowel wearing a
+# diacritic. If the standard tier keeps the accent, a conversion-table entry
+# keyed on the plain vowel never matches. standardize.py must therefore strip
+# accents from the standard tier *before* applying the mapping — while leaving
+# the original tier's spelling (accents included) untouched.
+
+# A fake conversion table that rewrites every vowel to a distinct *unaccented*
+# vowel. Targets are uppercase so the sequential substring .replace() in
+# apply_standard cannot chain (an uppercase target is never a lowercase source).
+_VOWEL_SHIFT_TSV = "original\tstandard\na\tU\ne\tO\ni\tA\no\tE\nu\tI\n"
+
+# Accented lowercase vowels (acute on a e i o u, plus a breve u) — every vowel
+# the table rewrites, each carrying a diacritic. If accents are stripped first,
+# each becomes its plain vowel and then the table applies.
+_ACCENTED_PHRASE = "áéíóú ŭ"
+_EXPECTED_STANDARD = "UOAEI I"  # á→a→U é→e→O í→i→A ó→o→E ú→u→I  ŭ→u→I
+
+
+def test_accents_are_stripped_before_mapping_is_applied(tmp_path):
+    """An accented vowel must be standardized as if it were the plain vowel:
+    the accent is removed, then the conversion table maps the bare vowel."""
+    corpus = tmp_path / "corpus"
+    work = _write_corpus_xml(
+        corpus,
+        "accented.xml",
+        '<TEXT xml:lang="ami" dialect="unknown">'
+        f'<S id="1"><FORM kindOf="original">{_ACCENTED_PHRASE}</FORM></S></TEXT>',
+    )
+    tsv = tmp_path / "vowel_shift.tsv"
+    tsv.write_text(_VOWEL_SHIFT_TSV, encoding="utf-8")
+    proc = _run_standardize(["--tsv_path", str(tsv), "--corpora_path", str(corpus)])
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    assert _standard_forms(work) == [_EXPECTED_STANDARD], (
+        "standard tier should have accents stripped AND the table applied to the "
+        f"bare vowels; got {_standard_forms(work)!r}"
+    )
+    # No combining accent survives in the standard tier.
+    import unicodedata
+    decomposed = unicodedata.normalize("NFD", _standard_forms(work)[0])
+    assert "́" not in decomposed and "̆" not in decomposed, (
+        "standard tier still contains a combining acute/breve accent"
+    )
+
+
+def test_standardization_leaves_original_tier_accents_untouched(tmp_path):
+    """Stripping accents is a standard-tier operation only: the original tier
+    must keep its exact source spelling, diacritics and all."""
+    corpus = tmp_path / "corpus"
+    work = _write_corpus_xml(
+        corpus,
+        "accented.xml",
+        '<TEXT xml:lang="ami" dialect="unknown">'
+        f'<S id="1"><FORM kindOf="original">{_ACCENTED_PHRASE}</FORM></S></TEXT>',
+    )
+    tsv = tmp_path / "vowel_shift.tsv"
+    tsv.write_text(_VOWEL_SHIFT_TSV, encoding="utf-8")
+    proc = _run_standardize(["--tsv_path", str(tsv), "--corpora_path", str(corpus)])
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    assert _original_forms(work) == [_ACCENTED_PHRASE], (
+        "original tier must be byte-for-byte preserved (accents included); "
+        f"got {_original_forms(work)!r}"
+    )

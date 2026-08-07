@@ -15,6 +15,7 @@ _REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 from QC.validation._dialect_inventory import ISO_TO_LANGUAGE, is_multi_dialect_language
+from QC.utilities._accents import strip_accents
 
 
 def prettify(elem):
@@ -56,6 +57,9 @@ def get_exploration_targets(corpora_path, corpus=None):
 def apply_standard(s_element, standard):
     form = s_element.find("FORM[@kindOf='standard']")
     if form.text:
+        # Strip accents first so the mapping matches the bare vowel; the
+        # original tier is never touched here (this is the standard FORM).
+        form.text = strip_accents(form.text)
         # Apply each find-replace operation in order
         for original, replacement in standard:
             form.text = form.text.replace(original, replacement)
