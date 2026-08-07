@@ -34,6 +34,28 @@ python QC/utilities/standardize.py \
 
 The TSV must include an `original` column and a target column such as `standard` or a dialect name. Replacements are applied globally and sequentially with Python string replacement, so review the diff after running it.
 
+Generate original and standard sentence-level PHON after the FORM tiers are
+ready:
+
+```bash
+python QC/utilities/add_phonology.py \
+  --corpora_path /path/to/corpus-or-Final_XML \
+  --orthography TaiwanNandao
+```
+
+The standard PHON tier always uses `Orthographies/Ortho113`. The original PHON
+tier uses `Orthographies/<orthography>` when a reviewed source profile exists.
+Profiles use longest-grapheme, single-pass mapping and can include an ordered
+`<Language>.rules.tsv` file for documented context rules. Unknown characters
+are written as `*` and must be reviewed rather than silently copied.
+
+The utility processes each available tier independently. This means a source
+profile can still produce original PHON when no Ortho113 table exists, as with
+Pazeh. If a source already provides expert phonology directly, retain it with
+`--preserve-existing-original`; the standard tier is still regenerated when a
+standard table exists. See `Orthographies/readme.md` for the profile and rules
+formats and their reviewed boundaries.
+
 ## Validation pipeline (staged)
 
 The validator suite is a **staged pipeline** of separate executables that share a Finding/Severity framework but are run independently. XML format must pass before later stages produce meaningful output.
