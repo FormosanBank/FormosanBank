@@ -1,0 +1,226 @@
+source:
+  name: "Glosbe Formosan Translation Memory"
+  base_urls:
+    glosbe: "https://glosbe.com"
+    en_glosbe: "https://en.glosbe.com"
+    app_glosbe: "https://app.glosbe.com"
+    iapi3: "https://iapi.glosbe.com/iapi3/translate"
+
+metadata:
+  retrieved_date: "2026-06-29"
+
+reviewed_amis_chinese:
+  enabled: true
+  simplified_json: "work/json/cleaned_amis_chinese_translations.json"
+  traditional_xml: "work/reference_glosbe/amis_glosbe_traditional.xml"
+  contributor: "Joseph Lin"
+  pull_request: "https://github.com/FormosanBank/Formosan-Glosbe/pull/1"
+
+target_pairs:
+  - ["ami", "en"]
+  - ["ami", "zh"]
+  - ["tay", "en"]
+  - ["tay", "zh"]
+  - ["bnn", "en"]
+  - ["bnn", "zh"]
+  - ["xnb", "en"]
+  - ["xnb", "zh"]
+  - ["ckv", "en"]
+  - ["ckv", "zh"]
+  - ["pwn", "en"]
+  - ["pwn", "zh"]
+  - ["pyu", "en"]
+  - ["pyu", "zh"]
+  - ["dru", "en"]
+  - ["dru", "zh"]
+  - ["sxr", "en"]
+  - ["sxr", "zh"]
+  - ["xsy", "en"]
+  - ["xsy", "zh"]
+  - ["szy", "en"]
+  - ["szy", "zh"]
+  - ["trv", "en"]
+  - ["trv", "zh"]
+  - ["ssf", "en"]
+  - ["ssf", "zh"]
+  - ["tsu", "en"]
+  - ["tsu", "zh"]
+  - ["tao", "en"]
+  - ["tao", "zh"]
+
+language_mapping:
+  ami:
+    name: "Amis"
+    iso_639_3: "ami"
+  tay:
+    name: "Atayal"
+    iso_639_3: "tay"
+  bnn:
+    name: "Bunun"
+    iso_639_3: "bnn"
+  xnb:
+    name: "Kanakanabu"
+    iso_639_3: "xnb"
+  ckv:
+    name: "Kavalan"
+    iso_639_3: "ckv"
+  pwn:
+    name: "Paiwan"
+    iso_639_3: "pwn"
+  pyu:
+    name: "Puyuma"
+    iso_639_3: "pyu"
+  dru:
+    name: "Rukai"
+    iso_639_3: "dru"
+  sxr:
+    name: "Saaroa"
+    iso_639_3: "sxr"
+  xsy:
+    name: "Saisiyat"
+    iso_639_3: "xsy"
+  szy:
+    name: "Sakizaya"
+    iso_639_3: "szy"
+  trv:
+    name: "Taroko"
+    iso_639_3: "trv"
+  ssf:
+    name: "Thao"
+    iso_639_3: "ssf"
+  tsu:
+    name: "Tsou"
+    iso_639_3: "tsu"
+  tao:
+    name: "Tao/Yami"
+    iso_639_3: "tao"
+
+target_lang_xml:
+  en: "eng"
+  zh: "zho"
+
+starter_seeds:
+  - "God"
+  - "house"
+  - "water"
+  - "person"
+  - "language"
+  - "a"
+  - "e"
+  - "i"
+  - "o"
+  - "u"
+  - "the"
+  - "I"
+  - "you"
+  - "sky"
+  - "earth"
+  - "child"
+  - "woman"
+  - "man"
+  - "eat"
+  - "go"
+  - "speak"
+
+crawl:
+  user_agent: "FormosanBankGlosbeFormosanExtractor/1.0 private-research contact=formosanbank"
+  timeout_seconds: 20
+  max_retries: 5
+  rate_limit_seconds_min: 0.05
+  rate_limit_seconds_max: 0.12
+  backoff_factor: 2.0
+  stop_on_repeated_429: true
+  stop_on_repeated_403: true
+  cache_responses: true
+  use_playwright_for_token_discovery: false
+  use_playwright_for_static_fallback: false
+  download_audio: false
+  include_audio_sentences: false
+
+api:
+  includeWordlist: true
+  includeSimilar: true
+  includeTmem: true
+  includeAudioSentences: false
+  env: "en"
+  test_without_token: true
+  test_without_timestamp: true
+
+census:
+  enabled: true
+  seed_limit_per_pair: 6
+  max_pages_per_phrase_census: 1
+
+full_crawl:
+  enabled_after_census: true
+  max_phrases_per_pair: 1000
+  max_pages_per_phrase: 25
+  stop_after_no_new_examples_phrases: 10000
+  min_examples_to_continue_expansion: 1
+  crawl_static_pages_for_low_yield_pairs: true
+
+normalization:
+  unicode_form: "NFC"
+  strip_html_from_clean: true
+  preserve_case_in_text: true
+  lowercase_for_dedupe_only: true
+  ascii_fold: false
+  use_nfkc: false
+
+quality:
+  require_nonempty_source: true
+  require_nonempty_target: true
+  require_confirmed_direction: true
+  exclude_dictionary_only_from_xml: false
+  exclude_automatic_translation_only: true
+  exclude_duplicates_from_xml: true
+  exclude_existing_formosan_glosbe_overlap_from_xml: false
+
+xml:
+  # This copy is under FormosanBank/Corpora/Glosbe. The development repository
+  # keeps its generated files under Final_XML; the published port writes to the
+  # standard corpus XML directory instead.
+  output_dir: "../XML"
+  validate_strict: true
+  include_dictionary_entries: true
+  include_audio_tags: false
+  one_text_per_pair_author_domain: false
+  default_granularity: "sentence"
+  include_english_if_source_published: true
+  include_chinese_if_source_published: true
+
+ildrf_reference_lexicon:
+  # Zheng et al. extracted these bilingual lexicons from the ILRDF online
+  # dictionaries. They are reference metadata, not an independent authority.
+  derived_repo: "../../../../Formosan-Zheng-ACL-2024"
+  dictionary_files:
+    ami: "Final_XML/Amis/Dictionary_Amis_ami.xml"
+    tay: "Final_XML/Atayal/Dictionary_Atayal_tay.xml"
+    trv: "Final_XML/Truku/Dictionary_Truku_trv.xml"
+    xsy: "Final_XML/Saisiyat/Dictionary_Saisiyat_xsy.xml"
+
+overlap:
+  check_existing_formosan_glosbe: true
+  check_existing_bible: true
+  check_existing_ilrdf: true
+  check_existing_wikipedia: true
+  check_existing_epank: true
+  check_existing_gitbook: true
+
+app_expected_counts:
+  "ami,en":
+    phrases: 652
+    examples: 5491
+    source: "User-provided screenshot/app sanity check, 2026-05-13/14"
+  "tay,en":
+    phrases: 514
+    examples: 3
+    source: "User-provided app sanity check, 2026-05-13/14"
+  "xsy,en":
+    phrases: 469
+    examples: 5
+    source: "User-provided app sanity check, 2026-05-13/14"
+  "trv,en":
+    phrases: 113
+    examples: 0
+    source: "User-provided app sanity check, 2026-05-13/14"
