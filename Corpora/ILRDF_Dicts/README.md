@@ -60,6 +60,8 @@ This repository contains code and data for processing and structuring Formosan l
    python xmlify.py
    ```
 
+   Examples with an empty source-language or Chinese sentence are skipped. Their numerical sequence slots remain reserved so later sentence IDs stay stable.
+
 3. **Download Audio**:
    Run `audioDL.py` to download audio files linked to words in the dictionaries. The audio will be stored in the audio directory in the folder of the language it belongs to in Final_XML.
 

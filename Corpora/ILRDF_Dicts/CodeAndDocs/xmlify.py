@@ -4,6 +4,19 @@ from xml.dom import minidom
 import pickle
 import PyPDF2
 
+
+REQUIRED_SENTENCE_KEYS = ("Original", "Chinese", "File")
+
+# Manually confirmed audio/transcript mismatch. Match stable path tokens rather
+# than the hostname because ILRDF has changed audio hosts.
+KNOWN_MISMATCHED_AUDIO = {
+    "Pacemet a pahanhan.": {
+        "pacemet_{1}_@_1.1.mp3",
+        "3429a670-6a9b-40cb-b858-4e021c021534",
+    },
+}
+
+
 def get_first_word(file_path):
     # Open the PDF
     with open(file_path, "rb") as pdf_file:
@@ -36,7 +49,7 @@ def getPickles(lang: str):
 
 def handleHelper(sent):
     # Check if sentence contains all necessary keys and return its components if valid
-    for key in ['Original', 'Chinese', 'File']:
+    for key in REQUIRED_SENTENCE_KEYS:
         if key not in sent.keys():
             return False
 
@@ -44,6 +57,10 @@ def handleHelper(sent):
     audio = sent['File']
     fr_tx = sent['Original']
     zh_tx = sent['Chinese']
+    if not isinstance(fr_tx, str) or not fr_tx.strip():
+        return False
+    if not isinstance(zh_tx, str) or not zh_tx.strip():
+        return False
     return [fr_tx, zh_tx, audio]
 
 
@@ -57,15 +74,16 @@ def createElemHelp(lang, count, r):
     form = SubElement(s, 'FORM')
     tl = SubElement(s, 'TRANSL')
     tl.set('xml:lang', 'zho')  # Set language for translation element
-    audio = SubElement(s, 'AUDIO')
-
     tl.text = r[1]  # Chinese translation text
     form.text = r[0]  # Original sentence text
 
     # Handle case where audio is a list (take first entry)
-    if isinstance(r[2], list):
-        r[2] = r[2][0]
-    audio.set('url', r[2]['Path'])  # Set audio URL
+    audio_record = r[2][0] if isinstance(r[2], list) and r[2] else r[2]
+    audio_url = audio_record.get('Path') if isinstance(audio_record, dict) else None
+    blocked_tokens = KNOWN_MISMATCHED_AUDIO.get(form.text.strip(), set())
+    if audio_url and not any(token in audio_url for token in blocked_tokens):
+        audio = SubElement(s, 'AUDIO')
+        audio.set('url', audio_url)
 
     return s, count, form.text
 
@@ -81,6 +99,9 @@ def wrapperXML(sent, root, count, seen, lang):
         else:
             seen.add(te)
             root.append(s)  # Add new entry to XML root
+    elif all(key in sent for key in REQUIRED_SENTENCE_KEYS):
+        # Keep later IDs stable when the upstream API has an empty sentence.
+        count += 1
     return count
 
 
