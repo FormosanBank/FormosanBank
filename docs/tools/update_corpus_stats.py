@@ -113,6 +113,7 @@ CSV_TO_MD = {
     'Safolu-Amis-Dictionary_corpora_stats.csv': 'safolu-amis-dictionary.md',
     'Latham-1862_corpora_stats.csv': 'latham-1862.md',
     'Song-Kanakanavu-Grammar_corpora_stats.csv': 'song-kanakanavu-grammar.md',
+    'Li-Conjunction-Thao_corpora_stats.csv': 'li-conjunction-thao.md',
 }
 
 # ---------------------------------------------------------------------------
