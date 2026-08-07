@@ -177,3 +177,33 @@ def test_does_not_inject_whitespace_into_partial_UNCLEAR(tmp_path):
     assert "\n    <S id=\"1\">" in serialized
     assert "\n        <FORM" in serialized
     assert serialized.count("sa izua<UNCLEAR/></FORM>") == 2
+
+
+def test_null_morpheme_is_silent_in_phonology(tmp_path):
+    corpus = tmp_path / "corpus"
+    xml_path = _write_corpus(
+        corpus,
+        "Amis",
+        "a.xml",
+        '<TEXT xml:lang="ami" dialect="Coastal"><S id="1">'
+        '<FORM kindOf="standard">∅-fangcal ø-ci</FORM>'
+        '<W id="1-W1"><FORM kindOf="standard">∅-fangcal</FORM>'
+        '<M id="1-W1-M1"><FORM kindOf="standard">∅</FORM></M>'
+        '<M id="1-W1-M2"><FORM kindOf="standard">fangcal</FORM></M>'
+        "</W>"
+        '<W id="1-W2"><FORM kindOf="standard">ø-ci</FORM>'
+        '<M id="1-W2-M1"><FORM kindOf="standard">ø</FORM></M>'
+        '<M id="1-W2-M2"><FORM kindOf="standard">ci</FORM></M>'
+        "</W></S></TEXT>",
+    )
+
+    proc = _run(corpus)
+
+    assert proc.returncode == 0, proc.stdout + proc.stderr
+    root = ET.parse(xml_path).getroot()
+    assert root.findtext("./S/PHON[@kindOf='standard']") == "faŋʦaɾ ʦi"
+    assert root.findtext("./S/W/PHON[@kindOf='standard']") == "faŋʦaɾ"
+    assert root.findtext("./S/W/M/PHON[@kindOf='standard']") == "∅"
+    assert root.findtext("./S/W[2]/PHON[@kindOf='standard']") == "ʦi"
+    assert root.findtext("./S/W[2]/M/PHON[@kindOf='standard']") == "∅"
+    assert "*" not in xml_path.read_text(encoding="utf-8")

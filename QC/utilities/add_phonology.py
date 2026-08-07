@@ -16,6 +16,8 @@ if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 from QC.validation._dialect_inventory import is_multi_dialect_language
 
+NULL_MARKERS = ("∅", "Ø", "ø")
+
 
 def prettify(elem):
     """Pretty-print XML without adding whitespace inside mixed content."""
@@ -69,9 +71,21 @@ def apply_phonology_mappings(text, phonology_mappings, conversion_dict):
     """
     result = text
 
+    # Null morphemes have no sound inside a larger form. When the whole form is
+    # null, retain a visible empty-set PHON so the tier is not serialized empty.
+    if result.strip() in NULL_MARKERS:
+        return "∅"
+
     # Strip segmentation markers before mapping (see docstring).
     mapped_letters = {letter for letter, _ in phonology_mappings}
-    result = result.replace("=", "").replace("<", "").replace(">", "")
+    result = (
+        result.replace("=", "")
+        .replace("<", "")
+        .replace(">", "")
+        .replace("∅", "")
+        .replace("Ø", "")
+        .replace("ø", "")
+    )
     if "-" not in mapped_letters:
         result = result.replace("-", "")
 
@@ -262,7 +276,7 @@ def main(args):
                             # Now check against IPA characters instead of original letters
                             final_text = ""
                             for char in processed_text:
-                                if char in ipa_characters or char in string.punctuation or char.isspace():
+                                if char == "∅" or char in ipa_characters or char in string.punctuation or char.isspace():
                                     final_text += char
                                 else:
                                     final_text += "*"
@@ -351,7 +365,7 @@ def main(args):
                                         # Replace remaining unknown characters
                                         final_text = ""
                                         for char in processed_text:
-                                            if char in custom_ipa_characters or char in string.punctuation or char.isspace():
+                                            if char == "∅" or char in custom_ipa_characters or char in string.punctuation or char.isspace():
                                                 final_text += char
                                             else:
                                                 final_text += "*"
