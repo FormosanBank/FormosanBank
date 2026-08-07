@@ -326,3 +326,44 @@ def test_standardization_leaves_original_tier_accents_untouched(tmp_path):
         "original tier must be byte-for-byte preserved (accents included); "
         f"got {_original_forms(work)!r}"
     )
+
+
+# --- --ortho113 mode: copy + delete accents (no TSV, no dialectal conversion) --
+#
+# For a corpus whose dialect is unknown or mixed we cannot apply a dialect-
+# specific conversion table, but we can still produce an Ortho113-compatible
+# standard tier by removing accents (the one dialect-independent normalization,
+# since no Formosan orthography uses accents phonemically). --ortho113 is that
+# mode: like --copy, but it deletes accents from the standard tier.
+
+
+def test_ortho113_mode_deletes_accents_without_a_tsv(tmp_path):
+    """--ortho113 creates the standard tier as the original with accents removed,
+    requiring no TSV and doing no dialectal letter conversion."""
+    corpus = tmp_path / "corpus"
+    work = _write_corpus_xml(
+        corpus,
+        "acc.xml",
+        '<TEXT xml:lang="trv" dialect="Truku">'
+        '<S id="1"><FORM kindOf="original">máduk dálix dourŭk</FORM></S></TEXT>',
+    )
+    proc = _run_standardize(["--ortho113", "--corpora_path", str(corpus)])
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    # accents gone; every base letter (including o/u) left exactly as written
+    assert _standard_forms(work) == ["maduk dalix douruk"], (
+        f"expected accent-free copy with no letter conversion; got {_standard_forms(work)!r}"
+    )
+
+
+def test_ortho113_mode_leaves_original_tier_untouched(tmp_path):
+    """--ortho113 is a standard-tier operation only; the original keeps its accents."""
+    corpus = tmp_path / "corpus"
+    work = _write_corpus_xml(
+        corpus,
+        "acc.xml",
+        '<TEXT xml:lang="trv" dialect="Truku">'
+        '<S id="1"><FORM kindOf="original">máduk dálix</FORM></S></TEXT>',
+    )
+    proc = _run_standardize(["--ortho113", "--corpora_path", str(corpus)])
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    assert _original_forms(work) == ["máduk dálix"]
