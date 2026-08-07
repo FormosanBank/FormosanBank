@@ -11,7 +11,7 @@ The **ILRDF Dictionaries Corpus** is an integral part of the FormosanBank projec
 <!-- CORPUS STATS START -->
 ### Corpus Statistics
 
-| | Amis<br>Xiuguluan | Bunun<br>Junqun | Kavalan | Rukai<br>Wutai | Paiwan<br>Northern | Puyuma<br>Nanwang | Thao | Saaroa | Sakizaya | Yami | Atayal<br>Sekolik | Seediq<br>Tegudaya | Truku | Tsou | Kanakanabu | Saisiyat |
+| | Amis<br>Xiuguluan | Bunun<br>Junqun | Kavalan | Rukai<br>Wutai | Paiwan<br>Northern | Puyuma<br>Nanwang | Thao | Saaroa | Sakizaya | Yami | Atayal<br>Sekolik | Seediq<br>Tegudaya | Truku | Tsou | Kanakanavu | Saisiyat |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Word count | 37,140 | 53,541 | 53,088 | 60,572 | 38,316 | 51,590 | 44,889 | 19,149 | 32,233 | 39,790 | 53,688 | 51,673 | 27,973 | 19,184 | 38,130 | 37,491 |
 | Total audio | 8.4h | 12.3h | 10.9h | 14.7h | 9.2h | 10.6h | 9.2h | 6.9h | 8.2h | 6.3h | 10.5h | 8.5h | 7.1h | 4.3h | 12.5h | 9.2h |

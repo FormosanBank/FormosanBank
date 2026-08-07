@@ -11,7 +11,7 @@ This apology text, as part of the effort to promote **historical justice**, has 
 <!-- CORPUS STATS START -->
 ### Corpus Statistics
 
-| | Amis<br>Xiuguluan | Bunun<br>Junqun | Kavalan | Rukai<br>Wutai | Paiwan<br>Central | Puyuma<br>Nanwang | Thao | Saaroa | Sakizaya | Yami | Atayal<br>Sekolik | Seediq<br>Tegudaya | Truku | Tsou | Kanakanabu | Saisiyat |
+| | Amis<br>Xiuguluan | Bunun<br>Junqun | Kavalan | Rukai<br>Wutai | Paiwan<br>Central | Puyuma<br>Nanwang | Thao | Saaroa | Sakizaya | Yami | Atayal<br>Sekolik | Seediq<br>Tegudaya | Truku | Tsou | Kanakanavu | Saisiyat |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Word count | 1,929 | 1,548 | 2,209 | 1,948 | 2,378 | 2,091 | 1,854 | 1,114 | 1,735 | 1,640 | 2,445 | 1,508 | 1,853 | 2,072 | 1,543 | 1,639 |
 | Total audio | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |

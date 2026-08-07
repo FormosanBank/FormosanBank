@@ -78,7 +78,7 @@ LANG_NAMES = {
     'tay': 'Atayal',
     'trv': 'Seediq',
     'tsu': 'Tsou',
-    'xnb': 'Kanakanabu',
+    'xnb': 'Kanakanavu',
     'xsy': 'Saisiyat',
     'fos': 'Siraya'
 }
@@ -112,6 +112,7 @@ CSV_TO_MD = {
     'Nowbucyang-Truku-Thesis_corpora_stats.csv': 'nowbucyang-truku-thesis.md',
     'Safolu-Amis-Dictionary_corpora_stats.csv': 'safolu-amis-dictionary.md',
     'Latham-1862_corpora_stats.csv': 'latham-1862.md',
+    'Song-Kanakanavu-Grammar_corpora_stats.csv': 'song-kanakanavu-grammar.md',
 }
 
 # ---------------------------------------------------------------------------
