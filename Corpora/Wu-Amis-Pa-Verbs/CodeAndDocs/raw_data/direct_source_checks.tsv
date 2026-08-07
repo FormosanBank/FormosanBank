@@ -1,0 +1,31 @@
+check_id	source_example	source_locator	checked_content	result	decision
+check-01	18a	PDF 6 / printed 6 / example 18a	Pa-pi-nanum ∅-ci ina ci mama-an	match	Null retained as ø in W/M and removed from S.
+check-02	18b	PDF 6 / printed 6 / example 18b	Pa-pi-kaen-en aku ∅-ci panay t-u pawli	match	Null retained as ø in W/M and removed from S.
+check-03	18c	PDF 6 / printed 6 / example 18c	Pa-pi-cikay kaku ci panay-an; two translations	match	Both translations retained with the second marked alt.
+check-04	18d	PDF 6 / printed 6 / example 18d	Pa-pi-cikay-en aku ∅-ci panay-an; two translations	match	Both translations and null morphology retained.
+check-05	20a	PDF 6 / printed 6 / example 20a	Pa-cumud-en k-u haku	match	Literal grammatical example retained.
+check-06	20b	PDF 6 / printed 6 / example 20b	Pa-pi-cumud-en k-u wawa/*haku	match	Only grammatical wawa alternative retained.
+check-07	20c-person	PDF 6 / printed 6 / example 20c	Pa-rakat-en cingra/k-u-ni a paliding	match	Madeline's scope review assigns a paliding only to the k-u-ni car variant; the person variant ends at cingra.
+check-08	20c-car	PDF 6 / printed 6 / example 20c	Pa-rakat-en k-u-ni a paliding	match	Slash notation expanded into a complete car sentence.
+check-09	20d	PDF 6 / printed 6 / example 20d	Pa-pi-rakat-en cingra/*k-u-ni a paliding	match	Madeline's scope review retains only the grammatical cingra variant, which ends before the car phrase.
+check-10	28a	PDF 7 / printed 7 / example 28a	Pa-pi-nengneng-en n-i ina k-u wawa t-u wacu	match	Grammatical 28a retained; starred 28b excluded.
+check-11	30a	PDF 7 / printed 7 / example 30a	Pa-aca kaku t-u cudad i/*t-u wawa	match	Grammatical i case retained; both unstarred free translations retained.
+check-12	30b	PDF 8 / printed 8 / example 30b	Pa-aca kaku t-u cudad i ci aki-an	match	Literal grammatical example retained.
+check-13	30c	PDF 8 / printed 8 / example 30c	Ma-pa-cakay n-i aki k-u futing ci ofad-an	match	Grammatical 30c retained; starred prime excluded.
+check-14	30d	PDF 8 / printed 8 / example 30d	Ma-pa-aca n-u-ra wawa k-u hana t-u-ra kaying	match	Grammatical 30d retained; starred prime excluded.
+check-15	32a	PDF 8 / printed 8 / example 32a	Pa-fli ∅-ci mayaw ci aki-an t-u paysu	match	Literal W gloss give retained without inventing an unsupported Pa/fli M alignment.
+check-16	32b	PDF 8 / printed 8 / example 32b	Ma-pa-fli aku t-u paysu ∅-ci mayaw	match	Null retained and abbreviation capitalization normalized.
+check-17	32c	PDF 8 / printed 8 / example 32c	Ma-pa-fli aku k-u payau *(i) ci mayaw-an	match	Starred preposition omitted; printed payau retained.
+check-18	32d	PDF 8 / printed 8 / example 32d	Aka pa-fli-en k-u wawa	match	Grammatical 32d retained; starred 32f excluded.
+check-19	33a	PDF 9 / printed 9 / example 33a	Pa-caliw ∅-ci panay ci aki-an t-u paliding	match	Null retained as ø in W/M and removed from S.
+check-20	33b	PDF 9 / printed 9 / example 33b	Ma-pa-caliw n-i kacaw k-u singsi t-u paysu	match	Literal grammatical example retained.
+check-21	33c	PDF 9 / printed 9 / example 33c	Ma-pa-caliw ni kacaw ku paysu i singsi	match	Printed unsegmented ni and ku retained; starred 33d excluded.
+check-22	36a	PDF 9 / printed 9 / example 36a	Ma-na'ay kaku pa-nanum t-u/i sayta	match	Both printed case forms are retained with the unstarred reading; only the second reading is starred and excluded.
+check-23	36c	PDF 10 / printed 10 / example 36c	Ma-pa-nanum tu n-i ina k-u sayta i wawa	match	Grammatical 36c retained; starred 36b excluded.
+check-24	37a	PDF 10 / printed 10 / example 37a	Pa-neneneng kaku t-u-ni-ni a tilid ci sawmah-an	match	Literal grammatical example retained.
+check-25	37b	PDF 10 / printed 10 / example 37b	Pa-nengneng-en kaku t-u-ni impic	match	Grammatical 37b retained; starred 37c excluded.
+check-26	38a	PDF 10 / printed 10 / example 38a	Pa-cinas-en ∅-ci aki t-u kami	match	Null retained as ø in W/M and removed from S.
+check-27	38a-prime	PDF 10 / printed 10 / example 38a-prime	??Pa-cinas-en k-u kami ci aki-an	match	Questionable example and source name mismatch verified; Madeline's manual edit excludes it from final XML.
+check-28	38b	PDF 10 / printed 10 / example 38b	Pa-cinas-en k-u kami	match	Literal grammatical example retained.
+check-29	38c	PDF 10 / printed 10 / example 38c	Pa-pecih-en k-u wawa t-u mantu	match	Literal grammatical example retained.
+check-30	38c-prime	PDF 10 / printed 10 / example 38c-prime	?Pa-pecih-en t-u wawa k-u mantu	match	Questionable marker verified; Madeline's manual edit excludes it from final XML.
