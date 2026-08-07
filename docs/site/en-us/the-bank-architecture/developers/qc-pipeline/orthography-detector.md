@@ -14,6 +14,8 @@ Before a corpus can be transliterated to the standard tier, a human has to decid
 
 It takes the XML path as a **positional argument** (there is no `--corpora_path`). By default it analyzes the **original** tier (`FORM[@kindOf="original"]`, sentence-level, falling back to word-level `W` forms); pass `--use-standard` to analyze the standard tier instead. Text is lightly cleaned (digits, commas, `!`, `"` removed) before scoring.
 
+**Accents are stripped before the statistics are computed.** No Formosan orthography uses accents phonemically, so an accented vowel in a source text (for example Glosbe's stress-marked Truku `máduk`, `dálix`) is just the plain vowel wearing a diacritic. The detector removes these accents (currently the combining acute and breve — decompose to NFD, drop the marks, recompose) so an accented vowel is scored as its bare vowel: it counts toward coverage of the plain letter instead of being miscounted as an *unexpected* token that under-scores the true orthography. This affects statistics only; no data is modified, and the accent stays in the corpus's original tier. Without it, a stress-accented source like the Truku Glosbe data scores its own orthography far too low (in practice ~70% instead of ~97%).
+
 For the file's language (from `xml:lang`, mapped to a language name) it loads each orthography directory under `Orthographies/` (excluding `ConversionTables`) — e.g. `Church`, `MinEd`, `Ortho113` — building a letter inventory per orthography and dialect. Each candidate orthography gets a score combining:
 
 - **coverage** — how many of the orthography's "common" letters actually appear, and
