@@ -67,6 +67,7 @@ ISO_TO_LANGUAGE: dict[str, str] = {
     "sxr": "Saaroa",
     "xnb": "Kanakanavu",
     "fos": "Siraya",
+    "pzh": "Pazeh",
 }
 
 DIALECT_MAP: dict[str, set[str]] = _load_dialect_map()
