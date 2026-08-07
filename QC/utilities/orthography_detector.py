@@ -16,6 +16,13 @@ import sys
 from pathlib import Path
 from typing import Dict, List, Set, Tuple, Optional
 
+# Make the QC package importable so we can reuse the shared accent-stripping
+# used by standardize.py (both treat accented vowels as their bare vowel).
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+from QC.utilities._accents import strip_accents
+
 
 def load_orthography_data(orthographies_dir: str) -> Dict[str, Dict[str, Dict[str, Set[str]]]]:
     """
@@ -153,7 +160,12 @@ def extract_text_from_xml(xml_file: str, use_standard: bool = False) -> Tuple[st
         # Clean the text: remove numbers, commas, and exclamation marks
         # Keep letters, apostrophes, hyphens, and other characters that might be linguistically significant
         cleaned_text = re.sub(r'[0-9",!]', ' ', combined_text)
-        
+
+        # Strip accents so an accented vowel scores as its bare vowel: no
+        # Formosan orthography uses accents phonemically, so keeping them would
+        # miscount the vowel as an unexpected token against the true orthography.
+        cleaned_text = strip_accents(cleaned_text)
+
         return cleaned_text, language, dialect
         
     except Exception as e:
