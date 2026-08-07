@@ -21,8 +21,9 @@ For each file it reads `TEXT/@xml:lang` (mapped to a language name) and `TEXT/@d
 It builds an ordered list of `(letter → phoneme)` pairs (rows whose value is the literal `NA` are skipped), then for every `FORM[@kindOf="standard"]`:
 
 1. Ensures a sibling `PHON[@kindOf="standard"]` exists (creating one right after the `FORM` if not).
-2. Applies the mappings as ordered string replacements over the `FORM` text, with light capitalization handling.
-3. Replaces any leftover character that is not a known phoneme, punctuation, or whitespace with `*`.
+2. Strips morphological segmentation markers from the `FORM` text so `PHON` stays clean IPA even when the FORM tier carries them: `=` (clitic) and the `<...>` infix brackets are always removed — the infix content is kept, since it is pronounced — while `-` is removed only when it is **not** a letter in the language's orthography (Bunun/Thao keep `-`).
+3. Applies the mappings as ordered string replacements over the text, with light capitalization handling.
+4. Replaces any leftover character that is not a known phoneme, punctuation, or whitespace with `*`.
 
 The resulting string becomes the `PHON` element's text. With `--orthography <Name>`, the same procedure runs over `FORM[@kindOf="original"]` using `Orthographies/<Name>/<Language>.tsv`, writing `PHON[@kindOf="original"]`.
 

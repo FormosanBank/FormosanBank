@@ -10,9 +10,9 @@ The current public corpus contains 260 XML files from 16 speakers across Norther
 
 * **Language Covered**: Paiwan
 * **Corpus Content**:
-  * Read speech with sentence-level text and audio alignment
-  * Spontaneous recordings with a transcribed window and a companion XML stub for the untranscribed remainder
-* **Data Contributors**: Sixteen speakers across two field years, with pseudonyms used throughout the public data
+  * Texts with aligned audio for read speech
+  * Spontaneous speech recordings
+* **Data Contributors**: Sixteen speakers (pseudonyms used to maintain anonymity)
 
 ***
 

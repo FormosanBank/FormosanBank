@@ -39,7 +39,7 @@ Read the dev repo's `README` and every scrape/parse/build script. Produce a plai
 
 ### 2. Map each transformation to our pipeline
 
-For each step, classify it: (i) our pipeline already does this (and how it differs), (ii) it's a no-op for us, or (iii) it conflicts with a convention (cite which). Pay special attention to anything touching the **original** tier and to `W`-tier segmentation markers, which must survive. As a reference, FormosanBank's own pipeline is `clean_xml` → orthography detection (human) → `standardize` → `add_phonology` → validators (see the [QC Pipeline overview](qc-pipeline/README.md)).
+For each step, classify it: (i) our pipeline already does this (and how it differs), (ii) it's a no-op for us, or (iii) it conflicts with a convention (cite which). Pay special attention to anything touching the **original** tier and to `W`-tier segmentation markers, which must survive. As a reference, FormosanBank's own tooling runs in two passes — a cleaning & standardization build (`apply_manual_edits` → `clean_xml` → orthography detection (human) → `standardize` → `add_phonology`) followed by a read-only validation pass — both laid out in the [QC Pipeline overview](qc-pipeline/README.md).
 
 ### 3. Run the validators on the built XML
 

@@ -36,6 +36,8 @@
   * [NTU Corpus of Formosan Languages](the-bank-architecture/corpora/NTUFormosanCorpus.md)
   * [Truku Word Formation (Hsu Thesis)](the-bank-architecture/corpora/nowbucyang-truku-thesis.md)
   * [Safolu Amis Dictionary](the-bank-architecture/corpora/safolu-amis-dictionary.md)
+  * [Latham 1862](the-bank-architecture/corpora/latham-1862.md)
+  * [Song (2018) Kanakanavu Grammar](the-bank-architecture/corpora/song-kanakanavu-grammar.md)
 * [Developers](the-bank-architecture/developers/README.md)
   * [🤗 HuggingFace](the-bank-architecture/developers/huggingface.md)
   * [Formosan MT Toolkit](the-bank-architecture/developers/formosan-mt-toolkit.md)

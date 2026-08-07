@@ -15,7 +15,7 @@ It consists of three main sections:
 <!-- CORPUS STATS START -->
 ## Corpus Statistics
 
-| | Amis<br>Coastal | Bunun<br>Junqun | Kavalan | Rukai<br>Wutai | Sakizaya | Atayal<br>Wenshui | Seediq<br>Tegudaya | Tsou | Kanakanabu | Saisiyat |
+| | Amis<br>Coastal | Bunun<br>Junqun | Kavalan | Rukai<br>Wutai | Sakizaya | Atayal<br>Wenshui | Seediq<br>Tegudaya | Tsou | Kanakanavu | Saisiyat |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Word count | 7,561 | 23,283 | 16,244 | 17,985 | 13,999 | 5,856 | 23,341 | 10,128 | 20,352 | 10,816 |
 | Total audio | 1.2h | 1.6h | 2.9h | 1.6h | 2.3h | 1.1h | 3.3h | 1.0h | 4.0h | 1.8h |

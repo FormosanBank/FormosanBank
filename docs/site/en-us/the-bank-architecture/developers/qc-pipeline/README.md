@@ -58,22 +58,40 @@ python QC/validation/validate_xml.py by_language --language ami --corpora_path C
 
 When in doubt, `by_path` against a single corpus's `XML/` directory is the safest target. All commands in this section assume you run from the FormosanBank repo root after `source .venv/bin/activate`.
 
-## The canonical run order
+## Two pipelines: build vs. check
 
-The typical sequence for checking a corpus (see [QC/README.md](https://github.com/FormosanBank/FormosanBank/blob/main/QC/README.md) for the authoritative version):
+The QC tooling runs in two distinct passes, in this order. The first **transforms** the XML; the second **inspects** it.
+
+- The **cleaning & standardization pipeline** takes a corpus's raw ingestion output and builds it into the canonical two-tier form. Its scripts **mutate the XML in place**. It runs in a corpus's `Formosan-<Name>/` dev repo as the corpus is developed.
+- The **validation pipeline** runs afterward (and in CI). Its scripts are **read-only** — they report findings and never change the data.
+
+The guided [`run-qc-pipeline` skill](../using-the-claude-skills.md) runs both in a single pass (cleaning & standardization first, then validation); the [`audit-dev-repo` skill](../using-the-claude-skills.md) drives the validation pipeline plus a source diff. See [Running an Audit](../running-an-audit.md) and [Porting a Corpus In](../porting-a-corpus.md) for the end-to-end workflows.
+
+### The cleaning & standardization pipeline
+
+Run in order; every step here writes to the XML, so `git diff` before committing.
+
+1. [apply_manual_edits.py](manual-edits.md) — replay any recorded hand edits first (no-op if the corpus has none).
+2. [clean_xml.py](clean-xml.md) — normalize unicode, punctuation, and HTML entities; language-aware segmentation handling.
+3. **Orthography detection** *(human judgment)* — [orthography_detector.py](orthography-detector.md) analyzes the `original` tier; a human decides the corpus's source orthography, which determines the next step.
+4. [standardize.py](standardize.md) — build the `standard` `FORM` tier: `--copy` for an exact duplicate (Ortho113 corpora), or a TSV mapping to transliterate.
+5. [add_phonology.py](add-phonology.md) — add `PHON` tiers from the orthography→phoneme tables.
+
+### The validation pipeline
+
+Run after the XML is built (these are read-only). XML format must pass first; later stages assume structurally valid input.
 
 1. [validate_xml.py](validate-xml.md) — XSD conformance and structure. **Must pass first.**
 2. [validate_dialect.py](validate-dialect.md) — eyeball the `(xml:lang, dialect)` distribution.
-3. [standardize.py](standardize.md) `--copy` — only if the `standard` tier is missing.
-4. [validate_text.py](validate-text.md) — punctuation, character set, processing artifacts.
-5. [orthography_extract.py](orthography-extract.md) `--kindOf standard --by_dialect true`, then [validate_orthography.py](validate-orthography.md) and [validate_vocabulary.py](validate-vocabulary.md) against the per-language reference data.
-6. [validate_glosses.py](validate-glosses.md) — only for corpora with `W`/`M` segmentation.
-7. [validate_audio.py](validate-audio.md) — only for corpora with audio.
+3. [validate_text.py](validate-text.md) — punctuation, character set, processing artifacts. (Needs a `standard` tier; if a corpus skipped the build pipeline, create one with [standardize.py](standardize.md) `--copy` first.)
+4. [orthography_extract.py](orthography-extract.md) `--kindOf standard --by_dialect true`, then [validate_orthography.py](validate-orthography.md) and [validate_vocabulary.py](validate-vocabulary.md) against the per-language reference data.
+5. [validate_glosses.py](validate-glosses.md) — only for corpora with `W`/`M` segmentation.
+6. [validate_audio.py](validate-audio.md) — only for corpora with audio.
 
-The two end-to-end workflows that string these together are documented separately: [Running an Audit](../running-an-audit.md) and [Porting a Corpus In](../porting-a-corpus.md). Both are also available as guided [Claude skills](../using-the-claude-skills.md).
+(See [QC/README.md](https://github.com/FormosanBank/FormosanBank/blob/main/QC/README.md) for the authoritative version of both sequences.)
 
 {% hint style="danger" %}
-The **cleaning** and **fix-up** scripts modify XML *in place*. Most default to `--dry-run`, but a few (e.g. `clean_xml.py`) mutate immediately. Always `git diff` before committing.
+Everything in the **cleaning & standardization** pipeline — plus the [fix-up utilities](fix-up-utilities.md) — modifies XML *in place*. Some cleaners default to `--dry-run`, but several (e.g. `clean_xml.py`, `apply_manual_edits.py`, `standardize.py`) mutate immediately. Always `git diff` before committing. The **validation** pipeline never mutates data.
 {% endhint %}
 
 ## Reference pages
