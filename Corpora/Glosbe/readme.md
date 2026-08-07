@@ -43,23 +43,52 @@ Final lexical result:
 
 Reference status is informational: 529 translations have an unattested source form, 528 have no applicable gloss mapping, 209 are mapping-supported, and 39 map to a different reference sense. All four statuses remain in XML. See `CodeAndDocs/data/processed/ildrf_glosbe_lexical_audit_report.md` for provenance, reference-file hashes, rule definitions, and pair counts.
 
-## Reproducibility
+## Standardization and Phonology
 
-The canonical development repository is [FormosanBank/Formosan-Glosbe](https://github.com/FormosanBank/Formosan-Glosbe). `CodeAndDocs/` preserves the current pipeline, configuration, reviewed Amis-Chinese source file, tests, and compact audit evidence used for this publication. The older one-off workflow remains under `CodeAndDocs/work/scripts/` for historical context.
+Each `<S>` carries three sentence-tier layers: `FORM kindOf="original"` (the source spelling, preserved exactly), `FORM kindOf="standard"` (FormosanBank's Ortho113 orthography), and `PHON` (IPA) on **both** tiers.
 
-The published copy of `scripts/config.yaml` writes generated XML to `../XML`, matching this repository's standard corpus layout. The development repository uses its own `Final_XML` directory.
+Glosbe is crowd-sourced, so the dialect of each entry is generally unknown and a single file likely mixes dialects. We therefore assumed the following source orthographies and standardized each language to Ortho113:
 
-For a full rebuild, clone `Formosan-Glosbe` and `Formosan-Zheng-ACL-2024` as siblings, retain the private Glosbe crawl cache and processed sidecars in the development repository, then run:
+| Language | Source orthography | Conversion table / column | Dialect assumption |
+| --- | --- | --- | --- |
+| Amis (`ami`) | Ortho94 | `Amis_94_113.tsv`, non-Southern (`Coastal`) column | dialect unknown; the non-Southern columns are identical and the source is `f`/`o`-dominant (not Southern). Net effect: `u`→`o` |
+| Atayal (`tay`) | Church | `Atayal_Church_113.tsv` (single `standard` column) | dialect unknown; the Church table is dialect-agnostic |
+| Truku (`trv`) | Ortho94 | `Seediq_94_113.tsv`, `Truku` column | `dialect="Truku"` (Truku, not Seediq) |
+| Saisiyat (`xsy`) | Ortho94 | `Saisiyat_94_113.tsv` (single `standard` column) | single dialect |
+
+No Formosan orthography uses accents phonemically, so accents (e.g. Glosbe's stress marks on Truku `dálix`) are **deleted from the standard tier** during standardization; the original tier keeps them exactly. IPA is generated for the standard tier from `Orthographies/Ortho113/<Language>.tsv` and for the original tier from the source orthography above. For the unknown-dialect Amis and Atayal originals, a `default` column in `Orthographies/Ortho94/Amis.tsv` and `Orthographies/Church/Atayal.tsv` supplies the IPA.
+
+To rebuild the standard tier and both-tier phonology from the published `original` tier, run from the FormosanBank repo root after `source .venv/bin/activate`:
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-python scripts/glosbe_pipeline.py rebuild_lexical_reference_audit --config scripts/config.yaml
-python scripts/glosbe_pipeline.py validate_formosanbank_xml --config scripts/config.yaml
+CT=Orthographies/ConversionTables
+
+# Standardize each language to Ortho113 (accents are stripped from the standard tier)
+python QC/utilities/standardize.py --tsv_path $CT/Amis_94_113.tsv      --target_column Coastal  --corpora_path Corpora/Glosbe/XML/ami
+python QC/utilities/standardize.py --tsv_path $CT/Atayal_Church_113.tsv --target_column standard --corpora_path Corpora/Glosbe/XML/tay
+python QC/utilities/standardize.py --tsv_path $CT/Seediq_94_113.tsv     --target_column Truku    --corpora_path Corpora/Glosbe/XML/trv
+python QC/utilities/standardize.py --tsv_path $CT/Saisiyat_94_113.tsv   --target_column standard --corpora_path Corpora/Glosbe/XML/xsy
+
+# Add IPA phonology to both tiers (standard from Ortho113; original from the source orthography)
+python QC/utilities/add_phonology.py --orthography Ortho94 --target_column Coastal --corpora_path Corpora/Glosbe/XML/ami
+python QC/utilities/add_phonology.py --orthography Church                          --corpora_path Corpora/Glosbe/XML/tay
+python QC/utilities/add_phonology.py --orthography Ortho94                         --corpora_path Corpora/Glosbe/XML/trv
+python QC/utilities/add_phonology.py --orthography Ortho94                         --corpora_path Corpora/Glosbe/XML/xsy
 ```
 
-Run the full rebuild in the development repository, not from this published checkout. It requires the private Glosbe crawl cache, processed sidecars, and the sibling `Formosan-Zheng-ACL-2024` reference repository. Those inputs are not published. The public port retains the reviewed source, row-level restoration and lexical-policy evidence, compact reports, final XML, reference hashes, and concrete rejection list. Adjust `ildrf_reference_lexicon.derived_repo` in `scripts/config.yaml` if the reference repository is elsewhere.
+`standardize.py` strips accents from the standard tier only in TSV mode (used above); it requires the accent-stripping build of `standardize.py`, the `Amis_94_113.tsv` table, and the `default` columns noted above.
+
+## Reproducibility
+
+The former development repository [FormosanBank/Formosan-Glosbe](https://github.com/FormosanBank/Formosan-Glosbe) is deprecated; the corpus is now maintained here. `CodeAndDocs/` preserves the current pipeline, configuration, reviewed Amis-Chinese source file, tests, and compact audit evidence used for this publication. The older one-off workflow remains under `CodeAndDocs/work/scripts/` for historical context.
+
+Reproducibility is partial, by layer:
+
+- **Standard tier and both-tier phonology** — fully reproducible from the published `original` tier with the commands in [Standardization and Phonology](#standardization-and-phonology) above.
+- **Restored Amis-Chinese translations** — reproducible from the committed reviewed source (`CodeAndDocs/work/reference_glosbe/amis_glosbe_traditional.xml` and `work/json/`), which the pipeline merges into the `ami/zh` translation memory.
+- **The initial scrape** (Glosbe lexical and English translation-memory rows) — **not** reproducible from this checkout. It is a retained snapshot of a 2026 Glosbe crawl; the raw crawl cache and processed `.jsonl` sidecars are not published, and the former development repository is deprecated. Re-crawling Glosbe would yield different data.
+
+The lexical ILRDF audit (`glosbe_pipeline.py rebuild_lexical_reference_audit`) additionally requires the sibling `Formosan-Zheng-ACL-2024` reference repository; adjust `ildrf_reference_lexicon.derived_repo` in `scripts/config.yaml` if it is elsewhere. `config.yaml` writes generated XML to `../XML`, matching this repository's standard corpus layout.
 
 Key evidence files:
 
