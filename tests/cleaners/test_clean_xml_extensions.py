@@ -835,6 +835,44 @@ def test_C012_canonical_null_morpheme_stripped_from_standard(
     ]
 
 
+def test_C012_lowercase_o_slash_is_only_a_null_marker_for_amis(
+    tmp_path, fixtures_dir, copy_fixture
+):
+    work = copy_fixture(
+        fixtures_dir / "c012_null_morpheme_in_standard_trv.xml", tmp_path
+    )
+    source = work.read_text(encoding="utf-8").replace("Ø", "ø")
+    work.write_text(source, encoding="utf-8")
+
+    proc = _run_clean(tmp_path)
+
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    assert _form_texts_with_kindof(work, "S", "standard") == [
+        "ødhuq sapah ka tama da."
+    ]
+
+
+def test_C012_lowercase_o_slash_is_removed_for_amis(
+    tmp_path, fixtures_dir, copy_fixture
+):
+    work = copy_fixture(
+        fixtures_dir / "c012_null_morpheme_in_standard_trv.xml", tmp_path
+    )
+    source = (
+        work.read_text(encoding="utf-8")
+        .replace('xml:lang="trv"', 'xml:lang="ami"')
+        .replace("Ø", "ø")
+    )
+    work.write_text(source, encoding="utf-8")
+
+    proc = _run_clean(tmp_path)
+
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    assert _form_texts_with_kindof(work, "S", "standard") == [
+        "dhuq sapah ka tama da."
+    ]
+
+
 def test_C012_null_morpheme_stripped_but_letter_hyphens_preserved(
     tmp_path, fixtures_dir, copy_fixture
 ):

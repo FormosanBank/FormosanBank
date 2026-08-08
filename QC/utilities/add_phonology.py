@@ -14,9 +14,10 @@ from lxml import etree
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
-from QC.validation._dialect_inventory import is_multi_dialect_language
+from QC.validation._dialect_inventory import is_multi_dialect_language  # noqa: E402
 
-NULL_MARKERS = ("∅", "Ø", "ø")
+NULL_MARKERS = ("∅", "Ø")
+AMIS_NULL_MARKERS = (*NULL_MARKERS, "ø")
 
 
 def prettify(elem):
@@ -60,7 +61,13 @@ def apply_standard(s_element, standard):
         for original, replacement in standard:
             form.text = form.text.replace(original, replacement)
 
-def apply_phonology_mappings(text, phonology_mappings, conversion_dict):
+def apply_phonology_mappings(
+    text,
+    phonology_mappings,
+    conversion_dict,
+    *,
+    null_markers=NULL_MARKERS,
+):
     """Apply phonology mappings with capitalization handling.
 
     Morphological segmentation markers are stripped first so PHON is clean IPA
@@ -73,21 +80,23 @@ def apply_phonology_mappings(text, phonology_mappings, conversion_dict):
 
     # Null morphemes have no sound inside a larger form. When the whole form is
     # null, retain a visible empty-set PHON so the tier is not serialized empty.
-    if result.strip() in NULL_MARKERS:
+    if result.strip() in null_markers:
         return "∅"
 
     # Strip segmentation markers before mapping (see docstring).
     mapped_letters = {letter for letter, _ in phonology_mappings}
-    result = (
-        result.replace("=", "")
-        .replace("<", "")
-        .replace(">", "")
-        .replace("∅", "")
-        .replace("Ø", "")
-        .replace("ø", "")
-    )
+    result = result.replace("=", "").replace("<", "").replace(">", "")
+    for marker in null_markers:
+        result = result.replace(marker, "")
     if "-" not in mapped_letters:
         result = result.replace("-", "")
+
+    removable_punctuation = "".join(
+        character
+        for character in string.punctuation
+        if character not in mapped_letters
+    )
+    result = result.translate(str.maketrans("", "", removable_punctuation))
 
     # Apply mappings in the original order from the TSV file
     for letter, ipa_value in phonology_mappings:
@@ -270,7 +279,16 @@ def main(args):
                             form_text = form_element.text or ""
                             
                             # Apply phonology mappings with capitalization handling
-                            processed_text = apply_phonology_mappings(form_text, phonology_mappings, conversion_dict)
+                            processed_text = apply_phonology_mappings(
+                                form_text,
+                                phonology_mappings,
+                                conversion_dict,
+                                null_markers=(
+                                    AMIS_NULL_MARKERS
+                                    if language == "Amis"
+                                    else NULL_MARKERS
+                                ),
+                            )
                             
                             # Then replace any remaining unknown non-punctuation characters with *
                             # Now check against IPA characters instead of original letters
@@ -314,7 +332,7 @@ def main(args):
                                 elif 'default' in custom_available_columns:
                                     custom_target_column = 'default'
                                 else:
-                                    print(f"Warning: No IPA or default column found in custom orthography, skipping original forms")
+                                    print("Warning: No IPA or default column found in custom orthography, skipping original forms")
                                     custom_target_column = None
                             
                             if custom_target_column:
@@ -360,7 +378,16 @@ def main(args):
                                         form_text = form_element.text or ""
                                         
                                         # Apply custom phonology mappings
-                                        processed_text = apply_phonology_mappings(form_text, custom_phonology_mappings, custom_conversion_dict)
+                                        processed_text = apply_phonology_mappings(
+                                            form_text,
+                                            custom_phonology_mappings,
+                                            custom_conversion_dict,
+                                            null_markers=(
+                                                AMIS_NULL_MARKERS
+                                                if language == "Amis"
+                                                else NULL_MARKERS
+                                            ),
+                                        )
                                         
                                         # Replace remaining unknown characters
                                         final_text = ""

@@ -207,3 +207,37 @@ def test_null_morpheme_is_silent_in_phonology(tmp_path):
     assert root.findtext("./S/W[2]/PHON[@kindOf='standard']") == "ʦi"
     assert root.findtext("./S/W[2]/M/PHON[@kindOf='standard']") == "∅"
     assert "*" not in xml_path.read_text(encoding="utf-8")
+
+
+def test_non_orthographic_punctuation_is_not_copied_to_phon(tmp_path):
+    corpus = tmp_path / "corpus"
+    xml_path = _write_corpus(
+        corpus,
+        "Amis",
+        "a.xml",
+        '<TEXT xml:lang="ami" dialect="Coastal"><S id="1">'
+        '<FORM kindOf="standard">kaku, ca\'ay.</FORM>'
+        "</S></TEXT>",
+    )
+
+    proc = _run(corpus)
+
+    assert proc.returncode == 0, proc.stdout + proc.stderr
+    assert _phon_texts(xml_path, "standard") == ["kaku ʦaʡaj"]
+
+
+def test_lowercase_o_slash_is_not_a_global_null_marker(tmp_path):
+    corpus = tmp_path / "corpus"
+    xml_path = _write_corpus(
+        corpus,
+        "Yami",
+        "y.xml",
+        '<TEXT xml:lang="tao" dialect="Yami"><S id="1">'
+        '<FORM kindOf="standard">ø</FORM>'
+        "</S></TEXT>",
+    )
+
+    proc = _run(corpus)
+
+    assert proc.returncode == 0, proc.stdout + proc.stderr
+    assert _phon_texts(xml_path, "standard") == ["*"]
