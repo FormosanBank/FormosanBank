@@ -226,7 +226,7 @@ def apply_phonology_mappings(
     character (such as Amis apostrophe) is retained.
     """
     if text.strip() in NULL_MARKERS:
-        return "∅"
+        return ""
 
     result = text.replace("=", "").replace("<", "").replace(">", "")
     mapped_letters = {letter for letter, _replacement in phonology_mappings}
@@ -294,8 +294,7 @@ def phonologize(text: str, profile: PhonologyProfile) -> str:
     for character in result:
         category = unicodedata.category(character)
         if (
-            character == "∅"
-            or character in profile.ipa_characters
+            character in profile.ipa_characters
             or character in string.punctuation
             or character.isspace()
             or category.startswith("M")

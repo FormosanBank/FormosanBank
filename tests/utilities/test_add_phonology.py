@@ -159,7 +159,7 @@ def test_null_morphemes_are_silent_in_phonology():
     profile = load_profile("Ortho113", "Amis", "Coastal")
     assert profile is not None
     assert phonologize("∅-fangcal", profile) == "faŋʦaɾ"
-    assert phonologize("∅", profile) == "∅"
+    assert phonologize("∅", profile) == ""
 
 
 def test_explicit_target_column_overrides_dialect_column(tmp_path):
