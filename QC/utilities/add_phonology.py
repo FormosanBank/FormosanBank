@@ -26,7 +26,6 @@ from QC.validation._dialect_inventory import (  # noqa: E402
 
 ORTHOGRAPHIES_PATH = _REPO_ROOT / "Orthographies"
 STANDARD_ORTHOGRAPHY = "Ortho113"
-NULL_MARKERS = ("∅", "Ø", "ø")
 
 
 @dataclass(frozen=True)
@@ -38,10 +37,7 @@ class PhonologyRule:
 
 @dataclass(frozen=True)
 class PhonologyProfile:
-    path: Path
-    target_column: str
     mappings: tuple[tuple[str, str], ...]
-    conversion_dict: dict[str, str]
     ipa_characters: frozenset[str]
     rules: tuple[PhonologyRule, ...]
 
@@ -187,7 +183,6 @@ def load_profile(
             explicit=target_column,
         )
         mappings = []
-        conversion_dict = {}
         ipa_characters = set()
         for row in reader:
             letter = (row.get("letter") or "").strip()
@@ -195,17 +190,13 @@ def load_profile(
             if not letter or value == "NA":
                 continue
             mappings.append((letter, value))
-            conversion_dict[letter] = value
             ipa_characters.update(value)
 
     rules = _load_rules(path)
     for rule in rules:
         ipa_characters.update(rule.replacement)
     return PhonologyProfile(
-        path=path,
-        target_column=selected,
         mappings=tuple(mappings),
-        conversion_dict=conversion_dict,
         ipa_characters=frozenset(ipa_characters),
         rules=rules,
     )
@@ -215,34 +206,12 @@ def apply_phonology_mappings(
     text: str,
     phonology_mappings: tuple[tuple[str, str], ...]
     | list[tuple[str, str]],
-    _conversion_dict: dict[str, str],
 ) -> str:
-    """Apply grapheme mappings and drop non-orthographic word punctuation.
-
-    Sentence punctuation can be present at the edges of a word-level FORM
-    (for example ``kaku,``). It is meaningful source text, so it remains in
-    FORM tiers, but it must not be copied into PHON where punctuation would be
-    mistaken for an IPA mark. Punctuation that is itself a mapped orthographic
-    character (such as Amis apostrophe) is retained.
-    """
-    if text.strip() in NULL_MARKERS:
-        return ""
-
+    """Apply longest grapheme mappings without remapping generated IPA."""
     result = text.replace("=", "").replace("<", "").replace(">", "")
     mapped_letters = {letter for letter, _replacement in phonology_mappings}
     if "-" not in mapped_letters:
         result = result.replace("-", "")
-    result = result.replace("∅", "").replace("Ø", "").replace("ø", "")
-
-    # Keep punctuation that the selected orthography explicitly defines as a
-    # letter. This preserves Amis apostrophe -> ʡ while removing sentence
-    # punctuation such as commas and periods from generated PHON values.
-    removable_punctuation = "".join(
-        character
-        for character in string.punctuation
-        if character not in mapped_letters
-    )
-    result = result.translate(str.maketrans("", "", removable_punctuation))
 
     ordered = sorted(
         enumerate(phonology_mappings),
@@ -285,7 +254,6 @@ def phonologize(text: str, profile: PhonologyProfile) -> str:
     result = apply_phonology_mappings(
         text,
         profile.mappings,
-        profile.conversion_dict,
     )
     for rule in profile.rules:
         result = rule.pattern.sub(rule.replacement, result)

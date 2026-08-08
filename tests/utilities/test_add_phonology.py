@@ -148,20 +148,6 @@ def test_multi_dialect_resolves_via_dialect_column(tmp_path):
     )
 
 
-def test_phonology_removes_word_punctuation_but_keeps_amis_apostrophe():
-    profile = load_profile("Ortho113", "Amis", "Coastal")
-    assert profile is not None
-    assert phonologize("kaku,", profile) == "kaku"
-    assert phonologize("ca'ay.", profile) == "ʦaʡaj"
-
-
-def test_null_morphemes_are_silent_in_phonology():
-    profile = load_profile("Ortho113", "Amis", "Coastal")
-    assert profile is not None
-    assert phonologize("∅-fangcal", profile) == "faŋʦaɾ"
-    assert phonologize("∅", profile) == ""
-
-
 def test_explicit_target_column_overrides_dialect_column(tmp_path):
     corpus = tmp_path / "corpus"
     xml_path = _write_corpus(

@@ -170,13 +170,13 @@ def _process_standard_hyphens(
 
     The '=' clitic marker is always stripped (it's never a letter).
 
-    Null-morpheme markers are likewise stripped unconditionally together with
-    their bridging segmentation hyphen. This covers canonical '∅' (U+2205)
-    and legacy 'Ø' (U+00D8). They are annotations, never orthographic letters
-    in any Formosan language. Removing them as a unit avoids leaving a
-    dangling hyphen even where '-' is a letter (Bunun, Thao).
+    The null-morpheme marker 'Ø' (U+00D8) is likewise stripped unconditionally
+    — together with its bridging segmentation hyphen ('Ø-' / '-Ø') — because it
+    is an annotation, never an orthographic letter in any Formosan language.
+    Removing it as a unit avoids leaving a dangling hyphen even where '-' is a
+    letter (Bunun, Thao).
     """
-    text = re.sub(r"[Ø∅]-|-[Ø∅]|[Ø∅]", "", text)
+    text = re.sub(r"Ø-|-Ø|Ø", "", text)
     if lang_code and _hyphen_is_letter(lang_code, ortho_path):
         if hard_remove_segmentation:
             return text.replace("-", "").replace("=", "")
