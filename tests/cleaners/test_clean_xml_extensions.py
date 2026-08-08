@@ -814,6 +814,24 @@ def test_C012_null_morpheme_marker_stripped_from_standard(
     assert orig == "Ø-dhuq sapah ka tama da.", f"original: {orig!r}"
 
 
+def test_C012_canonical_null_morpheme_marker_stripped_from_standard(
+    tmp_path, fixtures_dir, copy_fixture
+):
+    """The canonical extracted marker ∅ follows the legacy Ø policy."""
+    work = copy_fixture(
+        fixtures_dir / "c012_null_morpheme_in_standard_trv.xml", tmp_path
+    )
+    tree = etree.parse(str(work))
+    tree.find(".//FORM[@kindOf='original']").text = "∅-dhuq sapah ka tama da."
+    tree.find(".//FORM[@kindOf='standard']").text = "∅-dhuq sapah ka tama da."
+    tree.write(str(work), encoding="utf-8", xml_declaration=True)
+
+    proc = _run_clean(tmp_path)
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    std = _form_texts_with_kindof(work, "S", "standard")[0]
+    assert std == "dhuq sapah ka tama da.", f"standard: {std!r}"
+
+
 def test_C012_null_morpheme_stripped_but_letter_hyphens_preserved(
     tmp_path, fixtures_dir, copy_fixture
 ):
