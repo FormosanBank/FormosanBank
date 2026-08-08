@@ -26,6 +26,7 @@ from QC.validation._dialect_inventory import (  # noqa: E402
 
 ORTHOGRAPHIES_PATH = _REPO_ROOT / "Orthographies"
 STANDARD_ORTHOGRAPHY = "Ortho113"
+NULL_MARKERS = ("∅", "Ø", "ø")
 
 
 @dataclass(frozen=True)
@@ -224,10 +225,14 @@ def apply_phonology_mappings(
     mistaken for an IPA mark. Punctuation that is itself a mapped orthographic
     character (such as Amis apostrophe) is retained.
     """
+    if text.strip() in NULL_MARKERS:
+        return "∅"
+
     result = text.replace("=", "").replace("<", "").replace(">", "")
     mapped_letters = {letter for letter, _replacement in phonology_mappings}
     if "-" not in mapped_letters:
         result = result.replace("-", "")
+    result = result.replace("∅", "").replace("Ø", "").replace("ø", "")
 
     # Keep punctuation that the selected orthography explicitly defines as a
     # letter. This preserves Amis apostrophe -> ʡ while removing sentence
@@ -289,7 +294,8 @@ def phonologize(text: str, profile: PhonologyProfile) -> str:
     for character in result:
         category = unicodedata.category(character)
         if (
-            character in profile.ipa_characters
+            character == "∅"
+            or character in profile.ipa_characters
             or character in string.punctuation
             or character.isspace()
             or category.startswith("M")
