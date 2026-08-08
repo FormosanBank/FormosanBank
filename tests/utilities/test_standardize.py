@@ -19,7 +19,10 @@ import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
+import pytest
+
 STANDARDIZE = Path(__file__).resolve().parents[2] / "QC" / "utilities" / "standardize.py"
+CONVERSION_TABLES = STANDARDIZE.parents[2] / "Orthographies" / "ConversionTables"
 
 
 def _run_standardize(args: list[str]) -> subprocess.CompletedProcess:
@@ -306,6 +309,67 @@ def test_accents_are_stripped_before_mapping_is_applied(tmp_path):
     assert "́" not in decomposed and "̆" not in decomposed, (
         "standard tier still contains a combining acute/breve accent"
     )
+
+
+def test_explicit_diacritic_letter_mapping_precedes_accent_cleanup(tmp_path):
+    corpus = tmp_path / "corpus"
+    work = _write_corpus_xml(
+        corpus,
+        "saisiyat.xml",
+        '<TEXT xml:lang="xsy" dialect="Saisiyat">'
+        '<S id="1"><FORM kindOf="original">söwäy má</FORM></S></TEXT>',
+    )
+    tsv = tmp_path / "source_letters.tsv"
+    tsv.write_text(
+        "original\tstandard\nö\to:e\nä\tae\na\tA\n",
+        encoding="utf-8",
+    )
+
+    proc = _run_standardize(
+        ["--tsv_path", str(tsv), "--corpora_path", str(corpus)]
+    )
+
+    assert proc.returncode == 0, proc.stderr
+    assert _standard_forms(work) == ["so:ewaey mA"]
+
+
+@pytest.mark.parametrize(
+    ("lang", "dialect", "table", "source", "expected"),
+    [
+        ("xsy", "Saisiyat", "Saisiyat_Tsuchida_113.tsv", "βŋöäʔš’", "bngo:eae'S"),
+        ("bnn", "Zhuoqun", "Bunun_Huang_113.tsv", "ʔaðaŋ", "'azang"),
+        ("dru", "Wutai", "Rukai_Li_113.tsv", "a:TDeꟈə", "aatrdrédhe"),
+        ("pzh", "Pazeh", "Pazeh_Tsuchida_113.tsv", "du?ay", "du'ay"),
+        ("trv", "Tegudaya", "Seediq_Ochiai_113.tsv", "ŋuy", "nguy"),
+    ],
+)
+def test_reviewed_source_conversion_tables(
+    tmp_path,
+    lang: str,
+    dialect: str,
+    table: str,
+    source: str,
+    expected: str,
+):
+    corpus = tmp_path / "corpus"
+    work = _write_corpus_xml(
+        corpus,
+        "source.xml",
+        f'<TEXT xml:lang="{lang}" dialect="{dialect}">'
+        f'<S id="1"><FORM kindOf="original">{source}</FORM></S></TEXT>',
+    )
+
+    proc = _run_standardize(
+        [
+            "--tsv_path",
+            str(CONVERSION_TABLES / table),
+            "--corpora_path",
+            str(corpus),
+        ]
+    )
+
+    assert proc.returncode == 0, proc.stderr
+    assert _standard_forms(work) == [expected]
 
 
 def test_standardization_leaves_original_tier_accents_untouched(tmp_path):

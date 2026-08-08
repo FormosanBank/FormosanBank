@@ -1,0 +1,6 @@
+pattern	replacement	description
+“|”	""""	double quotation marks are normalized in PHON
+‘|’	ʔ	single quotation marks are source glottal symbols
+ɾ(?=$|[^\w])	ɻ	r is retroflex word-finally
+(?<=[ħɾ])i|i(?=[ħɾ])	e	i is lowered next to h or non-final r
+(?<=[ħɾ])u|u(?=[ħɾ])	o	u is lowered next to h or non-final r

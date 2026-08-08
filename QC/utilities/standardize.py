@@ -5,6 +5,7 @@ import argparse
 import re
 import csv
 import sys
+import unicodedata
 from pathlib import Path
 
 from lxml import etree
@@ -14,8 +15,11 @@ from lxml import etree
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
-from QC.validation._dialect_inventory import ISO_TO_LANGUAGE, is_multi_dialect_language
-from QC.utilities._accents import strip_accents
+from QC.utilities._accents import strip_accents  # noqa: E402
+from QC.validation._dialect_inventory import (  # noqa: E402
+    ISO_TO_LANGUAGE,
+    is_multi_dialect_language,
+)
 
 
 def prettify(elem):
@@ -57,12 +61,27 @@ def get_exploration_targets(corpora_path, corpus=None):
 def apply_standard(s_element, standard):
     form = s_element.find("FORM[@kindOf='standard']")
     if form.text:
-        # Strip accents first so the mapping matches the bare vowel; the
-        # original tier is never touched here (this is the standard FORM).
-        form.text = strip_accents(form.text)
-        # Apply each find-replace operation in order
+        # Protect explicitly mapped diacritic-bearing letters before the
+        # general stress-mark cleanup. This lets a table distinguish a true
+        # orthographic letter such as ä from an otherwise unlisted stressed á.
+        protected = []
+        remaining = []
         for original, replacement in standard:
+            decomposed = unicodedata.normalize("NFD", original)
+            if any(unicodedata.category(char).startswith("M") for char in decomposed):
+                marker = chr(0xE000 + len(protected))
+                form.text = form.text.replace(original, marker)
+                protected.append((marker, replacement))
+            else:
+                remaining.append((original, replacement))
+
+        # The original tier is never touched here. Unprotected diacritics are
+        # treated as source stress/prosody and removed from the standard tier.
+        form.text = strip_accents(form.text)
+        for original, replacement in remaining:
             form.text = form.text.replace(original, replacement)
+        for marker, replacement in protected:
+            form.text = form.text.replace(marker, replacement)
 
 def _copy_mixed_content(src, dst):
     """Replace dst's text and children with a deep copy of src's.
@@ -247,8 +266,7 @@ def main(args):
                     print(f"Unexpected error with file {file}: {e}")
                     
 if __name__ == "__main__":
-    langs = ['Amis', 'Atayal', 'Paiwan', 'Bunun', 'Puyuma', 'Rukai', 'Tsou', 'Saisiyat', 'Yami',
-             'Thao', 'Kavalan', 'Truku', 'Sakizaya', 'Seediq', 'Saaroa', 'Siraya', 'Kanakanavu']    
+    langs = sorted(set(ISO_TO_LANGUAGE.values()) | {'Truku'})
     
     parser = argparse.ArgumentParser(description="Standardize the orthography")
     #parser.add_argument('--verbose', action='store_true', help='increase output verbosity')
