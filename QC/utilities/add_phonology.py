@@ -216,11 +216,28 @@ def apply_phonology_mappings(
     | list[tuple[str, str]],
     _conversion_dict: dict[str, str],
 ) -> str:
-    """Apply longest grapheme mappings without remapping generated IPA."""
+    """Apply grapheme mappings and drop non-orthographic word punctuation.
+
+    Sentence punctuation can be present at the edges of a word-level FORM
+    (for example ``kaku,``). It is meaningful source text, so it remains in
+    FORM tiers, but it must not be copied into PHON where punctuation would be
+    mistaken for an IPA mark. Punctuation that is itself a mapped orthographic
+    character (such as Amis apostrophe) is retained.
+    """
     result = text.replace("=", "").replace("<", "").replace(">", "")
     mapped_letters = {letter for letter, _replacement in phonology_mappings}
     if "-" not in mapped_letters:
         result = result.replace("-", "")
+
+    # Keep punctuation that the selected orthography explicitly defines as a
+    # letter. This preserves Amis apostrophe -> ʡ while removing sentence
+    # punctuation such as commas and periods from generated PHON values.
+    removable_punctuation = "".join(
+        character
+        for character in string.punctuation
+        if character not in mapped_letters
+    )
+    result = result.translate(str.maketrans("", "", removable_punctuation))
 
     ordered = sorted(
         enumerate(phonology_mappings),
