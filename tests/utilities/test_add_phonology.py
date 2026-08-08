@@ -331,3 +331,67 @@ def test_can_preserve_source_supplied_original_phonology(tmp_path):
     assert proc.returncode == 0, proc.stderr
     assert _phon_texts(xml_path, "original") == ["ma.dájŋ"]
     assert _phon_texts(xml_path, "standard")
+
+
+def test_null_morpheme_is_silent_in_phonology(tmp_path):
+    corpus = tmp_path / "corpus"
+    xml_path = _write_corpus(
+        corpus,
+        "Amis",
+        "a.xml",
+        '<TEXT xml:lang="ami" dialect="Coastal"><S id="1">'
+        '<FORM kindOf="standard">∅-fangcal ø-ci</FORM>'
+        '<W id="1-W1"><FORM kindOf="standard">∅-fangcal</FORM>'
+        '<M id="1-W1-M1"><FORM kindOf="standard">∅</FORM></M>'
+        '<M id="1-W1-M2"><FORM kindOf="standard">fangcal</FORM></M>'
+        "</W>"
+        '<W id="1-W2"><FORM kindOf="standard">ø-ci</FORM>'
+        '<M id="1-W2-M1"><FORM kindOf="standard">ø</FORM></M>'
+        '<M id="1-W2-M2"><FORM kindOf="standard">ci</FORM></M>'
+        "</W></S></TEXT>",
+    )
+
+    proc = _run(corpus)
+
+    assert proc.returncode == 0, proc.stdout + proc.stderr
+    root = ET.parse(xml_path).getroot()
+    assert root.findtext("./S/PHON[@kindOf='standard']") == "faŋʦaɾ ʦi"
+    assert root.findtext("./S/W/PHON[@kindOf='standard']") == "faŋʦaɾ"
+    assert root.findtext("./S/W/M/PHON[@kindOf='standard']") == "∅"
+    assert root.findtext("./S/W[2]/PHON[@kindOf='standard']") == "ʦi"
+    assert root.findtext("./S/W[2]/M/PHON[@kindOf='standard']") == "∅"
+    assert "*" not in xml_path.read_text(encoding="utf-8")
+
+
+def test_non_orthographic_punctuation_is_not_copied_to_phon(tmp_path):
+    corpus = tmp_path / "corpus"
+    xml_path = _write_corpus(
+        corpus,
+        "Amis",
+        "a.xml",
+        '<TEXT xml:lang="ami" dialect="Coastal"><S id="1">'
+        '<FORM kindOf="standard">kaku, ca\'ay.</FORM>'
+        "</S></TEXT>",
+    )
+
+    proc = _run(corpus)
+
+    assert proc.returncode == 0, proc.stdout + proc.stderr
+    assert _phon_texts(xml_path, "standard") == ["kaku ʦaʡaj"]
+
+
+def test_lowercase_o_slash_is_not_a_global_null_marker(tmp_path):
+    corpus = tmp_path / "corpus"
+    xml_path = _write_corpus(
+        corpus,
+        "Yami",
+        "y.xml",
+        '<TEXT xml:lang="tao" dialect="Yami"><S id="1">'
+        '<FORM kindOf="standard">ø</FORM>'
+        "</S></TEXT>",
+    )
+
+    proc = _run(corpus)
+
+    assert proc.returncode == 0, proc.stdout + proc.stderr
+    assert _phon_texts(xml_path, "standard") == ["*"]

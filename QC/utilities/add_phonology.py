@@ -26,6 +26,8 @@ from QC.validation._dialect_inventory import (  # noqa: E402
 
 ORTHOGRAPHIES_PATH = _REPO_ROOT / "Orthographies"
 STANDARD_ORTHOGRAPHY = "Ortho113"
+NULL_MARKERS = ("∅", "Ø")
+AMIS_NULL_MARKERS = (*NULL_MARKERS, "ø")
 
 
 @dataclass(frozen=True)
@@ -206,12 +208,26 @@ def apply_phonology_mappings(
     text: str,
     phonology_mappings: tuple[tuple[str, str], ...]
     | list[tuple[str, str]],
+    *,
+    null_markers: tuple[str, ...] = NULL_MARKERS,
 ) -> str:
     """Apply longest grapheme mappings without remapping generated IPA."""
+    if text.strip() in null_markers:
+        return "∅"
+
     result = text.replace("=", "").replace("<", "").replace(">", "")
     mapped_letters = {letter for letter, _replacement in phonology_mappings}
+    for marker in null_markers:
+        result = result.replace(marker, "")
     if "-" not in mapped_letters:
         result = result.replace("-", "")
+
+    removable_punctuation = "".join(
+        character
+        for character in string.punctuation
+        if character not in mapped_letters
+    )
+    result = result.translate(str.maketrans("", "", removable_punctuation))
 
     ordered = sorted(
         enumerate(phonology_mappings),
@@ -249,11 +265,17 @@ def apply_phonology_mappings(
     return "".join(output)
 
 
-def phonologize(text: str, profile: PhonologyProfile) -> str:
+def phonologize(
+    text: str,
+    profile: PhonologyProfile,
+    *,
+    null_markers: tuple[str, ...] = NULL_MARKERS,
+) -> str:
     """Convert FORM text with a TSV profile and its ordered contextual rules."""
     result = apply_phonology_mappings(
         text,
         profile.mappings,
+        null_markers=null_markers,
     )
     for rule in profile.rules:
         result = rule.pattern.sub(rule.replacement, result)
@@ -262,7 +284,8 @@ def phonologize(text: str, profile: PhonologyProfile) -> str:
     for character in result:
         category = unicodedata.category(character)
         if (
-            character in profile.ipa_characters
+            character == "∅"
+            or character in profile.ipa_characters
             or character in string.punctuation
             or character.isspace()
             or category.startswith("M")
@@ -284,6 +307,7 @@ def _write_phonology(
     *,
     form_kind: str,
     preserve_existing: bool = False,
+    null_markers: tuple[str, ...] = NULL_MARKERS,
 ) -> int:
     parent_map = {child: parent for parent in root.iter() for child in parent}
     changed = 0
@@ -297,7 +321,11 @@ def _write_phonology(
         if phon is None:
             phon = ET.Element("PHON", {"kindOf": form_kind})
             parent.insert(list(parent).index(form) + 1, phon)
-        phon.text = phonologize(_form_text(form), profile)
+        phon.text = phonologize(
+            _form_text(form),
+            profile,
+            null_markers=null_markers,
+        )
         changed += 1
     return changed
 
@@ -346,15 +374,22 @@ def process_file(path: str, args: argparse.Namespace) -> None:
     if standard is None and original is None:
         return
 
+    null_markers = AMIS_NULL_MARKERS if language == "Amis" else NULL_MARKERS
     changed = 0
     if standard is not None:
-        changed += _write_phonology(root, standard, form_kind="standard")
+        changed += _write_phonology(
+            root,
+            standard,
+            form_kind="standard",
+            null_markers=null_markers,
+        )
     if original is not None:
         changed += _write_phonology(
             root,
             original,
             form_kind="original",
             preserve_existing=args.preserve_existing_original,
+            null_markers=null_markers,
         )
     if not changed:
         print(f"File: {path} had no matching FORM tiers")
