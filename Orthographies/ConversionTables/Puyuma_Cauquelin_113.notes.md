@@ -50,12 +50,13 @@ These produce four benign merges the checker reports under "information loss":
 `u ← o, u`, `ə ← ə, ɛ` — each is the intended consequence of an approved
 equivalence, not accidental loss.
 
-## 3. Cauquelin profile change (this branch)
+## 3. /ʃ/ in the Cauquelin source
 
-`Orthographies/Cauquelin/Puyuma.tsv`: removed the spurious `ʃ	ʃ` row. The
-grapheme is `sh`→/ʃ/ (kept); a stray IPA-character row `ʃ`→/ʃ/ was wrong. Per
-the reviewer, /ʃ/ is rare in the text and mostly produced by the existing rule
-in `Puyuma.rules.tsv`: `(?<=[ui])s|s(?=[ui]) → ʃ` (s palatalized next to i/u).
+`Orthographies/Cauquelin/Puyuma.tsv` lists /ʃ/ under **both** `sh`→/ʃ/ and
+`ʃ`→/ʃ/ on purpose: the author is inconsistent and uses either spelling in the
+text. The conversion table therefore maps both `sh→s` and `ʃ→s`. /ʃ/ is also
+rare overall and mostly produced by the existing rule in `Puyuma.rules.tsv`:
+`(?<=[ui])s|s(?=[ui]) → ʃ` (s palatalized next to i/u).
 
 ## 4. Ortho113 Nanwang profile gap (finding — needs a decision)
 
