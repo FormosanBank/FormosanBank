@@ -52,6 +52,7 @@ class Report:
     merges: list[tuple[str, list[str]]] = field(default_factory=list)
     cant_encode: list[str] = field(default_factory=list)
     coverage_gaps: list[tuple[str, str]] = field(default_factory=list)
+    load_error: str | None = None
 
     def blocking(self) -> list[RowResult]:
         blocking_verdicts = {
@@ -284,7 +285,12 @@ def render_report(reports: list[Report]) -> str:
             [f"`{g}` ({ipa}) has no conversion route" for g, ipa in report.coverage_gaps]
         ))
         lines.append("### Table integrity")
-        integrity = [
+        integrity = []
+        if report.load_error is not None:
+            integrity.append(
+                f"could not load dialect {label!r}: {report.load_error}"
+            )
+        integrity += [
             f"unknown source `{r.src}`"
             for r in report.rows if r.verdict == Verdict.UNKNOWN_SOURCE
         ] + [
@@ -297,16 +303,21 @@ def render_report(reports: list[Report]) -> str:
 
 
 def run(
-    original_path: Path, output_path: Path, table_path: Path
+    original_path: Path, output_path: Path, table_path: Path,
+    dialect: str | None = None,
 ) -> tuple[str, int]:
+    dialects = [dialect] if dialect is not None else output_dialects(output_path)
     reports = []
-    for dialect in output_dialects(output_path):
-        original = load_orthography(original_path, dialect)
-        output = load_orthography(output_path, dialect)
-        rows, _column = load_conversion_table(table_path, dialect)
-        reports.append(audit(original, output, rows, dialect))
+    for d in dialects:
+        try:
+            original = load_orthography(original_path, d)
+            output = load_orthography(output_path, d)
+            rows, _column = load_conversion_table(table_path, d)
+            reports.append(audit(original, output, rows, d))
+        except ValueError as exc:
+            reports.append(Report(dialect=d, load_error=str(exc)))
     text = render_report(reports)
-    exit_code = 1 if any(r.blocking() for r in reports) else 0
+    exit_code = 1 if any(r.blocking() or r.load_error is not None for r in reports) else 0
     return text, exit_code
 
 
@@ -317,8 +328,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("conversion_table", type=Path, help="conversion table TSV")
     parser.add_argument("--output", dest="report_path", type=Path, default=None,
                         help="write the report here instead of stdout")
+    parser.add_argument("--dialect", default=None,
+                        help="restrict checking to this single dialect column")
     args = parser.parse_args(argv)
-    text, exit_code = run(args.original, args.output, args.conversion_table)
+    text, exit_code = run(args.original, args.output, args.conversion_table,
+                          dialect=args.dialect)
     if args.report_path:
         args.report_path.write_text(text, encoding="utf-8")
     else:

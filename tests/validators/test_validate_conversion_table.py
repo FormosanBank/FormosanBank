@@ -226,6 +226,69 @@ def test_cli_exit_nonzero_on_mismatch(tmp_path):
     assert result.returncode == 1
 
 
+# ---------------------------------------------------------------------------
+# Finding 1: --dialect flag filters to a single dialect column
+# ---------------------------------------------------------------------------
+
+def test_cli_dialect_flag_filters_output(tmp_path):
+    """--dialect Eastern produces only an Eastern section; Wutai must be absent."""
+    src = _tsv(tmp_path / "src.tsv", ["letter", "IPA"],
+               [["a", "a"], ["p", "p"]])
+    # Output profile has Wutai + Eastern + default
+    out = _tsv(tmp_path / "out.tsv", ["letter", "Wutai", "Eastern", "default"],
+               [["a", "a", "a", "a"], ["p", "p", "p", "p"]])
+    # Conversion table has Eastern + Wutai columns
+    conv = _tsv(tmp_path / "conv.tsv", ["original", "Wutai", "Eastern"],
+                [["a", "a", "a"], ["p", "p", "p"]])
+    result = subprocess.run(
+        [sys.executable, str(SCRIPT), str(src), str(out), str(conv),
+         "--dialect", "Eastern"],
+        capture_output=True, text=True,
+    )
+    assert result.returncode == 0, result.stderr
+    # Eastern section must appear
+    assert "Eastern" in result.stdout
+    # Wutai must NOT appear as its own dialect section
+    assert "Dialect: Wutai" not in result.stdout
+
+
+# ---------------------------------------------------------------------------
+# Finding 2: missing conversion-table column degrades gracefully
+# ---------------------------------------------------------------------------
+
+def test_run_missing_table_column_degrades_gracefully(tmp_path):
+    """
+    When the output profile lists a dialect (Dawu) that the conversion table
+    cannot resolve (multiple value columns, none matching), run() must not raise.
+    It must return exit code 1, include the failing dialect name in the rendered
+    text, and still produce normal report sections for the working dialect.
+    """
+    src = _tsv(tmp_path / "src.tsv", ["letter", "IPA"],
+               [["a", "a"], ["p", "p"]])
+    # Output profile has two dialects: Maga (works) + Dawu (missing from table)
+    out = _tsv(tmp_path / "out.tsv", ["letter", "Maga", "Dawu"],
+               [["a", "a", "a"], ["p", "p", "p"]])
+    # Conversion table has two value columns (Maga + Tanan) — no Dawu, no
+    # unambiguous fallback — so select_value_column raises for dialect "Dawu".
+    conv = _tsv(tmp_path / "conv.tsv", ["original", "Maga", "Tanan"],
+                [["a", "a", "a"], ["p", "p", "p"]])
+
+    # Must not raise
+    text, exit_code = vct.run(src, out, conv)
+
+    # Exit code must be 1 (load failure is blocking)
+    assert exit_code == 1
+
+    # Rendered text must mention the failing dialect
+    assert "Dawu" in text
+
+    # Must indicate a load failure occurred
+    assert "load" in text.lower() or "could not" in text.lower() or "error" in text.lower()
+
+    # The working dialect (Maga) must still produce a normal section
+    assert "Maga" in text
+
+
 def test_cli_smoke_on_real_rukai_files():
     repo = Path(__file__).resolve().parents[2]
     src = repo / "Orthographies" / "Li" / "Rukai.tsv"
