@@ -102,3 +102,64 @@ def test_true_mismatch():
 def test_short_vowel_not_equated_with_long():
     # length expansion must not make short 'a' match long 'aː'/'aa'.
     assert vct.reconcile("a", "aa")[0] == vct.Verdict.MISMATCH
+
+
+def _ortho(tmp_path, name, rows, header=("letter", "default")):
+    return vct.load_orthography(
+        _tsv(tmp_path / name, list(header), [list(r) for r in rows]), "default")
+
+
+def test_load_conversion_table_reads_rows(tmp_path):
+    p = _tsv(tmp_path / "conv.tsv", ["original", "standard"],
+             [["T", "tr"], ["x", "NA"], ["y", ""]])
+    rows, column = vct.load_conversion_table(p, "standard")
+    assert rows == [("T", "tr")]      # NA and empty targets skipped
+    assert column == "standard"
+
+
+def test_audit_confirmed_row(tmp_path):
+    original = _ortho(tmp_path, "s.tsv", [["T", "ʈ"]])
+    output = _ortho(tmp_path, "o.tsv", [["tr", "ʈ"]])
+    report = vct.audit(original, output, [("T", "tr")], "default")
+    assert report.rows[0].verdict == vct.Verdict.CONFIRMED
+
+
+def test_audit_unknown_source(tmp_path):
+    original = _ortho(tmp_path, "s.tsv", [["T", "ʈ"]])
+    output = _ortho(tmp_path, "o.tsv", [["tr", "ʈ"]])
+    report = vct.audit(original, output, [("Z", "tr")], "default")
+    assert report.rows[0].verdict == vct.Verdict.UNKNOWN_SOURCE
+
+
+def test_audit_untokenizable_target(tmp_path):
+    original = _ortho(tmp_path, "s.tsv", [["T", "ʈ"]])
+    output = _ortho(tmp_path, "o.tsv", [["tr", "ʈ"]])
+    report = vct.audit(original, output, [("T", "qq")], "default")
+    assert report.rows[0].verdict == vct.Verdict.UNTOKENIZABLE
+
+
+def test_audit_detects_phoneme_merge(tmp_path):
+    # two distinct source IPAs (s, z) both land on output IPA s.
+    original = _ortho(tmp_path, "s.tsv", [["s", "s"], ["z", "z"]])
+    output = _ortho(tmp_path, "o.tsv", [["c", "s"]])
+    report = vct.audit(original, output, [("s", "c"), ("z", "c")], "default")
+    assert any(out_ipa == "s" for out_ipa, _ in report.merges)
+
+
+def test_audit_detects_cant_encode(tmp_path):
+    # output distinguishes /p/ and /b/; source can only ever produce /p/.
+    original = _ortho(tmp_path, "s.tsv", [["p", "p"]])
+    output = _ortho(tmp_path, "o.tsv", [["p", "p"], ["b", "b"]])
+    report = vct.audit(original, output, [("p", "p")], "default")
+    assert "b" in report.cant_encode
+    assert "p" not in report.cant_encode
+
+
+def test_audit_coverage_gap_and_identity_passthrough(tmp_path):
+    # 'a' has no row but is identical in output -> passthrough, no gap.
+    # 'q' has no row and no matching output grapheme -> gap.
+    original = _ortho(tmp_path, "s.tsv", [["a", "a"], ["q", "q"]])
+    output = _ortho(tmp_path, "o.tsv", [["a", "a"]])
+    report = vct.audit(original, output, [], "default")
+    gaps = {g for g, _ in report.coverage_gaps}
+    assert gaps == {"q"}

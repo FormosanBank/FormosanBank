@@ -155,3 +155,71 @@ def reconcile(src_ipa: str, tgt_ipa: str) -> tuple[Verdict, str]:
     if combined_src == combined_tgt:
         return Verdict.WARNING, "+".join(reasons) if reasons else "length+affricate"
     return Verdict.MISMATCH, ""
+
+
+def load_conversion_table(
+    path: Path, dialect: str | None
+) -> tuple[list[tuple[str, str]], str]:
+    with open(path, encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle, delimiter="\t")
+        fieldnames = list(reader.fieldnames or [])
+        key = fieldnames[0]
+        column = select_value_column(fieldnames, dialect, key=key)
+        rows: list[tuple[str, str]] = []
+        for row in reader:
+            src = (row.get(key) or "").strip()
+            tgt = (row.get(column) or "").strip()
+            if not src or tgt in ("", "NA"):
+                continue
+            rows.append((src, tgt))
+    return rows, column
+
+
+def audit(
+    original: Orthography,
+    output: Orthography,
+    rows: list[tuple[str, str]],
+    dialect: str | None,
+) -> Report:
+    report = Report(dialect=dialect)
+    out_ipa_to_src_ipas: dict[str, set[str]] = {}
+    for src, tgt in rows:
+        src_ipa = original.ipa_of.get(src)
+        if src_ipa is None:
+            report.rows.append(RowResult(src, tgt, Verdict.UNKNOWN_SOURCE, None, None))
+            continue
+        tgt_ipa, unmatched = target_ipa(tgt, output)
+        if tgt_ipa is None:
+            report.rows.append(
+                RowResult(src, tgt, Verdict.UNTOKENIZABLE, src_ipa, None,
+                          unmatched=tuple(unmatched))
+            )
+            continue
+        verdict, reason = reconcile(src_ipa, tgt_ipa)
+        report.rows.append(RowResult(src, tgt, verdict, src_ipa, tgt_ipa, reason))
+        out_ipa_to_src_ipas.setdefault(
+            canonical_safe(tgt_ipa), set()
+        ).add(canonical_safe(src_ipa))
+
+    report.merges = sorted(
+        (out_ipa, sorted(src_ipas))
+        for out_ipa, src_ipas in out_ipa_to_src_ipas.items()
+        if len(src_ipas) > 1
+    )
+
+    producible = {canonical_safe(v) for v in original.ipa_of.values()}
+    producible |= set(out_ipa_to_src_ipas.keys())
+    report.cant_encode = sorted(
+        {canonical_safe(v) for v in output.ipa_of.values()} - producible
+    )
+
+    converted = {src for src, _ in rows}
+    for grapheme, ipa in original.ipa_of.items():
+        if grapheme in converted:
+            continue
+        out_ipa = output.ipa_of.get(grapheme)
+        if out_ipa is not None and canonical_safe(out_ipa) == canonical_safe(ipa):
+            continue
+        report.coverage_gaps.append((grapheme, ipa))
+    report.coverage_gaps.sort()
+    return report
