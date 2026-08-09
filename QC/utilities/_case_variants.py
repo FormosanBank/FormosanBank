@@ -44,3 +44,43 @@ def load_profile_graphemes(profile_path):
             for row in reader
             if row.get("letter") and row["letter"].strip()
         }
+
+
+def _title(text):
+    return text[:1].upper() + text[1:]
+
+
+def derive_case_variants(rules, profile_graphemes):
+    """Expand (source, replacement) rules with derived capital variants.
+
+    For each fully-lowercase source, append a Title-case variant
+    (first char of source and replacement uppercased) and an ALL-CAPS
+    variant (both fully uppercased) immediately after it. A variant is
+    suppressed when its source is an explicit rule source elsewhere in
+    the table, a grapheme of the source orthography profile (phonemic
+    capital), or already emitted (single-letter title == ALL-CAPS).
+    Returns a new list; ``rules`` is not mutated.
+    """
+    explicit = {source for source, _ in rules}
+    expanded = []
+    emitted = set()
+    for source, replacement in rules:
+        expanded.append((source, replacement))
+        emitted.add(source)
+        if not source.islower():
+            # islower() is False for uncased sources like "'" and for
+            # anything already containing a capital.
+            continue
+        for variant, variant_replacement in (
+            (_title(source), _title(replacement)),
+            (source.upper(), replacement.upper()),
+        ):
+            if (
+                variant in explicit
+                or variant in profile_graphemes
+                or variant in emitted
+            ):
+                continue
+            expanded.append((variant, variant_replacement))
+            emitted.add(variant)
+    return expanded

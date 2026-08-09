@@ -9,6 +9,7 @@ Spec: docs/superpowers/specs/2026-08-09-standardize-capitalization-design.md
 from pathlib import Path
 
 from QC.utilities._case_variants import (
+    derive_case_variants,
     load_profile_graphemes,
     resolve_source_profile,
 )
@@ -69,3 +70,69 @@ def test_load_profile_graphemes_reads_letter_column(tmp_path):
         encoding="utf-8",
     )
     assert load_profile_graphemes(profile) == {"T", "ng"}
+
+
+def test_title_and_allcaps_variants_derived_for_digraph():
+    rules = [("ng", "ŋ")]
+    assert derive_case_variants(rules, set()) == [
+        ("ng", "ŋ"),
+        ("Ng", "Ŋ"),   # title: first char of replacement uppercased
+        ("NG", "Ŋ"),   # ALL-CAPS: whole replacement uppercased
+    ]
+
+
+def test_single_letter_source_gets_one_variant():
+    """Title and ALL-CAPS coincide for one-letter sources — no duplicate."""
+    assert derive_case_variants([("o", "u")], set()) == [("o", "u"), ("O", "U")]
+
+
+def test_explicit_uppercase_row_suppresses_derivation():
+    rules = [("ng", "ŋ"), ("Ng", "ŋ")]
+    assert derive_case_variants(rules, set()) == [
+        ("ng", "ŋ"),
+        ("NG", "Ŋ"),   # ALL-CAPS still derived; title was explicit
+        ("Ng", "ŋ"),   # explicit row kept verbatim, in place
+    ]
+
+
+def test_profile_grapheme_suppresses_derivation():
+    """Li Rukai: T is phonemic — t's rule must not spawn a T variant."""
+    assert derive_case_variants([("t", "c")], {"T"}) == [("t", "c")]
+
+
+def test_uncased_source_is_not_derived():
+    assert derive_case_variants([("'", "q")], set()) == [("'", "q")]
+
+
+def test_mixed_case_source_is_not_derived():
+    """Only fully-lowercase sources derive variants."""
+    assert derive_case_variants([("Ng", "ŋ")], set()) == [("Ng", "ŋ")]
+
+
+def test_caseless_replacement_passes_through():
+    """A cased source with an uncased replacement still derives variants."""
+    assert derive_case_variants([("q", "ʔ")], set()) == [
+        ("q", "ʔ"),
+        ("Q", "ʔ"),
+    ]
+
+
+def test_empty_replacement_deletion_rule():
+    assert derive_case_variants([("h", "")], set()) == [("h", ""), ("H", "")]
+
+
+def test_variants_inserted_immediately_after_parent():
+    rules = [("o", "u"), ("ng", "ŋ")]
+    assert derive_case_variants(rules, set()) == [
+        ("o", "u"),
+        ("O", "U"),
+        ("ng", "ŋ"),
+        ("Ng", "Ŋ"),
+        ("NG", "Ŋ"),
+    ]
+
+
+def test_input_list_is_not_mutated():
+    rules = [("o", "u")]
+    derive_case_variants(rules, set())
+    assert rules == [("o", "u")]
