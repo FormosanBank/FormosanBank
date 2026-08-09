@@ -520,3 +520,24 @@ def test_missing_profile_warns_and_derives_nothing(tmp_path):
     assert proc.returncode == 0, f"stderr: {proc.stderr}"
     assert "Warning:" in proc.stdout and "NOT be derived" in proc.stdout
     assert _standard_forms(xml_path) == ["O cu ŋi NGA Ti"]
+
+
+def test_profile_missing_letter_column_warns_and_derives_nothing(tmp_path):
+    """A present-but-malformed profile (no 'letter' column) must degrade
+    the same way a missing profile does, not silently derive with zero
+    suppression."""
+    table, collection, xml_path = _write_case_fixture(tmp_path, _CASE_XML)
+    (tmp_path / "Orthographies" / "Ortho94" / "Amis.tsv").write_text(
+        "grapheme\tstandard\nT\tʈ\no\to\nng\tŋ\nt\tt\n",
+        encoding="utf-8",
+    )
+    proc = _run_standardize([
+        "--tsv_path", str(table),
+        "--target_column", "standard",
+        "--corpora_path", str(collection),
+    ])
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    assert "Warning:" in proc.stdout and "NOT be derived" in proc.stdout
+    assert "not found" not in proc.stdout
+    # Status quo: lowercase rules apply, capitals pass through.
+    assert _standard_forms(xml_path) == ["O cu ŋi NGA Ti"]

@@ -6,7 +6,7 @@ distinct grapheme of the source orthography (per the source profile,
 resolved from the table's filename).
 Spec: docs/superpowers/specs/2026-08-09-standardize-capitalization-design.md
 """
-from pathlib import Path
+import pytest
 
 from QC.utilities._case_variants import (
     derive_case_variants,
@@ -70,6 +70,22 @@ def test_load_profile_graphemes_reads_letter_column(tmp_path):
         encoding="utf-8",
     )
     assert load_profile_graphemes(profile) == {"T", "ng"}
+
+
+def test_load_profile_graphemes_raises_without_letter_column(tmp_path):
+    """A missing 'letter' column must fail loudly, not return an empty set.
+
+    An empty set reads to the caller as "no phonemic capitals" and lets
+    derivation run with zero suppression -- the exact failure this
+    machinery exists to prevent.
+    """
+    profile = tmp_path / "Rukai.tsv"
+    profile.write_text(
+        "grapheme\tWutai\tDona\nT\ttr\ttr\n",
+        encoding="utf-8",
+    )
+    with pytest.raises(ValueError):
+        load_profile_graphemes(profile)
 
 
 def test_title_and_allcaps_variants_derived_for_digraph():

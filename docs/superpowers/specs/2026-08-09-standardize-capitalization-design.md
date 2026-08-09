@@ -78,8 +78,9 @@ practice:
   `Puyuma_MinEd T/D/Z/R/L`, `Saaroa_MinEd Lh`, …) — their profiles suppress
   derivation, and no lowercase rule regenerates their mappings.
 - Kept and flagged for the maintainer: rows where the mapping differs from
-  the derivation, notably `Amis_Church Ng→ŋ` (derivation would give `Ŋ`).
-  Deciding whether `ŋ` was intentional is a human call, out of scope here.
+  the derivation, notably `Paiwan_Ferrell Ḍ→dr` (derivation would give
+  `Dr`). Deciding whether `dr` was intentional is a human call, out of
+  scope here.
 
 ### 4. Equivalence harness (uncommitted)
 
@@ -115,7 +116,7 @@ Unit tests (following the existing `tests/` layout) for:
 
 - `validate_conversion_table.py` keeps its case-sensitive model; audit
   findings #5/#7 remain open until it learns the same rule (future branch).
-- The `Amis_Church Ng→ŋ` capitalization question (flagged, not resolved).
+- The `Paiwan_Ferrell Ḍ→dr` capitalization question (flagged, not resolved).
 - The stray `Orthographies/ConversionTables/Saisiyat_folk_113 2.tsv`
   (space in filename, lowercase scheme token) — reported to the maintainer,
   untouched.

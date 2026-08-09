@@ -36,9 +36,19 @@ def resolve_source_profile(tsv_path):
 
 
 def load_profile_graphemes(profile_path):
-    """The set of graphemes in an orthography profile's ``letter`` column."""
+    """The set of graphemes in an orthography profile's ``letter`` column.
+
+    Raises ValueError if the profile has no ``letter`` column, rather than
+    silently returning an empty set — an empty set reads to the caller as
+    "no phonemic capitals", which would let derivation run unsuppressed.
+    """
     with open(profile_path, encoding="utf-8", newline="") as handle:
         reader = csv.DictReader(handle, delimiter="\t")
+        if reader.fieldnames is None or "letter" not in reader.fieldnames:
+            raise ValueError(
+                f"source orthography profile {profile_path} has no 'letter' "
+                f"column (columns present: {reader.fieldnames})"
+            )
         return {
             row["letter"].strip()
             for row in reader

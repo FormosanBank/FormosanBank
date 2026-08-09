@@ -164,7 +164,10 @@ def main(args):
                 "capital-letter variants will NOT be derived."
             )
         else:
-            profile_graphemes = load_profile_graphemes(profile_path)
+            try:
+                profile_graphemes = load_profile_graphemes(profile_path)
+            except ValueError as e:
+                print(f"Warning: {e}; capital-letter variants will NOT be derived.")
 
     to_explore = get_exploration_targets(args.corpora_path, args.corpus)
 
