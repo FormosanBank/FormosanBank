@@ -541,3 +541,70 @@ def test_profile_missing_letter_column_warns_and_derives_nothing(tmp_path):
     assert "not found" not in proc.stdout
     # Status quo: lowercase rules apply, capitals pass through.
     assert _standard_forms(xml_path) == ["O cu ŋi NGA Ti"]
+
+
+# --- Null-morpheme unit removal -----------------------------------------------
+#
+# Null morphemes are written as ∅ (U+2205) in both original and standard tiers.
+# In the S-level standard FORM, they are meaningless — a null morpheme position
+# in a sentence-level representation adds no information and breaks downstream
+# tokenization. They are removed as a unit: ∅- (prefix marker + hyphen),
+# -∅ (suffix marker + hyphen), or standalone ∅ (inter-word null).
+# W/M tiers retain ∅ because the morpheme tier is where a null is meaningful.
+# --copy mode is a pure duplication and must never remove anything.
+
+_NULL_XML = (
+    '<TEXT id="T_NULL" citation="t" BibTeX_citation="@t{t}" copyright="t" '
+    'xml:lang="szy" dialect="unknown">'
+    '<S id="1"><FORM kindOf="original">∅-sitangah kero-∅ ∅ misa</FORM>'
+    '<W id="1-W1"><FORM kindOf="original">∅-sitangah</FORM>'
+    '<M id="1-W1-M1"><FORM kindOf="original">∅</FORM></M>'
+    '<M id="1-W1-M2"><FORM kindOf="original">sitangah</FORM></M>'
+    "</W></S></TEXT>"
+)
+
+
+def test_remove_accents_strips_null_units_from_S_standard_only(tmp_path):
+    """Non-copy modes remove null units (∅-, -∅, standalone ∅) from the
+    S-level standard FORM before any other transformation; W/M standard
+    FORMs and the original tier retain them."""
+    corpus = tmp_path / "corpus"
+    work = _write_corpus_xml(corpus, "n.xml", _NULL_XML)
+    proc = _run_standardize(["--remove_accents", "--corpora_path", str(corpus)])
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    root = ET.parse(work).getroot()
+    assert root.findtext("./S/FORM[@kindOf='standard']") == "sitangah kero misa"
+    assert root.findtext("./S/W/FORM[@kindOf='standard']") == "∅-sitangah"
+    assert root.findtext("./S/W/M/FORM[@kindOf='standard']") == "∅"
+    assert (
+        root.findtext("./S/FORM[@kindOf='original']") == "∅-sitangah kero-∅ ∅ misa"
+    )
+
+
+def test_tsv_mode_strips_null_units_from_S_standard(tmp_path):
+    corpus = tmp_path / "corpus"
+    work = _write_corpus_xml(corpus, "n.xml", _NULL_XML)
+    tsv = tmp_path / "map.tsv"
+    tsv.write_text("original\ttarget\nkero\tkiro\n", encoding="utf-8")
+    proc = _run_standardize([
+        "--tsv_path", str(tsv),
+        "--target_column", "target",
+        "--corpora_path", str(corpus),
+    ])
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    root = ET.parse(work).getroot()
+    assert root.findtext("./S/FORM[@kindOf='standard']") == "sitangah kiro misa"
+    assert root.findtext("./S/W/FORM[@kindOf='standard']") == "∅-sitangah"
+    assert root.findtext("./S/W/M/FORM[@kindOf='standard']") == "∅"
+
+
+def test_copy_mode_retains_null_units_in_S_standard(tmp_path):
+    """--copy is a pure duplication: the standard tier keeps null units."""
+    corpus = tmp_path / "corpus"
+    work = _write_corpus_xml(corpus, "n.xml", _NULL_XML)
+    proc = _run_standardize(["--copy", "--corpora_path", str(corpus)])
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    root = ET.parse(work).getroot()
+    assert (
+        root.findtext("./S/FORM[@kindOf='standard']") == "∅-sitangah kero-∅ ∅ misa"
+    )

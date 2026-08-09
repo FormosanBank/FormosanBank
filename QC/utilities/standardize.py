@@ -88,6 +88,28 @@ def apply_standard(s_element, standard):
         for marker, replacement in protected:
             form.text = form.text.replace(marker, replacement)
 
+# Null-morpheme units in an S-level standard FORM: the canonical marker
+# '∅' (U+2205) plus one bridging segmentation hyphen. Removed as a unit
+# so no dangling hyphen is left (matters where '-' is a letter: Bunun,
+# Thao). Must run BEFORE any hyphen stripping elsewhere in the pipeline,
+# while units are still recognizable.
+_NULL_UNIT_RE = re.compile(r"∅-|-∅|∅")
+
+
+def remove_null_units(element):
+    """Remove null-morpheme units from an element's standard FORM.
+
+    Called for S elements only (never W/M — the morpheme tier is where a
+    null is meaningful) and never in --copy mode (pure duplication).
+    """
+    form = element.find("FORM[@kindOf='standard']")
+    if form is None or not form.text:
+        return
+    stripped = _NULL_UNIT_RE.sub("", form.text)
+    if stripped != form.text:
+        form.text = re.sub(r" {2,}", " ", stripped).strip()
+
+
 def _copy_mixed_content(src, dst):
     """Replace dst's text and children with a deep copy of src's.
 
@@ -199,6 +221,8 @@ def main(args):
                         # applies no letter conversion.
                         for element in root.findall('.//FORM/..'):
                             create_standard(element, file_path=file)
+                            if element.tag == "S":
+                                remove_null_units(element)
                             apply_standard(element, [])
                     else:
                         # Normal standardization mode
@@ -277,6 +301,8 @@ def main(args):
                         # Iterate over all <S> elements
                         for element in root.findall('.//FORM/..'):
                             create_standard(element, file_path=file)
+                            if element.tag == "S":
+                                remove_null_units(element)
                             apply_standard(element, standard)
                         
                     try:
