@@ -379,10 +379,10 @@ def trim_repeated_punctuation(text):
     """
     Replaces repeated punctuation with single marks.
 
-    Note: dash collapsing (--- → -) is omitted to preserve canonicalized dash
-    variants (Task 4). Only ? and ! are collapsed.
+    Collapses !! → !, ?? → ?, and --- → -.
     """
     text = re.sub(r'([?!])\1+', r'\1', text)  # !! -> ! and ?? -> ?
+    text = re.sub(r'--+', '-', text)  # --- -> -
     return text
 
 def clean_text(
@@ -404,8 +404,7 @@ def clean_text(
          found before the swap, because stress marks are unexpected in Formosan
          corpus data and worth surfacing to the corpus author.
       3. normalize_whitespace — collapse runs of whitespace.
-      4. trim_repeated_punctuation — !! → !, ??? → ?, --- → - (only collapses
-         identical repeats, not different punctuation variants).
+      4. trim_repeated_punctuation — !! → !, ??? → ?, --- → -.
 
     Zero-width / BOM characters (U+200B/200C/200D/FEFF) are stripped first,
     unconditionally — invisible source residue the validator flags HARD
