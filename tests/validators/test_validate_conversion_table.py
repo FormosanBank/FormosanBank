@@ -163,3 +163,78 @@ def test_audit_coverage_gap_and_identity_passthrough(tmp_path):
     report = vct.audit(original, output, [], "default")
     gaps = {g for g, _ in report.coverage_gaps}
     assert gaps == {"q"}
+
+
+def test_output_dialects_lists_real_dialects(tmp_path):
+    p = _tsv(tmp_path / "o.tsv", ["letter", "Wutai", "Eastern", "default"],
+             [["a", "a", "a", "a"]])
+    assert vct.output_dialects(p) == ["Wutai", "Eastern"]
+
+
+def test_output_dialects_single_column_returns_none(tmp_path):
+    p = _tsv(tmp_path / "o.tsv", ["letter", "IPA"], [["a", "a"]])
+    assert vct.output_dialects(p) == [None]
+
+
+def test_render_report_has_documented_sections(tmp_path):
+    original = _ortho(tmp_path, "s.tsv", [["a", "a"]])
+    output = _ortho(tmp_path, "o.tsv", [["a", "a"]])
+    report = vct.audit(original, output, [("a", "a")], None)
+    text = vct.render_report([report])
+    for heading in ("Summary", "Confirmed", "Warnings", "Unresolved",
+                    "Information loss", "Coverage", "Table integrity"):
+        assert heading in text
+
+
+def _write_trio(tmp_path, src_rows, out_rows, conv_rows,
+                src_h=("letter", "IPA"), out_h=("letter", "default"),
+                conv_h=("original", "standard")):
+    src = _tsv(tmp_path / "src.tsv", list(src_h), [list(r) for r in src_rows])
+    out = _tsv(tmp_path / "out.tsv", list(out_h), [list(r) for r in out_rows])
+    conv = _tsv(tmp_path / "conv.tsv", list(conv_h), [list(r) for r in conv_rows])
+    return src, out, conv
+
+
+def _run_cli(src, out, conv):
+    return subprocess.run(
+        [sys.executable, str(SCRIPT), str(src), str(out), str(conv)],
+        capture_output=True, text=True,
+    )
+
+
+def test_cli_exit_zero_when_only_warnings(tmp_path):
+    # a: (/aː/) -> aa (/aa/) is a warning, not a mismatch.
+    src, out, conv = _write_trio(
+        tmp_path,
+        src_rows=[["a", "a"], [":", "ː"]],
+        out_rows=[["a", "a"]],
+        conv_rows=[["a:", "aa"]],
+    )
+    result = _run_cli(src, out, conv)
+    assert result.returncode == 0
+    assert "length" in result.stdout
+
+
+def test_cli_exit_nonzero_on_mismatch(tmp_path):
+    src, out, conv = _write_trio(
+        tmp_path,
+        src_rows=[["p", "p"]],
+        out_rows=[["b", "b"]],
+        conv_rows=[["p", "b"]],
+    )
+    result = _run_cli(src, out, conv)
+    assert result.returncode == 1
+
+
+def test_cli_smoke_on_real_rukai_files():
+    repo = Path(__file__).resolve().parents[2]
+    src = repo / "Orthographies" / "Li" / "Rukai.tsv"
+    out = repo / "Orthographies" / "Ortho113" / "Rukai.tsv"
+    conv = repo / "Orthographies" / "ConversionTables" / "Rukai_Li_113.tsv"
+    result = subprocess.run(
+        [sys.executable, str(SCRIPT), str(src), str(out), str(conv)],
+        capture_output=True, text=True,
+    )
+    assert "Summary" in result.stdout
+    # a: -> aa is a length-doubling equivalence, reported as a warning.
+    assert "a:" in result.stdout

@@ -186,8 +186,12 @@ def audit(
     for src, tgt in rows:
         src_ipa = original.ipa_of.get(src)
         if src_ipa is None:
-            report.rows.append(RowResult(src, tgt, Verdict.UNKNOWN_SOURCE, None, None))
-            continue
+            # Try tokenizing the source as a sequence of original graphemes.
+            graphemes, unmatched = tokenize(src, original.ipa_of.keys())
+            if unmatched:
+                report.rows.append(RowResult(src, tgt, Verdict.UNKNOWN_SOURCE, None, None))
+                continue
+            src_ipa = "".join(original.ipa_of[g] for g in graphemes)
         tgt_ipa, unmatched = target_ipa(tgt, output)
         if tgt_ipa is None:
             report.rows.append(
@@ -223,3 +227,104 @@ def audit(
         report.coverage_gaps.append((grapheme, ipa))
     report.coverage_gaps.sort()
     return report
+
+
+def output_dialects(path: Path) -> list[str | None]:
+    with open(path, encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle, delimiter="\t")
+        fieldnames = list(reader.fieldnames or [])
+    dialects = [
+        c for c in fieldnames
+        if c != "letter" and c not in _FALLBACK_COLUMNS
+    ]
+    return dialects or [None]
+
+
+def _bullet_lines(items: list[str]) -> str:
+    return "\n".join(f"- {item}" for item in items) if items else "- (none)"
+
+
+def render_report(reports: list[Report]) -> str:
+    lines: list[str] = ["# Conversion-table audit", ""]
+    total_blocking = sum(len(r.blocking()) for r in reports)
+    lines.append("## Summary")
+    lines.append(f"Result: {'FAIL' if total_blocking else 'PASS'}")
+    for report in reports:
+        label = report.dialect or "(single column)"
+        counts: dict[Verdict, int] = {}
+        for row in report.rows:
+            counts[row.verdict] = counts.get(row.verdict, 0) + 1
+        summary = ", ".join(f"{v.value}={counts.get(v, 0)}" for v in Verdict)
+        lines.append(f"- **{label}**: {summary}")
+    lines.append("")
+
+    for report in reports:
+        label = report.dialect or "(single column)"
+        lines.append(f"## Dialect: {label}")
+
+        def rows_for(verdict: Verdict) -> list[str]:
+            return [
+                f"`{r.src}` → `{r.tgt}` ({r.src_ipa} / {r.tgt_ipa})"
+                + (f" — {r.reason}" if r.reason else "")
+                for r in report.rows if r.verdict == verdict
+            ]
+
+        lines.append("### Confirmed equivalences")
+        lines.append(_bullet_lines(rows_for(Verdict.CONFIRMED)))
+        lines.append("### Warnings — assumed equivalences")
+        lines.append(_bullet_lines(rows_for(Verdict.WARNING)))
+        lines.append("### Unresolved mismatches")
+        lines.append(_bullet_lines(rows_for(Verdict.MISMATCH)))
+        lines.append("### Information loss")
+        loss = [f"merge: {ipa} ← {', '.join(srcs)}" for ipa, srcs in report.merges]
+        loss += [f"cannot encode: {ipa}" for ipa in report.cant_encode]
+        lines.append(_bullet_lines(loss))
+        lines.append("### Coverage")
+        lines.append(_bullet_lines(
+            [f"`{g}` ({ipa}) has no conversion route" for g, ipa in report.coverage_gaps]
+        ))
+        lines.append("### Table integrity")
+        integrity = [
+            f"unknown source `{r.src}`"
+            for r in report.rows if r.verdict == Verdict.UNKNOWN_SOURCE
+        ] + [
+            f"untokenizable target `{r.tgt}` (missing {' '.join(r.unmatched)})"
+            for r in report.rows if r.verdict == Verdict.UNTOKENIZABLE
+        ]
+        lines.append(_bullet_lines(integrity))
+        lines.append("")
+    return "\n".join(lines)
+
+
+def run(
+    original_path: Path, output_path: Path, table_path: Path
+) -> tuple[str, int]:
+    reports = []
+    for dialect in output_dialects(output_path):
+        original = load_orthography(original_path, dialect)
+        output = load_orthography(output_path, dialect)
+        rows, _column = load_conversion_table(table_path, dialect)
+        reports.append(audit(original, output, rows, dialect))
+    text = render_report(reports)
+    exit_code = 1 if any(r.blocking() for r in reports) else 0
+    return text, exit_code
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("original", type=Path, help="original orthography TSV")
+    parser.add_argument("output", type=Path, help="output orthography TSV")
+    parser.add_argument("conversion_table", type=Path, help="conversion table TSV")
+    parser.add_argument("--output", dest="report_path", type=Path, default=None,
+                        help="write the report here instead of stdout")
+    args = parser.parse_args(argv)
+    text, exit_code = run(args.original, args.output, args.conversion_table)
+    if args.report_path:
+        args.report_path.write_text(text, encoding="utf-8")
+    else:
+        print(text)
+    return exit_code
+
+
+if __name__ == "__main__":
+    sys.exit(main())
