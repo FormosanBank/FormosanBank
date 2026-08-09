@@ -431,3 +431,113 @@ def test_remove_accents_mode_leaves_original_tier_untouched(tmp_path):
     proc = _run_standardize(["--remove_accents", "--corpora_path", str(corpus)])
     assert proc.returncode == 0, f"stderr: {proc.stderr}"
     assert _original_forms(work) == ["máduk dálix"]
+
+
+# --- Capital-letter variant derivation via the source orthography profile -----
+#
+# standardize.py applies conversion-table rules with literal, case-sensitive
+# str.replace, so a rule "o -> u" never converts sentence-initial "O". These
+# tests wire derive_case_variants into --tsv_path mode: when the table's
+# filename resolves to a real source profile, rules are expanded with
+# Title-case/ALL-CAPS variants (suppressed where the profile declares the
+# capital a distinct phonemic grapheme). Non-conforming filenames or a
+# missing profile fall back to the exact old (no-derivation) behavior.
+
+
+def _write_case_fixture(tmp_path, xml_text):
+    """Build Orthographies/{ConversionTables,Ortho94}/ + a collection root.
+
+    Table rules: o->u, ng->ŋ, t->c. Profile declares T a distinct
+    grapheme, so t must not spawn a T variant.
+    Returns (table_path, collection_root, xml_path).
+    """
+    conv = tmp_path / "Orthographies" / "ConversionTables"
+    prof = tmp_path / "Orthographies" / "Ortho94"
+    conv.mkdir(parents=True)
+    prof.mkdir(parents=True)
+    table = conv / "Amis_94_113.tsv"
+    table.write_text(
+        "original\tstandard\no\tu\nng\tŋ\nt\tc\n", encoding="utf-8"
+    )
+    prof.joinpath("Amis.tsv").write_text(
+        "letter\tstandard\nT\tʈ\no\to\nng\tŋ\nt\tt\n",
+        encoding="utf-8",
+    )
+    collection = tmp_path / "collection"
+    xml_dir = collection / "XML"
+    xml_dir.mkdir(parents=True)
+    xml_path = xml_dir / "doc.xml"
+    xml_path.write_text(xml_text, encoding="utf-8")
+    return table, collection, xml_path
+
+
+_CASE_XML = (
+    '<?xml version="1.0"?>\n'
+    '<TEXT id="t" xml:lang="ami">\n'
+    '  <S id="s1"><FORM kindOf="original">O to ngi NGA Ti</FORM></S>\n'
+    "</TEXT>\n"
+)
+
+
+def test_case_variants_applied_from_conforming_table(tmp_path):
+    table, collection, xml_path = _write_case_fixture(tmp_path, _CASE_XML)
+    proc = _run_standardize([
+        "--tsv_path", str(table),
+        "--target_column", "standard",
+        "--corpora_path", str(collection),
+    ])
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    # o->u converts 'o' and (derived) 'O'; ng->ŋ converts 'ngi' and
+    # (derived ALL-CAPS) 'NGA' -> 'ŊA'; t->c converts lowercase 't'
+    # ('to' became 'tu' after o->u, then 'cu') but the profile's phonemic
+    # 'T' in 'Ti' must survive untouched.
+    assert _standard_forms(xml_path) == ["U cu ŋi ŊA Ti"]
+
+
+def test_nonconforming_table_name_warns_and_derives_nothing(tmp_path):
+    table, collection, xml_path = _write_case_fixture(tmp_path, _CASE_XML)
+    plain = table.with_name("tiny_mapping.tsv")
+    table.rename(plain)
+    proc = _run_standardize([
+        "--tsv_path", str(plain),
+        "--target_column", "standard",
+        "--corpora_path", str(collection),
+    ])
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    assert "Warning:" in proc.stdout and "NOT be derived" in proc.stdout
+    # Status quo: lowercase rules apply, capitals pass through.
+    assert _standard_forms(xml_path) == ["O cu ŋi NGA Ti"]
+
+
+def test_missing_profile_warns_and_derives_nothing(tmp_path):
+    table, collection, xml_path = _write_case_fixture(tmp_path, _CASE_XML)
+    (tmp_path / "Orthographies" / "Ortho94" / "Amis.tsv").unlink()
+    proc = _run_standardize([
+        "--tsv_path", str(table),
+        "--target_column", "standard",
+        "--corpora_path", str(collection),
+    ])
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    assert "Warning:" in proc.stdout and "NOT be derived" in proc.stdout
+    assert _standard_forms(xml_path) == ["O cu ŋi NGA Ti"]
+
+
+def test_profile_missing_letter_column_warns_and_derives_nothing(tmp_path):
+    """A present-but-malformed profile (no 'letter' column) must degrade
+    the same way a missing profile does, not silently derive with zero
+    suppression."""
+    table, collection, xml_path = _write_case_fixture(tmp_path, _CASE_XML)
+    (tmp_path / "Orthographies" / "Ortho94" / "Amis.tsv").write_text(
+        "grapheme\tstandard\nT\tʈ\no\to\nng\tŋ\nt\tt\n",
+        encoding="utf-8",
+    )
+    proc = _run_standardize([
+        "--tsv_path", str(table),
+        "--target_column", "standard",
+        "--corpora_path", str(collection),
+    ])
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    assert "Warning:" in proc.stdout and "NOT be derived" in proc.stdout
+    assert "not found" not in proc.stdout
+    # Status quo: lowercase rules apply, capitals pass through.
+    assert _standard_forms(xml_path) == ["O cu ŋi NGA Ti"]
