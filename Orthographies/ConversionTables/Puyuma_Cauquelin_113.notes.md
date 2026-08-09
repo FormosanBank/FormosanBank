@@ -61,19 +61,18 @@ text. The conversion table therefore maps both `sh→s` and `ʃ→s`. /ʃ/ is al
 rare overall and mostly produced by the existing rule in `Puyuma.rules.tsv`:
 `(?<=[ui])s|s(?=[ui]) → ʃ` (s palatalized next to i/u).
 
-## 4. Ortho113 Nanwang profile gap (finding — needs a decision)
+## 4. Loanword-only graphemes (expected flags, not defects)
 
-`c`, `h`, `v` are marked **`NA`** in the Ortho113 Puyuma **Nanwang** column, so
-the checker reports `c→c`, `h→h`, `v→v` as untokenizable for Nanwang — yet the
-Cauquelin Nanwang source attests all three (/ʦ~c/, /h/, /v/). Either the Ortho113
-Nanwang profile is missing these graphemes, or they occur only in loanwords in
-Cauquelin. The mappings are kept (they are the canonical Ortho113 spellings, per
-the `default` column); resolving the flag means editing
-`Orthographies/Ortho113/Puyuma.tsv` — held for reviewer sign-off, not done here.
+`c`, `h`, `v`, `f`, and `ʤ` are all assumed to occur **only in loanwords** in
+Cauquelin Puyuma, not in the native Nanwang inventory. Consequences in the
+checker output, all expected:
 
-## 5. Unresolved — deliberately NOT in the table
+- `c→c`, `h→h`, `v→v` are reported **untokenizable** against the Nanwang column
+  (where `c`/`h`/`v` are `NA`). The mappings are kept anyway — they are the
+  canonical Ortho113 spellings (per the `default` column) a loanword would use.
+  No edit to `Orthographies/Ortho113/Puyuma.tsv` is warranted.
+- `f` /f/ and `ʤ` /ʤ/ stay in the Cauquelin profile intentionally **unmapped**,
+  so the checker surfaces them as coverage gaps. No Ortho113 target is asserted.
 
-`q` and `x` were removed from `Orthographies/Cauquelin/Puyuma.tsv` entirely
-(not Puyuma graphemes). `f` /f/ and `ʤ` /ʤ/ remain in the Cauquelin profile but
-have no Ortho113 target, so the checker surfaces them as coverage gaps. Provide
-targets if either should map.
+`q` and `x` were removed from `Orthographies/Cauquelin/Puyuma.tsv` entirely (not
+Puyuma graphemes at all, unlike the loanword set above).
