@@ -220,7 +220,7 @@ def test_does_not_inject_whitespace_into_partial_UNCLEAR(tmp_path):
             "siqulusay temawaRiku",
             "siəquɬusaj təmawaʁeku",
         ),
-        ("Li", "Rukai", "Wutai", "TDcꟈLy", "ʈɖtsðɭj"),
+        ("Li", "Rukai", "Wutai", "TDcꟈLy", "ʈɖʦðɭj"),
         (
             "TaiwanNandao",
             "Puyuma",
