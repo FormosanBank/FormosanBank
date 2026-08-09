@@ -15,11 +15,25 @@ columns:
 | `pattern` | Python regular expression applied to the mapped phonology |
 | `replacement` | Literal replacement text |
 | `description` | Short explanation of the source rule |
+| `dialect` | Optional. Dialect(s) the rule applies to (see below) |
 
 Rules run after the unconditional TSV mappings. They are for documented,
 deterministic context rules only. Lexical, stress, and morphological rules
 that cannot be inferred from the written form stay in the development
 repository for expert review.
+
+The optional `dialect` column scopes a rule to particular dialects, matched
+against the raw `dialect` attribute of the `<TEXT>` element (the same value the
+mapping columns resolve against). Its semantics mirror the mapping columns'
+dialect/default fallback:
+
+- a blank cell — or omitting the column entirely — makes the rule **universal**
+  (applies to every dialect);
+- one or more comma-separated dialect names — the rule applies only to those
+  dialects;
+- the literal token `default` — the rule is the **fallback**, applied only to
+  dialects that no rule names explicitly, so a named dialect (e.g. Truku, which
+  has its own Seediq phonotactics) takes its own rules instead of the fallback.
 
 The reviewed source profiles below centralize mappings that were previously
 implemented in individual corpus repositories. Their Basecamp comment IDs

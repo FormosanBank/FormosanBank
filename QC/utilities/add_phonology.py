@@ -126,12 +126,26 @@ def _select_target_column(
     )
 
 
-def _load_rules(tsv_path: Path) -> tuple[PhonologyRule, ...]:
+def _load_rules(tsv_path: Path, dialect: str) -> tuple[PhonologyRule, ...]:
+    """Load the ordered rule sidecar, keeping only the rules that apply to
+    ``dialect``.
+
+    The optional ``dialect`` column scopes a rule to one or more dialects
+    (comma-separated). Its semantics mirror the mapping columns' dialect/default
+    resolution, matched against the raw ``dialect`` attribute from the XML:
+
+    * a blank cell (or no ``dialect`` column at all) — the rule is universal and
+      applies to every dialect;
+    * a named dialect that matches — the rule applies;
+    * the literal token ``default`` — the rule is the fallback, applied only to
+      dialects that no rule names explicitly (so a named dialect uses its own
+      rules instead of the fallback).
+    """
     rules_path = tsv_path.with_suffix(".rules.tsv")
     if not rules_path.exists():
         return ()
 
-    rules = []
+    parsed = []
     with rules_path.open(encoding="utf-8", newline="") as handle:
         reader = csv.DictReader(handle, delimiter="\t")
         required = {"pattern", "replacement", "description"}
@@ -155,10 +169,31 @@ def _load_rules(tsv_path: Path) -> tuple[PhonologyRule, ...]:
                 raise ValueError(
                     f"{rules_path}:{line_number}: invalid regex: {error}"
                 ) from error
-            rules.append(
-                PhonologyRule(compiled, replacement, row["description"].strip())
+            dialects = frozenset(
+                token.strip()
+                for token in (row.get("dialect") or "").split(",")
+                if token.strip()
             )
-    return tuple(rules)
+            parsed.append(
+                (PhonologyRule(compiled, replacement, row["description"].strip()),
+                 dialects)
+            )
+
+    # A dialect is "named" if any rule scopes itself to it (the reserved
+    # ``default`` token is not a dialect name). The fallback rules apply only
+    # when the requested dialect is not named anywhere.
+    named = {name for _, dialects in parsed for name in dialects} - {"default"}
+    fallback_active = dialect not in named
+
+    applicable = []
+    for rule, dialects in parsed:
+        if (
+            not dialects
+            or dialect in dialects
+            or ("default" in dialects and fallback_active)
+        ):
+            applicable.append(rule)
+    return tuple(applicable)
 
 
 def load_profile(
@@ -192,7 +227,7 @@ def load_profile(
             mappings.append((letter, value))
             ipa_characters.update(value)
 
-    rules = _load_rules(path)
+    rules = _load_rules(path, dialect)
     for rule in rules:
         ipa_characters.update(rule.replacement)
     return PhonologyProfile(

@@ -24,6 +24,7 @@ from pathlib import Path
 
 import pytest
 
+import QC.utilities.add_phonology as add_phonology
 from QC.utilities.add_phonology import load_profile, phonologize
 from QC.validation._dialect_inventory import valid_dialects
 
@@ -331,3 +332,196 @@ def test_can_preserve_source_supplied_original_phonology(tmp_path):
     assert proc.returncode == 0, proc.stderr
     assert _phon_texts(xml_path, "original") == ["ma.dájŋ"]
     assert _phon_texts(xml_path, "standard")
+
+
+def _write_profile(
+    monkeypatch,
+    tmp_path: Path,
+    *,
+    language: str,
+    tsv: str,
+    rules: str | None = None,
+    scheme: str = "TestScheme",
+) -> str:
+    """Create a temp orthography scheme and point add_phonology at it.
+
+    Returns the scheme name so tests can call load_profile(scheme, ...).
+    A rule sidecar is written only when ``rules`` is given.
+    """
+    scheme_dir = tmp_path / "Orthographies" / scheme
+    scheme_dir.mkdir(parents=True, exist_ok=True)
+    (scheme_dir / f"{language}.tsv").write_text(tsv, encoding="utf-8")
+    if rules is not None:
+        (scheme_dir / f"{language}.rules.tsv").write_text(rules, encoding="utf-8")
+    monkeypatch.setattr(add_phonology, "ORTHOGRAPHIES_PATH", tmp_path / "Orthographies")
+    return scheme
+
+
+# Seediq (multi-dialect) with only a default mapping column, so the rules'
+# dialect scoping — not the column selection — is what varies the output.
+_SEEDIQ_TSV = "letter\tdefault\nq\tq\ni\ti\n"
+
+
+def test_dialect_scoped_rule_applies_only_to_that_dialect(tmp_path, monkeypatch):
+    scheme = _write_profile(
+        monkeypatch,
+        tmp_path,
+        language="Seediq",
+        tsv=_SEEDIQ_TSV,
+        rules=(
+            "pattern\treplacement\tdescription\tdialect\n"
+            "(?<=q)i\te\tlower i after q (Truku only)\tTruku\n"
+        ),
+    )
+
+    truku = load_profile(scheme, "Seediq", "Truku")
+    tegudaya = load_profile(scheme, "Seediq", "Tegudaya")
+
+    assert phonologize("qi", truku) == "qe"
+    assert phonologize("qi", tegudaya) == "qi"
+
+
+def test_blank_dialect_rule_applies_to_every_dialect(tmp_path, monkeypatch):
+    scheme = _write_profile(
+        monkeypatch,
+        tmp_path,
+        language="Seediq",
+        tsv=_SEEDIQ_TSV,
+        rules=(
+            "pattern\treplacement\tdescription\tdialect\n"
+            "(?<=q)i\te\tuniversal lowering\t\n"
+        ),
+    )
+
+    truku = load_profile(scheme, "Seediq", "Truku")
+    tegudaya = load_profile(scheme, "Seediq", "Tegudaya")
+
+    assert phonologize("qi", truku) == "qe"
+    assert phonologize("qi", tegudaya) == "qe"
+
+
+def test_default_tagged_rule_is_the_fallback_for_unnamed_dialects(
+    tmp_path, monkeypatch
+):
+    scheme = _write_profile(
+        monkeypatch,
+        tmp_path,
+        language="Seediq",
+        tsv=_SEEDIQ_TSV,
+        rules=(
+            "pattern\treplacement\tdescription\tdialect\n"
+            "(?<=q)i\te\tTruku-specific\tTruku\n"
+            "(?<=q)i\to\tfallback for the rest\tdefault\n"
+        ),
+    )
+
+    truku = load_profile(scheme, "Seediq", "Truku")
+    tegudaya = load_profile(scheme, "Seediq", "Tegudaya")
+
+    # Truku is explicitly named, so it takes the Truku rule, not the default one.
+    assert phonologize("qi", truku) == "qe"
+    # Tegudaya is not named anywhere, so it falls back to the 'default' rule.
+    assert phonologize("qi", tegudaya) == "qo"
+
+
+def test_rules_without_dialect_column_apply_to_all_dialects(tmp_path, monkeypatch):
+    scheme = _write_profile(
+        monkeypatch,
+        tmp_path,
+        language="Seediq",
+        tsv=_SEEDIQ_TSV,
+        rules=(
+            "pattern\treplacement\tdescription\n"
+            "(?<=q)i\te\tno dialect column at all\n"
+        ),
+    )
+
+    truku = load_profile(scheme, "Seediq", "Truku")
+    tegudaya = load_profile(scheme, "Seediq", "Tegudaya")
+
+    assert phonologize("qi", truku) == "qe"
+    assert phonologize("qi", tegudaya) == "qe"
+
+
+# ---------------------------------------------------------------------------
+# Engine regression tests: these pin behaviours that differ from the pre-rewrite
+# (main) mapper, which re-scanned the whole string after every replacement. Each
+# assertion below would have produced the "old" value noted in its comment, so
+# the test fails if the single-pass / casefold / unknown-char behaviour regresses.
+# ---------------------------------------------------------------------------
+
+
+def test_generated_ipa_is_not_remapped_by_a_later_letter(tmp_path, monkeypatch):
+    """Longest-grapheme single pass: a symbol emitted by one mapping must not be
+    re-consumed by a later mapping. This is the Paiwan `tj -> c` case, where the
+    old sequential mapper then re-hit the generated `c` with `c -> ʦ`."""
+    scheme = _write_profile(
+        monkeypatch,
+        tmp_path,
+        language="Yami",  # single-dialect -> the lone value column is used
+        tsv="letter\tIPA\ntj\tc\nc\tʦ\n",
+    )
+    profile = load_profile(scheme, "Yami", "Yami")
+
+    # `tj` -> `c` (the generated `c` is NOT re-mapped to `ʦ`; old gave "ʦ"),
+    # while a source `c` still maps to `ʦ`.
+    assert phonologize("tjc", profile) == "cʦ"
+
+
+def test_real_paiwan_tj_is_not_double_mapped_to_ts(tmp_path, monkeypatch):
+    """Anchor the above against the shipped Ortho113 Paiwan table (the ~15% of
+    Paiwan standard PHON that this fix changes)."""
+    profile = load_profile("Ortho113", "Paiwan", "Central")
+    assert profile is not None
+    # old (main) produced "ʦaʎaʎak"; the single-pass mapper keeps the `c`.
+    assert phonologize("tjaljaljak", profile) == "caʎaʎak"
+
+
+def test_casefold_fallback_maps_lowercase_onto_uppercase_only_row(
+    tmp_path, monkeypatch
+):
+    """When a source character has no exact-case row, it casefolds onto the
+    other-case row (Kavalan lowercase `r` -> the `R -> ʁ` row; old left it as a
+    bare `r`). But an exact-case row always wins over the fallback."""
+    uppercase_only = _write_profile(
+        monkeypatch,
+        tmp_path,
+        language="Yami",
+        tsv="letter\tIPA\nR\tʁ\n",
+        scheme="UpperOnly",
+    )
+    profile = load_profile(uppercase_only, "Yami", "Yami")
+    assert phonologize("r", profile) == "ʁ"
+
+    both_cases = _write_profile(
+        monkeypatch,
+        tmp_path,
+        language="Yami",
+        tsv="letter\tIPA\nR\tʁ\nr\tɾ\n",
+        scheme="BothCases",
+    )
+    profile = load_profile(both_cases, "Yami", "Yami")
+    assert phonologize("r", profile) == "ɾ"  # exact match preferred, not ʁ
+
+
+def test_unknown_characters_star_but_unicode_punct_and_marks_survive(
+    tmp_path, monkeypatch
+):
+    """Unmapped characters become `*`, except Unicode punctuation (P*) and marks
+    (M*), which are preserved. Old code preserved only ASCII string.punctuation,
+    so it starred `…` and combining diacritics."""
+    scheme = _write_profile(
+        monkeypatch,
+        tmp_path,
+        language="Yami",
+        tsv="letter\tIPA\na\tɑ\n",
+    )
+    profile = load_profile(scheme, "Yami", "Yami")
+
+    # a -> ɑ; `…` (Po) and the space survive; `卐` (Lo) and `◇` (So) -> `*`.
+    assert phonologize("a… 卐◇", profile) == "ɑ… **"
+    # a combining acute (Mn, U+0301) rides through rather than being starred,
+    # whereas a precomposed accented letter (a base Ll not in the table) is
+    # unknown and becomes `*`.
+    assert phonologize("a\u0301", profile) == "\u0251\u0301"
+    assert phonologize("\u00e1", profile) == "*"
