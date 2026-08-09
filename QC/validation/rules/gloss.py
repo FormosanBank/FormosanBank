@@ -650,6 +650,14 @@ def v069_null_morpheme_in_W_requires_null_M(
     drops the zero morpheme from the gloss tier.
 
     No-ops on Ws with no M children (V061 covers M counts).
+
+    Overlap with V125 (QC/validation/rules/text.py): V125 requires that *some*
+    M FORM *contains* '∅' (substring) AND that the S-level original FORM also
+    contains '∅'. V069 is stricter on the M side — the M FORM must be *exactly*
+    '∅' in standalone morpheme position — and is silent on the S-original
+    requirement. Both rules intentionally coexist: V125 operates at the
+    text-validation level across all corpora; V069 adds finer-grained
+    morpheme-position enforcement at the gloss-validation level.
     """
     findings: list[Finding] = []
     for w in tree.iter("W"):

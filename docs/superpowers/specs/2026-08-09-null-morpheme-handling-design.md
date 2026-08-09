@@ -32,6 +32,30 @@ segmentation stripping (C012's `-`/`=` job) from clean_xml into standardize.py
 — that migration happens on a different branch. This branch only makes the
 minimal C012 change nulls require (see §2).
 
+## Interaction with the pre-existing null-rule family (V120/V123–V125/V140)
+
+`QC/validation/rules/text.py` had a null-rule family (V120, V123–V125, V140)
+before this branch. Two decisions required post-review (2026-08-09):
+
+**V120 downgraded HARD → SOFT.** V120 flags `∅` in S-level standard FORM. Before
+this branch, `ø`/`Ø` in S-standard was invisible to V120 (both are not U+2205).
+After this branch, clean_xml normalizes them to `∅` in all tiers, and only
+non-`--copy` standardize removes them from S-standard. For `--copy` corpora
+(e.g. NTUFormosanCorpus, the spec's primary data-impact example), `∅` persists
+legitimately in S-standard: the `--copy` design explicitly preserves it as a
+"heads-up, re-standardize with a TSV" signal. Keeping V120 HARD would newly
+hard-fail that corpus's canonical QC pipeline. V120 is therefore SOFT: a warning
+to re-standardize when convenient, not a blocker.
+
+**V069 kept alongside V125 (both intentional).** V125 (text-level, HARD) requires
+that *some* M FORM *contain* `∅` (substring) and that the S-level original FORM
+also contain `∅`. V069 (gloss-level, HARD, added by this branch) is stricter on
+the M side: the M FORM must be *exactly* `∅` in standalone morpheme position.
+V069 is also silent on the S-original requirement. The two rules intentionally
+coexist: V125 is the text-validation anchor that fires across all corpora in
+`validate_text.py`; V069 adds finer-grained morpheme-position enforcement in
+`validate_glosses.py`. Docstrings in both functions cross-reference each other.
+
 ## Design
 
 ### Definitions

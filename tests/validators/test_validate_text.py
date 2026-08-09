@@ -15,7 +15,7 @@ Rule ID assignments for B9.4 (recorded in commit messages too):
   V114 = TR(W1) multiple_whitespace in S-standard FORM (SOFT)
   V115 = TR(W1) mismatched_quotes in S-standard FORM (SOFT)
   V116 = TR(W2) non_ascii_in_form across all tiers (SOFT)
-  V120 = TR1 null symbol in S-level standard FORM (HARD)
+  V120 = TR1 null symbol in S-level standard FORM (SOFT, downgraded 2026-08-09)
   V121 = TR2 parens or '/' in W- or M-level FORM (HARD)
   V122 = TR3 parens or '/' anywhere in FORM/TRANSL (SOFT)
   V123 = TR4 null in W/M std FORM ⇒ also in sister original (HARD)
@@ -504,14 +504,15 @@ def test_V116_unknown_xml_lang_falls_back_to_legacy_behavior(tmp_path):
 
 
 # -----------------------------------------------------------------------------
-# W4: TR1 — null symbol in S-level standard FORM (HARD)
+# W4: TR1 — null symbol in S-level standard FORM (SOFT)
 # -----------------------------------------------------------------------------
 
 
 def test_V120_null_in_S_standard_FORM_negative(tmp_path):
-    """V120 HARD: null symbol in S-level standard FORM is forbidden.
+    """V120 SOFT: null symbol in S-level standard FORM fires a SOFT finding.
 
-    Null symbol is U+2205 EMPTY SET ('∅').
+    Null symbol is U+2205 EMPTY SET ('∅'). Downgraded HARD→SOFT 2026-08-09
+    because --copy corpora legitimately retain ∅ in S-standard.
     """
     xml = (
         _TEXT_OPEN
@@ -2375,11 +2376,12 @@ def test_comprehensive_test_xml_regression(tmp_path):
         text=True,
     )
     # Per-finding detail (rule ids + element ids) now lives in the one CSV,
-    # not on the terminal. Match HARD markers against the CSV contents.
+    # not on the terminal. Match findings against the CSV contents.
     combined = soft_csv.read_text(encoding="utf-8").lower()
     # HARD findings: assert (rule_id, location-id) both appear in the CSV.
     expected_hard: tuple[tuple[str, str], ...] = (
-        ("v120", "ap3_s_2"),    # null '∅' in S-standard FORM
+        # V120 removed from here 2026-08-09: downgraded HARD→SOFT; now in
+        # expected_soft below (still fires on ap3_s_2, just as SOFT).
         ("v129", "s=1"),         # '*' in either FORM tier of S=1
         ("v129", "w=1_1"),       # '*' in W=1_1
         ("v140", "ap3_s_2"),     # S-original null not propagated down
@@ -2399,10 +2401,17 @@ def test_comprehensive_test_xml_regression(tmp_path):
     with open(soft_csv, newline="", encoding="utf-8") as fh:
         rows = list(_csv.DictReader(fh))
     soft_rule_ids_present = {r["rule_id"] for r in rows}
-    expected_soft = {"V116", "V122", "V133", "V135", "V137"}
+    # V120 added here 2026-08-09: downgraded HARD→SOFT; must still fire on
+    # ap3_s_2 (null '∅' in S-standard FORM), just as a SOFT finding now.
+    expected_soft = {"V116", "V120", "V122", "V133", "V135", "V137"}
     missing_soft = expected_soft - soft_rule_ids_present
     assert not missing_soft, (
         f"SOFT regression missing: {missing_soft!r}; csv rows={rows!r}"
+    )
+    # Also assert V120 fires specifically on ap3_s_2.
+    v120_rows = [r for r in rows if r.get("rule_id") == "V120"]
+    assert any("ap3_s_2" in str(r).lower() for r in v120_rows), (
+        f"V120 SOFT should fire on ap3_s_2; v120_rows={v120_rows!r}"
     )
 
 

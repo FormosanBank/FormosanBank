@@ -498,7 +498,7 @@ def v116_non_ascii_in_form(
 
 
 # ---------------------------------------------------------------------------
-# W4: TR1 — null symbol in S-level standard FORM (HARD)
+# W4: TR1 — null symbol in S-level standard FORM (SOFT)
 # ---------------------------------------------------------------------------
 
 def v120_null_in_S_standard(
@@ -506,11 +506,20 @@ def v120_null_in_S_standard(
     path: Path,
     index: CorpusIndex | None,
 ) -> list[Finding]:
-    """V120 HARD (TR1): null symbol '∅' in S-level standard FORM is forbidden.
+    """V120 SOFT (TR1): null symbol '∅' in S-level standard FORM is a warning.
 
-    The S-standard tier is the project's canonical sentence-level surface
-    text. A null symbol there indicates an unresolved elision marker
-    that should have been resolved during cleaning.
+    S-standard should normally have null units removed by standardize.py
+    (non-``--copy`` modes), but ``--copy`` corpora legitimately retain them
+    (2026-08-09 null-morpheme spec): standardize.py's ``--copy`` mode is a
+    pure duplication that keeps the original tier unchanged, so a corpus that
+    has not yet been re-standardized in TSV or ``--remove_accents`` mode will
+    retain ``∅`` in its S-standard FORM. V120 is therefore a heads-up (SOFT)
+    rather than a failure — it flags a state that is normal for ``--copy``
+    corpora and should be cleaned up only when full standardization runs.
+
+    Downgraded HARD → SOFT on 2026-08-09 so that ``--copy`` corpora
+    (e.g. NTUFormosanCorpus) do not newly fail QC after null-marker
+    normalization lands in clean_xml.
     """
     findings: list[Finding] = []
     for s in tree.iter("S"):
@@ -520,9 +529,9 @@ def v120_null_in_S_standard(
         s_id = s.get("id") or ""
         findings.append(Finding(
             rule_id="V120",
-            severity=Severity.HARD,
+            severity=Severity.SOFT,
             message=(
-                f"V120 HARD: null symbol '{NULL_SYMBOL}' in S-level standard FORM "
+                f"V120 SOFT: null symbol '{NULL_SYMBOL}' in S-level standard FORM "
                 f"(null in s-level standard); S id={s_id!r}"
             ),
             path=path,
@@ -727,6 +736,14 @@ def v125_null_in_W_requires_child_M_and_S_original(
     morpheme structure to explain the elision is anomalous. Adjust the
     rule (or add a separate exemption) if real corpora demonstrate that
     pattern is legitimate.
+
+    Overlap with V069 (QC/validation/rules/gloss.py): V069 is a gloss-level
+    rule that requires an M FORM to be *exactly* '∅' in standalone morpheme
+    position, and does not check S-original. V125 uses substring containment
+    for the M-side check and additionally requires the S-level original FORM
+    to contain '∅'. Both rules intentionally coexist — V125 is the
+    text-validation anchor; V069 adds stricter morpheme-position enforcement
+    at the gloss-validation level (added 2026-08-09).
     """
     findings: list[Finding] = []
     for w in tree.iter("W"):
@@ -1552,6 +1569,8 @@ RULES: list = [
     # W2 (V116): ported from non_ascii_counts.py
     v116_non_ascii_in_form,
     # W4-W9 (V120-V126): source-text quality rules
+    # V120 is SOFT (downgraded HARD→SOFT 2026-08-09: --copy corpora legitimately
+    # retain ∅ in S-standard; see v120_null_in_S_standard docstring).
     v120_null_in_S_standard,
     v121_parens_slashes_in_W_or_M_FORM,
     v122_parens_slashes_anywhere,
