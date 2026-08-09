@@ -28,6 +28,13 @@ from QC.validation._dialect_inventory import (  # noqa: E402
 
 ORTHOGRAPHIES_PATH = _REPO_ROOT / "Orthographies"
 
+NULL_MARKER = "∅"
+# A null unit is the marker plus one bridging segmentation hyphen, removed
+# as a unit so no dangling hyphen is left where '-' is a mapped letter
+# (Bunun, Thao). Only the canonical U+2205 counts: 'ø'/'Ø' normalization is
+# clean_xml's job, so foreign letters are never swallowed here.
+_NULL_UNIT_RE = re.compile(r"∅-|-∅|∅")
+
 
 @dataclass(frozen=True)
 class PhonologyRule:
@@ -287,6 +294,15 @@ def apply_phonology_mappings(
 
 def phonologize(text: str, profile: PhonologyProfile) -> str:
     """Convert FORM text with a TSV profile and its ordered contextual rules."""
+    # A form that IS a null morpheme has no sound; keep a visible marker so
+    # the PHON tier is never empty (the M-level '∅' case).
+    if text.strip() == NULL_MARKER:
+        return NULL_MARKER
+    # Null morphemes inside a larger form are silent: drop the unit before
+    # mapping so PHON is clean IPA.
+    stripped = _NULL_UNIT_RE.sub("", text)
+    if stripped != text:
+        text = re.sub(r" {2,}", " ", stripped).strip()
     result = apply_phonology_mappings(
         text,
         profile.mappings,

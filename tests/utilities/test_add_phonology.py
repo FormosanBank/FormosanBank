@@ -608,3 +608,40 @@ def test_add_phonology_runs_with_only_an_original_tier(tmp_path):
     assert proc.returncode == 0, proc.stderr
     assert _phon_texts(xml_path, "original")
     assert _phon_texts(xml_path, "standard") == []
+
+
+def test_whole_null_form_gets_visible_null_phon(tmp_path, monkeypatch):
+    """A FORM that IS a null morpheme (the M-level case) gets PHON '∅' —
+    never an empty PHON element."""
+    scheme = _write_profile(
+        monkeypatch, tmp_path, language="Yami", tsv="letter\tIPA\na\tɑ\nk\tk\n"
+    )
+    profile = load_profile(scheme, "Yami", "Yami")
+    assert phonologize("∅", profile) == "∅"
+    assert phonologize(" ∅ ", profile) == "∅"
+
+
+def test_embedded_null_units_are_silent(tmp_path, monkeypatch):
+    """Null units inside a larger form are dropped as units (marker +
+    bridging hyphen) before mapping, so PHON is clean IPA with no '*'."""
+    scheme = _write_profile(
+        monkeypatch, tmp_path, language="Yami", tsv="letter\tIPA\na\tɑ\nk\tk\n"
+    )
+    profile = load_profile(scheme, "Yami", "Yami")
+    assert phonologize("∅-aka", profile) == "ɑkɑ"
+    assert phonologize("aka-∅", profile) == "ɑkɑ"
+    assert phonologize("aka ∅ aka", profile) == "ɑkɑ ɑkɑ"
+
+
+def test_foreign_o_slash_is_not_treated_as_null(tmp_path, monkeypatch):
+    """Only canonical '∅' is null. A Danish 'ø' (foreign letter, e.g.
+    'Grønland') follows the normal unknown-letter path — starred, never
+    silently deleted."""
+    scheme = _write_profile(
+        monkeypatch,
+        tmp_path,
+        language="Yami",
+        tsv="letter\tIPA\ng\tg\nr\tr\nn\tn\nl\tl\na\tɑ\nd\td\n",
+    )
+    profile = load_profile(scheme, "Yami", "Yami")
+    assert phonologize("Grønland", profile) == "gr*nlɑnd"
