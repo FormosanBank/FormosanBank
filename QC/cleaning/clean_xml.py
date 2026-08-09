@@ -151,31 +151,24 @@ def _hyphen_is_letter(lang_code: str, ortho_path: str | None = None) -> bool:
     return found
 
 
+# Null-morpheme markers attested in source data: 'ø' (U+00F8, NTU Grammar
+# Sakizaya/Kanakanavu), 'Ø' (U+00D8, legacy), and the canonical '∅'
+# (U+2205 EMPTY SET). A glyph counts as a null morpheme ONLY in morpheme
+# position — both neighbors are a string edge, whitespace, or the ASCII
+# segmentation hyphen — so the same letters inside foreign proper nouns
+# (Danish 'Grønland', 'Børn' in the Wikipedia corpora) are never touched.
+_NULL_MORPHEME_RE = re.compile(r"(^|[\s\-])[øØ∅](?=[\s\-]|$)")
+
+
 def normalize_null_morphemes(text: str) -> str:
-    """Normalize null-morpheme glyphs to canonical ∅ (U+2205).
+    """Canonicalize null-morpheme marker glyphs to '∅' (U+2205).
 
-    Formosan corpora use three Unicode variants for the null morpheme marker:
-    - ø (U+00F8, lowercase o-slash, legacy/typo)
-    - Ø (U+00D8, uppercase O-slash, legacy standard)
-    - ∅ (U+2205, empty set, canonical)
-
-    This normalizes ø/Ø to ∅ when they appear in morpheme positions:
-    - As prefixes: 'ø-' or 'Ø-'
-    - As suffixes: '-ø' or '-Ø'
-    - Standalone: ' ø ' or ' Ø ' (surrounded by whitespace or punctuation)
-
-    Other uses of ø/Ø (e.g., in geographic names like "Grønland") are left
-    unchanged, as they are orthographic letters, not null morphemes.
+    Applies to every FORM tier, original included: the marker glyph is
+    annotation, not source spelling, so canonicalizing it keeps the
+    original tier faithful. Removal of null units is standardize.py's
+    job (S-level standard FORMs only) — this function only renames.
     """
-    # Normalize null morphemes in morpheme-specific contexts
-    # Prefix: 'ø-' or 'Ø-'
-    text = text.replace("ø-", "∅-").replace("Ø-", "∅-")
-    # Suffix: '-ø' or '-Ø'
-    text = text.replace("-ø", "-∅").replace("-Ø", "-∅")
-    # Standalone: ' ø ' or ' Ø ' (whitespace-bounded)
-    text = re.sub(r'(\s)ø(\s)', r'\1∅\2', text)
-    text = re.sub(r'(\s)Ø(\s)', r'\1∅\2', text)
-    return text
+    return _NULL_MORPHEME_RE.sub(lambda m: m.group(1) + "∅", text)
 
 
 _HYPHEN_NOT_NULL_ADJACENT_RE = re.compile(r"(?<!∅)-(?!∅)")
@@ -491,6 +484,11 @@ def swap_punctuation(text):
         'ʻ': "'",
         '『': '"',
         '』': '"',
+        '‐': '-',  # U+2010 HYPHEN — look-alike of ASCII hyphen-minus
+        '‑': '-',  # U+2011 NON-BREAKING HYPHEN — look-alike
+        # NEVER add dash punctuation here (– U+2013, — U+2014, － U+FF0D,
+        # − U+2212): dashes are range/parenthetical punctuation in the
+        # corpora; mapping them to '-' would fabricate segmentation.
     }
     
     # Create a regular expression pattern to match any of the full-width punctuation characters
@@ -544,23 +542,23 @@ def clean_text(
     """Apply cleaning functions to a FORM-tier text node.
 
     Pipeline (always language-agnostic for FORM):
-      1. normalize_null_morphemes — ø/Ø/∅ → canonical ∅
-      2. normalize_caret_variants — four caret-like Unicode chars → ASCII '^'
+      1. normalize_caret_variants — four caret-like Unicode chars → ASCII '^'
          regardless of xml:lang. In FormosanBank a caret always represents
          a glottal stop.
-      3. swap_punctuation — full-width and typographic punctuation → ASCII.
+      2. swap_punctuation — full-width and typographic punctuation → ASCII.
          Emits a c002b warning row for each U+02C8 (IPA PRIMARY STRESS MARK)
          found before the swap, because stress marks are unexpected in Formosan
          corpus data and worth surfacing to the corpus author.
-      4. normalize_whitespace — collapse runs of whitespace.
-      5. trim_repeated_punctuation — !! → !, ??? → ?, --- → -.
+      2b. normalize_null_morphemes — ø/Ø/∅ in morpheme position → canonical
+          '∅' (U+2205). Letter-adjacent glyphs (foreign loanwords) untouched.
+      3. normalize_whitespace — collapse runs of whitespace.
+      4. trim_repeated_punctuation — !! → !, ??? → ?, --- → -.
 
     Zero-width / BOM characters (U+200B/200C/200D/FEFF) are stripped first,
     unconditionally — invisible source residue the validator flags HARD
     (V131 / TR16).
     """
     text = _strip_zero_width(text)
-    text = normalize_null_morphemes(text)
     text = normalize_caret_variants(text)
     # Emit c002b warning for U+02C8 before it gets swapped to apostrophe.
     if warnings is not None:
@@ -568,6 +566,7 @@ def clean_text(
             if ch == "ˈ":
                 warnings.add("c002b", xml_file, s_id, ch, pos)
     text = swap_punctuation(text)
+    text = normalize_null_morphemes(text)
     text = normalize_whitespace(text)
     text = trim_repeated_punctuation(text)
     return text

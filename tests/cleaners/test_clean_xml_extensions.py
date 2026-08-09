@@ -1094,3 +1094,46 @@ def test_transform_counter_accumulates_and_formats():
     assert summary[0]["output"] == "("
     assert summary[1]["count"] == 1
     assert len(summary) == 2
+
+
+def test_null_marker_glyphs_normalized_in_all_tiers(
+    tmp_path, fixtures_dir, copy_fixture
+):
+    """ø/Ø/∅ in morpheme position normalize to canonical ∅ in every FORM
+    (original AND standard, S/W/M levels). Letter-adjacent ø (Danish
+    'Grønland') is untouched — it is a foreign letter, not an annotation."""
+    work = copy_fixture(
+        fixtures_dir / "null_morpheme_normalization.xml", tmp_path
+    )
+    proc = _run_clean(tmp_path)
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+
+    orig = _form_texts_with_kindof(work, "S", "original")[0]
+    assert orig == "∅-sitangah bangcal-∅ ∅ ma-kero Grønland.", f"original: {orig!r}"
+    assert _form_texts_with_kindof(work, "W", "original") == ["∅-sitangah"]
+    assert _form_texts_with_kindof(work, "M", "original") == ["∅", "sitangah"]
+
+
+def test_lookalike_hyphens_normalized_but_dashes_preserved(tmp_path):
+    """U+2010/U+2011 hyphen look-alikes become ASCII '-'; dash punctuation
+    (en dash, em dash, fullwidth, minus) passes through untouched."""
+    corpus = tmp_path / "corpus" / "XML"
+    corpus.mkdir(parents=True)
+    xml = corpus / "dash.xml"
+    xml.write_text(
+        '<?xml version="1.0" encoding="utf-8"?>\n'
+        '<TEXT id="T_DASH" citation="t" BibTeX_citation="@t{t}" copyright="t" '
+        'xml:lang="ami" dialect="unknown">\n'
+        '  <S id="S_1">\n'
+        '    <FORM kindOf="original">ma‐kero ma‑kero 8:1–19:14 '
+        'a—b －5 −5</FORM>\n'
+        "  </S>\n"
+        "</TEXT>\n",
+        encoding="utf-8",
+    )
+    proc = _run_clean(tmp_path)
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    orig = _form_texts_with_kindof(xml, "S", "original")[0]
+    assert orig == "ma-kero ma-kero 8:1–19:14 a—b －5 −5", (
+        f"original: {orig!r}"
+    )
