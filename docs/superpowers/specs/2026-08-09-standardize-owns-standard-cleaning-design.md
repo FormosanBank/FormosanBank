@@ -17,22 +17,28 @@ this change the pipeline is `clean_xml → standardize → add_phonology`.
 
 ## Responsibility split (the core boundary)
 
-- **`standardize` owns the S-level `FORM[@kindOf='standard']`** — it creates it
-  and is now the only place that cleans it.
-- **`clean_xml` owns everything else it cleans today** — the original S FORM, all
-  W/M FORMs (any `kindOf`), TRANSL, and metadata — but **stops touching the
-  S-level standard FORM**.
+- **`standardize` owns every `FORM[@kindOf='standard']` — S, W, and M.** It already
+  regenerates all of them: its loop is `root.findall('.//FORM/..')`
+  ([standardize.py:55](../../../QC/utilities/standardize.py#L55)), the parent of
+  *every* FORM, so `create_standard` runs on S, W and M elements, recreating each
+  standard FORM from the sibling original FORM.
+- **`clean_xml` owns all `FORM[@kindOf='original']` (S/W/M), TRANSL, and metadata**
+  — and **stops touching any `FORM[@kindOf='standard']` at any level.**
 
-W/M tiers keep their segmentation exactly as today (C012 never applied to W/M —
-it is S-level only — and that does not change).
+C012 (hyphen stripping) stays **S-level only**: standardize applies it just when
+the element is an `S`, so W/M standard FORMs keep their morpheme segmentation
+exactly as today. W/M standard FORMs are still recreated (and therefore inherit
+the cleaned original, including dash canonicalization) — they simply are not
+C012-stripped.
 
 ## `clean_xml.py` changes
 
-1. **Restrict FORM cleanup to non-(S-level-standard) FORMs.** The FORM loop
+1. **Restrict FORM cleanup to original FORMs.** The FORM loop
    ([clean_xml.py:619](../../../QC/cleaning/clean_xml.py#L619), currently
-   `sentence.findall('.//FORM')`) must skip the S-level `FORM[@kindOf='standard']`.
-   Its general cleanup (`clean_text`) and the c022 `*` warning then apply only to
-   the original S FORM and the W/M FORMs. TRANSL and metadata handling unchanged.
+   `sentence.findall('.//FORM')`) must skip **every** `FORM[@kindOf='standard']`
+   (S, W, and M). Its general cleanup (`clean_text`) and the c022 `*` warning then
+   apply only to the original FORMs at all levels. TRANSL and metadata handling
+   unchanged.
 2. **Remove C012 from `clean_xml`.** Delete the `_process_standard_hyphens` call
    ([clean_xml.py:665-682](../../../QC/cleaning/clean_xml.py#L665)) and move the
    function to `standardize` (see below). Remove the flags that only C012 used:
@@ -62,14 +68,15 @@ it is S-level only — and that does not change).
 
 ## `standardize.py` changes
 
-1. **Own the C012 transform.** After writing each S-level standard FORM (both
-   `--copy` via `create_standard`/`_copy_mixed_content` and TSV via
-   `apply_standard`), apply the moved `_process_standard_hyphens`: strip `-` and
-   clitic `=` and null `Ø` (and its bridging hyphen); for Bunun/Thao (where `-` is
-   an orthographic letter) preserve `-` and warn, unless `--hard-remove-segmentation`.
-   Preserve mixed content (`<UNCLEAR/>`) — apply only to text, never to element
-   children (`_copy_mixed_content` already deep-copies children; the cleanup runs
-   on `form.text`).
+1. **Own the C012 transform (S-level only).** `create_standard`/`apply_standard`
+   already run on S, W and M elements. After a standard FORM is written, apply the
+   moved `_process_standard_hyphens` **only when the element is an `S`** (guard on
+   `element.tag == 'S'`): strip `-` and clitic `=` and null `Ø` (and its bridging
+   hyphen); for Bunun/Thao (where `-` is an orthographic letter) preserve `-` and
+   warn, unless `--hard-remove-segmentation`. W/M standard FORMs are recreated but
+   NOT C012-stripped (they keep segmentation). Preserve mixed content
+   (`<UNCLEAR/>`) — apply only to `form.text`, never to element children
+   (`_copy_mixed_content` already deep-copies children).
 2. **Reuse the resolved language/dialect.** `standardize` already computes
    `dialect = root.get('dialect')` and `language = ISO_TO_LANGUAGE.get(xlang)`
    ([standardize.py:215-224](../../../QC/utilities/standardize.py#L215)) for column
@@ -79,10 +86,11 @@ it is S-level only — and that does not change).
    already-clean original, so NFC / caret / punctuation / whitespace / dash
    canonicalization are inherited. `standardize` adds only the standard-specific
    transform (C012).
-4. **Emit the same warnings.** Reuse `CleanerWarnings` to write the c012 (hyphen
-   preserved) and c022 (`*` in standard FORM) rows that `clean_xml` no longer
-   emits for the standard tier, to `standardize`'s own warnings CSV
-   (`standardize_warnings.csv` under `--corpora_path`). Gains
+4. **Emit the same warnings.** Reuse `CleanerWarnings` to write, to
+   `standardize`'s own warnings CSV (`standardize_warnings.csv` under
+   `--corpora_path`), the c012 (hyphen preserved — S-level only, matching C012's
+   scope) and c022 (`*` in a standard FORM standardize created) rows that
+   `clean_xml` no longer emits for the standard tier. Gains
    `--hard-remove-segmentation` and `--ortho-path`.
 
 ## CLI summary
@@ -113,20 +121,24 @@ it is S-level only — and that does not change).
 2. `standardize` C012 on the standard tier: strips `-`/`=`/`Ø` for a non-Bunun/Thao
    language; preserves `-` (and warns c012) for Bunun and Thao; `--hard-remove-segmentation`
    strips anyway with no warning; mixed-content `<UNCLEAR/>` survives.
-3. `clean_xml` no longer alters the S-level standard FORM (feed a doc whose
-   standard FORM has hyphens; assert `clean_xml` leaves them; original FORM dashes
-   are canonicalized to `-`).
-4. `standardize` writes c012/c022 rows to its warnings CSV.
+3. `clean_xml` no longer alters any standard FORM (S/W/M): feed a doc whose
+   standard FORMs have dashes/hyphens; assert `clean_xml` leaves every
+   `kindOf='standard'` FORM untouched while canonicalizing dashes → `-` in the
+   original FORMs at all levels.
+4. W/M behavior in `standardize`: a word-segmented doc's W and M standard FORMs
+   are recreated from their originals (so they inherit dash canonicalization) but
+   **retain** their segmentation hyphens (C012 not applied below S).
+5. `standardize` writes c012/c022 rows to its warnings CSV.
 
 **Temporary tests** (NOT committed — throwaway, to confirm no regression):
 
-5. **Equivalence snapshot** of the C012-move (behavior-preserving part): for a
+6. **Equivalence snapshot** of the C012-move (behavior-preserving part): for a
    Bunun/Thao corpus, a `--copy` corpus, and a TSV corpus, assert the standard
    FORM + both PHON tiers from `standardize_new` equal those from
    `standardize_old → clean_xml_old`, after canonicalizing the intended
    dash-normalization difference on both sides (so the comparison isolates the
    C012 move) and ignoring known XML-serialization noise.
-6. **Song-Kanakanavu full pipeline**: run its rebuild end-to-end with the
+7. **Song-Kanakanavu full pipeline**: run its rebuild end-to-end with the
    refactored scripts; `normalize_standard_forms.py` must complete without raising
    (its own asserts anchor the 128 decisions against the untouched original tier),
    and the final standard tier must match the committed one. If it does not
