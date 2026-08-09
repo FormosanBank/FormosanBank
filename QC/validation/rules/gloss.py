@@ -628,6 +628,65 @@ def v068_M_reconstructs_W(
 
 
 # ---------------------------------------------------------------------------
+# V069: null morpheme '∅' in W FORM must appear as its own M FORM (HARD)
+# ---------------------------------------------------------------------------
+
+_STANDALONE_NULL_RE = re.compile(r"(?:^|(?<=[\s\-]))∅(?=[\s\-]|$)")
+
+
+def v069_null_morpheme_in_W_requires_null_M(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V069 HARD: if a W's preferred FORM contains a standalone null-morpheme
+    marker '∅' (bordered by string edges, whitespace, or segmentation '-')
+    and the W has at least one child M, then at least one child M FORM (any
+    kindOf) must be exactly '∅'.
+
+    Rationale: the standard tier keeps null morphemes at the W and M levels
+    (standardize.py strips them from S-level FORMs only), so a W spelled
+    '∅-dhuq' must decompose into M '∅' + M 'dhuq'. A missing null M silently
+    drops the zero morpheme from the gloss tier.
+
+    No-ops on Ws with no M children (V061 covers M counts).
+    """
+    findings: list[Finding] = []
+    for w in tree.iter("W"):
+        w_form = _get_w_form(w)
+        if not _STANDALONE_NULL_RE.search(w_form):
+            continue
+        ms = [child for child in w if child.tag == "M"]
+        if not ms:
+            continue
+        null_m_present = any(
+            text.strip() == "∅"
+            for m in ms
+            for text in _m_forms(m)
+        )
+        if null_m_present:
+            continue
+        w_id = w.get("id") or ""
+        parent_s = w.getparent()
+        s_id = parent_s.get("id") if parent_s is not None and parent_s.tag == "S" else None
+        loc = f"W={w_id}" if w_id else "W"
+        if s_id:
+            loc = f"S={s_id} {loc}"
+        findings.append(Finding(
+            rule_id="V069",
+            severity=Severity.HARD,
+            message=(
+                f"W id={w_id!r}: W FORM {w_form!r} contains a null morpheme "
+                "'∅' but no child M FORM is '∅'; the null morpheme must "
+                "appear on the M tier"
+            ),
+            path=path,
+            location=loc,
+        ))
+    return findings
+
+
+# ---------------------------------------------------------------------------
 # Registry
 # ---------------------------------------------------------------------------
 
@@ -641,5 +700,6 @@ RULES: list = [
     v066_clitic_in_W_requires_clitic_in_M,
     v067_no_angle_brackets_in_M_FORM,
     v068_M_reconstructs_W,
+    v069_null_morpheme_in_W_requires_null_M,
 ]
 CROSS_FILE_RULES: list = []
