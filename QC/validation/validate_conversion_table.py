@@ -76,3 +76,42 @@ def select_value_column(fieldnames: list[str], dialect: str | None, key: str) ->
     raise ValueError(
         f"no unambiguous value column for dialect {dialect!r} in {fieldnames}"
     )
+
+
+def load_orthography(path: Path, dialect: str | None) -> Orthography:
+    with open(path, encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle, delimiter="\t")
+        fieldnames = list(reader.fieldnames or [])
+        column = select_value_column(fieldnames, dialect, key="letter")
+        ipa_of: dict[str, str] = {}
+        for row in reader:
+            letter = (row.get("letter") or "").strip()
+            value = (row.get(column) or "").strip()
+            if not letter or value == "NA" or value == "":
+                continue
+            ipa_of.setdefault(letter, value)
+    return Orthography(ipa_of=ipa_of, column=column)
+
+
+def tokenize(text: str, letters) -> tuple[list[str], list[str]]:
+    ordered = sorted({lt for lt in letters if lt}, key=len, reverse=True)
+    graphemes: list[str] = []
+    unmatched: list[str] = []
+    index = 0
+    while index < len(text):
+        match = next((lt for lt in ordered if text.startswith(lt, index)), None)
+        if match is None:
+            graphemes.append(text[index])
+            unmatched.append(text[index])
+            index += 1
+        else:
+            graphemes.append(match)
+            index += len(match)
+    return graphemes, unmatched
+
+
+def target_ipa(tgt: str, output: Orthography) -> tuple[str | None, list[str]]:
+    graphemes, unmatched = tokenize(tgt, output.ipa_of.keys())
+    if unmatched:
+        return None, unmatched
+    return "".join(output.ipa_of[g] for g in graphemes), []
