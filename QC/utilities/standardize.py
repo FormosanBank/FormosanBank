@@ -25,6 +25,7 @@ from QC.validation._dialect_inventory import (  # noqa: E402
     ISO_TO_LANGUAGE,
     is_multi_dialect_language,
 )
+from QC.cleaning.clean_xml import CleanerWarnings  # noqa: E402
 
 
 _ISO_TO_LANG_NAME = {
@@ -105,7 +106,7 @@ def _process_standard_hyphens(
     xml_file: str,
     s_id: "str | None",
     lang_code: "str | None",
-    warnings: "object | None",
+    warnings: "CleanerWarnings | None",
     hard_remove_segmentation: bool,
     ortho_path: "str | None",
 ) -> str:
@@ -142,7 +143,11 @@ def _process_standard_hyphens(
 def _apply_standard_hyphens(element, lang_code, ortho_path, hard_remove,
                             warnings, file_path):
     """Apply C012 to an S element's standard FORM. No-op for W/M (they keep
-    segmentation) and for elements without a standard FORM."""
+    segmentation) and for elements without a standard FORM.
+
+    After C012, emits c022 for any '*' character found in the resulting
+    standard FORM text.
+    """
     if element.tag != "S":
         return
     form = element.find("FORM[@kindOf='standard']")
@@ -154,6 +159,10 @@ def _apply_standard_hyphens(element, lang_code, ortho_path, hard_remove,
     )
     if new_text != form.text:
         form.text = new_text
+    if warnings is not None and form.text and "*" in form.text:
+        for i, ch in enumerate(form.text):
+            if ch == "*":
+                warnings.add("c022", file_path, element.get("id"), ch, i)
 
 
 def prettify(elem):
@@ -298,6 +307,8 @@ def main(args):
             except ValueError as e:
                 print(f"Warning: {e}; capital-letter variants will NOT be derived.")
 
+    warnings = CleanerWarnings(Path(args.corpora_path) / "standardize_warnings.csv")
+
     to_explore = get_exploration_targets(args.corpora_path, args.corpus)
 
     for corpus in to_explore:
@@ -329,7 +340,7 @@ def main(args):
                             create_standard(element, file_path=file)
                             _apply_standard_hyphens(
                                 element, lang_code, args.ortho_path,
-                                args.hard_remove_segmentation, None, file)
+                                args.hard_remove_segmentation, warnings, file)
                     elif args.remove_accents:
                         # Copy original to standard, then delete accents only.
                         # apply_standard with an empty mapping strips accents and
@@ -339,7 +350,7 @@ def main(args):
                             apply_standard(element, [])
                             _apply_standard_hyphens(
                                 element, lang_code, args.ortho_path,
-                                args.hard_remove_segmentation, None, file)
+                                args.hard_remove_segmentation, warnings, file)
                     else:
                         # Normal standardization mode
                         assert available_columns is not None  # loaded in non-copy branch above
@@ -420,7 +431,7 @@ def main(args):
                             apply_standard(element, standard)
                             _apply_standard_hyphens(
                                 element, lang_code, args.ortho_path,
-                                args.hard_remove_segmentation, None, file)
+                                args.hard_remove_segmentation, warnings, file)
                         
                     try:
                         xml_string = prettify(root)
@@ -437,7 +448,9 @@ def main(args):
                     print(f"Error parsing file: {file}")
                 except Exception as e:
                     print(f"Unexpected error with file {file}: {e}")
-                    
+
+    warnings.write_csv()
+
 if __name__ == "__main__":
     langs = sorted(set(ISO_TO_LANGUAGE.values()) | {'Truku'})
     

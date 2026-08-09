@@ -621,3 +621,31 @@ def test_standardize_leaves_WM_standard_segmentation(tmp_path):
     assert tree.find(".//S/FORM[@kindOf='standard']").text == "ab"        # S stripped
     assert tree.find(".//W/FORM[@kindOf='standard']").text == "a-b"       # W kept
     assert tree.find(".//M/FORM[@kindOf='standard']").text == "a-b"       # M kept
+
+
+# --- C012/C022: warnings CSV --------------------------------------------------
+#
+# standardize.py must write a standardize_warnings.csv under --corpora_path
+# that contains c012 rows for Bunun/Thao hyphens that are preserved and c022
+# rows for '*' characters found in the standard FORM.
+
+
+def _warnings_csv(tmp_path):
+    p = tmp_path / "standardize_warnings.csv"
+    return p.read_text(encoding="utf-8") if p.exists() else ""
+
+
+def test_standardize_warns_c012_on_preserved_bunun(tmp_path):
+    root = _write_collection(tmp_path, BUNUN)
+    proc = _run_standardize(["--corpora_path", str(root), "--copy"])
+    assert proc.returncode == 0, proc.stderr
+    assert "c012" in _warnings_csv(root)
+
+
+def test_standardize_warns_c022_on_star_in_standard(tmp_path):
+    xml = ('<TEXT id="t" citation="c" copyright="c" xml:lang="ami">'
+           '<S id="S1"><FORM kindOf="original">ka*en</FORM></S></TEXT>')
+    root = _write_collection(tmp_path, xml)
+    proc = _run_standardize(["--corpora_path", str(root), "--copy"])
+    assert proc.returncode == 0, proc.stderr
+    assert "c022" in _warnings_csv(root)
