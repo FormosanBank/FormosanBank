@@ -790,16 +790,13 @@ def test_C012_thao_standard_hyphens_preserved_with_warning(
     )
 
 
-def test_C012_null_morpheme_marker_stripped_from_standard(
+def test_C012_null_unit_survives_standard_hyphen_stripping(
     tmp_path, fixtures_dir, copy_fixture
 ):
-    """C012: the null-morpheme marker "Ø" is stripped from the standard tier
-    (with its bridging hyphen) for a language where "-" is not a letter.
-
-    "Ø" is a null-morpheme annotation, never an orthographic letter, so it must
-    not survive into the standard surface form alongside the segmentation it
-    marks. The original tier is left untouched.
-    """
+    """C012 no longer deletes null morphemes: removal lives in
+    standardize.py alone (spec 2026-08-09-null-morpheme-handling). The
+    marker is normalized to ∅ (clean_text) and its bridging hyphen is
+    SKIPPED by hyphen stripping so the unit stays recognizable."""
     work = copy_fixture(
         fixtures_dir / "c012_null_morpheme_in_standard_trv.xml", tmp_path
     )
@@ -807,23 +804,18 @@ def test_C012_null_morpheme_marker_stripped_from_standard(
     assert proc.returncode == 0, f"stderr: {proc.stderr}"
 
     std = _form_texts_with_kindof(work, "S", "standard")[0]
-    assert std == "dhuq sapah ka tama da.", f"standard: {std!r}"
+    assert std == "∅-dhuq sapah ka tama da.", f"standard: {std!r}"
 
-    # Original tier is source-faithful: Ø preserved.
     orig = _form_texts_with_kindof(work, "S", "original")[0]
-    assert orig == "Ø-dhuq sapah ka tama da.", f"original: {orig!r}"
+    assert orig == "∅-dhuq sapah ka tama da.", f"original: {orig!r}"
 
 
-def test_C012_null_morpheme_stripped_but_letter_hyphens_preserved(
+def test_C012_null_unit_and_letter_hyphens_both_survive(
     tmp_path, fixtures_dir, copy_fixture
 ):
-    """C012: "Ø" is stripped even when "-" IS a letter (Bunun), and removing the
-    null marker does NOT eat the real letter-hyphens around it.
-
-    Negative pin against an implementation that only strips "Ø" in the
-    hyphen-not-a-letter branch, or that strips it together with adjacent
-    letter-hyphens.
-    """
+    """Bunun ('-' is a letter): letter hyphens are preserved as before,
+    and the null unit's bridging hyphen is preserved too (as part of the
+    unit, not as a letter)."""
     work = copy_fixture(
         fixtures_dir / "c012_null_morpheme_in_standard_bunun.xml", tmp_path
     )
@@ -831,7 +823,23 @@ def test_C012_null_morpheme_stripped_but_letter_hyphens_preserved(
     assert proc.returncode == 0, f"stderr: {proc.stderr}"
 
     std = _form_texts_with_kindof(work, "S", "standard")[0]
-    assert std == "ma-baliv-an.", f"standard: {std!r}"
+    assert std == "∅-ma-baliv-an.", f"standard: {std!r}"
+
+
+def test_C012_ordinary_hyphens_still_stripped_alongside_null_unit(
+    tmp_path, fixtures_dir, copy_fixture
+):
+    """In the normalization fixture (Sakizaya, '-' not a letter): ordinary
+    segmentation hyphens are stripped from S-standard while every
+    null-adjacent hyphen survives."""
+    work = copy_fixture(
+        fixtures_dir / "null_morpheme_normalization.xml", tmp_path
+    )
+    proc = _run_clean(tmp_path)
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+
+    std = _form_texts_with_kindof(work, "S", "standard")[0]
+    assert std == "∅-sitangah bangcal-∅ ∅ makero Grønland.", f"standard: {std!r}"
 
 
 # =============================================================================

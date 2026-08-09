@@ -151,6 +151,48 @@ def _hyphen_is_letter(lang_code: str, ortho_path: str | None = None) -> bool:
     return found
 
 
+def normalize_null_morphemes(text: str) -> str:
+    """Normalize null-morpheme glyphs to canonical ∅ (U+2205).
+
+    Formosan corpora use three Unicode variants for the null morpheme marker:
+    - ø (U+00F8, lowercase o-slash, legacy/typo)
+    - Ø (U+00D8, uppercase O-slash, legacy standard)
+    - ∅ (U+2205, empty set, canonical)
+
+    This normalizes ø/Ø to ∅ when they appear in morpheme positions:
+    - As prefixes: 'ø-' or 'Ø-'
+    - As suffixes: '-ø' or '-Ø'
+    - Standalone: ' ø ' or ' Ø ' (surrounded by whitespace or punctuation)
+
+    Other uses of ø/Ø (e.g., in geographic names like "Grønland") are left
+    unchanged, as they are orthographic letters, not null morphemes.
+    """
+    # Normalize null morphemes in morpheme-specific contexts
+    # Prefix: 'ø-' or 'Ø-'
+    text = text.replace("ø-", "∅-").replace("Ø-", "∅-")
+    # Suffix: '-ø' or '-Ø'
+    text = text.replace("-ø", "-∅").replace("-Ø", "-∅")
+    # Standalone: ' ø ' or ' Ø ' (whitespace-bounded)
+    text = re.sub(r'(\s)ø(\s)', r'\1∅\2', text)
+    text = re.sub(r'(\s)Ø(\s)', r'\1∅\2', text)
+    return text
+
+
+_HYPHEN_NOT_NULL_ADJACENT_RE = re.compile(r"(?<!∅)-(?!∅)")
+
+
+def _strip_segmentation_keeping_null_units(text: str) -> str:
+    """Strip segmentation '-' and clitic '=' but keep null units intact.
+
+    A hyphen bridging a null morpheme ('∅-' / '-∅') is part of the null
+    unit, which standardize.py removes as a whole (non---copy modes);
+    stripping it here would fuse the marker into the word ('∅dhuq') and
+    make it unrecognizable — notably in --copy corpora, whose standard
+    tier legitimately retains null units.
+    """
+    return _HYPHEN_NOT_NULL_ADJACENT_RE.sub("", text).replace("=", "")
+
+
 def _process_standard_hyphens(
     text: str,
     xml_file: str,
@@ -163,31 +205,37 @@ def _process_standard_hyphens(
     """Per C012: handle hyphens in S-level standard FORM by orthography.
 
     If '-' is NOT a letter in the canonical orthography (the common case),
-    strip hyphens AND clitic '=' markers silently. If '-' IS a letter
-    (Bunun, Thao), preserve hyphens and emit a c012 warning per occurrence
-    (unless --hard-remove-segmentation is set, in which case strip anyway
-    and DO NOT warn).
+    strip hyphens AND clitic '=' markers silently, except those adjacent to
+    ∅ (null morphemes). If '-' IS a letter (Bunun, Thao), preserve hyphens
+    and emit a c012 warning per occurrence (unless --hard-remove-segmentation
+    is set, in which case strip anyway and DO NOT warn). In both branches,
+    hyphens adjacent to '∅' are skipped.
 
     The '=' clitic marker is always stripped (it's never a letter).
 
-    The null-morpheme marker 'Ø' (U+00D8) is likewise stripped unconditionally
-    — together with its bridging segmentation hyphen ('Ø-' / '-Ø') — because it
-    is an annotation, never an orthographic letter in any Formosan language.
-    Removing it as a unit avoids leaving a dangling hyphen even where '-' is a
-    letter (Bunun, Thao).
+    Null morphemes are NOT deleted here (they were prior to the 2026-08-09
+    null-morpheme spec): standardize.py removes them from S-level standard
+    FORMs. C012 only guarantees it never destroys a null unit — hyphens
+    adjacent to '∅' are skipped when stripping, and skipped by the
+    hyphen-is-letter warning (they are annotation, not letters).
     """
-    text = re.sub(r"Ø-|-Ø|Ø", "", text)
     if lang_code and _hyphen_is_letter(lang_code, ortho_path):
         if hard_remove_segmentation:
-            return text.replace("-", "").replace("=", "")
-        # Preserve hyphens, warn per occurrence
+            return _strip_segmentation_keeping_null_units(text)
+        # Preserve hyphens (except those we strip), warn per occurrence
+        # but skip null-adjacent hyphens from the warning (they are annotation)
         if warnings is not None:
             for i, ch in enumerate(text):
-                if ch == "-":
-                    warnings.add("c012", xml_file, s_id, ch, i)
+                if ch != "-":
+                    continue
+                if (i > 0 and text[i - 1] == "∅") or (
+                    i + 1 < len(text) and text[i + 1] == "∅"
+                ):
+                    continue  # null-unit hyphen: annotation, not a letter
+                warnings.add("c012", xml_file, s_id, ch, i)
         return text.replace("=", "")  # clitic stripped even when preserving '-'
-    # Hyphen is not a letter → strip both
-    return text.replace("-", "").replace("=", "")
+    # Hyphen is not a letter → strip both (except null-adjacent hyphens)
+    return _strip_segmentation_keeping_null_units(text)
 
 
 def _find_bopomofo(text: str) -> list[tuple[str, int]]:
@@ -496,21 +544,23 @@ def clean_text(
     """Apply cleaning functions to a FORM-tier text node.
 
     Pipeline (always language-agnostic for FORM):
-      1. normalize_caret_variants — four caret-like Unicode chars → ASCII '^'
+      1. normalize_null_morphemes — ø/Ø/∅ → canonical ∅
+      2. normalize_caret_variants — four caret-like Unicode chars → ASCII '^'
          regardless of xml:lang. In FormosanBank a caret always represents
          a glottal stop.
-      2. swap_punctuation — full-width and typographic punctuation → ASCII.
+      3. swap_punctuation — full-width and typographic punctuation → ASCII.
          Emits a c002b warning row for each U+02C8 (IPA PRIMARY STRESS MARK)
          found before the swap, because stress marks are unexpected in Formosan
          corpus data and worth surfacing to the corpus author.
-      3. normalize_whitespace — collapse runs of whitespace.
-      4. trim_repeated_punctuation — !! → !, ??? → ?, --- → -.
+      4. normalize_whitespace — collapse runs of whitespace.
+      5. trim_repeated_punctuation — !! → !, ??? → ?, --- → -.
 
     Zero-width / BOM characters (U+200B/200C/200D/FEFF) are stripped first,
     unconditionally — invisible source residue the validator flags HARD
     (V131 / TR16).
     """
     text = _strip_zero_width(text)
+    text = normalize_null_morphemes(text)
     text = normalize_caret_variants(text)
     # Emit c002b warning for U+02C8 before it gets swapped to apostrophe.
     if warnings is not None:

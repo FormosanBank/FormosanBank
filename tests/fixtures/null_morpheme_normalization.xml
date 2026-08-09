@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  C012 fixture (Sakizaya): pin that ordinary segmentation hyphens are stripped
+  while null units survive intact. The input exercises null-morpheme normalization
+  with three Unicode variants: ø (U+00F8, lowercase), Ø (U+00D8, uppercase), and
+  ∅ (U+2205, canonical).
+
+  Shape: standard FORM "ø-sitangah bangcal-Ø ∅ makero Grønland." contains:
+  - "ø-sitangah" (lowercase null prefix + hyphen + regular word)
+  - "bangcal-Ø" (word + hyphen + uppercase null suffix)
+  - "∅" (standalone null, canonical form)
+  - mixed segmentation hyphens (internal "-" in regular words, and null-adjacent)
+
+  After clean_text normalization (step 1), all ø/Ø variants become canonical ∅.
+  After C012: ordinary hyphens are stripped, but null-adjacent hyphens survive
+  (spec 2026-08-09). Result: "∅-sitangah bangcal-∅ ∅ makero Grønland."
+  Null removal itself is deferred to standardize.py.
+-->
+<TEXT id="TEST_C012_SAK_NULL_NORMALIZATION" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="szy" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original">ø-sitangah bangcal-Ø ∅ makero Grønland.</FORM>
+    <FORM kindOf="standard">ø-sitangah bangcal-Ø ∅ makero Grønland.</FORM>
+  </S>
+</TEXT>
