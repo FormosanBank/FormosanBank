@@ -564,11 +564,14 @@ def _std_text(tmp_path):
 
 
 AMIS = ('<TEXT id="t" citation="c" copyright="c" xml:lang="ami">'
-        '<S id="S1"><FORM kindOf="original">mkan-ku-nhapuy</FORM></S></TEXT>')
+        '<S id="S1"><FORM kindOf="original">mkan-ku-nhapuy</FORM>'
+        '<W id="W1"><M id="M1"><FORM kindOf="original">x</FORM></M></W></S></TEXT>')
 BUNUN = ('<TEXT id="t" citation="c" copyright="c" xml:lang="bnn">'
-         '<S id="S1"><FORM kindOf="original">ma-baliv-an</FORM></S></TEXT>')
+         '<S id="S1"><FORM kindOf="original">ma-baliv-an</FORM>'
+         '<W id="W1"><M id="M1"><FORM kindOf="original">x</FORM></M></W></S></TEXT>')
 THAO = ('<TEXT id="t" citation="c" copyright="c" xml:lang="ssf">'
-        '<S id="S1"><FORM kindOf="original">qa-li-ka-tu</FORM></S></TEXT>')
+        '<S id="S1"><FORM kindOf="original">qa-li-ka-tu</FORM>'
+        '<W id="W1"><M id="M1"><FORM kindOf="original">x</FORM></M></W></S></TEXT>')
 
 
 def test_standardize_strips_hyphens_for_non_letter_language(tmp_path):
@@ -602,7 +605,8 @@ def test_standardize_hard_remove_strips_bunun(tmp_path):
 
 def test_standardize_strips_null_morpheme_marker(tmp_path):
     xml = ('<TEXT id="t" citation="c" copyright="c" xml:lang="ami">'
-           '<S id="S1"><FORM kindOf="original">ka-Ø-en</FORM></S></TEXT>')
+           '<S id="S1"><FORM kindOf="original">ka-Ø-en</FORM>'
+           '<W id="W1"><M id="M1"><FORM kindOf="original">x</FORM></M></W></S></TEXT>')
     root = _write_collection(tmp_path, xml)
     proc = _run_standardize(["--corpora_path", str(root), "--copy"])
     assert proc.returncode == 0, proc.stderr
@@ -644,8 +648,30 @@ def test_standardize_warns_c012_on_preserved_bunun(tmp_path):
 
 def test_standardize_warns_c022_on_star_in_standard(tmp_path):
     xml = ('<TEXT id="t" citation="c" copyright="c" xml:lang="ami">'
-           '<S id="S1"><FORM kindOf="original">ka*en</FORM></S></TEXT>')
+           '<S id="S1"><FORM kindOf="original">ka*en</FORM>'
+           '<W id="W1"><M id="M1"><FORM kindOf="original">x</FORM></M></W></S></TEXT>')
     root = _write_collection(tmp_path, xml)
     proc = _run_standardize(["--corpora_path", str(root), "--copy"])
     assert proc.returncode == 0, proc.stderr
     assert "c022" in _warnings_csv(root)
+
+
+def test_standardize_keeps_digit_flanked_hyphen(tmp_path):
+    """C012: segmentation hyphens stripped but digit-flanked hyphens kept."""
+    xml = ('<TEXT id="t" citation="c" copyright="c" xml:lang="ami">'
+           '<S id="S1"><FORM kindOf="original">ka-en 2020-07-31 3:2-5</FORM>'
+           '<W id="W1"><M id="M1"><FORM kindOf="original">x</FORM></M></W></S></TEXT>')
+    root = _write_collection(tmp_path, xml)
+    proc = _run_standardize(["--corpora_path", str(root), "--copy"])
+    assert proc.returncode == 0, proc.stderr
+    assert _std_text(root) == "kaen 2020-07-31 3:2-5"
+
+
+def test_standardize_skips_c012_for_unsegmented_sentence(tmp_path):
+    """C012 must NOT fire on an S with no <M> descendant (e.g. running prose)."""
+    xml = ('<TEXT id="t" citation="c" copyright="c" xml:lang="ami">'
+           '<S id="S1"><FORM kindOf="original">Proto-Austronesian ka-en</FORM></S></TEXT>')
+    root = _write_collection(tmp_path, xml)
+    proc = _run_standardize(["--corpora_path", str(root), "--copy"])
+    assert proc.returncode == 0, proc.stderr
+    assert _std_text(root) == "Proto-Austronesian ka-en"

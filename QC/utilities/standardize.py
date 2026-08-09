@@ -101,6 +101,15 @@ def _hyphen_is_letter(lang_code: str, ortho_path: str | None = None) -> bool:
     return found
 
 
+_SEG_HYPHEN = re.compile(r"(?<!\d)-|-(?!\d)")
+
+
+def _strip_seg_hyphens(text: str) -> str:
+    """Strip segmentation hyphens but keep a '-' flanked by digits on both
+    sides (dates, number/verse ranges, e.g. 2020-07-31, 3:2-5, 8-11)."""
+    return _SEG_HYPHEN.sub("", text)
+
+
 def _process_standard_hyphens(
     text: str,
     xml_file: str,
@@ -129,7 +138,7 @@ def _process_standard_hyphens(
     text = re.sub(r"Ø-|-Ø|Ø", "", text)
     if lang_code and _hyphen_is_letter(lang_code, ortho_path):
         if hard_remove_segmentation:
-            return text.replace("-", "").replace("=", "")
+            return _strip_seg_hyphens(text).replace("=", "")
         # Preserve hyphens, warn per occurrence
         if warnings is not None:
             for i, ch in enumerate(text):
@@ -137,7 +146,7 @@ def _process_standard_hyphens(
                     warnings.add("c012", xml_file, s_id, ch, i)
         return text.replace("=", "")  # clitic stripped even when preserving '-'
     # Hyphen is not a letter → strip both
-    return text.replace("-", "").replace("=", "")
+    return _strip_seg_hyphens(text).replace("=", "")
 
 
 def _apply_standard_hyphens(element, lang_code, ortho_path, hard_remove,
@@ -150,6 +159,8 @@ def _apply_standard_hyphens(element, lang_code, ortho_path, hard_remove,
     """
     if element.tag != "S":
         return
+    if element.find(".//M") is None:
+        return  # C012 only on morpheme-segmented sentences (has an <M> tier)
     form = element.find("FORM[@kindOf='standard']")
     if form is None or not form.text:
         return
