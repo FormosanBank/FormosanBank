@@ -315,12 +315,16 @@ def phonologize(text: str, profile: PhonologyProfile) -> str:
         category = unicodedata.category(character)
         if (
             character in profile.ipa_characters
-            or character in string.punctuation
+            or character == "*"
             or character.isspace()
             or category.startswith("M")
-            or category.startswith("P")
         ):
             output.append(character)
+        elif character in string.punctuation or category.startswith("P"):
+            # Unmapped punctuation is not sound: drop it from PHON. Mapped
+            # punctuation (e.g. an orthographic apostrophe) was consumed by
+            # the tokenizer above and is unaffected.
+            continue
         else:
             output.append("*")
     return "".join(output)

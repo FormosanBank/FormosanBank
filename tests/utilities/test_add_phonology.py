@@ -500,12 +500,13 @@ def test_casefold_fallback_maps_lowercase_onto_uppercase_only_row(
     assert phonologize("r", profile) == "ɾ"  # exact match preferred, not ʁ
 
 
-def test_unknown_characters_star_but_unicode_punct_and_marks_survive(
+def test_unknown_characters_star_marks_survive_punctuation_dropped(
     tmp_path, monkeypatch
 ):
-    """Unmapped characters become `*`, except Unicode punctuation (P*) and marks
-    (M*), which are preserved. Old code preserved only ASCII string.punctuation,
-    so it starred `…` and combining diacritics."""
+    """Unmapped characters become `*`, combining marks (M*) survive, and
+    unmapped punctuation — ASCII and Unicode P* alike — is dropped (the
+    2026-08-09 null-morpheme/punctuation spec; previously punctuation was
+    copied through to PHON)."""
     scheme = _write_profile(
         monkeypatch,
         tmp_path,
@@ -514,13 +515,38 @@ def test_unknown_characters_star_but_unicode_punct_and_marks_survive(
     )
     profile = load_profile(scheme, "Yami", "Yami")
 
-    # a -> ɑ; `…` (Po) and the space survive; `卐` (Lo) and `◇` (So) -> `*`.
-    assert phonologize("a… 卐◇", profile) == "ɑ… **"
+    # a -> ɑ; `…` (Po) dropped; space survives; `卐` (Lo) and `◇` (So) -> `*`.
+    assert phonologize("a… 卐◇", profile) == "ɑ **"
     # a combining acute (Mn, U+0301) rides through rather than being starred,
     # whereas a precomposed accented letter (a base Ll not in the table) is
-    # unknown and becomes `*`.
+    # unknown and becomes `*`. (Use the escape sequences verbatim — NFC
+    # á and NFD a+combining are visually identical in source code.)
     assert phonologize("a\u0301", profile) == "\u0251\u0301"
     assert phonologize("\u00e1", profile) == "*"
+
+
+def test_unmapped_punctuation_dropped_from_phon(tmp_path, monkeypatch):
+    """PHON is a phonetic tier: punctuation that no mapping consumed is
+    deleted, not copied through. Mapped punctuation (the orthographic
+    apostrophe here) is consumed by the tokenizer and unaffected."""
+    scheme = _write_profile(
+        monkeypatch,
+        tmp_path,
+        language="Yami",
+        tsv="letter\tIPA\nk\tk\na\tɑ\nu\tu\nc\tʦ\ny\tj\n'\tʔ\n",
+    )
+    profile = load_profile(scheme, "Yami", "Yami")
+    assert phonologize("kaku, ca'ay.", profile) == "kɑku ʦɑʔɑj"
+
+
+def test_dash_punctuation_dropped_from_phon(tmp_path, monkeypatch):
+    """Typographic dashes (en dash here) are punctuation, not segmentation:
+    they are dropped by the punctuation filter, not hyphen handling."""
+    scheme = _write_profile(
+        monkeypatch, tmp_path, language="Yami", tsv="letter\tIPA\na\tɑ\n"
+    )
+    profile = load_profile(scheme, "Yami", "Yami")
+    assert phonologize("a–a", profile) == "ɑɑ"
 
 
 # ---------------------------------------------------------------------------
