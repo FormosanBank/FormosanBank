@@ -20,12 +20,13 @@ if str(_REPO_ROOT) not in sys.path:
 
 from QC.validation._dialect_inventory import (  # noqa: E402
     ISO_TO_LANGUAGE,
+    STANDARD_ORTHOGRAPHY_MAP,
     is_multi_dialect_language,
+    standard_orthography,
 )
 
 
 ORTHOGRAPHIES_PATH = _REPO_ROOT / "Orthographies"
-STANDARD_ORTHOGRAPHY = "Ortho113"
 
 
 @dataclass(frozen=True)
@@ -356,11 +357,13 @@ def process_file(path: str, args: argparse.Namespace) -> None:
         raise ValueError(f"Language is blank in file: {path}")
 
     print(f"Processing file: {path} (Language: {language}, Dialect: {dialect})")
-    standard = load_profile(
-        STANDARD_ORTHOGRAPHY,
-        language,
-        dialect,
-        target_column=args.target_column,
+    # The standard-tier scheme is declared per language in standards.csv, not
+    # hardcoded. None means the language has no designated standard yet.
+    scheme = standard_orthography(language) if language in STANDARD_ORTHOGRAPHY_MAP else None
+    standard = (
+        load_profile(scheme, language, dialect, target_column=args.target_column)
+        if scheme
+        else None
     )
     original = (
         load_profile(args.orthography, language, dialect)
@@ -368,10 +371,15 @@ def process_file(path: str, args: argparse.Namespace) -> None:
         else None
     )
 
-    if standard is None:
+    if scheme is None:
+        print(
+            f"Warning: no designated standard orthography for {language}; "
+            "skipping standard PHON"
+        )
+    elif standard is None:
         print(
             f"Warning: Standard orthography TSV not found for {language}: "
-            f"{ORTHOGRAPHIES_PATH / STANDARD_ORTHOGRAPHY / f'{language}.tsv'}"
+            f"{ORTHOGRAPHIES_PATH / scheme / f'{language}.tsv'}"
         )
     if args.orthography and original is None:
         print(

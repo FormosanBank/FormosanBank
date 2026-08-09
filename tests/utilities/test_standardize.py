@@ -392,18 +392,18 @@ def test_standardization_leaves_original_tier_accents_untouched(tmp_path):
     )
 
 
-# --- --ortho113 mode: copy + delete accents (no TSV, no dialectal conversion) --
+# --- --remove_accents mode: copy + delete accents (no TSV, no dialectal conv) --
 #
 # For a corpus whose dialect is unknown or mixed we cannot apply a dialect-
-# specific conversion table, but we can still produce an Ortho113-compatible
-# standard tier by removing accents (the one dialect-independent normalization,
-# since no Formosan orthography uses accents phonemically). --ortho113 is that
-# mode: like --copy, but it deletes accents from the standard tier.
+# specific conversion table, but we can still produce a standard tier by
+# removing accents (the one dialect-independent normalization, since no Formosan
+# orthography uses accents phonemically). --remove_accents is that mode: like
+# --copy, but it deletes accents from the standard tier.
 
 
-def test_ortho113_mode_deletes_accents_without_a_tsv(tmp_path):
-    """--ortho113 creates the standard tier as the original with accents removed,
-    requiring no TSV and doing no dialectal letter conversion."""
+def test_remove_accents_mode_deletes_accents_without_a_tsv(tmp_path):
+    """--remove_accents creates the standard tier as the original with accents
+    removed, requiring no TSV and doing no dialectal letter conversion."""
     corpus = tmp_path / "corpus"
     work = _write_corpus_xml(
         corpus,
@@ -411,7 +411,7 @@ def test_ortho113_mode_deletes_accents_without_a_tsv(tmp_path):
         '<TEXT xml:lang="trv" dialect="Truku">'
         '<S id="1"><FORM kindOf="original">máduk dálix dourŭk</FORM></S></TEXT>',
     )
-    proc = _run_standardize(["--ortho113", "--corpora_path", str(corpus)])
+    proc = _run_standardize(["--remove_accents", "--corpora_path", str(corpus)])
     assert proc.returncode == 0, f"stderr: {proc.stderr}"
     # accents gone; every base letter (including o/u) left exactly as written
     assert _standard_forms(work) == ["maduk dalix douruk"], (
@@ -419,8 +419,8 @@ def test_ortho113_mode_deletes_accents_without_a_tsv(tmp_path):
     )
 
 
-def test_ortho113_mode_leaves_original_tier_untouched(tmp_path):
-    """--ortho113 is a standard-tier operation only; the original keeps its accents."""
+def test_remove_accents_mode_leaves_original_tier_untouched(tmp_path):
+    """--remove_accents is a standard-tier operation only; original keeps accents."""
     corpus = tmp_path / "corpus"
     work = _write_corpus_xml(
         corpus,
@@ -428,6 +428,6 @@ def test_ortho113_mode_leaves_original_tier_untouched(tmp_path):
         '<TEXT xml:lang="trv" dialect="Truku">'
         '<S id="1"><FORM kindOf="original">máduk dálix</FORM></S></TEXT>',
     )
-    proc = _run_standardize(["--ortho113", "--corpora_path", str(corpus)])
+    proc = _run_standardize(["--remove_accents", "--corpora_path", str(corpus)])
     assert proc.returncode == 0, f"stderr: {proc.stderr}"
     assert _original_forms(work) == ["máduk dálix"]

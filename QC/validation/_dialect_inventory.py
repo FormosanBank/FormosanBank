@@ -73,6 +73,41 @@ ISO_TO_LANGUAGE: dict[str, str] = {
 DIALECT_MAP: dict[str, set[str]] = _load_dialect_map()
 
 
+def _load_standard_map(path: Path | None = None) -> dict[str, str | None]:
+    """Read standards.csv and return {Language: scheme-or-None}.
+
+    Each row declares a language's designated standard orthography as an
+    Orthographies/<scheme> folder name. A blank ``standard_orthography`` cell
+    means "no standard designated yet" and parses to None.
+    """
+    if path is None:
+        path = Path(__file__).resolve().parents[2] / "standards.csv"
+    result: dict[str, str | None] = {}
+    with open(path, newline="", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            language = row["language"].strip()
+            scheme = (row["standard_orthography"] or "").strip()
+            if language:
+                result[language] = scheme or None
+    return result
+
+
+STANDARD_ORTHOGRAPHY_MAP: dict[str, str | None] = _load_standard_map()
+
+
+def standard_orthography(language: str) -> str | None:
+    """Designated standard orthography scheme for ``language``.
+
+    Returns the Orthographies/<scheme> folder name, or None if the registry
+    declares no standard yet. Raises KeyError for a language absent from
+    standards.csv (a language should always be registered).
+    """
+    if language not in STANDARD_ORTHOGRAPHY_MAP:
+        raise KeyError(f"no standards.csv entry for language {language!r}")
+    return STANDARD_ORTHOGRAPHY_MAP[language]
+
+
 def is_multi_dialect_language(language: str) -> bool:
     """True if `language` has more than one Official dialect in dialects.csv."""
     return language in DIALECT_MAP

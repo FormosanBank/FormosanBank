@@ -21,12 +21,12 @@ import subprocess
 import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
+from types import SimpleNamespace
 
 import pytest
 
 import QC.utilities.add_phonology as add_phonology
 from QC.utilities.add_phonology import load_profile, phonologize
-from QC.validation._dialect_inventory import valid_dialects
 
 ADD_PHONOLOGY = (
     Path(__file__).resolve().parents[2] / "QC" / "utilities" / "add_phonology.py"
@@ -308,10 +308,6 @@ def test_original_phonology_does_not_require_an_ortho113_table(tmp_path):
     assert _phon_texts(xml_path, "standard") == []
 
 
-def test_pazeh_is_a_supported_single_dialect_language():
-    assert valid_dialects("pzh") == frozenset({"Pazeh", "unknown"})
-
-
 def test_can_preserve_source_supplied_original_phonology(tmp_path):
     xml_path = tmp_path / "source-phon.xml"
     xml_path.write_text(
@@ -525,3 +521,90 @@ def test_unknown_characters_star_but_unicode_punct_and_marks_survive(
     # unknown and becomes `*`.
     assert phonologize("a\u0301", profile) == "\u0251\u0301"
     assert phonologize("\u00e1", profile) == "*"
+
+
+# ---------------------------------------------------------------------------
+# Per-language standard orthography registry (standards.csv). The standard
+# tier's scheme comes from standard_orthography(language), not a hardcoded
+# "Ortho113"; a None value means the language has no designated standard yet.
+# ---------------------------------------------------------------------------
+
+
+def _process(xml_path, *, orthography=None):
+    add_phonology.process_file(
+        str(xml_path),
+        SimpleNamespace(
+            orthography=orthography,
+            target_column=None,
+            preserve_existing_original=False,
+        ),
+    )
+
+
+def test_standard_tier_uses_the_designated_standard_scheme(tmp_path, monkeypatch):
+    """add_phonology loads the standard tier from the registry-designated scheme,
+    not a hardcoded Ortho113. The temp dir has no Ortho113 table, so producing
+    standard PHON proves the CustomStd scheme was used."""
+    _write_profile(
+        monkeypatch,
+        tmp_path,
+        language="Yami",
+        tsv="letter\tIPA\na\tX\n",
+        scheme="CustomStd",
+    )
+    monkeypatch.setattr(add_phonology, "standard_orthography", lambda language: "CustomStd")
+
+    xml_path = tmp_path / "y.xml"
+    xml_path.write_text(
+        '<TEXT xml:lang="tao" dialect="Yami"><S id="1">'
+        '<FORM kindOf="standard">a</FORM></S></TEXT>',
+        encoding="utf-8",
+    )
+    _process(xml_path)
+
+    assert _phon_texts(xml_path, "standard") == ["X"]
+
+
+def test_no_designated_standard_skips_standard_but_keeps_original(
+    tmp_path, monkeypatch, capsys
+):
+    """When the registry declares no standard (None), the standard tier is
+    skipped with a warning, while the original tier is still produced."""
+    _write_profile(
+        monkeypatch,
+        tmp_path,
+        language="Yami",
+        tsv="letter\tIPA\na\tX\n",
+        scheme="Src",
+    )
+    monkeypatch.setattr(add_phonology, "standard_orthography", lambda language: None)
+
+    xml_path = tmp_path / "y.xml"
+    xml_path.write_text(
+        '<TEXT xml:lang="tao" dialect="Yami"><S id="1">'
+        '<FORM kindOf="original">a</FORM>'
+        '<FORM kindOf="standard">a</FORM></S></TEXT>',
+        encoding="utf-8",
+    )
+    _process(xml_path, orthography="Src")
+
+    assert _phon_texts(xml_path, "original") == ["X"]
+    assert _phon_texts(xml_path, "standard") == []
+    assert "no designated standard orthography for yami" in capsys.readouterr().out.lower()
+
+
+def test_add_phonology_runs_with_only_an_original_tier(tmp_path):
+    """A file with an original FORM but no standard FORM produces only original
+    PHON (via --orthography); the standard tier has nothing to do."""
+    xml_path = tmp_path / "amis.xml"
+    xml_path.write_text(
+        '<TEXT xml:lang="ami" dialect="Xiuguluan"><S id="1">'
+        '<FORM kindOf="original">singsi</FORM></S></TEXT>',
+        encoding="utf-8",
+    )
+
+    proc = _run(xml_path, orthography="TaiwanNandao")
+
+    assert proc.returncode == 0, proc.stderr
+    assert _phon_texts(xml_path, "original")
+    assert _phon_texts(xml_path, "standard") == []

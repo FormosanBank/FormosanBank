@@ -133,9 +133,9 @@ def main(args):
     if args.copy:
         available_columns = None
         print("Running in copy mode - copying original text to standard form")
-    elif args.ortho113:
+    elif args.remove_accents:
         available_columns = None
-        print("Running in ortho113 mode - copying original to standard, then deleting accents")
+        print("Running in remove_accents mode - copying original to standard, then deleting accents")
     else:
         # Load the TSV file to get available columns
         with open(args.tsv_path, 'r', encoding='utf-8') as f:
@@ -166,7 +166,7 @@ def main(args):
                         # In copy mode, just copy original to standard
                         for element in root.findall('.//FORM/..'):
                             create_standard(element, file_path=file)
-                    elif args.ortho113:
+                    elif args.remove_accents:
                         # Copy original to standard, then delete accents only.
                         # apply_standard with an empty mapping strips accents and
                         # applies no letter conversion.
@@ -271,8 +271,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Standardize the orthography")
     #parser.add_argument('--verbose', action='store_true', help='increase output verbosity')
     parser.add_argument('--copy', action='store_true', help='copy original text to standard form without any transformations')
-    parser.add_argument('--ortho113', action='store_true', help='copy original to standard and delete accents (Ortho113-compatible; no TSV, no dialectal letter conversion)')
-    parser.add_argument('--tsv_path', help='path to TSV file with original and standard columns (not required when using --copy or --ortho113)')
+    parser.add_argument('--remove_accents', action='store_true', help='copy original to standard and delete accents (no TSV, no dialectal letter conversion)')
+    parser.add_argument('--tsv_path', help='path to TSV file with original and standard columns (not required when using --copy or --remove_accents)')
     parser.add_argument('--target_column', help='column name to use as target for standardization (default: auto-detect from dialect or use "standard")')
     parser.add_argument('--corpora_path', help='path of the corpora')
     parser.add_argument('--corpus', help='if standardization is desired to be applied to a specific corpus -- optional')
@@ -280,8 +280,8 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Validate required arguments
-    if sum([bool(args.copy), bool(args.ortho113), bool(args.tsv_path)]) != 1:
-        parser.error("Exactly one of --copy, --ortho113, or --tsv_path is required.")
+    if sum([bool(args.copy), bool(args.remove_accents), bool(args.tsv_path)]) != 1:
+        parser.error("Exactly one of --copy, --remove_accents, or --tsv_path is required.")
     if args.tsv_path and not os.path.exists(args.tsv_path):
         parser.error(f"The TSV file doesn't exist: {args.tsv_path}")
     if not args.corpora_path:
