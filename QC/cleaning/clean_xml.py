@@ -330,6 +330,16 @@ def swap_punctuation(text):
         'ʼ': "'",  # Modifier Letter Apostrophe (U+02BC)
         'ʻ': "'",
         '『': '"',
+        '‐': '-',  # HYPHEN
+        '‑': '-',  # NON-BREAKING HYPHEN
+        '‒': '-',  # FIGURE DASH
+        '–': '-',  # EN DASH
+        '—': '-',  # EM DASH
+        '―': '-',  # HORIZONTAL BAR
+        '−': '-',  # MINUS SIGN
+        '﹘': '-',  # SMALL EM DASH
+        '﹣': '-',  # SMALL HYPHEN-MINUS
+        '－': '-',  # FULLWIDTH HYPHEN-MINUS
         '』': '"',
     }
     
@@ -368,9 +378,11 @@ def normalize_whitespace(text):
 def trim_repeated_punctuation(text):
     """
     Replaces repeated punctuation with single marks.
+
+    Note: dash collapsing (--- → -) is omitted to preserve canonicalized dash
+    variants (Task 4). Only ? and ! are collapsed.
     """
-    text = re.sub(r'([?!])\1+', r'\1', text)  # !! -> !
-    text = re.sub(r'--+', '-', text)  # --- -> -
+    text = re.sub(r'([?!])\1+', r'\1', text)  # !! -> ! and ?? -> ?
     return text
 
 def clean_text(
@@ -392,7 +404,8 @@ def clean_text(
          found before the swap, because stress marks are unexpected in Formosan
          corpus data and worth surfacing to the corpus author.
       3. normalize_whitespace — collapse runs of whitespace.
-      4. trim_repeated_punctuation — !! → !, ??? → ?, --- → -.
+      4. trim_repeated_punctuation — !! → !, ??? → ?, --- → - (only collapses
+         identical repeats, not different punctuation variants).
 
     Zero-width / BOM characters (U+200B/200C/200D/FEFF) are stripped first,
     unconditionally — invisible source residue the validator flags HARD

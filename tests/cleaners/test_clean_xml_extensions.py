@@ -458,7 +458,12 @@ def test_C002b_ipa_stress_warning_emitted(tmp_path, fixtures_dir, copy_fixture):
 def test_C003_repeated_punct_collapses_in_form_and_transl(
     tmp_path, fixtures_dir, copy_fixture
 ):
-    """C003 positive: !!, ??, --- collapse to single in FORM and TRANSL."""
+    """C003 positive: !!, ?? collapse to single. Dashes no longer collapsed (Task 4).
+
+    Per Task 4 (dash canonicalization), dashes are no longer collapsed in
+    trim_repeated_punctuation to preserve the distinction between different
+    dash variants. Only ? and ! are collapsed.
+    """
     work = copy_fixture(fixtures_dir / "c003_repeated_terminal_punct.xml", tmp_path)
     proc = _run_clean(tmp_path)
     assert proc.returncode == 0, f"stderr: {proc.stderr}"
@@ -467,8 +472,8 @@ def test_C003_repeated_punct_collapses_in_form_and_transl(
     std = _form_texts_with_kindof(work, "S", "standard")[0]
     transl = _transl_texts(work, "S")[0]
 
-    expected_orig = "Halo! Hapinangha? Pa-tas."
-    expected_transl = "Hello! How are you? Wri-ting."
+    expected_orig = "Halo! Hapinangha? Pa---tas."  # Dashes no longer collapsed
+    expected_transl = "Hello! How are you? Wri---ting."  # Dashes no longer collapsed
     assert orig == expected_orig, f"original: {orig!r}"
     # clean_xml no longer touches FORM[@kindOf='standard'] — standardize.py owns
     # that tier. The standard FORM is left byte-exact from the fixture.
@@ -991,3 +996,19 @@ def test_transform_counter_accumulates_and_formats():
     assert summary[0]["output"] == "("
     assert summary[1]["count"] == 1
     assert len(summary) == 2
+
+
+def test_clean_xml_canonicalizes_dashes_to_hyphen(tmp_path):
+    """Task 4: All dash/hyphen look-alikes canonicalize to ASCII '-' in original tier."""
+    variants = "‐‑‒–—―−﹘﹣－"
+    xml = (f'<TEXT id="t" citation="c" copyright="c" xml:lang="ami">'
+           f'<S id="S1"><FORM kindOf="original">a{variants}b</FORM></S></TEXT>')
+    d = tmp_path / "XML"; d.mkdir(parents=True)
+    (d / "t.xml").write_text(xml, encoding="utf-8")
+    proc = subprocess.run([sys.executable, str(CLEAN_XML),
+                           "--corpora_path", str(tmp_path)],
+                          capture_output=True, text=True)
+    assert proc.returncode == 0, proc.stderr
+    tree = etree.parse(str(d / "t.xml"))
+    text = tree.find(".//S/FORM[@kindOf='original']").text
+    assert text == "a" + "-" * len(variants) + "b"
