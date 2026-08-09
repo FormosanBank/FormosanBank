@@ -115,3 +115,43 @@ def target_ipa(tgt: str, output: Orthography) -> tuple[str | None, list[str]]:
     if unmatched:
         return None, unmatched
     return "".join(output.ipa_of[g] for g in graphemes), []
+
+
+_TIE_BAR = "͡"
+_LIGATURE_TO_TIEBAR = {
+    "ʦ": "t͡s", "ʣ": "d͡z",
+    "ʧ": "t͡ʃ", "ʤ": "d͡ʒ",
+    "ʨ": "t͡ɕ", "ʥ": "d͡ʑ",
+}
+_LENGTH = re.compile(r"(.)[ː:]")  # a segment followed by a length mark
+
+
+def canonical_safe(ipa: str) -> str:
+    """Normalize only in segment-preserving ways (glyph variants)."""
+    text = unicodedata.normalize("NFC", ipa)
+    for ligature, tiebar in _LIGATURE_TO_TIEBAR.items():
+        text = text.replace(ligature, tiebar)
+    text = text.replace("ɡ", "g")  # IPA script g -> Latin g
+    return text
+
+
+def _expand_length(text: str) -> str:
+    return _LENGTH.sub(r"\1\1", text)  # 'aː' / 'a:' -> 'aa'
+
+
+def reconcile(src_ipa: str, tgt_ipa: str) -> tuple[Verdict, str]:
+    safe_src, safe_tgt = canonical_safe(src_ipa), canonical_safe(tgt_ipa)
+    if safe_src == safe_tgt:
+        return Verdict.CONFIRMED, ""
+
+    reasons = []
+    if _expand_length(safe_src) == _expand_length(safe_tgt):
+        reasons.append("length↔doubling")
+    if safe_src.replace(_TIE_BAR, "") == safe_tgt.replace(_TIE_BAR, ""):
+        reasons.append("digraph↔affricate")
+    # combined: both transforms together
+    combined_src = _expand_length(safe_src).replace(_TIE_BAR, "")
+    combined_tgt = _expand_length(safe_tgt).replace(_TIE_BAR, "")
+    if combined_src == combined_tgt:
+        return Verdict.WARNING, "+".join(reasons) if reasons else "length+affricate"
+    return Verdict.MISMATCH, ""

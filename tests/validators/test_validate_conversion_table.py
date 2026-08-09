@@ -70,3 +70,35 @@ def test_target_ipa_reports_untokenizable(tmp_path):
     ipa, unmatched = vct.target_ipa("aq", output)
     assert ipa is None
     assert "q" in unmatched
+
+
+def test_exact_ipa_match_is_confirmed():
+    assert vct.reconcile("ʈ", "ʈ") == (vct.Verdict.CONFIRMED, "")
+
+
+def test_tiebar_ligature_is_confirmed():
+    # ʦ and t͡s are the same single segment -> no warning.
+    verdict, _ = vct.reconcile("ʦ", "t͡s")
+    assert verdict == vct.Verdict.CONFIRMED
+
+
+def test_length_notation_is_warning():
+    verdict, reason = vct.reconcile("aː", "aa")  # aː vs aa
+    assert verdict == vct.Verdict.WARNING
+    assert "length" in reason
+
+
+def test_bare_digraph_affricate_is_warning():
+    # bare 'ts' (possibly a cluster) vs affricate t͡s -> ambiguous.
+    verdict, reason = vct.reconcile("ts", "t͡s")
+    assert verdict == vct.Verdict.WARNING
+    assert "affricate" in reason
+
+
+def test_true_mismatch():
+    assert vct.reconcile("p", "b")[0] == vct.Verdict.MISMATCH
+
+
+def test_short_vowel_not_equated_with_long():
+    # length expansion must not make short 'a' match long 'aː'/'aa'.
+    assert vct.reconcile("a", "aa")[0] == vct.Verdict.MISMATCH
