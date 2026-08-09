@@ -103,7 +103,27 @@ on first failure; HARD findings appear on stderr regardless.
 
 Quick spot-check counts (file count, total size) vs source. If discrepancies, report — do not auto-fix.
 
-**Privacy leak check.** If `<source_path>/Private/` exists, verify nothing from it landed in the published corpus. Two layers:
+**Cross-corpus duplicate check.** Now that the corpus sits alongside the rest of the bank, check whether its sentences already exist in other published corpora with `QC/utilities/find_duplicate_sentences.py` — the cross-corpus complement of `validate_duplicate_sentences.py`, whose within-corpus check already ran during `run-qc-pipeline`. Run once per language in the corpus, from the FormosanBank root (the script's `--corpora` default is `./Corpora`):
+
+```bash
+cd <formosanbank_path>
+
+# If the corpus XML is split by language (XML/<Language>/):
+<python> QC/utilities/find_duplicate_sentences.py \
+  --source-corpus <corpus_name> --language <Language> \
+  --output logs/<corpus_name>_<Language>_duplicates.csv
+
+# If the XML is flat (no language subdirs), point at each XML file instead:
+<python> QC/utilities/find_duplicate_sentences.py \
+  --source-xml "Corpora/<corpus_name>/XML/<file>.xml" --language <Language> \
+  --output logs/<corpus_name>_<Language>_duplicates.csv
+```
+
+(`logs/` is gitignored, so the CSV stays out of the tree.) Caveats to keep in mind when reading the result:
+
+- Comparison uses the standard tier by default (`--kind-of standard`), matching case-insensitively on whole-sentence text.
+- Target files are discovered by looking for `<Language>` as a path component under `Corpora/`, so published corpora with *flat* XML layouts are not scanned as targets — a clean result is informative, not exhaustive.
+- Matches are **informational, not blockers**: overlap can be legitimate (two corpora built from the same source materials). Report the match count and CSV path in the Phase 6 summary; the operator decides whether overlap warrants dropping or annotating anything before opening the PR. If `<source_path>/Private/` exists, verify nothing from it landed in the published corpus. Two layers:
 
 1. **Content-hash check (hard error).** For every file under `<source_path>/Private/`, compute a SHA-256 hash. For every file under `<formosanbank_path>/Corpora/<corpus_name>/`, compute its hash. Any match means a private file's exact content has leaked to the public corpus, regardless of filename — that's a real leak. Abort the port: do not declare Phase 5 success; surface the matching pair(s); recommend the user delete the offending file(s) (or revert the entire port with `rm -r <formosanbank_path>/Corpora/<corpus_name>/`) and investigate how it happened.
 2. **Basename collision check (warning, not blocker).** Any file in the published corpus whose basename matches a basename anywhere under `Private/` — even with different content. This catches plausible name reuse (e.g., a `Private/README.md` of operator notes and a public `README.md`). Surface the list for operator review; do not block.
@@ -262,6 +282,7 @@ Print:
 - What was dropped (paths)
 - DTD validation result
 - Spot-check results
+- Cross-corpus duplicate check: match count per language + CSV path(s), or why it was skipped
 - GitBook page: <path>
 - Stats tables populated from `<corpus_name>_corpora_stats.csv` (audio columns pending if the audio-durations step was skipped).
 - "GitBook page created on branch <chosen>; commit and open the GitBook PR separately."
