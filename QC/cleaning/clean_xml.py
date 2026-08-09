@@ -78,118 +78,6 @@ def normalize_translation_language_metadata(
     return dict(counts)
 
 
-_ISO_TO_LANG_NAME = {
-    "ami": "Amis",
-    "tay": "Atayal",
-    "bnn": "Bunun",
-    "xnb": "Kanakanavu",
-    "ckv": "Kavalan",
-    "pwn": "Paiwan",
-    "pyu": "Puyuma",
-    "dru": "Rukai",
-    "sxr": "Saaroa",
-    "xsy": "Saisiyat",
-    "szy": "Sakizaya",
-    "trv": "Seediq",
-    "ssf": "Thao",
-    "tsu": "Tsou",
-    "tao": "Yami",
-}
-
-_HYPHEN_IS_LETTER_CACHE: dict = {}
-
-
-def _resolve_ortho_path(ortho_path: str | None) -> Path:
-    """Return the canonical orthography directory.
-
-    If ortho_path is None, default to <repo>/Orthographies/Ortho113/
-    relative to clean_xml.py's location.
-    """
-    if ortho_path is not None:
-        return Path(ortho_path)
-    return Path(__file__).resolve().parents[2] / "Orthographies" / "Ortho113"
-
-
-def _hyphen_is_letter(lang_code: str, ortho_path: str | None = None) -> bool:
-    """Return True if '-' appears as a letter row in the canonical orthography.
-
-    Looks up <ortho_path>/<Language>.tsv (where Language is the human-readable
-    name resolved from the ISO 639-3 code via _ISO_TO_LANG_NAME). Cached after
-    first lookup per (lang_code, ortho_path) pair.
-
-    Empirically verified 2026-05-29: only Bunun (bnn) and Thao (ssf) return True.
-    """
-    cache_key = (lang_code, ortho_path)
-    if cache_key in _HYPHEN_IS_LETTER_CACHE:
-        return _HYPHEN_IS_LETTER_CACHE[cache_key]
-
-    lang_name = _ISO_TO_LANG_NAME.get(lang_code)
-    if lang_name is None:
-        _HYPHEN_IS_LETTER_CACHE[cache_key] = False
-        return False
-
-    tsv_path = _resolve_ortho_path(ortho_path) / f"{lang_name}.tsv"
-    if not tsv_path.exists():
-        _HYPHEN_IS_LETTER_CACHE[cache_key] = False
-        return False
-
-    found = False
-    try:
-        with open(tsv_path, encoding="utf-8") as f:
-            for line in f:
-                # Each row's first column is a letter. We treat any row whose
-                # first column is exactly '-' as evidence that hyphen is a
-                # letter in this orthography.
-                cols = line.split("\t")
-                if cols and cols[0].strip() == "-":
-                    found = True
-                    break
-    except OSError:
-        found = False
-
-    _HYPHEN_IS_LETTER_CACHE[cache_key] = found
-    return found
-
-
-def _process_standard_hyphens(
-    text: str,
-    xml_file: str,
-    s_id: "str | None",
-    lang_code: "str | None",
-    warnings: "CleanerWarnings | None",
-    hard_remove_segmentation: bool,
-    ortho_path: "str | None",
-) -> str:
-    """Per C012: handle hyphens in S-level standard FORM by orthography.
-
-    If '-' is NOT a letter in the canonical orthography (the common case),
-    strip hyphens AND clitic '=' markers silently. If '-' IS a letter
-    (Bunun, Thao), preserve hyphens and emit a c012 warning per occurrence
-    (unless --hard-remove-segmentation is set, in which case strip anyway
-    and DO NOT warn).
-
-    The '=' clitic marker is always stripped (it's never a letter).
-
-    The null-morpheme marker 'Ø' (U+00D8) is likewise stripped unconditionally
-    — together with its bridging segmentation hyphen ('Ø-' / '-Ø') — because it
-    is an annotation, never an orthographic letter in any Formosan language.
-    Removing it as a unit avoids leaving a dangling hyphen even where '-' is a
-    letter (Bunun, Thao).
-    """
-    text = re.sub(r"Ø-|-Ø|Ø", "", text)
-    if lang_code and _hyphen_is_letter(lang_code, ortho_path):
-        if hard_remove_segmentation:
-            return text.replace("-", "").replace("=", "")
-        # Preserve hyphens, warn per occurrence
-        if warnings is not None:
-            for i, ch in enumerate(text):
-                if ch == "-":
-                    warnings.add("c012", xml_file, s_id, ch, i)
-        return text.replace("=", "")  # clitic stripped even when preserving '-'
-    # Hyphen is not a letter → strip both
-    return text.replace("-", "").replace("=", "")
-
-
 def _find_bopomofo(text: str) -> list[tuple[str, int]]:
     """Return [(char, position)] for every Bopomofo character in text.
 
@@ -442,6 +330,16 @@ def swap_punctuation(text):
         'ʼ': "'",  # Modifier Letter Apostrophe (U+02BC)
         'ʻ': "'",
         '『': '"',
+        '‐': '-',  # HYPHEN
+        '‑': '-',  # NON-BREAKING HYPHEN
+        '‒': '-',  # FIGURE DASH
+        '–': '-',  # EN DASH
+        '—': '-',  # EM DASH
+        '―': '-',  # HORIZONTAL BAR
+        '−': '-',  # MINUS SIGN
+        '﹘': '-',  # SMALL EM DASH
+        '﹣': '-',  # SMALL HYPHEN-MINUS
+        '－': '-',  # FULLWIDTH HYPHEN-MINUS
         '』': '"',
     }
     
@@ -480,8 +378,10 @@ def normalize_whitespace(text):
 def trim_repeated_punctuation(text):
     """
     Replaces repeated punctuation with single marks.
+
+    Collapses !! → !, ?? → ?, and --- → -.
     """
-    text = re.sub(r'([?!])\1+', r'\1', text)  # !! -> !
+    text = re.sub(r'([?!])\1+', r'\1', text)  # !! -> ! and ?? -> ?
     text = re.sub(r'--+', '-', text)  # --- -> -
     return text
 
@@ -576,8 +476,6 @@ def analyze_and_modify_xml_file(
     warnings: CleanerWarnings | None = None,
     counter: TransformCounter | None = None,
     metadata_counter: dict[str, int] | None = None,
-    hard_remove_segmentation: bool = False,
-    ortho_path: str | None = None,
 ):
     """
     Analyzes and modifies an XML file by cleaning text and handling specific cases in <FORM>.
@@ -618,7 +516,12 @@ def analyze_and_modify_xml_file(
                 for sentence in root.findall('.//S'):
                     # Intentionally includes descendant W/M FORM tiers; they
                     # receive the same punctuation/Unicode cleanup as S FORM.
-                    form_elements = sentence.findall('.//FORM')
+                    # S/FORM[@kindOf="standard"] is excluded: standardize.py
+                    # owns all cleaning of the standard tier (C012 et al.).
+                    form_elements = [
+                        f for f in sentence.findall('.//FORM')
+                        if f.get("kindOf") != "standard"
+                    ]
                     for form_element in form_elements:
                         if form_element is not None:
                             form_text = form_element.text
@@ -662,26 +565,6 @@ def analyze_and_modify_xml_file(
                                     if ch == "*":
                                         warnings.add("c022", xml_file, sentence.get("id"), ch, i)
 
-                    # C012: handle hyphens in S-level FORM[@kindOf="standard"] only.
-                    # Must run AFTER clean_text so any clean_text output is included.
-                    # W/M FORMs keep their segmentation (they are NOT matched here
-                    # because findall("FORM[...]") returns only direct children of S).
-                    lang_code = _get_xml_lang(sentence) or ""
-                    for s_form in sentence.findall("FORM[@kindOf='standard']"):
-                        if s_form.text:
-                            new_text = _process_standard_hyphens(
-                                s_form.text,
-                                xml_file,
-                                sentence.get("id"),
-                                lang_code,
-                                warnings,
-                                hard_remove_segmentation,
-                                ortho_path,
-                            )
-                            if new_text != s_form.text:
-                                s_form.text = new_text
-                                modified = True
-
                     # Clean <TRANSL> elements
                     for transl in sentence.findall('TRANSL'):
                         transl_lang = _get_xml_lang(transl)
@@ -715,8 +598,6 @@ def main(args):
         warnings=warnings,
         counter=counter,
         metadata_counter=metadata_counter,
-        hard_remove_segmentation=getattr(args, "hard_remove_segmentation", False),
-        ortho_path=getattr(args, "ortho_path", None),
     )
     warnings.write_csv()
     counter.print_summary()
@@ -731,25 +612,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Extract orthographic info")
     #parser.add_argument('--verbose', action='store_true', help='increase output verbosity')
     parser.add_argument('--corpora_path', help='the path to the corpus')
-    parser.add_argument(
-        "--hard-remove-segmentation",
-        action="store_true",
-        default=False,
-        help=(
-            "Force stripping of hyphens from S/FORM[@kindOf='standard'] even "
-            "when the language's canonical orthography includes '-' as a letter. "
-            "Overrides the default preserve-and-warn behavior for Bunun and Thao."
-        ),
-    )
-    parser.add_argument(
-        "--ortho-path",
-        default=None,
-        help=(
-            "Path to the canonical orthography directory (default: "
-            "Orthographies/Ortho113/ relative to the repo root). "
-            "Each <Language>.tsv under this directory is consulted by C012."
-        ),
-    )
     args = parser.parse_args()
 
     if not args.corpora_path:

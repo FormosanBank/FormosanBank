@@ -25,6 +25,144 @@ from QC.validation._dialect_inventory import (  # noqa: E402
     ISO_TO_LANGUAGE,
     is_multi_dialect_language,
 )
+from QC.cleaning.clean_xml import CleanerWarnings  # noqa: E402
+
+
+_ISO_TO_LANG_NAME = {
+    "ami": "Amis",
+    "tay": "Atayal",
+    "bnn": "Bunun",
+    "xnb": "Kanakanavu",
+    "ckv": "Kavalan",
+    "pwn": "Paiwan",
+    "pyu": "Puyuma",
+    "dru": "Rukai",
+    "sxr": "Saaroa",
+    "xsy": "Saisiyat",
+    "szy": "Sakizaya",
+    "trv": "Seediq",
+    "ssf": "Thao",
+    "tsu": "Tsou",
+    "tao": "Yami",
+}
+
+_HYPHEN_IS_LETTER_CACHE: dict = {}
+
+
+def _resolve_ortho_path(ortho_path: str | None) -> Path:
+    """Return the canonical orthography directory.
+
+    If ortho_path is None, default to <repo>/Orthographies/Ortho113/
+    relative to clean_xml.py's location.
+    """
+    if ortho_path is not None:
+        return Path(ortho_path)
+    return Path(__file__).resolve().parents[2] / "Orthographies" / "Ortho113"
+
+
+def _hyphen_is_letter(lang_code: str, ortho_path: str | None = None) -> bool:
+    """Return True if '-' appears as a letter row in the canonical orthography.
+
+    Looks up <ortho_path>/<Language>.tsv (where Language is the human-readable
+    name resolved from the ISO 639-3 code via _ISO_TO_LANG_NAME). Cached after
+    first lookup per (lang_code, ortho_path) pair.
+
+    Empirically verified 2026-05-29: only Bunun (bnn) and Thao (ssf) return True.
+    """
+    cache_key = (lang_code, ortho_path)
+    if cache_key in _HYPHEN_IS_LETTER_CACHE:
+        return _HYPHEN_IS_LETTER_CACHE[cache_key]
+
+    lang_name = _ISO_TO_LANG_NAME.get(lang_code)
+    if lang_name is None:
+        _HYPHEN_IS_LETTER_CACHE[cache_key] = False
+        return False
+
+    tsv_path = _resolve_ortho_path(ortho_path) / f"{lang_name}.tsv"
+    if not tsv_path.exists():
+        _HYPHEN_IS_LETTER_CACHE[cache_key] = False
+        return False
+
+    found = False
+    try:
+        with open(tsv_path, encoding="utf-8") as f:
+            for line in f:
+                # Each row's first column is a letter. We treat any row whose
+                # first column is exactly '-' as evidence that hyphen is a
+                # letter in this orthography.
+                cols = line.split("\t")
+                if cols and cols[0].strip() == "-":
+                    found = True
+                    break
+    except OSError:
+        found = False
+
+    _HYPHEN_IS_LETTER_CACHE[cache_key] = found
+    return found
+
+
+def _process_standard_hyphens(
+    text: str,
+    xml_file: str,
+    s_id: "str | None",
+    lang_code: "str | None",
+    warnings: "CleanerWarnings | None",
+    hard_remove_segmentation: bool,
+    ortho_path: "str | None",
+) -> str:
+    """Per C012: handle hyphens in S-level standard FORM by orthography.
+
+    If '-' is NOT a letter in the canonical orthography (the common case),
+    strip hyphens AND clitic '=' markers silently. If '-' IS a letter
+    (Bunun, Thao), preserve hyphens and emit a c012 warning per occurrence
+    (unless --hard-remove-segmentation is set, in which case strip anyway
+    and DO NOT warn).
+
+    The '=' clitic marker is always stripped (it's never a letter).
+
+    The null-morpheme marker 'Ø' (U+00D8) is likewise stripped unconditionally
+    — together with its bridging segmentation hyphen ('Ø-' / '-Ø') — because it
+    is an annotation, never an orthographic letter in any Formosan language.
+    Removing it as a unit avoids leaving a dangling hyphen even where '-' is a
+    letter (Bunun, Thao).
+    """
+    text = re.sub(r"Ø-|-Ø|Ø", "", text)
+    if lang_code and _hyphen_is_letter(lang_code, ortho_path):
+        if hard_remove_segmentation:
+            return text.replace("-", "").replace("=", "")
+        # Preserve hyphens, warn per occurrence
+        if warnings is not None:
+            for i, ch in enumerate(text):
+                if ch == "-":
+                    warnings.add("c012", xml_file, s_id, ch, i)
+        return text.replace("=", "")  # clitic stripped even when preserving '-'
+    # Hyphen is not a letter → strip both
+    return text.replace("-", "").replace("=", "")
+
+
+def _apply_standard_hyphens(element, lang_code, ortho_path, hard_remove,
+                            warnings, file_path):
+    """Apply C012 to an S element's standard FORM. No-op for W/M (they keep
+    segmentation) and for elements without a standard FORM.
+
+    After C012, emits c022 for any '*' character found in the resulting
+    standard FORM text.
+    """
+    if element.tag != "S":
+        return
+    form = element.find("FORM[@kindOf='standard']")
+    if form is None or not form.text:
+        return
+    new_text = _process_standard_hyphens(
+        form.text, file_path, element.get("id"), lang_code,
+        warnings, hard_remove, ortho_path,
+    )
+    if new_text != form.text:
+        form.text = new_text
+    if warnings is not None and form.text and "*" in form.text:
+        for i, ch in enumerate(form.text):
+            if ch == "*":
+                warnings.add("c022", file_path, element.get("id"), ch, i)
 
 
 def prettify(elem):
@@ -169,6 +307,8 @@ def main(args):
             except ValueError as e:
                 print(f"Warning: {e}; capital-letter variants will NOT be derived.")
 
+    warnings = CleanerWarnings(Path(args.corpora_path) / "standardize_warnings.csv")
+
     to_explore = get_exploration_targets(args.corpora_path, args.corpus)
 
     for corpus in to_explore:
@@ -188,11 +328,19 @@ def main(args):
                     # Parse the XML file
                     tree = ET.parse(file)
                     root = tree.getroot()
-                    
+                    lang_code = (
+                        root.get("{http://www.w3.org/XML/1998/namespace}lang")
+                        or root.get("xml:lang")
+                        or root.get("lang")
+                    )
+
                     if args.copy:
                         # In copy mode, just copy original to standard
                         for element in root.findall('.//FORM/..'):
                             create_standard(element, file_path=file)
+                            _apply_standard_hyphens(
+                                element, lang_code, args.ortho_path,
+                                args.hard_remove_segmentation, warnings, file)
                     elif args.remove_accents:
                         # Copy original to standard, then delete accents only.
                         # apply_standard with an empty mapping strips accents and
@@ -200,6 +348,9 @@ def main(args):
                         for element in root.findall('.//FORM/..'):
                             create_standard(element, file_path=file)
                             apply_standard(element, [])
+                            _apply_standard_hyphens(
+                                element, lang_code, args.ortho_path,
+                                args.hard_remove_segmentation, warnings, file)
                     else:
                         # Normal standardization mode
                         assert available_columns is not None  # loaded in non-copy branch above
@@ -278,6 +429,9 @@ def main(args):
                         for element in root.findall('.//FORM/..'):
                             create_standard(element, file_path=file)
                             apply_standard(element, standard)
+                            _apply_standard_hyphens(
+                                element, lang_code, args.ortho_path,
+                                args.hard_remove_segmentation, warnings, file)
                         
                     try:
                         xml_string = prettify(root)
@@ -294,7 +448,9 @@ def main(args):
                     print(f"Error parsing file: {file}")
                 except Exception as e:
                     print(f"Unexpected error with file {file}: {e}")
-                    
+
+    warnings.write_csv()
+
 if __name__ == "__main__":
     langs = sorted(set(ISO_TO_LANGUAGE.values()) | {'Truku'})
     
@@ -307,6 +463,11 @@ if __name__ == "__main__":
     parser.add_argument('--corpora_path', help='path of the corpora')
     parser.add_argument('--corpus', help='if standardization is desired to be applied to a specific corpus -- optional')
     parser.add_argument('--language', help='if standardization is desired to be applied to a specific language -- optional')
+    parser.add_argument("--hard-remove-segmentation", dest="hard_remove_segmentation",
+                        action="store_true", default=False,
+                        help="strip '-' from standard even where it is a letter (Bunun/Thao)")
+    parser.add_argument("--ortho-path", dest="ortho_path", default=None,
+                        help="orthography dir for the hyphen-is-letter check (default Ortho113)")
     args = parser.parse_args()
 
     # Validate required arguments
