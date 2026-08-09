@@ -23,7 +23,10 @@ with the reviewed `Puyuma_MinEd_113`/`Puyuma_Folk_113`. Latest run: 27 confirmed
 `ng→ng` `ŋ→ng` · `T→tr` `ʈ→tr` · `D→dr` `ɖ→dr` (Nanwang `dr`=/ɖ/) ·
 `'→'` `ʔ→'` · `e→e` `ə→e` · `j→y` (/j/) ·
 `L→l` `ɭ→l` (Nanwang `l`=/ɭ/) and **`l→ll`** (Nanwang `ll`=/l/) — targeting
-Nanwang preserves the /ɭ/ vs /l/ distinction that is lost in the default column ·
+Nanwang preserves the /ɭ/ vs /l/ distinction that is lost in the default column.
+Confirmed by the Ortho113 source doc: [ɭ] is written `l` in all varieties;
+Nanwang adds the new letter `ll` (replacing `lr`) for [l], while Zhiben/Xiqun/
+Jianhe keep `lr` for [ɮ]. ·
 `a b g i k m n p r s t u w` → themselves.
 
 ## 2. Assumed equivalences (distinct IPA, same phoneme) — APPROVED
@@ -70,7 +73,7 @@ the `default` column); resolving the flag means editing
 
 ## 5. Unresolved — deliberately NOT in the table
 
-`f` /f/, `q` /q/, `x` /x/ — not Ortho113 Puyuma phonemes; likely loan/foreign
-letters. `ʤ` /ʤ/ — no Ortho113 voiced affricate and no confident target. Left
-out so the checker surfaces them as coverage gaps rather than guessing. Provide
-targets if any of these should map.
+`q` and `x` were removed from `Orthographies/Cauquelin/Puyuma.tsv` entirely
+(not Puyuma graphemes). `f` /f/ and `ʤ` /ʤ/ remain in the Cauquelin profile but
+have no Ortho113 target, so the checker surfaces them as coverage gaps. Provide
+targets if either should map.
