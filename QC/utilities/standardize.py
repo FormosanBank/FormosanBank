@@ -16,6 +16,11 @@ _REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 from QC.utilities._accents import strip_accents  # noqa: E402
+from QC.utilities._case_variants import (  # noqa: E402
+    derive_case_variants,
+    load_profile_graphemes,
+    resolve_source_profile,
+)
 from QC.validation._dialect_inventory import (  # noqa: E402
     ISO_TO_LANGUAGE,
     is_multi_dialect_language,
@@ -141,7 +146,26 @@ def main(args):
         with open(args.tsv_path, 'r', encoding='utf-8') as f:
             reader = csv.DictReader(f, delimiter='\t')
             available_columns = reader.fieldnames
-    
+
+        # Resolve the source-orthography profile from the table's filename
+        # so capital-letter variants of lowercase rules can be derived —
+        # except for capitals the profile declares as distinct graphemes.
+        profile_graphemes = None
+        profile_path = resolve_source_profile(args.tsv_path)
+        if profile_path is None:
+            print(
+                f"Warning: {os.path.basename(args.tsv_path)} does not follow the "
+                "Orthographies/ConversionTables/<Language>_<Scheme>_113.tsv "
+                "convention; capital-letter variants will NOT be derived."
+            )
+        elif not profile_path.exists():
+            print(
+                f"Warning: source orthography profile not found at {profile_path}; "
+                "capital-letter variants will NOT be derived."
+            )
+        else:
+            profile_graphemes = load_profile_graphemes(profile_path)
+
     to_explore = get_exploration_targets(args.corpora_path, args.corpus)
 
     for corpus in to_explore:
@@ -243,6 +267,9 @@ def main(args):
                                     # Empty standard value means "remove the original character"
                                     if original_value:  # Only process if there's something to replace
                                         standard.append((original_value, standard_value))
+
+                        if profile_graphemes is not None:
+                            standard = derive_case_variants(standard, profile_graphemes)
 
                         # Iterate over all <S> elements
                         for element in root.findall('.//FORM/..'):
