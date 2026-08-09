@@ -1,9 +1,8 @@
 # Puyuma_Cauquelin_113.tsv — construction notes
 
 Maps the **Cauquelin** Puyuma orthography → **Ortho113** Puyuma. Cauquelin
-transcribes a **single dialect, Nanwang**, so the table targets Ortho113's
-**Nanwang** column (header `original`/`Nanwang`); validate with
-`--dialect Nanwang`:
+transcribes a single dialect, **Nanwang**, so the table targets Ortho113's
+Nanwang column (header `original`/`Nanwang`); validate with `--dialect Nanwang`:
 
 ```
 python QC/validation/validate_conversion_table.py \
@@ -12,67 +11,63 @@ python QC/validation/validate_conversion_table.py \
   Orthographies/ConversionTables/Puyuma_Cauquelin_113.tsv --dialect Nanwang
 ```
 
-Built by aligning `Orthographies/Cauquelin/Puyuma.tsv` (single `IPA` column)
-against the Nanwang column of `Orthographies/Ortho113/Puyuma.tsv`, cross-checked
-with the reviewed `Puyuma_MinEd_113`/`Puyuma_Folk_113`. Latest run: 27 confirmed,
-5 mismatches (all the approved assumed equivalences below), 3 untokenizable
-(profile gap, §4), 4 coverage gaps (§5).
+By convention the table lists **only actual spelling changes**; a grapheme whose
+Ortho113 spelling is identical is omitted and kept as-is during standardization.
+Latest run: 11 confirmed, 4 mismatches (approved assumed equivalences, §2),
+7 coverage gaps (§3–§4), 0 untokenizable.
 
-## 1. Exact IPA matches (no assumption)
+## 1. Listed spelling changes, IPA-confirmed
 
-`ng→ng` `ŋ→ng` · `T→tr` `ʈ→tr` · `D→dr` `ɖ→dr` (Nanwang `dr`=/ɖ/) ·
-`'→'` `ʔ→'` · `e→e` `ə→e` · `j→y` (/j/) ·
-`L→l` `ɭ→l` (Nanwang `l`=/ɭ/) and **`l→ll`** (Nanwang `ll`=/l/) — targeting
-Nanwang preserves the /ɭ/ vs /l/ distinction that is lost in the default column.
-Confirmed by the Ortho113 source doc: [ɭ] is written `l` in all varieties;
-Nanwang adds the new letter `ll` (replacing `lr`) for [l], while Zhiben/Xiqun/
-Jianhe keep `lr` for [ɮ]. ·
-`a b g i k m n p r s t u w` → themselves.
+`ŋ→ng` · `T→tr` `ʈ→tr` · `D→dr` `ɖ→dr` (Nanwang `dr`=/ɖ/) · `ʔ→'` · `ə→e` ·
+`j→y` · and the laterals `L→l` `ɭ→l` (Nanwang `l`=/ɭ/) and **`l→ll`** (Nanwang
+`ll`=/l/). The lateral handling is confirmed by the Ortho113 source doc: [ɭ] is
+written `l` in all varieties; Nanwang adds the new letter `ll` (replacing `lr`)
+for [l], while Zhiben/Xiqun/Jianhe keep `lr` for [ɮ].
 
-## 2. Assumed equivalences (distinct IPA, same phoneme) — APPROVED
+Graphemes unchanged in both spelling and IPA (`a b e g i k m n ng p r s t u w '`
+— including the Latin/IPA pairs like `ng`, `'`, `e`) are **not listed**, per
+convention.
 
-Reviewer-approved 2026-08-09; follow the reviewed `Puyuma_MinEd_113` precedent.
-The checker reports these as mismatches because the annotated IPA differs; the
-intended Nanwang phoneme is the same.
+## 2. Listed spelling changes that are assumed equivalences (distinct IPA)
 
-- **`d → d`** — Cauquelin /d/ vs Ortho113 /ð/. One voiced dental obstruent.
-- **`c → c`** — Cauquelin /c/ (palatal stop) vs Ortho113 /ʦ/ (affricate).
-  (Also untokenizable in Nanwang — see §4.)
-- **`sh → s`** — Cauquelin /ʃ/ vs Ortho113 /s/. Ortho113 has no /ʃ/; `sh` is
-  rare in the source and mostly rule-derived (see §3), so collapsing to `s` is
-  the only available target.
-- **`o → u`** — Cauquelin /o/ vs Ortho113 /u/. Ortho113 Puyuma has no /o/;
-  treated as an allophone of /u/.
-- **`ɛ → e`** — Cauquelin /ɛ/ vs Ortho113 /ə/. Ortho113 Puyuma has no /ɛ/;
-  treated as an allophone of /ə/.
-- **`y → y`** — Cauquelin profile annotated `y`=/y/, but Puyuma has no front
-  rounded vowel; treated as the glide /j/ (Ortho113 `y`=/j/).
+Reviewer-approved 2026-08-09. The checker flags these as mismatches because the
+annotated IPA differs; the intended Nanwang phoneme is the same.
 
-These produce four benign merges the checker reports under "information loss":
-`s ← s, ʃ` (ʃ rare/rule-derived), `j ← j, y` (two spellings of the glide),
-`u ← o, u`, `ə ← ə, ɛ` — each is the intended consequence of an approved
-equivalence, not accidental loss.
+- **`sh→s`, `ʃ→s`** — Cauquelin /ʃ/ vs Ortho113 /s/. Ortho113 has no /ʃ/; it is
+  rare and mostly rule-derived (§5), so it collapses to `s`.
+- **`o→u`** — Cauquelin /o/ vs Ortho113 /u/. Ortho113 Puyuma has no /o/ (treated
+  as an allophone of /u/).
+- **`ɛ→e`** — Cauquelin /ɛ/ vs Ortho113 /ə/. Ortho113 has no /ɛ/ (treated as an
+  allophone of /ə/).
 
-## 3. /ʃ/ in the Cauquelin source
+## 3. Same-spelling assumed equivalences — NOT listed (convention)
+
+Same letter in both orthographies, so omitted from the table even though the two
+profiles annotate different IPA. They appear as "coverage gaps" in the checker
+(spelling preserved, IPA unverified):
+
+- **`d`** — Cauquelin /d/ vs Ortho113 /ð/; one voiced dental obstruent, spelled
+  `d` in both (matches the reviewed `Puyuma_MinEd_113` treatment).
+- **`c`** — Cauquelin /c/ (palatal stop) vs Ortho113 /ʦ/, spelled `c` in both.
+  (Also loanword-only, §4.)
+- **`y`** — Cauquelin profile annotates `y`=/y/, but it is the glide /j/
+  (Ortho113 `y`=/j/), spelled `y` in both.
+
+## 4. Loanword-only graphemes
+
+`c`, `h`, `v`, `f`, `ʤ` occur only in loanwords, not the native Nanwang
+inventory. They are not listed in the table (spelling preserved for `c`/`h`/`v`;
+no target asserted for `f`/`ʤ`) and appear as coverage gaps — expected, not
+defects. No edit to `Orthographies/Ortho113/Puyuma.tsv` is warranted.
+
+## 5. /ʃ/ in the source
 
 `Orthographies/Cauquelin/Puyuma.tsv` lists /ʃ/ under **both** `sh`→/ʃ/ and
-`ʃ`→/ʃ/ on purpose: the author is inconsistent and uses either spelling in the
-text. The conversion table therefore maps both `sh→s` and `ʃ→s`. /ʃ/ is also
-rare overall and mostly produced by the existing rule in `Puyuma.rules.tsv`:
-`(?<=[ui])s|s(?=[ui]) → ʃ` (s palatalized next to i/u).
+`ʃ`→/ʃ/ on purpose: the author writes it either way. /ʃ/ is also mostly produced
+by the rule in `Puyuma.rules.tsv`: `(?<=[ui])s|s(?=[ui]) → ʃ` (s palatalized next
+to i/u).
 
-## 4. Loanword-only graphemes (expected flags, not defects)
+## 6. Removed from the Cauquelin profile
 
-`c`, `h`, `v`, `f`, and `ʤ` are all assumed to occur **only in loanwords** in
-Cauquelin Puyuma, not in the native Nanwang inventory. Consequences in the
-checker output, all expected:
-
-- `c→c`, `h→h`, `v→v` are reported **untokenizable** against the Nanwang column
-  (where `c`/`h`/`v` are `NA`). The mappings are kept anyway — they are the
-  canonical Ortho113 spellings (per the `default` column) a loanword would use.
-  No edit to `Orthographies/Ortho113/Puyuma.tsv` is warranted.
-- `f` /f/ and `ʤ` /ʤ/ stay in the Cauquelin profile intentionally **unmapped**,
-  so the checker surfaces them as coverage gaps. No Ortho113 target is asserted.
-
-`q` and `x` were removed from `Orthographies/Cauquelin/Puyuma.tsv` entirely (not
-Puyuma graphemes at all, unlike the loanword set above).
+`q` and `x` were removed from `Orthographies/Cauquelin/Puyuma.tsv` (not Puyuma
+graphemes).
