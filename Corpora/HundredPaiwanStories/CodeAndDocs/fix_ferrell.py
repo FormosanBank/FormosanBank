@@ -15,10 +15,14 @@ mappings are right for the letters and wrong for the punctuation:
 
 This script post-corrects both, deciding letter-vs-punctuation from the
 ORIGINAL tier. Two positions are decided outright: a '?' immediately followed by a
-letter can only be the glottal letter (question marks never precede
-letters — 'mare?a', '?a?a'), and the source's own '(?)' is an
-uncertainty marker, i.e. punctuation. Neither counts as a question-mark
-candidate below.
+letter can only be the glottal letter — this covers both word-internal
+('mare?a') and word-initial ('?i', '?udain', '?a?a') glottals, since a
+question mark is never followed by a letter — and the source's own
+'(?)' is an uncertainty marker, i.e. punctuation. Neither counts as a
+question-mark candidate below. (A narrower word-internal-only variant
+was tried and rejected: file 097 writes word-initial glottals, and the
+particle '?i' in 097's 'lja?ua ?i tja kudain...' immediately flipped to
+a question mark via a coincidental count-match.)
 
 The strongest signal for the rest is the English free translation: a '?'
 in the TRANSL is unambiguously a question mark, so when a sentence's
@@ -136,7 +140,7 @@ def _is_letter(ch: str) -> bool:
 
 def countable_questions(text: str) -> int:
     """Number of '?' that are question-mark CANDIDATES: not letter-followed
-    (those are glottals) and not the '(?)' uncertainty marker."""
+    (word-internal/word-initial glottals) and not the '(?)' marker."""
     n = 0
     for i, ch in enumerate(text):
         if ch != "?":
@@ -171,7 +175,7 @@ def classify(text: str, tier: str, *, is_last_w: bool = False,
         elif prev == "(" and nxt == ")":
             out.append(QPUNCT)  # the source's '(?)' uncertainty marker
         elif _is_letter(nxt):
-            out.append(GLOTTAL)  # question marks never precede letters
+            out.append(GLOTTAL)  # a question mark is never followed by a letter
         elif all_question:
             out.append(QPUNCT)
         elif nxt in QUOTE_CHARS | {'"'}:
