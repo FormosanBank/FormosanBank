@@ -73,7 +73,16 @@ cp     <source>/download_audio_data.sh  Corpora/<Name>/
 
 ### 4. Validate after the port
 
-Confirm the published XML still conforms, and run the privacy-leak check.
+Run the mechanical port-readiness gate — on the source dev repo (ideally you already did, before step 1) and on the ported copy:
+
+```bash
+python QC/validation/validate_port_readiness.py --corpus_path ../Formosan-<Name>
+python QC/validation/validate_port_readiness.py --corpus_path Corpora/<Name>
+```
+
+It exits 1 on blockers (git-tracked `Private/` content, unknown `xml:lang`, non-canonical dialect) and warns on judgment calls (divergent commit pins in README/sidecars, stale audio statistics, unvalidated conversion tables). See [validate\_port\_readiness.py](qc-pipeline/validate-port-readiness.md) for the full check list.
+
+Then confirm the published XML still conforms, and run the privacy-leak check.
 
 ```bash
 python QC/validation/validate_xml.py by_path --path Corpora/<Name>/XML --no-exit-on-hard
