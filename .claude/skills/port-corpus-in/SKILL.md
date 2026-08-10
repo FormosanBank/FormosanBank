@@ -189,6 +189,20 @@ print("OK: no private content leaked.")
 EOF
 ```
 
+### Phase 4b: Refresh attestation dictionaries
+
+The quote/glottal correction in `clean_xml` reads a precomputed per-language
+attestation dictionary. Now that this corpus adds new data, refresh it for
+each language the corpus contains:
+
+```bash
+<python> <formosanbank_path>/QC/utilities/build_attestation_dict.py --language <Name>
+```
+
+Run once per distinct language in the ported corpus. Commit the updated
+`QC/validation/reference/<Name>/attestation.txt` alongside the port.
+(Languages whose orthography does not use `'` can be skipped.)
+
 ### Phase 5: Add to GitBook
 
 Publishing a corpus into `Corpora/` is only half-done until it appears in the
