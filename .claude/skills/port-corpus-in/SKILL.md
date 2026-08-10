@@ -103,6 +103,28 @@ on first failure; HARD findings appear on stderr regardless.
 
 Quick spot-check counts (file count, total size) vs source. If discrepancies, report — do not auto-fix.
 
+**Port-readiness gate.** Run the mechanical pre-port checks on the source dev
+repo AND on the ported copy (this script is deliberately AI-free so
+non-Claude porters run the same gate — point them at it too):
+
+```bash
+<python> <formosanbank_path>/QC/validation/validate_port_readiness.py \
+  --corpus_path "<source_path>" --repo-root "<formosanbank_path>"
+<python> <formosanbank_path>/QC/validation/validate_port_readiness.py \
+  --corpus_path "<formosanbank_path>/Corpora/<corpus_name>" \
+  --repo-root "<formosanbank_path>"
+```
+
+Exit 1 (HARD: tracked Private/ content, unknown xml:lang, non-canonical
+dialect) blocks the port. WARNs need operator judgment: P004 = README /
+`qc_status.json` / `reproducibility.md` pin different or unreachable
+FormosanBank commits (ask which is authoritative and fix the others);
+P005 = `statistics/audio_durations.csv` stale for this corpus (run
+`refresh-audio-stats` after the port); P006 = the corpus standardizes via a
+conversion table — run `validate_conversion_table.py` on it (source profile,
+target profile, table as the three positional args) before trusting the
+standard tier.
+
 **Privacy leak check.** If `<source_path>/Private/` exists, verify nothing from it landed in the published corpus. Two layers:
 
 1. **Content-hash check (hard error).** For every file under `<source_path>/Private/`, compute a SHA-256 hash. For every file under `<formosanbank_path>/Corpora/<corpus_name>/`, compute its hash. Any match means a private file's exact content has leaked to the public corpus, regardless of filename — that's a real leak. Abort the port: do not declare Phase 5 success; surface the matching pair(s); recommend the user delete the offending file(s) (or revert the entire port with `rm -r <formosanbank_path>/Corpora/<corpus_name>/`) and investigate how it happened.

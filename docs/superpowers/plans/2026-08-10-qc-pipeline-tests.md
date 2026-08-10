@@ -22,6 +22,8 @@
 
 The maintainer asked whether `clean_xml`/`standardize` can or should be idempotent. Investigation results, which reframe the original "idempotence tests" proposal:
 
+**Maintainer ruling 2026-08-10:** per the findings below, rerun-stability tests are scoped to **clean_xml only**; standardize and add_phonology need no rerun tests (they are regenerators — rerun-stable by construction).
+
 1. **`standardize.py` and `add_phonology.py` are not idempotence problems at all — they are regenerators.** In every mode, `create_standard` *replaces* the standard FORM with a fresh copy of the original before applying conversions ([standardize.py:304-330](../../QC/utilities/standardize.py)), and `add_phonology` rewrites the existing PHON of each kindOf rather than appending. Because conversion always starts from the original tier, even a non-idempotent table rule like Cauquelin Puyuma `l→ll` cannot double-apply (verified: two TSV runs on a synthetic corpus both yield `llima`, never `llllima`; two `--copy` runs and two `add_phonology` runs were byte-identical). The property to test is **regeneration determinism** (run 2 == run 1), and its two enabling invariants: derived tiers are *replaced not appended*, and conversion input is the *original* tier. These hold today; the tests pin them.
 2. **`clean_xml.py` is a true idempotence question, and currently passes empirically but not by construction.** Its input *is* its own prior output in steady state (published corpora get re-cleaned). A double run over all 93 dirty test fixtures left every XML byte-identical on the second pass. Nothing guarantees this for future rules — each new cleaning rule must avoid producing output that another rule (or itself) transforms again. The test converts "not guaranteed" into "continuously verified", which is exactly what we want; if a future rule genuinely cannot be idempotent, the test failure forces that discussion rather than letting silent churn ship.
 3. **One real non-idempotence bug found:** `CleanerWarnings.write_csv` opens its CSV in append mode ([clean_xml.py:151](../../QC/cleaning/clean_xml.py)), so every rerun appends duplicate rows for persistent warn-only findings (verified: run 2 doubled `cleaner_warnings.csv` from 84 to 166 rows while changing no XML). Task 1 fixes this (truncate per run, per POL-033: warnings CSVs are per-run reports) — a prerequisite for whole-tree rerun-stability assertions.
@@ -148,7 +150,7 @@ git commit -m "fix: warnings sidecars are per-run reports, not append logs (POL-
 
 ---
 
-### Task 2: Shared runner helper + rerun-stability tests
+### Task 2: Shared runner helper + clean_xml idempotence test
 
 **Files:**
 - Modify: `tests/_helpers.py` (add `run_qc_script` and `snapshot_tree`)
@@ -232,70 +234,30 @@ l	ll
 á	a
 ```
 
-- [ ] **Step 3: Write the failing tests**
+- [ ] **Step 3: Write the test**
 
-`tests/integration/test_rerun_stability.py`:
+`tests/integration/test_rerun_stability.py` (maintainer ruling 2026-08-10:
+clean_xml only — standardize/add_phonology are regenerators and need no
+rerun test):
 
 ```python
-"""Rerun-stability tests for the QC pipeline stages.
+"""clean_xml idempotence guard.
 
-Two distinct properties, per the 2026-08-10 investigation:
+clean_xml's steady-state input is its own prior output (published
+corpora are re-cleaned), so run2(run1(x)) == run1(x) is a hard
+requirement. It holds empirically today (verified 2026-08-10 over all
+93 dirty fixtures) but not by construction — every future cleaning rule
+whose output falls inside another rule's input domain breaks it
+silently. This test is the guard that rule runs into.
 
-* clean_xml: TRUE IDEMPOTENCE. Its steady-state input is its own prior
-  output (published corpora are re-cleaned), so run2(run1(x)) == run1(x)
-  is a hard requirement. It holds empirically today but not by
-  construction — this test is the guard every future cleaning rule runs
-  into.
-
-* standardize / add_phonology: REGENERATION DETERMINISM. They rebuild
-  derived tiers from the original tier on every run (replace, not
-  append), so run 2 must be byte-identical even when the conversion
-  table itself is non-idempotent (l→ll). If this test ever fails, the
-  likely regression is (a) a derived tier appended instead of replaced,
-  or (b) conversion reading the standard tier instead of the original.
-
-Assertions always compare run2 against run1 — never run1 against the
+The assertion compares run 2 against run 1 — never run 1 against the
 input, because a first run may legitimately reformat serialization.
 """
 import shutil
-from pathlib import Path
-
-import pytest
 
 from tests._helpers import REPO_ROOT, run_qc_script, snapshot_tree
 
 FIXTURES = REPO_ROOT / "tests" / "fixtures"
-
-
-def _corpus_from(tmp_path: Path, *fixture_names: str) -> Path:
-    corpus = tmp_path / "corpus" / "XML"
-    corpus.mkdir(parents=True)
-    for name in fixture_names:
-        shutil.copy(FIXTURES / name, corpus / name)
-    return tmp_path / "corpus"
-
-
-def _run_twice(script: str, args_for) -> tuple[dict, dict]:
-    """Run script twice via args_for(run_index); snapshot after each."""
-    proc1 = args_for.__self__ if False else None  # keep flake quiet
-    first = run_qc_script(script, args_for(1))
-    assert first.returncode == 0, first.stderr
-    snap1 = snapshot_tree(args_for.corpus)
-    second = run_qc_script(script, args_for(2))
-    assert second.returncode == 0, second.stderr
-    snap2 = snapshot_tree(args_for.corpus)
-    return snap1, snap2
-
-
-class _Args:
-    """Callable arg-builder that remembers the corpus path for snapshots."""
-
-    def __init__(self, corpus: Path, argv: list[str]):
-        self.corpus = corpus
-        self._argv = argv
-
-    def __call__(self, run_index: int) -> list[str]:
-        return self._argv
 
 
 def test_clean_xml_idempotent_over_all_fixtures(tmp_path):
@@ -304,80 +266,26 @@ def test_clean_xml_idempotent_over_all_fixtures(tmp_path):
     corpus.mkdir(parents=True)
     for fixture in FIXTURES.glob("*.xml"):
         shutil.copy(fixture, corpus / fixture.name)
-    args = _Args(tmp_path / "corpus",
-                 ["--corpora_path", str(tmp_path / "corpus")])
-    snap1, snap2 = _run_twice("QC/cleaning/clean_xml.py", args)
-    assert snap1 == snap2
+    argv = ["--corpora_path", str(tmp_path / "corpus")]
 
-
-def test_standardize_tsv_regeneration_protects_doubling_rule(tmp_path):
-    corpus_root = _corpus_from(tmp_path, "rerun_puyuma_l_to_ll.xml")
-    table = FIXTURES / "rerun_l_to_ll_table.tsv"
-    args = _Args(corpus_root, [
-        "--tsv_path", str(table), "--corpora_path", str(corpus_root),
-    ])
-    snap1, snap2 = _run_twice("QC/utilities/standardize.py", args)
-    assert snap1 == snap2
-    text = (corpus_root / "XML" / "rerun_puyuma_l_to_ll.xml").read_text(
-        encoding="utf-8")
-    assert "llima" in text
-    assert "llllima" not in text, (
-        "l→ll applied to its own output: conversion must start from the "
-        "original tier every run (create_standard replaces, then converts)")
-
-
-def test_standardize_copy_mode_stable(tmp_path):
-    corpus_root = _corpus_from(tmp_path, "rerun_puyuma_l_to_ll.xml")
-    args = _Args(corpus_root, ["--copy", "--corpora_path", str(corpus_root)])
-    snap1, snap2 = _run_twice("QC/utilities/standardize.py", args)
-    assert snap1 == snap2
-
-
-def test_standardize_remove_accents_mode_stable(tmp_path):
-    corpus_root = _corpus_from(tmp_path, "rerun_puyuma_l_to_ll.xml")
-    args = _Args(corpus_root,
-                 ["--remove_accents", "--corpora_path", str(corpus_root)])
-    snap1, snap2 = _run_twice("QC/utilities/standardize.py", args)
-    assert snap1 == snap2
-
-
-def test_add_phonology_regeneration_stable(tmp_path):
-    corpus_root = _corpus_from(tmp_path, "rerun_puyuma_l_to_ll.xml")
-    std = _Args(corpus_root, ["--copy", "--corpora_path", str(corpus_root)])
-    assert run_qc_script("QC/utilities/standardize.py", std(1)).returncode == 0
-    args = _Args(corpus_root, ["--corpora_path", str(corpus_root)])
-    snap1, snap2 = _run_twice("QC/utilities/add_phonology.py", args)
-    assert snap1 == snap2
-    xml_text = (corpus_root / "XML" / "rerun_puyuma_l_to_ll.xml").read_text(
-        encoding="utf-8")
-    assert xml_text.count('<PHON kindOf="standard">') == snap1[
-        "XML/rerun_puyuma_l_to_ll.xml"].decode("utf-8").count(
-        '<PHON kindOf="standard">'), "PHON appended instead of replaced"
-```
-
-Remove the dead `proc1 = ...` line in `_run_twice` when transcribing — it is
-shown struck here only to flag that `_Args` (not a closure) carries the
-corpus path; the final helper body is:
-
-```python
-def _run_twice(script: str, args_for: "_Args") -> tuple[dict, dict]:
-    first = run_qc_script(script, args_for(1))
+    first = run_qc_script("QC/cleaning/clean_xml.py", argv)
     assert first.returncode == 0, first.stderr
-    snap1 = snapshot_tree(args_for.corpus)
-    second = run_qc_script(script, args_for(2))
+    snap1 = snapshot_tree(tmp_path / "corpus")
+
+    second = run_qc_script("QC/cleaning/clean_xml.py", argv)
     assert second.returncode == 0, second.stderr
-    snap2 = snapshot_tree(args_for.corpus)
-    return snap1, snap2
+    snap2 = snapshot_tree(tmp_path / "corpus")
+
+    assert snap1 == snap2
 ```
 
-- [ ] **Step 4: Run tests — expect pass (these pin current behavior)**
+- [ ] **Step 4: Run the test — expect pass (pins current behavior)**
 
 Run: `pytest tests/integration/test_rerun_stability.py -v`
-Expected: 5 passed. These are characterization tests: they should pass
-immediately (the 2026-08-10 investigation verified each property by hand).
-If `test_clean_xml_idempotent_over_all_fixtures` fails on the warnings CSV,
-Task 1 has not landed — it is a prerequisite. Any *XML* mismatch is a real
-finding: diff the two snapshots and report before proceeding.
+Expected: 1 passed. This is a characterization test (the 2026-08-10
+investigation verified the property by hand). If it fails on the warnings
+CSV, Task 1 has not landed — it is a prerequisite. Any *XML* mismatch is a
+real finding: diff the two snapshots and report before proceeding.
 
 - [ ] **Step 5: Commit**
 
@@ -510,27 +418,12 @@ def test_full_pipeline_invariants(tmp_path):
         assert banned not in s_phon                 # marker-free, null silent
 
 
-def test_full_pipeline_rerun_is_stable(tmp_path):
-    """Running the whole sequence twice changes nothing the second time."""
-    out = _pipeline(tmp_path)
-    first = out.read_bytes()
-    corpus_root = out.parents[1]
-    for script, args in [
-        ("QC/cleaning/clean_xml.py", ["--corpora_path", str(corpus_root)]),
-        ("QC/utilities/standardize.py",
-         ["--tsv_path", str(FIXTURES / "rerun_l_to_ll_table.tsv"),
-          "--corpora_path", str(corpus_root)]),
-        ("QC/utilities/add_phonology.py",
-         ["--corpora_path", str(corpus_root)]),
-    ]:
-        assert run_qc_script(script, args).returncode == 0
-    assert out.read_bytes() == first
 ```
 
 - [ ] **Step 3: Run the test**
 
 Run: `pytest tests/integration/test_pipeline_end_to_end.py -v`
-Expected: 2 passed. Assertion-by-assertion failures here are *findings*,
+Expected: 1 passed. Assertion-by-assertion failures here are *findings*,
 not test bugs — e.g. if `’` survives into a TRANSL, check whether the
 apostrophe rule is FORM-only by design before "fixing" the test; consult
 POL-010 and report mismatches between policy and behavior.
@@ -863,15 +756,18 @@ def _corpus_with_edit(tmp_path: Path) -> Path:
                 corpus / "XML" / "rerun_puyuma_l_to_ll.xml")
     # Upsert record: same S id, corrected original text ("talal" ->
     # "talral"), standard/PHON stripped per the manual-edits contract.
+    # Schema per QC/cleaning/manual_edits_common.py: FILE/@path is
+    # relative to the corpora_path (the XML root), and an <S> child with
+    # a matching id is an upsert (replace-by-id).
     (corpus / "CodeAndDocs" / "manual_edits.xml").write_text(
         """<?xml version="1.0" ?>
 <MANUAL_EDITS>
-    <EDIT kind="upsert" file="XML/rerun_puyuma_l_to_ll.xml">
+    <FILE path="rerun_puyuma_l_to_ll.xml">
         <S id="S2">
             <FORM kindOf="original">talral na l</FORM>
             <TRANSL xml:lang="eng">plain sentence</TRANSL>
         </S>
-    </EDIT>
+    </FILE>
 </MANUAL_EDITS>
 """, encoding="utf-8")
     return corpus
@@ -888,7 +784,11 @@ def _s2_form(corpus: Path, kind: str) -> str:
 def test_edit_survives_full_pipeline(tmp_path):
     corpus = _corpus_with_edit(tmp_path)
     for script, args in [
-        ("QC/cleaning/apply_manual_edits.py", ["--corpus_path", str(corpus)]),
+        # apply_manual_edits takes the XML root; it resolves the manual
+        # file as <root>/../CodeAndDocs/manual_edits.xml (see
+        # manual_edits_common.default_manual_file).
+        ("QC/cleaning/apply_manual_edits.py",
+         ["--corpora_path", str(corpus / "XML")]),
         ("QC/cleaning/clean_xml.py", ["--corpora_path", str(corpus)]),
         ("QC/utilities/standardize.py",
          ["--tsv_path", str(FIXTURES / "rerun_l_to_ll_table.tsv"),
@@ -904,19 +804,23 @@ def test_edit_survives_full_pipeline(tmp_path):
 def test_reapply_is_idempotent(tmp_path):
     corpus = _corpus_with_edit(tmp_path)
     script = "QC/cleaning/apply_manual_edits.py"
-    assert run_qc_script(script, ["--corpus_path", str(corpus)]).returncode == 0
+    argv = ["--corpora_path", str(corpus / "XML")]
+    assert run_qc_script(script, argv).returncode == 0
     before = (corpus / "XML" / "rerun_puyuma_l_to_ll.xml").read_bytes()
-    assert run_qc_script(script, ["--corpus_path", str(corpus)]).returncode == 0
+    assert run_qc_script(script, argv).returncode == 0
     after = (corpus / "XML" / "rerun_puyuma_l_to_ll.xml").read_bytes()
     assert before == after
 ```
 
-The `<MANUAL_EDITS>`/`<EDIT>` element names and the `--corpus_path` flag
-above are the plan's best reading of `manual_edits_common.py` — **verify
-both against `tests/cleaners/test_apply_manual_edits.py` in Step 1 and
-correct the test to the real record schema and CLI before running.** The
+Record schema and CLI verified against `QC/cleaning/manual_edits_common.py`
+2026-08-10: `<MANUAL_EDITS><FILE path="…relative to XML root…"><S id=…>`
+(an `<S>` matching an existing id is an upsert; `action="delete"` deletes;
+`after=` is a placement hint), and `apply_manual_edits.py --corpora_path`
+takes the **XML root**, resolving the manual file as its
+`../CodeAndDocs/manual_edits.xml` sibling. Cross-check invocation details
+against `tests/cleaners/test_apply_manual_edits.py` in Step 1 anyway; the
 two assertions (survival through the pipeline; reapply idempotence) are
-the point; the serialization details must match the shipped format.
+the point.
 
 - [ ] **Step 3: Run, fix schema mismatches, re-run**
 

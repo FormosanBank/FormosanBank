@@ -124,6 +124,24 @@ Print summary including:
   - Add ingestion scripts under `CodeAndDocs/`
   - When source XML is in place, run the `run-qc-pipeline` skill from this directory
   - When QC passes, run `port-corpus-in` from FormosanBank
+- Forward-looking notes to include in the summary:
+  - Check `FormosanBank/standards.csv` for this language: a blank scheme cell
+    means no standard orthography is designated yet, so standard-tier PHON
+    will be deliberately skipped during QC.
+  - Scrapers need not normalize typography themselves: `clean_xml` will
+    canonicalize dashes, typographic apostrophes/quotes, and null-morpheme
+    glyphs (`ø`/`Ø` → `∅`) at QC time (POLICIES.md POL-010/011/012). Scrapers
+    SHOULD get `*(X)`/`(*X)` right, though — obligatory vs forbidden material
+    is semantic, not typographic (POL-017).
+  - Hand edits made during QC must be reproducible: record them with
+    `FormosanBank/QC/utilities/capture_manual_edits.py` into
+    `CodeAndDocs/manual_edits.xml`; `apply_manual_edits.py` re-applies them
+    first on every pipeline run (POL-030). Never hand-edit standard FORMs or
+    PHON — they are regenerated (POL-002/003).
+  - If the corpus will standardize via a conversion table, name it
+    `Orthographies/ConversionTables/<Language>_<Scheme>_113.tsv` and document
+    it in the README's reproduction section; run
+    `validate_conversion_table.py` on it before first use.
 
 ## Decisions to surface (do NOT guess)
 

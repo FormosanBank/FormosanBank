@@ -48,13 +48,20 @@ exhaustive checklist**. Anything else a step does to the data is equally fair ga
   that alters spelling or drops a real letter/punctuation is the bug.
 - **Segmentation markers** (`-`, `=`, `<…>`) belong in the **W** tier (both tiers)
   and in the S-level **original** FORM where the source had them. They are stripped
-  from the S-level **standard** FORM only, and only for languages whose orthography
-  does NOT list `-` as a letter (Bunun/Thao keep it). This is the C012 rule in
-  `clean_xml.py`. The assistant stripping `-` from W FORMs or from S-original is a bug.
+  from the S-level **standard** FORM only, gated on the sentence being
+  morpheme-segmented (has `<M>`), keeping digit-flanked `-` (dates, verse ranges)
+  and only for languages whose orthography does NOT list `-` as a letter
+  (Bunun/Thao keep it). This is the C012 rule, which lives in **`standardize.py`**
+  (moved out of `clean_xml.py` 2026-08; `standardize.py` owns all standard-tier
+  cleaning — POL-002). The assistant stripping `-` from W FORMs or from S-original
+  is a bug.
 - **Ungrammatical sentences.** A source `*` at the start of a sentence means the
   whole sentence is ungrammatical and should be **excluded**, not ingested. A `*`
   mid-token / interacting with `/` may mark one alternative ungrammatical. (Lowking
-  thesis card.)
+  thesis card.) **Parenthesized stars are directional (POL-017):** `*(X)` = X
+  obligatory → keep X; `(*X)` = X forbidden → drop X. Treating them identically
+  is the NTU-Rukai bug class. `?` at sentence start marks marginality — V142
+  flags it left inline; treat `?` and `*` examples consistently (POL-016).
 - **Schema:** `QC/validation/xml_template.xsd`. `kindOf` ∈ {original, standard};
   `TRANSL/@ver="alt"` for redundant same-language translations; `TEXT/@dialect`
   required and valid per `dialects.csv` (single-dialect languages use the language
@@ -62,16 +69,29 @@ exhaustive checklist**. Anything else a step does to the data is equally fair ga
 
 ## The current pipeline (what we would do)
 
-Order (see `QC/README.md`): `clean_xml` → (orthography detection, human) →
-`standardize` → `add_phonology` → validators.
+Order (see `QC/README.md`): `apply_manual_edits` → `clean_xml` → (orthography
+detection, human) → `standardize` → `add_phonology` → validators.
 
-- **`clean_xml.py`** — character-level cruft + language-aware punctuation; C012
-  hyphen rule (above); normalizes caret variants, Chinese punctuation, etc. Does
-  NOT transliterate (that's standardize).
-- **`standardize.py`** — builds the standard tier (`--copy`, or transliterate via a
-  TSV). Column resolution is single-vs-multi-dialect aware (`_dialect_inventory`).
-- **`add_phonology.py`** — generates `<PHON>` IPA from FORM via
-  `Orthographies/Ortho113/<Language>.tsv`. **Hazard relevant to (a):** it replaces
+- **`apply_manual_edits.py`** — re-applies recorded hand edits
+  (`CodeAndDocs/manual_edits.xml`) first; no-op if absent.
+- **`clean_xml.py`** — character-level cruft + language-aware punctuation on the
+  **original tier only** (all standard FORMs are standardize's property):
+  normalizes caret variants, Chinese punctuation, typographic
+  apostrophes/quotes → ASCII (POL-010), all dash/hyphen look-alikes → `-`
+  (POL-011), null glyphs `ø`/`Ø` → `∅` in morpheme position (POL-012). Does
+  NOT transliterate and no longer owns C012 (both are standardize's).
+- **`standardize.py`** — regenerates the standard tier from the original on
+  every run (`--copy`, or transliterate via a TSV; hand edits to standard FORMs
+  are clobbered by design — POL-002), applies C012 (above), removes null units
+  from S-standard in TSV mode, derives capital-letter rule variants from the
+  table's source profile, and writes `standardize_warnings.csv` (per-run
+  report, POL-033). Column resolution is single-vs-multi-dialect aware
+  (`_dialect_inventory`).
+- **`add_phonology.py`** — generates `<PHON>` IPA from FORM via the language's
+  designated standard orthography per `standards.csv` (currently Ortho113 for
+  all 16; a blank cell = standard PHON deliberately skipped). Null morphemes
+  are silent; a whole-null FORM gets PHON `∅`; unmapped punctuation is dropped
+  (POL-003/012). **Hazard relevant to (a):** it replaces
   any character that is not an orthography IPA letter, ASCII punctuation, or
   whitespace with `*` — and it drops typographic curly quotes/apostrophes (`'`
   U+2019) that may be a phonemic glottal stop. Don't mistake this PHON behavior for
@@ -81,7 +101,11 @@ Order (see `QC/README.md`): `clean_xml` → (orthography detection, human) →
   mnemonics come from `_rule_titles`):
   - `validate_xml.py` — schema, ids, `kindOf`, `ver` (V084/V085), dialects (V036).
   - `validate_text.py` — punctuation (V110–V116), `*` in FORM (V129), footnote
-    leaks (V137–V139), segmentation in S-standard (V133/V134), `=` (V126).
+    leaks (V137–V139), segmentation in S-standard (V133/V134), `=` (V126),
+    null-propagation family (V120 SOFT, V123–V125/V140 HARD — vacuous while
+    null glyphs are non-canonical `ø`/`Ø`), informal grammaticality markers
+    (V142: leading `? `, or claims only in @source/@notes), and per-file
+    TRANSL language/script swaps (V143, rate-based).
   - `validate_glosses.py` — W/M counts (V060/V061), segmentation preserved at W
     (V063), and **reconstruction**: M FORMs spell the W (V068) and W FORMs spell
     the S (V141) — these catch "the morphemes/words don't match the sentence."
