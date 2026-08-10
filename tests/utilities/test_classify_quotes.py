@@ -242,3 +242,19 @@ def test_apply_internal_glottal_ignored():
 def test_apply_no_quote_is_noop():
     text = "o wawa no tao"
     assert aqc(text, [], DICT) == (text, [], [], [])
+
+
+def test_rule1_requires_balanced_quotes():
+    # lone word-final glottal + a single (spanning) TRANSL quote must NOT convert.
+    text = "o toki nga', mikalic to kasoling"     # nga' is a real word-final glottal
+    new_text, corrected, stranded, ambiguous = aqc(text, ['"a spanning quote opens here'], DICT)
+    assert new_text == text and corrected == []
+
+
+def test_rules34_require_complete_transl_pair():
+    # Rule 4 shape, but the TRANSL has only ONE quote (spanning) -> must NOT fire.
+    text = "x: 'zzq mid wqx'"
+    new_text, corrected, _, _ = aqc(text, ['said "y just an opener'], DICT)
+    assert new_text == text and corrected == []
+    # two quotes (a complete pair) -> fires
+    assert aqc(text, ['said "y done"'], DICT)[0] == 'x: "zzq mid wqx"'

@@ -399,11 +399,17 @@ def _quotation_targets(text, transls, dict_cf):
     tq = sum(ch in TRANSL_QUOTES for t in transls for ch in t)
     fq = sum(ch in FORM_DQUOTES for ch in text)
     # Rules 3-4 have ambiguous closers (word'. / word' are real word-final-glottal
-    # patterns), so they only fire when the TRANSL corroborates a quotation.
-    transl_has_quote = (tq - fq) > 0
+    # patterns), so they only fire when the TRANSL carries at least one complete
+    # quotation PAIR. A lone TRANSL quote (a quotation that spans sentence
+    # boundaries) must not corroborate a same-sentence pair.
+    transl_has_pair = (tq - fq) >= 2
 
-    # Rule 1 -- TRANSL count matches start/end ', none attested.
-    if se and (tq - fq) == len(se) and all(not attested(i) for i in se):
+    # Rule 1 -- TRANSL count matches start/end ', none attested. The ' must be
+    # BALANCED (equal openers and closers): a real quotation has matched marks,
+    # so a lone word-final glottal matching a single spanning TRANSL quote (odd
+    # count) is not a quotation.
+    if se and (tq - fq) == len(se) and len(word_initial) == len(word_final) \
+            and all(not attested(i) for i in se):
         conv = guarded(set(se))
         if conv:
             return conv
@@ -415,7 +421,7 @@ def _quotation_targets(text, transls, dict_cf):
             return conv
     # Rule 3 -- one word-initial ' + one word-final ' before closing punct
     # (unattested); TRANSL-corroborated.
-    if transl_has_quote and len(word_initial) == 1 and len(wf_before_closing) == 1 \
+    if transl_has_pair and len(word_initial) == 1 and len(wf_before_closing) == 1 \
             and word_initial[0] != wf_before_closing[0] \
             and not attested(wf_before_closing[0]):
         conv = guarded({word_initial[0], wf_before_closing[0]})
@@ -423,7 +429,7 @@ def _quotation_targets(text, transls, dict_cf):
             return conv
     # Rule 4 -- one word-initial ' after punct + one word-final ', neither
     # attested; TRANSL-corroborated.
-    if transl_has_quote and len(word_initial) == 1 and _follows_punct(text, word_initial[0]) \
+    if transl_has_pair and len(word_initial) == 1 and _follows_punct(text, word_initial[0]) \
             and len(word_final) == 1 and word_initial[0] != word_final[0] \
             and not attested(word_initial[0]) and not attested(word_final[0]):
         conv = guarded({word_initial[0], word_final[0]})
@@ -433,18 +439,25 @@ def _quotation_targets(text, transls, dict_cf):
 
 
 def _destrand_for_quotation(text, transls, dict_cf):
-    """If removing the whitespace on one side of a floating ' lets a quotation
+    """If removing the whitespace on one side of a STRANDED ' lets a quotation
     rule fire, return (variant_text, converted_indices, [orig ' index]).
-    Otherwise (text, empty set, [])."""
+    Otherwise (text, empty set, []).
+
+    A ' is stranded only when it has whitespace on BOTH sides -- a lone ',
+    not one already attached to a word or to punctuation. This matters: a '
+    glued to a comma (``tamdaw,' padamaay``) has whitespace on just one side;
+    removing it would wrongly glue a closing quote to the next word.
+    """
     for i, ch in enumerate(text):
-        if ch != QUOTE or _adjacency(text, i) != "floating":
+        if ch != QUOTE:
+            continue
+        if not (0 < i < len(text) - 1 and text[i - 1] == " " and text[i + 1] == " "):
             continue
         for sp in (i - 1, i + 1):
-            if 0 <= sp < len(text) and text[sp] == " ":
-                variant = text[:sp] + text[sp + 1:]
-                conv = _quotation_targets(variant, transls, dict_cf)
-                if conv:
-                    return variant, conv, [i]
+            variant = text[:sp] + text[sp + 1:]
+            conv = _quotation_targets(variant, transls, dict_cf)
+            if conv:
+                return variant, conv, [i]
     return text, set(), []
 
 
