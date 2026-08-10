@@ -13,6 +13,64 @@ Issues already handled on the branch (null-glyph canonicalization in
 re-proposed; each proposal below is something that is currently unhandled or
 under-handled. Format per proposal: **Problem / Proposal / Importance / Risks**.
 
+## Disposition (2026-08-10, after maintainer review)
+
+| Item | Ruling | State |
+|---|---|---|
+| 0.1 POLICIES.md | draft requested | **Drafted** (`POLICIES.md`, root; sync design inside) |
+| 1.1 e2e integration test | plan requested | Planned (`docs/superpowers/plans/2026-08-10-qc-pipeline-tests.md` Task 3) |
+| 1.2 rerun-stability | **clean_xml only** — standardize/add_phonology are regenerators, no tests needed | Plan Task 2 trimmed accordingly; warnings-append bug fix is Task 1 |
+| 1.3 registry consistency | **SOFT, not HARD** | Planned as `validate_registries.py` V150–V153 (plan Task 4) |
+| 1.4 manual-edits tests | wants implementation detail | Plan Task 5; schema verified against `manual_edits_common.py` |
+| 1.5 audit-to-fixture | wants practice detail | Convention created (`tests/fixtures/audit_regressions/README.md`) + closing step in `audit-dev-repo` skill |
+| 2.3 conversion-table CI | wants design | Design in appendix below |
+| 2.4 pre-port gate | **must work without AI** | **Built**: `QC/validation/validate_port_readiness.py` (P001–P006) + tests |
+| 2.7 entity decode in clean_xml | explanation requested | See discussion with maintainer; detector half already existed (V132) |
+| 3.1 grammaticality rule | **go** | **Built**: V142 SOFT + tests |
+| 3.2 gloss-language rule | **go** | **Built**: V143 SOFT (rate-based) + tests |
+| 3.3 impostor-M detector | discussion requested (are spurious Ms bad?) | Open — hinges on POL-023 |
+| 3.4 double-encoding detector | **go** | Already existed as V132; extended to numeric refs + test |
+| 3.5 V060 marker counting | **dropped** (no leading markers should exist; V142 flags them) | Dropped |
+| 4.1 run-qc-pipeline | **go** | **Updated** (also fixed wrong TSV naming convention in the skill) |
+| 4.2 audit-dev-repo + briefing | **approved** | **Updated** (starred-parens sweep, null glyphs, whitelist, fixture step; briefing pipeline refresh) |
+| 4.3 audit-gloss-scrape | needs more detail | Explanation owed to maintainer |
+| 4.4 port-corpus-in | **go** | **Updated** (port-readiness gate wired in) |
+| 4.5 setup-new-dev-repo | **go** | **Updated** (forward-looking notes) |
+
+## Appendix: conversion-table validation in CI (design for 2.3)
+
+**What runs.** A small driver script
+(`QC/validation/run_conversion_table_checks.py`, ~30 lines) enumerates
+`Orthographies/ConversionTables/*.tsv`, resolves each table's source/target
+profiles from its `<Language>_<Scheme>_113.tsv` filename (the same
+resolution `standardize.py` uses), skips self-mapping utility tables, and
+invokes `validate_conversion_table.py` per table, collecting one summary
+line each (OK / N mismatches / CRASH).
+
+**When it runs.** In a new GitHub Actions workflow (or a job in the existing
+xml-validation one) triggered on pull requests and pushes whose paths touch
+`Orthographies/**` — not on every XML commit; tables change rarely and the
+run takes seconds. Deliberately not merge-to-main-only: the point is to
+catch a bad table edit *in the PR that makes it*.
+
+**Blocking policy, two stages.** Stage 1 (now): report-only — the job exits
+0 and writes the per-table summary to the step summary (and PR comment).
+The current baseline (18 of 34 tables effectively blocked) makes a blocking
+job unusable today. Stage 2 (after remediation): a checked-in baseline file
+(`QC/validation/conversion_table_baseline.txt`, the tables currently allowed
+to fail) makes the job block on *regressions* only — a failing table not in
+the baseline fails CI; fixing a table shrinks the baseline; at zero, delete
+the file and the job is fully blocking.
+
+**Remediation order** (from `claudeplans/conversion-table-audit-findings.md`):
+(1) the 5 dialect-name crashes (Rukai ×3, Seediq ×2) — pure header/profile
+sync, no linguistic judgment needed; (2) profile gaps (missing
+long-vowel/glottal graphemes); (3) the 13 reported IPA mismatches — these
+need per-language review and may change published standard tiers on
+regeneration, so batch per language and diff before committing. The
+validator's deferred case-awareness (audit findings #5/#7) rides along as
+its own small task.
+
 ---
 
 ## 0. Cross-cutting (highest leverage)
