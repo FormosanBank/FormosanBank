@@ -77,6 +77,45 @@ current `add_phonology` strips them. Irrelevant under the new shared-source-
 phonology pipeline (all PHON is regenerated), but explains the bulk of the 17k
 derived-only rows.
 
+## Addendum (same day): F1–F3 fixed and verified; F4–F6 quantified
+
+- **F1/F2 fixed** in `run_parsers.py` (new `run_normalize()` pass): M ids pinned to
+  `<Wid>M<n>` — validated exact for all 198,185 published M elements, zero
+  exceptions — and the 16-entry `DIALECTS` table pins the published dialect
+  attributes (set-if-absent; parser-set values already matched published where
+  present; `Sentences/Bunun` is Junqun per maintainer determination despite the
+  source folder saying Isbukun). Verified against the regen: after normalization,
+  `apply_manual_corrections.py` applied **50 formerly-dead corrections** (all
+  fills, the impostor deletion, id-targeted repairs, and the 12 `AUDIO_FIXES`);
+  byte-equal sentences rose 2,175 → 5,006; TEXT-attr diffs 0/193; FORM-class rows
+  13 → 7, the seven being exactly the expected set (3 parser word-recoveries,
+  the `*(malra)` restoration, `S_7` (F5), 2 Teaching-Weaving punctuation drifts).
+- **F3 fixed** in `remove_no_audio_elements.py`: pattern now matches the encoded
+  and decoded sentinel (61 leaked elements verified removed). Related residue:
+  the same `d27c1cc29` parser change also writes *real* audio `file` attributes
+  decoded (`A1-3-1-6 n.mp3` vs published `A1-3-1-6%20n.mp3`; 17 elements, `url`
+  unchanged) — decide at regen time whether to normalize (audio filenames embed
+  these).
+- **F5 root cause corrected**: not parser segmentation — step 18 splits the
+  W-level PHON on `-` to build per-morpheme PHONs, but current `add_phonology`
+  strips `-`/`=`/`<>` from PHON, so PHON yields 1 piece against FORM's 3 (the
+  `[3, 3, 1, 1, 3, 3]` assertion). At regen time, let step 18 skip PHON piece
+  assignment and rely on `make.sh`'s final `add_phonology` refresh.
+- **F4 quantified** (element level): of 732 differing TRANSL elements, 691 are
+  glyph-only (`「」`→`＂`, `[...]`→`(...)`, punctuation/whitespace); 41 are
+  parenthetical-note extraction edge cases (junk tails), regen usually cleaner.
+- **F6 quantified**: of 75,144 differing PHON elements, 74,884 differ only by the
+  stripped markers (`=`, `<>`, `-`); 224 are contextual-rule improvements now
+  applying across removed boundaries (`t<n>gesa`→`tŋesa`, `s<in>aipuk`→`ɕinaipuk`);
+  36 involve `*` (nulls/unknown chars — superseded by the new pipeline's null
+  handling).
+- **Remaining regen-time worklist**: a few gloss-shift cells where FILL rightly
+  refused fresh-parse junk (earthquake `S_194` W1M2/M3, home `S_69`, relatives
+  `S_70`) — extend the GLOSS_SHIFT table with the fresh-parse cell contents; the
+  script's no-match/fill-skipped output pinpoints them. Step 18 CONFIG per F5.
+  **And: merge `main` into `feature/shared-source-phonology` first** — the branch
+  lacks main's parser fixes (`149537a10` starred-parens, `d27c1cc29` audio refs).
+
 ## Artifacts
 
 Scratch (session-local, disposable): worktree `scratchpad/ntu-old` (regen output in
