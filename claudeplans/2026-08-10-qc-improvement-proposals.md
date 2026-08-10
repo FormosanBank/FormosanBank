@@ -53,23 +53,32 @@ xml-validation one) triggered on pull requests and pushes whose paths touch
 run takes seconds. Deliberately not merge-to-main-only: the point is to
 catch a bad table edit *in the PR that makes it*.
 
-**Blocking policy, two stages.** Stage 1 (now): report-only — the job exits
-0 and writes the per-table summary to the step summary (and PR comment).
-The current baseline (18 of 34 tables effectively blocked) makes a blocking
-job unusable today. Stage 2 (after remediation): a checked-in baseline file
-(`QC/validation/conversion_table_baseline.txt`, the tables currently allowed
-to fail) makes the job block on *regressions* only — a failing table not in
-the baseline fails CI; fixing a table shrinks the baseline; at zero, delete
-the file and the job is fully blocking.
+**Blocking policy (maintainer ruling 2026-08-10): the job never fails.**
+Imperfect conversions are often *legitimate*: earlier orthographies commonly
+under-distinguish phonemes that Ortho113 distinguishes, and the phoneme
+inventory itself shifts between orthographies as linguists reanalyze (or as
+the language changes — hard to know which). So an IPA mismatch is not
+presumptively a defect, and blocking would be overkill. The job is
+permanently informational: exit 0 always, with a step summary (and PR
+comment) sorted into two labeled sections —
 
-**Remediation order** (from `claudeplans/conversion-table-audit-findings.md`):
-(1) the 5 dialect-name crashes (Rukai ×3, Seediq ×2) — pure header/profile
-sync, no linguistic judgment needed; (2) profile gaps (missing
-long-vowel/glottal graphemes); (3) the 13 reported IPA mismatches — these
-need per-language review and may change published standard tiers on
-regeneration, so batch per language and diff before committing. The
-validator's deferred case-awareness (audit findings #5/#7) rides along as
-its own small task.
+1. **Structural defects — fix these** (data bugs, no linguistic judgment
+   involved): validator crashes, dialect names in the table header that
+   don't match the profile, source graphemes unknown to the profile,
+   targets that don't tokenize in the output orthography.
+2. **Phoneme-level mismatches — review, may be legitimate** (merges,
+   IPA disagreements): listed with the validator's verdict so a human can
+   decide whether it's an under-differentiated source orthography (fine,
+   ideally noted in the table's construction notes) or a real table error.
+
+**Remediation of the current findings** (from
+`claudeplans/conversion-table-audit-findings.md`) follows the same split:
+the 5 dialect-name crashes (Rukai ×3, Seediq ×2) and the profile gaps
+(missing long-vowel/glottal graphemes) are category-1 fixes; the 13
+reported IPA mismatches are category-2 reviews, batched per language, with
+"legitimate under-differentiation" outcomes recorded in the table's notes
+rather than "fixed". The validator's deferred case-awareness (audit
+findings #5/#7) rides along as its own small task.
 
 ---
 
