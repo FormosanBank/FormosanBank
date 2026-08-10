@@ -34,7 +34,7 @@ Re-apply any recorded hand edits before cleaning, so later phases see them. No-o
   --corpora_path <xml_path> 2>&1 | tee <output_dir>/00_apply_manual_edits.log
 ```
 
-This phase must run on freshly built (pre-manual) XML. Any `pruned no-op` warnings in the log mean an entry was dropped — surface them in the summary.
+This phase must run on freshly built (pre-manual) XML. Any `NO-OP manual edit (KEPT)` warnings in the log mean the fresh build already contains that record's content — the upstream build likely absorbed the fix. Surface them in the summary; if the maintainer confirms the records are obsolete, re-run with `--prune` to remove them (never prune without confirmation).
 
 ### Phase 1: Clean
 

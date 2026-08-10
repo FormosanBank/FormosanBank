@@ -80,11 +80,12 @@ Phoneme-level (review, may be legitimate): 16 tables listed in the CI
 driver output; includes the open `Paiwan_Ferrell` `Ḍ` question and the
 `Seediq_Church` Truku column-resolution failure (same root as V152).
 
-## Also flagged during test-plan execution
+## Also flagged during test-plan execution — RESOLVED same day
 
-`apply_manual_edits.py` **prunes** a record from `manual_edits.xml` when
-it no-ops (XML already matches). Correct for the fresh-rebuild flow; but
-running pipeline step 0 over *already-edited published XML* would prune
-every record, losing the reproducibility trail. Maintainer ruling needed:
-prune at apply time vs warn-only (pinned as a characterization test in
-`tests/cleaners/test_manual_edits_survival.py`).
+`apply_manual_edits.py` used to **prune** a record from `manual_edits.xml`
+when it no-opped (XML already matches) — hazardous when step 0 runs over
+already-edited published XML. Maintainer ruling 2026-08-10: no-ops are now
+**kept** with a salient `NO-OP manual edit (KEPT)` warning; `--prune`
+restores the removal as an explicit maintenance action. Tests updated in
+`tests/cleaners/test_apply_manual_edits.py` and
+`tests/cleaners/test_manual_edits_survival.py`.

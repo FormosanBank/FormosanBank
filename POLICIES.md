@@ -198,6 +198,10 @@ Every hand edit to published XML must be reproducible: recorded in
 first in the pipeline by `apply_manual_edits.py`) or by a committed script.
 Direct XML edits without a record are not acceptable — they are lost on
 regeneration. Standard-FORM/PHON tiers are never hand-edited (POL-002/003).
+Records that no-op at apply time are **kept** with a salient warning;
+`apply_manual_edits.py --prune` removes them — an explicit maintenance
+action for when the upstream build has genuinely absorbed the fix
+(ruling 2026-08-10).
 
 ### POL-031 · RULED · long-standing · corpus development
 New corpora are developed in per-corpus dev repos and ported into

@@ -1,8 +1,9 @@
 """Integration tests for QC/cleaning/apply_manual_edits.py.
 
 apply runs first in the cleaning pipeline, on the pre-manual build output
-(O). It applies upsert/insert/delete, prunes no-op entries (with a console
-warning), and regenerates CodeAndDocs/manual_edits.md.
+(O). It applies upsert/insert/delete, keeps no-op entries with a salient
+console warning (--prune removes them; ruling 2026-08-10), and regenerates
+CodeAndDocs/manual_edits.md.
 """
 import subprocess
 import sys
@@ -107,7 +108,9 @@ def test_delete_removes_sentence(tmp_path):
     assert _ids(xml) == ["S1"]
 
 
-def test_noop_upsert_is_pruned_with_warning(tmp_path):
+def test_noop_upsert_is_kept_with_salient_warning(tmp_path):
+    """Ruling 2026-08-10: no-ops are KEPT by default and warned loudly —
+    pruning on apply lost records when apply ran over already-edited XML."""
     xml = tmp_path / "XML" / "a.xml"
     _write(xml, _doc(_sent("S1", "same")))
     man = tmp_path / "CodeAndDocs" / "manual_edits.xml"
@@ -116,17 +119,36 @@ def test_noop_upsert_is_pruned_with_warning(tmp_path):
                 "</FILE></MANUAL_EDITS>")
     proc = _run_apply(tmp_path / "XML")
     assert proc.returncode == 0, proc.stderr
+    out = proc.stdout.lower()
+    assert "no-op" in out and "kept" in out
+    assert "--prune" in out, "warning must tell the user how to prune"
+    assert _manual_ids(man) == ["S1"], "record must survive by default"
+
+
+def test_noop_upsert_is_pruned_with_flag(tmp_path):
+    xml = tmp_path / "XML" / "a.xml"
+    _write(xml, _doc(_sent("S1", "same")))
+    man = tmp_path / "CodeAndDocs" / "manual_edits.xml"
+    _write(man, '<MANUAL_EDITS><FILE path="a.xml">'
+                '<S id="S1"><FORM kindOf="original">same</FORM></S>'
+                "</FILE></MANUAL_EDITS>")
+    proc = _run_apply(tmp_path / "XML", "--prune")
+    assert proc.returncode == 0, proc.stderr
     assert "pruned no-op" in proc.stdout.lower()
     assert _manual_ids(man) == []  # entry removed; empty file group dropped
 
 
-def test_noop_delete_of_absent_id_is_pruned(tmp_path):
+def test_noop_delete_of_absent_id_kept_by_default_pruned_with_flag(tmp_path):
     xml = tmp_path / "XML" / "a.xml"
     _write(xml, _doc(_sent("S1", "a")))
     man = tmp_path / "CodeAndDocs" / "manual_edits.xml"
     _write(man, '<MANUAL_EDITS><FILE path="a.xml">'
                 '<S id="GONE" action="delete"/></FILE></MANUAL_EDITS>')
     proc = _run_apply(tmp_path / "XML")
+    assert proc.returncode == 0, proc.stderr
+    assert "no-op" in proc.stdout.lower()
+    assert _manual_ids(man) == ["GONE"]
+    proc = _run_apply(tmp_path / "XML", "--prune")
     assert proc.returncode == 0, proc.stderr
     assert "pruned no-op" in proc.stdout.lower()
     assert _manual_ids(man) == []
@@ -214,11 +236,11 @@ def test_capture_then_apply_roundtrip(tmp_path):
     assert _form(xml, "S1") == "edited"
 
 
-def test_second_apply_without_rebuild_prunes_documented_behavior(tmp_path):
-    """DOCUMENTED behavior (design caveat): apply expects fresh pre-manual O.
-    Re-running apply on already-applied XML prunes entries as no-ops (with a
-    warning), because O == R. The pipeline always rebuilds first, so this only
-    bites manual misuse."""
+def test_second_apply_without_rebuild_keeps_records(tmp_path):
+    """Ruling 2026-08-10: apply on already-applied XML detects no-ops but
+    KEEPS the records (they are still needed for the next fresh rebuild).
+    Pruning obsolete records is an explicit maintenance action (--prune),
+    run when the upstream build has genuinely absorbed the fix."""
     xml = tmp_path / "XML" / "a.xml"
     _write(xml, _doc(_sent("S1", "build")))
     man = tmp_path / "CodeAndDocs" / "manual_edits.xml"
@@ -229,5 +251,5 @@ def test_second_apply_without_rebuild_prunes_documented_behavior(tmp_path):
     assert _form(xml, "S1") == "manual"
     proc = _run_apply(tmp_path / "XML")                          # second run, no rebuild
     assert proc.returncode == 0
-    assert "pruned no-op" in proc.stdout.lower()
-    assert _manual_ids(man) == []
+    assert "no-op" in proc.stdout.lower() and "kept" in proc.stdout.lower()
+    assert _manual_ids(man) == ["S1"]

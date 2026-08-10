@@ -5,15 +5,11 @@
    nothing later may undo the edit), and the regenerated standard tier
    reflects it (POL-002: editing the original is the only durable way
    to change the standard).
-2. Reapply semantics (characterization): a second apply against XML that
-   already contains the edit treats the record as a no-op and PRUNES it
-   from manual_edits.xml (with a console warning). That is correct for
-   the intended flow — apply runs on freshly REBUILT (pre-manual) XML,
-   where a no-op means the upstream build absorbed the fix — but it
-   means running apply over already-edited published XML removes the
-   records needed for future rebuilds. Flagged to the maintainer
-   2026-08-10; if the ruling changes prune-at-apply to warn-only,
-   update the second test accordingly.
+2. Reapply semantics (ruling 2026-08-10): a second apply against XML
+   that already contains the edit detects the record as a no-op, warns
+   saliently, and KEEPS it — the record is still needed for the next
+   fresh rebuild. Only `--prune` removes no-op records (an explicit
+   maintenance action for when the upstream build absorbed the fix).
 """
 import shutil
 import xml.etree.ElementTree as ET
@@ -75,9 +71,9 @@ def test_edit_survives_full_pipeline(tmp_path):
         "standard tier must be regenerated FROM the edited original")
 
 
-def test_reapply_prunes_noop_record_but_leaves_xml_alone(tmp_path):
-    """Characterization of current prune-at-apply semantics (see module
-    docstring): XML is stable under reapply; the record is pruned."""
+def test_reapply_keeps_record_and_leaves_xml_alone(tmp_path):
+    """Ruling 2026-08-10: reapply is a warned no-op — XML stable, record
+    kept; only --prune removes it."""
     corpus = _corpus_with_edit(tmp_path)
     script = "QC/cleaning/apply_manual_edits.py"
     argv = ["--corpora_path", str(corpus / "XML")]
@@ -91,6 +87,12 @@ def test_reapply_prunes_noop_record_but_leaves_xml_alone(tmp_path):
     assert second.returncode == 0
     xml_after_second = (corpus / "XML" / "rerun_puyuma_l_to_ll.xml").read_bytes()
     assert xml_after_second == xml_after_first, "reapply must not change XML"
-    assert "pruned no-op" in second.stdout + second.stderr
+    out = (second.stdout + second.stderr).lower()
+    assert "no-op" in out and "kept" in out
+    assert "S2" in manual.read_text(encoding="utf-8"), (
+        "record must survive reapply (needed for the next fresh rebuild)")
+
+    pruned = run_qc_script(script, argv + ["--prune"])
+    assert pruned.returncode == 0
     assert "S2" not in manual.read_text(encoding="utf-8"), (
-        "current behavior: the matching record is pruned on reapply")
+        "--prune removes no-op records (explicit maintenance action)")
