@@ -21,7 +21,26 @@
 
 ---
 
-### Task 1: `apply_quote_corrections()` — pure correction function
+### Task 1: `apply_quote_corrections()` — pure correction function  ✅ DONE (commit 04b3ca4a0)
+
+**Implemented ahead of the plan** (delicate classifier logic, hand-verified).
+Final signature differs from the original sketch below — it returns a **4-tuple**
+and also performs two behaviors added after review:
+- **Gap 2:** a `'` after terminal punctuation (`word.'` / `word. '`) pairs with an
+  earlier opener as a QUOTATION closer (new `follows_terminal`/`end_closer`
+  signal threaded through `_evaluate_pair`, `_classify_floating`, `_classify_bound`).
+- **Gap 1:** `stranded_side(form_text, i, dictionary) -> 'prev'|'next'|None`; a
+  STRANDED_GLOTTAL's neighbouring space is removed to rejoin the attested word.
+
+Actual signature (use this everywhere downstream):
+`apply_quote_corrections(form_text, transls, dictionary) -> (new_text, corrected, stranded, ambiguous)`
+where `new_text` is whitespace-normalized with QUOTATION `'`→`"` and stranded
+spaces removed; `corrected`/`stranded`/`ambiguous` are index lists into the
+normalized pre-correction text. 32 tests pass in
+`tests/utilities/test_classify_quotes.py`. The original sketch is retained below
+for reference only.
+
+#### (original sketch — superseded by the committed implementation)
 
 **Files:**
 - Modify: `QC/utilities/classify_quotes.py` (add one function near `classify`)
@@ -382,8 +401,13 @@ git commit -m "build_attestation_dict: per-language dict generator; generate Ami
 - Modify: `QC/README.md` (pipeline note)
 
 **Interfaces:**
-- Consumes: `apply_quote_corrections(form_text, transls, dictionary)` (Task 1); `resolve_language`, `XML_LANG` (via `QC.corpus_counts`); `QC/validation/reference/<Language>/attestation.txt` (Task 2); existing `CleanerWarnings.add(rule_id, file, s_id, char, pos)`, `TransformCounter.record(inp, out, count)`.
+- Consumes: `apply_quote_corrections(form_text, transls, dictionary) -> (new_text, corrected, stranded, ambiguous)` (Task 1, committed); `resolve_language`, `XML_LANG` (via `QC.corpus_counts`); `QC/validation/reference/<Language>/attestation.txt` (Task 2); existing `CleanerWarnings.add(rule_id, file, s_id, char, pos)`, `TransformCounter.record(inp, out, count)`.
 - Produces: correction behavior in `clean_xml`; new CLI flag `--reference_dir` (default repo `QC/validation/reference`).
+
+**Warning rules:** `c024` = QUOTATION rewrite `'`→`"`; `c025` = stranded-glottal
+whitespace repair; `c023` = ambiguous `'` (suppressed under `/Wikipedias/`).
+`new_text` differs from input when `corrected` **or** `stranded` is non-empty —
+write it back and set `modified` in either case.
 
 **Legacy-test interaction (measured).** 96 existing cleaner fixtures use
 `xml:lang="ami"`. Once the real Amis dictionary exists (Task 2 step 5), any
@@ -521,6 +545,20 @@ def test_transl_no_quotes_leaves_form_intact(tmp_path):
     assert not any(r["rule_id"] in ("c023", "c024") for r in rows)
 
 
+def test_stranded_glottal_whitespace_repaired_c025(tmp_path):
+    ref = tmp_path / "reference"
+    _write_dict(ref, "Amis", ["faloco'", "'ayam"])
+    # "o ' ayam ko faloco ' iso" -> spaces removed -> "o 'ayam ko faloco' iso"
+    _make_corpus(tmp_path, "Corpora/Toy/XML", "o ' ayam ko faloco ' iso")
+    proc = _run(tmp_path, ref)
+    assert proc.returncode == 0, proc.stderr
+    (orig,) = _form_originals(tmp_path / "Corpora/Toy/XML/t.xml")
+    assert orig == "o 'ayam ko faloco' iso"
+    rows = _warnings_rows(tmp_path)
+    assert sum(r["rule_id"] == "c025" for r in rows) == 2
+    assert not any(r["rule_id"] == "c023" for r in rows)
+
+
 def test_missing_dictionary_is_noop(tmp_path):
     ref = tmp_path / "reference"       # no Amis/ subdir
     ref.mkdir()
@@ -630,21 +668,24 @@ Inside `for sentence in root.findall('.//S'):`, **after** the existing FORM-clea
                             ft = form_element.text
                             if not ft or QUOTE not in ft:
                                 continue
-                            new_text, corrected, ambiguous = apply_quote_corrections(
-                                ft, transl_texts, dictionary)
-                            if corrected:
+                            new_text, corrected, stranded, ambiguous = \
+                                apply_quote_corrections(ft, transl_texts, dictionary)
+                            if corrected or stranded:
                                 form_element.text = new_text
                                 modified = True
-                                if counter is not None:
-                                    counter.record("'", '"', len(corrected))
-                                if warnings is not None:
-                                    for pos in corrected:
-                                        warnings.add("c024", xml_file,
-                                                     sentence.get("id"), "'", pos)
-                            if warnings is not None and not is_wikipedia:
-                                for pos in ambiguous:
-                                    warnings.add("c023", xml_file,
+                            if warnings is not None:
+                                for pos in corrected:
+                                    warnings.add("c024", xml_file,
                                                  sentence.get("id"), "'", pos)
+                                for pos in stranded:
+                                    warnings.add("c025", xml_file,
+                                                 sentence.get("id"), "'", pos)
+                                if not is_wikipedia:
+                                    for pos in ambiguous:
+                                        warnings.add("c023", xml_file,
+                                                     sentence.get("id"), "'", pos)
+                            if counter is not None and corrected:
+                                counter.record("'", '"', len(corrected))
 ```
 
 Note: `sentence.findall('FORM')` returns only direct children of `S`, so W/M FORMs (deeper descendants) are never touched here.
@@ -711,7 +752,7 @@ fixtures outside the measured blast radius and need no change.)
 - [ ] **Step 9: Run the new tests to verify they pass**
 
 Run: `.venv/bin/python -m pytest tests/cleaners/test_clean_xml_quote_correction.py -v`
-Expected: PASS (7 tests).
+Expected: PASS (8 tests).
 
 - [ ] **Step 10: Run the full clean_xml + classifier test suites (no regressions)**
 
@@ -740,9 +781,9 @@ In `QC/README.md`, in the pipeline description near `clean_xml`, add a sentence:
 ```markdown
 `clean_xml.py` also performs the `'`-as-quotation correction on the `original`
 tier for languages that have a `QC/validation/reference/<Language>/attestation.txt`
-dictionary: apostrophes used as quotation marks become `"`, ambiguous cases are
-logged as `c023` warnings (suppressed for the Wikipedias corpus), and each
-rewrite is logged as `c024`. See
+dictionary: apostrophes used as quotation marks become `"` (`c024`), stranded
+glottals separated by whitespace are rejoined to their word (`c025`), ambiguous
+cases are logged as `c023` warnings (suppressed for the Wikipedias corpus). See
 `docs/superpowers/specs/2026-08-10-quote-glottal-correction-design.md`.
 ```
 

@@ -217,6 +217,27 @@ Reuse the existing 18 tests in `tests/utilities/test_classify_quotes.py`. Add:
 5. Docs: `QC/README.md` pipeline note describing the new `clean_xml` behavior.
 6. Tests as above.
 
+## Post-approval additions (2026-08-10, both approved by the user)
+
+After reviewing concrete cases, two behaviors were added to §A/§C/§D:
+
+- **Gap 2 — closing quote after terminal punctuation.** A `'` that follows
+  terminal punctuation (`. , ; : ? !`, optionally across a space) with nothing
+  opening after it (`word.'`, `word. '`) now pairs with an earlier opener as a
+  QUOTATION **closer**. Implemented via a new `follows_terminal`/`end_closer`
+  signal in `_evaluate_pair`/`_classify_floating`/`_classify_bound`. (Reopened
+  the classifier; done before it was in production, so no data was affected.)
+- **Gap 1 — stranded-glottal whitespace repair.** A floating `'` separated from
+  its word by whitespace that reattaches to exactly one attested word
+  (`o ' ayam` → `o 'ayam`; `faloco ' iso` → `faloco' iso`) has the intervening
+  space removed. New action, logged as a **`c025`** warning; `stranded_side()`
+  exposes the reattachment direction.
+
+Correction entry point is now
+`apply_quote_corrections(form_text, transls, dictionary) -> (new_text, corrected, stranded, ambiguous)`.
+Warning rules: `c023` ambiguous (Wikipedia-suppressed), `c024` `'`→`"`,
+`c025` stranded repair. Implemented and tested in commit `04b3ca4a0`.
+
 ## Open decisions (resolved)
 
 - Dictionary source: **precomputed reference file**, regenerated via the
