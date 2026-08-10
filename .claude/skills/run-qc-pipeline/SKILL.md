@@ -178,13 +178,43 @@ Run each validator, capturing output. Do NOT abort the recipe on failures — th
   --o_info <output_dir>/extract_logs \
   --reference <formosanbank_path>/QC/validation/reference 2>&1 \
   | tee <output_dir>/05e_validate_vocabulary.log
+
+# Dialect distribution (informational). Prints an (xml:lang, dialect) ->
+# count table; a human reads it to judge whether the distribution looks
+# right (missing dialects, a dialect leaking into the wrong language).
+# It does not flag values as invalid — that's validate_xml.py's V036.
+.venv/bin/python3 <formosanbank_path>/QC/validation/validate_dialect.py \
+  --path <xml_path> 2>&1 | tee <output_dir>/05f_validate_dialect.log
+
+# Duplicate sentences within the corpus. Interpret per POL-022:
+# narratives/spontaneous speech may legitimately repeat sentences
+# (within a file and across files), so duplicates there are usually
+# fine; in dictionaries, wordlists, and grammar example collections
+# repeats should be excluded (unless the attestations carry distinct
+# provenance — different source variety/page). Compares the standard
+# tier, which Phase 3 created. The script exits 1 on HARD findings;
+# that's fine here — the log and CSV are the artifacts, don't abort
+# the recipe.
+.venv/bin/python3 <formosanbank_path>/QC/validation/validate_duplicate_sentences.py by_path \
+  --path <xml_path> --verbose \
+  --output <output_dir>/05g_duplicate_sentences.csv \
+  2>&1 | tee <output_dir>/05g_validate_duplicate_sentences.log
 ```
 
 Then check whether the corpus has `<W>` or `<M>` elements (quick grep across XML files). If yes:
 
 ```bash
 .venv/bin/python3 <formosanbank_path>/QC/validation/validate_glosses.py \
-  <xml_path> --output_dir <output_dir> 2>&1 | tee <output_dir>/05f_validate_glosses.log
+  <xml_path> --output_dir <output_dir> 2>&1 | tee <output_dir>/05h_validate_glosses.log
+```
+
+Then check whether the corpus has audio (quick grep for `<AUDIO` across the XML files). If yes, locate the audio directory (commonly `<corpus_path>/Audio/`; if ambiguous, ask). If the audio files aren't present locally (dev repos often defer the download), skip the run and record that in the summary as an open item instead:
+
+```bash
+.venv/bin/python3 <formosanbank_path>/QC/validation/validate_audio.py \
+  --path <audio_dir> --xml_path <xml_path> \
+  --log_dir <output_dir> --no-exit-on-hard \
+  2>&1 | tee <output_dir>/05i_validate_audio.log
 ```
 
 ### Phase 6: Summary
@@ -199,7 +229,7 @@ Generate `<output_dir>/qc-summary.md` from `.claude/skills/run-qc-pipeline/summa
 - `{{N_TEXTS}}`, `{{N_SENTENCES}}`, etc. — extract from the various logs
 - `{{XML_RESULT}}`, `{{TEXT_RESULT}}`, etc. — read each validator's log to determine pass/fail
 - `{{ORTHO_SIM}}`, `{{VOCAB_OVERLAP}}` — pull numbers from soft-check logs
-- Fill the "Unusual things surfaced" section with anything notable from any phase
+- Fill the "Unusual things surfaced" section with anything notable from any phase — including the dialect distribution table if anything about it looks off
 - When null-family rules fire, interpret them for the reader instead of
   listing raw counts: V120 SOFT = null units in S-standard (expected under
   `--copy`; means "re-standardize when a table exists"); V069 HARD = null in
@@ -209,9 +239,9 @@ Generate `<output_dir>/qc-summary.md` from `.claude/skills/run-qc-pipeline/summa
 - Include `standardize_warnings.csv` / `cleaner_warnings.csv` counts (per-run
   reports; POL-033)
 - Fill the "Ready to port?" verdict — heuristic only:
-  - "yes" if XML/punct/glosses hard gates pass AND soft check numbers look reasonable
+  - "yes" if the XML/punct/duplicate-sentence/glosses/audio hard gates pass AND soft check numbers look reasonable
   - "no — see Hard-gate findings" if hard gates fail
-  - "needs review" otherwise
+  - "needs review" otherwise (including when audio exists but wasn't locally available to validate)
 
 Print the path to the summary and a tight 5-line preview.
 
@@ -220,6 +250,7 @@ Print the path to the summary and a tight 5-line preview.
 - Original orthography (Phase 2)
 - TSV mapping path for non-Ortho113 corpora (Phase 3)
 - Whether the XML location is ambiguous (Pre-checks)
+- Where the audio directory is, if the corpus has audio and the location is ambiguous (Phase 5)
 - Whether to proceed if pre-checks find issues
 
 ## What this skill is NOT
