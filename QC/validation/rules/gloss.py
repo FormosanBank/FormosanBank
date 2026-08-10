@@ -698,6 +698,69 @@ def v069_null_morpheme_in_W_requires_null_M(
 # Registry
 # ---------------------------------------------------------------------------
 
+# ---------------------------------------------------------------------------
+# V070 WARN — gloss-code-like FORM (impostor wordforms / annotation debris)
+#
+# Hand-edit history motivates this: NTU shipped W FORMs that were actually
+# gloss codes ('how', 'teach_PF' impostors), and Kanakanavu carried an
+# unsalvageable 'L2M-L2M' marker-residue morpheme. WARN (not SOFT/HARD)
+# because a match is suggestive, not conclusive — a real word could in
+# principle be spelled like a code (maintainer ruling 2026-08-10:
+# "surface as a warning, since it's hard to know for sure").
+# ---------------------------------------------------------------------------
+
+# Conservative Leipzig-style vocabulary: only unambiguous all-caps codes.
+_GLOSS_CODES = frozenset({
+    "AF", "PF", "LF", "IF", "NAF", "AV", "PV", "LV", "CV", "IV", "UV",
+    "NOM", "GEN", "OBL", "ACC", "ERG", "ABS", "DAT", "LOC", "TOP", "LNK",
+    "LIG", "NEG", "IMP", "PFV", "IPFV", "PROG", "FUT", "PST", "PRS",
+    "CAUS", "RECP", "REFL", "RED", "EXCL", "INCL", "EXIST", "COP", "COMP",
+    "INTJ", "PRT", "ASP", "MOD", "EVID", "HORT", "FIL", "MID", "DIST",
+    "PROX", "PN", "NCM",
+})
+_PERSON_NUMBER_RE = re.compile(r"^[123](SG|PL|DU)(\.[A-Z]+)*$")
+_L2_DEBRIS_RE = re.compile(r"^L2[A-Z]?([-_=]L2[A-Z]?)*$")
+
+
+def v070_gloss_code_as_FORM(
+    tree: etree._ElementTree,
+    path: Path,
+    index: "CorpusIndex | None",
+) -> list[Finding]:
+    """V070 WARN: a W- or M-level FORM that is a bare gloss code.
+
+    Fires when the FORM text (any kindOf, stripped of the segmentation
+    markers '-' and '=') is exactly a known Leipzig-style code, a
+    person-number gloss like 3SG.NOM, or language-switch marker debris
+    (L2M-L2M). S-level FORMs are never checked — a code can legitimately
+    appear inside running text there only via its W tier anyway.
+    """
+    findings: list[Finding] = []
+    for parent_tag in ("W", "M"):
+        for elem in tree.iter(parent_tag):
+            for form in elem.findall("FORM"):
+                text = (form.text or "").strip()
+                core = text.strip("-=")
+                if not core:
+                    continue
+                if (core in _GLOSS_CODES
+                        or _PERSON_NUMBER_RE.match(core)
+                        or _L2_DEBRIS_RE.match(core)):
+                    findings.append(Finding(
+                        rule_id="V070",
+                        severity=Severity.WARN,
+                        message=(
+                            f"V070 WARN: {parent_tag} FORM "
+                            f"(kindOf={form.get('kindOf')!r}) is the bare "
+                            f"gloss code / marker residue {text!r} — likely "
+                            f"an impostor wordform or annotation debris"
+                        ),
+                        path=path,
+                        location=f"{parent_tag}={elem.get('id') or ''}",
+                    ))
+    return findings
+
+
 RULES: list = [
     v060_W_count_matches_word_count,
     v061_M_count_matches_form_segmentation,
@@ -709,5 +772,6 @@ RULES: list = [
     v067_no_angle_brackets_in_M_FORM,
     v068_M_reconstructs_W,
     v069_null_morpheme_in_W_requires_null_M,
+    v070_gloss_code_as_FORM,
 ]
 CROSS_FILE_RULES: list = []

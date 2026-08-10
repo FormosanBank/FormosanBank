@@ -172,10 +172,16 @@ Lexical/wordlist corpora may legitimately attest the same form twice
 corpus-type flag downgrading within-file duplicates to SOFT for lexical
 corpora, vs per-corpus `--no-exit-on-hard`.
 
-### POL-023 · UNRESOLVED · degenerate single-M elements
-When a source glosses a word without segmenting it, should the XML emit one
-M identical to its W (Bunun-Topic-Focus precedent: yes, documented,
-accepting permanent findings) or no M at all? Needs one ruling.
+### POL-023 · RULED · 2026-08-10 · M-tier presence
+In an XML file where any W has two or more M children (i.e. the file is
+morpheme-segmented), **every W gets at least one M**; a W with exactly one M
+there is read as "analyzed as monomorphemic". In corpora with **no**
+morpheme segmentation, there is **no M level at all** — an all-single-M
+tier adds no information. Enforced as SOFT findings V144 (M-less W in a
+segmented file) and V145 (M level present but nothing multi-M) in
+`validate_xml.py`; SOFT because some existing corpora trip these and will
+need fixing over time. (Resolves the Bunun-Topic-Focus degenerate-single-M
+question: its 51 single-M Ws are conforming as long as no W lacks an M.)
 
 ### POL-024 · RULED · existing practice · literal translations
 Parenthetical literal translations / paraphrases (`(Lit. …)`) belong in a
