@@ -103,8 +103,10 @@ detection, human) → `standardize` → `add_phonology` → validators.
   - `validate_text.py` — punctuation (V110–V116), `*` in FORM (V129), footnote
     leaks (V137–V139), segmentation in S-standard (V133/V134), `=` (V126),
     null-propagation family (V120 SOFT, V123–V125/V140 HARD — vacuous while
-    null glyphs are non-canonical `ø`/`Ø`), informal grammaticality markers
-    (V142: leading `? `, or claims only in @source/@notes), and per-file
+    null glyphs are non-canonical `ø`/`Ø`), informally marked
+    ungrammatical/marginal examples (V142: leading `? ` in FORM, or
+    "ungrammatical"/"marginal" only in @source/@notes free text — positive
+    "is grammatical" notes never fire), and per-file
     TRANSL language/script swaps (V143, rate-based).
   - `validate_glosses.py` — W/M counts (V060/V061), segmentation preserved at W
     (V063), and **reconstruction**: M FORMs spell the W (V068) and W FORMs spell

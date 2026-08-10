@@ -76,7 +76,8 @@ does not violate POL-001. Chinese TRANSL text follows Chinese conventions
 instead (fullwidth quotes retained/canonicalized; title marks 《》
 untouched). Implemented by: `clean_xml.py` `swap_punctuation` (C001/C002).
 *Audit note: U+2019→U+0027 in a dev repo's build script is conforming
-behavior — cite this entry instead of flagging it.*
+behavior — cite this entry instead of flagging it.* Companion ruling:
+single quotes never serve as quotation marks (POL-018).
 
 ### POL-011 · RULED · 2026-08 · all tiers
 **All dash/hyphen look-alikes canonicalize to ASCII `-`** (U+2010…U+2015,
@@ -136,6 +137,18 @@ In source notation, `*(X)` means X is **obligatory** (keep X, unstarred) and
 `(*X)` means X is **forbidden** (drop X). Parsers must distinguish the two;
 treating them identically published an ungrammatical sentence (NTU Rukai
 `*(malra)`, parser fixed 149537a10). Audits sweep for both patterns.
+
+### POL-018 · RULED · 2026-08-10 · quotation marks
+**Single quotes are never used as quotation marks** in Formosan text — on
+any tier, in any language. The straight apostrophe/single quote is
+confusable with the glottal-stop letter, and this holds even for languages
+whose orthography lacks a glottal stop, because loanwords carrying the
+letter are rampant. Quotations use double quotes (`"`). Consequences: a
+`'…'` pair functioning as quotation marks is an intake bug to fix (rewrap
+in `"` or drop), never something to preserve as source typography; cleaners
+and validators treat `'` as a letter, not as paired punctuation
+(`clean_xml`'s c002 warning on single-quote variants in Chinese TRANSL
+exists for exactly this reason). Cross-ref POL-010.
 
 ---
 

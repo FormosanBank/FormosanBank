@@ -2520,15 +2520,16 @@ def test_v116_skips_original_tier(tmp_path):
 
 
 # -----------------------------------------------------------------------------
-# TR22 V142 SOFT — grammaticality/marginality visible only informally.
+# TR22 V142 SOFT — UNgrammaticality/marginality visible only informally.
 #
 # Elicited-example corpora contain marginal (`?`) and ungrammatical (`*`)
 # examples. `*` in FORM is already V129 HARD; V142 covers the two
 # remaining machine-invisible shapes (POL-016): a leading `? ` marker
 # left inline in an S-level FORM (it inflates word counts and is
-# indistinguishable from punctuation downstream), and grammaticality
-# recorded only as free text in S/@source or @notes with nothing
-# machine-readable on the sentence.
+# indistinguishable from punctuation downstream), and a sentence called
+# ungrammatical/marginal only in S/@source or @notes free text with
+# nothing machine-readable on the sentence. Positive judgments ("this is
+# grammatical") describe ordinary attested sentences and never fire.
 
 def test_V142_leading_question_marker_soft(tmp_path):
     """V142 SOFT: S-level FORM starting with the `? ` marginality marker."""

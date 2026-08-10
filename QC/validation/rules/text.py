@@ -42,7 +42,7 @@ Rule ID assignments (B9.4):
        V138 TR20 superscript-digit footnote in FORM/TRANSL (SOFT)
        V139 TR21 bracketed-digit footnote in FORM/TRANSL (SOFT)
   W11 (2026-08-10):
-       V142 TR22 grammaticality visible only informally (SOFT)
+       V142 TR22 UNgrammaticality/marginality visible only informally (SOFT)
        V143 TR23 TRANSL language/script mismatch, rate-based (SOFT)
 """
 import re
@@ -1563,13 +1563,14 @@ def v141_W_reconstructs_S(
     return findings
 
 
-# TR22 V142 SOFT — grammaticality/marginality visible only informally.
+# TR22 V142 SOFT — UNgrammaticality/marginality visible only informally.
 #
 # '*' in FORM is already V129 HARD (any tier, since 2026-06-01). V142
 # covers the two remaining machine-invisible shapes surfaced by the
 # 2026-08 elicited-example audits (POL-016 pending): a leading `? `
-# marginality marker left inline in an S-level FORM, and grammaticality
-# recorded only as free text in @source/@notes.
+# marginality marker left inline in an S-level FORM, and a sentence
+# called ungrammatical/marginal only in @source/@notes free text.
+# Positive judgments ("this is grammatical") never fire.
 
 _GRAMMATICALITY_CLAIM_RE = re.compile(r"ungrammatic|marginal", re.IGNORECASE)
 
@@ -1579,16 +1580,23 @@ def v142_unmarked_grammaticality(
     path: Path,
     index: CorpusIndex | None,
 ) -> list[Finding]:
-    """V142 SOFT (TR22): grammaticality visible only informally.
+    """V142 SOFT (TR22): UNgrammaticality/marginality visible only informally.
+
+    This rule is about sentences the source marks as *defective*
+    (ungrammatical `*` or marginal `?`). A note saying a sentence IS
+    grammatical describes an ordinary attested sentence and never fires
+    (the claim regex matches the substrings 'ungrammatic'/'marginal'
+    only — 'grammatical' contains neither).
 
     (a) An S-level FORM whose text begins with `? ` — the marginality
         marker reads as punctuation downstream and inflates word counts
         (2 of the 7 V060 findings in the Lin-Interrogative audit were
         this marker counted as a word).
-    (b) An S whose @source, or whose S-level FORM/TRANSL @notes, claims
-        (un)grammaticality in free text while the sentence carries no
-        machine-readable marking — downstream consumers (token counts,
-        LM training) cannot distinguish these from attested sentences.
+    (b) An S whose @source, or whose S-level FORM/TRANSL @notes, calls
+        the example ungrammatical or marginal in free text while the
+        sentence carries no machine-readable marking — downstream
+        consumers (token counts, LM training) cannot distinguish these
+        from ordinary attested sentences.
 
     Both heads-up findings pending the POL-016 ruling on a structured
     grammaticality attribute.
@@ -1618,9 +1626,9 @@ def v142_unmarked_grammaticality(
             findings.append(_soft_finding(
                 rule_id="V142",
                 message=(
-                    "V142 SOFT grammaticality claimed only in free text "
-                    f"({claimed[0][:60]!r}); nothing machine-readable marks "
-                    "this sentence"
+                    "V142 SOFT sentence called ungrammatical/marginal only "
+                    f"in free text ({claimed[0][:60]!r}); nothing "
+                    "machine-readable marks it"
                 ),
                 path=path,
                 elem=s,
