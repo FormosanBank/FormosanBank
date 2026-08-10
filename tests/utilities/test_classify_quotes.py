@@ -122,3 +122,26 @@ def test_floating_prev_only_attested_stranded():
 def test_bound_pair_glottal():
     # word-initial 'ayam (attested) ... word-final loma' (attested), no punct -> GLOTTAL
     assert _labels("o 'ayam a loma' iso") == ["GLOTTAL_PAIR", "GLOTTAL_PAIR"]
+
+
+# --- TRANSL first-pass tests (temporary) ---
+from QC.utilities.classify_quotes import translation_confirms_glottal as tcg
+
+
+def test_transl_no_transl_returns_false():
+    assert tcg("o faloco'", []) is False           # no info
+
+
+def test_transl_no_quotes_all_glottal():
+    assert tcg("o faloco' 'ayam", ["the heart bird"]) is True
+
+
+def test_transl_quotes_match_form_dquotes_glottal():
+    # FORM quotation carried by " (2 of them); the ' in faloco' is a glottal.
+    form = 'cika "faloco\'" saan'   # -> cika "faloco'" saan  (2 ", 1 ')
+    assert tcg(form, ['he said "heart"']) is True
+
+
+def test_transl_quotes_mismatch_not_resolved():
+    # TRANSL has a quotation but FORM has no " -> single-quote may be a quote.
+    assert tcg("'faloco' saan", ['he said "heart"']) is False

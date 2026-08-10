@@ -37,6 +37,28 @@ QUOTE = "'"
 # in here; the ASCII " IS treated as punctuation (per spec).
 PUNCT = set('.,;:?!"()[]{}<>«»“”‘’—–…')
 
+# Quotation marks as they appear in a TRANSL (double-quote + bracket families).
+TRANSL_QUOTES = set('"“”＂「」『』')
+# Double-quote family as it appears in a FORM.
+FORM_DQUOTES = set('"“”＂')
+
+
+def translation_confirms_glottal(form_text, transl_texts):
+    """First-pass test: given the S has >=1 TRANSL, is every ' in the FORM a glottal?
+
+    - no quotation marks in any TRANSL  -> yes (the sentence carries no quotation);
+    - TRANSL quotation-mark count == FORM double-quote count -> yes (the FORM's
+      quotations are all carried by ", so the remaining ' are glottal stops).
+    Returns False when there is NO TRANSL (no information) or the counts differ.
+    """
+    if not transl_texts:
+        return False
+    tq = sum(ch in TRANSL_QUOTES for t in transl_texts for ch in t)
+    if tq == 0:
+        return True
+    fq = sum(ch in FORM_DQUOTES for ch in form_text)
+    return tq == fq
+
 
 def _is_letter(ch) -> bool:
     return ch is not None and ch.isalpha()
@@ -304,6 +326,32 @@ def _sentence_forms(path, lang):
     return out
 
 
+def _sentence_records(path, lang):
+    """Return [(original_form_text, [transl_texts])] for each S in a file of ``lang``."""
+    try:
+        root = ET.parse(path).getroot()
+    except ET.ParseError:
+        return []
+    if root.tag != "TEXT" or root.get(_LANG_ATTR) != lang:
+        return []
+    out = []
+    for s in root.findall("S"):
+        form_text = None
+        for form in s.findall("FORM"):
+            if form.get("kindOf") == "original" and form.text:
+                form_text = " ".join("".join(form.itertext()).split())
+                break
+        if form_text is None:
+            continue
+        transls = []
+        for tr in s.findall("TRANSL"):
+            txt = "".join(tr.itertext())
+            if txt and txt.strip():
+                transls.append(txt)
+        out.append((form_text, transls))
+    return out
+
+
 def build_dictionary(all_forms):
     """Single-word original FORMs (whitespace-free), flanking PUNCT stripped, casefold."""
     words = set()
@@ -323,6 +371,11 @@ def main(argv=None):
         default=os.path.join(os.path.dirname(__file__), "..", "..", "Corpora"),
     )
     parser.add_argument("--examples", type=int, default=4, help="examples per label")
+    parser.add_argument(
+        "--dictionary", default=None,
+        help="newline-delimited attestation word list; overrides the built-in "
+             "single-word S-FORM dictionary",
+    )
     args = parser.parse_args(argv)
 
     root = os.path.abspath(args.corpora_path)
@@ -330,35 +383,49 @@ def main(argv=None):
     print(f"Found {len(files)} files for lang={args.lang}", flush=True)
 
     # Parse each file ONCE; reuse for dictionary + classification.
-    per_file_forms = []
+    records = []  # (original_form_text, [transl_texts])
     for n, path in enumerate(files, 1):
-        per_file_forms.append(_sentence_forms(path, args.lang))
+        records.extend(_sentence_records(path, args.lang))
         if n % 500 == 0:
             print(f"  parsed {n}/{len(files)} files…", flush=True)
-    all_forms = [f for forms in per_file_forms for f in forms]
+    all_forms = [f for (f, _tr) in records]
 
-    dictionary = build_dictionary(all_forms)
-    print(f"Dictionary: {len(dictionary)} single-word original FORMs", flush=True)
+    if args.dictionary:
+        with open(args.dictionary, encoding="utf-8") as fh:
+            dictionary = {w.strip().casefold() for w in fh if w.strip()}
+        print(f"Dictionary (from {args.dictionary}): {len(dictionary)} words", flush=True)
+    else:
+        dictionary = build_dictionary(all_forms)
+        print(f"Dictionary: {len(dictionary)} single-word original FORMs", flush=True)
 
     counts = Counter()
     examples = defaultdict(list)
-    n_sent = n_quote_sent = 0
-    for text in all_forms:
+    n_sent = n_quote_sent = n_transl_pass = 0
+    for form_text, transls in records:
         n_sent += 1
-        if QUOTE not in text:
+        if QUOTE not in form_text:
             continue
         n_quote_sent += 1
-        for _idx, label in classify(text, dictionary):
+        # FIRST PASS: the translation confirms every ' is a glottal.
+        if translation_confirms_glottal(form_text, transls):
+            n_transl_pass += 1
+            counts["GLOTTAL_TRANSL"] += form_text.count(QUOTE)
+            if len(examples["GLOTTAL_TRANSL"]) < args.examples:
+                examples["GLOTTAL_TRANSL"].append(form_text)
+            continue
+        # SECOND PASS: per-' pairing / dictionary classification.
+        for _idx, label in classify(form_text, dictionary):
             counts[label] += 1
-            if len(examples[label]) < args.examples and text not in examples[label]:
-                examples[label].append(text)
+            if len(examples[label]) < args.examples and form_text not in examples[label]:
+                examples[label].append(form_text)
 
     order = [
-        "GLOTTAL_INTERNAL", "GLOTTAL_BOUND_NO_MATCH", "GLOTTAL_PAIR",
-        "STRANDED_GLOTTAL", "QUOTATION", "AMBIGUOUS",
+        "GLOTTAL_TRANSL", "GLOTTAL_INTERNAL", "GLOTTAL_BOUND_NO_MATCH",
+        "GLOTTAL_PAIR", "STRANDED_GLOTTAL", "QUOTATION", "AMBIGUOUS",
     ]
     total = sum(counts.values())
-    print(f"\nSentences: {n_sent} ({n_quote_sent} contain a ')")
+    print(f"\nSentences: {n_sent} ({n_quote_sent} contain a '; "
+          f"{n_transl_pass} resolved all-glottal by TRANSL first pass)")
     print("\nOutcome counts:")
     for label in order:
         print(f"  {label:24s} {counts.get(label, 0)}")
