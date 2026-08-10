@@ -19,7 +19,7 @@ from xml.dom import minidom
 from urllib.parse import unquote, urlsplit
 import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from utils import clean_punctuation, add_transl_element, SPEAKER_TOKENS, is_speaker_token, strip_speaker_labels_from_translation, PAREN_TOKEN_RE, UNGRAMMATICAL_PAREN_RE, _drop_starred_slash, filter_punct_words, is_punct_only, fill_propername_gloss, _norm_paren, join_ori_tokens, insert_xxxx_tokens, strip_l2m, strip_prosodic_markers, expand_infixes
+from utils import clean_punctuation, add_transl_element, SPEAKER_TOKENS, is_speaker_token, strip_speaker_labels_from_translation, PAREN_TOKEN_RE, resolve_ungrammatical_parens, _drop_starred_slash, filter_punct_words, is_punct_only, fill_propername_gloss, _norm_paren, join_ori_tokens, insert_xxxx_tokens, strip_l2m, strip_prosodic_markers, expand_infixes
 
 
 # ---------------------------------------------------------------------------
@@ -256,11 +256,14 @@ def get_grammar(data, src="", lang="", is_wordlist=False):
             else:
                 # Strip slash-variants from individual tokens (e.g. 'saa/sua' → 'saa').
                 raw_ori = [_strip_slash_variant(t) for t in raw_ori]
-                # Remove *(text) / (*text) ungrammatical parentheticals before any further processing.
-                raw_ori = [t for t in raw_ori if not UNGRAMMATICAL_PAREN_RE.search(t)]
+                # Resolve *(text) / (*text) grammaticality notation before any further
+                # processing: *(text) is obligatory (keep the content), (*text) is
+                # forbidden (remove marking and content).
+                raw_ori = [resolve_ungrammatical_parens(t) for t in raw_ori]
+                raw_ori = [t for t in raw_ori if t.strip()]
                 gloss_words = [g for g in s.get('gloss', [])
                                if not is_speaker_token(g[0], g[1], g[2])
-                               and not UNGRAMMATICAL_PAREN_RE.search(g[0])]
+                               and resolve_ungrammatical_parens(g[0]).strip()]
                 paren_toks = [t for t in raw_ori if PAREN_TOKEN_RE.match(t)]
                 if paren_toks:
                     gloss_set = {_norm_paren(g[0]) for g in gloss_words}
@@ -279,9 +282,11 @@ def get_grammar(data, src="", lang="", is_wordlist=False):
             tmp['ori'] = clean_origin(join_ori_tokens([strip_prosodic_markers(l[0]) for l in s['gloss']]))
 
         # Skip sentences marked ungrammatical anywhere: if any ori token or any
-        # gloss form starts with '*', the whole sentence is ungrammatical and dropped.
-        if (any(t.startswith('*') for t in s.get('ori', []))
-                or any(g[0].startswith('*') for g in s.get('gloss', []) if g)):
+        # gloss form starts with '*', the whole sentence is ungrammatical and
+        # dropped. Resolve *(X)/(*X) notation first — an obligatory '*(X)' token
+        # belongs to a GRAMMATICAL sentence and must not trigger the skip.
+        if (any(resolve_ungrammatical_parens(t).startswith('*') for t in s.get('ori', []))
+                or any(resolve_ungrammatical_parens(g[0]).startswith('*') for g in s.get('gloss', []) if g)):
             continue
 
         if s['gloss'] and s['gloss'] != [["_", "", ""]]:
@@ -298,14 +303,16 @@ def get_grammar(data, src="", lang="", is_wordlist=False):
                     form_raw = _CJK_RE.sub('', form_raw)
                 if not form_raw.strip():
                     continue
-                if UNGRAMMATICAL_PAREN_RE.search(form_raw):
-                    continue
+                form_raw = resolve_ungrammatical_parens(form_raw)
+                if not form_raw.strip():
+                    continue  # token was entirely a forbidden (*text) — drop entry
                 form_res = _drop_starred_slash(form_raw)
                 if form_res is None:
                     continue  # all slash alternatives starred — drop entry
                 cols = [clean_punctuation(form_res)]
                 for j in range(1, len(w)):
-                    col_res = _drop_starred_slash(w[j] if j < len(w) else '')
+                    col_res = _drop_starred_slash(
+                        resolve_ungrammatical_parens(w[j] if j < len(w) else ''))
                     cols.append(clean_punctuation(col_res if col_res is not None else ''))
                 norm_gloss.append(cols)
             tmp['words'] = filter_punct_words(norm_gloss, s_id=str(tmp['id']), src=src)

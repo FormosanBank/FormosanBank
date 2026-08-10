@@ -28,14 +28,37 @@ from QC.validation._finding import Finding, Severity
 
 # Default fuzzy-match acceptance, on a 0-100 scale.
 DEFAULT_THRESHOLD = 82
-# Skeletons shorter than this are too short to match reliably; a 4-letter
-# sentence fuzzy-matches half the document.
+# Skeletons shorter than this are too short to FUZZY-match reliably; a
+# 9-letter sentence at threshold 82 tolerates edits that match half the
+# document. They are still matched, but only by exact containment.
 MIN_SKELETON = 10
+# Skeletons shorter than this are not matched at all — even exact containment
+# of a 4-letter string proves nothing.
+MIN_EXACT_SKELETON = 6
 
 # Characters whose loss between source and XML is worth reporting: every
-# non-ASCII character (orthographic diacritics, ʉ, ṟ, curly apostrophes) plus
-# the ASCII characters that carry phonemic weight in Formosan orthographies.
+# non-ASCII character (orthographic diacritics, ʉ, ṟ) plus the ASCII
+# characters that carry phonemic weight in Formosan orthographies.
 _ASCII_OF_INTEREST = set("^_:'*")
+
+# Look-alike glyphs fold to an ASCII representative before the fidelity
+# comparison. Converting them (curly quote -> straight, en-dash -> hyphen) is
+# deliberate XML-safety normalization that the QC pipeline owns; reporting it
+# as character loss buried the real losses (349 of 409 G022 rows on the Teng
+# Puyuma grammar were the documented quote conversion). A source glyph whose
+# representative is NOT interesting (double quote, dash, ellipsis) drops out
+# of the check entirely; one whose representative IS interesting (any
+# apostrophe shape -> ') must still be present in the XML in *some* shape.
+_LOOKALIKE_FOLD = {
+    "’": "'", "‘": "'", "‚": "'", "‛": "'", "ʼ": "'", "´": "'",
+    "“": '"', "”": '"', "„": '"', "‟": '"',
+    "–": "-", "—": "-", "‒": "-", "−": "-", "‐": "-", "‑": "-",
+    "…": ".",
+}
+
+
+def _fold(ch: str) -> str:
+    return _LOOKALIKE_FOLD.get(ch, ch)
 
 # An interlinear example is conventionally introduced by a bracketed number.
 _EXAMPLE_LABEL = re.compile(r"^\s*\(?(\d{1,3})([a-z])?\)")
@@ -236,9 +259,14 @@ def mark_matched_regions(
         piece_skels = [s for s in (skeleton(w) for w in windows) if len(s) >= MIN_SKELETON]
         if not piece_skels:
             continue
+        # Short skeletons (matched by exact containment in align()) use exact
+        # containment here too; fuzz on them is exactly what MIN_SKELETON
+        # exists to prevent.
         region.matched = any(
-            fuzz.partial_ratio(skel, piece) >= threshold
-            or fuzz.partial_ratio(piece, skel) >= threshold
+            (skel in piece) if len(skel) < MIN_SKELETON else (
+                fuzz.partial_ratio(skel, piece) >= threshold
+                or fuzz.partial_ratio(piece, skel) >= threshold
+            )
             for skel in sentence_skels
             for piece in piece_skels
         )
@@ -274,8 +302,19 @@ def align(
             key = f"{path}::{s_id}"
             text = _s_text_for_matching(s)
             skel = skeleton(text)
-            if len(skel) < MIN_SKELETON or not choices:
+            if len(skel) < MIN_EXACT_SKELETON or not choices:
                 continue  # too short to align; not evidence of anything
+            if len(skel) < MIN_SKELETON:
+                # Too short for fuzz (see MIN_SKELETON), long enough for exact
+                # containment. No G020 on a miss: a short sentence that fails
+                # to match is absence of evidence, not evidence of fabrication.
+                exact = next(
+                    (c for c in candidates if skel in c.skel), None,
+                )
+                if exact is not None:
+                    matched[key] = (exact, 100.0)
+                    sentence_skels.append(skel)
+                continue
             hit = process.extractOne(
                 skel, choices, scorer=fuzz.partial_ratio, score_cutoff=threshold,
             )
@@ -313,7 +352,9 @@ def _xml_charset(s: etree._Element) -> Counter:
     """
     chars: Counter = Counter()
     for form in s.iter("FORM"):
-        chars.update(unicodedata.normalize("NFC", form.text or ""))
+        chars.update(
+            _fold(ch) for ch in unicodedata.normalize("NFC", form.text or "")
+        )
     return chars
 
 
@@ -386,6 +427,11 @@ def source_findings(
         for s in tree.iter("S"):
             by_key[f"{path}::{s.get('id') or ''}"] = (path, s)
 
+    # G013 compares translation counts per REGION, not per sentence: a
+    # lettered example '(35) a./b./c.' is one region holding every
+    # sub-example's translation, while each sub-example is its own <S>.
+    region_sentences: dict[int, list[tuple[Path, etree._Element]]] = {}
+
     for key, (candidate, score) in alignment.matched.items():
         entry = by_key.get(key)
         if entry is None:
@@ -394,16 +440,19 @@ def source_findings(
         s_id = s.get("id") or ""
 
         # G022: characters of interest present in source, absent from XML.
-        src_chars = Counter(
-            ch for ch in unicodedata.normalize("NFC", candidate.text)
-            if _interesting(ch)
-        )
+        # Compared in folded space (look-alikes satisfy each other), but a
+        # genuine loss is reported as the glyph the source actually prints.
+        src_by_fold: dict[str, Counter] = {}
+        for ch in unicodedata.normalize("NFC", candidate.text):
+            folded = _fold(ch)
+            if _interesting(folded):
+                src_by_fold.setdefault(folded, Counter())[ch] += 1
         xml_chars = _xml_charset(s)
-        lost = {
-            ch: n - xml_chars.get(ch, 0)
-            for ch, n in src_chars.items()
-            if n > xml_chars.get(ch, 0)
-        }
+        lost = {}
+        for folded, originals in src_by_fold.items():
+            missing = sum(originals.values()) - xml_chars.get(folded, 0)
+            if missing > 0:
+                lost[originals.most_common(1)[0][0]] = missing
         if lost:
             rendered = ", ".join(
                 f"{ch!r} (U+{ord(ch):04X}) x{n}" for ch, n in sorted(lost.items())
@@ -421,27 +470,43 @@ def source_findings(
                 count=sum(lost.values()),
             ))
 
-        # G013: source region offers several translations, XML kept one.
-        region = next(
-            (r for r in alignment.regions if r.start <= candidate.start <= r.end),
+        region_idx = next(
+            (i for i, r in enumerate(alignment.regions)
+             if r.start <= candidate.start <= r.end),
             None,
         )
-        if region is None:
+        if region_idx is not None:
+            region_sentences.setdefault(region_idx, []).append((path, s))
+
+    # --- G013: region offers more translations than its sentences hold ----
+    for region_idx, entries in sorted(region_sentences.items()):
+        region = alignment.regions[region_idx]
+        # Sub-examples (distinct sentences) pool their TRANSLs; duplicate
+        # sentences (a repeated example whose copies matched the same region)
+        # count once — two copies of a 1-TRANSL sentence do not account for a
+        # region offering two readings.
+        by_skel: dict[str, int] = {}
+        for _, s in entries:
+            skel = skeleton(_s_text_for_matching(s))
+            count = sum(1 for c in s if c.tag == "TRANSL")
+            by_skel[skel] = max(by_skel.get(skel, 0), count)
+        total_transls = sum(by_skel.values())
+        if total_transls < 1 or len(region.translations) <= total_transls:
             continue
-        transl_count = sum(1 for c in s if c.tag == "TRANSL")
-        if len(region.translations) > 1 and transl_count == 1:
-            findings.append(Finding(
-                rule_id="G013",
-                severity=Severity.SOFT,
-                message=(
-                    f"S {s_id!r} has 1 TRANSL but source example {region.label} "
-                    f"offers {len(region.translations)}: {region.translations!r}. "
-                    "Extra translations belong as alt TRANSL elements"
-                ),
-                path=path,
-                location=f"S={s_id}",
-                count=1,
-            ))
+        s_ids = sorted(s.get("id") or "" for _, s in entries)
+        findings.append(Finding(
+            rule_id="G013",
+            severity=Severity.SOFT,
+            message=(
+                f"S {', '.join(repr(i) for i in s_ids)} hold(s) {total_transls} "
+                f"TRANSL(s) but source example {region.label} offers "
+                f"{len(region.translations)}: {region.translations!r}. "
+                "Extra translations belong as alt TRANSL elements"
+            ),
+            path=entries[0][0],
+            location=f"S={s_ids[0]}",
+            count=1,
+        ))
 
     return findings
 
