@@ -15,7 +15,9 @@ This repository contains code and data for processing and structuring translatio
 
 *Sakizaya* A small number of f's appear to be foreign words.
 
-Tsou and Kanavan both had a lot of annotations in Mandarin in parentheses. These were left in the `original` tier but removed from the `standard` tier, since they aren't actually part of the utterance and aren't in the translation.
+Tsou and Kavalan both had a lot of annotations in Mandarin in parentheses (e.g. `zipun( 日 本 )`, `senfa(憲法)`). These are kept in the `original` tier (source fidelity) but removed from the `standard` tier, since they aren't actually part of the utterance and aren't in the translation; they are likewise masked out of the IPA. This removal is step 5 of the pipeline (`remove_standard_cjk_annotations.py`), so it survives a rerun of `standardize.py --copy`. Bare inline Mandarin terms (code-switched utterance content such as Tsou `'e 行政院 ho`) are *not* annotations and stay in both tiers; they surface as `*` in the IPA.
+
+The PHON (IPA) tiers are generated from each file's declared `dialect` column of the Ortho113 orthography tables (Amis: Xiuguluan, Bunun: Junqun, Puyuma: Nanwang, ...). Some of these dialect columns mark letters as `NA` that nevertheless occur in these texts — mostly in Mandarin/Japanese loanwords (Puyuma `sēhu`, `yēncumincu`; Amis `Balay`) — and those letters surface as `*` in the IPA. Whether to extend those dialect columns for loan letters is an open question; see the orthography tables.
 
 ## Project Structure
 
@@ -61,59 +63,52 @@ Tsou and Kanavan both had a lot of annotations in Mandarin in parentheses. These
 
 The processed XML files will be saved in the `Final_XML` directory.
 
-2. **Clean the XML**
-
-## Code Breakdown
-
-This document provides an in-depth code breakdown for the `main.py` script, which processes the Presidential Apology translations and structures them into the FormosanBank XML format.
-
-
-3. **Clean XML and standardize punctuation**
+2. **Clean XML and standardize punctuation**
 
    ```bash
-   python path/to/FormosanBankRepo/QC/cleaning/clean_xml.py --corpora_path path/to/Apologies/Final_XML
+   python QC/cleaning/clean_xml.py --corpora_path Corpora/Presidential_Apologies/XML
    ```
 
-**Outputs**
-   - This will update the XML files.
-
 **Notes**
-   - This removes empty XML elements
-   - It also standardizes orthography (more-or-less), though a lot of this was done in previous steps (not documented above)
-   - Unicode is flattened so that diacritics are merged with the characters they modify
-   - HTML escape codes are replaced with the corresponding characters
+   - Normalizes punctuation and whitespace on the original tier and the translations. Chinese translations get the canonical full-width double quote (C002 Branch B: `「」`/curly quotes → `＂`).
+   - Unicode is flattened so that diacritics are merged with the characters they modify; HTML escape codes are replaced with the corresponding characters.
+   - (An earlier pipeline version needed `add_original.py` to tag FORM elements with `kindOf="original"`; that is baked into the XML now and the script has been retired.)
 
-4. **Standardize XML, Part 2**
+3. **Create the standard tier**
+
+The files use the 113 Orthography (except possibly Thao, but nothing else matches better).
 
    ```bash
-   python path/to/FormosanBankRepo/QC/utilities/add_original.py --corpora_path path/to/FormosanWikipedias/Final_XML
+   python QC/utilities/standardize.py --corpora_path Corpora/Presidential_Apologies/XML --copy
    ```
 
-**Outputs**
-   - Updates XML files
-
 **Notes**
-   - Adds kindOf="original" attribute to all <FORM> elements. (This should normally be done in an earlier step, but wasn't for this corpus.)
+   - `--copy` is a pure duplication: every `FORM kindOf="original"` gets a `kindOf="standard"` copy. The Mandarin-annotation removal happens in step 5, after the copy.
 
-5. **Standardize orthography and add IPA**
-
-The files seem to use the 113 Orthography (excep possibly Thao, but nothing else matches better). 
+4. **Add IPA**
 
    ```bash
-   python path/to/FormosanBankRepo/QC/utilities/standardize.py --corpora_path path/to/FormosanWikipedias/Final_XML --copy
-   python path/to/FormosanBankRepo/QC/utilities/add_phonology.py --corpora_path path/to/FormosanWikipedias/Final_XML --orthography Ortho113 
+   python QC/utilities/add_phonology.py --corpora_path Corpora/Presidential_Apologies/XML --orthography Ortho113
    ```
 
-**Outputs**
-   - Updates XML files
+**Notes**
+   - Generates original and standard PHON from the Ortho113 tables, selecting each file's declared `dialect` column (see the Notes section above about `NA` letters).
+
+5. **Remove Mandarin annotations from the standard tier**
+
+   ```bash
+   python Corpora/Presidential_Apologies/CodeAndDocs/remove_standard_cjk_annotations.py
+   ```
 
 **Notes**
-   - Creates a copy of every <FORM> element with kindOf="standard" attribute
-   - All u's are converted to o's.
+   - Removes CJK parenthetical annotations from the standard FORM (original untouched) and regenerates PHON with the annotations masked. See the script docstring for exactly what counts as an annotation. Idempotent; safe to re-run.
+   - Steps 2–5 are safe to re-run over the published `XML/` — each fully re-derives its outputs.
 
 
 
 ---
+
+## Code Breakdown: `main.py`
 
 ## Functions
 
