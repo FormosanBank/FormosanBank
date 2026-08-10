@@ -14,15 +14,20 @@ mappings are right for the letters and wrong for the punctuation:
   quote apostrophes both surface as spurious glottal stops in PHON.
 
 This script post-corrects both, deciding letter-vs-punctuation from the
-ORIGINAL tier. Two positions are decided outright: a '?' immediately followed by a
-letter can only be the glottal letter — this covers both word-internal
-('mare?a') and word-initial ('?i', '?udain', '?a?a') glottals, since a
-question mark is never followed by a letter — and the source's own
-'(?)' is an uncertainty marker, i.e. punctuation. Neither counts as a
-question-mark candidate below. (A narrower word-internal-only variant
-was tried and rejected: file 097 writes word-initial glottals, and the
-particle '?i' in 097's 'lja?ua ?i tja kudain...' immediately flipped to
-a question mark via a coincidental count-match.)
+ORIGINAL tier. Two positions are decided outright, overriding every heuristic below: a
+word-internal '?' (a letter immediately on both sides, as in 'mare?a')
+can only be the glottal letter, and the source's own '(?)' is an
+uncertainty marker, i.e. punctuation.
+
+These hard rules affect CLASSIFICATION only — the count-match below
+still counts every '?' except the '(?)' marker (which is likewise
+removed from the TRANSL count). Deliberately so: glottal '?' inflating
+a sentence's count is what breaks coincidental FORM/TRANSL matches, and
+that protection extends to word-INITIAL glottals ('?i', '?udain',
+'?a?a' in text 097), which the hard rule does not cover. Excluding
+known glottals from the count was tried and rejected: it deflated the
+count of 097's 'lja?ua ?i tja kudain...' into a coincidental match and
+flipped the word-initial particle '?i' to a question mark.
 
 The strongest signal for the rest is the English free translation: a '?'
 in the TRANSL is unambiguously a question mark, so when a sentence's
@@ -139,8 +144,11 @@ def _is_letter(ch: str) -> bool:
 
 
 def countable_questions(text: str) -> int:
-    """Number of '?' that are question-mark CANDIDATES: not letter-followed
-    (word-internal/word-initial glottals) and not the '(?)' marker."""
+    """'?' count for the TRANSL match: everything except the '(?)' marker.
+
+    Known-glottal '?' are deliberately NOT excluded — their inflation of
+    the count is what breaks coincidental FORM/TRANSL matches (see the
+    module docstring)."""
     n = 0
     for i, ch in enumerate(text):
         if ch != "?":
@@ -148,8 +156,6 @@ def countable_questions(text: str) -> int:
         prev = text[i - 1] if i else ""
         nxt = text[i + 1] if i + 1 < len(text) else ""
         if prev == "(" and nxt == ")":
-            continue
-        if _is_letter(nxt):
             continue
         n += 1
     return n
@@ -174,8 +180,8 @@ def classify(text: str, tier: str, *, is_last_w: bool = False,
             out.append(GLOTTAL)
         elif prev == "(" and nxt == ")":
             out.append(QPUNCT)  # the source's '(?)' uncertainty marker
-        elif _is_letter(nxt):
-            out.append(GLOTTAL)  # a question mark is never followed by a letter
+        elif _is_letter(prev) and _is_letter(nxt):
+            out.append(GLOTTAL)  # word-internal: letters never flank a question mark
         elif all_question:
             out.append(QPUNCT)
         elif nxt in QUOTE_CHARS | {'"'}:
