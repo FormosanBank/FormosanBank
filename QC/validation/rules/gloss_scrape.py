@@ -345,6 +345,11 @@ def g004_infix_root_reconstructed(
     reconstructs perfectly under a multiset comparison, V068 cannot see this
     failure at all. Comparison here is casefolded, since the guide forbids
     lowercasing the text tier but the root may be capitalised in only one place.
+
+    A root may carry several infixes ('t<em>a<ka>kesi', Puyuma): the expected
+    M is the root rejoined across ALL of them ('takesi'), so the surrounding
+    context of each infix is cleared of the other infixes before rejoining,
+    and one missing root is reported once, not once per infix.
     """
     findings: list[Finding] = []
     for w in tree.iter("W"):
@@ -358,12 +363,14 @@ def g004_infix_root_reconstructed(
             (_form_text(m) or "").strip("-").casefold()
             for m in ms
         }
+        reported: set[str] = set()
         for match in _ANGLE.finditer(form):
-            left = _SPLIT_UNITS.split(form[:match.start()])[-1]
-            right = _SPLIT_UNITS.split(form[match.end():])[0]
+            left = _SPLIT_UNITS.split(_ANGLE.sub("", form[:match.start()]))[-1]
+            right = _SPLIT_UNITS.split(_ANGLE.sub("", form[match.end():]))[0]
             root = (left + right).strip()
-            if not root or root.casefold() in m_forms:
+            if not root or root.casefold() in m_forms or root in reported:
                 continue
+            reported.add(root)
             findings.append(Finding(
                 rule_id="G004",
                 severity=Severity.HARD,
