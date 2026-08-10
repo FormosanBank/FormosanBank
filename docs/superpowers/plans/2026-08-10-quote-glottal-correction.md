@@ -37,12 +37,18 @@ Append to `tests/utilities/test_classify_quotes.py`:
 
 ```python
 # --- apply_quote_corrections tests (temporary) ---
+# NOTE: these use the module-level DICT fixture (a fixed, tiny test dictionary),
+# NOT the real generated Amis dictionary. Cases that hinge on a word being
+# ABSENT from the dictionary use obviously-synthetic tokens (zzq/wqx) so they
+# stay correct no matter how the real dictionary grows. Cases that hinge on a
+# word being PRESENT use tokens that are in DICT by construction ('ayam, faloco').
 from QC.utilities.classify_quotes import apply_quote_corrections as aqc
 
 
 def test_apply_rewrites_quotation_pair():
-    # 'cima (after ':') ... tayni' -> QUOTATION pair; both ' become "
-    text = "pasowal: 'cima tayni'"
+    # opener 'zzq (after ':') ... closer wqx' -- neither attested, opener after
+    # punct -> QUOTATION pair; both ' become ". zzq/wqx are never in any dict.
+    text = "pasowal: 'zzq wqx'"
     new_text, corrected, ambiguous = aqc(text, [], DICT)
     assert ambiguous == []
     assert len(corrected) == 2
@@ -54,6 +60,8 @@ def test_apply_rewrites_quotation_pair():
 
 
 def test_apply_leaves_glottal_pair_untouched():
+    # both flanking words attested in DICT, no punct -> GLOTTAL_PAIR (needs
+    # attested words by definition, so these MUST be DICT members).
     text = "o 'ayam ko faloco' iso"
     new_text, corrected, ambiguous = aqc(text, [], DICT)
     assert new_text == text
@@ -62,6 +70,8 @@ def test_apply_leaves_glottal_pair_untouched():
 
 
 def test_apply_reports_ambiguous_without_rewriting():
+    # both attested BUT closer precedes ',' -> the both-attested-no-punct rule
+    # fails -> AMBIGUOUS (also needs attested words -> DICT members).
     text = "'ayam faloco',"
     new_text, corrected, ambiguous = aqc(text, [], DICT)
     assert new_text == text
@@ -71,8 +81,8 @@ def test_apply_reports_ambiguous_without_rewriting():
 
 def test_apply_transl_first_pass_short_circuits():
     # A quotation-looking pair, but the TRANSL has no quotes -> all glottal.
-    text = "pasowal: 'cima tayni'"
-    new_text, corrected, ambiguous = aqc(text, ["he spoke to Cima"], DICT)
+    text = "pasowal: 'zzq wqx'"
+    new_text, corrected, ambiguous = aqc(text, ["he spoke"], DICT)
     assert new_text == text
     assert corrected == []
     assert ambiguous == []
@@ -450,9 +460,10 @@ def _make_corpus(tmp_path, sub, form_original, transl=None):
 
 def test_quotation_pair_rewritten_to_doublequote(tmp_path):
     ref = tmp_path / "reference"
-    _write_dict(ref, "Amis", ["faloco'", "loma'", "'ayam", "romi'ad", "cima"])
-    # 'cima (after ':') ... tayni' -> not attested, opener after punct -> QUOTATION
-    _make_corpus(tmp_path, "Corpora/Toy/XML", "pasowal: 'cima tayni'")
+    _write_dict(ref, "Amis", ["faloco'", "loma'", "'ayam", "romi'ad"])
+    # 'zzq (after ':') ... wqx' -> neither attested, opener after punct ->
+    # QUOTATION. zzq/wqx are synthetic tokens, never in any real dictionary.
+    _make_corpus(tmp_path, "Corpora/Toy/XML", "pasowal: 'zzq wqx'")
     proc = _run(tmp_path, ref)
     assert proc.returncode == 0, proc.stderr
     (orig,) = _form_originals(tmp_path / "Corpora/Toy/XML/t.xml")
@@ -498,13 +509,14 @@ def test_wikipedia_suppresses_c023(tmp_path):
 
 def test_transl_no_quotes_leaves_form_intact(tmp_path):
     ref = tmp_path / "reference"
-    _write_dict(ref, "Amis", ["faloco'", "'ayam", "cima"])
-    _make_corpus(tmp_path, "Corpora/Toy/XML", "pasowal: 'cima tayni'",
-                 transl="he spoke to Cima")
+    _write_dict(ref, "Amis", ["faloco'", "'ayam"])
+    # Would be QUOTATION on its own, but the TRANSL has no quotes -> all glottal.
+    _make_corpus(tmp_path, "Corpora/Toy/XML", "pasowal: 'zzq wqx'",
+                 transl="he spoke")
     proc = _run(tmp_path, ref)
     assert proc.returncode == 0, proc.stderr
     (orig,) = _form_originals(tmp_path / "Corpora/Toy/XML/t.xml")
-    assert orig == "pasowal: 'cima tayni'"          # TRANSL first pass -> glottal
+    assert orig == "pasowal: 'zzq wqx'"             # TRANSL first pass -> glottal
     rows = _warnings_rows(tmp_path)
     assert not any(r["rule_id"] in ("c023", "c024") for r in rows)
 
