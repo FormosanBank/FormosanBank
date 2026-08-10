@@ -303,7 +303,15 @@ on the corpus type:
   in the corpus README.
 No real corpus data has been corrected yet, so this is a per-corpus step
 at the time the pipeline actually runs (i.e. during the regeneration
-sweep). Backstops either way: git history, and the committed correction
-log (the c024/c025 log, per the spec recording this decision in the
-parallel workstream). Companion to POL-030, which covers *hand* edits;
-this covers *automated* corrections.
+sweep). Backstops either way: git history, and a committed correction
+log. Source ruling: `feature/quote-glottal-classifier`'s
+quote-glottal-correction spec (its `'`→`"` rewrite is the first
+non-self-correcting mutation of the original tier). Companion to
+POL-030, which covers *hand* edits; this covers *automated* corrections.
+**Merge-time reconciliation needed:** that branch logs corrections as
+`c024`/`c025` rows in `cleaner_warnings.csv` and commits the file — but
+`c024` already numbers an existing cleaner behavior, and POL-033 makes
+`cleaner_warnings.csv` an ephemeral per-run report (the rewrite fix
+would overwrite a committed log on the next run). The durable
+correction log must move to its own committed file (and the codes
+renumber past c029) when the branches merge.
