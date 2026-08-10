@@ -2,9 +2,9 @@
 <TEXT id="PaiwanCh2_020_THE STONE FAN" xml:lang="pwn" copyright="public domain" citation="Early, R. J., &amp; Whitehorn, J. (2003). One hundred Paiwan texts. Pacific Linguistics, Research School of Pacific and Asian Studies, The Australian National University." BibTeX_citation="@book{100paiwantexts, author = {Robert Early and John Whitehorn}, title = {One Hundred Paiwan Texts}, year = {2003}, publisher = {Pacific Linguistics, Research School of Pacific and Asian Studies, The Australian National University}}" source="sipaizan a qatsiɫay (Tjakuvukuvuɫ village, p.193)" dialect="Southern">
     <S id="020S1">
         <FORM kindOf="original">ka sitsuayan ka mangtjengtjez a masi naqemizing ti Salakats, izua sipaizan a qatsiɫay, a sikipaipaiz ni Salakats.</FORM>
-        <PHON kindOf="original">ka siʦuajan ka maŋcəŋcəz a masi naqəmiziŋ ti saɭakaʦ, izua sipaizan a qaʦiʎaj, a sikipaipaiz ni saɭakaʦ.</PHON>
+        <PHON kindOf="original">ka siʦuajan ka maŋcəŋcəz a masi naqəmiziŋ ti saɭakaʦ izua sipaizan a qaʦiʎaj a sikipaipaiz ni saɭakaʦ</PHON>
         <FORM kindOf="standard">ka sicuayan ka mangtjengtjez a masi naqemizing ti Salakac, izua sipaizan a qaciljay, a sikipaipaiz ni Salakac.</FORM>
-        <PHON kindOf="standard">ka siʦuajan ka maŋʦəŋʦəz a masi naqəmiziŋ ti saɣakaʦ, izua sipaizan a qaʦiʎaj, a sikipaipaiz ni saɣakaʦ.</PHON>
+        <PHON kindOf="standard">ka siʦuajan ka maŋcəŋcəz a masi naqəmiziŋ ti saɣakaʦ izua sipaizan a qaʦiʎaj a sikipaipaiz ni saɣakaʦ</PHON>
         <TRANSL xml:lang="eng">Once upon a time when Sakalats had just come from land he had won(?), there was a stone fan which Sakalats used to fan himself.</TRANSL>
         <W id="020S1W1">
             <FORM kindOf="original">ka</FORM>
@@ -63,7 +63,7 @@
             <FORM kindOf="original">mangtjengtjez</FORM>
             <PHON kindOf="original">maŋcəŋcəz</PHON>
             <FORM kindOf="standard">mangtjengtjez</FORM>
-            <PHON kindOf="standard">maŋʦəŋʦəz</PHON>
+            <PHON kindOf="standard">maŋcəŋcəz</PHON>
             <M id="020S1W4M0">
                 <FORM kindOf="original">ma</FORM>
                 <PHON kindOf="original">ma</PHON>
@@ -75,14 +75,14 @@
                 <FORM kindOf="original">ngetje</FORM>
                 <PHON kindOf="original">ŋəcə</PHON>
                 <FORM kindOf="standard">ngetje</FORM>
-                <PHON kindOf="standard">ŋəʦə</PHON>
+                <PHON kindOf="standard">ŋəcə</PHON>
                 <TRANSL xml:lang="eng">RED</TRANSL>
             </M>
             <M id="020S1W4M2">
                 <FORM kindOf="original">ngetjez</FORM>
                 <PHON kindOf="original">ŋəcəz</PHON>
                 <FORM kindOf="standard">ngetjez</FORM>
-                <PHON kindOf="standard">ŋəʦəz</PHON>
+                <PHON kindOf="standard">ŋəcəz</PHON>
                 <TRANSL xml:lang="eng">come</TRANSL>
             </M>
         </W>
@@ -126,16 +126,16 @@
             </M>
             <M id="020S1W7M1">
                 <FORM kindOf="original">-em-</FORM>
-                <PHON kindOf="original">-əm-</PHON>
+                <PHON kindOf="original">əm</PHON>
                 <FORM kindOf="standard">-em-</FORM>
-                <PHON kindOf="standard">-əm-</PHON>
+                <PHON kindOf="standard">əm</PHON>
                 <TRANSL xml:lang="eng">af</TRANSL>
             </M>
             <M id="020S1W7M2">
                 <FORM kindOf="original">q-izing</FORM>
-                <PHON kindOf="original">q-iziŋ</PHON>
+                <PHON kindOf="original">qiziŋ</PHON>
                 <FORM kindOf="standard">q-izing</FORM>
-                <PHON kindOf="standard">q-iziŋ</PHON>
+                <PHON kindOf="standard">qiziŋ</PHON>
                 <TRANSL xml:lang="eng">usurp</TRANSL>
             </M>
         </W>
@@ -154,9 +154,9 @@
         </W>
         <W id="020S1W9">
             <FORM kindOf="original">Salakats,</FORM>
-            <PHON kindOf="original">saɭakaʦ,</PHON>
+            <PHON kindOf="original">saɭakaʦ</PHON>
             <FORM kindOf="standard">Salakac,</FORM>
-            <PHON kindOf="standard">saɣakaʦ,</PHON>
+            <PHON kindOf="standard">saɣakaʦ</PHON>
             <M id="020S1W9M0">
                 <FORM kindOf="original">Salakats</FORM>
                 <PHON kindOf="original">saɭakaʦ</PHON>
@@ -227,9 +227,9 @@
         </W>
         <W id="020S1W13">
             <FORM kindOf="original">qatsiɫay,</FORM>
-            <PHON kindOf="original">qaʦiʎaj,</PHON>
+            <PHON kindOf="original">qaʦiʎaj</PHON>
             <FORM kindOf="standard">qaciljay,</FORM>
-            <PHON kindOf="standard">qaʦiʎaj,</PHON>
+            <PHON kindOf="standard">qaʦiʎaj</PHON>
             <M id="020S1W13M0">
                 <FORM kindOf="original">qatsiɫay</FORM>
                 <PHON kindOf="original">qaʦiʎaj</PHON>
@@ -300,9 +300,9 @@
         </W>
         <W id="020S1W17">
             <FORM kindOf="original">Salakats.</FORM>
-            <PHON kindOf="original">saɭakaʦ.</PHON>
+            <PHON kindOf="original">saɭakaʦ</PHON>
             <FORM kindOf="standard">Salakac.</FORM>
-            <PHON kindOf="standard">saɣakaʦ.</PHON>
+            <PHON kindOf="standard">saɣakaʦ</PHON>
             <M id="020S1W17M0">
                 <FORM kindOf="original">Salakats</FORM>
                 <PHON kindOf="original">saɭakaʦ</PHON>
@@ -314,9 +314,9 @@
     </S>
     <S id="020S2">
         <FORM kindOf="original">aza zua sipaizan vintsikan tua tsautsau katua marka ḍiḍi.</FORM>
-        <PHON kindOf="original">aza zua sipaizan vinʦikan tua ʦauʦau katua marka ɖiɖi.</PHON>
+        <PHON kindOf="original">aza zua sipaizan vinʦikan tua ʦauʦau katua marka ɖiɖi</PHON>
         <FORM kindOf="standard">aza zua sipaizan vincikan tua caucau katua marka dridri.</FORM>
-        <PHON kindOf="standard">aza zua sipaizan vinʦikan tua ʦauʦau katua maRka ɖiɖi.</PHON>
+        <PHON kindOf="standard">aza zua sipaizan vinʦikan tua ʦauʦau katua maRka ɖiɖi</PHON>
         <TRANSL xml:lang="eng">That fan was carved with people and pigs.</TRANSL>
         <W id="020S2W1">
             <FORM kindOf="original">aza</FORM>
@@ -385,16 +385,16 @@
             <PHON kindOf="standard">vinʦikan</PHON>
             <M id="020S2W4M0">
                 <FORM kindOf="original">-in-</FORM>
-                <PHON kindOf="original">-in-</PHON>
+                <PHON kindOf="original">in</PHON>
                 <FORM kindOf="standard">-in-</FORM>
-                <PHON kindOf="standard">-in-</PHON>
+                <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="eng">perf</TRANSL>
             </M>
             <M id="020S2W4M1">
                 <FORM kindOf="original">v-tsik</FORM>
-                <PHON kindOf="original">v-ʦik</PHON>
+                <PHON kindOf="original">vʦik</PHON>
                 <FORM kindOf="standard">v-cik</FORM>
-                <PHON kindOf="standard">v-ʦik</PHON>
+                <PHON kindOf="standard">vʦik</PHON>
                 <TRANSL xml:lang="eng">mark</TRANSL>
             </M>
             <M id="020S2W4M2">
@@ -473,9 +473,9 @@
         </W>
         <W id="020S2W9">
             <FORM kindOf="original">ḍiḍi.</FORM>
-            <PHON kindOf="original">ɖiɖi.</PHON>
+            <PHON kindOf="original">ɖiɖi</PHON>
             <FORM kindOf="standard">dridri.</FORM>
-            <PHON kindOf="standard">ɖiɖi.</PHON>
+            <PHON kindOf="standard">ɖiɖi</PHON>
             <M id="020S2W9M0">
                 <FORM kindOf="original">ḍiḍi</FORM>
                 <PHON kindOf="original">ɖiɖi</PHON>
@@ -487,10 +487,10 @@
     </S>
     <S id="020S3">
         <FORM kindOf="original">saka mangtjez imaza; sitavaɫ pitjua qaqerengan nua mamazangiɫan.</FORM>
-        <PHON kindOf="original">saka maŋcəz imaza; sitavaʎ picua qaqərəŋan nua mamazaŋiʎan.</PHON>
+        <PHON kindOf="original">saka maŋcəz imaza sitavaʎ picua qaqərəŋan nua mamazaŋiʎan</PHON>
         <FORM kindOf="standard">saka mangtjez imaza; sitavalj pitjua qaqerengan nua mamazangiljan.</FORM>
-        <PHON kindOf="standard">saka maŋʦəz imaza; sitavaʎ piʦua qaqəRəŋan nua mamazaŋiʎan.</PHON>
-        <TRANSL xml:lang="eng">So it came here and was set up by the chief’s bed.</TRANSL>
+        <PHON kindOf="standard">saka maŋcəz imaza sitavaʎ picua qaqəRəŋan nua mamazaŋiʎan</PHON>
+        <TRANSL xml:lang="eng">So it came here and was set up by the chief's bed.</TRANSL>
         <W id="020S3W1">
             <FORM kindOf="original">saka</FORM>
             <PHON kindOf="original">saka</PHON>
@@ -515,7 +515,7 @@
             <FORM kindOf="original">mangtjez</FORM>
             <PHON kindOf="original">maŋcəz</PHON>
             <FORM kindOf="standard">mangtjez</FORM>
-            <PHON kindOf="standard">maŋʦəz</PHON>
+            <PHON kindOf="standard">maŋcəz</PHON>
             <M id="020S3W2M0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
@@ -527,15 +527,15 @@
                 <FORM kindOf="original">pangetjez</FORM>
                 <PHON kindOf="original">paŋəcəz</PHON>
                 <FORM kindOf="standard">pangetjez</FORM>
-                <PHON kindOf="standard">paŋəʦəz</PHON>
+                <PHON kindOf="standard">paŋəcəz</PHON>
                 <TRANSL xml:lang="eng">come</TRANSL>
             </M>
         </W>
         <W id="020S3W3">
             <FORM kindOf="original">imaza;</FORM>
-            <PHON kindOf="original">imaza;</PHON>
+            <PHON kindOf="original">imaza</PHON>
             <FORM kindOf="standard">imaza;</FORM>
-            <PHON kindOf="standard">imaza;</PHON>
+            <PHON kindOf="standard">imaza</PHON>
             <M id="020S3W3M0">
                 <FORM kindOf="original">i</FORM>
                 <PHON kindOf="original">i</PHON>
@@ -575,7 +575,7 @@
             <FORM kindOf="original">pitjua</FORM>
             <PHON kindOf="original">picua</PHON>
             <FORM kindOf="standard">pitjua</FORM>
-            <PHON kindOf="standard">piʦua</PHON>
+            <PHON kindOf="standard">picua</PHON>
             <M id="020S3W5M0">
                 <FORM kindOf="original">pi</FORM>
                 <PHON kindOf="original">pi</PHON>
@@ -587,7 +587,7 @@
                 <FORM kindOf="original">tjua</FORM>
                 <PHON kindOf="original">cua</PHON>
                 <FORM kindOf="standard">tjua</FORM>
-                <PHON kindOf="standard">ʦua</PHON>
+                <PHON kindOf="standard">cua</PHON>
                 <TRANSL xml:lang="eng">there</TRANSL>
             </M>
         </W>
@@ -633,9 +633,9 @@
         </W>
         <W id="020S3W8">
             <FORM kindOf="original">mamazangiɫan.</FORM>
-            <PHON kindOf="original">mamazaŋiʎan.</PHON>
+            <PHON kindOf="original">mamazaŋiʎan</PHON>
             <FORM kindOf="standard">mamazangiljan.</FORM>
-            <PHON kindOf="standard">mamazaŋiʎan.</PHON>
+            <PHON kindOf="standard">mamazaŋiʎan</PHON>
             <M id="020S3W8M0">
                 <FORM kindOf="original">ma</FORM>
                 <PHON kindOf="original">ma</PHON>
@@ -668,9 +668,9 @@
     </S>
     <S id="020S4">
         <FORM kindOf="original">sa manu marivu tua viliviliɫan.</FORM>
-        <PHON kindOf="original">sa manu marivu tua viɭiviɭiʎan.</PHON>
+        <PHON kindOf="original">sa manu marivu tua viɭiviɭiʎan</PHON>
         <FORM kindOf="standard">sa manu marivu tua vilivililjan.</FORM>
-        <PHON kindOf="standard">sa manu maRivu tua viɣiviɣiʎan.</PHON>
+        <PHON kindOf="standard">sa manu maRivu tua viɣiviɣiʎan</PHON>
         <TRANSL xml:lang="eng">But later there was a quarrel (?).</TRANSL>
         <W id="020S4W1">
             <FORM kindOf="original">sa</FORM>
@@ -733,9 +733,9 @@
         </W>
         <W id="020S4W5">
             <FORM kindOf="original">viliviliɫan.</FORM>
-            <PHON kindOf="original">viɭiviɭiʎan.</PHON>
+            <PHON kindOf="original">viɭiviɭiʎan</PHON>
             <FORM kindOf="standard">vilivililjan.</FORM>
-            <PHON kindOf="standard">viɣiviɣiʎan.</PHON>
+            <PHON kindOf="standard">viɣiviɣiʎan</PHON>
             <M id="020S4W5M0">
                 <FORM kindOf="original">vili</FORM>
                 <PHON kindOf="original">viɭi</PHON>
@@ -761,9 +761,9 @@
     </S>
     <S id="020S5">
         <FORM kindOf="original">maɫama a tapaw.</FORM>
-        <PHON kindOf="original">maʎama a tapaw.</PHON>
+        <PHON kindOf="original">maʎama a tapaw</PHON>
         <FORM kindOf="standard">maljama a tapaw.</FORM>
-        <PHON kindOf="standard">maʎama a tapaw.</PHON>
+        <PHON kindOf="standard">maʎama a tapaw</PHON>
         <TRANSL xml:lang="eng">The house was set on fire,</TRANSL>
         <W id="020S5W1">
             <FORM kindOf="original">maɫama</FORM>
@@ -800,9 +800,9 @@
         </W>
         <W id="020S5W3">
             <FORM kindOf="original">tapaw.</FORM>
-            <PHON kindOf="original">tapaw.</PHON>
+            <PHON kindOf="original">tapaw</PHON>
             <FORM kindOf="standard">tapaw.</FORM>
-            <PHON kindOf="standard">tapaw.</PHON>
+            <PHON kindOf="standard">tapaw</PHON>
             <M id="020S5W3M0">
                 <FORM kindOf="original">tapaw</FORM>
                 <PHON kindOf="original">tapaw</PHON>
@@ -814,9 +814,9 @@
     </S>
     <S id="020S6">
         <FORM kindOf="original">sipaɫama azua sipaizan.</FORM>
-        <PHON kindOf="original">sipaʎama azua sipaizan.</PHON>
+        <PHON kindOf="original">sipaʎama azua sipaizan</PHON>
         <FORM kindOf="standard">sipaljama azua sipaizan.</FORM>
-        <PHON kindOf="standard">sipaʎama azua sipaizan.</PHON>
+        <PHON kindOf="standard">sipaʎama azua sipaizan</PHON>
         <TRANSL xml:lang="eng">and the fan was burnt too.</TRANSL>
         <W id="020S6W1">
             <FORM kindOf="original">sipaɫama</FORM>
@@ -867,9 +867,9 @@
         </W>
         <W id="020S6W3">
             <FORM kindOf="original">sipaizan.</FORM>
-            <PHON kindOf="original">sipaizan.</PHON>
+            <PHON kindOf="original">sipaizan</PHON>
             <FORM kindOf="standard">sipaizan.</FORM>
-            <PHON kindOf="standard">sipaizan.</PHON>
+            <PHON kindOf="standard">sipaizan</PHON>
             <M id="020S6W3M0">
                 <FORM kindOf="original">si</FORM>
                 <PHON kindOf="original">si</PHON>
@@ -895,10 +895,10 @@
     </S>
     <S id="020S7">
         <FORM kindOf="original">saka nekanga tutsu.</FORM>
-        <PHON kindOf="original">saka nəkaŋa tuʦu.</PHON>
+        <PHON kindOf="original">saka nəkaŋa tuʦu</PHON>
         <FORM kindOf="standard">saka nekanga tucu.</FORM>
-        <PHON kindOf="standard">saka nəkaŋa tuʦu.</PHON>
-        <TRANSL xml:lang="eng">So it doesn’t exist now.</TRANSL>
+        <PHON kindOf="standard">saka nəkaŋa tuʦu</PHON>
+        <TRANSL xml:lang="eng">So it doesn't exist now.</TRANSL>
         <W id="020S7W1">
             <FORM kindOf="original">saka</FORM>
             <PHON kindOf="original">saka</PHON>
@@ -941,9 +941,9 @@
         </W>
         <W id="020S7W3">
             <FORM kindOf="original">tutsu.</FORM>
-            <PHON kindOf="original">tuʦu.</PHON>
+            <PHON kindOf="original">tuʦu</PHON>
             <FORM kindOf="standard">tucu.</FORM>
-            <PHON kindOf="standard">tuʦu.</PHON>
+            <PHON kindOf="standard">tuʦu</PHON>
             <M id="020S7W3M0">
                 <FORM kindOf="original">tu</FORM>
                 <PHON kindOf="original">tu</PHON>
