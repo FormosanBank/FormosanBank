@@ -14,11 +14,17 @@ mappings are right for the letters and wrong for the punctuation:
   quote apostrophes both surface as spurious glottal stops in PHON.
 
 This script post-corrects both, deciding letter-vs-punctuation from the
-ORIGINAL tier. The strongest signal is the English free translation: a '?'
+ORIGINAL tier. Two positions are decided outright: a '?' immediately followed by a
+letter can only be the glottal letter (question marks never precede
+letters — 'mare?a', '?a?a'), and the source's own '(?)' is an
+uncertainty marker, i.e. punctuation. Neither counts as a question-mark
+candidate below.
+
+The strongest signal for the rest is the English free translation: a '?'
 in the TRANSL is unambiguously a question mark, so when a sentence's
-original FORM and its TRANSL contain the SAME number of '?' (after
-removing the translator-uncertainty marker '(?)' from the TRANSL), every
-'?' in that sentence is taken to be a question mark. Two guards keep this
+candidate '?' count equals its TRANSL's '?' count (after removing the
+translator-uncertainty marker '(?)' from the TRANSL), every candidate in
+that sentence is taken to be a question mark. Two guards keep this
 sound: the match is skipped when any M under the S contains '?' (a
 word-internal glottal surfaces in its morpheme segmentation, proving the
 FORM count includes a glottal), and M-tier characters are never affected.
@@ -73,6 +79,7 @@ from __future__ import annotations
 import argparse
 import csv
 import sys
+import unicodedata
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
@@ -123,6 +130,27 @@ def _attested_bare(text: str, i: int, vocab: frozenset) -> bool:
     return bool(candidate) and candidate.casefold() in vocab
 
 
+def _is_letter(ch: str) -> bool:
+    return bool(ch) and unicodedata.category(ch).startswith("L")
+
+
+def countable_questions(text: str) -> int:
+    """Number of '?' that are question-mark CANDIDATES: not letter-followed
+    (those are glottals) and not the '(?)' uncertainty marker."""
+    n = 0
+    for i, ch in enumerate(text):
+        if ch != "?":
+            continue
+        prev = text[i - 1] if i else ""
+        nxt = text[i + 1] if i + 1 < len(text) else ""
+        if prev == "(" and nxt == ")":
+            continue
+        if _is_letter(nxt):
+            continue
+        n += 1
+    return n
+
+
 def classify(text: str, tier: str, *, is_last_w: bool = False,
              s_final_is_punct: bool = False,
              all_question: bool = False,
@@ -134,19 +162,25 @@ def classify(text: str, tier: str, *, is_last_w: bool = False,
     for i, ch in enumerate(text):
         if ch not in SCAN_CHARS:
             continue
+        prev = text[i - 1] if i else ""
+        nxt = text[i + 1] if i + 1 < len(text) else ""
         if ch in QUOTE_CHARS:
             out.append(QUOTE)
         elif tier == "M":
             out.append(GLOTTAL)
+        elif prev == "(" and nxt == ")":
+            out.append(QPUNCT)  # the source's '(?)' uncertainty marker
+        elif _is_letter(nxt):
+            out.append(GLOTTAL)  # question marks never precede letters
         elif all_question:
             out.append(QPUNCT)
-        elif i + 1 < len(text) and text[i + 1] in QUOTE_CHARS | {'"'}:
+        elif nxt in QUOTE_CHARS | {'"'}:
             out.append(QPUNCT)
         elif i == final_index and (tier == "S" or (is_last_w and s_final_is_punct)):
             out.append(QPUNCT)
         elif vocab is not None and (
             (tier == "W" and i == final_index)
-            or (tier == "S" and i + 1 < len(text) and text[i + 1].isspace())
+            or (tier == "S" and nxt.isspace())
         ) and _attested_bare(text, i, vocab):
             out.append(QPUNCT)
         else:
@@ -252,7 +286,7 @@ def process_file(path: Path, report: list, dry_run: bool,
                       for w in ws for m in w.findall("M")
                       for mf in [m.find('FORM[@kindOf="original"]')]
                       if mf is not None)
-        s_q = s_text.count("?")
+        s_q = countable_questions(s_text)
         all_question = s_q > 0 and s_q == transl_q and not m_has_q
         elements = [(s, "S", False)]
         for w in ws:
