@@ -289,3 +289,21 @@ Cross-file registry checks (`standards.csv`, `dialects.csv`, orthography
 profiles, conversion-table headers) report **SOFT** findings, not HARD
 failures — registries may be legitimately out of sync mid-migration. Only
 structural unreadability (file missing/unparseable) is HARD.
+
+### POL-035 · RULED · 2026-08-10 · pre-correction baselines
+When automated corrections first touch a corpus's published XML, what
+guarantees we can still see (and reproduce) the uncorrected state depends
+on the corpus type:
+- **Regenerable corpora** (a reproduction pipeline exists in
+  `CodeAndDocs/` — e.g. Glosbe): nothing extra. Each pipeline run
+  self-corrects from source; the pipeline *is* the baseline.
+- **Non-regenerable corpora**: before corrections are **first** applied,
+  snapshot the pristine pre-correction XML into that corpus's
+  `CodeAndDocs/` as the reproduction baseline, and document the snapshot
+  in the corpus README.
+No real corpus data has been corrected yet, so this is a per-corpus step
+at the time the pipeline actually runs (i.e. during the regeneration
+sweep). Backstops either way: git history, and the committed correction
+log (the c024/c025 log, per the spec recording this decision in the
+parallel workstream). Companion to POL-030, which covers *hand* edits;
+this covers *automated* corrections.
