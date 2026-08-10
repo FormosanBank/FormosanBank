@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-"""Temporary, exploratory classifier for single-quote ``'`` characters.
+"""Classifier for single-quote ``'`` characters in FORM text.
 
 For each ``'`` occurrence in a sentence, decides whether it is a glottal stop,
 a quotation mark, or ambiguous, following the verbatim spec in the task that
-created this file. This is exploratory tooling, not part of the standard QC
-pipeline.
+created this file. This module is production code: `QC/cleaning/clean_xml.py`
+imports it to drive the original-tier ``'``-as-quotation correction (via
+`apply_quote_corrections`). It also provides a standalone CLI (`main`) for
+corpus-wide audits.
 
 Public API
 ----------
@@ -402,22 +404,6 @@ def _find_lang_files(corpora_root, lang):
         if f'xml:lang="{lang}"' in head:
             files.append(path)
     return files
-
-
-def _sentence_forms(path, lang):
-    """Return the S-level original FORM texts for a file of the given lang."""
-    try:
-        root = ET.parse(path).getroot()
-    except ET.ParseError:
-        return []
-    if root.tag != "TEXT" or root.get(_LANG_ATTR) != lang:
-        return []
-    out = []
-    for s in root.findall("S"):
-        for form in s.findall("FORM"):
-            if form.get("kindOf") == "original" and form.text:
-                out.append(" ".join(form.text.split()))
-    return out
 
 
 def _sentence_records(path, lang):
