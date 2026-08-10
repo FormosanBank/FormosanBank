@@ -125,6 +125,7 @@ IDEMPOTENT_FIXTURES = [
     "c022_sentence_initial_asterisk.xml",
     "c027_zero_width_in_form_and_transl.xml",
     "c028_double_encoded_entities.xml",
+    "c029_tilde_lookalikes_in_form.xml",
 ]
 
 
@@ -1111,3 +1112,26 @@ def test_C028_warning_rows_emitted(tmp_path, fixtures_dir, copy_fixture):
     with open(warnings_csv, newline="", encoding="utf-8") as f:
         rows = [r for r in _csv.DictReader(f) if r["rule_id"] == "c028"]
     assert rows, "expected c028 warning rows for decoded residue"
+
+
+# =============================================================================
+# C029 — tilde look-alikes canonicalize to ASCII '~' (POL-013 codepoint)
+# =============================================================================
+
+
+def test_C029_math_tilde_and_wave_dash_become_ascii(
+    tmp_path, fixtures_dir, copy_fixture
+):
+    """U+223C (LaTeX math tilde) and U+301C (wave dash) -> '~' U+007E in
+    FORM and non-Chinese TRANSL, so reduplication notation is one
+    codepoint corpus-wide."""
+    work = copy_fixture(
+        fixtures_dir / "c029_tilde_lookalikes_in_form.xml", tmp_path)
+    proc = _run_clean(tmp_path)
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    orig = _form_texts_with_kindof(work, "S", "original")
+    assert orig[0] == "Pa~pakat"
+    assert orig[1] == "ma~kero"
+    transl = _transl_texts(work)
+    assert transl[0] == "RED~walk"
+    assert "∼" not in " ".join(orig + transl)

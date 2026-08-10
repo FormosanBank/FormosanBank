@@ -111,7 +111,7 @@ canonicalizes the glyph the first time the corpus runs through the
 pipeline, so there is no per-corpus opt-out of `∅` in published data. Spec:
 `docs/superpowers/specs/2026-08-09-null-morpheme-handling-design.md`.
 
-### POL-013 · PARTIAL · 2026-08-10 · the tilde
+### POL-013 · RULED · 2026-08-10 · the tilde
 1. **Semantics — RULED (2026-08-10).** Phonemic variants on the PHON tier
    (and in orthography-profile IPA cells, which flow verbatim into PHON)
    are written **`[x|y]`** — two or more pipe-separated alternatives in
@@ -125,11 +125,12 @@ pipeline, so there is no per-corpus opt-out of `∅` in published data. Spec:
    `~` in PHON — regenerate). Published PHON migrates at the regeneration
    sweep. Spec:
    `docs/superpowers/specs/2026-08-10-phon-variant-notation-design.md`.
-2. **Codepoint — still open** (recommendation stands): PDF text layers
-   emit U+223C `∼` (occasionally U+301C) where the convention is ASCII
-   `~` U+007E (e.g. Bril 2024's `RED∼stem`, 15 sites in the
-   Amis-Adversative dev repo). *Recommendation: add U+223C/U+301C → `~`
-   to `swap_punctuation`; pure typography per the POL-010 rationale.*
+2. **Codepoint — RULED (2026-08-10).** Tilde look-alikes canonicalize to
+   ASCII `~` U+007E: U+223C TILDE OPERATOR (what LaTeX-typeset PDFs emit
+   for the reduplication tilde — e.g. Bril 2024's `RED∼stem`) and U+301C
+   WAVE DASH. Implemented in `clean_xml`'s `swap_punctuation` (C029),
+   pure typography per the POL-010 rationale. Chinese TRANSL is
+   unaffected (that branch never calls `swap_punctuation`).
 
 ### POL-014 · RULED · GitBook · infixes on W/M tiers
 W-tier FORMs mark an infix with ASCII angle brackets (`k<um>a'en`); S-level

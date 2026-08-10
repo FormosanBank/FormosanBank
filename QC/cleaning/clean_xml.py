@@ -418,6 +418,14 @@ def swap_punctuation(text):
         # context decide downstream — standardize.py's C012 strips '-' from
         # S-level standard FORMs only in morpheme-segmented sentences and
         # keeps digit-flanked '-' (dates, verse ranges) everywhere.
+        # Tilde look-alikes → ASCII '~' (POL-013 codepoint ruling,
+        # 2026-08-10): LaTeX-typeset PDFs emit the math TILDE OPERATOR
+        # where the reduplication convention wants a plain tilde; the CJK
+        # wave dash is the same visual twin from CJK-typeset sources.
+        # (Chinese TRANSL is unaffected — that branch never calls
+        # swap_punctuation, so a wave dash in Chinese text survives.)
+        '∼': '~',  # U+223C TILDE OPERATOR
+        '〜': '~',  # U+301C WAVE DASH
         '‐': '-',  # U+2010 HYPHEN
         '‑': '-',  # U+2011 NON-BREAKING HYPHEN
         '‒': '-',  # U+2012 FIGURE DASH
