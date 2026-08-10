@@ -353,6 +353,11 @@ def g004_infix_root_reconstructed(
     reconstructs perfectly under a multiset comparison, V068 cannot see this
     failure at all. Comparison here is casefolded, since the guide forbids
     lowercasing the text tier but the root may be capitalised in only one place.
+
+    A root may carry several infixes ('t<em>a<ka>kesi', Puyuma): the expected
+    M is the root rejoined across ALL of them ('takesi'), so the surrounding
+    context of each infix is cleared of the other infixes before rejoining,
+    and one missing root is reported once, not once per infix.
     """
     findings: list[Finding] = []
     for w in tree.iter("W"):
@@ -366,6 +371,10 @@ def g004_infix_root_reconstructed(
             (_form_text(m) or "").strip("-").casefold()
             for m in ms
         }
+        # Both branches independently fixed the stacked-infix false
+        # positive (Puyuma-Teng class); this per-unit version is kept as
+        # the superset — it also accepts the POL-014 hyphenated root
+        # spelling ('t-a') alongside the rejoined one ('ta').
         for unit in _SPLIT_UNITS.split(form):
             infixes = _ANGLE.findall(unit)
             if not infixes:

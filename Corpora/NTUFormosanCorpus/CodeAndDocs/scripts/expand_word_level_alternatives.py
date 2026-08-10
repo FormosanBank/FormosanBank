@@ -94,25 +94,65 @@ def _split(text, n):
     return parts
 
 
-def _rebuild_morphemes(w, fo, fs, po, ps, ge, gz, wid):
-    """Reuse existing <M> elements as formatting templates; rebuild k of them."""
-    pieces = [fo.split("-"), fs.split("-"), po.split("-"),
-              ps.split("-"), ge.split("-"), gz.split("-")]
+def _split_opt(text, n):
+    """Like _split but returns None instead of raising.
+
+    PHON tiers only: depending on the add_phonology vintage that produced
+    the file, PHON may have had its segmentation/alternation markers
+    ('-', and even '/') stripped, in which case the alternation cannot be
+    recovered from PHON. The caller then leaves PHON untouched for the
+    corpus-wide add_phonology refresh (make.sh's final step) to
+    regenerate from the updated FORMs.
+    """
+    parts = (text or "").split("/")
+    return parts if len(parts) == n else None
+
+
+def _rebuild_morphemes(w, fo, fs, po, ps, ge, gz, wid, stats):
+    """Reuse existing <M> elements as formatting templates; rebuild k of them.
+
+    FORM and gloss tiers must all split into the same k morphemes on '-'.
+    PHON tiers are best-effort (po/ps may be None, or may not carry
+    hyphens under marker-stripping add_phonology vintages): when a PHON
+    tier cannot be split into k pieces, the M-level PHON is cleared and
+    left for the final add_phonology refresh.
+    """
+    pieces = [fo.split("-"), fs.split("-"), ge.split("-"), gz.split("-")]
     k = len(pieces[0])
     if any(len(p) != k for p in pieces):
         raise AssertionError(f"morpheme counts disagree for {wid}: "
                              f"{[len(p) for p in pieces]}")
+
+    def phon_pieces(text):
+        if text is None:
+            return None
+        parts = text.split("-")
+        return parts if len(parts) == k else None
+
+    po_p, ps_p = phon_pieces(po), phon_pieces(ps)
     templates = w.findall("M")
     inter_tail, last_tail = templates[0].tail, templates[-1].tail
     keep = templates[:k]
     for extra in templates[k:]:
         w.remove(extra)
-    fo_p, fs_p, po_p, ps_p, ge_p, gz_p = pieces
+    fo_p, fs_p, ge_p, gz_p = pieces
     for j, m in enumerate(keep):
         _child(m, "FORM", "kindOf", "original").text = fo_p[j]
         _child(m, "FORM", "kindOf", "standard").text = fs_p[j]
-        _child(m, "PHON", "kindOf", "original").text = po_p[j]
-        _child(m, "PHON", "kindOf", "standard").text = ps_p[j]
+        for kind, pp in (("original", po_p), ("standard", ps_p)):
+            pe = _child(m, "PHON", "kindOf", kind)
+            if pe is None:
+                continue
+            if pp is not None:
+                pe.text = pp[j]
+            else:
+                # None, not "": empty-string text serializes as
+                # <PHON></PHON>, which reparses to None and reserializes
+                # as <PHON/> — breaking the byte-identical round-trip
+                # guard of every later step that touches this file.
+                pe.text = None
+                stats["M PHON cleared (marker-free vintage; "
+                      "regenerate via add_phonology)"] += 1
         _child(m, "TRANSL", _XLANG, "eng").text = ge_p[j]
         _child(m, "TRANSL", _XLANG, "zho").text = gz_p[j]
         m.set("id", f"{wid}M{j + 1}")
@@ -126,27 +166,36 @@ def _retarget(elem, old, new):
             el.set("id", new + cid[len(old):])
 
 
-def _apply_alt(s, w_index, i, N, splits, free, sform_tokens, sphon_tokens):
+def _apply_alt(s, w_index, i, N, splits, free, sform_tokens, sphon_tokens,
+               stats):
     w = s.findall("W")[w_index]
     wid = w.get("id")
-    fo, fs, po, ps, ge, gz = (splits[k][i] for k in
-                              ("fo", "fs", "po", "ps", "ge", "gz"))
+    fo, fs, ge, gz = (splits[k][i] for k in ("fo", "fs", "ge", "gz"))
+    po = splits["po"][i] if splits["po"] is not None else None
+    ps = splits["ps"][i] if splits["ps"] is not None else None
     _child(w, "FORM", "kindOf", "original").text = fo
     _child(w, "FORM", "kindOf", "standard").text = fs
-    _child(w, "PHON", "kindOf", "original").text = po
-    _child(w, "PHON", "kindOf", "standard").text = ps
     _child(w, "TRANSL", _XLANG, "eng").text = ge
     _child(w, "TRANSL", _XLANG, "zho").text = gz
-    _rebuild_morphemes(w, fo, fs, po, ps, ge, gz, wid)
+    _rebuild_morphemes(w, fo, fs, po, ps, ge, gz, wid, stats)
     # sentence-level surface form: swap the slash token for this alternative's
     f_o = _child(s, "FORM", "kindOf", "original")
     f_s = _child(s, "FORM", "kindOf", "standard")
-    p_o = _child(s, "PHON", "kindOf", "original")
-    p_s = _child(s, "PHON", "kindOf", "standard")
     f_o.text = f_o.text.replace(sform_tokens["o"], fo.replace("-", ""))
     f_s.text = f_s.text.replace(sform_tokens["s"], fs.replace("-", ""))
-    p_o.text = p_o.text.replace(sphon_tokens["o"], po.replace("-", ""))
-    p_s.text = p_s.text.replace(sphon_tokens["s"], ps.replace("-", ""))
+    # PHON (W and S levels): only when the file's PHON vintage still
+    # carries the alternation; otherwise leave for the add_phonology
+    # refresh, which regenerates PHON from the updated FORMs.
+    for kind, alt, tok in (("original", po, "o"), ("standard", ps, "s")):
+        wp = _child(w, "PHON", "kindOf", kind)
+        sp = _child(s, "PHON", "kindOf", kind)
+        if alt is None:
+            stats[f"W/S PHON ({kind}) left for add_phonology refresh"] += 1
+            continue
+        if wp is not None:
+            wp.text = alt
+        if sp is not None and sphon_tokens.get(tok):
+            sp.text = sp.text.replace(sphon_tokens[tok], alt.replace("-", ""))
     _child(s, "TRANSL", _XLANG, "zho").text = free[i]["zho"]
     _child(s, "TRANSL", _XLANG, "eng").text = free[i]["eng"]
 
@@ -186,11 +235,15 @@ def process_file(path, entries, dry_run, stats):
             raw = _split(_child(w, "TRANSL", _XLANG, lang).text, N)
             return [cfg.get("gloss_fixes", {}).get(p, p) for p in raw]
 
+        def phon_text(kind):
+            el = _child(w, "PHON", "kindOf", kind)
+            return el.text if el is not None else None
+
         splits = {
             "fo": _split(_child(w, "FORM", "kindOf", "original").text, N),
             "fs": _split(_child(w, "FORM", "kindOf", "standard").text, N),
-            "po": _split(_child(w, "PHON", "kindOf", "original").text, N),
-            "ps": _split(_child(w, "PHON", "kindOf", "standard").text, N),
+            "po": _split_opt(phon_text("original"), N),
+            "ps": _split_opt(phon_text("standard"), N),
             "ge": gloss_parts("eng"),
             "gz": gloss_parts("zho"),
         }
@@ -199,8 +252,10 @@ def process_file(path, entries, dry_run, stats):
             "s": _child(w, "FORM", "kindOf", "standard").text.replace("-", ""),
         }
         sphon_tokens = {
-            "o": _child(w, "PHON", "kindOf", "original").text.replace("-", ""),
-            "s": _child(w, "PHON", "kindOf", "standard").text.replace("-", ""),
+            "o": (phon_text("original") or "").replace("-", "")
+                 if splits["po"] is not None else None,
+            "s": (phon_text("standard") or "").replace("-", "")
+                 if splits["ps"] is not None else None,
         }
         parent = s.getparent()
         clones = []
@@ -209,9 +264,11 @@ def process_file(path, entries, dry_run, stats):
             for au in clone.findall(".//AUDIO"):
                 au.getparent().remove(au)
             _retarget(clone, cfg["sid"], f"{cfg['sid']}-alt{i + 1}")
-            _apply_alt(clone, w_index, i, N, splits, free, sform_tokens, sphon_tokens)
+            _apply_alt(clone, w_index, i, N, splits, free, sform_tokens,
+                       sphon_tokens, stats)
             clones.append(clone)
-        _apply_alt(s, w_index, 0, N, splits, free, sform_tokens, sphon_tokens)
+        _apply_alt(s, w_index, 0, N, splits, free, sform_tokens,
+                   sphon_tokens, stats)
         for off, clone in enumerate(clones, start=1):
             parent.insert(parent.index(s) + off, clone)
         if _slash_in_forms(s) or any(_slash_in_forms(c) for c in clones):

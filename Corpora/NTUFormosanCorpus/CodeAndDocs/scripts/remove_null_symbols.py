@@ -48,7 +48,7 @@ from pathlib import Path
 import lxml.etree as etree
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from _phon_regen import language_of, load_mappings, regen_standard_phon  # noqa: E402
+from _phon_regen import dialect_of, language_of, load_mappings, regen_standard_phon  # noqa: E402
 
 DEFAULT_CHARS = "∅øØ"
 
@@ -80,7 +80,7 @@ def process_file(path, chars, dry_run, stats):
         stats["file skipped: round-trip guard"] += 1
         return False
     root = tree.getroot()
-    mp = load_mappings(language_of(root))
+    mp = load_mappings(language_of(root), dialect_of(root))
     modified = False
     for level in ("S", "W"):
         for el in root.iter(level):

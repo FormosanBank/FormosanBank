@@ -8,7 +8,7 @@ import csv
 import re
 import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from utils import clean_punctuation, add_transl_element, SPEAKER_TOKENS, is_speaker_token, strip_speaker_labels_from_translation, PAREN_TOKEN_RE, UNGRAMMATICAL_PAREN_RE, _drop_starred_slash, filter_punct_words, is_punct_only, fill_propername_gloss, _norm_paren, join_ori_tokens, insert_xxxx_tokens, strip_l2m, strip_prosodic_markers, expand_infixes
+from utils import clean_punctuation, add_transl_element, SPEAKER_TOKENS, is_speaker_token, strip_speaker_labels_from_translation, PAREN_TOKEN_RE, resolve_ungrammatical_parens, _drop_starred_slash, filter_punct_words, is_punct_only, fill_propername_gloss, _norm_paren, join_ori_tokens, insert_xxxx_tokens, strip_l2m, strip_prosodic_markers, expand_infixes
 
 # Maps the folder-derived dialect token to the display name used in the XML
 # dialect attribute.  Languages whose folder suffix equals their language name
@@ -173,12 +173,16 @@ def get_sentences(data, src=""):
             gloss_group = [[strip_prosodic_markers(g[0])] + list(g[1:]) for g in gloss_group]
             gloss_group = [g for g in gloss_group if g[0].strip()]
 
-            # Remove *(text) / (*text) — ungrammatical parentheticals — before any further
-            # processing so they never appear in the S FORM or generate a <W> element.
-            gloss_group = [w for w in gloss_group
-                           if not UNGRAMMATICAL_PAREN_RE.search(w[0])]
-            ori_tokens = [t for t in ori_tokens_raw
-                          if not UNGRAMMATICAL_PAREN_RE.search(t)]
+            # Resolve *(text) / (*text) grammaticality notation before any further
+            # processing: *(text) marks OBLIGATORY material (the attested sentence
+            # includes it — keep the content in the FORM and as a <W>), while
+            # (*text) marks FORBIDDEN material (remove marking and content; no <W>
+            # element is emitted for a token that becomes empty).
+            gloss_group = [[resolve_ungrammatical_parens(c) for c in w]
+                           for w in gloss_group]
+            gloss_group = [w for w in gloss_group if w[0].strip()]
+            ori_tokens = [resolve_ungrammatical_parens(t) for t in ori_tokens_raw]
+            ori_tokens = [t for t in ori_tokens if t.strip()]
 
             # Resolve word-level slash alternatives where one part is starred:
             # e.g. 'patuelre/*makanaelre' → 'patuelre', '*tu-a-/ma-auvagavagay' → 'ma-auvagavagay'.

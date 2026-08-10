@@ -19,7 +19,7 @@ Read `FormosanBank/CLAUDE.md` (auto-loaded) for the XML schema and the
 `docs/superpowers/specs/2026-08-03-audit-gloss-scrape-design.md` for what each
 G rule means and why it exists.
 
-Two conventions that override the scraping guide students are given:
+Three conventions that override the scraping guide students are given:
 
 1. **M-tier notation follows the repo, not the guide.** The guide says an M
    FORM is "just the letters"; in fact infix Ms keep `-X-` (V067) and clitic
@@ -27,6 +27,14 @@ Two conventions that override the scraping guide students are given:
 2. **Markers in S-`FORM[@kindOf="original"]` are legal.** Both the segmented
    and unsegmented style are acceptable (maintainer decision, 2026-08-03).
    Only an inconsistent *mix* is worth reporting (G010).
+3. **Parenthesis-star acceptability notation has two opposite meanings.**
+   `(*X)` means X is *prohibited* (the grammatical reading omits it);
+   `*(X)` means X is *obligatory* (the grammatical reading INCLUDES it —
+   omitting X is what the star marks as ungrammatical); `A/*B` slash
+   alternatives keep the unstarred alternative. A scrape that resolves stars
+   for V129 by uniformly dropping parenthesized material silently records the
+   *ungrammatical* string for every `*(X)` example — found on Shih-Rukai
+   2026-08-10, where 6 of 18 starred forms were inverted this way.
 
 ## Inputs (gather via AskUserQuestion if missing)
 
@@ -123,6 +131,14 @@ the source at the cited lines. Rank by:
   transformation), `G005` (label typos). These are usually one fix for many
   rows.
 - **Cosmetic last** — `G012`, `G007`.
+
+**Always sweep starred source forms by hand.** No G rule checks
+acceptability-notation resolution. List every source form containing `*`
+(the dev repo's ledger, or G022's "lost `*`" rows, will point at them),
+classify each as `*(X)` obligatory / `(*X)` prohibited / `A/*B` slash
+alternative, and verify the XML reading resolves it in the right direction
+(convention 3 above). An inverted `*(X)` puts a thesis-marked-ungrammatical
+string in FORM — structural damage, rank it first.
 
 Distinguish *what the script flagged* from *what you verified by opening the
 file*. A finding you have not opened is a candidate, not a finding.
