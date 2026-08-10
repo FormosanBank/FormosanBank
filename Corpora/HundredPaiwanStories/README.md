@@ -86,7 +86,7 @@ The four texts with `dialect="unknown"` (`090`, `091`, `097`, `099`) fall back t
 
 12. **Repair the `?`/glottal-stop conflation**
 
-In Ferrell's orthography `?` is both the glottal-stop letter and question-mark punctuation, and `'` appears in the source only as a nested quotation mark; steps 10–11 map all of them blindly. `fix_ferrell.py` post-corrects both tiers, classifying every `?`/`'` from its context in the original tier (see the script docstring): question marks are restored on the standard tier, and both `PHON` tiers are regenerated with the punctuation masked out, so no spurious `ʔ` remains. Ambiguous cases (a non-final word ending in `?`) are kept as glottals and listed in `fix_ferrell_report.csv` for review.
+In Ferrell's orthography `?` is both the glottal-stop letter and question-mark punctuation, and `'` appears in the source only as a nested quotation mark; steps 10–11 map all of them blindly. `fix_ferrell.py` post-corrects both tiers, classifying every `?`/`'` from the original tier (see the script docstring). The primary signal is the English free translation: when a sentence's FORM and TRANSL contain the same number of `?` (ignoring the `(?)` uncertainty marker, and skipped if any morpheme carries `?`), every `?` in the sentence is a question mark; the remainder falls back to context rules (quote-adjacent or sentence-final `?` = punctuation). Question marks are restored on the standard tier, and both `PHON` tiers are regenerated with the punctuation masked out, so no spurious `ʔ` remains. Residual ambiguous cases (a non-final word ending in `?` in a non-count-matched sentence) are kept as glottals and listed in `fix_ferrell_report.csv` for review.
 
 ```bash
     python Corpora/HundredPaiwanStories/CodeAndDocs/fix_ferrell.py
