@@ -16,7 +16,7 @@ def test_build_set_unions_singleword_and_frequent_interior():
         ["o", "wawa", "ko", "'ayam"],      # interior: wawa, ko
         ["a", "wawa", "sa", "ira"],        # interior: wawa, sa
     ]
-    result = bad.build_attestation_set(forms, min_freq=3)
+    result = bad.build_attestation_set(forms, min_freq=3, include_interior=True)
     assert "faloco'" in result          # single-word S-FORM (any length)
     assert "wawa" in result             # interior freq 3 >= 3
     assert "no" not in result           # interior freq 1 < 3
@@ -26,7 +26,7 @@ def test_build_set_unions_singleword_and_frequent_interior():
 
 def test_build_set_is_casefolded():
     forms = [["Wawa"], ["o", "WAWA", "ko", "x"], ["a", "wawa", "sa", "y"]]
-    result = bad.build_attestation_set(forms, min_freq=2)
+    result = bad.build_attestation_set(forms, min_freq=2, include_interior=True)
     assert "wawa" in result
     assert "Wawa" not in result and "WAWA" not in result
 
@@ -45,7 +45,7 @@ def test_generator_writes_reference_file(tmp_path):
         '</TEXT>\n', encoding="utf-8")
     ref = tmp_path / "reference"
     bad.main([
-        "--language", "Amis", "--min-freq", "3",
+        "--language", "Amis", "--min-freq", "3", "--include-interior",
         "--corpora_path", str(tmp_path / "Corpora"),
         "--reference_dir", str(ref),
     ])

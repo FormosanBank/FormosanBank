@@ -229,3 +229,37 @@ def test_apply_transl_no_quotes_short_circuits():
 def test_apply_no_quote_is_noop():
     text = "o wawa no tao"
     assert aqc(text, [], DICT) == (text, [], [], [])
+
+
+# --- Guarded TRANSL-count quotation rule ---
+from QC.utilities.classify_quotes import _transl_quotation_targets as tqt
+
+
+def test_transl_count_rule_converts_outermost_pair():
+    # TRANSL has 2 quote marks; FORM's outer ' (unattested) become ".
+    text = "o 'zzq mid wqx' ko"
+    new_text, corrected, stranded, ambiguous = aqc(text, ['he said "x"'], DICT)
+    assert new_text == 'o "zzq mid wqx" ko'
+    assert len(corrected) == 2 and stranded == [] and ambiguous == []
+
+
+def test_transl_count_rule_leaves_middle_word_glottal():
+    # 3 candidates: outer two are the quotes; the middle faloco' (attested word-
+    # final glottal) is left intact. Mirrors U001404/U002127.
+    text = "a: 'zzq faloco' wqx.'"
+    new_text, corrected, stranded, ambiguous = aqc(text, ['said "y"'], DICT)
+    assert new_text == 'a: "zzq faloco\' wqx."'
+    assert len(corrected) == 2
+
+
+def test_transl_count_rule_guard_blocks_attested_boundary():
+    # Both boundary words are attested glottal words -> rule must NOT fire.
+    text = "'ayam mid faloco'"
+    assert tqt(text, ['a "bird"'], set(w.casefold() for w in DICT)) == []
+    new_text, corrected, _, _ = aqc(text, ['a "bird"'], DICT)
+    assert new_text == text and corrected == []
+
+
+def test_transl_count_rule_no_fire_without_transl_quotes():
+    text = "o 'zzq mid wqx' ko"
+    assert aqc(text, ['plain translation, no quotes'], DICT) == (text, [], [], [])

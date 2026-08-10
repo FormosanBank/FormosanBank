@@ -344,6 +344,44 @@ def stranded_side(form_text, i, dictionary):
     return cand[0] if len(cand) == 1 else None
 
 
+def _transl_quotation_targets(text, transls, dict_cf):
+    """Guarded complementary rule: TRANSL quote marks matched by outermost FORM '.
+
+    Returns the sorted list of ' indices to rewrite to " (empty if the rule does
+    not fire). Fires only when: the S has TRANSL(s); (TRANSL quote-mark count −
+    FORM " count) = need > 0 and even; there are >= need non-internal '
+    candidates; and the outermost ``need`` of them do NOT sit in an attested
+    token (the guard against genuine glottal-boundary words, e.g. 'ayam …
+    faloco'). The outermost ``need`` candidates — the first need/2 and the last
+    need/2 — are the quotation marks; middle candidates (word-final/initial
+    glottals inside the quoted span) stay glottal.
+    """
+    if not transls:
+        return []
+    tq = sum(ch in TRANSL_QUOTES for t in transls for ch in t)
+    fq = sum(ch in FORM_DQUOTES for ch in text)
+    need = tq - fq
+    if need <= 0 or need % 2:
+        return []
+    cands = [i for i, ch in enumerate(text)
+             if ch == QUOTE and _adjacency(text, i) != "internal"]
+    if len(cands) < need:
+        return []
+    k = need // 2
+    chosen = cands[:k] + cands[-k:]
+    spans = list(_token_spans(text))
+
+    def token_at(i):
+        for s, e, t in spans:
+            if s <= i < e:
+                return _strip_flanking_punct(t)
+        return ""
+
+    if any(token_at(i).casefold() in dict_cf for i in chosen):
+        return []
+    return sorted(chosen)
+
+
 def apply_quote_corrections(form_text, transls, dictionary):
     """Decide each ' in an original-tier FORM and apply corrections.
 
@@ -355,12 +393,28 @@ def apply_quote_corrections(form_text, transls, dictionary):
       - ambiguous: ' left in place, needs human review
     Glottal (internal / bound / pair) outcomes are left untouched and not
     reported. A TRANSL that confirms all-glottal short-circuits to no changes.
+
+    Order of precedence:
+      1. TRANSL confirms all-glottal -> no changes.
+      2. Guarded TRANSL-count quotation rule -> when it fires, the outermost
+         matched ' become ", every other ' is left glottal (this OVERRIDES the
+         per-' classifier, whose pairing can misfire when the quoted span's
+         boundary words themselves end in glottals).
+      3. Otherwise, the per-' classifier (canonical `: '…'.` pairing etc.).
     """
     text = " ".join(form_text.split())
     if QUOTE not in text:
         return text, [], [], []
     if translation_confirms_glottal(text, transls):
         return text, [], [], []
+
+    dict_cf = _casefold_dict(dictionary)
+    transl_targets = _transl_quotation_targets(text, transls, dict_cf)
+    if transl_targets:
+        chars = list(text)
+        for i in transl_targets:
+            chars[i] = '"'
+        return "".join(chars), transl_targets, [], []
 
     corrected, stranded, ambiguous = [], [], []
     delete = set()                      # space indices to drop (stranded repair)

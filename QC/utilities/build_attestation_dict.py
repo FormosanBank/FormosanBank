@@ -1,13 +1,19 @@
 """Build a per-language attestation dictionary for the quote/glottal classifier.
 
-The set is the union of:
-  A) single-word sentence-level S-FORMs (whitespace-free tokens), and
-  B) interior tokens (neither sentence-initial nor sentence-final),
-     punctuation-stripped, containing >=1 letter/digit, with frequency
-     >= --min-freq,
-across all Corpora/*/XML files whose TEXT xml:lang resolves to <Language>,
-using both original and standard S-FORM tiers. Output: newline-delimited,
-sorted, casefolded, to <reference_dir>/<Language>/attestation.txt.
+By default the set is **single-word sentence-level S-FORMs only** (whitespace-free
+tokens) — i.e. dictionary entries. This keeps the set clean: interior tokens
+harvested from running text can be polluted by unresolved quote-`'` (e.g. a
+quote-wrapped 'madimadiay leaking in as if it were a word), which then defeats
+the classifier's attestation guard. Single-word S-FORMs are far less prone to
+this, and coverage grows naturally as more dictionary entries are added.
+
+With --include-interior, the set additionally unions in interior tokens (neither
+sentence-initial nor sentence-final), punctuation-stripped, containing >=1
+letter/digit, with frequency >= --min-freq. Use with care (pollution risk).
+
+Scans all Corpora/*/XML files whose TEXT xml:lang resolves to <Language>, using
+both original and standard S-FORM tiers. Output: newline-delimited, sorted,
+casefolded, to <reference_dir>/<Language>/attestation.txt.
 
 Regenerate whenever a corpus is ported (the port-corpus-in skill runs this),
 or standalone at any time.
@@ -32,10 +38,11 @@ def _has_letter_or_digit(word: str) -> bool:
     return any(_is_letter(ch) or ch.isdigit() for ch in word)
 
 
-def build_attestation_set(forms_by_sentence, min_freq):
-    """Union of single-word S-FORMs and >=min_freq interior tokens (casefolded).
+def build_attestation_set(forms_by_sentence, min_freq=3, include_interior=False):
+    """Single-word S-FORMs, optionally unioned with >=min_freq interior tokens.
 
     forms_by_sentence: list of token lists (each = one S-FORM, whitespace-split).
+    include_interior=False (default) returns single-word S-FORMs only.
     """
     singleword = set()
     interior = Counter()
@@ -44,10 +51,13 @@ def build_attestation_set(forms_by_sentence, min_freq):
             core = _strip_flanking_punct(toks[0]).casefold()
             if core:
                 singleword.add(core)
-        for t in toks[1:-1]:                       # exclude initial + final
-            core = _strip_flanking_punct(t).casefold()
-            if core and _has_letter_or_digit(core):
-                interior[core] += 1
+        if include_interior:
+            for t in toks[1:-1]:                   # exclude initial + final
+                core = _strip_flanking_punct(t).casefold()
+                if core and _has_letter_or_digit(core):
+                    interior[core] += 1
+    if not include_interior:
+        return singleword
     return singleword | {w for w, n in interior.items() if n >= min_freq}
 
 
@@ -76,6 +86,8 @@ def _iter_language_forms(corpora_path, language):
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--language", required=True, help="Display name, e.g. Amis")
+    ap.add_argument("--include-interior", action="store_true",
+                    help="also union in >=min-freq interior tokens (pollution risk)")
     ap.add_argument("--min-freq", type=int, default=3)
     ap.add_argument("--corpora_path", default=str(_REPO_ROOT / "Corpora"))
     ap.add_argument("--reference_dir",
@@ -83,7 +95,8 @@ def main(argv=None):
     args = ap.parse_args(argv)
 
     forms = list(_iter_language_forms(args.corpora_path, args.language))
-    words = build_attestation_set(forms, args.min_freq)
+    words = build_attestation_set(forms, args.min_freq,
+                                  include_interior=args.include_interior)
     out_dir = Path(args.reference_dir) / args.language
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / "attestation.txt"
