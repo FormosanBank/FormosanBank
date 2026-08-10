@@ -116,6 +116,45 @@ derived-only rows.
   **And: merge `main` into `feature/shared-source-phonology` first** — the branch
   lacks main's parser fixes (`149537a10` starred-parens, `d27c1cc29` audio refs).
 
+## Addendum 2: full NEW-pipeline regen via make.sh (2026-08-10, after merging main)
+
+With main merged into `feature/shared-source-phonology` and all fixes applied,
+`make.sh` ran end-to-end (audio skipped) and the output was compared to the
+published corpus. **Every difference is either an intentional new-pipeline
+change or a verified improvement; nothing was lost.** Of 20,130 sentences:
+2,067 byte-equal, 17,308 differ only in regenerable tiers (PHON new-style,
+standard-FORM C012/null/accent handling, W/M id scheme — all by design), and
+755 content rows, fully triaged:
+
+- 729 TRANSL: 696 glyph normalization (`「」`→`＂`, `[...]`→`(...)`), 33
+  parenthetical-note junk-tail cleanups — parser normalization, regen cleaner.
+- 7 FORM: `ø`/`Ø` → `∅` canonicalization (by design, null-morpheme spec).
+- 11 FORM: NEW `borrow_segmentation` recoveries (e.g. Bunun M `nii=ik` + empty
+  shell → `nii` + `ik`) — unlocked by routing the reproducibility guard through
+  the current `phonologize` (13 repairs total; 2 restore published repairs the
+  guard had lost, 11 are net-new).
+- 4 FORM: parser recoveries of source words publication dropped (Kanakanavu
+  `arivureemaku`, `na`; Rukai `malra` — the deferred starred-parens fix).
+- 2 FORM: Kavalan Teaching-Weaving punctuation drift (`Raw.`→`Raw`, `o...`→`o`).
+- 1 FORM: Tsou `wu—` → `wu-` (clean_xml dash canonicalization, by design).
+- 1 AUDIO: `00_Seediq_A2-3-3` file attr — parser override added, converges on
+  the next parse.
+
+Bugs found and fixed by this run (commit 999c7635e): empty-string M PHON broke
+later steps' round-trip guards (steps 19/20 silently skipped Rukai.xml — the
+make.sh run initially produced 0 of step 19's 3 collapses); the final
+add_phonology refresh leaves files outside the lxml convention (make.sh now
+normalizes after it); `_phon_regen.py` / `borrow_segmentation.py` re-implemented
+an obsolete PHON vintage (now thin wrappers over `load_profile`/`phonologize`,
+dialect-aware).
+
+Also observed: **9 published files fail the lxml round-trip guard today** (incl.
+the four Tsou files rewritten by the b94ebb942 add_phonology run) — they have
+been silently immune to every post-hoc repair script; the regen re-serializes
+them. And on the published corpus the modernized `borrow_segmentation` would
+now recover 8 more style-invariant words (4 files) — left for the regen rather
+than applied post-hoc.
+
 ## Artifacts
 
 Scratch (session-local, disposable): worktree `scratchpad/ntu-old` (regen output in
