@@ -1,0 +1,31 @@
+# Reports conversion-table health whenever orthography data changes.
+#
+# NEVER BLOCKS (maintainer ruling 2026-08-10): phoneme-level mismatches
+# are often legitimate — earlier orthographies under-distinguish phonemes
+# that Ortho113 distinguishes, and inventories shift with reanalysis. The
+# job writes a two-section step summary (structural defects to fix vs
+# phoneme-level items to review) and always exits 0.
+#
+# Runs on PRs/pushes that touch Orthographies/** so a bad table edit is
+# visible in the PR that makes it, not discovered at standardize time.
+name: conversion-tables
+
+on:
+  pull_request:
+    paths:
+      - "Orthographies/**"
+  push:
+    branches: [main]
+    paths:
+      - "Orthographies/**"
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Report conversion-table health
+        run: python QC/validation/run_conversion_table_checks.py
