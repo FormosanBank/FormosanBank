@@ -145,16 +145,28 @@ class CleanerWarnings:
         })
 
     def write_csv(self) -> None:
+        """Write this run's rows, replacing any previous run's CSV.
+
+        POL-033: the CSV is a per-run report, not a cumulative log. A run
+        with no rows removes a stale CSV rather than leaving last run's
+        findings in place (and still avoids creating empty files).
+        """
         if not self._rows:
+            try:
+                self.csv_path.unlink()
+            except OSError:
+                # Missing file, or csv_path's parent is itself a file
+                # (single-XML corpora_path) — either way nothing stale
+                # exists to remove.
+                pass
             return
         self.csv_path.parent.mkdir(parents=True, exist_ok=True)
-        with open(self.csv_path, "a", newline="", encoding="utf-8") as f:
+        with open(self.csv_path, "w", newline="", encoding="utf-8") as f:
             writer = csv.DictWriter(
                 f,
                 fieldnames=["rule_id", "file", "s_id", "character", "position"],
             )
-            if f.tell() == 0:
-                writer.writeheader()
+            writer.writeheader()
             writer.writerows(self._rows)
 
 
