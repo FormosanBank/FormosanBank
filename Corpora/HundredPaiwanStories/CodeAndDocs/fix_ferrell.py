@@ -23,8 +23,12 @@ sound: the match is skipped when any M under the S contains '?' (a
 word-internal glottal surfaces in its morpheme segmentation, proving the
 FORM count includes a glottal), and M-tier characters are never affected.
 
-Sentences that do not count-match fall back to context rules. Every '?' or
-quote character in an original FORM is classified:
+Sentences that do not count-match fall back to context rules, plus a
+corpus-attestation rule: a glottal stop is part of the word, so a
+word-final '?' whose bare form (the word minus the '?') is attested
+elsewhere in the corpus WITHOUT a final '?' is a question mark (e.g.
+'matsay?' vs. attested 'matsay'). Every '?' or quote character in an
+original FORM is classified:
 
   QUOTE    an apostrophe/single-quote character — always punctuation.
   QPUNCT   a '?' that is punctuation: every '?' of a count-matched S (and
@@ -32,9 +36,14 @@ quote character in an original FORM is classified:
            character (question inside quoted speech), or string-final
            in an S FORM (sentences are always punctuated), or string-final
            in the LAST W of an S whose own final '?' is punctuation (the
-           word carries the sentence's mark).
+           word carries the sentence's mark), or word-final with the bare
+           word attested elsewhere in the corpus.
   GLOTTAL  every other '?' — including ALL '?' in M FORMs (morphemes never
            carry punctuation).
+
+The attestation rule assumes the corpus has no glottal-final/plain minimal
+pairs (word X? and word X both existing); residual word-final '?' whose
+bare form is unattested are still kept as glottals and reported.
 
 Then, for each S / W / M element (the k-th such character in the standard
 FORM corresponds to the k-th in the original FORM — standardize maps '?' to
@@ -76,13 +85,48 @@ from QC.validation._dialect_inventory import ISO_TO_LANGUAGE, standard_orthograp
 
 QUOTE_CHARS = {"'", "’", "‘"}  # straight + curly single quotes
 SCAN_CHARS = QUOTE_CHARS | {"?"}
+# edge punctuation stripped when reducing a token to its bare word ('?' is
+# deliberately NOT in this set — it is the character under analysis)
+EDGE_STRIP = '"\'’‘.,;:!()[]«»'
 
 QUOTE, QPUNCT, GLOTTAL = "quote", "qpunct", "glottal"
 
 
+def _bare(token: str) -> str:
+    return token.strip(EDGE_STRIP)
+
+
+def build_bare_vocab(files) -> frozenset:
+    """Casefolded bare forms of every W token NOT ending in '?'.
+
+    A glottal stop is part of its word, so a word attested without a final
+    '?' is evidence that a '?'-final occurrence of the same word carries a
+    question mark, not a glottal.
+    """
+    vocab = set()
+    for path in files:
+        root = ET.parse(path).getroot()
+        for w in root.iter("W"):
+            form = w.find('FORM[@kindOf="original"]')
+            token = _bare((form.text or "").strip()) if form is not None else ""
+            if token and not token.endswith("?"):
+                vocab.add(token.casefold())
+    return frozenset(vocab)
+
+
+def _attested_bare(text: str, i: int, vocab: frozenset) -> bool:
+    """True if the word whose final char is text[i]=='?' is attested bare."""
+    j = i
+    while j > 0 and not text[j - 1].isspace():
+        j -= 1
+    candidate = _bare(text[j:i])
+    return bool(candidate) and candidate.casefold() in vocab
+
+
 def classify(text: str, tier: str, *, is_last_w: bool = False,
              s_final_is_punct: bool = False,
-             all_question: bool = False) -> list[str]:
+             all_question: bool = False,
+             vocab: frozenset | None = None) -> list[str]:
     """Classify each SCAN_CHARS occurrence in an original-tier text."""
     stripped = text.rstrip()
     final_index = len(stripped) - 1
@@ -99,6 +143,11 @@ def classify(text: str, tier: str, *, is_last_w: bool = False,
         elif i + 1 < len(text) and text[i + 1] in QUOTE_CHARS | {'"'}:
             out.append(QPUNCT)
         elif i == final_index and (tier == "S" or (is_last_w and s_final_is_punct)):
+            out.append(QPUNCT)
+        elif vocab is not None and (
+            (tier == "W" and i == final_index)
+            or (tier == "S" and i + 1 < len(text) and text[i + 1].isspace())
+        ) and _attested_bare(text, i, vocab):
             out.append(QPUNCT)
         else:
             out.append(GLOTTAL)
@@ -165,7 +214,8 @@ def set_phon(parent: ET.Element, form: ET.Element, kind: str, text: str) -> bool
     return False
 
 
-def process_file(path: Path, report: list, dry_run: bool) -> int:
+def process_file(path: Path, report: list, dry_run: bool,
+                 vocab: frozenset | None = None) -> int:
     tree = ET.parse(path)
     root = tree.getroot()
     text_el = root if root.tag == "TEXT" else root.find(".//TEXT")
@@ -215,10 +265,12 @@ def process_file(path: Path, report: list, dry_run: bool) -> int:
                 continue
             flags = classify(orig.text, tier, is_last_w=is_last,
                              s_final_is_punct=s_punct,
-                             all_question=all_question)
-            if (tier == "W" and not is_last and not all_question
-                    and orig.text.rstrip().endswith("?")):
-                # ambiguous: glottal-final word vs. unpunctuated quote
+                             all_question=all_question, vocab=vocab)
+            if (tier == "W" and not is_last and flags
+                    and orig.text.rstrip().endswith("?")
+                    and flags[-1] == GLOTTAL):
+                # still ambiguous after every rule: glottal-final word whose
+                # bare form is unattested elsewhere
                 report.append((path.name, s.get("id"), el.get("id"),
                                orig.text, "non-final W ends in '?'; kept as glottal"))
             new_std_text = None
@@ -262,10 +314,11 @@ def main() -> int:
     if not files:
         print(f"No .xml in {args.xml_dir}", file=sys.stderr)
         return 1
+    vocab = build_bare_vocab(files)
     report: list = []
     total = touched = 0
     for path in files:
-        n = process_file(path, report, args.dry_run)
+        n = process_file(path, report, args.dry_run, vocab)
         if n:
             touched += 1
             total += n
