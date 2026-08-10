@@ -113,6 +113,9 @@ run_step "14. convert_infix_notation"           "$SCRIPTS/convert_infix_notation
 # token maps, so both are re-run after it (idempotent).
 run_step "11b. apply_manual_corrections (re-run after 14)" "$SCRIPTS/apply_manual_corrections.py"
 run_step "12b. repair_l2_markers (re-run after 14)"        "$SCRIPTS/repair_l2_markers.py"
+# A word can become borrowable only after the corrections above repair
+# its FORM (e.g. Bunun 61_S_2 'nii＝ik' -> 'nii=ik'); idempotent re-run.
+run_step "5b. borrow_segmentation (re-run after corrections)" "$SCRIPTS/borrow_segmentation.py"
 run_step "15. split_optional_parentheticals"    "$SCRIPTS/split_optional_parentheticals.py"
 run_step "16. expand_slash_alternatives"        "$SCRIPTS/expand_slash_alternatives.py"
 run_step "17. strip_trailing_slash"             "$SCRIPTS/strip_trailing_slash.py"
