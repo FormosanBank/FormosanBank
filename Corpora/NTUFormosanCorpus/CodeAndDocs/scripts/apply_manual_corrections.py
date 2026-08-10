@@ -28,6 +28,9 @@ Current corrections
    junk from the W/M forms, rebuild the S FORM from the cleaned words,
    and preserve the citation in a ``notes`` attribute on the S-level
    original FORM.
+3. AUDIO boundary repairs (see the AUDIO_FIXES table): seven invalid
+   start/end boundaries in six Stories files, originally hand-edited in
+   commit 1817ae39e and recorded here so they survive regeneration.
 
 A file is rewritten only if its unmodified tree first re-serializes
 byte-identically (lxml, xml declaration, UTF-8). Idempotent: applied
@@ -361,6 +364,36 @@ NOTES = [
     (_SKZY, "13_S_48", "Source cites NTU Formosan Corpus skzyNr-movingkulang IU 309-312"),
 ]
 
+# 7. AUDIO boundary repairs (2026-07-29 remediation, commit 1817ae39e;
+#    recorded here 2026-08-10 so they survive regeneration): seven invalid
+#    start/end boundaries in the Stories subcorpus — zero-duration or
+#    overlapping segments (end <= start, or a boundary shared with the next
+#    sentence sitting on the wrong side) nudged to the nearest valid value,
+#    plus one start that carried a copy-paste value from the end of the
+#    file (dialog5 S_1: start 418.22 on a 0.64-end segment -> 0.29).
+#    (relative file, S id, attribute, old value, new value) — applied to
+#    the S-level AUDIO element; entries whose attribute already holds the
+#    new value are reported as already-applied.
+_EARTHQ = "Stories/Kavalan/Kavalan_KavCon-earthquake_abas_haciang.xml"
+_HOME = "Stories/Kavalan/Kavalan_KavCon-home_buya_imuy.xml"
+_DLG1 = "Stories/Seediq/Seediq_sdqCon-dialog1_ciwas_tiwas 2021s.xml"
+_DLG3 = "Stories/Seediq/Seediq_sdqCon-dialog3_robo_bakan 2021s.xml"
+_DLG5 = "Stories/Seediq/Seediq_sdqCon-dialog5_dakis_takun 2020s.xml"
+AUDIO_FIXES = [
+    (_EARTHQ, "KavCon-earthquake_abas_haciang_S_101", "end",   "351.4",  "351.43"),
+    (_EARTHQ, "KavCon-earthquake_abas_haciang_S_102", "start", "351.4",  "351.43"),
+    (_HOME,   "KavCon-home_buya_imuy_S_77",           "end",   "304.45", "304.50"),
+    (_HOME,   "KavCon-home_buya_imuy_S_78",           "start", "304.45", "304.50"),
+    (_DLG1,   "sdqCon-dialog1_ciwas_tiwas 2021s_S_142", "end",   "416.05", "416.06"),
+    (_DLG1,   "sdqCon-dialog1_ciwas_tiwas 2021s_S_143", "start", "416.05", "416.06"),
+    (_DLG2,   "sdqCon-dialog2_ciwas_tiwas 2021s_S_111", "end",   "250.53", "250.54"),
+    (_DLG2,   "sdqCon-dialog2_ciwas_tiwas 2021s_S_112", "start", "250.53", "250.54"),
+    (_DLG2,   "sdqCon-dialog2_ciwas_tiwas 2021s_S_130", "end",   "291.74", "291.75"),
+    (_DLG3,   "sdqCon-dialog3_robo_bakan 2021s_S_1",    "end",   "0.63",   "1.05"),
+    (_DLG3,   "sdqCon-dialog3_robo_bakan 2021s_S_2",    "start", "0.63",   "1.05"),
+    (_DLG5,   "sdqCon-dialog5_dakis_takun 2020s_S_1",   "start", "418.22", "0.29"),
+]
+
 
 def serialize(tree):
     return etree.tostring(tree, xml_declaration=True, encoding="UTF-8")
@@ -393,6 +426,8 @@ def main():
         by_file.setdefault(rel, []).append(("fill", sid, eid, tag, kol, text))
     for rel, sid, note in list(NOTES) + GLOSS_SHIFT_NOTES:
         by_file.setdefault(rel, []).append(("note", sid, note))
+    for rel, sid, attr, old, new in AUDIO_FIXES:
+        by_file.setdefault(rel, []).append(("audio", sid, attr, old, new))
 
     applied = stale = phon = 0
     for rel, entries in by_file.items():
@@ -411,6 +446,26 @@ def main():
         witness_of = {}   # parent element -> witness bool, captured pre-change
         modified = False
         for entry in entries:
+            if entry[0] == "audio":
+                _, sid, attr, old, new = entry
+                s = sindex.get(sid)
+                a = s.find("AUDIO") if s is not None else None
+                if a is None:
+                    print(f"  no match for audio fix (no S-level AUDIO): {rel} {sid}")
+                    stale += 1
+                elif a.get(attr) == new:
+                    print(f"  audio fix already applied: {rel} {sid} {attr}={new}")
+                    stale += 1
+                elif a.get(attr) == old:
+                    a.set(attr, new)
+                    applied += 1
+                    modified = True
+                    print(f"  audio fix: {rel} {sid} {attr}: {old} -> {new}")
+                else:
+                    print(f"  no match for audio fix (drifted: {attr}="
+                          f"{a.get(attr)!r}): {rel} {sid}")
+                    stale += 1
+                continue
             if entry[0] == "note":
                 _, sid, note = entry
                 s = sindex.get(sid)

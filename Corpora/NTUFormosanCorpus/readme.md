@@ -59,7 +59,7 @@ were removed and remain documented in `missing_audio.csv` and the per-language
 
 * In the Kanakanavu texts, "tia'apacangcangarʉʉn" was often written as one word, whereas it appears that "tia 'apacangcangarʉʉn" is more likely based on glossing. We made this change in parse_grammar.py.
 
-* In the Kanakanavu sentence subcorpus, "∅" appears 31 times. Its interpretation is unclear. 
+* In the Kanakanavu sentence subcorpus, "∅" appears 31 times, marking a null morpheme (e.g. a phonologically empty REL). Pipeline treatment: the marker is kept in original/W/M FORMs, removed from S-level standard FORMs by `standardize.py`, and silent in PHON (an all-null M gets PHON `∅`); `clean_xml.py` canonicalizes the Grammar subcorpus's `ø`/`Ø` variants to `∅`. See step 7 under Processing.
 
 * Some English glosses contain Mandarin (e.g. `eng="使役-太陽=完成貌"`), most likely because the glossers were Mandarin-dominant. These are left as they are in the source; the known cases are listed in [gloss_anomalies_review.csv](gloss_anomalies_review.csv) (category `eng gloss contains CJK`).
 
@@ -72,6 +72,24 @@ were removed and remain documented in `missing_audio.csv` and the per-language
 ***
 
 ## Processing
+
+All steps below are wrapped by [CodeAndDocs/make.sh](CodeAndDocs/make.sh), which runs
+them in order against a fresh parse (audio download only with `--with-audio`), then
+finishes with a corpus-wide `add_phonology.py` refresh, re-application of recorded
+hand edits (`QC/cleaning/apply_manual_edits.py`, if `CodeAndDocs/manual_edits.xml`
+exists), and a `validate_text.py` summary. The step-by-step documentation below is
+the reference; `make.sh` is the executable form.
+
+Note on per-step PHON regeneration (2026-08-10): steps 5, 9, 11 and 12 regenerate
+PHON through a witness check (`scripts/_phon_regen.py`, `borrow_segmentation.py`)
+that models the *pre*-2026-08 `add_phonology.py` output (`∅` and unknown characters
+rendered `*`, punctuation kept). Under the current pipeline (nulls silent, unmapped
+punctuation dropped) the witness no longer matches, so those regenerations
+conservatively skip; step 5's reproducibility guard will likewise skip words whose
+current PHON the old-style mapping cannot reproduce (watch its
+`skip: PHON not reproducible` count). This is acceptable in a full rerun because
+`make.sh` ends with an `add_phonology.py` pass that regenerates every PHON
+canonically.
 
 * **1. Parse original files**
 
@@ -94,12 +112,15 @@ Note that there is no audio associated with sentences.
 
 Note also that utterances in grammar and stories lack audio, and some of the audio that is supposed to exist does not. An error log reports missing audio.
 
-* **3. Standardize orthography
+* **3. Clean, standardize orthography, and add phonology**
 
-First, some more punctuation cleaning:
+First, some more punctuation cleaning. Since the 2026-08-09 null-morpheme spec this
+also canonicalizes the null-morpheme marker glyphs (`ø`/`Ø` → `∅`, U+2205) in
+morpheme position on **all** tiers, original included — the glyph is annotation, not
+source spelling (see step 7):
 
 ```bash
-    python ../FormosanBank/QC/cleaning/clean_xml.py --corpora_path Final_XM
+    python ../FormosanBank/QC/cleaning/clean_xml.py --corpora_path Final_XML
 ```
 
 According to the documentation, all data use Ortho94. In practice, though, we found that where there are differences between Ortho94 and Ortho113, the latter fit the data better. The only exception is Amis, which appears to have been influenced by Church. 
@@ -117,12 +138,35 @@ According to the documentation, all data use Ortho94. In practice, though, we fo
 
 ```bash
     python scripts/remove_no_audio_elements.py
-    python ../FormosanBank/QC/utilities/standardize.py --corpora_path Final_XML --copy 
-    python CodeAndDocs/scripts/remove_stress_accents.py --xml_dir Final_XML
+    python ../FormosanBank/QC/utilities/standardize.py --corpora_path Final_XML --remove_accents
     python ../FormosanBank/QC/utilities/add_phonology.py --corpora_path Final_XML --orthography Ortho113
 ```
 
-The `remove_stress_accents.py` step removes acute stress marks from the *standard* tier. The Grammar subcorpus (Kanakanavu and Sakizaya) marks stress in elicited examples (`Namásia`, `mʉ́rʉpʉ`, `Pánay`/`Panáy`); the same lexemes appear unaccented (with the same meanings) in the other subcorpora, so the accents are suprasegmental annotation, not orthography. They are kept in `original` and removed from `standard`. The script handles both precomposed accented vowels (`á é í ó ú`) and the necessarily-decomposed `ʉ́` (no precomposed codepoint exists; it is stored as `ʉ` + U+0301), and regenerates the standard PHON of affected elements (gated by an original-tier witness check; this also repairs PHON, since the accented characters were previously rendered as `*` by add_phonology's unknown-character handling). When running on the published corpus post-hoc, use the default `--xml_dir` (the corpus `XML/`).
+`standardize.py --remove_accents` (2026-08-10) replaces the old `--copy` +
+`remove_stress_accents.py` pair. It copies original → standard and then:
+
+   - Strips combining acute/breve marks from the standard tier, including the
+     necessarily-decomposed `ʉ́` (no precomposed codepoint exists; it is stored as
+     `ʉ` + U+0301). The Grammar subcorpus (Kanakanavu and Sakizaya) marks stress in
+     elicited examples (`Namásia`, `mʉ́rʉpʉ`, `Pánay`/`Panáy`); the same lexemes
+     appear unaccented (with the same meanings) in the other subcorpora, so the
+     accents are suprasegmental annotation, not orthography. They are kept in
+     `original` and removed from `standard`. (Full evidence in
+     `scripts/remove_stress_accents.py`, retained for reference — do **not** run it;
+     standardize owns this now. Safe for this corpus because accent-bearing data is
+     confined to Grammar Kanakanavu/Sakizaya and no NTU language uses an accented
+     letter orthographically — a caution that matters for Rukai corpora generally,
+     whose Ortho113 includes `é`.)
+   - Removes null-morpheme units (`∅`, `∅-`, `-∅`) from **S-level** standard FORMs.
+     W- and M-level standard FORMs keep them — see step 7.
+   - Applies C012 to the S-level standard FORM of morpheme-segmented sentences:
+     segmentation `-` (digit-aware, so `2020-07-31` survives) and clitic `=` are
+     stripped. For Bunun, where `-` is an orthographic letter, hyphens are preserved
+     and per-occurrence `c012` warnings are written to `standardize_warnings.csv`.
+
+`add_phonology.py` now treats null morphemes as silent — no more `*` in PHON at null
+sites — and an M whose FORM is entirely `∅` gets PHON `∅`; unmapped punctuation is
+dropped from PHON output.
 
 * **4. Repair empty-form morphemes**
 
@@ -163,20 +207,16 @@ Six sentence-subcorpus source JSONs assign the same record id to two different s
    - Audio safety: a duplicated sentence carrying an AUDIO descendant is skipped with a warning, since audio file names elsewhere embed sentence ids. (None exist today: all duplicates are in the Sentences subcorpus, which has no audio.)
    - Same conventions as steps 4-5: byte-identical round-trip guard, idempotent.
 
-* **7. Remove null-morpheme symbols from the standard tier**
+* **7. Remove null-morpheme symbols — RETIRED (2026-08-10)**
 
-The Kanakanavu sentence subcorpus writes a null-morpheme placeholder inside words (e.g. `niarisinatʉ∅kee`; see Minor notes). This is linguist's annotation, not orthography, so it is kept in `original` but removed from `standard`:
+The Kanakanavu sentence subcorpus writes a null-morpheme placeholder inside words (e.g. `niarisinatʉ∅kee`; see Minor notes) and the Sakizaya grammar writes a null prefix slot (`ø-sitangah`). Handling is now owned by the shared pipeline (step 3), per the 2026-08-09 null-morpheme spec:
 
-```bash
-    python CodeAndDocs/scripts/remove_null_symbols.py
-```
+   - `clean_xml.py` canonicalizes the marker glyphs (`ø`/`Ø` → `∅`, morpheme position, all tiers).
+   - `standardize.py` (non-`--copy` modes) removes null units from **S-level** standard FORMs only.
+   - `add_phonology.py` renders nulls silent; an all-null M FORM gets PHON `∅` (previously the symbols were rendered `*`).
+   - W- and M-level standard FORMs **retain** the `∅` marker. This is required by the validators: V069 (HARD — a null in a W FORM needs an M child whose FORM is `∅`) and the V124/V125 propagation rules (a null on the M tier must be witnessed by the parent W FORM and the S-level original FORM). So `ni-arisinatʉ-∅=kee` keeps its null on both W FORM tiers, with the null M's PHON being `∅`.
 
-**Notes**
-   - Cleans only S- and W-level `FORM` with `kindOf="standard"`. M-level null symbols (where `∅`/`ø` is itself a morpheme slot, e.g. Sakizaya `ø-sitangah` → M `ø` + M `sitangah`) are deliberately left: stripping them would create empty-form morphemes.
-   - Default removes both `∅` (Kanakanavu, word-internal) and `ø` (Sakizaya, a null prefix slot). Boundary markers orphaned by the removal are cleaned token-wise (`ø-sitangah` → `sitangah`, not `-sitangah`).
-   - An element is never emptied; would-be-emptied elements are skipped and reported. (One known case: a Sakizaya W whose standard FORM is just `ø`.)
-   - The standard PHON of affected elements is regenerated via the Ortho113 mapping, gated by an original-tier witness check. This also repairs PHON: the symbols were previously rendered as `*` (e.g. `*-sitaŋaħ` → `sitaŋaħ`). The cleanup is driven from the original tier, so re-running also heals elements whose FORM was cleaned earlier but whose PHON was stale.
-   - Same conventions as steps 4-6: byte-identical round-trip guard, idempotent.
+Do **not** run `CodeAndDocs/scripts/remove_null_symbols.py` (retained for reference only): its W-level stripping contradicts that policy, and it left orphaned boundary markers in the published corpus (`ni-arisinatʉ-=kee` where a rerun now yields `ni-arisinatʉ-∅=kee`).
 
 * **8. Manual review: parentheses and slashes in W/M forms (V121)**
 
@@ -186,6 +226,8 @@ This step is **manual** and must be redone (or the edits re-applied) after any r
    - Slash-delimited unresolved alternatives, e.g. `si/la`, `ma-lrigi/ma-elre-elrenge/ma-adraw` (~42 W elements; these are in languages where the Kanakanavu-style slash-variant expansion was not applied).
 
 Run `python ../FormosanBank/QC/validation/validate_text.py by_path --path XML` and work through the V121 findings.
+
+**Status (2026-08-10):** no edits have ever been committed under this step. From the from-scratch regeneration (`18868920e`) onward, every XML-touching commit maps to a scripted step or to an `apply_manual_corrections.py` table entry; the V121 work became steps 15–20, and the residue is documented in step 20's notes ("Still open in V121"). The only unscripted hand edits in the published XML were seven AUDIO boundary fixes in six Stories files (two Kavalan, four Seediq; commit `1817ae39e` — zero-duration/overlapping start–end boundaries nudged to valid values). As of 2026-08-10 these are recorded as attribute-targeted `AUDIO_FIXES` entries in `apply_manual_corrections.py` (step 11), so they now survive regeneration like every other one-off correction.
 
 * **9. Remove source annotation codes and overlap markers**
 

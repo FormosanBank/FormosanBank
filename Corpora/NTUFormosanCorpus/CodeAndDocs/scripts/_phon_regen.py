@@ -67,8 +67,14 @@ def load_mappings(language):
 
 
 def convert(text, mp):
+    # NOTE: this models the PRE-2026-08 add_phonology output (nulls and
+    # unknown characters rendered '*', punctuation kept). The current
+    # add_phonology renders nulls silent and drops unmapped punctuation,
+    # so on XML regenerated under the current pipeline the witness check
+    # fails and regeneration is (conservatively, intentionally) skipped —
+    # make.sh's final add_phonology pass canonicalizes PHON instead.
     mappings, cdict, ipa_chars = mp
-    out = apply_phonology_mappings(text, mappings, cdict)
+    out = apply_phonology_mappings(text, mappings)
     return "".join(
         ch if (ch in ipa_chars or ch in string.punctuation or ch.isspace())
         else "*"
