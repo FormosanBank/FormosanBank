@@ -135,8 +135,16 @@ class CleanerWarnings:
 
     write_csv() is a no-op when no rows have been added (avoids creating
     empty files on clean corpora).
+
+    Two modes (POL-033 vs POL-035):
+    - default (``append=False``): an ephemeral per-run report — rewritten
+      each run, removed when a run finds nothing (cleaner_warnings.csv).
+    - ``append=True``: a durable, committed log (quote_corrections.csv) —
+      rows accumulate across runs and an empty run leaves the file alone,
+      so the record of past original-tier rewrites survives reruns.
     """
     csv_path: Path
+    append: bool = False
     _rows: list = field(default_factory=list, repr=False)
 
     def add(
@@ -156,13 +164,15 @@ class CleanerWarnings:
         })
 
     def write_csv(self) -> None:
-        """Write this run's rows, replacing any previous run's CSV.
+        """Write this run's rows (see class docstring for the two modes).
 
-        POL-033: the CSV is a per-run report, not a cumulative log. A run
-        with no rows removes a stale CSV rather than leaving last run's
-        findings in place (and still avoids creating empty files).
+        Default mode replaces any previous run's CSV (POL-033: per-run
+        report; a run with no rows removes a stale CSV). Append mode adds
+        this run's rows to the existing log and never deletes it.
         """
         if not self._rows:
+            if self.append:
+                return  # durable log: an empty run changes nothing
             try:
                 self.csv_path.unlink()
             except OSError:
@@ -172,6 +182,17 @@ class CleanerWarnings:
                 pass
             return
         self.csv_path.parent.mkdir(parents=True, exist_ok=True)
+        if self.append:
+            with open(self.csv_path, "a", newline="", encoding="utf-8") as f:
+                writer = csv.DictWriter(
+                    f,
+                    fieldnames=["rule_id", "file", "s_id", "character",
+                                "position"],
+                )
+                if f.tell() == 0:
+                    writer.writeheader()
+                writer.writerows(self._rows)
+            return
         with open(self.csv_path, "w", newline="", encoding="utf-8") as f:
             writer = csv.DictWriter(
                 f,
@@ -611,9 +632,16 @@ def analyze_and_modify_xml_file(
     metadata_counter: dict[str, int] | None = None,
     reference_dir=None,
     _attestation_cache: dict | None = None,
+    corrections: "CleanerWarnings | None" = None,
 ):
     """
     Analyzes and modifies an XML file by cleaning text and handling specific cases in <FORM>.
+
+    `corrections` is the durable quote-correction log (append-mode
+    CleanerWarnings writing quote_corrections.csv; POL-035): actual
+    original-tier rewrites (c031 corrected, c032 stranded-repair) go
+    there, while ambiguous audit flags (c030) go to the ephemeral
+    `warnings` report.
     """
     if reference_dir is None:
         reference_dir = _DEFAULT_REFERENCE_DIR
@@ -743,17 +771,17 @@ def analyze_and_modify_xml_file(
                             if corrected or stranded:
                                 form_element.text = new_text
                                 modified = True
-                            if warnings is not None:
+                            if corrections is not None:
                                 for pos in corrected:
-                                    warnings.add("c024", xml_file,
-                                                 sentence.get("id"), "'", pos)
+                                    corrections.add("c031", xml_file,
+                                                    sentence.get("id"), "'", pos)
                                 for pos in stranded:
-                                    warnings.add("c025", xml_file,
+                                    corrections.add("c032", xml_file,
+                                                    sentence.get("id"), "'", pos)
+                            if warnings is not None and not is_wikipedia:
+                                for pos in ambiguous:
+                                    warnings.add("c030", xml_file,
                                                  sentence.get("id"), "'", pos)
-                                if not is_wikipedia:
-                                    for pos in ambiguous:
-                                        warnings.add("c023", xml_file,
-                                                     sentence.get("id"), "'", pos)
                             if counter is not None and corrected:
                                 counter.record("'", '"', len(corrected))
 
@@ -765,6 +793,9 @@ def main(args):
     print(f"Processing XML files in directory: {args.corpora_path}")
     warnings_path = Path(args.corpora_path) / "cleaner_warnings.csv"
     warnings = CleanerWarnings(warnings_path)
+    # Durable quote-correction log (POL-035): append-mode, committed.
+    corrections = CleanerWarnings(
+        Path(args.corpora_path) / "quote_corrections.csv", append=True)
     counter = TransformCounter()
     metadata_counter: dict[str, int] = {}
     analyze_and_modify_xml_file(
@@ -775,8 +806,10 @@ def main(args):
         metadata_counter=metadata_counter,
         reference_dir=getattr(args, "reference_dir", None),
         _attestation_cache={},
+        corrections=corrections,
     )
     warnings.write_csv()
+    corrections.write_csv()
     counter.print_summary()
     if metadata_counter:
         print("\nMetadata repair summary (rule : count):")

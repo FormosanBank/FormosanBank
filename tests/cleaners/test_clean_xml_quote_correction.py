@@ -3,6 +3,12 @@
 clean_xml is run via subprocess against a tmp corpus. A tiny attestation
 dictionary is written into a tmp reference dir passed with --reference_dir,
 so tests do not depend on the full generated Amis dictionary.
+
+Log split per POL-035 merge reconciliation (2026-08-10): actual rewrites
+(c031 corrected, c032 stranded-repair) go to the durable, committed
+quote_corrections.csv; ambiguous audit flags (c030) stay in the ephemeral
+cleaner_warnings.csv (POL-033). Codes renumbered from the branch's
+c024/c025/c023 to avoid colliding with existing cleaner rule numbers.
 """
 import subprocess
 import sys
@@ -33,13 +39,21 @@ def _form_originals(xml_path):
             if f.get("kindOf") == "original"]
 
 
-def _warnings_rows(corpora_path):
-    csv_path = corpora_path / "cleaner_warnings.csv"
+def _rows(corpora_path, name):
+    csv_path = corpora_path / name
     if not csv_path.exists():
         return []
     import csv as _csv
     with open(csv_path, encoding="utf-8") as fh:
         return list(_csv.DictReader(fh))
+
+
+def _warnings_rows(corpora_path):
+    return _rows(corpora_path, "cleaner_warnings.csv")
+
+
+def _corrections_rows(corpora_path):
+    return _rows(corpora_path, "quote_corrections.csv")
 
 
 def _make_corpus(tmp_path, sub, form_original, transl=None):
@@ -63,8 +77,8 @@ def test_quotation_pair_rewritten_to_doublequote(tmp_path):
     assert proc.returncode == 0, proc.stderr
     (orig,) = _form_originals(tmp_path / "Corpora/Toy/XML/t.xml")
     assert orig == '"zzq wqx."'
-    rows = _warnings_rows(tmp_path)
-    assert sum(r["rule_id"] == "c024" for r in rows) == 2
+    rows = _corrections_rows(tmp_path)
+    assert sum(r["rule_id"] == "c031" for r in rows) == 2
 
 
 def test_glottal_pair_left_intact_no_warning(tmp_path):
@@ -75,32 +89,33 @@ def test_glottal_pair_left_intact_no_warning(tmp_path):
     assert proc.returncode == 0, proc.stderr
     (orig,) = _form_originals(tmp_path / "Corpora/Toy/XML/t.xml")
     assert orig == "o 'ayam ko faloco' iso"
-    rows = _warnings_rows(tmp_path)
-    assert not any(r["rule_id"] in ("c023", "c024") for r in rows)
+    assert not any(r["rule_id"] == "c030" for r in _warnings_rows(tmp_path))
+    assert _corrections_rows(tmp_path) == []
 
 
-def test_ambiguous_emits_c023(tmp_path):
+def test_ambiguous_emits_c030_warning(tmp_path):
     ref = tmp_path / "reference"
     _write_dict(ref, "Amis", ["faloco'", "'ayam"])
     # Both boundary words attested + a quoting TRANSL -> no rule fires, but the
-    # unplaced ' are flagged c023 (audit), never edited.
+    # unplaced ' are flagged c030 (audit, ephemeral warning), never edited.
     _make_corpus(tmp_path, "Corpora/Toy/XML", "'ayam faloco'", transl='he said "x"')
     proc = _run(tmp_path, ref)
     assert proc.returncode == 0, proc.stderr
     (orig,) = _form_originals(tmp_path / "Corpora/Toy/XML/t.xml")
     assert orig == "'ayam faloco'"                   # unchanged
     rows = _warnings_rows(tmp_path)
-    assert sum(r["rule_id"] == "c023" for r in rows) == 2
+    assert sum(r["rule_id"] == "c030" for r in rows) == 2
+    assert _corrections_rows(tmp_path) == []
 
 
-def test_wikipedia_suppresses_c023(tmp_path):
+def test_wikipedia_suppresses_c030(tmp_path):
     ref = tmp_path / "reference"
     _write_dict(ref, "Amis", ["faloco'", "'ayam"])
     _make_corpus(tmp_path, "Corpora/Wikipedias/XML/Amis", "'ayam faloco',")
     proc = _run(tmp_path, ref)
     assert proc.returncode == 0, proc.stderr
     rows = _warnings_rows(tmp_path)
-    assert not any(r["rule_id"] == "c023" for r in rows)
+    assert not any(r["rule_id"] == "c030" for r in rows)
 
 
 def test_transl_no_quotes_leaves_form_intact(tmp_path):
@@ -113,11 +128,11 @@ def test_transl_no_quotes_leaves_form_intact(tmp_path):
     assert proc.returncode == 0, proc.stderr
     (orig,) = _form_originals(tmp_path / "Corpora/Toy/XML/t.xml")
     assert orig == "pasowal: 'zzq wqx'"             # TRANSL first pass -> glottal
-    rows = _warnings_rows(tmp_path)
-    assert not any(r["rule_id"] in ("c023", "c024") for r in rows)
+    assert not any(r["rule_id"] == "c030" for r in _warnings_rows(tmp_path))
+    assert _corrections_rows(tmp_path) == []
 
 
-def test_stranded_glottal_whitespace_repaired_c025(tmp_path):
+def test_stranded_glottal_whitespace_repaired_c032(tmp_path):
     ref = tmp_path / "reference"
     _write_dict(ref, "Amis", ["faloco'", "'ayam"])
     # floating ' -> remove the space so 'zzq is word-initial and Rule 2 fires.
@@ -126,9 +141,9 @@ def test_stranded_glottal_whitespace_repaired_c025(tmp_path):
     assert proc.returncode == 0, proc.stderr
     (orig,) = _form_originals(tmp_path / "Corpora/Toy/XML/t.xml")
     assert orig == 'x "zzq wqx."'
-    rows = _warnings_rows(tmp_path)
-    assert sum(r["rule_id"] == "c025" for r in rows) == 1
-    assert not any(r["rule_id"] == "c023" for r in rows)
+    rows = _corrections_rows(tmp_path)
+    assert sum(r["rule_id"] == "c032" for r in rows) == 1
+    assert not any(r["rule_id"] == "c030" for r in _warnings_rows(tmp_path))
 
 
 def test_missing_dictionary_is_noop(tmp_path):
@@ -139,5 +154,20 @@ def test_missing_dictionary_is_noop(tmp_path):
     assert proc.returncode == 0, proc.stderr
     (orig,) = _form_originals(tmp_path / "Corpora/Toy/XML/t.xml")
     assert orig == "pasowal: 'cima tayni'"          # untouched
-    rows = _warnings_rows(tmp_path)
-    assert not any(r["rule_id"] in ("c023", "c024") for r in rows)
+    assert not any(r["rule_id"] == "c030" for r in _warnings_rows(tmp_path))
+    assert _corrections_rows(tmp_path) == []
+
+
+def test_corrections_log_is_durable_across_runs(tmp_path):
+    """quote_corrections.csv is a committed log (POL-035): a later run
+    that corrects nothing must neither delete it nor lose its rows."""
+    ref = tmp_path / "reference"
+    _write_dict(ref, "Amis", ["faloco'", "loma'", "'ayam", "romi'ad"])
+    _make_corpus(tmp_path, "Corpora/Toy/XML", "'zzq wqx.'")
+    assert _run(tmp_path, ref).returncode == 0
+    first = _corrections_rows(tmp_path)
+    assert len(first) == 2
+
+    # Second run: text already corrected, nothing new to log.
+    assert _run(tmp_path, ref).returncode == 0
+    assert _corrections_rows(tmp_path) == first

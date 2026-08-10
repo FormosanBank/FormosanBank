@@ -216,9 +216,11 @@ No-op (prints "nothing to do" and exits 0) if the corpus has no `CodeAndDocs/man
 
 `clean_xml.py` also performs the `'`-as-quotation correction on the `original`
 tier for languages that have a `QC/validation/reference/<Language>/attestation.txt`
-dictionary: apostrophes used as quotation marks become `"` (`c024`), stranded
-glottals separated by whitespace are rejoined to their word (`c025`), ambiguous
-cases are logged as `c023` warnings (suppressed for the Wikipedias corpus). See
+dictionary: apostrophes used as quotation marks become `"` (`c031`), stranded
+glottals separated by whitespace are rejoined to their word (`c032`) — both
+logged to the **durable, committed** `quote_corrections.csv` (append-only;
+POL-035) — while ambiguous cases go to the ephemeral `cleaner_warnings.csv`
+as `c030` warnings (suppressed for the Wikipedias corpus; POL-033). See
 `docs/superpowers/specs/2026-08-10-quote-glottal-correction-design.md`.
 
 `QC/cleaning/remove_duplicate_sentences.py` removes duplicate `<S>` elements detected by the validator above. **It modifies XML in place** — the default is `--dry-run`; pass `--apply` to actually mutate files. Within each duplicate group it deterministically keeps the first occurrence by `(file, S id)` sort order.

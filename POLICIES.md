@@ -308,10 +308,9 @@ log. Source ruling: `feature/quote-glottal-classifier`'s
 quote-glottal-correction spec (its `'`→`"` rewrite is the first
 non-self-correcting mutation of the original tier). Companion to
 POL-030, which covers *hand* edits; this covers *automated* corrections.
-**Merge-time reconciliation needed:** that branch logs corrections as
-`c024`/`c025` rows in `cleaner_warnings.csv` and commits the file — but
-`c024` already numbers an existing cleaner behavior, and POL-033 makes
-`cleaner_warnings.csv` an ephemeral per-run report (the rewrite fix
-would overwrite a committed log on the next run). The durable
-correction log must move to its own committed file (and the codes
-renumber past c029) when the branches merge.
+**Reconciled at merge (2026-08-10):** original-tier rewrites are logged
+as `c031` (corrected `'`→`"`) and `c032` (stranded-repair) rows in a
+dedicated, durable **`quote_corrections.csv`** (append-only across runs;
+commit it after correcting runs) — distinct from `cleaner_warnings.csv`,
+which stays an ephemeral per-run report per POL-033 and carries only the
+`c030` ambiguity flags.

@@ -293,3 +293,23 @@ committed for several corpora) and preserved in git history.
 - Scope: **Amis end-to-end first**; other languages follow as dicts are built. ✔
 - Log every `'`→`"` correction as `c024`. ✔
 - Threshold default `3`, exposed as `--min-freq`. ✔
+
+## Addendum: merge reconciliation (2026-08-10, proposal/qc-improvements)
+
+Two changes on merge into the QC-improvements branch, per maintainer:
+
+1. **Codes renumbered** to avoid collisions with existing cleaner rule
+   numbers (`c024` = parens-in-TRANSL-preserved; C025 = the idempotency
+   parametrization in the cleaner test design):
+   `c023 → c030` (ambiguous), `c024 → c031` (corrected `'`→`"`),
+   `c025 → c032` (stranded-whitespace repair).
+2. **Log split** (POL-033 vs POL-035): `c031`/`c032` — the actual
+   original-tier rewrites, i.e. the recoverability record — now go to a
+   dedicated **`quote_corrections.csv`** written in append mode (rows
+   accumulate across runs; an empty run leaves the file alone) and meant
+   to be committed. `c030` ambiguity flags stay in `cleaner_warnings.csv`,
+   which POL-033 defines as an ephemeral per-run report (rewritten every
+   run — a committed correction log could not live there).
+
+Everything above this addendum describes the pre-merge implementation and
+retains the old code numbers.

@@ -54,3 +54,29 @@ def test_empty_run_removes_stale_csv(tmp_path):
     run2 = CleanerWarnings(csv_path)  # rerun found nothing
     run2.write_csv()
     assert not csv_path.exists(), "clean rerun must not leave stale findings"
+
+
+def test_append_mode_accumulates_across_runs(tmp_path):
+    """POL-035: the quote-correction log is durable — append, never replace."""
+    csv_path = tmp_path / "quote_corrections.csv"
+    run1 = CleanerWarnings(csv_path, append=True)
+    run1.add("c031", "a.xml", "S_1", "'", 4)
+    run1.write_csv()
+    run2 = CleanerWarnings(csv_path, append=True)
+    run2.add("c032", "b.xml", "S_9", "'", 0)
+    run2.write_csv()
+    rows = _rows(csv_path)
+    assert [r["rule_id"] for r in rows] == ["c031", "c032"]
+    text = csv_path.read_text(encoding="utf-8")
+    assert text.count("rule_id") == 1, "header written once"
+
+
+def test_append_mode_empty_run_preserves_log(tmp_path):
+    csv_path = tmp_path / "quote_corrections.csv"
+    run1 = CleanerWarnings(csv_path, append=True)
+    run1.add("c031", "a.xml", "S_1", "'", 4)
+    run1.write_csv()
+    run2 = CleanerWarnings(csv_path, append=True)  # nothing corrected
+    run2.write_csv()
+    assert csv_path.exists()
+    assert len(_rows(csv_path)) == 1, "committed log must survive empty runs"

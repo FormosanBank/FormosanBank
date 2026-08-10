@@ -815,3 +815,8 @@ git commit -m "clean_xml: '-as-quotation correction on original tier (c023/c024,
 **Placeholder scan:** No TBD/TODO; all code blocks concrete. ✔
 
 **Type consistency:** `apply_quote_corrections(form_text, transls, dictionary) -> (str, list[int], list[int])` defined in Task 1, consumed identically in Task 3 step 6. `build_attestation_set(forms_by_sentence, min_freq)` and `main(argv)` consistent between Task 2 test and implementation. `resolve_language`/`XML_LANG` names match `QC/corpus_counts.py`. `CleanerWarnings.add`/`TransformCounter.record` signatures match `clean_xml.py`. ✔
+
+> **Post-merge note (2026-08-10):** codes renumbered c023/c024/c025 →
+> c030/c031/c032 and the correction log moved to a durable, committed
+> `quote_corrections.csv` (append mode) at merge into
+> proposal/qc-improvements — see the spec's merge-reconciliation addendum.
