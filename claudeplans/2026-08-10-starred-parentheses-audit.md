@@ -157,6 +157,20 @@ Safolu, Wikipedias scripts are code (regexes/globs), not data.
    Rukai Sentences, Kanakanavu Sentences (+ ideally record finding-2 drops).
    NTU is scrape-reproducible in-repo, so this is a `CodeAndDocs/scripts`
    change + re-run.
+
+   **DONE (this branch, 2026-08-10):** `UNGRAMMATICAL_PAREN_RE` replaced by
+   `resolve_ungrammatical_parens()` in `utils.py` (`*(X)` → `X`, `(*X)` → ``),
+   applied in `parse_sentences.py` and `parse_grammar.py` (including the
+   whole-sentence `startswith('*')` skip, so `*(X)` no longer risks dropping
+   the sentence in grammar files); `extract_notes()` made nesting-aware
+   (fixes finding 3's stray `.)`). Covered by
+   `tests/corpora/test_ntu_starred_parens.py` (TDD; 12 tests) and verified
+   end-to-end: rerunning `parse_sentences.py`/`parse_grammar.py` on the real
+   corpus restores `malra` (S FORM + W element) in Rukai
+   `20200529-FW-Lixing-2_S_2`, leaves zero `*(`/`(*` in any regenerated FORM,
+   and reproduces the existing correct `(*kara)`/TRANSL-notes behavior.
+   Published `XML/` intentionally NOT regenerated here — the maintainer's
+   upcoming full pipeline rerun will pick the fix up.
 2. **Song-Kanakanavu-Grammar**: add a `*(`-guard to `xml_word_form()` /
    `morpheme_form()` so a future obligatory-type instance fails loudly instead
    of being deleted.
