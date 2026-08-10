@@ -44,6 +44,8 @@ Rule ID assignments (B9.4):
   W11 (2026-08-10):
        V142 TR22 UNgrammaticality/marginality visible only informally (SOFT)
        V143 TR23 TRANSL language/script mismatch, rate-based (SOFT)
+       V146 TR24 malformed [x|y] variant group in PHON (SOFT)
+       V147 TR25 legacy x~y variant notation in PHON (SOFT)
 """
 import re
 from collections import Counter
@@ -1707,6 +1709,96 @@ def v143_transl_language_script_mismatch(
     return findings
 
 
+# TR24/TR25 V146/V147 SOFT — PHON variant-group notation (POL-013,
+# ruled 2026-08-10). Phonemic variants in PHON are written [x|y]; the
+# values flow verbatim from profile IPA cells. V146 = malformed group
+# (generation/profile bug). V147 = legacy bare-tilde variant left from
+# pre-migration PHON — regenerate with the migrated profiles.
+
+_VARIANT_GROUP_RE = re.compile(r"\[([^\[\]]*)\]")
+_LEGACY_PHON_VARIANT_RE = re.compile(r"[^\s~]~[^\s~]")
+
+
+def _malformed_variant_reason(text: str) -> str | None:
+    depth = 0
+    for ch in text:
+        if ch == "[":
+            depth += 1
+            if depth > 1:
+                return "nested '['"
+        elif ch == "]":
+            depth -= 1
+            if depth < 0:
+                return "']' without '['"
+    if depth != 0:
+        return "unbalanced brackets"
+    stripped = _VARIANT_GROUP_RE.sub("", text)
+    if "|" in stripped:
+        return "'|' outside a variant group"
+    for group in _VARIANT_GROUP_RE.findall(text):
+        alternatives = group.split("|")
+        if len(alternatives) < 2 or any(not a for a in alternatives):
+            return f"group '[{group}]' needs 2+ non-empty alternatives"
+    return None
+
+
+def v146_phon_variant_group_malformed(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V146 SOFT (TR24): malformed [x|y] variant group in a PHON."""
+    lang = _resolve_language(tree)
+    findings: list[Finding] = []
+    for phon in tree.iter("PHON"):
+        text = phon.text or ""
+        if "[" not in text and "]" not in text and "|" not in text:
+            continue
+        reason = _malformed_variant_reason(text)
+        if reason is None:
+            continue
+        findings.append(_soft_finding(
+            rule_id="V146",
+            message=(
+                f"V146 SOFT malformed PHON variant group ({reason}) in "
+                f"{text!r} — profile value or generation bug (POL-013)"
+            ),
+            path=path,
+            elem=phon,
+            language=lang,
+        ))
+    return findings
+
+
+def v147_phon_legacy_tilde_variant(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V147 SOFT (TR25): legacy x~y variant notation in a PHON.
+
+    Pre-migration PHON carries 'b~v' style variants; the profiles now
+    write '[b|v]'. Regenerate PHON (add_phonology) to migrate.
+    """
+    lang = _resolve_language(tree)
+    findings: list[Finding] = []
+    for phon in tree.iter("PHON"):
+        text = phon.text or ""
+        if _LEGACY_PHON_VARIANT_RE.search(text):
+            findings.append(_soft_finding(
+                rule_id="V147",
+                message=(
+                    f"V147 SOFT legacy '~' variant notation in PHON "
+                    f"{text!r}; regenerate PHON with the migrated "
+                    f"profiles (POL-013: canonical is '[x|y]')"
+                ),
+                path=path,
+                elem=phon,
+                language=lang,
+            ))
+    return findings
+
+
 RULES: list = [
     # W1 (V110-V115): ported from validate_punct.py
     v110_smart_quotes,
@@ -1748,5 +1840,8 @@ RULES: list = [
     # V142/V143: 2026-08-10 audit-driven rules (POL-016; NTU gloss swaps)
     v142_unmarked_grammaticality,
     v143_transl_language_script_mismatch,
+    # V146/V147: PHON variant-group notation (POL-013)
+    v146_phon_variant_group_malformed,
+    v147_phon_legacy_tilde_variant,
 ]
 CROSS_FILE_RULES: list = []

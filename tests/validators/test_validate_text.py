@@ -2693,3 +2693,80 @@ def test_V132_double_encoded_numeric_reference_soft(tmp_path):
     assert _has_text_finding(proc, ("v132", "html entity", "html entities")), (
         f"expected V132 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
     )
+
+
+# -----------------------------------------------------------------------------
+# V146/V147 SOFT — PHON variant-group notation (POL-013, ruled 2026-08-10)
+#
+# Phonemic variants in PHON are written [x|y] (profile IPA values flow
+# verbatim). V146 flags malformed groups; V147 flags legacy bare-tilde
+# variants left from pre-migration PHON ("regenerate with the migrated
+# profiles").
+
+def test_V146_malformed_variant_group_flagged(tmp_path):
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">aba</FORM>'
+        + '<FORM kindOf="standard">aba</FORM>'
+        + '<PHON kindOf="standard">a[b|va</PHON>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(proc, ("v146", "variant group")), (
+        f"expected V146; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V146_silent_on_well_formed_groups(tmp_path):
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">aba caca</FORM>'
+        + '<FORM kindOf="standard">aba caca</FORM>'
+        + '<PHON kindOf="standard">a[b|v]a [ʦ|ʨ]a[ɬ|ɮ|l]a</PHON>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v146" not in combined and "v147" not in combined, (
+        f"no PHON notation findings expected; stdout={proc.stdout!r}"
+    )
+
+
+def test_V146_single_alternative_group_flagged(tmp_path):
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">aba</FORM>'
+        + '<FORM kindOf="standard">aba</FORM>'
+        + '<PHON kindOf="standard">a[b]a</PHON>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(proc, ("v146", "variant group")), (
+        f"expected V146; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V147_legacy_tilde_in_phon_flagged(tmp_path):
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">aba</FORM>'
+        + '<FORM kindOf="standard">aba</FORM>'
+        + '<PHON kindOf="standard">ab~va</PHON>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(proc, ("v147", "legacy")), (
+        f"expected V147; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )

@@ -105,3 +105,25 @@ def test_unreadable_registry_is_hard_exit(tmp_path):
     (root / "standards.csv").unlink()
     proc = _run(root, tmp_path / "f.csv")
     assert proc.returncode == 1
+
+
+def test_legacy_variant_notation_in_profile_is_soft(tmp_path):
+    """V154: profile IPA cells must use [x|y], not legacy x~y (POL-013)."""
+    root = _mini_repo(tmp_path)
+    (root / "Orthographies" / "Ortho113" / "Amis.tsv").write_text(
+        "letter\tstandard\nb\tb~v\nv\t[b|v]\n", encoding="utf-8")
+    proc = _run(root, tmp_path / "f.csv")
+    assert proc.returncode == 0
+    assert "V154" in proc.stdout
+    rows = [r for r in _findings(tmp_path / "f.csv")
+            if r["rule_id"] == "V154"]
+    assert rows and rows[0]["character"] == "b~v"
+
+
+def test_bracket_variant_notation_is_clean(tmp_path):
+    root = _mini_repo(tmp_path)
+    (root / "Orthographies" / "Ortho113" / "Amis.tsv").write_text(
+        "letter\tstandard\nb\t[b|v]\nd\t[ɬ|ɮ]\n", encoding="utf-8")
+    proc = _run(root, tmp_path / "f.csv")
+    assert proc.returncode == 0
+    assert "V154" not in proc.stdout

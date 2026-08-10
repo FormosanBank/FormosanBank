@@ -111,21 +111,25 @@ canonicalizes the glyph the first time the corpus runs through the
 pipeline, so there is no per-corpus opt-out of `∅` in published data. Spec:
 `docs/superpowers/specs/2026-08-09-null-morpheme-handling-design.md`.
 
-### POL-013 · UNRESOLVED · the tilde
-Two separable questions:
-1. **Codepoint** (typography): PDF text layers emit U+223C `∼` (occasionally
-   U+301C) where the convention is ASCII `~` U+007E — e.g. the Bril 2024
-   source's reduplication notation (`RED∼stem`, 15 character-sites in the
-   Amis-Adversative dev repo). *Recommendation: add U+223C/U+301C → `~` to
-   `swap_punctuation`; pure typography per the POL-010 rationale, whatever
-   the tilde means.*
-2. **Semantics** (messier): `~` currently does double duty — Leipzig-style
-   reduplication marker in glossed FORM tiers of scraped sources, and
-   phonemic-variant separator on the PHON tier / in orthography profiles
-   (e.g. `j~ɨ`). The maintainer notes the variant-marking use is itself
-   messy and possibly worth redesigning. No ruling yet on whether the two
-   uses should be disambiguated (different characters, or restricting `~`
-   to one tier).
+### POL-013 · PARTIAL · 2026-08-10 · the tilde
+1. **Semantics — RULED (2026-08-10).** Phonemic variants on the PHON tier
+   (and in orthography-profile IPA cells, which flow verbatim into PHON)
+   are written **`[x|y]`** — two or more pipe-separated alternatives in
+   square brackets (`[b|v]`, `[ɬ|ɮ|l]`, multi-char fine: `[l|ll]`). The
+   bare-tilde notation (`b~v`) is retired: it had no grouping scope and
+   collided with the Leipzig reduplication marker. `~` is thereby freed
+   for reduplication (FORM tiers) only. Profiles migrated 2026-08-10 (98
+   cells, 26 files; the two `Bunun.rules.tsv` context-resolution patterns
+   carry the regex-escaped form `\[ʦ\|ʨ\](?=i)`). Guards: V154 (legacy
+   notation in a profile), V146 (malformed group in PHON), V147 (legacy
+   `~` in PHON — regenerate). Published PHON migrates at the regeneration
+   sweep. Spec:
+   `docs/superpowers/specs/2026-08-10-phon-variant-notation-design.md`.
+2. **Codepoint — still open** (recommendation stands): PDF text layers
+   emit U+223C `∼` (occasionally U+301C) where the convention is ASCII
+   `~` U+007E (e.g. Bril 2024's `RED∼stem`, 15 sites in the
+   Amis-Adversative dev repo). *Recommendation: add U+223C/U+301C → `~`
+   to `swap_punctuation`; pure typography per the POL-010 rationale.*
 
 ### POL-014 · RULED · GitBook · infixes on W/M tiers
 W-tier FORMs mark an infix with ASCII angle brackets (`k<um>a'en`); S-level

@@ -671,3 +671,42 @@ def test_foreign_o_slash_is_not_treated_as_null(tmp_path, monkeypatch):
     )
     profile = load_profile(scheme, "Yami", "Yami")
     assert phonologize("Grønland", profile) == "gr*nlɑnd"
+
+
+# ---------------------------------------------------------------------------
+# POL-013 variant notation: [x|y] flows verbatim; rules resolve it
+# ---------------------------------------------------------------------------
+
+
+def test_variant_group_flows_verbatim_into_phon(tmp_path, monkeypatch):
+    """A [b|v] profile value is emitted untouched — mapping outputs are
+    never punctuation-stripped (that rule applies to unmapped FORM input)."""
+    scheme = _write_profile(
+        monkeypatch,
+        tmp_path,
+        language="Amis",
+        tsv="letter\tstandard\nb\t[b|v]\na\ta\n",
+    )
+    profile = load_profile(scheme, "Amis", "Coastal")
+    assert phonologize("aba", profile) == "a[b|v]a"
+
+
+def test_escaped_bracket_rule_resolves_variant_contextually(
+    tmp_path, monkeypatch
+):
+    """The Bunun pattern shape: a rules-sidecar regex matching an escaped
+    variant group resolves it by context ([ʦ|ʨ] -> ʨ before i, ʦ before a)."""
+    scheme = _write_profile(
+        monkeypatch,
+        tmp_path,
+        language="Bunun",
+        tsv="letter\tstandard\nc\t[ʦ|ʨ]\na\ta\ni\ti\n",
+        rules=(
+            "pattern\treplacement\tdescription\tdialect\n"
+            "\\[ʦ\\|ʨ\\](?=i)\tʨ\talveolo-palatal before i\t\n"
+            "\\[ʦ\\|ʨ\\](?=a)\tʦ\talveolar before a\t\n"
+        ),
+    )
+    profile = load_profile(scheme, "Bunun", "Zhuoqun")
+    assert phonologize("ci", profile) == "ʨi"
+    assert phonologize("ca", profile) == "ʦa"

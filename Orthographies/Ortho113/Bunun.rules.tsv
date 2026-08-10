@@ -1,4 +1,4 @@
 pattern	replacement	description	dialect
-ʦ~ʨ(?=[au])	ʦ	c is the alveolar affricate [ʦ] before a or u	Zhuoqun,Kaqun
-ʦ~ʨ(?=i)	ʨ	c is the alveolo-palatal affricate [ʨ] before i	Zhuoqun,Kaqun
+\[ʦ\|ʨ\](?=[au])	ʦ	c is the alveolar affricate [ʦ] before a or u	Zhuoqun,Kaqun
+\[ʦ\|ʨ\](?=i)	ʨ	c is the alveolo-palatal affricate [ʨ] before i	Zhuoqun,Kaqun
 s(?=i)	ɕ	s palatalizes to the alveolo-palatal fricative [ɕ] before i	

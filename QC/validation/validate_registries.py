@@ -30,8 +30,17 @@ TITLES = {
     "V151": "standards_scheme_folder_missing",
     "V152": "conversion_table_dialect_unknown",
     "V153": "rules_sidecar_dialect_unknown",
+    "V154": "legacy_variant_notation_in_profile",
 }
 _NON_DIALECT_COLUMNS = {"original", "standard"}
+
+# Legacy phonemic-variant notation: a whole cell of two-plus alternatives
+# joined by bare tildes ('b~v'). POL-013 (2026-08-10): canonical is
+# '[b|v]'. The exclusion of parens/brackets/pipes keeps this away from
+# rules-sidecar regex cells like 'ʦ~ʨ(?=i)' — those migrate by hand.
+import re as _re  # noqa: E402
+
+_LEGACY_VARIANT_RE = _re.compile(r"^[^\s~()|\[\]]+(~[^\s~()|\[\]]+)+$")
 
 
 def _read_two_column_csv(path: Path) -> list:
@@ -93,6 +102,26 @@ def check(repo_root: Path) -> list:
                              f"dialects.csv (the class that crashes "
                              f"validate_conversion_table)"),
                     path=table, character=column))
+
+    # V154: profile cells still using legacy x~y variant notation.
+    orthographies_dir = repo_root / "Orthographies"
+    if orthographies_dir.is_dir():
+        for profile in sorted(orthographies_dir.rglob("*.tsv")):
+            if profile.parent.name == "ConversionTables" \
+                    or profile.name.endswith(".rules.tsv"):
+                continue
+            with open(profile, newline="", encoding="utf-8") as f:
+                for row in csv.reader(f, delimiter="\t"):
+                    for cell in row:
+                        cell = cell.strip()
+                        if _LEGACY_VARIANT_RE.match(cell):
+                            findings.append(Finding(
+                                rule_id="V154", severity=Severity.SOFT,
+                                message=(f"V154 SOFT: {profile.name} uses "
+                                         f"legacy variant notation {cell!r}; "
+                                         f"POL-013 canonical is "
+                                         f"'[{cell.replace(chr(126), '|')}]'"),
+                                path=profile, character=cell))
 
     # V153: rules-sidecar dialect values are canonical.
     orthographies = repo_root / "Orthographies"
