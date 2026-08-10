@@ -41,6 +41,9 @@ Rule ID assignments (B9.4):
        V137 TR19 trailing-decimal footnote in FORM/TRANSL (SOFT)
        V138 TR20 superscript-digit footnote in FORM/TRANSL (SOFT)
        V139 TR21 bracketed-digit footnote in FORM/TRANSL (SOFT)
+  W11 (2026-08-10):
+       V142 TR22 grammaticality visible only informally (SOFT)
+       V143 TR23 TRANSL language/script mismatch, rate-based (SOFT)
 """
 import re
 from collections import Counter
@@ -1074,7 +1077,9 @@ def v131_zero_width_or_BOM_in_FORM_TRANSL(
 # (e.g., `&amp;amp;` in the XML). Aggregated per (file, entity) for the
 # SOFT CSV.
 
-_HTML_ENTITY_RE = re.compile(r"&(?:amp|apos|lt|gt|quot);")
+_HTML_ENTITY_RE = re.compile(
+    r"&(?:amp|apos|lt|gt|quot|#\d{1,7}|#x[0-9A-Fa-f]{1,6});"
+)
 
 
 def v132_html_entities_in_FORM_TRANSL(
@@ -1558,6 +1563,140 @@ def v141_W_reconstructs_S(
     return findings
 
 
+# TR22 V142 SOFT — grammaticality/marginality visible only informally.
+#
+# '*' in FORM is already V129 HARD (any tier, since 2026-06-01). V142
+# covers the two remaining machine-invisible shapes surfaced by the
+# 2026-08 elicited-example audits (POL-016 pending): a leading `? `
+# marginality marker left inline in an S-level FORM, and grammaticality
+# recorded only as free text in @source/@notes.
+
+_GRAMMATICALITY_CLAIM_RE = re.compile(r"ungrammatic|marginal", re.IGNORECASE)
+
+
+def v142_unmarked_grammaticality(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V142 SOFT (TR22): grammaticality visible only informally.
+
+    (a) An S-level FORM whose text begins with `? ` — the marginality
+        marker reads as punctuation downstream and inflates word counts
+        (2 of the 7 V060 findings in the Lin-Interrogative audit were
+        this marker counted as a word).
+    (b) An S whose @source, or whose S-level FORM/TRANSL @notes, claims
+        (un)grammaticality in free text while the sentence carries no
+        machine-readable marking — downstream consumers (token counts,
+        LM training) cannot distinguish these from attested sentences.
+
+    Both heads-up findings pending the POL-016 ruling on a structured
+    grammaticality attribute.
+    """
+    lang = _resolve_language(tree)
+    findings: list[Finding] = []
+    for s in tree.iter("S"):
+        for form in s.findall("FORM"):
+            text = (form.text or "").lstrip()
+            if text.startswith("? "):
+                findings.append(_soft_finding(
+                    rule_id="V142",
+                    message=(
+                        "V142 SOFT grammaticality marker '? ' inline in "
+                        f"S-level FORM (kindOf={form.get('kindOf')!r})"
+                    ),
+                    path=path,
+                    elem=form,
+                    language=lang,
+                    character="?",
+                ))
+        claims = [s.get("source") or ""]
+        claims += [el.get("notes") or "" for el in s.findall("FORM")]
+        claims += [el.get("notes") or "" for el in s.findall("TRANSL")]
+        claimed = [c for c in claims if _GRAMMATICALITY_CLAIM_RE.search(c)]
+        if claimed:
+            findings.append(_soft_finding(
+                rule_id="V142",
+                message=(
+                    "V142 SOFT grammaticality claimed only in free text "
+                    f"({claimed[0][:60]!r}); nothing machine-readable marks "
+                    "this sentence"
+                ),
+                path=path,
+                elem=s,
+                language=lang,
+            ))
+    return findings
+
+
+# TR23 V143 SOFT — TRANSL declared-language vs script mismatch, rate-based.
+#
+# Catches wholesale eng/zho swaps and column-shifted gloss grids (NTU
+# Bunun: ~16,300 swapped values, zero validator signal at the time).
+# Aggregated per (file, declared language) with a rate gate so sporadic
+# loanwords, code-switching, and Leipzig gloss codes stay silent.
+
+_V143_MIN_MISMATCHES = 5
+_V143_MIN_RATE = 0.2
+
+
+def v143_transl_language_script_mismatch(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V143 SOFT (TR23): TRANSL script contradicts its declared language.
+
+    Per TRANSL (all levels) with xml:lang eng or zho, classify script
+    content: eng text whose CJK chars outnumber Latin letters, or zho
+    text with >=3 lowercase Latin letters outnumbering CJK chars (the
+    lowercase gate exempts ALL-CAPS Leipzig codes like '3SG.NOM', which
+    are legitimate in either language). One aggregated finding per
+    (file, language) when >= _V143_MIN_MISMATCHES elements mismatch AND
+    they are >= _V143_MIN_RATE of that language's considered TRANSLs.
+    """
+    per_lang: dict[str, list[int]] = {}
+    for elem in tree.iter("TRANSL"):
+        declared = (elem.get(_XML_LANG) or "").strip().lower()
+        if declared not in ("eng", "zho"):
+            continue
+        text = elem.text or ""
+        latin = sum(1 for ch in text if ("a" <= ch <= "z") or ("A" <= ch <= "Z"))
+        lower_latin = sum(1 for ch in text if "a" <= ch <= "z")
+        cjk = sum(1 for ch in text if _is_cjk(ch))
+        if latin + cjk < 2:
+            continue
+        considered_mismatched = per_lang.setdefault(declared, [0, 0])
+        considered_mismatched[0] += 1
+        if declared == "eng":
+            mismatch = cjk > latin
+        else:
+            mismatch = lower_latin >= 3 and lower_latin > cjk
+        if mismatch:
+            considered_mismatched[1] += 1
+    findings: list[Finding] = []
+    for declared, (considered, mismatched) in sorted(per_lang.items()):
+        if mismatched < _V143_MIN_MISMATCHES:
+            continue
+        if mismatched / considered < _V143_MIN_RATE:
+            continue
+        wrong_script = "CJK" if declared == "eng" else "lowercase Latin"
+        findings.append(Finding(
+            rule_id="V143",
+            severity=Severity.SOFT,
+            message=(
+                f"V143 SOFT transl language/script mismatch: {mismatched} of "
+                f"{considered} TRANSL[@xml:lang='{declared}'] are majority-"
+                f"{wrong_script} — likely swapped languages or a "
+                f"column-shifted gloss grid"
+            ),
+            path=path,
+            language=declared,
+            count=mismatched,
+        ))
+    return findings
+
+
 RULES: list = [
     # W1 (V110-V115): ported from validate_punct.py
     v110_smart_quotes,
@@ -1596,5 +1735,8 @@ RULES: list = [
     v140_null_in_S_original_requires_child_W_and_M,
     # V141: W FORMs reconstruct the S FORM (sibling of gloss V068)
     v141_W_reconstructs_S,
+    # V142/V143: 2026-08-10 audit-driven rules (POL-016; NTU gloss swaps)
+    v142_unmarked_grammaticality,
+    v143_transl_language_script_mismatch,
 ]
 CROSS_FILE_RULES: list = []
