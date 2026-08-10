@@ -238,6 +238,52 @@ Correction entry point is now
 Warning rules: `c023` ambiguous (Wikipedia-suppressed), `c024` `'`→`"`,
 `c025` stranded repair. Implemented and tested in commit `04b3ca4a0`.
 
+## Phase 2 additions (2026-08-10, approved by the user)
+
+Prompted by four GLOSBE review sentences (U001038/U001319/U001404/U002127):
+
+- **Guarded TRANSL-count quotation rule.** Complementary to the existing
+  all-glottal first pass: when the S has TRANSL(s) and (TRANSL quote-mark count −
+  FORM `"` count) = `need` > 0 and even, and there are ≥ `need` non-internal `'`
+  candidates whose **outermost** `need` (first need/2 + last need/2) do NOT sit
+  in an attested token, those outermost `'` become `"` and every other `'` is
+  left glottal. This **overrides** the per-`'` classifier for that sentence,
+  because the pairing misfires when the quoted span's boundary words themselves
+  end in glottals (`Mafana'`, `riko'`). The attestation guard prevents false
+  positives on genuine glottal-boundary sentences (`'ayam … faloco'`).
+  Implemented as `_transl_quotation_targets` + a precedence branch in
+  `apply_quote_corrections`.
+
+- **Single-word-only attestation dictionary (default).** `build_attestation_dict`
+  now defaults to **single-word S-FORMs only**; `--include-interior` re-adds the
+  freq-based interior tokens. Interior tokens harvested from running text were
+  polluted by unresolved quote-`'` (e.g. `'madimadiay`, `koli'` leaking in as if
+  words), which defeated the attestation guard. Single-word entries are clean;
+  coverage grows as dictionary entries are added. Amis regenerated 43,271 → 7,167.
+  Together with the TRANSL rule, all four review sentences now auto-correct — no
+  manual edits needed.
+
+## Recoverability policy (non-regenerable corpora)
+
+The `'`→`"` rewrite mutates the source-fidelity `original` tier. A *correct*
+rewrite is punctuation normalization (allowed); a *wrong* one (glottal letter →
+`"`) corrupts spelling, and an in-place rewrite is **not self-correcting** — a
+later, better dictionary cannot reconsider a `'` that is already `"`.
+
+- **Regenerable corpora** (a working reproduction pipeline in `CodeAndDocs/`,
+  e.g. GLOSBE): no special action — each full pipeline run rebuilds the
+  `original` tier from source and re-applies the correction with the current
+  dictionary, so it self-corrects over time.
+- **Non-regenerable corpora:** before first applying the correction, snapshot the
+  pristine (pre-correction) XML into that corpus's `CodeAndDocs/` as the
+  reproduction baseline, and document in the corpus README that reproduction
+  starts from that snapshot. This re-establishes a "source" so the correction
+  stays re-derivable with a better dictionary later. This is a per-corpus step
+  performed when corrections are first run on real data (none have been yet).
+
+Every rewrite is additionally logged (`c024`/`c025` in `cleaner_warnings.csv`,
+committed for several corpora) and preserved in git history.
+
 ## Open decisions (resolved)
 
 - Dictionary source: **precomputed reference file**, regenerated via the
