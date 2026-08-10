@@ -163,38 +163,75 @@ def test_word_final_glottal_not_treated_as_closer_after_punct():
     assert _labels("o 'ayam ko faloco' iso") == ["GLOTTAL_PAIR", "GLOTTAL_PAIR"]
 
 
-# --- Gap 1: stranded_side direction ---
-def test_stranded_side_attaches_next():
-    # "o ' ayam ..." index 2 is the ' ; 'ayam is attested -> attach to next.
-    assert classify_quotes.stranded_side("o ' ayam ko", 2, DICT) == "next"
+# --- apply_quote_corrections: the high-confidence 4-rule policy -------------
+# Zero false positives by design; anything not matching is assumed glottal.
 
 
-def test_stranded_side_attaches_prev():
-    # "faloco ' iso" -> the ' at index 7 makes faloco' when attached to prev.
-    text = "faloco ' iso"
-    assert classify_quotes.stranded_side(text, text.index("'"), DICT) == "prev"
-
-
-def test_stranded_side_none_when_unresolvable():
-    assert classify_quotes.stranded_side("xyz ' abc", 4, DICT) is None
-
-
-# --- apply_quote_corrections ---
-def test_apply_stranded_repair_removes_whitespace():
-    text = "o ' ayam ko faloco ' iso"
-    new_text, corrected, stranded, ambiguous = aqc(text, [], DICT)
-    assert new_text == "o 'ayam ko faloco' iso"
-    assert corrected == []
-    assert len(stranded) == 2
-    assert ambiguous == []
-
-
-def test_apply_closing_quote_after_period_rewritten():
+def test_rule2_closing_quote_after_period_no_transl_needed():
+    # one word-initial ' + one ' after a period -> Rule 2 (.' is unambiguous).
     text = "'zzq wqx.'"
     new_text, corrected, stranded, ambiguous = aqc(text, [], DICT)
     assert new_text == '"zzq wqx."'
-    assert len(corrected) == 2
-    assert stranded == [] and ambiguous == []
+    assert len(corrected) == 2 and stranded == [] and ambiguous == []
+
+
+def test_rule1_transl_count_matches_start_end_quotes():
+    text = "o 'zzq mid wqx' ko"          # 'zzq (initial) + wqx' (final)
+    new_text, corrected, stranded, ambiguous = aqc(text, ['he said "x"'], DICT)
+    assert new_text == 'o "zzq mid wqx" ko'
+    assert len(corrected) == 2 and ambiguous == []
+
+
+def test_rule1_blocked_when_a_boundary_word_is_attested():
+    # 'ayam and faloco' are attested glottal words -> Rule 1 must not fire.
+    text = "'ayam mid faloco'"
+    new_text, corrected, stranded, ambiguous = aqc(text, ['a "bird"'], DICT)
+    assert new_text == text and corrected == []
+    assert len(ambiguous) == 2            # flagged for review, not edited
+
+
+def test_rule3_requires_transl_corroboration():
+    # word-final closer before '.' is ambiguous with a real glottal -> needs TRANSL.
+    text = "x 'zzq mid wqx'."
+    with_transl = aqc(text, ['said "y"'], DICT)
+    assert with_transl[0] == 'x "zzq mid wqx".' and len(with_transl[1]) == 2
+    # no TRANSL quote -> must NOT fire (this is the Wikipedia false-positive guard)
+    assert aqc(text, [], DICT) == (text, [], [], [])
+
+
+def test_rule4_requires_transl_corroboration():
+    text = "x: 'zzq mid wqx'"             # opener after ':', word-final closer
+    with_transl = aqc(text, ['said "z"'], DICT)
+    assert with_transl[0] == 'x: "zzq mid wqx"' and len(with_transl[1]) == 2
+    assert aqc(text, [], DICT) == (text, [], [], [])
+
+
+def test_no_false_positive_on_real_glottal_words_with_quoting_transl():
+    # Genuine glottal-boundary sentence + a quoting TRANSL -> left glottal, flagged.
+    text = "'ayam ako a faloco'"
+    new_text, corrected, stranded, ambiguous = aqc(text, ['my "bird"'], DICT)
+    assert new_text == text and corrected == [] and len(ambiguous) == 2
+
+
+def test_transl_without_quotes_suppresses_conversion():
+    # Rule 2 would fire, but the TRANSL has no quotation -> assume glottal.
+    text = "'zzq wqx.'"
+    assert aqc(text, ["he spoke plainly"], DICT) == (text, [], [], [])
+
+
+def test_empty_quotation_guard_blocks_back_to_back():
+    # Adjacent quote marks would make an empty "" -> nothing is converted.
+    text = "a: '' b"
+    new_text, corrected, stranded, ambiguous = aqc(text, ['x "y"'], DICT)
+    assert new_text == text and corrected == []
+
+
+def test_destrand_removes_whitespace_to_let_a_rule_fire():
+    # floating ' -> remove the space so 'zzq is word-initial and Rule 2 fires.
+    text = "x ' zzq wqx.'"
+    new_text, corrected, stranded, ambiguous = aqc(text, [], DICT)
+    assert new_text == 'x "zzq wqx."'
+    assert len(corrected) == 2 and stranded == [2]
 
 
 def test_apply_internal_glottal_ignored():
@@ -202,64 +239,6 @@ def test_apply_internal_glottal_ignored():
     assert aqc(text, [], DICT) == (text, [], [], [])
 
 
-def test_apply_single_bound_glottal_left():
-    text = "o 'ayam ko iso"
-    assert aqc(text, [], DICT) == (text, [], [], [])
-
-
-def test_apply_quotation_pair_rewritten():
-    text = "pasowal: 'cima tayni'"
-    new_text, corrected, stranded, ambiguous = aqc(text, [], DICT)
-    assert new_text == 'pasowal: "cima tayni"'
-    assert len(corrected) == 2 and stranded == [] and ambiguous == []
-
-
-def test_apply_reports_ambiguous():
-    text = "'ayam faloco',"
-    new_text, corrected, stranded, ambiguous = aqc(text, [], DICT)
-    assert new_text == text
-    assert corrected == [] and stranded == [] and len(ambiguous) == 2
-
-
-def test_apply_transl_no_quotes_short_circuits():
-    text = "'zzq wqx.'"   # would be QUOTATION, but TRANSL confirms glottal
-    assert aqc(text, ["he spoke"], DICT) == (text, [], [], [])
-
-
 def test_apply_no_quote_is_noop():
     text = "o wawa no tao"
     assert aqc(text, [], DICT) == (text, [], [], [])
-
-
-# --- Guarded TRANSL-count quotation rule ---
-from QC.utilities.classify_quotes import _transl_quotation_targets as tqt
-
-
-def test_transl_count_rule_converts_outermost_pair():
-    # TRANSL has 2 quote marks; FORM's outer ' (unattested) become ".
-    text = "o 'zzq mid wqx' ko"
-    new_text, corrected, stranded, ambiguous = aqc(text, ['he said "x"'], DICT)
-    assert new_text == 'o "zzq mid wqx" ko'
-    assert len(corrected) == 2 and stranded == [] and ambiguous == []
-
-
-def test_transl_count_rule_leaves_middle_word_glottal():
-    # 3 candidates: outer two are the quotes; the middle faloco' (attested word-
-    # final glottal) is left intact. Mirrors U001404/U002127.
-    text = "a: 'zzq faloco' wqx.'"
-    new_text, corrected, stranded, ambiguous = aqc(text, ['said "y"'], DICT)
-    assert new_text == 'a: "zzq faloco\' wqx."'
-    assert len(corrected) == 2
-
-
-def test_transl_count_rule_guard_blocks_attested_boundary():
-    # Both boundary words are attested glottal words -> rule must NOT fire.
-    text = "'ayam mid faloco'"
-    assert tqt(text, ['a "bird"'], set(w.casefold() for w in DICT)) == []
-    new_text, corrected, _, _ = aqc(text, ['a "bird"'], DICT)
-    assert new_text == text and corrected == []
-
-
-def test_transl_count_rule_no_fire_without_transl_quotes():
-    text = "o 'zzq mid wqx' ko"
-    assert aqc(text, ['plain translation, no quotes'], DICT) == (text, [], [], [])

@@ -318,125 +318,178 @@ def _classify_bound(dict_cf, i, quote_indices, info):
     return _pair_verdict_to_label(_combine_pair_verdicts(verdicts))
 
 
-def stranded_side(form_text, i, dictionary):
-    """For a STRANDED_GLOTTAL ' at index ``i`` (into the whitespace-normalized
-    text), return 'prev' or 'next' -- the side whose word becomes attested when
-    the ' reattaches -- or None if not uniquely resolvable.
+# Punctuation a CLOSING quotation mark can sit against (word.' / word'. / word',).
+CLOSING_PUNCT = set(".,!?;")
+
+
+def _quotation_targets(text, transls, dict_cf):
+    """High-confidence quotation rules over a whitespace-normalized ``text``.
+
+    Returns the set of ' indices to rewrite to " (empty set if no rule fires).
+    Designed for ZERO false positives: every rule is a narrow, guarded pattern,
+    and anything not matching is assumed to be a glottal stop. It deliberately
+    leaves genuine-but-unproven quotations as glottal (false negatives are fine
+    and shrink as the dictionary grows).
+
+    A ' "starts a word" = adjacency 'initial'; "ends a word" = adjacency 'final'.
+    A word is "attested" if the whitespace token holding the ' is in the dict.
+    First rule that fires wins, subject to the no-empty-quote guard.
+
+      1. #TRANSL quotation marks (incl. Chinese) minus existing FORM " equals the
+         count of word-initial + word-final ', and NONE of those words is
+         attested -> all those ' are quotes.
+      2. exactly one word-initial ' AND exactly one ' immediately following
+         closing punctuation (. , ! ? ;).
+      3. exactly one word-initial ' AND exactly one word-final ' immediately
+         preceding closing punctuation, and that word-final word is not attested.
+      4. exactly one word-initial ' that follows punctuation AND exactly one
+         word-final ', and neither word is attested.
     """
-    text = " ".join(form_text.split())
-    dict_cf = _casefold_dict(dictionary)
-    prev = nxt = None
-    for s, e, tok in _token_spans(text):
-        core = _strip_flanking_punct(tok)
-        if not any(c.isalpha() for c in core):
-            continue
-        if e <= i:
-            prev = core
-        elif s > i and nxt is None:
-            nxt = core
-    cand = []
-    if prev is not None and not prev.endswith(QUOTE) \
-            and (prev + QUOTE).casefold() in dict_cf:
-        cand.append("prev")
-    if nxt is not None and not nxt.startswith(QUOTE) \
-            and (QUOTE + nxt).casefold() in dict_cf:
-        cand.append("next")
-    return cand[0] if len(cand) == 1 else None
+    idx = [i for i, ch in enumerate(text) if ch == QUOTE]
+    if not idx:
+        return set()
+    adj = {i: _adjacency(text, i) for i in idx}
+    word_initial = [i for i in idx if adj[i] == "initial"]
+    word_final = [i for i in idx if adj[i] == "final"]
+    after_closing = [i for i in idx if i > 0 and text[i - 1] in CLOSING_PUNCT]
+    wf_before_closing = [i for i in word_final
+                         if i + 1 < len(text) and text[i + 1] in CLOSING_PUNCT]
 
+    def attested(i):
+        """Is the glottal WORD this ' belongs to attested? Uses the letter-run
+        adjacent to the ' (initial: '+letters; final: letters+'), NOT the whole
+        whitespace token -- so an opening quote glued to a word that ends in a
+        real glottal (e.g. 'Mafana') doesn't hide that ``mafana'`` is attested.
+        """
+        if adj[i] == "initial":
+            j = i + 1
+            while j < len(text) and text[j].isalpha():
+                j += 1
+            word = text[i:j]
+        elif adj[i] == "final":
+            j = i - 1
+            while j >= 0 and text[j].isalpha():
+                j -= 1
+            word = text[j + 1:i + 1]
+        else:
+            return False
+        return word.casefold() in dict_cf
 
-def _transl_quotation_targets(text, transls, dict_cf):
-    """Guarded complementary rule: TRANSL quote marks matched by outermost FORM '.
+    def guarded(conv):
+        """Return conv unless the rewrite would create an empty quotation -- two
+        " back to back, separated only by whitespace, or abutting an existing "."""
+        s = sorted(conv)
+        for a, b in zip(s, s[1:]):
+            if text[a + 1:b].strip() == "":
+                return set()
+        for i in conv:
+            j = i + 1
+            while j < len(text) and text[j] == " ":
+                j += 1
+            if j < len(text) and text[j] in FORM_DQUOTES:
+                return set()
+            j = i - 1
+            while j >= 0 and text[j] == " ":
+                j -= 1
+            if j >= 0 and text[j] in FORM_DQUOTES:
+                return set()
+        return set(conv)
 
-    Returns the sorted list of ' indices to rewrite to " (empty if the rule does
-    not fire). Fires only when: the S has TRANSL(s); (TRANSL quote-mark count −
-    FORM " count) = need > 0 and even; there are >= need non-internal '
-    candidates; and the outermost ``need`` of them do NOT sit in an attested
-    token (the guard against genuine glottal-boundary words, e.g. 'ayam …
-    faloco'). The outermost ``need`` candidates — the first need/2 and the last
-    need/2 — are the quotation marks; middle candidates (word-final/initial
-    glottals inside the quoted span) stay glottal.
-    """
-    if not transls:
-        return []
+    se = sorted(set(word_initial) | set(word_final))
     tq = sum(ch in TRANSL_QUOTES for t in transls for ch in t)
     fq = sum(ch in FORM_DQUOTES for ch in text)
-    need = tq - fq
-    if need <= 0 or need % 2:
-        return []
-    cands = [i for i, ch in enumerate(text)
-             if ch == QUOTE and _adjacency(text, i) != "internal"]
-    if len(cands) < need:
-        return []
-    k = need // 2
-    chosen = cands[:k] + cands[-k:]
-    spans = list(_token_spans(text))
+    # Rules 3-4 have ambiguous closers (word'. / word' are real word-final-glottal
+    # patterns), so they only fire when the TRANSL corroborates a quotation.
+    transl_has_quote = (tq - fq) > 0
 
-    def token_at(i):
-        for s, e, t in spans:
-            if s <= i < e:
-                return _strip_flanking_punct(t)
-        return ""
+    # Rule 1 -- TRANSL count matches start/end ', none attested.
+    if se and (tq - fq) == len(se) and all(not attested(i) for i in se):
+        conv = guarded(set(se))
+        if conv:
+            return conv
+    # Rule 2 -- one word-initial ' + one ' after closing punct (.' is unambiguous).
+    if len(word_initial) == 1 and len(after_closing) == 1 \
+            and word_initial[0] != after_closing[0]:
+        conv = guarded({word_initial[0], after_closing[0]})
+        if conv:
+            return conv
+    # Rule 3 -- one word-initial ' + one word-final ' before closing punct
+    # (unattested); TRANSL-corroborated.
+    if transl_has_quote and len(word_initial) == 1 and len(wf_before_closing) == 1 \
+            and word_initial[0] != wf_before_closing[0] \
+            and not attested(wf_before_closing[0]):
+        conv = guarded({word_initial[0], wf_before_closing[0]})
+        if conv:
+            return conv
+    # Rule 4 -- one word-initial ' after punct + one word-final ', neither
+    # attested; TRANSL-corroborated.
+    if transl_has_quote and len(word_initial) == 1 and _follows_punct(text, word_initial[0]) \
+            and len(word_final) == 1 and word_initial[0] != word_final[0] \
+            and not attested(word_initial[0]) and not attested(word_final[0]):
+        conv = guarded({word_initial[0], word_final[0]})
+        if conv:
+            return conv
+    return set()
 
-    if any(token_at(i).casefold() in dict_cf for i in chosen):
-        return []
-    return sorted(chosen)
+
+def _destrand_for_quotation(text, transls, dict_cf):
+    """If removing the whitespace on one side of a floating ' lets a quotation
+    rule fire, return (variant_text, converted_indices, [orig ' index]).
+    Otherwise (text, empty set, [])."""
+    for i, ch in enumerate(text):
+        if ch != QUOTE or _adjacency(text, i) != "floating":
+            continue
+        for sp in (i - 1, i + 1):
+            if 0 <= sp < len(text) and text[sp] == " ":
+                variant = text[:sp] + text[sp + 1:]
+                conv = _quotation_targets(variant, transls, dict_cf)
+                if conv:
+                    return variant, conv, [i]
+    return text, set(), []
 
 
 def apply_quote_corrections(form_text, transls, dictionary):
-    """Decide each ' in an original-tier FORM and apply corrections.
+    """Rewrite ' -> " on the ORIGINAL tier only under the high-confidence
+    quotation rules in ``_quotation_targets``; assume glottal otherwise.
 
-    Whitespace is normalized (as ``classify`` does) first, so the returned text
-    is single-spaced. Returns ``(new_text, corrected, stranded, ambiguous)``
-    where the three lists hold indices into the NORMALIZED pre-correction text:
-      - corrected: ' rewritten to " (QUOTATION)
-      - stranded:  ' whose neighbouring space was removed to reattach a glottal
-      - ambiguous: ' left in place, needs human review
-    Glottal (internal / bound / pair) outcomes are left untouched and not
-    reported. A TRANSL that confirms all-glottal short-circuits to no changes.
+    Whitespace is normalized first. Returns ``(new_text, corrected, stranded,
+    ambiguous)`` (index lists into the normalized text):
+      - corrected: ' rewritten to "
+      - stranded:  a floating ' whose surrounding whitespace was removed so a
+        rule could fire
+      - ambiguous: ' left unchanged in a sentence whose TRANSL carries quotation
+        marks we could not confidently place -- an audit flag, NOT an edit.
 
-    Order of precedence:
-      1. TRANSL confirms all-glottal -> no changes.
-      2. Guarded TRANSL-count quotation rule -> when it fires, the outermost
-         matched ' become ", every other ' is left glottal (this OVERRIDES the
-         per-' classifier, whose pairing can misfire when the quoted span's
-         boundary words themselves end in glottals).
-      3. Otherwise, the per-' classifier (canonical `: '…'.` pairing etc.).
+    Zero false positives by design: a TRANSL with no quotation marks suppresses
+    all conversion, and every rule is narrowly guarded. Genuine but unproven
+    quotations are deliberately left as glottal.
     """
     text = " ".join(form_text.split())
     if QUOTE not in text:
         return text, [], [], []
-    if translation_confirms_glottal(text, transls):
-        return text, [], [], []
-
     dict_cf = _casefold_dict(dictionary)
-    transl_targets = _transl_quotation_targets(text, transls, dict_cf)
-    if transl_targets:
-        chars = list(text)
-        for i in transl_targets:
-            chars[i] = '"'
-        return "".join(chars), transl_targets, [], []
+    tq = sum(ch in TRANSL_QUOTES for t in transls for ch in t)
+    # A TRANSL that carries no quotation confirms the sentence has none.
+    quotation_allowed = not (transls and tq == 0)
 
-    corrected, stranded, ambiguous = [], [], []
-    delete = set()                      # space indices to drop (stranded repair)
-    chars = list(text)
-    for idx, label in classify(text, dictionary):
-        if label == "QUOTATION":
-            corrected.append(idx)
-            chars[idx] = '"'
-        elif label == "STRANDED_GLOTTAL":
-            side = stranded_side(text, idx, dictionary)
-            if side == "prev" and idx - 1 >= 0 and chars[idx - 1] == " ":
-                delete.add(idx - 1)
-                stranded.append(idx)
-            elif side == "next" and idx + 1 < len(chars) and chars[idx + 1] == " ":
-                delete.add(idx + 1)
-                stranded.append(idx)
-            else:
-                ambiguous.append(idx)   # direction unresolved -> flag for review
-        elif label == "AMBIGUOUS":
-            ambiguous.append(idx)
-    new_text = "".join(c for k, c in enumerate(chars) if k not in delete)
-    return new_text, corrected, stranded, ambiguous
+    corrected, stranded, work = set(), [], text
+    if quotation_allowed:
+        conv = _quotation_targets(text, transls, dict_cf)
+        if conv:
+            work = text
+        else:
+            work, conv, stranded = _destrand_for_quotation(text, transls, dict_cf)
+        if conv:
+            chars = list(work)
+            for i in conv:
+                chars[i] = '"'
+            work = "".join(chars)
+            corrected = conv
+
+    ambiguous = []
+    if not corrected and tq > 0:
+        ambiguous = [i for i, ch in enumerate(text) if ch == QUOTE]
+    return work, sorted(corrected), stranded, ambiguous
 
 
 # ---------------------------------------------------------------------------

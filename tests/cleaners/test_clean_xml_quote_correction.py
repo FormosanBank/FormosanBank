@@ -57,14 +57,12 @@ def _make_corpus(tmp_path, sub, form_original, transl=None):
 def test_quotation_pair_rewritten_to_doublequote(tmp_path):
     ref = tmp_path / "reference"
     _write_dict(ref, "Amis", ["faloco'", "loma'", "'ayam", "romi'ad"])
-    # 'zzq (after ':') ... wqx' -> neither attested, opener after punct ->
-    # QUOTATION. zzq/wqx are synthetic tokens, never in any real dictionary.
-    _make_corpus(tmp_path, "Corpora/Toy/XML", "pasowal: 'zzq wqx'")
+    # Rule 2: one word-initial ' + one ' after a period ('.' is unambiguous).
+    _make_corpus(tmp_path, "Corpora/Toy/XML", "'zzq wqx.'")
     proc = _run(tmp_path, ref)
     assert proc.returncode == 0, proc.stderr
     (orig,) = _form_originals(tmp_path / "Corpora/Toy/XML/t.xml")
-    assert "'" not in orig.split(":")[1]         # both quotes converted
-    assert orig.count('"') == 2
+    assert orig == '"zzq wqx."'
     rows = _warnings_rows(tmp_path)
     assert sum(r["rule_id"] == "c024" for r in rows) == 2
 
@@ -84,11 +82,13 @@ def test_glottal_pair_left_intact_no_warning(tmp_path):
 def test_ambiguous_emits_c023(tmp_path):
     ref = tmp_path / "reference"
     _write_dict(ref, "Amis", ["faloco'", "'ayam"])
-    _make_corpus(tmp_path, "Corpora/Toy/XML", "'ayam faloco',")
+    # Both boundary words attested + a quoting TRANSL -> no rule fires, but the
+    # unplaced ' are flagged c023 (audit), never edited.
+    _make_corpus(tmp_path, "Corpora/Toy/XML", "'ayam faloco'", transl='he said "x"')
     proc = _run(tmp_path, ref)
     assert proc.returncode == 0, proc.stderr
     (orig,) = _form_originals(tmp_path / "Corpora/Toy/XML/t.xml")
-    assert orig == "'ayam faloco',"                 # unchanged
+    assert orig == "'ayam faloco'"                   # unchanged
     rows = _warnings_rows(tmp_path)
     assert sum(r["rule_id"] == "c023" for r in rows) == 2
 
@@ -120,14 +120,14 @@ def test_transl_no_quotes_leaves_form_intact(tmp_path):
 def test_stranded_glottal_whitespace_repaired_c025(tmp_path):
     ref = tmp_path / "reference"
     _write_dict(ref, "Amis", ["faloco'", "'ayam"])
-    # "o ' ayam ko faloco ' iso" -> spaces removed -> "o 'ayam ko faloco' iso"
-    _make_corpus(tmp_path, "Corpora/Toy/XML", "o ' ayam ko faloco ' iso")
+    # floating ' -> remove the space so 'zzq is word-initial and Rule 2 fires.
+    _make_corpus(tmp_path, "Corpora/Toy/XML", "x ' zzq wqx.'")
     proc = _run(tmp_path, ref)
     assert proc.returncode == 0, proc.stderr
     (orig,) = _form_originals(tmp_path / "Corpora/Toy/XML/t.xml")
-    assert orig == "o 'ayam ko faloco' iso"
+    assert orig == 'x "zzq wqx."'
     rows = _warnings_rows(tmp_path)
-    assert sum(r["rule_id"] == "c025" for r in rows) == 2
+    assert sum(r["rule_id"] == "c025" for r in rows) == 1
     assert not any(r["rule_id"] == "c023" for r in rows)
 
 
