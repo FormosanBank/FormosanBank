@@ -2583,6 +2583,30 @@ def test_V142_not_fired_on_clean_sentence(tmp_path):
     )
 
 
+def test_V142_not_fired_on_grammatical_claim(tmp_path):
+    """V142 silent when @source asserts the sentence IS grammatical.
+
+    The claim regex matches 'ungrammatic…'/'marginal…' only — a positive
+    grammaticality note ('grammatical' lacks the 'ungrammatic' substring)
+    describes an ordinary attested sentence and needs no marking.
+    """
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1" source="speaker judged this fully grammatical">'
+        + '<FORM kindOf="original">icuwa kisu t-u payci?</FORM>'
+        + '<FORM kindOf="standard">icuwa kisu t-u payci?</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v142" not in combined, (
+        f"V142 must not fire on a positive grammaticality note; "
+        f"stdout={proc.stdout!r}"
+    )
+
+
 # -----------------------------------------------------------------------------
 # TR23 V143 SOFT — TRANSL declared-language vs script mismatch (rate-based).
 #
