@@ -1565,11 +1565,13 @@ def v141_W_reconstructs_S(
 
 # TR22 V142 SOFT — UNgrammaticality/marginality visible only informally.
 #
-# '*' in FORM is already V129 HARD (any tier, since 2026-06-01). V142
-# covers the two remaining machine-invisible shapes surfaced by the
-# 2026-08 elicited-example audits (POL-016 pending): a leading `? `
-# marginality marker left inline in an S-level FORM, and a sentence
-# called ungrammatical/marginal only in @source/@notes free text.
+# POL-016 (ruled 2026-08-10): ungrammatical (*) and marginal (?) examples
+# are EXCLUDED from FormosanBank corpora at intake. '*' in FORM is already
+# V129 HARD (any tier, since 2026-06-01). V142 covers the two remaining
+# shapes: a leading `? ` marker left inline in an S-level FORM, and a
+# sentence called ungrammatical/marginal only in @source/@notes free text.
+# A hit means "this sentence should have been excluded — or the marker is
+# stray punctuation to clean; review and remove one or the other."
 # Positive judgments ("this is grammatical") never fire.
 
 _GRAMMATICALITY_CLAIM_RE = re.compile(r"ungrammatic|marginal", re.IGNORECASE)
@@ -1593,13 +1595,13 @@ def v142_unmarked_grammaticality(
         (2 of the 7 V060 findings in the Lin-Interrogative audit were
         this marker counted as a word).
     (b) An S whose @source, or whose S-level FORM/TRANSL @notes, calls
-        the example ungrammatical or marginal in free text while the
-        sentence carries no machine-readable marking — downstream
+        the example ungrammatical or marginal in free text — downstream
         consumers (token counts, LM training) cannot distinguish these
         from ordinary attested sentences.
 
-    Both heads-up findings pending the POL-016 ruling on a structured
-    grammaticality attribute.
+    Per POL-016 (ruled 2026-08-10: such examples are excluded at
+    intake), a hit is a sentence that should have been excluded — or a
+    stray marker to clean. Review and remove one or the other.
     """
     lang = _resolve_language(tree)
     findings: list[Finding] = []

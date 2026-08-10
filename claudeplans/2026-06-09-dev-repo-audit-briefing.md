@@ -61,7 +61,9 @@ exhaustive checklist**. Anything else a step does to the data is equally fair ga
   thesis card.) **Parenthesized stars are directional (POL-017):** `*(X)` = X
   obligatory → keep X; `(*X)` = X forbidden → drop X. Treating them identically
   is the NTU-Rukai bug class. `?` at sentence start marks marginality — V142
-  flags it left inline; treat `?` and `*` examples consistently (POL-016).
+  flags it left inline. POL-016 (ruled 2026-08-10): both `*` and `?`
+  examples are **excluded** at intake, not ingested with or without the
+  marker.
 - **Schema:** `QC/validation/xml_template.xsd`. `kindOf` ∈ {original, standard};
   `TRANSL/@ver="alt"` for redundant same-language translations; `TEXT/@dialect`
   required and valid per `dialects.csv` (single-dialect languages use the language

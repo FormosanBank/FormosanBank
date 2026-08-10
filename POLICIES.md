@@ -42,9 +42,17 @@ Implemented by: convention; enforced through audits (`audit-dev-repo`,
 The `standard` tier is **derived and machine-owned**: `standardize.py`
 regenerates it from the original tier on every run (`create_standard`
 replaces existing content before applying any conversion). Consequences:
-never hand-edit a standard FORM (the edit is clobbered on the next run —
-this is why `capture_manual_edits.py` strips standard FORMs from records);
-all standard-tier cleaning lives in `standardize.py`, none in `clean_xml.py`.
+never hand-edit a standard FORM — the edit is clobbered on the next run.
+The manual-edits tooling encodes this: `capture_manual_edits.py` records
+each edited `<S>` whole but first *deletes* every `FORM[@kindOf="standard"]`
+and every `PHON` from the record (at S, W, and M level) before storing or
+comparing, because those tiers are regenerated downstream and recording
+them would only capture churn; `apply_manual_edits.py` likewise replaces an
+edited sentence with the stripped record and lets standardize/add_phonology
+rebuild the derived tiers. Net effect: an edit made *only* to a standard
+FORM or PHON is invisible to capture and futile anyway — edit the original
+and let regeneration propagate. All standard-tier cleaning lives in
+`standardize.py`, none in `clean_xml.py`.
 Spec: `docs/superpowers/specs/2026-08-09-standardize-owns-standard-cleaning-design.md`.
 
 ### POL-003 · RULED · 2026-08-09 · PHON tier
@@ -96,41 +104,59 @@ not source spelling, so POL-001 is not violated; letter-adjacent `ø`
 hyphen) are removed from S-level **standard** FORMs in TSV/remove-accents
 modes; `--copy` keeps them (V120 SOFT = "re-standardize when convenient").
 A null in a W FORM requires a null M child (V069 HARD). Null morphemes are
-silent in PHON; a whole-null FORM gets PHON `∅`. Per-corpus "keep the
-source's Ø" decisions apply only inside dev repos pre-port; the glyph
-normalizes at intake. Spec:
+silent in PHON; a whole-null FORM gets PHON `∅`. A dev repo may keep the
+source's glyph (`ø`/`Ø`) while work is in progress — two 2026-08 audits
+chose to — but that choice does not survive publication: `clean_xml`
+canonicalizes the glyph the first time the corpus runs through the
+pipeline, so there is no per-corpus opt-out of `∅` in published data. Spec:
 `docs/superpowers/specs/2026-08-09-null-morpheme-handling-design.md`.
 
-### POL-013 · UNRESOLVED · reduplication tilde
-Sources print U+223C `∼` (and occasionally U+301C); FormosanBank convention
-elsewhere is ASCII `~` U+007E. `swap_punctuation` does not currently map it.
-*Recommendation: add U+223C/U+301C → `~` to `swap_punctuation` (typography,
-per the POL-010 rationale).* Raised by: Amis-Adversative audit 2026-08-10.
+### POL-013 · UNRESOLVED · the tilde
+Two separable questions:
+1. **Codepoint** (typography): PDF text layers emit U+223C `∼` (occasionally
+   U+301C) where the convention is ASCII `~` U+007E — e.g. the Bril 2024
+   source's reduplication notation (`RED∼stem`, 15 character-sites in the
+   Amis-Adversative dev repo). *Recommendation: add U+223C/U+301C → `~` to
+   `swap_punctuation`; pure typography per the POL-010 rationale, whatever
+   the tilde means.*
+2. **Semantics** (messier): `~` currently does double duty — Leipzig-style
+   reduplication marker in glossed FORM tiers of scraped sources, and
+   phonemic-variant separator on the PHON tier / in orthography profiles
+   (e.g. `j~ɨ`). The maintainer notes the variant-marking use is itself
+   messy and possibly worth redesigning. No ruling yet on whether the two
+   uses should be disambiguated (different characters, or restricting `~`
+   to one tier).
 
 ### POL-014 · RULED · GitBook · infixes on W/M tiers
 W-tier FORMs mark an infix with ASCII angle brackets (`k<um>a'en`); S-level
 original FORMs may keep the source's typography (e.g. guillemets `k‹um›a'en`).
-At M level, for `a-b-c` (infix `b` inside root `a…c`): the root is **one**
-morpheme FORM `a-c` and the infix is `-b-`. Circumfixes analogous, unless the
-source glosses them as prefix + suffix. Splitting the root into two M
-elements (e.g. `t-a` + `-um-` + `taŋi`) deviates from this ruling — flag it
-at audit time. Source: GitBook XML-format page §Special Rules.
+At M level the infixed root is **one** morpheme FORM, written with `-` at
+the infixation point, and the infix is `-b-`. Worked example: `t<um>a-taŋi`
+(root `ta`, infix `um`, plus morpheme `taŋi`) → three M FORMs `t-a`, `-um-`,
+`taŋi` — this is the conformant shape (Kanakanavu's practice conforms).
+What deviates, and gets flagged at audit time: writing the root *rejoined*
+with no hyphen (`ta`), or splitting it into two separate M elements (`t-`
+and `a-`). Circumfixes are analogous, unless the source glosses them as
+prefix + suffix. Source: GitBook XML-format page §Special Rules.
 
 ### POL-015 · RULED · GitBook · clitics
 M-level clitic FORMs retain the `=` marker whether or not the source wrote
 the clitic attached. Source: GitBook XML-format page §Special Rules.
 
-### POL-016 · UNRESOLVED · ungrammatical/marginal examples
-Elicited-example corpora contain `*` (ungrammatical) and `?` (marginal)
-sentences. Current practice is inconsistent (marker stripped vs kept inline
-vs example excluded; the fact surviving only in free-text `source`/`notes`).
-Whatever the ruling, `*` and `?` must be treated **the same way**, and inline
-markers must not inflate word/token counts. Options on the table:
-(a) exclude starred examples at admission; (b) keep them with a
-machine-readable S attribute (e.g. `grammaticality="ungrammatical|marginal"`)
-and exclude from token counts; (c) status quo, documented. *Recommendation:
-(b).* Raised by: Lin-Interrogative-Verbs, Puyuma-Teng, Sakizaya audits;
-NTU `*(malra)` incident.
+### POL-016 · RULED · 2026-08-10 · ungrammatical/marginal examples
+**Exclude them.** Elicited examples the source marks ungrammatical (`*`) or
+questionable/marginal (`?`) are not ingested into FormosanBank corpora —
+neither with the marker inline nor with the marker stripped. `*` and `?`
+examples are treated the same way. If a collection of ungrammatical
+examples is ever wanted, it will be a different, purpose-built corpus.
+Enforcement: V129 HARD (`*` in any FORM) and V142 SOFT (leading `? ` in
+FORM, or ungrammaticality/marginality asserted only in `@source`/`@notes`
+free text) both now read as "this sentence should have been excluded — or
+the marker is stray punctuation to clean; review and remove one or the
+other." Applies at intake (dev-repo build scripts); existing published
+hits are the V142/V129 review worklist. Raised by:
+Lin-Interrogative-Verbs, Puyuma-Teng, Sakizaya audits; NTU `*(malra)`
+incident.
 
 ### POL-017 · RULED · 2026-08-10 · obligatory/forbidden parentheses
 In source notation, `*(X)` means X is **obligatory** (keep X, unstarred) and
@@ -165,12 +191,18 @@ constraint without UPA violations.
 from a missing FORM = never transcribed). Not counted as a token.
 `standardize.py` preserves it when duplicating original → standard.
 
-### POL-022 · PARTIAL · 2026-08 · duplicate sentences
-Within-file exact duplicates are HARD findings for narrative corpora.
-Lexical/wordlist corpora may legitimately attest the same form twice
-(Latham ruling: keep both). UNRESOLVED: the general mechanism — a
-corpus-type flag downgrading within-file duplicates to SOFT for lexical
-corpora, vs per-corpus `--no-exit-on-hard`.
+### POL-022 · RULED · 2026-08-10 · duplicate sentences
+**Narratives may repeat; reference resources may not.** In narrative and
+spontaneous-speech corpora, exact duplicate sentences are *fine* — natural
+repetition is part of the text. In dictionaries, wordlists, and grammar
+example collections, repeats should be excluded — a reference resource
+gains nothing from the same entry twice. Nuance from the Latham 2026-08
+call: a wordlist repeat with *distinct provenance* (attested from a
+different source variety or page) is informative attestation, not a
+repeat, and may be kept deliberately. Implementation follow-up:
+`validate_duplicate_sentences` currently applies one severity everywhere;
+it should scope by corpus type (duplicates in reference corpora
+actionable, in narratives not findings at all).
 
 ### POL-023 · RULED · 2026-08-10 · M-tier presence
 In an XML file where any W has two or more M children (i.e. the file is
@@ -183,10 +215,39 @@ segmented file) and V145 (M level present but nothing multi-M) in
 need fixing over time. (Resolves the Bunun-Topic-Focus degenerate-single-M
 question: its 51 single-M Ws are conforming as long as no W lacks an M.)
 
-### POL-024 · RULED · existing practice · literal translations
-Parenthetical literal translations / paraphrases (`(Lit. …)`) belong in a
-`notes` attribute or a `ver="alt"` TRANSL, not inline in the primary TRANSL
-text.
+### POL-024 · RULED · 2026-08-10 · parentheticals in translations
+Two different things, treated differently:
+- **Literal translations / analytic paraphrases** (`(Lit. the money that
+  Utay took is how much?)`) belong in a `ver="alt"` TRANSL or a `notes`
+  attribute, not inline in the primary TRANSL text.
+- **Naturalistic elaboration** (`Sally went to Porto (a town in
+  Portugal).`) MAY stay inline: a human translator might really produce
+  that parenthetical, and one may *want* MT to learn to produce it.
+  Moving it to `notes` is permitted but optional — a judgment call, not a
+  cleanup target. Auditors should not flag inline naturalistic
+  parentheticals as defects.
+
+### POL-025 · RULED · 2026-08-10 · alternative translations
+When a source gives more than one translation of a sentence into the same
+language, they all live **in the same `<S>` block** as multiple TRANSL
+elements, with all but one carrying `ver="alt"`. (The XSD already requires
+a `ver` when a parent has two same-language TRANSLs.) Do not drop the
+extra readings (Puyuma-Teng audit found 7 lost) and do not create
+duplicate S blocks for them.
+
+### POL-026 · RULED · 2026-08-10 · optional material in examples
+A source sentence with optional words — `x y (z)` — becomes **two S
+blocks**: `x y` and `x y z`. Care at conversion time: the gloss tier of
+the `x y` block must not contain z's gloss (and its W/M tier must not
+contain z), and each block's translation must match its own variant.
+
+### POL-027 · RULED · 2026-08-10 · alternatives in examples
+A source sentence offering alternatives — `Sally likes x / y / z` —
+becomes **one S block per option**, never a single block with the slashes
+retained. Same care as POL-026: each block's glosses, W/M tier, and
+translation reflect only its own option. (V121/V122 flag leftover
+parens/slashes; unresolved slash alternatives in published FORMs are the
+symptom of skipping this rule.)
 
 ---
 
