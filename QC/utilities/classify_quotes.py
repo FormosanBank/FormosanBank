@@ -120,6 +120,15 @@ def _precedes_punct(text: str, i: int) -> bool:
     return ch is not None and ch in PUNCT
 
 
+# Punctuation that a CLOSING quotation mark can follow (e.g. word.' or word. ').
+TERMINAL_PUNCT = set(".,;:?!")
+
+
+def _follows_terminal(text: str, i: int) -> bool:
+    ch = _nearest_nonspace_left(text, i)
+    return ch is not None and ch in TERMINAL_PUNCT
+
+
 def _token_spans(text: str):
     """Yield (start, end, token) for whitespace-separated tokens."""
     for m in re.finditer(r"\S+", text):
@@ -139,9 +148,12 @@ def _evaluate_pair(dict_cf, opener_idx, closer_idx, info) -> str:
     ca = cw is not None and cw.casefold() in dict_cf
     of = info[opener_idx]["follows"]
     cp = info[closer_idx]["precedes"]
-    if (not oa and not ca) and (of or cp):
+    # cf: the closer follows terminal punctuation (word.' / word. ') — a closing
+    # quotation-mark signal, since a glottal letter never sits after a period.
+    cf = info[closer_idx]["follows_terminal"]
+    if (not oa and not ca) and (of or cp or cf):
         return "QUOTATION"
-    if (oa and ca) and (not of) and (not cp):
+    if (oa and ca) and (not of) and (not cp) and (not cf):
         return "GLOTTAL"
     return "AMBIGUOUS"
 
@@ -209,10 +221,15 @@ def classify(form_text, dictionary):
             closer = containing_core(i)
         else:
             closer = (pc + QUOTE) if pc is not None else None
+        follows_terminal = _follows_terminal(text, i)
         info[i] = {
             "adj": a,
             "follows": _follows_punct(text, i),
             "precedes": _precedes_punct(text, i),
+            "follows_terminal": follows_terminal,
+            # A ' that follows terminal punctuation and opens nothing after it
+            # (no following letter-word) is a closing quotation mark.
+            "end_closer": a == "floating" and follows_terminal and nc is None,
             "opener": opener,
             "closer": closer,
             "prev_core": pc,
@@ -237,12 +254,20 @@ def _classify_floating(dict_cf, i, quote_indices, info):
 
     # precedes_punct -> acts as CLOSER; match = earlier opener (initial|floating).
     # follows_punct  -> acts as OPENER; match = later   closer (final|floating).
+    # end_closer (word.' / word. ') -> acts as CLOSER; match = earlier opener.
     pairs = []
     if precedes:
         for j in quote_indices:
             if j < i and info[j]["adj"] in ("initial", "floating"):
                 pairs.append((j, i))
-    if follows:
+    if info[i]["end_closer"]:
+        for j in quote_indices:
+            if j < i and (
+                info[j]["adj"] == "initial"
+                or (info[j]["adj"] == "floating" and info[j]["follows"])
+            ):
+                pairs.append((j, i))
+    if follows and not info[i]["end_closer"]:
         for j in quote_indices:
             if j > i and info[j]["adj"] in ("final", "floating"):
                 pairs.append((i, j))
@@ -274,6 +299,8 @@ def _classify_bound(dict_cf, i, quote_indices, info):
                 pairs.append((i, j))
             elif info[j]["adj"] == "floating" and info[j]["precedes"]:
                 pairs.append((i, j))
+            elif info[j]["adj"] == "floating" and info[j]["end_closer"]:
+                pairs.append((i, j))
     else:  # final
         for j in quote_indices:
             if j >= i:
@@ -287,6 +314,73 @@ def _classify_bound(dict_cf, i, quote_indices, info):
         return "GLOTTAL_BOUND_NO_MATCH"
     verdicts = [_evaluate_pair(dict_cf, o, c, info) for (o, c) in pairs]
     return _pair_verdict_to_label(_combine_pair_verdicts(verdicts))
+
+
+def stranded_side(form_text, i, dictionary):
+    """For a STRANDED_GLOTTAL ' at index ``i`` (into the whitespace-normalized
+    text), return 'prev' or 'next' -- the side whose word becomes attested when
+    the ' reattaches -- or None if not uniquely resolvable.
+    """
+    text = " ".join(form_text.split())
+    dict_cf = _casefold_dict(dictionary)
+    prev = nxt = None
+    for s, e, tok in _token_spans(text):
+        core = _strip_flanking_punct(tok)
+        if not any(c.isalpha() for c in core):
+            continue
+        if e <= i:
+            prev = core
+        elif s > i and nxt is None:
+            nxt = core
+    cand = []
+    if prev is not None and not prev.endswith(QUOTE) \
+            and (prev + QUOTE).casefold() in dict_cf:
+        cand.append("prev")
+    if nxt is not None and not nxt.startswith(QUOTE) \
+            and (QUOTE + nxt).casefold() in dict_cf:
+        cand.append("next")
+    return cand[0] if len(cand) == 1 else None
+
+
+def apply_quote_corrections(form_text, transls, dictionary):
+    """Decide each ' in an original-tier FORM and apply corrections.
+
+    Whitespace is normalized (as ``classify`` does) first, so the returned text
+    is single-spaced. Returns ``(new_text, corrected, stranded, ambiguous)``
+    where the three lists hold indices into the NORMALIZED pre-correction text:
+      - corrected: ' rewritten to " (QUOTATION)
+      - stranded:  ' whose neighbouring space was removed to reattach a glottal
+      - ambiguous: ' left in place, needs human review
+    Glottal (internal / bound / pair) outcomes are left untouched and not
+    reported. A TRANSL that confirms all-glottal short-circuits to no changes.
+    """
+    text = " ".join(form_text.split())
+    if QUOTE not in text:
+        return text, [], [], []
+    if translation_confirms_glottal(text, transls):
+        return text, [], [], []
+
+    corrected, stranded, ambiguous = [], [], []
+    delete = set()                      # space indices to drop (stranded repair)
+    chars = list(text)
+    for idx, label in classify(text, dictionary):
+        if label == "QUOTATION":
+            corrected.append(idx)
+            chars[idx] = '"'
+        elif label == "STRANDED_GLOTTAL":
+            side = stranded_side(text, idx, dictionary)
+            if side == "prev" and idx - 1 >= 0 and chars[idx - 1] == " ":
+                delete.add(idx - 1)
+                stranded.append(idx)
+            elif side == "next" and idx + 1 < len(chars) and chars[idx + 1] == " ":
+                delete.add(idx + 1)
+                stranded.append(idx)
+            else:
+                ambiguous.append(idx)   # direction unresolved -> flag for review
+        elif label == "AMBIGUOUS":
+            ambiguous.append(idx)
+    new_text = "".join(c for k, c in enumerate(chars) if k not in delete)
+    return new_text, corrected, stranded, ambiguous
 
 
 # ---------------------------------------------------------------------------

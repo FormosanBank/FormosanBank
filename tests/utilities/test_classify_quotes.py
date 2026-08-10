@@ -126,6 +126,7 @@ def test_bound_pair_glottal():
 
 # --- TRANSL first-pass tests (temporary) ---
 from QC.utilities.classify_quotes import translation_confirms_glottal as tcg
+from QC.utilities.classify_quotes import apply_quote_corrections as aqc
 
 
 def test_transl_no_transl_returns_false():
@@ -145,3 +146,86 @@ def test_transl_quotes_match_form_dquotes_glottal():
 def test_transl_quotes_mismatch_not_resolved():
     # TRANSL has a quotation but FORM has no " -> single-quote may be a quote.
     assert tcg("'faloco' saan", ['he said "heart"']) is False
+
+
+# --- Gap 2: closing quote after terminal punctuation -> QUOTATION ---
+def test_closer_after_period_pairs_as_quotation():
+    # 'zzq (opener) ... wqx.' (closer follows '.') -> QUOTATION pair.
+    assert _labels("'zzq wqx.'") == ["QUOTATION", "QUOTATION"]
+
+
+def test_closer_after_period_space_pairs_as_quotation():
+    assert _labels("'zzq wqx. '") == ["QUOTATION", "QUOTATION"]
+
+
+def test_word_final_glottal_not_treated_as_closer_after_punct():
+    # faloco' 's ' follows a letter, not punct -> stays a glottal pair.
+    assert _labels("o 'ayam ko faloco' iso") == ["GLOTTAL_PAIR", "GLOTTAL_PAIR"]
+
+
+# --- Gap 1: stranded_side direction ---
+def test_stranded_side_attaches_next():
+    # "o ' ayam ..." index 2 is the ' ; 'ayam is attested -> attach to next.
+    assert classify_quotes.stranded_side("o ' ayam ko", 2, DICT) == "next"
+
+
+def test_stranded_side_attaches_prev():
+    # "faloco ' iso" -> the ' at index 7 makes faloco' when attached to prev.
+    text = "faloco ' iso"
+    assert classify_quotes.stranded_side(text, text.index("'"), DICT) == "prev"
+
+
+def test_stranded_side_none_when_unresolvable():
+    assert classify_quotes.stranded_side("xyz ' abc", 4, DICT) is None
+
+
+# --- apply_quote_corrections ---
+def test_apply_stranded_repair_removes_whitespace():
+    text = "o ' ayam ko faloco ' iso"
+    new_text, corrected, stranded, ambiguous = aqc(text, [], DICT)
+    assert new_text == "o 'ayam ko faloco' iso"
+    assert corrected == []
+    assert len(stranded) == 2
+    assert ambiguous == []
+
+
+def test_apply_closing_quote_after_period_rewritten():
+    text = "'zzq wqx.'"
+    new_text, corrected, stranded, ambiguous = aqc(text, [], DICT)
+    assert new_text == '"zzq wqx."'
+    assert len(corrected) == 2
+    assert stranded == [] and ambiguous == []
+
+
+def test_apply_internal_glottal_ignored():
+    text = "romi'ad ko 'ayam"
+    assert aqc(text, [], DICT) == (text, [], [], [])
+
+
+def test_apply_single_bound_glottal_left():
+    text = "o 'ayam ko iso"
+    assert aqc(text, [], DICT) == (text, [], [], [])
+
+
+def test_apply_quotation_pair_rewritten():
+    text = "pasowal: 'cima tayni'"
+    new_text, corrected, stranded, ambiguous = aqc(text, [], DICT)
+    assert new_text == 'pasowal: "cima tayni"'
+    assert len(corrected) == 2 and stranded == [] and ambiguous == []
+
+
+def test_apply_reports_ambiguous():
+    text = "'ayam faloco',"
+    new_text, corrected, stranded, ambiguous = aqc(text, [], DICT)
+    assert new_text == text
+    assert corrected == [] and stranded == [] and len(ambiguous) == 2
+
+
+def test_apply_transl_no_quotes_short_circuits():
+    text = "'zzq wqx.'"   # would be QUOTATION, but TRANSL confirms glottal
+    assert aqc(text, ["he spoke"], DICT) == (text, [], [], [])
+
+
+def test_apply_no_quote_is_noop():
+    text = "o wawa no tao"
+    assert aqc(text, [], DICT) == (text, [], [], [])
