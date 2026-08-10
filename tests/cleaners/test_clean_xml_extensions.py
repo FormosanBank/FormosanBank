@@ -44,7 +44,9 @@ XFAIL_NOT_YET_IMPLEMENTED = (
 
 def _run_clean(corpora_path: Path) -> subprocess.CompletedProcess:
     return subprocess.run(
-        [sys.executable, str(CLEAN_XML), "--corpora_path", str(corpora_path)],
+        [sys.executable, str(CLEAN_XML), "--corpora_path", str(corpora_path),
+         # isolate legacy tests from the quote-correction dictionary
+         "--reference_dir", str(corpora_path / "_noref")],
         capture_output=True,
         text=True,
     )

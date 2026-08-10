@@ -9,6 +9,17 @@ import argparse
 import unicodedata
 from pathlib import Path
 
+import sys
+
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+
+from QC.corpus_counts import resolve_language, XML_LANG
+from QC.utilities.classify_quotes import QUOTE, apply_quote_corrections
+
+_DEFAULT_REFERENCE_DIR = _REPO_ROOT / "QC" / "validation" / "reference"
+
 XML_LANG_ATTR = "{http://www.w3.org/XML/1998/namespace}lang"
 
 _CHINESE_LANGS = frozenset({
@@ -500,16 +511,40 @@ def clean_trans(
     text = trim_repeated_punctuation(text)
     return text
 
+def _load_attestation(language, reference_dir, cache):
+    """Return the casefolded attestation set for `language`, or None if absent.
+
+    `cache` is a dict reused across files in one run. A missing file caches
+    None so we do not stat it repeatedly.
+    """
+    if language in cache:
+        return cache[language]
+    result = None
+    if language:
+        path = Path(reference_dir) / language / "attestation.txt"
+        if path.exists():
+            with open(path, encoding="utf-8") as fh:
+                result = {w.strip().casefold() for w in fh if w.strip()}
+    cache[language] = result
+    return result
+
+
 def analyze_and_modify_xml_file(
     xml_dir,
     corpora_dir,
     warnings: CleanerWarnings | None = None,
     counter: TransformCounter | None = None,
     metadata_counter: dict[str, int] | None = None,
+    reference_dir=None,
+    _attestation_cache: dict | None = None,
 ):
     """
     Analyzes and modifies an XML file by cleaning text and handling specific cases in <FORM>.
     """
+    if reference_dir is None:
+        reference_dir = _DEFAULT_REFERENCE_DIR
+    if _attestation_cache is None:
+        _attestation_cache = {}
     for droot, dirs, files in os.walk(xml_dir):
         for file in files:
             if file.endswith(".xml"):
@@ -530,6 +565,9 @@ def analyze_and_modify_xml_file(
                 # Silling to re-open the file, but such are the times we live in.
                 tree = etree.parse(xml_file)
                 root = tree.getroot()
+                language = resolve_language(root.get(XML_LANG), root.get("dialect"))
+                dictionary = _load_attestation(language, reference_dir, _attestation_cache)
+                is_wikipedia = "Wikipedias" in Path(xml_file).parts
                 modified = False
                 metadata_repairs = normalize_translation_language_metadata(
                     root,
@@ -612,6 +650,39 @@ def analyze_and_modify_xml_file(
                                 transl.text = cleaned_transl_text
                                 modified = True
 
+                    # Quote/glottal correction: sentence-level ORIGINAL FORM only.
+                    # W/M FORMs and the standard tier are intentionally excluded.
+                    if dictionary is not None:
+                        transl_texts = [
+                            "".join(t.itertext())
+                            for t in sentence.findall('TRANSL')
+                            if "".join(t.itertext()).strip()
+                        ]
+                        for form_element in sentence.findall('FORM'):
+                            if form_element.get("kindOf") != "original":
+                                continue
+                            ft = form_element.text
+                            if not ft or QUOTE not in ft:
+                                continue
+                            new_text, corrected, stranded, ambiguous = \
+                                apply_quote_corrections(ft, transl_texts, dictionary)
+                            if corrected or stranded:
+                                form_element.text = new_text
+                                modified = True
+                            if warnings is not None:
+                                for pos in corrected:
+                                    warnings.add("c024", xml_file,
+                                                 sentence.get("id"), "'", pos)
+                                for pos in stranded:
+                                    warnings.add("c025", xml_file,
+                                                 sentence.get("id"), "'", pos)
+                                if not is_wikipedia:
+                                    for pos in ambiguous:
+                                        warnings.add("c023", xml_file,
+                                                     sentence.get("id"), "'", pos)
+                            if counter is not None and corrected:
+                                counter.record("'", '"', len(corrected))
+
                 if modified:
                     tree.write(xml_file, xml_declaration=True, pretty_print=True, encoding="utf-8")
                     print(f"File cleaned: {xml_file}")
@@ -628,6 +699,8 @@ def main(args):
         warnings=warnings,
         counter=counter,
         metadata_counter=metadata_counter,
+        reference_dir=getattr(args, "reference_dir", None),
+        _attestation_cache={},
     )
     warnings.write_csv()
     counter.print_summary()
@@ -642,6 +715,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Extract orthographic info")
     #parser.add_argument('--verbose', action='store_true', help='increase output verbosity')
     parser.add_argument('--corpora_path', help='the path to the corpus')
+    parser.add_argument('--reference_dir', default=None,
+                        help='dir holding <Language>/attestation.txt '
+                             '(default: QC/validation/reference)')
     args = parser.parse_args()
 
     if not args.corpora_path:
