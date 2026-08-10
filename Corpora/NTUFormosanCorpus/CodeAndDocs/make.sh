@@ -50,7 +50,7 @@ BANK="$(cd "$CORPUS/../.." && pwd)"                        # FormosanBank root
 SCRIPTS="$CODEDOCS/scripts"
 FINAL="$CODEDOCS/Final_XML"                                # parser output
 
-PY="$BANK/.venv/bin/python"
+PY="${PYTHON:-$BANK/.venv/bin/python}"
 [[ -x "$PY" ]] || PY="$(command -v python3)"
 
 step() { printf '\n=== %s ===\n' "$*"; }
@@ -81,15 +81,23 @@ step "3b. standardize --remove_accents (standard tier: accents, S-level null uni
 step "3c. add_phonology (Ortho113)"
 "$PY" "$BANK/QC/utilities/add_phonology.py" --corpora_path "$FINAL" --orthography Ortho113
 
-step "3d. Install Final_XML/ -> XML/"
+run_step() { local label="$1"; shift; step "$label"; "$PY" "$@"; }
+
+# Serialization boundaries (see normalize_serialization.py): step 4's
+# round-trip guard expects the parsers' minidom style, steps 5-20 expect
+# the published lxml style. Convert at each boundary so no guard skips.
+run_step "3d. normalize serialization (minidom, for step 4)" \
+    "$SCRIPTS/normalize_serialization.py" --style minidom "$FINAL"
+run_step "4. repair_empty_morphemes"            "$SCRIPTS/repair_empty_morphemes.py" --xml_dir "$FINAL"
+run_step "4b. normalize serialization (lxml, for steps 5-20)" \
+    "$SCRIPTS/normalize_serialization.py" --style lxml "$FINAL"
+
+step "4c. Install Final_XML/ -> XML/"
 # No --delete: XML/ also holds per-language failed_audio.csv logs that are
 # only regenerated when --with-audio is used. Remove XML/ manually first if
 # a file has been renamed away in the parsers.
 rsync -a "$FINAL"/ "$CORPUS/XML"/
 
-run_step() { local label="$1"; shift; step "$label"; "$PY" "$@"; }
-
-run_step "4. repair_empty_morphemes"            "$SCRIPTS/repair_empty_morphemes.py"
 run_step "5. borrow_segmentation"               "$SCRIPTS/borrow_segmentation.py"
 run_step "6. dedupe_sentence_ids"               "$SCRIPTS/dedupe_sentence_ids.py"
 step "7. remove_null_symbols — RETIRED (handled by steps 3a-3c; see readme.md)"

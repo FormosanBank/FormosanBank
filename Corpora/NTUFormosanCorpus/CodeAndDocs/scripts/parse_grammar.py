@@ -122,8 +122,15 @@ def public_audio_url(url):
 
 
 def public_audio_filename(url):
-    """Return the decoded filename represented by a public audio URL."""
-    return unquote(urlsplit(url).path.rsplit("/", 1)[-1])
+    """Return the AUDIO file attribute for a public audio URL.
+
+    This is the RAW (still URL-encoded) basename, e.g.
+    ``Seediq_A1-3-1-6%20n.mp3`` — the published corpus's convention, which
+    the Hugging Face audio archives and ``audio_sources.json`` contract are
+    keyed on. Do not unquote here: decoding changes every filename with an
+    escaped character and breaks the audio-file match (2026-08-10 audit).
+    """
+    return urlsplit(url).path.rsplit("/", 1)[-1]
 
 
 # ---------------------------------------------------------------------------
