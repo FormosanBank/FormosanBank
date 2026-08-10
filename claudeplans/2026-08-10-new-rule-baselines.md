@@ -66,9 +66,12 @@ WARN:
 - V152 ×2: `Seediq_94_113.tsv` / `Seediq_Church_113.tsv` value column
   `Truku` not canonical under dialects.csv's Seediq entry (the
   Seediq/Truku modeling wrinkle).
-- V153 ×2: `Bunun.rules.tsv` scopes rules to dialect `Zhuoqun` —
-  dialects.csv spells it `Junqun` (romanization drift); `Seediq.rules.tsv`
-  scopes to `Truku` (same wrinkle as V152).
+- V153 ×1: `Seediq.rules.tsv` scopes to `Truku` (same wrinkle as V152).
+  *(Correction 2026-08-10: the initially reported `Bunun.rules.tsv`
+  `Zhuoqun` finding was a V153 bug — the dialect cell is a
+  comma-separated list (`Zhuoqun,Kaqun`, both canonical: 卓群/卡群) and
+  the rule checked the whole cell instead of splitting like the rules
+  engine. Fixed; Zhuoqun ≠ Junqun (郡群) — no romanization drift.)*
 
 ## run_conversion_table_checks — 20 OK, 5 structural, 16 phoneme-level (of 41)
 

@@ -127,3 +127,26 @@ def test_bracket_variant_notation_is_clean(tmp_path):
     proc = _run(root, tmp_path / "f.csv")
     assert proc.returncode == 0
     assert "V154" not in proc.stdout
+
+
+def test_comma_separated_sidecar_dialects_all_checked(tmp_path):
+    """V153 must split dialect cells on commas like the rules engine does:
+    'Zhuoqun,Kaqun' is two canonical names, not one unknown one (the
+    false positive in the 2026-08-10 baseline run)."""
+    root = _mini_repo(tmp_path)
+    (root / "dialects.csv").write_text(
+        "Language,Official,Chinese,glottocode,OtherNames\n"
+        "Bunun,Zhuoqun,卓群,taki1252,\n"
+        "Bunun,Kaqun,卡群,taki1251,\n",
+        encoding="utf-8")
+    (root / "Orthographies" / "Ortho113" / "Bunun.rules.tsv").write_text(
+        "pattern\treplacement\tdescription\tdialect\n"
+        "x\ty\tok\tZhuoqun,Kaqun\n"
+        "x\ty\tbad\tZhuoqun,Nanwan\n",
+        encoding="utf-8")
+    out = tmp_path / "f.csv"
+    proc = _run(root, out)
+    assert proc.returncode == 0
+    rows = [r for r in _findings(out) if r["rule_id"] == "V153"]
+    assert [r["character"] for r in rows] == ["Nanwan"], (
+        f"only the genuinely unknown name should fire; got {rows!r}")

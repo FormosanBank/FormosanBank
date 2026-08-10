@@ -134,16 +134,22 @@ def check(repo_root: Path) -> list:
                 continue
             seen: set = set()
             for row in reader:
-                value = (row.get("dialect") or "").strip()
-                if value and value != "default" and value not in dialects \
-                        and value not in seen:
-                    seen.add(value)
-                    findings.append(Finding(
-                        rule_id="V153", severity=Severity.SOFT,
-                        message=(f"V153 SOFT: {sidecar.name} scopes rules "
-                                 f"to dialect {value!r}, not canonical per "
-                                 f"dialects.csv"),
-                        path=sidecar, character=value))
+                # The rules engine splits this cell on commas
+                # ("Zhuoqun,Kaqun" scopes to two dialects) — check each
+                # name, not the whole cell (2026-08-10 baseline false
+                # positive).
+                for value in (row.get("dialect") or "").split(","):
+                    value = value.strip()
+                    if value and value != "default" \
+                            and value not in dialects \
+                            and value not in seen:
+                        seen.add(value)
+                        findings.append(Finding(
+                            rule_id="V153", severity=Severity.SOFT,
+                            message=(f"V153 SOFT: {sidecar.name} scopes "
+                                     f"rules to dialect {value!r}, not "
+                                     f"canonical per dialects.csv"),
+                            path=sidecar, character=value))
     return findings
 
 
