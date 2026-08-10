@@ -56,6 +56,34 @@ coexist: V125 is the text-validation anchor that fires across all corpora in
 `validate_text.py`; V069 adds finer-grained morpheme-position enforcement in
 `validate_glosses.py`. Docstrings in both functions cross-reference each other.
 
+## Addendum: merge with feature/standardize-owns-standard-cleaning (2026-08-10)
+
+This branch merged in `feature/standardize-owns-standard-cleaning`, which moves
+C012 (standard-tier hyphen handling) from clean_xml into standardize.py and
+stops clean_xml touching the standard tier entirely. Three maintainer rulings
+resolved the cross-branch contradictions:
+
+1. **Dash policy reversed** (supersedes "Hyphen vs dash" below): ALL dash and
+   hyphen look-alikes (U+2010, U+2011, U+2012, U+2013, U+2014, U+2015, U+2212,
+   U+FE58, U+FE63, U+FF0D) canonicalize to ASCII `-` in `swap_punctuation`.
+   Rationale: much of the corpus text is OCRed, so a source's hyphen-vs-dash
+   choice is not principled; standardize to one character and let context
+   decide. The protections against mangling move downstream: standardize's
+   C012 strips `-` from S-level standard FORMs only in morpheme-segmented
+   sentences (S has an M descendant) and keeps digit-flanked `-` (dates,
+   verse ranges) everywhere.
+2. **`--copy` is a pure duplication** (this spec's §3 policy wins): no C012,
+   no null-unit removal in copy mode. A `--copy` corpus's standard tier keeps
+   segmentation hyphens and null units; V120 (SOFT) and V133 (SOFT) flag them
+   as "re-standardize when a conversion table exists" signals.
+3. **Null-morpheme handling retained in full** (§§1, 3–6 unchanged in effect):
+   the C012 ported into standardize.py lost its legacy `Ø-|-Ø|Ø` deletion
+   (removal lives only in `remove_null_units`, which runs before C012 in
+   non-copy modes), and its hyphen stripping skips `∅`-adjacent hyphens as
+   defense in depth. §2's clean_xml C012 changes are superseded: clean_xml no
+   longer has C012 at all, and glyph normalization applies to the original
+   tier (S/W/M); the standard tier inherits it via `create_standard`'s copy.
+
 ## Design
 
 ### Definitions
