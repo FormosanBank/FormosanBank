@@ -79,25 +79,47 @@ corpus-wide diff.
 fixture minimal and regenerate goldens via a documented script rather than by
 hand.
 
-### 1.2 Idempotence / rerun-stability tests (MEDIUM-HIGH)
+### 1.2 Rerun-stability tests (MEDIUM-HIGH) — *revised 2026-08-10 after investigation*
 
-**Problem.** The standardize-owns-standard-cleaning spec explicitly assumed
-"apply_standard outputs are already clean" and called for an equivalence
-check; the plan notes the equivalence tests were *temporary and not
-committed*. Nothing now guards that running `clean_xml` or `standardize`
-twice is a no-op the second time. Non-idempotent cleaning shows up as churny
-diffs every pipeline rerun — and pipeline reruns over published corpora are
-about to happen (null-glyph normalization hasn't been applied to data yet).
+**Investigation result (maintainer asked whether these tools can/should be
+idempotent).** Two different properties are in play:
 
-**Proposal.** Parametrized tests: for each fixture, `run(run(x)) == run(x)`
-byte-for-byte, for clean_xml, standardize (both `--copy` and TSV mode), and
-add_phonology. Add one real-corpus smoke variant (smallest published corpus)
-run in CI-optional mode.
+- `standardize.py` and `add_phonology.py` are **regenerators, not
+  transformers**: in every mode, `create_standard` *replaces* the standard
+  FORM with a fresh copy of the original before conversion, and
+  add_phonology rewrites existing PHON. Conversion never sees its own
+  output, so even a non-idempotent table rule (Cauquelin Puyuma `l→ll`) is
+  safe — verified empirically: double TSV runs yield `llima`, never
+  `llllima`; double `--copy` and `add_phonology` runs are byte-identical.
+  The guaranteed-by-construction property is **regeneration determinism**
+  (run 2 == run 1), and the tests should pin its two enabling invariants:
+  derived tiers replaced not appended; conversion input is the original
+  tier only.
+- `clean_xml.py` faces the **true idempotence** question, because its
+  steady-state input *is* its own prior output (published corpora get
+  re-cleaned). Verified empirically: a double run over all 93 dirty test
+  fixtures left every XML byte-identical. But this holds rule-by-rule, not
+  by construction — a future rule whose output falls in another rule's
+  input domain breaks it silently. The test converts "not guaranteed" into
+  "continuously verified"; if a future rule genuinely can't be idempotent,
+  the failing test forces that discussion instead of shipping churn.
+- **One real bug found:** `CleanerWarnings.write_csv` opens in append mode,
+  so every rerun duplicates persistent warn-only rows in
+  `cleaner_warnings.csv` / `standardize_warnings.csv` (84→166 rows on a
+  no-op second run). Fix: rewrite per run (warnings CSVs are per-run
+  reports — POL-033).
 
-**Importance.** Medium-high; cheap to write, protects every future rerun.
+**Proposal.** As specced in
+`docs/superpowers/plans/2026-08-10-qc-pipeline-tests.md`: fix the warnings
+append bug first, then run-twice tests asserting run2 == run1 byte-for-byte
+(clean_xml over all fixtures; standardize in `--copy`, `--remove_accents`,
+and TSV modes with an `l→ll` doubling-rule fixture; add_phonology), never
+run1 == input (first runs may legitimately reformat).
 
-**Risks.** Low. May immediately surface real non-idempotence — that's the
-point, but budget time to fix what it finds.
+**Importance.** Medium-high; cheap, protects every future rerun.
+
+**Risks.** Low — the empirical baseline already passes; the one known
+failure (warnings sidecar) has a two-line fix.
 
 ### 1.3 Cross-file registry consistency tests (MEDIUM-HIGH)
 
@@ -109,18 +131,21 @@ The very first run of `validate_conversion_table.py` found 5 tables that
 exists (every language resolves in standards.csv) but nothing stops a new
 language/dialect being added to one file and not the others.
 
-**Proposal.** A `tests/data_consistency/` suite that loads all registries and
-asserts referential integrity: every language in `ISO_TO_LANGUAGE` has a
-standards.csv row; every dialect column in every profile and conversion table
-appears in `dialects.csv` (canonical spelling); every `dialect` value in
-`.rules.tsv` sidecars resolves. Known legacy failures go in an explicit
-xfail list that shrinks over time.
+**Proposal** *(revised per maintainer ruling 2026-08-10: SOFT, not HARD —
+registries may be legitimately out of sync)*: a repo-level
+`QC/validation/validate_registries.py` emitting **SOFT** findings
+(V150–V153) through the standard findings framework: every language in
+`ISO_TO_LANGUAGE` has a standards.csv row; non-blank schemes have an
+`Orthographies/<scheme>/` folder; conversion-table value columns and
+`.rules.tsv` `dialect` values are canonical per `dialects.csv`. Exit 1 only
+when a registry file is unreadable. Specced in
+`docs/superpowers/plans/2026-08-10-qc-pipeline-tests.md` Task 4.
 
 **Importance.** Medium-high — this exact class already produced 5 broken
 tables, and the branch multiplied the number of dialect-keyed files.
 
-**Risks.** The first run will fail on legacy data; without an xfail list it
-blocks CI. With one, risk is low.
+**Risks.** Low as SOFT: legacy drift shows up as a shrink-over-time baseline
+rather than a CI blocker.
 
 ### 1.4 Manual-edits round-trip and pipeline-survival test (MEDIUM)
 
