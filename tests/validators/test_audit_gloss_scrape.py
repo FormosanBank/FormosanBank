@@ -459,3 +459,42 @@ def test_audit_exit_on_hard_flag_returns_one(tmp_path):
         "--csv", str(tmp_path / "out.csv"),
     ])
     assert code == 1
+
+
+def test_g004_silent_on_stacked_infixes_with_rejoined_root():
+    """Two infixes in one unit (Puyuma-Teng false-positive class): the root
+    candidate must be computed with ALL infixes removed, not one at a time."""
+    xml = """<TEXT><S id="s"><W id="w">
+        <FORM kindOf="original">p&lt;in&gt;&lt;al&gt;ukpuk</FORM>
+        <M id="m0"><FORM kindOf="original">-in-</FORM></M>
+        <M id="m1"><FORM kindOf="original">-al-</FORM></M>
+        <M id="m2"><FORM kindOf="original">pukpuk</FORM></M>
+    </W></S></TEXT>"""
+    assert _run(gloss_scrape.g004_infix_root_reconstructed, xml) == []
+
+
+def test_g004_silent_when_root_hyphenated_at_infix_point():
+    """POL-014: the root written with '-' at the infixation point (t-a for
+    t<um>a) is the conformant M spelling; G004 accepts it alongside the
+    rejoined spelling."""
+    xml = """<TEXT><S id="s"><W id="w">
+        <FORM kindOf="original">t&lt;um&gt;a-ta&#x14B;i</FORM>
+        <M id="m0"><FORM kindOf="original">t-a</FORM></M>
+        <M id="m1"><FORM kindOf="original">-um-</FORM></M>
+        <M id="m2"><FORM kindOf="original">ta&#x14B;i</FORM></M>
+    </W></S></TEXT>"""
+    assert _run(gloss_scrape.g004_infix_root_reconstructed, xml) == []
+
+
+def test_g004_still_fires_on_stacked_infixes_with_split_root():
+    """Stacked infixes must not blind the rule to a genuinely split root."""
+    xml = """<TEXT><S id="s"><W id="w">
+        <FORM kindOf="original">p&lt;in&gt;&lt;al&gt;ukpuk</FORM>
+        <M id="m0"><FORM kindOf="original">-in-</FORM></M>
+        <M id="m1"><FORM kindOf="original">-al-</FORM></M>
+        <M id="m2"><FORM kindOf="original">p</FORM></M>
+        <M id="m3"><FORM kindOf="original">ukpuk</FORM></M>
+    </W></S></TEXT>"""
+    findings = _run(gloss_scrape.g004_infix_root_reconstructed, xml)
+    assert [f.location for f in findings] == ["S=s W=w"]
+    assert "pukpuk" in findings[0].message
