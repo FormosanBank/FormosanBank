@@ -146,7 +146,11 @@ def _rebuild_morphemes(w, fo, fs, po, ps, ge, gz, wid, stats):
             if pp is not None:
                 pe.text = pp[j]
             else:
-                pe.text = ""
+                # None, not "": empty-string text serializes as
+                # <PHON></PHON>, which reparses to None and reserializes
+                # as <PHON/> — breaking the byte-identical round-trip
+                # guard of every later step that touches this file.
+                pe.text = None
                 stats["M PHON cleared (marker-free vintage; "
                       "regenerate via add_phonology)"] += 1
         _child(m, "TRANSL", _XLANG, "eng").text = ge_p[j]

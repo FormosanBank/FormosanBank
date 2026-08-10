@@ -1,28 +1,35 @@
 """Shared helper: regenerate standard-tier PHON after standard-FORM edits.
 
-Used by remove_null_symbols.py and remove_stress_accents.py.
+Used by remove_annotation_codes.py, apply_manual_corrections.py and
+repair_l2_markers.py (and the retired remove_stress_accents.py /
+remove_null_symbols.py).
 
 Mechanism: the *original* tier is the witness. If converting the
-element's original FORM through the Ortho113 mapping reproduces its
+element's original FORM through the Ortho113 profile reproduces its
 original PHON exactly, the mapping provably generated this file's PHON,
 and the standard PHON can safely be recomputed from the (edited)
 standard FORM. Elements failing the witness check are left alone and
 counted, never guessed.
 
+Since 2026-08-10 the conversion IS add_phonology's own ``phonologize``
+(same profile loading, contextual rules, dialect column selection and
+marker/punctuation policy), so the witness passes on any file whose
+PHON the current pipeline generated. Files carrying an older PHON
+vintage (e.g. the pre-2026-08 style that kept '='/'-'/'<>' and rendered
+nulls as '*') fail the witness and are conservatively skipped —
+make.sh's final add_phonology refresh canonicalizes those instead.
+
 If an element has no PHON children (e.g. when running before
 add_phonology.py during a regeneration), there is nothing to do.
 """
 
-import csv
-import string
 import sys
 from pathlib import Path
 
 _REPO_ROOT = Path(__file__).resolve().parents[4]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
-from QC.utilities.add_phonology import apply_phonology_mappings  # noqa: E402
-from QC.validation._dialect_inventory import is_multi_dialect_language  # noqa: E402
+from QC.utilities.add_phonology import load_profile, phonologize  # noqa: E402
 
 LANG_MAP = {
     'ami': 'Amis', 'tay': 'Atayal', 'bnn': 'Bunun', 'ckv': 'Kavalan',
@@ -43,42 +50,22 @@ def language_of(root):
     return LANG_MAP.get(code, code) or None
 
 
-def load_mappings(language):
-    if language in _cache:
-        return _cache[language]
-    tsv = _REPO_ROOT / "Orthographies" / "Ortho113" / f"{language}.tsv"
-    result = None
-    if tsv.exists():
-        with open(tsv, encoding="utf-8") as f:
-            rows = list(csv.DictReader(f, delimiter="\t"))
-        cols = [c for c in (rows[0].keys() if rows else []) if c != "letter"]
-        if cols:
-            column = cols[0] if not is_multi_dialect_language(language) else (
-                "default" if "default" in cols else cols[0])
-            mappings = [(r["letter"], r[column]) for r in rows
-                        if r.get("letter") and r.get(column) is not None]
-            # add_phonology.py's unknown-character handling: any character
-            # not found in the mapping's IPA output alphabet (nor ASCII
-            # punctuation / whitespace) is rendered as '*'.
-            ipa_chars = set("".join(v for _, v in mappings))
-            result = (mappings, dict(mappings), ipa_chars)
-    _cache[language] = result
-    return result
+def dialect_of(root):
+    text_el = root if root.tag == "TEXT" else root.find(".//TEXT")
+    return (text_el.get("dialect") or "") if text_el is not None else ""
+
+
+def load_mappings(language, dialect=None):
+    """Ortho113 PhonologyProfile for language/dialect (None if no table)."""
+    key = (language, dialect or "")
+    if key not in _cache:
+        _cache[key] = (load_profile("Ortho113", language, dialect or "")
+                       if language else None)
+    return _cache[key]
 
 
 def convert(text, mp):
-    # NOTE: this models the PRE-2026-08 add_phonology output (nulls and
-    # unknown characters rendered '*', punctuation kept). The current
-    # add_phonology renders nulls silent and drops unmapped punctuation,
-    # so on XML regenerated under the current pipeline the witness check
-    # fails and regeneration is (conservatively, intentionally) skipped —
-    # make.sh's final add_phonology pass canonicalizes PHON instead.
-    mappings, cdict, ipa_chars = mp
-    out = apply_phonology_mappings(text, mappings)
-    return "".join(
-        ch if (ch in ipa_chars or ch in string.punctuation or ch.isspace())
-        else "*"
-        for ch in out)
+    return phonologize(text, mp)
 
 
 def _tier(el, tag, kind):

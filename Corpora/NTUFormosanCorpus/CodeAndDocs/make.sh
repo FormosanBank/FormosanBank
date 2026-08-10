@@ -122,6 +122,10 @@ run_step "20. resolve_residual_optional_parens" "$SCRIPTS/resolve_residual_optio
 
 step "Final PHON refresh (canonical add_phonology over the repaired XML)"
 "$PY" "$BANK/QC/utilities/add_phonology.py" --corpora_path "$CORPUS/XML" --orthography Ortho113
+# add_phonology writes its own serialization; restore the published lxml
+# convention so post-hoc repair-script round-trip guards keep working.
+run_step "Normalize serialization (lxml, published convention)" \
+    "$SCRIPTS/normalize_serialization.py" --style lxml "$CORPUS/XML"
 
 if [[ -f "$CODEDOCS/manual_edits.xml" ]]; then
   step "Re-apply recorded hand edits (manual_edits.xml)"

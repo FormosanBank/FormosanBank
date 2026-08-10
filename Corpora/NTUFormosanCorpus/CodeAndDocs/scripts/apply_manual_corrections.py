@@ -50,7 +50,7 @@ from pathlib import Path
 import lxml.etree as etree
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from _phon_regen import language_of, load_mappings, convert  # noqa: E402
+from _phon_regen import dialect_of, language_of, load_mappings, convert  # noqa: E402
 
 _XLANG = "{http://www.w3.org/XML/1998/namespace}lang"
 
@@ -441,7 +441,7 @@ def main():
             print(f"  SKIP (round-trip guard): {rel}")
             continue
         root = tree.getroot()
-        mp = load_mappings(language_of(root))
+        mp = load_mappings(language_of(root), dialect_of(root))
         sindex = {s.get("id"): s for s in root.iter("S")}
         witness_of = {}   # parent element -> witness bool, captured pre-change
         modified = False
