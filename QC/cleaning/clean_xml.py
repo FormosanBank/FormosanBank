@@ -317,6 +317,54 @@ def _clean_trans_chinese(
     return text
 
 
+# C028: entity residue after XML parse. A parsed text containing literal
+# '&lt;' means the source file held '&amp;lt;' — html.escape applied to
+# already-escaped text (NTU Bunun shipped 1,109 TRANSLs this way). Decode
+# to FIXED POINT, not one level: a single-level decode would leave residue
+# for the next cleaning run to decode, making the cleaner non-idempotent.
+# Only the five XML-named entities and numeric character references are
+# matched — a bare '&' ("salt & pepper", "AT&T") is never touched.
+# V132 is the validator twin: it flags any residue that sneaks back in.
+_ENTITY_RESIDUE_RE = re.compile(
+    r"&(amp|apos|lt|gt|quot|#\d{1,7}|#x[0-9A-Fa-f]{1,6});"
+)
+_NAMED_ENTITIES = {"amp": "&", "apos": "'", "lt": "<", "gt": ">", "quot": '"'}
+
+
+def _decode_entity_match(match: "re.Match") -> str:
+    body = match.group(1)
+    if body in _NAMED_ENTITIES:
+        return _NAMED_ENTITIES[body]
+    try:
+        code = int(body[2:], 16) if body.startswith("#x") else int(body[1:])
+        return chr(code)
+    except (ValueError, OverflowError):
+        return match.group(0)
+
+
+def decode_entity_residue(
+    text,
+    xml_file: str = "",
+    s_id: "str | None" = None,
+    warnings: "CleanerWarnings | None" = None,
+):
+    """C028: decode double-encoded entity residue to fixed point.
+
+    Emits one c028 warning row per residue occurrence in the incoming
+    text (first level only — deeper wrapping decodes without re-warning).
+    Bounded at 8 iterations as a runaway guard; real data is 1–2 deep.
+    """
+    if warnings is not None:
+        for match in _ENTITY_RESIDUE_RE.finditer(text):
+            warnings.add("c028", xml_file, s_id, match.group(0), match.start())
+    for _ in range(8):
+        decoded = _ENTITY_RESIDUE_RE.sub(_decode_entity_match, text)
+        if decoded == text:
+            break
+        text = decoded
+    return text
+
+
 def swap_punctuation(text):
     """
     Replaces specific non-ASCII punctuation with their ASCII equivalents.
@@ -440,6 +488,9 @@ def clean_text(
     (V131 / TR16).
     """
     text = _strip_zero_width(text)
+    # C028 runs before everything else so decoded characters (e.g. an
+    # em-dash from '&#8212;') flow through the rest of the pipeline.
+    text = decode_entity_residue(text, xml_file, s_id, warnings)
     text = normalize_caret_variants(text)
     # Emit c002b warning for U+02C8 before it gets swapped to apostrophe.
     if warnings is not None:
@@ -486,6 +537,9 @@ def clean_trans(
     (V131 / TR16).
     """
     text = _strip_zero_width(text)
+    # C028: entity-residue decode is language-agnostic and runs before
+    # the language branch so decoded characters flow through it.
+    text = decode_entity_residue(text, xml_file, s_id, warnings)
     text = normalize_caret_variants(text)
     if _is_chinese(lang):
         text = _clean_trans_chinese(text, xml_file, s_id, warnings)

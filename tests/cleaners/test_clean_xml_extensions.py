@@ -124,6 +124,7 @@ IDEMPOTENT_FIXTURES = [
     "c007_bopomofo_in_form.xml",
     "c022_sentence_initial_asterisk.xml",
     "c027_zero_width_in_form_and_transl.xml",
+    "c028_double_encoded_entities.xml",
 ]
 
 
@@ -1036,3 +1037,77 @@ def test_clean_xml_canonicalizes_dashes_to_hyphen(tmp_path, variant, name):
     tree = etree.parse(str(d / "t.xml"))
     text = tree.find(".//S/FORM[@kindOf='original']").text
     assert text == "a-b", f"{name} (U+{ord(variant):04X}) did not canonicalize to '-'"
+
+
+# =============================================================================
+# C028 — double-encoded entity residue decoded to fixed point
+# =============================================================================
+
+
+def test_C028_double_encoded_angle_brackets_in_FORM_decoded(
+    tmp_path, fixtures_dir, copy_fixture
+):
+    """C028 positive: post-parse '&lt;um&gt;' in FORM becomes real '<um>'."""
+    work = copy_fixture(
+        fixtures_dir / "c028_double_encoded_entities.xml", tmp_path)
+    proc = _run_clean(tmp_path)
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    orig = _form_texts_with_kindof(work, "S", "original")
+    assert orig[0] == "a <um> b"
+
+
+def test_C028_multiply_wrapped_residue_reaches_fixed_point(
+    tmp_path, fixtures_dir, copy_fixture
+):
+    """C028: '&amp;lt;' (triple-encoded source) decodes all the way to '<'.
+
+    Fixed-point decoding is what keeps the cleaner idempotent: a
+    single-level decode would leave '&lt;' for the NEXT run to decode,
+    changing output run over run.
+    """
+    work = copy_fixture(
+        fixtures_dir / "c028_double_encoded_entities.xml", tmp_path)
+    proc = _run_clean(tmp_path)
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    orig = _form_texts_with_kindof(work, "S", "original")
+    assert orig[1] == "x < y"
+
+
+def test_C028_numeric_reference_decodes_then_flows_through_pipeline(
+    tmp_path, fixtures_dir, copy_fixture
+):
+    """C028: '&#8212;' decodes to an em-dash, which the later dash pass
+    canonicalizes to ASCII '-' — decode runs FIRST so decoded characters
+    flow through the rest of the cleaning pipeline."""
+    work = copy_fixture(
+        fixtures_dir / "c028_double_encoded_entities.xml", tmp_path)
+    proc = _run_clean(tmp_path)
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    transl = _transl_texts(work)
+    assert transl[0] == "dash - here"
+    assert transl[1] == 'quote "word" end'
+
+
+def test_C028_bare_ampersand_untouched(tmp_path, fixtures_dir, copy_fixture):
+    """C028 negative: a lone '&' is not entity residue and must survive."""
+    work = copy_fixture(
+        fixtures_dir / "c028_double_encoded_entities.xml", tmp_path)
+    proc = _run_clean(tmp_path)
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    orig = _form_texts_with_kindof(work, "S", "original")
+    transl = _transl_texts(work)
+    assert orig[2] == "salt & pepper"
+    assert transl[2] == "AT&T stays"
+
+
+def test_C028_warning_rows_emitted(tmp_path, fixtures_dir, copy_fixture):
+    """C028: each decoded residue occurrence emits a c028 warning row."""
+    import csv as _csv
+    copy_fixture(fixtures_dir / "c028_double_encoded_entities.xml", tmp_path)
+    proc = _run_clean(tmp_path)
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    warnings_csv = tmp_path / "cleaner_warnings.csv"
+    assert warnings_csv.exists()
+    with open(warnings_csv, newline="", encoding="utf-8") as f:
+        rows = [r for r in _csv.DictReader(f) if r["rule_id"] == "c028"]
+    assert rows, "expected c028 warning rows for decoded residue"
