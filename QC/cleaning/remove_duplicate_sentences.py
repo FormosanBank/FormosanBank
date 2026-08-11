@@ -33,6 +33,7 @@ Usage:
 """
 
 import argparse
+import copy
 import os
 import re
 import sys
@@ -82,7 +83,8 @@ def _collect_xml_files(root_path: str):
 
 def plan_removals(root_path: str, scope: str = "file",
                   tier: str = "standard"):
-    """Return a deterministic list of (abs_file_path, s_id) tuples to remove.
+    """Return a deterministic removal plan: (abs_file_path, s_id,
+    survivor_abs_file_path, survivor_s_id) tuples.
 
     Within each duplicate group, the first occurrence by (file, s_id) sort
     order is kept; later occurrences are scheduled for removal.
@@ -107,8 +109,9 @@ def plan_removals(root_path: str, scope: str = "file",
                     continue
                 sorted_sids = sorted(sids, key=_s_id_sort_key)
                 # Keep first, remove rest.
+                abs_path = str(xml_path.resolve())
                 for sid in sorted_sids[1:]:
-                    removals.append((str(xml_path.resolve()), sid))
+                    removals.append((abs_path, sid, abs_path, sorted_sids[0]))
     else:
         # corpus scope: build (norm_text -> [(file, sid), ...]) over all files.
         by_text: dict[str, list[tuple[str, str]]] = defaultdict(list)
@@ -121,8 +124,9 @@ def plan_removals(root_path: str, scope: str = "file",
                 continue
             sorted_occs = sorted(occs, key=lambda fs: (fs[0], _s_id_sort_key(fs[1])))
             # Keep first; schedule the rest for removal.
+            keep_f, keep_sid = sorted_occs[0]
             for f, sid in sorted_occs[1:]:
-                removals.append((f, sid))
+                removals.append((f, sid, keep_f, keep_sid))
 
     # Stable global order: by file path, then by s_id sort key.
     removals.sort(key=lambda fs: (fs[0], _s_id_sort_key(fs[1])))
@@ -142,14 +146,33 @@ def _s_id_sort_key(sid: str):
 # Apply
 # ---------------------------------------------------------------------------
 
-def apply_removals(removals):
-    """Mutate XML files in place: delete each (file, s_id) in `removals`.
+_XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
 
-    Files are grouped so each XML is parsed and written exactly once.
+
+def _transl_key(transl) -> tuple[str, str]:
+    lang = (transl.get(_XML_LANG) or "").strip().lower()
+    text = " ".join("".join(transl.itertext()).split())
+    return (lang, text)
+
+
+def apply_removals(removals):
+    """Mutate XML files in place: delete each removed (file, s_id), merging
+    any of its TRANSLs the survivor lacks into the survivor as ``ver="alt"``
+    (POL-025: alternative translations of the same sentence live in one S
+    block; dropping a duplicate must not lose its distinct translations).
+
+    Files are grouped so each XML is parsed and written at most twice
+    (removal pass, then survivor-merge pass). Returns the number of TRANSLs
+    merged.
     """
     by_file: dict[str, set[str]] = defaultdict(set)
-    for f, sid in removals:
+    survivor_of: dict[tuple[str, str], tuple[str, str]] = {}
+    for f, sid, keep_f, keep_sid in removals:
         by_file[f].add(sid)
+        survivor_of[(f, sid)] = (keep_f, keep_sid)
+
+    # Pass 1: remove duplicates, harvesting their TRANSLs for the survivor.
+    pending: dict[tuple[str, str], list] = defaultdict(list)
     for f, sids_to_drop in by_file.items():
         try:
             tree = etree.parse(f)
@@ -159,12 +182,51 @@ def apply_removals(removals):
         root = tree.getroot()
         # Walk a list-copy because we mutate during iteration.
         for s in list(root.iter("S")):
-            if s.get("id") in sids_to_drop:
+            sid = s.get("id")
+            if sid in sids_to_drop:
+                key = survivor_of.get((f, sid))
+                if key is not None:
+                    pending[key].extend(
+                        copy.deepcopy(t) for t in s.findall("TRANSL"))
                 parent = s.getparent()
                 if parent is not None:
                     parent.remove(s)
         tree.write(f, pretty_print=False, encoding="utf-8",
                    xml_declaration=True)
+
+    # Pass 2: merge harvested TRANSLs into survivors (skipping ones the
+    # survivor already has, by (lang, whitespace-normalized text)).
+    merged = 0
+    by_survivor_file: dict[str, dict[str, list]] = defaultdict(dict)
+    for (keep_f, keep_sid), transls in pending.items():
+        by_survivor_file[keep_f].setdefault(keep_sid, []).extend(transls)
+    for f, per_sid in by_survivor_file.items():
+        try:
+            tree = etree.parse(f)
+        except etree.XMLSyntaxError as e:
+            print(f"  WARNING: could not parse survivor file {f}: {e}",
+                  file=sys.stderr)
+            continue
+        root = tree.getroot()
+        changed = False
+        for s in root.iter("S"):
+            transls = per_sid.get(s.get("id"))
+            if not transls:
+                continue
+            have = {_transl_key(t) for t in s.findall("TRANSL")}
+            for t in transls:
+                key = _transl_key(t)
+                if not key[1] or key in have:
+                    continue
+                t.set("ver", "alt")
+                s.append(t)
+                have.add(key)
+                merged += 1
+                changed = True
+        if changed:
+            tree.write(f, pretty_print=False, encoding="utf-8",
+                       xml_declaration=True)
+    return merged
 
 
 # ---------------------------------------------------------------------------
@@ -236,14 +298,15 @@ def main(argv=None) -> int:
 
     if not args.apply:
         print(f"[dry-run] Would remove {len(plan)} duplicate <S> element(s):")
-        for f, sid in plan:
-            print(f"  - {f}#{sid}")
+        for f, sid, keep_f, keep_sid in plan:
+            where = keep_sid if keep_f == f else f"{keep_f}#{keep_sid}"
+            print(f"  - {f}#{sid}  (duplicate of {where}; distinct TRANSLs merge into it as ver=\"alt\")")
         print("[dry-run] Re-run with --apply to actually modify files.")
         return 0
 
     print(f"Removing {len(plan)} duplicate <S> element(s)...")
-    apply_removals(plan)
-    print("Done.")
+    merged = apply_removals(plan)
+    print(f"Done. Merged {merged} distinct TRANSL(s) into survivors as ver=\"alt\" (POL-025).")
     return 0
 
 
