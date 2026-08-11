@@ -1,64 +1,68 @@
-# The Analysis of Pa-Verbs in Amis
+# Wu (2006) Amis Pa-Verbs
 
-This corpus contains the Coastal Amis examples from Joy Wu's 2006 paper, “The
-Analysis of Pa- Verbs in Amis.”
+This corpus contains the Coastal Amis examples from Joy Wu's 2006 paper,
+“The Analysis of Pa-Verbs in Amis.”
 
-The Basecamp corpus card records the source license as **CC BY-NC-SA 4.0**. The
-source PDF does not display that license statement. The corpus is also subject to
-the central FormosanBank terms in [LICENSE.md](../../LICENSE.md) and
-[AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md).
+## Source and rights
 
-| Field | Value |
-|---|---|
-| Language | Amis (`ami`, dialect `Coastal`) |
-| Source | [Wu, “The Analysis of Pa- Verbs in Amis”](https://www.sil.org/resources/archives/25653) |
-| Source license | CC BY-NC-SA 4.0, as recorded on the corpus card |
-| Scope | 29 accepted example variants |
-| XML | [`XML/Amis/pa-verbs.xml`](XML/Amis/pa-verbs.xml) |
-| Development repository | [Formosan-Amis-Pa-Verbs](https://github.com/FormosanBank/Formosan-Amis-Pa-Verbs) |
+Wu, Joy. 2006. “The Analysis of Pa-Verbs in Amis.” Paper presented at the
+Tenth International Conference on Austronesian Linguistics, 17–20 January
+2006, Puerto Princesa City, Palawan, Philippines.
 
-The corpus has 29 `S`, 153 `W`, and 262 `M` elements. Sentence-level original
-forms are unsegmented. Word-level original forms preserve Wu's printed
-segmentation, and printed nulls are retained as `ø` at W/M while omitted from S.
+The source is available through the
+[SIL archive](https://www.sil.org/resources/archives/25653). The Basecamp
+corpus card records CC BY-NC-SA 4.0, although the PDF does not display a
+license statement. The corpus is also subject to FormosanBank's central
+[license](../../LICENSE.md) and [AI-use addendum](../../AI-USE-ADDENDUM.md).
+
+The source PDF is held privately during development and is not copied into
+FormosanBank. Full page-review evidence is maintained in the
+[development repository](https://github.com/FormosanBank/Formosan-Amis-Pa-Verbs).
+
+## Contents
+
+- `XML/Amis/pa-verbs.xml`: 29 S, 153 W, and 263 M elements.
+- `CodeAndDocs/source_examples.tsv`: 29 included, source-aligned variants.
+- `CodeAndDocs/rejected_source_examples.tsv`: 16 excluded items or readings.
+- `CodeAndDocs/direct_source_checks.tsv`: 30 reviewed checks from PDF pages 6–10.
+- `CodeAndDocs/source_coverage.tsv`: disposition for all 13 PDF pages.
+- `CodeAndDocs/build_xml.py`: deterministic source-table generator.
+- `CodeAndDocs/audit_source_alignment.py`: structured tier and coverage audit.
+- `CodeAndDocs/adjudicate_findings.py`: exact expected-finding gate.
+- `CodeAndDocs/reproduce.sh`: current generation and QC workflow.
+
+The current port was generated and checked with FormosanBank tooling from
+`ef1ebb62126337c3603e8b4f71359986b80d9494`.
+
+## Corpus decisions
+
+- S original FORM reconstructs the unsegmented source line. W/M original FORM
+  preserves the paper's analysis markers.
+- Seven printed nulls use canonical `∅` at S original and W/M. S standard
+  omits the analytic null unit.
+- Every W has at least one M under POL-023. Source `Pa-fli` / `give` remains
+  one whole-word M because separate morpheme glosses are not printed.
+- Source gloss `CaU` is retained as original, with additive standard `CAU`.
+- Complete person, car, case, and translation variants follow POL-025.
+  Starred, ungrammatical, and source-questionable readings remain excluded in
+  the evidence ledger.
+- Ortho94 is the explicit source profile. Standard FORM and PHON use the
+  current shared remove-accents and Ortho113 behavior.
 
 ## Reproduce
 
-`CodeAndDocs/` contains the hash-pinned source PDF, reviewed extraction tables,
-recorded manual edits, deterministic builder, and source-alignment audit. The
-reproduction pipeline builds in a temporary directory and does not modify the
-published XML.
-
-The shared phonology step requires a clean FormosanBank checkout at commit
-`14442ea6894e6cff561c6504fbf42ddd873cd14b` from
-[PR #90](https://github.com/FormosanBank/FormosanBank/pull/90). From this corpus
-directory, run:
+From this corpus directory, run:
 
 ```bash
-FORMOSANBANK_PATH=/path/to/FormosanBank \
-    bash CodeAndDocs/scripts/reproduce.sh
+./CodeAndDocs/reproduce.sh
 ```
 
-The script reapplies `manual_edits.xml`, runs the shared cleaning,
-standardization, and phonology utilities, checks source alignment and core XML
-validators, and byte-compares the result with `XML/Amis/pa-verbs.xml`.
+The script rebuilds XML from the reviewed tables, cleans once, standardizes,
+generates original and standard phonology, verifies source alignment, and
+runs the current XML, text, gloss, dialect, duplicate, orthography,
+vocabulary, registry, and port-readiness checks. It then byte-compares the
+rebuild with the committed XML and stores per-run reports outside the corpus.
 
-## Source decisions
-
-- Madeline Boese's review is recorded as three sentence replacements, one
-  insertion, and two deletions in `CodeAndDocs/manual_edits.xml`.
-- Example 20c is split into the person and car readings supported by its printed
-  gloss and translation. The person reading ends at `cingra`; `a paliding`
-  belongs to the `k-u-ni` car reading.
-- Both unstarred case forms of example 36a are retained. The starred reading is
-  excluded.
-- Starred examples and alternatives are excluded. The source-questionable
-  38a-prime and 38c-prime readings are also excluded under review.
-- `Pa-fli` keeps its printed W segmentation but has no M split because Wu gives
-  only the whole-word gloss `give`.
-- Nulls are silent in mixed PHON forms. A null-only morpheme retains `PHON ∅`.
-
-## Citation
-
-Wu, J. (2006). The analysis of pa- verbs in Amis. Paper presented at the Tenth
-International Conference on Austronesian Linguistics, Puerto Princesa City,
-Palawan, Philippines.
+Expected results are zero XML, validator HARD, duplicate, and port-readiness
+findings. The exact reviewed SOFT and generic gloss-audit findings are locked
+by `adjudicate_findings.py`. The corpus has no audio.
