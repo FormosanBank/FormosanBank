@@ -21,7 +21,39 @@ from typing import Dict, List, Set, Tuple, Optional
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
-from QC.utilities._accents import strip_accents
+from QC.utilities._accents import accented_letters, strip_accents
+
+
+def _attested_accents(target_language_data: Dict, dialect: str) -> frozenset:
+    """Accented letters this language (or dialect) attests in its orthographies.
+
+    Mirrors exactly the (dialect, orthography) combinations that
+    ``analyze_text_for_orthography`` scores text against, so an accent survives
+    stripping iff some orthography that will actually be scored contains it:
+
+    * a specified, known dialect → that dialect's orthographies plus the
+      dialect-agnostic ``default`` ones (Church/MinEd and any table lacking
+      dialect columns), matching the detector's dialect + default test set;
+    * no dialect, or a dialect not present in the tables → every orthography
+      for the language.
+
+    Returns the accented letters (NFC) found across those inventories.
+    """
+    if not target_language_data:
+        return frozenset()
+
+    if dialect and dialect in target_language_data:
+        relevant = [target_language_data[dialect]]
+        if "default" in target_language_data:
+            relevant.append(target_language_data["default"])
+    else:
+        relevant = list(target_language_data.values())
+
+    letters = set()
+    for ortho_map in relevant:
+        for letter_set in ortho_map.values():
+            letters.update(letter_set)
+    return accented_letters(letters)
 
 
 def load_orthography_data(orthographies_dir: str) -> Dict[str, Dict[str, Dict[str, Set[str]]]]:
@@ -113,14 +145,21 @@ def load_orthography_data(orthographies_dir: str) -> Dict[str, Dict[str, Dict[st
     return {k: dict(v) for k, v in orthography_data.items()}
 
 
-def extract_text_from_xml(xml_file: str, use_standard: bool = False) -> Tuple[str, str, Optional[str]]:
+def extract_text_from_xml(xml_file: str, use_standard: bool = False, orthography_data: Optional[Dict] = None, ignore_dialect: bool = False) -> Tuple[str, str, Optional[str]]:
     """
     Extract text from XML file.
-    
+
     Args:
         xml_file: Path to the XML file
         use_standard: If True, extract standard text; if False, extract original text
-        
+        orthography_data: Pre-loaded orthography data. When supplied, accents
+            attested by this language's (or dialect's) orthographies are kept
+            during accent stripping; when omitted, every accent is stripped
+            (the conservative fallback used by callers without the tables).
+        ignore_dialect: If True, keep accents attested by *any* of the
+            language's orthographies (the dialect is disregarded), matching the
+            detector's all-orthographies scoring under the same flag.
+
     Returns:
         Tuple of (extracted_text, language_code, dialect)
     """
@@ -161,10 +200,18 @@ def extract_text_from_xml(xml_file: str, use_standard: bool = False) -> Tuple[st
         # Keep letters, apostrophes, hyphens, and other characters that might be linguistically significant
         cleaned_text = re.sub(r'[0-9",!]', ' ', combined_text)
 
-        # Strip accents so an accented vowel scores as its bare vowel: no
-        # Formosan orthography uses accents phonemically, so keeping them would
-        # miscount the vowel as an unexpected token against the true orthography.
-        cleaned_text = strip_accents(cleaned_text)
+        # Strip accents so a prosodic accent (e.g. Glosbe stress marks) scores
+        # as its bare vowel instead of an unexpected token. Accents that this
+        # language's — or, when a dialect is set, that dialect's — orthographies
+        # actually attest (e.g. Rukai's orthographic ``é``) are kept, so a real
+        # orthographic accent is preserved and scored rather than flattened.
+        keep = frozenset()
+        if orthography_data is not None:
+            keep = _attested_accents(
+                orthography_data.get(normalize_language_code(language), {}),
+                "" if ignore_dialect else dialect,
+            )
+        cleaned_text = strip_accents(cleaned_text, keep=keep)
 
         return cleaned_text, language, dialect
         
@@ -355,8 +402,8 @@ def determine_orthography_with_data(xml_file: str, orthography_data: Dict, ignor
         Dictionary with analysis results
     """
     # Extract text content and metadata from the XML file
-    text, language_code, dialect = extract_text_from_xml(xml_file, use_standard)
-    
+    text, language_code, dialect = extract_text_from_xml(xml_file, use_standard, orthography_data, ignore_dialect)
+
     # If ignore_dialect is True, reset dialect to empty string to force testing all orthographies
     if ignore_dialect:
         dialect = ''
@@ -528,12 +575,12 @@ def analyze_xml_files(directory: str, orthographies_dir: str, ignore_dialect: bo
             print(f"Processing file {i}/{total_files}...")
         
         # Extract text and metadata from XML
-        text, language_code, dialect = extract_text_from_xml(xml_path, use_standard)
-        
+        text, language_code, dialect = extract_text_from_xml(xml_path, use_standard, orthography_data, ignore_dialect)
+
         # If language filter is specified, skip files that don't match
         if language_filter and language_code.lower() != language_filter.lower():
             continue
-        
+
         # If ignore_dialect is True, clear dialect to force testing all orthographies
         if ignore_dialect:
             dialect = ''
@@ -826,8 +873,8 @@ def analyze_xml_files_combined(directory: str, orthographies_dir: str, ignore_di
         
         try:
             # Extract text and metadata from each file
-            text, language_code, dialect = extract_text_from_xml(xml_path, use_standard)
-            
+            text, language_code, dialect = extract_text_from_xml(xml_path, use_standard, orthography_data, ignore_dialect)
+
             # If language filter is specified, skip files that don't match
             if language_filter and language_code.lower() != language_filter.lower():
                 continue

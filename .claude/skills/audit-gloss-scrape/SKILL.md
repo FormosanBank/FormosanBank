@@ -19,7 +19,7 @@ Read `FormosanBank/CLAUDE.md` (auto-loaded) for the XML schema and the
 `docs/superpowers/specs/2026-08-03-audit-gloss-scrape-design.md` for what each
 G rule means and why it exists.
 
-Two conventions that override the scraping guide students are given:
+Three conventions that override the scraping guide students are given:
 
 1. **M-tier notation follows the repo, not the guide.** The guide says an M
    FORM is "just the letters"; in fact infix Ms keep `-X-` (V067) and clitic
@@ -27,6 +27,14 @@ Two conventions that override the scraping guide students are given:
 2. **Markers in S-`FORM[@kindOf="original"]` are legal.** Both the segmented
    and unsegmented style are acceptable (maintainer decision, 2026-08-03).
    Only an inconsistent *mix* is worth reporting (G010).
+3. **Parenthesis-star acceptability notation has two opposite meanings.**
+   `(*X)` means X is *prohibited* (the grammatical reading omits it);
+   `*(X)` means X is *obligatory* (the grammatical reading INCLUDES it —
+   omitting X is what the star marks as ungrammatical); `A/*B` slash
+   alternatives keep the unstarred alternative. A scrape that resolves stars
+   for V129 by uniformly dropping parenthesized material silently records the
+   *ungrammatical* string for every `*(X)` example — found on Shih-Rukai
+   2026-08-10, where 6 of 18 starred forms were inverted this way.
 
 ## Inputs (gather via AskUserQuestion if missing)
 
@@ -52,6 +60,18 @@ The script prints its source candidates and marks the one it chose.
 scraper intermediate. If both exist, note that the intermediate is available
 for attributing damage to a specific hop.
 
+After confirmation, **always re-run with `--source <path>` pinned** to the
+confirmed file — auto-selection can drift between runs and the report must
+state which source every number came from.
+
+Tool limits (facts, learned across the 2026-08 audits):
+- **Large scanned PDFs can OOM the tool.** Pre-extract the text layer to a
+  `.txt` (e.g. `pdftotext`) and pin `--source` at that file instead;
+  keep the PDF for visual verification.
+- **No text layer at all** (pure image scan): run with `--no-source`
+  (Group C is then out of scope) and do source checks visually — render
+  pages at ~300 dpi and read the crops.
+
 ### 2. Judge extraction quality BEFORE reading any finding
 
 Find the `G023` row in the CSV. It reports the extractor, line count,
@@ -62,6 +82,13 @@ when they do, `G021` ("source example missing from XML") is an artifact of the
 extractor rather than a fact about the corpus. If the matched fraction is low,
 say so plainly and either fall back to `--no-source` or hand-check a sample
 against the PDF instead of quoting coverage numbers.
+
+**`G021 = 0` can be vacuous.** The region detector keys on example-label
+parentheses (`(12a)` etc.); some PDF text layers silently drop parenthesis
+characters, leaving the detector zero regions to check — G021 then reports
+0 while examples are missing. Before citing G021, confirm G023's detected
+region count is plausible for the source's example count, and grep the
+extracted text for `(` to confirm the parens survived extraction.
 
 ▣ Present the G023 numbers and get the maintainer's call on whether Group C
 results are usable.
@@ -90,12 +117,28 @@ the source at the cited lines. Rank by:
 
 - **Structural damage first** — `G001` (text/gloss disagree on segmentation)
   and `G004` (infix root not rejoined) invalidate the M tier beneath them.
+  Known tool limit: `G004` mis-fires on **stacked/double infixes** (its
+  model removes one infix at a time — Puyuma-Teng case). A G004 hit on a
+  double-infix form still requires opening the example; present the
+  evidence and let the maintainer classify it.
+- **Starred parentheses, by hand** — the rule set does not distinguish
+  `*(X)` (X obligatory: must be in FORM) from `(*X)` (X forbidden: must
+  not be). Grep the source for `*(` and `(*` and trace every hit into the
+  XML (POL-017; the inversion published an ungrammatical NTU sentence).
 - **Silent data loss next** — `G021` (dropped example), `G022` (lost
   orthographic characters), `G020` (sentence not in the source).
 - **Systematic slips next** — `G006` (null spelling), `G010` (half-applied
   transformation), `G005` (label typos). These are usually one fix for many
   rows.
 - **Cosmetic last** — `G012`, `G007`.
+
+**Always sweep starred source forms by hand.** No G rule checks
+acceptability-notation resolution. List every source form containing `*`
+(the dev repo's ledger, or G022's "lost `*`" rows, will point at them),
+classify each as `*(X)` obligatory / `(*X)` prohibited / `A/*B` slash
+alternative, and verify the XML reading resolves it in the right direction
+(convention 3 above). An inverted `*(X)` puts a thesis-marked-ungrammatical
+string in FORM — structural damage, rank it first.
 
 Distinguish *what the script flagged* from *what you verified by opening the
 file*. A finding you have not opened is a candidate, not a finding.
@@ -120,4 +163,8 @@ Only after sign-off, write `claudeplans/gloss-audit-<Repo>.md`:
 - The script exits 0 whatever it finds; severity ranks triage priority only.
   Do not report "the audit passed".
 - False positives are expected on `G002`/`G005`/`G010` — they are statistical.
-  Say so rather than presenting them as defects.
+  Say so rather than presenting them as defects. But **classifying a specific
+  finding as a false positive is a judgment call that belongs to the
+  maintainer**: present the opened source/XML evidence and your reading;
+  never silently drop a finding on your own classification (sometimes the
+  "false positive" isn't).

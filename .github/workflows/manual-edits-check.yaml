@@ -1,0 +1,87 @@
+# Warns (never fails) when a PR hand-edits published corpus XML without
+# touching that corpus's CodeAndDocs/ — the signature of an uncaptured
+# hand edit (POL-030: every hand edit must be recorded in
+# CodeAndDocs/manual_edits.xml or a committed script, or it is lost on
+# the next pipeline regeneration).
+#
+# Heuristic, deliberately non-blocking: a pipeline regeneration also
+# touches XML, but it changes many files at once and usually ships with
+# CodeAndDocs or pipeline-code changes. Small XML-only diffs are the
+# suspicious shape.
+name: manual-edits-check
+
+on:
+  pull_request:
+    paths:
+      - "Corpora/**/XML/**"
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Flag XML-only corpus changes
+        run: |
+          python3 - <<'EOF'
+          import os
+          import subprocess
+          from collections import defaultdict
+
+          base = os.environ["BASE_SHA"]
+          head = os.environ["HEAD_SHA"]
+          diff = subprocess.run(
+              ["git", "diff", "--name-only", f"{base}...{head}"],
+              capture_output=True, text=True, check=True,
+          ).stdout.splitlines()
+
+          xml_changes = defaultdict(list)
+          codeanddocs_touched = set()
+          for path in diff:
+              parts = path.split("/")
+              if len(parts) < 3 or parts[0] != "Corpora":
+                  continue
+              corpus = parts[1]
+              if "CodeAndDocs" in parts:
+                  codeanddocs_touched.add(corpus)
+              elif "XML" in parts[:-1] and path.endswith(".xml"):
+                  xml_changes[corpus].append(path)
+
+          # Many changed files => probably a pipeline regeneration; a
+          # handful => probably hand edits. 10 is a heuristic, not a law.
+          REGEN_THRESHOLD = 10
+          suspicious = {
+              corpus: files
+              for corpus, files in xml_changes.items()
+              if corpus not in codeanddocs_touched
+              and len(files) < REGEN_THRESHOLD
+          }
+          summary = os.environ.get("GITHUB_STEP_SUMMARY")
+          if not suspicious:
+              print("No uncaptured-hand-edit signature found.")
+              raise SystemExit(0)
+          lines = [
+              "## Possible uncaptured hand edits (POL-030)",
+              "",
+              "These corpora have small XML-only changes with no "
+              "`CodeAndDocs/` change in this PR. If these are hand edits, "
+              "record them with `QC/utilities/capture_manual_edits.py` so "
+              "they survive the next pipeline regeneration. If this is a "
+              "small scripted/pipeline change, ignore this warning.",
+              "",
+          ]
+          for corpus, files in sorted(suspicious.items()):
+              print(f"::warning::Corpora/{corpus}: {len(files)} XML file(s) "
+                    f"changed without a CodeAndDocs/ change — if hand-edited, "
+                    f"capture with capture_manual_edits.py (POL-030)")
+              lines.append(f"- **{corpus}** ({len(files)} file(s)):")
+              lines.extend(f"  - `{f}`" for f in files[:20])
+          if summary:
+              with open(summary, "a", encoding="utf-8") as fh:
+                  fh.write("\n".join(lines) + "\n")
+          EOF
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}

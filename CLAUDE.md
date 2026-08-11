@@ -95,7 +95,7 @@ The full pipeline is documented in [QC/README.md](QC/README.md). The typical ord
 
 `clean_xml.py` modify XML in place — diff before committing.
 
-- **Reproducible hand edits.** `QC/utilities/capture_manual_edits.py` records hand edits to a corpus's XML (diffed against git) into `<corpus>/CodeAndDocs/manual_edits.xml`; `QC/cleaning/apply_manual_edits.py` re-applies them first in the cleaning pipeline, prunes no-ops (with a warning), and writes a `manual_edits.md` changelog. Shared logic lives in `QC/cleaning/manual_edits_common.py`. See `claudeplans/2026-06-15-manual-edits-reproducibility-design.md`.
+- **Reproducible hand edits.** `QC/utilities/capture_manual_edits.py` records hand edits to a corpus's XML (diffed against git) into `<corpus>/CodeAndDocs/manual_edits.xml`; `QC/cleaning/apply_manual_edits.py` re-applies them first in the cleaning pipeline, keeps no-op records with a salient warning (`--prune` removes them — an explicit maintenance action for when the upstream build has absorbed the fix), and writes a `manual_edits.md` changelog. Shared logic lives in `QC/cleaning/manual_edits_common.py`. See `claudeplans/2026-06-15-manual-edits-reproducibility-design.md`.
 
 ## Corpus metrics and token deltas (CI-coupled)
 

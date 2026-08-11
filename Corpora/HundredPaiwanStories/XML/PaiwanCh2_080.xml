@@ -1,10 +1,10 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" ?>
 <TEXT id="PaiwanCh2_080_PLAYING AT HUNTING" xml:lang="pwn" copyright="public domain" citation="Early, R. J., &amp; Whitehorn, J. (2003). One hundred Paiwan texts. Pacific Linguistics, Research School of Pacific and Asian Studies, The Australian National University." BibTeX_citation="@book{100paiwantexts, author = {Robert Early and John Whitehorn}, title = {One Hundred Paiwan Texts}, year = {2003}, publisher = {Pacific Linguistics, Research School of Pacific and Asian Studies, The Australian National University}}" source="told by Giɫgiɫaw of Vaɫulu village" dialect="Northern">
     <S id="080S1">
         <FORM kindOf="original">ti Tjikunal kirimu a seman tjalupun tua sunat, sa tjalupunan nimadju.</FORM>
-        <PHON kindOf="original">ti cikunaɭ kirimu a səman caɭupun tua sunat, sa caɭupunan nimaɉu.</PHON>
+        <PHON kindOf="original">ti cikunaɭ kirimu a səman caɭupun tua sunat sa caɭupunan nimaɉu</PHON>
         <FORM kindOf="standard">ti Tjikunal kirimu a seman tjalupun tua sunat, sa tjalupunan nimadju.</FORM>
-        <PHON kindOf="standard">ti ʦikunaɭ kirimu a səman ʦaɭupun tua sunat, sa ʦaɭupunan nimaɉu.</PHON>
+        <PHON kindOf="standard">ti cikunaɭ kirimu a səman caɭupun tua sunat sa caɭupunan nimaɉu</PHON>
         <TRANSL xml:lang="eng">Tjikunal straightaway made a hat out of paper and put it on.</TRANSL>
         <W id="080S1W1">
             <FORM kindOf="original">ti</FORM>
@@ -23,12 +23,12 @@
             <FORM kindOf="original">Tjikunal</FORM>
             <PHON kindOf="original">cikunaɭ</PHON>
             <FORM kindOf="standard">Tjikunal</FORM>
-            <PHON kindOf="standard">ʦikunaɭ</PHON>
+            <PHON kindOf="standard">cikunaɭ</PHON>
             <M id="080S1W2M0">
                 <FORM kindOf="original">Tjikunal</FORM>
                 <PHON kindOf="original">cikunaɭ</PHON>
                 <FORM kindOf="standard">Tjikunal</FORM>
-                <PHON kindOf="standard">ʦikunaɭ</PHON>
+                <PHON kindOf="standard">cikunaɭ</PHON>
                 <TRANSL xml:lang="eng">(name)</TRANSL>
             </M>
         </W>
@@ -72,16 +72,16 @@
             <PHON kindOf="standard">səman</PHON>
             <M id="080S1W5M0">
                 <FORM kindOf="original">-em-</FORM>
-                <PHON kindOf="original">-əm-</PHON>
+                <PHON kindOf="original">əm</PHON>
                 <FORM kindOf="standard">-em-</FORM>
-                <PHON kindOf="standard">-əm-</PHON>
+                <PHON kindOf="standard">əm</PHON>
                 <TRANSL xml:lang="eng">af</TRANSL>
             </M>
             <M id="080S1W5M1">
                 <FORM kindOf="original">s-an</FORM>
-                <PHON kindOf="original">s-an</PHON>
+                <PHON kindOf="original">san</PHON>
                 <FORM kindOf="standard">s-an</FORM>
-                <PHON kindOf="standard">s-an</PHON>
+                <PHON kindOf="standard">san</PHON>
                 <TRANSL xml:lang="eng">make</TRANSL>
             </M>
         </W>
@@ -89,12 +89,12 @@
             <FORM kindOf="original">tjalupun</FORM>
             <PHON kindOf="original">caɭupun</PHON>
             <FORM kindOf="standard">tjalupun</FORM>
-            <PHON kindOf="standard">ʦaɭupun</PHON>
+            <PHON kindOf="standard">caɭupun</PHON>
             <M id="080S1W6M0">
                 <FORM kindOf="original">tjalupun</FORM>
                 <PHON kindOf="original">caɭupun</PHON>
                 <FORM kindOf="standard">tjalupun</FORM>
-                <PHON kindOf="standard">ʦaɭupun</PHON>
+                <PHON kindOf="standard">caɭupun</PHON>
                 <TRANSL xml:lang="eng">hat</TRANSL>
             </M>
         </W>
@@ -113,9 +113,9 @@
         </W>
         <W id="080S1W8">
             <FORM kindOf="original">sunat,</FORM>
-            <PHON kindOf="original">sunat,</PHON>
+            <PHON kindOf="original">sunat</PHON>
             <FORM kindOf="standard">sunat,</FORM>
-            <PHON kindOf="standard">sunat,</PHON>
+            <PHON kindOf="standard">sunat</PHON>
             <M id="080S1W8M0">
                 <FORM kindOf="original">sunat</FORM>
                 <PHON kindOf="original">sunat</PHON>
@@ -141,12 +141,12 @@
             <FORM kindOf="original">tjalupunan</FORM>
             <PHON kindOf="original">caɭupunan</PHON>
             <FORM kindOf="standard">tjalupunan</FORM>
-            <PHON kindOf="standard">ʦaɭupunan</PHON>
+            <PHON kindOf="standard">caɭupunan</PHON>
             <M id="080S1W10M0">
                 <FORM kindOf="original">tjalupun</FORM>
                 <PHON kindOf="original">caɭupun</PHON>
                 <FORM kindOf="standard">tjalupun</FORM>
-                <PHON kindOf="standard">ʦaɭupun</PHON>
+                <PHON kindOf="standard">caɭupun</PHON>
                 <TRANSL xml:lang="eng">hat</TRANSL>
             </M>
             <M id="080S1W10M1">
@@ -159,9 +159,9 @@
         </W>
         <W id="080S1W11">
             <FORM kindOf="original">nimadju.</FORM>
-            <PHON kindOf="original">nimaɉu.</PHON>
+            <PHON kindOf="original">nimaɉu</PHON>
             <FORM kindOf="standard">nimadju.</FORM>
-            <PHON kindOf="standard">nimaɉu.</PHON>
+            <PHON kindOf="standard">nimaɉu</PHON>
             <M id="080S1W11M0">
                 <FORM kindOf="original">ni</FORM>
                 <PHON kindOf="original">ni</PHON>
@@ -180,9 +180,9 @@
     </S>
     <S id="080S2">
         <FORM kindOf="original">ka manu sikiqaiɫungan, nasaregem aravats timadju.</FORM>
-        <PHON kindOf="original">ka manu sikiqaiʎuŋan, nasarəgəm aravaʦ timaɉu.</PHON>
+        <PHON kindOf="original">ka manu sikiqaiʎuŋan nasarəgəm aravaʦ timaɉu</PHON>
         <FORM kindOf="standard">ka manu sikiqailjungan, nasaregem aravac timadju.</FORM>
-        <PHON kindOf="standard">ka manu sikiqaiʎuŋan, nasarəgəm aravaʦ timaɉu.</PHON>
+        <PHON kindOf="standard">ka manu sikiqaiʎuŋan nasarəgəm aravaʦ timaɉu</PHON>
         <TRANSL xml:lang="eng">When he looked in the mirror he looked very splendid.</TRANSL>
         <W id="080S2W1">
             <FORM kindOf="original">ka</FORM>
@@ -212,9 +212,9 @@
         </W>
         <W id="080S2W3">
             <FORM kindOf="original">sikiqaiɫungan,</FORM>
-            <PHON kindOf="original">sikiqaiʎuŋan,</PHON>
+            <PHON kindOf="original">sikiqaiʎuŋan</PHON>
             <FORM kindOf="standard">sikiqailjungan,</FORM>
-            <PHON kindOf="standard">sikiqaiʎuŋan,</PHON>
+            <PHON kindOf="standard">sikiqaiʎuŋan</PHON>
             <M id="080S2W3M0">
                 <FORM kindOf="original">si</FORM>
                 <PHON kindOf="original">si</PHON>
@@ -293,9 +293,9 @@
         </W>
         <W id="080S2W6">
             <FORM kindOf="original">timadju.</FORM>
-            <PHON kindOf="original">timaɉu.</PHON>
+            <PHON kindOf="original">timaɉu</PHON>
             <FORM kindOf="standard">timadju.</FORM>
-            <PHON kindOf="standard">timaɉu.</PHON>
+            <PHON kindOf="standard">timaɉu</PHON>
             <M id="080S2W6M0">
                 <FORM kindOf="original">ti</FORM>
                 <PHON kindOf="original">ti</PHON>
@@ -314,10 +314,10 @@
     </S>
     <S id="080S3">
         <FORM kindOf="original">qau "nanguaq a kiqetsi aken tua tsumay," aya timadju.</FORM>
-        <PHON kindOf="original">qau "naŋuaq a kiqəʦi akən tua ʦumaj," aja timaɉu.</PHON>
+        <PHON kindOf="original">qau naŋuaq a kiqəʦi akən tua ʦumaj aja timaɉu</PHON>
         <FORM kindOf="standard">qau "nanguaq a kiqeci aken tua cumay," aya timadju.</FORM>
-        <PHON kindOf="standard">qau "naŋuaq a kiqəʦi akən tua ʦumaj," aja timaɉu.</PHON>
-        <TRANSL xml:lang="eng">So he said: “I must go and hunt a bear.”</TRANSL>
+        <PHON kindOf="standard">qau naŋuaq a kiqəʦi akən tua ʦumaj aja timaɉu</PHON>
+        <TRANSL xml:lang="eng">So he said: "I must go and hunt a bear."</TRANSL>
         <W id="080S3W1">
             <FORM kindOf="original">qau</FORM>
             <PHON kindOf="original">qau</PHON>
@@ -333,9 +333,9 @@
         </W>
         <W id="080S3W2">
             <FORM kindOf="original">"nanguaq</FORM>
-            <PHON kindOf="original">"naŋuaq</PHON>
+            <PHON kindOf="original">naŋuaq</PHON>
             <FORM kindOf="standard">"nanguaq</FORM>
-            <PHON kindOf="standard">"naŋuaq</PHON>
+            <PHON kindOf="standard">naŋuaq</PHON>
             <M id="080S3W2M0">
                 <FORM kindOf="original">na</FORM>
                 <PHON kindOf="original">na</PHON>
@@ -412,9 +412,9 @@
         </W>
         <W id="080S3W7">
             <FORM kindOf="original">tsumay,"</FORM>
-            <PHON kindOf="original">ʦumaj,"</PHON>
+            <PHON kindOf="original">ʦumaj</PHON>
             <FORM kindOf="standard">cumay,"</FORM>
-            <PHON kindOf="standard">ʦumaj,"</PHON>
+            <PHON kindOf="standard">ʦumaj</PHON>
             <M id="080S3W7M0">
                 <FORM kindOf="original">tsumay</FORM>
                 <PHON kindOf="original">ʦumaj</PHON>
@@ -438,9 +438,9 @@
         </W>
         <W id="080S3W9">
             <FORM kindOf="original">timadju.</FORM>
-            <PHON kindOf="original">timaɉu.</PHON>
+            <PHON kindOf="original">timaɉu</PHON>
             <FORM kindOf="standard">timadju.</FORM>
-            <PHON kindOf="standard">timaɉu.</PHON>
+            <PHON kindOf="standard">timaɉu</PHON>
             <M id="080S3W9M0">
                 <FORM kindOf="original">ti</FORM>
                 <PHON kindOf="original">ti</PHON>
@@ -459,9 +459,9 @@
     </S>
     <S id="080S4">
         <FORM kindOf="original">seman tjakit tua zaman sa pasivuluq tua qau timadju a sema kasasavan.</FORM>
-        <PHON kindOf="original">səman cakit tua zaman sa pasivuɭuq tua qau timaɉu a səma kasasavan.</PHON>
+        <PHON kindOf="original">səman cakit tua zaman sa pasivuɭuq tua qau timaɉu a səma kasasavan</PHON>
         <FORM kindOf="standard">seman tjakit tua zaman sa pasivuluq tua qau timadju a sema kasasavan.</FORM>
-        <PHON kindOf="standard">səman ʦakit tua zaman sa pasivuɭuq tua qau timaɉu a səma kasasavan.</PHON>
+        <PHON kindOf="standard">səman cakit tua zaman sa pasivuɭuq tua qau timaɉu a səma kasasavan</PHON>
         <TRANSL xml:lang="eng">He had miscanthus grass for a sword and held a bit of bamboo as a spear, and went out into the forecourt of the house.</TRANSL>
         <W id="080S4W1">
             <FORM kindOf="original">seman</FORM>
@@ -470,16 +470,16 @@
             <PHON kindOf="standard">səman</PHON>
             <M id="080S4W1M0">
                 <FORM kindOf="original">-em-</FORM>
-                <PHON kindOf="original">-əm-</PHON>
+                <PHON kindOf="original">əm</PHON>
                 <FORM kindOf="standard">-em-</FORM>
-                <PHON kindOf="standard">-əm-</PHON>
+                <PHON kindOf="standard">əm</PHON>
                 <TRANSL xml:lang="eng">af</TRANSL>
             </M>
             <M id="080S4W1M1">
                 <FORM kindOf="original">s-an</FORM>
-                <PHON kindOf="original">s-an</PHON>
+                <PHON kindOf="original">san</PHON>
                 <FORM kindOf="standard">s-an</FORM>
-                <PHON kindOf="standard">s-an</PHON>
+                <PHON kindOf="standard">san</PHON>
                 <TRANSL xml:lang="eng">make</TRANSL>
             </M>
         </W>
@@ -487,12 +487,12 @@
             <FORM kindOf="original">tjakit</FORM>
             <PHON kindOf="original">cakit</PHON>
             <FORM kindOf="standard">tjakit</FORM>
-            <PHON kindOf="standard">ʦakit</PHON>
+            <PHON kindOf="standard">cakit</PHON>
             <M id="080S4W2M0">
                 <FORM kindOf="original">tjakit</FORM>
                 <PHON kindOf="original">cakit</PHON>
                 <FORM kindOf="standard">tjakit</FORM>
-                <PHON kindOf="standard">ʦakit</PHON>
+                <PHON kindOf="standard">cakit</PHON>
                 <TRANSL xml:lang="eng">knife</TRANSL>
             </M>
         </W>
@@ -628,24 +628,24 @@
             <PHON kindOf="standard">səma</PHON>
             <M id="080S4W11M0">
                 <FORM kindOf="original">-em-</FORM>
-                <PHON kindOf="original">-əm-</PHON>
+                <PHON kindOf="original">əm</PHON>
                 <FORM kindOf="standard">-em-</FORM>
-                <PHON kindOf="standard">-əm-</PHON>
+                <PHON kindOf="standard">əm</PHON>
                 <TRANSL xml:lang="eng">af</TRANSL>
             </M>
             <M id="080S4W11M1">
                 <FORM kindOf="original">s-a</FORM>
-                <PHON kindOf="original">s-a</PHON>
+                <PHON kindOf="original">sa</PHON>
                 <FORM kindOf="standard">s-a</FORM>
-                <PHON kindOf="standard">s-a</PHON>
+                <PHON kindOf="standard">sa</PHON>
                 <TRANSL xml:lang="eng">go</TRANSL>
             </M>
         </W>
         <W id="080S4W12">
             <FORM kindOf="original">kasasavan.</FORM>
-            <PHON kindOf="original">kasasavan.</PHON>
+            <PHON kindOf="original">kasasavan</PHON>
             <FORM kindOf="standard">kasasavan.</FORM>
-            <PHON kindOf="standard">kasasavan.</PHON>
+            <PHON kindOf="standard">kasasavan</PHON>
             <M id="080S4W12M0">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
@@ -671,9 +671,9 @@
     </S>
     <S id="080S5">
         <FORM kindOf="original">manu patsun ti Kaɫikaɫi a kaka nimadju.</FORM>
-        <PHON kindOf="original">manu paʦun ti kaʎikaʎi a kaka nimaɉu.</PHON>
+        <PHON kindOf="original">manu paʦun ti kaʎikaʎi a kaka nimaɉu</PHON>
         <FORM kindOf="standard">manu pacun ti Kaljikalji a kaka nimadju.</FORM>
-        <PHON kindOf="standard">manu paʦun ti kaʎikaʎi a kaka nimaɉu.</PHON>
+        <PHON kindOf="standard">manu paʦun ti kaʎikaʎi a kaka nimaɉu</PHON>
         <TRANSL xml:lang="eng">His sibling Kaɫikaɫi saw him,</TRANSL>
         <W id="080S5W1">
             <FORM kindOf="original">manu</FORM>
@@ -762,9 +762,9 @@
         </W>
         <W id="080S5W7">
             <FORM kindOf="original">nimadju.</FORM>
-            <PHON kindOf="original">nimaɉu.</PHON>
+            <PHON kindOf="original">nimaɉu</PHON>
             <FORM kindOf="standard">nimadju.</FORM>
-            <PHON kindOf="standard">nimaɉu.</PHON>
+            <PHON kindOf="standard">nimaɉu</PHON>
             <M id="080S5W7M0">
                 <FORM kindOf="original">ni</FORM>
                 <PHON kindOf="original">ni</PHON>
@@ -783,15 +783,15 @@
     </S>
     <S id="080S6">
         <FORM kindOf="original">"uri kemuda sun, kaka?" aya kivadaq.</FORM>
-        <PHON kindOf="original">"uri kəmuda sun, kaka" aja kivadaq.</PHON>
+        <PHON kindOf="original">uri kəmuda sun kaka aja kivadaq</PHON>
         <FORM kindOf="standard">"uri kemuda sun, kaka?" aya kivadaq.</FORM>
-        <PHON kindOf="standard">"uri kəmuda sun, kaka" aja kivadaq.</PHON>
-        <TRANSL xml:lang="eng">and asked: “What are you going to do, brother?”</TRANSL>
+        <PHON kindOf="standard">uri kəmuda sun kaka aja kivadaq</PHON>
+        <TRANSL xml:lang="eng">and asked: "What are you going to do, brother?"</TRANSL>
         <W id="080S6W1">
             <FORM kindOf="original">"uri</FORM>
-            <PHON kindOf="original">"uri</PHON>
+            <PHON kindOf="original">uri</PHON>
             <FORM kindOf="standard">"uri</FORM>
-            <PHON kindOf="standard">"uri</PHON>
+            <PHON kindOf="standard">uri</PHON>
             <M id="080S6W1M0">
                 <FORM kindOf="original">uri</FORM>
                 <PHON kindOf="original">uri</PHON>
@@ -807,24 +807,24 @@
             <PHON kindOf="standard">kəmuda</PHON>
             <M id="080S6W2M0">
                 <FORM kindOf="original">-em-</FORM>
-                <PHON kindOf="original">-əm-</PHON>
+                <PHON kindOf="original">əm</PHON>
                 <FORM kindOf="standard">-em-</FORM>
-                <PHON kindOf="standard">-əm-</PHON>
+                <PHON kindOf="standard">əm</PHON>
                 <TRANSL xml:lang="eng">af</TRANSL>
             </M>
             <M id="080S6W2M1">
                 <FORM kindOf="original">k-uda</FORM>
-                <PHON kindOf="original">k-uda</PHON>
+                <PHON kindOf="original">kuda</PHON>
                 <FORM kindOf="standard">k-uda</FORM>
-                <PHON kindOf="standard">k-uda</PHON>
+                <PHON kindOf="standard">kuda</PHON>
                 <TRANSL xml:lang="eng">do.what</TRANSL>
             </M>
         </W>
         <W id="080S6W3">
             <FORM kindOf="original">sun,</FORM>
-            <PHON kindOf="original">sun,</PHON>
+            <PHON kindOf="original">sun</PHON>
             <FORM kindOf="standard">sun,</FORM>
-            <PHON kindOf="standard">sun,</PHON>
+            <PHON kindOf="standard">sun</PHON>
             <M id="080S6W3M0">
                 <FORM kindOf="original">sun</FORM>
                 <PHON kindOf="original">sun</PHON>
@@ -835,9 +835,9 @@
         </W>
         <W id="080S6W4">
             <FORM kindOf="original">kaka?"</FORM>
-            <PHON kindOf="original">kaka"</PHON>
+            <PHON kindOf="original">kaka</PHON>
             <FORM kindOf="standard">kaka?"</FORM>
-            <PHON kindOf="standard">kaka"</PHON>
+            <PHON kindOf="standard">kaka</PHON>
             <M id="080S6W4M0">
                 <FORM kindOf="original">kaka</FORM>
                 <PHON kindOf="original">kaka</PHON>
@@ -861,9 +861,9 @@
         </W>
         <W id="080S6W6">
             <FORM kindOf="original">kivadaq.</FORM>
-            <PHON kindOf="original">kivadaq.</PHON>
+            <PHON kindOf="original">kivadaq</PHON>
             <FORM kindOf="standard">kivadaq.</FORM>
-            <PHON kindOf="standard">kivadaq.</PHON>
+            <PHON kindOf="standard">kivadaq</PHON>
             <M id="080S6W6M0">
                 <FORM kindOf="original">ki</FORM>
                 <PHON kindOf="original">ki</PHON>
@@ -882,10 +882,10 @@
     </S>
     <S id="080S7">
         <FORM kindOf="original">manu tevelain ni Tjikunal: "uri kiqetsi aken tua tsumay," aya.</FORM>
-        <PHON kindOf="original">manu təvəɭain ni cikunaɭ: "uri kiqəʦi akən tua ʦumaj," aja.</PHON>
+        <PHON kindOf="original">manu təvəɭain ni cikunaɭ uri kiqəʦi akən tua ʦumaj aja</PHON>
         <FORM kindOf="standard">manu tevelain ni Tjikunal: "uri kiqeci aken tua cumay," aya.</FORM>
-        <PHON kindOf="standard">manu təvəɭain ni ʦikunaɭ: "uri kiqəʦi akən tua ʦumaj," aja.</PHON>
-        <TRANSL xml:lang="eng">Tjikunal answered: “I’m going to hunt a bear.”</TRANSL>
+        <PHON kindOf="standard">manu təvəɭain ni cikunaɭ uri kiqəʦi akən tua ʦumaj aja</PHON>
+        <TRANSL xml:lang="eng">Tjikunal answered: "I'm going to hunt a bear."</TRANSL>
         <W id="080S7W1">
             <FORM kindOf="original">manu</FORM>
             <PHON kindOf="original">manu</PHON>
@@ -934,22 +934,22 @@
         </W>
         <W id="080S7W4">
             <FORM kindOf="original">Tjikunal:</FORM>
-            <PHON kindOf="original">cikunaɭ:</PHON>
+            <PHON kindOf="original">cikunaɭ</PHON>
             <FORM kindOf="standard">Tjikunal:</FORM>
-            <PHON kindOf="standard">ʦikunaɭ:</PHON>
+            <PHON kindOf="standard">cikunaɭ</PHON>
             <M id="080S7W4M0">
                 <FORM kindOf="original">Tjikunal</FORM>
                 <PHON kindOf="original">cikunaɭ</PHON>
                 <FORM kindOf="standard">Tjikunal</FORM>
-                <PHON kindOf="standard">ʦikunaɭ</PHON>
+                <PHON kindOf="standard">cikunaɭ</PHON>
                 <TRANSL xml:lang="eng">(name)</TRANSL>
             </M>
         </W>
         <W id="080S7W5">
             <FORM kindOf="original">"uri</FORM>
-            <PHON kindOf="original">"uri</PHON>
+            <PHON kindOf="original">uri</PHON>
             <FORM kindOf="standard">"uri</FORM>
-            <PHON kindOf="standard">"uri</PHON>
+            <PHON kindOf="standard">uri</PHON>
             <M id="080S7W5M0">
                 <FORM kindOf="original">uri</FORM>
                 <PHON kindOf="original">uri</PHON>
@@ -1006,9 +1006,9 @@
         </W>
         <W id="080S7W9">
             <FORM kindOf="original">tsumay,"</FORM>
-            <PHON kindOf="original">ʦumaj,"</PHON>
+            <PHON kindOf="original">ʦumaj</PHON>
             <FORM kindOf="standard">cumay,"</FORM>
-            <PHON kindOf="standard">ʦumaj,"</PHON>
+            <PHON kindOf="standard">ʦumaj</PHON>
             <M id="080S7W9M0">
                 <FORM kindOf="original">tsumay</FORM>
                 <PHON kindOf="original">ʦumaj</PHON>
@@ -1019,9 +1019,9 @@
         </W>
         <W id="080S7W10">
             <FORM kindOf="original">aya.</FORM>
-            <PHON kindOf="original">aja.</PHON>
+            <PHON kindOf="original">aja</PHON>
             <FORM kindOf="standard">aya.</FORM>
-            <PHON kindOf="standard">aja.</PHON>
+            <PHON kindOf="standard">aja</PHON>
             <M id="080S7W10M0">
                 <FORM kindOf="original">aya</FORM>
                 <PHON kindOf="original">aja</PHON>
@@ -1033,10 +1033,10 @@
     </S>
     <S id="080S8">
         <FORM kindOf="original">qau "su sikuda zua zaman azua qau?" ayain ni Kaɫikaɫi.</FORM>
-        <PHON kindOf="original">qau "su sikuda zua zaman azua qau" ajain ni kaʎikaʎi.</PHON>
+        <PHON kindOf="original">qau su sikuda zua zaman azua qau ajain ni kaʎikaʎi</PHON>
         <FORM kindOf="standard">qau "su sikuda zua zaman azua qau?" ayain ni Kaljikalji.</FORM>
-        <PHON kindOf="standard">qau "su sikuda zua zaman azua qau" ajain ni kaʎikaʎi.</PHON>
-        <TRANSL xml:lang="eng">So Kaɫikaɫi said: “What are you doing with that grass and bamboo?”</TRANSL>
+        <PHON kindOf="standard">qau su sikuda zua zaman azua qau ajain ni kaʎikaʎi</PHON>
+        <TRANSL xml:lang="eng">So Kaɫikaɫi said: "What are you doing with that grass and bamboo?"</TRANSL>
         <W id="080S8W1">
             <FORM kindOf="original">qau</FORM>
             <PHON kindOf="original">qau</PHON>
@@ -1052,9 +1052,9 @@
         </W>
         <W id="080S8W2">
             <FORM kindOf="original">"su</FORM>
-            <PHON kindOf="original">"su</PHON>
+            <PHON kindOf="original">su</PHON>
             <FORM kindOf="standard">"su</FORM>
-            <PHON kindOf="standard">"su</PHON>
+            <PHON kindOf="standard">su</PHON>
             <M id="080S8W2M0">
                 <FORM kindOf="original">su</FORM>
                 <PHON kindOf="original">su</PHON>
@@ -1131,9 +1131,9 @@
         </W>
         <W id="080S8W7">
             <FORM kindOf="original">qau?"</FORM>
-            <PHON kindOf="original">qau"</PHON>
+            <PHON kindOf="original">qau</PHON>
             <FORM kindOf="standard">qau?"</FORM>
-            <PHON kindOf="standard">qau"</PHON>
+            <PHON kindOf="standard">qau</PHON>
             <M id="080S8W7M0">
                 <FORM kindOf="original">qau</FORM>
                 <PHON kindOf="original">qau</PHON>
@@ -1177,9 +1177,9 @@
         </W>
         <W id="080S8W10">
             <FORM kindOf="original">Kaɫikaɫi.</FORM>
-            <PHON kindOf="original">kaʎikaʎi.</PHON>
+            <PHON kindOf="original">kaʎikaʎi</PHON>
             <FORM kindOf="standard">Kaljikalji.</FORM>
-            <PHON kindOf="standard">kaʎikaʎi.</PHON>
+            <PHON kindOf="standard">kaʎikaʎi</PHON>
             <M id="080S8W10M0">
                 <FORM kindOf="original">Kaɫikaɫi</FORM>
                 <PHON kindOf="original">kaʎikaʎi</PHON>
@@ -1191,15 +1191,15 @@
     </S>
     <S id="080S9">
         <FORM kindOf="original">"inika zaman, inika qau.</FORM>
-        <PHON kindOf="original">"inika zaman, inika qau.</PHON>
+        <PHON kindOf="original">inika zaman inika qau</PHON>
         <FORM kindOf="standard">"inika zaman, inika qau.</FORM>
-        <PHON kindOf="standard">"inika zaman, inika qau.</PHON>
-        <TRANSL xml:lang="eng">He answered: “That’s not grass or bamboo;</TRANSL>
+        <PHON kindOf="standard">inika zaman inika qau</PHON>
+        <TRANSL xml:lang="eng">He answered: "That's not grass or bamboo;</TRANSL>
         <W id="080S9W1">
             <FORM kindOf="original">"inika</FORM>
-            <PHON kindOf="original">"inika</PHON>
+            <PHON kindOf="original">inika</PHON>
             <FORM kindOf="standard">"inika</FORM>
-            <PHON kindOf="standard">"inika</PHON>
+            <PHON kindOf="standard">inika</PHON>
             <M id="080S9W1M0">
                 <FORM kindOf="original">ini</FORM>
                 <PHON kindOf="original">ini</PHON>
@@ -1217,9 +1217,9 @@
         </W>
         <W id="080S9W2">
             <FORM kindOf="original">zaman,</FORM>
-            <PHON kindOf="original">zaman,</PHON>
+            <PHON kindOf="original">zaman</PHON>
             <FORM kindOf="standard">zaman,</FORM>
-            <PHON kindOf="standard">zaman,</PHON>
+            <PHON kindOf="standard">zaman</PHON>
             <M id="080S9W2M0">
                 <FORM kindOf="original">zaman</FORM>
                 <PHON kindOf="original">zaman</PHON>
@@ -1250,9 +1250,9 @@
         </W>
         <W id="080S9W4">
             <FORM kindOf="original">qau.</FORM>
-            <PHON kindOf="original">qau.</PHON>
+            <PHON kindOf="original">qau</PHON>
             <FORM kindOf="standard">qau.</FORM>
-            <PHON kindOf="standard">qau.</PHON>
+            <PHON kindOf="standard">qau</PHON>
             <M id="080S9W4M0">
                 <FORM kindOf="original">qau</FORM>
                 <PHON kindOf="original">qau</PHON>
@@ -1264,10 +1264,10 @@
     </S>
     <S id="080S10">
         <FORM kindOf="original">ku tjakit aitsu, ku vuluq aitsu," aya temvela.</FORM>
-        <PHON kindOf="original">ku cakit aiʦu, ku vuɭuq aiʦu," aja təmvəɭa.</PHON>
+        <PHON kindOf="original">ku cakit aiʦu ku vuɭuq aiʦu aja təmvəɭa</PHON>
         <FORM kindOf="standard">ku tjakit aicu, ku vuluq aicu," aya temvela.</FORM>
-        <PHON kindOf="standard">ku ʦakit aiʦu, ku vuɭuq aiʦu," aja təmvəɭa.</PHON>
-        <TRANSL xml:lang="eng">this is my sword and my spear.”</TRANSL>
+        <PHON kindOf="standard">ku cakit aiʦu ku vuɭuq aiʦu aja təmvəɭa</PHON>
+        <TRANSL xml:lang="eng">this is my sword and my spear."</TRANSL>
         <W id="080S10W1">
             <FORM kindOf="original">ku</FORM>
             <PHON kindOf="original">ku</PHON>
@@ -1285,20 +1285,20 @@
             <FORM kindOf="original">tjakit</FORM>
             <PHON kindOf="original">cakit</PHON>
             <FORM kindOf="standard">tjakit</FORM>
-            <PHON kindOf="standard">ʦakit</PHON>
+            <PHON kindOf="standard">cakit</PHON>
             <M id="080S10W2M0">
                 <FORM kindOf="original">tjakit</FORM>
                 <PHON kindOf="original">cakit</PHON>
                 <FORM kindOf="standard">tjakit</FORM>
-                <PHON kindOf="standard">ʦakit</PHON>
+                <PHON kindOf="standard">cakit</PHON>
                 <TRANSL xml:lang="eng">knife</TRANSL>
             </M>
         </W>
         <W id="080S10W3">
             <FORM kindOf="original">aitsu,</FORM>
-            <PHON kindOf="original">aiʦu,</PHON>
+            <PHON kindOf="original">aiʦu</PHON>
             <FORM kindOf="standard">aicu,</FORM>
-            <PHON kindOf="standard">aiʦu,</PHON>
+            <PHON kindOf="standard">aiʦu</PHON>
             <M id="080S10W3M0">
                 <FORM kindOf="original">aya</FORM>
                 <PHON kindOf="original">aja</PHON>
@@ -1349,9 +1349,9 @@
         </W>
         <W id="080S10W6">
             <FORM kindOf="original">aitsu,"</FORM>
-            <PHON kindOf="original">aiʦu,"</PHON>
+            <PHON kindOf="original">aiʦu</PHON>
             <FORM kindOf="standard">aicu,"</FORM>
-            <PHON kindOf="standard">aiʦu,"</PHON>
+            <PHON kindOf="standard">aiʦu</PHON>
             <M id="080S10W6M0">
                 <FORM kindOf="original">aya</FORM>
                 <PHON kindOf="original">aja</PHON>
@@ -1389,36 +1389,36 @@
         </W>
         <W id="080S10W8">
             <FORM kindOf="original">temvela.</FORM>
-            <PHON kindOf="original">təmvəɭa.</PHON>
+            <PHON kindOf="original">təmvəɭa</PHON>
             <FORM kindOf="standard">temvela.</FORM>
-            <PHON kindOf="standard">təmvəɭa.</PHON>
+            <PHON kindOf="standard">təmvəɭa</PHON>
             <M id="080S10W8M0">
                 <FORM kindOf="original">-em-</FORM>
-                <PHON kindOf="original">-əm-</PHON>
+                <PHON kindOf="original">əm</PHON>
                 <FORM kindOf="standard">-em-</FORM>
-                <PHON kindOf="standard">-əm-</PHON>
+                <PHON kindOf="standard">əm</PHON>
                 <TRANSL xml:lang="eng">af</TRANSL>
             </M>
             <M id="080S10W8M1">
                 <FORM kindOf="original">t-vela</FORM>
-                <PHON kindOf="original">t-vəɭa</PHON>
+                <PHON kindOf="original">tvəɭa</PHON>
                 <FORM kindOf="standard">t-vela</FORM>
-                <PHON kindOf="standard">t-vəɭa</PHON>
+                <PHON kindOf="standard">tvəɭa</PHON>
                 <TRANSL xml:lang="eng">answer</TRANSL>
             </M>
         </W>
     </S>
     <S id="080S11">
         <FORM kindOf="original">"iya, ui ḍi.</FORM>
-        <PHON kindOf="original">"ija, ui ɖi.</PHON>
+        <PHON kindOf="original">ija ui ɖi</PHON>
         <FORM kindOf="standard">"iya, ui dri.</FORM>
-        <PHON kindOf="standard">"ija, ui ɖi.</PHON>
-        <TRANSL xml:lang="eng">“Oh, I see.</TRANSL>
+        <PHON kindOf="standard">ija ui ɖi</PHON>
+        <TRANSL xml:lang="eng">"Oh, I see.</TRANSL>
         <W id="080S11W1">
             <FORM kindOf="original">"iya,</FORM>
-            <PHON kindOf="original">"ija,</PHON>
+            <PHON kindOf="original">ija</PHON>
             <FORM kindOf="standard">"iya,</FORM>
-            <PHON kindOf="standard">"ija,</PHON>
+            <PHON kindOf="standard">ija</PHON>
             <M id="080S11W1M0">
                 <FORM kindOf="original">iya</FORM>
                 <PHON kindOf="original">ija</PHON>
@@ -1442,9 +1442,9 @@
         </W>
         <W id="080S11W3">
             <FORM kindOf="original">ḍi.</FORM>
-            <PHON kindOf="original">ɖi.</PHON>
+            <PHON kindOf="original">ɖi</PHON>
             <FORM kindOf="standard">dri.</FORM>
-            <PHON kindOf="standard">ɖi.</PHON>
+            <PHON kindOf="standard">ɖi</PHON>
             <M id="080S11W3M0">
                 <FORM kindOf="original">ḍi</FORM>
                 <PHON kindOf="original">ɖi</PHON>
@@ -1456,10 +1456,10 @@
     </S>
     <S id="080S12">
         <FORM kindOf="original">pakianu aken, kaka," ayain ni Kaɫikaɫi.</FORM>
-        <PHON kindOf="original">pakianu akən, kaka," ajain ni kaʎikaʎi.</PHON>
+        <PHON kindOf="original">pakianu akən kaka ajain ni kaʎikaʎi</PHON>
         <FORM kindOf="standard">pakianu aken, kaka," ayain ni Kaljikalji.</FORM>
-        <PHON kindOf="standard">pakianu akən, kaka," ajain ni kaʎikaʎi.</PHON>
-        <TRANSL xml:lang="eng">Take me with you, brother,” said Kaɫikaɫi.</TRANSL>
+        <PHON kindOf="standard">pakianu akən kaka ajain ni kaʎikaʎi</PHON>
+        <TRANSL xml:lang="eng">Take me with you, brother," said Kaɫikaɫi.</TRANSL>
         <W id="080S12W1">
             <FORM kindOf="original">pakianu</FORM>
             <PHON kindOf="original">pakianu</PHON>
@@ -1489,9 +1489,9 @@
         </W>
         <W id="080S12W2">
             <FORM kindOf="original">aken,</FORM>
-            <PHON kindOf="original">akən,</PHON>
+            <PHON kindOf="original">akən</PHON>
             <FORM kindOf="standard">aken,</FORM>
-            <PHON kindOf="standard">akən,</PHON>
+            <PHON kindOf="standard">akən</PHON>
             <M id="080S12W2M0">
                 <FORM kindOf="original">aken</FORM>
                 <PHON kindOf="original">akən</PHON>
@@ -1502,9 +1502,9 @@
         </W>
         <W id="080S12W3">
             <FORM kindOf="original">kaka,"</FORM>
-            <PHON kindOf="original">kaka,"</PHON>
+            <PHON kindOf="original">kaka</PHON>
             <FORM kindOf="standard">kaka,"</FORM>
-            <PHON kindOf="standard">kaka,"</PHON>
+            <PHON kindOf="standard">kaka</PHON>
             <M id="080S12W3M0">
                 <FORM kindOf="original">kaka</FORM>
                 <PHON kindOf="original">kaka</PHON>
@@ -1548,9 +1548,9 @@
         </W>
         <W id="080S12W6">
             <FORM kindOf="original">Kaɫikaɫi.</FORM>
-            <PHON kindOf="original">kaʎikaʎi.</PHON>
+            <PHON kindOf="original">kaʎikaʎi</PHON>
             <FORM kindOf="standard">Kaljikalji.</FORM>
-            <PHON kindOf="standard">kaʎikaʎi.</PHON>
+            <PHON kindOf="standard">kaʎikaʎi</PHON>
             <M id="080S12W6M0">
                 <FORM kindOf="original">Kaɫikaɫi</FORM>
                 <PHON kindOf="original">kaʎikaʎi</PHON>
@@ -1562,9 +1562,9 @@
     </S>
     <S id="080S13">
         <FORM kindOf="original">manu kemim tiamadju tua tsumay.</FORM>
-        <PHON kindOf="original">manu kəmim tiamaɉu tua ʦumaj.</PHON>
+        <PHON kindOf="original">manu kəmim tiamaɉu tua ʦumaj</PHON>
         <FORM kindOf="standard">manu kemim tiamadju tua cumay.</FORM>
-        <PHON kindOf="standard">manu kəmim tiamaɉu tua ʦumaj.</PHON>
+        <PHON kindOf="standard">manu kəmim tiamaɉu tua ʦumaj</PHON>
         <TRANSL xml:lang="eng">So they went looking for bears,</TRANSL>
         <W id="080S13W1">
             <FORM kindOf="original">manu</FORM>
@@ -1586,16 +1586,16 @@
             <PHON kindOf="standard">kəmim</PHON>
             <M id="080S13W2M0">
                 <FORM kindOf="original">-em-</FORM>
-                <PHON kindOf="original">-əm-</PHON>
+                <PHON kindOf="original">əm</PHON>
                 <FORM kindOf="standard">-em-</FORM>
-                <PHON kindOf="standard">-əm-</PHON>
+                <PHON kindOf="standard">əm</PHON>
                 <TRANSL xml:lang="eng">af</TRANSL>
             </M>
             <M id="080S13W2M1">
                 <FORM kindOf="original">k-im</FORM>
-                <PHON kindOf="original">k-im</PHON>
+                <PHON kindOf="original">kim</PHON>
                 <FORM kindOf="standard">k-im</FORM>
-                <PHON kindOf="standard">k-im</PHON>
+                <PHON kindOf="standard">kim</PHON>
                 <TRANSL xml:lang="eng">search</TRANSL>
             </M>
         </W>
@@ -1641,9 +1641,9 @@
         </W>
         <W id="080S13W5">
             <FORM kindOf="original">tsumay.</FORM>
-            <PHON kindOf="original">ʦumaj.</PHON>
+            <PHON kindOf="original">ʦumaj</PHON>
             <FORM kindOf="standard">cumay.</FORM>
-            <PHON kindOf="standard">ʦumaj.</PHON>
+            <PHON kindOf="standard">ʦumaj</PHON>
             <M id="080S13W5M0">
                 <FORM kindOf="original">tsumay</FORM>
                 <PHON kindOf="original">ʦumaj</PHON>
@@ -1655,15 +1655,15 @@
     </S>
     <S id="080S14">
         <FORM kindOf="original">neka.</FORM>
-        <PHON kindOf="original">nəka.</PHON>
+        <PHON kindOf="original">nəka</PHON>
         <FORM kindOf="standard">neka.</FORM>
-        <PHON kindOf="standard">nəka.</PHON>
-        <TRANSL xml:lang="eng">but didn’t find any.</TRANSL>
+        <PHON kindOf="standard">nəka</PHON>
+        <TRANSL xml:lang="eng">but didn't find any.</TRANSL>
         <W id="080S14W1">
             <FORM kindOf="original">neka.</FORM>
-            <PHON kindOf="original">nəka.</PHON>
+            <PHON kindOf="original">nəka</PHON>
             <FORM kindOf="standard">neka.</FORM>
-            <PHON kindOf="standard">nəka.</PHON>
+            <PHON kindOf="standard">nəka</PHON>
             <M id="080S14W1M0">
                 <FORM kindOf="original">neka</FORM>
                 <PHON kindOf="original">nəka</PHON>
@@ -1675,10 +1675,10 @@
     </S>
     <S id="080S15">
         <FORM kindOf="original">qau "ainu anga, kaka, a tsumay?" aya ti Kaɫikaɫi.</FORM>
-        <PHON kindOf="original">qau "ainu aŋa, kaka, a ʦumaj" aja ti kaʎikaʎi.</PHON>
+        <PHON kindOf="original">qau ainu aŋa kaka a ʦumaj aja ti kaʎikaʎi</PHON>
         <FORM kindOf="standard">qau "ainu anga, kaka, a cumay?" aya ti Kaljikalji.</FORM>
-        <PHON kindOf="standard">qau "ainu aŋa, kaka, a ʦumaj" aja ti kaʎikaʎi.</PHON>
-        <TRANSL xml:lang="eng">So Kaɫikaɫi said: “Where are the bears, brother?”</TRANSL>
+        <PHON kindOf="standard">qau ainu aŋa kaka a ʦumaj aja ti kaʎikaʎi</PHON>
+        <TRANSL xml:lang="eng">So Kaɫikaɫi said: "Where are the bears, brother?"</TRANSL>
         <W id="080S15W1">
             <FORM kindOf="original">qau</FORM>
             <PHON kindOf="original">qau</PHON>
@@ -1694,9 +1694,9 @@
         </W>
         <W id="080S15W2">
             <FORM kindOf="original">"ainu</FORM>
-            <PHON kindOf="original">"ainu</PHON>
+            <PHON kindOf="original">ainu</PHON>
             <FORM kindOf="standard">"ainu</FORM>
-            <PHON kindOf="standard">"ainu</PHON>
+            <PHON kindOf="standard">ainu</PHON>
             <M id="080S15W2M0">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
@@ -1714,9 +1714,9 @@
         </W>
         <W id="080S15W3">
             <FORM kindOf="original">anga,</FORM>
-            <PHON kindOf="original">aŋa,</PHON>
+            <PHON kindOf="original">aŋa</PHON>
             <FORM kindOf="standard">anga,</FORM>
-            <PHON kindOf="standard">aŋa,</PHON>
+            <PHON kindOf="standard">aŋa</PHON>
             <M id="080S15W3M0">
                 <FORM kindOf="original">anga</FORM>
                 <PHON kindOf="original">aŋa</PHON>
@@ -1727,9 +1727,9 @@
         </W>
         <W id="080S15W4">
             <FORM kindOf="original">kaka,</FORM>
-            <PHON kindOf="original">kaka,</PHON>
+            <PHON kindOf="original">kaka</PHON>
             <FORM kindOf="standard">kaka,</FORM>
-            <PHON kindOf="standard">kaka,</PHON>
+            <PHON kindOf="standard">kaka</PHON>
             <M id="080S15W4M0">
                 <FORM kindOf="original">kaka</FORM>
                 <PHON kindOf="original">kaka</PHON>
@@ -1753,9 +1753,9 @@
         </W>
         <W id="080S15W6">
             <FORM kindOf="original">tsumay?"</FORM>
-            <PHON kindOf="original">ʦumaj"</PHON>
+            <PHON kindOf="original">ʦumaj</PHON>
             <FORM kindOf="standard">cumay?"</FORM>
-            <PHON kindOf="standard">ʦumaj"</PHON>
+            <PHON kindOf="standard">ʦumaj</PHON>
             <M id="080S15W6M0">
                 <FORM kindOf="original">tsumay</FORM>
                 <PHON kindOf="original">ʦumaj</PHON>
@@ -1792,9 +1792,9 @@
         </W>
         <W id="080S15W9">
             <FORM kindOf="original">Kaɫikaɫi.</FORM>
-            <PHON kindOf="original">kaʎikaʎi.</PHON>
+            <PHON kindOf="original">kaʎikaʎi</PHON>
             <FORM kindOf="standard">Kaljikalji.</FORM>
-            <PHON kindOf="standard">kaʎikaʎi.</PHON>
+            <PHON kindOf="standard">kaʎikaʎi</PHON>
             <M id="080S15W9M0">
                 <FORM kindOf="original">Kaɫikaɫi</FORM>
                 <PHON kindOf="original">kaʎikaʎi</PHON>
@@ -1806,15 +1806,15 @@
     </S>
     <S id="080S16">
         <FORM kindOf="original">"uzing anga, palamu anga," ayain ni Tjikunal.</FORM>
-        <PHON kindOf="original">"uziŋ aŋa, paɭamu aŋa," ajain ni cikunaɭ.</PHON>
+        <PHON kindOf="original">uziŋ aŋa paɭamu aŋa ajain ni cikunaɭ</PHON>
         <FORM kindOf="standard">"uzing anga, palamu anga," ayain ni Tjikunal.</FORM>
-        <PHON kindOf="standard">"uziŋ aŋa, paɭamu aŋa," ajain ni ʦikunaɭ.</PHON>
-        <TRANSL xml:lang="eng">“Over there; we’ll soon see them,” said Tjikunal.</TRANSL>
+        <PHON kindOf="standard">uziŋ aŋa paɭamu aŋa ajain ni cikunaɭ</PHON>
+        <TRANSL xml:lang="eng">"Over there; we'll soon see them," said Tjikunal.</TRANSL>
         <W id="080S16W1">
             <FORM kindOf="original">"uzing</FORM>
-            <PHON kindOf="original">"uziŋ</PHON>
+            <PHON kindOf="original">uziŋ</PHON>
             <FORM kindOf="standard">"uzing</FORM>
-            <PHON kindOf="standard">"uziŋ</PHON>
+            <PHON kindOf="standard">uziŋ</PHON>
             <M id="080S16W1M0">
                 <FORM kindOf="original">uzing</FORM>
                 <PHON kindOf="original">uziŋ</PHON>
@@ -1825,9 +1825,9 @@
         </W>
         <W id="080S16W2">
             <FORM kindOf="original">anga,</FORM>
-            <PHON kindOf="original">aŋa,</PHON>
+            <PHON kindOf="original">aŋa</PHON>
             <FORM kindOf="standard">anga,</FORM>
-            <PHON kindOf="standard">aŋa,</PHON>
+            <PHON kindOf="standard">aŋa</PHON>
             <M id="080S16W2M0">
                 <FORM kindOf="original">anga</FORM>
                 <PHON kindOf="original">aŋa</PHON>
@@ -1858,9 +1858,9 @@
         </W>
         <W id="080S16W4">
             <FORM kindOf="original">anga,"</FORM>
-            <PHON kindOf="original">aŋa,"</PHON>
+            <PHON kindOf="original">aŋa</PHON>
             <FORM kindOf="standard">anga,"</FORM>
-            <PHON kindOf="standard">aŋa,"</PHON>
+            <PHON kindOf="standard">aŋa</PHON>
             <M id="080S16W4M0">
                 <FORM kindOf="original">anga</FORM>
                 <PHON kindOf="original">aŋa</PHON>
@@ -1904,23 +1904,23 @@
         </W>
         <W id="080S16W7">
             <FORM kindOf="original">Tjikunal.</FORM>
-            <PHON kindOf="original">cikunaɭ.</PHON>
+            <PHON kindOf="original">cikunaɭ</PHON>
             <FORM kindOf="standard">Tjikunal.</FORM>
-            <PHON kindOf="standard">ʦikunaɭ.</PHON>
+            <PHON kindOf="standard">cikunaɭ</PHON>
             <M id="080S16W7M0">
                 <FORM kindOf="original">Tjikunal</FORM>
                 <PHON kindOf="original">cikunaɭ</PHON>
                 <FORM kindOf="standard">Tjikunal</FORM>
-                <PHON kindOf="standard">ʦikunaɭ</PHON>
+                <PHON kindOf="standard">cikunaɭ</PHON>
                 <TRANSL xml:lang="eng">(name)</TRANSL>
             </M>
         </W>
     </S>
     <S id="080S17">
         <FORM kindOf="original">manu ka tsuay a pagaɫu tevuta zua niamadju a ngiaw.</FORM>
-        <PHON kindOf="original">manu ka ʦuaj a pagaʎu təvuta zua niamaɉu a ŋiaw.</PHON>
+        <PHON kindOf="original">manu ka ʦuaj a pagaʎu təvuta zua niamaɉu a ŋiaw</PHON>
         <FORM kindOf="standard">manu ka cuay a pagalju tevuta zua niamadju a ngiaw.</FORM>
-        <PHON kindOf="standard">manu ka ʦuaj a pagaʎu təvuta zua niamaɉu a ŋiaw.</PHON>
+        <PHON kindOf="standard">manu ka ʦuaj a pagaʎu təvuta zua niamaɉu a ŋiaw</PHON>
         <TRANSL xml:lang="eng">After quite a time their cat emerged.</TRANSL>
         <W id="080S17W1">
             <FORM kindOf="original">manu</FORM>
@@ -2069,9 +2069,9 @@
         </W>
         <W id="080S17W10">
             <FORM kindOf="original">ngiaw.</FORM>
-            <PHON kindOf="original">ŋiaw.</PHON>
+            <PHON kindOf="original">ŋiaw</PHON>
             <FORM kindOf="standard">ngiaw.</FORM>
-            <PHON kindOf="standard">ŋiaw.</PHON>
+            <PHON kindOf="standard">ŋiaw</PHON>
             <M id="080S17W10M0">
                 <FORM kindOf="original">ngiaw</FORM>
                 <PHON kindOf="original">ŋiaw</PHON>
@@ -2083,15 +2083,15 @@
     </S>
     <S id="080S18">
         <FORM kindOf="original">"aku tja ngiaw, kaka.</FORM>
-        <PHON kindOf="original">"aku ca ŋiaw, kaka.</PHON>
+        <PHON kindOf="original">aku ca ŋiaw kaka</PHON>
         <FORM kindOf="standard">"aku tja ngiaw, kaka.</FORM>
-        <PHON kindOf="standard">"aku ʦa ŋiaw, kaka.</PHON>
-        <TRANSL xml:lang="eng">“Why, it’s our cat, brother.</TRANSL>
+        <PHON kindOf="standard">aku ca ŋiaw kaka</PHON>
+        <TRANSL xml:lang="eng">"Why, it's our cat, brother.</TRANSL>
         <W id="080S18W1">
             <FORM kindOf="original">"aku</FORM>
-            <PHON kindOf="original">"aku</PHON>
+            <PHON kindOf="original">aku</PHON>
             <FORM kindOf="standard">"aku</FORM>
-            <PHON kindOf="standard">"aku</PHON>
+            <PHON kindOf="standard">aku</PHON>
             <M id="080S18W1M0">
                 <FORM kindOf="original">aku</FORM>
                 <PHON kindOf="original">aku</PHON>
@@ -2104,20 +2104,20 @@
             <FORM kindOf="original">tja</FORM>
             <PHON kindOf="original">ca</PHON>
             <FORM kindOf="standard">tja</FORM>
-            <PHON kindOf="standard">ʦa</PHON>
+            <PHON kindOf="standard">ca</PHON>
             <M id="080S18W2M0">
                 <FORM kindOf="original">tja</FORM>
                 <PHON kindOf="original">ca</PHON>
                 <FORM kindOf="standard">tja</FORM>
-                <PHON kindOf="standard">ʦa</PHON>
+                <PHON kindOf="standard">ca</PHON>
                 <TRANSL xml:lang="eng">our(inc)</TRANSL>
             </M>
         </W>
         <W id="080S18W3">
             <FORM kindOf="original">ngiaw,</FORM>
-            <PHON kindOf="original">ŋiaw,</PHON>
+            <PHON kindOf="original">ŋiaw</PHON>
             <FORM kindOf="standard">ngiaw,</FORM>
-            <PHON kindOf="standard">ŋiaw,</PHON>
+            <PHON kindOf="standard">ŋiaw</PHON>
             <M id="080S18W3M0">
                 <FORM kindOf="original">ngiaw</FORM>
                 <PHON kindOf="original">ŋiaw</PHON>
@@ -2128,9 +2128,9 @@
         </W>
         <W id="080S18W4">
             <FORM kindOf="original">kaka.</FORM>
-            <PHON kindOf="original">kaka.</PHON>
+            <PHON kindOf="original">kaka</PHON>
             <FORM kindOf="standard">kaka.</FORM>
-            <PHON kindOf="standard">kaka.</PHON>
+            <PHON kindOf="standard">kaka</PHON>
             <M id="080S18W4M0">
                 <FORM kindOf="original">kaka</FORM>
                 <PHON kindOf="original">kaka</PHON>
@@ -2142,10 +2142,10 @@
     </S>
     <S id="080S19">
         <FORM kindOf="original">maya qemtsiqetsi," aya ti Kaɫikaɫi.</FORM>
-        <PHON kindOf="original">maja qəmʦiqəʦi," aja ti kaʎikaʎi.</PHON>
+        <PHON kindOf="original">maja qəmʦiqəʦi aja ti kaʎikaʎi</PHON>
         <FORM kindOf="standard">maya qemciqeci," aya ti Kaljikalji.</FORM>
-        <PHON kindOf="standard">maja qəmʦiqəʦi," aja ti kaʎikaʎi.</PHON>
-        <TRANSL xml:lang="eng">Don’t kill it,” said Kaɫikaɫi.</TRANSL>
+        <PHON kindOf="standard">maja qəmʦiqəʦi aja ti kaʎikaʎi</PHON>
+        <TRANSL xml:lang="eng">Don't kill it," said Kaɫikaɫi.</TRANSL>
         <W id="080S19W1">
             <FORM kindOf="original">maya</FORM>
             <PHON kindOf="original">maja</PHON>
@@ -2161,21 +2161,21 @@
         </W>
         <W id="080S19W2">
             <FORM kindOf="original">qemtsiqetsi,"</FORM>
-            <PHON kindOf="original">qəmʦiqəʦi,"</PHON>
+            <PHON kindOf="original">qəmʦiqəʦi</PHON>
             <FORM kindOf="standard">qemciqeci,"</FORM>
-            <PHON kindOf="standard">qəmʦiqəʦi,"</PHON>
+            <PHON kindOf="standard">qəmʦiqəʦi</PHON>
             <M id="080S19W2M0">
                 <FORM kindOf="original">-em-</FORM>
-                <PHON kindOf="original">-əm-</PHON>
+                <PHON kindOf="original">əm</PHON>
                 <FORM kindOf="standard">-em-</FORM>
-                <PHON kindOf="standard">-əm-</PHON>
+                <PHON kindOf="standard">əm</PHON>
                 <TRANSL xml:lang="eng">af</TRANSL>
             </M>
             <M id="080S19W2M1">
                 <FORM kindOf="original">q-tsi</FORM>
-                <PHON kindOf="original">q-ʦi</PHON>
+                <PHON kindOf="original">qʦi</PHON>
                 <FORM kindOf="standard">q-ci</FORM>
-                <PHON kindOf="standard">q-ʦi</PHON>
+                <PHON kindOf="standard">qʦi</PHON>
                 <TRANSL xml:lang="eng">RED</TRANSL>
             </M>
             <M id="080S19W2M2">
@@ -2214,9 +2214,9 @@
         </W>
         <W id="080S19W5">
             <FORM kindOf="original">Kaɫikaɫi.</FORM>
-            <PHON kindOf="original">kaʎikaʎi.</PHON>
+            <PHON kindOf="original">kaʎikaʎi</PHON>
             <FORM kindOf="standard">Kaljikalji.</FORM>
-            <PHON kindOf="standard">kaʎikaʎi.</PHON>
+            <PHON kindOf="standard">kaʎikaʎi</PHON>
             <M id="080S19W5M0">
                 <FORM kindOf="original">Kaɫikaɫi</FORM>
                 <PHON kindOf="original">kaʎikaʎi</PHON>
@@ -2228,9 +2228,9 @@
     </S>
     <S id="080S20">
         <FORM kindOf="original">ɫakua sipatsiɫik sakamaya ni Tjikunal sa laingi.</FORM>
-        <PHON kindOf="original">ʎakua sipaʦiʎik sakamaja ni cikunaɭ sa ɭaiŋi.</PHON>
+        <PHON kindOf="original">ʎakua sipaʦiʎik sakamaja ni cikunaɭ sa ɭaiŋi</PHON>
         <FORM kindOf="standard">ljakua sipaciljik sakamaya ni Tjikunal sa laingi.</FORM>
-        <PHON kindOf="standard">ʎakua sipaʦiʎik sakamaja ni ʦikunaɭ sa ɭaiŋi.</PHON>
+        <PHON kindOf="standard">ʎakua sipaʦiʎik sakamaja ni cikunaɭ sa ɭaiŋi</PHON>
         <TRANSL xml:lang="eng">But Tjikunal just raised his weapons and chased it.</TRANSL>
         <W id="080S20W1">
             <FORM kindOf="original">ɫakua</FORM>
@@ -2302,12 +2302,12 @@
             <FORM kindOf="original">Tjikunal</FORM>
             <PHON kindOf="original">cikunaɭ</PHON>
             <FORM kindOf="standard">Tjikunal</FORM>
-            <PHON kindOf="standard">ʦikunaɭ</PHON>
+            <PHON kindOf="standard">cikunaɭ</PHON>
             <M id="080S20W5M0">
                 <FORM kindOf="original">Tjikunal</FORM>
                 <PHON kindOf="original">cikunaɭ</PHON>
                 <FORM kindOf="standard">Tjikunal</FORM>
-                <PHON kindOf="standard">ʦikunaɭ</PHON>
+                <PHON kindOf="standard">cikunaɭ</PHON>
                 <TRANSL xml:lang="eng">(name)</TRANSL>
             </M>
         </W>
@@ -2326,9 +2326,9 @@
         </W>
         <W id="080S20W7">
             <FORM kindOf="original">laingi.</FORM>
-            <PHON kindOf="original">ɭaiŋi.</PHON>
+            <PHON kindOf="original">ɭaiŋi</PHON>
             <FORM kindOf="standard">laingi.</FORM>
-            <PHON kindOf="standard">ɭaiŋi.</PHON>
+            <PHON kindOf="standard">ɭaiŋi</PHON>
             <M id="080S20W7M0">
                 <FORM kindOf="original">laing</FORM>
                 <PHON kindOf="original">ɭaiŋ</PHON>
@@ -2347,10 +2347,10 @@
     </S>
     <S id="080S21">
         <FORM kindOf="original">ti Kaɫikaɫi "maya maya, a tja ngiaw, kaka, semalimsim," aya a patjaviliviliɫ.</FORM>
-        <PHON kindOf="original">ti kaʎikaʎi "maja maja, a ca ŋiaw, kaka, səmaɭimsim," aja a pacaviɭiviɭiʎ.</PHON>
+        <PHON kindOf="original">ti kaʎikaʎi maja maja a ca ŋiaw kaka səmaɭimsim aja a pacaviɭiviɭiʎ</PHON>
         <FORM kindOf="standard">ti Kaljikalji "maya maya, a tja ngiaw, kaka, semalimsim," aya a patjavilivililj.</FORM>
-        <PHON kindOf="standard">ti kaʎikaʎi "maja maja, a ʦa ŋiaw, kaka, səmaɭimsim," aja a paʦaviɭiviɭiʎ.</PHON>
-        <TRANSL xml:lang="eng">Kaɫikaɫi followed him saying: “Don’t don’t; it’s our cat, brother; the poor thing.”</TRANSL>
+        <PHON kindOf="standard">ti kaʎikaʎi maja maja a ca ŋiaw kaka səmaɭimsim aja a pacaviɭiviɭiʎ</PHON>
+        <TRANSL xml:lang="eng">Kaɫikaɫi followed him saying: "Don't don't; it's our cat, brother; the poor thing."</TRANSL>
         <W id="080S21W1">
             <FORM kindOf="original">ti</FORM>
             <PHON kindOf="original">ti</PHON>
@@ -2379,9 +2379,9 @@
         </W>
         <W id="080S21W3">
             <FORM kindOf="original">"maya</FORM>
-            <PHON kindOf="original">"maja</PHON>
+            <PHON kindOf="original">maja</PHON>
             <FORM kindOf="standard">"maya</FORM>
-            <PHON kindOf="standard">"maja</PHON>
+            <PHON kindOf="standard">maja</PHON>
             <M id="080S21W3M0">
                 <FORM kindOf="original">maya</FORM>
                 <PHON kindOf="original">maja</PHON>
@@ -2392,9 +2392,9 @@
         </W>
         <W id="080S21W4">
             <FORM kindOf="original">maya,</FORM>
-            <PHON kindOf="original">maja,</PHON>
+            <PHON kindOf="original">maja</PHON>
             <FORM kindOf="standard">maya,</FORM>
-            <PHON kindOf="standard">maja,</PHON>
+            <PHON kindOf="standard">maja</PHON>
             <M id="080S21W4M0">
                 <FORM kindOf="original">maya</FORM>
                 <PHON kindOf="original">maja</PHON>
@@ -2420,20 +2420,20 @@
             <FORM kindOf="original">tja</FORM>
             <PHON kindOf="original">ca</PHON>
             <FORM kindOf="standard">tja</FORM>
-            <PHON kindOf="standard">ʦa</PHON>
+            <PHON kindOf="standard">ca</PHON>
             <M id="080S21W6M0">
                 <FORM kindOf="original">tja</FORM>
                 <PHON kindOf="original">ca</PHON>
                 <FORM kindOf="standard">tja</FORM>
-                <PHON kindOf="standard">ʦa</PHON>
+                <PHON kindOf="standard">ca</PHON>
                 <TRANSL xml:lang="eng">our(inc)</TRANSL>
             </M>
         </W>
         <W id="080S21W7">
             <FORM kindOf="original">ngiaw,</FORM>
-            <PHON kindOf="original">ŋiaw,</PHON>
+            <PHON kindOf="original">ŋiaw</PHON>
             <FORM kindOf="standard">ngiaw,</FORM>
-            <PHON kindOf="standard">ŋiaw,</PHON>
+            <PHON kindOf="standard">ŋiaw</PHON>
             <M id="080S21W7M0">
                 <FORM kindOf="original">ngiaw</FORM>
                 <PHON kindOf="original">ŋiaw</PHON>
@@ -2444,9 +2444,9 @@
         </W>
         <W id="080S21W8">
             <FORM kindOf="original">kaka,</FORM>
-            <PHON kindOf="original">kaka,</PHON>
+            <PHON kindOf="original">kaka</PHON>
             <FORM kindOf="standard">kaka,</FORM>
-            <PHON kindOf="standard">kaka,</PHON>
+            <PHON kindOf="standard">kaka</PHON>
             <M id="080S21W8M0">
                 <FORM kindOf="original">kaka</FORM>
                 <PHON kindOf="original">kaka</PHON>
@@ -2457,14 +2457,14 @@
         </W>
         <W id="080S21W9">
             <FORM kindOf="original">semalimsim,"</FORM>
-            <PHON kindOf="original">səmaɭimsim,"</PHON>
+            <PHON kindOf="original">səmaɭimsim</PHON>
             <FORM kindOf="standard">semalimsim,"</FORM>
-            <PHON kindOf="standard">səmaɭimsim,"</PHON>
+            <PHON kindOf="standard">səmaɭimsim</PHON>
             <M id="080S21W9M0">
                 <FORM kindOf="original">em=al=simsim</FORM>
-                <PHON kindOf="original">əm=aɭ=simsim</PHON>
+                <PHON kindOf="original">əmaɭsimsim</PHON>
                 <FORM kindOf="standard">em=al=simsim</FORM>
-                <PHON kindOf="standard">əm=aɭ=simsim</PHON>
+                <PHON kindOf="standard">əmaɭsimsim</PHON>
                 <TRANSL xml:lang="eng">af=qal=pity</TRANSL>
             </M>
         </W>
@@ -2496,9 +2496,9 @@
         </W>
         <W id="080S21W12">
             <FORM kindOf="original">patjaviliviliɫ.</FORM>
-            <PHON kindOf="original">pacaviɭiviɭiʎ.</PHON>
+            <PHON kindOf="original">pacaviɭiviɭiʎ</PHON>
             <FORM kindOf="standard">patjavilivililj.</FORM>
-            <PHON kindOf="standard">paʦaviɭiviɭiʎ.</PHON>
+            <PHON kindOf="standard">pacaviɭiviɭiʎ</PHON>
             <M id="080S21W12M0">
                 <FORM kindOf="original">pa</FORM>
                 <PHON kindOf="original">pa</PHON>
@@ -2510,7 +2510,7 @@
                 <FORM kindOf="original">tja</FORM>
                 <PHON kindOf="original">ca</PHON>
                 <FORM kindOf="standard">tja</FORM>
-                <PHON kindOf="standard">ʦa</PHON>
+                <PHON kindOf="standard">ca</PHON>
                 <TRANSL xml:lang="eng">more</TRANSL>
             </M>
             <M id="080S21W12M2">
@@ -2531,9 +2531,9 @@
     </S>
     <S id="080S22">
         <FORM kindOf="original">ka ika makalaing ti Tjikunal, semutjalupun anga sa veritsan anga a zaman a qau a djinadjas, sa tjumaq anga.</FORM>
-        <PHON kindOf="original">ka ika makaɭaiŋ ti cikunaɭ, səmucaɭupun aŋa sa vəriʦan aŋa a zaman a qau a ɉinaɉas, sa cumaq aŋa.</PHON>
+        <PHON kindOf="original">ka ika makaɭaiŋ ti cikunaɭ səmucaɭupun aŋa sa vəriʦan aŋa a zaman a qau a ɉinaɉas sa cumaq aŋa</PHON>
         <FORM kindOf="standard">ka ika makalaing ti Tjikunal, semutjalupun anga sa verican anga a zaman a qau a djinadjas, sa tjumaq anga.</FORM>
-        <PHON kindOf="standard">ka ika makaɭaiŋ ti ʦikunaɭ, səmuʦaɭupun aŋa sa vəriʦan aŋa a zaman a qau a ɉinaɉas, sa ʦumaq aŋa.</PHON>
+        <PHON kindOf="standard">ka ika makaɭaiŋ ti cikunaɭ səmucaɭupun aŋa sa vəriʦan aŋa a zaman a qau a ɉinaɉas sa cumaq aŋa</PHON>
         <TRANSL xml:lang="eng">When Tjikunal failed to catch up with the cat, he took off his hat and threw away the grass and bamboo he had been holding, and went indoors.</TRANSL>
         <W id="080S22W1">
             <FORM kindOf="original">ka</FORM>
@@ -2596,14 +2596,14 @@
         </W>
         <W id="080S22W5">
             <FORM kindOf="original">Tjikunal,</FORM>
-            <PHON kindOf="original">cikunaɭ,</PHON>
+            <PHON kindOf="original">cikunaɭ</PHON>
             <FORM kindOf="standard">Tjikunal,</FORM>
-            <PHON kindOf="standard">ʦikunaɭ,</PHON>
+            <PHON kindOf="standard">cikunaɭ</PHON>
             <M id="080S22W5M0">
                 <FORM kindOf="original">Tjikunal</FORM>
                 <PHON kindOf="original">cikunaɭ</PHON>
                 <FORM kindOf="standard">Tjikunal</FORM>
-                <PHON kindOf="standard">ʦikunaɭ</PHON>
+                <PHON kindOf="standard">cikunaɭ</PHON>
                 <TRANSL xml:lang="eng">(name)</TRANSL>
             </M>
         </W>
@@ -2611,26 +2611,26 @@
             <FORM kindOf="original">semutjalupun</FORM>
             <PHON kindOf="original">səmucaɭupun</PHON>
             <FORM kindOf="standard">semutjalupun</FORM>
-            <PHON kindOf="standard">səmuʦaɭupun</PHON>
+            <PHON kindOf="standard">səmucaɭupun</PHON>
             <M id="080S22W6M0">
                 <FORM kindOf="original">-em-</FORM>
-                <PHON kindOf="original">-əm-</PHON>
+                <PHON kindOf="original">əm</PHON>
                 <FORM kindOf="standard">-em-</FORM>
-                <PHON kindOf="standard">-əm-</PHON>
+                <PHON kindOf="standard">əm</PHON>
                 <TRANSL xml:lang="eng">af</TRANSL>
             </M>
             <M id="080S22W6M1">
                 <FORM kindOf="original">s-u</FORM>
-                <PHON kindOf="original">s-u</PHON>
+                <PHON kindOf="original">su</PHON>
                 <FORM kindOf="standard">s-u</FORM>
-                <PHON kindOf="standard">s-u</PHON>
+                <PHON kindOf="standard">su</PHON>
                 <TRANSL xml:lang="eng">remove</TRANSL>
             </M>
             <M id="080S22W6M2">
                 <FORM kindOf="original">tjalupun</FORM>
                 <PHON kindOf="original">caɭupun</PHON>
                 <FORM kindOf="standard">tjalupun</FORM>
-                <PHON kindOf="standard">ʦaɭupun</PHON>
+                <PHON kindOf="standard">caɭupun</PHON>
                 <TRANSL xml:lang="eng">hat</TRANSL>
             </M>
         </W>
@@ -2760,21 +2760,21 @@
         </W>
         <W id="080S22W16">
             <FORM kindOf="original">djinadjas,</FORM>
-            <PHON kindOf="original">ɉinaɉas,</PHON>
+            <PHON kindOf="original">ɉinaɉas</PHON>
             <FORM kindOf="standard">djinadjas,</FORM>
-            <PHON kindOf="standard">ɉinaɉas,</PHON>
+            <PHON kindOf="standard">ɉinaɉas</PHON>
             <M id="080S22W16M0">
                 <FORM kindOf="original">-in-</FORM>
-                <PHON kindOf="original">-in-</PHON>
+                <PHON kindOf="original">in</PHON>
                 <FORM kindOf="standard">-in-</FORM>
-                <PHON kindOf="standard">-in-</PHON>
+                <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="eng">perf</TRANSL>
             </M>
             <M id="080S22W16M1">
                 <FORM kindOf="original">dj-adjas</FORM>
-                <PHON kindOf="original">ɉ-aɉas</PHON>
+                <PHON kindOf="original">ɉaɉas</PHON>
                 <FORM kindOf="standard">dj-adjas</FORM>
-                <PHON kindOf="standard">ɉ-aɉas</PHON>
+                <PHON kindOf="standard">ɉaɉas</PHON>
                 <TRANSL xml:lang="eng">grab</TRANSL>
             </M>
         </W>
@@ -2795,12 +2795,12 @@
             <FORM kindOf="original">tjumaq</FORM>
             <PHON kindOf="original">cumaq</PHON>
             <FORM kindOf="standard">tjumaq</FORM>
-            <PHON kindOf="standard">ʦumaq</PHON>
+            <PHON kindOf="standard">cumaq</PHON>
             <M id="080S22W18M0">
                 <FORM kindOf="original">tju</FORM>
                 <PHON kindOf="original">cu</PHON>
                 <FORM kindOf="standard">tju</FORM>
-                <PHON kindOf="standard">ʦu</PHON>
+                <PHON kindOf="standard">cu</PHON>
                 <TRANSL xml:lang="eng">there</TRANSL>
             </M>
             <M id="080S22W18M1">
@@ -2813,9 +2813,9 @@
         </W>
         <W id="080S22W19">
             <FORM kindOf="original">anga.</FORM>
-            <PHON kindOf="original">aŋa.</PHON>
+            <PHON kindOf="original">aŋa</PHON>
             <FORM kindOf="standard">anga.</FORM>
-            <PHON kindOf="standard">aŋa.</PHON>
+            <PHON kindOf="standard">aŋa</PHON>
             <M id="080S22W19M0">
                 <FORM kindOf="original">anga</FORM>
                 <PHON kindOf="original">aŋa</PHON>
@@ -2827,9 +2827,9 @@
     </S>
     <S id="080S23">
         <FORM kindOf="original">manu pakatjaraitan nua kina tua vurasi a kinuɫaw tiamadju a marekaka.</FORM>
-        <PHON kindOf="original">manu pakacaraitan nua kina tua vurasi a kinuʎaw tiamaɉu a marəkaka.</PHON>
+        <PHON kindOf="original">manu pakacaraitan nua kina tua vurasi a kinuʎaw tiamaɉu a marəkaka</PHON>
         <FORM kindOf="standard">manu pakatjaraitan nua kina tua vurasi a kinuljaw tiamadju a marekaka.</FORM>
-        <PHON kindOf="standard">manu pakaʦaraitan nua kina tua vurasi a kinuʎaw tiamaɉu a marəkaka.</PHON>
+        <PHON kindOf="standard">manu pakacaraitan nua kina tua vurasi a kinuʎaw tiamaɉu a marəkaka</PHON>
         <TRANSL xml:lang="eng">So their mother gave the siblings a roasted sweet potato each.</TRANSL>
         <W id="080S23W1">
             <FORM kindOf="original">manu</FORM>
@@ -2848,7 +2848,7 @@
             <FORM kindOf="original">pakatjaraitan</FORM>
             <PHON kindOf="original">pakacaraitan</PHON>
             <FORM kindOf="standard">pakatjaraitan</FORM>
-            <PHON kindOf="standard">pakaʦaraitan</PHON>
+            <PHON kindOf="standard">pakacaraitan</PHON>
             <M id="080S23W2M0">
                 <FORM kindOf="original">pa</FORM>
                 <PHON kindOf="original">pa</PHON>
@@ -2867,7 +2867,7 @@
                 <FORM kindOf="original">tjara</FORM>
                 <PHON kindOf="original">cara</PHON>
                 <FORM kindOf="standard">tjara</FORM>
-                <PHON kindOf="standard">ʦara</PHON>
+                <PHON kindOf="standard">cara</PHON>
                 <TRANSL xml:lang="eng">surely</TRANSL>
             </M>
             <M id="080S23W2M3">
@@ -2957,16 +2957,16 @@
             <PHON kindOf="standard">kinuʎaw</PHON>
             <M id="080S23W8M0">
                 <FORM kindOf="original">-in-</FORM>
-                <PHON kindOf="original">-in-</PHON>
+                <PHON kindOf="original">in</PHON>
                 <FORM kindOf="standard">-in-</FORM>
-                <PHON kindOf="standard">-in-</PHON>
+                <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="eng">perf</TRANSL>
             </M>
             <M id="080S23W8M1">
                 <FORM kindOf="original">k-uɫaw</FORM>
-                <PHON kindOf="original">k-uʎaw</PHON>
+                <PHON kindOf="original">kuʎaw</PHON>
                 <FORM kindOf="standard">k-uljaw</FORM>
-                <PHON kindOf="standard">k-uʎaw</PHON>
+                <PHON kindOf="standard">kuʎaw</PHON>
                 <TRANSL xml:lang="eng">roast</TRANSL>
             </M>
         </W>
@@ -3012,9 +3012,9 @@
         </W>
         <W id="080S23W11">
             <FORM kindOf="original">marekaka.</FORM>
-            <PHON kindOf="original">marəkaka.</PHON>
+            <PHON kindOf="original">marəkaka</PHON>
             <FORM kindOf="standard">marekaka.</FORM>
-            <PHON kindOf="standard">marəkaka.</PHON>
+            <PHON kindOf="standard">marəkaka</PHON>
             <M id="080S23W11M0">
                 <FORM kindOf="original">mare</FORM>
                 <PHON kindOf="original">marə</PHON>
@@ -3033,9 +3033,9 @@
     </S>
     <S id="080S24">
         <FORM kindOf="original">ka kemakan tiamadju.</FORM>
-        <PHON kindOf="original">ka kəmakan tiamaɉu.</PHON>
+        <PHON kindOf="original">ka kəmakan tiamaɉu</PHON>
         <FORM kindOf="standard">ka kemakan tiamadju.</FORM>
-        <PHON kindOf="standard">ka kəmakan tiamaɉu.</PHON>
+        <PHON kindOf="standard">ka kəmakan tiamaɉu</PHON>
         <TRANSL xml:lang="eng">While they were eating,</TRANSL>
         <W id="080S24W1">
             <FORM kindOf="original">ka</FORM>
@@ -3057,16 +3057,16 @@
             <PHON kindOf="standard">kəmakan</PHON>
             <M id="080S24W2M0">
                 <FORM kindOf="original">-em-</FORM>
-                <PHON kindOf="original">-əm-</PHON>
+                <PHON kindOf="original">əm</PHON>
                 <FORM kindOf="standard">-em-</FORM>
-                <PHON kindOf="standard">-əm-</PHON>
+                <PHON kindOf="standard">əm</PHON>
                 <TRANSL xml:lang="eng">af</TRANSL>
             </M>
             <M id="080S24W2M1">
                 <FORM kindOf="original">k-a</FORM>
-                <PHON kindOf="original">k-a</PHON>
+                <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">k-a</FORM>
-                <PHON kindOf="standard">k-a</PHON>
+                <PHON kindOf="standard">ka</PHON>
                 <TRANSL xml:lang="eng">RED</TRANSL>
             </M>
             <M id="080S24W2M2">
@@ -3079,9 +3079,9 @@
         </W>
         <W id="080S24W3">
             <FORM kindOf="original">tiamadju.</FORM>
-            <PHON kindOf="original">tiamaɉu.</PHON>
+            <PHON kindOf="original">tiamaɉu</PHON>
             <FORM kindOf="standard">tiamadju.</FORM>
-            <PHON kindOf="standard">tiamaɉu.</PHON>
+            <PHON kindOf="standard">tiamaɉu</PHON>
             <M id="080S24W3M0">
                 <FORM kindOf="original">ti</FORM>
                 <PHON kindOf="original">ti</PHON>
@@ -3107,15 +3107,15 @@
     </S>
     <S id="080S25">
         <FORM kindOf="original">mangtjez azua ngiaw niamadju; ɫakua seqaɫanga sakamaya, ika ui anga a ɫiadet.</FORM>
-        <PHON kindOf="original">maŋcəz azua ŋiaw niamaɉu; ʎakua səqaʎaŋa sakamaja, ika ui aŋa a ʎiadət.</PHON>
+        <PHON kindOf="original">maŋcəz azua ŋiaw niamaɉu ʎakua səqaʎaŋa sakamaja ika ui aŋa a ʎiadət</PHON>
         <FORM kindOf="standard">mangtjez azua ngiaw niamadju; ljakua seqaljanga sakamaya, ika ui anga a ljiadet.</FORM>
-        <PHON kindOf="standard">maŋʦəz azua ŋiaw niamaɉu; ʎakua səqaʎaŋa sakamaja, ika ui aŋa a ʎiadət.</PHON>
-        <TRANSL xml:lang="eng">their cat came in; but it was very shy and wouldn’t go near them.</TRANSL>
+        <PHON kindOf="standard">maŋcəz azua ŋiaw niamaɉu ʎakua səqaʎaŋa sakamaja ika ui aŋa a ʎiadət</PHON>
+        <TRANSL xml:lang="eng">their cat came in; but it was very shy and wouldn't go near them.</TRANSL>
         <W id="080S25W1">
             <FORM kindOf="original">mangtjez</FORM>
             <PHON kindOf="original">maŋcəz</PHON>
             <FORM kindOf="standard">mangtjez</FORM>
-            <PHON kindOf="standard">maŋʦəz</PHON>
+            <PHON kindOf="standard">maŋcəz</PHON>
             <M id="080S25W1M0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
@@ -3127,7 +3127,7 @@
                 <FORM kindOf="original">pangetjez</FORM>
                 <PHON kindOf="original">paŋəcəz</PHON>
                 <FORM kindOf="standard">pangetjez</FORM>
-                <PHON kindOf="standard">paŋəʦəz</PHON>
+                <PHON kindOf="standard">paŋəcəz</PHON>
                 <TRANSL xml:lang="eng">come</TRANSL>
             </M>
         </W>
@@ -3166,9 +3166,9 @@
         </W>
         <W id="080S25W4">
             <FORM kindOf="original">niamadju;</FORM>
-            <PHON kindOf="original">niamaɉu;</PHON>
+            <PHON kindOf="original">niamaɉu</PHON>
             <FORM kindOf="standard">niamadju;</FORM>
-            <PHON kindOf="standard">niamaɉu;</PHON>
+            <PHON kindOf="standard">niamaɉu</PHON>
             <M id="080S25W4M0">
                 <FORM kindOf="original">ni</FORM>
                 <PHON kindOf="original">ni</PHON>
@@ -3233,9 +3233,9 @@
         </W>
         <W id="080S25W7">
             <FORM kindOf="original">sakamaya,</FORM>
-            <PHON kindOf="original">sakamaja,</PHON>
+            <PHON kindOf="original">sakamaja</PHON>
             <FORM kindOf="standard">sakamaya,</FORM>
-            <PHON kindOf="standard">sakamaja,</PHON>
+            <PHON kindOf="standard">sakamaja</PHON>
             <M id="080S25W7M0">
                 <FORM kindOf="original">sakamaya</FORM>
                 <PHON kindOf="original">sakamaja</PHON>
@@ -3298,9 +3298,9 @@
         </W>
         <W id="080S25W12">
             <FORM kindOf="original">ɫiadet.</FORM>
-            <PHON kindOf="original">ʎiadət.</PHON>
+            <PHON kindOf="original">ʎiadət</PHON>
             <FORM kindOf="standard">ljiadet.</FORM>
-            <PHON kindOf="standard">ʎiadət.</PHON>
+            <PHON kindOf="standard">ʎiadət</PHON>
             <M id="080S25W12M0">
                 <FORM kindOf="original">ɫia</FORM>
                 <PHON kindOf="original">ʎia</PHON>
@@ -3319,15 +3319,15 @@
     </S>
     <S id="080S26">
         <FORM kindOf="original">"qau pai pasedjaluu, kaka, a tja ngiaw," ayain anga ni Kaɫikaɫi ti Tjikunal.</FORM>
-        <PHON kindOf="original">"qau pai pasəɉaɭuu, kaka, a ca ŋiaw," ajain aŋa ni kaʎikaʎi ti cikunaɭ.</PHON>
+        <PHON kindOf="original">qau pai pasəɉaɭuu kaka a ca ŋiaw ajain aŋa ni kaʎikaʎi ti cikunaɭ</PHON>
         <FORM kindOf="standard">"qau pai pasedjaluu, kaka, a tja ngiaw," ayain anga ni Kaljikalji ti Tjikunal.</FORM>
-        <PHON kindOf="standard">"qau pai pasəɉaɭuu, kaka, a ʦa ŋiaw," ajain aŋa ni kaʎikaʎi ti ʦikunaɭ.</PHON>
-        <TRANSL xml:lang="eng">Kaɫikaɫi said to Tjikunal: “Make friends with our cat, brother.”</TRANSL>
+        <PHON kindOf="standard">qau pai pasəɉaɭuu kaka a ca ŋiaw ajain aŋa ni kaʎikaʎi ti cikunaɭ</PHON>
+        <TRANSL xml:lang="eng">Kaɫikaɫi said to Tjikunal: "Make friends with our cat, brother."</TRANSL>
         <W id="080S26W1">
             <FORM kindOf="original">"qau</FORM>
-            <PHON kindOf="original">"qau</PHON>
+            <PHON kindOf="original">qau</PHON>
             <FORM kindOf="standard">"qau</FORM>
-            <PHON kindOf="standard">"qau</PHON>
+            <PHON kindOf="standard">qau</PHON>
             <M id="080S26W1M0">
                 <FORM kindOf="original">qau</FORM>
                 <PHON kindOf="original">qau</PHON>
@@ -3351,9 +3351,9 @@
         </W>
         <W id="080S26W3">
             <FORM kindOf="original">pasedjaluu,</FORM>
-            <PHON kindOf="original">pasəɉaɭuu,</PHON>
+            <PHON kindOf="original">pasəɉaɭuu</PHON>
             <FORM kindOf="standard">pasedjaluu,</FORM>
-            <PHON kindOf="standard">pasəɉaɭuu,</PHON>
+            <PHON kindOf="standard">pasəɉaɭuu</PHON>
             <M id="080S26W3M0">
                 <FORM kindOf="original">pa</FORM>
                 <PHON kindOf="original">pa</PHON>
@@ -3385,9 +3385,9 @@
         </W>
         <W id="080S26W4">
             <FORM kindOf="original">kaka,</FORM>
-            <PHON kindOf="original">kaka,</PHON>
+            <PHON kindOf="original">kaka</PHON>
             <FORM kindOf="standard">kaka,</FORM>
-            <PHON kindOf="standard">kaka,</PHON>
+            <PHON kindOf="standard">kaka</PHON>
             <M id="080S26W4M0">
                 <FORM kindOf="original">kaka</FORM>
                 <PHON kindOf="original">kaka</PHON>
@@ -3413,20 +3413,20 @@
             <FORM kindOf="original">tja</FORM>
             <PHON kindOf="original">ca</PHON>
             <FORM kindOf="standard">tja</FORM>
-            <PHON kindOf="standard">ʦa</PHON>
+            <PHON kindOf="standard">ca</PHON>
             <M id="080S26W6M0">
                 <FORM kindOf="original">tja</FORM>
                 <PHON kindOf="original">ca</PHON>
                 <FORM kindOf="standard">tja</FORM>
-                <PHON kindOf="standard">ʦa</PHON>
+                <PHON kindOf="standard">ca</PHON>
                 <TRANSL xml:lang="eng">our(inc)</TRANSL>
             </M>
         </W>
         <W id="080S26W7">
             <FORM kindOf="original">ngiaw,"</FORM>
-            <PHON kindOf="original">ŋiaw,"</PHON>
+            <PHON kindOf="original">ŋiaw</PHON>
             <FORM kindOf="standard">ngiaw,"</FORM>
-            <PHON kindOf="standard">ŋiaw,"</PHON>
+            <PHON kindOf="standard">ŋiaw</PHON>
             <M id="080S26W7M0">
                 <FORM kindOf="original">ngiaw</FORM>
                 <PHON kindOf="original">ŋiaw</PHON>
@@ -3509,23 +3509,23 @@
         </W>
         <W id="080S26W13">
             <FORM kindOf="original">Tjikunal.</FORM>
-            <PHON kindOf="original">cikunaɭ.</PHON>
+            <PHON kindOf="original">cikunaɭ</PHON>
             <FORM kindOf="standard">Tjikunal.</FORM>
-            <PHON kindOf="standard">ʦikunaɭ.</PHON>
+            <PHON kindOf="standard">cikunaɭ</PHON>
             <M id="080S26W13M0">
                 <FORM kindOf="original">Tjikunal</FORM>
                 <PHON kindOf="original">cikunaɭ</PHON>
                 <FORM kindOf="standard">Tjikunal</FORM>
-                <PHON kindOf="standard">ʦikunaɭ</PHON>
+                <PHON kindOf="standard">cikunaɭ</PHON>
                 <TRANSL xml:lang="eng">(name)</TRANSL>
             </M>
         </W>
     </S>
     <S id="080S27">
         <FORM kindOf="original">sa pasedjalu-i anga, sana ɫiadedet, sana kakan tua sinitseviq ni Tjikunal.</FORM>
-        <PHON kindOf="original">sa pasəɉaɭu-i aŋa, sana ʎiadədət, sana kakan tua siniʦəviq ni cikunaɭ.</PHON>
-        <FORM kindOf="standard">sa pasedjalu-i anga, sana ljiadedet, sana kakan tua siniceviq ni Tjikunal.</FORM>
-        <PHON kindOf="standard">sa pasəɉaɭu-i aŋa, sana ʎiadədət, sana kakan tua siniʦəviq ni ʦikunaɭ.</PHON>
+        <PHON kindOf="original">sa pasəɉaɭui aŋa sana ʎiadədət sana kakan tua siniʦəviq ni cikunaɭ</PHON>
+        <FORM kindOf="standard">sa pasedjalui anga, sana ljiadedet, sana kakan tua siniceviq ni Tjikunal.</FORM>
+        <PHON kindOf="standard">sa pasəɉaɭui aŋa sana ʎiadədət sana kakan tua siniʦəviq ni cikunaɭ</PHON>
         <TRANSL xml:lang="eng">So he made friends with it, and then it came near and ate the bits of food which Tjikunal broke off for it.</TRANSL>
         <W id="080S27W1">
             <FORM kindOf="original">sa</FORM>
@@ -3542,9 +3542,9 @@
         </W>
         <W id="080S27W2">
             <FORM kindOf="original">pasedjalu-i</FORM>
-            <PHON kindOf="original">pasəɉaɭu-i</PHON>
+            <PHON kindOf="original">pasəɉaɭui</PHON>
             <FORM kindOf="standard">pasedjalu-i</FORM>
-            <PHON kindOf="standard">pasəɉaɭu-i</PHON>
+            <PHON kindOf="standard">pasəɉaɭui</PHON>
             <M id="080S27W2M0">
                 <FORM kindOf="original">pa</FORM>
                 <PHON kindOf="original">pa</PHON>
@@ -3576,9 +3576,9 @@
         </W>
         <W id="080S27W3">
             <FORM kindOf="original">anga,</FORM>
-            <PHON kindOf="original">aŋa,</PHON>
+            <PHON kindOf="original">aŋa</PHON>
             <FORM kindOf="standard">anga,</FORM>
-            <PHON kindOf="standard">aŋa,</PHON>
+            <PHON kindOf="standard">aŋa</PHON>
             <M id="080S27W3M0">
                 <FORM kindOf="original">anga</FORM>
                 <PHON kindOf="original">aŋa</PHON>
@@ -3609,9 +3609,9 @@
         </W>
         <W id="080S27W5">
             <FORM kindOf="original">ɫiadedet,</FORM>
-            <PHON kindOf="original">ʎiadədət,</PHON>
+            <PHON kindOf="original">ʎiadədət</PHON>
             <FORM kindOf="standard">ljiadedet,</FORM>
-            <PHON kindOf="standard">ʎiadədət,</PHON>
+            <PHON kindOf="standard">ʎiadədət</PHON>
             <M id="080S27W5M0">
                 <FORM kindOf="original">ɫia</FORM>
                 <PHON kindOf="original">ʎia</PHON>
@@ -3694,16 +3694,16 @@
             <PHON kindOf="standard">siniʦəviq</PHON>
             <M id="080S27W9M0">
                 <FORM kindOf="original">-in-</FORM>
-                <PHON kindOf="original">-in-</PHON>
+                <PHON kindOf="original">in</PHON>
                 <FORM kindOf="standard">-in-</FORM>
-                <PHON kindOf="standard">-in-</PHON>
+                <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="eng">perf</TRANSL>
             </M>
             <M id="080S27W9M1">
                 <FORM kindOf="original">s-i</FORM>
-                <PHON kindOf="original">s-i</PHON>
+                <PHON kindOf="original">si</PHON>
                 <FORM kindOf="standard">s-i</FORM>
-                <PHON kindOf="standard">s-i</PHON>
+                <PHON kindOf="standard">si</PHON>
                 <TRANSL xml:lang="eng">if</TRANSL>
             </M>
             <M id="080S27W9M2">
@@ -3729,14 +3729,14 @@
         </W>
         <W id="080S27W11">
             <FORM kindOf="original">Tjikunal.</FORM>
-            <PHON kindOf="original">cikunaɭ.</PHON>
+            <PHON kindOf="original">cikunaɭ</PHON>
             <FORM kindOf="standard">Tjikunal.</FORM>
-            <PHON kindOf="standard">ʦikunaɭ.</PHON>
+            <PHON kindOf="standard">cikunaɭ</PHON>
             <M id="080S27W11M0">
                 <FORM kindOf="original">Tjikunal</FORM>
                 <PHON kindOf="original">cikunaɭ</PHON>
                 <FORM kindOf="standard">Tjikunal</FORM>
-                <PHON kindOf="standard">ʦikunaɭ</PHON>
+                <PHON kindOf="standard">cikunaɭ</PHON>
                 <TRANSL xml:lang="eng">(name)</TRANSL>
             </M>
         </W>

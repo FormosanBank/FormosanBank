@@ -334,17 +334,30 @@ def g004_infix_root_reconstructed(
     path: Path,
     index=None,
 ) -> list[Finding]:
-    """G004 HARD: a W FORM containing '<X>' must have an M for the rejoined root.
+    """G004 HARD: a W FORM containing '<X>' must have an M spelling its root.
 
-    Per the scraping guide, 'pa<mi>kat' is two morphemes: the infix 'mi' and
-    the root 'pakat' — the root's halves are rejoined across the infix. If no
-    M carries the rejoined root, the infix was mis-segmented (usually the
-    halves were left as two separate morphemes).
+    'pa<mi>kat' is two morphemes: the infix 'mi' and the root 'pakat'. The
+    root M may be spelled either rejoined ('pakat', the scraping guide's
+    presentation) or with '-' at the infixation point ('pa-kat' — the
+    GitBook/POL-014 M-tier convention; Kanakanavu practice). What G004
+    catches is the *mis-segmentation* where the root's halves were left as
+    two separate M elements (the Kavalan-Zhang class) — not hyphen style,
+    which POL-014 and the audits own.
+
+    The root candidate is computed per marker-delimited unit with ALL
+    infixes removed at once — computing it one infix at a time false-fires
+    on stacked infixes like 'p<in><al>ukpuk' (Puyuma-Teng class, fixed
+    2026-08-10), because the other infix's brackets pollute the candidate.
 
     V068 checks this only fuzzily, as a letter multiset; because an infix
     reconstructs perfectly under a multiset comparison, V068 cannot see this
     failure at all. Comparison here is casefolded, since the guide forbids
     lowercasing the text tier but the root may be capitalised in only one place.
+
+    A root may carry several infixes ('t<em>a<ka>kesi', Puyuma): the expected
+    M is the root rejoined across ALL of them ('takesi'), so the surrounding
+    context of each infix is cleared of the other infixes before rejoining,
+    and one missing root is reported once, not once per infix.
     """
     findings: list[Finding] = []
     for w in tree.iter("W"):
@@ -358,19 +371,30 @@ def g004_infix_root_reconstructed(
             (_form_text(m) or "").strip("-").casefold()
             for m in ms
         }
-        for match in _ANGLE.finditer(form):
-            left = _SPLIT_UNITS.split(form[:match.start()])[-1]
-            right = _SPLIT_UNITS.split(form[match.end():])[0]
-            root = (left + right).strip()
-            if not root or root.casefold() in m_forms:
+        # Both branches independently fixed the stacked-infix false
+        # positive (Puyuma-Teng class); this per-unit version is kept as
+        # the superset — it also accepts the POL-014 hyphenated root
+        # spelling ('t-a') alongside the rejoined one ('ta').
+        for unit in _SPLIT_UNITS.split(form):
+            infixes = _ANGLE.findall(unit)
+            if not infixes:
+                continue
+            rejoined = _ANGLE.sub("", unit).strip()
+            hyphenated = re.sub(
+                r"-{2,}", "-", _ANGLE.sub("-", unit)).strip("-").strip()
+            candidates = {rejoined.casefold(), hyphenated.casefold()}
+            candidates.discard("")
+            if not candidates or candidates & m_forms:
                 continue
             findings.append(Finding(
                 rule_id="G004",
                 severity=Severity.HARD,
                 message=(
-                    f"W FORM {form!r} has infix {match.group(0)!r}, so the root "
-                    f"rejoins as {root!r}, but no child M FORM spells it "
-                    f"(found: {sorted(f for f in m_forms if f)})"
+                    f"W FORM {form!r} has infix(es) "
+                    f"{', '.join(repr(i) for i in infixes)}, so the root "
+                    f"spells {rejoined!r} (rejoined) or {hyphenated!r} "
+                    f"(POL-014 hyphenated), but no child M FORM spells "
+                    f"either (found: {sorted(f for f in m_forms if f)})"
                 ),
                 path=path,
                 location=_loc(w),

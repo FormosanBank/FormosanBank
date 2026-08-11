@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  C012 fixture (Bunun): "Ø" must be stripped from the standard tier EVEN in a
-  language where "-" IS a letter (Bunun), and stripping the null marker must NOT
-  eat the real, letter-status hyphens around it. This pins that the "Ø" removal
-  is independent of the hyphen-is-letter branch.
+  C012 fixture (Bunun): "Ø" is normalized to ∅ (clean_text step 2b, after swap_punctuation), then
+  preserved by C012 along with its bridging hyphen (spec 2026-08-09). In
+  Bunun, "-" IS a letter, but the null unit's hyphen is annotation, not a
+  letter — C012 skips it when stripping segmentation, same as in languages
+  where "-" is not a letter.
 
-  Shape: standard FORM "Ø-ma-baliv-an."; the leading "Ø-" (null prefix + its
-  bridging hyphen) is removed, while the two internal letter-hyphens of
-  "ma-baliv-an." are PRESERVED (Bunun "-" is a letter). After C012 the standard
-  becomes "ma-baliv-an.".
+  Shape: standard FORM "Ø-ma-baliv-an." (input); after normalization becomes
+  "∅-ma-baliv-an.", and C012 preserves the null unit. The two internal
+  letter-hyphens of "ma-baliv-an." are PRESERVED (Bunun "-" is a letter).
 -->
 <TEXT id="TEST_C012_BNN_NULL" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="bnn" dialect="unknown">
   <S id="S_1">

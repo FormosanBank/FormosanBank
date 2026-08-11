@@ -235,13 +235,32 @@ SPEAKER_TOKENS = {'Q:', 'A:', 'B:', 'R:', 'C:', 'D:', 'F:', 'G:', 'H:', 'I:', 'K
 # Used to detect annotation insertions that have no corresponding gloss entry (pattern 1).
 PAREN_TOKEN_RE = re.compile(r'^\([^)]+\)[,!?.]?$')
 
-# Matches a form or token that contains an ungrammatical parenthetical:
-#   *(text)  – asterisk before a parenthesised word
-#   (*text)  – parenthesised word beginning with asterisk
-# These mark material that should be silently removed from the FORM and from
-# the word list (no <W> element is emitted).  The match is done anywhere in
-# the string so that combined forms like '(na)(*sua)' are also caught.
-UNGRAMMATICAL_PAREN_RE = re.compile(r'\*\([^)]*\)|\(\*[^)]*\)')
+# Grammaticality parentheticals. The two conventions are OPPOSITE in meaning
+# and must not be conflated with ordinary optional parentheses:
+#   *(text)  – text is OBLIGATORY: the source marks the sentence as
+#              ungrammatical WITHOUT it, so the attested sentence INCLUDES
+#              text. Keep the content, dropping only the '*( )' marking.
+#   (*text)  – text is FORBIDDEN: ungrammatical WITH it. Remove marking and
+#              content entirely (no <W> element is emitted for such a token).
+OBLIGATORY_PAREN_RE = re.compile(r'\*\(([^)]*)\)')
+FORBIDDEN_PAREN_RE = re.compile(r'\(\*[^)]*\)')
+
+
+def resolve_ungrammatical_parens(text):
+    """Resolve *(X) / (*X) grammaticality notation in *text*.
+
+    ``*(X)`` → ``X`` (obligatory: content kept); ``(*X)`` → ``''`` (forbidden:
+    content removed). Matches anywhere in the string, so combined forms like
+    ``'(na)(*sua)'`` → ``'(na)'`` and ``'arivuree(*=cu/ci)=maku'`` →
+    ``'arivuree=maku'`` are handled. May return an empty string when the whole
+    token was a forbidden parenthetical; callers should then drop the token
+    (and its gloss entry).
+    """
+    if not text:
+        return text
+    text = OBLIGATORY_PAREN_RE.sub(r'\1', text)
+    text = FORBIDDEN_PAREN_RE.sub('', text)
+    return text.strip()
 
 
 def _drop_starred_slash(tok):
@@ -629,15 +648,22 @@ def extract_notes(text):
         The translation with all parenthetical spans removed and
         surrounding whitespace normalised.
     notes : str or None
-        A ``'; '``-joined string of every captured group (stripped), or
-        ``None`` when no parenthetical content was found.
+        The original, uncleaned string when any parenthetical content was
+        removed, or ``None`` when there was none.
     """
-    pattern = r'[(\uff08]([^)\uff09]+)[)\uff09]'
-    notes = [m.group(1).strip() for m in re.finditer(pattern, text)
-             if m.group(1).strip()]
-    cleaned = re.sub(r'\s*[(\uff08][^)\uff09]+[)\uff09]\s*', ' ', text)
+    # Strip innermost parenthetical spans repeatedly so nested commentary like
+    # '(*All teachers hit student(s).)' is removed whole rather than leaving a
+    # dangling '.)' behind (the inner '(s)' would otherwise terminate a single
+    # first-')' match early).
+    cleaned = text
+    while True:
+        stripped = re.sub(r'\s*[(\uff08][^()\uff08\uff09]+[)\uff09]\s*', ' ', cleaned)
+        if stripped == cleaned:
+            break
+        cleaned = stripped
     cleaned = re.sub(r'\s+', ' ', cleaned).strip()
-    return cleaned, (text if notes else None)
+    had_parenthetical = cleaned != re.sub(r'\s+', ' ', text).strip()
+    return cleaned, (text if had_parenthetical else None)
 
 
 def strip_form_parens(text):

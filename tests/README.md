@@ -92,6 +92,13 @@ The asymmetry: `Corpora/**` changes trigger **validator** runs (because validato
 4. **No `--` in the XML comment body.** Rephrase any `--flag`-like wording (`--copy` → "copy mode", `--hard-remove-segmentation` → "the hard-remove-segmentation flag", etc.).
 5. If you cross ~15 files in the flat directory, consider subdividing (`tests/fixtures/dtd_violations/`, `tests/fixtures/punct_problems/`, etc.).
 
+## Audit-regression fixtures
+
+`tests/fixtures/audit_regressions/` holds minimal reproductions of audit
+findings whose fix landed in FormosanBank code — see the README there.
+An audit remediation is complete when its fixture and test exist
+(also stated as step 6 of the `audit-dev-repo` skill).
+
 ## Related design docs
 
 - [2026-05-28-a-test-infrastructure-design.md](../.claude/plans/2026-05-28-a-test-infrastructure-design.md) — the test suite design.

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- C028: double-encoded entity residue. After XML parse the texts below
+     contain literal '&lt;'-style sequences (the file stores '&amp;lt;'),
+     the signature of html.escape applied to already-escaped text (NTU
+     Bunun shipped 1,109 TRANSLs like this). The cleaner decodes to fixed
+     point; V132 is the validator twin that flags any residue sneaking
+     back in. S3 holds a bare ampersand that must be left alone. -->
+<TEXT id="c028" citation="t" BibTeX_citation="@t{c028}" copyright="t" xml:lang="ami" dialect="Coastal">
+    <S id="S1">
+        <FORM kindOf="original">a &amp;lt;um&amp;gt; b</FORM>
+        <TRANSL xml:lang="eng">dash &amp;#8212; here</TRANSL>
+    </S>
+    <S id="S2">
+        <FORM kindOf="original">x &amp;amp;lt; y</FORM>
+        <TRANSL xml:lang="eng">quote &amp;quot;word&amp;quot; end</TRANSL>
+    </S>
+    <S id="S3">
+        <FORM kindOf="original">salt &amp; pepper</FORM>
+        <TRANSL xml:lang="eng">AT&amp;T stays</TRANSL>
+    </S>
+</TEXT>

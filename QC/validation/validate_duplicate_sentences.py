@@ -2,13 +2,20 @@
 """
 validate_duplicate_sentences.py - Detect duplicate <S> sentences within a corpus.
 
-Emits two severities of finding (per the B9.5 plan):
-  HARD: two or more <S> elements within the SAME XML file whose chosen-tier
-        FORM text matches (whitespace-normalized).  These almost always signal
-        ingestion bugs.
-  SOFT: two or more <S> elements in DIFFERENT files of the SAME corpus root
-        whose chosen-tier FORM text matches.  These may be legitimate (same
-        proverb in two stories) or a sign of duplicated source material.
+Severity model (POL-022, ruled 2026-08-11):
+  Every duplicate group is SOFT by default — narratives and spontaneous
+  speech may legitimately repeat sentences, so the maintainer decides what
+  repetition means for a given corpus. Whether a corpus *should* be
+  duplicate-free is that corpus's own choice, expressed in its pipeline:
+  reference resources (dictionaries, wordlists, grammar example
+  collections) run a dedup step in CodeAndDocs/. When the corpus's
+  pipeline declares dedup (detected by grepping CodeAndDocs/ for
+  'remove_duplicate_sentences' or 'dedup'), every finding upgrades to
+  HARD: dedup should have removed it, so a leftover duplicate signals a
+  pipeline defect.
+
+  The within-file vs cross-file distinction (formerly the HARD/SOFT axis)
+  is preserved as the `scope` column for triage.
 
 Cross-corpus duplicate detection is *not* in scope here; for that, see
 QC/utilities/find_duplicate_sentences.py.
@@ -101,9 +108,10 @@ class Occurrence:
 
 @dataclass
 class Finding:
-    severity: str                          # "HARD" or "SOFT"
+    severity: str                          # "HARD" or "SOFT" (POL-022)
     normalized_text: str
     occurrences: list = field(default_factory=list)
+    scope: str = "within-file"             # "within-file" or "cross-file"
 
     @property
     def s_ids(self):
@@ -119,10 +127,60 @@ def _collect_xml_files(root_path: str):
     return sorted(p.rglob("*.xml"))
 
 
-def find_duplicates(root_path: str, kind_of: str = "standard"):
+# POL-022 (ruled 2026-08-11): whether duplicates are acceptable is a
+# per-corpus decision expressed in that corpus's own pipeline — reference
+# resources (dictionaries, wordlists, grammars) run a dedup step in
+# CodeAndDocs/; narratives don't. The validator therefore reads the
+# corpus's pipeline: if it declares dedup, leftover duplicates are HARD
+# (the pipeline should have removed them); otherwise everything is SOFT
+# and the maintainer decides.
+_DEDUP_TOKEN_RE = re.compile(r"remove_duplicate_sentences|dedup", re.IGNORECASE)
+_PIPELINE_SUFFIXES = {".sh", ".py", ".md", ".txt", ".json", ".yaml", ".yml", ""}
+
+
+def dedup_in_pipeline(scan_root: str) -> bool:
+    """True if the corpus owning scan_root declares a dedup step.
+
+    Ascends from scan_root looking for a directory with a CodeAndDocs/
+    sibling-or-child (the corpus root), then greps its script/doc files
+    for a dedup mention ('remove_duplicate_sentences' or 'dedup').
+    Returns False when no corpus root is found — e.g. a bare test dir.
+    """
+    current = Path(scan_root).resolve()
+    if current.is_file():
+        current = current.parent
+    for _ in range(4):
+        code_dir = current / "CodeAndDocs"
+        if code_dir.is_dir():
+            for path in sorted(code_dir.rglob("*")):
+                if not path.is_file() or path.suffix.lower() not in _PIPELINE_SUFFIXES:
+                    continue
+                try:
+                    if path.stat().st_size > 2_000_000:
+                        continue
+                    text = path.read_text(encoding="utf-8", errors="replace")
+                except OSError:
+                    continue
+                if _DEDUP_TOKEN_RE.search(text):
+                    return True
+            return False
+        if current.parent == current:
+            break
+        current = current.parent
+    return False
+
+
+def find_duplicates(root_path: str, kind_of: str = "standard",
+                    dedup_expected: bool = False):
     """Walk root_path, build (normalized_text -> [Occurrence]) index, return
-    Findings.  HARD when every occurrence in a group is in the same file; SOFT
-    when the group spans multiple files.
+    Findings.
+
+    Severity (POL-022): SOFT for every duplicate group by default — the
+    maintainer decides what repetition means for this corpus. When
+    ``dedup_expected`` is True (the corpus's CodeAndDocs pipeline declares
+    a dedup step), every group upgrades to HARD: dedup should have removed
+    it, so a leftover signals a pipeline defect. The within-file vs
+    cross-file distinction is preserved as ``Finding.scope`` for triage.
     """
     root_p = Path(root_path).resolve()
     if root_p.is_file():
@@ -139,17 +197,18 @@ def find_duplicates(root_path: str, kind_of: str = "standard"):
                 continue
             index[norm].append(Occurrence(file=rel, s_id=sid, raw_text=raw))
 
+    severity = "HARD" if dedup_expected else "SOFT"
     findings: list[Finding] = []
     for norm_text, occs in index.items():
         if len(occs) < 2:
             continue
         files = {o.file for o in occs}
-        severity = "HARD" if len(files) == 1 else "SOFT"
+        scope = "within-file" if len(files) == 1 else "cross-file"
         findings.append(Finding(severity=severity, normalized_text=norm_text,
-                                occurrences=list(occs)))
+                                occurrences=list(occs), scope=scope))
 
-    # Stable order: severity (HARD first), then by text, then by first occurrence.
-    findings.sort(key=lambda f: (0 if f.severity == "HARD" else 1,
+    # Stable order: within-file first, then by text, then first occurrence.
+    findings.sort(key=lambda f: (0 if f.scope == "within-file" else 1,
                                  f.normalized_text,
                                  f.occurrences[0].file,
                                  f.occurrences[0].s_id))
@@ -179,20 +238,23 @@ def _resolve_scan_root(args, parser) -> str:
 def _write_csv(findings, output_path: str):
     with open(output_path, "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
-        w.writerow(["severity", "normalized_text", "file", "s_id", "raw_text"])
+        w.writerow(["severity", "scope", "normalized_text", "file", "s_id",
+                    "raw_text"])
         for fnd in findings:
             for occ in fnd.occurrences:
-                w.writerow([fnd.severity, fnd.normalized_text, occ.file,
-                            occ.s_id, occ.raw_text])
+                w.writerow([fnd.severity, fnd.scope, fnd.normalized_text,
+                            occ.file, occ.s_id, occ.raw_text])
 
 
-def _summarize(findings):
-    n_hard = sum(1 for f in findings if f.severity == "HARD")
-    n_soft = sum(1 for f in findings if f.severity == "SOFT")
-    n_hard_occ = sum(len(f.occurrences) for f in findings if f.severity == "HARD")
-    n_soft_occ = sum(len(f.occurrences) for f in findings if f.severity == "SOFT")
-    print(f"Duplicate sentence findings: HARD={n_hard} groups ({n_hard_occ} occurrences), "
-          f"SOFT={n_soft} groups ({n_soft_occ} occurrences)")
+def _summarize(findings, dedup_expected: bool = False):
+    n_within = sum(1 for f in findings if f.scope == "within-file")
+    n_cross = sum(1 for f in findings if f.scope == "cross-file")
+    severity = "HARD" if dedup_expected else "SOFT"
+    note = (" (corpus pipeline declares dedup — leftovers are pipeline "
+            "defects)" if dedup_expected else
+            " (no dedup step declared — maintainer's call per POL-022)")
+    print(f"Duplicate sentence findings [{severity}]{note}: "
+          f"within-file={n_within} groups, cross-file={n_cross} groups")
 
 
 def main(argv=None) -> int:
@@ -229,18 +291,24 @@ def main(argv=None) -> int:
         # remains scoped within a corpus (cross-corpus is out of scope).
         corpora_root = Path(scan_root).resolve()
         findings = []
+        dedup_expected = False
         for corpus_dir in sorted(corpora_root.iterdir()):
             if not corpus_dir.is_dir():
                 continue
             xml_dir = corpus_dir / "XML" / args.language
             if not xml_dir.is_dir():
                 continue
-            findings.extend(find_duplicates(str(xml_dir), kind_of=args.tier))
+            corpus_dedup = dedup_in_pipeline(str(xml_dir))
+            dedup_expected = dedup_expected or corpus_dedup
+            findings.extend(find_duplicates(str(xml_dir), kind_of=args.tier,
+                                            dedup_expected=corpus_dedup))
     else:
-        findings = find_duplicates(scan_root, kind_of=args.tier)
+        dedup_expected = dedup_in_pipeline(scan_root)
+        findings = find_duplicates(scan_root, kind_of=args.tier,
+                                   dedup_expected=dedup_expected)
 
     _write_csv(findings, args.output)
-    _summarize(findings)
+    _summarize(findings, dedup_expected=dedup_expected)
     print(f"Findings CSV: {args.output}")
 
     if args.verbose:

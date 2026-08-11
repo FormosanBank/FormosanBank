@@ -52,8 +52,13 @@ from QC.validation.rules import gloss_scrape  # noqa: E402
 
 # Directories a dev repo conventionally builds its XML into.
 _XML_DIR_CANDIDATES = ("Final_XML", "XML", "xml")
-# Source documents live here, or at the repo root.
-_SOURCE_DIR_CANDIDATES = ("data", "raw_data", "docs", "sources")
+# Source documents live here, or at the repo root. Private/ matters:
+# copyrighted source PDFs conventionally live under Private/source/ so they
+# stay out of public git history.
+_SOURCE_DIR_CANDIDATES = (
+    "data", "raw_data", "docs", "sources", "source",
+    "Private", "Private/source", "Private/data",
+)
 _NAME_RE = re.compile(r"^g(\d+)_(.+)$")
 
 

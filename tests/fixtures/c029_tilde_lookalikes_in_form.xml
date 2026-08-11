@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- C029: tilde look-alikes. LaTeX-typeset PDFs emit the math TILDE
+     OPERATOR U+223C (and occasionally the CJK wave dash U+301C) where
+     the reduplication convention is ASCII '~' U+007E — e.g. Bril 2024's
+     'RED∼stem' (15 sites in the Amis-Adversative dev repo). Canonical
+     per POL-013: ASCII '~'. -->
+<TEXT id="c029" citation="t" BibTeX_citation="@t{c029}" copyright="t" xml:lang="ami" dialect="Coastal">
+    <S id="S1">
+        <FORM kindOf="original">Pa∼pakat</FORM>
+        <TRANSL xml:lang="eng">RED∼walk</TRANSL>
+    </S>
+    <S id="S2">
+        <FORM kindOf="original">ma〜kero</FORM>
+        <TRANSL xml:lang="eng">keeps dancing</TRANSL>
+    </S>
+</TEXT>

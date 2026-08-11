@@ -27,7 +27,9 @@
 |---|---|---|
 | `validate_xml.py` (XSD) | {{XML_RESULT}} | {{XML_NOTES}} |
 | `validate_text.py` (punct + character set) | {{TEXT_RESULT}} | {{TEXT_NOTES}} |
+| `validate_duplicate_sentences.py` (same-file dupes) | {{DUPES_RESULT}} | {{DUPES_NOTES}} |
 | `validate_glosses.py` | {{GLOSSES_RESULT_OR_NA}} | {{GLOSSES_NOTES}} |
+| `validate_audio.py` | {{AUDIO_RESULT_OR_NA}} | {{AUDIO_NOTES}} <!-- "skipped — audio not local" if applicable --> |
 
 ## Soft checks (info-only)
 
@@ -35,6 +37,13 @@
 |---|---|---|
 | Orthography similarity vs reference | {{ORTHO_SIM}} | Thresholds uncalibrated (B Phase B4 work) |
 | Vocabulary overlap vs reference | {{VOCAB_OVERLAP}} | Cross-genre comparisons may be noisy |
+| Cross-file duplicate sentences (within corpus) | {{DUPES_SOFT_COUNT}} | May be legitimate (repeated proverbs etc.) |
+
+## Dialect distribution
+
+<!-- Paste the (xml:lang, dialect) -> count table from 05f_validate_dialect.log.
+     Flag anything odd (missing dialects, leakage across languages) under
+     "Unusual things surfaced". -->
 
 ## Unusual things surfaced
 
