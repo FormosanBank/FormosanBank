@@ -273,7 +273,7 @@ def add_word_structure(
         ET.SubElement(
             word_element,
             "TRANSL",
-            {"xml:lang": "eng", "kindOf": "original"},
+            {"xml:lang": "eng"},
         ).text = gloss
         morphemes, canonical_gloss = morpheme_alignment(
             record, word_index, word, gloss, reviewed
@@ -296,7 +296,7 @@ def add_word_structure(
             ET.SubElement(
                 morpheme,
                 "TRANSL",
-                {"xml:lang": "eng", "kindOf": "original"},
+                {"xml:lang": "eng"},
             ).text = gloss_part
     return alignment_note
 

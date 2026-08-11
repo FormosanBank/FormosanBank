@@ -10,7 +10,7 @@ This corpus accounts for all 39 reviewed source units on the article's 11 pages.
 
 ## Reproducibility
 
-The XML is generated from the reviewed inputs under `CodeAndDocs/raw_data/`. Source coverage and output alignments live under `CodeAndDocs/evidence/`. The build preserves original tiers, gives every W at least one M, keeps source glosses as `kindOf="original"`, and adds reviewed canonical infix glosses as `kindOf="standard"`. The corpus-scoped source profile gives the sole `ŋ` to `ng` standard conversion a passing transitive audit.
+The XML is generated from the reviewed inputs under `CodeAndDocs/raw_data/`. Source coverage and output alignments live under `CodeAndDocs/evidence/`. The build preserves original FORM tiers, gives every W at least one M, keeps source gloss TRANSL elements untiered, and adds reviewed canonical infix glosses as `kindOf="standard"`. The corpus-scoped source profile gives the sole `ŋ` to `ng` standard conversion a passing transitive audit.
 
 From the FormosanBank repository root, run:
 

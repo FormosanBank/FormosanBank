@@ -98,7 +98,7 @@ def check_word_structure(sentence: ET.Element, record: dict[str, str]) -> None:
         morpheme_rows, canonical_gloss = build_xml.morpheme_alignment(
             record, word_index, original, gloss, reviewed
         )
-        expected_word_glosses = [("original", gloss)]
+        expected_word_glosses = [("", gloss)]
         if canonical_gloss:
             expected_word_glosses.append(("standard", canonical_gloss))
         translations = word.findall("TRANSL")
@@ -133,7 +133,7 @@ def check_word_structure(sentence: ET.Element, record: dict[str, str]) -> None:
             require(
                 len(translations) == 1
                 and (translations[0].text or "") == m_gloss
-                and translations[0].get("kindOf") == "original",
+                and translations[0].get("kindOf") is None,
                 "M gloss mismatch",
             )
     require(record["word_structure"] == alignment_note, "Word audit drift")
@@ -149,6 +149,10 @@ def main() -> None:
     record_by_id = {record["id"]: record for record in records}
 
     root = ET.parse(build_xml.FINAL_XML).getroot()
+    require(
+        not root.findall(".//TRANSL[@kindOf='original']"),
+        "TRANSL elements must not use kindOf=original",
+    )
     sentences = root.findall("S")
     sentence_by_id = {sentence.get("id", ""): sentence for sentence in sentences}
     require(len(sentence_by_id) == len(sentences) == 28, "Expected 28 unique S records")
