@@ -110,7 +110,7 @@ def add_translation(
 
 
 def add_source_gloss(parent: ET.Element, value: str) -> None:
-    add_translation(parent, value, kind_of="original")
+    add_translation(parent, value)
     standard = standardized_gloss(value)
     if standard is not None:
         add_translation(parent, standard, kind_of="standard", version="alt")

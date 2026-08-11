@@ -147,14 +147,19 @@ def main() -> None:
     if any(not word.findall("M") for word in root.findall(".//W")):
         errors.append("one or more words lack M under POL-023")
     if any(
-        word.find("TRANSL[@kindOf='original']") is None for word in root.findall(".//W")
+        (translation := word.find("TRANSL")) is None
+        or translation.get("kindOf") is not None
+        for word in root.findall(".//W")
     ):
-        errors.append("one or more words lack an original source gloss")
+        errors.append("one or more words lack an untiered source gloss")
     if any(
-        morph.find("TRANSL[@kindOf='original']") is None
+        (translation := morph.find("TRANSL")) is None
+        or translation.get("kindOf") is not None
         for morph in root.findall(".//M")
     ):
-        errors.append("one or more morphemes lack an original source gloss")
+        errors.append("one or more morphemes lack an untiered source gloss")
+    if root.findall(".//TRANSL[@kindOf='original']"):
+        errors.append("one or more TRANSL tiers use forbidden kindOf=original")
     if any(
         not tier_is_complete(node)
         for node in root.findall(".//S") + root.findall(".//W") + root.findall(".//M")
@@ -220,7 +225,7 @@ def main() -> None:
         errors.append("source-underanalyzed Pa-fli does not have exactly one M")
     elif (
         node_text(pa_fli.find("M/FORM[@kindOf='original']")) != "Pa-fli"
-        or node_text(pa_fli.find("M/TRANSL[@kindOf='original']")) != "give"
+        or node_text(pa_fli.find("M/TRANSL")) != "give"
     ):
         errors.append("Pa-fli whole-word M does not preserve the source analysis")
 
@@ -228,10 +233,10 @@ def main() -> None:
     cau_morph = root.find("S[@id='s32b']/W[@id='s32bw0']/M[@id='s32bw0m1']")
     if (
         cau_word is None
-        or node_text(cau_word.find("TRANSL[@kindOf='original']")) != "UV-CaU-give"
+        or node_text(cau_word.find("TRANSL")) != "UV-CaU-give"
         or node_text(cau_word.find("TRANSL[@kindOf='standard']")) != "UV-CAU-give"
         or cau_morph is None
-        or node_text(cau_morph.find("TRANSL[@kindOf='original']")) != "CaU"
+        or node_text(cau_morph.find("TRANSL")) != "CaU"
         or node_text(cau_morph.find("TRANSL[@kindOf='standard']")) != "CAU"
     ):
         errors.append("source CaU and additive standard CAU glosses are incomplete")
