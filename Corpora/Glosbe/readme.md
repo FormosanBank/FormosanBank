@@ -43,9 +43,35 @@ Final lexical result:
 
 Reference status is informational: 529 translations have an unattested source form, 528 have no applicable gloss mapping, 209 are mapping-supported, and 39 map to a different reference sense. All four statuses remain in XML. See `CodeAndDocs/data/processed/ildrf_glosbe_lexical_audit_report.md` for provenance, reference-file hashes, rule definitions, and pair counts.
 
+## Cleaning and Quote Correction
+
+Before standardization, a shared cleaning pass normalizes punctuation and
+Unicode debris in the original tier and translations: dash look-alikes
+(em/en dashes) become `-`, non-breaking spaces become spaces, and HTML
+entity residue is decoded. The source spelling is not changed.
+
+**Notes for data users:**
+
+- In the Amis files, the letter `'` (the glottal stop) is also used by the
+  source as a quotation mark. Disambiguating apostrophe vs. quotation mark
+  in the Amis data was done **automatically** (a classifier compares each
+  sentence against its translations and an attested-word list and rewrites
+  apostrophes it judges to be quotation marks to `"`). Occasional false
+  positives are possible and misses are certain — some real quotation
+  marks remain written as `'`, and a few glottal-stop letters may have
+  been rewritten to `"`.
+- Every correction is logged with the full before/after sentence text in
+  [`CodeAndDocs/quote_corrections.csv`](CodeAndDocs/quote_corrections.csv).
+- The XML exactly as it was before any automated correction first touched
+  it is preserved in `CodeAndDocs/pre_correction_snapshot/`. Because the
+  initial scrape cannot be re-run (see [Reproducibility](#reproducibility)),
+  that snapshot is the pre-correction baseline.
+- Atayal and Saisiyat go through the same classifier; it made no changes
+  there. Truku contains no apostrophes and is not evaluated.
+
 ## Standardization and Phonology
 
-Each `<S>` carries three sentence-tier layers: `FORM kindOf="original"` (the source spelling, preserved exactly), `FORM kindOf="standard"` (FormosanBank's Ortho113 orthography), and `PHON` (IPA) on **both** tiers.
+Each `<S>` carries three sentence-tier layers: `FORM kindOf="original"` (the source spelling, cleaned as described above), `FORM kindOf="standard"` (FormosanBank's Ortho113 orthography), and `PHON` (IPA) on **both** tiers.
 
 Glosbe is crowd-sourced, so the dialect of each entry is generally unknown and a single file likely mixes dialects. We therefore assumed the following source orthographies and standardized each language to Ortho113:
 
@@ -56,27 +82,35 @@ Glosbe is crowd-sourced, so the dialect of each entry is generally unknown and a
 | Truku (`trv`) | Ortho94 | `Seediq_94_113.tsv`, `Truku` column | `dialect="Truku"` (Truku, not Seediq) |
 | Saisiyat (`xsy`) | Ortho94 | `Saisiyat_94_113.tsv` (single `standard` column) | single dialect |
 
-No Formosan orthography uses accents phonemically, so accents (e.g. Glosbe's stress marks on Truku `dálix`) are **deleted from the standard tier** during standardization; the original tier keeps them exactly. IPA is generated for the standard tier from `Orthographies/Ortho113/<Language>.tsv` and for the original tier from the source orthography above. For the unknown-dialect Amis and Atayal originals, a `default` column in `Orthographies/Ortho94/Amis.tsv` and `Orthographies/Church/Atayal.tsv` supplies the IPA.
+No Formosan orthography uses accents phonemically, so accents (e.g. Glosbe's stress marks on Truku `dálix`) are **deleted from the standard tier** during standardization; the original tier keeps them exactly. IPA is generated for the standard tier from `Orthographies/Ortho113/<Language>.tsv` (including that language's dialect-scoped pronunciation rules, e.g. Truku's) and for the original tier from the source orthography above. For the unknown-dialect Amis and Atayal originals, a `default` column in `Orthographies/Ortho94/Amis.tsv` and `Orthographies/Church/Atayal.tsv` supplies the IPA.
 
-To rebuild the standard tier and both-tier phonology from the published `original` tier, run from the FormosanBank repo root after `source .venv/bin/activate`:
+## Rebuilding the XML
+
+[`CodeAndDocs/make_xml.sh`](CodeAndDocs/make_xml.sh) reruns the whole
+post-scrape pipeline over `XML/` — everything derived from the published
+original tier. Its steps, in order:
+
+1. **Cleaning + quote correction** (`QC/cleaning/clean_xml.py` over
+   `XML/`): the punctuation/Unicode cleanup and the Amis
+   apostrophe-vs-quotation-mark correction described above. New
+   corrections append to `CodeAndDocs/quote_corrections.csv`.
+2. **Standardization** (`QC/utilities/standardize.py`, once per language):
+   rebuilds the standard tier from the cleaned original tier using the
+   conversion tables in the table above; strips accents from the standard
+   tier only.
+3. **Phonology** (`QC/utilities/add_phonology.py`, once per language):
+   regenerates IPA on both tiers (standard from Ortho113, original from
+   the source orthography).
+
+Run it from anywhere; it locates the FormosanBank repo from its own path.
+Set `PYTHON` to override the interpreter (defaults to the repo `.venv`)
+and `BANK` to point at a different FormosanBank checkout:
 
 ```bash
-CT=Orthographies/ConversionTables
-
-# Standardize each language to Ortho113 (accents are stripped from the standard tier)
-python QC/utilities/standardize.py --tsv_path $CT/Amis_94_113.tsv      --target_column Coastal  --corpora_path Corpora/Glosbe/XML/ami
-python QC/utilities/standardize.py --tsv_path $CT/Atayal_Church_113.tsv --target_column standard --corpora_path Corpora/Glosbe/XML/tay
-python QC/utilities/standardize.py --tsv_path $CT/Seediq_94_113.tsv     --target_column Truku    --corpora_path Corpora/Glosbe/XML/trv
-python QC/utilities/standardize.py --tsv_path $CT/Saisiyat_94_113.tsv   --target_column standard --corpora_path Corpora/Glosbe/XML/xsy
-
-# Add IPA phonology to both tiers (standard from Ortho113; original from the source orthography)
-python QC/utilities/add_phonology.py --orthography Ortho94 --target_column Coastal --corpora_path Corpora/Glosbe/XML/ami
-python QC/utilities/add_phonology.py --orthography Church                          --corpora_path Corpora/Glosbe/XML/tay
-python QC/utilities/add_phonology.py --orthography Ortho94                         --corpora_path Corpora/Glosbe/XML/trv
-python QC/utilities/add_phonology.py --orthography Ortho94                         --corpora_path Corpora/Glosbe/XML/xsy
+PYTHON=/path/to/python Corpora/Glosbe/CodeAndDocs/make_xml.sh
 ```
 
-`standardize.py` strips accents from the standard tier only in TSV mode (used above); it requires the accent-stripping build of `standardize.py`, the `Amis_94_113.tsv` table, and the `default` columns noted above.
+All steps are idempotent; rerunning the script is safe.
 
 ## Reproducibility
 
@@ -84,9 +118,9 @@ The former development repository [FormosanBank/Formosan-Glosbe](https://github.
 
 Reproducibility is partial, by layer:
 
-- **Standard tier and both-tier phonology** — fully reproducible from the published `original` tier with the commands in [Standardization and Phonology](#standardization-and-phonology) above.
+- **Cleaning, standard tier, and both-tier phonology** — fully reproducible from the published `original` tier with [`CodeAndDocs/make_xml.sh`](CodeAndDocs/make_xml.sh) (see [Rebuilding the XML](#rebuilding-the-xml) above).
 - **Restored Amis-Chinese translations** — reproducible from the committed reviewed source (`CodeAndDocs/work/reference_glosbe/amis_glosbe_traditional.xml` and `work/json/`), which the pipeline merges into the `ami/zh` translation memory.
-- **The initial scrape** (Glosbe lexical and English translation-memory rows) — **not** reproducible from this checkout. It is a retained snapshot of a 2026 Glosbe crawl; the raw crawl cache and processed `.jsonl` sidecars are not published, and the former development repository is deprecated. Re-crawling Glosbe would yield different data.
+- **The initial scrape** (Glosbe lexical and English translation-memory rows) — **not** reproducible from this checkout. It is a retained snapshot of a 2026 Glosbe crawl; the raw crawl cache and processed `.jsonl` sidecars are not published, and the former development repository is deprecated. Re-crawling Glosbe would yield different data. `CodeAndDocs/pre_correction_snapshot/` therefore preserves the XML as it stood before automated corrections first modified it.
 
 The lexical ILRDF audit (`glosbe_pipeline.py rebuild_lexical_reference_audit`) additionally requires the sibling `Formosan-Zheng-ACL-2024` reference repository; adjust `ildrf_reference_lexicon.derived_repo` in `scripts/config.yaml` if it is elsewhere. `config.yaml` writes generated XML to `../XML`, matching this repository's standard corpus layout.
 
