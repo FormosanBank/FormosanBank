@@ -215,10 +215,16 @@ example collections, repeats should be excluded — a reference resource
 gains nothing from the same entry twice. Nuance from the Latham 2026-08
 call: a wordlist repeat with *distinct provenance* (attested from a
 different source variety or page) is informative attestation, not a
-repeat, and may be kept deliberately. Implementation follow-up:
-`validate_duplicate_sentences` currently applies one severity everywhere;
-it should scope by corpus type (duplicates in reference corpora
-actionable, in narratives not findings at all).
+repeat, and may be kept deliberately.
+**Mechanism (ruled 2026-08-11 — deliberately no corpus-type registry):**
+whether a corpus should be duplicate-free is that corpus's own choice,
+expressed in its pipeline — reference resources include a dedup step
+(`remove_duplicate_sentences.py`) in their `CodeAndDocs/` reproduction
+pipeline; narratives don't. `validate_duplicate_sentences` reports every
+duplicate as **SOFT** (maintainer decides), *upgrading to HARD only when
+the corpus's CodeAndDocs declares a dedup step* — a leftover duplicate
+then signals a pipeline defect, not a content question. The within-file
+vs cross-file distinction survives as the finding's `scope`.
 
 ### POL-023 · RULED · 2026-08-10 · M-tier presence
 In an XML file where any W has two or more M children (i.e. the file is
@@ -319,10 +325,9 @@ log. Source ruling: `feature/quote-glottal-classifier`'s
 quote-glottal-correction spec (its `'`→`"` rewrite is the first
 non-self-correcting mutation of the original tier). Companion to
 POL-030, which covers *hand* edits; this covers *automated* corrections.
-**Merge-time reconciliation needed:** that branch logs corrections as
-`c024`/`c025` rows in `cleaner_warnings.csv` and commits the file — but
-`c024` already numbers an existing cleaner behavior, and POL-033 makes
-`cleaner_warnings.csv` an ephemeral per-run report (the rewrite fix
-would overwrite a committed log on the next run). The durable
-correction log must move to its own committed file (and the codes
-renumber past c029) when the branches merge.
+**Reconciled at merge (2026-08-10):** original-tier rewrites are logged
+as `c031` (corrected `'`→`"`) and `c032` (stranded-repair) rows in a
+dedicated, durable **`quote_corrections.csv`** (append-only across runs;
+commit it after correcting runs) — distinct from `cleaner_warnings.csv`,
+which stays an ephemeral per-run report per POL-033 and carries only the
+`c030` ambiguity flags.
