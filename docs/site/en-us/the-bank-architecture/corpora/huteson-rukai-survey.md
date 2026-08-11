@@ -4,9 +4,9 @@ This text corpus contains the 29 Rukai imitation-test sentences in Appendix B
 of Greg Huteson's 2003 sociolinguistic survey: 14 from Maga and 15 from Tona.
 FormosanBank uses the canonical dialect labels Maolin for Maga and Dona for
 Tona. Each sentence includes source-faithful and Ortho113 forms, standard
-phonology, an English translation, and printed-page provenance. Word and
-morpheme tiers are included only where the published alignment supports them.
-No audio is included.
+phonology, an English translation, and printed-page provenance. Every word has
+a morpheme tier under POL-023. Eight source-blank gloss cells are marked as
+reviewed unknowns rather than assigned invented analyses. No audio is included.
 
 ***
 
@@ -22,8 +22,8 @@ No audio is included.
 | Translated words |  |  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 54 | 48 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 | 0 |
-| Morphologically segmented | 23 | 23 |
-| Glossed words | 23 | 23 |
+| Morphologically segmented | 54 | 48 |
+| Glossed words | 54 | 48 |
 
 ***
 
