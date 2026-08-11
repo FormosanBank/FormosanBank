@@ -21,6 +21,11 @@ import sys
 from collections.abc import Callable, Iterable
 from pathlib import Path
 
+_DISC_HERE = Path(__file__).resolve()
+if str(_DISC_HERE.parents[2]) not in sys.path:
+    sys.path.insert(0, str(_DISC_HERE.parents[2]))
+from QC.validation._discovery import discover_xml_files as _discover_xml_files  # noqa: E402
+
 # Make the QC package importable when invoked as a script.
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(_REPO_ROOT) not in sys.path:
@@ -42,9 +47,7 @@ Rule = Callable[[etree._ElementTree, Path, CorpusIndex | None], list[Finding]]
 
 def discover_xml_files(root: Path) -> list[Path]:
     """Return every .xml file under root, recursively."""
-    if root.is_file():
-        return [root] if root.suffix == ".xml" else []
-    return sorted(p for p in root.rglob("*.xml"))
+    return _discover_xml_files(root)
 
 
 def discover_corpus_canonical_xml(corpus_root: Path) -> list[Path]:

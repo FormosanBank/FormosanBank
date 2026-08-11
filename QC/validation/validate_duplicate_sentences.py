@@ -58,6 +58,11 @@ from collections import defaultdict
 from dataclasses import dataclass, field
 from pathlib import Path
 
+_DISC_HERE = Path(__file__).resolve()
+if str(_DISC_HERE.parents[2]) not in sys.path:
+    sys.path.insert(0, str(_DISC_HERE.parents[2]))
+from QC.validation._discovery import discover_xml_files as _discover_xml_files  # noqa: E402
+
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -122,9 +127,9 @@ def _collect_xml_files(root_path: str):
     p = Path(root_path)
     if p.is_file() and p.suffix.lower() == ".xml":
         return [p]
-    if not p.is_dir():
+    if p.is_file():
         return []
-    return sorted(p.rglob("*.xml"))
+    return _discover_xml_files(p)
 
 
 # POL-022 (ruled 2026-08-11): whether duplicates are acceptable is a

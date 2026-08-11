@@ -365,3 +365,16 @@ and load them from there, through exactly one loader. Raised by the ISO
 table had diverged (`bzg` present in one, `pzh` in another).
 Implemented by: `languages.csv` + `QC/corpus_counts.load_language_codes`
 (the other three copies now import from it).
+
+### POL-040 · RULED · 2026-08-12 · language identity registry
+`languages.csv` (repo root) is the canonical registry of ISO 639-3 code →
+language name; every consumer loads it through
+`QC/corpus_counts.load_language_codes` (POL-039). Its `Language` values
+use the same spellings as `dialects.csv` and `standards.csv` — the three
+registries name languages identically. Consistency is checked by
+`validate_registries.py` (V150: every language has a standards.csv row;
+V155: dialects.csv↔languages.csv naming, unique lowercase ISO codes;
+SOFT per POL-034). Adding a language = one `languages.csv` row, plus a
+`standards.csv` row (blank scheme until a standard is designated) and
+`dialects.csv` rows if multi-dialect. Documented for end users on the
+GitBook "Formosan Dialects" page.

@@ -33,6 +33,11 @@ import sys
 from collections import Counter
 from pathlib import Path
 
+_DISC_HERE = Path(__file__).resolve()
+if str(_DISC_HERE.parents[2]) not in sys.path:
+    sys.path.insert(0, str(_DISC_HERE.parents[2]))
+from QC.validation._discovery import discover_xml_files as _discover_xml_files  # noqa: E402
+
 from lxml import etree
 
 _XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
@@ -42,9 +47,7 @@ _PARSE_ERROR = "(parse-error)"
 
 
 def _discover_xml(path: Path) -> list[Path]:
-    if path.is_file():
-        return [path] if path.suffix == ".xml" else []
-    return sorted(path.rglob("*.xml"))
+    return _discover_xml_files(path)
 
 
 def collect_dialects(files: list[Path]) -> Counter[tuple[str, str]]:

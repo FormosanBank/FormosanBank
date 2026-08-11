@@ -35,6 +35,12 @@ def _mini_repo(tmp_path: Path) -> Path:
         "Puyuma,Nanwang,南王,nanw1234,\n"
         "Amis,Coastal,海岸,cent2104,\n",
         encoding="utf-8")
+    # languages.csv mirrors the live ISO map so the mini repo carries the
+    # full registry set the validator reads (V155, POL-040).
+    lang_rows = "".join(
+        f"{code},{name},\n" for code, name in sorted(ISO_TO_LANGUAGE.items()))
+    (root / "languages.csv").write_text(
+        "ISO639-3,Language,Notes\n" + lang_rows, encoding="utf-8")
     return root
 
 
@@ -150,3 +156,24 @@ def test_comma_separated_sidecar_dialects_all_checked(tmp_path):
     rows = [r for r in _findings(out) if r["rule_id"] == "V153"]
     assert [r["character"] for r in rows] == ["Nanwan"], (
         f"only the genuinely unknown name should fire; got {rows!r}")
+
+
+def test_dialects_language_missing_from_languages_registry_is_soft(tmp_path):
+    root = _mini_repo(tmp_path)
+    with open(root / "dialects.csv", "a", encoding="utf-8") as f:
+        f.write("Atlantean,Deep,深,atla1234,\n")
+    out = tmp_path / "f.csv"
+    assert _run(root, out).returncode == 0
+    rows = _findings(out)
+    assert any(r["rule_id"] == "V155" and "Atlantean" in r["message"]
+               for r in rows)
+
+
+def test_languages_csv_duplicate_or_uppercase_code_is_soft(tmp_path):
+    root = _mini_repo(tmp_path)
+    with open(root / "languages.csv", "a", encoding="utf-8") as f:
+        f.write("AMI,Amis,\n")     # uppercase AND duplicate of ami
+    out = tmp_path / "f.csv"
+    assert _run(root, out).returncode == 0
+    v155 = [r for r in _findings(out) if r["rule_id"] == "V155"]
+    assert len(v155) >= 2          # not-lowercase + duplicate

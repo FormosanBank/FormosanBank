@@ -31,6 +31,7 @@ TITLES = {
     "V152": "conversion_table_dialect_unknown",
     "V153": "rules_sidecar_dialect_unknown",
     "V154": "legacy_variant_notation_in_profile",
+    "V155": "languages_registry_inconsistent",
 }
 _NON_DIALECT_COLUMNS = {"original", "standard"}
 
@@ -75,6 +76,40 @@ def check(repo_root: Path) -> list:
                          f"has no standards.csv row (a blank scheme means "
                          f"'no standard yet'; a missing row is drift)"),
                 path=standards_path, language=language))
+
+    # V155: languages.csv <-> dialects.csv consistency (POL-040). The two
+    # registries must name languages identically, and ISO codes must be
+    # unique lowercase — languages.csv is the single ISO->language source
+    # every consumer loads (POL-039).
+    languages_path = repo_root / "languages.csv"
+    lang_rows = _read_two_column_csv(languages_path)
+    lang_names = {name for _, name in lang_rows if name}
+    seen_codes: set[str] = set()
+    for code, name in lang_rows:
+        if code != code.lower():
+            findings.append(Finding(
+                rule_id="V155", severity=Severity.SOFT,
+                message=(f"V155 SOFT: languages.csv ISO code {code!r} is "
+                         f"not lowercase"),
+                path=languages_path, language=name))
+        if code.lower() in seen_codes:
+            findings.append(Finding(
+                rule_id="V155", severity=Severity.SOFT,
+                message=(f"V155 SOFT: languages.csv ISO code {code!r} "
+                         f"appears more than once"),
+                path=languages_path, language=name))
+        seen_codes.add(code.lower())
+    dialect_langs = {lang for lang, _ in _read_two_column_csv(dialects_path)}
+    # dialects.csv names Seediq's sibling Truku only implicitly (trv);
+    # "Truku" as a Language row is fine because resolve_language emits it.
+    known_names = lang_names | {"Truku"}
+    for lang in sorted(dialect_langs - known_names):
+        findings.append(Finding(
+            rule_id="V155", severity=Severity.SOFT,
+            message=(f"V155 SOFT: dialects.csv names language {lang!r} "
+                     f"which has no languages.csv row — the registries "
+                     f"must name languages identically (POL-040)"),
+            path=dialects_path, language=lang))
 
     # V151: non-blank scheme folders exist.
     for language, scheme in sorted(standards.items()):

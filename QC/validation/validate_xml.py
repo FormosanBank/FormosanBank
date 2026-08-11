@@ -30,6 +30,11 @@ import sys
 from collections.abc import Callable, Iterable
 from pathlib import Path
 
+_DISC_HERE = Path(__file__).resolve()
+if str(_DISC_HERE.parents[2]) not in sys.path:
+    sys.path.insert(0, str(_DISC_HERE.parents[2]))
+from QC.validation._discovery import discover_xml_files as _discover_xml_files  # noqa: E402
+
 # When invoked as `python QC/validation/validate_xml.py ...`, the repo root
 # is not on sys.path. Add it so the QC.* package imports resolve correctly
 # whether the file is run as a script or imported as a module.
@@ -62,9 +67,7 @@ def discover_xml_files(root: Path) -> list[Path]:
     Used for by_path mode (user-specified). The caller is responsible
     for narrowing if they want corpus-canonical files only.
     """
-    if root.is_file():
-        return [root] if root.suffix == ".xml" else []
-    return sorted(p for p in root.rglob("*.xml"))
+    return _discover_xml_files(root)
 
 
 def discover_corpus_canonical_xml(corpus_root: Path) -> list[Path]:
