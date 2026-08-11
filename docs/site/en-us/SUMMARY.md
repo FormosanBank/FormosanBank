@@ -12,6 +12,7 @@
 ## The Bank Architecture
 
 * [FormosanBank XML Format](the-bank-architecture/formosanbank-xml-format.md)
+* [FormosanBank Policies](the-bank-architecture/policies.md)
 * [Formosan Dialects](the-bank-architecture/formosan-dialects.md)
 * [Corpora](the-bank-architecture/corpora/README.md)
   * [ePark](the-bank-architecture/corpora/epark.md)
@@ -53,6 +54,7 @@
     * [validate\_vocabulary.py](the-bank-architecture/developers/qc-pipeline/validate-vocabulary.md)
     * [validate\_duplicate\_sentences.py](the-bank-architecture/developers/qc-pipeline/validate-duplicate-sentences.md)
     * [validate\_audio.py](the-bank-architecture/developers/qc-pipeline/validate-audio.md)
+    * [validate\_port\_readiness.py](the-bank-architecture/developers/qc-pipeline/validate-port-readiness.md)
     * [Manual edits](the-bank-architecture/developers/qc-pipeline/manual-edits.md)
     * [clean\_xml.py](the-bank-architecture/developers/qc-pipeline/clean-xml.md)
     * [clean\_audio.py](the-bank-architecture/developers/qc-pipeline/clean-audio.md)

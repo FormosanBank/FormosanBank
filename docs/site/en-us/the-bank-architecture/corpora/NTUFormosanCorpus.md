@@ -100,6 +100,8 @@ The original corpus has a great deal of discourse coding for Sentences and Stori
 
 * The repo containing this corpus in FormosanBank as well as the code to reconstruct the corpus can be found [here](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/NTUFormosanCorpus).
 
+* The corpus is fully regenerable from the archived source data: `CodeAndDocs/make.sh` runs the entire pipeline (parsing, cleaning, orthography standardization, phonology, and every recorded repair — including the one-off hand-verified corrections, which are stored as script tables so they survive regeneration) in order. The step-by-step documentation is in the corpus [README](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/NTUFormosanCorpus/readme.md).
+
 ***
 
 ## Notes
@@ -142,7 +144,7 @@ The original corpus has a great deal of discourse coding for Sentences and Stori
 
 * In the Kanakanavu texts, "tia'apacangcangarʉʉn" was often written as one word, whereas it appears that "tia 'apacangcangarʉʉn" is more likely based on glossing. We made this change in parse_grammar.py.
 
-* In the Kanakanavu sentence subcorpus, "∅" appears 31 times. Its interpretation is unclear. 
+* The Kanakanavu sentence subcorpus writes "∅" inside some words (31 occurrences), and the Sakizaya grammar writes a null prefix slot "ø". These are the linguists' null-morpheme annotation: a morpheme that is present in the analysis but has no phonological content (e.g. a phonologically empty relativizer, glossed REL). FormosanBank's convention (per the 2026-08 null-morpheme specification) canonicalizes the marker glyph to `∅` (U+2205) and keeps it in the original tier and on the word/morpheme tiers — where the morphological analysis lives — while removing it from sentence-level standard FORMs; in the PHON tier null morphemes are silent (a wholly-null morpheme carries PHON `∅` so the tier is never empty). The currently published XML predates parts of this convention (e.g. Sakizaya still shows `ø`); it is applied fully at the next regeneration. See the corpus [README](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/NTUFormosanCorpus/readme.md) for details.
 
 ***
 

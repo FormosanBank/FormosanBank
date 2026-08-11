@@ -50,7 +50,13 @@ story 097, sentence 022<br>
 
 6. Because the original used a slightly different orthography than the modern orthography, the local script `convert.py` was used to convert the orthography to the standard. A table showing the conversion of the original orthography to IPA is available in the book itself. We used a similar conversion table provided by ILRDF for the standard modern orthography we are using. Note that Early and Whitehorn describe a few of the phonemes slightly differently from ILRDF, perhaps reflecting dialectal differences.
 
-The published corpus has since received additional repairs. These include language tags for morpheme glosses, infix and reduplication segmentation, standard and phonological tiers for repaired morphemes, duplicate ID fixes, and several hand-corrected word and morpheme alignment errors. The [source README](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/HundredPaiwanStories) records the exact current pipeline and the manual corrections.
+The published corpus has since received additional repairs (language tags for morpheme glosses, infix and reduplication segmentation, duplicate ID fixes, and several hand-corrected word and morpheme alignment errors) and was fully regenerated in August 2026 with FormosanBank's current cleaning, standardization, and phonology tools. Highlights of the regenerated version:
+
+* The PHON tiers contain IPA only: punctuation and morpheme-segmentation hyphens are excluded, and the orthography-to-IPA conversion no longer re-maps its own output (e.g. standard `tj` is now consistently IPA `c`).
+* In the source orthography the character `?` is both the glottal-stop letter and question-mark punctuation, and `'` appears only as a nested quotation mark. A corpus-specific step (`fix_ferrell.py`) disambiguates every occurrence from context — the English translation's question marks, quote adjacency, sentence position, and corpus-wide attestation — so question marks are restored on the standard tier and no spurious glottal stops appear in the IPA. The source's `word(?)` uncertainty annotations are likewise treated as punctuation, not glottals.
+* All four texts whose dialect is unknown (`090`, `091`, `097`, `099`) now carry complete phonological tiers (see Corpus Notes).
+
+The [source README](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/HundredPaiwanStories) records the exact current pipeline, which can be re-run end-to-end, and the manual corrections.
 
 ### **Corpus Notes**
 

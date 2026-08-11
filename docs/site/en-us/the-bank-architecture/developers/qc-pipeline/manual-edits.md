@@ -47,11 +47,11 @@ Records are upserted into per-file `<FILE path="…">` groups in `<corpus-root>/
 
 For each `<FILE>` group in `manual_edits.xml`, against the matching XML file:
 
-- **delete** — remove the matching `<S>` (no-op pruned if the id is already gone).
+- **delete** — remove the matching `<S>` (a warned no-op if the id is already gone).
 - **change** — replace the existing `<S>` with the recorded block (stripped of `after`/`action`).
 - **add** — insert the recorded `<S>` after its `after` anchor, or append if the anchor is missing.
 
-Entries that have become **no-ops** against the current XML (a delete for an already-absent id, or a change identical to what's already there) are **pruned** from `manual_edits.xml` with a `pruned no-op` warning. Every applied edit is recorded in the regenerated `CodeAndDocs/manual_edits.md` changelog (file, id, action, before/after one-line rendering). If `manual_edits.xml` is absent, the script prints `nothing to do` and exits `0` — so it is safe to wire unconditionally into a build.
+Entries that have become **no-ops** against the current XML (a delete for an already-absent id, or a change identical to what's already there) are **kept**, with a salient `NO-OP manual edit (KEPT)` warning — a no-op against already-edited XML does not make the record obsolete. When the *fresh build* now produces the record's content (the upstream fix was absorbed), remove obsolete records explicitly with `--prune`. Every applied edit is recorded in the regenerated `CodeAndDocs/manual_edits.md` changelog (file, id, action, before/after one-line rendering). If `manual_edits.xml` is absent, the script prints `nothing to do` and exits `0` — so it is safe to wire unconditionally into a build.
 
 ## Usage
 
@@ -79,7 +79,7 @@ python QC/cleaning/apply_manual_edits.py --corpora_path Corpora/<Name>/XML
 ## Output & side effects
 
 - **`capture`** writes/updates `CodeAndDocs/manual_edits.xml` (or prints "no hand edits detected" and leaves it unchanged). It does **not** modify the corpus XML.
-- **`apply`** modifies the corpus XML **in place** (full lxml reparse-and-reserialize, `pretty_print`), rewrites `manual_edits.xml` if it pruned any no-ops, and regenerates `CodeAndDocs/manual_edits.md`. Diff before committing.
+- **`apply`** modifies the corpus XML **in place** (full lxml reparse-and-reserialize, `pretty_print`), rewrites `manual_edits.xml` only when run with `--prune`, and regenerates `CodeAndDocs/manual_edits.md`. Diff before committing.
 - Commit `manual_edits.xml` (and the regenerated `manual_edits.md`) so the edits travel with the corpus.
 
 ## When to run it

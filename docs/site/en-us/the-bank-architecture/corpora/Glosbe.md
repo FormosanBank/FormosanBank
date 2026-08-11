@@ -2,7 +2,7 @@
 
 ## **Overview**
 
-This corpus contains dictionary and translation-memory entries collected from the crowdsourced online dictionary Glosbe. The current public corpus includes Amis, Atayal, Truku, and Saisiyat data. Most entries are translated into English, with an additional Amis-Mandarin collection.
+This corpus contains dictionary and translation-memory entries collected from the crowdsourced online dictionary Glosbe. The current public corpus includes Amis, Atayal, Truku, and Saisiyat data. Most entries are translated into English, with an additional Amis-Mandarin collection. The merged publication restores reviewed Traditional Chinese translations for Amis.
 
 ***
 
@@ -11,13 +11,13 @@ This corpus contains dictionary and translation-memory entries collected from th
 
 | | Amis<br>unknown | Atayal<br>unknown | Truku | Saisiyat |
 | --- | --- | --- | --- | --- |
-| Word count | 59,654 | 213 | 19 | 508 |
+| Word count | 89,909 | 577 | 116 | 600 |
 | Total audio | 0 | 0 | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 | 0 | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 | 0 | 0 |
 | Translated words |  |  |  |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 59,276 | 213 | 19 | 508 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 378 | 0 | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 59,287 | 577 | 116 | 600 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 30,622 | 0 | 0 | 0 |
 | Morphologically segmented | 0 | 0 | 0 | 0 |
 | Glossed words | 0 | 0 | 0 | 0 |
 
@@ -28,7 +28,7 @@ This corpus contains dictionary and translation-memory entries collected from th
 
 ## **Corpus Processing**
 
-The eight published XML files separate lexical entries from translation-memory entries and are organized by ISO 639-3 language code. The retained processing materials include scripts for scraping the Amis-Mandarin pair, deduplicating results, merging translations, building XML, fixing punctuation, and validating the output. The published files also include standardized FORM and PHON tiers where available.
+The eight published XML files separate lexical entries from translation-memory entries and are organized by ISO 639-3 language code. The retained processing materials include scripts for scraping the Amis-Mandarin pair, deduplicating results, merging translations, building XML, fixing punctuation, and validating the output. The published files include standardized FORM and PHON tiers. ILRDF comparisons are retained as reference metadata only and do not filter the published lexical data.
 
 ***
 
