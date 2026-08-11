@@ -185,16 +185,7 @@ def _apply_standard_hyphens(element, lang_code, ortho_path, hard_remove,
                 warnings.add("c022", file_path, element.get("id"), ch, i)
 
 
-def prettify(elem):
-    """Pretty-print XML without adding whitespace inside mixed content."""
-    rough_string = ET.tostring(elem, encoding="utf-8")
-    reparsed = etree.fromstring(rough_string, etree.XMLParser(remove_blank_text=True))
-    body = etree.tostring(reparsed, encoding="unicode", pretty_print=True)
-    body = "\n".join(
-        re.sub(r"^( +)", lambda match: match.group(1) * 2, line)
-        for line in body.splitlines()
-    )
-    return f'<?xml version="1.0" ?>\n{body}\n'
+from QC.utilities._prettify import prettify  # noqa: E402,F401  (shared, mixed-content-safe, idempotent)
 
 
 def get_files(path, language):
