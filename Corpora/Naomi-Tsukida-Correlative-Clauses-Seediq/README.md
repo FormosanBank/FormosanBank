@@ -2,29 +2,30 @@
 
 **Language:** Seediq (`trv`), Truku dialect
 
-**Source:** Tsukida, N. (2014). “Correlative clauses in Seediq.” In *Papers from 12-ICAL, Volume 2: Argument realisations and related constructions in Austronesian languages* (pp. 69–79). Asia-Pacific Linguistics.
+**Source:** Tsukida, N. (2014). "Correlative clauses in Seediq." In *Papers from 12-ICAL, Volume 2: Argument realisations and related constructions in Austronesian languages* (pp. 69-79). Asia-Pacific Linguistics.
 
 **License:** Copyright held by the authors, released under Creative Commons Attribution Licence (CC BY 4.0).
 
-This corpus contains 26 source-reviewed Seediq examples with aligned word and morpheme glosses. The source article is available from [ANU Open Research](https://openresearch-repository.anu.edu.au/items/8bfb8bf0-2f58-4eae-947c-bf9af50faf9f).
+This corpus accounts for all 39 reviewed source units on the article's 11 pages. It publishes 26 Seediq source units and documents 13 comparison, duplicate, or source-starred exclusions. Optional constituents in examples 6 and 9 expand into four explicit sentence variants under POL-026.
 
 ## Reproducibility
 
-`XML/Seediq/tsukida_2014_correlative_clauses_in_seediq.xml` is generated from the reviewed inputs under `CodeAndDocs/raw_data/`. The build preserves the source original tier, maps the reviewed Tsukida Truku notation to the Ortho113 standard tier, restores source brackets removed by shared cleaning, and applies the reviewed PHON policy.
+The XML is generated from the reviewed inputs under `CodeAndDocs/raw_data/`. Source coverage and output alignments live under `CodeAndDocs/evidence/`. The build preserves original tiers, gives every W at least one M, keeps source glosses as `kindOf="original"`, and adds reviewed canonical infix glosses as `kindOf="standard"`. The corpus-scoped source profile gives the sole `ŋ` to `ng` standard conversion a passing transitive audit.
 
 From the FormosanBank repository root, run:
 
 ```bash
-FORMOSANBANK_PATH=/path/to/FormosanBank \
-  bash Corpora/Naomi-Tsukida-Correlative-Clauses-Seediq/CodeAndDocs/reproduce.sh
+bash Corpora/Naomi-Tsukida-Correlative-Clauses-Seediq/CodeAndDocs/reproduce.sh
 ```
 
-The script runs the build twice, checks source coverage and reviewed alignments, validates XML, text, and gloss tiers, and requires byte-identical output between runs.
+The script runs the current cleaning, standardization, phonology, source-alignment, XML, text, and gloss checks twice and requires byte-identical output.
 
 ## QC status
 
-The latest development QC found 1 TEXT, 26 sentences, 188 W elements, 115 M elements, 329 PHON tiers, zero hard findings, and zero gloss findings. The corpus has no audio.
+Final counts: 1 TEXT, 28 S, 201 W, 268 M, 497 original PHON, and 497 standard PHON. Current XML, text, and gloss validation has zero unresolved HARD findings. The corpus has no audio.
+
+The build was validated with FormosanBank tooling at `ef1ebb62126337c3603e8b4f71359986b80d9494`. The TEXT id and deterministic source-based S/W/M ids are stable across rebuilds and checked against published corpora.
 
 ## Citation
 
-Tsukida, N. (2014). “Correlative clauses in Seediq.” In I Wayan Arka & N. L. K. Mas Indrawati (Eds.), *Papers from 12-ICAL, Volume 2: Argument realisations and related constructions in Austronesian languages* (pp. 69–79). Asia-Pacific Linguistics.
+Tsukida, N. (2014). "Correlative clauses in Seediq." In I Wayan Arka & N. L. K. Mas Indrawati (Eds.), *Papers from 12-ICAL, Volume 2: Argument realisations and related constructions in Austronesian languages* (pp. 69-79). Asia-Pacific Linguistics.

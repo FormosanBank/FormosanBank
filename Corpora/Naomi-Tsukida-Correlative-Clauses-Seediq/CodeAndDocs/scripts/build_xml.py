@@ -9,16 +9,18 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 
-CORPUS_ROOT = Path(__file__).resolve().parents[2]
 CODE_ROOT = Path(__file__).resolve().parents[1]
-INPUT = CODE_ROOT / "raw_data" / "reviewed_examples.tsv"
-MORPHEME_INPUT = CODE_ROOT / "raw_data" / "reviewed_morpheme_alignments.tsv"
+CORPUS_ROOT = Path(__file__).resolve().parents[2]
+ROOT = CODE_ROOT
+INPUT = ROOT / "raw_data" / "reviewed_examples.tsv"
+MORPHEME_INPUT = ROOT / "raw_data" / "reviewed_morpheme_alignments.tsv"
+VARIANT_INPUT = ROOT / "raw_data" / "reviewed_variants.tsv"
 XML_NAME = "tsukida_2014_correlative_clauses_in_seediq.xml"
 FINAL_XML = CORPUS_ROOT / "XML" / "Seediq" / XML_NAME
-SOURCE_LEDGER = CODE_ROOT / "evidence" / "source_ledger.csv"
-PAGE_INVENTORY = CODE_ROOT / "evidence" / "page_inventory.csv"
-NOTATION_AUDIT = CODE_ROOT / "evidence" / "source_notation_audit.csv"
-SOURCE_MAP = CODE_ROOT / "evidence" / "xml_source_map.csv"
+SOURCE_LEDGER = ROOT / "evidence" / "source_ledger.csv"
+PAGE_INVENTORY = ROOT / "evidence" / "page_inventory.csv"
+NOTATION_AUDIT = ROOT / "evidence" / "source_notation_audit.csv"
+SOURCE_MAP = ROOT / "evidence" / "xml_source_map.csv"
 
 SOURCE_PDF_SHA256 = "fab9b60ce52e47530805204c1d5beed02e52e63972e8315d9a1996c8e79248f1"
 TEXT_ID = "tsukida_2014_correlative_clauses_in_seediq"
@@ -88,6 +90,19 @@ def read_morpheme_alignments(
     return alignments
 
 
+def read_variants(path: Path = VARIANT_INPUT) -> dict[str, list[dict[str, str]]]:
+    variants: dict[str, list[dict[str, str]]] = {}
+    for row in read_tsv(path):
+        variants.setdefault(row["source_id"], []).append(row)
+    expected = {"tsukida2014_seediq_S005", "tsukida2014_seediq_S008"}
+    if set(variants) != expected or any(len(rows) != 2 for rows in variants.values()):
+        raise ValueError("Expected two reviewed variants for examples 6 and 9")
+    ids = [row["variant_id"] for rows in variants.values() for row in rows]
+    if len(ids) != len(set(ids)):
+        raise ValueError("Reviewed variant ids must be unique")
+    return variants
+
+
 def validate_rows(rows: list[dict[str, str]]) -> None:
     ids = [row["id"] for row in rows]
     if len(rows) != 39 or len(set(ids)) != 39:
@@ -114,7 +129,34 @@ def validate_rows(rows: list[dict[str, str]]) -> None:
 
 
 def included_records(rows: list[dict[str, str]]) -> list[dict[str, str]]:
-    return [row for row in rows if row["included"] == "yes"]
+    variants = read_variants()
+    records: list[dict[str, str]] = []
+    for source in rows:
+        if source["included"] != "yes":
+            continue
+        source_variants = variants.get(source["id"])
+        if not source_variants:
+            record = dict(source)
+            record["source_id"] = source["id"]
+            record["variant_evidence"] = ""
+            records.append(record)
+            continue
+        for variant in source_variants:
+            record = dict(source)
+            record.update(
+                {
+                    "id": variant["variant_id"],
+                    "source_id": source["id"],
+                    "original": variant["original"],
+                    "gloss": variant["gloss"],
+                    "translation": variant["translation"],
+                    "translation_alt": "",
+                    "translation_alt_in_xml": "n/a",
+                    "variant_evidence": variant["evidence"],
+                }
+            )
+            records.append(record)
+    return records
 
 
 def lexical_word(token: str) -> str:
@@ -206,7 +248,7 @@ def morpheme_alignment(
     form_parts = split_form(word)
     gloss_parts = split_gloss(gloss)
     if len(form_parts) <= 1:
-        return [], ""
+        return [(word, gloss)], ""
     if len(form_parts) != len(gloss_parts):
         raise ValueError(
             f"Unreviewed morpheme mismatch at {record['id']} W{word_index}: "
@@ -228,7 +270,11 @@ def add_word_structure(
             sentence, "W", {"id": f"{record['id']}W{word_index}"}
         )
         ET.SubElement(word_element, "FORM", {"kindOf": "original"}).text = word
-        ET.SubElement(word_element, "TRANSL", {"xml:lang": "eng"}).text = gloss
+        ET.SubElement(
+            word_element,
+            "TRANSL",
+            {"xml:lang": "eng", "kindOf": "original"},
+        ).text = gloss
         morphemes, canonical_gloss = morpheme_alignment(
             record, word_index, word, gloss, reviewed
         )
@@ -236,7 +282,7 @@ def add_word_structure(
             ET.SubElement(
                 word_element,
                 "TRANSL",
-                {"xml:lang": "eng", "ver": "alt"},
+                {"xml:lang": "eng", "kindOf": "standard", "ver": "alt"},
             ).text = canonical_gloss
         for morpheme_index, (form_part, gloss_part) in enumerate(
             morphemes, start=1
@@ -247,7 +293,11 @@ def add_word_structure(
                 {"id": f"{record['id']}W{word_index}M{morpheme_index}"},
             )
             ET.SubElement(morpheme, "FORM", {"kindOf": "original"}).text = form_part
-            ET.SubElement(morpheme, "TRANSL", {"xml:lang": "eng"}).text = gloss_part
+            ET.SubElement(
+                morpheme,
+                "TRANSL",
+                {"xml:lang": "eng", "kindOf": "original"},
+            ).text = gloss_part
     return alignment_note
 
 
@@ -323,6 +373,7 @@ def write_csv(path: Path, fields: list[str], rows: list[dict[str, str]]) -> None
 
 
 def write_source_ledger(rows: list[dict[str, str]]) -> None:
+    variants = read_variants()
     fields = [
         "source_id",
         "source_locator",
@@ -366,7 +417,13 @@ def write_source_ledger(rows: list[dict[str, str]]) -> None:
                 "included_in_xml": "yes" if included else "no",
                 "exclusion_reason": "" if included else row["notes"],
                 "final_xml_filename": XML_NAME if included else "",
-                "final_s_id": row["id"] if included else "",
+                "final_s_id": (
+                    ";".join(
+                        variant["variant_id"] for variant in variants[row["id"]]
+                    )
+                    if included and row["id"] in variants
+                    else row["id"] if included else ""
+                ),
             }
         )
     write_csv(SOURCE_LEDGER, fields, output)
@@ -460,6 +517,8 @@ def source_map_rows(
                 "translation_alt_in_xml": record["translation_alt_in_xml"],
                 "word_structure": record["word_structure"],
                 "review_notes": record["notes"],
+                "source_id": record["source_id"],
+                "variant_evidence": record["variant_evidence"],
             }
         )
     return output
@@ -483,6 +542,8 @@ def write_source_map(
         "translation_alt_in_xml",
         "word_structure",
         "review_notes",
+        "source_id",
+        "variant_evidence",
     ]
     write_csv(SOURCE_MAP, fields, source_map_rows(records, root))
 
@@ -497,7 +558,7 @@ def main() -> None:
     write_page_inventory()
     write_notation_audit(rows)
     write_source_map(records)
-    print("Generated 26 source-faithful Seediq sentences from 39 source units.")
+    print("Generated 28 source-faithful Seediq sentences from 39 source units.")
 
 
 if __name__ == "__main__":
