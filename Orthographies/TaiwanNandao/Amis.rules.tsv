@@ -1,0 +1,13 @@
+pattern	replacement	description
+ts(?=i)	tɕ	c is palatalized before i
+s(?=i)	ɕ	s is palatalized before i
+ʡ(?=$|[^\w])	ʡħ	word-final glottal is released with a fricative
+(?<=[ʡh])i(?=[aəioʊ])	ej	lowered i develops a glide before a vowel
+(?<=[ʡh])i	e	i is lowered after a glottal or h
+(?<=[ʡh])a	a̞	a is lowered after a glottal or h
+(?<=[ʡh])o	ɔ	o is lowered after a glottal or h
+i(?=[aəioʊ])	ij	i develops a glide before a vowel
+o(?=[aəiʊ])	ow	o develops a glide before a vowel
+(?<=[aəioʊ])i	j	i becomes a glide after a vowel
+(?<=[aəioʊ])o	w	o becomes a glide after a vowel
+(?<=a̞)o	w	o becomes a glide after lowered a

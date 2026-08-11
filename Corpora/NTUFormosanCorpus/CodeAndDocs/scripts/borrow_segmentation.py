@@ -72,8 +72,7 @@ import lxml.etree as etree
 _REPO_ROOT = Path(__file__).resolve().parents[4]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
-from QC.utilities.add_phonology import apply_phonology_mappings  # noqa: E402
-from QC.validation._dialect_inventory import is_multi_dialect_language  # noqa: E402
+from QC.utilities.add_phonology import load_profile, phonologize  # noqa: E402
 
 _XLANG = "{http://www.w3.org/XML/1998/namespace}lang"
 
@@ -157,25 +156,20 @@ def borrowed_spelling(index, language, letters, n_pieces):
 
 # --- phonology --------------------------------------------------------------
 
-def load_mappings(language):
-    tsv = _REPO_ROOT / "Orthographies" / "Ortho113" / f"{language}.tsv"
-    if not tsv.exists():
-        return None
-    with open(tsv, encoding="utf-8") as f:
-        rows = list(csv.DictReader(f, delimiter="\t"))
-    cols = [c for c in (rows[0].keys() if rows else []) if c != "letter"]
-    if not cols:
-        return None
-    column = cols[0] if not is_multi_dialect_language(language) else (
-        "default" if "default" in cols else cols[0])
-    mappings = [(r["letter"], r[column]) for r in rows
-                if r.get("letter") and r.get(column) is not None]
-    return mappings, dict(mappings)
+def load_mappings(language, dialect=None):
+    """Ortho113 PhonologyProfile for language/dialect (None if no table).
+
+    Uses add_phonology's own profile loader, so guard 5 (PHON
+    reproducibility) and the generated PHON always match the current
+    pipeline's phonologize output — including contextual rules, dialect
+    column selection and the marker/punctuation policy. Files carrying
+    an older PHON vintage fail guard 5 and are conservatively skipped.
+    """
+    return load_profile("Ortho113", language, dialect or "")
 
 
 def convert(text, mp):
-    mappings, cdict = mp
-    return apply_phonology_mappings(text, mappings, cdict)
+    return phonologize(text, mp)
 
 
 # --- serialization ----------------------------------------------------------
@@ -291,11 +285,12 @@ def main():
                 continue
             code = (text_el.get(_XLANG) or text_el.get("xml:lang") or "").strip()
             language = _LANG_MAP.get(code, code)
-            if language not in mp_cache:
-                mp_cache[language] = load_mappings(language)
+            dialect = text_el.get("dialect") or ""
+            if (language, dialect) not in mp_cache:
+                mp_cache[(language, dialect)] = load_mappings(language, dialect)
             n = 0
             for w in root.iter("W"):
-                if try_repair_w(w, language, index, mp_cache[language], stats):
+                if try_repair_w(w, language, index, mp_cache[(language, dialect)], stats):
                     n += 1
             if n:
                 files_mod += 1

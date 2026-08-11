@@ -77,6 +77,23 @@ scrape?":
   punctuation/segmentation silently disappearing.)
 - (d) Are there sentence-initial `*` (ungrammatical — should have been excluded),
   footnote digit leaks, or out-of-language runs?
+- (d) **Starred-parenthesis sweep (POL-017).** Grep the *source* (and extraction
+  ledgers) for `*(` and `(*`: `*(X)` = X obligatory (X must be in FORM,
+  unstarred); `(*X)` = X forbidden (X must NOT be in FORM). Trace every hit into
+  the XML and flag any script that treats the two identically — that inversion
+  published an ungrammatical sentence in NTU Rukai (`*(malra)`).
+- (a) **Null-glyph check (POL-012).** Grep the XML for `ø`/`Ø` in morpheme
+  position: preprocessing that emits non-canonical null glyphs leaves the whole
+  V069/V120/V123–V125/V140 family vacuously blind until `clean_xml` normalizes
+  them to `∅`. Flag as "normalize at intake", not as data loss.
+
+**Expected normalizations — do not flag as data loss** (cite the POLICIES.md
+entry instead): dash/hyphen look-alikes → ASCII `-` (POL-011); typographic
+apostrophes/quotes → ASCII `'`/`"` in Formosan text (POL-010 — including a dev
+repo's `’`→`'` in its build scripts); null glyphs `ø`/`Ø` → `∅` in morpheme
+position (POL-012); curly quotes absent from PHON (PHON drops unmapped
+punctuation, POL-003). Re-flagging these wastes a maintainer round-trip.
+
 ▣ Present concrete before/after samples per concern; get the maintainer's call on
 each class (real bug vs acceptable vs needs source check).
 
@@ -84,6 +101,13 @@ each class (real bug vs acceptable vs needs source check).
 Only after sign-off, write `claudeplans/audit-<Repo>.md`: what the assistant did, findings
 by concern (a–d) with evidence, the pipeline mapping, and recommended remediation
 (which conflicts must be fixed in the reproduction before porting).
+
+### 6. Regression fixtures (when a finding leads to a FormosanBank code fix)
+If remediation lands in FormosanBank code (a cleaner rule, a validator, a
+pipeline script — as opposed to the dev repo's own build scripts), the fix is
+not complete until a minimal reproduction fixture and one test exist under
+`tests/fixtures/audit_regressions/` (see its README for naming). Add creating
+them to the remediation list.
 
 ## Notes
 - This is an audit, not a fix: do not modify the dev repo or `Corpora/` here. Remediation

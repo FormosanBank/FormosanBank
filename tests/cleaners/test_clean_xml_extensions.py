@@ -44,7 +44,9 @@ XFAIL_NOT_YET_IMPLEMENTED = (
 
 def _run_clean(corpora_path: Path) -> subprocess.CompletedProcess:
     return subprocess.run(
-        [sys.executable, str(CLEAN_XML), "--corpora_path", str(corpora_path)],
+        [sys.executable, str(CLEAN_XML), "--corpora_path", str(corpora_path),
+         # isolate legacy tests from the quote-correction dictionary
+         "--reference_dir", str(corpora_path / "_noref")],
         capture_output=True,
         text=True,
     )
@@ -124,6 +126,8 @@ IDEMPOTENT_FIXTURES = [
     "c007_bopomofo_in_form.xml",
     "c022_sentence_initial_asterisk.xml",
     "c027_zero_width_in_form_and_transl.xml",
+    "c028_double_encoded_entities.xml",
+    "c029_tilde_lookalikes_in_form.xml",
 ]
 
 
@@ -157,15 +161,17 @@ assert not _UNEXPECTED and not _MISSING, (
 def test_C001_fullwidth_paren_in_S_FORM_collapses_to_ASCII(
     tmp_path, fixtures_dir, copy_fixture
 ):
-    """C001 positive: non-Chinese S/FORM has （X） collapsed to (X)."""
+    """C001 positive: non-Chinese S/FORM[@kindOf='original'] has （X） collapsed to (X).
+
+    clean_xml no longer touches FORM[@kindOf='standard'] — standardize.py owns
+    that tier. Only the original tier is asserted here.
+    """
     work = copy_fixture(fixtures_dir / "c001_fullwidth_paren_in_form.xml", tmp_path)
     proc = _run_clean(tmp_path)
     assert proc.returncode == 0, f"stderr: {proc.stderr}"
 
     orig = _form_texts_with_kindof(work, "S", "original")
-    std = _form_texts_with_kindof(work, "S", "standard")
     assert orig == ["Halo (X)."], f"original FORM: {orig!r}"
-    assert std == ["Halo (X)."], f"standard FORM: {std!r}"
 
 
 def test_C001_fullwidth_paren_in_W_and_M_FORM_collapses(
@@ -235,7 +241,9 @@ def test_C001_nonchinese_transl_fullwidth_paren_collapses(
 def test_C002_apostrophe_variants_in_form_collapse_to_ascii(
     tmp_path, fixtures_dir, copy_fixture
 ):
-    """C002 Branch A positive (FORM): mixed apostrophe variants → ASCII U+0027."""
+    """C002 Branch A positive (FORM): mixed apostrophe variants → ASCII U+0027
+    in the original tier. clean_xml no longer touches the standard tier.
+    """
     work = copy_fixture(
         fixtures_dir / "c002_apostrophe_variants_in_form.xml", tmp_path
     )
@@ -243,24 +251,24 @@ def test_C002_apostrophe_variants_in_form_collapse_to_ascii(
     assert proc.returncode == 0, f"stderr: {proc.stderr}"
 
     orig = _form_texts_with_kindof(work, "S", "original")[0]
-    std = _form_texts_with_kindof(work, "S", "standard")[0]
-    # Every single-quote-shape character must be U+0027.
-    forbidden = {"’", "‘", "ʼ", "ʻ", "`"}
-    for text, label in ((orig, "original"), (std, "standard")):
-        for ch in forbidden:
-            assert ch not in text, (
-                f"{label} still contains {ch!r} (U+{ord(ch):04X}): {text!r}"
-            )
-        # And the visible apostrophe characters should now be ASCII.
-        assert text.count("'") == 5, (
-            f"{label}: expected 5 ASCII apostrophes; got {text!r}"
+    # Every single-quote-shape character must be U+0027 in the original tier.
+    forbidden = {"’", "’", "ʼ", "ʻ", "`"}
+    for ch in forbidden:
+        assert ch not in orig, (
+            f"original still contains {ch!r} (U+{ord(ch):04X}): {orig!r}"
         )
+    # And the visible apostrophe characters should now be ASCII.
+    assert orig.count("'") == 5, (
+        f"original: expected 5 ASCII apostrophes; got {orig!r}"
+    )
 
 
 def test_C002_double_quote_variants_in_form_collapse_to_ascii(
     tmp_path, fixtures_dir, copy_fixture
 ):
-    """C002 Branch A positive (FORM): mixed double-quote variants → ASCII U+0022."""
+    """C002 Branch A positive (FORM): mixed double-quote variants to ASCII U+0022
+    in the original tier. clean_xml no longer touches the standard tier.
+    """
     work = copy_fixture(
         fixtures_dir / "c002_double_quote_variants_in_form.xml", tmp_path
     )
@@ -268,22 +276,20 @@ def test_C002_double_quote_variants_in_form_collapse_to_ascii(
     assert proc.returncode == 0, f"stderr: {proc.stderr}"
 
     orig = _form_texts_with_kindof(work, "S", "original")[0]
-    std = _form_texts_with_kindof(work, "S", "standard")[0]
     forbidden = {
-        "“", "”",  # curly doubles
+        "“", "”",  # LEFT/RIGHT DOUBLE QUOTATION MARK
         "《", "》",  # 《 》
         "「", "」",  # 「 」
         "『", "』",  # 『 』
     }
-    for text, label in ((orig, "original"), (std, "standard")):
-        for ch in forbidden:
-            assert ch not in text, (
-                f"{label} still contains {ch!r} (U+{ord(ch):04X}): {text!r}"
-            )
-        # Eight non-ASCII double-quote shapes in the input → eight ASCII doubles out.
-        assert text.count('"') == 8, (
-            f"{label}: expected 8 ASCII double quotes; got {text!r}"
+    for ch in forbidden:
+        assert ch not in orig, (
+            f"original still contains {ch!r} (U+{ord(ch):04X}): {orig!r}"
         )
+    # Eight non-ASCII double-quote shapes in the input -> eight ASCII doubles out.
+    assert orig.count('"') == 8, (
+        f"original: expected 8 ASCII double quotes; got {orig!r}"
+    )
 
 
 def test_C002_apostrophe_in_nonchinese_transl_collapses(
@@ -416,18 +422,16 @@ def test_C002_ascii_apostrophe_in_chinese_transl_warns(
 def test_C002b_ipa_stress_in_form_collapses_to_apostrophe(
     tmp_path, fixtures_dir, copy_fixture
 ):
-    """C002b positive: U+02C8 in FORM → ASCII U+0027 via swap_punctuation."""
+    """C002b positive: U+02C8 in original FORM → ASCII U+0027 via swap_punctuation.
+    clean_xml no longer touches the standard tier.
+    """
     work = copy_fixture(fixtures_dir / "c002b_ipa_stress_in_form.xml", tmp_path)
     proc = _run_clean(tmp_path)
     assert proc.returncode == 0, f"stderr: {proc.stderr}"
 
     orig = _form_texts_with_kindof(work, "S", "original")[0]
-    std = _form_texts_with_kindof(work, "S", "standard")[0]
-    for text, label in ((orig, "original"), (std, "standard")):
-        assert "ˈ" not in text, (
-            f"{label} still contains U+02C8: {text!r}"
-        )
-        assert text == "pa'tas", f"{label}: {text!r}"
+    assert "ˈ" not in orig, f"original still contains U+02C8: {orig!r}"
+    assert orig == "pa'tas", f"original: {orig!r}"
 
 
 def test_C002b_ipa_stress_warning_emitted(tmp_path, fixtures_dir, copy_fixture):
@@ -468,12 +472,11 @@ def test_C003_repeated_punct_collapses_in_form_and_transl(
     transl = _transl_texts(work, "S")[0]
 
     expected_orig = "Halo! Hapinangha? Pa-tas."
-    # C003 collapses --- → - in standard, then C012 strips that hyphen because
-    # Amis (ami) does not have '-' as a letter in Ortho113/Amis.tsv.
-    expected_std = "Halo! Hapinangha? Patas."
     expected_transl = "Hello! How are you? Wri-ting."
     assert orig == expected_orig, f"original: {orig!r}"
-    assert std == expected_std, f"standard: {std!r}"
+    # clean_xml no longer touches FORM[@kindOf='standard'] — standardize.py owns
+    # that tier. The standard FORM is left byte-exact from the fixture.
+    assert std == "Halo!! Hapinangha?? Pa---tas.", f"standard (untouched): {std!r}"
     assert transl == expected_transl, f"TRANSL: {transl!r}"
 
 
@@ -512,21 +515,22 @@ def test_C004_nbsp_collapses_in_form_and_transl(
 def test_C005_fullwidth_space_collapses_in_form(
     tmp_path, fixtures_dir, copy_fixture
 ):
-    """C005 positive: U+3000 in FORM disappears via normalize_whitespace.
+    """C005 positive: U+3000 in original FORM disappears via normalize_whitespace.
 
     U+3000 is not in swap_punctuation's table but matches \\s+, so the
     cleaner incidentally collapses it. Pinning this so a future stricter
     regex doesn't silently break it.
+
+    clean_xml no longer touches FORM[@kindOf='standard'] — only asserted
+    on the original tier.
     """
     work = copy_fixture(fixtures_dir / "c005_fullwidth_space_in_form.xml", tmp_path)
     proc = _run_clean(tmp_path)
     assert proc.returncode == 0, f"stderr: {proc.stderr}"
 
     orig = _form_texts_with_kindof(work, "S", "original")[0]
-    std = _form_texts_with_kindof(work, "S", "standard")[0]
-    for text, label in ((orig, "original"), (std, "standard")):
-        assert "　" not in text, f"{label} still has U+3000: {text!r}"
-        assert text == "Halo hapinangha.", f"{label}: {text!r}"
+    assert "　" not in orig, f"original still has U+3000: {orig!r}"
+    assert orig == "Halo hapinangha.", f"original: {orig!r}"
 
 
 # =============================================================================
@@ -538,10 +542,12 @@ def test_C006_caret_variants_normalize_everywhere_regardless_of_lang(
     tmp_path, fixtures_dir, copy_fixture
 ):
     """C006: every caret-variant Unicode character normalizes to ASCII '^'
-    in EVERY tier (FORM original, FORM standard, TRANSL non-Chinese,
-    TRANSL Chinese), regardless of language. The Chinese TRANSL assertion
-    is the regression pin — a future coupling to the language-aware swap
-    (which skips Chinese) would fail this loudly.
+    in FORM[@kindOf='original'] and both TRANSL tiers, regardless of language.
+    The Chinese TRANSL assertion is the regression pin — a future coupling to
+    the language-aware swap (which skips Chinese) would fail this loudly.
+
+    clean_xml no longer touches FORM[@kindOf='standard'] — standardize.py owns
+    that tier, so only the original FORM is asserted here.
     """
     work = copy_fixture(
         fixtures_dir / "c006_caret_variant_in_form_and_transl.xml", tmp_path
@@ -550,9 +556,7 @@ def test_C006_caret_variants_normalize_everywhere_regardless_of_lang(
     assert proc.returncode == 0, f"stderr: {proc.stderr}"
 
     orig = _form_texts_with_kindof(work, "S", "original")[0]
-    std = _form_texts_with_kindof(work, "S", "standard")[0]
     assert orig == "a^b^c^d^e", f"FORM original: {orig!r}"
-    assert std == "a^b^c^d^e", f"FORM standard: {std!r}"
 
     tree = etree.parse(str(work))
     transls = {
@@ -576,10 +580,13 @@ def test_C027_zero_width_stripped_everywhere_regardless_of_lang(
     tmp_path, fixtures_dir, copy_fixture
 ):
     """C027: the four zero-width / BOM codepoints (U+200B/200C/200D/FEFF)
-    are stripped from EVERY tier (FORM original, FORM standard, TRANSL
-    non-Chinese, TRANSL Chinese), regardless of language. The Chinese
-    TRANSL assertion is the regression pin — a future coupling to the
-    language-aware swap (which skips Chinese) would leave them in place.
+    are stripped from FORM[@kindOf='original'] and both TRANSL tiers, regardless
+    of language. The Chinese TRANSL assertion is the regression pin — a future
+    coupling to the language-aware swap (which skips Chinese) would leave them
+    in place.
+
+    clean_xml no longer touches FORM[@kindOf='standard'] — standardize.py owns
+    that tier, so only the original FORM is asserted here.
     """
     work = copy_fixture(
         fixtures_dir / "c027_zero_width_in_form_and_transl.xml", tmp_path
@@ -590,9 +597,7 @@ def test_C027_zero_width_stripped_everywhere_regardless_of_lang(
     zero_width = {"​", "‌", "‍", "﻿"}
 
     orig = _form_texts_with_kindof(work, "S", "original")[0]
-    std = _form_texts_with_kindof(work, "S", "standard")[0]
     assert orig == "abcde", f"FORM original: {orig!r}"
-    assert std == "abcde", f"FORM standard: {std!r}"
 
     tree = etree.parse(str(work))
     transls = {t.get(XML_LANG): t.text for t in tree.findall(".//S/TRANSL")}
@@ -667,19 +672,20 @@ def test_C007_bopomofo_warning_emitted(tmp_path, fixtures_dir, copy_fixture):
 def test_C010_nfc_normalisation_at_all_form_tiers(
     tmp_path, fixtures_dir, copy_fixture
 ):
-    """C010 positive: NFD input at S/FORM, W/FORM, M/FORM → NFC after cleaning."""
+    """C010 positive: NFD input at S/FORM[@kindOf='original'], W/FORM, M/FORM
+    → NFC after cleaning. clean_xml no longer touches S/FORM[@kindOf='standard']
+    — standardize.py owns that tier, so it is not asserted here.
+    """
     work = copy_fixture(fixtures_dir / "c010_nfd_in_form_all_tiers.xml", tmp_path)
     proc = _run_clean(tmp_path)
     assert proc.returncode == 0, f"stderr: {proc.stderr}"
 
     s_orig = _form_texts_with_kindof(work, "S", "original")[0]
-    s_std = _form_texts_with_kindof(work, "S", "standard")[0]
     w_forms = _all_form_texts_under(work, "W")
     m_forms = _all_form_texts_under(work, "M")
 
     for text, label in (
         (s_orig, "S/FORM original"),
-        (s_std, "S/FORM standard"),
         (w_forms[0], "W/FORM"),
         (m_forms[0], "M/FORM"),
     ):
@@ -719,119 +725,22 @@ def test_C011_hyphens_preserved_in_S_FORM_original(
 
 
 # =============================================================================
-# C012 — Segmentation in S/FORM standard, data-driven (ALL xfail)
+# C012b — clean_xml must never modify the standard tier (regression guard)
 # =============================================================================
-# Note: the design also calls for a --hard-remove-segmentation variant.
-# That flag does NOT exist in clean_xml.py today, and the cleaner has no
-# language-aware logic, so there is no way to exercise the flag's
-# negative-override behavior. Skip that variant entirely; document the
-# gap here and revisit when B adds the flag.
 
 
-def test_C012_amis_standard_hyphens_stripped(
-    tmp_path, fixtures_dir, copy_fixture
-):
-    """C012 xfail (Amis): "-" not a letter in Ortho113/Amis → strip from standard."""
-    work = copy_fixture(fixtures_dir / "c012_hyphens_in_standard_amis.xml", tmp_path)
-    proc = _run_clean(tmp_path)
-    assert proc.returncode == 0, f"stderr: {proc.stderr}"
-
-    std = _form_texts_with_kindof(work, "S", "standard")[0]
-    assert std == "Mkan ku nhapuy.", f"standard: {std!r}"
-
-
-def test_C012_bunun_standard_hyphens_preserved_with_warning(
-    tmp_path, fixtures_dir, copy_fixture
-):
-    """C012 xfail (Bunun): "-" IS a letter in Ortho113/Bunun → preserve + WARN."""
-    work = copy_fixture(
-        fixtures_dir / "c012_hyphens_in_standard_bunun.xml", tmp_path
-    )
-    proc = _run_clean(tmp_path)
-    assert proc.returncode == 0, f"stderr: {proc.stderr}"
-
-    # Preservation: standard text is unchanged.
-    std = _form_texts_with_kindof(work, "S", "standard")[0]
-    assert std == "ma-baliv-an.", f"standard: {std!r}"
-
-    # Warning: a CSV row or stderr indicator must mention the rule.
-    warned = _has_warning_signal(
-        proc, ("c012", "hyphen", "segmentation in standard", "ortho"), tmp_path
-    )
-    csv_ok = _csv_warning_exists(tmp_path, "c012")
-    assert warned or csv_ok, (
-        f"expected warning indicator for hyphens in Bunun standard tier; "
-        f"stdout={proc.stdout!r}, stderr={proc.stderr!r}"
-    )
-
-
-def test_C012_thao_standard_hyphens_preserved_with_warning(
-    tmp_path, fixtures_dir, copy_fixture
-):
-    """C012 xfail (Thao): same expectation as Bunun.
-
-    Negative pin against any future hardcoded "Bunun only" implementation.
-    Implementation must be data-driven via Orthographies/Ortho113/<lang>.tsv.
-    """
-    work = copy_fixture(fixtures_dir / "c012_hyphens_in_standard_thao.xml", tmp_path)
-    proc = _run_clean(tmp_path)
-    assert proc.returncode == 0, f"stderr: {proc.stderr}"
-
-    std = _form_texts_with_kindof(work, "S", "standard")[0]
-    assert std == "qa-li-ka-tu.", f"standard: {std!r}"
-
-    warned = _has_warning_signal(
-        proc, ("c012", "hyphen", "segmentation in standard", "ortho"), tmp_path
-    )
-    csv_ok = _csv_warning_exists(tmp_path, "c012")
-    assert warned or csv_ok, (
-        f"expected warning indicator for hyphens in Thao standard tier; "
-        f"stdout={proc.stdout!r}, stderr={proc.stderr!r}"
-    )
-
-
-def test_C012_null_morpheme_marker_stripped_from_standard(
-    tmp_path, fixtures_dir, copy_fixture
-):
-    """C012: the null-morpheme marker "Ø" is stripped from the standard tier
-    (with its bridging hyphen) for a language where "-" is not a letter.
-
-    "Ø" is a null-morpheme annotation, never an orthographic letter, so it must
-    not survive into the standard surface form alongside the segmentation it
-    marks. The original tier is left untouched.
-    """
-    work = copy_fixture(
-        fixtures_dir / "c012_null_morpheme_in_standard_trv.xml", tmp_path
-    )
-    proc = _run_clean(tmp_path)
-    assert proc.returncode == 0, f"stderr: {proc.stderr}"
-
-    std = _form_texts_with_kindof(work, "S", "standard")[0]
-    assert std == "dhuq sapah ka tama da.", f"standard: {std!r}"
-
-    # Original tier is source-faithful: Ø preserved.
-    orig = _form_texts_with_kindof(work, "S", "original")[0]
-    assert orig == "Ø-dhuq sapah ka tama da.", f"original: {orig!r}"
-
-
-def test_C012_null_morpheme_stripped_but_letter_hyphens_preserved(
-    tmp_path, fixtures_dir, copy_fixture
-):
-    """C012: "Ø" is stripped even when "-" IS a letter (Bunun), and removing the
-    null marker does NOT eat the real letter-hyphens around it.
-
-    Negative pin against an implementation that only strips "Ø" in the
-    hyphen-not-a-letter branch, or that strips it together with adjacent
-    letter-hyphens.
-    """
-    work = copy_fixture(
-        fixtures_dir / "c012_null_morpheme_in_standard_bunun.xml", tmp_path
-    )
-    proc = _run_clean(tmp_path)
-    assert proc.returncode == 0, f"stderr: {proc.stderr}"
-
-    std = _form_texts_with_kindof(work, "S", "standard")[0]
-    assert std == "ma-baliv-an.", f"standard: {std!r}"
+def test_clean_xml_leaves_standard_forms_untouched(tmp_path):
+    xml = ('<TEXT id="t" citation="c" copyright="c" xml:lang="ami">'
+           '<S id="S1"><FORM kindOf="original">a-b</FORM>'
+           '<FORM kindOf="standard">a-b</FORM></S></TEXT>')
+    d = tmp_path / "XML"; d.mkdir(parents=True)
+    (d / "t.xml").write_text(xml, encoding="utf-8")
+    proc = subprocess.run([sys.executable, str(CLEAN_XML),
+                           "--corpora_path", str(tmp_path)],
+                          capture_output=True, text=True)
+    assert proc.returncode == 0, proc.stderr
+    tree = etree.parse(str(d / "t.xml"))
+    assert tree.find(".//S/FORM[@kindOf='standard']").text == "a-b"  # untouched
 
 
 # =============================================================================
@@ -1086,3 +995,145 @@ def test_transform_counter_accumulates_and_formats():
     assert summary[0]["output"] == "("
     assert summary[1]["count"] == 1
     assert len(summary) == 2
+
+
+def test_null_marker_glyphs_normalized_in_all_tiers(
+    tmp_path, fixtures_dir, copy_fixture
+):
+    """ø/Ø/∅ in morpheme position normalize to canonical ∅ in every FORM
+    (original AND standard, S/W/M levels). Letter-adjacent ø (Danish
+    'Grønland') is untouched — it is a foreign letter, not an annotation."""
+    work = copy_fixture(
+        fixtures_dir / "null_morpheme_normalization.xml", tmp_path
+    )
+    proc = _run_clean(tmp_path)
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+
+    orig = _form_texts_with_kindof(work, "S", "original")[0]
+    assert orig == "∅-sitangah bangcal-∅ ∅ ma-kero Grønland.", f"original: {orig!r}"
+    assert _form_texts_with_kindof(work, "W", "original") == ["∅-sitangah"]
+    assert _form_texts_with_kindof(work, "M", "original") == ["∅", "sitangah"]
+
+
+@pytest.mark.parametrize("variant,name", [
+    ("‐", "HYPHEN"),
+    ("‑", "NON-BREAKING HYPHEN"),
+    ("‒", "FIGURE DASH"),
+    ("–", "EN DASH"),
+    ("—", "EM DASH"),
+    ("―", "HORIZONTAL BAR"),
+    ("−", "MINUS SIGN"),
+    ("﹘", "SMALL EM DASH"),
+    ("﹣", "SMALL HYPHEN-MINUS"),
+    ("－", "FULLWIDTH HYPHEN-MINUS"),
+])
+def test_clean_xml_canonicalizes_dashes_to_hyphen(tmp_path, variant, name):
+    """Each dash/hyphen look-alike canonicalizes to ASCII '-' in original tier."""
+    xml = (f'<TEXT id="t" citation="c" copyright="c" xml:lang="ami">'
+           f'<S id="S1"><FORM kindOf="original">a{variant}b</FORM></S></TEXT>')
+    d = tmp_path / "XML"; d.mkdir(parents=True)
+    (d / "t.xml").write_text(xml, encoding="utf-8")
+    proc = subprocess.run([sys.executable, str(CLEAN_XML),
+                           "--corpora_path", str(tmp_path)],
+                          capture_output=True, text=True)
+    assert proc.returncode == 0, proc.stderr
+    tree = etree.parse(str(d / "t.xml"))
+    text = tree.find(".//S/FORM[@kindOf='original']").text
+    assert text == "a-b", f"{name} (U+{ord(variant):04X}) did not canonicalize to '-'"
+
+
+# =============================================================================
+# C028 — double-encoded entity residue decoded to fixed point
+# =============================================================================
+
+
+def test_C028_double_encoded_angle_brackets_in_FORM_decoded(
+    tmp_path, fixtures_dir, copy_fixture
+):
+    """C028 positive: post-parse '&lt;um&gt;' in FORM becomes real '<um>'."""
+    work = copy_fixture(
+        fixtures_dir / "c028_double_encoded_entities.xml", tmp_path)
+    proc = _run_clean(tmp_path)
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    orig = _form_texts_with_kindof(work, "S", "original")
+    assert orig[0] == "a <um> b"
+
+
+def test_C028_multiply_wrapped_residue_reaches_fixed_point(
+    tmp_path, fixtures_dir, copy_fixture
+):
+    """C028: '&amp;lt;' (triple-encoded source) decodes all the way to '<'.
+
+    Fixed-point decoding is what keeps the cleaner idempotent: a
+    single-level decode would leave '&lt;' for the NEXT run to decode,
+    changing output run over run.
+    """
+    work = copy_fixture(
+        fixtures_dir / "c028_double_encoded_entities.xml", tmp_path)
+    proc = _run_clean(tmp_path)
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    orig = _form_texts_with_kindof(work, "S", "original")
+    assert orig[1] == "x < y"
+
+
+def test_C028_numeric_reference_decodes_then_flows_through_pipeline(
+    tmp_path, fixtures_dir, copy_fixture
+):
+    """C028: '&#8212;' decodes to an em-dash, which the later dash pass
+    canonicalizes to ASCII '-' — decode runs FIRST so decoded characters
+    flow through the rest of the cleaning pipeline."""
+    work = copy_fixture(
+        fixtures_dir / "c028_double_encoded_entities.xml", tmp_path)
+    proc = _run_clean(tmp_path)
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    transl = _transl_texts(work)
+    assert transl[0] == "dash - here"
+    assert transl[1] == 'quote "word" end'
+
+
+def test_C028_bare_ampersand_untouched(tmp_path, fixtures_dir, copy_fixture):
+    """C028 negative: a lone '&' is not entity residue and must survive."""
+    work = copy_fixture(
+        fixtures_dir / "c028_double_encoded_entities.xml", tmp_path)
+    proc = _run_clean(tmp_path)
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    orig = _form_texts_with_kindof(work, "S", "original")
+    transl = _transl_texts(work)
+    assert orig[2] == "salt & pepper"
+    assert transl[2] == "AT&T stays"
+
+
+def test_C028_warning_rows_emitted(tmp_path, fixtures_dir, copy_fixture):
+    """C028: each decoded residue occurrence emits a c028 warning row."""
+    import csv as _csv
+    copy_fixture(fixtures_dir / "c028_double_encoded_entities.xml", tmp_path)
+    proc = _run_clean(tmp_path)
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    warnings_csv = tmp_path / "cleaner_warnings.csv"
+    assert warnings_csv.exists()
+    with open(warnings_csv, newline="", encoding="utf-8") as f:
+        rows = [r for r in _csv.DictReader(f) if r["rule_id"] == "c028"]
+    assert rows, "expected c028 warning rows for decoded residue"
+
+
+# =============================================================================
+# C029 — tilde look-alikes canonicalize to ASCII '~' (POL-013 codepoint)
+# =============================================================================
+
+
+def test_C029_math_tilde_and_wave_dash_become_ascii(
+    tmp_path, fixtures_dir, copy_fixture
+):
+    """U+223C (LaTeX math tilde) and U+301C (wave dash) -> '~' U+007E in
+    FORM and non-Chinese TRANSL, so reduplication notation is one
+    codepoint corpus-wide."""
+    work = copy_fixture(
+        fixtures_dir / "c029_tilde_lookalikes_in_form.xml", tmp_path)
+    proc = _run_clean(tmp_path)
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    orig = _form_texts_with_kindof(work, "S", "original")
+    assert orig[0] == "Pa~pakat"
+    assert orig[1] == "ma~kero"
+    transl = _transl_texts(work)
+    assert transl[0] == "RED~walk"
+    assert "∼" not in " ".join(orig + transl)

@@ -159,7 +159,95 @@ def run_cleanup():
         print(f'  {cat}: {n}')
 
 
+# ── Normalization pass ─────────────────────────────────────────────────────────
+# The published corpus (regenerated 2026-06-10, commit 18868920e) uses
+# M ids of the form <Wid>M<n> (1-based, document order) — verified to hold
+# for all 198,185 published M elements — while the parsers emit
+# <Wid>_M<j>_<k>[_<l>] slot-derived ids. The published scheme is canonical
+# (apply_manual_corrections.py's element-id-targeted entries depend on it),
+# so ids are normalized here after parsing.
+#
+# Likewise the published TEXT elements all carry a dialect attribute; the
+# parsers set it only where the source folder names a dialect distinct
+# from the language. The published values are pinned below (per
+# subcorpus/language; single-dialect languages follow the dialects.csv
+# convention dialect == language name; Sentences/Bunun is Junqun per
+# maintainer determination despite the source folder saying Isbukun).
+
+DIALECTS = {
+    ('Grammar',   'Kanakanavu'): 'Kanakanavu',
+    ('Grammar',   'Sakizaya'):   'Sakizaya',
+    ('Grammar',   'Seediq'):     'Tegudaya',
+    ('Sentences', 'Bunun'):      'Junqun',
+    ('Sentences', 'Kanakanavu'): 'Kanakanavu',
+    ('Sentences', 'Rukai'):      'Wutai',
+    ('Stories',   'Amis'):       'Coastal',
+    ('Stories',   'Atayal'):     'Wenshui',
+    ('Stories',   'Bunun'):      'Junqun',
+    ('Stories',   'Kanakanavu'): 'Kanakanavu',
+    ('Stories',   'Kavalan'):    'Kavalan',
+    ('Stories',   'Rukai'):      'Wutai',
+    ('Stories',   'Saisiyat'):   'Saisiyat',
+    ('Stories',   'Sakizaya'):   'Sakizaya',
+    ('Stories',   'Seediq'):     'Tegudaya',
+    ('Stories',   'Tsou'):       'Tsou',
+}
+
+
+def normalize_xml_file(xml_path, category, language):
+    """Normalize M ids to <Wid>M<n> and pin the TEXT dialect attribute.
+    Returns True if the file was modified."""
+    try:
+        tree = ET.parse(xml_path)
+    except ET.ParseError as e:
+        print(f'  WARNING: cannot parse {xml_path}: {e}', file=sys.stderr)
+        return False
+    root = tree.getroot()
+    modified = False
+
+    dialect = DIALECTS.get((category, language))
+    current = root.get('dialect')
+    if dialect and current is None:
+        root.set('dialect', dialect)
+        modified = True
+    elif dialect and current != dialect:
+        print(f'  WARNING: {xml_path}: parser dialect {current!r} != '
+              f'pinned {dialect!r}; keeping parser value', file=sys.stderr)
+
+    for w in root.iter('W'):
+        wid = w.get('id') or ''
+        for n, m in enumerate(w.findall('M'), 1):
+            new_id = f'{wid}M{n}'
+            if m.get('id') != new_id:
+                m.set('id', new_id)
+                modified = True
+
+    if modified:
+        with open(xml_path, 'w', encoding='utf-8') as f:
+            f.write(prettify(root))
+    return modified
+
+
+def run_normalize():
+    print('\n=== Normalization pass: M ids + dialect attributes ===')
+    files_modified = 0
+    for category in ('Grammar', 'Sentences', 'Stories'):
+        cat_dir = os.path.join(FINAL_XML, category)
+        if not os.path.isdir(cat_dir):
+            continue
+        for lang_dir in sorted(os.listdir(cat_dir)):
+            full_dir = os.path.join(cat_dir, lang_dir)
+            if not os.path.isdir(full_dir):
+                continue
+            for fname in sorted(os.listdir(full_dir)):
+                if fname.endswith('.xml') and normalize_xml_file(
+                        os.path.join(full_dir, fname), category, lang_dir):
+                    files_modified += 1
+    print(f'Normalized {files_modified} files')
+
+
 # ── Entry point ────────────────────────────────────────────────────────────────
 if __name__ == '__main__':
     run_parsers()
     run_cleanup()
+    run_normalize()

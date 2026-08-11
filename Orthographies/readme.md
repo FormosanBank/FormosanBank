@@ -1,3 +1,65 @@
+# Orthography profiles
+
+`QC/utilities/add_phonology.py` reads one source profile from
+`Orthographies/<profile>/<Language>.tsv`. Each TSV uses the same shape as the
+official tables: `letter` contains the source grapheme and the language
+or dialect columns contain its phonological value. The utility matches the
+longest source grapheme first and maps each input grapheme once. Unknown
+characters become `*` so incomplete profiles remain visible during QC.
+
+Profiles can include an ordered `<Language>.rules.tsv` sidecar with these
+columns:
+
+| Column | Meaning |
+|---|---|
+| `pattern` | Python regular expression applied to the mapped phonology |
+| `replacement` | Literal replacement text |
+| `description` | Short explanation of the source rule |
+| `dialect` | Optional. Dialect(s) the rule applies to (see below) |
+
+Rules run after the unconditional TSV mappings. They are for documented,
+deterministic context rules only. Lexical, stress, and morphological rules
+that cannot be inferred from the written form stay in the development
+repository for expert review.
+
+The optional `dialect` column scopes a rule to particular dialects, matched
+against the raw `dialect` attribute of the `<TEXT>` element (the same value the
+mapping columns resolve against). Its semantics mirror the mapping columns'
+dialect/default fallback:
+
+- a blank cell — or omitting the column entirely — makes the rule **universal**
+  (applies to every dialect);
+- one or more comma-separated dialect names — the rule applies only to those
+  dialects;
+- the literal token `default` — the rule is the **fallback**, applied only to
+  dialects that no rule names explicitly, so a named dialect (e.g. Truku, which
+  has its own Seediq phonotactics) takes its own rules instead of the fallback.
+
+The reviewed source profiles below centralize mappings that were previously
+implemented in individual corpus repositories. Their Basecamp comment IDs
+record the review evidence used to build them.
+
+| Profile | Language | Review evidence | Boundary |
+|---|---|---|---|
+| `StacyHuang` | Yami | 10126284987 | Proper-name capitalization is not reproduced in PHON. |
+| `Pgagu` | Seediq | 10130865408 | Punctuation is not treated as an undocumented glottal stop. |
+| `TaiwanNandao` | Amis | 10129926256 | Stress-conditioned schwa needs lexical stress data. |
+| `TaiwanNandao` | Rukai | 10129032684 | The supplied OCR corpus was the wrong source, so this profile is table-reviewed only. |
+| `TaiwanNandao` | Puyuma | 10141444256 | Penultimate schwa needs syllable and stress analysis. |
+| `TaiwanNandao` | Paiwan | 10155208202 | Verb-class final `i` needs lexical information. |
+| `TaiwanNandao` | Seediq | 10155470797 | Implements the reviewed source mappings without corpus-specific overrides. |
+| `Huang` | Bunun | 10131205489 | Implements the documented Glide source mappings and context rules. |
+| `Zhang` | Kavalan | 10135905572 | Implements the reviewed uvular and glide context rules. |
+| `Li` | Rukai | 10136983267 | Preserves case-sensitive source distinctions such as `T` and `t`. |
+| `Cauquelin` | Puyuma | 10145149843 | No source-to-Ortho113 conversion is asserted for unresolved vowel correspondences. |
+| `Tsuchida` | Pazeh | 10150746084 | Produces original PHON; no Ortho113 Pazeh table currently exists. |
+| `Ochiai` | Seediq | 10152216849 | Implements the reviewed source mappings and conversion table. |
+
+Tsuchida's Saisiyat source supplies bracketed phonology directly rather than
+deriving it from FORM. Keep that source PHON with
+`--preserve-existing-original`. `Saisiyat_Tsuchida_113.tsv` remains available
+for standardizing its written form.
+
 # Ortho113Liberal
 
 ## Amis
@@ -213,7 +275,7 @@ Similar to Ortho94, though some phonemes have been refined.
 
 Notes that `n_g` is used to distinguish `n`+`g` from `ng`. This is handled by adding an orthographic form `n_g` in the chart.
 
-By itself, `_` can be used for /ə/. To handle this, `_` is entered into the chart after `n_g`. The code does transformations in order from the top of the chart, so this ensures `n_g` will be handled before remaining `_` are handled.
+By itself, `_` can be used for /ə/. The phonology utility's longest-grapheme matching handles `n_g` before the shorter `_` automatically.
 
 The mid-vowels [e] and [o] vary within different Atayal language sub-species. For example, most tribes of the Saikaolik Atayal language use the written characters "e" and "o", but in some areas, such as Taoshan Village in Wufeng Township, Hsinchu County, the Saikaolik Atayal native vocabulary does not use the written characters "e" and "o".
 
@@ -313,4 +375,3 @@ According to the text of Ortho94, Paiwan bible scripts do not distinguish:
 * `tj` from `t`
 * `dj` from `d`
 * `dl` from `l`
-

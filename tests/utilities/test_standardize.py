@@ -19,7 +19,10 @@ import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
+import pytest
+
 STANDARDIZE = Path(__file__).resolve().parents[2] / "QC" / "utilities" / "standardize.py"
+CONVERSION_TABLES = STANDARDIZE.parents[2] / "Orthographies" / "ConversionTables"
 
 
 def _run_standardize(args: list[str]) -> subprocess.CompletedProcess:
@@ -308,6 +311,67 @@ def test_accents_are_stripped_before_mapping_is_applied(tmp_path):
     )
 
 
+def test_explicit_diacritic_letter_mapping_precedes_accent_cleanup(tmp_path):
+    corpus = tmp_path / "corpus"
+    work = _write_corpus_xml(
+        corpus,
+        "saisiyat.xml",
+        '<TEXT xml:lang="xsy" dialect="Saisiyat">'
+        '<S id="1"><FORM kindOf="original">söwäy má</FORM></S></TEXT>',
+    )
+    tsv = tmp_path / "source_letters.tsv"
+    tsv.write_text(
+        "original\tstandard\nö\to:e\nä\tae\na\tA\n",
+        encoding="utf-8",
+    )
+
+    proc = _run_standardize(
+        ["--tsv_path", str(tsv), "--corpora_path", str(corpus)]
+    )
+
+    assert proc.returncode == 0, proc.stderr
+    assert _standard_forms(work) == ["so:ewaey mA"]
+
+
+@pytest.mark.parametrize(
+    ("lang", "dialect", "table", "source", "expected"),
+    [
+        ("xsy", "Saisiyat", "Saisiyat_Tsuchida_113.tsv", "βŋöäʔš’", "bngo:eae'S"),
+        ("bnn", "Zhuoqun", "Bunun_Huang_113.tsv", "ʔaðaŋ", "'azang"),
+        ("dru", "Wutai", "Rukai_Li_113.tsv", "a:TDeꟈə", "aatrdrédhe"),
+        ("pzh", "Pazeh", "Pazeh_Tsuchida_113.tsv", "du?ay", "du'ay"),
+        ("trv", "Tegudaya", "Seediq_Ochiai_113.tsv", "ŋuy", "nguy"),
+    ],
+)
+def test_reviewed_source_conversion_tables(
+    tmp_path,
+    lang: str,
+    dialect: str,
+    table: str,
+    source: str,
+    expected: str,
+):
+    corpus = tmp_path / "corpus"
+    work = _write_corpus_xml(
+        corpus,
+        "source.xml",
+        f'<TEXT xml:lang="{lang}" dialect="{dialect}">'
+        f'<S id="1"><FORM kindOf="original">{source}</FORM></S></TEXT>',
+    )
+
+    proc = _run_standardize(
+        [
+            "--tsv_path",
+            str(CONVERSION_TABLES / table),
+            "--corpora_path",
+            str(corpus),
+        ]
+    )
+
+    assert proc.returncode == 0, proc.stderr
+    assert _standard_forms(work) == [expected]
+
+
 def test_standardization_leaves_original_tier_accents_untouched(tmp_path):
     """Stripping accents is a standard-tier operation only: the original tier
     must keep its exact source spelling, diacritics and all."""
@@ -328,18 +392,18 @@ def test_standardization_leaves_original_tier_accents_untouched(tmp_path):
     )
 
 
-# --- --ortho113 mode: copy + delete accents (no TSV, no dialectal conversion) --
+# --- --remove_accents mode: copy + delete accents (no TSV, no dialectal conv) --
 #
 # For a corpus whose dialect is unknown or mixed we cannot apply a dialect-
-# specific conversion table, but we can still produce an Ortho113-compatible
-# standard tier by removing accents (the one dialect-independent normalization,
-# since no Formosan orthography uses accents phonemically). --ortho113 is that
-# mode: like --copy, but it deletes accents from the standard tier.
+# specific conversion table, but we can still produce a standard tier by
+# removing accents (the one dialect-independent normalization, since no Formosan
+# orthography uses accents phonemically). --remove_accents is that mode: like
+# --copy, but it deletes accents from the standard tier.
 
 
-def test_ortho113_mode_deletes_accents_without_a_tsv(tmp_path):
-    """--ortho113 creates the standard tier as the original with accents removed,
-    requiring no TSV and doing no dialectal letter conversion."""
+def test_remove_accents_mode_deletes_accents_without_a_tsv(tmp_path):
+    """--remove_accents creates the standard tier as the original with accents
+    removed, requiring no TSV and doing no dialectal letter conversion."""
     corpus = tmp_path / "corpus"
     work = _write_corpus_xml(
         corpus,
@@ -347,7 +411,7 @@ def test_ortho113_mode_deletes_accents_without_a_tsv(tmp_path):
         '<TEXT xml:lang="trv" dialect="Truku">'
         '<S id="1"><FORM kindOf="original">máduk dálix dourŭk</FORM></S></TEXT>',
     )
-    proc = _run_standardize(["--ortho113", "--corpora_path", str(corpus)])
+    proc = _run_standardize(["--remove_accents", "--corpora_path", str(corpus)])
     assert proc.returncode == 0, f"stderr: {proc.stderr}"
     # accents gone; every base letter (including o/u) left exactly as written
     assert _standard_forms(work) == ["maduk dalix douruk"], (
@@ -355,8 +419,8 @@ def test_ortho113_mode_deletes_accents_without_a_tsv(tmp_path):
     )
 
 
-def test_ortho113_mode_leaves_original_tier_untouched(tmp_path):
-    """--ortho113 is a standard-tier operation only; the original keeps its accents."""
+def test_remove_accents_mode_leaves_original_tier_untouched(tmp_path):
+    """--remove_accents is a standard-tier operation only; original keeps accents."""
     corpus = tmp_path / "corpus"
     work = _write_corpus_xml(
         corpus,
@@ -364,6 +428,334 @@ def test_ortho113_mode_leaves_original_tier_untouched(tmp_path):
         '<TEXT xml:lang="trv" dialect="Truku">'
         '<S id="1"><FORM kindOf="original">máduk dálix</FORM></S></TEXT>',
     )
-    proc = _run_standardize(["--ortho113", "--corpora_path", str(corpus)])
+    proc = _run_standardize(["--remove_accents", "--corpora_path", str(corpus)])
     assert proc.returncode == 0, f"stderr: {proc.stderr}"
     assert _original_forms(work) == ["máduk dálix"]
+
+
+# --- Capital-letter variant derivation via the source orthography profile -----
+#
+# standardize.py applies conversion-table rules with literal, case-sensitive
+# str.replace, so a rule "o -> u" never converts sentence-initial "O". These
+# tests wire derive_case_variants into --tsv_path mode: when the table's
+# filename resolves to a real source profile, rules are expanded with
+# Title-case/ALL-CAPS variants (suppressed where the profile declares the
+# capital a distinct phonemic grapheme). Non-conforming filenames or a
+# missing profile fall back to the exact old (no-derivation) behavior.
+
+
+def _write_case_fixture(tmp_path, xml_text):
+    """Build Orthographies/{ConversionTables,Ortho94}/ + a collection root.
+
+    Table rules: o->u, ng->ŋ, t->c. Profile declares T a distinct
+    grapheme, so t must not spawn a T variant.
+    Returns (table_path, collection_root, xml_path).
+    """
+    conv = tmp_path / "Orthographies" / "ConversionTables"
+    prof = tmp_path / "Orthographies" / "Ortho94"
+    conv.mkdir(parents=True)
+    prof.mkdir(parents=True)
+    table = conv / "Amis_94_113.tsv"
+    table.write_text(
+        "original\tstandard\no\tu\nng\tŋ\nt\tc\n", encoding="utf-8"
+    )
+    prof.joinpath("Amis.tsv").write_text(
+        "letter\tstandard\nT\tʈ\no\to\nng\tŋ\nt\tt\n",
+        encoding="utf-8",
+    )
+    collection = tmp_path / "collection"
+    xml_dir = collection / "XML"
+    xml_dir.mkdir(parents=True)
+    xml_path = xml_dir / "doc.xml"
+    xml_path.write_text(xml_text, encoding="utf-8")
+    return table, collection, xml_path
+
+
+_CASE_XML = (
+    '<?xml version="1.0"?>\n'
+    '<TEXT id="t" xml:lang="ami">\n'
+    '  <S id="s1"><FORM kindOf="original">O to ngi NGA Ti</FORM></S>\n'
+    "</TEXT>\n"
+)
+
+
+def test_case_variants_applied_from_conforming_table(tmp_path):
+    table, collection, xml_path = _write_case_fixture(tmp_path, _CASE_XML)
+    proc = _run_standardize([
+        "--tsv_path", str(table),
+        "--target_column", "standard",
+        "--corpora_path", str(collection),
+    ])
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    # o->u converts 'o' and (derived) 'O'; ng->ŋ converts 'ngi' and
+    # (derived ALL-CAPS) 'NGA' -> 'ŊA'; t->c converts lowercase 't'
+    # ('to' became 'tu' after o->u, then 'cu') but the profile's phonemic
+    # 'T' in 'Ti' must survive untouched.
+    assert _standard_forms(xml_path) == ["U cu ŋi ŊA Ti"]
+
+
+def test_nonconforming_table_name_warns_and_derives_nothing(tmp_path):
+    table, collection, xml_path = _write_case_fixture(tmp_path, _CASE_XML)
+    plain = table.with_name("tiny_mapping.tsv")
+    table.rename(plain)
+    proc = _run_standardize([
+        "--tsv_path", str(plain),
+        "--target_column", "standard",
+        "--corpora_path", str(collection),
+    ])
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    assert "Warning:" in proc.stdout and "NOT be derived" in proc.stdout
+    # Status quo: lowercase rules apply, capitals pass through.
+    assert _standard_forms(xml_path) == ["O cu ŋi NGA Ti"]
+
+
+def test_missing_profile_warns_and_derives_nothing(tmp_path):
+    table, collection, xml_path = _write_case_fixture(tmp_path, _CASE_XML)
+    (tmp_path / "Orthographies" / "Ortho94" / "Amis.tsv").unlink()
+    proc = _run_standardize([
+        "--tsv_path", str(table),
+        "--target_column", "standard",
+        "--corpora_path", str(collection),
+    ])
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    assert "Warning:" in proc.stdout and "NOT be derived" in proc.stdout
+    assert _standard_forms(xml_path) == ["O cu ŋi NGA Ti"]
+
+
+def test_profile_missing_letter_column_warns_and_derives_nothing(tmp_path):
+    """A present-but-malformed profile (no 'letter' column) must degrade
+    the same way a missing profile does, not silently derive with zero
+    suppression."""
+    table, collection, xml_path = _write_case_fixture(tmp_path, _CASE_XML)
+    (tmp_path / "Orthographies" / "Ortho94" / "Amis.tsv").write_text(
+        "grapheme\tstandard\nT\tʈ\no\to\nng\tŋ\nt\tt\n",
+        encoding="utf-8",
+    )
+    proc = _run_standardize([
+        "--tsv_path", str(table),
+        "--target_column", "standard",
+        "--corpora_path", str(collection),
+    ])
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    assert "Warning:" in proc.stdout and "NOT be derived" in proc.stdout
+    assert "not found" not in proc.stdout
+    # Status quo: lowercase rules apply, capitals pass through.
+    assert _standard_forms(xml_path) == ["O cu ŋi NGA Ti"]
+
+
+# --- Null-morpheme unit removal -----------------------------------------------
+#
+# Null morphemes are written as ∅ (U+2205) in both original and standard tiers.
+# In the S-level standard FORM, they are meaningless — a null morpheme position
+# in a sentence-level representation adds no information and breaks downstream
+# tokenization. They are removed as a unit: ∅- (prefix marker + hyphen),
+# -∅ (suffix marker + hyphen), or standalone ∅ (inter-word null).
+# W/M tiers retain ∅ because the morpheme tier is where a null is meaningful.
+# --copy mode is a pure duplication and must never remove anything.
+
+_NULL_XML = (
+    '<TEXT id="T_NULL" citation="t" BibTeX_citation="@t{t}" copyright="t" '
+    'xml:lang="szy" dialect="unknown">'
+    '<S id="1"><FORM kindOf="original">∅-sitangah kero-∅ ∅ misa</FORM>'
+    '<W id="1-W1"><FORM kindOf="original">∅-sitangah</FORM>'
+    '<M id="1-W1-M1"><FORM kindOf="original">∅</FORM></M>'
+    '<M id="1-W1-M2"><FORM kindOf="original">sitangah</FORM></M>'
+    "</W></S></TEXT>"
+)
+
+
+def test_remove_accents_strips_null_units_from_S_standard_only(tmp_path):
+    """Non-copy modes remove null units (∅-, -∅, standalone ∅) from the
+    S-level standard FORM before any other transformation; W/M standard
+    FORMs and the original tier retain them."""
+    corpus = tmp_path / "corpus"
+    work = _write_corpus_xml(corpus, "n.xml", _NULL_XML)
+    proc = _run_standardize(["--remove_accents", "--corpora_path", str(corpus)])
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    root = ET.parse(work).getroot()
+    assert root.findtext("./S/FORM[@kindOf='standard']") == "sitangah kero misa"
+    assert root.findtext("./S/W/FORM[@kindOf='standard']") == "∅-sitangah"
+    assert root.findtext("./S/W/M/FORM[@kindOf='standard']") == "∅"
+    assert (
+        root.findtext("./S/FORM[@kindOf='original']") == "∅-sitangah kero-∅ ∅ misa"
+    )
+
+
+def test_tsv_mode_strips_null_units_from_S_standard(tmp_path):
+    corpus = tmp_path / "corpus"
+    work = _write_corpus_xml(corpus, "n.xml", _NULL_XML)
+    tsv = tmp_path / "map.tsv"
+    tsv.write_text("original\ttarget\nkero\tkiro\n", encoding="utf-8")
+    proc = _run_standardize([
+        "--tsv_path", str(tsv),
+        "--target_column", "target",
+        "--corpora_path", str(corpus),
+    ])
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    root = ET.parse(work).getroot()
+    assert root.findtext("./S/FORM[@kindOf='standard']") == "sitangah kiro misa"
+    assert root.findtext("./S/W/FORM[@kindOf='standard']") == "∅-sitangah"
+    assert root.findtext("./S/W/M/FORM[@kindOf='standard']") == "∅"
+
+
+def test_copy_mode_retains_null_units_in_S_standard(tmp_path):
+    """--copy is a pure duplication: the standard tier keeps null units."""
+    corpus = tmp_path / "corpus"
+    work = _write_corpus_xml(corpus, "n.xml", _NULL_XML)
+    proc = _run_standardize(["--copy", "--corpora_path", str(corpus)])
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    root = ET.parse(work).getroot()
+    assert (
+        root.findtext("./S/FORM[@kindOf='standard']") == "∅-sitangah kero-∅ ∅ misa"
+    )
+# --- C012: hyphen handling in S-level standard FORM ---------------------------
+#
+# standardize.py applies C012 to the S-level standard FORM in all modes EXCEPT
+# --copy (pure duplication, 2026-08-09 ruling): strip hyphens for languages
+# where '-' is not a letter, preserve them for Bunun (bnn) and Thao (ssf).
+# Null units are removed by remove_null_units() BEFORE C012 (see the null
+# tests above); C012 additionally never strips a '∅'-adjacent hyphen.
+# W and M standard FORMs must NOT be touched (they carry morpheme segmentation).
+# These tests use --remove_accents as the lightest C012-running mode.
+
+
+def _write_collection(tmp_path, xml_text: str) -> Path:
+    d = tmp_path / "XML"
+    d.mkdir(parents=True, exist_ok=True)
+    (d / "t.xml").write_text(xml_text, encoding="utf-8")
+    return tmp_path
+
+
+def _std_text(tmp_path):
+    tree = ET.parse(tmp_path / "XML" / "t.xml")
+    return tree.find(".//S/FORM[@kindOf='standard']").text
+
+
+AMIS = ('<TEXT id="t" citation="c" copyright="c" xml:lang="ami">'
+        '<S id="S1"><FORM kindOf="original">mkan-ku-nhapuy</FORM>'
+        '<W id="W1"><M id="M1"><FORM kindOf="original">x</FORM></M></W></S></TEXT>')
+BUNUN = ('<TEXT id="t" citation="c" copyright="c" xml:lang="bnn">'
+         '<S id="S1"><FORM kindOf="original">ma-baliv-an</FORM>'
+         '<W id="W1"><M id="M1"><FORM kindOf="original">x</FORM></M></W></S></TEXT>')
+THAO = ('<TEXT id="t" citation="c" copyright="c" xml:lang="ssf">'
+        '<S id="S1"><FORM kindOf="original">qa-li-ka-tu</FORM>'
+        '<W id="W1"><M id="M1"><FORM kindOf="original">x</FORM></M></W></S></TEXT>')
+
+
+def test_standardize_strips_hyphens_for_non_letter_language(tmp_path):
+    root = _write_collection(tmp_path, AMIS)
+    proc = _run_standardize(["--corpora_path", str(root), "--remove_accents"])
+    assert proc.returncode == 0, proc.stderr
+    assert _std_text(root) == "mkankunhapuy"
+
+
+def test_standardize_preserves_hyphens_for_bunun(tmp_path):
+    root = _write_collection(tmp_path, BUNUN)
+    proc = _run_standardize(["--corpora_path", str(root), "--remove_accents"])
+    assert proc.returncode == 0, proc.stderr
+    assert _std_text(root) == "ma-baliv-an"
+
+
+def test_standardize_preserves_hyphens_for_thao(tmp_path):
+    root = _write_collection(tmp_path, THAO)
+    proc = _run_standardize(["--corpora_path", str(root), "--remove_accents"])
+    assert proc.returncode == 0, proc.stderr
+    assert _std_text(root) == "qa-li-ka-tu"
+
+
+def test_standardize_hard_remove_strips_bunun(tmp_path):
+    root = _write_collection(tmp_path, BUNUN)
+    proc = _run_standardize(
+        ["--corpora_path", str(root), "--remove_accents", "--hard-remove-segmentation"])
+    assert proc.returncode == 0, proc.stderr
+    assert _std_text(root) == "mabalivan"
+
+
+def test_standardize_removes_infix_null_unit_before_C012(tmp_path):
+    """An infix null unit ('ka-∅-en') is removed by remove_null_units()
+    (one bridging hyphen goes with the marker), then C012 strips the
+    remaining segmentation hyphen. Input uses the canonical ∅: glyph
+    normalization (ø/Ø → ∅) is clean_xml's job and runs earlier in the
+    pipeline; standardize never sees legacy marker glyphs."""
+    xml = ('<TEXT id="t" citation="c" copyright="c" xml:lang="ami">'
+           '<S id="S1"><FORM kindOf="original">ka-∅-en</FORM>'
+           '<W id="W1"><M id="M1"><FORM kindOf="original">x</FORM></M></W></S></TEXT>')
+    root = _write_collection(tmp_path, xml)
+    proc = _run_standardize(["--corpora_path", str(root), "--remove_accents"])
+    assert proc.returncode == 0, proc.stderr
+    assert _std_text(root) == "kaen"
+
+
+def test_standardize_leaves_WM_standard_segmentation(tmp_path):
+    xml = ('<TEXT id="t" citation="c" copyright="c" xml:lang="ami">'
+           '<S id="S1"><FORM kindOf="original">a-b</FORM>'
+           '<W id="W1"><FORM kindOf="original">a-b</FORM>'
+           '<M id="M1"><FORM kindOf="original">a-b</FORM></M></W></S></TEXT>')
+    root = _write_collection(tmp_path, xml)
+    proc = _run_standardize(["--corpora_path", str(root), "--remove_accents"])
+    assert proc.returncode == 0, proc.stderr
+    tree = ET.parse(root / "XML" / "t.xml")
+    assert tree.find(".//S/FORM[@kindOf='standard']").text == "ab"        # S stripped
+    assert tree.find(".//W/FORM[@kindOf='standard']").text == "a-b"       # W kept
+    assert tree.find(".//M/FORM[@kindOf='standard']").text == "a-b"       # M kept
+
+
+# --- C012/C022: warnings CSV --------------------------------------------------
+#
+# standardize.py must write a standardize_warnings.csv under --corpora_path
+# that contains c012 rows for Bunun/Thao hyphens that are preserved and c022
+# rows for '*' characters found in the standard FORM.
+
+
+def _warnings_csv(tmp_path):
+    p = tmp_path / "standardize_warnings.csv"
+    return p.read_text(encoding="utf-8") if p.exists() else ""
+
+
+def test_standardize_warns_c012_on_preserved_bunun(tmp_path):
+    root = _write_collection(tmp_path, BUNUN)
+    proc = _run_standardize(["--corpora_path", str(root), "--remove_accents"])
+    assert proc.returncode == 0, proc.stderr
+    assert "c012" in _warnings_csv(root)
+
+
+def test_standardize_warns_c022_on_star_in_standard(tmp_path):
+    xml = ('<TEXT id="t" citation="c" copyright="c" xml:lang="ami">'
+           '<S id="S1"><FORM kindOf="original">ka*en</FORM>'
+           '<W id="W1"><M id="M1"><FORM kindOf="original">x</FORM></M></W></S></TEXT>')
+    root = _write_collection(tmp_path, xml)
+    proc = _run_standardize(["--corpora_path", str(root), "--remove_accents"])
+    assert proc.returncode == 0, proc.stderr
+    assert "c022" in _warnings_csv(root)
+
+
+def test_standardize_keeps_digit_flanked_hyphen(tmp_path):
+    """C012: segmentation hyphens stripped but digit-flanked hyphens kept."""
+    xml = ('<TEXT id="t" citation="c" copyright="c" xml:lang="ami">'
+           '<S id="S1"><FORM kindOf="original">ka-en 2020-07-31 3:2-5</FORM>'
+           '<W id="W1"><M id="M1"><FORM kindOf="original">x</FORM></M></W></S></TEXT>')
+    root = _write_collection(tmp_path, xml)
+    proc = _run_standardize(["--corpora_path", str(root), "--remove_accents"])
+    assert proc.returncode == 0, proc.stderr
+    assert _std_text(root) == "kaen 2020-07-31 3:2-5"
+
+
+def test_standardize_skips_c012_for_unsegmented_sentence(tmp_path):
+    """C012 must NOT fire on an S with no <M> descendant (e.g. running prose)."""
+    xml = ('<TEXT id="t" citation="c" copyright="c" xml:lang="ami">'
+           '<S id="S1"><FORM kindOf="original">Proto-Austronesian ka-en</FORM></S></TEXT>')
+    root = _write_collection(tmp_path, xml)
+    proc = _run_standardize(["--corpora_path", str(root), "--remove_accents"])
+    assert proc.returncode == 0, proc.stderr
+    assert _std_text(root) == "Proto-Austronesian ka-en"
+
+
+def test_copy_mode_is_pure_duplication_no_C012(tmp_path):
+    """--copy performs NO cleaning at all (2026-08-09 ruling): segmentation
+    hyphens survive in the S-level standard FORM verbatim. V133/V120 flag
+    them SOFT until the corpus is re-standardized with a conversion table."""
+    root = _write_collection(tmp_path, AMIS)
+    proc = _run_standardize(["--corpora_path", str(root), "--copy"])
+    assert proc.returncode == 0, proc.stderr
+    assert _std_text(root) == "mkan-ku-nhapuy"
+

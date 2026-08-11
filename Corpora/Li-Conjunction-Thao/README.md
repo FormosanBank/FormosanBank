@@ -1,13 +1,11 @@
 # Li (2014), *Conjunction in Thao*
 
-Private FormosanBank development repository for [Basecamp card 8244168564](https://app.basecamp.com/3340659/buckets/31258415/card_tables/cards/8244168564).
-
 - Language/dialect: Thao (`ssf`, `dialect="Thao"`)
 - Source: Paul Jen-Kuei Li, “Conjunction in Thao,” pp. 401–409
 - Canonical source: <https://openresearch-repository.anu.edu.au/items/8bfb8bf0-2f58-4eae-947c-bf9af50faf9f>
 - Scope: all 24 numbered Thao examples and three additional Thao examples in footnote 7
-- Status: Madeline's W/M and standard-form review is implemented and validated
-- Final deliverable: `Final_XML/Thao/li_2014_conjunction_in_thao.xml`
+- Status: expert W/M and standard-form review implemented and validated; published XML in `XML/Thao/`
+- Development history: initial processing in the `Formosan-Paul-Jen-Kuei-Li-Conjunction-Thao` dev repo ([Basecamp card 8244168564](https://app.basecamp.com/3340659/buckets/31258415/card_tables/cards/8244168564)); everything needed to reproduce the XML is under `CodeAndDocs/`
 
 The source uses Li's scholarly (IPA-style) transcription and aligned gloss lines.
 The `original` tier preserves that transcription; the `standard` tier is Li's
@@ -27,20 +25,39 @@ accents. It is not a standard tier unless it is Ortho113.
 `standardize.py` rebuilds the standard tier from the original, so it re-introduces
 the source segmentation notation (`-`, `=`, `<`, `>`). `scripts/flatten_standard_segmentation.py`
 then removes those markers from the **sentence-level** `FORM[@kindOf="standard"]`.
-This includes the hyphen, even though Thao's reference orthography lists `-` as a
-letter and the general FormosanBank `clean_xml` C012 rule therefore keeps it for
-Thao. That C012 exemption exists to protect a `-` that is a real orthographic
-letter; in this source the hyphens only ever mark morpheme boundaries in Li's
-interlinear analysis (the glottal stop is written `ʔ`, never `-`), with no
-evidence Li uses `-` otherwise — so the exemption does not apply here. The markers
-are still preserved in the `original` sentence tier and in the W/M tiers (both
-`original` and `standard`), where they carry the morphological analysis.
+
+Since 2026-08, `standardize.py` itself applies the C012 rule (segmentation `-` and
+clitic `=` stripped from S-level standard FORMs of morpheme-segmented sentences),
+but flatten remains required for two reasons:
+
+1. Thao is one of the two languages whose reference orthography lists `-` as a
+   letter, so C012 deliberately *preserves* Thao hyphens and only emits `c012`
+   warnings (`standardize_warnings.csv`; 88 of them for this corpus — transient,
+   since flatten strips the hyphens immediately after). That exemption exists to
+   protect a `-` that is a real orthographic letter; in this source the hyphens
+   only ever mark morpheme boundaries in Li's interlinear analysis (the glottal
+   stop is written `ʔ`, never `-`), with no evidence Li uses `-` otherwise — so
+   the exemption does not apply here.
+2. C012 does not touch the infix markers `<` `>` (10 pairs in this corpus's
+   sentence FORMs); no shared QC code strips those from the S-level standard tier
+   (validate_text V134 merely flags them SOFT).
+
+The markers are still preserved in the `original` sentence tier and in the W/M
+tiers (both `original` and `standard`), where they carry the morphological
+analysis.
 
 Phonology is then added with `add_phonology.py --orthography Li`: standard `PHON`
 from the Ortho113 standard tier, original `PHON` from `Orthographies/Li`. Because
 `standardize.py` strips accents from the standard tier, the standard `PHON` is
 clean IPA; the original `PHON` renders Li's stress accents `á`/`ú` as `*` (they
 are not phonemic and have no orthographic mapping), which is accepted.
+
+**Regeneration under the shared-source-phonology pipeline (verified 2026-08-10):**
+rerunning `reproduce.sh` against the current QC code reproduces the published
+corpus exactly except in the `PHON` tiers, where unmapped punctuation
+(sentence-final `.`/`,`) is now dropped — the pipeline's "punctuation is not
+sound" policy. All FORM tiers, glosses, and the W/M structure are byte-identical;
+the source-fidelity audit and the draft/final byte-match both pass.
 
 ## Corrected source transcription typos (capital `S` and `D`)
 
@@ -80,6 +97,14 @@ records — build → source-fidelity audit → `standardize` (Ortho113) → fla
 sentence-level segmentation → `add_phonology` — and verifies that both outputs
 byte-match. To reacquire the official source bundle for visual review, run
 `./download_source_data.sh`; downloads stay under ignored `Private/`.
+
+In this published layout the scripts live under `CodeAndDocs/`, so run
+`reproduce.sh` from there; its `XML/` and `Final_XML/` outputs land under
+`CodeAndDocs/` and the finished `Final_XML` contents are what get copied to the
+corpus-level `XML/` directory. `standardize.py` writes a
+`standardize_warnings.csv` next to the XML it processes (the expected 88 Thao
+`c012` hyphen warnings — see above); it is scratch output, not part of the
+corpus.
 
 ## QC
 

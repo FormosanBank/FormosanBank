@@ -1,0 +1,54 @@
+# Reports conversion-table and registry health whenever orthography data
+# changes.
+#
+# NEVER BLOCKS on content findings (maintainer rulings 2026-08-10):
+# phoneme-level conversion mismatches are often legitimate — earlier
+# orthographies under-distinguish phonemes that Ortho113 distinguishes,
+# and inventories shift with reanalysis — and registry-consistency
+# findings are SOFT by POL-034 (registries may be legitimately out of
+# sync mid-migration). The conversion-table job writes a two-section step
+# summary (structural defects to fix vs phoneme-level items to review)
+# and always exits 0; the registries job exits nonzero only if a registry
+# file itself is missing or unparseable (a genuinely broken repo).
+#
+# Runs on PRs/pushes that touch the orthography data or its registries so
+# a bad edit is visible in the PR that makes it, not discovered at
+# standardize time.
+name: conversion-tables
+
+on:
+  pull_request:
+    paths:
+      - "Orthographies/**"
+      - "standards.csv"
+      - "dialects.csv"
+  push:
+    branches: [main]
+    paths:
+      - "Orthographies/**"
+      - "standards.csv"
+      - "dialects.csv"
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Report conversion-table health
+        run: python QC/validation/run_conversion_table_checks.py
+
+  registries:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Report registry consistency (SOFT; POL-034)
+        run: |
+          python QC/validation/validate_registries.py \
+            --csv "$RUNNER_TEMP/registry_findings.csv" \
+            | tee -a "$GITHUB_STEP_SUMMARY"

@@ -1,0 +1,723 @@
+# Non-Wikipedia Amis `'` review (original tier)
+
+239 sentences flagged. Classifier: TRANSL first pass + union dict (13,333). Each `'` that did not resolve to a glottal is listed here for human review.
+
+## QUOTATION candidates (37 sentences) — likely real `'`→`"` fixes
+
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U001038** (q=2, amb=0)
+  - FORM: `Mahecaday kita ci Yihofaan, makalimay micada ko tamdaw to so'linay kimad a 'ma'orip'.`
+  - TRANSL: Like Jehovah, we dearly wish that people would respond to the message and "keep living."
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U001319** (q=2, amb=0)
+  - FORM: `Mikitini i sakayat no 'madimadiay inanengay a koli', wa samaan mahapinang ita to ciharatengay ci Yis to no'adingoan a pakayraan ita hani?`
+  - TRANSL: How is Christ's concern for our spiritual welfare clearly reflected in the direction given by "the faithful and discreet slave"?
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U001404** (q=2, amb=0)
+  - FORM: `Cowa ko pitadi'ec aca nangra to Kawas, misadayayho a milood, mahecad o pahatatanaman a sofitay, mica'edongay cangra to 'sapafeli no Kawas polong a sapilood a riko'.'`
+  - TRANSL: Like well-trained soldiers, they have "put on the complete suit of armor from God."
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U001682** (q=3, amb=5)
+  - FORM: `Anini, iraay ko tokel tayra i kakarayan 'mimingay 'opo a siri' ato iraay ko tokel i fafekang no sera tahada'oc ma'orip a 'roma lopay'ay siri' malo 'cecayay 'opo', sahtoay o kalimlaan ni Yihofa a finawlan cangra.`
+  - TRANSL: Today, the "little flock," with a heavenly hope, and the "other sheep," with an earthly hope, compose the "one flock" that Jehovah highly regards as his people.
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U001821** (q=2, amb=0)
+  - FORM: `Kawra, hinatalaay cangra to sakaira no 'romi'ad ni Yihofa', mipala'afo toni tatiihay a hekal.`
+  - TRANSL: Rather, they await the end of this wicked system of things during "Jehovah's day."
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U002024** (q=2, amb=0)
+  - FORM: `Misamaanay o tarokos ci Pawlo hano palimo'ot to Hiprayay a Krisciyang, 'tongalen ko pisa'icel a pakalalolalok' saan hani?`
+  - TRANSL: Why did the apostle Paul exhort the early Hebrew Christians to encourage one another "all the more so"?
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U002127** (q=2, amb=0)
+  - FORM: `Sanay ko sowal ni Marta: 'Mafana' kako to nika o mamiliyaw a ma'orip cingra nai patay i saikoray a romi'ad.'`
+  - TRANSL: She said: "I know he will rise in the resurrection on the last day."
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U002209** (q=1, amb=2)
+  - FORM: `Isalakatay a somowal ci Pawlo to 'micoliay micongangah to wama wina', aikor somowalay to caay ka fana' a miahowid ko tamdaw, o matiniay tamdaw cowa piako'id to nano demak no tao i cangranan.`
+  - TRANSL: Fittingly, unthankful follows "disobedient to parents" because it describes the attitude of those who lack appreciation for the kindnesses shown to them by others.
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U002381** (q=2, amb=0)
+  - FORM: `Ano haratengen ita ko teloc no mararaway, wa nga'ay misa'osi ko faloco' 'ka'itehen ko tatiihay'.`
+  - TRANSL: By reflecting on the bad consequences of sin, we can strengthen our heart to "hate what is bad."
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U002644** (q=2, amb=0)
+  - FORM: `Hano misa'icel kita a palahad to 'harateng ni Kristo'?`
+  - TRANSL: Why should we strive to have "the mind of Christ"?
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U002767** (q=2, amb=0)
+  - FORM: `Samanen no wama wina a padama ko wawa, 'ira ko taneng nga'ay malidong'?`
+  - TRANSL: How can parents help their children to become "wise for salvation"?
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U003687** (q=2, amb=0)
+  - FORM: `Pakayni sapadamaaw kitaanan, pafeliay to 'malo sida'itay a tamdaw', o malohemay malitengay no kasakopang, tangongolay ko piako'id no mita ci Yihofaan.`
+  - TRANSL: Consequently, appreciate Jehovah's provision of "gifts in men," congregation elders.
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U004089** (q=2, amb=0)
+  - FORM: `Itini ta'angayay kaemingay a demak no ka'orip, o so'linay Krisciyang wa 'ka sasiso'lin ko sowal'.`
+  - TRANSL: In every aspect of life, true Christians "speak the truth with one another."
+- **[Glosbe] GLOSBE_ami_zho_TMEM_U000002** (q=2, amb=0)
+  - FORM: `Mahecaday kita ci Yihofaan, makalimay micada ko tamdaw to so'linay kimad a 'ma'orip'.`
+  - TRANSL: 我們像耶和華一樣,衷心盼望別人接受真理而＂活下去＂。(
+- **[Glosbe] GLOSBE_ami_zho_TMEM_U001443** (q=2, amb=1)
+  - FORM: `Sowal no Fangcalay Cudad, 'no'adingoan a tamdaw' ato'midoedoay to tireng a tamdaw,' o maanan ko kasasiromaan?`
+  - TRANSL: 3. 聖經說＂屬靈的人＂和＂順應肉體的人＂有什麼分別?
+- **[Glosbe] GLOSBE_ami_zho_TMEM_U001709** (q=1, amb=2)
+  - FORM: `Palimo'otay ci Pawlo kitaanan, 'misafaeloh to harateng', samaan ko demak ita nga' matoor konini?`
+  - TRANSL: 保羅勸勉我們要＂更新思想＂,我們怎樣才能做到這一點?
+- **[Glosbe] GLOSBE_ami_zho_TMEM_U001790** (q=2, amb=0)
+  - FORM: `Saikor, wa milifok kita to miki'okan ni Yihofa kitaanan a''odingaray a pasalat'.`
+  - TRANSL: 最終,我們會享有耶和華承諾要給我們的＂榮耀的自由＂。
+- **[Glosbe] Amis_2** (q=2, amb=0)
+  - FORM: `Mahecaday kita ci Yihofaan, makalimay micada ko tamdaw to so'linay kimad a 'ma'orip'.`
+  - TRANSL: 我們像耶和華一樣,衷心盼望別人接受真理而“活下去”。(
+- **[Glosbe] Amis_227** (q=2, amb=0)
+  - FORM: `Mahecaday kita ci Yihofaan, makalimay micada ko tamdaw to so'linay kimad a 'ma'orip'.`
+  - TRANSL: 我們像耶和華一樣,衷心盼望別人接受真理而“活下去”。(
+- **[Glosbe] Amis_252** (q=2, amb=0)
+  - FORM: `Mahecaday kita ci Yihofaan, makalimay micada ko tamdaw to so'linay kimad a 'ma'orip'.`
+  - TRANSL: 我們像耶和華一樣,衷心盼望別人接受真理而“活下去”。(
+- **[Glosbe] Amis_757** (q=2, amb=0)
+  - FORM: `Mahecaday kita ci Yihofaan, makalimay micada ko tamdaw to so'linay kimad a 'ma'orip'.`
+  - TRANSL: 我們像耶和華一樣,衷心盼望別人接受真理而“活下去”。(
+- **[Glosbe] Amis_1142** (q=2, amb=0)
+  - FORM: `Hano misa'icel kita a palahad to 'harateng ni Kristo'?`
+  - TRANSL: 為什麼我們要努力培養“基督的思想”?
+- **[Glosbe] Amis_1352** (q=2, amb=0)
+  - FORM: `Mahecaday kita ci Yihofaan, makalimay micada ko tamdaw to so'linay kimad a 'ma'orip'.`
+  - TRANSL: 我們像耶和華一樣,衷心盼望別人接受真理而“活下去”。(
+- **[Glosbe] Amis_1671** (q=2, amb=0)
+  - FORM: `Kawra, masowalay ni Pawlo, sasinanoten ita a 'misafaeloh to harateng'.`
+  - TRANSL: 不過,保羅也說我們必須“更新思想”。
+- **[Glosbe] Amis_1694** (q=2, amb=0)
+  - FORM: `Mikitini i sakayat no 'madimadiay inanengay a koli', wa samaan mahapinang ita to ciharatengay ci Yis to no'adingoan a pakayraan ita hani?`
+  - TRANSL: 我們怎樣從“忠信睿智的奴隸”的指示看出耶穌關心我們的屬靈情況?
+- **[Glosbe] Amis_2186** (q=2, amb=0)
+  - FORM: `Mahecaday kita ci Yihofaan, makalimay micada ko tamdaw to so'linay kimad a 'ma'orip'.`
+  - TRANSL: 我們像耶和華一樣,衷心盼望別人接受真理而“活下去”。(
+- **[Glosbe] Amis_2535** (q=2, amb=1)
+  - FORM: `Sowal no Fangcalay Cudad, 'no'adingoan a tamdaw' ato 'midoedoay to tireng a tamdaw,' o maanan ko kasasiromaan?`
+  - TRANSL: 3. 聖經說“屬靈的人”和“順應肉體的人”有什麼分別?
+- **[Glosbe] Amis_3211** (q=1, amb=2)
+  - FORM: `Palimo'otay ci Pawlo kitaanan, 'misafaeloh to harateng', samaan ko demak ita nga' matoor konini ?`
+  - TRANSL: 保羅勸勉我們要“更新思想”,我們怎樣才能做到這一點?
+- **[Glosbe] Amis_3246** (q=2, amb=0)
+  - FORM: `Mahecaday kita ci Yihofaan, makalimay micada ko tamdaw to so'linay kimad a 'ma'orip'.`
+  - TRANSL: 我們像耶和華一樣,衷心盼望別人接受真理而“活下去”。(
+- **[Glosbe] Amis_3686** (q=2, amb=0)
+  - FORM: `Saikor, wa milifok kita to miki'okan ni Yihofa kitaanan a ''odingaray a pasalat'.`
+  - TRANSL: 最終,我們會享有耶和華承諾要給我們的“榮耀的自由”。
+- **[Glosbe] Amis_3688** (q=2, amb=0)
+  - FORM: `Mikitini i sakayat no 'madimadiay inanengay a koli', wa samaan mahapinang ita to ciharatengay ci Yis to no'adingoan a pakayraan ita hani?`
+  - TRANSL: 我們怎樣從“忠信睿智的奴隸”的指示看出耶穌關心我們的屬靈情況?
+- **[Glosbe] Amis_4392** (q=1, amb=1)
+  - FORM: `Pakayni i sowal ni Yihofa ato fangcalay saocor, ato misadakan iso a 'icel, wa nga'ay padama to wawa iso, ' ira ko taneng nga'ay malidong.'`
+  - TRANSL: 通過耶和華的話語和聖靈,以及你付出的努力,能幫助你的孩子“有智慧可以得救”。
+- **[Glosbe] Amis_4968** (q=2, amb=0)
+  - FORM: `Itini ta'angayay kaemingay a demak no ka'orip, o so'linay Krisciyang wa 'ka sasiso'lin ko sowal'.`
+  - TRANSL: 在生活的大小事上,真基督徒會“彼此說真實的話”。
+- **[Glosbe] Amis_5099** (q=1, amb=1)
+  - FORM: `Sanay ko ca'of ni Yis: ' Cowa ko noni hekal ko Hongti Kitakit ako.'`
+  - TRANSL: 耶穌回答說:“我的王國不屬於這個世界。”(
+- **[Glosbe] Amis_5333** (q=1, amb=1)
+  - FORM: `So'lin ano caka pasowal cangra, latek mamatira ci Tafitian ko harateng nangra: ' Nanay pahemeken no tamdaw kiso to nika citanengay kiso!'`
+  - TRANSL: 即使別人沒有說出口,說不定他們很想對我們說:“願人贊賞你明白事理。”
+- **[Glosbe] Amis_5541** (q=2, amb=0)
+  - FORM: `Mahecaday kita ci Yihofaan, makalimay micada ko tamdaw to so'linay kimad a 'ma'orip'.`
+  - TRANSL: 我們像耶和華一樣,衷心盼望別人接受真理而“活下去”。(
+- **[Glosbe] Amis_5786** (q=2, amb=0)
+  - FORM: `Itini ta'angayay kaemingay a demak no ka'orip, o so'linay Krisciyang wa 'ka sasiso'lin ko sowal'.`
+  - TRANSL: 在生活的大小事上,真基督徒會“彼此說真實的話”。
+
+## AMBIGUOUS (202 sentences) — need a human call
+
+- **[NTUFormosanCorpus] Amis_Nr-frog_cinhua_S_14** (amb=3)
+  - FORM: `itini i hakini tuna 'pung sa'an ku falucu' nira a miceli'.`
+  - TRANSL: 「是否在這個洞裡呢?」他這樣說,呼叫著. || 'Is it inside this hole?' he said so and called.
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U000037** (amb=1)
+  - FORM: `Taneng 3:11, 12 sanay: 'Wawaaw ako, aka mana'ay to sarikec ni Yihofa... samanen o kaolahan ni Yihofa a tamdaw mirikecan Ningra.'`
+  - TRANSL: "My son, do not reject the discipline of Jehovah... for those whom Jehovah loves he reproves," says Proverbs 3:11, 12.
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U000141** (amb=1)
+  - FORM: `So'lin ano caka pasowal cangra, latek mamatira ci Tafitian ko harateng nangra: 'Nanay pahemeken no tamdaw kiso to nika citanengay kiso!'`
+  - TRANSL: Whether they verbalize it or not, they may feel like David, who said: "Blessed be your good sense!"
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U000252** (amb=3)
+  - FORM: `Ano mifalahan mipatayan no tamdaw ci Yis, wa misamaan a malo 'ta'enengan a fakeloh no loma'' cingra hani?`
+  - TRANSL: If Jesus was rejected and killed, how could he become "the chief cornerstone"?
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U000268** (amb=2)
+  - FORM: `Matira o sapali'ayaw no Fangcalay Cudad, ci Yihofa naitiniay i 'kasakitakit, kasangasaw, kasafinacadan' palisopsop to 'alomanay a tamdaw, o "masasi romaromaay ko sowal nangra," mala o "ci'icelay a kitakit", mata'lifayto ko 800 a 'ofad ko ka'aloman nangra.`
+  - TRANSL: As the Bible foretold, Jehovah is gathering "a great crowd... out of all nations and tribes and peoples and tongues."
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U000303** (amb=2)
+  - FORM: `O roma mihongyakan a Fangcalay Cudad, o 'cango'otay' mihongyakan to "awaay ko kapo", "awaay ko epoc," "cowa ko kalimelaan."`
+  - TRANSL: In other Bible translations, the word for "beggarly" is rendered "useless," "bankrupt," "destitute," and "miserable."
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U000320** (amb=2)
+  - FORM: `O sowal no Fangcalay Cudad o matiniay tamdaw 'macepetay no acang no hekal' cangra.`
+  - TRANSL: The phrase "lovers of pleasures" aptly describes those who are "carried away by... pleasures of this life."
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U000329** (amb=2)
+  - FORM: `Kawra, oni Yihofa kita, mihaenay patalipa'elalay ko Fangcalay Cudad kitaanan 'falahen ko caka ngodo a faloco' ato coos no hekal, toni lekakawa matatodong ko harateng, moecel, mangodo ko ka'orip.'`
+  - TRANSL: Yet, because we belong to Jehovah, we are admonished to "reject ungodliness and worldly desires and to live with soundness of mind and righteousness and godly devotion amid this present system of things."
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U000423** (amb=1)
+  - FORM: `Sowal no Fangcalay Cudad: 'O mafolaay miapohay to faloco'no wawa.'`
+  - TRANSL: The Bible says that "foolishness is bound up in the heart of a child."
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U000477** (amb=1)
+  - FORM: `Saka 2 Korinto 3:17, sanay ko sowal, 'icowaay ko fangcalay saocor ni Yihofa, iraay ko pasalat itira.'`
+  - TRANSL: As stated at 2 Corinthians 3:17, "where the spirit of Jehovah is, there is freedom."
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U000518** (amb=3)
+  - FORM: `'Itini i saikoray lintad o pasangaray a si'ayawen a 'awaled' sanay ci Pawlo.`
+  - TRANSL: "The last days," wrote the apostle Paul, would bring "critical times hard to deal with."
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U000558** (amb=1)
+  - FORM: `Itini Loma 15:5 somowalay to pairaen ko 'harateng ni Kristo Yis,' sanay.`
+  - TRANSL: And Romans 15:5 refers to having "the same mental attitude that Christ Jesus had."
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U000567** (amb=2)
+  - FORM: `Itini Yohani 15:4 to 10 toni pina sinael, kinapinaay masowal ni Yis ko 'mararid' sanay a tilid, paihekal to kalimelaan ko mihadidiay.`
+  - TRANSL: Jesus stressed the need for endurance by using forms of the word "remain" over and over in the brief passage recorded at John 15:4-10.
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U000627** (amb=4)
+  - FORM: `Sanay ko sowal no Kawas: 'Wa mahecad kamo o 'engaenga a komaen to hacol, 'afofoen i falohang a mipohpoh, itini cepi' a mikalona.`
+  - TRANSL: "You will nurse and be carried on the hip, and you will be bounced on the knees.
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U000950** (amb=2)
+  - FORM: `Samaan a malo 'hafay' iso ci Yihofa?`
+  - TRANSL: make Jehovah your "portion"?
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U001069** (amb=5)
+  - FORM: `Kalimelaan ko 'kafana' ita' ci Yihofaan ato 'paso'lin a miti'er' to wawa Ningra ci Yisan, nganga'ay milifok to tahada'ocay 'orip.`
+  - TRANSL: The only path to everlasting life involves "coming to know" Jehovah and "exercising faith" in Jesus, His only-begotten Son.
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U001100** (amb=2)
+  - FORM: `'O Moecelay Tamdaw, Pakayniay ci Yihofaan a Lipahak'`
+  - TRANSL: "The Righteous One Will Rejoice in Jehovah"
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U001143** (amb=2)
+  - FORM: `Misamanay hano 'o misa'adaay ci Yihofaan, awaay ko taneng' hani?`
+  - TRANSL: Why is there "no wisdom... in opposition to Jehovah"?
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U001210** (amb=1)
+  - FORM: `Sanay ko ca'of ni Yis: 'Cowa ko noni hekal ko Hongti Kitakit ako.'`
+  - TRANSL: Jesus answered: "My Kingdom is no part of this world."
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U001228** (amb=1)
+  - FORM: `'Ayaw no somowal ci Yis to kilang no fadisoso'a sapatinako pasowalay to tarokos: 'Pafelien ako kamo to dipayal no mako.'`
+  - TRANSL: Earlier on that last evening before his death, Jesus told his apostles: "I give you my peace."
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U001247** (amb=3)
+  - FORM: `Samanay ci Yis malo 'ta'enengan a fakeloh no loma'' hani?`
+  - TRANSL: How could Jesus become "the chief cornerstone"?
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U001266** (amb=1)
+  - FORM: `Mikayatan no coyoh ci Filipan, tayra i 'a'ayaw noniya Iciyopiya tamdaw, 'milasil to nga'ayay ratoh ni Yis cingranan.'`
+  - TRANSL: Prompted by Jehovah's angel, Philip approached the Ethiopian and "declared to him the good news about Jesus."
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U001286** (amb=3)
+  - FORM: `Palimo'otay ci Yis to nisawawaan padama to tamdaw 'malo Krisciyang..., mipaino' cangranan,' sanay.`
+  - TRANSL: Just about a year before Jesus gave the commission to "make disciples..., baptizing them," he provided insight into what would be required of his followers.
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U001294** (amb=3)
+  - FORM: `Sowal ni Yis ci Akoma Satan 'miliyangay to so'linay kimad, samanen awaay ko so'linay kimad ilaloma' ningra.'`
+  - TRANSL: In explaining the Devil's actions, Jesus stated: "He did not stand fast in the truth, because truth is not in him."
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U001333** (amb=2)
+  - FORM: `Misamaanay hano o 'salakatay milidongan' ci Yis hani?`
+  - TRANSL: Why is it significant that Jesus is "the firstfruits"?
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U001340** (amb=1)
+  - FORM: `Sanay ko sowal ni Yis to nisawawaan: 'Padotoc kamo a ciheci... mihaen mapa'dil ko Wama ako.'`
+  - TRANSL: Jesus told his apostles: "My Father is glorified in this, that you keep bearing much fruit."
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U001342** (amb=2)
+  - FORM: `Sowal ni Yis, 'ano mararid kamo mitoor to sowal ako' sa i, tatodong noni sowal, ano sapilifokaw ko tamdaw to pasalat, mitoor to patirengan ningra a sa'osi, o sanay.`
+  - TRANSL: Jesus' statement "if you remain in my word" implies that there are certain requirements or boundaries for being set free by him.
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U001348** (amb=3)
+  - FORM: `Samaan kita mikilim to o cima ko 'citatodongay milifok to tahada'ocay 'orip a tamdaw' hani?`
+  - TRANSL: How can we know who are "rightly disposed for everlasting life," and how can we find them?
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U001383** (amb=1)
+  - FORM: `Cowa ko pilengo aca no Taneng 23:23 to mi'aca to so'linay kimad, pasowalayho to mami'aca kita to 'taneng, sapirikec, saka cipinang.'`
+  - TRANSL: In addition to buying truth, Proverbs 23:23 says that we should also buy "wisdom and discipline and understanding."
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U001500** (amb=1)
+  - FORM: `Padotoc kamo a ciheci, paihekal to nisawawaan ako kamo, mihaen mapa'dil ko wama ako.'`
+  - TRANSL: "My Father is glorified in this, that you keep bearing much fruit and prove yourselves my disciples."
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U001569** (amb=2)
+  - FORM: `Ano mahaen 'o sasafaay' ko demak ako, wa mikangodo ko tao takowanan han?"`
+  - TRANSL: If I conduct myself "as a lesser one," might people lose respect for me?'
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U001594** (amb=3)
+  - FORM: `Pasowalan ni Yis ko nisawawaan: 'Ano micerid kamo midofdof to sowal ako, o so'linayto a nisawawaan ako. Wa mafana' kamo to so'linay kimad, wa pasalaten no so'linay kimad kamo.'`
+  - TRANSL: Jesus said to his followers: "If you remain in my word, you are really my disciples, and you will know the truth, and the truth will set you free."
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U001647** (amb=2)
+  - FORM: `Misamaanay hano 'adihayay ko roray' no roma tamdaw anini hani?`
+  - TRANSL: What causes people today to "multiply their sorrows"?
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U001873** (amb=2)
+  - FORM: `Wa 'padotoc a ciheci' cangra.`
+  - TRANSL: They had to "go and keep bearing fruit."
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U001882** (amb=2)
+  - FORM: `Mahecaday ko harateng ni Yis, miocoran ningra ko 70 tamdaw a mitosil, samanen nga'ayay ko minaro'an 'lipahakay a minokay' cangra, pakahemekay konini ci Yisan.`
+  - TRANSL: Jesus also experienced great happiness when the 70 preachers whom he had sent out to the field "returned with joy" because of the favorable results they had experienced.
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U002006** (amb=2)
+  - FORM: `Itiniay i saka cecay hahekalan, o roma tamdaw hano 'pa'aca' to so'linay kimad hani?`
+  - TRANSL: In the first century, why did some "sell" the truth?
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U002040** (amb=4)
+  - FORM: `Tooren ko lalangian no 'Olic saka 3 fedengan, oniya 'Olic itiniay 'piliyas ni Tafiti to wawa ci Apsaloman' a tiliden.`
+  - TRANSL: The superscription of Psalm 3 indicates that it was composed when David "was fleeing from his son Absalom."
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U002105** (amb=2)
+  - FORM: `Misaka dademakay cingra to safalod i Taneng 20:5, mitala to matatodongay a toki 'pakapipatalahkal to harateng' no mako, kawrira cowa koyaan hahimeden a demak."`
+  - TRANSL: "Then she will apply the principle found at Proverbs 20:5, even when this means waiting for the right time to 'draw out' my thoughts if it is a matter that I am free to discuss with her."
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U002124** (amb=2)
+  - FORM: `Ano misetek kita to faloco'midopo to Kawas i, sasamaan Cingra padama kitaanan 'pakalowid' to mararaway a coos hani?`
+  - TRANSL: How does Jehovah help us to "get the mastery over" sinful inclinations when we take a firm stand on his side?
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U002270** (amb=1)
+  - FORM: `Tahira i romi'ad ni Nowa, 'adihayay miedefay ko mari'angay a demak icowacowa.'`
+  - TRANSL: In fact, in Noah's day, "the earth was filled with violence."
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U002279** (amb=2)
+  - FORM: `Pasifana' ko tarokos ci Pawlo to Krisciyang mapakalalok i, hano pasowal cangranan to 'tongalen ko pihaen to demak' hani?`
+  - TRANSL: Why did the apostle Paul use the expression "all the more so" when he instructed Christians to encourage one another?
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U002331** (amb=2)
+  - FORM: `Hano misetek ko faloco' iso 'mihadidi a ciheci' hani?`
+  - TRANSL: Why are you determined to "bear fruit with endurance"?
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U002419** (amb=1)
+  - FORM: `Ikor somowal ko Fangcalay Cudad ci Mosian, sanay: "Orasaka, Masa ano eca i, Miripa han koya pipasadakan to nanom a 'ongcoy. Nawhani ngaliwngiw ko finawlan no Israil a mipakaketer ci Yihofaan. 'Mikapotay ci Yihofa i titaanan saw?'`
+  - TRANSL: The inspired record goes on to tell us that Moses "named the place Massah and Meribah because of the quarreling of the Israelites and because they put Jehovah to the test by saying: 'Is Jehovah in our midst or not?'"
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U002527** (amb=2)
+  - FORM: `Misamanay Hano 'Papadotoc a Ciheci' Kita Hani?`
+  - TRANSL: Why We "Keep Bearing Much Fruit"
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U002532** (amb=3)
+  - FORM: `Samaan kita mafana' to o cima ko 'citatodongay milifok to tahada'ocay 'orip a tamdaw' hani?`
+  - TRANSL: How can we know who are "rightly disposed for everlasting life"?
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U002602** (amb=1)
+  - FORM: `Misa'icel kita palahad to 'harateng ni Kristo,' hano nga'ay padama kitanan malo no'adingoan a tamdaw?`
+  - TRANSL: How will our effort to have "the mind of Christ" help us to be spiritual people?
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U002673** (amb=1)
+  - FORM: `Sowal i 1 Korinto 2:16 pairaen ita ko 'harateng ni kristo,' sanay.`
+  - TRANSL: The Bible at 1 Corinthians 2:16 speaks of having "the mind of Christ."
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U002772** (amb=1)
+  - FORM: `Pakayni i sowal ni Yihofa ato fangcalay saocor, ato misadakan iso a 'icel, wa nga'ay padama to wawa iso, 'ira ko taneng nga'ay malidong.'`
+  - TRANSL: May Jehovah's Word, his spirit, and your efforts as a parent help your children to become "wise for salvation."
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U003197** (amb=2)
+  - FORM: `O mitilidan ni Yohani saka tosa ato saka tolo a tikami, pakahemekan ningra koya padotocay 'midoedo to so'linay kimad dademak' a Krisciyang.`
+  - TRANSL: His second and third letters commend Christians who continue "walking in the truth."
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U003271** (amb=1)
+  - FORM: `'Nanay Pahemeken no Tamdaw Kiso to Nika Citanengay Kiso!'`
+  - TRANSL: "Blessed Be Your Good Sense!"
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U003446** (amb=2)
+  - FORM: `Itini tikami ni Pawlo mikiriwi'ay masowal ni Pawlo ko 'patanektekay' cingranan a salikaka.`
+  - TRANSL: Paul took special note of brothers who had proved to be "a strengthening aid" to him.
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U003519** (amb=2)
+  - FORM: `'Misinanotay mitengil' ci Yihofa to maanan a demak hani?`
+  - TRANSL: Jehovah is "paying attention and listening" to what?
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U003585** (amb=2)
+  - FORM: `O manan ko 'tadamaanay a miliyaway ma'orip' hani?`
+  - TRANSL: What "better resurrection" is yet ahead?
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U003910** (amb=1)
+  - FORM: `Somowalay ko mikingkiway a tamdaw, padama to tamdaw 'matongalay ko araaw ato epoc no ka'orip, samanen mihaen to demak mirenecay to sasafaay a saali no tamdaw.'`
+  - TRANSL: Helping others, researchers say, is important to developing "a greater sense of purpose and meaning" in life "because it fulfills basic human needs."
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U003989** (amb=2)
+  - FORM: `O roma, masowalay ni Yihofa i Fangcalay Cudad ko Hongti Kitakit ni Misiya, somowalayho Cingra o mapasimalay Krisciyang iraay ko hatokel, tayra i kakarayan tahada'oc a ma'orip, o 'roma lopay'ay siri' wa itini i sera a Lakoing tahada'oc a ma'orip.`
+  - TRANSL: Jehovah also informs us about the Messianic Kingdom, and he sets before the anointed the heavenly hope and before the "other sheep" the hope of the earthly Paradise.
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U004059** (amb=2)
+  - FORM: `Sowal ni Pawlo 'maolahay to payso' ko tamdaw sanay.`
+  - TRANSL: Paul wrote that people would be "lovers of money."
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U004121** (amb=1)
+  - FORM: `Katayni takowanan!'`
+  - TRANSL: Come to me!"
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U004150** (amb=2)
+  - FORM: `Kaemangay Tamdaw, Ka 'Padotoc Misa'icel, Milahecito Sakalidong Namo a Tayal'`
+  - TRANSL: Young Ones, "Keep Working Out Your Own Salvation"
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U004155** (amb=2)
+  - FORM: `Kaemangay Tamdaw, ka 'Padotoc Misa'icel, Milahecito Sakalidong Namo a Tayal'`
+  - TRANSL: Young Ones, "Keep Working Out Your Own Salvation"
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U004186** (amb=2)
+  - FORM: `Mitadtaday ci Pawlo to kasasiroma 'no'adingoan a tamdaw' ato 'midoedoay to tireng a tamdaw,' padamaay konini kitanan cipinang to o maanan ko tatodong no no'adingoan a tamdaw.`
+  - TRANSL: The apostle Paul helps us to understand what a spiritual person is by drawing a contrast between a "spiritual man" and "a physical man."
+- **[Glosbe] GLOSBE_ami_eng_TMEM_U004212** (amb=2)
+  - FORM: `Sowal no Fangcalay Cudad, oyaan 'moecelay mangodoay to Kawas' a Simiyong ato 84 ko mihecaan a fafahiyan ci Anna hananay a pairasolay ko pahapinangan ni Yihofa ci Yisan, o cangrato ko milasilay to tamdaw, o mamalo Misiya a wawa masadakayto.`
+  - TRANSL: Instead, Jehovah used a "righteous and devout" man named Simeon, along with an 84-year-old widow, the prophetess Anna, to acknowledge that this child would become the promised Messiah, or Christ.
+- **[Glosbe] GLOSBE_ami_zho_TMEM_U000126** (amb=1)
+  - FORM: `Itiya, itiniay i Yirusalim cingra pasayra i "kakerikeridan no finawlan ato mato'asay, ato pasifana'ay to rikec a tamdaw," no Yutaya a pasowal: 'Oya Nacali tamdaw ci Yis Kristo, na mipacekan namo i hecek, patikolanto no Kawas pa'orip cingra nai patay.'`
+  - TRANSL: 當時,他在耶路撒冷對猶太人的＂官長、長老、抄經士＂說:＂拿撒勒人耶穌基督......你們把他掛在柱上,上帝卻使他從死裡復活了。＂
+- **[Glosbe] GLOSBE_ami_zho_TMEM_U000168** (amb=1)
+  - FORM: `So'lin ano caka pasowal cangra, latek mamatira ci Tafitian ko harateng nangra: 'Nanay pahemeken no tamdaw kiso to nika citanengay kiso!'`
+  - TRANSL: 即使別人沒有說出口,說不定他們很想對我們說:＂願人贊賞你明白事理。＂ || 即使別人沒有說出口,說不定他們很想對我們說:＂願人贊賞你明白事理。＂
+- **[Glosbe] GLOSBE_ami_zho_TMEM_U000169** (amb=1)
+  - FORM: `'Ayaw no somowal ci Yis to kilang no fadisoso'a sapatinako pasowalay to tarokos: 'Pafelien ako kamo to dipayal no mako.'`
+  - TRANSL: 耶穌在講葡萄樹的比喻前對使徒說:＂我......把我的平安賜給你們。＂
+- **[Glosbe] GLOSBE_ami_zho_TMEM_U000261** (amb=1)
+  - FORM: `Matawaay ci Alinta a pasowal: "Mikawihay ko palakatay to faso tamiyanan, o roma palakatay mikitira i faso miowaw tamiyanan: 'Tada kasemeranto kamo!'`
+  - TRANSL: 奧琳達也笑著說:＂公車司機向我們揮手,有些司機還從車裡對我們大喊:‘你們真了不起!’ || 奧琳達也笑著說:＂公車司機向我們揮手,有些司機還從車裡對我們大喊:‘你們真了不起!’
+- **[Glosbe] GLOSBE_ami_zho_TMEM_U000293** (amb=2)
+  - FORM: `3 'Itini i saikoray lintad o pasangaray a si'ayawen a'awaled' sanay ci Pawlo.`
+  - TRANSL: 3 保羅寫到,＂最後的日子＂會是個＂難以應付的非常時期＂。 || 3 保羅寫到,＂最後的日子＂會是個＂難以應付的非常時期＂。
+- **[Glosbe] GLOSBE_ami_zho_TMEM_U000300** (amb=1)
+  - FORM: `Tahira i romi'ad ni Nowa, 'adihayay miedefay ko mari'angay a demak icowacowa.'`
+  - TRANSL: 事實上,到了挪亞的日子,＂暴行遍及全地＂。 || 事實上,到了挪亞的日子,＂暴行遍及全地＂。
+- **[Glosbe] GLOSBE_ami_zho_TMEM_U000473** (amb=1)
+  - FORM: `Sanay ko ca'of ni Yis: 'Cowa ko noni hekal ko Hongti Kitakit ako.'`
+  - TRANSL: 耶穌回答說:＂我的王國不屬於這個世界。＂( || 耶穌回答說:＂我的王國不屬於這個世界。＂(
+- **[Glosbe] GLOSBE_ami_zho_TMEM_U000662** (amb=1)
+  - FORM: `Itini Loma 15:5 somowalay to pairaen ko'harateng ni Kristo Yis,' sanay.`
+  - TRANSL: 羅馬書15:5也提到要有＂基督耶穌的思想態度＂。
+- **[Glosbe] GLOSBE_ami_zho_TMEM_U000733** (amb=1)
+  - FORM: `Misa'icelay kita tano pinengneng ni Yihofa cangranan han?'`
+  - TRANSL: 我是不是努力以耶和華的觀點看他們?＂
+- **[Glosbe] GLOSBE_ami_zho_TMEM_U000903** (amb=1)
+  - FORM: `Pakayni i sowal ni Yihofa ato fangcalay saocor, ato misadakan iso a'icel, wa nga'ay padama to wawa iso, 'ira ko taneng nga'ay malidong.'`
+  - TRANSL: 通過耶和華的話語和聖靈,以及你付出的努力,能幫助你的孩子＂有智慧可以得救＂。 || 通過耶和華的話語和聖靈,以及你付出的努力,能幫助你的孩子＂有智慧可以得救＂。
+- **[Glosbe] GLOSBE_ami_zho_TMEM_U001076** (amb=2)
+  - FORM: `'Faelohto' ko harateng ita, palahadho to faelohay a pakayraan miharatengan.`
+  - TRANSL: 我們的思想＂更新＂了,也培養新的思考方式。
+- **[Glosbe] GLOSBE_ami_zho_TMEM_U001107** (amb=1)
+  - FORM: `21 'Nanay Pahemeken no Tamdaw Kiso to Nika Citanengay Kiso!'`
+  - TRANSL: 21頁 ＂願人贊賞你明白事理＂ || 21頁 ＂願人贊賞你明白事理＂
+- **[Glosbe] GLOSBE_ami_zho_TMEM_U001234** (amb=3)
+  - FORM: `19 Pasowalan ni Yis ko nisawawaan: ' Ano micerid kamo midofdof to sowal ako, o so'linayto a nisawawaan ako. Wa mafana' kamo to so'linay kimad, wa pasalaten no so'linay kimad kamo.'`
+  - TRANSL: 19 耶穌對門徒說:＂你們時刻遵守我的話語,就真是我的門徒了。 你們會認識真理,真理會叫你們自由。＂( || 19 耶穌對門徒說:＂你們時刻遵守我的話語,就真是我的門徒了。 你們會認識真理,真理會叫你們自由。＂(
+- **[Glosbe] GLOSBE_ami_zho_TMEM_U001313** (amb=1)
+  - FORM: `Cowa ko pilengo aca no Taneng 23:23 to mi'aca to so'linay kimad, pasowalayho to mami'aca kita to'taneng, sapirikec, saka cipinang.'`
+  - TRANSL: 箴言23:23除了提到買真理, 還說我們應該買＂智慧、管教、悟性＂。
+- **[Glosbe] GLOSBE_ami_zho_TMEM_U001317** (amb=1)
+  - FORM: `Saka 2 Korinto 3:17, sanay ko sowal, 'icowaay ko fangcalay saocor ni Yihofa, iraay ko pasalat itira.'`
+  - TRANSL: 6 以耶和華的觀點看事情不表示我們不能有任何想法或意見,正如哥林多後書3:17說的:＂耶和華的靈在哪裡,哪裡就有自由。＂
+- **[Glosbe] GLOSBE_ami_zho_TMEM_U001396** (amb=1)
+  - FORM: `Taneng 3:11, 12 sanay: 'Wawaaw ako, aka mana'ay to sarikec ni Yihofa... samanen o kaolahan ni Yihofa a tamdaw mirikecan Ningra.'`
+  - TRANSL: 箴言3:11,12說:＂我兒啊,耶和華的管教你不可拒絕......因為耶和華責備他所愛的人。＂
+- **[Glosbe] GLOSBE_ami_zho_TMEM_U001404** (amb=1)
+  - FORM: `Katayni takowanan!'`
+  - TRANSL: 誰就到我這裡來!＂
+- **[Glosbe] GLOSBE_ami_zho_TMEM_U001536** (amb=1)
+  - FORM: `4 Sowal ni Yis ci Akoma Satan'miliyangay to so'linay kimad, samanen awaay ko so'linay kimad ilaloma' ningra.'`
+  - TRANSL: 4 耶穌說魔鬼撒但＂沒有在真理中站穩,因為真理不在他裡面＂。
+- **[Glosbe] GLOSBE_ami_zho_TMEM_U001930** (amb=1)
+  - FORM: `Palimo'otay ci Yis to nisawawaan padama to tamdaw'malo Krisciyang..., mipaino' cangranan,' sanay.`
+  - TRANSL: 耶穌吩咐門徒要幫助人做基督徒,＂給他們施浸＂。(
+- **[Glosbe] GLOSBE_ami_zho_TMEM_U002107** (amb=2)
+  - FORM: `4, 5. (1) Itini noka'pica'edong to faelohay capeling,' mafana' a mirikec to harateng, hano o masaka limelaan hani?`
+  - TRANSL: 甲)為什麼在＂穿上新品格＂的過程中,學習自律很重要?(
+- **[Glosbe] Amis_123** (amb=1)
+  - FORM: `Itiya, itiniay i Yirusalim cingra pasayra i "kakerikeridan no finawlan ato mato'asay, ato pasifana'ay to rikec a tamdaw," no Yutaya a pasowal: 'Oya Nacali tamdaw ci Yis Kristo, na mipacekan namo i hecek, patikolanto no Kawas pa'orip cingra nai patay.'`
+  - TRANSL: 當時,他在耶路撒冷對猶太人的“官長、長老、抄經士”說:“拿撒勒人耶穌基督......你們把他掛在柱上,上帝卻使他從死裡復活了。”
+- **[Glosbe] Amis_165** (amb=1)
+  - FORM: `So'lin ano caka pasowal cangra, latek mamatira ci Tafitian ko harateng nangra: 'Nanay pahemeken no tamdaw kiso to nika citanengay kiso!'`
+  - TRANSL: 即使別人沒有說出口,說不定他們很想對我們說:“願人贊賞你明白事理。”
+- **[Glosbe] Amis_166** (amb=1)
+  - FORM: `'Ayaw no somowal ci Yis to kilang no fadisoso'a sapatinako pasowalay to tarokos: 'Pafelien ako kamo to dipayal no mako.'`
+  - TRANSL: 耶穌在講葡萄樹的比喻前對使徒說:“我......把我的平安賜給你們。”
+- **[Glosbe] Amis_342** (amb=2)
+  - FORM: `Mihaenay, wa mikitini kita i cowa ko kalimlaan a demak 'mi'aca' to toki.`
+  - TRANSL: 因此,我們需要從不重要的活動中“買”時間。(
+- **[Glosbe] Amis_351** (amb=1)
+  - FORM: `Itiya, itiniay i Yirusalim cingra pasayra i "kakerikeridan no finawlan ato mato'asay, ato pasifana'ay to rikec a tamdaw," no Yutaya a pasowal: 'Oya Nacali tamdaw ci Yis Kristo, na mipacekan namo i hecek, patikolanto no Kawas pa'orip cingra nai patay.'`
+  - TRANSL: 當時,他在耶路撒冷對猶太人的“官長、長老、抄經士”說:“拿撒勒人耶穌基督......你們把他掛在柱上,上帝卻使他從死裡復活了。”
+- **[Glosbe] Amis_384** (amb=3)
+  - FORM: `3 'Itini i saikoray lintad o pasangaray a si'ayawen a 'awaled' sanay ci Pawlo.`
+  - TRANSL: 3 保羅寫到,“最後的日子”會是個“難以應付的非常時期”。
+- **[Glosbe] Amis_393** (amb=1)
+  - FORM: `Tahira i romi'ad ni Nowa, 'adihayay miedefay ko mari'angay a demak icowacowa.'`
+  - TRANSL: 事實上,到了挪亞的日子,“暴行遍及全地”。
+- **[Glosbe] Amis_409** (amb=2)
+  - FORM: `Pasifana' ko tarokos ci Pawlo to Krisciyang mapakalalok i , hano pasowal cangranan to 'tongalen ko pihaen to demak' hani?`
+  - TRANSL: 使徒保羅教導基督徒要彼此鼓勵時,為什麼對他們說“就更要這樣做”?
+- **[Glosbe] Amis_576** (amb=3)
+  - FORM: `3 'Itini i saikoray lintad o pasangaray a si'ayawen a 'awaled' sanay ci Pawlo.`
+  - TRANSL: 3 保羅寫到,“最後的日子”會是個“難以應付的非常時期”。
+- **[Glosbe] Amis_582** (amb=2)
+  - FORM: `O roma mihongyakan a Fangcalay Cudad, o 'cango'otay' mihongyakan to "awaay ko kapo", "awaay ko epoc," "cowa ko kalimelaan."`
+  - TRANSL: 有些聖經譯本將“貧乏”翻譯為“無用”、“無意義”、“乏用”。
+- **[Glosbe] Amis_680** (amb=1)
+  - FORM: `Sanay ko ca'of ni Yis: 'Cowa ko noni hekal ko Hongti Kitakit ako .'`
+  - TRANSL: 耶穌回答說:“我的王國不屬於這個世界。”(
+- **[Glosbe] Amis_693** (amb=1)
+  - FORM: `'Ayaw no somowal ci Yis to kilang no fadisoso'a sapatinako pasowalay to tarokos: 'Pafelien ako kamo to dipayal no mako.'`
+  - TRANSL: 耶穌在講葡萄樹的比喻前對使徒說:“我......把我的平安賜給你們。”
+- **[Glosbe] Amis_750** (amb=1)
+  - FORM: `'Ayaw no somowal ci Yis to kilang no fadisoso'a sapatinako pasowalay to tarokos: 'Pafelien ako kamo to dipayal no mako .'`
+  - TRANSL: 耶穌在講葡萄樹的比喻前對使徒說:“我......把我的平安賜給你們。”
+- **[Glosbe] Amis_826** (amb=2)
+  - FORM: `Samaan a malo 'hafay' iso ci Yihofa?`
+  - TRANSL: 怎樣讓耶和華成為你的“產業”?
+- **[Glosbe] Amis_828** (amb=1)
+  - FORM: `Itiya, itiniay i Yirusalim cingra pasayra i "kakerikeridan no finawlan ato mato'asay, ato pasifana'ay to rikec a tamdaw," no Yutaya a pasowal: 'Oya Nacali tamdaw ci Yis Kristo, na mipacekan namo i hecek, patikolanto no Kawas pa'orip cingra nai patay.'`
+  - TRANSL: 當時,他在耶路撒冷對猶太人的“官長、長老、抄經士”說:“拿撒勒人耶穌基督......你們把他掛在柱上,上帝卻使他從死裡復活了。”
+- **[Glosbe] Amis_858** (amb=1)
+  - FORM: `So'lin ano caka pasowal cangra, latek mamatira ci Tafitian ko harateng nangra: 'Nanay pahemeken no tamdaw kiso to nika citanengay kiso!'`
+  - TRANSL: 即使別人沒有說出口,說不定他們很想對我們說:“願人贊賞你明白事理。”
+- **[Glosbe] Amis_859** (amb=3)
+  - FORM: `3 'Itini i saikoray lintad o pasangaray a si'ayawen a 'awaled' sanay ci Pawlo.`
+  - TRANSL: 3 保羅寫到,“最後的日子”會是個“難以應付的非常時期”。
+- **[Glosbe] Amis_860** (amb=1)
+  - FORM: `'Ayaw no somowal ci Yis to kilang no fadisoso'a sapatinako pasowalay to tarokos: 'Pafelien ako kamo to dipayal no mako.'`
+  - TRANSL: 耶穌在講葡萄樹的比喻前對使徒說:“我......把我的平安賜給你們。”
+- **[Glosbe] Amis_891** (amb=2)
+  - FORM: `Pasifana' ko tarokos ci Pawlo to Krisciyang mapakalalok i, hano pasowal cangranan to 'tongalen ko pihaen to demak' hani?`
+  - TRANSL: 使徒保羅教導基督徒要彼此鼓勵時,為什麼對他們說“就更要這樣做”?
+- **[Glosbe] Amis_946** (amb=2)
+  - FORM: `29 'O Moecelay Tamdaw, Pakayniay ci Yihofaan a Lipahak'`
+  - TRANSL: 29 “義人要因耶和華而歡喜”
+- **[Glosbe] Amis_985** (amb=1)
+  - FORM: `Sanay ko ca'of ni Yis: 'Cowa ko noni hekal ko Hongti Kitakit ako.'`
+  - TRANSL: 耶穌回答說:“我的王國不屬於這個世界。”(
+- **[Glosbe] Amis_1034** (amb=1)
+  - FORM: `Tahira i romi'ad ni Nowa, 'adihayay miedefay ko mari'angay a demak icowacowa.'`
+  - TRANSL: 事實上,到了挪亞的日子,“暴行遍及全地”。
+- **[Glosbe] Amis_1122** (amb=1)
+  - FORM: `Itini Loma 15:5 somowalay to pairaen ko 'harateng ni Kristo Yis,' sanay.`
+  - TRANSL: 羅馬書15:5也提到要有“基督耶穌的思想態度”。
+- **[Glosbe] Amis_1138** (amb=2)
+  - FORM: `Itini Yohani 15:4-10 toni pina sinael, kinapinaay masowal ni Yis ko 'mararid' sanay a tilid, paihekal to kalimelaan ko mihadidiay.`
+  - TRANSL: 在約翰福音15:4-10這短短的幾節經文中,耶穌多次用“時刻”一詞來強調忍耐的必要性。
+- **[Glosbe] Amis_1216** (amb=1)
+  - FORM: `Misa'icelay kita tano pinengneng ni Yihofa cangranan han ?'`
+  - TRANSL: 我是不是努力以耶和華的觀點看他們?”
+- **[Glosbe] Amis_1296** (amb=1)
+  - FORM: `Itini Loma 15:5 somowalay to pairaen ko 'harateng ni Kristo Yis,' sanay.`
+  - TRANSL: 羅馬書15:5也提到要有“基督耶穌的思想態度”。
+- **[Glosbe] Amis_1427** (amb=2)
+  - FORM: `Samaan a malo 'hafay' iso ci Yihofa?`
+  - TRANSL: 怎樣讓耶和華成為你的“產業”?
+- **[Glosbe] Amis_1491** (amb=1)
+  - FORM: `Pakayni i sowal ni Yihofa ato fangcalay saocor, ato misadakan iso a 'icel, wa nga'ay padama to wawa iso , 'ira ko taneng nga'ay malidong.'`
+  - TRANSL: 通過耶和華的話語和聖靈,以及你付出的努力,能幫助你的孩子“有智慧可以得救”。
+- **[Glosbe] Amis_1754** (amb=2)
+  - FORM: `'Faelohto' ko harateng ita , palahadho to faelohay a pakayraan miharatengan.`
+  - TRANSL: 我們的思想“更新”了,也培養新的思考方式。
+- **[Glosbe] Amis_1794** (amb=1)
+  - FORM: `So'lin ano caka pasowal cangra, latek mamatira ci Tafitian ko harateng nangra: 'Nanay pahemeken no tamdaw kiso to nika citanengay kiso !'`
+  - TRANSL: 即使別人沒有說出口,說不定他們很想對我們說:“願人贊賞你明白事理。”
+- **[Glosbe] Amis_1826** (amb=1)
+  - FORM: `21 'Nanay Pahemeken no Tamdaw Kiso to Nika Citanengay Kiso !'`
+  - TRANSL: 21頁 “願人贊賞你明白事理”
+- **[Glosbe] Amis_1917** (amb=1)
+  - FORM: `23 Kaemangay Tamdaw —Ka 'Padotoc Misa'icel, Milahecito Sakalidong Namo a Tayal '`
+  - TRANSL: 23頁 年輕人要“不斷努力,完成使你們得救的工作”
+- **[Glosbe] Amis_1930** (amb=1)
+  - FORM: `Kaemangay Tamdaw —ka 'Padotoc Misa'icel, Milahecito Sakalidong Namo a Tayal '`
+  - TRANSL: 年輕人要“不斷努力,完成使你們得救的工作”
+- **[Glosbe] Amis_1931** (amb=1)
+  - FORM: `'Ayaw no somowal ci Yis to kilang no fadisoso'a sapatinako pasowalay to tarokos: 'Pafelien ako kamo to dipayal no mako.'`
+  - TRANSL: 耶穌在講葡萄樹的比喻前對使徒說:“我......把我的平安賜給你們。”
+- **[Glosbe] Amis_1964** (amb=1)
+  - FORM: `So'lin ano caka pasowal cangra, latek mamatira ci Tafitian ko harateng nangra: 'Nanay pahemeken no tamdaw kiso to nika citanengay kiso!'`
+  - TRANSL: 即使別人沒有說出口,說不定他們很想對我們說:“願人贊賞你明白事理。”
+- **[Glosbe] Amis_2085** (amb=3)
+  - FORM: `19 Pasowalan ni Yis ko nisawawaan: ' Ano micerid kamo midofdof to sowal ako, o so'linayto a nisawawaan ako. Wa mafana' kamo to so'linay kimad, wa pasalaten no so'linay kimad kamo.'`
+  - TRANSL: 19 耶穌對門徒說:“你們時刻遵守我的話語,就真是我的門徒了。 你們會認識真理,真理會叫你們自由。”(
+- **[Glosbe] Amis_2194** (amb=2)
+  - FORM: `17 Misamanay Hano 'Papadotoc a Ciheci' Kita Hani?`
+  - TRANSL: 17頁 為什麼我們要“不斷多結果實”?
+- **[Glosbe] Amis_2275** (amb=1)
+  - FORM: `Cowa ko pilengo aca no Taneng 23:23 to mi'aca to so'linay kimad, pasowalayho to mami'aca kita to 'taneng, sapirikec, saka cipinang.'`
+  - TRANSL: 箴言23:23除了提到買真理, 還說我們應該買“智慧、管教、悟性”。
+- **[Glosbe] Amis_2279** (amb=1)
+  - FORM: `Saka 2 Korinto 3:17, sanay ko sowal, 'icowaay ko fangcalay saocor ni Yihofa, iraay ko pasalat itira.'`
+  - TRANSL: 6 以耶和華的觀點看事情不表示我們不能有任何想法或意見,正如哥林多後書3:17說的:“耶和華的靈在哪裡,哪裡就有自由。”
+- **[Glosbe] Amis_2314** (amb=2)
+  - FORM: `Itiniay i saka cecay hahekalan, o roma tamdaw hano 'pa'aca' to so'linay kimad hani?`
+  - TRANSL: 在1世紀,為什麼有些人“賣”掉真理?
+- **[Glosbe] Amis_2429** (amb=1)
+  - FORM: `14 Palimo'otay ko Loma 12:2 kitaanan: ' Aka madenga nonini a hekal, safaelohen ko harateng a mifalic to niyah, ho cipinang to nga'ayay no Kawas, o malefotay kahemekan Ningra a araaw.'`
+  - TRANSL: 14 羅馬書12:2勸勉我們:“不要被這個制度同化,倒要更新思想而改變自己,好察驗上帝那良善、完美而又蒙他悅納的旨意。”
+- **[Glosbe] Amis_2433** (amb=1)
+  - FORM: `15 Ano makalimay kita ira ko mahecaday ni Yihofa a harateng, ' aka madenga nonini a hekal.'`
+  - TRANSL: 15 我們想跟耶和華有一樣的看法,就不可以讓自己“被這個制度同化”。
+- **[Glosbe] Amis_2437** (amb=1)
+  - FORM: `Taneng 3:11, 12 sanay: 'Wawaaw ako, aka mana'ay to sarikec ni Yihofa . . . samanen o kaolahan ni Yihofa a tamdaw mirikecan Ningra.'`
+  - TRANSL: 箴言3:11,12說:“我兒啊,耶和華的管教你不可拒絕......因為耶和華責備他所愛的人。”
+- **[Glosbe] Amis_2447** (amb=1)
+  - FORM: `Katayni takowanan !'`
+  - TRANSL: 誰就到我這裡來!”
+- **[Glosbe] Amis_2553** (amb=2)
+  - FORM: `3 Mitadtaday ci Pawlo to kasasiroma 'no'adingoan a tamdaw' ato 'midoedoay to tireng a tamdaw,' padamaay konini kitanan cipinang to o maanan ko tatodong no no'adingoan a tamdaw.`
+  - TRANSL: 3 使徒保羅說明瞭“屬靈的人”和“順應肉體的人”有什麼分別,這幫助我們明白做屬靈的人是什麼意思。(
+- **[Glosbe] Amis_2676** (amb=2)
+  - FORM: `23 Kaemangay Tamdaw — Ka 'Padotoc Misa'icel, Milahecito Sakalidong Namo a Tayal'`
+  - TRANSL: 23頁 年輕人要“不斷努力,完成使你們得救的工作”
+- **[Glosbe] Amis_2690** (amb=1)
+  - FORM: `Itini ta'angayay kaemingay a demak no ka'orip, o so'linay Krisciyang wa ' ka sasiso'lin ko sowal'.`
+  - TRANSL: 在生活的大小事上,真基督徒會“彼此說真實的話”。
+- **[Glosbe] Amis_2721** (amb=2)
+  - FORM: `Kaemangay Tamdaw — ka 'Padotoc Misa'icel, Milahecito Sakalidong Namo a Tayal'`
+  - TRANSL: 年輕人要“不斷努力,完成使你們得救的工作”
+- **[Glosbe] Amis_2727** (amb=2)
+  - FORM: `O roma mihongyakan a Fangcalay Cudad, o 'cango'otay' mihongyakan to " awaay ko kapo", " awaay ko epoc," "cowa ko kalimelaan."`
+  - TRANSL: 有些聖經譯本將“貧乏”翻譯為“無用”、“無意義”、“乏用”。
+- **[Glosbe] Amis_2737** (amb=3)
+  - FORM: `4 Sowal ni Yis ci Akoma Satan 'miliyangay to so'linay kimad, samanen awaay ko so'linay kimad ilaloma' ningra.'`
+  - TRANSL: 4 耶穌說魔鬼撒但“沒有在真理中站穩,因為真理不在他裡面”。
+- **[Glosbe] Amis_2738** (amb=2)
+  - FORM: `Misamanay hano 'o misa'adaay ci Yihofaan, awaay ko taneng' hani?`
+  - TRANSL: 為什麼“跟耶和華對立,就毫無智慧”?
+- **[Glosbe] Amis_2780** (amb=2)
+  - FORM: `Mihaenay, wa mikitini kita i cowa ko kalimlaan a demak 'mi'aca' to toki.`
+  - TRANSL: 因此,我們需要從不重要的活動中“買”時間。(
+- **[Glosbe] Amis_2803** (amb=1)
+  - FORM: `Tahira i romi'ad ni Nowa, 'adihayay miedefay ko mari'angay a demak icowacowa.'`
+  - TRANSL: 事實上,到了挪亞的日子,“暴行遍及全地”。
+- **[Glosbe] Amis_2814** (amb=1)
+  - FORM: `Pasifana' ko tarokos ci Pawlo to Krisciyang mapakalalok i, hano pasowal cangranan to 'tongalen ko pihaen to demak ' hani?`
+  - TRANSL: 使徒保羅教導基督徒要彼此鼓勵時,為什麼對他們說“就更要這樣做”?
+- **[Glosbe] Amis_2998** (amb=1)
+  - FORM: `Itiya, itiniay i Yirusalim cingra pasayra i "kakerikeridan no finawlan ato mato'asay, ato pasifana'ay to rikec a tamdaw," no Yutaya a pasowal: 'Oya Nacali tamdaw ci Yis Kristo, na mipacekan namo i hecek, patikolanto no Kawas pa'orip cingra nai patay.'`
+  - TRANSL: 當時,他在耶路撒冷對猶太人的“官長、長老、抄經士”說:“拿撒勒人耶穌基督......你們把他掛在柱上,上帝卻使他從死裡復活了。”
+- **[Glosbe] Amis_3139** (amb=1)
+  - FORM: `Pakayni i sowal ni Yihofa ato fangcalay saocor, ato misadakan iso a 'icel, wa nga'ay padama to wawa iso, 'ira ko taneng nga'ay malidong.'`
+  - TRANSL: 通過耶和華的話語和聖靈,以及你付出的努力,能幫助你的孩子“有智慧可以得救”。
+- **[Glosbe] Amis_3164** (amb=1)
+  - FORM: `Itiya, itiniay i Yirusalim cingra pasayra i "kakerikeridan no finawlan ato mato'asay, ato pasifana'ay to rikec a tamdaw," no Yutaya a pasowal: 'Oya Nacali tamdaw ci Yis Kristo, na mipacekan namo i hecek, patikolanto no Kawas pa'orip cingra nai patay.'`
+  - TRANSL: 當時,他在耶路撒冷對猶太人的“官長、長老、抄經士”說:“拿撒勒人耶穌基督......你們把他掛在柱上,上帝卻使他從死裡復活了。”
+- **[Glosbe] Amis_3212** (amb=2)
+  - FORM: `3 Mitadtaday ci Pawlo to kasasiroma 'no'adingoan a tamdaw' ato 'midoedoay to tireng a tamdaw,' padamaay konini kitanan cipinang to o maanan ko tatodong no no'adingoan a tamdaw.`
+  - TRANSL: 3 使徒保羅說明瞭“屬靈的人”和“順應肉體的人”有什麼分別,這幫助我們明白做屬靈的人是什麼意思。(
+- **[Glosbe] Amis_3220** (amb=1)
+  - FORM: `Itiya, itiniay i Yirusalim cingra pasayra i "kakerikeridan no finawlan ato mato'asay, ato pasifana'ay to rikec a tamdaw," no Yutaya a pasowal: 'Oya Nacali tamdaw ci Yis Kristo, na mipacekan namo i hecek, patikolanto no Kawas pa'orip cingra nai patay.'`
+  - TRANSL: 當時,他在耶路撒冷對猶太人的“官長、長老、抄經士”說:“拿撒勒人耶穌基督......你們把他掛在柱上,上帝卻使他從死裡復活了。”
+- **[Glosbe] Amis_3227** (amb=2)
+  - FORM: `23 Kaemangay Tamdaw —Ka 'Padotoc Misa'icel, Milahecito Sakalidong Namo a Tayal'`
+  - TRANSL: 23頁 年輕人要“不斷努力,完成使你們得救的工作”
+- **[Glosbe] Amis_3234** (amb=2)
+  - FORM: `Kaemangay Tamdaw —ka 'Padotoc Misa'icel, Milahecito Sakalidong Namo a Tayal'`
+  - TRANSL: 年輕人要“不斷努力,完成使你們得救的工作”
+- **[Glosbe] Amis_3373** (amb=2)
+  - FORM: `Mihaenay, wa mikitini kita i cowa ko kalimlaan a demak 'mi'aca' to toki.`
+  - TRANSL: 因此,我們需要從不重要的活動中“買”時間。(
+- **[Glosbe] Amis_3403** (amb=1)
+  - FORM: `Itiya, itiniay i Yirusalim cingra pasayra i "kakerikeridan no finawlan ato mato'asay, ato pasifana'ay to rikec a tamdaw," no Yutaya a pasowal: 'Oya Nacali tamdaw ci Yis Kristo, na mipacekan namo i hecek, patikolanto no Kawas pa'orip cingra nai patay.'`
+  - TRANSL: 當時,他在耶路撒冷對猶太人的“官長、長老、抄經士”說:“拿撒勒人耶穌基督......你們把他掛在柱上,上帝卻使他從死裡復活了。”
+- **[Glosbe] Amis_3487** (amb=1)
+  - FORM: `Itiya, itiniay i Yirusalim cingra pasayra i "kakerikeridan no finawlan ato mato'asay, ato pasifana'ay to rikec a tamdaw," no Yutaya a pasowal: 'Oya Nacali tamdaw ci Yis Kristo, na mipacekan namo i hecek, patikolanto no Kawas pa'orip cingra nai patay.'`
+  - TRANSL: 當時,他在耶路撒冷對猶太人的“官長、長老、抄經士”說:“拿撒勒人耶穌基督......你們把他掛在柱上,上帝卻使他從死裡復活了。”
+- **[Glosbe] Amis_3527** (amb=1)
+  - FORM: `Cowa ko pilengo aca no Taneng 23:23 to mi'aca to so'linay kimad, pasowalayho to mami'aca kita to 'taneng, sapirikec, saka cipinang.'`
+  - TRANSL: 箴言23:23除了提到買真理, 還說我們應該買“智慧、管教、悟性”。
+- **[Glosbe] Amis_3636** (amb=3)
+  - FORM: `Wa padotoc kita a mikilim to 'citatodongay milifok to tahada'ocay 'orip a tamdaw'`
+  - TRANSL: 我們會繼續尋找“秉性適宜得永生的人”
+- **[Glosbe] Amis_3829** (amb=1)
+  - FORM: `Sata'angay sa to ngiha ci Mosi a pasowal: ' Cima ko midopoay ci Yihofaan?`
+  - TRANSL: 摩西大聲地說:“誰擁護耶和華?
+- **[Glosbe] Amis_3848** (amb=2)
+  - FORM: `O roma, masowalay ni Yihofa i Fangcalay Cudad ko Hongti Kitakit ni Misiya, somowalayho Cingra o mapasimalay Krisciyang iraay ko hatokel, tayra i kakarayan tahada'oc a ma'orip, o 'roma lopay'ay siri' wa itini i sera a Lakoing tahada'oc a ma'orip.`
+  - TRANSL: 此外,耶和華在聖經提到了彌賽亞王國,也談到受膏基督徒有希望在天上享永生,而“另外的綿羊”則是有希望永遠生活在地上的樂園裡。(
+- **[Glosbe] Amis_4023** (amb=2)
+  - FORM: `O roma, masowalay ni Yihofa i Fangcalay Cudad ko Hongti Kitakit ni Misiya, somowalayho Cingra o mapasimalay Krisciyang iraay ko hatokel, tayra i kakarayan tahada'oc a ma'orip, o 'roma lopay'ay siri' wa itini i sera a Lakoing tahada'oc a ma'orip.`
+  - TRANSL: 此外,耶和華在聖經提到了彌賽亞王國,也談到受膏基督徒有希望在天上享永生,而“另外的綿羊”則是有希望永遠生活在地上的樂園裡。(
+- **[Glosbe] Amis_4108** (amb=2)
+  - FORM: `Itiniay i saka cecay hahekalan, o roma tamdaw hano 'pa'aca' to so'linay kimad hani?`
+  - TRANSL: 在1世紀,為什麼有些人“賣”掉真理?
+- **[Glosbe] Amis_4139** (amb=1)
+  - FORM: `Sanay ko ca'of ni Yis: 'Cowa ko noni hekal ko Hongti Kitakit ako.'`
+  - TRANSL: 耶穌回答說:“我的王國不屬於這個世界。”(
+- **[Glosbe] Amis_4162** (amb=2)
+  - FORM: `O roma mihongyakan a Fangcalay Cudad, o 'cango'otay' mihongyakan to "awaay ko kapo", "awaay ko epoc," "cowa ko kalimelaan."`
+  - TRANSL: 有些聖經譯本將“貧乏”翻譯為“無用”、“無意義”、“乏用”。
+- **[Glosbe] Amis_4181** (amb=1)
+  - FORM: `Sanay ko ca'of ni Yis: 'Cowa ko noni hekal ko Hongti Kitakit ako.'`
+  - TRANSL: 耶穌回答說:“我的王國不屬於這個世界。”(
+- **[Glosbe] Amis_4187** (amb=3)
+  - FORM: `3 'Itini i saikoray lintad o pasangaray a si'ayawen a 'awaled' sanay ci Pawlo.`
+  - TRANSL: 3 保羅寫到,“最後的日子”會是個“難以應付的非常時期”。
+- **[Glosbe] Amis_4208** (amb=1)
+  - FORM: `Itini Loma 15:5 somowalay to pairaen ko 'harateng ni Kristo Yis,' sanay .`
+  - TRANSL: 羅馬書15:5也提到要有“基督耶穌的思想態度”。
+- **[Glosbe] Amis_4211** (amb=2)
+  - FORM: `Itini Yohani 15:4-10 toni pina sinael, kinapinaay masowal ni Yis ko 'mararid' sanay a tilid, paihekal to kalimelaan ko mihadidiay.`
+  - TRANSL: 在約翰福音15:4-10這短短的幾節經文中,耶穌多次用“時刻”一詞來強調忍耐的必要性。
+- **[Glosbe] Amis_4218** (amb=3)
+  - FORM: `Palimo'otay ci Yis to nisawawaan padama to tamdaw 'malo Krisciyang . . . , mipaino' cangranan,' sanay .`
+  - TRANSL: 耶穌吩咐門徒要幫助人做基督徒,“給他們施浸”。(
+- **[Glosbe] Amis_4227** (amb=1)
+  - FORM: `Saka 2 Korinto 3:17, sanay ko sowal, 'icowaay ko fangcalay saocor ni Yihofa, iraay ko pasalat itira.'`
+  - TRANSL: 6 以耶和華的觀點看事情不表示我們不能有任何想法或意見,正如哥林多後書3:17說的:“耶和華的靈在哪裡,哪裡就有自由。”
+- **[Glosbe] Amis_4232** (amb=1)
+  - FORM: `Taneng 3:11, 12 sanay : 'Wawaaw ako, aka mana'ay to sarikec ni Yihofa . . . samanen o kaolahan ni Yihofa a tamdaw mirikecan Ningra.'`
+  - TRANSL: 箴言3:11,12說:“我兒啊,耶和華的管教你不可拒絕......因為耶和華責備他所愛的人。”
+- **[Glosbe] Amis_4270** (amb=1)
+  - FORM: `'Ayaw no somowal ci Yis to kilang no fadisoso'a sapatinako pasowalay to tarokos: 'Pafelien ako kamo to dipayal no mako.'`
+  - TRANSL: 耶穌在講葡萄樹的比喻前對使徒說:“我......把我的平安賜給你們。”
+- **[Glosbe] Amis_4275** (amb=3)
+  - FORM: `19 Pasowalan ni Yis ko nisawawaan: 'Ano micerid kamo midofdof to sowal ako, o so'linayto a nisawawaan ako. Wa mafana' kamo to so'linay kimad, wa pasalaten no so'linay kimad kamo .'`
+  - TRANSL: 19 耶穌對門徒說:“你們時刻遵守我的話語,就真是我的門徒了。 你們會認識真理,真理會叫你們自由。”(
+- **[Glosbe] Amis_4442** (amb=2)
+  - FORM: `O roma, masowalay ni Yihofa i Fangcalay Cudad ko Hongti Kitakit ni Misiya, somowalayho Cingra o mapasimalay Krisciyang iraay ko hatokel, tayra i kakarayan tahada'oc a ma'orip, o 'roma lopay'ay siri' wa itini i sera a Lakoing tahada'oc a ma'orip.`
+  - TRANSL: 此外,耶和華在聖經提到了彌賽亞王國,也談到受膏基督徒有希望在天上享永生,而“另外的綿羊”則是有希望永遠生活在地上的樂園裡。(
+- **[Glosbe] Amis_4477** (amb=1)
+  - FORM: `Taneng 3:11, 12 sanay: 'Wawaaw ako, aka mana'ay to sarikec ni Yihofa . . . samanen o kaolahan ni Yihofa a tamdaw mirikecan Ningra.'`
+  - TRANSL: 箴言3:11,12說:“我兒啊,耶和華的管教你不可拒絕......因為耶和華責備他所愛的人。”
+- **[Glosbe] Amis_4488** (amb=1)
+  - FORM: `So'lin ano caka pasowal cangra, latek mamatira ci Tafitian ko harateng nangra: 'Nanay pahemeken no tamdaw kiso to nika citanengay kiso!'`
+  - TRANSL: 即使別人沒有說出口,說不定他們很想對我們說:“願人贊賞你明白事理。”
+- **[Glosbe] Amis_4495** (amb=1)
+  - FORM: `21 'Nanay Pahemeken no Tamdaw Kiso to Nika Citanengay Kiso!'`
+  - TRANSL: 21頁 “願人贊賞你明白事理”
+- **[Glosbe] Amis_4883** (amb=3)
+  - FORM: `3 ' Itini i saikoray lintad o pasangaray a si'ayawen a 'awaled' sanay ci Pawlo.`
+  - TRANSL: 3 保羅寫到,“最後的日子”會是個“難以應付的非常時期”。
+- **[Glosbe] Amis_4907** (amb=1)
+  - FORM: `Itini Loma 15:5 somowalay to pairaen ko 'harateng ni Kristo Yis,' sanay.`
+  - TRANSL: 羅馬書15:5也提到要有“基督耶穌的思想態度”。
+- **[Glosbe] Amis_4912** (amb=2)
+  - FORM: `Itini Yohani 15:4-10 toni pina sinael, kinapinaay masowal ni Yis ko 'mararid' sanay a tilid, paihekal to kalimelaan ko mihadidiay.`
+  - TRANSL: 在約翰福音15:4-10這短短的幾節經文中,耶穌多次用“時刻”一詞來強調忍耐的必要性。
+- **[Glosbe] Amis_4984** (amb=3)
+  - FORM: `4, 5. (1) Itini noka 'pica'edong to faelohay capeling,' mafana' a mirikec to harateng, hano o masaka limelaan hani?`
+  - TRANSL: 甲)為什麼在“穿上新品格”的過程中,學習自律很重要?(
+- **[Glosbe] Amis_4992** (amb=2)
+  - FORM: `O roma, masowalay ni Yihofa i Fangcalay Cudad ko Hongti Kitakit ni Misiya, somowalayho Cingra o mapasimalay Krisciyang iraay ko hatokel, tayra i kakarayan tahada'oc a ma'orip, o 'roma lopay'ay siri' wa itini i sera a Lakoing tahada'oc a ma'orip.`
+  - TRANSL: 此外,耶和華在聖經提到了彌賽亞王國,也談到受膏基督徒有希望在天上享永生,而“另外的綿羊”則是有希望永遠生活在地上的樂園裡。(
+- **[Glosbe] Amis_5068** (amb=4)
+  - FORM: `Ihekalay ci Malaki a mifana', oha 'mamangodo kita ci Yihofaan' ato 'miharateng' to ngangan Ningra.`
+  - TRANSL: 瑪拉基明確地指出,我們必須“敬畏耶和華”和“思量”他的名字。
+- **[Glosbe] Amis_5105** (amb=2)
+  - FORM: `Mihaenay, wa mikitini kita i cowa ko kalimlaan a demak 'mi'aca' to toki.`
+  - TRANSL: 因此,我們需要從不重要的活動中“買”時間。(
+- **[Glosbe] Amis_5133** (amb=1)
+  - FORM: `'Ayaw no somowal ci Yis to kilang no fadisoso'a sapatinako pasowalay to tarokos: 'Pafelien ako kamo to dipayal no mako.'`
+  - TRANSL: 耶穌在講葡萄樹的比喻前對使徒說:“我......把我的平安賜給你們。”
+- **[Glosbe] Amis_5165** (amb=2)
+  - FORM: `Tahira i romi'ad ni Nowa, ' adihayay miedefay ko mari'angay a demak icowacowa.'`
+  - TRANSL: 事實上,到了挪亞的日子,“暴行遍及全地”。
+- **[Glosbe] Amis_5215** (amb=1)
+  - FORM: `Itiya , itiniay i Yirusalim cingra pasayra i "kakerikeridan no finawlan ato mato'asay, ato pasifana'ay to rikec a tamdaw," no Yutaya a pasowal: 'Oya Nacali tamdaw ci Yis Kristo, na mipacekan namo i hecek, patikolanto no Kawas pa'orip cingra nai patay.'`
+  - TRANSL: 當時,他在耶路撒冷對猶太人的“官長、長老、抄經士”說:“拿撒勒人耶穌基督......你們把他掛在柱上,上帝卻使他從死裡復活了。”
+- **[Glosbe] Amis_5245** (amb=2)
+  - FORM: `Wa falahen wa patayen ci Misiya, kawra wa miliyaw ma'orip cingra, malo 'ta'enengan a fakeloh no loma'.`
+  - TRANSL: 彌賽亞會被棄絕和殺害,但接著他會復活,成為“屋頂的房角石”。
+- **[Glosbe] Amis_5339** (amb=2)
+  - FORM: `21 ' Nanay Pahemeken no Tamdaw Kiso to Nika Citanengay Kiso!'`
+  - TRANSL: 21頁 “願人贊賞你明白事理”
+- **[Glosbe] Amis_5398** (amb=1)
+  - FORM: `Sanay ko ca'of ni Yis: 'Cowa ko noni hekal ko Hongti Kitakit ako.'`
+  - TRANSL: 耶穌回答說:“我的王國不屬於這個世界。”(
+- **[Glosbe] Amis_5448** (amb=2)
+  - FORM: `O roma, masowalay ni Yihofa i Fangcalay Cudad ko Hongti Kitakit ni Misiya, somowalayho Cingra o mapasimalay Krisciyang iraay ko hatokel, tayra i kakarayan tahada'oc a ma'orip, o 'roma lopay'ay siri' wa itini i sera a Lakoing tahada'oc a ma'orip.`
+  - TRANSL: 此外,耶和華在聖經提到了彌賽亞王國,也談到受膏基督徒有希望在天上享永生,而“另外的綿羊”則是有希望永遠生活在地上的樂園裡。(
+- **[Glosbe] Amis_5602** (amb=3)
+  - FORM: `4 Sowal ni Yis ci Akoma Satan 'miliyangay to so'linay kimad , samanen awaay ko so'linay kimad ilaloma' ningra.'`
+  - TRANSL: 4 耶穌說魔鬼撒但“沒有在真理中站穩,因為真理不在他裡面”。
+- **[Glosbe] Amis_5608** (amb=1)
+  - FORM: `Cowa ko pilengo aca no Taneng 23:23 to mi'aca to so'linay kimad , pasowalayho to mami'aca kita to 'taneng, sapirikec, saka cipinang.'`
+  - TRANSL: 箴言23:23除了提到買真理, 還說我們應該買“智慧、管教、悟性”。
+- **[Glosbe] Amis_5629** (amb=3)
+  - FORM: `19 Pasowalan ni Yis ko nisawawaan: 'Ano micerid kamo midofdof to sowal ako, o so'linayto a nisawawaan ako. Wa mafana' kamo to so'linay kimad , wa pasalaten no so'linay kimad kamo.'`
+  - TRANSL: 19 耶穌對門徒說:“你們時刻遵守我的話語,就真是我的門徒了。 你們會認識真理,真理會叫你們自由。”(
+- **[Glosbe] Amis_5650** (amb=2)
+  - FORM: `Itiniay i saka cecay hahekalan, o roma tamdaw hano 'pa'aca' to so'linay kimad hani?`
+  - TRANSL: 在1世紀,為什麼有些人“賣”掉真理?
+- **[Glosbe] Amis_5674** (amb=2)
+  - FORM: `Itini Yohani 15:4-10 toni pina sinael, kinapinaay masowal ni Yis ko 'mararid' sanay a tilid, paihekal to kalimelaan ko mihadidiay.`
+  - TRANSL: 在約翰福音15:4-10這短短的幾節經文中,耶穌多次用“時刻”一詞來強調忍耐的必要性。
+- **[Glosbe] Amis_5773** (amb=2)
+  - FORM: `23 Kaemangay Tamdaw —Ka 'Padotoc Misa'icel, Milahecito Sakalidong Namo a Tayal'`
+  - TRANSL: 23頁 年輕人要“不斷努力,完成使你們得救的工作”
+- **[Glosbe] Amis_5817** (amb=2)
+  - FORM: `Kaemangay Tamdaw —ka 'Padotoc Misa'icel, Milahecito Sakalidong Namo a Tayal'`
+  - TRANSL: 年輕人要“不斷努力,完成使你們得救的工作”
+- **[Glosbe] Amis_5850** (amb=1)
+  - FORM: `Itiya, itiniay i Yirusalim cingra pasayra i "kakerikeridan no finawlan ato mato'asay, ato pasifana'ay to rikec a tamdaw," no Yutaya a pasowal: 'Oya Nacali tamdaw ci Yis Kristo, na mipacekan namo i hecek, patikolanto no Kawas pa'orip cingra nai patay .'`
+  - TRANSL: 當時,他在耶路撒冷對猶太人的“官長、長老、抄經士”說:“拿撒勒人耶穌基督......你們把他掛在柱上,上帝卻使他從死裡復活了。”
+- **[Safolu-Amis-Dictionary] S00963** (amb=3)
+  - FORM: `'Atekes ko 'aca nona riko'.`
+- **[Presidential_Apologies] 14** (amb=2)
+  - FORM: `Pakaynien ako i cecay a taneng no Yin- cu-min-cu, a pasowal to demak anini. I sowal no Tayal "so'linay a demak" sanay i, "Balay" han. "kasasisolol" sanay i "Sbalay" han, 'ayaw no "Balay" a tilid tongal han to "s" a tilid i, "so'lin a demak" ato "kasasisolol" a sowal i makakafitay sanay. Ano pahci^ han ko sowal i, so'linay a kasasisolol i, deng so'linen ko faloco' a masaso'ayaw ta malahci ko demak.`
+  - TRANSL: 請容我用一個原住民族的智 慧，來說明今天的場合。在泰 雅族的語言裡，「真相」， 叫做 Balay。而「和解」叫做 Sbalay，也就是在 Balay 之前 加一個 S 的音。真相與和解， 其實是兩個相關的概念。換句 話說，真正的和解，只有透過 誠懇面對真相，才有可能達成。 || Please allow me to shed light on this occasion with a piece of indigenous wisdom. In the Atayal language, truth is called "Balay", and reconciliation is called "Sbalay", so you simply add an "S" sound to "Balay". Truth and reconciliation are in fact two related concepts. In other words, only by facing the truth sincerely can reconciliation be attained.
+- **[ePark] 87** (amb=2)
+  - FORM: `Mita'elif to kami toya paliwalay to koko', sowal sa koya tawki, "O maan ko 'a'acaen iso? Ta'angayay a masoesoay ko koko' anini, tolo so'ot ko cecay a koko'."`
+  - TRANSL: 我們經過了肉攤，老闆說:＂你要買什麼?今天的雞又大又肥，一隻300元。＂ || We passed the meat stall, and the boss said, "What do you want to buy? Today's chickens are big and fat, and one is 300 NTD."
+- **[ePark] 232** (amb=2)
+  - FORM: `nanu suwal nu matu'asay, anu makedal caay ka 'uradan, tayni ku vavahi nu niyaru' a miradum, a misalisin tu misa 'urad, u aayaw nu lisin, mililuc hen i tevung misadimel tu tireng,`
+- **[ePark] 46** (amb=2)
+  - FORM: `Kitinika'amis i ho^po, tahila i katimol i Sofong a 'alo, ila ko Natawran, Pokpok, Lidaw, Cikasoan, o ta'anga'angayay a niyaro'.`
+  - TRANSL: 主要部落有：荳蘭、薄薄、里漏、七腳川等；因位居泰雅族北勢群的南方，故相對稱為＂南勢阿美＂。
+- **[ePark] 266** (amb=1)
+  - FORM: `sacaciyaw sa cingra 'o cima kona mamalitemoh no mako hokiya?' sa a mi sacaciyaw, so'elin sa malitemoh ningra ko widang ningra."`
+  - TRANSL: 他會喃喃自語：＂我會遇到誰呢？＂還真的遇見了他的朋友。＂
+- **[ePark] 40** (amb=2)
+  - FORM: `O roma sato, o "mami^" han no 'amis ko "karo'" no Siwkolang, o "kamoraw" han no Pasawali ato Palidaw, o "wirok" han no Poskoay, o "ceroh" han no Cikasoan.`
+  - TRANSL: 例如，＂柚子＂南勢阿美用mami^，秀姑巒及海岸阿美用karo’，馬蘭及恆春用kamoraw，玉里也區則用wirok，七腳川阿美用ceroh。
+- **[ePark] 236** (amb=2)
+  - FORM: `Pakayni aniniay a 'orip o kalongoc to sakalecadaw no fafahian ato fa'inayan hananay i, paso'elin kita o kakahemekan no faifahi' ko matiniay a pakayraan.`
+- **[ePark] 28** (amb=3)
+  - FORM: `O no timolan a Pangcah, nai Hopo tahira i katimol i Rinahem a 'alo, ira ko Natawran, Pokpok, Lidaw, Cikaso'an ko tata'angay a niyaro', katimol no Tayan a matatapal ko paniyaro', saka no timolan han no cifenekay a pangangan.`
+  - TRANSL: 南勢阿美群：北自新城鄉境的北浦，南至壽豐溪，主要部落有：主要部落有荳蘭、薄薄、里漏、七腳川等；因位居泰雅族北勢群的南方，故稱為＂南勢阿美＂。
+- **[ePark] 173** (amb=2)
+  - FORM: `Pasowal sa ko kalas, ano makera to ko kakedalan, sa'opoen no kakitaan ko maponengay a fafahiyan, mitatoy to pahpah no lengac tayra i 'alo malalesilesi', o ta todong nonini a sowal i, nawhani awaay to ko fa'inay, mato tatirengan makedal manikaw to salang.`
+  - TRANSL: 耆老解釋：＂如果遇到乾旱，部落領袖會邀集寡婦拿着月桃葉子在溪流中相互潑水。＂涵義是：因為沒了老公，就像身體乾旱缺乏水源。
+- **[ePark] 128** (amb=2)
+  - FORM: `A'odo'odoc, la'afa'afas sanay ko nika 'orip anini i, paini ci Yis to saka nga'ay ita, sowal sa "hatiyaen o misakoloay a tamdaw a misapo^ner ko faloco', nawhani, awaay ko maamaan aca a milongocan no misakoloay a tamdaw.`
+  - TRANSL: 原來耶穌的意思告訴處於爭權奪利社會的今天，以上的事件告訴我們 ，誰是真正偉大的人，應該是＂謙諀的像佣人＂，因為佣人在社會中沒有 身份、沒有地位、沒有企圖…………，只有順服，默默的工作，無怨無悔 。
+- **[ePark] 154** (amb=4)
+  - FORM: `'A'odo'odot, 'a'afa'afas sanay ko nika 'orip anini i, paini ci Yis to saka nga'ay ita, sowal sa "samatiyaen o koli a tamdaw a misapoener ko faloco', nawhani, awaay ko maamaan aca a nilongocan no koli a tamdaw.`
+  - TRANSL: 原來耶穌的意思告訴處於爭權奪利社會的今天，以上的事件告訴我們，誰是真正偉大的人，應該是＂謙諀的像佣人＂，因為佣人在社會中沒有身份、沒有地位、沒有企圖......，
+- **[ePark] 273** (amb=2)
+  - FORM: `Ira ko todong to sapalowad, i 'ayaw no ilisin, parengreng to kapah, masaopo i taloan no niyaro',`
+  - TRANSL: 有一個重要的儀式，＂成年禮＂即越野體能賽跑，豊年祭之前，在部落聚會所集合，
+- **[ePark] 3199** (amb=4)
+  - FORM: `Pasowal ko kaka^ ako, ''O ilisin no niyaro' ko kakaoronan niyam i Tay-pak.'' saan.`
+  - TRANSL: 我哥哥說：＂我們在台北最懷念的，就是家鄉的豐年祭。＂
