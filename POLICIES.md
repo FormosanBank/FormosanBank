@@ -320,3 +320,25 @@ dedicated, durable **`quote_corrections.csv`** (append-only across runs;
 commit it after correcting runs) — distinct from `cleaner_warnings.csv`,
 which stays an ephemeral per-run report per POL-033 and carries only the
 `c030` ambiguity flags.
+
+### POL-036 · RULED · 2026-08-11 · gloss standardization is additive
+Original source glosses are **preserved as written** (in
+`TRANSL[@kindOf="original"]` at M/W level). Standardizing a gloss — e.g.
+normalizing a source's idiosyncratic label to a Leipzig-style code — never
+overwrites the original: it is recorded as a *separate*
+`TRANSL[@kindOf="standard"]` alongside it. Made explicit from the GitBook
+XML-format page's long-standing instruction ("Original source glosses
+should be preserved. A standardized gloss can be added as a separate
+kindOf='standard' translation"); companion to POL-001's source-fidelity
+guarantee, applied to the gloss tier.
+
+### POL-037 · RULED · 2026-08-11 · stable public identifiers
+Published identifiers are **stable**: a `TEXT/@id` must never collide with
+(or be reused from) an already-published `TEXT/@id`, and S/W/M ids —
+unique within their file — are not renumbered once published. Rationale:
+external users cite and align against these ids, and the manual-edits
+mechanism (POL-030) keys its records by sentence id — renumbering
+silently orphans both. Regeneration pipelines must therefore produce the
+same ids run over run; an id scheme change is a breaking change to
+announce, not a cleanup. Made explicit from the id rules implicit in the
+GitBook XML-format page.
