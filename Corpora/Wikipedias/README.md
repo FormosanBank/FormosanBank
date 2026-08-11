@@ -104,7 +104,17 @@ This repository contains code and data for retrieving, processing and structurin
       - A file is deleted only if it parses, contains at least one `<FORM>` element, and every `<FORM>` element's text is empty after stripping whitespace. Files with any non-empty FORM are left untouched.
       - Run this after `remove_other_langs.py` (which can itself empty FORMs by stripping Chinese-heavy content) and before `clean_xml.py`.
 
-5. **Clean XML and standardize punctuation**
+5. **Normalize Seediq apostrophes** (Seediq only — run before `clean_xml`)
+
+   ```bash
+   python CodeAndDocs/normalize_seediq_quotes.py --corpora_path path/to/FormosanWikipedias/XML
+   ```
+
+   **Notes**
+      - Applies the 2026-08-11 maintainer ruling for the Seediq Wikipedia only; see "Apostrophe (`'`) handling" below for the rule and its rationale.
+      - `--dry-run` reports what would change without writing.
+
+6. **Clean XML and standardize punctuation**
 
    ```bash
    python path/to/FormosanBankRepo/QC/cleaning/clean_xml.py --corpora_path path/to/FormosanWikipedias/XML
@@ -119,7 +129,7 @@ This repository contains code and data for retrieving, processing and structurin
       - Unicode is flattened so that diacritics are merged with the characters they modify
       - HTML escape codes are replaced with the corresponding characters
 
-6. **Standardize orthography**
+7. **Standardize orthography**
 
    ```bash
    python path/to/FormosanBankRepo/QC/utilities/standardize.py --corpora_path path/to/FormosanWikipedias/Final_XML --copy
@@ -134,7 +144,7 @@ This is almost certainly Ortho94, because it doesn't use `_`. However, there's n
    - Creates a copy of every <FORM> element with kindOf="standard" attribute
    - All u's are converted to o's.
 
-7. **Add IPA**
+8. **Add IPA**
 
 This uses a "default" IPA encoding, because dialect is unknown.
 
@@ -142,7 +152,7 @@ This uses a "default" IPA encoding, because dialect is unknown.
    python path/to/FormosanBankRepo/QC/utilities/add_phonology.py --corpora_path path/to/FormosanWikipedias/Final_XML --orthography Ortho113
    ```
 
-8. **Consolidate citations**:
+9. **Consolidate citations**:
    Run `consolidate_citations.py` to replace the per-article `citation` and `BibTeX_citation` attributes with one shared citation per language Wikipedia.
 
    ```bash
@@ -203,10 +213,35 @@ This uses a "default" IPA encoding, because dialect is unknown.
 
 ## Apostrophe (`'`) handling
 
-The apostrophe is the glottal-stop letter in these orthographies. FormosanBank's
-`clean_xml` correction rewrites `'` used as a quotation mark to `"` in the
-`original` tier. Wikipedia articles carry no translations, so the classifier
-cannot confirm most cases; **ambiguous `'` in this corpus are accepted as glottal
-stops by fiat** and are not warned on. This should be revisited when a more
-complete Amis (and per-language) attestation dictionary is available.
+Treatment differs by language (maintainer ruling, 2026-08-11):
+
+**All languages except Seediq**: the apostrophe is the glottal-stop letter in
+these orthographies, and **`'` is assumed glottal by fiat**. Wikipedia articles
+carry no translations, so FormosanBank's quote/glottal classifier cannot
+confirm most cases; ambiguous `'` are accepted as glottal and not warned on.
+This should be revisited when a better language model can do reliable
+automatic correction. (Wikipedia authors also mix straight/curly punctuation
+inconsistently — e.g. Sakizaya articles write a word-final glottal `'`
+followed by a curly `’` closing quote — so codepoint distinctions in the
+source cannot be trusted as signal.)
+
+**Seediq only**: Seediq orthography does not use `'` as a letter (no `'` row
+in `Orthographies/Ortho113/Seediq.tsv`), and inspection of the trv wikitext
+showed the corpus's apostrophes are quotation usage: literal `''` pairs the
+authors typed as double-quote substitutes (`<nowiki>`-protected so MediaWiki
+would not read them as italics markup) and single-quoted titles of laws and
+documents. `CodeAndDocs/normalize_seediq_quotes.py` (pipeline step 5, before
+`clean_xml`) therefore applies, to original FORMs in `XML/Seediq/` only:
+
+1. literal `''` → `"`;
+2. every remaining `'` → `"`, with two exceptions that keep `'`:
+   - **word-internal apostrophes** (a letter on both sides, e.g. `b'anux`,
+     `hla'alua`, `mu'izzaddin`) — elided-vowel spellings and romanized
+     names, not quotation marks;
+   - the words `knita'` and `brbiru'`, which keep a genuine glottal `'`.
+     These two occur in the article-stub boilerplate `cinkhulan sa knita'
+     sa brbiru'` (≈ "source: seen in the writings/documents") and are
+     Atayal vocabulary (`knita'` "view/seen", `biru'` "book/writing" —
+     both attested only in Atayal corpora; Seediq uses *patas*), spelled
+     with the Atayal glottal apostrophe.
 

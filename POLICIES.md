@@ -342,3 +342,26 @@ silently orphans both. Regeneration pipelines must therefore produce the
 same ids run over run; an id scheme change is a breaking change to
 announce, not a cleanup. Made explicit from the id rules implicit in the
 GitBook XML-format page.
+
+### POL-038 · RULED · 2026-08-11 · data files change only via code
+XML files and raw scrape files are **only ever modified by committed
+code** — a pipeline script, a recorded `manual_edits.xml` applied by
+`apply_manual_edits.py` (POL-030), or a one-off script committed to
+`CodeAndDocs/`. Never by hand and never ad hoc (including "quick"
+interactive edits during audits or reviews): a non-code edit is not
+reproducible and is silently destroyed on regeneration. This applies to
+published `XML/`, to raw scrapes under `CodeAndDocs/`, and to POL-035
+pre-correction snapshots alike (a snapshot defect is fixed by a committed
+script run against the snapshot, not by editing it). Raised by: the
+2026-08-11 Group 1 sweep review.
+
+### POL-039 · RULED · 2026-08-11 · no data tables hidden in code
+Lookup tables and other data that critical steps depend on are **never
+hardcoded inside a python file**. Expose them as human-readable CSV/TSV/
+XML in a prominent, documented place (repo-root registries —
+`languages.csv`, `dialects.csv`, `standards.csv` — or `Orthographies/`)
+and load them from there, through exactly one loader. Raised by the ISO
+639-3 map drift: four separate hardcoded copies of the code→language
+table had diverged (`bzg` present in one, `pzh` in another).
+Implemented by: `languages.csv` + `QC/corpus_counts.load_language_codes`
+(the other three copies now import from it).

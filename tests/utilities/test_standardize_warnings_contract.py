@@ -12,7 +12,8 @@ from pathlib import Path
 from tests._helpers import REPO_ROOT, run_qc_script
 
 FIXTURES = REPO_ROOT / "tests" / "fixtures"
-COLUMNS = ["rule_id", "file", "s_id", "character", "position"]
+COLUMNS = ["rule_id", "file", "s_id", "character", "position",
+           "form_before", "form_after"]
 
 
 def _corpus(tmp_path: Path) -> Path:

@@ -154,3 +154,7 @@ Print summary including:
 - Not a corpus ingestion tool. Scaffolds structure; populating `XML/` is the user's job.
 - Not a port-in tool. See `port-corpus-in` for moving a finished dev repo into FormosanBank.
 - Not a FormosanBank cloner. Assumes FormosanBank is already locally cloned.
+
+## Data files change only via code (POL-038)
+
+Never modify XML or raw scrape files by hand or ad hoc — only via committed code (pipeline scripts, `manual_edits.xml` via the capture/apply tooling, or a one-off script committed to `CodeAndDocs/`). This includes POL-035 snapshots: fix snapshot defects with a committed script, never a direct edit. A non-code edit is unreproducible and is destroyed on regeneration.

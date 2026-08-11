@@ -71,7 +71,7 @@ Two conventions that most QC code assumes:
 1. **Two sentence-tier `FORM` elements** (original and standard). If a corpus only has one, create the standard tier with `python QC/utilities/standardize.py --copy --corpora_path <path>` *before* running punctuation/orthography checks. `--copy` does not normalize spelling — it just duplicates the original so QC scripts have a consistent tier to inspect; actual transliteration requires a TSV mapping.
 2. **`--kindOf standard`** is the default for orthography extraction; token counting (see "Corpus metrics" below) uses the standard sentence-level `FORM` with original fallback.
 
-`xml:lang` uses ISO 639-3 codes (validated against [QC/validation/iso-639-3.txt](QC/validation/iso-639-3.txt)). Dialect labels come from the `dialect` attribute; the canonical list is in [dialects.csv](dialects.csv).
+`xml:lang` uses ISO 639-3 codes (validated against [QC/validation/iso-639-3.txt](QC/validation/iso-639-3.txt)). The canonical code→language map is [languages.csv](languages.csv) at repo root (single source of truth per POL-039; loaded by `QC/corpus_counts.load_language_codes`, which every other consumer imports). Dialect labels come from the `dialect` attribute; the canonical list is in [dialects.csv](dialects.csv).
 
 ## QC script conventions
 

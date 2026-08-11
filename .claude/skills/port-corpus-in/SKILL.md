@@ -346,3 +346,7 @@ Print:
 - Not a fix-it tool. If QC found problems, fix them in the dev repo (or accept them) before porting; don't try to fix during port.
 - Not a git operation. Creates files in the working tree; user commits.
 - Not a force-port. Will refuse to overwrite an existing published corpus.
+
+## Data files change only via code (POL-038)
+
+Never modify XML or raw scrape files by hand or ad hoc — only via committed code (pipeline scripts, `manual_edits.xml` via the capture/apply tooling, or a one-off script committed to `CodeAndDocs/`). This includes POL-035 snapshots: fix snapshot defects with a committed script, never a direct edit. A non-code edit is unreproducible and is destroyed on regeneration.

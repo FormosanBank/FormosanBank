@@ -131,7 +131,9 @@ def _find_bopomofo(text: str) -> list[tuple[str, int]]:
 class CleanerWarnings:
     """Accumulates per-occurrence warning rows and writes a CSV at end of run.
 
-    CSV columns: rule_id, file, s_id, character, position.
+    CSV columns: rule_id, file, s_id, character, position, form_before,
+    form_after (the before/after columns carry the full S-FORM text for
+    original-tier rewrites; empty for plain warnings).
 
     write_csv() is a no-op when no rows have been added (avoids creating
     empty files on clean corpora).
@@ -154,6 +156,8 @@ class CleanerWarnings:
         s_id: str | None,
         character: str,
         position: int,
+        before: str = "",
+        after: str = "",
     ) -> None:
         self._rows.append({
             "rule_id": rule_id,
@@ -161,6 +165,8 @@ class CleanerWarnings:
             "s_id": s_id or "",
             "character": character,
             "position": position,
+            "form_before": before,
+            "form_after": after,
         })
 
     def write_csv(self) -> None:
@@ -187,7 +193,7 @@ class CleanerWarnings:
                 writer = csv.DictWriter(
                     f,
                     fieldnames=["rule_id", "file", "s_id", "character",
-                                "position"],
+                                "position", "form_before", "form_after"],
                 )
                 if f.tell() == 0:
                     writer.writeheader()
@@ -196,7 +202,8 @@ class CleanerWarnings:
         with open(self.csv_path, "w", newline="", encoding="utf-8") as f:
             writer = csv.DictWriter(
                 f,
-                fieldnames=["rule_id", "file", "s_id", "character", "position"],
+                fieldnames=["rule_id", "file", "s_id", "character",
+                            "position", "form_before", "form_after"],
             )
             writer.writeheader()
             writer.writerows(self._rows)
@@ -774,10 +781,12 @@ def analyze_and_modify_xml_file(
                             if corrections is not None:
                                 for pos in corrected:
                                     corrections.add("c031", xml_file,
-                                                    sentence.get("id"), "'", pos)
+                                                    sentence.get("id"), "'", pos,
+                                                    before=ft, after=new_text)
                                 for pos in stranded:
                                     corrections.add("c032", xml_file,
-                                                    sentence.get("id"), "'", pos)
+                                                    sentence.get("id"), "'", pos,
+                                                    before=ft, after=new_text)
                             if warnings is not None and not is_wikipedia:
                                 for pos in ambiguous:
                                     warnings.add("c030", xml_file,
@@ -789,13 +798,28 @@ def analyze_and_modify_xml_file(
                     tree.write(xml_file, xml_declaration=True, pretty_print=True, encoding="utf-8")
                     print(f"File cleaned: {xml_file}")
 
+def _quote_log_path(corpora_path) -> Path:
+    """Durable quote-correction log location — never inside XML/.
+
+    Maintainer ruling 2026-08-11: XML/ holds the XML (and extract_logs)
+    only. The log lives in the corpus's CodeAndDocs/ when the target path
+    is (or sits under) a directory named XML; otherwise inside the target
+    dir itself, which is then by definition not an XML/ dir.
+    """
+    p = Path(corpora_path).resolve()
+    for anc in (p, *p.parents):
+        if anc.name == "XML":
+            return anc.parent / "CodeAndDocs" / "quote_corrections.csv"
+    return p / "quote_corrections.csv"
+
+
 def main(args):
     print(f"Processing XML files in directory: {args.corpora_path}")
     warnings_path = Path(args.corpora_path) / "cleaner_warnings.csv"
     warnings = CleanerWarnings(warnings_path)
     # Durable quote-correction log (POL-035): append-mode, committed.
-    corrections = CleanerWarnings(
-        Path(args.corpora_path) / "quote_corrections.csv", append=True)
+    corrections = CleanerWarnings(_quote_log_path(args.corpora_path),
+                                  append=True)
     counter = TransformCounter()
     metadata_counter: dict[str, int] = {}
     analyze_and_modify_xml_file(

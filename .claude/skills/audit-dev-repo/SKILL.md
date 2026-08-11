@@ -113,3 +113,7 @@ them to the remediation list.
 - This is an audit, not a fix: do not modify the dev repo or `Corpora/` here. Remediation
   belongs in the reproduction scripts (per the dev-repo workflow).
 - Evidence over assertion: every finding cites file + id + a source/XML sample.
+
+## Data files change only via code (POL-038)
+
+Never modify XML or raw scrape files by hand or ad hoc — only via committed code (pipeline scripts, `manual_edits.xml` via the capture/apply tooling, or a one-off script committed to `CodeAndDocs/`). This includes POL-035 snapshots: fix snapshot defects with a committed script, never a direct edit. A non-code edit is unreproducible and is destroyed on regeneration.

@@ -256,3 +256,7 @@ Print the path to the summary and a tight 5-line preview.
 - Not a fix-it tool. Reports findings; user decides what to fix.
 - Not coupled to porting. Can be re-run on a dev repo as many times as needed during development.
 - Not a guarantee. The "Ready to port?" verdict is heuristic and the operator's judgment governs.
+
+## Data files change only via code (POL-038)
+
+Never modify XML or raw scrape files by hand or ad hoc — only via committed code (pipeline scripts, `manual_edits.xml` via the capture/apply tooling, or a one-off script committed to `CodeAndDocs/`). This includes POL-035 snapshots: fix snapshot defects with a committed script, never a direct edit. A non-code edit is unreproducible and is destroyed on regeneration.
