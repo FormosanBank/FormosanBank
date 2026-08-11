@@ -53,10 +53,28 @@ def stats_paths(corpus_path: Path) -> tuple[Path, str]:
     return repo_root / "statistics", name
 
 
+def corpus_xml_dirs(corpus_path: Path) -> list[Path]:
+    """Every XML/ directory of a corpus, at ANY depth (Corpora/.../XML —
+    some corpora nest folders between the corpus root and XML/), skipping
+    CodeAndDocs. Empty list when the corpus has no XML/ directory."""
+    return sorted(p for p in Path(corpus_path).rglob("XML")
+                  if p.is_dir() and "CodeAndDocs" not in p.parts)
+
+
+def _collect_corpus_records(corpus_path: Path) -> tuple[list, list]:
+    """collect_records over all of a corpus's XML/ dirs (fallback: the
+    corpus dir itself, for dev-repo layouts without an XML/ folder)."""
+    records, parse_errors = [], []
+    for d in corpus_xml_dirs(corpus_path) or [Path(corpus_path)]:
+        r, e = corpus_counts.collect_records(d)
+        records.extend(r)
+        parse_errors.extend(e)
+    return records, parse_errors
+
+
 def process_corpus(corpus_path: Path, strict: bool) -> int:
     """Analyze one corpus directory and write its CSV. Returns exit code."""
     corpus_path = Path(corpus_path)
-    xml_dir = corpus_path / "XML" if (corpus_path / "XML").is_dir() else corpus_path
     stats_dir, corpus_name = stats_paths(corpus_path)
     csv_path = stats_dir / f"{corpus_name}_corpora_stats.csv"
 
@@ -66,7 +84,7 @@ def process_corpus(corpus_path: Path, strict: bool) -> int:
         lambda: {f: 0 for f in FIELDNAMES if f not in ("language", "dialect")}
     )
     n_warnings = 0
-    records, parse_errors = corpus_counts.collect_records(xml_dir)
+    records, parse_errors = _collect_corpus_records(corpus_path)
 
     for record in records:
         key = (record["language"], record["dialect"])
@@ -139,10 +157,10 @@ def main() -> int:
         corpora_root = Path(args.corpora_root).resolve()
         any_stale = False
         for corpus_dir in sorted(d for d in corpora_root.iterdir()
-                                 if d.is_dir() and (d / "XML").is_dir()):
+                                 if d.is_dir() and corpus_xml_dirs(d)):
             stats_dir, corpus_name = stats_paths(corpus_dir)
             durations = audio_durations.load_for_corpus(stats_dir, corpus_name)
-            records, _ = corpus_counts.collect_records(corpus_dir / "XML")
+            records, _ = _collect_corpus_records(corpus_dir)
             counts: dict = {}
             for r in records:
                 cur = counts.setdefault((r["language"], r["dialect"]), [0, 0])
@@ -157,7 +175,7 @@ def main() -> int:
     if args.all:
         corpora_root = Path(args.corpora_root).resolve()
         corpus_dirs = sorted(d for d in corpora_root.iterdir()
-                             if d.is_dir() and (d / "XML").is_dir())
+                             if d.is_dir() and corpus_xml_dirs(d))
         if not corpus_dirs:
             print(f"No corpus directories with XML/ in {corpora_root}", file=sys.stderr)
             return 1

@@ -171,9 +171,17 @@ def analyze_file(xml_path) -> dict:
 
 
 def collect_records(xml_dir) -> tuple[list[dict], list[dict]]:
-    """Analyze every *.xml under xml_dir. Returns (records, parse_errors)."""
+    """Analyze every *.xml under xml_dir. Returns (records, parse_errors).
+
+    Files under a CodeAndDocs/ directory are skipped: that folder holds
+    reproduction infrastructure — scripts, raw scrapes, and POL-035
+    pre-correction snapshots — never published corpus data, and counting
+    a snapshot would double a corpus's apparent size.
+    """
     records, parse_errors = [], []
     for xml_file in sorted(Path(xml_dir).rglob("*.xml")):
+        if "CodeAndDocs" in xml_file.parts:
+            continue
         try:
             records.append(analyze_file(xml_file))
         except Exception as exc:

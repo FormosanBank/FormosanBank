@@ -53,7 +53,24 @@ def _warnings_rows(corpora_path):
 
 
 def _corrections_rows(corpora_path):
+    # The durable log never lands in an XML/ dir (maintainer ruling
+    # 2026-08-11): <corpus>/CodeAndDocs/ when the target is/under XML/,
+    # else inside the (non-XML) target dir.
     return _rows(corpora_path, "quote_corrections.csv")
+
+
+def test_corrections_log_lands_in_codeanddocs_for_xml_dirs(tmp_path):
+    """A corpus-shaped path (<corpus>/XML) logs to <corpus>/CodeAndDocs/."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("clean_xml", CLEAN_XML)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    corpus = tmp_path / "Corpora" / "Toy"
+    xml_dir = corpus / "XML" / "Amis"
+    assert mod._quote_log_path(xml_dir) == \
+        corpus / "CodeAndDocs" / "quote_corrections.csv"
+    flat = tmp_path / "flat_dir"
+    assert mod._quote_log_path(flat) == flat / "quote_corrections.csv"
 
 
 def _make_corpus(tmp_path, sub, form_original, transl=None):
