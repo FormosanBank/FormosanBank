@@ -2,6 +2,8 @@
 
 This corpus comprises all 27 Thao example sentences from Paul Jen-Kuei Li's paper *Conjunction in Thao* (2014), a study of coordination and subordination in Thao — a Formosan language spoken at Sun-Moon Lake in central Taiwan. The 24 numbered examples carry word- and morpheme-level interlinear glossing aligned to the paper's analysis; three further Thao sentences quoted in footnote 7 are included as sentence-only. Each sentence provides Li's source transcription (the `original` tier) alongside a rendering in FormosanBank's common Thao orthography (the `standard` tier), with English translations.
 
+A note on segmentation notation: Li's interlinear markers (`-` and `=` for morpheme/clitic boundaries, `<...>` for infixes) are preserved in the `original` tier and in the word/morpheme tiers, where they carry the morphological analysis. The **sentence-level** `standard` tier is flattened running text with no markers — in this source the hyphen is always a morpheme boundary, never a letter (Li writes the Thao glottal stop as `ʔ`).
+
 ***
 
 <!-- CORPUS STATS START -->
@@ -27,6 +29,8 @@ This corpus comprises all 27 Thao example sentences from Paul Jen-Kuei Li's pape
 ## **Access Details**
 
 * The repo containing this corpus in FormosanBank as well as the code to reconstruct the corpus can be found [here](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/Li-Conjunction-Thao).
+
+* The corpus is fully regenerable from the committed reviewed source records: `CodeAndDocs/scripts/reproduce.sh` rebuilds the XML (build → source-fidelity audit → orthography standardization → sentence-level segmentation flattening → phonology) and verifies its own output. See the corpus [README](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Li-Conjunction-Thao/README.md) for details, including the two source-transcription typos corrected in code against Blust's *Thao Dictionary*.
 
 ***
 
