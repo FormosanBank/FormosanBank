@@ -55,7 +55,7 @@ def test_plan_identifies_within_file_duplicates(tmp_path):
     ])
     plan = rds.plan_removals(str(tmp_path), scope="file", tier="standard")
     # First by (file, S id): S_1 kept; S_3 removed.
-    assert plan == [(str(f.resolve()), "S_3")]
+    assert plan == [(str(f.resolve()), "S_3", str(f.resolve()), "S_1")]
 
 
 def test_plan_does_not_remove_across_files_when_scope_file(tmp_path):
@@ -74,7 +74,7 @@ def test_plan_removes_across_files_when_scope_corpus(tmp_path):
     _write_xml(b, [("S_1", [("standard", "shared")])])
     plan = rds.plan_removals(str(tmp_path), scope="corpus", tier="standard")
     # Sort order is by file path then s_id.  a.xml < b.xml -> a kept, b removed.
-    assert plan == [(str(b.resolve()), "S_1")]
+    assert plan == [(str(b.resolve()), "S_1", str(a.resolve()), "S_1")]
 
 
 def test_plan_keeps_first_by_s_id_sort_within_file(tmp_path):
@@ -88,7 +88,7 @@ def test_plan_keeps_first_by_s_id_sort_within_file(tmp_path):
     ])
     plan = rds.plan_removals(str(tmp_path), scope="file", tier="standard")
     # Sorted s_ids: S_1, S_3, S_5 -> keep S_1, remove S_3 and S_5
-    removed_ids = sorted(s_id for _, s_id in plan)
+    removed_ids = sorted(s_id for _, s_id, _kf, _ks in plan)
     assert removed_ids == ["S_3", "S_5"]
 
 
@@ -99,7 +99,7 @@ def test_plan_whitespace_only_diff_is_duplicate(tmp_path):
         ("S_2", [("standard", "hello  world")]),
     ])
     plan = rds.plan_removals(str(tmp_path), scope="file", tier="standard")
-    assert plan == [(str(f.resolve()), "S_2")]
+    assert plan == [(str(f.resolve()), "S_2", str(f.resolve()), "S_1")]
 
 
 # ---------------------------------------------------------------------------
@@ -196,3 +196,44 @@ def test_cli_apply_mutates(tmp_path, monkeypatch):
     rc = rds.main()
     assert rc == 0
     assert _s_ids(f) == ["S_1"]
+
+
+# ---------------------------------------------------------------------------
+# POL-025: distinct TRANSLs of a removed duplicate merge into the survivor
+# ---------------------------------------------------------------------------
+
+def _write_xml_with_transls(path, sentences):
+    """sentences: [(s_id, form_text, [(lang, transl_text), ...])]"""
+    body = []
+    for sid, form, transls in sentences:
+        ts = "".join(
+            f'<TRANSL xml:lang="{lang}">{text}</TRANSL>'
+            for lang, text in transls)
+        body.append(
+            f'<S id="{sid}"><FORM kindOf="standard">{form}</FORM>{ts}</S>')
+    path.write_text(
+        '<?xml version="1.0" ?>\n<TEXT id="t" xml:lang="ami">'
+        + "".join(body) + "</TEXT>", encoding="utf-8")
+
+
+def test_apply_merges_distinct_transls_into_survivor_as_ver_alt(tmp_path):
+    f = tmp_path / "a.xml"
+    _write_xml_with_transls(f, [
+        ("S_1", "same", [("en", "first reading")]),
+        ("S_2", "same", [("en", "second reading"), ("zho", "第二")]),
+        ("S_3", "same", [("en", "first  reading")]),   # ws-normalized dup transl
+    ])
+    plan = rds.plan_removals(str(tmp_path), scope="file", tier="standard")
+    merged = rds.apply_removals(plan)
+    root = etree.parse(str(f)).getroot()
+    assert [s.get("id") for s in root.iter("S")] == ["S_1"]
+    transls = root.findall(".//S/TRANSL")
+    keys = [((t.get("{http://www.w3.org/XML/1998/namespace}lang") or ""),
+             t.text, t.get("ver")) for t in transls]
+    # Survivor's own TRANSL untouched; S_2's two distinct readings merged as
+    # ver="alt"; S_3's whitespace-variant duplicate NOT merged.
+    assert ("en", "first reading", None) in keys
+    assert ("en", "second reading", "alt") in keys
+    assert ("zho", "第二", "alt") in keys
+    assert len(keys) == 3
+    assert merged == 2
