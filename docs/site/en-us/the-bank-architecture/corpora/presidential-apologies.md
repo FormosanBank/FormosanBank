@@ -41,10 +41,11 @@ The Presidential Apology corpus was developed using officially released translat
    * Sentence-level (`S`) elements for each section, with sub-elements `FORM` for the Formosan language text and `TRANSL` for English and Chinese translations.
    * Metadata and language codes specific to each Formosan language.
 3. **Cleaning and Standardization**\
-   Once the XML files were created, they underwent multiple cleaning and standardization processes, as outlined below:
-   * **XML Cleaning**: Punctuation was standardized and unicode characters were flattened to merge diacritics with their base characters.
-   * **Orthography Standardization**: A secondary pass added standardized versions of Formosan text while retaining the original versions. This ensured consistency, such as converting all "u" to "o" where applicable.
-   * **Final Adjustments**: HTML escape codes were replaced with corresponding characters, and attributes like `kindOf="original"` and `kindOf="standard"` were added to ensure compliance with the [XML schema.](../formosanbank-xml-format.md#the-less-than-form-greater-than-element)
+   Once the XML files were created, they underwent multiple cleaning and standardization processes (fully re-runnable; the [source README](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/Presidential_Apologies) records the exact pipeline):
+   * **XML Cleaning**: Punctuation was standardized and unicode characters were flattened to merge diacritics with their base characters. Chinese translations use the canonical full-width double quote (`＂`); HTML escape codes were replaced with the corresponding characters.
+   * **Standard tier**: Every original `FORM` gets a `kindOf="standard"` copy (the source texts already use the standard orthography), per the [XML schema](../formosanbank-xml-format.md#the-less-than-form-greater-than-element).
+   * **Mandarin annotations**: The Tsou and Kavalan translations gloss many terms with a Mandarin parenthetical (e.g. `zipun( 日 本 )`). These annotations are kept on the original tier but removed from the standard tier and masked out of the IPA, since they are not part of the utterance. Bare in-line Mandarin terms (code-switched utterance content, e.g. Tsou `'e 行政院 ho`) are kept in both tiers.
+   * **IPA (`PHON`) tiers**: Generated from the Ortho113 orthography tables using each file's declared dialect column (Amis: Xiuguluan, Bunun: Junqun, Puyuma: Nanwang, ...). A letter the declared dialect's orthography does not use — mostly in Mandarin/Japanese loanwords — surfaces as `*` in the IPA rather than borrowing a pronunciation from another dialect (see Corpus Notes).
 4. **Output Organization**\
    The processed XML files were stored in the `XML` directory, each named after its corresponding Formosan language. The files were formatted to ensure readability and ease of analysis.
 
@@ -56,6 +57,7 @@ The Presidential Apology corpus was developed using officially released translat
 * **Kanakanavu**: This corpus uses a small number of h's and f's, which are controversial. None of the words involving h's or f's appear in the reference ILRDF Dictionary corpus, with or without the h's and f's. Thus, we have chosen to leave them in.
 * **Puyuma**: This corpus has a number of appearances of ē. Almost all of these are due to yēncumin (which is marked as a foreign word) and sēhu. Thus, this has not been homogenized.
 * **Sakizaya**: A small number of f's appear to be foreign words.
+* **Starred IPA**: Letters outside the declared dialect's orthography — the Amis 'b' and Puyuma ē/loanword letters above, and bare Mandarin terms — appear as `*` in the `PHON` tiers. This is intentional: `*` marks a letter the dialect's orthography tables cannot transcribe.
 
 ***
 
