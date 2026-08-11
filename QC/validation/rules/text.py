@@ -95,23 +95,11 @@ def _is_cjk(char: str) -> bool:
 # so this mapping is maintained by hand. Limited to the 16 Formosan
 # languages the project tracks; non-Formosan xml:lang values fall
 # through to legacy V116 behavior (ASCII + CJK exclusion only).
-_ISO_TO_ORTHO_NAME: dict[str, str] = {
-    "ami": "Amis",
-    "tay": "Atayal",
-    "bnn": "Bunun",
-    "xnb": "Kanakanavu",
-    "ckv": "Kavalan",
-    "pwn": "Paiwan",
-    "pyu": "Puyuma",
-    "dru": "Rukai",
-    "sxr": "Saaroa",
-    "xsy": "Saisiyat",
-    "szy": "Sakizaya",
-    "trv": "Seediq",
-    "ssf": "Thao",
-    "tsu": "Tsou",
-    "tao": "Yami",
-}
+import sys as _sys
+_QC_ROOT = Path(__file__).resolve().parents[3]
+if str(_QC_ROOT) not in _sys.path:
+    _sys.path.insert(0, str(_QC_ROOT))
+from QC.corpus_counts import LANG_CODE_TO_NAME as _ISO_TO_ORTHO_NAME  # noqa: E402  (languages.csv, POL-039)
 
 
 _ORTHOGRAPHIES_ROOT = Path(__file__).resolve().parents[3] / "Orthographies"

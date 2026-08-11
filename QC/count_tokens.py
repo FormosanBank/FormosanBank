@@ -16,7 +16,9 @@ import corpus_counts
 
 
 def get_counts(corpora_path):
-    records, _parse_errors = corpus_counts.collect_records(Path(corpora_path))
+    # Same discovery as get_corpus_stats (corpus_counts.collect_tree_records):
+    # the two counting scripts are physically unable to see different files.
+    records, _parse_errors = corpus_counts.collect_tree_records(Path(corpora_path))
 
     tokens_by_lang = {name: [0, {}] for name in corpus_counts.LANGUAGE_NAMES}
     tokens_by_source = defaultdict(int)

@@ -26,25 +26,9 @@ from QC.validation._dialect_inventory import (  # noqa: E402
     is_multi_dialect_language,
 )
 from QC.cleaning.clean_xml import CleanerWarnings  # noqa: E402
+from QC.corpus_counts import LANG_CODE_TO_NAME as _ISO_TO_LANG_NAME  # noqa: E402  (languages.csv, POL-039)
 
 
-_ISO_TO_LANG_NAME = {
-    "ami": "Amis",
-    "tay": "Atayal",
-    "bnn": "Bunun",
-    "xnb": "Kanakanavu",
-    "ckv": "Kavalan",
-    "pwn": "Paiwan",
-    "pyu": "Puyuma",
-    "dru": "Rukai",
-    "sxr": "Saaroa",
-    "xsy": "Saisiyat",
-    "szy": "Sakizaya",
-    "trv": "Seediq",
-    "ssf": "Thao",
-    "tsu": "Tsou",
-    "tao": "Yami",
-}
 
 _HYPHEN_IS_LETTER_CACHE: dict = {}
 

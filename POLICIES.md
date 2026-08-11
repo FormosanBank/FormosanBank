@@ -354,3 +354,14 @@ published `XML/`, to raw scrapes under `CodeAndDocs/`, and to POL-035
 pre-correction snapshots alike (a snapshot defect is fixed by a committed
 script run against the snapshot, not by editing it). Raised by: the
 2026-08-11 Group 1 sweep review.
+
+### POL-039 · RULED · 2026-08-11 · no data tables hidden in code
+Lookup tables and other data that critical steps depend on are **never
+hardcoded inside a python file**. Expose them as human-readable CSV/TSV/
+XML in a prominent, documented place (repo-root registries —
+`languages.csv`, `dialects.csv`, `standards.csv` — or `Orthographies/`)
+and load them from there, through exactly one loader. Raised by the ISO
+639-3 map drift: four separate hardcoded copies of the code→language
+table had diverged (`bzg` present in one, `pzh` in another).
+Implemented by: `languages.csv` + `QC/corpus_counts.load_language_codes`
+(the other three copies now import from it).

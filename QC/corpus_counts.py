@@ -15,31 +15,30 @@ Rules (decided 2026-06-10):
 """
 from __future__ import annotations
 
+import csv
 import xml.etree.ElementTree as ET
 from pathlib import Path
 from typing import Any
 
 XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
 
-LANG_CODE_TO_NAME = {
-    "ami": "Amis",
-    "tay": "Atayal",
-    "pwn": "Paiwan",
-    "bnn": "Bunun",
-    "pyu": "Puyuma",
-    "dru": "Rukai",
-    "tsu": "Tsou",
-    "xsy": "Saisiyat",
-    "tao": "Yami",
-    "ssf": "Thao",
-    "ckv": "Kavalan",
-    "trv": "Seediq",
-    "szy": "Sakizaya",
-    "sxr": "Saaroa",
-    "xnb": "Kanakanavu",
-    "fos": "Siraya",
-    "bzg": "Babuza-Favorlang",
-}
+_REPO_ROOT = Path(__file__).resolve().parents[1]
+
+
+def load_language_codes(path: Path | None = None) -> dict[str, str]:
+    """ISO 639-3 code -> display name, from the repo-root languages.csv.
+
+    languages.csv is the single source of truth for language identity
+    (POL-039: data that critical steps depend on lives in prominent
+    human-readable registries, never hardcoded in python).
+    """
+    p = Path(path) if path else _REPO_ROOT / "languages.csv"
+    with open(p, newline="", encoding="utf-8") as f:
+        return {row["ISO639-3"].strip().lower(): row["Language"].strip()
+                for row in csv.DictReader(f) if row["ISO639-3"].strip()}
+
+
+LANG_CODE_TO_NAME = load_language_codes()
 
 # All display names a record can resolve to (the 16 codes plus Truku,
 # which is distinguished from Seediq by dialect rather than ISO code).
@@ -186,4 +185,50 @@ def collect_records(xml_dir) -> tuple[list[dict], list[dict]]:
             records.append(analyze_file(xml_file))
         except Exception as exc:
             parse_errors.append({"path": str(xml_file), "error": str(exc)})
+    return records, parse_errors
+
+
+# ---------------------------------------------------------------------------
+# Shared corpus/file discovery. EVERY consumer that counts tokens or builds
+# statistics must go through these helpers so that no two counting scripts
+# can ever arrive at different file sets (maintainer ruling 2026-08-11).
+# ---------------------------------------------------------------------------
+
+def corpus_xml_dirs(corpus_path) -> list[Path]:
+    """Every XML/ directory of a corpus, at ANY depth (Corpora/.../XML —
+    some corpora nest folders between the corpus root and XML/), skipping
+    CodeAndDocs. Empty list when the corpus has no XML/ directory."""
+    return sorted(p for p in Path(corpus_path).rglob("XML")
+                  if p.is_dir() and "CodeAndDocs" not in p.parts)
+
+
+def collect_corpus_records(corpus_path) -> tuple[list[dict], list[dict]]:
+    """collect_records over all of one corpus's XML/ dirs (fallback: the
+    corpus dir itself, for dev-repo layouts without an XML/ folder)."""
+    records, parse_errors = [], []
+    for d in corpus_xml_dirs(corpus_path) or [Path(corpus_path)]:
+        r, e = collect_records(d)
+        records.extend(r)
+        parse_errors.extend(e)
+    return records, parse_errors
+
+
+def iter_corpus_dirs(corpora_root) -> list[Path]:
+    """Immediate subdirectories of corpora_root that contain an XML/ dir."""
+    root = Path(corpora_root)
+    return sorted(d for d in root.iterdir()
+                  if d.is_dir() and corpus_xml_dirs(d))
+
+
+def collect_tree_records(root) -> tuple[list[dict], list[dict]]:
+    """Records for a whole Corpora tree OR a single corpus, via the same
+    per-corpus discovery either way."""
+    corpus_dirs = iter_corpus_dirs(root)
+    if not corpus_dirs:
+        return collect_corpus_records(root)
+    records, parse_errors = [], []
+    for d in corpus_dirs:
+        r, e = collect_corpus_records(d)
+        records.extend(r)
+        parse_errors.extend(e)
     return records, parse_errors

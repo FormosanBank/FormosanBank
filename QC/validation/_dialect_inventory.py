@@ -24,7 +24,16 @@ Convention (2026-06-03):
 from __future__ import annotations
 
 import csv
+import sys
 from pathlib import Path
+
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+
+# languages.csv (repo root) is the single source of truth for ISO 639-3 →
+# language name (POL-039); corpus_counts owns the loader.
+from QC.corpus_counts import LANG_CODE_TO_NAME as ISO_TO_LANGUAGE  # noqa: E402
 
 UNKNOWN_DIALECT = "unknown"
 
@@ -48,27 +57,6 @@ def _load_dialect_map() -> dict[str, set[str]]:
     return result
 
 
-# ISO 639-3 code -> human-readable Language name (matches dialects.csv
-# "Language" column). Mirrors QC/corpus_metrics.py LANG_CODES.
-ISO_TO_LANGUAGE: dict[str, str] = {
-    "ami": "Amis",
-    "tay": "Atayal",
-    "pwn": "Paiwan",
-    "bnn": "Bunun",
-    "pyu": "Puyuma",
-    "dru": "Rukai",
-    "tsu": "Tsou",
-    "xsy": "Saisiyat",
-    "tao": "Yami",
-    "ssf": "Thao",
-    "ckv": "Kavalan",
-    "trv": "Seediq",
-    "szy": "Sakizaya",
-    "sxr": "Saaroa",
-    "xnb": "Kanakanavu",
-    "fos": "Siraya",
-    "pzh": "Pazeh",
-}
 
 DIALECT_MAP: dict[str, set[str]] = _load_dialect_map()
 

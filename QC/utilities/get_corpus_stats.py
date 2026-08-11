@@ -53,23 +53,11 @@ def stats_paths(corpus_path: Path) -> tuple[Path, str]:
     return repo_root / "statistics", name
 
 
-def corpus_xml_dirs(corpus_path: Path) -> list[Path]:
-    """Every XML/ directory of a corpus, at ANY depth (Corpora/.../XML —
-    some corpora nest folders between the corpus root and XML/), skipping
-    CodeAndDocs. Empty list when the corpus has no XML/ directory."""
-    return sorted(p for p in Path(corpus_path).rglob("XML")
-                  if p.is_dir() and "CodeAndDocs" not in p.parts)
-
-
-def _collect_corpus_records(corpus_path: Path) -> tuple[list, list]:
-    """collect_records over all of a corpus's XML/ dirs (fallback: the
-    corpus dir itself, for dev-repo layouts without an XML/ folder)."""
-    records, parse_errors = [], []
-    for d in corpus_xml_dirs(corpus_path) or [Path(corpus_path)]:
-        r, e = corpus_counts.collect_records(d)
-        records.extend(r)
-        parse_errors.extend(e)
-    return records, parse_errors
+# Discovery is shared with every other counting consumer via corpus_counts
+# (maintainer ruling 2026-08-11: counting scripts must be physically unable
+# to disagree on the file set).
+corpus_xml_dirs = corpus_counts.corpus_xml_dirs
+_collect_corpus_records = corpus_counts.collect_corpus_records
 
 
 def process_corpus(corpus_path: Path, strict: bool) -> int:
