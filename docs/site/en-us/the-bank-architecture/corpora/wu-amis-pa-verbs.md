@@ -1,10 +1,11 @@
 # Wu (2006), The Analysis of Pa-Verbs in Amis
 
 This text corpus contains 29 Coastal Amis example variants from Joy Wu's 2006
-paper, “The Analysis of Pa- Verbs in Amis.” The examples have English
-translations and source-aligned word and morpheme glosses. Sentence forms are
-unsegmented, while word forms preserve Wu's printed segmentation and null
-markers.
+paper, “The Analysis of Pa-Verbs in Amis.” The examples have English
+translations and source-aligned word and morpheme glosses. Every word has a
+morpheme tier, for a total of 263 M elements. Seven printed nulls use canonical
+`∅` in original analysis tiers and are omitted from sentence-level standard
+forms. Source gloss `CaU` is retained with additive standard `CAU`.
 
 Source: [SIL Resource Archive](https://www.sil.org/resources/archives/25653).
 
