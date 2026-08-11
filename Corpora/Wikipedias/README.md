@@ -234,10 +234,14 @@ documents. `CodeAndDocs/normalize_seediq_quotes.py` (pipeline step 5, before
 `clean_xml`) therefore applies, to original FORMs in `XML/Seediq/` only:
 
 1. literal `''` → `"`;
-2. every remaining `'` → `"`, **except** in the words `knita'` and `brbiru'`,
-   which keep a genuine glottal `'`. These two occur in the article-stub
-   boilerplate `cinkhulan sa knita' sa brbiru'` (≈ "source: seen in the
-   writings/documents") and are Atayal vocabulary (`knita'` "view/seen",
-   `biru'` "book/writing" — both attested only in Atayal corpora; Seediq
-   uses *patas*), spelled with the Atayal glottal apostrophe.
+2. every remaining `'` → `"`, with two exceptions that keep `'`:
+   - **word-internal apostrophes** (a letter on both sides, e.g. `b'anux`,
+     `hla'alua`, `mu'izzaddin`) — elided-vowel spellings and romanized
+     names, not quotation marks;
+   - the words `knita'` and `brbiru'`, which keep a genuine glottal `'`.
+     These two occur in the article-stub boilerplate `cinkhulan sa knita'
+     sa brbiru'` (≈ "source: seen in the writings/documents") and are
+     Atayal vocabulary (`knita'` "view/seen", `biru'` "book/writing" —
+     both attested only in Atayal corpora; Seediq uses *patas*), spelled
+     with the Atayal glottal apostrophe.
 

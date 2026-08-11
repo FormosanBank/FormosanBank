@@ -14,8 +14,11 @@ Two ordered operations over ``FORM kindOf="original"`` in ``XML/Seediq/`` only
 (run EARLY in the pipeline, before ``clean_xml``):
 
 1. Literal ``''`` pairs -> ``"``.
-2. Every remaining ``'`` -> ``"``, EXCEPT apostrophes inside the whitelisted
-   words ``knita'`` / ``brbiru'`` (case-insensitive, punctuation-tolerant).
+2. Every remaining ``'`` -> ``"``, EXCEPT (a) word-internal apostrophes —
+   a letter on BOTH sides, e.g. ``b'anux``, ``hla'alua``, ``mu'izzaddin``
+   (elided-vowel spellings and romanized names; maintainer ruling
+   2026-08-11) — and (b) apostrophes in the whitelisted words ``knita'`` /
+   ``brbiru'`` (case-insensitive, punctuation-tolerant).
 
 Other Wikipedias languages are untouched: their ``'`` is assumed glottal by
 the documented fiat (see README, "Apostrophe handling").
@@ -37,6 +40,19 @@ EDGE_PUNCT = '.,;:?!"()[]{}<>«»“”‘’—–…~'
 FORM_RE = re.compile(r'(<FORM kindOf="original">)(.*?)(</FORM>)', re.DOTALL)
 
 
+def _convert_token(tok: str) -> str:
+    chars = list(tok)
+    for i, ch in enumerate(chars):
+        if ch != "'":
+            continue
+        prev_alpha = i > 0 and chars[i - 1].isalpha()
+        next_alpha = i + 1 < len(chars) and chars[i + 1].isalpha()
+        if prev_alpha and next_alpha:
+            continue                                     # word-internal: keep
+        chars[i] = '"'
+    return ''.join(chars)
+
+
 def normalize_text(text: str) -> str:
     text = text.replace("''", '"')                       # op 1
     out = []
@@ -44,7 +60,7 @@ def normalize_text(text: str) -> str:
         if "'" in tok and tok.strip(EDGE_PUNCT).casefold() in WHITELIST:
             out.append(tok)
         else:
-            out.append(tok.replace("'", '"'))
+            out.append(_convert_token(tok))
     return ' '.join(out)
 
 
