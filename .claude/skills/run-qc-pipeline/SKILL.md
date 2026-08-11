@@ -187,14 +187,12 @@ Run each validator, capturing output. Do NOT abort the recipe on failures — th
   --path <xml_path> 2>&1 | tee <output_dir>/05f_validate_dialect.log
 
 # Duplicate sentences within the corpus. Interpret per POL-022:
-# narratives/spontaneous speech may legitimately repeat sentences
-# (within a file and across files), so duplicates there are usually
-# fine; in dictionaries, wordlists, and grammar example collections
-# repeats should be excluded (unless the attestations carry distinct
-# provenance — different source variety/page). Compares the standard
-# tier, which Phase 3 created. The script exits 1 on HARD findings;
-# that's fine here — the log and CSV are the artifacts, don't abort
-# the recipe.
+# every finding is SOFT (narratives may legitimately repeat; the
+# maintainer decides) UNLESS this corpus's CodeAndDocs declares a
+# dedup step, in which case findings arrive as HARD — dedup should
+# have removed them, so leftovers signal a pipeline defect. Compares
+# the standard tier, which Phase 3 created. The script always exits 0
+# (informational); the log and CSV are the artifacts.
 .venv/bin/python3 <formosanbank_path>/QC/validation/validate_duplicate_sentences.py by_path \
   --path <xml_path> --verbose \
   --output <output_dir>/05g_duplicate_sentences.csv \

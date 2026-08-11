@@ -98,10 +98,14 @@ def test_extract_sentences_skips_empty(tmp_path):
 
 
 # ---------------------------------------------------------------------------
-# find_duplicates - within-file (HARD) and within-corpus cross-file (SOFT)
+# find_duplicates — POL-022 (ruled 2026-08-11): every duplicate is SOFT by
+# default (narratives may legitimately repeat; the maintainer decides).
+# Severity upgrades to HARD only when the corpus's own CodeAndDocs pipeline
+# declares a dedup step — leftover duplicates then signal a pipeline defect.
+# The within-file vs cross-file distinction survives as the `scope` field.
 # ---------------------------------------------------------------------------
 
-def test_within_file_duplicate_is_hard(tmp_path):
+def test_within_file_duplicate_is_soft_by_default(tmp_path):
     f = tmp_path / "a.xml"
     _write_xml(f, [
         ("S_1", [("standard", "same sentence")]),
@@ -109,11 +113,9 @@ def test_within_file_duplicate_is_hard(tmp_path):
         ("S_3", [("standard", "same sentence")]),  # duplicate of S_1
     ])
     findings = vds.find_duplicates(str(tmp_path), kind_of="standard")
-    hard = [f for f in findings if f.severity == "HARD"]
-    soft = [f for f in findings if f.severity == "SOFT"]
-    assert len(hard) == 1
-    assert len(soft) == 0
-    f0 = hard[0]
+    assert [f.severity for f in findings] == ["SOFT"]
+    f0 = findings[0]
+    assert f0.scope == "within-file"
     assert f0.normalized_text == "same sentence"
     assert sorted(f0.s_ids) == ["S_1", "S_3"]
     # All occurrences within one file
@@ -128,6 +130,7 @@ def test_within_corpus_cross_file_is_soft(tmp_path):
     findings = vds.find_duplicates(str(tmp_path), kind_of="standard")
     assert [f.severity for f in findings] == ["SOFT"]
     f0 = findings[0]
+    assert f0.scope == "cross-file"
     assert f0.normalized_text == "shared sentence"
     assert len({occ.file for occ in f0.occurrences}) == 2
 
@@ -149,8 +152,9 @@ def test_within_corpus_with_within_file_separately_categorized(tmp_path):
     ])
     findings = vds.find_duplicates(str(tmp_path), kind_of="standard")
     by_text = {f.normalized_text: f for f in findings}
-    assert by_text["alpha"].severity == "HARD"
-    assert by_text["beta"].severity == "SOFT"
+    assert by_text["alpha"].scope == "within-file"
+    assert by_text["beta"].scope == "cross-file"
+    assert {f.severity for f in findings} == {"SOFT"}
 
 
 def test_whitespace_only_differences_are_duplicates(tmp_path):
@@ -161,7 +165,7 @@ def test_whitespace_only_differences_are_duplicates(tmp_path):
     ])
     findings = vds.find_duplicates(str(tmp_path), kind_of="standard")
     assert len(findings) == 1
-    assert findings[0].severity == "HARD"
+    assert findings[0].severity == "SOFT"
     assert findings[0].normalized_text == "hello world"
 
 
@@ -187,7 +191,8 @@ def test_tier_flag_only_affects_chosen_tier(tmp_path):
     orig_findings = vds.find_duplicates(str(tmp_path), kind_of="original")
     assert std_findings == []
     assert len(orig_findings) == 1
-    assert orig_findings[0].severity == "HARD"
+    assert orig_findings[0].severity == "SOFT"
+    assert orig_findings[0].scope == "within-file"
 
 
 # ---------------------------------------------------------------------------
@@ -210,5 +215,52 @@ def test_cli_smoke_runs(tmp_path, capsys, monkeypatch):
     assert rc == 0
     assert out_csv.exists()
     contents = out_csv.read_text(encoding="utf-8")
-    assert "HARD" in contents
+    assert "SOFT,within-file" in contents
     assert "S_1" in contents and "S_2" in contents
+
+
+# ---------------------------------------------------------------------------
+# POL-022 upgrade: dedup declared in the corpus pipeline -> HARD
+# ---------------------------------------------------------------------------
+
+def _corpus_with_dup(tmp_path, with_dedup_script):
+    corpus = tmp_path / "Corpora" / "Toy"
+    xml_dir = corpus / "XML"
+    xml_dir.mkdir(parents=True)
+    _write_xml(xml_dir / "a.xml", [
+        ("S_1", [("standard", "same sentence")]),
+        ("S_2", [("standard", "same sentence")]),
+    ])
+    code = corpus / "CodeAndDocs"
+    code.mkdir()
+    if with_dedup_script:
+        (code / "make.sh").write_text(
+            "python QC/cleaning/remove_duplicate_sentences.py --in XML\n",
+            encoding="utf-8")
+    else:
+        (code / "make.sh").write_text("python build.py\n", encoding="utf-8")
+    return xml_dir
+
+
+def test_findings_upgrade_to_hard_when_pipeline_declares_dedup(tmp_path):
+    xml_dir = _corpus_with_dup(tmp_path, with_dedup_script=True)
+    assert vds.dedup_in_pipeline(str(xml_dir))
+    findings = vds.find_duplicates(str(xml_dir), kind_of="standard",
+                                   dedup_expected=True)
+    assert [f.severity for f in findings] == ["HARD"], (
+        "dedup ran in this corpus's pipeline; leftovers are pipeline defects")
+
+
+def test_findings_stay_soft_without_dedup_declaration(tmp_path):
+    xml_dir = _corpus_with_dup(tmp_path, with_dedup_script=False)
+    assert not vds.dedup_in_pipeline(str(xml_dir))
+    findings = vds.find_duplicates(str(xml_dir), kind_of="standard",
+                                   dedup_expected=False)
+    assert [f.severity for f in findings] == ["SOFT"]
+
+
+def test_dedup_detection_survives_missing_codeanddocs(tmp_path):
+    xml_dir = tmp_path / "XML"
+    xml_dir.mkdir()
+    _write_xml(xml_dir / "a.xml", [("S_1", [("standard", "x y")])])
+    assert not vds.dedup_in_pipeline(str(xml_dir))

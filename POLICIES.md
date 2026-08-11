@@ -204,10 +204,16 @@ example collections, repeats should be excluded — a reference resource
 gains nothing from the same entry twice. Nuance from the Latham 2026-08
 call: a wordlist repeat with *distinct provenance* (attested from a
 different source variety or page) is informative attestation, not a
-repeat, and may be kept deliberately. Implementation follow-up:
-`validate_duplicate_sentences` currently applies one severity everywhere;
-it should scope by corpus type (duplicates in reference corpora
-actionable, in narratives not findings at all).
+repeat, and may be kept deliberately.
+**Mechanism (ruled 2026-08-11 — deliberately no corpus-type registry):**
+whether a corpus should be duplicate-free is that corpus's own choice,
+expressed in its pipeline — reference resources include a dedup step
+(`remove_duplicate_sentences.py`) in their `CodeAndDocs/` reproduction
+pipeline; narratives don't. `validate_duplicate_sentences` reports every
+duplicate as **SOFT** (maintainer decides), *upgrading to HARD only when
+the corpus's CodeAndDocs declares a dedup step* — a leftover duplicate
+then signals a pipeline defect, not a content question. The within-file
+vs cross-file distinction survives as the finding's `scope`.
 
 ### POL-023 · RULED · 2026-08-10 · M-tier presence
 In an XML file where any W has two or more M children (i.e. the file is
