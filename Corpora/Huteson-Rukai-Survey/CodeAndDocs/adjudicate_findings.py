@@ -5,10 +5,12 @@ from __future__ import annotations
 
 import argparse
 import csv
+import xml.etree.ElementTree as ET
 from collections import Counter
 from pathlib import Path
 
 
+CORPUS_ROOT = Path(__file__).resolve().parents[1]
 EXPECTED_TEXT_FINDINGS = Counter(
     {
         ("S=S_maga_009", "("): 1,
@@ -39,6 +41,15 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--qc-dir", type=Path, required=True)
     args = parser.parse_args()
+
+    original_typed_translations = sum(
+        len(ET.parse(path).getroot().findall(".//TRANSL[@kindOf='original']"))
+        for path in (CORPUS_ROOT / "XML").rglob("*.xml")
+    )
+    if original_typed_translations:
+        raise ValueError(
+            f"Found {original_typed_translations} forbidden original-typed TRANSL tiers"
+        )
 
     for name in (
         "validate_xml.csv",
@@ -74,11 +85,12 @@ def main() -> int:
                 "- Gloss findings: 0",
                 "- Generic gloss-audit findings: 0",
                 "- Duplicate findings: 0",
+                "- Original-typed TRANSL elements: 0",
                 "- Text findings: 8 SOFT V122, all reviewed",
                 "",
                 "The sentence parentheticals `(how to)` and `(his)` are printed ",
                 "source translations retained under POL-024. `ACT/REAL` is a printed ",
-                "source gloss retained as an original-tier gloss under POL-036. The ",
+                "source gloss retained as an untiered TRANSL. The ",
                 "actionable `S/he` and `ran/is running` shorthands were expanded into ",
                 "same-S alternate translations under POL-025.",
                 "",

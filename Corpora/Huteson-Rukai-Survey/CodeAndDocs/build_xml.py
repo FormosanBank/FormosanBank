@@ -370,7 +370,7 @@ def add_word_tiers(sentence: ET.Element, corpus: Corpus, example: Example) -> No
             translation = ET.SubElement(
                 word,
                 "TRANSL",
-                {f"{{{XML_NS}}}lang": "eng", "kindOf": "original"},
+                {f"{{{XML_NS}}}lang": "eng"},
             )
             translation.text = word_gloss
         else:
@@ -407,7 +407,7 @@ def add_word_tiers(sentence: ET.Element, corpus: Corpus, example: Example) -> No
                 translation = ET.SubElement(
                     morph,
                     "TRANSL",
-                    {f"{{{XML_NS}}}lang": "eng", "kindOf": "original"},
+                    {f"{{{XML_NS}}}lang": "eng"},
                 )
                 translation.text = morph_gloss
             else:
