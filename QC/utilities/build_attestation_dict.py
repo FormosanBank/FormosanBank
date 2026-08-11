@@ -38,11 +38,34 @@ def _has_letter_or_digit(word: str) -> bool:
     return any(_is_letter(ch) or ch.isdigit() for ch in word)
 
 
+# Interior marks a Formosan word may carry besides letters (the apostrophe
+# itself, Saisiyat's vowel-length colon, the Bunun/Thao hyphen letter, the
+# reduplication tilde, Sakizaya's circumflex).
+ALLOWED_MARKS = set("':-~^")
+
+
+def is_edge_apostrophe_word(word: str) -> bool:
+    """True iff `word` can ever matter to the quote classifier.
+
+    Every dictionary lookup in classify_quotes/clean_xml tests a form that
+    starts or ends with the apostrophe (`'word` / `word'`), so only plausible
+    Formosan words carrying a word-initial or word-final `'` belong in an
+    attestation dictionary (maintainer ruling 2026-08-11).
+    """
+    if not word or not (word.startswith("'") or word.endswith("'")):
+        return False
+    if not any(_is_letter(ch) for ch in word):
+        return False
+    return all(_is_letter(ch) or ch in ALLOWED_MARKS for ch in word)
+
+
 def build_attestation_set(forms_by_sentence, min_freq=3, include_interior=False):
-    """Single-word S-FORMs, optionally unioned with >=min_freq interior tokens.
+    """Edge-apostrophe words from single-word S-FORMs (± frequent interiors).
 
     forms_by_sentence: list of token lists (each = one S-FORM, whitespace-split).
-    include_interior=False (default) returns single-word S-FORMs only.
+    include_interior=False (default) draws from single-word S-FORMs only.
+    Regardless of source, only entries passing `is_edge_apostrophe_word`
+    are kept — anything else can never match a classifier lookup.
     """
     singleword = set()
     interior = Counter()
@@ -56,9 +79,10 @@ def build_attestation_set(forms_by_sentence, min_freq=3, include_interior=False)
                 core = _strip_flanking_punct(t).casefold()
                 if core and _has_letter_or_digit(core):
                     interior[core] += 1
-    if not include_interior:
-        return singleword
-    return singleword | {w for w, n in interior.items() if n >= min_freq}
+    result = singleword
+    if include_interior:
+        result = result | {w for w, n in interior.items() if n >= min_freq}
+    return {w for w in result if is_edge_apostrophe_word(w)}
 
 
 def _iter_language_forms(corpora_path, language):
