@@ -105,6 +105,8 @@ The schema does not impose a controlled vocabulary on `class` or `sclass`.
 
 An `<S>` may be empty when an utterance has not yet been transcribed, although the validator reports this as a soft finding. Every `<W>` and `<M>` must contain at least one `<FORM>`.
 
+**When does the `<M>` level exist?** Only in morpheme-segmented files. In a file where any word has two or more morphemes, *every* `<W>` carries at least one `<M>` — a word with exactly one `<M>` reads as "analyzed as monomorphemic". A corpus without morpheme segmentation has no `<M>` level at all: a tier of words each wrapping a single identical morpheme adds no information. (Policy POL-023; the validator flags both violations as soft findings.)
+
 ***
 
 ### The `<FORM>` Element
@@ -137,6 +139,15 @@ Its optional `kindOf` attribute may be `original` or `standard`, identifying the
 ```xml
 <PHON kindOf="standard">o maan ko ŋaŋan iso</PHON>
 ```
+
+PHON is **machine-generated and machine-owned**: `add_phonology.py` regenerates it from the FORM tiers on every pipeline run, so hand edits to PHON do not survive — to change a PHON, correct the FORM (or the orthography profile) and regenerate. Original PHON is derived through the source orthography's profile; standard PHON uses the orthography each language declares in the repository's `standards.csv` registry (a language with no declared standard simply has no standard PHON).
+
+Conventions of the generated content:
+
+* **Phonemic variants** are written `[x|y]` — two or more pipe-separated alternatives in square brackets, e.g. `ta[b|v]aki` for a letter realized as either /b/ or /v/, or `[ɬ|ɮ]` for a three-way `[ɬ|ɮ|l]` style alternation. Multi-character alternatives are fine (`[l|ll]`). Some variants are resolved by context rules (e.g. Bunun's `c` resolving to `ʦ` before *a/u* but `ʨ` before *i*), in which case the resolved phone appears instead of a variant group.
+* **Punctuation is not represented**: characters with no sound value are dropped from PHON rather than copied.
+* **Unmapped letters** — characters the orthography profile cannot transcribe — surface as `*` so they can be found and reviewed, never silently guessed.
+* **Null morphemes are silent**: a null marker (`∅`) inside a FORM contributes nothing to PHON, but a FORM that *is* a null morpheme gets `<PHON>∅</PHON>` so the tier is never empty.
 
 ***
 
@@ -232,6 +243,14 @@ Circumfixes can be handled in an analogous way, although some source glossing co
 #### Clitics
 
 Formosan sources do not use one consistent convention for writing clitics as attached or separate words. In an M-level FORM for a clitic, retain the `=` marker whether or not the source wrote the clitic together with its host.
+
+#### Optional material and alternatives
+
+A source sentence with optional words — *x y (z)* — becomes **two** `<S>` blocks, one for *x y* and one for *x y z*, each with glosses and translations matching its own variant (the *x y* block must not carry *z*'s gloss). A source sentence offering alternatives — *Sally likes x / y / z* — becomes **one `<S>` block per option**, never a single block with the slashes retained. (Policies POL-026/POL-027; leftover parentheses or slashes in published FORMs are what the V121/V122 validator findings point at.)
+
+#### Ungrammatical and marginal examples
+
+Examples a source marks as ungrammatical (`*`) or questionable/marginal (`?`) are **not ingested** — neither with the marker inline nor with it stripped (policy POL-016). A `*` in any published FORM is a hard validator finding.
 
 ***
 

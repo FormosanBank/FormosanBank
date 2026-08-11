@@ -12,6 +12,7 @@
 ## The Bank Architecture
 
 * [FormosanBank XML Format](the-bank-architecture/formosanbank-xml-format.md)
+* [FormosanBank Policies](the-bank-architecture/policies.md)
 * [Formosan Dialects](the-bank-architecture/formosan-dialects.md)
 * [Corpora](the-bank-architecture/corpora/README.md)
   * [ePark](the-bank-architecture/corpora/epark.md)
