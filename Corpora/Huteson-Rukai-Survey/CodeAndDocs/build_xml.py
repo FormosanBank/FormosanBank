@@ -52,6 +52,13 @@ REVIEWED_WORD_ALIGNMENTS = {
         ("saokwamamitə", "very fat"),
         ("valak-ili", "child-1S.GEN"),
     ),
+    ("tona", 9): (
+        ("akakə", "1S.TOP"),
+        ("ka", "TOP"),
+        ("wakanə", "eat"),
+        ("na", None),
+        ("bələbələ", "banana"),
+    ),
 }
 
 REVIEWED_WORD_IDS = {
@@ -71,6 +78,7 @@ class Example:
     translation_page: int
     alternate_translation: str | None = None
     alternate_translation_notes: str | None = None
+    expanded_translations: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -109,6 +117,7 @@ MAGA = Corpus(
             "(S/he) started to cry.",
             38,
             39,
+            expanded_translations=("He started to cry.", "She started to cry."),
         ),
         Example(
             5,
@@ -125,6 +134,10 @@ MAGA = Corpus(
             "This person ran/is running.",
             38,
             39,
+            expanded_translations=(
+                "This person ran.",
+                "This person is running.",
+            ),
         ),
         Example(
             7,
@@ -210,6 +223,7 @@ TONA = Corpus(
             "(S/he) started to cry.",
             41,
             42,
+            expanded_translations=("He started to cry.", "She started to cry."),
         ),
         Example(
             4,
@@ -226,6 +240,10 @@ TONA = Corpus(
             "That old person ran/is running.",
             41,
             42,
+            expanded_translations=(
+                "That old person ran.",
+                "That old person is running.",
+            ),
         ),
         Example(
             6,
@@ -348,29 +366,66 @@ def add_word_tiers(sentence: ET.Element, corpus: Corpus, example: Example) -> No
         word = ET.SubElement(sentence, "W", {"id": word_id})
         form = ET.SubElement(word, "FORM", {"kindOf": "original"})
         form.text = word_form
-        if word_gloss is None:
-            continue
-        translation = ET.SubElement(word, "TRANSL", {f"{{{XML_NS}}}lang": "eng"})
-        translation.text = word_gloss
+        if word_gloss is not None:
+            translation = ET.SubElement(
+                word,
+                "TRANSL",
+                {f"{{{XML_NS}}}lang": "eng", "kindOf": "original"},
+            )
+            translation.text = word_gloss
+        else:
+            translation = ET.SubElement(
+                word,
+                "TRANSL",
+                {
+                    f"{{{XML_NS}}}lang": "eng",
+                    "kindOf": "standard",
+                    "notes": "source gloss cell is blank",
+                },
+            )
+            translation.text = "?"
 
         form_morphemes = word_form.split("-")
-        gloss_morphemes = word_gloss.split("-")
-        if len(form_morphemes) == 1:
-            continue
-        if len(form_morphemes) != len(gloss_morphemes):
-            # Tona 9 prints a segmented form but only one fused word gloss.
-            # Preserve that evidence at W level rather than invent M glosses.
-            continue
+        gloss_morphemes = word_gloss.split("-") if word_gloss is not None else []
+        aligned_glosses: list[str | None]
+        if word_gloss is None:
+            aligned_glosses = [None] * len(form_morphemes)
+        elif len(form_morphemes) == len(gloss_morphemes):
+            aligned_glosses = gloss_morphemes
+        else:
+            raise ValueError(
+                f"Unresolved morpheme alignment for {corpus.key} {example.number}: "
+                f"{word_form!r} / {word_gloss!r}"
+            )
         for morph_index, (morph_form, morph_gloss) in enumerate(
-            zip(form_morphemes, gloss_morphemes, strict=True), start=1
+            zip(form_morphemes, aligned_glosses, strict=True), start=1
         ):
             morph = ET.SubElement(word, "M", {"id": f"{word_id}_M_{morph_index:02d}"})
             form = ET.SubElement(morph, "FORM", {"kindOf": "original"})
             form.text = morph_form
-            translation = ET.SubElement(
-                morph, "TRANSL", {f"{{{XML_NS}}}lang": "eng"}
-            )
-            translation.text = morph_gloss
+            if morph_gloss is not None:
+                translation = ET.SubElement(
+                    morph,
+                    "TRANSL",
+                    {f"{{{XML_NS}}}lang": "eng", "kindOf": "original"},
+                )
+                translation.text = morph_gloss
+            else:
+                notes = (
+                    "source gloss cell is blank"
+                    if word_gloss is None
+                    else "source morpheme gloss is unresolved"
+                )
+                translation = ET.SubElement(
+                    morph,
+                    "TRANSL",
+                    {
+                        f"{{{XML_NS}}}lang": "eng",
+                        "kindOf": "standard",
+                        "notes": notes,
+                    },
+                )
+                translation.text = "?"
 
 
 def make_text(corpus: Corpus) -> ET.Element:
@@ -404,8 +459,13 @@ def make_text(corpus: Corpus) -> ET.Element:
         )
         form = ET.SubElement(sentence, "FORM", {"kindOf": "original"})
         form.text = example.form
-        transl = ET.SubElement(sentence, "TRANSL", {f"{{{XML_NS}}}lang": "eng"})
-        transl.text = example.translation
+        translations = example.expanded_translations or (example.translation,)
+        for translation_index, translation_text in enumerate(translations):
+            attributes = {f"{{{XML_NS}}}lang": "eng"}
+            if translation_index:
+                attributes["ver"] = "alt"
+            transl = ET.SubElement(sentence, "TRANSL", attributes)
+            transl.text = translation_text
         if example.alternate_translation:
             alternate_attributes = {
                 f"{{{XML_NS}}}lang": "eng",

@@ -1,461 +1,831 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" ?>
 <TEXT id="huteson_2003_rukai_maga_imitation_test" citation="Huteson, Greg. 2003. Sociolinguistic Survey Report for the Tona and Maga Dialects of the Rukai Language. SIL International." BibTeX_citation="@techreport{huteson2003rukaiSurvey, author = {Huteson, Greg}, title = {Sociolinguistic Survey Report for the Tona and Maga Dialects of the Rukai Language}, institution = {SIL International}, year = {2003}}" copyright="CC BY-NC-SA 4.0 via SIL International terms screenshot attached to Basecamp card 8255603132." dialect="Maolin" source="Huteson 2003 Appendix B, Maga Dialect Imitation Test; source label Maga; Basecamp card 8255603132." xml:lang="dru">
     <S id="S_maga_001" source="Appendix B MAGA 1; test list p. 38; translation p. 39">
         <FORM kindOf="original">aɖi ŋulu!</FORM>
+        <PHON kindOf="original">aɖi ŋulu</PHON>
         <FORM kindOf="standard">adri ngulu!</FORM>
-        <PHON kindOf="standard">aɖi ŋulu!</PHON>
+        <PHON kindOf="standard">aɖi ŋulu</PHON>
         <TRANSL xml:lang="eng">Don't drink!</TRANSL>
         <W id="S_maga_001_W_001">
             <FORM kindOf="original">aɖi</FORM>
+            <PHON kindOf="original">aɖi</PHON>
             <FORM kindOf="standard">adri</FORM>
             <PHON kindOf="standard">aɖi</PHON>
-            <TRANSL xml:lang="eng">NEG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">NEG</TRANSL>
+            <M id="S_maga_001_W_001_M_01">
+                <FORM kindOf="original">aɖi</FORM>
+                <PHON kindOf="original">aɖi</PHON>
+                <FORM kindOf="standard">adri</FORM>
+                <PHON kindOf="standard">aɖi</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">NEG</TRANSL>
+            </M>
         </W>
         <W id="S_maga_001_W_002">
             <FORM kindOf="original">ŋulu</FORM>
+            <PHON kindOf="original">ŋulu</PHON>
             <FORM kindOf="standard">ngulu</FORM>
             <PHON kindOf="standard">ŋulu</PHON>
-            <TRANSL xml:lang="eng">drink</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">drink</TRANSL>
+            <M id="S_maga_001_W_002_M_01">
+                <FORM kindOf="original">ŋulu</FORM>
+                <PHON kindOf="original">ŋulu</PHON>
+                <FORM kindOf="standard">ngulu</FORM>
+                <PHON kindOf="standard">ŋulu</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">drink</TRANSL>
+            </M>
         </W>
     </S>
     <S id="S_maga_002" source="Appendix B MAGA 2; test list p. 38; translation p. 39">
         <FORM kindOf="original">abrele kɨkɨ.</FORM>
+        <PHON kindOf="original">abrələ kɨkɨ</PHON>
         <FORM kindOf="standard">abrele kɨkɨ.</FORM>
-        <PHON kindOf="standard">abrələ kɨkɨ.</PHON>
+        <PHON kindOf="standard">abrələ kɨkɨ</PHON>
         <TRANSL xml:lang="eng">I am tired.</TRANSL>
         <W id="S_maga_002_W_001">
             <FORM kindOf="original">abrele</FORM>
+            <PHON kindOf="original">abrələ</PHON>
             <FORM kindOf="standard">abrele</FORM>
             <PHON kindOf="standard">abrələ</PHON>
-            <TRANSL xml:lang="eng">tired</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">tired</TRANSL>
+            <M id="S_maga_002_W_001_M_01">
+                <FORM kindOf="original">abrele</FORM>
+                <PHON kindOf="original">abrələ</PHON>
+                <FORM kindOf="standard">abrele</FORM>
+                <PHON kindOf="standard">abrələ</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">tired</TRANSL>
+            </M>
         </W>
         <W id="S_maga_002_W_002">
             <FORM kindOf="original">kɨkɨ</FORM>
+            <PHON kindOf="original">kɨkɨ</PHON>
             <FORM kindOf="standard">kɨkɨ</FORM>
             <PHON kindOf="standard">kɨkɨ</PHON>
-            <TRANSL xml:lang="eng">1S.NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">1S.NOM</TRANSL>
+            <M id="S_maga_002_W_002_M_01">
+                <FORM kindOf="original">kɨkɨ</FORM>
+                <PHON kindOf="original">kɨkɨ</PHON>
+                <FORM kindOf="standard">kɨkɨ</FORM>
+                <PHON kindOf="standard">kɨkɨ</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">1S.NOM</TRANSL>
+            </M>
         </W>
     </S>
     <S id="S_maga_003" source="Appendix B MAGA 3; test list p. 38; translation p. 39">
         <FORM kindOf="original">traɖo-ŋa musu.</FORM>
-        <FORM kindOf="standard">tradro-nga musu.</FORM>
-        <PHON kindOf="standard">traɖoŋa musu.</PHON>
+        <PHON kindOf="original">traɖoŋa musu</PHON>
+        <FORM kindOf="standard">tradronga musu.</FORM>
+        <PHON kindOf="standard">traɖoŋa musu</PHON>
         <TRANSL xml:lang="eng">You have gotten big.</TRANSL>
         <W id="S_maga_003_W_001">
             <FORM kindOf="original">traɖo-ŋa</FORM>
+            <PHON kindOf="original">traɖoŋa</PHON>
             <FORM kindOf="standard">tradro-nga</FORM>
             <PHON kindOf="standard">traɖoŋa</PHON>
-            <TRANSL xml:lang="eng">big-already</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">big-already</TRANSL>
             <M id="S_maga_003_W_001_M_01">
                 <FORM kindOf="original">traɖo</FORM>
+                <PHON kindOf="original">traɖo</PHON>
                 <FORM kindOf="standard">tradro</FORM>
                 <PHON kindOf="standard">traɖo</PHON>
-                <TRANSL xml:lang="eng">big</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">big</TRANSL>
             </M>
             <M id="S_maga_003_W_001_M_02">
                 <FORM kindOf="original">ŋa</FORM>
+                <PHON kindOf="original">ŋa</PHON>
                 <FORM kindOf="standard">nga</FORM>
                 <PHON kindOf="standard">ŋa</PHON>
-                <TRANSL xml:lang="eng">already</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">already</TRANSL>
             </M>
         </W>
         <W id="S_maga_003_W_002">
             <FORM kindOf="original">musu</FORM>
+            <PHON kindOf="original">musu</PHON>
             <FORM kindOf="standard">musu</FORM>
             <PHON kindOf="standard">musu</PHON>
-            <TRANSL xml:lang="eng">2S.NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">2S.NOM</TRANSL>
+            <M id="S_maga_003_W_002_M_01">
+                <FORM kindOf="original">musu</FORM>
+                <PHON kindOf="original">musu</PHON>
+                <FORM kindOf="standard">musu</FORM>
+                <PHON kindOf="standard">musu</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">2S.NOM</TRANSL>
+            </M>
         </W>
     </S>
     <S id="S_maga_004" source="Appendix B MAGA 4; test list p. 38; translation p. 39">
         <FORM kindOf="original">sakroɖu-ŋa tubi.</FORM>
-        <FORM kindOf="standard">sakrodru-nga tubi.</FORM>
-        <PHON kindOf="standard">sakroɖuŋa tubi.</PHON>
-        <TRANSL xml:lang="eng">(S/he) started to cry.</TRANSL>
+        <PHON kindOf="original">sakroɖuŋa tubi</PHON>
+        <FORM kindOf="standard">sakrodrunga tubi.</FORM>
+        <PHON kindOf="standard">sakroɖuŋa tubi</PHON>
+        <TRANSL xml:lang="eng">He started to cry.</TRANSL>
+        <TRANSL xml:lang="eng" ver="alt">She started to cry.</TRANSL>
         <W id="S_maga_004_W_001">
             <FORM kindOf="original">sakroɖu-ŋa</FORM>
+            <PHON kindOf="original">sakroɖuŋa</PHON>
             <FORM kindOf="standard">sakrodru-nga</FORM>
             <PHON kindOf="standard">sakroɖuŋa</PHON>
-            <TRANSL xml:lang="eng">start-already</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">start-already</TRANSL>
             <M id="S_maga_004_W_001_M_01">
                 <FORM kindOf="original">sakroɖu</FORM>
+                <PHON kindOf="original">sakroɖu</PHON>
                 <FORM kindOf="standard">sakrodru</FORM>
                 <PHON kindOf="standard">sakroɖu</PHON>
-                <TRANSL xml:lang="eng">start</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">start</TRANSL>
             </M>
             <M id="S_maga_004_W_001_M_02">
                 <FORM kindOf="original">ŋa</FORM>
+                <PHON kindOf="original">ŋa</PHON>
                 <FORM kindOf="standard">nga</FORM>
                 <PHON kindOf="standard">ŋa</PHON>
-                <TRANSL xml:lang="eng">already</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">already</TRANSL>
             </M>
         </W>
         <W id="S_maga_004_W_002">
             <FORM kindOf="original">tubi</FORM>
+            <PHON kindOf="original">tubi</PHON>
             <FORM kindOf="standard">tubi</FORM>
             <PHON kindOf="standard">tubi</PHON>
-            <TRANSL xml:lang="eng">cry</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">cry</TRANSL>
+            <M id="S_maga_004_W_002_M_01">
+                <FORM kindOf="original">tubi</FORM>
+                <PHON kindOf="original">tubi</PHON>
+                <FORM kindOf="standard">tubi</FORM>
+                <PHON kindOf="standard">tubi</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">cry</TRANSL>
+            </M>
         </W>
     </S>
     <S id="S_maga_005" source="Appendix B MAGA 5; test list p. 38; translation p. 39">
         <FORM kindOf="original">saokura maucuru gili nma.</FORM>
+        <PHON kindOf="original">saokura mauʦuru gili nma</PHON>
         <FORM kindOf="standard">saokura maucuru gili nma.</FORM>
-        <PHON kindOf="standard">saokura mauʦuru gili nma.</PHON>
+        <PHON kindOf="standard">saokura mauʦuru gili nma</PHON>
         <TRANSL xml:lang="eng">My younger sibling is very fat.</TRANSL>
         <W id="S_maga_005_W_001">
             <FORM kindOf="original">saokura</FORM>
+            <PHON kindOf="original">saokura</PHON>
             <FORM kindOf="standard">saokura</FORM>
             <PHON kindOf="standard">saokura</PHON>
-            <TRANSL xml:lang="eng">very</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">very</TRANSL>
+            <M id="S_maga_005_W_001_M_01">
+                <FORM kindOf="original">saokura</FORM>
+                <PHON kindOf="original">saokura</PHON>
+                <FORM kindOf="standard">saokura</FORM>
+                <PHON kindOf="standard">saokura</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">very</TRANSL>
+            </M>
         </W>
         <W id="S_maga_005_W_002">
             <FORM kindOf="original">maucuru</FORM>
+            <PHON kindOf="original">mauʦuru</PHON>
             <FORM kindOf="standard">maucuru</FORM>
             <PHON kindOf="standard">mauʦuru</PHON>
-            <TRANSL xml:lang="eng">fat</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">fat</TRANSL>
+            <M id="S_maga_005_W_002_M_01">
+                <FORM kindOf="original">maucuru</FORM>
+                <PHON kindOf="original">mauʦuru</PHON>
+                <FORM kindOf="standard">maucuru</FORM>
+                <PHON kindOf="standard">mauʦuru</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">fat</TRANSL>
+            </M>
         </W>
         <W id="S_maga_005_W_003">
             <FORM kindOf="original">gili</FORM>
+            <PHON kindOf="original">gili</PHON>
             <FORM kindOf="standard">gili</FORM>
             <PHON kindOf="standard">gili</PHON>
-            <TRANSL xml:lang="eng">younger.sibling</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">younger.sibling</TRANSL>
+            <M id="S_maga_005_W_003_M_01">
+                <FORM kindOf="original">gili</FORM>
+                <PHON kindOf="original">gili</PHON>
+                <FORM kindOf="standard">gili</FORM>
+                <PHON kindOf="standard">gili</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">younger.sibling</TRANSL>
+            </M>
         </W>
         <W id="S_maga_005_W_004">
             <FORM kindOf="original">nma</FORM>
+            <PHON kindOf="original">nma</PHON>
             <FORM kindOf="standard">nma</FORM>
             <PHON kindOf="standard">nma</PHON>
-            <TRANSL xml:lang="eng">1S.GEN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">1S.GEN</TRANSL>
+            <M id="S_maga_005_W_004_M_01">
+                <FORM kindOf="original">nma</FORM>
+                <PHON kindOf="original">nma</PHON>
+                <FORM kindOf="standard">nma</FORM>
+                <PHON kindOf="standard">nma</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">1S.GEN</TRANSL>
+            </M>
         </W>
     </S>
     <S id="S_maga_006" source="Appendix B MAGA 6; test list p. 38; translation p. 39">
         <FORM kindOf="original">uputakɨ knee icoo.</FORM>
+        <PHON kindOf="original">uputakɨ knəə iʦoo</PHON>
         <FORM kindOf="standard">uputakɨ knee icoo.</FORM>
-        <PHON kindOf="standard">uputakɨ knəə iʦoo.</PHON>
-        <TRANSL xml:lang="eng">This person ran/is running.</TRANSL>
+        <PHON kindOf="standard">uputakɨ knəə iʦoo</PHON>
+        <TRANSL xml:lang="eng">This person ran.</TRANSL>
+        <TRANSL xml:lang="eng" ver="alt">This person is running.</TRANSL>
         <W id="S_maga_006_W_001">
             <FORM kindOf="original">uputakɨ</FORM>
+            <PHON kindOf="original">uputakɨ</PHON>
             <FORM kindOf="standard">uputakɨ</FORM>
             <PHON kindOf="standard">uputakɨ</PHON>
-            <TRANSL xml:lang="eng">run</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">run</TRANSL>
+            <M id="S_maga_006_W_001_M_01">
+                <FORM kindOf="original">uputakɨ</FORM>
+                <PHON kindOf="original">uputakɨ</PHON>
+                <FORM kindOf="standard">uputakɨ</FORM>
+                <PHON kindOf="standard">uputakɨ</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">run</TRANSL>
+            </M>
         </W>
         <W id="S_maga_006_W_002">
             <FORM kindOf="original">knee</FORM>
+            <PHON kindOf="original">knəə</PHON>
             <FORM kindOf="standard">knee</FORM>
             <PHON kindOf="standard">knəə</PHON>
-            <TRANSL xml:lang="eng">this</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">this</TRANSL>
+            <M id="S_maga_006_W_002_M_01">
+                <FORM kindOf="original">knee</FORM>
+                <PHON kindOf="original">knəə</PHON>
+                <FORM kindOf="standard">knee</FORM>
+                <PHON kindOf="standard">knəə</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">this</TRANSL>
+            </M>
         </W>
         <W id="S_maga_006_W_003">
             <FORM kindOf="original">icoo</FORM>
+            <PHON kindOf="original">iʦoo</PHON>
             <FORM kindOf="standard">icoo</FORM>
             <PHON kindOf="standard">iʦoo</PHON>
-            <TRANSL xml:lang="eng">person</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">person</TRANSL>
+            <M id="S_maga_006_W_003_M_01">
+                <FORM kindOf="original">icoo</FORM>
+                <PHON kindOf="original">iʦoo</PHON>
+                <FORM kindOf="standard">icoo</FORM>
+                <PHON kindOf="standard">iʦoo</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">person</TRANSL>
+            </M>
         </W>
     </S>
     <S id="S_maga_007" source="Appendix B MAGA 7; test list p. 38; translation p. 39">
         <FORM kindOf="original">ko-sa-tepruu na aŋatu.</FORM>
-        <FORM kindOf="standard">ko-sa-tepruu na angatu.</FORM>
-        <PHON kindOf="standard">kosatəpruu na aŋatu.</PHON>
+        <PHON kindOf="original">kosatəpruu na aŋatu</PHON>
+        <FORM kindOf="standard">kosatepruu na angatu.</FORM>
+        <PHON kindOf="standard">kosatəpruu na aŋatu</PHON>
         <TRANSL xml:lang="eng">I want to use brushwood to make a fire.</TRANSL>
         <W id="S_maga_007_W_001">
             <FORM kindOf="original">ko-sa-tepruu</FORM>
+            <PHON kindOf="original">kosatəpruu</PHON>
             <FORM kindOf="standard">ko-sa-tepruu</FORM>
             <PHON kindOf="standard">kosatəpruu</PHON>
-            <TRANSL xml:lang="eng">1S.NOM-use-make</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">1S.NOM-use-make</TRANSL>
             <M id="S_maga_007_W_001_M_01">
                 <FORM kindOf="original">ko</FORM>
+                <PHON kindOf="original">ko</PHON>
                 <FORM kindOf="standard">ko</FORM>
                 <PHON kindOf="standard">ko</PHON>
-                <TRANSL xml:lang="eng">1S.NOM</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1S.NOM</TRANSL>
             </M>
             <M id="S_maga_007_W_001_M_02">
                 <FORM kindOf="original">sa</FORM>
+                <PHON kindOf="original">sa</PHON>
                 <FORM kindOf="standard">sa</FORM>
                 <PHON kindOf="standard">sa</PHON>
-                <TRANSL xml:lang="eng">use</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">use</TRANSL>
             </M>
             <M id="S_maga_007_W_001_M_03">
                 <FORM kindOf="original">tepruu</FORM>
+                <PHON kindOf="original">təpruu</PHON>
                 <FORM kindOf="standard">tepruu</FORM>
                 <PHON kindOf="standard">təpruu</PHON>
-                <TRANSL xml:lang="eng">make</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">make</TRANSL>
             </M>
         </W>
         <W id="S_maga_007_W_002">
             <FORM kindOf="original">na</FORM>
+            <PHON kindOf="original">na</PHON>
             <FORM kindOf="standard">na</FORM>
             <PHON kindOf="standard">na</PHON>
+            <TRANSL xml:lang="eng" kindOf="standard" notes="source gloss cell is blank">?</TRANSL>
+            <M id="S_maga_007_W_002_M_01">
+                <FORM kindOf="original">na</FORM>
+                <PHON kindOf="original">na</PHON>
+                <FORM kindOf="standard">na</FORM>
+                <PHON kindOf="standard">na</PHON>
+                <TRANSL xml:lang="eng" kindOf="standard" notes="source gloss cell is blank">?</TRANSL>
+            </M>
         </W>
         <W id="S_maga_007_W_003">
             <FORM kindOf="original">aŋatu</FORM>
+            <PHON kindOf="original">aŋatu</PHON>
             <FORM kindOf="standard">angatu</FORM>
             <PHON kindOf="standard">aŋatu</PHON>
-            <TRANSL xml:lang="eng">brushwood</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">brushwood</TRANSL>
+            <M id="S_maga_007_W_003_M_01">
+                <FORM kindOf="original">aŋatu</FORM>
+                <PHON kindOf="original">aŋatu</PHON>
+                <FORM kindOf="standard">angatu</FORM>
+                <PHON kindOf="standard">aŋatu</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">brushwood</TRANSL>
+            </M>
         </W>
     </S>
     <S id="S_maga_008" source="Appendix B MAGA 8; test list p. 38; translation p. 40">
         <FORM kindOf="original">i-sierkɨ ki mamaa.</FORM>
-        <FORM kindOf="standard">i-sierkɨ ki mamaa.</FORM>
-        <PHON kindOf="standard">isiərkɨ ki mamaa.</PHON>
+        <PHON kindOf="original">isiərkɨ ki mamaa</PHON>
+        <FORM kindOf="standard">isierkɨ ki mamaa.</FORM>
+        <PHON kindOf="standard">isiərkɨ ki mamaa</PHON>
         <TRANSL xml:lang="eng">Father did not sleep.</TRANSL>
         <W id="S_maga_008_W_001">
             <FORM kindOf="original">i-sierkɨ</FORM>
+            <PHON kindOf="original">isiərkɨ</PHON>
             <FORM kindOf="standard">i-sierkɨ</FORM>
             <PHON kindOf="standard">isiərkɨ</PHON>
-            <TRANSL xml:lang="eng">NEG-sleep</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">NEG-sleep</TRANSL>
             <M id="S_maga_008_W_001_M_01">
                 <FORM kindOf="original">i</FORM>
+                <PHON kindOf="original">i</PHON>
                 <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
-                <TRANSL xml:lang="eng">NEG</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NEG</TRANSL>
             </M>
             <M id="S_maga_008_W_001_M_02">
                 <FORM kindOf="original">sierkɨ</FORM>
+                <PHON kindOf="original">siərkɨ</PHON>
                 <FORM kindOf="standard">sierkɨ</FORM>
                 <PHON kindOf="standard">siərkɨ</PHON>
-                <TRANSL xml:lang="eng">sleep</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">sleep</TRANSL>
             </M>
         </W>
         <W id="S_maga_008_W_002">
             <FORM kindOf="original">ki</FORM>
+            <PHON kindOf="original">ki</PHON>
             <FORM kindOf="standard">ki</FORM>
             <PHON kindOf="standard">ki</PHON>
-            <TRANSL xml:lang="eng">NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+            <M id="S_maga_008_W_002_M_01">
+                <FORM kindOf="original">ki</FORM>
+                <PHON kindOf="original">ki</PHON>
+                <FORM kindOf="standard">ki</FORM>
+                <PHON kindOf="standard">ki</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+            </M>
         </W>
         <W id="S_maga_008_W_003">
             <FORM kindOf="original">mamaa</FORM>
+            <PHON kindOf="original">mamaa</PHON>
             <FORM kindOf="standard">mamaa</FORM>
             <PHON kindOf="standard">mamaa</PHON>
-            <TRANSL xml:lang="eng">father</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">father</TRANSL>
+            <M id="S_maga_008_W_003_M_01">
+                <FORM kindOf="original">mamaa</FORM>
+                <PHON kindOf="original">mamaa</PHON>
+                <FORM kindOf="standard">mamaa</FORM>
+                <PHON kindOf="standard">mamaa</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">father</TRANSL>
+            </M>
         </W>
     </S>
     <S id="S_maga_009" source="Appendix B MAGA 9; test list p. 38; translation p. 40">
         <FORM kindOf="original">u-rgu ki kanaw luŋluŋee.</FORM>
-        <FORM kindOf="standard">u-rgu ki kanaw lunglungee.</FORM>
-        <PHON kindOf="standard">urgu ki kanaw luŋluŋəə.</PHON>
+        <PHON kindOf="original">urgu ki kanaw luŋluŋəə</PHON>
+        <FORM kindOf="standard">urgu ki kanaw lunglungee.</FORM>
+        <PHON kindOf="standard">urgu ki kanaw luŋluŋəə</PHON>
         <TRANSL xml:lang="eng">Kanaw knows (how to) swim.</TRANSL>
         <W id="S_maga_009_W_001">
             <FORM kindOf="original">u-rgu</FORM>
+            <PHON kindOf="original">urgu</PHON>
             <FORM kindOf="standard">u-rgu</FORM>
             <PHON kindOf="standard">urgu</PHON>
-            <TRANSL xml:lang="eng">ACT/REAL-know</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">ACT/REAL-know</TRANSL>
             <M id="S_maga_009_W_001_M_01">
                 <FORM kindOf="original">u</FORM>
+                <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">u</FORM>
                 <PHON kindOf="standard">u</PHON>
-                <TRANSL xml:lang="eng">ACT/REAL</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">ACT/REAL</TRANSL>
             </M>
             <M id="S_maga_009_W_001_M_02">
                 <FORM kindOf="original">rgu</FORM>
+                <PHON kindOf="original">rgu</PHON>
                 <FORM kindOf="standard">rgu</FORM>
                 <PHON kindOf="standard">rgu</PHON>
-                <TRANSL xml:lang="eng">know</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">know</TRANSL>
             </M>
         </W>
         <W id="S_maga_009_W_002">
             <FORM kindOf="original">ki</FORM>
+            <PHON kindOf="original">ki</PHON>
             <FORM kindOf="standard">ki</FORM>
             <PHON kindOf="standard">ki</PHON>
-            <TRANSL xml:lang="eng">NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+            <M id="S_maga_009_W_002_M_01">
+                <FORM kindOf="original">ki</FORM>
+                <PHON kindOf="original">ki</PHON>
+                <FORM kindOf="standard">ki</FORM>
+                <PHON kindOf="standard">ki</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+            </M>
         </W>
         <W id="S_maga_009_W_003">
             <FORM kindOf="original">kanaw</FORM>
+            <PHON kindOf="original">kanaw</PHON>
             <FORM kindOf="standard">kanaw</FORM>
             <PHON kindOf="standard">kanaw</PHON>
-            <TRANSL xml:lang="eng">Kanaw</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">Kanaw</TRANSL>
+            <M id="S_maga_009_W_003_M_01">
+                <FORM kindOf="original">kanaw</FORM>
+                <PHON kindOf="original">kanaw</PHON>
+                <FORM kindOf="standard">kanaw</FORM>
+                <PHON kindOf="standard">kanaw</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">Kanaw</TRANSL>
+            </M>
         </W>
         <W id="S_maga_009_W_004">
             <FORM kindOf="original">luŋluŋee</FORM>
+            <PHON kindOf="original">luŋluŋəə</PHON>
             <FORM kindOf="standard">lunglungee</FORM>
             <PHON kindOf="standard">luŋluŋəə</PHON>
-            <TRANSL xml:lang="eng">swim</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">swim</TRANSL>
+            <M id="S_maga_009_W_004_M_01">
+                <FORM kindOf="original">luŋluŋee</FORM>
+                <PHON kindOf="original">luŋluŋəə</PHON>
+                <FORM kindOf="standard">lunglungee</FORM>
+                <PHON kindOf="standard">luŋluŋəə</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">swim</TRANSL>
+            </M>
         </W>
     </S>
     <S id="S_maga_010" source="Appendix B MAGA 10; test list p. 38; translation p. 40">
         <FORM kindOf="original">astita-li kɖoo vlavlakɨ.</FORM>
-        <FORM kindOf="standard">astita-li kdroo vlavlakɨ.</FORM>
-        <PHON kindOf="standard">astitali kɖoo vlavlakɨ.</PHON>
+        <PHON kindOf="original">astitali kɖoo vlavlakɨ</PHON>
+        <FORM kindOf="standard">astitali kdroo vlavlakɨ.</FORM>
+        <PHON kindOf="standard">astitali kɖoo vlavlakɨ</PHON>
         <TRANSL xml:lang="eng">It is I who beat that child.</TRANSL>
         <W id="S_maga_010_W_001">
             <FORM kindOf="original">astita-li</FORM>
+            <PHON kindOf="original">astitali</PHON>
             <FORM kindOf="standard">astita-li</FORM>
             <PHON kindOf="standard">astitali</PHON>
-            <TRANSL xml:lang="eng">NOM:beat-1S.NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">NOM:beat-1S.NOM</TRANSL>
             <M id="S_maga_010_W_001_M_01">
                 <FORM kindOf="original">astita</FORM>
+                <PHON kindOf="original">astita</PHON>
                 <FORM kindOf="standard">astita</FORM>
                 <PHON kindOf="standard">astita</PHON>
-                <TRANSL xml:lang="eng">NOM:beat</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NOM:beat</TRANSL>
             </M>
             <M id="S_maga_010_W_001_M_02">
                 <FORM kindOf="original">li</FORM>
+                <PHON kindOf="original">li</PHON>
                 <FORM kindOf="standard">li</FORM>
                 <PHON kindOf="standard">li</PHON>
-                <TRANSL xml:lang="eng">1S.NOM</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1S.NOM</TRANSL>
             </M>
         </W>
         <W id="S_maga_010_W_002">
             <FORM kindOf="original">kɖoo</FORM>
+            <PHON kindOf="original">kɖoo</PHON>
             <FORM kindOf="standard">kdroo</FORM>
             <PHON kindOf="standard">kɖoo</PHON>
-            <TRANSL xml:lang="eng">that</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
+            <M id="S_maga_010_W_002_M_01">
+                <FORM kindOf="original">kɖoo</FORM>
+                <PHON kindOf="original">kɖoo</PHON>
+                <FORM kindOf="standard">kdroo</FORM>
+                <PHON kindOf="standard">kɖoo</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
+            </M>
         </W>
         <W id="S_maga_010_W_003">
             <FORM kindOf="original">vlavlakɨ</FORM>
+            <PHON kindOf="original">vlavlakɨ</PHON>
             <FORM kindOf="standard">vlavlakɨ</FORM>
             <PHON kindOf="standard">vlavlakɨ</PHON>
-            <TRANSL xml:lang="eng">child</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">child</TRANSL>
+            <M id="S_maga_010_W_003_M_01">
+                <FORM kindOf="original">vlavlakɨ</FORM>
+                <PHON kindOf="original">vlavlakɨ</PHON>
+                <FORM kindOf="standard">vlavlakɨ</FORM>
+                <PHON kindOf="standard">vlavlakɨ</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">child</TRANSL>
+            </M>
         </W>
     </S>
     <S id="S_maga_011" source="Appendix B MAGA 11; test list p. 38; translation p. 40">
         <FORM kindOf="original">ukpuslɨ kɨkɨ kwonɨ na broo.</FORM>
+        <PHON kindOf="original">ukpuslɨ kɨkɨ kwonɨ na broo</PHON>
         <FORM kindOf="standard">ukpuslɨ kɨkɨ kwonɨ na broo.</FORM>
-        <PHON kindOf="standard">ukpuslɨ kɨkɨ kwonɨ na broo.</PHON>
+        <PHON kindOf="standard">ukpuslɨ kɨkɨ kwonɨ na broo</PHON>
         <TRANSL xml:lang="eng">I ate rice twice.</TRANSL>
         <W id="S_maga_011_W_001">
             <FORM kindOf="original">ukpuslɨ</FORM>
+            <PHON kindOf="original">ukpuslɨ</PHON>
             <FORM kindOf="standard">ukpuslɨ</FORM>
             <PHON kindOf="standard">ukpuslɨ</PHON>
-            <TRANSL xml:lang="eng">twice</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">twice</TRANSL>
+            <M id="S_maga_011_W_001_M_01">
+                <FORM kindOf="original">ukpuslɨ</FORM>
+                <PHON kindOf="original">ukpuslɨ</PHON>
+                <FORM kindOf="standard">ukpuslɨ</FORM>
+                <PHON kindOf="standard">ukpuslɨ</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">twice</TRANSL>
+            </M>
         </W>
         <W id="S_maga_011_W_002">
             <FORM kindOf="original">kɨkɨ</FORM>
+            <PHON kindOf="original">kɨkɨ</PHON>
             <FORM kindOf="standard">kɨkɨ</FORM>
             <PHON kindOf="standard">kɨkɨ</PHON>
-            <TRANSL xml:lang="eng">1S.NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">1S.NOM</TRANSL>
+            <M id="S_maga_011_W_002_M_01">
+                <FORM kindOf="original">kɨkɨ</FORM>
+                <PHON kindOf="original">kɨkɨ</PHON>
+                <FORM kindOf="standard">kɨkɨ</FORM>
+                <PHON kindOf="standard">kɨkɨ</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">1S.NOM</TRANSL>
+            </M>
         </W>
         <W id="S_maga_011_W_003">
             <FORM kindOf="original">kwonɨ</FORM>
+            <PHON kindOf="original">kwonɨ</PHON>
             <FORM kindOf="standard">kwonɨ</FORM>
             <PHON kindOf="standard">kwonɨ</PHON>
-            <TRANSL xml:lang="eng">eat</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">eat</TRANSL>
+            <M id="S_maga_011_W_003_M_01">
+                <FORM kindOf="original">kwonɨ</FORM>
+                <PHON kindOf="original">kwonɨ</PHON>
+                <FORM kindOf="standard">kwonɨ</FORM>
+                <PHON kindOf="standard">kwonɨ</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">eat</TRANSL>
+            </M>
         </W>
         <W id="S_maga_011_W_004">
             <FORM kindOf="original">na</FORM>
+            <PHON kindOf="original">na</PHON>
             <FORM kindOf="standard">na</FORM>
             <PHON kindOf="standard">na</PHON>
+            <TRANSL xml:lang="eng" kindOf="standard" notes="source gloss cell is blank">?</TRANSL>
+            <M id="S_maga_011_W_004_M_01">
+                <FORM kindOf="original">na</FORM>
+                <PHON kindOf="original">na</PHON>
+                <FORM kindOf="standard">na</FORM>
+                <PHON kindOf="standard">na</PHON>
+                <TRANSL xml:lang="eng" kindOf="standard" notes="source gloss cell is blank">?</TRANSL>
+            </M>
         </W>
         <W id="S_maga_011_W_005">
             <FORM kindOf="original">broo</FORM>
+            <PHON kindOf="original">broo</PHON>
             <FORM kindOf="standard">broo</FORM>
             <PHON kindOf="standard">broo</PHON>
-            <TRANSL xml:lang="eng">rice</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">rice</TRANSL>
+            <M id="S_maga_011_W_005_M_01">
+                <FORM kindOf="original">broo</FORM>
+                <PHON kindOf="original">broo</PHON>
+                <FORM kindOf="standard">broo</FORM>
+                <PHON kindOf="standard">broo</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">rice</TRANSL>
+            </M>
         </W>
     </S>
     <S id="S_maga_012" source="Appendix B MAGA 12; test list p. 38; translation p. 40">
         <FORM kindOf="original">ikee blatɨ ki ninaa.</FORM>
+        <PHON kindOf="original">ikəə blatɨ ki ninaa</PHON>
         <FORM kindOf="standard">ikee blatɨ ki ninaa.</FORM>
-        <PHON kindOf="standard">ikəə blatɨ ki ninaa.</PHON>
+        <PHON kindOf="standard">ikəə blatɨ ki ninaa</PHON>
         <TRANSL xml:lang="eng">Mother is outside.</TRANSL>
         <W id="S_maga_012_W_001">
             <FORM kindOf="original">ikee</FORM>
+            <PHON kindOf="original">ikəə</PHON>
             <FORM kindOf="standard">ikee</FORM>
             <PHON kindOf="standard">ikəə</PHON>
-            <TRANSL xml:lang="eng">exist</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">exist</TRANSL>
+            <M id="S_maga_012_W_001_M_01">
+                <FORM kindOf="original">ikee</FORM>
+                <PHON kindOf="original">ikəə</PHON>
+                <FORM kindOf="standard">ikee</FORM>
+                <PHON kindOf="standard">ikəə</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">exist</TRANSL>
+            </M>
         </W>
         <W id="S_maga_012_W_002">
             <FORM kindOf="original">blatɨ</FORM>
+            <PHON kindOf="original">blatɨ</PHON>
             <FORM kindOf="standard">blatɨ</FORM>
             <PHON kindOf="standard">blatɨ</PHON>
-            <TRANSL xml:lang="eng">outside</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">outside</TRANSL>
+            <M id="S_maga_012_W_002_M_01">
+                <FORM kindOf="original">blatɨ</FORM>
+                <PHON kindOf="original">blatɨ</PHON>
+                <FORM kindOf="standard">blatɨ</FORM>
+                <PHON kindOf="standard">blatɨ</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">outside</TRANSL>
+            </M>
         </W>
         <W id="S_maga_012_W_003">
             <FORM kindOf="original">ki</FORM>
+            <PHON kindOf="original">ki</PHON>
             <FORM kindOf="standard">ki</FORM>
             <PHON kindOf="standard">ki</PHON>
-            <TRANSL xml:lang="eng">NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+            <M id="S_maga_012_W_003_M_01">
+                <FORM kindOf="original">ki</FORM>
+                <PHON kindOf="original">ki</PHON>
+                <FORM kindOf="standard">ki</FORM>
+                <PHON kindOf="standard">ki</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+            </M>
         </W>
         <W id="S_maga_012_W_004">
             <FORM kindOf="original">ninaa</FORM>
+            <PHON kindOf="original">ninaa</PHON>
             <FORM kindOf="standard">ninaa</FORM>
             <PHON kindOf="standard">ninaa</PHON>
-            <TRANSL xml:lang="eng">mother</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">mother</TRANSL>
+            <M id="S_maga_012_W_004_M_01">
+                <FORM kindOf="original">ninaa</FORM>
+                <PHON kindOf="original">ninaa</PHON>
+                <FORM kindOf="standard">ninaa</FORM>
+                <PHON kindOf="standard">ninaa</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">mother</TRANSL>
+            </M>
         </W>
     </S>
     <S id="S_maga_013" source="Appendix B MAGA 13; test list p. 38; translation p. 40">
         <FORM kindOf="original">marimuru pkee danɨ na sosisu.</FORM>
+        <PHON kindOf="original">marimuru pkəə danɨ na sosisu</PHON>
         <FORM kindOf="standard">marimuru pkee danɨ na sosisu.</FORM>
-        <PHON kindOf="standard">marimuru pkəə danɨ na sosisu.</PHON>
+        <PHON kindOf="standard">marimuru pkəə danɨ na sosisu</PHON>
         <TRANSL xml:lang="eng">He forgot (his) keys at home.</TRANSL>
         <W id="S_maga_013_W_001">
             <FORM kindOf="original">marimuru</FORM>
+            <PHON kindOf="original">marimuru</PHON>
             <FORM kindOf="standard">marimuru</FORM>
             <PHON kindOf="standard">marimuru</PHON>
-            <TRANSL xml:lang="eng">forget</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">forget</TRANSL>
+            <M id="S_maga_013_W_001_M_01">
+                <FORM kindOf="original">marimuru</FORM>
+                <PHON kindOf="original">marimuru</PHON>
+                <FORM kindOf="standard">marimuru</FORM>
+                <PHON kindOf="standard">marimuru</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">forget</TRANSL>
+            </M>
         </W>
         <W id="S_maga_013_W_002">
             <FORM kindOf="original">pkee</FORM>
+            <PHON kindOf="original">pkəə</PHON>
             <FORM kindOf="standard">pkee</FORM>
             <PHON kindOf="standard">pkəə</PHON>
-            <TRANSL xml:lang="eng">put</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">put</TRANSL>
+            <M id="S_maga_013_W_002_M_01">
+                <FORM kindOf="original">pkee</FORM>
+                <PHON kindOf="original">pkəə</PHON>
+                <FORM kindOf="standard">pkee</FORM>
+                <PHON kindOf="standard">pkəə</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">put</TRANSL>
+            </M>
         </W>
         <W id="S_maga_013_W_003">
             <FORM kindOf="original">danɨ</FORM>
+            <PHON kindOf="original">danɨ</PHON>
             <FORM kindOf="standard">danɨ</FORM>
             <PHON kindOf="standard">danɨ</PHON>
-            <TRANSL xml:lang="eng">house</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">house</TRANSL>
+            <M id="S_maga_013_W_003_M_01">
+                <FORM kindOf="original">danɨ</FORM>
+                <PHON kindOf="original">danɨ</PHON>
+                <FORM kindOf="standard">danɨ</FORM>
+                <PHON kindOf="standard">danɨ</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">house</TRANSL>
+            </M>
         </W>
         <W id="S_maga_013_W_004">
             <FORM kindOf="original">na</FORM>
+            <PHON kindOf="original">na</PHON>
             <FORM kindOf="standard">na</FORM>
             <PHON kindOf="standard">na</PHON>
+            <TRANSL xml:lang="eng" kindOf="standard" notes="source gloss cell is blank">?</TRANSL>
+            <M id="S_maga_013_W_004_M_01">
+                <FORM kindOf="original">na</FORM>
+                <PHON kindOf="original">na</PHON>
+                <FORM kindOf="standard">na</FORM>
+                <PHON kindOf="standard">na</PHON>
+                <TRANSL xml:lang="eng" kindOf="standard" notes="source gloss cell is blank">?</TRANSL>
+            </M>
         </W>
         <W id="S_maga_013_W_005">
             <FORM kindOf="original">sosisu</FORM>
+            <PHON kindOf="original">sosisu</PHON>
             <FORM kindOf="standard">sosisu</FORM>
             <PHON kindOf="standard">sosisu</PHON>
-            <TRANSL xml:lang="eng">key</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">key</TRANSL>
+            <M id="S_maga_013_W_005_M_01">
+                <FORM kindOf="original">sosisu</FORM>
+                <PHON kindOf="original">sosisu</PHON>
+                <FORM kindOf="standard">sosisu</FORM>
+                <PHON kindOf="standard">sosisu</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">key</TRANSL>
+            </M>
         </W>
     </S>
     <S id="S_maga_014" source="Appendix B MAGA 14; test list p. 38; translation p. 40">
         <FORM kindOf="original">n-udu maa kɨkɨ na vlisnɨ pwabreve.</FORM>
-        <FORM kindOf="standard">n-udu maa kɨkɨ na vlisnɨ pwabreve.</FORM>
-        <PHON kindOf="standard">nudu maa kɨkɨ na vlisnɨ pwabrəvə.</PHON>
+        <PHON kindOf="original">nudu maa kɨkɨ na vlisnɨ pwabrəvə</PHON>
+        <FORM kindOf="standard">nudu maa kɨkɨ na vlisnɨ pwabreve.</FORM>
+        <PHON kindOf="standard">nudu maa kɨkɨ na vlisnɨ pwabrəvə</PHON>
         <TRANSL xml:lang="eng">I will bring the wild pig back to the village.</TRANSL>
         <W id="S_maga_014_W_001">
             <FORM kindOf="original">n-udu</FORM>
+            <PHON kindOf="original">nudu</PHON>
             <FORM kindOf="standard">n-udu</FORM>
             <PHON kindOf="standard">nudu</PHON>
-            <TRANSL xml:lang="eng">will-carry.on.back</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">will-carry.on.back</TRANSL>
             <M id="S_maga_014_W_001_M_01">
                 <FORM kindOf="original">n</FORM>
+                <PHON kindOf="original">n</PHON>
                 <FORM kindOf="standard">n</FORM>
                 <PHON kindOf="standard">n</PHON>
-                <TRANSL xml:lang="eng">will</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">will</TRANSL>
             </M>
             <M id="S_maga_014_W_001_M_02">
                 <FORM kindOf="original">udu</FORM>
+                <PHON kindOf="original">udu</PHON>
                 <FORM kindOf="standard">udu</FORM>
                 <PHON kindOf="standard">udu</PHON>
-                <TRANSL xml:lang="eng">carry.on.back</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">carry.on.back</TRANSL>
             </M>
         </W>
         <W id="S_maga_014_W_002">
             <FORM kindOf="original">maa</FORM>
+            <PHON kindOf="original">maa</PHON>
             <FORM kindOf="standard">maa</FORM>
             <PHON kindOf="standard">maa</PHON>
-            <TRANSL xml:lang="eng">will</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">will</TRANSL>
+            <M id="S_maga_014_W_002_M_01">
+                <FORM kindOf="original">maa</FORM>
+                <PHON kindOf="original">maa</PHON>
+                <FORM kindOf="standard">maa</FORM>
+                <PHON kindOf="standard">maa</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">will</TRANSL>
+            </M>
         </W>
         <W id="S_maga_014_W_003">
             <FORM kindOf="original">kɨkɨ</FORM>
+            <PHON kindOf="original">kɨkɨ</PHON>
             <FORM kindOf="standard">kɨkɨ</FORM>
             <PHON kindOf="standard">kɨkɨ</PHON>
-            <TRANSL xml:lang="eng">1S.NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">1S.NOM</TRANSL>
+            <M id="S_maga_014_W_003_M_01">
+                <FORM kindOf="original">kɨkɨ</FORM>
+                <PHON kindOf="original">kɨkɨ</PHON>
+                <FORM kindOf="standard">kɨkɨ</FORM>
+                <PHON kindOf="standard">kɨkɨ</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">1S.NOM</TRANSL>
+            </M>
         </W>
         <W id="S_maga_014_W_004">
             <FORM kindOf="original">na</FORM>
+            <PHON kindOf="original">na</PHON>
             <FORM kindOf="standard">na</FORM>
             <PHON kindOf="standard">na</PHON>
+            <TRANSL xml:lang="eng" kindOf="standard" notes="source gloss cell is blank">?</TRANSL>
+            <M id="S_maga_014_W_004_M_01">
+                <FORM kindOf="original">na</FORM>
+                <PHON kindOf="original">na</PHON>
+                <FORM kindOf="standard">na</FORM>
+                <PHON kindOf="standard">na</PHON>
+                <TRANSL xml:lang="eng" kindOf="standard" notes="source gloss cell is blank">?</TRANSL>
+            </M>
         </W>
         <W id="S_maga_014_W_005">
             <FORM kindOf="original">vlisnɨ</FORM>
+            <PHON kindOf="original">vlisnɨ</PHON>
             <FORM kindOf="standard">vlisnɨ</FORM>
             <PHON kindOf="standard">vlisnɨ</PHON>
-            <TRANSL xml:lang="eng">wild.pig</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">wild.pig</TRANSL>
+            <M id="S_maga_014_W_005_M_01">
+                <FORM kindOf="original">vlisnɨ</FORM>
+                <PHON kindOf="original">vlisnɨ</PHON>
+                <FORM kindOf="standard">vlisnɨ</FORM>
+                <PHON kindOf="standard">vlisnɨ</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">wild.pig</TRANSL>
+            </M>
         </W>
         <W id="S_maga_014_W_006">
             <FORM kindOf="original">pwabreve</FORM>
+            <PHON kindOf="original">pwabrəvə</PHON>
             <FORM kindOf="standard">pwabreve</FORM>
             <PHON kindOf="standard">pwabrəvə</PHON>
-            <TRANSL xml:lang="eng">to:village</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">to:village</TRANSL>
+            <M id="S_maga_014_W_006_M_01">
+                <FORM kindOf="original">pwabreve</FORM>
+                <PHON kindOf="original">pwabrəvə</PHON>
+                <FORM kindOf="standard">pwabreve</FORM>
+                <PHON kindOf="standard">pwabrəvə</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">to:village</TRANSL>
+            </M>
         </W>
     </S>
 </TEXT>

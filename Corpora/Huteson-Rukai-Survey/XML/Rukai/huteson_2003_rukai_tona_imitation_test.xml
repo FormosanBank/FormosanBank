@@ -1,510 +1,930 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" ?>
 <TEXT id="huteson_2003_rukai_tona_imitation_test" citation="Huteson, Greg. 2003. Sociolinguistic Survey Report for the Tona and Maga Dialects of the Rukai Language. SIL International." BibTeX_citation="@techreport{huteson2003rukaiSurvey, author = {Huteson, Greg}, title = {Sociolinguistic Survey Report for the Tona and Maga Dialects of the Rukai Language}, institution = {SIL International}, year = {2003}}" copyright="CC BY-NC-SA 4.0 via SIL International terms screenshot attached to Basecamp card 8255603132." dialect="Dona" source="Huteson 2003 Appendix B, Tona Dialect Imitation Test; source label Tona; Basecamp card 8255603132." xml:lang="dru">
     <S id="S_tona_001" source="Appendix B TONA 1; test list p. 41; translation p. 42">
         <FORM kindOf="original">abaili kakə.</FORM>
+        <PHON kindOf="original">abaili kakə</PHON>
         <FORM kindOf="standard">abaili kake.</FORM>
-        <PHON kindOf="standard">abaili kakə.</PHON>
+        <PHON kindOf="standard">abaili kakə</PHON>
         <TRANSL xml:lang="eng">I am tired.</TRANSL>
         <W id="S_tona_001_W_001">
             <FORM kindOf="original">abaili</FORM>
+            <PHON kindOf="original">abaili</PHON>
             <FORM kindOf="standard">abaili</FORM>
             <PHON kindOf="standard">abaili</PHON>
-            <TRANSL xml:lang="eng">tired</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">tired</TRANSL>
+            <M id="S_tona_001_W_001_M_01">
+                <FORM kindOf="original">abaili</FORM>
+                <PHON kindOf="original">abaili</PHON>
+                <FORM kindOf="standard">abaili</FORM>
+                <PHON kindOf="standard">abaili</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">tired</TRANSL>
+            </M>
         </W>
         <W id="S_tona_001_W_002">
             <FORM kindOf="original">kakə</FORM>
+            <PHON kindOf="original">kakə</PHON>
             <FORM kindOf="standard">kake</FORM>
             <PHON kindOf="standard">kakə</PHON>
-            <TRANSL xml:lang="eng">1S.NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">1S.NOM</TRANSL>
+            <M id="S_tona_001_W_002_M_01">
+                <FORM kindOf="original">kakə</FORM>
+                <PHON kindOf="original">kakə</PHON>
+                <FORM kindOf="standard">kake</FORM>
+                <PHON kindOf="standard">kakə</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">1S.NOM</TRANSL>
+            </M>
         </W>
     </S>
     <S id="S_tona_002" source="Appendix B TONA 2; test list p. 41; translation p. 42">
         <FORM kindOf="original">taomomoa koso.</FORM>
+        <PHON kindOf="original">taomomoa koso</PHON>
         <FORM kindOf="standard">taomomoa koso.</FORM>
-        <PHON kindOf="standard">taomomoa koso.</PHON>
+        <PHON kindOf="standard">taomomoa koso</PHON>
         <TRANSL xml:lang="eng">You are grown up.</TRANSL>
         <W id="S_tona_002_W_001">
             <FORM kindOf="original">taomomoa</FORM>
+            <PHON kindOf="original">taomomoa</PHON>
             <FORM kindOf="standard">taomomoa</FORM>
             <PHON kindOf="standard">taomomoa</PHON>
-            <TRANSL xml:lang="eng">grown.up</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">grown.up</TRANSL>
+            <M id="S_tona_002_W_001_M_01">
+                <FORM kindOf="original">taomomoa</FORM>
+                <PHON kindOf="original">taomomoa</PHON>
+                <FORM kindOf="standard">taomomoa</FORM>
+                <PHON kindOf="standard">taomomoa</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">grown.up</TRANSL>
+            </M>
         </W>
         <W id="S_tona_002_W_002">
             <FORM kindOf="original">koso</FORM>
+            <PHON kindOf="original">koso</PHON>
             <FORM kindOf="standard">koso</FORM>
             <PHON kindOf="standard">koso</PHON>
-            <TRANSL xml:lang="eng">2S.NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">2S.NOM</TRANSL>
+            <M id="S_tona_002_W_002_M_01">
+                <FORM kindOf="original">koso</FORM>
+                <PHON kindOf="original">koso</PHON>
+                <FORM kindOf="standard">koso</FORM>
+                <PHON kindOf="standard">koso</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">2S.NOM</TRANSL>
+            </M>
         </W>
     </S>
     <S id="S_tona_003" source="Appendix B TONA 3; test list p. 41; translation p. 42">
         <FORM kindOf="original">siakiaoɖo-ŋa tobi.</FORM>
-        <FORM kindOf="standard">siakiaodro-nga tobi.</FORM>
-        <PHON kindOf="standard">siakiaoɖoŋa tobi.</PHON>
-        <TRANSL xml:lang="eng">(S/he) started to cry.</TRANSL>
+        <PHON kindOf="original">siakiaoɖoŋa tobi</PHON>
+        <FORM kindOf="standard">siakiaodronga tobi.</FORM>
+        <PHON kindOf="standard">siakiaoɖoŋa tobi</PHON>
+        <TRANSL xml:lang="eng">He started to cry.</TRANSL>
+        <TRANSL xml:lang="eng" ver="alt">She started to cry.</TRANSL>
         <W id="S_tona_003_W_001">
             <FORM kindOf="original">siakiaoɖo-ŋa</FORM>
+            <PHON kindOf="original">siakiaoɖoŋa</PHON>
             <FORM kindOf="standard">siakiaodro-nga</FORM>
             <PHON kindOf="standard">siakiaoɖoŋa</PHON>
-            <TRANSL xml:lang="eng">start-already</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">start-already</TRANSL>
             <M id="S_tona_003_W_001_M_01">
                 <FORM kindOf="original">siakiaoɖo</FORM>
+                <PHON kindOf="original">siakiaoɖo</PHON>
                 <FORM kindOf="standard">siakiaodro</FORM>
                 <PHON kindOf="standard">siakiaoɖo</PHON>
-                <TRANSL xml:lang="eng">start</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">start</TRANSL>
             </M>
             <M id="S_tona_003_W_001_M_02">
                 <FORM kindOf="original">ŋa</FORM>
+                <PHON kindOf="original">ŋa</PHON>
                 <FORM kindOf="standard">nga</FORM>
                 <PHON kindOf="standard">ŋa</PHON>
-                <TRANSL xml:lang="eng">already</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">already</TRANSL>
             </M>
         </W>
         <W id="S_tona_003_W_002">
             <FORM kindOf="original">tobi</FORM>
+            <PHON kindOf="original">tobi</PHON>
             <FORM kindOf="standard">tobi</FORM>
             <PHON kindOf="standard">tobi</PHON>
-            <TRANSL xml:lang="eng">cry</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">cry</TRANSL>
+            <M id="S_tona_003_W_002_M_01">
+                <FORM kindOf="original">tobi</FORM>
+                <PHON kindOf="original">tobi</PHON>
+                <FORM kindOf="standard">tobi</FORM>
+                <PHON kindOf="standard">tobi</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">cry</TRANSL>
+            </M>
         </W>
     </S>
     <S id="S_tona_004" source="Appendix B TONA 4; test list p. 41; translation p. 42">
         <FORM kindOf="original">saokwamamitə valak-ili.</FORM>
-        <FORM kindOf="standard">saokwamamite valak-ili.</FORM>
-        <PHON kindOf="standard">saokwamamitə valakili.</PHON>
+        <PHON kindOf="original">saokwamamitə valakili</PHON>
+        <FORM kindOf="standard">saokwamamite valakili.</FORM>
+        <PHON kindOf="standard">saokwamamitə valakili</PHON>
         <TRANSL xml:lang="eng">My child is very fat.</TRANSL>
         <W id="S_tona_004_W_001">
             <FORM kindOf="original">saokwamamitə</FORM>
+            <PHON kindOf="original">saokwamamitə</PHON>
             <FORM kindOf="standard">saokwamamite</FORM>
             <PHON kindOf="standard">saokwamamitə</PHON>
-            <TRANSL xml:lang="eng">very fat</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">very fat</TRANSL>
+            <M id="S_tona_004_W_001_M_01">
+                <FORM kindOf="original">saokwamamitə</FORM>
+                <PHON kindOf="original">saokwamamitə</PHON>
+                <FORM kindOf="standard">saokwamamite</FORM>
+                <PHON kindOf="standard">saokwamamitə</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">very fat</TRANSL>
+            </M>
         </W>
         <W id="S_tona_004_W_003">
             <FORM kindOf="original">valak-ili</FORM>
+            <PHON kindOf="original">valakili</PHON>
             <FORM kindOf="standard">valak-ili</FORM>
             <PHON kindOf="standard">valakili</PHON>
-            <TRANSL xml:lang="eng">child-1S.GEN</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">child-1S.GEN</TRANSL>
             <M id="S_tona_004_W_003_M_01">
                 <FORM kindOf="original">valak</FORM>
+                <PHON kindOf="original">valak</PHON>
                 <FORM kindOf="standard">valak</FORM>
                 <PHON kindOf="standard">valak</PHON>
-                <TRANSL xml:lang="eng">child</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">child</TRANSL>
             </M>
             <M id="S_tona_004_W_003_M_02">
                 <FORM kindOf="original">ili</FORM>
+                <PHON kindOf="original">ili</PHON>
                 <FORM kindOf="standard">ili</FORM>
                 <PHON kindOf="standard">ili</PHON>
-                <TRANSL xml:lang="eng">1S.GEN</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1S.GEN</TRANSL>
             </M>
         </W>
     </S>
     <S id="S_tona_005" source="Appendix B TONA 5; test list p. 41; translation p. 42">
         <FORM kindOf="original">tyaiday koɖay maoɖaŋə.</FORM>
+        <PHON kindOf="original">tjaidaj koɖaj maoɖaŋə</PHON>
         <FORM kindOf="standard">tyaiday kodray maodrange.</FORM>
-        <PHON kindOf="standard">tjaidaj koɖaj maoɖaŋə.</PHON>
-        <TRANSL xml:lang="eng">That old person ran/is running.</TRANSL>
+        <PHON kindOf="standard">tjaidaj koɖaj maoɖaŋə</PHON>
+        <TRANSL xml:lang="eng">That old person ran.</TRANSL>
+        <TRANSL xml:lang="eng" ver="alt">That old person is running.</TRANSL>
         <W id="S_tona_005_W_001">
             <FORM kindOf="original">tyaiday</FORM>
+            <PHON kindOf="original">tjaidaj</PHON>
             <FORM kindOf="standard">tyaiday</FORM>
             <PHON kindOf="standard">tjaidaj</PHON>
-            <TRANSL xml:lang="eng">run</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">run</TRANSL>
+            <M id="S_tona_005_W_001_M_01">
+                <FORM kindOf="original">tyaiday</FORM>
+                <PHON kindOf="original">tjaidaj</PHON>
+                <FORM kindOf="standard">tyaiday</FORM>
+                <PHON kindOf="standard">tjaidaj</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">run</TRANSL>
+            </M>
         </W>
         <W id="S_tona_005_W_002">
             <FORM kindOf="original">koɖay</FORM>
+            <PHON kindOf="original">koɖaj</PHON>
             <FORM kindOf="standard">kodray</FORM>
             <PHON kindOf="standard">koɖaj</PHON>
-            <TRANSL xml:lang="eng">that</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
+            <M id="S_tona_005_W_002_M_01">
+                <FORM kindOf="original">koɖay</FORM>
+                <PHON kindOf="original">koɖaj</PHON>
+                <FORM kindOf="standard">kodray</FORM>
+                <PHON kindOf="standard">koɖaj</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
+            </M>
         </W>
         <W id="S_tona_005_W_003">
             <FORM kindOf="original">maoɖaŋə</FORM>
+            <PHON kindOf="original">maoɖaŋə</PHON>
             <FORM kindOf="standard">maodrange</FORM>
             <PHON kindOf="standard">maoɖaŋə</PHON>
-            <TRANSL xml:lang="eng">old.person</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">old.person</TRANSL>
+            <M id="S_tona_005_W_003_M_01">
+                <FORM kindOf="original">maoɖaŋə</FORM>
+                <PHON kindOf="original">maoɖaŋə</PHON>
+                <FORM kindOf="standard">maodrange</FORM>
+                <PHON kindOf="standard">maoɖaŋə</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">old.person</TRANSL>
+            </M>
         </W>
     </S>
     <S id="S_tona_006" source="Appendix B TONA 6; test list p. 41; translation p. 42">
         <FORM kindOf="original">ko-sya-tiapoy nakay ʔaŋato.</FORM>
-        <FORM kindOf="standard">ko-sya-tiapoy nakay 'angato.</FORM>
-        <PHON kindOf="standard">kosjatiapoj nakaj ʔaŋato.</PHON>
+        <PHON kindOf="original">kosjatiapoj nakaj ʔaŋato</PHON>
+        <FORM kindOf="standard">kosyatiapoy nakay 'angato.</FORM>
+        <PHON kindOf="standard">kosjatiapoj nakaj ʔaŋato</PHON>
         <TRANSL xml:lang="eng">I want to use this brushwood to make a fire.</TRANSL>
         <W id="S_tona_006_W_001">
             <FORM kindOf="original">ko-sya-tiapoy</FORM>
+            <PHON kindOf="original">kosjatiapoj</PHON>
             <FORM kindOf="standard">ko-sya-tiapoy</FORM>
             <PHON kindOf="standard">kosjatiapoj</PHON>
-            <TRANSL xml:lang="eng">1S.NOM-use-make.a.fire</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">1S.NOM-use-make.a.fire</TRANSL>
             <M id="S_tona_006_W_001_M_01">
                 <FORM kindOf="original">ko</FORM>
+                <PHON kindOf="original">ko</PHON>
                 <FORM kindOf="standard">ko</FORM>
                 <PHON kindOf="standard">ko</PHON>
-                <TRANSL xml:lang="eng">1S.NOM</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1S.NOM</TRANSL>
             </M>
             <M id="S_tona_006_W_001_M_02">
                 <FORM kindOf="original">sya</FORM>
+                <PHON kindOf="original">sja</PHON>
                 <FORM kindOf="standard">sya</FORM>
                 <PHON kindOf="standard">sja</PHON>
-                <TRANSL xml:lang="eng">use</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">use</TRANSL>
             </M>
             <M id="S_tona_006_W_001_M_03">
                 <FORM kindOf="original">tiapoy</FORM>
+                <PHON kindOf="original">tiapoj</PHON>
                 <FORM kindOf="standard">tiapoy</FORM>
                 <PHON kindOf="standard">tiapoj</PHON>
-                <TRANSL xml:lang="eng">make.a.fire</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">make.a.fire</TRANSL>
             </M>
         </W>
         <W id="S_tona_006_W_002">
             <FORM kindOf="original">nakay</FORM>
+            <PHON kindOf="original">nakaj</PHON>
             <FORM kindOf="standard">nakay</FORM>
             <PHON kindOf="standard">nakaj</PHON>
-            <TRANSL xml:lang="eng">this</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">this</TRANSL>
+            <M id="S_tona_006_W_002_M_01">
+                <FORM kindOf="original">nakay</FORM>
+                <PHON kindOf="original">nakaj</PHON>
+                <FORM kindOf="standard">nakay</FORM>
+                <PHON kindOf="standard">nakaj</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">this</TRANSL>
+            </M>
         </W>
         <W id="S_tona_006_W_003">
             <FORM kindOf="original">ʔaŋato</FORM>
+            <PHON kindOf="original">ʔaŋato</PHON>
             <FORM kindOf="standard">'angato</FORM>
             <PHON kindOf="standard">ʔaŋato</PHON>
-            <TRANSL xml:lang="eng">brushwood</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">brushwood</TRANSL>
+            <M id="S_tona_006_W_003_M_01">
+                <FORM kindOf="original">ʔaŋato</FORM>
+                <PHON kindOf="original">ʔaŋato</PHON>
+                <FORM kindOf="standard">'angato</FORM>
+                <PHON kindOf="standard">ʔaŋato</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">brushwood</TRANSL>
+            </M>
         </W>
     </S>
     <S id="S_tona_007" source="Appendix B TONA 7; test list p. 41; translation p. 42">
         <FORM kindOf="original">i-siaəkə ki tatava.</FORM>
-        <FORM kindOf="standard">i-siaeke ki tatava.</FORM>
-        <PHON kindOf="standard">isiaəkə ki tatava.</PHON>
+        <PHON kindOf="original">isiaəkə ki tatava</PHON>
+        <FORM kindOf="standard">isiaeke ki tatava.</FORM>
+        <PHON kindOf="standard">isiaəkə ki tatava</PHON>
         <TRANSL xml:lang="eng">Father did not sleep.</TRANSL>
         <W id="S_tona_007_W_001">
             <FORM kindOf="original">i-siaəkə</FORM>
+            <PHON kindOf="original">isiaəkə</PHON>
             <FORM kindOf="standard">i-siaeke</FORM>
             <PHON kindOf="standard">isiaəkə</PHON>
-            <TRANSL xml:lang="eng">NEG-sleep</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">NEG-sleep</TRANSL>
             <M id="S_tona_007_W_001_M_01">
                 <FORM kindOf="original">i</FORM>
+                <PHON kindOf="original">i</PHON>
                 <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
-                <TRANSL xml:lang="eng">NEG</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NEG</TRANSL>
             </M>
             <M id="S_tona_007_W_001_M_02">
                 <FORM kindOf="original">siaəkə</FORM>
+                <PHON kindOf="original">siaəkə</PHON>
                 <FORM kindOf="standard">siaeke</FORM>
                 <PHON kindOf="standard">siaəkə</PHON>
-                <TRANSL xml:lang="eng">sleep</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">sleep</TRANSL>
             </M>
         </W>
         <W id="S_tona_007_W_002">
             <FORM kindOf="original">ki</FORM>
+            <PHON kindOf="original">ki</PHON>
             <FORM kindOf="standard">ki</FORM>
             <PHON kindOf="standard">ki</PHON>
-            <TRANSL xml:lang="eng">NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+            <M id="S_tona_007_W_002_M_01">
+                <FORM kindOf="original">ki</FORM>
+                <PHON kindOf="original">ki</PHON>
+                <FORM kindOf="standard">ki</FORM>
+                <PHON kindOf="standard">ki</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+            </M>
         </W>
         <W id="S_tona_007_W_003">
             <FORM kindOf="original">tatava</FORM>
+            <PHON kindOf="original">tatava</PHON>
             <FORM kindOf="standard">tatava</FORM>
             <PHON kindOf="standard">tatava</PHON>
-            <TRANSL xml:lang="eng">father</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">father</TRANSL>
+            <M id="S_tona_007_W_003_M_01">
+                <FORM kindOf="original">tatava</FORM>
+                <PHON kindOf="original">tatava</PHON>
+                <FORM kindOf="standard">tatava</FORM>
+                <PHON kindOf="standard">tatava</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">father</TRANSL>
+            </M>
         </W>
     </S>
     <S id="S_tona_008" source="Appendix B TONA 8; test list p. 41; translation p. 43">
         <FORM kindOf="original">w-a-igoʔo ki takanaw loaŋolaŋoi.</FORM>
-        <FORM kindOf="standard">w-a-igo'o ki takanaw loangolangoi.</FORM>
-        <PHON kindOf="standard">waigoʔo ki takanaw loaŋolaŋoi.</PHON>
+        <PHON kindOf="original">waigoʔo ki takanaw loaŋolaŋoi</PHON>
+        <FORM kindOf="standard">waigo'o ki takanaw loangolangoi.</FORM>
+        <PHON kindOf="standard">waigoʔo ki takanaw loaŋolaŋoi</PHON>
         <TRANSL xml:lang="eng">Takanaw knows (how to) swim.</TRANSL>
         <W id="S_tona_008_W_001">
             <FORM kindOf="original">w-a-igoʔo</FORM>
+            <PHON kindOf="original">waigoʔo</PHON>
             <FORM kindOf="standard">w-a-igo'o</FORM>
             <PHON kindOf="standard">waigoʔo</PHON>
-            <TRANSL xml:lang="eng">ACT-REAL-know</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">ACT-REAL-know</TRANSL>
             <M id="S_tona_008_W_001_M_01">
                 <FORM kindOf="original">w</FORM>
+                <PHON kindOf="original">w</PHON>
                 <FORM kindOf="standard">w</FORM>
                 <PHON kindOf="standard">w</PHON>
-                <TRANSL xml:lang="eng">ACT</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">ACT</TRANSL>
             </M>
             <M id="S_tona_008_W_001_M_02">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="eng">REAL</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">REAL</TRANSL>
             </M>
             <M id="S_tona_008_W_001_M_03">
                 <FORM kindOf="original">igoʔo</FORM>
+                <PHON kindOf="original">igoʔo</PHON>
                 <FORM kindOf="standard">igo'o</FORM>
                 <PHON kindOf="standard">igoʔo</PHON>
-                <TRANSL xml:lang="eng">know</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">know</TRANSL>
             </M>
         </W>
         <W id="S_tona_008_W_002">
             <FORM kindOf="original">ki</FORM>
+            <PHON kindOf="original">ki</PHON>
             <FORM kindOf="standard">ki</FORM>
             <PHON kindOf="standard">ki</PHON>
-            <TRANSL xml:lang="eng">NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+            <M id="S_tona_008_W_002_M_01">
+                <FORM kindOf="original">ki</FORM>
+                <PHON kindOf="original">ki</PHON>
+                <FORM kindOf="standard">ki</FORM>
+                <PHON kindOf="standard">ki</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+            </M>
         </W>
         <W id="S_tona_008_W_003">
             <FORM kindOf="original">takanaw</FORM>
+            <PHON kindOf="original">takanaw</PHON>
             <FORM kindOf="standard">takanaw</FORM>
             <PHON kindOf="standard">takanaw</PHON>
-            <TRANSL xml:lang="eng">Takanaw</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">Takanaw</TRANSL>
+            <M id="S_tona_008_W_003_M_01">
+                <FORM kindOf="original">takanaw</FORM>
+                <PHON kindOf="original">takanaw</PHON>
+                <FORM kindOf="standard">takanaw</FORM>
+                <PHON kindOf="standard">takanaw</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">Takanaw</TRANSL>
+            </M>
         </W>
         <W id="S_tona_008_W_004">
             <FORM kindOf="original">loaŋolaŋoi</FORM>
+            <PHON kindOf="original">loaŋolaŋoi</PHON>
             <FORM kindOf="standard">loangolangoi</FORM>
             <PHON kindOf="standard">loaŋolaŋoi</PHON>
-            <TRANSL xml:lang="eng">swim</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">swim</TRANSL>
+            <M id="S_tona_008_W_004_M_01">
+                <FORM kindOf="original">loaŋolaŋoi</FORM>
+                <PHON kindOf="original">loaŋolaŋoi</PHON>
+                <FORM kindOf="standard">loangolangoi</FORM>
+                <PHON kindOf="standard">loaŋolaŋoi</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">swim</TRANSL>
+            </M>
         </W>
     </S>
     <S id="S_tona_009" source="Appendix B TONA 9; test list p. 41; translation p. 43">
         <FORM kindOf="original">a-kakə ka wakanə na bələbələ.</FORM>
-        <FORM kindOf="standard">a-kake ka wakane na belebele.</FORM>
-        <PHON kindOf="standard">akakə ka wakanə na bələbələ.</PHON>
+        <PHON kindOf="original">akakə ka wakanə na bələbələ</PHON>
+        <FORM kindOf="standard">akake ka wakane na belebele.</FORM>
+        <PHON kindOf="standard">akakə ka wakanə na bələbələ</PHON>
         <TRANSL xml:lang="eng">As for me, I ate a banana.</TRANSL>
         <W id="S_tona_009_W_001">
-            <FORM kindOf="original">a-kakə</FORM>
-            <FORM kindOf="standard">a-kake</FORM>
+            <FORM kindOf="original">akakə</FORM>
+            <PHON kindOf="original">akakə</PHON>
+            <FORM kindOf="standard">akake</FORM>
             <PHON kindOf="standard">akakə</PHON>
-            <TRANSL xml:lang="eng">1S.TOP</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">1S.TOP</TRANSL>
+            <M id="S_tona_009_W_001_M_01">
+                <FORM kindOf="original">akakə</FORM>
+                <PHON kindOf="original">akakə</PHON>
+                <FORM kindOf="standard">akake</FORM>
+                <PHON kindOf="standard">akakə</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">1S.TOP</TRANSL>
+            </M>
         </W>
         <W id="S_tona_009_W_002">
             <FORM kindOf="original">ka</FORM>
+            <PHON kindOf="original">ka</PHON>
             <FORM kindOf="standard">ka</FORM>
             <PHON kindOf="standard">ka</PHON>
-            <TRANSL xml:lang="eng">TOP</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
+            <M id="S_tona_009_W_002_M_01">
+                <FORM kindOf="original">ka</FORM>
+                <PHON kindOf="original">ka</PHON>
+                <FORM kindOf="standard">ka</FORM>
+                <PHON kindOf="standard">ka</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
+            </M>
         </W>
         <W id="S_tona_009_W_003">
             <FORM kindOf="original">wakanə</FORM>
+            <PHON kindOf="original">wakanə</PHON>
             <FORM kindOf="standard">wakane</FORM>
             <PHON kindOf="standard">wakanə</PHON>
-            <TRANSL xml:lang="eng">eat</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">eat</TRANSL>
+            <M id="S_tona_009_W_003_M_01">
+                <FORM kindOf="original">wakanə</FORM>
+                <PHON kindOf="original">wakanə</PHON>
+                <FORM kindOf="standard">wakane</FORM>
+                <PHON kindOf="standard">wakanə</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">eat</TRANSL>
+            </M>
         </W>
         <W id="S_tona_009_W_004">
             <FORM kindOf="original">na</FORM>
+            <PHON kindOf="original">na</PHON>
             <FORM kindOf="standard">na</FORM>
             <PHON kindOf="standard">na</PHON>
+            <TRANSL xml:lang="eng" kindOf="standard" notes="source gloss cell is blank">?</TRANSL>
+            <M id="S_tona_009_W_004_M_01">
+                <FORM kindOf="original">na</FORM>
+                <PHON kindOf="original">na</PHON>
+                <FORM kindOf="standard">na</FORM>
+                <PHON kindOf="standard">na</PHON>
+                <TRANSL xml:lang="eng" kindOf="standard" notes="source gloss cell is blank">?</TRANSL>
+            </M>
         </W>
         <W id="S_tona_009_W_005">
             <FORM kindOf="original">bələbələ</FORM>
+            <PHON kindOf="original">bələbələ</PHON>
             <FORM kindOf="standard">belebele</FORM>
             <PHON kindOf="standard">bələbələ</PHON>
-            <TRANSL xml:lang="eng">banana</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">banana</TRANSL>
+            <M id="S_tona_009_W_005_M_01">
+                <FORM kindOf="original">bələbələ</FORM>
+                <PHON kindOf="original">bələbələ</PHON>
+                <FORM kindOf="standard">belebele</FORM>
+                <PHON kindOf="standard">bələbələ</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">banana</TRANSL>
+            </M>
         </W>
     </S>
     <S id="S_tona_010" source="Appendix B TONA 10; test list p. 41; translation p. 43">
         <FORM kindOf="original">wakoposalə kakə kwanə na doʔo.</FORM>
+        <PHON kindOf="original">wakoposalə kakə kwanə na doʔo</PHON>
         <FORM kindOf="standard">wakoposale kake kwane na do'o.</FORM>
-        <PHON kindOf="standard">wakoposalə kakə kwanə na doʔo.</PHON>
+        <PHON kindOf="standard">wakoposalə kakə kwanə na doʔo</PHON>
         <TRANSL xml:lang="eng">I ate rice twice.</TRANSL>
         <W id="S_tona_010_W_001">
             <FORM kindOf="original">wakoposalə</FORM>
+            <PHON kindOf="original">wakoposalə</PHON>
             <FORM kindOf="standard">wakoposale</FORM>
             <PHON kindOf="standard">wakoposalə</PHON>
-            <TRANSL xml:lang="eng">twice</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">twice</TRANSL>
+            <M id="S_tona_010_W_001_M_01">
+                <FORM kindOf="original">wakoposalə</FORM>
+                <PHON kindOf="original">wakoposalə</PHON>
+                <FORM kindOf="standard">wakoposale</FORM>
+                <PHON kindOf="standard">wakoposalə</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">twice</TRANSL>
+            </M>
         </W>
         <W id="S_tona_010_W_002">
             <FORM kindOf="original">kakə</FORM>
+            <PHON kindOf="original">kakə</PHON>
             <FORM kindOf="standard">kake</FORM>
             <PHON kindOf="standard">kakə</PHON>
-            <TRANSL xml:lang="eng">1S.NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">1S.NOM</TRANSL>
+            <M id="S_tona_010_W_002_M_01">
+                <FORM kindOf="original">kakə</FORM>
+                <PHON kindOf="original">kakə</PHON>
+                <FORM kindOf="standard">kake</FORM>
+                <PHON kindOf="standard">kakə</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">1S.NOM</TRANSL>
+            </M>
         </W>
         <W id="S_tona_010_W_003">
             <FORM kindOf="original">kwanə</FORM>
+            <PHON kindOf="original">kwanə</PHON>
             <FORM kindOf="standard">kwane</FORM>
             <PHON kindOf="standard">kwanə</PHON>
-            <TRANSL xml:lang="eng">eat</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">eat</TRANSL>
+            <M id="S_tona_010_W_003_M_01">
+                <FORM kindOf="original">kwanə</FORM>
+                <PHON kindOf="original">kwanə</PHON>
+                <FORM kindOf="standard">kwane</FORM>
+                <PHON kindOf="standard">kwanə</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">eat</TRANSL>
+            </M>
         </W>
         <W id="S_tona_010_W_004">
             <FORM kindOf="original">na</FORM>
+            <PHON kindOf="original">na</PHON>
             <FORM kindOf="standard">na</FORM>
             <PHON kindOf="standard">na</PHON>
+            <TRANSL xml:lang="eng" kindOf="standard" notes="source gloss cell is blank">?</TRANSL>
+            <M id="S_tona_010_W_004_M_01">
+                <FORM kindOf="original">na</FORM>
+                <PHON kindOf="original">na</PHON>
+                <FORM kindOf="standard">na</FORM>
+                <PHON kindOf="standard">na</PHON>
+                <TRANSL xml:lang="eng" kindOf="standard" notes="source gloss cell is blank">?</TRANSL>
+            </M>
         </W>
         <W id="S_tona_010_W_005">
             <FORM kindOf="original">doʔo</FORM>
+            <PHON kindOf="original">doʔo</PHON>
             <FORM kindOf="standard">do'o</FORM>
             <PHON kindOf="standard">doʔo</PHON>
-            <TRANSL xml:lang="eng">rice</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">rice</TRANSL>
+            <M id="S_tona_010_W_005_M_01">
+                <FORM kindOf="original">doʔo</FORM>
+                <PHON kindOf="original">doʔo</PHON>
+                <FORM kindOf="standard">do'o</FORM>
+                <PHON kindOf="standard">doʔo</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">rice</TRANSL>
+            </M>
         </W>
     </S>
     <S id="S_tona_011" source="Appendix B TONA 11; test list p. 41; translation p. 43">
         <FORM kindOf="original">i-kaʔacə nakoa naɖooay sosoaʔa.</FORM>
-        <FORM kindOf="standard">i-ka'ace nakoa nadrooay sosoa'a.</FORM>
-        <PHON kindOf="standard">ikaʔaʦə nakoa naɖooaj sosoaʔa.</PHON>
+        <PHON kindOf="original">ikaʔaʦə nakoa naɖooaj sosoaʔa</PHON>
+        <FORM kindOf="standard">ika'ace nakoa nadrooay sosoa'a.</FORM>
+        <PHON kindOf="standard">ikaʔaʦə nakoa naɖooaj sosoaʔa</PHON>
         <TRANSL xml:lang="eng">The snake did not bite me.</TRANSL>
         <W id="S_tona_011_W_001">
             <FORM kindOf="original">i-kaʔacə</FORM>
+            <PHON kindOf="original">ikaʔaʦə</PHON>
             <FORM kindOf="standard">i-ka'ace</FORM>
             <PHON kindOf="standard">ikaʔaʦə</PHON>
-            <TRANSL xml:lang="eng">NEG-bite</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">NEG-bite</TRANSL>
             <M id="S_tona_011_W_001_M_01">
                 <FORM kindOf="original">i</FORM>
+                <PHON kindOf="original">i</PHON>
                 <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
-                <TRANSL xml:lang="eng">NEG</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NEG</TRANSL>
             </M>
             <M id="S_tona_011_W_001_M_02">
                 <FORM kindOf="original">kaʔacə</FORM>
+                <PHON kindOf="original">kaʔaʦə</PHON>
                 <FORM kindOf="standard">ka'ace</FORM>
                 <PHON kindOf="standard">kaʔaʦə</PHON>
-                <TRANSL xml:lang="eng">bite</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">bite</TRANSL>
             </M>
         </W>
         <W id="S_tona_011_W_002">
             <FORM kindOf="original">nakoa</FORM>
+            <PHON kindOf="original">nakoa</PHON>
             <FORM kindOf="standard">nakoa</FORM>
             <PHON kindOf="standard">nakoa</PHON>
-            <TRANSL xml:lang="eng">1S.OBL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">1S.OBL</TRANSL>
+            <M id="S_tona_011_W_002_M_01">
+                <FORM kindOf="original">nakoa</FORM>
+                <PHON kindOf="original">nakoa</PHON>
+                <FORM kindOf="standard">nakoa</FORM>
+                <PHON kindOf="standard">nakoa</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">1S.OBL</TRANSL>
+            </M>
         </W>
         <W id="S_tona_011_W_003">
             <FORM kindOf="original">naɖooay</FORM>
+            <PHON kindOf="original">naɖooaj</PHON>
             <FORM kindOf="standard">nadrooay</FORM>
             <PHON kindOf="standard">naɖooaj</PHON>
-            <TRANSL xml:lang="eng">that</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
+            <M id="S_tona_011_W_003_M_01">
+                <FORM kindOf="original">naɖooay</FORM>
+                <PHON kindOf="original">naɖooaj</PHON>
+                <FORM kindOf="standard">nadrooay</FORM>
+                <PHON kindOf="standard">naɖooaj</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
+            </M>
         </W>
         <W id="S_tona_011_W_004">
             <FORM kindOf="original">sosoaʔa</FORM>
+            <PHON kindOf="original">sosoaʔa</PHON>
             <FORM kindOf="standard">sosoa'a</FORM>
             <PHON kindOf="standard">sosoaʔa</PHON>
-            <TRANSL xml:lang="eng">snake</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">snake</TRANSL>
+            <M id="S_tona_011_W_004_M_01">
+                <FORM kindOf="original">sosoaʔa</FORM>
+                <PHON kindOf="original">sosoaʔa</PHON>
+                <FORM kindOf="standard">sosoa'a</FORM>
+                <PHON kindOf="standard">sosoaʔa</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">snake</TRANSL>
+            </M>
         </W>
     </S>
     <S id="S_tona_012" source="Appendix B TONA 12; test list p. 41; translation p. 43">
         <FORM kindOf="original">yakai balatə ki titina.</FORM>
+        <PHON kindOf="original">jakai balatə ki titina</PHON>
         <FORM kindOf="standard">yakai balate ki titina.</FORM>
-        <PHON kindOf="standard">jakai balatə ki titina.</PHON>
+        <PHON kindOf="standard">jakai balatə ki titina</PHON>
         <TRANSL xml:lang="eng">Mother is outside.</TRANSL>
         <W id="S_tona_012_W_001">
             <FORM kindOf="original">yakai</FORM>
+            <PHON kindOf="original">jakai</PHON>
             <FORM kindOf="standard">yakai</FORM>
             <PHON kindOf="standard">jakai</PHON>
-            <TRANSL xml:lang="eng">exist</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">exist</TRANSL>
+            <M id="S_tona_012_W_001_M_01">
+                <FORM kindOf="original">yakai</FORM>
+                <PHON kindOf="original">jakai</PHON>
+                <FORM kindOf="standard">yakai</FORM>
+                <PHON kindOf="standard">jakai</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">exist</TRANSL>
+            </M>
         </W>
         <W id="S_tona_012_W_002">
             <FORM kindOf="original">balatə</FORM>
+            <PHON kindOf="original">balatə</PHON>
             <FORM kindOf="standard">balate</FORM>
             <PHON kindOf="standard">balatə</PHON>
-            <TRANSL xml:lang="eng">outside</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">outside</TRANSL>
+            <M id="S_tona_012_W_002_M_01">
+                <FORM kindOf="original">balatə</FORM>
+                <PHON kindOf="original">balatə</PHON>
+                <FORM kindOf="standard">balate</FORM>
+                <PHON kindOf="standard">balatə</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">outside</TRANSL>
+            </M>
         </W>
         <W id="S_tona_012_W_003">
             <FORM kindOf="original">ki</FORM>
+            <PHON kindOf="original">ki</PHON>
             <FORM kindOf="standard">ki</FORM>
             <PHON kindOf="standard">ki</PHON>
-            <TRANSL xml:lang="eng">NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+            <M id="S_tona_012_W_003_M_01">
+                <FORM kindOf="original">ki</FORM>
+                <PHON kindOf="original">ki</PHON>
+                <FORM kindOf="standard">ki</FORM>
+                <PHON kindOf="standard">ki</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+            </M>
         </W>
         <W id="S_tona_012_W_004">
             <FORM kindOf="original">titina</FORM>
+            <PHON kindOf="original">titina</PHON>
             <FORM kindOf="standard">titina</FORM>
             <PHON kindOf="standard">titina</PHON>
-            <TRANSL xml:lang="eng">mother</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">mother</TRANSL>
+            <M id="S_tona_012_W_004_M_01">
+                <FORM kindOf="original">titina</FORM>
+                <PHON kindOf="original">titina</PHON>
+                <FORM kindOf="standard">titina</FORM>
+                <PHON kindOf="standard">titina</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">mother</TRANSL>
+            </M>
         </W>
     </S>
     <S id="S_tona_013" source="Appendix B TONA 13; test list p. 41; translation p. 43">
         <FORM kindOf="original">yakai balatə titina doʔodoʔo.</FORM>
+        <PHON kindOf="original">jakai balatə titina doʔodoʔo</PHON>
         <FORM kindOf="standard">yakai balate titina do'odo'o.</FORM>
-        <PHON kindOf="standard">jakai balatə titina doʔodoʔo.</PHON>
+        <PHON kindOf="standard">jakai balatə titina doʔodoʔo</PHON>
         <TRANSL xml:lang="eng">Mother is cooking outside.</TRANSL>
         <W id="S_tona_013_W_001">
             <FORM kindOf="original">yakai</FORM>
+            <PHON kindOf="original">jakai</PHON>
             <FORM kindOf="standard">yakai</FORM>
             <PHON kindOf="standard">jakai</PHON>
-            <TRANSL xml:lang="eng">exist</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">exist</TRANSL>
+            <M id="S_tona_013_W_001_M_01">
+                <FORM kindOf="original">yakai</FORM>
+                <PHON kindOf="original">jakai</PHON>
+                <FORM kindOf="standard">yakai</FORM>
+                <PHON kindOf="standard">jakai</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">exist</TRANSL>
+            </M>
         </W>
         <W id="S_tona_013_W_002">
             <FORM kindOf="original">balatə</FORM>
+            <PHON kindOf="original">balatə</PHON>
             <FORM kindOf="standard">balate</FORM>
             <PHON kindOf="standard">balatə</PHON>
-            <TRANSL xml:lang="eng">outside</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">outside</TRANSL>
+            <M id="S_tona_013_W_002_M_01">
+                <FORM kindOf="original">balatə</FORM>
+                <PHON kindOf="original">balatə</PHON>
+                <FORM kindOf="standard">balate</FORM>
+                <PHON kindOf="standard">balatə</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">outside</TRANSL>
+            </M>
         </W>
         <W id="S_tona_013_W_003">
             <FORM kindOf="original">titina</FORM>
+            <PHON kindOf="original">titina</PHON>
             <FORM kindOf="standard">titina</FORM>
             <PHON kindOf="standard">titina</PHON>
-            <TRANSL xml:lang="eng">mother</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">mother</TRANSL>
+            <M id="S_tona_013_W_003_M_01">
+                <FORM kindOf="original">titina</FORM>
+                <PHON kindOf="original">titina</PHON>
+                <FORM kindOf="standard">titina</FORM>
+                <PHON kindOf="standard">titina</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">mother</TRANSL>
+            </M>
         </W>
         <W id="S_tona_013_W_004">
             <FORM kindOf="original">doʔodoʔo</FORM>
+            <PHON kindOf="original">doʔodoʔo</PHON>
             <FORM kindOf="standard">do'odo'o</FORM>
             <PHON kindOf="standard">doʔodoʔo</PHON>
-            <TRANSL xml:lang="eng">cook</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">cook</TRANSL>
+            <M id="S_tona_013_W_004_M_01">
+                <FORM kindOf="original">doʔodoʔo</FORM>
+                <PHON kindOf="original">doʔodoʔo</PHON>
+                <FORM kindOf="standard">do'odo'o</FORM>
+                <PHON kindOf="standard">doʔodoʔo</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">cook</TRANSL>
+            </M>
         </W>
     </S>
     <S id="S_tona_014" source="Appendix B TONA 14; test list p. 41; translation p. 43">
         <FORM kindOf="original">amwa ki takanaw kwanə na bələbələ.</FORM>
+        <PHON kindOf="original">amwa ki takanaw kwanə na bələbələ</PHON>
         <FORM kindOf="standard">amwa ki takanaw kwane na belebele.</FORM>
-        <PHON kindOf="standard">amwa ki takanaw kwanə na bələbələ.</PHON>
+        <PHON kindOf="standard">amwa ki takanaw kwanə na bələbələ</PHON>
         <TRANSL xml:lang="eng">Takanao went to eat the banana.</TRANSL>
         <W id="S_tona_014_W_001">
             <FORM kindOf="original">amwa</FORM>
+            <PHON kindOf="original">amwa</PHON>
             <FORM kindOf="standard">amwa</FORM>
             <PHON kindOf="standard">amwa</PHON>
-            <TRANSL xml:lang="eng">go</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">go</TRANSL>
+            <M id="S_tona_014_W_001_M_01">
+                <FORM kindOf="original">amwa</FORM>
+                <PHON kindOf="original">amwa</PHON>
+                <FORM kindOf="standard">amwa</FORM>
+                <PHON kindOf="standard">amwa</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">go</TRANSL>
+            </M>
         </W>
         <W id="S_tona_014_W_002">
             <FORM kindOf="original">ki</FORM>
+            <PHON kindOf="original">ki</PHON>
             <FORM kindOf="standard">ki</FORM>
             <PHON kindOf="standard">ki</PHON>
+            <TRANSL xml:lang="eng" kindOf="standard" notes="source gloss cell is blank">?</TRANSL>
+            <M id="S_tona_014_W_002_M_01">
+                <FORM kindOf="original">ki</FORM>
+                <PHON kindOf="original">ki</PHON>
+                <FORM kindOf="standard">ki</FORM>
+                <PHON kindOf="standard">ki</PHON>
+                <TRANSL xml:lang="eng" kindOf="standard" notes="source gloss cell is blank">?</TRANSL>
+            </M>
         </W>
         <W id="S_tona_014_W_003">
             <FORM kindOf="original">takanaw</FORM>
+            <PHON kindOf="original">takanaw</PHON>
             <FORM kindOf="standard">takanaw</FORM>
             <PHON kindOf="standard">takanaw</PHON>
-            <TRANSL xml:lang="eng">Takanao</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">Takanao</TRANSL>
+            <M id="S_tona_014_W_003_M_01">
+                <FORM kindOf="original">takanaw</FORM>
+                <PHON kindOf="original">takanaw</PHON>
+                <FORM kindOf="standard">takanaw</FORM>
+                <PHON kindOf="standard">takanaw</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">Takanao</TRANSL>
+            </M>
         </W>
         <W id="S_tona_014_W_004">
             <FORM kindOf="original">kwanə</FORM>
+            <PHON kindOf="original">kwanə</PHON>
             <FORM kindOf="standard">kwane</FORM>
             <PHON kindOf="standard">kwanə</PHON>
-            <TRANSL xml:lang="eng">eat</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">eat</TRANSL>
+            <M id="S_tona_014_W_004_M_01">
+                <FORM kindOf="original">kwanə</FORM>
+                <PHON kindOf="original">kwanə</PHON>
+                <FORM kindOf="standard">kwane</FORM>
+                <PHON kindOf="standard">kwanə</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">eat</TRANSL>
+            </M>
         </W>
         <W id="S_tona_014_W_005">
             <FORM kindOf="original">na</FORM>
+            <PHON kindOf="original">na</PHON>
             <FORM kindOf="standard">na</FORM>
             <PHON kindOf="standard">na</PHON>
+            <TRANSL xml:lang="eng" kindOf="standard" notes="source gloss cell is blank">?</TRANSL>
+            <M id="S_tona_014_W_005_M_01">
+                <FORM kindOf="original">na</FORM>
+                <PHON kindOf="original">na</PHON>
+                <FORM kindOf="standard">na</FORM>
+                <PHON kindOf="standard">na</PHON>
+                <TRANSL xml:lang="eng" kindOf="standard" notes="source gloss cell is blank">?</TRANSL>
+            </M>
         </W>
         <W id="S_tona_014_W_006">
             <FORM kindOf="original">bələbələ</FORM>
+            <PHON kindOf="original">bələbələ</PHON>
             <FORM kindOf="standard">belebele</FORM>
             <PHON kindOf="standard">bələbələ</PHON>
-            <TRANSL xml:lang="eng">banana</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">banana</TRANSL>
+            <M id="S_tona_014_W_006_M_01">
+                <FORM kindOf="original">bələbələ</FORM>
+                <PHON kindOf="original">bələbələ</PHON>
+                <FORM kindOf="standard">belebele</FORM>
+                <PHON kindOf="standard">bələbələ</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">banana</TRANSL>
+            </M>
         </W>
     </S>
     <S id="S_tona_015" source="Appendix B TONA 15; test list p. 42; translation p. 44">
         <FORM kindOf="original">"ʔaokay-a nosiʔa" mi kakə ɖianə.</FORM>
-        <FORM kindOf="standard">"'aokay-a nosi'a" mi kake driane.</FORM>
-        <PHON kindOf="standard">"ʔaokaja nosiʔa" mi kakə ɖianə.</PHON>
+        <PHON kindOf="original">ʔaokaja nosiʔa mi kakə ɖianə</PHON>
+        <FORM kindOf="standard">"'aokaya nosi'a" mi kake driane.</FORM>
+        <PHON kindOf="standard">ʔaokaja nosiʔa mi kakə ɖianə</PHON>
         <TRANSL xml:lang="eng">I asked him to come tomorrow.</TRANSL>
         <TRANSL xml:lang="eng" ver="alt" notes="literal translation">"Come tomorrow," I said to him.</TRANSL>
         <W id="S_tona_015_W_001">
             <FORM kindOf="original">ʔaokay-a</FORM>
+            <PHON kindOf="original">ʔaokaja</PHON>
             <FORM kindOf="standard">'aokay-a</FORM>
             <PHON kindOf="standard">ʔaokaja</PHON>
-            <TRANSL xml:lang="eng">come-IMP</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">come-IMP</TRANSL>
             <M id="S_tona_015_W_001_M_01">
                 <FORM kindOf="original">ʔaokay</FORM>
+                <PHON kindOf="original">ʔaokaj</PHON>
                 <FORM kindOf="standard">'aokay</FORM>
                 <PHON kindOf="standard">ʔaokaj</PHON>
-                <TRANSL xml:lang="eng">come</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">come</TRANSL>
             </M>
             <M id="S_tona_015_W_001_M_02">
                 <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="eng">IMP</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">IMP</TRANSL>
             </M>
         </W>
         <W id="S_tona_015_W_002">
             <FORM kindOf="original">nosiʔa</FORM>
+            <PHON kindOf="original">nosiʔa</PHON>
             <FORM kindOf="standard">nosi'a</FORM>
             <PHON kindOf="standard">nosiʔa</PHON>
-            <TRANSL xml:lang="eng">tomorrow</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">tomorrow</TRANSL>
+            <M id="S_tona_015_W_002_M_01">
+                <FORM kindOf="original">nosiʔa</FORM>
+                <PHON kindOf="original">nosiʔa</PHON>
+                <FORM kindOf="standard">nosi'a</FORM>
+                <PHON kindOf="standard">nosiʔa</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">tomorrow</TRANSL>
+            </M>
         </W>
         <W id="S_tona_015_W_003">
             <FORM kindOf="original">mi</FORM>
+            <PHON kindOf="original">mi</PHON>
             <FORM kindOf="standard">mi</FORM>
             <PHON kindOf="standard">mi</PHON>
-            <TRANSL xml:lang="eng">so</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">so</TRANSL>
+            <M id="S_tona_015_W_003_M_01">
+                <FORM kindOf="original">mi</FORM>
+                <PHON kindOf="original">mi</PHON>
+                <FORM kindOf="standard">mi</FORM>
+                <PHON kindOf="standard">mi</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">so</TRANSL>
+            </M>
         </W>
         <W id="S_tona_015_W_004">
             <FORM kindOf="original">kakə</FORM>
+            <PHON kindOf="original">kakə</PHON>
             <FORM kindOf="standard">kake</FORM>
             <PHON kindOf="standard">kakə</PHON>
-            <TRANSL xml:lang="eng">1S.NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">1S.NOM</TRANSL>
+            <M id="S_tona_015_W_004_M_01">
+                <FORM kindOf="original">kakə</FORM>
+                <PHON kindOf="original">kakə</PHON>
+                <FORM kindOf="standard">kake</FORM>
+                <PHON kindOf="standard">kakə</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">1S.NOM</TRANSL>
+            </M>
         </W>
         <W id="S_tona_015_W_005">
             <FORM kindOf="original">ɖianə</FORM>
+            <PHON kindOf="original">ɖianə</PHON>
             <FORM kindOf="standard">driane</FORM>
             <PHON kindOf="standard">ɖianə</PHON>
-            <TRANSL xml:lang="eng">3S.OBL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">3S.OBL</TRANSL>
+            <M id="S_tona_015_W_005_M_01">
+                <FORM kindOf="original">ɖianə</FORM>
+                <PHON kindOf="original">ɖianə</PHON>
+                <FORM kindOf="standard">driane</FORM>
+                <PHON kindOf="standard">ɖianə</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">3S.OBL</TRANSL>
+            </M>
         </W>
     </S>
 </TEXT>
