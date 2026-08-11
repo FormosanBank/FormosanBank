@@ -988,3 +988,90 @@ def test_V083_schema_validation_negative(tmp_path, fixtures_dir, copy_fixture):
         f"expected finding for unknown child element; got stdout={proc.stdout!r}, "
         f"stderr={proc.stderr!r}"
     )
+
+
+# -----------------------------------------------------------------------------
+# V144/V145 SOFT — M-tier consistency (POL-023, ruled 2026-08-10)
+#
+# In a file where any W has 2+ M children (morpheme-segmented), every W
+# must have at least one M; a single-M W there reads as "analyzed as
+# monomorphemic". In a file with no multi-M W at all, there should be no
+# M level (an all-single M tier adds no information — the Yedda case).
+# -----------------------------------------------------------------------------
+
+_MT_OPEN = (
+    '<?xml version="1.0" encoding="utf-8"?>\n'
+    '<TEXT id="T1" citation="t" BibTeX_citation="@t{t}" '
+    'copyright="t" xml:lang="ami" dialect="Coastal">'
+)
+
+
+def _write_mtier(tmp_path: Path, body: str) -> Path:
+    xml_dir = tmp_path / "XML"
+    xml_dir.mkdir(parents=True, exist_ok=True)
+    (xml_dir / "mtier.xml").write_text(
+        _MT_OPEN + body + "</TEXT>", encoding="utf-8")
+    return tmp_path
+
+
+def _w(w_id: str, form: str, morphemes: list) -> str:
+    ms = "".join(
+        f'<M id="{w_id}_M{i}"><FORM kindOf="original">{m}</FORM></M>'
+        for i, m in enumerate(morphemes)
+    )
+    return f'<W id="{w_id}"><FORM kindOf="original">{form}</FORM>{ms}</W>'
+
+
+def test_V144_M_less_W_in_segmented_file_flagged(tmp_path):
+    body = (
+        '<S id="S1"><FORM kindOf="original">ma-kaen kako</FORM>'
+        + _w("W1", "ma-kaen", ["ma-", "kaen"])
+        + _w("W2", "kako", [])
+        + "</S>"
+    )
+    proc = _run_validate(_write_mtier(tmp_path, body))
+    assert _has_rule_finding(proc, ("v144",)), (
+        f"expected V144; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V144_single_M_in_segmented_file_is_fine(tmp_path):
+    """A single-M W in a multi-M file = analyzed as monomorphemic. Legal."""
+    body = (
+        '<S id="S1"><FORM kindOf="original">ma-kaen kako</FORM>'
+        + _w("W1", "ma-kaen", ["ma-", "kaen"])
+        + _w("W2", "kako", ["kako"])
+        + "</S>"
+    )
+    proc = _run_validate(_write_mtier(tmp_path, body))
+    combined = combined_output(proc)
+    assert "v144" not in combined and "v145" not in combined, (
+        f"no M-tier findings expected; stdout={proc.stdout!r}"
+    )
+
+
+def test_V145_all_single_M_tier_flagged(tmp_path):
+    body = (
+        '<S id="S1"><FORM kindOf="original">kaen kako</FORM>'
+        + _w("W1", "kaen", ["kaen"])
+        + _w("W2", "kako", ["kako"])
+        + "</S>"
+    )
+    proc = _run_validate(_write_mtier(tmp_path, body))
+    assert _has_rule_finding(proc, ("v145",)), (
+        f"expected V145; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V145_no_M_level_at_all_is_fine(tmp_path):
+    body = (
+        '<S id="S1"><FORM kindOf="original">kaen kako</FORM>'
+        + _w("W1", "kaen", [])
+        + _w("W2", "kako", [])
+        + "</S>"
+    )
+    proc = _run_validate(_write_mtier(tmp_path, body))
+    combined = combined_output(proc)
+    assert "v144" not in combined and "v145" not in combined, (
+        f"no M-tier findings expected; stdout={proc.stdout!r}"
+    )

@@ -1,9 +1,15 @@
 import glob
 import re
 
-SENTINEL = '%E6%B2%92%E6%9C%89%E9%9F%B3%E6%AA%94'
-# Matches the entire AUDIO element line with the "no audio" sentinel
-PATTERN = re.compile(r'^\s*<AUDIO\s+file="%s".*?/>\s*\n?' % re.escape(SENTINEL))
+# The NTU backend marks a missing recording with the sentinel filename
+# 沒有音檔 ("no audio file"). Older parser output wrote the AUDIO file
+# attribute URL-encoded; since the 2026-07-29 parse_grammar update it is
+# written decoded. Match both, or sentinel AUDIO elements leak into the
+# published XML (61 leaked in the 2026-08-10 rerun audit).
+SENTINEL_ENCODED = '%E6%B2%92%E6%9C%89%E9%9F%B3%E6%AA%94'
+SENTINEL_DECODED = '沒有音檔'
+PATTERN = re.compile(r'^\s*<AUDIO\s+file="(?:%s|%s)".*?/>\s*\n?'
+                     % (re.escape(SENTINEL_ENCODED), re.escape(SENTINEL_DECODED)))
 
 xml_files = glob.glob('Final_XML/**/*.xml', recursive=True)
 

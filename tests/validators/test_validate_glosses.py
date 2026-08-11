@@ -1017,3 +1017,120 @@ def test_V068_W_without_M_skipped():
       </S>""")
     findings = _findings_for(gloss_rules.v068_M_reconstructs_W, xml)
     assert findings == [], f"W with no M must be skipped; got {findings!r}"
+
+
+# ---------------------------------------------------------------------------
+# V069: null morpheme in W FORM requires a null M child (HARD)
+# ---------------------------------------------------------------------------
+
+
+def test_v069_fires_when_W_has_null_but_no_null_M():
+    xml = _TEXT_TEMPLATE.format(body=(
+        '<S id="s1"><FORM kindOf="original">∅-dhuq</FORM>'
+        '<W id="w1"><FORM kindOf="original">∅-dhuq</FORM>'
+        '<M id="m1"><FORM>dhuq</FORM></M>'
+        "</W></S>"
+    ))
+    findings = _findings_for(
+        gloss_rules.v069_null_morpheme_in_W_requires_null_M, xml
+    )
+    assert len(findings) == 1
+    assert findings[0].rule_id == "V069"
+    assert findings[0].severity is Severity.HARD
+    assert "w1" in findings[0].message
+
+
+def test_v069_passes_when_null_M_present():
+    xml = _TEXT_TEMPLATE.format(body=(
+        '<S id="s1"><FORM kindOf="original">∅-dhuq</FORM>'
+        '<W id="w1"><FORM kindOf="original">∅-dhuq</FORM>'
+        '<M id="m1"><FORM>∅</FORM></M>'
+        '<M id="m2"><FORM>dhuq</FORM></M>'
+        "</W></S>"
+    ))
+    assert _findings_for(
+        gloss_rules.v069_null_morpheme_in_W_requires_null_M, xml
+    ) == []
+
+
+def test_v069_noop_without_M_children():
+    xml = _TEXT_TEMPLATE.format(body=(
+        '<S id="s1"><FORM kindOf="original">∅-dhuq</FORM>'
+        '<W id="w1"><FORM kindOf="original">∅-dhuq</FORM></W></S>'
+    ))
+    assert _findings_for(
+        gloss_rules.v069_null_morpheme_in_W_requires_null_M, xml
+    ) == []
+
+
+def test_v069_ignores_non_standalone_null_glyph():
+    """A ∅ embedded between letters is not a null morpheme (morpheme
+    position requires edge/whitespace/'-' neighbors)."""
+    xml = _TEXT_TEMPLATE.format(body=(
+        '<S id="s1"><FORM kindOf="original">a∅b</FORM>'
+        '<W id="w1"><FORM kindOf="original">a∅b</FORM>'
+        '<M id="m1"><FORM>a∅b</FORM></M>'
+        "</W></S>"
+    ))
+    assert _findings_for(
+        gloss_rules.v069_null_morpheme_in_W_requires_null_M, xml
+    ) == []
+
+
+# ---------------------------------------------------------------------------
+# V070: gloss-code-like FORM (WARN) — impostor wordforms / annotation debris
+# ---------------------------------------------------------------------------
+
+
+def test_V070_gloss_code_as_W_FORM_warns():
+    """A W whose FORM is a bare gloss code ('PFV') is annotation debris."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">kaen PFV</FORM>
+        <W id="W1"><FORM kindOf="original">kaen</FORM></W>
+        <W id="W2"><FORM kindOf="original">PFV</FORM></W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v070_gloss_code_as_FORM, xml)
+    assert len(findings) == 1, f"expected one V070; got {findings!r}"
+    assert findings[0].severity is Severity.WARN
+    assert "PFV" in findings[0].message
+
+
+def test_V070_person_number_code_in_M_FORM_warns():
+    """An M FORM of '3SG.NOM' is a gloss that leaked into the form tier."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">kako</FORM>
+        <W id="W1"><FORM kindOf="original">kako</FORM>
+          <M id="M1"><FORM kindOf="original">3SG.NOM</FORM></M>
+        </W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v070_gloss_code_as_FORM, xml)
+    assert len(findings) == 1 and findings[0].severity is Severity.WARN
+
+
+def test_V070_L2_marker_debris_warns():
+    """Malformed language-switch tag residue ('L2M-L2M') as an M FORM."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">word</FORM>
+        <W id="W1"><FORM kindOf="original">word</FORM>
+          <M id="M1"><FORM kindOf="original">L2M-L2M</FORM></M>
+        </W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v070_gloss_code_as_FORM, xml)
+    assert len(findings) == 1 and findings[0].severity is Severity.WARN
+
+
+def test_V070_ordinary_and_lookalike_forms_stay_silent():
+    """Lowercase words never fire; nor does an S-level FORM; nor short
+    all-caps that isn't in the code list ('OK' is not a gloss code)."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">NOM kaen OK</FORM>
+        <W id="W1"><FORM kindOf="original">nom</FORM></W>
+        <W id="W2"><FORM kindOf="original">kaen</FORM></W>
+        <W id="W3"><FORM kindOf="original">OK</FORM></W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v070_gloss_code_as_FORM, xml)
+    assert findings == [], f"expected silence; got {findings!r}"

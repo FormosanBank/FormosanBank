@@ -1,0 +1,3 @@
+pattern	replacement	description
+(?<![qʁ])i(?=[qʁ])	iə	i is centralized before q or R
+(?<=[qʁ])i	e	i is lowered after q or R

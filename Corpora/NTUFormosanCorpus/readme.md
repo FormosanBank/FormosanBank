@@ -59,7 +59,7 @@ were removed and remain documented in `missing_audio.csv` and the per-language
 
 * In the Kanakanavu texts, "tia'apacangcangarʉʉn" was often written as one word, whereas it appears that "tia 'apacangcangarʉʉn" is more likely based on glossing. We made this change in parse_grammar.py.
 
-* In the Kanakanavu sentence subcorpus, "∅" appears 31 times. Its interpretation is unclear. 
+* In the Kanakanavu sentence subcorpus, "∅" appears 31 times, marking a null morpheme (e.g. a phonologically empty REL). Pipeline treatment: the marker is kept in original/W/M FORMs, removed from S-level standard FORMs by `standardize.py`, and silent in PHON (an all-null M gets PHON `∅`); `clean_xml.py` canonicalizes the Grammar subcorpus's `ø`/`Ø` variants to `∅`. See step 7 under Processing.
 
 * Some English glosses contain Mandarin (e.g. `eng="使役-太陽=完成貌"`), most likely because the glossers were Mandarin-dominant. These are left as they are in the source; the known cases are listed in [gloss_anomalies_review.csv](gloss_anomalies_review.csv) (category `eng gloss contains CJK`).
 
@@ -73,6 +73,42 @@ were removed and remain documented in `missing_audio.csv` and the per-language
 
 ## Processing
 
+All steps below are wrapped by [CodeAndDocs/make.sh](CodeAndDocs/make.sh), which runs
+them in order against a fresh parse (audio download only with `--with-audio`), then
+finishes with a corpus-wide `add_phonology.py` refresh, re-application of recorded
+hand edits (`QC/cleaning/apply_manual_edits.py`, if `CodeAndDocs/manual_edits.xml`
+exists), and a `validate_text.py` summary. The step-by-step documentation below is
+the reference; `make.sh` is the executable form.
+
+Note on per-step PHON regeneration: steps 5, 9, 11 and 12 regenerate PHON through
+a witness check (`scripts/_phon_regen.py`, `borrow_segmentation.py`). Since
+2026-08-10 both helpers are thin wrappers over `add_phonology.py`'s own
+`load_profile`/`phonologize` (dialect-aware, contextual rules, current
+marker/punctuation policy), so the witness passes on any file whose PHON the
+current pipeline generated; files carrying an older PHON vintage fail it and are
+conservatively skipped. Either way `make.sh` ends with a corpus-wide
+`add_phonology.py` refresh that regenerates every PHON canonically.
+
+Note on serialization: the corpus has two serialization conventions — the parsers'
+minidom style and the published lxml style (`<?xml version='1.0' encoding='UTF-8'?>`)
+— and every repair script refuses to rewrite a file it cannot first reproduce
+byte-for-byte (the "round-trip guard", which guarantees a script never introduces
+incidental reformatting). `make.sh` converts between the conventions at each
+boundary via `scripts/normalize_serialization.py` (minidom for step 4, lxml for
+steps 5–20, and lxml again after the final `add_phonology.py` refresh). Until the
+next regeneration, nine *published* files are outside the lxml convention (the
+seven Tsou Stories files rewritten by the 2026 Tsou-PHON regeneration, plus
+`Grammar/Seediq` and `Grammar/Sakizaya`) and are therefore skipped by post-hoc
+repair scripts.
+
+**Regeneration status (2026-08-10):** a full from-scratch `make.sh` run was
+verified sentence-by-sentence against the published corpus — zero data loss; all
+14,663 AUDIO references byte-identical; the differences are intentional pipeline
+changes (TRANSL quote/notes normalization, `ø`/`Ø` → `∅`, dash canonicalization,
+new-style PHON and standard tier) plus improvements (12 additional borrowed
+segmentations, 4 recovered source words including Rukai `malra`). Full triage:
+[claudeplans/2026-08-10-ntu-rerun-diff-audit.md](../../claudeplans/2026-08-10-ntu-rerun-diff-audit.md).
+
 * **1. Parse original files**
 
 ```bash
@@ -82,6 +118,16 @@ were removed and remain documented in `missing_audio.csv` and the per-language
 These scripts do *a lot* of cleaning. The JSONs used in the backend of the NTU Formosan corpus are meant to result in something human-readable, not machine readable.
 
 These scripts produce many error logs and warning logs, which are described in the "Notes" above. However, the `validation_results.csv` and `validation_m_mismatches.csv` are produced by running `validate_glossing.py` from FormosanBank QC/validation scripts library.
+
+`run_parsers.py` ends with a normalization pass (2026-08-10): M ids are renamed
+from the parsers' `<Wid>_M<j>_<k>` scheme to the corpus's canonical `<Wid>M<n>`
+(1-based, document order — the scheme every published M id follows and that
+`apply_manual_corrections.py`'s element-id-targeted entries depend on), and the
+TEXT `dialect` attributes are pinned from a hard-coded table (per
+subcorpus/language; single-dialect languages follow the dialects.csv convention
+dialect == language name; `Sentences/Bunun` is Junqun per maintainer
+determination although the source folder says Isbukun — Isbukun is recorded as
+an OtherName of Junqun in `dialects.csv`).
 
 * **2. Download the audio**
 
@@ -94,12 +140,23 @@ Note that there is no audio associated with sentences.
 
 Note also that utterances in grammar and stories lack audio, and some of the audio that is supposed to exist does not. An error log reports missing audio.
 
-* **3. Standardize orthography
+AUDIO `file` attributes keep the **raw (URL-encoded) basename** of the source URL
+(e.g. `Seediq_A1-3-1-6%20n.mp3`) — the published convention that the Hugging Face
+audio archives are keyed on; do not decode them. `remove_no_audio_elements.py`
+(run by make.sh right after parsing) deletes only the self-closing `<AUDIO/>`
+placeholder elements whose filename is the NTU "no audio file" sentinel (沒有音檔,
+matched in both its URL-encoded and decoded spellings); sentence content is never
+touched.
 
-First, some more punctuation cleaning:
+* **3. Clean, standardize orthography, and add phonology**
+
+First, some more punctuation cleaning. Since the 2026-08-09 null-morpheme spec this
+also canonicalizes the null-morpheme marker glyphs (`ø`/`Ø` → `∅`, U+2205) in
+morpheme position on **all** tiers, original included — the glyph is annotation, not
+source spelling (see step 7):
 
 ```bash
-    python ../FormosanBank/QC/cleaning/clean_xml.py --corpora_path Final_XM
+    python ../FormosanBank/QC/cleaning/clean_xml.py --corpora_path Final_XML
 ```
 
 According to the documentation, all data use Ortho94. In practice, though, we found that where there are differences between Ortho94 and Ortho113, the latter fit the data better. The only exception is Amis, which appears to have been influenced by Church. 
@@ -117,12 +174,35 @@ According to the documentation, all data use Ortho94. In practice, though, we fo
 
 ```bash
     python scripts/remove_no_audio_elements.py
-    python ../FormosanBank/QC/utilities/standardize.py --corpora_path Final_XML --copy 
-    python CodeAndDocs/scripts/remove_stress_accents.py --xml_dir Final_XML
+    python ../FormosanBank/QC/utilities/standardize.py --corpora_path Final_XML --remove_accents
     python ../FormosanBank/QC/utilities/add_phonology.py --corpora_path Final_XML --orthography Ortho113
 ```
 
-The `remove_stress_accents.py` step removes acute stress marks from the *standard* tier. The Grammar subcorpus (Kanakanavu and Sakizaya) marks stress in elicited examples (`Namásia`, `mʉ́rʉpʉ`, `Pánay`/`Panáy`); the same lexemes appear unaccented (with the same meanings) in the other subcorpora, so the accents are suprasegmental annotation, not orthography. They are kept in `original` and removed from `standard`. The script handles both precomposed accented vowels (`á é í ó ú`) and the necessarily-decomposed `ʉ́` (no precomposed codepoint exists; it is stored as `ʉ` + U+0301), and regenerates the standard PHON of affected elements (gated by an original-tier witness check; this also repairs PHON, since the accented characters were previously rendered as `*` by add_phonology's unknown-character handling). When running on the published corpus post-hoc, use the default `--xml_dir` (the corpus `XML/`).
+`standardize.py --remove_accents` (2026-08-10) replaces the old `--copy` +
+`remove_stress_accents.py` pair. It copies original → standard and then:
+
+   - Strips combining acute/breve marks from the standard tier, including the
+     necessarily-decomposed `ʉ́` (no precomposed codepoint exists; it is stored as
+     `ʉ` + U+0301). The Grammar subcorpus (Kanakanavu and Sakizaya) marks stress in
+     elicited examples (`Namásia`, `mʉ́rʉpʉ`, `Pánay`/`Panáy`); the same lexemes
+     appear unaccented (with the same meanings) in the other subcorpora, so the
+     accents are suprasegmental annotation, not orthography. They are kept in
+     `original` and removed from `standard`. (Full evidence in
+     `scripts/remove_stress_accents.py`, retained for reference — do **not** run it;
+     standardize owns this now. Safe for this corpus because accent-bearing data is
+     confined to Grammar Kanakanavu/Sakizaya and no NTU language uses an accented
+     letter orthographically — a caution that matters for Rukai corpora generally,
+     whose Ortho113 includes `é`.)
+   - Removes null-morpheme units (`∅`, `∅-`, `-∅`) from **S-level** standard FORMs.
+     W- and M-level standard FORMs keep them — see step 7.
+   - Applies C012 to the S-level standard FORM of morpheme-segmented sentences:
+     segmentation `-` (digit-aware, so `2020-07-31` survives) and clitic `=` are
+     stripped. For Bunun, where `-` is an orthographic letter, hyphens are preserved
+     and per-occurrence `c012` warnings are written to `standardize_warnings.csv`.
+
+`add_phonology.py` now treats null morphemes as silent — no more `*` in PHON at null
+sites — and an M whose FORM is entirely `∅` gets PHON `∅`; unmapped punctuation is
+dropped from PHON output.
 
 * **4. Repair empty-form morphemes**
 
@@ -146,7 +226,8 @@ Many remaining empty-form morphemes exist because the source writes a wordform u
 ```
 
 **Notes**
-   - A word is repaired only if all guards hold: a unique candidate piece-sequence among same-language source duplicates; letter fidelity (boundary markers are added, letters never change — verified); per-tier gloss counts equal to the piece count; and PHON reproducibility (the Ortho113 mapping must exactly regenerate the word's existing PHON before it is trusted to produce the new per-morpheme PHONs). Anything failing a guard is skipped and remains listed in `empty_M_repair_partition.csv`.
+   - A word is repaired only if all guards hold: a unique candidate piece-sequence among same-language source duplicates; letter fidelity (boundary markers are added, letters never change — verified); per-tier gloss counts equal to the piece count; and PHON reproducibility (converting the word's current FORM through `add_phonology.py`'s own `phonologize` must exactly regenerate its existing PHON before the mapping is trusted to produce the new per-morpheme PHONs — since 2026-08-10 this uses the real pipeline profile, so it passes on current-pipeline PHON and skips older vintages). Anything failing a guard is skipped and remains listed in `empty_M_repair_partition.csv`.
+   - `make.sh` runs this step twice: here, and again as step 5b after the manual corrections (steps 11–12), because a word can become borrowable only after a correction repairs its FORM (e.g. Bunun `61_S_2` `nii＝ik` → `nii=ik`). On a fresh regeneration the two passes recover 122 words — 12 more than the published corpus, since the modernized guard 5 accepts words the old vintage check had to skip.
    - Background on `==`: the source uses `==`/`===` as a prosodic-lengthening marker, which the parsers strip. In a few words the stripped run also contained a real boundary (e.g. `izaw===tu` = `izaw==` + clitic `=tu`), fusing two morphemes; where a cleanly segmented duplicate exists this step recovers them. Spellings containing `==` are never used as the borrowed form.
    - Expects the corpus's current serialization (lxml with XML declaration, after the id-normalization pass); a file is rewritten only if it first round-trips byte-identically, so the script never reformats. Idempotent.
 
@@ -163,20 +244,16 @@ Six sentence-subcorpus source JSONs assign the same record id to two different s
    - Audio safety: a duplicated sentence carrying an AUDIO descendant is skipped with a warning, since audio file names elsewhere embed sentence ids. (None exist today: all duplicates are in the Sentences subcorpus, which has no audio.)
    - Same conventions as steps 4-5: byte-identical round-trip guard, idempotent.
 
-* **7. Remove null-morpheme symbols from the standard tier**
+* **7. Remove null-morpheme symbols — RETIRED (2026-08-10)**
 
-The Kanakanavu sentence subcorpus writes a null-morpheme placeholder inside words (e.g. `niarisinatʉ∅kee`; see Minor notes). This is linguist's annotation, not orthography, so it is kept in `original` but removed from `standard`:
+The Kanakanavu sentence subcorpus writes a null-morpheme placeholder inside words (e.g. `niarisinatʉ∅kee`; see Minor notes) and the Sakizaya grammar writes a null prefix slot (`ø-sitangah`). Handling is now owned by the shared pipeline (step 3), per the 2026-08-09 null-morpheme spec:
 
-```bash
-    python CodeAndDocs/scripts/remove_null_symbols.py
-```
+   - `clean_xml.py` canonicalizes the marker glyphs (`ø`/`Ø` → `∅`, morpheme position, all tiers).
+   - `standardize.py` (non-`--copy` modes) removes null units from **S-level** standard FORMs only.
+   - `add_phonology.py` renders nulls silent; an all-null M FORM gets PHON `∅` (previously the symbols were rendered `*`).
+   - W- and M-level standard FORMs **retain** the `∅` marker. This is required by the validators: V069 (HARD — a null in a W FORM needs an M child whose FORM is `∅`) and the V124/V125 propagation rules (a null on the M tier must be witnessed by the parent W FORM and the S-level original FORM). So `ni-arisinatʉ-∅=kee` keeps its null on both W FORM tiers, with the null M's PHON being `∅`.
 
-**Notes**
-   - Cleans only S- and W-level `FORM` with `kindOf="standard"`. M-level null symbols (where `∅`/`ø` is itself a morpheme slot, e.g. Sakizaya `ø-sitangah` → M `ø` + M `sitangah`) are deliberately left: stripping them would create empty-form morphemes.
-   - Default removes both `∅` (Kanakanavu, word-internal) and `ø` (Sakizaya, a null prefix slot). Boundary markers orphaned by the removal are cleaned token-wise (`ø-sitangah` → `sitangah`, not `-sitangah`).
-   - An element is never emptied; would-be-emptied elements are skipped and reported. (One known case: a Sakizaya W whose standard FORM is just `ø`.)
-   - The standard PHON of affected elements is regenerated via the Ortho113 mapping, gated by an original-tier witness check. This also repairs PHON: the symbols were previously rendered as `*` (e.g. `*-sitaŋaħ` → `sitaŋaħ`). The cleanup is driven from the original tier, so re-running also heals elements whose FORM was cleaned earlier but whose PHON was stale.
-   - Same conventions as steps 4-6: byte-identical round-trip guard, idempotent.
+Do **not** run `CodeAndDocs/scripts/remove_null_symbols.py` (retained for reference only): its W-level stripping contradicts that policy, and it left orphaned boundary markers in the published corpus (`ni-arisinatʉ-=kee` where a rerun now yields `ni-arisinatʉ-∅=kee`).
 
 * **8. Manual review: parentheses and slashes in W/M forms (V121)**
 
@@ -186,6 +263,8 @@ This step is **manual** and must be redone (or the edits re-applied) after any r
    - Slash-delimited unresolved alternatives, e.g. `si/la`, `ma-lrigi/ma-elre-elrenge/ma-adraw` (~42 W elements; these are in languages where the Kanakanavu-style slash-variant expansion was not applied).
 
 Run `python ../FormosanBank/QC/validation/validate_text.py by_path --path XML` and work through the V121 findings.
+
+**Status (2026-08-10):** no edits have ever been committed under this step. From the from-scratch regeneration (`18868920e`) onward, every XML-touching commit maps to a scripted step or to an `apply_manual_corrections.py` table entry; the V121 work became steps 15–20, and the residue is documented in step 20's notes ("Still open in V121"). The only unscripted hand edits in the published XML were seven AUDIO boundary fixes in six Stories files (two Kavalan, four Seediq; commit `1817ae39e` — zero-duration/overlapping start–end boundaries nudged to valid values). As of 2026-08-10 these are recorded as attribute-targeted `AUDIO_FIXES` entries in `apply_manual_corrections.py` (step 11), so they now survive regeneration like every other one-off correction.
 
 * **9. Remove source annotation codes and overlap markers**
 
@@ -216,7 +295,7 @@ Two sentence-subcorpus source files (`sentence/Bunun_Isbukun/63.json`, `64.json`
 
 * **11. Apply one-off manual corrections**
 
-Hand-verified single corrections that are too specific for a general rule live in a table inside the script (currently one: a stray `<` for `(` in a Bunun zho TRANSL, which also explains the 1129/1128 `<`/`>` imbalance in V132 counts):
+Hand-verified single corrections that are too specific for a general rule live in tables inside the script. The tables have grown well beyond the original single entry and now cover: a stray `<` for `(` in a Bunun zho TRANSL (the 1129/1128 `<`/`>` imbalance in V132 counts); the three Grammar/Sakizaya citation sentences (step 11 notes below); fullwidth `＝` normalization; the gloss-table column-shift repairs (with element-id targeting, FILL and DELETE entries); L2-marker PHON residue; and the `AUDIO_FIXES` table — the seven invalid audio start/end boundaries originally hand-edited in commit `1817ae39e` (13 attributes across six Stories files), recorded here so they survive regeneration:
 
 ```bash
     python CodeAndDocs/scripts/apply_manual_corrections.py
@@ -320,7 +399,7 @@ A few words list several *complete* alternative words separated by `/`, each its
     python CodeAndDocs/scripts/expand_word_level_alternatives.py
 ```
 
-Because these cases need per-sentence judgement, each is described in the script's `CONFIG` rather than inferred; the `/`-split, `-` re-segmentation, and PHON (from the word's own slashed PHON, no mapping) are mechanical. Two judgement points for S_7, both recorded in `CONFIG`: (a) the published free translation was **truncated** to the first alternative (source `free` is "Laucu is smart/tall/big"), so each reading's translation is restored from source — the zh `很` is taken to distribute (`Laucu很聰明/很高/很大`); (b) the source wrote `狀態.實現.聰明` with a `.` where the morpheme boundary `-` belongs (cf. the sibling `狀態.實現-大`), repaired so STAT.RLS/be.smart align. The original becomes alternative 1; alternatives 2..N follow with id suffix `-alt2`..`-altN`; mis-segmented morphemes are rebuilt from each alternative's own tiers; AUDIO stays on alternative 1. Expands 1 sentence (S_7 → 3); V121 drops by 6; the readings are clean under validate_glosses. Round-trip guard; idempotent.
+Because these cases need per-sentence judgement, each is described in the script's `CONFIG` rather than inferred; the `/`-split, `-` re-segmentation, and PHON (from the word's own slashed PHON, no mapping) are mechanical. PHON handling is best-effort by vintage (2026-08-10): when the file's PHON no longer carries the `/` alternation or `-` segmentation markers (the current `add_phonology.py` strips them), the FORMs and glosses are still expanded and PHON is left for `make.sh`'s final `add_phonology.py` refresh to regenerate. Two judgement points for S_7, both recorded in `CONFIG`: (a) the published free translation was **truncated** to the first alternative (source `free` is "Laucu is smart/tall/big"), so each reading's translation is restored from source — the zh `很` is taken to distribute (`Laucu很聰明/很高/很大`); (b) the source wrote `狀態.實現.聰明` with a `.` where the morpheme boundary `-` belongs (cf. the sibling `狀態.實現-大`), repaired so STAT.RLS/be.smart align. The original becomes alternative 1; alternatives 2..N follow with id suffix `-alt2`..`-altN`; mis-segmented morphemes are rebuilt from each alternative's own tiers; AUDIO stays on alternative 1. Expands 1 sentence (S_7 → 3); V121 drops by 6; the readings are clean under validate_glosses. Round-trip guard; idempotent.
 
 * **19. Collapse gloss-only slash alternations**
 

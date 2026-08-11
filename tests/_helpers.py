@@ -118,3 +118,35 @@ def csv_warning_exists(corpora_path: Path, rule_id: str) -> bool:
         if rule_id.lower() in content:
             return True
     return False
+
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+
+
+def run_qc_script(script_relpath: str, args: list) -> subprocess.CompletedProcess:
+    """Run a QC pipeline script exactly as an operator would.
+
+    `script_relpath` is relative to the repo root, e.g.
+    "QC/cleaning/clean_xml.py". Subprocess invocation (not importing main)
+    is the suite-wide convention: tests must see argv parsing, exit codes,
+    and stdout/stderr as shipped.
+    """
+    import sys as _sys
+    return subprocess.run(
+        [_sys.executable, str(REPO_ROOT / script_relpath), *args],
+        capture_output=True,
+        text=True,
+    )
+
+
+def snapshot_tree(root: Path) -> dict:
+    """Map of relative path -> bytes for every file under root.
+
+    The currency for rerun-stability assertions: two runs are 'stable'
+    iff their snapshots are equal — XML *and* sidecar CSVs alike.
+    """
+    return {
+        str(p.relative_to(root)): p.read_bytes()
+        for p in sorted(root.rglob("*"))
+        if p.is_file()
+    }

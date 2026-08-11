@@ -1,0 +1,9 @@
+pattern	replacement	description
+(?<=q)i	e	Lower i after q.
+(?<=q)u	o	Lower u after q.
+s(?=i)	ɕ	Palatalize s before i.
+c(?=i)	č	Palatalize c before i.
+au	aw	Form a labial glide from au.
+ua	wa	Form a labial glide from ua.
+ai	aj	Form a palatal glide from ai.
+ia	ja	Form a palatal glide from ia.

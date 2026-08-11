@@ -121,9 +121,27 @@ def public_audio_url(url):
     return _AUDIO_URL_OVERRIDES.get(url, url)
 
 
+# Published file-attribute exceptions: the one URL-overridden entry was
+# hand-repaired in the published XML with a decoded filename (commit
+# d27c1cc29), and the audio archives follow the published attribute.
+_AUDIO_FILE_OVERRIDES = {
+    "https://formosanbank.linguistics.ntu.edu.tw/files/audio/"
+    "00_Seediq_A2-3-3%20n.mp3": "00_Seediq_A2-3-3 n.mp3",
+}
+
+
 def public_audio_filename(url):
-    """Return the decoded filename represented by a public audio URL."""
-    return unquote(urlsplit(url).path.rsplit("/", 1)[-1])
+    """Return the AUDIO file attribute for a public audio URL.
+
+    This is the RAW (still URL-encoded) basename, e.g.
+    ``Seediq_A1-3-1-6%20n.mp3`` — the published corpus's convention, which
+    the Hugging Face audio archives and ``audio_sources.json`` contract are
+    keyed on. Do not unquote here: decoding changes every filename with an
+    escaped character and breaks the audio-file match (2026-08-10 audit).
+    """
+    if url in _AUDIO_FILE_OVERRIDES:
+        return _AUDIO_FILE_OVERRIDES[url]
+    return urlsplit(url).path.rsplit("/", 1)[-1]
 
 
 # ---------------------------------------------------------------------------

@@ -12,10 +12,11 @@ morpheme actually spans, then splicing as usual:
 
 The '=' M is replaced by two Ms; the sibling Ms are untouched; the W's M ids are
 renumbered 0-based (splitting one M into two shifts the trailing siblings). The
-two new Ms are emitted complete (original + standard FORM, original + standard
-PHON, TRANSL) using the same TSV / orthography mappings as fill_standard_tier.py
-and add_phonology.py, so no follow-up fill is needed. A reduplication gloss
-'red' on the affix piece is written 'RED' to match capitalize_red.py.
+two new Ms carry only FORM kindOf="original" and TRANSL: standardize.py and
+add_phonology.py run AFTER the split steps in the pipeline (see README) and
+fill the standard FORM and both PHON tiers for every M, so the split scripts
+never derive those tiers themselves. capitalize_red.py (also after) rewrites
+any reduplication gloss 'red' to 'RED'.
 
 Only words with exactly one '=' morpheme are handled. Words where a sibling
 doesn't match the surface (consonant mutation, infix vowel change, w/v
@@ -36,22 +37,7 @@ from pathlib import Path
 import regex
 from lxml import etree
 
-ROOT = Path(__file__).resolve().parents[3]
 VOWELS = set("aeiouə")
-TSV = [("ts", "c"), ("Ts", "C"), ("?", "'"), ("ḍ", "dr"), ("Ḍ", "dr"),
-       ("ɫ", "lj"), ("Ɫ", "Lj")]
-
-
-def load_phon(p):
-    with open(p, encoding="utf-8") as f:
-        r = csv.DictReader(f, delimiter="\t")
-        cols = [c for c in r.fieldnames if c != "letter"]
-        rows = list(r)
-    return rows, cols
-
-
-ORTHO = load_phon(ROOT / "Orthographies/Ortho113/Paiwan.tsv")
-FERR = load_phon(ROOT / "Orthographies/Ferrell/Paiwan.tsv")
 
 
 def letters(s):
@@ -60,32 +46,6 @@ def letters(s):
 
 def esc(s):
     return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-
-
-def stdize(s):
-    for a, b in TSV:
-        s = s.replace(a, b)
-    return s
-
-
-def to_phon(text, tsv, dialect):
-    rows, cols = tsv
-    col = dialect if dialect in cols else ("default" if "default" in cols else cols[-1])
-    mp, conv, ipa = [], {}, set()
-    for row in rows:
-        L = (row.get("letter") or "").strip()
-        v = (row.get(col) or "").strip()
-        if L and v != "NA":
-            mp.append((L, v)); conv[L] = v; ipa.update(v)
-    r = text
-    for L, ip in mp:
-        if L in r:
-            r = r.replace(L, ip)
-        lu = L.capitalize() if len(L) > 1 else L.upper()
-        if lu in r and lu not in conv:
-            r = r.replace(lu, ip)
-    import string
-    return "".join(c if (c in ipa or c in string.punctuation or c.isspace()) else "*" for c in r)
 
 
 def splice(span, infix, root):
@@ -117,18 +77,16 @@ def m_gloss(m):
     return (t[0].text or "") if t else ""
 
 
-def make_block(ind, mform, gloss, dialect):
-    """Full 5-line <M> body (original+standard FORM/PHON + TRANSL) at indent ind."""
+def make_block(ind, mform, gloss):
+    """Minimal <M> body (original FORM + TRANSL) at indent ind.
+
+    standardize.py / add_phonology.py fill the standard FORM and PHON tiers
+    later in the pipeline; capitalize_red.py normalizes 'red' glosses.
+    """
     c = ind + "    "
-    fstd = stdize(mform)
-    if gloss == "red":
-        gloss = "RED"
     return (
         f'{ind}<M id="__TMP__">\n'
         f'{c}<FORM kindOf="original">{esc(mform)}</FORM>\n'
-        f'{c}<PHON kindOf="original">{esc(to_phon(mform, FERR, dialect))}</PHON>\n'
-        f'{c}<FORM kindOf="standard">{esc(fstd)}</FORM>\n'
-        f'{c}<PHON kindOf="standard">{esc(to_phon(fstd, ORTHO, dialect))}</PHON>\n'
         f'{c}<TRANSL xml:lang="eng">{esc(gloss)}</TRANSL>\n'
         f'{ind}</M>\n'
     )
@@ -136,7 +94,6 @@ def make_block(ind, mform, gloss, dialect):
 
 def plan_file(path):
     root = etree.parse(str(path)).getroot()
-    dialect = root.get("dialect") or "default"
     jobs, flags = [], []
     for w in root.iter("W"):
         ms = w.findall("M")
@@ -179,7 +136,7 @@ def plan_file(path):
             flags.append((w.get("id"), mf, allforms, "no clean splice on isolated span"))
             continue
         rb, ra = sp
-        jobs.append({"wid": w.get("id"), "eqid": eqm.get("id"), "dialect": dialect,
+        jobs.append({"wid": w.get("id"), "eqid": eqm.get("id"),
                      "infix_form": f"-{infix}-", "infix_gloss": ig,
                      "root_form": f"{rb}-{ra}", "root_gloss": rg})
     return jobs, flags
@@ -200,8 +157,8 @@ def apply_file(path, jobs):
         if not em:
             raise AssertionError(f"{path}: =M {j['eqid']} not found in {wid}")
         ind = em.group(1)
-        two = (make_block(ind, j["infix_form"], j["infix_gloss"], j["dialect"])
-               + make_block(ind, j["root_form"], j["root_gloss"], j["dialect"]))
+        two = (make_block(ind, j["infix_form"], j["infix_gloss"])
+               + make_block(ind, j["root_form"], j["root_gloss"]))
         wblock = wblock[:em.start()] + two + wblock[em.end():]
         cnt = {"n": 0}
         def renum(mm):

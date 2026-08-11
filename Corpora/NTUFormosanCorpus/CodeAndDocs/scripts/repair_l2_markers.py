@@ -46,7 +46,7 @@ from pathlib import Path
 import lxml.etree as etree
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from _phon_regen import language_of, load_mappings, convert  # noqa: E402
+from _phon_regen import dialect_of, language_of, load_mappings, convert  # noqa: E402
 
 TOKEN_MAP = {
     # 2026-06-12 additions: residue surfaced by the V067 infix-notation sweep
@@ -258,7 +258,7 @@ def process_file(path, dry_run, stats):
         stats["file skipped: round-trip guard"] += 1
         return False
     root = tree.getroot()
-    mp = load_mappings(language_of(root))
+    mp = load_mappings(language_of(root), dialect_of(root))
     modified = False
     for el in root.iter():
         if el.tag not in ("S", "W", "M"):

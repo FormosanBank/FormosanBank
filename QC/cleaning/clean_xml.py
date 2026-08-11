@@ -9,6 +9,17 @@ import argparse
 import unicodedata
 from pathlib import Path
 
+import sys
+
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+
+from QC.corpus_counts import resolve_language, XML_LANG
+from QC.utilities.classify_quotes import QUOTE, apply_quote_corrections
+
+_DEFAULT_REFERENCE_DIR = _REPO_ROOT / "QC" / "validation" / "reference"
+
 XML_LANG_ATTR = "{http://www.w3.org/XML/1998/namespace}lang"
 
 _CHINESE_LANGS = frozenset({
@@ -78,116 +89,25 @@ def normalize_translation_language_metadata(
     return dict(counts)
 
 
-_ISO_TO_LANG_NAME = {
-    "ami": "Amis",
-    "tay": "Atayal",
-    "bnn": "Bunun",
-    "xnb": "Kanakanavu",
-    "ckv": "Kavalan",
-    "pwn": "Paiwan",
-    "pyu": "Puyuma",
-    "dru": "Rukai",
-    "sxr": "Saaroa",
-    "xsy": "Saisiyat",
-    "szy": "Sakizaya",
-    "trv": "Seediq",
-    "ssf": "Thao",
-    "tsu": "Tsou",
-    "tao": "Yami",
-}
-
-_HYPHEN_IS_LETTER_CACHE: dict = {}
+# Null-morpheme markers attested in source data: 'ø' (U+00F8, NTU Grammar
+# Sakizaya/Kanakanavu), 'Ø' (U+00D8, legacy), and the canonical '∅'
+# (U+2205 EMPTY SET). A glyph counts as a null morpheme ONLY in morpheme
+# position — both neighbors are a string edge, whitespace, or the ASCII
+# segmentation hyphen — so the same letters inside foreign proper nouns
+# (Danish 'Grønland', 'Børn' in the Wikipedia corpora) are never touched.
+_NULL_MORPHEME_RE = re.compile(r"(^|[\s\-])[øØ∅](?=[\s\-]|$)")
 
 
-def _resolve_ortho_path(ortho_path: str | None) -> Path:
-    """Return the canonical orthography directory.
+def normalize_null_morphemes(text: str) -> str:
+    """Canonicalize null-morpheme marker glyphs to '∅' (U+2205).
 
-    If ortho_path is None, default to <repo>/Orthographies/Ortho113/
-    relative to clean_xml.py's location.
+    Applies to every FORM tier clean_xml cleans (original S/W/M; the
+    standard tier is owned by standardize.py): the marker glyph is
+    annotation, not source spelling, so canonicalizing it keeps the
+    original tier faithful. Removal of null units is standardize.py's
+    job (S-level standard FORMs only) — this function only renames.
     """
-    if ortho_path is not None:
-        return Path(ortho_path)
-    return Path(__file__).resolve().parents[2] / "Orthographies" / "Ortho113"
-
-
-def _hyphen_is_letter(lang_code: str, ortho_path: str | None = None) -> bool:
-    """Return True if '-' appears as a letter row in the canonical orthography.
-
-    Looks up <ortho_path>/<Language>.tsv (where Language is the human-readable
-    name resolved from the ISO 639-3 code via _ISO_TO_LANG_NAME). Cached after
-    first lookup per (lang_code, ortho_path) pair.
-
-    Empirically verified 2026-05-29: only Bunun (bnn) and Thao (ssf) return True.
-    """
-    cache_key = (lang_code, ortho_path)
-    if cache_key in _HYPHEN_IS_LETTER_CACHE:
-        return _HYPHEN_IS_LETTER_CACHE[cache_key]
-
-    lang_name = _ISO_TO_LANG_NAME.get(lang_code)
-    if lang_name is None:
-        _HYPHEN_IS_LETTER_CACHE[cache_key] = False
-        return False
-
-    tsv_path = _resolve_ortho_path(ortho_path) / f"{lang_name}.tsv"
-    if not tsv_path.exists():
-        _HYPHEN_IS_LETTER_CACHE[cache_key] = False
-        return False
-
-    found = False
-    try:
-        with open(tsv_path, encoding="utf-8") as f:
-            for line in f:
-                # Each row's first column is a letter. We treat any row whose
-                # first column is exactly '-' as evidence that hyphen is a
-                # letter in this orthography.
-                cols = line.split("\t")
-                if cols and cols[0].strip() == "-":
-                    found = True
-                    break
-    except OSError:
-        found = False
-
-    _HYPHEN_IS_LETTER_CACHE[cache_key] = found
-    return found
-
-
-def _process_standard_hyphens(
-    text: str,
-    xml_file: str,
-    s_id: "str | None",
-    lang_code: "str | None",
-    warnings: "CleanerWarnings | None",
-    hard_remove_segmentation: bool,
-    ortho_path: "str | None",
-) -> str:
-    """Per C012: handle hyphens in S-level standard FORM by orthography.
-
-    If '-' is NOT a letter in the canonical orthography (the common case),
-    strip hyphens AND clitic '=' markers silently. If '-' IS a letter
-    (Bunun, Thao), preserve hyphens and emit a c012 warning per occurrence
-    (unless --hard-remove-segmentation is set, in which case strip anyway
-    and DO NOT warn).
-
-    The '=' clitic marker is always stripped (it's never a letter).
-
-    The null-morpheme marker 'Ø' (U+00D8) is likewise stripped unconditionally
-    — together with its bridging segmentation hyphen ('Ø-' / '-Ø') — because it
-    is an annotation, never an orthographic letter in any Formosan language.
-    Removing it as a unit avoids leaving a dangling hyphen even where '-' is a
-    letter (Bunun, Thao).
-    """
-    text = re.sub(r"Ø-|-Ø|Ø", "", text)
-    if lang_code and _hyphen_is_letter(lang_code, ortho_path):
-        if hard_remove_segmentation:
-            return text.replace("-", "").replace("=", "")
-        # Preserve hyphens, warn per occurrence
-        if warnings is not None:
-            for i, ch in enumerate(text):
-                if ch == "-":
-                    warnings.add("c012", xml_file, s_id, ch, i)
-        return text.replace("=", "")  # clitic stripped even when preserving '-'
-    # Hyphen is not a letter → strip both
-    return text.replace("-", "").replace("=", "")
+    return _NULL_MORPHEME_RE.sub(lambda m: m.group(1) + "∅", text)
 
 
 def _find_bopomofo(text: str) -> list[tuple[str, int]]:
@@ -215,8 +135,16 @@ class CleanerWarnings:
 
     write_csv() is a no-op when no rows have been added (avoids creating
     empty files on clean corpora).
+
+    Two modes (POL-033 vs POL-035):
+    - default (``append=False``): an ephemeral per-run report — rewritten
+      each run, removed when a run finds nothing (cleaner_warnings.csv).
+    - ``append=True``: a durable, committed log (quote_corrections.csv) —
+      rows accumulate across runs and an empty run leaves the file alone,
+      so the record of past original-tier rewrites survives reruns.
     """
     csv_path: Path
+    append: bool = False
     _rows: list = field(default_factory=list, repr=False)
 
     def add(
@@ -236,16 +164,41 @@ class CleanerWarnings:
         })
 
     def write_csv(self) -> None:
+        """Write this run's rows (see class docstring for the two modes).
+
+        Default mode replaces any previous run's CSV (POL-033: per-run
+        report; a run with no rows removes a stale CSV). Append mode adds
+        this run's rows to the existing log and never deletes it.
+        """
         if not self._rows:
+            if self.append:
+                return  # durable log: an empty run changes nothing
+            try:
+                self.csv_path.unlink()
+            except OSError:
+                # Missing file, or csv_path's parent is itself a file
+                # (single-XML corpora_path) — either way nothing stale
+                # exists to remove.
+                pass
             return
         self.csv_path.parent.mkdir(parents=True, exist_ok=True)
-        with open(self.csv_path, "a", newline="", encoding="utf-8") as f:
+        if self.append:
+            with open(self.csv_path, "a", newline="", encoding="utf-8") as f:
+                writer = csv.DictWriter(
+                    f,
+                    fieldnames=["rule_id", "file", "s_id", "character",
+                                "position"],
+                )
+                if f.tell() == 0:
+                    writer.writeheader()
+                writer.writerows(self._rows)
+            return
+        with open(self.csv_path, "w", newline="", encoding="utf-8") as f:
             writer = csv.DictWriter(
                 f,
                 fieldnames=["rule_id", "file", "s_id", "character", "position"],
             )
-            if f.tell() == 0:
-                writer.writeheader()
+            writer.writeheader()
             writer.writerows(self._rows)
 
 
@@ -408,6 +361,54 @@ def _clean_trans_chinese(
     return text
 
 
+# C028: entity residue after XML parse. A parsed text containing literal
+# '&lt;' means the source file held '&amp;lt;' — html.escape applied to
+# already-escaped text (NTU Bunun shipped 1,109 TRANSLs this way). Decode
+# to FIXED POINT, not one level: a single-level decode would leave residue
+# for the next cleaning run to decode, making the cleaner non-idempotent.
+# Only the five XML-named entities and numeric character references are
+# matched — a bare '&' ("salt & pepper", "AT&T") is never touched.
+# V132 is the validator twin: it flags any residue that sneaks back in.
+_ENTITY_RESIDUE_RE = re.compile(
+    r"&(amp|apos|lt|gt|quot|#\d{1,7}|#x[0-9A-Fa-f]{1,6});"
+)
+_NAMED_ENTITIES = {"amp": "&", "apos": "'", "lt": "<", "gt": ">", "quot": '"'}
+
+
+def _decode_entity_match(match: "re.Match") -> str:
+    body = match.group(1)
+    if body in _NAMED_ENTITIES:
+        return _NAMED_ENTITIES[body]
+    try:
+        code = int(body[2:], 16) if body.startswith("#x") else int(body[1:])
+        return chr(code)
+    except (ValueError, OverflowError):
+        return match.group(0)
+
+
+def decode_entity_residue(
+    text,
+    xml_file: str = "",
+    s_id: "str | None" = None,
+    warnings: "CleanerWarnings | None" = None,
+):
+    """C028: decode double-encoded entity residue to fixed point.
+
+    Emits one c028 warning row per residue occurrence in the incoming
+    text (first level only — deeper wrapping decodes without re-warning).
+    Bounded at 8 iterations as a runaway guard; real data is 1–2 deep.
+    """
+    if warnings is not None:
+        for match in _ENTITY_RESIDUE_RE.finditer(text):
+            warnings.add("c028", xml_file, s_id, match.group(0), match.start())
+    for _ in range(8):
+        decoded = _ENTITY_RESIDUE_RE.sub(_decode_entity_match, text)
+        if decoded == text:
+            break
+        text = decoded
+    return text
+
+
 def swap_punctuation(text):
     """
     Replaces specific non-ASCII punctuation with their ASCII equivalents.
@@ -443,6 +444,30 @@ def swap_punctuation(text):
         'ʻ': "'",
         '『': '"',
         '』': '"',
+        # All dash/hyphen look-alikes canonicalize to ASCII '-': much of the
+        # corpus text is OCRed, so a source's hyphen-vs-dash choice cannot be
+        # trusted as principled. We standardize to one character and let
+        # context decide downstream — standardize.py's C012 strips '-' from
+        # S-level standard FORMs only in morpheme-segmented sentences and
+        # keeps digit-flanked '-' (dates, verse ranges) everywhere.
+        # Tilde look-alikes → ASCII '~' (POL-013 codepoint ruling,
+        # 2026-08-10): LaTeX-typeset PDFs emit the math TILDE OPERATOR
+        # where the reduplication convention wants a plain tilde; the CJK
+        # wave dash is the same visual twin from CJK-typeset sources.
+        # (Chinese TRANSL is unaffected — that branch never calls
+        # swap_punctuation, so a wave dash in Chinese text survives.)
+        '∼': '~',  # U+223C TILDE OPERATOR
+        '〜': '~',  # U+301C WAVE DASH
+        '‐': '-',  # U+2010 HYPHEN
+        '‑': '-',  # U+2011 NON-BREAKING HYPHEN
+        '‒': '-',  # U+2012 FIGURE DASH
+        '–': '-',  # U+2013 EN DASH
+        '—': '-',  # U+2014 EM DASH
+        '―': '-',  # U+2015 HORIZONTAL BAR
+        '−': '-',  # U+2212 MINUS SIGN
+        '﹘': '-',  # U+FE58 SMALL EM DASH
+        '﹣': '-',  # U+FE63 SMALL HYPHEN-MINUS
+        '－': '-',  # U+FF0D FULLWIDTH HYPHEN-MINUS
     }
     
     # Create a regular expression pattern to match any of the full-width punctuation characters
@@ -480,8 +505,10 @@ def normalize_whitespace(text):
 def trim_repeated_punctuation(text):
     """
     Replaces repeated punctuation with single marks.
+
+    Collapses !! → !, ?? → ?, and --- → -.
     """
-    text = re.sub(r'([?!])\1+', r'\1', text)  # !! -> !
+    text = re.sub(r'([?!])\1+', r'\1', text)  # !! -> ! and ?? -> ?
     text = re.sub(r'--+', '-', text)  # --- -> -
     return text
 
@@ -503,6 +530,8 @@ def clean_text(
          Emits a c002b warning row for each U+02C8 (IPA PRIMARY STRESS MARK)
          found before the swap, because stress marks are unexpected in Formosan
          corpus data and worth surfacing to the corpus author.
+      2b. normalize_null_morphemes — ø/Ø/∅ in morpheme position → canonical
+          '∅' (U+2205). Letter-adjacent glyphs (foreign loanwords) untouched.
       3. normalize_whitespace — collapse runs of whitespace.
       4. trim_repeated_punctuation — !! → !, ??? → ?, --- → -.
 
@@ -511,6 +540,9 @@ def clean_text(
     (V131 / TR16).
     """
     text = _strip_zero_width(text)
+    # C028 runs before everything else so decoded characters (e.g. an
+    # em-dash from '&#8212;') flow through the rest of the pipeline.
+    text = decode_entity_residue(text, xml_file, s_id, warnings)
     text = normalize_caret_variants(text)
     # Emit c002b warning for U+02C8 before it gets swapped to apostrophe.
     if warnings is not None:
@@ -518,6 +550,7 @@ def clean_text(
             if ch == "ˈ":
                 warnings.add("c002b", xml_file, s_id, ch, pos)
     text = swap_punctuation(text)
+    text = normalize_null_morphemes(text)
     text = normalize_whitespace(text)
     text = trim_repeated_punctuation(text)
     return text
@@ -556,6 +589,9 @@ def clean_trans(
     (V131 / TR16).
     """
     text = _strip_zero_width(text)
+    # C028: entity-residue decode is language-agnostic and runs before
+    # the language branch so decoded characters flow through it.
+    text = decode_entity_residue(text, xml_file, s_id, warnings)
     text = normalize_caret_variants(text)
     if _is_chinese(lang):
         text = _clean_trans_chinese(text, xml_file, s_id, warnings)
@@ -570,18 +606,47 @@ def clean_trans(
     text = trim_repeated_punctuation(text)
     return text
 
+def _load_attestation(language, reference_dir, cache):
+    """Return the casefolded attestation set for `language`, or None if absent.
+
+    `cache` is a dict reused across files in one run. A missing file caches
+    None so we do not stat it repeatedly.
+    """
+    if language in cache:
+        return cache[language]
+    result = None
+    if language:
+        path = Path(reference_dir) / language / "attestation.txt"
+        if path.exists():
+            with open(path, encoding="utf-8") as fh:
+                result = {w.strip().casefold() for w in fh if w.strip()}
+    cache[language] = result
+    return result
+
+
 def analyze_and_modify_xml_file(
     xml_dir,
     corpora_dir,
     warnings: CleanerWarnings | None = None,
     counter: TransformCounter | None = None,
     metadata_counter: dict[str, int] | None = None,
-    hard_remove_segmentation: bool = False,
-    ortho_path: str | None = None,
+    reference_dir=None,
+    _attestation_cache: dict | None = None,
+    corrections: "CleanerWarnings | None" = None,
 ):
     """
     Analyzes and modifies an XML file by cleaning text and handling specific cases in <FORM>.
+
+    `corrections` is the durable quote-correction log (append-mode
+    CleanerWarnings writing quote_corrections.csv; POL-035): actual
+    original-tier rewrites (c031 corrected, c032 stranded-repair) go
+    there, while ambiguous audit flags (c030) go to the ephemeral
+    `warnings` report.
     """
+    if reference_dir is None:
+        reference_dir = _DEFAULT_REFERENCE_DIR
+    if _attestation_cache is None:
+        _attestation_cache = {}
     for droot, dirs, files in os.walk(xml_dir):
         for file in files:
             if file.endswith(".xml"):
@@ -602,6 +667,9 @@ def analyze_and_modify_xml_file(
                 # Silling to re-open the file, but such are the times we live in.
                 tree = etree.parse(xml_file)
                 root = tree.getroot()
+                language = resolve_language(root.get(XML_LANG), root.get("dialect"))
+                dictionary = _load_attestation(language, reference_dir, _attestation_cache)
+                is_wikipedia = "Wikipedias" in Path(xml_file).parts
                 modified = False
                 metadata_repairs = normalize_translation_language_metadata(
                     root,
@@ -618,7 +686,12 @@ def analyze_and_modify_xml_file(
                 for sentence in root.findall('.//S'):
                     # Intentionally includes descendant W/M FORM tiers; they
                     # receive the same punctuation/Unicode cleanup as S FORM.
-                    form_elements = sentence.findall('.//FORM')
+                    # S/FORM[@kindOf="standard"] is excluded: standardize.py
+                    # owns all cleaning of the standard tier (C012 et al.).
+                    form_elements = [
+                        f for f in sentence.findall('.//FORM')
+                        if f.get("kindOf") != "standard"
+                    ]
                     for form_element in form_elements:
                         if form_element is not None:
                             form_text = form_element.text
@@ -662,26 +735,6 @@ def analyze_and_modify_xml_file(
                                     if ch == "*":
                                         warnings.add("c022", xml_file, sentence.get("id"), ch, i)
 
-                    # C012: handle hyphens in S-level FORM[@kindOf="standard"] only.
-                    # Must run AFTER clean_text so any clean_text output is included.
-                    # W/M FORMs keep their segmentation (they are NOT matched here
-                    # because findall("FORM[...]") returns only direct children of S).
-                    lang_code = _get_xml_lang(sentence) or ""
-                    for s_form in sentence.findall("FORM[@kindOf='standard']"):
-                        if s_form.text:
-                            new_text = _process_standard_hyphens(
-                                s_form.text,
-                                xml_file,
-                                sentence.get("id"),
-                                lang_code,
-                                warnings,
-                                hard_remove_segmentation,
-                                ortho_path,
-                            )
-                            if new_text != s_form.text:
-                                s_form.text = new_text
-                                modified = True
-
                     # Clean <TRANSL> elements
                     for transl in sentence.findall('TRANSL'):
                         transl_lang = _get_xml_lang(transl)
@@ -699,6 +752,39 @@ def analyze_and_modify_xml_file(
                                 transl.text = cleaned_transl_text
                                 modified = True
 
+                    # Quote/glottal correction: sentence-level ORIGINAL FORM only.
+                    # W/M FORMs and the standard tier are intentionally excluded.
+                    if dictionary is not None:
+                        transl_texts = [
+                            "".join(t.itertext())
+                            for t in sentence.findall('TRANSL')
+                            if "".join(t.itertext()).strip()
+                        ]
+                        for form_element in sentence.findall('FORM'):
+                            if form_element.get("kindOf") != "original":
+                                continue
+                            ft = form_element.text
+                            if not ft or QUOTE not in ft:
+                                continue
+                            new_text, corrected, stranded, ambiguous = \
+                                apply_quote_corrections(ft, transl_texts, dictionary)
+                            if corrected or stranded:
+                                form_element.text = new_text
+                                modified = True
+                            if corrections is not None:
+                                for pos in corrected:
+                                    corrections.add("c031", xml_file,
+                                                    sentence.get("id"), "'", pos)
+                                for pos in stranded:
+                                    corrections.add("c032", xml_file,
+                                                    sentence.get("id"), "'", pos)
+                            if warnings is not None and not is_wikipedia:
+                                for pos in ambiguous:
+                                    warnings.add("c030", xml_file,
+                                                 sentence.get("id"), "'", pos)
+                            if counter is not None and corrected:
+                                counter.record("'", '"', len(corrected))
+
                 if modified:
                     tree.write(xml_file, xml_declaration=True, pretty_print=True, encoding="utf-8")
                     print(f"File cleaned: {xml_file}")
@@ -707,6 +793,9 @@ def main(args):
     print(f"Processing XML files in directory: {args.corpora_path}")
     warnings_path = Path(args.corpora_path) / "cleaner_warnings.csv"
     warnings = CleanerWarnings(warnings_path)
+    # Durable quote-correction log (POL-035): append-mode, committed.
+    corrections = CleanerWarnings(
+        Path(args.corpora_path) / "quote_corrections.csv", append=True)
     counter = TransformCounter()
     metadata_counter: dict[str, int] = {}
     analyze_and_modify_xml_file(
@@ -715,10 +804,12 @@ def main(args):
         warnings=warnings,
         counter=counter,
         metadata_counter=metadata_counter,
-        hard_remove_segmentation=getattr(args, "hard_remove_segmentation", False),
-        ortho_path=getattr(args, "ortho_path", None),
+        reference_dir=getattr(args, "reference_dir", None),
+        _attestation_cache={},
+        corrections=corrections,
     )
     warnings.write_csv()
+    corrections.write_csv()
     counter.print_summary()
     if metadata_counter:
         print("\nMetadata repair summary (rule : count):")
@@ -731,25 +822,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Extract orthographic info")
     #parser.add_argument('--verbose', action='store_true', help='increase output verbosity')
     parser.add_argument('--corpora_path', help='the path to the corpus')
-    parser.add_argument(
-        "--hard-remove-segmentation",
-        action="store_true",
-        default=False,
-        help=(
-            "Force stripping of hyphens from S/FORM[@kindOf='standard'] even "
-            "when the language's canonical orthography includes '-' as a letter. "
-            "Overrides the default preserve-and-warn behavior for Bunun and Thao."
-        ),
-    )
-    parser.add_argument(
-        "--ortho-path",
-        default=None,
-        help=(
-            "Path to the canonical orthography directory (default: "
-            "Orthographies/Ortho113/ relative to the repo root). "
-            "Each <Language>.tsv under this directory is consulted by C012."
-        ),
-    )
+    parser.add_argument('--reference_dir', default=None,
+                        help='dir holding <Language>/attestation.txt '
+                             '(default: QC/validation/reference)')
     args = parser.parse_args()
 
     if not args.corpora_path:
