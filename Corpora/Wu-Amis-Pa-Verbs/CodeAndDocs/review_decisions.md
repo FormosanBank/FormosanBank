@@ -1,7 +1,6 @@
 # Reviewed sentence decisions
 
-The final source table incorporates these source-backed changes from the prior
-manual-edit overlay:
+The final source table incorporates these source-backed manual-edit records:
 
 - `s20c_person`: stop the person variant at `cingra`; keep the causee
   explanation as a translation note.
@@ -14,3 +13,6 @@ manual-edit overlay:
 
 The corresponding raw displays and locators remain in
 `direct_source_checks.tsv` and `rejected_source_examples.tsv`.
+The records remain in `manual_edits.xml` as required no-ops because the
+generator now emits the reviewed content directly. They must not be pruned
+without an explicit review decision.

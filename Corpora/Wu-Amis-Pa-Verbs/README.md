@@ -27,6 +27,7 @@ FormosanBank. Full page-review evidence is maintained in the
 - `CodeAndDocs/direct_source_checks.tsv`: 30 reviewed checks from PDF pages 6–10.
 - `CodeAndDocs/source_coverage.tsv`: disposition for all 13 PDF pages.
 - `CodeAndDocs/build_xml.py`: deterministic source-table generator.
+- `CodeAndDocs/manual_edits.xml`: retained source-backed manual-edit ledger.
 - `CodeAndDocs/audit_source_alignment.py`: structured tier and coverage audit.
 - `CodeAndDocs/adjudicate_findings.py`: exact expected-finding gate.
 - `CodeAndDocs/reproduce.sh`: current generation and QC workflow.
@@ -57,11 +58,12 @@ From this corpus directory, run:
 ./CodeAndDocs/reproduce.sh
 ```
 
-The script rebuilds XML from the reviewed tables, cleans once, standardizes,
-generates original and standard phonology, verifies source alignment, and
-runs the current XML, text, gloss, dialect, duplicate, orthography,
-vocabulary, registry, and port-readiness checks. It then byte-compares the
-rebuild with the committed XML and stores per-run reports outside the corpus.
+The script rebuilds XML from the reviewed tables, applies the retained manual
+records, cleans once, standardizes, generates original and standard phonology,
+verifies source alignment, and runs the current XML, text, gloss, dialect,
+duplicate, orthography, vocabulary, registry, and port-readiness checks. It
+then byte-compares the rebuild with the committed XML and stores per-run
+reports outside the corpus.
 
 Expected results are zero XML, validator HARD, duplicate, and port-readiness
 findings. The exact reviewed SOFT and generic gloss-audit findings are locked

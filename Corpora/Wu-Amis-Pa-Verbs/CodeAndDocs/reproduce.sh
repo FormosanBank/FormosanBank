@@ -61,6 +61,9 @@ capture_warning() {
 
 run lint "$ruff_bin" check "$corpus_root/CodeAndDocs"
 run build_xml "$python_bin" "$corpus_root/CodeAndDocs/build_xml.py"
+run apply_manual_edits "$python_bin" \
+    "$formosanbank_path/QC/cleaning/apply_manual_edits.py" \
+    --corpora_path "$corpus_root/XML"
 run clean_xml "$python_bin" "$formosanbank_path/QC/cleaning/clean_xml.py" \
     --corpora_path "$corpus_root/XML"
 capture_warning cleaner_warnings.csv
