@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Glyph-normalization fixture (Sakizaya): null markers ø (U+00F8), Ø (U+00D8),
+  and ∅ (U+2205) in morpheme position (string edge / whitespace / '-' on both
+  sides) normalize to the canonical ∅ in EVERY FORM: original and standard,
+  S/W/M levels. "Grønland" pins the guard: a letter-adjacent ø is a foreign
+  letter, never an annotation, and must survive in all tiers.
+  "ma-kero" pins that ordinary segmentation hyphens are unrelated to
+  normalization (C012 handles them, standard tier only).
+-->
+<TEXT id="TEST_NULL_NORM" citation="test" BibTeX_citation="@test{test}" copyright="test" xml:lang="szy" dialect="unknown">
+  <S id="S_1">
+    <FORM kindOf="original">ø-sitangah bangcal-Ø ∅ ma-kero Grønland.</FORM>
+    <FORM kindOf="standard">ø-sitangah bangcal-Ø ∅ ma-kero Grønland.</FORM>
+    <W id="S_1_W_1">
+      <FORM kindOf="original">ø-sitangah</FORM>
+      <M id="S_1_W_1_M_1">
+        <FORM kindOf="original">ø</FORM>
+      </M>
+      <M id="S_1_W_1_M_2">
+        <FORM kindOf="original">sitangah</FORM>
+      </M>
+    </W>
+  </S>
+</TEXT>

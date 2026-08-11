@@ -24,9 +24,15 @@ def _s_map(root):
     return {s.get("id"): s for s in root.findall(".//S") if s.get("id")}
 
 
-def _apply_file(xml_path, file_group, changelog, pruned):
+def _apply_file(xml_path, file_group, changelog, noops, prune):
     """Apply one FILE group's operations to xml_path. Returns True if the XML
-    file was modified. Appends changelog entries and pruned (rel,id) tuples."""
+    file was modified. Appends changelog entries and no-op (rel,id) tuples.
+
+    No-op records (the XML already matches, or a delete targets an absent
+    id) are only REMOVED from the manual file when ``prune`` is set —
+    ruling 2026-08-10: by default they are kept and warned about, because
+    a no-op against already-edited XML (rather than a fresh rebuild) does
+    not make the record obsolete."""
     rel = file_group.get("path")
     tree = etree.parse(str(xml_path))
     text_root = tree.getroot()
@@ -37,7 +43,10 @@ def _apply_file(xml_path, file_group, changelog, pruned):
         sid = record.get("id")
         if record.get("action") == "delete":
             if sid not in o_map:
-                pruned.append((rel, sid)); mec.remove_record(file_group, sid); continue
+                noops.append((rel, sid))
+                if prune:
+                    mec.remove_record(file_group, sid)
+                continue
             target = o_map.pop(sid)
             before = mec.render_s(target)
             target.getparent().remove(target)
@@ -48,7 +57,10 @@ def _apply_file(xml_path, file_group, changelog, pruned):
 
         if sid in o_map:
             if mec.canonical_s(record) == mec.canonical_s(o_map[sid]):
-                pruned.append((rel, sid)); mec.remove_record(file_group, sid); continue
+                noops.append((rel, sid))
+                if prune:
+                    mec.remove_record(file_group, sid)
+                continue
             before = mec.render_s(o_map[sid])
             new_el = mec.strip_s(record)  # strip after/action for the live tree
             o_map[sid].getparent().replace(o_map[sid], new_el)
@@ -75,7 +87,7 @@ def _apply_file(xml_path, file_group, changelog, pruned):
     return modified
 
 
-def apply(corpora_path, manual_file) -> int:
+def apply(corpora_path, manual_file, prune: bool = False) -> int:
     corpora_path = Path(corpora_path).resolve()
     root = mec.load_manual(manual_file)
     if root is None:
@@ -83,7 +95,7 @@ def apply(corpora_path, manual_file) -> int:
         return 0
 
     changelog: list[dict] = []
-    pruned: list[tuple] = []
+    noops: list[tuple] = []
     applied_files = 0
 
     for fg in root.findall("FILE"):
@@ -92,19 +104,30 @@ def apply(corpora_path, manual_file) -> int:
         if not xml_path.exists():
             print(f"WARNING: {rel} not found under {corpora_path}; skipping its manual edits.")
             continue
-        if _apply_file(xml_path, fg, changelog, pruned):
+        if _apply_file(xml_path, fg, changelog, noops, prune):
             applied_files += 1
 
-    for rel, sid in pruned:
-        print(f"WARNING: pruned no-op manual edit: {rel} / {sid}")
+    for rel, sid in noops:
+        if prune:
+            print(f"WARNING: pruned no-op manual edit: {rel} / {sid}")
+        else:
+            print(
+                f"WARNING: NO-OP manual edit (KEPT): {rel} / {sid} — the XML "
+                f"already matches this record. If you ran apply on "
+                f"already-edited XML rather than a fresh rebuild, this is "
+                f"expected and the record is still needed. If the upstream "
+                f"build now produces this content, the record is obsolete: "
+                f"re-run with --prune to remove it."
+            )
 
-    if pruned:
+    if noops and prune:
         mec.write_manual(root, manual_file)
 
     mec.write_changelog(changelog, mec.changelog_path(manual_file))
 
+    noop_note = "pruned" if prune else "kept (use --prune to remove)"
     print(f"apply: {len(changelog)} edit(s) across {applied_files} file(s); "
-          f"{len(pruned)} no-op(s) pruned.")
+          f"{len(noops)} no-op(s) {noop_note}.")
     return 0
 
 
@@ -113,13 +136,16 @@ def main(argv=None):
     parser.add_argument("--corpora_path", required=True, help="the corpus XML root")
     parser.add_argument("--manual_file", default=None,
                         help="manual edits file (default <corpus-root>/CodeAndDocs/manual_edits.xml)")
+    parser.add_argument("--prune", action="store_true",
+                        help="remove no-op records from manual_edits.xml "
+                             "(default: keep them and warn; ruling 2026-08-10)")
     parser.add_argument("--verbose", action="store_true")
     args = parser.parse_args(argv)
 
     if not Path(args.corpora_path).exists():
         parser.error(f"--corpora_path does not exist: {args.corpora_path}")
     manual_file = args.manual_file or mec.default_manual_file(args.corpora_path)
-    return apply(args.corpora_path, manual_file)
+    return apply(args.corpora_path, manual_file, prune=args.prune)
 
 
 if __name__ == "__main__":

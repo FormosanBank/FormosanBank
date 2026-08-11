@@ -201,3 +201,12 @@ This uses a "default" IPA encoding, because dialect is unknown.
      - `citations_to_remove`: List of citations to remove. Should come from citations_to_remove.pkl
    - **Usage**: Executes `read_article` in parallel using threading.
 
+## Apostrophe (`'`) handling
+
+The apostrophe is the glottal-stop letter in these orthographies. FormosanBank's
+`clean_xml` correction rewrites `'` used as a quotation mark to `"` in the
+`original` tier. Wikipedia articles carry no translations, so the classifier
+cannot confirm most cases; **ambiguous `'` in this corpus are accepted as glottal
+stops by fiat** and are not warned on. This should be revisited when a more
+complete Amis (and per-language) attestation dictionary is available.
+

@@ -1,0 +1,8 @@
+pattern	replacement	description
+ɮ(?=$|[^\w])	ɬ	lr is devoiced word-finally
+v(?=$|[^\w])	f	v is devoiced word-finally
+ʐ(?=$|[^\w])	ʂ	z is devoiced word-finally
+s(?=[iu])	ʃ	s is palatalized before i or u
+s(?=ə)	s̺	s is apical before schwa
+i(?=[aəou])	ij	i develops a glide before a non-i vowel
+u(?=[aəio])	uw	u develops a glide before a non-u vowel

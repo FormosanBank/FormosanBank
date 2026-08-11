@@ -15,7 +15,7 @@ Rule ID assignments for B9.4 (recorded in commit messages too):
   V114 = TR(W1) multiple_whitespace in S-standard FORM (SOFT)
   V115 = TR(W1) mismatched_quotes in S-standard FORM (SOFT)
   V116 = TR(W2) non_ascii_in_form across all tiers (SOFT)
-  V120 = TR1 null symbol in S-level standard FORM (HARD)
+  V120 = TR1 null symbol in S-level standard FORM (SOFT, downgraded 2026-08-09)
   V121 = TR2 parens or '/' in W- or M-level FORM (HARD)
   V122 = TR3 parens or '/' anywhere in FORM/TRANSL (SOFT)
   V123 = TR4 null in W/M std FORM ⇒ also in sister original (HARD)
@@ -504,14 +504,15 @@ def test_V116_unknown_xml_lang_falls_back_to_legacy_behavior(tmp_path):
 
 
 # -----------------------------------------------------------------------------
-# W4: TR1 — null symbol in S-level standard FORM (HARD)
+# W4: TR1 — null symbol in S-level standard FORM (SOFT)
 # -----------------------------------------------------------------------------
 
 
 def test_V120_null_in_S_standard_FORM_negative(tmp_path):
-    """V120 HARD: null symbol in S-level standard FORM is forbidden.
+    """V120 SOFT: null symbol in S-level standard FORM fires a SOFT finding.
 
-    Null symbol is U+2205 EMPTY SET ('∅').
+    Null symbol is U+2205 EMPTY SET ('∅'). Downgraded HARD→SOFT 2026-08-09
+    because --copy corpora legitimately retain ∅ in S-standard.
     """
     xml = (
         _TEXT_OPEN
@@ -2375,11 +2376,12 @@ def test_comprehensive_test_xml_regression(tmp_path):
         text=True,
     )
     # Per-finding detail (rule ids + element ids) now lives in the one CSV,
-    # not on the terminal. Match HARD markers against the CSV contents.
+    # not on the terminal. Match findings against the CSV contents.
     combined = soft_csv.read_text(encoding="utf-8").lower()
     # HARD findings: assert (rule_id, location-id) both appear in the CSV.
     expected_hard: tuple[tuple[str, str], ...] = (
-        ("v120", "ap3_s_2"),    # null '∅' in S-standard FORM
+        # V120 removed from here 2026-08-09: downgraded HARD→SOFT; now in
+        # expected_soft below (still fires on ap3_s_2, just as SOFT).
         ("v129", "s=1"),         # '*' in either FORM tier of S=1
         ("v129", "w=1_1"),       # '*' in W=1_1
         ("v140", "ap3_s_2"),     # S-original null not propagated down
@@ -2399,10 +2401,17 @@ def test_comprehensive_test_xml_regression(tmp_path):
     with open(soft_csv, newline="", encoding="utf-8") as fh:
         rows = list(_csv.DictReader(fh))
     soft_rule_ids_present = {r["rule_id"] for r in rows}
-    expected_soft = {"V116", "V122", "V133", "V135", "V137"}
+    # V120 added here 2026-08-09: downgraded HARD→SOFT; must still fire on
+    # ap3_s_2 (null '∅' in S-standard FORM), just as a SOFT finding now.
+    expected_soft = {"V116", "V120", "V122", "V133", "V135", "V137"}
     missing_soft = expected_soft - soft_rule_ids_present
     assert not missing_soft, (
         f"SOFT regression missing: {missing_soft!r}; csv rows={rows!r}"
+    )
+    # Also assert V120 fires specifically on ap3_s_2.
+    v120_rows = [r for r in rows if r.get("rule_id") == "V120"]
+    assert any("ap3_s_2" in str(r).lower() for r in v120_rows), (
+        f"V120 SOFT should fire on ap3_s_2; v120_rows={v120_rows!r}"
     )
 
 
@@ -2507,4 +2516,257 @@ def test_v116_skips_original_tier(tmp_path):
     assert "é" in chars, f"standard-tier é should be flagged; rows={rows!r}"
     assert "á" not in chars, (
         f"original-tier á must NOT be flagged; rows={rows!r}"
+    )
+
+
+# -----------------------------------------------------------------------------
+# TR22 V142 SOFT — UNgrammaticality/marginality visible only informally.
+#
+# Elicited-example corpora contain marginal (`?`) and ungrammatical (`*`)
+# examples. `*` in FORM is already V129 HARD; V142 covers the two
+# remaining machine-invisible shapes (POL-016): a leading `? ` marker
+# left inline in an S-level FORM (it inflates word counts and is
+# indistinguishable from punctuation downstream), and a sentence called
+# ungrammatical/marginal only in S/@source or @notes free text with
+# nothing machine-readable on the sentence. Positive judgments ("this is
+# grammatical") describe ordinary attested sentences and never fire.
+
+def test_V142_leading_question_marker_soft(tmp_path):
+    """V142 SOFT: S-level FORM starting with the `? ` marginality marker."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">? maynep=iku tu qaynepan.</FORM>'
+        + '<FORM kindOf="standard">? maynep=iku tu qaynepan.</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(proc, ("v142", "grammaticality")), (
+        f"expected V142 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V142_free_text_ungrammaticality_claim_soft(tmp_path):
+    """V142 SOFT: @source says 'ungrammatical' but nothing machine-readable."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1" source="example 40; source marks this example '
+        + 'ungrammatical and labels the translation as intended.">'
+        + '<FORM kindOf="original">icuwa kisu t-u payci?</FORM>'
+        + '<FORM kindOf="standard">icuwa kisu t-u payci?</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(proc, ("v142", "grammaticality")), (
+        f"expected V142 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V142_not_fired_on_clean_sentence(tmp_path):
+    """V142 silent: trailing '?' is punctuation; innocent @source is fine."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1" source="page 12, example 3">'
+        + '<FORM kindOf="original">icuwa kisu?</FORM>'
+        + '<FORM kindOf="standard">icuwa kisu?</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v142" not in combined, (
+        f"V142 must not fire on clean text; stdout={proc.stdout!r}"
+    )
+
+
+def test_V142_not_fired_on_grammatical_claim(tmp_path):
+    """V142 silent when @source asserts the sentence IS grammatical.
+
+    The claim regex matches 'ungrammatic…'/'marginal…' only — a positive
+    grammaticality note ('grammatical' lacks the 'ungrammatic' substring)
+    describes an ordinary attested sentence and needs no marking.
+    """
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1" source="speaker judged this fully grammatical">'
+        + '<FORM kindOf="original">icuwa kisu t-u payci?</FORM>'
+        + '<FORM kindOf="standard">icuwa kisu t-u payci?</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v142" not in combined, (
+        f"V142 must not fire on a positive grammaticality note; "
+        f"stdout={proc.stdout!r}"
+    )
+
+
+# -----------------------------------------------------------------------------
+# TR23 V143 SOFT — TRANSL declared-language vs script mismatch (rate-based).
+#
+# Catches wholesale eng/zho swaps and column shifts (NTU Bunun: ~16,300
+# swapped gloss values had no validator signal). Aggregated per
+# (file, declared language); fires only when >=5 mismatched TRANSLs AND
+# >=20% of considered TRANSLs mismatch, so sporadic loanwords and
+# code-switching stay silent.
+
+def _v143_transl_block(lang: str, texts: list[str]) -> str:
+    body = ""
+    for i, text in enumerate(texts):
+        body += (
+            f'<S id="S{lang}{i}">'
+            f'<FORM kindOf="original">kako {i}</FORM>'
+            f'<FORM kindOf="standard">kako {i}</FORM>'
+            f'<TRANSL xml:lang="{lang}">{text}</TRANSL>'
+            f'</S>'
+        )
+    return body
+
+
+def test_V143_swapped_eng_glosses_flagged(tmp_path):
+    """V143 SOFT: a file whose eng TRANSLs are overwhelmingly CJK."""
+    xml = (
+        _TEXT_OPEN
+        + _v143_transl_block("eng", ["蜂蜜是甜的"] * 6 + ["the honey is sweet"])
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(proc, ("v143", "language", "script")), (
+        f"expected V143 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V143_latin_prose_in_zho_flagged(tmp_path):
+    """V143 SOFT: zho TRANSLs holding lowercase English prose (a swap)."""
+    xml = (
+        _TEXT_OPEN
+        + _v143_transl_block("zho", ["the honey is sweet today"] * 6)
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(proc, ("v143", "language", "script")), (
+        f"expected V143 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V143_sporadic_loans_and_codes_stay_silent(tmp_path):
+    """V143 silent: one CJK loan among many eng rows; ALL-CAPS gloss codes
+    in zho rows (Leipzig codes are legitimate in either language)."""
+    xml = (
+        _TEXT_OPEN
+        + _v143_transl_block("eng", ["good morning"] * 9 + ["蜂蜜"])
+        + _v143_transl_block("zho", ["3SG.NOM"] * 6 + ["蜂蜜是甜的"] * 4)
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v143" not in combined, (
+        f"V143 must not fire on sporadic/code content; stdout={proc.stdout!r}"
+    )
+
+
+# -----------------------------------------------------------------------------
+# V132 extension — numeric character references are double-encoding too.
+
+def test_V132_double_encoded_numeric_reference_soft(tmp_path):
+    """V132 SOFT: `&amp;#8212;` in source ⇒ post-parse `&#8212;` in text."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">a &amp;#8212; b</FORM>'
+        + '<FORM kindOf="standard">a &amp;#8212; b</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(proc, ("v132", "html entity", "html entities")), (
+        f"expected V132 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+# -----------------------------------------------------------------------------
+# V146/V147 SOFT — PHON variant-group notation (POL-013, ruled 2026-08-10)
+#
+# Phonemic variants in PHON are written [x|y] (profile IPA values flow
+# verbatim). V146 flags malformed groups; V147 flags legacy bare-tilde
+# variants left from pre-migration PHON ("regenerate with the migrated
+# profiles").
+
+def test_V146_malformed_variant_group_flagged(tmp_path):
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">aba</FORM>'
+        + '<FORM kindOf="standard">aba</FORM>'
+        + '<PHON kindOf="standard">a[b|va</PHON>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(proc, ("v146", "variant group")), (
+        f"expected V146; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V146_silent_on_well_formed_groups(tmp_path):
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">aba caca</FORM>'
+        + '<FORM kindOf="standard">aba caca</FORM>'
+        + '<PHON kindOf="standard">a[b|v]a [ʦ|ʨ]a[ɬ|ɮ|l]a</PHON>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v146" not in combined and "v147" not in combined, (
+        f"no PHON notation findings expected; stdout={proc.stdout!r}"
+    )
+
+
+def test_V146_single_alternative_group_flagged(tmp_path):
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">aba</FORM>'
+        + '<FORM kindOf="standard">aba</FORM>'
+        + '<PHON kindOf="standard">a[b]a</PHON>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(proc, ("v146", "variant group")), (
+        f"expected V146; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V147_legacy_tilde_in_phon_flagged(tmp_path):
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">aba</FORM>'
+        + '<FORM kindOf="standard">aba</FORM>'
+        + '<PHON kindOf="standard">ab~va</PHON>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(proc, ("v147", "legacy")), (
+        f"expected V147; stdout={proc.stdout!r} stderr={proc.stderr!r}"
     )

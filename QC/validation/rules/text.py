@@ -41,6 +41,11 @@ Rule ID assignments (B9.4):
        V137 TR19 trailing-decimal footnote in FORM/TRANSL (SOFT)
        V138 TR20 superscript-digit footnote in FORM/TRANSL (SOFT)
        V139 TR21 bracketed-digit footnote in FORM/TRANSL (SOFT)
+  W11 (2026-08-10):
+       V142 TR22 UNgrammaticality/marginality visible only informally (SOFT)
+       V143 TR23 TRANSL language/script mismatch, rate-based (SOFT)
+       V146 TR24 malformed [x|y] variant group in PHON (SOFT)
+       V147 TR25 legacy x~y variant notation in PHON (SOFT)
 """
 import re
 from collections import Counter
@@ -498,7 +503,7 @@ def v116_non_ascii_in_form(
 
 
 # ---------------------------------------------------------------------------
-# W4: TR1 — null symbol in S-level standard FORM (HARD)
+# W4: TR1 — null symbol in S-level standard FORM (SOFT)
 # ---------------------------------------------------------------------------
 
 def v120_null_in_S_standard(
@@ -506,11 +511,20 @@ def v120_null_in_S_standard(
     path: Path,
     index: CorpusIndex | None,
 ) -> list[Finding]:
-    """V120 HARD (TR1): null symbol '∅' in S-level standard FORM is forbidden.
+    """V120 SOFT (TR1): null symbol '∅' in S-level standard FORM is a warning.
 
-    The S-standard tier is the project's canonical sentence-level surface
-    text. A null symbol there indicates an unresolved elision marker
-    that should have been resolved during cleaning.
+    S-standard should normally have null units removed by standardize.py
+    (non-``--copy`` modes), but ``--copy`` corpora legitimately retain them
+    (2026-08-09 null-morpheme spec): standardize.py's ``--copy`` mode is a
+    pure duplication that keeps the original tier unchanged, so a corpus that
+    has not yet been re-standardized in TSV or ``--remove_accents`` mode will
+    retain ``∅`` in its S-standard FORM. V120 is therefore a heads-up (SOFT)
+    rather than a failure — it flags a state that is normal for ``--copy``
+    corpora and should be cleaned up only when full standardization runs.
+
+    Downgraded HARD → SOFT on 2026-08-09 so that ``--copy`` corpora
+    (e.g. NTUFormosanCorpus) do not newly fail QC after null-marker
+    normalization lands in clean_xml.
     """
     findings: list[Finding] = []
     for s in tree.iter("S"):
@@ -520,9 +534,9 @@ def v120_null_in_S_standard(
         s_id = s.get("id") or ""
         findings.append(Finding(
             rule_id="V120",
-            severity=Severity.HARD,
+            severity=Severity.SOFT,
             message=(
-                f"V120 HARD: null symbol '{NULL_SYMBOL}' in S-level standard FORM "
+                f"V120 SOFT: null symbol '{NULL_SYMBOL}' in S-level standard FORM "
                 f"(null in s-level standard); S id={s_id!r}"
             ),
             path=path,
@@ -727,6 +741,14 @@ def v125_null_in_W_requires_child_M_and_S_original(
     morpheme structure to explain the elision is anomalous. Adjust the
     rule (or add a separate exemption) if real corpora demonstrate that
     pattern is legitimate.
+
+    Overlap with V069 (QC/validation/rules/gloss.py): V069 is a gloss-level
+    rule that requires an M FORM to be *exactly* '∅' in standalone morpheme
+    position, and does not check S-original. V125 uses substring containment
+    for the M-side check and additionally requires the S-level original FORM
+    to contain '∅'. Both rules intentionally coexist — V125 is the
+    text-validation anchor; V069 adds stricter morpheme-position enforcement
+    at the gloss-validation level (added 2026-08-09).
     """
     findings: list[Finding] = []
     for w in tree.iter("W"):
@@ -1057,7 +1079,9 @@ def v131_zero_width_or_BOM_in_FORM_TRANSL(
 # (e.g., `&amp;amp;` in the XML). Aggregated per (file, entity) for the
 # SOFT CSV.
 
-_HTML_ENTITY_RE = re.compile(r"&(?:amp|apos|lt|gt|quot);")
+_HTML_ENTITY_RE = re.compile(
+    r"&(?:amp|apos|lt|gt|quot|#\d{1,7}|#x[0-9A-Fa-f]{1,6});"
+)
 
 
 def v132_html_entities_in_FORM_TRANSL(
@@ -1541,6 +1565,240 @@ def v141_W_reconstructs_S(
     return findings
 
 
+# TR22 V142 SOFT — UNgrammaticality/marginality visible only informally.
+#
+# POL-016 (ruled 2026-08-10): ungrammatical (*) and marginal (?) examples
+# are EXCLUDED from FormosanBank corpora at intake. '*' in FORM is already
+# V129 HARD (any tier, since 2026-06-01). V142 covers the two remaining
+# shapes: a leading `? ` marker left inline in an S-level FORM, and a
+# sentence called ungrammatical/marginal only in @source/@notes free text.
+# A hit means "this sentence should have been excluded — or the marker is
+# stray punctuation to clean; review and remove one or the other."
+# Positive judgments ("this is grammatical") never fire.
+
+_GRAMMATICALITY_CLAIM_RE = re.compile(r"ungrammatic|marginal", re.IGNORECASE)
+
+
+def v142_unmarked_grammaticality(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V142 SOFT (TR22): UNgrammaticality/marginality visible only informally.
+
+    This rule is about sentences the source marks as *defective*
+    (ungrammatical `*` or marginal `?`). A note saying a sentence IS
+    grammatical describes an ordinary attested sentence and never fires
+    (the claim regex matches the substrings 'ungrammatic'/'marginal'
+    only — 'grammatical' contains neither).
+
+    (a) An S-level FORM whose text begins with `? ` — the marginality
+        marker reads as punctuation downstream and inflates word counts
+        (2 of the 7 V060 findings in the Lin-Interrogative audit were
+        this marker counted as a word).
+    (b) An S whose @source, or whose S-level FORM/TRANSL @notes, calls
+        the example ungrammatical or marginal in free text — downstream
+        consumers (token counts, LM training) cannot distinguish these
+        from ordinary attested sentences.
+
+    Per POL-016 (ruled 2026-08-10: such examples are excluded at
+    intake), a hit is a sentence that should have been excluded — or a
+    stray marker to clean. Review and remove one or the other.
+    """
+    lang = _resolve_language(tree)
+    findings: list[Finding] = []
+    for s in tree.iter("S"):
+        for form in s.findall("FORM"):
+            text = (form.text or "").lstrip()
+            if text.startswith("? "):
+                findings.append(_soft_finding(
+                    rule_id="V142",
+                    message=(
+                        "V142 SOFT grammaticality marker '? ' inline in "
+                        f"S-level FORM (kindOf={form.get('kindOf')!r})"
+                    ),
+                    path=path,
+                    elem=form,
+                    language=lang,
+                    character="?",
+                ))
+        claims = [s.get("source") or ""]
+        claims += [el.get("notes") or "" for el in s.findall("FORM")]
+        claims += [el.get("notes") or "" for el in s.findall("TRANSL")]
+        claimed = [c for c in claims if _GRAMMATICALITY_CLAIM_RE.search(c)]
+        if claimed:
+            findings.append(_soft_finding(
+                rule_id="V142",
+                message=(
+                    "V142 SOFT sentence called ungrammatical/marginal only "
+                    f"in free text ({claimed[0][:60]!r}); nothing "
+                    "machine-readable marks it"
+                ),
+                path=path,
+                elem=s,
+                language=lang,
+            ))
+    return findings
+
+
+# TR23 V143 SOFT — TRANSL declared-language vs script mismatch, rate-based.
+#
+# Catches wholesale eng/zho swaps and column-shifted gloss grids (NTU
+# Bunun: ~16,300 swapped values, zero validator signal at the time).
+# Aggregated per (file, declared language) with a rate gate so sporadic
+# loanwords, code-switching, and Leipzig gloss codes stay silent.
+
+_V143_MIN_MISMATCHES = 5
+_V143_MIN_RATE = 0.2
+
+
+def v143_transl_language_script_mismatch(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V143 SOFT (TR23): TRANSL script contradicts its declared language.
+
+    Per TRANSL (all levels) with xml:lang eng or zho, classify script
+    content: eng text whose CJK chars outnumber Latin letters, or zho
+    text with >=3 lowercase Latin letters outnumbering CJK chars (the
+    lowercase gate exempts ALL-CAPS Leipzig codes like '3SG.NOM', which
+    are legitimate in either language). One aggregated finding per
+    (file, language) when >= _V143_MIN_MISMATCHES elements mismatch AND
+    they are >= _V143_MIN_RATE of that language's considered TRANSLs.
+    """
+    per_lang: dict[str, list[int]] = {}
+    for elem in tree.iter("TRANSL"):
+        declared = (elem.get(_XML_LANG) or "").strip().lower()
+        if declared not in ("eng", "zho"):
+            continue
+        text = elem.text or ""
+        latin = sum(1 for ch in text if ("a" <= ch <= "z") or ("A" <= ch <= "Z"))
+        lower_latin = sum(1 for ch in text if "a" <= ch <= "z")
+        cjk = sum(1 for ch in text if _is_cjk(ch))
+        if latin + cjk < 2:
+            continue
+        considered_mismatched = per_lang.setdefault(declared, [0, 0])
+        considered_mismatched[0] += 1
+        if declared == "eng":
+            mismatch = cjk > latin
+        else:
+            mismatch = lower_latin >= 3 and lower_latin > cjk
+        if mismatch:
+            considered_mismatched[1] += 1
+    findings: list[Finding] = []
+    for declared, (considered, mismatched) in sorted(per_lang.items()):
+        if mismatched < _V143_MIN_MISMATCHES:
+            continue
+        if mismatched / considered < _V143_MIN_RATE:
+            continue
+        wrong_script = "CJK" if declared == "eng" else "lowercase Latin"
+        findings.append(Finding(
+            rule_id="V143",
+            severity=Severity.SOFT,
+            message=(
+                f"V143 SOFT transl language/script mismatch: {mismatched} of "
+                f"{considered} TRANSL[@xml:lang='{declared}'] are majority-"
+                f"{wrong_script} — likely swapped languages or a "
+                f"column-shifted gloss grid"
+            ),
+            path=path,
+            language=declared,
+            count=mismatched,
+        ))
+    return findings
+
+
+# TR24/TR25 V146/V147 SOFT — PHON variant-group notation (POL-013,
+# ruled 2026-08-10). Phonemic variants in PHON are written [x|y]; the
+# values flow verbatim from profile IPA cells. V146 = malformed group
+# (generation/profile bug). V147 = legacy bare-tilde variant left from
+# pre-migration PHON — regenerate with the migrated profiles.
+
+_VARIANT_GROUP_RE = re.compile(r"\[([^\[\]]*)\]")
+_LEGACY_PHON_VARIANT_RE = re.compile(r"[^\s~]~[^\s~]")
+
+
+def _malformed_variant_reason(text: str) -> str | None:
+    depth = 0
+    for ch in text:
+        if ch == "[":
+            depth += 1
+            if depth > 1:
+                return "nested '['"
+        elif ch == "]":
+            depth -= 1
+            if depth < 0:
+                return "']' without '['"
+    if depth != 0:
+        return "unbalanced brackets"
+    stripped = _VARIANT_GROUP_RE.sub("", text)
+    if "|" in stripped:
+        return "'|' outside a variant group"
+    for group in _VARIANT_GROUP_RE.findall(text):
+        alternatives = group.split("|")
+        if len(alternatives) < 2 or any(not a for a in alternatives):
+            return f"group '[{group}]' needs 2+ non-empty alternatives"
+    return None
+
+
+def v146_phon_variant_group_malformed(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V146 SOFT (TR24): malformed [x|y] variant group in a PHON."""
+    lang = _resolve_language(tree)
+    findings: list[Finding] = []
+    for phon in tree.iter("PHON"):
+        text = phon.text or ""
+        if "[" not in text and "]" not in text and "|" not in text:
+            continue
+        reason = _malformed_variant_reason(text)
+        if reason is None:
+            continue
+        findings.append(_soft_finding(
+            rule_id="V146",
+            message=(
+                f"V146 SOFT malformed PHON variant group ({reason}) in "
+                f"{text!r} — profile value or generation bug (POL-013)"
+            ),
+            path=path,
+            elem=phon,
+            language=lang,
+        ))
+    return findings
+
+
+def v147_phon_legacy_tilde_variant(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V147 SOFT (TR25): legacy x~y variant notation in a PHON.
+
+    Pre-migration PHON carries 'b~v' style variants; the profiles now
+    write '[b|v]'. Regenerate PHON (add_phonology) to migrate.
+    """
+    lang = _resolve_language(tree)
+    findings: list[Finding] = []
+    for phon in tree.iter("PHON"):
+        text = phon.text or ""
+        if _LEGACY_PHON_VARIANT_RE.search(text):
+            findings.append(_soft_finding(
+                rule_id="V147",
+                message=(
+                    f"V147 SOFT legacy '~' variant notation in PHON "
+                    f"{text!r}; regenerate PHON with the migrated "
+                    f"profiles (POL-013: canonical is '[x|y]')"
+                ),
+                path=path,
+                elem=phon,
+                language=lang,
+            ))
+    return findings
+
+
 RULES: list = [
     # W1 (V110-V115): ported from validate_punct.py
     v110_smart_quotes,
@@ -1552,6 +1810,8 @@ RULES: list = [
     # W2 (V116): ported from non_ascii_counts.py
     v116_non_ascii_in_form,
     # W4-W9 (V120-V126): source-text quality rules
+    # V120 is SOFT (downgraded HARD→SOFT 2026-08-09: --copy corpora legitimately
+    # retain ∅ in S-standard; see v120_null_in_S_standard docstring).
     v120_null_in_S_standard,
     v121_parens_slashes_in_W_or_M_FORM,
     v122_parens_slashes_anywhere,
@@ -1577,5 +1837,11 @@ RULES: list = [
     v140_null_in_S_original_requires_child_W_and_M,
     # V141: W FORMs reconstruct the S FORM (sibling of gloss V068)
     v141_W_reconstructs_S,
+    # V142/V143: 2026-08-10 audit-driven rules (POL-016; NTU gloss swaps)
+    v142_unmarked_grammaticality,
+    v143_transl_language_script_mismatch,
+    # V146/V147: PHON variant-group notation (POL-013)
+    v146_phon_variant_group_malformed,
+    v147_phon_legacy_tilde_variant,
 ]
 CROSS_FILE_RULES: list = []

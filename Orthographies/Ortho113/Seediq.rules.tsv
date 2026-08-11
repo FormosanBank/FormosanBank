@@ -1,0 +1,8 @@
+pattern	replacement	description	dialect
+ʦ(?=[ij])	c	c is a palatal stop [c] before i or the glide y[j]; the affricate [ʦ] elsewhere	Truku
+ow	o	word-medial allophone ow is the mid vowel [o]	Truku
+i(?=[ħq])	e	high i lowers to mid [e] before h or q	Truku
+(?<=[ħq])i	e	high i lowers to mid [e] after h or q	Truku
+u(?=[ħq])	o	high u lowers to mid [o] before h or q	Truku
+(?<=[ħq])u	o	high u lowers to mid [o] after h or q	Truku
+əə	əʔə	doubled central vowel ee marks a glottal stop [ʔ]	Truku

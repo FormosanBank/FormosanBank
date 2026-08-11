@@ -1,0 +1,13 @@
+pattern	replacement	description
+aa	a	identical adjacent a vowels are one continuous vowel
+ii	i	identical adjacent i vowels are one continuous vowel
+uu	u	identical adjacent u vowels are one continuous vowel
+oo	o	identical adjacent o vowels are one continuous vowel
+əə	ə	identical adjacent e vowels are one continuous vowel
+l(?=$|[^\w])	ɬ	lj is devoiced word-finally
+(?<=[pbv])əm	ən	schwa plus m becomes schwa plus n after a labial
+(?<=[sz])ə	ɨ	e is raised after s or z
+(?<=ts)ə	ɨ	e is raised after c
+(?<=m)ə(?=[^mʔ\W])		schwa is deleted after m before a following segment
+(?<=n)ə(?=[^nʔ\W])		schwa is deleted after n before a following segment
+(?<=ŋ)ə(?=[^ŋʔ\W])		schwa is deleted after ng before a following segment

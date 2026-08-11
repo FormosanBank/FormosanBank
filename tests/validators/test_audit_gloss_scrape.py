@@ -189,6 +189,37 @@ def test_g004_silent_when_root_present_case_insensitively():
     assert _run(gloss_scrape.g004_infix_root_reconstructed, xml) == []
 
 
+def test_g004_silent_on_double_infix_with_fully_rejoined_root():
+    """Regression: 't<em>a<ka>kesi=ku' (Puyuma, Teng 2008) carries two infixes.
+
+    The corpus convention rejoins the root across ALL infixes ('takesi', with
+    '-em-' and '-ka-' as their own Ms). Removing one infix at a time expects
+    'ta<ka>kesi' / 't<em>akesi', which no convention-following corpus spells —
+    on the Teng grammar that made every double-infix word two guaranteed
+    false HARD findings (12 of 12 G004 rows)."""
+    xml = """<TEXT><S id="s"><W id="w">
+        <FORM kindOf="original">t&lt;em&gt;a&lt;ka&gt;kesi=ku</FORM>
+        <M id="m0"><FORM kindOf="original">-em-</FORM></M>
+        <M id="m1"><FORM kindOf="original">-ka-</FORM></M>
+        <M id="m2"><FORM kindOf="original">takesi</FORM></M>
+        <M id="m3"><FORM kindOf="original">=ku</FORM></M>
+    </W></S></TEXT>"""
+    assert _run(gloss_scrape.g004_infix_root_reconstructed, xml) == []
+
+
+def test_g004_double_infix_missing_root_fires_once_with_full_root():
+    xml = """<TEXT><S id="s"><W id="w">
+        <FORM kindOf="original">t&lt;em&gt;a&lt;ka&gt;kesi=ku</FORM>
+        <M id="m0"><FORM kindOf="original">-em-</FORM></M>
+        <M id="m1"><FORM kindOf="original">-ka-</FORM></M>
+        <M id="m2"><FORM kindOf="original">ta</FORM></M>
+        <M id="m3"><FORM kindOf="original">kesi</FORM></M>
+    </W></S></TEXT>"""
+    findings = _run(gloss_scrape.g004_infix_root_reconstructed, xml)
+    assert len(findings) == 1
+    assert "'takesi'" in findings[0].message
+
+
 def test_g005_flags_rare_label_one_edit_from_frequent_one():
     ms = "".join(
         f'<M id="m{i}"><FORM kindOf="original">x</FORM>'
@@ -372,6 +403,56 @@ def test_repeated_source_example_is_not_reported_as_dropped(tmp_path):
     assert dropped == {"(2)"}
 
 
+SHORT_XML = """<?xml version="1.0" encoding="UTF-8"?>
+<TEXT xml:lang="pyu" citation="c" BibTeX_citation="b" copyright="c">
+  <S id="short1">
+    <FORM kindOf="original">adri saygu</FORM>
+    <TRANSL xml:lang="eng">She's not able to.</TRANSL>
+  </S>
+</TEXT>
+"""
+
+SHORT_SOURCE = """\
+(1) adri saygu
+NEG able
+'She's not able to.'
+"""
+
+
+def test_short_sentence_matches_source_exactly_no_spurious_g021(tmp_path):
+    """Regression: sentences whose letter skeleton is under MIN_SKELETON were
+    skipped outright, so their source example looked dropped. On the Teng
+    Puyuma grammar that manufactured 6 of 52 G021 HARDs ('adri saygu',
+    'ma-biring', 'u-ngesal=la', ...) for sentences demonstrably in the XML.
+    Short skeletons are matched by exact containment instead of fuzz."""
+    source = tmp_path / "paper.txt"
+    source.write_text(SHORT_SOURCE, encoding="utf-8")
+    xml_path = tmp_path / "corpus.xml"
+    xml_path.write_text(SHORT_XML, encoding="utf-8")
+    trees = [(xml_path, _tree(SHORT_XML))]
+    lines, extractor = _source_align.extract_lines(source)
+    alignment = _source_align.align(trees, lines, extractor)
+    findings = _source_align.source_findings(trees, alignment, source)
+    assert [f.rule_id for f in findings if f.rule_id == "G021"] == []
+    assert any(key.endswith("::short1") for key in alignment.matched)
+
+
+def test_very_short_sentence_still_skipped_without_g020(tmp_path):
+    """A sentence too short even for exact matching ('i a') stays out of both
+    the matched set and the G020 bucket — absence of evidence, not evidence."""
+    xml = SHORT_XML.replace("adri saygu", "i a")
+    source = tmp_path / "paper.txt"
+    source.write_text("(1) something else entirely\n'x.'\n", encoding="utf-8")
+    xml_path = tmp_path / "corpus.xml"
+    xml_path.write_text(xml, encoding="utf-8")
+    trees = [(xml_path, _tree(xml))]
+    lines, extractor = _source_align.extract_lines(source)
+    alignment = _source_align.align(trees, lines, extractor)
+    findings = _source_align.source_findings(trees, alignment, source)
+    assert [f.rule_id for f in findings if f.rule_id == "G020"] == []
+    assert alignment.matched == {}
+
+
 def test_g020_reports_xml_sentence_absent_from_source(tmp_path):
     fabricated = CLEAN_XML.replace(
         "Pa~pa&lt;mi&gt;kat-en k-u=ni na-a-pa paliding-∅!",
@@ -400,6 +481,69 @@ def test_g013_flags_collapsed_translations(tmp_path):
     assert "Drive this car!" in g013[0].message
 
 
+SUBEXAMPLE_XML = """<?xml version="1.0" encoding="UTF-8"?>
+<TEXT xml:lang="ami" citation="c" BibTeX_citation="b" copyright="c">
+  <S id="e1a">
+    <FORM kindOf="original">Pa~pa&lt;mi&gt;kat-en k-u=ni na-a-pa paliding-∅!</FORM>
+    <TRANSL xml:lang="eng">Walk with him!</TRANSL>
+  </S>
+  <S id="e1b">
+    <FORM kindOf="original">mi-kucakuc-ay ø-ci aki t-u kilang</FORM>
+    <TRANSL xml:lang="eng">Aki climbed the tree.</TRANSL>
+  </S>
+</TEXT>
+"""
+
+SUBEXAMPLE_SOURCE = """\
+(1) a. Pa~pa<mi>kat-en k-u=ni na-a-pa paliding-∅!
+CAU~<IMP>walk-UV NOM-NCM=this SG-LNK-SG car-OBL
+'Walk with him!'
+b. mi-kucakuc-ay ø-ci aki t-u kilang
+AV-climb-FAC NOM-PPN Aki DAT-CM tree
+'Aki climbed the tree.'
+"""
+
+
+def test_g013_silent_when_sub_examples_account_for_all_translations(tmp_path):
+    """Regression: a lettered example '(35) a./b./c.' is ONE detected region
+    holding every sub-example's translation, but each sub-example is its own
+    <S> with its own TRANSL. Comparing the region's translation count against
+    each single S made every multi-part example fire — 165 of 254 G013 rows
+    on the Teng Puyuma grammar. The comparison unit is the region: all
+    translations of all sentences matched into it, together."""
+    source = tmp_path / "paper.txt"
+    source.write_text(SUBEXAMPLE_SOURCE, encoding="utf-8")
+    xml_path = tmp_path / "corpus.xml"
+    xml_path.write_text(SUBEXAMPLE_XML, encoding="utf-8")
+    trees = [(xml_path, _tree(SUBEXAMPLE_XML))]
+    lines, extractor = _source_align.extract_lines(source)
+    alignment = _source_align.align(trees, lines, extractor)
+    findings = _source_align.source_findings(trees, alignment, source)
+    assert [f for f in findings if f.rule_id == "G013"] == []
+
+
+def test_g013_duplicate_sentences_in_one_region_still_fire(tmp_path):
+    """Papers repeat examples: '(70)' on p81 reappears as '(56)' on p197.
+    When both copies fuzzy-match the same region, their TRANSLs must not be
+    summed as if they were sub-examples — two copies of a 1-TRANSL sentence
+    do not account for a region offering 2 readings. (This silenced the real
+    p081_e70 dropped-alternate finding on the Teng Puyuma grammar.)"""
+    xml = SUBEXAMPLE_XML.replace(
+        "mi-kucakuc-ay ø-ci aki t-u kilang",
+        "Pa~pa&lt;mi&gt;kat-en k-u=ni na-a-pa paliding-∅!",
+    ).replace("Aki climbed the tree.", "Walk with him!")
+    source_text = (
+        "(1) Pa~pa<mi>kat-en k-u=ni na-a-pa paliding-∅!\n"
+        "CAU~<IMP>walk-UV NOM-NCM=this SG-LNK-SG car-OBL\n"
+        "'Walk with him!'\n"
+        "'Drive this car!'\n"
+    )
+    findings = _align_pair(tmp_path, source_text, xml)
+    g013 = [f for f in findings if f.rule_id == "G013"]
+    assert len(g013) == 1
+    assert "Drive this car!" in g013[0].message
+
+
 def test_g022_reports_characters_lost_against_source(tmp_path):
     stripped = CLEAN_XML.replace("paliding-∅", "paliding").replace(
         "<FORM kindOf=\"original\">∅</FORM>", "<FORM kindOf=\"original\">x</FORM>"
@@ -409,6 +553,43 @@ def test_g022_reports_characters_lost_against_source(tmp_path):
     g022 = [f for f in findings if f.rule_id == "G022"]
     assert g022, "expected the dropped ∅ to be reported"
     assert "U+2205" in g022[0].message
+
+
+def _align_pair(tmp_path: Path, source_text: str, xml: str):
+    source = tmp_path / "paper.txt"
+    source.write_text(source_text, encoding="utf-8")
+    xml_path = tmp_path / "corpus.xml"
+    xml_path.write_text(xml, encoding="utf-8")
+    trees = [(xml_path, _tree(xml))]
+    lines, extractor = _source_align.extract_lines(source)
+    alignment = _source_align.align(trees, lines, extractor)
+    return _source_align.source_findings(trees, alignment, source)
+
+
+def test_g022_ignores_curly_vs_straight_apostrophe(tmp_path):
+    """Look-alike glyph conversions are deliberate XML-safety normalization
+    (and the QC pipeline's business anyway). On the Teng Puyuma grammar the
+    documented curly→straight conversion produced 349 of 409 G022 rows."""
+    source_text = "(1) tu=alrak-aw na barasa’ nini\n3GEN=take-TR1 DF.NOM stone this\n'He took the stone.'\n"
+    xml = SHORT_XML.replace("adri saygu", "tu=alrak-aw na barasa' nini")
+    findings = _align_pair(tmp_path, source_text, xml)
+    assert [f for f in findings if f.rule_id == "G022"] == []
+
+
+def test_g022_still_reports_apostrophe_dropped_entirely(tmp_path):
+    """Folding ’ to ' must not hide a glottal-stop apostrophe that vanished."""
+    source_text = "(1) tu=alrak-aw na barasa’ nini\n3GEN=take-TR1 DF.NOM stone this\n'He took the stone.'\n"
+    xml = SHORT_XML.replace("adri saygu", "tu=alrak-aw na barasa nini")
+    findings = _align_pair(tmp_path, source_text, xml)
+    g022 = [f for f in findings if f.rule_id == "G022"]
+    assert g022 and "U+2019" in g022[0].message
+
+
+def test_g022_ignores_en_dash_vs_hyphen(tmp_path):
+    source_text = "(1) mi–kucakuc–ay tama aki kilang\nAV–climb–FAC father Aki tree\n'Aki climbed the tree.'\n"
+    xml = SHORT_XML.replace("adri saygu", "mi-kucakuc-ay tama aki kilang")
+    findings = _align_pair(tmp_path, source_text, xml)
+    assert [f for f in findings if f.rule_id == "G022"] == []
 
 
 # --------------------------------------------------------------------------
@@ -436,6 +617,17 @@ def test_source_discovery_prefers_pdf_over_derived_text(tmp_path):
     assert candidates[0].name == "paper.pdf"
 
 
+def test_source_discovery_looks_under_private(tmp_path):
+    """Dev repos keep copyrighted source PDFs under Private/, which must be
+    searched: a missed source silently skips all of Group C."""
+    from QC.validation import audit_gloss_scrape
+
+    (tmp_path / "Private" / "source").mkdir(parents=True)
+    (tmp_path / "Private" / "source" / "paper.pdf").write_bytes(b"%PDF-1.4")
+    candidates = audit_gloss_scrape.discover_sources(tmp_path)
+    assert [c.name for c in candidates] == ["paper.pdf"]
+
+
 def test_audit_exits_zero_on_hard_findings_by_default(tmp_path):
     from QC.validation import audit_gloss_scrape
 
@@ -459,3 +651,42 @@ def test_audit_exit_on_hard_flag_returns_one(tmp_path):
         "--csv", str(tmp_path / "out.csv"),
     ])
     assert code == 1
+
+
+def test_g004_silent_on_stacked_infixes_with_rejoined_root():
+    """Two infixes in one unit (Puyuma-Teng false-positive class): the root
+    candidate must be computed with ALL infixes removed, not one at a time."""
+    xml = """<TEXT><S id="s"><W id="w">
+        <FORM kindOf="original">p&lt;in&gt;&lt;al&gt;ukpuk</FORM>
+        <M id="m0"><FORM kindOf="original">-in-</FORM></M>
+        <M id="m1"><FORM kindOf="original">-al-</FORM></M>
+        <M id="m2"><FORM kindOf="original">pukpuk</FORM></M>
+    </W></S></TEXT>"""
+    assert _run(gloss_scrape.g004_infix_root_reconstructed, xml) == []
+
+
+def test_g004_silent_when_root_hyphenated_at_infix_point():
+    """POL-014: the root written with '-' at the infixation point (t-a for
+    t<um>a) is the conformant M spelling; G004 accepts it alongside the
+    rejoined spelling."""
+    xml = """<TEXT><S id="s"><W id="w">
+        <FORM kindOf="original">t&lt;um&gt;a-ta&#x14B;i</FORM>
+        <M id="m0"><FORM kindOf="original">t-a</FORM></M>
+        <M id="m1"><FORM kindOf="original">-um-</FORM></M>
+        <M id="m2"><FORM kindOf="original">ta&#x14B;i</FORM></M>
+    </W></S></TEXT>"""
+    assert _run(gloss_scrape.g004_infix_root_reconstructed, xml) == []
+
+
+def test_g004_still_fires_on_stacked_infixes_with_split_root():
+    """Stacked infixes must not blind the rule to a genuinely split root."""
+    xml = """<TEXT><S id="s"><W id="w">
+        <FORM kindOf="original">p&lt;in&gt;&lt;al&gt;ukpuk</FORM>
+        <M id="m0"><FORM kindOf="original">-in-</FORM></M>
+        <M id="m1"><FORM kindOf="original">-al-</FORM></M>
+        <M id="m2"><FORM kindOf="original">p</FORM></M>
+        <M id="m3"><FORM kindOf="original">ukpuk</FORM></M>
+    </W></S></TEXT>"""
+    findings = _run(gloss_scrape.g004_infix_root_reconstructed, xml)
+    assert [f.location for f in findings] == ["S=s W=w"]
+    assert "pukpuk" in findings[0].message
