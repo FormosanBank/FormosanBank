@@ -24,6 +24,12 @@ This corpus contains the Formosan lexical data from Robert Gordon Latham's 1862 
 <!-- CORPUS STATS END -->
 
 
+## **Corpus Processing**
+
+The hand transcription lives in a reviewed, page-addressed source ledger (`CodeAndDocs/source_ledger.tsv`), from which `CodeAndDocs/build_lexical_xml.py` rebuilds the XML; every emitted field is independently verified against the ledger. Each source cell becomes one lexical `S` record, and comma-separated source variants become separate `FORM kindOf="alternate"` entries. The maintenance pipeline (`CodeAndDocs/make_xml.sh`) then runs `clean_xml.py` (a verified no-op — the transcription is already clean) and `standardize.py --copy`, so the `kindOf="standard"` tier is a faithful, letter-for-letter copy of the original, with Latham's historical diacritics (`â á ó é à`) preserved. There is no `PHON` tier, by design: a historical lexical table with no living pronunciation reference gets no phonology.
+
+***
+
 ## **Access Details**
 
 * The repo containing this corpus in FormosanBank as well as the code to reconstruct the corpus can be found [here](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/Latham-1862).
