@@ -13,12 +13,19 @@ deferred (see B9.3 plan, "Open questions").
 Rules:
 - V060 SOFT: W-count vs. word-count in S-level FORM[@kindOf="original"].
 - V061 SOFT: M-count vs. morpheme count implied by W FORM segmentation.
-- V062 HARD: M with infix-shaped FORM requires angle-bracket gloss on parent W's TRANSL.
-- V063 HARD: W-FORM segmentation markers preserved when S-FORM has > 3 markers.
-- V064 HARD: every M element must have at least one TRANSL child.
+- V062 SOFT: M with infix-shaped FORM should have an angle-bracket gloss on parent W's TRANSL.
+- V063 HARD/SOFT: W-FORM segmentation markers preserved when S-FORM has > 3 markers
+  (SOFT when the file has no standard tier at all, so retention is unverifiable).
+- V064 SOFT: every M element should have at least one TRANSL child.
 - V065 SOFT: every W element should have at least one TRANSL child.
 - V066 HARD: '=' (clitic boundary) in a W FORM must appear in at least one child M FORM.
 - V067 HARD: '<' or '>' in an M FORM is forbidden; infix Ms must use '-X-' notation.
+
+V062/V064/V065 form the **gloss-presence family**: gloss coverage and
+gloss notation are *reported*, never fatal. Some corpora legitimately
+gloss only part of their material, and some record infix glosses in
+prose rather than Leipzig angle brackets; both are worth surfacing in
+case they are unintended, but neither can block publication.
 """
 import re
 from collections import Counter
@@ -247,7 +254,8 @@ def v061_M_count_matches_form_segmentation(
 
 
 # ---------------------------------------------------------------------------
-# V063: W-FORM segmentation preservation (HARD)
+# V063: W-FORM segmentation preservation
+# (HARD; SOFT when the FILE has no standard tier at all)
 # ---------------------------------------------------------------------------
 
 def v063_W_FORM_retains_segmentation(
@@ -255,10 +263,10 @@ def v063_W_FORM_retains_segmentation(
     path: Path,
     index: CorpusIndex | None,
 ) -> list[Finding]:
-    """V063 HARD: when an S-level FORM[@kindOf='original'] carries more
-    than 3 segmentation markers (``-``, ``=``, ``<``, ``>``), the W
-    children's FORMs (both ``original`` and ``standard`` tiers) must
-    collectively retain at least N/2 such markers each.
+    """V063: when an S-level FORM[@kindOf='original'] carries more than 3
+    segmentation markers (``-``, ``=``, ``<``, ``>``), the W children's
+    FORMs (both ``original`` and ``standard`` tiers) must collectively
+    retain at least N/2 such markers each.
 
     Catches the failure mode where a cleaner regressed and stripped
     segmentation markers from W-level FORMs (which would silently
@@ -268,8 +276,50 @@ def v063_W_FORM_retains_segmentation(
     yield N=2, threshold=1, and a single retained marker would
     technically satisfy the rule without genuinely preserving the
     segmentation.
+
+    Severity by tier:
+
+    - **original tier under-retains → HARD.** Unconditional: every
+      corpus has an original tier.
+    - **standard tier present but under-retains → HARD.** A corpus that
+      does maintain a standard tier and drops its markers is a real
+      regression.
+    - **the file has no standard-tier W FORM at all → SOFT.** Nothing
+      was stripped; there is simply no standard tier to check, so
+      standard-tier retention is *unverifiable* rather than violated.
+      Reported (not skipped) so the gap stays visible. This aligns V063
+      with V014 (``QC/validation/rules/soft.py``), which holds that a
+      missing standard-tier FORM is informational: some corpora
+      legitimately lack one because the orthography is unsettled.
+
+    **Granularity of "has no standard tier": per FILE**, not per
+    sentence. A standard tier is all-or-nothing for an XML file: if a
+    file has a standard tier, it should appear in every sentence in
+    that file (maintainer ruling). A partially populated standard tier
+    is therefore itself an anomaly, not a normal case to accommodate,
+    so it must not buy a sentence a softer verdict. Consequences:
+
+    - No standard-tier W FORM anywhere in the file → every qualifying
+      sentence gets the SOFT "unverifiable" finding.
+    - The file *does* have a standard tier → the standard branch is
+      exactly what it always was, HARD, for every sentence — including
+      a sentence that happens to carry no standard FORMs at all, whose
+      ``standard_sum`` of 0 falls below the threshold. In a file that
+      has the tier, a sentence missing it is a defect worth failing on.
+
+    Nothing is lost by that strictness: V014 (SOFT) separately counts
+    every element missing a standard FORM, so the partially populated
+    case is still reported in its own right rather than only as a V063
+    HARD.
     """
     findings: list[Finding] = []
+    # Decided once for the whole file, before any sentence is judged:
+    # a standard tier is all-or-nothing per file (see docstring).
+    file_has_standard_tier = any(
+        form.get("kindOf") == "standard"
+        for w in tree.iter("W")
+        for form in w.findall('./FORM')
+    )
     for s in tree.iter("S"):
         s_original = s.find('./FORM[@kindOf="original"]')
         if s_original is None:
@@ -306,7 +356,22 @@ def v063_W_FORM_retains_segmentation(
                 path=path,
                 location=loc,
             ))
-        if standard_sum < threshold:
+        if not file_has_standard_tier:
+            findings.append(Finding(
+                rule_id="V063",
+                severity=Severity.SOFT,
+                message=(
+                    f"S id={s_id!r}: no standard tier in this file — no W element "
+                    "anywhere in it has a FORM[@kindOf='standard'], so standard-tier "
+                    "segmentation retention cannot be verified (S-level FORM has "
+                    f"{s_count} segmentation markers; a standard tier would need "
+                    f"at least {threshold:g}). Informational, per V014: a corpus "
+                    "may legitimately lack a standard tier."
+                ),
+                path=path,
+                location=loc,
+            ))
+        elif standard_sum < threshold:
             findings.append(Finding(
                 rule_id="V063",
                 severity=Severity.HARD,
@@ -323,7 +388,7 @@ def v063_W_FORM_retains_segmentation(
 
 
 # ---------------------------------------------------------------------------
-# V062: infix-M requires angle-bracket gloss on parent W's TRANSL (HARD)
+# V062: infix-M should have angle-bracket gloss on parent W's TRANSL (SOFT)
 # ---------------------------------------------------------------------------
 
 def v062_infix_M_needs_angle_gloss(
@@ -331,8 +396,8 @@ def v062_infix_M_needs_angle_gloss(
     path: Path,
     index: CorpusIndex | None,
 ) -> list[Finding]:
-    """V062: an M whose FORM has infix shape ('-X-') requires parent W to have
-    a TRANSL containing an angle-bracket gloss (e.g., '<AV>').
+    """V062 SOFT: an M whose FORM has infix shape ('-X-') should have a parent
+    W with a TRANSL containing an angle-bracket gloss (e.g., '<AV>').
 
     Infix shape: FORM text matches /^-[^-]+-$/ (starts and ends with '-').
     Angle-bracket gloss: TRANSL text contains '<...>' (any '<' followed
@@ -340,6 +405,17 @@ def v062_infix_M_needs_angle_gloss(
 
     Moved here from rules/hard.py during B9.3 — conceptually a gloss
     rule, not an XML-structure rule.
+
+    SOFT, not HARD (maintainer ruling): what this rule detects is a
+    *notation* difference, not missing data. A corpus may gloss its
+    infixes in prose instead of Leipzig angle-bracket notation —
+    YeddaPalemeqBlog writes "bring, AV. The root is kacu 'bring'." —
+    and that gloss is present and correct, merely written another way.
+    POL-036 makes any standardized ``<AV>`` gloss *additive* anyway, so
+    the angle-bracket form can be supplied later without discarding
+    what the source wrote. Reported so an unexpected omission is still
+    visible; never fatal. Part of the gloss-presence family with
+    V064/V065 (see module docstring).
     """
     findings: list[Finding] = []
     for m in tree.iter("M"):
@@ -365,11 +441,13 @@ def v062_infix_M_needs_angle_gloss(
             w_id = parent_w.get("id")
             findings.append(Finding(
                 rule_id="V062",
-                severity=Severity.HARD,
+                severity=Severity.SOFT,
                 message=(
                     f"M id={m_id!r} has infix FORM {form_text!r} but parent "
                     f"W id={w_id!r} has no TRANSL with an angle-bracket gloss "
-                    "('<X>'); infix morphemes require angle-bracket gloss notation"
+                    "('<X>'); infix morphemes are normally glossed with "
+                    "angle-bracket notation, though a corpus may legitimately "
+                    "gloss them in prose instead"
                 ),
                 path=path,
                 location=f"M={m_id}" if m_id else "M",
@@ -378,7 +456,7 @@ def v062_infix_M_needs_angle_gloss(
 
 
 # ---------------------------------------------------------------------------
-# V064: every M must have a TRANSL child (HARD)
+# V064: every M should have a TRANSL child (SOFT)
 # ---------------------------------------------------------------------------
 
 def v064_every_M_has_TRANSL(
@@ -386,10 +464,17 @@ def v064_every_M_has_TRANSL(
     path: Path,
     index: CorpusIndex | None,
 ) -> list[Finding]:
-    """V064 HARD: every M element must have at least one TRANSL child.
+    """V064 SOFT: every M element should have at least one TRANSL child.
 
-    Per user direction: an unglossed morpheme has no legitimate purpose
-    in a segmented corpus. One Finding per offending M.
+    One Finding per offending M.
+
+    SOFT, not HARD (maintainer ruling, superseding the original "an
+    unglossed morpheme has no legitimate purpose" direction): for some
+    corpora only *some* words are glossed. That is worth flagging in
+    case it is unexpected, but gloss completeness cannot be a hard rule
+    — partial glossing is a real property of real sources, not a
+    defect the pipeline can fix. Part of the gloss-presence family with
+    V062/V065 (see module docstring).
     """
     findings: list[Finding] = []
     for m in tree.iter("M"):
@@ -398,10 +483,11 @@ def v064_every_M_has_TRANSL(
         m_id = m.get("id")
         findings.append(Finding(
             rule_id="V064",
-            severity=Severity.HARD,
+            severity=Severity.SOFT,
             message=(
-                f"M id={m_id!r} has no TRANSL child; every M must have "
-                "at least one TRANSL (M-level gloss is mandatory)"
+                f"M id={m_id!r} has no TRANSL child; an M-level gloss is "
+                "normally expected (some corpora gloss only part of their "
+                "material)"
             ),
             path=path,
             location=f"M={m_id}" if m_id else "M",
@@ -422,7 +508,10 @@ def v065_every_W_has_TRANSL(
 
     SOFT (not HARD) because rare legitimate cases exist where a W-level
     gloss is absent (e.g., function-word stubs glossed only at the M
-    tier).
+    tier), and more broadly because some corpora gloss only part of
+    their material. Part of the gloss-presence family with V062/V064
+    (see module docstring): gloss presence and notation are reported,
+    never fatal.
     """
     findings: list[Finding] = []
     for w in tree.iter("W"):

@@ -162,12 +162,16 @@ Run gloss validation on any corpus; rules naturally no-op on unsegmented ones. S
 |---|---|---|
 | V060 | SOFT | `<W>` count does not match the whitespace-delimited word count in S-level `FORM[@kindOf="original"]`. |
 | V061 | SOFT | `<M>` count does not match the morpheme count implied by W's FORM segmentation markers (`-`, `=`, `<...>`). |
-| V062 | HARD | `<M>` with infix-shaped FORM (`-X-`) requires an angle-bracket gloss (`<X>`) in the parent W's TRANSL. |
-| V063 | HARD | When the S-level FORM has > 3 segmentation markers, the W children's FORMs must collectively retain at least N/2 markers in each tier. |
-| V064 | HARD | Every `<M>` element must have at least one `<TRANSL>` child. |
-| V065 | SOFT | Every `<W>` element should have at least one `<TRANSL>` child. |
+| V062 | SOFT | `<M>` with infix-shaped FORM (`-X-`) has no angle-bracket gloss (`<X>`) in the parent W's TRANSL. |
+| V063 | HARD / SOFT | When the S-level FORM has > 3 segmentation markers, the W children's FORMs must collectively retain at least N/2 markers in each tier. HARD when the tier is present and under-retains; **SOFT** when the *file* has no standard-tier W FORM at all (nothing was stripped — there is simply no standard tier to check, so retention is unverifiable). See V014: a corpus may legitimately lack a standard tier. |
+| V064 | SOFT | `<M>` element with no `<TRANSL>` child. |
+| V065 | SOFT | `<W>` element with no `<TRANSL>` child. |
 
-Exit code: 1 if any HARD finding (V062/V063/V064); 0 otherwise. SOFT findings (V060/V061/V065) emit warnings to stderr but do not fail the run.
+**V063's standard-tier test is per FILE, not per sentence.** A standard tier is all-or-nothing for an XML file: if a file has one, it should appear in every sentence in that file. So the presence test runs once per file, and in a file that *does* have a standard tier the standard branch stays HARD for every sentence — including a sentence that happens to carry no standard FORMs, because in such a file a sentence missing the tier is a defect worth failing on. A partially populated standard tier is itself an anomaly, not a normal case to accommodate; it is separately reported by V014 (SOFT), which counts every element missing a standard FORM.
+
+**V062/V064/V065 are the gloss-presence family — reported, never fatal.** Gloss coverage and gloss notation are flagged so an unexpected gap is visible, but they cannot fail a run: some corpora legitimately gloss only part of their material (V064/V065), and some record infix glosses in prose rather than Leipzig angle brackets (V062) — a notation difference, not missing data, and POL-036 makes any standardized `<AV>` gloss additive anyway.
+
+Exit code: 1 if any HARD finding; 0 otherwise. Of the rules above, only V063's under-retention case is HARD (the remaining HARD gloss rules — V066/V067/V069 — live further down `rules/gloss.py`). SOFT findings (V060/V061/V062/V064/V065, and V063's no-standard-tier case) emit warnings to stderr but do not fail the run.
 
 ```bash
 # Validate one XML file
