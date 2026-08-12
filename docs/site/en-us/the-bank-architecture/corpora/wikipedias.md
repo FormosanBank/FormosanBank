@@ -218,6 +218,10 @@ Any character with no IPA value in the table is written as `*` in `PHON`:
 * Outright disputable segments are bounded by four letters, under 0.4% of letter occurrences, the largest being Atayal `e` (35,336).
 * 1.4–2.8% of `PHON` characters are `*` (no IPA value), mostly digits.
 
+#### Decision
+
+Ortho113 is used corpus-wide, for the reasons set out above. The one material divergence — Atayal `e` (Ortho113 `e` vs Church `ə`, 35,336 occurrences) — is known, quantified above, and accepted as **unadjudicable**: the articles state no orthography and carry no translations, so there is no evidence that could settle which value their authors intended. Users who need `ə` for Atayal should apply that substitution themselves.
+
 ***
 
 ### **Access Details**
