@@ -22,15 +22,9 @@ DICTIONARY_LEDGER = ROOT / "intermediate" / "dictionary_ledger.csv"
 INTERLINEAR_LEDGER = ROOT / "intermediate" / "interlinear_ledger.jsonl"
 SOURCE_PDF = ROOT / "raw_data" / "source.pdf"
 OFFICIAL_TEXT = ROOT / "raw_data" / "official_text.jsonl"
-GRAMMAR_OUTPUT = (
-    ROOT / "Final_XML" / "Kanakanavu" / "Song_2018_Kanakanavu_Grammar.xml"
-)
-DICTIONARY_OUTPUT = (
-    ROOT
-    / "Final_XML"
-    / "Kanakanavu"
-    / "Song_2018_Kanakanavu_Grammar_Dictionary.xml"
-)
+OUTPUT_DIR = ROOT.parent / "XML" / "Kanakanavu"
+GRAMMAR_OUTPUT = OUTPUT_DIR / "Song_2018_Kanakanavu_Grammar.xml"
+DICTIONARY_OUTPUT = OUTPUT_DIR / "Song_2018_Kanakanavu_Grammar_Dictionary.xml"
 EXPECTED_PDF_SHA256 = "dcd553f0ab59d55570a27e859cf60b1df22c5ed873018a192d167a0312079893"
 EXPECTED_FILE_SHA256 = {
     OFFICIAL_TEXT: "47fc6dc5a22e263b57d96781cb39c0d9dbd3fb77a6189609024be2801347d5ab",
@@ -71,7 +65,9 @@ def _canonical_apostrophes(text: str) -> str:
 EXPECTED_ANALYSES = 650
 EXPECTED_WORDS = 3477
 EXPECTED_MORPHEMES = 5034
-XML_PATH = "Final_XML/Kanakanavu/Song_2018_Kanakanavu_Grammar.xml"
+# The value the reviewed ledger records for grammar sentences; kept verbatim
+# because the ledger is hash-pinned (the build now writes into XML/ directly).
+LEDGER_XML_PATH = "Final_XML/Kanakanavu/Song_2018_Kanakanavu_Grammar.xml"
 
 CITATION = (
     "Song, Limei. (2018). Kanakanafu yu yufa gailun [Introduction to "
@@ -480,7 +476,7 @@ def main() -> None:
     actual_ids = [row["final_s_id"] for row in included]
     if actual_ids != expected_ids:
         raise ValueError("Included sentence IDs are not continuous and deterministic")
-    if any(row["final_xml_path"] not in {"", XML_PATH} for row in included):
+    if any(row["final_xml_path"] not in {"", LEDGER_XML_PATH} for row in included):
         raise ValueError("Included ledger rows contain an unexpected XML path")
 
     build_grammar(included)

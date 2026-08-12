@@ -9,7 +9,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_XML_PATH = ROOT / "Final_XML"
+DEFAULT_XML_PATH = ROOT.parent / "XML"
 ACCENT_CHARACTERS = frozenset("áéíóúÁÉÍÓÚ")
 ACCENT_MAP = str.maketrans(
     {

@@ -42,26 +42,34 @@ Language `xnb` (Kanakanavu); dialect `Kanakanavu`; orthography Ortho113.
 ## Reproduction
 
 The reviewed ledgers and raw source are retained under `CodeAndDocs/`, so a
-rebuild does **not** re-scrape. Point `FORMOSANBANK_PATH` at a clean FormosanBank
-checkout at the commit pinned as `EXPECTED_FORMOSANBANK_COMMIT` in
-`CodeAndDocs/scripts/rebuild_final_xml.sh` (a *separate* checkout, since the
-script asserts that tree is clean), then, from `CodeAndDocs/`:
+rebuild does **not** re-scrape. One command rebuilds the published `XML/` from
+them:
 
 ```bash
-cd CodeAndDocs
-python3 -m venv .venv
-.venv/bin/pip install -r requirements.txt
-FORMOSANBANK_PATH=/path/to/clean/FormosanBank scripts/rebuild_final_xml.sh
+CodeAndDocs/scripts/make_xml.sh
 ```
 
-The rebuild writes the regenerated corpus to `CodeAndDocs/Final_XML/`; compare it
-against the published `XML/` to confirm reproduction.
+That is the corpus's only entry point; it runs every step below in order and
+writes the two files in `XML/Kanakanavu/` in place, so `git diff` shows exactly
+what a rebuild changes. It uses the FormosanBank checkout that contains this
+corpus for the shared QC utilities (pass a path, or set `FORMOSANBANK_PATH`, to
+use another one) and `python3` unless `PYTHON` names an interpreter. The
+dependencies are in `CodeAndDocs/requirements.txt`:
 
-`rebuild_final_xml.sh` asserts the FormosanBank checkout is clean and at the
-pinned commit (before and after), and `build_xml.py` asserts the
-source-PDF/positioned-text hashes, the closed page/candidate inventory, the
-reviewed-artifact hashes, the ledger counts, and continuous sentence IDs — so any
-drift in the source or the ledgers fails the build loudly.
+```bash
+python3 -m venv CodeAndDocs/.venv
+CodeAndDocs/.venv/bin/pip install -r CodeAndDocs/requirements.txt
+```
+
+`build_xml.py` asserts the source-PDF/positioned-text hashes, the closed
+page/candidate inventory, the reviewed-artifact hashes, the ledger counts, and
+continuous sentence IDs — so any drift in the source or the ledgers fails the
+build loudly. `make_xml.sh` records the FormosanBank commit the published XML
+was last built against and notes it when the checkout differs. The rebuild is
+deterministic: running it twice reproduces the same bytes.
+
+`CodeAndDocs/tests/` holds the extraction regression tests, which also check the
+published XML; run them with `pytest` from `CodeAndDocs/`.
 
 ## Processing
 
@@ -84,7 +92,7 @@ and punctuation the text layer had dropped, and excluding non-sentences. The
 result is `source_ledger.csv` (699 included, 14 excluded). The full page-by-page
 log is `docs/extraction_review.md`.
 
-### Rebuild pipeline (`CodeAndDocs/scripts/rebuild_final_xml.sh`)
+### Rebuild pipeline (`CodeAndDocs/scripts/make_xml.sh`)
 
 1. **Extract the dictionary** — `extract_dictionary.py` reconstructs Appendix 2A
    from the positioned text, cross-checking barred vowels against the duplicate
@@ -118,17 +126,14 @@ log is `docs/extraction_review.md`.
      are excluded — no free-standing surface exists. There is **no `alternate`
      tier**, and every (form, translation) pair is unique.
 
-5. **Re-apply manual edits** — `apply_manual_edits.py` (FormosanBank) re-applies
-   any recorded hand edits first; a no-op here (no `CodeAndDocs/manual_edits.xml`).
-
-6. **Clean** — `clean_xml.py` (FormosanBank) does canonical Unicode / HTML-entity
+5. **Clean** — `clean_xml.py` (FormosanBank) does canonical Unicode / HTML-entity
    / punctuation normalization.
 
-7. **Create the standard tier** — `standardize.py --copy` (FormosanBank). The
+6. **Create the standard tier** — `standardize.py --copy` (FormosanBank). The
    source is already Ortho113, so standardization is an identity copy of the
-   original tier.
+   original tier; the stress accents it copies along are folded in step 8.
 
-8. **Apply reviewed surface decisions** — `normalize_standard_forms.py` applies
+7. **Apply reviewed surface decisions** — `normalize_standard_forms.py` applies
    the 128 exact decisions in `standard_surface_decisions.tsv` to the standard
    tier (no marker is removed by a blanket rule): the dictionary's per-variant
    standard forms, the two break-punctuation sentences (S0469/S0472, rendered as a
@@ -136,25 +141,25 @@ log is `docs/extraction_review.md`.
    boundaries, the bound-form standard omissions, and the `takananga` standard
    correction (see Notes). Ordinary prose parentheses are left unchanged.
 
-9. **Fold stress accents** — `fold_standard_stress.py` folds acute-accented vowels
+8. **Fold stress accents** — `fold_standard_stress.py` folds acute-accented vowels
    (`á é í ó ú`, and the decomposed `ʉ́`) to their base vowel **in the standard
    tier only**; the original tier keeps the printed stress. Stress is
    suprasegmental annotation in this source, not Ortho113 orthography.
 
-10. **Add phonology** — `add_shared_phonology.py` delegates both tiers to
-    FormosanBank's shared `add_phonology.py` (Ortho113). For the original-tier PHON
-    it feeds a *temporary* stress-folded copy, so the PHON is clean IPA while the
-    original FORM is restored byte-for-byte. There is no corpus-specific phonology
-    mapping.
+9. **Add phonology** — `add_shared_phonology.py` delegates both tiers to
+   FormosanBank's shared `add_phonology.py` (Ortho113). For the original-tier PHON
+   it feeds a *temporary* stress-folded copy, so the PHON is clean IPA while the
+   original FORM is restored byte-for-byte. There is no corpus-specific phonology
+   mapping.
 
 ## Notes / user beware
 
 - **Orthography is Ortho113.** Detector and reviewer evidence agree: the source
   uses `ʉ` and `r`, has no `l` (its own discussion notes `r` covers the former
-  `l`/`r` contrast), and maps `r` → `r~ɾ`. Against the Kanakanavu reference,
-  character-frequency cosine is 1.00 and bigram cosine 0.99.
+  `l`/`r` contrast), and maps `r` to the IPA variants `r` and `ɾ`. Against the
+  Kanakanavu reference, character-frequency cosine is 1.00 and bigram cosine 0.99.
 - **Stress accents** (`á í ú …`) are kept in the original tier and folded in the
-  standard tier (step 9); PHON is accent-free on both tiers.
+  standard tier (step 8); PHON is accent-free on both tiers.
 - **Dictionary variants:** slash/semicolon alternatives and optional `(…)`
   material are materialized into separate single-form entries; bound prefixes
   (trailing `-`) are excluded; cross-record duplicate variants are dropped.
@@ -167,6 +172,15 @@ log is `docs/extraction_review.md`.
 - **Excluded sentences (14):** 6 noun-phrase fragments, 5 source-starred
   ungrammatical forms, and 3 examples with no printed Chinese translation. See
   `source_ledger.csv`.
+- **Repeated surface forms (63 groups, 130 `S`):** the book reuses example
+  sentences to illustrate different points, and the dictionary lists a headword
+  once per sense, so identical forms recur. Every such `S` has its own `source`
+  attribute naming the page and label it came from, and 45 of the 63 groups
+  differ in their translation. Nothing is deduplicated: the repeats are distinct
+  attestations.
+- **Words without a morpheme analysis (7 of 3,477 `W`):** where the book prints a
+  single gloss for a morphologically complex word (e.g. `m-u'iara` glossed 慢),
+  the word carries no `M` children rather than an invented segmentation.
 - **Rights:** published under CC BY-NC 4.0 by permission of the author (Li-May Sung); recorded in each `<TEXT>` `copyright` attribute.
 
 ## QC
