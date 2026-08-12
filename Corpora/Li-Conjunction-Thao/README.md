@@ -14,13 +14,26 @@ Examples (1)–(24) have source-aligned W tiers and M tiers wherever the printed
 form/gloss explicitly marks morpheme boundaries. The three unglossed footnote
 examples remain sentence-only.
 
+**Note for users — M-tier coverage is partial.** The corpus has 211 W elements,
+and **140 of them carry no M child** (the source does not segment those words),
+which `validate_xml` reports as 140 SOFT V144 findings. The glosses that *do*
+exist are sound: `validate_glosses` reports **0 HARD findings** (only 3 SOFT
+V060). Completing the M tier per POL-023 is an open **linguistic** worklist item
+([issue #102](https://github.com/FormosanBank/FormosanBank/issues/102)); no M
+elements are added until the maintainer rules on the analysis.
+
 ## The standard tier: Ortho113, with sentence-level segmentation flattened
 
-`scripts/reproduce.sh` finalizes the `standard` tier by running FormosanBank's
+`make_xml.sh` finalizes the `standard` tier by running FormosanBank's
 `standardize.py` with the `Thao_Li_113` conversion table
 (`Orthographies/ConversionTables/Thao_Li_113.tsv`), which maps Li's transcription
 to Ortho113 (`ð→z`, `ʃ→sh`, `θ→th`, `ŋ→ng`, `ɬ→lh`, `ʔ→'`) and strips stress
-accents. It is not a standard tier unless it is Ortho113.
+accents. It is not a standard tier unless it is Ortho113. (Because the pipeline
+converts via this TSV, `standardize.py` runs in TSV mode — not `--copy`, not
+`--remove_accents`; the table itself strips the accents.) The table was verified
+with `QC/validation/validate_conversion_table.py` (Li/Thao vs Ortho113/Thao) on
+2026-08-12: PASS, all 8 rows confirmed, no warnings, mismatches, or coverage
+gaps.
 
 `standardize.py` rebuilds the standard tier from the original, so it re-introduces
 the source segmentation notation (`-`, `=`, `<`, `>`). `scripts/flatten_standard_segmentation.py`
@@ -52,12 +65,13 @@ from the Ortho113 standard tier, original `PHON` from `Orthographies/Li`. Becaus
 clean IPA; the original `PHON` renders Li's stress accents `á`/`ú` as `*` (they
 are not phonemic and have no orthographic mapping), which is accepted.
 
-**Regeneration under the shared-source-phonology pipeline (verified 2026-08-10):**
-rerunning `reproduce.sh` against the current QC code reproduces the published
-corpus exactly except in the `PHON` tiers, where unmapped punctuation
-(sentence-final `.`/`,`) is now dropped — the pipeline's "punctuation is not
-sound" policy. All FORM tiers, glosses, and the W/M structure are byte-identical;
-the source-fidelity audit and the draft/final byte-match both pass.
+**Regenerated under the shared-source-phonology pipeline (2026-08-12 sweep):**
+the published `XML/` is the output of `make_xml.sh` run against the current QC
+code. Relative to the pre-sweep publication the only change was in sentence-level
+`PHON`, where unmapped punctuation (sentence-internal/final `.`/`,`) is dropped —
+the pipeline's "punctuation is not sound" policy. All FORM tiers, glosses, and
+the W/M structure are unchanged; the source-fidelity audit and the draft/final
+byte-match both pass, and a rerun is byte-idempotent.
 
 ## Corrected source transcription typos (capital `S` and `D`)
 
@@ -84,30 +98,75 @@ table (`Orthographies/ConversionTables/Thao_Li_113.tsv`) in FormosanBank.
 
 ## Reproduce
 
-From a clean checkout, using Python 3.11 or newer, with `FORMOSANBANK_PATH` set to
+The corpus is fully regenerable from the committed reviewed records
+(`raw_data/reviewed_examples.tsv`) — no pre-correction snapshot is needed.
+From `CodeAndDocs/`, using Python 3.11 or newer, with `FORMOSANBANK_PATH` set to
 a FormosanBank checkout (it supplies `standardize.py`, `add_phonology.py`, and the
 `Li`/`Ortho113` orthography tables, and its Python env must have `lxml`):
 
 ```bash
-FORMOSANBANK_PATH=/path/to/FormosanBank ./scripts/reproduce.sh
+FORMOSANBANK_PATH=/path/to/FormosanBank ./make_xml.sh
 ```
 
-The command rebuilds the draft and `Final_XML` from the committed reviewed
-records — build → source-fidelity audit → `standardize` (Ortho113) → flatten
-sentence-level segmentation → `add_phonology` — and verifies that both outputs
-byte-match. To reacquire the official source bundle for visual review, run
-`./download_source_data.sh`; downloads stay under ignored `Private/`.
+`make_xml.sh` is the **only** script needed; it is the whole pipeline, not a
+wrapper around another one:
 
-In this published layout the scripts live under `CodeAndDocs/`, so run
-`reproduce.sh` from there; its `XML/` and `Final_XML/` outputs land under
-`CodeAndDocs/` and the finished `Final_XML` contents are what get copied to the
-corpus-level `XML/` directory. `standardize.py` writes a
-`standardize_warnings.csv` next to the XML it processes (the expected 88 Thao
-`c012` hyphen warnings — see above); it is scratch output, not part of the
-corpus.
+1. `scripts/build_xml.py` — draft `XML/` and `Final_XML/` from the reviewed TSV,
+   including the scripted Blust-typo corrections
+2. `scripts/audit_source_fidelity.py` — source-fidelity audit, while the tiers
+   are still in Li's transcription
+3. `QC/cleaning/clean_xml.py` — the shared character-level cleaning of the
+   original tier (see below)
+4. `standardize.py` in TSV mode (Thao_Li_113 → Ortho113)
+5. `scripts/flatten_standard_segmentation.py` — strips `- = < >` from the
+   S-level standard FORMs
+6. `add_phonology.py --orthography Li`
+7. draft/final byte-match, then install `Final_XML` into the corpus-level `XML/`
+   and clear the scratch outputs (`CodeAndDocs/XML/`, `Final_XML/`,
+   `intermediate/`, and the `standardize_warnings.csv` sidecars, whose expected
+   content is exactly the 88 Thao `c012` hyphen warnings — see above; per-run
+   reports, never committed)
+
+`clean_xml` (step 3) runs where every other corpus runs it — after the build,
+**before** `standardize`, so the standard tier is rebuilt from an already-clean
+original tier. It does far more than quote correction: dash/tilde/quote
+canonicalization, HTML-entity and double-encoded-entity decoding, null-glyph
+canonicalization, Unicode flattening, empty-element removal, and
+translation-metadata normalization. On this corpus it is **currently a no-op —
+because the XML is born clean from the reviewed TSV**, not because any of that
+machinery is inapplicable; `make_xml.sh` prints whether that still holds on
+every run. Thao's letter `-` is not at risk: the dash rule maps only dash
+*look-alikes* (en dash, em dash, minus sign, …) onto ASCII `-`, and never
+touches an ASCII `-` that is already there.
+
+There is no `apply_manual_edits` step: the corpus has no `manual_edits.xml`
+(the only hand-checked fixes are the scripted typo corrections in
+`build_xml.py`).
+
+To reacquire the official source bundle for visual review, run
+`./download_source_data.sh`; downloads stay under ignored `Private/`.
 
 ## QC
 
-Set `FORMOSANBANK_PATH` to a clean FormosanBank reference checkout, then run the commands recorded in `docs/qc_report.md`. Final logs are under `logs/final_qc/`.
+From the FormosanBank root, against this corpus's `XML/`:
 
-Accepted source-specific findings are scholarly non-ASCII transcription, source infix notation in original tiers, English parentheses/slashes, and three W-count notices for footnote examples without source glosses. There are zero unresolved findings.
+```bash
+python QC/validation/validate_xml.py     by_path --path Corpora/Li-Conjunction-Thao/XML
+python QC/validation/validate_text.py    by_path --path Corpora/Li-Conjunction-Thao/XML
+python QC/validation/validate_glosses.py by_path --path Corpora/Li-Conjunction-Thao/XML
+```
+
+Current baseline (2026-08-12): **no HARD findings from any of the three.** SOFT
+findings, all accepted source-specific characteristics:
+
+- `validate_xml` — 140 × V144 (M-less W; see the M-coverage note above)
+- `validate_text` — 44 × V122 (English parentheses/slashes in translations),
+  20 × V134 (source infix notation `<...>` in original S FORMs), 22 × V136
+  (scholarly non-ASCII transcription confusables)
+- `validate_glosses` — 3 × V060 only, **0 HARD**
+
+On [issue #102](https://github.com/FormosanBank/FormosanBank/issues/102): its
+gloss-validator concern is **satisfied** — `validate_glosses` is HARD-clean. Its
+M-coverage concern is **not** satisfied — 140 of 211 W still have no M (V144
+SOFT ×140), and that remains an unruled linguistic worklist item. Do not add M
+elements to close it without a maintainer ruling on the analysis.
