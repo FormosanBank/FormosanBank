@@ -10,124 +10,118 @@ project, converted into valid FormosanBank XML.
 | Field | Value |
 | --- | --- |
 | Type | Published FormosanBank corpus |
-| Language | Amis (`ami`, glottocode `amis1246`) |
+| Language | Amis (`ami`, glottocode `amis1246`, dialect `Coastal`) |
 | Source | Safolu Kacaw Lalanges / 蔡中涵 dictionary, generated JSON in [g0v/amis-moedict](https://github.com/g0v/amis-moedict) `docs/s` (see https://amis.moedict.tw/) |
 | Published XML | `XML/Amis/Safolu/amis_safolu_examples.xml` |
-| Reproduction code | `CodeAndDocs/` (build scripts + `Makefile` + `SOURCE_AUDIT.md`) |
+| Reproduction | `CodeAndDocs/make_xml.sh` — the single entry point (add `--from-source` to rebuild from upstream instead of the committed baseline) |
 
-> **Reproduction note.** The build scripts and `Makefile` under `CodeAndDocs/`
-> regenerate the XML from the upstream sources. They were authored in the
-> `Formosan-Safolu-Amis-Dictionary` development repo and expect a sibling
-> FormosanBank checkout for the shared QC tools (`FB=…`); when run from the
-> published layout, point `make -C CodeAndDocs` at this checkout's tools
-> (`FB=../../..`) and note that the build writes its working tree
-> (`Final_XML/`, `_sources/`, `data/`) under `CodeAndDocs/`. The canonical,
-> QC'd copy is the one committed under `XML/`.
+## Data shape
 
-> **Scope note.** This repository previously also built the Poinsot/Pourrias
-> Amis–French dictionary (`docs/m`). That corpus needs OCR-correction work, so it
-> was split into its own repository, **`Formosan-Poinsot-Amis-Dictionary`**, to avoid blocking
-> publication of Safolu. Virginia Fey (`docs/p`) was processed separately and is
-> out of scope here.
+A single `TEXT` root with **49,181** `S` children (example sentences). Each
+sentence has:
 
-## Output
-
-```sh
-make -C CodeAndDocs formosanbank
-```
-
-The build:
-
-1. Fetches the pinned upstream `g0v/amis-moedict` (`docs/s`) and `miaoski/amis-safolu` checkouts into `_sources/`.
-2. Builds `Final_XML/Amis/Safolu/amis_safolu_examples.xml`.
-3. Writes provenance + rejected-record audits under `data/formosanbank_audit/`.
-4. Runs a structural validator and a source-coverage audit.
-
-### Result
-
-- `Final_XML/Amis/Safolu/amis_safolu_examples.xml`: **49,145** Amis sentences (49,400 extracted from 49,419 source fields, then 255 duplicate cross-lemma example sentences removed; the original naive parse kept 48,914).
-- `data/formosanbank_audit/Safolu/*.metadata.json`: provenance for every sentence (incl. its `source_ordinal`).
-- `data/formosanbank_audit/Safolu/*.rejected.json`: source fields that cannot be represented (**44**, down from 505).
-
-Coverage is tracked at the **source-field** level (one field can expand into several sentences — see CJK splitting below): all **49,419** source example fields are accounted for — represented by ≥1 sentence or in the rejected audit.
-
-### Recovery / repair of source rows
-
-The Safolu source has 49,419 example fields delimited by `U+FFF9` (Amis form), `U+FFFA` (middle), `U+FFFB` (final Chinese translation). Malformed rows are recovered/repaired rather than dropped:
-
-- **187** rows recover the Amis from the start of the Chinese field (`recovered_form_from_translation`). A leading loanword annotation — `〔…〕`, `(…)`, or `（…）` — is peeled off first, so notes like `(閩南語借詞) O 'amis ko hongti niyam.…` recover the real sentence instead of a stray parenthesis. (A `（…）` annotation that straddles the split point, e.g. `…hikoki（外來語）.孩子…`, is repaired so the form stays pure Amis.)
-- **32** rows recover an Amis phrase embedded in a Chinese grammar/pronunciation note via the source `` `…~ `` link markup (`recovered_form_from_note`), e.g. `如\`ha~\`sapakaen~ 飼養、餵養用的。` → `hasapakaen` / 飼養、餵養用的.
-- **191** sentences come from splitting **CJK-in-FORM** fields (`split_from_cjk_form`): the source packed `Amis 中文gloss` content into the form slot — either a single glued `Itira 在那裡.` → FORM `Itira` / TRANSL `在那裡`, or a `；`/`，`-separated derivational list (often prefixed `如`) such as `kalacokap 當鞋子穿；kalasakaen 當菜餚吃；…` → one sentence per pair. Fields that cannot be cleanly segmented are rejected (`cjk_in_form_unsplittable`), which also catches the 4 pure-Chinese notes.
-- **272** rows have a real Amis FORM but no Chinese translation; FormosanBank's schema makes `TRANSL` optional (`S_Type` is an `xs:choice minOccurs="0"`), so they are kept as valid **FORM-only** sentences (`no_translation`).
-- A handful of source form fields begin with an orphaned `）`/`)` (a digitization artifact); the leading close-paren is stripped.
-- **44** fields remain unrecoverable: **26** `empty_form` and **18** `cjk_in_form_unsplittable` (multi-phrase grammar notes + the 4 pure-Chinese notes).
-
-`TEXT/@dialect` is currently `"unknown"` (the dictionary does not record a single Amis dialect); set the real dialect during QC (e.g. via the FormosanBank dialect detector) before porting into `Corpora/`.
-
-## FormosanBank Shape
-
-A single `TEXT` root with `S` children. After QC enrichment (below) each sentence has:
-
-- `FORM kindOf="original"` — the source text.
-- `FORM kindOf="standard"` — the common-orthography tier (a copy of original; the
-  source is already in the Ortho113 letter set, so no transliteration is applied).
-- `PHON kindOf="standard"` — IPA generated from the standard FORM via Ortho113.
+- `FORM kindOf="original"` — the source text (already in the Ortho113 letter
+  set; `'` and `^` are distinct letters: `'` → ʡ, `^` → ʔ).
+- `FORM kindOf="standard"` — the common-orthography tier (copy of original
+  with accents removed; no transliteration is needed).
+- `PHON kindOf="original"` and `PHON kindOf="standard"` — IPA generated from
+  the like-named FORM via `Orthographies/Ortho113/Amis.tsv` (Coastal column).
+  **Both** tiers use Ortho113: the source spelling already is the Ortho113
+  letter set, so there is no separate source orthography to phonologize
+  against. Phonemic variants use the `[x|y]` notation (e.g. `o` → `[o|u]`,
+  `d` → `[ɬ|ɮ]`); punctuation is not carried into PHON; characters outside
+  the Ortho113 inventory become `*`. Because the standard FORM here is the
+  original FORM (nothing to transliterate, no accents in the source), the two
+  PHON tiers are currently identical string-for-string; they are generated
+  independently from their own FORM and will diverge if a future correction
+  separates the tiers.
 - `TRANSL xml:lang="zho"` — when the source provided a Chinese translation
-  (272 sentences are valid FORM-only with no translation).
+  (**48,912** sentences; the remaining 269 are valid FORM-only).
 
-No `W`/`M` segmentation — the Moedict examples carry no source-attested word or
-morpheme tiers.
+No `W`/`M` segmentation — the Moedict examples carry no source-attested word
+or morpheme tiers. Hyphens appearing in FORMs (e.g. `Kofit-19`, `si-fu`) are
+source content (loanword/name compounds), not segmentation.
 
-`make qc`'s `clean_xml` normalizes source noise (smart quotes, zero-width chars,
-bracket/width variants). A dozen rows still carry stray OCR characters faithful to
-the source (e.g. `mafutiۥ`, `cangaw﹑fiting`); these are SOFT `validate_text`
-findings, not auto-corrected.
+## Reproduction
 
-## QC enrichment pipeline (Ortho113)
+### Canonical: regenerate `XML/` from the committed baseline
 
-The build (`make safolu`) emits only the **original** tier. The standard tier, IPA
-phonology, and character cleaning are added by FormosanBank's shared QC tools as a
-second stage. Run it **after** the build:
-
-```sh
-make -C CodeAndDocs qc   # requires FormosanBank's QC tools (FB=../../.. from CodeAndDocs)
-```
-
-`make qc` runs, in this exact order (the ordering matters):
-
-1. `clean_xml.py` — normalize unicode/HTML artifacts **before** standardizing
-   (smart quotes `’‘“”` → ASCII, strip zero-width characters, caret variants, etc.).
-2. `standardize.py --copy` — create `FORM kindOf="standard"`. Amis here is already
-   in the **Ortho113** letter set, so the standard tier is a faithful copy (no TSV
-   transliteration). `'` and `^` are distinct Ortho113 letters (different phonemes:
-   `'` → ʡ, `^` → ʔ) and are both preserved as-is.
-3. `clean_xml.py` — clean again **after** standardizing, so the new standard tier
-   is normalized too.
-4. `add_phonology.py` — generate `PHON kindOf="standard"` IPA from the standard
-   FORM via `Orthographies/Ortho113/Amis.tsv` (e.g. `^` → `ʔ`, `'` → `ʡ`, `e` → `ə`,
-   `c` → `ʦ`). Characters outside the Ortho113 inventory become `*`.
-5. `remove_duplicate_sentences.py --apply` — drop duplicate example sentences (the
-   same example reused under related headwords; compared on the standard tier,
-   first occurrence kept). 255 removed → 49,145.
-6. `validate_xml.py` + `validate_text.py` — structural + text-content validation.
-
-`clean_xml.py` writes an informational `cleaner_warnings.csv`; `make qc` moves it
-to the gitignored `qc-logs/` so `Final_XML/` stays XML-only.
-
-> The committed XML is the **post-QC** artifact. Re-running `make safolu` resets it
-> to original-tier-only, so re-run `make qc` after any rebuild.
-
-## Reproduce
+The full from-source build needs network access to fetch the upstream
+checkouts (they are not committed), so the reproduction baseline is the
+pristine pre-correction snapshot at `CodeAndDocs/pre_correction_snapshot/`
+(taken 2026-08-12, before automated corrections first touched this corpus;
+it changes only via committed scripts).
 
 ```sh
-make -C CodeAndDocs sources   # clone g0v/amis-moedict (docs/s) + miaoski/amis-safolu
-make -C CodeAndDocs safolu    # build original-tier XML + validate + coverage audit
-make -C CodeAndDocs qc        # enrich: standard tier + IPA PHON + clean (Ortho113)
+Corpora/Safolu-Amis-Dictionary/CodeAndDocs/make_xml.sh
 ```
 
-(`make -C CodeAndDocs` runs from `CodeAndDocs/`, so the build's working tree —
-`Final_XML/`, `_sources/`, `data/` — is created there; the published copy lives
-under `XML/`. Set `FB=../../..` so the QC tools resolve to this checkout.)
+runs, in order:
 
-Pinned source commits live in `CodeAndDocs/fetch_sources.py`. See
-`CodeAndDocs/SOURCE_AUDIT.md` for the detailed source mapping and coverage accounting.
+0. restore `XML/` from the snapshot;
+1. `QC/cleaning/clean_xml.py` — original-tier cleaning (typography
+   canonicalization, entity/width normalization) plus the automatic Amis
+   **apostrophe/quotation disambiguation** (see Notes);
+2. `QC/utilities/standardize.py --remove_accents` — create
+   `FORM kindOf="standard"` (copy of original, accents stripped);
+3. `QC/utilities/add_phonology.py --orthography Ortho113` — regenerate
+   **both** `PHON kindOf="original"` (from the original FORM) and
+   `PHON kindOf="standard"` (from the standard FORM), each with the Ortho113
+   Amis table, Coastal column. `--orthography` is what turns on original-tier
+   PHON; pointing it at `Ortho113` is correct here because the source
+   orthography is Ortho113. `--preserve-existing-original` is deliberately
+   not used — this corpus has no expert-supplied source PHON to protect;
+4. `QC/cleaning/remove_duplicate_sentences.py --apply` — dedup (this is a
+   reference resource, so it is duplicate-free by declaration; leftover
+   duplicates are HARD `validate_duplicate_sentences` findings). Distinct
+   translations of a removed duplicate are merged into the survivor as
+   `ver="alt"` TRANSLs.
+
+The pipeline is deterministic and idempotent (repeated runs are
+byte-identical). Warning sidecars (`cleaner_warnings.csv`,
+`standardize_warnings.csv`) are per-run reports — review and delete, never
+commit. `CodeAndDocs/quote_corrections.csv` is the durable
+quote-correction log — commit it when a run adds rows.
+
+### From source (needs network)
+
+```sh
+Corpora/Safolu-Amis-Dictionary/CodeAndDocs/make_xml.sh --from-source
+```
+
+Same script, same enrichment steps — only the baseline differs. It clones
+the pinned `g0v/amis-moedict` (`docs/s`) + `miaoski/amis-safolu` checkouts
+into `_sources/`, rebuilds the **original tier** into `Final_XML/`,
+validates it and runs the source-coverage audit, then applies enrichment
+steps 1–4 to that build. (There is no `Makefile`: the build/validate targets
+and the QC recipe both live in `make_xml.sh`, so there is exactly one
+command to know.) The build scripts resolve their working tree (`_sources/`,
+`Final_XML/`, `data/`) relative to the corpus root, so they run correctly
+from the published layout regardless of the caller's working directory.
+`Final_XML/` is a scratch build tree — compare it against `XML/` before
+promoting anything. Pinned source commits live in
+`CodeAndDocs/fetch_sources.py`; see
+`CodeAndDocs/SOURCE_AUDIT.md` for the source mapping, recovery/repair rules,
+and coverage accounting (every source example field is represented by ≥1
+sentence or listed in the rejected audit). The canonical, QC'd copy is the
+one committed under `XML/`.
+
+## Notes for data users
+
+- **Apostrophe/quotation disambiguation**: `'` is a letter (glottal ʡ) in
+  this orthography, and single quotes are never quotation marks in
+  FormosanBank text. `clean_xml` runs an automatic, dictionary-backed
+  disambiguation over Amis original FORMs that rewrites apostrophe pairs
+  acting as quotation marks to `"…"`. It can have **false positives and
+  will certainly miss some cases**; every rewrite is logged with
+  form_before/form_after in `CodeAndDocs/quote_corrections.csv` (no rewrites
+  have fired on this corpus to date; ambiguous positions are flagged in the
+  per-run `cleaner_warnings.csv`).
+- A dozen rows carry stray OCR-era characters faithful to the source
+  (e.g. `mafutiۥ`, `cangaw﹑fiting`, `Angah‧Alimol`) — SOFT `validate_text`
+  findings (V116), not auto-corrected.
+- 574 sentences contain parentheses or slashes (V122 SOFT), mostly source
+  variant/alternative annotations (e.g. `nanom (nanum)`) in FORM or TRANSL —
+  a standing review worklist (POL-026/POL-027), preserved as-is.
+- 48 standard FORMs contain a hyphen (V133 SOFT) — source-faithful compound
+  hyphens in an unsegmented corpus, not segmentation leftovers.
