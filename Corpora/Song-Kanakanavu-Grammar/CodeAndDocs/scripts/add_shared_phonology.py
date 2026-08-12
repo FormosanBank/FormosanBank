@@ -23,7 +23,7 @@ from fold_standard_stress import fold_stress
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_XML_PATH = ROOT / "Final_XML"
+DEFAULT_XML_PATH = ROOT.parent / "XML"
 PARENT_TAGS = {"S", "W", "M"}
 
 

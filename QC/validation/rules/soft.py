@@ -97,12 +97,46 @@ def v014_count_missing_standard_form(
     )]
 
 
-def _w_morpheme_counts(tree: etree._ElementTree) -> list[int]:
-    """Direct-child M count for every W in the file, in document order."""
-    return [
-        sum(1 for child in w if child.tag == "M")
-        for w in tree.iter("W")
-    ]
+def _children(elem: etree._Element, tag: str) -> list:
+    """Direct children of `elem` with the given tag."""
+    return [child for child in elem if child.tag == tag]
+
+
+def _sentence_words(tree: etree._ElementTree) -> list:
+    """Per sentence, its direct-child W elements (sentences with W only)."""
+    return [ws for ws in (_children(s, "W") for s in tree.iter("S")) if ws]
+
+
+def _first_form_text(elem: etree._Element) -> str:
+    """Text of the element's first FORM child, whitespace-stripped."""
+    for child in elem:
+        if child.tag == "FORM":
+            return (child.text or "").strip()
+    return ""
+
+
+def _carries_parsing(ws: list) -> bool:
+    """Does this sentence carry *some* morphological analysis?
+
+    Two clauses, either one sufficient — the same criterion applied by
+    YeddaPalemeqBlog's CodeAndDocs/fix_m_tier.py, kept identical so a
+    corpus fixed by that script validates clean:
+
+    1. some W has two or more M children; or
+    2. some M's FORM differs from its parent W's FORM (an infix split
+       such as ``l<em>angeda`` -> ``l-angeda`` / ``-em-`` carries an
+       analysis even at one M per W).
+
+    Anything else is an all-single-M mirror tier: no analysis at all.
+    """
+    for w in ws:
+        ms = _children(w, "M")
+        if len(ms) >= 2:
+            return True
+        w_form = _first_form_text(w)
+        if any(_first_form_text(m) != w_form for m in ms):
+            return True
+    return False
 
 
 def _tree_language(tree: etree._ElementTree, path: Path,
@@ -112,32 +146,46 @@ def _tree_language(tree: etree._ElementTree, path: Path,
     return tree.getroot().get(_XML_LANG) or ""
 
 
-def v144_M_less_W_in_segmented_file(
+def v144_M_less_W_in_parsed_sentence(
     tree: etree._ElementTree,
     path: Path,
     index: CorpusIndex | None,
 ) -> list[Finding]:
-    """V144 SOFT (POL-023): morpheme-segmented file with M-less Ws.
+    """V144 SOFT (POL-023): a morphologically parsed sentence with M-less Ws.
 
-    Ruling 2026-08-10: in a file where any W has 2+ M children, every W
-    must have at least one M. A single-M W there reads as "analyzed as
-    monomorphemic"; a zero-M W is an unfinished segmentation. Aggregated
-    per file. SOFT because existing corpora are known to trip this and
-    need fixing over time.
+    Ruling 2026-08-12 (re-scoped from per file to **per sentence**): the
+    unit of morphological analysis is the sentence, not the file. In a
+    sentence that carries *some* parsing every W needs at least one M (a
+    single M there reads "analyzed as monomorphemic"); a sentence the
+    author simply never analyzed carries no M tier at all, and demanding
+    M there would fake an analysis. The old file-scoped reading punished
+    exactly that honest mixed state — one parsed sentence made every
+    unparsed sentence in the file a finding.
+
+    Aggregated per file (one Finding, counting the M-less Ws inside
+    parsed sentences). SOFT because existing corpora trip this and need
+    fixing over time.
     """
-    m_counts = _w_morpheme_counts(tree)
-    if not any(count >= 2 for count in m_counts):
+    parsed = [ws for ws in _sentence_words(tree) if _carries_parsing(ws)]
+    if not parsed:
         return []
-    missing = sum(1 for count in m_counts if count == 0)
+    missing = 0
+    sentences = 0
+    for ws in parsed:
+        m_less = sum(1 for w in ws if not _children(w, "M"))
+        if m_less:
+            missing += m_less
+            sentences += 1
     if missing == 0:
         return []
     return [Finding(
         rule_id="V144",
         severity=Severity.SOFT,
         message=(
-            f"V144 SOFT: {missing} of {len(m_counts)} W elements have no M "
-            f"child in a morpheme-segmented file (POL-023: segmented files "
-            f"give every W at least one M)"
+            f"V144 SOFT: {missing} W elements in {sentences} of "
+            f"{len(parsed)} morphologically parsed sentences have no M "
+            f"child (POL-023: within a parsed sentence every W gets at "
+            f"least one M; an unparsed sentence carries no M tier)"
         ),
         path=path,
         count=missing,
@@ -151,27 +199,34 @@ def v145_degenerate_all_single_M_tier(
     path: Path,
     index: CorpusIndex | None,
 ) -> list[Finding]:
-    """V145 SOFT (POL-023): M level present but no W has 2+ Ms.
+    """V145 SOFT (POL-023): M level present but the file carries no parsing.
 
     Ruling 2026-08-10: corpora without morpheme segmentation should have
     no M level at all — an M tier where every M-bearing W has exactly
     one M identical in role to its W adds no information (historically:
-    ~100 spurious M shells shipped in YeddaPalemeqBlog). Aggregated per
-    file. SOFT because known corpora will trip this pending cleanup.
+    ~100 spurious M shells shipped in YeddaPalemeqBlog).
+
+    Deliberately kept **file-scoped** when V144 went per-sentence
+    (2026-08-12). "Every M mirrors its W" is only evidence of a fake
+    tier in bulk: a single sentence whose handful of words really are
+    monomorphemic is indistinguishable from a mirror tier, and POL-023
+    explicitly blesses single-M Ws as "analyzed as monomorphemic". A
+    whole file with no multi-morphemic word anywhere is the reliable
+    signal; one sentence is not. Same severity as before.
     """
-    m_counts = _w_morpheme_counts(tree)
-    if not m_counts or any(count >= 2 for count in m_counts):
+    sentences = _sentence_words(tree)
+    if not sentences or any(_carries_parsing(ws) for ws in sentences):
         return []
-    singles = sum(1 for count in m_counts if count >= 1)
+    singles = sum(1 for ws in sentences for w in ws if _children(w, "M"))
     if singles == 0:
         return []
     return [Finding(
         rule_id="V145",
         severity=Severity.SOFT,
         message=(
-            f"V145 SOFT: M level present but no W has 2+ M children "
-            f"({singles} single-M Ws) — unsegmented corpora should have "
-            f"no M level (POL-023)"
+            f"V145 SOFT: M level present but no sentence in the file "
+            f"carries any morphological parsing ({singles} mirror single-M "
+            f"Ws) — unsegmented corpora should have no M level (POL-023)"
         ),
         path=path,
         count=singles,
@@ -183,8 +238,8 @@ def v145_degenerate_all_single_M_tier(
 RULES: list = [
     v010_count_s_without_form,
     v014_count_missing_standard_form,
-    # POL-023 M-tier consistency (2026-08-10)
-    v144_M_less_W_in_segmented_file,
+    # POL-023 M-tier consistency (2026-08-10; V144 per-sentence 2026-08-12)
+    v144_M_less_W_in_parsed_sentence,
     v145_degenerate_all_single_M_tier,
 ]
 CROSS_FILE_RULES: list = []
