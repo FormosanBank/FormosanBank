@@ -215,16 +215,39 @@ the corpus's CodeAndDocs declares a dedup step* — a leftover duplicate
 then signals a pipeline defect, not a content question. The within-file
 vs cross-file distinction survives as the finding's `scope`.
 
-### POL-023 · RULED · 2026-08-10 · M-tier presence
-In an XML file where any W has two or more M children (i.e. the file is
-morpheme-segmented), **every W gets at least one M**; a W with exactly one M
-there is read as "analyzed as monomorphemic". In corpora with **no**
-morpheme segmentation, there is **no M level at all** — an all-single-M
-tier adds no information. Enforced as SOFT findings V144 (M-less W in a
-segmented file) and V145 (M level present but nothing multi-M) in
-`validate_xml.py`; SOFT because some existing corpora trip these and will
-need fixing over time. (Resolves the Bunun-Topic-Focus degenerate-single-M
-question: its 51 single-M Ws are conforming as long as no W lacks an M.)
+### POL-023 · RULED · 2026-08-10 · M-tier presence (scope amended 2026-08-12)
+**The unit of morphological analysis is the sentence, not the file.** In a
+sentence that carries *some* morphological parsing, **every W gets at least
+one M**; a W with exactly one M there is read as "analyzed as
+monomorphemic". A sentence that carries **no** parsing carries **no M at
+all** — the author may simply never have analyzed it, and requiring an M
+there would fake an analysis it does not have. The same holds of a whole
+corpus: with no morpheme segmentation there is **no M level at all**, since
+an all-single-M mirror tier adds no information.
+
+A sentence "carries some parsing" when either (a) some W in it has two or
+more M children, or (b) some M's FORM differs from its parent W's FORM (an
+infix split, or an M that shows a segmentation the W FORM does not).
+
+**Why per sentence** (amended 2026-08-12): a file-level rule cannot express
+"this sentence is unanalyzed". Corpora that parse some sentences and leave
+others alone are the normal, honest case (YeddaPalemeqBlog: 494 parsed
+sentences, 161 unparsed), and under the file-level reading a single parsed
+sentence turned every unparsed sentence in the file into a finding.
+
+Enforced as SOFT findings in `validate_xml.py`; SOFT because some existing
+corpora trip these and will need fixing over time:
+- **V144** — M-less W inside a *parsed sentence* (per sentence).
+- **V145** — an M level in a file where **no** sentence carries any parsing
+  (per **file**, deliberately). "Every M mirrors its W" is evidence of a
+  fake tier only in bulk: one short sentence whose words really are
+  monomorphemic looks identical to a mirror tier, and single-M Ws are
+  explicitly legal, so sentence-scoping V145 would manufacture false
+  positives. A whole file with no multi-morphemic word anywhere is the
+  reliable signal.
+
+(Resolves the Bunun-Topic-Focus degenerate-single-M question: its 51
+single-M Ws are conforming as long as no W lacks an M.)
 
 ### POL-024 · RULED · 2026-08-10 · parentheticals in translations
 Two different things, treated differently:

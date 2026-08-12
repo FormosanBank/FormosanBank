@@ -28,8 +28,9 @@ verified byte-identical to `main`'s `Corpora/Wikipedias/XML/`
 ## Pipeline (`CodeAndDocs/make_xml.sh`)
 
 Restores `XML/` from the snapshot, then runs (all steps committed,
-POL-038; no `apply_manual_edits` — no manual edits exist; no spurious
-no-op steps):
+POL-038; no spurious no-op steps). Step numbering below is the original
+sweep's; the 2026-08-12 follow-up turn inserted `apply_manual_edits.py`
+ahead of them all (see "Follow-up turn"):
 
 1. `delete_duplicate_articles.py` — **new**; one file per TEXT id (below).
 2. `delete_nonlatin_articles.py` — **new**; drops articles with no
@@ -324,15 +325,107 @@ surviving `(1)` filenames), retained-markup-residue note, and a pointer to
 the orthography appendix below. Historical scrape provenance and the
 per-language apostrophe section are unchanged.
 
+**2026-08-12 (post-merge, maintainer ruling)**: the orthography appendix
+below is no longer analysis-only — a data-user-facing version of it now
+lives in `Corpora/Wikipedias/README.md` ("Appendix — the orthography
+behind PHON") and is mirrored on the GitBook corpus page
+(`en-us/the-bank-architecture/corpora/wikipedias.md`, branch
+`docs/wikipedias-orthography`).
+
 ## Open items for maintainer
 
 1. V142 ×2: human source review.
-2. Hangul NFD in the standard tier (27 articles) — one-line fix in
-   `QC/utilities/_accents.strip_accents`, a shared-tool change affecting
-   every corpus that regenerates.
+2. ~~Hangul NFD in the standard tier (27 articles)~~ — **RESOLVED
+   2026-08-12**, see "strip_accents fix applied" below.
 3. Post-merge: GitBook corpus page check (sweep ruling 4).
 
 **UNEXPLAINED: none.** Ready for review/merge.
+
+## strip_accents fix applied (2026-08-12, post-merge)
+
+Open item 2 was ruled on: `strip_accents` must strip **Latin-script
+accents only**. `QC/utilities/_accents.strip_accents` now decomposes and
+strips marks on Latin bases only, and emits runs of non-Latin text through
+NFC as a unit (so a conjoining-jamo sequence L+V+T is recomposed into its
+syllable). 43 regression tests in `tests/utilities/test_accents.py`; full
+suite 1004 passed / 7 skipped.
+
+The Wikipedias pipeline (`CodeAndDocs/make_xml.sh`) was re-run end to end
+against the fixed tool. **78 files changed, 0 added, 0 deleted, 0
+unexplained** — every change re-derived from each file's own unchanged
+original tier as `old_strip(original)` → `new_strip(original)`:
+
+| class | files | S-level standard FORMs | why expected |
+|---|---|---|---|
+| Hangul standard FORM now NFC | 27 | 27 | the fix; these are exactly the 27 articles listed above |
+| non-Latin combining mark retained | 52 | 52 | same ruling: a Greek/Cyrillic diacritic is script, not source prosody |
+| **total** (1 file in both classes) | **78** | **79** | |
+| **UNCLASSIFIED** | **0** | **0** | |
+
+- **0 conjoining jamo** remain anywhere in the corpus (was 27 files).
+- **Original tier: 0 changes.** PHON changed in **29** elements, all in
+  sentences whose standard FORM changed; none elsewhere. The Hangul cases
+  simply lose the extra `*` the decomposed jamo produced, so the standard
+  PHON now matches the original PHON (e.g. `Seediq/Kari_Han-guk.xml`:
+  `한국어` was 11 stars in the standard tier vs 6 in the original; both are
+  6 now).
+- **Token count unchanged**: 5,103,288 (Amis 1,982,130 / Atayal 555,392 /
+  Paiwan 123,725 / Sakizaya 1,649,981 / Seediq 792,060) — identical to the
+  merged baseline. Non-Latin script is not tokenized differently.
+- The second class is not a Wikipedias-specific defect: the old tool
+  stripped a combining acute from *any* base, so Greek `έ ό ά ή ί ύ`,
+  Cyrillic `й ў ѓ` and the like were flattened in the standard tier of
+  quoted foreign names. They are now preserved verbatim, matching the
+  original tier. Affected articles are the country/person pages that quote
+  a Greek, Cyrillic or Arabic form (Amis 11, Sakizaya 26, Seediq 13,
+  Paiwan 3).
+- Sidecar: this run again produced `XML/cleaner_warnings.csv` with c022
+  ×103 and c007 ×40 — identical to the previous run, audit flags only,
+  reviewed and deleted (POL-033).
+
+## Follow-up turn (`fix/wikipedias-v142`, 2026-08-12)
+
+Two maintainer rulings, closing open item 1 above (V142) and the
+Ortho113 question left open by the appendix.
+
+**1. V142 → 0 — the stray leading `?` removed via the manual-edits
+mechanism.** `Sakizaya/miladlad_tu_udip.xml` (single `S id="0"`, the whole
+article body in one FORM) began with `? `. Ruled: scrape debris, not a
+POL-016 grammaticality marker — the article simply starts after it — so
+the `? ` (marker plus following space) is dropped from the **original**
+tier; the standard tier and PHON regenerate from it.
+
+- Recorded with `QC/utilities/capture_manual_edits.py` (hand-edit the
+  original FORM, capture against `HEAD`) into the corpus's first
+  `CodeAndDocs/manual_edits.xml`: one `FILE` group, one `S`, stored on the
+  strip() basis (standard FORM and PHON removed). `manual_edits.md` is the
+  generated changelog.
+- `QC/cleaning/apply_manual_edits.py` wired into `make_xml.sh` as **step 1**
+  — immediately after the snapshot restore and before `clean_xml`, per
+  `QC/README.md` ("before running other cleaners"); the later steps renumber
+  to 2–8. Run output: `apply: 1 edit(s) across 1 file(s); 0 no-op(s)`.
+- Full pipeline re-run from the POL-035 snapshot. Diff vs the previous
+  published state is **exactly one file, exactly that sentence's four
+  tiers** (original/standard FORM, original/standard PHON); the sentence
+  now starts `makatukuh i lalud, …` in both FORM tiers, and the PHON tiers
+  lose the leading space the removed `?` left behind. 13,238 files, no
+  other byte changed. `cleaner_warnings.csv` was identical to the reviewed
+  run (c007 ×40, c022 ×103) and deleted per POL-033.
+- Validators: `validate_text` **V142 2 → 0** (SOFT total 243,130 →
+  243,128, i.e. −2 and nothing else moved); HARD unchanged at 68 (the
+  ruled-ignored V129 asterisks); `validate_xml` still 0 issues.
+- The article's CJK-in-Formosan text is unrelated and untouched.
+
+**2. Ortho113 kept corpus-wide (documentation only).** See the decision
+recorded at the end of the appendix below. No code or data change; the
+same paragraph is mirrored in `Corpora/Wikipedias/README.md` (PHON note)
+and on the GitBook corpus page
+(`en-us/the-bank-architecture/corpora/wikipedias.md`, branch
+`docs/wikipedias-orthography`).
+
+(Open item 2 above — the Hangul-NFD nit in `strip_accents` — was fixed
+separately and is recorded in the section immediately above.)
+
 
 ---
 
@@ -458,3 +551,14 @@ of those are digits and the rest are CJK/loanword letters that no scheme
 maps. If any of this is worth acting on, the highest-value item is Atayal
 `e`, where the corpus-wide top-scoring scheme (Church) disagrees with
 Ortho113 on a vowel occurring 35,336 times.
+
+## Decision (maintainer ruling, 2026-08-12)
+
+**Ortho113 is used corpus-wide**, for the reasons already stated above.
+The one material consequence of the blanket assumption — Atayal `e`
+(Ortho113 `e` vs Church `ə`, 35,336 occurrences) — is known, quantified
+above, and **accepted as unadjudicable**: the articles state no
+orthography and carry no translations, so no evidence available to us
+could settle which value their authors intended. The divergence is small
+enough to live with, and is documented for users in the corpus README and
+on the GitBook corpus page rather than acted on. No code or data change.

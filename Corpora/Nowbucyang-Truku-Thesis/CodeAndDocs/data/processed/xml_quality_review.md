@@ -32,7 +32,7 @@
 
 ## Validation
 
-- `scripts/validate_formosanbank_xml.py` passed with zero failures.
+- `scripts/pipeline.py --step validate_formosanbank_xml` passed with zero failures.
 - `/Users/hunterschep/FormosanBankRepos/FormosanBank/QC/validation/validate_xml.py by_path --path Final_XML` passed with zero issues.
 - `/Users/hunterschep/FormosanBankRepos/FormosanBank/QC/validation/validate_glosses.py Final_XML --check_morpho` found no W-count mismatches. Its M-count heuristic reports expected infix reanalysis cases where one source W form is intentionally represented as a discontinuous base M plus an infix M; the current QC run reports 21 such cases in `logs/formosan_qc/glosses/validation_m_mismatches.csv`.
 - `/Users/hunterschep/FormosanBankRepos/FormosanBank/QC/validation/validate_punct.py by_path --path Final_XML` exited 0 and reported PASS.

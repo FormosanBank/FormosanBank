@@ -10,6 +10,7 @@ import pytest
 
 
 ROOT = Path(__file__).resolve().parents[1]
+XML_ROOT = ROOT.parent / "XML"
 sys.path.insert(0, str(ROOT / "scripts"))
 
 import extract_dictionary  # noqa: E402
@@ -263,8 +264,7 @@ def test_source_alternatives_follow_the_selected_sentence_variant() -> None:
 
 def test_generated_xml_respects_shared_segmentation_policy() -> None:
     tree = ET.parse(
-        ROOT
-        / "Final_XML"
+        XML_ROOT
         / "Kanakanavu"
         / "Song_2018_Kanakanavu_Grammar.xml"
     )
@@ -312,8 +312,7 @@ def test_page_69_preserves_printed_sentence_analysis_distinction() -> None:
     assert "takananga kasu" in row["target_text"]
 
     root = ET.parse(
-        ROOT
-        / "Final_XML"
+        XML_ROOT
         / "Kanakanavu"
         / "Song_2018_Kanakanavu_Grammar.xml"
     ).getroot()
@@ -341,8 +340,7 @@ def test_review_gate_rejects_reordered_positioned_text(
 
 def test_standard_manifest_rejects_changed_source_input(tmp_path: Path) -> None:
     source = (
-        ROOT
-        / "Final_XML"
+        XML_ROOT
         / "Kanakanavu"
         / "Song_2018_Kanakanavu_Grammar.xml"
     )
@@ -411,14 +409,12 @@ def test_bound_citation_forms_are_excluded_at_extraction() -> None:
 
 def test_generated_direct_standard_surfaces_are_marker_free() -> None:
     grammar = ET.parse(
-        ROOT
-        / "Final_XML"
+        XML_ROOT
         / "Kanakanavu"
         / "Song_2018_Kanakanavu_Grammar.xml"
     ).getroot()
     dictionary = ET.parse(
-        ROOT
-        / "Final_XML"
+        XML_ROOT
         / "Kanakanavu"
         / "Song_2018_Kanakanavu_Grammar_Dictionary.xml"
     ).getroot()
@@ -546,7 +542,7 @@ def test_generated_direct_standard_surfaces_are_marker_free() -> None:
 def test_stress_and_shared_phonology_tiers() -> None:
     roots = [
         ET.parse(path).getroot()
-        for path in sorted((ROOT / "Final_XML").rglob("*.xml"))
+        for path in sorted(XML_ROOT.rglob("*.xml"))
     ]
     original_forms = [
         form
@@ -582,7 +578,8 @@ def test_stress_and_shared_phonology_tiers() -> None:
         for root in roots
         for form in root.findall(".//FORM[@kindOf='standard']")
     )
-    assert any("r~ɾ" in (phon.text or "") for phon in standard_phon)
+    assert any("[r|ɾ]" in (phon.text or "") for phon in standard_phon)
+    assert all("~" not in (phon.text or "") for phon in standard_phon + original_phon)
 
     grammar = roots[0]
     sentence = grammar.find(".//S[@id='song-2018-kanakanavu-S0009']")

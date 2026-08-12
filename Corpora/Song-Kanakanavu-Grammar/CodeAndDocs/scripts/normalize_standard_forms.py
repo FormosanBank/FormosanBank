@@ -14,7 +14,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_XML_PATH = ROOT / "Final_XML"
+DEFAULT_XML_PATH = ROOT.parent / "XML"
 DECISIONS_PATH = ROOT / "intermediate" / "standard_surface_decisions.tsv"
 DICTIONARY_NAME = "Song_2018_Kanakanavu_Grammar_Dictionary.xml"
 GRAMMAR_NAME = "Song_2018_Kanakanavu_Grammar.xml"
