@@ -4,77 +4,71 @@
 
 This corpus is subject to its source license and the central FormosanBank terms in [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI Use is prohibited without prior written permission.
 
-This repository contains the translated sections of the [2024 SEALS conference](https://sites.google.com/view/seals33/national-languages?authuser=0), graciously provided by the authors. 
+## Contents
 
-The 2024 South East Asian Linguistic Society meeting took place in Taipei. The main page of the website were available in Seediq and Saisiyat, as well as Mandarin and English. 
+This corpus contains the translated sections of the [2024 SEALS conference](https://sites.google.com/view/seals33/national-languages?authuser=0) website, graciously provided by the authors.
 
-This repo is relatively simple because the XMLs were created by copy-and-paste, being relatively short.
+The 2024 South East Asian Linguistic Society meeting took place in Taipei. The main pages of the website were available in Seediq and Saisiyat (as well as Mandarin and English, which serve as the translation tiers here).
 
-## Project Structure
+- `XML/Seediq/seediq_SEALS.xml` — 29 sentences, `xml:lang="trv"`, `dialect="unknown"`
+- `XML/Saisiyat/saisiyat_seals.xml` — 29 sentences, `xml:lang="xsy"`
 
-- **raw_data**: Directory containing the raw source data in text format. For Paiwan, there is also a helpful table showing what corresponds to what.
+There is no audio and no word/morpheme segmentation.
 
-- **Final_XML**: Directories for the processed XML data in FormosanBank XML format, organized by language.
+## Project structure
 
-## Installation
+- **`XML/`** — the published FormosanBank XML, one directory per language.
+- **`CodeAndDocs/`** — reproduction infrastructure:
+  - `pre_correction_snapshot/XML/` — pristine pre-cleaning snapshot (see below);
+  - `make_xml.sh` — regenerates `XML/` from the snapshot (see below).
 
-1. Clone this repository:
-   ```bash
-   git clone git@github.com:FormosanBank/Formosan-SEALS.git
-   cd Formosan-SEALS
-   ```
+## Provenance and the pre-correction snapshot (POL-035)
 
-2. Set up a virtual environment (optional but recommended):
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate
-   ```
+The XML files were created **by hand**, by copy-and-paste from the conference website; there is no scraper and no raw source data committed, so the corpus is **not regenerable from source**. Per POL-035, before the automated cleaning pipeline first touched the published XML (2026-08-11), the pristine XML was snapshotted to `CodeAndDocs/pre_correction_snapshot/XML/`. That snapshot is the reproduction baseline: the published `XML/` is derived from it by the pipeline below, and (per POL-038) neither the snapshot nor the published XML is ever edited by hand.
 
-3. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+## Processing pipeline
 
-## Usage
+The entire post-scrape pipeline is wrapped by an executable script:
 
-1. **Clean XML and standardize punctuation**
+```bash
+./CodeAndDocs/make_xml.sh [FORMOSANBANK_ROOT]
+```
 
-   ```bash
-   python path/to/FormosanBankRepo/QC/cleaning/clean_xml.py --corpora_path Final_XML
-   ```
+It first restores `XML/` from the pre-correction snapshot — the pipeline's starting point, since the corpus has no other source data — and then runs the three steps below, using the QC scripts of the FormosanBank checkout the corpus lives in (pass a path or set `FORMOSANBANK_ROOT` to use another checkout; set `PYTHON` to override the interpreter, which defaults to the root's `.venv`). The script is idempotent — it always rebuilds from the snapshot.
 
-**Outputs**
-   - This will update the XML files.
+The steps, in order:
 
-**Notes**
-   - This removes empty XML elements
-   - It also standardizes orthography (more-or-less), though a lot of this was done in previous steps (not documented above)
-   - Unicode is flattened so that diacritics are merged with the characters they modify
-   - HTML escape codes are replaced with the corresponding characters
-
-2. **Standardize orthography**
+1. **Clean XML**
 
    ```bash
-   python path/to/FormosanBankRepo/QC/utilities/standardize.py --corpora_path path/to/FormosanWikipedias/Final_XML --copy
+   python QC/cleaning/clean_xml.py --corpora_path Corpora/SEALS33/XML
    ```
 
-**Outputs**
-   - Updates XML files
+   - Removes empty XML elements.
+   - Flattens Unicode so that diacritics are merged with the characters they modify (NFC).
+   - Replaces HTML escape codes with the corresponding characters and canonicalizes punctuation look-alikes (dashes, curly apostrophes) and null glyphs (`ø/Ø` → `∅`).
+   - Quote-glottal correction makes no rewrites in this corpus: no quote evaluation runs for Seediq (no attestation dictionary), so the loan-autonym apostrophes in `'Tayal` (S16, S26) are preserved, and the Saisiyat pass changes nothing (it only emits audit flags). Warning sidecars (`cleaner_warnings.csv`) are per-run reports: review, then delete; never commit.
 
-**Notes**
-   - Creates a copy of every <FORM> element with kindOf="standard" attribute
-   - Makes no changes, since the transcription is already the 94 Orthography, which for our purposes is the same as the 113 Orthography.
-
-5. **Add IPA**
+2. **Create the standard tier**
 
    ```bash
-   python ../FormosanBank/QC/utilities/add_phonology.py --corpora_path Final_XML --orthography Ortho94
+   python QC/utilities/standardize.py --corpora_path Corpora/SEALS33/XML --remove_accents
    ```
 
-Ortho94 is used here for the "original" tier because the text lacks the distinguishing features of Ortho113.
+   - Copies every original `<FORM>` to a `kindOf="standard"` `<FORM>`, then deletes accents/stress diacritics and removes S-level null-morpheme units (`∅` plus any bridging hyphen).
+   - No spelling conversion is applied (no TSV): the transcription is already the 94 Orthography, which for our purposes is the same as the 113 Orthography. In this corpus the originals carry no accents, so the only textual effect beyond the copy is the removal of the `∅` unit in S25 of each file.
 
-**Outputs**
-   - Updates XML files
+3. **Add IPA**
 
-**Notes**
-   - Adds <PHON /> elements corresponding to each <FORM />, containing IPA.
+   ```bash
+   python QC/utilities/add_phonology.py --corpora_path Corpora/SEALS33/XML --orthography Ortho94
+   ```
+
+   - Adds a `<PHON>` element for each sentence-level `<FORM>`, containing IPA.
+   - Ortho94 is used for the "original" tier because the text lacks the distinguishing features of Ortho113.
+   - Note the tier semantics for Seediq `ey`: the original-tier profile voices `y` (→ `əj`), while the standard-tier profile treats `ey` as a digraph (→ `e`).
+
+## Known caveats
+
+- **S25** (both files) is a talk title containing reconstructed proto-forms (`*-ʔ, *-h, *-∅`). The asterisks are faithful to the source; the Saisiyat S25 is actually the English title, so its PHON is English-rendered-through-the-Saisiyat-profile.
+- The Saisiyat file uses `:` for vowel length; it is retained in PHON for Saisiyat but treated as punctuation for Seediq.

@@ -7,97 +7,83 @@ This corpus is subject to its source license and the central FormosanBank terms 
 
 These are translations of the FormosanBank GitBook into Formosan languages. So far, there is only Eastern Paiwan, generously contributed by Ruan Xuan.
 
-This repository contains code and data for recreating the XMLs.
+This corpus contains code and data for recreating the XMLs.
 
 ## Project Structure
 
-- **raw_data**: Directory containing the raw source data in text format. For Paiwan, there is also a helpful table showing what corresponds to what.
+- **XML/**: The published, canonical FormosanBank XML, organized by language (currently `XML/Paiwan/`).
 
-- **Final_XML**: Directories for the processed XML data in FormosanBank XML format, organized by language.
+- **CodeAndDocs/raw_data**: Directory containing the raw source data in text format. For Paiwan, there is also a helpful table showing what corresponds to what.
 
-- **process_raw.py**: The main script that processes the raw data in the `raw_data` directory and converts it into the structured XML format defined by FormosanBank.
+- **CodeAndDocs/process_raw.py**: The script that converts the raw data in `raw_data/` into FormosanBank XML (the scrape/conversion step).
+
+- **CodeAndDocs/make_xml.sh**: Executable script that runs **all post-scrape pipeline steps in order** (see "Post-scrape pipeline" below). The per-step notes below remain the reference for what each step does; `make_xml.sh` is their executable form.
 
 ## Installation
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/yourusername/NTU_Paiwan.git
-   cd NTU_Paiwan
-   ```
-
-2. Set up a virtual environment (optional but recommended):
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate
-   ```
-
-3. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-## Usage
-
-1. **Process Raw Data to XML**:
-   Run `process_raw.py` to process the raw data in the `raw_data` directory and structure it into XML format.
-
-   ```bash
-   python process_raw.py
-   ```
-
-Currently, this only works for Eastern Paiwan.
-
-**Output**
-The processed XML files will be saved in `Final_XML/Paiwan`.
-
-2. **Add dialect information**
-Use `add_dialect.py` to add dialect information for the speakers.
+Run everything with the FormosanBank repository's Python environment (`.venv` in the repo root), which has all dependencies installed:
 
 ```bash
-python add_dialect.py --path Final_XML/Paiwan/speaker-name --dialect dialect
+source path/to/FormosanBank/.venv/bin/activate
+```
+
+(`CodeAndDocs/requirements.txt` lists the minimal dependencies of `process_raw.py` if you want a standalone environment for the scrape step only.)
+
+## Reproducing the XML
+
+### Step 0 — Raw data to XML (scrape/conversion)
+
+```bash
+cd CodeAndDocs
+python process_raw.py
 ```
 
 **Output**
-- The XML roots will now have a `dialect` attribute. Since there are no glottocodes for Paiwan dialects, no glottocode attribute is created.
+- Writes fresh XML to `CodeAndDocs/Final_XML/Paiwan/` (currently Eastern Paiwan only).
+- The `dialect="Eastern"` attribute is set by `process_raw.py` itself. Since there are no glottocodes for Paiwan dialects, no glottocode attribute is created.
+- To republish, replace the files in `XML/Paiwan/` with the fresh output, then run the post-scrape pipeline below.
 
-3. **Clean XML and standardize punctuation**
+### Post-scrape pipeline — `make_xml.sh`
 
-This isn't necessary because everything was already standardized. It is listed just to make it clear that we didn't forget to do it.
+All remaining steps run over the published `XML/` directory and are wrapped by one executable script:
 
-   ```bash
-   python path/to/FormosanBankRepo/QC/cleaning/clean_xml.py --corpora_path Final_XML
-   ```
+```bash
+./CodeAndDocs/make_xml.sh [path/to/FormosanBank]
+```
 
-**Outputs**
-   - This will update the XML files.
+The FormosanBank repo root argument is optional and defaults to the repository enclosing this corpus; set the `PYTHON` environment variable to pick an interpreter (defaults to the FormosanBank root's `.venv` python when present). The script runs steps 1–3 below in order. Their individual explanations follow.
 
-**Notes**
-   - This removes empty XML elements
-   - It also standardizes orthography (more-or-less), though a lot of this was done in previous steps (not documented above)
-   - Unicode is flattened so that diacritics are merged with the characters they modify
-   - HTML escape codes are replaced with the corresponding characters
+#### 1. Clean XML and standardize punctuation
 
-4. **Standardize orthography**
-
-   ```bash
-   python path/to/FormosanBankRepo/QC/utilities/standardize.py --corpora_path path/to/FormosanWikipedias/Final_XML --copy
-   ```
-
-**Outputs**
-   - Updates XML files
+```bash
+python path/to/FormosanBank/QC/cleaning/clean_xml.py --corpora_path XML
+```
 
 **Notes**
-   - Creates a copy of every <FORM> element with kindOf="standard" attribute
-   - Makes no changes, since the transcription is already the 113 Orthography.
+- Currently a content no-op for this corpus — the text is already clean.
+- This removes empty XML elements.
+- It also standardizes punctuation and canonicalizes look-alike characters (dashes, quotes, tildes).
+- Unicode is flattened so that diacritics are merged with the characters they modify.
+- HTML escape codes are replaced with the corresponding characters.
+- Paiwan has an attestation dictionary, so quote/glottal correction is armed: any `'`→`"` corrections would be logged to `CodeAndDocs/quote_corrections.csv`. This corpus's single apostrophe (`pu'ui`) is a word-internal glottal and is untouched (0 corrections).
 
-5. **Add IPA**
+#### 2. Standardize orthography
 
-   ```bash
-   python ../FormosanBank/QC/utilities/add_phonology.py --corpora_path Final_XML --orthography Ortho113
-   ```
-
-**Outputs**
-   - Updates XML files
+```bash
+python path/to/FormosanBank/QC/utilities/standardize.py --corpora_path XML --remove_accents
+```
 
 **Notes**
-   - Adds <PHON /> elements corresponding to each <FORM />, containing IPA.
+- Creates (or overwrites) a copy of every sentence-level `<FORM>` element with the `kindOf="standard"` attribute, then deletes accent/stress diacritics and removes null-morpheme units from the standard tier. No conversion table is applied.
+- For this corpus the result equals a pure copy of the original tier: the transcription is already the 113 Orthography and contains no accents and no null units.
+
+#### 3. Add IPA
+
+```bash
+python path/to/FormosanBank/QC/utilities/add_phonology.py --corpora_path XML --orthography Ortho113
+```
+
+**Notes**
+- Adds `<PHON>` elements corresponding to each `<FORM>`, containing IPA (Ortho113 Paiwan profile, Eastern column).
+- Punctuation is not carried into PHON.
+- Characters outside the orthography surface as `*` in PHON: here these are digits, `%`, and Latin loanwords/proper nouns (e.g. `FormosanBank`, `NSF`, `XML`, `CC-BY-4.0`).

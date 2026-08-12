@@ -6,85 +6,79 @@ This corpus is subject to its source license and the central FormosanBank terms 
 
 Wilang Yutas was an Atayal elder who, with his collaborator 劉宇陽, recorded a large number of videos speaking in Atayal, which can be found on his [YouTube Channel](https://www.youtube.com/@wilangyutas9297). Some of the audio is transcribed, and a smaller portion has been translated into Mandarin. Permission to republish was generously provided by Wilang Yutas's collaborator, 劉宇陽.
 
-
+All text is Atayal (`tay`), dialect Sekolik. 82 XML files; 34 carry transcripts (3,014 sentences), the rest are no-transcript stubs and `*_untranscribed` audio companions.
 
 ***
 
 # Notes
 
-* Many of the videos lack transcripts. These have XMLs that point to the audio file, but there are no <S> elements.
-* Many other videos have only partial transcripts. In these cases, the main XML contains only the transcribed part of the audio. A second XML with the postfix "_untranscribed" has no <S>s and a reference to a file that contains the remaining audio.
-* Segments that were not transcribable are marked as <UNCLEAR>. 
-* Many videos involve multiple speakers. The original transcriptions have the second speaker's text in parentheses. We replaced the parentheses with periods so that the text will be standard. People who want to do diarization can inspect `make_xml.py` to figure out how to mark text by speaker (note that we don't have timestamps for seprate speakers).
+* Many of the videos lack transcripts. These have XMLs that point to the audio file, but there are no `<S>` elements.
+* Many other videos have only partial transcripts. In these cases, the main XML contains only the transcribed part of the audio. A second XML with the postfix `_untranscribed` has no `<S>`s and a reference to a file that contains the remaining audio.
+* Segments that were not transcribable are marked as `<UNCLEAR/>`.
+* Many videos involve multiple speakers. The original transcriptions have the second speaker's text in parentheses. We replaced the parentheses with periods so that the text will be standard. People who want to do diarization can inspect `make_xml.py` to figure out how to mark text by speaker (note that we don't have timestamps for separate speakers).
+* A few sentences quote Japanese song lyrics (kana/kanji) and one sentence contains a Bopomofo fragment (`ㄇ`) from the transcriber; these are faithful to the source subtitles and are intentionally kept.
 * Time stamps are derived from the subtitles themselves. We do not guarantee that these align perfectly with the actual audio.
 
 ***
 
 ## Project Structure
 
-- **raw_scrape/**: Contains raw .txt files scraped from the YouTube channel using the YouTube API
-- **scripts/**: Python scripts for scraping and processing
-  - `scrape_videos.py`: Scrapes video transcript data from YouTube into .txt files 
-  - `make_xml.py`: Converts JSON data to FormosanBank XML format
-  - `analyze_xml.py`: Analyzes the generated XML files
-- **Final_XML/**: Contains the final processed XML files
+- **XML/Atayal/**: the published FormosanBank XML files (canonical data)
+- **CodeAndDocs/raw_scrape/**: the raw `.txt` transcript files scraped from the YouTube channel using the YouTube API (committed — the corpus text regenerates from these without network access)
+- **CodeAndDocs/scripts/**: Python scripts for scraping and processing
+  - `scrape.py`: scrapes video transcript data from YouTube into `.txt` files
+  - `make_xml.py`: converts the `.txt` transcripts to FormosanBank XML (Chinese in filenames is converted to Pinyin)
+  - `download_audio.py`: downloads and segments the audio (dev-repo use; end users should use `download_audio_data.sh`)
+  - `issues.py`: ad-hoc analysis helper
+- **CodeAndDocs/make_xml.sh**: one-command wrapper for the post-scrape QC pipeline (see below)
+- **download_audio_data.sh**: pulls the published audio from Hugging Face
 
-## Installation
+## Reproducibility
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/FormosanBank/formosan-wilang-yutas-videos.git
-   cd Formosan-Wilang-Yutas-videos
-   ```
-
-2. Install required Python packages(best done in a virtually environment):
-   ```bash
-   pip install -r requirements.txt
-   ```
+Everything a text correction could touch regenerates deterministically from the **committed** `CodeAndDocs/raw_scrape/` transcripts via `make_xml.py` + the pipeline below; only the no-transcript stubs and the audio segmentation require live YouTube access.
 
 ## Usage
 
-### 1. Scrape Video Data
-Run the scraping script to extract video information and metadata:
+### 1. Scrape video data (network; only to refresh the corpus from YouTube)
 
 ```bash
-python scripts/scrape.py
+python CodeAndDocs/scripts/scrape.py
 ```
 
-This will:
-- Call the YouTube transcripts API on all videos on the channel
-- Extract the transcripts
-- Save them into a .txt file in the `raw_scrape` directory
-### 3. Generate XML Files
-Convert the JSON data to FormosanBank XML format:
+This calls the YouTube transcripts API on all videos on the channel, extracts the transcripts, and saves them as `.txt` files in `raw_scrape/`.
+
+### 2. Generate XML files
 
 ```bash
-python scripts/make_xml.py
+python CodeAndDocs/scripts/make_xml.py
 ```
 
-This will:
-- Process all .txt files
-- Create XML files following the FormosanBank format
-- Organize files by language and dialect in the `Final_XML` directory
-- Chinese in filenames will be changed to Pinyin.
+This processes all `.txt` files, creates XML files following the FormosanBank format (organized by language and dialect; in the dev-repo layout the output directory is `Final_XML/`, published here as `XML/`), and converts Chinese in filenames to Pinyin.
 
-### 4. Download the audio
+### 3. Download the audio
 
-Make sure fmpeg is installed (on Mac, use `brew install ffmpeg`).
+End users: run `./download_audio_data.sh` (requires `git-lfs`, `jq`, and the `hf` CLI). Rebuilding from YouTube instead uses `CodeAndDocs/scripts/download_audio.py` (requires `ffmpeg`), which downloads the audio, converts it to WAV, and segments it into units matching the subtitles (as accurately as the original time stamps allow).
+
+### 4. Clean and standardize XML, add IPA
+
+One command (from anywhere; pass the FormosanBank root if this corpus is checked out elsewhere):
 
 ```bash
-   python scripts/download_audio.py
+CodeAndDocs/make_xml.sh [path/to/FormosanBank]
 ```
 
-This will download the audio, convert to WAV, and then segment into units matching the subtitles (depending on how accurate the original time stamps were).
-
-### 4. Clean and Standardize XML, add IPA
-Run the FormosanBank cleaning and standardization scripts:
+which runs, in order, over `XML/`:
 
 ```bash
-   python path/to/FormosanBank/QC/cleaning/clean_xml.py --corpora_path path/to/Formosan-Wilang-Yutas-Videos/Final_XML
-   python path/to/FormosanBank/QC/utilities/standardize.py --corpora_path path/to/Formosan-Wilang-Yutas-Videos/Final_XML --copy
-   python path/to/FormosanBank/QC/utilities/add_phonology.py --corpora_path path/to/Formosan-Wilang-Yutas-Videos/Final_XML --orthography Ortho94
+python QC/cleaning/clean_xml.py --corpora_path Corpora/WilangYutasVideos/XML
+python QC/utilities/standardize.py --remove_accents --corpora_path Corpora/WilangYutasVideos/XML
+python QC/utilities/add_phonology.py --corpora_path Corpora/WilangYutasVideos/XML --orthography Ortho94
 ```
 
-I'm just assuming it is Ortho94. They aren't much different, and it was done too long ago to reasonably be Ortho113.
+Step by step:
+
+1. **`clean_xml.py`** canonicalizes characters and punctuation (e.g. wave-dash `〜` → `~`) and writes a per-run `cleaner_warnings.csv` sidecar, which is reviewed and deleted, never committed.
+2. **`standardize.py --remove_accents`** rebuilds the standard tier as a copy of the original with accents (combining acute/breve) deleted and null units removed. No conversion table exists for this corpus, so no orthographic letter conversion is applied; the Sekolik transcripts contain no such accents, so the standard tier currently equals the original tier verbatim (the Japanese kana dakuten are not accents and are untouched). Source hyphens in Japanese loanwords (e.g. `Karen-ko`, `Tay-To`) therefore remain on the standard tier until a conversion table exists.
+3. **`add_phonology.py --orthography Ortho94`** regenerates the PHON tiers. The original-tier PHON assumes the **Ortho94** orthography — an assumption: the transcripts predate Ortho113, and the two differ little for Atayal.
+
+Audio files are never touched by this pipeline.
