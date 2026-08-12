@@ -255,20 +255,25 @@ def test_V061_W_with_no_FORM_emits_nothing():
 
 
 # ---------------------------------------------------------------------------
-# V062: infix M needs angle-bracket gloss (HARD)
+# V062: infix M should have an angle-bracket gloss (SOFT)
 # Moved from rules/hard.py to rules/gloss.py during B9.3. The pre-move
 # fixture files (v062_infix_M_*.xml) are reused.
 # ---------------------------------------------------------------------------
 
 
-def test_V062_infix_M_without_angle_gloss_emits_HARD(fixtures_dir):
-    """V062 (negative): infix M FORM lacking angle-bracket gloss -> HARD."""
+def test_V062_infix_M_without_angle_gloss_emits_SOFT(fixtures_dir):
+    """V062 (negative): infix M FORM lacking angle-bracket gloss -> SOFT.
+
+    SOFT, not HARD: a corpus may gloss infixes in prose rather than
+    Leipzig angle-bracket notation, which is a notation difference
+    rather than missing data. Reported, never fatal.
+    """
     xml = (fixtures_dir / "v062_infix_M_without_angle_gloss.xml").read_text(encoding="utf-8")
     findings = _findings_for(gloss_rules.v062_infix_M_needs_angle_gloss, xml)
     assert len(findings) == 1, f"expected 1 V062 finding; got {findings!r}"
     f = findings[0]
     assert f.rule_id == "V062"
-    assert f.severity is Severity.HARD
+    assert f.severity is Severity.SOFT, f"V062 must not be HARD; got {f!r}"
     assert "infix" in f.message.lower()
 
 
@@ -294,7 +299,8 @@ def test_V062_non_infix_M_emits_nothing():
 
 
 # ---------------------------------------------------------------------------
-# V063: W-FORM segmentation preservation (HARD)
+# V063: W-FORM segmentation preservation
+# (HARD; SOFT when the FILE has no standard tier at all)
 # ---------------------------------------------------------------------------
 
 
@@ -411,8 +417,244 @@ def test_V063_S_with_no_segmentation_markers_no_ops():
     assert findings == [], f"expected no V063 finding; got {findings!r}"
 
 
+# --- V063 standard-tier severity split, decided PER FILE (a corpus may -----
+# --- legitimately have no standard tier at all) -----------------------------
+
+
+def test_V063_standard_tier_present_but_stripped_is_still_HARD():
+    """The tier EXISTS and under-retains -> HARD, and no SOFT.
+
+    Guards the regression case the rule was written for: a corpus that
+    does maintain a standard tier whose cleaner dropped its markers.
+    """
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">Pa-rakat-en =ku n-hapuy=mu</FORM>
+        <W id="W1">
+          <FORM kindOf="original">Pa-rakat-en</FORM>
+          <FORM kindOf="standard">Parakaten</FORM>
+        </W>
+        <W id="W2">
+          <FORM kindOf="original">=ku</FORM>
+          <FORM kindOf="standard">ku</FORM>
+        </W>
+        <W id="W3">
+          <FORM kindOf="original">n-hapuy=mu</FORM>
+          <FORM kindOf="standard">nhapuymu</FORM>
+        </W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v063_W_FORM_retains_segmentation, xml)
+    assert len(findings) == 1, f"expected exactly one finding; got {findings!r}"
+    assert findings[0].severity is Severity.HARD, (
+        f"a present-but-stripped standard tier must stay HARD; got {findings[0]!r}"
+    )
+    assert "standard" in findings[0].message
+
+
+def test_V063_no_standard_tier_at_all_is_exactly_one_SOFT():
+    """No W in the file carries a standard FORM -> one SOFT, zero HARD.
+
+    Nothing was stripped; there is no standard tier to check. Per the
+    maintainer's ruling (and V014), that is a warning, not a failure —
+    but it is still reported rather than silently skipped.
+    """
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">Pa-rakat-en =ku n-hapuy=mu</FORM>
+        <W id="W1"><FORM kindOf="original">Pa-rakat-en</FORM></W>
+        <W id="W2"><FORM kindOf="original">=ku</FORM></W>
+        <W id="W3"><FORM kindOf="original">n-hapuy=mu</FORM></W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v063_W_FORM_retains_segmentation, xml)
+    assert len(findings) == 1, f"expected exactly one finding; got {findings!r}"
+    f = findings[0]
+    assert f.rule_id == "V063"
+    assert f.severity is Severity.SOFT, f"expected SOFT; got {f!r}"
+    assert not any(x.severity is Severity.HARD for x in findings)
+    assert "no standard tier" in f.message, (
+        f"message should say plainly that there is no standard tier; got {f.message!r}"
+    )
+
+
+def test_V063_original_branch_still_HARD_when_no_standard_tier():
+    """The original-tier branch is untouched and fires independently.
+
+    Same no-standard-tier sentence, but the W originals are stripped:
+    one HARD (original) plus one SOFT (unverifiable standard).
+    """
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">Pa-rakat-en =ku n-hapuy=mu</FORM>
+        <W id="W1"><FORM kindOf="original">Parakaten</FORM></W>
+        <W id="W2"><FORM kindOf="original">ku</FORM></W>
+        <W id="W3"><FORM kindOf="original">nhapuymu</FORM></W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v063_W_FORM_retains_segmentation, xml)
+    hard = [f for f in findings if f.severity is Severity.HARD]
+    soft = [f for f in findings if f.severity is Severity.SOFT]
+    assert len(hard) == 1 and "'original'" in hard[0].message, (
+        f"expected one HARD original-tier finding; got {findings!r}"
+    )
+    assert len(soft) == 1, f"expected one SOFT standard-tier finding; got {findings!r}"
+
+
+def test_V063_conforming_sentence_without_standard_tier_and_with_one():
+    """Sanity pair: a fully conforming S emits nothing either way."""
+    with_standard = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">Pa-rakat-en =ku n-hapuy=mu</FORM>
+        <W id="W1">
+          <FORM kindOf="original">Pa-rakat-en</FORM>
+          <FORM kindOf="standard">Pa-rakat-en</FORM>
+        </W>
+        <W id="W2">
+          <FORM kindOf="original">=ku</FORM>
+          <FORM kindOf="standard">=ku</FORM>
+        </W>
+        <W id="W3">
+          <FORM kindOf="original">n-hapuy=mu</FORM>
+          <FORM kindOf="standard">n-hapuy=mu</FORM>
+        </W>
+      </S>""")
+    assert _findings_for(
+        gloss_rules.v063_W_FORM_retains_segmentation, with_standard) == []
+
+
+def test_V063_partial_standard_tier_counts_as_having_one():
+    """One W has a standard FORM, the others none -> the tier EXISTS.
+
+    Locks in the granularity choice: presence is decided from any
+    standard-tier W FORM in the file, so under-retention here is a real
+    HARD rather than the unverifiable-SOFT case. A partially populated
+    standard tier is an anomaly in its own right (V014 counts it), not
+    a reason to soften V063.
+    """
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">Pa-rakat-en =ku n-hapuy=mu</FORM>
+        <W id="W1">
+          <FORM kindOf="original">Pa-rakat-en</FORM>
+          <FORM kindOf="standard">Parakaten</FORM>
+        </W>
+        <W id="W2"><FORM kindOf="original">=ku</FORM></W>
+        <W id="W3"><FORM kindOf="original">n-hapuy=mu</FORM></W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v063_W_FORM_retains_segmentation, xml)
+    assert len(findings) == 1, f"expected exactly one finding; got {findings!r}"
+    assert findings[0].severity is Severity.HARD, (
+        f"a partially present standard tier still counts as present; got {findings[0]!r}"
+    )
+
+
+def test_V063_severity_is_decided_per_file_not_per_sentence():
+    """A mixed file: S1 has a stripped standard tier, S2 has none -> BOTH HARD.
+
+    A standard tier is all-or-nothing for a file: if the file has one,
+    it should appear in every sentence. So S2's missing tier does not
+    buy it a SOFT — in a file that has the tier, a sentence lacking it
+    is a defect worth failing on. A per-sentence test would wrongly
+    make S2 SOFT.
+    """
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">Pa-rakat-en =ku n-hapuy=mu</FORM>
+        <W id="W1">
+          <FORM kindOf="original">Pa-rakat-en</FORM>
+          <FORM kindOf="standard">Parakaten</FORM>
+        </W>
+        <W id="W2">
+          <FORM kindOf="original">=ku</FORM>
+          <FORM kindOf="standard">ku</FORM>
+        </W>
+        <W id="W3">
+          <FORM kindOf="original">n-hapuy=mu</FORM>
+          <FORM kindOf="standard">nhapuymu</FORM>
+        </W>
+      </S>
+      <S id="S2">
+        <FORM kindOf="original">Pa-rakat-en =ku n-hapuy=mu</FORM>
+        <W id="W4"><FORM kindOf="original">Pa-rakat-en</FORM></W>
+        <W id="W5"><FORM kindOf="original">=ku</FORM></W>
+        <W id="W6"><FORM kindOf="original">n-hapuy=mu</FORM></W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v063_W_FORM_retains_segmentation, xml)
+    by_loc = {f.location: f.severity for f in findings}
+    assert by_loc == {"S=S1": Severity.HARD, "S=S2": Severity.HARD}, (
+        f"expected both sentences HARD in a file that has a standard tier; "
+        f"got {findings!r}"
+    )
+    assert all("standard" in f.message for f in findings)
+
+
+def test_V063_file_with_no_standard_tier_anywhere_is_all_SOFT():
+    """Two sentences, no standard FORM anywhere in the file.
+
+    The file-level test finds no standard tier, so every qualifying
+    sentence gets the SOFT unverifiable finding and the run has zero
+    HARD V063 — the WakelinTexts-on-work/b3-wakelin case.
+    """
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">Pa-rakat-en =ku n-hapuy=mu</FORM>
+        <W id="W1"><FORM kindOf="original">Pa-rakat-en</FORM></W>
+        <W id="W2"><FORM kindOf="original">=ku</FORM></W>
+        <W id="W3"><FORM kindOf="original">n-hapuy=mu</FORM></W>
+      </S>
+      <S id="S2">
+        <FORM kindOf="original">Pa-rakat-en =ku n-hapuy=mu</FORM>
+        <W id="W4"><FORM kindOf="original">Pa-rakat-en</FORM></W>
+        <W id="W5"><FORM kindOf="original">=ku</FORM></W>
+        <W id="W6"><FORM kindOf="original">n-hapuy=mu</FORM></W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v063_W_FORM_retains_segmentation, xml)
+    assert [f.severity for f in findings] == [Severity.SOFT, Severity.SOFT], (
+        f"expected one SOFT per sentence and no HARD; got {findings!r}"
+    )
+    assert not any(f.severity is Severity.HARD for f in findings)
+    assert all("no standard tier in this file" in f.message for f in findings)
+
+
+def test_V063_sentence_without_standard_tier_in_a_file_that_has_one_is_HARD():
+    """A single tier-less sentence in a standard-tier file -> HARD, not SOFT.
+
+    The other sentence establishes that the file has a standard tier
+    (and is itself clean, emitting nothing). S2 carries no standard
+    FORM at all, so its standard_sum is 0 and the standard branch
+    fails it exactly as it always did.
+    """
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">Pa-rakat-en =ku n-hapuy=mu</FORM>
+        <W id="W1">
+          <FORM kindOf="original">Pa-rakat-en</FORM>
+          <FORM kindOf="standard">Pa-rakat-en</FORM>
+        </W>
+        <W id="W2">
+          <FORM kindOf="original">=ku</FORM>
+          <FORM kindOf="standard">=ku</FORM>
+        </W>
+        <W id="W3">
+          <FORM kindOf="original">n-hapuy=mu</FORM>
+          <FORM kindOf="standard">n-hapuy=mu</FORM>
+        </W>
+      </S>
+      <S id="S2">
+        <FORM kindOf="original">Pa-rakat-en =ku n-hapuy=mu</FORM>
+        <W id="W4"><FORM kindOf="original">Pa-rakat-en</FORM></W>
+        <W id="W5"><FORM kindOf="original">=ku</FORM></W>
+        <W id="W6"><FORM kindOf="original">n-hapuy=mu</FORM></W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v063_W_FORM_retains_segmentation, xml)
+    assert len(findings) == 1, f"expected exactly one finding; got {findings!r}"
+    f = findings[0]
+    assert f.location == "S=S2" and f.severity is Severity.HARD, (
+        f"a tier-less sentence inside a standard-tier file must be HARD; got {f!r}"
+    )
+    assert "standard" in f.message
+
+
 # ---------------------------------------------------------------------------
-# V064: every M has TRANSL (HARD)
+# V064: every M should have a TRANSL (SOFT)
 # ---------------------------------------------------------------------------
 
 
@@ -431,8 +673,13 @@ def test_V064_M_with_TRANSL_clean():
     assert findings == [], f"expected no V064 finding; got {findings!r}"
 
 
-def test_V064_one_M_missing_TRANSL_emits_one_HARD():
-    """One M lacks TRANSL -> one HARD V064 citing that M's id."""
+def test_V064_one_M_missing_TRANSL_emits_one_SOFT():
+    """One M lacks TRANSL -> one SOFT V064 citing that M's id.
+
+    SOFT, not HARD: for some corpora only some words are glossed, so
+    gloss completeness is flagged in case it is unexpected but can
+    never fail the run.
+    """
     xml = _TEXT_TEMPLATE.format(body="""
       <S id="S1">
         <FORM kindOf="original">a-b</FORM>
@@ -446,7 +693,7 @@ def test_V064_one_M_missing_TRANSL_emits_one_HARD():
     assert len(findings) == 1, f"expected 1 V064 finding; got {findings!r}"
     f = findings[0]
     assert f.rule_id == "V064"
-    assert f.severity is Severity.HARD
+    assert f.severity is Severity.SOFT, f"V064 must not be HARD; got {f!r}"
     assert "M2" in f.location
 
 
@@ -808,8 +1055,12 @@ def test_validate_glosses_M_mismatch_emits_finding_and_csv_row(tmp_path):
     )
 
 
-def test_validate_glosses_HARD_V062_causes_nonzero_exit(tmp_path):
-    """A HARD V062 violation causes a nonzero exit code."""
+def test_validate_glosses_SOFT_V062_reported_but_exits_zero(tmp_path):
+    """A V062 violation is reported in the CSV but does not fail the run.
+
+    Gloss notation is SOFT: an infix glossed in prose rather than with
+    '<AV>' is flagged, never fatal.
+    """
     _write_xml(tmp_path, "v062.xml", """
       <S id="S1">
         <FORM kindOf="original">rumakat</FORM>
@@ -822,13 +1073,59 @@ def test_validate_glosses_HARD_V062_causes_nonzero_exit(tmp_path):
       </S>""")
     out = tmp_path / "out"
     proc = _run_validate_glosses(tmp_path / "XML", output_dir=out)
+    assert proc.returncode == 0, (
+        f"SOFT V062 must not fail the run; got rc={proc.returncode}, "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+    csv_path = out / "validate_glosses_findings.csv"
+    assert csv_path.exists(), "findings CSV should exist"
+    contents = csv_path.read_text(encoding="utf-8")
+    assert "V062" in contents, f"expected a V062 row in CSV; got {contents!r}"
+
+
+def test_validate_glosses_SOFT_V064_reported_but_exits_zero(tmp_path):
+    """An unglossed M is reported in the CSV but does not fail the run."""
+    _write_xml(tmp_path, "v064.xml", """
+      <S id="S1">
+        <FORM kindOf="original">a-b</FORM>
+        <W id="W1">
+          <FORM kindOf="original">a-b</FORM>
+          <TRANSL xml:lang="eng">A-B</TRANSL>
+          <M id="M1"><FORM>a</FORM><TRANSL xml:lang="eng">A</TRANSL></M>
+          <M id="M2"><FORM>b</FORM></M>
+        </W>
+      </S>""")
+    out = tmp_path / "out"
+    proc = _run_validate_glosses(tmp_path / "XML", output_dir=out)
+    assert proc.returncode == 0, (
+        f"SOFT V064 must not fail the run; got rc={proc.returncode}, "
+        f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+    contents = (out / "validate_glosses_findings.csv").read_text(encoding="utf-8")
+    assert "V064" in contents, f"expected a V064 row in CSV; got {contents!r}"
+
+
+def test_validate_glosses_HARD_V067_causes_nonzero_exit(tmp_path):
+    """A HARD finding still causes a nonzero exit (V067: '<n>' in an M FORM)."""
+    _write_xml(tmp_path, "v067.xml", """
+      <S id="S1">
+        <FORM kindOf="original">n&lt;n&gt;daha</FORM>
+        <W id="W1">
+          <FORM kindOf="original">n&lt;n&gt;daha</FORM>
+          <TRANSL xml:lang="eng">walk</TRANSL>
+          <M id="M1"><FORM kindOf="original">&lt;n&gt;</FORM><TRANSL xml:lang="eng">PFV</TRANSL></M>
+          <M id="M2"><FORM kindOf="original">n-daha</FORM><TRANSL xml:lang="eng">walk</TRANSL></M>
+        </W>
+      </S>""")
+    out = tmp_path / "out"
+    proc = _run_validate_glosses(tmp_path / "XML", output_dir=out)
     assert proc.returncode != 0, (
-        f"HARD V062 should cause nonzero exit; got rc={proc.returncode}, "
+        f"HARD V067 should cause nonzero exit; got rc={proc.returncode}, "
         f"stdout={proc.stdout!r} stderr={proc.stderr!r}"
     )
     combined = (proc.stdout + proc.stderr).lower()
-    assert "v062" in combined, (
-        f"expected V062 mention; got stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    assert "v067" in combined, (
+        f"expected V067 mention; got stdout={proc.stdout!r} stderr={proc.stderr!r}"
     )
 
 
