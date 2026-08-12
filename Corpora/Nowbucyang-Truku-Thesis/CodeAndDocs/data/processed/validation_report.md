@@ -22,15 +22,15 @@
 - translation language mapping status: validated locally as xml:lang="zho"
 - XML files created: Final_XML/Truku/Hsu_Lowking_Truku_WordFormation_2008.xml
 - total TEXT elements: 1
-- total S elements: 276
-- total FORM elements: 3061
-- total W elements: 1097
-- total M elements: 1385
-- total TRANSL elements by xml:lang: zho=1539
-- S elements with W/M: 250
-- S elements with morpheme-level gloss alignment: 225
+- total S elements: 283
+- total FORM elements: 3400
+- total W elements: 1153
+- total M elements: 1451
+- total TRANSL elements by xml:lang: zho=2717
+- S elements with W/M: 243
+- S elements with morpheme-level gloss alignment: 223
 - S elements with word-level gloss translations: 0
-- S elements with W/M but no reliable source gloss alignment: 25
+- S elements with W/M but no reliable source gloss alignment: 20
 - validation failures: 0
 
 Final summary: PASS

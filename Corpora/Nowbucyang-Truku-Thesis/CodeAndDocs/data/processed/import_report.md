@@ -14,7 +14,7 @@
 - Source glosses are encoded only as morpheme-level `M/TRANSL` where alignment is reliable; unaligned W/M forms are left unglossed and documented in `data/processed/gloss_alignment_audit.csv`.
 - Morphology tables are preserved as sidecars and excluded from sentence XML unless they yielded an XML-eligible example.
 - Slash-option expansions and parenthesized examples that need human translation/QC review are listed in `data/processed/manual_qc_slash_options.txt` and `data/processed/manual_qc_parentheses.txt`.
-- Final_XML cleanliness: checked by `scripts/validate_formosanbank_xml.py`.
+- Final_XML cleanliness: checked by `scripts/pipeline.py --step validate_formosanbank_xml`.
 - FormosanBank punctuation/structure QC passes. Source segmentation is preserved in original S/W forms; sentence-level standard forms are de-segmented for standardized search/use.
 
 Import status: ready for FormosanBank import if `validation_report.md` final summary remains PASS.

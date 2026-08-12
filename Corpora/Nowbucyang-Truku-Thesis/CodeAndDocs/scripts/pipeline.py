@@ -2625,7 +2625,10 @@ def _validate_xml_file(xml_path: Path, index_ids: set[str], cfg: dict[str, Any])
             if "machine translation" in text.lower():
                 failures.append(f"S {sid} TRANSL indicates machine translation")
         for grandchild in list(child):
-            if grandchild.tag not in {"FORM", "TRANSL", "W"}:
+            # PHON is allowed: hand-curated S in data/manual/manual_sentences.xml
+            # are recorded verbatim from published XML and may carry PHON tiers
+            # (regenerated downstream by add_phonology regardless).
+            if grandchild.tag not in {"FORM", "PHON", "TRANSL", "W"}:
                 failures.append(f"S {sid} has forbidden child {grandchild.tag}")
             if grandchild.tag == "W":
                 wid = grandchild.attrib.get("id", "")
@@ -2646,7 +2649,7 @@ def _validate_xml_file(xml_path: Path, index_ids: set[str], cfg: dict[str, Any])
                     if " " in clean_inline(w_form.text or ""):
                         failures.append(f"W {wid} FORM contains unreviewed whitespace")
                 for w_child in list(grandchild):
-                    if w_child.tag not in {"FORM", "TRANSL", "M"}:
+                    if w_child.tag not in {"FORM", "PHON", "TRANSL", "M"}:
                         failures.append(f"W {wid} has forbidden child {w_child.tag}")
                     if w_child.tag == "TRANSL":
                         extra_attrs = set(w_child.attrib) - {f"{{{XML_NS}}}lang", "ver"}
@@ -2782,6 +2785,13 @@ def validate_formosanbank_xml(cfg: dict[str, Any]) -> None:
 
 
 def generate_reports(cfg: dict[str, Any]) -> None:
+    """Regenerate the dev-repo sidecar reports.
+
+    WARNING: this step writes ROOT/README.md with the *dev-repo* README
+    text. Inside the published corpus (Corpora/Nowbucyang-Truku-Thesis)
+    ROOT is the CodeAndDocs parent, so running it would clobber the
+    corpus README. make_xml.sh deliberately does not call it.
+    """
     ensure_dirs()
     pages = read_csv_dicts(ROOT / "data/processed/pages.csv")
     raw = read_jsonl(ROOT / "data/processed/examples_raw.jsonl")
@@ -2838,7 +2848,7 @@ def generate_reports(cfg: dict[str, Any]) -> None:
         "- Source glosses are encoded only as morpheme-level `M/TRANSL` where alignment is reliable; unaligned W/M forms are left unglossed and documented in `data/processed/gloss_alignment_audit.csv`.",
         "- Morphology tables are preserved as sidecars and excluded from sentence XML unless they yielded an XML-eligible example.",
         "- Slash-option expansions and parenthesized examples that need human translation/QC review are listed in `data/processed/manual_qc_slash_options.txt` and `data/processed/manual_qc_parentheses.txt`.",
-        "- Final_XML cleanliness: checked by `scripts/validate_formosanbank_xml.py`.",
+        "- Final_XML cleanliness: checked by `scripts/pipeline.py --step validate_formosanbank_xml`.",
         "- FormosanBank punctuation/structure QC passes. Source segmentation is preserved in original S/W forms; sentence-level standard forms are de-segmented for standardized search/use.",
         "",
         "Import status: ready for FormosanBank import if `validation_report.md` final summary remains PASS.",
@@ -2880,7 +2890,7 @@ def generate_reports(cfg: dict[str, Any]) -> None:
         "",
         "## Validation",
         "",
-        "- `scripts/validate_formosanbank_xml.py` passed with zero failures.",
+        "- `scripts/pipeline.py --step validate_formosanbank_xml` passed with zero failures.",
         "- `/Users/hunterschep/FormosanBankRepos/FormosanBank/QC/validation/validate_xml.py by_path --path Final_XML` passed with zero issues.",
         "- `/Users/hunterschep/FormosanBankRepos/FormosanBank/QC/validation/validate_glosses.py Final_XML --check_morpho` found no W-count mismatches. Its M-count heuristic reports expected infix reanalysis cases where one source W form is intentionally represented as a discontinuous base M plus an infix M; the current QC run reports 21 such cases in `logs/formosan_qc/glosses/validation_m_mismatches.csv`.",
         "- `/Users/hunterschep/FormosanBankRepos/FormosanBank/QC/validation/validate_punct.py by_path --path Final_XML` exited 0 and reported PASS.",
@@ -2916,8 +2926,8 @@ def generate_reports(cfg: dict[str, Any]) -> None:
         "Run the pipeline step-by-step with the commands listed in `scripts/config.yaml` and the project prompt, ending with:",
         "",
         "```bash",
-        "python3 scripts/validate_formosanbank_xml.py --config scripts/config.yaml",
-        "python3 scripts/generate_reports.py --config scripts/config.yaml",
+        "python3 scripts/pipeline.py --step validate_formosanbank_xml --config scripts/config.yaml",
+        "python3 scripts/pipeline.py --step generate_reports --config scripts/config.yaml",
         "```",
     ]
     (ROOT / "README.md").write_text("\n".join(readme) + "\n", encoding="utf-8")
@@ -2958,7 +2968,10 @@ STEP_FUNCS = {
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", default="scripts/config.yaml")
-    parser.add_argument("--step", default=Path(sys.argv[0]).stem)
+    # --step is required: this module is the single entry point for every step
+    # (the former one-line per-step wrapper scripts, which relied on argv[0] to
+    # name the step, were removed 2026-08-12 as wrapper-around-wrapper spaghetti).
+    parser.add_argument("--step", required=True, choices=sorted(STEP_FUNCS))
     args = parser.parse_args()
     cfg = load_config(args.config)
     step = args.step
