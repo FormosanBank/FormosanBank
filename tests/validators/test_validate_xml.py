@@ -991,12 +991,20 @@ def test_V083_schema_validation_negative(tmp_path, fixtures_dir, copy_fixture):
 
 
 # -----------------------------------------------------------------------------
-# V144/V145 SOFT — M-tier consistency (POL-023, ruled 2026-08-10)
+# V144/V145 SOFT — M-tier consistency (POL-023, ruled 2026-08-10;
+# V144 re-scoped to the SENTENCE 2026-08-12)
 #
-# In a file where any W has 2+ M children (morpheme-segmented), every W
-# must have at least one M; a single-M W there reads as "analyzed as
-# monomorphemic". In a file with no multi-M W at all, there should be no
-# M level (an all-single M tier adds no information — the Yedda case).
+# V144 (per sentence): in a sentence that carries some morphological
+# parsing, every W must have at least one M; a single-M W there reads as
+# "analyzed as monomorphemic". A sentence the author never analyzed
+# carries no M tier at all and is NOT a finding — even when a sibling
+# sentence in the same file is fully parsed.
+# "Carries some parsing" = some W has 2+ M, or some M's FORM differs from
+# its parent W's FORM (the criterion in YeddaPalemeqBlog's fix_m_tier.py).
+#
+# V145 (per file, deliberately): a file where no sentence carries any
+# parsing should have no M level at all (an all-single-M mirror tier adds
+# no information — the Yedda case).
 # -----------------------------------------------------------------------------
 
 _MT_OPEN = (
@@ -1022,7 +1030,17 @@ def _w(w_id: str, form: str, morphemes: list) -> str:
     return f'<W id="{w_id}"><FORM kindOf="original">{form}</FORM>{ms}</W>'
 
 
-def test_V144_M_less_W_in_segmented_file_flagged(tmp_path):
+def _soft_rows(tmp_path: Path, rule_id: str) -> list:
+    """Findings CSV rows for one rule (the CSV _run_validate writes)."""
+    import csv as _csv
+    csv_path = tmp_path / "soft.csv"
+    if not csv_path.exists():
+        return []
+    with open(csv_path, newline="", encoding="utf-8-sig") as f:
+        return [r for r in _csv.DictReader(f) if r["rule_id"] == rule_id]
+
+
+def test_V144_M_less_W_in_parsed_sentence_flagged(tmp_path):
     body = (
         '<S id="S1"><FORM kindOf="original">ma-kaen kako</FORM>'
         + _w("W1", "ma-kaen", ["ma-", "kaen"])
@@ -1035,8 +1053,67 @@ def test_V144_M_less_W_in_segmented_file_flagged(tmp_path):
     )
 
 
-def test_V144_single_M_in_segmented_file_is_fine(tmp_path):
-    """A single-M W in a multi-M file = analyzed as monomorphemic. Legal."""
+def test_V144_unparsed_sentence_beside_a_parsed_one_is_not_flagged(tmp_path):
+    """Per-sentence scope (2026-08-12): S2 was never analyzed, so it carries
+    no M tier — and S1's analysis must not make that a finding. Under the
+    old file-level rule this file reported two M-less Ws."""
+    body = (
+        '<S id="S1"><FORM kindOf="original">ma-kaen kako</FORM>'
+        + _w("W1", "ma-kaen", ["ma-", "kaen"])
+        + _w("W2", "kako", ["kako"])
+        + "</S>"
+        '<S id="S2"><FORM kindOf="original">nga\'ay ho</FORM>'
+        + _w("W3", "nga'ay", [])
+        + _w("W4", "ho", [])
+        + "</S>"
+    )
+    proc = _run_validate(_write_mtier(tmp_path, body))
+    combined = combined_output(proc)
+    assert "v144" not in combined and "v145" not in combined, (
+        f"no M-tier findings expected; stdout={proc.stdout!r}"
+    )
+
+
+def test_V144_counts_only_M_less_Ws_inside_parsed_sentences(tmp_path):
+    """The finding must not leak across sentence boundaries: only S1's one
+    M-less W counts, not the three M-less Ws of the unparsed S2."""
+    body = (
+        '<S id="S1"><FORM kindOf="original">ma-kaen kako to hemay</FORM>'
+        + _w("W1", "ma-kaen", ["ma-", "kaen"])
+        + _w("W2", "kako", [])
+        + "</S>"
+        '<S id="S2"><FORM kindOf="original">nga\'ay ho kiso</FORM>'
+        + _w("W3", "nga'ay", [])
+        + _w("W4", "ho", [])
+        + _w("W5", "kiso", [])
+        + "</S>"
+    )
+    proc = _run_validate(_write_mtier(tmp_path, body))
+    rows = _soft_rows(tmp_path, "V144")
+    assert len(rows) == 1, f"expected one aggregated V144 row; got {rows!r}"
+    assert rows[0]["count"] == "1", (
+        f"only S1's M-less W should count; got {rows[0]!r}")
+
+
+def test_V144_M_form_differing_from_W_form_makes_a_sentence_parsed(tmp_path):
+    """Second clause of the parsing criterion: one M per W, but the M FORM
+    differs from its W FORM (the M carries a segmentation the W FORM does
+    not show), so the sentence carries analysis and its M-less W is a
+    finding."""
+    body = (
+        '<S id="S1"><FORM kindOf="original">malukut kako</FORM>'
+        + _w("W1", "malukut", ["ma-lukut"])
+        + _w("W2", "kako", [])
+        + "</S>"
+    )
+    proc = _run_validate(_write_mtier(tmp_path, body))
+    assert _has_rule_finding(proc, ("v144",)), (
+        f"expected V144; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V144_single_M_in_parsed_sentence_is_fine(tmp_path):
+    """A single-M W in a parsed sentence = analyzed as monomorphemic. Legal."""
     body = (
         '<S id="S1"><FORM kindOf="original">ma-kaen kako</FORM>'
         + _w("W1", "ma-kaen", ["ma-", "kaen"])
@@ -1060,6 +1137,46 @@ def test_V145_all_single_M_tier_flagged(tmp_path):
     proc = _run_validate(_write_mtier(tmp_path, body))
     assert _has_rule_finding(proc, ("v145",)), (
         f"expected V145; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V145_stays_file_scoped_beside_a_parsed_sentence(tmp_path):
+    """Deliberate 2026-08-12 choice: V145 keeps FILE scope while V144 went
+    per sentence. S2's mirror M tier is indistinguishable from a genuine
+    "all words monomorphemic" analysis at sentence scale, and POL-023
+    blesses single-M Ws — so a file that carries parsing anywhere is not a
+    V145 finding."""
+    body = (
+        '<S id="S1"><FORM kindOf="original">ma-kaen kako</FORM>'
+        + _w("W1", "ma-kaen", ["ma-", "kaen"])
+        + _w("W2", "kako", ["kako"])
+        + "</S>"
+        '<S id="S2"><FORM kindOf="original">kaen kiso</FORM>'
+        + _w("W3", "kaen", ["kaen"])
+        + _w("W4", "kiso", ["kiso"])
+        + "</S>"
+    )
+    proc = _run_validate(_write_mtier(tmp_path, body))
+    combined = combined_output(proc)
+    assert "v144" not in combined and "v145" not in combined, (
+        f"no M-tier findings expected; stdout={proc.stdout!r}"
+    )
+
+
+def test_V145_single_M_carrying_a_segmentation_is_not_a_mirror_tier(tmp_path):
+    """V145 uses the same "carries parsing" criterion as V144: a one-M-per-W
+    file whose M FORMs differ from their W FORMs is analyzed, not a mirror
+    tier."""
+    body = (
+        '<S id="S1"><FORM kindOf="original">malukut kako</FORM>'
+        + _w("W1", "malukut", ["ma-lukut"])
+        + _w("W2", "kako", ["kako"])
+        + "</S>"
+    )
+    proc = _run_validate(_write_mtier(tmp_path, body))
+    combined = combined_output(proc)
+    assert "v145" not in combined, (
+        f"no V145 expected; stdout={proc.stdout!r}"
     )
 
 

@@ -22,8 +22,17 @@ Two QC utilities strip accents, each keeping the letters its own tables attest:
 Only the combining marks actually seen in the corpora are listed. The stripping
 logic is otherwise mark-agnostic, so extending coverage is just adding to the
 set below.
+
+Stripping applies to **Latin-script characters only** (maintainer ruling). Every
+Formosan orthography is Latin, so a prosodic accent worth removing is always on
+a Latin base letter; a non-Latin character quoted in an article (Korean, CJK,
+Cyrillic, Greek, Arabic, Devanagari, Thai, Hebrew, kana …) is passed through
+untouched and NFC-composed. That last part matters: Hangul syllables decompose
+into conjoining *jamo* rather than combining marks, so a blanket NFD pass used
+to leave them decomposed in the standard tier.
 """
 import unicodedata
+from functools import lru_cache
 from typing import Iterable
 
 ACCENTS_TO_STRIP = frozenset({
@@ -52,37 +61,73 @@ def accented_letters(letters: Iterable[str]) -> frozenset:
     )
 
 
-def strip_accents(text: str, keep: Iterable[str] = frozenset()) -> str:
-    """Remove ACCENTS_TO_STRIP from ``text``, leaving every base letter intact.
+@lru_cache(maxsize=None)
+def _is_latin(char: str) -> bool:
+    """True if ``char`` is a Latin-script character.
 
-    Decomposes to NFD so precomposed accented vowels split into base + mark,
-    drops the listed marks, then recomposes to NFC. Base letters that are
-    distinct phonemes in their own right (ə, ʉ, ɨ, ŋ, …) are untouched because
-    they carry no combining mark.
+    Tested on the character's *decomposed* base so a precomposed letter whose
+    own name does not begin with ``LATIN`` (e.g. U+212B ANGSTROM SIGN) is still
+    recognized. Digits, punctuation, whitespace and every non-Latin script
+    answer False.
+    """
+    base = unicodedata.normalize("NFD", char)[:1]
+    return unicodedata.name(base, "").startswith("LATIN")
+
+
+def _strip_latin_cluster(cluster: str, keep_nfc: frozenset) -> str:
+    """Drop ACCENTS_TO_STRIP from one Latin base letter + its combining marks."""
+    composed = unicodedata.normalize("NFC", cluster)
+    if composed in keep_nfc:
+        return composed
+    decomposed = unicodedata.normalize("NFD", cluster)
+    base, marks = decomposed[0], decomposed[1:]
+    kept_marks = [mark for mark in marks if mark not in ACCENTS_TO_STRIP]
+    return unicodedata.normalize("NFC", base + "".join(kept_marks))
+
+
+def strip_accents(text: str, keep: Iterable[str] = frozenset()) -> str:
+    """Remove ACCENTS_TO_STRIP from the **Latin** parts of ``text``.
+
+    Latin-script characters are decomposed so precomposed accented vowels split
+    into base + mark, the listed marks are dropped, and the letter is recomposed
+    to NFC. Base letters that are distinct phonemes in their own right
+    (ə, ʉ, ɨ, ŋ, …) are untouched because they carry no combining mark.
+
+    Non-Latin characters — Hangul, CJK, kana, Cyrillic, Greek, Arabic,
+    Devanagari, Thai, Hebrew … — are **never** stripped: their diacritics and
+    conjoining parts are part of the script, not source prosody. They are
+    emitted NFC-composed, so a Hangul syllable stays (or becomes) a precomposed
+    syllable instead of a run of conjoining jamo.
 
     ``keep`` is an optional set of accented letters (matched in NFC form) that
     must survive stripping — the orthography attests them as real letters, so
-    their diacritic is orthographic, not prosodic. Grapheme clusters whose NFC
-    form is in ``keep`` pass through unchanged; every other cluster has its
+    their diacritic is orthographic, not prosodic. Latin clusters whose NFC form
+    is in ``keep`` pass through unchanged; every other Latin cluster has its
     strip-marks removed as before.
     """
     keep_nfc = frozenset(unicodedata.normalize("NFC", letter) for letter in keep)
 
-    decomposed = unicodedata.normalize("NFD", text)
     result = []
+    pending = []  # run of non-Latin text, flushed through NFC as a unit
     index = 0
-    length = len(decomposed)
+    length = len(text)
     while index < length:
-        base = decomposed[index]
+        base = text[index]
         index += 1
         marks = []
-        while index < length and unicodedata.category(decomposed[index]).startswith("M"):
-            marks.append(decomposed[index])
+        while index < length and unicodedata.category(text[index]).startswith("M"):
+            marks.append(text[index])
             index += 1
-        cluster = unicodedata.normalize("NFC", base + "".join(marks))
-        if cluster in keep_nfc:
-            result.append(cluster)
+        cluster = base + "".join(marks)
+        if _is_latin(base):
+            if pending:
+                result.append(unicodedata.normalize("NFC", "".join(pending)))
+                pending = []
+            result.append(_strip_latin_cluster(cluster, keep_nfc))
         else:
-            kept_marks = [mark for mark in marks if mark not in ACCENTS_TO_STRIP]
-            result.append(unicodedata.normalize("NFC", base + "".join(kept_marks)))
+            # Buffered rather than emitted one cluster at a time: composing a
+            # jamo sequence (L + V + T) into a syllable needs the whole run.
+            pending.append(cluster)
+    if pending:
+        result.append(unicodedata.normalize("NFC", "".join(pending)))
     return "".join(result)
