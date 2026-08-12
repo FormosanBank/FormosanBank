@@ -12,6 +12,18 @@ For extant languages that have only one recognized dialect (Kanakanavu, Kavalan,
 
 ***
 
+### Language Registry: languages.csv
+
+The main repository's [languages.csv](https://github.com/FormosanBank/FormosanBank/blob/main/languages.csv) (at the repo root, beside `dialects.csv` and `standards.csv`) is the canonical registry mapping ISO 639-3 codes to the language names used throughout FormosanBank. Every tool that resolves an `xml:lang` code — token counting, statistics, validators, orthography standardization — loads this one file, so adding or renaming a language happens in exactly one place. Its columns:
+
+* **ISO639-3**: the lowercase ISO 639-3 code that appears in `xml:lang` (e.g., `ami`).
+* **Language**: the display name used across the bank and in the other registries (e.g., `Amis`). These spellings are identical to the `language` values in `dialects.csv` and `standards.csv`; the registry validator checks the three files stay consistent.
+* **Notes**: free-text caveats — most importantly that `trv` covers **both Seediq and Truku** (a text with `dialect="Truku"` resolves to Truku; anything else resolves to Seediq).
+
+The registry also carries historical languages (Siraya, Babuza-Favorlang) and languages without published data yet (Pazeh), so their codes validate even though they sit outside the 16 officially recognized extant languages.
+
+***
+
 ### CSV Mapping File
 
 To help manage the complexity of multiple naming conventions, the main repository includes a [CSV file](https://github.com/FormosanBank/FormosanBank/blob/main/dialects.csv). This file serves as a “key” or reference point, enabling conversion between different dialect names that users may encounter. The CSV includes the following columns:

@@ -13,6 +13,7 @@
 
 * [FormosanBank XML Format](the-bank-architecture/formosanbank-xml-format.md)
 * [Formosan Dialects](the-bank-architecture/formosan-dialects.md)
+* [Known Issues](the-bank-architecture/known-issues.md)
 * [Corpora](the-bank-architecture/corpora/README.md)
   * [ePark](the-bank-architecture/corpora/epark.md)
   * [ILRDF Dictionaries](the-bank-architecture/corpora/ilrdf-dictionaries.md)
