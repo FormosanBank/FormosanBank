@@ -29,29 +29,38 @@ Steps, in order:
 
 1. **Restore** `XML/` from `CodeAndDocs/pre_correction_snapshot/`
    (13,278 files).
-2. **`delete_duplicate_articles.py`** — the scrape saved 29 articles
+2. **`QC/cleaning/apply_manual_edits.py`** — re-applies the recorded hand
+   edits in `CodeAndDocs/manual_edits.xml` (POL-030); it runs before
+   `clean_xml`. One edit is recorded: `Sakizaya/miladlad_tu_udip.xml`
+   `S id="0"`, whose original FORM began with a stray `? ` from the scrape
+   (V142). It is not a grammaticality marker — the article body simply
+   starts after it — so the `? ` is dropped (maintainer ruling
+   2026-08-12); the standard tier and PHON regenerate from the corrected
+   original in later steps. `CodeAndDocs/manual_edits.md` is the readable
+   changelog.
+3. **`delete_duplicate_articles.py`** — the scrape saved 29 articles
    twice (duplicate downloads named `<name> (1).xml` / `(2)`), giving 58
    files with colliding `TEXT/@id`. One file per id is kept — the
    canonically-named one, or the lowest counter when the group has no
    counter-less file — and the other copy is deleted (29 files). Every
    group is byte-identical across its copies, so no content is lost.
-3. **`delete_nonlatin_articles.py`** — deletes the 11 articles whose
+4. **`delete_nonlatin_articles.py`** — deletes the 11 articles whose
    FORMs contain no Latin letter at all (punctuation only, leftover
    `== ... ==` heading markup, or Chinese editorial remarks/headings).
    They are not language data.
-4. **`add_dialect_attrs.py`** — sets `dialect="unknown"` on every TEXT.
+5. **`add_dialect_attrs.py`** — sets `dialect="unknown"` on every TEXT.
    No Wikipedia article identifies its own dialect; the wikis are
    community-written with mixed dialect backgrounds.
-5. **`normalize_seediq_quotes.py`** — Seediq only, before `clean_xml`;
+6. **`normalize_seediq_quotes.py`** — Seediq only, before `clean_xml`;
    see "Apostrophe handling" below.
-6. **`QC/cleaning/clean_xml.py`** — punctuation/Unicode canonicalization
+7. **`QC/cleaning/clean_xml.py`** — punctuation/Unicode canonicalization
    (NFC, HTML entities, typographic quotes/dashes, non-breaking spaces).
    Writes a per-run `XML/cleaner_warnings.csv`: review, then delete —
    it is never committed (POL-033).
-7. **`QC/utilities/standardize.py --remove_accents`** — standard tier =
+8. **`QC/utilities/standardize.py --remove_accents`** — standard tier =
    copy of the original tier with accents/stray combining marks removed.
    No conversion table is applied (dialect unknown).
-8. **`QC/utilities/add_phonology.py --orthography Ortho113`** — PHON
+9. **`QC/utilities/add_phonology.py --orthography Ortho113`** — PHON
    tiers from the default (dialect-unknown) IPA columns. Sounds that
    differ by dialect appear as `[x|y]` variant groups; punctuation is
    not carried into PHON.
@@ -80,7 +89,7 @@ are not re-run.
   Truku, under FormosanBank counting rules (trv counts as Truku only with
   an explicit `dialect="Truku"`).
 - **One file per article**: the 29 twice-downloaded articles now have a
-  single file each (pipeline step 2). Two of them keep a `(1)` in the
+  single file each (pipeline step 3). Two of them keep a `(1)` in the
   filename (`Atayal/msin (1).xml`, `Sakizaya/Oro’raw (1).xml`) because
   the scrape never wrote a counter-less copy; the file names carry no
   meaning, the `TEXT/@id` does. Sentence-level duplication *across*
@@ -92,6 +101,13 @@ are not re-run.
   text does not state; see the orthography-evidence appendix in
   `claudeplans/phase-b-reports/Wikipedias.md`. Characters with no IPA
   value (mostly digits, plus loanword letters and CJK) appear as `*`.
+  **Decision (maintainer ruling, 2026-08-12): Ortho113 is used
+  corpus-wide, for the reasons given in that appendix.** The one material
+  divergence — Atayal `e` (Ortho113 `e` vs Church `ə`, 35,336
+  occurrences) — is known, quantified there, and accepted as
+  unadjudicable: the articles state no orthography and carry no
+  translations, so no evidence could settle which value their authors
+  intended.
 - **Wiki-markup residue**: some articles retain asterisks (list markup),
   literal `|` from table/citation lines, and similar artifacts of the
   source pages. This residue is deliberately **retained as-is**
@@ -118,7 +134,7 @@ wikitext showed the corpus's apostrophes are quotation usage: literal `''`
 pairs the authors typed as double-quote substitutes (`<nowiki>`-protected
 so MediaWiki would not read them as italics markup) and single-quoted
 titles of laws and documents. `CodeAndDocs/normalize_seediq_quotes.py`
-(pipeline step 4, before `clean_xml`) therefore applies, to original FORMs
+(pipeline step 6, before `clean_xml`) therefore applies, to original FORMs
 in `XML/Seediq/` only:
 
 1. literal `''` → `"`;

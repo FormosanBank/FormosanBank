@@ -28,8 +28,9 @@ verified byte-identical to `main`'s `Corpora/Wikipedias/XML/`
 ## Pipeline (`CodeAndDocs/make_xml.sh`)
 
 Restores `XML/` from the snapshot, then runs (all steps committed,
-POL-038; no `apply_manual_edits` — no manual edits exist; no spurious
-no-op steps):
+POL-038; no spurious no-op steps). Step numbering below is the original
+sweep's; the 2026-08-12 follow-up turn inserted `apply_manual_edits.py`
+ahead of them all (see "Follow-up turn"):
 
 1. `delete_duplicate_articles.py` — **new**; one file per TEXT id (below).
 2. `delete_nonlatin_articles.py` — **new**; drops articles with no
@@ -334,6 +335,49 @@ per-language apostrophe section are unchanged.
 
 **UNEXPLAINED: none.** Ready for review/merge.
 
+## Follow-up turn (`fix/wikipedias-v142`, 2026-08-12)
+
+Two maintainer rulings, closing open item 1 above (V142) and the
+Ortho113 question left open by the appendix.
+
+**1. V142 → 0 — the stray leading `?` removed via the manual-edits
+mechanism.** `Sakizaya/miladlad_tu_udip.xml` (single `S id="0"`, the whole
+article body in one FORM) began with `? `. Ruled: scrape debris, not a
+POL-016 grammaticality marker — the article simply starts after it — so
+the `? ` (marker plus following space) is dropped from the **original**
+tier; the standard tier and PHON regenerate from it.
+
+- Recorded with `QC/utilities/capture_manual_edits.py` (hand-edit the
+  original FORM, capture against `HEAD`) into the corpus's first
+  `CodeAndDocs/manual_edits.xml`: one `FILE` group, one `S`, stored on the
+  strip() basis (standard FORM and PHON removed). `manual_edits.md` is the
+  generated changelog.
+- `QC/cleaning/apply_manual_edits.py` wired into `make_xml.sh` as **step 1**
+  — immediately after the snapshot restore and before `clean_xml`, per
+  `QC/README.md` ("before running other cleaners"); the later steps renumber
+  to 2–8. Run output: `apply: 1 edit(s) across 1 file(s); 0 no-op(s)`.
+- Full pipeline re-run from the POL-035 snapshot. Diff vs the previous
+  published state is **exactly one file, exactly that sentence's four
+  tiers** (original/standard FORM, original/standard PHON); the sentence
+  now starts `makatukuh i lalud, …` in both FORM tiers, and the PHON tiers
+  lose the leading space the removed `?` left behind. 13,238 files, no
+  other byte changed. `cleaner_warnings.csv` was identical to the reviewed
+  run (c007 ×40, c022 ×103) and deleted per POL-033.
+- Validators: `validate_text` **V142 2 → 0** (SOFT total 243,130 →
+  243,128, i.e. −2 and nothing else moved); HARD unchanged at 68 (the
+  ruled-ignored V129 asterisks); `validate_xml` still 0 issues.
+- The article's CJK-in-Formosan text is unrelated and untouched.
+
+**2. Ortho113 kept corpus-wide (documentation only).** See the decision
+recorded at the end of the appendix below. No code or data change; the
+same paragraph is mirrored in `Corpora/Wikipedias/README.md` (PHON note)
+and on the GitBook corpus page
+(`en-us/the-bank-architecture/corpora/wikipedias.md`, branch
+`docs/wikipedias-orthography`).
+
+Remaining open item: the Hangul-NFD nit in
+`QC/utilities/_accents.strip_accents` (item 2 above), unchanged.
+
 ---
 
 # Appendix — evidence for the Ortho113 assumption (analysis only)
@@ -458,3 +502,14 @@ of those are digits and the rest are CJK/loanword letters that no scheme
 maps. If any of this is worth acting on, the highest-value item is Atayal
 `e`, where the corpus-wide top-scoring scheme (Church) disagrees with
 Ortho113 on a vowel occurring 35,336 times.
+
+## Decision (maintainer ruling, 2026-08-12)
+
+**Ortho113 is used corpus-wide**, for the reasons already stated above.
+The one material consequence of the blanket assumption — Atayal `e`
+(Ortho113 `e` vs Church `ə`, 35,336 occurrences) — is known, quantified
+above, and **accepted as unadjudicable**: the articles state no
+orthography and carry no translations, so no evidence available to us
+could settle which value their authors intended. The divergence is small
+enough to live with, and is documented for users in the corpus README and
+on the GitBook corpus page rather than acted on. No code or data change.

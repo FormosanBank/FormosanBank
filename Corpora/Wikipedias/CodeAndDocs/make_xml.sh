@@ -26,30 +26,35 @@ for L in Amis Atayal Paiwan Sakizaya Seediq; do
     cp -r "$SNAP/$L" "$XML/$L"
 done
 
-# 1. Delete duplicate-download copies of articles: one file per TEXT id,
+# 1. Re-apply recorded hand edits (POL-030). Must run before clean_xml;
+#    the records are stored post-canonicalization, and clean_xml is
+#    idempotent, so re-cleaning them is a no-op.
+"$PYTHON" "$ROOT/QC/cleaning/apply_manual_edits.py" --corpora_path "$XML"
+
+# 2. Delete duplicate-download copies of articles: one file per TEXT id,
 #    canonical name kept (maintainer ruling 2026-08-12; clears POL-037/V081).
 "$PYTHON" "$HERE/delete_duplicate_articles.py" --corpora_path "$XML"
 
-# 2. Delete articles with no Formosan content (punctuation / wiki markup /
+# 3. Delete articles with no Formosan content (punctuation / wiki markup /
 #    CJK only; maintainer ruling 2026-08-12).
 "$PYTHON" "$HERE/delete_nonlatin_articles.py" --corpora_path "$XML"
 
-# 3. dialect="unknown" on every TEXT (no Wikipedia article identifies its
+# 4. dialect="unknown" on every TEXT (no Wikipedia article identifies its
 #    dialect; maintainer ruling 2026-08-11).
 "$PYTHON" "$HERE/add_dialect_attrs.py" --corpora_path "$XML"
 
-# 4. Seediq-only apostrophe normalization (quotation ''/' -> "; must run
+# 5. Seediq-only apostrophe normalization (quotation ''/' -> "; must run
 #    BEFORE clean_xml). Other languages: ' is glottal by fiat (README).
 "$PYTHON" "$HERE/normalize_seediq_quotes.py" --corpora_path "$XML"
 
-# 5. Punctuation/Unicode cleanup (writes per-run cleaner_warnings.csv next
+# 6. Punctuation/Unicode cleanup (writes per-run cleaner_warnings.csv next
 #    to XML/ — review then delete per POL-033; any quote_corrections.csv
 #    row here is unexpected: this corpus has no TRANSLs).
 "$PYTHON" "$ROOT/QC/cleaning/clean_xml.py" --corpora_path "$XML"
 
-# 6. Standard tier: copy of original minus accents (no TSV conversion —
+# 7. Standard tier: copy of original minus accents (no TSV conversion —
 #    dialect unknown).
 "$PYTHON" "$ROOT/QC/utilities/standardize.py" --remove_accents --corpora_path "$XML"
 
-# 7. PHON tiers, default IPA column (dialect unknown).
+# 8. PHON tiers, default IPA column (dialect unknown).
 "$PYTHON" "$ROOT/QC/utilities/add_phonology.py" --corpora_path "$XML" --orthography Ortho113
