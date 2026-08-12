@@ -343,6 +343,43 @@ same ids run over run; an id scheme change is a breaking change to
 announce, not a cleanup. Made explicit from the id rules implicit in the
 GitBook XML-format page.
 
+**Clarified 2026-08-12 (maintainer):** the rule is *not* "ids never
+change" — it is **do not change them without a compelling reason, and if
+you do, be very careful about what the change breaks.** Tidiness is not a
+compelling reason: when reworking a published sentence, **keeping the
+original numbering with gaps is preferred over renumbering** (e.g. a
+sentence that loses two words keeps `W1 W2 W5 W8` rather than being
+resequenced `W1…W4`). Beyond external citation, the concrete breakage is
+internal:
+`manual_edits.xml` records are keyed by id (S id, and the W/M ids inside
+the recorded block), so an *upstream* id change — a parser tweak that
+renumbers words, a re-split sentence, an intake script that reorders —
+silently invalidates the matching hand edits. `apply_manual_edits.py`
+will then either no-op (the record's id no longer exists) or apply to
+the wrong sentence, and because the pipeline's step 0 legitimately
+no-ops on already-edited XML (POL-030), a broken record is **hard to
+distinguish from a healthy one**. When an id change is genuinely
+warranted: state the reason, list every changed id in the corpus README,
+re-capture any affected `manual_edits.xml` records against the new ids,
+and verify `apply_manual_edits.py` still reports the expected edit count
+(not a silent rise in no-ops).
+
+### POL-041 · RULED · 2026-08-12 · W/M-level translations are not cleaned
+`clean_xml` normalizes S-level `TRANSL` text but deliberately leaves
+**word- and morpheme-level `TRANSL` (gloss) content alone**. Rationale:
+those tiers are not used for machine translation — they are read by
+humans — so the extra material a source packs into a gloss (etymology,
+root notes, dialect comments, alternative spellings, parenthetical
+asides) is *information to keep*, not noise to strip. A gloss that reads
+`"bring, AV. The root is kacu 'bring'."` stays exactly as the source
+wrote it. Consequences: parentheses, slashes and prose inside W/M
+glosses are not defects (V121/V122-style findings on gloss text are
+review material at most), and gloss standardization remains additive
+(POL-036) — a normalized code is added as a separate
+`TRANSL[@kindOf="standard"]`, never by rewriting the original gloss.
+Raised by: the 2026-08-12 Yedda review, where `clean_xml` was observed
+to skip W/M TRANSL repo-wide; that behavior is intended, not a bug.
+
 ### POL-038 · RULED · 2026-08-11 · data files change only via code
 XML files and raw scrape files are **only ever modified by committed
 code** — a pipeline script, a recorded `manual_edits.xml` applied by

@@ -1209,17 +1209,51 @@ def extract_word_from_gloss_with_parentheses_handling(gloss):
     
     return variations
 
-def escape_xml_content(text):
-    """Escape special XML characters while preserving linguistic markers."""
-    if not text:
-        return text
-    # Escape XML special characters
-    text = text.replace('&', '&amp;')  # Must be first
-    text = text.replace('<', '&lt;')
-    text = text.replace('>', '&gt;')
-    text = text.replace('"', '&quot;')
-    text = text.replace("'", '&apos;')
+def xml_text(text):
+    """Return element text unchanged.
+
+    ElementTree escapes &, <, > (and quotes in attributes) when it serializes,
+    so the linguistic markers this corpus carries -- the angle-bracketed infix
+    notation k<em>acu and the apostrophe glottal -- must be stored as the
+    literal characters. An earlier version escaped them here as well, which
+    double-encoded every value (&amp;lt;em&amp;gt;, &amp;apos;) and left entity
+    residue in the word- and morpheme-level glosses that clean_xml does not
+    reach (it decodes FORM tiers, not W/M TRANSL).
+    """
     return text
+
+INFIX_RE = re.compile(r'<([^<>]+)>')
+
+def split_infix_morphs(text):
+    """Split a form written with angle-bracket infixes into its M FORMs.
+
+    POL-014: the infixed root is ONE morpheme FORM carrying a ``-`` at the
+    infixation point, and each infix is its own ``-b-`` morpheme.  So
+    ``l<em>angeda`` -> ``["l-angeda", "-em-"]``.
+
+    A word may carry MORE THAN ONE infix (``d<em><in>udu``,
+    ``s<em><in>amalji``, ``g<em><in>agalj``).  An earlier single-shot
+    ``^(.*?)<([^<>]+)>(.*?)$`` match extracted only the first, leaving the
+    second inside the root FORM (``d-<in>udu``) -- a V067 HARD finding.
+    Every bracketed group is now extracted.  Maintainer's ruling: two
+    infixes at the SAME site still take a single ``-`` in the root, so the
+    empty segment between adjacent brackets is dropped before the root is
+    rejoined (``d<em><in>udu`` -> root ``d-udu``, infixes ``-em-``,
+    ``-in-``).  Real material between two separate sites keeps its hyphen
+    (``a<em>b<in>c`` -> ``a-b-c``).
+
+    Returns None when the text carries no complete ``<...>`` group (a stray
+    bracket), so callers keep their own fallback.
+    """
+    infixes = [m.strip() for m in INFIX_RE.findall(text)]
+    if not infixes:
+        return None
+    outer_parts = [p.strip() for p in INFIX_RE.split(text)[::2] if p.strip()]
+    morphs = []
+    if outer_parts:
+        morphs.append('-'.join(outer_parts))
+    morphs.extend('-' + infix + '-' for infix in infixes if infix)
+    return morphs
 
 def split_sentence_words(sentence):
     """Split sentence into words, handling punctuation properly."""
@@ -1377,13 +1411,13 @@ def create_xml(blocks):
         # Add the Paiwan text as FORM element
         form_elem = ET.SubElement(s_elem, "FORM")
         form_elem.set("kindOf", "original")
-        form_elem.text = escape_xml_content(corrected_paiwan_text)
+        form_elem.text = xml_text(corrected_paiwan_text)
         
         # Add translation if available
         if block['translation']:
             transl_elem = ET.SubElement(s_elem, "TRANSL")
             transl_elem.set("xml:lang", "en")
-            transl_elem.text = escape_xml_content(block['translation'])
+            transl_elem.text = xml_text(block['translation'])
         
         # Process word-level glosses (if there are none, do not include word-level elements)
         if block['glosses']:
@@ -1408,7 +1442,7 @@ def create_xml(blocks):
                 # Add FORM element
                 form_elem = ET.SubElement(w_elem, "FORM")
                 form_elem.set("kindOf", "original")
-                form_elem.text = escape_xml_content(raw_word_text)
+                form_elem.text = xml_text(raw_word_text)
                 
                 # Add TRANSL element if gloss exists
                 if word_data['gloss']:
@@ -1421,7 +1455,7 @@ def create_xml(blocks):
                     if translation:  # Only add if translation is not empty
                         transl_elem = ET.SubElement(w_elem, "TRANSL")
                         transl_elem.set("xml:lang", "en")
-                        transl_elem.text = escape_xml_content(translation)
+                        transl_elem.text = xml_text(translation)
                 
                 # Now add M elements for morphological segmentation if the gloss contains hyphens
                 all_morphemes = []
@@ -1431,45 +1465,35 @@ def create_xml(blocks):
                         morph = morph.strip()
                         if morph:  # Only add non-empty morphemes
                             if "<" in morph or ">" in morph:
-                                # If the morpheme contains angle brackets, extract content inside and enclose in hyphens
-                                # Also extract any content outside the angle brackets a morpheme separated by -
-                                # So "kan<em>a" would yield ["kan-a", "em"] and "ta<em>ortua" would yield ["ta-ortua", "em"]
-                                match = re.match(r'^(.*?)<([^<>]+)>(.*?)$', morph)
-                                if match:
-                                    before, infix, after = match.groups()
-                                    outer_parts = [part.strip() for part in (before, after) if part.strip()]
-                                    sub_morphs = []
-                                    if outer_parts:
-                                        sub_morphs.append('-'.join(outer_parts))
-                                    if infix.strip():
-                                        sub_morphs.append("-"+infix.strip()+"-")
-                                else:
+                                # Angle brackets mark infixes: pull every one out
+                                # as its own "-b-" morpheme and hyphenate the root
+                                # at the infixation point (see split_infix_morphs).
+                                sub_morphs = split_infix_morphs(morph)
+                                if sub_morphs is None:
                                     sub_morphs = [morph]
                                 all_morphemes.extend(sub_morphs)
                             else:
                                 all_morphemes.append(morph)
                 elif raw_word_text and ('<' in raw_word_text or '>' in raw_word_text):
-                    # Infix with no hyphens, e.g. l<em>angeda -> ["langeda", "-em-"]
-                    match = re.match(r'^(.*?)<([^<>]+)>(.*?)$', raw_word_text)
-                    if match:
-                        before, infix, after = match.groups()
-                        outer_parts = [p.strip() for p in (before, after) if p.strip()]
-                        if outer_parts:
-                            all_morphemes.append('-'.join(outer_parts))
-                        if infix.strip():
-                            all_morphemes.append('-' + infix.strip() + '-')
-                    else:
-                        all_morphemes.append(raw_word_text.strip())
+                    # Infix with no hyphens, e.g. l<em>angeda -> ["l-angeda", "-em-"]
+                    sub_morphs = split_infix_morphs(raw_word_text)
+                    if sub_morphs is None:
+                        sub_morphs = [raw_word_text.strip()]
+                    all_morphemes.extend(sub_morphs)
                 else:
                     all_morphemes.append(raw_word_text.strip())
 
-                for morph in all_morphemes:
+                # Number M ids by position. list.index() returns the FIRST
+                # match, so a word with a repeated morpheme (reduplication,
+                # e.g. ki-pa-pa-rangez) used to give two M elements the same
+                # id; ids are public identifiers and must be unique (POL-037).
+                for m_index, morph in enumerate(all_morphemes, start=1):
                     if morph:
                         m_elem = ET.SubElement(w_elem, "M")
-                        m_elem.set('id', f"{word_data['id']}M{all_morphemes.index(morph) + 1}")
+                        m_elem.set('id', f"{word_data['id']}M{m_index}")
                         m_form_elem = ET.SubElement(m_elem, "FORM")
                         m_form_elem.set("kindOf", "original")
-                        m_form_elem.text = escape_xml_content(morph)
+                        m_form_elem.text = xml_text(morph)
 
 
     
