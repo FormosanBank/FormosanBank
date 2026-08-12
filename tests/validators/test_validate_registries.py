@@ -86,6 +86,58 @@ def test_unknown_conversion_table_dialect_is_soft(tmp_path):
     assert "Nanwan" in rows[0]["message"]
 
 
+def test_conversion_table_column_naming_a_language_is_clean(tmp_path):
+    """V152 (2026-08-12): a value column may name a *language*, not only an
+    Official dialect — single-dialect languages write the language name
+    itself in @dialect (dialect="Tsou")."""
+    root = _mini_repo(tmp_path)
+    (root / "Orthographies" / "ConversionTables"
+     / "Tsou_Test_113.tsv").write_text(
+        "original\tTsou\nl\tll\n", encoding="utf-8")
+    out = tmp_path / "f.csv"
+    proc = _run(root, out)
+    assert proc.returncode == 0
+    assert "V152" not in proc.stdout, proc.stdout
+
+
+def test_conversion_table_column_naming_an_iso_sharing_language_is_clean(
+        tmp_path):
+    """The real defect: Seediq_94_113.tsv / Seediq_Church_113.tsv carry a
+    'Truku' value column. Truku shares ISO trv with Seediq — it is named in
+    languages.csv and carries its own dialects.csv Language row, and
+    validate_conversion_table --dialect Truku passes — so V152 must not fire
+    on it."""
+    root = _mini_repo(tmp_path)
+    with open(root / "dialects.csv", "a", encoding="utf-8") as f:
+        f.write("Seediq,Tegudaya,德固達雅,teke1282,\n")
+        f.write("Truku,,,,\n")
+    with open(root / "languages.csv", "a", encoding="utf-8") as f:
+        f.write("trv,Truku,shares trv with Seediq\n")
+    (root / "Orthographies" / "ConversionTables"
+     / "Seediq_Test_113.tsv").write_text(
+        "original\tTegudaya\tTruku\nl\tll\tl\n", encoding="utf-8")
+    out = tmp_path / "f.csv"
+    proc = _run(root, out)
+    assert proc.returncode == 0
+    assert not [r for r in _findings(out) if r["rule_id"] == "V152"], (
+        f"V152 must accept a language column; got {_findings(out)!r}")
+
+
+def test_conversion_table_typo_column_still_fires_beside_languages(tmp_path):
+    """The widened V152 must not swallow a genuine typo: 'Nanwan' names
+    neither a dialect nor a language."""
+    root = _mini_repo(tmp_path)
+    (root / "Orthographies" / "ConversionTables"
+     / "Puyuma_Test_113.tsv").write_text(
+        "original\tPuyuma\tNanwan\nl\tl\tll\n", encoding="utf-8")
+    out = tmp_path / "f.csv"
+    proc = _run(root, out)
+    assert proc.returncode == 0
+    rows = [r for r in _findings(out) if r["rule_id"] == "V152"]
+    assert [r["character"] for r in rows] == ["Nanwan"], (
+        f"only the unknown name should fire; got {rows!r}")
+
+
 def test_missing_scheme_folder_is_soft(tmp_path):
     root = _mini_repo(tmp_path)
     text = (root / "standards.csv").read_text(encoding="utf-8")
