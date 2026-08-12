@@ -1,237 +1,125 @@
-# Wikipedias Project
+# Wikipedias
+
+Wikipedia articles in the five Formosan languages that have a Wikipedia:
+Amis (ami), Atayal (tay), Paiwan (pwn), Sakizaya (szy), and Seediq (trv),
+scraped 2026-06 and structured into the FormosanBank XML format. One XML
+file per article (13,238 articles), sentence tier only (no word
+segmentation, no translations).
 
 ## License and AI Use
 
-This corpus is subject to its source license and the central FormosanBank terms in [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI Use is prohibited without prior written permission.
+This corpus is subject to its source license and the central FormosanBank
+terms in [LICENSE.md](../../LICENSE.md) and
+[AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI Use is
+prohibited without prior written permission. Wikipedia text is CC BY-SA.
 
+## Reproducing `XML/`
 
-This repository contains code and data for retrieving, processing and structuring Wikipedia articles in various Formosan languages (namely Amis, Atayal, Paiwan, Sakizaya, and Seediq) into the FormosanBank XML format. The data collected from Wikipedia in these languages is organized to assist in linguistic research and cultural preservation.
+The corpus is **not re-scraped**: the live wikis have moved on since the
+2026-06 scrape, so the published XML is the baseline. The pristine
+pre-correction XML is snapshotted in `CodeAndDocs/pre_correction_snapshot/`
+(POL-035), and `CodeAndDocs/make_xml.sh` regenerates `XML/` from it:
 
-## Project Structure
+```bash
+cd Corpora/Wikipedias
+PYTHON=/path/to/python ./CodeAndDocs/make_xml.sh [path-to-FormosanBank-root]
+```
 
-- **Articles**: Directory containing subdirectories for each Formosan language with available Wikipedia articles. Each language folder includes:
-  - TXT files representing individual articles in that language.
+Steps, in order:
 
-- **XML**: Directory for storing the processed XML files, structured according to the FormosanBank XML format.
+1. **Restore** `XML/` from `CodeAndDocs/pre_correction_snapshot/`
+   (13,278 files).
+2. **`delete_duplicate_articles.py`** — the scrape saved 29 articles
+   twice (duplicate downloads named `<name> (1).xml` / `(2)`), giving 58
+   files with colliding `TEXT/@id`. One file per id is kept — the
+   canonically-named one, or the lowest counter when the group has no
+   counter-less file — and the other copy is deleted (29 files). Every
+   group is byte-identical across its copies, so no content is lost.
+3. **`delete_nonlatin_articles.py`** — deletes the 11 articles whose
+   FORMs contain no Latin letter at all (punctuation only, leftover
+   `== ... ==` heading markup, or Chinese editorial remarks/headings).
+   They are not language data.
+4. **`add_dialect_attrs.py`** — sets `dialect="unknown"` on every TEXT.
+   No Wikipedia article identifies its own dialect; the wikis are
+   community-written with mixed dialect backgrounds.
+5. **`normalize_seediq_quotes.py`** — Seediq only, before `clean_xml`;
+   see "Apostrophe handling" below.
+6. **`QC/cleaning/clean_xml.py`** — punctuation/Unicode canonicalization
+   (NFC, HTML entities, typographic quotes/dashes, non-breaking spaces).
+   Writes a per-run `XML/cleaner_warnings.csv`: review, then delete —
+   it is never committed (POL-033).
+7. **`QC/utilities/standardize.py --remove_accents`** — standard tier =
+   copy of the original tier with accents/stray combining marks removed.
+   No conversion table is applied (dialect unknown).
+8. **`QC/utilities/add_phonology.py --orthography Ortho113`** — PHON
+   tiers from the default (dialect-unknown) IPA columns. Sounds that
+   differ by dialect appear as `[x|y]` variant groups; punctuation is
+   not carried into PHON.
 
-- **Titles**: Directory containing pickle files. Each pickle file corresponds to a language and contains a list of articles available in that language's Wikipedia.
+The published corpus is the 13,238 files this leaves.
 
-- **citations_to_remove**: A pickle file containing section titles for citation sections, which are to be excluded during scraping as they do not contain useful content.
+The pipeline is deterministic and idempotent: consecutive runs produce
+byte-identical output.
 
-- **main.py**: The main script that:
-  - Uses the Wikipedia API to retrieve a list of articles for each language and stores this data in the `Titles` folder.
-  - Scrapes the articles from Wikipedia, saves them as text files in the `Articles` folder.
-  - Processes the articles into XML format for the `XML` directory.
+### Historical scrape provenance (not part of the pipeline)
 
-## Installation
+The original scrape-and-clean scripts and their logs are kept in
+`CodeAndDocs/` for provenance only: `download.py` (Wikipedia API scrape;
+article lists in `Titles/`), `clean_articles.py` (TXT → XML; link/citation
+removal), `remove_other_langs.py` (strips non-Formosan text),
+`delete_empty_forms.py` (drops articles left empty),
+`consolidate_citations.py` (one shared citation per language Wikipedia),
+and the `*.log` files recording exactly what those steps removed. Their
+input (the live wikis of 2026-06) no longer exists in that state, so they
+are not re-run.
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/yourusername/Wikipedias_Project.git
-   cd Wikipedias_Project
-   ```
+## Notes for data users
 
-2. Set up a virtual environment (optional but recommended):
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate
-   ```
-
-3. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-## Usage
-
-1. **Retrieve Wikipedia Articles**:
-   Run `download.py` to use the Wikipedia API to scrape articles.
-   
-   ```bash
-   python download.py
-   ```
-
-   **Outputs**:
-      - The unmodified scraped article text files are saved in the `Articles` directory.
-      - The list of article titles (per language) is saved as pickles in the `Titles` directory.
-
-2. **Basic cleaning and creation of XML files**:
-   Run `clean_articles.py` to use the Wikipedia API to scrape articles.
-   
-   ```bash
-   python clean_articles.py
-   ```
-
-   **Outputs**:
-      - The processed XML files are stored in the `XML` directory.
-      - There are several log files that are useful for ensuring proper functioning
-         - *link_removal.log*: Logs details of URLs removed from the text, including file path, line number, original line, and modified line.
-         - *citations_remove.log*: Code automatically detects (mostly accurately) reference sections of wikipedia articles and removes them. This lists every file that had something removed and what was removed. 
-         - *remove_possible_citations.log*: Some citations squeak through the above. The code finds sequences consisting of a new line that starts with a number, followed by a period. These are almost always citations. The log lists every file that had something removed and what was removed. 
-         - *encoding_detection.log*: Logs the detected encoding of each file that couldn't be opened, including the file path and detected encoding.
-         - *citation_marker_removal.log*: Logs details of citation markers removed from the text, including file path, line number, original line, and modified line.
-
-3. **Delete non-Formosan Text**:
-   Run `remove_other_langs.py`.
-   
-   ```bash
-   python remove_other_langs.py
-   ```
-
-   **Outputs**:
-      - This will update the XML files.
-
-   **Notes**:
-      - Everything that is removed is recorded in a log file.
-         - *remove_Annotations.log*: There is a lot of commentary in non-Formosan languages, enclosed on parentheses. Often these are translations. Parentheses that contain mostly suspected non-Formosan text are removed. Every edit is logged with the file path and the section of text modified, with the part that was removed set aside within |||triple lines|||.
-         - *remove_large_blocks.log*: Lines that contain mostly non-latin text are removed. The log lists the file path and the entire line that was removed. Note that this text sometimes contains a small amount of Formosan text, usually names of individuals.
-         - *remove_character_strings.log*: Longish continuous segments of non-latin text are removed. Every edit is logged with the file path and the section of text modified, with the part that was removed set aside within |||triple lines|||.
-         - *remove_empty_parentheses.log*: Does what is sounds like.
-
-4. **Delete XMLs with no Formosan content**:
-   Run `delete_empty_forms.py` to remove XML files whose `<FORM>` elements are all empty.
-
-   ```bash
-   python delete_empty_forms.py --corpora_path path/to/FormosanWikipedias/XML
-   ```
-
-   **Outputs**:
-      - Deletes XMLs in place.
-      - Writes `delete_empty_forms.log` next to the corpora_path listing every file removed.
-
-   **Notes**:
-      - Some scraped articles produce empty FORMs: the page was a "this article does not exist yet" placeholder in the target Formosan language, or `remove_other_langs.py` stripped away all the non-Formosan content and nothing remained. These files trip `QC/validation/validate_xml.py` as `V017` errors and contribute nothing to the corpus.
-      - A file is deleted only if it parses, contains at least one `<FORM>` element, and every `<FORM>` element's text is empty after stripping whitespace. Files with any non-empty FORM are left untouched.
-      - Run this after `remove_other_langs.py` (which can itself empty FORMs by stripping Chinese-heavy content) and before `clean_xml.py`.
-
-5. **Normalize Seediq apostrophes** (Seediq only — run before `clean_xml`)
-
-   ```bash
-   python CodeAndDocs/normalize_seediq_quotes.py --corpora_path path/to/FormosanWikipedias/XML
-   ```
-
-   **Notes**
-      - Applies the 2026-08-11 maintainer ruling for the Seediq Wikipedia only; see "Apostrophe (`'`) handling" below for the rule and its rationale.
-      - `--dry-run` reports what would change without writing.
-
-6. **Clean XML and standardize punctuation**
-
-   ```bash
-   python path/to/FormosanBankRepo/QC/cleaning/clean_xml.py --corpora_path path/to/FormosanWikipedias/XML
-   ```
-
-   **Outputs**
-      - This will update the XML files.
-
-   **Notes**
-      - This removes empty XML elements
-      - It also standardizes orthography (more-or-less), though a lot of this was done in previous steps (not documented above)
-      - Unicode is flattened so that diacritics are merged with the characters they modify
-      - HTML escape codes are replaced with the corresponding characters
-
-7. **Standardize orthography**
-
-   ```bash
-   python path/to/FormosanBankRepo/QC/utilities/standardize.py --corpora_path path/to/FormosanWikipedias/Final_XML --copy
-   ```
-
-This is almost certainly Ortho94, because it doesn't use `_`. However, there's no other difference between Ortho94 and Ortho113.
-
-**Outputs**
-   - Updates XML files
-
-**Notes**
-   - Creates a copy of every <FORM> element with kindOf="standard" attribute
-   - All u's are converted to o's.
-
-8. **Add IPA**
-
-This uses a "default" IPA encoding, because dialect is unknown.
-
-   ```bash
-   python path/to/FormosanBankRepo/QC/utilities/add_phonology.py --corpora_path path/to/FormosanWikipedias/Final_XML --orthography Ortho113
-   ```
-
-9. **Consolidate citations**:
-   Run `consolidate_citations.py` to replace the per-article `citation` and `BibTeX_citation` attributes with one shared citation per language Wikipedia.
-
-   ```bash
-   python consolidate_citations.py --corpora_path path/to/FormosanWikipedias/XML
-   ```
-
-   **Outputs**:
-      - Rewrites the `citation` and `BibTeX_citation` attributes on every `<TEXT>` element in place. No other attributes (including `source` and `id`) are touched.
-
-   **Notes**:
-      - `clean_articles.py` emits a unique citation per article (e.g. *"Ku_shu_shu. (2026, June 08). In Wikipedia [Amis]. https://ami.wikipedia.org/wiki/Ku_shu_shu"*). That's not citable: an end-user can't include ten thousand citations in a paper. After this step, every Amis article shares one citation for "Amis Wikipedia" as a whole, every Sakizaya article shares one for "Sakizaya Wikipedia", and so on.
-      - `citation` is APA-style with a retrieval date; `BibTeX_citation` is a `@misc{Wiki_<lang_code>, ... }` entry with `title`, `author`, `publisher`, `url`, and `urldate`.
-      - Defaults the retrieval date to today; pass `--date YYYY-MM-DD` to fix it (idempotent — re-running with the same `--date` produces no diff).
-
-## Developer Notes and Tools
-
-### MakeListOfMarkers.py
-   - Convenience code for adding lines of text that indicate all following are citations.
-   - Result is saved in `citations_to_remove.pkl`
-   - This can't be run from the command line. It's meant to be copied-and-pasted into the console.
-
-### download.py
-
-#### `retry(retries=3, delay=2, backoff=2)`
-   - **Purpose**: A decorator function to retry a function execution with exponential backoff in case of failure.
-   - **Parameters**:
-     - `retries`: Number of retry attempts (default: 3).
-     - `delay`: Initial delay between retries in seconds (default: 2).
-     - `backoff`: Multiplicative factor for delay after each retry (default: 2).
-   - **Usage**: Used to handle API request failures gracefully.
-
-### `get_titles(lang_code, titles_path)`
-   - **Purpose**: Retrieves Wikipedia article titles for a specific language using the language code.
-   - **Parameters**:
-     - `lang_code`: ISO code of the language.
-     - `titles_path`: Path to save or retrieve the cached titles list.
-   - **Functionality**:
-     - Checks if the titles are already cached in a pickle file. If not, it retrieves titles from the Wikipedia API, saves them, and returns the list of titles.
-
-### `read_article(title, wiki_wiki, citations_to_remove, lang_path)`
-   - **Purpose**: Reads a Wikipedia article, cleans the text, and saves it.
-   - **Parameters**:
-     - `title`: Title of the article.
-     - `wiki_wiki`: Wikipedia API instance.
-     - `citations_to_remove`: List of unwanted sections.
-     - `lang_path`: Path to save the cleaned article.
-   - **Functionality**:
-     - Retrieves and cleans the article, removing citations and links.
-
-### `download_articles(titles, lang_path, lang_code, citations_to_remove)`
-   - **Purpose**: Downloads and saves multiple articles for a language.
-   - **Parameters**:
-     - `titles`: List of article titles.
-     - `lang_path`: Path to save the articles.
-     - `lang_code`: Language code for Wikipedia.
-     - `citations_to_remove`: List of citations to remove. Should come from citations_to_remove.pkl
-   - **Usage**: Executes `read_article` in parallel using threading.
+- **`dialect="unknown"` everywhere**: Wikipedia articles carry no dialect
+  identification. For Seediq this means the corpus counts as Seediq, not
+  Truku, under FormosanBank counting rules (trv counts as Truku only with
+  an explicit `dialect="Truku"`).
+- **One file per article**: the 29 twice-downloaded articles now have a
+  single file each (pipeline step 2). Two of them keep a `(1)` in the
+  filename (`Atayal/msin (1).xml`, `Sakizaya/Oro’raw (1).xml`) because
+  the scrape never wrote a counter-less copy; the file names carry no
+  meaning, the `TEXT/@id` does. Sentence-level duplication *across*
+  articles (wiki boilerplate) is still reported SOFT by the
+  duplicate-sentence validator — this corpus declares no dedup step.
+- **PHON is provisional**: with dialect unknown, IPA uses default columns;
+  dialect-dependent sounds appear as `[x|y]` variant groups. The corpus
+  is phonologized under a blanket Ortho113 assumption, which the source
+  text does not state; see the orthography-evidence appendix in
+  `claudeplans/phase-b-reports/Wikipedias.md`. Characters with no IPA
+  value (mostly digits, plus loanword letters and CJK) appear as `*`.
+- **Wiki-markup residue**: some articles retain asterisks (list markup),
+  literal `|` from table/citation lines, and similar artifacts of the
+  source pages. This residue is deliberately **retained as-is**
+  (maintainer ruling 2026-08-12): it is audit-flagged (c022 / V129 / the
+  `|` share of V146) but never silently edited out of the FORMs.
 
 ## Apostrophe (`'`) handling
 
 Treatment differs by language (maintainer ruling, 2026-08-11):
 
-**All languages except Seediq**: the apostrophe is the glottal-stop letter in
-these orthographies, and **`'` is assumed glottal by fiat**. Wikipedia articles
-carry no translations, so FormosanBank's quote/glottal classifier cannot
-confirm most cases; ambiguous `'` are accepted as glottal and not warned on.
-This should be revisited when a better language model can do reliable
-automatic correction. (Wikipedia authors also mix straight/curly punctuation
-inconsistently — e.g. Sakizaya articles write a word-final glottal `'`
-followed by a curly `’` closing quote — so codepoint distinctions in the
-source cannot be trusted as signal.)
+**All languages except Seediq**: the apostrophe is the glottal-stop letter
+in these orthographies, and **`'` is assumed glottal by fiat**. Wikipedia
+articles carry no translations, so FormosanBank's quote/glottal classifier
+cannot confirm most cases; ambiguous `'` are accepted as glottal and not
+warned on. This should be revisited when a better language model can do
+reliable automatic correction. (Wikipedia authors also mix straight/curly
+punctuation inconsistently — e.g. Sakizaya articles write a word-final
+glottal `'` followed by a curly `’` closing quote — so codepoint
+distinctions in the source cannot be trusted as signal.)
 
-**Seediq only**: Seediq orthography does not use `'` as a letter (no `'` row
-in `Orthographies/Ortho113/Seediq.tsv`), and inspection of the trv wikitext
-showed the corpus's apostrophes are quotation usage: literal `''` pairs the
-authors typed as double-quote substitutes (`<nowiki>`-protected so MediaWiki
-would not read them as italics markup) and single-quoted titles of laws and
-documents. `CodeAndDocs/normalize_seediq_quotes.py` (pipeline step 5, before
-`clean_xml`) therefore applies, to original FORMs in `XML/Seediq/` only:
+**Seediq only**: Seediq orthography does not use `'` as a letter (no `'`
+row in `Orthographies/Ortho113/Seediq.tsv`), and inspection of the trv
+wikitext showed the corpus's apostrophes are quotation usage: literal `''`
+pairs the authors typed as double-quote substitutes (`<nowiki>`-protected
+so MediaWiki would not read them as italics markup) and single-quoted
+titles of laws and documents. `CodeAndDocs/normalize_seediq_quotes.py`
+(pipeline step 4, before `clean_xml`) therefore applies, to original FORMs
+in `XML/Seediq/` only:
 
 1. literal `''` → `"`;
 2. every remaining `'` → `"`, with two exceptions that keep `'`:
@@ -244,4 +132,3 @@ documents. `CodeAndDocs/normalize_seediq_quotes.py` (pipeline step 5, before
      Atayal vocabulary (`knita'` "view/seen", `biru'` "book/writing" —
      both attested only in Atayal corpora; Seediq uses *patas*), spelled
      with the Atayal glottal apostrophe.
-
