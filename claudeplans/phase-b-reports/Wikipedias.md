@@ -325,15 +325,63 @@ surviving `(1)` filenames), retained-markup-residue note, and a pointer to
 the orthography appendix below. Historical scrape provenance and the
 per-language apostrophe section are unchanged.
 
+**2026-08-12 (post-merge, maintainer ruling)**: the orthography appendix
+below is no longer analysis-only — a data-user-facing version of it now
+lives in `Corpora/Wikipedias/README.md` ("Appendix — the orthography
+behind PHON") and is mirrored on the GitBook corpus page
+(`en-us/the-bank-architecture/corpora/wikipedias.md`, branch
+`docs/wikipedias-orthography`).
+
 ## Open items for maintainer
 
 1. V142 ×2: human source review.
-2. Hangul NFD in the standard tier (27 articles) — one-line fix in
-   `QC/utilities/_accents.strip_accents`, a shared-tool change affecting
-   every corpus that regenerates.
+2. ~~Hangul NFD in the standard tier (27 articles)~~ — **RESOLVED
+   2026-08-12**, see "strip_accents fix applied" below.
 3. Post-merge: GitBook corpus page check (sweep ruling 4).
 
 **UNEXPLAINED: none.** Ready for review/merge.
+
+## strip_accents fix applied (2026-08-12, post-merge)
+
+Open item 2 was ruled on: `strip_accents` must strip **Latin-script
+accents only**. `QC/utilities/_accents.strip_accents` now decomposes and
+strips marks on Latin bases only, and emits runs of non-Latin text through
+NFC as a unit (so a conjoining-jamo sequence L+V+T is recomposed into its
+syllable). 43 regression tests in `tests/utilities/test_accents.py`; full
+suite 1004 passed / 7 skipped.
+
+The Wikipedias pipeline (`CodeAndDocs/make_xml.sh`) was re-run end to end
+against the fixed tool. **78 files changed, 0 added, 0 deleted, 0
+unexplained** — every change re-derived from each file's own unchanged
+original tier as `old_strip(original)` → `new_strip(original)`:
+
+| class | files | S-level standard FORMs | why expected |
+|---|---|---|---|
+| Hangul standard FORM now NFC | 27 | 27 | the fix; these are exactly the 27 articles listed above |
+| non-Latin combining mark retained | 52 | 52 | same ruling: a Greek/Cyrillic diacritic is script, not source prosody |
+| **total** (1 file in both classes) | **78** | **79** | |
+| **UNCLASSIFIED** | **0** | **0** | |
+
+- **0 conjoining jamo** remain anywhere in the corpus (was 27 files).
+- **Original tier: 0 changes.** PHON changed in **29** elements, all in
+  sentences whose standard FORM changed; none elsewhere. The Hangul cases
+  simply lose the extra `*` the decomposed jamo produced, so the standard
+  PHON now matches the original PHON (e.g. `Seediq/Kari_Han-guk.xml`:
+  `한국어` was 11 stars in the standard tier vs 6 in the original; both are
+  6 now).
+- **Token count unchanged**: 5,103,288 (Amis 1,982,130 / Atayal 555,392 /
+  Paiwan 123,725 / Sakizaya 1,649,981 / Seediq 792,060) — identical to the
+  merged baseline. Non-Latin script is not tokenized differently.
+- The second class is not a Wikipedias-specific defect: the old tool
+  stripped a combining acute from *any* base, so Greek `έ ό ά ή ί ύ`,
+  Cyrillic `й ў ѓ` and the like were flattened in the standard tier of
+  quoted foreign names. They are now preserved verbatim, matching the
+  original tier. Affected articles are the country/person pages that quote
+  a Greek, Cyrillic or Arabic form (Amis 11, Sakizaya 26, Seediq 13,
+  Paiwan 3).
+- Sidecar: this run again produced `XML/cleaner_warnings.csv` with c022
+  ×103 and c007 ×40 — identical to the previous run, audit flags only,
+  reviewed and deleted (POL-033).
 
 ## Follow-up turn (`fix/wikipedias-v142`, 2026-08-12)
 
@@ -375,8 +423,9 @@ and on the GitBook corpus page
 (`en-us/the-bank-architecture/corpora/wikipedias.md`, branch
 `docs/wikipedias-orthography`).
 
-Remaining open item: the Hangul-NFD nit in
-`QC/utilities/_accents.strip_accents` (item 2 above), unchanged.
+(Open item 2 above — the Hangul-NFD nit in `strip_accents` — was fixed
+separately and is recorded in the section immediately above.)
+
 
 ---
 
