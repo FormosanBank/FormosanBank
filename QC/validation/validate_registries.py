@@ -121,7 +121,19 @@ def check(repo_root: Path) -> list:
                          f"exist"),
                 path=standards_path, language=language))
 
-    # V152: conversion-table value columns name canonical dialects.
+    # V152: conversion-table value columns name a canonical variety.
+    #
+    # A variety label is either an Official dialect in dialects.csv or a
+    # *language* name: single-dialect languages write the language name
+    # itself in @dialect (dialect="Tsou"), and so do languages that share
+    # an ISO code with another — "Truku" under trv is Seediq's sibling,
+    # named in languages.csv (via trv) and carrying its own dialects.csv
+    # Language row. Those columns resolve fine at run time
+    # (validate_conversion_table --dialect Truku passes), so flagging them
+    # was a defect in the rule, not registry drift. Language names not in
+    # languages.csv are V155's business, not V152's; a genuine typo
+    # ('Nanwan') is in neither set and still fires.
+    accepted_columns = dialects | lang_names | dialect_langs
     tables_dir = repo_root / "Orthographies" / "ConversionTables"
     for table in sorted(tables_dir.glob("*.tsv")) if tables_dir.is_dir() else []:
         with open(table, newline="", encoding="utf-8") as f:
@@ -129,12 +141,13 @@ def check(repo_root: Path) -> list:
         for column in header[1:]:
             column = column.strip()
             if column and column not in _NON_DIALECT_COLUMNS \
-                    and column not in dialects:
+                    and column not in accepted_columns:
                 findings.append(Finding(
                     rule_id="V152", severity=Severity.SOFT,
                     message=(f"V152 SOFT: {table.name} value column "
-                             f"{column!r} is not a canonical dialect in "
-                             f"dialects.csv (the class that crashes "
+                             f"{column!r} names neither a canonical dialect "
+                             f"in dialects.csv nor a language in "
+                             f"languages.csv (the class that crashes "
                              f"validate_conversion_table)"),
                     path=table, character=column))
 
