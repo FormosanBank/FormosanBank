@@ -31,6 +31,7 @@ Welcome to the FormosanBank Corpora section! Here, you’ll find comprehensive d
 * [Latham 1862](latham-1862.md) (text, English)
 * [Song (2018) Kanakanavu Grammar](song-kanakanavu-grammar.md) text, glossing, Mandarin
 * [Li (2014) Conjunction in Thao](li-conjunction-thao.md) (text, glossing, English)
+* [Campbell Favorlang Christian Instruction](campbell-favorlang-christian-instruction.md) (text, English)
 
 ***
 
