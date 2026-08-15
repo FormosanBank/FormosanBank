@@ -31,6 +31,7 @@ Welcome to the FormosanBank Corpora section! Here, you’ll find comprehensive d
 * [Latham 1862](latham-1862.md) (text, English)
 * [Song (2018) Kanakanavu Grammar](song-kanakanavu-grammar.md) text, glossing, Mandarin
 * [Li (2014) Conjunction in Thao](li-conjunction-thao.md) (text, glossing, English)
+* [Asai et al. (2026) Kanakanavu Texts](ilcaa-kanakanavu-texts.md) (text, glossing, English)
 
 ***
 
@@ -41,15 +42,15 @@ Welcome to the FormosanBank Corpora section! Here, you’ll find comprehensive d
 
 | | Truku | Amis | Bunun | bzg | Kavalan | Rukai | Siraya | Paiwan | Puyuma | Thao | Saaroa | Sakizaya | Yami | Atayal | Seediq | Tsou | Kanakanavu | Saisiyat |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Word count | 87,480 | 2,578,608 | 249,743 | 26 | 126,970 | 275,546 | 41,990 | 422,601 | 230,655 | 102,042 | 63,050 | 1,758,027 | 119,261 | 887,560 | 1,007,992 | 87,939 | 109,036 | 101,779 |
+| Word count | 87,480 | 2,578,608 | 249,743 | 26 | 126,970 | 275,546 | 41,990 | 422,601 | 230,655 | 102,042 | 63,050 | 1,758,027 | 119,261 | 887,560 | 1,007,992 | 87,939 | 119,034 | 101,779 |
 | Total audio | 84.4h | 121.6h | 125.3h | 0 | 53.8h | 154.2h | 0 | 168.9h | 119.9h | 41.4h | 45.9h | 49.0h | 40.5h | 171.2h | 92.2h | 41.0h | 65.1h | 47.0h |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 41.6h | 121.2h | 125.3h | 0 | 53.8h | 154.2h | 0 | 134.1h | 119.9h | 41.4h | 45.9h | 49.0h | 40.5h | 160.0h | 92.1h | 41.0h | 65.1h | 47.0h |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 42.8h | 0.4h | 0 | 0 | 0 | 0 | 0 | 34.8h | 0 | 0 | 0 | 0 | 0 | 11.2h | 0.1h | 0 | 0 | 0 |
 | Translated words |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 11,370 | 126,232 | 66,202 | 26 | 27,254 | 64,970 | 41,990 | 73,867 | 40,780 | 11,383 | 8,760 | 19,844 | 25,444 | 67,512 | 48,408 | 21,337 | 24,425 | 22,112 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 11,370 | 126,232 | 66,202 | 26 | 27,254 | 64,970 | 41,990 | 73,867 | 40,780 | 11,383 | 8,760 | 19,844 | 25,444 | 67,512 | 48,408 | 21,337 | 34,423 | 22,112 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 87,348 | 533,137 | 249,559 | 0 | 126,939 | 274,826 | 41,851 | 210,538 | 230,491 | 101,796 | 63,034 | 101,406 | 118,409 | 307,665 | 215,362 | 87,902 | 108,998 | 101,115 |
-| Morphologically segmented | 1,153 | 7,561 | 23,214 | 0 | 16,244 | 17,944 | 0 | 30,119 | 0 | 211 | 0 | 13,001 | 14,135 | 5,855 | 21,931 | 10,128 | 18,948 | 10,816 |
-| Glossed words | 1,070 | 7,561 | 23,214 | 0 | 16,244 | 17,944 | 0 | 24,478 | 0 | 211 | 0 | 13,001 | 14,135 | 5,855 | 21,931 | 10,128 | 18,948 | 10,816 |
+| Morphologically segmented | 1,153 | 7,561 | 23,214 | 0 | 16,244 | 17,944 | 0 | 30,119 | 0 | 211 | 0 | 13,001 | 14,135 | 5,855 | 21,931 | 10,128 | 28,931 | 10,816 |
+| Glossed words | 1,070 | 7,561 | 23,214 | 0 | 16,244 | 17,944 | 0 | 24,478 | 0 | 211 | 0 | 13,001 | 14,135 | 5,855 | 21,931 | 10,128 | 28,931 | 10,816 |
 
 #### By dialect
 
