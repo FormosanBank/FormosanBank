@@ -1,0 +1,76 @@
+example,subexample,page,seed_form,corrected_form,translation_zho,aligned_gloss_tokens_zho,candidate_status,source_judgement,analysis_action,note,ocr_note
+1,,33,mi-pa-baybay ci Taydung.,,,,,,,,
+2,,33,maluk kaku tu lutuk nu kalitang.,,,,,,,,
+3,,33,takalaw ku pa-cudad-an nu maku.,,,,,,,,
+4,,33,u kadabu ni Buya kaku.,,,,,,,,
+5,,34,i umah ci baki.,,,,,,,,
+6,,34,mi-bidaul ci Panay i umah.,,,,,,,,
+7,,34,mi-balakas ku wacu tu nani'.,,,,,,,,
+8,,35,mi-cengel-an ku kalaw ni Taymu.,,,,,,,,
+9,,35,mi-kiskis tu banuh nu pabuy.,,,,,,,,
+10,,35,mi-lawlaw ci Kacaw i ci Panay-an.,,,,,,,,
+11,,35,mi-lubu ci bayi tu ciwciw.,,,,,,,,
+12,,36,mi-asip kaku tu cudad.,,,,,,,,
+13,,36,ni-mi-cakay-an aku kuyni a udu'.,,,,,,,,
+14,,36,nguhit sa kiya wawa mi-azih takuwan.,,,"[""微笑"",""SA"",""那"",""小孩"",""主焦-看"",""我.斜格""]",,,,,
+15,,37,ma-duka ku abala nu maku.,,我的肩膀受傷了。,,,,,,PDF page-image correction: 肩膀 restored from OCR 肩牓.
+16,,37,mi-amay kiya wawa tu piyang i takuwanan.,,,"[""主焦-要求"",""那"",""小孩"",""斜格"",""糖果"",""處所格"",""我.斜格-AN""]",,,,,
+17,d,38,,,,,,,canonical_null_prefix,PDF pages 17-18 print ø- as the agent-focus prefix and in example 17d; canonicalized to ∅.,
+19,b,,,,,"[""普名標記"",""什麼"",""主格"",""工焦-去哪裡"",""屬格"",""m-我們.包含式"",""處所格"",""CA 重疊-書-處焦""]",,,,,
+22,b,,,,,"[""命令-來"",""即將-剛才"",""處所格"",""PI-SA-KA-工作-處焦"",""我.屬格""]",,,,,
+23,c,,,,,"[""HA-全部的"",""助詞"",""主焦-吃"",""那個"",""飯""]",,,,,
+27,a,,,,Panay 在山上只有一間房屋。,,,,,,PDF page-image correction: Panay restored from OCR Pamay.
+28,a,,,,那棵文旦果實纍纍。,"[""主焦-纍纍"",""主格"",""果實"",""那個"",""文旦""]",,,,,PDF page-image correction: 文旦 restored from OCR 交旦.
+29,b,,,,,"[""主焦-跑"",""我.主格"",""斜格"",""重疊-早上""]",,,,,
+30,a,,,,,"[""擔心"",""我"",""斜格"",""孩子"",""我.屬格""]",,,,,
+31,b,,,,,"[""受焦-綁"",""完成貌"",""主格"",""NI-撿-處焦"",""屬格"",""m-我.屬格"",""繫詞"",""漂流木""]",,,,,
+35,b,,,,不要看髒的會感到噁心,,,,,,PDF page-image correction: removed a non-source trailing OCR glyph.
+39,a,,,,,"[""普名標記"",""網"",""主格"",""工焦-魚"",""屬格"",""m-我.屬格""]",,,,,
+41,a,,,,,"[""多"",""主格"",""青蛙"",""處所格"",""水田"",""屬格"",""我們.屬格""]",,,,,
+46,b,,,,Edi'已經長大了還會偷尿床。,,,,,,PDF page-image correction: 已 restored from OCR 己.
+51,c,,,,以你的想法為主。,,,,,,PDF page-image correction: 為主 restored from OCR 寫主.
+53,a,,,,,"[""長"",""屬格"",""爸爸"",""枝"",""屬格"",""樹""]",,,,,
+57,a,,,,Lali模仿 Ibun 走路，Ibun 就生氣了。,,,,,,PDF page-image correction: the second Ibun restored from OCR lbun.
+59,b,,,,Pasang 是部落裡的流氓。,,,,,,PDF page-image correction: 流氓 restored from OCR 流哦.
+67,a,,,,,"[""好"",""看-受焦"",""主格"",""戒指"",""處所格"",""手指"",""你.屬格""]",,,,,
+72,a,,,,我住北部,,,,,,PDF page-image verified source translation without final punctuation.
+79,a,,,,,"[""哭"",""SA"",""那"",""嬰兒""]",,,,,
+80,b,,,,,"[""非常的-高興"",""主格"",""心"",""繫詞"",""MA-KA-看"",""處所格"",""我們.斜格-AN""]",,,,,
+81,a,,,,,"[""癢"",""主格"",""處所格-咬-處所格"",""屬格"",""跳蚤""]",,,,,
+81,b,,,tanu-atimela sa ku zikuc anu caay ka-baca.,,"[""tanu-跳蚤"",""SA"",""主格"",""衣服"",""如果"",""沒有"",""KA-洗""]",,,,PDF page-image correction: removed appended interlinear gloss cells.,
+82,a,,,,,"[""流下"",""主格"",""汗水"",""從"",""額頭""]",,,,,
+82,b,,,tanu-tanang sa ku maluk-ay.,,"[""很多-汗水"",""SA"",""主格"",""耕田-AY""]",,,,PDF page-image correction: removed appended interlinear gloss cells.,
+83,a,,,,,"[""主焦-舀"",""我.主格"",""斜格"",""工焦-洗澡"",""繫詞"",""水""]",,,,,
+83,b,,,,,"[""即將-主焦-舀"",""主格"",""人名"",""斜格"",""重疊-洗澡-處焦"",""繫詞"",""水""]",,,,,
+83,c,115,,,,,excluded_ungrammatical,* (ungrammatical),,Source-starred example excluded under POL-016; page-image verified.,
+84,c,,,,我將要採收我種植的水蜜桃。,,,,,,PDF page-image correction: 採收 restored from OCR 探收.
+84,d,115,,,,,excluded_ungrammatical,* (ungrammatical),,Source-starred example excluded under POL-016; page-image verified.,
+85,c,,,,,"[""即將-主焦-玩"",""去-哪裡"",""SA"",""輕微命令-攜帶-背袋"",""TU""]",,,,,
+85,d,116,,,,,excluded_ungrammatical,* (ungrammatical),,Source-starred example excluded under POL-016; page-image verified.,
+86,b,,,,,"[""受焦-借"",""屬格"",""人名"",""主格"",""腳踏車"",""屬格"",""m-我.屬格""]",,,,,
+86,d,117,,,,,excluded_ungrammatical,* (ungrammatical),,Source-starred example excluded under POL-016; page-image verified.,
+87,c,,,,,"[""去"",""我.主格"",""主焦-使役-扶"",""受格"",""重-AY"",""繫詞"",""NI-扛"",""他.屬格""]",,,,,
+87,d,118,,,,,excluded_ungrammatical,* (ungrammatical),,Source-starred example excluded under POL-016; page-image verified.,
+88,a,,,,,"[""一"",""主格"",""房子"",""處所格"",""山上"",""屬格"",""人名""]",,,,,
+88,d,119,,,,,excluded_ungrammatical,* (ungrammatical),,Source-starred example excluded under POL-016; page-image verified.,
+89,c,120,,,,,excluded_ungrammatical,* (ungrammatical),,Source-starred example excluded under POL-016; page-image verified.,
+90,d,120,,,,,excluded_ungrammatical,* (ungrammatical),,Source-starred example excluded under POL-016; page-image verified.,
+91,e,121,,,,,excluded_ungrammatical,* (ungrammatical),,Source-starred example excluded under POL-016; page-image verified.,
+92,b,,,,,"[""站-勸使"",""你.主格"",""繫詞"",""PA-演說"",""處所格"",""過去-先-處焦"",""屬格"",""KA-東西-AY""]",,,,,
+93,a,,,,把桑葚釀成米酒。,,,,,,PDF page-image correction: 桑葚 restored from OCR 桑甚.
+94,a,,,,,"[""種"",""我.主格"",""斜格"",""香蕉"",""處所格"",""屬格"",""後面-處焦"",""屬格"",""家""]",,,,,
+94,b,,,,Benel的地是Taymu所種花生的地方,"[""種-處焦"",""屬格"",""人名"",""主格"",""田"",""屬格"",""人名"",""斜格"",""花生""]",,,,,PDF page-image correction: removed a footnote-marker OCR artifact.
+96,b,,,,,"[""種-處焦"",""屬格"",""貓"",""那個"",""魚""]",,,,,
+97,a,,,,,"[""主焦-縫"",""主格"",""媽媽"",""斜格"",""衣服"",""屬格"",""m-我.屬格""]",,,,,
+100,b,,,,,"[""MA-重疊-早"",""我.主格"",""主焦-起床"",""斜格"",""清晨-處焦""]",,,,,
+102,b,,,,,"[""喜歡-aw"",""屬格"",""m-我們.屬格"",""那個"",""重疊-長大""]",,,,,
+105,a,,,,我每次都捕不到魚。,,,,,,PDF page-image correction: 捕 restored from OCR 補.
+106,c,,,,,"[""MA-梅雨"",""主格"",""四-AY"",""連接詞"",""五-AY"",""繫詞"",""竹節"",""屬格"",""年-AN""]",,,,,
+107,a,,,,,"[""使役-懷疑"",""主格"",""媽媽"",""屬格"",""m-我.屬格"",""斜格"",""NI-KA-健康"",""屬格"",""m-我.屬格""]",,,,,
+108,b,,,,,"[""烤-使役"",""那個"",""屬格"",""海-AY"",""繫詞"",""魚""]",,,,,
+114,b,,,,,"[""KA-到達"",""完成貌"",""主格"",""KA-去-處焦"",""PA-停止-EN"",""完成貌"",""主格"",""車""]",,,,,
+115,a,,,,,"[""扣-EN"",""主格"",""衣服"",""不會"",""KA-冷""]",,,,,
+121,a,,,,,"[""處所格"",""北"",""主格"",""家"",""屬格"",""m-我.屬格""]",,,,,
+123,a,,,,,"[""主格"",""人名"",""主格"",""名字"",""屬格"",""m-我.屬格""]",,,,,
+124,c,,,,,"[""PI-翻-I"",""斜格"",""PA-衣服-處焦"",""屬格"",""人名""]",,,,,
+125,b,,,,,"[""好"",""SA"",""看-受焦"",""那個"",""重疊-眼睛-處焦"",""屬格"",""人名""]",,,,,
