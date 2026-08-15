@@ -121,15 +121,15 @@ def audit_file(xml_path: Path) -> list[dict[str, str]]:
                 rows,
                 xml_path,
                 tier,
-                "tier_has_shared_original_and_standard_phonology",
-                {phon.attrib.get("kindOf") for phon in phons} == {"original", "standard"}
-                and len(phons) == 2
+                "tier_has_standard_phonology_only",
+                {phon.attrib.get("kindOf") for phon in phons} == {"standard"}
+                and len(phons) == 1
                 and all(bool(phon.text) for phon in phons),
                 " | ".join(phon.text or "" for phon in phons),
             )
             for transl in tier.findall("TRANSL"):
                 kind = transl.attrib.get("kindOf", "")
-                expected_kind = "" if tier.tag == "S" else "original"
+                expected_kind = ""
                 add_check(
                     rows,
                     xml_path,

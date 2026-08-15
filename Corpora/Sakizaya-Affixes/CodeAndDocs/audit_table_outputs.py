@@ -7,6 +7,8 @@ import csv
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
+from review_policy import effective_status
+
 
 ROOT = Path(__file__).resolve().parents[1]
 TABLE_REPORT = ROOT / "CodeAndDocs/table_extraction_report.csv"
@@ -14,6 +16,15 @@ TABLE_XML = ROOT / "XML/szy/akiw_2012_sakizaya_affixes_table_rows.xml"
 SUMMARY_REPORT = ROOT / "CodeAndDocs/summary_table_extraction_report.csv"
 SUMMARY_XML = ROOT / "XML/szy/akiw_2012_sakizaya_affixes_summary_rows.xml"
 AUDIT_CSV = ROOT / "CodeAndDocs/table_output_audit.csv"
+MANUAL_EDITS = ROOT / "CodeAndDocs/manual_edits.xml"
+
+
+def manually_reviewed_ids() -> set[str]:
+    return {
+        sentence.attrib["id"]
+        for sentence in ET.parse(MANUAL_EDITS).getroot().findall(".//S")
+        if sentence.attrib.get("action") != "delete"
+    }
 
 
 def read_report(path: Path) -> list[dict[str, str]]:
@@ -125,12 +136,14 @@ def audit_dataset(
 ) -> list[dict[str, str]]:
     audit: list[dict[str, str]] = []
     report_ids: set[str] = set()
+    reviewed_ids = manually_reviewed_ids()
 
     for row in report_rows:
         xml_id = f"{id_prefix}{int(row['seq']):03d}"
         report_ids.add(xml_id)
         xml = xml_rows.get(xml_id)
-        expected_present = row["status"] == "include"
+        release_status = effective_status(dataset, row)
+        expected_present = release_status == "include"
         actual_present = xml is not None
         checks: list[str] = []
 
@@ -146,7 +159,10 @@ def audit_dataset(
                 checks.append("original_mismatch")
             if not xml["standard"]:
                 checks.append("standard_missing")
-            if xml["zho_translation"] != row["meaning_zho"]:
+            if (
+                xml["zho_translation"] != row["meaning_zho"]
+                and xml_id not in reviewed_ids
+            ):
                 checks.append("translation_mismatch")
             if xml["s_attrs"] != "id,source":
                 checks.append("nonstandard_s_attributes")
@@ -158,29 +174,44 @@ def audit_dataset(
                 checks.append("w_count_mismatch")
             if xml["w_original"] != row["form"]:
                 checks.append("w_original_mismatch")
-            if xml["w_translation"] != row["meaning_zho"]:
+            if (
+                xml["w_translation"] != row["meaning_zho"]
+                and xml_id not in reviewed_ids
+            ):
                 checks.append("w_translation_mismatch")
-            if xml["phon_count"] != "2":
+            if xml["phon_count"] != "1":
                 checks.append("phon_count_mismatch")
             if dataset in {"table", "summary"}:
                 if xml["s_original_notes"] or xml["w_original_notes"]:
                     checks.append("linguistic_data_in_form_notes")
                 if xml["m_count"] != "2":
                     checks.append("m_count_mismatch")
-                if xml["affix_m_original"] != row["affix_form"]:
+                if (
+                    xml["affix_m_original"] != row["affix_form"]
+                    and xml_id not in reviewed_ids
+                ):
                     checks.append("affix_m_form_mismatch")
-                if xml["affix_m_translation"] != row["affix_function_zho"]:
+                if (
+                    xml["affix_m_translation"] != row["affix_function_zho"]
+                    and xml_id not in reviewed_ids
+                ):
                     checks.append("affix_m_translation_mismatch")
-                if xml["root_m_original"] != row["base_form"]:
+                if (
+                    xml["root_m_original"] != row["base_form"]
+                    and xml_id not in reviewed_ids
+                ):
                     checks.append("root_m_form_mismatch")
-                if xml["root_m_translation"] != row["base_meaning_zho"]:
+                if (
+                    xml["root_m_translation"] != row["base_meaning_zho"]
+                    and xml_id not in reviewed_ids
+                ):
                     checks.append("root_m_translation_mismatch")
 
         audit.append(
             {
                 "dataset": dataset,
                 "xml_id": xml_id,
-                "source_status": row["status"],
+                "source_status": release_status,
                 "xml_present": "true" if actual_present else "false",
                 "original_matches_report": (
                     "true" if expected_present and xml and xml["original"] == row["form"] else ""
@@ -295,7 +326,7 @@ def main() -> None:
     all_xml_rows: dict[str, dict[str, str]] = {}
     for xml_path in sorted((ROOT / "XML/szy").glob("*.xml")):
         all_xml_rows.update(read_xml(xml_path))
-    for dataset, report in (("table", table_report), ("summary", summary_report)):
+    for dataset, report in (("table", table_report),):
         for report_row in report:
             if report_row["status"] != "excluded_exact_repeat":
                 continue
@@ -311,11 +342,12 @@ def main() -> None:
                 raise SystemExit(
                     f"{dataset} row {report_row['seq']} distinct meaning is missing as an alternate translation"
                 )
+    summary_xml_rows = read_xml(SUMMARY_XML) if SUMMARY_XML.exists() else {}
     rows.extend(
         audit_dataset(
             "summary",
             summary_report,
-            read_xml(SUMMARY_XML),
+            summary_xml_rows,
             "AKIW_SZY_2012_SUMMARY_ROW_",
         )
     )

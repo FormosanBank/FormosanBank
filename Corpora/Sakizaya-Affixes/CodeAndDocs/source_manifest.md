@@ -28,3 +28,7 @@ mentions it, but it is not treated as authoritative for the Sakizaya forms.
 
 Both PDFs are installed under ignored `Private/source/`. Run
 `download_source_data.sh` to reacquire and verify them. No source PDF is tracked.
+
+Madeline Boese's expert review on Basecamp comment `10204083452`, dated
+2026-08-14, is the authority for the final XML corrections and the exclusion of
+the complete summary-row dataset.

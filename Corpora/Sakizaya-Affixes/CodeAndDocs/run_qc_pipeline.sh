@@ -168,10 +168,11 @@ printf 'clean_xml_diff_exit=%s (must be 0)\n' "$CLEAN_DIFF_CODE" >> "$COMMANDS"
 if [[ "$CLEAN_DIFF_CODE" -ne 0 ]]; then FAIL=1; fi
 
 run_qc standardize_source_profile_scratch \
-  "$PY" "$QC_ROOT/QC/utilities/standardize.py" --remove_accents --corpora_path "$SCRATCH/standard_phon"
+  "$PY" "$QC_ROOT/QC/utilities/standardize.py" \
+  --tsv_path "$ROOT/CodeAndDocs/source_data/sakizaya_affixes_standardization.tsv" \
+  --target_column standard --corpora_path "$SCRATCH/standard_phon"
 run_qc add_phonology_scratch \
-  "$PY" "$QC_ROOT/QC/utilities/add_phonology.py" --orthography Ortho113 \
-  --corpora_path "$SCRATCH/standard_phon"
+  "$PY" "$QC_ROOT/QC/utilities/add_phonology.py" --corpora_path "$SCRATCH/standard_phon"
 diff -ru "$FINAL" "$SCRATCH/standard_phon" > "$OUT/standard_phon_diff.txt" 2>&1
 STANDARD_PHON_DIFF_CODE=$?
 printf 'standard_phon_diff_exit=%s (must be 0)\n' "$STANDARD_PHON_DIFF_CODE" >> "$COMMANDS"

@@ -18,8 +18,8 @@ REQUIRED_QC_COMMIT = "3a3c47c220520113f747e6a2d441494000e13c4b"
 SOURCE_SCRIPTS = (
     "build_xml.py",
     "build_table_xml.py",
-    "build_summary_table_xml.py",
 )
+STANDARDIZATION_TABLE = CODE / "source_data/sakizaya_affixes_standardization.tsv"
 AUDIT_SCRIPTS = (
     "audit_source_alignment.py",
     "audit_table_outputs.py",
@@ -145,7 +145,10 @@ def main() -> None:
         [
             str(qc_python),
             str(qc_root / "QC/utilities/standardize.py"),
-            "--remove_accents",
+            "--tsv_path",
+            str(STANDARDIZATION_TABLE),
+            "--target_column",
+            "standard",
             "--corpora_path",
             str(FINAL),
         ]
@@ -154,8 +157,6 @@ def main() -> None:
         [
             str(qc_python),
             str(qc_root / "QC/utilities/add_phonology.py"),
-            "--orthography",
-            "Ortho113",
             "--corpora_path",
             str(FINAL),
         ]

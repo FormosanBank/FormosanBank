@@ -290,6 +290,9 @@ def apply_source_form_decisions(candidates: list[Candidate]) -> None:
             candidate.word_form = candidate.form
             candidate.status = decision.candidate_status
             candidate.note = decision.note
+        elif decision and decision.candidate_status == "excluded_expert_review":
+            candidate.status = decision.candidate_status
+            candidate.note = decision.note
         elif not candidate.word_form:
             candidate.word_form = candidate.form
 

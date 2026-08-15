@@ -35,6 +35,7 @@ class SourceCheck:
     m_pairs_zho: tuple[tuple[str, str], ...] = ()
     alternate_translations_zho: tuple[str, ...] = ()
     excluded_ungrammatical: bool = False
+    excluded_expert_review: bool = False
 
 
 CHECKS = [
@@ -72,12 +73,12 @@ CHECKS = [
     SourceCheck(
         "PDF page 38 (printed page 18), example 17d",
         "AKIW_SZY_2012_EX_017D",
-        "∅-imelang ci Taymu kiyu si-dinget.",
+        "imelang ci Taymu kiyu si-dinget.",
         "imelang ci Taymu kiyu sidinget.",
         "Taymu 生病所以流鼻涕。",
-        "The printed null prefix is preserved on S and W; shared standardization removes it from S-standard only.",
-        first_w_original="∅-imelang",
-        first_w_standard="∅-imelang",
+        "Expert review removed the orphaned null-prefix analysis from S and W.",
+        first_w_original="imelang",
+        first_w_standard="imelang",
     ),
     SourceCheck(
         "PDF page 61 (printed page 41), example 27a",
@@ -103,8 +104,7 @@ CHECKS = [
         "amumul",
         "即將出發",
         last_w_original="a-mumul",
-        s_original_notes="source table base/root: mumul; Mandarin meaning: 出發、走",
-        m_pairs_zho=(("a-", "即將進行"), ("mumul", "出發、走")),
+        m_pairs_zho=(("a-", "即將進行"), ("mumul", "出發")),
     ),
     SourceCheck(
         "PDF page 53 (printed page 33), table 13 row 2",
@@ -154,9 +154,10 @@ CHECKS = [
         "AKIW_SZY_2012_TABLE_ROW_381",
         "mu-lecuh-ay",
         "mulecuhay",
-        "生產的、分娩的，例如產婦",
+        "生產的",
         "The wrapped page-image cell confirms the complete meaning without OCR punctuation artifacts.",
         m_pairs_zho=(("mu-...-ay", "動作行為的施事者或狀態或性質"), ("lecuh", "生產")),
+        alternate_translations_zho=("分娩的，例如產婦",),
     ),
     SourceCheck(
         "PDF page 79 (printed page 59), table 37 row 120",
@@ -164,7 +165,7 @@ CHECKS = [
         "mu-lesa'",
         "mulesa'",
         "漏水",
-        s_original_notes="source table base/root: lesa'; Mandarin meaning: 漏水（雨）、滲水",
+        m_pairs_zho=(("mu-", "主事者焦點"), ("lesa'", "漏水（雨）")),
     ),
     SourceCheck(
         "PDF page 85 (printed page 65), table 45 row 154",
@@ -212,7 +213,7 @@ CHECKS = [
         "si-lusa'",
         "silusa'",
         "流淚",
-        s_original_notes="source table base/root: lusa'; Mandarin meaning: 淚水、眼淚",
+        m_pairs_zho=(("si-", "產生、長"), ("lusa'", "淚水")),
     ),
     SourceCheck(
         "PDF page 105 (printed page 85), table 62 row 247",
@@ -252,7 +253,7 @@ CHECKS = [
         "bangbang-aw",
         "bangbangaw",
         "要多勉勵",
-        s_original_notes="source table base/root: bangbang; Mandarin meaning: 火燒旺，可延伸有加油、勉勵之意",
+        m_pairs_zho=(("-aw", "勸使"), ("bangbang", "火燒旺，可延伸有加油")),
     ),
     SourceCheck(
         "PDF page 136 (printed page 116), table 84 row 320",
@@ -284,7 +285,7 @@ CHECKS = [
         "ma-badi'-ay",
         "mabadi'ay",
         "枯萎的",
-        s_original_notes="source table base/root: badi'; Mandarin meaning: 枯萎、乾掉",
+        m_pairs_zho=(("ma-...-ay", "動作行為的施事者或狀態或性質"), ("badi'", "枯萎")),
     ),
     SourceCheck(
         "PDF page 145 (printed page 125), table 92 row 364",
@@ -317,8 +318,9 @@ CHECKS = [
         "AKIW_SZY_2012_TABLE_ROW_375",
         "mi-sanga'-an",
         "misanga'an",
-        "建造的、製作的",
-        s_original_notes="source table base/root: sanga'; Mandarin meaning: 建造、製作",
+        "建造的",
+        m_pairs_zho=(("mi-...-an", "動作發生後產生的物體或對象"), ("sanga'", "建造")),
+        alternate_translations_zho=("製作的",),
     ),
     SourceCheck(
         "PDF page 148 (printed page 128), table 95 row 388",
@@ -353,7 +355,7 @@ CHECKS = [
         "pibadi'i",
         "去曬乾！",
         "The page image confirms the glottal mark; the row affix cell conflicts with the heading, prose, and full form.",
-        m_pairs_zho=(("pi-...-i", "加強使役"), ("badi'", "枯萎、乾掉")),
+        m_pairs_zho=(("pi-...-i", "加強使役"), ("badi'", "枯萎")),
     ),
     SourceCheck(
         "PDF page 154 (printed page 134), table 101 row 433",
@@ -461,7 +463,8 @@ CHECKS = [
         "ma-la-wacu",
         "malawacu",
         "虛弱",
-        m_pairs_zho=(("ma-la-", "文化相關詞彙"), ("wacu", "狗")),
+        "Excluded with the full summary-row dataset after expert review.",
+        excluded_expert_review=True,
     ),
     SourceCheck(
         "PDF page 166 (printed page 146), comparison row 506",
@@ -469,7 +472,8 @@ CHECKS = [
         "ma-ngawa'",
         "mangawa'",
         "缺齒",
-        m_pairs_zho=(("ma-", "動詞化詞綴"), ("ngawa'", "角")),
+        "Excluded with the full summary-row dataset after expert review.",
+        excluded_expert_review=True,
     ),
     SourceCheck(
         "PDF page 167 (printed page 147), comparison row 517",
@@ -477,7 +481,8 @@ CHECKS = [
         "pa-talaw",
         "patalaw",
         "使之驚嚇",
-        m_pairs_zho=(("pa-", "使役動詞"), ("talaw", "受驚")),
+        "Excluded with the full summary-row dataset after expert review.",
+        excluded_expert_review=True,
     ),
     SourceCheck(
         "PDF page 167 (printed page 147), comparison row 523",
@@ -485,7 +490,8 @@ CHECKS = [
         "ama-aw",
         "amaaw",
         "親暱稱爸爸",
-        m_pairs_zho=(("-aw", "表示親暱"), ("ama", "爸爸")),
+        "Excluded with the full summary-row dataset after expert review.",
+        excluded_expert_review=True,
     ),
     SourceCheck(
         "PDF page 167 (printed page 147), comparison row 525",
@@ -493,7 +499,8 @@ CHECKS = [
         "sept-ay",
         "septay",
         "四的",
-        m_pairs_zho=(("-ay", "名物化"), ("sept", "四")),
+        "Excluded with the full summary-row dataset after expert review.",
+        excluded_expert_review=True,
     ),
     SourceCheck(
         "PDF page 163 (printed page 143), comparison row 490",
@@ -628,8 +635,8 @@ def run_checks() -> list[dict[str, str]]:
     results: list[dict[str, str]] = []
     for check in CHECKS:
         actual = indexed.get(check.xml_id, {})
-        if check.excluded_ungrammatical:
-            mismatches = ["excluded_ungrammatical_present"] if actual else []
+        if check.excluded_ungrammatical or check.excluded_expert_review:
+            mismatches = ["excluded_row_present"] if actual else []
         else:
             mismatches = [
                 field

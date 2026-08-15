@@ -7,6 +7,8 @@ import csv
 from collections import Counter, defaultdict
 from pathlib import Path
 
+from review_policy import effective_status
+
 
 ROOT = Path(__file__).resolve().parents[1]
 TOTAL_PAGES = 174
@@ -23,12 +25,12 @@ def read_rows(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(handle))
 
 
-def count_by_page(rows: list[dict[str, str]]) -> dict[int, Counter[str]]:
+def count_by_page(dataset: str, rows: list[dict[str, str]]) -> dict[int, Counter[str]]:
     counts: dict[int, Counter[str]] = defaultdict(Counter)
     for row in rows:
         page = int(row["page"])
         counts[page]["total"] += 1
-        counts[page][row["status"]] += 1
+        counts[page][effective_status(dataset, row)] += 1
     return counts
 
 
@@ -102,9 +104,9 @@ def main() -> None:
     example_rows = read_rows(EXAMPLE_REPORT)
     table_rows = read_rows(TABLE_REPORT)
     summary_rows = read_rows(SUMMARY_REPORT)
-    examples = count_by_page(example_rows)
-    tables = count_by_page(table_rows)
-    summaries = count_by_page(summary_rows)
+    examples = count_by_page("numbered", example_rows)
+    tables = count_by_page("table", table_rows)
+    summaries = count_by_page("summary", summary_rows)
     rows = [row_for_page(page, examples, tables, summaries) for page in range(1, TOTAL_PAGES + 1)]
     write_csv(rows)
 
@@ -124,16 +126,18 @@ def main() -> None:
     )
 
     represented = len(example_rows) + len(table_rows) + len(summary_rows)
-    included = sum(row["status"] == "include" for row in [*example_rows, *table_rows, *summary_rows])
+    included = sum(effective_status("numbered", row) == "include" for row in example_rows)
+    included += sum(effective_status("table", row) == "include" for row in table_rows)
+    included += sum(effective_status("summary", row) == "include" for row in summary_rows)
 
     print(f"page coverage rows: {len(rows)}")
     print(f"pages with source report rows: {sum(1 for row in rows if int(row['source_report_rows']) > 0)}")
     print(f"critical OCR cache pages missing: {len(missing_critical)}")
     print(f"missing table sequences: {len(missing_table_sequences)}")
     print(f"missing late-table sequences: {len(missing_summary_sequences)}")
-    if represented != 808 or included != 681:
+    if represented != 808 or included != 670:
         raise SystemExit(
-            f"Expected 808 source units and 681 XML rows; found {represented} and {included}"
+            f"Expected 808 source units and 670 XML rows; found {represented} and {included}"
         )
     if missing_critical or missing_table_sequences or missing_summary_sequences:
         raise SystemExit(1)

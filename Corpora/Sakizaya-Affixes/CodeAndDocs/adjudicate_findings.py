@@ -11,6 +11,8 @@ import xml.etree.ElementTree as ET
 from collections import Counter
 from pathlib import Path
 
+from review_policy import EXPERT_REVIEW_STATUS, effective_status
+
 
 ROOT = Path(__file__).resolve().parents[1]
 FINAL = ROOT / "XML/szy"
@@ -88,18 +90,13 @@ def main() -> None:
         len(schema) == 1
         and schema[0]["severity"] == "SOFT"
         and schema[0]["rule_id"] == "V144"
-        and schema[0]["count"] == "37",
+        and schema[0]["count"] == "38",
         f"Unexpected XML validator findings: {schema}",
     )
-    require(
-        len(text_rows) == 2
-        and Counter((row["severity"], row["rule_id"], row["character"]) for row in text_rows)
-        == {("SOFT", "V116", "∅"): 2},
-        f"Unexpected text validator findings: {text_rows}",
-    )
+    require(not text_rows, f"Unexpected text validator findings: {text_rows}")
     require(
         Counter((row["severity"], row["rule_id"]) for row in gloss_rows)
-        == {("SOFT", "V061"): 97, ("SOFT", "V064"): 1},
+        == {("SOFT", "V061"): 95, ("SOFT", "V064"): 1},
         "Gloss finding inventory changed",
     )
     require(not duplicate_original, "Unexpected original-tier duplicate findings")
@@ -167,12 +164,12 @@ def main() -> None:
     require(
         totals
         == {
-            "S": 681,
-            "W": 1768,
-            "M": 2571,
-            "FORM": 10040,
-            "PHON": 10040,
-            "TRANSL": 5038,
+            "S": 670,
+            "W": 1749,
+            "M": 2537,
+            "FORM": 9912,
+            "PHON": 4956,
+            "TRANSL": 5095,
             "AUDIO": 0,
         },
         f"Unexpected final corpus shape: {totals}",
@@ -190,35 +187,32 @@ def main() -> None:
     require(
         translation_topology
         == {
-            ("S", "untiered"): 700,
-            ("W", "original"): 1768,
-            ("M", "original"): 2570,
+            ("S", "untiered"): 720,
+            ("W", "untiered"): 1779,
+            ("M", "untiered"): 2596,
         },
         f"Unexpected translation tier ownership: {translation_topology}",
     )
     require(
         {name: len(root.findall("S")) for name, root in roots.items()}
         == {
-            "akiw_2012_sakizaya_affixes_examples.xml": 240,
-            "akiw_2012_sakizaya_affixes_summary_rows.xml": 9,
+            "akiw_2012_sakizaya_affixes_examples.xml": 238,
             "akiw_2012_sakizaya_affixes_table_rows.xml": 432,
         },
         "Final per-source XML counts changed",
     )
 
-    zero_sentence = by_id["AKIW_SZY_2012_EX_017D"]
-    zero_word = by_id["AKIW_SZY_2012_EX_017DW1"]
-    zero_null = by_id["AKIW_SZY_2012_EX_017DW1M1"]
+    reviewed_sentence = by_id["AKIW_SZY_2012_EX_017D"]
+    reviewed_word = by_id["AKIW_SZY_2012_EX_017DW1"]
     require(
-        direct_text(zero_sentence, "FORM", "original")
-        == "∅-imelang ci Taymu kiyu si-dinget."
-        and direct_text(zero_sentence, "FORM", "standard")
+        direct_text(reviewed_sentence, "FORM", "original")
+        == "imelang ci Taymu kiyu si-dinget."
+        and direct_text(reviewed_sentence, "FORM", "standard")
         == "imelang ci Taymu kiyu sidinget."
-        and direct_text(zero_word, "FORM", "original") == "∅-imelang"
-        and direct_text(zero_word, "FORM", "standard") == "∅-imelang"
-        and direct_text(zero_null, "FORM", "original") == "∅"
-        and not zero_null.findall("TRANSL"),
-        "Source-backed null-prefix representation changed",
+        and direct_text(reviewed_word, "FORM", "original") == "imelang"
+        and direct_text(reviewed_word, "FORM", "standard") == "imelang"
+        and reviewed_word.find("M") is None,
+        "Expert-reviewed imelang tier structure changed",
     )
 
     extraction_rows = read_csv(ROOT / "CodeAndDocs/extraction_report.csv")
@@ -226,12 +220,21 @@ def main() -> None:
     summary_rows = read_csv(ROOT / "CodeAndDocs/summary_table_extraction_report.csv")
     require(
         Counter(row["status"] for row in extraction_rows)
-        == {"include": 240, "excluded_exact_repeat": 12, "excluded_ungrammatical": 9},
+        == {
+            "include": 238,
+            "excluded_exact_repeat": 12,
+            "excluded_ungrammatical": 9,
+            EXPERT_REVIEW_STATUS: 2,
+        },
         "Numbered source disposition inventory changed",
     )
     require(
-        Counter(row["status"] for row in [*table_rows, *summary_rows])
-        == {"include": 441, "excluded_exact_repeat": 106},
+        Counter(row["status"] for row in table_rows)
+        == {"include": 432, "excluded_exact_repeat": 2}
+        and Counter(row["status"] for row in summary_rows)
+        == {"include": 9, "excluded_exact_repeat": 104}
+        and Counter(effective_status("summary", row) for row in summary_rows)
+        == {EXPERT_REVIEW_STATUS: 113},
         "Table source disposition inventory changed",
     )
 
@@ -266,7 +269,7 @@ def main() -> None:
     require(
         len(coverage) == 174
         and sum(int(row["source_report_rows"]) for row in coverage) == 808
-        and sum(int(row["expected_xml_rows"]) for row in coverage) == 681,
+        and sum(int(row["expected_xml_rows"]) for row in coverage) == 670,
         "Complete source coverage totals changed",
     )
 
@@ -276,7 +279,7 @@ def main() -> None:
             "severity": "SOFT",
             "rule_id": "V144",
             "location": "AKIW_SZY_2012_SAKIZAYA_AFFIXES_EXAMPLES",
-            "count": "37",
+            "count": "38",
             "status": "source_confirmed_non_actionable",
             "reason": (
                 "The thesis supplies aligned M analysis only for some words. "
@@ -284,26 +287,11 @@ def main() -> None:
             ),
         }
     ]
-    for row in text_rows:
-        adjudicated.append(
-            {
-                "validator": "validate_text",
-                "severity": row["severity"],
-                "rule_id": row["rule_id"],
-                "location": row["location"],
-                "count": row.get("count", "1"),
-                "status": "source_confirmed_non_actionable",
-                "reason": (
-                    "The canonical ∅ marker is source-backed by pages 17 and 18 and required "
-                    "at W and M under POL-012; V116 is an expected inventory notice."
-                ),
-            }
-        )
     for row in gloss_rows:
         if row["rule_id"] == "V064":
             reason = (
-                "The source identifies a null prefix but supplies only the root/whole-word gloss 生病. "
-                "The null M is preserved without inventing a gloss."
+                "Expert review removed the inherited function gloss from table row 20. "
+                "The affix M is preserved without inventing a replacement gloss."
             )
         elif "_examples.xml" in row["file"]:
             reason = (
@@ -342,6 +330,24 @@ def main() -> None:
             }
         )
 
+    for row in registry_rows:
+        if row.get("severity") != "SOFT":
+            continue
+        adjudicated.append(
+            {
+                "validator": "validate_registries",
+                "severity": row["severity"],
+                "rule_id": row["rule_id"],
+                "location": row["file"],
+                "count": row.get("count", "1"),
+                "status": "public_dependency_non_actionable",
+                "reason": (
+                    "The Seediq registry sidecar warning is in the pinned public FormosanBank "
+                    "dependency and is unrelated to this Sakizaya corpus."
+                ),
+            }
+        )
+
     cleaner_rows = read_csv(qc_dir / "cleaner_warnings.csv")
     require(
         len(cleaner_rows) == 1
@@ -369,10 +375,11 @@ def main() -> None:
         ("summary", summary_rows),
     ):
         for row in rows:
-            if row["status"] == "include":
+            status = effective_status(dataset, row)
+            if status == "include":
                 continue
             retained_id = row.get("retained_xml_id", "")
-            if row["status"] == "excluded_exact_repeat":
+            if status == "excluded_exact_repeat":
                 retained = by_id.get(retained_id)
                 require(retained is not None, f"Exact repeat lacks retained XML: {dataset} {row}")
                 require(
@@ -380,17 +387,28 @@ def main() -> None:
                     f"Exact repeat link mismatch: {dataset} {row}",
                 )
             else:
-                unit_id = (
-                    f"AKIW_SZY_2012_EX_{int(row['example']):03d}{row['subexample'].upper()}"
-                )
-                require(unit_id not in by_id and not retained_id, f"Ungrammatical exclusion leaked into XML: {row}")
+                if dataset == "numbered":
+                    unit_id = (
+                        f"AKIW_SZY_2012_EX_{int(row['example']):03d}"
+                        f"{row['subexample'].upper()}"
+                    )
+                    require(
+                        unit_id not in by_id and not retained_id,
+                        f"Reviewed numbered exclusion leaked into XML: {row}",
+                    )
+                else:
+                    unit_id = f"AKIW_SZY_2012_SUMMARY_ROW_{int(row['seq']):03d}"
+                    require(
+                        unit_id not in by_id,
+                        f"Reviewed summary exclusion leaked into XML: {row}",
+                    )
             excluded_rows.append(
                 {
                     "dataset": dataset,
                     "source_unit": (
                         f"{row['example']}{row['subexample']}" if dataset == "numbered" else row["seq"]
                     ),
-                    "status": row["status"],
+                    "status": status,
                     "source_form": row["form"],
                     "source_translation_or_meaning": row.get("translation_zho", row.get("meaning_zho", "")),
                     "source_gloss_or_context": row.get("source_gloss", row.get("source_context", "")),
@@ -399,7 +417,11 @@ def main() -> None:
             )
     require(
         Counter(row["status"] for row in excluded_rows)
-        == {"excluded_exact_repeat": 118, "excluded_ungrammatical": 9},
+        == {
+            "excluded_exact_repeat": 14,
+            "excluded_ungrammatical": 9,
+            EXPERT_REVIEW_STATUS: 115,
+        },
         "Source exclusion inventory changed",
     )
 
@@ -422,26 +444,26 @@ def main() -> None:
         ],
     )
     summary = {
-        "audit_date": "2026-08-13",
+        "audit_date": "2026-08-15",
         "basecamp_card_id": "8176965975",
         "build_deterministic": True,
         "complete_source_review_rows": 808,
         "final": {
-            "files": 3,
+            "files": 2,
             "sentences": totals["S"],
             "words": totals["W"],
             "morphemes": totals["M"],
             "original_forms": totals["FORM"] // 2,
             "standard_forms": totals["FORM"] // 2,
-            "original_phonology": totals["PHON"] // 2,
-            "standard_phonology": totals["PHON"] // 2,
+            "original_phonology": 0,
+            "standard_phonology": totals["PHON"],
             "translations": totals["TRANSL"],
             "sentence_translations_untiered": translation_topology[("S", "untiered")],
-            "word_morpheme_translations_original": (
-                translation_topology[("W", "original")]
-                + translation_topology[("M", "original")]
+            "word_morpheme_translations_original": 0,
+            "word_morpheme_translations_untiered": (
+                translation_topology[("W", "untiered")]
+                + translation_topology[("M", "untiered")]
             ),
-            "word_morpheme_translations_untiered": 0,
             "word_morpheme_translations_standard": 0,
             "audio_references": totals["AUDIO"],
             "hard_findings": 0,

@@ -7,11 +7,11 @@
 **Source orthography:** Ortho113
 **FormosanBank tooling commit:** `3a3c47c220520113f747e6a2d441494000e13c4b`
 
-This corpus contains the thesis's numbered examples, affix-inventory rows, and
-late summary or comparison-table rows. It has 681 sentence records with source
-aligned word and morpheme analyses. Source glosses are preserved as original
-gloss tiers. Nine source-starred examples are retained in the extraction ledger
-but excluded from the published XML under POL-016.
+This corpus contains the thesis's numbered examples and affix-inventory rows. It
+has 670 sentence records with source-aligned word and morpheme analyses. All 113
+late summary-table units remain in the extraction ledger but are excluded from
+release XML after expert review. Nine source-starred examples and two additional
+expert-identified ungrammatical examples are also excluded.
 
 ## Citation
 
@@ -41,29 +41,28 @@ To rebuild from source:
    ./CodeAndDocs/reproduce.sh
    ```
 
-**Stable ID scheme:** The three `TEXT` IDs identify numbered examples,
-affix-inventory rows, and summary rows. Sentence, word, and morpheme IDs are
-derived from stable source example or table-row identifiers and remain fixed
-across regeneration.
+**Stable ID scheme:** The two `TEXT` IDs identify numbered examples and
+affix-inventory rows. Sentence, word, and morpheme IDs derive from stable source
+example or table-row identifiers and remain fixed across regeneration.
 
 **POL-035 baseline evidence:** The regenerable pipeline verifies the 174-page
 source scan at SHA-256
 `fab787faf0e32cd087ba3dc222734132ad4213ca0804b8d5b32a318e66fbbbee` and
 accounts for all 808 reviewed source units.
 
-**POL-030 correction mechanism:** Source corrections, mappings, and exclusions
-are committed as CSV data under `CodeAndDocs/source_data/`. No manual-edit file
-is required.
+**POL-030 correction mechanism:** Source decisions are committed under
+`CodeAndDocs/source_data/`, and Madeline Boese's 2026-08-14 reviewed tier
+corrections are recorded in `CodeAndDocs/manual_edits.xml`.
 
 ## QC status
 
-- Last QC run: 2026-08-13
+- Last QC run: 2026-08-15
 - Status: ready to port
 - Development source: `Formosan-Sakizaya-Affixes` commit
-  `e5fbe20c07789050b6ce369815427b60bd74194c`
-- Development audit: post-remediation audit passed with verdict `ready for QC`
-- Gloss audit: passed after complete source-backed adjudication
+  `42585ef108a916a1c9f3226129fbb21c766deae7`
+- Development audit: expert-review audit passed with verdict `ready to port`
+- Gloss audit: 57 focused and 36 seeded checks passed
 - Residual warning dispositions: source-attested partial morphology, composite
-  table analyses, one unglossed null morpheme, two standard-tier convergences,
-  and source-provenanced lexical overlap with existing Sakizaya corpora
+  table analyses, one expert-reviewed unglossed affix M, one standard-tier
+  convergence group, and source-provenanced overlap with existing Sakizaya corpora
 - Audio: none

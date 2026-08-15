@@ -13,6 +13,17 @@ ROOT = Path(__file__).resolve().parents[1]
 REPORT_CSV = ROOT / "CodeAndDocs/extraction_report.csv"
 XML_PATH = ROOT / "XML/szy/akiw_2012_sakizaya_affixes_examples.xml"
 AUDIT_CSV = ROOT / "CodeAndDocs/source_alignment_audit.csv"
+MANUAL_EDITS = ROOT / "CodeAndDocs/manual_edits.xml"
+
+
+def manually_reviewed_ids() -> set[str]:
+    if not MANUAL_EDITS.exists():
+        return set()
+    return {
+        sentence.attrib["id"]
+        for sentence in ET.parse(MANUAL_EDITS).getroot().findall(".//S")
+        if sentence.attrib.get("action") != "delete"
+    }
 
 
 def example_id(example: str, subexample: str) -> str:
@@ -87,6 +98,7 @@ def read_xml_rows() -> dict[str, dict[str, str]]:
 
 def audit_rows(report_rows: list[dict[str, str]], xml_rows: dict[str, dict[str, str]]) -> list[dict[str, str]]:
     audit: list[dict[str, str]] = []
+    reviewed_ids = manually_reviewed_ids()
     for row in report_rows:
         sid = example_id(row["example"], row["subexample"])
         xml = xml_rows.get(sid)
@@ -100,9 +112,9 @@ def audit_rows(report_rows: list[dict[str, str]], xml_rows: dict[str, dict[str, 
                 f"PDF page {int(row['page'])}; example "
                 f"{int(row['example'])}{row['subexample']}"
             )
-            if xml["original"] != row["form"]:
+            if xml["original"] != row["form"] and sid not in reviewed_ids:
                 checks.append("original_mismatch")
-            if xml["phon_count"] != "2":
+            if xml["phon_count"] != "1":
                 checks.append("phon_count_mismatch")
             if xml["s_attrs"] != "id,source":
                 checks.append("nonstandard_s_attributes")
@@ -114,9 +126,16 @@ def audit_rows(report_rows: list[dict[str, str]], xml_rows: dict[str, dict[str, 
                 checks.append("w_count_mismatch")
             if xml["original_notes"] != row.get("source_judgement", ""):
                 checks.append("source_judgement_note_mismatch")
-            if row.get("translation_zho") and xml.get("zho_translation") != row["translation_zho"]:
+            if (
+                row.get("translation_zho")
+                and xml.get("zho_translation") != row["translation_zho"]
+                and sid not in reviewed_ids
+            ):
                 checks.append("translation_mismatch")
-            if xml["w_translations"] != row.get("aligned_gloss_tokens_zho", "[]"):
+            if (
+                xml["w_translations"] != row.get("aligned_gloss_tokens_zho", "[]")
+                and sid not in reviewed_ids
+            ):
                 checks.append("word_gloss_alignment_mismatch")
         audit.append(
             {
@@ -170,10 +189,10 @@ def main() -> None:
     for row in report_rows:
         if row["status"] == "include":
             continue
-        if row["status"] == "excluded_ungrammatical":
+        if row["status"] in {"excluded_ungrammatical", "excluded_expert_review"}:
             if example_id(row["example"], row["subexample"]) in xml_rows:
                 raise SystemExit(
-                    f"Source-starred row {row['example']}{row['subexample']} was not excluded"
+                    f"Excluded row {row['example']}{row['subexample']} is present in XML"
                 )
             continue
         retained = xml_rows.get(row.get("retained_xml_id", ""))

@@ -10,6 +10,8 @@ import xml.etree.ElementTree as ET
 from dataclasses import dataclass
 from pathlib import Path
 
+from review_policy import EXPERT_REVIEW_STATUS
+
 
 ROOT = Path(__file__).resolve().parents[1]
 CODE = ROOT / "CodeAndDocs"
@@ -36,6 +38,7 @@ class Check:
     judgement: str = ""
     edge_case: str = ""
     required_m_pairs: tuple[tuple[str, str], ...] = ()
+    reviewed_root_pair: tuple[str, str] = ()
 
     @property
     def source_locator(self) -> str:
@@ -44,6 +47,8 @@ class Check:
 
     @property
     def xml_id(self) -> str:
+        if self.dataset == "summary":
+            return f"AKIW_SZY_2012_SUMMARY_ROW_{int(self.unit):03d}"
         if self.retained_xml_id:
             return self.retained_xml_id
         if self.dataset == "numbered":
@@ -55,6 +60,11 @@ class Check:
 
     @property
     def theory(self) -> str:
+        if self.dataset == "summary":
+            return (
+                "The late summary dataset is retained in the source ledger but excluded "
+                "from release XML after the 2026-08-14 expert review."
+            )
         if self.status == "excluded_ungrammatical":
             return (
                 "The source-starred ungrammatical example is preserved in the source ledger "
@@ -79,6 +89,12 @@ class Check:
             "The source affixed form and full meaning map to S/W; the printed affix/function "
             "and root/meaning analysis maps to two M tiers."
         )
+
+    @property
+    def release_status(self) -> str:
+        if self.dataset == "summary":
+            return EXPERT_REVIEW_STATUS
+        return self.status
 
 
 # Seeded, stratified selection made before transcription. The first 30 cases
@@ -123,7 +139,7 @@ CHECKS = (
     Check("inventory", "287", 126, "paluma-an", "種的地方", affix_pair=("-an", "處所或地方"), root_pair=("paluma", "種")),
     Check("inventory", "319", 136, "amis-ay", "北方的", affix_pair=("-ay", "狀態或性質"), root_pair=("amis", "北")),
     Check("inventory", "328", 137, "tanaya'-ay", "長的", affix_pair=("-ay", "狀態或性質"), root_pair=("tanaya'", "長")),
-    Check("inventory", "360", 144, "ka-si-lupas-an", "水蜜桃產期", affix_pair=("ka-si-...-an", "特定的時間"), root_pair=("lupas", "桃子、水蜜桃")),
+    Check("inventory", "360", 144, "ka-si-lupas-an", "水蜜桃產期", affix_pair=("ka-si-...-an", "特定的時間"), root_pair=("lupas", "桃子、水蜜桃"), reviewed_root_pair=("lupas", "桃子")),
     Check("summary", "435", 157, "hali-emu", "愛吃年糕", status="excluded_exact_repeat", retained_xml_id="AKIW_SZY_2012_TABLE_ROW_241"),
     Check("summary", "460", 159, "imelang-ay", "病人", status="excluded_exact_repeat", retained_xml_id="AKIW_SZY_2012_TABLE_ROW_305"),
     Check("summary", "466", 160, "pi-nanum", "要喝水！", status="excluded_exact_repeat", retained_xml_id="AKIW_SZY_2012_TABLE_ROW_162"),
@@ -297,7 +313,8 @@ def xml_checks(check: Check, actual: dict[str, object]) -> list[str]:
     elif check.status == "include":
         if actual["w_originals"] != (check.form,):
             failures.append("XML W original FORM")
-        if actual["m_pairs"] != (check.affix_pair, check.root_pair):
+        expected_root = check.reviewed_root_pair or check.root_pair
+        if actual["m_pairs"] != (check.affix_pair, expected_root):
             failures.append("XML affix/root M pairs")
     return failures
 
@@ -315,9 +332,9 @@ def run_checks() -> list[dict[str, str]]:
         report = reports.get((check.dataset, check.unit))
         failures = ["source report row missing"] if report is None else source_report_checks(check, report)
         actual = actual_rows.get(check.xml_id)
-        if check.status == "excluded_ungrammatical":
+        if check.release_status in {"excluded_ungrammatical", EXPERT_REVIEW_STATUS}:
             if actual is not None:
-                failures.append("excluded source-starred XML row present")
+                failures.append("excluded XML row present")
         elif actual is None:
             failures.append("retained/generated XML row missing")
         else:
@@ -331,7 +348,7 @@ def run_checks() -> list[dict[str, str]]:
                 "source_form": check.form,
                 "source_translation_or_meaning": check.meaning,
                 "mapping_theory": check.theory,
-                "expected_disposition": check.status,
+                "expected_disposition": check.release_status,
                 "actual_xml_id": check.xml_id,
                 "edge_case_or_remediation": check.edge_case,
                 "status": "pass" if not failures else "fail",

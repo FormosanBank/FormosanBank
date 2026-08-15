@@ -4,11 +4,14 @@
 from __future__ import annotations
 
 import csv
+from functools import cache
 import hashlib
 import json
 import re
 import xml.etree.ElementTree as ET
 from pathlib import Path
+
+from review_policy import EXPERT_REVIEW_STATUS, effective_status
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -27,7 +30,8 @@ REPORTS = (
     ("late", CODE / "summary_table_extraction_report.csv"),
 )
 EXPECTED_SOURCE_COUNTS = {"numbered": 261, "inventory": 434, "late": 113}
-EXPECTED_INCLUDED_COUNTS = {"numbered": 240, "inventory": 432, "late": 9}
+EXPECTED_INCLUDED_COUNTS = {"numbered": 238, "inventory": 432, "late": 0}
+MANUAL_EDITS = CODE / "manual_edits.xml"
 
 # These six long examples wrap across independent OCR regions. Their source
 # forms and interlinear alignment were adjudicated directly from the page image.
@@ -157,6 +161,15 @@ def read_xml() -> dict[str, dict[str, object]]:
     return rows
 
 
+@cache
+def manually_reviewed_ids() -> set[str]:
+    return {
+        sentence.attrib["id"]
+        for sentence in ET.parse(MANUAL_EDITS).getroot().findall(".//S")
+        if sentence.attrib.get("action") != "delete"
+    }
+
+
 def audit_row(
     kind: str,
     row: dict[str, str],
@@ -166,9 +179,14 @@ def audit_row(
     unit = source_unit(kind, row)
     page = int(row["page"])
     form = row["form"]
-    status = row["status"]
-    xml_id = expected_xml_id(kind, row) if status == "include" else row["retained_xml_id"]
+    status = effective_status(kind, row)
+    xml_id = (
+        expected_xml_id(kind, row)
+        if status == "include"
+        else row["retained_xml_id"] if status == "excluded_exact_repeat" else ""
+    )
     xml = xml_rows.get(xml_id)
+    reviewed_ids = manually_reviewed_ids()
     checks: list[str] = []
     notes: list[str] = []
 
@@ -186,7 +204,12 @@ def audit_row(
         latin_score = "0.000"
         checks.append("form_not_found_in_original_page_evidence")
 
-    if status not in {"include", "excluded_exact_repeat", "excluded_ungrammatical"}:
+    if status not in {
+        "include",
+        "excluded_exact_repeat",
+        "excluded_ungrammatical",
+        EXPERT_REVIEW_STATUS,
+    }:
         checks.append("unsupported_disposition")
     if not (1 <= page <= 174):
         checks.append("page_out_of_range")
@@ -210,15 +233,15 @@ def audit_row(
         if len(aligned) != len(row["word_form"].split()):
             checks.append("word_gloss_alignment_count_mismatch")
 
-    if status == "excluded_ungrammatical":
+    if status in {"excluded_ungrammatical", EXPERT_REVIEW_STATUS}:
         if xml_id:
-            checks.append("excluded_ungrammatical_has_retained_xml_link")
+            checks.append("excluded_row_has_retained_xml_link")
         if expected_xml_id(kind, row) in xml_rows:
-            checks.append("excluded_ungrammatical_present_in_xml")
+            checks.append("excluded_row_present_in_xml")
     elif xml is None:
         checks.append("xml_target_missing")
     else:
-        if xml["original"] != form:
+        if xml["original"] != form and xml_id not in reviewed_ids:
             checks.append("xml_original_mismatch")
         if status == "include":
             if xml["source"] != expected_locator(kind, row):
@@ -234,11 +257,14 @@ def audit_row(
             expected_translation = (
                 row["translation_zho"] if kind == "numbered" else row["meaning_zho"]
             )
-            if primary != expected_translation:
+            if primary != expected_translation and xml_id not in reviewed_ids:
                 checks.append("xml_primary_translation_mismatch")
             if kind == "numbered" and not row["source_judgement"]:
                 expected_glosses = json.loads(row["aligned_gloss_tokens_zho"])
-                if xml["word_glosses"] != expected_glosses:
+                if (
+                    xml["word_glosses"] != expected_glosses
+                    and xml_id not in reviewed_ids
+                ):
                     checks.append("xml_word_gloss_mismatch")
             if kind == "numbered":
                 if xml["original_notes"] != row["source_judgement"]:
@@ -254,8 +280,10 @@ def audit_row(
         disposition = "included"
     elif status == "excluded_exact_repeat":
         disposition = f"excluded exact repeat; retained as {xml_id}"
-    else:
+    elif status == "excluded_ungrammatical":
         disposition = "excluded source-starred ungrammatical example under POL-016"
+    else:
+        disposition = "excluded after expert review; not admitted to release XML"
     return {
         "source_kind": kind,
         "source_unit": unit,
@@ -294,7 +322,7 @@ def main() -> None:
             global_errors.append(
                 f"{kind} source count is {len(report_rows)}, expected {EXPECTED_SOURCE_COUNTS[kind]}"
             )
-        include_count = sum(row["status"] == "include" for row in report_rows)
+        include_count = sum(effective_status(kind, row) == "include" for row in report_rows)
         if include_count != EXPECTED_INCLUDED_COUNTS[kind]:
             global_errors.append(
                 f"{kind} include count is {include_count}, expected {EXPECTED_INCLUDED_COUNTS[kind]}"
@@ -304,7 +332,7 @@ def main() -> None:
             if unit in used_units:
                 global_errors.append(f"Duplicate source unit: {unit}")
             used_units.add(unit)
-            if row["status"] == "include":
+            if effective_status(kind, row) == "include":
                 expected_xml_ids.add(expected_xml_id(kind, row))
             rows.append(audit_row(kind, row, page_evidence, xml_rows))
 
@@ -314,8 +342,8 @@ def main() -> None:
         global_errors.append("Late-table row sequence is not exactly 435-547")
     if len(rows) != 808:
         global_errors.append(f"Source unit total is {len(rows)}, expected 808")
-    if len(expected_xml_ids) != 681:
-        global_errors.append(f"Expected XML ID total is {len(expected_xml_ids)}, expected 681")
+    if len(expected_xml_ids) != 670:
+        global_errors.append(f"Expected XML ID total is {len(expected_xml_ids)}, expected 670")
     if set(xml_rows) != expected_xml_ids:
         missing = sorted(expected_xml_ids - set(xml_rows))
         extra = sorted(set(xml_rows) - expected_xml_ids)
