@@ -96,35 +96,37 @@ def is_stale(current_t_count: int, current_u_count: int, entry: dict | None) -> 
 
 def upsert_audio_durations(stats_dir: Path, corpus: str, rows: list, computed_at: str) -> Path:
     """Replace all rows for `corpus` with `rows`; keep other corpora. Sorted write."""
-    existing = load_audio_durations(stats_dir)
-    # Drop this corpus's existing rows, then add the new ones.
-    merged = {k: v for k, v in existing.items() if k[0] != corpus}
+    path = audio_durations_path(stats_dir)
+    merged = []
+    if path.is_file():
+        with open(path, newline="", encoding="utf-8") as f:
+            merged.extend(
+                row for row in csv.DictReader(f)
+                if row.get("corpus", "") != corpus
+            )
+
     for r in rows:
-        key = (corpus, r["language"], _canonical_dialect(r["dialect"]))
-        merged[key] = {
-            "transcribed_audio_seconds": float(r["transcribed_audio_seconds"]),
-            "untranscribed_audio_seconds": float(r["untranscribed_audio_seconds"]),
+        merged.append({
+            "corpus": corpus,
+            "language": r["language"],
+            "dialect": _canonical_dialect(r["dialect"]),
+            "transcribed_audio_seconds": round(float(r["transcribed_audio_seconds"]), 1),
+            "untranscribed_audio_seconds": round(float(r["untranscribed_audio_seconds"]), 1),
             "transcribed_audio_count": r["transcribed_audio_count"],
             "untranscribed_audio_count": r["untranscribed_audio_count"],
             "computed_at": computed_at,
-        }
-    path = audio_durations_path(stats_dir)
+        })
+
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=AUDIO_DURATIONS_HEADER)
         writer.writeheader()
-        for corpus_name, language, dialect in sorted(merged):
-            entry = merged[(corpus_name, language, dialect)]
-            writer.writerow({
-                "corpus": corpus_name, "language": language, "dialect": dialect,
-                "transcribed_audio_seconds": round(entry["transcribed_audio_seconds"], 1),
-                "untranscribed_audio_seconds": round(entry["untranscribed_audio_seconds"], 1),
-                "transcribed_audio_count": ""
-                if entry["transcribed_audio_count"] is None
-                else entry["transcribed_audio_count"],
-                "untranscribed_audio_count": ""
-                if entry["untranscribed_audio_count"] is None
-                else entry["untranscribed_audio_count"],
-                "computed_at": entry["computed_at"],
-            })
+        writer.writerows(sorted(
+            merged,
+            key=lambda row: (
+                row.get("corpus", ""),
+                row.get("language", ""),
+                _canonical_dialect(row.get("dialect")),
+            ),
+        ))
     return path
