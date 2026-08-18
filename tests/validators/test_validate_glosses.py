@@ -117,6 +117,16 @@ def test_V060_no_FORM_at_all_emits_nothing():
     assert findings == [], f"expected no V060 finding; got {findings!r}"
 
 
+def test_V060_unsegmented_sentence_emits_nothing():
+    """S with FORM but no W tier is outside V060's scope."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">a b c</FORM>
+      </S>""")
+    findings = _findings_for(gloss_rules.v060_W_count_matches_word_count, xml)
+    assert findings == [], f"expected no V060 finding; got {findings!r}"
+
+
 # ---------------------------------------------------------------------------
 # V061: M-count vs. implied-morpheme-count (SOFT)
 # ---------------------------------------------------------------------------
