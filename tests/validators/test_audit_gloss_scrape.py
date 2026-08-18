@@ -117,6 +117,16 @@ def test_gloss_units_counts_infix_plus_segments():
     assert gloss_scrape._gloss_units("car") == 1
 
 
+def test_cjk_object_placeholder_tilde_is_not_segmentation():
+    xml = """<TEXT><S id="s"><W id="w">
+        <FORM kindOf="original">Lepelen</FORM>
+        <TRANSL kindOf="original" xml:lang="zho">把~抓住</TRANSL>
+    </W></S></TEXT>"""
+    assert _run(gloss_scrape.g001_marker_skeleton_parity, xml) == []
+    assert _run(gloss_scrape.g002_M_count_matches_gloss_units, xml) == []
+    assert gloss_scrape._gloss_units("CAU~walk") == 2
+
+
 def test_edit_distance_le_1():
     assert gloss_scrape._edit_distance_le_1("NCM", "NOM")
     assert gloss_scrape._edit_distance_le_1("NOM", "NOMS")
