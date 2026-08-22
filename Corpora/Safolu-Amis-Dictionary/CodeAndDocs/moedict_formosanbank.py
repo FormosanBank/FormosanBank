@@ -36,6 +36,16 @@ FORM_ORIGINAL_ATTR = {"kindOf": "original"}
 class Translation:
     lang: str
     text: str
+    notes: str | None = None
+    ver: str | None = None
+
+    def to_metadata(self) -> dict[str, str]:
+        payload = {"lang": self.lang, "text": self.text}
+        if self.notes:
+            payload["notes"] = self.notes
+        if self.ver:
+            payload["ver"] = self.ver
+        return payload
 
 
 @dataclass(frozen=True)
@@ -52,7 +62,7 @@ class ExampleRecord:
 
     def to_metadata(self) -> dict[str, Any]:
         payload = asdict(self)
-        payload["translations"] = [asdict(translation) for translation in self.translations]
+        payload["translations"] = [translation.to_metadata() for translation in self.translations]
         return payload
 
 
@@ -67,11 +77,8 @@ class Corpus:
     glottocode: str
     extraction_note: str
     source_repositories: dict[str, str]
-    # FormosanBank requires TEXT/@dialect (validate_xml V036). Amis is a
-    # multi-dialect language and these dictionaries do not record a single
-    # source dialect, so we emit the schema-sanctioned "unknown" sentinel.
-    # A maintainer should refine this during QC (e.g. via the dialect
-    # detector) before the corpus is ported into FormosanBank/Corpora/.
+    # FormosanBank requires TEXT/@dialect (validate_xml V036). "unknown" is the
+    # honest default; individual corpora can set a documented source dialect.
     dialect: str = "unknown"
 
 
@@ -89,6 +96,8 @@ def git_commit(path: Path) -> str:
 
 
 def relative_to_root(path: Path) -> str:
+    if "_sources" in path.parts:
+        return str(Path(*path.parts[path.parts.index("_sources") :]))
     try:
         return str(path.resolve().relative_to(ROOT))
     except ValueError:
@@ -178,7 +187,12 @@ def build_text_tree(corpus: Corpus, records: list[ExampleRecord]) -> ET.ElementT
         sentence = ET.SubElement(root, "S", {"id": record.sentence_id})
         ET.SubElement(sentence, "FORM", FORM_ORIGINAL_ATTR).text = record.form
         for translation in record.translations:
-            ET.SubElement(sentence, "TRANSL", {f"{{{XML_NS}}}lang": translation.lang}).text = translation.text
+            attributes = {f"{{{XML_NS}}}lang": translation.lang}
+            if translation.notes:
+                attributes["notes"] = translation.notes
+            if translation.ver:
+                attributes["ver"] = translation.ver
+            ET.SubElement(sentence, "TRANSL", attributes).text = translation.text
 
     ET.indent(root, space="  ")
     return ET.ElementTree(root)
@@ -199,6 +213,7 @@ def write_metadata(
     payload = {
         "text_id": corpus.text_id,
         "language": {"iso_639_3": "ami", "glottocode": corpus.glottocode},
+        "dialect": corpus.dialect,
         "translation_languages": sorted({translation.lang for record in records for translation in record.translations}),
         "source": corpus.source,
         "citation": corpus.citation,
