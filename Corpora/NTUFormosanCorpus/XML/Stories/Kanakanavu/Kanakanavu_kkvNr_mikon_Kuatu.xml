@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <TEXT id="NTU_Stry_Kanakanavu_kkvNr_mikon_Kuatu" xml:lang="xnb" source="NTU Corpus stories for Kanakanavu, story: kkvNr_mikon_Kuatu" audio="diarized" copyright="CC BY-NC" citation="Sung, L. M., Lily, I., Hsieh, F., &amp; Lin, Z. (2008). Developing an online corpus of Formosan languages. Taiwan Journal of Linguistics, 6(2.)." BibTeX_citation="@article{sung2008developing,title={Developing an online corpus of Formosan languages.},author={Sung, Li-May and Lily, I and Hsieh, Fuhui and Lin, Zhemin and others},journal={Taiwan Journal of Linguistics},volume={6},number={2},year={2008}}" dialect="Kanakanavu">
     <S id="kkvNr_mikon_Kuatu_S_0">
-        <FORM kindOf="original">nuten mikon mikon ia er aranaicuku na Nʉ'ʉvana mosa na Tanganua kanakana'uamaku Miciku rovʉvʉ.</FORM>
-        <PHON kindOf="original">nuten mikon mikon ia er~ɾ ar~ɾanaiʦuku na nɨʔɨvana mosa na taŋanua kanakanaʔuamaku miʦiku r~ɾovɨvɨ.</PHON>
+        <FORM kindOf="original" notes="source note: nuten為noo ten的簡化，意為「若要」。 | source note: 發音老師將「米貢」的重音拉長而成mikon。 | source note: 米貢時，要將新的小米獻給祖先、上天跟小矮人等等。Kanakanavu將小矮人稱作Tapcarake，很愛做農事，但愛搗蛋。 | source note: 發音人只有一個姊姊PaicU，因此這裡的kana'ua解為「姊姊」。 | source note: Miciku為日文，意為「道子」(Michiko)。根據發音老師，此為PaicU的日文名字。 | source note: rovʉvʉ這裡解為「拜訪」，但發音老師說此字本來為「走走」、「作客」、「聊聊」等意思。">nuten mikon mikon ia er aranaicuku na Nʉ'ʉvana mosa na Tanganua kanakana'uamaku Miciku rovʉvʉ.</FORM>
+        <PHON kindOf="original">nuten mikon mikon ia e[r|ɾ] a[r|ɾ]anaiʦuku na nɨʔɨvana mosa na taŋanua kanakanaʔuamaku miʦiku [r|ɾ]ovɨvɨ</PHON>
         <FORM kindOf="standard">nuten mikon mikon ia er aranaicuku na Nʉ'ʉvana mosa na Tanganua kanakana'uamaku Miciku rovʉvʉ.</FORM>
-        <PHON kindOf="standard">nuten mikon mikon ia er~ɾ ar~ɾanaiʦuku na nɨʔɨvana mosa na taŋanua kanakanaʔuamaku miʦiku r~ɾovɨvɨ.</PHON>
+        <PHON kindOf="standard">nuten mikon mikon ia e[r|ɾ] a[r|ɾ]anaiʦuku na nɨʔɨvana mosa na taŋanua kanakanaʔuamaku miʦiku [r|ɾ]ovɨvɨ</PHON>
         <TRANSL xml:lang="zho">若要米貢的時候,我就從瑪雅里去達卡努瓦里去拜訪我姊姊Miciku.</TRANSL>
         <TRANSL xml:lang="eng">During the rice ceremony, I went from NU'Uvana to Tanganua to visit my older sister Miciku.</TRANSL>
         <AUDIO file="kkvNr_mikon_Kuatu_S0.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_mikon_Kuatu.mp3" start="0.0" end="13.34"/>
@@ -13,15 +13,15 @@
             <PHON kindOf="original">nuten</PHON>
             <FORM kindOf="standard">nuten</FORM>
             <PHON kindOf="standard">nuten</PHON>
-            <TRANSL xml:lang="zho">若要</TRANSL>
-            <TRANSL xml:lang="eng">if</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">若要</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">if</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_0_W0M1">
                 <FORM kindOf="original">nuten</FORM>
                 <PHON kindOf="original">nuten</PHON>
                 <FORM kindOf="standard">nuten</FORM>
                 <PHON kindOf="standard">nuten</PHON>
-                <TRANSL xml:lang="eng">if</TRANSL>
-                <TRANSL xml:lang="zho">若要</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">if</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">若要</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_0_W1">
@@ -29,15 +29,15 @@
             <PHON kindOf="original">mikon</PHON>
             <FORM kindOf="standard">mikon</FORM>
             <PHON kindOf="standard">mikon</PHON>
-            <TRANSL xml:lang="zho">米貢</TRANSL>
-            <TRANSL xml:lang="eng">rice.ceremony</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">米貢</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">rice.ceremony</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_0_W1M1">
                 <FORM kindOf="original">mikon</FORM>
                 <PHON kindOf="original">mikon</PHON>
                 <FORM kindOf="standard">mikon</FORM>
                 <PHON kindOf="standard">mikon</PHON>
-                <TRANSL xml:lang="eng">rice.ceremony</TRANSL>
-                <TRANSL xml:lang="zho">米貢</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">rice.ceremony</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">米貢</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_0_W2">
@@ -45,15 +45,15 @@
             <PHON kindOf="original">mikon</PHON>
             <FORM kindOf="standard">mikon</FORM>
             <PHON kindOf="standard">mikon</PHON>
-            <TRANSL xml:lang="zho">米貢</TRANSL>
-            <TRANSL xml:lang="eng">rice.ceremony</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">米貢</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">rice.ceremony</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_0_W2M1">
                 <FORM kindOf="original">mikon</FORM>
                 <PHON kindOf="original">mikon</PHON>
                 <FORM kindOf="standard">mikon</FORM>
                 <PHON kindOf="standard">mikon</PHON>
-                <TRANSL xml:lang="eng">rice.ceremony</TRANSL>
-                <TRANSL xml:lang="zho">米貢</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">rice.ceremony</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">米貢</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_0_W3">
@@ -61,63 +61,63 @@
             <PHON kindOf="original">ia</PHON>
             <FORM kindOf="standard">ia</FORM>
             <PHON kindOf="standard">ia</PHON>
-            <TRANSL xml:lang="zho">主題</TRANSL>
-            <TRANSL xml:lang="eng">TOP</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_0_W3M1">
                 <FORM kindOf="original">ia</FORM>
                 <PHON kindOf="original">ia</PHON>
                 <FORM kindOf="standard">ia</FORM>
                 <PHON kindOf="standard">ia</PHON>
-                <TRANSL xml:lang="eng">TOP</TRANSL>
-                <TRANSL xml:lang="zho">主題</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_0_W4">
             <FORM kindOf="original">er</FORM>
-            <PHON kindOf="original">er~ɾ</PHON>
+            <PHON kindOf="original">e[r|ɾ]</PHON>
             <FORM kindOf="standard">er</FORM>
-            <PHON kindOf="standard">er~ɾ</PHON>
-            <TRANSL xml:lang="zho">FIL</TRANSL>
-            <TRANSL xml:lang="eng">FIL</TRANSL>
+            <PHON kindOf="standard">e[r|ɾ]</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_0_W4M1">
                 <FORM kindOf="original">er</FORM>
-                <PHON kindOf="original">er~ɾ</PHON>
+                <PHON kindOf="original">e[r|ɾ]</PHON>
                 <FORM kindOf="standard">er</FORM>
-                <PHON kindOf="standard">er~ɾ</PHON>
-                <TRANSL xml:lang="eng">FIL</TRANSL>
-                <TRANSL xml:lang="zho">FIL</TRANSL>
+                <PHON kindOf="standard">e[r|ɾ]</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_0_W5">
             <FORM kindOf="original">aranai=cu=ku</FORM>
-            <PHON kindOf="original">ar~ɾanai=ʦu=ku</PHON>
+            <PHON kindOf="original">a[r|ɾ]anaiʦuku</PHON>
             <FORM kindOf="standard">aranai=cu=ku</FORM>
-            <PHON kindOf="standard">ar~ɾanai=ʦu=ku</PHON>
-            <TRANSL xml:lang="zho">從.主焦=狀態改變=1SG.主格</TRANSL>
-            <TRANSL xml:lang="eng">from.AF=COS=1SG.NOM</TRANSL>
+            <PHON kindOf="standard">a[r|ɾ]anaiʦuku</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">從.主焦=狀態改變=1SG.主格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">from.AF=COS=1SG.NOM</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_0_W5M1">
                 <FORM kindOf="original">aranai</FORM>
-                <PHON kindOf="original">ar~ɾanai</PHON>
+                <PHON kindOf="original">a[r|ɾ]anai</PHON>
                 <FORM kindOf="standard">aranai</FORM>
-                <PHON kindOf="standard">ar~ɾanai</PHON>
-                <TRANSL xml:lang="eng">from.AF</TRANSL>
-                <TRANSL xml:lang="zho">從.主焦</TRANSL>
+                <PHON kindOf="standard">a[r|ɾ]anai</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">from.AF</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">從.主焦</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_0_W5M2">
-                <FORM kindOf="original">cu</FORM>
+                <FORM kindOf="original">=cu</FORM>
                 <PHON kindOf="original">ʦu</PHON>
-                <FORM kindOf="standard">cu</FORM>
+                <FORM kindOf="standard">=cu</FORM>
                 <PHON kindOf="standard">ʦu</PHON>
-                <TRANSL xml:lang="eng">COS</TRANSL>
-                <TRANSL xml:lang="zho">狀態改變</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">狀態改變</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_0_W5M3">
-                <FORM kindOf="original">ku</FORM>
+                <FORM kindOf="original">=ku</FORM>
                 <PHON kindOf="original">ku</PHON>
-                <FORM kindOf="standard">ku</FORM>
+                <FORM kindOf="standard">=ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
-                <TRANSL xml:lang="eng">1SG.NOM</TRANSL>
-                <TRANSL xml:lang="zho">1SG.主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1SG.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1SG.主格</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_0_W6">
@@ -125,15 +125,15 @@
             <PHON kindOf="original">na</PHON>
             <FORM kindOf="standard">na</FORM>
             <PHON kindOf="standard">na</PHON>
-            <TRANSL xml:lang="zho">處格</TRANSL>
-            <TRANSL xml:lang="eng">LOC</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_0_W6M1">
                 <FORM kindOf="original">na</FORM>
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="eng">LOC</TRANSL>
-                <TRANSL xml:lang="zho">處格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_0_W7">
@@ -141,39 +141,39 @@
             <PHON kindOf="original">nɨʔɨvana</PHON>
             <FORM kindOf="standard">Nʉ'ʉvana</FORM>
             <PHON kindOf="standard">nɨʔɨvana</PHON>
-            <TRANSL xml:lang="zho">瑪雅里</TRANSL>
-            <TRANSL xml:lang="eng">Nʉ'ʉvana</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">瑪雅里</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">Nʉ'ʉvana</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_0_W7M1">
                 <FORM kindOf="original">Nʉ'ʉvana</FORM>
                 <PHON kindOf="original">nɨʔɨvana</PHON>
                 <FORM kindOf="standard">Nʉ'ʉvana</FORM>
                 <PHON kindOf="standard">nɨʔɨvana</PHON>
-                <TRANSL xml:lang="eng">Nʉ'ʉvana</TRANSL>
-                <TRANSL xml:lang="zho">瑪雅里</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">Nʉ'ʉvana</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">瑪雅里</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_0_W8">
             <FORM kindOf="original">m-osa</FORM>
-            <PHON kindOf="original">m-osa</PHON>
+            <PHON kindOf="original">mosa</PHON>
             <FORM kindOf="standard">m-osa</FORM>
-            <PHON kindOf="standard">m-osa</PHON>
-            <TRANSL xml:lang="zho">主焦-去</TRANSL>
-            <TRANSL xml:lang="eng">AF-go</TRANSL>
+            <PHON kindOf="standard">mosa</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">主焦-去</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">AF-go</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_0_W8M1">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="eng">AF</TRANSL>
-                <TRANSL xml:lang="zho">主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_0_W8M2">
                 <FORM kindOf="original">osa</FORM>
                 <PHON kindOf="original">osa</PHON>
                 <FORM kindOf="standard">osa</FORM>
                 <PHON kindOf="standard">osa</PHON>
-                <TRANSL xml:lang="eng">go</TRANSL>
-                <TRANSL xml:lang="zho">去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">go</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">去</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_0_W9">
@@ -181,15 +181,15 @@
             <PHON kindOf="original">na</PHON>
             <FORM kindOf="standard">na</FORM>
             <PHON kindOf="standard">na</PHON>
-            <TRANSL xml:lang="zho">處格</TRANSL>
-            <TRANSL xml:lang="eng">LOC</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_0_W9M1">
                 <FORM kindOf="original">na</FORM>
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="eng">LOC</TRANSL>
-                <TRANSL xml:lang="zho">處格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_0_W10">
@@ -197,47 +197,47 @@
             <PHON kindOf="original">taŋanua</PHON>
             <FORM kindOf="standard">Tanganua</FORM>
             <PHON kindOf="standard">taŋanua</PHON>
-            <TRANSL xml:lang="zho">達卡努瓦里</TRANSL>
-            <TRANSL xml:lang="eng">Tanganua</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">達卡努瓦里</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">Tanganua</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_0_W10M1">
                 <FORM kindOf="original">Tanganua</FORM>
                 <PHON kindOf="original">taŋanua</PHON>
                 <FORM kindOf="standard">Tanganua</FORM>
                 <PHON kindOf="standard">taŋanua</PHON>
-                <TRANSL xml:lang="eng">Tanganua</TRANSL>
-                <TRANSL xml:lang="zho">達卡努瓦里</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">Tanganua</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">達卡努瓦里</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_0_W11">
             <FORM kindOf="original">kana-kana'ua=maku</FORM>
-            <PHON kindOf="original">kana-kanaʔua=maku</PHON>
+            <PHON kindOf="original">kanakanaʔuamaku</PHON>
             <FORM kindOf="standard">kana-kana'ua=maku</FORM>
-            <PHON kindOf="standard">kana-kanaʔua=maku</PHON>
-            <TRANSL xml:lang="zho">重疊-哥哥或姐姐=1SG.屬格</TRANSL>
-            <TRANSL xml:lang="eng">RED-older.sibling=1SG.GEN</TRANSL>
+            <PHON kindOf="standard">kanakanaʔuamaku</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">重疊-哥哥或姐姐=1SG.屬格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">RED-older.sibling=1SG.GEN</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_0_W11M1">
                 <FORM kindOf="original">kana</FORM>
                 <PHON kindOf="original">kana</PHON>
                 <FORM kindOf="standard">kana</FORM>
                 <PHON kindOf="standard">kana</PHON>
-                <TRANSL xml:lang="eng">RED</TRANSL>
-                <TRANSL xml:lang="zho">重疊</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">重疊</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_0_W11M2">
                 <FORM kindOf="original">kana'ua</FORM>
                 <PHON kindOf="original">kanaʔua</PHON>
                 <FORM kindOf="standard">kana'ua</FORM>
                 <PHON kindOf="standard">kanaʔua</PHON>
-                <TRANSL xml:lang="eng">older.sibling</TRANSL>
-                <TRANSL xml:lang="zho">哥哥或姐姐</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">older.sibling</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">哥哥或姐姐</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_0_W11M3">
-                <FORM kindOf="original">maku</FORM>
+                <FORM kindOf="original">=maku</FORM>
                 <PHON kindOf="original">maku</PHON>
-                <FORM kindOf="standard">maku</FORM>
+                <FORM kindOf="standard">=maku</FORM>
                 <PHON kindOf="standard">maku</PHON>
-                <TRANSL xml:lang="eng">1SG.GEN</TRANSL>
-                <TRANSL xml:lang="zho">1SG.屬格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1SG.GEN</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1SG.屬格</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_0_W12">
@@ -245,104 +245,104 @@
             <PHON kindOf="original">miʦiku</PHON>
             <FORM kindOf="standard">Miciku</FORM>
             <PHON kindOf="standard">miʦiku</PHON>
-            <TRANSL xml:lang="zho">Miciku</TRANSL>
-            <TRANSL xml:lang="eng">Miciku</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">Miciku</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">Miciku</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_0_W12M1">
                 <FORM kindOf="original">Miciku</FORM>
                 <PHON kindOf="original">miʦiku</PHON>
                 <FORM kindOf="standard">Miciku</FORM>
                 <PHON kindOf="standard">miʦiku</PHON>
-                <TRANSL xml:lang="eng">Miciku</TRANSL>
-                <TRANSL xml:lang="zho">Miciku</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">Miciku</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">Miciku</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_0_W13">
             <FORM kindOf="original">rovʉvʉ</FORM>
-            <PHON kindOf="original">r~ɾovɨvɨ</PHON>
+            <PHON kindOf="original">[r|ɾ]ovɨvɨ</PHON>
             <FORM kindOf="standard">rovʉvʉ</FORM>
-            <PHON kindOf="standard">r~ɾovɨvɨ</PHON>
-            <TRANSL xml:lang="zho">拜訪.主焦</TRANSL>
-            <TRANSL xml:lang="eng">visit.AF</TRANSL>
+            <PHON kindOf="standard">[r|ɾ]ovɨvɨ</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">拜訪.主焦</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">visit.AF</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_0_W13M1">
                 <FORM kindOf="original">rovʉvʉ</FORM>
-                <PHON kindOf="original">r~ɾovɨvɨ</PHON>
+                <PHON kindOf="original">[r|ɾ]ovɨvɨ</PHON>
                 <FORM kindOf="standard">rovʉvʉ</FORM>
-                <PHON kindOf="standard">r~ɾovɨvɨ</PHON>
-                <TRANSL xml:lang="eng">visit.AF</TRANSL>
-                <TRANSL xml:lang="zho">拜訪.主焦</TRANSL>
+                <PHON kindOf="standard">[r|ɾ]ovɨvɨ</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">visit.AF</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">拜訪.主焦</TRANSL>
             </M>
         </W>
     </S>
     <S id="kkvNr_mikon_Kuatu_S_1">
-        <FORM kindOf="original">a tekia matipa 'inia putukikio tia kamanʉng pepe er cunuku tipi.</FORM>
-        <PHON kindOf="original">a tekia matipa ʔinia putukikio tia kamanɨŋ pepe er~ɾ ʦunuku tipi.</PHON>
+        <FORM kindOf="original" notes="source note: 比較：pepe指的是純糯米的麻糬，不加其他配料；cunuku除了糯米以外，再加上地瓜或青椒等舂搗而成；tipi則為地瓜糯米飯，未經舂搗。">a tekia matipa 'inia putukikio tia kamanʉng pepe er cunuku tipi.</FORM>
+        <PHON kindOf="original">a tekia matipa ʔinia putukikio tia kamanɨŋ pepe e[r|ɾ] ʦunuku tipi</PHON>
         <FORM kindOf="standard">a tekia matipa 'inia putukikio tia kamanʉng pepe er cunuku tipi.</FORM>
-        <PHON kindOf="standard">a tekia matipa ʔinia putukikio tia kamanɨŋ pepe er~ɾ ʦunuku tipi.</PHON>
-        <TRANSL xml:lang="zho" notes="我要參加她(們)的工作,要做pepe、cunuku和tipi.">我要參加她 的工作,要做pepe、cunuku和tipi.</TRANSL>
-        <TRANSL xml:lang="eng" notes="I had to take part in her (their) work, and had to do pepe, cunuku and tipi.">I had to take part in her work, and had to do pepe, cunuku and tipi.</TRANSL>
+        <PHON kindOf="standard">a tekia matipa ʔinia putukikio tia kamanɨŋ pepe e[r|ɾ] ʦunuku tipi</PHON>
+        <TRANSL xml:lang="zho">我要參加她(們)的工作,要做pepe、cunuku和tipi.</TRANSL>
+        <TRANSL xml:lang="eng">I had to take part in her (their) work, and had to do pepe, cunuku and tipi.</TRANSL>
         <AUDIO file="kkvNr_mikon_Kuatu_S1.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_mikon_Kuatu.mp3" start="13.34" end="25.36"/>
         <W id="kkvNr_mikon_Kuatu_S_1_W0">
             <FORM kindOf="original">a</FORM>
             <PHON kindOf="original">a</PHON>
             <FORM kindOf="standard">a</FORM>
             <PHON kindOf="standard">a</PHON>
-            <TRANSL xml:lang="zho">FIL</TRANSL>
-            <TRANSL xml:lang="eng">FIL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_1_W0M1">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="eng">FIL</TRANSL>
-                <TRANSL xml:lang="zho">FIL</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_1_W1">
             <FORM kindOf="original">te=kia</FORM>
-            <PHON kindOf="original">te=kia</PHON>
+            <PHON kindOf="original">tekia</PHON>
             <FORM kindOf="standard">te=kia</FORM>
-            <PHON kindOf="standard">te=kia</PHON>
-            <TRANSL xml:lang="zho">非實現=1SG.主格</TRANSL>
-            <TRANSL xml:lang="eng">IRR=1SG.NOM</TRANSL>
+            <PHON kindOf="standard">tekia</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">非實現=1SG.主格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">IRR=1SG.NOM</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_1_W1M1">
                 <FORM kindOf="original">te</FORM>
                 <PHON kindOf="original">te</PHON>
                 <FORM kindOf="standard">te</FORM>
                 <PHON kindOf="standard">te</PHON>
-                <TRANSL xml:lang="eng">IRR</TRANSL>
-                <TRANSL xml:lang="zho">非實現</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">IRR</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_1_W1M2">
-                <FORM kindOf="original">kia</FORM>
+                <FORM kindOf="original">=kia</FORM>
                 <PHON kindOf="original">kia</PHON>
-                <FORM kindOf="standard">kia</FORM>
+                <FORM kindOf="standard">=kia</FORM>
                 <PHON kindOf="standard">kia</PHON>
-                <TRANSL xml:lang="eng">1SG.NOM</TRANSL>
-                <TRANSL xml:lang="zho">1SG.主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1SG.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1SG.主格</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_1_W2">
             <FORM kindOf="original">ma-tipa</FORM>
-            <PHON kindOf="original">ma-tipa</PHON>
+            <PHON kindOf="original">matipa</PHON>
             <FORM kindOf="standard">ma-tipa</FORM>
-            <PHON kindOf="standard">ma-tipa</PHON>
-            <TRANSL xml:lang="zho">主焦-參加</TRANSL>
-            <TRANSL xml:lang="eng">AF-take.part.in</TRANSL>
+            <PHON kindOf="standard">matipa</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">主焦-參加</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">AF-take.part.in</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_1_W2M1">
                 <FORM kindOf="original">ma</FORM>
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
-                <TRANSL xml:lang="eng">AF</TRANSL>
-                <TRANSL xml:lang="zho">主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_1_W2M2">
                 <FORM kindOf="original">tipa</FORM>
                 <PHON kindOf="original">tipa</PHON>
                 <FORM kindOf="standard">tipa</FORM>
                 <PHON kindOf="standard">tipa</PHON>
-                <TRANSL xml:lang="eng">take.part.in</TRANSL>
-                <TRANSL xml:lang="zho">參加</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">take.part.in</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">參加</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_1_W3">
@@ -350,15 +350,15 @@
             <PHON kindOf="original">ʔinia</PHON>
             <FORM kindOf="standard">'inia</FORM>
             <PHON kindOf="standard">ʔinia</PHON>
-            <TRANSL xml:lang="zho">3SG.斜格</TRANSL>
-            <TRANSL xml:lang="eng">3SG.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">3SG.斜格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">3SG.OBL</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_1_W3M1">
                 <FORM kindOf="original">'inia</FORM>
                 <PHON kindOf="original">ʔinia</PHON>
                 <FORM kindOf="standard">'inia</FORM>
                 <PHON kindOf="standard">ʔinia</PHON>
-                <TRANSL xml:lang="eng">3SG.OBL</TRANSL>
-                <TRANSL xml:lang="zho">3SG.斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">3SG.OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">3SG.斜格</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_1_W4">
@@ -366,15 +366,15 @@
             <PHON kindOf="original">putukikio</PHON>
             <FORM kindOf="standard">putukikio</FORM>
             <PHON kindOf="standard">putukikio</PHON>
-            <TRANSL xml:lang="zho">工作</TRANSL>
-            <TRANSL xml:lang="eng">work</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">工作</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">work</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_1_W4M1">
                 <FORM kindOf="original">putukikio</FORM>
                 <PHON kindOf="original">putukikio</PHON>
                 <FORM kindOf="standard">putukikio</FORM>
                 <PHON kindOf="standard">putukikio</PHON>
-                <TRANSL xml:lang="eng">work</TRANSL>
-                <TRANSL xml:lang="zho">工作</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">work</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">工作</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_1_W5">
@@ -382,15 +382,15 @@
             <PHON kindOf="original">tia</PHON>
             <FORM kindOf="standard">tia</FORM>
             <PHON kindOf="standard">tia</PHON>
-            <TRANSL xml:lang="zho">非實現</TRANSL>
-            <TRANSL xml:lang="eng">IRR</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">IRR</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_1_W5M1">
                 <FORM kindOf="original">tia</FORM>
                 <PHON kindOf="original">tia</PHON>
                 <FORM kindOf="standard">tia</FORM>
                 <PHON kindOf="standard">tia</PHON>
-                <TRANSL xml:lang="eng">IRR</TRANSL>
-                <TRANSL xml:lang="zho">非實現</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">IRR</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_1_W6">
@@ -398,15 +398,15 @@
             <PHON kindOf="original">kamanɨŋ</PHON>
             <FORM kindOf="standard">kamanʉng</FORM>
             <PHON kindOf="standard">kamanɨŋ</PHON>
-            <TRANSL xml:lang="zho">製作.主焦</TRANSL>
-            <TRANSL xml:lang="eng">make.AF</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">製作.主焦</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">make.AF</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_1_W6M1">
                 <FORM kindOf="original">kamanʉng</FORM>
                 <PHON kindOf="original">kamanɨŋ</PHON>
                 <FORM kindOf="standard">kamanʉng</FORM>
                 <PHON kindOf="standard">kamanɨŋ</PHON>
-                <TRANSL xml:lang="eng">make.AF</TRANSL>
-                <TRANSL xml:lang="zho">製作.主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">make.AF</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">製作.主焦</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_1_W7">
@@ -414,31 +414,31 @@
             <PHON kindOf="original">pepe</PHON>
             <FORM kindOf="standard">pepe</FORM>
             <PHON kindOf="standard">pepe</PHON>
-            <TRANSL xml:lang="zho">麻糬</TRANSL>
-            <TRANSL xml:lang="eng">rice.cake</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">麻糬</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">rice.cake</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_1_W7M1">
                 <FORM kindOf="original">pepe</FORM>
                 <PHON kindOf="original">pepe</PHON>
                 <FORM kindOf="standard">pepe</FORM>
                 <PHON kindOf="standard">pepe</PHON>
-                <TRANSL xml:lang="eng">rice.cake</TRANSL>
-                <TRANSL xml:lang="zho">麻糬</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">rice.cake</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">麻糬</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_1_W8">
             <FORM kindOf="original">er</FORM>
-            <PHON kindOf="original">er~ɾ</PHON>
+            <PHON kindOf="original">e[r|ɾ]</PHON>
             <FORM kindOf="standard">er</FORM>
-            <PHON kindOf="standard">er~ɾ</PHON>
-            <TRANSL xml:lang="zho">FIL</TRANSL>
-            <TRANSL xml:lang="eng">FIL</TRANSL>
+            <PHON kindOf="standard">e[r|ɾ]</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_1_W8M1">
                 <FORM kindOf="original">er</FORM>
-                <PHON kindOf="original">er~ɾ</PHON>
+                <PHON kindOf="original">e[r|ɾ]</PHON>
                 <FORM kindOf="standard">er</FORM>
-                <PHON kindOf="standard">er~ɾ</PHON>
-                <TRANSL xml:lang="eng">FIL</TRANSL>
-                <TRANSL xml:lang="zho">FIL</TRANSL>
+                <PHON kindOf="standard">e[r|ɾ]</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_1_W9">
@@ -446,15 +446,15 @@
             <PHON kindOf="original">ʦunuku</PHON>
             <FORM kindOf="standard">cunuku</FORM>
             <PHON kindOf="standard">ʦunuku</PHON>
-            <TRANSL xml:lang="zho">麻糬</TRANSL>
-            <TRANSL xml:lang="eng">rice.cake</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">麻糬</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">rice.cake</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_1_W9M1">
                 <FORM kindOf="original">cunuku</FORM>
                 <PHON kindOf="original">ʦunuku</PHON>
                 <FORM kindOf="standard">cunuku</FORM>
                 <PHON kindOf="standard">ʦunuku</PHON>
-                <TRANSL xml:lang="eng">rice.cake</TRANSL>
-                <TRANSL xml:lang="zho">麻糬</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">rice.cake</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">麻糬</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_1_W10">
@@ -462,64 +462,64 @@
             <PHON kindOf="original">tipi</PHON>
             <FORM kindOf="standard">tipi</FORM>
             <PHON kindOf="standard">tipi</PHON>
-            <TRANSL xml:lang="zho">tipi</TRANSL>
-            <TRANSL xml:lang="eng">tipi</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">tipi</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">tipi</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_1_W10M1">
                 <FORM kindOf="original">tipi</FORM>
                 <PHON kindOf="original">tipi</PHON>
                 <FORM kindOf="standard">tipi</FORM>
                 <PHON kindOf="standard">tipi</PHON>
-                <TRANSL xml:lang="eng">tipi</TRANSL>
-                <TRANSL xml:lang="zho">tipi</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">tipi</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">tipi</TRANSL>
             </M>
         </W>
     </S>
     <S id="kkvNr_mikon_Kuatu_S_2">
-        <FORM kindOf="original">tekia er po'ocipi camai nen tia camai nukakia po'ocipi camai.</FORM>
-        <PHON kindOf="original">tekia er~ɾ poʔoʦipi ʦamai nen tia ʦamai nukakia poʔoʦipi ʦamai.</PHON>
+        <FORM kindOf="original" notes="source note: po'ocipi為「煮」，而mangUrU為「炒」，後者是比較後來才出現的概念。 | source note: nukakia為noo ka'an=kia的簡化。">tekia er po'ocipi camai nen tia camai nukakia po'ocipi camai.</FORM>
+        <PHON kindOf="original">tekia e[r|ɾ] poʔoʦipi ʦamai nen tia ʦamai nukakia poʔoʦipi ʦamai</PHON>
         <FORM kindOf="standard">tekia er po'ocipi camai nen tia camai nukakia po'ocipi camai.</FORM>
-        <PHON kindOf="standard">tekia er~ɾ poʔoʦipi ʦamai nen tia ʦamai nukakia poʔoʦipi ʦamai.</PHON>
+        <PHON kindOf="standard">tekia e[r|ɾ] poʔoʦipi ʦamai nen tia ʦamai nukakia poʔoʦipi ʦamai</PHON>
         <TRANSL xml:lang="zho">我要煮菜,如果我們不煮菜的話,要有什麼菜?</TRANSL>
         <TRANSL xml:lang="eng">I had to cook dishes; what dishes would there be if we didn't cook dishes?</TRANSL>
         <AUDIO file="kkvNr_mikon_Kuatu_S2.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_mikon_Kuatu.mp3" start="25.36" end="33.5"/>
         <W id="kkvNr_mikon_Kuatu_S_2_W0">
             <FORM kindOf="original">te=kia</FORM>
-            <PHON kindOf="original">te=kia</PHON>
+            <PHON kindOf="original">tekia</PHON>
             <FORM kindOf="standard">te=kia</FORM>
-            <PHON kindOf="standard">te=kia</PHON>
-            <TRANSL xml:lang="zho">非實現=1SG.主格</TRANSL>
-            <TRANSL xml:lang="eng">IRR=1SG.NOM</TRANSL>
+            <PHON kindOf="standard">tekia</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">非實現=1SG.主格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">IRR=1SG.NOM</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_2_W0M1">
                 <FORM kindOf="original">te</FORM>
                 <PHON kindOf="original">te</PHON>
                 <FORM kindOf="standard">te</FORM>
                 <PHON kindOf="standard">te</PHON>
-                <TRANSL xml:lang="eng">IRR</TRANSL>
-                <TRANSL xml:lang="zho">非實現</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">IRR</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_2_W0M2">
-                <FORM kindOf="original">kia</FORM>
+                <FORM kindOf="original">=kia</FORM>
                 <PHON kindOf="original">kia</PHON>
-                <FORM kindOf="standard">kia</FORM>
+                <FORM kindOf="standard">=kia</FORM>
                 <PHON kindOf="standard">kia</PHON>
-                <TRANSL xml:lang="eng">1SG.NOM</TRANSL>
-                <TRANSL xml:lang="zho">1SG.主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1SG.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1SG.主格</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_2_W1">
             <FORM kindOf="original">er</FORM>
-            <PHON kindOf="original">er~ɾ</PHON>
+            <PHON kindOf="original">e[r|ɾ]</PHON>
             <FORM kindOf="standard">er</FORM>
-            <PHON kindOf="standard">er~ɾ</PHON>
-            <TRANSL xml:lang="zho">FIL</TRANSL>
-            <TRANSL xml:lang="eng">FIL</TRANSL>
+            <PHON kindOf="standard">e[r|ɾ]</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_2_W1M1">
                 <FORM kindOf="original">er</FORM>
-                <PHON kindOf="original">er~ɾ</PHON>
+                <PHON kindOf="original">e[r|ɾ]</PHON>
                 <FORM kindOf="standard">er</FORM>
-                <PHON kindOf="standard">er~ɾ</PHON>
-                <TRANSL xml:lang="eng">FIL</TRANSL>
-                <TRANSL xml:lang="zho">FIL</TRANSL>
+                <PHON kindOf="standard">e[r|ɾ]</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_2_W2">
@@ -527,15 +527,15 @@
             <PHON kindOf="original">poʔoʦipi</PHON>
             <FORM kindOf="standard">po'ocipi</FORM>
             <PHON kindOf="standard">poʔoʦipi</PHON>
-            <TRANSL xml:lang="zho">煮.主焦</TRANSL>
-            <TRANSL xml:lang="eng">cook.AF</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">煮.主焦</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">cook.AF</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_2_W2M1">
                 <FORM kindOf="original">po'ocipi</FORM>
                 <PHON kindOf="original">poʔoʦipi</PHON>
                 <FORM kindOf="standard">po'ocipi</FORM>
                 <PHON kindOf="standard">poʔoʦipi</PHON>
-                <TRANSL xml:lang="eng">cook.AF</TRANSL>
-                <TRANSL xml:lang="zho">煮.主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">cook.AF</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">煮.主焦</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_2_W3">
@@ -543,15 +543,15 @@
             <PHON kindOf="original">ʦamai</PHON>
             <FORM kindOf="standard">camai</FORM>
             <PHON kindOf="standard">ʦamai</PHON>
-            <TRANSL xml:lang="zho">菜</TRANSL>
-            <TRANSL xml:lang="eng">dish</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">菜</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">dish</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_2_W3M1">
                 <FORM kindOf="original">camai</FORM>
                 <PHON kindOf="original">ʦamai</PHON>
                 <FORM kindOf="standard">camai</FORM>
                 <PHON kindOf="standard">ʦamai</PHON>
-                <TRANSL xml:lang="eng">dish</TRANSL>
-                <TRANSL xml:lang="zho">菜</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">dish</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">菜</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_2_W4">
@@ -559,15 +559,15 @@
             <PHON kindOf="original">nen</PHON>
             <FORM kindOf="standard">nen</FORM>
             <PHON kindOf="standard">nen</PHON>
-            <TRANSL xml:lang="zho">什麼</TRANSL>
-            <TRANSL xml:lang="eng">what</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">什麼</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">what</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_2_W4M1">
                 <FORM kindOf="original">nen</FORM>
                 <PHON kindOf="original">nen</PHON>
                 <FORM kindOf="standard">nen</FORM>
                 <PHON kindOf="standard">nen</PHON>
-                <TRANSL xml:lang="eng">what</TRANSL>
-                <TRANSL xml:lang="zho">什麼</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">what</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">什麼</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_2_W5">
@@ -575,15 +575,15 @@
             <PHON kindOf="original">tia</PHON>
             <FORM kindOf="standard">tia</FORM>
             <PHON kindOf="standard">tia</PHON>
-            <TRANSL xml:lang="zho">非實現</TRANSL>
-            <TRANSL xml:lang="eng">IRR</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">IRR</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_2_W5M1">
                 <FORM kindOf="original">tia</FORM>
                 <PHON kindOf="original">tia</PHON>
                 <FORM kindOf="standard">tia</FORM>
                 <PHON kindOf="standard">tia</PHON>
-                <TRANSL xml:lang="eng">IRR</TRANSL>
-                <TRANSL xml:lang="zho">非實現</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">IRR</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_2_W6">
@@ -591,15 +591,15 @@
             <PHON kindOf="original">ʦamai</PHON>
             <FORM kindOf="standard">camai</FORM>
             <PHON kindOf="standard">ʦamai</PHON>
-            <TRANSL xml:lang="zho">菜</TRANSL>
-            <TRANSL xml:lang="eng">dish</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">菜</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">dish</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_2_W6M1">
                 <FORM kindOf="original">camai</FORM>
                 <PHON kindOf="original">ʦamai</PHON>
                 <FORM kindOf="standard">camai</FORM>
                 <PHON kindOf="standard">ʦamai</PHON>
-                <TRANSL xml:lang="eng">dish</TRANSL>
-                <TRANSL xml:lang="zho">菜</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">dish</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">菜</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_2_W7">
@@ -607,15 +607,15 @@
             <PHON kindOf="original">nukakia</PHON>
             <FORM kindOf="standard">nukakia</FORM>
             <PHON kindOf="standard">nukakia</PHON>
-            <TRANSL xml:lang="zho">如果我們不</TRANSL>
-            <TRANSL xml:lang="eng">if.we.don't</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">如果我們不</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">if.we.don't</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_2_W7M1">
                 <FORM kindOf="original">nukakia</FORM>
                 <PHON kindOf="original">nukakia</PHON>
                 <FORM kindOf="standard">nukakia</FORM>
                 <PHON kindOf="standard">nukakia</PHON>
-                <TRANSL xml:lang="eng">if.we.don't</TRANSL>
-                <TRANSL xml:lang="zho">如果我們不</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">if.we.don't</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">如果我們不</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_2_W8">
@@ -623,15 +623,15 @@
             <PHON kindOf="original">poʔoʦipi</PHON>
             <FORM kindOf="standard">po'ocipi</FORM>
             <PHON kindOf="standard">poʔoʦipi</PHON>
-            <TRANSL xml:lang="zho">煮</TRANSL>
-            <TRANSL xml:lang="eng">cook</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">煮</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">cook</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_2_W8M1">
                 <FORM kindOf="original">po'ocipi</FORM>
                 <PHON kindOf="original">poʔoʦipi</PHON>
                 <FORM kindOf="standard">po'ocipi</FORM>
                 <PHON kindOf="standard">poʔoʦipi</PHON>
-                <TRANSL xml:lang="eng">cook</TRANSL>
-                <TRANSL xml:lang="zho">煮</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">cook</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">煮</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_2_W9">
@@ -639,40 +639,40 @@
             <PHON kindOf="original">ʦamai</PHON>
             <FORM kindOf="standard">camai</FORM>
             <PHON kindOf="standard">ʦamai</PHON>
-            <TRANSL xml:lang="zho">菜</TRANSL>
-            <TRANSL xml:lang="eng">dish</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">菜</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">dish</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_2_W9M1">
                 <FORM kindOf="original">camai</FORM>
                 <PHON kindOf="original">ʦamai</PHON>
                 <FORM kindOf="standard">camai</FORM>
                 <PHON kindOf="standard">ʦamai</PHON>
-                <TRANSL xml:lang="eng">dish</TRANSL>
-                <TRANSL xml:lang="zho">菜</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">dish</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">菜</TRANSL>
             </M>
         </W>
     </S>
     <S id="kkvNr_mikon_Kuatu_S_3">
-        <FORM kindOf="original">er tia 'una auu tia 'una er nengʉra camai masii er mamanʉngkia nuu kumakʉnʉkia.</FORM>
-        <PHON kindOf="original">er~ɾ tia ʔuna auu tia ʔuna er~ɾ neŋɨr~ɾa ʦamai masii er~ɾ mamanɨŋkia nuu kumakɨnɨkia.</PHON>
+        <FORM kindOf="original" notes="source note: ne-ngʉr-a發音老師的念法為ni-ngUr-a。 | source note: mamanʉng=kia k&lt;um&gt;akʉnʉ為「我(們)吃得好」。">er tia 'una auu tia 'una er nengʉra camai masii er mamanʉngkia nuu kumakʉnʉkia.</FORM>
+        <PHON kindOf="original">e[r|ɾ] tia ʔuna auu tia ʔuna e[r|ɾ] neŋɨ[r|ɾ]a ʦamai masii e[r|ɾ] mamanɨŋkia nuu kumakɨnɨkia</PHON>
         <FORM kindOf="standard">er tia 'una auu tia 'una er nengʉra camai masii er mamanʉngkia nuu kumakʉnʉkia.</FORM>
-        <PHON kindOf="standard">er~ɾ tia ʔuna auu tia ʔuna er~ɾ neŋɨr~ɾa ʦamai masii er~ɾ mamanɨŋkia nuu kumakɨnɨkia.</PHON>
-        <TRANSL xml:lang="zho" notes="要有湯,要有炒過的菜,當我(們)在吃的時候,才會很好(很愉快).">要有湯,要有炒過的菜,當我 在吃的時候,才會很好 .</TRANSL>
+        <PHON kindOf="standard">e[r|ɾ] tia ʔuna auu tia ʔuna e[r|ɾ] neŋɨ[r|ɾ]a ʦamai masii e[r|ɾ] mamanɨŋkia nuu kumakɨnɨkia</PHON>
+        <TRANSL xml:lang="zho">要有湯,要有炒過的菜,當我(們)在吃的時候,才會很好(很愉快).</TRANSL>
         <TRANSL xml:lang="eng">There had to be soup and fried dishes, so that we would be happy when we were eating.</TRANSL>
         <AUDIO file="kkvNr_mikon_Kuatu_S3.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_mikon_Kuatu.mp3" start="33.5" end="45.39"/>
         <W id="kkvNr_mikon_Kuatu_S_3_W0">
             <FORM kindOf="original">er</FORM>
-            <PHON kindOf="original">er~ɾ</PHON>
+            <PHON kindOf="original">e[r|ɾ]</PHON>
             <FORM kindOf="standard">er</FORM>
-            <PHON kindOf="standard">er~ɾ</PHON>
-            <TRANSL xml:lang="zho">FIL</TRANSL>
-            <TRANSL xml:lang="eng">FIL</TRANSL>
+            <PHON kindOf="standard">e[r|ɾ]</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_3_W0M1">
                 <FORM kindOf="original">er</FORM>
-                <PHON kindOf="original">er~ɾ</PHON>
+                <PHON kindOf="original">e[r|ɾ]</PHON>
                 <FORM kindOf="standard">er</FORM>
-                <PHON kindOf="standard">er~ɾ</PHON>
-                <TRANSL xml:lang="eng">FIL</TRANSL>
-                <TRANSL xml:lang="zho">FIL</TRANSL>
+                <PHON kindOf="standard">e[r|ɾ]</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_3_W1">
@@ -680,15 +680,15 @@
             <PHON kindOf="original">tia</PHON>
             <FORM kindOf="standard">tia</FORM>
             <PHON kindOf="standard">tia</PHON>
-            <TRANSL xml:lang="zho">非實現</TRANSL>
-            <TRANSL xml:lang="eng">IRR</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">IRR</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_3_W1M1">
                 <FORM kindOf="original">tia</FORM>
                 <PHON kindOf="original">tia</PHON>
                 <FORM kindOf="standard">tia</FORM>
                 <PHON kindOf="standard">tia</PHON>
-                <TRANSL xml:lang="eng">IRR</TRANSL>
-                <TRANSL xml:lang="zho">非實現</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">IRR</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_3_W2">
@@ -696,15 +696,15 @@
             <PHON kindOf="original">ʔuna</PHON>
             <FORM kindOf="standard">'una</FORM>
             <PHON kindOf="standard">ʔuna</PHON>
-            <TRANSL xml:lang="zho">存在</TRANSL>
-            <TRANSL xml:lang="eng">EXIST</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">存在</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">EXIST</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_3_W2M1">
                 <FORM kindOf="original">'una</FORM>
                 <PHON kindOf="original">ʔuna</PHON>
                 <FORM kindOf="standard">'una</FORM>
                 <PHON kindOf="standard">ʔuna</PHON>
-                <TRANSL xml:lang="eng">EXIST</TRANSL>
-                <TRANSL xml:lang="zho">存在</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">EXIST</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">存在</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_3_W3">
@@ -712,15 +712,15 @@
             <PHON kindOf="original">auu</PHON>
             <FORM kindOf="standard">auu</FORM>
             <PHON kindOf="standard">auu</PHON>
-            <TRANSL xml:lang="zho">湯</TRANSL>
-            <TRANSL xml:lang="eng">soup</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">湯</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">soup</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_3_W3M1">
                 <FORM kindOf="original">auu</FORM>
                 <PHON kindOf="original">auu</PHON>
                 <FORM kindOf="standard">auu</FORM>
                 <PHON kindOf="standard">auu</PHON>
-                <TRANSL xml:lang="eng">soup</TRANSL>
-                <TRANSL xml:lang="zho">湯</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">soup</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">湯</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_3_W4">
@@ -728,15 +728,15 @@
             <PHON kindOf="original">tia</PHON>
             <FORM kindOf="standard">tia</FORM>
             <PHON kindOf="standard">tia</PHON>
-            <TRANSL xml:lang="zho">非實現</TRANSL>
-            <TRANSL xml:lang="eng">IRR</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">IRR</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_3_W4M1">
                 <FORM kindOf="original">tia</FORM>
                 <PHON kindOf="original">tia</PHON>
                 <FORM kindOf="standard">tia</FORM>
                 <PHON kindOf="standard">tia</PHON>
-                <TRANSL xml:lang="eng">IRR</TRANSL>
-                <TRANSL xml:lang="zho">非實現</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">IRR</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_3_W5">
@@ -744,63 +744,63 @@
             <PHON kindOf="original">ʔuna</PHON>
             <FORM kindOf="standard">'una</FORM>
             <PHON kindOf="standard">ʔuna</PHON>
-            <TRANSL xml:lang="zho">存在</TRANSL>
-            <TRANSL xml:lang="eng">EXIST</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">存在</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">EXIST</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_3_W5M1">
                 <FORM kindOf="original">'una</FORM>
                 <PHON kindOf="original">ʔuna</PHON>
                 <FORM kindOf="standard">'una</FORM>
                 <PHON kindOf="standard">ʔuna</PHON>
-                <TRANSL xml:lang="eng">EXIST</TRANSL>
-                <TRANSL xml:lang="zho">存在</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">EXIST</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">存在</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_3_W6">
             <FORM kindOf="original">er</FORM>
-            <PHON kindOf="original">er~ɾ</PHON>
+            <PHON kindOf="original">e[r|ɾ]</PHON>
             <FORM kindOf="standard">er</FORM>
-            <PHON kindOf="standard">er~ɾ</PHON>
-            <TRANSL xml:lang="zho">FIL</TRANSL>
-            <TRANSL xml:lang="eng">FIL</TRANSL>
+            <PHON kindOf="standard">e[r|ɾ]</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_3_W6M1">
                 <FORM kindOf="original">er</FORM>
-                <PHON kindOf="original">er~ɾ</PHON>
+                <PHON kindOf="original">e[r|ɾ]</PHON>
                 <FORM kindOf="standard">er</FORM>
-                <PHON kindOf="standard">er~ɾ</PHON>
-                <TRANSL xml:lang="eng">FIL</TRANSL>
-                <TRANSL xml:lang="zho">FIL</TRANSL>
+                <PHON kindOf="standard">e[r|ɾ]</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_3_W7">
             <FORM kindOf="original">ne-ngʉr-a</FORM>
-            <PHON kindOf="original">ne-ŋɨr~ɾ-a</PHON>
+            <PHON kindOf="original">neŋɨ[r|ɾ]a</PHON>
             <FORM kindOf="standard">ne-ngʉr-a</FORM>
-            <PHON kindOf="standard">ne-ŋɨr~ɾ-a</PHON>
-            <TRANSL xml:lang="zho">完成-炒-關係詞</TRANSL>
-            <TRANSL xml:lang="eng">PFV-fry-REL</TRANSL>
+            <PHON kindOf="standard">neŋɨ[r|ɾ]a</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">完成-炒-關係詞</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">PFV-fry-REL</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_3_W7M1">
                 <FORM kindOf="original">ne</FORM>
                 <PHON kindOf="original">ne</PHON>
                 <FORM kindOf="standard">ne</FORM>
                 <PHON kindOf="standard">ne</PHON>
-                <TRANSL xml:lang="eng">PFV</TRANSL>
-                <TRANSL xml:lang="zho">完成</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">完成</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_3_W7M2">
                 <FORM kindOf="original">ngʉr</FORM>
-                <PHON kindOf="original">ŋɨr~ɾ</PHON>
+                <PHON kindOf="original">ŋɨ[r|ɾ]</PHON>
                 <FORM kindOf="standard">ngʉr</FORM>
-                <PHON kindOf="standard">ŋɨr~ɾ</PHON>
-                <TRANSL xml:lang="eng">fry</TRANSL>
-                <TRANSL xml:lang="zho">炒</TRANSL>
+                <PHON kindOf="standard">ŋɨ[r|ɾ]</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">fry</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">炒</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_3_W7M3">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="eng">REL</TRANSL>
-                <TRANSL xml:lang="zho">關係詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">REL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">關係詞</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_3_W8">
@@ -808,15 +808,15 @@
             <PHON kindOf="original">ʦamai</PHON>
             <FORM kindOf="standard">camai</FORM>
             <PHON kindOf="standard">ʦamai</PHON>
-            <TRANSL xml:lang="zho">菜</TRANSL>
-            <TRANSL xml:lang="eng">dish</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">菜</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">dish</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_3_W8M1">
                 <FORM kindOf="original">camai</FORM>
                 <PHON kindOf="original">ʦamai</PHON>
                 <FORM kindOf="standard">camai</FORM>
                 <PHON kindOf="standard">ʦamai</PHON>
-                <TRANSL xml:lang="eng">dish</TRANSL>
-                <TRANSL xml:lang="zho">菜</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">dish</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">菜</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_3_W9">
@@ -824,63 +824,63 @@
             <PHON kindOf="original">masii</PHON>
             <FORM kindOf="standard">masii</FORM>
             <PHON kindOf="standard">masii</PHON>
-            <TRANSL xml:lang="zho">才會</TRANSL>
-            <TRANSL xml:lang="eng">so.that</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">才會</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">so.that</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_3_W9M1">
                 <FORM kindOf="original">masii</FORM>
                 <PHON kindOf="original">masii</PHON>
                 <FORM kindOf="standard">masii</FORM>
                 <PHON kindOf="standard">masii</PHON>
-                <TRANSL xml:lang="eng">so.that</TRANSL>
-                <TRANSL xml:lang="zho">才會</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">so.that</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">才會</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_3_W10">
             <FORM kindOf="original">er</FORM>
-            <PHON kindOf="original">er~ɾ</PHON>
+            <PHON kindOf="original">e[r|ɾ]</PHON>
             <FORM kindOf="standard">er</FORM>
-            <PHON kindOf="standard">er~ɾ</PHON>
-            <TRANSL xml:lang="zho">FIL</TRANSL>
-            <TRANSL xml:lang="eng">FIL</TRANSL>
+            <PHON kindOf="standard">e[r|ɾ]</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_3_W10M1">
                 <FORM kindOf="original">er</FORM>
-                <PHON kindOf="original">er~ɾ</PHON>
+                <PHON kindOf="original">e[r|ɾ]</PHON>
                 <FORM kindOf="standard">er</FORM>
-                <PHON kindOf="standard">er~ɾ</PHON>
-                <TRANSL xml:lang="eng">FIL</TRANSL>
-                <TRANSL xml:lang="zho">FIL</TRANSL>
+                <PHON kindOf="standard">e[r|ɾ]</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_3_W11">
             <FORM kindOf="original">ma-manʉng=kia</FORM>
-            <PHON kindOf="original">ma-manɨŋ=kia</PHON>
+            <PHON kindOf="original">mamanɨŋkia</PHON>
             <FORM kindOf="standard">ma-manʉng=kia</FORM>
-            <PHON kindOf="standard">ma-manɨŋ=kia</PHON>
-            <TRANSL xml:lang="zho">重疊-好=1SG.主格</TRANSL>
-            <TRANSL xml:lang="eng">RED-good=1SG.NOM</TRANSL>
+            <PHON kindOf="standard">mamanɨŋkia</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">重疊-好=1SG.主格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">RED-good=1SG.NOM</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_3_W11M1">
                 <FORM kindOf="original">ma</FORM>
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
-                <TRANSL xml:lang="eng">RED</TRANSL>
-                <TRANSL xml:lang="zho">重疊</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">重疊</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_3_W11M2">
                 <FORM kindOf="original">manʉng</FORM>
                 <PHON kindOf="original">manɨŋ</PHON>
                 <FORM kindOf="standard">manʉng</FORM>
                 <PHON kindOf="standard">manɨŋ</PHON>
-                <TRANSL xml:lang="eng">good</TRANSL>
-                <TRANSL xml:lang="zho">好</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">good</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">好</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_3_W11M3">
-                <FORM kindOf="original">kia</FORM>
+                <FORM kindOf="original">=kia</FORM>
                 <PHON kindOf="original">kia</PHON>
-                <FORM kindOf="standard">kia</FORM>
+                <FORM kindOf="standard">=kia</FORM>
                 <PHON kindOf="standard">kia</PHON>
-                <TRANSL xml:lang="eng">1SG.NOM</TRANSL>
-                <TRANSL xml:lang="zho">1SG.主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1SG.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1SG.主格</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_3_W12">
@@ -888,216 +888,216 @@
             <PHON kindOf="original">nuu</PHON>
             <FORM kindOf="standard">nuu</FORM>
             <PHON kindOf="standard">nuu</PHON>
-            <TRANSL xml:lang="zho">如果</TRANSL>
-            <TRANSL xml:lang="eng">if</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">如果</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">if</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_3_W12M1">
                 <FORM kindOf="original">nuu</FORM>
                 <PHON kindOf="original">nuu</PHON>
                 <FORM kindOf="standard">nuu</FORM>
                 <PHON kindOf="standard">nuu</PHON>
-                <TRANSL xml:lang="eng">if</TRANSL>
-                <TRANSL xml:lang="zho">如果</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">if</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">如果</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_3_W13">
             <FORM kindOf="original">k&lt;um&gt;a-kʉnʉ=kia</FORM>
-            <PHON kindOf="original">k&lt;um&gt;a-kɨnɨ=kia</PHON>
+            <PHON kindOf="original">kumakɨnɨkia</PHON>
             <FORM kindOf="standard">k&lt;um&gt;a-kʉnʉ=kia</FORM>
-            <PHON kindOf="standard">k&lt;um&gt;a-kɨnɨ=kia</PHON>
-            <TRANSL xml:lang="zho">K&lt;主焦&gt;A-吃=1SG.主格</TRANSL>
-            <TRANSL xml:lang="eng">K&lt;AF&gt;A-eat=1SG.NOM</TRANSL>
+            <PHON kindOf="standard">kumakɨnɨkia</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">K&lt;主焦&gt;A-吃=1SG.主格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">K&lt;AF&gt;A-eat=1SG.NOM</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_3_W13M1">
                 <FORM kindOf="original">-um-</FORM>
-                <PHON kindOf="original">-um-</PHON>
+                <PHON kindOf="original">um</PHON>
                 <FORM kindOf="standard">-um-</FORM>
-                <PHON kindOf="standard">-um-</PHON>
-                <TRANSL xml:lang="eng">&lt;AF&gt;</TRANSL>
-                <TRANSL xml:lang="zho">&lt;主焦&gt;</TRANSL>
+                <PHON kindOf="standard">um</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_3_W13M2">
                 <FORM kindOf="original">k-a</FORM>
-                <PHON kindOf="original">k-a</PHON>
+                <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">k-a</FORM>
-                <PHON kindOf="standard">k-a</PHON>
-                <TRANSL xml:lang="eng">KA</TRANSL>
-                <TRANSL xml:lang="zho">KA</TRANSL>
+                <PHON kindOf="standard">ka</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">KA</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">KA</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_3_W13M3">
                 <FORM kindOf="original">kʉnʉ</FORM>
                 <PHON kindOf="original">kɨnɨ</PHON>
                 <FORM kindOf="standard">kʉnʉ</FORM>
                 <PHON kindOf="standard">kɨnɨ</PHON>
-                <TRANSL xml:lang="eng">eat</TRANSL>
-                <TRANSL xml:lang="zho">吃</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">eat</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">吃</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_3_W13M4">
-                <FORM kindOf="original">kia</FORM>
+                <FORM kindOf="original">=kia</FORM>
                 <PHON kindOf="original">kia</PHON>
-                <FORM kindOf="standard">kia</FORM>
+                <FORM kindOf="standard">=kia</FORM>
                 <PHON kindOf="standard">kia</PHON>
-                <TRANSL xml:lang="eng">1SG.NOM</TRANSL>
-                <TRANSL xml:lang="zho">1SG.主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1SG.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1SG.主格</TRANSL>
             </M>
         </W>
     </S>
     <S id="kkvNr_mikon_Kuatu_S_4">
-        <FORM kindOf="original">er kumakʉnʉkia er makasuacu er matacuvucuvuncu ha cau er tia kaisisi.</FORM>
-        <PHON kindOf="original">er~ɾ kumakɨnɨkia er~ɾ makasuaʦu er~ɾ mataʦuvuʦuvunʦu ha ʦau er~ɾ tia kaisisi.</PHON>
+        <FORM kindOf="original" notes="source note: mata-cuvu-cuvun沒有重疊時為matacuvun，指的是人與人聚在一塊，可以指兩人聚在一起。UtUmUkUmUkUn則為人一群一群地聚在一塊，不能指兩人聚在一起。 | source note: ha等同於sua。">er kumakʉnʉkia er makasuacu er matacuvucuvuncu ha cau er tia kaisisi.</FORM>
+        <PHON kindOf="original">e[r|ɾ] kumakɨnɨkia e[r|ɾ] makasuaʦu e[r|ɾ] mataʦuvuʦuvunʦu ha ʦau e[r|ɾ] tia kaisisi</PHON>
         <FORM kindOf="standard">er kumakʉnʉkia er makasuacu er matacuvucuvuncu ha cau er tia kaisisi.</FORM>
-        <PHON kindOf="standard">er~ɾ kumakɨnɨkia er~ɾ makasuaʦu er~ɾ mataʦuvuʦuvunʦu ha ʦau er~ɾ tia kaisisi.</PHON>
+        <PHON kindOf="standard">e[r|ɾ] kumakɨnɨkia e[r|ɾ] makasuaʦu e[r|ɾ] mataʦuvuʦuvunʦu ha ʦau e[r|ɾ] tia kaisisi</PHON>
         <TRANSL xml:lang="zho">我們就那樣吃著,人們聚在一塊要祭祀.</TRANSL>
         <TRANSL xml:lang="eng">We kept eating in that way, and people gathered together to worship.</TRANSL>
         <AUDIO file="kkvNr_mikon_Kuatu_S4.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_mikon_Kuatu.mp3" start="45.39" end="58.23"/>
         <W id="kkvNr_mikon_Kuatu_S_4_W0">
             <FORM kindOf="original">er</FORM>
-            <PHON kindOf="original">er~ɾ</PHON>
+            <PHON kindOf="original">e[r|ɾ]</PHON>
             <FORM kindOf="standard">er</FORM>
-            <PHON kindOf="standard">er~ɾ</PHON>
-            <TRANSL xml:lang="zho">FIL</TRANSL>
-            <TRANSL xml:lang="eng">FIL</TRANSL>
+            <PHON kindOf="standard">e[r|ɾ]</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_4_W0M1">
                 <FORM kindOf="original">er</FORM>
-                <PHON kindOf="original">er~ɾ</PHON>
+                <PHON kindOf="original">e[r|ɾ]</PHON>
                 <FORM kindOf="standard">er</FORM>
-                <PHON kindOf="standard">er~ɾ</PHON>
-                <TRANSL xml:lang="eng">FIL</TRANSL>
-                <TRANSL xml:lang="zho">FIL</TRANSL>
+                <PHON kindOf="standard">e[r|ɾ]</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_4_W1">
             <FORM kindOf="original">k&lt;um&gt;a-kʉnʉ=kia</FORM>
-            <PHON kindOf="original">k&lt;um&gt;a-kɨnɨ=kia</PHON>
+            <PHON kindOf="original">kumakɨnɨkia</PHON>
             <FORM kindOf="standard">k&lt;um&gt;a-kʉnʉ=kia</FORM>
-            <PHON kindOf="standard">k&lt;um&gt;a-kɨnɨ=kia</PHON>
-            <TRANSL xml:lang="zho">K&lt;主焦&gt;A-吃=1SG.主格</TRANSL>
-            <TRANSL xml:lang="eng">K&lt;AF&gt;A-eat=1SG.NOM</TRANSL>
+            <PHON kindOf="standard">kumakɨnɨkia</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">K&lt;主焦&gt;A-吃=1SG.主格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">K&lt;AF&gt;A-eat=1SG.NOM</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_4_W1M1">
                 <FORM kindOf="original">-um-</FORM>
-                <PHON kindOf="original">-um-</PHON>
+                <PHON kindOf="original">um</PHON>
                 <FORM kindOf="standard">-um-</FORM>
-                <PHON kindOf="standard">-um-</PHON>
-                <TRANSL xml:lang="eng">&lt;AF&gt;</TRANSL>
-                <TRANSL xml:lang="zho">&lt;主焦&gt;</TRANSL>
+                <PHON kindOf="standard">um</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_4_W1M2">
                 <FORM kindOf="original">k-a</FORM>
-                <PHON kindOf="original">k-a</PHON>
+                <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">k-a</FORM>
-                <PHON kindOf="standard">k-a</PHON>
-                <TRANSL xml:lang="eng">KA</TRANSL>
-                <TRANSL xml:lang="zho">KA</TRANSL>
+                <PHON kindOf="standard">ka</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">KA</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">KA</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_4_W1M3">
                 <FORM kindOf="original">kʉnʉ</FORM>
                 <PHON kindOf="original">kɨnɨ</PHON>
                 <FORM kindOf="standard">kʉnʉ</FORM>
                 <PHON kindOf="standard">kɨnɨ</PHON>
-                <TRANSL xml:lang="eng">eat</TRANSL>
-                <TRANSL xml:lang="zho">吃</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">eat</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">吃</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_4_W1M4">
-                <FORM kindOf="original">kia</FORM>
+                <FORM kindOf="original">=kia</FORM>
                 <PHON kindOf="original">kia</PHON>
-                <FORM kindOf="standard">kia</FORM>
+                <FORM kindOf="standard">=kia</FORM>
                 <PHON kindOf="standard">kia</PHON>
-                <TRANSL xml:lang="eng">1SG.NOM</TRANSL>
-                <TRANSL xml:lang="zho">1SG.主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1SG.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1SG.主格</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_4_W2">
             <FORM kindOf="original">er</FORM>
-            <PHON kindOf="original">er~ɾ</PHON>
+            <PHON kindOf="original">e[r|ɾ]</PHON>
             <FORM kindOf="standard">er</FORM>
-            <PHON kindOf="standard">er~ɾ</PHON>
-            <TRANSL xml:lang="zho">FIL</TRANSL>
-            <TRANSL xml:lang="eng">FIL</TRANSL>
+            <PHON kindOf="standard">e[r|ɾ]</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_4_W2M1">
                 <FORM kindOf="original">er</FORM>
-                <PHON kindOf="original">er~ɾ</PHON>
+                <PHON kindOf="original">e[r|ɾ]</PHON>
                 <FORM kindOf="standard">er</FORM>
-                <PHON kindOf="standard">er~ɾ</PHON>
-                <TRANSL xml:lang="eng">FIL</TRANSL>
-                <TRANSL xml:lang="zho">FIL</TRANSL>
+                <PHON kindOf="standard">e[r|ɾ]</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_4_W3">
             <FORM kindOf="original">makasua=cu</FORM>
-            <PHON kindOf="original">makasua=ʦu</PHON>
+            <PHON kindOf="original">makasuaʦu</PHON>
             <FORM kindOf="standard">makasua=cu</FORM>
-            <PHON kindOf="standard">makasua=ʦu</PHON>
-            <TRANSL xml:lang="zho">那樣=語助詞</TRANSL>
-            <TRANSL xml:lang="eng">in.that.way=PART</TRANSL>
+            <PHON kindOf="standard">makasuaʦu</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">那樣=語助詞</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">in.that.way=PART</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_4_W3M1">
                 <FORM kindOf="original">makasua</FORM>
                 <PHON kindOf="original">makasua</PHON>
                 <FORM kindOf="standard">makasua</FORM>
                 <PHON kindOf="standard">makasua</PHON>
-                <TRANSL xml:lang="eng">in.that.way</TRANSL>
-                <TRANSL xml:lang="zho">那樣</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">in.that.way</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">那樣</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_4_W3M2">
-                <FORM kindOf="original">cu</FORM>
+                <FORM kindOf="original">=cu</FORM>
                 <PHON kindOf="original">ʦu</PHON>
-                <FORM kindOf="standard">cu</FORM>
+                <FORM kindOf="standard">=cu</FORM>
                 <PHON kindOf="standard">ʦu</PHON>
-                <TRANSL xml:lang="eng">PART</TRANSL>
-                <TRANSL xml:lang="zho">語助詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_4_W4">
             <FORM kindOf="original">er</FORM>
-            <PHON kindOf="original">er~ɾ</PHON>
+            <PHON kindOf="original">e[r|ɾ]</PHON>
             <FORM kindOf="standard">er</FORM>
-            <PHON kindOf="standard">er~ɾ</PHON>
-            <TRANSL xml:lang="zho">FIL</TRANSL>
-            <TRANSL xml:lang="eng">FIL</TRANSL>
+            <PHON kindOf="standard">e[r|ɾ]</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_4_W4M1">
                 <FORM kindOf="original">er</FORM>
-                <PHON kindOf="original">er~ɾ</PHON>
+                <PHON kindOf="original">e[r|ɾ]</PHON>
                 <FORM kindOf="standard">er</FORM>
-                <PHON kindOf="standard">er~ɾ</PHON>
-                <TRANSL xml:lang="eng">FIL</TRANSL>
-                <TRANSL xml:lang="zho">FIL</TRANSL>
+                <PHON kindOf="standard">e[r|ɾ]</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_4_W5">
             <FORM kindOf="original">mata-cuvu-cuvun=cu</FORM>
-            <PHON kindOf="original">mata-ʦuvu-ʦuvun=ʦu</PHON>
+            <PHON kindOf="original">mataʦuvuʦuvunʦu</PHON>
             <FORM kindOf="standard">mata-cuvu-cuvun=cu</FORM>
-            <PHON kindOf="standard">mata-ʦuvu-ʦuvun=ʦu</PHON>
-            <TRANSL xml:lang="zho">聚在一起-重疊-聚在一起=語助詞</TRANSL>
-            <TRANSL xml:lang="eng">gather.together-RED-gather.together=PART</TRANSL>
+            <PHON kindOf="standard">mataʦuvuʦuvunʦu</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">聚在一起-重疊-聚在一起=語助詞</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">gather.together-RED-gather.together=PART</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_4_W5M1">
                 <FORM kindOf="original">mata</FORM>
                 <PHON kindOf="original">mata</PHON>
                 <FORM kindOf="standard">mata</FORM>
                 <PHON kindOf="standard">mata</PHON>
-                <TRANSL xml:lang="eng">gather.together</TRANSL>
-                <TRANSL xml:lang="zho">聚在一起</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">gather.together</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">聚在一起</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_4_W5M2">
                 <FORM kindOf="original">cuvu</FORM>
                 <PHON kindOf="original">ʦuvu</PHON>
                 <FORM kindOf="standard">cuvu</FORM>
                 <PHON kindOf="standard">ʦuvu</PHON>
-                <TRANSL xml:lang="eng">RED</TRANSL>
-                <TRANSL xml:lang="zho">重疊</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">重疊</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_4_W5M3">
                 <FORM kindOf="original">cuvun</FORM>
                 <PHON kindOf="original">ʦuvun</PHON>
                 <FORM kindOf="standard">cuvun</FORM>
                 <PHON kindOf="standard">ʦuvun</PHON>
-                <TRANSL xml:lang="eng">gather.together</TRANSL>
-                <TRANSL xml:lang="zho">聚在一起</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">gather.together</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">聚在一起</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_4_W5M4">
-                <FORM kindOf="original">cu</FORM>
+                <FORM kindOf="original">=cu</FORM>
                 <PHON kindOf="original">ʦu</PHON>
-                <FORM kindOf="standard">cu</FORM>
+                <FORM kindOf="standard">=cu</FORM>
                 <PHON kindOf="standard">ʦu</PHON>
-                <TRANSL xml:lang="eng">PART</TRANSL>
-                <TRANSL xml:lang="zho">語助詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_4_W6">
@@ -1105,15 +1105,15 @@
             <PHON kindOf="original">ha</PHON>
             <FORM kindOf="standard">ha</FORM>
             <PHON kindOf="standard">ha</PHON>
-            <TRANSL xml:lang="zho">主格</TRANSL>
-            <TRANSL xml:lang="eng">NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_4_W6M1">
                 <FORM kindOf="original">ha</FORM>
                 <PHON kindOf="original">ha</PHON>
                 <FORM kindOf="standard">ha</FORM>
                 <PHON kindOf="standard">ha</PHON>
-                <TRANSL xml:lang="eng">NOM</TRANSL>
-                <TRANSL xml:lang="zho">主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_4_W7">
@@ -1121,31 +1121,31 @@
             <PHON kindOf="original">ʦau</PHON>
             <FORM kindOf="standard">cau</FORM>
             <PHON kindOf="standard">ʦau</PHON>
-            <TRANSL xml:lang="zho">人</TRANSL>
-            <TRANSL xml:lang="eng">person</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">人</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">person</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_4_W7M1">
                 <FORM kindOf="original">cau</FORM>
                 <PHON kindOf="original">ʦau</PHON>
                 <FORM kindOf="standard">cau</FORM>
                 <PHON kindOf="standard">ʦau</PHON>
-                <TRANSL xml:lang="eng">person</TRANSL>
-                <TRANSL xml:lang="zho">人</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">person</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">人</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_4_W8">
             <FORM kindOf="original">er</FORM>
-            <PHON kindOf="original">er~ɾ</PHON>
+            <PHON kindOf="original">e[r|ɾ]</PHON>
             <FORM kindOf="standard">er</FORM>
-            <PHON kindOf="standard">er~ɾ</PHON>
-            <TRANSL xml:lang="zho">FIL</TRANSL>
-            <TRANSL xml:lang="eng">FIL</TRANSL>
+            <PHON kindOf="standard">e[r|ɾ]</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_4_W8M1">
                 <FORM kindOf="original">er</FORM>
-                <PHON kindOf="original">er~ɾ</PHON>
+                <PHON kindOf="original">e[r|ɾ]</PHON>
                 <FORM kindOf="standard">er</FORM>
-                <PHON kindOf="standard">er~ɾ</PHON>
-                <TRANSL xml:lang="eng">FIL</TRANSL>
-                <TRANSL xml:lang="zho">FIL</TRANSL>
+                <PHON kindOf="standard">e[r|ɾ]</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_4_W9">
@@ -1153,15 +1153,15 @@
             <PHON kindOf="original">tia</PHON>
             <FORM kindOf="standard">tia</FORM>
             <PHON kindOf="standard">tia</PHON>
-            <TRANSL xml:lang="zho">非實現</TRANSL>
-            <TRANSL xml:lang="eng">IRR</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">IRR</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_4_W9M1">
                 <FORM kindOf="original">tia</FORM>
                 <PHON kindOf="original">tia</PHON>
                 <FORM kindOf="standard">tia</FORM>
                 <PHON kindOf="standard">tia</PHON>
-                <TRANSL xml:lang="eng">IRR</TRANSL>
-                <TRANSL xml:lang="zho">非實現</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">IRR</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_4_W10">
@@ -1169,64 +1169,64 @@
             <PHON kindOf="original">kaisisi</PHON>
             <FORM kindOf="standard">kaisisi</FORM>
             <PHON kindOf="standard">kaisisi</PHON>
-            <TRANSL xml:lang="zho">祭祀</TRANSL>
-            <TRANSL xml:lang="eng">worship</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">祭祀</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">worship</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_4_W10M1">
                 <FORM kindOf="original">kaisisi</FORM>
                 <PHON kindOf="original">kaisisi</PHON>
                 <FORM kindOf="standard">kaisisi</FORM>
                 <PHON kindOf="standard">kaisisi</PHON>
-                <TRANSL xml:lang="eng">worship</TRANSL>
-                <TRANSL xml:lang="zho">祭祀</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">worship</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">祭祀</TRANSL>
             </M>
         </W>
     </S>
     <S id="kkvNr_mikon_Kuatu_S_5">
         <FORM kindOf="original">a aranaiku Nʉ'ʉvana ia matikurucikia tikuru Kanakanavu tia matʉtʉa ha tikuru Kanakanavu masii mamanUng cU'UrUn.</FORM>
-        <PHON kindOf="original">a ar~ɾanaiku nɨʔɨvana ia matikur~ɾuʦikia tikur~ɾu kanakanavu tia matɨtɨa ha tikur~ɾu kanakanavu masii mamanuŋ ʦuʔur~ɾun.</PHON>
+        <PHON kindOf="original">a a[r|ɾ]anaiku nɨʔɨvana ia matiku[r|ɾ]uʦikia tiku[r|ɾ]u kanakanavu tia matɨtɨa ha tiku[r|ɾ]u kanakanavu masii mamanuŋ ʦuʔu[r|ɾ]un</PHON>
         <FORM kindOf="standard">a aranaiku Nʉ'ʉvana ia matikurucikia tikuru Kanakanavu tia matʉtʉa ha tikuru Kanakanavu masii mamanUng cU'UrUn.</FORM>
-        <PHON kindOf="standard">a ar~ɾanaiku nɨʔɨvana ia matikur~ɾuʦikia tikur~ɾu kanakanavu tia matɨtɨa ha tikur~ɾu kanakanavu masii mamanuŋ ʦuʔur~ɾun.</PHON>
+        <PHON kindOf="standard">a a[r|ɾ]anaiku nɨʔɨvana ia matiku[r|ɾ]uʦikia tiku[r|ɾ]u kanakanavu tia matɨtɨa ha tiku[r|ɾ]u kanakanavu masii mamanuŋ ʦuʔu[r|ɾ]un</PHON>
         <TRANSL xml:lang="zho">我從瑪雅里的時候,我就穿著Kanakanavu的衣服;要穿同樣是Kanakanavu的衣服,才會很好看.</TRANSL>
-        <TRANSL xml:lang="eng" notes="I kept wearing the Kanakanavu clothes from NU'Uvana; (we) had to wear the Kanakanavu clothes samely so that (we) looked good.">I kept wearing the Kanakanavu clothes from NU'Uvana; had to wear the Kanakanavu clothes samely so that looked good.</TRANSL>
+        <TRANSL xml:lang="eng">I kept wearing the Kanakanavu clothes from NU'Uvana; (we) had to wear the Kanakanavu clothes samely so that (we) looked good.</TRANSL>
         <AUDIO file="kkvNr_mikon_Kuatu_S5.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_mikon_Kuatu.mp3" start="58.23" end="69.56"/>
         <W id="kkvNr_mikon_Kuatu_S_5_W0">
             <FORM kindOf="original">a</FORM>
             <PHON kindOf="original">a</PHON>
             <FORM kindOf="standard">a</FORM>
             <PHON kindOf="standard">a</PHON>
-            <TRANSL xml:lang="zho">FIL</TRANSL>
-            <TRANSL xml:lang="eng">FIL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_5_W0M1">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="eng">FIL</TRANSL>
-                <TRANSL xml:lang="zho">FIL</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_5_W1">
             <FORM kindOf="original">aranai=ku</FORM>
-            <PHON kindOf="original">ar~ɾanai=ku</PHON>
+            <PHON kindOf="original">a[r|ɾ]anaiku</PHON>
             <FORM kindOf="standard">aranai=ku</FORM>
-            <PHON kindOf="standard">ar~ɾanai=ku</PHON>
-            <TRANSL xml:lang="zho">從.主焦=1SG.主格</TRANSL>
-            <TRANSL xml:lang="eng">from.AF=1SG.NOM</TRANSL>
+            <PHON kindOf="standard">a[r|ɾ]anaiku</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">從.主焦=1SG.主格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">from.AF=1SG.NOM</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_5_W1M1">
                 <FORM kindOf="original">aranai</FORM>
-                <PHON kindOf="original">ar~ɾanai</PHON>
+                <PHON kindOf="original">a[r|ɾ]anai</PHON>
                 <FORM kindOf="standard">aranai</FORM>
-                <PHON kindOf="standard">ar~ɾanai</PHON>
-                <TRANSL xml:lang="eng">from.AF</TRANSL>
-                <TRANSL xml:lang="zho">從.主焦</TRANSL>
+                <PHON kindOf="standard">a[r|ɾ]anai</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">from.AF</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">從.主焦</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_5_W1M2">
-                <FORM kindOf="original">ku</FORM>
+                <FORM kindOf="original">=ku</FORM>
                 <PHON kindOf="original">ku</PHON>
-                <FORM kindOf="standard">ku</FORM>
+                <FORM kindOf="standard">=ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
-                <TRANSL xml:lang="eng">1SG.NOM</TRANSL>
-                <TRANSL xml:lang="zho">1SG.主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1SG.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1SG.主格</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_5_W2">
@@ -1234,15 +1234,15 @@
             <PHON kindOf="original">nɨʔɨvana</PHON>
             <FORM kindOf="standard">Nʉ'ʉvana</FORM>
             <PHON kindOf="standard">nɨʔɨvana</PHON>
-            <TRANSL xml:lang="zho">瑪雅里</TRANSL>
-            <TRANSL xml:lang="eng">Nʉ'ʉvana</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">瑪雅里</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">Nʉ'ʉvana</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_5_W2M1">
                 <FORM kindOf="original">Nʉ'ʉvana</FORM>
                 <PHON kindOf="original">nɨʔɨvana</PHON>
                 <FORM kindOf="standard">Nʉ'ʉvana</FORM>
                 <PHON kindOf="standard">nɨʔɨvana</PHON>
-                <TRANSL xml:lang="eng">Nʉ'ʉvana</TRANSL>
-                <TRANSL xml:lang="zho">瑪雅里</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">Nʉ'ʉvana</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">瑪雅里</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_5_W3">
@@ -1250,71 +1250,71 @@
             <PHON kindOf="original">ia</PHON>
             <FORM kindOf="standard">ia</FORM>
             <PHON kindOf="standard">ia</PHON>
-            <TRANSL xml:lang="zho">主題</TRANSL>
-            <TRANSL xml:lang="eng">TOP</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_5_W3M1">
                 <FORM kindOf="original">ia</FORM>
                 <PHON kindOf="original">ia</PHON>
                 <FORM kindOf="standard">ia</FORM>
                 <PHON kindOf="standard">ia</PHON>
-                <TRANSL xml:lang="eng">TOP</TRANSL>
-                <TRANSL xml:lang="zho">主題</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_5_W4">
             <FORM kindOf="original">ma-tikuru=ci=kia</FORM>
-            <PHON kindOf="original">ma-tikur~ɾu=ʦi=kia</PHON>
+            <PHON kindOf="original">matiku[r|ɾ]uʦikia</PHON>
             <FORM kindOf="standard">ma-tikuru=ci=kia</FORM>
-            <PHON kindOf="standard">ma-tikur~ɾu=ʦi=kia</PHON>
-            <TRANSL xml:lang="zho">主焦-衣服=改變狀態=1SG.主格</TRANSL>
-            <TRANSL xml:lang="eng">AF-clothes=COS=1SG.NOM</TRANSL>
+            <PHON kindOf="standard">matiku[r|ɾ]uʦikia</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">主焦-衣服=改變狀態=1SG.主格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">AF-clothes=COS=1SG.NOM</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_5_W4M1">
                 <FORM kindOf="original">ma</FORM>
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
-                <TRANSL xml:lang="eng">AF</TRANSL>
-                <TRANSL xml:lang="zho">主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_5_W4M2">
                 <FORM kindOf="original">tikuru</FORM>
-                <PHON kindOf="original">tikur~ɾu</PHON>
+                <PHON kindOf="original">tiku[r|ɾ]u</PHON>
                 <FORM kindOf="standard">tikuru</FORM>
-                <PHON kindOf="standard">tikur~ɾu</PHON>
-                <TRANSL xml:lang="eng">clothes</TRANSL>
-                <TRANSL xml:lang="zho">衣服</TRANSL>
+                <PHON kindOf="standard">tiku[r|ɾ]u</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">clothes</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">衣服</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_5_W4M3">
-                <FORM kindOf="original">ci</FORM>
+                <FORM kindOf="original">=ci</FORM>
                 <PHON kindOf="original">ʦi</PHON>
-                <FORM kindOf="standard">ci</FORM>
+                <FORM kindOf="standard">=ci</FORM>
                 <PHON kindOf="standard">ʦi</PHON>
-                <TRANSL xml:lang="eng">COS</TRANSL>
-                <TRANSL xml:lang="zho">改變狀態</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_5_W4M4">
-                <FORM kindOf="original">kia</FORM>
+                <FORM kindOf="original">=kia</FORM>
                 <PHON kindOf="original">kia</PHON>
-                <FORM kindOf="standard">kia</FORM>
+                <FORM kindOf="standard">=kia</FORM>
                 <PHON kindOf="standard">kia</PHON>
-                <TRANSL xml:lang="eng">1SG.NOM</TRANSL>
-                <TRANSL xml:lang="zho">1SG.主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1SG.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1SG.主格</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_5_W5">
             <FORM kindOf="original">tikuru</FORM>
-            <PHON kindOf="original">tikur~ɾu</PHON>
+            <PHON kindOf="original">tiku[r|ɾ]u</PHON>
             <FORM kindOf="standard">tikuru</FORM>
-            <PHON kindOf="standard">tikur~ɾu</PHON>
-            <TRANSL xml:lang="zho">衣服</TRANSL>
-            <TRANSL xml:lang="eng">clothes</TRANSL>
+            <PHON kindOf="standard">tiku[r|ɾ]u</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">衣服</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">clothes</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_5_W5M1">
                 <FORM kindOf="original">tikuru</FORM>
-                <PHON kindOf="original">tikur~ɾu</PHON>
+                <PHON kindOf="original">tiku[r|ɾ]u</PHON>
                 <FORM kindOf="standard">tikuru</FORM>
-                <PHON kindOf="standard">tikur~ɾu</PHON>
-                <TRANSL xml:lang="eng">clothes</TRANSL>
-                <TRANSL xml:lang="zho">衣服</TRANSL>
+                <PHON kindOf="standard">tiku[r|ɾ]u</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">clothes</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">衣服</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_5_W6">
@@ -1322,15 +1322,15 @@
             <PHON kindOf="original">kanakanavu</PHON>
             <FORM kindOf="standard">Kanakanavu</FORM>
             <PHON kindOf="standard">kanakanavu</PHON>
-            <TRANSL xml:lang="zho">Kanakanavu</TRANSL>
-            <TRANSL xml:lang="eng">Kanakanavu</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">Kanakanavu</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">Kanakanavu</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_5_W6M1">
                 <FORM kindOf="original">Kanakanavu</FORM>
                 <PHON kindOf="original">kanakanavu</PHON>
                 <FORM kindOf="standard">Kanakanavu</FORM>
                 <PHON kindOf="standard">kanakanavu</PHON>
-                <TRANSL xml:lang="eng">Kanakanavu</TRANSL>
-                <TRANSL xml:lang="zho">Kanakanavu</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">Kanakanavu</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">Kanakanavu</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_5_W7">
@@ -1338,15 +1338,15 @@
             <PHON kindOf="original">tia</PHON>
             <FORM kindOf="standard">tia</FORM>
             <PHON kindOf="standard">tia</PHON>
-            <TRANSL xml:lang="zho">非實現</TRANSL>
-            <TRANSL xml:lang="eng">IRR</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">IRR</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_5_W7M1">
                 <FORM kindOf="original">tia</FORM>
                 <PHON kindOf="original">tia</PHON>
                 <FORM kindOf="standard">tia</FORM>
                 <PHON kindOf="standard">tia</PHON>
-                <TRANSL xml:lang="eng">IRR</TRANSL>
-                <TRANSL xml:lang="zho">非實現</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">IRR</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_5_W8">
@@ -1354,15 +1354,15 @@
             <PHON kindOf="original">matɨtɨa</PHON>
             <FORM kindOf="standard">matʉtʉa</FORM>
             <PHON kindOf="standard">matɨtɨa</PHON>
-            <TRANSL xml:lang="zho">相同.主焦</TRANSL>
-            <TRANSL xml:lang="eng">same.AF</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">相同.主焦</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">same.AF</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_5_W8M1">
                 <FORM kindOf="original">matʉtʉa</FORM>
                 <PHON kindOf="original">matɨtɨa</PHON>
                 <FORM kindOf="standard">matʉtʉa</FORM>
                 <PHON kindOf="standard">matɨtɨa</PHON>
-                <TRANSL xml:lang="eng">same.AF</TRANSL>
-                <TRANSL xml:lang="zho">相同.主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">same.AF</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">相同.主焦</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_5_W9">
@@ -1370,31 +1370,31 @@
             <PHON kindOf="original">ha</PHON>
             <FORM kindOf="standard">ha</FORM>
             <PHON kindOf="standard">ha</PHON>
-            <TRANSL xml:lang="zho">主題</TRANSL>
-            <TRANSL xml:lang="eng">TOP</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_5_W9M1">
                 <FORM kindOf="original">ha</FORM>
                 <PHON kindOf="original">ha</PHON>
                 <FORM kindOf="standard">ha</FORM>
                 <PHON kindOf="standard">ha</PHON>
-                <TRANSL xml:lang="eng">TOP</TRANSL>
-                <TRANSL xml:lang="zho">主題</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_5_W10">
             <FORM kindOf="original">tikuru</FORM>
-            <PHON kindOf="original">tikur~ɾu</PHON>
+            <PHON kindOf="original">tiku[r|ɾ]u</PHON>
             <FORM kindOf="standard">tikuru</FORM>
-            <PHON kindOf="standard">tikur~ɾu</PHON>
-            <TRANSL xml:lang="zho">衣服</TRANSL>
-            <TRANSL xml:lang="eng">clothes</TRANSL>
+            <PHON kindOf="standard">tiku[r|ɾ]u</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">衣服</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">clothes</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_5_W10M1">
                 <FORM kindOf="original">tikuru</FORM>
-                <PHON kindOf="original">tikur~ɾu</PHON>
+                <PHON kindOf="original">tiku[r|ɾ]u</PHON>
                 <FORM kindOf="standard">tikuru</FORM>
-                <PHON kindOf="standard">tikur~ɾu</PHON>
-                <TRANSL xml:lang="eng">clothes</TRANSL>
-                <TRANSL xml:lang="zho">衣服</TRANSL>
+                <PHON kindOf="standard">tiku[r|ɾ]u</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">clothes</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">衣服</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_5_W11">
@@ -1402,15 +1402,15 @@
             <PHON kindOf="original">kanakanavu</PHON>
             <FORM kindOf="standard">Kanakanavu</FORM>
             <PHON kindOf="standard">kanakanavu</PHON>
-            <TRANSL xml:lang="zho">Kanakanavu</TRANSL>
-            <TRANSL xml:lang="eng">Kanakanavu</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">Kanakanavu</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">Kanakanavu</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_5_W11M1">
                 <FORM kindOf="original">Kanakanavu</FORM>
                 <PHON kindOf="original">kanakanavu</PHON>
                 <FORM kindOf="standard">Kanakanavu</FORM>
                 <PHON kindOf="standard">kanakanavu</PHON>
-                <TRANSL xml:lang="eng">Kanakanavu</TRANSL>
-                <TRANSL xml:lang="zho">Kanakanavu</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">Kanakanavu</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">Kanakanavu</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_5_W12">
@@ -1418,15 +1418,15 @@
             <PHON kindOf="original">masii</PHON>
             <FORM kindOf="standard">masii</FORM>
             <PHON kindOf="standard">masii</PHON>
-            <TRANSL xml:lang="zho">才會</TRANSL>
-            <TRANSL xml:lang="eng">so.that</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">才會</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">so.that</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_5_W12M1">
                 <FORM kindOf="original">masii</FORM>
                 <PHON kindOf="original">masii</PHON>
                 <FORM kindOf="standard">masii</FORM>
                 <PHON kindOf="standard">masii</PHON>
-                <TRANSL xml:lang="eng">so.that</TRANSL>
-                <TRANSL xml:lang="zho">才會</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">so.that</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">才會</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_5_W13">
@@ -1434,96 +1434,96 @@
             <PHON kindOf="original">mamanuŋ</PHON>
             <FORM kindOf="standard">mamanUng</FORM>
             <PHON kindOf="standard">mamanuŋ</PHON>
-            <TRANSL xml:lang="zho">好</TRANSL>
-            <TRANSL xml:lang="eng">good</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">好</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">good</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_5_W13M1">
                 <FORM kindOf="original">mamanUng</FORM>
                 <PHON kindOf="original">mamanuŋ</PHON>
                 <FORM kindOf="standard">mamanUng</FORM>
                 <PHON kindOf="standard">mamanuŋ</PHON>
-                <TRANSL xml:lang="eng">good</TRANSL>
-                <TRANSL xml:lang="zho">好</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">good</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">好</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_5_W14">
             <FORM kindOf="original">cU'Ur-Un</FORM>
-            <PHON kindOf="original">ʦuʔur~ɾ-un</PHON>
+            <PHON kindOf="original">ʦuʔu[r|ɾ]un</PHON>
             <FORM kindOf="standard">cU'Ur-Un</FORM>
-            <PHON kindOf="standard">ʦuʔur~ɾ-un</PHON>
-            <TRANSL xml:lang="zho">看-受焦</TRANSL>
-            <TRANSL xml:lang="eng">see-PF</TRANSL>
+            <PHON kindOf="standard">ʦuʔu[r|ɾ]un</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">看-受焦</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">see-PF</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_5_W14M1">
                 <FORM kindOf="original">cU'Ur</FORM>
-                <PHON kindOf="original">ʦuʔur~ɾ</PHON>
+                <PHON kindOf="original">ʦuʔu[r|ɾ]</PHON>
                 <FORM kindOf="standard">cU'Ur</FORM>
-                <PHON kindOf="standard">ʦuʔur~ɾ</PHON>
-                <TRANSL xml:lang="eng">see</TRANSL>
-                <TRANSL xml:lang="zho">看</TRANSL>
+                <PHON kindOf="standard">ʦuʔu[r|ɾ]</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">see</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">看</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_5_W14M2">
                 <FORM kindOf="original">Un</FORM>
                 <PHON kindOf="original">un</PHON>
                 <FORM kindOf="standard">Un</FORM>
                 <PHON kindOf="standard">un</PHON>
-                <TRANSL xml:lang="eng">PF</TRANSL>
-                <TRANSL xml:lang="zho">受焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PF</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">受焦</TRANSL>
             </M>
         </W>
     </S>
     <S id="kkvNr_mikon_Kuatu_S_6">
-        <FORM kindOf="original">matacuvucuvuuncikia nia na Tanganua er UtUmUkUmUkUn cau.</FORM>
-        <PHON kindOf="original">mataʦuvuʦuvuunʦikia nia na taŋanua er~ɾ utumukumukun ʦau.</PHON>
+        <FORM kindOf="original" notes="source note: nia等同於'inia。">matacuvucuvuuncikia nia na Tanganua er UtUmUkUmUkUn cau.</FORM>
+        <PHON kindOf="original">mataʦuvuʦuvuunʦikia nia na taŋanua e[r|ɾ] utumukumukun ʦau</PHON>
         <FORM kindOf="standard">matacuvucuvuuncikia nia na Tanganua er UtUmUkUmUkUn cau.</FORM>
-        <PHON kindOf="standard">mataʦuvuʦuvuunʦikia nia na taŋanua er~ɾ utumukumukun ʦau.</PHON>
+        <PHON kindOf="standard">mataʦuvuʦuvuunʦikia nia na taŋanua e[r|ɾ] utumukumukun ʦau</PHON>
         <TRANSL xml:lang="zho">我們就在達卡努瓦里那裡聚在一起;人們聚在一起.</TRANSL>
-        <TRANSL xml:lang="eng" notes="I (We) gathered together there in Tanganua; people gathered together.">I gathered together there in Tanganua; people gathered together.</TRANSL>
+        <TRANSL xml:lang="eng">I (We) gathered together there in Tanganua; people gathered together.</TRANSL>
         <AUDIO file="kkvNr_mikon_Kuatu_S6.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_mikon_Kuatu.mp3" start="69.56" end="76.87"/>
         <W id="kkvNr_mikon_Kuatu_S_6_W0">
             <FORM kindOf="original">mata-cuvu-cuvuun=ci=kia</FORM>
-            <PHON kindOf="original">mata-ʦuvu-ʦuvuun=ʦi=kia</PHON>
+            <PHON kindOf="original">mataʦuvuʦuvuunʦikia</PHON>
             <FORM kindOf="standard">mata-cuvu-cuvuun=ci=kia</FORM>
-            <PHON kindOf="standard">mata-ʦuvu-ʦuvuun=ʦi=kia</PHON>
-            <TRANSL xml:lang="zho">聚在一起-重疊-聚在一起=語助詞=1SG.主格</TRANSL>
-            <TRANSL xml:lang="eng">gather.together-RED-gather.together=PART=1SG.NOM</TRANSL>
+            <PHON kindOf="standard">mataʦuvuʦuvuunʦikia</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">聚在一起-重疊-聚在一起=語助詞=1SG.主格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">gather.together-RED-gather.together=PART=1SG.NOM</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_6_W0M1">
                 <FORM kindOf="original">mata</FORM>
                 <PHON kindOf="original">mata</PHON>
                 <FORM kindOf="standard">mata</FORM>
                 <PHON kindOf="standard">mata</PHON>
-                <TRANSL xml:lang="eng">gather.together</TRANSL>
-                <TRANSL xml:lang="zho">聚在一起</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">gather.together</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">聚在一起</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_6_W0M2">
                 <FORM kindOf="original">cuvu</FORM>
                 <PHON kindOf="original">ʦuvu</PHON>
                 <FORM kindOf="standard">cuvu</FORM>
                 <PHON kindOf="standard">ʦuvu</PHON>
-                <TRANSL xml:lang="eng">RED</TRANSL>
-                <TRANSL xml:lang="zho">重疊</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">重疊</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_6_W0M3">
                 <FORM kindOf="original">cuvuun</FORM>
                 <PHON kindOf="original">ʦuvuun</PHON>
                 <FORM kindOf="standard">cuvuun</FORM>
                 <PHON kindOf="standard">ʦuvuun</PHON>
-                <TRANSL xml:lang="eng">gather.together</TRANSL>
-                <TRANSL xml:lang="zho">聚在一起</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">gather.together</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">聚在一起</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_6_W0M4">
-                <FORM kindOf="original">ci</FORM>
+                <FORM kindOf="original">=ci</FORM>
                 <PHON kindOf="original">ʦi</PHON>
-                <FORM kindOf="standard">ci</FORM>
+                <FORM kindOf="standard">=ci</FORM>
                 <PHON kindOf="standard">ʦi</PHON>
-                <TRANSL xml:lang="eng">PART</TRANSL>
-                <TRANSL xml:lang="zho">語助詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_6_W0M5">
-                <FORM kindOf="original">kia</FORM>
+                <FORM kindOf="original">=kia</FORM>
                 <PHON kindOf="original">kia</PHON>
-                <FORM kindOf="standard">kia</FORM>
+                <FORM kindOf="standard">=kia</FORM>
                 <PHON kindOf="standard">kia</PHON>
-                <TRANSL xml:lang="eng">1SG.NOM</TRANSL>
-                <TRANSL xml:lang="zho">1SG.主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1SG.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1SG.主格</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_6_W1">
@@ -1531,15 +1531,15 @@
             <PHON kindOf="original">nia</PHON>
             <FORM kindOf="standard">nia</FORM>
             <PHON kindOf="standard">nia</PHON>
-            <TRANSL xml:lang="zho">那裡</TRANSL>
-            <TRANSL xml:lang="eng">there</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">那裡</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">there</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_6_W1M1">
                 <FORM kindOf="original">nia</FORM>
                 <PHON kindOf="original">nia</PHON>
                 <FORM kindOf="standard">nia</FORM>
                 <PHON kindOf="standard">nia</PHON>
-                <TRANSL xml:lang="eng">there</TRANSL>
-                <TRANSL xml:lang="zho">那裡</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">there</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">那裡</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_6_W2">
@@ -1547,15 +1547,15 @@
             <PHON kindOf="original">na</PHON>
             <FORM kindOf="standard">na</FORM>
             <PHON kindOf="standard">na</PHON>
-            <TRANSL xml:lang="zho">處格</TRANSL>
-            <TRANSL xml:lang="eng">LOC</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_6_W2M1">
                 <FORM kindOf="original">na</FORM>
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="eng">LOC</TRANSL>
-                <TRANSL xml:lang="zho">處格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_6_W3">
@@ -1563,31 +1563,31 @@
             <PHON kindOf="original">taŋanua</PHON>
             <FORM kindOf="standard">Tanganua</FORM>
             <PHON kindOf="standard">taŋanua</PHON>
-            <TRANSL xml:lang="zho">達卡努瓦里</TRANSL>
-            <TRANSL xml:lang="eng">Tanganua</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">達卡努瓦里</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">Tanganua</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_6_W3M1">
                 <FORM kindOf="original">Tanganua</FORM>
                 <PHON kindOf="original">taŋanua</PHON>
                 <FORM kindOf="standard">Tanganua</FORM>
                 <PHON kindOf="standard">taŋanua</PHON>
-                <TRANSL xml:lang="eng">Tanganua</TRANSL>
-                <TRANSL xml:lang="zho">達卡努瓦里</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">Tanganua</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">達卡努瓦里</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_6_W4">
             <FORM kindOf="original">er</FORM>
-            <PHON kindOf="original">er~ɾ</PHON>
+            <PHON kindOf="original">e[r|ɾ]</PHON>
             <FORM kindOf="standard">er</FORM>
-            <PHON kindOf="standard">er~ɾ</PHON>
-            <TRANSL xml:lang="zho">FIL</TRANSL>
-            <TRANSL xml:lang="eng">FIL</TRANSL>
+            <PHON kindOf="standard">e[r|ɾ]</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_6_W4M1">
                 <FORM kindOf="original">er</FORM>
-                <PHON kindOf="original">er~ɾ</PHON>
+                <PHON kindOf="original">e[r|ɾ]</PHON>
                 <FORM kindOf="standard">er</FORM>
-                <PHON kindOf="standard">er~ɾ</PHON>
-                <TRANSL xml:lang="eng">FIL</TRANSL>
-                <TRANSL xml:lang="zho">FIL</TRANSL>
+                <PHON kindOf="standard">e[r|ɾ]</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_6_W5">
@@ -1595,15 +1595,15 @@
             <PHON kindOf="original">utumukumukun</PHON>
             <FORM kindOf="standard">UtUmUkUmUkUn</FORM>
             <PHON kindOf="standard">utumukumukun</PHON>
-            <TRANSL xml:lang="zho">聚在一起</TRANSL>
-            <TRANSL xml:lang="eng">gather.together</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">聚在一起</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">gather.together</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_6_W5M1">
                 <FORM kindOf="original">UtUmUkUmUkUn</FORM>
                 <PHON kindOf="original">utumukumukun</PHON>
                 <FORM kindOf="standard">UtUmUkUmUkUn</FORM>
                 <PHON kindOf="standard">utumukumukun</PHON>
-                <TRANSL xml:lang="eng">gather.together</TRANSL>
-                <TRANSL xml:lang="zho">聚在一起</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">gather.together</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">聚在一起</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_6_W6">
@@ -1611,56 +1611,56 @@
             <PHON kindOf="original">ʦau</PHON>
             <FORM kindOf="standard">cau</FORM>
             <PHON kindOf="standard">ʦau</PHON>
-            <TRANSL xml:lang="zho">人</TRANSL>
-            <TRANSL xml:lang="eng">person</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">人</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">person</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_6_W6M1">
                 <FORM kindOf="original">cau</FORM>
                 <PHON kindOf="original">ʦau</PHON>
                 <FORM kindOf="standard">cau</FORM>
                 <PHON kindOf="standard">ʦau</PHON>
-                <TRANSL xml:lang="eng">person</TRANSL>
-                <TRANSL xml:lang="zho">人</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">person</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">人</TRANSL>
             </M>
         </W>
     </S>
     <S id="kkvNr_mikon_Kuatu_S_7">
-        <FORM kindOf="original">paracan er pa paracan er makasuacu kumakʉn matirupangʉciparacan ia te er makasicu cau tu tecikia kumakʉn.</FORM>
-        <PHON kindOf="original">par~ɾaʦan er~ɾ pa par~ɾaʦan er~ɾ makasuaʦu kumakɨn matir~ɾupaŋɨʦipar~ɾaʦan ia te er~ɾ makasiʦu ʦau tu teʦikia kumakɨn.</PHON>
+        <FORM kindOf="original" notes="source note: tu為布農語單字間的連詞。">paracan er pa paracan er makasuacu kumakʉn matirupangʉciparacan ia te er makasicu cau tu tecikia kumakʉn.</FORM>
+        <PHON kindOf="original">pa[r|ɾ]aʦan e[r|ɾ] pa pa[r|ɾ]aʦan e[r|ɾ] makasuaʦu kumakɨn mati[r|ɾ]upaŋɨʦipa[r|ɾ]aʦan ia te e[r|ɾ] makasiʦu ʦau tu teʦikia kumakɨn</PHON>
         <FORM kindOf="standard">paracan er pa paracan er makasuacu kumakʉn matirupangʉciparacan ia te er makasicu cau tu tecikia kumakʉn.</FORM>
-        <PHON kindOf="standard">par~ɾaʦan er~ɾ pa par~ɾaʦan er~ɾ makasuaʦu kumakɨn matir~ɾupaŋɨʦipar~ɾaʦan ia te er~ɾ makasiʦu ʦau tu teʦikia kumakɨn.</PHON>
-        <TRANSL xml:lang="zho" notes="(大家)就這樣唱著、吃著;唱完歌之後,人們就說著:「我們要吃了.」">就這樣唱著、吃著;唱完歌之後,人們就說著:「我們要吃了.」</TRANSL>
+        <PHON kindOf="standard">pa[r|ɾ]aʦan e[r|ɾ] pa pa[r|ɾ]aʦan e[r|ɾ] makasuaʦu kumakɨn mati[r|ɾ]upaŋɨʦipa[r|ɾ]aʦan ia te e[r|ɾ] makasiʦu ʦau tu teʦikia kumakɨn</PHON>
+        <TRANSL xml:lang="zho">(大家)就這樣唱著、吃著;唱完歌之後,人們就說著:＂我們要吃了.＂</TRANSL>
         <TRANSL xml:lang="eng">Every one kept singing and eating in that way; after finishing singing, people said: "we are going to eat."</TRANSL>
         <AUDIO file="kkvNr_mikon_Kuatu_S7.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_mikon_Kuatu.mp3" start="76.87" end="100.64"/>
         <W id="kkvNr_mikon_Kuatu_S_7_W0">
             <FORM kindOf="original">paracan</FORM>
-            <PHON kindOf="original">par~ɾaʦan</PHON>
+            <PHON kindOf="original">pa[r|ɾ]aʦan</PHON>
             <FORM kindOf="standard">paracan</FORM>
-            <PHON kindOf="standard">par~ɾaʦan</PHON>
-            <TRANSL xml:lang="zho">唱.主焦</TRANSL>
-            <TRANSL xml:lang="eng">sing.AF</TRANSL>
+            <PHON kindOf="standard">pa[r|ɾ]aʦan</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">唱.主焦</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">sing.AF</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_7_W0M1">
                 <FORM kindOf="original">paracan</FORM>
-                <PHON kindOf="original">par~ɾaʦan</PHON>
+                <PHON kindOf="original">pa[r|ɾ]aʦan</PHON>
                 <FORM kindOf="standard">paracan</FORM>
-                <PHON kindOf="standard">par~ɾaʦan</PHON>
-                <TRANSL xml:lang="eng">sing.AF</TRANSL>
-                <TRANSL xml:lang="zho">唱.主焦</TRANSL>
+                <PHON kindOf="standard">pa[r|ɾ]aʦan</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">sing.AF</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">唱.主焦</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_7_W1">
             <FORM kindOf="original">er</FORM>
-            <PHON kindOf="original">er~ɾ</PHON>
+            <PHON kindOf="original">e[r|ɾ]</PHON>
             <FORM kindOf="standard">er</FORM>
-            <PHON kindOf="standard">er~ɾ</PHON>
-            <TRANSL xml:lang="zho">FIL</TRANSL>
-            <TRANSL xml:lang="eng">FIL</TRANSL>
+            <PHON kindOf="standard">e[r|ɾ]</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_7_W1M1">
                 <FORM kindOf="original">er</FORM>
-                <PHON kindOf="original">er~ɾ</PHON>
+                <PHON kindOf="original">e[r|ɾ]</PHON>
                 <FORM kindOf="standard">er</FORM>
-                <PHON kindOf="standard">er~ɾ</PHON>
-                <TRANSL xml:lang="eng">FIL</TRANSL>
-                <TRANSL xml:lang="zho">FIL</TRANSL>
+                <PHON kindOf="standard">e[r|ɾ]</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_7_W2">
@@ -1668,143 +1668,143 @@
             <PHON kindOf="original">pa</PHON>
             <FORM kindOf="standard">pa</FORM>
             <PHON kindOf="standard">pa</PHON>
-            <TRANSL xml:lang="zho">FS</TRANSL>
-            <TRANSL xml:lang="eng">FS</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_7_W2M1">
                 <FORM kindOf="original">pa</FORM>
                 <PHON kindOf="original">pa</PHON>
                 <FORM kindOf="standard">pa</FORM>
                 <PHON kindOf="standard">pa</PHON>
-                <TRANSL xml:lang="eng">FS</TRANSL>
-                <TRANSL xml:lang="zho">FS</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_7_W3">
             <FORM kindOf="original">paracan</FORM>
-            <PHON kindOf="original">par~ɾaʦan</PHON>
+            <PHON kindOf="original">pa[r|ɾ]aʦan</PHON>
             <FORM kindOf="standard">paracan</FORM>
-            <PHON kindOf="standard">par~ɾaʦan</PHON>
-            <TRANSL xml:lang="zho">唱.主焦</TRANSL>
-            <TRANSL xml:lang="eng">sing.AF</TRANSL>
+            <PHON kindOf="standard">pa[r|ɾ]aʦan</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">唱.主焦</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">sing.AF</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_7_W3M1">
                 <FORM kindOf="original">paracan</FORM>
-                <PHON kindOf="original">par~ɾaʦan</PHON>
+                <PHON kindOf="original">pa[r|ɾ]aʦan</PHON>
                 <FORM kindOf="standard">paracan</FORM>
-                <PHON kindOf="standard">par~ɾaʦan</PHON>
-                <TRANSL xml:lang="eng">sing.AF</TRANSL>
-                <TRANSL xml:lang="zho">唱.主焦</TRANSL>
+                <PHON kindOf="standard">pa[r|ɾ]aʦan</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">sing.AF</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">唱.主焦</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_7_W4">
             <FORM kindOf="original">er</FORM>
-            <PHON kindOf="original">er~ɾ</PHON>
+            <PHON kindOf="original">e[r|ɾ]</PHON>
             <FORM kindOf="standard">er</FORM>
-            <PHON kindOf="standard">er~ɾ</PHON>
-            <TRANSL xml:lang="zho">FIL</TRANSL>
-            <TRANSL xml:lang="eng">FIL</TRANSL>
+            <PHON kindOf="standard">e[r|ɾ]</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_7_W4M1">
                 <FORM kindOf="original">er</FORM>
-                <PHON kindOf="original">er~ɾ</PHON>
+                <PHON kindOf="original">e[r|ɾ]</PHON>
                 <FORM kindOf="standard">er</FORM>
-                <PHON kindOf="standard">er~ɾ</PHON>
-                <TRANSL xml:lang="eng">FIL</TRANSL>
-                <TRANSL xml:lang="zho">FIL</TRANSL>
+                <PHON kindOf="standard">e[r|ɾ]</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_7_W5">
             <FORM kindOf="original">makasua=cu</FORM>
-            <PHON kindOf="original">makasua=ʦu</PHON>
+            <PHON kindOf="original">makasuaʦu</PHON>
             <FORM kindOf="standard">makasua=cu</FORM>
-            <PHON kindOf="standard">makasua=ʦu</PHON>
-            <TRANSL xml:lang="zho">那樣=語助詞</TRANSL>
-            <TRANSL xml:lang="eng">in.that.way=PART</TRANSL>
+            <PHON kindOf="standard">makasuaʦu</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">那樣=語助詞</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">in.that.way=PART</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_7_W5M1">
                 <FORM kindOf="original">makasua</FORM>
                 <PHON kindOf="original">makasua</PHON>
                 <FORM kindOf="standard">makasua</FORM>
                 <PHON kindOf="standard">makasua</PHON>
-                <TRANSL xml:lang="eng">in.that.way</TRANSL>
-                <TRANSL xml:lang="zho">那樣</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">in.that.way</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">那樣</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_7_W5M2">
-                <FORM kindOf="original">cu</FORM>
+                <FORM kindOf="original">=cu</FORM>
                 <PHON kindOf="original">ʦu</PHON>
-                <FORM kindOf="standard">cu</FORM>
+                <FORM kindOf="standard">=cu</FORM>
                 <PHON kindOf="standard">ʦu</PHON>
-                <TRANSL xml:lang="eng">PART</TRANSL>
-                <TRANSL xml:lang="zho">語助詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_7_W6">
             <FORM kindOf="original">k&lt;um&gt;a-kʉn</FORM>
-            <PHON kindOf="original">k&lt;um&gt;a-kɨn</PHON>
+            <PHON kindOf="original">kumakɨn</PHON>
             <FORM kindOf="standard">k&lt;um&gt;a-kʉn</FORM>
-            <PHON kindOf="standard">k&lt;um&gt;a-kɨn</PHON>
-            <TRANSL xml:lang="zho">K&lt;主焦&gt;A-吃</TRANSL>
-            <TRANSL xml:lang="eng">K&lt;AF&gt;A-eat</TRANSL>
+            <PHON kindOf="standard">kumakɨn</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">K&lt;主焦&gt;A-吃</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">K&lt;AF&gt;A-eat</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_7_W6M1">
                 <FORM kindOf="original">-um-</FORM>
-                <PHON kindOf="original">-um-</PHON>
+                <PHON kindOf="original">um</PHON>
                 <FORM kindOf="standard">-um-</FORM>
-                <PHON kindOf="standard">-um-</PHON>
-                <TRANSL xml:lang="eng">&lt;AF&gt;</TRANSL>
-                <TRANSL xml:lang="zho">&lt;主焦&gt;</TRANSL>
+                <PHON kindOf="standard">um</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_7_W6M2">
                 <FORM kindOf="original">k-a</FORM>
-                <PHON kindOf="original">k-a</PHON>
+                <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">k-a</FORM>
-                <PHON kindOf="standard">k-a</PHON>
-                <TRANSL xml:lang="eng">KA</TRANSL>
-                <TRANSL xml:lang="zho">KA</TRANSL>
+                <PHON kindOf="standard">ka</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">KA</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">KA</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_7_W6M3">
                 <FORM kindOf="original">kʉn</FORM>
                 <PHON kindOf="original">kɨn</PHON>
                 <FORM kindOf="standard">kʉn</FORM>
                 <PHON kindOf="standard">kɨn</PHON>
-                <TRANSL xml:lang="eng">eat</TRANSL>
-                <TRANSL xml:lang="zho">吃</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">eat</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">吃</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_7_W7">
             <FORM kindOf="original">ma-tirupangʉ=ci=paracan</FORM>
-            <PHON kindOf="original">ma-tir~ɾupaŋɨ=ʦi=par~ɾaʦan</PHON>
+            <PHON kindOf="original">mati[r|ɾ]upaŋɨʦipa[r|ɾ]aʦan</PHON>
             <FORM kindOf="standard">ma-tirupangʉ=ci=paracan</FORM>
-            <PHON kindOf="standard">ma-tir~ɾupaŋɨ=ʦi=par~ɾaʦan</PHON>
-            <TRANSL xml:lang="zho">主焦-完成=語助詞=唱.主焦</TRANSL>
-            <TRANSL xml:lang="eng">AF-finish=PART=sing.AF</TRANSL>
+            <PHON kindOf="standard">mati[r|ɾ]upaŋɨʦipa[r|ɾ]aʦan</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">主焦-完成=語助詞=唱.主焦</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">AF-finish=PART=sing.AF</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_7_W7M1">
                 <FORM kindOf="original">ma</FORM>
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
-                <TRANSL xml:lang="eng">AF</TRANSL>
-                <TRANSL xml:lang="zho">主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_7_W7M2">
                 <FORM kindOf="original">tirupangʉ</FORM>
-                <PHON kindOf="original">tir~ɾupaŋɨ</PHON>
+                <PHON kindOf="original">ti[r|ɾ]upaŋɨ</PHON>
                 <FORM kindOf="standard">tirupangʉ</FORM>
-                <PHON kindOf="standard">tir~ɾupaŋɨ</PHON>
-                <TRANSL xml:lang="eng">finish</TRANSL>
-                <TRANSL xml:lang="zho">完成</TRANSL>
+                <PHON kindOf="standard">ti[r|ɾ]upaŋɨ</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">finish</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">完成</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_7_W7M3">
-                <FORM kindOf="original">ci</FORM>
+                <FORM kindOf="original">=ci</FORM>
                 <PHON kindOf="original">ʦi</PHON>
-                <FORM kindOf="standard">ci</FORM>
+                <FORM kindOf="standard">=ci</FORM>
                 <PHON kindOf="standard">ʦi</PHON>
-                <TRANSL xml:lang="eng">PART</TRANSL>
-                <TRANSL xml:lang="zho">語助詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_7_W7M4">
-                <FORM kindOf="original">paracan</FORM>
-                <PHON kindOf="original">par~ɾaʦan</PHON>
-                <FORM kindOf="standard">paracan</FORM>
-                <PHON kindOf="standard">par~ɾaʦan</PHON>
-                <TRANSL xml:lang="eng">sing.AF</TRANSL>
-                <TRANSL xml:lang="zho">唱.主焦</TRANSL>
+                <FORM kindOf="original">=paracan</FORM>
+                <PHON kindOf="original">pa[r|ɾ]aʦan</PHON>
+                <FORM kindOf="standard">=paracan</FORM>
+                <PHON kindOf="standard">pa[r|ɾ]aʦan</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">sing.AF</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">唱.主焦</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_7_W8">
@@ -1812,15 +1812,15 @@
             <PHON kindOf="original">ia</PHON>
             <FORM kindOf="standard">ia</FORM>
             <PHON kindOf="standard">ia</PHON>
-            <TRANSL xml:lang="zho">主題</TRANSL>
-            <TRANSL xml:lang="eng">TOP</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_7_W8M1">
                 <FORM kindOf="original">ia</FORM>
                 <PHON kindOf="original">ia</PHON>
                 <FORM kindOf="standard">ia</FORM>
                 <PHON kindOf="standard">ia</PHON>
-                <TRANSL xml:lang="eng">TOP</TRANSL>
-                <TRANSL xml:lang="zho">主題</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_7_W9">
@@ -1828,63 +1828,63 @@
             <PHON kindOf="original">te</PHON>
             <FORM kindOf="standard">te</FORM>
             <PHON kindOf="standard">te</PHON>
-            <TRANSL xml:lang="zho">非實現</TRANSL>
-            <TRANSL xml:lang="eng">IRR</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">IRR</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_7_W9M1">
                 <FORM kindOf="original">te</FORM>
                 <PHON kindOf="original">te</PHON>
                 <FORM kindOf="standard">te</FORM>
                 <PHON kindOf="standard">te</PHON>
-                <TRANSL xml:lang="eng">IRR</TRANSL>
-                <TRANSL xml:lang="zho">非實現</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">IRR</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_7_W10">
             <FORM kindOf="original">er</FORM>
-            <PHON kindOf="original">er~ɾ</PHON>
+            <PHON kindOf="original">e[r|ɾ]</PHON>
             <FORM kindOf="standard">er</FORM>
-            <PHON kindOf="standard">er~ɾ</PHON>
-            <TRANSL xml:lang="zho">FIL</TRANSL>
-            <TRANSL xml:lang="eng">FIL</TRANSL>
+            <PHON kindOf="standard">e[r|ɾ]</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_7_W10M1">
                 <FORM kindOf="original">er</FORM>
-                <PHON kindOf="original">er~ɾ</PHON>
+                <PHON kindOf="original">e[r|ɾ]</PHON>
                 <FORM kindOf="standard">er</FORM>
-                <PHON kindOf="standard">er~ɾ</PHON>
-                <TRANSL xml:lang="eng">FIL</TRANSL>
-                <TRANSL xml:lang="zho">FIL</TRANSL>
+                <PHON kindOf="standard">e[r|ɾ]</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_7_W11">
             <FORM kindOf="original">m-akasi=cu</FORM>
-            <PHON kindOf="original">m-akasi=ʦu</PHON>
+            <PHON kindOf="original">makasiʦu</PHON>
             <FORM kindOf="standard">m-akasi=cu</FORM>
-            <PHON kindOf="standard">m-akasi=ʦu</PHON>
-            <TRANSL xml:lang="zho">主焦-說=語助詞</TRANSL>
-            <TRANSL xml:lang="eng">AF-say=PART</TRANSL>
+            <PHON kindOf="standard">makasiʦu</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">主焦-說=語助詞</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">AF-say=PART</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_7_W11M1">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="eng">AF</TRANSL>
-                <TRANSL xml:lang="zho">主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_7_W11M2">
                 <FORM kindOf="original">akasi</FORM>
                 <PHON kindOf="original">akasi</PHON>
                 <FORM kindOf="standard">akasi</FORM>
                 <PHON kindOf="standard">akasi</PHON>
-                <TRANSL xml:lang="eng">say</TRANSL>
-                <TRANSL xml:lang="zho">說</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">say</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">說</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_7_W11M3">
-                <FORM kindOf="original">cu</FORM>
+                <FORM kindOf="original">=cu</FORM>
                 <PHON kindOf="original">ʦu</PHON>
-                <FORM kindOf="standard">cu</FORM>
+                <FORM kindOf="standard">=cu</FORM>
                 <PHON kindOf="standard">ʦu</PHON>
-                <TRANSL xml:lang="eng">PART</TRANSL>
-                <TRANSL xml:lang="zho">語助詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_7_W12">
@@ -1892,15 +1892,15 @@
             <PHON kindOf="original">ʦau</PHON>
             <FORM kindOf="standard">cau</FORM>
             <PHON kindOf="standard">ʦau</PHON>
-            <TRANSL xml:lang="zho">人</TRANSL>
-            <TRANSL xml:lang="eng">person</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">人</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">person</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_7_W12M1">
                 <FORM kindOf="original">cau</FORM>
                 <PHON kindOf="original">ʦau</PHON>
                 <FORM kindOf="standard">cau</FORM>
                 <PHON kindOf="standard">ʦau</PHON>
-                <TRANSL xml:lang="eng">person</TRANSL>
-                <TRANSL xml:lang="zho">人</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">person</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">人</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_7_W13">
@@ -1908,281 +1908,281 @@
             <PHON kindOf="original">tu</PHON>
             <FORM kindOf="standard">tu</FORM>
             <PHON kindOf="standard">tu</PHON>
-            <TRANSL xml:lang="zho">TU</TRANSL>
-            <TRANSL xml:lang="eng">TU</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">TU</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">TU</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_7_W13M1">
                 <FORM kindOf="original">tu</FORM>
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="eng">TU</TRANSL>
-                <TRANSL xml:lang="zho">TU</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">TU</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">TU</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_7_W14">
             <FORM kindOf="original">te=ci=kia</FORM>
-            <PHON kindOf="original">te=ʦi=kia</PHON>
+            <PHON kindOf="original">teʦikia</PHON>
             <FORM kindOf="standard">te=ci=kia</FORM>
-            <PHON kindOf="standard">te=ʦi=kia</PHON>
-            <TRANSL xml:lang="zho">非實現=語助詞=1SG.主格</TRANSL>
-            <TRANSL xml:lang="eng">IRR=PART=1SG.NOM</TRANSL>
+            <PHON kindOf="standard">teʦikia</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">非實現=語助詞=1SG.主格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">IRR=PART=1SG.NOM</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_7_W14M1">
                 <FORM kindOf="original">te</FORM>
                 <PHON kindOf="original">te</PHON>
                 <FORM kindOf="standard">te</FORM>
                 <PHON kindOf="standard">te</PHON>
-                <TRANSL xml:lang="eng">IRR</TRANSL>
-                <TRANSL xml:lang="zho">非實現</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">IRR</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_7_W14M2">
-                <FORM kindOf="original">ci</FORM>
+                <FORM kindOf="original">=ci</FORM>
                 <PHON kindOf="original">ʦi</PHON>
-                <FORM kindOf="standard">ci</FORM>
+                <FORM kindOf="standard">=ci</FORM>
                 <PHON kindOf="standard">ʦi</PHON>
-                <TRANSL xml:lang="eng">PART</TRANSL>
-                <TRANSL xml:lang="zho">語助詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_7_W14M3">
-                <FORM kindOf="original">kia</FORM>
+                <FORM kindOf="original">=kia</FORM>
                 <PHON kindOf="original">kia</PHON>
-                <FORM kindOf="standard">kia</FORM>
+                <FORM kindOf="standard">=kia</FORM>
                 <PHON kindOf="standard">kia</PHON>
-                <TRANSL xml:lang="eng">1SG.NOM</TRANSL>
-                <TRANSL xml:lang="zho">1SG.主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1SG.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1SG.主格</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_7_W15">
             <FORM kindOf="original">k&lt;um&gt;a-kʉn</FORM>
-            <PHON kindOf="original">k&lt;um&gt;a-kɨn</PHON>
+            <PHON kindOf="original">kumakɨn</PHON>
             <FORM kindOf="standard">k&lt;um&gt;a-kʉn</FORM>
-            <PHON kindOf="standard">k&lt;um&gt;a-kɨn</PHON>
-            <TRANSL xml:lang="zho">K&lt;主焦&gt;A-吃</TRANSL>
-            <TRANSL xml:lang="eng">K&lt;AF&gt;A-eat</TRANSL>
+            <PHON kindOf="standard">kumakɨn</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">K&lt;主焦&gt;A-吃</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">K&lt;AF&gt;A-eat</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_7_W15M1">
                 <FORM kindOf="original">-um-</FORM>
-                <PHON kindOf="original">-um-</PHON>
+                <PHON kindOf="original">um</PHON>
                 <FORM kindOf="standard">-um-</FORM>
-                <PHON kindOf="standard">-um-</PHON>
-                <TRANSL xml:lang="eng">&lt;AF&gt;</TRANSL>
-                <TRANSL xml:lang="zho">&lt;主焦&gt;</TRANSL>
+                <PHON kindOf="standard">um</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_7_W15M2">
                 <FORM kindOf="original">k-a</FORM>
-                <PHON kindOf="original">k-a</PHON>
+                <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">k-a</FORM>
-                <PHON kindOf="standard">k-a</PHON>
-                <TRANSL xml:lang="eng">KA</TRANSL>
-                <TRANSL xml:lang="zho">KA</TRANSL>
+                <PHON kindOf="standard">ka</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">KA</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">KA</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_7_W15M3">
                 <FORM kindOf="original">kʉn</FORM>
                 <PHON kindOf="original">kɨn</PHON>
                 <FORM kindOf="standard">kʉn</FORM>
                 <PHON kindOf="standard">kɨn</PHON>
-                <TRANSL xml:lang="eng">eat</TRANSL>
-                <TRANSL xml:lang="zho">吃</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">eat</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">吃</TRANSL>
             </M>
         </W>
     </S>
     <S id="kkvNr_mikon_Kuatu_S_8">
         <FORM kindOf="original">kʉmʉʉnacu kavangvang er matacuvucuvuun.</FORM>
-        <PHON kindOf="original">kɨmɨɨnaʦu kavaŋvaŋ er~ɾ mataʦuvuʦuvuun.</PHON>
+        <PHON kindOf="original">kɨmɨɨnaʦu kavaŋvaŋ e[r|ɾ] mataʦuvuʦuvuun</PHON>
         <FORM kindOf="standard">kʉmʉʉnacu kavangvang er matacuvucuvuun.</FORM>
-        <PHON kindOf="standard">kɨmɨɨnaʦu kavaŋvaŋ er~ɾ mataʦuvuʦuvuun.</PHON>
-        <TRANSL xml:lang="zho">「大家聚在一起吃吧!」</TRANSL>
+        <PHON kindOf="standard">kɨmɨɨnaʦu kavaŋvaŋ e[r|ɾ] mataʦuvuʦuvuun</PHON>
+        <TRANSL xml:lang="zho">＂大家聚在一起吃吧!＂</TRANSL>
         <TRANSL xml:lang="eng">"Everyone, gather together to eat!"</TRANSL>
         <AUDIO file="kkvNr_mikon_Kuatu_S8.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_mikon_Kuatu.mp3" start="100.64" end="105.84"/>
         <W id="kkvNr_mikon_Kuatu_S_8_W0">
             <FORM kindOf="original">k&lt;ʉm&gt;ʉʉn-a=cu</FORM>
-            <PHON kindOf="original">k&lt;ɨm&gt;ɨɨn-a=ʦu</PHON>
+            <PHON kindOf="original">kɨmɨɨnaʦu</PHON>
             <FORM kindOf="standard">k&lt;ʉm&gt;ʉʉn-a=cu</FORM>
-            <PHON kindOf="standard">k&lt;ɨm&gt;ɨɨn-a=ʦu</PHON>
-            <TRANSL xml:lang="zho">吃&lt;主焦&gt;吃-主焦.祈使=語助詞</TRANSL>
-            <TRANSL xml:lang="eng">eat&lt;AF&gt;eat-AF.IMP=PART</TRANSL>
+            <PHON kindOf="standard">kɨmɨɨnaʦu</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">吃&lt;主焦&gt;吃-主焦.祈使=語助詞</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">eat&lt;AF&gt;eat-AF.IMP=PART</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_8_W0M1">
                 <FORM kindOf="original">-ʉm-</FORM>
-                <PHON kindOf="original">-ɨm-</PHON>
+                <PHON kindOf="original">ɨm</PHON>
                 <FORM kindOf="standard">-ʉm-</FORM>
-                <PHON kindOf="standard">-ɨm-</PHON>
-                <TRANSL xml:lang="eng">&lt;AF&gt;</TRANSL>
-                <TRANSL xml:lang="zho">&lt;主焦&gt;</TRANSL>
+                <PHON kindOf="standard">ɨm</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_8_W0M2">
                 <FORM kindOf="original">k-ʉʉn</FORM>
-                <PHON kindOf="original">k-ɨɨn</PHON>
+                <PHON kindOf="original">kɨɨn</PHON>
                 <FORM kindOf="standard">k-ʉʉn</FORM>
-                <PHON kindOf="standard">k-ɨɨn</PHON>
-                <TRANSL xml:lang="eng">eateat</TRANSL>
-                <TRANSL xml:lang="zho">吃吃</TRANSL>
+                <PHON kindOf="standard">kɨɨn</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">eateat</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">吃吃</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_8_W0M3">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="eng">AF.IMP</TRANSL>
-                <TRANSL xml:lang="zho">主焦.祈使</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AF.IMP</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主焦.祈使</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_8_W0M4">
-                <FORM kindOf="original">cu</FORM>
+                <FORM kindOf="original">=cu</FORM>
                 <PHON kindOf="original">ʦu</PHON>
-                <FORM kindOf="standard">cu</FORM>
+                <FORM kindOf="standard">=cu</FORM>
                 <PHON kindOf="standard">ʦu</PHON>
-                <TRANSL xml:lang="eng">PART</TRANSL>
-                <TRANSL xml:lang="zho">語助詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_8_W1">
             <FORM kindOf="original">ka-vang-vang</FORM>
-            <PHON kindOf="original">ka-vaŋ-vaŋ</PHON>
+            <PHON kindOf="original">kavaŋvaŋ</PHON>
             <FORM kindOf="standard">ka-vang-vang</FORM>
-            <PHON kindOf="standard">ka-vaŋ-vaŋ</PHON>
-            <TRANSL xml:lang="zho">全部-重疊-全部</TRANSL>
-            <TRANSL xml:lang="eng">all-RED-all</TRANSL>
+            <PHON kindOf="standard">kavaŋvaŋ</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">全部-重疊-全部</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">all-RED-all</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_8_W1M1">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
-                <TRANSL xml:lang="eng">all</TRANSL>
-                <TRANSL xml:lang="zho">全部</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">all</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">全部</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_8_W1M2">
                 <FORM kindOf="original">vang</FORM>
                 <PHON kindOf="original">vaŋ</PHON>
                 <FORM kindOf="standard">vang</FORM>
                 <PHON kindOf="standard">vaŋ</PHON>
-                <TRANSL xml:lang="eng">RED</TRANSL>
-                <TRANSL xml:lang="zho">重疊</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">重疊</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_8_W1M3">
                 <FORM kindOf="original">vang</FORM>
                 <PHON kindOf="original">vaŋ</PHON>
                 <FORM kindOf="standard">vang</FORM>
                 <PHON kindOf="standard">vaŋ</PHON>
-                <TRANSL xml:lang="eng">all</TRANSL>
-                <TRANSL xml:lang="zho">全部</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">all</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">全部</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_8_W2">
             <FORM kindOf="original">er</FORM>
-            <PHON kindOf="original">er~ɾ</PHON>
+            <PHON kindOf="original">e[r|ɾ]</PHON>
             <FORM kindOf="standard">er</FORM>
-            <PHON kindOf="standard">er~ɾ</PHON>
-            <TRANSL xml:lang="zho">FIL</TRANSL>
-            <TRANSL xml:lang="eng">FIL</TRANSL>
+            <PHON kindOf="standard">e[r|ɾ]</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_8_W2M1">
                 <FORM kindOf="original">er</FORM>
-                <PHON kindOf="original">er~ɾ</PHON>
+                <PHON kindOf="original">e[r|ɾ]</PHON>
                 <FORM kindOf="standard">er</FORM>
-                <PHON kindOf="standard">er~ɾ</PHON>
-                <TRANSL xml:lang="eng">FIL</TRANSL>
-                <TRANSL xml:lang="zho">FIL</TRANSL>
+                <PHON kindOf="standard">e[r|ɾ]</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_8_W3">
             <FORM kindOf="original">mata-cuvu-cuvuun</FORM>
-            <PHON kindOf="original">mata-ʦuvu-ʦuvuun</PHON>
+            <PHON kindOf="original">mataʦuvuʦuvuun</PHON>
             <FORM kindOf="standard">mata-cuvu-cuvuun</FORM>
-            <PHON kindOf="standard">mata-ʦuvu-ʦuvuun</PHON>
-            <TRANSL xml:lang="zho">聚在一起-重疊-聚在一起</TRANSL>
-            <TRANSL xml:lang="eng">gather.together-RED-gather.together</TRANSL>
+            <PHON kindOf="standard">mataʦuvuʦuvuun</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">聚在一起-重疊-聚在一起</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">gather.together-RED-gather.together</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_8_W3M1">
                 <FORM kindOf="original">mata</FORM>
                 <PHON kindOf="original">mata</PHON>
                 <FORM kindOf="standard">mata</FORM>
                 <PHON kindOf="standard">mata</PHON>
-                <TRANSL xml:lang="eng">gather.together</TRANSL>
-                <TRANSL xml:lang="zho">聚在一起</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">gather.together</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">聚在一起</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_8_W3M2">
                 <FORM kindOf="original">cuvu</FORM>
                 <PHON kindOf="original">ʦuvu</PHON>
                 <FORM kindOf="standard">cuvu</FORM>
                 <PHON kindOf="standard">ʦuvu</PHON>
-                <TRANSL xml:lang="eng">RED</TRANSL>
-                <TRANSL xml:lang="zho">重疊</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">重疊</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_8_W3M3">
                 <FORM kindOf="original">cuvuun</FORM>
                 <PHON kindOf="original">ʦuvuun</PHON>
                 <FORM kindOf="standard">cuvuun</FORM>
                 <PHON kindOf="standard">ʦuvuun</PHON>
-                <TRANSL xml:lang="eng">gather.together</TRANSL>
-                <TRANSL xml:lang="zho">聚在一起</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">gather.together</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">聚在一起</TRANSL>
             </M>
         </W>
     </S>
     <S id="kkvNr_mikon_Kuatu_S_9">
-        <FORM kindOf="original">noo nikʉmʉʉncikia ia er tecikia er simasima'ʉ ʉtʉmʉkʉmʉkʉn kinvavara kinturaturanga.</FORM>
-        <PHON kindOf="original">noo nikɨmɨɨnʦikia ia er~ɾ teʦikia er~ɾ simasimaʔɨ ɨtɨmɨkɨmɨkɨn kinvavar~ɾa kintur~ɾatur~ɾaŋa.</PHON>
+        <FORM kindOf="original" notes="source note: 「玩」發音老師的念法為s&lt;um&gt;a-sima'U。 | source note: kin-tura-turanga也可指同名的人親切地互相稱謂的用語。如你與另一個人都叫Pani，你們可以互相叫對方turang。 | source note: kin-tura-turanga廣義上也可指所有的親友，比起kincaucaua要來的親切。 | source note: kin-表示「關係」，如kin'ucanga指的是「夫妻關係」。">noo nikʉmʉʉncikia ia er tecikia er simasima'ʉ ʉtʉmʉkʉmʉkʉn kinvavara kinturaturanga.</FORM>
+        <PHON kindOf="original">noo nikɨmɨɨnʦikia ia e[r|ɾ] teʦikia e[r|ɾ] simasimaʔɨ ɨtɨmɨkɨmɨkɨn kinvava[r|ɾ]a kintu[r|ɾ]atu[r|ɾ]aŋa</PHON>
         <FORM kindOf="standard">noo nikʉmʉʉncikia ia er tecikia er simasima'ʉ ʉtʉmʉkʉmʉkʉn kinvavara kinturaturanga.</FORM>
-        <PHON kindOf="standard">noo nikɨmɨɨnʦikia ia er~ɾ teʦikia er~ɾ simasimaʔɨ ɨtɨmɨkɨmɨkɨn kinvavar~ɾa kintur~ɾatur~ɾaŋa.</PHON>
+        <PHON kindOf="standard">noo nikɨmɨɨnʦikia ia e[r|ɾ] teʦikia e[r|ɾ] simasimaʔɨ ɨtɨmɨkɨmɨkɨn kinvava[r|ɾ]a kintu[r|ɾ]atu[r|ɾ]aŋa</PHON>
         <TRANSL xml:lang="zho">當我們吃過以後,我們兄弟姊妹、堂表兄弟姊妹要一起玩耍.</TRANSL>
-        <TRANSL xml:lang="eng" notes="After I (we) ate, we siblings and cousins wanted to gether together to play.">After I ate, we siblings and cousins wanted to gether together to play.</TRANSL>
+        <TRANSL xml:lang="eng">After I (we) ate, we siblings and cousins wanted to gether together to play.</TRANSL>
         <AUDIO file="kkvNr_mikon_Kuatu_S9.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_mikon_Kuatu.mp3" start="105.84" end="122.27"/>
         <W id="kkvNr_mikon_Kuatu_S_9_W0">
             <FORM kindOf="original">noo</FORM>
             <PHON kindOf="original">noo</PHON>
             <FORM kindOf="standard">noo</FORM>
             <PHON kindOf="standard">noo</PHON>
-            <TRANSL xml:lang="zho">如果</TRANSL>
-            <TRANSL xml:lang="eng">if</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">如果</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">if</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_9_W0M1">
                 <FORM kindOf="original">noo</FORM>
                 <PHON kindOf="original">noo</PHON>
                 <FORM kindOf="standard">noo</FORM>
                 <PHON kindOf="standard">noo</PHON>
-                <TRANSL xml:lang="eng">if</TRANSL>
-                <TRANSL xml:lang="zho">如果</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">if</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">如果</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_9_W1">
             <FORM kindOf="original">ni-k&lt;ʉm&gt;ʉʉn=ci=kia</FORM>
-            <PHON kindOf="original">ni-k&lt;ɨm&gt;ɨɨn=ʦi=kia</PHON>
+            <PHON kindOf="original">nikɨmɨɨnʦikia</PHON>
             <FORM kindOf="standard">ni-k&lt;ʉm&gt;ʉʉn=ci=kia</FORM>
-            <PHON kindOf="standard">ni-k&lt;ɨm&gt;ɨɨn=ʦi=kia</PHON>
-            <TRANSL xml:lang="zho">完成-吃&lt;主焦&gt;吃=語助詞=1SG.主格</TRANSL>
-            <TRANSL xml:lang="eng">PFV-eat&lt;AF&gt;eat=PART=1SG.NOM</TRANSL>
+            <PHON kindOf="standard">nikɨmɨɨnʦikia</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">完成-吃&lt;主焦&gt;吃=語助詞=1SG.主格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">PFV-eat&lt;AF&gt;eat=PART=1SG.NOM</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_9_W1M1">
                 <FORM kindOf="original">ni</FORM>
                 <PHON kindOf="original">ni</PHON>
                 <FORM kindOf="standard">ni</FORM>
                 <PHON kindOf="standard">ni</PHON>
-                <TRANSL xml:lang="eng">PFV</TRANSL>
-                <TRANSL xml:lang="zho">完成</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">完成</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_9_W1M2">
                 <FORM kindOf="original">-ʉm-</FORM>
-                <PHON kindOf="original">-ɨm-</PHON>
+                <PHON kindOf="original">ɨm</PHON>
                 <FORM kindOf="standard">-ʉm-</FORM>
-                <PHON kindOf="standard">-ɨm-</PHON>
-                <TRANSL xml:lang="eng">&lt;AF&gt;</TRANSL>
-                <TRANSL xml:lang="zho">&lt;主焦&gt;</TRANSL>
+                <PHON kindOf="standard">ɨm</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_9_W1M3">
                 <FORM kindOf="original">k-ʉʉn</FORM>
-                <PHON kindOf="original">k-ɨɨn</PHON>
+                <PHON kindOf="original">kɨɨn</PHON>
                 <FORM kindOf="standard">k-ʉʉn</FORM>
-                <PHON kindOf="standard">k-ɨɨn</PHON>
-                <TRANSL xml:lang="eng">eateat</TRANSL>
-                <TRANSL xml:lang="zho">吃吃</TRANSL>
+                <PHON kindOf="standard">kɨɨn</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">eateat</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">吃吃</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_9_W1M4">
-                <FORM kindOf="original">ci</FORM>
+                <FORM kindOf="original">=ci</FORM>
                 <PHON kindOf="original">ʦi</PHON>
-                <FORM kindOf="standard">ci</FORM>
+                <FORM kindOf="standard">=ci</FORM>
                 <PHON kindOf="standard">ʦi</PHON>
-                <TRANSL xml:lang="eng">PART</TRANSL>
-                <TRANSL xml:lang="zho">語助詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_9_W1M5">
-                <FORM kindOf="original">kia</FORM>
+                <FORM kindOf="original">=kia</FORM>
                 <PHON kindOf="original">kia</PHON>
-                <FORM kindOf="standard">kia</FORM>
+                <FORM kindOf="standard">=kia</FORM>
                 <PHON kindOf="standard">kia</PHON>
-                <TRANSL xml:lang="eng">1SG.NOM</TRANSL>
-                <TRANSL xml:lang="zho">1SG.主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1SG.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1SG.主格</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_9_W2">
@@ -2190,111 +2190,111 @@
             <PHON kindOf="original">ia</PHON>
             <FORM kindOf="standard">ia</FORM>
             <PHON kindOf="standard">ia</PHON>
-            <TRANSL xml:lang="zho">主題</TRANSL>
-            <TRANSL xml:lang="eng">TOP</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_9_W2M1">
                 <FORM kindOf="original">ia</FORM>
                 <PHON kindOf="original">ia</PHON>
                 <FORM kindOf="standard">ia</FORM>
                 <PHON kindOf="standard">ia</PHON>
-                <TRANSL xml:lang="eng">TOP</TRANSL>
-                <TRANSL xml:lang="zho">主題</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_9_W3">
             <FORM kindOf="original">er</FORM>
-            <PHON kindOf="original">er~ɾ</PHON>
+            <PHON kindOf="original">e[r|ɾ]</PHON>
             <FORM kindOf="standard">er</FORM>
-            <PHON kindOf="standard">er~ɾ</PHON>
-            <TRANSL xml:lang="zho">FIL</TRANSL>
-            <TRANSL xml:lang="eng">FIL</TRANSL>
+            <PHON kindOf="standard">e[r|ɾ]</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_9_W3M1">
                 <FORM kindOf="original">er</FORM>
-                <PHON kindOf="original">er~ɾ</PHON>
+                <PHON kindOf="original">e[r|ɾ]</PHON>
                 <FORM kindOf="standard">er</FORM>
-                <PHON kindOf="standard">er~ɾ</PHON>
-                <TRANSL xml:lang="eng">FIL</TRANSL>
-                <TRANSL xml:lang="zho">FIL</TRANSL>
+                <PHON kindOf="standard">e[r|ɾ]</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_9_W4">
             <FORM kindOf="original">te=ci=kia</FORM>
-            <PHON kindOf="original">te=ʦi=kia</PHON>
+            <PHON kindOf="original">teʦikia</PHON>
             <FORM kindOf="standard">te=ci=kia</FORM>
-            <PHON kindOf="standard">te=ʦi=kia</PHON>
-            <TRANSL xml:lang="zho">非實現=語助詞=1SG.主格</TRANSL>
-            <TRANSL xml:lang="eng">IRR=PART=1SG.NOM</TRANSL>
+            <PHON kindOf="standard">teʦikia</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">非實現=語助詞=1SG.主格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">IRR=PART=1SG.NOM</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_9_W4M1">
                 <FORM kindOf="original">te</FORM>
                 <PHON kindOf="original">te</PHON>
                 <FORM kindOf="standard">te</FORM>
                 <PHON kindOf="standard">te</PHON>
-                <TRANSL xml:lang="eng">IRR</TRANSL>
-                <TRANSL xml:lang="zho">非實現</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">IRR</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_9_W4M2">
-                <FORM kindOf="original">ci</FORM>
+                <FORM kindOf="original">=ci</FORM>
                 <PHON kindOf="original">ʦi</PHON>
-                <FORM kindOf="standard">ci</FORM>
+                <FORM kindOf="standard">=ci</FORM>
                 <PHON kindOf="standard">ʦi</PHON>
-                <TRANSL xml:lang="eng">PART</TRANSL>
-                <TRANSL xml:lang="zho">語助詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_9_W4M3">
-                <FORM kindOf="original">kia</FORM>
+                <FORM kindOf="original">=kia</FORM>
                 <PHON kindOf="original">kia</PHON>
-                <FORM kindOf="standard">kia</FORM>
+                <FORM kindOf="standard">=kia</FORM>
                 <PHON kindOf="standard">kia</PHON>
-                <TRANSL xml:lang="eng">1SG.NOM</TRANSL>
-                <TRANSL xml:lang="zho">1SG.主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1SG.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1SG.主格</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_9_W5">
             <FORM kindOf="original">er</FORM>
-            <PHON kindOf="original">er~ɾ</PHON>
+            <PHON kindOf="original">e[r|ɾ]</PHON>
             <FORM kindOf="standard">er</FORM>
-            <PHON kindOf="standard">er~ɾ</PHON>
-            <TRANSL xml:lang="zho">FIL</TRANSL>
-            <TRANSL xml:lang="eng">FIL</TRANSL>
+            <PHON kindOf="standard">e[r|ɾ]</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_9_W5M1">
                 <FORM kindOf="original">er</FORM>
-                <PHON kindOf="original">er~ɾ</PHON>
+                <PHON kindOf="original">e[r|ɾ]</PHON>
                 <FORM kindOf="standard">er</FORM>
-                <PHON kindOf="standard">er~ɾ</PHON>
-                <TRANSL xml:lang="eng">FIL</TRANSL>
-                <TRANSL xml:lang="zho">FIL</TRANSL>
+                <PHON kindOf="standard">e[r|ɾ]</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_9_W6">
             <FORM kindOf="original">s&lt;im&gt;a-sima'ʉ</FORM>
-            <PHON kindOf="original">s&lt;im&gt;a-simaʔɨ</PHON>
+            <PHON kindOf="original">simasimaʔɨ</PHON>
             <FORM kindOf="standard">s&lt;im&gt;a-sima'ʉ</FORM>
-            <PHON kindOf="standard">s&lt;im&gt;a-simaʔɨ</PHON>
-            <TRANSL xml:lang="zho">S&lt;主焦&gt;A-玩</TRANSL>
-            <TRANSL xml:lang="eng">S&lt;AF&gt;A-play</TRANSL>
+            <PHON kindOf="standard">simasimaʔɨ</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">S&lt;主焦&gt;A-玩</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">S&lt;AF&gt;A-play</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_9_W6M1">
                 <FORM kindOf="original">-im-</FORM>
-                <PHON kindOf="original">-im-</PHON>
+                <PHON kindOf="original">im</PHON>
                 <FORM kindOf="standard">-im-</FORM>
-                <PHON kindOf="standard">-im-</PHON>
-                <TRANSL xml:lang="eng">&lt;AF&gt;</TRANSL>
-                <TRANSL xml:lang="zho">&lt;主焦&gt;</TRANSL>
+                <PHON kindOf="standard">im</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_9_W6M2">
                 <FORM kindOf="original">s-a</FORM>
-                <PHON kindOf="original">s-a</PHON>
+                <PHON kindOf="original">sa</PHON>
                 <FORM kindOf="standard">s-a</FORM>
-                <PHON kindOf="standard">s-a</PHON>
-                <TRANSL xml:lang="eng">SA</TRANSL>
-                <TRANSL xml:lang="zho">SA</TRANSL>
+                <PHON kindOf="standard">sa</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">SA</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">SA</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_9_W6M3">
                 <FORM kindOf="original">sima'ʉ</FORM>
                 <PHON kindOf="original">simaʔɨ</PHON>
                 <FORM kindOf="standard">sima'ʉ</FORM>
                 <PHON kindOf="standard">simaʔɨ</PHON>
-                <TRANSL xml:lang="eng">play</TRANSL>
-                <TRANSL xml:lang="zho">玩</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">play</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">玩</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_9_W7">
@@ -2302,160 +2302,160 @@
             <PHON kindOf="original">ɨtɨmɨkɨmɨkɨn</PHON>
             <FORM kindOf="standard">ʉtʉmʉkʉmʉkʉn</FORM>
             <PHON kindOf="standard">ɨtɨmɨkɨmɨkɨn</PHON>
-            <TRANSL xml:lang="zho">聚在一起</TRANSL>
-            <TRANSL xml:lang="eng">gather.together</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">聚在一起</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">gather.together</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_9_W7M1">
                 <FORM kindOf="original">ʉtʉmʉkʉmʉkʉn</FORM>
                 <PHON kindOf="original">ɨtɨmɨkɨmɨkɨn</PHON>
                 <FORM kindOf="standard">ʉtʉmʉkʉmʉkʉn</FORM>
                 <PHON kindOf="standard">ɨtɨmɨkɨmɨkɨn</PHON>
-                <TRANSL xml:lang="eng">gather.together</TRANSL>
-                <TRANSL xml:lang="zho">聚在一起</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">gather.together</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">聚在一起</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_9_W8">
             <FORM kindOf="original">kin-va-vara</FORM>
-            <PHON kindOf="original">kin-va-var~ɾa</PHON>
+            <PHON kindOf="original">kinvava[r|ɾ]a</PHON>
             <FORM kindOf="standard">kin-va-vara</FORM>
-            <PHON kindOf="standard">kin-va-var~ɾa</PHON>
-            <TRANSL xml:lang="zho">關係-重疊-兄弟姊妹</TRANSL>
-            <TRANSL xml:lang="eng">relation-RED-sibling</TRANSL>
+            <PHON kindOf="standard">kinvava[r|ɾ]a</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">關係-重疊-兄弟姊妹</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">relation-RED-sibling</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_9_W8M1">
                 <FORM kindOf="original">kin</FORM>
                 <PHON kindOf="original">kin</PHON>
                 <FORM kindOf="standard">kin</FORM>
                 <PHON kindOf="standard">kin</PHON>
-                <TRANSL xml:lang="eng">relation</TRANSL>
-                <TRANSL xml:lang="zho">關係</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">relation</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">關係</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_9_W8M2">
                 <FORM kindOf="original">va</FORM>
                 <PHON kindOf="original">va</PHON>
                 <FORM kindOf="standard">va</FORM>
                 <PHON kindOf="standard">va</PHON>
-                <TRANSL xml:lang="eng">RED</TRANSL>
-                <TRANSL xml:lang="zho">重疊</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">重疊</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_9_W8M3">
                 <FORM kindOf="original">vara</FORM>
-                <PHON kindOf="original">var~ɾa</PHON>
+                <PHON kindOf="original">va[r|ɾ]a</PHON>
                 <FORM kindOf="standard">vara</FORM>
-                <PHON kindOf="standard">var~ɾa</PHON>
-                <TRANSL xml:lang="eng">sibling</TRANSL>
-                <TRANSL xml:lang="zho">兄弟姊妹</TRANSL>
+                <PHON kindOf="standard">va[r|ɾ]a</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">sibling</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">兄弟姊妹</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_9_W9">
             <FORM kindOf="original">kin-tura-turanga</FORM>
-            <PHON kindOf="original">kin-tur~ɾa-tur~ɾaŋa</PHON>
+            <PHON kindOf="original">kintu[r|ɾ]atu[r|ɾ]aŋa</PHON>
             <FORM kindOf="standard">kin-tura-turanga</FORM>
-            <PHON kindOf="standard">kin-tur~ɾa-tur~ɾaŋa</PHON>
-            <TRANSL xml:lang="zho">關係-重疊-堂表兄弟姊妹</TRANSL>
-            <TRANSL xml:lang="eng">relation-RED-cousin</TRANSL>
+            <PHON kindOf="standard">kintu[r|ɾ]atu[r|ɾ]aŋa</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">關係-重疊-堂表兄弟姊妹</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">relation-RED-cousin</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_9_W9M1">
                 <FORM kindOf="original">kin</FORM>
                 <PHON kindOf="original">kin</PHON>
                 <FORM kindOf="standard">kin</FORM>
                 <PHON kindOf="standard">kin</PHON>
-                <TRANSL xml:lang="eng">relation</TRANSL>
-                <TRANSL xml:lang="zho">關係</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">relation</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">關係</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_9_W9M2">
                 <FORM kindOf="original">tura</FORM>
-                <PHON kindOf="original">tur~ɾa</PHON>
+                <PHON kindOf="original">tu[r|ɾ]a</PHON>
                 <FORM kindOf="standard">tura</FORM>
-                <PHON kindOf="standard">tur~ɾa</PHON>
-                <TRANSL xml:lang="eng">RED</TRANSL>
-                <TRANSL xml:lang="zho">重疊</TRANSL>
+                <PHON kindOf="standard">tu[r|ɾ]a</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">重疊</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_9_W9M3">
                 <FORM kindOf="original">turanga</FORM>
-                <PHON kindOf="original">tur~ɾaŋa</PHON>
+                <PHON kindOf="original">tu[r|ɾ]aŋa</PHON>
                 <FORM kindOf="standard">turanga</FORM>
-                <PHON kindOf="standard">tur~ɾaŋa</PHON>
-                <TRANSL xml:lang="eng">cousin</TRANSL>
-                <TRANSL xml:lang="zho">堂表兄弟姊妹</TRANSL>
+                <PHON kindOf="standard">tu[r|ɾ]aŋa</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">cousin</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">堂表兄弟姊妹</TRANSL>
             </M>
         </W>
     </S>
     <S id="kkvNr_mikon_Kuatu_S_10">
-        <FORM kindOf="original">mamarurang maman mon nia kangvang ʉtʉmʉkʉmʉkʉn sumasima'ʉ jiuzheyang.</FORM>
-        <PHON kindOf="original">mamar~ɾur~ɾaŋ maman mon nia kaŋvaŋ ɨtɨmɨkɨmɨkɨn sumasimaʔɨ jiu*hejaŋ.</PHON>
+        <FORM kindOf="original" notes="source note: 此句的「那裡」指的應是聚會所(cakʉrʉ)。 | source note: 比較：'esi用在表示存在與否；moon用於表示處於什麼地方；ka-則是住在什麼地方。">mamarurang maman mon nia kangvang ʉtʉmʉkʉmʉkʉn sumasima'ʉ jiuzheyang.</FORM>
+        <PHON kindOf="original">mama[r|ɾ]u[r|ɾ]aŋ maman mon nia kaŋvaŋ ɨtɨmɨkɨmɨkɨn sumasimaʔɨ jiu*hejaŋ</PHON>
         <FORM kindOf="standard">mamarurang maman mon nia kangvang ʉtʉmʉkʉmʉkʉn sumasima'ʉ jiuzheyang.</FORM>
-        <PHON kindOf="standard">mamar~ɾur~ɾaŋ maman mon nia kaŋvaŋ ɨtɨmɨkɨmɨkɨn sumasimaʔɨ jiu*hejaŋ.</PHON>
+        <PHON kindOf="standard">mama[r|ɾ]u[r|ɾ]aŋ maman mon nia kaŋvaŋ ɨtɨmɨkɨmɨkɨn sumasimaʔɨ jiu*hejaŋ</PHON>
         <TRANSL xml:lang="zho">年長的年幼的都在那裡聚在一起,就這樣.</TRANSL>
         <TRANSL xml:lang="eng">The elderly and the youngsters were there to gather together, this was just so.</TRANSL>
         <AUDIO file="kkvNr_mikon_Kuatu_S10.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_mikon_Kuatu.mp3" start="122.27" end="130.11"/>
         <W id="kkvNr_mikon_Kuatu_S_10_W0">
             <FORM kindOf="original">ma-marurang</FORM>
-            <PHON kindOf="original">ma-mar~ɾur~ɾaŋ</PHON>
+            <PHON kindOf="original">mama[r|ɾ]u[r|ɾ]aŋ</PHON>
             <FORM kindOf="standard">ma-marurang</FORM>
-            <PHON kindOf="standard">ma-mar~ɾur~ɾaŋ</PHON>
-            <TRANSL xml:lang="zho">重疊-老人</TRANSL>
-            <TRANSL xml:lang="eng">RED-old.man</TRANSL>
+            <PHON kindOf="standard">mama[r|ɾ]u[r|ɾ]aŋ</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">重疊-老人</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">RED-old.man</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_10_W0M1">
                 <FORM kindOf="original">ma</FORM>
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
-                <TRANSL xml:lang="eng">RED</TRANSL>
-                <TRANSL xml:lang="zho">重疊</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">重疊</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_10_W0M2">
                 <FORM kindOf="original">marurang</FORM>
-                <PHON kindOf="original">mar~ɾur~ɾaŋ</PHON>
+                <PHON kindOf="original">ma[r|ɾ]u[r|ɾ]aŋ</PHON>
                 <FORM kindOf="standard">marurang</FORM>
-                <PHON kindOf="standard">mar~ɾur~ɾaŋ</PHON>
-                <TRANSL xml:lang="eng">old.man</TRANSL>
-                <TRANSL xml:lang="zho">老人</TRANSL>
+                <PHON kindOf="standard">ma[r|ɾ]u[r|ɾ]aŋ</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">old.man</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">老人</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_10_W1">
             <FORM kindOf="original">ma-man</FORM>
-            <PHON kindOf="original">ma-man</PHON>
+            <PHON kindOf="original">maman</PHON>
             <FORM kindOf="standard">ma-man</FORM>
-            <PHON kindOf="standard">ma-man</PHON>
-            <TRANSL xml:lang="zho">重疊-孩子</TRANSL>
-            <TRANSL xml:lang="eng">RED-child</TRANSL>
+            <PHON kindOf="standard">maman</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">重疊-孩子</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">RED-child</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_10_W1M1">
                 <FORM kindOf="original">ma</FORM>
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
-                <TRANSL xml:lang="eng">RED</TRANSL>
-                <TRANSL xml:lang="zho">重疊</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">重疊</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_10_W1M2">
                 <FORM kindOf="original">man</FORM>
                 <PHON kindOf="original">man</PHON>
                 <FORM kindOf="standard">man</FORM>
                 <PHON kindOf="standard">man</PHON>
-                <TRANSL xml:lang="eng">child</TRANSL>
-                <TRANSL xml:lang="zho">孩子</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">child</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">孩子</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_10_W2">
             <FORM kindOf="original">m-on</FORM>
-            <PHON kindOf="original">m-on</PHON>
+            <PHON kindOf="original">mon</PHON>
             <FORM kindOf="standard">m-on</FORM>
-            <PHON kindOf="standard">m-on</PHON>
-            <TRANSL xml:lang="zho">處於</TRANSL>
-            <TRANSL xml:lang="eng">AF-located.in</TRANSL>
+            <PHON kindOf="standard">mon</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">主焦-處於</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">AF-located.in</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_10_W2M1">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="eng">AF</TRANSL>
-                <TRANSL xml:lang="zho">處於</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_10_W2M2">
                 <FORM kindOf="original">on</FORM>
                 <PHON kindOf="original">on</PHON>
                 <FORM kindOf="standard">on</FORM>
                 <PHON kindOf="standard">on</PHON>
-                <TRANSL xml:lang="eng">located.in</TRANSL>
-                <TRANSL xml:lang="zho"/>
+                <TRANSL xml:lang="eng" kindOf="original">located.in</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">處於</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_10_W3">
@@ -2463,15 +2463,15 @@
             <PHON kindOf="original">nia</PHON>
             <FORM kindOf="standard">nia</FORM>
             <PHON kindOf="standard">nia</PHON>
-            <TRANSL xml:lang="zho">那裡</TRANSL>
-            <TRANSL xml:lang="eng">there</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">那裡</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">there</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_10_W3M1">
                 <FORM kindOf="original">nia</FORM>
                 <PHON kindOf="original">nia</PHON>
                 <FORM kindOf="standard">nia</FORM>
                 <PHON kindOf="standard">nia</PHON>
-                <TRANSL xml:lang="eng">there</TRANSL>
-                <TRANSL xml:lang="zho">那裡</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">there</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">那裡</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_10_W4">
@@ -2479,15 +2479,15 @@
             <PHON kindOf="original">kaŋvaŋ</PHON>
             <FORM kindOf="standard">kangvang</FORM>
             <PHON kindOf="standard">kaŋvaŋ</PHON>
-            <TRANSL xml:lang="zho">全部</TRANSL>
-            <TRANSL xml:lang="eng">all</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">全部</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">all</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_10_W4M1">
                 <FORM kindOf="original">kangvang</FORM>
                 <PHON kindOf="original">kaŋvaŋ</PHON>
                 <FORM kindOf="standard">kangvang</FORM>
                 <PHON kindOf="standard">kaŋvaŋ</PHON>
-                <TRANSL xml:lang="eng">all</TRANSL>
-                <TRANSL xml:lang="zho">全部</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">all</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">全部</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_10_W5">
@@ -2495,47 +2495,47 @@
             <PHON kindOf="original">ɨtɨmɨkɨmɨkɨn</PHON>
             <FORM kindOf="standard">ʉtʉmʉkʉmʉkʉn</FORM>
             <PHON kindOf="standard">ɨtɨmɨkɨmɨkɨn</PHON>
-            <TRANSL xml:lang="zho">聚在一起</TRANSL>
-            <TRANSL xml:lang="eng">gather.together</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">聚在一起</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">gather.together</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_10_W5M1">
                 <FORM kindOf="original">ʉtʉmʉkʉmʉkʉn</FORM>
                 <PHON kindOf="original">ɨtɨmɨkɨmɨkɨn</PHON>
                 <FORM kindOf="standard">ʉtʉmʉkʉmʉkʉn</FORM>
                 <PHON kindOf="standard">ɨtɨmɨkɨmɨkɨn</PHON>
-                <TRANSL xml:lang="eng">gather.together</TRANSL>
-                <TRANSL xml:lang="zho">聚在一起</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">gather.together</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">聚在一起</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_10_W6">
             <FORM kindOf="original">s&lt;um&gt;a-sima'ʉ</FORM>
-            <PHON kindOf="original">s&lt;um&gt;a-simaʔɨ</PHON>
+            <PHON kindOf="original">sumasimaʔɨ</PHON>
             <FORM kindOf="standard">s&lt;um&gt;a-sima'ʉ</FORM>
-            <PHON kindOf="standard">s&lt;um&gt;a-simaʔɨ</PHON>
-            <TRANSL xml:lang="zho">S&lt;主焦&gt;A-玩</TRANSL>
-            <TRANSL xml:lang="eng">S&lt;AF&gt;A-play</TRANSL>
+            <PHON kindOf="standard">sumasimaʔɨ</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">S&lt;主焦&gt;A-玩</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">S&lt;AF&gt;A-play</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_10_W6M1">
                 <FORM kindOf="original">-um-</FORM>
-                <PHON kindOf="original">-um-</PHON>
+                <PHON kindOf="original">um</PHON>
                 <FORM kindOf="standard">-um-</FORM>
-                <PHON kindOf="standard">-um-</PHON>
-                <TRANSL xml:lang="eng">&lt;AF&gt;</TRANSL>
-                <TRANSL xml:lang="zho">&lt;主焦&gt;</TRANSL>
+                <PHON kindOf="standard">um</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_10_W6M2">
                 <FORM kindOf="original">s-a</FORM>
-                <PHON kindOf="original">s-a</PHON>
+                <PHON kindOf="original">sa</PHON>
                 <FORM kindOf="standard">s-a</FORM>
-                <PHON kindOf="standard">s-a</PHON>
-                <TRANSL xml:lang="eng">SA</TRANSL>
-                <TRANSL xml:lang="zho">SA</TRANSL>
+                <PHON kindOf="standard">sa</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">SA</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">SA</TRANSL>
             </M>
             <M id="kkvNr_mikon_Kuatu_S_10_W6M3">
                 <FORM kindOf="original">sima'ʉ</FORM>
                 <PHON kindOf="original">simaʔɨ</PHON>
                 <FORM kindOf="standard">sima'ʉ</FORM>
                 <PHON kindOf="standard">simaʔɨ</PHON>
-                <TRANSL xml:lang="eng">play</TRANSL>
-                <TRANSL xml:lang="zho">玩</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">play</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">玩</TRANSL>
             </M>
         </W>
         <W id="kkvNr_mikon_Kuatu_S_10_W7">
@@ -2543,15 +2543,15 @@
             <PHON kindOf="original">jiu*hejaŋ</PHON>
             <FORM kindOf="standard">jiuzheyang</FORM>
             <PHON kindOf="standard">jiu*hejaŋ</PHON>
-            <TRANSL xml:lang="zho">就這樣</TRANSL>
-            <TRANSL xml:lang="eng">this.was.just.so</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">就這樣</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">this.was.just.so</TRANSL>
             <M id="kkvNr_mikon_Kuatu_S_10_W7M1">
                 <FORM kindOf="original">jiuzheyang</FORM>
                 <PHON kindOf="original">jiu*hejaŋ</PHON>
                 <FORM kindOf="standard">jiuzheyang</FORM>
                 <PHON kindOf="standard">jiu*hejaŋ</PHON>
-                <TRANSL xml:lang="eng">this.was.just.so</TRANSL>
-                <TRANSL xml:lang="zho">就這樣</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">this.was.just.so</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">就這樣</TRANSL>
             </M>
         </W>
     </S>

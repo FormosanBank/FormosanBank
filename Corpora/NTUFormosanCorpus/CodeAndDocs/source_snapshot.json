@@ -1,0 +1,2277 @@
+{
+  "schema_version": 1,
+  "captured_at": "2026-08-22",
+  "source_page": "https://corpus.linguistics.ntu.edu.tw/",
+  "data_store": "https://yongfu.name/glossParser/",
+  "notes": "Unavailable live paths retain the archived source bytes previously tracked by this repository.",
+  "files": [
+    {
+      "path": "grammar/Kanakanavu_Kanakanavu/03.json",
+      "status": "live_same",
+      "sha256": "1b268c1da5434b368acc8a4e29b45a4a0ac632a7291ad0cee828896e1f41d0c2",
+      "records": 6
+    },
+    {
+      "path": "grammar/Kanakanavu_Kanakanavu/04.json",
+      "status": "live_same",
+      "sha256": "cf3b294866419472bb77578ed150c47cede9e5dbdbe224860a567482abff8273",
+      "records": 40
+    },
+    {
+      "path": "grammar/Kanakanavu_Kanakanavu/05.json",
+      "status": "live_same",
+      "sha256": "a143755092eb9d1ab792533289110e782bb503b682d8b3566e690247bfd280a7",
+      "records": 31
+    },
+    {
+      "path": "grammar/Kanakanavu_Kanakanavu/06.json",
+      "status": "live_same",
+      "sha256": "e100532f84d5b3ccc808bf80bc373a8121d32fd704940cfbaab4ce60756a5f14",
+      "records": 55
+    },
+    {
+      "path": "grammar/Kanakanavu_Kanakanavu/07.json",
+      "status": "live_same",
+      "sha256": "5a05d599c60c8ad8a5838b822e5cb2c7a0697403eab21d8e1862b5c4e4843ce2",
+      "records": 9
+    },
+    {
+      "path": "grammar/Kanakanavu_Kanakanavu/08.json",
+      "status": "live_same",
+      "sha256": "e9f8e56a675e5598a7c33e931d1c2d2c99468a421ca8c3fac727ebdc5e5d9c06",
+      "records": 17
+    },
+    {
+      "path": "grammar/Kanakanavu_Kanakanavu/09.json",
+      "status": "live_same",
+      "sha256": "12dbc8d0f8b6541d93247234d902e200acfafc96f20dadc4740cbdcda1a3a86c",
+      "records": 17
+    },
+    {
+      "path": "grammar/Kanakanavu_Kanakanavu/10.json",
+      "status": "live_same",
+      "sha256": "d179866c3c2a61d6cf9f3e458568e0dba5bc5fd4b0cbbc4049157a4cf48be0b0",
+      "records": 31
+    },
+    {
+      "path": "grammar/Kanakanavu_Kanakanavu/11.json",
+      "status": "live_same",
+      "sha256": "49c9ea5e6c43c9a2d27a258611add9e514396882c49bb8ff8729dadc2447e27e",
+      "records": 60
+    },
+    {
+      "path": "grammar/Kanakanavu_Kanakanavu/12.json",
+      "status": "live_same",
+      "sha256": "7f171454a5043668ebe5f697899f0cad31073d701fedcfbca75a17304076bf7a",
+      "records": 20
+    },
+    {
+      "path": "grammar/Kanakanavu_Kanakanavu/13.json",
+      "status": "live_same",
+      "sha256": "8c69e1ff5fc4fd0ad546704584e53528b78ea244614e111b713cfb65fac32902",
+      "records": 45
+    },
+    {
+      "path": "grammar/Kanakanavu_Kanakanavu/14.json",
+      "status": "live_same",
+      "sha256": "fcee8342de5ccdf62907269737a38eb777fe58dc06b0be7d50ae6b72aba3cffd",
+      "records": 32
+    },
+    {
+      "path": "grammar/Kanakanavu_Kanakanavu/15.json",
+      "status": "live_same",
+      "sha256": "f47ac1e1598b262f13a6144da997aaf180d9517fb9138c6d6cbabba90532de65",
+      "records": 32
+    },
+    {
+      "path": "grammar/Kanakanavu_Kanakanavu/A1.json",
+      "status": "live_refreshed",
+      "sha256": "e8bfb97fd15b2be2ca4762ffb2b7b61bc1aff7a758f7a0409cd5f8ea7cb31126",
+      "records": 36
+    },
+    {
+      "path": "grammar/Kanakanavu_Kanakanavu/A2.json",
+      "status": "live_same",
+      "sha256": "3ea05bcbda0109e5db89a0807665acb38448216b69cc29499a82f64eb7bfa269",
+      "records": 895
+    },
+    {
+      "path": "grammar/Kanakanavu_Kanakanavu/ap1.json",
+      "status": "live_refreshed",
+      "sha256": "7ba48eabd72a0c71c09da4a171e29c62cc9cfc8fa6b17fd5c01c94627c341472",
+      "records": 100
+    },
+    {
+      "path": "grammar/Kanakanavu_Kanakanavu/ap2.json",
+      "status": "live_same",
+      "sha256": "4b1cb2aa5e4db34ba49faa0ccdf679c8f3616d0e9b154a627b850999859e1d3a",
+      "records": 57
+    },
+    {
+      "path": "grammar/Kanakanavu_Kanakanavu/ap3.json",
+      "status": "live_same",
+      "sha256": "3a88eb9191fa7007e7aad968e27324a7a647899c85b8fcaf58f678c5e4ce12db",
+      "records": 58
+    },
+    {
+      "path": "grammar/Sakizaya_Sakizaya/03.json",
+      "status": "live_same",
+      "sha256": "6ba7b263a393bb7fa5c2580fdf643d25f4665dac1ac57498f4a033be2476d787",
+      "records": 5
+    },
+    {
+      "path": "grammar/Sakizaya_Sakizaya/04.json",
+      "status": "live_same",
+      "sha256": "de8f816946e8d6b918a04fb28ae92f8a0c4a62ec74108f0ce1e5b0a5b6c4e119",
+      "records": 44
+    },
+    {
+      "path": "grammar/Sakizaya_Sakizaya/05.json",
+      "status": "live_same",
+      "sha256": "10ffa553cf79c808fd32fed79d629d5d58bd5b4630fbe8bbed2933dacb3d05f8",
+      "records": 63
+    },
+    {
+      "path": "grammar/Sakizaya_Sakizaya/06.json",
+      "status": "live_same",
+      "sha256": "b2a256d491ab8ec78b24f47ed3c960382a13334391331a0af8a765b9ad682c5c",
+      "records": 63
+    },
+    {
+      "path": "grammar/Sakizaya_Sakizaya/07.json",
+      "status": "live_same",
+      "sha256": "fcb7432638b6608256d36fe494e5d7cc5cb44c161bb61878cf63d483a83336a6",
+      "records": 10
+    },
+    {
+      "path": "grammar/Sakizaya_Sakizaya/08.json",
+      "status": "live_same",
+      "sha256": "528d0420955ffb54d99a52f9e10bcf8318fc65861477b7c1a21c57882fbc7f0b",
+      "records": 22
+    },
+    {
+      "path": "grammar/Sakizaya_Sakizaya/09.json",
+      "status": "live_same",
+      "sha256": "5b97e9208ac9328b74fd4203384f29ba13d2158345c0550710b23fe6d1663081",
+      "records": 29
+    },
+    {
+      "path": "grammar/Sakizaya_Sakizaya/10.json",
+      "status": "live_same",
+      "sha256": "f2dae502a07a49569a0651f414476e98dbf08c0c004108f9baca4a2c8caaf69e",
+      "records": 46
+    },
+    {
+      "path": "grammar/Sakizaya_Sakizaya/11.json",
+      "status": "live_same",
+      "sha256": "2d77c54cb1d4b93cc420e98c8d7d43a6a10d26530eded6bf84f366eae0f9ae99",
+      "records": 67
+    },
+    {
+      "path": "grammar/Sakizaya_Sakizaya/12.json",
+      "status": "live_same",
+      "sha256": "76c8423acde0ef9ce35e44495c88febeaab2a81cc06340404a37c4ec84da30ed",
+      "records": 19
+    },
+    {
+      "path": "grammar/Sakizaya_Sakizaya/13.json",
+      "status": "live_same",
+      "sha256": "ce229e4fa6f140ddaf5ad0846f0d49559fec60f143331fb5b68be5bd5fd0c622",
+      "records": 48
+    },
+    {
+      "path": "grammar/Sakizaya_Sakizaya/14.json",
+      "status": "live_same",
+      "sha256": "1bb70afe7c61593844795519b61e3bfb28b089e07db6228f9da0fcd06314a6e2",
+      "records": 29
+    },
+    {
+      "path": "grammar/Sakizaya_Sakizaya/15.json",
+      "status": "live_same",
+      "sha256": "1dbca177447735345cac826d95213ceb513db1dde16d473468a03fbbfa273bea",
+      "records": 17
+    },
+    {
+      "path": "grammar/Sakizaya_Sakizaya/A1.json",
+      "status": "live_same",
+      "sha256": "51ed05a19334a91754c5657f1cc25f38894c69b6fa9e0119705f9b29f6bb2652",
+      "records": 36
+    },
+    {
+      "path": "grammar/Sakizaya_Sakizaya/A2.json",
+      "status": "live_same",
+      "sha256": "6c4c3fac3b1c85b837ef0fc2d5459323ac418eb01ed77a8b542359cbd3265954",
+      "records": 500
+    },
+    {
+      "path": "grammar/Sakizaya_Sakizaya/ap1.json",
+      "status": "live_same",
+      "sha256": "168d5d4b4d562bef726fce9a12545e875d1797725fa83fe47c9990e96f957c48",
+      "records": 78
+    },
+    {
+      "path": "grammar/Sakizaya_Sakizaya/ap2.json",
+      "status": "live_same",
+      "sha256": "76ab20c5ece5b0f25902bdd7c43fc188fb9cf2fcd2cd99125cb48c154256cce9",
+      "records": 68
+    },
+    {
+      "path": "grammar/Seediq_Tgdaya/03.json",
+      "status": "live_same",
+      "sha256": "c88c7b84fa33f9c0a504aa404c51075c9d1e0a03774d7973d7a4913fe53b7b06",
+      "records": 6
+    },
+    {
+      "path": "grammar/Seediq_Tgdaya/04.json",
+      "status": "live_same",
+      "sha256": "5339cfe3e68b2c1d48938769eeb58d47b1fdedd56473846bac43a01a8077f891",
+      "records": 41
+    },
+    {
+      "path": "grammar/Seediq_Tgdaya/05.json",
+      "status": "live_same",
+      "sha256": "92396f7d3e09c45288bdc8c018001a13fc883eddea73386b56f00767edff91bd",
+      "records": 36
+    },
+    {
+      "path": "grammar/Seediq_Tgdaya/06.json",
+      "status": "live_same",
+      "sha256": "dc141d9230f8b536c2d30c9e0167c552e86ca6c593010b4cb22fc87ab553477a",
+      "records": 50
+    },
+    {
+      "path": "grammar/Seediq_Tgdaya/07.json",
+      "status": "live_same",
+      "sha256": "ace977f1be906f0458236b65cab488182ba6dc49ce8fda8c9da48ed34fa1a65f",
+      "records": 15
+    },
+    {
+      "path": "grammar/Seediq_Tgdaya/08.json",
+      "status": "live_same",
+      "sha256": "2eccb59c440ef9b46b61b0aaf41528973d43063b0021bf03603665e987e5f584",
+      "records": 24
+    },
+    {
+      "path": "grammar/Seediq_Tgdaya/09.json",
+      "status": "live_same",
+      "sha256": "6020fd9b023904e1f6dc8063d5d3f39b8034fa0853a54102c36e25309e5c78c1",
+      "records": 27
+    },
+    {
+      "path": "grammar/Seediq_Tgdaya/10.json",
+      "status": "live_same",
+      "sha256": "38085d9a0ae1af9c6db34df854269c84926dae8a4a9de5fae1c059bb4b94f62e",
+      "records": 34
+    },
+    {
+      "path": "grammar/Seediq_Tgdaya/11.json",
+      "status": "live_same",
+      "sha256": "e26fea42126349e364d5b7ba8e722ab888b7a63f5b99a36e061841aca22f2418",
+      "records": 63
+    },
+    {
+      "path": "grammar/Seediq_Tgdaya/12.json",
+      "status": "live_same",
+      "sha256": "7a93d7cf22ebbff6871b9aadb8c6392dce1172b97fdccc0a6c014a64c430694c",
+      "records": 20
+    },
+    {
+      "path": "grammar/Seediq_Tgdaya/13.json",
+      "status": "live_same",
+      "sha256": "1b9b76e6fc46347f474986f206f5e2dc1e1ebc0873bed120de3210e4c41aaeb8",
+      "records": 44
+    },
+    {
+      "path": "grammar/Seediq_Tgdaya/14.json",
+      "status": "live_same",
+      "sha256": "cfad3b555b3fd2f95698bd444cecf09217d83e7bde3ade0134f88c190a56a904",
+      "records": 23
+    },
+    {
+      "path": "grammar/Seediq_Tgdaya/15.json",
+      "status": "live_same",
+      "sha256": "5d32ecc1afa53e5a5de38cc0db0e3d2ac42852a00b6e02244f22cca4c6e7072d",
+      "records": 18
+    },
+    {
+      "path": "grammar/Seediq_Tgdaya/A1.json",
+      "status": "live_refreshed",
+      "sha256": "d1374443ec94d1865321cf22724a9f08178b759e9c37d1cf05f8203308f165c2",
+      "records": 34
+    },
+    {
+      "path": "grammar/Seediq_Tgdaya/A2.json",
+      "status": "live_refreshed",
+      "sha256": "799524d481bcfeada605d97c83dbf8f088dce7a0070ee31da4c67e94ae41f16a",
+      "records": 641
+    },
+    {
+      "path": "grammar/Seediq_Tgdaya/ap1.json",
+      "status": "live_same",
+      "sha256": "31707216cc3d7e0d37754b77f0adf405a5525ca640cdccd8d8385e140a2e08f4",
+      "records": 54
+    },
+    {
+      "path": "grammar/Seediq_Tgdaya/ap2.json",
+      "status": "live_same",
+      "sha256": "e6f4f404f997520d81ebbc3ebdd4c734adc09888ebbb917ad343d595c7ddf6ab",
+      "records": 54
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/01-1.json",
+      "status": "live_refreshed",
+      "sha256": "fa9105093afebbe74907aef232fc516817d2c59bb2ebcc462913ec563983ee7e",
+      "records": 11
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/01-2.json",
+      "status": "archived_unavailable",
+      "sha256": "7cc90b42a06ec047b52c3e807d9f742a65ced268c61aa62c4b3be05ad9fb4fe1",
+      "records": 6
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/01-3.json",
+      "status": "archived_unavailable",
+      "sha256": "02c827708924e5678f54a32adcde555017243e4dace2f06b716cdaf471cdcd06",
+      "records": 15
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/01-4.json",
+      "status": "live_same",
+      "sha256": "aae15fe61c6f83588069d8abfd325dc1e6a445df7a87eef96f4ac3da4fda3a4c",
+      "records": 12
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/01-5.json",
+      "status": "archived_unavailable",
+      "sha256": "bdaff34d4b585ead2277e0dcff1b398296d9226c9ed951c2e43c1d5541001db1",
+      "records": 10
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/01.json",
+      "status": "live_same",
+      "sha256": "75b2e0710a7847c454b0fb1d14924ebbad2bc68c9bce8926441f2e5a18e7e0c6",
+      "records": 8
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/02.json",
+      "status": "archived_unavailable",
+      "sha256": "f7f4e05bd389199d842d2cef6f13ce5fec879f0b492a0b7d51ded28d2c0b3b05",
+      "records": 30
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/03-2.json",
+      "status": "live_same",
+      "sha256": "6f1a7d11d39ac8a9516c84f014e5d8b4b3f0c3d857e50baa0613df624e96aadc",
+      "records": 14
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/03-3.json",
+      "status": "archived_unavailable",
+      "sha256": "9c7e1467dd3c8683f3d7c23965c5175a77a02754ed082281e373da77d7987041",
+      "records": 14
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/03-4.json",
+      "status": "live_same",
+      "sha256": "e3fc03234610c3b218bc1df33adf092acff3d93cd5e1a60c49524e612524bd11",
+      "records": 18
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/03-5.json",
+      "status": "archived_unavailable",
+      "sha256": "fb405badbc960b53a245e93c95dda175292b6ad3040ba6bf761f0143af05774b",
+      "records": 14
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/03-6.json",
+      "status": "archived_unavailable",
+      "sha256": "59444a3bb2abc10fea43bba060679032276cb497ee58eac3a5daed7bfcdf5363",
+      "records": 10
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/03-7.json",
+      "status": "live_same",
+      "sha256": "6c329e43aedf2ac763fa4d146eb2034f0a4a002e7b8a7c77f97f0a16073615a6",
+      "records": 23
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/03.json",
+      "status": "archived_unavailable",
+      "sha256": "2d0c67e2ad2784210c21d5bf6328b96c329569584886a7429b9eca56596275c5",
+      "records": 6
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/04.json",
+      "status": "archived_unavailable",
+      "sha256": "cefdb4500fab531669d090a12e495b73941d04d7090c379cf5a8526403189d93",
+      "records": 8
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/05.json",
+      "status": "archived_unavailable",
+      "sha256": "6b4b54957515dc0225205dd36417f6292633552782ac6527e6a99f6de3e9de47",
+      "records": 12
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/06.json",
+      "status": "live_same",
+      "sha256": "1bca7712f7e5a8e7dc6e2be144dc8692f87857871a31079c27823135267bec80",
+      "records": 8
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/07.json",
+      "status": "live_same",
+      "sha256": "65debb6e7ad9c9670550b31aaf82fdfda9b8dd547f4702bcaccfd004bc79b09a",
+      "records": 5
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/08.json",
+      "status": "live_same",
+      "sha256": "c314ec78dac584649e65558d8a05cec6afac8bbbc92575abe2e2546827bdbdd9",
+      "records": 4
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/09.json",
+      "status": "live_same",
+      "sha256": "d2bc558bf59bb6ce4f5221d82602b3f194d33c809c7315f308505498f6cfca4b",
+      "records": 8
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/10-2.json",
+      "status": "archived_unavailable",
+      "sha256": "f71ae006d39ca86efd6e72efc6c403c8881c834224d7646cb69bebd6a4941326",
+      "records": 12
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/10-3.json",
+      "status": "archived_unavailable",
+      "sha256": "0c5660a8ced97e53987bd5fb6f5886aeedb9241f15ec4c503cd676f1c68786cf",
+      "records": 14
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/10-4.json",
+      "status": "live_same",
+      "sha256": "dd9266653434b35edcb357b8548c831a6205c4c3cb9f2117e196d6b8596f0202",
+      "records": 5
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/10-5.json",
+      "status": "live_same",
+      "sha256": "436be90b335276c22b1e19fd3951075a5c25a38b6d5dbe91b1871c25695166b2",
+      "records": 9
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/10-6.json",
+      "status": "live_same",
+      "sha256": "1fbea172d019a7ee838f49c4938b129ecc28d9433d9a575f2e916b9f21b02956",
+      "records": 11
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/10-7.json",
+      "status": "live_same",
+      "sha256": "eed727aa5eda60b4ba1d254ce52163d62e21c3bdf2dd3ce2e742c683764356bf",
+      "records": 4
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/10.json",
+      "status": "live_same",
+      "sha256": "3c1fe779879f45541b62123262fbc47753445f08bbbce0f3fb8b25698b3eeab4",
+      "records": 4
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/11.json",
+      "status": "archived_unavailable",
+      "sha256": "72622b3d856524ef1dee86087b960a12839e1be2e7f5156f234d174580911d90",
+      "records": 10
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/12.json",
+      "status": "archived_unavailable",
+      "sha256": "c6d4797aef8573732949b0c348954e7171cd4c9f511ae3759981a8119506454d",
+      "records": 17
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/13.json",
+      "status": "archived_unavailable",
+      "sha256": "c0a39f638494d1a57a99b8e655ff705e03b97a871b772b7c964609ac5aa60650",
+      "records": 17
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/14.json",
+      "status": "archived_unavailable",
+      "sha256": "442701e4a63f3322c3411bb4c312bb083fc5054e3a69be547aadd4cddede04e2",
+      "records": 8
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/15.json",
+      "status": "live_same",
+      "sha256": "072c59a27d5a3b689aab76c7ca9b5f7f860f5806dec83c4b74ab01a7be9a2429",
+      "records": 11
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/16.json",
+      "status": "archived_unavailable",
+      "sha256": "ff00581b3b4bfd37888a4017127d850bb231a208c69a3a3710b7857577d1029e",
+      "records": 17
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/17.json",
+      "status": "archived_unavailable",
+      "sha256": "448d3cd095052ce496d425c6be3cbd7c14e724f1f5fdc0e040cf8ae8916c589b",
+      "records": 31
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/18.json",
+      "status": "archived_unavailable",
+      "sha256": "fb3120ab47828902284585900712c64d251906c076d9cc81112d915fb88c6061",
+      "records": 7
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/19.json",
+      "status": "live_same",
+      "sha256": "54ed7f91645bb5b70691ba710d8bedfaf15eaf9d8c62f35a4710410c6180e1c1",
+      "records": 5
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/20.json",
+      "status": "archived_unavailable",
+      "sha256": "758d24e68f5f64fd88cc685cebdfb4c9ea4dc5c2b0ce4199467fb23679a6e4af",
+      "records": 15
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/21.json",
+      "status": "live_same",
+      "sha256": "fb47234634b90a1ed991bc103ac1e11f6fb3a34382481b79c1bf1dba098dcbc2",
+      "records": 5
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/22.json",
+      "status": "live_same",
+      "sha256": "b7552d3087324396420eecbe5c519e057e464a3481f7288a52fd70e8bac37985",
+      "records": 7
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/23.json",
+      "status": "live_same",
+      "sha256": "031c299ce801c00fc94beb12a3a7cf3ff428ecd7ea3aa17d00d5dea64928dcc7",
+      "records": 7
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/24.json",
+      "status": "archived_unavailable",
+      "sha256": "414d6f9a3f95051f1231d8959997fefb5aea75be9c1cedd3deff3f7c92c742ae",
+      "records": 11
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/25.json",
+      "status": "live_same",
+      "sha256": "48d0a6c2f2babd42aca35c3b5225d5caaff77097cc2db3e5552a4fe36b8cf2a0",
+      "records": 6
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/26.json",
+      "status": "archived_unavailable",
+      "sha256": "3b7cc2bf89ecb2bdbed80dcba0868a14277eebc04ad1298afae405c0bb276c2f",
+      "records": 11
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/27.json",
+      "status": "live_same",
+      "sha256": "76dd55ce03fb00fed528f95150225d4df5f53b85f09dd064932588f3ac11f1a7",
+      "records": 5
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/28.json",
+      "status": "live_same",
+      "sha256": "140d654e907cb66fbdb2ec39471ce4f73a824f9fd2060aa3413b5c411ac3987d",
+      "records": 13
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/29.json",
+      "status": "archived_unavailable",
+      "sha256": "c2c5fa31026d04514650e96cdf421b1397a44e8a1f0b1f39c37baec92fa1f819",
+      "records": 9
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/30.json",
+      "status": "archived_unavailable",
+      "sha256": "4098ea7616f1480ed58a68e2ef21bc4ffa3ee81e81ac5ddc11431db190ad7672",
+      "records": 8
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/31.json",
+      "status": "live_same",
+      "sha256": "4d43e6fa272d4b89b2a1bc718b1e91c62bdbb3a1cb24347a7b104f16aadf99de",
+      "records": 12
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/32.json",
+      "status": "live_same",
+      "sha256": "7eedb51fd6063eea443972101487a0857f6aba2d77718da2d546b7d0ded3ff65",
+      "records": 11
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/33.json",
+      "status": "archived_unavailable",
+      "sha256": "111daecba162e934e8de3127d95569c69a4ff50e10b021c100d29e411a9892e6",
+      "records": 5
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/34.json",
+      "status": "archived_unavailable",
+      "sha256": "961a24bfe2ad1f96677bb7f2f1890e1ff502e9be4eba962fb3b2031b8edb45f0",
+      "records": 17
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/35.json",
+      "status": "live_same",
+      "sha256": "eeaec346e5baf73cfe433b088a9f5f741c6c7e5b892356fa8b76b77fa8f825ea",
+      "records": 4
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/36.json",
+      "status": "live_same",
+      "sha256": "7508aeda8892d23367754878af0eeff33311e0675eeb45faa5714a81261d1107",
+      "records": 16
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/37.json",
+      "status": "archived_unavailable",
+      "sha256": "aff5dff3f71e61b8efeb24f7fae39af8cc05b308ec11e2bd8126720a63544582",
+      "records": 10
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/38.json",
+      "status": "live_same",
+      "sha256": "79acc62db1a7fc5470565a693e1626ed54f589b91e9cc4a3cf47c6053f78caed",
+      "records": 6
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/39.json",
+      "status": "live_same",
+      "sha256": "8dc10a41c8952f5d2ceef4b855f151a69aad7b85b08f7cb60a299cb388ea6e2f",
+      "records": 66
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/40.json",
+      "status": "live_same",
+      "sha256": "ecbe6921323777d6e1fddfcd646a3404fb6bc5c203828a14f87ccd1c942b6339",
+      "records": 7
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/41.json",
+      "status": "live_same",
+      "sha256": "309fe4ce05ceb9d7012d7acc8f8c7c38b7e4fcc00d3b454a7773c58c9e7b80d4",
+      "records": 9
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/42.json",
+      "status": "live_same",
+      "sha256": "75c0e3c00bb595b35eff209764d17cffe920028c526f975bea39e3209c3bf001",
+      "records": 7
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/43.json",
+      "status": "live_same",
+      "sha256": "70f790eca37e883cf9d413ee8018d6c0795a05566e4d830cc3e0273bd6d783f9",
+      "records": 9
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/44.json",
+      "status": "live_same",
+      "sha256": "1cc915201c4e57f267b956fd57c4a17e48114982a232a65102abde5cc62a7cac",
+      "records": 3
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/45.json",
+      "status": "live_same",
+      "sha256": "e21b99774384ea2b0128e194006505537f7805a24eb95f45c3c4957038837449",
+      "records": 4
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/46.json",
+      "status": "archived_unavailable",
+      "sha256": "2a22c5c26fbde401fc1157b510422f8780bf421318e2b7aca6fd38c3b7a83708",
+      "records": 12
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/47.json",
+      "status": "archived_unavailable",
+      "sha256": "2dbe249fbf4721c4b73e6835cdf7775c032fde11fe1f7a46965c540b3c8cffdb",
+      "records": 15
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/48.json",
+      "status": "archived_unavailable",
+      "sha256": "8be7de6eae4fc39fbb7ba8cd9341d04b5fa1980e136949a5dfb2179cf045910b",
+      "records": 23
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/49.json",
+      "status": "archived_unavailable",
+      "sha256": "3478e6c4fd8536c459ded0d2e6fc7506c3f83108ab66368c7548ae3715e0f316",
+      "records": 11
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/50.json",
+      "status": "archived_unavailable",
+      "sha256": "948430271508551a75da53a0a6b153214ad88ba6ef99ea7866373f6b374212ed",
+      "records": 19
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/51.json",
+      "status": "archived_unavailable",
+      "sha256": "bbfadb009c872612d1456c32ed969d0469e898e85919e268db013b45a45312dc",
+      "records": 22
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/52.json",
+      "status": "archived_unavailable",
+      "sha256": "fd6fe3831b38c0ee8fea67d726c47a046b9222aa06134f695122c6d9038b569d",
+      "records": 17
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/53.json",
+      "status": "archived_unavailable",
+      "sha256": "e00f31f8bd4235f0f631eb17f38ae8f8ccba578c38a87049e3b551dd1758b063",
+      "records": 15
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/54.json",
+      "status": "archived_unavailable",
+      "sha256": "81cffa00034fd1da6769b78040334c4ace0dab8ace73cdfe8a0b62c8d1e25a32",
+      "records": 29
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/55.json",
+      "status": "archived_unavailable",
+      "sha256": "32b1058e13cf534d23bedcd42f9efb34574b5a53794ee1af9075d83a5f9c518c",
+      "records": 36
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/56.json",
+      "status": "live_same",
+      "sha256": "0ee304411804335fad448fc6c35c89f4e545c1f50d1e85c31a1f020ce6c587aa",
+      "records": 19
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/57.json",
+      "status": "archived_unavailable",
+      "sha256": "a37379027bd53f720c9c38ed0718007a248bcb2b4c7daa0348ebfcd01006cdc4",
+      "records": 29
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/59.json",
+      "status": "archived_unavailable",
+      "sha256": "073ce3d531fe08bbe0047709a9c93df9696a6ddd6c4e2c756f4f812bb5319e0a",
+      "records": 16
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/60.json",
+      "status": "archived_unavailable",
+      "sha256": "e534ff1b81ea257cb6d7dac3a1b39205a29cfceb7578de3c306813bcc2309250",
+      "records": 21
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/61.json",
+      "status": "archived_unavailable",
+      "sha256": "9121b323dddabdb88333d2e04848a9fc0f9adba6442d9ca0afea7135d0b61a92",
+      "records": 10
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/62.json",
+      "status": "archived_unavailable",
+      "sha256": "3236fc73775b77f0d2bf10a759acf538689997b6ec3e8c444c4ba96c4121d93f",
+      "records": 43
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/63.json",
+      "status": "archived_unavailable",
+      "sha256": "46ac7d10bfaf5bc3d07ef01d5d4554c3dbc8c8deb89e9fb336e782ea3ea22e4f",
+      "records": 920
+    },
+    {
+      "path": "sentence/Bunun_Isbukun/64.json",
+      "status": "archived_unavailable",
+      "sha256": "27293328f53a5e54316b5d79930ea0a9b8ed87dd6b9884d873026351c7c364fd",
+      "records": 74
+    },
+    {
+      "path": "sentence/Kanakanavu_Kanakanavu/1.json",
+      "status": "live_refreshed",
+      "sha256": "6da3a7c1eec1a6bde053735592e086c6a3c8943278b5f969d6b77aa436f9f412",
+      "records": 492
+    },
+    {
+      "path": "sentence/Kanakanavu_Kanakanavu/2.json",
+      "status": "live_refreshed",
+      "sha256": "d7c9f3dfdbcfa72d22eef2da83654e43cb6eeab2dda8abc21f51cafcf23a9dd5",
+      "records": 16
+    },
+    {
+      "path": "sentence/Kanakanavu_Kanakanavu/3.json",
+      "status": "live_refreshed",
+      "sha256": "d9d2fccd3b907bba0c1673bb16da47130cd21a54877686b8b2dce99fdefd1599",
+      "records": 524
+    },
+    {
+      "path": "sentence/Kanakanavu_Kanakanavu/4.json",
+      "status": "live_refreshed",
+      "sha256": "3668639af135c752554bb72d3bd9e1607bc4cd2d30d47943afb23978d775a269",
+      "records": 181
+    },
+    {
+      "path": "sentence/Kanakanavu_Kanakanavu/5.json",
+      "status": "live_refreshed",
+      "sha256": "91917abb6fcb972599bf8b22ab38af2d3529bbe27998b44a982b5db2fb7f7ab5",
+      "records": 73
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200318-CL-1.json",
+      "status": "live_refreshed",
+      "sha256": "12a42486246a70cf68342a81674542eba44cb383c5b74a4b80d1d5ef2c1c68ca",
+      "records": 10
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200325-CL-2.json",
+      "status": "live_same",
+      "sha256": "601d4f5e4e185f5daee08a8243b351b3727746bc6cb3d1c1b96e4e4531a6623b",
+      "records": 23
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200408-CL-3.json",
+      "status": "live_same",
+      "sha256": "52b9e9eedf7aa3faa51b282881295212010a99f1aed69afe53a7d45588e073e5",
+      "records": 17
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200415-CL-4.json",
+      "status": "live_refreshed",
+      "sha256": "6faa2e953b980b878c33fb674b4f375051a9c93f4b583e61723997f0d7162c46",
+      "records": 19
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200422-CL-5.json",
+      "status": "live_refreshed",
+      "sha256": "f58ea307e21c2389f0b8d02052835816da5e8fb68e5bf5800db80aa850ab0825",
+      "records": 19
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200429-CL-6.json",
+      "status": "live_refreshed",
+      "sha256": "2ffab5e02b5bc9e2dd8325c24a119faefbf791172532a7715da669fa052d09b6",
+      "records": 19
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200508-CL-7.json",
+      "status": "live_refreshed",
+      "sha256": "9b420e9e951fe968462ec70ceff11553df1fc659c7eeea4ff3e1817efa85e6bb",
+      "records": 23
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200513-CL-8.json",
+      "status": "live_refreshed",
+      "sha256": "d4c18a084fb47d95929fb438fd4794b2383ccfabdaa86742fbfe644eac8a63ce",
+      "records": 24
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200528-FW-Andrea.json",
+      "status": "live_refreshed",
+      "sha256": "41ee7b9e8ac427a7c4c644a0e6515d1f53caeb4cc313d926ca4659122b6ffff7",
+      "records": 19
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200528-FW-Ingrid.json",
+      "status": "live_refreshed",
+      "sha256": "f6da41455059c4c0cef767589c2f4544a6935a08ccd0116694aab3eca5f5473f",
+      "records": 36
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200528-FW-Jess.json",
+      "status": "live_refreshed",
+      "sha256": "bb7d2c964602d9e804bfc46443cc3aa79377951401793cc812197385794f4722",
+      "records": 10
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200528-FW-Jimmy.json",
+      "status": "live_refreshed",
+      "sha256": "9b9818f040071d1e9c14169d838b3875738f55bb90213dbc64d7600e9e5be1b9",
+      "records": 16
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200528-FW-Ken.json",
+      "status": "live_refreshed",
+      "sha256": "6352d8f630c6071227bfd1f870dbebd6d777b68b05483ff2e665013f8c44071b",
+      "records": 23
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200528-FW-Ludwig.json",
+      "status": "live_refreshed",
+      "sha256": "12d9590747d2cf134f94b56a192f9b36cfeffb27e3d09bc46732c382574aef4d",
+      "records": 26
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200528-FW-Ryan.json",
+      "status": "live_refreshed",
+      "sha256": "964256d7e97f00049520329aca918b0ea3de03213ae62b23aa0a95f26694d38c",
+      "records": 24
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200528-FW-Yongfu.json",
+      "status": "live_refreshed",
+      "sha256": "60e4cd0900e3caffc4bd476c933fa821cf48c9eda7934f642bbca2c95eb4b985",
+      "records": 26
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200528-FW-yuki.json",
+      "status": "live_same",
+      "sha256": "9835366009ad5a6d497b1a526a72542fc5b0abc0ab6693d1608bc1dc28e4f772",
+      "records": 24
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200529-FW-Andrea-1.json",
+      "status": "live_refreshed",
+      "sha256": "8e7ed0821057f90cfdb70344c96cdd511a53ca4744d4cc2f9e2dee2200e475df",
+      "records": 17
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200529-FW-Andrea-2.json",
+      "status": "live_refreshed",
+      "sha256": "fb8ac95c5c40b0eaf716df1b4b8cf37d4f3dbf7c0de554f2fc4eaefcd84b38e4",
+      "records": 35
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200529-FW-Ingrid.json",
+      "status": "live_refreshed",
+      "sha256": "c7da76494f152caaaccf7fd54b2c9b779734d21d273e01fbf64d594666cd5c60",
+      "records": 13
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200529-FW-Jess.json",
+      "status": "live_refreshed",
+      "sha256": "10438b13fca6f0f0de507c0dc8647a8dc303394f0c3e7f8ee28116eb9ffb83b2",
+      "records": 19
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200529-FW-Jimmy-1.json",
+      "status": "live_refreshed",
+      "sha256": "d0afe85c4f882a5164f18bafce47c354195fc40651cb61cff7723060d1b0ab55",
+      "records": 11
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200529-FW-Jimmy-2.json",
+      "status": "live_refreshed",
+      "sha256": "0a82c204e9e5f16c698153de99004affccf060e4e1bba532ddceca252020e4ca",
+      "records": 14
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200529-FW-Ken-1.json",
+      "status": "live_same",
+      "sha256": "dcc8adb6c6900aac1491d6fa59a55cce3cc84e248c269f7a3b66d6edc2284b98",
+      "records": 17
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200529-FW-Ken-2.json",
+      "status": "live_same",
+      "sha256": "c048cc4fbc2d0a6eec44393ed4bf4bad077f25dfcf5c54a62dba9fcb2ecec48e",
+      "records": 11
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200529-FW-Lixing-1.json",
+      "status": "live_refreshed",
+      "sha256": "0e40189c9275484a3b9128e2fe8add8a6f4dcddc4bbdf8f63d0df1a764c1154d",
+      "records": 20
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200529-FW-Lixing-2.json",
+      "status": "live_same",
+      "sha256": "93f26d70e617bf463a6a064e8a825c8778b54e237fbc7efdb45dcd86c535577c",
+      "records": 17
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200529-FW-Ludwig.json",
+      "status": "live_refreshed",
+      "sha256": "89595e2700aa4355b3faeddf57fc341c7cac3f711b307f9d2b0047301494bd57",
+      "records": 23
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200529-FW-Ryan.json",
+      "status": "live_refreshed",
+      "sha256": "50a8e7d375a2018fdfcbd9bed11a6b34a5c7f3e2bf9d3d0700d3f8dab99e0ed8",
+      "records": 38
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200529-FW-Yongfu-1.json",
+      "status": "live_refreshed",
+      "sha256": "84a669c726d90d6bbc6322e7b182df02404337d902759a04e320449489cd4daa",
+      "records": 37
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200529-FW-Yongfu-2.json",
+      "status": "live_refreshed",
+      "sha256": "e6481fe4b34dd5e288e5de9c2e41e72a6cedce37bc42d49d3cfe1191b68a763c",
+      "records": 19
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200529-FW-yuki-1.json",
+      "status": "live_refreshed",
+      "sha256": "ac8f3aa85e76f87659f4ce92fa7573797e5d6b2168bdcd39b2e577707f3e90ad",
+      "records": 14
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200529-FW-yuki-2.json",
+      "status": "live_refreshed",
+      "sha256": "e2dd25f54ffede91218399331651e1a8756ea3040591bfb81f7bf9fc403445ca",
+      "records": 28
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200530-FW-Andrea-1.json",
+      "status": "live_refreshed",
+      "sha256": "b468a7b98bc29eaf99ac145410f15d183075e45c85cbfc181bdbe7a78f33c915",
+      "records": 9
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200530-FW-Andrea-2.json",
+      "status": "live_same",
+      "sha256": "9855d634874e65fc2a678f566cfdd9630608139c2ca624d0fe3bfbf7d02a5dc7",
+      "records": 10
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200530-FW-Ingrid.json",
+      "status": "live_refreshed",
+      "sha256": "bceb958a15b892fbf4cd14029c1b161a10678899e28c34611e009c99c1d22b46",
+      "records": 19
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200530-FW-Jess.json",
+      "status": "live_refreshed",
+      "sha256": "d76219cb00e2069b8f904e9092256ed813f54c584aaa98093cdb8067bab2e96c",
+      "records": 26
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200530-FW-Jimmy-1.json",
+      "status": "live_refreshed",
+      "sha256": "46b6d24c9deb276879c64c3986e94bd59ea16f6e8ddef8518a2390c93db03bdd",
+      "records": 21
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200530-FW-Jimmy-2.json",
+      "status": "live_refreshed",
+      "sha256": "7acc9473eb65c6988cce8083a1cf98fa6de9ccaa277cd1561314f223c623fbff",
+      "records": 5
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200530-FW-Ken-1.json",
+      "status": "live_refreshed",
+      "sha256": "3da1b5021c3e90a85f850c09261d4037cdd80d551d0a3a5aa4ac6060c122a622",
+      "records": 17
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200530-FW-Ken-2.json",
+      "status": "live_same",
+      "sha256": "c2186ddc9fa9b8eac99bad7f24629387fc14e3852570f73665db9a763d55c8d4",
+      "records": 26
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200530-FW-Lixing-1.json",
+      "status": "live_refreshed",
+      "sha256": "562e4bc02ca4b2f619fc9e268e28cac359ae337bace69298e5251b4e3f16bb23",
+      "records": 19
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200530-FW-Lixing-2.json",
+      "status": "live_same",
+      "sha256": "303c9fe28fe0a3bf8fb299091af550c2b11ec977ebf144e1a3a5c4e789126f75",
+      "records": 6
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200530-FW-Ludwig.json",
+      "status": "live_refreshed",
+      "sha256": "84fbd5b4c196e82fb0f0453f890ae1efbf4e428f8a244dc841c65f96642f980f",
+      "records": 11
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200530-FW-Ryan.json",
+      "status": "live_refreshed",
+      "sha256": "699dd6c16896a210ec4d7f81e998e5a43f1e71dfac639265903aacf691216983",
+      "records": 46
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200530-FW-Yongfu-1.json",
+      "status": "live_refreshed",
+      "sha256": "c908d66fe487ad32c7581538ab92cb356a6a2fa17b5544b4a60dbdab0d726f39",
+      "records": 23
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200530-FW-Yongfu-2.json",
+      "status": "live_same",
+      "sha256": "5d75b3b7ec13aa5f3b0a22c36904b8ad8218e1c41ec444978bd655a52a0264de",
+      "records": 16
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200530-FW-yuki.json",
+      "status": "live_refreshed",
+      "sha256": "452e1eda43a378c4c25c0e19de030dafa2b31eaa38271de685916d240e12c6fb",
+      "records": 16
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200531-FW-Ingrid.json",
+      "status": "live_refreshed",
+      "sha256": "66f4eac67be1b7246d98e6e42e4b2a5db7760adfcd15e316c17ea5923fdda84a",
+      "records": 25
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200531-FW-Jimmy.json",
+      "status": "live_refreshed",
+      "sha256": "2a9ef5d70a0a1b74a304ef67977c9396a1b4a1410443453ef982d4fd561ee1df",
+      "records": 11
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200531-FW-Lixing.json",
+      "status": "live_refreshed",
+      "sha256": "7a34216248cc0adf75869133a169e6bcca0859d8e2159d526a13c1027521fc0e",
+      "records": 21
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200531-FW-Yongfu-1.json",
+      "status": "live_refreshed",
+      "sha256": "8af304ea8a61194b3331099d040edf0ac6d3bb39b195a41bdad89296d0962721",
+      "records": 30
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200531-FW-Yongfu-2.json",
+      "status": "live_refreshed",
+      "sha256": "adf8002d40b81836a601a6a7d00730c885bc81b2447609abd35152e9aca23e7d",
+      "records": 16
+    },
+    {
+      "path": "sentence/Rukai_Vedai/20200531-FW-yuki.json",
+      "status": "live_refreshed",
+      "sha256": "27d21ca93fdb399258132a533a18fba22fdc22ad5c1aa735bd57cdadd7257a8f",
+      "records": 48
+    },
+    {
+      "path": "story/Amis_Ciwkangan/Amis_Conv-farming_marang_furayang.json",
+      "status": "live_refreshed",
+      "sha256": "0e8803873ebb116a8001f2978cdc8eebb834d298403ddecde17554e426e6d2c4",
+      "records": 231
+    },
+    {
+      "path": "story/Amis_Ciwkangan/Amis_Conv-talking_tamih_panay.json",
+      "status": "live_refreshed",
+      "sha256": "deb013ef2dbeadc21a6c5e1d4e8cf4a6e036cf3b2a0c3c84675ebd0bd30b0d41",
+      "records": 197
+    },
+    {
+      "path": "story/Amis_Ciwkangan/Amis_Nr-crab_panay.json",
+      "status": "live_same",
+      "sha256": "fe680ca2c237f840179e1e22d269d622e135ab84eb530f0260090bfcfa0e7c2d",
+      "records": 85
+    },
+    {
+      "path": "story/Amis_Ciwkangan/Amis_Nr-custom_Liu.json",
+      "status": "live_refreshed",
+      "sha256": "19a8eb428339ec0cc0722d40c076085d8fdc89c988b1784d33db3a80096ec6e6",
+      "records": 289
+    },
+    {
+      "path": "story/Amis_Ciwkangan/Amis_Nr-frog_cinhua.json",
+      "status": "live_same",
+      "sha256": "4496bf9e0fc3a79509f4331cdbc86cd98bb99eaec46c1e45189be28c18db224f",
+      "records": 175
+    },
+    {
+      "path": "story/Amis_Ciwkangan/Amis_Nr-frog_minzhu.json",
+      "status": "live_refreshed",
+      "sha256": "ba35e1568561fd75aecfc42cd854129b7337ad63e4abbfe4a9b97fd88a225f84",
+      "records": 169
+    },
+    {
+      "path": "story/Amis_Ciwkangan/Amis_Nr-frog_ofad.json",
+      "status": "live_same",
+      "sha256": "8c0c4d8a31a823f387e60ab19fa498b394826d99f36476ca3e0b69d90c28b4c4",
+      "records": 166
+    },
+    {
+      "path": "story/Amis_Ciwkangan/Amis_Nr-frog_zuomei.json",
+      "status": "live_refreshed",
+      "sha256": "8d770fbbeed8e8d0c84e2f082d1f299c15041cd0506fec39ae95d48ba955bcae",
+      "records": 150
+    },
+    {
+      "path": "story/Amis_Ciwkangan/Amis_Nr-intro_Panay.json",
+      "status": "live_same",
+      "sha256": "f5bff2688e812747b4c42c7f8885724e8ad88ed789fad29cbbc4e53f81257dc7",
+      "records": 46
+    },
+    {
+      "path": "story/Amis_Ciwkangan/Amis_Nr-intro_ofad.json",
+      "status": "live_same",
+      "sha256": "73554cb6127ec46115bca1563a7ad030d48e259f339c7c4b61aab85a50e34db1",
+      "records": 136
+    },
+    {
+      "path": "story/Amis_Ciwkangan/Amis_Nr-intro_tamih.json",
+      "status": "live_refreshed",
+      "sha256": "08dc2a19f27376de6fb6cec5a2fbde2750a3b55998616189670b872f747ec418",
+      "records": 405
+    },
+    {
+      "path": "story/Amis_Ciwkangan/Amis_Nr-peanut_panay.json",
+      "status": "live_same",
+      "sha256": "0fcab8bc433a9b82858a02e47002d50d9a6763d8305ad50affd4429b2ca3089e",
+      "records": 64
+    },
+    {
+      "path": "story/Amis_Ciwkangan/Amis_Nr-pear_cinhua.json",
+      "status": "live_same",
+      "sha256": "8c8cc2d6d29f479ee842e8c9c83c546d04c01601a36e474b579cf3abaa764981",
+      "records": 134
+    },
+    {
+      "path": "story/Amis_Ciwkangan/Amis_Nr-pear_lungi.json",
+      "status": "live_same",
+      "sha256": "f819b08ddfc9e9c09e667bf79d0b6ef80484854c14c6f4026e5b8659df13b62e",
+      "records": 132
+    },
+    {
+      "path": "story/Amis_Ciwkangan/Amis_Nr-pear_minzhu.json",
+      "status": "live_refreshed",
+      "sha256": "a4967e3028bb093702a074bb16a62b46ab096e1fb9a7d75da4a24893b510cee2",
+      "records": 187
+    },
+    {
+      "path": "story/Amis_Ciwkangan/Amis_Nr-pear_panay.json",
+      "status": "live_same",
+      "sha256": "e8f1d7109e0324c1ef93ea46e2ede6f4536f34ae83e8e7a69a9e5b1b1a6d5b80",
+      "records": 163
+    },
+    {
+      "path": "story/Amis_Ciwkangan/Amis_Nr-pear_tamih.json",
+      "status": "live_same",
+      "sha256": "c12bc8f1f0040bd91bd355a6a0d0443bb3ccdd4f952f36703d9b1b317f337fd5",
+      "records": 39
+    },
+    {
+      "path": "story/Amis_Ciwkangan/Amis_Nr-pear_zuomei.json",
+      "status": "live_same",
+      "sha256": "90d0daaaf6a0576e39f6802718b0aa84874ffe0b7397877c0ac70a0e4d9e192a",
+      "records": 147
+    },
+    {
+      "path": "story/Atayal_Mayrinax/AtaNr-dailylife1_Iwan.json",
+      "status": "live_refreshed",
+      "sha256": "351e9635aab196441027d3ce8f4c7d647345dc50d8f42204458accd100b013c6",
+      "records": 79
+    },
+    {
+      "path": "story/Atayal_Mayrinax/AtaNr-dailylife2_Iwan.json",
+      "status": "live_refreshed",
+      "sha256": "3068ea024f49938de3d691cfc0f6eba648b1cba96285f2654c639860d2add75c",
+      "records": 43
+    },
+    {
+      "path": "story/Atayal_Mayrinax/AtaNr-dailylife3_Tauyu.json",
+      "status": "live_refreshed",
+      "sha256": "d4d31c863fa5b8814592d2141153ce699bd9859407274d02b12b99c95a4d2dbc",
+      "records": 98
+    },
+    {
+      "path": "story/Atayal_Mayrinax/AtaNr-hunting1_Kainu.json",
+      "status": "live_refreshed",
+      "sha256": "42ef1f9f6df240d449beec5c63c0a9ddfe7f3e5bd0f8eba0fc2df3dd1123fed9",
+      "records": 122
+    },
+    {
+      "path": "story/Atayal_Mayrinax/AtaNr-hunting2_Buyung.json",
+      "status": "live_refreshed",
+      "sha256": "de76a9a00fa830c71d7c6f43cfd4ea202c9d1858c95b176cded97b61f4758cb7",
+      "records": 85
+    },
+    {
+      "path": "story/Atayal_Mayrinax/AtaNr-hunting3_Takun.json",
+      "status": "live_refreshed",
+      "sha256": "5fcc5b846b8fdd939a1bb97895e585dcb3453e95b59772fe986b238080daf05f",
+      "records": 116
+    },
+    {
+      "path": "story/Atayal_Mayrinax/AtaNr-moving_Kainu.json",
+      "status": "live_same",
+      "sha256": "672ba40b8fadfbebf39d27c6f56bd37e389ab1e81a892c5f3529b035eb04ce3d",
+      "records": 207
+    },
+    {
+      "path": "story/Atayal_Mayrinax/AtaNr-moving_Takun.json",
+      "status": "live_refreshed",
+      "sha256": "11c271ec2d51980e7e4e92f9e4ef979edba9755c9f11897bb4b5d36b715e4dda",
+      "records": 180
+    },
+    {
+      "path": "story/Atayal_Mayrinax/AtaNr-proposal_Takun.json",
+      "status": "live_refreshed",
+      "sha256": "d555a8dccf13deb8ce6bc2efafedcc75f61286e3724c19d291d3e79f14b43f3e",
+      "records": 150
+    },
+    {
+      "path": "story/Atayal_Mayrinax/AtaNr-sowing_Kainu.json",
+      "status": "live_refreshed",
+      "sha256": "e945d7091f344b311ac629a66351f863b35b2cc333614fd7868283423ea61a0b",
+      "records": 167
+    },
+    {
+      "path": "story/Atayal_Mayrinax/AtaNr-weaving_Kagaw.json",
+      "status": "live_refreshed",
+      "sha256": "6285d765dfe27885c8628d30fd36fb1edb2a6bdc859ad7f94bb46e1deec3d2f1",
+      "records": 152
+    },
+    {
+      "path": "story/Bunun_Isbukun/bnNr-frog_Adus.json",
+      "status": "live_refreshed",
+      "sha256": "38f2c9e40156529dad69a1e93b7cff554b5288f08a4fef427f5d1e6d22c07086",
+      "records": 197
+    },
+    {
+      "path": "story/Bunun_Isbukun/bnNr-frog_Ciang.json",
+      "status": "live_refreshed",
+      "sha256": "45cc16d2d96d1d82b1c24cac0ba75575dc04211eb7b132390f7124685eac0cc0",
+      "records": 179
+    },
+    {
+      "path": "story/Bunun_Isbukun/bnNr-frog_Hanaivaz.json",
+      "status": "live_same",
+      "sha256": "ed79a1d95d5bebfcacd38185d7ecae9c713e9e88585f41317c70b3c7a934cee4",
+      "records": 305
+    },
+    {
+      "path": "story/Bunun_Isbukun/bnNr-frog_Laniahu.json",
+      "status": "live_refreshed",
+      "sha256": "cdd2c5445723ac6e5985c7d707d8cd770e3408927c5e331b10413bb9bac076e5",
+      "records": 466
+    },
+    {
+      "path": "story/Bunun_Isbukun/bnNr-frog_Samingaz.json",
+      "status": "live_refreshed",
+      "sha256": "557b0efdb981f9455346a8f03b837388a635754f435ab702551752354d66fb19",
+      "records": 149
+    },
+    {
+      "path": "story/Bunun_Isbukun/bnNr-frog_Talum.json",
+      "status": "live_refreshed",
+      "sha256": "c70b71e7e06f0fcd0a629df2dd085b22351b63218eb5f35dff8bde6660e3789d",
+      "records": 116
+    },
+    {
+      "path": "story/Bunun_Isbukun/bnNr-hunter-becominig-a-bird_Hanaivaz.json",
+      "status": "live_refreshed",
+      "sha256": "ea6842d16d5dd6572a0836d8a7a9fdc7fd0f688d8d38ca78f7d50ab8bfdaecba",
+      "records": 298
+    },
+    {
+      "path": "story/Bunun_Isbukun/bnNr-lazy-daughter_Hanaivaz.json",
+      "status": "live_refreshed",
+      "sha256": "48e4b545b83b013a1f26e13281e4ce014c92002bd281f89583013adf30363950",
+      "records": 222
+    },
+    {
+      "path": "story/Bunun_Isbukun/bnNr-pear_Ciang.json",
+      "status": "live_refreshed",
+      "sha256": "7ab995dd078fcd8f0afaf73baa14ccf6f249ce68df59942ce60c65d2d3e214b4",
+      "records": 127
+    },
+    {
+      "path": "story/Bunun_Isbukun/bnNr-pear_Hanaivaz.json",
+      "status": "live_refreshed",
+      "sha256": "9bb336c817f2178b0c924c4a518bb744d7f5707bf58c1c27404826371894b414",
+      "records": 161
+    },
+    {
+      "path": "story/Bunun_Isbukun/bnNr-pear_Laniahu.json",
+      "status": "live_refreshed",
+      "sha256": "e777bfb5a5884bc28da461d7ee17bd1b25436fa9b8dc4a9d04f6ce016728f5e3",
+      "records": 181
+    },
+    {
+      "path": "story/Bunun_Isbukun/bnNr-pear_Samingaz.json",
+      "status": "live_refreshed",
+      "sha256": "4662b571b8b434dd8b3ca56d39866e36194cda68bb145fece8f7d7366a5ca691",
+      "records": 120
+    },
+    {
+      "path": "story/Bunun_Isbukun/bnNr-pear_Talum.json",
+      "status": "live_refreshed",
+      "sha256": "5498414fe526e8ecf51ed39907a17c1e68b16c21f903062a857139c6c93bd3d4",
+      "records": 57
+    },
+    {
+      "path": "story/Kanakanavu_Kanakanavu/kkvNr-fishing_Muu.json",
+      "status": "live_refreshed",
+      "sha256": "c4d879f7c7ca3f1b236bf0de2920cfa0546b2c384b045224b8246cd17a46a651",
+      "records": 497
+    },
+    {
+      "path": "story/Kanakanavu_Kanakanavu/kkvNr-frogstory_angai.json",
+      "status": "live_refreshed",
+      "sha256": "84aa904ea8269dc96fa6baf9fa8ef628dafeabd2d4ac5a9b79e8ce95f02ffbe1",
+      "records": 400
+    },
+    {
+      "path": "story/Kanakanavu_Kanakanavu/kkvNr-puratu_Muu.json",
+      "status": "live_refreshed",
+      "sha256": "7ae1982bffc9048053d8485a3c80ff9da171716b4eb00299f72e8a16a5871f8a",
+      "records": 481
+    },
+    {
+      "path": "story/Kanakanavu_Kanakanavu/kkvNr-story_pani.json",
+      "status": "live_refreshed",
+      "sha256": "9a7565b31d3d9d2aac36a81b3f2a3f14b5f52bdbe16e125ee832e50545c23870",
+      "records": 144
+    },
+    {
+      "path": "story/Kanakanavu_Kanakanavu/kkvNr_dailylife_Angai.json",
+      "status": "live_refreshed",
+      "sha256": "a9e49c12504a9cfc5f6e92cd4861f80650a16791bf0e520c4f1d19d00ca1647f",
+      "records": 21
+    },
+    {
+      "path": "story/Kanakanavu_Kanakanavu/kkvNr_domestic_troubles_Muu.json",
+      "status": "live_refreshed",
+      "sha256": "f3c8b8b5b6b5f9e493889747eb39afce722e773159d9310b203776c2fec6e762",
+      "records": 277
+    },
+    {
+      "path": "story/Kanakanavu_Kanakanavu/kkvNr_family_Paicu.json",
+      "status": "live_refreshed",
+      "sha256": "216dba97d3079ab6fc55e569acda5ae2a82a1ff9875b2c46bd660c311a1430f3",
+      "records": 57
+    },
+    {
+      "path": "story/Kanakanavu_Kanakanavu/kkvNr_farming_Muu.json",
+      "status": "live_refreshed",
+      "sha256": "72702e432166baaa1b0edf1548889a66fbfe0a5cef9d07c9054f452829a9b6dc",
+      "records": 151
+    },
+    {
+      "path": "story/Kanakanavu_Kanakanavu/kkvNr_fishing_Pani.json",
+      "status": "live_refreshed",
+      "sha256": "e8c0e96d13c1d5c8c815fb3db66b9ece40ed5a8e960ba79c1447e28e119df09f",
+      "records": 318
+    },
+    {
+      "path": "story/Kanakanavu_Kanakanavu/kkvNr_frog_Uva.json",
+      "status": "live_refreshed",
+      "sha256": "e65fb73a3f50439e59115080c5a7163518a3971d2e6c27204a2e594d5eb10dbc",
+      "records": 153
+    },
+    {
+      "path": "story/Kanakanavu_Kanakanavu/kkvNr_hunting1_Muu.json",
+      "status": "live_refreshed",
+      "sha256": "2e0adb90d8a8aedbf2278808008ee461689f01300e92dc34bfe9ebf41a188e0d",
+      "records": 118
+    },
+    {
+      "path": "story/Kanakanavu_Kanakanavu/kkvNr_hunting_taboos_Angai.json",
+      "status": "live_refreshed",
+      "sha256": "1b7127690d56fe8dd158d4addf7498808800eab8f3c60cc5a285cb216103eb2d",
+      "records": 138
+    },
+    {
+      "path": "story/Kanakanavu_Kanakanavu/kkvNr_life_Kuatu.json",
+      "status": "live_refreshed",
+      "sha256": "ef2ee621db201533c824392aa71aacd9901d1a97f70b1e757895c763102a0c7a",
+      "records": 54
+    },
+    {
+      "path": "story/Kanakanavu_Kanakanavu/kkvNr_mikon_Kuatu.json",
+      "status": "live_refreshed",
+      "sha256": "cfc20c922be6b20bf4ee3cc2d4e29702d01c5e6ee184c764378061ae723b1daa",
+      "records": 33
+    },
+    {
+      "path": "story/Kanakanavu_Kanakanavu/kkvNr_millet_Muu.json",
+      "status": "live_refreshed",
+      "sha256": "ec12871c14e340461014b6e9ff4941cec38be8540d2d3179844d467e7d781ff0",
+      "records": 207
+    },
+    {
+      "path": "story/Kanakanavu_Kanakanavu/kkvNr_sad_song_Muu.json",
+      "status": "archived_unavailable",
+      "sha256": "e7ba11fa20304e2fe92ea97b79cc7b44b427a4dffa7f54facd695afecf32c56a",
+      "records": 15
+    },
+    {
+      "path": "story/Kanakanavu_Kanakanavu/kkvNr_sowing_Kuatu.json",
+      "status": "live_same",
+      "sha256": "45b274ec9cb708d0b906e571f154e96423e5ea794176fa9acd662856912c3303",
+      "records": 62
+    },
+    {
+      "path": "story/Kanakanavu_Kanakanavu/kkvNr_sowing_Paicu.json",
+      "status": "live_refreshed",
+      "sha256": "7388bdb76c7b5d266faaa2e90759b5aaf4303df0d6b4a678855174328eacac6b",
+      "records": 83
+    },
+    {
+      "path": "story/Kanakanavu_Kanakanavu/kkvNr_the man from china_Pani.json",
+      "status": "live_refreshed",
+      "sha256": "d193093cb02b9d4cc3771a215c1c7bada894b53210432a92694ef064d027f476",
+      "records": 268
+    },
+    {
+      "path": "story/Kavalan_Xinshe/KacCon-Teaching Weaving_abas_ipay.json",
+      "status": "live_refreshed",
+      "sha256": "a75e3ba279c672480cffdd1639a9fb9a9230386f95c0db94212b1d9844ee85f3",
+      "records": 139
+    },
+    {
+      "path": "story/Kavalan_Xinshe/KavCon-angry_pilaw_abas.json",
+      "status": "live_refreshed",
+      "sha256": "7dc717b9a20287eb7bbf5bb2b61cdbc35e2f41c497a34eae665627c99a6a2d17",
+      "records": 297
+    },
+    {
+      "path": "story/Kavalan_Xinshe/KavCon-banana trees_abas_ipay2.json",
+      "status": "live_refreshed",
+      "sha256": "f357b03f63d172667ba4c60ef17923df89ca35077a1a894b33d8aba0074d1f6a",
+      "records": 53
+    },
+    {
+      "path": "story/Kavalan_Xinshe/KavCon-earthquake_abas_haciang.json",
+      "status": "archived_unavailable",
+      "sha256": "6f7aa8397e3d6eeedd6886b85d34ef7de3ea9fe225a0a15fe444ff0b3a77bd37",
+      "records": 994
+    },
+    {
+      "path": "story/Kavalan_Xinshe/KavCon-home_buya_imuy.json",
+      "status": "live_refreshed",
+      "sha256": "88385b479a264c4f5025c64bbe355fe125cdf11e4e7da691d35690857c4d7b23",
+      "records": 287
+    },
+    {
+      "path": "story/Kavalan_Xinshe/KavCon-marriage_abas_pilaw.json",
+      "status": "live_refreshed",
+      "sha256": "02e92202a8ba02c6d9f39c38c3a3e0a158c669ef7339d233508a4b911f404119",
+      "records": 624
+    },
+    {
+      "path": "story/Kavalan_Xinshe/KavCon-relatives_buya_ngengi.json",
+      "status": "live_refreshed",
+      "sha256": "327c6c73301422b41bd93a604ebe522419aec0873fa3a4895c473b45aed576d1",
+      "records": 1090
+    },
+    {
+      "path": "story/Kavalan_Xinshe/KavCon-weaving_abas_ipay3.json",
+      "status": "live_refreshed",
+      "sha256": "08af0927274fad2e600d81f5f2053b6b0541f29d70e5d1acacac16c3a6367789",
+      "records": 212
+    },
+    {
+      "path": "story/Kavalan_Xinshe/KavNr-ancestor_buya.json",
+      "status": "live_refreshed",
+      "sha256": "a55c3f8a556786da3be69a3c0793cd1a98305158b2039305bc700de3d2a0ee7f",
+      "records": 180
+    },
+    {
+      "path": "story/Kavalan_Xinshe/KavNr-ancestor_ngengi.json",
+      "status": "live_refreshed",
+      "sha256": "9f08543a9ca3a1cc5c7c0e958830582debceda53e50f4f2af173c85e00691c03",
+      "records": 110
+    },
+    {
+      "path": "story/Kavalan_Xinshe/KavNr-frog_Haciang.json",
+      "status": "live_refreshed",
+      "sha256": "95441f0ba108c6a3dfd3ca3e66721945c67cc51d3bfa4ba214196b792ba3f000",
+      "records": 214
+    },
+    {
+      "path": "story/Kavalan_Xinshe/KavNr-frog_abas.json",
+      "status": "live_refreshed",
+      "sha256": "8202ab1e0326f5a60e358b17446b8c859f895ad9ece2e737a22b008b76cb71ca",
+      "records": 139
+    },
+    {
+      "path": "story/Kavalan_Xinshe/KavNr-frog_api2.json",
+      "status": "live_refreshed",
+      "sha256": "feeef1f344d8289fc8b8fced40a6553e16d68e95633c35d3b09dfee4ff24f27c",
+      "records": 395
+    },
+    {
+      "path": "story/Kavalan_Xinshe/KavNr-frog_banday.json",
+      "status": "live_refreshed",
+      "sha256": "398fcf71c95f5895b27f5a407e3b61370fe8f0b8eccd88352d4c1c03bef5ef29",
+      "records": 123
+    },
+    {
+      "path": "story/Kavalan_Xinshe/KavNr-frog_buya.json",
+      "status": "live_refreshed",
+      "sha256": "3bebcc95f9ab34f6c762e28f77108cc5764f7bc8e44f4025706a8aebd010cb68",
+      "records": 186
+    },
+    {
+      "path": "story/Kavalan_Xinshe/KavNr-frog_imuy2.json",
+      "status": "live_refreshed",
+      "sha256": "faedba98f39ef5218e8c085c31d6a0aea0f22e0af2c355726d6f97ce10d82d61",
+      "records": 245
+    },
+    {
+      "path": "story/Kavalan_Xinshe/KavNr-frog_imuy_longversion.json",
+      "status": "live_refreshed",
+      "sha256": "68617c63b401dc490c97440f130838cabc13e042a11d43e9c0a207b716596874",
+      "records": 362
+    },
+    {
+      "path": "story/Kavalan_Xinshe/KavNr-frog_syulan.json",
+      "status": "live_refreshed",
+      "sha256": "20625ecd4f98689b6a01f0c007a346da2f6128bb180ad89a86e7ea22f3c05330",
+      "records": 150
+    },
+    {
+      "path": "story/Kavalan_Xinshe/KavNr-map_buya.json",
+      "status": "live_refreshed",
+      "sha256": "462c7590aeebb743dcc37d8a26348d1ab6dcdf66151e2431d5b85a2f12d34d79",
+      "records": 52
+    },
+    {
+      "path": "story/Kavalan_Xinshe/KavNr-map_imuy.json",
+      "status": "live_refreshed",
+      "sha256": "c67b287816d94c180da7a7fba3e5fc6229ad65e4c4c9b365d910510f4c81ef74",
+      "records": 53
+    },
+    {
+      "path": "story/Kavalan_Xinshe/KavNr-map_syulan.json",
+      "status": "live_same",
+      "sha256": "3de1f890964fbee19dc298131231dbdf106a7e879cd9fdfe0befe4c12979228c",
+      "records": 42
+    },
+    {
+      "path": "story/Kavalan_Xinshe/KavNr-pear_Haciang.json",
+      "status": "live_refreshed",
+      "sha256": "7414a0c8edaa535d34bc0cc9d75f4afe4702c28a3d7a54006dbd01ee0a9f21fc",
+      "records": 154
+    },
+    {
+      "path": "story/Kavalan_Xinshe/KavNr-pear_abas.json",
+      "status": "live_same",
+      "sha256": "e9dfb2f3390650dc6fa35344893cf3a83b3773b0ac60127b0f2aa232cf073a8a",
+      "records": 111
+    },
+    {
+      "path": "story/Kavalan_Xinshe/KavNr-pear_api.json",
+      "status": "live_refreshed",
+      "sha256": "b6ed72d1d3da873cad1aaace2b9dc3efd07fa55b2edfc6e007d1234433f71fae",
+      "records": 108
+    },
+    {
+      "path": "story/Kavalan_Xinshe/KavNr-pear_banday.json",
+      "status": "live_refreshed",
+      "sha256": "b096c2bf9e9d93f56e2d3b40f5a1521e6f36f0ac6575c36083f1d1add7906198",
+      "records": 69
+    },
+    {
+      "path": "story/Kavalan_Xinshe/KavNr-pear_buya.json",
+      "status": "live_refreshed",
+      "sha256": "9f490b06b3bc209dbb118089f17d42fe9bf865a167ef35fac940f30c26116c43",
+      "records": 86
+    },
+    {
+      "path": "story/Kavalan_Xinshe/KavNr-pear_imuy.json",
+      "status": "live_same",
+      "sha256": "01195e7a963afd6bc435df561892d151bfc43f733e5534261c51f4c94fb752e3",
+      "records": 93
+    },
+    {
+      "path": "story/Kavalan_Xinshe/KavNr-pear_ipay.json",
+      "status": "live_same",
+      "sha256": "b1c76edf383525cb29b76e3a92517b8472ae517e5387c4156a5cd4784e49a7b9",
+      "records": 52
+    },
+    {
+      "path": "story/Kavalan_Xinshe/KavNr-pear_syulan.json",
+      "status": "live_same",
+      "sha256": "93ec5b37c1da2b32fda13353452e4d1bdb9cf770fe93bddfaaef08133bc7786d",
+      "records": 90
+    },
+    {
+      "path": "story/Kavalan_Xinshe/KavNr-sea_buya.json",
+      "status": "live_same",
+      "sha256": "7fc34e73e51eebc3abbe54ab99e1bb23ecbea8c9d138bb0b72ee224b1fa0d1aa",
+      "records": 47
+    },
+    {
+      "path": "story/Kavalan_Xinshe/kavCon-speech_buya_syulan.json",
+      "status": "live_refreshed",
+      "sha256": "4774c6a51aaf17e1ac75b1f8ae64b84aed72883ff1762b8f700f16d5947703ed",
+      "records": 269
+    },
+    {
+      "path": "story/Rukai_Vedai/RukaiNr-becenge_tagas.json",
+      "status": "archived_unavailable",
+      "sha256": "145ddf2f3d02d9eedc6fe7ccd9c7aa6972a69cefff1fc723371d2dd17e97fb3e",
+      "records": 65
+    },
+    {
+      "path": "story/Rukai_Vedai/RukaiNr-childhood_balenge.json",
+      "status": "archived_unavailable",
+      "sha256": "9942075d3d9728beb96d86789bcd667f031d01ac2f95b5d75eb25b4bb31ac757",
+      "records": 184
+    },
+    {
+      "path": "story/Rukai_Vedai/RukaiNr-frog_Bajiaying.json",
+      "status": "live_refreshed",
+      "sha256": "bf90b58f74dc601d4eb93018f5c06ae63c5428580b2b9fb982e1ec9ccb5184cb",
+      "records": 69
+    },
+    {
+      "path": "story/Rukai_Vedai/RukaiNr-frog_Baqingyi.json",
+      "status": "live_refreshed",
+      "sha256": "dc15850daff7661f6ea50d5fbc8e8412a08b5bcf572c303dfda900c60860f628",
+      "records": 69
+    },
+    {
+      "path": "story/Rukai_Vedai/RukaiNr-frog_Kainguane.json",
+      "status": "live_refreshed",
+      "sha256": "7feefc78b2a8db65aee0f51a797ccd80fad21abdce4e0a70e150ef8f15b7d870",
+      "records": 228
+    },
+    {
+      "path": "story/Rukai_Vedai/RukaiNr-frog_Legeai.json",
+      "status": "live_refreshed",
+      "sha256": "10c9b4bb335ce515612a54fc5a0211df5563a2e52b41112ca9f5e8d7041a68e3",
+      "records": 181
+    },
+    {
+      "path": "story/Rukai_Vedai/RukaiNr-frog_Tuku.json",
+      "status": "live_refreshed",
+      "sha256": "d895a3e8cd2070252551d266697f82b90bd047ccda193ef45f843e8885d98607",
+      "records": 159
+    },
+    {
+      "path": "story/Rukai_Vedai/RukaiNr-frog_Waecacane.json",
+      "status": "archived_unavailable",
+      "sha256": "1e4e4959e6c24c65ba15e63c5cae17173d0726163dfc2d067ec33dc154e4d4d5",
+      "records": 97
+    },
+    {
+      "path": "story/Rukai_Vedai/RukaiNr-frog_salrabu.json",
+      "status": "live_refreshed",
+      "sha256": "878b26b7219d02fd555a8192c8cc19a67fcf0d67604681232659ca2cfc798171",
+      "records": 146
+    },
+    {
+      "path": "story/Rukai_Vedai/RukaiNr-ghost lake_Balenge.json",
+      "status": "archived_unavailable",
+      "sha256": "e26fb89307c56a88ab0bc84a83e5aeb1f6d1bc8482accad3c69b04b7e6bc942d",
+      "records": 72
+    },
+    {
+      "path": "story/Rukai_Vedai/RukaiNr-marriage ceremony_taugadha.json",
+      "status": "archived_unavailable",
+      "sha256": "5ce61bb557d0bdecd53a98329fc8dcafdb45e24109789aecf21bfc07b386c474",
+      "records": 276
+    },
+    {
+      "path": "story/Rukai_Vedai/RukaiNr-naming_taugadhu.json",
+      "status": "archived_unavailable",
+      "sha256": "3d0467f0445df938f691f1f70a80dbdc50c0a986f8502dc88476850d11987e3b",
+      "records": 314
+    },
+    {
+      "path": "story/Rukai_Vedai/RukaiNr-pear_Balenge.json",
+      "status": "live_refreshed",
+      "sha256": "70b0d6765dba7d5a427eb7f837912cf015f61058ad7a691247d94c14cf1f158f",
+      "records": 143
+    },
+    {
+      "path": "story/Rukai_Vedai/RukaiNr-pear_Kainguane.json",
+      "status": "live_refreshed",
+      "sha256": "be1ffe299d406ab737a81a99fba3999a70a060ae68ecb5f0fc47db89ca5d5b51",
+      "records": 69
+    },
+    {
+      "path": "story/Rukai_Vedai/RukaiNr-pear_Legeai.json",
+      "status": "archived_unavailable",
+      "sha256": "db2ef5d0c5c5fa3c28a65146e24ef7592272bcfd423c49cf3a9782d0b4b936b8",
+      "records": 102
+    },
+    {
+      "path": "story/Rukai_Vedai/RukaiNr-pear_ba ching-i.json",
+      "status": "live_refreshed",
+      "sha256": "897f7aa409f62a535b92741e3956fb961d6576f72316a3b1f8aa86d69cf87854",
+      "records": 37
+    },
+    {
+      "path": "story/Rukai_Vedai/RukaiNr-pear_salrabu.json",
+      "status": "live_refreshed",
+      "sha256": "0178e2f4e888ff83d52d6ea3a3e1fa551c0bbb49cb5ee3e5287fa24f9f455e88",
+      "records": 59
+    },
+    {
+      "path": "story/Rukai_Vedai/RukaiNr-pear_tagas.json",
+      "status": "live_refreshed",
+      "sha256": "6f90253ce23f63a224746b6a1f30649505ad8647931224a418d9a63d623d252d",
+      "records": 42
+    },
+    {
+      "path": "story/Rukai_Vedai/RukaiNr-pear_wauki.json",
+      "status": "live_refreshed",
+      "sha256": "33b4eb3fa11debb1c4a7d25e1f6110038ba4b220e970b8fb11b9bd17c1450f9c",
+      "records": 71
+    },
+    {
+      "path": "story/Rukai_Vedai/RukaiNr-princess balenge_balenge.json",
+      "status": "archived_unavailable",
+      "sha256": "ceced0a8b0ecc482c0b5415eb524a02278a6dc8bf758529631ed7765cc0e627d",
+      "records": 213
+    },
+    {
+      "path": "story/Rukai_Vedai/RukaiNr-swing_taugadhu.json",
+      "status": "archived_unavailable",
+      "sha256": "f7e9378cb410e6c209d859530118c9d812e359bd585d333bcdafa85adf969b1a",
+      "records": 232
+    },
+    {
+      "path": "story/Rukai_Vedai/RukaiNr-work by men and women_taugadhu.json",
+      "status": "archived_unavailable",
+      "sha256": "488afedb8376234dd60f521027f8596e8244e1b662ee4e5e24c52749896f5441",
+      "records": 241
+    },
+    {
+      "path": "story/Saisiyat_Tong-he/SaiNr-Molaw.json",
+      "status": "live_refreshed",
+      "sha256": "bdb5dcbccfef2c02363dd4c129cb155356ec0d1f8f2b9b8b208507e9eed71097",
+      "records": 97
+    },
+    {
+      "path": "story/Saisiyat_Tong-he/SaiNr-anhi.json",
+      "status": "live_refreshed",
+      "sha256": "6579f13aa9110961bb74ae2300814bb961731b18bd6dcb477d74228c07077fbe",
+      "records": 26
+    },
+    {
+      "path": "story/Saisiyat_Tong-he/SaiNr-election_lahi_ a taro_ babay.json",
+      "status": "live_refreshed",
+      "sha256": "5dee63cf7a12ef9dda87c72c272ca63173ce5df3be2b6eb46c5836d8943ce9e4",
+      "records": 115
+    },
+    {
+      "path": "story/Saisiyat_Tong-he/SaiNr-flood_waon a boong.json",
+      "status": "live_refreshed",
+      "sha256": "e4be75d50cb677d315998322e471256e1644e50807d05283594513db6be1b987",
+      "records": 160
+    },
+    {
+      "path": "story/Saisiyat_Tong-he/SaiNr-frog1_bownay a tahes.json",
+      "status": "live_refreshed",
+      "sha256": "fa6834ad6affc01d9cfafd97082957769ebdcf00ab31446b876495cfd8774ecb",
+      "records": 119
+    },
+    {
+      "path": "story/Saisiyat_Tong-he/SaiNr-frog2_waon a boong.json",
+      "status": "live_refreshed",
+      "sha256": "a7c48dd2fbd6762d4be90b3495a1204c27122b7bc03ab8b6e620616f8a8e66f1",
+      "records": 92
+    },
+    {
+      "path": "story/Saisiyat_Tong-he/SaiNr-frog3_'oemaw_a_basi'.json",
+      "status": "archived_unavailable",
+      "sha256": "7bf6912b617627ba19305fc34ff658d027ac24b484870f02a41d73b38972cb35",
+      "records": 181
+    },
+    {
+      "path": "story/Saisiyat_Tong-he/SaiNr-frog5__awi_ a basi_.json",
+      "status": "live_refreshed",
+      "sha256": "56a2907d01c6991fd817e03c3d5330b9aac975994f5c7b076d8ef6a462d678f3",
+      "records": 279
+    },
+    {
+      "path": "story/Saisiyat_Tong-he/SaiNr-frog6_kalaeh a _oemaw.json",
+      "status": "live_refreshed",
+      "sha256": "9ace72bbab6fb42849cb3c8a2edc0ee1658b28281801bcbd0ab0b417c68a06dd",
+      "records": 179
+    },
+    {
+      "path": "story/Saisiyat_Tong-he/SaiNr-frog7_kalaeh a taro_.json",
+      "status": "live_refreshed",
+      "sha256": "af23d7068f1ce9bd4fdf1144170404ee2623c98d931a473a1e3372ebca385175",
+      "records": 109
+    },
+    {
+      "path": "story/Saisiyat_Tong-he/SaiNr-frog8_parain a _oemaw.json",
+      "status": "live_same",
+      "sha256": "5303cc9bd5e81fbb32b3e2c46fbeba3d82163102f7533c9cf2f7f703b5114534",
+      "records": 89
+    },
+    {
+      "path": "story/Saisiyat_Tong-he/SaiNr-holiday_kalaeh a _oemaw.json",
+      "status": "live_refreshed",
+      "sha256": "2d3f9c46252b658fb94ecc3085854b0c4e3933ebb510929a18dd66032143063b",
+      "records": 282
+    },
+    {
+      "path": "story/Saisiyat_Tong-he/SaiNr-kathethel2_kalaeh a oemaw.json",
+      "status": "live_refreshed",
+      "sha256": "7da2b70f3eeb6d527d0badb48c39c144975432132c0dc4b56e3af8af7bea7c6d",
+      "records": 546
+    },
+    {
+      "path": "story/Saisiyat_Tong-he/SaiNr-kathethel_parain a _oemaw.json",
+      "status": "live_refreshed",
+      "sha256": "b745b4f80dd2caa2d62385655b50db61dafcce2dcb2a71bd151946fc8d3b2ef3",
+      "records": 203
+    },
+    {
+      "path": "story/Saisiyat_Tong-he/SaiNr-life_waon a boong.json",
+      "status": "live_refreshed",
+      "sha256": "9c95a2c47b1cf5ffe34ad11a9b0ed9951b1ce7c5be566ada2bb1a3caabfc25ba",
+      "records": 288
+    },
+    {
+      "path": "story/Saisiyat_Tong-he/SaiNr-pear1__oemaw a _obay.json",
+      "status": "live_refreshed",
+      "sha256": "1d7ff4384e57cbe9e633e9799d6b2992b58f31f689ea0a18bcd6d07ad05e19db",
+      "records": 122
+    },
+    {
+      "path": "story/Saisiyat_Tong-he/SaiNr-pear3_kalaeh a taro_.json",
+      "status": "live_refreshed",
+      "sha256": "504fd4a1e7436c6526837e5f532e4e80f176059d3f84ae52e1cbca966e605333",
+      "records": 50
+    },
+    {
+      "path": "story/Saisiyat_Tong-he/SaiNr-pear4_tosi_ masin.json",
+      "status": "live_refreshed",
+      "sha256": "054ed43136c6fc289775360acca8e1e655b56085dbe10bd3d139aa43c690f447",
+      "records": 89
+    },
+    {
+      "path": "story/Saisiyat_Tong-he/SaiNr-pear5__awi_ a basi_.json",
+      "status": "live_refreshed",
+      "sha256": "93b02eca81311cd20daf9c88d045ef2cd3b60cd7bca5cd220d7924eae60b11df",
+      "records": 105
+    },
+    {
+      "path": "story/Saisiyat_Tong-he/Sainr-frog4_lalo a tahaeS.json",
+      "status": "live_refreshed",
+      "sha256": "4695ab5a828799f8fa94fcd9ddd32658ab0cd5fc59021e70721519db2eae76c9",
+      "records": 128
+    },
+    {
+      "path": "story/Sakizaya_Sakizaya/skzyNr-class_sinay.json",
+      "status": "live_refreshed",
+      "sha256": "db4ca48a10478c24d530f9b7569a34710ce3060733d7e2871914b13703eca0b5",
+      "records": 198
+    },
+    {
+      "path": "story/Sakizaya_Sakizaya/skzyNr-frog_bunuk.json",
+      "status": "live_refreshed",
+      "sha256": "5794740f807197a48616aa9c88c8888c336eaa23fe045632edb2372f64e3dc5d",
+      "records": 143
+    },
+    {
+      "path": "story/Sakizaya_Sakizaya/skzyNr-frog_dungi.json",
+      "status": "live_refreshed",
+      "sha256": "0635694bba6faf11e22e27cf68e04e8a887d9acee4b49a960d49309239e56eaf",
+      "records": 129
+    },
+    {
+      "path": "story/Sakizaya_Sakizaya/skzyNr-frog_panay.json",
+      "status": "live_refreshed",
+      "sha256": "c3e2be244304052d6f4a4869dd80deef9211972318114d74094b660c48a52742",
+      "records": 106
+    },
+    {
+      "path": "story/Sakizaya_Sakizaya/skzyNr-frog_sinay.json",
+      "status": "live_refreshed",
+      "sha256": "2010ff03c2b3133a079d34c22e232ada805fbf2ee90a1988e4d3421f283d556e",
+      "records": 108
+    },
+    {
+      "path": "story/Sakizaya_Sakizaya/skzyNr-hunting_kaniw.json",
+      "status": "live_refreshed",
+      "sha256": "d5b66fff7e206bae925f10a4828003cd15626f2d98deddc75cc00461f1f33ca3",
+      "records": 129
+    },
+    {
+      "path": "story/Sakizaya_Sakizaya/skzyNr-maibol_Panay.json",
+      "status": "live_refreshed",
+      "sha256": "788a8564b09c2887dd086755603e982cb6758513d7b8d467bcaa2b3b66ab234d",
+      "records": 39
+    },
+    {
+      "path": "story/Sakizaya_Sakizaya/skzyNr-palamal_kaniw.json",
+      "status": "live_refreshed",
+      "sha256": "919be016219a70ee0c89abbf8cc726507a087836c5fec064082e5cc72a9de8ab",
+      "records": 262
+    },
+    {
+      "path": "story/Sakizaya_Sakizaya/skzyNr-pear_bunuk.json",
+      "status": "live_refreshed",
+      "sha256": "7cee7c65767415c06cda9acde1f7ec31895cc86c8152ab3d0fcf796eab9828e7",
+      "records": 120
+    },
+    {
+      "path": "story/Sakizaya_Sakizaya/skzyNr-pear_dungi.json",
+      "status": "live_refreshed",
+      "sha256": "d510f183e9d7b7ff8644fc164bc4db1594803b9f7464783b33cf22770a4199c4",
+      "records": 94
+    },
+    {
+      "path": "story/Sakizaya_Sakizaya/skzyNr-pear_panay.json",
+      "status": "live_same",
+      "sha256": "ec81e8eab8bca498893be09de1059e24c89137e52b7116e94cb1a07d0d2b4666",
+      "records": 44
+    },
+    {
+      "path": "story/Sakizaya_Sakizaya/skzyNr-rain-kaniw.json",
+      "status": "live_refreshed",
+      "sha256": "e6d0a082128da7311553e8292ec415a3ff590d61d9abd1f0e1a654083e0e5562",
+      "records": 124
+    },
+    {
+      "path": "story/Sakizaya_Sakizaya/skzyNr-sapat_Panay.json",
+      "status": "live_refreshed",
+      "sha256": "a43a9372be6f9478ba6028b5884513ff4f178503a076ccd36a0ee5d98f892e1f",
+      "records": 60
+    },
+    {
+      "path": "story/Sakizaya_Sakizaya/skzyNr-school_Panay.json",
+      "status": "live_refreshed",
+      "sha256": "6efc7dc3968f71faf83458bf179f5655612769548e212558d570b12810837bf0",
+      "records": 51
+    },
+    {
+      "path": "story/Sakizaya_Sakizaya/skzyNr-tribalhistory_sinay.json",
+      "status": "live_refreshed",
+      "sha256": "3bb130843a49d0a8c3cc5f1035e8cbc9fd1f7aa14f30a0c3ef525fc31fbe20c1",
+      "records": 480
+    },
+    {
+      "path": "story/Seediq_Tgdaya/sdqCon-dialog1_ciwas_tiwas 2021s.json",
+      "status": "live_refreshed",
+      "sha256": "72dc0519f308bbeea7f73470f92316a38a5e7365e51c02f7758356dad3cc1f14",
+      "records": 316
+    },
+    {
+      "path": "story/Seediq_Tgdaya/sdqCon-dialog2_ciwas_tiwas 2021s.json",
+      "status": "live_refreshed",
+      "sha256": "fe767cd93d421e577259dd559647dda5d8070be94d4fbb3370248467182642e4",
+      "records": 339
+    },
+    {
+      "path": "story/Seediq_Tgdaya/sdqCon-dialog3_robo_bakan 2021s.json",
+      "status": "live_refreshed",
+      "sha256": "7681529c9894d8dc8f4587f55b0d1f7c50856f067cf68a7f406cde48ff4f3f00",
+      "records": 68
+    },
+    {
+      "path": "story/Seediq_Tgdaya/sdqCon-dialog4_robo_bakan_ape 2020s.json",
+      "status": "live_refreshed",
+      "sha256": "cd1fb665ee642186861626d6499f17afd3505c5583937670e727a4d9b18523b5",
+      "records": 143
+    },
+    {
+      "path": "story/Seediq_Tgdaya/sdqCon-dialog5_dakis_takun 2020s.json",
+      "status": "live_refreshed",
+      "sha256": "026a69fd2248ef0b11514dfec3204084e43158fc6f2f76a1ed2ada5e516cd527",
+      "records": 303
+    },
+    {
+      "path": "story/Seediq_Tgdaya/sdqCon-plum_uma_robo 2020s.json",
+      "status": "live_refreshed",
+      "sha256": "1b45b5a0daf900ea1b281643115de6bd9cc3529f75d64d28cbf44e66c04964ad",
+      "records": 106
+    },
+    {
+      "path": "story/Seediq_Tgdaya/sdqNr-childhood_micang 2020s.json",
+      "status": "live_refreshed",
+      "sha256": "1dedf74724e6868111d7b40d512be8cc1aa42d5711ae590d21dc0d468e0a2ec2",
+      "records": 268
+    },
+    {
+      "path": "story/Seediq_Tgdaya/sdqNr-frog_aking 2020s.json",
+      "status": "live_refreshed",
+      "sha256": "51320cd27fd9223a4527aee6818674e1714002199b65ac955eb3c75d8642f04c",
+      "records": 190
+    },
+    {
+      "path": "story/Seediq_Tgdaya/sdqNr-frog_lubi 2020s.json",
+      "status": "live_refreshed",
+      "sha256": "8a3ec792076275d6edd21f8019b4f85faff4685e318827f8e383e5860e0533bf",
+      "records": 267
+    },
+    {
+      "path": "story/Seediq_Tgdaya/sdqNr-frog_temi.json",
+      "status": "live_refreshed",
+      "sha256": "a4b664fec3a37aba2f800c65fd5b6db8a73f9a69b23556bb57af8cd009e4bb5e",
+      "records": 426
+    },
+    {
+      "path": "story/Seediq_Tgdaya/sdqNr-medicine_robo pihu 2020s.json",
+      "status": "live_refreshed",
+      "sha256": "538914b243690eed41935f8a05ef0dffcaf0607f9707ab2293431fbbe2605932",
+      "records": 53
+    },
+    {
+      "path": "story/Seediq_Tgdaya/sdqNr-mother_iwan 2020s.json",
+      "status": "live_refreshed",
+      "sha256": "1577d10c09645e4e42532c6471f7509b6dc7b8f810f4c3066c92196ec6abe454",
+      "records": 400
+    },
+    {
+      "path": "story/Seediq_Tgdaya/sdqNr-pear-dakis 2020s.json",
+      "status": "live_refreshed",
+      "sha256": "da6c25264e2047c1af2c89d9389734ac8f5ca1794a7f9392e7338815843b957f",
+      "records": 251
+    },
+    {
+      "path": "story/Seediq_Tgdaya/sdqNr-pear_aking 2020s.json",
+      "status": "live_refreshed",
+      "sha256": "595177c1d0411da69b3623ed6bb8310aeca937de3317dc2965e9c832d1e27a64",
+      "records": 96
+    },
+    {
+      "path": "story/Seediq_Tgdaya/sdqNr-pear_lubi 2020s.json",
+      "status": "live_refreshed",
+      "sha256": "f5dd30662353a5ca133a3acc029fba08f701fb40913cb0b62171e7c0c02bc224",
+      "records": 87
+    },
+    {
+      "path": "story/Seediq_Tgdaya/sdqNr-pear_pawan 2020s.json",
+      "status": "live_refreshed",
+      "sha256": "1a32eb80b16fdc3a8613bad37df1a658f25f95eac3022073e53172ba97752ca7",
+      "records": 84
+    },
+    {
+      "path": "story/Seediq_Tgdaya/sdqNr-pear_temi 2020s.json",
+      "status": "live_refreshed",
+      "sha256": "08e2345ffa8bd46e45e178d5ef283d54739554669a549817b7a15d05a4c07ef0",
+      "records": 128
+    },
+    {
+      "path": "story/Seediq_Tgdaya/sdqNr-rain_pawan 2020s.json",
+      "status": "live_refreshed",
+      "sha256": "a606c9a5bf72f6714ac2249154c909bef72c98bb52396840a7bc77967fbc5e45",
+      "records": 32
+    },
+    {
+      "path": "story/Seediq_Tgdaya/sdqNr-ricah_uma 2021s.json",
+      "status": "live_refreshed",
+      "sha256": "1d8c7f8a6a6a2222d054eceda7540a5bf047540f45ae6d22e7847fe561070a85",
+      "records": 54
+    },
+    {
+      "path": "story/Seediq_Tgdaya/sdqNr-seediq_dakis 2020s.json",
+      "status": "live_refreshed",
+      "sha256": "00266ad62d65252b0c0d0497a3eb02b3ad0e9aa595d0cee1c2a9a456490ecf2e",
+      "records": 136
+    },
+    {
+      "path": "story/Seediq_Tgdaya/sdqNr-sinobale_uma 2021s.json",
+      "status": "live_refreshed",
+      "sha256": "c0ab825dbb5a06efd7a538983ed5afcfcb88cdb929b844aae764e54f06d5f0cf",
+      "records": 32
+    },
+    {
+      "path": "story/Seediq_Tgdaya/sdqNr-sisin_dakis 2020s.json",
+      "status": "live_refreshed",
+      "sha256": "cbe3b12727aba2fcaf839d09e15fb3852d3671d6d7b951db91001c992863ae6b",
+      "records": 574
+    },
+    {
+      "path": "story/Seediq_Tgdaya/sdqNr-south_pawan 2021s.json",
+      "status": "live_refreshed",
+      "sha256": "8581bda950556d86172cc0840e337f8bbde925ea5b4cc21e6c40158754257c46",
+      "records": 112
+    },
+    {
+      "path": "story/Seediq_Tgdaya/sdqNr-taboo_pawan 2021s.json",
+      "status": "live_refreshed",
+      "sha256": "e28d8d02218d0b8105cb893b5e3b5577a16e132c921c5724a44ca7bec18756a9",
+      "records": 119
+    },
+    {
+      "path": "story/Seediq_Tgdaya/sdqNr-tattoo2_pawan 2020s.json",
+      "status": "live_same",
+      "sha256": "9e8f98056bd0745bc6c07a8f454b6a2bb45962c62f5641c365bacca68c8450ae",
+      "records": 21
+    },
+    {
+      "path": "story/Seediq_Tgdaya/sdqNr-tradition_dakis 2021s.json",
+      "status": "live_refreshed",
+      "sha256": "e60389eb3ae31cadd4c11e226a12245893a31265c4e1388c24a54b40d157441a",
+      "records": 232
+    },
+    {
+      "path": "story/Tsou_Tsou/None-1.json",
+      "status": "live_refreshed",
+      "sha256": "fe202760eabee1049fdbc02fce8bd5c1ebb2c740422a1c820cc57c5bb3ddea5e",
+      "records": 569
+    },
+    {
+      "path": "story/Tsou_Tsou/Tsou-frog-story-wang-1.json",
+      "status": "live_refreshed",
+      "sha256": "b0737a9fe2b16c9a2795f076add44092a53a0c1946156f57ca16041fa0cf0356",
+      "records": 183
+    },
+    {
+      "path": "story/Tsou_Tsou/TsouConv-informants.json",
+      "status": "live_refreshed",
+      "sha256": "6254bc520eda1b0246f11461a2eddfc47bf4d9af6d5db903f83e14e79ef25be1",
+      "records": 298
+    },
+    {
+      "path": "story/Tsou_Tsou/TsouConv-typhoon.json",
+      "status": "live_refreshed",
+      "sha256": "a4928db37ca5eee66e1c5fd34bcdc9357080cd2bd39fd793cf90a9c4634bac04",
+      "records": 576
+    },
+    {
+      "path": "story/Tsou_Tsou/TsouNr-frog-story-shi.json",
+      "status": "live_refreshed",
+      "sha256": "88d511dd5234ca5ca32b69e935f67392a14c493af7d8bf43b92f794036da3329",
+      "records": 198
+    },
+    {
+      "path": "story/Tsou_Tsou/TsouNr-frog-story-tu.json",
+      "status": "live_refreshed",
+      "sha256": "7edcb8641d468269cc627d78f0fcd7d3070b1aa264ded91725987a110b89e96f",
+      "records": 102
+    },
+    {
+      "path": "story/Tsou_Tsou/TsouNr-love-story-zhuang.json",
+      "status": "live_refreshed",
+      "sha256": "6d0a5e973b35e0e3865851a373ffbf2784133863f7c11b72e1c2a258cc6ecba6",
+      "records": 58
+    },
+    {
+      "path": "story/Tsou_Tsou/TsouNr-lovestory-zheng.json",
+      "status": "live_refreshed",
+      "sha256": "684a4416c35151281663307049f2eea6a62e3a219727736975b1322230c95024",
+      "records": 102
+    },
+    {
+      "path": "story/Tsou_Tsou/TsouNr-pear-An.json",
+      "status": "live_refreshed",
+      "sha256": "33d70bfe17a9a954b19d9dc75ecf305dbf4ffefbd3c80c564a58e1d95558d3b9",
+      "records": 109
+    },
+    {
+      "path": "story/Tsou_Tsou/TsouNr-pear-story-3.json",
+      "status": "live_refreshed",
+      "sha256": "eeb3f9884cbb3ddf77cdbfa2174689be18bf37b42c495a254badb6273478f6e4",
+      "records": 124
+    },
+    {
+      "path": "story/Tsou_Tsou/TsouNr-pear-wang-3.json",
+      "status": "live_refreshed",
+      "sha256": "3e56a899aff011620a2a14f951f2b6b777551af9a8c61db765a7aa38c34b3709",
+      "records": 158
+    },
+    {
+      "path": "story/Tsou_Tsou/TsouNr_lovestry_wang-2.json",
+      "status": "live_refreshed",
+      "sha256": "38ffba1a0b1bacd18db15bd574cd049990b211f78b5ed20b97a2bdfdba749b7c",
+      "records": 85
+    }
+  ]
+}

@@ -47,7 +47,7 @@ For each matching sentence ``S_N``:
   which only the parenthesis characters are stripped (content kept) from
   every FORM/PHON/TRANSL text and ``notes`` attribute. Its id gains a
   ``-opt`` suffix (descendant ids rewritten to match, as in
-  dedupe_sentence_ids.py). AUDIO is removed from this reading -- the
+  uniquify_sentence_ids.py). AUDIO is removed from this reading -- the
   recording is of the shorter, actually-uttered sentence.
 
 PHON needs no orthography mapping: removing parentheses is purely

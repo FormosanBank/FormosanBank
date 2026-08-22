@@ -9,6 +9,8 @@ segment file name and the source URL so that download_grammar_audio.py
 Run this script first, then run download_grammar_audio.py.
 """
 
+import copy
+import hashlib
 import itertools
 import json
 import os
@@ -19,7 +21,51 @@ from xml.dom import minidom
 from urllib.parse import unquote, urlsplit
 import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from utils import clean_punctuation, add_transl_element, SPEAKER_TOKENS, is_speaker_token, strip_speaker_labels_from_translation, PAREN_TOKEN_RE, resolve_ungrammatical_parens, _drop_starred_slash, filter_punct_words, is_punct_only, fill_propername_gloss, _norm_paren, join_ori_tokens, insert_xxxx_tokens, strip_l2m, strip_prosodic_markers, expand_infixes
+from utils import clean_punctuation, add_transl_element, SPEAKER_TOKENS, is_speaker_token, strip_speaker_labels_from_translation, PAREN_TOKEN_RE, resolve_ungrammatical_parens, _drop_starred_slash, filter_punct_words, is_punct_only, fill_propername_gloss, _norm_paren, join_ori_tokens, insert_xxxx_tokens, strip_l2m, strip_prosodic_markers, expand_infixes, merge_notes, source_notes_from_free
+from source_repair_registry import load_grammar_record_repairs
+
+
+_GRAMMAR_RECORD_REPAIRS = load_grammar_record_repairs()
+
+
+def _record_digest(record):
+    raw = json.dumps(record, ensure_ascii=False, separators=(",", ":"))
+    return hashlib.sha256(raw.encode("utf-8")).hexdigest()
+
+
+def apply_grammar_record_repairs(data, src):
+    """Return grammar records with exact, source-pinned repairs applied."""
+    normalized = str(src).replace("\\", "/")
+    applicable = [
+        (key, repair)
+        for key, repair in _GRAMMAR_RECORD_REPAIRS.items()
+        if normalized.endswith(key[0])
+    ]
+    if not applicable:
+        return data
+
+    repaired = list(data)
+    for (source_file, record_id), repair in applicable:
+        matches = [
+            (index, record)
+            for index, record in enumerate(repaired)
+            if record[0] == record_id
+        ]
+        if len(matches) != 1:
+            raise RuntimeError(
+                f"expected one grammar record {record_id} in {source_file}, "
+                f"found {len(matches)}"
+            )
+        index, record = matches[0]
+        digest = _record_digest(record)
+        if digest != repair["source_digest"]:
+            raise RuntimeError(
+                f"grammar record repair source drifted: "
+                f"{source_file}:{record_id}; expected "
+                f"{repair['source_digest']}, found {digest}"
+            )
+        repaired[index] = copy.deepcopy(repair["replacement"])
+    return repaired
 
 
 # ---------------------------------------------------------------------------
@@ -88,17 +134,12 @@ _FORM_OVERRIDES = {
     # two repetitions; the gloss correctly splits them as two separate words.
     ("Sakizaya", "ap2", 24): "“kati... kati...” sa misalisin.",
     ("Sakizaya", "15", 1): "manamuh mukan tu paza' ci Aki aci Imi.",
-    ("Kanakanavu", "14", 24): "vanai tia 'apacangcangarʉʉn Pi'i, tia paracani Pani nukai 'utori.",
-    ("Kanakanavu", "14", 27): "vanai tia 'apacangcangarʉʉn 'aree, paracani mataa 'utori Piori.",
-    ("Kanakanavu", "15", 7): "vanai tia 'apacangcangarʉʉn 'aree, paracani mataa 'utori Piori.",
-    ("Kanakanavu", "15", 24): "vanai tia 'apacangcangarʉʉn Pi'i, tia paracani Pani nukai 'utori.",
-    ("Kanakanavu", "15", 25): "vanai tia 'apacangcangarʉ Pi'i, tia paracani Pani saa 'utori?",
 }
 
-# The public NTU server has three A2 entries whose audio is not usable and one
-# entry whose published URL omitted the source file's ``00_`` prefix. Keep
-# these source-level exceptions here so regenerating the XML cannot recreate
-# broken AUDIO references.
+# The public NTU server has three A2 entries and eight Kanakanavu A1 entries
+# whose audio is not usable, plus one entry whose published URL omitted the
+# source file's ``00_`` prefix. Keep these source-level exceptions here so
+# regenerating the XML cannot recreate broken AUDIO references.
 _AUDIO_URL_OVERRIDES = {
     "https://formosanbank.linguistics.ntu.edu.tw/files/audio/"
     "Seediq_A2-3-3%20n.mp3": (
@@ -111,6 +152,22 @@ _AUDIO_URL_OVERRIDES = {
     "Sakizaya_A2-10-144.mp3": None,
     "https://formosanbank.linguistics.ntu.edu.tw/files/audio/"
     "Sakizaya_A2-10-164.mp3": None,
+    "https://formosanbank.linguistics.ntu.edu.tw/files/audio/"
+    "Kanakanavu_A1-2-2-1.wav": None,
+    "https://formosanbank.linguistics.ntu.edu.tw/files/audio/"
+    "Kanakanavu_A1-7-1-1.wav": None,
+    "https://formosanbank.linguistics.ntu.edu.tw/files/audio/"
+    "Kanakanavu_A1-7-1-2.wav": None,
+    "https://formosanbank.linguistics.ntu.edu.tw/files/audio/"
+    "Kanakanavu_A1-7-1-3.wav": None,
+    "https://formosanbank.linguistics.ntu.edu.tw/files/audio/"
+    "Kanakanavu_A1-7-1-4.wav": None,
+    "https://formosanbank.linguistics.ntu.edu.tw/files/audio/"
+    "Kanakanavu_A1-7-1-5.wav": None,
+    "https://formosanbank.linguistics.ntu.edu.tw/files/audio/"
+    "Kanakanavu_A1-7-1-6.wav": None,
+    "https://formosanbank.linguistics.ntu.edu.tw/files/audio/"
+    "Kanakanavu_A1-7-1-7.wav": None,
 }
 
 
@@ -226,12 +283,16 @@ def get_grammar(data, src="", lang="", is_wordlist=False):
     Returns:
         list: A list of dicts, each containing processed data for a sentence.
     """
+    data = apply_grammar_record_repairs(data, src)
     to_return = []
 
     for s in data:
         tmp = {}
         tmp['id'] = s[0]
         s = s[1]
+        source_notes = source_notes_from_free(s.get('free', []))
+        if source_notes:
+            tmp['source_notes'] = source_notes
 
         if s['ori'] and s['ori'] != ['.']:
             raw_ori = [t for t in s['ori'] if not is_speaker_token(t)]
@@ -413,6 +474,10 @@ def main(lang_codes):
                         form_elem = ET.SubElement(s_element, "FORM")
                         form_elem.set("kindOf", "original")
                         form_elem.text = insert_xxxx_tokens(var['ori'], var.get('words', []))
+                        form_notes = merge_notes(
+                            var.get('ori_notes'), s.get('source_notes'))
+                        if form_notes:
+                            form_elem.set('notes', form_notes)
                         if 'zh' in var:
                             add_transl_element(s_element, "zho", clean_punctuation(var['zh']))
                         if 'en' in var:
@@ -501,6 +566,10 @@ def main(lang_codes):
                         s.get('words', []) if 'A2' not in file else [])
                     if 'ori_notes' in s and 'ori_variants' not in s:
                         form_elem.set("notes", s['ori_notes'])
+                    form_notes = merge_notes(
+                        form_elem.get('notes'), s.get('source_notes'))
+                    if form_notes:
+                        form_elem.set('notes', form_notes)
 
                     if 'zh' in s:
                         add_transl_element(s_element, "zho", s['zh'])

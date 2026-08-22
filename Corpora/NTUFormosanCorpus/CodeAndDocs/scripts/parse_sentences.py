@@ -8,7 +8,7 @@ import csv
 import re
 import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from utils import clean_punctuation, add_transl_element, SPEAKER_TOKENS, is_speaker_token, strip_speaker_labels_from_translation, PAREN_TOKEN_RE, resolve_ungrammatical_parens, _drop_starred_slash, filter_punct_words, is_punct_only, fill_propername_gloss, _norm_paren, join_ori_tokens, insert_xxxx_tokens, strip_l2m, strip_prosodic_markers, expand_infixes
+from utils import clean_punctuation, add_transl_element, SPEAKER_TOKENS, is_speaker_token, strip_speaker_labels_from_translation, PAREN_TOKEN_RE, resolve_ungrammatical_parens, _drop_starred_slash, filter_punct_words, is_punct_only, fill_propername_gloss, _norm_paren, join_ori_tokens, insert_xxxx_tokens, strip_l2m, strip_prosodic_markers, expand_infixes, merge_notes, source_notes_from_free
 
 # Maps the folder-derived dialect token to the display name used in the XML
 # dialect attribute.  Languages whose folder suffix equals their language name
@@ -20,6 +20,18 @@ DIALECT_NAMES = {
     'Vedai':     'Wutai',     # Rukai
     'Tgdaya':    'Tegudaya',  # Seediq
 }
+
+
+# These free translations align with source-explicit slash alternatives in
+# Kanakanavu sentence records. A bare string split cannot retain shared
+# prefixes and suffixes, and it also misreads ordinary slashes inside a
+# parenthetical such as ``him(/her)``. Each entry therefore pins the complete
+# source field and lists the complete translation carried by each FORM option.
+# A missing table entry for a slashed free translation fails closed below.
+from source_repair_registry import load_kanakanavu_free_alternatives
+
+
+EXPLICIT_FREE_ALTERNATIVES = load_kanakanavu_free_alternatives()
 
 
 def prettify(elem):
@@ -42,6 +54,7 @@ def clean_origin(ori):
     Clean the original text by removing unwanted characters.
     """
 
+    ori = clean_punctuation(ori)
     ori = re.sub(r"<L2[A-Za-z]", "", ori) #removing code-switching tag
     ori = re.sub(r"L2[A-Za-z]>", "", ori) #removing code-switching tag
     ori = re.sub(r"[\\/^,<>@_\[\]]+", "", ori)
@@ -53,14 +66,22 @@ def clean_origin(ori):
 
     ori = re.sub("-", "", ori)
     ori = ori.replace(".", "")
-    
+
     ori = ori.strip() #remove leading and trailing whitespace
     ori = re.sub(r'\s+', ' ', ori) #replace multiple spaces with a single space
     # Add a period only if ori does not end with a period, question mark, or exclamation mark
     if not ori.endswith(('.', '?', '!')):
         ori += "."
-    
+
     return ori
+
+
+def set_morpheme_form(form_element, source_form):
+    """Write a source M FORM, structuring a standalone ``?`` as UNCLEAR."""
+    if (source_form or "").strip() == "?":
+        ET.SubElement(form_element, "UNCLEAR")
+    else:
+        form_element.text = source_form
 
 def get_sentences(data, src=""):
     """
@@ -126,14 +147,46 @@ def get_sentences(data, src=""):
         if not gloss_groups:
             continue
 
-        # Split free translations on " / " to match the gloss groups.
-        free_zh_parts = []
-        free_en_parts = []
+        source_notes = source_notes_from_free(s.get('free', []))
+
+        # Keep each complete source free-translation field. A slash is not a
+        # safe generic delimiter: it may sit inside a natural parenthetical or
+        # separate only one phrase within a larger shared sentence. Whole
+        # sentence groups are split below only when the gloss source itself
+        # has explicit separator rows.
+        free_zh_source = None
+        free_en_source = None
         for tran in s['free']:
             if tran[:2] == "#c":
-                free_zh_parts = [p.strip() for p in tran[2:].split('/')]
+                free_zh_source = tran[2:].strip()
             elif tran[:2] == "#e":
-                free_en_parts = [p.strip() for p in tran[2:].split('/')]
+                free_en_source = tran[2:].strip()
+
+        if len(gloss_groups) > 1:
+            free_zh_parts = (
+                [p.strip() for p in free_zh_source.split('/')]
+                if free_zh_source is not None and '/' in free_zh_source
+                else [free_zh_source] * len(gloss_groups)
+                if free_zh_source is not None else []
+            )
+            free_en_parts = (
+                [p.strip() for p in free_en_source.split('/')]
+                if free_en_source is not None and '/' in free_en_source
+                else [free_en_source] * len(gloss_groups)
+                if free_en_source is not None else []
+            )
+            for label, parts in (("zho", free_zh_parts), ("eng", free_en_parts)):
+                if parts and len(parts) != len(gloss_groups):
+                    raise AssertionError(
+                        f"{src}:{base_id}: {label} has {len(parts)} free "
+                        f"translation groups for {len(gloss_groups)} explicit "
+                        "source sentence groups"
+                    )
+        else:
+            free_zh_parts = ([free_zh_source]
+                             if free_zh_source is not None else [])
+            free_en_parts = ([free_en_source]
+                             if free_en_source is not None else [])
 
         # Split ori tokens on "/" to match the gloss groups.
         ori_groups = []
@@ -152,6 +205,12 @@ def get_sentences(data, src=""):
         for gi, gloss_group in enumerate(gloss_groups):
             tmp = dict()
             tmp['id'] = f"{base_id}{suffixes[gi]}" if use_suffix else base_id
+            if source_notes:
+                tmp['source_notes'] = source_notes
+            if free_zh_source is not None:
+                tmp['zh_source'] = free_zh_source
+            if free_en_source is not None:
+                tmp['en_source'] = free_en_source
 
             # Build ori text for this sub-sentence.
             ori_tokens_raw = ori_groups[gi] if gi < len(ori_groups) else []
@@ -247,10 +306,6 @@ def get_sentences(data, src=""):
                 en = free_en_parts[gi] if gi < len(free_en_parts) else free_en_parts[-1]
                 tmp['en'] = strip_speaker_labels_from_translation(clean_punctuation(en))
 
-            # Store all free-translation alternatives for slash-alternative expansion.
-            tmp['zh_alts'] = [strip_speaker_labels_from_translation(p.replace("「這是真的中文翻譯」", "").strip()) for p in free_zh_parts]
-            tmp['en_alts'] = [strip_speaker_labels_from_translation(clean_punctuation(p)) for p in free_en_parts]
-
             to_return.append(tmp)  # Add the processed sentence to the list
 
     return to_return
@@ -266,6 +321,23 @@ def _split_slash_raw(raw):
     """Split raw string on '/' filtering trailing empty; return None if ≤1 part."""
     parts = [p for p in str(raw).split('/') if p.strip()]
     return parts if len(parts) > 1 else None
+
+
+def _split_aligned_slash_column(raw, expected):
+    """Return one aligned value per form alternative.
+
+    A column with no slash is shared by every alternative. A trailing slash
+    is discarded only when it is an extra delimiter. When the split already
+    has the expected width, a trailing empty field is source evidence for an
+    unglossed alternative and must be retained.
+    """
+    text = str(raw)
+    if '/' not in text:
+        return [text] * expected, True
+    parts = text.split('/')
+    while len(parts) > expected and parts[-1] == '':
+        parts.pop()
+    return parts, False
 
 
 def _expand_slash_parts(parts):
@@ -317,13 +389,13 @@ def expand_sentence_alternatives(s, lang, file_name, slash_log_path):
             word_expansions.append(None)
             continue
 
-        zh_parts = _split_slash_raw(zh_raw)
-        en_parts = _split_slash_raw(en_raw)
         n_form = len(form_parts)
-        n_zh   = len(zh_parts) if zh_parts else 1
-        n_en   = len(en_parts) if en_parts else 1
+        zh_parts, zh_shared = _split_aligned_slash_column(zh_raw, n_form)
+        en_parts, en_shared = _split_aligned_slash_column(en_raw, n_form)
+        n_zh = len(zh_parts)
+        n_en = len(en_parts)
 
-        if n_form != n_zh or n_form != n_en:
+        if n_zh != n_form or n_en != n_form:
             error_msg = (f"Word '{form_raw}': form={n_form}, zh={n_zh}, "
                          f"en={n_en} alternative counts disagree")
             break
@@ -336,8 +408,8 @@ def expand_sentence_alternatives(s, lang, file_name, slash_log_path):
             break
 
         form_exp = _expand_slash_parts(form_parts)
-        zh_exp   = _expand_slash_parts(zh_parts) if zh_parts else [zh_raw] * N
-        en_exp   = _expand_slash_parts(en_parts) if en_parts else [en_raw] * N
+        zh_exp = zh_parts if zh_shared else _expand_slash_parts(zh_parts)
+        en_exp = en_parts if en_shared else _expand_slash_parts(en_parts)
         word_expansions.append(list(zip(form_exp, zh_exp, en_exp)))
 
     if error_msg:
@@ -347,28 +419,92 @@ def expand_sentence_alternatives(s, lang, file_name, slash_log_path):
     if N is None:
         return None  # no slash-alternatives in this sentence
 
-    # Validate free-translation alternative counts.
-    # A count mismatch here is logged as a WARNING but does NOT cause the sentence
-    # to be skipped: instead the full (rejoined) free text is used for every variant.
-    zh_alts = s.get('zh_alts', [])
-    en_alts = s.get('en_alts', [])
-    if len(zh_alts) > 1 and len(zh_alts) != N:
-        _log_slash_error(slash_log_path, lang, file_name, s['id'],
-                         f"WARNING: Free zh has {len(zh_alts)} parts, expected {N}; "
-                         f"using full free zh for all {N} variants")
-        zh_alts = ['/'.join(zh_alts)] * N   # same full text for every variant
-    if len(en_alts) > 1 and len(en_alts) != N:
-        _log_slash_error(slash_log_path, lang, file_name, s['id'],
-                         f"WARNING: Free en has {len(en_alts)} parts, expected {N}; "
-                         f"using full free en for all {N} variants")
-        en_alts = ['/'.join(en_alts)] * N
+    case_key = (str(file_name), str(s['id']))
+    case = EXPLICIT_FREE_ALTERNATIVES.get(case_key)
+    fallback_word = case.get("fallback_word") if case else None
+    variant_count = N + 1 if fallback_word is not None else N
 
-    # Build N variant sentence dicts
-    suffixes = 'abcdefghijklmnopqrstuvwxyz'
+    translations = {}
+    for lang_key, sentence_key in (("zho", "zh"), ("eng", "en")):
+        source = s.get(f"{sentence_key}_source")
+        if case:
+            expected = case["source"].get(lang_key)
+            if source != expected:
+                _log_slash_error(
+                    slash_log_path, lang, file_name, s['id'],
+                    f"source {lang_key} drifted: expected {expected!r}, "
+                    f"found {source!r}",
+                )
+                return []
+            values = tuple(case[lang_key])
+            if len(values) != variant_count:
+                _log_slash_error(
+                    slash_log_path, lang, file_name, s['id'],
+                    f"reviewed {lang_key} mapping has {len(values)} values "
+                    f"for {variant_count} FORM variants",
+                )
+                return []
+            translations[sentence_key] = values
+        elif source is None:
+            translations[sentence_key] = (None,) * variant_count
+        elif '/' in source:
+            _log_slash_error(
+                slash_log_path, lang, file_name, s['id'],
+                f"unreviewed slash in source {lang_key} free translation: "
+                f"{source!r}",
+            )
+            return []
+        else:
+            translations[sentence_key] = (source,) * variant_count
+
+    if fallback_word is not None:
+        alternative_indices = [
+            index for index, expansion in enumerate(word_expansions)
+            if expansion is not None
+        ]
+        if len(alternative_indices) != 1:
+            _log_slash_error(
+                slash_log_path, lang, file_name, s['id'],
+                "reviewed trailing alternative no longer has exactly one "
+                "slash-bearing word",
+            )
+            return []
+        alternative_word = alternative_indices[0]
+        if fallback_word == alternative_word or not 0 <= fallback_word < len(words):
+            _log_slash_error(
+                slash_log_path, lang, file_name, s['id'],
+                f"invalid reviewed fallback word index {fallback_word}",
+            )
+            return []
+    else:
+        alternative_word = None
+
+    # Build one complete sentence dictionary per reviewed FORM alternative.
     variants = []
-    for alt_idx in range(N):
+    for alt_idx in range(variant_count):
         new_words = []
-        for w, expansion in zip(words, word_expansions):
+        for word_index, (w, expansion) in enumerate(zip(words, word_expansions)):
+            if fallback_word is not None:
+                if alt_idx < N and word_index == fallback_word:
+                    continue
+                if alt_idx == N and word_index == alternative_word:
+                    # The trailing slash before the following free pronoun marks
+                    # a final option with the uncliticized predicate. Derive the
+                    # shared base mechanically from the first aligned option.
+                    f, z, e = expansion[0]
+                    if not all('=' in value for value in (f, z, e)):
+                        _log_slash_error(
+                            slash_log_path, lang, file_name, s['id'],
+                            "reviewed trailing alternative lost its aligned "
+                            "form/gloss clitic boundaries",
+                        )
+                        return []
+                    new_w = list(w)
+                    new_w[col_form] = f.rsplit('=', 1)[0]
+                    new_w[col_zh] = z.rsplit('=', 1)[0]
+                    new_w[col_en] = e.rsplit('=', 1)[0]
+                    new_words.append(new_w)
+                    continue
             if expansion is None:
                 new_words.append(list(w))
             else:
@@ -388,11 +524,18 @@ def expand_sentence_alternatives(s, lang, file_name, slash_log_path):
         sv['id']    = f"{s['id']}_v{alt_idx + 1}"
         sv['words'] = new_words
         sv['ori']   = new_ori
-
-        if zh_alts and len(zh_alts) == N:
-            sv['zh'] = zh_alts[alt_idx]
-        if en_alts and len(en_alts) == N:
-            sv['en'] = en_alts[alt_idx]
+        for sentence_key in ("zh", "en"):
+            value = translations[sentence_key][alt_idx]
+            if value is None:
+                sv.pop(sentence_key, None)
+            else:
+                sv[sentence_key] = value
+        if case and case.get("eng_note") and sv.get("en") is not None:
+            sv["en_notes"] = case["eng_note"]
+        if case and case.get("form_note"):
+            sv["source_notes"] = merge_notes(
+                sv.get("source_notes"), case["form_note"]
+            )
 
         variants.append(sv)
 
@@ -414,7 +557,7 @@ def main(lang_codes):
 
     # Define the path to the issues.csv file for logging issues
     issues = os.path.join(curr_dir, "../Final_XML", "Sentences", "mismatch_issues.csv")
-    
+
 
     # Create the issues.csv file and write the header row
     with open(issues, mode='w', newline='') as file:
@@ -502,14 +645,24 @@ def main(lang_codes):
                     form_element.text = insert_xxxx_tokens(s_curr['ori'], s_curr['words'])
                     if 'ori_notes' in s_curr:
                         form_element.set("notes", s_curr['ori_notes'])
+                    form_notes = merge_notes(
+                        form_element.get('notes'), s_curr.get('source_notes'))
+                    if form_notes:
+                        form_element.set('notes', form_notes)
 
                     # Add the 'TRANSL' element containing the Chinese translation
                     if 'zh' in s_curr:
-                        add_transl_element(s_element, "zho", s_curr['zh'])
+                        add_transl_element(
+                            s_element, "zho", s_curr['zh'],
+                            notes=s_curr.get('zh_notes'),
+                        )
 
                     # Add the 'TRANSL' element containing the English translation
                     if 'en' in s_curr:
-                        add_transl_element(s_element, "en", s_curr['en'])
+                        add_transl_element(
+                            s_element, "en", s_curr['en'],
+                            notes=s_curr.get('en_notes'),
+                        )
 
                     # Fill empty glosses on consecutive capitalized proper names
                     col_zh = 1 if lang == 'Kanakanavu' else 2
@@ -587,7 +740,7 @@ def main(lang_codes):
                                     # Add the morpheme form
                                     m_form = ET.SubElement(m_element, "FORM")
                                     m_form.set("kindOf", "original")
-                                    m_form.text = sf
+                                    set_morpheme_form(m_form, sf)
                                     # Add the morpheme English translation
                                     m_trans = ET.SubElement(m_element, "TRANSL")
                                     m_trans.set('xml:lang', 'en')
@@ -633,4 +786,3 @@ if __name__ == "__main__":
         "Sakizaya": "szy"
     }
     main(lang_codes)
-
