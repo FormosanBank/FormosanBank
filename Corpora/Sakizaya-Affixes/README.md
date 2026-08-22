@@ -56,11 +56,11 @@ corrections are recorded in `CodeAndDocs/manual_edits.xml`.
 
 ## QC status
 
-- Last QC run: 2026-08-15
+- Last QC run: 2026-08-22
 - Status: ready to port
 - Development source: `Formosan-Sakizaya-Affixes` commit
   `42585ef108a916a1c9f3226129fbb21c766deae7`
-- Development audit: expert-review audit passed with verdict `ready to port`
+- Development audit: complete source review and current-authority refresh passed with verdict `ready to port`
 - Gloss audit: 57 focused and 36 seeded checks passed
 - Residual warning dispositions: source-attested partial morphology, composite
   table analyses, one expert-reviewed unglossed affix M, one standard-tier
