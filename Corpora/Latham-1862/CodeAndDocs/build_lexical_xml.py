@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 LEDGER_PATH = ROOT / "CodeAndDocs" / "source_ledger.tsv"
 REPORT_PATH = ROOT / "CodeAndDocs" / "extraction_report.csv"
 SUMMARY_PATH = ROOT / "CodeAndDocs" / "extraction_summary.md"
-XML_ROOT = ROOT / "Final_XML"
+XML_ROOT = ROOT / "XML"
 SOURCE_URL = "https://archive.org/details/elementsofcompar00lathrich"
 BASECAMP_URL = (
     "https://app.basecamp.com/3340659/buckets/31258415/"
@@ -267,8 +267,8 @@ def write_summary(entries: list[LexicalEntry]) -> None:
         "",
         "## Outputs",
         "",
-        "- XML: `Final_XML/Siraya/latham_1862_sideia_sida.xml`",
-        "- XML: `Final_XML/Babuza-Favorlang/latham_1862_favorlang.xml`",
+        "- XML: `XML/Siraya/latham_1862_sideia_sida.xml`",
+        "- XML: `XML/Babuza-Favorlang/latham_1862_favorlang.xml`",
         "- Row report: `CodeAndDocs/extraction_report.csv`",
         "- Exact source checks: `CodeAndDocs/source_checks.tsv`",
         "",
@@ -305,8 +305,8 @@ def main() -> None:
     write_xml(entries)
     write_report(entries)
     write_summary(entries)
-    print("Wrote Final_XML/Siraya/latham_1862_sideia_sida.xml")
-    print("Wrote Final_XML/Babuza-Favorlang/latham_1862_favorlang.xml")
+    print("Wrote XML/Siraya/latham_1862_sideia_sida.xml")
+    print("Wrote XML/Babuza-Favorlang/latham_1862_favorlang.xml")
     print(f"Records: {len(entries)}; source FORM variants: 70")
 
 
