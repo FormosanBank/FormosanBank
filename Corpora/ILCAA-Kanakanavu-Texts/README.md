@@ -57,11 +57,11 @@ pipeline code and generated audit ledgers. No manual-edit file is required.
 
 ## QC status
 
-- Last QC run: 2026-08-13
+- Last QC run: 2026-08-22
 - Status: ready to port
 - Development source: `Formosan-Kanakanavu-Texts` commit
   `a5a514d3dac2e362739121d7c9d1af5992a10faf`
-- Development audit: post-remediation audit passed with verdict `ready for QC`
+- Development audit: full-source current-authority refresh passed with verdict `ready to port`
 - Gloss audit: 673 source-assisted findings fully reconciled, with 0 unresolved
 - Residual warning dispositions: four intentional sentence-only analyses, 17
   source-required duplicate groups, 77 visible foreign-loan PHON markers, and
