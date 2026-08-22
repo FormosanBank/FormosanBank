@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import itertools
 import re
 import sys
 import unicodedata
@@ -125,6 +126,7 @@ _LIGATURE_TO_TIEBAR = {
     "ʨ": "t͡ɕ", "ʥ": "d͡ʑ",
 }
 _LENGTH = re.compile(r"(.)[ː:]")  # a segment followed by a length mark
+_VARIANT_GROUP = re.compile(r"\[([^\[\]]*\|[^\[\]]*)\]")
 
 
 def canonical_safe(ipa: str) -> str:
@@ -140,8 +142,21 @@ def _expand_length(text: str) -> str:
     return _LENGTH.sub(r"\1\1", text)  # 'aː' / 'a:' -> 'aa'
 
 
-def reconcile(src_ipa: str, tgt_ipa: str) -> tuple[Verdict, str]:
-    safe_src, safe_tgt = canonical_safe(src_ipa), canonical_safe(tgt_ipa)
+def _expand_variant_groups(text: str) -> set[str]:
+    """Expand POL-013 ``[x|y]`` groups into their literal alternatives."""
+    chunks: list[list[str]] = []
+    cursor = 0
+    for match in _VARIANT_GROUP.finditer(text):
+        chunks.append([text[cursor:match.start()]])
+        chunks.append(match.group(1).split("|"))
+        cursor = match.end()
+    if not chunks:
+        return {text}
+    chunks.append([text[cursor:]])
+    return {"".join(parts) for parts in itertools.product(*chunks)}
+
+
+def _reconcile_plain(safe_src: str, safe_tgt: str) -> tuple[Verdict, str]:
     if safe_src == safe_tgt:
         return Verdict.CONFIRMED, ""
 
@@ -155,6 +170,29 @@ def reconcile(src_ipa: str, tgt_ipa: str) -> tuple[Verdict, str]:
     combined_tgt = _expand_length(safe_tgt).replace(_TIE_BAR, "")
     if combined_src == combined_tgt:
         return Verdict.WARNING, "+".join(reasons) if reasons else "length+affricate"
+    return Verdict.MISMATCH, ""
+
+
+def reconcile(src_ipa: str, tgt_ipa: str) -> tuple[Verdict, str]:
+    safe_src, safe_tgt = canonical_safe(src_ipa), canonical_safe(tgt_ipa)
+    exact = _reconcile_plain(safe_src, safe_tgt)
+    if exact[0] != Verdict.MISMATCH:
+        return exact
+
+    source_variants = _expand_variant_groups(safe_src)
+    target_variants = _expand_variant_groups(safe_tgt)
+    if source_variants == {safe_src} and target_variants == {safe_tgt}:
+        return exact
+    if source_variants == target_variants:
+        return Verdict.CONFIRMED, "variant-set"
+    if source_variants & target_variants:
+        return Verdict.WARNING, "variant-overlap"
+    for source_variant in source_variants:
+        for target_variant in target_variants:
+            verdict, reason = _reconcile_plain(source_variant, target_variant)
+            if verdict != Verdict.MISMATCH:
+                detail = f"variant+{reason}" if reason else "variant-overlap"
+                return Verdict.WARNING, detail
     return Verdict.MISMATCH, ""
 
 
@@ -223,7 +261,7 @@ def audit(
         if grapheme in converted:
             continue
         out_ipa = output.ipa_of.get(grapheme)
-        if out_ipa is not None and canonical_safe(out_ipa) == canonical_safe(ipa):
+        if out_ipa is not None and reconcile(ipa, out_ipa)[0] != Verdict.MISMATCH:
             continue
         report.coverage_gaps.append((grapheme, ipa))
     report.coverage_gaps.sort()

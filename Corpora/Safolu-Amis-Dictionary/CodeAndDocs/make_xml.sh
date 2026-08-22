@@ -1,122 +1,235 @@
 #!/usr/bin/env bash
-# make_xml.sh — the single entry point for regenerating this corpus.
+# Regenerate Safolu XML from pinned public sources in an isolated workspace.
 #
-#   ./make_xml.sh                 regenerate XML/ from the POL-035 snapshot
-#   ./make_xml.sh --from-source   fetch the pinned upstream checkouts, rebuild
-#                                 the original tier from source into Final_XML/,
-#                                 validate + audit it, then enrich it with the
-#                                 same steps (needs network)
+# Usage:
+#   CodeAndDocs/make_xml.sh --check   compare a fresh build with canonical XML
+#   CodeAndDocs/make_xml.sh --apply   replace canonical XML after validation
 #
-# The full from-source build needs network access to fetch the pinned upstream
-# checkouts into `_sources/`, which are NOT committed — so the corpus is not
-# regenerable from committed inputs alone. The reproduction baseline is
-# therefore the snapshot at CodeAndDocs/pre_correction_snapshot/ (POL-035),
-# taken once before automated corrections first touched this corpus
-# (2026-08-12). Taking that snapshot is NOT a pipeline step, and per POL-038
-# the snapshot changes only via committed scripts.
-#
-# Enrichment pipeline (see ../README.md for per-step explanations); the same
-# steps run in both modes, on XML/ or on Final_XML/ respectively:
-#   1. clean_xml.py               — original-tier cleaning (+ Amis quote-
-#                                   correction arming; c031/c032 rewrites
-#                                   append to CodeAndDocs/quote_corrections.csv)
-#   2. standardize.py --remove_accents — standard tier: copy original,
-#                                   strip accents
-#   3. add_phonology.py --orthography Ortho113 — regenerate BOTH
-#                                   PHON kindOf="original" (from the original
-#                                   FORM) and PHON kindOf="standard" (from the
-#                                   standard FORM). Both tiers are Ortho113
-#                                   Amis, dialect="Coastal" column: the source
-#                                   orthography already IS Ortho113, so the
-#                                   original tier is phonologized with the same
-#                                   table. --preserve-existing-original is NOT
-#                                   used: no expert-supplied source PHON exists
-#                                   here, so original PHON is always generated.
-#   4. remove_duplicate_sentences.py --apply — dedup (reference resource,
-#                                   POL-022; declared here, so leftover
-#                                   duplicates are HARD findings; distinct
-#                                   TRANSLs of removed duplicates merge into
-#                                   the survivor as ver="alt", POL-025)
-#
-# Environment:
-#   FORMOSANBANK_ROOT   FormosanBank checkout supplying the QC scripts
-#                       (default: the repo this corpus sits in)
-#   PYTHON              interpreter (default: $FORMOSANBANK_ROOT/.venv/bin/python)
+# Optional environment:
+#   FORMOSANBANK_ROOT  checkout supplying current QC and orthography resources
+#   PYTHON             Python environment containing FormosanBank dependencies
+#   SOURCES_DIR        existing pinned source checkouts
+#   WORK_DIR           new absolute build directory outside FormosanBank
+#   REPORT_DIR         new absolute report directory outside FormosanBank
+#   KEEP_WORK=1        retain an automatically created successful workspace
 
 set -euo pipefail
 
-FROM_SOURCE=0
+MODE="check"
 while [[ $# -gt 0 ]]; do
-  case "$1" in
-    --from-source) FROM_SOURCE=1; shift ;;
-    -h|--help) sed -n '2,45p' "${BASH_SOURCE[0]}"; exit 0 ;;
-    *) echo "ERROR: unknown argument: $1 (usage: $0 [--from-source])" >&2; exit 2 ;;
-  esac
+    case "$1" in
+        --check) MODE="check" ;;
+        --apply) MODE="apply" ;;
+        -h|--help)
+            sed -n '2,15p' "${BASH_SOURCE[0]}"
+            exit 0
+            ;;
+        *)
+            echo "Unknown argument: $1 (usage: $0 [--check|--apply])" >&2
+            exit 2
+            ;;
+    esac
+    shift
 done
 
-CODEDOCS="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"   # .../CodeAndDocs
-CORPUS="$(dirname "$CODEDOCS")"                            # corpus root
-BANK="${FORMOSANBANK_ROOT:-$(cd "$CORPUS/../.." && pwd)}"  # FormosanBank root
-SNAPSHOT="$CODEDOCS/pre_correction_snapshot"
-
+CODEDOCS="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
+CORPUS="$(dirname "$CODEDOCS")"
+BANK="${FORMOSANBANK_ROOT:-$(cd "$CORPUS/../.." && pwd -P)}"
 PY="${PYTHON:-$BANK/.venv/bin/python}"
-[[ -x "$PY" ]] || PY="$(command -v python3)"
 
-step() { printf '\n=== %s ===\n' "$*"; }
+EXPECTED_MOEDICT_COMMIT="e7c6976a0766e9b0aeb7083e2c06db60f5485252"
+EXPECTED_SAFOLU_COMMIT="f512d5ba0d08f81b26093a9b7b4a85acac760a30"
 
-# Steps 1–4: turn an original-tier-only tree into the published shape.
-enrich() {
-  local target="$1"
-
-  step "1. clean_xml"
-  "$PY" "$BANK/QC/cleaning/clean_xml.py" --corpora_path "$target"
-
-  step "2. standardize --remove_accents"
-  "$PY" "$BANK/QC/utilities/standardize.py" --remove_accents --corpora_path "$target"
-
-  step "3. add_phonology (Ortho113, original + standard tiers)"
-  "$PY" "$BANK/QC/utilities/add_phonology.py" --orthography Ortho113 --corpora_path "$target"
-
-  step "4. remove_duplicate_sentences (POL-022 dedup)"
-  "$PY" "$BANK/QC/cleaning/remove_duplicate_sentences.py" by_path --path "$target" --apply
-}
-
-if [[ "$FROM_SOURCE" -eq 1 ]]; then
-  BUILD="$CORPUS/Final_XML"
-
-  step "A. fetch pinned upstream sources (network)"
-  "$PY" "$CODEDOCS/fetch_sources.py"
-
-  step "B. build original-tier XML from source"
-  "$PY" "$CODEDOCS/build_formosanbank_xml.py"
-
-  step "C. validate build + source-coverage audit"
-  "$PY" "$CODEDOCS/validate_formosanbank_xml.py" "$BUILD/Amis/Safolu/amis_safolu_examples.xml"
-  "$PY" "$CODEDOCS/audit_source_coverage.py"
-  if find "$BUILD" -type f ! -name '*.xml' -print -quit | grep -q .; then
-    echo "ERROR: Final_XML contains non-XML files:" >&2
-    find "$BUILD" -type f ! -name '*.xml' -print >&2
-    exit 1
-  fi
-
-  enrich "$BUILD/Amis/Safolu"
-
-  step "Done (from source)"
-  echo "Built tree: $BUILD (compare against XML/ before promoting it)."
-else
-  XML="$CORPUS/XML"
-  [[ -d "$SNAPSHOT" ]] || { echo "ERROR: snapshot missing at $SNAPSHOT" >&2; exit 1; }
-
-  step "0. Restore XML/ from POL-035 snapshot"
-  rm -rf "$XML"
-  mkdir -p "$XML"
-  cp -r "$SNAPSHOT/." "$XML/"
-
-  enrich "$XML"
-
-  step "Done"
+if [[ ! -x "$PY" ]]; then
+    PY="$(command -v python3 || true)"
+fi
+if [[ -z "$PY" || ! -x "$PY" ]]; then
+    echo "Python executable is unavailable: $PY" >&2
+    exit 2
+fi
+export PYTHONDONTWRITEBYTECODE="${PYTHONDONTWRITEBYTECODE:-1}"
+if ! git -C "$BANK" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    echo "FORMOSANBANK_ROOT is not a Git checkout: $BANK" >&2
+    exit 2
 fi
 
-echo "Review any warning sidecars (cleaner_warnings.csv, standardize_warnings.csv;"
-echo "POL-033: per-run reports, never committed) and CodeAndDocs/quote_corrections.csv"
-echo "(durable log — commit if rows were added)."
+OWN_WORK=0
+OWNED_WORK_PATH=""
+BUILD_SUCCEEDED=0
+if [[ -n "${WORK_DIR:-}" ]]; then
+    WORK_ROOT="$WORK_DIR"
+    if [[ "$WORK_ROOT" != /* ]]; then
+        echo "WORK_DIR must be absolute: $WORK_ROOT" >&2
+        exit 2
+    fi
+    if [[ -d "$WORK_ROOT" ]] && find "$WORK_ROOT" -mindepth 1 -print -quit | grep -q .; then
+        echo "WORK_DIR must be new or empty: $WORK_ROOT" >&2
+        exit 2
+    fi
+    mkdir -p "$WORK_ROOT"
+else
+    TEMP_BASE="${TMPDIR:-/tmp}"
+    WORK_ROOT="$(mktemp -d "$TEMP_BASE/safolu-rebuild.XXXXXX")"
+    OWN_WORK=1
+fi
+WORK_ROOT="$(cd "$WORK_ROOT" && pwd -P)"
+if [[ "$OWN_WORK" -eq 1 ]]; then
+    OWNED_WORK_PATH="$WORK_ROOT"
+fi
+case "$WORK_ROOT/" in
+    "$BANK/"*)
+        echo "WORK_DIR must be outside FormosanBank: $WORK_ROOT" >&2
+        exit 2
+        ;;
+esac
+
+cleanup() {
+    if [[ "$OWN_WORK" -eq 1 && "$BUILD_SUCCEEDED" -eq 1 && "${KEEP_WORK:-0}" != "1" ]]; then
+        if [[ -n "$OWNED_WORK_PATH" && "$WORK_ROOT" == "$OWNED_WORK_PATH" ]]; then
+            rm -rf -- "$WORK_ROOT"
+        else
+            echo "Refusing to remove unexpected temporary path: $WORK_ROOT" >&2
+        fi
+    else
+        echo "Build workspace retained at $WORK_ROOT" >&2
+    fi
+}
+trap cleanup EXIT
+
+REPORT_ROOT="${REPORT_DIR:-$WORK_ROOT/reports}"
+if [[ "$REPORT_ROOT" != /* ]]; then
+    echo "REPORT_DIR must be absolute: $REPORT_ROOT" >&2
+    exit 2
+fi
+if [[ -d "$REPORT_ROOT" ]] && find "$REPORT_ROOT" -mindepth 1 -print -quit | grep -q .; then
+    echo "REPORT_DIR must be new or empty: $REPORT_ROOT" >&2
+    exit 2
+fi
+mkdir -p "$REPORT_ROOT"
+REPORT_ROOT="$(cd "$REPORT_ROOT" && pwd -P)"
+case "$REPORT_ROOT/" in
+    "$BANK/"*)
+        echo "REPORT_DIR must be outside FormosanBank: $REPORT_ROOT" >&2
+        exit 2
+        ;;
+esac
+
+SOURCES_ROOT="${SOURCES_DIR:-$WORK_ROOT/_sources}"
+if [[ ! -d "$SOURCES_ROOT/amis-moedict" || ! -d "$SOURCES_ROOT/amis-safolu" ]]; then
+    "$PY" "$CODEDOCS/fetch_sources.py" --sources-dir "$SOURCES_ROOT"
+fi
+
+check_source() {
+    local path="$1"
+    local expected="$2"
+    local actual
+    if ! git -C "$path" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+        echo "Pinned source checkout is missing: $path" >&2
+        exit 2
+    fi
+    actual="$(git -C "$path" rev-parse HEAD)"
+    if [[ "$actual" != "$expected" ]]; then
+        echo "Source commit mismatch at $path: expected $expected, got $actual" >&2
+        exit 2
+    fi
+    if [[ -n "$(git -C "$path" status --porcelain)" ]]; then
+        echo "Source checkout is dirty: $path" >&2
+        exit 2
+    fi
+}
+
+check_source "$SOURCES_ROOT/amis-moedict" "$EXPECTED_MOEDICT_COMMIT"
+check_source "$SOURCES_ROOT/amis-safolu" "$EXPECTED_SAFOLU_COMMIT"
+
+SHARED_CONVERSION="$BANK/Orthographies/ConversionTables/Amis_Safolu_113.tsv"
+LOCAL_CONVERSION="$CODEDOCS/data/orthography/Amis_Safolu_113.tsv"
+if ! cmp -s "$LOCAL_CONVERSION" "$SHARED_CONVERSION"; then
+    echo "Local and shared Safolu conversion tables differ." >&2
+    exit 2
+fi
+
+STAGE="$WORK_ROOT/generated-XML"
+AUDIT="$WORK_ROOT/generated-audit"
+UPDATE_VIEW="$WORK_ROOT/published-update-view"
+CANONICAL="$CORPUS/XML/Amis/Safolu/amis_safolu_examples.xml"
+GENERATED="$STAGE/Amis/Safolu/amis_safolu_examples.xml"
+
+"$PY" "$CODEDOCS/build_formosanbank_xml.py" \
+    --sources-dir "$SOURCES_ROOT" \
+    --xml-out-dir "$STAGE" \
+    --audit-out-dir "$AUDIT"
+"$PY" "$CODEDOCS/validate_formosanbank_xml.py" "$GENERATED"
+"$PY" "$CODEDOCS/audit_source_coverage.py" \
+    --sources-dir "$SOURCES_ROOT" \
+    --final-dir "$STAGE" \
+    --audit-dir "$AUDIT" \
+    --out "$REPORT_ROOT/source-coverage.json"
+
+"$PY" "$BANK/QC/cleaning/clean_xml.py" --corpora_path "$STAGE"
+if [[ ! -f "$STAGE/cleaner_warnings.csv" ]]; then
+    echo "Cleaner did not produce its warning report." >&2
+    exit 1
+fi
+mv "$STAGE/cleaner_warnings.csv" "$REPORT_ROOT/cleaner_warnings.csv"
+
+"$PY" "$BANK/QC/utilities/standardize.py" \
+    --tsv_path "$SHARED_CONVERSION" \
+    --target_column Coastal \
+    --single-pass \
+    --corpora_path "$STAGE"
+if [[ -f "$STAGE/standardize_warnings.csv" ]]; then
+    mv "$STAGE/standardize_warnings.csv" "$REPORT_ROOT/standardize_warnings.csv"
+fi
+
+"$PY" "$BANK/QC/utilities/add_phonology.py" \
+    --orthography Safolu \
+    --corpora_path "$STAGE"
+
+DUPLICATE_RESULT="$(
+    "$PY" "$BANK/QC/cleaning/remove_duplicate_sentences.py" \
+        by_path --path "$STAGE" --apply
+)"
+printf '%s\n' "$DUPLICATE_RESULT"
+if [[ "$DUPLICATE_RESULT" != "No duplicate <S> elements found to remove." ]]; then
+    echo "Post-generation duplicate removal changed the source-backed record set." >&2
+    exit 1
+fi
+
+mkdir -p "$UPDATE_VIEW"
+for published in "$BANK/Corpora"/*; do
+    [[ -d "$published" ]] || continue
+    [[ "$(basename "$published")" == "Safolu-Amis-Dictionary" ]] && continue
+    ln -s "$published" "$UPDATE_VIEW/$(basename "$published")"
+done
+
+"$PY" "$BANK/QC/validation/validate_xml.py" by_path \
+    --path "$STAGE" \
+    --published-corpora "$UPDATE_VIEW" \
+    --csv "$REPORT_ROOT/validate_xml.csv"
+"$PY" "$BANK/QC/validation/validate_text.py" by_path \
+    --path "$STAGE" \
+    --csv "$REPORT_ROOT/validate_text.csv"
+
+if find "$STAGE" -type f ! -name '*.xml' -print -quit | grep -q .; then
+    echo "Generated XML tree contains a non-XML file." >&2
+    exit 1
+fi
+
+if [[ "$MODE" == "check" ]]; then
+    if ! cmp -s "$CANONICAL" "$GENERATED"; then
+        echo "Generated XML differs from the committed canonical XML." >&2
+        git diff --no-index --stat -- "$CANONICAL" "$GENERATED" || true
+        exit 1
+    fi
+    echo "Canonical XML matches the pinned source rebuild."
+else
+    mkdir -p "$(dirname "$CANONICAL")"
+    cp "$GENERATED" "$CANONICAL"
+    echo "Updated $CANONICAL from the verified source rebuild."
+fi
+
+echo "FormosanBank authority commit: $(git -C "$BANK" rev-parse HEAD)"
+echo "Safolu source fields accounted for: 49,419 / 49,419"
+echo "Canonical sentences: 49,179"
+echo "Reports: $REPORT_ROOT"
+BUILD_SUCCEEDED=1

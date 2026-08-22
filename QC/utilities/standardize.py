@@ -212,7 +212,35 @@ def get_exploration_targets(corpora_path, corpus=None):
         return [corpora_path]
     return [os.path.join(corpora_path, x) for x in os.listdir(corpora_path)]
 
-def apply_standard(s_element, standard):
+def _replace_single_pass(text: str, replacements: list[tuple[str, str]]) -> str:
+    """Apply literal replacements once, preferring the longest source key.
+
+    Unlike sequential ``str.replace`` calls, text emitted by one mapping is
+    never consumed by another mapping. Identity rows can therefore protect a
+    source digraph from a rule for one of its component letters.
+    """
+    replacement_by_source: dict[str, str] = {}
+    for source, target in replacements:
+        previous = replacement_by_source.get(source)
+        if previous is not None and previous != target:
+            raise ValueError(
+                f"conflicting single-pass mappings for {source!r}: "
+                f"{previous!r} and {target!r}"
+            )
+        replacement_by_source.setdefault(source, target)
+
+    if not replacement_by_source:
+        return text
+
+    sources = sorted(replacement_by_source, key=len, reverse=True)
+    pattern = re.compile("|".join(re.escape(source) for source in sources))
+    return pattern.sub(
+        lambda match: replacement_by_source[match.group(0)],
+        text,
+    )
+
+
+def apply_standard(s_element, standard, *, single_pass=False):
     form = s_element.find("FORM[@kindOf='standard']")
     if form.text:
         # Protect explicitly mapped diacritic-bearing letters before the
@@ -232,8 +260,11 @@ def apply_standard(s_element, standard):
         # The original tier is never touched here. Unprotected diacritics are
         # treated as source stress/prosody and removed from the standard tier.
         form.text = strip_accents(form.text)
-        for original, replacement in remaining:
-            form.text = form.text.replace(original, replacement)
+        if single_pass:
+            form.text = _replace_single_pass(form.text, remaining)
+        else:
+            for original, replacement in remaining:
+                form.text = form.text.replace(original, replacement)
         for marker, replacement in protected:
             form.text = form.text.replace(marker, replacement)
 
@@ -467,7 +498,11 @@ def main(args):
                             create_standard(element, file_path=file)
                             if element.tag == "S":
                                 remove_null_units(element)
-                            apply_standard(element, standard)
+                            apply_standard(
+                                element,
+                                standard,
+                                single_pass=args.single_pass,
+                            )
                             _apply_standard_hyphens(
                                 element, lang_code, args.ortho_path,
                                 args.hard_remove_segmentation, warnings, file)
@@ -499,6 +534,14 @@ if __name__ == "__main__":
     parser.add_argument('--remove_accents', action='store_true', help='copy original to standard and delete accents (no TSV, no dialectal letter conversion)')
     parser.add_argument('--tsv_path', help='path to TSV file with original and standard columns (not required when using --copy or --remove_accents)')
     parser.add_argument('--target_column', help='column name to use as target for standardization (default: auto-detect from dialect or use "standard")')
+    parser.add_argument(
+        '--single-pass',
+        action='store_true',
+        help=(
+            'apply TSV replacements once with longest-source matching; '
+            'generated output is not remapped'
+        ),
+    )
     parser.add_argument('--corpora_path', help='path of the corpora')
     parser.add_argument('--corpus', help='if standardization is desired to be applied to a specific corpus -- optional')
     parser.add_argument('--language', help='if standardization is desired to be applied to a specific language -- optional')

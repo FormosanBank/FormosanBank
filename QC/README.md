@@ -32,7 +32,7 @@ python QC/utilities/standardize.py \
   --target_column standard
 ```
 
-The TSV must include an `original` column and a target column such as `standard` or a dialect name. Replacements are applied globally and sequentially with Python string replacement, so review the diff after running it.
+The TSV must include an `original` column and a target column such as `standard` or a dialect name. Replacements are applied globally and sequentially with Python string replacement by default, so review the diff after running it. Use `--single-pass` for reviewed tables that need longest-source matching, such as a digraph identity row that protects `ng` while a separate `g` rule maps legacy spelling to `ng`. In single-pass mode generated output is never remapped.
 
 Generate original and standard sentence-level PHON after the FORM tiers are
 ready:

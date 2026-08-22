@@ -15,8 +15,16 @@ from moedict_formosanbank import ROOT, iter_moedict_json_files, parse_marked_exa
 
 
 DEFAULT_SOURCES_DIR = ROOT / "_sources"
-DEFAULT_FINAL_DIR = ROOT / "Final_XML"
-DEFAULT_AUDIT_DIR = ROOT / "data" / "formosanbank_audit"
+DEFAULT_FINAL_DIR = ROOT / "XML"
+DEFAULT_AUDIT_DIR = ROOT / "CodeAndDocs" / "_generated_audit"
+
+
+def display_path(path: Path) -> str:
+    """Return a stable corpus-relative path when the build lives in-tree."""
+    try:
+        return str(path.relative_to(ROOT))
+    except ValueError:
+        return path.name
 
 
 def load_json(path: Path) -> Any:
@@ -62,6 +70,7 @@ def audit(sources_dir: Path, final_dir: Path, audit_dir: Path) -> tuple[dict[str
     safolu_xml = safolu_dir / f"{SAFOLU_TEXT_ID}.xml"
     safolu_metadata = load_json(safolu_audit_dir / f"{SAFOLU_TEXT_ID}.metadata.json")
     safolu_rejected = load_json(safolu_audit_dir / f"{SAFOLU_TEXT_ID}.rejected.json")
+    safolu_duplicates = load_json(safolu_audit_dir / f"{SAFOLU_TEXT_ID}.duplicates.json")
 
     source_total, source_valid_markers, source_malformed_markers = count_generated_examples(
         sources_dir / "amis-moedict" / "docs" / "s"
@@ -73,8 +82,13 @@ def audit(sources_dir: Path, final_dir: Path, audit_dir: Path) -> tuple[dict[str
     # level via each record's source_ordinal -- not by sentence counts.
     accepted_fields = {e["notes"].get("source_ordinal") for e in safolu_metadata["examples"]}
     accepted_fields.discard(None)
+    duplicate_fields = {
+        e["dropped_record"]["notes"].get("source_ordinal") for e in safolu_duplicates["duplicates"]
+    }
+    duplicate_fields.discard(None)
     rejected_fields = {e["source_ordinal"] for e in safolu_rejected["examples"]}
-    accounted = len(accepted_fields | rejected_fields)
+    represented_fields = accepted_fields | duplicate_fields
+    accounted = len(represented_fields | rejected_fields)
     split_fields = sum(1 for e in safolu_metadata["examples"] if e["notes"].get("split_from_cjk_form"))
     recovered = sum(
         1 for example in safolu_metadata["examples"] if example["notes"].get("recovered_form_from_translation")
@@ -86,13 +100,26 @@ def audit(sources_dir: Path, final_dir: Path, audit_dir: Path) -> tuple[dict[str
     discarded_middle = sum(
         1 for example in safolu_metadata["examples"] if "discarded_middle_translation" in example["notes"]
     )
+    override_fields = {
+        example["notes"]["source_ordinal"]
+        for example in safolu_metadata["examples"]
+        if example["notes"].get("manual_source_override")
+    } | {
+        example["dropped_record"]["notes"]["source_ordinal"]
+        for example in safolu_duplicates["duplicates"]
+        if example["dropped_record"]["notes"].get("manual_source_override")
+    }
 
     checks = {
         "safolu_source_markers_are_well_formed": source_malformed_markers == 0,
         "safolu_source_examples_accounted": source_total == accounted,
-        "safolu_accepted_rejected_disjoint": accepted_fields.isdisjoint(rejected_fields),
+        "safolu_accepted_rejected_disjoint": represented_fields.isdisjoint(rejected_fields),
         "safolu_xml_matches_metadata": xml_count == safolu_metadata["example_count"],
         "safolu_rejected_matches_metadata": rejected_count == safolu_metadata["rejected_example_count"],
+        "safolu_duplicate_count_matches_ledger": (
+            safolu_duplicates["duplicate_count"] == len(safolu_duplicates["duplicates"])
+        ),
+        "safolu_all_declared_overrides_applied": len(override_fields) == 61,
     }
     for name, passed in checks.items():
         if not passed:
@@ -100,7 +127,7 @@ def audit(sources_dir: Path, final_dir: Path, audit_dir: Path) -> tuple[dict[str
 
     report = {
         "description": (
-            "Coverage audit for Final_XML. Every Safolu docs/s example field is either represented in "
+            "Coverage audit for XML. Every Safolu docs/s example field is either represented in "
             "valid FormosanBank XML or explicitly present in the rejected-record audit."
         ),
         "excluded": [
@@ -108,14 +135,16 @@ def audit(sources_dir: Path, final_dir: Path, audit_dir: Path) -> tuple[dict[str
             {"source": "g0v/amis-moedict/docs/m", "reason": "Poinsot dictionary lives in the Formosan-Poinsot-Amis-Dictionary repository."},
         ],
         "safolu": {
-            "final_xml": str(safolu_xml.relative_to(ROOT)),
+            "final_xml": display_path(safolu_xml),
             "xml_sentence_count": xml_count,
             "metadata_example_count": safolu_metadata["example_count"],
             "source_example_fields": source_total,
             "source_fields_with_valid_markers": source_valid_markers,
             "source_fields_with_malformed_markers": source_malformed_markers,
             "rejected_count": rejected_count,
+            "duplicate_sentence_count": safolu_duplicates["duplicate_count"],
             "accounted_source_fields": accounted,
+            "manual_source_override_fields": len(override_fields),
             "sentences_split_from_cjk_form": split_fields,
             "recovered_empty_form_rows": recovered,
             "recovered_form_from_note_rows": recovered_from_note,
@@ -133,7 +162,12 @@ def main() -> None:
     parser.add_argument("--sources-dir", type=Path, default=DEFAULT_SOURCES_DIR)
     parser.add_argument("--final-dir", type=Path, default=DEFAULT_FINAL_DIR)
     parser.add_argument("--audit-dir", type=Path, default=DEFAULT_AUDIT_DIR)
-    parser.add_argument("--out", type=Path, default=DEFAULT_AUDIT_DIR / "coverage_audit.json")
+    parser.add_argument(
+        "--out",
+        type=Path,
+        required=True,
+        help="External report path. Per-run audit reports must not be written in the repository.",
+    )
     args = parser.parse_args()
 
     report, errors = audit(args.sources_dir.resolve(), args.final_dir.resolve(), args.audit_dir.resolve())
