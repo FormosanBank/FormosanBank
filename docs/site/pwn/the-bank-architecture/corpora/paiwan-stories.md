@@ -4,7 +4,7 @@
 
 The Paiwan Stories corpus is a small collection of children’s stories told in Eastern Paiwan. Drawn from three storybooks, these narratives provide valuable cultural and linguistic insights into the Paiwan language as it is used in accessible, community-oriented contexts. Their inclusion in FormosanBank broadens the range of available materials, offering a glimpse into traditional knowledge, everyday life, and childhood learning in a Paiwan-speaking environment.&#x20;
 
-**Audio is available as part of the repo and does not need to be downloaded from Hugging Face. The current XML does not yet link to those recordings, so the generated statistics report zero audio.**
+Three whole-story WAV recordings are available through FormosanBank’s public Hugging Face audio contract and can be retrieved with the corpus download script. Each XML root links to its recording. Corpus statistics count sentence-level `AUDIO` elements, so these recordings without sentence timing do not contribute to the audio-duration metric.
 
 #### Source Materials
 
@@ -16,25 +16,26 @@ The Paiwan Stories corpus is a small collection of children’s stories told in 
 
 ### **Corpus Processing**
 
-The Paiwan Stories were integrated into FormosanBank’s standardized XML format to ensure consistency and ease of access.&#x20;
+The reviewed release contains 46 bilingual sentence records across three XML files. All 66 pages of the two illustrated PDFs and bilingual Word source were reviewed, with four paratext or illustration-only exclusions recorded in the source ledger.
 
 #### Processing Notes
 
-* **Manual Conversion:** Due to the small size and narrative complexity of these texts in addition to having the source material in PDFs which isn't the easiest to parse, the XML was created by hand rather than through automated scripts.
-* **Cleaning and Standardization:** This was not necessary because everything was already standardized when it was processed manually.
-* **Minimal Editing:** Orthographic and formatting adjustments were kept to a minimum, preserving the authors’ original representations of the language. Light cleaning, such as removing empty elements and standardizing punctuation, was applied to maintain data consistency.
+* **Source-aligned generation:** The public builder regenerates the XML deterministically from 46 reviewed, page-addressed records and a complete inclusion/exclusion ledger.
+* **Reviewed corrections:** One complete bilingual sentence omitted from the legacy `Maljialjian` XML was restored. Omitted or shifted Chinese translations in `Kavatjes` and `Maljialjian` were also repaired from the source.
+* **Tier ownership:** The generator emits source-owned original Paiwan forms and Chinese translations. The shared FormosanBank pipeline alone creates standard forms and original and standard phonology.
+* **Validation:** The 2026-08-22 release has no unresolved source-audit findings, no XML or text findings, live hosted-audio parity, and 0 hard findings and 0 warnings for port readiness.
 
 ***
 
 ### Access Details
 
-* The repo containing the original stories, the XML corpus in FormosanBank as well as the code to reconstruct the corpus can be found [here](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/Paiwan_Stories).
+* The [FormosanBank corpus directory](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/Paiwan_Stories) contains the XML, reviewed source transcription and ledger, deterministic build script, and audio download script. The illustrated source documents are not redistributed because they contain separate rights notices.
 
 ***
 
 ### Copyrights
 
-Stories can be used under Creative Commons CC-BY-NC license&#x20;
+The Indigenous-language text is published with direct author permission under CC BY-NC. The central FormosanBank terms and AI-use addendum also apply.
 
 ***
 
