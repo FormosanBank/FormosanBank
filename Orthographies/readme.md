@@ -44,6 +44,7 @@ record the review evidence used to build them.
 | `StacyHuang` | Yami | 10126284987 | Proper-name capitalization is not reproduced in PHON. |
 | `Pgagu` | Seediq | 10130865408 | Punctuation is not treated as an undocumented glottal stop. |
 | `TaiwanNandao` | Amis | 10129926256 | Stress-conditioned schwa needs lexical stress data. |
+| `Safolu` | Amis | Li 2013, p. 27; Raranges and Tsai 2013 | Safolu examples mix legacy `g` and current `ng` for /ŋ/ and preserve source `o`/`u`; the standard conversion requires `--single-pass`. |
 | `TaiwanNandao` | Rukai | 10129032684 | The supplied OCR corpus was the wrong source, so this profile is table-reviewed only. |
 | `TaiwanNandao` | Puyuma | 10141444256 | Penultimate schwa needs syllable and stress analysis. |
 | `TaiwanNandao` | Paiwan | 10155208202 | Verb-class final `i` needs lexical information. |
