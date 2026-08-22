@@ -7,8 +7,8 @@ omitted.
 
 ## Outputs
 
-- XML: `Final_XML/Siraya/latham_1862_sideia_sida.xml`
-- XML: `Final_XML/Babuza-Favorlang/latham_1862_favorlang.xml`
+- XML: `XML/Siraya/latham_1862_sideia_sida.xml`
+- XML: `XML/Babuza-Favorlang/latham_1862_favorlang.xml`
 - Row report: `CodeAndDocs/extraction_report.csv`
 - Exact source checks: `CodeAndDocs/source_checks.tsv`
 

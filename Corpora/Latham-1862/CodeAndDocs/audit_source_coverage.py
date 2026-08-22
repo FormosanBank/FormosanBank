@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 EXTRACTION_REPORT = ROOT / "CodeAndDocs" / "extraction_report.csv"
 AUDIT_CSV = ROOT / "CodeAndDocs" / "source_coverage_audit.csv"
 AUDIT_MD = ROOT / "CodeAndDocs" / "source_coverage_audit.md"
-XML_ROOT = ROOT / "Final_XML"
+XML_ROOT = ROOT / "XML"
 EXPECTED_XML_PATHS = {
     "bzg": "Babuza-Favorlang/latham_1862_favorlang.xml",
     "fos": "Siraya/latham_1862_sideia_sida.xml",
