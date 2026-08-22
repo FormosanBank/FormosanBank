@@ -171,11 +171,17 @@ def v060_W_count_matches_word_count(
         # No FORM at all -> V010/V013 handle that; we have nothing to compare.
         if s.find('./FORM') is None:
             continue
+        nested_w = list(s.iter("W"))
+        # An unsegmented corpus has no W tier to validate. Treating every
+        # sentence as a 0-vs-N mismatch makes this rule noisy on corpora where
+        # tokenization was never supplied and contradicts the validator's
+        # documented no-op behavior for unsegmented XML.
+        if not nested_w:
+            continue
         s_text = _extract_s_direct_text(s)
         word_count = _count_words(s_text)
         direct_w = [child for child in s if child.tag == "W"]
         w_count = len(direct_w)
-        nested_w = list(s.iter("W"))
         if len(nested_w) != w_count:
             # Preserve validate_glosses.py:166-169 warning behavior:
             # nested W (descendant of S but not direct child) is unusual.
