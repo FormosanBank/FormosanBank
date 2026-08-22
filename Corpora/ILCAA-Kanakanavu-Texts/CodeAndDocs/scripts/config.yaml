@@ -1,0 +1,47 @@
+{
+  "source": {
+    "corpus_name": "Kanakanavu Texts",
+    "corpus_slug": "ILCAA_Kanakanavu_Texts_2026",
+    "local_pdf": "data/raw/pdf/B602_KanakanavuText.pdf",
+    "preserved_pdf": "data/raw/pdf/B602_KanakanavuText.pdf",
+    "expected_sha256": "785058bad6a8495f8b5fb51ed3d0eaf7da1736e791b308611d9442c010d93c03",
+    "expected_physical_pages": 252,
+    "expected_printed_first_page": 1,
+    "expected_printed_last_page": 247,
+    "text_section_printed_start": 28,
+    "expected_narrative_text_count": 44,
+    "expected_xml_file_count": 45,
+    "expected_grammar_example_count": 40,
+    "expected_grammar_sentence_unit_count": 48,
+    "expected_source_unit_count": 1431,
+    "expected_sentence_count": 1455,
+    "language_name": "Kanakanavu",
+    "iso_639_3": "xnb",
+    "dialect": "Kanakanavu"
+  },
+  "paths": {
+    "formosanbank": "../../..",
+    "formosanbank_commit": "3a3c47c220520113f747e6a2d441494000e13c4b",
+    "formosanbank_qc_tree": "009bfceab8eb7378e4bef6c010acc75971acabfc",
+    "formosanbank_orthographies_tree": "59eed42b21e95c752f1abd2a3a9fbcd1bfb920b3",
+    "raw_pdf_dir": "data/raw/pdf",
+    "raw_docs_dir": "data/raw/docs/formosanbank",
+    "processed_dir": "data/processed",
+    "draft_xml_dir": "build/xml_drafts",
+    "final_xml_dir": "XML/xnb",
+    "qc_output_dir": "build/qc_output"
+  },
+  "extraction": {
+    "engine": "pymupdf",
+    "render_dpi": 180,
+    "use_ocr": false
+  },
+  "xml": {
+    "source_language": "xnb",
+    "translation_language": "eng",
+    "dialect": "Kanakanavu",
+    "include_audio": false,
+    "include_phon": true,
+    "standard_tier_strategy": "reviewed_asai2026_to_ortho113"
+  }
+}
