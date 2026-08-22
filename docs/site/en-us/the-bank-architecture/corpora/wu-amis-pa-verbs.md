@@ -8,6 +8,8 @@ morpheme tier, for a total of 263 M elements. Seven printed nulls use canonical
 forms. Source gloss `CaU` is retained with additive standard `CAU`.
 
 Source: [SIL Resource Archive](https://www.sil.org/resources/archives/25653).
+The corpus and publication metadata were revalidated on 22 August 2026 against
+the current FormosanBank tooling and source-review evidence.
 
 ***
 
@@ -34,7 +36,7 @@ Source: [SIL Resource Archive](https://www.sil.org/resources/archives/25653).
 ## **Access Details**
 
 The corpus is available as XML in the
-[FormosanBank repository](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/Wu-Amis-Pa-Verbs).
+[FormosanBank repository](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/Amis-Pa-Verbs).
 It contains Amis (`ami`, dialect `Coastal`) text with English translations and
 word and morpheme glosses. No audio is included.
 
