@@ -12,10 +12,12 @@ excluded, and 684 reviewed forms are emitted. FormosanBank currently designates
 no standard orthography for Siraya, so this corpus has no standard or PHON
 tier.
 
-The published files were prepared from the private development repository's
-reviewed main branch on 2026-08-13. Private source files are not included here.
-The tracked reviewed-record ledger is sufficient for a
-source-free rebuild:
+The published files were refreshed from private development commit
+`c07eb523f180dc1fd76887f9ad7221f1be8b2d57` and revalidated on 2026-08-22
+against FormosanBank tooling commit
+`3a3c47c220520113f747e6a2d441494000e13c4b`. Status: ready to port. Private
+source files are not included here. The tracked reviewed-record ledger is
+sufficient for a source-free rebuild:
 
 ```bash
 CodeAndDocs/make_xml.sh
