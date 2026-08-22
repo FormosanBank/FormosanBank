@@ -5,6 +5,8 @@ from Asai et al.'s 2026 *Kanakanavu Texts*. Its 1,455 sentence records preserve
 English translations and source-aligned word and morpheme analyses. The source
 orthography is retained alongside FormosanBank-standard forms and generated
 phonology.
+The corpus and publication metadata were revalidated on 22 August 2026 against
+the current FormosanBank tooling and completed expert-review evidence.
 
 ***
 
