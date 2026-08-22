@@ -55,11 +55,11 @@ in the extraction and review ledgers. No manual-edit file is required.
 
 ## QC status
 
-- Last QC run: 2026-08-13
+- Last QC run: 2026-08-22
 - Status: ready to port
 - Development source: `Formosan-Amis-Kavalan-Lin-Interrogative-Verbs` commit
   `19f7d557f66c9476ffc90f5a9785fbda443c3af6`
-- Development audit: post-remediation audit passed with verdict `ready for QC`
+- Development audit: source-assisted current-authority refresh passed with verdict `ready to port`
 - Gloss audit: 56 source-assisted findings fully reconciled, with 0 unresolved
 - Residual warning dispositions: eight permitted translation parentheticals,
   one source-required optional-variant duplicate group, and the reviewed Amis
