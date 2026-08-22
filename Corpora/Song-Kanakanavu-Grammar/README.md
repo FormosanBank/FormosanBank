@@ -24,7 +24,7 @@ and non-commercial use are required; see the FormosanBank
 | File (under `XML/Kanakanavu/`) | `Song_2018_Kanakanavu_Grammar.xml` | `Song_2018_Kanakanavu_Grammar_Dictionary.xml` |
 | `S` elements | 699 sentences | 870 entries |
 | Interlinear analyses | 650 (with `W`/`M`) | — |
-| Words / morphemes | 3,477 `W` / 5,034 `M` | — |
+| Words / morphemes | 3,477 `W` / 5,048 `M` | — |
 
 Language `xnb` (Kanakanavu); dialect `Kanakanavu`; orthography Ortho113.
 
@@ -35,7 +35,7 @@ Language `xnb` (Kanakanavu); dialect `Kanakanavu`; orthography Ortho113.
   - `scripts/` — acquisition and the reproduction pipeline (see [Processing](#processing)).
   - `raw_data/` — the acquired source, retained so the corpus rebuilds without re-scraping: `source.pdf` (the 268 official Alilin page images compiled in order) and `official_text.jsonl` (the official positioned-text layer, one record per page). Both SHA-256-pinned in `scripts/build_xml.py`.
   - `intermediate/` — the reviewed ledgers the build consumes (all hash-pinned in `build_xml.py`): `page_inventory.csv` + `candidate_ledger.csv` (the closed page/candidate review — 268 pages, 443 machine candidates, all with terminal statuses); `source_ledger.csv` (699 included, 14 excluded, with reasons); `dictionary_ledger.csv` (767 headwords; 11 marked bound-excluded); `interlinear_ledger.jsonl` (the recovered `W`/`M` analyses); and `standard_surface_decisions.tsv` (128 exact, source-reviewed standard-tier decisions).
-  - `docs/` — `extraction_plan.md`, `extraction_review.md` (the page-by-page review log), `source_manifest.md`, `standard_surface_review.md`, `clean_clone_reproduction.md`.
+  - `docs/` — `extraction_plan.md`, `extraction_review.md` (the page-by-page review log), `source_manifest.md`, `standard_surface_review.md`, `mt_quality_review.md`, and `clean_clone_reproduction.md`.
   - `tests/` — interlinear-extraction regression tests.
   - `requirements.txt`.
 
@@ -105,10 +105,13 @@ log is `docs/extraction_review.md`.
 
 3. **Recover interlinear analyses** — `extract_interlinear.py` aligns each
    reviewed sentence's printed word and gloss lines into `W`/`M` analyses (650
-   analyses; 3,477 `W`; 5,034 `M`), using position-based alignment plus
+   analyses; 3,477 `W`; 5,048 `M`), using position-based alignment plus
    source-checked overrides for cells the text layer merged →
    `interlinear_ledger.jsonl`. W forms keep the source's `-`, `=`, and `<…>`
-   notation; M forms drop affix/infix apparatus but keep the aligned clitic `=`.
+   notation. Under POL-014, an infixed root keeps a gap hyphen and the infix is
+   written `-X-`; under POL-015, each clitic M keeps a leading `=`. Five exact
+   page-image overrides preserve partial source glossing without inventing
+   missing M glosses.
 
 4. **Build the XML** — `build_xml.py` writes both files (after asserting all
    hashes/counts):
@@ -126,14 +129,18 @@ log is `docs/extraction_review.md`.
      are excluded — no free-standing surface exists. There is **no `alternate`
      tier**, and every (form, translation) pair is unique.
 
-5. **Clean** — `clean_xml.py` (FormosanBank) does canonical Unicode / HTML-entity
+5. **Re-apply manual edits** - `apply_manual_edits.py` (FormosanBank) re-applies
+   any recorded hand edits first. This is a checked no-op because the corpus has
+   no `CodeAndDocs/manual_edits.xml`.
+
+6. **Clean** — `clean_xml.py` (FormosanBank) does canonical Unicode / HTML-entity
    / punctuation normalization.
 
-6. **Create the standard tier** — `standardize.py --copy` (FormosanBank). The
+7. **Create the standard tier** — `standardize.py --copy` (FormosanBank). The
    source is already Ortho113, so standardization is an identity copy of the
-   original tier; the stress accents it copies along are folded in step 8.
+   original tier; the stress accents it copies along are folded in step 9.
 
-7. **Apply reviewed surface decisions** — `normalize_standard_forms.py` applies
+8. **Apply reviewed surface decisions** — `normalize_standard_forms.py` applies
    the 128 exact decisions in `standard_surface_decisions.tsv` to the standard
    tier (no marker is removed by a blanket rule): the dictionary's per-variant
    standard forms, the two break-punctuation sentences (S0469/S0472, rendered as a
@@ -141,12 +148,12 @@ log is `docs/extraction_review.md`.
    boundaries, the bound-form standard omissions, and the `takananga` standard
    correction (see Notes). Ordinary prose parentheses are left unchanged.
 
-8. **Fold stress accents** — `fold_standard_stress.py` folds acute-accented vowels
+9. **Fold stress accents** — `fold_standard_stress.py` folds acute-accented vowels
    (`á é í ó ú`, and the decomposed `ʉ́`) to their base vowel **in the standard
    tier only**; the original tier keeps the printed stress. Stress is
    suprasegmental annotation in this source, not Ortho113 orthography.
 
-9. **Add phonology** — `add_shared_phonology.py` delegates both tiers to
+10. **Add phonology** — `add_shared_phonology.py` delegates both tiers to
    FormosanBank's shared `add_phonology.py` (Ortho113). For the original-tier PHON
    it feeds a *temporary* stress-folded copy, so the PHON is clean IPA while the
    original FORM is restored byte-for-byte. There is no corpus-specific phonology
@@ -156,10 +163,10 @@ log is `docs/extraction_review.md`.
 
 - **Orthography is Ortho113.** Detector and reviewer evidence agree: the source
   uses `ʉ` and `r`, has no `l` (its own discussion notes `r` covers the former
-  `l`/`r` contrast), and maps `r` to the IPA variants `r` and `ɾ`. Against the
-  Kanakanavu reference, character-frequency cosine is 1.00 and bigram cosine 0.99.
+  `l`/`r` contrast), and maps `r` to the IPA variants `r` and `ɾ`. The current
+  detector selects Ortho113 for both XML files.
 - **Stress accents** (`á í ú …`) are kept in the original tier and folded in the
-  standard tier (step 8); PHON is accent-free on both tiers.
+  standard tier (step 9); PHON is accent-free on both tiers.
 - **Dictionary variants:** slash/semicolon alternatives and optional `(…)`
   material are materialized into separate single-form entries; bound prefixes
   (trailing `-`) are excluded; cross-record duplicate variants are dropped.
@@ -169,26 +176,27 @@ log is `docs/extraction_review.md`.
   `g`, which is not an Ortho113 letter) where the sentence surface has
   `takananga`. The printed `takanaga` is kept in the original `W`/`M` tier and
   corrected to `takananga` only in the standard tier.
+- **Partial morpheme glossing:** reader pages 182, 248, and 258 print segmented
+  forms without a separately aligned gloss for every unit. Their W glosses are
+  preserved exactly, while four M elements intentionally omit `TRANSL` rather
+  than receiving inferred labels.
 - **Excluded sentences (14):** 6 noun-phrase fragments, 5 source-starred
   ungrammatical forms, and 3 examples with no printed Chinese translation. See
   `source_ledger.csv`.
-- **Repeated surface forms (63 groups, 130 `S`):** the book reuses example
-  sentences to illustrate different points, and the dictionary lists a headword
-  once per sense, so identical forms recur. Every such `S` has its own `source`
-  attribute naming the page and label it came from, and 45 of the 63 groups
-  differ in their translation. Nothing is deduplicated: the repeats are distinct
-  attestations.
-- **Words without a morpheme analysis (7 of 3,477 `W`):** where the book prints a
-  single gloss for a morphologically complex word (e.g. `m-u'iara` glossed 慢),
-  the word carries no `M` children rather than an invented segmentation.
+- **Repeated surface forms (63 groups, 130 `S`):** 34 dictionary groups are
+  homographs with different translations, one preserves two original stress
+  variants that fold to the same standard form, and 28 grammar groups repeat at
+  distinct source locators. There is no exact or same-locator duplicate.
+- **Words without a morpheme analysis (2 of 3,477 `W`):** pages 68 and 128 print
+  one whole-word gloss for `m-u'iara` and `ma-marang`. The words carry no `M`
+  children rather than an invented segmentation.
 - **Rights:** published under CC BY-NC 4.0 by permission of the author (Li-May Sung); recorded in each `<TEXT>` `copyright` attribute.
 
 ## QC
 
-Adjudication of the reviewed surface decisions is in
-`CodeAndDocs/docs/standard_surface_review.md`. QC evidence is regenerated on
-demand by running FormosanBank's validators (`validate_xml`, `validate_text`,
-`validate_glosses`) against `XML/`. All canonical hard gates pass; the remaining
-findings are expected SOFT diagnostics — ordinary prose parentheses, the
-deliberate break-punctuation dash, and the `W`-count-vs-word-count gloss noise
-(a clitic counts as one `W`).
+Adjudication is recorded in `CodeAndDocs/docs/standard_surface_review.md`,
+`CodeAndDocs/docs/mt_quality_review.md`, and
+`CodeAndDocs/docs/clean_clone_reproduction.md`. The current update-view XML
+validator has no finding, the gloss validator has no HARD finding, all 63
+duplicate groups are source-supported, and port readiness reports 0 HARD and 0
+WARN. The remaining text and gloss SOFT rows are documented source properties.

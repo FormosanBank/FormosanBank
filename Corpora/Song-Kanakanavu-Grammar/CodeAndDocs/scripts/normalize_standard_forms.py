@@ -73,7 +73,7 @@ ANALYSIS_TIER_NOTE = (
 # non-Ortho113 g only in the corresponding standard tiers.
 ANALYSIS_TIER_CORRECTIONS = {
     "song-2018-kanakanavu-S0012-W004": ("takanaga=kasu", "takananga=kasu"),
-    "song-2018-kanakanavu-S0012-W004-M01": ("takanaga=", "takananga="),
+    "song-2018-kanakanavu-S0012-W004-M01": ("takanaga", "takananga"),
 }
 
 
