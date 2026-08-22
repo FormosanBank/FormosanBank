@@ -4,7 +4,7 @@
 
 This corpus contains translations of key FormosanBank GitBook pages into Formosan languages. The long-term goal is to provide at least the most critical pages in each Formosan language.
 
-The current public corpus contains six Eastern Paiwan pages, generously contributed by Ruan Xuan. Each entry also retains its English and Mandarin source text.
+The current public corpus contains 105 aligned records from six GitBook sections in Eastern Paiwan, generously contributed by Xuan Ruan. Each entry also retains its English and Mandarin source text.
 
 ***
 
@@ -13,13 +13,13 @@ The current public corpus contains six Eastern Paiwan pages, generously contribu
 
 | | Paiwan<br>Eastern |
 | --- | --- |
-| Word count | 1,855 |
+| Word count | 2,007 |
 | Total audio | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 |
 | Translated words |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 1,855 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 1,855 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 2,007 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 2,007 |
 | Morphologically segmented | 0 |
 | Glossed words | 0 |
 
@@ -30,9 +30,9 @@ The current public corpus contains six Eastern Paiwan pages, generously contribu
 
 ## **Corpus Processing**
 
-The published XML was produced from aligned Paiwan, Mandarin, and English page text with the corpus's `CodeAndDocs/process_raw.py` script. The script creates one sentence per aligned entry and records the language, Eastern dialect, citation, and copyright metadata.
+The published XML was produced from reviewed Paiwan, Mandarin, and English text ledgers with the corpus's `CodeAndDocs/process_raw.py` script. The source audit checks all 105 included records and every source-owned tier.
 
-The post-conversion pipeline is wrapped by `CodeAndDocs/make_xml.sh`, which runs three steps over `XML/`: `clean_xml.py` (punctuation and Unicode cleanup; currently a content no-op for this corpus), `standardize.py --remove_accents` (creates the `kindOf="standard"` FORM tier — here identical to the original, whose transcription is already in the standard orthography), and `add_phonology.py --orthography Ortho113` (adds a `PHON` tier with IPA for each FORM). Characters outside the Paiwan orthography — digits and Latin loanwords such as `XML` — surface as `*` in PHON. The public repository retains the conversion script, the pipeline script, and the six resulting XML files.
+The reproduction wrapper builds into a temporary directory, runs the current cleaner, restores the reviewed source text, copies the standard form, derives Ortho113 phonology, runs the XML, text, and gloss validators, and compares all six outputs with the published XML byte-for-byte. The public repository retains the source PDF, reviewed ledgers, generator, source audit, unit tests, and resulting XML.
 
 ***
 
