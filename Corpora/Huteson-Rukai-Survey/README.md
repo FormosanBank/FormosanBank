@@ -10,8 +10,11 @@ Tona examples labeled `Dona`. Together they contain 29 sentences, 102 word
 elements, 119 morpheme elements, 34 English translations, and 250 original
 plus 250 standard PHON elements.
 
-The published files were prepared from the private development repository's
-reviewed main branch on 2026-08-13. Private source files are not included.
+The published files were refreshed from private development commit
+`b53bcd65ff749191a13608f88c4763cbae46cbe3` and revalidated on 2026-08-22
+against FormosanBank tooling commit
+`3a3c47c220520113f747e6a2d441494000e13c4b`. Status: ready to port. Private
+source files are not included.
 Rebuild the XML from the committed reviewed transcription with:
 
 ```bash
