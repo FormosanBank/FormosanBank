@@ -7,6 +7,8 @@ Tona. Each sentence includes source-faithful and Ortho113 forms, standard
 phonology, an English translation, and printed-page provenance. Every word has
 a morpheme tier under POL-023. Eight source-blank gloss cells are marked as
 reviewed unknowns rather than assigned invented analyses. No audio is included.
+The corpus and publication metadata were revalidated on 22 August 2026 against
+the current FormosanBank tooling and source-review evidence.
 
 ***
 
