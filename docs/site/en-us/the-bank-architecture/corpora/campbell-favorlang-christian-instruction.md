@@ -7,6 +7,8 @@ sermons contribute 684 sentences after Madeline Boese's completed review
 merged two OCR boundary errors and excluded the printed author signature.
 Because FormosanBank currently designates no standard orthography for Siraya,
 the source spelling is preserved without a standard or PHON tier.
+The corpus and publication metadata were revalidated on 22 August 2026 against
+the current FormosanBank tooling and completed sermon-review evidence.
 
 ***
 
