@@ -12,8 +12,11 @@ direct checks, and conversion decisions. The retained manual-edit file is
 historical evidence; its accepted decisions are already integrated into the
 reviewed source table used by the builder.
 
-The published files were prepared from the private development repository's
-reviewed main branch on 2026-08-13. Private source files are not included.
+The published files were refreshed from private development commit
+`3164d52165b413fd7803b20f109314774e1591bc` and revalidated on 2026-08-22
+against FormosanBank tooling commit
+`3a3c47c220520113f747e6a2d441494000e13c4b`. Status: ready to port. Private
+source files are not included.
 Rebuild the XML from the committed reviewed tables with:
 
 ```bash
