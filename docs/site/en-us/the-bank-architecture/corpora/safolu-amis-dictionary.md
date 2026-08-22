@@ -1,8 +1,10 @@
 # Safolu Amis Dictionary
 
-The Safolu Amis Dictionary is a collection of Amis example sentences with Mandarin (Chinese) translations, drawn from the dictionary compiled by Safolu Kacaw Lalanges / Tsai Chung-Han (蔡中涵). The data comes from the generated JSON of the [g0v Amis Moedict](https://github.com/g0v/amis-moedict) project (`docs/s`; see [amis.moedict.tw](https://amis.moedict.tw/)), where the dictionary's example fields were extracted and converted into FormosanBank XML.
+The Safolu Amis Dictionary contains Amis examples from the dictionary compiled by Safolu Kacaw Lalanges / Tsai Chung-Han (蔡中涵), with Mandarin (Chinese) translations where the source supplies them. The current data is the generated `docs/s` JSON in the [g0v Amis Moedict](https://github.com/g0v/amis-moedict) project at commit `e7c6976a0766e9b0aeb7083e2c06db60f5485252`; the deprecated [miaoski/amis-safolu](https://github.com/miaoski/amis-safolu) generator at commit `f512d5ba0d08f81b26093a9b7b4a85acac760a30` records the pipeline provenance.
 
-Each sentence carries the source text (`original` tier), a common-orthography copy in the FormosanBank standard (`standard` tier, Ortho113), and an IPA phonological transcription. Roughly 272 sentences are kept as Amis-only where the source provided no translation. The corpus stops at the sentence level — it carries no audio and no word or morpheme segmentation, since the Moedict examples include no source-attested word or gloss tiers.
+The source audit accounts for all 49,419 example fields. The canonical corpus contains 49,179 records after 261 duplicate source rows are ledgered and 22 unrecoverable fields are ledgered as rejected. It preserves 140 distinct additional Chinese readings as alternative translations and retains 269 Amis-only records for which the source gives no translation.
+
+Each sentence carries source-faithful Safolu spelling in the `original` FORM tier, an Ortho113 `standard` FORM derived through the reviewed Coastal Amis conversion table, and separately generated original and standard PHON tiers. The source distinguishes `o` and `u` and contains both legacy `g` and current `ng` spellings for /ŋ/, so the standard tier is not simply a copy of the original. The corpus stops at the sentence level. It has no audio and no word or morpheme segmentation because the Moedict examples contain no source-attested aligned analysis.
 
 ***
 
@@ -11,13 +13,13 @@ Each sentence carries the source text (`original` tier), a common-orthography co
 
 | | Amis<br>Coastal |
 | --- | --- |
-| Word count | 243,710 |
+| Word count | 243,699 |
 | Total audio | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 |
 | Translated words |  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 242,691 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 242,687 |
 | Morphologically segmented | 0 |
 | Glossed words | 0 |
 
