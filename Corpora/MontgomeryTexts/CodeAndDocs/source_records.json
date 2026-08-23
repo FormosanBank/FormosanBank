@@ -1,0 +1,5095 @@
+{
+  "schema_version": 1,
+  "expected_file_count": 3,
+  "expected_sentence_count": 37,
+  "texts": [
+    {
+      "path": "Amis/Day_I_Now.xml",
+      "text_id": "Montgomery_Amis_Day_I_Now",
+      "title": "Day I Now",
+      "pdf": "montgomery_1962_amis_text.pdf",
+      "translation_pages": [],
+      "language": "ami",
+      "dialect": "unknown",
+      "source": "Amis text",
+      "copyright": "CC-BY-NC-ND",
+      "citation": "Tamih and Montgomery, Robert L. (1962) Amis text. Work Papers of the Summer Institute of Linguistics, University of North Dakota Session: Vol. 6, Article 6. 10.31356/silwp.vol06.06",
+      "bibtex": "@article{montgomery1962amis, title={Amis text}, author={Tamih and Montgomery, Robert L}, journal={Work Papers of the Summer Institute of Linguistics, University of North Dakota Session}, volume={6}, number={6}, doi={10.31356/silwp.vol06.06}}",
+      "errata_page": null,
+      "sentences": [
+        {
+          "forms": [
+            {
+              "text": "pito ko toki to lafak romoal kako nay-foti?",
+              "kind": "original"
+            }
+          ],
+          "translations": [
+            {
+              "text": "At seven in the morning I get up from sleep.",
+              "lang": "eng"
+            }
+          ],
+          "words": [
+            {
+              "forms": [
+                {
+                  "text": "pito",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "seven",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ko",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "toki",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "time",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "to",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "lafak",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "morning",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "romoal",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "get up",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "kako",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "I",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "nay-foti?",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "from sleep",
+                  "lang": "eng"
+                }
+              ]
+            }
+          ],
+          "id": "S1",
+          "source_page": 3,
+          "source_number": 1
+        },
+        {
+          "forms": [
+            {
+              "text": "na-romoal tangsor miso?ats to walis marari?op kako",
+              "kind": "original"
+            }
+          ],
+          "translations": [
+            {
+              "text": "Having gotten up, right away I brush my teeth and wash my face.",
+              "lang": "eng"
+            }
+          ],
+          "words": [
+            {
+              "forms": [
+                {
+                  "text": "na-romoal",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "gotten-up",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "tangsor",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "right away",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "miso?ats",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "brush",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "to",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "walis",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "teeth",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "marari?op",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "wash-face",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "kako",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "I",
+                  "lang": "eng"
+                }
+              ]
+            }
+          ],
+          "id": "S2",
+          "source_page": 3,
+          "source_number": 2
+        },
+        {
+          "forms": [
+            {
+              "text": "ma-hřek a ma-rari?op ?i mi-sa?osi kako to fangtsar-ay a tsolal",
+              "kind": "original"
+            }
+          ],
+          "translations": [
+            {
+              "text": "When I finish washing my face, I read the Bible.",
+              "lang": "eng"
+            }
+          ],
+          "words": [
+            {
+              "forms": [
+                {
+                  "text": "ma-hřek",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "finish",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "a",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "ma-rari?op",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "washing-face",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "?i",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "mi-sa?osi",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "read",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "kako",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "I",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "to",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "fangtsar-ay",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "good/holy",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "a",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "tsolal",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "book",
+                  "lang": "eng"
+                }
+              ]
+            }
+          ],
+          "id": "S3",
+          "source_page": 3,
+          "source_number": 3
+        },
+        {
+          "forms": [
+            {
+              "text": "pangkiw saka-faro no toki ma-řanam kami",
+              "kind": "original"
+            }
+          ],
+          "translations": [
+            {
+              "text": "At half past eight o'clock, we eat breakfast.",
+              "lang": "eng"
+            }
+          ],
+          "words": [
+            {
+              "forms": [
+                {
+                  "text": "pangkiw",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "half",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "sako-faro",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "eight",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "no",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "toki",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "time",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ma-řanam",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "eat-breakfast",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "kami",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "us",
+                  "lang": "eng"
+                }
+              ]
+            }
+          ],
+          "id": "S4",
+          "source_page": 3,
+          "source_number": 4
+        },
+        {
+          "forms": [
+            {
+              "text": "anini a řomi?al ?i tayřa kako i posko",
+              "kind": "original"
+            }
+          ],
+          "translations": [
+            {
+              "text": "Today I am going to Posko.",
+              "lang": "eng"
+            }
+          ],
+          "words": [
+            {
+              "forms": [
+                {
+                  "text": "anini",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "now",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "a",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "řomi?al",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "day",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "?i",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "tayřa",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "go",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "kako",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "I",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "i",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "posko",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "Posko",
+                  "lang": "eng"
+                }
+              ]
+            }
+          ],
+          "id": "S5",
+          "source_page": 3,
+          "source_number": 5
+        },
+        {
+          "forms": [
+            {
+              "text": "iřa ko sa?opo no tsiwro ato sitsotsi itiřa mara-pa-pasifana?-ay kako",
+              "kind": "original"
+            }
+          ],
+          "translations": [
+            {
+              "text": "There is a meeting of elders and deacons there whom I will teach.",
+              "lang": "eng"
+            }
+          ],
+          "words": [
+            {
+              "forms": [
+                {
+                  "text": "iřa",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "is",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ko",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "(existing)",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "sa?opo",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "gathering",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "no",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "tsiwro",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "elders",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ato",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "and",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "sitsotsi",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "deacons",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "itiřa",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "there",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "mara-pa-pasifana?-ay",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "teach",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "kako",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "I",
+                  "lang": "eng"
+                }
+              ]
+            }
+          ],
+          "id": "S6",
+          "source_page": 3,
+          "source_number": 6
+        },
+        {
+          "forms": [
+            {
+              "text": "mahřek a mařanam mara-rosil to kako to saka-tayřa i posko",
+              "kind": "original"
+            }
+          ],
+          "translations": [
+            {
+              "text": "When breakfast is finished I prepare to go to Posko.",
+              "lang": "eng"
+            }
+          ],
+          "words": [
+            {
+              "forms": [
+                {
+                  "text": "mahřek",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "finish",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "a",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "mařanam",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "breakfast",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "mara-rosil",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "prepare",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "to",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "kako",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "I",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "to",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "saka-tayřa",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "go",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "i",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "posko",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "Posko",
+                  "lang": "eng"
+                }
+              ]
+            }
+          ],
+          "id": "S7",
+          "source_page": 3,
+          "source_number": 7
+        },
+        {
+          "forms": [
+            {
+              "text": "mimaan kiso mama saan ko wawa ako a mi-ritsay",
+              "kind": "original"
+            }
+          ],
+          "translations": [
+            {
+              "text": "\"What are you doing father,\" so asks my child.",
+              "lang": "eng"
+            }
+          ],
+          "words": [
+            {
+              "forms": [
+                {
+                  "text": "mimaan",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "what-doing",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "kiso",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "you",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "mama",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "father",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "saan",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "ko",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "wawa",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "child",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ako",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "I",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "a",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "mi-ritsay",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "asks",
+                  "lang": "eng"
+                }
+              ]
+            }
+          ],
+          "id": "S8",
+          "source_page": 3,
+          "source_number": 8
+        },
+        {
+          "forms": [
+            {
+              "text": "tayřa kako i posko han ako",
+              "kind": "original"
+            }
+          ],
+          "translations": [
+            {
+              "text": "\"I'm going to Posko,\" say I.",
+              "lang": "eng"
+            }
+          ],
+          "words": [
+            {
+              "forms": [
+                {
+                  "text": "tayřa",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "going",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "kako",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "I",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "i",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "posko",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "Posko",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "han",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "ako",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "I",
+                  "lang": "eng"
+                }
+              ]
+            }
+          ],
+          "id": "S9",
+          "source_page": 3,
+          "source_number": 9
+        },
+        {
+          "forms": [
+            {
+              "text": "ka-itini ito i roma? pi-tengir to soar ni ina haw han ako tsinřa",
+              "kind": "original"
+            }
+          ],
+          "translations": [
+            {
+              "text": "\"Stay here at home; obey your mother's words, O.K.?\" I say to him.",
+              "lang": "eng"
+            }
+          ],
+          "words": [
+            {
+              "forms": [
+                {
+                  "text": "ka-itini",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "here",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ito",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "i",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "roma?",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "home",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "pi-tengir",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "listen",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "to",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "soar",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "words",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ni",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "ina",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "mother",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "haw",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "O.K.",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "han",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "ako",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "I",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "tsinřa",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "him",
+                  "lang": "eng"
+                }
+              ]
+            }
+          ],
+          "id": "S10",
+          "source_page": 3,
+          "source_number": 10
+        },
+        {
+          "forms": [
+            {
+              "text": "siwa ko toki mi-lakaw to kako to kasoring pa-sayřa i posko",
+              "kind": "original"
+            }
+          ],
+          "translations": [
+            {
+              "text": "At nine o'clock I get on the gasoline train to go to Posko.",
+              "lang": "eng"
+            }
+          ],
+          "words": [
+            {
+              "forms": [
+                {
+                  "text": "siwa",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "nine",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ko",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "toki",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "time",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "mi-lakaw",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "get-on",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "to",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "kako",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "I",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "to",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "kasoring",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "gasoline-train",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "pa-sayřa",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "go",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "i",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "posko",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "Posko",
+                  "lang": "eng"
+                }
+              ]
+            }
+          ],
+          "id": "S11",
+          "source_page": 3,
+          "source_number": 11
+        },
+        {
+          "forms": [
+            {
+              "text": "tahiřa kako i posko tstsay ko safaw no toki",
+              "kind": "original"
+            }
+          ],
+          "translations": [
+            {
+              "text": "I arrive in Posko at eleven (?) o'clock.",
+              "lang": "eng"
+            }
+          ],
+          "words": [
+            {
+              "forms": [
+                {
+                  "text": "tahiřa",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "arrive",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "kako",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "I",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "i",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "posko",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "Posko",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "tstsay",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "one",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ko",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "safaw",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "ten",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "no",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "toki",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "time",
+                  "lang": "eng"
+                }
+              ]
+            }
+          ],
+          "id": "S12",
+          "source_page": 4,
+          "source_number": 12
+        },
+        {
+          "forms": [
+            {
+              "text": "tahiřa han ako ma-sa?opo ito ko ?aromanay a tsiwro ato sitsotsi",
+              "kind": "original"
+            }
+          ],
+          "translations": [
+            {
+              "text": "When I arrived there gathered many elders and deacons.",
+              "lang": "eng"
+            }
+          ],
+          "words": [
+            {
+              "forms": [
+                {
+                  "text": "tahiřa",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "arrive",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "han",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "ako",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "I",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ma-sa?opo",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "gather",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ito",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "ko",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "?aromanay",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "many",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "a",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "tsiwro",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "elders",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ato",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "and",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "sitsotsi",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "deacons",
+                  "lang": "eng"
+                }
+              ]
+            }
+          ],
+          "id": "S13",
+          "source_page": 4,
+          "source_number": 13
+        },
+        {
+          "forms": [
+            {
+              "text": "ripahak ko farotso? ako a ma-sasi?af̂a?ařaw to ?ařomanay a tamlaw",
+              "kind": "original"
+            }
+          ],
+          "translations": [
+            {
+              "text": "My heart was happy because so many people came together.",
+              "lang": "eng"
+            }
+          ],
+          "words": [
+            {
+              "forms": [
+                {
+                  "text": "ripahak",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "happy",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ko",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "farotso?",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "heart",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ako",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "I",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "a",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "ma-sasi?af̂a?ařaw",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "together",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "to",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "?ařomanay",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "many",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "a",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "tamlaw",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "people",
+                  "lang": "eng"
+                }
+              ]
+            }
+          ],
+          "id": "S14",
+          "source_page": 4,
+          "source_number": 14
+        },
+        {
+          "forms": [
+            {
+              "text": "spot ko toki to hřek no rohok mi-lakaw htsa kako to kasoring a mi-nokay",
+              "kind": "original"
+            }
+          ],
+          "translations": [
+            {
+              "text": "At four o'clock in the afternoon I get on once more the gasoline train and return.",
+              "lang": "eng"
+            }
+          ],
+          "words": [
+            {
+              "forms": [
+                {
+                  "text": "spot",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "four",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ko",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "toki",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "time",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "to",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "hřek",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "after",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "no",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "rohok",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "noon/lunch",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "mi-lakaw",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "get-on",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "htsa",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "again",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "kako",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "I",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "to",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "kasoring",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "gasoline-train",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "a",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "mi-nokay",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "return",
+                  "lang": "eng"
+                }
+              ]
+            }
+          ],
+          "id": "S15",
+          "source_page": 4,
+          "source_number": 15
+        },
+        {
+          "forms": [
+            {
+              "text": "tahiřa han ako i roma? ma-tahkar ito ko saka-rafi",
+              "kind": "original"
+            }
+          ],
+          "translations": [
+            {
+              "text": "When I arrived home food is already prepared for supper.",
+              "lang": "eng"
+            }
+          ],
+          "words": [
+            {
+              "forms": [
+                {
+                  "text": "tahiřa",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "arrive",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "han",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "ako",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "I",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "i",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "roma?",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "home",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ma-tahkar",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "food-ready",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ito",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "ko",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "saka-rafi",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "for-supper",
+                  "lang": "eng"
+                }
+              ]
+            }
+          ],
+          "id": "S16",
+          "source_page": 4,
+          "source_number": 16
+        },
+        {
+          "forms": [
+            {
+              "text": "ripahak ko forotso? ako anini nawhani fangtsar ko řakot ako i fatal no raran",
+              "kind": "original"
+            }
+          ],
+          "translations": [
+            {
+              "text": "My heart is happy now because I had a fine trip on the way.",
+              "lang": "eng"
+            }
+          ],
+          "words": [
+            {
+              "forms": [
+                {
+                  "text": "ripahak",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "happy",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ko",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "forotso?",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "heart",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ako",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "I",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "anini",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "now",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "nawhani",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "because",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "fangtsar",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "fine",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ko",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "řakot",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "trip/walk",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ako",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "I",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "i",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "fatal",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "during",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "no",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "raran",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "road",
+                  "lang": "eng"
+                }
+              ]
+            }
+          ],
+          "id": "S17",
+          "source_page": 4,
+          "source_number": 17
+        }
+      ],
+      "public_sentence_id_offset": 1
+    },
+    {
+      "path": "Amis/Fire_and_Water.xml",
+      "text_id": "Montgomery_Amis_Fire_and_Water",
+      "title": "Fire and Water",
+      "pdf": "montgomery_1962_amis_text.pdf",
+      "translation_pages": [],
+      "language": "ami",
+      "dialect": "unknown",
+      "source": "Amis text",
+      "copyright": "CC-BY-NC-ND",
+      "citation": "Tamih and Montgomery, Robert L. (1962) Amis text. Work Papers of the Summer Institute of Linguistics, University of North Dakota Session: Vol. 6, Article 6. 10.31356/silwp.vol06.06",
+      "bibtex": "@article{montgomery1962amis, title={Amis text}, author={Tamih and Montgomery, Robert L}, journal={Work Papers of the Summer Institute of Linguistics, University of North Dakota Session}, volume={6}, number={6}, doi={10.31356/silwp.vol06.06}}",
+      "errata_page": null,
+      "sentences": [
+        {
+          "forms": [
+            {
+              "text": "o-namar ato nanom ?i o-ngaay a maro-wilang-ay",
+              "kind": "original"
+            }
+          ],
+          "translations": [
+            {
+              "text": "Now fire and water, they were good friends.",
+              "lang": "eng"
+            }
+          ],
+          "words": [
+            {
+              "forms": [
+                {
+                  "text": "o-namar",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "fire",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ato",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "and",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "nanom",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "water",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "?i",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "o-ngaay",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "good",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "a",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "maro-wilang-ay",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "friends",
+                  "lang": "eng"
+                }
+              ]
+            }
+          ],
+          "id": "S1",
+          "source_page": 2,
+          "source_number": 1
+        },
+        {
+          "forms": [
+            {
+              "text": "yo-tstsay no řomial ma-tstsori tsangřa tsima ita ko kaka-rimera-an saan tsangřa",
+              "kind": "original"
+            }
+          ],
+          "translations": [
+            {
+              "text": "One day they quarreled, \"Who is the most important?\"\" This was the situation for them.",
+              "lang": "eng"
+            }
+          ],
+          "words": [
+            {
+              "forms": [
+                {
+                  "text": "yo-tstsay",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "one",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "no",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "řomial",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "day",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ma-tstsori",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "quarrel",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "tsangřa",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "they",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "tsima",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "who",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ita",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "ko",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "kaka-rimera-an",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "important",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "saan",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "tsangřa",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "them",
+                  "lang": "eng"
+                }
+              ]
+            }
+          ],
+          "id": "S2",
+          "source_page": 2,
+          "source_number": 2
+        },
+        {
+          "forms": [
+            {
+              "text": "pa-soar ko namar ano awa kako omaan ko sapi-tangtang to hmay ato lateng saan",
+              "kind": "original"
+            }
+          ],
+          "translations": [
+            {
+              "text": "The fire said, \"Without me, what about cooking rice and vegetables,\" so he said.",
+              "lang": "eng"
+            }
+          ],
+          "words": [
+            {
+              "forms": [
+                {
+                  "text": "pa-soar",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "says",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ko",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "namar",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "fire",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ano",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "if",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "awa",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "without",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "kako",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "I",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "omaan",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "what",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ko",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "sapi-tangtang",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "cooking",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "to",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "hmay",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "rice",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ato",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "and",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "lateng",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "vegetables",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "saan",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            }
+          ],
+          "id": "S3",
+          "source_page": 2,
+          "source_number": 3
+        },
+        {
+          "forms": [
+            {
+              "text": "pa-tsa?of ko nanom ano ma-iroh ko roma? ?i omaan ko sapi-paleng sisit han to kamay saan",
+              "kind": "original"
+            }
+          ],
+          "translations": [
+            {
+              "text": "Answered water, \"If the house is burning, what about extinguishing it? Are you going to rub it out with your hands?\" so he said.",
+              "lang": "eng"
+            }
+          ],
+          "words": [
+            {
+              "forms": [
+                {
+                  "text": "pa-tsa?of",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "answers",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ko",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "nanom",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "water",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ano",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "if",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ma-iroh",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "burning",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ko",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "roma?",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "house",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "?i",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "omaan",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "what",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ko",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "sapi-paleng",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "extinguish",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "sisit",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "rub",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "han",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "to",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "kamay",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "hands",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "saan",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            }
+          ],
+          "id": "S4",
+          "source_page": 2,
+          "source_number": 4
+        },
+        {
+          "forms": [
+            {
+              "text": "matini ko nika-tsatsori nangra",
+              "kind": "original"
+            }
+          ],
+          "translations": [
+            {
+              "text": "Now they fought.",
+              "lang": "eng"
+            }
+          ],
+          "words": [
+            {
+              "forms": [
+                {
+                  "text": "matini",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "now",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ko",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "nika-tsatsori",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "quarrel",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "nangra",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "them",
+                  "lang": "eng"
+                }
+              ]
+            }
+          ],
+          "id": "S5",
+          "source_page": 2,
+          "source_number": 5
+        },
+        {
+          "forms": [
+            {
+              "text": "nanoiya salak sato ko tsilar a somoar tsangřa-an aka-to ka-tsatsori maretsal ito a o-kaka-rimera-an kamo",
+              "kind": "original"
+            }
+          ],
+          "translations": [
+            {
+              "text": "Then the sun came out and said to them, \"Don't quarrel; you are equal in importance.\"",
+              "lang": "eng"
+            }
+          ],
+          "words": [
+            {
+              "forms": [
+                {
+                  "text": "nanoiya",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "then",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "salak",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "came",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "sato",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "out",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ko",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "tsilar",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "sun",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "a",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "somoar",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "says",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "tsangřa-an",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "to-them",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "aka-to",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "don't",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ka-tsatsori",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "quarrel",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "maretsal",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "equal",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ito",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "a",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "o-kaka-rimera-an",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "importance",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "kamo",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "you",
+                  "lang": "eng"
+                }
+              ]
+            }
+          ],
+          "id": "S6",
+          "source_page": 2,
+          "source_number": 6
+        },
+        {
+          "forms": [
+            {
+              "text": "ano awa ko namar ?i awa ko ?pots ano awa ko nanom ?i awa ito ko ?pots",
+              "kind": "original"
+            }
+          ],
+          "translations": [
+            {
+              "text": "\"If there is no fire, it is without meaning.\" \"If there is no water, it is without meaning.\"",
+              "lang": "eng"
+            }
+          ],
+          "words": [
+            {
+              "forms": [
+                {
+                  "text": "ano",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "if",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "awa",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "without",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ko",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "namar",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "fire",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "?i",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "awa",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "without",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ko",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "?pots",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "meaning",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ano",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "if",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "awa",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "without",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ko",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "nanom",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "water",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "?i",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "awa",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "without",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ito",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "ko",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "?pots",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "meaning",
+                  "lang": "eng"
+                }
+              ]
+            }
+          ],
+          "id": "S7",
+          "source_page": 2,
+          "source_number": 7
+        },
+        {
+          "forms": [
+            {
+              "text": "maretsal ito kamo",
+              "kind": "original"
+            }
+          ],
+          "translations": [
+            {
+              "text": "\"You are equal.\"",
+              "lang": "eng"
+            }
+          ],
+          "words": [
+            {
+              "forms": [
+                {
+                  "text": "maretsal",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "equal",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ito",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "kamo",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "you",
+                  "lang": "eng"
+                }
+              ]
+            }
+          ],
+          "id": "S8",
+          "source_page": 2,
+          "source_number": 8
+        },
+        {
+          "forms": [
+            {
+              "text": "ka-sasinga?ay ito kasasilamalama ito kamo han no tsilar tsangřa",
+              "kind": "original"
+            }
+          ],
+          "translations": [
+            {
+              "text": "\"Be reconciled and help one another,\" the sun said to them.",
+              "lang": "eng"
+            }
+          ],
+          "words": [
+            {
+              "forms": [
+                {
+                  "text": "ka-sasinga?ay",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "be-reconciled",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ito",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "kasasilamalama",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "help-one-another",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ito",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "kamo",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "you (pl)",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "han",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "no",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "tsilar",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "sun",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "tsangřa",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "them",
+                  "lang": "eng"
+                }
+              ]
+            }
+          ],
+          "id": "S9",
+          "source_page": 2,
+          "source_number": 9
+        },
+        {
+          "forms": [
+            {
+              "text": "nanoiya tsaay-to ka-tsatsori tsangřa",
+              "kind": "original"
+            }
+          ],
+          "translations": [
+            {
+              "text": "Then they stopped quarreling",
+              "lang": "eng"
+            }
+          ],
+          "words": [
+            {
+              "forms": [
+                {
+                  "text": "nanoiya",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "then",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "tsaay-to",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "no-more",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ka-tsatsori",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "quarreling",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "tsangřa",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "them",
+                  "lang": "eng"
+                }
+              ]
+            }
+          ],
+          "id": "S10",
+          "source_page": 2,
+          "source_number": 10
+        }
+      ],
+      "public_sentence_id_offset": 1
+    },
+    {
+      "path": "Amis/Silo.xml",
+      "text_id": "Montgomery_Amis_Silo",
+      "title": "Silo",
+      "pdf": "montgomery_1962_amis_text.pdf",
+      "translation_pages": [],
+      "language": "ami",
+      "dialect": "unknown",
+      "source": "Amis text",
+      "copyright": "CC-BY-NC-ND",
+      "citation": "Tamih and Montgomery, Robert L. (1962) Amis text. Work Papers of the Summer Institute of Linguistics, University of North Dakota Session: Vol. 6, Article 6. 10.31356/silwp.vol06.06",
+      "bibtex": "@article{montgomery1962amis, title={Amis text}, author={Tamih and Montgomery, Robert L}, journal={Work Papers of the Summer Institute of Linguistics, University of North Dakota Session}, volume={6}, number={6}, doi={10.31356/silwp.vol06.06}}",
+      "errata_page": null,
+      "sentences": [
+        {
+          "forms": [
+            {
+              "text": "itini i roma? ako iřa ko tstsay a watso ongangan niřa tsi siro",
+              "kind": "original"
+            }
+          ],
+          "translations": [
+            {
+              "text": "At my home there is a dog whose name is Silo.",
+              "lang": "eng"
+            }
+          ],
+          "words": [
+            {
+              "forms": [
+                {
+                  "text": "itini",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "here",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "i",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "roma?",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "home",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ako",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "I",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "iřa",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "there-is",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ko",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "tstsay",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "one",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "a",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "watso",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "dog",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ongangan",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "name",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "niřa",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "of-him",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "tsi",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "siro",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "Silo",
+                  "lang": "eng"
+                }
+              ]
+            }
+          ],
+          "id": "S1",
+          "source_page": 4,
+          "source_number": 1
+        },
+        {
+          "forms": [
+            {
+              "text": "ma-orah kami oporong no roma? tsingřa-an",
+              "kind": "original"
+            }
+          ],
+          "translations": [
+            {
+              "text": "Our whole household likes him.",
+              "lang": "eng"
+            }
+          ],
+          "words": [
+            {
+              "forms": [
+                {
+                  "text": "ma-orah",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "like",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "kami",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "we",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "oporong",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "whole/all",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "no",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "roma?",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "house",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "tsingřa-an",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "him",
+                  "lang": "eng"
+                }
+              ]
+            }
+          ],
+          "id": "S2",
+          "source_page": 4,
+          "source_number": 2
+        },
+        {
+          "forms": [
+            {
+              "text": "ano tayřa kako i pi?atsa-an to lateng ?i mi-tooř t-ako-anan",
+              "kind": "original"
+            }
+          ],
+          "translations": [
+            {
+              "text": "If I go to the vegetable market, he follows me.",
+              "lang": "eng"
+            }
+          ],
+          "words": [
+            {
+              "forms": [
+                {
+                  "text": "ano",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "if",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "tayřa",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "go",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "kako",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "I",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "i",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "pi?atsa-an",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "market",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "to",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "lateng",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "vegetable",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "?i",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "mi-tooř",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "follow",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "t-ako-anan",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "I",
+                  "lang": "eng"
+                }
+              ]
+            }
+          ],
+          "id": "S3",
+          "source_page": 4,
+          "source_number": 3
+        },
+        {
+          "forms": [
+            {
+              "text": "itini i roma? ?i maorah a mi-salrama ato wawa",
+              "kind": "original"
+            }
+          ],
+          "translations": [
+            {
+              "text": "At home he likes to play with the children.",
+              "lang": "eng"
+            }
+          ],
+          "words": [
+            {
+              "forms": [
+                {
+                  "text": "itini",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "here",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "i",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "roma?",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "home",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "?i",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "maorah",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "like",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "a",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "mi-salrama",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "play",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ato",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "and/with",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "wawa",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "children",
+                  "lang": "eng"
+                }
+              ]
+            }
+          ],
+          "id": "S4",
+          "source_page": 4,
+          "source_number": 4
+        },
+        {
+          "forms": [
+            {
+              "text": "tsaay pi-karat to tamlaw",
+              "kind": "original"
+            }
+          ],
+          "translations": [
+            {
+              "text": "He doesn't bite people.",
+              "lang": "eng"
+            }
+          ],
+          "words": [
+            {
+              "forms": [
+                {
+                  "text": "tsaay",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "not",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "pi-karat",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "bite",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "to",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "tamlaw",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "people",
+                  "lang": "eng"
+                }
+              ]
+            }
+          ],
+          "id": "S5",
+          "source_page": 4,
+          "source_number": 5
+        },
+        {
+          "forms": [
+            {
+              "text": "o-lalaya saan ?i mi-simaw to roma?",
+              "kind": "original"
+            }
+          ],
+          "translations": [
+            {
+              "text": "In addition he guards the house.",
+              "lang": "eng"
+            }
+          ],
+          "words": [
+            {
+              "forms": [
+                {
+                  "text": "o-lalaya",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "other",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "saan",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "?i",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "mi-simaw",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "guard",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "to",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "roma?",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "home",
+                  "lang": "eng"
+                }
+              ]
+            }
+          ],
+          "id": "S6",
+          "source_page": 4,
+          "source_number": 6
+        },
+        {
+          "forms": [
+            {
+              "text": "itsira mi-tsakay kako to titi no fafoy",
+              "kind": "original"
+            }
+          ],
+          "translations": [
+            {
+              "text": "Yesterday I bought some pig meat",
+              "lang": "eng"
+            }
+          ],
+          "words": [
+            {
+              "forms": [
+                {
+                  "text": "itsira",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "yesterday",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "mi-tsakay",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "buy",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "kako",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "I",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "to",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "titi",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "meat",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "no",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "fafoy",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "pig",
+                  "lang": "eng"
+                }
+              ]
+            }
+          ],
+          "id": "S7",
+          "source_page": 5,
+          "source_number": 7
+        },
+        {
+          "forms": [
+            {
+              "text": "mi-nengneng tsi siro to titi no fafoy ?i ma-atsang nawhani ma-orah tsingřa to titi",
+              "kind": "original"
+            }
+          ],
+          "translations": [
+            {
+              "text": "When Silo saw the pig meat, he was excited (?) because he likes meat.",
+              "lang": "eng"
+            }
+          ],
+          "words": [
+            {
+              "forms": [
+                {
+                  "text": "mi-nengneng",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "see",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "tsi",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "siro",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "Silo",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "to",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "titi",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "meat",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "no",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "fafoy",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "pig",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "?i",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "ma-atsang",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "like-very-much",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "nawhani",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "because",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ma-orah",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "like",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "tsingřa",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "he",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "to",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "titi",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "meat",
+                  "lang": "eng"
+                }
+              ]
+            }
+          ],
+          "id": "S8",
+          "source_page": 5,
+          "source_number": 8
+        },
+        {
+          "forms": [
+            {
+              "text": "yo kemaen sato kami ?i pa-?isar hanto ako tsingřa a pafri",
+              "kind": "original"
+            }
+          ],
+          "translations": [
+            {
+              "text": "When we eat (have eaten?) I set apart some to give him.",
+              "lang": "eng"
+            }
+          ],
+          "words": [
+            {
+              "forms": [
+                {
+                  "text": "yo",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "When",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "kemaen",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "eat",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "sato",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "kami",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "we",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "?i",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "pa-?isar",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "divide",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "hanto",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "ako",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "I",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "tsingřa",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "He",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "a",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "pafri",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "give",
+                  "lang": "eng"
+                }
+              ]
+            }
+          ],
+          "id": "S9",
+          "source_page": 5,
+          "source_number": 9
+        },
+        {
+          "forms": [
+            {
+              "text": "tala-o-nga?ay-ay a wilang ako tsi siro",
+              "kind": "original"
+            }
+          ],
+          "translations": [
+            {
+              "text": "Silo is my very good friend.",
+              "lang": "eng"
+            }
+          ],
+          "words": [
+            {
+              "forms": [
+                {
+                  "text": "tala-o-nga?ay-ay",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "very good",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "a",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "wilang",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "friend",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "ako",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "I",
+                  "lang": "eng"
+                }
+              ]
+            },
+            {
+              "forms": [
+                {
+                  "text": "tsi",
+                  "kind": "original"
+                }
+              ],
+              "translations": []
+            },
+            {
+              "forms": [
+                {
+                  "text": "siro",
+                  "kind": "original"
+                }
+              ],
+              "translations": [
+                {
+                  "text": "Silo",
+                  "lang": "eng"
+                }
+              ]
+            }
+          ],
+          "id": "S10",
+          "source_page": 5,
+          "source_number": 10
+        }
+      ],
+      "public_sentence_id_offset": 1
+    }
+  ]
+}

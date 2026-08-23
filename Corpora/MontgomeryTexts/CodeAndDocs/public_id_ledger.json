@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "baseline_commit": "3a3c47c220520113f747e6a2d441494000e13c4b",
+  "policy": "Preserve every surviving public TEXT, S, and W identifier.",
+  "texts": [
+    {
+      "path": "Amis/Day_I_Now.xml",
+      "text_id": "Montgomery_Amis_Day_I_Now",
+      "removed_heading_id": "S1",
+      "surviving_sentence_ids": "S2-S18"
+    },
+    {
+      "path": "Amis/Fire_and_Water.xml",
+      "text_id": "Montgomery_Amis_Fire_and_Water",
+      "removed_heading_id": "S1",
+      "surviving_sentence_ids": "S2-S11"
+    },
+    {
+      "path": "Amis/Silo.xml",
+      "text_id": "Montgomery_Amis_Silo",
+      "removed_heading_id": "S1",
+      "surviving_sentence_ids": "S2-S11"
+    }
+  ]
+}
