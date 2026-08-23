@@ -1,0 +1,298 @@
+{
+  "version": 1,
+  "baseline": {
+    "path": "pre_correction_snapshot/Amis/Amis.xml",
+    "sha256": "49a26614b436d3ad48d14f92c0796402f1274b347dd6344f0840644919d95214",
+    "sentence_count": 2049
+  },
+  "sheet": {
+    "path": "source/virginia_fey_source.csv",
+    "url": "https://docs.google.com/spreadsheets/d/1S5Q0_L_1oj-iuQbHug7IW5U9wRypA4uuBGOOFrABvdU/edit?usp=sharing",
+    "downloaded_at_utc": "2026-08-23T02:36:35Z",
+    "sha256": "c47b98d9896d1415c69cb3f4cb67aa06d1bfde3a2ba0713c3f3258fa5c3ab33c",
+    "data_rows": 6899,
+    "complete_example_rows": 2012
+  },
+  "upstream": {
+    "repository": "https://github.com/miaoski/amis-data",
+    "commit": "494e5e4bc276c4d2b8b7b827a2c737597239a73b",
+    "ramoh_fixed_tag": "401b1c1003ff93c1db2bf33a34dccfdc658377ca",
+    "files": {
+      "source/upstream/README.md": "f696816867f1d5b41e0811880123d992d7f0a08a0b82fe649a31786c75b120e0",
+      "source/upstream/LICENSE": "0d9e993341d8ff6661eff97a3171902d490da8a8f4110338cc2782c601fed7b0",
+      "source/upstream/d.txt": "bfe51b7b352d2a002875ffe01eb1bb9ee6fb2672a9caff218da92091b4406c85",
+      "source/upstream/h.txt": "ffeccc91ca1662bba17a3c31af01f2e1be045b7e02c61391d6c3d8ce0fe213da",
+      "source/upstream/i.txt": "721405666b6100040513c8f4f6e65809eccc4bbb2464b9010b5068c365baf163",
+      "source/upstream/n.txt": "c60084175efd6ef2a116ad7d497efdf354043f7b5556ffc7d05c67852aa4016d",
+      "source/upstream/t.txt": "72fea940065a6cc17e3103c627539afe1a3402f897efc1a049d4e3048816489f"
+    }
+  },
+  "dialect": {
+    "xml_value": "Xiuguluan",
+    "registry_other_name": "Central",
+    "evidence_url": "https://arts-sciences.buffalo.edu/content/dam/arts-sciences/linguistics/AlumniDissertations/Wu%20dissertation.pdf",
+    "evidence_pdf_page": 27,
+    "evidence_printed_page": 7,
+    "evidence_summary": "Wu identifies Fey 1986 as a dictionary of the Standard Central Dialect from Fuyuan to Fuli and Fengbin to Yiwan. FormosanBank dialects.csv maps Central to Xiuguluan."
+  },
+  "header_updates": {
+    "source": "https://github.com/miaoski/amis-data/tree/494e5e4bc276c4d2b8b7b827a2c737597239a73b",
+    "copyright": "CC BY-NC 3.0"
+  },
+  "form_variants": [
+    {
+      "source_row": 393,
+      "source_form": "pa'oliday / ma'oliday a fo'is",
+      "variants": [{"id": "S393", "form": "pa'oliday a fo'is"}, {"id": "S6899", "form": "ma'oliday a fo'is"}]
+    },
+    {
+      "source_row": 1811,
+      "source_form": "ano hatini / imatini.",
+      "evidence": "source/upstream/h.txt:582",
+      "variants": [{"id": "S1811", "form": "ano hatini."}, {"id": "S6901", "form": "imatini."}]
+    },
+    {
+      "source_row": 1945,
+      "source_form": "tilo / tarakar ni Idek.",
+      "sheet_defect": "The sheet omits ni and has a spacing/OCR error before Idek.",
+      "evidence": "source/upstream/i.txt:54",
+      "variants": [{"id": "S1945", "form": "tilo ni Idek."}, {"id": "S6900", "form": "tarakar ni Idek."}]
+    },
+    {
+      "source_row": 2204,
+      "source_form": "kalo maamaan / kali maamaan",
+      "variants": [{"id": "S2204", "form": "kalo maamaan"}, {"id": "S6902", "form": "kali maamaan"}]
+    },
+    {
+      "source_row": 2481,
+      "source_form": "Misakero / makero kita.",
+      "variants": [{"id": "S2481", "form": "Misakero kita."}, {"id": "S6903", "form": "makero kita."}]
+    },
+    {
+      "source_row": 2547,
+      "source_form": "makimaday / rakimaday a tamdaw",
+      "variants": [{"id": "S2547", "form": "makimaday a tamdaw"}, {"id": "S6905", "form": "rakimaday a tamdaw"}]
+    },
+    {
+      "source_row": 2591,
+      "source_form": "ric / mikeric ko nanom to sera.",
+      "variants": [{"id": "S2591", "form": "ric ko nanom to sera."}, {"id": "S6904", "form": "mikeric ko nanom to sera."}]
+    },
+    {
+      "source_row": 2592,
+      "source_form": "Makiric / makickic no nanom ko pala.",
+      "variants": [{"id": "S2592", "form": "Makiric no nanom ko pala."}, {"id": "S6906", "form": "Makickic no nanom ko pala."}]
+    },
+    {
+      "source_row": 2761,
+      "source_form": "ken a kowa' / cacoscosen a kowa' / ceco.",
+      "variants": [{"id": "S2761", "form": "ken a kowa'."}, {"id": "S6907", "form": "cacoscosen a kowa'."}, {"id": "S6908", "form": "ceco."}]
+    },
+    {
+      "source_row": 2804,
+      "source_form": "ilaenoay / ikalaenoay",
+      "variants": [{"id": "S2804", "form": "ilaenoay"}, {"id": "S6909", "form": "ikalaenoay"}]
+    },
+    {
+      "source_row": 2857,
+      "source_form": "la' / mafolad cingra.",
+      "variants": [{"id": "S2857", "form": "la' cingra."}, {"id": "S6910", "form": "mafolad cingra."}]
+    },
+    {
+      "source_row": 3148,
+      "source_form": "malita'ang / lata'ang kako to wawa ako.",
+      "variants": [{"id": "S3148", "form": "malita'ang kako to wawa ako."}, {"id": "S6911", "form": "lata'ang kako to wawa ako."}]
+    },
+    {
+      "source_row": 3264,
+      "source_form": "Moloso' / maloso' ko losa'.",
+      "variants": [{"id": "S3264", "form": "Moloso' ko losa'."}, {"id": "S6912", "form": "Maloso' ko losa'."}]
+    },
+    {
+      "source_row": 3425,
+      "source_form": "o manikaway / yocay.",
+      "variants": [{"id": "S3425", "form": "o manikaway."}, {"id": "S6913", "form": "o yocay."}]
+    },
+    {
+      "source_row": 3646,
+      "source_form": "Cimira ko mafana'ay / ngra ko mafana'ay.",
+      "variants": [{"id": "S3646", "form": "Cimira ko mafana'ay."}, {"id": "S6914", "form": "Ngra ko mafana'ay."}]
+    },
+    {
+      "source_row": 3797,
+      "source_form": "kananaman / namanan a demak",
+      "variants": [{"id": "S3797", "form": "kananaman a demak"}, {"id": "S3797b", "form": "namanan a demak"}]
+    },
+    {
+      "source_row": 3811,
+      "source_form": "O na / nao loma' niyam konini.",
+      "variants": [{"id": "S3811", "form": "O na loma' niyam konini."}, {"id": "S6915", "form": "O nao loma' niyam konini."}]
+    },
+    {
+      "source_row": 3833,
+      "source_form": "panayat / panayar to romi'ad",
+      "evidence": "source/upstream/n.txt:335",
+      "variants": [{"id": "S3833", "form": "panayat to romi'ad"}, {"id": "S6916", "form": "panayar to romi'ad"}]
+    },
+    {
+      "source_row": 3942,
+      "source_form": "Alangoyos / langoyos cingra.",
+      "variants": [{"id": "S3942", "form": "Alangoyos cingra."}, {"id": "S6917", "form": "langoyos cingra."}]
+    },
+    {
+      "source_row": 3948,
+      "source_form": "Manihar / monihar ko dafak",
+      "variants": [{"id": "S3948", "form": "Manihar ko dafak"}, {"id": "S6918", "form": "Monihar ko dafak"}]
+    },
+    {
+      "source_row": 3969,
+      "source_form": "yniyaniyah / itemek kita a mitolon",
+      "variants": [{"id": "S3969", "form": "yniyaniyah kita a mitolon"}, {"id": "S6919", "form": "itemek kita a mitolon"}]
+    },
+    {
+      "source_row": 4563,
+      "source_form": "Mapedoh to / mahorac to ko lofoc ako.",
+      "variants": [{"id": "S4563", "form": "Mapedoh to ko lofoc ako."}, {"id": "S6920", "form": "Mahorac to ko lofoc ako."}]
+    },
+    {
+      "source_row": 4646,
+      "source_form": "kapili'an no tamdaw / ka'osian no tamdaw",
+      "variants": [{"id": "S4646", "form": "kapili'an no tamdaw"}, {"id": "S6921", "form": "ka'osian no tamdaw"}]
+    },
+    {
+      "source_row": 4659,
+      "source_form": "Kinapina / kinapinapina kako a milicay ngraan",
+      "variants": [{"id": "S4659", "form": "Kinapina kako a milicay ngraan"}, {"id": "S6922", "form": "Kinapinapina kako a milicay ngraan"}]
+    },
+    {
+      "source_row": 4901,
+      "source_form": "moraraway / mararaway to lalan",
+      "variants": [{"id": "S4901", "form": "moraraway to lalan"}, {"id": "S6923", "form": "mararaway to lalan"}]
+    },
+    {
+      "source_row": 4903,
+      "source_form": "Moraraw / mararaw ko caciyaw ako",
+      "variants": [{"id": "S4903", "form": "Moraraw ko caciyaw ako"}, {"id": "S6924", "form": "mararaw ko caciyaw ako"}]
+    },
+    {
+      "source_row": 5026,
+      "source_form": "irikor nonini / iikor nonini",
+      "variants": [{"id": "S5026", "form": "irikor nonini"}, {"id": "S6926", "form": "iikor nonini"}]
+    },
+    {
+      "source_row": 5077,
+      "source_form": "Moroho / maroho kita a komaen.",
+      "variants": [{"id": "S5077", "form": "Moroho kita a komaen."}, {"id": "S6927", "form": "Maroho kita a komaen."}]
+    },
+    {
+      "source_row": 5149,
+      "source_form": "Sa'osien / asipen / 'osien konini a tilid.",
+      "variants": [{"id": "S5149", "form": "Sa'osien konini a tilid."}, {"id": "S6928", "form": "asipen konini a tilid."}, {"id": "S6929", "form": "'osien konini a tilid."}]
+    },
+    {
+      "source_row": 5518,
+      "source_form": "Misemsem / masemsem koya adadaay.",
+      "variants": [{"id": "S5518", "form": "Misemsem koya adadaay."}, {"id": "S6930", "form": "Masemsem koya adadaay."}]
+    },
+    {
+      "source_row": 5525,
+      "source_form": "Paseneng / sngi kita to fana' ita",
+      "variants": [{"id": "S5525", "form": "Paseneng kita to fana' ita"}, {"id": "S6932", "form": "sngi kita to fana' ita"}]
+    },
+    {
+      "source_row": 5991,
+      "source_form": "talakal / tilo ni Idek.",
+      "sheet_defect": "The sheet omits ni and reads the proper name Idek as ldek.",
+      "evidence": "source/upstream/t.txt:1071; source/upstream/t.txt:2900",
+      "variants": [{"id": "S5991", "form": "talakal ni Idek."}, {"id": "S5991b", "form": "tilo ni Idek."}]
+    },
+    {
+      "source_row": 6306,
+      "source_form": "Tadamaanay ko tedi / 'edil no cidal.",
+      "evidence": "source/upstream/t.txt:2320",
+      "variants": [{"id": "S6306", "form": "Tadamaanay ko tedi no cidal."}, {"id": "S6933", "form": "Tadamaanay ko 'edil no cidal."}]
+    },
+    {
+      "source_row": 6402,
+      "source_form": "itemek / pitemek kita a minokay",
+      "variants": [{"id": "S6402", "form": "itemek kita a minokay"}, {"id": "S6934", "form": "pitemek kita a minokay"}]
+    },
+    {
+      "source_row": 6469,
+      "source_form": "Mahaterter / mihiterter cingra.",
+      "variants": [{"id": "S6469", "form": "Mahaterter cingra."}, {"id": "S6931", "form": "Mihiterter cingra."}]
+    },
+    {
+      "source_row": 6509,
+      "source_form": "Patikamien / patiliden kako.",
+      "variants": [{"id": "S6509", "form": "Patikamien kako."}, {"id": "S6925", "form": "Patiliden kako."}]
+    },
+    {
+      "source_row": 6717,
+      "source_form": "O kalatolo / kalitolo konini.",
+      "sheet_defect": "The sheet drops the initial ka from both alternatives.",
+      "evidence": "source/upstream/t.txt:4253",
+      "variants": [{"id": "S6717", "form": "O kalatolo konini."}, {"id": "S6717b", "form": "O kalitolo konini."}]
+    }
+  ],
+  "single_form_decisions": [
+    {
+      "source_row": 1193,
+      "source_form": "Katalawan ko demak nira. Literally",
+      "form": "Katalawan ko demak nira.",
+      "reason": "The English annotation Literally leaked into the Amis example field.",
+      "evidence": "source/upstream/d.txt:615"
+    },
+    {
+      "source_row": 3846,
+      "source_form": "Manga'ay kako a tayra haw? Ga'ayto.",
+      "form": "Manga'ay kako a tayra haw? Nga'ayto.",
+      "reason": "Restore the omitted initial n in nga'ay. The pinned sheet's entry headword and its other maintained examples consistently use nga'ay.",
+      "evidence": "source/virginia_fey_source.csv:3845-3852"
+    },
+    {
+      "source_row": 4934,
+      "source_form": "Ga'ayho han  r a paratoh.",
+      "form": "Nga'ayho han r a paratoh.",
+      "reason": "Restore the omitted initial n in nga'ay. The pinned sheet's entry headword and its other maintained examples consistently use nga'ay.",
+      "evidence": "source/virginia_fey_source.csv:3845-3852"
+    }
+  ],
+  "translation_repairs": [
+    {"id": "S277", "lang": "eng", "old": "This is evidence of his spiritualityh.", "new": "This is evidence of his spirituality.", "reason": "Remove an output-only typo."},
+    {"id": "S3943", "lang": "zho", "old": "請你開口說話", "occurrence": 2, "new": "希望你講得頭頭是道", "reason": "Restore the third distinct source reading that a duplicate displaced."},
+    {"id": "S5977", "lang": "zho", "old": "他正殷切期待", "occurrence": 2, "new": "他正翹首企盼著", "reason": "Restore the second distinct source reading that a duplicate displaced."},
+    {"id": "S790", "lang": "zho", "old": "他們談論)", "new": "他們談論", "reason": "Remove a stranded closing parenthesis from expansion."},
+    {"id": "S790", "lang": "zho", "old": "他們討論事情)", "new": "他們討論事情", "reason": "Remove a stranded closing parenthesis from expansion."},
+    {"id": "S2868", "lang": "eng", "old": "I how to do.", "new": "I know how to do it.", "reason": "Restore the shared source subject and verb plus the explicit parenthetical object."},
+    {"id": "S2971", "lang": "eng", "old": "raccepted by him", "new": "accepted by him", "reason": "Remove an output-only prefix typo."},
+    {"id": "S6504", "lang": "eng", "old": "Keep me company to his homre.", "new": "Keep me company.", "reason": "Remove an output-only typo and do not attach the second alternative's complement to the first."}
+  ],
+  "structural_repairs": [
+    {"id": "S1117", "tail_text": "、", "reason": "Remove a converter delimiter stranded as character content between the two Mandarin TRANSL elements."}
+  ],
+  "expected_duplicate_translations_removed": 1,
+  "expected_deduplications": [
+    {"removed": "S1900", "survivor": "S1899"},
+    {"removed": "S2843", "survivor": "S1862"},
+    {"removed": "S3026", "survivor": "S3025"},
+    {"removed": "S5023", "survivor": "S4389"},
+    {"removed": "S5142", "survivor": "S5141"},
+    {"removed": "S5280", "survivor": "S5278"},
+    {"removed": "S5703", "survivor": "S5702"},
+    {"removed": "S6241", "survivor": "S3941"},
+    {"removed": "S6916", "survivor": "S3832"},
+    {"removed": "S5991b", "survivor": "S1945"}
+  ],
+  "translation_token_exceptions": [
+    {"source_row": 3646, "lang": "zho", "tokens": ["她"], "reason": "The English source explicitly supplies the feminine she alternative."},
+    {"source_row": 4669, "lang": "eng", "tokens": ["the"], "reason": "Article added while reconstructing the third slash alternative."},
+    {"source_row": 5170, "lang": "eng", "tokens": ["a"], "reason": "Article added while reconstructing the second slash alternative."},
+    {"source_row": 5417, "lang": "eng", "tokens": ["is"], "reason": "Copula repeated while expanding coordinated alternatives."},
+    {"source_row": 5736, "lang": "eng", "tokens": ["a"], "reason": "Article added while reconstructing the spy alternative."},
+    {"source_row": 6124, "lang": "eng", "tokens": ["without"], "reason": "Source parenthetical no limbs is rendered as without limbs."},
+    {"source_row": 6209, "lang": "eng", "tokens": ["an"], "reason": "Article added while reconstructing the ambassador alternative."},
+    {"source_row": 6315, "lang": "eng", "tokens": ["reputation"], "reason": "Corrects source transcription typo reputatioin."},
+    {"source_row": 6504, "lang": "eng", "tokens": ["with"], "reason": "Corrects source transcription typo withme."}
+  ]
+}
