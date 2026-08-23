@@ -136,10 +136,10 @@ _FORM_OVERRIDES = {
     ("Sakizaya", "15", 1): "manamuh mukan tu paza' ci Aki aci Imi.",
 }
 
-# The public NTU server has three A2 entries and eight Kanakanavu A1 entries
-# whose audio is not usable, plus one entry whose published URL omitted the
-# source file's ``00_`` prefix. Keep these source-level exceptions here so
-# regenerating the XML cannot recreate broken AUDIO references.
+# Three A2 source clips are not usable, and eight Kanakanavu A1 clips are not
+# present in the pinned public FormosanBank audio dataset. One additional URL
+# needs the source file's ``00_`` prefix. Keep these publication exceptions
+# here so regenerating the XML cannot recreate broken AUDIO references.
 _AUDIO_URL_OVERRIDES = {
     "https://formosanbank.linguistics.ntu.edu.tw/files/audio/"
     "Seediq_A2-3-3%20n.mp3": (

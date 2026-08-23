@@ -35,7 +35,7 @@ SHA-256 digests. It was checked against the official NTU data store on
 paths retain the previously archived public bytes.
 
 The published XML is the reviewed output of private development commit
-`8fb7eff4c51daed73ca0950259a67c4f5dd9d559`. The public source snapshot,
+`8a13dce0ac311e97ed79dae44186517de3a826c8`. The public source snapshot,
 repair registry, and legacy-only build scripts were copied from that same
 build so the public XML can be regenerated without the private Paiwan inputs.
 
@@ -74,8 +74,9 @@ Run the following command from this directory:
 
 The repository-level `audio_sources.json` pins the public Grammar and Stories
 datasets on Hugging Face. The current contract contains 3,754 unique Grammar
-files and 10,845 unique Story clips. Eleven source Grammar URLs are not usable
-and are omitted reproducibly by `scripts/parse_grammar.py`. Two hosted Story
+files and 10,845 unique Story clips. Three source Grammar clips are not usable,
+and eight more are absent from the pinned public Grammar dataset. All eleven
+are omitted reproducibly by `scripts/parse_grammar.py`. Two hosted Story
 clips no longer referenced by the reviewed XML are declared explicitly in
 `audio_extras.json`.
 
