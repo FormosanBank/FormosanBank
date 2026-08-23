@@ -34,7 +34,7 @@ bash download_audio_data.sh
 
 ## Reproduction
 
-The canonical workflow is pinned to FormosanBank commit `3a3c47c220520113f747e6a2d441494000e13c4b` and private development commit `e891e4a67cdf230c7afb38c8066670d6991980ef`.
+The canonical workflow is pinned to FormosanBank commit `3a3c47c220520113f747e6a2d441494000e13c4b`. The public XML was generated from the reviewed private development state dated 2026-08-22.
 
 From `Corpora/ePark/`, run:
 
