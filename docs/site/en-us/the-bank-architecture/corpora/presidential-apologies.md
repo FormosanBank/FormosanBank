@@ -6,6 +6,8 @@ On **August 1, 2016**, President Tsai Ing-wen delivered a historic apology to Ta
 
 This apology text, as part of the effort to promote **historical justice**, has been translated into the 16 officially recognized Formosan languages: **Amis**, **Atayal**, **Saisiyat**, **Thao**, **Seediq**, **Bunun**, **Paiwan**, **Rukai**, **Truku**, **Kavalan**, **Tsou**, **Kanakanavu**, **Saaroa**, **Puyuma**, **Yami**, and **Sakizaya**. The translated apologies are the main texts forming the corpus described here. This corpus consists exclusively of **text data.** The apology text is also available in **English** and **Chinese**.
 
+The current release contains 16 texts and 524 aligned sentence sections. Every sentence has original and standard Formosan-language tiers, generated IPA tiers, and Mandarin and English translations. The source does not provide word or morpheme analysis, and the corpus has no audio.
+
 ***
 
 <!-- CORPUS STATS START -->
@@ -13,13 +15,13 @@ This apology text, as part of the effort to promote **historical justice**, has 
 
 | | Amis<br>Xiuguluan | Bunun<br>Junqun | Kavalan | Rukai<br>Wutai | Paiwan<br>Central | Puyuma<br>Nanwang | Thao | Saaroa | Sakizaya | Yami | Atayal<br>Sekolik | Seediq<br>Tegudaya | Truku | Tsou | Kanakanavu | Saisiyat |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Word count | 1,929 | 1,548 | 2,209 | 1,948 | 2,378 | 2,091 | 1,854 | 1,114 | 1,735 | 1,640 | 2,445 | 1,508 | 1,853 | 2,072 | 1,543 | 1,639 |
+| Word count | 1,929 | 1,548 | 2,209 | 1,948 | 2,378 | 2,091 | 1,854 | 1,114 | 1,735 | 1,640 | 2,445 | 1,508 | 1,853 | 2,070 | 1,543 | 1,639 |
 | Total audio | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | Translated words |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 1,929 | 1,548 | 2,209 | 1,948 | 2,378 | 2,091 | 1,854 | 1,114 | 1,735 | 1,640 | 2,445 | 1,508 | 1,853 | 2,072 | 1,543 | 1,639 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 1,929 | 1,548 | 2,209 | 1,948 | 2,378 | 2,091 | 1,854 | 1,114 | 1,735 | 1,640 | 2,445 | 1,508 | 1,853 | 2,072 | 1,543 | 1,639 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 1,929 | 1,548 | 2,209 | 1,948 | 2,378 | 2,091 | 1,854 | 1,114 | 1,735 | 1,640 | 2,445 | 1,508 | 1,853 | 2,070 | 1,543 | 1,639 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 1,929 | 1,548 | 2,209 | 1,948 | 2,378 | 2,091 | 1,854 | 1,114 | 1,735 | 1,640 | 2,445 | 1,508 | 1,853 | 2,070 | 1,543 | 1,639 |
 | Morphologically segmented | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | Glossed words | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 
@@ -30,30 +32,26 @@ This apology text, as part of the effort to promote **historical justice**, has 
 
 ### **Corpus Processing**
 
-The Presidential Apology corpus was developed using officially released translations of the apology by the President of Taiwan. These translations were provided in 16 official Formosan languages, as well as in Chinese and English. The corpus was processed following these steps:
+The corpus uses the officially released translations in 16 Formosan languages, Mandarin, and English. Its public build follows these steps:
 
-1.  **Alignment of Sentences Across Translations**\
-    Each paragraph in the Formosan languages was aligned with its corresponding translations in English and Chinese. This was accomplished by segmenting the apology into 33 consistent sections across all languages. An example image is shown below. The only exception to this was Kanakanavu where I did it separately with only 29 sections because the sectioning was quite different from the rest.
+1. **Source inventory and PDF alignment**\
+   The 36-file source manifest records 16 official bilingual PDFs and the corresponding transcript snapshots. Fifteen language texts contain 33 aligned sections; Kanakanavu contains 29. The source audit matches all 524 Formosan-language sections and all 524 Mandarin sections to the PDFs after only documented layout and typography equivalences. English is checked for file integrity, section count, and deterministic XML mapping because it is not printed in the bilingual PDFs.
 
-    <figure><img src="../../.gitbook/assets/Screenshot 2024-12-08 at 9.41.01 PM.png" alt=""><figcaption></figcaption></figure>
-2. **XML Generation Following FormosanBank Standards**\
-   The aligned data was then structured into XML files adhering to the FormosanBank standard. Each XML file contained:
-   * Sentence-level (`S`) elements for each section, with sub-elements `FORM` for the Formosan language text and `TRANSL` for English and Chinese translations.
-   * Metadata and language codes specific to each Formosan language.
-3. **Cleaning and Standardization**\
-   Once the XML files were created, they underwent multiple cleaning and standardization processes (fully re-runnable; the [source README](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/Presidential_Apologies) records the exact pipeline):
-   * **XML Cleaning**: Punctuation was standardized and unicode characters were flattened to merge diacritics with their base characters. Chinese translations use the canonical full-width double quote (`＂`); HTML escape codes were replaced with the corresponding characters.
-   * **Standard tier**: Every original `FORM` gets a `kindOf="standard"` copy (the source texts already use the standard orthography), per the [XML schema](../formosanbank-xml-format.md#the-less-than-form-greater-than-element).
-   * **Mandarin annotations**: The Tsou and Kavalan translations gloss many terms with a Mandarin parenthetical (e.g. `zipun( 日 本 )`). These annotations are kept on the original tier but removed from the standard tier and masked out of the IPA, since they are not part of the utterance. Bare in-line Mandarin terms (code-switched utterance content, e.g. Tsou `'e 行政院 ho`) are kept in both tiers.
-   * **IPA (`PHON`) tiers**: Generated from the Ortho113 orthography tables using each file's declared dialect column (Amis: Xiuguluan, Bunun: Junqun, Puyuma: Nanwang, ...). A letter the declared dialect's orthography does not use — mostly in Mandarin/Japanese loanwords — surfaces as `*` in the IPA rather than borrowing a pronunciation from another dialect (see Corpus Notes).
-4. **Output Organization**\
-   The processed XML files were stored in the `XML` directory, each named after its corresponding Formosan language. The files were formatted to ensure readability and ease of analysis.
+   <figure><img src="../../.gitbook/assets/Screenshot 2024-12-08 at 9.41.01 PM.png" alt="Example of aligned Formosan-language and Mandarin apology sections"><figcaption>Example of the aligned source layout.</figcaption></figure>
+2. **Reviewed source corrections**\
+   The rebuild records three source decisions: Kavalan section 6 preserves public word boundaries after two Mandarin annotations; Saaroa section 0 corrects `mualiuhlʉ` to the PDF spelling `mualiuhlu`; and Truku section 25 replaces a semicolon with the apostrophe printed in the PDF. The repeated Saaroa sections 22 and 23 remain because the official PDF prints the same Formosan-language paragraph on both corresponding pages beside different Mandarin sections.
+3. **Stable XML generation**\
+   A single external mapping records source files, language codes, dialect labels, stable text IDs, and section counts. Generation preserves all 16 published text IDs and all 524 sentence IDs. Each sentence receives Formosan-language `FORM` tiers and Mandarin and English `TRANSL` elements.
+4. **Cleaning, standardization, and IPA**\
+   The XML is cleaned with the current FormosanBank tooling. The standard `FORM` tier is copied from the cleaned original tier, and both `PHON` tiers are generated from Ortho113 using the declared dialect. CJK-only parenthetical annotations in Tsou and Kavalan remain in the original tier but are removed from the standard tier and masked from IPA. Inline Mandarin content remains on both tiers.
+5. **Reproduction and validation**\
+   The [public pipeline and QC record](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/Presidential_Apologies/CodeAndDocs) pin the FormosanBank tooling authority, rebuild all XML in a temporary directory, repeat the source audit, run the XML, text, gloss, duplicate, and port-readiness validators, and compare the result with the committed corpus. The release reproduces exactly and has no hard validation findings.
 
 ***
 
 ### **Corpus Notes**
 
-* **Amis**: The presidential apology in Amis has a couple of occurances of the letter 'b' which isn't part of the standard orthography of the language. all the occurances can be found in two words: Balay and Sbalay. Both of these words are Atayal words that are quoted in the original apology, and they were used in the same form in the Amis translation. This is an example from the English translation: "In the Atayal language, truth is called 'Balay', and reconciliation is called 'Sbalay'"
+* **Amis**: The presidential apology in Amis has several occurrences of the letter `b`, which is not part of the standard orthography. All occurrences are in the quoted Atayal words `Balay` and `Sbalay`.
 * **Kanakanavu**: This corpus uses a small number of h's and f's, which are controversial. None of the words involving h's or f's appear in the reference ILRDF Dictionary corpus, with or without the h's and f's. Thus, we have chosen to leave them in.
 * **Puyuma**: This corpus has a number of appearances of ē. Almost all of these are due to yēncumin (which is marked as a foreign word) and sēhu. Thus, this has not been homogenized.
 * **Sakizaya**: A small number of f's appear to be foreign words.
