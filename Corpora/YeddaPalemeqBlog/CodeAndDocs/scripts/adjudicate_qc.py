@@ -76,10 +76,13 @@ def main() -> None:
         duplicate_rows.extend(rows)
 
     port_log = (run_dir / "11_port_readiness.log").read_text(encoding="utf-8")
-    if "port-readiness: 0 HARD, 0 WARN" not in port_log:
-        raise SystemExit("Port readiness did not retain the expected clean verdict")
+    if "port-readiness: 0 HARD" not in port_log:
+        raise SystemExit("Port readiness did not retain the expected 0-HARD verdict")
     warning_lines = [line for line in port_log.splitlines() if " WARN:" in line]
-    if warning_lines:
+    if any(
+        line != "P001 WARN: not a git checkout; Private/ tracking not checkable here"
+        for line in warning_lines
+    ):
         raise SystemExit(f"Unexpected port-readiness warning: {warning_lines}")
 
     total = len(text_rows) + len(gloss_rows) + len(duplicate_rows)
