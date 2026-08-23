@@ -1,0 +1,29 @@
+{
+  "alternative_expansions": 3,
+  "audit_sha256": {
+    "issue_1_review.tsv": "95e1e2be0bfa7aa17f6e435ba8b4fa0462eed6a2f8f89bda7e33c21b3d70e6ac",
+    "source_coverage.tsv": "03254f3e4ce90dbdef6c097fe3d26286fb04154615a877968b1aa815d66b3ce8",
+    "source_review_summary.md": "35343d660105dc054968a9bab20cebc816d1471223542217ed8f4780dd29d6d7",
+    "source_translation_review.tsv": "157da7b133df8eb34ae38aba03d22a487bdc7cb5606de19ef88940c80bb5acb5",
+    "source_variant_review.tsv": "5e10207af8adf60ec68339424de99989a7361581e5b891365ce2c4266d494373",
+    "source_word_translation_review.tsv": "d0a2df1820c176d33b1e268112d459c39754430ce3ada33a491282b78eb4850a"
+  },
+  "counts": {
+    "AUDIO": 665,
+    "FORM": 27942,
+    "M": 7657,
+    "PHON": 27942,
+    "S": 671,
+    "TRANSL": 5585,
+    "W": 5643
+  },
+  "issue_findings_reviewed": 9,
+  "source_records": 668,
+  "source_records_omitted": 0,
+  "source_sentence_translations_repaired": 24,
+  "source_snapshot_sha256": "e18d0aa67893278cb7754e9725e68a81075760961391b3db941eca7d873ddba6",
+  "source_word_translations_repaired": 41,
+  "unresolved_findings": 0,
+  "validator_commit": "3a3c47c220520113f747e6a2d441494000e13c4b",
+  "xml_sha256": "b452f10f520053370d090ae95b2e7013006249f7e3b5931d366f0cfce304fb7a"
+}
