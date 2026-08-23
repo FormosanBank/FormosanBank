@@ -1,0 +1,193 @@
+{
+  "review_date": "2026-07-24",
+  "followup_review_date": "2026-07-28",
+  "rare_form_review_date": "2026-08-20",
+  "followup_sample_ids": [
+    "core-john-12-12",
+    "regression-john-7-39",
+    "core-matthew-16-10",
+    "core-matthew-22-2",
+    "core-matthew-27-53"
+  ],
+  "method": "Rendered-page visual comparison against FORM kindOf=original; regression examples were checked after the systematic bracket repair.",
+  "rare_form_checks": [
+    {
+      "id": "rare-matthew-18-28",
+      "source_file": "Matthew.pdf",
+      "pdf_page": 112,
+      "printed_locator": "Matthew 18:28",
+      "path": "Matthew/chapter18.xml",
+      "sentence_id": "verse28",
+      "checked_text": "kæ'æ̈toughan",
+      "original_sha256": "0b585c7fc140452348f6230469013fde487a61952fa8747593d234414f0b0b21",
+      "finding": "Confirmed the combining diaeresis and the complete printed form kæ'æ̈toughan."
+    },
+    {
+      "id": "rare-matthew-25-11",
+      "source_file": "Matthew.pdf",
+      "pdf_page": 154,
+      "printed_locator": "Matthew 25:11",
+      "path": "Matthew/chapter25.xml",
+      "sentence_id": "verse11",
+      "checked_text": "kæuh-jnæ̈jna",
+      "original_sha256": "857039216d8ec4de6314f38f8794c4994fe7531837397b3b42965a6751f6d081",
+      "finding": "Confirmed that the combining diaeresis is printed and is not an OCR artifact."
+    }
+  ],
+  "checks": [
+    {
+      "id": "core-john-12-12",
+      "phase": "core",
+      "source_file": "Gospels of St. Matthew and St. John.pdf",
+      "pdf_page": 89,
+      "printed_locator": "John 12:12",
+      "path": "John/chapter12.xml",
+      "sentence_id": "verse12",
+      "original_sha256": "01a0ac88dc865c65ba092f63cf59fea23b6e6b18f380b2b35646af0d5736aabb",
+      "finding": "Corrected OCR ) to J, restored apostrophe, hyphens, and word spacing."
+    },
+    {
+      "id": "core-john-12-28",
+      "phase": "core",
+      "source_file": "Gospels of St. Matthew and St. John.pdf",
+      "pdf_page": 92,
+      "printed_locator": "John 12:28",
+      "path": "John/chapter12.xml",
+      "sentence_id": "verse28",
+      "original_sha256": "2be44633dc706742559921ed42aa01095918fb8cefb029174b05fa7232a3cb39",
+      "finding": "Restored source square brackets and retained the printed unmatched opening bracket in the original tier."
+    },
+    {
+      "id": "core-john-12-33",
+      "phase": "core",
+      "source_file": "Gospels of St. Matthew and St. John.pdf",
+      "pdf_page": 92,
+      "printed_locator": "John 12:33",
+      "path": "John/chapter12.xml",
+      "sentence_id": "verse33",
+      "original_sha256": "5fb428ed675b46850d392b4f8d51f8f6665a423166a9d3a7496ed1c16c47916c",
+      "finding": "Retained the printed unmatched closing parenthesis in the original tier."
+    },
+    {
+      "id": "core-matthew-16-10",
+      "phase": "core",
+      "source_file": "Matthew.pdf",
+      "pdf_page": 99,
+      "printed_locator": "Matthew 16:10 / fol. 44",
+      "path": "Matthew/chapter16.xml",
+      "sentence_id": "verse10",
+      "original_sha256": "6c08df62099f235a9ba12da05599c466100e89decb47d236f80b3ce9c21d0a63",
+      "finding": "Restored [ki papæ-ræh], source vowels, and the missing closing bracket."
+    },
+    {
+      "id": "core-matthew-22-2",
+      "phase": "core",
+      "source_file": "Matthew.pdf",
+      "pdf_page": 132,
+      "printed_locator": "Matthew 22:2",
+      "path": "Matthew/chapter22.xml",
+      "sentence_id": "verse2",
+      "original_sha256": "e2cda1997333bfc117f7cb31a33a253983e325e71e09967d91602d48cf7fee00",
+      "finding": "Restored [ka paræh], source æ characters, spacing, and the missing closing bracket."
+    },
+    {
+      "id": "core-matthew-23-14",
+      "phase": "core",
+      "source_file": "Matthew.pdf",
+      "pdf_page": 140,
+      "printed_locator": "Matthew 23:14",
+      "path": "Matthew/chapter23.xml",
+      "sentence_id": "verse14",
+      "original_sha256": "d4c60d0a63689ca9177ddf40db3952bdff20f888b58ac0b89b2cb8ad35139246",
+      "finding": "Corrected multiple OCR substitutions and restored [ki sou:] plus printed hyphens."
+    },
+    {
+      "id": "core-matthew-24-2",
+      "phase": "core",
+      "source_file": "Matthew.pdf",
+      "pdf_page": 145,
+      "printed_locator": "Matthew 24:2 / fol. 67",
+      "path": "Matthew/chapter24.xml",
+      "sentence_id": "verse2",
+      "original_sha256": "c98ad979e08fe0bcd47c546977b4881856c2eb1f78c8f8a9019d380e83135fb1",
+      "finding": "Restored two source bracket pairs, printed æ, and the source word boundary."
+    },
+    {
+      "id": "core-matthew-24-19",
+      "phase": "core",
+      "source_file": "Matthew.pdf",
+      "pdf_page": 148,
+      "printed_locator": "Matthew 24:19",
+      "path": "Matthew/chapter24.xml",
+      "sentence_id": "verse19",
+      "original_sha256": "97a76200662e3af7df85f463d48b22b5e572e10fb40a29a17aeeeb5efeb6520a",
+      "finding": "Restored [ka jnæ-jna], mavoë, and wæ'i."
+    },
+    {
+      "id": "core-matthew-26-71",
+      "phase": "core",
+      "source_file": "Matthew.pdf",
+      "pdf_page": 171,
+      "printed_locator": "Matthew 26:71 / fol. 80",
+      "path": "Matthew/chapter26.xml",
+      "sentence_id": "verse71",
+      "original_sha256": "7e461fdb8829bebb4a1cdf3f0a8e96b9c5c42a2002178b31ca40dbce14cebe7b",
+      "finding": "Restored the bracketed phrase, source vowels, hyphens, and spacing."
+    },
+    {
+      "id": "core-matthew-27-53",
+      "phase": "core",
+      "source_file": "Matthew.pdf",
+      "pdf_page": 180,
+      "printed_locator": "Matthew 27:53",
+      "path": "Matthew/chapter27.xml",
+      "sentence_id": "verse53",
+      "original_sha256": "0917b10927ba775aaec9cadc7cd2b1004d19d22c9bd2e10978ee318e18fdb113",
+      "finding": "Restored two source bracket pairs and corrected several inherited OCR/hyphen errors."
+    },
+    {
+      "id": "regression-john-7-39",
+      "phase": "regression",
+      "source_file": "Gospels of St. Matthew and St. John.pdf",
+      "pdf_page": 55,
+      "printed_locator": "John 7:39",
+      "path": "John/chapter7.xml",
+      "sentence_id": "verse39",
+      "original_sha256": "0ab630d26d0ff7c627a9c3e75e73d6c6a6d9255ae946c19bccfe7d5ba27a1448",
+      "finding": "Confirmed genuine source round parentheses and corrected a stray middle dot, spacing, and OCR substitutions."
+    },
+    {
+      "id": "regression-john-12-29",
+      "phase": "regression",
+      "source_file": "Gospels of St. Matthew and St. John.pdf",
+      "pdf_page": 92,
+      "printed_locator": "John 12:29",
+      "path": "John/chapter12.xml",
+      "sentence_id": "verse29",
+      "original_sha256": "32ecab8db502266c49af9beb936cbaaf5750d57b060e1947b425c404dccdd2c3",
+      "finding": "Confirmed that the source-owned original retains [ki atta,]."
+    },
+    {
+      "id": "regression-matthew-16-9",
+      "phase": "regression",
+      "source_file": "Matthew.pdf",
+      "pdf_page": 99,
+      "printed_locator": "Matthew 16:9 / fol. 44",
+      "path": "Matthew/chapter16.xml",
+      "sentence_id": "verse9",
+      "original_sha256": "172ded9b6a0ba96e1222b72a8bf3009f6b06236814e73c621289ce70aa440e25",
+      "finding": "Confirmed source brackets and corrected pæh-dim-dim plus rym-ma."
+    },
+    {
+      "id": "regression-matthew-27-64",
+      "phase": "regression",
+      "source_file": "Matthew.pdf",
+      "pdf_page": 182,
+      "printed_locator": "Matthew 27:64",
+      "path": "Matthew/chapter27.xml",
+      "sentence_id": "verse64",
+      "original_sha256": "0088eeef3648ef3255fddcb2fd51afe588919a4d273eb5f877fed8fd98b15add",
+      "finding": "Confirmed source brackets and repaired inherited spacing, hyphens, and OCR substitutions."
+    }
+  ]
+}

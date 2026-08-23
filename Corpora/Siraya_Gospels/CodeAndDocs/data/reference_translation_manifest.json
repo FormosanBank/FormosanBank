@@ -1,0 +1,24 @@
+{
+  "english": {
+    "name": "King James Bible from the NLTK Gutenberg corpus",
+    "source_url": "https://raw.githubusercontent.com/nltk/nltk_data/gh-pages/packages/corpora/gutenberg.zip",
+    "download_sha256": "2d3c3ab548c653944310f37f536443ec85d0a0ad855fcae217a0c9efdce2d611",
+    "bible_kjv_txt_sha256": "3f56c9f0bbc796312aacc5fcb49a799f5c5f729f00db3f86bff26319a93bfede",
+    "checked_in_extract": "CodeAndDocs/reference_translations/eng-kjv-nltk-gutenberg.tsv",
+    "checked_in_extract_sha256": "0c7634f3e587ee346cf2765e8af9fc74577f9eb02afa1b17789e30fc0010c5d5",
+    "source_units": 1950,
+    "alignment_note": "The printed Gravius John 1 divides modern verse 38 into two units. The KJV text is partitioned without rewriting across XML verses 38 and 39."
+  },
+  "mandarin": {
+    "name": "Chinese Union Version USFM retained from the historical corpus workflow",
+    "matthew": {
+      "path": "CodeAndDocs/reference_translations/cmn-cu89t_usfm/70-MATcmn-cu89t.usfm.gz",
+      "sha256": "626b63cb6ea6e372a6eefabc174ed5771ac93318cd9a6fbce28a1bd671c5b2a9"
+    },
+    "john": {
+      "path": "CodeAndDocs/reference_translations/cmn-cu89t_usfm/73-JHNcmn-cu89t.usfm.gz",
+      "sha256": "d692d0509087472f18a46d4e3ce7d1000eb85aa2ca1978edf947cffecba8057b"
+    },
+    "alignment_note": "The printed Gravius John 1 divides modern verse 38 into two units. The CUV text is partitioned without rewriting across XML verses 38 and 39. Four verses absent from this CUV edition are omitted and recorded in the source ledger."
+  }
+}
