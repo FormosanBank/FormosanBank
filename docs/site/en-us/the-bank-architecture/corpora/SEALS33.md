@@ -2,9 +2,9 @@
 
 ## **Overview**
 
-These are the translated sections of the [2024 SEALS conference](https://sites.google.com/view/seals33/national-languages?authuser=0) (SEALS 33), graciously provided by the authors. 
+This corpus contains source-faithful text from the [SEALS 33 national-languages page](https://sites.google.com/view/seals33/national-languages?authuser=0), used with permission from the organizers.
 
-The 2024 South East Asian Linguistic Society meeting took place in Taipei. The national-languages page was available in Seediq and Saisiyat, as well as Mandarin and English.
+The 2024 South East Asian Linguistic Society meeting took place in Taipei. The page presents parallel Saisiyat, Seediq, and Mandarin text, with English translations for program titles. The corpus retains 28 source rows per Formosan language.
 
 ***
 
@@ -13,13 +13,13 @@ The 2024 South East Asian Linguistic Society meeting took place in Taipei. The n
 
 | | Seediq<br>unknown | Saisiyat |
 | --- | --- | --- |
-| Word count | 560 | 604 |
+| Word count | 550 | 597 |
 | Total audio | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 |
 | Translated words |  |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 136 | 176 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 560 | 604 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 126 | 168 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 550 | 597 |
 | Morphologically segmented | 0 | 0 |
 | Glossed words | 0 | 0 |
 
@@ -30,15 +30,16 @@ The 2024 South East Asian Linguistic Society meeting took place in Taipei. The n
 
 ## **Corpus Processing**
 
-The short Seediq and Saisiyat translations were aligned with the corresponding Mandarin and English text and copied by hand into two FormosanBank XML files; there is no scraper, so the hand-built XML (preserved as a pristine snapshot in `CodeAndDocs/pre_correction_snapshot/`) is the reproduction baseline. From that baseline, `CodeAndDocs/make_xml.sh` regenerates the published `XML/` in three steps: `clean_xml.py` (punctuation and Unicode cleanup), `standardize.py --remove_accents` (creates the `kindOf="standard"` FORM tier; no spelling conversion is applied, as the transcription is already in the standard orthography), and `add_phonology.py --orthography Ortho94` (adds IPA `PHON` tiers). The published XML thus includes original and standard FORM tiers, IPA, and both translations.
+The public reproduction package includes a structure-aware live-page scraper, a committed 29-row source snapshot, a deterministic XML generator, a complete coverage audit, and focused tests. `CodeAndDocs/reproduce.sh` rebuilds source tiers, verifies source alignment, runs the current XML cleaner, copies Ortho94 FORM into the machine-owned standard tier, generates original and standard PHON, and repeats the source audit. The Ortho94-to-Ortho113 tables contain no spelling rules for this material, so copy mode preserves the source's lexical hyphens.
 
 ***
 
 ## **Corpus Notes**
 
 * The Seediq file does not identify a dialect, so its dialect is reported as unknown.
-* S25 in both files is a talk title containing reconstructed proto-forms (`*-ʔ, *-h, *-∅`). The asterisks are faithful to the source; the Saisiyat S25 is actually the English title, so its PHON is English rendered through the Saisiyat profile.
-* The Saisiyat file uses `:` for vowel length; it is retained in PHON for Saisiyat but treated as punctuation for Seediq.
+* The source contains 29 parallel rows. Row 25 is recorded in the public source snapshot but excluded from both language XML files under POL-016 because its Formosan titles contain reconstruction asterisks.
+* TEXT IDs remain stable, and S IDs are the source row numbers. The deliberate row-25 exclusion leaves a gap between S24 and S26.
+* The corpus has no audio and no word or morpheme analysis.
 
 ***
 
@@ -50,7 +51,7 @@ The short Seediq and Saisiyat translations were aligned with the corresponding M
 
 ## **Copyright**
 
-CC-BY-NC
+© 2023-2024 SEALS 33 organizing committee. Used by FormosanBank with permission.
 
 ***
 
