@@ -1,0 +1,32 @@
+{
+  "authority_commit": "3a3c47c220520113f747e6a2d441494000e13c4b",
+  "inventory": {
+    "M": 36938,
+    "S": 2921,
+    "TEXT": 100,
+    "W": 24556
+  },
+  "validator_findings": {
+    "V061": 1302,
+    "V122": 8050,
+    "V133": 153,
+    "G003": 1370,
+    "G010": 153
+  },
+  "review": {
+    "G003": "all 1,370 are canonical infix-root gap forms",
+    "G010": "all 153 are exact source-reviewed sentence hyphens",
+    "V061": "all 1,302 are reduplicated W forms using the canonical tilde marker",
+    "V122": "all 8,050 exactly cover preserved source FORM and TRANSL notation",
+    "V133": "all 153 are exact source-reviewed sentence hyphens",
+    "V122_by_tier": {
+      "M.TRANSL.original": 3790,
+      "S.FORM.original": 22,
+      "S.TRANSL.unspecified": 448,
+      "W.TRANSL.original": 3790
+    }
+  },
+  "hard_findings": 0,
+  "ready_to_port": true,
+  "rights_conditions": "Public, attributed, non-profit derivative publication is allowed. Republishing the source as-is for profit is not allowed."
+}
