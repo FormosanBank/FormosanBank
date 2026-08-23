@@ -1,2 +1,3 @@
 # All dependencies are Python standard library modules.
 # Python >= 3.9 is required (uses xml.etree.ElementTree.indent).
+# Audio preparation also requires curl and ffmpeg on PATH.

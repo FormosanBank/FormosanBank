@@ -1,153 +1,177 @@
 #!/usr/bin/env python3
-"""
-make_xml.py
-Generate skeleton XML files (one per .wav file in Audio/) and write them to XML/.
-The <TEXT> header attributes are left as empty placeholders to be filled in later.
-"""
+"""Generate the complete audio-only XML corpus from pinned source evidence."""
 
+from __future__ import annotations
+
+import io
 import json
-import os
 import re
 from pathlib import Path
 from xml.etree import ElementTree as ET
 
-# ── Paths ──────────────────────────────────────────────────────────────────────
-SCRIPT_DIR    = Path(__file__).parent
-AUDIO_DIR     = SCRIPT_DIR / "Audio" / "Truku"
-METADATA_DIR  = SCRIPT_DIR / "Metadata"
-XML_DIR       = SCRIPT_DIR / "XML" / "Truku"
 
-# ── Citation formatter ────────────────────────────────────────────────────────
-def format_citation(credit_text):
-    """Convert a PARADISEC creditText string to an APA-style citation."""
-    # Extract unique person names ("First Last (role)" pattern)
-    names = re.findall(r'([A-Z][^,(]+?) \(\w+\)', credit_text)
-    seen, unique_names = set(), []
-    for name in names:
-        name = name.strip()
-        if name not in seen:
-            seen.add(name)
-            unique_names.append(name)
-
-    # Reformat as "Last, First"
-    def invert(name):
-        parts = name.split()
-        return f"{parts[-1]}, {' '.join(parts[:-1])}" if len(parts) >= 2 else name
-    author_str = "; ".join(invert(n) for n in unique_names)
-
-    # Year
-    year = (re.search(r'\b(\d{4})\b', credit_text) or type('', (), {'group': lambda *_: ''})()).group(1)
-
-    # Title: text between "Year. " and the next "."
-    title_match = re.search(r'\d{4}\.\s+(.+?)\.', credit_text)
-    title = title_match.group(1).strip() if title_match else ""
-    if title:
-        title = title[0].upper() + title[1:]  # sentence case
-
-    # DOI URL
-    doi_match = re.search(r'(https?://\S+)', credit_text)
-    doi = doi_match.group(1) if doi_match else ""
-
-    return f"{author_str}. ({year}). {title}. Paradisec. {doi}"
+ROOT = Path(__file__).resolve().parent
+CORPUS_ROOT = ROOT.parent
+MANIFEST = ROOT / "audio_manifest.json"
+METADATA_DIR = ROOT / "Metadata"
+XML_DIR = CORPUS_ROOT / "XML" / "Truku"
 
 
-def format_bibtex(credit_text):
-    """Convert a PARADISEC creditText string to a BibTeX @misc entry."""
-    # Reuse the same parsing as format_citation
-    names = re.findall(r'([A-Z][^,(]+?) \(\w+\)', credit_text)
-    seen, unique_names = set(), []
-    for name in names:
-        name = name.strip()
-        if name not in seen:
-            seen.add(name)
-            unique_names.append(name)
+def format_citation(credit_text: str) -> str:
+    """Convert a PARADISEC creditText string to the published citation."""
 
-    def invert(name):
-        parts = name.split()
-        return f"{parts[-1]}, {' '.join(parts[:-1])}" if len(parts) >= 2 else name
-    author_str = " and ".join(invert(n) for n in unique_names)
+    names = list(dict.fromkeys(re.findall(r"([A-Z][^,(]+?) \(\w+\)", credit_text)))
+    year_match = re.search(r"\b(\d{4})\b", credit_text)
+    title_match = re.search(r"\d{4}\.\s+(.+?)\.", credit_text)
+    doi_match = re.search(r"(https?://\S+)", credit_text)
+    if not names or not year_match or not title_match or not doi_match:
+        raise ValueError(f"incomplete PARADISEC creditText: {credit_text!r}")
 
-    year = (re.search(r'\b(\d{4})\b', credit_text) or type('', (), {'group': lambda *_: ''})()).group(1)
-
-    title_match = re.search(r'\d{4}\.\s+(.+?)\.', credit_text)
-    title = title_match.group(1).strip() if title_match else ""
-    if title:
-        title = title[0].upper() + title[1:]
-
-    doi_match = re.search(r'(https?://\S+)', credit_text)
-    doi = doi_match.group(1) if doi_match else ""
-
-    # BibTeX cite key: last name of first author (lowercase) + year + first word of title (lowercase)
-    first_last = unique_names[0].split()[-1].lower() if unique_names else "unknown"
-    title_word = re.sub(r'[^a-z]', '', title.split()[0].lower()) if title else "untitled"
-    citekey = f"{first_last}{year}{title_word}"
-
+    authors = "; ".join(invert_name(name.strip()) for name in names)
+    title = sentence_case(title_match.group(1).strip())
     return (
-        f"@misc{{{citekey}, "
-        f"author = {{{author_str}}}, "
-        f"title = {{{title}}}, "
-        f"year = {{{year}}}, "
-        f"publisher = {{Paradisec}}, "
-        f"howpublished = {{\\url{{{doi}}}}}}}"
+        f"{authors}. ({year_match.group(1)}). {title}. Paradisec. "
+        f"{doi_match.group(1)}"
     )
 
-def load_metadata():
-    meta = {}
-    for json_path in METADATA_DIR.glob("*-ro-crate-metadata.json"):
-        with open(json_path, encoding="utf-8") as fh:
-            data = json.load(fh)
-        # prefix = first two dash-separated parts of the filename, e.g. "AIT1-001"
-        prefix = "-".join(json_path.stem.split("-")[:2])
-        meta[prefix] = data["metadata"]
-    return meta
 
-metadata = load_metadata()
+def format_bibtex(credit_text: str) -> str:
+    """Convert a PARADISEC creditText string to the published BibTeX value."""
 
-# ── Create output directory if needed ─────────────────────────────────────────
-XML_DIR.mkdir(exist_ok=True)
+    names = list(dict.fromkeys(re.findall(r"([A-Z][^,(]+?) \(\w+\)", credit_text)))
+    year_match = re.search(r"\b(\d{4})\b", credit_text)
+    title_match = re.search(r"\d{4}\.\s+(.+?)\.", credit_text)
+    doi_match = re.search(r"(https?://\S+)", credit_text)
+    if not names or not year_match or not title_match or not doi_match:
+        raise ValueError(f"incomplete PARADISEC creditText: {credit_text!r}")
 
-# ── Discover wav files ─────────────────────────────────────────────────────────
-wav_files = sorted(AUDIO_DIR.glob("*.wav"))
+    authors = " and ".join(invert_name(name.strip()) for name in names)
+    year = year_match.group(1)
+    title = sentence_case(title_match.group(1).strip())
+    first_last = names[0].split()[-1].lower()
+    title_word = re.sub(r"[^a-z]", "", title.split()[0].lower())
+    citekey = f"{first_last}{year}{title_word}"
+    return (
+        f"@misc{{{citekey}, author = {{{authors}}}, title = {{{title}}}, "
+        f"year = {{{year}}}, publisher = {{Paradisec}}, "
+        f"howpublished = {{\\url{{{doi_match.group(1)}}}}}}}"
+    )
 
-if not wav_files:
-    print("No .wav files found in Audio/")
-else:
-    for wav_path in wav_files:
-        wav_name   = wav_path.name                      # e.g. AIT1-001-1.wav
-        stem       = wav_path.stem                      # e.g. AIT1-001-1
-        xml_path   = XML_DIR / f"{stem}.xml"
 
-        # Derive item prefix and look up metadata
-        prefix     = "-".join(stem.split("-")[:2])      # e.g. "AIT1-001"
-        meta       = metadata.get(prefix, {})
-        source     = meta.get("@id", "")
-        citation   = format_citation(meta.get("creditText", ""))
-        bibtex     = format_bibtex(meta.get("creditText", ""))
+def invert_name(name: str) -> str:
+    parts = name.split()
+    return f"{parts[-1]}, {' '.join(parts[:-1])}" if len(parts) >= 2 else name
 
-        # Build the XML tree
-        text_elem = ET.Element("TEXT", attrib={
-            "id":             stem,
-            "xml:lang":       "trv",
-            "dialect":        "Truku",
-            "audio":          wav_name,
-            "source":         source,
-            "copyright":      "CC BY-NC",
-            "citation":       citation,
-            "BibTeX_citation": bibtex,
-        })
-        text_elem.text = "\n    "                       # indent before AUDIO
 
-        audio_elem = ET.SubElement(text_elem, "AUDIO", file=wav_name)
-        audio_elem.tail = "\n"                          # newline after AUDIO
+def sentence_case(value: str) -> str:
+    return value[:1].upper() + value[1:] if value else value
 
-        tree = ET.ElementTree(text_elem)
-        ET.indent(tree, space="    ")                   # pretty-print (Python ≥ 3.9)
 
-        with open(xml_path, "w", encoding="utf-8") as fh:
-            fh.write("<?xml version='1.0' encoding='UTF-8'?>\n")
-            tree.write(fh, encoding="unicode", xml_declaration=False)
-            fh.write("\n")
+def load_manifest(path: Path = MANIFEST) -> dict[str, object]:
+    return json.loads(path.read_text(encoding="utf-8"))
 
-        print(f"  wrote {xml_path.relative_to(SCRIPT_DIR)}")
 
-    print(f"\nDone — {len(wav_files)} XML file(s) written to XML/")
+def load_metadata(directory: Path = METADATA_DIR) -> dict[str, dict[str, object]]:
+    metadata = {}
+    for metadata_file in sorted(directory.glob("*-ro-crate-metadata.json")):
+        item_id = metadata_file.name.removesuffix("-ro-crate-metadata.json")
+        metadata[item_id] = json.loads(
+            metadata_file.read_text(encoding="utf-8")
+        )["metadata"]
+    return metadata
+
+
+def metadata_wavs(metadata: dict[str, object]) -> set[str]:
+    return {
+        Path(part["@id"]).name
+        for part in metadata.get("hasPart", [])
+        if str(part.get("@id", "")).lower().endswith(".wav")
+    }
+
+
+def validate_manifest(
+    manifest: dict[str, object], metadata: dict[str, dict[str, object]]
+) -> None:
+    if manifest.get("schema_version") != 1:
+        raise ValueError("audio manifest schema_version must be 1")
+    entries = manifest.get("files")
+    if not isinstance(entries, list) or len(entries) != 30:
+        raise ValueError("audio manifest must contain exactly 30 files")
+
+    names = [entry.get("file") for entry in entries]
+    if len(names) != len(set(names)) or any(
+        not isinstance(name, str) or Path(name).name != name for name in names
+    ):
+        raise ValueError("audio manifest filenames must be unique basenames")
+
+    expected_by_item: dict[str, set[str]] = {}
+    for entry in entries:
+        name = entry["file"]
+        item_id = entry.get("paradisec_item")
+        if item_id not in metadata:
+            raise ValueError(f"unknown PARADISEC item for {name}: {item_id}")
+        item = metadata[item_id]
+        if entry.get("source_url") != item.get("@id"):
+            raise ValueError(f"source URL drift for {name}")
+        if entry.get("hf_path") != f"Truku/{name}":
+            raise ValueError(f"unexpected Hugging Face path for {name}")
+        if name not in metadata_wavs(item):
+            raise ValueError(f"metadata does not enumerate {name}")
+        expected_by_item.setdefault(item_id, set()).add(name)
+
+    if set(expected_by_item) != set(metadata):
+        raise ValueError("manifest and committed metadata item sets differ")
+    for item_id, item in metadata.items():
+        if expected_by_item[item_id] != metadata_wavs(item):
+            raise ValueError(f"incomplete WAV coverage for {item_id}")
+
+
+def build_text(entry: dict[str, object], metadata: dict[str, object]) -> ET.Element:
+    filename = str(entry["file"])
+    stem = Path(filename).stem
+    text = ET.Element(
+        "TEXT",
+        attrib={
+            "id": stem,
+            "xml:lang": "trv",
+            "dialect": "Truku",
+            "audio": filename,
+            "source": str(metadata["@id"]),
+            "copyright": "CC BY-NC",
+            "citation": format_citation(str(metadata["creditText"])),
+            "BibTeX_citation": format_bibtex(str(metadata["creditText"])),
+        },
+    )
+    ET.SubElement(text, "AUDIO", file=filename)
+    ET.indent(text, space="    ")
+    return text
+
+
+def serialize_text(text: ET.Element) -> str:
+    output = io.StringIO()
+    ET.ElementTree(text).write(output, encoding="unicode", xml_declaration=False)
+    return "<?xml version='1.0' encoding='UTF-8'?>\n" + output.getvalue() + "\n"
+
+
+def main() -> None:
+    manifest = load_manifest()
+    metadata = load_metadata()
+    validate_manifest(manifest, metadata)
+    entries = manifest["files"]
+    expected_names = {Path(entry["file"]).with_suffix(".xml").name for entry in entries}
+
+    XML_DIR.mkdir(parents=True, exist_ok=True)
+    unexpected = {path.name for path in XML_DIR.glob("*.xml")} - expected_names
+    if unexpected:
+        raise SystemExit(f"unexpected generated XML files: {sorted(unexpected)}")
+
+    for entry in entries:
+        item = metadata[entry["paradisec_item"]]
+        xml_path = XML_DIR / Path(entry["file"]).with_suffix(".xml").name
+        xml_path.write_text(serialize_text(build_text(entry, item)), encoding="utf-8")
+        print(f"wrote {xml_path.relative_to(CORPUS_ROOT)}")
+    print(f"Generated {len(entries)} complete audio-only XML files.")
+
+
+if __name__ == "__main__":
+    main()

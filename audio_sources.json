@@ -559,7 +559,14 @@
       "path_mode": "language_file",
       "xml_root": "Corpora/TangRecordingsOfTaroko/XML",
       "expected_audio_files": 30,
-      "source_type": "source"
+      "source_type": "source",
+      "post_download": [
+        "{python}",
+        "Corpora/TangRecordingsOfTaroko/CodeAndDocs/prepare_audio.py",
+        "--source-dir",
+        "Corpora/TangRecordingsOfTaroko/Audio",
+        "--rebuild"
+      ]
     },
     {
       "corpus": "Whitehorn_Collection",
