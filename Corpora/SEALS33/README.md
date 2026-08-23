@@ -1,74 +1,85 @@
-# SEALS conference website
+# Formosan-SEALS
 
-## License and AI Use
+Source-faithful Saisiyat and Seediq text from the SEALS 33 national-languages page.
 
-This corpus is subject to its source license and the central FormosanBank terms in [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI Use is prohibited without prior written permission.
+## License and AI use
 
-## Contents
+This corpus is subject to its source rights and the central FormosanBank terms in [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI use is prohibited without prior written permission.
 
-This corpus contains the translated sections of the [2024 SEALS conference](https://sites.google.com/view/seals33/national-languages?authuser=0) website, graciously provided by the authors.
+## Source and permission
 
-The 2024 South East Asian Linguistic Society meeting took place in Taipei. The main pages of the website were available in Seediq and Saisiyat (as well as Mandarin and English, which serve as the translation tiers here).
+The source is the SEALS 33 organizing committee's [national-languages page](https://sites.google.com/view/seals33/national-languages). It presents parallel Mandarin, Saisiyat, and Seediq text, with English translations for program titles.
 
-- `XML/Seediq/seediq_SEALS.xml` — 29 sentences, `xml:lang="trv"`, `dialect="unknown"`
-- `XML/Saisiyat/saisiyat_seals.xml` — 29 sentences, `xml:lang="xsy"`
+The Formosan Corpora Basecamp card records the organizers' permission to include the page in FormosanBank. The XML therefore identifies the organizing committee as the copyright holder and says that FormosanBank uses the material with permission. The previous `CC-BY-NC` claim was removed because the source and permission record do not establish that license.
 
-There is no audio and no word/morpheme segmentation.
+## Corpus contents
 
-## Project structure
+- `XML/Saisiyat/saisiyat_seals.xml`: 28 source rows, `xml:lang="xsy"`, `dialect="Saisiyat"`.
+- `XML/Seediq/seediq_SEALS.xml`: 28 source rows, `xml:lang="trv"`, `dialect="unknown"`.
+- Each retained row has a Mandarin translation. Fifteen retained program rows also have English translations.
+- There is no audio and no word or morpheme analysis.
 
-- **`XML/`** — the published FormosanBank XML, one directory per language.
-- **`CodeAndDocs/`** — reproduction infrastructure:
-  - `pre_correction_snapshot/XML/` — pristine pre-cleaning snapshot (see below);
-  - `make_xml.sh` — regenerates `XML/` from the snapshot (see below).
+The source has 29 parallel rows. Source row 25 is excluded from both languages under POL-016 because both Formosan titles contain reconstruction asterisks. Its exact source text remains in `CodeAndDocs/data/source_snapshot.json`, and the original stable S IDs are preserved with a deliberate gap at 25.
 
-## Provenance and the pre-correction snapshot (POL-035)
+## Publication provenance
 
-The XML files were created **by hand**, by copy-and-paste from the conference website; there is no scraper and no raw source data committed, so the corpus is **not regenerable from source**. Per POL-035, before the automated cleaning pipeline first touched the published XML (2026-08-11), the pristine XML was snapshotted to `CodeAndDocs/pre_correction_snapshot/XML/`. That snapshot is the reproduction baseline: the published `XML/` is derived from it by the pipeline below, and (per POL-038) neither the snapshot nor the published XML is ever edited by hand.
+- Development baseline: the private Formosan-SEALS repository, audited and approved on 2026-08-23.
+- FormosanBank tooling used for QC: `3a3c47c220520113f747e6a2d441494000e13c4b`.
+- QC verdict: `ready to port` on 2026-08-23, with 0 applicable hard findings and 0 port-readiness warnings.
+- Stable IDs: TEXT IDs remain `saisiyat_seals` and `seediq_SEALS`; S IDs are the source row numbers, with row 25 deliberately absent.
 
-## Processing pipeline
+## Reproduction
 
-The entire post-scrape pipeline is wrapped by an executable script:
+Create an environment and install the pinned public reproduction dependencies:
 
 ```bash
-./CodeAndDocs/make_xml.sh [FORMOSANBANK_ROOT]
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r CodeAndDocs/requirements.txt
 ```
 
-It first restores `XML/` from the pre-correction snapshot — the pipeline's starting point, since the corpus has no other source data — and then runs the three steps below, using the QC scripts of the FormosanBank checkout the corpus lives in (pass a path or set `FORMOSANBANK_ROOT` to use another checkout; set `PYTHON` to override the interpreter, which defaults to the root's `.venv`). The script is idempotent — it always rebuilds from the snapshot.
+Run the complete build against a current FormosanBank checkout:
 
-The steps, in order:
+```bash
+./CodeAndDocs/reproduce.sh
+```
 
-1. **Clean XML**
+The script performs these steps in order:
 
-   ```bash
-   python QC/cleaning/clean_xml.py --corpora_path Corpora/SEALS33/XML
-   ```
+1. Build source-tier XML from the committed structured snapshot.
+2. Audit all source rows and the POL-016 exclusion.
+3. Run the manual-edits phase, which is an explicit no-op because this corpus has no manual-edits file.
+4. Run FormosanBank's source-safe XML cleaner.
+5. Regenerate standard FORM with `standardize.py --copy`.
+6. Regenerate original and standard PHON with source orthography `Ortho94`; standard PHON follows FormosanBank's Ortho113 registry.
+7. Repeat the source audit and remove the reviewed ephemeral cleaner-warning CSV.
 
-   - Removes empty XML elements.
-   - Flattens Unicode so that diacritics are merged with the characters they modify (NFC).
-   - Replaces HTML escape codes with the corresponding characters and canonicalizes punctuation look-alikes (dashes, curly apostrophes) and null glyphs (`ø/Ø` → `∅`).
-   - Quote-glottal correction makes no rewrites in this corpus: no quote evaluation runs for Seediq (no attestation dictionary), so the loan-autonym apostrophes in `'Tayal` (S16, S26) are preserved, and the Saisiyat pass changes nothing (it only emits audit flags). Warning sidecars (`cleaner_warnings.csv`) are per-run reports: review, then delete; never commit.
+The source transcription is Ortho94. Current FormosanBank conversion tables contain no Ortho94-to-Ortho113 spelling rules for either Saisiyat or Seediq, so standard FORM is a machine-owned copy. The Seediq source does not identify one of the registered dialects, so it uses the evidence-preserving `unknown` route and the registered default phonology column.
 
-2. **Create the standard tier**
+The cleaner's repeated-dash, bracket, apostrophe, and Chinese-quotation rewrites are audited as current project normalization. Ambiguous Saisiyat apostrophe warnings are accepted only because the final source audit checks every resulting original FORM against the committed source row.
 
-   ```bash
-   python QC/utilities/standardize.py --corpora_path Corpora/SEALS33/XML --remove_accents
-   ```
+## Source refresh and audit
 
-   - Copies every original `<FORM>` to a `kindOf="standard"` `<FORM>`, then deletes accents/stress diacritics and removes S-level null-morpheme units (`∅` plus any bridging hyphen).
-   - No spelling conversion is applied (no TSV): the transcription is already the 94 Orthography, which for our purposes is the same as the 113 Orthography. In this corpus the originals carry no accents, so the only textual effect beyond the copy is the removal of the `∅` unit in S25 of each file.
+Normal reproduction is offline and uses the committed snapshot. To verify that the live page still matches it:
 
-3. **Add IPA**
+```bash
+python CodeAndDocs/scripts/scrape_source.py --check
+```
 
-   ```bash
-   python QC/utilities/add_phonology.py --corpora_path Corpora/SEALS33/XML --orthography Ortho94
-   ```
+To intentionally refresh the snapshot after reviewing a live-source change:
 
-   - Adds a `<PHON>` element for each sentence-level `<FORM>`, containing IPA.
-   - Ortho94 is used for the "original" tier because the text lacks the distinguishing features of Ortho113.
-   - Note the tier semantics for Seediq `ey`: the original-tier profile voices `y` (→ `əj`), while the standard-tier profile treats `ey` as a digraph (→ `e`).
+```bash
+python CodeAndDocs/scripts/scrape_source.py
+```
 
-## Known caveats
+The scraper fails closed if the audited page structure, 29-row sequence, 16 English-title rows, or presenter-block accounting changes.
 
-- **S25** (both files) is a talk title containing reconstructed proto-forms (`*-ʔ, *-h, *-∅`). The asterisks are faithful to the source; the Saisiyat S25 is actually the English title, so its PHON is English-rendered-through-the-Saisiyat-profile.
-- The Saisiyat file uses `:` for vowel length; it is retained in PHON for Saisiyat but treated as punctuation for Seediq.
+Run the focused tests and source audit with:
+
+```bash
+cd CodeAndDocs
+python -m pytest -q
+python scripts/source_audit.py --json
+```
+
+Generated XML belongs only in `XML/`. Audit reports, QC reports, warning sidecars, caches, and local paths are not committed.
