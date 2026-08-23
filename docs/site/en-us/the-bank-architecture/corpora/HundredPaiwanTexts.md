@@ -2,23 +2,22 @@
 
 ### **Overview**
 
-[The 100 Paiwan Texts](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/HundredPaiwanStories) corpus contains 100 morphologically parsed and glossed texts from Early and Whitehorn (2003).
-
+[The 100 Paiwan Texts](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/HundredPaiwanStories) corpus contains 100 morphologically analyzed and glossed Paiwan texts from Early and Whitehorn (2003). The published XML has 2,921 sentence elements, including 2,916 source sentences and 5 complete variants for optional source tokens.
 
 <!-- CORPUS STATS START -->
 ### Corpus Statistics
 
 | | Paiwan<br>Central | Paiwan<br>Eastern | Paiwan<br>Northern | Paiwan<br>Southern | Paiwan<br>unknown |
 | --- | --- | --- | --- | --- | --- |
-| Word count | 3,714 | 1,198 | 9,017 | 9,444 | 1,105 |
+| Word count | 3,719 | 1,198 | 9,021 | 9,496 | 1,122 |
 | Total audio | 0 | 0 | 0 | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 | 0 | 0 | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 | 0 | 0 | 0 |
 | Translated words |  |  |  |  |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 3,714 | 1,198 | 9,017 | 9,444 | 1,105 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 3,719 | 1,198 | 9,021 | 9,496 | 1,122 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 | 0 | 0 | 0 | 0 |
-| Morphologically segmented | 3,714 | 1,198 | 9,017 | 9,444 | 1,105 |
-| Glossed words | 3,714 | 1,198 | 9,017 | 9,444 | 1,105 |
+| Morphologically segmented | 3,719 | 1,198 | 9,021 | 9,496 | 1,122 |
+| Glossed words | 3,719 | 1,198 | 9,021 | 9,496 | 1,122 |
 
 ***
 
@@ -26,48 +25,30 @@
 
 ### **Corpus Processing**
 
-This corpus was originally published as a book. Prof. Early graciously provided the original Word document, which we scraped. The initial conversion involved the following steps:
+The corpus was rebuilt in August 2026 from two checksum-pinned Word documents supplied by the author. All 268 rendered source pages were reviewed. The public repository contains the derivative XML and reproducibility code, but not the Word files or private permission evidence.
 
-1. The free translation was not always on its own line in the docx file. This was fixed manually, the result being `Paiwan Ch2.docx`. 
+The rebuild preserves the natural Paiwan line at the sentence tier and the separate source analysis and gloss lines at the word and morpheme tiers. It also:
 
-2. The scripts in the Jupyter notebook `script.ipynb` was then used to create the XMLs.
+* restores the first sentence of story 091, nine omitted final words, and four XML files missing from the earlier development output;
+* expands five optional tokens into complete sentence variants;
+* records two word-alignment decisions, three translation-note extractions, one punctuation repair, four text-metadata corrections, and 166 exact sentence-surface decisions;
+* preserves all 64,198 identifiers from the previous public version while assigning unique identifiers to restored material; and
+* marks the one source morpheme without a gloss, final `-i` in sentence `078S4`, as editorially unknown instead of inventing a meaning.
 
-3. The character encodings from the original Word document did not transfer correctly, and no automatic solution was found. These were fixed using regular expressions (probably; unfortunately, the exact process was not recorded).
+The deterministic pipeline rebuilds the original tiers, runs the shared cleaner, creates standard forms, generates phonology, resolves the source orthography's question-mark and glottal-stop ambiguity, applies the reviewed sentence decisions, and runs structural, text, gloss, and source-scrape validation. A redundant Ferrell conversion row was removed so uppercase `Ḍ` now maps to case-preserving standard `Dr`. The corrected conversion table passes its standalone audit.
 
-4. The following lines were fixed by hand, following the authors' errata notes:
-
-story 061, sentence 034<br>
-story 062, sentence 022<br>
-story 071, sentence 064<br>
-story 072, sentence 045<br>
-story 074, sentence 070<br>
-story 075, sentence 075<br>
-story 095, sentence 008<br>
-story 096, sentence 049<br>
-story 097, sentence 022<br>
-
-5. The FormosanBank cleaning and orthography tools were run. This normalized punctuation and created a standard orthography tier.
-
-6. Because the original used a slightly different orthography than the modern orthography, the local script `convert.py` was used to convert the orthography to the standard. A table showing the conversion of the original orthography to IPA is available in the book itself. We used a similar conversion table provided by ILRDF for the standard modern orthography we are using. Note that Early and Whitehorn describe a few of the phonemes slightly differently from ILRDF, perhaps reflecting dialectal differences.
-
-The published corpus has since received additional repairs (language tags for morpheme glosses, infix and reduplication segmentation, duplicate ID fixes, and several hand-corrected word and morpheme alignment errors) and was fully regenerated in August 2026 with FormosanBank's current cleaning, standardization, and phonology tools. Highlights of the regenerated version:
-
-* The PHON tiers contain IPA only: punctuation and morpheme-segmentation hyphens are excluded, and the orthography-to-IPA conversion no longer re-maps its own output (e.g. standard `tj` is now consistently IPA `c`).
-* In the source orthography the character `?` is both the glottal-stop letter and question-mark punctuation, and `'` appears only as a nested quotation mark. A corpus-specific step (`fix_ferrell.py`) disambiguates every occurrence from context — the English translation's question marks, quote adjacency, sentence position, and corpus-wide attestation — so question marks are restored on the standard tier and no spurious glottal stops appear in the IPA. The source's `word(?)` uncertainty annotations are likewise treated as punctuation, not glottals.
-* All four texts whose dialect is unknown (`090`, `091`, `097`, `099`) now carry complete phonological tiers (see Corpus Notes).
-
-The [source README](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/HundredPaiwanStories) records the exact current pipeline, which can be re-run end-to-end, and the manual corrections.
+The final audit reports zero hard findings across all four validator families. The remaining soft findings are fully classified as source notation or canonical infix and reduplication structures. The [corpus README](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/HundredPaiwanStories) documents the reproducible workflow, and the [audit report](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/HundredPaiwanStories/CodeAndDocs/reports/audit-report.md) records the evidence.
 
 ### **Corpus Notes**
 
-The published PDF remains the reference for checking the XML. IPA in four texts whose dialect is currently unknown (`090`, `091`, `097`, and `099`) was generated with the default mapping and is provisional. Please report any errors to the FormosanBank maintainers.
+The source does not identify a supported dialect for texts `090`, `091`, `097`, and `099`. Their dialect remains `unknown`, and their generated phonology uses the default Paiwan profile. These tiers should be revisited if source-supported dialect metadata becomes available.
 
-### **Access Details**
+### **Rights and Access**
 
-Users of this corpus are encouraged to obtain a copy of the original text. A PDF is currently available for [free from the Australian National University](https://openresearch-repository.anu.edu.au/server/api/core/bitstreams/5f377c02-9051-40b3-b839-7108229b3f84/content). This book has extensive information about the texts and the language, including a sketch grammar. 
+The author granted permission for attributed, non-profit derivative publication. For-profit republication of the source as-is is not permitted. This permission is not represented as a Creative Commons license. The corpus is also subject to FormosanBank's central license and AI-use terms.
+
+Users are encouraged to consult the published source. A PDF is available from the [Australian National University repository](https://openresearch-repository.anu.edu.au/server/api/core/bitstreams/5f377c02-9051-40b3-b839-7108229b3f84/content), which also provides the grammatical and cultural context for the texts.
 
 ### **Citation**
 
-Early, R. J., and Whitehorn, J. (2003). One hundred Paiwan texts. Pacific Linguistics, Research School of Pacific and Asian Studies, The Australian National University.
-
-The corpus README states that the corpus is available CC BY-NC with permission from R. J. Early. The current XML files are labeled public domain. Until those notices are reconciled, users should follow the stricter CC BY-NC terms. The text itself is also freely available online from several sources.
+Early, R. J., and Whitehorn, J. (2003). *One Hundred Paiwan Texts*. Pacific Linguistics, Research School of Pacific and Asian Studies, Australian National University.
