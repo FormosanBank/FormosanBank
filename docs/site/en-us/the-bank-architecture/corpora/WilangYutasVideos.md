@@ -1,8 +1,15 @@
 # Wilang Yutas Videos
 
-Wilang Yutas was an Atayal elder who, with his collaborator 劉宇陽, recorded a large number of videos speaking in Atayal, which can be found on his [YouTube Channel](https://www.youtube.com/@wilangyutas9297). Some of the audio is transcribed, and a smaller portion has been translated into Mandarin. Permission to republish was generously provided by Wilang Yutas's collaborator, 劉宇陽.
+Wilang Yutas was an Atayal elder who, with his collaborator 劉宇陽, recorded
+a large number of videos speaking in Atayal. The recordings are available on
+his [YouTube channel](https://www.youtube.com/@wilangyutas9297). Some of the
+audio is transcribed, and a smaller portion has been translated into Mandarin.
+Permission to republish was generously provided by Wilang Yutas's
+collaborator, 劉宇陽.
 
-All audio is available. All text is Atayal (`tay`), dialect Sekolik: 82 XML files, of which 34 carry transcripts.
+All audio is available. All text is Atayal (`tay`), Sekolik dialect. The
+corpus has 82 XML files: 34 transcript files with 3,014 timestamped sentence
+records and 48 audio-only files.
 
 ***
 
@@ -28,23 +35,32 @@ All audio is available. All text is Atayal (`tay`), dialect Sekolik: 82 XML file
 
 # Notes
 
-* Many of the videos lack transcripts. These have XMLs that point to the audio file, but there are no <S> elements.
-* Many other videos have only partial transcripts. In these cases, the main XML contains only the transcribed part of the audio. A second XML with the postfix "_untranscribed" has no <S>s and a reference to a file that contains the remaining audio.
+* Many of the videos lack transcripts. These have XML files that point to the audio file, but there are no `<S>` elements.
+* Many other videos have only partial transcripts. In these cases, the main XML contains only the transcribed part of the audio. A second XML with the postfix `_untranscribed` has no `<S>` elements and references the remaining audio.
 * Segments that were not transcribable are marked as `<UNCLEAR/>`.
-* Many videos involve multiple speakers. The original transcriptions have the second speaker's text in parentheses. We replaced the parentheses with periods so that the text will be standard. People who want to do diarization can inspect `make_xml.py` to figure out how to mark text by speaker (note that we don't have timestamps for separate speakers).
+* Many videos involve multiple speakers. The source captions put additional speakers in parentheses without separate timestamps. The corpus retains their text and records `notes="multiple speakers"`, but it cannot provide speaker-level timing.
 * A few sentences quote Japanese song lyrics (kana/kanji) and one sentence contains a Bopomofo fragment (`ㄇ`) from the transcriber; these are faithful to the source subtitles and are intentionally kept.
-* Time stamps are derived from the subtitles themselves. We do not guarantee that these align perfectly with the actual audio.
+* Timestamps come from the source captions and may not align perfectly with the audio.
 
 ***
 
-## **Corpus Processing**
+## Corpus Processing
 
-The corpus is rebuilt in four steps, all committed under `CodeAndDocs/`:
+The text rebuild is pinned and does not scrape the live YouTube channel:
 
-1. `scripts/scrape.py` pulls the subtitle transcripts from the YouTube channel into `raw_scrape/`. These `.txt` files are committed, so the corpus text regenerates without network access.
-2. `scripts/make_xml.py` converts the transcripts into FormosanBank XML (Chinese in filenames is converted to Pinyin).
-3. The audio is downloaded: end users should run `./download_audio_data.sh` (requires `git-lfs`, `jq`, and the `hf` CLI) to pull the published audio from Hugging Face. Rebuilding from YouTube instead uses `scripts/download_audio.py` (requires `ffmpeg`), which downloads the audio, converts it to WAV, and segments it into units matching the subtitles (as accurately as the original time stamps allow).
-4. `CodeAndDocs/make_xml.sh` runs the QC pipeline over `XML/`: `clean_xml.py` (character and punctuation canonicalization), `standardize.py --remove_accents` (creates the `kindOf="standard"` FORM tier; no spelling conversion table exists for this corpus, so the standard tier currently equals the original verbatim), and `add_phonology.py --orthography Ortho94` (IPA `PHON` tiers; Ortho94 is assumed for the original tier, as the transcripts predate Ortho113 and the two differ little for Atayal). Audio files are never touched by this pipeline.
+1. `CodeAndDocs/video_manifest.tsv` pins all 34 public transcript inputs by path, byte count, and SHA-256. It also declares all 82 XML outputs and the 48 audio-only records.
+2. `CodeAndDocs/make_xml.py` accounts for every source line, omits only explicitly blank timestamp rows, and generates the complete XML tree.
+3. `CodeAndDocs/audit_source_alignment.py` compares every generated pre-clean element to the pinned sources and requires a complete disposition for the 21 prior MT-quality findings.
+4. `CodeAndDocs/reproduce.sh` runs source verification, cleaning, standard-tier generation, Ortho94 phonology, and nine corpus regression tests twice. Both passes must be byte-identical to the committed XML.
+
+The reviewed source accounting covers 6,455 timestamp rows: 3,014 non-empty
+rows are included and 3,441 blank rows are omitted. All 237 source translation
+lines and five wrapped source continuations are accounted for. Source-authentic
+Mandarin, Japanese, and Bopomofo content is retained.
+
+End users can run `download_audio_data.sh` to retrieve the reviewed audio from
+Hugging Face. Audio is outside the text rebuild and is never committed to the
+FormosanBank repository.
 
 ***
 
