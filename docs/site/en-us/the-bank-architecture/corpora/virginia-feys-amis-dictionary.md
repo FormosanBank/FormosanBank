@@ -4,7 +4,7 @@
 
 Virginia Fey’s Amis Dictionary represents a significant effort to document the Amis language. Originally compiled in the mid-1980s and later updated with revised orthography, the dictionary provides a valuable linguistic resource for researchers, educators, and community members interested in Amis language study and revitalization.
 
-This dictionary is a critical addition to FormosanBank, complementing other corpora and offering unique insights into the lexical richness and semantic nuances of Amis. It includes a wide range of entries, along with English and Chinese definitions, and in some cases, example sentences in Amis.
+FormosanBank publishes 2,041 deduplicated Amis example sentences and phrases from the dictionary, with English and Mandarin translations. The source is routed to the Xiuguluan dialect and retains alternative readings as separate translation elements.
 
 ***
 
@@ -13,13 +13,13 @@ This dictionary is a critical addition to FormosanBank, complementing other corp
 
 | | Amis<br>Xiuguluan |
 | --- | --- |
-| Word count | 9,078 |
+| Word count | 9,051 |
 | Total audio | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 |
 | Translated words |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 9,078 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 9,078 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 9,051 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 9,051 |
 | Morphologically segmented | 0 |
 | Glossed words | 0 |
 
@@ -33,16 +33,16 @@ This dictionary is a critical addition to FormosanBank, complementing other corp
 First compiled by Virginia Fey in 1986, this dictionary has undergone several stages of transformation:
 
 1. **Original Documentation:** Initially published with older Catholic-style orthography, the dictionary aimed to be a reference guide for speakers and learners of Amis.
-2. **Orthographic Revisions:** Thanks to the work of linguists—most notably Wu Ming-yi—this corpus was later converted into the newer orthography aligned with the Indigenous language writing systems recognized by the Council of Indigenous Peoples and other linguistic authorities.
-3. **Digital Adaptation:** The digitized version comes from community-driven efforts as documented in repositories like [GitHub: miaoski/amis-data](https://github.com/miaoski/amis-data). This open-source collaboration made it possible to incorporate the dictionary into FormosanBank’s standardized XML format.
+2. **Orthographic Revisions:** Thanks to the work of linguists, most notably Wu Ming-yi, this corpus was later converted into the newer orthography aligned with the Indigenous language writing systems recognized by the Council of Indigenous Peoples and other linguistic authorities.
+3. **Digital Adaptation:** The digitized version comes from the publicly accessible [miaoski/amis-data](https://github.com/miaoski/amis-data) repository. The source is licensed CC BY-NC 3.0 and was adapted to FormosanBank’s standardized XML format.
 
 ***
 
 ### Features of the Dictionary
 
-* **Lexical Entries:** Includes a broad array of lexical items covering everyday objects, actions, cultural concepts, flora, fauna, and more.
-* **Multilingual Definitions:** Each entry typically provides English and Chinese definitions, making the dictionary accessible to a wider audience, and allows broader research extents.
-* **Example Sentences:** Select entries include Amis example sentences, offering context and illustrating usage.
+* **Example Inventory:** Includes 2,041 deduplicated sentence and phrase records drawn from dictionary entries covering everyday objects, actions, cultural concepts, flora, fauna, and more.
+* **Multilingual Translations:** Records include English and Mandarin translations, with distinct alternatives retained separately.
+* **Source Provenance:** Transformed source fields are preserved in notes, and the complete example inventory is checked against a pinned maintenance sheet.
 * **Revised Orthography:** The dictionary data has been updated from older Catholic orthographic conventions to a standardized orthography used in current Indigenous language education and revitalization efforts.
 
 ***
@@ -51,32 +51,19 @@ First compiled by Virginia Fey in 1986, this dictionary has undergone several st
 
 The processing pipeline for converting the dictionary data into FormosanBank’s standardized XML format included several stages:
 
-1. **Data Acquisition:** The source data was obtained from the [miaoski/amis-data](https://github.com/miaoski/amis-data) GitHub repository. A CSV file provided lexical entries, English and Chinese definitions, and sometimes example sentences in Amis.
-2. **Data Extraction and XML Conversion:**
-   * Each entery in the CSV file consisted of a word in Amis, its English definition as well as the Chinese defintion. Some of the enteries would have example sentences and associated translations with them.
-   * The CSV data was scraped and structured into XML format following the FormosanBank XML standard, ensuring compatibility with other corpora in FormosanBank.
-   * Each dictionary entry was represented as an XML `<S>` element, containing
-     * `<FORM>`: The original word or sentence.
-     * `<TRANSL>`: For English and Chinese translations when available.
-3. **Cleaning, Standardization, and IPA:**
-   * The converted XML was then **cleaned by hand** to address parentheticals and other annotations. Because that hand-cleaning is not reproducible from the source CSV, the hand-cleaned XML (preserved as a pristine snapshot in `CodeAndDocs/pre_correction_snapshot/`) is the pipeline's input; `CodeAndDocs/make_xml.sh` regenerates the published XML from it.
-   * The pipeline ensures every sentence id is unique, then cleans the original tier (`clean_xml.py`: removes empty elements, decodes HTML escapes, normalizes punctuation and Unicode, and applies the Amis apostrophe/quote classifier, logging any corrections to `CodeAndDocs/quote_corrections.csv`), creates the `kindOf="standard"` FORM tier (`standardize.py --remove_accents`; no spelling conversion is applied because the dictionary's orthography already matches the reference orthography), and adds IPA `PHON` tiers for both FORMs (`add_phonology.py --orthography Ortho113`).
-4. **Duplicate Removal:**
-   * As a dictionary is a reference resource, it keeps no repeated sentences: the pipeline ends by removing every sentence whose standard FORM text repeats an earlier one, keeping the first occurrence. Alternative translations from removed duplicates are preserved on the surviving entries as `<TRANSL>` elements marked `ver="alt"`.
-   * The published file contains 2,040 sentences.
-5. **Quality Control:**
-   * Several QC steps were performed, including:
-     * **Cross-referencing word lists and API results** to ensure all entries were successfully processed.
-     * **Validation of XML structure** to confirm compliance with the FormosanBank schema.
-     * **Manual checks of random samples** to verify data integrity.
-     * **Character Frequency Analysis** to spot any abnormalities in the orthography with [the official orthography](https://yongfu.name/temp-data/pdf/writingsystemsdoc.pdf) as well as [the ILRDF Dictionaries Corpus](ilrdf-dictionaries.md) as references.
+1. **Pinned source:** The pipeline uses a 6,899-row maintenance sheet with 2,012 complete Amis, English, and Mandarin example rows. It also pins the relevant upstream files and commit from [miaoski/amis-data](https://github.com/miaoski/amis-data/tree/494e5e4bc276c4d2b8b7b827a2c737597239a73b), with exact hashes.
+2. **Reconstruction baseline:** The original converter and history of hand cleaning are unavailable. Under POL-035, the preserved pre-correction XML is the immutable baseline for reproducible repairs.
+3. **Source reconciliation:** Reviewed source decisions expand every form alternative, repair documented form and translation defects, correct the license metadata to CC BY-NC 3.0, and preserve exact transformed source fields in notes. A fail-closed audit accounts for 2,012 source rows and 2,051 pre-dedup source units.
+4. **Canonical generation:** The pipeline cleans the original tier, creates machine-owned standard FORM tiers with `standardize.py --remove_accents`, regenerates original and standard PHON with the Xiuguluan Ortho113 profile, and removes exactly ten declared duplicate attestations. Distinct translations from removed duplicates are merged into the surviving records with `ver="alt"`.
+5. **Quality control:** The final corpus has 2,041 sentence records, zero XML issues, zero duplicate groups, zero unresolved PHON markers, complete source accounting, and zero HARD or WARN port-readiness findings.
 
 ***
 
 ### **Corpus Notes**
 
-* According to Li et al. (2024), "Fey’s (1986) dictionary ... misses certain phonemic contrasts, such as the distinction between the glottal stop and the pharyngealized stop, for example, e.g., Central Amis ’op’op ‘frog’ vs. qopo ‘assemble’." However, the repo from which this corpus is derived states that "Thanks to Mr. Wu Ming-yi for rewriting the old Catholic spelling into the newer spelling of the original Minzu Kung Hui version." It is not clear whether this addressed the concerns raised by Li and colleagues, but the orthography seems to be a good match for our reference corpus.
-* There are often multiple translations into the same non-Formosan language for a particular sentence — including alternative translations carried over from removed duplicate entries, which are marked `ver="alt"`. Thus do not assume there is only one `<TRANSL>` element per target language.
+* Wu (2006, Table 1.4) identifies Fey 1986 as a dictionary of Standard Central Amis from Fuyuan to Fuli and Fengbin to Yiwan. FormosanBank’s registry maps Central to Xiuguluan, which controls the XML dialect value.
+* The pinned upstream README states that Wu Ming-yi rewrote the old Catholic spelling into the newer Council of Indigenous Peoples spelling. The current orthography detector ranks Xiuguluan Ortho113 first. Li et al. (2024) nevertheless caution that Fey’s dictionary misses some phonemic contrasts, so users should not infer distinctions absent from the source.
+* A sentence may contain multiple translations in the same target language, including alternatives carried over from removed duplicate entries. Later alternatives are marked `ver="alt"`.
 
 ***
 
@@ -90,14 +77,14 @@ The processing pipeline for converting the dictionary data into FormosanBank’s
 
 ### Access Details
 
-* The original digital online dictionary that was used to generate the corpus in FormosanBank can be found here: [https://github.com/miaoski/amis-data](https://github.com/miaoski/amis-data)
+* The pinned upstream revision used by the corpus is available at [miaoski/amis-data commit 494e5e4](https://github.com/miaoski/amis-data/tree/494e5e4bc276c4d2b8b7b827a2c737597239a73b).
 * The corpus XML and retained processing materials are available [in FormosanBank](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/Virginia_Fey_Dictionary).
 
 ***
 
 ### Copyrights
 
-According to [https://github.com/miaoski/amis-data](https://github.com/miaoski/amis-data) (the github repo we sourced this from), permission for a CC-BY-NC license was provided by the Taipei Bible Society:
+According to the pinned [upstream repository](https://github.com/miaoski/amis-data/tree/494e5e4bc276c4d2b8b7b827a2c737597239a73b), the Taiwan Bible Society authorized digitization and the source data is CC BY-NC 3.0:
 
 > 謹感謝 台灣聖經公會 授權電子化。商業使用之授權，請洽\[台灣聖經公會]。
 
@@ -105,7 +92,7 @@ According to [https://github.com/miaoski/amis-data](https://github.com/miaoski/a
 
 > This work is licensed under the Creative Commons 姓名標示-非商業性 3.0 Unported License. To view a copy of this license, visit [http://creativecommons.org/licenses/by-nc/3.0/deed.zh\_TW](http://creativecommons.org/licenses/by-nc/3.0/deed.zh_TW).
 
-The public XML currently records CC BY-SA, which conflicts with the upstream CC BY-NC notice quoted above. Until that metadata is reconciled, users should follow the stricter upstream CC BY-NC terms.
+The public XML records the same CC BY-NC 3.0 license.
 
 ***
 
@@ -126,3 +113,4 @@ In accordance with our [Terms of Use](../../additional-resources/terms-of-use.md
 
 * Fey, V. (1986). _Amis dictionary_. Taipei: The Bible Society.
 * miaoski. (2023). _miaoski/amis-data_ \[Python]. GitHub. [https://github.com/miaoski/amis-data](https://github.com/miaoski/amis-data) (Original work published 2013)
+* Wu, J. (2006). _Verb Classification, Case Marking, and Grammatical Relations in Amis_. University at Buffalo.
