@@ -45,7 +45,7 @@ LANG_CODE_TO_NAME = load_language_codes()
 LANGUAGE_NAMES = sorted(set(LANG_CODE_TO_NAME.values()) | {"Truku"})
 
 ENG_CODES = {"eng", "en"}
-ZHO_CODES = {"zho", "zh", "zh-hant", "zh-hans"}
+ZHO_CODES = {"zho", "cmn", "zh", "zh-hant", "zh-hans"}
 
 
 def count_words(text: str | None) -> int:
