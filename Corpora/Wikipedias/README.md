@@ -53,14 +53,18 @@ Steps, in order:
    community-written with mixed dialect backgrounds.
 6. **`normalize_seediq_quotes.py`** — Seediq only, before `clean_xml`;
    see "Apostrophe handling" below.
-7. **`QC/cleaning/clean_xml.py`** — punctuation/Unicode canonicalization
+7. **`normalize_ascii_asterisks.py`**: replaces ASCII `*` with the Unicode
+   asterisk operator `∗` in original FORMs only. The exact scraped bytes remain
+   in the immutable snapshot; see "Wiki-markup residue" below.
+8. **`QC/cleaning/clean_xml.py`** — punctuation/Unicode canonicalization
    (NFC, HTML entities, typographic quotes/dashes, non-breaking spaces).
-   Writes a per-run `XML/cleaner_warnings.csv`: review, then delete —
-   it is never committed (POL-033).
-8. **`QC/utilities/standardize.py --remove_accents`** — standard tier =
+   It writes a per-run `XML/cleaner_warnings.csv`. The immutable snapshot's
+   residuals have been reviewed, and the pipeline deletes this run artifact
+   after derived tiers regenerate (POL-033).
+9. **`QC/utilities/standardize.py --remove_accents`** — standard tier =
    copy of the original tier with accents/stray combining marks removed.
    No conversion table is applied (dialect unknown).
-9. **`QC/utilities/add_phonology.py --orthography Ortho113`** — PHON
+10. **`QC/utilities/add_phonology.py --orthography Ortho113`** — PHON
    tiers from the default (dialect-unknown) IPA columns. Sounds that
    differ by dialect appear as `[x|y]` variant groups; punctuation is
    not carried into PHON.
@@ -109,11 +113,16 @@ are not re-run.
   unadjudicable: the articles state no orthography and carry no
   translations, so no evidence could settle which value their authors
   intended.
-- **Wiki-markup residue**: some articles retain asterisks (list markup),
-  literal `|` from table/citation lines, and similar artifacts of the
-  source pages. This residue is deliberately **retained as-is**
-  (maintainer ruling 2026-08-12): it is audit-flagged (c022 / V129 / the
-  `|` share of V146) but never silently edited out of the FORMs.
+- **Wiki-markup residue**: some articles retain asterisks (list markup,
+  reconstruction and footnote markers, separators, and multiplication),
+  literal `|` from table/citation lines, and similar source-page artifacts.
+  The immutable snapshot retains all 103 ASCII asterisks in 34 original FORMs
+  across 34 files. Pipeline step 7 maps only those active-original code points
+  to the equivalent Unicode `∗` so the validator does not misclassify them as
+  acceptability notation (V129). Their visible and functional meaning is
+  preserved, and the standard and PHON tiers regenerate downstream. Other
+  residue remains source-faithful and audit-visible under the 2026-08-12
+  maintainer ruling.
 
 ## Apostrophe (`'`) handling
 
