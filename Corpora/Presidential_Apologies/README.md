@@ -1,165 +1,112 @@
-# Presidential Apologies Data
+# Presidential Apologies
+
+This FormosanBank corpus builds the Presidential Apologies collection from the official 2016 apology translations. It contains 16 Indigenous-language texts aligned with Mandarin and English translations.
+
+| Field | Value |
+| --- | --- |
+| Source | [Presidential Office Indigenous Historical Justice and Transitional Justice Committee](https://indigenous-justice.president.gov.tw/) |
+| Source type | Official bilingual PDF translations and transcript snapshots |
+| Rights | Public domain in the recorded FormosanBank source authority |
+| Languages | 16 Formosan languages |
+| Canonical output | `XML/` |
+| TEXT elements | 16 |
+| Sentence elements | 524 |
+| Audio | None |
+| FormosanBank tooling commit | `3a3c47c220520113f747e6a2d441494000e13c4b` |
 
 ## License and AI Use
 
-This corpus is subject to its source license and the central FormosanBank terms in [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI Use is prohibited without prior written permission.
+The source is recorded as public domain. This corpus is also subject to the central FormosanBank terms in [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI Use is prohibited without prior written permission.
 
+## Source and alignment
 
-This repository contains code and data for processing and structuring translations of the Presidential Apology issued by the President of Taiwan towards Indigenous communities. The apology is available in the 16 official Formosan languages, as well as in Chinese and English translations. The data is organized to facilitate linguistic analysis and cultural preservation.
+`CodeAndDocs/Apologies/` contains one official PDF and one native transcript for each language. The PDFs place the Indigenous-language translation beside Mandarin. Fifteen texts have 33 aligned sections. Kanakanavu has 29 sections and its own Mandarin and English transcript files.
 
-## Notes
+The source audit matches all 524 native sections and all 524 Mandarin sections to the official PDFs. It removes layout whitespace and treats typographic width variants, quote styles, and ellipsis styles as equivalent. The title and closing section may differ only by an added terminal period in the transcript. No letters or words are normalized for alignment. See `CodeAndDocs/SOURCE_AUDIT.md`, `CodeAndDocs/data/source_alignment.csv`, and `CodeAndDocs/QC_SUMMARY.md`.
 
-*Kanakanavu* This corpus uses a small number of h's and f's, which are controversial. None of the words involving h's or f's appear in the reference ILRDF Dictionary corpus, with or without the h's and f's. Thus, we have chosen to leave them in.
+The shared English file and Kanakanavu English file are preserved official transcript snapshots. English is not printed in the bilingual PDFs, so it is checked for file integrity, section count, and deterministic XML mapping rather than PDF alignment.
 
-*Puyuma* This corpus has a number of appearances of ē. Almost all of these are due to yēncumin (which is marked as a foreign word) and sēhu. Thus, this has not been homogenized.
+Two source-content corrections and one published word-boundary reconciliation are recorded in `CodeAndDocs/data/source_corrections.csv`:
 
-*Sakizaya* A small number of f's appear to be foreign words.
+- Kavalan section `6`: spaces after two CJK annotations preserve the published lexical boundaries.
+- Saaroa section `0`: `mualiuhlʉ` was corrected to the PDF's `mualiuhlu`.
+- Truku section `25`: a semicolon was corrected to the PDF's fullwidth apostrophe after `tnpusu`.
 
-Tsou and Kavalan both had a lot of annotations in Mandarin in parentheses (e.g. `zipun( 日 本 )`, `senfa(憲法)`). These are kept in the `original` tier (source fidelity) but removed from the `standard` tier, since they aren't actually part of the utterance and aren't in the translation; they are likewise masked out of the IPA. This removal is step 5 of the pipeline (`remove_standard_cjk_annotations.py`), so it survives a rerun of `standardize.py --copy`. Bare inline Mandarin terms (code-switched utterance content such as Tsou `'e 行政院 ho`) are *not* annotations and stay in both tiers; they surface as `*` in the IPA.
+## Language and dialect authority
 
-The PHON (IPA) tiers are generated from each file's declared `dialect` column of the Ortho113 orthography tables (Amis: Xiuguluan, Bunun: Junqun, Puyuma: Nanwang, ...). Some of these dialect columns mark letters as `NA` that nevertheless occur in these texts — mostly in Mandarin/Japanese loanwords (Puyuma `sēhu`, `yēncumincu`; Amis `Balay`) — and those letters surface as `*` in the IPA (e.g. Puyuma `yēncumincu` → `j*n*umin*u`). **This is intentional** (maintainer decision, 2026-08): the `*` faithfully marks a letter the declared dialect's orthography cannot transcribe, rather than borrowing a pronunciation from another dialect's column. (An earlier build used the `default` column for every file, which transcribed these letters but ignored the declared dialect.)
+`CodeAndDocs/data/dialect_authority.tsv` is the single mapping for language codes, source files, section counts, stable TEXT IDs, dialects, and the published Seediq glottocode. The PDFs do not identify dialects. The dialect labels are carried forward from the current published FormosanBank corpus at the pinned tooling commit so this rebuild does not introduce an unsupported reinterpretation.
 
-## Project Structure
+The source orthography is processed as Ortho113. The standard FORM tier is copied from the cleaned original FORM tier. PHON is generated with each TEXT element's declared dialect column.
 
-- **Apologies**: Directory containing subdirectories for each Formosan language. Each language folder includes:
-  - A PDF file of the apology in the specific language.
-  - A TXT file of the apology, divided into 33 sections that correspond across all languages.
+## Stable IDs
 
-- **Chinese.txt** and **English.txt**: TXT files containing the apology in Chinese and English, respectively. Like the other languages, these are also divided into 33 sections.
+Published identifiers are preserved:
 
-- **Final_XML**: Directory for storing the processed XML files, structured according to the FormosanBank XML format.
+- TEXT IDs are `PA_<Language>`.
+- Sentence IDs are zero-based decimal strings in source order.
+- The 15 full translations use sentence IDs `0` through `32`.
+- Kanakanavu uses sentence IDs `0` through `28`.
 
-- **main.py**: The main script that processes the text files in each language folder and converts them into XML format, organizing sections to match across translations.
+The tests compare every identifier with the pinned published baseline. Regeneration does not renumber the corpus.
 
-## Installation
+## Reproduce and verify
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/yourusername/Presidential_Apologies.git
-   cd Presidential_Apologies
-   ```
+Create an isolated environment and install both the corpus audit dependencies and the FormosanBank dependencies:
 
-2. Set up a virtual environment (optional but recommended):
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate
-   ```
+```bash
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python -m pip install -r Corpora/Presidential_Apologies/CodeAndDocs/requirements.txt
+```
 
-3. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+Rebuild the canonical XML and run the complete audit and QC sequence:
 
-## Usage
+```bash
+PRESIDENTIAL_PYTHON=.venv/bin/python \
+  Corpora/Presidential_Apologies/CodeAndDocs/scripts/reproduce.sh --write \
+  --formosanbank-root .
+```
 
-1. **Process Text Files to XML**:
-   Run `main.py` to process the text files in each language folder and convert them into XML format.
-   
-   ```bash
-   python main.py
-   ```
+Use `--check` to rebuild in a temporary directory and compare the result with committed `XML/` and source-alignment evidence:
 
-***Output***
+```bash
+PRESIDENTIAL_PYTHON=.venv/bin/python \
+  Corpora/Presidential_Apologies/CodeAndDocs/scripts/reproduce.sh --check \
+  --formosanbank-root .
+```
 
-The processed XML files will be saved in the `Final_XML` directory.
+The script verifies the pinned FormosanBank commit and object hashes before it runs:
 
-2. **Clean XML and standardize punctuation**
+1. Source manifest and native/Mandarin PDF alignment audit.
+2. Deterministic source-tier XML generation.
+3. `clean_xml.py`.
+4. `standardize.py --copy`.
+5. `add_phonology.py --orthography Ortho113` with declared dialects.
+6. Reproducible removal of CJK-only parenthetical annotations from the standard tier.
+7. XML, text, gloss, duplicate, and port-readiness validation.
+8. Corpus tests and comparison with published stable IDs.
 
-   ```bash
-   python QC/cleaning/clean_xml.py --corpora_path Corpora/Presidential_Apologies/XML
-   ```
+The pinned authority is recorded in `CodeAndDocs/data/authority.json`. Updating that pin requires regenerating the XML and reviewing all changes against the prior published baseline.
 
-**Notes**
-   - Normalizes punctuation and whitespace on the original tier and the translations. Chinese translations get the canonical full-width double quote (C002 Branch B: `「」`/curly quotes → `＂`).
-   - Unicode is flattened so that diacritics are merged with the characters they modify; HTML escape codes are replaced with the corresponding characters.
-   - (An earlier pipeline version needed `add_original.py` to tag FORM elements with `kindOf="original"`; that is baked into the XML now and the script has been retired.)
+## Corpus-specific processing
 
-3. **Create the standard tier**
+Tsou and Kavalan include Mandarin annotations in parentheses. These remain in `FORM kindOf="original"` for source fidelity. `remove_standard_cjk_annotations.py` removes only CJK-only parenthetical groups from the standard tier and masks them from generated PHON. Bare inline Mandarin and parenthetical Latin alternatives remain untouched.
 
-The files use the 113 Orthography (except possibly Thao, but nothing else matches better).
+The declared dialect tables contain `NA` entries for some letters found mainly in loans. Those letters remain `*` in PHON. This preserves the current maintainer ruling and does not borrow values from another dialect column.
 
-   ```bash
-   python QC/utilities/standardize.py --corpora_path Corpora/Presidential_Apologies/XML --copy
-   ```
+The existing orthographic notes remain applicable:
 
-**Notes**
-   - `--copy` is a pure duplication: every `FORM kindOf="original"` gets a `kindOf="standard"` copy. The Mandarin-annotation removal happens in step 5, after the copy.
+- Kanakanavu `h` and `f` are retained.
+- Puyuma `ē` is retained, including `yēncumin` and `sēhu`.
+- Sakizaya `f` in apparent loans is retained.
 
-4. **Add IPA**
+## Layout
 
-   ```bash
-   python QC/utilities/add_phonology.py --corpora_path Corpora/Presidential_Apologies/XML --orthography Ortho113
-   ```
+- `XML/`: final generated FormosanBank XML.
+- `CodeAndDocs/Apologies/`: approved public source PDFs and transcripts.
+- `CodeAndDocs/main.py`: deterministic source-tier generator.
+- `CodeAndDocs/data/`: source, dialect, authority, correction, and alignment evidence.
+- `CodeAndDocs/scripts/`: source audit and full reproduction scripts.
+- `CodeAndDocs/tests/`: pipeline, stable-ID, source, and tier checks.
 
-**Notes**
-   - Generates original and standard PHON from the Ortho113 tables, selecting each file's declared `dialect` column (see the Notes section above about `NA` letters).
-
-5. **Remove Mandarin annotations from the standard tier**
-
-   ```bash
-   python Corpora/Presidential_Apologies/CodeAndDocs/remove_standard_cjk_annotations.py
-   ```
-
-**Notes**
-   - Removes CJK parenthetical annotations from the standard FORM (original untouched) and regenerates PHON with the annotations masked. See the script docstring for exactly what counts as an annotation. Idempotent; safe to re-run.
-   - Steps 2–5 are safe to re-run over the published `XML/` — each fully re-derives its outputs.
-
-
-
----
-
-## Code Breakdown: `main.py`
-
-## Functions
-
-### 1. `read_apologies(path, langs)`
-   - Reads the apology text files for each language and returns a dictionary with the text data for each language.
-   - **Parameters**:
-     - `path`: The path to the `Apologies` directory containing language subfolders and translation text files.
-     - `langs`: A list of language names, each corresponding to a subfolder in `Apologies`.
-   - **Returns**: A dictionary where each key is a language and each value is a list of sections (lines) in the apology text.
-   - **Functionality**:
-     - Reads English and Chinese translations from `English.txt` and `Chinese.txt`.
-     - Reads each language's apology text from `lang.txt` in the corresponding subfolder.
-     - For Kanakanavu, also reads special English and Chinese translations (`_en.txt` and `_zh.txt`).
-
-### 2. `prettify(elem)`
-   - Converts an XML element into a pretty-printed string format for readability.
-   - **Parameters**: `elem` (an XML element).
-   - **Returns**: A formatted XML string with indentation.
-
-### 3. `generate_apology_xml(lang, lang_code, apologies, out_path)`
-   - Generates an XML file for a specific language’s apology, structuring the data to include translations in English and Chinese.
-   - **Parameters**:
-     - `lang`: The name of the language being processed.
-     - `lang_code`: The language code (ISO code) for the language.
-     - `apologies`: Dictionary of apologies for each language, including translations.
-     - `out_path`: Path to save the generated XML files.
-   - **Functionality**:
-     - Creates a root XML element with metadata for the specific language.
-     - Iterates over each section of the apology, adding XML sentence (`S`) elements with `FORM` (text) and `TRANSL` (translations in Chinese and English).
-     - For Kanakanavu, uses language-specific translations (`_en` and `_zh` files) instead of the main English and Chinese files.
-     - Saves the formatted XML to the output path.
-
-### 4. `main()`
-   - Main function to set up paths, read apology texts, and generate XML files for each language.
-   - **Functionality**:
-     - Defines the language codes for each language.
-     - Reads the apology texts for each language using `read_apologies()`.
-     - Calls `generate_apology_xml()` for each language, creating XML files with mapped translations.
-
-### 5. `__main__` Block
-   - Sets up the environment for script execution by defining paths and calling `main`.
-   - Ensures the `Final_XML` directory exists for storing processed XML files.
-
----
-
-## Key Components
-
-- **Apology Text Mapping**: The script reads apology texts from different languages, including English and Chinese translations, and organizes them into a dictionary for processing.
-- **XML Structure**: Each language's apology is structured into XML format with a root `TEXT` element containing `S` elements for each section. Each `S` element includes the apology text and translations.
-- **Special Handling for Kanakanavu**: For Kanakanavu, the script uses unique English and Chinese translations (`_en` and `_zh`), instead of the main translation files.
-
-## Output Explaination
-
-All the output will be in the Final_XML folder. There will be a file for each of the languages in the FormosanBank XML format.
+Run all commands from the FormosanBank repository root. `XML/` is the canonical corpus output; do not use a legacy `Final_XML/` path.
