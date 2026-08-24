@@ -9,7 +9,10 @@ CORPUS_ROOT = Path(__file__).resolve().parents[2]
 XML_ROOT = CORPUS_ROOT / "XML"
 LEDGER_PATH = CORPUS_ROOT / "CodeAndDocs/source_records.json"
 SOURCE_PATH = CORPUS_ROOT / "CodeAndDocs/Original.pdf"
+MANIFEST_PATH = CORPUS_ROOT / "CodeAndDocs/source_manifest.json"
 XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
+PUBLICATION_NOTICE = "All rights reserved; FormosanBank has permission to publish."
+PRIVATE_SOURCE_COMMIT = "e1f52f43ab9e17b1d9a99329964b2ab64fbe864a"
 
 EXPECTED_TEXT_IDS = {
     "Amis/Day_I_Now.xml": "Montgomery_Amis_Day_I_Now",
@@ -68,7 +71,7 @@ def test_xml_matches_the_public_source_ledger() -> None:
         root = corpus[text["path"]]
         assert root.get("{http://www.w3.org/XML/1998/namespace}lang") == "ami"
         assert root.get("citation") == text["citation"]
-        assert root.get("copyright") == text["copyright"]
+        assert root.get("copyright") == text["copyright"] == PUBLICATION_NOTICE
         sentences = root.findall("S")
         assert len(sentences) == len(text["sentences"])
         for record, sentence in zip(text["sentences"], sentences, strict=True):
@@ -110,3 +113,14 @@ def test_source_pdf_matches_the_reviewed_manifest() -> None:
     assert hashlib.sha256(SOURCE_PATH.read_bytes()).hexdigest() == (
         "7a9ad6482f4d1c38a45e2ba50b4a037155d4e771ce4586d64f06852e8bf8e2bd"
     )
+
+
+def test_manifest_records_rights_and_private_source_commit() -> None:
+    manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
+    source = manifest["source"]
+    assert source["rights"] == (
+        "Publication rights confirmed by the FormosanBank maintainer on 2026-08-23; "
+        "no open license is asserted."
+    )
+    assert source["private_source_repo"] == "FormosanBank/Formosan-Old_Texts"
+    assert source["private_source_commit"] == PRIVATE_SOURCE_COMMIT

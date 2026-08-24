@@ -18,6 +18,8 @@ if [[ "$(wc -c < "$source_pdf" | tr -d '[:space:]')" != "874535" ]]; then
   exit 1
 fi
 
+"$python_cmd" "$corpus_dir/CodeAndDocs/record_publication_rights.py"
+
 "$python_cmd" "$corpus_dir/CodeAndDocs/build_corpus.py" \
   --source-ledger "$corpus_dir/CodeAndDocs/source_records.json" \
   --xml-dir "$corpus_dir/XML"

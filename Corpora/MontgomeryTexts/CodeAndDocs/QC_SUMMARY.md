@@ -6,6 +6,12 @@ This reconciliation updates only the three Montgomery 1962 Amis texts already pr
 
 No record from another collection is included in the source ledger, XML, metadata, or package.
 
+## Rights and private-source provenance
+
+The FormosanBank maintainer confirmed publication rights on 2026-08-23. No open license is asserted. The XML notice is `All rights reserved; FormosanBank has permission to publish.`
+
+The public ledger is derived from private repository `FormosanBank/Formosan-Old_Texts` at commit `e1f52f43ab9e17b1d9a99329964b2ab64fbe864a`. `record_publication_rights.py` applies and validates the decision before XML regeneration.
+
 ## Source evidence
 
 The checked source is the five-page `Original.pdf` already stored with this public corpus. It is 874,535 bytes with SHA-256 `7a9ad6482f4d1c38a45e2ba50b4a037155d4e771ce4586d64f06852e8bf8e2bd`, matching the development source manifest.
@@ -27,7 +33,7 @@ The previous unpinned PHON tiers are removed. Standard FORM tiers copy the histo
 | Gloss validator | 172 source-tiering soft findings, 0 hard |
 | Duplicate sentences | 0 groups in original and standard tiers |
 | Port readiness | 0 hard, 0 warnings |
-| Corpus tests | 5 passed |
+| Corpus tests | 6 passed |
 | Full repository suite | 1,025 passed, 4 skipped |
 | Ruff and shell syntax | passed |
 | Statistics | 3 files, 37 sentences, 351 words, 0 parse errors |
@@ -36,4 +42,4 @@ The specialized gloss-scrape audit is not a gate for this source's lexical word 
 
 ## Reproduction
 
-`scripts/reproduce.sh` verifies the source PDF hash, rebuilds the three XML files from `source_records.json`, runs the canonical cleaner, and creates copied standard tiers. `public_id_ledger.json` records the stable-ID mapping.
+`record_publication_rights.py` records the confirmed rights and private-source provenance. `scripts/reproduce.sh` verifies the source PDF hash, rebuilds the three XML files from `source_records.json`, runs the canonical cleaner, and creates copied standard tiers. `public_id_ledger.json` records the stable-ID mapping.

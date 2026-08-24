@@ -12,8 +12,8 @@ The 37 numbered examples and their lexical word glosses were checked against the
 
 Surviving public TEXT, S, and W identifiers are preserved. Standard FORM tiers copy the historical source transcription because no source-specific standardization profile is approved. Earlier unpinned PHON tiers are omitted.
 
-The exact source inventory, source-owned records, ID ledger, reproduction script, and QC evidence are in `CodeAndDocs/`.
+The exact source inventory, source-owned records, ID ledger, reproduction scripts, and QC evidence are in `CodeAndDocs/`. The authoritative private source revision is recorded in `source_manifest.json`.
 
 ## Copyright
 
-The public XML retains its existing copyright metadata for this in-place reconciliation. Authors cannot be located. If you are a copyright owner, please reach out to us.
+Publication rights were confirmed by the FormosanBank maintainer on 2026-08-23. No open license is asserted. The source notice is: `All rights reserved; FormosanBank has permission to publish.`
