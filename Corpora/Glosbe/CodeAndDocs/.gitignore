@@ -1,0 +1,8 @@
+__pycache__/
+.pytest_cache/
+data/logs/
+data/raw/
+data/processed/*
+!data/processed/dictionary_entries_deduped.jsonl
+!data/processed/quality_filtered_examples.jsonl
+XML/

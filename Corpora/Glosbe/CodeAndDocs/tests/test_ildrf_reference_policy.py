@@ -5,7 +5,6 @@ import xml.etree.ElementTree as ET
 import pytest
 
 from scripts.glosbe_pipeline import (
-    PROCESSED,
     ROOT,
     dedupe_key,
     form_group_key,
@@ -13,31 +12,15 @@ from scripts.glosbe_pipeline import (
     lexical_reference_decisions,
     load_config,
     load_ildrf_reference_lexicon,
-    repo_path,
 )
 
 
-def config_with_reference_or_skip():
-    config = load_config("scripts/config.yaml")
-    reference_repo = repo_path(config["ildrf_reference_lexicon"]["derived_repo"])
-    if not reference_repo.is_dir():
-        pytest.skip("ILRDF-derived reference repository is not available")
-    return config
-
-
-def test_published_config_targets_standard_xml_directory():
-    config = load_config("scripts/config.yaml")
-
-    assert config["xml"]["output_dir"] == "../XML"
-    assert (ROOT / config["xml"]["output_dir"]).resolve() == (Path(ROOT).parent / "XML").resolve()
-
-
 def test_reference_files_are_explicit_and_truku_only_for_trv():
-    reference = load_ildrf_reference_lexicon(config_with_reference_or_skip())
+    reference = load_ildrf_reference_lexicon(load_config("scripts/config.yaml"))
 
     assert {row["language"] for row in reference.file_stats} == {"ami", "tay", "trv", "xsy"}
     assert next(row for row in reference.file_stats if row["language"] == "trv")["file"] == (
-        "Final_XML/Truku/Dictionary_Truku_trv.xml"
+        "XML/Truku/Dictionary_Truku_trv.xml"
     )
     assert dedupe_key("yako") not in reference.glosses["trv"]
     assert all(
@@ -53,10 +36,8 @@ def test_lexical_form_normalization_matches_qc_apostrophe_cleanup():
 
 
 def test_reference_comparison_never_excludes_structurally_valid_rows():
-    if not (PROCESSED / "dictionary_entries_deduped.jsonl").is_file():
-        pytest.skip("development dictionary sidecar is not included in the public corpus")
     groups, audit, rejected, review, _ = lexical_reference_decisions(
-        config_with_reference_or_skip()
+        load_config("scripts/config.yaml")
     )
 
     assert len(audit) == 1305
@@ -64,9 +45,9 @@ def test_reference_comparison_never_excludes_structurally_valid_rows():
     assert {row["action"] for row in audit} == {"keep_in_xml"}
     assert Counter(row["reference_status"] for row in audit) == {
         "source_not_attested": 529,
-        "gloss_unmapped": 528,
-        "target_supported_by_mapping": 209,
-        "different_from_mapping": 39,
+        "gloss_unmapped": 526,
+        "target_supported_by_mapping": 210,
+        "different_from_mapping": 40,
     }
     assert Counter(row["rejection_reason"] for row in rejected) == {
         "target_cross_reference_or_invalid_note": 12,

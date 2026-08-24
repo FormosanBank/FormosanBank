@@ -323,6 +323,10 @@ def today_utc() -> str:
     return datetime.now(timezone.utc).date().isoformat()
 
 
+def report_timestamp(config: dict[str, Any]) -> str:
+    return config.get("metadata", {}).get("report_timestamp_utc", now_utc())
+
+
 def sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
@@ -393,7 +397,26 @@ def lexical_form_text_for_xml(text: str) -> str:
 
 def repo_path(value: str | Path) -> Path:
     path = Path(value)
-    return path if path.is_absolute() else ROOT / path
+    if path.is_absolute():
+        return path
+    primary = (ROOT / path).resolve()
+    if primary.exists() or not path.parts or path.parts[0] != "..":
+        return primary
+
+    repos_root = os.environ.get("FORMOSANBANK_REPOS_ROOT")
+    if repos_root:
+        return (Path(repos_root) / path.name).resolve()
+
+    common_dir = subprocess.run(
+        ["git", "-C", str(ROOT), "rev-parse", "--git-common-dir"],
+        check=True,
+        capture_output=True,
+        text=True,
+    ).stdout.strip()
+    common_path = Path(common_dir)
+    if not common_path.is_absolute():
+        common_path = ROOT / common_path
+    return (common_path.resolve().parent.parent / path.name).resolve()
 
 
 def has_han(text: str) -> bool:
@@ -785,10 +808,12 @@ class PoliteClient:
 
 def rel(path: Path | str) -> str:
     p = Path(path)
-    try:
-        return str(p.resolve().relative_to(ROOT))
-    except Exception:
-        return str(p)
+    for base in (ROOT, ROOT.parent):
+        try:
+            return str(p.resolve().relative_to(base))
+        except ValueError:
+            continue
+    return str(p)
 
 
 def glosbe_phrase_url(config: dict[str, Any], l1: str, l2: str, phrase: str) -> str:
@@ -1640,7 +1665,7 @@ def command_normalize_text(args: argparse.Namespace) -> None:
                     samples.append(f"- Raw: `{raw}`\n  Clean: `{clean}`")
     report = f"""# Normalization Report
 
-Generated: {now_utc()}
+Generated: {report_timestamp(config)}
 
 Rules used:
 
@@ -1846,7 +1871,7 @@ def command_dedupe_against_formosanbank(args: argparse.Namespace) -> None:
         if not repo_path.exists():
             continue
         files = []
-        for pattern in ["Final_XML/**/*.xml", "../XML/**/*.xml", "work/json/*.json", "data/processed/*.jsonl", "*.xml"]:
+        for pattern in ["XML/**/*.xml", "Final_XML/**/*.xml", "work/json/*.json", "data/processed/*.jsonl", "*.xml"]:
             files.extend(repo_path.glob(pattern))
         for path in files[:200]:
             pairs = extract_existing_pairs_from_file(path)
@@ -2014,6 +2039,18 @@ def load_ildrf_reference_lexicon(config: dict[str, Any]) -> IldrfReferenceLexico
     repo = repo_path(repo_value)
     if not repo.is_dir():
         raise FileNotFoundError(f"ILRDF-derived reference repository not found: {repo}")
+    expected_commit = settings.get("expected_commit", "")
+    if expected_commit:
+        actual_commit = subprocess.run(
+            ["git", "-C", str(repo), "rev-parse", "HEAD"],
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+        if actual_commit != expected_commit:
+            raise RuntimeError(
+                f"ILRDF-derived reference repository is at {actual_commit}; expected {expected_commit}"
+            )
 
     glosses: dict[str, dict[str, set[str]]] = defaultdict(lambda: defaultdict(set))
     source_files: dict[str, dict[str, set[str]]] = defaultdict(lambda: defaultdict(set))
@@ -2706,7 +2743,7 @@ def write_lexical_reference_outputs(
         )
         report = f"""# ILRDF Reference Audit For Glosbe Lexical Entries
 
-Generated: {now_utc()}
+Generated: {report_timestamp(config)}
 
 Reference repository: `{config.get("ildrf_reference_lexicon", {}).get("derived_repo", "")}`
 
@@ -2917,14 +2954,18 @@ def merge_reviewed_amis_chinese(
         merged.append(row)
 
     merged.extend(row for index, row in enumerate(reviewed_rows) if index not in consumed_reviewed)
-    unique_pairs = {
-        (dedupe_key(row["source_sentence_clean"]), dedupe_key(row["target_sentence_clean"]))
-        for row in merged
-    }
-    if len(unique_pairs) != len(merged):
-        raise ValueError("Amis Chinese restoration produced duplicate source-translation pairs")
-
+    normalized_unique: dict[tuple[str, str], dict[str, Any]] = {}
+    normalization_duplicates = 0
     for row in merged:
+        pair_key = (
+            form_group_key(row["source_sentence_clean"]),
+            dedupe_key(row["target_sentence_clean"]),
+        )
+        if pair_key in normalized_unique:
+            row["restoration_origin"] += ";normalization_duplicate_omitted"
+            normalization_duplicates += 1
+        else:
+            normalized_unique[pair_key] = row
         audit_rows.append(
             {
                 "record_id": row["record_id"],
@@ -2937,6 +2978,7 @@ def merge_reviewed_amis_chinese(
                 "raw_path": row.get("raw_html_path") or row.get("raw_json_path", ""),
             }
         )
+    merged = list(normalized_unique.values())
 
     stats = {
         "legacy_input_rows": legacy_input_rows,
@@ -2945,6 +2987,7 @@ def merge_reviewed_amis_chinese(
         "current_rows": len(current_rows),
         "current_reviewed_matches": reviewed_matches,
         "current_converted_new": converted_new,
+        "normalization_duplicate_rows": normalization_duplicates,
         "output_rows": len(merged),
         "output_forms": len({form_group_key(row["source_sentence_clean"]) for row in merged}),
     }
@@ -2983,6 +3026,7 @@ Contributor: {settings['contributor']} ([source pull request]({settings['pull_re
 - Current scrape rows: {stats['current_rows']}
 - Current rows matched to Joseph's reviewed conversions: {stats['current_reviewed_matches']}
 - New current rows converted with `chinese-converter==1.1.1`: {stats['current_converted_new']}
+- Post-normalization duplicate source-translation rows omitted: {stats['normalization_duplicate_rows']}
 - Final unique Amis-Traditional Chinese pairs: {stats['output_rows']}
 - Final sentence elements: {stats['output_forms']}
 
@@ -3055,18 +3099,19 @@ def command_build_xml(args: argparse.Namespace) -> None:
         else:
             translation_groups = ([row] for row in rows)
         for idx, translation_rows in enumerate(translation_groups, 1):
-            source = translation_rows[0]["source_sentence_clean"]
+            source = clean_legacy_glosbe_text(translation_rows[0]["source_sentence_clean"])
             sid = f"{text_id}_U{idx:06d}"
             s_el = ET.SubElement(root, "S", {"id": sid})
             form = ET.SubElement(s_el, "FORM", {"kindOf": "original"})
             form.text = source
             for translation_index, row in enumerate(translation_rows):
+                target = clean_legacy_glosbe_text(row["target_sentence_clean"])
                 transl_attrs = {f"{{{XML_NS}}}lang": tgt_iso}
                 if translation_index:
                     transl_attrs["ver"] = "alt"
                 transl = ET.SubElement(s_el, "TRANSL", transl_attrs)
-                transl.text = row["target_sentence_clean"]
-                pair_digest = sha256_text(source + "\n" + row["target_sentence_clean"])
+                transl.text = target
+                pair_digest = sha256_text(source + "\n" + target)
                 xml_index.append(
                     {
                         "xml_file": rel(final_dir / l1 / f"Glosbe_{l1}_{tgt_iso}_tmem.xml"),
@@ -3090,7 +3135,7 @@ def command_build_xml(args: argparse.Namespace) -> None:
                         "raw_html_path_if_any": row.get("raw_html_path", ""),
                         "raw_sha256": row.get("raw_json_sha256") or row.get("raw_html_sha256", ""),
                         "source_sentence_sha256": sha256_text(source),
-                        "target_sentence_sha256": sha256_text(row["target_sentence_clean"]),
+                        "target_sentence_sha256": sha256_text(target),
                         "pair_sha256": pair_digest,
                         "duplicate_group_id_if_any": "",
                         "overlap_status": row.get("overlap_status", ""),
@@ -3184,7 +3229,7 @@ def command_validate_xml(args: argparse.Namespace) -> None:
             if errs:
                 failures.append((path, errs))
     if failures:
-        draft = PROCESSED / "invalid_xml_removed_from_XML"
+        draft = PROCESSED / "invalid_xml_removed_from_Final_XML"
         draft.mkdir(parents=True, exist_ok=True)
         for path, errs in failures:
             if path.exists() and path.suffix == ".xml":
@@ -3397,8 +3442,13 @@ def generate_coverage_reports(config: dict[str, Any]) -> None:
         )
     write_csv(PROCESSED / "coverage_by_author_domain.csv", rows)
     # Dictionary dedupe is simple exact source-target.
-    dkept = dedupe_dictionary_entries(dict_raw)
-    write_jsonl(PROCESSED / "dictionary_entries_deduped.jsonl", dkept)
+    if dict_raw:
+        dkept = dedupe_dictionary_entries(dict_raw)
+        write_jsonl(PROCESSED / "dictionary_entries_deduped.jsonl", dkept)
+    else:
+        # The public package retains the reviewed deduplicated build input but
+        # intentionally omits the 233 MB raw crawl cache.
+        dkept = read_jsonl(PROCESSED / "dictionary_entries_deduped.jsonl")
     if not (PROCESSED / "audio_manifest.csv").exists() or (PROCESSED / "audio_manifest.csv").stat().st_size == 0:
         write_csv(PROCESSED / "audio_manifest.csv", [])
     author_rows = []
@@ -3444,7 +3494,7 @@ def generate_coverage_reports(config: dict[str, Any]) -> None:
                 "dictionary_entries_raw": len(raw_pair),
                 "dictionary_entries_deduped": len(ded_pair),
                 "top_authors": ";".join(k for k, _ in authors.most_common(5)),
-                "notes": "Dictionary/headword entries are exported to lexical XML because xml.include_dictionary_entries is enabled." if config["xml"].get("include_dictionary_entries", False) else "Dictionary/headword entries are sidecar data and excluded from the published XML by default.",
+                "notes": "Dictionary/headword entries are exported to lexical XML because xml.include_dictionary_entries is enabled." if config["xml"].get("include_dictionary_entries", False) else "Dictionary/headword entries are sidecar data and excluded from XML by default.",
             }
         )
     write_csv(PROCESSED / "dictionary_coverage_by_pair.csv", dict_cov)
@@ -3473,7 +3523,7 @@ def generate_validation_report(config: dict[str, Any], explicit_failures: list[t
     sentence_count = sum(len(ET.parse(path).getroot().findall("S")) for path in final_xml)
     report = f"""# Validation Report
 
-Generated: {now_utc()}
+Generated: {report_timestamp(config)}
 
 ## Totals
 
@@ -3547,15 +3597,15 @@ def generate_import_report(config: dict[str, Any]) -> None:
     final_xml = sorted((ROOT / config["xml"]["output_dir"]).rglob("*.xml"))
     report = f"""# Import Report
 
-Generated: {now_utc()}
+Generated: {report_timestamp(config)}
 
 Validation command used:
 
 ```bash
-python scripts/glosbe_pipeline.py validate_formosanbank_xml --config scripts/config.yaml
+python scripts/validate_formosanbank_xml.py --config scripts/config.yaml
 ```
 
-Validator: repository-local `scripts/glosbe_pipeline.py`.
+Validator: repository-local `scripts/validate_formosanbank_xml.py` / `scripts/glosbe_pipeline.py`.
 
 Files ready for import: {len(final_xml)}
 
@@ -3575,7 +3625,7 @@ Unresolved parsing issues:
 
 - Static fragments provide author labels and translation IDs, but not the complete iapi JSON object.
 - Dictionary entries are retained in sidecars. Structurally valid lexical rows are emitted to XML; the ILRDF-derived comparison is reference metadata and never an exclusion criterion.
-- Lexical decisions are documented in `data/processed/ildrf_glosbe_lexical_audit.csv` and `data/processed/lexical_xml_rejected.csv`; grouped review output is a development-only artifact.
+- Lexical decisions are documented in `data/processed/ildrf_glosbe_lexical_audit.csv`, `data/processed/ildrf_glosbe_lexical_group_review.csv`, and `data/processed/lexical_xml_rejected.csv`.
 
 Assumptions:
 
