@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "private_source_commit": "e1f52f43ab9e17b1d9a99329964b2ab64fbe864a",
+  "collection": "wakelin",
+  "text_id_mapping": [
+    {
+      "private_path": "Yami/Wakelin_Yami/Kalaku1.xml",
+      "public_path": "Yami/Kalaku1.xml",
+      "private_text_id": "OldTexts_Wakelin_Yami_Kalaku1",
+      "public_text_id": "Kalaku1"
+    },
+    {
+      "private_path": "Yami/Wakelin_Yami/Kalaku2.xml",
+      "public_path": "Yami/Kalaku2.xml",
+      "private_text_id": "OldTexts_Wakelin_Yami_Kalaku2",
+      "public_text_id": "Kalaku2"
+    },
+    {
+      "private_path": "Yami/Wakelin_Yami/Kalaku3.xml",
+      "public_path": "Yami/Kalaku3.xml",
+      "private_text_id": "OldTexts_Wakelin_Yami_Kalaku3",
+      "public_text_id": "Kalaku3"
+    },
+    {
+      "private_path": "Yami/Wakelin_Yami/Kalaku4.xml",
+      "public_path": "Yami/Kalaku4.xml",
+      "private_text_id": "OldTexts_Wakelin_Yami_Kalaku4",
+      "public_text_id": "Kalaku4"
+    },
+    {
+      "private_path": "Yami/Wakelin_Yami/Kangkang.xml",
+      "public_path": "Yami/Kangkang.xml",
+      "private_text_id": "OldTexts_Wakelin_Yami_Kangkang",
+      "public_text_id": "Kangkang"
+    },
+    {
+      "private_path": "Yami/Wakelin_Yami/Kwaway.xml",
+      "public_path": "Yami/Kwaway.xml",
+      "private_text_id": "OldTexts_Wakelin_Yami_Kwaway",
+      "public_text_id": "Kwaway"
+    }
+  ],
+  "sentence_id_policy": "Preserve every established primary S id and the published S48b alternative; append deterministic v2 or v3 only for new source-printed alternatives.",
+  "public_variant_id_mapping": [
+    {
+      "path": "Yami/Kwaway.xml",
+      "private_id": "S48v2",
+      "public_id": "S48b",
+      "reason": "Preserve the previously published alternative sentence id."
+    }
+  ],
+  "node_id_overrides": [
+    {
+      "path": "Yami/Kangkang.xml",
+      "sentence_id": "S8",
+      "node": "M",
+      "word_number": 4,
+      "morpheme_number": 2,
+      "public_id": "S8W5M1"
+    },
+    {
+      "path": "Yami/Kangkang.xml",
+      "sentence_id": "S8",
+      "node": "W",
+      "word_number": 5,
+      "public_id": "S8W6"
+    },
+    {
+      "path": "Yami/Kangkang.xml",
+      "sentence_id": "S8",
+      "node": "M",
+      "word_number": 5,
+      "morpheme_number": 1,
+      "public_id": "S8W6M1"
+    },
+    {
+      "path": "Yami/Kangkang.xml",
+      "sentence_id": "S8",
+      "node": "M",
+      "word_number": 5,
+      "morpheme_number": 2,
+      "public_id": "S8W6M2"
+    },
+    {
+      "path": "Yami/Kangkang.xml",
+      "sentence_id": "S8",
+      "node": "W",
+      "word_number": 6,
+      "public_id": "S8W7"
+    },
+    {
+      "path": "Yami/Kangkang.xml",
+      "sentence_id": "S8",
+      "node": "M",
+      "word_number": 6,
+      "morpheme_number": 1,
+      "public_id": "S8W7M1"
+    },
+    {
+      "path": "Yami/Kangkang.xml",
+      "sentence_id": "S8",
+      "node": "M",
+      "word_number": 6,
+      "morpheme_number": 2,
+      "public_id": "S8W7M2"
+    },
+    {
+      "path": "Yami/Kangkang.xml",
+      "sentence_id": "S8",
+      "node": "W",
+      "word_number": 7,
+      "public_id": "S8W8"
+    },
+    {
+      "path": "Yami/Kangkang.xml",
+      "sentence_id": "S8",
+      "node": "M",
+      "word_number": 7,
+      "morpheme_number": 1,
+      "public_id": "S8W8M1"
+    },
+    {
+      "path": "Yami/Kangkang.xml",
+      "sentence_id": "S8",
+      "node": "M",
+      "word_number": 7,
+      "morpheme_number": 2,
+      "public_id": "S8W8M2"
+    },
+    {
+      "path": "Yami/Kwaway.xml",
+      "sentence_id": "S48b",
+      "node": "W",
+      "word_number": 2,
+      "public_id": "S4bW2"
+    },
+    {
+      "path": "Yami/Kalaku4.xml",
+      "sentence_id": "S2v2",
+      "node": "W",
+      "word_number": 4,
+      "public_id": "S2W7"
+    },
+    {
+      "path": "Yami/Kalaku4.xml",
+      "sentence_id": "S2v2",
+      "node": "W",
+      "word_number": 5,
+      "public_id": "S2W8"
+    },
+    {
+      "path": "Yami/Kalaku4.xml",
+      "sentence_id": "S2v2",
+      "node": "M",
+      "word_number": 5,
+      "morpheme_number": 1,
+      "public_id": "S2W8M1"
+    },
+    {
+      "path": "Yami/Kalaku4.xml",
+      "sentence_id": "S2v2",
+      "node": "M",
+      "word_number": 5,
+      "morpheme_number": 2,
+      "public_id": "S2W8M2"
+    },
+    {
+      "path": "Yami/Kangkang.xml",
+      "sentence_id": "S33v2",
+      "node": "M",
+      "word_number": 1,
+      "morpheme_number": 1,
+      "public_id": "S33W1M2"
+    },
+    {
+      "path": "Yami/Kangkang.xml",
+      "sentence_id": "S33v2",
+      "node": "M",
+      "word_number": 1,
+      "morpheme_number": 2,
+      "public_id": "S33W1M3"
+    },
+    {
+      "path": "Yami/Kangkang.xml",
+      "sentence_id": "S33v2",
+      "node": "M",
+      "word_number": 1,
+      "morpheme_number": 3,
+      "public_id": "S33W1M4"
+    }
+  ],
+  "retired_structural_ids": [
+    {
+      "path": "Yami/Kalaku3.xml",
+      "sentence_id": "S8",
+      "public_ids": ["S8W8", "S8W8M1", "S8W8M2", "S8W8M3"],
+      "reason": "The published record fused a three-word alternative into one W with three M children. POL-027 replaces it with three independently aligned W records, so the fused child structure has no source-faithful successor."
+    },
+    {
+      "path": "Yami/Kalaku4.xml",
+      "sentence_id": "S12",
+      "public_ids": ["S12W9M1", "S12W9M2", "S12W9M3"],
+      "reason": "The publication errata replaces the legacy three-morpheme analysis with two corrected source words. The obsolete M structure has no source-faithful successor."
+    }
+  ],
+  "source_records": 171,
+  "emitted_records": 190
+}

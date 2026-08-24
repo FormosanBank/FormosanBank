@@ -1,0 +1,725 @@
+{
+  "schema_version": 1,
+  "notes": [
+    "The source ledger retains each printed slash expression exactly as transcribed.",
+    "The builder applies this table to emit one aligned sentence per source option.",
+    "The first variant preserves the established sentence ID; later variants use deterministic v2 or v3 suffixes.",
+    "Parentheses are retained when the source prints them around an alternative phrase."
+  ],
+  "expansions": [
+    {
+      "path": "Yami/Kalaku1.xml",
+      "source_id": "S4",
+      "source_form": "a-pnerek-em te-asa-nemn/namen-a-panay su n-ya-kan",
+      "alignment_decision": "Select the printed nemn or namen morpheme without combining both analyses.",
+      "variants": [
+        {
+          "id": "S4",
+          "source_variant": 1,
+          "form": "a-pnerek-em te-asa-nemn-a-panay su n-ya-kan",
+          "word_edits": {
+            "2": {
+              "form": "te-asa-nemn-a-panay",
+              "morpheme_forms": {
+                "3": "nemn"
+              }
+            }
+          }
+        },
+        {
+          "id": "S4v2",
+          "source_variant": 2,
+          "form": "a-pnerek-em te-asa-namen-a-panay su n-ya-kan",
+          "word_edits": {
+            "2": {
+              "form": "te-asa-namen-a-panay",
+              "morpheme_forms": {
+                "3": "namen"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "path": "Yami/Kalaku1.xml",
+      "source_id": "S6",
+      "source_form": "ditagen-da-rana nu itaysang u ngaran-amn/namen-em",
+      "alignment_decision": "Treat each printed side as a complete word; the source analyzes only the first side into morphemes.",
+      "variants": [
+        {
+          "id": "S6",
+          "source_variant": 1,
+          "form": "ditagen-da-rana nu itaysang u ngaran-amn",
+          "word_edits": {
+            "5": {
+              "form": "ngaran-amn"
+            }
+          }
+        },
+        {
+          "id": "S6v2",
+          "source_variant": 2,
+          "form": "ditagen-da-rana nu itaysang u namen-em",
+          "word_edits": {
+            "5": {
+              "form": "namen-em",
+              "morpheme_indices": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "path": "Yami/Kalaku1.xml",
+      "source_id": "S7",
+      "source_form": "matwa-tuntun-am/namen-rana su makenama-rana lu varangyam",
+      "alignment_decision": "Select am or namen inside the shared word frame.",
+      "variants": [
+        {
+          "id": "S7",
+          "source_variant": 1,
+          "form": "matwa-tuntun-am-rana su makenama-rana lu varangyam",
+          "word_edits": {
+            "1": {
+              "form": "matwa-tuntun-am-rana",
+              "morpheme_forms": {
+                "3": "am"
+              }
+            }
+          }
+        },
+        {
+          "id": "S7v2",
+          "source_variant": 2,
+          "form": "matwa-tuntun-namen-rana su makenama-rana lu varangyam",
+          "word_edits": {
+            "1": {
+              "form": "matwa-tuntun-namen-rana",
+              "morpheme_forms": {
+                "3": "namen"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "path": "Yami/Kalaku1.xml",
+      "source_id": "S11",
+      "source_form": "yaru karwan lu dewdew-em dy-aru-pa-sira a-ni-padi/machyura-rana",
+      "alignment_decision": "Select padi or machyura inside the shared word frame.",
+      "variants": [
+        {
+          "id": "S11",
+          "source_variant": 1,
+          "form": "yaru karwan lu dewdew-em dy-aru-pa-sira a-ni-padi-rana",
+          "word_edits": {
+            "6": {
+              "form": "a-ni-padi-rana",
+              "morpheme_forms": {
+                "3": "padi"
+              }
+            }
+          }
+        },
+        {
+          "id": "S11v2",
+          "source_variant": 2,
+          "form": "yaru karwan lu dewdew-em dy-aru-pa-sira a-ni-machyura-rana",
+          "word_edits": {
+            "6": {
+              "form": "a-ni-machyura-rana",
+              "morpheme_forms": {
+                "3": "machyura"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "path": "Yami/Kalaku1.xml",
+      "source_id": "S12",
+      "source_form": "maluvut-neme/namen-rana-m pasongayna-rana",
+      "alignment_decision": "Select neme or namen inside the shared word frame.",
+      "variants": [
+        {
+          "id": "S12",
+          "source_variant": 1,
+          "form": "maluvut-neme-rana-m pasongayna-rana",
+          "word_edits": {
+            "1": {
+              "form": "maluvut-neme-rana-m",
+              "morpheme_forms": {
+                "2": "neme"
+              }
+            }
+          }
+        },
+        {
+          "id": "S12v2",
+          "source_variant": 2,
+          "form": "maluvut-namen-rana-m pasongayna-rana",
+          "word_edits": {
+            "1": {
+              "form": "maluvut-namen-rana-m",
+              "morpheme_forms": {
+                "2": "namen"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "path": "Yami/Kalaku1.xml",
+      "source_id": "S13",
+      "source_form": "katu-nem/namen-rana nukaden a-m-angay tu di-taytu",
+      "alignment_decision": "Reconstruct the shared katu and rana frame around the printed nem or namen choice.",
+      "variants": [
+        {
+          "id": "S13",
+          "source_variant": 1,
+          "form": "katu-nem-rana nukaden a-m-angay tu di-taytu",
+          "word_edits": {
+            "1": {
+              "form": "katu-nem-rana",
+              "morpheme_forms": {
+                "2": "nem"
+              }
+            }
+          }
+        },
+        {
+          "id": "S13v2",
+          "source_variant": 2,
+          "form": "katu-namen-rana nukaden a-m-angay tu di-taytu",
+          "word_edits": {
+            "1": {
+              "form": "katu-namen-rana",
+              "morpheme_forms": {
+                "2": "namen"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "path": "Yami/Kalaku1.xml",
+      "source_id": "S16",
+      "source_form": "alikay u nipi/niripi",
+      "alignment_decision": "Select either complete printed money form.",
+      "variants": [
+        {
+          "id": "S16",
+          "source_variant": 1,
+          "form": "alikay u nipi",
+          "word_edits": {
+            "3": {
+              "form": "nipi"
+            }
+          }
+        },
+        {
+          "id": "S16v2",
+          "source_variant": 2,
+          "form": "alikay u niripi",
+          "word_edits": {
+            "3": {
+              "form": "niripi"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "path": "Yami/Kalaku1.xml",
+      "source_id": "S17",
+      "source_form": "walem-nem/namen-a k-angay-nemn/namen-a-rana u mavang tu alilu",
+      "alignment_decision": "Treat the two pronominal choices as correlated short and long variants, not a Cartesian product.",
+      "variants": [
+        {
+          "id": "S17",
+          "source_variant": 1,
+          "form": "walem-nem-a k-angay-nemn-a-rana u mavang tu alilu",
+          "word_edits": {
+            "1": {
+              "form": "walem-nem-a",
+              "morpheme_forms": {
+                "2": "nem"
+              }
+            },
+            "2": {
+              "form": "k-angay-nemn-a-rana",
+              "morpheme_forms": {
+                "3": "nemn"
+              }
+            }
+          }
+        },
+        {
+          "id": "S17v2",
+          "source_variant": 2,
+          "form": "walem-namen-a k-angay-namen-a-rana u mavang tu alilu",
+          "word_edits": {
+            "1": {
+              "form": "walem-namen-a",
+              "morpheme_forms": {
+                "2": "namen"
+              }
+            },
+            "2": {
+              "form": "k-angay-namen-a-rana",
+              "morpheme_forms": {
+                "3": "namen"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "path": "Yami/Kalaku1.xml",
+      "source_id": "S20",
+      "source_form": "pipangn-epen/pipangungn-epen/pipangengne-eben",
+      "alignment_decision": "Emit all three printed whole-word forms and align their source-visible hyphen boundaries.",
+      "variants": [
+        {
+          "id": "S20",
+          "source_variant": 1,
+          "form": "pipangn-epen",
+          "word_edits": {
+            "1": {
+              "form": "pipangn-epen",
+              "morpheme_forms": {
+                "1": "pipangn",
+                "2": "epen"
+              }
+            }
+          }
+        },
+        {
+          "id": "S20v2",
+          "source_variant": 2,
+          "form": "pipangungn-epen",
+          "word_edits": {
+            "1": {
+              "form": "pipangungn-epen",
+              "morpheme_forms": {
+                "1": "pipangungn",
+                "2": "epen"
+              }
+            }
+          }
+        },
+        {
+          "id": "S20v3",
+          "source_variant": 3,
+          "form": "pipangengne-eben",
+          "word_edits": {
+            "1": {
+              "form": "pipangengne-eben",
+              "morpheme_forms": {
+                "1": "pipangengne",
+                "2": "eben"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "path": "Yami/Kalaku3.xml",
+      "source_id": "S8",
+      "source_form": "puken-em marikna-namen-pa kwan-amen a-mangday su araw akak-agep-an/(mangday su agep)",
+      "alignment_decision": "Keep the shared first six words, then select the analyzed word or the three-word parenthetical phrase.",
+      "variants": [
+        {
+          "id": "S8",
+          "source_variant": 1,
+          "form": "puken-em marikna-namen-pa kwan-amen a-mangday su araw akak-agep-an",
+          "word_specs": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "id": "S8v2",
+          "source_variant": 2,
+          "form": "puken-em marikna-namen-pa kwan-amen a-mangday su araw (mangday su agep)",
+          "word_specs": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            {
+              "source_word": 8,
+              "source_morpheme": 1
+            },
+            {
+              "source_word": 8,
+              "source_morpheme": 2
+            },
+            {
+              "source_word": 8,
+              "source_morpheme": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Yami/Kalaku4.xml",
+      "source_id": "S2",
+      "source_form": "ma-chita-da tu madegdeg (imurud nu tau)/(tau d-imurud)",
+      "alignment_decision": "Emit the two parenthesized constituent orders with only their own aligned words.",
+      "variants": [
+        {
+          "id": "S2",
+          "source_variant": 1,
+          "form": "ma-chita-da tu madegdeg (imurud nu tau)",
+          "word_specs": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "id": "S2v2",
+          "source_variant": 2,
+          "form": "ma-chita-da tu madegdeg (tau d-imurud)",
+          "word_specs": [
+            1,
+            2,
+            3,
+            7,
+            8
+          ],
+          "word_edits": {
+            "5": {
+              "translations": [
+                {
+                  "text": "from Imurud)",
+                  "lang": "eng"
+                }
+              ],
+              "morpheme_translations": {
+                "1": [
+                  {
+                    "text": "from",
+                    "lang": "eng"
+                  }
+                ],
+                "2": [
+                  {
+                    "text": "Imurud)",
+                    "lang": "eng"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "path": "Yami/Kangkang.xml",
+      "source_id": "S33",
+      "source_form": "simuskem/tanu-di-muskem anak-u-imu kuan-a",
+      "alignment_decision": "Separate the one-morpheme first form from the three-morpheme conditional form and their printed glosses.",
+      "variants": [
+        {
+          "id": "S33",
+          "source_variant": 1,
+          "form": "simuskem anak-u-imu kuan-a",
+          "word_edits": {
+            "1": {
+              "form": "simuskem",
+              "translations": [
+                {
+                  "text": "kill-with-boiling-water",
+                  "lang": "eng"
+                }
+              ],
+              "morpheme_indices": [
+                1
+              ]
+            }
+          }
+        },
+        {
+          "id": "S33v2",
+          "source_variant": 2,
+          "form": "tanu-di-muskem anak-u-imu kuan-a",
+          "word_edits": {
+            "1": {
+              "form": "tanu-di-muskem",
+              "translations": [
+                {
+                  "text": "if(unctn)-not-killed-with-boiling-water",
+                  "lang": "eng"
+                }
+              ],
+              "morpheme_indices": [
+                2,
+                3,
+                4
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "path": "Yami/Kwaway.xml",
+      "source_id": "S2",
+      "source_form": "k-ali-na-m kamakamay a/u uvi",
+      "alignment_decision": "Select the printed a or u word.",
+      "variants": [
+        {
+          "id": "S2",
+          "source_variant": 1,
+          "form": "k-ali-na-m kamakamay a uvi",
+          "word_edits": {
+            "3": {
+              "form": "a"
+            }
+          }
+        },
+        {
+          "id": "S2v2",
+          "source_variant": 2,
+          "form": "k-ali-na-m kamakamay u uvi",
+          "word_edits": {
+            "3": {
+              "form": "u"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "path": "Yami/Kwaway.xml",
+      "source_id": "S4",
+      "source_form": "am-chita-en-a tunanal-aep-an/nitelemna lu anit",
+      "alignment_decision": "Separate the three-morpheme first word from the unanalyzed second word and their printed glosses.",
+      "variants": [
+        {
+          "id": "S4",
+          "source_variant": 1,
+          "form": "am-chita-en-a tunanal-aep-an lu anit",
+          "word_edits": {
+            "2": {
+              "form": "tunanal-agep-an",
+              "translations": [
+                {
+                  "text": "unan-take-unan",
+                  "lang": "eng"
+                }
+              ],
+              "morpheme_forms": {
+                "3": "an"
+              },
+              "morpheme_translations": {
+                "3": [
+                  {
+                    "text": "unan",
+                    "lang": "eng"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "S4v2",
+          "source_variant": 2,
+          "form": "am-chita-en-a nitelemna lu anit",
+          "word_edits": {
+            "2": {
+              "form": "nitelemna",
+              "translations": [
+                {
+                  "text": "unan",
+                  "lang": "eng"
+                }
+              ],
+              "morpheme_indices": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "path": "Yami/Kwaway.xml",
+      "source_id": "S9",
+      "source_form": "mang-ep su aru nu varit/yaked s-ama-na kavangepna?",
+      "alignment_decision": "Select either complete printed bamboo-strip form.",
+      "variants": [
+        {
+          "id": "S9",
+          "source_variant": 1,
+          "form": "mang-ep su aru nu varit s-ama-na kavangepna?",
+          "word_edits": {
+            "5": {
+              "form": "varit"
+            }
+          }
+        },
+        {
+          "id": "S9v2",
+          "source_variant": 2,
+          "form": "mang-ep su aru nu yaked s-ama-na kavangepna?",
+          "word_edits": {
+            "5": {
+              "form": "yaked"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "path": "Yami/Kwaway.xml",
+      "source_id": "S39",
+      "source_form": "tu chya mi-kalakala/mi-karakara lu kayu?",
+      "alignment_decision": "Select the printed kalakala or karakara stem inside the shared mi frame.",
+      "variants": [
+        {
+          "id": "S39",
+          "source_variant": 1,
+          "form": "tu chya mi-kalakala lu kayu?",
+          "word_edits": {
+            "3": {
+              "form": "mi-kalakala",
+              "morpheme_forms": {
+                "2": "kalakala"
+              }
+            }
+          }
+        },
+        {
+          "id": "S39v2",
+          "source_variant": 2,
+          "form": "tu chya mi-karakara lu kayu?",
+          "word_edits": {
+            "3": {
+              "form": "mi-karakara",
+              "morpheme_forms": {
+                "2": "karakara"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "path": "Yami/Kwaway.xml",
+      "source_id": "S48",
+      "source_form": "k-arima-raw i-k-teb-na pi-tulang-an-a/(tulang u ragaw)",
+      "alignment_decision": "Separate the analyzed behead word from the three-word parenthetical paraphrase; keep the shared free translation.",
+      "variants": [
+        {
+          "id": "S48",
+          "source_variant": 1,
+          "form": "k-arima-raw i-k-teb-na pi-tulang-an-a",
+          "translations": [
+            {
+              "text": "After five days, he cut off her head.",
+              "lang": "eng"
+            }
+          ],
+          "word_specs": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "id": "S48b",
+          "source_variant": 2,
+          "form": "k-arima-raw i-k-teb-na (tulang u ragaw)",
+          "translations": [
+            {
+              "text": "After five days, he cut off her head.",
+              "lang": "eng"
+            }
+          ],
+          "word_specs": [
+            1,
+            2,
+            4,
+            5,
+            6
+          ],
+          "word_edits": {
+            "3": {
+              "form": "tulang"
+            },
+            "4": {
+              "form": "u"
+            },
+            "5": {
+              "form": "ragaw"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "path": "Yami/Kwaway.xml",
+      "source_id": "S51",
+      "source_form": "mikabak-abay-u/mikabakabayu u mwakay",
+      "alignment_decision": "Separate the analyzed first form from the unanalyzed second form and split the printed gloss at the same slash.",
+      "variants": [
+        {
+          "id": "S51",
+          "source_variant": 1,
+          "form": "mikabak-abay-u u mwakay",
+          "word_edits": {
+            "1": {
+              "form": "mikabak-abay-u",
+              "translations": [
+                {
+                  "text": "unan-waste-unan(unctn)",
+                  "lang": "eng"
+                }
+              ],
+              "morpheme_forms": {
+                "3": "u"
+              }
+            }
+          }
+        },
+        {
+          "id": "S51v2",
+          "source_variant": 2,
+          "form": "mikabakabayu u mwakay",
+          "word_edits": {
+            "1": {
+              "form": "mikabakabayu",
+              "translations": [
+                {
+                  "text": "wails",
+                  "lang": "eng"
+                }
+              ],
+              "morpheme_indices": []
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

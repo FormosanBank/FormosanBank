@@ -1,0 +1,10 @@
+path,sentence_id,source_page,expected_form,expected_translation,decision
+Yami/Kangkang.xml,S1,2,amian su tau? nu-kakwa i-m-angay mengep su uvi?,"A long time ago, there was a person who went to get some potatoes.",errata-applied source form retained
+Yami/Kangkang.xml,S43,5,ingunguna u katawtaw-ne-m m-angay-rana lu ilaud u kangkang,The rooster had gone to a foreign country.,final Kangkang sentence retained
+Yami/Kwaway.xml,S40,9,chi-chya-rana mu-kipung,"""Come here, dear.""",omitted top-level legacy sentence restored
+Yami/Kwaway.xml,S61,11,kukay si-machinara pinaturatud-ku lu maman-amen,"""Excuse me, Machinara, I'm going to sit by our betel nut basket.",final Kwaway sentence retained
+Yami/Kalaku1.xml,S20,15,pipangn-epen,the doors were shut.,primary stable ID retains first of three separately emitted source alternatives
+Yami/Kalaku2.xml,S14,17,amuri u ya-na-ni-agep nu y-asa-puu,So he spent one hundred dollars.,errata-applied source form retained
+Yami/Kalaku3.xml,S10,18,puken-(en) lavi u anan-anak,But don't cry.,printed parenthetical form retained
+Yami/Kalaku4.xml,S1,19,tau nu kakwa amyan su avang tu titiwen kwan-da,"A long time ago, there was a ship at Titiwen.",first Kalaku F sentence retained
+Yami/Kalaku4.xml,S23,20,tirarawa-kamu m-angay lu pik-il-ili-na,and went to their villages.,final Kalaku F sentence retained
