@@ -26,7 +26,7 @@ All audio is available. If it is transcribed, it is also diarized.
 <!-- CORPUS STATS END -->
 
 
-# Notes
+## Notes
 
 * Many of the videos lack transcripts. These have XMLs that point to the audio file, but there are no <S> elements.
 * Many other videos have only partial transcripts. In these cases, the main XML contains only the transcribed part of the audio. A second XML with the postfix "_untranscribed" has no <S>s and a reference to a file that contains the remaining audio.
