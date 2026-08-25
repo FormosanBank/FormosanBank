@@ -195,7 +195,7 @@ This was set to be quite conservative and only apply if the version with the hyp
 
 ***
 
-## Copyright
+# Copyright
 
 Public Domain.
 

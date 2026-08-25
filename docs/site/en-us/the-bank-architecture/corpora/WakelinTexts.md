@@ -36,7 +36,7 @@ This uses an unusual orthography, which has not yet been identified.
 
 ***
 
-## Copyright
+# Copyright
 
 The current public XML records this corpus as CC BY-NC-ND. The authors could not be located. If you are a copyright owner, please reach out to us.
 
