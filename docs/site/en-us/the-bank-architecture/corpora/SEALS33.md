@@ -30,13 +30,15 @@ The 2024 South East Asian Linguistic Society meeting took place in Taipei. The n
 
 ## **Corpus Processing**
 
-The short Seediq and Saisiyat translations were aligned with the corresponding Mandarin and English text and copied into two FormosanBank XML files. The published XML includes original and standard FORM tiers, IPA, and both translations.
+The short Seediq and Saisiyat translations were aligned with the corresponding Mandarin and English text and copied by hand into two FormosanBank XML files; there is no scraper, so the hand-built XML (preserved as a pristine snapshot in `CodeAndDocs/pre_correction_snapshot/`) is the reproduction baseline. From that baseline, `CodeAndDocs/make_xml.sh` regenerates the published `XML/` in three steps: `clean_xml.py` (punctuation and Unicode cleanup), `standardize.py --remove_accents` (creates the `kindOf="standard"` FORM tier; no spelling conversion is applied, as the transcription is already in the standard orthography), and `add_phonology.py --orthography Ortho94` (adds IPA `PHON` tiers). The published XML thus includes original and standard FORM tiers, IPA, and both translations.
 
 ***
 
 ## **Corpus Notes**
 
-The Seediq file does not identify a dialect, so its dialect is reported as unknown.
+* The Seediq file does not identify a dialect, so its dialect is reported as unknown.
+* S25 in both files is a talk title containing reconstructed proto-forms (`*-ʔ, *-h, *-∅`). The asterisks are faithful to the source; the Saisiyat S25 is actually the English title, so its PHON is English rendered through the Saisiyat profile.
+* The Saisiyat file uses `:` for vowel length; it is retained in PHON for Saisiyat but treated as punctuation for Seediq.
 
 ***
 
