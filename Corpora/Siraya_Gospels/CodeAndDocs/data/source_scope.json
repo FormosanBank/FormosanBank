@@ -1,0 +1,64 @@
+{
+  "corpus_scope": "Verse-level Siraya forms from the printed Matthew and John columns, with separately sourced English and Mandarin reference translations.",
+  "source_files": [
+    {
+      "name": "Matthew.pdf",
+      "pages": 190,
+      "included_page_range": "13-186",
+      "included_units": "Matthew 1:1-28:20, 1071 verse units",
+      "excluded_page_ranges": [
+        {
+          "pages": "1-12",
+          "reason": "digitization and front matter outside the verse corpus scope"
+        },
+        {
+          "pages": "187-190",
+          "reason": "trailing blank or digitization pages outside the verse corpus scope"
+        }
+      ]
+    },
+    {
+      "name": "Gospels of St. Matthew and St. John.pdf",
+      "pages": 149,
+      "included_page_range": "6-145",
+      "included_units": "John 1:1-21:25, 880 printed verse units",
+      "excluded_page_ranges": [
+        {
+          "pages": "1-5",
+          "reason": "digitization and front matter outside the verse corpus scope"
+        },
+        {
+          "pages": "146-149",
+          "reason": "trailing blank or digitization pages outside the verse corpus scope"
+        }
+      ]
+    }
+  ],
+  "component_decisions": [
+    {
+      "component": "Dutch parallel columns",
+      "included": false,
+      "reason": "The current corpus scope is Siraya with aligned English and Mandarin references. Historical Dutch OCR is unreliable and is not treated as reviewed corpus data."
+    },
+    {
+      "component": "Book and chapter headings",
+      "included": false,
+      "reason": "The corpus unit is the numbered printed verse. Headings remain recoverable from the retained page ranges and are not sentence records."
+    },
+    {
+      "component": "Embedded OCR text",
+      "included": false,
+      "reason": "The OCR layer is a locator aid only. Rendered scan pages control source review."
+    },
+    {
+      "component": "PHON tiers",
+      "included": false,
+      "reason": "Current authority has no Siraya standard orthography and no fos phonology profile."
+    },
+    {
+      "component": "W and M tiers",
+      "included": false,
+      "reason": "The source is parallel verse text, not interlinear glossed data, and supplies no word or morpheme analysis."
+    }
+  ]
+}

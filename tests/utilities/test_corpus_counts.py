@@ -99,6 +99,15 @@ FIXTURE_XML = REPO_ROOT / "tests" / "fixtures" / "stats_corpus" / "MiniCorpus" /
 
 
 class TestAnalyzeFile:
+    def test_mandarin_cmn_counts_as_chinese_translation(self):
+        root = ET.fromstring(
+            '<TEXT xml:lang="fos" dialect="Siraya">'
+            '<S id="1"><FORM kindOf="original">tou naunamou</FORM>'
+            '<TRANSL xml:lang="cmn">太初有道</TRANSL></S></TEXT>'
+        )
+        rec = corpus_counts.analyze_root(root)
+        assert rec["zho_transl_count"] == 2
+
     def test_ami_haian_record(self):
         rec = corpus_counts.analyze_file(FIXTURE_XML / "ami_haian.xml")
         assert rec["language"] == "ami"

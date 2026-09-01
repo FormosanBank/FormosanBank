@@ -1,0 +1,353 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-08-21",
+  "canonical_input": "intermediate/verses.jsonl",
+  "review_scope": {
+    "reviewed_units": 1951,
+    "rendered_scan_pages": 314,
+    "book_units": {
+      "John": 880,
+      "Matthew": 1071
+    },
+    "chapter_files": 49
+  },
+  "method": [
+    "Rendered all included scan pages and isolated the printed Siraya columns.",
+    "Reconciled every verse with a public raw-transcription witness and two independent OCR passes.",
+    "Used the rendered scans to adjudicate rare characters, chapter-boundary pages, and all low-confidence comparisons.",
+    "Preserved the fourteen earlier complete-form scan adjudications as independent regression checks."
+  ],
+  "scan_control": [
+    {
+      "name": "Matthew.pdf",
+      "included_pages": "13-186",
+      "sha256": "2c197bf35d4c7affd7d9ccaa5d3743622bfdae8d959e332abd17b5fa7cf1ff80"
+    },
+    {
+      "name": "Gospels of St. Matthew and St. John.pdf",
+      "included_pages": "6-145",
+      "sha256": "bb382f8157b1b2359b7a47d7ec4ad1cfcf396ae8754cfe52a6e01c0ebcc23ca6"
+    }
+  ],
+  "transcription_witnesses": [
+    {
+      "book": "Matthew",
+      "url": "https://storage.googleapis.com/siraya/20230218/matt.js",
+      "bytes": 876703,
+      "sha256": "90254b8b39f732008722ae0fe3210b76b1dc88896886903b15a409c6608e7f14",
+      "last_modified": "2023-02-18"
+    },
+    {
+      "book": "John",
+      "url": "https://storage.googleapis.com/siraya/20230218/john.js",
+      "bytes": 702869,
+      "sha256": "d7a495a8ce90ddbd8d994aab9a20ea2cf0484ffbbd90f808a3ed7d3c8df9359b",
+      "last_modified": "2023-02-18"
+    }
+  ],
+  "adjudication": {
+    "rare_character_crops_checked": 36,
+    "additional_low_confidence_verses_checked": 7,
+    "invariant_followup_verses_checked": 2,
+    "apostrophe_policy": "Represent printed apostrophe variants as ASCII U+0027.",
+    "confusable_policy": "Replace witness-only Greek, Cyrillic, and small-cap OCR confusables with the Latin characters visible in the scans.",
+    "punctuation_policy": "Preserve printed square brackets, round parentheses, punctuation imbalance, spacing, diacritics, and hyphenation."
+  },
+  "original_tiers_sha256": "d2f90715b5c4e23b4d8dc3a50d1de5f2774bc4b83d7065a06c9699dfcb6b3af6",
+  "chapters": [
+    {
+      "path": "Matthew/chapter1.xml",
+      "pdf_pages": "13-16",
+      "reviewed_units": 25,
+      "original_tiers_sha256": "2973d4c2c954aa979e648c80ba7d2cc95403d8b4665186f084429b9335dc9897"
+    },
+    {
+      "path": "Matthew/chapter2.xml",
+      "pdf_pages": "17-21",
+      "reviewed_units": 23,
+      "original_tiers_sha256": "d7b73f3e5608ea382e485282501a18717bb2acf7d36856ca2307e523929cbd2b"
+    },
+    {
+      "path": "Matthew/chapter3.xml",
+      "pdf_pages": "21-24",
+      "reviewed_units": 17,
+      "original_tiers_sha256": "cf6efdd40e0643d2cb24a92986ce8aded513d191859ffcef357648ae93309ce2"
+    },
+    {
+      "path": "Matthew/chapter4.xml",
+      "pdf_pages": "24-28",
+      "reviewed_units": 25,
+      "original_tiers_sha256": "7c988ea33d8638a2b0079ea0e4f083bab8ec4b97205cf77b37a032b129d3a2d7"
+    },
+    {
+      "path": "Matthew/chapter5.xml",
+      "pdf_pages": "28-36",
+      "reviewed_units": 48,
+      "original_tiers_sha256": "b8168062ead2fe68808d8280dbb4e77ce7dd033432e3d7cbbb445f9951a708a8"
+    },
+    {
+      "path": "Matthew/chapter6.xml",
+      "pdf_pages": "36-41",
+      "reviewed_units": 34,
+      "original_tiers_sha256": "ca6b804ad90cdc7913e09044aef236d4e4d47e589677befebe25f8930c0d0eb3"
+    },
+    {
+      "path": "Matthew/chapter7.xml",
+      "pdf_pages": "41-46",
+      "reviewed_units": 29,
+      "original_tiers_sha256": "d5436426ddf2718ef6067beffbf72c863bc50e5cd5a3d64cd6f0521bf5c4e46d"
+    },
+    {
+      "path": "Matthew/chapter8.xml",
+      "pdf_pages": "46-51",
+      "reviewed_units": 34,
+      "original_tiers_sha256": "144b25c4b7053d21472588cee00833bce20fcd83e382f25258f56b6197147d7b"
+    },
+    {
+      "path": "Matthew/chapter9.xml",
+      "pdf_pages": "52-57",
+      "reviewed_units": 38,
+      "original_tiers_sha256": "6910f2b2f4b428b55b737cbfdc9fef6ca76dbde5aec49308a8a5aa7a35a69d71"
+    },
+    {
+      "path": "Matthew/chapter10.xml",
+      "pdf_pages": "57-64",
+      "reviewed_units": 42,
+      "original_tiers_sha256": "cf41eef329ec3822926e4854d86a3e6442d4099a5cf8b27e6782f87c5ced4d32"
+    },
+    {
+      "path": "Matthew/chapter11.xml",
+      "pdf_pages": "64-69",
+      "reviewed_units": 30,
+      "original_tiers_sha256": "5c4ecdb1e0f4c0dcd92ecceefe95cdffe5788a6d1fbc4ee54611ed860cf617a3"
+    },
+    {
+      "path": "Matthew/chapter12.xml",
+      "pdf_pages": "69-77",
+      "reviewed_units": 50,
+      "original_tiers_sha256": "8ce8963aa943e74707be75d9a566ed7f1782ab40f78306aa29a27b6b8f074948"
+    },
+    {
+      "path": "Matthew/chapter13.xml",
+      "pdf_pages": "77-86",
+      "reviewed_units": 58,
+      "original_tiers_sha256": "a1f097b424a6a92300ef33b064955c31057a896db8dc88cbd3e041f054cea950"
+    },
+    {
+      "path": "Matthew/chapter14.xml",
+      "pdf_pages": "87-91",
+      "reviewed_units": 36,
+      "original_tiers_sha256": "cca54de571bb6f84de06b3bbabb187dc2cd549b3ad56875989e3d81ce1bd90fb"
+    },
+    {
+      "path": "Matthew/chapter15.xml",
+      "pdf_pages": "92-97",
+      "reviewed_units": 39,
+      "original_tiers_sha256": "fb789d352e204fa2df40ff07a57ef0211182e479e1ee12cb6869b6fbadcb23c7"
+    },
+    {
+      "path": "Matthew/chapter16.xml",
+      "pdf_pages": "98-102",
+      "reviewed_units": 28,
+      "original_tiers_sha256": "ae181f58fbaa8b6344ac095fef1acd5fae74b8ea527c0dcb62df8e6e8dd0373b"
+    },
+    {
+      "path": "Matthew/chapter17.xml",
+      "pdf_pages": "102-107",
+      "reviewed_units": 27,
+      "original_tiers_sha256": "59dbaf0245278918bf2dcfa28b370fe87f3a872c813fdd7e83d51f20041dca2d"
+    },
+    {
+      "path": "Matthew/chapter18.xml",
+      "pdf_pages": "107-113",
+      "reviewed_units": 35,
+      "original_tiers_sha256": "eb1b9b3ec341ad28c90860968ac6c345f8da6d70612a63b5bc8b880951baa14d"
+    },
+    {
+      "path": "Matthew/chapter19.xml",
+      "pdf_pages": "113-118",
+      "reviewed_units": 30,
+      "original_tiers_sha256": "6ca604d23f2473b5dcabe1b1c5ad7233320c2749ed93f972bceb1a3be145a4e9"
+    },
+    {
+      "path": "Matthew/chapter20.xml",
+      "pdf_pages": "118-124",
+      "reviewed_units": 34,
+      "original_tiers_sha256": "90fcbfed6c58d1730678db528bb45279db2306978ec945cba0511dbbbfa318fb"
+    },
+    {
+      "path": "Matthew/chapter21.xml",
+      "pdf_pages": "124-132",
+      "reviewed_units": 46,
+      "original_tiers_sha256": "e649c6516ca22fd3936b273ad7b3e26612757f5a147051ee94a60d69f3e858ce"
+    },
+    {
+      "path": "Matthew/chapter22.xml",
+      "pdf_pages": "132-138",
+      "reviewed_units": 46,
+      "original_tiers_sha256": "c6227e214a10f8d834934cc18835eb2c54e18c593f44085ed30ebe8acd57ed92"
+    },
+    {
+      "path": "Matthew/chapter23.xml",
+      "pdf_pages": "138-145",
+      "reviewed_units": 39,
+      "original_tiers_sha256": "a00b31dd92b92b43a0e9ca0d854ab5b6411ed90bca656dcc0984e5a5f84fc847"
+    },
+    {
+      "path": "Matthew/chapter24.xml",
+      "pdf_pages": "145-153",
+      "reviewed_units": 51,
+      "original_tiers_sha256": "80928c24d8f66fcc148856891a4ab52fba9480272935eef1ae886a950bd8084b"
+    },
+    {
+      "path": "Matthew/chapter25.xml",
+      "pdf_pages": "153-160",
+      "reviewed_units": 46,
+      "original_tiers_sha256": "f2650a6144a929b014f142e33c6e412d3e09bd9956839046461f96da9cf5f856"
+    },
+    {
+      "path": "Matthew/chapter26.xml",
+      "pdf_pages": "160-172",
+      "reviewed_units": 75,
+      "original_tiers_sha256": "6641625999eef542118c59bf677d1d6c6af33098d48f536363dcfad03d8ff319"
+    },
+    {
+      "path": "Matthew/chapter27.xml",
+      "pdf_pages": "172-182",
+      "reviewed_units": 66,
+      "original_tiers_sha256": "f16d2f0ba3ea27490ac62916b28d4302ca57a82d1c2b6252175c576f20c38502"
+    },
+    {
+      "path": "Matthew/chapter28.xml",
+      "pdf_pages": "183-186",
+      "reviewed_units": 20,
+      "original_tiers_sha256": "33b586542a93dd06d5884f982b5c1d75fff088d6fc2bff0a5296a1be0f6c22e6"
+    },
+    {
+      "path": "John/chapter1.xml",
+      "pdf_pages": "6-13",
+      "reviewed_units": 52,
+      "original_tiers_sha256": "8596122b82c083fa5964b74f1aeb69c3a8c53bca2104d97e6526f9d161d59fc2"
+    },
+    {
+      "path": "John/chapter2.xml",
+      "pdf_pages": "13-17",
+      "reviewed_units": 25,
+      "original_tiers_sha256": "ce324f07072d23b5d6c1c396df594a21af6393157ee313f063f5dea6294a5522"
+    },
+    {
+      "path": "John/chapter3.xml",
+      "pdf_pages": "17-23",
+      "reviewed_units": 36,
+      "original_tiers_sha256": "7ff1c4cc2cce336853dc81451a2545bbd8f75b9ee866c51da901cfec3230b209"
+    },
+    {
+      "path": "John/chapter4.xml",
+      "pdf_pages": "23-31",
+      "reviewed_units": 54,
+      "original_tiers_sha256": "2d3b9a158d906f29315ab1b16802b3529f393229f2835104bdff37584bade751"
+    },
+    {
+      "path": "John/chapter5.xml",
+      "pdf_pages": "31-38",
+      "reviewed_units": 47,
+      "original_tiers_sha256": "a1019dd174c7b8841508388e519f9dad353c12db672f0098e4361bf8a81e0344"
+    },
+    {
+      "path": "John/chapter6.xml",
+      "pdf_pages": "38-49",
+      "reviewed_units": 71,
+      "original_tiers_sha256": "528172d5205f54528ff2046cffbb483282a24cb6e2f5925ab4fcf7bebff82c1a"
+    },
+    {
+      "path": "John/chapter7.xml",
+      "pdf_pages": "49-56",
+      "reviewed_units": 53,
+      "original_tiers_sha256": "06f379243a67a99d11ec8d8b4c4afacacbced9897b6fdb907cb265e3f19226ba"
+    },
+    {
+      "path": "John/chapter8.xml",
+      "pdf_pages": "56-66",
+      "reviewed_units": 59,
+      "original_tiers_sha256": "ed6d4c3114f263d283a9afd377c034b5194e67ef6746b3c57de0817e7a7a0a61"
+    },
+    {
+      "path": "John/chapter9.xml",
+      "pdf_pages": "66-72",
+      "reviewed_units": 41,
+      "original_tiers_sha256": "1c1b8ca869302d43915441fef5dbda84b8d0be8fcff9a8b3db4cf80df0970374"
+    },
+    {
+      "path": "John/chapter10.xml",
+      "pdf_pages": "73-79",
+      "reviewed_units": 42,
+      "original_tiers_sha256": "43f3ccf3fdc583cf70543782fd6fc8f0f3d53b2f07e8296c90738bf26e053ce2"
+    },
+    {
+      "path": "John/chapter11.xml",
+      "pdf_pages": "79-87",
+      "reviewed_units": 57,
+      "original_tiers_sha256": "8bddc62c395dc49afd7e4d4c45209eb1548311dcdc6520fd39288745e29a6f3e"
+    },
+    {
+      "path": "John/chapter12.xml",
+      "pdf_pages": "87-95",
+      "reviewed_units": 50,
+      "original_tiers_sha256": "6e753ebed8d1435c52f1372587280b41e073cda321554a1b357f0b6efadfd3ab"
+    },
+    {
+      "path": "John/chapter13.xml",
+      "pdf_pages": "96-102",
+      "reviewed_units": 38,
+      "original_tiers_sha256": "c74b14ff579bc81dffb7de541eb14ec4b4438337882a9c5f99ffc6195c8a6e76"
+    },
+    {
+      "path": "John/chapter14.xml",
+      "pdf_pages": "102-107",
+      "reviewed_units": 31,
+      "original_tiers_sha256": "29046c1e15ac0fe5209772dfe8809a314b8895762c9521cffafd7e85fe977977"
+    },
+    {
+      "path": "John/chapter15.xml",
+      "pdf_pages": "107-111",
+      "reviewed_units": 27,
+      "original_tiers_sha256": "df217b9ab9b2f7c85d41bfec7c218ac33d67656e75d022579186bf1f69c41eec"
+    },
+    {
+      "path": "John/chapter16.xml",
+      "pdf_pages": "111-117",
+      "reviewed_units": 33,
+      "original_tiers_sha256": "a79e2635d21fc70bd36a007c0814e7cdefc83b59a2bc5623512c5187ff11c1e9"
+    },
+    {
+      "path": "John/chapter17.xml",
+      "pdf_pages": "117-121",
+      "reviewed_units": 26,
+      "original_tiers_sha256": "8b869f24e863c718120f4514ec9b26e33dff1457c2967ddfc985f7f0cfa49573"
+    },
+    {
+      "path": "John/chapter18.xml",
+      "pdf_pages": "121-128",
+      "reviewed_units": 40,
+      "original_tiers_sha256": "8b0a525fa0ffcff3d5fecdabab28810690180c4eda57e09343b22b9961306d53"
+    },
+    {
+      "path": "John/chapter19.xml",
+      "pdf_pages": "129-136",
+      "reviewed_units": 42,
+      "original_tiers_sha256": "2e352f8fe2bf4c3e30d1bfcba51284674ce3f5c1a8b196b943fb6b9278e6d01f"
+    },
+    {
+      "path": "John/chapter20.xml",
+      "pdf_pages": "136-141",
+      "reviewed_units": 31,
+      "original_tiers_sha256": "2d3534fe761a6b10c0b54239033e236891baa97f52c7d257d9200303cc88dd51"
+    },
+    {
+      "path": "John/chapter21.xml",
+      "pdf_pages": "141-145",
+      "reviewed_units": 25,
+      "original_tiers_sha256": "94bd55511028d23e2339c6c853e4a328848e7f7b58354aa0777ed3a2ca82a180"
+    }
+  ]
+}
