@@ -1,12 +1,15 @@
-# Campbell Favorlang Christian Instruction
+# Campbell-Favorlang
 
 This corpus contains the Favorlang material in William Campbell's 1896
 edition of *The Articles of Christian Instruction in Favorlang-Formosan*. It
-has 1,049 Siraya (`fos`) sentences and 365 English translations. The five
+has 1,049 Favorlang (`bzg`) sentences and 365 English translations. The five
 sermons contribute 684 sentences after Madeline Boese's completed review
 merged two OCR boundary errors and excluded the printed author signature.
-Because FormosanBank currently designates no standard orthography for Siraya,
-the source spelling is preserved without a standard or PHON tier.
+Favorlang (Babuza) is a distinct language from Siraya; the corpus is tagged
+`bzg` with `dialect="Favorlang"`, matching the treatment in
+[Latham 1862](latham-1862.md). Because FormosanBank currently designates no
+standard orthography for Babuza-Favorlang, the source spelling is preserved
+without a standard or PHON tier.
 The corpus and publication metadata were revalidated on 22 August 2026 against
 the current FormosanBank tooling and completed sermon-review evidence.
 
@@ -15,7 +18,7 @@ the current FormosanBank tooling and completed sermon-review evidence.
 <!-- CORPUS STATS START -->
 ## Corpus Statistics
 
-| | Siraya |
+| | bzg<br>Favorlang |
 | --- | --- |
 | Word count | 22,081 |
 | Total audio | 0 |
@@ -35,7 +38,7 @@ the current FormosanBank tooling and completed sermon-review evidence.
 ## **Access Details**
 
 * The corpus XML, review ledgers, and reconstruction code are in the
-  [FormosanBank repository](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/Siraya-Favorlang-Campbell-Christian-Instruction).
+  [FormosanBank repository](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/Campbell-Favorlang).
 
 ***
 

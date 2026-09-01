@@ -40,7 +40,7 @@
   * [Latham 1862](the-bank-architecture/corpora/latham-1862.md)
   * [Song (2018) Kanakanavu Grammar](the-bank-architecture/corpora/song-kanakanavu-grammar.md)
   * [Li (2014) Conjunction in Thao](the-bank-architecture/corpora/li-conjunction-thao.md)
-  * [Campbell Favorlang Christian Instruction](the-bank-architecture/corpora/campbell-favorlang-christian-instruction.md)
+  * [Campbell-Favorlang](the-bank-architecture/corpora/campbell-favorlang.md)
 * [Developers](the-bank-architecture/developers/README.md)
   * [🤗 HuggingFace](the-bank-architecture/developers/huggingface.md)
   * [Formosan MT Toolkit](the-bank-architecture/developers/formosan-mt-toolkit.md)
