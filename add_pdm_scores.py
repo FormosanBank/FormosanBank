@@ -1,6 +1,8 @@
 from eval_align import phone_align
+import argparse
 import os
 import shutil
+import subprocess
 import tempfile
 import xml.etree.ElementTree as ET
 import urllib.request
@@ -255,104 +257,191 @@ def _iter_score_batches(items):
         yield items[start : start + BATCH_SIZE]
 
 
-def main():
+def process_xml_file(xml_path, run_temp_dir):
+    """Compute and write PDM scores for one XML file. Returns (updated, written_scores)."""
+    try:
+        tree = ET.parse(xml_path)
+    except ET.ParseError as exc:
+        print(f"Warning: skipping malformed XML {xml_path}: {exc}")
+        return False, 0
+
+    tree_root = tree.getroot()
+    lang = get_xml_lang(tree_root)
+    language_name = ISO_TO_LANGUAGE.get(lang, lang)
+    dialect = tree_root.attrib.get("dialect", "")
+    file_changed = False
+    written_scores = 0
+    pending_entries = []
+    audio_path_cache = {}
+    downloaded_url_cache = {}
+    converted_audio_cache = {}
+
+    for s in tree_root.findall(".//S"):
+        if not FORCE_RECOMPUTE_SCORES:
+            existing_score = s.find("SCORE")
+            if existing_score is not None and (existing_score.text or "").strip():
+                continue
+
+        form = s.find(f"FORM[@kindOf='standard']")
+        sentence_text = form.text if form is not None and form.text is not None else ""
+        audio_elem = s.find("AUDIO")
+        audio_file = None
+        downloaded_audio = False
+        converted_wav = None
+        if audio_elem is None:
+            print(f"Warning: no AUDIO element found for sentence in {xml_path} for id {s.attrib.get('id', 'unknown')}")
+            continue
+        audio_filename = audio_elem.get("file") or (audio_elem.text or "").strip()
+        if audio_filename in audio_path_cache:
+            audio_file = audio_path_cache[audio_filename]
+        else:
+            audio_file = resolve_local_audio_path(xml_path, audio_filename, language_name, dialect)
+            audio_path_cache[audio_filename] = audio_file
+        audio_url = audio_elem.get("url")
+        if audio_file is None and audio_url:
+            if audio_url in downloaded_url_cache:
+                audio_file = downloaded_url_cache[audio_url]
+                downloaded_audio = bool(audio_file)
+            else:
+                try:
+                    audio_file = download_audio_from_url(audio_url, run_temp_dir)
+                    downloaded_audio = True
+                    downloaded_url_cache[audio_url] = audio_file
+                except OSError as exc:
+                    downloaded_url_cache[audio_url] = None
+                    print(f"Warning: failed to download audio from {audio_url}: {exc}")
+                    continue
+        if audio_file and os.path.isfile(audio_file):
+            if not audio_file.lower().endswith(".wav"):
+                if audio_file in converted_audio_cache:
+                    converted_wav = converted_audio_cache[audio_file]
+                else:
+                    converted_wav = convert_audio_to_wav(audio_file, run_temp_dir)
+                    converted_audio_cache[audio_file] = converted_wav
+                if not converted_wav:
+                    print(f"Warning: failed to convert non-wav audio file {audio_file} to wav")
+                    if downloaded_audio and audio_file and os.path.exists(audio_file):
+                        os.remove(audio_file)
+                    continue
+            align_path = converted_wav if converted_wav is not None else audio_file
+            pending_entries.append(
+                {
+                    "sentence_elem": s,
+                    "entry": {"ref": align_path, "sentence": sentence_text},
+                    "converted_wav": converted_wav,
+                    "downloaded_audio": downloaded_audio,
+                    "audio_file": audio_file,
+                }
+            )
+
+    for pending_batch in _iter_score_batches(pending_entries):
+        batch_changed, batch_written = _process_score_batch(pending_batch, language_name)
+        file_changed = file_changed or batch_changed
+        written_scores += batch_written
+
+    if file_changed:
+        tree.write(xml_path, encoding="utf-8", xml_declaration=True)
+        print(f"Updated XML file: {xml_path}")
+    else:
+        print(f"Skipped writing {xml_path} because file_changed was False")
+
+    return file_changed, written_scores
+
+
+def walk_corpora(corpora_path, run_temp_dir):
+    """Process every published XML file under corpora_path. Returns (updated_xml_files, written_scores)."""
     updated_xml_files = 0
     written_scores = 0
+    for root, dirs, files in os.walk(corpora_path):
+        for file in files:
+            if not file.endswith(".xml"):
+                continue
+            xml_path = os.path.join(root, file)
+            if not is_published_xml_path(xml_path):
+                continue
+            file_changed, file_written = process_xml_file(xml_path, run_temp_dir)
+            if file_changed:
+                updated_xml_files += 1
+            written_scores += file_written
+    return updated_xml_files, written_scores
+
+
+def find_corpus_dirs_with_download_script(corpora_path):
+    corpus_dirs = []
+    if not os.path.isdir(corpora_path):
+        return corpus_dirs
+    for name in sorted(os.listdir(corpora_path)):
+        corpus_dir = os.path.join(corpora_path, name)
+        if os.path.isfile(os.path.join(corpus_dir, "download_audio_data.sh")):
+            corpus_dirs.append(corpus_dir)
+    return corpus_dirs
+
+
+def run_download_audio_script(corpus_dir):
+    script_path = os.path.join(corpus_dir, "download_audio_data.sh")
+    # Strip CRLF line endings on the fly; some scripts are checked out with CRLF and bash
+    # chokes on the trailing \r (e.g. "$'\r': command not found").
+    subprocess.run(
+        ["bash", "-c", "tr -d '\\r' < download_audio_data.sh | bash"],
+        cwd=corpus_dir,
+        check=True,
+    )
+    return script_path
+
+
+def process_corpora_via_download_script(corpora_path):
+    """For each corpus with a download_audio_data.sh, download its audio, score it, then
+    delete the downloaded audio before moving to the next corpus (so only one corpus's
+    audio is on disk at a time)."""
+    updated_xml_files = 0
+    written_scores = 0
+    corpus_dirs = find_corpus_dirs_with_download_script(corpora_path)
+    if not corpus_dirs:
+        print(f"No corpora with download_audio_data.sh found under {corpora_path}")
+        return updated_xml_files, written_scores
+
+    temp_root_path = os.path.abspath(TEMP_ROOT_DIR)
+    os.makedirs(temp_root_path, exist_ok=True)
+
+    for corpus_dir in corpus_dirs:
+        corpus_name = os.path.basename(corpus_dir)
+        audio_dir = os.path.join(corpus_dir, "Audio")
+        run_temp_dir = tempfile.mkdtemp(prefix="pdm_", dir=temp_root_path)
+        try:
+            print(f"Downloading audio for corpus: {corpus_name}")
+            try:
+                run_download_audio_script(corpus_dir)
+            except subprocess.CalledProcessError as exc:
+                print(f"Warning: download_audio_data.sh failed for {corpus_name}: {exc}")
+                continue
+
+            corpus_updated, corpus_written = walk_corpora(corpus_dir, run_temp_dir)
+            updated_xml_files += corpus_updated
+            written_scores += corpus_written
+        finally:
+            shutil.rmtree(run_temp_dir, ignore_errors=True)
+            if os.path.isdir(audio_dir):
+                print(f"Removing downloaded audio for corpus: {corpus_name}")
+                shutil.rmtree(audio_dir, ignore_errors=True)
+
+    try:
+        if os.path.isdir(temp_root_path) and not os.listdir(temp_root_path):
+            os.rmdir(temp_root_path)
+    except OSError:
+        pass
+
+    return updated_xml_files, written_scores
+
+
+def process_corpora_using_existing_audio(corpora_path):
+    """Walk the whole corpora tree, using whatever audio is already present locally or
+    reachable via URL. This is the original, non-default behavior."""
     temp_root_path = os.path.abspath(TEMP_ROOT_DIR)
     os.makedirs(temp_root_path, exist_ok=True)
     run_temp_dir = tempfile.mkdtemp(prefix="pdm_", dir=temp_root_path)
 
     try:
-        for root, dirs, files in os.walk(CORPORA_PATH):
-            for file in files:
-                if file.endswith(".xml"):
-                    xml_path = os.path.join(root, file)
-                    if not is_published_xml_path(xml_path):
-                        continue
-                    try:
-                        tree = ET.parse(xml_path)
-                    except ET.ParseError as exc:
-                        print(f"Warning: skipping malformed XML {xml_path}: {exc}")
-                        continue
-                    tree_root = tree.getroot()
-                    lang = get_xml_lang(tree_root)
-                    language_name = ISO_TO_LANGUAGE.get(lang, lang)
-                    dialect = tree_root.attrib.get("dialect", "")
-                    file_changed = False
-                    pending_entries = []
-                    audio_path_cache = {}
-                    downloaded_url_cache = {}
-                    converted_audio_cache = {}
-
-                    for s in tree_root.findall(".//S"):
-                        if not FORCE_RECOMPUTE_SCORES:
-                            existing_score = s.find("SCORE")
-                            if existing_score is not None and (existing_score.text or "").strip():
-                                continue
-
-                        form = s.find(f"FORM[@kindOf='standard']")
-                        sentence_text = form.text if form is not None and form.text is not None else ""
-                        audio_elem = s.find("AUDIO")
-                        audio_file = None
-                        downloaded_audio = False
-                        converted_wav = None
-                        if audio_elem is None:
-                            print(f"Warning: no AUDIO element found for sentence in {xml_path} for id {s.attrib.get('id', 'unknown')}")
-                            continue
-                        audio_filename = audio_elem.get("file") or (audio_elem.text or "").strip()
-                        if audio_filename in audio_path_cache:
-                            audio_file = audio_path_cache[audio_filename]
-                        else:
-                            audio_file = resolve_local_audio_path(xml_path, audio_filename, language_name, dialect)
-                            audio_path_cache[audio_filename] = audio_file
-                        audio_url = audio_elem.get("url")
-                        if audio_file is None and audio_url:
-                            if audio_url in downloaded_url_cache:
-                                audio_file = downloaded_url_cache[audio_url]
-                                downloaded_audio = bool(audio_file)
-                            else:
-                                try:
-                                    audio_file = download_audio_from_url(audio_url, run_temp_dir)
-                                    downloaded_audio = True
-                                    downloaded_url_cache[audio_url] = audio_file
-                                except OSError as exc:
-                                    downloaded_url_cache[audio_url] = None
-                                    print(f"Warning: failed to download audio from {audio_url}: {exc}")
-                                    continue
-                        if audio_file and os.path.isfile(audio_file):
-                            if not audio_file.lower().endswith(".wav"):
-                                if audio_file in converted_audio_cache:
-                                    converted_wav = converted_audio_cache[audio_file]
-                                else:
-                                    converted_wav = convert_audio_to_wav(audio_file, run_temp_dir)
-                                    converted_audio_cache[audio_file] = converted_wav
-                                if not converted_wav:
-                                    print(f"Warning: failed to convert non-wav audio file {audio_file} to wav")
-                                    if downloaded_audio and audio_file and os.path.exists(audio_file):
-                                        os.remove(audio_file)
-                                    continue
-                            align_path = converted_wav if converted_wav is not None else audio_file
-                            pending_entries.append(
-                                {
-                                    "sentence_elem": s,
-                                    "entry": {"ref": align_path, "sentence": sentence_text},
-                                    "converted_wav": converted_wav,
-                                    "downloaded_audio": downloaded_audio,
-                                    "audio_file": audio_file,
-                                }
-                            )
-
-                    for pending_batch in _iter_score_batches(pending_entries):
-                        batch_changed, batch_written = _process_score_batch(pending_batch, language_name)
-                        file_changed = file_changed or batch_changed
-                        written_scores += batch_written
-
-                    if file_changed:
-                        tree.write(xml_path, encoding="utf-8", xml_declaration=True)
-                        updated_xml_files += 1
-                        print(f"Updated XML file: {xml_path}")
-                    else:
-                        print(f"Skipped writing {xml_path} because file_changed was False")
+        updated_xml_files, written_scores = walk_corpora(corpora_path, run_temp_dir)
     finally:
         shutil.rmtree(run_temp_dir, ignore_errors=True)
         try:
@@ -360,6 +449,33 @@ def main():
                 os.rmdir(temp_root_path)
         except OSError:
             pass
+
+    return updated_xml_files, written_scores
+
+
+def parse_args():
+    parser = argparse.ArgumentParser(
+        description="Compute and write PDM (pronunciation) scores into corpus XML files."
+    )
+    parser.add_argument(
+        "--existing-audio",
+        action="store_true",
+        help=(
+            "Use whatever audio is already present locally or reachable via URL, instead of "
+            "running each corpus's download_audio_data.sh. This walks the whole Corpora tree "
+            "in one pass (previous default behavior)."
+        ),
+    )
+    return parser.parse_args()
+
+
+def main():
+    args = parse_args()
+
+    if args.existing_audio:
+        updated_xml_files, written_scores = process_corpora_using_existing_audio(CORPORA_PATH)
+    else:
+        updated_xml_files, written_scores = process_corpora_via_download_script(CORPORA_PATH)
 
     print(f"Updated XML files: {updated_xml_files}")
     print(f"Scores written: {written_scores}")
