@@ -1,0 +1,349 @@
+{
+  "schema": 1,
+  "source": {
+    "path": "source/source_records.json",
+    "row_count": 1061,
+    "rows_sha256": "f973552988cf1f3d9bc52bb924799d19fbc49050409c43b2ea24ec44a1be2cab"
+  },
+  "predecessor": {
+    "path": "source/public_predecessor.xml",
+    "bytes": 285055,
+    "sha256": "75467c70128a1ceb4c4de34f9a34b8d7fbad9c45ba15109cb005a7df3969cd24",
+    "entry_count": 1052,
+    "retired_entries": [
+      {
+        "predecessor_index": 11,
+        "id": "W11",
+        "original_form": "Deus samma",
+        "reason": "Exact duplicate of the lexical record retained as W2."
+      },
+      {
+        "predecessor_index": 93,
+        "id": "W92",
+        "original_form": " samma",
+        "reason": "Page-flow artifact absent from the Joby source table."
+      },
+      {
+        "predecessor_index": 113,
+        "id": "W112",
+        "original_form": " samma",
+        "reason": "Page-flow artifact absent from the Joby source table."
+      },
+      {
+        "predecessor_index": 260,
+        "id": "W260",
+        "original_form": "samma",
+        "reason": "Page-flow artifact absent from the Joby source table."
+      },
+      {
+        "predecessor_index": 306,
+        "id": "W306",
+        "original_form": "samma",
+        "reason": "Page-flow artifact absent from the Joby source table."
+      },
+      {
+        "predecessor_index": 318,
+        "id": "W318",
+        "original_form": "samma",
+        "reason": "Page-flow artifact absent from the Joby source table."
+      },
+      {
+        "predecessor_index": 351,
+        "id": "W351",
+        "original_form": "samma",
+        "reason": "Page-flow artifact absent from the Joby source table."
+      },
+      {
+        "predecessor_index": 797,
+        "id": "W798",
+        "original_form": "samma",
+        "reason": "Page-flow artifact absent from the Joby source table."
+      }
+    ]
+  },
+  "unit_model": {
+    "description": "One PDF table row is one lexical S record. Comma-separated forms remain together because they occupy one source lexical row.",
+    "source_rows_per_unit": 1,
+    "expected_units": 1061,
+    "manuscript_count_reconciliation": "Joby describes the manuscript as containing 1072 lemmas. The pinned corrected PDF database contains exactly 1061 detectable lexical table rows, including multiline and page-marker cases. No source-backed mapping identifies 11 additional database rows, so the database row is the canonical unit and no speculative split is made."
+  },
+  "new_source_rows": [
+    23,
+    32,
+    76,
+    135,
+    209,
+    221,
+    264,
+    332,
+    351,
+    418,
+    523,
+    544,
+    573,
+    609,
+    613,
+    819,
+    822
+  ],
+  "mapping_overrides": [
+    {
+      "source_row": 38,
+      "predecessor_index": 38,
+      "reason": "The predecessor reverses tagaraos and tagatimog."
+    },
+    {
+      "source_row": 39,
+      "predecessor_index": 37,
+      "reason": "The predecessor reverses tagaraos and tagatimog."
+    },
+    {
+      "source_row": 101,
+      "predecessor_index": 101,
+      "reason": "The predecessor reverses loudock and mala."
+    },
+    {
+      "source_row": 102,
+      "predecessor_index": 100,
+      "reason": "The predecessor reverses loudock and mala."
+    }
+  ],
+  "output_id_overrides": [
+    {
+      "source_row": 11,
+      "output_id": "Utrecht_Manuscript-S-r0011",
+      "reason": "The predecessor reuses W2 for this distinct lexical record."
+    },
+    {
+      "source_row": 480,
+      "output_id": "Utrecht_Manuscript-S-r0480",
+      "reason": "The predecessor reuses W474 for this distinct lexical record."
+    },
+    {
+      "source_row": 481,
+      "output_id": "Utrecht_Manuscript-S-r0481",
+      "reason": "The predecessor reuses W475 for this distinct lexical record."
+    },
+    {
+      "source_row": 482,
+      "output_id": "Utrecht_Manuscript-S-r0482",
+      "reason": "The predecessor reuses W476 for this distinct lexical record."
+    },
+    {
+      "source_row": 732,
+      "output_id": "W725",
+      "reason": "The published numeric-only id 725 is not a valid XML ID; restore its omitted W prefix."
+    }
+  ],
+  "form_decisions": [
+    {
+      "source_row": 65,
+      "raw_form": "[deleted] sackig",
+      "output_form": "sackig",
+      "notes": "The source marks this transcription as deleted."
+    },
+    {
+      "source_row": 105,
+      "raw_form": "ratta kivadoch i.e. ki vadoch",
+      "output_form": "ratta kivadoch",
+      "notes": "The source adds the analysis: i.e. ki vadoch."
+    },
+    {
+      "source_row": 147,
+      "raw_form": "sangia [Adelaar: final 'a' unexplained]",
+      "output_form": "sangia",
+      "notes": "Adelaar: final 'a' unexplained."
+    },
+    {
+      "source_row": 164,
+      "raw_form": "tmatoutou <m> verb infix",
+      "output_form": "tmatoutou",
+      "notes": "The source identifies m as a verb infix."
+    },
+    {
+      "source_row": 165,
+      "raw_form": "vavarigbig va- rdpl.",
+      "output_form": "vavarigbig",
+      "notes": "The source adds the analysis: va- and reduplication."
+    },
+    {
+      "source_row": 233,
+      "raw_form": "kinikapateijang kitbong i.e. ki nikapateijang ki tbong",
+      "output_form": "kinikapateijang kitbong",
+      "notes": "The source adds the analysis: i.e. ki nikapateijang ki tbong."
+    },
+    {
+      "source_row": 282,
+      "raw_form": "kavavoelang e?c?",
+      "output_form": "kavavoelang",
+      "notes": "The source appends the uncertain reading e?c?."
+    },
+    {
+      "source_row": 311,
+      "raw_form": "vaam ?raam",
+      "output_form": "vaam",
+      "notes": "The source also gives the uncertain reading ?raam."
+    },
+    {
+      "source_row": 573,
+      "raw_form": "[?metuso]",
+      "output_form": "metuso",
+      "notes": "The entire source reading is uncertain: [?metuso]."
+    },
+    {
+      "source_row": 745,
+      "raw_form": "maloumou ?",
+      "output_form": "maloumou",
+      "notes": "The source marks this reading as uncertain."
+    },
+    {
+      "source_row": 1040,
+      "raw_form": "tmangi ?tmungi",
+      "output_form": "tmangi",
+      "notes": "The source also gives the uncertain reading ?tmungi."
+    },
+    {
+      "source_row": 1058,
+      "raw_form": "vivihit rdpl-vihit",
+      "output_form": "vivihit",
+      "notes": "The source identifies reduplication of vihit."
+    }
+  ],
+  "translation_decisions": [
+    {
+      "source_row": 99,
+      "source_field": "english",
+      "raw_text": "cook-house/larder",
+      "outputs": ["cook-house", "larder"]
+    },
+    {
+      "source_row": 100,
+      "source_field": "english",
+      "raw_text": "pantry/larder",
+      "outputs": ["pantry", "larder"]
+    },
+    {
+      "source_row": 112,
+      "source_field": "english",
+      "raw_text": "mat/matting",
+      "outputs": ["mat", "matting"]
+    },
+    {
+      "source_row": 235,
+      "source_field": "english",
+      "raw_text": "sister or brother, nieces/cousins",
+      "outputs": ["sister or brother", "nieces", "cousins"]
+    },
+    {
+      "source_row": 253,
+      "source_field": "english",
+      "raw_text": "preacher/minister",
+      "outputs": ["preacher", "minister"]
+    },
+    {
+      "source_row": 259,
+      "source_field": "english",
+      "raw_text": "champion/advocate",
+      "outputs": ["champion", "advocate"]
+    },
+    {
+      "source_row": 362,
+      "source_field": "english",
+      "raw_text": "boil/furuncle",
+      "outputs": ["boil", "furuncle"]
+    },
+    {
+      "source_row": 401,
+      "source_field": "english",
+      "raw_text": "cangang/Chinese cloth",
+      "outputs": ["cangang", "Chinese cloth"]
+    },
+    {
+      "source_row": 404,
+      "source_field": "english",
+      "raw_text": "girdle/belt",
+      "outputs": ["girdle", "belt"]
+    },
+    {
+      "source_row": 421,
+      "source_field": "english",
+      "raw_text": "broadsword/hewer",
+      "outputs": ["broadsword", "hewer"]
+    },
+    {
+      "source_row": 474,
+      "source_field": "english",
+      "raw_text": "pisang/banana tree",
+      "outputs": ["pisang", "banana tree"]
+    },
+    {
+      "source_row": 507,
+      "source_field": "english",
+      "raw_text": "heron/egret",
+      "outputs": ["heron", "egret"]
+    },
+    {
+      "source_row": 545,
+      "source_field": "english",
+      "raw_text": "eelpout/blenny",
+      "outputs": ["eelpout", "blenny"]
+    },
+    {
+      "source_row": 876,
+      "source_field": "english",
+      "raw_text": "to ask for leave/permission",
+      "outputs": ["to ask for leave", "to ask for permission"]
+    }
+  ],
+  "repeat_policy": {
+    "classification": "reference wordlist with source-distinct attestations",
+    "reason": "Each repeated form occurs in a separate pinned PDF row and page location. Several carry different meanings or translations; the others remain separate manuscript attestations under POL-022.",
+    "retained_form_groups": [
+      {"form": "adim", "source_rows": [428, 451]},
+      {"form": "demarang", "source_rows": [61, 835]},
+      {"form": "dmadarang", "source_rows": [60, 837]},
+      {"form": "mackdiou", "source_rows": [242, 877]},
+      {"form": "maharmil", "source_rows": [733, 1061]},
+      {"form": "malam", "source_rows": [368, 734]},
+      {"form": "marisig", "source_rows": [305, 751]},
+      {"form": "mascyt", "source_rows": [247, 936]},
+      {"form": "mavock", "source_rows": [128, 953]},
+      {"form": "millamag", "source_rows": [268, 970]},
+      {"form": "miraong", "source_rows": [126, 971]},
+      {"form": "siagog", "source_rows": [583, 640]},
+      {"form": "smoulat", "source_rows": [180, 1026]},
+      {"form": "vourel", "source_rows": [13, 188]},
+      {"form": "wagi", "source_rows": [12, 189]}
+    ]
+  },
+  "xml": {
+    "attributes": {
+      "id": "Utrecht_Manuscript",
+      "xml:lang": "fos",
+      "source": "https://neerlandistiek.nl/wp-content/uploads/2021/07/UM-database.pdf",
+      "copyright": "CC BY-NC 4.0",
+      "citation": "Joby, Christopher. 2021. Utrecht Manuscript, Siraya-Nederlands woordenlijst / UM database. Neerlandistiek.",
+      "BibTeX_citation": "@misc{joby2021utrecht, author={Christopher Joby}, title={Utrecht Manuscript, Siraya-Nederlands woordenlijst / UM database}, year={2021}, howpublished={Neerlandistiek}, url={https://neerlandistiek.nl/wp-content/uploads/2021/07/UM-database.pdf}}",
+      "dialect": "Siraya"
+    },
+    "translations": [
+      {
+        "source_field": "um_belgica",
+        "xml_lang": "dum"
+      },
+      {
+        "source_field": "vdv_dutch",
+        "xml_lang": "nld"
+      },
+      {
+        "source_field": "english",
+        "xml_lang": "eng"
+      }
+    ],
+    "translation_cleanup": {
+      "square_brackets_to_parentheses": true,
+      "preserve_raw_in_notes": true,
+      "reason": "Current clean_xml canonicalizes square brackets in translations; the raw PDF value remains in notes."
+    }
+  }
+}
