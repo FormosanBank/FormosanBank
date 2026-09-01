@@ -4,7 +4,7 @@
 
 - Basecamp card:
   `https://app.basecamp.com/3340659/buckets/31258415/card_tables/cards/9999151808`
-- PDF: `Private/source/latham_1862_comparative_philology.pdf`
+- Local ignored PDF: `Private/source/latham_1862_comparative_philology.pdf`
 - PDF SHA256:
   `e7b34a4063c5f552b288f2e97568d13387ffad471713e3191c644a2ec40ead7b`
 - PDF size and extent: 1,195,720 bytes; 6 pages; printed pp. 314–319
@@ -32,8 +32,8 @@ regression coverage:
 
 ## Reproducible Outputs
 
-- `Final_XML/Siraya/latham_1862_sideia_sida.xml`: 38 records.
-- `Final_XML/Babuza-Favorlang/latham_1862_favorlang.xml`: 24 records.
+- `XML/Siraya/latham_1862_sideia_sida.xml`: 38 records.
+- `XML/Babuza-Favorlang/latham_1862_favorlang.xml`: 24 records.
 - `CodeAndDocs/extraction_report.csv`: exact row-level mapping.
 - `CodeAndDocs/extraction_summary.md`: generated counts.
 - `CodeAndDocs/source_coverage_audit.csv`: all 64 reviewed decisions.
@@ -43,13 +43,13 @@ The builder reads the source ledger directly. The source auditor independently
 checks every report and XML field against that ledger and rejects missing,
 extra, or ambiguous records.
 
-## Pinned QC
+## Current Authority QC
 
 `scripts/run_final_qc.sh` requires a clean validator checkout at commit
-`da88673d656418adaeb36a55e53778ee1c993826` and writes to a new absolute
+`3a3c47c220520113f747e6a2d441494000e13c4b` and writes to a new absolute
 directory outside this repository. It does not mutate corpus XML.
 
-July 27 result:
+August 22 result:
 
 | Check | Result |
 | --- | --- |
@@ -58,10 +58,16 @@ July 27 result:
 | XML validator | 0 findings |
 | Text validator | 9 SOFT |
 | Gloss validator | 62 SOFT |
-| Duplicate validator, original | 1 HARD group; 1 SOFT group |
-| Duplicate validator, standard | 1 HARD group; 1 SOFT group |
+| Duplicate validator, original | 2 SOFT source-authentic groups |
+| Duplicate validator, standard | 2 SOFT source-authentic groups |
 | Dialect inventory | `bzg/Favorlang`: 1; `fos/Siraya`: 1 |
+| Port readiness | 0 HARD; 0 WARN |
 | Exact adjudication | 75 accepted occurrences/groups; 0 unresolved |
+
+The XML check runs in update mode against the current public corpora while
+excluding the existing `Latham-1862` target. It reports zero findings, so the
+development XML has no structural, identifier, or new cross-corpus collision
+blocker under the pinned authority.
 
 ### Text findings
 
@@ -102,3 +108,8 @@ profiles and are not used to alter the historical spellings.
 count; rebuilds twice in a fresh work directory; reruns source checks and
 pinned QC; and byte-compares the XML plus all generated reports with the
 checked-in outputs.
+
+`Private/` is ignored and absent from the tracked tree. The repository records
+the public scan URL, exact local filename, size, page count, and SHA256 needed
+to restore and verify the source without risking publication of local source
+material.
