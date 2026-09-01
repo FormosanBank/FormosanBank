@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""
-Download missing audio files from their original URLs and place them in correct locations.
-"""
+"""Download missing audio files from their source URLs."""
 
-import requests
+import re
 import time
 from pathlib import Path
+
+import requests
 from lxml import etree
-import re
-from urllib.parse import urlparse
-import sys
+
+from learning_vocabulary_audio_urls import normalize_audio_url
+
 
 def extract_missing_files():
     """Extract missing file paths and their details from the report."""
@@ -57,7 +57,7 @@ def find_audio_url(xml_file, audio_filename):
         
         if audio_elements:
             url = audio_elements[0].get('url')
-            return url
+            return normalize_audio_url(url) if url else None
         else:
             print(f"  ⚠️ Audio element not found in XML for {audio_filename}")
             return None
@@ -76,6 +76,8 @@ def download_audio_file(url, output_path):
             # If it's a regular file that already exists, skip
             return True
         
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+
         # Download with timeout and user agent
         headers = {
             'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'

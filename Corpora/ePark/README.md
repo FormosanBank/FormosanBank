@@ -9,7 +9,7 @@ This repository contains code and data for processing and structuring the ePark 
 ## Project Structure
 
 - **ePark_1**, **ePark_2**, **ePark_3**: Directories containing the source data files from the ePark dataset, organized by different parts. eParks 2 and 3 contain multiple topics. Data in the different ePark folders are structured differently, and so the code is in this repo is catered to deal with these different structures to process the code.
-- **Final_XML**: Directory containing the processed data structured into FormosanBank XML format.
+- **XML**: Canonical published data in FormosanBank XML format. The older build scripts use `Final_XML` as their local output directory before the result is ported here.
 - **dialects.csv**: A mapping file between numerical codes and the corresponding Formosan dialects used in the ePark dataset.
 - **ePark1and2.py**: Script to process and convert the data in `ePark_1` and `ePark_2` directories into the FormosanBank XML format.
 - **ePark3.py**: Script to process and convert the data in the `ePark_3` directory into the FormosanBank XML format.
@@ -17,9 +17,21 @@ This repository contains code and data for processing and structuring the ePark 
 - **requirements.txt**: Lists the Python libraries required to run the processing scripts.
 - **add_dialects**: script to add the dialect information to the XML files
 - **update_audio.py**: script to update the XML files and remove the <AUDIO> tags associated with audio files that weren't downloaded successfully -**update_xml_ids.py**: update the id attribute in the <TEXT> tags in XML files to ensure the ids are unique
+- **learning_vocabulary_audio_urls.py**: normalizes the learning-vocabulary provider's former audio route during generation and reproducibly migrates published XML links.
 
 Please note that ePark is a collection of educational material that is split into topics. The Final_XML folder will have subfolders and their names would start with the ePark version (e.g. ep1) followed by the topic name in Chinese (e.g. 九階教材). These topics could be something like "9th Period Teaching Materials" or "Cultural Topics." Unless you are interested in differentiating between the specific type of the educational materials in your research, the topic names shouldn't be relevant
 .
+
+## Downloading published audio
+
+From the FormosanBank repository root, run:
+
+```bash
+Corpora/ePark/download_audio_data.sh
+```
+
+This downloads the pinned public audio archives from Hugging Face. The XML
+`AUDIO/@url` values are source references and are not the bulk-download path.
 
 ## Installation
 
@@ -45,6 +57,11 @@ Please note that ePark is a collection of educational material that is split int
 ## Usage
 
 Data was originally received in three packages, here named ePark 1, 2, and 3. This has no significance outside how it was mailed to us. But based on what was in which archive, the code varies a little.
+
+The received learning-vocabulary CSVs retain the provider's historical
+`ilrdc.tw/tow/2022` URLs as source evidence. `ePark1and2.py` normalizes those
+values to the current `web.klokah.tw/vocabulary` route when it builds XML, so
+the raw snapshot remains unchanged while regenerated XML stays usable.
 
 1. **Process ePark 1 and 2 Data**:
    Run `ePark1and2.py` to process the source data in `ePark_1` and `ePark_2` directories:
@@ -263,7 +280,10 @@ At this point, run:
 
 This will check to make sure all the audio files exist and are where they are supposed to be. However, if any are missing, they will end up in `missing_audio_files.txt`. 
 
-When I ran this, we had a number of broken symlinks. This was verified by running `check_missing_symlinks.py`. At that point, running `python download_missing_audio.py` replaced all the missing audio files for me. Hopefully this won't come up, and if it does, hopefully the steps above will address the issue for you.
+For the published corpus, restore missing audio with `../download_audio_data.sh`,
+which uses the pinned Hugging Face archives. `download_missing_audio.py` is a
+legacy reproduction helper for local build outputs; it now normalizes former
+learning-vocabulary URLs before requesting the source file.
 
 Now, we need to convert the mp3s to wav files. Run
 
