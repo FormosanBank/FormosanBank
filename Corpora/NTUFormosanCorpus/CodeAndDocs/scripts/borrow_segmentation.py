@@ -69,7 +69,12 @@ from pathlib import Path
 
 import lxml.etree as etree
 
-_REPO_ROOT = Path(__file__).resolve().parents[4]
+_REPO_ROOT = Path(
+    os.environ.get(
+        "FORMOSANBANK_ROOT",
+        Path(__file__).resolve().parents[3] / "FormosanBank",
+    )
+).resolve()
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 from QC.utilities.add_phonology import load_profile, phonologize  # noqa: E402
@@ -86,6 +91,13 @@ _LANG_MAP = {
 
 def _empty(text):
     return not (text or "").strip()
+
+
+def _empty_m_form(form):
+    """Return whether an M FORM has neither text nor an UNCLEAR marker."""
+    return form is None or (
+        _empty(form.text) and form.find("UNCLEAR") is None
+    )
 
 
 def _get_tier(elem, tag, kind):
@@ -194,8 +206,10 @@ def try_repair_w(w, language, index, mp, stats):
     ms = w.findall("M")
     if not ms:
         return False
-    empty_ms = [m for m in ms
-                if (lambda fe: fe is None or _empty(fe.text))(_get_tier(m, "FORM", "original"))]
+    empty_ms = [
+        m for m in ms
+        if _empty_m_form(_get_tier(m, "FORM", "original"))
+    ]
     if not empty_ms:
         return False
     wform_el = _get_tier(w, "FORM", "original")

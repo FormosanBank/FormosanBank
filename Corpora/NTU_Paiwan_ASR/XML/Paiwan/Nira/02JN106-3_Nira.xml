@@ -1,108 +1,120 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<TEXT id="NTU_Pwn_Nira_02JN106-3 Nira" xml:lang="pwn" source="NTU Paiwan Data, Participant Nira, file 02JN106-3 Nira" audio="02JN106-3_Nira.wav" copyright="CC-BY" citation="Le Ferrand, É., Prud'hommeaux, E., Hartshorne, J. K., &amp; Sung, L.-M. (2024). NTU Paiwan ASR Corpus. Electronic Resource." BibTeX_citation="@electronic{leferrand2024ntu, author = {Le Ferrand, {'E}ric and Prud'hommeaux, Emily and Hartshorne, Joshua K. and Sung, Li-May}, year = {2024}, title = {{NTU} {Paiwan} {ASR} Corpus},type = {Electronic Resource}}" dialect="Northern">
+<TEXT id="NTU_Pwn_Nira_02JN106-3 Nira" xml:lang="pwn" source="NTU Paiwan Data, Participant Nira, file 02JN106-3 Nira" audio="02JN106-3_Nira.wav" copyright="CC-BY" citation="Le Ferrand, É., Prud'hommeaux, E., Hartshorne, J. K., &amp; Sung, L.-M. (2024). NTU Paiwan ASR Corpus. Electronic Resource." BibTeX_citation="@electronic{leferrand2024ntu, author = {Le Ferrand, {\'E}ric and Prud'hommeaux, Emily and Hartshorne, Joshua K. and Sung, Li-May}, year = {2024}, title = {{NTU} {Paiwan} {ASR} Corpus},type = {Electronic Resource}}" dialect="Northern">
     <S id="a1">
-        <FORM kindOf="original">tazua kalja kilagavan ta padai a qadav (tazua kalja kiraumaljan a qadav)</FORM>
-        <PHON kindOf="original">tazua kaʎa kiɭagavan ta padai a qadav (tazua kaʎa kiraumaʎan a qadav)</PHON>
-        <FORM kindOf="standard">tazua kalja kilagavan ta padai a qadav (tazua kalja kiraumaljan a qadav)</FORM>
-        <PHON kindOf="standard">tazua kaʎa kiɭagavan ta padai a qadav (tazua kaʎa kiraumaʎan a qadav)</PHON>
+        <FORM kindOf="original" notes="source alternative notation expanded from tazua kalja kilagavan ta padai a qadav (tazua kalja kiraumaljan a qadav)">tazua kalja kilagavan ta padai a qadav</FORM>
+        <PHON kindOf="original">tazua kaʎa kiɭagavan ta padai a qadav</PHON>
+        <FORM kindOf="standard">tazua kalja kilagavan ta padai a qadav</FORM>
+        <PHON kindOf="standard">tazua kaʎa kiɭagavan ta padai a qadav</PHON>
         <AUDIO start="2.058" end="9.882" file="02JN106-3_Nira_a1.wav"/>
     </S>
+    <S id="a1-alt2">
+        <FORM kindOf="original" notes="source alternative notation expanded from tazua kalja kilagavan ta padai a qadav (tazua kalja kiraumaljan a qadav)">tazua kalja kiraumaljan a qadav</FORM>
+        <PHON kindOf="original">tazua kaʎa kiraumaʎan a qadav</PHON>
+        <FORM kindOf="standard">tazua kalja kiraumaljan a qadav</FORM>
+        <PHON kindOf="standard">tazua kaʎa kiraumaʎan a qadav</PHON>
+    </S>
     <S id="a3">
-        <FORM kindOf="original">nu kipa'enetaken tua ku kinakakedrianan, nu ini ka kiayan tjay kama a sema ringpang a demangdang, ki kiayan tjay kina a kilagav/kiraumalj tua paday</FORM>
-        <PHON kindOf="original">nu kipaʔənətakən tua ku kinakakəɖianan, nu ini ka kiajan ʦaj kama a səma riŋpaŋ a dəmaŋdaŋ, ki kiajan ʦaj kina a kiɭagav/kiraumaʎ tua padaj</PHON>
-        <FORM kindOf="standard">nu kipa'enetaken tua ku kinakakedrianan, nu ini ka kiayan tjay kama a sema ringpang a demangdang, ki kiayan tjay kina a kilagav/kiraumalj tua paday</FORM>
-        <PHON kindOf="standard">nu kipaʔənətakən tua ku kinakakəɖianan, nu ini ka kiajan ʦaj kama a səma riŋpaŋ a dəmaŋdaŋ, ki kiajan ʦaj kina a kiɭagav/kiraumaʎ tua padaj</PHON>
+        <FORM kindOf="original" notes="source alternative notation expanded from nu kipa’enetaken tua ku kinakakedrianan, nu ini ka kiayan tjay kama a sema ringpang a demangdang, ki kiayan tjay kina a kilagav/kiraumalj tua paday">nu kipa'enetaken tua ku kinakakedrianan, nu ini ka kiayan tjay kama a sema ringpang a demangdang, ki kiayan tjay kina a kilagav tua paday</FORM>
+        <PHON kindOf="original">nu kipaʔənətakən tua ku kinakakəɖianan nu ini ka kiajan caj kama a səma riŋpaŋ a dəmaŋdaŋ ki kiajan caj kina a kiɭagav tua padaj</PHON>
+        <FORM kindOf="standard">nu kipa'enetaken tua ku kinakakedrianan, nu ini ka kiayan tjay kama a sema ringpang a demangdang, ki kiayan tjay kina a kilagav tua paday</FORM>
+        <PHON kindOf="standard">nu kipaʔənətakən tua ku kinakakəɖianan nu ini ka kiajan caj kama a səma riŋpaŋ a dəmaŋdaŋ ki kiajan caj kina a kiɭagav tua padaj</PHON>
         <AUDIO start="10.117" end="23.411" file="02JN106-3_Nira_a3.wav"/>
+    </S>
+    <S id="a3-alt2">
+        <FORM kindOf="original" notes="source alternative notation expanded from nu kipa’enetaken tua ku kinakakedrianan, nu ini ka kiayan tjay kama a sema ringpang a demangdang, ki kiayan tjay kina a kilagav/kiraumalj tua paday">nu kipa'enetaken tua ku kinakakedrianan, nu ini ka kiayan tjay kama a sema ringpang a demangdang, ki kiayan tjay kina a kiraumalj tua paday</FORM>
+        <PHON kindOf="original">nu kipaʔənətakən tua ku kinakakəɖianan nu ini ka kiajan caj kama a səma riŋpaŋ a dəmaŋdaŋ ki kiajan caj kina a kiraumaʎ tua padaj</PHON>
+        <FORM kindOf="standard">nu kipa'enetaken tua ku kinakakedrianan, nu ini ka kiayan tjay kama a sema ringpang a demangdang, ki kiayan tjay kina a kiraumalj tua paday</FORM>
+        <PHON kindOf="standard">nu kipaʔənətakən tua ku kinakakəɖianan nu ini ka kiajan caj kama a səma riŋpaŋ a dəmaŋdaŋ ki kiajan caj kina a kiraumaʎ tua padaj</PHON>
     </S>
     <S id="a5">
         <FORM kindOf="original">tuazua kumalji a pulavalavay a gakku ikaken angata makaya a kivangavang, kavalanga ayaken a pivarung nu pacunaken tua 'ali'ali a neka nu kinavalisakedan,</FORM>
-        <PHON kindOf="original">tuazua kumaʎi a puɭavaɭavaj a gakku ikakən aŋata makaja a kivaŋavaŋ, kavaɭaŋa ajakən a pivaruŋ nu paʦunakən tua ʔaɭiʔaɭi a nəka nu kinavaɭisakədan,</PHON>
+        <PHON kindOf="original">tuazua kumaʎi a puɭavaɭavaj a gakku ikakən aŋata makaja a kivaŋavaŋ kavaɭaŋa ajakən a pivaruŋ nu paʦunakən tua ʔaɭiʔaɭi a nəka nu kinavaɭisakədan</PHON>
         <FORM kindOf="standard">tuazua kumalji a pulavalavay a gakku ikaken angata makaya a kivangavang, kavalanga ayaken a pivarung nu pacunaken tua 'ali'ali a neka nu kinavalisakedan,</FORM>
-        <PHON kindOf="standard">tuazua kumaʎi a puɭavaɭavaj a gakku ikakən aŋata makaja a kivaŋavaŋ, kavaɭaŋa ajakən a pivaruŋ nu paʦunakən tua ʔaɭiʔaɭi a nəka nu kinavaɭisakədan,</PHON>
+        <PHON kindOf="standard">tuazua kumaʎi a puɭavaɭavaj a gakku ikakən aŋata makaja a kivaŋavaŋ kavaɭaŋa ajakən a pivaruŋ nu paʦunakən tua ʔaɭiʔaɭi a nəka nu kinavaɭisakədan</PHON>
         <AUDIO start="28.382" end="42.500" file="02JN106-3_Nira_a5.wav"/>
     </S>
     <S id="a6">
         <FORM kindOf="original">pupaisu saka kivangavangavang, 'aku namapaula a ku kinacemekeljan izua nu ayaken a kisangkuya.</FORM>
-        <PHON kindOf="original">pupaisu saka kivaŋavaŋavaŋ, ʔaku namapauɭa a ku kinaʦəməkəʎan izua nu ajakən a kisaŋkuja.</PHON>
+        <PHON kindOf="original">pupaisu saka kivaŋavaŋavaŋ ʔaku namapauɭa a ku kinaʦəməkəʎan izua nu ajakən a kisaŋkuja</PHON>
         <FORM kindOf="standard">pupaisu saka kivangavangavang, 'aku namapaula a ku kinacemekeljan izua nu ayaken a kisangkuya.</FORM>
-        <PHON kindOf="standard">pupaisu saka kivaŋavaŋavaŋ, ʔaku namapauɭa a ku kinaʦəməkəʎan izua nu ajakən a kisaŋkuja.</PHON>
+        <PHON kindOf="standard">pupaisu saka kivaŋavaŋavaŋ ʔaku namapauɭa a ku kinaʦəməkəʎan izua nu ajakən a kisaŋkuja</PHON>
         <AUDIO start="42.500" end="53.088" file="02JN106-3_Nira_a6.wav"/>
     </S>
     <S id="a7">
         <FORM kindOf="original">aicu a kilagav tua paday nuaya, mavan nu kalja kipadayan, vaik a makatua kinipadayananga a 'uma na 'ali'ali a ljemulju tua tjezatjeza a kedrianga a paday.</FORM>
-        <PHON kindOf="original">aiʦu a kiɭagav tua padaj nuaja, mavan nu kaʎa kipadajan, vaik a makatua kinipadajanaŋa a ʔuma na ʔaɭiʔaɭi a ʎəmuʎu tua ʦəzaʦəza a kəɖiaŋa a padaj.</PHON>
+        <PHON kindOf="original">aiʦu a kiɭagav tua padaj nuaja mavan nu kaʎa kipadajan vaik a makatua kinipadajanaŋa a ʔuma na ʔaɭiʔaɭi a ʎəmuʎu tua cəzacəza a kəɖiaŋa a padaj</PHON>
         <FORM kindOf="standard">aicu a kilagav tua paday nuaya, mavan nu kalja kipadayan, vaik a makatua kinipadayananga a 'uma na 'ali'ali a ljemulju tua tjezatjeza a kedrianga a paday.</FORM>
-        <PHON kindOf="standard">aiʦu a kiɭagav tua padaj nuaja, mavan nu kaʎa kipadajan, vaik a makatua kinipadajanaŋa a ʔuma na ʔaɭiʔaɭi a ʎəmuʎu tua ʦəzaʦəza a kəɖiaŋa a padaj.</PHON>
+        <PHON kindOf="standard">aiʦu a kiɭagav tua padaj nuaja mavan nu kaʎa kipadajan vaik a makatua kinipadajanaŋa a ʔuma na ʔaɭiʔaɭi a ʎəmuʎu tua cəzacəza a kəɖiaŋa a padaj</PHON>
         <AUDIO start="54.734" end="69.647" file="02JN106-3_Nira_a7.wav"/>
     </S>
     <S id="a11">
         <FORM kindOf="original">ayatua ka kakedrianananaken namapaulamen aravac, ikamen a makaveliveli tua paday, manasika vaikamen a kiraumalj.</FORM>
-        <PHON kindOf="original">ajatua ka kakəɖianananakən namapauɭamən aravaʦ, ikamən a makavəɭivəɭi tua padaj, manasika vaikamən a kiraumaʎ.</PHON>
+        <PHON kindOf="original">ajatua ka kakəɖianananakən namapauɭamən aravaʦ ikamən a makavəɭivəɭi tua padaj manasika vaikamən a kiraumaʎ</PHON>
         <FORM kindOf="standard">ayatua ka kakedrianananaken namapaulamen aravac, ikamen a makaveliveli tua paday, manasika vaikamen a kiraumalj.</FORM>
-        <PHON kindOf="standard">ajatua ka kakəɖianananakən namapauɭamən aravaʦ, ikamən a makavəɭivəɭi tua padaj, manasika vaikamən a kiraumaʎ.</PHON>
+        <PHON kindOf="standard">ajatua ka kakəɖianananakən namapauɭamən aravaʦ ikamən a makavəɭivəɭi tua padaj manasika vaikamən a kiraumaʎ</PHON>
         <AUDIO start="69.647" end="81.794" file="02JN106-3_Nira_a11.wav"/>
     </S>
     <S id="a12">
         <FORM kindOf="original">azua a nia ljinuljuljulju a paday, nu nu liavanga, nia sikarim tua kasasavan sa rasi a makapidalj a 'adav, sana nia satjezi a pasapairang a papaisu.</FORM>
-        <PHON kindOf="original">azua a nia ʎinuʎuʎuʎu a padaj, nu nu ɭiavaŋa, nia sikarim tua kasasavan sa rasi a makapidaʎ a ʔadav, sana nia saʦəzi a pasapairaŋ a papaisu.</PHON>
+        <PHON kindOf="original">azua a nia ʎinuʎuʎuʎu a padaj nu nu ɭiavaŋa nia sikarim tua kasasavan sa rasi a makapidaʎ a ʔadav sana nia sacəzi a pasapairaŋ a papaisu</PHON>
         <FORM kindOf="standard">azua a nia ljinuljuljulju a paday, nu nu liavanga, nia sikarim tua kasasavan sa rasi a makapidalj a 'adav, sana nia satjezi a pasapairang a papaisu.</FORM>
-        <PHON kindOf="standard">azua a nia ʎinuʎuʎuʎu a padaj, nu nu ɭiavaŋa, nia sikarim tua kasasavan sa rasi a makapidaʎ a ʔadav, sana nia saʦəzi a pasapairaŋ a papaisu.</PHON>
+        <PHON kindOf="standard">azua a nia ʎinuʎuʎuʎu a padaj nu nu ɭiavaŋa nia sikarim tua kasasavan sa rasi a makapidaʎ a ʔadav sana nia sacəzi a pasapairaŋ a papaisu</PHON>
         <AUDIO start="82.235" end="96.823" file="02JN106-3_Nira_a12.wav"/>
     </S>
     <S id="a14">
         <FORM kindOf="original">nu uri vaikamen a kiraumalj tjara 'inuliananamen kati kina a pakasangas, ki'aung ta cemas ulja namapelju' a nia 'adav a vua' saka makayamen a semauma' a kirimu.</FORM>
-        <PHON kindOf="original">nu uri vaikamən a kiraumaʎ ʦara ʔinuɭiananamən kati kina a pakasaŋas, kiʔauŋ ta ʦəmas uʎa namapəʎuʔ a nia ʔadav a vuaʔ saka makajamən a səmaumaʔ a kirimu.</PHON>
+        <PHON kindOf="original">nu uri vaikamən a kiraumaʎ cara ʔinuɭiananamən kati kina a pakasaŋas kiʔauŋ ta ʦəmas uʎa namapəʎuʔ a nia ʔadav a vuaʔ saka makajamən a səmaumaʔ a kirimu</PHON>
         <FORM kindOf="standard">nu uri vaikamen a kiraumalj tjara 'inuliananamen kati kina a pakasangas, ki'aung ta cemas ulja namapelju' a nia 'adav a vua' saka makayamen a semauma' a kirimu.</FORM>
-        <PHON kindOf="standard">nu uri vaikamən a kiraumaʎ ʦara ʔinuɭiananamən kati kina a pakasaŋas, kiʔauŋ ta ʦəmas uʎa namapəʎuʔ a nia ʔadav a vuaʔ saka makajamən a səmaumaʔ a kirimu.</PHON>
+        <PHON kindOf="standard">nu uri vaikamən a kiraumaʎ cara ʔinuɭiananamən kati kina a pakasaŋas kiʔauŋ ta ʦəmas uʎa namapəʎuʔ a nia ʔadav a vuaʔ saka makajamən a səmaumaʔ a kirimu</PHON>
         <AUDIO start="97.323" end="112.353" file="02JN106-3_Nira_a14.wav"/>
     </S>
     <S id="a16">
         <FORM kindOf="original">ljakua nakuya a nia sepi tazua 'adav, kiizua tapulu' saka izua a pupadayan a 'uma, kiizua tapulu' saka izua a pupadayan a 'uma a nia djinavac, ljakua kedri a nia kiraumalj, sasainaken ni kina mayatucu,</FORM>
-        <PHON kindOf="original">ʎakua nakuja a nia səpi tazua ʔadav, kiizua tapuɭuʔ saka izua a pupadajan a ʔuma, kiizua tapuɭuʔ saka izua a pupadajan a ʔuma a nia ɉinavaʦ, ʎakua kəɖi a nia kiraumaʎ, sasainakən ni kina majatuʦu,</PHON>
+        <PHON kindOf="original">ʎakua nakuja a nia səpi tazua ʔadav kiizua tapuɭuʔ saka izua a pupadajan a ʔuma kiizua tapuɭuʔ saka izua a pupadajan a ʔuma a nia ɉinavaʦ ʎakua kəɖi a nia kiraumaʎ sasainakən ni kina majatuʦu</PHON>
         <FORM kindOf="standard">ljakua nakuya a nia sepi tazua 'adav, kiizua tapulu' saka izua a pupadayan a 'uma, kiizua tapulu' saka izua a pupadayan a 'uma a nia djinavac, ljakua kedri a nia kiraumalj, sasainaken ni kina mayatucu,</FORM>
-        <PHON kindOf="standard">ʎakua nakuja a nia səpi tazua ʔadav, kiizua tapuɭuʔ saka izua a pupadajan a ʔuma, kiizua tapuɭuʔ saka izua a pupadajan a ʔuma a nia ɉinavaʦ, ʎakua kəɖi a nia kiraumaʎ, sasainakən ni kina majatuʦu,</PHON>
+        <PHON kindOf="standard">ʎakua nakuja a nia səpi tazua ʔadav kiizua tapuɭuʔ saka izua a pupadajan a ʔuma kiizua tapuɭuʔ saka izua a pupadajan a ʔuma a nia ɉinavaʦ ʎakua kəɖi a nia kiraumaʎ sasainakən ni kina majatuʦu</PHON>
         <AUDIO start="112.470" end="136.823" file="02JN106-3_Nira_a16.wav"/>
     </S>
     <S id="a18">
         <FORM kindOf="original">"masa izua tjamedjama tjanuitjen saka kinirawmaljanga nua 'ali'ali kaumaya, ika makuda pazurungi a ljia'ayav a djemavac, tjara djemumakitjen tua liav a paday!" aya ti kina.</FORM>
-        <PHON kindOf="original">"masa izua ʦaməɉama ʦanuiʦən saka kinirawmaʎaŋa nua ʔaɭiʔaɭi kaumaja, ika makuda pazuruŋi a ʎiaʔajav a ɉəmavaʦ, ʦara ɉəmumakiʦən tua ɭiav a padaj!" aja ti kina.</PHON>
+        <PHON kindOf="original">masa izua caməɉama canuicən saka kinirawmaʎaŋa nua ʔaɭiʔaɭi kaumaja ika makuda pazuruŋi a ʎiaʔajav a ɉəmavaʦ cara ɉəmumakicən tua ɭiav a padaj aja ti kina</PHON>
         <FORM kindOf="standard">"masa izua tjamedjama tjanuitjen saka kinirawmaljanga nua 'ali'ali kaumaya, ika makuda pazurungi a ljia'ayav a djemavac, tjara djemumakitjen tua liav a paday!" aya ti kina.</FORM>
-        <PHON kindOf="standard">"masa izua ʦaməɉama ʦanuiʦən saka kinirawmaʎaŋa nua ʔaɭiʔaɭi kaumaja, ika makuda pazuruŋi a ʎiaʔajav a ɉəmavaʦ, ʦara ɉəmumakiʦən tua ɭiav a padaj!" aja ti kina.</PHON>
+        <PHON kindOf="standard">masa izua caməɉama canuicən saka kinirawmaʎaŋa nua ʔaɭiʔaɭi kaumaja ika makuda pazuruŋi a ʎiaʔajav a ɉəmavaʦ cara ɉəmumakicən tua ɭiav a padaj aja ti kina</PHON>
         <AUDIO start="136.911" end="152.705" file="02JN106-3_Nira_a18.wav"/>
     </S>
     <S id="a19">
         <FORM kindOf="original">nu vaikamen a kiraumalj tjara tjalju'aya'ayavanaken sakamaya, kana djemumakaken tua paday, malevaaken sa kupasi'aca 'ivu tjaykina, "kina! pacunu!" ayaken.</FORM>
-        <PHON kindOf="original">nu vaikamən a kiraumaʎ ʦara ʦaʎuʔajaʔajavanakən sakamaja, kana ɉəmumakakən tua padaj, maɭəvaakən sa kupasiʔaʦa ʔivu ʦajkina, "kina! paʦunu!" ajakən.</PHON>
+        <PHON kindOf="original">nu vaikamən a kiraumaʎ cara caʎuʔajaʔajavanakən sakamaja kana ɉəmumakakən tua padaj maɭəvaakən sa kupasiʔaʦa ʔivu cajkina kina paʦunu ajakən</PHON>
         <FORM kindOf="standard">nu vaikamen a kiraumalj tjara tjalju'aya'ayavanaken sakamaya, kana djemumakaken tua paday, malevaaken sa kupasi'aca 'ivu tjaykina, "kina! pacunu!" ayaken.</FORM>
-        <PHON kindOf="standard">nu vaikamən a kiraumaʎ ʦara ʦaʎuʔajaʔajavanakən sakamaja, kana ɉəmumakakən tua padaj, maɭəvaakən sa kupasiʔaʦa ʔivu ʦajkina, "kina! paʦunu!" ajakən.</PHON>
+        <PHON kindOf="standard">nu vaikamən a kiraumaʎ cara caʎuʔajaʔajavanakən sakamaja kana ɉəmumakakən tua padaj maɭəvaakən sa kupasiʔaʦa ʔivu cajkina kina paʦunu ajakən</PHON>
         <AUDIO start="153.558" end="170.294" file="02JN106-3_Nira_a19.wav"/>
     </S>
     <S id="a20">
         <FORM kindOf="original">zua ka ita 'adav kana kasizuamen idedet ta puhikukian a kirawmalj ta paday, tuazua neka nu 'ali'ali a kiraumaumalj, malevamen kati kina, "aicu tjara liav a tja'adav a vua'" ayamen,</FORM>
-        <PHON kindOf="original">zua ka ita ʔadav kana kasizuamən idədət ta puhikukian a kirawmaʎ ta padaj, tuazua nəka nu ʔaɭiʔaɭi a kiraumaumaʎ, maɭəvamən kati kina, "aiʦu ʦara ɭiav a ʦaʔadav a vuaʔ" ajamən,</PHON>
+        <PHON kindOf="original">zua ka ita ʔadav kana kasizuamən idədət ta puhikukian a kirawmaʎ ta padaj tuazua nəka nu ʔaɭiʔaɭi a kiraumaumaʎ maɭəvamən kati kina aiʦu cara ɭiav a caʔadav a vuaʔ ajamən</PHON>
         <FORM kindOf="standard">zua ka ita 'adav kana kasizuamen idedet ta puhikukian a kirawmalj ta paday, tuazua neka nu 'ali'ali a kiraumaumalj, malevamen kati kina, "aicu tjara liav a tja'adav a vua'" ayamen,</FORM>
-        <PHON kindOf="standard">zua ka ita ʔadav kana kasizuamən idədət ta puhikukian a kirawmaʎ ta padaj, tuazua nəka nu ʔaɭiʔaɭi a kiraumaumaʎ, maɭəvamən kati kina, "aiʦu ʦara ɭiav a ʦaʔadav a vuaʔ" ajamən,</PHON>
+        <PHON kindOf="standard">zua ka ita ʔadav kana kasizuamən idədət ta puhikukian a kirawmaʎ ta padaj tuazua nəka nu ʔaɭiʔaɭi a kiraumaumaʎ maɭəvamən kati kina aiʦu cara ɭiav a caʔadav a vuaʔ ajamən</PHON>
         <AUDIO start="170.294" end="188.911" file="02JN106-3_Nira_a20.wav"/>
     </S>
     <S id="a23">
         <FORM kindOf="original">ka uri padjeleaken a mintulu' a pasazua, manu kirimu a veljelem a kina'adavan, sa palje'aca a 'emudjalj sa zemung a ki'azalj, pasi'aca ti kina a tjemawtjav tjanuaken, "eyas! zemuzunganga! nakuya semazua! kiljaljaungianan, alapuanga nusauni!" aya ti kina.</FORM>
-        <PHON kindOf="original">ka uri paɉəɭəakən a mintuɭuʔ a pasazua, manu kirimu a vəʎəɭəm a kinaʔadavan, sa paʎəʔaʦa a ʔəmuɉaʎ sa zəmuŋ a kiʔazaʎ, pasiʔaʦa ti kina a ʦəmawʦav ʦanuakən, "əjas! zəmuzuŋaŋa! nakuja səmazua! kiʎaʎauŋianan, aɭapuaŋa nusauni!" aja ti kina.</PHON>
+        <PHON kindOf="original">ka uri paɉəɭəakən a mintuɭuʔ a pasazua manu kirimu a vəʎəɭəm a kinaʔadavan sa paʎəʔaʦa a ʔəmuɉaʎ sa zəmuŋ a kiʔazaʎ pasiʔaʦa ti kina a cəmawcav canuakən əjas zəmuzuŋaŋa nakuja səmazua kiʎaʎauŋianan aɭapuaŋa nusauni aja ti kina</PHON>
         <FORM kindOf="standard">ka uri padjeleaken a mintulu' a pasazua, manu kirimu a veljelem a kina'adavan, sa palje'aca a 'emudjalj sa zemung a ki'azalj, pasi'aca ti kina a tjemawtjav tjanuaken, "eyas! zemuzunganga! nakuya semazua! kiljaljaungianan, alapuanga nusauni!" aya ti kina.</FORM>
-        <PHON kindOf="standard">ka uri paɉəɭəakən a mintuɭuʔ a pasazua, manu kirimu a vəʎəɭəm a kinaʔadavan, sa paʎəʔaʦa a ʔəmuɉaʎ sa zəmuŋ a kiʔazaʎ, pasiʔaʦa ti kina a ʦəmawʦav ʦanuakən, "əjas! zəmuzuŋaŋa! nakuja səmazua! kiʎaʎauŋianan, aɭapuaŋa nusauni!" aja ti kina.</PHON>
+        <PHON kindOf="standard">ka uri paɉəɭəakən a mintuɭuʔ a pasazua manu kirimu a vəʎəɭəm a kinaʔadavan sa paʎəʔaʦa a ʔəmuɉaʎ sa zəmuŋ a kiʔazaʎ pasiʔaʦa ti kina a cəmawcav canuakən əjas zəmuzuŋaŋa nakuja səmazua kiʎaʎauŋianan aɭapuaŋa nusauni aja ti kina</PHON>
         <AUDIO start="189.470" end="217.588" file="02JN106-3_Nira_a23.wav"/>
     </S>
     <S id="a25">
         <FORM kindOf="original">temevelaken a mayatucu, "ini kina, nu ini ka kualapen tucu, alapen nua 'ali'ali nusauni, kina, sau kiljaljaunguanan, tiakenayanga a macidjilj a vaik a kirawmalj!" ayaken tjay kina.</FORM>
-        <PHON kindOf="original">təməvəɭakən a majatuʦu, "ini kina, nu ini ka kuaɭapən tuʦu, aɭapən nua ʔaɭiʔaɭi nusauni, kina, sau kiʎaʎauŋuanan, tiakənajaŋa a maʦiɉiʎ a vaik a kirawmaʎ!" ajakən ʦaj kina.</PHON>
+        <PHON kindOf="original">təməvəɭakən a majatuʦu ini kina nu ini ka kuaɭapən tuʦu aɭapən nua ʔaɭiʔaɭi nusauni kina sau kiʎaʎauŋuanan tiakənajaŋa a maʦiɉiʎ a vaik a kirawmaʎ ajakən caj kina</PHON>
         <FORM kindOf="standard">temevelaken a mayatucu, "ini kina, nu ini ka kualapen tucu, alapen nua 'ali'ali nusauni, kina, sau kiljaljaunguanan, tiakenayanga a macidjilj a vaik a kirawmalj!" ayaken tjay kina.</FORM>
-        <PHON kindOf="standard">təməvəɭakən a majatuʦu, "ini kina, nu ini ka kuaɭapən tuʦu, aɭapən nua ʔaɭiʔaɭi nusauni, kina, sau kiʎaʎauŋuanan, tiakənajaŋa a maʦiɉiʎ a vaik a kirawmaʎ!" ajakən ʦaj kina.</PHON>
+        <PHON kindOf="standard">təməvəɭakən a majatuʦu ini kina nu ini ka kuaɭapən tuʦu aɭapən nua ʔaɭiʔaɭi nusauni kina sau kiʎaʎauŋuanan tiakənajaŋa a maʦiɉiʎ a vaik a kirawmaʎ ajakən caj kina</PHON>
         <AUDIO start="218.293" end="236.058" file="02JN106-3_Nira_a25.wav"/>
     </S>
     <S id="a28">
         <FORM kindOf="original">ma'a'evetamen a maraljak sa nia 'u'aung maya a 'udjalj a palje'aca'aca, patjetucu nu makinemnem, patjetucu nu makinemnem aicu a 'adav, 'emaungaken tua ku singlitan tjay kina katua kiljivak ni kina tjanuaken!</FORM>
-        <PHON kindOf="original">maʔaʔəvətamən a maraʎak sa nia ʔuʔauŋ maja a ʔuɉaʎ a paʎəʔaʦaʔaʦa, paʦətuʦu nu makinəmnəm, paʦətuʦu nu makinəmnəm aiʦu a ʔadav, ʔəmauŋakən tua ku siŋɭitan ʦaj kina katua kiʎivak ni kina ʦanuakən!</PHON>
+        <PHON kindOf="original">maʔaʔəvətamən a maraʎak sa nia ʔuʔauŋ maja a ʔuɉaʎ a paʎəʔaʦaʔaʦa pacətuʦu nu makinəmnəm pacətuʦu nu makinəmnəm aiʦu a ʔadav ʔəmauŋakən tua ku siŋɭitan caj kina katua kiʎivak ni kina canuakən</PHON>
         <FORM kindOf="standard">ma'a'evetamen a maraljak sa nia 'u'aung maya a 'udjalj a palje'aca'aca, patjetucu nu makinemnem, patjetucu nu makinemnem aicu a 'adav, 'emaungaken tua ku singlitan tjay kina katua kiljivak ni kina tjanuaken!</FORM>
-        <PHON kindOf="standard">maʔaʔəvətamən a maraʎak sa nia ʔuʔauŋ maja a ʔuɉaʎ a paʎəʔaʦaʔaʦa, paʦətuʦu nu makinəmnəm, paʦətuʦu nu makinəmnəm aiʦu a ʔadav, ʔəmauŋakən tua ku siŋɭitan ʦaj kina katua kiʎivak ni kina ʦanuakən!</PHON>
+        <PHON kindOf="standard">maʔaʔəvətamən a maraʎak sa nia ʔuʔauŋ maja a ʔuɉaʎ a paʎəʔaʦaʔaʦa pacətuʦu nu makinəmnəm pacətuʦu nu makinəmnəm aiʦu a ʔadav ʔəmauŋakən tua ku siŋɭitan caj kina katua kiʎivak ni kina canuakən</PHON>
         <AUDIO start="236.529" end="259.676" file="02JN106-3_Nira_a28.wav"/>
     </S>
 </TEXT>

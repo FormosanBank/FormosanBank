@@ -10,12 +10,11 @@ clean_punctuation(text)
     Normalise full-width / curly punctuation to ASCII equivalents.
 
 extract_notes(text)
-    Remove parenthetical commentary from a translation string and
-    return it separately as a notes string.
+    Legacy helper for exact, reviewed source-field repairs. General parser
+    paths preserve parenthetical translation content in place.
 
-add_transl_element(parent, lang, text)
-    Create a <TRANSL> child element, hoisting any parenthetical
-    commentary into a ``notes`` attribute.
+add_transl_element(parent, lang, text, notes=None, ver=None)
+    Create a source-faithful <TRANSL> child element.
 
 expand_infixes(form, en_gloss, zh_gloss)
     If *form* contains infix notation ``<xyz>``, split it into a list
@@ -29,6 +28,14 @@ import xml.etree.ElementTree as ET
 # Matches a whitespace-delimited token that is entirely uppercase X's,
 # used to normalize unintelligible-speech markers (X, XX, XXXX…) to XXXX.
 _XXXX_TOKEN_RE = re.compile(r'(?<!\S)X+(?!\S)')
+
+# XML 1.0 permits tab, line feed, carriage return, and the ordinary Unicode
+# scalar ranges. Source snapshots occasionally contain escaped editor control
+# characters such as U+0008; those have no linguistic content and cannot be
+# serialized in FormosanBank XML.
+_XML10_INVALID_RE = re.compile(
+    r"[^\x09\x0A\x0D\x20-\uD7FF\uE000-\uFFFD\U00010000-\U0010FFFF]"
+)
 
 # Matches code-switching bracket markers used in the NTU corpus:
 #   <L2M  – opening tag (sometimes <L2E, <L2J, etc.)
@@ -415,6 +422,11 @@ _SINGLE_QUOTE_CHARS = frozenset(
     '\u2032'   # U+2032 PRIME                        ′
 )
 
+# Internal parser sentinel for a source token explicitly transcribed as
+# unknown (``??`` or longer). Consumers convert it to ``<UNCLEAR/>`` before
+# XML serialization, so it must never appear in generated output.
+UNCLEAR_SENTINEL = "\ufffc"
+
 
 def is_punct_only(form):
     """Return True if *form* consists entirely of punctuation / whitespace.
@@ -431,6 +443,8 @@ def is_punct_only(form):
     s = form or ""
     if not s:
         return True
+    if s == UNCLEAR_SENTINEL:
+        return False
     if _HAS_ALNUM_RE.search(s):
         return False  # contains a letter or digit — definitely not punct-only
     # No alnum: exempt only if EVERY character is a single-quote script marker.
@@ -548,12 +562,15 @@ def clean_punctuation(text):
     Returns:
         str: The cleaned text.
     """
-    cleaned_text = text.replace("，", ",")
+    cleaned_text = _XML10_INVALID_RE.sub("", text)
+    cleaned_text = cleaned_text.replace("，", ",")
     cleaned_text = cleaned_text.replace("。", ".")
     cleaned_text = cleaned_text.replace("！", "!")
     cleaned_text = cleaned_text.replace("？", "?")
     cleaned_text = cleaned_text.replace("；", ";")
     cleaned_text = cleaned_text.replace("：", ":")
+    cleaned_text = cleaned_text.replace("＝", "=")
+    cleaned_text = cleaned_text.replace("／", "/")
     cleaned_text = cleaned_text.replace("（", "(")
     cleaned_text = cleaned_text.replace("）", ")")
     cleaned_text = cleaned_text.replace("【", "[")
@@ -696,12 +713,14 @@ def strip_form_parens(text):
     return text, None
 
 
-def add_transl_element(parent, lang, text):
+def add_transl_element(parent, lang, text, *, notes=None, ver=None):
     """
     Create a ``<TRANSL>`` child element on *parent*.
 
-    Any parenthetical commentary found in *text* is removed from the
-    element's text content and stored in a ``notes`` attribute instead.
+    Translation text is preserved in place. Parentheses may encode natural
+    elaboration, agreement notation, or source-authored alternatives, so a
+    generic parser cannot safely classify or delete them. Reviewed callers
+    may supply a source-backed ``notes`` value or ``ver="alt"`` explicitly.
 
     Parameters
     ----------
@@ -719,8 +738,41 @@ def add_transl_element(parent, lang, text):
     """
     elem = ET.SubElement(parent, "TRANSL")
     elem.set("xml:lang", lang)
-    cleaned, notes = extract_notes(text or "")
-    elem.text = cleaned if cleaned else (text or "")
+    if ver:
+        elem.set("ver", ver)
+    elem.text = text or ""
     if notes:
         elem.set("notes", notes)
     return elem
+
+
+def source_notes_from_free(free_entries):
+    """Return ordered, unique ``#n`` source annotations.
+
+    The NTU JSON uses ``#n`` lines for source-authored linguistic and
+    editorial notes.  They are evidence, not free translations, so callers
+    store the returned string on the owning original FORM rather than emit a
+    TRANSL element.  Apart from removing the two-character field marker and
+    surrounding whitespace, the source text is preserved verbatim.
+    """
+    notes = []
+    seen = set()
+    for entry in free_entries or []:
+        if not isinstance(entry, str) or entry[:2] != "#n":
+            continue
+        note = entry[2:].strip()
+        if note and note not in seen:
+            seen.add(note)
+            notes.append(f"source note: {note}")
+    return " | ".join(notes) or None
+
+
+def merge_notes(*notes):
+    """Join non-empty note strings without duplicating identical values."""
+    merged = []
+    seen = set()
+    for note in notes:
+        if note and note not in seen:
+            seen.add(note)
+            merged.append(note)
+    return " | ".join(merged) or None

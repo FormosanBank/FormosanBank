@@ -10,6 +10,7 @@ Run this script first, then run download_stories_audio.py.
 """
 
 import csv
+import hashlib
 import itertools
 import json
 import os
@@ -18,7 +19,8 @@ import xml.etree.ElementTree as ET
 from xml.dom import minidom
 import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from utils import clean_punctuation, add_transl_element, strip_speaker_labels_from_translation, filter_punct_words, is_punct_only, join_ori_tokens, insert_xxxx_tokens, strip_l2m, strip_prosodic_markers, expand_infixes
+from source_repair_registry import load_story_gloss_repairs
+from utils import clean_punctuation, add_transl_element, strip_speaker_labels_from_translation, filter_punct_words, is_punct_only, join_ori_tokens, insert_xxxx_tokens, strip_l2m, strip_prosodic_markers, expand_infixes, merge_notes, source_notes_from_free, UNCLEAR_SENTINEL
 
 
 # ---------------------------------------------------------------------------
@@ -36,6 +38,76 @@ DIALECT_NAMES = {
     'Vedai':     'Wutai',     # Rukai
     'Tgdaya':    'Tegudaya',  # Seediq
 }
+
+
+# These source records were actively reviewed upstream but their Formosan
+# transcription remains unrecoverable. The exact raw signatures make the
+# conversion to POL-021 <UNCLEAR/> fail closed if the tracked JSON drifts.
+UNRECOVERABLE_SOURCE_RECORDS = {
+    ("SaiNr-frog3_'oemaw_a_basi'.json", (25,)): ("...",),
+    ("SaiNr-holiday_kalaeh a _oemaw.json", (119,)): ("C:", "...", "[]"),
+    ("SaiNr-holiday_kalaeh a _oemaw.json", (202,)): ("K:", "...(0.8)", "??"),
+    ("SaiNr-holiday_kalaeh a _oemaw.json", (282,)): ("C:", "[@@@]", "@@"),
+    ("sdqCon-dialog4_robo_bakan_ape 2020s.json", (143,)): ("@@@@",),
+}
+
+STORY_GLOSS_REPAIRS = load_story_gloss_repairs()
+_SOURCE_UNCLEAR_RE = re.compile(r"^\?{2,}[,._\\/]*$")
+_UNCLEAR_NOTE = "source question-mark transcription represented as UNCLEAR"
+
+
+def is_source_unclear(form):
+    """Return whether a story token explicitly marks failed transcription."""
+    return bool(_SOURCE_UNCLEAR_RE.fullmatch((form or "").strip()))
+
+
+def surface_form(gloss):
+    """Return a surface token, preserving source ``??`` as an XML sentinel."""
+    if is_source_unclear(gloss[0]):
+        return UNCLEAR_SENTINEL
+    return strip_prosodic_markers(gloss[0])
+
+
+def apply_story_gloss_repairs(data, source_file):
+    """Apply exact registry repairs to source rows without mutating JSON data."""
+    source_file = os.path.basename(source_file)
+    expected_keys = {
+        key for key in STORY_GLOSS_REPAIRS if key[0] == source_file
+    }
+    if not expected_keys:
+        return data
+
+    repaired = []
+    seen = set()
+    for record_id, payload in data:
+        key = (source_file, int(record_id))
+        repair = STORY_GLOSS_REPAIRS.get(key)
+        if repair is None:
+            repaired.append([record_id, payload])
+            continue
+        raw = json.dumps(
+            payload.get("gloss", []),
+            ensure_ascii=False,
+            separators=(",", ":"),
+        )
+        digest = hashlib.sha256(raw.encode("utf-8")).hexdigest()
+        if digest != repair["source_digest"]:
+            raise RuntimeError(
+                f"story gloss repair source drifted: {key!r}; "
+                f"expected {repair['source_digest']}, found {digest}"
+            )
+        new_payload = dict(payload)
+        new_payload["gloss"] = [list(gloss) for gloss in repair["replacement"]]
+        new_payload["free"] = list(payload.get("free", []) or []) + [
+            f"#n {repair['note']}"
+        ]
+        repaired.append([record_id, new_payload])
+        seen.add(key)
+
+    missing = expected_keys - seen
+    if missing:
+        raise RuntimeError(f"story gloss repair records missing: {sorted(missing)!r}")
+    return repaired
 
 
 def prettify(elem):
@@ -74,6 +146,8 @@ def _build_form(gloss):
     indicator) and, if so, pre-collapse ``===+`` → ``=`` *before* calling
     ``clean_punctuation``, so the clitic boundary survives into the FORM.
     """
+    if is_source_unclear(gloss[0]):
+        return UNCLEAR_SENTINEL
     raw = strip_prosodic_markers(gloss[0])
     if re.search(r'={3,}', raw):
         has_clitic = any(
@@ -95,6 +169,7 @@ def get_story(data, src=""):
     filename (or None) followed by one dict per sentence.
     """
     to_return = []
+    src_basename = os.path.basename(src) if src else ""
     idx = s_id = 0
 
     while idx < len(data):
@@ -107,14 +182,20 @@ def get_story(data, src=""):
             video = s.get('meta', {}).get('video', "None")
             to_return.append(None if video == "None" else video)
 
-        tmp['ori'] = clean_punctuation(
-            join_ori_tokens([strip_prosodic_markers(gloss[0]) for gloss in s["gloss"] if len(gloss[1]) > 1])
-        )
+        tmp['ori'] = clean_punctuation(join_ori_tokens([
+            surface_form(gloss)
+            for gloss in s["gloss"]
+            if gloss[1] or is_source_unclear(gloss[0])
+        ]))
         tmp['ori_fallback'] = [strip_prosodic_markers(str(t)) for t in s.get('ori', [])]
         tmp['ori_id'] = [data[idx][0]]
+        tmp['raw_forms'] = [str(gloss[0]) for gloss in s["gloss"]]
+        source_free = list(s.get('free', []) or [])
+        if any(is_source_unclear(gloss[0]) for gloss in s["gloss"]):
+            source_free.append(f"#n {_UNCLEAR_NOTE}")
         tmp['words'] = []
         for gloss in s["gloss"]:
-            if not gloss[1]:
+            if not gloss[1] and not is_source_unclear(gloss[0]):
                 continue
             tmp['words'].append([
                 _build_form(gloss),
@@ -132,13 +213,19 @@ def get_story(data, src=""):
                 break
             s = data[idx][1]
             tmp['ori_id'].append(data[idx][0])
-            tmp['ori'] += " " + clean_punctuation(
-                join_ori_tokens([strip_prosodic_markers(gloss[0]) for gloss in s["gloss"] if len(gloss[1]) > 1])
-            )
+            tmp['raw_forms'] += [str(gloss[0]) for gloss in s["gloss"]]
+            tmp['ori'] += " " + clean_punctuation(join_ori_tokens([
+                surface_form(gloss)
+                for gloss in s["gloss"]
+                if gloss[1] or is_source_unclear(gloss[0])
+            ]))
             tmp['ori_fallback'] += [strip_prosodic_markers(str(t)) for t in s.get('ori', [])]
+            source_free.extend(s.get('free', []) or [])
+            if any(is_source_unclear(gloss[0]) for gloss in s["gloss"]):
+                source_free.append(f"#n {_UNCLEAR_NOTE}")
             continuation = []
             for gloss in s["gloss"]:
-                if not gloss[1]:
+                if not gloss[1] and not is_source_unclear(gloss[0]):
                     continue
                 continuation.append([
                     _build_form(gloss),
@@ -159,6 +246,10 @@ def get_story(data, src=""):
                 elif tran[:2] == "#c":
                     tmp['zh'] = strip_speaker_labels_from_translation(clean_punctuation(tran[2:]))
 
+        source_notes = source_notes_from_free(source_free)
+        if source_notes:
+            tmp['source_notes'] = source_notes
+
         if tmp['ori'] == "XX":
             idx += 1
             continue
@@ -174,6 +265,18 @@ def get_story(data, src=""):
                     fallback += "."
                 tmp['ori'] = fallback
         del tmp['ori_fallback']
+
+        source_key = (src_basename, tuple(tmp['ori_id']))
+        expected_signature = UNRECOVERABLE_SOURCE_RECORDS.get(source_key)
+        if expected_signature is not None:
+            actual_signature = tuple(tmp['raw_forms'])
+            if actual_signature != expected_signature:
+                raise RuntimeError(
+                    f"unrecoverable source record drifted: {source_key!r}; "
+                    f"expected {expected_signature!r}, found {actual_signature!r}"
+                )
+            tmp['unrecoverable'] = True
+        del tmp['raw_forms']
 
         if len(tmp['ori_id']) > 1:
             tmp['ori_id'] = [tmp['ori_id'][0], tmp['ori_id'][-1]]
@@ -200,6 +303,22 @@ def process_words(s, s_element, issues, lang_name, file_name, s_id_str):
 
         w_element = ET.SubElement(s_element, "W")
         w_element.set("id", f"{s_id_str}_W{i}")
+
+        if w[0] == UNCLEAR_SENTINEL:
+            w_form = ET.SubElement(w_element, "FORM")
+            w_form.set("kindOf", "original")
+            ET.SubElement(w_form, "UNCLEAR")
+            for lang, value in (("zho", w[2]), ("en", w[1])):
+                value = clean_punctuation(value)
+                if not value or value == '_':
+                    continue
+                if re.fullmatch(r"\?{2,}", value.strip()):
+                    transl = ET.SubElement(w_element, "TRANSL")
+                    transl.set("xml:lang", lang)
+                    ET.SubElement(transl, "UNCLEAR")
+                else:
+                    add_transl_element(w_element, lang, value)
+            continue
 
         # Clean up double-hyphens, then strip leading/trailing hyphens.
         for idx in range(3):
@@ -300,7 +419,18 @@ def process_story(story, file_name, audio_name, root, issues, lang_name, missing
         s_element.set("id", s_id_str)
         s_f = ET.SubElement(s_element, "FORM")
         s_f.set("kindOf", "original")
-        s_f.text = insert_xxxx_tokens(s['ori'], s.get('words', []))
+        if s.get('unrecoverable'):
+            ET.SubElement(s_f, "UNCLEAR")
+        else:
+            form_text = insert_xxxx_tokens(s['ori'], s.get('words', []))
+            parts = form_text.split(UNCLEAR_SENTINEL)
+            s_f.text = parts[0] or None
+            for tail in parts[1:]:
+                unclear = ET.SubElement(s_f, "UNCLEAR")
+                unclear.tail = tail or None
+        form_notes = merge_notes(s_f.get('notes'), s.get('source_notes'))
+        if form_notes:
+            s_f.set('notes', form_notes)
 
         if 'zh' in s:
             add_transl_element(s_element, "zho", s['zh'])
@@ -346,7 +476,8 @@ def process_file(lang_name, file, lang_stories_dir, xml_output, lang_codes, issu
     with open(os.path.join(lang_stories_dir, file), 'r') as js_file:
         data = json.load(js_file)
 
-    story = get_story(data['glosses'], src=os.path.join(lang_stories_dir, file))
+    repaired_glosses = apply_story_gloss_repairs(data['glosses'], file)
+    story = get_story(repaired_glosses, src=os.path.join(lang_stories_dir, file))
     print(f"  Processing: {file}")
 
     audio_name = story[0]

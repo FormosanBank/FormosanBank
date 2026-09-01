@@ -23,10 +23,16 @@ If an element has no PHON children (e.g. when running before
 add_phonology.py during a regeneration), there is nothing to do.
 """
 
+import os
 import sys
 from pathlib import Path
 
-_REPO_ROOT = Path(__file__).resolve().parents[4]
+_REPO_ROOT = Path(
+    os.environ.get(
+        "FORMOSANBANK_ROOT",
+        Path(__file__).resolve().parents[3] / "FormosanBank",
+    )
+).resolve()
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 from QC.utilities.add_phonology import load_profile, phonologize  # noqa: E402
