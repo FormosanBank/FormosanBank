@@ -63,7 +63,9 @@ jobs:
         run: |
           # Files added or modified (not deleted) under Corpora/*/XML/.
           # Excludes files outside the canonical XML/ subdir.
-          git diff --name-only --diff-filter=AM \
+          # Keep UTF-8 paths literal so validators can open filenames that
+          # contain non-ASCII characters.
+          git -c core.quotepath=false diff --name-only --diff-filter=AM \
             "origin/${{ github.base_ref }}...HEAD" \
             -- 'Corpora/**/XML/**/*.xml' > changed_xml.txt
           count=$(wc -l < changed_xml.txt)
