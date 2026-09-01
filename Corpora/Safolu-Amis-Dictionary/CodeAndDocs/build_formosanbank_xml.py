@@ -13,9 +13,12 @@ work that should not block publishing Safolu.
 from __future__ import annotations
 
 import argparse
-import hashlib
+import csv
 import json
 import re
+import unicodedata
+from dataclasses import replace
+from functools import lru_cache
 from pathlib import Path
 
 from moedict_formosanbank import (
@@ -37,10 +40,13 @@ from moedict_formosanbank import (
 
 
 DEFAULT_SOURCES_DIR = ROOT / "_sources"
-DEFAULT_XML_OUT_DIR = ROOT / "Final_XML"
-DEFAULT_AUDIT_OUT_DIR = ROOT / "data" / "formosanbank_audit"
+DEFAULT_XML_OUT_DIR = ROOT / "XML"
+CODEDOCS_DIR = ROOT / "CodeAndDocs"
+DEFAULT_AUDIT_OUT_DIR = CODEDOCS_DIR / "_generated_audit"
+DEFAULT_OVERRIDES_PATH = CODEDOCS_DIR / "data" / "safolu_source_overrides.json"
+DEFAULT_CONVERSION_PATH = CODEDOCS_DIR / "data" / "orthography" / "Amis_Safolu_113.tsv"
 
-# The finalized XML is grouped language-first (Final_XML/Amis/<Source>/) to match
+# The canonical XML is grouped language-first (XML/Amis/<Source>/) to match
 # FormosanBank's Corpora/<Name>/XML/<Language>/ convention.
 LANGUAGE_SUBDIR = "Amis"
 
@@ -51,7 +57,7 @@ CJK_RE = re.compile(r"[㐀-鿿]")
 # Leading source annotations that precede the Amis phrase, e.g. loanword notes
 # like "〔閩南語借詞〕", "(漢語借詞)", or "（英語借詞）". They are kept with the
 # translation, not treated as the FORM.
-_LEADING_ANNOTATIONS = (("〔", "〕"), ("(", ")"), ("（", "）"))
+_LEADING_ANNOTATIONS = (("〔", "〕"), ("﹝", "﹞"), ("(", ")"), ("（", "）"))
 
 
 def strip_leading_annotation(candidate: str) -> tuple[str, str]:
@@ -199,10 +205,13 @@ def extract_generated_moedict_examples(
     text_id: str,
     final_translation_lang: str,
     middle_translation_lang: str | None = None,
+    overrides: dict[str, dict[str, object]] | None = None,
 ) -> tuple[list[ExampleRecord], list[dict[str, object]]]:
     records: list[ExampleRecord] = []
     rejected_records: list[dict[str, object]] = []
     source_ordinal = 0
+    overrides = overrides or {}
+    applied_overrides: set[str] = set()
 
     for source_file in iter_moedict_json_files(source_dir):
         try:
@@ -231,7 +240,21 @@ def extract_generated_moedict_examples(
                         "definition_index": definition_index,
                         "example_index": example_index,
                     }
-                    if not form:
+                    override = overrides.get(str(source_ordinal))
+                    if override:
+                        expected_form = str(override["expected_cleaned_form"])
+                        expected_translation = str(override["expected_cleaned_final_translation"])
+                        if form != expected_form or final_translation != expected_translation:
+                            raise ValueError(
+                                f"Source override {source_ordinal} no longer matches upstream: "
+                                f"expected {(expected_form, expected_translation)!r}, "
+                                f"found {(form, final_translation)!r}"
+                            )
+                        applied_overrides.add(str(source_ordinal))
+                        notes["manual_source_override"] = True
+                        notes["manual_source_override_reason"] = str(override["reason"])
+
+                    if not form and not override:
                         recovered = recover_form_from_translation(final_translation)
                         if recovered:
                             form, final_translation, annotation = recovered
@@ -269,15 +292,36 @@ def extract_generated_moedict_examples(
                             }
                         )
 
-                    if not form:
+                    if not form and not override:
                         reject("empty_form")
                         continue
 
+                    if override:
+                        emitted = []
+                        for item in override["emitted"]:
+                            replacement_translation = str(item.get("translation", ""))
+                            translation_notes = str(item.get("translation_notes", "")) or None
+                            emitted.append(
+                                (
+                                    str(item["form"]),
+                                    (
+                                        [
+                                            Translation(
+                                                final_translation_lang,
+                                                replacement_translation,
+                                                translation_notes,
+                                            )
+                                        ]
+                                        if replacement_translation
+                                        else []
+                                    ),
+                                )
+                            )
                     # The source sometimes packed Amis + Chinese (a single glued
                     # pair, or a "；"-separated list) into the form slot. Split it
                     # into (Amis, Chinese) pairs; drop the entry when it cannot be
                     # cleanly segmented (this also catches pure-Chinese notes).
-                    if CJK_RE.search(form):
+                    elif CJK_RE.search(form):
                         pairs = split_glued_form(form)
                         if not pairs:
                             reject("cjk_in_form_unsplittable")
@@ -312,10 +356,186 @@ def extract_generated_moedict_examples(
                             )
                         )
 
+    unused_overrides = sorted(set(overrides) - applied_overrides, key=int)
+    if unused_overrides:
+        raise ValueError(f"Source overrides were not applied: {', '.join(unused_overrides)}")
     return records, rejected_records
 
 
-def safolu_corpus(sources_dir: Path) -> tuple[Corpus, list[ExampleRecord], list[dict[str, object]]]:
+def sentence_id_sort_key(sentence_id: str) -> tuple[str, int]:
+    """Match FormosanBank's duplicate-removal ordering exactly."""
+    match = re.match(r"^(.*?)(\d+)$", sentence_id)
+    if match:
+        return match.group(1), int(match.group(2))
+    return sentence_id, 0
+
+
+_FORM_CLEAN_TRANSLATION = str.maketrans(
+    {
+        "⌃": "^",
+        "‸": "^",
+        "ˆ": "^",
+        "＾": "^",
+        "（": "(",
+        "）": ")",
+        "：": ":",
+        "，": ",",
+        "？": "?",
+        "！": "!",
+        "。": ".",
+        "》": '"',
+        "《": '"',
+        "」": '"',
+        "「": '"',
+        "、": ",",
+        "】": ")",
+        "【": "(",
+        "]": ")",
+        "[": "(",
+        "〔": "(",
+        "〕": ")",
+        "“": '"',
+        "”": '"',
+        "‘": "'",
+        "’": "'",
+        "ˈ": "'",
+        "`": "'",
+        "ʼ": "'",
+        "ʻ": "'",
+        "『": '"',
+        "』": '"',
+    }
+)
+
+
+def normalize_form_for_dedupe(form: str) -> str:
+    """Mirror the shared clean_xml FORM normalization used before duplicate QC."""
+    normalized = form.translate(_FORM_CLEAN_TRANSLATION)
+    normalized = re.sub(r"[\u200b\u200c\u200d\ufeff]", "", normalized)
+    normalized = collapse_space(normalized)
+    normalized = re.sub(r"([?!])\1+", r"\1", normalized)
+    return re.sub(r"--+", "-", normalized)
+
+
+@lru_cache(maxsize=None)
+def load_standardization_mapping(
+    path: Path = DEFAULT_CONVERSION_PATH,
+) -> tuple[tuple[str, str], ...]:
+    """Load the reviewed Safolu-to-Ortho113 table and derive case variants."""
+    with path.open(encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle, delimiter="\t")
+        if not reader.fieldnames or "original" not in reader.fieldnames or "Coastal" not in reader.fieldnames:
+            raise ValueError(f"{path} must have original and Coastal columns")
+        rows = [
+            ((row.get("original") or "").strip(), (row.get("Coastal") or "").strip())
+            for row in reader
+        ]
+
+    mapping: dict[str, str] = {}
+    for source, target in rows:
+        if not source:
+            continue
+        variants: dict[str, str] = {source: target}
+        if source.islower() and source.upper() != source:
+            variants.setdefault(source.title(), target.title())
+            variants.setdefault(source.upper(), target.upper())
+        for variant_source, variant_target in variants.items():
+            previous = mapping.get(variant_source)
+            if previous is not None and previous != variant_target:
+                raise ValueError(
+                    f"Conflicting mapping for {variant_source!r}: "
+                    f"{previous!r} and {variant_target!r}"
+                )
+            mapping.setdefault(variant_source, variant_target)
+    return tuple(sorted(mapping.items(), key=lambda item: len(item[0]), reverse=True))
+
+
+def standardize_coastal_form(form: str) -> str:
+    """Apply the reviewed single-pass Safolu-to-Ortho113 FORM mapping."""
+    decomposed = unicodedata.normalize("NFD", form)
+    without_accents = "".join(
+        character
+        for character in decomposed
+        if not unicodedata.category(character).startswith("M")
+    )
+    normalized = unicodedata.normalize("NFC", without_accents)
+    mapping = dict(load_standardization_mapping())
+    pattern = re.compile(
+        "|".join(re.escape(source) for source in mapping)
+    )
+    return pattern.sub(lambda match: mapping[match.group(0)], normalized)
+
+
+def normalize_standard_form_for_dedupe(form: str) -> str:
+    """Mirror cleaning plus the reviewed standard FORM derivation."""
+    return standardize_coastal_form(normalize_form_for_dedupe(form))
+
+
+def merge_group_translations(group: list[ExampleRecord]) -> list[Translation]:
+    """Preserve every distinct reading in source order per POL-025."""
+    merged: list[Translation] = []
+    seen: set[tuple[str, str]] = set()
+    seen_languages: set[str] = set()
+    for record in sorted(group, key=lambda item: sentence_id_sort_key(item.sentence_id)):
+        for translation in record.translations:
+            key = (translation.lang, translation.text)
+            if key in seen:
+                continue
+            ver = translation.ver
+            if translation.lang in seen_languages and not ver:
+                ver = "alt"
+            merged.append(replace(translation, ver=ver))
+            seen.add(key)
+            seen_languages.add(translation.lang)
+    return merged
+
+
+def deduplicate_records(records: list[ExampleRecord]) -> tuple[list[ExampleRecord], list[dict[str, object]]]:
+    """Keep the first id per standard FORM and merge translations per POL-025."""
+    groups: dict[str, list[ExampleRecord]] = {}
+    for record in records:
+        groups.setdefault(normalize_standard_form_for_dedupe(record.form), []).append(record)
+
+    kept_ids: set[str] = set()
+    kept_by_form: dict[str, ExampleRecord] = {}
+    merged_by_id: dict[str, ExampleRecord] = {}
+    for normalized_form, group in groups.items():
+        kept = min(group, key=lambda record: sentence_id_sort_key(record.sentence_id))
+        kept_ids.add(kept.sentence_id)
+        kept_by_form[normalized_form] = kept
+        merged_by_id[kept.sentence_id] = replace(
+            kept,
+            translations=merge_group_translations(group),
+        )
+
+    duplicates: list[dict[str, object]] = []
+    for record in records:
+        if record.sentence_id in kept_ids:
+            continue
+        standard_form = normalize_standard_form_for_dedupe(record.form)
+        kept = kept_by_form[standard_form]
+        duplicates.append(
+            {
+                "dropped_sentence_id": record.sentence_id,
+                "kept_sentence_id": kept.sentence_id,
+                "normalized_standard_form": standard_form,
+                "dropped_record": record.to_metadata(),
+            }
+        )
+    return [merged_by_id[record.sentence_id] for record in records if record.sentence_id in kept_ids], duplicates
+
+
+def load_source_overrides(path: Path = DEFAULT_OVERRIDES_PATH) -> dict[str, dict[str, object]]:
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    overrides = payload.get("overrides")
+    if not isinstance(overrides, dict):
+        raise ValueError(f"{path} must contain an object named 'overrides'")
+    return overrides
+
+
+def safolu_corpus(
+    sources_dir: Path,
+) -> tuple[Corpus, list[ExampleRecord], list[dict[str, object]], list[dict[str, object]]]:
     amis_moedict = sources_dir / "amis-moedict"
     amis_safolu = sources_dir / "amis-safolu"
     amis_moedict_commit = git_commit(amis_moedict)
@@ -343,9 +563,11 @@ def safolu_corpus(sources_dir: Path) -> tuple[Corpus, list[ExampleRecord], list[
             f"deprecated generator repository miaoski/amis-safolu@{amis_safolu_commit} documents the pipeline."
         ),
         glottocode="amis1246",
+        dialect="Coastal",
         extraction_note=(
             "Extracted every example field from g0v/amis-moedict docs/s JSON. "
-            "Virginia Fey docs/p is intentionally excluded because it was already processed separately."
+            "Virginia Fey docs/p is intentionally excluded because it was already processed separately. "
+            "Confirmed source-digitization errors are corrected by fail-closed, ordinal-keyed overrides."
         ),
         source_repositories={
             "g0v/amis-moedict": amis_moedict_commit,
@@ -357,14 +579,17 @@ def safolu_corpus(sources_dir: Path) -> tuple[Corpus, list[ExampleRecord], list[
         text_id=SAFOLU_TEXT_ID,
         final_translation_lang="zho",
         middle_translation_lang="eng",
+        overrides=load_source_overrides(),
     )
-    return corpus, records, rejected_records
+    records, duplicates = deduplicate_records(records)
+    return corpus, records, rejected_records, duplicates
 
 
 def write_corpus(
     corpus: Corpus,
     records: list[ExampleRecord],
     rejected_records: list[dict[str, object]],
+    duplicates: list[dict[str, object]],
     xml_out_dir: Path,
     audit_out_dir: Path,
 ) -> None:
@@ -373,19 +598,39 @@ def write_corpus(
     xml_path = xml_corpus_dir / f"{corpus.text_id}.xml"
     metadata_path = audit_corpus_dir / f"{corpus.text_id}.metadata.json"
     rejected_path = audit_corpus_dir / f"{corpus.text_id}.rejected.json"
+    duplicates_path = audit_corpus_dir / f"{corpus.text_id}.duplicates.json"
     write_xml(corpus, records, xml_path)
     write_metadata(corpus, records, metadata_path, rejected_records)
     write_rejected_records(rejected_records, rejected_path)
-    write_corpus_readme(corpus, records, rejected_records, audit_corpus_dir)
+    duplicates_path.write_text(
+        json.dumps(
+            {
+                "description": (
+                    "Source rows excluded because their reviewed Safolu-to-Ortho113 standard FORM "
+                    "duplicates an earlier sentence id. Distinct translations are merged into the "
+                    "survivor as alternative readings under POL-025."
+                ),
+                "duplicate_count": len(duplicates),
+                "duplicates": duplicates,
+            },
+            ensure_ascii=False,
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    write_corpus_readme(corpus, records, rejected_records, duplicates, audit_corpus_dir)
     print(f"Wrote {len(records)} examples to {xml_path}")
     print(f"Wrote metadata to {metadata_path}")
     print(f"Wrote {len(rejected_records)} rejected source records to {rejected_path}")
+    print(f"Wrote {len(duplicates)} duplicate records to {duplicates_path}")
 
 
 def write_corpus_readme(
     corpus: Corpus,
     records: list[ExampleRecord],
     rejected_records: list[dict[str, object]],
+    duplicates: list[dict[str, object]],
     corpus_dir: Path,
 ) -> None:
     corpus_dir.mkdir(parents=True, exist_ok=True)
@@ -396,68 +641,30 @@ def write_corpus_readme(
 
 Audit package for `{corpus.text_id}`.
 
-- XML: `Final_XML/{LANGUAGE_SUBDIR}/{corpus.folder_name}/{corpus.text_id}.xml`
+- XML: `XML/{LANGUAGE_SUBDIR}/{corpus.folder_name}/{corpus.text_id}.xml`
 - Metadata: `{corpus.text_id}.metadata.json`
 - Rejected source records: `{corpus.text_id}.rejected.json`
+- Duplicate records: `{corpus.text_id}.duplicates.json`
 - XML sentence count: {len(records):,}
 - Rejected source-record count: {len(rejected_records):,}
+- Duplicate sentence count: {len(duplicates):,}
 - Translation languages: {translation_languages}
 
-The XML file is the finalized FormosanBank artifact. This audit folder documents provenance and source coverage without placing non-XML files in `Final_XML`.
+The XML file is the canonical FormosanBank artifact. This audit folder documents provenance and source coverage without placing non-XML files in `XML`.
 """
     (corpus_dir / "README.md").write_text(text, encoding="utf-8")
 
 
-def write_manifest(
-    corpora: list[tuple[Corpus, list[ExampleRecord], list[dict[str, object]]]],
-    xml_out_dir: Path,
-    audit_out_dir: Path,
+def write_root_readme(
+    corpora: list[
+        tuple[Corpus, list[ExampleRecord], list[dict[str, object]], list[dict[str, object]]]
+    ],
+    out_dir: Path,
 ) -> None:
-    audit_out_dir.mkdir(parents=True, exist_ok=True)
-
-    def file_info(base_dir: Path, relative_path: str) -> dict[str, object]:
-        path = base_dir / relative_path
-        digest = hashlib.sha256(path.read_bytes()).hexdigest()
-        return {
-            "path": str(path.relative_to(ROOT)),
-            "size_bytes": path.stat().st_size,
-            "sha256": digest,
-        }
-
-    manifest = {
-        "description": "FormosanBank XML export of the Safolu (Tsai) Amis dictionary from g0v amis-moedict docs/s.",
-        "excluded_sources": [
-            {"path": "g0v/amis-moedict/docs/p", "reason": "Virginia Fey dictionary already processed separately"},
-            {"path": "g0v/amis-moedict/docs/m", "reason": "Poinsot dictionary moved to the Formosan-Poinsot-Amis-Dictionary repository"},
-        ],
-        "corpora": [
-            {
-                "text_id": corpus.text_id,
-                "folder": corpus.folder_name,
-                "xml": file_info(xml_out_dir, f"{LANGUAGE_SUBDIR}/{corpus.folder_name}/{corpus.text_id}.xml"),
-                "metadata": file_info(audit_out_dir, f"{corpus.folder_name}/{corpus.text_id}.metadata.json"),
-                "rejected": file_info(audit_out_dir, f"{corpus.folder_name}/{corpus.text_id}.rejected.json"),
-                "example_count": len(records),
-                "rejected_example_count": len(rejected_records),
-                "translation_languages": sorted(
-                    {translation.lang for record in records for translation in record.translations}
-                ),
-                "source_repositories": corpus.source_repositories,
-            }
-            for corpus, records, rejected_records in corpora
-        ],
-    }
-    manifest_path = audit_out_dir / "manifest.json"
-    manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    write_root_readme(corpora, audit_out_dir)
-    print(f"Wrote manifest to {manifest_path}")
-
-
-def write_root_readme(corpora: list[tuple[Corpus, list[ExampleRecord], list[dict[str, object]]]], out_dir: Path) -> None:
     rows = "\n".join(
         f"- `{LANGUAGE_SUBDIR}/{corpus.folder_name}/{corpus.text_id}.xml`: {len(records):,} sentences; "
-        f"{len(rejected_records):,} rejected source records audited"
-        for corpus, records, rejected_records in corpora
+        f"{len(rejected_records):,} rejected source records; {len(duplicates):,} duplicates audited"
+        for corpus, records, rejected_records, duplicates in corpora
     )
     text = f"""# FormosanBank Audit
 
@@ -469,7 +676,7 @@ These XML files contain example sentence / phrase translation pairs. Headwords a
 
 Virginia Fey (`g0v/amis-moedict/docs/p`) is intentionally excluded because it was already processed separately. The Poinsot dictionary (`docs/m`) lives in the Formosan-Poinsot-Amis-Dictionary repository.
 
-Final XML files live under `Final_XML`, which intentionally contains only `.xml` files. For coverage details, see `coverage_audit.json` and the repository-level `SOURCE_AUDIT.md`.
+Final XML files live under `XML`, which intentionally contains only `.xml` files. The JSON files in this directory are durable source-provenance ledgers. Per-run audit and QC reports are written outside the repository.
 """
     (out_dir / "README.md").write_text(text, encoding="utf-8")
 
@@ -486,9 +693,9 @@ def main() -> None:
     audit_out_dir = args.audit_out_dir.resolve()
 
     selected = [safolu_corpus(sources_dir)]
-    for corpus, records, rejected_records in selected:
-        write_corpus(corpus, records, rejected_records, xml_out_dir, audit_out_dir)
-    write_manifest(selected, xml_out_dir, audit_out_dir)
+    for corpus, records, rejected_records, duplicates in selected:
+        write_corpus(corpus, records, rejected_records, duplicates, xml_out_dir, audit_out_dir)
+    write_root_readme(selected, audit_out_dir)
 
 
 if __name__ == "__main__":

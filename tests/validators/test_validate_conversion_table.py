@@ -99,6 +99,22 @@ def test_true_mismatch():
     assert vct.reconcile("p", "b")[0] == vct.Verdict.MISMATCH
 
 
+def test_target_variant_member_is_reviewable_warning():
+    verdict, reason = vct.reconcile("u", "[o|u]")
+    assert verdict == vct.Verdict.WARNING
+    assert reason == "variant-overlap"
+
+
+def test_source_variant_member_is_reviewable_warning():
+    verdict, reason = vct.reconcile("[f|v|b]", "f")
+    assert verdict == vct.Verdict.WARNING
+    assert reason == "variant-overlap"
+
+
+def test_disjoint_variant_group_is_mismatch():
+    assert vct.reconcile("p", "[b|v]")[0] == vct.Verdict.MISMATCH
+
+
 def test_short_vowel_not_equated_with_long():
     # length expansion must not make short 'a' match long 'aː'/'aa'.
     assert vct.reconcile("a", "aa")[0] == vct.Verdict.MISMATCH
@@ -163,6 +179,13 @@ def test_audit_coverage_gap_and_identity_passthrough(tmp_path):
     report = vct.audit(original, output, [], "default")
     gaps = {g for g, _ in report.coverage_gaps}
     assert gaps == {"q"}
+
+
+def test_audit_variant_identity_passthrough_is_not_a_coverage_gap(tmp_path):
+    original = _ortho(tmp_path, "s.tsv", [["u", "u"]])
+    output = _ortho(tmp_path, "o.tsv", [["u", "[o|u]"]])
+    report = vct.audit(original, output, [], "default")
+    assert report.coverage_gaps == []
 
 
 def test_output_dialects_lists_real_dialects(tmp_path):

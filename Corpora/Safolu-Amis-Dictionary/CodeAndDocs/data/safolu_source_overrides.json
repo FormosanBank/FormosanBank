@@ -1,0 +1,615 @@
+{
+  "description": "Fail-closed corrections and recoveries for identifiable source-digitization defects. Each override is keyed by the stable source-field ordinal and must match the pinned upstream cleaned fields before it is applied.",
+  "overrides": {
+    "1922": {
+      "expected_cleaned_form": "Si^enawen kako, amamokok sa a mafutiۥ.",
+      "expected_cleaned_final_translation": "我感到冷就蜷身而睡。",
+      "reason": "Replace the Arabic small high waw OCR artifact with the apostrophe attested in other occurrences of mafuti'.",
+      "emitted": [
+        {
+          "form": "Si^enawen kako, amamokok sa a mafuti'.",
+          "translation": "我感到冷就蜷身而睡。"
+        }
+      ]
+    },
+    "2737": {
+      "expected_cleaned_form": "",
+      "expected_cleaned_final_translation": "〔閩南語借詞〕同lihi、lako.Pakayra i canghowa a romakat.要從田埂走。",
+      "reason": "Recover the fully marked Amis sentence following the loanword and synonym note.",
+      "emitted": [
+        {
+          "form": "Pakayra i canghowa a romakat.",
+          "translation": "要從田埂走。"
+        }
+      ]
+    },
+    "4424": {
+      "expected_cleaned_form": "Pisakalafian masonito ko dadaydayㄡ",
+      "expected_cleaned_final_translation": "到了傍晚上蟬就叫起。",
+      "reason": "Remove the stray Bopomofo character after the entry headword dadayday.",
+      "emitted": [
+        {
+          "form": "Pisakalafian masonito ko dadayday",
+          "translation": "到了傍晚上蟬就叫起。"
+        }
+      ]
+    },
+    "8531": {
+      "expected_cleaned_form": "",
+      "expected_cleaned_final_translation": "如kalali'acaan 做買賣的地方，市場；kalatatayalan 農場，工作場所。",
+      "reason": "Split the two source-marked derivational examples and their adjacent Chinese glosses.",
+      "emitted": [
+        {
+          "form": "kalali'acaan",
+          "translation": "做買賣的地方，市場"
+        },
+        {
+          "form": "kalatatayalan",
+          "translation": "農場，工作場所"
+        }
+      ]
+    },
+    "8533": {
+      "expected_cleaned_form": "",
+      "expected_cleaned_final_translation": "如kalasasti'an 成了挨打的對象；kalatatalawan 成了膽小鬼。",
+      "reason": "Split the two source-marked derivational examples and their adjacent Chinese glosses.",
+      "emitted": [
+        {
+          "form": "kalasasti'an",
+          "translation": "成了挨打的對象"
+        },
+        {
+          "form": "kalatatalawan",
+          "translation": "成了膽小鬼"
+        }
+      ]
+    },
+    "9145": {
+      "expected_cleaned_form": "",
+      "expected_cleaned_final_translation": "如kari'odot 好鬥，喜歡打架；karitotoy 喜歡小狗。",
+      "reason": "Split the two source-marked examples and their adjacent Chinese glosses.",
+      "emitted": [
+        {
+          "form": "kari'odot",
+          "translation": "好鬥，喜歡打架"
+        },
+        {
+          "form": "karitotoy",
+          "translation": "喜歡小狗"
+        }
+      ]
+    },
+    "9146": {
+      "expected_cleaned_form": "",
+      "expected_cleaned_final_translation": "如karifateng 蜘蛛網(很多網。",
+      "reason": "Close the explanatory parenthesis that is visibly truncated in the source field.",
+      "emitted": [
+        {
+          "form": "karifateng",
+          "translation": "蜘蛛網(很多網)"
+        }
+      ]
+    },
+    "9935": {
+      "expected_cleaned_form": "如kinacecay （做）一次；kinalima （做）五次。",
+      "expected_cleaned_final_translation": "",
+      "reason": "Split the two source-marked examples and their adjacent Chinese glosses.",
+      "emitted": [
+        {
+          "form": "kinacecay",
+          "translation": "（做）一次"
+        },
+        {
+          "form": "kinalima",
+          "translation": "（做）五次"
+        }
+      ]
+    },
+    "10202": {
+      "expected_cleaned_form": "Ko'a'ay sa ko tangalawan a maseka'.",
+      "expected_cleaned_final_translation": "（公雞喔喔叫。",
+      "reason": "Close the parenthetical translation that is visibly truncated in the source field.",
+      "emitted": [
+        {
+          "form": "Ko'a'ay sa ko tangalawan a maseka'.",
+          "translation": "（公雞喔喔叫。）"
+        }
+      ]
+    },
+    "11311": {
+      "expected_cleaned_form": "",
+      "expected_cleaned_final_translation": "如lilamit 拔根；litingal 剔牙垢。",
+      "reason": "Split the two source-marked examples and their adjacent Chinese glosses.",
+      "emitted": [
+        {
+          "form": "lilamit",
+          "translation": "拔根"
+        },
+        {
+          "form": "litingal",
+          "translation": "剔牙垢"
+        }
+      ]
+    },
+    "13253": {
+      "expected_cleaned_form": "Mafana'ay kiso a cifaloco'.",
+      "expected_cleaned_final_translation": "你聰明有頭腦（你比較會思考)。",
+      "reason": "Normalize the mismatched closing parenthesis in the Chinese translation.",
+      "emitted": [
+        {
+          "form": "Mafana'ay kiso a cifaloco'.",
+          "translation": "你聰明有頭腦（你比較會思考）。"
+        }
+      ]
+    },
+    "13509": {
+      "expected_cleaned_form": "",
+      "expected_cleaned_final_translation": "如mahatatanam 練習，反復試驗；mahalodot 難產而死。",
+      "reason": "Split the two source-marked examples and their adjacent Chinese glosses.",
+      "emitted": [
+        {
+          "form": "mahatatanam",
+          "translation": "練習，反復試驗"
+        },
+        {
+          "form": "mahalodot",
+          "translation": "難產而死"
+        }
+      ]
+    },
+    "16313": {
+      "expected_cleaned_form": "Mapa'orongay ako cingra to cecay a [awti no panay.",
+      "expected_cleaned_final_translation": "我把一袋稻穀放在他肩上叫他扛去了。",
+      "reason": "Replace the stray opening bracket with p; the parallel pawti entry confirms the word.",
+      "emitted": [
+        {
+          "form": "Mapa'orongay ako cingra to cecay a pawti no panay.",
+          "translation": "我把一袋稻穀放在他肩上叫他扛去了。"
+        }
+      ]
+    },
+    "17258": {
+      "expected_cleaned_form": "Mapasemsemay misakoli i Diponagng ho a 'Amis a tamdaw.",
+      "expected_cleaned_final_translation": "日治時代當苦力被折磨的阿美族人。",
+      "reason": "Repair the transposed letters in Dipongang; the immediately preceding example in the same entry uses the identical temporal phrase.",
+      "emitted": [
+        {
+          "form": "Mapasemsemay misakoli i Dipongang ho a 'Amis a tamdaw.",
+          "translation": "日治時代當苦力被折磨的阿美族人。"
+        }
+      ]
+    },
+    "17568": {
+      "expected_cleaned_form": "Mapedox ko 'alofo.",
+      "expected_cleaned_final_translation": "口袋破洞。(表示没錢",
+      "reason": "Close the explanatory parenthesis that is visibly truncated in the source field.",
+      "emitted": [
+        {
+          "form": "Mapedox ko 'alofo.",
+          "translation": "口袋破洞。(表示没錢)"
+        }
+      ]
+    },
+    "18293": {
+      "expected_cleaned_form": "",
+      "expected_cleaned_final_translation": "如masafakar 裝滿一筐，masafulad 滿月，整一月。",
+      "reason": "Split the two source-marked examples and their adjacent Chinese glosses.",
+      "emitted": [
+        {
+          "form": "masafakar",
+          "translation": "裝滿一筐"
+        },
+        {
+          "form": "masafulad",
+          "translation": "滿月，整一月"
+        }
+      ]
+    },
+    "19760": {
+      "expected_cleaned_form": "Oya cangaw﹑fiting﹑kadang ningra masolimet i kafekang no ^eto.",
+      "expected_cleaned_final_translation": "那些項鏈、戒指、手鐲，收拾整理在桌子上面了。",
+      "reason": "Normalize the two small ideographic commas used as Latin list separators.",
+      "emitted": [
+        {
+          "form": "Oya cangaw, fiting, kadang ningra masolimet i kafekang no ^eto.",
+          "translation": "那些項鏈、戒指、手鐲，收拾整理在桌子上面了。"
+        }
+      ]
+    },
+    "21722": {
+      "expected_cleaned_form": "Micimonaan no ΄ada ko kitakit.",
+      "expected_cleaned_final_translation": "敵人騷亂了國家。",
+      "reason": "Normalize the Greek accent confusable to the apostrophe attested in the 'ada headword.",
+      "emitted": [
+        {
+          "form": "Micimonaan no 'ada ko kitakit.",
+          "translation": "敵人騷亂了國家。"
+        }
+      ]
+    },
+    "23235": {
+      "expected_cleaned_form": "",
+      "expected_cleaned_final_translation": "如 mikatayal 勞動成果。",
+      "reason": "Recover the plainly separated example and its adjacent Chinese gloss.",
+      "emitted": [
+        {
+          "form": "mikatayal",
+          "translation": "勞動成果。"
+        }
+      ]
+    },
+    "23858": {
+      "expected_cleaned_form": "寄居、存放某處。如mikiloma'.寄居。mikironang 在泥塘裡洗泥巴浴。",
+      "expected_cleaned_final_translation": "",
+      "reason": "Recover the two source-marked examples embedded after a Chinese category note.",
+      "emitted": [
+        {
+          "form": "mikiloma'.",
+          "translation": "寄居。"
+        },
+        {
+          "form": "mikironang",
+          "translation": "在泥塘裡洗泥巴浴。"
+        }
+      ]
+    },
+    "23859": {
+      "expected_cleaned_form": "專注、依附於某目標。如mikicongacong. 得到庇護。",
+      "expected_cleaned_final_translation": "",
+      "reason": "Recover the source-marked example embedded after a Chinese category note.",
+      "emitted": [
+        {
+          "form": "mikicongacong.",
+          "translation": "得到庇護。"
+        }
+      ]
+    },
+    "23860": {
+      "expected_cleaned_form": "參與、認同。如Mikihamon 參與。Mikihatiya 加入、聚集在一起。",
+      "expected_cleaned_final_translation": "",
+      "reason": "Recover the two source-marked examples embedded after a Chinese category note.",
+      "emitted": [
+        {
+          "form": "Mikihamon",
+          "translation": "參與。"
+        },
+        {
+          "form": "Mikihatiya",
+          "translation": "加入、聚集在一起。"
+        }
+      ]
+    },
+    "23861": {
+      "expected_cleaned_form": "mikimodoc（給機器）加潤滑劑。",
+      "expected_cleaned_final_translation": "",
+      "reason": "Separate the source-marked Amis form from its adjacent Chinese gloss.",
+      "emitted": [
+        {
+          "form": "mikimodoc",
+          "translation": "（給機器）加潤滑劑。"
+        }
+      ]
+    },
+    "32410": {
+      "expected_cleaned_form": "O datok na kapah.（同 O datok noya kapah.）",
+      "expected_cleaned_final_translation": "那個青年的口琴。",
+      "reason": "Emit the primary sentence and the explicitly marked equivalent sentence separately.",
+      "emitted": [
+        {
+          "form": "O datok na kapah.",
+          "translation": "那個青年的口琴。"
+        },
+        {
+          "form": "O datok noya kapah.",
+          "translation": "那個青年的口琴。"
+        }
+      ]
+    },
+    "32411": {
+      "expected_cleaned_form": "O wawa na tamdaw cinira.（同O wawa noya tamdaw cinira.）",
+      "expected_cleaned_final_translation": "他是那個人的孩子。",
+      "reason": "Emit the primary sentence and the explicitly marked equivalent sentence separately.",
+      "emitted": [
+        {
+          "form": "O wawa na tamdaw cinira.",
+          "translation": "他是那個人的孩子。"
+        },
+        {
+          "form": "O wawa noya tamdaw cinira.",
+          "translation": "他是那個人的孩子。"
+        }
+      ]
+    },
+    "32634": {
+      "expected_cleaned_form": "Nekeren pasilaêno ko 'awol.",
+      "expected_cleaned_final_translation": "把竹子往下壓。",
+      "reason": "Replace ê with the source orthography's glottal marker in the repeatedly attested la^eno sequence.",
+      "emitted": [
+        {
+          "form": "Nekeren pasila^eno ko 'awol.",
+          "translation": "把竹子往下壓。"
+        }
+      ]
+    },
+    "32641": {
+      "expected_cleaned_form": "Malecad a nengnengen ko karapanay（samado 稗子） ato panay.",
+      "expected_cleaned_final_translation": "稗子和稻子看起來相似。",
+      "reason": "Remove the Chinese parenthetical synonym from the Amis sentence while retaining it in provenance.",
+      "emitted": [
+        {
+          "form": "Malecad a nengnengen ko karapanay ato panay.",
+          "translation": "稗子和稻子看起來相似。"
+        }
+      ]
+    },
+    "32760": {
+      "expected_cleaned_form": "Ngicngicen no 'edo ko êpang.",
+      "expected_cleaned_final_translation": "老鼠把麵包齧咬。",
+      "reason": "Replace ê with the glottal marker attested in the ^epang headword and parallel examples.",
+      "emitted": [
+        {
+          "form": "Ngicngicen no 'edo ko ^epang.",
+          "translation": "老鼠把麵包齧咬。"
+        }
+      ]
+    },
+    "33759": {
+      "expected_cleaned_form": "Pahatosaay a [afeli to wawa to 'odax.",
+      "expected_cleaned_final_translation": "一次拿兩個給小孩。",
+      "reason": "Replace the stray opening bracket with p; the parallel pafeli entry confirms the word.",
+      "emitted": [
+        {
+          "form": "Pahatosaay a pafeli to wawa to 'odax.",
+          "translation": "一次拿兩個給小孩。"
+        }
+      ]
+    },
+    "35531": {
+      "expected_cleaned_form": "",
+      "expected_cleaned_final_translation": "如papinanom 讓（他）喝水；papitilid 讓（他）寫字、學習；papicomod 讓（他）進來。",
+      "reason": "Split the three source-marked examples and their adjacent Chinese glosses.",
+      "emitted": [
+        {
+          "form": "papinanom",
+          "translation": "讓（他）喝水"
+        },
+        {
+          "form": "papitilid",
+          "translation": "讓（他）寫字、學習"
+        },
+        {
+          "form": "papicomod",
+          "translation": "讓（他）進來"
+        }
+      ]
+    },
+    "35668": {
+      "expected_cleaned_form": "",
+      "expected_cleaned_final_translation": "如papipananom 讓人叫（他）喝水、讓人灌溉；papipacomod 讓人叫（他）進來。",
+      "reason": "Split the two source-marked examples and their adjacent Chinese glosses.",
+      "emitted": [
+        {
+          "form": "papipananom",
+          "translation": "讓人叫（他）喝水、讓人灌溉"
+        },
+        {
+          "form": "papipacomod",
+          "translation": "讓人叫（他）進來"
+        }
+      ]
+    },
+    "37193": {
+      "expected_cleaned_form": "Pidafo'an to payso ko kinko.",
+      "expected_cleaned_final_translation": "銀行是提ej06",
+      "reason": "Restore the visibly truncated/corrupt Chinese translation from the Amis sentence and entry definition.",
+      "emitted": [
+        {
+          "form": "Pidafo'an to payso ko kinko.",
+          "translation": "銀行是提款的地方。"
+        }
+      ]
+    },
+    "46890": {
+      "expected_cleaned_form": "如soikor",
+      "expected_cleaned_final_translation": "回頭，向後看。",
+      "reason": "Remove the Chinese example introducer from the source-marked Amis form.",
+      "emitted": [
+        {
+          "form": "soikor",
+          "translation": "回頭，向後看。"
+        }
+      ]
+    },
+    "46891": {
+      "expected_cleaned_form": "如sopaliw",
+      "expected_cleaned_final_translation": "交會，變換（地方）。",
+      "reason": "Remove the Chinese example introducer from the source-marked Amis form.",
+      "emitted": [
+        {
+          "form": "sopaliw",
+          "translation": "交會，變換（地方）。"
+        }
+      ]
+    },
+    "46893": {
+      "expected_cleaned_form": "如songidet",
+      "expected_cleaned_final_translation": "擤鼻涕。",
+      "reason": "Remove the Chinese example introducer from the source-marked Amis form.",
+      "emitted": [
+        {
+          "form": "songidet",
+          "translation": "擤鼻涕。"
+        }
+      ]
+    },
+    "48999": {
+      "expected_cleaned_form": "廿okakar sa kora wawa misacingacinga.",
+      "expected_cleaned_final_translation": "那個小孩踮著腳東張西望。",
+      "reason": "Replace the CJK OCR artifact with T; the entry headword confirms Tokakar.",
+      "emitted": [
+        {
+          "form": "Tokakar sa kora wawa misacingacinga.",
+          "translation": "那個小孩踮著腳東張西望。"
+        }
+      ]
+    },
+    "726": {
+      "expected_cleaned_form": "Mahanekay ako ko 'antol sanay a sanek.nanicowaay?",
+      "expected_cleaned_final_translation": "nanicowaay?我聞到臭味，哪裡飄來的?。",
+      "reason": "Keep the repeated Amis clause as provenance rather than Chinese free-translation text.",
+      "emitted": [{"form": "Mahanekay ako ko 'antol sanay a sanek.nanicowaay?", "translation": "我聞到臭味，哪裡飄來的?。", "translation_notes": "Source translation field repeated Amis text: nanicowaay?"}]
+    },
+    "1666": {
+      "expected_cleaned_form": "Acah!ka ta'angay nona pacifaran!",
+      "expected_cleaned_final_translation": "ka ta'angay nona pacifaran!哇，這個港口真大呀？",
+      "reason": "Keep the repeated Amis clause as provenance rather than Chinese free-translation text.",
+      "emitted": [{"form": "Acah!ka ta'angay nona pacifaran!", "translation": "哇，這個港口真大呀？", "translation_notes": "Source translation field repeated Amis text: ka ta'angay nona pacifaran!"}]
+    },
+    "1667": {
+      "expected_cleaned_form": "Acah!kona kamaro'an makapahay!",
+      "expected_cleaned_final_translation": "kona kamaro'an makapahay!這個座位漂亮極了！",
+      "reason": "Keep the repeated Amis clause as provenance rather than Chinese free-translation text.",
+      "emitted": [{"form": "Acah!kona kamaro'an makapahay!", "translation": "這個座位漂亮極了！", "translation_notes": "Source translation field repeated Amis text: kona kamaro'an makapahay!"}]
+    },
+    "1705": {
+      "expected_cleaned_form": "Adi!makapah cingra.",
+      "expected_cleaned_final_translation": "makapah cingra.啊！",
+      "reason": "Keep the repeated Amis clause as provenance rather than Chinese free-translation text.",
+      "emitted": [{"form": "Adi!makapah cingra.", "translation": "啊！", "translation_notes": "Source translation field repeated Amis text: makapah cingra."}]
+    },
+    "1710": {
+      "expected_cleaned_form": "Wata!ka adihay no fokeloh!",
+      "expected_cleaned_final_translation": "ka adihay no fokeloh!啊！",
+      "reason": "Keep the repeated Amis clause as provenance rather than Chinese free-translation text.",
+      "emitted": [{"form": "Wata!ka adihay no fokeloh!", "translation": "啊！", "translation_notes": "Source translation field repeated Amis text: ka adihay no fokeloh!"}]
+    },
+    "1774": {
+      "expected_cleaned_form": "Aki!kona wawa kasini'adaan!",
+      "expected_cleaned_final_translation": "kona wawa kasini'adaan!啊，這孩子真可憐！",
+      "reason": "Keep the repeated Amis clause as provenance rather than Chinese free-translation text.",
+      "emitted": [{"form": "Aki!kona wawa kasini'adaan!", "translation": "啊，這孩子真可憐！", "translation_notes": "Source translation field repeated Amis text: kona wawa kasini'adaan!"}]
+    },
+    "2128": {
+      "expected_cleaned_form": "Atira, atira!tatayni to ko tosiya!",
+      "expected_cleaned_final_translation": "tatayni to ko tosiya!閃開，閃開！",
+      "reason": "Keep the repeated Amis clause as provenance rather than Chinese free-translation text.",
+      "emitted": [{"form": "Atira, atira!tatayni to ko tosiya!", "translation": "閃開，閃開！", "translation_notes": "Source translation field repeated Amis text: tatayni to ko tosiya!"}]
+    },
+    "6703": {
+      "expected_cleaned_form": "Hayken makenaay koni a wawa hokini?saromi'adsa a mitatangic?",
+      "expected_cleaned_final_translation": "saromi'adsa a mitatangic?這孩子不知怎麼了，哭鬧了一整天？",
+      "reason": "Keep the repeated Amis clause as provenance rather than Chinese free-translation text.",
+      "emitted": [{"form": "Hayken makenaay koni a wawa hokini?saromi'adsa a mitatangic?", "translation": "這孩子不知怎麼了，哭鬧了一整天？", "translation_notes": "Source translation field repeated Amis text: saromi'adsa a mitatangic?"}]
+    },
+    "7095": {
+      "expected_cleaned_form": "Talacowaay kamo?Kilimen ako kamo icowacowa.",
+      "expected_cleaned_final_translation": "Kilimen ako kamo icowacowa.你們到底去哪裡了？",
+      "reason": "Keep the repeated Amis clause as provenance rather than Chinese free-translation text.",
+      "emitted": [{"form": "Talacowaay kamo?Kilimen ako kamo icowacowa.", "translation": "你們到底去哪裡了？", "translation_notes": "Source translation field repeated Amis text: Kilimen ako kamo icowacowa."}]
+    },
+    "9418": {
+      "expected_cleaned_form": "Kati i!malahok kita.",
+      "expected_cleaned_final_translation": "malahok kita.那麼請吧！",
+      "reason": "Keep the repeated Amis clause as provenance rather than Chinese free-translation text.",
+      "emitted": [{"form": "Kati i!malahok kita.", "translation": "那麼請吧！", "translation_notes": "Source translation field repeated Amis text: malahok kita."}]
+    },
+    "9448": {
+      "expected_cleaned_form": "“ Katomireng!”han ako cingra.",
+      "expected_cleaned_final_translation": "”han ako cingra.我對他說：“站起來！",
+      "reason": "Remove the repeated Amis narration and restore the displaced closing Chinese quotation mark.",
+      "emitted": [{"form": "“ Katomireng!”han ako cingra.", "translation": "我對他說：“站起來！”", "translation_notes": "Source translation field repeated the Amis narration han ako cingra and placed its closing quote before the Chinese text."}]
+    },
+    "14824": {
+      "expected_cleaned_form": "Mangalay ci Panay a malakangkofo.Panay.",
+      "expected_cleaned_final_translation": "Panay.想當護士。",
+      "reason": "Keep the repeated Amis name as provenance rather than Chinese free-translation text.",
+      "emitted": [{"form": "Mangalay ci Panay a malakangkofo.Panay.", "translation": "想當護士。", "translation_notes": "Source translation field repeated Amis text: Panay."}]
+    },
+    "17870": {
+      "expected_cleaned_form": "Marakad!matengil no wina.",
+      "expected_cleaned_final_translation": "matengil no wina.停止哭泣！",
+      "reason": "Keep the repeated Amis clause as provenance rather than Chinese free-translation text.",
+      "emitted": [{"form": "Marakad!matengil no wina.", "translation": "停止哭泣！", "translation_notes": "Source translation field repeated Amis text: matengil no wina."}]
+    },
+    "28235": {
+      "expected_cleaned_form": "",
+      "expected_cleaned_final_translation": "Mipelpelan 摧ko tamataan nimamo.老奶奶的眼鏡打碎了。",
+      "reason": "Recover the marked Amis sentence and remove the stray Chinese character that interrupted it.",
+      "emitted": [{"form": "Mipelpelan ko tamataan nimamo.", "translation": "老奶奶的眼鏡打碎了。"}]
+    },
+    "32404": {
+      "expected_cleaned_form": "“Na'ay mikadafo kako!” han nikaka.",
+      "expected_cleaned_final_translation": "” han nikaka.姊姊說：“我不能入贅！",
+      "reason": "Remove the repeated Amis narration and restore the displaced closing Chinese quotation mark.",
+      "emitted": [{"form": "“Na'ay mikadafo kako!” han nikaka.", "translation": "姊姊說：“我不能入贅！”", "translation_notes": "Source translation field repeated the Amis narration han nikaka and placed its closing quote before the Chinese text."}]
+    },
+    "35656": {
+      "expected_cleaned_form": "Papinanomen kako to mamang!maso'away kako.",
+      "expected_cleaned_final_translation": "maso'away kako.請允許我喝點水吧！",
+      "reason": "Keep the repeated Amis clause as provenance rather than Chinese free-translation text.",
+      "emitted": [{"form": "Papinanomen kako to mamang!maso'away kako.", "translation": "請允許我喝點水吧！", "translation_notes": "Source translation field repeated Amis text: maso'away kako."}]
+    },
+    "37250": {
+      "expected_cleaned_form": "Pifawah to sasingalan!tada faedetay ko romi'ad.",
+      "expected_cleaned_final_translation": "tada faedetay ko romi'ad.開窗吧！",
+      "reason": "Keep the repeated Amis clause as provenance rather than Chinese free-translation text.",
+      "emitted": [{"form": "Pifawah to sasingalan!tada faedetay ko romi'ad.", "translation": "開窗吧！", "translation_notes": "Source translation field repeated Amis text: tada faedetay ko romi'ad."}]
+    },
+    "39991": {
+      "expected_cleaned_form": "O maan ko mienengan nona tamdaw hokini?saeneenengsa to i tatihitihi.",
+      "expected_cleaned_final_translation": "saeneenengsa to i tatihitihi.那個人到底在看什麼？",
+      "reason": "Keep the repeated Amis clause as provenance rather than Chinese free-translation text.",
+      "emitted": [{"form": "O maan ko mienengan nona tamdaw hokini?saeneenengsa to i tatihitihi.", "translation": "那個人到底在看什麼？", "translation_notes": "Source translation field repeated Amis text: saeneenengsa to i tatihitihi."}]
+    },
+    "40721": {
+      "expected_cleaned_form": "enengen ko miso!ta'angyay ko pinko ako sakaemohsa awa ko 'engid.",
+      "expected_cleaned_final_translation": "ta'angyay ko pinko ako sakaemohsa awa ko 'engid.你看！",
+      "reason": "Keep the repeated Amis clause as provenance rather than Chinese free-translation text.",
+      "emitted": [{"form": "enengen ko miso!ta'angyay ko pinko ako sakaemohsa awa ko 'engid.", "translation": "你看！", "translation_notes": "Source translation field repeated Amis text: ta'angyay ko pinko ako sakaemohsa awa ko 'engid."}]
+    },
+    "41674": {
+      "expected_cleaned_form": "",
+      "expected_cleaned_final_translation": "sapacakat 給神明的供品；sapa'orip 生活用品； sapacemot 魚鈎，魚釣。",
+      "reason": "Split the three source-marked derivational examples and their adjacent Chinese glosses.",
+      "emitted": [
+        {"form": "sapacakat", "translation": "給神明的供品"},
+        {"form": "sapa'orip", "translation": "生活用品"},
+        {"form": "sapacemot", "translation": "魚鈎，魚釣"}
+      ]
+    },
+    "42031": {
+      "expected_cleaned_form": "",
+      "expected_cleaned_final_translation": "sapinanom飲水用具；sapisti' 打擊的工具；sapisatamina 造船工具。",
+      "reason": "Split the three source-marked derivational examples and their adjacent Chinese glosses.",
+      "emitted": [
+        {"form": "sapinanom", "translation": "飲水用具"},
+        {"form": "sapisti'", "translation": "打擊的工具"},
+        {"form": "sapisatamina", "translation": "造船工具"}
+      ]
+    },
+    "44773": {
+      "expected_cleaned_form": "Sapisakofawaw iso han?pafelien ako kiso to kilang!",
+      "expected_cleaned_final_translation": "pafelien ako kiso to kilang!你想建廚房嗎？",
+      "reason": "Keep the repeated Amis clause as provenance rather than Chinese free-translation text.",
+      "emitted": [{"form": "Sapisakofawaw iso han?pafelien ako kiso to kilang!", "translation": "你想建廚房嗎？", "translation_notes": "Source translation field repeated Amis text: pafelien ako kiso to kilang!"}]
+    },
+    "46482": {
+      "expected_cleaned_form": "Satowitowishan no lotong ko ca'ang ko kilang patalaw to tamdaw/",
+      "expected_cleaned_final_translation": "猴子故意把樹枝上下擺動來嚇人。",
+      "reason": "Replace the stray terminal slash with sentence punctuation; the source contains no alternative reading.",
+      "emitted": [{"form": "Satowitowishan no lotong ko ca'ang ko kilang patalaw to tamdaw.", "translation": "猴子故意把樹枝上下擺動來嚇人。"}]
+    },
+    "47755": {
+      "expected_cleaned_form": "Kamaro' itini!Tamakoen hena!",
+      "expected_cleaned_final_translation": "Tamakoen hena!請在這裡坐，抽根煙吧！",
+      "reason": "Keep the repeated Amis clause as provenance rather than Chinese free-translation text.",
+      "emitted": [{"form": "Kamaro' itini!Tamakoen hena!", "translation": "請在這裡坐，抽根煙吧！", "translation_notes": "Source translation field repeated Amis text: Tamakoen hena!"}]
+    },
+    "48080": {
+      "expected_cleaned_form": "Icowaay ko tatahengan?Pasowalen kako!",
+      "expected_cleaned_final_translation": "Pasowalen kako!廁所在哪裡？",
+      "reason": "Keep the repeated Amis clause as provenance rather than Chinese free-translation text.",
+      "emitted": [{"form": "Icowaay ko tatahengan?Pasowalen kako!", "translation": "廁所在哪裡？", "translation_notes": "Source translation field repeated Amis text: Pasowalen kako!"}]
+    }
+  }
+}

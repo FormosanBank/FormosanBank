@@ -18,7 +18,7 @@ from pathlib import Path
 XML_NS = "http://www.w3.org/XML/1998/namespace"
 REQUIRED_TEXT_ATTRS = {"id", "citation", "BibTeX_citation", "copyright", f"{{{XML_NS}}}lang"}
 FORM_ATTRS = {"kindOf"}
-TRANSL_ATTRS = {f"{{{XML_NS}}}lang", "kindOf"}
+TRANSL_ATTRS = {f"{{{XML_NS}}}lang", "kindOf", "notes", "ver"}
 AUDIO_ATTRS = {"start", "end", "file", "url"}
 
 

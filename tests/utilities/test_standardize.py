@@ -118,6 +118,39 @@ def test_tsv_mapping_transforms_standard_tier(tmp_path, fixtures_dir, copy_fixtu
     ], f"expected mapped sentence in standard tier, got: {standard!r}"
 
 
+def test_single_pass_protects_digraph_and_does_not_remap_output(tmp_path):
+    corpus = tmp_path / "corpus"
+    work = _write_corpus_xml(
+        corpus,
+        "legacy.xml",
+        '<TEXT xml:lang="ami" dialect="Coastal">'
+        '<S id="1"><FORM kindOf="original">ng g Ng G u U</FORM></S></TEXT>',
+    )
+    orthographies = tmp_path / "Orthographies"
+    conversion_dir = orthographies / "ConversionTables"
+    profile_dir = orthographies / "Safolu"
+    conversion_dir.mkdir(parents=True)
+    profile_dir.mkdir(parents=True)
+    table = conversion_dir / "Amis_Safolu_113.tsv"
+    table.write_text(
+        "original\tCoastal\nng\tng\ng\tng\nu\to\n",
+        encoding="utf-8",
+    )
+    profile_dir.joinpath("Amis.tsv").write_text(
+        "letter\tCoastal\nng\tŋ\ng\tŋ\nu\tu\n",
+        encoding="utf-8",
+    )
+
+    proc = _run_standardize([
+        "--tsv_path", str(table),
+        "--corpora_path", str(corpus),
+        "--single-pass",
+    ])
+
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    assert _standard_forms(work) == ["ng ng Ng Ng o O"]
+
+
 def test_copy_preserves_UNCLEAR_child_when_creating_standard(
     tmp_path, fixtures_dir, copy_fixture
 ):
@@ -758,4 +791,3 @@ def test_copy_mode_is_pure_duplication_no_C012(tmp_path):
     proc = _run_standardize(["--corpora_path", str(root), "--copy"])
     assert proc.returncode == 0, proc.stderr
     assert _std_text(root) == "mkan-ku-nhapuy"
-
