@@ -26,9 +26,7 @@ from scripts.paiwan_source import normalized_letters, parse_docx
 ROOT = Path(__file__).resolve().parents[1]
 XML_ROOT = Path(os.environ.get("PAIWAN_XML_ROOT", ROOT / "XML")).resolve()
 REPORTS_ROOT = Path(os.environ.get("PAIWAN_REPORTS_ROOT", ROOT / "reports")).resolve()
-SOURCE_ROOT = Path(
-    os.environ.get("PAIWAN_SOURCE_ROOT", ROOT / "Private" / "source")
-).resolve()
+SOURCE_ROOT = Path(os.environ.get("PAIWAN_SOURCE_ROOT", ROOT)).resolve()
 COPYRIGHT = (
     "Author permission allows attributed, non-profit derivative use. "
     "For-profit republication of the source as-is is not permitted."

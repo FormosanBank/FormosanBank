@@ -839,7 +839,7 @@ def main() -> None:
     parser.add_argument(
         "--source",
         type=Path,
-        default=ROOT / "Private" / "source" / "Paiwan Ch2 Preprocessed.docx",
+        default=ROOT / "Paiwan Ch2 Preprocessed.docx",
     )
     parser.add_argument("--baseline", type=Path, required=True)
     parser.add_argument("--output", type=Path, default=ROOT / "XML" / "Paiwan")

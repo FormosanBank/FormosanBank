@@ -8,7 +8,7 @@ The author granted permission for attributed, non-profit derivative publication.
 
 The corpus is also subject to the central FormosanBank terms in [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI use requires prior written permission.
 
-The two author-provided Word files and the private permission record were used for the source audit but are not distributed in this repository.
+The two author-provided Word files are distributed with the corpus under `CodeAndDocs/` so the rebuild runs from a FormosanBank checkout alone. The private permission record was used for the source audit but is not distributed.
 
 ## Contents
 
@@ -28,18 +28,18 @@ The rebuild was checked against all 268 rendered pages of the two checksum-pinne
 
 Sentence `078S4` contains a final `-i` for which the source provides no gloss. The XML preserves it and marks the meaning as editorially unknown instead of inventing an analysis.
 
-The reviewed decisions, source checksums, authority pins, generator, tests, and audit evidence are under `CodeAndDocs/`. The private source files are deliberately absent.
+The reviewed decisions, source files, source checksums, authority pins, generator, tests, and audit evidence are all under `CodeAndDocs/`.
 
 The port review also removed one redundant shared conversion row that changed uppercase `Ḍ` to lowercase `dr`. The corrected table passes its standalone audit and lets the standardizer derive the case-preserving `Ḍ → Dr` mapping. An exact snapshot is pinned with the corpus rebuild inputs.
 
 ## Reproduce
 
-Place the two exact source files in `CodeAndDocs/Private/source/` or set `PAIWAN_SOURCE_ROOT` to a directory containing them:
+The two source files are committed alongside the build scripts, so no external input is required:
 
-- `Paiwan Ch2.docx`
-- `Paiwan Ch2 Preprocessed.docx`
+- `CodeAndDocs/Paiwan Ch2.docx` — the author-provided original
+- `CodeAndDocs/Paiwan Ch2 Preprocessed.docx` — the author-provided preprocessed text, the file the generator parses
 
-The `Private/` path is ignored by Git, and both files must match `CodeAndDocs/data/source_checksums.sha256`.
+Both are verified against `CodeAndDocs/data/source_checksums.sha256` before the build starts. Set `PAIWAN_SOURCE_ROOT` only to point the build at copies held elsewhere; they must match the same checksums.
 
 Install the two pinned Python dependencies and run the clean-room check from the repository root:
 

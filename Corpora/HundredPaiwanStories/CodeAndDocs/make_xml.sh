@@ -3,7 +3,7 @@ set -euo pipefail
 
 CODE_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 CORPUS_ROOT=$(cd "$CODE_ROOT/.." && pwd)
-SOURCE_ROOT=${PAIWAN_SOURCE_ROOT:-"$CODE_ROOT/Private/source"}
+SOURCE_ROOT=${PAIWAN_SOURCE_ROOT:-"$CODE_ROOT"}
 PYTHON_BIN=${PAIWAN_PYTHON:-python3}
 MODE=${1:---write}
 
@@ -12,7 +12,7 @@ if [[ "$MODE" != "--write" && "$MODE" != "--check" ]]; then
     exit 2
 fi
 
-"$PYTHON_BIN" -c "import docx, lxml" || {
+"$PYTHON_BIN" -c "import docx, lxml, regex" || {
     echo "Install the pinned Python packages with: python3 -m pip install -r CodeAndDocs/requirements.txt" >&2
     exit 1
 }
@@ -21,7 +21,7 @@ while read -r expected source_name; do
     [[ -n "$expected" ]] || continue
     source_path="$SOURCE_ROOT/$source_name"
     if [[ ! -f "$source_path" ]]; then
-        echo "Missing private source file: $source_path" >&2
+        echo "Missing source file: $source_path" >&2
         exit 1
     fi
     actual=$(shasum -a 256 "$source_path" | cut -d ' ' -f 1)
