@@ -401,3 +401,37 @@ SOFT per POL-034). Adding a language = one `languages.csv` row, plus a
 `standards.csv` row (blank scheme until a standard is designated) and
 `dialects.csv` rows if multi-dialect. Documented for end users on the
 GitBook "Formosan Dialects" page.
+
+### POL-041 · RULED · 2026-09-03 · W-tier presence
+The W tier asks the same question as the M tier (POL-023) one level up,
+and gets the same answer at the level of the file: a corpus with **no**
+word segmentation has **no W level at all**, which is the normal state
+for most of the bank and never a finding. But a file where *some*
+sentences carry a W tier and others do not is an **incomplete
+segmentation pass**, and the unsegmented sentences are reported.
+
+An `S` with no `FORM` is never counted: an untranscribed-audio shell has
+no text to segment, and V010 already reports it.
+
+**Why the file, not the sentence** — the opposite of the POL-023
+amendment, deliberately. V144 can be per sentence because a parsed
+sentence announces itself (a W with two or more M children, or an M FORM
+differing from its parent W FORM). A sentence with **no W announces
+nothing at all**: there is no per-sentence signal that distinguishes
+"not segmented yet" from "not segmented, by design". Only the presence
+of segmented siblings in the same file makes the omission legible, so
+the file is the unit of judgement.
+
+Enforced as SOFT finding **V148** (`v148_W_less_S_in_segmented_file`) in
+`validate_xml.py`, aggregated per file. SOFT because a partly segmented
+file is a work-in-progress, not a defect in what it does contain.
+
+Scope consequence for **V060** (W-count vs word-count, `validate_glosses.py`):
+V060 compares counts, so it now applies only where a W tier exists — it
+skips a file with no W anywhere, and skips an individual `S` with no W
+inside a partially segmented file. Whether a sentence *ought* to have a W
+tier is this policy's question, not V060's. Previously V060 fired once per
+sentence on every sentence-only corpus, reporting a missing tier as a
+count mismatch "due to normalization or spelling". Raised by:
+`codex/qc-sentence-only-gloss-noise` (2026-06-25), which fixed the
+sentence-only half but not the partially segmented half.
