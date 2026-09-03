@@ -131,6 +131,16 @@ pipeline, so there is no per-corpus opt-out of `∅` in published data. Spec:
    WAVE DASH. Implemented in `clean_xml`'s `swap_punctuation` (C029),
    pure typography per the POL-010 rationale. Chinese TRANSL is
    unaffected (that branch never calls `swap_punctuation`).
+3. **CJK context — RULED (2026-09-03).** A `~` **between two CJK
+   characters** is not gloss notation and carries no morphological
+   meaning. Chinese glosses and translations use it for an open semantic
+   argument (`把~抓住`, "catch ~"), for prosodic lengthening after an
+   interjection (`哇~真漂亮`), and for numeric ranges (`五~六`). The
+   gloss-scrape rules therefore strip it before parsing morpheme
+   structure, so it neither contributes a morpheme slot nor enters a
+   marker skeleton. The exception requires CJK on *both* sides, which
+   leaves Leipzig-style `CAU~walk` untouched. Implemented in
+   `gloss_scrape._gloss_notation_text` (consumed by G001, G002, G007).
 
 ### POL-014 · RULED · GitBook · infixes on W/M tiers
 W-tier FORMs mark an infix with ASCII angle brackets (`k<um>a'en`); S-level

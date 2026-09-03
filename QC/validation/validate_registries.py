@@ -172,6 +172,10 @@ def check(repo_root: Path) -> list:
                                 path=profile, character=cell))
 
     # V153: rules-sidecar dialect values are canonical.
+    # Use the same accepted variety labels as V152. A rules sidecar may scope
+    # a rule to a language-valued dialect such as Truku, which is represented
+    # by a Language row in dialects.csv because it shares ISO trv with Seediq.
+    accepted_rule_dialects = dialects | lang_names | dialect_langs
     orthographies = repo_root / "Orthographies"
     sidecars = sorted(orthographies.rglob("*.rules.tsv")) \
         if orthographies.is_dir() else []
@@ -189,7 +193,7 @@ def check(repo_root: Path) -> list:
                 for value in (row.get("dialect") or "").split(","):
                     value = value.strip()
                     if value and value != "default" \
-                            and value not in dialects \
+                            and value not in accepted_rule_dialects \
                             and value not in seen:
                         seen.add(value)
                         findings.append(Finding(
