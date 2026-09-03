@@ -54,6 +54,17 @@ The script checks out the exact FormosanBank authority revision recorded in `Cod
 
 The 2026-08-22 current-authority audit completed with zero hard XML, text, gloss, and gloss-scrape findings. All remaining soft findings were exhaustively classified as source-faithful notation or canonical infix and reduplication structures. See `CodeAndDocs/reports/audit-report.md` and `CodeAndDocs/reports/qc/qc-summary.md`.
 
+The source prints quotations with curly marks, which the shared cleaner folds to
+straight ones and then resolves against the glottal letter `'` under POL-035. The
+two logs of that pass are committed with the build:
+
+- `CodeAndDocs/reports/qc/quote_corrections.csv` — the 24 `'` → `"` rewrites the
+  cleaner made to the original tier, with the form before and after each.
+- `CodeAndDocs/reports/qc/cleaner_warnings.csv` — the 27 `'` it flagged but left
+  alone, because the translation did not place the quotation with enough
+  confidence to rule out a glottal reading. `008S28` is the notable one: its
+  nested `'aa'` is a quotation in the source but ships as `'`.
+
 ## Citation
 
 Early, R. J., and Whitehorn, J. 2003. *One Hundred Paiwan Texts*. Pacific Linguistics, Research School of Pacific and Asian Studies, Australian National University.

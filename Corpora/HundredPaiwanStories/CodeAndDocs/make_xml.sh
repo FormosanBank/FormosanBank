@@ -146,6 +146,11 @@ mkdir -p "$BUILD_ROOT/reports/rebuild" "$BUILD_ROOT/reports/qc"
 )
 mv "$BUILD_ROOT/XML/cleaner_warnings.csv" \
     "$BUILD_ROOT/reports/qc/cleaner_warnings.csv"
+# POL-035: clean_xml writes its durable quote-correction log to
+# <corpus root>/CodeAndDocs/. Keep it with the other QC evidence so the
+# ' -> " rewrites it made to the original tier stay auditable.
+mv "$BUILD_ROOT/CodeAndDocs/quote_corrections.csv" \
+    "$BUILD_ROOT/reports/qc/quote_corrections.csv"
 
 (
     cd "$BUILD_ROOT"
@@ -245,6 +250,10 @@ if [[ "$MODE" == "--check" ]]; then
     cmp "$BUILD_ROOT/reports/qc/qc-summary.md" "$CODE_ROOT/reports/qc/qc-summary.md"
     cmp "$BUILD_ROOT/reports/qc/soft_findings_review.json" \
         "$CODE_ROOT/reports/qc/soft_findings_review.json"
+    cmp "$BUILD_ROOT/reports/qc/cleaner_warnings.csv" \
+        "$CODE_ROOT/reports/qc/cleaner_warnings.csv"
+    cmp "$BUILD_ROOT/reports/qc/quote_corrections.csv" \
+        "$CODE_ROOT/reports/qc/quote_corrections.csv"
 else
     mkdir -p "$CORPUS_ROOT/XML" "$CODE_ROOT/reports/rebuild" "$CODE_ROOT/reports/qc"
     rsync -a --delete "$BUILD_ROOT/XML/" "$CORPUS_ROOT/XML/"
@@ -252,11 +261,19 @@ else
     cp "$BUILD_ROOT/reports/qc/qc-summary.md" "$CODE_ROOT/reports/qc/qc-summary.md"
     cp "$BUILD_ROOT/reports/qc/soft_findings_review.json" \
         "$CODE_ROOT/reports/qc/soft_findings_review.json"
+    cp "$BUILD_ROOT/reports/qc/cleaner_warnings.csv" \
+        "$CODE_ROOT/reports/qc/cleaner_warnings.csv"
+    cp "$BUILD_ROOT/reports/qc/quote_corrections.csv" \
+        "$CODE_ROOT/reports/qc/quote_corrections.csv"
     diff -qr "$BUILD_ROOT/XML" "$CORPUS_ROOT/XML"
     diff -qr "$BUILD_ROOT/reports/rebuild" "$CODE_ROOT/reports/rebuild"
     cmp "$BUILD_ROOT/reports/qc/qc-summary.md" "$CODE_ROOT/reports/qc/qc-summary.md"
     cmp "$BUILD_ROOT/reports/qc/soft_findings_review.json" \
         "$CODE_ROOT/reports/qc/soft_findings_review.json"
+    cmp "$BUILD_ROOT/reports/qc/cleaner_warnings.csv" \
+        "$CODE_ROOT/reports/qc/cleaner_warnings.csv"
+    cmp "$BUILD_ROOT/reports/qc/quote_corrections.csv" \
+        "$CODE_ROOT/reports/qc/quote_corrections.csv"
 fi
 
 echo "Hundred Paiwan Stories reproduction and QC completed successfully."
