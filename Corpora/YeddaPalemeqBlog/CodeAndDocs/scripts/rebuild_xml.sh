@@ -49,9 +49,12 @@ mkdir -p "$RUN_LOG_DIR"
 if [[ -f "$CORPUS_ROOT/XML/cleaner_warnings.csv" ]]; then
     mv "$CORPUS_ROOT/XML/cleaner_warnings.csv" "$RUN_LOG_DIR/cleaner_warnings.csv"
 fi
+"$VALIDATOR_PYTHON" "$ROOT/scripts/fix_m_tier.py" \
+    --corpora_path "$CORPUS_ROOT/XML" \
+    --formosanbank_root "$VALIDATOR_ROOT"
 "$VALIDATOR_PYTHON" \
     "$VALIDATOR_ROOT/QC/utilities/standardize.py" \
-    --corpora_path "$CORPUS_ROOT/XML" --copy
+    --corpora_path "$CORPUS_ROOT/XML" --remove_accents
 "$VALIDATOR_PYTHON" "$ROOT/scripts/apply_standard_surface.py"
 "$VALIDATOR_PYTHON" \
     "$VALIDATOR_ROOT/QC/utilities/add_phonology.py" \

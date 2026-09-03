@@ -157,6 +157,61 @@ class YeddaPipelineTests(unittest.TestCase):
                 "Restored from the live source after frozen-scrape review.",
             )
 
+    def test_m_tier_is_per_sentence_consistent(self) -> None:
+        """POL-023, per-sentence: a sentence either analyses every W or none.
+
+        The blog parses some sentences morphologically and leaves others
+        unparsed. fix_m_tier.py drops the mirror M tier from the unparsed ones
+        rather than letting it assert an analysis Yedda never made.
+        """
+        def form(element: ET.Element) -> str:
+            child = element.find("FORM[@kindOf='original']")
+            return child.text or "" if child is not None else ""
+
+        stripped = 0
+        for sentence in self.root.findall("S"):
+            words = sentence.findall("W")
+            if not words:
+                continue
+            parsed = any(
+                len(word.findall("M")) >= 2
+                or any(form(m) != form(word) for m in word.findall("M"))
+                for word in words
+            )
+            if parsed:
+                for word in words:
+                    self.assertTrue(
+                        word.findall("M"),
+                        f"{word.get('id')} has no M in an analysed sentence",
+                    )
+            else:
+                for word in words:
+                    self.assertEqual(
+                        word.findall("M"),
+                        [],
+                        f"{word.get('id')} keeps a mirror M in an unparsed sentence",
+                    )
+                stripped += 1
+        self.assertEqual(stripped, 161)
+        self.assertEqual(len(self.root.findall(".//M")), 6492)
+
+    def test_standard_tier_strips_source_accents(self) -> None:
+        """--remove_accents flattens the acute in two quoted Mandarin terms.
+
+        The macron survives: ACCENTS_TO_STRIP holds only the combining acute
+        and breve, so the standard tier keeps 'ā'. The original tier is
+        untouched in every case.
+        """
+        expected = {"S303_1W9": ("yípó", "yipo"), "S303_1W14": ("āyí", "āyi")}
+        for word_id, (original, standard) in expected.items():
+            word = self.root.find(f".//W[@id='{word_id}']")
+            self.assertIsNotNone(word)
+            self.assertEqual(word.find("FORM[@kindOf='original']").text, original)
+            self.assertEqual(word.find("FORM[@kindOf='standard']").text, standard)
+        sentence = self.sentence("S303_1")
+        self.assertIn("yípó", sentence.find("FORM[@kindOf='original']").text)
+        self.assertIn("yipo", sentence.find("FORM[@kindOf='standard']").text)
+
     def test_no_legacy_final_xml(self) -> None:
         self.assertFalse((ROOT.parent / "Final_XML").exists())
 

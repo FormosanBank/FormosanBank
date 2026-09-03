@@ -18,15 +18,39 @@ prohibited without prior written permission.
 - XML: `XML/Paiwan/Paiwan_Yedda_Blog.xml`
 - 668 frozen source records
 - 671 canonical sentence records after three source-defined alternative splits
-- 5,643 W elements and 7,657 M elements
+- 5,643 W elements and 6,492 M elements
 - 5,585 TRANSL elements
 - 665 AUDIO references
 - Canonical XML SHA-256:
-  `b452f10f520053370d090ae95b2e7013006249f7e3b5931d366f0cfce304fb7a`
+  `202dcfe2d117ebe12644bdd76332b2c02fffbd0d1c26ace0aa3f843d489f1aa4`
 
 The original transcription uses the established Yedda Ortho113 route. The
 standard FORM tier is derived from the original tier, and both PHON tiers are
 regenerated with the pinned FormosanBank tooling.
+
+## Morpheme tier and standard-tier accents
+
+Two corpus-wide decisions shape the tiers beyond the source reconciliation
+below.
+
+**The M tier is per-sentence consistent (POL-023).** The blog analyses some
+sentences morphologically and leaves others unparsed, but the parser emitted
+one M per W either way. In an unparsed sentence that M is a bare mirror of its
+word, which adds no information and asserts an analysis Yedda never made.
+`CodeAndDocs/scripts/fix_m_tier.py` therefore drops the M tier from the 161
+sentences with no analysis at all (1,165 morphemes) and requires every W in an
+analysed sentence to keep at least one M. No gloss is invented or discarded.
+One consequence to know about: `standardize.py` applies its C012 hyphen step
+only to sentences that still have an M tier, so a sentence stripped here keeps
+any segmentation hyphen in its standard FORM.
+
+**The standard tier drops source acute accents.** The build runs
+`standardize.py --remove_accents`, so the standard tier is the original minus
+the accents FormosanBank treats as prosodic. In practice this touches only the
+two Mandarin kin terms quoted in `S303_1`: `yípó` becomes `yipo` and `āyí`
+becomes `āyi`. The macron survives because `QC/utilities/_accents.py` strips
+only the combining acute and breve. The original tier keeps the source
+spelling untouched in every case.
 
 ## Source reconciliation
 
@@ -83,10 +107,11 @@ Corpora/YeddaPalemeqBlog/CodeAndDocs/scripts/reproduce.sh
 ```
 
 The pinned handoff has zero structural, text, or gloss HARD findings. Its
-11,107 soft finding occurrences are source-backed and fail-closed by exact
-rule counts. Nine corpus regression tests cover source hashes, source coverage,
-reviewed repairs, stable tier shape, and canonical XML identity. Published port
-readiness has zero HARD findings and zero warnings.
+9,933 soft finding occurrences are source-backed and fail-closed by exact
+rule counts. Eleven corpus regression tests cover source hashes, source
+coverage, reviewed repairs, stable tier shape, per-sentence M-tier
+consistency, standard-tier accent removal, and canonical XML identity.
+Published port readiness has zero HARD findings and zero warnings.
 
 ## Audio
 

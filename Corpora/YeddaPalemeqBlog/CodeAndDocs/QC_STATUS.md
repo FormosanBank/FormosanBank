@@ -1,6 +1,6 @@
 # Current QC status
 
-- Run date: 2026-08-23
+- Run date: 2026-09-03
 - FormosanBank authority: `3a3c47c220520113f747e6a2d441494000e13c4b`
 - Verdict: `ready to port` as an update to `YeddaPalemeqBlog`
 - Publication boundary: the public update remains subject to review and merge
@@ -10,30 +10,52 @@
 - 1 canonical XML file under `../XML/`
 - 671 S
 - 5,643 W
-- 7,657 M
-- 27,942 FORM
-- 27,942 PHON
+- 6,492 M
+- 25,612 FORM
+- 25,612 PHON
 - 5,585 TRANSL
 - 665 AUDIO
-- XML SHA256: `b452f10f520053370d090ae95b2e7013006249f7e3b5931d366f0cfce304fb7a`
+- XML SHA256: `202dcfe2d117ebe12644bdd76332b2c02fffbd0d1c26ace0aa3f843d489f1aa4`
 
 ## Current gates
 
 - Structural and update-mode XML: 0 findings
-- Text: 0 HARD; 2,419 source-backed SOFT findings
-- Gloss: 0 HARD; 8,680 source-limitation SOFT findings
+- Text: 0 HARD; 2,410 source-backed SOFT findings
+- Gloss: 0 HARD; 7,515 source-limitation SOFT findings
 - Duplicate sentences: two source-authentic groups in each tier
 - Issue #1: 9/9 source-backed dispositions; 0 unresolved
-- Exact adjudication: 11,107 accepted finding occurrences; 0 unresolved
+- Exact adjudication: 9,933 accepted finding occurrences; 0 unresolved
 - Published port readiness: 0 HARD, 0 WARN
-- Regression tests: 9 passed
+- Regression tests: 11 passed
 
-The text SOFT inventory is 30 V116 code-switching or source diacritics and
+The text SOFT inventory is 21 V116 code-switching or source diacritics and
 2,389 V122 source punctuation or analytic notes. The gloss SOFT inventory is
-18 V060 word-count signals, 274 V062 prose-infix-gloss signals, 7,657 V064
+18 V060 word-count signals, 274 V062 prose-infix-gloss signals, 6,492 V064
 missing morpheme translations, and 731 V065 missing word translations. The
-blog does not provide a complete interlinear morpheme analysis, so these tiers
-are retained without invented glosses.
+blog does not provide a complete interlinear morpheme analysis, so the tiers
+that remain are retained without invented glosses.
+
+## Morpheme tier and standard-tier accents
+
+Two decisions were added on 2026-09-03 on top of the source reconciliation.
+
+`fix_m_tier.py` applies POL-023 per sentence: the 161 sentences the blog never
+analysed lose their mirror M tier (1,165 morphemes), and every W in an analysed
+sentence keeps at least one M. That accounts for the whole M 7,657 -> 6,492 and
+V064 7,657 -> 6,492 movement; no gloss was invented or discarded. Because
+`standardize.py` gates its C012 hyphen step on a surviving M tier, a stripped
+sentence keeps any segmentation hyphen in its standard FORM.
+
+`standardize.py --remove_accents` replaces the previous `--copy`, so the
+standard tier is the original minus the combining acute and breve. It changes
+exactly two words, both quoted Mandarin kin terms in `S303_1`: `yípó` ->
+`yipo` and `āyí` -> `āyi`, which accounts for the whole V116 30 -> 21 movement.
+The residual macron in `āyi` is `ACCENTS_TO_STRIP` behaviour, not a Yedda
+decision, and is worth a ruling: pinyin tone marks are lexical rather than
+prosodic, so flattening a quoted non-Formosan word may not be wanted at all.
+C012 now also produces the `S652653654_2` standard surface that
+`apply_standard_surface.py` used to write, so that script now only asserts the
+surface and records the note.
 
 ## Live-source reconciliation
 
@@ -55,7 +77,7 @@ one G010 warning under its generic interlinear assumptions. G001 and G002 are
 inapplicable because Yedda's W translations are prose word definitions rather
 than segmented Leipzig-style morpheme glosses. G003 reflects source-backed
 discontinuous infix roots. G010 is the one reviewed original-tier segmentation
-retained at `S652653654_2`; the standard tier removes it. G012 consists of
+retained at `S652653654_2`; C012 removes it from the standard tier. G012 consists of
 source-authentic parenthesized alternate, literal, or meaning translations.
 All 108 square brackets are W-level analytic prose, not sentence free
 translations. These findings introduce no unresolved source-fidelity defect.
