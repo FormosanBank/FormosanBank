@@ -240,13 +240,22 @@ class CorpusTests(unittest.TestCase):
         final_morpheme = word.findall("M")[-1]
         final_translation = final_morpheme.find("TRANSL")
         self.assertEqual(word_translation.text, "do<qal>-plant-?")
-        self.assertEqual(word_translation.get("kindOf"), "standard")
         self.assertEqual(final_translation.text, "?")
-        self.assertEqual(final_translation.get("kindOf"), "standard")
+        # The editorial "?" is marked by its notes attribute, not by kindOf.
+        # POL-036 reserves TRANSL[@kindOf="standard"] for a standardized gloss
+        # recorded *alongside* the original one; used alone it would leave a
+        # hole in the original tier at the one place we mean to be explicit.
+        self.assertEqual(word_translation.get("kindOf"), "original")
+        self.assertEqual(final_translation.get("kindOf"), "original")
         self.assertEqual(
             final_translation.get("notes"),
             "No source gloss was supplied for final -i.",
         )
+        for parent in (word, final_morpheme):
+            self.assertEqual(
+                [item.get("kindOf") for item in parent.findall("TRANSL")],
+                ["original"],
+            )
 
     def test_source_files_and_parser_inventory_are_pinned(self) -> None:
         expected = {}

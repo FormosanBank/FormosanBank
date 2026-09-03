@@ -498,7 +498,7 @@ def build_sentence(
                 word,
                 word_gloss,
                 notes=MISSING_GLOSS_NOTE if missing_gloss_word else None,
-                kind_of="standard" if missing_gloss_word else "original",
+                kind_of="original",
             )
         for unit_index, (unit, m_form, morpheme_id) in enumerate(
             zip(units, m_forms, morpheme_ids)
@@ -511,7 +511,7 @@ def build_sentence(
                     morpheme,
                     unit.gloss,
                     notes=MISSING_GLOSS_NOTE if explicit_unknown else None,
-                    kind_of="standard" if explicit_unknown else "original",
+                    kind_of="original",
                 )
                 stats["explicit_unknown_morphemes"] += int(explicit_unknown)
             else:
