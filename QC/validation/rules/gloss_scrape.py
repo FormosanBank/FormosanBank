@@ -37,6 +37,11 @@ MARKERS = "-<>=~"
 _ANGLE = re.compile(r"<[^>]*>")
 _INFIX_FORM = re.compile(r"^-[^-]+-$")
 _SPLIT_UNITS = re.compile(r"[-=~]")
+_CJK_PLACEHOLDER_TILDE = re.compile(
+    r"(?<=[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff])"
+    r"~"
+    r"(?=[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff])"
+)
 # A dash with a non-dash character on BOTH sides, i.e. an internal boundary
 # rather than an affix-attachment dash ('pa-', '-en') or an infix ('-em-').
 _INTERNAL_DASH = re.compile(r"(?<=[^-])-(?=[^-])")
@@ -69,6 +74,17 @@ def marker_skeleton(text: str | None) -> str:
     if not text:
         return ""
     return "".join(ch for ch in text if ch in MARKERS)
+
+
+def _gloss_notation_text(text: str) -> str:
+    """Remove CJK object-placeholder tildes before parsing gloss notation.
+
+    Chinese teaching glosses sometimes use ``把~抓住`` to mean "catch ~".
+    The tilde marks an open semantic argument, not reduplication or a
+    morpheme boundary. Restricting this exception to a tilde between CJK
+    characters leaves ordinary Leipzig-style ``CAU~walk`` notation intact.
+    """
+    return _CJK_PLACEHOLDER_TILDE.sub("", text)
 
 
 def _form_text(elem: etree._Element, kind: str = "original") -> str:
@@ -110,6 +126,7 @@ def _gloss_units(text: str) -> int:
     """
     if not text:
         return 0
+    text = _gloss_notation_text(text)
     infixes = _ANGLE.findall(text)
     remainder = _ANGLE.sub("", text)
     segments = [s for s in _SPLIT_UNITS.split(remainder) if s.strip()]
@@ -186,7 +203,7 @@ def g001_marker_skeleton_parity(
         if not form or not transl:
             continue  # V011/V065 own missing FORM/TRANSL
         fs = marker_skeleton(form)
-        ts = marker_skeleton(transl)
+        ts = marker_skeleton(_gloss_notation_text(transl))
         if fs.replace("~", "-") == ts.replace("~", "-"):
             continue
         findings.append(Finding(
@@ -221,7 +238,7 @@ def g007_marker_type_mismatch(
         if not form or not transl:
             continue
         fs = marker_skeleton(form)
-        ts = marker_skeleton(transl)
+        ts = marker_skeleton(_gloss_notation_text(transl))
         if fs == ts:
             continue
         if fs.replace("~", "-") != ts.replace("~", "-"):
