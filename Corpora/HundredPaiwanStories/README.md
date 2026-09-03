@@ -4,7 +4,7 @@ One hundred morphologically analyzed Paiwan texts from Early and Whitehorn (2003
 
 ## Rights and AI use
 
-The author granted permission for attributed, non-profit derivative publication. For-profit republication of the source as-is is not permitted. This permission is not represented as a Creative Commons license.
+The copyright holder made this corpus available under **CC BY-NC** (Creative Commons Attribution-NonCommercial). Attributed non-commercial use and redistribution are permitted; commercial use requires prior written permission. Every `TEXT` element records `copyright="CC BY-NC"`.
 
 The corpus is also subject to the central FormosanBank terms in [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI use requires prior written permission.
 

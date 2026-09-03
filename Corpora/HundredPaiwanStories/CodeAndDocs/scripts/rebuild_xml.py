@@ -31,10 +31,7 @@ from paiwan_source import (
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
-COPYRIGHT = (
-    "Author permission allows attributed, non-profit derivative use. "
-    "For-profit republication of the source as-is is not permitted."
-)
+COPYRIGHT = "CC BY-NC"
 MISSING_GLOSS_NOTE = "No source gloss was supplied for final -i."
 
 

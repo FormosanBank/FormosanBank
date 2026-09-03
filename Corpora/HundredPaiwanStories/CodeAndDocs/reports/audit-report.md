@@ -51,4 +51,12 @@ All remaining soft findings are exhaustively classified in `reports/qc/qc-summar
 
 ## Publication conditions
 
-Author permission allows public, attributed, non-profit derivative publication. Republishing the source as-is for profit is not allowed. The public port must exclude the Word source files and all private permission evidence. No merge is authorized by this report.
+The corpus is published under CC BY-NC: attributed non-commercial use and
+redistribution are allowed, and commercial use requires prior written
+permission. No merge is authorized by this report.
+
+Superseded 2026-09-03: this report originally required the public port to
+exclude the author-provided Word files. Under the reproducibility ruling
+that a published corpus must rebuild from a FormosanBank checkout alone,
+both Word files are now distributed under `CodeAndDocs/`. The private
+permission evidence remains excluded.
