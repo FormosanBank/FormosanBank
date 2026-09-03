@@ -226,16 +226,39 @@ the corpus's CodeAndDocs declares a dedup step* — a leftover duplicate
 then signals a pipeline defect, not a content question. The within-file
 vs cross-file distinction survives as the finding's `scope`.
 
-### POL-023 · RULED · 2026-08-10 · M-tier presence
-In an XML file where any W has two or more M children (i.e. the file is
-morpheme-segmented), **every W gets at least one M**; a W with exactly one M
-there is read as "analyzed as monomorphemic". In corpora with **no**
-morpheme segmentation, there is **no M level at all** — an all-single-M
-tier adds no information. Enforced as SOFT findings V144 (M-less W in a
-segmented file) and V145 (M level present but nothing multi-M) in
-`validate_xml.py`; SOFT because some existing corpora trip these and will
-need fixing over time. (Resolves the Bunun-Topic-Focus degenerate-single-M
-question: its 51 single-M Ws are conforming as long as no W lacks an M.)
+### POL-023 · RULED · 2026-08-10 · M-tier presence (scope amended 2026-08-12)
+**The unit of morphological analysis is the sentence, not the file.** In a
+sentence that carries *some* morphological parsing, **every W gets at least
+one M**; a W with exactly one M there is read as "analyzed as
+monomorphemic". A sentence that carries **no** parsing carries **no M at
+all** — the author may simply never have analyzed it, and requiring an M
+there would fake an analysis it does not have. The same holds of a whole
+corpus: with no morpheme segmentation there is **no M level at all**, since
+an all-single-M mirror tier adds no information.
+
+A sentence "carries some parsing" when either (a) some W in it has two or
+more M children, or (b) some M's FORM differs from its parent W's FORM (an
+infix split, or an M that shows a segmentation the W FORM does not).
+
+**Why per sentence** (amended 2026-08-12): a file-level rule cannot express
+"this sentence is unanalyzed". Corpora that parse some sentences and leave
+others alone are the normal, honest case (YeddaPalemeqBlog: 494 parsed
+sentences, 161 unparsed), and under the file-level reading a single parsed
+sentence turned every unparsed sentence in the file into a finding.
+
+Enforced as SOFT findings in `validate_xml.py`; SOFT because some existing
+corpora trip these and will need fixing over time:
+- **V144** — M-less W inside a *parsed sentence* (per sentence).
+- **V145** — an M level in a file where **no** sentence carries any parsing
+  (per **file**, deliberately). "Every M mirrors its W" is evidence of a
+  fake tier only in bulk: one short sentence whose words really are
+  monomorphemic looks identical to a mirror tier, and single-M Ws are
+  explicitly legal, so sentence-scoping V145 would manufacture false
+  positives. A whole file with no multi-morphemic word anywhere is the
+  reliable signal.
+
+(Resolves the Bunun-Topic-Focus degenerate-single-M question: its 51
+single-M Ws are conforming as long as no W lacks an M.)
 
 ### POL-024 · RULED · 2026-08-10 · parentheticals in translations
 Two different things, treated differently:
@@ -353,3 +376,39 @@ silently orphans both. Regeneration pipelines must therefore produce the
 same ids run over run; an id scheme change is a breaking change to
 announce, not a cleanup. Made explicit from the id rules implicit in the
 GitBook XML-format page.
+
+### POL-038 · RULED · 2026-08-11 · data files change only via code
+XML files and raw scrape files are **only ever modified by committed
+code** — a pipeline script, a recorded `manual_edits.xml` applied by
+`apply_manual_edits.py` (POL-030), or a one-off script committed to
+`CodeAndDocs/`. Never by hand and never ad hoc (including "quick"
+interactive edits during audits or reviews): a non-code edit is not
+reproducible and is silently destroyed on regeneration. This applies to
+published `XML/`, to raw scrapes under `CodeAndDocs/`, and to POL-035
+pre-correction snapshots alike (a snapshot defect is fixed by a committed
+script run against the snapshot, not by editing it). Raised by: the
+2026-08-11 Group 1 sweep review.
+
+### POL-039 · RULED · 2026-08-11 · no data tables hidden in code
+Lookup tables and other data that critical steps depend on are **never
+hardcoded inside a python file**. Expose them as human-readable CSV/TSV/
+XML in a prominent, documented place (repo-root registries —
+`languages.csv`, `dialects.csv`, `standards.csv` — or `Orthographies/`)
+and load them from there, through exactly one loader. Raised by the ISO
+639-3 map drift: four separate hardcoded copies of the code→language
+table had diverged (`bzg` present in one, `pzh` in another).
+Implemented by: `languages.csv` + `QC/corpus_counts.load_language_codes`
+(the other three copies now import from it).
+
+### POL-040 · RULED · 2026-08-12 · language identity registry
+`languages.csv` (repo root) is the canonical registry of ISO 639-3 code →
+language name; every consumer loads it through
+`QC/corpus_counts.load_language_codes` (POL-039). Its `Language` values
+use the same spellings as `dialects.csv` and `standards.csv` — the three
+registries name languages identically. Consistency is checked by
+`validate_registries.py` (V150: every language has a standards.csv row;
+V155: dialects.csv↔languages.csv naming, unique lowercase ISO codes;
+SOFT per POL-034). Adding a language = one `languages.csv` row, plus a
+`standards.csv` row (blank scheme until a standard is designated) and
+`dialects.csv` rows if multi-dialect. Documented for end users on the
+GitBook "Formosan Dialects" page.
