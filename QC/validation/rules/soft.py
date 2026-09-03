@@ -235,11 +235,61 @@ def v145_degenerate_all_single_M_tier(
     )]
 
 
+def v148_W_less_S_in_segmented_file(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V148 SOFT (POL-041): a partially word-segmented file.
+
+    The W tier asks the same question as the M tier (POL-023) one level
+    up, and gets the same answer at file scope: a corpus with no word
+    segmentation has **no W level at all**, and that is the normal state
+    for most of the bank — never a finding. But a file where *some*
+    sentences carry a W tier and others do not is an incomplete
+    segmentation pass, and the unsegmented sentences are worth
+    surfacing.
+
+    Deliberately **file-scoped**, unlike V144. V144 can be per sentence
+    because a parsed sentence announces itself (a W with 2+ M, or an M
+    FORM differing from its W FORM). A sentence with no W announces
+    nothing at all — there is no per-sentence signal distinguishing
+    "not segmented yet" from "not segmented, by design". Only the
+    presence of segmented siblings in the same file makes the omission
+    legible, so the file is the unit.
+
+    An S with no FORM is never counted: an untranscribed-audio shell has
+    no text to segment (V010 already reports it). Aggregated per file.
+    """
+    with_form = [s for s in tree.iter("S") if s.find("./FORM") is not None]
+    if not with_form:
+        return []
+    w_less = [s for s in with_form if s.find("./W") is None]
+    # No W anywhere -> not a segmented corpus. All W -> nothing to report.
+    if not w_less or len(w_less) == len(with_form):
+        return []
+    return [Finding(
+        rule_id="V148",
+        severity=Severity.SOFT,
+        message=(
+            f"V148 SOFT: {len(w_less)} of {len(with_form)} sentences have "
+            f"no W tier while others in the file do — incomplete word "
+            f"segmentation (POL-041)"
+        ),
+        path=path,
+        count=len(w_less),
+        language=_tree_language(tree, path, index),
+        character="",
+    )]
+
+
 RULES: list = [
     v010_count_s_without_form,
     v014_count_missing_standard_form,
     # POL-023 M-tier consistency (2026-08-10; V144 per-sentence 2026-08-12)
     v144_M_less_W_in_parsed_sentence,
     v145_degenerate_all_single_M_tier,
+    # POL-041 W-tier presence (2026-09-03), file-scoped
+    v148_W_less_S_in_segmented_file,
 ]
 CROSS_FILE_RULES: list = []

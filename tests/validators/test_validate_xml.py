@@ -1192,3 +1192,83 @@ def test_V145_no_M_level_at_all_is_fine(tmp_path):
     assert "v144" not in combined and "v145" not in combined, (
         f"no M-tier findings expected; stdout={proc.stdout!r}"
     )
+
+
+# -----------------------------------------------------------------------------
+# V148 SOFT — W-tier presence (POL-041, ruled 2026-09-03)
+#
+# The W tier is the same kind of question as the M tier (POL-023), one
+# level up, and gets the same answer at file scope: a corpus with no word
+# segmentation at all has no W level and is NOT a finding. But a file that
+# segments *some* of its sentences and not others is an incomplete
+# segmentation pass, and every S that has a FORM but no W is reported.
+# An S with no FORM (an untranscribed audio shell) has no text to segment
+# and never counts.
+# -----------------------------------------------------------------------------
+
+
+def _s(s_id: str, form: str | None, words: list) -> str:
+    """An S with an optional sentence FORM and zero or more W children."""
+    form_el = (
+        f'<FORM kindOf="original">{form}</FORM>' if form is not None else ""
+    )
+    ws = "".join(
+        f'<W id="{s_id}_{i}"><FORM kindOf="original">{w}</FORM></W>'
+        for i, w in enumerate(words)
+    )
+    return f'<S id="{s_id}">{form_el}{ws}</S>'
+
+
+def test_V148_sentence_only_file_is_not_flagged(tmp_path):
+    """A corpus with no word segmentation anywhere has no W level, which is
+    the normal state for most of the bank — not a finding."""
+    body = _s("S1", "ma-kaen kako", []) + _s("S2", "nga'ay ho", [])
+    proc = _run_validate(_write_mtier(tmp_path, body))
+    combined = combined_output(proc)
+    assert "v148" not in combined, (
+        f"sentence-only file must not trip V148; stdout={proc.stdout!r}")
+
+
+def test_V148_fully_segmented_file_is_not_flagged(tmp_path):
+    body = (
+        _s("S1", "ma-kaen kako", ["ma-kaen", "kako"])
+        + _s("S2", "nga'ay ho", ["nga'ay", "ho"])
+    )
+    proc = _run_validate(_write_mtier(tmp_path, body))
+    combined = combined_output(proc)
+    assert "v148" not in combined, (
+        f"fully segmented file must not trip V148; stdout={proc.stdout!r}")
+
+
+def test_V148_partially_segmented_file_is_flagged(tmp_path):
+    """Some S have W and some do not: an incomplete segmentation pass."""
+    body = (
+        _s("S1", "ma-kaen kako", ["ma-kaen", "kako"])
+        + _s("S2", "nga'ay ho", [])
+    )
+    proc = _run_validate(_write_mtier(tmp_path, body))
+    assert _has_rule_finding(proc, ("v148",)), (
+        f"expected V148; stdout={proc.stdout!r} stderr={proc.stderr!r}")
+
+
+def test_V148_counts_every_unsegmented_sentence(tmp_path):
+    body = (
+        _s("S1", "ma-kaen kako", ["ma-kaen", "kako"])
+        + _s("S2", "nga'ay ho", [])
+        + _s("S3", "kiso", [])
+    )
+    proc = _run_validate(_write_mtier(tmp_path, body))
+    rows = _soft_rows(tmp_path, "V148")
+    assert len(rows) == 1, f"expected one aggregated V148 row; got {rows!r}"
+    assert rows[0]["count"] == "2", (
+        f"both unsegmented S should count; got {rows[0]!r}")
+
+
+def test_V148_formless_S_never_counts(tmp_path):
+    """An untranscribed-audio shell S has no FORM, so there is no text to
+    segment — it must not be reported as missing a W tier (cf. V010)."""
+    body = _s("S1", "ma-kaen kako", ["ma-kaen", "kako"]) + _s("S2", None, [])
+    proc = _run_validate(_write_mtier(tmp_path, body))
+    combined = combined_output(proc)
+    assert "v148" not in combined, (
+        f"FORM-less S must not trip V148; stdout={proc.stdout!r}")
