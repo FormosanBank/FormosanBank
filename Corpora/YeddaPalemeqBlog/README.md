@@ -52,6 +52,12 @@ not that the word is meaningless or that a gloss was lost. 731 of the 5,643 `W`
 elements are in that position; their `FORM` is simply the word as it appears in
 the example.
 
+**Sixteen sentences carry no `W` tier at all.** The blog prints them as bare
+phrase entries with no word breakdown — `S268_1`, `S269_1`, `S378_1`–`S381_1`,
+`S393_1`, `S533_1` and `S545_1`–`S545_8`. There is nothing to segment, so they
+have no words and no morphemes. `validate_xml` reports this as a single SOFT
+V148 (POL-041) and it is accepted as source-backed.
+
 **Where the sentence and the gloss list spell a word differently, the sentence
 wins.** The blog sometimes writes a word one way in the Paiwan text and another
 way in the explanation below it. The scrape treats the sentence as correct and
