@@ -73,6 +73,8 @@ Two conventions that most QC code assumes:
 
 `xml:lang` uses ISO 639-3 codes (validated against [QC/validation/iso-639-3.txt](QC/validation/iso-639-3.txt)). The canonical code→language map is [languages.csv](languages.csv) at repo root (single source of truth per POL-039; loaded by `QC/corpus_counts.load_language_codes`, which every other consumer imports). Dialect labels come from the `dialect` attribute; the canonical list is in [dialects.csv](dialects.csv).
 
+**`trv` means Seediq-or-Truku, never just Truku.** ISO 639-3 has a single code `trv` for the whole Seediq family, so every Seediq *and* Truku text is tagged `xml:lang="trv"`; language identity comes from the `dialect` attribute: `trv` + `dialect="Truku"` → Truku, anything else (including no dialect) → Seediq. Never read `trv` as "Truku" from the code alone — e.g. [Corpora/Wikipedias/XML/Seediq/](Corpora/Wikipedias/XML/Seediq/) is `xml:lang="trv"` and is the *Seediq* Wikipedia (there is no Truku Wikipedia). This resolution also selects which reference materials apply (`QC/validation/reference/Truku/` vs `Seediq/`, conversion-table columns, attestation dictionaries).
+
 ## QC script conventions
 
 Most validation/extraction scripts share a `search_by` positional with three modes:
