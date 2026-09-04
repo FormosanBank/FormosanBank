@@ -1,6 +1,6 @@
 # Song Limei (2018), Introduction to Kanakanavu Grammar
 
-This corpus is the Kanakanavu (`xnb`) material from Song Limei's 2018 *Kanakanafu yu yufa gailun* [Introduction to Kanakanavu Grammar] (Council of Indigenous Peoples), scraped from the official Alilin e-reader and reconciled page-by-page against the source page images. It comprises 699 grammar sentences — 650 of them with word- and morpheme-level interlinear glossing (3,477 words, 5,034 morphemes) — together with the book's Appendix 2A dictionary as a separate 870-entry lexicon. Text is in the Ortho113 orthography with Mandarin (`zho`) translations and glosses.
+This corpus is the Kanakanavu (`xnb`) material from Song Limei's 2018 *Kanakanafu yu yufa gailun* [Introduction to Kanakanavu Grammar] (Council of Indigenous Peoples), scraped from the official Alilin e-reader and reconciled page-by-page against the source page images. It comprises 699 grammar sentences — 650 of them with word- and morpheme-level interlinear glossing (3,477 words, 5,048 morphemes) — together with the book's Appendix 2A dictionary as a separate 870-entry lexicon. Text is in the Ortho113 orthography with Mandarin (`zho`) translations and glosses.
 
 ***
 
@@ -58,7 +58,7 @@ Every departure from the printed text is recorded against a named record and a r
 
 * **Dictionary variants are split, not concatenated.** Slash and semicolon alternatives and optional `(…)` material in Appendix 2A become separate single-form entries. Bound citation forms (a trailing hyphen, with no free-standing surface in the book) are excluded, and split variants that duplicate another record are dropped. Every exclusion is a recorded decision.
 
-* **Repeated sentences are deliberate.** The book reuses example sentences to illustrate different points, so identical forms recur; each `S` carries its own `source` attribute naming the page and label it came from. Nothing is deduplicated.
+* **Repeated forms are deliberate, and are distinct attestations.** 63 groups recur: 28 are grammar examples the book reuses to illustrate different points, 34 are dictionary homographs with different translations, and one is a pair of stress variants that fold to the same standard form. Each `S` carries its own `source` attribute naming the page and label it came from. There is no exact same-locator duplicate, and nothing is deduplicated.
 
 * **49 of the 699 sentences have no interlinear analysis.** 47 are the punctuation examples of Appendix 1 (pp. 187–191, a punctuation table rather than a glossed text) and 2 are body examples the book leaves unglossed. The book prints no word gloss for any of them, and none was invented.
 
