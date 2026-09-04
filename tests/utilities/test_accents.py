@@ -31,6 +31,9 @@ def _has_combining(text: str) -> bool:
     ("ó", "o"),
     ("ú", "u"),
     ("ŭ", "u"),
+    ("ā", "a"),
+    ("ē", "e"),
+    ("ō", "o"),
     ("máduk", "maduk"),
     ("dálix búyas", "dalix buyas"),
 ])
@@ -38,7 +41,7 @@ def test_latin_strip_marks_are_removed(accented, plain):
     assert strip_accents(accented) == plain
 
 
-@pytest.mark.parametrize("letter", ["ê", "ō", "ñ", "ä", "ü", "ç"])
+@pytest.mark.parametrize("letter", ["ê", "ñ", "ä", "ü", "ç"])
 def test_latin_marks_outside_the_strip_set_are_kept_composed(letter):
     """Only ACCENTS_TO_STRIP is removed; other Latin diacritics survive, NFC."""
     out = strip_accents(letter)
@@ -160,3 +163,43 @@ def test_idempotent_with_keep():
 def test_no_strip_mark_survives_on_latin_text():
     out = unicodedata.normalize("NFD", strip_accents("máduk dálix dourŭk"))
     assert not any(mark in out for mark in ACCENTS_TO_STRIP)
+
+
+
+# --- macron ---------------------------------------------------------------
+# The macron is prosodic or loanword notation in most of the bank (Saisiyat,
+# Amis, Truku, Atayal, Paiwan all carry macrons while attesting no macron
+# letter) but is a real letter in Puyuma, Siraya and Favorlang. It is therefore
+# only safe to strip alongside a keep set.
+
+def test_macron_is_stripped_by_default():
+    # Mandarin kin terms quoted in Paiwan; Paiwan attests no macron letter.
+    assert strip_accents("āyí") == "ayi"
+    assert strip_accents("yípó") == "yipo"
+
+
+def test_attested_macron_letter_survives():
+    # Puyuma's reference orthography lists 'ē' beside plain 'e'.
+    assert strip_accents("sēhu", keep={"ē"}) == "sēhu"
+    assert strip_accents("sēhu") == "sehu"
+
+
+def test_always_keep_letters_survive_without_a_keep_set():
+    # Siraya and Favorlang have no reference orthography to derive keep from,
+    # and both letters are contrastive against their bare base in their corpus.
+    assert strip_accents("ǣuh-appa") == "ǣuh-appa"
+    assert strip_accents("paḡa") == "paḡa"
+    assert strip_accents("ḡinaat") == "ḡinaat"
+
+
+def test_always_keep_does_not_protect_the_bare_base():
+    assert strip_accents("æ") == "æ"
+    assert strip_accents("g") == "g"
+
+
+def test_macron_on_non_latin_is_untouched():
+    assert strip_accents("稲葉浩志") == "稲葉浩志"
+
+
+def test_accented_letters_reports_macron_letters():
+    assert accented_letters({"e", "ē", "a"}) == frozenset({"ē"})
