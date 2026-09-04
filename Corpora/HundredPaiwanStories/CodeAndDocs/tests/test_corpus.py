@@ -87,7 +87,7 @@ class CorpusTests(unittest.TestCase):
                 self.assertTrue(root.get(attribute), (root.get("id"), attribute))
 
     def test_every_exact_surface_decision_is_applied(self) -> None:
-        self.assertEqual(len(self.decisions), 166)
+        self.assertEqual(len(self.decisions), 16)
         for row in self.decisions:
             sentence = self.sentences[(row["file"], row["sentence_id"])]
             expected_original = row["original_form"]
@@ -116,16 +116,33 @@ class CorpusTests(unittest.TestCase):
             )
         )
 
-    def test_source_hyphens_and_uncertainty_decisions(self) -> None:
-        marked = [
-            direct(sentence, "FORM", "standard")
+    def test_source_hyphens_stay_in_the_original_tier_only(self) -> None:
+        # Ferrell 1.6 gives three interlinear levels. The plain-text first
+        # line, which becomes the S FORM, legitimately carries hyphens, and
+        # the original tier keeps every one of them. A hyphen is a
+        # segmentation marker, not a letter of the standard orthography, so
+        # the standard tier carries none -- the blanket pipeline strips them
+        # and standard_surface_decisions.tsv no longer puts them back.
+        with_hyphen_original = [
+            sentence.get("id")
+            for sentence in self.sentences.values()
+            if "-" in direct(sentence, "FORM", "original")
+        ]
+        with_hyphen_standard = [
+            sentence.get("id")
             for sentence in self.sentences.values()
             if "-" in direct(sentence, "FORM", "standard")
         ]
-        self.assertEqual(len(marked), 153)
-        self.assertTrue(any("Yisu-sama" in value for value in marked))
-        self.assertTrue(any("Kulje-Pulelelelengan" in value for value in marked))
-        self.assertTrue(any("pakazua-u" in value for value in marked))
+        self.assertEqual(len(with_hyphen_original), 153)
+        self.assertEqual(with_hyphen_standard, [])
+
+        originals = [
+            direct(sentence, "FORM", "original") for sentence in self.sentences.values()
+        ]
+        self.assertTrue(any("Yisu-sama" in value for value in originals))
+        self.assertTrue(any("pakazua-u" in value for value in originals))
+
+        # Parenthesised uncertainty is resolved out of the standard tier.
         for sentence in self.sentences.values():
             standard = direct(sentence, "FORM", "standard")
             self.assertNotIn("(", standard)
@@ -321,7 +338,7 @@ class CorpusTests(unittest.TestCase):
         )
 
     def test_source_drift_is_rejected(self) -> None:
-        row = next(row for row in self.decisions if row["sentence_id"] == "001S9")
+        row = next(row for row in self.decisions if row["sentence_id"] == "089S4")
         sentence = deepcopy(self.sentences[(row["file"], row["sentence_id"])])
         sentence.find("FORM[@kindOf='original']").text = "changed source"
         with self.assertRaisesRegex(ValueError, "original FORM differs"):
@@ -334,8 +351,8 @@ class CorpusTests(unittest.TestCase):
             first = normalize(temp_root, DEFAULT_DECISIONS)
             first_hashes = xml_hashes(temp_root)
             second = normalize(temp_root, DEFAULT_DECISIONS)
-            self.assertEqual(first, (166, 0, 0, 0))
-            self.assertEqual(second, (166, 0, 0, 0))
+            self.assertEqual(first, (16, 0, 0, 0))
+            self.assertEqual(second, (16, 0, 0, 0))
             self.assertEqual(xml_hashes(temp_root), first_hashes)
 
 

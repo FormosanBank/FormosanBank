@@ -19,7 +19,6 @@ EXPECTED_COUNTS = {
     "V061": 1302,
     "V064": 1,
     "V122": 8050,
-    "V133": 153,
     "G001": 1,
     "G002": 1,
     "G003": 1370,
@@ -212,7 +211,7 @@ def review(
         raise ValueError(f"XML validation has {len(xml_rows)} unreviewed findings")
 
     expected_rules = {
-        "text": {"V122", "V133"},
+        "text": {"V122"},
         "gloss": {"V061", "V064"},
         "scrape": {"G001", "G002", "G003", "G010"},
     }
@@ -320,27 +319,40 @@ def review(
     if finding_morphemes != gap_morphemes:
         raise ValueError("G003 findings do not exactly match infix-root gap forms")
 
-    decisions = read_tsv(decisions_path)
-    retained = {
-        (row["file"], f"S={row['sentence_id']}")
-        for row in decisions
-        if "-" in row["source_standard_form"]
-    }
-    v133 = {
-        (Path(row["file"]).name, row["location"])
-        for row in text_rows
-        if row["rule_id"] == "V133"
-    }
-    if v133 != retained:
-        raise ValueError("V133 findings differ from exact source-reviewed hyphens")
+    # A hyphen is a segmentation marker, not a letter of the standard
+    # orthography. The ORIGINAL tier keeps every hyphen the source prints on
+    # its plain-text line (Ferrell 1.6) -- that is what G010 reports -- while
+    # the standard tier carries none, so V133 must not fire at all. The
+    # expected G010 set is derived from the XML, not from the decision table,
+    # which no longer records the hyphens.
+    source_hyphens_by_file: Counter = Counter()
+    standard_hyphens: list[str] = []
+    for path in sorted(Path(xml_root).glob("PaiwanCh2_*.xml")):
+        for sentence in etree.parse(str(path)).getroot().findall("S"):
+            original = sentence.find("FORM[@kindOf='original']")
+            standard = sentence.find("FORM[@kindOf='standard']")
+            if original is not None and "-" in (original.text or ""):
+                source_hyphens_by_file[path.name] += 1
+            if standard is not None and "-" in (standard.text or ""):
+                standard_hyphens.append(sentence.get("id"))
+    if standard_hyphens:
+        raise ValueError(
+            f"standard FORMs regained a hyphen: {sorted(standard_hyphens)[:5]}"
+        )
 
-    retained_by_file = Counter(filename for filename, _location in retained)
     g010_by_file = Counter()
     for row in scrape_rows:
         if row["rule_id"] == "G010":
             g010_by_file[Path(row["file"]).name] += int(row.get("count") or "1")
-    if g010_by_file != retained_by_file:
-        raise ValueError("G010 counts differ from exact source-reviewed hyphens")
+    if g010_by_file != source_hyphens_by_file:
+        raise ValueError("G010 counts differ from the source hyphens in the original tier")
+
+    # The decision table now holds only the parenthetical decisions.
+    decisions = read_tsv(decisions_path)
+    if len(decisions) != 16 or not all(
+        "(" in row["source_standard_form"] for row in decisions
+    ):
+        raise ValueError("standard_surface_decisions.tsv is no longer 16 parentheticals")
 
     verify_accepted_gloss_gap(elements, gloss_rows, scrape_rows)
 
@@ -353,10 +365,9 @@ def review(
         "validator_findings": counts,
         "review": {
             "G003": "all 1,370 are canonical infix-root gap forms",
-            "G010": "all 153 are exact source-reviewed sentence hyphens",
             "V061": "all 1,302 are reduplicated W forms using the canonical tilde marker",
             "V122": "all 8,050 exactly cover preserved source FORM and TRANSL notation",
-            "V133": "all 153 are exact source-reviewed sentence hyphens",
+            "G010": "all 153 are source hyphens kept in the original tier; the standard tier carries none",
             "V064": "the single unglossed M is 078S4W19M0c, the -i the source leaves without a gloss",
             "G002": "078S4W19 has 4 Ms and 3 source gloss units for the same reason",
             "V122_by_tier": dict(sorted(v122_tiers.items())),
@@ -396,15 +407,15 @@ Authority: FormosanBank `{summary["authority_commit"]}`.
 ## Validator results
 
 - XML: 0 hard findings, 0 soft findings
-- Text: 0 hard findings, {counts["V122"]:,} V122 soft findings, {counts["V133"]:,} V133 soft findings
-- Gloss: 0 hard findings, {counts["V061"]:,} V061 soft findings
-- Gloss scrape: 0 hard findings, {counts["G003"]:,} G003 soft findings, {counts["G010"]:,} G010 warnings
+- Text: 0 hard findings, {counts["V122"]:,} V122 soft findings
+- Gloss: 0 hard findings, {counts["V061"]:,} V061 soft findings, {counts["V064"]} V064 soft finding
+- Gloss scrape: 1 accepted hard finding, {counts["G003"]:,} G003 soft findings, {counts["G010"]:,} G010 warnings
 
 ## Reviewed soft findings
 
 - V061: {review_notes["V061"]}. The validator does not split `~` when estimating the M count.
 - G003: {review_notes["G003"]}. The internal hyphen records the root gap occupied by one or more infixes.
-- V133 and G010: {review_notes["V133"]}.
+- G010: {review_notes["G010"]}. V133 does not fire: no standard FORM contains a hyphen.
 - V122: {review_notes["V122"]}. Parentheses are balanced after the recorded 057S3 punctuation repair. The occurrences comprise {tiers["S.FORM.original"]:,} in source S forms, {tiers["S.TRANSL.unspecified"]:,} in source free translations, {tiers["W.TRANSL.original"]:,} in source W glosses, and {tiers["M.TRANSL.original"]:,} in source M glosses.
 
 No remaining finding blocks publication. The corpus is ready to port under the recorded rights conditions: {summary["rights_conditions"]}

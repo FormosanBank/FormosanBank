@@ -56,8 +56,8 @@ def load_decisions(path: Path = DEFAULT_DECISIONS) -> list[dict[str, str]]:
             raise ValueError("unexpected standard-surface manifest columns")
         rows = list(reader)
 
-    if len(rows) != 166:
-        raise ValueError(f"expected 166 exact decisions, found {len(rows)}")
+    if len(rows) != 16:
+        raise ValueError(f"expected 16 exact decisions, found {len(rows)}")
 
     seen: set[tuple[str, str]] = set()
     for row in rows:
@@ -95,23 +95,26 @@ def load_decisions(path: Path = DEFAULT_DECISIONS) -> list[dict[str, str]]:
             raise ValueError(f"unresolved parenthesis in corrected form for {key}")
 
         decision = row["decision"]
+        # A hyphen is a segmentation marker, not a letter of the standard
+        # orthography, so the standard tier never carries one -- not even when
+        # the source's plain-text line does (Ferrell 1.6). The original tier
+        # keeps it; this table must never put one back.
+        if "-" in row["corrected_standard_form"]:
+            raise ValueError(f"hyphen in corrected standard form for {key}")
         if "retain_plain_text_hyphen" in decision:
-            if "-" not in row["source_standard_form"]:
-                raise ValueError(f"hyphen retention without source hyphen for {key}")
-            if row["source_standard_form"].count("-") != row[
-                "corrected_standard_form"
-            ].count("-"):
-                raise ValueError(f"source hyphen loss in corrected form for {key}")
+            raise ValueError(f"hyphen retention is no longer a valid decision: {key}")
         if decision == "published_parenthetical_token_with_omitted_alternate":
             if not row["alternate_standard_form"]:
                 raise ValueError(f"missing omitted-token alternate for {key}")
         elif row["alternate_standard_form"]:
             raise ValueError(f"unexpected alternate standard for {key}")
 
-    if sum("-" in row["source_standard_form"] for row in rows) != 153:
-        raise ValueError("expected 153 exact source-hyphen sentence decisions")
-    if sum("(" in row["source_standard_form"] for row in rows) != 16:
-        raise ValueError("expected 16 exact parenthetical sentence decisions")
+    if len(rows) != 16:
+        raise ValueError(f"expected 16 exact sentence decisions, found {len(rows)}")
+    if not all("(" in row["source_standard_form"] for row in rows):
+        raise ValueError("every remaining decision must be a parenthetical one")
+    if sum("-" in row["source_standard_form"] for row in rows) != 3:
+        raise ValueError("expected 3 parenthetical decisions on hyphenated sentences")
     if sum(bool(row["alternate_standard_form"]) for row in rows) != 5:
         raise ValueError("expected five published parenthetical-token alternates")
     return rows

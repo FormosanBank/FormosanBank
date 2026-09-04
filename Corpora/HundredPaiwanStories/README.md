@@ -31,7 +31,7 @@ The S tier preserves each natural Paiwan line. The W and M tiers preserve the se
 
 ## Source review
 
-The rebuild was checked against all 268 rendered pages of the two checksum-pinned Word documents. It restores story 091's omitted first sentence, nine omitted final words, five complete optional-token variants, and four missing legacy XML files. It also records two word-alignment decisions, three translation-note extractions, one punctuation repair, four TEXT metadata corrections, and 166 exact sentence-level surface decisions.
+The rebuild was checked against all 268 rendered pages of the two checksum-pinned Word documents. It restores story 091's omitted first sentence, nine omitted final words, five complete optional-token variants, and four missing legacy XML files. It also records two word-alignment decisions, three translation-note extractions, one punctuation repair, four TEXT metadata corrections, and 16 exact sentence-level surface decisions.
 
 ### The one unglossed morpheme
 
@@ -63,6 +63,46 @@ morpheme and fails the build if a fourth appears, if one moves, or if any other
 morpheme loses its gloss.
 
 The reviewed decisions, source files, source checksums, authority pins, generator, tests, and audit evidence are all under `CodeAndDocs/`.
+
+### How sentence-level corrections are recorded
+
+A handful of sentences need a correction that the blanket pipeline cannot make
+on its own. They are **not** recorded with `QC/utilities/capture_manual_edits.py`
+and `manual_edits.xml`. Instead they live in a reviewed decision table,
+[`CodeAndDocs/standard_surface_decisions.tsv`](CodeAndDocs/standard_surface_decisions.tsv),
+which `CodeAndDocs/normalize_sentence_standards.py` applies at the end of the
+build. Every row is listed there in full, so you can check each decision
+yourself; the table has 16 rows, all of them about parenthesised material:
+
+- **11 remove parenthesised uncertainty.** Where the source prints a bracketed
+  query on a form — `paqeteleng(?)` — the original tier keeps it and the
+  standard tier resolves it out (`paqeteleng`).
+- **5 publish a parenthesised optional token as two complete sentences.** Where
+  the source prints `kemljang (aken) tu ...`, the corpus publishes both complete
+  readings as separate `S` elements rather than leaving a parenthesis in a
+  sentence, with the omitted-token variant recorded in
+  `alternate_standard_form`.
+
+The table is preferred over `manual_edits.xml` because each row carries the
+source form, what the blanket pipeline produced (`legacy_blanket_form`), the
+corrected form, the decision, and the evidence for it — so a reader can audit
+the change against the source, and the build re-derives it every time rather
+than replaying a recorded diff. `normalize_sentence_standards.py` re-checks each
+row's original FORM against the source before touching anything and fails on
+drift, and the build asserts the pass is idempotent.
+
+### Hyphens are not part of the standard orthography
+
+Ferrell's §1.6 gives three interlinear levels, and the plain-text first line —
+the one that becomes the `S` FORM — legitimately contains hyphens where the
+second line carries the morpheme analysis. The **original** tier keeps every one
+of those hyphens: 153 sentences contain them, and `G010` reports exactly those.
+
+The **standard** tier carries none. A hyphen is a segmentation marker rather
+than a letter of the standard orthography, so the blanket pipeline strips it and
+the decision table does not put it back. `V133` (`dash_in_S_standard_FORM`)
+therefore does not fire at all, and `normalize_sentence_standards.py` rejects any
+decision row that would reintroduce a hyphen.
 
 The port review also removed one row from the shared Ferrell conversion table:
 `Ḍ → dr`, which mapped the uppercase retroflex to a lowercase output. The row

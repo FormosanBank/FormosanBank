@@ -168,7 +168,7 @@ FIRST_NORMALIZE=$(
     "$PYTHON_BIN" "$CODE_ROOT/normalize_sentence_standards.py" \
         --corpora-path "$BUILD_ROOT/XML"
 )
-EXPECTED_FIRST_NORMALIZE=$'exact_decisions=166\ncorrected_forms=161\ncorrected_phon=0\nnormalized_complete_variants=0'
+EXPECTED_FIRST_NORMALIZE=$'exact_decisions=16\ncorrected_forms=11\ncorrected_phon=0\nnormalized_complete_variants=0'
 if [[ "$FIRST_NORMALIZE" != "$EXPECTED_FIRST_NORMALIZE" ]]; then
     echo "unexpected first normalization result" >&2
     echo "$FIRST_NORMALIZE" >&2
@@ -178,7 +178,7 @@ SECOND_NORMALIZE=$(
     "$PYTHON_BIN" "$CODE_ROOT/normalize_sentence_standards.py" \
         --corpora-path "$BUILD_ROOT/XML"
 )
-EXPECTED_SECOND_NORMALIZE=$'exact_decisions=166\ncorrected_forms=0\ncorrected_phon=0\nnormalized_complete_variants=0'
+EXPECTED_SECOND_NORMALIZE=$'exact_decisions=16\ncorrected_forms=0\ncorrected_phon=0\nnormalized_complete_variants=0'
 if [[ "$SECOND_NORMALIZE" != "$EXPECTED_SECOND_NORMALIZE" ]]; then
     echo "normalization is not idempotent" >&2
     echo "$SECOND_NORMALIZE" >&2
