@@ -15,7 +15,7 @@ from lxml import etree
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
-from QC.utilities._accents import strip_accents  # noqa: E402
+from QC.utilities._accents import accented_letters, strip_accents  # noqa: E402
 from QC.utilities._case_variants import (  # noqa: E402
     derive_case_variants,
     load_profile_graphemes,
@@ -212,7 +212,45 @@ def get_exploration_targets(corpora_path, corpus=None):
         return [corpora_path]
     return [os.path.join(corpora_path, x) for x in os.listdir(corpora_path)]
 
-def apply_standard(s_element, standard):
+_ATTESTED_ACCENTS_CACHE: dict = {}
+
+
+def _attested_accents(lang_code, dialect):
+    """Accented letters this language (or dialect) attests, as a keep set.
+
+    Read from QC/validation/reference/<Language>/[<dialect>|default]/
+    unique_characters.txt — the same inventories validate_orthography.py scores
+    against. An accent survives stripping iff the language's own reference
+    orthography contains a letter carrying it, so e.g. Puyuma's 'ē' is kept
+    while a macron on a Mandarin loanword quoted in Paiwan is not.
+
+    Returns an empty set for a language with no reference orthography; letters
+    that matter in that case live in _accents.ALWAYS_KEEP.
+    """
+    key = (lang_code, dialect)
+    if key in _ATTESTED_ACCENTS_CACHE:
+        return _ATTESTED_ACCENTS_CACHE[key]
+    language = _ISO_TO_LANG_NAME.get((lang_code or "").strip())
+    letters = set()
+    if language:
+        base = _REPO_ROOT / "QC" / "validation" / "reference" / language
+        subdirs = []
+        if dialect and (base / dialect).is_dir():
+            subdirs.append(base / dialect)
+            if (base / "default").is_dir():
+                subdirs.append(base / "default")
+        elif base.is_dir():
+            subdirs = [d for d in sorted(base.iterdir()) if d.is_dir()]
+        for subdir in subdirs:
+            inventory = subdir / "unique_characters.txt"
+            if inventory.is_file():
+                letters.update(inventory.read_text(encoding="utf-8").split())
+    keep = accented_letters(letters)
+    _ATTESTED_ACCENTS_CACHE[key] = keep
+    return keep
+
+
+def apply_standard(s_element, standard, keep=frozenset()):
     form = s_element.find("FORM[@kindOf='standard']")
     if form.text:
         # Protect explicitly mapped diacritic-bearing letters before the
@@ -231,7 +269,7 @@ def apply_standard(s_element, standard):
 
         # The original tier is never touched here. Unprotected diacritics are
         # treated as source stress/prosody and removed from the standard tier.
-        form.text = strip_accents(form.text)
+        form.text = strip_accents(form.text, keep=keep)
         for original, replacement in remaining:
             form.text = form.text.replace(original, replacement)
         for marker, replacement in protected:
@@ -366,6 +404,10 @@ def main(args):
                         or root.get("xml:lang")
                         or root.get("lang")
                     )
+                    # Accented letters this language's reference orthography
+                    # attests are real letters, not source prosody, so they
+                    # survive the standard-tier accent cleanup.
+                    keep_accents = _attested_accents(lang_code, root.get("dialect"))
 
                     if args.copy:
                         # In copy mode, just copy original to standard.
@@ -384,7 +426,7 @@ def main(args):
                             create_standard(element, file_path=file)
                             if element.tag == "S":
                                 remove_null_units(element)
-                            apply_standard(element, [])
+                            apply_standard(element, [], keep=keep_accents)
                             _apply_standard_hyphens(
                                 element, lang_code, args.ortho_path,
                                 args.hard_remove_segmentation, warnings, file)
@@ -467,7 +509,7 @@ def main(args):
                             create_standard(element, file_path=file)
                             if element.tag == "S":
                                 remove_null_units(element)
-                            apply_standard(element, standard)
+                            apply_standard(element, standard, keep=keep_accents)
                             _apply_standard_hyphens(
                                 element, lang_code, args.ortho_path,
                                 args.hard_remove_segmentation, warnings, file)
