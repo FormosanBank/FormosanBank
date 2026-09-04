@@ -55,7 +55,6 @@ fi
 "$VALIDATOR_PYTHON" \
     "$VALIDATOR_ROOT/QC/utilities/standardize.py" \
     --corpora_path "$CORPUS_ROOT/XML" --remove_accents
-"$VALIDATOR_PYTHON" "$ROOT/scripts/apply_standard_surface.py"
 "$VALIDATOR_PYTHON" \
     "$VALIDATOR_ROOT/QC/utilities/add_phonology.py" \
     --corpora_path "$CORPUS_ROOT/XML" --orthography Ortho113

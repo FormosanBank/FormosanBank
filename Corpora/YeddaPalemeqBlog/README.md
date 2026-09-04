@@ -102,6 +102,15 @@ One consequence to know about: `standardize.py` applies its C012 hyphen step
 only to sentences that still have an M tier, so a sentence stripped here keeps
 any segmentation hyphen in its standard FORM.
 
+**One sentence's two tiers differ by design.** `S652653654_2` is the only
+sentence whose source text carries segmentation hyphens in running sentence
+text (`seman-neka-aravac`). Per POL-014/015 those markers belong on the W and M
+tiers, so `standardize.py`'s C012 step removes them from the standard tier by
+rule; the original keeps the source surface. The reason is recorded as a
+`notes` attribute on that sentence's **original** FORM. Nothing in this build
+edits a standard FORM after `standardize.py` runs — the standard tier is
+machine-owned (POL-002).
+
 **The standard tier drops source acute accents.** The build runs
 `standardize.py --remove_accents`, so the standard tier is the original minus
 the accents FormosanBank treats as prosodic. In practice this touches only the

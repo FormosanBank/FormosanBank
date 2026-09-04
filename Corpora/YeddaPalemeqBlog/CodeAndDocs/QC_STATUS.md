@@ -61,9 +61,13 @@ exactly two words, both quoted Mandarin kin terms in `S303_1`: `yípó` ->
 The residual macron in `āyi` is `ACCENTS_TO_STRIP` behaviour, not a Yedda
 decision, and is worth a ruling: pinyin tone marks are lexical rather than
 prosodic, so flattening a quoted non-Formosan word may not be wanted at all.
-C012 now also produces the `S652653654_2` standard surface that
-`apply_standard_surface.py` used to write, so that script now only asserts the
-surface and records the note.
+C012 now also produces the `S652653654_2` standard surface, which the retired
+`apply_standard_surface.py` used to write by hand after standardize. That step
+is gone: nothing in the build touches a standard FORM after `standardize.py`
+runs (POL-002). The reason the two tiers differ is recorded as a `notes`
+attribute on the sentence's *original* FORM, written by `build_xml.py` before
+any derived tier exists, and the pipeline test asserts both that the note is
+there and that no standard FORM carries one.
 
 ## Live-source reconciliation
 

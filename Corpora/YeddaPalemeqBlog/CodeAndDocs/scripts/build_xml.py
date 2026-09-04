@@ -101,6 +101,21 @@ VARIANTS = {
 }
 
 
+# The one sentence whose source text carries segmentation hyphens in running
+# sentence text. POL-014/015 put those markers on the W/M tiers, so the standard
+# tier drops them -- which standardize.py's C012 step does by rule. Nothing here
+# edits the standard tier; this only annotates the original so a reader knows
+# why the two tiers differ. Asserted, not searched: if the source surface ever
+# changes, the build fails rather than annotating the wrong sentence.
+SOURCE_SEGMENTATION_NOTE = (
+    "S652653654_2",
+    "pai, maya manu seman-neka-aravac tua zuma.",
+    "Source prints the segmentation seman-neka-aravac. Per POL-014/015 the "
+    "markers belong on the W and M tiers, so the standard tier drops them; the "
+    "original keeps the source surface.",
+)
+
+
 SOURCE_TRANSLATION_REPAIRS = {
     "S664665_1": (
         "restored_omitted_source_translation",
@@ -725,6 +740,22 @@ def write_audits(
     )
 
 
+def annotate_source_segmentation(root: ET.Element) -> None:
+    """Record why S652653654_2's two FORM tiers differ, on the original tier.
+
+    The standard tier is machine-owned (POL-002) and is not touched here or
+    anywhere downstream of standardize.py; C012 removes the hyphens from it.
+    """
+    sentence_id, expected, note = SOURCE_SEGMENTATION_NOTE
+    sentence = find_sentence(root, sentence_id)
+    original = original_form(sentence)
+    if original.text != expected:
+        raise SystemExit(
+            f"Unexpected {sentence_id} source surface: {original.text!r}"
+        )
+    original.set("notes", note)
+
+
 def main() -> None:
     actual_hash = sha256(SOURCE)
     if actual_hash != EXPECTED_SOURCE_SHA256:
@@ -740,6 +771,7 @@ def main() -> None:
 
     strip_derived_tiers(root)
     split_alternatives(root)
+    annotate_source_segmentation(root)
     issue_rows = repair_issue_rows(root)
     translation_rows = restore_source_translations(root)
     word_translation_rows = restore_source_word_translations(root)

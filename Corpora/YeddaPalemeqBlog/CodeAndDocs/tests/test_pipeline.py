@@ -78,15 +78,21 @@ class YeddaPipelineTests(unittest.TestCase):
             self.assertIsNone(sentence.find("AUDIO"))
 
     def test_standard_segmentation_decision(self) -> None:
+        """C012 drops the source segmentation from the standard tier.
+
+        Nothing in the build edits the standard tier after standardize.py runs
+        (POL-002). The reason the two tiers differ is recorded on the *original*
+        FORM, which is source-owned and safe to annotate.
+        """
         sentence = self.sentence("S652653654_2")
-        self.assertEqual(
-            sentence.find("FORM[@kindOf='original']").text,
-            "pai, maya manu seman-neka-aravac tua zuma.",
-        )
+        original = sentence.find("FORM[@kindOf='original']")
+        self.assertEqual(original.text, "pai, maya manu seman-neka-aravac tua zuma.")
         self.assertEqual(
             sentence.find("FORM[@kindOf='standard']").text,
             "pai, maya manu semannekaaravac tua zuma.",
         )
+        self.assertIn("POL-014/015", original.get("notes", ""))
+        self.assertIsNone(sentence.find("FORM[@kindOf='standard']").get("notes"))
 
     def test_issue_rows_are_repaired(self) -> None:
         expected = {
