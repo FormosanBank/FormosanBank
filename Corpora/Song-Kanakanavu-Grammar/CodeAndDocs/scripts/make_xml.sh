@@ -47,8 +47,8 @@ fi
 # 4. Write both XML files (asserts source hashes, ledger counts, sentence IDs).
 "$PYTHON" "$ROOT/scripts/build_xml.py"
 
-# 5. Re-apply any recorded hand edits before cleaning. This corpus currently
-#    has no manual_edits.xml, so the command is a checked no-op.
+# 5. Re-apply recorded hand edits before cleaning, so every derived tier is
+#    built from the repaired original. One record: the p.69 takananga slip.
 "$PYTHON" "$FORMOSANBANK_PATH/QC/cleaning/apply_manual_edits.py" \
   --corpora_path "$XML_PATH"
 

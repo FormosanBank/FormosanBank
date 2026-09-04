@@ -135,9 +135,11 @@ log is `docs/extraction_review.md`.
      are excluded — no free-standing surface exists. There is **no `alternate`
      tier**, and every (form, translation) pair is unique.
 
-5. **Re-apply manual edits** - `apply_manual_edits.py` (FormosanBank) re-applies
-   any recorded hand edits first. This is a checked no-op because the corpus has
-   no `CodeAndDocs/manual_edits.xml`.
+5. **Re-apply manual edits** — `apply_manual_edits.py` (FormosanBank) re-applies
+   the recorded hand edits in `CodeAndDocs/manual_edits.xml` before any cleaning
+   or derivation, so every downstream tier is built from the repaired original.
+   One record: the p.69 `takananga` typesetting slip (see Notes). The script
+   warns loudly if a record has become a no-op.
 
 6. **Clean** — `clean_xml.py` (FormosanBank) does canonical Unicode / HTML-entity
    / punctuation normalization.
@@ -176,13 +178,19 @@ log is `docs/extraction_review.md`.
   (trailing `-`) are excluded; cross-record duplicate variants are dropped.
   Nothing is deleted by a blanket rule — every exclusion is a recorded decision
   (`dictionary_ledger.csv` exclusions and `standard_surface_decisions.tsv`).
-- **`takananga` (p.69):** the printed analysis line's OCR reads `takanaga` (a bare
-  `g`, which is not an Ortho113 letter) where the sentence surface has
-  `takananga`. The printed `takanaga` is kept in the original `W`/`M` tier and
-  corrected to `takananga` only in the standard tier. The reading is not in
-  doubt: `takananga` occurs 22× across the corpus — including the S-level FORM of
-  this very sentence (`rorovana ia, upeni takananga kasu kumakʉnʉ?`) — while
-  `takanaga` occurs exactly twice, both in this one word's analysis line.
+- **`takananga` (p.69) — a typesetting slip in the book, repaired in the
+  original tier.** Reader p.69 example 4-9 prints `takananga` in its sentence
+  line and `takanaga` one line below in its own aligned analysis. Confirmed
+  against the page image, so this is what the book prints, not a scraping
+  artifact. The reading is not in doubt: `takananga` occurs 22× across the
+  corpus — including in that same example's sentence line — while `takanaga`
+  occurs exactly twice, both inside that one analysis. The bare `g` is also not
+  an Ortho113 letter, so before the repair it had no phonological mapping and
+  surfaced as `*` in the original PHON. The repair is a recorded manual edit
+  (`CodeAndDocs/manual_edits.xml`, applied by the shared
+  `apply_manual_edits.py` at build step 5) to the **original** tier; the
+  standard tier and both PHON tiers regenerate from it. The extraction ledgers
+  still record exactly what the page prints.
 
 ### Recorded per-record corrections
 
@@ -205,15 +213,37 @@ step 3 — before any standard tier exists):
 e-reader's text layer merged; it is likewise keyed by record id with the page
 cited in place.
 
-**Applied to the `standard` tier only** (`normalize_standard_forms.py`, step 8 —
-each because the original tier must keep the source's own spelling under
-POL-001, while the standard tier must be Ortho113):
+**Applied to the `original` tier as a recorded manual edit**
+(`CodeAndDocs/manual_edits.xml`, step 5) — the shared mechanism for repairing
+an error in the original, from which every derived tier regenerates:
+
+| Record | Reader page | Printed | Recorded |
+| --- | --- | --- | --- |
+| `S0012` W4 + its host M | 69 | `takanaga=kasu` / `takanaga` | `takananga=kasu` / `takananga` |
+
+**Applied to the `standard` tier only** (`normalize_standard_forms.py`, step 8).
+Just one, and only because the original must stay faithful to the printed page
+(POL-001) while the standard tier carries running words:
 
 | Record | Reader page | `original` keeps | `standard` gets |
 | --- | --- | --- | --- |
-| `S0012` W4 + its M | 69 | `takanaga=kasu` / `takanaga` | `takananga=kasu` / `takananga` |
-| `S0477` | 190 | the lyric-division hyphens as printed | `mati'ara'aravang 'aa 'aravang vatu 'aravang vatu! tisa'ʉ ku 'apasʉ.` — word boundaries independently attested, not inferred by deleting hyphens |
-| `S0469`, `S0472` | — | the source's double-hyphen break punctuation | the same text with a single dash (a `notes` attribute records the decision; the text itself is unchanged) |
+| `S0477` | 190 | the lyric-division hyphens exactly as printed | `mati'ara'aravang 'aa 'aravang vatu 'aravang vatu! tisa'ʉ ku 'apasʉ.` |
+
+Reader p.190's punctuation table (Appendix 1, row 10, 連結號) defines that
+hyphen as a *song* mark — it breaks lyrics to fit the musical score, not
+morphemes. Deleting the hyphens is not enough to recover words: the printed
+`ti-sa-'ʉku-'a-pa-sʉ` would collapse to a single `tisa'ʉku'apasʉ`, where the
+attested reading is three words. The boundaries come from an independent
+attestation of the same song, pinned by commit and SHA-256 in
+`docs/standard_surface_review.md`.
+
+The other two grammar decisions (`S0469`, `S0472`) change no text at all. Row 8
+of the same p.190 table defines `--` as the halfwidth spelling of 破折號, the
+em dash whose fullwidth Chinese equivalent is `―`; `build_xml.py` renders it as
+a single `-` in the **original** tier, so the standard tier inherits it
+unchanged and the decision rows only attach a `notes` string. (This is why
+`validate_text` reports two V133 `-`-in-standard findings: the mark is
+punctuation, but it is spelled like a segmentation hyphen.)
 
 The dictionary's 125 remaining decisions in `standard_surface_decisions.tsv`
 change nothing at this step: `build_xml.py` has already emitted one clean

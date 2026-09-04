@@ -419,7 +419,16 @@ def test_analytic_translation_parentheticals_are_preserved_as_notes() -> None:
         assert translation.get("notes") == source_translation
 
 
-def test_page_69_preserves_printed_sentence_analysis_distinction() -> None:
+def test_page_69_analysis_typo_is_repaired_in_the_original_tier() -> None:
+    """Reader p.69 prints 'takananga' in the sentence line of example 4-9 and
+    'takanaga' in its own aligned analysis line — a typesetting slip, since the
+    corpus attests 'takananga' 22x and 'takanaga' only in that one analysis.
+
+    The extraction ledger still records exactly what the page prints; the
+    repair is a recorded manual edit (CodeAndDocs/manual_edits.xml) applied to
+    the ORIGINAL tier, from which the standard tier and PHON regenerate. Before
+    the repair, the bare 'g' had no Ortho113 mapping and surfaced as '*' in the
+    original PHON."""
     analyses = analyses_by_id()
     assert analyses["song-2018-kanakanavu-S0012"]["words"][3]["form"] == (
         "takanaga=kasu"
@@ -442,11 +451,12 @@ def test_page_69_preserves_printed_sentence_analysis_distinction() -> None:
     ).getroot()
     word = root.find(".//W[@id='song-2018-kanakanavu-S0012-W004']")
     assert word is not None
-    assert word.findtext("./FORM[@kindOf='original']") == "takanaga=kasu"
+    assert word.findtext("./FORM[@kindOf='original']") == "takananga=kasu"
     assert word.findtext("./FORM[@kindOf='standard']") == "takananga=kasu"
+    assert word.findtext("./PHON[@kindOf='original']") == "takanaŋakasu"
     morpheme = word.find("./M[@id='song-2018-kanakanavu-S0012-W004-M01']")
     assert morpheme is not None
-    assert morpheme.findtext("./FORM[@kindOf='original']") == "takanaga"
+    assert morpheme.findtext("./FORM[@kindOf='original']") == "takananga"
     assert morpheme.findtext("./FORM[@kindOf='standard']") == "takananga"
     clitic = word.find("./M[@id='song-2018-kanakanavu-S0012-W004-M02']")
     assert clitic is not None
