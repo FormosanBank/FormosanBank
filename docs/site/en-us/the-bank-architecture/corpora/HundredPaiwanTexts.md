@@ -68,6 +68,33 @@ hard findings: `review_qc_findings.py` pins all three to this exact word and
 morpheme and fails if a fourth appears, if one moves, or if any other morpheme
 in the corpus loses its gloss.
 
+#### What the rebuild needs besides the source
+
+Two things cannot be derived from the Word document, so the rebuild reconciles
+against the corpus as it was last published:
+
+* **Morpheme ids** — 36,815 come straight from the published corpus, and 123
+  more are derived from them by suffixing when one published `M` splits into
+  several source units (`M0` → `M0a`, `M0b`, `M0c`). Published ids must stay
+  stable, so they cannot simply be renumbered. Sentence and word ids *are*
+  computed from the source and only checked against the published set.
+* **Four `TEXT` attributes** — `id`, `citation`, `BibTeX_citation` and
+  `dialect`.
+
+That skeleton is committed as data —
+[`baseline_text_metadata.tsv`](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/HundredPaiwanStories/CodeAndDocs/data/baseline_text_metadata.tsv)
+and
+[`baseline_morphemes.tsv`](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/HundredPaiwanStories/CodeAndDocs/data/baseline_morphemes.tsv)
+— rather than read from a git commit, so the corpus rebuilds from a checkout of
+those files alone, with no dependency on history remaining reachable.
+`export_baseline.py` regenerates them from an XML tree so they stay auditable
+against the corpus they came from.
+
+The build otherwise pins nothing: shared tooling runs from the live checkout,
+on the bank's model that tooling improves and corpora are regenerated against
+it, so a rebuild picks up later improvements and any resulting XML diff should
+be reviewed rather than suppressed.
+
 #### How sentence-level corrections are recorded
 
 A handful of sentences need a correction the blanket pipeline cannot make on its
