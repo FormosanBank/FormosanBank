@@ -9,7 +9,7 @@
   "validator_findings": {
     "V061": 1302,
     "V064": 1,
-    "V122": 8050,
+    "V122": 8028,
     "G001": 1,
     "G002": 1,
     "G003": 1370,
@@ -18,13 +18,12 @@
   "review": {
     "G003": "all 1,370 are canonical infix-root gap forms",
     "V061": "all 1,302 are reduplicated W forms using the canonical tilde marker",
-    "V122": "all 8,050 exactly cover preserved source FORM and TRANSL notation",
+    "V122": "all 8,028 exactly cover preserved source TRANSL and W/M FORM notation",
     "G010": "all 153 are source hyphens kept in the original tier; the standard tier carries none",
     "V064": "the single unglossed M is 078S4W19M0c, the -i the source leaves without a gloss",
     "G002": "078S4W19 has 4 Ms and 3 source gloss units for the same reason",
     "V122_by_tier": {
       "M.TRANSL.original": 3790,
-      "S.FORM.original": 22,
       "S.TRANSL.unspecified": 448,
       "W.TRANSL.original": 3790
     }

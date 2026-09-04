@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 EXPECTED_COUNTS = {
     "V061": 1302,
     "V064": 1,
-    "V122": 8050,
+    "V122": 8028,
     "G001": 1,
     "G002": 1,
     "G003": 1370,
@@ -34,9 +34,11 @@ ACCEPTED_GAP_WORD = "S=078S4 W=078S4W19"
 ACCEPTED_GAP_MORPHEME = "M=078S4W19M0c"
 HARD_RULES = {"G001"}
 WARN_RULES = {"G010"}
+# No S.FORM.original entry: the source's only parenthesised material in a
+# sentence FORM was the "(?)" annotation, now moved to a notes attribute by
+# scripts/apply_manual_corrections.py before standardize.py runs.
 EXPECTED_V122_TIERS = {
     "M.TRANSL.original": 3790,
-    "S.FORM.original": 22,
     "S.TRANSL.unspecified": 448,
     "W.TRANSL.original": 3790,
 }
@@ -366,7 +368,7 @@ def review(
         "review": {
             "G003": "all 1,370 are canonical infix-root gap forms",
             "V061": "all 1,302 are reduplicated W forms using the canonical tilde marker",
-            "V122": "all 8,050 exactly cover preserved source FORM and TRANSL notation",
+            "V122": "all 8,028 exactly cover preserved source TRANSL and W/M FORM notation",
             "G010": "all 153 are source hyphens kept in the original tier; the standard tier carries none",
             "V064": "the single unglossed M is 078S4W19M0c, the -i the source leaves without a gloss",
             "G002": "078S4W19 has 4 Ms and 3 source gloss units for the same reason",
@@ -416,7 +418,7 @@ Authority: FormosanBank `{summary["authority_commit"]}`.
 - V061: {review_notes["V061"]}. The validator does not split `~` when estimating the M count.
 - G003: {review_notes["G003"]}. The internal hyphen records the root gap occupied by one or more infixes.
 - G010: {review_notes["G010"]}. V133 does not fire: no standard FORM contains a hyphen.
-- V122: {review_notes["V122"]}. Parentheses are balanced after the recorded 057S3 punctuation repair. The occurrences comprise {tiers["S.FORM.original"]:,} in source S forms, {tiers["S.TRANSL.unspecified"]:,} in source free translations, {tiers["W.TRANSL.original"]:,} in source W glosses, and {tiers["M.TRANSL.original"]:,} in source M glosses.
+- V122: {review_notes["V122"]}. No sentence FORM carries a parenthesis: the source’s "(?)" annotation is recorded in a notes attribute instead. Parentheses are balanced after the recorded 057S3 punctuation repair. The occurrences comprise {tiers["S.TRANSL.unspecified"]:,} in source free translations, {tiers["W.TRANSL.original"]:,} in source W glosses, and {tiers["M.TRANSL.original"]:,} in source M glosses.
 
 No remaining finding blocks publication. The corpus is ready to port under the recorded rights conditions: {summary["rights_conditions"]}
 """

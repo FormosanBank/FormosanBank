@@ -169,6 +169,21 @@ if [[ "$MANUAL_EDITS" != *"apply: 1 edit(s) across 1 file(s); 0 no-op(s)"* ]]; t
     exit 1
 fi
 
+# Reviewed source-annotation corrections, also BEFORE standardize.py: the
+# source's "(?)" uncertain-reading mark is removed from the original FORM
+# and recorded in its notes attribute, so the standard tier is derived
+# rather than repaired afterwards (standardize would read "?" as a glottal).
+CORRECTIONS=$(
+    "$PYTHON_BIN" "$CODE_ROOT/scripts/apply_manual_corrections.py" \
+        --corpora-path "$BUILD_ROOT/XML"
+)
+echo "$CORRECTIONS"
+EXPECTED_CORRECTIONS=$'reviewed_corrections=11\ncorrected_originals=11'
+if [[ "$CORRECTIONS" != "$EXPECTED_CORRECTIONS" ]]; then
+    echo "unexpected source-annotation correction result" >&2
+    exit 1
+fi
+
 (
     cd "$BUILD_ROOT"
     "$PYTHON_BIN" "$PINNED_ROOT/QC/utilities/standardize.py" \
@@ -185,7 +200,7 @@ FIRST_NORMALIZE=$(
     "$PYTHON_BIN" "$CODE_ROOT/normalize_sentence_standards.py" \
         --corpora-path "$BUILD_ROOT/XML"
 )
-EXPECTED_FIRST_NORMALIZE=$'exact_decisions=16\ncorrected_forms=11\ncorrected_phon=0\nnormalized_complete_variants=0'
+EXPECTED_FIRST_NORMALIZE=$'exact_decisions=16\ncorrected_forms=0\ncorrected_phon=0\nnormalized_complete_variants=0'
 if [[ "$FIRST_NORMALIZE" != "$EXPECTED_FIRST_NORMALIZE" ]]; then
     echo "unexpected first normalization result" >&2
     echo "$FIRST_NORMALIZE" >&2

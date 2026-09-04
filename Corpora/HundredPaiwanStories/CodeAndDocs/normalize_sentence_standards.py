@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import re
 import xml.etree.ElementTree as ET
 from collections import defaultdict
 from pathlib import Path
@@ -120,6 +121,16 @@ def load_decisions(path: Path = DEFAULT_DECISIONS) -> list[dict[str, str]]:
     return rows
 
 
+# The source's "(?)" uncertain-reading mark. scripts/apply_manual_corrections.py
+# removes it from the original FORM before standardize.py runs; this module has
+# to recognise both spellings when it checks a sentence against the review.
+SOURCE_ANNOTATION = re.compile(r"\(\?\)")
+
+
+def strip_source_annotation(text: str) -> str:
+    return SOURCE_ANNOTATION.sub("", text)
+
+
 def _one_direct(sentence: ET.Element, tag: str, kind: str) -> ET.Element:
     elements = sentence.findall(f"{tag}[@kindOf='{kind}']")
     if len(elements) != 1 or elements[0].text is None:
@@ -171,7 +182,11 @@ def apply_decision(
     if optional is not None:
         expected_original, _omitted_original = optional_original_forms(row, optional)
     cleaned_original = current_punctuation(expected_original)
-    if original.text not in {expected_original, cleaned_original}:
+    allowed_originals = {expected_original, cleaned_original}
+    # The reviewed source form may still carry the "(?)" annotation that
+    # apply_manual_corrections.py has since removed from the XML.
+    allowed_originals |= {strip_source_annotation(v) for v in set(allowed_originals)}
+    if original.text not in allowed_originals:
         raise ValueError(f"{sentence_id}: original FORM differs from reviewed source")
     punctuation_cleaned = (
         cleaned_original != expected_original and original.text == cleaned_original

@@ -14,7 +14,7 @@ Authority: FormosanBank `3a3c47c220520113f747e6a2d441494000e13c4b`.
 ## Validator results
 
 - XML: 0 hard findings, 0 soft findings
-- Text: 0 hard findings, 8,050 V122 soft findings
+- Text: 0 hard findings, 8,028 V122 soft findings
 - Gloss: 0 hard findings, 1,302 V061 soft findings, 1 V064 soft finding
 - Gloss scrape: 1 accepted hard finding, 1,370 G003 soft findings, 153 G010 warnings
 
@@ -23,6 +23,6 @@ Authority: FormosanBank `3a3c47c220520113f747e6a2d441494000e13c4b`.
 - V061: all 1,302 are reduplicated W forms using the canonical tilde marker. The validator does not split `~` when estimating the M count.
 - G003: all 1,370 are canonical infix-root gap forms. The internal hyphen records the root gap occupied by one or more infixes.
 - G010: all 153 are source hyphens kept in the original tier; the standard tier carries none. V133 does not fire: no standard FORM contains a hyphen.
-- V122: all 8,050 exactly cover preserved source FORM and TRANSL notation. Parentheses are balanced after the recorded 057S3 punctuation repair. The occurrences comprise 22 in source S forms, 448 in source free translations, 3,790 in source W glosses, and 3,790 in source M glosses.
+- V122: all 8,028 exactly cover preserved source TRANSL and W/M FORM notation. No sentence FORM carries a parenthesis: the source’s "(?)" annotation is recorded in a notes attribute instead. Parentheses are balanced after the recorded 057S3 punctuation repair. The occurrences comprise 448 in source free translations, 3,790 in source W glosses, and 3,790 in source M glosses.
 
 No remaining finding blocks publication. The corpus is ready to port under the recorded rights conditions: CC BY-NC. Attributed non-commercial use and redistribution are allowed; commercial use requires prior written permission.

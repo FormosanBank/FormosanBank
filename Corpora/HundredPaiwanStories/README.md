@@ -67,29 +67,46 @@ The reviewed decisions, source files, source checksums, authority pins, generato
 ### How sentence-level corrections are recorded
 
 A handful of sentences need a correction that the blanket pipeline cannot make
-on its own. They are **not** recorded with `QC/utilities/capture_manual_edits.py`
-and `manual_edits.xml`. Instead they live in a reviewed decision table,
-[`CodeAndDocs/standard_surface_decisions.tsv`](CodeAndDocs/standard_surface_decisions.tsv),
-which `CodeAndDocs/normalize_sentence_standards.py` applies at the end of the
-build. Every row is listed there in full, so you can check each decision
-yourself; the table has 16 rows, all of them about parenthesised material:
+on its own. This corpus uses **both** recording mechanisms, for the two
+different kinds of correction — and **neither edits a generated tier**. Both act
+on the original FORM before `standardize.py` and `add_phonology.py` run, so the
+standard and phonology tiers are always derived, never repaired afterwards.
 
-- **11 remove parenthesised uncertainty.** Where the source prints a bracketed
-  query on a form — `paqeteleng(?)` — the original tier keeps it and the
-  standard tier resolves it out (`paqeteleng`).
+**A systematic, source-derived rule** goes in a reviewed decision table,
+[`CodeAndDocs/standard_surface_decisions.tsv`](CodeAndDocs/standard_surface_decisions.tsv).
+Every row is listed there in full, so you can check each decision yourself; the
+table has 16 rows, all of them about parenthesised material:
+
+- **11 record a source reading marked uncertain.** Where the source appends a
+  bracketed query to a word on its plain-text line — `paqeteleng(?)` — that is
+  an editorial annotation *about* the text, not part of it.
+  `CodeAndDocs/scripts/apply_manual_corrections.py` removes it from the
+  sentence's original FORM before `standardize.py` runs and records what it
+  removed in that FORM's `notes` attribute.
+
+  This matters beyond tidiness: `?` is the **glottal letter** in Ferrell's
+  orthography, so a `(?)` left in the original standardizes to a glottal stop
+  the language does not have. The corpus previously repaired the standard
+  *FORM* after the fact but not the standard *PHON*, which still carried the
+  invented consonant (`qəpuqəpuiʔ`). Correcting the original fixes both tiers
+  at once.
 - **5 publish a parenthesised optional token as two complete sentences.** Where
   the source prints `kemljang (aken) tu ...`, the corpus publishes both complete
   readings as separate `S` elements rather than leaving a parenthesis in a
   sentence, with the omitted-token variant recorded in
-  `alternate_standard_form`.
+  `alternate_standard_form`. These are resolved when the XML is generated.
 
-The table is preferred over `manual_edits.xml` because each row carries the
-source form, what the blanket pipeline produced (`legacy_blanket_form`), the
-corrected form, the decision, and the evidence for it — so a reader can audit
-the change against the source, and the build re-derives it every time rather
-than replaying a recorded diff. `normalize_sentence_standards.py` re-checks each
-row's original FORM against the source before touching anything and fails on
-drift, and the build asserts the pass is idempotent.
+Each row carries the source form, what the blanket pipeline produced
+(`legacy_blanket_form`), the corrected form, the decision, and the evidence for
+it — so a reader can audit the change against the source, and the build
+re-derives it every time rather than replaying a recorded diff. Every
+correction is witness-gated: the sentence's original FORM must still match the
+reviewed source or the build fails rather than correcting drifted text, and the
+pass is idempotent. `normalize_sentence_standards.py` now changes nothing — it
+runs after `standardize.py` purely to verify that all 16 decisions hold.
+
+**A genuine one-off editorial judgement** goes in `manual_edits.xml` — see
+"Recorded hand edits" below.
 
 ### Hyphens are not part of the standard orthography
 

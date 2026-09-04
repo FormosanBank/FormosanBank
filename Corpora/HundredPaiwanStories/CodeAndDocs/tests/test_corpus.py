@@ -13,6 +13,7 @@ from pathlib import Path
 
 from normalize_sentence_standards import (
     DEFAULT_DECISIONS,
+    strip_source_annotation,
     apply_decision,
     current_punctuation,
     load_decisions,
@@ -95,10 +96,17 @@ class CorpusTests(unittest.TestCase):
             if optional is not None:
                 expected_original, _omitted = optional_original_forms(row, optional)
             actual_original = direct(sentence, "FORM", "original")
-            self.assertIn(
-                actual_original,
-                {expected_original, current_punctuation(expected_original)},
-            )
+            allowed_originals = {
+                expected_original,
+                current_punctuation(expected_original),
+            }
+            # apply_manual_corrections.py has since removed the source's "(?)"
+            # annotation from the original FORM (recording it in notes), so the
+            # reviewed source form may still carry it.
+            allowed_originals |= {
+                strip_source_annotation(value) for value in set(allowed_originals)
+            }
+            self.assertIn(actual_original, allowed_originals)
             corrected_standard = row["corrected_standard_form"]
             if current_punctuation(
                 expected_original
