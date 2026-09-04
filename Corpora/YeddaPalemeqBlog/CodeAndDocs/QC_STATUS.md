@@ -1,7 +1,7 @@
 # Current QC status
 
-- Run date: 2026-09-03
-- FormosanBank authority: `3a3c47c220520113f747e6a2d441494000e13c4b`
+- Run date: 2026-09-04
+- FormosanBank authority: `e00edf3d83ecfdce37392a73b3d2796446f44195`
 - Verdict: `ready to port` as an update to `YeddaPalemeqBlog`
 - Publication boundary: the public update remains subject to review and merge
 
@@ -19,19 +19,27 @@
 
 ## Current gates
 
-- Structural and update-mode XML: 0 findings
+- Structural and update-mode XML: 0 HARD; 1 source-backed SOFT finding
 - Text: 0 HARD; 2,410 source-backed SOFT findings
-- Gloss: 0 HARD; 7,515 source-limitation SOFT findings
+- Gloss: 0 HARD; 7,499 source-limitation SOFT findings
 - Duplicate sentences: two source-authentic groups in each tier
 - Issue #1: 9/9 source-backed dispositions; 0 unresolved
-- Exact adjudication: 9,933 accepted finding occurrences; 0 unresolved
+- Exact adjudication: 9,918 accepted finding occurrences; 0 unresolved
 - Published port readiness: 0 HARD, 0 WARN
 - Regression tests: 11 passed
 
+The structural SOFT finding is one file-level V148: 16 of the 671 sentences
+carry no W tier, because the blog gives them as bare phrase entries with no
+word breakdown (`S268_1`, `S269_1`, `S378_1`-`S381_1`, `S393_1`, `S533_1`,
+`S545_1`-`S545_8`). They are source-backed, unchanged from the predecessor, and
+there is nothing to segment.
+
 The text SOFT inventory is 21 V116 code-switching or source diacritics and
 2,389 V122 source punctuation or analytic notes. The gloss SOFT inventory is
-18 V060 word-count signals, 274 V062 prose-infix-gloss signals, 6,492 V064
-missing morpheme translations, and 731 V065 missing word translations. The
+2 V060 word-count signals, 274 V062 prose-infix-gloss signals, 6,492 V064
+missing morpheme translations, and 731 V065 missing word translations. V060 and
+V148 both reflect authority `e00edf3d8`, which added V148 and scoped V060 to
+files that have a W tier; under the previous pin V060 counted 18. The
 blog does not provide a complete interlinear morpheme analysis, so the tiers
 that remain are retained without invented glosses.
 

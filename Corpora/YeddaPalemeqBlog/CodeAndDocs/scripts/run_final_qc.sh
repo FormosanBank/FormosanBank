@@ -6,7 +6,7 @@ CORPUS_ROOT="$(cd "$ROOT/.." && pwd)"
 : "${VALIDATOR_ROOT:?Set VALIDATOR_ROOT to an isolated pinned validator checkout.}"
 : "${VALIDATOR_PYTHON:?Set VALIDATOR_PYTHON to the validator Python executable.}"
 : "${OUTPUT_DIR:?Set OUTPUT_DIR to a new absolute directory outside this repository.}"
-EXPECTED_VALIDATOR_COMMIT="3a3c47c220520113f747e6a2d441494000e13c4b"
+EXPECTED_VALIDATOR_COMMIT="e00edf3d83ecfdce37392a73b3d2796446f44195"
 
 if [[ ! -x "$VALIDATOR_PYTHON" ]]; then
     echo "VALIDATOR_PYTHON is not executable: $VALIDATOR_PYTHON" >&2

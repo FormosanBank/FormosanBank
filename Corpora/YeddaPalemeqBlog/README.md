@@ -161,7 +161,7 @@ than renumbering unrelated records.
 
 Reproducing the published corpus therefore means rebuilding from the frozen
 snapshot, not re-scraping. The pipeline is pinned to FormosanBank commit
-`3a3c47c220520113f747e6a2d441494000e13c4b` and to development source commit
+`e00edf3d83ecfdce37392a73b3d2796446f44195` and to development source commit
 `25ed1f1ec56584e4a3e9fc960269c72d0e892a58`.
 
 From a clean FormosanBank checkout, rebuild with:
@@ -192,8 +192,9 @@ Corpora/YeddaPalemeqBlog/CodeAndDocs/scripts/reproduce.sh
 ```
 
 The pinned handoff has zero structural, text, or gloss HARD findings. Its
-9,933 soft finding occurrences are source-backed and fail-closed by exact
-rule counts. Eleven corpus regression tests cover source hashes, source
+9,918 soft finding occurrences are source-backed and fail-closed by exact
+rule counts — including one file-level V148 recording that 16 sentences are
+bare phrase entries the blog never broke into words. Eleven corpus regression tests cover source hashes, source
 coverage, reviewed repairs, stable tier shape, per-sentence M-tier
 consistency, standard-tier accent removal, and canonical XML identity.
 Published port readiness has zero HARD findings and zero warnings.

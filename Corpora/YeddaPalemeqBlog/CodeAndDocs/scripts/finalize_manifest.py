@@ -31,7 +31,7 @@ def main() -> None:
         if path.is_file() and path.name != "manifest.json"
     }
     manifest = {
-        "validator_commit": "3a3c47c220520113f747e6a2d441494000e13c4b",
+        "validator_commit": "e00edf3d83ecfdce37392a73b3d2796446f44195",
         "source_snapshot_sha256": sha256(SOURCE),
         "xml_sha256": sha256(XML),
         "counts": counts,
