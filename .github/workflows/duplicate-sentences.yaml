@@ -40,9 +40,23 @@ jobs:
             corpus_name=$(basename "$(dirname "$corpus_dir")")
             out="duplicate-findings/${corpus_name}.csv"
             echo "==> $corpus_name"
-            python3 QC/validation/validate_duplicate_sentences.py by_path \
+            # Pins the informational intent documented above. Without
+            # this, `set -e` (and GitHub's default `bash -e`) fails the
+            # step the moment the validator returns nonzero. It is
+            # non-blocking today only because the script hardcodes
+            # `return 0`; harmonizing it with its exit-on-HARD siblings
+            # (validate_xml/_text/_glosses) would otherwise turn this
+            # unscoped, unbaselined, all-corpora loop into a repo-wide
+            # gate with no change to this file.
+            #
+            # A nonzero exit is annotated rather than swallowed: a real
+            # crash must not be reported as "0 duplicates" for a corpus
+            # whose CSV never got written.
+            if ! python3 QC/validation/validate_duplicate_sentences.py by_path \
               --path "$corpus_dir" \
-              --output "$out"
+              --output "$out"; then
+              echo "::warning title=duplicate-sentences::$corpus_name exited nonzero; its findings are incomplete"
+            fi
           done
 
       - name: Summarize findings
