@@ -29,7 +29,7 @@
   },
   "port_remediation": {
     "path": "Orthographies/ConversionTables/Paiwan_Ferrell_113.tsv",
-    "reason": "Remove the redundant explicit uppercase row so the shared standardizer derives case-preserving Ḍ to Dr.",
+    "reason": "Remove the explicit uppercase row, which overrode the standardizer's case-variant derivation and lowercased proper names, so that Ḍ derives case-preservingly to Dr.",
     "corrected_blob": "ae0e827f7b5891feb0567e7a3c088852fd2011b2",
     "corrected_sha256": "9211a24274af2d3d416a2bd013f7caec795c3ffac4915267009cf357455ef776"
   },

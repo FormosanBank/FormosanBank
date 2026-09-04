@@ -37,7 +37,16 @@ Sentence `078S4` contains a final `-i` for which the source provides no gloss. T
 
 The reviewed decisions, source files, source checksums, authority pins, generator, tests, and audit evidence are all under `CodeAndDocs/`.
 
-The port review also removed one redundant shared conversion row that changed uppercase `Ḍ` to lowercase `dr`. The corrected table passes its standalone audit and lets the standardizer derive the case-preserving `Ḍ → Dr` mapping. An exact snapshot is pinned with the corpus rebuild inputs.
+The port review also removed one row from the shared Ferrell conversion table:
+`Ḍ → dr`, which mapped the uppercase retroflex to a lowercase output. The row
+was not redundant — it took precedence over the case-variant derivation in
+`QC/utilities/_case_variants.py`, so proper names lost their capital in the
+standard tier (`Ḍiququ → driququ`, `Ḍaḍengeraw → dradrengeraw`). Without it the
+standardizer derives the case-preserving `Ḍ → Dr` from the lowercase `ḍ → dr`
+rule, and those names standardize as `Driququ` and `Dradrengeraw`. Uppercase `Ḍ`
+occurs in no other corpus, and no other corpus uses this table, so removing the
+row changes nothing outside these texts. An exact snapshot of the corrected
+table is pinned with the corpus rebuild inputs.
 
 ## Reproduce
 
