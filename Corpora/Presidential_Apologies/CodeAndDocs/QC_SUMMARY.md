@@ -8,7 +8,7 @@ Verdict: ready to port as a replacement of `Corpora/Presidential_Apologies`.
 
 - Canonical corpus output: `XML/`
 - FormosanBank tooling commit: `3a3c47c220520113f747e6a2d441494000e13c4b`
-- Tool and orthography tree hashes: verified from `data/authority.json`
+- Tool and orthography versions: the live FormosanBank checkout (not pinned; see `data/provenance.json` for what the published output was built against)
 - Reproduction modes: `--write` and independent `--check`, both successful
 - XML inventory digest: `a6fe12ea3562bd2b2ed13f19c8c5d539b7b5d2069473a43b674b9c07168567fc`
 

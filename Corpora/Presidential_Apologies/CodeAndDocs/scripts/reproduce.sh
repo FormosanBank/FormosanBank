@@ -38,59 +38,22 @@ done
     exit 1
 }
 
-read -r AUTHORITY_COMMIT AUTHORITY_REMOTE QC_TREE ORTHOGRAPHIES_TREE \
-    BASELINE_XML_TREE REMOVER_BLOB < <(
-    "$PYTHON_BIN" - "$REPO_ROOT/CodeAndDocs/data/authority.json" <<'PY'
-import json
-import sys
-
-authority = json.load(open(sys.argv[1], encoding="utf-8"))["formosanbank"]
-objects = authority["objects"]
-print(
-    authority["commit"],
-    authority["remote"],
-    objects["QC"],
-    objects["Orthographies"],
-    objects["Corpora/Presidential_Apologies/XML"],
-    objects["Corpora/Presidential_Apologies/CodeAndDocs/remove_standard_cjk_annotations.py"],
-)
-PY
-)
-
 BUILD_ROOT=$(mktemp -d /tmp/presidential-apologies-rebuild.XXXXXX)
-PINNED_ROOT="$BUILD_ROOT/formosanbank"
 cleanup() {
     rm -rf -- "$BUILD_ROOT"
 }
 trap cleanup EXIT
 
-if [[ -n "$FORMOSANBANK_ROOT" ]]; then
-    if ! git -C "$FORMOSANBANK_ROOT" cat-file -e "$AUTHORITY_COMMIT^{commit}" 2>/dev/null; then
-        echo "The supplied FormosanBank checkout does not contain $AUTHORITY_COMMIT." >&2
-        exit 1
-    fi
-    git clone --quiet --shared --no-checkout "$FORMOSANBANK_ROOT" "$PINNED_ROOT"
-else
-    git clone --quiet --filter=blob:none --no-checkout "$AUTHORITY_REMOTE" "$PINNED_ROOT"
+# Build against the live FormosanBank checkout. The bank's model is that
+# shared tooling improves and corpora are regenerated against it, so this
+# deliberately does not pin a commit; data/provenance.json records what
+# the published output was built against, and nothing reads it.
+BANK=${FORMOSANBANK_ROOT:-$(cd "$REPO_ROOT/../.." && pwd)}
+if [[ ! -d "$BANK/QC" ]]; then
+    echo "Not a FormosanBank checkout: $BANK" >&2
+    echo "Pass --formosanbank-root PATH or set PRESIDENTIAL_FORMOSANBANK_ROOT." >&2
+    exit 1
 fi
-git -C "$PINNED_ROOT" checkout --quiet --detach "$AUTHORITY_COMMIT"
-
-verify_object() {
-    local expected=$1
-    local object_path=$2
-    local actual
-    actual=$(git -C "$PINNED_ROOT" rev-parse "HEAD:$object_path")
-    if [[ "$actual" != "$expected" ]]; then
-        echo "$object_path authority mismatch: $actual" >&2
-        exit 1
-    fi
-}
-
-verify_object "$QC_TREE" QC
-verify_object "$ORTHOGRAPHIES_TREE" Orthographies
-verify_object "$BASELINE_XML_TREE" Corpora/Presidential_Apologies/XML
-verify_object "$REMOVER_BLOB" \
-    Corpora/Presidential_Apologies/CodeAndDocs/remove_standard_cjk_annotations.py
 
 mkdir -p "$BUILD_ROOT/reports/qc"
 "$PYTHON_BIN" "$REPO_ROOT/CodeAndDocs/scripts/audit_source_alignment.py" \
@@ -102,7 +65,7 @@ mkdir -p "$BUILD_ROOT/reports/qc"
 
 (
     cd "$BUILD_ROOT"
-    "$PYTHON_BIN" "$PINNED_ROOT/QC/cleaning/clean_xml.py" \
+    "$PYTHON_BIN" "$BANK/QC/cleaning/clean_xml.py" \
         --corpora_path XML
 )
 if [[ -f "$BUILD_ROOT/XML/cleaner_warnings.csv" ]]; then
@@ -111,43 +74,43 @@ if [[ -f "$BUILD_ROOT/XML/cleaner_warnings.csv" ]]; then
 fi
 (
     cd "$BUILD_ROOT"
-    "$PYTHON_BIN" "$PINNED_ROOT/QC/utilities/standardize.py" \
+    "$PYTHON_BIN" "$BANK/QC/utilities/standardize.py" \
         --corpora_path XML --copy
-    "$PYTHON_BIN" "$PINNED_ROOT/QC/utilities/add_phonology.py" \
+    "$PYTHON_BIN" "$BANK/QC/utilities/add_phonology.py" \
         --corpora_path XML --orthography Ortho113
 )
 
 "$PYTHON_BIN" \
     "$REPO_ROOT/CodeAndDocs/scripts/remove_standard_cjk_annotations.py" \
-    --formosanbank-root "$PINNED_ROOT" \
+    --formosanbank-root "$BANK" \
     --xml-dir "$BUILD_ROOT/XML"
 
 PUBLISHED_ROOT="$BUILD_ROOT/published-corpora"
 mkdir -p "$PUBLISHED_ROOT"
-for corpus_path in "$PINNED_ROOT"/Corpora/*; do
+for corpus_path in "$BANK"/Corpora/*; do
     corpus_name=$(basename "$corpus_path")
     if [[ "$corpus_name" != "Presidential_Apologies" ]]; then
         ln -s "$corpus_path" "$PUBLISHED_ROOT/$corpus_name"
     fi
 done
 
-"$PYTHON_BIN" "$PINNED_ROOT/QC/validation/validate_xml.py" \
+"$PYTHON_BIN" "$BANK/QC/validation/validate_xml.py" \
     --published-corpora "$PUBLISHED_ROOT" \
     --csv "$BUILD_ROOT/reports/qc/validate_xml.csv" \
     by_path --path "$BUILD_ROOT/XML"
-"$PYTHON_BIN" "$PINNED_ROOT/QC/validation/validate_text.py" \
+"$PYTHON_BIN" "$BANK/QC/validation/validate_text.py" \
     --csv "$BUILD_ROOT/reports/qc/validate_text.csv" \
     by_path --path "$BUILD_ROOT/XML"
-"$PYTHON_BIN" "$PINNED_ROOT/QC/validation/validate_glosses.py" \
+"$PYTHON_BIN" "$BANK/QC/validation/validate_glosses.py" \
     --csv "$BUILD_ROOT/reports/qc/validate_glosses.csv" \
     by_path --path "$BUILD_ROOT/XML"
-"$PYTHON_BIN" "$PINNED_ROOT/QC/validation/validate_duplicate_sentences.py" \
+"$PYTHON_BIN" "$BANK/QC/validation/validate_duplicate_sentences.py" \
     by_path --path "$BUILD_ROOT/XML" \
     --output "$BUILD_ROOT/reports/qc/duplicate_sentences.csv"
 
 env \
     PRESIDENTIAL_XML_ROOT="$BUILD_ROOT/XML" \
-    PRESIDENTIAL_PUBLIC_XML_ROOT="$PINNED_ROOT/Corpora/Presidential_Apologies/XML" \
+    PRESIDENTIAL_PUBLIC_XML_ROOT="$BANK/Corpora/Presidential_Apologies/XML" \
     PRESIDENTIAL_ALIGNMENT_REPORT="$BUILD_ROOT/source_alignment.csv" \
     PRESIDENTIAL_QC_REPORT_ROOT="$BUILD_ROOT/reports/qc" \
     PYTHONPATH="$REPO_ROOT" \
@@ -164,8 +127,8 @@ else
         "$REPO_ROOT/CodeAndDocs/data/source_alignment.csv"
 fi
 
-"$PYTHON_BIN" "$PINNED_ROOT/QC/validation/validate_port_readiness.py" \
+"$PYTHON_BIN" "$BANK/QC/validation/validate_port_readiness.py" \
     --corpus_path "$REPO_ROOT" \
-    --repo-root "$PINNED_ROOT"
+    --repo-root "$BANK"
 
 echo "Presidential Apologies reproduction and QC completed successfully."

@@ -86,7 +86,7 @@ The script verifies the pinned FormosanBank commit and object hashes before it r
 7. XML, text, gloss, duplicate, and port-readiness validation.
 8. Corpus tests and comparison with published stable IDs.
 
-The pinned authority is recorded in `CodeAndDocs/data/authority.json`. Updating that pin requires regenerating the XML and reviewing all changes against the prior published baseline.
+`CodeAndDocs/data/provenance.json` records the FormosanBank commit this corpus was built against. It is documentation: nothing in the build reads it. The build runs against the current state of the bank, so a rebuild picks up later tooling improvements rather than pinning them — if a rebuild changes the XML, review the diff against the prior published baseline.
 
 ## Corpus-specific processing
 
