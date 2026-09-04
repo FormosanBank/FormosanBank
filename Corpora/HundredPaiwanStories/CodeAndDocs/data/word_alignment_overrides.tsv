@@ -1,0 +1,3 @@
+sentence_id	word_index	natural_form	source_morph	source_gloss	canonical_forms	canonical_glosses	decision	evidence
+009S2	7	kikaludjeɫ.	ki | kaludjeɫ	do | loquat	ki | kaludjeɫ	do | loquat	merge_two_analysis_cells_for_one_natural_word	The source natural tier has one word while its analysis spans the final two tab cells.
+078S4	19	taletalemi	al=te-talem-i	qal=do-plant	al | te | talem | i	qal | do | plant	leave_missing_source_gloss_unglossed	The source has four form units but only three gloss units. The rebuild preserves the final i as its own M with no TRANSL rather than inventing a gloss for it; the gap is recorded in the W TRANSL's notes attribute.
