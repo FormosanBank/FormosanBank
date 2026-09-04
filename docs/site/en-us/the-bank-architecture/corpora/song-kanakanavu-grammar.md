@@ -40,7 +40,9 @@ Every departure from the printed text is recorded against a named record and a r
 
 * **Partial glossing is preserved, not invented.** On five page images the printed form and gloss lines do not align one-to-one. Those words are still segmented, but a morpheme the book does not gloss separately carries no gloss of its own; the word-level gloss is always present.
 
-* **One spelling correction, standard tier only.** On reader p. 69 the aligned analysis line prints `takanaga` where the sentence surface of the same example prints `takananga` (`takananga` occurs 22× in the corpus, `takanaga` twice — both in that one analysis line). The printed `takanaga` is preserved in the original `W`/`M` tier, and only the standard tier reads `takananga`.
+* **One repaired typesetting slip.** On reader p. 69 the aligned analysis line prints `takanaga` where the sentence line of the same example prints `takananga` (`takananga` occurs 22× in the corpus, `takanaga` twice — both inside that one analysis). It is repaired in the original tier as a recorded manual edit, so the standard tier and the phonetic tiers regenerate from the corrected form; the extraction ledgers still record exactly what the page prints.
+
+* **The song on p. 190.** One example is a set of song lyrics, printed with hyphens that the book's own punctuation table defines as marks for fitting lyrics to a musical score — not morpheme boundaries. The original tier keeps them exactly as printed. The standard tier gives the running words, whose boundaries were recovered from an independent attestation of the same song rather than by deleting the hyphens (which would run the last line together as one word).
 
 * **Dictionary variants are split, not concatenated.** Slash and semicolon alternatives and optional `(…)` material in Appendix 2A become separate single-form entries. Bound citation forms (a trailing hyphen, with no free-standing surface in the book) are excluded, and split variants that duplicate another record are dropped. Every exclusion is a recorded decision.
 
