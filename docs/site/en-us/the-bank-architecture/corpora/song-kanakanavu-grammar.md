@@ -36,6 +36,16 @@ Every departure from the printed text is recorded against a named record and a r
 
 * **Stress accents** (`á é í ó ú`) mark stress in the book, not distinct letters. They are kept in the original tier and folded out of the standard tier; PHON is accent-free on both tiers.
 
+* **The standard tier is nearly the original tier.** The book's orthography already *is* Ortho113, so nothing is transliterated: across the whole corpus the standard tier differs from the original only by the folded stress accents and by the one song example below. Do not read "standard" here as evidence of a spelling change.
+
+* **Everything is in Mandarin; there is no English.** All 10,090 translations and glosses are `xml:lang="zho"`. Morpheme glosses use the book's own Chinese category labels — `主事焦點` (actor focus), `受事焦點` (patient focus), `完成貌` (perfective), `非實現` (irrealis), `重疊` (reduplication) — rather than Leipzig abbreviations. Latin script inside a gloss is a proper name.
+
+* **Segmentation lives on the word and morpheme tiers, never on the sentence tier.** Sentence forms are running text on both tiers. Word and morpheme forms keep the source's `-`, `=` and `<…>` on both tiers.
+
+* **Phonetic tiers use pipe notation for phonemic variants.** Ortho113 maps Kanakanavu `r` to `[r|ɾ]`, so a bracketed pipe in PHON means "either of these", not a literal bracket. PHON is otherwise marker-free and accent-free.
+
+* **No audio.** The source is a printed book; no recordings exist for this corpus.
+
 * **Interlinear conventions.** W forms keep the source's `-`, `=` and `<…>` notation. An infixed root keeps a gap hyphen and the infix is written `-X-` (`t<um>a-túturu` → `t-a`, `-um-`, `túturu`); each clitic morpheme keeps a leading `=` (`te=musu` → `te`, `=musu`).
 
 * **Partial glossing is preserved, not invented.** On five page images the printed form and gloss lines do not align one-to-one. Those words are still segmented, but a morpheme the book does not gloss separately carries no gloss of its own; the word-level gloss is always present.
@@ -49,6 +59,12 @@ Every departure from the printed text is recorded against a named record and a r
 * **Dictionary variants are split, not concatenated.** Slash and semicolon alternatives and optional `(…)` material in Appendix 2A become separate single-form entries. Bound citation forms (a trailing hyphen, with no free-standing surface in the book) are excluded, and split variants that duplicate another record are dropped. Every exclusion is a recorded decision.
 
 * **Repeated sentences are deliberate.** The book reuses example sentences to illustrate different points, so identical forms recur; each `S` carries its own `source` attribute naming the page and label it came from. Nothing is deduplicated.
+
+* **49 of the 699 sentences have no interlinear analysis.** 47 are the punctuation examples of Appendix 1 (pp. 187–191, a punctuation table rather than a glossed text) and 2 are body examples the book leaves unglossed. The book prints no word gloss for any of them, and none was invented.
+
+* **14 source examples were excluded**: 6 noun-phrase fragments, 5 forms the book marks ungrammatical, and 3 examples printed without a Chinese translation. Each exclusion is recorded with its reason in the corpus's source ledger.
+
+* **Everything above is checkable.** No validator reports a HARD finding. The remaining warnings are the documented source properties on this page — the unglossed sentences, the two em dashes, the four unglossed morphemes, the host+clitic word count, and the repeated forms — and the corpus README lists them one by one with counts.
 
 ***
 
