@@ -152,6 +152,23 @@ mv "$BUILD_ROOT/XML/cleaner_warnings.csv" \
 mv "$BUILD_ROOT/CodeAndDocs/quote_corrections.csv" \
     "$BUILD_ROOT/reports/qc/quote_corrections.csv"
 
+# Recorded hand edits. Runs after the cleaner and BEFORE standardize.py and
+# add_phonology.py, because apply_manual_edits replaces an S from a record
+# that carries no standard FORM and no PHON -- both are regenerated below.
+# One edit is expected; a no-op would mean the build now produces it by
+# itself and the record is obsolete (POL-030), so treat that as a failure
+# rather than a warning.
+cp "$CODE_ROOT/manual_edits.xml" "$BUILD_ROOT/CodeAndDocs/manual_edits.xml"
+MANUAL_EDITS=$(
+    cd "$BUILD_ROOT" && "$PYTHON_BIN" "$PINNED_ROOT/QC/cleaning/apply_manual_edits.py" \
+        --corpora_path XML
+)
+echo "$MANUAL_EDITS"
+if [[ "$MANUAL_EDITS" != *"apply: 1 edit(s) across 1 file(s); 0 no-op(s)"* ]]; then
+    echo "unexpected manual-edit result" >&2
+    exit 1
+fi
+
 (
     cd "$BUILD_ROOT"
     "$PYTHON_BIN" "$PINNED_ROOT/QC/utilities/standardize.py" \
@@ -256,6 +273,7 @@ if [[ "$MODE" == "--check" ]]; then
         "$CODE_ROOT/reports/qc/cleaner_warnings.csv"
     cmp "$BUILD_ROOT/reports/qc/quote_corrections.csv" \
         "$CODE_ROOT/reports/qc/quote_corrections.csv"
+    cmp "$BUILD_ROOT/CodeAndDocs/manual_edits.md" "$CODE_ROOT/manual_edits.md"
 else
     mkdir -p "$CORPUS_ROOT/XML" "$CODE_ROOT/reports/rebuild" "$CODE_ROOT/reports/qc"
     rsync -a --delete "$BUILD_ROOT/XML/" "$CORPUS_ROOT/XML/"
@@ -267,6 +285,7 @@ else
         "$CODE_ROOT/reports/qc/cleaner_warnings.csv"
     cp "$BUILD_ROOT/reports/qc/quote_corrections.csv" \
         "$CODE_ROOT/reports/qc/quote_corrections.csv"
+    cp "$BUILD_ROOT/CodeAndDocs/manual_edits.md" "$CODE_ROOT/manual_edits.md"
     diff -qr "$BUILD_ROOT/XML" "$CORPUS_ROOT/XML"
     diff -qr "$BUILD_ROOT/reports/rebuild" "$CODE_ROOT/reports/rebuild"
     cmp "$BUILD_ROOT/reports/qc/qc-summary.md" "$CODE_ROOT/reports/qc/qc-summary.md"
@@ -276,6 +295,7 @@ else
         "$CODE_ROOT/reports/qc/cleaner_warnings.csv"
     cmp "$BUILD_ROOT/reports/qc/quote_corrections.csv" \
         "$CODE_ROOT/reports/qc/quote_corrections.csv"
+    cmp "$BUILD_ROOT/CodeAndDocs/manual_edits.md" "$CODE_ROOT/manual_edits.md"
 fi
 
 echo "Hundred Paiwan Stories reproduction and QC completed successfully."

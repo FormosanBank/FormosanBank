@@ -145,8 +145,31 @@ two logs of that pass are committed with the build:
   cleaner made to the original tier, with the form before and after each.
 - `CodeAndDocs/reports/qc/cleaner_warnings.csv` — the 27 `'` it flagged but left
   alone, because the translation did not place the quotation with enough
-  confidence to rule out a glottal reading. `008S28` is the notable one: its
-  nested `'aa'` is a quotation in the source but ships as `'`.
+  confidence to rule out a glottal reading. `008S28` is the notable one, and a
+  recorded hand edit corrects it afterwards.
+
+### Recorded hand edits
+
+One correction in this corpus is a genuine one-off editorial judgement rather
+than a rule, so it uses the standard FormosanBank mechanism:
+[`CodeAndDocs/manual_edits.xml`](CodeAndDocs/manual_edits.xml), replayed by
+`QC/cleaning/apply_manual_edits.py` and summarised for readers in
+[`CodeAndDocs/manual_edits.md`](CodeAndDocs/manual_edits.md).
+
+The single record is `008S28`. The source prints its inner quotation with curly
+single quotes (`‘aa’`); the cleaner folds those to `'` and then declines to
+rewrite them as `"`, because the English translation does not place the
+quotation confidently enough to rule out a glottal reading — `'` is the glottal
+letter in this orthography, so the cleaner is deliberately conservative and logs
+the case (rule `c030`) instead of guessing. Here it is a quotation, so the edit
+sets `"aa"` in the original FORM at the sentence, word and morpheme tiers.
+
+The step runs after the cleaner and *before* `standardize.py` and
+`add_phonology.py`, because an edit record carries no standard FORM and no PHON
+— both are regenerated from the edited original. The build asserts exactly one
+edit applies and **fails on a no-op**: if the pipeline ever produces this
+content by itself the record is obsolete (POL-030) and should be pruned, not
+left to pass silently.
 
 ## Citation
 
