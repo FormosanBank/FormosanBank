@@ -5,8 +5,8 @@ icon: scale-balanced
 {% hint style="warning" %}
 **Synced copy — do not edit here.** The canonical file is
 [`POLICIES.md` in the FormosanBank repository](https://github.com/FormosanBank/FormosanBank/blob/main/POLICIES.md);
-it versions together with the code that implements each ruling. Edit it
-there, then run `python sync_policies.py` in this repository.
+it versions together with the code that implements each ruling.
+Edit it there, then run `python sync_upstream_docs.py` in this repository.
 {% endhint %}
 
 # FormosanBank Policies
@@ -26,10 +26,10 @@ This file (`FormosanBank/POLICIES.md`) is **canonical** — it versions together
 with the code that implements the rulings, and entries cite rule IDs and
 scripts by name. A rendered copy is published in the GitBook at
 `en-us/the-bank-architecture/policies.md` with a header marking it as synced;
-the GitBook repo's test suite gains a drift check (byte-comparison against a
-FormosanBank checkout, alongside the existing `update_corpus_stats.py`
-tooling) so the copy cannot silently diverge. The GitBook's
-[FormosanBank XML Format](../FormosanBankGitbook/en-us/the-bank-architecture/formosanbank-xml-format.md)
+the GitBook repo regenerates it with `python sync_upstream_docs.py`, and its
+`tests/test_upstream_doc_sync.py` drift check (a byte-comparison against a
+FormosanBank checkout) fails when the copy diverges. The GitBook's
+[FormosanBank XML Format](https://ai4commsci.gitbook.io/formosanbank/the-bank-architecture/formosanbank-xml-format)
 page remains the narrative description of the format; where it states a
 convention, the matching POL entry cites it rather than duplicating prose.
 
@@ -142,6 +142,16 @@ pipeline, so there is no per-corpus opt-out of `∅` in published data. Spec:
    WAVE DASH. Implemented in `clean_xml`'s `swap_punctuation` (C029),
    pure typography per the POL-010 rationale. Chinese TRANSL is
    unaffected (that branch never calls `swap_punctuation`).
+3. **CJK context — RULED (2026-09-03).** A `~` **between two CJK
+   characters** is not gloss notation and carries no morphological
+   meaning. Chinese glosses and translations use it for an open semantic
+   argument (`把~抓住`, "catch ~"), for prosodic lengthening after an
+   interjection (`哇~真漂亮`), and for numeric ranges (`五~六`). The
+   gloss-scrape rules therefore strip it before parsing morpheme
+   structure, so it neither contributes a morpheme slot nor enters a
+   marker skeleton. The exception requires CJK on *both* sides, which
+   leaves Leipzig-style `CAU~walk` untouched. Implemented in
+   `gloss_scrape._gloss_notation_text` (consumed by G001, G002, G007).
 
 ### POL-014 · RULED · GitBook · infixes on W/M tiers
 W-tier FORMs mark an infix with ASCII angle brackets (`k<um>a'en`); S-level
@@ -412,3 +422,37 @@ SOFT per POL-034). Adding a language = one `languages.csv` row, plus a
 `standards.csv` row (blank scheme until a standard is designated) and
 `dialects.csv` rows if multi-dialect. Documented for end users on the
 GitBook "Formosan Dialects" page.
+
+### POL-041 · RULED · 2026-09-03 · W-tier presence
+The W tier asks the same question as the M tier (POL-023) one level up,
+and gets the same answer at the level of the file: a corpus with **no**
+word segmentation has **no W level at all**, which is the normal state
+for most of the bank and never a finding. But a file where *some*
+sentences carry a W tier and others do not is an **incomplete
+segmentation pass**, and the unsegmented sentences are reported.
+
+An `S` with no `FORM` is never counted: an untranscribed-audio shell has
+no text to segment, and V010 already reports it.
+
+**Why the file, not the sentence** — the opposite of the POL-023
+amendment, deliberately. V144 can be per sentence because a parsed
+sentence announces itself (a W with two or more M children, or an M FORM
+differing from its parent W FORM). A sentence with **no W announces
+nothing at all**: there is no per-sentence signal that distinguishes
+"not segmented yet" from "not segmented, by design". Only the presence
+of segmented siblings in the same file makes the omission legible, so
+the file is the unit of judgement.
+
+Enforced as SOFT finding **V148** (`v148_W_less_S_in_segmented_file`) in
+`validate_xml.py`, aggregated per file. SOFT because a partly segmented
+file is a work-in-progress, not a defect in what it does contain.
+
+Scope consequence for **V060** (W-count vs word-count, `validate_glosses.py`):
+V060 compares counts, so it now applies only where a W tier exists — it
+skips a file with no W anywhere, and skips an individual `S` with no W
+inside a partially segmented file. Whether a sentence *ought* to have a W
+tier is this policy's question, not V060's. Previously V060 fired once per
+sentence on every sentence-only corpus, reporting a missing tier as a
+count mismatch "due to normalization or spelling". Raised by:
+`codex/qc-sentence-only-gloss-noise` (2026-06-25), which fixed the
+sentence-only half but not the partially segmented half.
