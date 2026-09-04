@@ -6,6 +6,10 @@ icon: circle-check
 
 > Always-on, lightweight broken-audio check that walks a corpus's XML plus its audio directory and reports missing, unloadable, silent, and invalid-range audio (V100–V103), with a SOFT words/sec sanity signal (V105).
 
+{% hint style="info" %}
+This validator inspects audio files you have **locally**. It says nothing about what is hosted on Hugging Face — file-level parity between the XML and the Hub is a separate, blocking check: [validate_hf_audio.py](validate-hf-audio.md).
+{% endhint %}
+
 ## What it's for
 
 Corpora that carry audio references from their `<AUDIO>` elements. This validator confirms those references actually resolve to decodable, non-empty, sensibly-clipped audio, and — optionally — that the clips aren't end-to-end silence. It produces a single `broken_audio.csv` with a `kind` column and locator columns that downstream cleanup ([clean_audio.py](clean-audio.md)) consumes to act on the breakages.
