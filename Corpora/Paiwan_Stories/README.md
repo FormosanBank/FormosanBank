@@ -1,78 +1,61 @@
-# Formosan-PaiwanStories
+# Paiwan Stories
 
-## License and AI Use
+Three Eastern Paiwan stories with Chinese translations and whole-story audio:
 
-This corpus is subject to its source license and the central FormosanBank terms in [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI Use is prohibited without prior written permission.
+- `Dingding`
+- `Kavatjes ni vuvu`
+- `Maljialjian a qaciljay`
 
-This repository contains code and data for processing and structuring the Paiwan Stories dataset into the [FormosanBank XML format](https://app.gitbook.com/o/tZF822XPLvjWkTiqbQyF/s/VETgkt5DVZWXBIolTyjW/the-bank-architecture/xml-standardize-format). The dataset includes various Formosan dialects and is organized to assist in linguistic research and language preservation.
+## License and AI use
 
-## Project Structure
+The author granted FormosanBank direct CC BY-NC permission for the Indigenous-language text. The corpus is also subject to the central terms in [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI use is prohibited without prior written permission.
 
-- **Final_XML**: Directory containing the processed data structured into FormosanBank XML format.
-- **requirements.txt**: Lists the Python libraries required to run the processing scripts.
+The illustrated source documents contain separate rights notices for illustrations, adaptation, and publication. Those documents and their redundant MP3 files were used for a private source audit but are not distributed here.
 
-## Installation
+## Contents
 
-1. Clone this repository
+- 3 XML files
+- 46 reviewed sentence records
+- 46 source-owned original Paiwan forms
+- 46 source-owned original Chinese translations
+- 3 whole-story WAV recordings available through the public audio contract
 
-2. Set up a virtual environment (optional but recommended):
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate
-   ```
+The reviewed data restore one complete bilingual sentence omitted from the legacy `Maljialjian` XML. They also repair omitted or shifted Chinese translations in `Kavatjes` and `Maljialjian`.
 
-3. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+## Source authority and scope
 
-4. Download the three public source recordings:
-   ```bash
-   ./download_audio_data.sh
-   ```
+The published XML comes from reviewed private development revision `9a7eafb186de`. All 66 pages in the two illustrated PDFs and bilingual Word source were reviewed. The source ledger retains 46 bilingual records and documents four paratext or illustration-only exclusions.
 
-   The download comes from the public `FormosanBank/Paiwan_Stories` Hugging
-   Face dataset and does not require an account.
+`CodeAndDocs/data/reviewed_records.tsv` is the public, page-addressed source transcription used by the generator. `source_ledger.csv` records every retained and excluded item. `source_manifest.json` pins the six private audit inputs and the three published recordings by filename, size, and SHA-256 without distributing the restricted source files.
 
-## Usage
+## Reproduce
 
-The XMLs were created by hand from the PDF. No automatic processing.
+From this corpus directory, use a current FormosanBank Python environment:
 
-1. **Clean XML and standardize punctuation**
+```bash
+PYTHON=/path/to/FormosanBank/.venv/bin/python ./CodeAndDocs/make_xml.sh
+```
 
-This isn't necessary because everything was already standardized. It is listed just to make it clear that we didn't forget to do it.
+The build regenerates the three original-tier XML files from the reviewed records, applies the shared cleaner, creates standard forms with `standardize.py --copy`, generates original and standard phonology with the reviewed Paiwan Ortho94 profile, and runs structural validation. Repeated builds are byte-identical.
 
-   ```bash
-   python path/to/FormosanBankRepo/QC/cleaning/clean_xml.py --corpora_path path/to/repo/Final_XML
-   ```
+`CodeAndDocs/data/provenance.json` records the FormosanBank commit this corpus was built against. It is documentation: nothing in the build reads it, and the build runs against the current state of the bank, so a rebuild picks up later tooling improvements rather than pinning them.
 
-**Outputs**
-   - This will update the XML files.
+## Audio
 
-**Notes**
-   - This removes empty XML elements
-   - It also standardizes orthography (more-or-less), though a lot of this was done in previous steps (not documented above)
-   - Unicode is flattened so that diacritics are merged with the characters they modify
-   - HTML escape codes are replaced with the corresponding characters
+Audio is not committed to Git. Download the three pinned public recordings with:
 
-2. **Standardize XML, Part 2**
+```bash
+./download_audio_data.sh
+```
 
-   ```bash
-   python path/to/FormosanBankRepo/QC/utilities/add_original.py --corpora_path path/to/repo/Final_XML
-   ```
+The XML roots reference `DingDing.wav`, `kavatjes_ni_vuvu.wav`, and `maljialjian_a_qaciljay.wav`. The public Hugging Face copies are byte-identical to the reviewed development WAV files.
 
-3. **Standardize orthography**
+## Validation status
 
-   ```bash
-   python path/to/FormosanBankRepo/QC/utilities/standardize.py --corpora_path path/to/FormosanWikipedias/Final_XML --copy
-   ```
+The 2026-08-22 current-authority review passed source coverage, 8 repository tests, XML, text, gloss, duplicate, audio, dialect, orthography, vocabulary, registry, and port-readiness checks. It adjudicated 51 expected soft findings with none unresolved and reported 0 hard findings and 0 warnings for port readiness.
 
-**Outputs**
-   - Updates XML files
+The 46 V060 gloss findings are expected because these narrative sources contain no source-supported word or morpheme analysis.
 
-**Notes**
-   - Creates a copy of every <FORM> element with kindOf="standard" attribute
+## Citation
 
-4. **Add phonology**
-
-The usual way.
+Juan, T. F., and X. Ruan. 2024. *Corpus of Paiwan Stories*. Electronic resource.

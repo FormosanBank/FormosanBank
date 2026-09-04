@@ -1,0 +1,78 @@
+{
+  "accessed_utc": "2026-08-18T14:30:00Z",
+  "license": "CC BY-NC",
+  "source_files": [
+    {
+      "bytes": 3805950,
+      "filename": "dingding蝸牛.pdf",
+      "format": "PDF",
+      "pages": 32,
+      "sha256": "5e43be24f43feb2bd8c20a96356cdbfcd6ee9faeba9183cebc956c3c345a04cc"
+    },
+    {
+      "bytes": 2545452,
+      "duration_seconds": 158.948,
+      "filename": "dingding蝸牛.mp3",
+      "format": "MP3, 16 kHz mono",
+      "sha256": "27d46db6c786b7ebc3f4c3545f47260a59e73727782c566cae56f0c0f8fca4d5"
+    },
+    {
+      "bytes": 4383931,
+      "filename": "kavatjes ni vuvu奶奶的寶物.pdf",
+      "format": "PDF",
+      "pages": 32,
+      "sha256": "4cc2c63d97ffecea5750e0381e4e449c935ee2f6cb1978c4c2898a33874b633b"
+    },
+    {
+      "bytes": 1604268,
+      "duration_seconds": 100.128,
+      "filename": "kavatjes ni vuvu奶奶的寶物.mp3",
+      "format": "MP3, 16 kHz mono",
+      "sha256": "d42234966ee6c600a341ffab73e949ba793b5e9f9e4bc33b109d88db9e874deb"
+    },
+    {
+      "bytes": 30208,
+      "filename": "maljialjian a qaciljay(black stone).doc",
+      "format": "Microsoft Word 97-2003",
+      "pages": 2,
+      "sha256": "0b91a4dfd5be1bba63bd5ce1bc07f58c1a6c9e0ca00bc956ccd019d978d48511"
+    },
+    {
+      "bytes": 3362796,
+      "duration_seconds": 210.032,
+      "filename": "maljialjian a qaciljay(black stone).mp3",
+      "format": "MP3, 16 kHz mono",
+      "sha256": "867d6e922400c5c9af9b74335d3ccb518932a25f85ecd2ae7aa13e1a0f99b82d"
+    }
+  ],
+  "retained_audio": [
+    {
+      "bytes": 5089580,
+      "duration_seconds": 159.048,
+      "filename": "DingDing.wav",
+      "sha256": "bc7b8a9a3168e9fb21eaf495e1514bbf6d51917ea7a1c8d4af2a7aa4a9a7696d",
+      "source_filename": "dingding蝸牛.mp3"
+    },
+    {
+      "bytes": 3207212,
+      "duration_seconds": 100.224,
+      "filename": "kavatjes_ni_vuvu.wav",
+      "sha256": "ec30a17c4d62f6dc46a0b0f60e89efc6d677b9b7396358f9a534e9eee748dcde",
+      "source_filename": "kavatjes ni vuvu奶奶的寶物.mp3"
+    },
+    {
+      "bytes": 6724268,
+      "duration_seconds": 210.132,
+      "filename": "maljialjian_a_qaciljay.wav",
+      "sha256": "8ea82664d47aee711a1ef32cdf6a224f98ab58c1922bdc747ff48a9f2a407a10",
+      "source_filename": "maljialjian a qaciljay(black stone).mp3"
+    }
+  ],
+  "audio_identity": {
+    "leading_wav_samples": 1681,
+    "maximum_pcm_delta": 1,
+    "maximum_mismatch_fraction": 0.002,
+    "sample_rate": 16000,
+    "summary": "After the common 1,681-sample WAV decoder-delay prefix, every overlapping MP3-derived PCM sample differs by at most one 16-bit unit and fewer than 0.2 percent of samples differ."
+  }
+}
