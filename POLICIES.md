@@ -15,10 +15,10 @@ This file (`FormosanBank/POLICIES.md`) is **canonical** — it versions together
 with the code that implements the rulings, and entries cite rule IDs and
 scripts by name. A rendered copy is published in the GitBook at
 `en-us/the-bank-architecture/policies.md` with a header marking it as synced;
-the GitBook repo's test suite gains a drift check (byte-comparison against a
-FormosanBank checkout, alongside the existing `update_corpus_stats.py`
-tooling) so the copy cannot silently diverge. The GitBook's
-[FormosanBank XML Format](../FormosanBankGitbook/en-us/the-bank-architecture/formosanbank-xml-format.md)
+the GitBook repo regenerates it with `python sync_upstream_docs.py`, and its
+`tests/test_upstream_doc_sync.py` drift check (a byte-comparison against a
+FormosanBank checkout) fails when the copy diverges. The GitBook's
+[FormosanBank XML Format](https://ai4commsci.gitbook.io/formosanbank/the-bank-architecture/formosanbank-xml-format)
 page remains the narrative description of the format; where it states a
 convention, the matching POL entry cites it rather than duplicating prose.
 
