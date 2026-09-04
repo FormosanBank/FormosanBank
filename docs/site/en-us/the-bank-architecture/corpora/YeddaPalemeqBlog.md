@@ -4,6 +4,8 @@
 
 Yedda Palemeq, a Paiwan speaker and linguist, maintained a [blog](https://yeddapalemeq.blogspot.com/) with short Southern Paiwan examples, English translations, prose word explanations, and recordings. The corpus contains 668 source records represented as 671 sentences after three source-defined alternative splits. Some examples also occur in independently sourced FormosanBank collections; they are retained here with their blog provenance.
 
+**Many sentences are segmented into morphemes, but nothing is glossed at the morpheme level.** The `<M>` tier records the author's own segmentation and carries no translations — it never has. Word-level glosses are prose explanations rather than interlinear glosses. See *Corpus Notes* below before using either tier.
+
 ***
 
 <!-- CORPUS STATS START -->
@@ -45,7 +47,7 @@ Yedda Palemeq, a Paiwan speaker and linguist, maintained a [blog](https://yeddap
 
 * Examples are not necessarily glossed word by word; repeated words and common function words are often unglossed in the source. Glosses were matched within a single example only — a gloss is never reused from another example, since it may not be contextually correct. Where no gloss can be found, the `<W>` element's `<FORM>` is just a copy of the word in the example and no `<TRANSL>` is provided.
 * Sometimes the same word is spelled differently in the main text and in the glosses. We have assumed the main text is correct and the gloss is incorrect; in those cases the gloss is ignored.
-* The author did not provide morpheme-by-morpheme glosses, so no glossing is provided for individual morphemes.
+* **This corpus is segmented but not glossed at the morpheme level.** The author glosses *words*, in prose, and never glosses individual morphemes, so no `<M>` element carries a `<TRANSL>` — and none ever has, in any version of this corpus. A morpheme has a form and a position and nothing else. That is why "Glossed words" above reads 0 while "Morphologically segmented" reads 4,475: segmentation and glossing are separate things here and only the first is present. Supplying morpheme glosses would be original linguistic work rather than data recovery.
 
 * Sixteen sentences carry no `<W>` tier at all — the blog prints them as bare phrase entries with no word breakdown, so there is nothing to segment. They have no words and no morphemes.
 
@@ -53,6 +55,7 @@ Yedda Palemeq, a Paiwan speaker and linguist, maintained a [blog](https://yeddap
 
 * Where the author parsed words into segments, those segments are preserved in `<M>` elements. Within such a sentence, a word we could not find a parse for is assumed to be monomorphemic and gets a single `<M>` — which is almost certainly incorrect in some cases.
 * Where the author parsed *nothing* in a sentence, that sentence carries **no `<M>` elements at all**. An earlier version of this corpus gave every word a single `<M>` mirroring the word, which asserted a monomorphemic analysis the author never made. Those mirror morphemes have been removed, so 1,165 of the 5,643 `<W>` elements now have no `<M>` child. This is why "Morphologically segmented" above counts 4,475 rather than the full word count.
+* Where a word contains an infix, the author marks it inline in the word itself with angle brackets — `s<em>eljec-an`, `p<in>a-cun-an` — and that notation is what the `<M>` tier is derived from. She then explains the infix in prose in the word's gloss rather than in Leipzig `<AV>` notation, so the analysis is present but written differently from most glossed corpora.
 * In short: the presence of an `<M>` tier is itself information — it tells you the author analysed that sentence. This follows the bank-wide rule that morphological analysis is scoped per sentence, not per file; see [The FormosanBank XML format](../formosanbank-xml-format.md) for POL-023.
 
 **Orthography**
