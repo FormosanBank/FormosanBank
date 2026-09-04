@@ -47,11 +47,17 @@ Yedda Palemeq, a Paiwan speaker and linguist, maintained a [blog](https://yeddap
 * Sometimes the same word is spelled differently in the main text and in the glosses. We have assumed the main text is correct and the gloss is incorrect; in those cases the gloss is ignored.
 * The author did not provide morpheme-by-morpheme glosses, so no glossing is provided for individual morphemes.
 
+* Sixteen sentences carry no `<W>` tier at all — the blog prints them as bare phrase entries with no word breakdown, so there is nothing to segment. They have no words and no morphemes.
+
 **Morpheme (`<M>`) elements**
 
 * Where the author parsed words into segments, those segments are preserved in `<M>` elements. Within such a sentence, a word we could not find a parse for is assumed to be monomorphemic and gets a single `<M>` — which is almost certainly incorrect in some cases.
 * Where the author parsed *nothing* in a sentence, that sentence carries **no `<M>` elements at all**. An earlier version of this corpus gave every word a single `<M>` mirroring the word, which asserted a monomorphemic analysis the author never made. Those mirror morphemes have been removed, so 1,165 of the 5,643 `<W>` elements now have no `<M>` child. This is why "Morphologically segmented" above counts 4,475 rather than the full word count.
 * In short: the presence of an `<M>` tier is itself information — it tells you the author analysed that sentence. This follows the bank-wide rule that morphological analysis is scoped per sentence, not per file; see [The FormosanBank XML format](../formosanbank-xml-format.md) for POL-023.
+
+**Orthography**
+
+* The `original` tier keeps the source spelling exactly as the blog writes it. The `standard` tier is derived from it with FormosanBank's common conventions applied: source segmentation hyphens are removed (they belong on the `<W>` and `<M>` tiers), and diacritics that mark prosody rather than spelling are stripped. In this corpus that affects exactly two words — the Mandarin kin terms quoted in one sentence, where `yípó` and `āyí` become `yipo` and `ayi` in the standard tier only. Paiwan spells with no accented letter, so nothing here is protected; in a language that does, such as Puyuma with its `ē`, the letter survives.
 
 **Notation**
 
