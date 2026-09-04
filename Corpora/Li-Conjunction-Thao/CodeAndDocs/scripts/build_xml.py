@@ -5,17 +5,14 @@ from __future__ import annotations
 
 import csv
 import re
-import shutil
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
-RECORDS = ROOT / "raw_data" / "reviewed_examples.tsv"
-DRAFT = ROOT / "XML" / "Thao" / "li_2014_conjunction_in_thao.xml"
-FINAL = ROOT / "Final_XML" / "Thao" / "li_2014_conjunction_in_thao.xml"
-LEDGER = ROOT / "intermediate" / "source_ledger.csv"
-SOURCE_MAP = ROOT / "intermediate" / "xml_source_map.csv"
-REVIEW = ROOT / "intermediate" / "rendered_xml_review.md"
+CODE_ROOT = Path(__file__).resolve().parents[1]
+CORPUS_ROOT = Path(__file__).resolve().parents[2]
+RECORDS = CODE_ROOT / "data" / "reviewed_examples.tsv"
+XML = CORPUS_ROOT / "XML" / "Thao" / "li_2014_conjunction_in_thao.xml"
+LEDGER = CODE_ROOT / "data" / "source_ledger.csv"
 
 CITATION = ("Li, P. J.-K. (2014). Conjunction in Thao. In I Wayan Arka & N. L. K. "
             "Mas Indrawati (Eds.), Papers from 12-ICAL, Volume 2: Argument realisations "
@@ -30,30 +27,6 @@ BIBTEX = ("@incollection{li2014conjunctionthao, author={Li, Paul Jen-Kuei}, "
 COPYRIGHT = "Creative Commons Attribution 4.0 International (CC BY 4.0)."
 EDGE_PUNCTUATION = ".,!?;:…"
 INFIX_SITE = "\x00"  # transient marker for an infix extraction site (see parse_morphemes)
-
-# Blust's Thao Dictionary (which Li 2014 quotes) prints two transcription typos
-# that Li reproduces: capital "S" for /ʃ/ (once, in example (21) "ɬpaðiSan") and
-# capital "D" for /ð/ (in the three footnote-7 examples quoted from Blust 2003:
-# "iDa", "saqaDi", "waDaqan", "aDaDak"). Both were checked against Blust's
-# original and are corrected here — at the earliest step, before the original
-# text is used to build any tier — so the fix propagates uniformly to the
-# original, standard, W, and M tiers. The raw TSV keeps the source's printed
-# characters; the correction lives in code and is documented in README.md. Only
-# the Thao "original" field is touched, never the glosses/metadata (where "D"/"S"
-# legitimately occur in DET, RED, STA, CAUS, PDF locators, etc.).
-SOURCE_TYPO_CORRECTIONS = (("S", "ʃ"), ("D", "ð"))
-
-
-def correct_source_typos(form: str) -> str:
-    """Fix Blust-dictionary transcription typos in a Thao original-tier string."""
-    for wrong, right in SOURCE_TYPO_CORRECTIONS:
-        form = form.replace(wrong, right)
-    return form
-
-
-def standard_sentence(form: str) -> str:
-    """Remove source segmentation notation from the sentence standard tier."""
-    return re.sub(r"[-=<>]", "", form)
 
 
 def word_tokens(text: str) -> list[str]:
@@ -97,9 +70,6 @@ def parse_morphemes(form: str, gloss: str) -> list[tuple[str, str]]:
     )
     if len(form_values) != len(gloss_values):
         raise ValueError(f"morpheme mismatch: {form!r} / {gloss!r}")
-    if len(form_values) + len(form_infixes) == 1:
-        return []
-
     result: list[tuple[str, str]] = []
     for form_value, form_boundary, gloss_value, gloss_boundary in zip(
         form_values,
@@ -121,12 +91,6 @@ def rows() -> list[dict[str, str]]:
         data = list(csv.DictReader(handle, delimiter="\t"))
     if len(data) != 27 or any(r["included"] != "yes" for r in data):
         raise SystemExit("Expected exactly 27 reviewed included examples")
-
-    # Correct the Blust-dictionary transcription typos before the original text
-    # is used to build any tier (see correct_source_typos). Only the Thao form is
-    # touched; glosses and metadata keep their capital D/S.
-    for r in data:
-        r["original"] = correct_source_typos(r["original"])
 
     expected_pages = {
         **{str(number): ("395", "402") for number in range(1, 6)},
@@ -175,8 +139,6 @@ def build(data: list[dict[str, str]]) -> ET.ElementTree:
         sentence = ET.SubElement(root, "S", {"id": r["id"], "source": r["source_locator"]})
         original = ET.SubElement(sentence, "FORM", {"kindOf": "original"})
         original.text = r["original"]
-        standard = ET.SubElement(sentence, "FORM", {"kindOf": "standard"})
-        standard.text = standard_sentence(r["original"])
         translation = ET.SubElement(sentence, "TRANSL", {"xml:lang": "eng"})
         translation.text = r["translation"]
         word_pairs = (
@@ -188,12 +150,11 @@ def build(data: list[dict[str, str]]) -> ET.ElementTree:
             word = ET.SubElement(
                 sentence, "W", {"id": f"{r['id']}_w{word_number:02d}"}
             )
-            for kind in ("original", "standard"):
-                form = ET.SubElement(word, "FORM", {"kindOf": kind})
-                # Word-level analytical segmentation is source evidence required
-                # for alignment with the gloss and child morphemes.
-                form.text = word_form
-            gloss = ET.SubElement(word, "TRANSL", {"xml:lang": "eng"})
+            form = ET.SubElement(word, "FORM", {"kindOf": "original"})
+            form.text = word_form
+            gloss = ET.SubElement(
+                word, "TRANSL", {"kindOf": "original", "xml:lang": "eng"}
+            )
             gloss.text = word_gloss
             for morpheme_number, (m_form, m_gloss) in enumerate(
                 parse_morphemes(word_form, word_gloss), start=1
@@ -205,13 +166,10 @@ def build(data: list[dict[str, str]]) -> ET.ElementTree:
                 )
                 m_original = ET.SubElement(morpheme, "FORM", {"kindOf": "original"})
                 m_original.text = m_form
-                m_standard = ET.SubElement(morpheme, "FORM", {"kindOf": "standard"})
-                # M standard, like W standard, retains source segmentation markers
-                # (both tiers keep them; only the S-level standard is flattened),
-                # so the infix-site '-' and clitic '=' survive here too.
-                m_standard.text = m_form
                 m_translation = ET.SubElement(
-                    morpheme, "TRANSL", {"xml:lang": "eng"}
+                    morpheme,
+                    "TRANSL",
+                    {"kindOf": "original", "xml:lang": "eng"},
                 )
                 m_translation.text = m_gloss
     ET.indent(root, space="    ")
@@ -219,14 +177,12 @@ def build(data: list[dict[str, str]]) -> ET.ElementTree:
 
 
 def write_xml(tree: ET.ElementTree) -> None:
-    DRAFT.parent.mkdir(parents=True, exist_ok=True)
-    FINAL.parent.mkdir(parents=True, exist_ok=True)
-    tree.write(DRAFT, encoding="utf-8", xml_declaration=True)
-    text = DRAFT.read_text(encoding="utf-8")
+    XML.parent.mkdir(parents=True, exist_ok=True)
+    tree.write(XML, encoding="utf-8", xml_declaration=True)
+    text = XML.read_text(encoding="utf-8")
     text = re.sub(r" ns0:lang=", " xml:lang=", text)
     text = text.replace(' xmlns:ns0="http://www.w3.org/XML/1998/namespace"', "")
-    DRAFT.write_text(text, encoding="utf-8")
-    shutil.copyfile(DRAFT, FINAL)
+    XML.write_text(text, encoding="utf-8")
 
 
 def write_evidence(data: list[dict[str, str]]) -> None:
@@ -243,7 +199,7 @@ def write_evidence(data: list[dict[str, str]]) -> None:
                 "translation": r["translation"], "gloss": r["gloss"],
                 "extraction_method": "embedded text plus rendered-page manual review",
                 "review_note": r["notes"] or "visually reviewed", "included_in_xml": "yes",
-                "exclusion_reason": "", "final_xml_filename": FINAL.name, "final_s_id": r["id"]})
+                "exclusion_reason": "", "final_xml_filename": XML.name, "final_s_id": r["id"]})
         exclusions = {
             394: ("printed p. 401", "title, introduction, rights notice; no example utterances"),
             400: ("printed p. 407", "summary prose only; no quoted Thao utterances"),
@@ -257,38 +213,11 @@ def write_evidence(data: list[dict[str, str]]) -> None:
                 "review_note": "whole page inventoried", "included_in_xml": "no",
                 "exclusion_reason": reason, "final_xml_filename": "", "final_s_id": ""})
 
-    map_fields = ["xml_id", "source_locator", "pdf_page", "printed_page", "example_label",
-                  "source_ref", "source_original", "standard_form", "translation", "gloss", "notes"]
-    with SOURCE_MAP.open("w", encoding="utf-8", newline="") as handle:
-        out = csv.DictWriter(handle, fieldnames=map_fields, lineterminator="\n")
-        out.writeheader()
-        for r in data:
-            out.writerow({"xml_id": r["id"], "source_locator": r["source_locator"],
-                "pdf_page": r["pdf_page"], "printed_page": r["printed_page"],
-                "example_label": r["example_label"], "source_ref": r["source_ref"],
-                "source_original": r["original"],
-                "standard_form": standard_sentence(r["original"]),
-                "translation": r["translation"], "gloss": r["gloss"], "notes": r["notes"]})
-
-    lines = ["# Rendered XML Review", "", "All 27 included examples were visually checked.", "",
-             "Sentence-level standard forms remove source segmentation markers (`-`, `=`,",
-             "`<`, and `>`). Word-level forms retain source segmentation so their aligned",
-             "glosses and source-supported morphemes remain auditable. The final three",
-             "footnote examples have no source gloss and therefore no W/M analysis.", ""]
-    for r in data:
-        lines += [f"## {r['id']} / {r['source_locator']}", "", f"- Original: {r['original']}",
-                  f"- Standard: {standard_sentence(r['original'])}",
-                  f"- W count: {len(r['gloss'].split()) if r['gloss'] else 0}",
-                  f"- Source gloss: {r['gloss'] or 'not supplied'}",
-                  f"- Translation: {r['translation']}", f"- Review: {r['notes'] or 'matched rendered source'}", ""]
-    REVIEW.write_text("\n".join(lines), encoding="utf-8")
-
-
 def main() -> None:
     data = rows()
     write_xml(build(data))
     write_evidence(data)
-    print(f"Wrote {FINAL} ({len(data)} sentences)")
+    print(f"Wrote {XML} ({len(data)} sentences)")
 
 
 if __name__ == "__main__":
