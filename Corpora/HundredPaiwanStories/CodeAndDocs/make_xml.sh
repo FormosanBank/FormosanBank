@@ -55,29 +55,9 @@ CONVERSION_TABLE="$BANK/Orthographies/ConversionTables/Paiwan_Ferrell_113.tsv"
     "$BANK/Orthographies/Ortho113/Paiwan.tsv" \
     "$CONVERSION_TABLE"
 
-# The rebuild reconciles against the PREVIOUSLY PUBLISHED XML, which is a
-# historical fact rather than tooling: it is what the ID-preservation and
-# TEXT-metadata reviews were written against. Read it from the commit recorded
-# in data/provenance.json, NOT from the live tree -- the live tree is this
-# corpus's own output, so using it is self-referential and the reconciliation
-# fails ("baseline metadata differs from review"). Pinning the baseline does
-# not pin the tooling: everything above still runs from the live $BANK.
-BASELINE_COMMIT=$("$PYTHON_BIN" -c \
-    'import json,sys;print(json.load(open(sys.argv[1]))["formosanbank_commit"])' \
-    "$CODE_ROOT/data/provenance.json")
-if ! git -C "$BANK" cat-file -e "$BASELINE_COMMIT^{commit}" 2>/dev/null; then
-    echo "Baseline commit $BASELINE_COMMIT is not in $BANK; fetch it first." >&2
-    exit 1
-fi
-BASELINE_ROOT="$BUILD_ROOT/baseline"
-mkdir -p "$BASELINE_ROOT"
-git -C "$BANK" archive "$BASELINE_COMMIT" Corpora/HundredPaiwanStories/XML \
-    | tar -x -C "$BASELINE_ROOT" --strip-components=3
-
 mkdir -p "$BUILD_ROOT/reports/rebuild" "$BUILD_ROOT/reports/qc"
 "$PYTHON_BIN" "$CODE_ROOT/scripts/rebuild_xml.py" \
     --source "$SOURCE_ROOT/Paiwan Ch2 Preprocessed.docx" \
-    --baseline "$BASELINE_ROOT" \
     --output "$BUILD_ROOT/XML" \
     --reports "$BUILD_ROOT/reports/rebuild"
 

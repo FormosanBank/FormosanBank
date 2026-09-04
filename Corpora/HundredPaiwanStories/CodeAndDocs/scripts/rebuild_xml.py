@@ -538,18 +538,62 @@ def build_sentence(
     return element
 
 
+def load_baseline() -> dict[str, ET.Element]:
+    """Rebuild the previously published skeleton from the committed tables.
+
+    Returns one TEXT element per file carrying exactly what the reconciliation
+    reads: the four source-less TEXT attributes, and the S/W/M id structure
+    with each M's original FORM. The corpus is deliberately NOT rebuilt from a
+    git commit -- see scripts/export_baseline.py.
+    """
+    metadata = {row["file"]: row for row in read_tsv(DATA / "baseline_text_metadata.tsv")}
+    if len(metadata) != 100:
+        raise ValueError(f"expected 100 baseline TEXT rows, found {len(metadata)}")
+
+    roots: dict[str, ET.Element] = {}
+    sentences: dict[tuple[str, str], ET.Element] = {}
+    words: dict[tuple[str, str], ET.Element] = {}
+    for name, row in metadata.items():
+        # An empty cell means the attribute was ABSENT on the published TEXT,
+        # which is not the same as present-and-empty: story 098 carried no
+        # source at all, and text_metadata_corrections.tsv records that as
+        # "<missing>". Omit rather than set "".
+        attributes = {
+            "id": row["text_id"],
+            "citation": row["citation"],
+            "BibTeX_citation": row["BibTeX_citation"],
+            "dialect": row["dialect"],
+            "source": row["source"],
+        }
+        roots[name] = ET.Element(
+            "TEXT", {key: value for key, value in attributes.items() if value}
+        )
+
+    for row in read_tsv(DATA / "baseline_morphemes.tsv"):
+        name = row["file"]
+        if name not in roots:
+            raise ValueError(f"baseline morpheme names an unknown file: {name}")
+        sentence = sentences.get((name, row["s_id"]))
+        if sentence is None:
+            sentence = ET.SubElement(roots[name], "S", {"id": row["s_id"]})
+            sentences[(name, row["s_id"])] = sentence
+        word = words.get((name, row["w_id"]))
+        if word is None:
+            word = ET.SubElement(sentence, "W", {"id": row["w_id"]})
+            words[(name, row["w_id"])] = word
+        morpheme = ET.SubElement(word, "M", {"id": row["m_id"]})
+        form = ET.SubElement(morpheme, "FORM", {"kindOf": "original"})
+        form.text = row["m_form"]
+    return roots
+
+
 def build_corpus(
     source_path: Path,
-    baseline_path: Path,
     output_path: Path,
     reports_path: Path,
 ) -> Counter:
     stories = parse_docx(source_path)
-    baseline_files = sorted(baseline_path.glob("PaiwanCh2_*.xml"))
-    if len(baseline_files) != 100:
-        raise ValueError(
-            f"expected 100 baseline XML files, found {len(baseline_files)}"
-        )
+    baseline = load_baseline()
 
     id_exceptions = load_sentence_ids()
     optional_variants = load_optional_variants()
@@ -574,8 +618,8 @@ def build_corpus(
     rebuilt_ids: set[str] = set()
 
     for story in stories:
-        baseline_file = baseline_path / f"PaiwanCh2_{story.number:03}.xml"
-        baseline_root = ET.parse(baseline_file).getroot()
+        baseline_name = f"PaiwanCh2_{story.number:03}.xml"
+        baseline_root = baseline[baseline_name]
         baseline_file_ids = {
             identifier
             for item in baseline_root.iter()
@@ -584,7 +628,7 @@ def build_corpus(
         if len(baseline_file_ids) != sum(
             item.get("id") is not None for item in baseline_root.iter()
         ):
-            raise ValueError(f"{baseline_file.name}: duplicate published element ID")
+            raise ValueError(f"{baseline_name}: duplicate published element ID")
         overlap = published_ids & baseline_file_ids
         if overlap:
             raise ValueError(
@@ -740,7 +784,7 @@ def build_corpus(
         if len(rebuilt_file_ids) != sum(
             item.get("id") is not None for item in rebuilt_root.iter()
         ):
-            raise ValueError(f"{baseline_file.name}: duplicate rebuilt element ID")
+            raise ValueError(f"{baseline_name}: duplicate rebuilt element ID")
         overlap = rebuilt_ids & rebuilt_file_ids
         if overlap:
             raise ValueError(
@@ -748,7 +792,7 @@ def build_corpus(
             )
         rebuilt_ids.update(rebuilt_file_ids)
         ET.indent(rebuilt_root, space="    ")
-        output_file = output_path / baseline_file.name
+        output_file = output_path / baseline_name
         ET.ElementTree(rebuilt_root).write(
             output_file,
             encoding="utf-8",
@@ -840,13 +884,11 @@ def main() -> None:
         type=Path,
         default=ROOT / "Paiwan Ch2 Preprocessed.docx",
     )
-    parser.add_argument("--baseline", type=Path, required=True)
     parser.add_argument("--output", type=Path, default=ROOT / "XML" / "Paiwan")
     parser.add_argument("--reports", type=Path, default=ROOT / "reports" / "rebuild")
     args = parser.parse_args()
     stats = build_corpus(
         args.source.resolve(),
-        args.baseline.resolve(),
         args.output.resolve(),
         args.reports.resolve(),
     )

@@ -154,7 +154,17 @@ The script verifies the source checksums in `CodeAndDocs/data/source_checksums.s
 
 The build deliberately does not pin shared tooling — the bank's model is that tooling improves and corpora are regenerated against it — so a rebuild picks up later improvements, and a resulting XML diff should be reviewed rather than suppressed.
 
-It does pin one thing: the **previously published XML** that the rebuild reconciles against, recorded as `formosanbank_commit` in `CodeAndDocs/data/provenance.json`. That is a historical fact rather than tooling — it is what the ID-preservation and TEXT-metadata reviews were written against — and `make_xml.sh` materialises it from git. It must not be read from the live tree, which is this corpus's own output: doing so is self-referential and the reconciliation fails with `baseline metadata differs from review`.
+The rebuild does reconcile against the corpus **as it was last published**, because two things cannot be derived from the source document:
+
+- **Morpheme ids.** 36,815 come straight from the published corpus and 123 more are derived from them by suffixing when one published `M` splits into several source units (`M0` → `M0a`, `M0b`, `M0c`). POL-037 requires published ids to be stable, so they cannot simply be renumbered. Sentence and word ids *are* computed from the source and only checked against the published set.
+- **Four `TEXT` attributes** — `id`, `citation`, `BibTeX_citation` and `dialect` — which the Word document does not contain.
+
+That skeleton is **committed as data**, not read from a git commit:
+
+- [`CodeAndDocs/data/baseline_text_metadata.tsv`](CodeAndDocs/data/baseline_text_metadata.tsv) — one row per file, the `TEXT` attributes.
+- [`CodeAndDocs/data/baseline_morphemes.tsv`](CodeAndDocs/data/baseline_morphemes.tsv) — one row per published morpheme, in document order: its sentence, word, id and original `FORM`.
+
+Together they are exactly what the reconciliation reads and nothing more, so the corpus rebuilds from a checkout of these files alone — no git history required, and nothing breaks if an old commit becomes unreachable. `CodeAndDocs/scripts/export_baseline.py` regenerates the tables from an XML tree, so they can be re-derived and audited against the corpus they came from; it is not part of the build. `CodeAndDocs/data/provenance.json` records which FormosanBank commit the published output was built against, as documentation only.
 
 Standardization uses the shared `Orthographies/ConversionTables/Paiwan_Ferrell_113.tsv`. The corpus previously carried a corrected private copy; that correction (see "Source review" above) now lives in the shared table, so a rebuild requires a FormosanBank checkout that includes it.
 
