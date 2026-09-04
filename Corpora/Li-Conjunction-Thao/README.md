@@ -44,7 +44,9 @@ PYTHON=/path/to/FormosanBank/.venv/bin/python ./CodeAndDocs/make_xml.sh
 
 You can instead set `SOURCE_PDF=/absolute/path/to/Papers-from-12-ICAL-Volume-2.pdf`. Set `FORMOSANBANK_ROOT=/path/to/FormosanBank` only when the corpus is being rebuilt outside its containing FormosanBank checkout.
 
-The build verifies that the checkout contains the pinned authority revision, checks the official PDF and full coverage ledger, requires shared cleaning to be a source-preserving no-op, validates the 12-row conversion, creates standard FORM and standard PHON with shared utilities, reruns source checks, and requires the published XML SHA-256. Repeated builds are byte-identical.
+The build checks the official PDF and full coverage ledger, requires shared cleaning to be a source-preserving no-op, validates the 12-row conversion, creates standard FORM and standard PHON with shared utilities, reruns source checks, and requires the published XML SHA-256. Repeated builds are byte-identical.
+
+`CodeAndDocs/data/provenance.json` records the FormosanBank commit and source development commit this corpus was built against. It is documentation: nothing in the build reads it, and the build runs against the current state of the bank, so a rebuild picks up later tooling improvements rather than pinning them.
 
 ## Validation status
 

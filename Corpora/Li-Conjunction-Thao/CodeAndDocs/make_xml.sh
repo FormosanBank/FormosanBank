@@ -7,12 +7,11 @@ REPO_ROOT="${FORMOSANBANK_ROOT:-$(cd "$CORPUS_ROOT/../.." && pwd)}"
 PYTHON_BIN="${PYTHON:-python3}"
 SOURCE_PDF="${SOURCE_PDF:-$CODE_ROOT/Private/source/Papers from 12-ICAL, Volume 2.pdf}"
 
-read_authority() {
-  "$PYTHON_BIN" -c "import json; print(json.load(open('$CODE_ROOT/data/authority.json'))['$1'])"
-}
-
-EXPECTED_AUTHORITY="$(read_authority formosanbank_commit)"
-EXPECTED_XML_SHA256="$(read_authority xml_sha256)"
+# The expected hash of the published XML — a build self-check, so repeated
+# builds are provably byte-identical. It lives here rather than in
+# data/provenance.json because it is build logic: provenance.json records
+# what this corpus was built against and is never read by the pipeline.
+EXPECTED_XML_SHA256="9e7e992230a9c1618f82fd7298dbc06aaf728acac4813f349aafa5abd90683ea"
 XML_FILE="$CORPUS_ROOT/XML/Thao/li_2014_conjunction_in_thao.xml"
 CONVERSION_DIR="$CODE_ROOT/data/orthographies/ConversionTables"
 CONVERSION="$CONVERSION_DIR/Thao_Li2014_113.tsv"
@@ -22,10 +21,6 @@ TARGET_ORTHOGRAPHY="$REPO_ROOT/Orthographies/Ortho113/Thao.tsv"
 if [[ ! -f "$SOURCE_PDF" ]]; then
   echo "Missing official source PDF: $SOURCE_PDF" >&2
   echo "Run CodeAndDocs/download_source_data.sh or set SOURCE_PDF." >&2
-  exit 1
-fi
-if ! git -C "$REPO_ROOT" merge-base --is-ancestor "$EXPECTED_AUTHORITY" HEAD; then
-  echo "FormosanBank checkout must contain authority $EXPECTED_AUTHORITY" >&2
   exit 1
 fi
 
