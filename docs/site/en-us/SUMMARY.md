@@ -54,6 +54,7 @@
     * [CI workflows](the-bank-architecture/developers/repository-contracts/ci-workflows.md)
     * [Generated files](the-bank-architecture/developers/repository-contracts/generated-files.md)
     * [Single sources of truth](the-bank-architecture/developers/repository-contracts/single-sources-of-truth.md)
+    * [Language reference data](the-bank-architecture/developers/repository-contracts/language-reference-data.md)
     * [Synced pages](the-bank-architecture/developers/repository-contracts/synced-pages.md)
   * [QC Pipeline](the-bank-architecture/developers/qc-pipeline/README.md)
     * [validate\_xml.py](the-bank-architecture/developers/qc-pipeline/validate-xml.md)

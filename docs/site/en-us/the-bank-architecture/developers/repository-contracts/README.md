@@ -23,6 +23,7 @@ The difference matters because a contract fails differently from a script. You d
 <tr><td><a href="ci-workflows.md">CI workflows</a></td><td>All nine workflows: what runs when, and which ones can actually block a pull request.</td></tr>
 <tr><td><a href="generated-files.md">Generated files</a></td><td>Files CI writes and you must not hand-edit — and the one that looks generated but is not.</td></tr>
 <tr><td><a href="single-sources-of-truth.md">Single sources of truth</a></td><td>The registries every script reads for language, dialect, and orthography identity (POL-039).</td></tr>
+<tr><td><a href="language-reference-data.md">Language reference data</a></td><td>Per-language attestation dictionaries and phonology rule sidecars — both change validator and phonology behaviour, and a missing one is silent.</td></tr>
 <tr><td><a href="synced-pages.md">Synced pages</a></td><td>GitBook pages generated from canonical FormosanBank files, and the drift check that keeps them honest.</td></tr>
 </tbody></table>
 

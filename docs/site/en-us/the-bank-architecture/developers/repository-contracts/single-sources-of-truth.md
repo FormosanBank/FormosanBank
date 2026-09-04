@@ -59,7 +59,7 @@ Per POL-034 these content findings never fail the build. The job *does* gate on 
 2. A `standards.csv` row — leave the scheme blank until a standard is designated.
 3. `dialects.csv` rows, if the language is multi-dialect.
 
-Then add `QC/validation/reference/<Language>/` if validators should check its orthography or vocabulary, and keep it in step with `Orthographies/`. The end-user-facing description lives on the [Formosan Dialects](../../formosan-dialects.md) page.
+Then add `QC/validation/reference/<Language>/` if validators should check its orthography or vocabulary, and keep it in step with `Orthographies/` — see [Language reference data](language-reference-data.md) for the attestation dictionary and phonology sidecar that live there. The end-user-facing description lives on the [Formosan Dialects](../../formosan-dialects.md) page.
 
 **Never** add a fourth copy of a lookup table to a Python file. If a script needs a mapping these registries don't carry, the answer is a new column or a new registry — not a dict literal.
 
