@@ -31,7 +31,7 @@ The rebuild preserves the natural Paiwan line at the sentence tier and the separ
 
 * restores the first sentence of story 091, nine omitted final words, and four XML files missing from the earlier development output;
 * expands five optional tokens into complete sentence variants;
-* records two word-alignment decisions, three translation-note extractions, one punctuation repair, four text-metadata corrections, and 166 exact sentence-surface decisions;
+* records two word-alignment decisions, three translation-note extractions, one punctuation repair, four text-metadata corrections, and 16 exact sentence-surface decisions;
 * preserves all 64,198 identifiers from the previous public version while assigning unique identifiers to restored material; and
 * leaves the one source morpheme without a gloss, final `-i` in sentence `078S4`, genuinely unglossed rather than inventing a meaning for it.
 
@@ -67,6 +67,42 @@ alternative — inventing a gloss — is worse. The build does not simply ignore
 hard findings: `review_qc_findings.py` pins all three to this exact word and
 morpheme and fails if a fourth appears, if one moves, or if any other morpheme
 in the corpus loses its gloss.
+
+#### How sentence-level corrections are recorded
+
+A handful of sentences need a correction the blanket pipeline cannot make on its
+own. These are **not** recorded as FormosanBank manual edits
+(`capture_manual_edits.py` / `manual_edits.xml`). They live in a reviewed
+decision table,
+[`standard_surface_decisions.tsv`](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/HundredPaiwanStories/CodeAndDocs/standard_surface_decisions.tsv),
+which `normalize_sentence_standards.py` applies at the end of the build. Every
+decision is listed there in full, so readers can check each one against the
+source. All 16 rows concern parenthesised material:
+
+* **11 remove parenthesised uncertainty.** Where the source prints a bracketed
+  query on a form — `paqeteleng(?)` — the original tier keeps it and the
+  standard tier resolves it out.
+* **5 publish a parenthesised optional token as two complete sentences.** Where
+  the source prints `kemljang (aken) tu …`, both complete readings are published
+  as separate `S` elements rather than leaving a parenthesis inside a sentence.
+
+The table is preferred to a recorded diff because each row carries the source
+form, what the blanket pipeline produced, the corrected form, the decision and
+its evidence. The build re-derives the change every time, re-checks each row's
+original form against the source first, and asserts the pass is idempotent.
+
+#### Hyphens are not part of the standard orthography
+
+Ferrell's §1.6 gives three interlinear levels. The plain-text first line — the
+one that becomes the sentence `FORM` — legitimately contains hyphens, while the
+second line carries the morpheme analysis. The **original** tier keeps every one
+of them: 153 sentences contain hyphens, and the `G010` warnings report exactly
+those.
+
+The **standard** tier carries none. A hyphen is a segmentation marker rather
+than a letter of the standard orthography, so the pipeline strips it and the
+decision table does not put it back. `V133` (`dash_in_S_standard_FORM`) does not
+fire at all.
 
 #### Dialect coverage
 
