@@ -17,11 +17,24 @@ from lxml import etree
 ROOT = Path(__file__).resolve().parents[1]
 EXPECTED_COUNTS = {
     "V061": 1302,
+    "V064": 1,
     "V122": 8050,
     "V133": 153,
+    "G001": 1,
+    "G002": 1,
     "G003": 1370,
     "G010": 153,
 }
+# The one place the source itself supplies no gloss: 078S4W19's final -i.
+# The morpheme is published with no TRANSL rather than with an invented one,
+# which necessarily costs three findings -- V064 (the M has no gloss), G002
+# (4 Ms vs 3 gloss units) and G001 (the W FORM and W TRANSL skeletons differ
+# by that unit). G001 is HARD. All three are accepted and documented; each is
+# pinned to this exact location below so a fourth, or a move, fails the build.
+ACCEPTED_GAP_WORD = "S=078S4 W=078S4W19"
+ACCEPTED_GAP_MORPHEME = "M=078S4W19M0c"
+HARD_RULES = {"G001"}
+WARN_RULES = {"G010"}
 EXPECTED_V122_TIERS = {
     "M.TRANSL.original": 3790,
     "S.FORM.original": 22,
@@ -146,6 +159,47 @@ def root_gap_candidates(root: str, infixes: list[str]) -> set[str]:
     return candidates
 
 
+def verify_accepted_gloss_gap(elements, gloss_rows, scrape_rows) -> None:
+    """Pin V064/G001/G002 to 078S4W19's unglossed final -i, and nothing else.
+
+    These three findings are the accepted cost of publishing the one morpheme
+    the source leaves unglossed without inventing a gloss for it. Each is
+    checked against the XML rather than taken on trust, so a regression that
+    drops a different gloss cannot hide behind the accepted exception.
+    """
+    located = {
+        (row["rule_id"], row["location"])
+        for rows in (gloss_rows, scrape_rows)
+        for row in rows
+        if row["rule_id"] in {"V064", "G001", "G002"}
+    }
+    expected = {
+        ("V064", ACCEPTED_GAP_MORPHEME),
+        ("G001", ACCEPTED_GAP_WORD),
+        ("G002", ACCEPTED_GAP_WORD),
+    }
+    if located != expected:
+        raise ValueError(f"accepted gloss-gap findings moved or multiplied: {located}")
+
+    word_id = ACCEPTED_GAP_WORD.split("W=")[1]
+    morpheme_id = ACCEPTED_GAP_MORPHEME.split("=")[1]
+    word = next(
+        element
+        for key, element in elements.items()
+        if key[1] == word_id and element.tag == "W"
+    )
+    morphemes = word.findall("M")
+    if [item.get("id") for item in morphemes][-1] != morpheme_id:
+        raise ValueError(f"{morpheme_id} is no longer the final M of {word_id}")
+    if morphemes[-1].findall("TRANSL"):
+        raise ValueError(f"{morpheme_id} has a TRANSL; the source supplies none")
+    if any(not item.findall("TRANSL") for item in morphemes[:-1]):
+        raise ValueError(f"{word_id} has an unexpected second unglossed morpheme")
+    word_translations = word.findall("TRANSL")
+    if len(word_translations) != 1 or not word_translations[0].get("notes"):
+        raise ValueError(f"{word_id} must carry one W TRANSL whose notes record the gap")
+
+
 def review(
     xml_root: Path,
     xml_rows: list[dict[str, str]],
@@ -159,8 +213,8 @@ def review(
 
     expected_rules = {
         "text": {"V122", "V133"},
-        "gloss": {"V061"},
-        "scrape": {"G003", "G010"},
+        "gloss": {"V061", "V064"},
+        "scrape": {"G001", "G002", "G003", "G010"},
     }
     actual_rules = {
         "text": {row["rule_id"] for row in text_rows},
@@ -172,7 +226,13 @@ def review(
 
     for rows in (text_rows, gloss_rows, scrape_rows):
         for row in rows:
-            expected_severity = "WARN" if row["rule_id"] == "G010" else "SOFT"
+            rule_id = row["rule_id"]
+            if rule_id in HARD_RULES:
+                expected_severity = "HARD"
+            elif rule_id in WARN_RULES:
+                expected_severity = "WARN"
+            else:
+                expected_severity = "SOFT"
             if row["severity"] != expected_severity:
                 raise ValueError(
                     f"{row['rule_id']}: expected {expected_severity}, found {row['severity']}"
@@ -215,6 +275,8 @@ def review(
     }
     finding_words: set[tuple[str, str]] = set()
     for row in gloss_rows:
+        if row["rule_id"] != "V061":
+            continue
         filename = Path(row["file"]).name
         word_id = location_id(row["location"], "W")
         key = (filename, word_id)
@@ -280,6 +342,8 @@ def review(
     if g010_by_file != retained_by_file:
         raise ValueError("G010 counts differ from exact source-reviewed hyphens")
 
+    verify_accepted_gloss_gap(elements, gloss_rows, scrape_rows)
+
     authority = json.loads(
         (ROOT / "data" / "authority.json").read_text(encoding="utf-8")
     )
@@ -293,9 +357,19 @@ def review(
             "V061": "all 1,302 are reduplicated W forms using the canonical tilde marker",
             "V122": "all 8,050 exactly cover preserved source FORM and TRANSL notation",
             "V133": "all 153 are exact source-reviewed sentence hyphens",
+            "V064": "the single unglossed M is 078S4W19M0c, the -i the source leaves without a gloss",
+            "G002": "078S4W19 has 4 Ms and 3 source gloss units for the same reason",
             "V122_by_tier": dict(sorted(v122_tiers.items())),
         },
-        "hard_findings": 0,
+        "hard_findings": 1,
+        "accepted_hard_findings": {
+            "G001": (
+                "078S4W19: the source supplies no gloss for the final -i, so the "
+                "morpheme is published unglossed rather than with an invented "
+                "gloss. The W FORM and W TRANSL skeletons differ by that one "
+                "unit. Accepted and documented; see the corpus README."
+            )
+        },
         "ready_to_port": True,
         "rights_conditions": authority["rights"]["conditions"],
     }

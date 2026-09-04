@@ -206,10 +206,12 @@ done
     "$PYTHON_BIN" "$PINNED_ROOT/QC/validation/validate_glosses.py" by_path \
         --path XML \
         --csv reports/qc/gloss.csv
+    # No --exit-on-hard: G001 fires once, by design, on the unglossed -i in
+    # 078S4W19 (see review_qc_findings.py). scripts/review_qc_findings.py is
+    # the gate -- it pins that finding to that location and rejects any other.
     "$PYTHON_BIN" "$PINNED_ROOT/QC/validation/audit_gloss_scrape.py" \
         --xml XML \
         --no-source \
-        --exit-on-hard \
         --csv reports/qc/scrape.csv
 )
 

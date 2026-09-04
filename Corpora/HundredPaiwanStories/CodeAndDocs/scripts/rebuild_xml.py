@@ -345,13 +345,16 @@ def units_for_word(
         raise ValueError("078S4W19 morph source differs from the reviewed override")
     if normalize_legacy(gloss) != override.source_gloss:
         raise ValueError("078S4W19 gloss source differs from the reviewed override")
-    if override.canonical_glosses[-1] != "?":
-        raise ValueError("078S4W19 must mark its missing final source gloss explicitly")
+    if len(override.canonical_forms) != len(override.canonical_glosses) + 1:
+        raise ValueError("078S4W19 must record exactly one unglossed final form unit")
+    # The source supplies no gloss for the final -i. Emit the morpheme with no
+    # TRANSL at all rather than inventing one: an empty gloss here is the
+    # absence of a source gloss, and the W TRANSL's notes attribute says so.
     return [
         AnalysisUnit("al", "qal", "infix", "="),
         AnalysisUnit("te", "do", "regular", "-"),
         AnalysisUnit("talem", "plant", "regular", "-"),
-        AnalysisUnit("i", "?", "regular", ""),
+        AnalysisUnit("i", "", "regular", ""),
     ]
 
 
@@ -506,15 +509,10 @@ def build_sentence(
             morpheme = ET.SubElement(word, "M", {"id": morpheme_id})
             form(morpheme, m_form)
             if unit.gloss:
-                explicit_unknown = missing_gloss_word and unit_index == len(units) - 1
-                translation(
-                    morpheme,
-                    unit.gloss,
-                    notes=MISSING_GLOSS_NOTE if explicit_unknown else None,
-                    kind_of="original",
-                )
-                stats["explicit_unknown_morphemes"] += int(explicit_unknown)
+                translation(morpheme, unit.gloss, kind_of="original")
             else:
+                # The source gave no gloss for this morpheme, so it gets no
+                # TRANSL. See MISSING_GLOSS_NOTE on the parent W.
                 stats["unglossed_morphemes"] += 1
 
         if inferred_infixes:
@@ -786,10 +784,14 @@ def build_corpus(
     stats["note_extractions"] = len(note_extractions)
     stats["recovered_final_words"] = len(recovered_words)
     stats["translation_punctuation_corrections"] = len(translation_corrections)
-    if stats["explicit_unknown_morphemes"] != 1:
-        raise ValueError("expected one explicit marker for a missing source gloss")
-    if stats["unglossed_morphemes"] != 0:
-        raise ValueError("unexpected unglossed source morpheme")
+    # Exactly one morpheme in the corpus is unglossed: 078S4W19's final -i,
+    # which the source leaves without a gloss cell. Any other unglossed
+    # morpheme is a regression, not an accepted gap.
+    if stats["unglossed_morphemes"] != 1:
+        raise ValueError(
+            "expected exactly one unglossed source morpheme, got "
+            f"{stats['unglossed_morphemes']}"
+        )
 
     write_tsv(
         reports_path / "gap_inference.tsv",

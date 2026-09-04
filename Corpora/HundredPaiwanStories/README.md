@@ -33,7 +33,34 @@ The S tier preserves each natural Paiwan line. The W and M tiers preserve the se
 
 The rebuild was checked against all 268 rendered pages of the two checksum-pinned Word documents. It restores story 091's omitted first sentence, nine omitted final words, five complete optional-token variants, and four missing legacy XML files. It also records two word-alignment decisions, three translation-note extractions, one punctuation repair, four TEXT metadata corrections, and 166 exact sentence-level surface decisions.
 
-Sentence `078S4` contains a final `-i` for which the source provides no gloss. The XML preserves it and marks the meaning as editorially unknown instead of inventing an analysis.
+### The one unglossed morpheme
+
+Sentence `078S4`, word 19 (`t<al>e-talem-i`) is the single place where the
+source's analysis runs short: it prints four form units but only three gloss
+units (`al=te-talem-i` against `qal=do-plant`), leaving the final `-i`
+unglossed.
+
+The morpheme `078S4W19M0c` is therefore published **with no `TRANSL` at all**.
+An absent gloss is the honest record of an absent source gloss. It is
+deliberately not filled with a `?`: this source writes `?` itself, as a real
+gloss, for morphemes it cannot identify — 337 times — so a `?` of our own
+would be indistinguishable from the author's. The `notes` attribute on the
+word's `TRANSL` records that the gap is intentional.
+
+Three validator findings follow directly from that choice, and are **accepted**:
+
+| rule | severity | what it reports |
+| --- | --- | --- |
+| `V064` `every_M_has_TRANSL` | SOFT | `078S4W19M0c` has no gloss |
+| `G002` `M_count_matches_gloss_units` | SOFT | the W has 4 `M` but its gloss implies 3 |
+| `G001` `marker_skeleton_parity` | **HARD** | `t<al>e-talem-i` and `do<qal>-plant` differ by that unit |
+
+There is no way to publish an unglossed morpheme without them; the alternative
+is to invent a gloss, which is worse. `make_xml.sh` therefore does not pass
+`--exit-on-hard` to the gloss-scrape audit. It is not ungated:
+`scripts/review_qc_findings.py` pins all three findings to this exact word and
+morpheme and fails the build if a fourth appears, if one moves, or if any other
+morpheme loses its gloss.
 
 The reviewed decisions, source files, source checksums, authority pins, generator, tests, and audit evidence are all under `CodeAndDocs/`.
 

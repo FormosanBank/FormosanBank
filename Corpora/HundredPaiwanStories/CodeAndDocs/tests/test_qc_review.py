@@ -23,7 +23,12 @@ class QCFindingReviewTests(unittest.TestCase):
             read_csv(qc / "scrape.csv"),
             ROOT / "standard_surface_decisions.tsv",
         )
-        self.assertEqual(summary["hard_findings"], 0)
+        # One HARD finding is accepted by design: G001 on 078S4W19, whose
+        # final -i the source leaves unglossed. review() pins it to that exact
+        # location, so any other hard finding fails before reaching here.
+        self.assertEqual(summary["hard_findings"], 1)
+        self.assertEqual(list(summary["accepted_hard_findings"]), ["G001"])
+        self.assertIn("078S4W19", summary["accepted_hard_findings"]["G001"])
         self.assertTrue(summary["ready_to_port"])
 
 

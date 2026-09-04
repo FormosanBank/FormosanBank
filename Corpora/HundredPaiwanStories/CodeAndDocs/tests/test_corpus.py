@@ -231,31 +231,49 @@ class CorpusTests(unittest.TestCase):
             correction["corrected_translation"].count(")"),
         )
 
-    def test_missing_source_gloss_is_explicit_and_not_invented(self) -> None:
+    def test_missing_source_gloss_is_left_unglossed_not_invented(self) -> None:
         sentence = self.sentences[("PaiwanCh2_078.xml", "078S4")]
         word = next(
             item for item in sentence.findall("W") if item.get("id") == "078S4W19"
         )
-        word_translation = word.find("TRANSL")
         final_morpheme = word.findall("M")[-1]
-        final_translation = final_morpheme.find("TRANSL")
-        self.assertEqual(word_translation.text, "do<qal>-plant-?")
-        self.assertEqual(final_translation.text, "?")
-        # The editorial "?" is marked by its notes attribute, not by kindOf.
-        # POL-036 reserves TRANSL[@kindOf="standard"] for a standardized gloss
-        # recorded *alongside* the original one; used alone it would leave a
-        # hole in the original tier at the one place we mean to be explicit.
-        self.assertEqual(word_translation.get("kindOf"), "original")
-        self.assertEqual(final_translation.get("kindOf"), "original")
+
+        # The source has four form units but only three gloss units. The final
+        # -i is published with no TRANSL at all: an absent gloss is the honest
+        # record of an absent source gloss, where a "?" would be a gloss this
+        # project invented. The W TRANSL carries the source gloss verbatim and
+        # its notes attribute is what says the gap is deliberate.
+        self.assertEqual(final_morpheme.get("id"), "078S4W19M0c")
+        self.assertEqual(final_morpheme.findall("TRANSL"), [])
         self.assertEqual(
-            final_translation.get("notes"),
+            final_morpheme.find("FORM[@kindOf='original']").text, "i"
+        )
+
+        word_translation = word.find("TRANSL")
+        self.assertEqual(word_translation.text, "do<qal>-plant")
+        self.assertEqual(word_translation.get("kindOf"), "original")
+        self.assertEqual(
+            word_translation.get("notes"),
             "No source gloss was supplied for final -i.",
         )
-        for parent in (word, final_morpheme):
-            self.assertEqual(
-                [item.get("kindOf") for item in parent.findall("TRANSL")],
-                ["original"],
-            )
+        self.assertEqual(len(word.findall("TRANSL")), 1)
+
+        # No "?" of our own in this word. "?" is a real gloss in this source
+        # -- it writes one for morphemes it cannot identify, 337 times -- so
+        # an invented "?" here would have been indistinguishable from them.
+        self.assertNotIn("?", word_translation.text)
+        for morpheme in word.findall("M"):
+            for translation in morpheme.findall("TRANSL"):
+                self.assertNotIn("?", translation.text or "")
+
+        # It is the only unglossed morpheme in the corpus.
+        unglossed = [
+            element.get("id", "")
+            for root in self.roots.values()
+            for element in root.iter()
+            if element.tag == "M" and not element.findall("TRANSL")
+        ]
+        self.assertEqual(unglossed, ["078S4W19M0c"])
 
     def test_source_files_and_parser_inventory_are_pinned(self) -> None:
         expected = {}
@@ -289,7 +307,7 @@ class CorpusTests(unittest.TestCase):
             "morphemes": 36938,
             "published_ids_preserved": 64198,
             "rebuilt_ids": 64515,
-            "explicit_unknown_morphemes": 1,
+            "unglossed_morphemes": 1,
             "recovered_final_words": 9,
         }
         for key, value in expected.items():
