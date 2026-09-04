@@ -71,9 +71,10 @@ in the corpus loses its gloss.
 #### How sentence-level corrections are recorded
 
 A handful of sentences need a correction the blanket pipeline cannot make on its
-own. These are **not** recorded as FormosanBank manual edits
-(`capture_manual_edits.py` / `manual_edits.xml`). They live in a reviewed
-decision table,
+own. The corpus uses **both** recording mechanisms, for the two different kinds
+of correction.
+
+**A systematic, source-derived rule** goes in a reviewed decision table,
 [`standard_surface_decisions.tsv`](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/HundredPaiwanStories/CodeAndDocs/standard_surface_decisions.tsv),
 which `normalize_sentence_standards.py` applies at the end of the build. Every
 decision is listed there in full, so readers can check each one against the
@@ -86,10 +87,25 @@ source. All 16 rows concern parenthesised material:
   the source prints `kemljang (aken) tu …`, both complete readings are published
   as separate `S` elements rather than leaving a parenthesis inside a sentence.
 
-The table is preferred to a recorded diff because each row carries the source
-form, what the blanket pipeline produced, the corrected form, the decision and
-its evidence. The build re-derives the change every time, re-checks each row's
-original form against the source first, and asserts the pass is idempotent.
+The table is preferred to a recorded diff for these because each row carries the
+source form, what the blanket pipeline produced, the corrected form, the
+decision and its evidence. The build re-derives the change every time,
+re-checks each row's original form against the source first, and asserts the
+pass is idempotent.
+
+**A genuine one-off editorial judgement** goes in
+[`manual_edits.xml`](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/HundredPaiwanStories/CodeAndDocs/manual_edits.xml),
+the standard FormosanBank mechanism, replayed by `apply_manual_edits.py` and
+summarised in
+[`manual_edits.md`](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/HundredPaiwanStories/CodeAndDocs/manual_edits.md).
+There is exactly one such record, `008S28`. The source prints its inner
+quotation with curly single quotes; the cleaner folds those to `'` and then
+declines to rewrite them as `"`, because the translation does not place the
+quotation confidently enough to rule out a glottal reading — `'` is the glottal
+letter in this orthography, so the cleaner logs the case rather than guessing.
+Here it is a quotation, so the edit sets `"aa"` in the original tier. The build
+fails if that record ever becomes a no-op, since a no-op would mean the pipeline
+now produces the content by itself and the record is obsolete.
 
 #### Hyphens are not part of the standard orthography
 
