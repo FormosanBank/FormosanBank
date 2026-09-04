@@ -15,7 +15,7 @@ are permitted, and commercial use requires prior written permission. Every
 
 The corpus is also subject to the central FormosanBank terms in [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI use requires prior written permission.
 
-The two Word files R. J. Early provided are distributed with the corpus under `CodeAndDocs/` so the rebuild runs from a FormosanBank checkout alone. The private correspondence recording the permission was used for the source audit but is not distributed.
+The two Word files R. J. Early provided are distributed with the corpus under `CodeAndDocs/` so the rebuild runs from a FormosanBank checkout alone. The private correspondence recording the permission is not distributed; it was reviewed on 2026-08-22, and the verdict is *allowed with conditions* on the terms above.
 
 ## Contents
 
@@ -128,9 +128,11 @@ was not redundant — it took precedence over the case-variant derivation in
 standard tier (`Ḍiququ → driququ`, `Ḍaḍengeraw → dradrengeraw`). Without it the
 standardizer derives the case-preserving `Ḍ → Dr` from the lowercase `ḍ → dr`
 rule, and those names standardize as `Driququ` and `Dradrengeraw`. Uppercase `Ḍ`
-occurs in no other corpus, and no other corpus uses this table, so removing the
-row changes nothing outside these texts. An exact snapshot of the corrected
-table is pinned with the corpus rebuild inputs.
+occurs in no other corpus today, so removing the row changed nothing outside
+these texts, and the fix now lives in the shared table for every Paiwan corpus.
+It is phonology-neutral: all 128,830 `PHON` elements are unchanged, because
+`add_phonology.py` matches orthography letters case-insensitively and already
+read `Ḍ` as `ɖ`.
 
 ## Reproduce
 
@@ -148,7 +150,13 @@ python3 -m pip install -r Corpora/HundredPaiwanStories/CodeAndDocs/requirements.
 Corpora/HundredPaiwanStories/CodeAndDocs/make_xml.sh --check
 ```
 
-The script checks out the exact FormosanBank authority revision recorded in `CodeAndDocs/data/authority.json`, verifies every required tooling object, rebuilds the XML, runs the full validator and test suite, and compares the result with the published files. Use `--write` only when intentionally regenerating the corpus.
+The script verifies the source checksums in `CodeAndDocs/data/source_checksums.sha256`, rebuilds the XML against the current FormosanBank checkout, runs the full validator and test suite, and compares the result with the published files. Use `--write` only when intentionally regenerating the corpus.
+
+The build deliberately does not pin shared tooling — the bank's model is that tooling improves and corpora are regenerated against it — so a rebuild picks up later improvements, and a resulting XML diff should be reviewed rather than suppressed.
+
+It does pin one thing: the **previously published XML** that the rebuild reconciles against, recorded as `formosanbank_commit` in `CodeAndDocs/data/provenance.json`. That is a historical fact rather than tooling — it is what the ID-preservation and TEXT-metadata reviews were written against — and `make_xml.sh` materialises it from git. It must not be read from the live tree, which is this corpus's own output: doing so is self-referential and the reconciliation fails with `baseline metadata differs from review`.
+
+Standardization uses the shared `Orthographies/ConversionTables/Paiwan_Ferrell_113.tsv`. The corpus previously carried a corrected private copy; that correction (see "Source review" above) now lives in the shared table, so a rebuild requires a FormosanBank checkout that includes it.
 
 ## Validation
 

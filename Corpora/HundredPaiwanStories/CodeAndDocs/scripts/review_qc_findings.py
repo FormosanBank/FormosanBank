@@ -358,11 +358,7 @@ def review(
 
     verify_accepted_gloss_gap(elements, gloss_rows, scrape_rows)
 
-    authority = json.loads(
-        (ROOT / "data" / "authority.json").read_text(encoding="utf-8")
-    )
     return {
-        "authority_commit": authority["public_baseline"]["commit"],
         "inventory": dict(sorted(inventory.items())),
         "validator_findings": counts,
         "review": {
@@ -384,7 +380,6 @@ def review(
             )
         },
         "ready_to_port": True,
-        "rights_conditions": authority["rights"]["conditions"],
     }
 
 
@@ -394,8 +389,6 @@ def markdown(summary: dict[str, object]) -> str:
     tiers = review_notes["V122_by_tier"]
     inventory = summary["inventory"]
     return f"""# QC summary
-
-Authority: FormosanBank `{summary["authority_commit"]}`.
 
 ## Inventory
 
@@ -420,7 +413,7 @@ Authority: FormosanBank `{summary["authority_commit"]}`.
 - G010: {review_notes["G010"]}. V133 does not fire: no standard FORM contains a hyphen.
 - V122: {review_notes["V122"]}. No sentence FORM carries a parenthesis: the source’s "(?)" annotation is recorded in a notes attribute instead. Parentheses are balanced after the recorded 057S3 punctuation repair. The occurrences comprise {tiers["S.TRANSL.unspecified"]:,} in source free translations, {tiers["W.TRANSL.original"]:,} in source W glosses, and {tiers["M.TRANSL.original"]:,} in source M glosses.
 
-No remaining finding blocks publication. The corpus is ready to port under the recorded rights conditions: {summary["rights_conditions"]}
+No remaining finding blocks publication. The corpus is ready to port under the rights conditions recorded in the corpus README.
 """
 
 
