@@ -1,7 +1,7 @@
 # Current QC status
 
-- Run date: 2026-09-04
-- FormosanBank authority: `e00edf3d83ecfdce37392a73b3d2796446f44195`
+- Run date: 2026-09-04 (final)
+- FormosanBank authority: `7c2e0b692abed413bd9234d866cf9f0435c9651e`
 - Verdict: `ready to port` as an update to `YeddaPalemeqBlog`
 - Publication boundary: the public update remains subject to review and merge
 
@@ -15,16 +15,16 @@
 - 25,612 PHON
 - 5,585 TRANSL
 - 665 AUDIO
-- XML SHA256: `202dcfe2d117ebe12644bdd76332b2c02fffbd0d1c26ace0aa3f843d489f1aa4`
+- XML SHA256: `5144410793dc3292a75a81feade52d699443bffd2497837c702d31afbb786752`
 
 ## Current gates
 
 - Structural and update-mode XML: 0 HARD; 1 source-backed SOFT finding
-- Text: 0 HARD; 2,410 source-backed SOFT findings
+- Text: 0 HARD; 2,407 source-backed SOFT findings
 - Gloss: 0 HARD; 7,499 source-limitation SOFT findings
 - Duplicate sentences: two source-authentic groups in each tier
 - Issue #1: 9/9 source-backed dispositions; 0 unresolved
-- Exact adjudication: 9,918 accepted finding occurrences; 0 unresolved
+- Exact adjudication: 9,915 accepted finding occurrences; 0 unresolved
 - Published port readiness: 0 HARD, 0 WARN
 - Regression tests: 11 passed
 
@@ -34,12 +34,12 @@ word breakdown (`S268_1`, `S269_1`, `S378_1`-`S381_1`, `S393_1`, `S533_1`,
 `S545_1`-`S545_8`). They are source-backed, unchanged from the predecessor, and
 there is nothing to segment.
 
-The text SOFT inventory is 21 V116 code-switching or source diacritics and
+The text SOFT inventory is 18 V116 code-switching or source diacritics and
 2,389 V122 source punctuation or analytic notes. The gloss SOFT inventory is
 2 V060 word-count signals, 274 V062 prose-infix-gloss signals, 6,492 V064
 missing morpheme translations, and 731 V065 missing word translations. V060 and
-V148 both reflect authority `e00edf3d8`, which added V148 and scoped V060 to
-files that have a W tier; under the previous pin V060 counted 18. The
+V148 both reflect authority `7c2e0b692`, which added V148 and scoped V060 to
+files that have a W tier; under the earlier `3a3c47c22` pin V060 counted 18. The
 blog does not provide a complete interlinear morpheme analysis, so the tiers
 that remain are retained without invented glosses.
 
@@ -55,12 +55,12 @@ V064 7,657 -> 6,492 movement; no gloss was invented or discarded. Because
 sentence keeps any segmentation hyphen in its standard FORM.
 
 `standardize.py --remove_accents` replaces the previous `--copy`, so the
-standard tier is the original minus the combining acute and breve. It changes
-exactly two words, both quoted Mandarin kin terms in `S303_1`: `yípó` ->
-`yipo` and `āyí` -> `āyi`, which accounts for the whole V116 30 -> 21 movement.
-The residual macron in `āyi` is `ACCENTS_TO_STRIP` behaviour, not a Yedda
-decision, and is worth a ruling: pinyin tone marks are lexical rather than
-prosodic, so flattening a quoted non-Formosan word may not be wanted at all.
+standard tier is the original minus the combining acute, breve and macron. It
+changes exactly two words, both quoted Mandarin kin terms in `S303_1`: `yípó`
+-> `yipo` and `āyí` -> `ayi`, which accounts for the whole V116 30 -> 18
+movement. Stripping is filtered through the keep set of letters the language
+attests (`QC/validation/reference/<Language>/`); Paiwan attests no accented
+letter, so nothing is protected here and both words flatten completely.
 C012 now also produces the `S652653654_2` standard surface, which the retired
 `apply_standard_surface.py` used to write by hand after standardize. That step
 is gone: nothing in the build touches a standard FORM after `standardize.py`

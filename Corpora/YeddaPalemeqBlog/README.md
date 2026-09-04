@@ -28,7 +28,7 @@ prohibited without prior written permission.
 - 5,585 TRANSL elements
 - 665 AUDIO references
 - Canonical XML SHA-256:
-  `202dcfe2d117ebe12644bdd76332b2c02fffbd0d1c26ace0aa3f843d489f1aa4`
+  `5144410793dc3292a75a81feade52d699443bffd2497837c702d31afbb786752`
 
 The original transcription uses the established Yedda Ortho113 route. The
 standard FORM tier is derived from the original tier, and both PHON tiers are
@@ -111,13 +111,18 @@ rule; the original keeps the source surface. The reason is recorded as a
 edits a standard FORM after `standardize.py` runs — the standard tier is
 machine-owned (POL-002).
 
-**The standard tier drops source acute accents.** The build runs
+**The standard tier drops source accents.** The build runs
 `standardize.py --remove_accents`, so the standard tier is the original minus
-the accents FormosanBank treats as prosodic. In practice this touches only the
-two Mandarin kin terms quoted in `S303_1`: `yípó` becomes `yipo` and `āyí`
-becomes `āyi`. The macron survives because `QC/utilities/_accents.py` strips
-only the combining acute and breve. The original tier keeps the source
-spelling untouched in every case.
+the diacritics FormosanBank treats as prosody rather than spelling — the
+combining acute, breve and macron. In practice this touches only the two
+Mandarin kin terms quoted in `S303_1`: `yípó` becomes `yipo`, `āyí` becomes
+`ayi`. The original tier keeps the source spelling untouched in every case.
+
+Stripping is filtered through a keep set of accented letters the language
+attests as real letters, drawn from `QC/validation/reference/<Language>/`.
+Paiwan attests none, so nothing here is protected and both words flatten
+completely. In a language that does spell with an accented letter the outcome
+differs — Puyuma's `ē`, for instance, survives untouched.
 
 ## Source reconciliation
 
@@ -170,7 +175,7 @@ than renumbering unrelated records.
 
 Reproducing the published corpus therefore means rebuilding from the frozen
 snapshot, not re-scraping. The pipeline is pinned to FormosanBank commit
-`e00edf3d83ecfdce37392a73b3d2796446f44195` and to development source commit
+`7c2e0b692abed413bd9234d866cf9f0435c9651e` and to development source commit
 `25ed1f1ec56584e4a3e9fc960269c72d0e892a58`.
 
 From a clean FormosanBank checkout, rebuild with:
@@ -201,7 +206,7 @@ Corpora/YeddaPalemeqBlog/CodeAndDocs/scripts/reproduce.sh
 ```
 
 The pinned handoff has zero structural, text, or gloss HARD findings. Its
-9,918 soft finding occurrences are source-backed and fail-closed by exact
+9,915 soft finding occurrences are source-backed and fail-closed by exact
 rule counts — including one file-level V148 recording that 16 sentences are
 bare phrase entries the blog never broke into words. Eleven corpus regression tests cover source hashes, source
 coverage, reviewed repairs, stable tier shape, per-sentence M-tier

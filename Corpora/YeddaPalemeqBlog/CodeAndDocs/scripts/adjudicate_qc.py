@@ -11,9 +11,12 @@ from pathlib import Path
 
 
 # V116 counts the 30 source diacritics and code-switched characters the blog
-# prints; 9 of them sit in the standard tier of two quoted Mandarin kin terms
-# that standardize.py --remove_accents flattens, so only 21 remain.
-EXPECTED_TEXT = Counter({"V116": 21, "V122": 2389})
+# prints. Twelve of them sit in the standard tier of the two quoted Mandarin kin
+# terms in S303_1, which standardize.py --remove_accents flattens: 'yipo' loses
+# two acutes and 'ayi' loses an acute and a macron, at S, W and M level. The
+# original tier keeps all 30. Paiwan attests no accented letter, so the keep set
+# protects nothing here -- contrast Puyuma, whose 'ē' survives.
+EXPECTED_TEXT = Counter({"V116": 18, "V122": 2389})
 # V064 is one finding per morpheme without a gloss. fix_m_tier.py removes the
 # 1,165 mirror morphemes of the unparsed sentences, so the inventory falls from
 # 7,657 to 6,492 without any gloss being invented or lost.

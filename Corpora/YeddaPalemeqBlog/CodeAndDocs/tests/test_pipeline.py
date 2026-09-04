@@ -202,13 +202,14 @@ class YeddaPipelineTests(unittest.TestCase):
         self.assertEqual(len(self.root.findall(".//M")), 6492)
 
     def test_standard_tier_strips_source_accents(self) -> None:
-        """--remove_accents flattens the acute in two quoted Mandarin terms.
+        """--remove_accents flattens the diacritics on two quoted Mandarin terms.
 
-        The macron survives: ACCENTS_TO_STRIP holds only the combining acute
-        and breve, so the standard tier keeps 'ā'. The original tier is
-        untouched in every case.
+        Both the acute and the macron are stripped from the standard tier.
+        Paiwan attests no accented letter, so the corpus passes no keep set
+        letters here and nothing is protected. The original tier is untouched
+        in every case.
         """
-        expected = {"S303_1W9": ("yípó", "yipo"), "S303_1W14": ("āyí", "āyi")}
+        expected = {"S303_1W9": ("yípó", "yipo"), "S303_1W14": ("āyí", "ayi")}
         for word_id, (original, standard) in expected.items():
             word = self.root.find(f".//W[@id='{word_id}']")
             self.assertIsNotNone(word)
