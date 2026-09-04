@@ -56,24 +56,22 @@ fi
 "$PYTHON" "$FORMOSANBANK_PATH/QC/cleaning/clean_xml.py" --corpora_path "$XML_PATH"
 
 # 7. The source inventory is Ortho113. It uses ʉ and r, has no l, and its own
-#    discussion says r represents the former l/r contrast. Standardization is an
-#    identity copy before the exact reviewed surface decisions below.
-"$PYTHON" "$FORMOSANBANK_PATH/QC/utilities/standardize.py" --copy --corpora_path "$XML_PATH"
+#    discussion says r represents the former l/r contrast, so no conversion
+#    table is needed. --remove_accents (not --copy) because the book's acute
+#    vowels mark stress, not Ortho113 segments: they stay in the original tier
+#    and the shared utility folds them out of the standard tier.
+"$PYTHON" "$FORMOSANBANK_PATH/QC/utilities/standardize.py" \
+  --remove_accents --corpora_path "$XML_PATH"
 
 # 8. Apply the exact reviewed dictionary, punctuation, and lyric decisions. Bound
 #    citation forms without an unattached surface intentionally omit standard.
 "$PYTHON" "$ROOT/scripts/normalize_standard_forms.py" --corpora_path "$XML_PATH"
 
-# 9. Acute vowels record stress in the source but are not separate Ortho113
-#    segments. Preserve them in original FORM, fold standard and alternate FORM,
-#    and fold only a temporary copy when generating original PHON.
-"$PYTHON" "$ROOT/scripts/fold_standard_stress.py" --corpora_path "$XML_PATH"
-
-# 10. The wrapper delegates both tiers to the shared Ortho113 utility. It defines
-#    no corpus-specific mapping and restores each original FORM byte-for-byte.
-"$PYTHON" "$ROOT/scripts/add_shared_phonology.py" \
-  --corpora_path "$XML_PATH" \
-  --shared-script "$FORMOSANBANK_PATH/QC/utilities/add_phonology.py"
+# 9. Shared Ortho113 phonology, both tiers. add_phonology folds stress accents
+#    itself (PHON is segmental; stress is not a segment), so the original FORM
+#    keeps its accents while PHON stays clean IPA. No corpus-specific mapping.
+"$PYTHON" "$FORMOSANBANK_PATH/QC/utilities/add_phonology.py" \
+  --corpora_path "$XML_PATH" --orthography Ortho113
 
 # Per-run cleaner triage is reviewed during QC and is not canonical corpus data.
 rm -f "$XML_PATH/cleaner_warnings.csv"

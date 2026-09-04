@@ -6,11 +6,24 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import os
 import re
 import string
+import sys
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass
 from pathlib import Path
+
+# The reviewed decisions record the SOURCE surface, accents and all, because
+# they are also matched against the original tier. standardize.py --remove_accents
+# has already folded stress out of the standard tier by the time this runs, so
+# every comparison against (or write into) that tier folds the decision first.
+_FORMOSANBANK = Path(
+    os.environ.get("FORMOSANBANK_PATH", Path(__file__).resolve().parents[4])
+)
+if str(_FORMOSANBANK) not in sys.path:
+    sys.path.insert(0, str(_FORMOSANBANK))
+from QC.utilities._accents import strip_accents  # noqa: E402
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -217,7 +230,7 @@ def apply_decision(sentence: ET.Element, decision: Decision) -> int:
             "never reach the XML"
         )
 
-    standard.text = decision.output_forms[0]
+    standard.text = strip_accents(decision.output_forms[0])
     standard.set("notes", decision.note)
     insert_at = list(sentence).index(standard) + 1
     for output in decision.output_forms[1:]:
@@ -309,7 +322,7 @@ def normalize_dictionary(
                     f"{entry_id} original lost its source-apparatus note"
                 )
             standard = one_form(sentence, "standard")
-            if (standard.text or "") != output:
+            if (standard.text or "") != strip_accents(output):
                 raise ValueError(
                     f"{entry_id} standard drifted from the reviewed output: "
                     f"{standard.text!r}; expected {output!r}"
@@ -357,12 +370,12 @@ def normalize_analysis_tiers(root: ET.Element) -> int:
                 f"Analysis-tier source changed for {record_id}: {original.text!r}; "
                 f"expected {expected_original!r}"
             )
-        if (standard.text or "") != expected_original:
+        if (standard.text or "") != strip_accents(expected_original):
             raise ValueError(
                 f"Analysis-tier standard changed before review for {record_id}: "
                 f"{standard.text!r}; expected {expected_original!r}"
             )
-        standard.text = output_standard
+        standard.text = strip_accents(output_standard)
         standard.set("notes", ANALYSIS_TIER_NOTE)
     return len(ANALYSIS_TIER_CORRECTIONS)
 
@@ -407,7 +420,7 @@ def process_file(path: Path) -> tuple[int, int, int, int]:
         split_entries = 0
         omissions = 0
         reviewed_dash_surfaces = frozenset(
-            decision.output_forms[0]
+            strip_accents(decision.output_forms[0])
             for decision in decisions.values()
             if decision.decision_class == "source_break_punctuation_single_dash"
         )

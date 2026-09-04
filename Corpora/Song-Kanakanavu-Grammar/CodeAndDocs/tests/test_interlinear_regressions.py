@@ -17,8 +17,8 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import extract_dictionary  # noqa: E402
 import extract_interlinear  # noqa: E402
 import build_xml  # noqa: E402
-import fold_standard_stress  # noqa: E402
 import normalize_standard_forms  # noqa: E402
+from normalize_standard_forms import strip_accents  # noqa: E402
 
 
 BOUND_CITATION_IDS = {
@@ -551,7 +551,7 @@ def test_generated_direct_standard_surfaces_are_marker_free() -> None:
     # punctuation; exempt their exact accent-folded texts, nothing else.
     decisions = normalize_standard_forms.load_decisions()
     reviewed_dash_surfaces = frozenset(
-        decision.output_forms[0].translate(fold_standard_stress.ACCENT_MAP)
+        strip_accents(decision.output_forms[0])
         for decision in decisions.values()
         if decision.decision_class == "source_break_punctuation_single_dash"
     )
@@ -681,9 +681,9 @@ def test_stress_and_shared_phonology_tiers() -> None:
         form
         for root in roots
         for form in root.findall(".//FORM")
-        if form.get("kindOf") in fold_standard_stress.STANDARD_KINDS
+        if form.get("kindOf") in {"standard", "alternate"}
     ]
-    accents = fold_standard_stress.ACCENT_CHARACTERS
+    accents = "áéíóúÁÉÍÓÚ"
     assert any(any(character in (form.text or "") for character in accents) for form in original_forms)
     assert all(
         not any(character in (form.text or "") for character in accents)

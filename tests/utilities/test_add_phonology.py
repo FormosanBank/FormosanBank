@@ -507,22 +507,56 @@ def test_unknown_characters_star_marks_survive_punctuation_dropped(
     unmapped punctuation — ASCII and Unicode P* alike — is dropped (the
     2026-08-09 null-morpheme/punctuation spec; previously punctuation was
     copied through to PHON)."""
+    # Kanakanavu, not Yami: Yami's reference orthography attests 'á', so its
+    # acute is orthographic and is deliberately NOT folded (see
+    # test_reference_orthography_accents_are_kept). This test is about
+    # unknown-character starring, so it needs a language that attests none.
     scheme = _write_profile(
         monkeypatch,
         tmp_path,
-        language="Yami",
+        language="Kanakanavu",
         tsv="letter\tIPA\na\tɑ\n",
     )
-    profile = load_profile(scheme, "Yami", "Yami")
+    profile = load_profile(scheme, "Kanakanavu", "Kanakanavu")
 
     # a -> ɑ; `…` (Po) dropped; space survives; `卐` (Lo) and `◇` (So) -> `*`.
     assert phonologize("a… 卐◇", profile) == "ɑ **"
-    # a combining acute (Mn, U+0301) rides through rather than being starred,
-    # whereas a precomposed accented letter (a base Ll not in the table) is
-    # unknown and becomes `*`. (Use the escape sequences verbatim — NFC
-    # á and NFD a+combining are visually identical in source code.)
-    assert phonologize("a\u0301", profile) == "\u0251\u0301"
-    assert phonologize("\u00e1", profile) == "*"
+    # A stress acute is prosody, not a segment (POL-003), and no profile maps a
+    # stressed vowel, so it is folded to its base letter before mapping — in
+    # both the NFD and the precomposed spelling. (Use the escape sequences
+    # verbatim — NFC á and NFD a+combining are visually identical in source.)
+    assert phonologize("a\u0301", profile) == "\u0251"
+    assert phonologize("\u00e1", profile) == "\u0251"
+    # A combining mark that is NOT a stress accent still rides through.
+    assert phonologize("a\u0303", profile) == "\u0251\u0303"
+
+
+def test_reference_orthography_accents_are_kept(monkeypatch):
+    """The Ortho113 profile is not the only source of attested accents: Puyuma
+    writes an orthographic 'e-macron' that no Orthographies/ table lists but
+    QC/validation/reference/Puyuma/ does. It must never be folded into 'e'."""
+    from QC.utilities.add_phonology import _reference_accented_letters
+
+    assert "\u00e9" in _reference_accented_letters("Puyuma")
+    # Yami attests acutes too, so they are orthographic there, not prosody.
+    assert "\u00e1" in _reference_accented_letters("Yami")
+    assert _reference_accented_letters("Kanakanavu") == frozenset()
+    assert _reference_accented_letters("NoSuchLanguage") == frozenset()
+
+
+def test_profile_attested_accented_letter_is_not_folded(tmp_path, monkeypatch):
+    """An accented letter the language's own profile attests (Rukai 'é') is a
+    real grapheme, so it survives folding and maps normally — only unattested
+    stress accents are folded (QC/utilities/_accents.strip_accents `keep`)."""
+    scheme = _write_profile(
+        monkeypatch,
+        tmp_path,
+        language="Rukai",
+        tsv="letter\tIPA\ne\tɛ\né\te\n",
+    )
+    profile = load_profile(scheme, "Rukai", "Rukai")
+    assert phonologize("\u00e9", profile) == "e"   # attested é -> its own IPA
+    assert phonologize("e", profile) == "\u025b"    # plain e unaffected
 
 
 def test_unmapped_punctuation_dropped_from_phon(tmp_path, monkeypatch):

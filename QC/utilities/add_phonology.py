@@ -7,6 +7,7 @@ import re
 import string
 import sys
 import unicodedata
+from functools import lru_cache
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass
 from pathlib import Path
@@ -18,6 +19,11 @@ _REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
+from QC.utilities._accents import (  # noqa: E402
+    ACCENTS_TO_STRIP,
+    accented_letters,
+    strip_accents,
+)
 from QC.validation._dialect_inventory import (  # noqa: E402
     ISO_TO_LANGUAGE,
     STANDARD_ORTHOGRAPHY_MAP,
@@ -27,6 +33,38 @@ from QC.validation._dialect_inventory import (  # noqa: E402
 
 
 ORTHOGRAPHIES_PATH = _REPO_ROOT / "Orthographies"
+
+_REFERENCE_PATH = _REPO_ROOT / "QC" / "validation" / "reference"
+
+
+@lru_cache(maxsize=None)
+def _reference_accented_letters(language: str) -> frozenset[str]:
+    """Accented letters this language's reference orthography attests.
+
+    The Ortho113 profile is not a sufficient ``keep`` set on its own: Puyuma
+    writes an orthographic 'e-macron' that no Orthographies/ table lists but
+    QC/validation/reference/Puyuma/*/unique_characters.txt does. Folding it
+    would merge two distinct letters in PHON, which is exactly what
+    _accents.strip_accents' ``keep`` parameter exists to prevent. Every dialect
+    subdirectory is unioned — a superset is safe here, since a letter that is
+    orthographic in any dialect must not be folded away.
+    """
+    root = _REFERENCE_PATH / language
+    if not root.is_dir():
+        return frozenset()
+    letters: set[str] = set()
+    for path in root.glob("*/unique_characters.txt"):
+        try:
+            letters.update(path.read_text(encoding="utf-8").split())
+        except OSError:
+            continue
+    return accented_letters(letters)
+
+
+def _has_strip_mark(text: str) -> bool:
+    """True if ``text`` carries a combining mark that strip_accents removes."""
+    return any(ch in ACCENTS_TO_STRIP for ch in unicodedata.normalize("NFD", text))
+
 
 NULL_MARKER = "∅"
 # A null unit is the marker plus one bridging segmentation hyphen, removed
@@ -48,6 +86,7 @@ class PhonologyProfile:
     mappings: tuple[tuple[str, str], ...]
     ipa_characters: frozenset[str]
     rules: tuple[PhonologyRule, ...]
+    accented_letters: frozenset[str] = frozenset()
 
 
 from QC.utilities._prettify import prettify  # noqa: E402,F401  (shared, mixed-content-safe, idempotent)
@@ -231,6 +270,10 @@ def load_profile(
         mappings=tuple(mappings),
         ipa_characters=frozenset(ipa_characters),
         rules=rules,
+        accented_letters=(
+            accented_letters(letter for letter, _ in mappings)
+            | _reference_accented_letters(language)
+        ),
     )
 
 
@@ -292,6 +335,15 @@ def phonologize(text: str, profile: PhonologyProfile) -> str:
     stripped = _NULL_UNIT_RE.sub("", text)
     if stripped != text:
         text = re.sub(r" {2,}", " ", stripped).strip()
+    # Stress/prosody diacritics are not segments: PHON is a segmental tier
+    # (POL-003), and no profile maps a stressed vowel, so an unfolded acute
+    # would surface as '*'. Accented letters the language's own profile
+    # attests (Rukai 'é') are kept and mapped normally. Guarded on the marks
+    # we actually strip, because strip_accents NFC-composes what it touches:
+    # an unrelated decomposed cluster (a + combining tilde) must stay
+    # decomposed so its base letter still matches a profile row.
+    if _has_strip_mark(text):
+        text = strip_accents(text, keep=profile.accented_letters)
     result = apply_phonology_mappings(
         text,
         profile.mappings,

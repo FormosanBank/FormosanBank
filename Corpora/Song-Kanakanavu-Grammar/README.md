@@ -109,9 +109,15 @@ log is `docs/extraction_review.md`.
    source-checked overrides for cells the text layer merged →
    `interlinear_ledger.jsonl`. W forms keep the source's `-`, `=`, and `<…>`
    notation. Under POL-014, an infixed root keeps a gap hyphen and the infix is
-   written `-X-`; under POL-015, each clitic M keeps a leading `=`. Five exact
-   page-image overrides preserve partial source glossing without inventing
-   missing M glosses.
+   written `-X-`; under POL-015, each clitic M keeps a leading `=`. Two override
+   tables in that script carry every analysis the positional aligner cannot
+   derive, each keyed by record id and each citing its reader page:
+   `ANALYSIS_OVERRIDES` (gloss/segment pairings the text layer merged) and
+   `MORPHEME_OVERRIDES` (five page images whose printed form and gloss lines do
+   not align one-to-one, preserving partial source glossing without inventing
+   missing M glosses). Both are applied to the **original** tier at extraction,
+   before any standard tier exists — see "Recorded per-record corrections" under
+   Notes for the full list.
 
 4. **Build the XML** — `build_xml.py` writes both files (after asserting all
    hashes/counts):
@@ -136,9 +142,12 @@ log is `docs/extraction_review.md`.
 6. **Clean** — `clean_xml.py` (FormosanBank) does canonical Unicode / HTML-entity
    / punctuation normalization.
 
-7. **Create the standard tier** — `standardize.py --copy` (FormosanBank). The
-   source is already Ortho113, so standardization is an identity copy of the
-   original tier; the stress accents it copies along are folded in step 9.
+7. **Create the standard tier** — `standardize.py --remove_accents`
+   (FormosanBank). The source is already Ortho113, so no conversion table is
+   needed; `--remove_accents` copies the original tier and folds the source's
+   acute stress vowels (`á é í ó ú`, and the decomposed `ʉ́`) out of the
+   standard tier only. Stress is suprasegmental annotation in this source, not
+   Ortho113 orthography, so the original tier keeps the printed accents.
 
 8. **Apply reviewed surface decisions** — `normalize_standard_forms.py` applies
    the 128 exact decisions in `standard_surface_decisions.tsv` to the standard
@@ -148,16 +157,11 @@ log is `docs/extraction_review.md`.
    boundaries, the bound-form standard omissions, and the `takananga` standard
    correction (see Notes). Ordinary prose parentheses are left unchanged.
 
-9. **Fold stress accents** — `fold_standard_stress.py` folds acute-accented vowels
-   (`á é í ó ú`, and the decomposed `ʉ́`) to their base vowel **in the standard
-   tier only**; the original tier keeps the printed stress. Stress is
-   suprasegmental annotation in this source, not Ortho113 orthography.
-
-10. **Add phonology** — `add_shared_phonology.py` delegates both tiers to
-   FormosanBank's shared `add_phonology.py` (Ortho113). For the original-tier PHON
-   it feeds a *temporary* stress-folded copy, so the PHON is clean IPA while the
-   original FORM is restored byte-for-byte. There is no corpus-specific phonology
-   mapping.
+9. **Add phonology** — `add_phonology.py --orthography Ortho113`
+   (FormosanBank), both tiers. PHON is a segmental tier, so the shared utility
+   folds stress accents itself before mapping; the original FORM keeps its
+   accents and the PHON is clean IPA. There is no corpus-specific phonology
+   mapping and no corpus-specific wrapper.
 
 ## Notes / user beware
 
@@ -166,7 +170,7 @@ log is `docs/extraction_review.md`.
   `l`/`r` contrast), and maps `r` to the IPA variants `r` and `ɾ`. The current
   detector selects Ortho113 for both XML files.
 - **Stress accents** (`á í ú …`) are kept in the original tier and folded in the
-  standard tier (step 9); PHON is accent-free on both tiers.
+  standard tier (step 7); PHON is accent-free on both tiers.
 - **Dictionary variants:** slash/semicolon alternatives and optional `(…)`
   material are materialized into separate single-form entries; bound prefixes
   (trailing `-`) are excluded; cross-record duplicate variants are dropped.
@@ -175,7 +179,45 @@ log is `docs/extraction_review.md`.
 - **`takananga` (p.69):** the printed analysis line's OCR reads `takanaga` (a bare
   `g`, which is not an Ortho113 letter) where the sentence surface has
   `takananga`. The printed `takanaga` is kept in the original `W`/`M` tier and
-  corrected to `takananga` only in the standard tier.
+  corrected to `takananga` only in the standard tier. The reading is not in
+  doubt: `takananga` occurs 22× across the corpus — including the S-level FORM of
+  this very sentence (`rorovana ia, upeni takananga kasu kumakʉnʉ?`) — while
+  `takanaga` occurs exactly twice, both in this one word's analysis line.
+
+### Recorded per-record corrections
+
+Everything below is applied by name to a specific record, never by a blanket
+rule, and each entry names the reader page it was checked against. Nothing else
+in the corpus is hand-corrected.
+
+**Applied to the `original` tier at extraction** (`extract_interlinear.py`,
+step 3 — before any standard tier exists):
+
+| Record | Reader page | What the source prints | What is recorded |
+| --- | --- | --- | --- |
+| `S0318` W3 | 156 (ex. 13-2a) | `t<in>i-taini`, gloss `重疊<完成貌>丟` | M `t-i` 重疊 · `-in-` `<完成貌>` · `taini` 丟 |
+| `S0422` W2 | 182 (ex. 15-8a) | `m-ukʉrʉ`, one whole-word gloss `拿著` | M `m` · `ukʉrʉ`, **both without an M gloss** |
+| `S0609` W15 | 243 (narrative 26) | `ka-cangcangarʉ-a`, gloss `處在-重疊-快樂-關係詞` | M `ka` 處在- · `cangcangarʉ` 重疊-快樂- · `a` 關係詞 (no boundary is printed inside `cangcangarʉ`, so its two gloss units stay grouped) |
+| `S0636` W5 | 248 (narrative 53) | `pa-arivivini-ʉn`, gloss `使動-跟隨在後` | M `pa` 使動- · `arivivini` 跟隨在後 · `ʉn` **without an M gloss** |
+| `S0678` W6 | 258 (narrative 38) | `t<um>a-túturu`, gloss `<主事焦點>-告知` | M `t-a` **without an M gloss** · `-um-` `<主事焦點>-` · `túturu` 告知 |
+
+`ANALYSIS_OVERRIDES` in the same script covers gloss/segment pairings the
+e-reader's text layer merged; it is likewise keyed by record id with the page
+cited in place.
+
+**Applied to the `standard` tier only** (`normalize_standard_forms.py`, step 8 —
+each because the original tier must keep the source's own spelling under
+POL-001, while the standard tier must be Ortho113):
+
+| Record | Reader page | `original` keeps | `standard` gets |
+| --- | --- | --- | --- |
+| `S0012` W4 + its M | 69 | `takanaga=kasu` / `takanaga` | `takananga=kasu` / `takananga` |
+| `S0477` | 190 | the lyric-division hyphens as printed | `mati'ara'aravang 'aa 'aravang vatu 'aravang vatu! tisa'ʉ ku 'apasʉ.` — word boundaries independently attested, not inferred by deleting hyphens |
+| `S0469`, `S0472` | — | the source's double-hyphen break punctuation | the same text with a single dash (a `notes` attribute records the decision; the text itself is unchanged) |
+
+The dictionary's 125 remaining decisions in `standard_surface_decisions.tsv`
+change nothing at this step: `build_xml.py` has already emitted one clean
+surface per entry, and step 8 only *verifies* that state.
 - **Partial morpheme glossing:** reader pages 182, 248, and 258 print segmented
   forms without a separately aligned gloss for every unit. Their W glosses are
   preserved exactly, while four M elements intentionally omit `TRANSL` rather
