@@ -28,7 +28,7 @@ STRUCTURAL_LABEL_RE = re.compile(
     r"受事者|受動者|受役物|使動者|名詞謂語|主體|基準體|關係子句)\[?"
 )
 MORPHEME_SPLIT_RE = re.compile(r"([-=])")
-CLITIC_SPLIT_RE = re.compile(r"(=)")
+INFIX_GAP = "\ue000"
 TRANSLATION_TERM_RE = re.compile(r"[；、，。／/（）()]")
 BAD_GLOSS_START_RE = re.compile(r"^(?:[.=>-]|格|事焦點|成貌|態改變|係詞|除\.)")
 BAD_GLOSS_END_RE = re.compile(r"(?:[.=<-]|主|斜|排|完|狀|受|工|關|非)$")
@@ -187,6 +187,91 @@ ANALYSIS_OVERRIDES: dict[str, tuple[tuple[str, str], ...]] = {
         ("karu", "樹木"),
         ("mataa", "和"),
         ("’uringi", "芒草莖"),
+    ),
+}
+
+# The printed form and gloss lines on these five page images do not align
+# one-to-one. POL-001 and POL-036 require both source tiers to remain intact,
+# while POL-023 requires every W in a parsed sentence to carry an M analysis.
+# Keep the directly visible form segmentation and leave an M gloss absent when
+# the source supplies only a whole-word or partial gloss. Each entry is
+# (word index, expected W FORM, expected W TRANSL, M FORM/optional TRANSL).
+MORPHEME_OVERRIDES: dict[
+    str,
+    tuple[
+        tuple[
+            int,
+            str,
+            str,
+            tuple[tuple[str, str | None], ...],
+        ],
+        ...,
+    ],
+] = {
+    # Reader page 156, example 13-2a.
+    "song-2018-kanakanavu-S0318": (
+        (
+            2,
+            "t<in>i-taini",
+            "重疊<完成貌>丟",
+            (
+                ("t-i", "重疊"),
+                ("-in-", "<完成貌>"),
+                ("taini", "丟"),
+            ),
+        ),
+    ),
+    # Reader page 182, example 15-8a. The source gives only 拿著 for the
+    # segmented word, so neither component receives an invented M gloss.
+    "song-2018-kanakanavu-S0422": (
+        (
+            1,
+            "m-ukʉrʉ",
+            "拿著",
+            (("m", None), ("ukʉrʉ", None)),
+        ),
+    ),
+    # Reader page 243, narrative example 26. The source does not print a
+    # boundary inside cangcangarʉ, so its two gloss units stay grouped.
+    "song-2018-kanakanavu-S0609": (
+        (
+            14,
+            "ka-cangcangarʉ-a",
+            "處在-重疊-快樂-關係詞",
+            (
+                ("ka", "處在-"),
+                ("cangcangarʉ", "重疊-快樂-"),
+                ("a", "關係詞"),
+            ),
+        ),
+    ),
+    # Reader page 248, narrative example 53. The printed -ʉn has no
+    # independently aligned gloss.
+    "song-2018-kanakanavu-S0636": (
+        (
+            4,
+            "pa-arivivini-ʉn",
+            "使動-跟隨在後",
+            (
+                ("pa", "使動-"),
+                ("arivivini", "跟隨在後"),
+                ("ʉn", None),
+            ),
+        ),
+    ),
+    # Reader page 258, narrative example 38. The source glosses the infix
+    # and lexical unit but supplies no gloss for the reduplicative root.
+    "song-2018-kanakanavu-S0678": (
+        (
+            5,
+            "t<um>a-túturu",
+            "<主事焦點>-告知",
+            (
+                ("t-a", None),
+                ("-um-", "<主事焦點>-"),
+                ("túturu", "告知"),
+            ),
+        ),
     ),
 }
 
@@ -468,35 +553,34 @@ def partition_gloss(
 
 
 def split_morphemes(text: str) -> list[str]:
-    pieces = MORPHEME_SPLIT_RE.split(text)
     morphemes: list[str] = []
     current = ""
-    for piece in pieces:
-        if not piece:
-            continue
-        if piece in {"-", "="}:
-            current += piece
+    for character in text:
+        if character == "=":
             if current:
                 morphemes.append(current)
-                current = ""
+            current = "="
+        elif character == "-":
+            current += character
+            morphemes.append(current)
+            current = ""
         else:
-            current += piece
+            current += character
     if current:
         morphemes.append(current)
     return morphemes
 
 
 def split_clitics(text: str) -> list[str]:
-    pieces = CLITIC_SPLIT_RE.split(text)
     clitics: list[str] = []
     current = ""
-    for piece in pieces:
-        if not piece:
-            continue
-        current += piece
-        if piece == "=":
-            clitics.append(current)
-            current = ""
+    for character in text:
+        if character == "=":
+            if current:
+                clitics.append(current)
+            current = "="
+        else:
+            current += character
     if current:
         clitics.append(current)
     return clitics
@@ -516,8 +600,13 @@ def split_gloss_morphemes(text: str, target_count: int) -> list[str]:
     result: list[str] = []
     current = ""
     for index, character in enumerate(text):
-        current += character
-        if character in {"-", "="} or index in selected:
+        if character == "=":
+            if current:
+                result.append(current)
+            current = "="
+        else:
+            current += character
+        if (character == "-" or index in selected) and current:
             result.append(current)
             current = ""
     if current:
@@ -527,7 +616,11 @@ def split_gloss_morphemes(text: str, target_count: int) -> list[str]:
 
 def morpheme_form(text: str) -> str:
     """Remove affix apparatus while retaining a printed clitic boundary."""
-    return re.sub(r"\([^)]*\)", "", text).replace("-", "")
+    return (
+        re.sub(r"\([^)]*\)", "", text)
+        .replace("-", "")
+        .replace(INFIX_GAP, "-")
+    )
 
 
 def add_infix_morphemes(word: dict[str, str]) -> dict[str, object]:
@@ -537,7 +630,8 @@ def add_infix_morphemes(word: dict[str, str]) -> dict[str, object]:
     if not infixes or len(infixes) != len(gloss_infixes):
         return result
 
-    remainder_form = re.sub(r"<[^>]+>", "", word["form"])
+    remainder_form = re.sub(r"<[^>]+>", INFIX_GAP, word["form"])
+    remainder_form = re.sub(f"{INFIX_GAP}+", INFIX_GAP, remainder_form)
     remainder_gloss = re.sub(r"<[^>]+>", "", word["gloss"])
     forms = split_morphemes(remainder_form)
     glosses = split_gloss_morphemes(remainder_gloss, len(forms))
@@ -546,12 +640,24 @@ def add_infix_morphemes(word: dict[str, str]) -> dict[str, object]:
     ):
         return result
 
-    result["morphemes"] = [
-        {"form": form, "gloss": gloss}
-        for form, gloss in zip(infixes, gloss_infixes, strict=True)
-    ] + [
+    root_indexes = [
+        index for index, form in enumerate(forms) if INFIX_GAP in form
+    ]
+    if len(root_indexes) != 1:
+        return result
+    root_index = root_indexes[0]
+    regular = [
         {"form": morpheme_form(form), "gloss": gloss}
         for form, gloss in zip(forms, glosses, strict=True)
+    ]
+    infix_morphemes = [
+        {"form": f"-{form}-", "gloss": gloss}
+        for form, gloss in zip(infixes, gloss_infixes, strict=True)
+    ]
+    result["morphemes"] = [
+        *regular[: root_index + 1],
+        *infix_morphemes,
+        *regular[root_index + 1 :],
     ]
     return result
 
@@ -607,6 +713,32 @@ def apply_gloss_overrides(
                 f"found {actual_form!r}"
             )
         words[word_index] = add_morphemes({"form": actual_form, "gloss": gloss})
+    return words
+
+
+def apply_morpheme_overrides(
+    sentence_id: str, words: list[dict[str, object]]
+) -> list[dict[str, object]]:
+    for word_index, expected_form, expected_gloss, morphemes in (
+        MORPHEME_OVERRIDES.get(sentence_id, ())
+    ):
+        if word_index >= len(words):
+            raise ValueError(
+                f"Morpheme override index {word_index} is outside {sentence_id}"
+            )
+        word = words[word_index]
+        actual_form = str(word["form"])
+        actual_gloss = str(word["gloss"])
+        if (actual_form, actual_gloss) != (expected_form, expected_gloss):
+            raise ValueError(
+                f"Morpheme override for {sentence_id} expected "
+                f"{expected_form!r}/{expected_gloss!r}, found "
+                f"{actual_form!r}/{actual_gloss!r}"
+            )
+        word["morphemes"] = [
+            {"form": form, "gloss": gloss}
+            for form, gloss in morphemes
+        ]
     return words
 
 
@@ -892,17 +1024,18 @@ def extract() -> list[dict[str, object]]:
         ):
             continue
         if row["final_s_id"] in ANALYSIS_OVERRIDES:
+            words = [
+                add_morphemes({"form": form, "gloss": gloss})
+                for form, gloss in ANALYSIS_OVERRIDES[row["final_s_id"]]
+            ]
             analyses.append(
                 {
                     "s_id": row["final_s_id"],
                     "reader_page": page_number,
                     "example_label": row["example_label"],
-                    "words": [
-                        add_morphemes({"form": form, "gloss": gloss})
-                        for form, gloss in ANALYSIS_OVERRIDES[
-                            row["final_s_id"]
-                        ]
-                    ],
+                    "words": apply_morpheme_overrides(
+                        row["final_s_id"], words
+                    ),
                 }
             )
             continue
@@ -941,6 +1074,7 @@ def extract() -> list[dict[str, object]]:
                 break
             selected = None
         if selected:
+            selected = apply_morpheme_overrides(row["final_s_id"], selected)
             analyses.append(
                 {
                     "s_id": row["final_s_id"],

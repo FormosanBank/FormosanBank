@@ -30,9 +30,9 @@ EXPECTED_FILE_SHA256 = {
     OFFICIAL_TEXT: "47fc6dc5a22e263b57d96781cb39c0d9dbd3fb77a6189609024be2801347d5ab",
     PAGE_INVENTORY: "3754c3017eb77d788dadefb6a6d361b5b0b3cb4cb8a86e5d623a20afd36d1bfb",
     CANDIDATE_LEDGER: "5e0f917f87cefbec6e7acf3768d159be7ccce413efec6a03504966b750c38e89",
-    LEDGER: "9643a9433e7e041083ac1775d88ffd862fa226ae4d73eae601c66742c097b08c",
+    LEDGER: "92ba3601407427cf827076e90286891724235c6e71281499de4f4610159f771b",
     DICTIONARY_LEDGER: "9799290ae5ce0ee415d47fa5949d53e3b1c552a4e4ae20df65a8f23cb1ed64fb",
-    INTERLINEAR_LEDGER: "f07a876e85dd8ddca0b20b6f6563c092e205f6e8d958c37d7c07bb42b571e42d",
+    INTERLINEAR_LEDGER: "edb604881218eaaa21a69df58762aca3c8478aa554f3f6ef32d59fa16a2a4799",
     ROOT / "intermediate" / "standard_surface_decisions.tsv": (
         "1e30387a07b771b8e758b567de3345accd144642a7b201fe5c7a53089359c1ca"
     ),
@@ -54,6 +54,16 @@ BREAK_DASH_NOTE = (
     "Source typewriter double-hyphen break punctuation (reader page 190) "
     "rendered as a single dash."
 )
+TRANSLATION_NOTE_DECISIONS = {
+    "song-2018-kanakanavu-S0143": (
+        "我有錢。（=我的錢存在）",
+        "我有錢。",
+    ),
+    "song-2018-kanakanavu-S0149": (
+        "我沒有錢。（=我的錢沒有）",
+        "我沒有錢。",
+    ),
+}
 # The ledger keeps the source's typographic apostrophes; the decision manifest
 # stores inputs in the cleaned ASCII form clean_xml later produces. Map only
 # the apostrophe variants clean_xml collapses so the two can be compared.
@@ -64,10 +74,8 @@ def _canonical_apostrophes(text: str) -> str:
     return text.translate(_APOSTROPHE_MAP)
 EXPECTED_ANALYSES = 650
 EXPECTED_WORDS = 3477
-EXPECTED_MORPHEMES = 5034
-# The value the reviewed ledger records for grammar sentences; kept verbatim
-# because the ledger is hash-pinned (the build now writes into XML/ directly).
-LEDGER_XML_PATH = "Final_XML/Kanakanavu/Song_2018_Kanakanavu_Grammar.xml"
+EXPECTED_MORPHEMES = 5048
+XML_PATH = "XML/Kanakanavu/Song_2018_Kanakanavu_Grammar.xml"
 
 CITATION = (
     "Song, Limei. (2018). Kanakanafu yu yufa gailun [Introduction to "
@@ -200,11 +208,12 @@ def add_analysis(
                 "FORM",
                 {"kindOf": "original"},
             ).text = str(morph["form"])
-            ET.SubElement(
-                morph_element,
-                "TRANSL",
-                {"{http://www.w3.org/XML/1998/namespace}lang": "zho"},
-            ).text = str(morph["gloss"])
+            if morph.get("gloss") is not None:
+                ET.SubElement(
+                    morph_element,
+                    "TRANSL",
+                    {"{http://www.w3.org/XML/1998/namespace}lang": "zho"},
+                ).text = str(morph["gloss"])
 
 
 def write_xml(root: ET.Element, output: Path) -> None:
@@ -242,6 +251,7 @@ def build_grammar(included: list[dict[str, str]]) -> None:
         ),
     )
     corrected_dashes = 0
+    translation_notes_applied: set[str] = set()
     for row in included:
         sentence = ET.SubElement(
             root,
@@ -270,11 +280,24 @@ def build_grammar(included: list[dict[str, str]]) -> None:
                 f"Unreviewed double hyphen in {row['final_s_id']}: {target_text!r}"
             )
         original.text = target_text
-        ET.SubElement(
+        translation = ET.SubElement(
             sentence,
             "TRANSL",
             {"{http://www.w3.org/XML/1998/namespace}lang": "zho"},
-        ).text = row["translation"]
+        )
+        translation_decision = TRANSLATION_NOTE_DECISIONS.get(row["final_s_id"])
+        if translation_decision is None:
+            translation.text = row["translation"]
+        else:
+            expected_source, primary_translation = translation_decision
+            if row["translation"] != expected_source:
+                raise ValueError(
+                    f"Source translation changed for {row['final_s_id']}: "
+                    f"{row['translation']!r}"
+                )
+            translation.text = primary_translation
+            translation.set("notes", expected_source)
+            translation_notes_applied.add(row["final_s_id"])
         if row["final_s_id"] in analysis_by_id:
             add_analysis(
                 sentence,
@@ -286,6 +309,8 @@ def build_grammar(included: list[dict[str, str]]) -> None:
             f"Expected {len(BREAK_DASH_IDS)} break-dash corrections; "
             f"made {corrected_dashes}"
         )
+    if translation_notes_applied != set(TRANSLATION_NOTE_DECISIONS):
+        raise ValueError("Reviewed translation-note decisions were not all applied")
     write_xml(root, GRAMMAR_OUTPUT)
     print(
         f"Wrote {GRAMMAR_OUTPUT} with {len(included)} sentences, "
@@ -476,7 +501,7 @@ def main() -> None:
     actual_ids = [row["final_s_id"] for row in included]
     if actual_ids != expected_ids:
         raise ValueError("Included sentence IDs are not continuous and deterministic")
-    if any(row["final_xml_path"] not in {"", LEDGER_XML_PATH} for row in included):
+    if any(row["final_xml_path"] not in {"", XML_PATH} for row in included):
         raise ValueError("Included ledger rows contain an unexpected XML path")
 
     build_grammar(included)
