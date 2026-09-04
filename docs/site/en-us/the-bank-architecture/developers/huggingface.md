@@ -34,6 +34,12 @@ Large corpora such as ePark and the ILRDF dictionaries are stored across multipl
 
 By following these steps, you can efficiently download the necessary FormosanBank audio files for research and revitalization purposes.
 
+{% hint style="warning" %}
+**The repository enforces exact parity with these datasets.** Every file hosted on a canonical FormosanBank dataset must either be referenced by an `<AUDIO>` element in the published XML or declared in `audio_extras.json`; every file the XML references must be hosted. This is checked on pull requests, on pushes to `main`, and nightly. Before adding, removing, or renaming hosted audio, read [Hugging Face audio parity](repository-contracts/hugging-face-audio-parity.md).
+{% endhint %}
+
 ## Creating New Corpora
 
 If you create a new corpus that has audio on Hugging Face, include a `download_audio_data.sh` script. For consistency, use FormosanBank datasets and preserve the directory layout expected by the XML. If the corpus spans multiple datasets, use a stable prefix so the script can discover and merge every batch. See `Corpora/ePark/download_audio_data.sh` for an example.
+
+You must also record the new datasets in `audio_permissions.json` (publication status and license) and, if canonical, `audio_sources.json` (pinned revision and local destination), then run `python QC/validation/validate_hf_audio.py` anonymously. The [Audio publication policy](repository-contracts/audio-publication-policy.md) sets out the full publication checklist.
