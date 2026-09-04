@@ -49,6 +49,7 @@
   * [Folder structure](the-bank-architecture/developers/folder-structure.md)
   * [Repository Contracts](the-bank-architecture/developers/repository-contracts/README.md)
     * [Hugging Face audio parity](the-bank-architecture/developers/repository-contracts/hugging-face-audio-parity.md)
+    * [Audio manifests](the-bank-architecture/developers/repository-contracts/audio-manifests.md)
     * [Audio publication policy](the-bank-architecture/developers/repository-contracts/audio-publication-policy.md)
     * [CI workflows](the-bank-architecture/developers/repository-contracts/ci-workflows.md)
     * [Generated files](the-bank-architecture/developers/repository-contracts/generated-files.md)

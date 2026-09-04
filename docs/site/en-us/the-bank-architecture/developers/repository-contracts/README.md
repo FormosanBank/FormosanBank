@@ -18,6 +18,7 @@ The difference matters because a contract fails differently from a script. You d
 
 <table data-header-hidden><thead><tr><th width="270"></th><th></th></tr></thead><tbody>
 <tr><td><a href="hugging-face-audio-parity.md">Hugging Face audio parity</a></td><td>Exact parity between audio the XML references and audio hosted on the Hub, including <code>audio_extras.json</code>, the allowlist for deliberate orphans.</td></tr>
+<tr><td><a href="audio-manifests.md">Audio manifests</a></td><td>The two hand-maintained JSON files behind every audio dataset: every field, who writes them, and which fields nothing checks.</td></tr>
 <tr><td><a href="audio-publication-policy.md">Audio publication policy</a></td><td>Which audio may be public, under which license. Synced from <code>AUDIO-PERMISSIONS.md</code>.</td></tr>
 <tr><td><a href="ci-workflows.md">CI workflows</a></td><td>All nine workflows: what runs when, and which ones can actually block a pull request.</td></tr>
 <tr><td><a href="generated-files.md">Generated files</a></td><td>Files CI writes and you must not hand-edit — and the one that looks generated but is not.</td></tr>

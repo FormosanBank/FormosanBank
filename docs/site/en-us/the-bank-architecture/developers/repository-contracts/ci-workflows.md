@@ -44,18 +44,18 @@ Blocking is expressed three ways, and it is worth being able to read them:
 - **A shell accumulator** — `xml-validation` and `audio-validation` loop over changed files, set `fail=1`, and `exit $fail` at the end, so one bad file doesn't hide the rest.
 
 {% hint style="warning" %}
-**Two workflows do not currently do what their header comments say.** Both are recorded here rather than silently corrected, because the fix is a behaviour change and the intent statements are maintainer decisions.
+**Two lessons from workflows that once disagreed with their own header comments.** Both are fixed; both are worth knowing before you edit a workflow, because neither failure is visible in a green check.
 
-**`conversion-tables` — the registries gate does not fire.** The header states the registries job "exits nonzero only if a registry file itself is missing or unparseable (a genuinely broken repo)", and `validate_registries.py` does return `1` in exactly that case. But the step pipes into `tee`:
+**A pipe hides an exit code.** The `conversion-tables` registries job is documented as failing on a registry that is missing or unparseable, and `validate_registries.py` returns `1` in exactly that case — but the step piped into `tee`:
 
 ```yaml
 run: |
   python QC/validation/validate_registries.py --csv ... | tee -a "$GITHUB_STEP_SUMMARY"
 ```
 
-GitHub's *default* `run:` shell on Linux is `bash -e {0}`; `pipefail` is added only when you write `shell: bash` explicitly. Without it the pipeline reports `tee`'s status, always `0`, and the return value is discarded. A missing or unparseable registry passes green. Fix: add `shell: bash` to that step.
+A pipeline's exit status is its **last** command's, so the step reported `tee`'s `0` and the gate never fired. GitHub's default `run:` shell is `bash -e {0}`; `pipefail` is added **only** when you write `shell: bash` explicitly. The realistic trigger is mundane: `dialects.csv` carries Chinese columns, Excel on a zh-TW machine saves CSV as Big5, `open(..., encoding="utf-8")` raises, and CI went green anyway. Fixed by declaring `shell: bash`.
 
-**`duplicate-sentences` is informational only by accident.** The header promises "a finding does not fail the build", but the step wraps its per-corpus loop in `set -e` with no `|| true`. It is non-blocking solely because `validate_duplicate_sentences.py` hardcodes `return 0`. That script already classifies findings HARD and SOFT; if HARD ever gains a nonzero exit, this workflow silently becomes a repo-wide gate. The intent should be pinned in the YAML the way `audio-validation`'s informational job pins it.
+**If you mean informational, say so in the YAML.** `duplicate-sentences` promised in prose that findings do not fail the build, while its step wrapped the loop in `set -e`. It was non-blocking only because the validator hardcodes `return 0` — a property of the script, not of the workflow, and one a routine cleanup could have removed. Since it loops over every corpus with no PR scoping and no baseline diff, that would have blocked every PR on pre-existing findings anywhere in the bank. Now a nonzero exit is caught and turned into a `::warning::` annotation rather than swallowed with `|| true`, so a real crash still can't masquerade as "0 duplicates".
 {% endhint %}
 
 ## How to change it correctly

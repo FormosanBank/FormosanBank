@@ -45,8 +45,8 @@ This is not a nicety. It selects which reference materials apply (`reference/Tru
 
 Both are **SOFT** per POL-034: registries may be legitimately out of sync mid-migration, so they report rather than block.
 
-{% hint style="warning" %}
-Per POL-034 these findings never fail the build — and per the discrepancy documented under [CI workflows](ci-workflows.md), the job's *structural* gate (a registry file that is missing or unparseable) does not currently fire either, because the step's exit code is masked by a pipe into `tee`. Treat registry checks as advisory until that is fixed, and read the step summary rather than trusting the green check.
+{% hint style="info" %}
+Per POL-034 these content findings never fail the build. The job *does* gate on a structurally broken registry — one that is missing, or not readable as UTF-8 — which is a separate `return 1` in the script. Read the step summary for the findings; trust the red/green only for the structural case.
 {% endhint %}
 
 `xml:lang` values are validated against `iso-639-3.txt` by `validate_xml.py`, which *is* blocking.

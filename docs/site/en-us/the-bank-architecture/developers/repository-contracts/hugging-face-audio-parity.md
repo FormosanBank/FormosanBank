@@ -47,7 +47,7 @@ That is the shape to look for: **the audio is fine, the reference is correctly a
 
 ## Who reads it
 
-[`QC/validation/validate_hf_audio.py`](../qc-pipeline/validate-hf-audio.md) loads it — not directly, but through `audio_sources.json`'s `declared_extras` pointer, so the manifest stays the single entry point to the contract. It then does three-way set arithmetic per dataset group:
+[`QC/validation/validate_hf_audio.py`](../qc-pipeline/validate-hf-audio.md) loads it — not directly, but through `audio_sources.json`'s `declared_extras` pointer, so the manifest stays the single entry point to the contract. Both manifests are hand-maintained and documented field by field in [Audio manifests](audio-manifests.md). It then does three-way set arithmetic per dataset group:
 
 | Comparison | Meaning | Result |
 |---|---|---|

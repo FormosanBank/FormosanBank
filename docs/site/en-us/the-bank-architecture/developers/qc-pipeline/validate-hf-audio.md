@@ -18,7 +18,7 @@ It is the only validator in the repository that is unconditionally blocking in C
 
 ## How it works
 
-Everything starts from `audio_sources.json`, the manifest, which points at `audio_permissions.json` (`permissions`) and `audio_extras.json` (`declared_extras`). Loading is strict: an unknown `schema_version`, a declared repository absent from the manifest, a non-string path, or a duplicate path is a contract error, not a finding.
+Everything starts from `audio_sources.json`, the manifest, which points at `audio_permissions.json` (`permissions`) and `audio_extras.json` (`declared_extras`). Both manifests are hand-maintained; [Audio manifests](../repository-contracts/audio-manifests.md) documents every field. Loading is strict: an unknown `schema_version`, a declared repository absent from the manifest, a non-string path, or a duplicate path is a contract error, not a finding.
 
 **Inventory checks** (online mode only) enumerate the organization anonymously via `HfApi(token=False)` and report:
 
