@@ -8,7 +8,7 @@ The author granted permission for attributed, non-profit derivative publication.
 
 The corpus is also subject to the central FormosanBank terms in [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI use requires prior written permission.
 
-The two author-provided Word files and the private permission record were used for the source audit but are not distributed in this repository.
+The two author-provided Word files and the private permission record were used for the source audit but are not distributed in this repository. The permission evidence was reviewed on 2026-08-22; the verdict is *allowed with conditions* on the terms above.
 
 ## Contents
 
@@ -48,7 +48,11 @@ python3 -m pip install -r Corpora/HundredPaiwanStories/CodeAndDocs/requirements.
 Corpora/HundredPaiwanStories/CodeAndDocs/make_xml.sh --check
 ```
 
-The script checks out the exact FormosanBank authority revision recorded in `CodeAndDocs/data/authority.json`, verifies every required tooling object, rebuilds the XML, runs the full validator and test suite, and compares the result with the published files. Use `--write` only when intentionally regenerating the corpus.
+The script verifies the private source checksums in `CodeAndDocs/data/source_checksums.sha256`, rebuilds the XML against the current FormosanBank checkout, runs the full validator and test suite, and compares the result with the published files. Use `--write` only when intentionally regenerating the corpus.
+
+`CodeAndDocs/data/provenance.json` records the FormosanBank commit this corpus was built against. It is documentation: nothing in the build reads it. The build deliberately does not pin shared tooling — the bank's model is that tooling improves and corpora are regenerated against it — so a rebuild picks up later improvements, and a resulting XML diff should be reviewed rather than suppressed.
+
+Standardization uses the shared `Orthographies/ConversionTables/Paiwan_Ferrell_113.tsv`. The corpus previously carried a corrected private copy of that table; the correction (dropping the explicit uppercase `Ḍ` row, which shadowed the standardizer's case-preserving derivation) now lives in the shared table, so a rebuild requires a FormosanBank checkout that includes it.
 
 ## Validation
 

@@ -1,7 +1,5 @@
 # QC summary
 
-Authority: FormosanBank `3a3c47c220520113f747e6a2d441494000e13c4b`.
-
 ## Inventory
 
 - 100 TEXT elements
@@ -25,4 +23,4 @@ Authority: FormosanBank `3a3c47c220520113f747e6a2d441494000e13c4b`.
 - V133 and G010: all 153 are exact source-reviewed sentence hyphens.
 - V122: all 8,050 exactly cover preserved source FORM and TRANSL notation. Parentheses are balanced after the recorded 057S3 punctuation repair. The occurrences comprise 22 in source S forms, 448 in source free translations, 3,790 in source W glosses, and 3,790 in source M glosses.
 
-No remaining finding blocks publication. The corpus is ready to port under the recorded rights conditions: Public, attributed, non-profit derivative publication is allowed. Republishing the source as-is for profit is not allowed.
+No remaining finding blocks publication. The corpus is ready to port under the rights conditions recorded in the corpus README.

@@ -31,117 +31,40 @@ while read -r expected source_name; do
     fi
 done < "$CODE_ROOT/data/source_checksums.sha256"
 
-AUTHORITY_VALUES=$("$PYTHON_BIN" - "$CODE_ROOT/data/authority.json" <<'PY'
-import json
-import sys
-
-data = json.load(open(sys.argv[1], encoding="utf-8"))
-values = [
-    data["public_baseline"]["commit"],
-    data["public_baseline"]["corpus_xml_tree"],
-    data["tooling"]["clean_xml_blob"],
-    data["tooling"]["standardize_blob"],
-    data["tooling"]["add_phonology_blob"],
-    data["tooling"]["ferrell_conversion_table_blob"],
-    data["tooling"]["ferrell_phonology_profile_blob"],
-    data["tooling"]["ortho113_paiwan_blob"],
-    data["tooling"]["validate_xml_blob"],
-    data["tooling"]["validate_text_blob"],
-    data["tooling"]["validate_glosses_blob"],
-    data["tooling"]["audit_gloss_scrape_blob"],
-    data["tooling"]["validate_conversion_table_blob"],
-    data["port_remediation"]["corrected_blob"],
-    data["port_remediation"]["corrected_sha256"],
-]
-print(" ".join(values))
-PY
-)
-read -r AUTHORITY_COMMIT CORPUS_XML_TREE CLEAN_XML_BLOB STANDARDIZE_BLOB \
-    ADD_PHONOLOGY_BLOB FERRELL_CONVERSION_BLOB FERRELL_PROFILE_BLOB \
-    ORTHO113_PAIWAN_BLOB VALIDATE_XML_BLOB VALIDATE_TEXT_BLOB \
-    VALIDATE_GLOSSES_BLOB AUDIT_GLOSS_SCRAPE_BLOB \
-    VALIDATE_CONVERSION_TABLE_BLOB CORRECTED_CONVERSION_BLOB \
-    CORRECTED_CONVERSION_SHA256 <<<"$AUTHORITY_VALUES"
-
 BUILD_ROOT=$(mktemp -d /tmp/hundred-paiwan-rebuild.XXXXXX)
-PINNED_ROOT="$BUILD_ROOT/formosanbank"
 cleanup() {
     rm -rf -- "$BUILD_ROOT"
 }
 trap cleanup EXIT
 
-LOCAL_FORMOSANBANK=${PAIWAN_FORMOSANBANK_ROOT:-$(cd "$CORPUS_ROOT/../.." && pwd)}
-if [[ -n "${PAIWAN_FORMOSANBANK_ROOT:-}" ]] \
-    && [[ "$(git -C "$LOCAL_FORMOSANBANK" rev-parse HEAD 2>/dev/null || true)" == "$AUTHORITY_COMMIT" ]]; then
-    PINNED_ROOT=$(cd "$LOCAL_FORMOSANBANK" && pwd)
-elif git -C "$LOCAL_FORMOSANBANK" cat-file -e "$AUTHORITY_COMMIT^{commit}" 2>/dev/null; then
-    git clone --quiet --shared --no-checkout "$LOCAL_FORMOSANBANK" "$PINNED_ROOT"
-    git -C "$PINNED_ROOT" checkout --quiet --detach "$AUTHORITY_COMMIT"
-else
-    git clone --quiet --filter=blob:none --no-checkout \
-        https://github.com/FormosanBank/FormosanBank.git "$PINNED_ROOT"
-    git -C "$PINNED_ROOT" checkout --quiet --detach "$AUTHORITY_COMMIT"
-fi
-
-verify_object() {
-    local expected=$1
-    local object_path=$2
-    local actual
-    actual=$(git -C "$PINNED_ROOT" rev-parse "HEAD:$object_path")
-    if [[ "$actual" != "$expected" ]]; then
-        echo "$object_path authority mismatch: $actual" >&2
-        exit 1
-    fi
-}
-
-if [[ "$(git -C "$PINNED_ROOT" rev-parse HEAD)" != "$AUTHORITY_COMMIT" ]]; then
-    echo "FormosanBank authority commit mismatch" >&2
+# Build against the live FormosanBank checkout. The bank's model is that
+# shared tooling improves and corpora are regenerated against it, so this
+# deliberately does not pin a commit or verify tooling blobs;
+# data/provenance.json records what the published output was built
+# against, and nothing reads it.
+BANK=${PAIWAN_FORMOSANBANK_ROOT:-$(cd "$CORPUS_ROOT/../.." && pwd)}
+if [[ ! -d "$BANK/QC" ]]; then
+    echo "Not a FormosanBank checkout: $BANK" >&2
+    echo "Set PAIWAN_FORMOSANBANK_ROOT to the repository root." >&2
     exit 1
 fi
-verify_object "$CORPUS_XML_TREE" "Corpora/HundredPaiwanStories/XML"
-verify_object "$CLEAN_XML_BLOB" "QC/cleaning/clean_xml.py"
-verify_object "$STANDARDIZE_BLOB" "QC/utilities/standardize.py"
-verify_object "$ADD_PHONOLOGY_BLOB" "QC/utilities/add_phonology.py"
-verify_object "$FERRELL_CONVERSION_BLOB" "Orthographies/ConversionTables/Paiwan_Ferrell_113.tsv"
-verify_object "$FERRELL_PROFILE_BLOB" "Orthographies/Ferrell/Paiwan.tsv"
-verify_object "$ORTHO113_PAIWAN_BLOB" "Orthographies/Ortho113/Paiwan.tsv"
-verify_object "$VALIDATE_XML_BLOB" "QC/validation/validate_xml.py"
-verify_object "$VALIDATE_TEXT_BLOB" "QC/validation/validate_text.py"
-verify_object "$VALIDATE_GLOSSES_BLOB" "QC/validation/validate_glosses.py"
-verify_object "$AUDIT_GLOSS_SCRAPE_BLOB" "QC/validation/audit_gloss_scrape.py"
-verify_object "$VALIDATE_CONVERSION_TABLE_BLOB" "QC/validation/validate_conversion_table.py"
 
-CORRECTED_CONVERSION="$CODE_ROOT/data/Paiwan_Ferrell_113.tsv"
-if [[ "$(git hash-object "$CORRECTED_CONVERSION")" != "$CORRECTED_CONVERSION_BLOB" ]]; then
-    echo "corrected Ferrell conversion table blob mismatch" >&2
-    exit 1
-fi
-if [[ "$(shasum -a 256 "$CORRECTED_CONVERSION" | cut -d ' ' -f 1)" != "$CORRECTED_CONVERSION_SHA256" ]]; then
-    echo "corrected Ferrell conversion table checksum mismatch" >&2
-    exit 1
-fi
-"$PYTHON_BIN" "$PINNED_ROOT/QC/validation/validate_conversion_table.py" \
-    "$PINNED_ROOT/Orthographies/Ferrell/Paiwan.tsv" \
-    "$PINNED_ROOT/Orthographies/Ortho113/Paiwan.tsv" \
-    "$CORRECTED_CONVERSION"
-
-BUILD_CONVERSION_ROOT="$BUILD_ROOT/Orthographies"
-mkdir -p "$BUILD_CONVERSION_ROOT/ConversionTables" "$BUILD_CONVERSION_ROOT/Ferrell"
-cp "$CORRECTED_CONVERSION" \
-    "$BUILD_CONVERSION_ROOT/ConversionTables/Paiwan_Ferrell_113.tsv"
-ln -s "$PINNED_ROOT/Orthographies/Ferrell/Paiwan.tsv" \
-    "$BUILD_CONVERSION_ROOT/Ferrell/Paiwan.tsv"
+CONVERSION_TABLE="$BANK/Orthographies/ConversionTables/Paiwan_Ferrell_113.tsv"
+"$PYTHON_BIN" "$BANK/QC/validation/validate_conversion_table.py" \
+    "$BANK/Orthographies/Ferrell/Paiwan.tsv" \
+    "$BANK/Orthographies/Ortho113/Paiwan.tsv" \
+    "$CONVERSION_TABLE"
 
 mkdir -p "$BUILD_ROOT/reports/rebuild" "$BUILD_ROOT/reports/qc"
 "$PYTHON_BIN" "$CODE_ROOT/scripts/rebuild_xml.py" \
     --source "$SOURCE_ROOT/Paiwan Ch2 Preprocessed.docx" \
-    --baseline "$PINNED_ROOT/Corpora/HundredPaiwanStories/XML" \
+    --baseline "$BANK/Corpora/HundredPaiwanStories/XML" \
     --output "$BUILD_ROOT/XML" \
     --reports "$BUILD_ROOT/reports/rebuild"
 
 (
     cd "$BUILD_ROOT"
-    "$PYTHON_BIN" "$PINNED_ROOT/QC/cleaning/clean_xml.py" \
+    "$PYTHON_BIN" "$BANK/QC/cleaning/clean_xml.py" \
         --corpora_path XML
 )
 mv "$BUILD_ROOT/XML/cleaner_warnings.csv" \
@@ -149,11 +72,11 @@ mv "$BUILD_ROOT/XML/cleaner_warnings.csv" \
 
 (
     cd "$BUILD_ROOT"
-    "$PYTHON_BIN" "$PINNED_ROOT/QC/utilities/standardize.py" \
+    "$PYTHON_BIN" "$BANK/QC/utilities/standardize.py" \
         --corpora_path XML \
         --language Paiwan \
-        --tsv_path "$BUILD_CONVERSION_ROOT/ConversionTables/Paiwan_Ferrell_113.tsv"
-    "$PYTHON_BIN" "$PINNED_ROOT/QC/utilities/add_phonology.py" \
+        --tsv_path "$CONVERSION_TABLE"
+    "$PYTHON_BIN" "$BANK/QC/utilities/add_phonology.py" \
         --corpora_path XML \
         --orthography Ferrell
 )
@@ -182,7 +105,7 @@ fi
 
 PUBLISHED_ROOT="$BUILD_ROOT/published-corpora"
 mkdir -p "$PUBLISHED_ROOT"
-for corpus_path in "$PINNED_ROOT"/Corpora/*; do
+for corpus_path in "$BANK"/Corpora/*; do
     corpus_name=$(basename "$corpus_path")
     if [[ "$corpus_name" != "HundredPaiwanStories" ]]; then
         ln -s "$corpus_path" "$PUBLISHED_ROOT/$corpus_name"
@@ -191,17 +114,17 @@ done
 
 (
     cd "$BUILD_ROOT"
-    "$PYTHON_BIN" "$PINNED_ROOT/QC/validation/validate_xml.py" by_path \
+    "$PYTHON_BIN" "$BANK/QC/validation/validate_xml.py" by_path \
         --path XML \
         --published-corpora published-corpora \
         --csv reports/qc/xml.csv
-    "$PYTHON_BIN" "$PINNED_ROOT/QC/validation/validate_text.py" by_path \
+    "$PYTHON_BIN" "$BANK/QC/validation/validate_text.py" by_path \
         --path XML \
         --csv reports/qc/text.csv
-    "$PYTHON_BIN" "$PINNED_ROOT/QC/validation/validate_glosses.py" by_path \
+    "$PYTHON_BIN" "$BANK/QC/validation/validate_glosses.py" by_path \
         --path XML \
         --csv reports/qc/gloss.csv
-    "$PYTHON_BIN" "$PINNED_ROOT/QC/validation/audit_gloss_scrape.py" \
+    "$PYTHON_BIN" "$BANK/QC/validation/audit_gloss_scrape.py" \
         --xml XML \
         --no-source \
         --exit-on-hard \
