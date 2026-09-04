@@ -72,7 +72,9 @@ in the corpus loses its gloss.
 
 A handful of sentences need a correction the blanket pipeline cannot make on its
 own. The corpus uses **both** recording mechanisms, for the two different kinds
-of correction.
+of correction — and **neither edits a generated tier**. Both act on the original
+`FORM` before `standardize.py` and `add_phonology.py` run, so the standard and
+phonology tiers are always derived, never repaired afterwards.
 
 **A systematic, source-derived rule** goes in a reviewed decision table,
 [`standard_surface_decisions.tsv`](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/HundredPaiwanStories/CodeAndDocs/standard_surface_decisions.tsv),
@@ -80,18 +82,25 @@ which `normalize_sentence_standards.py` applies at the end of the build. Every
 decision is listed there in full, so readers can check each one against the
 source. All 16 rows concern parenthesised material:
 
-* **11 remove parenthesised uncertainty.** Where the source prints a bracketed
-  query on a form — `paqeteleng(?)` — the original tier keeps it and the
-  standard tier resolves it out.
+* **11 record a source reading marked uncertain.** Where the source appends a
+  bracketed query to a word on its plain-text line — `paqeteleng(?)` — that is
+  an editorial annotation *about* the text, not part of it.
+  `apply_manual_corrections.py` removes it from the sentence's original `FORM`
+  **before `standardize.py` runs** and records what it removed in that FORM's
+  `notes` attribute. `?` is the glottal letter in Ferrell's orthography, so a
+  `(?)` left in place standardizes to a glottal stop the language does not
+  have — the corpus previously repaired the standard `FORM` afterwards but not
+  the standard `PHON`, which still carried the invented consonant.
 * **5 publish a parenthesised optional token as two complete sentences.** Where
   the source prints `kemljang (aken) tu …`, both complete readings are published
   as separate `S` elements rather than leaving a parenthesis inside a sentence.
 
 The table is preferred to a recorded diff for these because each row carries the
 source form, what the blanket pipeline produced, the corrected form, the
-decision and its evidence. The build re-derives the change every time,
-re-checks each row's original form against the source first, and asserts the
-pass is idempotent.
+decision and its evidence. The build re-derives the change every time. Every
+correction is witness-gated — the sentence's original form must still match the
+reviewed source, or the build fails rather than correcting drifted text — and
+the pass is idempotent.
 
 **A genuine one-off editorial judgement** goes in
 [`manual_edits.xml`](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/HundredPaiwanStories/CodeAndDocs/manual_edits.xml),
