@@ -1,7 +1,14 @@
 # Yedda Palemeq Blog
 
 Southern Paiwan examples from Yedda Palemeq's public "Paiwan Every Day" blog
-posts. The source is [Yedda Palemeq's blog](https://yeddapalemeq.blogspot.com/).
+posts, with English translations, prose word explanations, and recordings. The
+source is [Yedda Palemeq's blog](https://yeddapalemeq.blogspot.com/).
+
+**Many sentences are segmented into morphemes, but nothing is glossed at the
+morpheme level.** The `M` tier records the author's own segmentation; it carries
+no translations, and never has. Word-level glosses are prose explanations rather
+than interlinear glosses. See "Reading the tiers" below before using either
+tier.
 
 ## License and AI use
 
@@ -51,6 +58,33 @@ contextually right.
 not that the word is meaningless or that a gloss was lost. 731 of the 5,643 `W`
 elements are in that position; their `FORM` is simply the word as it appears in
 the example.
+
+**The corpus is segmented but not glossed at the morpheme level. No `M`
+element carries a `TRANSL`, and none ever has.** This is the single most
+important thing to know before using the `M` tier. The blog analyses many words
+into morphemes — writing infixes inline in angle brackets, `s<em>eljec-an`,
+`p<in>a-cun-an` — and that segmentation is what the `M` tier records. But Yedda
+glosses **words**, in prose, and never glosses the individual morphemes. So a
+morpheme has a form and a position and nothing else: all 6,492 `M` elements have
+zero translations, which is why `glossed_words` in the published statistics is
+`0` while `segmented_words` is 4,475.
+
+Segmentation and glossing are separate things here, and only the first is
+present. This is a property of the source, not a gap in processing: every
+version of this corpus back to its first commit has had zero morpheme glosses,
+both frozen scrape snapshots have zero, and the scraper only ever attaches a
+`TRANSL` to a sentence or a word — it has no code path that could produce one on
+a morpheme. `validate_glosses` reports the situation as 6,492 SOFT V064
+findings; they are accepted, and supplying those glosses would be original
+linguistic work. Under POL-036 any gloss added later must be a *new*
+`TRANSL[@kindOf="standard"]`, never a rewrite of what the source wrote.
+
+A related consequence: `validate_glosses` also raises 274 SOFT V062, asking that
+a word containing an infix carry angle-bracket (`<AV>`-style) notation in its
+`TRANSL`. Yedda explains her infixes in prose instead — `S288_1W3`'s gloss says
+"-em- is actor voice (AV) case marker, and -in- is undergoer voice" — so the
+information is present and correct, merely written another way. V062 is a
+notation difference, not missing data.
 
 **Sixteen sentences carry no `W` tier at all.** The blog prints them as bare
 phrase entries with no word breakdown — `S268_1`, `S269_1`, `S378_1`–`S381_1`,
