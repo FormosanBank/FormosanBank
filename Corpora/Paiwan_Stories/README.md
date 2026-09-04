@@ -38,6 +38,8 @@ PYTHON=/path/to/FormosanBank/.venv/bin/python ./CodeAndDocs/make_xml.sh
 
 The build regenerates the three original-tier XML files from the reviewed records, applies the shared cleaner, creates standard forms with `standardize.py --copy`, generates original and standard phonology with the reviewed Paiwan Ortho94 profile, and runs structural validation. Repeated builds are byte-identical.
 
+`CodeAndDocs/data/provenance.json` records the FormosanBank commit this corpus was built against. It is documentation: nothing in the build reads it, and the build runs against the current state of the bank, so a rebuild picks up later tooling improvements rather than pinning them.
+
 ## Audio
 
 Audio is not committed to Git. Download the three pinned public recordings with:
