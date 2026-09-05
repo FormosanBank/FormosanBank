@@ -1,0 +1,33 @@
+# POL-052: corpora that predate the build-provenance requirement.
+#
+# Each line is a corpus with no CodeAndDocs/provenance.json yet. The file
+# records which FormosanBank commit built its published XML — provenance only,
+# never a build input; a rebuild always runs with the current tools.
+#
+# This list only shrinks. When a corpus is next rebuilt, write its
+# provenance.json, link it from the README, and delete its line here. A new
+# corpus is never added.
+Campbell-Favorlang
+FormosanBankGitBook
+Glosbe
+ILRDF_Dicts
+Latham-1862
+Li-Conjunction-Thao
+MontgomeryTexts
+NTUFormosanCorpus
+NTU_Paiwan_ASR
+Nowbucyang-Truku-Thesis
+Paiwan_Stories
+Presidential_Apologies
+RauDong
+SEALS33
+Safolu-Amis-Dictionary
+Siraya_Gospels
+TangRecordingsOfTaroko
+Virginia_Fey_Dictionary
+WakelinTexts
+Whitehorn_Collection
+Wikipedias
+WilangYutasVideos
+YeddaPalemeqBlog
+ePark
