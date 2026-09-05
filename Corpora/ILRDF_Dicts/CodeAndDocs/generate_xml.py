@@ -20,7 +20,6 @@ from ilrdf_source import (
     load_translation_exclusions,
     load_translation_overrides,
     root_attributes,
-    sentence_id,
     verify_and_load_snapshot,
 )
 
@@ -34,7 +33,7 @@ XML_DIR = BASE.parent / "XML"
 def _build_tree(language: str, sentences: list[Sentence], snapshot_date: str) -> ET.Element:
     root = ET.Element("TEXT", root_attributes(language, snapshot_date))
     for sentence in sentences:
-        identifier = sentence_id(language, sentence.original)
+        identifier = sentence.identifier
         element = ET.SubElement(root, "S", {"id": identifier})
         ET.SubElement(element, "FORM", {"kindOf": "original"}).text = sentence.original
         translation_counts: dict[str, int] = {}

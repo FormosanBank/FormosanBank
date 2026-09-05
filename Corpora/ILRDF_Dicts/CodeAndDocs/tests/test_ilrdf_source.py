@@ -39,13 +39,13 @@ class SourceExtractionTests(unittest.TestCase):
         audio_a = "https://example.test/Data/api/Storage/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa/download"
         audio_b = "https://example.test/Data/api/Storage/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/download"
         sentence_a = {
-            "id": "source-a",
+            "id": "11111111-1111-4111-8111-111111111111",
             "originalSentence": "Form.",
             "chineseSentence": "翻譯一。",
             "audioItems": [{"audioUrl": audio_a}],
         }
         sentence_b = {
-            "id": "source-b",
+            "id": "22222222-2222-4222-8222-222222222222",
             "originalSentence": "Form.",
             "chineseSentence": "翻譯二。",
             "audioItems": [{"audioUrl": audio_b}],
@@ -87,7 +87,16 @@ class SourceExtractionTests(unittest.TestCase):
             [("zho", "翻譯一。"), ("zho", "翻譯二。")],
         )
         self.assertEqual(sentences[0].audio_urls, [audio_a])
-        self.assertEqual(sentences[0].source_ids, {"source-a", "source-b"})
+        self.assertEqual(
+            sentences[0].source_ids,
+            {"11111111-1111-4111-8111-111111111111",
+             "22222222-2222-4222-8222-222222222222"},
+        )
+        # The merged record's id is the lowest GUID in the group.
+        self.assertEqual(
+            sentences[0].identifier,
+            "Amis_11111111-1111-4111-8111-111111111111",
+        )
         self.assertEqual(stats.excluded_audio, 1)
 
     def test_documented_bad_translation_is_excluded_without_losing_source(self):
@@ -102,6 +111,7 @@ class SourceExtractionTests(unittest.TestCase):
                                 {
                                     "sentenceItems": [
                                         {
+                                            "id": "33333333-3333-4333-8333-333333333333",
                                             "originalSentence": "Source.",
                                             "chineseSentence": "10",
                                             "audioItems": [
@@ -153,9 +163,21 @@ class SourceExtractionTests(unittest.TestCase):
         self.assertEqual(sentences, [])
         self.assertEqual(stats.skipped_source, 1)
 
-    def test_sentence_id_is_stable_and_content_derived(self):
-        self.assertEqual(sentence_id("Amis", "A."), sentence_id("Amis", "A."))
-        self.assertNotEqual(sentence_id("Amis", "A."), sentence_id("Amis", "B."))
+    def test_sentence_id_carries_the_source_guid(self):
+        """Ids come from the source GUID, never from the sentence text.
+
+        A text-derived id retires itself on every correction, which is
+        backwards for a corpus whose purpose is progressive source-fidelity
+        correction, and it orphans manual_edits.xml records. See
+        docs/id_scheme.md.
+        """
+        self.assertEqual(sentence_id("Amis", "11111111-1111-4111-8111-111111111111"), "Amis_11111111-1111-4111-8111-111111111111")
+        self.assertEqual(
+            sentence_id("Amis", "11111111-1111-4111-8111-111111111111"), sentence_id("Amis", "11111111-1111-4111-8111-111111111111"))
+        self.assertNotEqual(
+            sentence_id("Amis", "11111111-1111-4111-8111-111111111111"), sentence_id("Amis", "22222222-2222-4222-8222-222222222222"))
+        with self.assertRaises(ValueError):
+            sentence_id("Amis", "A.")
 
 
 if __name__ == "__main__":

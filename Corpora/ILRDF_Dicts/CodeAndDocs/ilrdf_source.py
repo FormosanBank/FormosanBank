@@ -72,6 +72,19 @@ class Sentence:
     translations: list[tuple[str, str]] = field(default_factory=list)
     audio_urls: list[str] = field(default_factory=list)
     source_ids: set[str] = field(default_factory=set)
+    language: str = ""
+
+    @property
+    def identifier(self) -> str:
+        """Canonical id: the lowest source GUID merged into this record.
+
+        Records are merged by normalized original text, so one record may
+        carry several GUIDs; the lowest is chosen so the id is deterministic
+        and independent of iteration order.
+        """
+        if not self.source_ids:
+            raise ValueError(f"{self.original!r}: no source GUID")
+        return sentence_id(self.language, min(self.source_ids))
 
 
 @dataclass(frozen=True)
@@ -101,9 +114,28 @@ def normalize_source_form(value: object) -> str:
     return re.sub(r"\s+", " ", text)
 
 
-def sentence_id(language: str, original: str) -> str:
-    digest = hashlib.sha256(original.encode("utf-8")).hexdigest()[:16]
-    return f"{language}_{digest}"
+_GUID = re.compile(
+    r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}")
+
+
+def sentence_id(language: str, guid: str) -> str:
+    """Id carrying the source's own sentence-item GUID, verbatim.
+
+    The source GUID is stable across ILRDF reorderings and -- unlike a hash of
+    the sentence text -- across our own corrections to that text. A published
+    id therefore keeps pointing at the same source record, which is what
+    POL-037 asks for and what manual_edits.xml needs (it matches records by
+    S/@id, while POL-030 sends hand edits to the original tier).
+
+    The GUID is carried whole rather than truncated so an id can be grepped
+    straight back to the snapshot. Verified 2026-09-05 across all 16
+    snapshots: every sentence item has an id, every id matches the canonical
+    8-4-4-4-12 shape, no GUID carries two different texts, and no GUID
+    appears in two languages.
+    """
+    if not isinstance(guid, str) or not _GUID.fullmatch(guid):
+        raise ValueError(f"{language}: unusable source GUID {guid!r}")
+    return f"{language}_{guid}"
 
 
 def is_published(word: dict[str, object]) -> bool:
@@ -347,10 +379,16 @@ def extract_sentences(
                     if vocabulary:
                         original, repairs = repair_source_questions(original, vocabulary)
                         question_repairs += repairs
-                    record = grouped.setdefault(original, Sentence(original=original))
+                    record = grouped.setdefault(
+                        original, Sentence(original=original, language=language)
+                    )
                     source_id = item.get("id")
-                    if source_id:
-                        record.source_ids.add(str(source_id))
+                    if not source_id:
+                        raise ValueError(
+                            f"{language}: sentence item without an id "
+                            f"({original[:60]!r})"
+                        )
+                    record.source_ids.add(str(source_id))
                     translation_key = (language, original, translation)
                     if translation_key in translation_exclusions:
                         used_exclusions.add(translation_key)
@@ -380,9 +418,12 @@ def extract_sentences(
                             record.audio_urls.append(url)
 
     sentences = sorted(grouped.values(), key=lambda item: (item.original.casefold(), item.original))
+    # Two records must never claim the same id. With whole GUIDs this cannot
+    # happen by truncation, but it would happen if the same GUID were merged
+    # into two different text groups -- so the guard stays.
     ids: dict[str, str] = {}
     for sentence in sentences:
-        current_id = sentence_id(language, sentence.original)
+        current_id = sentence.identifier
         if current_id in ids and ids[current_id] != sentence.original:
             raise ValueError(f"{language}: stable ID collision for {current_id}")
         ids[current_id] = sentence.original
