@@ -239,9 +239,9 @@ class TestSentenceId(unittest.TestCase):
         self.assertEqual(a, b)
         self.assertTrue(a.startswith("Amis_"))
 
-    def test_id_has_no_hyphens_and_is_fixed_width(self):
+    def test_id_carries_the_guid_verbatim(self):
         got = sentence_id("Amis", "20a69646-e70a-f011-bd65-00155db40116")
-        self.assertEqual(got, "Amis_20a69646e70af011")
+        self.assertEqual(got, "Amis_20a69646-e70a-f011-bd65-00155db40116")
 
     def test_ids_unique_within_every_language(self):
         for language in LANGUAGES:
@@ -293,7 +293,7 @@ with:
 
 ```python
 def sentence_id(language: str, guid: str) -> str:
-    """Id derived from the source's own sentence-item GUID.
+    """Id carrying the source's own sentence-item GUID, verbatim.
 
     The source GUID is stable across ILRDF reorderings and — unlike a hash
     of the sentence text — across our own corrections to that text. A
@@ -305,11 +305,26 @@ def sentence_id(language: str, guid: str) -> str:
     id, no GUID carries two different texts, and no GUID appears in two
     languages.
     """
-    compact = guid.replace("-", "")
-    if len(compact) < 16 or not all(c in "0123456789abcdef" for c in compact.lower()):
+    if not _GUID.fullmatch(guid or ""):
         raise ValueError(f"{language}: unusable source GUID {guid!r}")
-    return f"{language}_{compact[:16]}"
+    return f"{language}_{guid}"
 ```
+
+with, near the top of the module:
+
+```python
+_GUID = re.compile(r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}")
+```
+
+**Maintainer ruling, 2026-09-05: carry the GUID whole, do not truncate or
+hash it.** Truncation buys only brevity and costs the two things that matter —
+an id can no longer be grepped straight back to the snapshot, and a truncated
+key has a (small) collision risk that the whole key does not. Verified before
+adopting: every GUID in all 16 snapshots matches the canonical 8-4-4-4-12
+shape; `S/@id` is `xs:string` with no format rule (V039 checks uniqueness
+within a file, V081 checks `TEXT/@id` across corpora); and hyphenated `S` ids
+are already published in NTUFormosanCorpus (12,410), Song-Kanakanavu-Grammar
+(1,569) and HundredPaiwanStories (5).
 
 Remove the now-unused `hashlib` import if nothing else uses it.
 
@@ -372,8 +387,9 @@ Create `Corpora/ILRDF_Dicts/CodeAndDocs/docs/id_scheme.md`:
 ```markdown
 # Sentence and entry ids
 
-Ids are `<Language>_<first 16 hex digits of the source GUID>`, e.g.
-`Amis_20a69646e70af011`.
+Ids are `<Language>_<source GUID>`, e.g.
+`Amis_20a69646-e70a-f011-bd65-00155db40116`. Dictionary entries take a `d`
+before the GUID; split records take a trailing `_a`, `_b`, `_c`.
 
 ## Why not a content hash
 
@@ -696,19 +712,14 @@ deletions (96.9%) are exactly the sentences whose cartesian expansion exceeds
 | Sentences split into separate records | 1,516 → 3,068 |
 | Alternation sites that were spelling or morphological variants | 1,315 |
 | Alternation sites between distinct words | 195 |
-| Sites where one option is attested nowhere else in that language | 523 |
 | Records deleted as uninterpretable | 894 |
 
-Attestation is **reported, never enforced.** The cascade above decides what is
-split and what is deleted; attestation contributes nothing to that decision.
-It is carried only as a review column, because a site whose option appears
-nowhere else in the language is worth a linguist's eye: `hatomi^ / foliki^` is
-structurally unambiguous, yet `hatomi^` occurs nowhere outside that one
-sentence. With 99.2% of ordinary tokens attested, the 523 flagged sites are a
-short review list rather than a defect list — deleting on rarity would discard
-good data. (Adapted from the Glosbe test at `glosbe_pipeline.py:2340`, which
-uses "try the whole, else require every part to validate" for gloss matching,
-not for admitting or rejecting corpus records.)
+**Attestation is not used at all** (maintainer ruling, 2026-09-05). The
+cascade decides split-or-delete by structure alone. No vocabulary is built for
+this purpose, no attestation column is emitted, and the 523-site figure is
+dropped from the report. (`build_recovery_vocabulary` stays where it is — the
+`?`-corruption repair still needs it — but `split_alternatives.py` does not
+call it.)
 
 **Files:**
 - Create: `Corpora/ILRDF_Dicts/CodeAndDocs/split_alternatives.py`
@@ -723,7 +734,7 @@ not for admitting or rejecting corpus records.)
   the composition; `None` means delete.
 - Produces: CLI `python split_alternatives.py --xml-dir ../XML --apply`,
   writing `docs/split_report.csv` (id, verdict, site count, similarity,
-  attestation) for the README figures.
+  similarity) for the README figures.
 
 - [ ] **Step 1: Write the failing tests**
 
@@ -1168,13 +1179,15 @@ class Entry:
 def entry_id(language: str, guid: str) -> str:
     """Headword-entry id, derived from the source's word GUID.
 
-    Prefixed 'd' so an entry id can never collide with a sentence id even
-    if the API ever reused a GUID across item types.
+    Prefixed 'd' so a dictionary entry is recognisable at a glance. Measured
+    2026-09-05: the sentence, word and explanation GUID spaces are pairwise
+    disjoint (0 overlap across 210,502 / 144,029 / 169,859), so the prefix is
+    legibility, not collision insurance. The GUID still appears verbatim, so
+    grepping a raw GUID finds the entry.
     """
-    compact = guid.replace("-", "")
-    if len(compact) < 16 or not all(c in "0123456789abcdef" for c in compact.lower()):
+    if not _GUID.fullmatch(guid or ""):
         raise ValueError(f"{language}: unusable source GUID {guid!r}")
-    return f"{language}_d{compact[:16]}"
+    return f"{language}_d{guid}"
 
 
 def extract_entries(language: str, snapshot: dict) -> list[Entry]:
@@ -1587,18 +1600,16 @@ Recorded so the next reader knows these were considered, not missed.
    committed artifact at the corpus root, inherited from before PR #179.
    Likely a POL-033 violation; raise separately.
 
-## Open questions for the maintainer
+## Maintainer sign-offs, 2026-09-05
 
-1. **Original-tier apostrophes.** Task 4 converts 99,821 `ʼ` (U+02BC) to ASCII
-   `'` in the *original* tier. This matches every other corpus and repo policy
-   that `'` is the glottal letter, and it is what makes the corpus-local table
-   deletable. But it is a visible change to published source text. Confirm.
-2. **Dictionary file naming.** `<Language>_dictionary.xml` alongside
-   `<Language>.xml`. An alternative is `XML/<Language>/dictionary.xml`.
-3. **Entry id prefix.** Entry ids use a `d` prefix (`Amis_d20a69646e70af011`)
-   to guarantee no collision with sentence ids. Confirm the shape reads well.
+All resolved before execution; recorded here so the executor does not reopen them.
 
----
+| Question | Ruling |
+|---|---|
+| Convert 99,821 `ʼ` (U+02BC) → `'` in the **original** tier? | **Yes.** Approved. This is what makes `standardization.tsv` deletable. |
+| Keep the 523-site attestation review column? | **No.** Not needed; attestation is not used in this corpus's build. |
+| Dictionary filename | `<Language>_dictionary.xml`, alongside `<Language>.xml`. |
+| Entry id shape | Approved, with the GUID carried **whole** rather than truncated — see Task 2. |
 
 ## Appendix A: `standard_form_normalization_qc.md` from PR #63
 
