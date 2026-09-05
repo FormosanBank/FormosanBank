@@ -38,7 +38,7 @@ almost every review question that gets re-litigated is settled by one of them.
 | --- | --- |
 | **POL-031** | New corpora are built in per-corpus dev repos and ported into `Corpora/` only after QC. |
 | **POL-046** | **Shared tools first.** Extend a shared tool before writing a corpus-specific one. Corpus-specific processing code is a last resort and a fork risk. |
-| **POL-047** | One entry point, one step order: `generate_xml.sh` runs generate → clean → manual edits → standardize → add_phonology. Deviation is allowed but must be justified at merge. |
+| **POL-047** | One entry point, one step order: `generate_xml.sh` runs generate → manual edits → clean → standardize → add_phonology. Deviation is allowed but must be justified at merge. |
 | **POL-048** | A published corpus rebuilds from a **FormosanBank checkout alone.** Dev repos are permanently private and are never a build input. |
 
 **How the file is organised**
@@ -621,7 +621,8 @@ review finding: either fold it into the shared tool, or record in the corpus
 README why the shared tool cannot serve.
 
 ### POL-047 · RULED · 2026-09-05 · reproduction pipeline
-Every published corpus has **one entry point with one name and one step order.**
+Every published corpus has **one entry point, with one name and one canonical
+step order.**
 
 ```
 CodeAndDocs/
@@ -630,28 +631,39 @@ CodeAndDocs/
                         #   invoked by generate_xml.sh.
   generate_xml.sh       # THE entry point: source -> published XML/.
     1. generate_xml.py            # corpus-local; builds the original tier
-    2. QC/cleaning/clean_xml.py
-    3. QC/cleaning/apply_manual_edits.py   # optional; no-op when absent
+    2. QC/cleaning/apply_manual_edits.py   # optional; no-op when absent
+    3. QC/cleaning/clean_xml.py
     4. QC/utilities/standardize.py
     5. QC/utilities/add_phonology.py
 ```
 
-**Manual edits run after the cleaner**, not before (maintainer ruling,
-2026-09-04, recorded on HundredPaiwanStories): an edit record corrects the
-*original* tier and carries no standard FORM and no PHON, so both are
-regenerated from the edited text; running the cleaner afterwards would risk
-undoing the human's decision. This supersedes the earlier "step 0" wording in
-`CLAUDE.md`, `QC/README.md` and the Wikipedias build script, which are to be
-brought into line. `apply_manual_edits.py` (shared, POL-030) is for one-off
-human judgement; a corpus-local `apply_manual_corrections.py` is for
-*systematic, source-derived* rules and belongs after step 5, not in place of it.
+**Where manual edits sit relative to the cleaner is not forced** (maintainer,
+2026-09-05). Both orders are in use and both are fine; before is mildly
+preferable, because the cleaner then normalizes the hand-entered text along with
+everything else. Two things about step 2 *are* constraints, and they are what the
+order has to respect:
+
+- **It runs on fresh pre-manual build output.** `apply_manual_edits.py` is not
+  idempotent — re-run over already-applied XML it prunes its own records as
+  no-ops (`QC/README.md`, "Discipline"). Whatever the position, nothing before
+  it may have already applied the edits.
+- **It runs before `standardize.py` and `add_phonology.py`.** An edit record
+  carries no standard FORM and no PHON, so both are regenerated from the edited
+  original. A corpus that repairs the original tier late must re-run steps 4 and
+  5 afterwards, as NTUFormosanCorpus does.
+
+`apply_manual_edits.py` (shared, POL-030) is for one-off human judgement; a
+corpus-local `apply_manual_corrections.py` is for *systematic, source-derived*
+rules and belongs after step 5, not in place of it.
 
 Four properties the entry point must have:
 
 - **Idempotent.** Re-running over a clean checkout leaves `git status` empty.
   Achieve it by restoring a POL-035 snapshot or by building into a staging
   directory and installing — never by mutating published `XML/` in place with
-  no baseline.
+  no baseline. This is also what lets a non-idempotent step like
+  `apply_manual_edits.py` sit inside an idempotent pipeline: it never sees its
+  own previous output, because the run starts from a fresh baseline.
 - **Self-contained** — see POL-048.
 - **Build only.** Validators do not run inside `generate_xml.sh`. Put them in a
   separate `validate.sh` if the corpus wants a committed QC run; a build that
@@ -695,9 +707,9 @@ a build that hard-exited without a `CodeAndDocs/Private/` source file.
 A commit pin also self-invalidates: it refuses to run against the repository it
 lives in as soon as `main` advances.
 
-### POL-049 · UNRESOLVED (proposed 2026-09-05) · pull-request scope
-**Recommendation:** a pull request that ports or reworks one corpus does not
-change shared code. Changes to `QC/`, `tests/`, `POLICIES.md`, repo-root
+### POL-049 · RULED · 2026-09-05 · pull-request scope
+A pull request that ports or reworks one corpus **does not change shared
+code.** Changes to `QC/`, `tests/`, `POLICIES.md`, repo-root
 registries, `requirements.txt`, or `.github/workflows/` belong in their own pull
 request, reviewed on their own merits and merged first.
 
@@ -709,12 +721,13 @@ third carried a policy entry, a data-loss fix, its test, and a dependency pin
 that would all have been lost had the competing PR for the same corpus landed
 instead. Repo-wide edits were bundled into single-corpus PRs at least five times.
 
-Open question for the maintainer: adopt as stated, or allow the narrow case
-where a corpus genuinely cannot be built without a shared-tool change (POL-046
-step 2) provided the shared change is called out in the PR description?
+**This does not conflict with POL-046 step 2.** Extending a shared tool because
+one corpus needs it is encouraged — it just happens in its own pull request,
+merged first, so the extension is reviewed as a shared-tool change and the
+corpus PR that depends on it cannot become its sole carrier.
 
-### POL-050 · UNRESOLVED (proposed 2026-09-05) · superseding a ruling
-**Recommendation:** a merged decision is reversed **explicitly or not at all.**
+### POL-050 · RULED · 2026-09-05 · superseding a ruling
+A merged decision is reversed **explicitly or not at all.**
 A change that undoes something previously ruled and merged must say so, cite
 the commit or POL entry it supersedes, and give the reason. Rediscovering the
 old behaviour and reinstating it as though it were new is not a reversal, it is
@@ -726,10 +739,10 @@ two merged rulings on where `apply_manual_edits.py` runs contradicted each
 other for three weeks, and five corpora implemented one and two the other —
 resolved only by POL-047 above.
 
-### POL-051 · UNRESOLVED (proposed 2026-09-05) · removing published content
-**Recommendation:** removing published content — sentences, words, morphemes,
-translations, audio elements — is disclosed in the pull request with a count
-and a reason, and is interrogated at merge. Silence is the finding, not the
+### POL-051 · RULED · 2026-09-05 · removing published content
+Removing published content — sentences, words, morphemes, translations, audio
+elements — is **disclosed in the pull request with a count and a reason**, and is
+interrogated at merge. Silence is the finding, not the
 deletion: deletions are often correct, and several were.
 
 The mechanism already half exists. `.github/workflows/token-comparison.yaml`
@@ -740,5 +753,6 @@ checkable rather than a review convention. In the RE-PORT batch one PR removed
 another removed 1,968 translations. Three of the batch's twenty-four PRs
 disclosed their removals.
 
-Open question for the maintainer: adopt as a review convention now, or hold
-until the element-count comparison exists in CI?
+In force now as a review convention; extending the comparison workflows to
+element counts is the mechanism that would make it checkable rather than
+remembered.
