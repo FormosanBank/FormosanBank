@@ -1,7 +1,8 @@
 # Rights enforcement: canonical licences, a merge check, documented provenance (design)
 
-**Status:** approved 2026-09-05 (maintainer: "looks good. Let's do that.").
-Establishes POL-041/042/043.
+**Status:** approved 2026-09-05 (maintainer: "looks good. Let's do that.";
+audio consolidation added 2026-09-05 on the maintainer's question).
+Establishes POL-041/042/043/044.
 
 ## Problem
 
@@ -31,25 +32,30 @@ Two failures followed, both observed in the August 2026 RE-PORT batch.
 
 ## Decision
 
-Four mechanisms, ordered from the narrowest to the widest.
+Five mechanisms, ordered from the narrowest to the widest.
 
 ### 1. A canonical vocabulary
 
 `rights_vocabulary.csv` at the repository root, joining `languages.csv`,
 `dialects.csv` and `standards.csv` as a registry rather than a table hidden in
-code (POL-039). Columns: `value`, `url`, `notes`.
+code (POL-039). Columns: `value`, `hf_license`, `url`, `notes`. The
+`hf_license` column carries the Hugging Face slug, so that form is a lookup
+rather than a second judgement (see §5).
 
 Every `TEXT/@copyright` must equal one entry exactly. Initial contents:
 
 ```
-value,url,notes
-CC BY 4.0,https://creativecommons.org/licenses/by/4.0/,
-CC BY-SA 4.0,https://creativecommons.org/licenses/by-sa/4.0/,
-CC BY-NC 4.0,https://creativecommons.org/licenses/by-nc/4.0/,
-CC BY-NC-SA 4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,
-CC BY-NC-ND 4.0,https://creativecommons.org/licenses/by-nc-nd/4.0/,
-public domain,,not a licence; no rights reserved
+value,hf_license,url,notes
+CC BY 4.0,cc-by-4.0,https://creativecommons.org/licenses/by/4.0/,
+CC BY-SA 4.0,cc-by-sa-4.0,https://creativecommons.org/licenses/by-sa/4.0/,
+CC BY-NC 4.0,cc-by-nc-4.0,https://creativecommons.org/licenses/by-nc/4.0/,
+CC BY-NC-SA 4.0,cc-by-nc-sa-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,
+CC BY-NC-ND 4.0,cc-by-nc-nd-4.0,https://creativecommons.org/licenses/by-nc-nd/4.0/,
+public domain,,,not a licence; no rights reserved
 ```
+
+Where a corpus's current value names no version, it normalizes to **4.0**
+(maintainer ruling, 2026-09-05).
 
 **No exceptions.** A corpus whose rights cannot be expressed as one of these
 values is not published in FormosanBank, however genuine the permission behind
@@ -146,12 +152,58 @@ each corpus page has a `## Copyright` section naming a vocabulary value. That
 is a change in the `FormosanBankGitbook` repository and ships as its own pull
 request.
 
-### 5. POLICIES.md — a new section 5, Rights
+### 5. Audio rights are derived, not recorded
+
+`AUDIO-PERMISSIONS.md` already states the rule: *"If a corpus's XML is
+published under `Corpora/` in FormosanBank, its associated audio is public
+under the same license recorded in the XML."* `audio_permissions.json` repeats
+it as `publication_rule`. The licence stored per audio source is therefore a
+copy of something the XML already says — the duplication POL-039 exists to
+prevent, and the reason a rights change has to be made twice (as #179 does).
+
+It is also true in fact. Across all 22 entries, every published source's
+licence equals its corpus's XML licence; the only two that differ are the
+private development repositories `NTU_Paiwan_Raw` and `ePark3_Raw`, which
+correctly carry no licence at all.
+
+So the derived fields come out of `audio_permissions.json`:
+
+- **Removed:** `license`, `hf_license`, `version_basis`, `basis`.
+- **Kept**, because none of it is derivable: `permission_id`, `corpus`,
+  `xml_path`, `status`, `access`, `hf_repositories`, `approval_record`.
+
+A loader in `QC/validation/rights.py` resolves a source's licence by reading
+the `@copyright` of the XML at its `xml_path`, and its Hugging Face slug by
+looking up the `hf_license` column of `rights_vocabulary.csv`. A source whose
+`status` is not published resolves to no licence, which is what the two private
+repositories already record.
+
+`QC/validation/validate_hf_audio.py` currently compares the two values through
+a `license_family()` helper that strips versions and normalizes spelling —
+a workaround for the very inconsistency the vocabulary removes. With the value
+derived, there is nothing to compare: the comparison, the helper, and the
+`hf_license`/`basis` presence checks all delete.
+
+`AUDIO-PERMISSIONS.md` splits along the same seam. Its policy text — the
+publication boundary, the version rule, the private-repository rule — moves to
+POLICIES.md, which is where policy belongs and which the JSON already points at
+via its `policy` field. Its licence table is generated from the JSON plus the
+XML, or dropped in favour of pointing at them.
+
+**Assumption made explicit:** one licence per corpus. A corpus whose items
+carried different rights could not be expressed this way. That case does not
+exist today and is deliberately not designed for (maintainer, 2026-09-05: "if
+we ever have a situation where there are different rights for different items
+in the same corpus, we'll deal with that then"). POL-041 states the assumption
+so the next reader knows it was chosen rather than overlooked.
+
+### 6. POLICIES.md — a new Rights section
 
 - **POL-041 · licence vocabulary.** Every published `TEXT/@copyright` is one of
   the values in `rights_vocabulary.csv`: a Creative Commons licence or
   `public domain`. No exceptions. A corpus that cannot make that claim is not
-  published. Enforced by V160/V161.
+  published. One licence per corpus: per-item rights variation is not
+  representable and is not designed for. Enforced by V160/V161.
 - **POL-042 · rights claims are not removed on inference.** An existing rights
   claim in published XML is never removed or weakened on the grounds that the
   reviewer could not find its evidence. Permission evidence is held by the
@@ -163,40 +215,45 @@ request.
   `.github/workflows/rights-comparison.yaml` and lands only by explicit
   maintainer override. The README's `**Rights source:**` line names the grantor
   and the date; the evidence itself stays with the maintainer.
+- **POL-044 · audio inherits the XML licence.** Audio published for a corpus
+  carries that corpus's XML licence; audio for an unpublished corpus is not
+  licensed for reuse. The licence is therefore never recorded separately —
+  `audio_permissions.json` stores only what cannot be derived (repositories,
+  access, status, approval pointer). Absorbs the policy text formerly in
+  `AUDIO-PERMISSIONS.md`.
 
 ## What this forces, and in what order
 
-The gate cannot go green while `main` violates it. Three corpora do:
+The gate cannot go green while `main` violates it. Three corpora do; two are
+now resolved.
 
 | Corpus | Current value | Disposition |
 |---|---|---|
-| RauDong | `CC NC-BY` (20 files) | Transposition of `CC BY-NC`. Fixed by committed script (POL-038) to the versioned form once the version worklist resolves it; the source is the 2006 Academia Sinica open-access volume. |
-| Glosbe | `© Glosbe and/or respective contributors…` (8 files) | No CC licence. Under POL-041 must be relicensed or unpublished. **Maintainer decision.** |
-| Nowbucyang-Truku-Thesis | `© Lowking Wei-Cheng Hsu / 許韋晟. Used by FormosanBank with permission.` (1 file) | No CC licence. Same. **Maintainer decision.** |
+| RauDong | `CC NC-BY` (20 files) | Transposition of `CC BY-NC`. Fixed by committed script (POL-038) to `CC BY-NC 4.0`. |
+| Nowbucyang-Truku-Thesis | `© Lowking Wei-Cheng Hsu / 許韋晟. Used by FormosanBank with permission.` (1 file) | **Resolved 2026-09-05:** the corpus is `CC BY-NC 4.0`, granted by Nowbucyang (Lowking Wei-Cheng Hsu / 許韋晟). The attribution sentence moves to the README Rights section. |
+| Glosbe | `© Glosbe and/or respective contributors…` (8 files) | No CC licence. Under POL-041 must be relicensed or unpublished. **Open — the last blocker.** |
 
-Version resolution is the other blocking input. Some are documented — Wikipedias
-is CC BY-SA 4.0, ePark's klokah licensing page states CC BY-NC-SA 4.0, Song's
-own string says 4.0. Others record no version anywhere in the repository:
-`CC-BY` (NTU_Paiwan_ASR, 260 files), `CC-BY-NC` (Whitehorn 87, ILRDF 16,
-SEALS33 4, FormosanBankGitBook 6), `CC-BY-NC-ND` (Wakelin 12, Montgomery 3),
-`CC BY-SA` (Wikipedias 13,239), `CC BY-NC` (NTU 193, HundredPaiwanStories 100,
-Tang 30). The normalization step emits that worklist for the maintainer rather
-than guessing a version, since licence versions differ in substance.
+Licence versions are settled: where a value names no version it normalizes to
+4.0 (maintainer ruling, 2026-09-05). That removes what would otherwise have
+been a per-corpus research task across ten corpora.
 
 Implementation order follows from the gate:
 
 1. `rights_vocabulary.csv`; a normalization script under `QC/utilities/`;
-   the version worklist; RauDong's typo; the Glosbe and Nowbucyang decisions;
-   Song's and Safolu's sentences moved to their READMEs.
+   RauDong's typo; Nowbucyang's licence; the Glosbe decision; Song's, Safolu's
+   and Nowbucyang's provenance sentences moved to their READMEs.
 2. V160/V161 and their unit tests — turned on only once step 1 leaves `main`
    conforming.
 3. `rights_delta.py` and `rights-comparison.yaml`.
-4. `test_rights_documentation.py`, the README template, and the 26 corpus
+4. The audio consolidation: strip the derived fields from
+   `audio_permissions.json`, add the loader, simplify `validate_hf_audio.py`,
+   move `AUDIO-PERMISSIONS.md`'s policy text into POLICIES.md.
+5. `test_rights_documentation.py`, the README template, and the 26 corpus
    README Rights sections.
-5. POLICIES.md §5; the GitBook `manage_corpus_pages.py` rule as a separate PR
+6. POLICIES.md §5; the GitBook `manage_corpus_pages.py` rule as a separate PR
    there.
 
-Steps 2–5 are independent of one another and all depend on step 1.
+Steps 2–6 are independent of one another and all depend on step 1.
 
 ## Consequences for the open batch
 
@@ -222,13 +279,16 @@ made those judgements possible.
   licence swapped, corpus added, corpus removed.
 - `test_rights_documentation.py` doubles as the documentation test and the
   XML↔README consistency test.
+- Audio derivation: a published source resolves to its corpus's XML licence and
+  the matching `hf_license` slug; an unpublished source resolves to none; a
+  source whose `xml_path` does not exist raises rather than defaulting. The
+  existing `validate_hf_audio.py` tests are updated to drop the licence
+  comparison they no longer need.
 
 ## Out of scope
 
-Audio rights. `audio_permissions.json` and `AUDIO-PERMISSIONS.md` already
-govern those and use a different model — per-dataset permission records rather
-than a per-TEXT licence. Aligning the two is worth doing and is not this
-change.
+Per-item rights within a corpus. POL-041 assumes one licence per corpus and
+says so; the case does not exist today.
 
 The ad-hoc per-corpus rights files that have appeared without documentation —
 `ILRDF_Dicts/CodeAndDocs/source_data/RIGHTS.md` (in #179) and
