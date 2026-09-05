@@ -8,24 +8,36 @@ icon: layer-group
 
 ## What it's for
 
-`add_phonology.py` derives an IPA-ish phonemic transcription from already-spelled text and stores it as a sister `PHON` element next to each `FORM`. It always processes the **standard** tier (using the `Orthographies/Ortho113` tables); with `--orthography <Name>` it can additionally transcribe the **original** tier through a second, source-specific orthography table.
+`add_phonology.py` derives an IPA-ish phonemic transcription from already-spelled text and stores it as a sister `PHON` element next to each `FORM`. It processes the **standard** tier through the language's *designated standard orthography*, and with `--orthography <Name>` it can additionally transcribe the **original** tier through a second, source-specific orthography table.
+
+Which orthography is "designated" comes from [`standards.csv`](https://github.com/FormosanBank/FormosanBank/blob/main/standards.csv) at the repo root, one row per language. Sixteen of the eighteen languages currently name `Ortho113`; **a blank entry means standard `PHON` is deliberately skipped** for that language, and the script says so rather than guessing. Siraya and Babuza-Favorlang are blank today. Per POL-003 the `PHON` tier is machine-owned: `add_phonology.py` regenerates it, and hand edits to it are stripped from manual-edit records.
 
 ## How it works
 
-For each file it reads `TEXT/@xml:lang` (mapped to a language name) and `TEXT/@dialect`, then loads `Orthographies/Ortho113/<Language>.tsv`. That TSV has a `letter` column plus value columns; the column actually used is chosen by whether the language is multi-dialect (per `dialects.csv`):
+For each file it reads `TEXT/@xml:lang` (mapped to a language name) and `TEXT/@dialect`, then loads `Orthographies/<Scheme>/<Language>.tsv`, where `<Scheme>` is the language's `standards.csv` entry. That TSV has a `letter` column plus value columns; the column actually used is chosen by whether the language is multi-dialect (per `dialects.csv`):
 
-- **Explicit override**: `--target_column` selects that value column for the standard Ortho113 table and takes precedence over dialect detection.
+- **Explicit override**: `--target_column` selects that value column in the standard orthography table and takes precedence over dialect detection.
 - **Multi-dialect**: without an override, the `dialect` attribute selects the column, falling back to a `default` column.
 - **Single-dialect**: the sole value column, else `IPA`, else `default`.
 
 It builds an ordered list of `(letter → phoneme)` pairs (rows whose value is the literal `NA` are skipped), then for every `FORM[@kindOf="standard"]`:
 
-1. Ensures a sibling `PHON[@kindOf="standard"]` exists (creating one right after the `FORM` if not).
-2. Strips morphological segmentation markers from the `FORM` text so `PHON` stays clean IPA even when the FORM tier carries them: `=` (clitic) and the `<...>` infix brackets are always removed — the infix content is kept, since it is pronounced — while `-` is removed only when it is **not** a letter in the language's orthography (Bunun/Thao keep `-`).
-3. Applies the mappings as ordered string replacements over the text, with light capitalization handling.
-4. Replaces any leftover character that is not a known phoneme, punctuation, or whitespace with `*`.
+1. **Ensure the tier exists.** A sibling `PHON[@kindOf="standard"]` is created right after the `FORM` if there is not one already.
+2. **Null morphemes are silent.** A FORM that *is* the null marker `∅` yields `PHON` `∅`, so the tier is never empty. A null *unit* inside a longer form — `∅` plus one bridging segmentation hyphen — is dropped before anything else, since it has no sound (POL-012).
+3. **Fold stress accents.** Acute and macron diacritics are usually prosody, not segments, so a Kanakanavu or Amis stress accent folds to its base vowel — otherwise it would fall through to step 6 and surface as `*`. But an accented letter a language genuinely attests must not be folded, or two distinct letters merge: the **keep set** is the accented letters of the language's own orthography table **plus** those in its reference orthography (`QC/validation/reference/<Language>/`). Rukai `é`, Puyuma `ē`, Yami `á é í ó` and Thao `í` are all kept on that basis.
+
+   **Being kept is not the same as being mapped.** A kept letter still needs a row in the orthography table; without one it reaches step 6 as an unmapped letter and becomes `*`. Only Rukai's `é` currently has such a row — see the note below.
+4. **Strip segmentation markers**, so `PHON` stays clean IPA even when the FORM tier carries them: `=` (clitic) and the `<...>` infix brackets are always removed — the infix content is kept, since it is pronounced — while `-` is removed only when it is **not** a letter in the language's orthography (Bunun/Thao keep `-`). The mappings are then applied by longest-grapheme match, preferring an exact match before a case-insensitive one, and never remapping IPA the pass has already produced.
+5. **Apply the contextual rules**, if the language has any. A `<Language>.rules.tsv` sidecar beside the orthography table holds ordered `pattern`/`replacement`/`description` regex rules, applied in file order after the mappings — for context-sensitive realizations a flat letter table cannot express. Four exist today: Bunun, Seediq, Thao and Yami. An optional `dialect` column scopes a rule the same way the mapping columns are scoped: blank means universal, a named dialect means that dialect only, and `default` means "the fallback, for dialects no rule names explicitly".
+6. **Clean up what is left.** Known phonemes, `*`, whitespace and combining marks pass through. Unmapped **punctuation is dropped** — it is not sound, and mapped punctuation such as an orthographic apostrophe was already consumed in step 4. Anything else — an unmapped *letter* — becomes `*`.
 
 The resulting string becomes the `PHON` element's text. With `--orthography <Name>`, the same procedure runs over `FORM[@kindOf="original"]` using `Orthographies/<Name>/<Language>.tsv`, writing `PHON[@kindOf="original"]`.
+
+### Reading a `*` in a PHON tier
+
+A `*` means **an unmapped letter**, and it is a signal worth chasing: either the orthography table is missing a grapheme, or the FORM carries a character that does not belong to that orthography. It does **not** mean a prosodic stress accent (folded in step 3) or stray punctuation (dropped in step 6).
+
+> **Known gap — attested accented letters with no table row.** Puyuma `ē`/`é`, Yami `á é í ó` and Thao `í` are attested in their reference orthographies, so step 3 correctly declines to fold them — but `Orthographies/Ortho113/<Language>.tsv` has no row for any of them, so they star in step 6. This accounts for **2,076 `*` in published `PHON`** (RauDong Yami 1,098; ePark Puyuma 910; Presidential_Apologies Puyuma 54; ILRDF_Dicts Thao 14). The fix is a row per letter in the orthography table, not a code change; until then, treat a `*` on one of those letters as known rather than as a new orthography problem.
 
 ## Schema note (PHON is fully supported)
 
@@ -36,7 +48,7 @@ A `PHON` tier is **valid under the current schema**. [`QC/validation/xml_templat
 Run from the FormosanBank repo root after `source .venv/bin/activate`.
 
 ```bash
-# Standard tier only (uses Orthographies/Ortho113)
+# Standard tier only (uses each language's standards.csv orthography)
 python QC/utilities/add_phonology.py \
   --corpora_path /path/to/corpus-or-Final_XML
 
@@ -52,7 +64,7 @@ python QC/utilities/add_phonology.py \
 | `--corpora_path` | (required) | Corpora root (iterated entry-by-entry), a corpus dir, or a single `.xml` file. |
 | `--orthography` | none | Folder name under `Orthographies/` used to also transcribe the **original** tier. Must exist. |
 | `--language` | none | Restrict to files whose path matches this language name. |
-| `--target_column` | none | Force a specific Ortho113 value column for the standard tier; otherwise auto-detect from dialect/language. |
+| `--target_column` | none | Force a specific value column in the standard orthography table; otherwise auto-detect from dialect/language. |
 
 ### Single-file wrapper
 
@@ -60,7 +72,7 @@ python QC/utilities/add_phonology.py \
 
 ## Output & side effects
 
-**Modifies XML in place.** A `PHON` element is inserted after each processed `FORM`, and each file is re-serialized and overwritten. The serializer preserves inline mixed content without inserting formatting whitespace inside it. Inspect the diff before committing. Confirm the phonemic strings look right and that stray `*` markers (unmapped characters) are not hiding orthography problems. The standard tier's `Ortho113/<Language>.tsv` must exist for the language, or the file is skipped with a warning.
+**Modifies XML in place.** A `PHON` element is inserted after each processed `FORM`, and each file is re-serialized and overwritten. The serializer preserves inline mixed content without inserting formatting whitespace inside it. Inspect the diff before committing. Confirm the phonemic strings look right and that stray `*` markers (unmapped letters) are not hiding orthography problems. If the language has no `standards.csv` entry, standard `PHON` is skipped with a warning; if it has one but the table is missing, that is reported as a separate warning.
 
 ## When to run it
 
