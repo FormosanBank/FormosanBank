@@ -546,8 +546,8 @@ def test_keep_set_comes_from_the_designated_standard_orthography():
     assert standard_orthography_accents("Rukai") == frozenset({"\u00e9"})
     for language in ("Puyuma", "Yami", "Thao", "Kanakanavu", "Amis"):
         assert standard_orthography_accents(language) == frozenset(), language
-    # Blank standards.csv entry (no designated standard) -> nothing derivable;
-    # these two rely on _accents.ALWAYS_KEEP instead.
+    # Blank standards.csv entry -> nothing derivable, so every accent folds.
+    # Verified safe: neither corpus runs standardize.py or has any PHON.
     for language in ("Siraya", "Babuza-Favorlang"):
         assert standard_orthography_accents(language) == frozenset(), language
     assert standard_orthography_accents("NotALanguage") == frozenset()

@@ -11,7 +11,7 @@ import unicodedata
 
 import pytest
 
-from QC.utilities._accents import ACCENTS_TO_STRIP, accented_letters, strip_accents
+from QC.utilities._accents import ALWAYS_KEEP, ACCENTS_TO_STRIP, accented_letters, strip_accents
 
 # Korean strings written the way a source text has them (precomposed / NFC).
 SEOUL = "서울"
@@ -184,15 +184,25 @@ def test_attested_macron_letter_survives():
     assert strip_accents("sēhu") == "sehu"
 
 
-def test_always_keep_letters_survive_without_a_keep_set():
-    # Siraya and Favorlang have no reference orthography to derive keep from,
-    # and both letters are contrastive against their bare base in their corpus.
-    assert strip_accents("ǣuh-appa") == "ǣuh-appa"
-    assert strip_accents("paḡa") == "paḡa"
-    assert strip_accents("ḡinaat") == "ḡinaat"
+def test_no_unconditional_keep_set():
+    """There is no hardcoded exception list. Siraya 'ae-ligature-macron' and
+    Favorlang 'g-macron' were held in ALWAYS_KEEP because their languages have
+    no designated standard orthography; verified 2026-09-05 that nothing strips
+    them in practice (Siraya_Gospels builds its standard tier with its own
+    script and never runs standardize.py, Campbell-Favorlang publishes no
+    standard tier, and neither corpus has any PHON), so the exception is gone.
+
+    A caller that passes no keep set now folds them, which is the honest
+    behaviour: protection comes from the language's standards.csv orthography,
+    not from a list in this module."""
+    assert ALWAYS_KEEP == frozenset()
+    assert strip_accents("pa\u1e21a") == "paga"
+    # ...and is restored the moment the language's own table lists the letter.
+    assert strip_accents("pa\u1e21a", keep={"\u1e21"}) == "pa\u1e21a"
 
 
-def test_always_keep_does_not_protect_the_bare_base():
+def test_bare_bases_are_untouched():
+    """A base letter carries no strip-mark, so it is never rewritten."""
     assert strip_accents("æ") == "æ"
     assert strip_accents("g") == "g"
 

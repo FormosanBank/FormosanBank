@@ -25,13 +25,10 @@ set below.
 
 The macron is the clearest case of why ``keep`` matters. It is prosodic or
 loanword notation in most of the bank — Saisiyat, Amis, Truku, Atayal and
-Paiwan all carry macrons while attesting no macron letter — but it is a real
-orthographic letter in Puyuma (``ē``), Siraya (``ǣ``) and Favorlang (``ḡ``). A
-caller that strips it without a ``keep`` set will merge those letters with
-their bare bases. Callers should pass :func:`standard_orthography_accents` for their language —
-the accented letters its *designated standard* orthography table actually
-lists. The two letters whose languages have no designated standard at all are
-held in ``ALWAYS_KEEP`` below and are protected unconditionally.
+Paiwan all carry macrons while attesting no macron letter. A caller that strips
+it without a ``keep`` set merges any real macron letter with its bare base.
+Callers should pass :func:`standard_orthography_accents` for their language: the
+accented letters its *designated standard* orthography table actually lists.
 
 Stripping applies to **Latin-script characters only** (maintainer ruling). Every
 Formosan orthography is Latin, so a prosodic accent worth removing is always on
@@ -52,20 +49,19 @@ ACCENTS_TO_STRIP = frozenset({
     "̄",  # combining macron (ā ē ī ō ū …)
 })
 
-# Accented letters that are real letters somewhere in the bank but whose
-# language has no reference orthography for ``keep`` to be derived from.
-# Both are contrastive against their bare base in their own corpus, so
-# stripping the mark would merge two distinct letters:
+# No unconditional keep set. Siraya's 'ǣ' and Favorlang's 'ḡ' were held here
+# because neither language has a designated standard orthography to derive a
+# keep set from. Verified 2026-09-05 that nothing strips them: Siraya_Gospels
+# builds its standard tier with its own CodeAndDocs/regenerate_standard_tier.py
+# and never runs standardize.py, Campbell-Favorlang publishes no standard tier
+# at all, and neither corpus has a single PHON element. strip_accents is
+# therefore never applied to either letter.
 #
-#   ǣ  Siraya (fos)     — 236 in Siraya_Gospels beside 5,234 plain 'æ'
-#   ḡ  Favorlang (bzg)  — 263 in Campbell-Favorlang beside 1,013 plain 'g',
-#                         plus 16 in Siraya_Gospels
-#
-# Puyuma's 'ē' needs no entry here: QC/validation/reference/Puyuma/ attests it,
-# so every caller that passes a ``keep`` set derived from the reference
-# orthographies already protects it. Drop a letter from this set once its
-# language gains a reference orthography that lists it.
-ALWAYS_KEEP = frozenset({"ǣ", "ḡ"})
+# If either language is ever standardized with the shared tool, give it a
+# standards.csv entry and an Orthographies/<scheme>/<Language>.tsv that lists
+# the letter — that is what standard_orthography_accents reads, and it will
+# then protect it. Do NOT reintroduce a hardcoded exception list.
+ALWAYS_KEEP = frozenset()
 
 
 def _has_stripped_mark(letter: str) -> bool:
@@ -108,7 +104,8 @@ def standard_orthography_accents(language: str) -> frozenset:
     occurs in the sample — which is exactly the judgement this keep set makes.
 
     A language whose ``standards.csv`` entry is blank has no designated
-    standard, so it returns empty and relies on ``ALWAYS_KEEP``.
+    standard, so it returns empty — every accent on its Latin letters folds.
+    Give the language a standards.csv entry and table if that is wrong.
     """
     # Imported lazily: this module is otherwise dependency-free, and the
     # registry pulls in the language tables.
@@ -174,9 +171,6 @@ def strip_accents(text: str, keep: Iterable[str] = frozenset()) -> str:
     conjoining parts are part of the script, not source prosody. They are
     emitted NFC-composed, so a Hangul syllable stays (or becomes) a precomposed
     syllable instead of a run of conjoining jamo.
-
-    ``ALWAYS_KEEP`` is unioned into ``keep`` on every call, so a letter whose
-    language has no reference orthography to derive ``keep`` from is still safe.
 
     ``keep`` is an optional set of accented letters (matched in NFC form) that
     must survive stripping — the orthography attests them as real letters, so
