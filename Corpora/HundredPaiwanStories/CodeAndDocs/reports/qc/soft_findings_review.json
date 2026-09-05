@@ -1,0 +1,35 @@
+{
+  "inventory": {
+    "M": 36938,
+    "S": 2921,
+    "TEXT": 100,
+    "W": 24556
+  },
+  "validator_findings": {
+    "V061": 1302,
+    "V064": 1,
+    "V122": 8028,
+    "G001": 1,
+    "G002": 1,
+    "G003": 1370,
+    "G010": 153
+  },
+  "review": {
+    "G003": "all 1,370 are canonical infix-root gap forms",
+    "V061": "all 1,302 are reduplicated W forms using the canonical tilde marker",
+    "V122": "all 8,028 exactly cover preserved source TRANSL and W/M FORM notation",
+    "G010": "all 153 are source hyphens kept in the original tier; the standard tier carries none",
+    "V064": "the single unglossed M is 078S4W19M0c, the -i the source leaves without a gloss",
+    "G002": "078S4W19 has 4 Ms and 3 source gloss units for the same reason",
+    "V122_by_tier": {
+      "M.TRANSL.original": 3790,
+      "S.TRANSL.unspecified": 448,
+      "W.TRANSL.original": 3790
+    }
+  },
+  "hard_findings": 1,
+  "accepted_hard_findings": {
+    "G001": "078S4W19: the source supplies no gloss for the final -i, so the morpheme is published unglossed rather than with an invented gloss. The W FORM and W TRANSL skeletons differ by that one unit. Accepted and documented; see the corpus README."
+  },
+  "ready_to_port": true
+}

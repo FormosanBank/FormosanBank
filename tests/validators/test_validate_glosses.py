@@ -117,6 +117,49 @@ def test_V060_no_FORM_at_all_emits_nothing():
     assert findings == [], f"expected no V060 finding; got {findings!r}"
 
 
+def test_V060_sentence_only_file_emits_nothing():
+    """A file with no W tier anywhere is not word-segmented, so a W-count
+    of zero is the intended state, not a mismatch. Without this guard the
+    rule fired once per sentence on every sentence-only corpus."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">a b c</FORM>
+      </S>
+      <S id="S2">
+        <FORM kindOf="original">d e</FORM>
+      </S>""")
+    findings = _findings_for(gloss_rules.v060_W_count_matches_word_count, xml)
+    assert findings == [], f"expected no V060 finding; got {findings!r}"
+
+
+def test_V060_skips_unsegmented_S_in_a_partially_segmented_file():
+    """S2 has no W at all. That is a W-tier *presence* question, owned by
+    V148 (POL-041); V060 only compares counts where a W tier exists, so it
+    must not also report S2 as a count mismatch."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">a b</FORM>
+        <W id="W1"><FORM kindOf="original">a</FORM></W>
+        <W id="W2"><FORM kindOf="original">b</FORM></W>
+      </S>
+      <S id="S2">
+        <FORM kindOf="original">d e</FORM>
+      </S>""")
+    findings = _findings_for(gloss_rules.v060_W_count_matches_word_count, xml)
+    assert findings == [], f"expected no V060 finding; got {findings!r}"
+
+
+def test_V060_still_flags_a_real_mismatch_in_a_segmented_S():
+    """The guards must not silence the rule's actual job."""
+    xml = _TEXT_TEMPLATE.format(body="""
+      <S id="S1">
+        <FORM kindOf="original">a b c</FORM>
+        <W id="W1"><FORM kindOf="original">a</FORM></W>
+      </S>""")
+    findings = _findings_for(gloss_rules.v060_W_count_matches_word_count, xml)
+    assert len(findings) == 1, f"expected one V060 finding; got {findings!r}"
+
+
 # ---------------------------------------------------------------------------
 # V061: M-count vs. implied-morpheme-count (SOFT)
 # ---------------------------------------------------------------------------

@@ -23,6 +23,16 @@ Only the combining marks actually seen in the corpora are listed. The stripping
 logic is otherwise mark-agnostic, so extending coverage is just adding to the
 set below.
 
+The macron is the clearest case of why ``keep`` matters. It is prosodic or
+loanword notation in most of the bank — Saisiyat, Amis, Truku, Atayal and
+Paiwan all carry macrons while attesting no macron letter — but it is a real
+orthographic letter in Puyuma (``ē``), Siraya (``ǣ``) and Favorlang (``ḡ``). A
+caller that strips it without a ``keep`` set will merge those letters with
+their bare bases. Callers should pass the accented letters their language's
+orthographies attest; the two letters whose languages have no reference
+orthography at all are held in ``ALWAYS_KEEP`` below and are protected
+unconditionally.
+
 Stripping applies to **Latin-script characters only** (maintainer ruling). Every
 Formosan orthography is Latin, so a prosodic accent worth removing is always on
 a Latin base letter; a non-Latin character quoted in an article (Korean, CJK,
@@ -38,7 +48,23 @@ from typing import Iterable
 ACCENTS_TO_STRIP = frozenset({
     "́",  # combining acute accent (á é í ó ú …)
     "̆",  # combining breve (ŭ …)
+    "̄",  # combining macron (ā ē ī ō ū …)
 })
+
+# Accented letters that are real letters somewhere in the bank but whose
+# language has no reference orthography for ``keep`` to be derived from.
+# Both are contrastive against their bare base in their own corpus, so
+# stripping the mark would merge two distinct letters:
+#
+#   ǣ  Siraya (fos)     — 236 in Siraya_Gospels beside 5,234 plain 'æ'
+#   ḡ  Favorlang (bzg)  — 263 in Campbell-Favorlang beside 1,013 plain 'g',
+#                         plus 16 in Siraya_Gospels
+#
+# Puyuma's 'ē' needs no entry here: QC/validation/reference/Puyuma/ attests it,
+# so every caller that passes a ``keep`` set derived from the reference
+# orthographies already protects it. Drop a letter from this set once its
+# language gains a reference orthography that lists it.
+ALWAYS_KEEP = frozenset({"ǣ", "ḡ"})
 
 
 def _has_stripped_mark(letter: str) -> bool:
@@ -99,13 +125,18 @@ def strip_accents(text: str, keep: Iterable[str] = frozenset()) -> str:
     emitted NFC-composed, so a Hangul syllable stays (or becomes) a precomposed
     syllable instead of a run of conjoining jamo.
 
+    ``ALWAYS_KEEP`` is unioned into ``keep`` on every call, so a letter whose
+    language has no reference orthography to derive ``keep`` from is still safe.
+
     ``keep`` is an optional set of accented letters (matched in NFC form) that
     must survive stripping — the orthography attests them as real letters, so
     their diacritic is orthographic, not prosodic. Latin clusters whose NFC form
     is in ``keep`` pass through unchanged; every other Latin cluster has its
     strip-marks removed as before.
     """
-    keep_nfc = frozenset(unicodedata.normalize("NFC", letter) for letter in keep)
+    keep_nfc = frozenset(
+        unicodedata.normalize("NFC", letter) for letter in keep
+    ) | ALWAYS_KEEP
 
     result = []
     pending = []  # run of non-Latin text, flushed through NFC as a unit

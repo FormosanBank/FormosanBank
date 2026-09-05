@@ -15,10 +15,10 @@ This file (`FormosanBank/POLICIES.md`) is **canonical** — it versions together
 with the code that implements the rulings, and entries cite rule IDs and
 scripts by name. A rendered copy is published in the GitBook at
 `en-us/the-bank-architecture/policies.md` with a header marking it as synced;
-the GitBook repo's test suite gains a drift check (byte-comparison against a
-FormosanBank checkout, alongside the existing `update_corpus_stats.py`
-tooling) so the copy cannot silently diverge. The GitBook's
-[FormosanBank XML Format](../FormosanBankGitbook/en-us/the-bank-architecture/formosanbank-xml-format.md)
+the GitBook repo regenerates it with `python sync_upstream_docs.py`, and its
+`tests/test_upstream_doc_sync.py` drift check (a byte-comparison against a
+FormosanBank checkout) fails when the copy diverges. The GitBook's
+[FormosanBank XML Format](https://ai4commsci.gitbook.io/formosanbank/the-bank-architecture/formosanbank-xml-format)
 page remains the narrative description of the format; where it states a
 convention, the matching POL entry cites it rather than duplicating prose.
 
@@ -131,6 +131,16 @@ pipeline, so there is no per-corpus opt-out of `∅` in published data. Spec:
    WAVE DASH. Implemented in `clean_xml`'s `swap_punctuation` (C029),
    pure typography per the POL-010 rationale. Chinese TRANSL is
    unaffected (that branch never calls `swap_punctuation`).
+3. **CJK context — RULED (2026-09-03).** A `~` **between two CJK
+   characters** is not gloss notation and carries no morphological
+   meaning. Chinese glosses and translations use it for an open semantic
+   argument (`把~抓住`, "catch ~"), for prosodic lengthening after an
+   interjection (`哇~真漂亮`), and for numeric ranges (`五~六`). The
+   gloss-scrape rules therefore strip it before parsing morpheme
+   structure, so it neither contributes a morpheme slot nor enters a
+   marker skeleton. The exception requires CJK on *both* sides, which
+   leaves Leipzig-style `CAU~walk` untouched. Implemented in
+   `gloss_scrape._gloss_notation_text` (consumed by G001, G002, G007).
 
 ### POL-014 · RULED · GitBook · infixes on W/M tiers
 W-tier FORMs mark an infix with ASCII angle brackets (`k<um>a'en`); S-level
@@ -401,3 +411,120 @@ SOFT per POL-034). Adding a language = one `languages.csv` row, plus a
 `standards.csv` row (blank scheme until a standard is designated) and
 `dialects.csv` rows if multi-dialect. Documented for end users on the
 GitBook "Formosan Dialects" page.
+
+### POL-041 · RULED · 2026-09-03 · W-tier presence
+The W tier asks the same question as the M tier (POL-023) one level up,
+and gets the same answer at the level of the file: a corpus with **no**
+word segmentation has **no W level at all**, which is the normal state
+for most of the bank and never a finding. But a file where *some*
+sentences carry a W tier and others do not is an **incomplete
+segmentation pass**, and the unsegmented sentences are reported.
+
+An `S` with no `FORM` is never counted: an untranscribed-audio shell has
+no text to segment, and V010 already reports it.
+
+**Why the file, not the sentence** — the opposite of the POL-023
+amendment, deliberately. V144 can be per sentence because a parsed
+sentence announces itself (a W with two or more M children, or an M FORM
+differing from its parent W FORM). A sentence with **no W announces
+nothing at all**: there is no per-sentence signal that distinguishes
+"not segmented yet" from "not segmented, by design". Only the presence
+of segmented siblings in the same file makes the omission legible, so
+the file is the unit of judgement.
+
+Enforced as SOFT finding **V148** (`v148_W_less_S_in_segmented_file`) in
+`validate_xml.py`, aggregated per file. SOFT because a partly segmented
+file is a work-in-progress, not a defect in what it does contain.
+
+Scope consequence for **V060** (W-count vs word-count, `validate_glosses.py`):
+V060 compares counts, so it now applies only where a W tier exists — it
+skips a file with no W anywhere, and skips an individual `S` with no W
+inside a partially segmented file. Whether a sentence *ought* to have a W
+tier is this policy's question, not V060's. Previously V060 fired once per
+sentence on every sentence-only corpus, reporting a missing tier as a
+count mismatch "due to normalization or spelling". Raised by:
+`codex/qc-sentence-only-gloss-noise` (2026-06-25), which fixed the
+sentence-only half but not the partially segmented half.
+
+---
+
+## 5. Rights
+
+### POL-042 · RULED · 2026-09-05 · every published TEXT
+Every published `TEXT/@copyright` is **exactly one of the values in
+`rights_vocabulary.csv`** (repo root, joining `languages.csv`, `dialects.csv`
+and `standards.csv` as a registry per POL-039): a Creative Commons licence, or
+`public domain`. Exact match, not a pattern — a sentence that *mentions* a
+licence is not a licence declaration, and free text admits errors no reader
+catches (`CC NC-BY` shipped in RauDong across 20 files). Where a value names no
+version it is 4.0.
+
+**No exceptions.** A corpus whose rights cannot be expressed as one of these
+values is not published in FormosanBank, however genuine the permission behind
+it. Permission that does not amount to a licence is recorded in the corpus
+README (POL-044), not in `@copyright`.
+
+**One licence per corpus.** Per-item rights variation within a corpus is not
+representable and is deliberately not designed for; the case does not exist
+today. Implemented by: V160 (`copyright_present`) and V161
+(`copyright_in_vocabulary`), both HARD, in `QC/validation/rules/rights.py`.
+Spec: `docs/superpowers/specs/2026-09-05-rights-enforcement-design.md`.
+
+### POL-043 · RULED · 2026-09-05 · existing rights claims
+An existing rights claim in published XML is **never removed or weakened on the
+grounds that the reviewer could not find its evidence.** Permission evidence is
+held by the maintainer, not in this repository, so its absence here proves
+nothing. A reviewer who doubts a claim escalates to the maintainer; only a
+*positive* finding — the source says otherwise, or the grant is known not to
+exist — justifies a change.
+
+Rationale: in the August 2026 RE-PORT batch five pull requests replaced a
+Creative Commons licence with bespoke permission prose, each reasoning from an
+absence (#165, #167, #174, #179, #181). #167 was overturned by the maintainer,
+who held the correspondence the reviewer could not see. A single cautious
+judgement propagates to every `TEXT` in the corpus — 100 files for #167, 16 for
+#179 — and is expensive to reverse.
+
+### POL-044 · RULED · 2026-09-05 · rights documentation and merge review
+**Documented.** Each corpus README carries a `## Rights` section with two
+structured lines and prose beneath:
+
+```
+**License:** CC BY-NC 4.0
+**Rights source:** <grantor>, <YYYY-MM-DD>; evidence: ask maintainer
+```
+
+The licence must equal the corpus's `@copyright`; the date is when permission
+was granted or last confirmed. `evidence: ask maintainer` rather than naming a
+system — the evidence store may change, the instruction to a reader will not.
+The prose explains where the right came from and is required but unchecked. The
+GitBook corpus page carries the same licence in its `## Copyright` section.
+
+**Interrogated at merge.** Any change to a corpus's licence, in either
+direction, fails `.github/workflows/rights-comparison.yaml`, which compares the
+head against the base ref exactly as `token-comparison.yaml` does. There is no
+committed baseline — a baseline is redundant state that can itself drift, and a
+merge check already has both sides available. A legitimate change lands by
+explicit maintainer override, which is deliberately the hardest step in the
+mechanism. There is no label-based bypass; the friction is the control
+(maintainer, 2026-09-05).
+Implemented by: `QC/validation/rights_delta.py`,
+`tests/corpora/test_rights_documentation.py`, and the GitBook repo's
+`manage_corpus_pages.py check --strict`.
+
+### POL-045 · RULED · 2026-09-05 · audio rights
+**Audio inherits the XML licence.** Audio published for a corpus carries that
+corpus's `@copyright`; audio for a corpus that is not published in
+`Corpora/` is not licensed for reuse. The licence is therefore **never recorded
+separately**: `audio_permissions.json` stores only what cannot be derived —
+repositories, `access`, `status`, corpus mapping, and the approval pointer —
+and a loader resolves the licence from the corpus XML and the Hugging Face slug
+from `rights_vocabulary.csv`.
+
+Rationale: the rule was already stated in two places (`AUDIO-PERMISSIONS.md`,
+and `publication_rule` in the JSON) and already true in fact — all 22 audio
+sources matched their corpus XML, the only exceptions being the two private
+development repositories, which correctly carry no licence. Storing the derived
+value meant every rights change had to be made twice, and
+`validate_hf_audio.py` needed a `license_family()` helper to paper over the two
+spellings. Absorbs the policy text formerly in `AUDIO-PERMISSIONS.md`.
