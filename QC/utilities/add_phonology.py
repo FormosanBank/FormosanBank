@@ -7,7 +7,6 @@ import re
 import string
 import sys
 import unicodedata
-from functools import lru_cache
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass
 from pathlib import Path
@@ -33,33 +32,6 @@ from QC.validation._dialect_inventory import (  # noqa: E402
 
 
 ORTHOGRAPHIES_PATH = _REPO_ROOT / "Orthographies"
-
-_REFERENCE_PATH = _REPO_ROOT / "QC" / "validation" / "reference"
-
-
-@lru_cache(maxsize=None)
-def _reference_accented_letters(language: str) -> frozenset[str]:
-    """Accented letters this language's reference orthography attests.
-
-    The Ortho113 profile is not a sufficient ``keep`` set on its own: Puyuma
-    writes an orthographic 'e-macron' that no Orthographies/ table lists but
-    QC/validation/reference/Puyuma/*/unique_characters.txt does. Folding it
-    would merge two distinct letters in PHON, which is exactly what
-    _accents.strip_accents' ``keep`` parameter exists to prevent. Every dialect
-    subdirectory is unioned — a superset is safe here, since a letter that is
-    orthographic in any dialect must not be folded away.
-    """
-    root = _REFERENCE_PATH / language
-    if not root.is_dir():
-        return frozenset()
-    letters: set[str] = set()
-    for path in root.glob("*/unique_characters.txt"):
-        try:
-            letters.update(path.read_text(encoding="utf-8").split())
-        except OSError:
-            continue
-    return accented_letters(letters)
-
 
 def _has_strip_mark(text: str) -> bool:
     """True if ``text`` carries a combining mark that strip_accents removes."""
@@ -270,10 +242,13 @@ def load_profile(
         mappings=tuple(mappings),
         ipa_characters=frozenset(ipa_characters),
         rules=rules,
-        accented_letters=(
-            accented_letters(letter for letter, _ in mappings)
-            | _reference_accented_letters(language)
-        ),
+        # Keep only the accented letters THIS table maps: a kept letter is
+        # then always a mappable one, so folding can never be the reason a
+        # PHON tier shows '*'. For the standard tier this table is the
+        # language's designated standard orthography, the same source
+        # standardize.py keeps by; for --orthography it is that source
+        # orthography, whose accented letters it likewise maps.
+        accented_letters=accented_letters(letter for letter, _ in mappings),
     )
 
 
