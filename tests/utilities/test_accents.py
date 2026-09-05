@@ -185,20 +185,31 @@ def test_attested_macron_letter_survives():
 
 
 def test_no_unconditional_keep_set():
-    """There is no hardcoded exception list. Siraya 'ae-ligature-macron' and
-    Favorlang 'g-macron' were held in ALWAYS_KEEP because their languages have
-    no designated standard orthography; verified 2026-09-05 that nothing strips
-    them in practice (Siraya_Gospels builds its standard tier with its own
-    script and never runs standardize.py, Campbell-Favorlang publishes no
-    standard tier, and neither corpus has any PHON), so the exception is gone.
+    """There is no hardcoded exception list, and none is needed.
 
-    A caller that passes no keep set now folds them, which is the honest
-    behaviour: protection comes from the language's standards.csv orthography,
-    not from a list in this module."""
+    ALWAYS_KEEP held Siraya's 'ae-ligature-macron' and Favorlang's 'g-macron'
+    because neither language has a designated standard orthography. The
+    vowels-only rule protects the Favorlang letter structurally -- 'g' is a
+    consonant -- and neither corpus is standardized by the shared tool anyway.
+    When either language gains a standards.csv orthography, that table will
+    list its letters and standard_orthography_accents will keep them."""
     assert ALWAYS_KEEP == frozenset()
-    assert strip_accents("pa\u1e21a") == "paga"
-    # ...and is restored the moment the language's own table lists the letter.
-    assert strip_accents("pa\u1e21a", keep={"\u1e21"}) == "pa\u1e21a"
+    assert strip_accents("pa\u1e21a") == "pa\u1e21a"      # consonant: never stripped
+    assert strip_accents("\u01e3uh") == "\u00e6uh"        # vowel: stripped, absent a table
+    assert strip_accents("\u01e3uh", keep={"\u01e3"}) == "\u01e3uh"
+
+
+def test_only_vowels_are_stripped():
+    """A prosodic mark sits on a vowel; a diacritic on a consonant is part of
+    the letter. This is what keeps Slavic, Turkish and transcription letters
+    intact without an exception list."""
+    assert strip_accents("t\u00faturu") == "tuturu"        # vowel + acute
+    assert strip_accents("dour\u016dk") == "douruk"        # vowel + breve
+    assert strip_accents("\u0101y\u00ed") == "ayi"        # vowel + macron, vowel + acute
+    for consonant_word in ("Nikoli\u0107", "i\u0159a", "\u011fa", "\u015bin", "\u0144a"):
+        assert strip_accents(consonant_word) == consonant_word, consonant_word
+    # 'y' and 'w' are glides in these orthographies, not vowels.
+    assert strip_accents("\u00fdnna") == "\u00fdnna"
 
 
 def test_bare_bases_are_untouched():

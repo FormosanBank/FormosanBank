@@ -30,6 +30,11 @@ it without a ``keep`` set merges any real macron letter with its bare base.
 Callers should pass :func:`standard_orthography_accents` for their language: the
 accented letters its *designated standard* orthography table actually lists.
 
+Stripping applies to **Latin vowels only** (maintainer ruling 2026-09-05): a
+prosodic mark sits on a vowel, so a diacritic on a consonant belongs to the
+letter. That is what keeps Favorlang's ``ḡ``, Turkish ``ğ``, Slavic ``ć ś ń``
+and MontgomeryTexts' ``ř``/``f̆`` intact without any exception list.
+
 Stripping applies to **Latin-script characters only** (maintainer ruling). Every
 Formosan orthography is Latin, so a prosodic accent worth removing is always on
 a Latin base letter; a non-Latin character quoted in an article (Korean, CJK,
@@ -62,6 +67,24 @@ ACCENTS_TO_STRIP = frozenset({
 # the letter — that is what standard_orthography_accents reads, and it will
 # then protect it. Do NOT reintroduce a hardcoded exception list.
 ALWAYS_KEEP = frozenset()
+
+
+# A prosodic mark sits on a VOWEL. Stripping is therefore restricted to vowel
+# bases, which is what separates a tone or stress mark from a letter that
+# merely happens to carry a diacritic: Favorlang's 'ḡ', Turkish 'ğ', Slavic
+# 'ć ś ń ž', and MontgomeryTexts' 'ř' and 'f̆' are consonants and are never
+# touched, so no exception list is needed for them.
+#
+# 'y' and 'w' are deliberately absent: every Formosan orthography here maps
+# them to the glides /j/ and /w/, so 'ý' is a consonant with a diacritic.
+# The non-ASCII entries are the vowels the bank's orthographies actually use
+# (Formosan barred/central vowels, and the IPA that reaches PHON generation).
+_VOWELS = frozenset("aeiouæɑɐəɛɘɨɪɔœøʉʊʌ")
+
+
+def _is_vowel(base: str) -> bool:
+    """True if ``base`` is a vowel letter, ignoring case."""
+    return base.casefold() in _VOWELS
 
 
 def _has_stripped_mark(letter: str) -> bool:
@@ -148,12 +171,18 @@ def _is_latin(char: str) -> bool:
 
 
 def _strip_latin_cluster(cluster: str, keep_nfc: frozenset) -> str:
-    """Drop ACCENTS_TO_STRIP from one Latin base letter + its combining marks."""
+    """Drop ACCENTS_TO_STRIP from one Latin base letter + its combining marks.
+
+    Only vowels are stripped: a prosodic mark sits on a vowel, so a diacritic on
+    a consonant is part of the letter (see ``_VOWELS``).
+    """
     composed = unicodedata.normalize("NFC", cluster)
     if composed in keep_nfc:
         return composed
     decomposed = unicodedata.normalize("NFD", cluster)
     base, marks = decomposed[0], decomposed[1:]
+    if not _is_vowel(base):
+        return composed
     kept_marks = [mark for mark in marks if mark not in ACCENTS_TO_STRIP]
     return unicodedata.normalize("NFC", base + "".join(kept_marks))
 
