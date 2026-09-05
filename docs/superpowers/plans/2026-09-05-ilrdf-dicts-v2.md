@@ -699,13 +699,16 @@ deletions (96.9%) are exactly the sentences whose cartesian expansion exceeds
 | Sites where one option is attested nowhere else in that language | 523 |
 | Records deleted as uninterpretable | 894 |
 
-Attestation is **reported, not enforced.** `hatomi^ / foliki^` occurs three
-times in Amis and `hatomi^` appears nowhere else in the snapshot, yet the
-structure is unambiguous. Deleting on rarity would discard good data;
-99.2% of ordinary tokens are attested, so the 523 flagged sites are a genuine
-review list, not a defect list. (This is the Glosbe test from
-`glosbe_pipeline.py:2340` — try the whole, else require every part to validate
-— demoted from a gate to a signal.)
+Attestation is **reported, never enforced.** The cascade above decides what is
+split and what is deleted; attestation contributes nothing to that decision.
+It is carried only as a review column, because a site whose option appears
+nowhere else in the language is worth a linguist's eye: `hatomi^ / foliki^` is
+structurally unambiguous, yet `hatomi^` occurs nowhere outside that one
+sentence. With 99.2% of ordinary tokens attested, the 523 flagged sites are a
+short review list rather than a defect list — deleting on rarity would discard
+good data. (Adapted from the Glosbe test at `glosbe_pipeline.py:2340`, which
+uses "try the whole, else require every part to validate" for gloss matching,
+not for admitting or rejecting corpus records.)
 
 **Files:**
 - Create: `Corpora/ILRDF_Dicts/CodeAndDocs/split_alternatives.py`
