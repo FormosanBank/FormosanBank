@@ -2,7 +2,7 @@
 
 **Status:** approved 2026-09-05 (maintainer: "looks good. Let's do that.";
 audio consolidation added 2026-09-05 on the maintainer's question).
-Establishes POL-041/042/043/044.
+Establishes POL-042/043/044/045.
 
 ## Problem
 
@@ -109,7 +109,9 @@ already has available. The consequence is that a legitimate rights change —
 including the RauDong typo fix — lands only by a maintainer overriding a red
 required check. That friction is the point: it is the single hardest step in
 the design, and it is placed on the operation the project most wants to be
-deliberate.
+deliberate. The maintainer confirmed this on 2026-09-05 — *"I actually like
+the requirement of overriding a red required check for changes to rights. That
+seems the right level of pushback."* — so there is no label-based escape hatch.
 
 ### 4. Documented provenance
 
@@ -194,28 +196,28 @@ XML, or dropped in favour of pointing at them.
 carried different rights could not be expressed this way. That case does not
 exist today and is deliberately not designed for (maintainer, 2026-09-05: "if
 we ever have a situation where there are different rights for different items
-in the same corpus, we'll deal with that then"). POL-041 states the assumption
+in the same corpus, we'll deal with that then"). POL-042 states the assumption
 so the next reader knows it was chosen rather than overlooked.
 
 ### 6. POLICIES.md — a new Rights section
 
-- **POL-041 · licence vocabulary.** Every published `TEXT/@copyright` is one of
+- **POL-042 · licence vocabulary.** Every published `TEXT/@copyright` is one of
   the values in `rights_vocabulary.csv`: a Creative Commons licence or
   `public domain`. No exceptions. A corpus that cannot make that claim is not
   published. One licence per corpus: per-item rights variation is not
   representable and is not designed for. Enforced by V160/V161.
-- **POL-042 · rights claims are not removed on inference.** An existing rights
+- **POL-043 · rights claims are not removed on inference.** An existing rights
   claim in published XML is never removed or weakened on the grounds that the
   reviewer could not find its evidence. Permission evidence is held by the
   maintainer, not in the repository, so its absence here proves nothing. A
   reviewer who doubts a claim escalates; only a positive finding — the source
   says otherwise, or the grant is known not to exist — justifies a change.
-- **POL-043 · rights changes are interrogated at merge.** Any change to a
+- **POL-044 · rights changes are interrogated at merge.** Any change to a
   corpus's licence, in either direction, fails
   `.github/workflows/rights-comparison.yaml` and lands only by explicit
   maintainer override. The README's `**Rights source:**` line names the grantor
   and the date; the evidence itself stays with the maintainer.
-- **POL-044 · audio inherits the XML licence.** Audio published for a corpus
+- **POL-045 · audio inherits the XML licence.** Audio published for a corpus
   carries that corpus's XML licence; audio for an unpublished corpus is not
   licensed for reuse. The licence is therefore never recorded separately —
   `audio_permissions.json` stores only what cannot be derived (repositories,
@@ -231,7 +233,7 @@ now resolved.
 |---|---|---|
 | RauDong | `CC NC-BY` (20 files) | Transposition of `CC BY-NC`. Fixed by committed script (POL-038) to `CC BY-NC 4.0`. |
 | Nowbucyang-Truku-Thesis | `© Lowking Wei-Cheng Hsu / 許韋晟. Used by FormosanBank with permission.` (1 file) | **Resolved 2026-09-05:** the corpus is `CC BY-NC 4.0`, granted by Nowbucyang (Lowking Wei-Cheng Hsu / 許韋晟). The attribution sentence moves to the README Rights section. |
-| Glosbe | `© Glosbe and/or respective contributors…` (8 files) | No CC licence. Under POL-041 must be relicensed or unpublished. **Open — the last blocker.** |
+| Glosbe | `© Glosbe and/or respective contributors…` (8 files) | No CC licence. Under POL-042 must be relicensed or unpublished. **Open — the last blocker.** |
 
 Licence versions are settled: where a value names no version it normalizes to
 4.0 (maintainer ruling, 2026-09-05). That removes what would otherwise have
@@ -261,10 +263,10 @@ Five RE-PORT pull requests become non-mergeable as written, because each moves
 a corpus out of the vocabulary: #165 SEALS33, #167 HundredPaiwanStories, #174
 MontgomeryTexts, #179 ILRDF, #181 WakelinTexts. Each needs its `@copyright`
 restored to a vocabulary value and its provenance prose moved to the README's
-Rights section, where POL-042 says it belonged all along.
+Rights section, where POL-043 says it belonged all along.
 
 This is the intended effect. The batch's rights judgements were made by
-reviewers reasoning from an absence, and POL-041 removes the discretion that
+reviewers reasoning from an absence, and POL-042 removes the discretion that
 made those judgements possible.
 
 ## Testing
@@ -287,7 +289,7 @@ made those judgements possible.
 
 ## Out of scope
 
-Per-item rights within a corpus. POL-041 assumes one licence per corpus and
+Per-item rights within a corpus. POL-042 assumes one licence per corpus and
 says so; the case does not exist today.
 
 The ad-hoc per-corpus rights files that have appeared without documentation —
