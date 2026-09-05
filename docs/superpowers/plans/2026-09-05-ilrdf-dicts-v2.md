@@ -582,7 +582,7 @@ PY
 Expected after the rebuild: Thao `í` (attested) and Puyuma `ē` (attested)
 survive; Amis `ē` ×5, Paiwan `è` ×1 and Paiwan `ǔ` ×1 are stripped, because
 no Amis or Paiwan reference orthography attests them. That is the correct
-per-language behaviour the flat table was overriding. Record the six stripped
+per-language behaviour the flat table was overriding. Record the seven stripped
 characters in `docs/qc_report.md`.
 
 - [ ] **Step 5: Run the tests**
@@ -599,106 +599,200 @@ git commit -m "ILRDF v2: delete the corpus-local standardization table"
 
 ---
 
-### Task 5: The four Thao `=` sentences
+### Task 5: Source-side alternatives — `=`, parentheses, slashes
 
-`=` is the source's "same as" notation. Both PR #179's blanket deletion (which
-produces run-ons) and the Aug-1 branch's split-and-keep-left are standard-tier
-edits, so item 5 applies: prefer a `manual_edits` change to the original tier
-if it would have the same effect. Here it would **not** — the source really
-does print `=`, so the original tier must keep it. This is genuine
-standard-tier work, and item 5's second clause applies instead: it must be
-explained in the README and the GitBook page.
+The source records alternative wordings three ways, and they are one problem,
+not three. The original tier keeps every one of them verbatim (the source
+really does print them, so a `manual_edits` fix would be wrong — item 5's
+first clause does not apply). What differs is what the **standard** tier and
+the **alternate** tier do with them.
 
-The four cases, with the decision for each:
+| Notation | Sentences | What it means |
+|---|---:|---|
+| `=` | 4 | Two equivalent phrasings of the whole sentence, one translation |
+| `( … )` with Latin content | 320 | An alternative wording of the bracketed span |
+| `( … )` with CJK content | 54 | A Chinese editorial annotation, not language data |
+| `( … )` mixed | 2 | Both, in one string |
+| `/` | 2,410 | Lexical alternatives at one or more points in the sentence |
 
-| Id (language) | Original (unchanged) | Standard |
-|---|---|---|
-| Thao (`kmaanasapunuqi`) | `ata tu kmaanasapunuqi! = ata tu kmasapunuqi!` | `ata tu kmaanasapunuqi!` |
-| Thao (`kmanasapunuqi`) | `ata tu kmanasapunuqi! = ata tu kmasapunuqi!` | `ata tu kmanasapunuqi!` |
-| Thao (`qunriuq`) | `qunriuq thithu naak a ranaw. = thithu qunriuq naak a ranaw` | `qunriuq thithu naak a ranaw.` |
-| Thao (`makitzangqaw`) | `lhmazawan … makitzangqaw (= katzangqaw).` | `lhmazawan … makitzangqaw.` |
+Slashes are heavily concentrated: Atayal 967 (10.3% of its sentences), Paiwan
+774 (9.8%), Sakizaya 539 (6.6%); the other thirteen languages contribute 130
+between them.
 
-Rule: keep the source's **first** variant; drop the `=` and everything after
-it, up to the end of the string or the closing parenthesis of an inline
-`(= …)`.
+#### Why not split into separate `<S>` elements
+
+G011 (`QC/validation/rules/gloss_scrape.py:636`) records the project
+convention: "the guide requires a slash alternate to become two separate `<S>`
+elements." That convention assumes **one** alternation site per sentence. ILRDF
+Atayal routinely has several. A full cartesian split of the 2,410 slash
+sentences yields **15,483** `S` elements, and the worst single sentence expands
+to **768** variants:
+
+```
+blaq balay kayal soni / sawni', kun / kuzing ru / ki sswe / sswe' / ssway
+mu' / mu kneril / knayril …                                    → 768 variants
+```
+
+Splitting is therefore rejected for this corpus. The distribution:
+
+| Cartesian expansion | Sentences |
+|---|---:|
+| 2 variants (one binary choice) | 1,488 |
+| 3 | 49 |
+| 4 | 541 |
+| 6 | 30 |
+| 8 | 151 |
+| 9+ | 148 |
+
+#### The policy
+
+1. **`FORM[@kindOf="original"]`** — the source string, untouched. Already true.
+2. **`FORM[@kindOf="standard"]`** — the source's **first** variant, with the
+   alternative and its delimiter removed, and CJK annotations removed
+   outright. Mechanical, idempotent, testable.
+3. **`FORM[@kindOf="alternate"]`** — added **only** where the sentence has
+   exactly one alternation site and therefore exactly one second reading:
+   the 4 `=` sentences and the 1,488 binary-slash sentences. Multi-site
+   sentences get no alternate FORM; enumerating 768 of them would be absurd
+   and nothing consumes them.
+
+`kindOf="alternate"` is already in the schema (`FORM_kindOf_Type`) and already
+in use — `Corpora/Latham-1862/` and `Corpora/WakelinTexts/` carry alternate
+FORMs for exactly this "same item, second attested wording" case.
+
+**Note on the maintainer's instruction.** The direction asked for was "two
+translations using alt". `ver="alt"` lives on `TRANSL` and marks two
+*translations* of one sentence — the ILRDF corpus already uses it that way,
+for the 2,099 merge groups where the same sentence carries different Chinese
+glosses under different headwords. The `=` cases are the mirror image: one
+translation, two *source* wordings. `FORM[@kindOf="alternate"]` is that
+mechanism. If the intent really was a second `TRANSL`, say so and this task
+changes shape.
 
 **Files:**
-- Create: `Corpora/ILRDF_Dicts/CodeAndDocs/source_data/source_repairs.json`
 - Create: `Corpora/ILRDF_Dicts/CodeAndDocs/standard_repairs.py`
 - Create: `Corpora/ILRDF_Dicts/CodeAndDocs/tests/test_standard_repairs.py`
 
 **Interfaces:**
-- Produces: `resolve_equals_variants(text: str) -> tuple[str, bool]` — returns the repaired text and whether it changed.
-- Produces: CLI `python standard_repairs.py --xml-dir ../XML [--apply]`, printing a per-rule count; a second dry run after `--apply` must report 0.
+- Produces: `split_alternatives(text: str) -> tuple[str, str | None]` — returns
+  `(first_variant, second_variant_or_None)`. The second is `None` unless the
+  sentence has exactly one alternation site.
+- Produces: CLI `python standard_repairs.py --xml-dir ../XML [--apply]`; a
+  second dry run after `--apply` must report 0 changes.
 
 - [ ] **Step 1: Write the failing tests**
 
-Create `tests/test_standard_repairs.py`:
-
 ```python
-import sys
-import unittest
+import sys, unittest
 from pathlib import Path
-
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from standard_repairs import resolve_equals_variants
+from standard_repairs import split_alternatives
 
 
-class TestEqualsVariants(unittest.TestCase):
-    def test_trailing_variant_is_dropped(self):
-        got, changed = resolve_equals_variants(
+class TestAlternatives(unittest.TestCase):
+    # --- equals ---
+    def test_equals_whole_sentence(self):
+        first, alt = split_alternatives(
             "ata tu kmaanasapunuqi! = ata tu kmasapunuqi!")
-        self.assertEqual(got, "ata tu kmaanasapunuqi!")
-        self.assertTrue(changed)
+        self.assertEqual(first, "ata tu kmaanasapunuqi!")
+        self.assertEqual(alt, "ata tu kmasapunuqi!")
 
-    def test_inline_parenthetical_variant_is_dropped(self):
-        got, changed = resolve_equals_variants(
+    def test_equals_inline_parenthetical(self):
+        first, alt = split_alternatives(
             "lhmazawan mathuaw mabrith, mingqarayza makitzangqaw (= katzangqaw).")
         self.assertEqual(
-            got, "lhmazawan mathuaw mabrith, mingqarayza makitzangqaw.")
-        self.assertTrue(changed)
+            first, "lhmazawan mathuaw mabrith, mingqarayza makitzangqaw.")
+        self.assertEqual(
+            alt, "lhmazawan mathuaw mabrith, mingqarayza katzangqaw.")
 
-    def test_text_without_equals_is_untouched(self):
-        got, changed = resolve_equals_variants("ata tu kmasapunuqi!")
-        self.assertEqual(got, "ata tu kmasapunuqi!")
-        self.assertFalse(changed)
+    # --- CJK annotation ---
+    def test_cjk_parenthetical_is_removed_not_alternated(self):
+        first, alt = split_alternatives(
+            "O raeked niyam o kapah a tala Fadangaw(溪名).")
+        self.assertEqual(first, "O raeked niyam o kapah a tala Fadangaw.")
+        self.assertIsNone(alt)
 
-    def test_is_idempotent(self):
-        once, _ = resolve_equals_variants("a! = b!")
-        twice, changed = resolve_equals_variants(once)
+    def test_trailing_cjk_note_is_removed(self):
+        first, alt = split_alternatives("finlhuqiza ihu buut?你")
+        self.assertEqual(first, "finlhuqiza ihu buut?")
+        self.assertIsNone(alt)
+
+    # --- slashes ---
+    def test_single_binary_slash_yields_an_alternate(self):
+        first, alt = split_alternatives("hatomi^/foliki^ han ako.")
+        self.assertEqual(first, "hatomi^ han ako.")
+        self.assertEqual(alt, "foliki^ han ako.")
+
+    def test_multi_site_slash_yields_no_alternate(self):
+        first, alt = split_alternatives(
+            "ana cipuq/cipoq pila gitan su smli lga, musa pzyux/piyux nanak la.")
+        self.assertEqual(
+            first, "ana cipuq pila gitan su smli lga, musa pzyux nanak la.")
+        self.assertIsNone(alt)
+
+    def test_three_way_slash_is_multi_site(self):
+        first, alt = split_alternatives("musa / mmawsa' / mawsa saku.")
+        self.assertEqual(first, "musa saku.")
+        self.assertIsNone(alt)
+
+    # --- Latin parentheses ---
+    def test_latin_parenthetical_alternative(self):
+        first, alt = split_alternatives("makitzangqaw (katzangqaw) matash.")
+        self.assertEqual(first, "makitzangqaw matash.")
+        self.assertEqual(alt, "katzangqaw matash.")
+
+    # --- invariants ---
+    def test_plain_text_is_untouched(self):
+        first, alt = split_alternatives("ata tu kmasapunuqi!")
+        self.assertEqual(first, "ata tu kmasapunuqi!")
+        self.assertIsNone(alt)
+
+    def test_idempotent(self):
+        once, _ = split_alternatives("a/b c/d.")
+        twice, alt = split_alternatives(once)
         self.assertEqual(once, twice)
-        self.assertFalse(changed)
+        self.assertIsNone(alt)
 
-    def test_never_empties_a_form(self):
+    def test_never_empties(self):
         with self.assertRaises(ValueError):
-            resolve_equals_variants("= only a variant")
+            split_alternatives("= only a variant")
 
-
-if __name__ == "__main__":
-    unittest.main()
+    def test_no_delimiter_survives(self):
+        for text in ("a/b.", "a (b) c.", "a = b", "a(溪名)."):
+            first, alt = split_alternatives(text)
+            for out in (first, alt):
+                if out is None:
+                    continue
+                self.assertNotIn("/", out)
+                self.assertNotIn("=", out)
+                self.assertNotIn("(", out)
+                self.assertNotIn(")", out)
 ```
 
 - [ ] **Step 2: Run to verify they fail**
 
+Run: `python -m pytest Corpora/ILRDF_Dicts/CodeAndDocs/tests/test_standard_repairs.py -q`
 Expected: FAIL — `standard_repairs` does not exist.
 
 - [ ] **Step 3: Implement**
 
-Create `standard_repairs.py`:
+Order matters: CJK annotations are removed first (they are not alternatives),
+then `=`, then Latin parentheses, then slashes. Build the two readings in
+parallel — the "first" reading takes every left-hand choice, the "second"
+takes the single right-hand choice — and return `None` for the second whenever
+more than one alternation site was found.
 
 ```python
 #!/usr/bin/env python3
-"""Reviewed standard-tier repairs for ILRDF_Dicts.
+"""Resolve source-side alternatives in the ILRDF standard tier.
 
-Only two classes live here, and both are cases where the original tier is
-correct as printed and only the standard tier needs resolving:
+The original tier keeps the source string verbatim. This module produces the
+standard reading (always the source's first variant, with CJK editorial
+annotation removed) and, where the sentence has exactly one alternation site,
+the single alternate reading that becomes FORM[@kindOf="alternate"].
 
-1. '=' variant notation (4 Thao sentences). The source joins two equivalent
-   phrasings with '='. The standard tier keeps the first.
-
-Everything else — extraction artifacts, dropped characters, editor notes —
-is a source-fidelity problem and belongs in manual_edits.xml against the
-original tier (see Task 6 / manual_edits.md).
+Multi-site sentences get no alternate: Atayal reaches 768 cartesian variants,
+and enumerating them serves nobody.
 """
 from __future__ import annotations
 
@@ -708,71 +802,158 @@ from pathlib import Path
 
 from lxml import etree
 
-_INLINE_EQUALS = re.compile(r"\s*\(\s*=\s*[^)]*\)")
-_TRAILING_EQUALS = re.compile(r"\s*=\s*.*$", re.S)
+CJK = re.compile(r"[㐀-䶿一-鿿]+")
+CJK_PAREN = re.compile(r"\s*[(（]\s*[^()（）]*[㐀-䶿一-鿿]"
+                       r"[^()（）]*\s*[)）]")
+TRAILING_CJK = re.compile(r"[㐀-䶿一-鿿]+\s*$")
+EQUALS_PAREN = re.compile(r"\s*\(\s*=\s*([^)]*)\)")
+EQUALS_TAIL = re.compile(r"\s*=\s*(.+)$", re.S)
+LATIN_PAREN = re.compile(r"\s*\(\s*([^()]*?)\s*\)")
+SLASH_SITE = re.compile(r"[^\s/]+(?:\s*/\s*[^\s/]+)+")
 
 
-def resolve_equals_variants(text: str) -> tuple[str, bool]:
-    """Keep the source's first variant; drop the '=' alternative."""
-    if "=" not in text:
-        return text, False
-    repaired = _INLINE_EQUALS.sub("", text)
-    repaired = _TRAILING_EQUALS.sub("", repaired)
-    repaired = re.sub(r"\s+", " ", repaired).strip()
-    if not repaired:
-        raise ValueError(f"equals-variant resolution emptied {text!r}")
-    return repaired, repaired != text
+def _tidy(text: str) -> str:
+    text = re.sub(r"\s+", " ", text).strip()
+    text = re.sub(r"\s+([,.!?;:])", r"\1", text)
+    return text
 
 
-def process(xml_dir: Path, apply: bool) -> int:
-    changed = 0
-    for path in sorted(xml_dir.rglob("*.xml")):
-        tree = etree.parse(str(path))
-        touched = False
-        for sentence in tree.iter("S"):
-            form = sentence.find('./FORM[@kindOf="standard"]')
-            if form is None or not form.text:
-                continue
-            repaired, did = resolve_equals_variants(form.text)
-            if did:
-                form.text = repaired
-                changed += 1
-                touched = True
-        if apply and touched:
-            tree.write(str(path), encoding="UTF-8", xml_declaration=True)
-    return changed
+def split_alternatives(text: str) -> tuple[str, str | None]:
+    """Return (first reading, single alternate reading or None)."""
+    # 1. CJK editorial annotation is not an alternative — drop it from both.
+    base = CJK_PAREN.sub("", text)
+    base = TRAILING_CJK.sub("", base)
 
+    sites = 0
+    first, second = base, base
 
-def main() -> int:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--xml-dir", type=Path,
-                        default=Path(__file__).resolve().parents[1] / "XML")
-    parser.add_argument("--apply", action="store_true")
-    args = parser.parse_args()
-    changed = process(args.xml_dir.resolve(), args.apply)
-    print(f"{'applied' if args.apply else 'would change'}: "
-          f"{changed} equals-variant standard forms")
-    return 0
+    # 2. '=' — inline (= x) or a trailing whole-clause variant.
+    if (m := EQUALS_PAREN.search(first)) is not None:
+        sites += 1
+        head = first[:m.start()].rstrip()
+        tail = first[m.end():]
+        word = re.search(r"(\S+)\s*$", head)
+        first = head + tail
+        second = (head[:word.start(1)] + m.group(1) + tail) if word else head + tail
+    elif (m := EQUALS_TAIL.search(first)) is not None:
+        sites += 1
+        first, second = first[:m.start()], m.group(1)
 
+    # 3. Latin parentheses — an alternative for the preceding word.
+    for m in list(LATIN_PAREN.finditer(first)):
+        sites += 1
+    if sites and LATIN_PAREN.search(first):
+        def _left(mo):
+            return ""
+        second_candidate = LATIN_PAREN.sub(lambda mo: " " + mo.group(1), second)
+        first = LATIN_PAREN.sub("", first)
+        second = second_candidate
 
-if __name__ == "__main__":
-    raise SystemExit(main())
+    # 4. Slash alternation sites.
+    slash_sites = SLASH_SITE.findall(first)
+    sites += len(slash_sites)
+    if slash_sites:
+        def _first(mo):
+            return re.split(r"\s*/\s*", mo.group(0))[0]
+
+        def _second(mo):
+            parts = re.split(r"\s*/\s*", mo.group(0))
+            return parts[1] if len(parts) > 1 else parts[0]
+
+        second = SLASH_SITE.sub(_second, first)
+        first = SLASH_SITE.sub(_first, first)
+
+    first = _tidy(first)
+    second = _tidy(second)
+    if not first:
+        raise ValueError(f"alternative resolution emptied {text!r}")
+    if sites != 1 or second == first or not second:
+        return first, None
+    return first, second
 ```
+
+**Implementation note for the executor.** The draft above is the shape, not
+finished code — the parenthesis branch in particular needs care about which
+word the bracketed span replaces. Drive it from the tests, and add a
+corpus-wide invariant check (Step 5) before trusting it.
 
 - [ ] **Step 4: Run the tests**
 
 Run: `python -m pytest Corpora/ILRDF_Dicts/CodeAndDocs/tests/test_standard_repairs.py -q`
 Expected: PASS.
 
-- [ ] **Step 5: Commit**
+- [ ] **Step 5: Corpus-wide invariant check before applying**
+
+```bash
+source .venv/bin/activate
+python - <<'PY'
+import glob, sys
+sys.path.insert(0, "Corpora/ILRDF_Dicts/CodeAndDocs")
+from lxml import etree
+from standard_repairs import split_alternatives
+import re
+CJK = re.compile(r"[㐀-䶿一-鿿]")
+bad = alt = n = 0
+for p in sorted(glob.glob("Corpora/ILRDF_Dicts/XML/*/*.xml")):
+    for s in etree.parse(p).iter("S"):
+        f = s.find('./FORM[@kindOf="standard"]')
+        if f is None or not f.text:
+            continue
+        first, second = split_alternatives(f.text)
+        if first != f.text:
+            n += 1
+        if second:
+            alt += 1
+        for out in (first, second):
+            if out and (set("()/=") & set(out) or CJK.search(out)):
+                bad += 1
+                print("RESIDUE:", repr(out[:90]))
+print(f"changed {n}, alternates {alt}, residue {bad}")
+PY
+```
+
+Expected: roughly 2,740 changed, roughly 1,492 alternates
+(1,488 binary-slash + 4 `=`), and **residue 0**. PR #63's composed algorithm
+left residue on 3 of 2,737; those three are the acceptance bar to beat:
+
+```
+cyux szwi / yupan na (krahu' bayhuy) / (hopa' na behuy) / cyaba na behuy) qu …   ← unbalanced source parens
+Mindaduin或(masialin) inak lulu.                                                  ← bare CJK 或 outside brackets
+uka mihu a patatash, haya naak a patatash arahu( ara uhu) matash.你               ← both at once
+```
+
+Any sentence that still cannot be resolved cleanly must be listed in the QC
+report by id, not silently mangled.
+
+- [ ] **Step 6: Write the alternate FORMs**
+
+Extend `standard_repairs.py --apply` to set the standard FORM to `first` and,
+where `second` is not None, insert a sibling
+`<FORM kindOf="alternate">second</FORM>` after it. Never insert an alternate
+that equals the standard.
+
+- [ ] **Step 7: Handle the 92 numbered multi-example records separately**
+
+92 sentences carry `1. … 2. …` numbering — two or more *distinct examples*
+crammed into one record (75 Atayal, 7 Saaroa, 3 each Saisiyat/Seediq/Truku,
+1 Yami). Resolving their alternatives does not fix the underlying defect: the
+`S` holds more than one sentence, which inflates the sentence count's meaning
+and produces nonsense phonology.
+
+These are a **source-structure** problem, not an alternatives problem. Do not
+split them in this task. List all 92 ids in `docs/qc_report.md` under a
+"known unresolved" heading and leave them for a follow-up, where splitting one
+record into several `S` is a deliberate, reviewed change with its own id
+consequences.
+
+- [ ] **Step 8: Commit**
 
 ```bash
 git add Corpora/ILRDF_Dicts/CodeAndDocs/
-git commit -m "ILRDF v2: resolve the four Thao '=' variant sentences in the standard tier"
+git commit -m "ILRDF v2: resolve source-side alternatives (=, parens, slashes) with alternate FORMs"
 ```
 
 ---
-
 ### Task 6: The 13 attestation-supported repairs, via manual_edits
 
 Item 7. These are the repairs from `origin/fix/ilrdf-standard-surface-forms`
@@ -1413,8 +1594,9 @@ is a bug:
 |---|---|
 | Every `S/@id` changed | Task 2 |
 | 99,821 `ʼ` → `'` in the original tier | Task 4 |
-| 6 accented characters stripped (Amis `ē`×5, Paiwan `è`, `ǔ`) | Task 4 |
-| 4 Thao `=` sentences resolved in the standard tier | Task 5 |
+| 7 accented characters stripped (Amis `ē`×5, Paiwan `è`×1, `ǔ`×1) | Task 4 |
+| Source-side alternatives resolved in the standard tier (`=` 4, parens 376, slashes 2,410) | Task 5 |
+| New `FORM[@kindOf="alternate"]` elements (~1,492) | Task 5 |
 | 13 original-tier repairs | Task 6 |
 | `copyright="CC BY-NC"` on all roots | Task 7 |
 | 16 new `*_dictionary.xml` files | Task 8 |
@@ -1471,7 +1653,7 @@ rule and why they cannot be fixed in the original tier.
 - [ ] **Step 2: Update the QC report**
 
 Refresh every count; add the change-classification table from Task 10 Step 3;
-record the six stripped accents; record the expected statistics impact of the
+record the seven stripped accents; record the expected statistics impact of the
 dictionaries; keep the publication-gate paragraph but update it to match the
 new RIGHTS.md.
 
@@ -1523,13 +1705,10 @@ git commit -m "ILRDF v2: pin the authority commit and record the rebuild digest"
 
 Recorded so the next reader knows these were considered, not missed.
 
-1. **Parenthetical and slash alternatives.** The standard tier carries 376
-   `(`-bearing and 2,410 `/`-bearing forms. PR #63 resolved 148 parens and 32
-   reviewed slashes; the current, fuller snapshots have far more. Resolving
-   2,410 slash cases requires per-case review that cannot honestly be done
-   inside this PR. They remain SOFT V122 inventory. **Recommend a follow-up
-   PR** that harvests PR #63's `strip_parenthetical_alternatives` and
-   `choose_first_slash_alternatives` behind a reviewed id list.
+1. **The 92 numbered multi-example records** (`1. … 2. …` in one `S`). Task 5
+   Step 7 inventories them; splitting one record into several `S` is a
+   reviewed source-structure change with its own id consequences and belongs
+   in its own PR.
 2. **Headword audio** — 123,081 items, deferred by decision.
 3. **The 24 unresolved `?` corruptions** PR #179 could not attest. Unchanged.
 4. **The 316 blank sentence items** in the snapshots, already skipped.
@@ -1650,3 +1829,79 @@ PR #179 deletes the character, leaving `ata tu kmaanasapunuqi! ata tu
 kmasapunuqi!` — one standard-tier "sentence" containing two sentences, which
 inflates token counts and is not a well-formed utterance. Task 5 keeps the
 first variant instead.
+
+## Appendix C: what PR #63 actually did, and how
+
+`normalize_standard_forms.py` was a **post-hoc patcher**: it opened the
+already-published XML, rewrote `S/FORM[@kindOf="standard"]` in place, and
+saved. It was never part of a build. Its `normalize_standard()` applied four
+things in a fixed order, only ever to the standard tier:
+
+**1. Exact override, keyed by id.** A 13-entry `STANDARD_OVERRIDES` dict
+mapping sentence id → finished replacement string. If an id matched, that
+value was used and the other three rules were skipped. These are the
+attestation-supported repairs (Task 6). Because they were keyed by PR #63's
+sequential ids (`Saaroa_1716`), every key is now dead.
+
+**2. Equals alternatives, gated by id.** `REVIEWED_EQUALS_IDS` held two Thao
+ids. For those, `text.split("=", 1)[0]` — keep everything before the first
+`=`. Only two of today's four cases were covered.
+
+**3. Parenthetical stripping, ungated.**
+
+```python
+PAREN_RE = re.compile(r"\([^()]*\)")
+
+def strip_parenthetical_alternatives(text):
+    previous = None
+    while text != previous:          # loop handles nesting
+        previous = text
+        text = PAREN_RE.sub("", text)
+    return text
+```
+
+Deletes every innermost `(…)` repeatedly until nothing changes. It does not
+distinguish a Latin alternative from a Chinese annotation — both just
+disappear. This ran on any sentence containing a parenthesis, with no review
+gate.
+
+**4. Slash alternatives, gated by id.** `REVIEWED_SLASH_IDS` held 32
+hand-reviewed ids. For those only:
+
+```python
+FULL_CLAUSE_ALT_RE = re.compile(r"(?<=[.!?])\s*/\s*")
+TOKEN_ALT_RE = re.compile(r"(?P<left>\S+?)\s*/\s*(?P<right>\S+)")
+```
+
+A slash *after sentence punctuation* separated two whole clauses, so the
+clause after it was excised up to the next sentence boundary. A slash *inside*
+a clause separated neighbouring word variants, so the left token was kept —
+and if the discarded right token carried trailing punctuation the left token
+did not, that punctuation was moved over. Then any surviving `/` was deleted.
+
+Finally, whitespace was collapsed, space-before-punctuation removed, and
+doubled sentence punctuation folded. A `--apply`-less dry run printed counts,
+and re-running after `--apply` had to report zero.
+
+### How it holds up on today's data
+
+Run over the current, fuller snapshots in its real composition order
+(parentheses stripped, then slashes), it resolves **2,734 of 2,737**
+alternative-bearing standard forms with no leftover delimiter. The three it
+cannot handle:
+
+| Residue | Cause |
+|---|---|
+| `cyux szwi na cyaba na behuy) qu …` | unbalanced parentheses in the source |
+| `Mindaduin或 inak lulu.` | bare CJK `或` ("or") outside any bracket |
+| `… arahu matash.你` | trailing CJK note plus an inline paren |
+
+That is a good result and the algorithm is worth keeping. Three things change
+in v2:
+
+| PR #63 | v2 |
+|---|---|
+| Slash rule gated to 32 hand-picked ids | Ungated — the rule is uniform, and the id list was only ever a caution |
+| Parenthetical stripping treats CJK and Latin alike | CJK annotation removed; Latin content becomes an alternate reading |
+| Discarded variants are lost | Preserved as `FORM[@kindOf="alternate"]` where there is exactly one |
+| Runs on published XML, id-keyed | Runs inside `make_xml.sh`, no id list |
