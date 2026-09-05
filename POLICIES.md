@@ -445,3 +445,86 @@ sentence on every sentence-only corpus, reporting a missing tier as a
 count mismatch "due to normalization or spelling". Raised by:
 `codex/qc-sentence-only-gloss-noise` (2026-06-25), which fixed the
 sentence-only half but not the partially segmented half.
+
+---
+
+## 5. Rights
+
+### POL-042 · RULED · 2026-09-05 · every published TEXT
+Every published `TEXT/@copyright` is **exactly one of the values in
+`rights_vocabulary.csv`** (repo root, joining `languages.csv`, `dialects.csv`
+and `standards.csv` as a registry per POL-039): a Creative Commons licence, or
+`public domain`. Exact match, not a pattern — a sentence that *mentions* a
+licence is not a licence declaration, and free text admits errors no reader
+catches (`CC NC-BY` shipped in RauDong across 20 files). Where a value names no
+version it is 4.0.
+
+**No exceptions.** A corpus whose rights cannot be expressed as one of these
+values is not published in FormosanBank, however genuine the permission behind
+it. Permission that does not amount to a licence is recorded in the corpus
+README (POL-044), not in `@copyright`.
+
+**One licence per corpus.** Per-item rights variation within a corpus is not
+representable and is deliberately not designed for; the case does not exist
+today. Implemented by: V160 (`copyright_present`) and V161
+(`copyright_in_vocabulary`), both HARD, in `QC/validation/rules/rights.py`.
+Spec: `docs/superpowers/specs/2026-09-05-rights-enforcement-design.md`.
+
+### POL-043 · RULED · 2026-09-05 · existing rights claims
+An existing rights claim in published XML is **never removed or weakened on the
+grounds that the reviewer could not find its evidence.** Permission evidence is
+held by the maintainer, not in this repository, so its absence here proves
+nothing. A reviewer who doubts a claim escalates to the maintainer; only a
+*positive* finding — the source says otherwise, or the grant is known not to
+exist — justifies a change.
+
+Rationale: in the August 2026 RE-PORT batch five pull requests replaced a
+Creative Commons licence with bespoke permission prose, each reasoning from an
+absence (#165, #167, #174, #179, #181). #167 was overturned by the maintainer,
+who held the correspondence the reviewer could not see. A single cautious
+judgement propagates to every `TEXT` in the corpus — 100 files for #167, 16 for
+#179 — and is expensive to reverse.
+
+### POL-044 · RULED · 2026-09-05 · rights documentation and merge review
+**Documented.** Each corpus README carries a `## Rights` section with two
+structured lines and prose beneath:
+
+```
+**License:** CC BY-NC 4.0
+**Rights source:** <grantor>, <YYYY-MM-DD>; evidence: ask maintainer
+```
+
+The licence must equal the corpus's `@copyright`; the date is when permission
+was granted or last confirmed. `evidence: ask maintainer` rather than naming a
+system — the evidence store may change, the instruction to a reader will not.
+The prose explains where the right came from and is required but unchecked. The
+GitBook corpus page carries the same licence in its `## Copyright` section.
+
+**Interrogated at merge.** Any change to a corpus's licence, in either
+direction, fails `.github/workflows/rights-comparison.yaml`, which compares the
+head against the base ref exactly as `token-comparison.yaml` does. There is no
+committed baseline — a baseline is redundant state that can itself drift, and a
+merge check already has both sides available. A legitimate change lands by
+explicit maintainer override, which is deliberately the hardest step in the
+mechanism. There is no label-based bypass; the friction is the control
+(maintainer, 2026-09-05).
+Implemented by: `QC/validation/rights_delta.py`,
+`tests/corpora/test_rights_documentation.py`, and the GitBook repo's
+`manage_corpus_pages.py check --strict`.
+
+### POL-045 · RULED · 2026-09-05 · audio rights
+**Audio inherits the XML licence.** Audio published for a corpus carries that
+corpus's `@copyright`; audio for a corpus that is not published in
+`Corpora/` is not licensed for reuse. The licence is therefore **never recorded
+separately**: `audio_permissions.json` stores only what cannot be derived —
+repositories, `access`, `status`, corpus mapping, and the approval pointer —
+and a loader resolves the licence from the corpus XML and the Hugging Face slug
+from `rights_vocabulary.csv`.
+
+Rationale: the rule was already stated in two places (`AUDIO-PERMISSIONS.md`,
+and `publication_rule` in the JSON) and already true in fact — all 22 audio
+sources matched their corpus XML, the only exceptions being the two private
+development repositories, which correctly carry no licence. Storing the derived
+value meant every rights change had to be made twice, and
+`validate_hf_audio.py` needed a `license_family()` helper to paper over the two
+spellings. Absorbs the policy text formerly in `AUDIO-PERMISSIONS.md`.
