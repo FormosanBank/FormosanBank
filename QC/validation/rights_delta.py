@@ -21,26 +21,16 @@ from QC.validation._rights import corpus_license  # noqa: E402
 
 
 class _Inconsistent(str):
-    """Sentinel marking a corpus whose XML carries more than one copyright value.
+    """Type marker for a corpus whose XML carries more than one copyright value.
 
-    A str subclass, so `licenses_at` keeps returning dict[str, str] and this
-    slots into `compare`'s existing types without a new Union. Equality is
-    overridden to always be False (even against another instance carrying
-    the identical message): `corpus_license` raises ValueError here because
-    "an inconsistent corpus is a question for a human, not a value to pick
-    from", and a corpus in that state must surface as a finding on every
-    comparison, never be skipped as "unchanged" just because both trees
-    happen to carry the same inconsistency.
+    A plain str subclass carrying `corpus_license`'s exception message as its
+    text -- nothing more. `licenses_at` keeps returning dict[str, str] (no
+    new Union in the public interface), and `compare` detects this case by
+    `isinstance` before it ever compares values, so a corpus in this state
+    is always reported regardless of what the other side holds. That
+    isinstance-first branch is what provides the guarantee; this class adds
+    no behaviour of its own.
     """
-
-    def __eq__(self, other: object) -> bool:
-        return False
-
-    def __ne__(self, other: object) -> bool:
-        return True
-
-    def __hash__(self) -> int:
-        return id(self)
 
 
 def licenses_at(corpora_path: Path) -> dict[str, str]:

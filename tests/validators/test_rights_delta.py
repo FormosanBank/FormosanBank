@@ -67,3 +67,25 @@ def test_inconsistent_corpus_is_reported_not_raised(tmp_path):
     assert len(lines) == 1
     assert "A" in lines[0]
     assert "CC BY 4.0" in lines[0] and "CC BY-NC 4.0" in lines[0]
+
+
+def test_inconsistent_on_both_sides_is_still_reported(tmp_path):
+    """A corpus inconsistent in both the base and head trees must still
+    fail the check -- the isinstance branch in compare(), not equality
+    between the two sentinel messages, is what guarantees this."""
+    base = _tree(tmp_path, "base", {})
+    head = _tree(tmp_path, "head", {})
+
+    for root, values in ((base, ("CC BY 4.0", "CC BY-NC 4.0")),
+                         (head, ("CC BY 4.0", "CC BY-NC 4.0"))):
+        xml_dir = root / "A" / "XML"
+        xml_dir.mkdir(parents=True)
+        for i, value in enumerate(values):
+            (xml_dir / f"{i}.xml").write_text(
+                f'<TEXT id="t{i}" copyright="{value}" xml:lang="ami"></TEXT>',
+                encoding="utf-8",
+            )
+
+    lines = compare(licenses_at(base), licenses_at(head))
+    assert len(lines) == 1
+    assert "A" in lines[0]
