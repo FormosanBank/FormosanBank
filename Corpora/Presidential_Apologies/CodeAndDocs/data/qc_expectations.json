@@ -1,0 +1,24 @@
+{
+  "cleaner_warnings": {
+    "c030": 1053
+  },
+  "validate_xml": {},
+  "validate_text": {
+    "V116": 99,
+    "V122": 252,
+    "V133": 115
+  },
+  "validate_glosses": {
+    "V060": 524
+  },
+  "duplicate_sentences": {
+    "rows": 2,
+    "severity": "SOFT",
+    "scope": "within-file",
+    "file": "Saaroa/Saaroa.xml",
+    "sentence_ids": [
+      "22",
+      "23"
+    ]
+  }
+}
