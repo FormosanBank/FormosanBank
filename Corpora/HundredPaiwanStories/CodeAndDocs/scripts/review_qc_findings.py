@@ -15,13 +15,16 @@ from lxml import etree
 
 
 ROOT = Path(__file__).resolve().parents[1]
+# G003 (internal '-' in an M FORM) used to report 1,370 findings here: every
+# infixed root, which POL-014 spells with a gap hyphen ('k<em>uda' -> 'k-uda').
+# The shared rule now exempts an exact gap root derived from the parent W, so
+# the corpus reports none. Its absence is the expected state, not a lost check.
 EXPECTED_COUNTS = {
     "V061": 1302,
     "V064": 1,
     "V122": 8028,
     "G001": 1,
     "G002": 1,
-    "G003": 1370,
     "G010": 153,
 }
 # The one place the source itself supplies no gloss: 078S4W19's final -i.
@@ -215,7 +218,7 @@ def review(
     expected_rules = {
         "text": {"V122"},
         "gloss": {"V061", "V064"},
-        "scrape": {"G001", "G002", "G003", "G010"},
+        "scrape": {"G001", "G002", "G010"},
     }
     actual_rules = {
         "text": {row["rule_id"] for row in text_rows},
@@ -291,6 +294,13 @@ def review(
     if finding_words != tilde_words:
         raise ValueError("V061 findings do not exactly match reduplicated W forms")
 
+    # Every M whose FORM carries an internal '-' must be a canonical POL-014
+    # infix-root gap: the root of its parent W with the infix removed, e.g.
+    # 'k<em>uda' -> 'k-uda'. The shared G003 rule now exempts exactly those, so
+    # it reports nothing here and this check is driven from the XML instead of
+    # from its findings. Anything that is NOT such a gap is an unsplit word in
+    # one M, which is what G003 exists to catch -- so a stray hyphen still fails
+    # the build, it just fails here rather than as a finding.
     gap_morphemes = {
         key
         for key, element in elements.items()
@@ -298,13 +308,7 @@ def review(
         and INTERNAL_DASH.search(direct_original_form(element))
         and not INFIX_FORM.fullmatch(direct_original_form(element))
     }
-    finding_morphemes: set[tuple[str, str]] = set()
-    for row in scrape_rows:
-        if row["rule_id"] != "G003":
-            continue
-        filename = Path(row["file"]).name
-        morpheme_id = location_id(row["location"], "M")
-        key = (filename, morpheme_id)
+    for key in sorted(gap_morphemes):
         morpheme = elements[key]
         word = parents[key]
         root = direct_original_form(morpheme)
@@ -316,10 +320,12 @@ def review(
         ]
         candidates = root_gap_candidates(root, infixes)
         if not any(candidate in word_form for candidate in candidates):
-            raise ValueError(f"{morpheme_id}: G003 is not a canonical infix-root gap")
-        finding_morphemes.add(key)
-    if finding_morphemes != gap_morphemes:
-        raise ValueError("G003 findings do not exactly match infix-root gap forms")
+            raise ValueError(f"{key[1]}: internal '-' is not a canonical infix-root gap")
+    if any(row["rule_id"] == "G003" for row in scrape_rows):
+        raise ValueError(
+            "G003 reported a finding; every internal '-' in this corpus should "
+            "be an exempt POL-014 gap root"
+        )
 
     # A hyphen is a segmentation marker, not a letter of the standard
     # orthography. The ORIGINAL tier keeps every hyphen the source prints on
@@ -361,8 +367,8 @@ def review(
     return {
         "inventory": dict(sorted(inventory.items())),
         "validator_findings": counts,
+        "infix_root_gap_morphemes": len(gap_morphemes),
         "review": {
-            "G003": "all 1,370 are canonical infix-root gap forms",
             "V061": "all 1,302 are reduplicated W forms using the canonical tilde marker",
             "V122": "all 8,028 exactly cover preserved source TRANSL and W/M FORM notation",
             "G010": "all 153 are source hyphens kept in the original tier; the standard tier carries none",
@@ -388,6 +394,7 @@ def markdown(summary: dict[str, object]) -> str:
     review_notes = summary["review"]
     tiers = review_notes["V122_by_tier"]
     inventory = summary["inventory"]
+    gap_morpheme_count = summary["infix_root_gap_morphemes"]
     return f"""# QC summary
 
 ## Inventory
@@ -404,12 +411,11 @@ def markdown(summary: dict[str, object]) -> str:
 - XML: 0 hard findings, 0 soft findings
 - Text: 0 hard findings, {counts["V122"]:,} V122 soft findings
 - Gloss: 0 hard findings, {counts["V061"]:,} V061 soft findings, {counts["V064"]} V064 soft finding
-- Gloss scrape: 1 accepted hard finding, {counts["G003"]:,} G003 soft findings, {counts["G010"]:,} G010 warnings
+- Gloss scrape: 1 accepted hard finding, 0 G003 soft findings ({gap_morpheme_count:,} infix-root gap forms, all exempt under POL-014), {counts["G010"]:,} G010 warnings
 
 ## Reviewed soft findings
 
 - V061: {review_notes["V061"]}. The validator does not split `~` when estimating the M count.
-- G003: {review_notes["G003"]}. The internal hyphen records the root gap occupied by one or more infixes.
 - G010: {review_notes["G010"]}. V133 does not fire: no standard FORM contains a hyphen.
 - V122: {review_notes["V122"]}. No sentence FORM carries a parenthesis: the source’s "(?)" annotation is recorded in a notes attribute instead. Parentheses are balanced after the recorded 057S3 punctuation repair. The occurrences comprise {tiers["S.TRANSL.unspecified"]:,} in source free translations, {tiers["W.TRANSL.original"]:,} in source W glosses, and {tiers["M.TRANSL.original"]:,} in source M glosses.
 
