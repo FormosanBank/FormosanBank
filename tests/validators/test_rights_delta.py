@@ -43,3 +43,27 @@ def test_a_removed_corpus_is_reported():
 def test_an_added_corpus_is_reported():
     lines = compare({}, {"A": "CC BY 4.0"})
     assert len(lines) == 1 and "added" in lines[0].lower()
+
+
+def test_inconsistent_corpus_is_reported_not_raised(tmp_path):
+    """A corpus whose XML disagrees on copyright fails the check with a
+    finding line, rather than crashing licenses_at with a raw ValueError."""
+    root = tmp_path / "root"
+    xml_dir = root / "A" / "XML"
+    xml_dir.mkdir(parents=True)
+    (xml_dir / "one.xml").write_text(
+        '<TEXT id="t1" copyright="CC BY 4.0" xml:lang="ami"></TEXT>',
+        encoding="utf-8",
+    )
+    (xml_dir / "two.xml").write_text(
+        '<TEXT id="t2" copyright="CC BY-NC 4.0" xml:lang="ami"></TEXT>',
+        encoding="utf-8",
+    )
+
+    licenses = licenses_at(root)  # must not raise
+    assert "A" in licenses
+
+    lines = compare({}, licenses)
+    assert len(lines) == 1
+    assert "A" in lines[0]
+    assert "CC BY 4.0" in lines[0] and "CC BY-NC 4.0" in lines[0]

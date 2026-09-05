@@ -20,13 +20,47 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from QC.validation._rights import corpus_license  # noqa: E402
 
 
+class _Inconsistent(str):
+    """Sentinel marking a corpus whose XML carries more than one copyright value.
+
+    A str subclass, so `licenses_at` keeps returning dict[str, str] and this
+    slots into `compare`'s existing types without a new Union. Equality is
+    overridden to always be False (even against another instance carrying
+    the identical message): `corpus_license` raises ValueError here because
+    "an inconsistent corpus is a question for a human, not a value to pick
+    from", and a corpus in that state must surface as a finding on every
+    comparison, never be skipped as "unchanged" just because both trees
+    happen to carry the same inconsistency.
+    """
+
+    def __eq__(self, other: object) -> bool:
+        return False
+
+    def __ne__(self, other: object) -> bool:
+        return True
+
+    def __hash__(self) -> int:
+        return id(self)
+
+
 def licenses_at(corpora_path: Path) -> dict[str, str]:
-    """Corpus name -> licence, for every corpus that publishes XML."""
+    """Corpus name -> licence, for every corpus that publishes XML.
+
+    A corpus whose XML carries more than one distinct copyright value maps
+    to an `_Inconsistent` sentinel instead of propagating `corpus_license`'s
+    ValueError: a formatted finding line asks the "which one is right?"
+    question better than an uncaught traceback, and `compare` still fails
+    the check for it (see `_Inconsistent`).
+    """
     result: dict[str, str] = {}
     for corpus_dir in sorted(Path(corpora_path).iterdir()):
         if not corpus_dir.is_dir():
             continue
-        value = corpus_license(corpus_dir)
+        try:
+            value = corpus_license(corpus_dir)
+        except ValueError as exc:
+            result[corpus_dir.name] = _Inconsistent(str(exc))
+            continue
         if value is not None:
             result[corpus_dir.name] = value
     return result
@@ -37,6 +71,10 @@ def compare(base: dict[str, str], head: dict[str, str]) -> list[str]:
     lines: list[str] = []
     for corpus in sorted(set(base) | set(head)):
         before, after = base.get(corpus), head.get(corpus)
+        detail = after if isinstance(after, _Inconsistent) else before
+        if isinstance(detail, _Inconsistent):
+            lines.append(f"{corpus}: inconsistent copyright values ({detail})")
+            continue
         if before == after:
             continue
         if before is None:
