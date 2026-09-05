@@ -624,86 +624,103 @@ git commit -m "ILRDF v2: delete the corpus-local standardization table"
 
 ---
 
-### Task 5: Source-side alternatives — `=`, parentheses, slashes
+### Task 5: Split source-side alternatives into separate `S`
 
-The source records alternative wordings three ways, and they are one problem,
-not three. The original tier keeps every one of them verbatim (the source
-really does print them, so a `manual_edits` fix would be wrong — item 5's
-first clause does not apply). What differs is what the **standard** tier and
-the **alternate** tier do with them.
+**Maintainer ruling, 2026-09-05.** Different options become **different `S`
+blocks**, not alternate FORMs. Splitting happens on the **original** tier,
+early — before `clean_xml` and `standardize` — so the raw `hatomi^/foliki^`
+string is not published; each resulting `S` carries one clean reading, with
+the source string preserved in `FORM/@notes`. Anything the cascade cannot
+interpret is **deleted**, and the counts are reported in the README and the
+GitBook page.
 
-| Notation | Sentences | What it means |
+`FORM[@kindOf="alternate"]` is **not** used. Checked: its only two uses in the
+repo are `Corpora/Latham-1862/` (8, a word list where each `S` is a single
+lexical item) and `Corpora/WakelinTexts/` (17, all at **W** level). Neither is
+a precedent for two readings of a sentence.
+
+Split ids take a letter suffix: `Atayal_605c631ca81eecac_a`, `_b`, `_c`. Each
+is a declared addition in `published_ids.csv`; the parent becomes
+`status=split-parent`.
+
+#### The cascade
+
+Applied in two stages, because a numbered record often *also* contains word
+alternations and the flat version conflates them.
+
+**Stage A — sentence-level, produces separate `S`:**
+
+1. Numbered multi-example — `1. … 2. …`
+2. Sentence alternation — a slash after `.`, `!` or `?`
+3. Bracketed phrase alternation — `(A) / (B)`, substituted back into the frame
+
+**Stage B — word-level, on each Stage A fragment:**
+
+4. Exactly one alternation site, exactly two options → 2 `S`
+5. Exactly one site, N options that are mutually similar (SequenceMatcher
+   ≥ .5, catching `nyaʼ / nya` and `pnqas / pinqasan` alike) → N `S`
+6. **Anything else → delete the record.** That means: more than one
+   alternation site (you cannot know which combinations the source licenses —
+   splitting would manufacture ungrammatical sentences), or an N-way site
+   whose options are not mutually similar.
+
+Also in Stage A, per Safolu (`build_formosanbank_xml.py:57-100`): repair a
+bracketed annotation that **straddles** a split point, dropping the dangling
+bracket from the form and the orphaned head from the remainder. This is what
+fixes two of the three cases PR #63 leaves residue on.
+
+#### Measured outcome (against the PR #179 XML, 2026-09-05)
+
+| | Sentences | Result |
 |---|---:|---|
-| `=` | 4 | Two equivalent phrasings of the whole sentence, one translation |
-| `( … )` with Latin content | 320 | An alternative wording of the bracketed span |
-| `( … )` with CJK content | 54 | A Chinese editorial annotation, not language data |
-| `( … )` mixed | 2 | Both, in one string |
-| `/` | 2,410 | Lexical alternatives at one or more points in the sentence |
+| Stage A: numbered | 12 | → 38 `S` |
+| Stage A: sentence-final slash | 6 | → 12 `S` |
+| Stage A: bracketed phrase | 1 | → 4 `S` |
+| Stage B: word-level only | 1,497 | → 3,014 `S` |
+| **Split total** | **1,516** | **→ 3,068 `S`** |
+| Deleted: more than one site | 862 | uninterpretable |
+| Deleted: N-way dissimilar | 32 | uninterpretable |
+| **Delete total** | **894** | |
 
-Slashes are heavily concentrated: Atayal 967 (10.3% of its sentences), Paiwan
-774 (9.8%), Sakizaya 539 (6.6%); the other thirteen languages contribute 130
-between them.
+`S` produced per surviving sentence: 1,478 give 2, 31 give 3, 4 give 4, 3 give
+1. **Maximum 4.** No explosion, and therefore **no hard variant cap is
+needed** — the maintainer predicted this and it holds: **866 of the 894
+deletions (96.9%) are exactly the sentences whose cartesian expansion exceeds
+3**, and only 4 surviving sentences exceed it. The cap is redundant with the
+"more than one site" rule, so it is not implemented.
 
-#### Why not split into separate `<S>` elements
+#### For the README and GitBook page
 
-G011 (`QC/validation/rules/gloss_scrape.py:636`) records the project
-convention: "the guide requires a slash alternate to become two separate `<S>`
-elements." That convention assumes **one** alternation site per sentence. ILRDF
-Atayal routinely has several. A full cartesian split of the 2,410 slash
-sentences yields **15,483** `S` elements, and the worst single sentence expands
-to **768** variants:
-
-```
-blaq balay kayal soni / sawni', kun / kuzing ru / ki sswe / sswe' / ssway
-mu' / mu kneril / knayril …                                    → 768 variants
-```
-
-Splitting is therefore rejected for this corpus. The distribution:
-
-| Cartesian expansion | Sentences |
+| Figure | Value |
 |---|---:|
-| 2 variants (one binary choice) | 1,488 |
-| 3 | 49 |
-| 4 | 541 |
-| 6 | 30 |
-| 8 | 151 |
-| 9+ | 148 |
+| Sentences split into separate records | 1,516 → 3,068 |
+| Alternation sites that were spelling or morphological variants | 1,315 |
+| Alternation sites between distinct words | 195 |
+| Sites where one option is attested nowhere else in that language | 523 |
+| Records deleted as uninterpretable | 894 |
 
-#### The policy
-
-1. **`FORM[@kindOf="original"]`** — the source string, untouched. Already true.
-2. **`FORM[@kindOf="standard"]`** — the source's **first** variant, with the
-   alternative and its delimiter removed, and CJK annotations removed
-   outright. Mechanical, idempotent, testable.
-3. **`FORM[@kindOf="alternate"]`** — added **only** where the sentence has
-   exactly one alternation site and therefore exactly one second reading:
-   the 4 `=` sentences and the 1,488 binary-slash sentences. Multi-site
-   sentences get no alternate FORM; enumerating 768 of them would be absurd
-   and nothing consumes them.
-
-`kindOf="alternate"` is already in the schema (`FORM_kindOf_Type`) and already
-in use — `Corpora/Latham-1862/` and `Corpora/WakelinTexts/` carry alternate
-FORMs for exactly this "same item, second attested wording" case.
-
-**Note on the maintainer's instruction.** The direction asked for was "two
-translations using alt". `ver="alt"` lives on `TRANSL` and marks two
-*translations* of one sentence — the ILRDF corpus already uses it that way,
-for the 2,099 merge groups where the same sentence carries different Chinese
-glosses under different headwords. The `=` cases are the mirror image: one
-translation, two *source* wordings. `FORM[@kindOf="alternate"]` is that
-mechanism. If the intent really was a second `TRANSL`, say so and this task
-changes shape.
+Attestation is **reported, not enforced.** `hatomi^ / foliki^` occurs three
+times in Amis and `hatomi^` appears nowhere else in the snapshot, yet the
+structure is unambiguous. Deleting on rarity would discard good data;
+99.2% of ordinary tokens are attested, so the 523 flagged sites are a genuine
+review list, not a defect list. (This is the Glosbe test from
+`glosbe_pipeline.py:2340` — try the whole, else require every part to validate
+— demoted from a gate to a signal.)
 
 **Files:**
-- Create: `Corpora/ILRDF_Dicts/CodeAndDocs/standard_repairs.py`
-- Create: `Corpora/ILRDF_Dicts/CodeAndDocs/tests/test_standard_repairs.py`
+- Create: `Corpora/ILRDF_Dicts/CodeAndDocs/split_alternatives.py`
+- Create: `Corpora/ILRDF_Dicts/CodeAndDocs/tests/test_split_alternatives.py`
+- Modify: `Corpora/ILRDF_Dicts/CodeAndDocs/make_xml.sh` (runs right after generate)
 
 **Interfaces:**
-- Produces: `split_alternatives(text: str) -> tuple[str, str | None]` — returns
-  `(first_variant, second_variant_or_None)`. The second is `None` unless the
-  sentence has exactly one alternation site.
-- Produces: CLI `python standard_repairs.py --xml-dir ../XML [--apply]`; a
-  second dry run after `--apply` must report 0 changes.
+- Produces: `stage_a(text: str) -> list[str]` — sentence-level fragments.
+- Produces: `stage_b(language: str, text: str) -> list[str] | None` — word-level
+  readings, or `None` when the fragment is uninterpretable.
+- Produces: `split_record(language: str, text: str) -> list[str] | None` —
+  the composition; `None` means delete.
+- Produces: CLI `python split_alternatives.py --xml-dir ../XML --apply`,
+  writing `docs/split_report.csv` (id, verdict, site count, similarity,
+  attestation) for the README figures.
 
 - [ ] **Step 1: Write the failing tests**
 
@@ -711,271 +728,95 @@ changes shape.
 import sys, unittest
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from standard_repairs import split_alternatives
+from split_alternatives import stage_a, split_record
 
 
-class TestAlternatives(unittest.TestCase):
-    # --- equals ---
-    def test_equals_whole_sentence(self):
-        first, alt = split_alternatives(
-            "ata tu kmaanasapunuqi! = ata tu kmasapunuqi!")
-        self.assertEqual(first, "ata tu kmaanasapunuqi!")
-        self.assertEqual(alt, "ata tu kmasapunuqi!")
-
-    def test_equals_inline_parenthetical(self):
-        first, alt = split_alternatives(
-            "lhmazawan mathuaw mabrith, mingqarayza makitzangqaw (= katzangqaw).")
+class TestStageA(unittest.TestCase):
+    def test_numbered(self):
         self.assertEqual(
-            first, "lhmazawan mathuaw mabrith, mingqarayza makitzangqaw.")
+            stage_a("1. cyux su maniq bway nanu? 2. cyux suʼ maniq bway nanuʼ?"),
+            ["cyux su maniq bway nanu?", "cyux suʼ maniq bway nanuʼ?"])
+
+    def test_sentence_final_slash(self):
         self.assertEqual(
-            alt, "lhmazawan mathuaw mabrith, mingqarayza katzangqaw.")
+            stage_a("Ini iyah na./Mnarig ka patas bgay mu laqi na"),
+            ["Ini iyah na.", "Mnarig ka patas bgay mu laqi na"])
 
-    # --- CJK annotation ---
-    def test_cjk_parenthetical_is_removed_not_alternated(self):
-        first, alt = split_alternatives(
-            "O raeked niyam o kapah a tala Fadangaw(溪名).")
-        self.assertEqual(first, "O raeked niyam o kapah a tala Fadangaw.")
-        self.assertIsNone(alt)
-
-    def test_trailing_cjk_note_is_removed(self):
-        first, alt = split_alternatives("finlhuqiza ihu buut?你")
-        self.assertEqual(first, "finlhuqiza ihu buut?")
-        self.assertIsNone(alt)
-
-    # --- slashes ---
-    def test_single_binary_slash_yields_an_alternate(self):
-        first, alt = split_alternatives("hatomi^/foliki^ han ako.")
-        self.assertEqual(first, "hatomi^ han ako.")
-        self.assertEqual(alt, "foliki^ han ako.")
-
-    def test_multi_site_slash_yields_no_alternate(self):
-        first, alt = split_alternatives(
-            "ana cipuq/cipoq pila gitan su smli lga, musa pzyux/piyux nanak la.")
+    def test_bracketed_phrase_substitutes_into_the_frame(self):
         self.assertEqual(
-            first, "ana cipuq pila gitan su smli lga, musa pzyux nanak la.")
-        self.assertIsNone(alt)
+            stage_a("cyux szwi na (krahu bayhuy) / (hopa na behuy) qu qhuniq."),
+            ["cyux szwi na krahu bayhuy qu qhuniq.",
+             "cyux szwi na hopa na behuy qu qhuniq."])
 
-    def test_three_way_slash_is_multi_site(self):
-        first, alt = split_alternatives("musa / mmawsa' / mawsa saku.")
-        self.assertEqual(first, "musa saku.")
-        self.assertIsNone(alt)
+    def test_plain_sentence_is_one_fragment(self):
+        self.assertEqual(stage_a("hatomi^ han ako."), ["hatomi^ han ako."])
 
-    # --- Latin parentheses ---
-    def test_latin_parenthetical_alternative(self):
-        first, alt = split_alternatives("makitzangqaw (katzangqaw) matash.")
-        self.assertEqual(first, "makitzangqaw matash.")
-        self.assertEqual(alt, "katzangqaw matash.")
 
-    # --- invariants ---
-    def test_plain_text_is_untouched(self):
-        first, alt = split_alternatives("ata tu kmasapunuqi!")
-        self.assertEqual(first, "ata tu kmasapunuqi!")
-        self.assertIsNone(alt)
+class TestSplitRecord(unittest.TestCase):
+    def test_two_options(self):
+        self.assertEqual(
+            split_record("Amis", "hatomi^/foliki^ han ako ko paliding."),
+            ["hatomi^ han ako ko paliding.", "foliki^ han ako ko paliding."])
 
-    def test_idempotent(self):
-        once, _ = split_alternatives("a/b c/d.")
-        twice, alt = split_alternatives(once)
-        self.assertEqual(once, twice)
-        self.assertIsNone(alt)
+    def test_three_similar_options(self):
+        self.assertEqual(
+            split_record("Atayal", "cyux inuʼ qu lukus makuʼ / maku / mu?"),
+            ["cyux inuʼ qu lukus makuʼ?", "cyux inuʼ qu lukus maku?",
+             "cyux inuʼ qu lukus mu?"])
 
-    def test_never_empties(self):
-        with self.assertRaises(ValueError):
-            split_alternatives("= only a variant")
+    def test_two_sites_is_uninterpretable(self):
+        self.assertIsNone(split_record(
+            "Atayal", "ana cipuq/cipoq pila gitan lga, musa pzyux/piyux nanak la."))
 
-    def test_no_delimiter_survives(self):
-        for text in ("a/b.", "a (b) c.", "a = b", "a(溪名)."):
-            first, alt = split_alternatives(text)
-            for out in (first, alt):
-                if out is None:
-                    continue
-                self.assertNotIn("/", out)
-                self.assertNotIn("=", out)
-                self.assertNotIn("(", out)
-                self.assertNotIn(")", out)
+    def test_n_way_dissimilar_is_uninterpretable(self):
+        self.assertIsNone(split_record(
+            "Atayal", "mutux klayun snyu / snyuw / gasil ru rmugan."))
+
+    def test_no_slash_is_a_single_record(self):
+        self.assertEqual(split_record("Amis", "hatomi^ han ako."),
+                         ["hatomi^ han ako."])
+
+    def test_no_delimiter_survives_a_split(self):
+        for out in split_record("Amis", "hatomi^/foliki^ han ako."):
+            self.assertNotIn("/", out)
 ```
 
 - [ ] **Step 2: Run to verify they fail**
 
-Run: `python -m pytest Corpora/ILRDF_Dicts/CodeAndDocs/tests/test_standard_repairs.py -q`
-Expected: FAIL — `standard_repairs` does not exist.
+Run: `python -m pytest Corpora/ILRDF_Dicts/CodeAndDocs/tests/test_split_alternatives.py -q`
+Expected: FAIL — module does not exist.
 
-- [ ] **Step 3: Implement**
+- [ ] **Step 3: Implement `split_alternatives.py`**
 
-Order matters: CJK annotations are removed first (they are not alternatives),
-then `=`, then Latin parentheses, then slashes. Build the two readings in
-parallel — the "first" reading takes every left-hand choice, the "second"
-takes the single right-hand choice — and return `None` for the second whenever
-more than one alternation site was found.
-
-```python
-#!/usr/bin/env python3
-"""Resolve source-side alternatives in the ILRDF standard tier.
-
-The original tier keeps the source string verbatim. This module produces the
-standard reading (always the source's first variant, with CJK editorial
-annotation removed) and, where the sentence has exactly one alternation site,
-the single alternate reading that becomes FORM[@kindOf="alternate"].
-
-Multi-site sentences get no alternate: Atayal reaches 768 cartesian variants,
-and enumerating them serves nobody.
-"""
-from __future__ import annotations
-
-import argparse
-import re
-from pathlib import Path
-
-from lxml import etree
-
-CJK = re.compile(r"[㐀-䶿一-鿿]+")
-CJK_PAREN = re.compile(r"\s*[(（]\s*[^()（）]*[㐀-䶿一-鿿]"
-                       r"[^()（）]*\s*[)）]")
-TRAILING_CJK = re.compile(r"[㐀-䶿一-鿿]+\s*$")
-EQUALS_PAREN = re.compile(r"\s*\(\s*=\s*([^)]*)\)")
-EQUALS_TAIL = re.compile(r"\s*=\s*(.+)$", re.S)
-LATIN_PAREN = re.compile(r"\s*\(\s*([^()]*?)\s*\)")
-SLASH_SITE = re.compile(r"[^\s/]+(?:\s*/\s*[^\s/]+)+")
-
-
-def _tidy(text: str) -> str:
-    text = re.sub(r"\s+", " ", text).strip()
-    text = re.sub(r"\s+([,.!?;:])", r"\1", text)
-    return text
-
-
-def split_alternatives(text: str) -> tuple[str, str | None]:
-    """Return (first reading, single alternate reading or None)."""
-    # 1. CJK editorial annotation is not an alternative — drop it from both.
-    base = CJK_PAREN.sub("", text)
-    base = TRAILING_CJK.sub("", base)
-
-    sites = 0
-    first, second = base, base
-
-    # 2. '=' — inline (= x) or a trailing whole-clause variant.
-    if (m := EQUALS_PAREN.search(first)) is not None:
-        sites += 1
-        head = first[:m.start()].rstrip()
-        tail = first[m.end():]
-        word = re.search(r"(\S+)\s*$", head)
-        first = head + tail
-        second = (head[:word.start(1)] + m.group(1) + tail) if word else head + tail
-    elif (m := EQUALS_TAIL.search(first)) is not None:
-        sites += 1
-        first, second = first[:m.start()], m.group(1)
-
-    # 3. Latin parentheses — an alternative for the preceding word.
-    for m in list(LATIN_PAREN.finditer(first)):
-        sites += 1
-    if sites and LATIN_PAREN.search(first):
-        def _left(mo):
-            return ""
-        second_candidate = LATIN_PAREN.sub(lambda mo: " " + mo.group(1), second)
-        first = LATIN_PAREN.sub("", first)
-        second = second_candidate
-
-    # 4. Slash alternation sites.
-    slash_sites = SLASH_SITE.findall(first)
-    sites += len(slash_sites)
-    if slash_sites:
-        def _first(mo):
-            return re.split(r"\s*/\s*", mo.group(0))[0]
-
-        def _second(mo):
-            parts = re.split(r"\s*/\s*", mo.group(0))
-            return parts[1] if len(parts) > 1 else parts[0]
-
-        second = SLASH_SITE.sub(_second, first)
-        first = SLASH_SITE.sub(_first, first)
-
-    first = _tidy(first)
-    second = _tidy(second)
-    if not first:
-        raise ValueError(f"alternative resolution emptied {text!r}")
-    if sites != 1 or second == first or not second:
-        return first, None
-    return first, second
-```
-
-**Implementation note for the executor.** The draft above is the shape, not
-finished code — the parenthesis branch in particular needs care about which
-word the bracketed span replaces. Drive it from the tests, and add a
-corpus-wide invariant check (Step 5) before trusting it.
+Build the attestation vocabulary once per language from snapshot sentences
+that contain no slash, plus every headword — an alternation must not attest
+itself. Similarity uses `difflib.SequenceMatcher(None, a.lower(), b.lower())`.
 
 - [ ] **Step 4: Run the tests**
 
-Run: `python -m pytest Corpora/ILRDF_Dicts/CodeAndDocs/tests/test_standard_repairs.py -q`
 Expected: PASS.
 
-- [ ] **Step 5: Corpus-wide invariant check before applying**
+- [ ] **Step 5: Corpus-wide run and reconciliation**
 
 ```bash
 source .venv/bin/activate
-python - <<'PY'
-import glob, sys
-sys.path.insert(0, "Corpora/ILRDF_Dicts/CodeAndDocs")
-from lxml import etree
-from standard_repairs import split_alternatives
-import re
-CJK = re.compile(r"[㐀-䶿一-鿿]")
-bad = alt = n = 0
-for p in sorted(glob.glob("Corpora/ILRDF_Dicts/XML/*/*.xml")):
-    for s in etree.parse(p).iter("S"):
-        f = s.find('./FORM[@kindOf="standard"]')
-        if f is None or not f.text:
-            continue
-        first, second = split_alternatives(f.text)
-        if first != f.text:
-            n += 1
-        if second:
-            alt += 1
-        for out in (first, second):
-            if out and (set("()/=") & set(out) or CJK.search(out)):
-                bad += 1
-                print("RESIDUE:", repr(out[:90]))
-print(f"changed {n}, alternates {alt}, residue {bad}")
-PY
+cd Corpora/ILRDF_Dicts/CodeAndDocs && python split_alternatives.py --xml-dir ../XML --apply
 ```
 
-Expected: roughly 2,740 changed, roughly 1,492 alternates
-(1,488 binary-slash + 4 `=`), and **residue 0**. PR #63's composed algorithm
-left residue on 3 of 2,737; those three are the acceptance bar to beat:
+Expected, matching the table above: 1,516 split into 3,068, 894 deleted, no
+`/` surviving in any original FORM, and every produced id present in
+`published_ids.csv`. Any deviation from those counts means the classifier
+drifted from the measured baseline — investigate before committing.
 
-```
-cyux szwi / yupan na (krahu' bayhuy) / (hopa' na behuy) / cyaba na behuy) qu …   ← unbalanced source parens
-Mindaduin或(masialin) inak lulu.                                                  ← bare CJK 或 outside brackets
-uka mihu a patatash, haya naak a patatash arahu( ara uhu) matash.你               ← both at once
-```
+- [ ] **Step 6: Wire into `make_xml.sh`**
 
-Any sentence that still cannot be resolved cleanly must be listed in the QC
-report by id, not silently mangled.
+Immediately after `generate_xml.py generate`, before `apply_manual_edits.py`.
 
-- [ ] **Step 6: Write the alternate FORMs**
-
-Extend `standard_repairs.py --apply` to set the standard FORM to `first` and,
-where `second` is not None, insert a sibling
-`<FORM kindOf="alternate">second</FORM>` after it. Never insert an alternate
-that equals the standard.
-
-- [ ] **Step 7: Handle the 92 numbered multi-example records separately**
-
-92 sentences carry `1. … 2. …` numbering — two or more *distinct examples*
-crammed into one record (75 Atayal, 7 Saaroa, 3 each Saisiyat/Seediq/Truku,
-1 Yami). Resolving their alternatives does not fix the underlying defect: the
-`S` holds more than one sentence, which inflates the sentence count's meaning
-and produces nonsense phonology.
-
-These are a **source-structure** problem, not an alternatives problem. Do not
-split them in this task. List all 92 ids in `docs/qc_report.md` under a
-"known unresolved" heading and leave them for a follow-up, where splitting one
-record into several `S` is a deliberate, reviewed change with its own id
-consequences.
-
-- [ ] **Step 8: Commit**
+- [ ] **Step 7: Commit**
 
 ```bash
-git add Corpora/ILRDF_Dicts/CodeAndDocs/
-git commit -m "ILRDF v2: resolve source-side alternatives (=, parens, slashes) with alternate FORMs"
+git add Corpora/ILRDF_Dicts/
+git commit -m "ILRDF v2: split source-side alternatives into separate S on the original tier"
 ```
 
 ---
@@ -1620,8 +1461,8 @@ is a bug:
 | Every `S/@id` changed | Task 2 |
 | 99,821 `ʼ` → `'` in the original tier | Task 4 |
 | 7 accented characters stripped (Amis `ē`×5, Paiwan `è`×1, `ǔ`×1) | Task 4 |
-| Source-side alternatives resolved in the standard tier (`=` 4, parens 376, slashes 2,410) | Task 5 |
-| New `FORM[@kindOf="alternate"]` elements (~1,492) | Task 5 |
+| Sentences split into separate `S` (1,516 → 3,068) | Task 5 |
+| Records deleted as uninterpretable | 894 | Task 5 |
 | 13 original-tier repairs | Task 6 |
 | `copyright="CC BY-NC"` on all roots | Task 7 |
 | 16 new `*_dictionary.xml` files | Task 8 |
