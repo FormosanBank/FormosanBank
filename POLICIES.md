@@ -664,7 +664,8 @@ Four properties the entry point must have:
   no baseline. This is also what lets a non-idempotent step like
   `apply_manual_edits.py` sit inside an idempotent pipeline: it never sees its
   own previous output, because the run starts from a fresh baseline.
-- **Self-contained** — see POL-048.
+- **Self-contained** — see POL-048, and POL-052 for recording which
+  tool version built the published bytes.
 - **Build only.** Validators do not run inside `generate_xml.sh`. Put them in a
   separate `validate.sh` if the corpus wants a committed QC run; a build that
   cannot complete because a validator fails cannot be used to investigate the
@@ -706,6 +707,10 @@ to others."* Raised by the RE-PORT batch, where builds required
 a build that hard-exited without a `CodeAndDocs/Private/` source file.
 A commit pin also self-invalidates: it refuses to run against the repository it
 lives in as soon as `main` advances.
+
+**Recording a commit is not the same as depending on one.** POL-052 requires
+every corpus to record the FormosanBank commit its published XML was built
+against; what this entry forbids is treating that record as a build input.
 
 ### POL-049 · RULED · 2026-09-05 · pull-request scope
 A pull request that ports or reworks one corpus **does not change shared
@@ -756,3 +761,42 @@ disclosed their removals.
 In force now as a review convention; extending the comparison workflows to
 element counts is the mechanism that would make it checkable rather than
 remembered.
+
+### POL-052 · RULED · 2026-09-05 · tool provenance
+**Record which tools built the published XML; rebuild with the current ones.**
+
+Each corpus records the FormosanBank commit its published `XML/` was last built
+against. It goes in the corpus README's reproduction section and is mirrored on
+the GitBook page's `## Corpus Processing`; a machine-readable copy alongside it
+is optional and welcome (`Corpora/HundredPaiwanStories/CodeAndDocs/data/provenance.json`
+is the existing shape).
+
+**The record is documentation, never a gate.** `generate_xml.sh` runs with the
+tools in the checkout it is invoked from — normally `main` at HEAD — not with
+the recorded commit. On a mismatch it **notes the difference and continues**;
+it does not refuse to run, and it does not go looking for another checkout.
+A build that exits because the surrounding repository is not at the recorded
+commit violates this entry and POL-048, and self-invalidates the moment `main`
+advances. `Corpora/Song-Kanakanavu-Grammar` has the intended shape — one
+`git rev-parse HEAD`, one note to stderr, and the build proceeds.
+
+**Why record it at all, if it does not constrain the build.** Because it is what
+makes a rerun's diff readable. Shared tools change, and when they do, every
+corpus built before the change will produce a diff on its next rebuild that has
+nothing to do with why it was rebuilt. The 2026-09-04 `add_phonology.py` stress-
+accent fold left **9,355 committed PHON tiers across nine corpora** that no
+longer match what a rebuild produces; nothing is wrong with any of them, but the
+next person to rerun one of those pipelines meets a large unexplained diff. The
+recorded commit answers the question that diff raises — *did I cause this, or did
+the tools move underneath me?* — and turns it into a `git log` on `QC/`.
+
+**Reproducing the exact published bytes** at the tool version that produced them
+is always possible by checking out the recorded commit; that is the record's
+other use. It is deliberately not the default, because pinning corpora to the
+tool versions they were born with is how a bank of thirty-odd corpora ends up
+with thirty-odd behaviours (POL-046).
+
+**Consequence for review:** the recorded commit is updated in the same pull
+request that rebuilds the corpus. A rebuild that leaves the old commit in the
+README is a stale record, which is worse than none — it asserts a correspondence
+between the tools and the bytes that no longer holds.
