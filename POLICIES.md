@@ -766,10 +766,27 @@ remembered.
 **Record which tools built the published XML; rebuild with the current ones.**
 
 Each corpus records the FormosanBank commit its published `XML/` was last built
-against. It goes in the corpus README's reproduction section and is mirrored on
-the GitBook page's `## Corpus Processing`; a machine-readable copy alongside it
-is optional and welcome (`Corpora/HundredPaiwanStories/CodeAndDocs/data/provenance.json`
-is the existing shape).
+against, in **`CodeAndDocs/provenance.json`** — one fixed path, one fixed shape,
+so the record is machine-readable and can be checked:
+
+```json
+{
+  "_note": "The FormosanBank commit this corpus was built against. Provenance only — the build does not read this file.",
+  "formosanbank_commit": "3a3c47c220520113f747e6a2d441494000e13c4b",
+  "built": "2026-09-05"
+}
+```
+
+`formosanbank_commit` (a full 40-character SHA) is required; `_note` and `built`
+are optional. The corpus README's reproduction section **links to the file**
+rather than repeating the SHA, so there is one copy to keep current; the GitBook
+page's `## Corpus Processing` section does the same. A SHA transcribed into
+prose is a second copy that drifts.
+
+**Enforced** by `tests/corpora/test_provenance.py`: the file must exist, parse,
+and carry a well-formed commit, and the README must link it. Corpora that
+predate this entry are listed in `provenance_pending.txt` at the repo root — a
+list that only ever shrinks, and that a new or rebuilt corpus is never added to.
 
 **The record is documentation, never a gate.** `generate_xml.sh` runs with the
 tools in the checkout it is invoked from — normally `main` at HEAD — not with
@@ -778,7 +795,9 @@ it does not refuse to run, and it does not go looking for another checkout.
 A build that exits because the surrounding repository is not at the recorded
 commit violates this entry and POL-048, and self-invalidates the moment `main`
 advances. `Corpora/Song-Kanakanavu-Grammar` has the intended shape — one
-`git rev-parse HEAD`, one note to stderr, and the build proceeds.
+`git rev-parse HEAD`, one note to stderr, and the build proceeds. A build script
+that reads `provenance.json` to compare against, rather than hard-coding the SHA
+a second time, is better still.
 
 **Why record it at all, if it does not constrain the build.** Because it is what
 makes a rerun's diff readable. Shared tools change, and when they do, every
@@ -796,7 +815,7 @@ other use. It is deliberately not the default, because pinning corpora to the
 tool versions they were born with is how a bank of thirty-odd corpora ends up
 with thirty-odd behaviours (POL-046).
 
-**Consequence for review:** the recorded commit is updated in the same pull
-request that rebuilds the corpus. A rebuild that leaves the old commit in the
-README is a stale record, which is worse than none — it asserts a correspondence
+**Consequence for review:** `provenance.json` is updated in the same pull
+request that rebuilds the corpus. A rebuild that leaves the old commit in place
+is a stale record, which is worse than none — it asserts a correspondence
 between the tools and the bytes that no longer holds.
