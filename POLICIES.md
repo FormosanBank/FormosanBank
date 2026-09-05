@@ -5,9 +5,57 @@ touches one of these questions, **cite the entry (e.g. POL-012) instead of
 re-deciding it**. Open questions carry status UNRESOLVED — ask the maintainer
 once, record the answer here, and the question is closed everywhere.
 
-**DRAFT — every ruling below is a restatement of decisions found in code,
-specs, the GitBook, or audit sign-offs. Rulings the maintainer has not
-actually made are marked UNRESOLVED with a recommendation. Please review.**
+Most entries restate a decision already made in code, in a spec, in the
+GitBook, or in an audit sign-off; the later ones record a maintainer ruling
+directly, and each says which. **Anything the maintainer has not actually
+ruled on is marked UNRESOLVED with a recommendation — those entries are
+proposals awaiting review, not rules.**
+
+## Highlights
+
+If you read nothing else, read these ten. They have the broadest reach, and
+almost every review question that gets re-litigated is settled by one of them.
+
+**The data**
+
+| Policy | The rule |
+| --- | --- |
+| **POL-001** | The `original` tier is the **actual source text**, not a raw scrape. Fixing an OCR misread or a dropped period makes it *more* faithful; changing the source's spelling is the error to catch. |
+| **POL-002** | The `standard` tier is the same content in FormosanBank's one common orthography. It is derived, never hand-edited. |
+| **POL-037** | Published identifiers are **stable**. `TEXT/@id` is never reused; S/W/M ids are never renumbered once published. External users cite them. |
+| **POL-038** | XML and raw scrape files change **only via committed code** — a pipeline script, `manual_edits.xml`, or a one-off script in `CodeAndDocs/`. Never a hand edit, not even during an audit. |
+
+**Rights**
+
+| Policy | The rule |
+| --- | --- |
+| **POL-042** | Every `TEXT/@copyright` is exactly one value from `rights_vocabulary.csv`. No exceptions, no free text. |
+| **POL-043** | An existing rights claim is **never weakened because a reviewer could not find its evidence.** The evidence lives with the maintainer, not in this repository. Escalate; do not downgrade. |
+
+**Building and reviewing**
+
+| Policy | The rule |
+| --- | --- |
+| **POL-031** | New corpora are built in per-corpus dev repos and ported into `Corpora/` only after QC. |
+| **POL-046** | **Shared tools first.** Extend a shared tool before writing a corpus-specific one. Corpus-specific processing code is a last resort and a fork risk. |
+| **POL-047** | One entry point, one step order: `generate_xml.sh` runs generate → clean → manual edits → standardize → add_phonology. Deviation is allowed but must be justified at merge. |
+| **POL-048** | A published corpus rebuilds from a **FormosanBank checkout alone.** Dev repos are permanently private and are never a build input. |
+
+**How the file is organised**
+
+| Section | Governs |
+| --- | --- |
+| 1. Tier semantics | what each tier means |
+| 2. Characters and typography | which characters may appear, and how |
+| 3. Structure | how S/W/M and their children are arranged |
+| 4. Process | what may be done to the data |
+| 5. Rights | licensing and permission |
+| 6. Development | the code that does all of the above, and how changes to it are reviewed |
+
+Entries carry status **RULED** (decided) or **UNRESOLVED** (open, with a
+recommendation). Cite the ID rather than re-deciding the question.
+
+---
 
 ## Where this file lives and how it syncs
 
@@ -528,3 +576,169 @@ development repositories, which correctly carry no licence. Storing the derived
 value meant every rights change had to be made twice, and
 `validate_hf_audio.py` needed a `license_family()` helper to paper over the two
 spellings. Absorbs the policy text formerly in `AUDIO-PERMISSIONS.md`.
+
+---
+
+## 6. Development
+
+Section 4 governs what may be done to the data. This section governs **the code
+that does it, and how changes to that code are reviewed.** Its recurring theme
+is that thirty-odd corpora built thirty-odd different ways cost more than they
+save: every fork of a shared behaviour is a rule that has to be re-audited,
+re-explained, and re-fixed once per corpus.
+
+Rights entries with a development bearing live in section 5 and are not
+repeated here: **POL-043** (never weaken an existing rights claim from absence
+of evidence) and **POL-044** (licence changes are interrogated at merge).
+
+### POL-046 · RULED · 2026-09-05 · processing code
+**Shared tools first; corpus-specific processing code is a last resort.**
+The order of preference for any cleaning, standardization, phonology, or
+repair step is:
+
+1. **Use the existing shared tool as it is** (`QC/cleaning/*`,
+   `QC/utilities/*`). If an existing flag does the job, use the flag.
+2. **Extend the shared tool.** If the behaviour is right for the bank but the
+   tool cannot yet express it, change the tool — and add the test. A behaviour
+   that one corpus needs, several usually need.
+3. **Write corpus-specific code only when the behaviour is genuinely unique to
+   that corpus.**
+
+**Initial parsing is the standing exception.** Turning a particular PDF, DOCX,
+scrape, or database dump into the original tier is inherently
+source-specific; `generate_xml.py` is expected to be corpus-local and needs no
+justification. Everything downstream of it does.
+
+Rationale — this is a guard against forking, not a style preference. The
+2026-09-05 pipeline audit found the same downstream behaviours reimplemented
+per corpus: five mutually incompatible ways of invoking `standardize.py`, three
+ways of passing an orthography to `add_phonology.py` (including omitting it),
+and corpus-local reimplementations of cleaning that the shared cleaner already
+performs. Each fork is a place where a bank-wide ruling silently fails to apply.
+
+**At merge**, corpus-specific code that duplicates shared behaviour is a
+review finding: either fold it into the shared tool, or record in the corpus
+README why the shared tool cannot serve.
+
+### POL-047 · RULED · 2026-09-05 · reproduction pipeline
+Every published corpus has **one entry point with one name and one step order.**
+
+```
+CodeAndDocs/
+  refresh_source.sh     # optional — scrapes/fetches source into CodeAndDocs/.
+                        #   Only where the source can be re-fetched. Never
+                        #   invoked by generate_xml.sh.
+  generate_xml.sh       # THE entry point: source -> published XML/.
+    1. generate_xml.py            # corpus-local; builds the original tier
+    2. QC/cleaning/clean_xml.py
+    3. QC/cleaning/apply_manual_edits.py   # optional; no-op when absent
+    4. QC/utilities/standardize.py
+    5. QC/utilities/add_phonology.py
+```
+
+**Manual edits run after the cleaner**, not before (maintainer ruling,
+2026-09-04, recorded on HundredPaiwanStories): an edit record corrects the
+*original* tier and carries no standard FORM and no PHON, so both are
+regenerated from the edited text; running the cleaner afterwards would risk
+undoing the human's decision. This supersedes the earlier "step 0" wording in
+`CLAUDE.md`, `QC/README.md` and the Wikipedias build script, which are to be
+brought into line. `apply_manual_edits.py` (shared, POL-030) is for one-off
+human judgement; a corpus-local `apply_manual_corrections.py` is for
+*systematic, source-derived* rules and belongs after step 5, not in place of it.
+
+Four properties the entry point must have:
+
+- **Idempotent.** Re-running over a clean checkout leaves `git status` empty.
+  Achieve it by restoring a POL-035 snapshot or by building into a staging
+  directory and installing — never by mutating published `XML/` in place with
+  no baseline.
+- **Self-contained** — see POL-048.
+- **Build only.** Validators do not run inside `generate_xml.sh`. Put them in a
+  separate `validate.sh` if the corpus wants a committed QC run; a build that
+  cannot complete because a validator fails cannot be used to investigate the
+  failure.
+- **Complete.** A corpus whose XML changes but which ships no script that
+  produces that XML violates POL-038.
+
+**Deviation is permitted, but is not silent.** Extra steps, a missing step, or
+a different order are all legitimate for real reasons — several corpora
+correctly have no `standard` tier and therefore no steps 4–5. The requirement is
+that the deviation is **stated in the corpus README and interrogated at merge**,
+not discovered later by an auditor. Reviewers: an unexplained departure from
+this shape is a review finding on its own.
+
+Raised by the 2026-09-05 pipeline audit: across 33 corpora on `main` and in open
+PRs there were eight entry-point conventions (`make_xml.sh` ×16,
+`reproduce.sh` ×11, two corpora with no build script at all) and twelve
+distinct step orderings, with nothing in this file, in `QC/README.md`, or in CI
+constraining any of it. The shape above is the existing plurality, not a new
+invention.
+
+### POL-048 · RULED · 2026-09-03 · reproduction inputs
+**A published corpus rebuilds from a FormosanBank checkout alone.**
+Dev repos are permanently private and inaccessible to everyone but the
+maintainer, so a build that reads one is not reproducible by anybody who has the
+published data. The pinned `Formosan-*` dev-repo commit is **provenance
+metadata, never a build input.**
+
+Concretely, `generate_xml.sh` must not require: a second clone pinned to a
+particular commit, a private reference repository, a gitignored `Private/`
+directory, or environment variables naming any of those. Everything the build
+reads is committed under that corpus's `CodeAndDocs/` or in the shared repo.
+
+Maintainer ruling, 2026-09-03: *"We want to retain the reproducibility **within**
+the main FormosanBank repo. Dev repos are permanently private so not accessible
+to others."* Raised by the RE-PORT batch, where builds required
+`FORMOSANBANK_AUTHORITY` pinned to a specific commit, `VALIDATOR_ROOT`,
+`FORMOSANBANK_QC_ROOT`, and in one case a private reference repository — and by
+a build that hard-exited without a `CodeAndDocs/Private/` source file.
+A commit pin also self-invalidates: it refuses to run against the repository it
+lives in as soon as `main` advances.
+
+### POL-049 · UNRESOLVED (proposed 2026-09-05) · pull-request scope
+**Recommendation:** a pull request that ports or reworks one corpus does not
+change shared code. Changes to `QC/`, `tests/`, `POLICIES.md`, repo-root
+registries, `requirements.txt`, or `.github/workflows/` belong in their own pull
+request, reviewed on their own merits and merged first.
+
+Rationale: a shared-code change buried in a 3,000-file corpus diff is not
+reviewed, and it silently couples merge order. In the RE-PORT batch one PR was
+the sole carrier of a new `standardize.py` flag that its own build script
+depended on; another was the sole carrier of a `corpus_counts.py` change; a
+third carried a policy entry, a data-loss fix, its test, and a dependency pin
+that would all have been lost had the competing PR for the same corpus landed
+instead. Repo-wide edits were bundled into single-corpus PRs at least five times.
+
+Open question for the maintainer: adopt as stated, or allow the narrow case
+where a corpus genuinely cannot be built without a shared-tool change (POL-046
+step 2) provided the shared change is called out in the PR description?
+
+### POL-050 · UNRESOLVED (proposed 2026-09-05) · superseding a ruling
+**Recommendation:** a merged decision is reversed **explicitly or not at all.**
+A change that undoes something previously ruled and merged must say so, cite
+the commit or POL entry it supersedes, and give the reason. Rediscovering the
+old behaviour and reinstating it as though it were new is not a reversal, it is
+drift.
+
+Rationale: two pull requests reintroduced `standard` tiers that merged commits
+had deliberately removed, neither mentioning the earlier decision. Separately,
+two merged rulings on where `apply_manual_edits.py` runs contradicted each
+other for three weeks, and five corpora implemented one and two the other —
+resolved only by POL-047 above.
+
+### POL-051 · UNRESOLVED (proposed 2026-09-05) · removing published content
+**Recommendation:** removing published content — sentences, words, morphemes,
+translations, audio elements — is disclosed in the pull request with a count
+and a reason, and is interrogated at merge. Silence is the finding, not the
+deletion: deletions are often correct, and several were.
+
+The mechanism already half exists. `.github/workflows/token-comparison.yaml`
+compares token counts across a merge and `rights-comparison.yaml` compares
+licences (POL-044); the same shape extended to element counts would make this
+checkable rather than a review convention. In the RE-PORT batch one PR removed
+144,436 `AUDIO` elements, 126,239 `W` elements, and every original `PHON` tier;
+another removed 1,968 translations. Three of the batch's twenty-four PRs
+disclosed their removals.
+
+Open question for the maintainer: adopt as a review convention now, or hold
+until the element-count comparison exists in CI?
