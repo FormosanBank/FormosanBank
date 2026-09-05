@@ -593,38 +593,39 @@ Expected: FAIL — the file exists.
 git rm Corpora/ILRDF_Dicts/CodeAndDocs/source_data/standardization.tsv
 ```
 
-- [ ] **Step 4: Verify the accent behaviour it was masking**
+- [x] **Step 4: Verify the accent behaviour it was masking** — done 2026-09-05
 
-The four identity rows protected `è í ē ǔ` from `standardize`'s accent
-stripping. Under `--remove_accents`, only accents attested in each language's
-own `QC/validation/reference/<Language>/*/unique_characters.txt` survive.
-Check what changes:
+The four identity rows (`è í ē ǔ`) protected those letters from
+`standardize`'s accent stripping. Measured what stripping actually does, rather
+than assuming:
 
-```bash
-source .venv/bin/activate
-python - <<'PY'
-import glob, os, collections
-from lxml import etree
-tab = collections.defaultdict(collections.Counter)
-for p in sorted(glob.glob("Corpora/ILRDF_Dicts/XML/*/*.xml")):
-    L = os.path.basename(p)[:-4]
-    for s in etree.parse(p).iter("S"):
-        f = s.find('./FORM[@kindOf="standard"]')
-        if f is None or not f.text:
-            continue
-        for c in "èíēǔ":
-            if c in f.text:
-                tab[L][c] += f.text.count(c)
-for L in sorted(tab):
-    print(L, dict(tab[L]))
-PY
-```
+`QC/utilities/_accents.ACCENTS_TO_STRIP` contains **only** combining acute and
+combining breve. Grave, macron and caron are never stripped. So three of the
+four identity rows were guarding against something that does not happen:
 
-Expected after the rebuild: Thao `í` (attested) and Puyuma `ē` (attested)
-survive; Amis `ē` ×5, Paiwan `è` ×1 and Paiwan `ǔ` ×1 are stripped, because
-no Amis or Paiwan reference orthography attests them. That is the correct
-per-language behaviour the flat table was overriding. Record the seven stripped
-characters in `docs/qc_report.md`.
+| char | mark | in the original tier | effect of deleting its row |
+|---|---|---|---|
+| `è` | grave | Paiwan ×1 | none — never stripped |
+| `ē` | macron | Amis ×5, Puyuma ×2 | none — never stripped |
+| `ǔ` | caron | Paiwan ×1 | none — never stripped |
+| `í` | **acute** | Thao ×8 | **depends on the authority commit** |
+
+**This supersedes the plan's earlier claim of "7 accented characters
+stripped", which was wrong.** The true figure is at most 8, all Thao `í`, and
+whether even those change depends on which `standardize.py` runs:
+
+- **Pinned authority as branched (`3a3c47c22`, Aug 12):** `standardize.py:234`
+  calls `strip_accents(form.text)` with **no keep set** — every acute is
+  stripped regardless of language, so Thao would lose all 8.
+- **Current `main`:** calls `strip_accents(form.text, keep=keep_accents)`
+  where `_attested_accents` reads each language's own
+  `QC/validation/reference/<Language>/*/unique_characters.txt`. Thao attests
+  `í`, so all 8 survive — the correct outcome.
+
+**Consequence for Task 12: merging current `main` is not optional.** Building
+against the Aug-12 authority would silently strip eight attested Thao acutes.
+Verify after the merge that `í` still appears 8 times in the Thao standard
+tier.
 
 - [ ] **Step 5: Run the tests**
 
@@ -1476,7 +1477,7 @@ is a bug:
 |---|---|
 | Every `S/@id` changed | Task 2 |
 | 99,821 `ʼ` → `'` in the original tier | Task 4 |
-| 7 accented characters stripped (Amis `ē`×5, Paiwan `è`×1, `ǔ`×1) | Task 4 |
+| Accents stripped from the standard tier | **0** (see Task 4 Step 4) |
 | Sentences split into separate `S` (1,516 → 3,068) | Task 5 |
 | Records deleted as uninterpretable | 894 | Task 5 |
 | 13 original-tier repairs | Task 6 |
@@ -1535,7 +1536,7 @@ rule and why they cannot be fixed in the original tier.
 - [ ] **Step 2: Update the QC report**
 
 Refresh every count; add the change-classification table from Task 10 Step 3;
-record the seven stripped accents; record the expected statistics impact of the
+record the accent finding (0 stripped, see Task 4); record the expected statistics impact of the
 dictionaries; keep the publication-gate paragraph but update it to match the
 new RIGHTS.md.
 

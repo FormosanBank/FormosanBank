@@ -180,5 +180,20 @@ class SourceExtractionTests(unittest.TestCase):
             sentence_id("Amis", "A.")
 
 
+class StandardTierOwnershipTests(unittest.TestCase):
+    """The standard tier belongs to standardize.py and the canonical
+    Orthographies/ConversionTables/ -- never to a corpus-local table."""
+
+    def test_no_corpus_local_standardization_table(self):
+        from pathlib import Path
+        base = Path(__file__).resolve().parents[1]
+        stray = base / "source_data" / "standardization.tsv"
+        self.assertFalse(
+            stray.exists(),
+            "standard-tier construction belongs to standardize.py; a "
+            "corpus-local table hides orthographic decisions from review",
+        )
+
+
 if __name__ == "__main__":
     unittest.main()
