@@ -214,20 +214,29 @@ than renumbering unrelated records.
   [CodeAndDocs/scrape/README.md](CodeAndDocs/scrape/README.md).
 
 Reproducing the published corpus therefore means rebuilding from the frozen
-snapshot, not re-scraping. The pipeline is pinned to FormosanBank commit
-`7c2e0b692abed413bd9234d866cf9f0435c9651e` and to development source commit
-`25ed1f1ec56584e4a3e9fc960269c72d0e892a58`.
+snapshot, not re-scraping. The **source** is pinned — development source commit
+`25ed1f1ec56584e4a3e9fc960269c72d0e892a58`, verified by hash at build time. The
+**tooling is not**: a rebuild uses the shared QC utilities from whatever
+FormosanBank checkout contains this corpus, so the corpus tracks improvements to
+`clean_xml.py`, `standardize.py` and `add_phonology.py` like every other corpus.
 
-From a clean FormosanBank checkout, rebuild with:
+> **Tool version of record.** `XML/` as published was last regenerated against
+> FormosanBank commit `c3ea819d23e6025cfbd9dda7cb7b594c4c2cc304`. `rebuild_xml.sh`
+> prints a note when the checkout differs — informational, not an error. To
+> reproduce that exact output rather than a current one, set `VALIDATOR_ROOT` to
+> a checkout at that commit.
+
+From a FormosanBank checkout, rebuild with:
 
 ```bash
-VALIDATOR_ROOT=/path/to/pinned/FormosanBank \
-VALIDATOR_PYTHON=/path/to/python \
-RUN_LOG_DIR=/absolute/new/path/outside/repo \
 Corpora/YeddaPalemeqBlog/CodeAndDocs/scripts/rebuild_xml.sh
 ```
 
-Run the full pinned QC suite with:
+`VALIDATOR_ROOT` (default: the checkout containing this corpus), `VALIDATOR_PYTHON`
+(default `python3`) and `RUN_LOG_DIR` (default: a fresh temp dir) are all
+optional overrides.
+
+Run the full QC suite with:
 
 ```bash
 VALIDATOR_ROOT=/path/to/pinned/FormosanBank \
