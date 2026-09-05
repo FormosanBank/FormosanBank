@@ -2,7 +2,7 @@
   "schema_version": 2,
   "hf_organization": "FormosanBank",
   "policy": "AUDIO-PERMISSIONS.md",
-  "audit_date": "2026-08-02",
+  "audit_date": "2026-08-23",
   "publication_rule": "Audio associated with XML published in FormosanBank uses the XML license. Audio for private development repositories stays private and is not licensed for reuse.",
   "license_version_rule": "Use the latest license version unless the permission comes from material already published under a specific Creative Commons version.",
   "public_non_audio_datasets": [
@@ -68,12 +68,12 @@
       "corpus": "ILRDF_Dicts",
       "source": "Indigenous Languages Research and Development Foundation dictionaries",
       "status": "published_public",
-      "license": "CC BY-NC 4.0",
-      "hf_license": "cc-by-nc-4.0",
-      "version_basis": "latest_version_per_publication_policy",
-      "basis": "The XML is published in FormosanBank. Audio uses the XML license, and publication approval is recorded on the corresponding Basecamp corpus card.",
+      "license": "Copyrighted; permission required outside applicable fair use",
+      "hf_license": "other",
+      "version_basis": "source_terms_no_cc_license",
+      "basis": "The FormosanBank maintainer authorized public publication of this existing ILRDF corpus update on 2026-08-23. This does not relicense the source content or replace the ILRDF terms.",
       "xml_path": "Corpora/ILRDF_Dicts/XML",
-      "approval_record": "Corresponding FormosanBank corpus card in Basecamp",
+      "approval_record": "FormosanBank maintainer authorization recorded 2026-08-23",
       "hf_repositories": [
         {
           "repo_id": "FormosanBank/ILRDF_Dicts",
