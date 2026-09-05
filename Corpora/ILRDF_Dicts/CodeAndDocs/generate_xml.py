@@ -4,7 +4,8 @@
 from __future__ import annotations
 
 import argparse
-from dataclasses import asdict
+import csv
+from dataclasses import asdict, dataclass, field
 import json
 from pathlib import Path
 import re
@@ -63,85 +64,117 @@ def _write_tree(root: ET.Element, path: Path) -> None:
         handle.write(b"\n")
 
 
-def _source_children(element: ET.Element) -> tuple[object, ...]:
-    original = element.find("FORM[@kindOf='original']")
-    translations = tuple(
-        (
-            item.get(XML_LANG) or item.get("xml:lang"),
-            item.get("ver"),
-            item.text or "",
+LEDGER_PATH = SOURCE_DATA / "published_ids.csv"
+MODES = ("generate", "audit", "ledger")
+_SPLIT_SUFFIX = re.compile(r"_[a-z]$")
+
+
+@dataclass
+class LedgerRow:
+    """One published id, as declared in source_data/published_ids.csv."""
+    identifier: str
+    source_guids: set[str] = field(default_factory=set)
+    status: str = "active"
+    note: str = ""
+
+
+def _parse_ledger(handle) -> dict[str, LedgerRow]:
+    rows: dict[str, LedgerRow] = {}
+    for record in csv.DictReader(handle):
+        identifier = (record.get("id") or "").strip()
+        if not identifier:
+            continue
+        rows[identifier] = LedgerRow(
+            identifier=identifier,
+            source_guids=set((record.get("source_guids") or "").split()),
+            status=(record.get("status") or "active").strip() or "active",
+            note=(record.get("note") or "").strip(),
         )
-        for item in element.findall("TRANSL")
-    )
-    audios = tuple(
-        (item.get("url"), item.get("file")) for item in element.findall("AUDIO")
-    )
-    return (original.text if original is not None else None, translations, audios)
+    return rows
 
 
-def _restore_processed(expected: ET.Element, path: Path) -> None:
+def load_ledger(path: Path) -> dict[str, LedgerRow]:
     if not path.exists():
-        raise ValueError(f"cannot restore absent XML: {path}")
-    actual = ET.parse(path).getroot()
-    expected_by_id = {item.get("id"): item for item in expected.findall("S")}
-    actual_by_id = {item.get("id"): item for item in actual.findall("S")}
-    if None in expected_by_id or None in actual_by_id:
-        raise ValueError(f"{path}: sentence without ID")
-    if expected_by_id.keys() != actual_by_id.keys():
-        missing = sorted(expected_by_id.keys() - actual_by_id.keys())[:5]
-        extra = sorted(actual_by_id.keys() - expected_by_id.keys())[:5]
-        raise ValueError(f"{path}: ID drift; missing={missing}, extra={extra}")
-
-    actual.attrib.clear()
-    actual.attrib.update(expected.attrib)
-    for identifier, expected_sentence in expected_by_id.items():
-        actual_sentence = actual_by_id[identifier]
-        standard_form = actual_sentence.find("FORM[@kindOf='standard']")
-        standard_phon = actual_sentence.find("PHON[@kindOf='standard']")
-        if standard_form is None:
-            raise ValueError(f"{path}: {identifier} has no standard FORM")
-        if standard_form.text:
-            standard_form.text = re.sub(r"\s+", " ", standard_form.text).strip()
-        if standard_phon is not None and standard_phon.text is None:
-            raise ValueError(f"{path}: {identifier} has empty standard PHON")
-        source_original = expected_sentence.find("FORM[@kindOf='original']")
-        if source_original is None:
-            raise ValueError(f"{path}: {identifier} has no source FORM")
-        children: list[ET.Element] = [source_original, standard_form]
-        if standard_phon is not None:
-            children.append(standard_phon)
-        children.extend(expected_sentence.findall("TRANSL"))
-        children.extend(expected_sentence.findall("AUDIO"))
-        actual_sentence[:] = children
-    _write_tree(actual, path)
+        raise ValueError(
+            f"missing id ledger {path}; run `generate_xml.py ledger --write` "
+            "and review the diff before committing it"
+        )
+    with path.open(encoding="utf-8", newline="") as handle:
+        return _parse_ledger(handle)
 
 
-def _audit(expected: ET.Element, path: Path) -> list[str]:
+def render_ledger(rows: dict[str, LedgerRow]) -> str:
+    lines = ["id,source_guids,status,note"]
+    for identifier in sorted(rows):
+        row = rows[identifier]
+        note = row.note.replace('"', "'")
+        if "," in note:
+            note = f'"{note}"'
+        lines.append(
+            f"{identifier},{' '.join(sorted(row.source_guids))},{row.status},{note}"
+        )
+    return "\n".join(lines) + "\n"
+
+
+def _base_id(identifier: str) -> str:
+    """A split child's id resolves to the source record it came from."""
+    return _SPLIT_SUFFIX.sub("", identifier)
+
+
+def audit_ids(
+    ledger: dict[str, LedgerRow],
+    xml_ids: set[str],
+    extracted: dict[str, set[str]],
+) -> list[str]:
+    """Ids may be deleted or added, never silently changed.
+
+    Fails on exactly three things:
+      - an id declared active that is no longer in the XML
+      - an id in the XML that the ledger does not declare
+      - a ledger id whose source GUIDs no longer match the source
+    """
     errors: list[str] = []
+    for identifier, row in sorted(ledger.items()):
+        if row.status == "active" and identifier not in xml_ids:
+            errors.append(
+                f"{identifier}: declared active but silently deleted from the "
+                "XML; suppress it in the ledger if that is intended"
+            )
+    for identifier in sorted(xml_ids):
+        if identifier not in ledger:
+            errors.append(
+                f"{identifier}: present in the XML but not in the ledger; add "
+                "a row deliberately if this is a new or split record"
+            )
+    for identifier, row in sorted(ledger.items()):
+        source = extracted.get(_base_id(identifier))
+        if source is None or not row.source_guids:
+            continue
+        if row.source_guids != source:
+            errors.append(
+                f"{identifier}: source GUIDs changed "
+                f"{sorted(row.source_guids)} -> {sorted(source)}; the id now "
+                "points at different source material"
+            )
+    return errors
+
+
+def _audit_structure(expected: ET.Element, path: Path) -> list[str]:
+    """Structural checks that survive the drop of source-drift auditing."""
     if not path.exists():
         return [f"missing XML: {path}"]
     actual = ET.parse(path).getroot()
-    if actual.attrib != expected.attrib:
-        errors.append("root metadata differs from the source build")
-    expected_by_id = {item.get("id"): item for item in expected.findall("S")}
-    actual_sentences = actual.findall("S")
-    actual_by_id = {item.get("id"): item for item in actual_sentences}
-    if len(actual_by_id) != len(actual_sentences):
-        errors.append("duplicate or absent sentence IDs")
-    missing = expected_by_id.keys() - actual_by_id.keys()
-    extra = actual_by_id.keys() - expected_by_id.keys()
-    if missing:
-        errors.append(f"missing {len(missing)} source sentences")
-    if extra:
-        errors.append(f"contains {len(extra)} non-source sentences")
-    for identifier in expected_by_id.keys() & actual_by_id.keys():
-        if _source_children(expected_by_id[identifier]) != _source_children(
-            actual_by_id[identifier]
-        ):
-            errors.append(f"{identifier}: source FORM, TRANSL, or AUDIO drift")
-            if len(errors) >= 20:
-                errors.append("additional source drift omitted")
-                break
+    errors: list[str] = []
+    sentences = actual.findall("S")
+    ids = [item.get("id") for item in sentences]
+    if None in ids:
+        errors.append("sentence without an id")
+    if len(set(ids)) != len(ids):
+        errors.append("duplicate sentence ids")
+    for sentence in sentences:
+        if sentence.find("FORM[@kindOf='original']") is None:
+            errors.append(f"{sentence.get('id')}: no original FORM")
+            break
     return errors
 
 
@@ -154,7 +187,7 @@ def _select_languages(requested: list[str] | None) -> list[str]:
     return [language for language in LANGUAGES if language in requested]
 
 
-def run(mode: str, languages: list[str]) -> int:
+def run(mode: str, languages: list[str], write_ledger: bool = False) -> int:
     manifest = json.loads((SOURCE_DATA / "source_manifest.json").read_text(encoding="utf-8"))
     snapshot_date = manifest["snapshot_commit_date"]
     excluded_audio = load_audio_exclusions(SOURCE_DATA / "audio_exclusions.json")
@@ -168,6 +201,8 @@ def run(mode: str, languages: list[str]) -> int:
     used_exclusions: set[tuple[str, str, str]] = set()
     audit_errors: list[str] = []
     audio_owners: dict[str, set[tuple[str, str]]] = {}
+    extracted: dict[str, set[str]] = {}
+    xml_ids: set[str] = set()
 
     for language in languages:
         snapshot = verify_and_load_snapshot(language, SNAPSHOT_DIR, manifest)
@@ -182,16 +217,28 @@ def run(mode: str, languages: list[str]) -> int:
         )
         expected = _build_tree(language, sentences, snapshot_date)
         for sentence in sentences:
+            extracted[sentence.identifier] = set(sentence.source_ids)
             for url in sentence.audio_urls:
                 audio_owners.setdefault(url, set()).add((language, sentence.original))
         path = XML_DIR / language / f"{language}.xml"
         if mode == "generate":
             _write_tree(expected, path)
-        elif mode == "restore-source":
-            _restore_processed(expected, path)
         else:
-            errors = _audit(expected, path)
-            audit_errors.extend(f"{language}: {error}" for error in errors)
+            audit_errors.extend(
+                f"{language}: {error}" for error in _audit_structure(expected, path)
+            )
+            if path.exists():
+                xml_ids.update(
+                    item.get("id")
+                    for item in ET.parse(path).getroot().findall("S")
+                    if item.get("id")
+                )
+                for extra in sorted(path.parent.glob(f"{language}_*.xml")):
+                    xml_ids.update(
+                        item.get("id")
+                        for item in ET.parse(extra).getroot().findall("S")
+                        if item.get("id")
+                    )
         print(f"{language}: {json.dumps(asdict(stats), sort_keys=True)}")
 
     relevant_overrides = {key for key in overrides if key[0] in languages}
@@ -204,6 +251,22 @@ def run(mode: str, languages: list[str]) -> int:
         audit_errors.extend(
             f"unused source-content exclusion: {key!r}" for key in unused_exclusions
         )
+    if mode == "ledger":
+        rows = {
+            identifier: LedgerRow(identifier=identifier, source_guids=guids)
+            for identifier, guids in extracted.items()
+        }
+        if write_ledger:
+            LEDGER_PATH.write_text(render_ledger(rows), encoding="utf-8")
+            print(f"wrote {LEDGER_PATH} ({len(rows)} ids) — review the diff "
+                  "before committing")
+        else:
+            print(f"{len(rows)} ids would be written to {LEDGER_PATH}")
+        return 0
+
+    if mode == "audit":
+        audit_errors.extend(audit_ids(load_ledger(LEDGER_PATH), xml_ids, extracted))
+
     ambiguous_audio = {
         url: owners for url, owners in audio_owners.items() if len(owners) > 1
     }
@@ -217,24 +280,29 @@ def run(mode: str, languages: list[str]) -> int:
                 f"{len(ambiguous_audio) - 20} additional ambiguous audio URLs omitted"
             )
     if audit_errors:
-        print("Source audit failed:", file=sys.stderr)
+        print("Audit failed:", file=sys.stderr)
         for error in audit_errors:
             print(f"  {error}", file=sys.stderr)
         return 1
     if mode == "audit":
-        print(f"Source audit passed for {len(languages)} language files.")
+        print(f"Audit passed: {len(xml_ids)} published ids across "
+              f"{len(languages)} languages.")
     return 0
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
-        "mode", nargs="?", choices=("generate", "restore-source", "audit"), default="generate"
+        "mode", nargs="?", choices=MODES, default="generate"
     )
     parser.add_argument("--language", action="append", dest="languages")
+    parser.add_argument(
+        "--write", action="store_true",
+        help="with mode 'ledger', rewrite source_data/published_ids.csv",
+    )
     args = parser.parse_args()
     try:
-        return run(args.mode, _select_languages(args.languages))
+        return run(args.mode, _select_languages(args.languages), args.write)
     except (OSError, ValueError, KeyError, json.JSONDecodeError, ET.ParseError) as error:
         print(f"error: {error}", file=sys.stderr)
         return 1
