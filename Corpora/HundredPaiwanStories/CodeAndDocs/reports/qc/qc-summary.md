@@ -14,12 +14,11 @@
 - XML: 0 hard findings, 0 soft findings
 - Text: 0 hard findings, 8,028 V122 soft findings
 - Gloss: 0 hard findings, 1,302 V061 soft findings, 1 V064 soft finding
-- Gloss scrape: 1 accepted hard finding, 1,370 G003 soft findings, 153 G010 warnings
+- Gloss scrape: 1 accepted hard finding, 0 G003 soft findings (1,370 infix-root gap forms, all exempt under POL-014), 153 G010 warnings
 
 ## Reviewed soft findings
 
 - V061: all 1,302 are reduplicated W forms using the canonical tilde marker. The validator does not split `~` when estimating the M count.
-- G003: all 1,370 are canonical infix-root gap forms. The internal hyphen records the root gap occupied by one or more infixes.
 - G010: all 153 are source hyphens kept in the original tier; the standard tier carries none. V133 does not fire: no standard FORM contains a hyphen.
 - V122: all 8,028 exactly cover preserved source TRANSL and W/M FORM notation. No sentence FORM carries a parenthesis: the source’s "(?)" annotation is recorded in a notes attribute instead. Parentheses are balanced after the recorded 057S3 punctuation repair. The occurrences comprise 448 in source free translations, 3,790 in source W glosses, and 3,790 in source M glosses.
 

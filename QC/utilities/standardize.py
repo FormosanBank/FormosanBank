@@ -15,7 +15,10 @@ from lxml import etree
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
-from QC.utilities._accents import accented_letters, strip_accents  # noqa: E402
+from QC.utilities._accents import (  # noqa: E402
+    standard_orthography_accents,
+    strip_accents,
+)
 from QC.utilities._case_variants import (  # noqa: E402
     derive_case_variants,
     load_profile_graphemes,
@@ -212,42 +215,16 @@ def get_exploration_targets(corpora_path, corpus=None):
         return [corpora_path]
     return [os.path.join(corpora_path, x) for x in os.listdir(corpora_path)]
 
-_ATTESTED_ACCENTS_CACHE: dict = {}
+def _attested_accents(lang_code, dialect=None):
+    """Accented letters this language's designated standard orthography lists.
 
-
-def _attested_accents(lang_code, dialect):
-    """Accented letters this language (or dialect) attests, as a keep set.
-
-    Read from QC/validation/reference/<Language>/[<dialect>|default]/
-    unique_characters.txt — the same inventories validate_orthography.py scores
-    against. An accent survives stripping iff the language's own reference
-    orthography contains a letter carrying it, so e.g. Puyuma's 'ē' is kept
-    while a macron on a Mandarin loanword quoted in Paiwan is not.
-
-    Returns an empty set for a language with no reference orthography; letters
-    that matter in that case live in _accents.ALWAYS_KEEP.
+    Thin wrapper over _accents.standard_orthography_accents, resolving the
+    ISO code to a language name first. ``dialect`` is accepted and ignored:
+    an orthography table's ``letter`` column is shared across its dialect
+    value columns, so the letter inventory does not vary by dialect.
     """
-    key = (lang_code, dialect)
-    if key in _ATTESTED_ACCENTS_CACHE:
-        return _ATTESTED_ACCENTS_CACHE[key]
     language = _ISO_TO_LANG_NAME.get((lang_code or "").strip())
-    letters = set()
-    if language:
-        base = _REPO_ROOT / "QC" / "validation" / "reference" / language
-        subdirs = []
-        if dialect and (base / dialect).is_dir():
-            subdirs.append(base / dialect)
-            if (base / "default").is_dir():
-                subdirs.append(base / "default")
-        elif base.is_dir():
-            subdirs = [d for d in sorted(base.iterdir()) if d.is_dir()]
-        for subdir in subdirs:
-            inventory = subdir / "unique_characters.txt"
-            if inventory.is_file():
-                letters.update(inventory.read_text(encoding="utf-8").split())
-    keep = accented_letters(letters)
-    _ATTESTED_ACCENTS_CACHE[key] = keep
-    return keep
+    return standard_orthography_accents(language) if language else frozenset()
 
 
 def apply_standard(s_element, standard, keep=frozenset()):

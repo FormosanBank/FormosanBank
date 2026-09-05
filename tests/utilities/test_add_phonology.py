@@ -531,17 +531,35 @@ def test_unknown_characters_star_marks_survive_punctuation_dropped(
     assert phonologize("a\u0303", profile) == "\u0251\u0303"
 
 
-def test_reference_orthography_accents_are_kept(monkeypatch):
-    """The Ortho113 profile is not the only source of attested accents: Puyuma
-    writes an orthographic 'e-macron' that no Orthographies/ table lists but
-    QC/validation/reference/Puyuma/ does. It must never be folded into 'e'."""
-    from QC.utilities.add_phonology import _reference_accented_letters
+def test_keep_set_comes_from_the_designated_standard_orthography():
+    """The accent keep set is the language's designated standard orthography
+    (standards.csv -> Orthographies/<scheme>/<Language>.tsv), NOT the generated
+    reference character inventories.
 
-    assert "\u00e9" in _reference_accented_letters("Puyuma")
-    # Yami attests acutes too, so they are orthographic there, not prosody.
-    assert "\u00e1" in _reference_accented_letters("Yami")
-    assert _reference_accented_letters("Kanakanavu") == frozenset()
-    assert _reference_accented_letters("NoSuchLanguage") == frozenset()
+    Those inventories list every character observed in sample text — digits and
+    punctuation included — so they cannot tell an orthographic letter from a
+    prosodic diacritic that merely occurs. Rukai's 'e-acute' is a real letter
+    with a table row and is kept; Puyuma, Yami and Thao carry accents in their
+    reference samples but their standard tables list none, so those fold."""
+    from QC.utilities._accents import standard_orthography_accents
+
+    assert standard_orthography_accents("Rukai") == frozenset({"\u00e9"})
+    for language in ("Puyuma", "Yami", "Thao", "Kanakanavu", "Amis"):
+        assert standard_orthography_accents(language) == frozenset(), language
+    # Blank standards.csv entry -> nothing derivable, so every accent folds.
+    # Verified safe: neither corpus runs standardize.py or has any PHON.
+    for language in ("Siraya", "Babuza-Favorlang"):
+        assert standard_orthography_accents(language) == frozenset(), language
+    assert standard_orthography_accents("NotALanguage") == frozenset()
+
+
+def test_unmapped_accents_fold_instead_of_starring():
+    """A kept letter is always a mappable one, so folding can never be why a
+    PHON tier shows '*'. Puyuma 'e-macron' and Yami 'a-acute' used to star."""
+    from QC.utilities.add_phonology import load_profile, phonologize
+
+    assert phonologize("\u0113", load_profile("Ortho113", "Puyuma", "Nanwang")) == "\u0259"
+    assert "*" not in phonologize("m\u00e1duk", load_profile("Ortho113", "Yami", "Yami"))
 
 
 def test_profile_attested_accented_letter_is_not_folded(tmp_path, monkeypatch):

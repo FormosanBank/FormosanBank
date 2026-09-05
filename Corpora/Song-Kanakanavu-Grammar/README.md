@@ -64,8 +64,9 @@ CodeAndDocs/.venv/bin/pip install -r CodeAndDocs/requirements.txt
 `build_xml.py` asserts the source-PDF/positioned-text hashes, the closed
 page/candidate inventory, the reviewed-artifact hashes, the ledger counts, and
 continuous sentence IDs — so any drift in the source or the ledgers fails the
-build loudly. `make_xml.sh` records the FormosanBank commit the published XML
-was last built against and notes it when the checkout differs. The rebuild is
+build loudly. `CodeAndDocs/provenance.json` records the FormosanBank commit the published
+XML was last built against (POL-052), and `make_xml.sh` notes it when the
+checkout differs — a note, never a gate: rebuilds run with the current tools. The rebuild is
 deterministic: running it twice reproduces the same bytes.
 
 `CodeAndDocs/tests/` holds the extraction regression tests, which also check the
