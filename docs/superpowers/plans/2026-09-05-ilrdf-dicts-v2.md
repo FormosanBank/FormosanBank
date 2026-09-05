@@ -434,7 +434,7 @@ It also reverts the original tier to raw source, which discards `clean_xml`'s pu
 
 **Interfaces:**
 - Produces: `generate_xml.py` modes become `generate` and `audit` only. `restore-source` is removed.
-- Produces: `audit` grows a `--allow-canonicalization` comparison that maps source text through the documented canonicalizations before comparing, rather than demanding byte equality.
+- Produces: `audit` checks published ids against `source_data/published_ids.csv` (see Step 4) instead of byte-comparing source tiers.
 
 - [ ] **Step 1: Write the failing test**
 
@@ -476,25 +476,50 @@ parser.add_argument("mode", nargs="?", choices=_MODES, default="generate")
 
 and drop the `elif mode == "restore-source":` branch.
 
-- [ ] **Step 4: Make `audit` canonicalization-aware**
+- [ ] **Step 4: Replace source-drift auditing with an id ledger**
 
-`audit` must still guarantee no source drift, but the original tier is now
-allowed to differ from raw source by exactly the canonicalizations
-`clean_xml` performs. Add to `generate_xml.py`:
+**Maintainer ruling, 2026-09-05.** Zero-source-drift is the wrong invariant.
+A reproducibility check is just a diff of the rebuild against the published
+tree — it needs no in-pipeline enforcement. A refresh after upstream changes
+*should* change the text. What must actually hold is **id stability**: an id
+never silently changes meaning. Ids may be **deleted** (an item is suppressed)
+and **added** (new upstream items, or a split), but never quietly reassigned.
 
-```python
-# The original tier is allowed to differ from raw source by clean_xml's
-# documented codepoint canonicalization and nothing else. Spelling — the
-# source's orthographic letter choices — must survive untouched (POL-001).
-CANONICALIZATION = str.maketrans({"ʼ": "'", "ʻ": "'", "`": "'", "ˈ": "'"})
+The old `_audit` enforced byte-equality of original/TRANSL/AUDIO against a
+fresh generate, which is what forced `restore-source` to exist, which is what
+forced `standardization.tsv` to exist. Removing it dissolves all three.
 
+Replace it with a committed ledger. Per POL-039 the table is human-readable
+and lives in one documented place, loaded through one loader:
 
-def _comparable(text: str) -> str:
-    return re.sub(r"\s+", " ", (text or "").translate(CANONICALIZATION)).strip()
+`Corpora/ILRDF_Dicts/CodeAndDocs/source_data/published_ids.csv`
+
+```
+id,source_guids,status,note
+Amis_20a69646e70af011,20a69646-e70a-f011-bd65-00155db40116,active,
+Atayal_605c631ca81eecac_a,605c631c-a81e-ecac-...,active,split from numbered record
+Atayal_605c631ca81eecac_b,605c631c-a81e-ecac-...,active,split from numbered record
+Atayal_605c631ca81eecac,605c631c-a81e-ecac-...,split-parent,superseded by _a/_b
+Kanakanavu_1f0e…,1f0e…,suppressed,lesson number not a translation
 ```
 
-and compare `_comparable(expected_text) == _comparable(actual_text)` in
-`_audit` instead of raw equality. Any other difference is still a hard error.
+`audit` then checks, and fails on any unexplained case:
+
+| Condition | Verdict |
+|---|---|
+| Ledger id present in XML, same `source_guids` | OK |
+| Ledger id absent, status `suppressed` or `split-parent` | OK |
+| Ledger id absent, status `active` | **FAIL** — silent deletion |
+| XML id absent from ledger | **FAIL** — undeclared addition (add a row deliberately) |
+| Ledger id present but `source_guids` differ | **FAIL** — id reassigned to different source material |
+
+The last row is the one that matters and the one nothing currently catches: a
+text correction that makes two previously distinct sentences identical merges
+them and retires an id. Task 2 flagged that as the residual risk of
+text-keyed dedup; the ledger is what catches it.
+
+This is generalizable — if it works here it is worth a POL and a shared
+validator. Do **not** generalize it in this PR.
 
 - [ ] **Step 5: Run the tests**
 
