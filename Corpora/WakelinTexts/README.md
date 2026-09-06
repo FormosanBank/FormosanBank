@@ -1,12 +1,15 @@
 # Wakelin Yami texts (1958)
 
-## License and AI Use
+## Rights
 
-This corpus is subject to its source license and the central FormosanBank terms in [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI Use is prohibited without prior written permission.
+**License:** CC BY-NC-ND 4.0
+**Rights source:** Summer Institute of Linguistics / University of North Dakota (publisher), 2026-08-23; evidence: ask maintainer
 
-Indosan, S., Wakelin, G., Dararyaw, S., and Kalaku, S. (1958). Yami texts. Work Papers of the Summer Institute of Linguistics, University of North Dakota Session: Vol. 2, Article 7. 10.31356/silwp.vol02.07
+> Indosan, S., Wakelin, G., Dararyaw, S., and Kalaku, S. (1958). Yami texts. Work Papers of the Summer Institute of Linguistics, University of North Dakota Session: Vol. 2, Article 7. 10.31356/silwp.vol02.07
 
-Authors cannot be located. This text was previously licensed as CC-BY-ND by publisher, which we have interpreted liberally. If you are a copyright owner, please reach out to us.
+The individual authors cannot be located. The publisher released the article as **CC-BY-ND**, and FormosanBank has **interpreted that licence liberally** in order to publish the texts with their glosses and translations; publication rights were confirmed by the maintainer on 2026-08-23. The value recorded in `TEXT/@copyright` is `CC BY-NC-ND 4.0`, the `rights_vocabulary.csv` spelling (POL-042; an unversioned licence is 4.0). If you are a copyright owner, please reach out to us.
+
+This corpus is also subject to the central FormosanBank terms in [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI Use is prohibited without prior written permission.
 
 ## Contents
 
@@ -24,12 +27,14 @@ Six Yami (`xml:lang="tao"`, `dialect="Yami"`) narrative texts, collected on Orch
 
 | File | Text in the article | Informant | Sentences | Words | Morphemes |
 |---|---|---|---|---|---|
-| `XML/Yami/Kangkang.xml` | A. *Ji Kangkang* (The Rooster) | Samen Indosan, April 1955 | 43 | 216 | 255 |
-| `XML/Yami/Kwaway.xml` | B. *Kwaway* (The Spirit) | Sinan Dararyaw, May 1957 | 62 | 267 | 340 |
-| `XML/Yami/Kalaku1.xml` | C. | Saman Kalaku, 6 September 1956 | 20 | 86 | 121 |
+| `XML/Yami/Kangkang.xml` | A. *Ji Kangkang* (The Rooster) | Samen Indosan, April 1955 | 44 | 219 | 260 |
+| `XML/Yami/Kwaway.xml` | B. *Kwaway* (The Spirit) | Sinan Dararyaw, May 1957 | 64 | 278 | 348 |
+| `XML/Yami/Kalaku1.xml` | C. | Saman Kalaku, 6 September 1956 | 21 | 92 | 131 |
 | `XML/Yami/Kalaku2.xml` | D. | Samen Kalaku, 6 September 1956 | 14 | 76 | 114 |
-| `XML/Yami/Kalaku3.xml` | E. | Saman Kalaku, 13 September 1956 | 10 | 48 | 82 |
-| `XML/Yami/Kalaku4.xml` | F. | Saman Sunagu, January 1957 | 23 | 158 | 185 |
+| `XML/Yami/Kalaku3.xml` | E. | Saman Kalaku, 13 September 1956 | 11 | 56 | 92 |
+| `XML/Yami/Kalaku4.xml` | F. | Saman Sunagu, January 1957 | 24 | 161 | 189 |
+
+Sentence counts exceed the article's printed sentence numbers because seven printed alternations are published as separate sentences — see [Alternations](#alternations-the-sources-slash-notation) below.
 
 Note that text F was given by Saman Sunagu, not by Saman Kalaku; the `Kalaku4` file name and TEXT id are historical and are kept because published identifiers are stable, but the attribution above is the one to cite.
 
@@ -57,7 +62,7 @@ If the orthography is later identified — starting with a confirmation of what 
 Two notations from the printed article survive in the text and are faithful to it — they are not conversion artifacts:
 
 - **`( )` marks a probable discrepancy** in the data, per the article's own key: `(n)aku`, `ku(a)`, `puken-(en)`. In `Kalaku4.xml` sentence S2 the parentheses span several words in the article, so individual word FORMs there carry an unmatched `(` or `)`.
-- **`/` separates alternative forms** that the article itself offers for the same stretch of text: `am/namen`, `varit/yaked`, `pipangn-epen/pipangungn-epen/pipangengne-eben`. These have not been split into separate sentences.
+- **`/` separated alternative readings** in the article: `am/namen`, `varit/yaked`, `pipangn-epen/pipangungn-epen/pipangengne-eben`. **No published FORM keeps a slash** — every one is resolved, either into `alternate` siblings or into separate sentences. See [Alternations](#alternations-the-sources-slash-notation) below.
 
 Hyphens mark morpheme boundaries, and are kept exactly as the article prints them, at every level. (In corpora that have a standard tier, sentence-level standard FORMs normally have these hyphens removed so that tier reads as running text. There is no standard tier here, so nothing is de-hyphenated: a sentence FORM reads `mang-anak-u-em`, as the article does.)
 
@@ -80,27 +85,53 @@ The article also notes that the 'narration' suffix `-em`/`-m` occurs throughout 
 - **`XML/`** — the published FormosanBank XML.
 - **`CodeAndDocs/`**
   - `Original.pdf` — the 1958 article, the source of every sentence here.
-  - `pre_correction_snapshot/XML/` — the hand-typed XML as first entered (see below).
-  - `make_xml.sh` — regenerates `XML/` (see below). The one entry point.
-  - `drop_derived_tiers.py` — pipeline step 2 (see below).
+  - `pre_correction_snapshot/XML/` — the hand-typed XML: this corpus's source of record (see below).
+  - `generate_xml.sh` — the one entry point; regenerates `XML/` (POL-047).
+  - `generate_xml.py` — step 1, the corpus-local parser.
+  - `alternative_decisions.json` — how each printed alternation is published.
+  - `source_discrepancies.md` — snapshot-vs-article findings that are still open.
+  - [`provenance.json`](CodeAndDocs/provenance.json) — the FormosanBank commit `XML/` was built against (POL-052).
 
 ## Provenance and the pre-correction snapshot
 
-These texts were transferred from the printed article to XML **by hand**. There is no scraper and no OCR stage, so the hand-typed XML *is* the corpus's source data and the corpus cannot be regenerated from anything else. It is therefore preserved verbatim in `CodeAndDocs/pre_correction_snapshot/XML/`, which is the baseline the pipeline below builds from. Neither the snapshot nor the published XML is ever edited by hand: every change to either comes from committed code.
+These texts were transferred from the printed article to XML **by hand**. There is no scraper and no OCR stage, so the hand-typed XML *is* this corpus's source data: `CodeAndDocs/pre_correction_snapshot/XML/` is its **source of record** (POL-035), and the published `XML/` is derived from it on every run.
+
+Because it is the source and not a build artefact, the snapshot is where a *source* correction belongs — a misread letter, a missed erratum, a mis-segmented word. Such corrections are made in the snapshot, and each one is evidenced against `Original.pdf` in [`CodeAndDocs/source_discrepancies.md`](CodeAndDocs/source_discrepancies.md). Everything *downstream* of the snapshot — the alternation handling below — is done by committed code, never by hand (POL-038). The published `XML/` is never edited directly.
+
+The snapshot carries the `original` tier only. It once also held a `standard` tier written by the `Yami_Wakelin_113.tsv` "conversion table"; that tier was the original text minus its hyphens and asserted nothing, and both it and the table are gone.
+
+The FormosanBank commit the published XML was built against is recorded in [`CodeAndDocs/provenance.json`](CodeAndDocs/provenance.json) (POL-052).
+
+## Alternations: the source's slash notation
+
+The article prints 18 alternations with a slash — `nipi/niripi`, `varit/yaked`, `akak-aep-an/(mangday su aep)`. These record **the transcriber's uncertainty about what was said**, not alternatives the speaker offered. That distinction matters: POL-027 turns a speaker's alternatives into one sentence per option, and applying it here would manufacture sentences the narrator never produced.
+
+Each alternation is therefore classified by hand in `CodeAndDocs/alternative_decisions.json`, which records the printed string, the decision and the reason for all 18 (POL-039 — the table is data, not code). Two rules:
+
+- **A clear spelling variant** — mostly overlapping letters, and the same gloss — is published as `FORM[@kindOf="alternate"]` siblings on the node that varies *and on each of its ancestors*, so the sentence, the word and the morpheme each read as one continuous text. 11 alternations: `nipi/niripi`, the `nem ~ namen` pronoun (six times), `mi-kalakala/mi-karakara`, the purely hyphenational `mikabak-abay-u/mikabakabayu`, and `pipangn-epen/pipangungn-epen/pipangengne-eben`, which is three-way.
+- **Everything else** — different lexemes, different glosses, or a word against a phrase — becomes **separate sentences**. 7 alternations. The first branch keeps the printed sentence number and the rest take `b`, `c`, …: `Kwaway/S48` and `Kwaway/S48b`. POL-037 forbids renumbering an already-published bare id, so there is no `S48a`.
+
+Two calls are marked `review: true` in the table as genuinely borderline: `Kalaku1/S6`, whose recorded alternate looks truncated, and `Kwaway/S2`, a single-vowel `a/u` alternation kept as a spelling variant even though the two share no letters.
 
 ## Processing pipeline
 
-The whole pipeline is one script:
+The whole pipeline is one script (POL-047):
 
 ```bash
-./CodeAndDocs/make_xml.sh [FORMOSANBANK_ROOT]
+./CodeAndDocs/generate_xml.sh [FORMOSANBANK_ROOT]
 ```
 
-It restores `XML/` from the pre-correction snapshot and then runs the two steps below, using the QC scripts of the FormosanBank checkout the corpus lives in (pass a path, or set `FORMOSANBANK_ROOT`, to use another checkout; set `PYTHON` to override the interpreter, which defaults to that checkout's `.venv`). It is idempotent — it always rebuilds from the snapshot, so a second run reproduces the first byte for byte.
+It rebuilds `XML/` from the snapshot using the QC scripts of the FormosanBank checkout the corpus lives in (pass a path, or set `FORMOSANBANK_ROOT`, to use another checkout; set `PYTHON` to override the interpreter, which defaults to that checkout's `.venv`). Nothing outside this checkout is required (POL-048). It is idempotent: a re-run over a clean checkout leaves `git status` empty.
 
-**Step 0 — restore.** `XML/` is deleted and re-copied from `CodeAndDocs/pre_correction_snapshot/XML/`. That snapshot is the corpus's source data (see "Provenance" above) and is never edited; every published byte is derived from it by the steps below.
+1. **Generate the original tier**
 
-1. **Clean the XML**
+   ```bash
+   python Corpora/WakelinTexts/CodeAndDocs/generate_xml.py
+   ```
+
+   Reads the snapshot, applies `alternative_decisions.json`, and writes `XML/`. This is the corpus-local parsing step POL-046 exempts from "shared tools first": turning *this* hand-typed source into the original tier is inherently source-specific. It fails loudly if the snapshot ever acquires a derived tier, and if any published FORM still contains a slash.
+
+2. **Clean the XML**
 
    ```bash
    python QC/cleaning/clean_xml.py --corpora_path Corpora/WakelinTexts/XML
@@ -108,22 +139,15 @@ It restores `XML/` from the pre-correction snapshot and then runs the two steps 
 
    Removes empty elements, normalizes Unicode to NFC, decodes HTML escapes, and canonicalizes typographic look-alikes (curly quotes, dashes, tildes) and null-morpheme glyphs. The hand-typed text is plain ASCII, so this step currently changes nothing; it is the guarantee that it stays that way.
 
-2. **Drop the derived tiers**
+**Steps 4 and 5 of the POL-047 shape — `standardize.py` and `add_phonology.py` — are deliberately absent**, and this is the deviation POL-047 requires a corpus to state. See "Why there is no standard tier and no IPA" above. There is also no `apply_manual_edits.py` step: this corpus has no `manual_edits.xml`, because hand corrections belong in the snapshot, which is its source.
 
-   ```bash
-   python Corpora/WakelinTexts/CodeAndDocs/drop_derived_tiers.py \
-       --corpora_path Corpora/WakelinTexts/XML
-   ```
-
-   Deletes every `FORM[@kindOf="standard"]` and every `PHON`, at sentence, word and morpheme level, leaving the `original` FORMs and the translations untouched. On the current snapshot it removes **2120 standard FORMs** (172 at S level, 851 at W, 1097 at M) and **0 PHON** — the snapshot has never contained a PHON. PHON is handled anyway so that "this corpus asserts no orthography and no pronunciation" is a guarantee of the pipeline rather than an accident of the input.
-
-   The snapshot does contain a standard tier: it was written years ago by the `Yami_Wakelin_113.tsv` "conversion table", and it is the original text minus its hyphens. Because the snapshot is the reproduction baseline it is not edited to remove that tier; the tier is removed on the way out of it, by this committed step, on every run.
-
-There is deliberately **no** `standardize.py` step and **no** `add_phonology.py` step; see "Why there is no standard tier and no IPA" above.
+Validators do not run inside the build (POL-047, "build only"); run them from `QC/` separately.
 
 Any `cleaner_warnings.csv` file a run leaves behind is a per-run report: read it, then delete it. Never commit it. This corpus currently produces none.
 
 ## Known caveats
 
-- Several words are not fully analyzed on the morpheme tier: some words carry no morphemes at all, and in a few cases the morpheme count does not match the hyphenation of the word's FORM. The word tier likewise does not line up with the sentence in `Kalaku1.xml` S20, where the sentence is a three-way `/` alternation but only one alternative is segmented.
-- `Kwaway.xml` S36 and S40 are the same sentence. This is a narrative, and the repetition is in the article.
+- **Six source discrepancies are open**, found by checking every snapshot word against `Original.pdf` and its errata. They are listed with evidence in [`CodeAndDocs/source_discrepancies.md`](CodeAndDocs/source_discrepancies.md) and are **not** fixed: three erratum halves applied to some tiers but not others (`Kalaku2/S8W1`, `Kwaway/S4W2M2`, `Kangkang/S39` `ana-na-m` for `ama-na-m`), two internal mismatches (`Kangkang/S18W3` mis-segments `(u)`, `Kalaku4/S16W4M1` keeps the OCR spelling `cbyaa?`), and one unattested spelling (`Kwaway/S29` `tubaus` where the article prints `tabaus`). A seventh, `Kalaku1/S13W1`, is patched in memory at build time by the `snapshot_repairs` block of `alternative_decisions.json`, which fails loudly if the snapshot stops matching.
+- **16 `V121` findings remain HARD.** They are the article's own optional-material parentheses inside word and morpheme FORMs — `(u)kanen-da`, `puken-(en)`, `(u)m-lavi`, `chi-ka-(y)bubu`. POL-026 would turn each into two sentences; whether to do that here is a separate question from the slash ruling and has not been decided, so the source notation stands. (`V121` was 28 before this rebuild.)
+- Several words are not fully analyzed on the morpheme tier: some carry no morphemes at all, and in a few cases the morpheme count does not match the hyphenation of the word's FORM. These are the article's own selective analysis, not conversion losses.
+- `Kwaway.xml` S36 and S40 are the same sentence. This is a narrative, and the repetition is in the article; both are retained under POL-022.
