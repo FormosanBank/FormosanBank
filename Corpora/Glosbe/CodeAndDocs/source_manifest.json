@@ -1,0 +1,27 @@
+{
+  "development_repository": "FormosanBank/Formosan-Glosbe",
+  "development_commit": "168f171c5e2d0d03fefd78787f0463761a55dcf1",
+  "formosanbank_authority_commit": "3a3c47c220520113f747e6a2d441494000e13c4b",
+  "ildrf_reference_repository": "FormosanBank/Formosan-Zheng-ACL-2024",
+  "ildrf_reference_commit": "face1e165d6a19068656a7aaa6e33034a66bb8a8",
+  "inputs": [
+    {
+      "path": "data/processed/quality_filtered_examples.jsonl",
+      "records": 4245,
+      "sha256": "e2f648e4583ec8b59255fd706ec80dcb66b6a6a4dcc98b178fde7ade1ec2ca8d"
+    },
+    {
+      "path": "data/processed/dictionary_entries_deduped.jsonl",
+      "records": 1319,
+      "sha256": "bc86c07772b9f0b30d78e2d3a74231291116715551f65684720c3f270b803510"
+    },
+    {
+      "path": "work/json/cleaned_amis_chinese_translations.json",
+      "sha256": "babb873810d0bb8c9e19666e8ae4af87da6f9731854ab82bffe3d94c60b62167"
+    },
+    {
+      "path": "work/reference_glosbe/amis_glosbe_traditional.xml",
+      "sha256": "2a0a0a03f849332e84e8e191ed9d3fbf0ce656d31acf5045e8d757b80596a764"
+    }
+  ]
+}

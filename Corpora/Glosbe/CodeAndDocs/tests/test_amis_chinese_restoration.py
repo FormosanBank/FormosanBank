@@ -8,7 +8,7 @@ from scripts.glosbe_pipeline import (
     form_group_key,
     load_config,
     merge_reviewed_amis_chinese,
-    read_csv,
+    read_jsonl,
     validate_xml_file,
 )
 
@@ -16,15 +16,9 @@ from scripts.glosbe_pipeline import (
 def restored_rows():
     config = load_config("scripts/config.yaml")
     current = [
-        {
-            "record_id": row["record_id"],
-            "source_sentence_clean": row["source_sentence_clean"],
-            "target_sentence_clean": row["target_sentence_clean"],
-            "source_url": row["source_url"],
-            "raw_html_path": row["raw_path"],
-        }
-        for row in read_csv(PROCESSED / "amis_chinese_restoration_audit.csv")
-        if row["origin"] == "current_scrape_reviewed_match"
+        row
+        for row in read_jsonl(PROCESSED / "quality_filtered_examples.jsonl")
+        if (row["l1"], row["l2"]) == ("ami", "zh")
     ]
     return current, merge_reviewed_amis_chinese(config, current)
 
@@ -39,13 +33,15 @@ def test_restoration_recovers_reviewed_unique_pairs():
         "current_rows": 25,
         "current_reviewed_matches": 25,
         "current_converted_new": 0,
-        "output_rows": 2321,
+        "normalization_duplicate_rows": 15,
+        "output_rows": 2306,
         "output_forms": 2296,
     }
     assert [row["record_id"] for row in merged[:25]] == [row["record_id"] for row in current]
     assert Counter(row["origin"] for row in audit) == {
         "current_scrape_reviewed_match": 25,
-        "joseph_reviewed_traditional": 2296,
+        "joseph_reviewed_traditional": 2281,
+        "joseph_reviewed_traditional;normalization_duplicate_omitted": 15,
     }
 
 
@@ -57,7 +53,7 @@ def test_restoration_keeps_distinct_translations_without_exact_duplicates():
     ]
 
     assert len(pairs) == len(set(pairs))
-    assert len({source for source, _ in pairs}) == 2311
+    assert len({source for source, _ in pairs}) == 2296
     assert len({form_group_key(row["source_sentence_clean"]) for row in merged}) == 2296
     assert all("*" not in row["source_sentence_clean"] for row in merged)
     assert all("*" not in row["target_sentence_clean"] for row in merged)

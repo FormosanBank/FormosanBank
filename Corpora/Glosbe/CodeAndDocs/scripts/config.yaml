@@ -8,6 +8,7 @@ source:
 
 metadata:
   retrieved_date: "2026-06-29"
+  report_timestamp_utc: "2026-08-22T11:01:52Z"
 
 reviewed_amis_chinese:
   enabled: true
@@ -177,9 +178,6 @@ quality:
   exclude_existing_formosan_glosbe_overlap_from_xml: false
 
 xml:
-  # This copy is under FormosanBank/Corpora/Glosbe. The development repository
-  # keeps its generated files under Final_XML; the published port writes to the
-  # standard corpus XML directory instead.
   output_dir: "../XML"
   validate_strict: true
   include_dictionary_entries: true
@@ -192,12 +190,13 @@ xml:
 ildrf_reference_lexicon:
   # Zheng et al. extracted these bilingual lexicons from the ILRDF online
   # dictionaries. They are reference metadata, not an independent authority.
-  derived_repo: "../../../../Formosan-Zheng-ACL-2024"
+  derived_repo: "../Formosan-Zheng-ACL-2024"
+  expected_commit: "face1e165d6a19068656a7aaa6e33034a66bb8a8"
   dictionary_files:
-    ami: "Final_XML/Amis/Dictionary_Amis_ami.xml"
-    tay: "Final_XML/Atayal/Dictionary_Atayal_tay.xml"
-    trv: "Final_XML/Truku/Dictionary_Truku_trv.xml"
-    xsy: "Final_XML/Saisiyat/Dictionary_Saisiyat_xsy.xml"
+    ami: "XML/Amis/Dictionary_Amis_ami.xml"
+    tay: "XML/Atayal/Dictionary_Atayal_tay.xml"
+    trv: "XML/Truku/Dictionary_Truku_trv.xml"
+    xsy: "XML/Saisiyat/Dictionary_Saisiyat_xsy.xml"
 
 overlap:
   check_existing_formosan_glosbe: true
