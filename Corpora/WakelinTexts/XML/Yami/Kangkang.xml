@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<TEXT id="Kangkang" xml:lang="tao" source="Yami text. Kangkang." copyright="CC-BY-NC-ND" citation="Indosan, S., Wakelin, G., Dararyaw, S., and Kalaku, S. (1958). Yami texts. Work Papers of the Summer Institute of Linguistics, University of North Dakota Session: Vol. 2, Article 7. 10.31356/silwp.vol02.07" BibTeX_citation="@article{indosan1958yami, title={Yami texts}, year={1958}, author={Indosan, Samen and Wakelin, Grace and Dararyaw, Sinan and Kalaku, Saman}, journal={Work Papers of the Summer Institute of Linguistics, University of North Dakota Session}, volume={2}, number={7}, doi={10.31356/silwp.vol02.07}" dialect="Yami">
+<TEXT id="Kangkang" xml:lang="tao" source="Yami text. Kangkang." copyright="CC BY-NC-ND 4.0" citation="Indosan, S., Wakelin, G., Dararyaw, S., and Kalaku, S. (1958). Yami texts. Work Papers of the Summer Institute of Linguistics, University of North Dakota Session: Vol. 2, Article 7. 10.31356/silwp.vol02.07" BibTeX_citation="@article{indosan1958yami, title={Yami texts}, year={1958}, author={Indosan, Samen and Wakelin, Grace and Dararyaw, Sinan and Kalaku, Saman}, journal={Work Papers of the Summer Institute of Linguistics, University of North Dakota Session}, volume={2}, number={7}, doi={10.31356/silwp.vol02.07}" dialect="Yami">
     <S id="S1">
         <FORM kindOf="original">amyan su tau? nu-kakwa i-m-angay mang-aep su uvi?</FORM>
         <TRANSL xml:lang="eng">A long time ago, there was a person who went to get some potatoes.</TRANSL>
@@ -1133,7 +1133,7 @@
         </W>
     </S>
     <S id="S30">
-        <FORM kindOf="original">kwan-a nu anak-ne-m buken a s-ina-ku-imu kwan-a</FORM>
+        <FORM kindOf="original">kwan-a nu anak-ne-m puken a s-ina-ku-imu kwan-a</FORM>
         <TRANSL xml:lang="eng">"Then you are not my mother?" said the child.</TRANSL>
         <W id="S30W1">
             <FORM kindOf="original">kwan-a</FORM>
@@ -1168,7 +1168,7 @@
             </M>
         </W>
         <W id="S30W4">
-            <FORM kindOf="original">buken</FORM>
+            <FORM kindOf="original">puken</FORM>
             <TRANSL xml:lang="eng">not</TRANSL>
         </W>
         <W id="S30W5">
@@ -1429,26 +1429,14 @@
         </W>
     </S>
     <S id="S33">
-        <FORM kindOf="original">simuskem/tanu-di-muskem anak-u-imu kwan-a</FORM>
+        <FORM kindOf="original">simuskem anak-u-imu kwan-a</FORM>
         <TRANSL xml:lang="eng">you won't be killed.</TRANSL>
         <W id="S33W1">
-            <FORM kindOf="original">simuskem/tanu-di-muskem</FORM>
-            <TRANSL xml:lang="eng">kill-with-boiling-water/if(unctn)-not-killed-with-boiling-water</TRANSL>
+            <FORM kindOf="original">simuskem</FORM>
+            <TRANSL xml:lang="eng">kill-with-boiling-water</TRANSL>
             <M id="S33W1M1">
                 <FORM kindOf="original">simuskem</FORM>
                 <TRANSL xml:lang="eng">kill-with-boiling-water</TRANSL>
-            </M>
-            <M id="S33W1M2">
-                <FORM kindOf="original">tanu</FORM>
-                <TRANSL xml:lang="eng">if(unctn)</TRANSL>
-            </M>
-            <M id="S33W1M3">
-                <FORM kindOf="original">di</FORM>
-                <TRANSL xml:lang="eng">not</TRANSL>
-            </M>
-            <M id="S33W1M4">
-                <FORM kindOf="original">muskem</FORM>
-                <TRANSL xml:lang="eng">killed-with-boiling-water</TRANSL>
             </M>
         </W>
         <W id="S33W2">
@@ -1475,6 +1463,54 @@
                 <TRANSL xml:lang="eng">said</TRANSL>
             </M>
             <M id="S33W3M2">
+                <FORM kindOf="original">a</FORM>
+                <TRANSL xml:lang="eng">she</TRANSL>
+            </M>
+        </W>
+    </S>
+    <S id="S33b">
+        <FORM kindOf="original">tanu-di-muskem anak-u-imu kwan-a</FORM>
+        <TRANSL xml:lang="eng">you won't be killed.</TRANSL>
+        <W id="S33bW1">
+            <FORM kindOf="original">tanu-di-muskem</FORM>
+            <TRANSL xml:lang="eng">if(unctn)-not-killed-with-boiling-water</TRANSL>
+            <M id="S33bW1M1">
+                <FORM kindOf="original">tanu</FORM>
+                <TRANSL xml:lang="eng">if(unctn)</TRANSL>
+            </M>
+            <M id="S33bW1M2">
+                <FORM kindOf="original">di</FORM>
+                <TRANSL xml:lang="eng">not</TRANSL>
+            </M>
+            <M id="S33bW1M3">
+                <FORM kindOf="original">muskem</FORM>
+                <TRANSL xml:lang="eng">killed-with-boiling-water</TRANSL>
+            </M>
+        </W>
+        <W id="S33bW2">
+            <FORM kindOf="original">anak-u-imu</FORM>
+            <TRANSL xml:lang="eng">child-my-you</TRANSL>
+            <M id="S33bW2M1">
+                <FORM kindOf="original">anak</FORM>
+                <TRANSL xml:lang="eng">child</TRANSL>
+            </M>
+            <M id="S33bW2M2">
+                <FORM kindOf="original">u</FORM>
+                <TRANSL xml:lang="eng">my</TRANSL>
+            </M>
+            <M id="S33bW2M3">
+                <FORM kindOf="original">imu</FORM>
+                <TRANSL xml:lang="eng">you</TRANSL>
+            </M>
+        </W>
+        <W id="S33bW3">
+            <FORM kindOf="original">kwan-a</FORM>
+            <TRANSL xml:lang="eng">said-she</TRANSL>
+            <M id="S33bW3M1">
+                <FORM kindOf="original">kwan</FORM>
+                <TRANSL xml:lang="eng">said</TRANSL>
+            </M>
+            <M id="S33bW3M2">
                 <FORM kindOf="original">a</FORM>
                 <TRANSL xml:lang="eng">she</TRANSL>
             </M>

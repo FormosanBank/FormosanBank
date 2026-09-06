@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<TEXT id="Kalaku4" xml:lang="tao" source="Yami text. Kalaku" copyright="CC-BY-NC-ND" citation="Indosan, S., Wakelin, G., Dararyaw, S., and Kalaku, S. (1958). Yami texts. Work Papers of the Summer Institute of Linguistics, University of North Dakota Session: Vol. 2, Article 7. 10.31356/silwp.vol02.07" BibTeX_citation="@article{indosan1958yami, title={Yami texts}, year={1958}, author={Indosan, Samen and Wakelin, Grace and Dararyaw, Sinan and Kalaku, Saman}, journal={Work Papers of the Summer Institute of Linguistics, University of North Dakota Session}, volume={2}, number={7}, doi={10.31356/silwp.vol02.07}" dialect="Yami">
+<TEXT id="Kalaku4" xml:lang="tao" source="Yami text. Kalaku" copyright="CC BY-NC-ND 4.0" citation="Indosan, S., Wakelin, G., Dararyaw, S., and Kalaku, S. (1958). Yami texts. Work Papers of the Summer Institute of Linguistics, University of North Dakota Session: Vol. 2, Article 7. 10.31356/silwp.vol02.07" BibTeX_citation="@article{indosan1958yami, title={Yami texts}, year={1958}, author={Indosan, Samen and Wakelin, Grace and Dararyaw, Sinan and Kalaku, Saman}, journal={Work Papers of the Summer Institute of Linguistics, University of North Dakota Session}, volume={2}, number={7}, doi={10.31356/silwp.vol02.07}" dialect="Yami">
     <S id="S1">
         <FORM kindOf="original">tau nu kakwa amyan su avang tu titiwen kwan-da</FORM>
         <TRANSL xml:lang="eng">A long time ago, there was a ship at Titiwen.</TRANSL>
@@ -53,7 +53,7 @@
         </W>
     </S>
     <S id="S2">
-        <FORM kindOf="original">ma-chita-da tu madegdeg (imurud nu tau)/(tau d-imurud)</FORM>
+        <FORM kindOf="original">ma-chita-da tu madegdeg imurud nu tau</FORM>
         <TRANSL xml:lang="eng">Early in the morning, the people from Imurud saw them (ship's crew).</TRANSL>
         <W id="S2W1">
             <FORM kindOf="original">ma-chita-da</FORM>
@@ -84,30 +84,62 @@
             </M>
         </W>
         <W id="S2W4">
-            <FORM kindOf="original">(imurud</FORM>
-            <TRANSL xml:lang="eng">(Imurud</TRANSL>
+            <FORM kindOf="original">imurud</FORM>
+            <TRANSL xml:lang="eng">Imurud</TRANSL>
         </W>
         <W id="S2W5">
             <FORM kindOf="original">nu</FORM>
             <TRANSL xml:lang="eng">CM</TRANSL>
         </W>
         <W id="S2W6">
-            <FORM kindOf="original">tau)</FORM>
-            <TRANSL xml:lang="eng">persons)</TRANSL>
+            <FORM kindOf="original">tau</FORM>
+            <TRANSL xml:lang="eng">persons</TRANSL>
         </W>
-        <W id="S2W7">
-            <FORM kindOf="original">(tau</FORM>
-            <TRANSL xml:lang="eng">(persons</TRANSL>
+    </S>
+    <S id="S2b">
+        <FORM kindOf="original">ma-chita-da tu madegdeg tau d-imurud</FORM>
+        <TRANSL xml:lang="eng">Early in the morning, the people from Imurud saw them (ship's crew).</TRANSL>
+        <W id="S2bW1">
+            <FORM kindOf="original">ma-chita-da</FORM>
+            <TRANSL xml:lang="eng">unan-see-them</TRANSL>
+            <M id="S2bW1M1">
+                <FORM kindOf="original">ma</FORM>
+                <TRANSL xml:lang="eng">unan</TRANSL>
+            </M>
+            <M id="S2bW1M2">
+                <FORM kindOf="original">chita</FORM>
+                <TRANSL xml:lang="eng">see</TRANSL>
+            </M>
+            <M id="S2bW1M3">
+                <FORM kindOf="original">da</FORM>
+                <TRANSL xml:lang="eng">them</TRANSL>
+            </M>
         </W>
-        <W id="S2W8">
-            <FORM kindOf="original">d-imurud)</FORM>
+        <W id="S2bW2">
+            <FORM kindOf="original">tu</FORM>
+            <TRANSL xml:lang="eng">in</TRANSL>
+        </W>
+        <W id="S2bW3">
+            <FORM kindOf="original">madegdeg</FORM>
+            <TRANSL xml:lang="eng">early-morning</TRANSL>
+            <M id="S2bW3M1">
+                <FORM kindOf="original">madegdeg</FORM>
+                <TRANSL xml:lang="eng">early-morning</TRANSL>
+            </M>
+        </W>
+        <W id="S2bW4">
+            <FORM kindOf="original">tau</FORM>
+            <TRANSL xml:lang="eng">persons</TRANSL>
+        </W>
+        <W id="S2bW5">
+            <FORM kindOf="original">d-imurud</FORM>
             <TRANSL xml:lang="eng">from</TRANSL>
-            <M id="S2W8M1">
+            <M id="S2bW5M1">
                 <FORM kindOf="original">d</FORM>
                 <TRANSL xml:lang="eng">from</TRANSL>
             </M>
-            <M id="S2W8M2">
-                <FORM kindOf="original">imurud)</FORM>
+            <M id="S2bW5M2">
+                <FORM kindOf="original">imurud</FORM>
                 <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
         </W>
