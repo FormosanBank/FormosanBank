@@ -15,27 +15,6 @@
     "`carriers` names the snapshot node holding FORM[@kindOf=\"alternate\"].",
     "Rows marked review=true are the borderline calls - see README."
   ],
-  "snapshot_repairs": {
-    "_doc": [
-      "Transcription defects in the snapshot that the build must work around, applied",
-      "to the in-memory tree only. Each is evidenced in",
-      "CodeAndDocs/source_discrepancies.md and AWAITS A RULING; when",
-      "one is approved it moves into the snapshot and its entry here is deleted.",
-      "Nothing else may be repaired here - this is a holding pen, not a patch layer."
-    ],
-    "entries": [
-      {
-        "file": "Kalaku1",
-        "sentence": "S13",
-        "node": "S13W1",
-        "field": "FORM[@kindOf='original']",
-        "from": "katu",
-        "to": "katu-nem/namen-rana",
-        "why": "The W is glossed 'unan-we-completely' and holds three morphemes (katu/unan, nem/we, rana/completely); the printed line is 'katu-nem/namen-rana'. The FORM was truncated to its first morpheme, so the alternation cannot be resolved in it. Report item 5.",
-        "also_drop_alternate": "namen-rana"
-      }
-    ]
-  },
   "decisions": [
     {
       "file": "Kalaku1",
@@ -73,11 +52,55 @@
       "sentence": "S11",
       "printed": "a-ni-padi/machyura-rana",
       "mode": "split",
-      "kind": "substitution",
-      "carriers": [
-        "S11W6M3"
-      ],
-      "note": "'padi' and 'machyura' share no letters; same gloss 'accompany' but two different lexemes. 'a-ni-' and '-rana' are shared by both readings — a proposal to split the word as 'a-ni-padi' / 'machyura-rana' instead was checked and declined; see CodeAndDocs/source_discrepancies.md section C2."
+      "kind": "membership",
+      "note": "MAINTAINER CORRECTION to the source (2026-09-07), not a reading of it: the article's last two glosses are in the wrong order, and the slash divides the word rather than one morpheme inside it. The corrected gloss 'unan-many-still/again-them' divides at its own slash exactly where the text does, giving 3+3 and 2+2. See README, 'A correction to the source'.",
+      "branches": [
+        {
+          "suffix": "",
+          "form": "yaru karwan lu dewdew-em dy-aru-pa-sira a-ni-padi",
+          "words": [
+            "S11W1",
+            "S11W2",
+            "S11W3",
+            "S11W4",
+            "S11W5",
+            "S11W6"
+          ],
+          "overrides": {
+            "S11W6": {
+              "form": "a-ni-padi",
+              "gloss": "unan-many-still",
+              "morphemes": [
+                "S11W6M1",
+                "S11W6M2",
+                "S11W6M3"
+              ]
+            }
+          }
+        },
+        {
+          "suffix": "b",
+          "form": "yaru karwan lu dewdew-em dy-aru-pa-sira machyura-rana",
+          "words": [
+            "S11W1",
+            "S11W2",
+            "S11W3",
+            "S11W4",
+            "S11W5",
+            "S11W6"
+          ],
+          "overrides": {
+            "S11W6": {
+              "form": "machyura-rana",
+              "gloss": "again-them",
+              "morphemes": [
+                "S11W6M4",
+                "S11W6M5"
+              ]
+            }
+          }
+        }
+      ]
     },
     {
       "file": "Kalaku1",
@@ -203,6 +226,16 @@
     },
     {
       "file": "Kangkang",
+      "sentence": "S18",
+      "printed": "kan(u)",
+      "mode": "variant",
+      "carriers": [
+        "S18W3"
+      ],
+      "note": "MAINTAINER RULING (2026-09-07): the article's optional-material parentheses here mark an alternation, `kan` ~ `kan-u`, so the word carries an alternate FORM like a slash case. The S FORM keeps the printed `kan(u)` notation (POL-017); the alternation is resolved on the word. This row carries no slash, so nothing is rewritten above the W."
+    },
+    {
+      "file": "Kangkang",
       "sentence": "S33",
       "printed": "simuskem/tanu-di-muskem",
       "mode": "split",
@@ -281,7 +314,7 @@
       "carriers": [
         "S9W5"
       ],
-      "note": "two different lexemes, both glossed 'bamboo-strips'; no shared letters"
+      "note": "two different lexemes sharing one gloss. Neither is segmented in the text, so the gloss is a single two-word unit written 'bamboo.strips' in Leipzig dot notation (maintainer correction, 2026-09-07); it was 'bamboo-strips', which reads as two morphemes."
     },
     {
       "file": "Kwaway",
@@ -342,7 +375,7 @@
       "carriers": [
         "S51W1"
       ],
-      "note": "pure hyphenation variant - the clearest spelling-variant case in the corpus. The snapshot already resolved the slash out of the S FORM."
+      "note": "pure hyphenation variant - the clearest spelling-variant case in the corpus. The snapshot now keeps the printed slash like every other alternation, so this needs no special handling."
     }
   ]
 }

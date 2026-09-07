@@ -85,9 +85,10 @@ def resolve(container_text: str, readings: list[str], keep: str) -> str:
     """Collapse the printed `a/b[/c]` group inside container_text down to `keep`.
 
     `readings` is [original, *alternates] in printed order, so the group is
-    their "/"-join. Falls back to substituting the original when the snapshot
-    has already resolved the slash out of the containing FORM (Kwaway/S51 does
-    exactly that).
+    their "/"-join. Falls back to substituting the original where the group is
+    not spelled out in the containing FORM: a W-level alternation writes the
+    slash only in the sentence FORM, so the W itself holds the bare original
+    (Kwaway/S9W5 `varit`, alternate `yaked`).
     """
     group = "/".join(readings)
     if group in container_text:
@@ -371,9 +372,6 @@ def main() -> int:
     by_sentence = {}
     for d in table:
         by_sentence.setdefault(d["file"], {})[d["sentence"]] = d
-    repairs = {}
-    for r in config.get("snapshot_repairs", {}).get("entries", []):
-        repairs.setdefault(r["file"], []).append(r)
 
     snapshot = Path(args.snapshot)
     out_root = Path(args.xml_dir)
@@ -385,18 +383,6 @@ def main() -> int:
         root = tree.getroot()
         if root.findall(".//FORM[@kindOf='standard']") or root.findall(".//PHON"):
             raise SystemExit(f"{src}: snapshot must carry no derived tiers")
-        for r in repairs.get(name, []):
-            target = root.find(f".//*[@id='{r['node']}']")
-            if target is None or text_of(target) != r["from"]:
-                raise SystemExit(
-                    f"{src}: snapshot_repair for {r['node']} no longer applies "
-                    f"(expected {r['from']!r}). Re-check the repair against the snapshot."
-                )
-            set_form(target, r["to"])
-            if r.get("also_drop_alternate"):
-                for f in list(target.findall("FORM")):
-                    if f.get("kindOf") == "alternate" and f.text == r["also_drop_alternate"]:
-                        target.remove(f)
         decisions = by_sentence.get(name, {})
         rebuilt = []
         for sentence in root.findall("S"):

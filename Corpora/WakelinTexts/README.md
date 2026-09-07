@@ -27,9 +27,9 @@ Six Yami (`xml:lang="tao"`, `dialect="Yami"`) narrative texts, collected on Orch
 
 | File | Text in the article | Informant | Sentences | Words | Morphemes |
 |---|---|---|---|---|---|
-| `XML/Yami/Kangkang.xml` | A. *Ji Kangkang* (The Rooster) | Samen Indosan, April 1955 | 44 | 219 | 208 |
+| `XML/Yami/Kangkang.xml` | A. *Ji Kangkang* (The Rooster) | Samen Indosan, April 1955 | 44 | 219 | 204 |
 | `XML/Yami/Kwaway.xml` | B. *Kwaway* (The Spirit) | Sinan Dararyaw, May 1957 | 64 | 278 | 341 |
-| `XML/Yami/Kalaku1.xml` | C. | Saman Kalaku, 6 September 1956 | 21 | 92 | 111 |
+| `XML/Yami/Kalaku1.xml` | C. | Saman Kalaku, 6 September 1956 | 21 | 92 | 108 |
 | `XML/Yami/Kalaku2.xml` | D. | Samen Kalaku, 6 September 1956 | 14 | 76 | 103 |
 | `XML/Yami/Kalaku3.xml` | E. | Saman Kalaku, 13 September 1956 | 11 | 56 | 68 |
 | `XML/Yami/Kalaku4.xml` | F. | Saman Sunagu, January 1957 | 24 | 161 | 176 |
@@ -105,14 +105,33 @@ The FormosanBank commit the published XML was built against is recorded in [`Cod
 
 ## Alternations: the source's slash notation
 
-The article prints 18 alternations with a slash — `nipi/niripi`, `varit/yaked`, `akak-aep-an/(mangday su aep)`. These record **the transcriber's uncertainty about what was said**, not alternatives the speaker offered. That distinction matters: POL-027 turns a speaker's alternatives into one sentence per option, and applying it here would manufacture sentences the narrator never produced.
+The article prints 18 alternations with a slash, plus one with parentheses, — `nipi/niripi`, `varit/yaked`, `akak-aep-an/(mangday su aep)`. These record **the transcriber's uncertainty about what was said**, not alternatives the speaker offered. That distinction matters: POL-027 turns a speaker's alternatives into one sentence per option, and applying it here would manufacture sentences the narrator never produced.
 
-Each alternation is therefore classified by hand in `CodeAndDocs/alternative_decisions.json`, which records the printed string, the decision and the reason for all 18 (POL-039 — the table is data, not code). Two rules:
+Each alternation is therefore classified by hand in `CodeAndDocs/alternative_decisions.json`, which records the printed string, the decision and the reason for all 19 (POL-039 — the table is data, not code). Two rules:
 
-- **A clear spelling variant** — mostly overlapping letters, and the same gloss — is published as a `FORM[@kindOf="alternate"]` sibling **on the node that varies and on its word**, never on the sentence. A sentence-level alternate for a one-morpheme spelling difference is noise, and where one sentence carries two independent alternations (`Kalaku1/S17`) it is worse than noise: it can only show one of them, which reads as a claim that the other did not vary. The sentence FORM therefore carries the primary reading and the variation sits on the W and M that vary. 11 alternations: `nipi/niripi`, the `nem ~ namen` pronoun (six times), `mi-kalakala/mi-karakara`, the purely hyphenational `mikabak-abay-u/mikabakabayu`, and `pipangn-epen/pipangungn-epen/pipangengne-eben`, which is three-way.
+- **A clear spelling variant** — mostly overlapping letters, and the same gloss — is published as a `FORM[@kindOf="alternate"]` sibling **on the node that varies and on its word**, never on the sentence. A sentence-level alternate for a one-morpheme spelling difference is noise, and where one sentence carries two independent alternations (`Kalaku1/S17`) it is worse than noise: it can only show one of them, which reads as a claim that the other did not vary. The sentence FORM therefore carries the primary reading and the variation sits on the W and M that vary. 12 alternations: `nipi/niripi`, the `nem ~ namen` pronoun (six times), `mi-kalakala/mi-karakara`, the purely hyphenational `mikabak-abay-u/mikabakabayu`, and `pipangn-epen/pipangungn-epen/pipangengne-eben`, which is three-way.
 - **Everything else** — different lexemes, different glosses, or a word against a phrase — becomes **separate sentences**. 7 alternations. The first branch keeps the printed sentence number and the rest take `b`, `c`, …: `Kwaway/S48` and `Kwaway/S48b`. POL-037 forbids renumbering an already-published bare id, so there is no `S48a`.
 
 Two calls are marked `review: true` in the table as genuinely borderline: `Kalaku1/S6`, whose recorded alternate looks truncated, and `Kwaway/S2`, a single-vowel `a/u` alternation kept as a spelling variant even though the two share no letters.
+
+One alternation is written with parentheses rather than a slash. `Kangkang/S18` prints `kan(u)`, and that optional `u` is an alternation like any other: the sentence FORM keeps the printed `kan(u)` notation and the word carries `kan` with the alternate `kan-u`. It is the one place the article's optional-material parentheses are resolved instead of left as notation.
+
+## A correction to the source
+
+**`Kalaku1/S11`'s last two glosses are printed in the wrong order, and the corpus corrects them.** This is a deliberate departure from the article, not a transcription of it.
+
+The article prints `dy-aru-pa-sira` above `unan-many-still/again-them` and `a-ni-padi/machyura-rana` above `unan-past(unctn)-accompany-completely`. Swapped, the slash divides the *word* rather than one morpheme inside it — and it divides the gloss at the same point, so both halves come out even:
+
+| published sentence | word | gloss | morphemes : gloss units |
+| --- | --- | --- | ---: |
+| `S11` | `a-ni-padi` | `unan-many-still` | 3 : 3 |
+| `S11b` | `machyura-rana` | `again-them` | 2 : 2 |
+
+`dy-aru-pa-sira` is glossed `unan-past(unctn)-accompany-completely` in both.
+
+A second, smaller correction: **`Kwaway/S9`'s gloss `bamboo-strips` is written `bamboo.strips`**. Neither `varit` nor its alternate `yaked` is segmented in the text, so the gloss is one two-word unit; a hyphen would read as two morphemes. Leipzig dot notation says what is meant.
+
+Both are recorded in [`CodeAndDocs/source_discrepancies.md`](CodeAndDocs/source_discrepancies.md), which also lists the corrections made *to* the hand-typed snapshot where it had departed from the article.
 
 ## Glosses: `unan`, and words whose morphemes do not line up
 
@@ -123,7 +142,7 @@ Two rules are applied corpus-wide when the XML is built (maintainer, 2026-09-06)
 
 Gloss units are counted on hyphens *outside* parentheses, so `unan-(one-after-another)-us-completely` is four units and not six; and a gloss that carries the source's own slash alternation across the whole word (`unan-not-I-you(pl)/unan-curse-I-you(pl)`, `Kwaway/S25`) counts as aligned if either side matches.
 
-**52 words lose their `M` tier this way**, and every one is listed in [`CodeAndDocs/gloss_alignment_review.tsv`](CodeAndDocs/gloss_alignment_review.tsv), regenerated on every build. Two patterns dominate: the article's `-em`/`-m` "narration" suffix, which it says outright occurs "throughout without a translation given", and single morphemes whose English gloss is a hyphenated phrase (`kakwa` 'long-time-ago', `utwen` 'cold-food').
+**54 words lose their `M` tier this way**, and every one is listed in [`CodeAndDocs/gloss_alignment_review.tsv`](CodeAndDocs/gloss_alignment_review.tsv), regenerated on every build. Two patterns dominate: the article's `-em`/`-m` "narration" suffix, which it says outright occurs "throughout without a translation given", and single morphemes whose English gloss is a hyphenated phrase (`kakwa` 'long-time-ago', `utwen` 'cold-food').
 
 Both rules make `validate_glosses` louder, on purpose: `V064 every_M_has_TRANSL` and `V065 every_W_has_TRANSL` now fire as SOFT findings wherever the article gave no gloss. That is the honest state of the data — the alternative is to publish `unan` as though it were a translation.
 
@@ -161,8 +180,8 @@ Any `cleaner_warnings.csv` file a run leaves behind is a per-run report: read it
 
 ## Known caveats
 
-- **Six source discrepancies are open**, found by checking every snapshot word against `Original.pdf` and its errata. They are listed with evidence in [`CodeAndDocs/source_discrepancies.md`](CodeAndDocs/source_discrepancies.md) and are **not** fixed: three erratum halves applied to some tiers but not others (`Kalaku2/S8W1`, `Kwaway/S4W2M2`, `Kangkang/S39` `ana-na-m` for `ama-na-m`), two internal mismatches (`Kangkang/S18W3` mis-segments `(u)`, `Kalaku4/S16W4M1` keeps the OCR spelling `cbyaa?`), and one unattested spelling (`Kwaway/S29` `tubaus` where the article prints `tabaus`). A seventh, `Kalaku1/S13W1`, is patched in memory at build time by the `snapshot_repairs` block of `alternative_decisions.json`, which fails loudly if the snapshot stops matching.
-- **16 `V121` findings remain HARD.** They are the article's own optional-material parentheses inside word and morpheme FORMs — `(u)kanen-da`, `puken-(en)`, `(u)m-lavi`, `chi-ka-(y)bubu`. POL-026 would turn each into two sentences; whether to do that here is a separate question from the slash ruling and has not been decided, so the source notation stands. (`V121` was 28 before this rebuild.)
+- **Three source discrepancies are still open**, listed with evidence in [`CodeAndDocs/source_discrepancies.md`](CodeAndDocs/source_discrepancies.md). Each is an erratum applied to some tiers of a sentence but not others: `Kangkang/S39` reads `ana-na-m` where errata A39 prints `ama-na-m`; `Kalaku2/S8W1` still reads `ap-en-mu-rana` under a sentence that reads `aep-en-mu-rana`; `Kwaway/S4W2M2` still reads `agep` inside a word that reads `tunanal-aep-an`. The other findings from that audit have been ruled on and are fixed.
+- **`Kangkang/S34` publishes no word or morpheme glosses.** The article gives three gloss units for two printed words, so nothing can be aligned; only the sentence-level free translation is published.
+- **14 `V121` findings remain HARD.** They are the article's own optional-material parentheses inside word and morpheme FORMs — `(u)kanen-da`, `puken-(en)`, `(u)m-lavi`, `chi-ka-(y)bubu`. POL-026 would turn each into two sentences; whether to do that here is a separate question from the slash ruling and has not been decided, so the source notation stands. (`V121` was 28 before this rebuild; `Kangkang/S18`'s `kan(u)` is the one case resolved rather than left as notation.)
 - Many words carry no morpheme tier. That is the article's own selective analysis plus the two gloss rules above, not a conversion loss: 52 words had a mis-aligned `M` tier removed (listed in [`CodeAndDocs/gloss_alignment_review.tsv`](CodeAndDocs/gloss_alignment_review.tsv)), and every gloss reading only `unan` was dropped because the article uses it to mean "unanalyzed".
-- `Kalaku1/S11` was checked against a proposal to reverse its last two glosses and to split the word differently; the page's own column positions, 68 morpheme glosses elsewhere in the corpus, and the free translation all confirm the current reading. See [`CodeAndDocs/source_discrepancies.md`](CodeAndDocs/source_discrepancies.md) section C2.
 - `Kwaway.xml` S36 and S40 are the same sentence. This is a narrative, and the repetition is in the article; both are retained under POL-022.
