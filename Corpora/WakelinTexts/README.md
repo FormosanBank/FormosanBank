@@ -29,7 +29,7 @@ Six Yami (`xml:lang="tao"`, `dialect="Yami"`) narrative texts, collected on Orch
 |---|---|---|---|---|---|
 | `XML/Yami/Kangkang.xml` | A. *Ji Kangkang* (The Rooster) | Samen Indosan, April 1955 | 44 | 219 | 241 |
 | `XML/Yami/Kwaway.xml` | B. *Kwaway* (The Spirit) | Sinan Dararyaw, May 1957 | 64 | 278 | 343 |
-| `XML/Yami/Kalaku1.xml` | C. | Saman Kalaku, 6 September 1956 | 22 | 97 | 126 |
+| `XML/Yami/Kalaku1.xml` | C. | Saman Kalaku, 6 September 1956 | 22 | 97 | 129 |
 | `XML/Yami/Kalaku2.xml` | D. | Samen Kalaku, 6 September 1956 | 14 | 76 | 114 |
 | `XML/Yami/Kalaku3.xml` | E. | Saman Kalaku, 13 September 1956 | 11 | 56 | 92 |
 | `XML/Yami/Sunagu.xml` | F. | Saman Sunagu, January 1957 | 24 | 161 | 179 |
@@ -145,7 +145,9 @@ The article prints `dy-aru-pa-sira` above `unan-many-still/again-them` and `a-ni
 
 `dy-aru-pa-sira` is glossed `unan-past(unctn)-accompany-completely` in both.
 
-A second, smaller correction: **`Kwaway/S9`'s gloss `bamboo-strips` is written `bamboo.strips`**. Neither `varit` nor its alternate `yaked` is segmented in the text, so the gloss is one two-word unit; a hyphen would read as two morphemes. Leipzig dot notation says what is meant.
+A second, smaller correction: **`Kwaway/S9`'s gloss `bamboo-strips` is written `bamboo.strips`**.
+
+A third: **`Kalaku1/S4W1`'s gloss `(next-morning)` is written `(next.morning)`**, and the whole unit sits on the morpheme `pneřek` where the transcription had split it across two morphemes as `(next` + `morning)`. The parentheses are the article's own notation and stay; the internal separator becomes a dot for the same reason as `bamboo.strips` — it is one gloss for one morpheme, and a hyphen reads as two. (Other parenthesised multi-word glosses in the corpus — `(one-after-another)`, `(long-time-ago)`, `(stone-wall)` and a dozen more — keep their hyphens. They are counted as single units by the build and none of them is split across morphemes, so nothing is wrong with them; converting them to dots for consistency would be a separate decision.) Neither `varit` nor its alternate `yaked` is segmented in the text, so the gloss is one two-word unit; a hyphen would read as two morphemes. Leipzig dot notation says what is meant.
 
 Both are recorded in [`CodeAndDocs/source_discrepancies.md`](CodeAndDocs/source_discrepancies.md), which also lists the corrections made *to* the hand-typed snapshot where it had departed from the article.
 
@@ -159,7 +161,7 @@ Two rules are applied corpus-wide when the XML is built (maintainer, 2026-09-06)
 
 Gloss units are counted on hyphens *outside* parentheses, so `unan-(one-after-another)-us-completely` is four units and not six; and a gloss that carries the source's own slash alternation across the whole word (`unan-not-I-you(pl)/unan-curse-I-you(pl)`, `Kwaway/S25`) counts as aligned if either side matches. A word is also treated as unreliably segmented when a **morpheme gloss carries half a parenthesis** — the transcription split a parenthesised multi-word unit across two morphemes, writing `(next-morning)` as `(next` + `morning)` — since half a gloss is not a gloss.
 
-**23 words lose their `M` tier this way** — down from 54 before the suffix was glossed — and every one is listed in [`CodeAndDocs/gloss_alignment_review.tsv`](CodeAndDocs/gloss_alignment_review.tsv), regenerated on every build. What remains is dominated by single morphemes whose English gloss is a hyphenated phrase (`kakwa` 'long-time-ago', `utwen` 'cold-food'), where the mismatch is an artifact of English and not of the analysis.
+**22 words lose their `M` tier this way** — down from 54 before the suffix was glossed — and every one is listed in [`CodeAndDocs/gloss_alignment_review.tsv`](CodeAndDocs/gloss_alignment_review.tsv), regenerated on every build. What remains is dominated by single morphemes whose English gloss is a hyphenated phrase (`kakwa` 'long-time-ago', `utwen` 'cold-food'), where the mismatch is an artifact of English and not of the analysis.
 
 Both rules make `validate_glosses` louder, on purpose: `V064 every_M_has_TRANSL` and `V065 every_W_has_TRANSL` now fire as SOFT findings wherever the article gave no gloss. That is the honest state of the data — the alternative is to publish `unan` as though it were a translation.
 
