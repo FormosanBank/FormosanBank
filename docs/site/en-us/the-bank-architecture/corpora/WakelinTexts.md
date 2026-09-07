@@ -46,9 +46,21 @@ The article prints 18 alternations with a slash — `nipi/niripi`, `varit/yaked`
 Two rules govern the glosses:
 
 * **`unan` is the article's "unanalyzed" marker, not a gloss.** A translation whose entire text is `unan` is not published, at any level — it recorded that the transcriber supplied nothing. Composite glosses that merely contain it, like `unan-past(unctn)-accompany-completely`, are untouched.
-* **A word whose morphemes do not line up with its gloss carries no morphemes.** It keeps its word-level gloss and its `M` tier is dropped, rather than publishing an analysis the article never gave — `simuskem` is one morpheme glossed `kill-with-boiling-water`. 52 words are affected, listed in [`CodeAndDocs/gloss_alignment_review.tsv`](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/WakelinTexts/CodeAndDocs/gloss_alignment_review.tsv). The commonest case is the `-em`/`-m` "narration" suffix, which the article itself says occurs throughout without a translation.
+* **A word whose morphemes do not line up with its gloss carries no morphemes.** It keeps its word-level gloss and its `M` tier is dropped, rather than publishing an analysis the article never gave — `simuskem` is one morpheme glossed `kill-with-boiling-water`. 54 words are affected, listed in [`CodeAndDocs/gloss_alignment_review.tsv`](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/WakelinTexts/CodeAndDocs/gloss_alignment_review.tsv). The commonest case is the `-em`/`-m` "narration" suffix, which the article itself says occurs throughout without a translation.
 
-Both rules mean many words and morphemes carry no gloss at all. That is the honest state of the data: the alternative is to publish `unan` as though it were a translation.
+Both rules mean many words and morphemes carry no gloss at all. That is the honest state of the data: the alternative is to publish `unan` as though it were a translation. `Kangkang/S34` goes furthest: the article gives three gloss units for two printed words, so that sentence publishes no word or morpheme glosses at all and only its free translation stands.
+
+### A correction to the source
+
+**`Kalaku1/S11`'s last two glosses are printed in the wrong order, and the corpus corrects them.** This is a deliberate departure from the article rather than a transcription of it, recorded here so it is not mistaken for an error.
+
+The article prints `dy-aru-pa-sira` above `unan-many-still/again-them` and `a-ni-padi/machyura-rana` above `unan-past(unctn)-accompany-completely`. Swapped, the slash divides the *word* rather than one morpheme inside it — and it divides the gloss at the same point, so both halves come out even: sentence `S11` has `a-ni-padi` glossed `unan-many-still` (3 morphemes, 3 units) and `S11b` has `machyura-rana` glossed `again-them` (2 and 2), with `dy-aru-pa-sira` glossed `unan-past(unctn)-accompany-completely` in both.
+
+A second, smaller correction: **`Kwaway/S9`'s gloss is written `bamboo.strips`, not `bamboo-strips`.** Neither `varit` nor its alternate `yaked` is segmented in the text, so the gloss is one two-word unit; a hyphen would read as two morphemes. Leipzig dot notation says what is meant.
+
+One alternation is written with parentheses rather than a slash: `Kangkang/S18` prints `kan(u)`, and that optional `u` is treated as an alternation like any other — the sentence keeps the printed `kan(u)` notation and the word carries `kan` with the alternate `kan-u`.
+
+Both corrections, and the corrections made to the hand-typed snapshot where it had departed from the article, are listed in [`CodeAndDocs/source_discrepancies.md`](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/WakelinTexts/CodeAndDocs/source_discrepancies.md).
 
 A checked comparison of the snapshot against the article and its errata is published at [`CodeAndDocs/source_discrepancies.md`](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/WakelinTexts/CodeAndDocs/source_discrepancies.md); six findings there are still open. The FormosanBank commit this corpus was built against is recorded in [`CodeAndDocs/provenance.json`](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/WakelinTexts/CodeAndDocs/provenance.json).
 
