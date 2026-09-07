@@ -30,12 +30,13 @@
       "file": "Kalaku1",
       "sentence": "S6",
       "printed": "ngaran-amn/namen-em",
-      "mode": "variant",
+      "mode": "split",
+      "kind": "substitution",
       "carriers": [
         "S6W5"
       ],
-      "review": true,
-      "note": "both glossed 'name-we'. The recorded alternate 'namen-em' drops 'ngaran'; it is probably 'ngaran-namen-em'. See the source-discrepancy report."
+      "drop_morphemes": true,
+      "note": "MAINTAINER RULING 2026-09-07: two S blocks, `ngaran-amn` and `namen-em`, both glossed 'name-we'. The second reading replaces the whole word rather than one morpheme inside it, so it inherits no morphemes: the source's `ngaran` + `amn` do not occur in `namen-em`."
     },
     {
       "file": "Kalaku1",
@@ -290,8 +291,7 @@
       "carriers": [
         "S2W3"
       ],
-      "review": true,
-      "note": "a single-vowel alternation in a function word; both glossed 'unan'. Treated as a spelling variant even though 'a' and 'u' share no letters - the alternation is one vowel, not one word."
+      "note": "a single-vowel alternation in a function word; both glossed 'unan'. Confirmed a spelling variant by the maintainer, 2026-09-07: the alternation is one vowel, not one word, even though `a` and `u` share no letters."
     },
     {
       "file": "Kwaway",

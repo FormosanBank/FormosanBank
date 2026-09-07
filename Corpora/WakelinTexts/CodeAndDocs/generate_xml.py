@@ -428,10 +428,25 @@ def main() -> int:
 
     leftover = 0
     for path in sorted(out_root.rglob("*.xml")):
-        for f in ET.parse(path).getroot().iter("FORM"):
+        root = ET.parse(path).getroot()
+        for f in root.iter("FORM"):
             if "/" in (f.text or ""):
                 print(f"  !! slash survives in {path.name}: {f.text}")
                 leftover += 1
+        # Every morpheme must occur in the word that holds it. A substitution
+        # split replaces a word's FORM wholesale, and unless the branch is told
+        # to drop them the old morphemes ride along into a word they are not
+        # part of — Kalaku1/S6 `namen-em` would have inherited `ngaran`+`amn`.
+        # Cheap to check, and it fails the build rather than publishing it.
+        for s in root.findall("S"):
+            for w in s.findall("W"):
+                readings = [text_of(w)] + alternates(w)
+                for m in w.findall("M"):
+                    mf = text_of(m)
+                    if mf and not any(mf in r for r in readings):
+                        print(f"  !! {path.name} {m.get('id')}: {mf!r} "
+                              f"is not in its word {readings}")
+                        leftover += 1
     if args.gloss_report:
         with open(args.gloss_report, "w", encoding="utf-8") as fh:
             fh.write("file\tsentence\tword\tform\tgloss\tmorphemes\tgloss_units\n")
