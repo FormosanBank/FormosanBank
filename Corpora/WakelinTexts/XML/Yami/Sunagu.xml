@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<TEXT id="Kalaku4" xml:lang="tao" source="Yami text. Kalaku" copyright="CC-BY-NC-ND" citation="Indosan, S., Wakelin, G., Dararyaw, S., and Kalaku, S. (1958). Yami texts. Work Papers of the Summer Institute of Linguistics, University of North Dakota Session: Vol. 2, Article 7. 10.31356/silwp.vol02.07" BibTeX_citation="@article{indosan1958yami, title={Yami texts}, year={1958}, author={Indosan, Samen and Wakelin, Grace and Dararyaw, Sinan and Kalaku, Saman}, journal={Work Papers of the Summer Institute of Linguistics, University of North Dakota Session}, volume={2}, number={7}, doi={10.31356/silwp.vol02.07}" dialect="Yami">
+<TEXT id="Sunagu" xml:lang="tao" source="Yami text. Sunagu" copyright="CC BY-NC-ND 4.0" citation="Indosan, S., Wakelin, G., Dararyaw, S., and Kalaku, S. (1958). Yami texts. Work Papers of the Summer Institute of Linguistics, University of North Dakota Session: Vol. 2, Article 7. 10.31356/silwp.vol02.07" BibTeX_citation="@article{indosan1958yami, title={Yami texts}, year={1958}, author={Indosan, Samen and Wakelin, Grace and Dararyaw, Sinan and Kalaku, Saman}, journal={Work Papers of the Summer Institute of Linguistics, University of North Dakota Session}, volume={2}, number={7}, doi={10.31356/silwp.vol02.07}" dialect="Yami">
     <S id="S1">
         <FORM kindOf="original">tau nu kakwa amyan su avang tu titiwen kwan-da</FORM>
         <TRANSL xml:lang="eng">A long time ago, there was a ship at Titiwen.</TRANSL>
@@ -14,10 +14,6 @@
         <W id="S1W3">
             <FORM kindOf="original">kakwa</FORM>
             <TRANSL xml:lang="eng">long-time-ago</TRANSL>
-            <M id="S1W3M1">
-                <FORM kindOf="original">kakwa</FORM>
-                <TRANSL xml:lang="eng">long-time-ago</TRANSL>
-            </M>
         </W>
         <W id="S1W4">
             <FORM kindOf="original">amyan</FORM>
@@ -53,14 +49,13 @@
         </W>
     </S>
     <S id="S2">
-        <FORM kindOf="original">ma-chita-da tu madegdeg (imurud nu tau)/(tau d-imurud)</FORM>
+        <FORM kindOf="original">ma-chita-da tu madegdeg imurud nu tau</FORM>
         <TRANSL xml:lang="eng">Early in the morning, the people from Imurud saw them (ship's crew).</TRANSL>
         <W id="S2W1">
             <FORM kindOf="original">ma-chita-da</FORM>
             <TRANSL xml:lang="eng">unan-see-them</TRANSL>
             <M id="S2W1M1">
                 <FORM kindOf="original">ma</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
             <M id="S2W1M2">
                 <FORM kindOf="original">chita</FORM>
@@ -78,38 +73,53 @@
         <W id="S2W3">
             <FORM kindOf="original">madegdeg</FORM>
             <TRANSL xml:lang="eng">early-morning</TRANSL>
-            <M id="S2W3M1">
-                <FORM kindOf="original">madegdeg</FORM>
-                <TRANSL xml:lang="eng">early-morning</TRANSL>
-            </M>
         </W>
         <W id="S2W4">
-            <FORM kindOf="original">(imurud</FORM>
-            <TRANSL xml:lang="eng">(Imurud</TRANSL>
+            <FORM kindOf="original">imurud</FORM>
+            <TRANSL xml:lang="eng">Imurud</TRANSL>
         </W>
         <W id="S2W5">
             <FORM kindOf="original">nu</FORM>
             <TRANSL xml:lang="eng">CM</TRANSL>
         </W>
         <W id="S2W6">
-            <FORM kindOf="original">tau)</FORM>
-            <TRANSL xml:lang="eng">persons)</TRANSL>
+            <FORM kindOf="original">tau</FORM>
+            <TRANSL xml:lang="eng">persons</TRANSL>
         </W>
-        <W id="S2W7">
-            <FORM kindOf="original">(tau</FORM>
-            <TRANSL xml:lang="eng">(persons</TRANSL>
+    </S>
+    <S id="S2b">
+        <FORM kindOf="original">ma-chita-da tu madegdeg tau d-imurud</FORM>
+        <TRANSL xml:lang="eng">Early in the morning, the people from Imurud saw them (ship's crew).</TRANSL>
+        <W id="S2bW1">
+            <FORM kindOf="original">ma-chita-da</FORM>
+            <TRANSL xml:lang="eng">unan-see-them</TRANSL>
+            <M id="S2bW1M1">
+                <FORM kindOf="original">ma</FORM>
+            </M>
+            <M id="S2bW1M2">
+                <FORM kindOf="original">chita</FORM>
+                <TRANSL xml:lang="eng">see</TRANSL>
+            </M>
+            <M id="S2bW1M3">
+                <FORM kindOf="original">da</FORM>
+                <TRANSL xml:lang="eng">them</TRANSL>
+            </M>
         </W>
-        <W id="S2W8">
-            <FORM kindOf="original">d-imurud)</FORM>
+        <W id="S2bW2">
+            <FORM kindOf="original">tu</FORM>
+            <TRANSL xml:lang="eng">in</TRANSL>
+        </W>
+        <W id="S2bW3">
+            <FORM kindOf="original">madegdeg</FORM>
+            <TRANSL xml:lang="eng">early-morning</TRANSL>
+        </W>
+        <W id="S2bW4">
+            <FORM kindOf="original">tau</FORM>
+            <TRANSL xml:lang="eng">persons</TRANSL>
+        </W>
+        <W id="S2bW5">
+            <FORM kindOf="original">d-imurud</FORM>
             <TRANSL xml:lang="eng">from</TRANSL>
-            <M id="S2W8M1">
-                <FORM kindOf="original">d</FORM>
-                <TRANSL xml:lang="eng">from</TRANSL>
-            </M>
-            <M id="S2W8M2">
-                <FORM kindOf="original">imurud)</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
-            </M>
         </W>
     </S>
     <S id="S3">
@@ -120,7 +130,6 @@
             <TRANSL xml:lang="eng">unan-see-them</TRANSL>
             <M id="S3W1M1">
                 <FORM kindOf="original">ma</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
             <M id="S3W1M2">
                 <FORM kindOf="original">chita</FORM>
@@ -145,7 +154,6 @@
         </W>
         <W id="S3W3">
             <FORM kindOf="original">u</FORM>
-            <TRANSL xml:lang="eng">UNAN</TRANSL>
         </W>
         <W id="S3W4">
             <FORM kindOf="original">anak-na</FORM>
@@ -172,7 +180,6 @@
             <TRANSL xml:lang="eng">unan-rdpl-relatives</TRANSL>
             <M id="S4W2M1">
                 <FORM kindOf="original">mi</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
             <M id="S4W2M2">
                 <FORM kindOf="original">ripu</FORM>
@@ -188,7 +195,6 @@
             <TRANSL xml:lang="eng">unan-take-we</TRANSL>
             <M id="S4W3M1">
                 <FORM kindOf="original">mang</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
             <M id="S4W3M2">
                 <FORM kindOf="original">aep</FORM>
@@ -210,10 +216,6 @@
         <W id="S4W6">
             <FORM kindOf="original">utwen</FORM>
             <TRANSL xml:lang="eng">cold-food</TRANSL>
-            <M id="S4W6M1">
-                <FORM kindOf="original">utwen</FORM>
-                <TRANSL xml:lang="eng">cold-food</TRANSL>
-            </M>
         </W>
         <W id="S4W7">
             <FORM kindOf="original">kwan-da</FORM>
@@ -264,7 +266,6 @@
             <TRANSL xml:lang="eng">unan-go-we</TRANSL>
             <M id="S5W3M1">
                 <FORM kindOf="original">m</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
             <M id="S5W3M2">
                 <FORM kindOf="original">angay</FORM>
@@ -320,7 +321,6 @@
             <TRANSL xml:lang="eng">unan-go-they</TRANSL>
             <M id="S6W3M1">
                 <FORM kindOf="original">m</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
             <M id="S6W3M2">
                 <FORM kindOf="original">angay</FORM>
@@ -344,7 +344,6 @@
             <TRANSL xml:lang="eng">unan-go</TRANSL>
             <M id="S6W6M1">
                 <FORM kindOf="original">m</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
             <M id="S6W6M2">
                 <FORM kindOf="original">angay</FORM>
@@ -364,7 +363,6 @@
             <TRANSL xml:lang="eng">unan-see-they</TRANSL>
             <M id="S7W1M1">
                 <FORM kindOf="original">ma</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
             <M id="S7W1M2">
                 <FORM kindOf="original">chita</FORM>
@@ -377,7 +375,6 @@
         </W>
         <W id="S7W2">
             <FORM kindOf="original">u</FORM>
-            <TRANSL xml:lang="eng">UNAN</TRANSL>
         </W>
         <W id="S7W3">
             <FORM kindOf="original">avang</FORM>
@@ -386,14 +383,10 @@
         <W id="S7W4">
             <FORM kindOf="original">nikumagat</FORM>
             <TRANSL xml:lang="eng">ship-wreck</TRANSL>
-            <M id="S7W4M1">
-                <FORM kindOf="original">nikumagat</FORM>
-                <TRANSL xml:lang="eng">ship-wreck</TRANSL>
-            </M>
         </W>
     </S>
     <S id="S8">
-        <FORM kindOf="original">tau nu avang mamimin-sira ni-m-angay lu katyan miwalem lu rerchip</FORM>
+        <FORM kindOf="original">tau nu avang mamimin-sira ni-m-angay lu katyan miwalem lu řerchip</FORM>
         <TRANSL xml:lang="eng">All the people from the ship had gone to Katyan and were resting in the cave.</TRANSL>
         <W id="S8W1">
             <FORM kindOf="original">tau</FORM>
@@ -428,7 +421,6 @@
             </M>
             <M id="S8W5M2">
                 <FORM kindOf="original">m</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
             <M id="S8W5M3">
                 <FORM kindOf="original">angay</FORM>
@@ -452,7 +444,7 @@
             <TRANSL xml:lang="eng">in</TRANSL>
         </W>
         <W id="S8W10">
-            <FORM kindOf="original">rerchip</FORM>
+            <FORM kindOf="original">řerchip</FORM>
             <TRANSL xml:lang="eng">cave</TRANSL>
         </W>
     </S>
@@ -461,7 +453,6 @@
         <TRANSL xml:lang="eng">The newcomers with the food pulled the boat up on the shore.</TRANSL>
         <W id="S9W1">
             <FORM kindOf="original">u</FORM>
-            <TRANSL xml:lang="eng">UNAN</TRANSL>
         </W>
         <W id="S9W2">
             <FORM kindOf="original">tatala</FORM>
@@ -496,7 +487,6 @@
             <TRANSL xml:lang="eng">unan-take-they</TRANSL>
             <M id="S10W1M1">
                 <FORM kindOf="original">k</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
             <M id="S10W1M2">
                 <FORM kindOf="original">aep</FORM>
@@ -536,7 +526,6 @@
             <TRANSL xml:lang="eng">unan-see-they</TRANSL>
             <M id="S11W1M1">
                 <FORM kindOf="original">ma</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
             <M id="S11W1M2">
                 <FORM kindOf="original">chita</FORM>
@@ -549,7 +538,6 @@
         </W>
         <W id="S11W2">
             <FORM kindOf="original">nu</FORM>
-            <TRANSL xml:lang="eng">UNAN</TRANSL>
         </W>
         <W id="S11W3">
             <FORM kindOf="original">dewdew</FORM>
@@ -568,7 +556,6 @@
             </M>
             <M id="S11W4M3">
                 <FORM kindOf="original">pa</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
         </W>
         <W id="S11W5">
@@ -612,7 +599,6 @@
             <TRANSL xml:lang="eng">unan-why-you(pl)-here</TRANSL>
             <M id="S12W4M1">
                 <FORM kindOf="original">i</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
             <M id="S12W4M2">
                 <FORM kindOf="original">kongu</FORM>
@@ -721,7 +707,6 @@
         </W>
         <W id="S13W6">
             <FORM kindOf="original">nukumwanem</FORM>
-            <TRANSL xml:lang="eng">UNAN</TRANSL>
         </W>
         <W id="S13W7">
             <FORM kindOf="original">vawden-tamu</FORM>
@@ -760,7 +745,6 @@
             <TRANSL xml:lang="eng">unan-take-they</TRANSL>
             <M id="S14W1M1">
                 <FORM kindOf="original">k</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
             <M id="S14W1M2">
                 <FORM kindOf="original">aep</FORM>
@@ -830,21 +814,15 @@
         <W id="S15W3">
             <FORM kindOf="original">kari</FORM>
             <TRANSL xml:lang="eng">get-out</TRANSL>
-            <M id="S15W3M1">
-                <FORM kindOf="original">kari</FORM>
-                <TRANSL xml:lang="eng">get-out</TRANSL>
-            </M>
         </W>
         <W id="S15W4">
             <FORM kindOf="original">ka-ma-kungu</FORM>
             <TRANSL xml:lang="eng">unan-unan-why</TRANSL>
             <M id="S15W4M1">
                 <FORM kindOf="original">ka</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
             <M id="S15W4M2">
                 <FORM kindOf="original">ma</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
             <M id="S15W4M3">
                 <FORM kindOf="original">kungu</FORM>
@@ -860,7 +838,6 @@
             </M>
             <M id="S15W5M2">
                 <FORM kindOf="original">ka</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
             <M id="S15W5M3">
                 <FORM kindOf="original">di</FORM>
@@ -868,7 +845,6 @@
             </M>
             <M id="S15W5M4">
                 <FORM kindOf="original">mi</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
             <M id="S15W5M5">
                 <FORM kindOf="original">lis</FORM>
@@ -893,7 +869,6 @@
         </W>
         <W id="S15W7">
             <FORM kindOf="original">nu</FORM>
-            <TRANSL xml:lang="eng">unan</TRANSL>
         </W>
         <W id="S15W8">
             <FORM kindOf="original">tau</FORM>
@@ -909,7 +884,6 @@
         </W>
         <W id="S16W2">
             <FORM kindOf="original">u</FORM>
-            <TRANSL xml:lang="eng">UNAN</TRANSL>
         </W>
         <W id="S16W3">
             <FORM kindOf="original">dewdew</FORM>
@@ -918,10 +892,6 @@
         <W id="S16W4">
             <FORM kindOf="original">chyaa?</FORM>
             <TRANSL xml:lang="eng">it-doesn't-matter</TRANSL>
-            <M id="S16W4M1">
-                <FORM kindOf="original">cbyaa?</FORM>
-                <TRANSL xml:lang="eng">it-doesn't-matter</TRANSL>
-            </M>
         </W>
         <W id="S16W5">
             <FORM kindOf="original">di-kung-mi-lis</FORM>
@@ -936,7 +906,6 @@
             </M>
             <M id="S16W5M3">
                 <FORM kindOf="original">mi</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
             <M id="S16W5M4">
                 <FORM kindOf="original">lis</FORM>
@@ -949,7 +918,6 @@
         <TRANSL xml:lang="eng">Then they wondered, "Why doesn't he move?"</TRANSL>
         <W id="S17W1">
             <FORM kindOf="original">u</FORM>
-            <TRANSL xml:lang="eng">UNAN</TRANSL>
         </W>
         <W id="S17W2">
             <FORM kindOf="original">nak-nakem</FORM>
@@ -976,7 +944,6 @@
             <TRANSL xml:lang="eng">unan-why</TRANSL>
             <M id="S17W5M1">
                 <FORM kindOf="original">i</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
             <M id="S17W5M2">
                 <FORM kindOf="original">kungu</FORM>
@@ -988,7 +955,6 @@
             <TRANSL xml:lang="eng">unan-not-unan-move(unctn)-unan</TRANSL>
             <M id="S17W6M1">
                 <FORM kindOf="original">na</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
             <M id="S17W6M2">
                 <FORM kindOf="original">di</FORM>
@@ -996,7 +962,6 @@
             </M>
             <M id="S17W6M3">
                 <FORM kindOf="original">mi</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
             <M id="S17W6M4">
                 <FORM kindOf="original">lis</FORM>
@@ -1004,7 +969,6 @@
             </M>
             <M id="S17W6M5">
                 <FORM kindOf="original">i</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
         </W>
     </S>
@@ -1072,11 +1036,9 @@
             <TRANSL xml:lang="eng">unan-unan-move(unctn)-unan</TRANSL>
             <M id="S19W1M1">
                 <FORM kindOf="original">tuna</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
             <M id="S19W1M2">
                 <FORM kindOf="original">pi</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
             <M id="S19W1M3">
                 <FORM kindOf="original">lis</FORM>
@@ -1084,16 +1046,11 @@
             </M>
             <M id="S19W1M4">
                 <FORM kindOf="original">a</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
         </W>
         <W id="S19W2">
             <FORM kindOf="original">kari</FORM>
             <TRANSL xml:lang="eng">get-out</TRANSL>
-            <M id="S19W2M1">
-                <FORM kindOf="original">kari</FORM>
-                <TRANSL xml:lang="eng">get-out</TRANSL>
-            </M>
         </W>
         <W id="S19W3">
             <FORM kindOf="original">kwan-a</FORM>
@@ -1156,11 +1113,9 @@
             </M>
             <M id="S19W10M2">
                 <FORM kindOf="original">na</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
             <M id="S19W10M3">
                 <FORM kindOf="original">mi</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
             <M id="S19W10M4">
                 <FORM kindOf="original">lis</FORM>
@@ -1168,7 +1123,6 @@
             </M>
             <M id="S19W10M5">
                 <FORM kindOf="original">i</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
         </W>
     </S>
@@ -1180,7 +1134,6 @@
             <TRANSL xml:lang="eng">unan-see-he</TRANSL>
             <M id="S20W1M1">
                 <FORM kindOf="original">ma</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
             <M id="S20W1M2">
                 <FORM kindOf="original">chita</FORM>
@@ -1193,7 +1146,6 @@
         </W>
         <W id="S20W2">
             <FORM kindOf="original">nu</FORM>
-            <TRANSL xml:lang="eng">UNAN</TRANSL>
         </W>
         <W id="S20W3">
             <FORM kindOf="original">ama-da</FORM>
@@ -1212,7 +1164,6 @@
             <TRANSL xml:lang="eng">unan-take-unan</TRANSL>
             <M id="S20W4M1">
                 <FORM kindOf="original">tunang</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
             <M id="S20W4M2">
                 <FORM kindOf="original">aep</FORM>
@@ -1220,19 +1171,16 @@
             </M>
             <M id="S20W4M3">
                 <FORM kindOf="original">a</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
         </W>
         <W id="S20W5">
             <FORM kindOf="original">tu</FORM>
-            <TRANSL xml:lang="eng">UNAN</TRANSL>
         </W>
         <W id="S20W6">
             <FORM kindOf="original">ni-lisnen-a</FORM>
             <TRANSL xml:lang="eng">unan-seat-his</TRANSL>
             <M id="S20W6M1">
                 <FORM kindOf="original">ni</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
             <M id="S20W6M2">
                 <FORM kindOf="original">lisnen</FORM>
@@ -1248,7 +1196,6 @@
             <TRANSL xml:lang="eng">unan-take-he-completely-it</TRANSL>
             <M id="S20W7M1">
                 <FORM kindOf="original">k</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
             <M id="S20W7M2">
                 <FORM kindOf="original">aep</FORM>
@@ -1289,30 +1236,16 @@
         <TRANSL xml:lang="eng">The leader cried because he liked his gold that had been taken.</TRANSL>
         <W id="S21W1">
             <FORM kindOf="original">u</FORM>
-            <TRANSL xml:lang="eng">UNAN</TRANSL>
         </W>
         <W id="S21W2">
             <FORM kindOf="original">panisiringen-da-m</FORM>
             <TRANSL xml:lang="eng">leader-their</TRANSL>
-            <M id="S21W2M1">
-                <FORM kindOf="original">panisiringen</FORM>
-                <TRANSL xml:lang="eng">leader</TRANSL>
-            </M>
-            <M id="S21W2M2">
-                <FORM kindOf="original">da</FORM>
-                <TRANSL xml:lang="eng">their</TRANSL>
-            </M>
-            <M id="S21W2M3">
-                <FORM kindOf="original">m</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
-            </M>
         </W>
         <W id="S21W3">
             <FORM kindOf="original">tu-rana-lavi</FORM>
             <TRANSL xml:lang="eng">unan-completely-cry</TRANSL>
             <M id="S21W3M1">
                 <FORM kindOf="original">tu</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
             <M id="S21W3M2">
                 <FORM kindOf="original">rana</FORM>
@@ -1361,7 +1294,6 @@
         </W>
         <W id="S21W7">
             <FORM kindOf="original">nu</FORM>
-            <TRANSL xml:lang="eng">unan</TRANSL>
         </W>
         <W id="S21W8">
             <FORM kindOf="original">tau</FORM>
@@ -1392,7 +1324,6 @@
             <TRANSL xml:lang="eng">unan-go</TRANSL>
             <M id="S22W3M1">
                 <FORM kindOf="original">m</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
             <M id="S22W3M2">
                 <FORM kindOf="original">angay</FORM>
@@ -1409,17 +1340,16 @@
         </W>
         <W id="S22W6">
             <FORM kindOf="original">emragbit</FORM>
-            <TRANSL xml:lang="eng">UNAN</TRANSL>
         </W>
     </S>
     <S id="S23">
-        <FORM kindOf="original">tirarawa-kamu m-angay lu pik-il-ili-na</FORM>
+        <FORM kindOf="original">tiřarawa-kamu m-angay lu pik-il-ili-na</FORM>
         <TRANSL xml:lang="eng">and went to their villages.</TRANSL>
         <W id="S23W1">
-            <FORM kindOf="original">tirarawa-kamu</FORM>
+            <FORM kindOf="original">tiřarawa-kamu</FORM>
             <TRANSL xml:lang="eng">many(unctn)-you</TRANSL>
             <M id="S23W1M1">
-                <FORM kindOf="original">tirarawa</FORM>
+                <FORM kindOf="original">tiřarawa</FORM>
                 <TRANSL xml:lang="eng">many(unctn)</TRANSL>
             </M>
             <M id="S23W1M2">
@@ -1432,7 +1362,6 @@
             <TRANSL xml:lang="eng">unan-go</TRANSL>
             <M id="S23W2M1">
                 <FORM kindOf="original">m</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
             <M id="S23W2M2">
                 <FORM kindOf="original">angay</FORM>
@@ -1448,7 +1377,6 @@
             <TRANSL xml:lang="eng">unan-rdpl-village-his</TRANSL>
             <M id="S23W4M1">
                 <FORM kindOf="original">pik</FORM>
-                <TRANSL xml:lang="eng">unan</TRANSL>
             </M>
             <M id="S23W4M2">
                 <FORM kindOf="original">il</FORM>
