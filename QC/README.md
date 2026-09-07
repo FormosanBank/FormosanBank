@@ -2,6 +2,8 @@
 
 This folder contains lightweight scripts for checking FormosanBank XML corpora. The scripts are intentionally modular: run the checks that match the corpus state instead of treating every warning as an automatic data error.
 
+**Looking up a rule id?** [`validation/RULES.md`](validation/RULES.md) lists every rule — id, mnemonic, severity, and what it checks — grouped by the validator that runs it. It is generated from the code by `validation/rules_catalogue.py` and checked by a test, so it cannot drift; do not edit it by hand.
+
 ## Expected XML Tiers
 
 Most validation scripts inspect the standardized sentence tier:
