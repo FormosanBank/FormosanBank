@@ -750,6 +750,58 @@ def test_standardize_skips_c012_for_unsegmented_sentence(tmp_path):
     assert _std_text(root) == "Proto-Austronesian ka-en"
 
 
+# --- C012: --segmented-without-m-tier (opt-in, off by default) ----------------
+#
+# The M tier is C012's proxy for "this sentence is morpheme-segmented". A
+# corpus can be segmented and publish no M analysis (MontgomeryTexts,
+# Nowbucyang-Truku-Thesis); the flag is the opt-in for that shape. It must
+# stay off by default -- an S-level hyphen is not always segmentation.
+
+UNSEGMENTED_AMIS = (
+    '<TEXT id="t" citation="c" copyright="c" xml:lang="ami">'
+    '<S id="S1"><FORM kindOf="original">na-romoal tangsor</FORM>'
+    '<W id="W1"><FORM kindOf="original">na-romoal</FORM></W></S></TEXT>')
+
+
+def test_segmented_without_m_tier_strips_hyphens_when_asked(tmp_path):
+    """With the flag, C012 fires on an M-less S that carries segmentation."""
+    root = _write_collection(tmp_path, UNSEGMENTED_AMIS)
+    proc = _run_standardize(["--corpora_path", str(root), "--remove_accents",
+                             "--segmented-without-m-tier"])
+    assert proc.returncode == 0, proc.stderr
+    assert _std_text(root) == "naromoal tangsor"
+
+
+def test_segmented_without_m_tier_is_off_by_default(tmp_path):
+    """Same input, no flag: the hyphen survives, as it does on main."""
+    root = _write_collection(tmp_path, UNSEGMENTED_AMIS)
+    proc = _run_standardize(["--corpora_path", str(root), "--remove_accents"])
+    assert proc.returncode == 0, proc.stderr
+    assert _std_text(root) == "na-romoal tangsor"
+
+
+def test_segmented_without_m_tier_leaves_W_segmentation_alone(tmp_path):
+    """C012 is S-level only; the flag does not change that."""
+    root = _write_collection(tmp_path, UNSEGMENTED_AMIS)
+    proc = _run_standardize(["--corpora_path", str(root), "--remove_accents",
+                             "--segmented-without-m-tier"])
+    assert proc.returncode == 0, proc.stderr
+    tree = ET.parse(root / "XML" / "t.xml")
+    assert tree.find(".//W/FORM[@kindOf='standard']").text == "na-romoal"
+
+
+def test_segmented_without_m_tier_still_honours_hyphen_as_letter(tmp_path):
+    """Bunun writes '-' as a letter, so the flag must not override C011."""
+    xml = ('<TEXT id="t" citation="c" copyright="c" xml:lang="bnn">'
+           '<S id="S1"><FORM kindOf="original">ma-baliv-an</FORM></S></TEXT>')
+    root = _write_collection(tmp_path, xml)
+    proc = _run_standardize(["--corpora_path", str(root), "--remove_accents",
+                             "--segmented-without-m-tier"])
+    assert proc.returncode == 0, proc.stderr
+    assert _std_text(root) == "ma-baliv-an"
+    assert "c012" in _warnings_csv(root)
+
+
 def test_copy_mode_is_pure_duplication_no_C012(tmp_path):
     """--copy performs NO cleaning at all (2026-08-09 ruling): segmentation
     hyphens survive in the S-level standard FORM verbatim. V133/V120 flag
