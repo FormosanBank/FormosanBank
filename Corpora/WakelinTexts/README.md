@@ -42,15 +42,25 @@ Text F was given by Saman Sunagu, not by Saman Kalaku. It was published as `Suna
 
 **The orthography of these texts has not been identified, and no orthographic conversion is applied to them.** The article gives no statement of its writing system, and the transcription does not match any orthography currently profiled in [`Orthographies/`](../../Orthographies/): it uses `u` where modern Yami spelling uses `o`, `e` for a vowel the article describes only as fluctuating with `a`, and it has no `'`, `j`, or `z`.
 
-It does have two symbols worth knowing about before using the data:
+It does have three symbols worth knowing about before using the data:
 
 - **`?` is a letter, not punctuation.** There are **47 occurrences**, and they sit *inside* single words, word-internally and word-finally, on the word and morpheme tiers as well as the sentence tier — `tau?` 'person', `uvi?` 'potato', `lavi?` 'cry', `kayu?` 'tree', `ina?` 'mother'. They appear in plainly declarative sentences: `amyan su tau? nu-kakwa i-m-angay mang-aep su uvi?` = "A long time ago, there was a person who went to get some potatoes." On the evidence it writes a consonant that modern Yami spelling leaves unwritten, most plausibly a glottal stop — but **that identification is not confirmed**, and it is the single largest reason the writing system as a whole cannot be pinned down. Do not strip it as punctuation, and do not read a sentence containing it as a question.
 
-- **`ř` is a letter of the transcription**, in twelve words: `kařwan` 'other', `vařit` 'bamboo strips', `pasavuřen-ku`, `pasamuřna`, `mi-kařakařa`, `k-ařima-raw` 'in five days', `a-pneřek-em`, `vařangyam` 'boat', `y-ařwa` 'two', `sipřutan`, `řerchip` 'cave', and `tiřarawa-kamu`. It is the corpus's only non-ASCII letter, and the reason `validate_text` reports SOFT `V116 non_ascii_in_form` findings. The hand-typed XML originally lost the caron and spelled all of these with a plain `r`; the article prints `ř` and the transcription has been corrected to match. (The PDF's text layer renders the letter as `f'`, `fl`, `i'`, `:l'` or `~` depending on the word, which is how the loss went unnoticed.)
+- **`ř` is a letter of the transcription**, in twelve words: `kařwan` 'other', `vařit` 'bamboo strips', `pasavuřen-ku`, `pasamuřna`, `mi-kařakařa`, `k-ařima-raw` 'in five days', `a-pneřek-em`, `vařangyam` 'boat', `y-ařwa` 'two', `sipřutan`, `řerchip` 'cave', and `tiřarawa-kamu`. It is one of the corpus's two non-ASCII letters (the other is `ǥ` below), and part of the reason `validate_text` reports SOFT `V116 non_ascii_in_form` findings. The hand-typed XML originally lost the caron and spelled all of these with a plain `r`; the article prints `ř` and the transcription has been corrected to match. (The PDF's text layer renders the letter as `f'`, `fl`, `i'`, `:l'` or `~` depending on the word, which is how the loss went unnoticed.)
+
+- **`ǥ` is a distinct letter from `g`.** The 1958 typescript writes two g's: a plain `g`, and a **g overstruck with a horizontal bar** (backspace-and-hyphen on the mimeograph master). The published XML writes the second as `ǥ` (U+01E5), in **41 FORM elements** across five words — `vaǥay` 'house' (11 tokens), `kalaǥen` 'to hunt for', `anyaǥay`, `laǥet` 'bad', `aǥapen` 'take'. It is a phonemic symbol, not scan noise: the bar falls only on `g`, never on a neighbouring letter; plain-g words (`kangkang`, `m-angay`, `kagling`, `ragaw`) are never barred; and every token of a barred lexeme is barred. The article's own Errata Addenda reproduces the bar in its "for …" fields, so its typists treated it as a character of the text.
+
+  Post-errata it corresponds exactly to modern Yami `h` [ɰ]: `vaǥay` ~ *vahay* 'house', `aǥapen` ~ *ahapen* 'take', `laǥet` ~ *rahet* 'bad'. Barred g for a voiced velar fricative is standard 1950s SIL practice. The hand-typed XML had flattened it to plain `g`, merging the two phonemes; that has been corrected. Verified at 400 dpi against `CodeAndDocs/Original.pdf`, word by word.
+
+  Ten further attestations were **printed barred but removed by the article's own errata**, so they do not appear in the XML and must not be reintroduced: `maǥay-rana` (A37 → `m-angay-rana`), `chitaǥen`/`ditaǥen` in six places (B4, B12, B16, B18, B19, C6, C15 → `chita-en`), `tunanal-aǥep-an` (B4 → `tunanal-aep-an`), `ya-na-ni-aǥep` (D14 → `ha-na-ni-aep`), and `akak-aǥep-an` / `(mangday su aǥep)` (E8 → `aep`). One morpheme sits at the join of the two rules: `Kwaway/S4W2M2` is barred in print, but errata B4 removes the consonant altogether, so it is published as `aep` — **the errata win over the bar**.
+
+  That the errata delete the segment in some words and rewrite it `ng` in others, while leaving `vaǥay` and `laǥet` standing, is what one expects of a weak velar approximant the team was unsure how to treat. Modern orthography writes `h` throughout.
 
 ### Why there is no standard tier and no IPA
 
 A `standard` FORM is a claim that a passage has been transliterated into FormosanBank's single common orthography, and a `PHON` is a claim about how it was pronounced. Making either claim requires knowing which letters the source is using and what they stand for. Here we do not, so the corpus makes neither claim: **the published XML carries only the `original` tier.**
+
+The `ǥ` finding narrows the gap without closing it. Two of the transcription's puzzles now have good answers — `ǥ` is modern `h` [ɰ], and `?` is most plausibly a glottal stop — but the second is still unconfirmed, no conversion table exists, and nobody has checked the remaining letters against a profile. A partial mapping is not an orthography, so the tiers stay absent until someone does that work.
 
 Concretely:
 
@@ -96,6 +106,8 @@ The article also notes that the 'narration' suffix `-em`/`-m` occurs throughout 
   - [`provenance.json`](CodeAndDocs/provenance.json) — the FormosanBank commit `XML/` was built against (POL-052).
 
 ## Provenance and the pre-correction snapshot
+
+**The article's own errata are applied.** The 1958 publication ends with an "Errata Addenda" (`Original.pdf` p. 22) listing about fifty corrections in `for X read Y` form. The published text is the **corrected** reading throughout — `amyan` not `amian`, `mang-aep` not `mengep`, `puken` not `buken`, `tusya` not `tausya` — because the errata are part of the same publication and represent its authors' final word. Where an erratum and another source signal conflict, the erratum wins: `Kwaway/S4W2M2` is printed with a barred g, but B4 removes the consonant, so it is published `aep`. Deviations from the article are confined to two deliberate corrections, listed under "A correction to the source" below.
 
 These texts were transferred from the printed article to XML **by hand**. There is no scraper and no OCR stage, so the hand-typed XML *is* this corpus's source data: `CodeAndDocs/pre_correction_snapshot/XML/` is its **source of record** (POL-035), and the published `XML/` is derived from it on every run.
 
@@ -172,7 +184,7 @@ It rebuilds `XML/` from the snapshot using the QC scripts of the FormosanBank ch
    python QC/cleaning/clean_xml.py --corpora_path Corpora/WakelinTexts/XML
    ```
 
-   Removes empty elements, normalizes Unicode to NFC, decodes HTML escapes, and canonicalizes typographic look-alikes (curly quotes, dashes, tildes) and null-morpheme glyphs. The hand-typed text is near-ASCII — the only non-ASCII letter is `ř` — so this step currently changes nothing; it is the guarantee that it stays that way.
+   Removes empty elements, normalizes Unicode to NFC, decodes HTML escapes, and canonicalizes typographic look-alikes (curly quotes, dashes, tildes) and null-morpheme glyphs. The hand-typed text is near-ASCII — the only non-ASCII letters are `ř` and `ǥ`, both NFC-stable and untouched by the look-alike table — so this step currently changes nothing; it is the guarantee that it stays that way.
 
 **Steps 4 and 5 of the POL-047 shape — `standardize.py` and `add_phonology.py` — are deliberately absent**, and this is the deviation POL-047 requires a corpus to state. See "Why there is no standard tier and no IPA" above. There is also no `apply_manual_edits.py` step: this corpus has no `manual_edits.xml`, because hand corrections belong in the snapshot, which is its source.
 
