@@ -1,0 +1,381 @@
+{
+  "schema_version": 1,
+  "_doc": [
+    "One entry per slash alternation printed in Wakelin et al. (1958).",
+    "These slashes are TRANSCRIBER UNCERTAINTY, not alternatives the speaker",
+    "offered, so POL-027 (one S block per option) does not automatically apply.",
+    "Maintainer ruling 2026-09-06:",
+    "  mode=variant  a clear spelling variant - mostly overlapping letters and",
+    "                the same gloss. Published as FORM[@kindOf=\"alternate\"]",
+    "                siblings on the node that varies, and on its ancestors.",
+    "  mode=split    everything else. Published as separate S blocks; the first",
+    "                keeps the printed sentence number, the rest take letter",
+    "                suffixes b, c, ... (POL-037 forbids renumbering the",
+    "                already-published bare id to `a`).",
+    "`carriers` names the snapshot node holding FORM[@kindOf=\"alternate\"].",
+    "Rows marked review=true are the borderline calls - see README."
+  ],
+  "decisions": [
+    {
+      "file": "Kalaku1",
+      "sentence": "S4",
+      "printed": "ty-asa-nemn/namen-a-panay",
+      "mode": "variant",
+      "carriers": [
+        "S4W2M3"
+      ],
+      "note": "1pl.excl pronoun, both glossed 'we'"
+    },
+    {
+      "file": "Kalaku1",
+      "sentence": "S6",
+      "printed": "ngaran-amn/namen-em",
+      "mode": "split",
+      "kind": "substitution",
+      "carriers": [
+        "S6W5"
+      ],
+      "drop_morphemes": true,
+      "note": "MAINTAINER RULING 2026-09-07: two S blocks, `ngaran-amn` and `namen-em`, both glossed 'name-we'. The second reading replaces the whole word rather than one morpheme inside it, so it inherits no morphemes: the source's `ngaran` + `amn` do not occur in `namen-em`."
+    },
+    {
+      "file": "Kalaku1",
+      "sentence": "S7",
+      "printed": "matwa-tuntun-am/namen-rana",
+      "mode": "variant",
+      "carriers": [
+        "S7W1M3"
+      ],
+      "note": "1pl.excl pronoun, both glossed 'us'"
+    },
+    {
+      "file": "Kalaku1",
+      "sentence": "S11",
+      "printed": "a-ni-padi/machyura-rana",
+      "mode": "split",
+      "kind": "membership",
+      "note": "MAINTAINER CORRECTION to the source (2026-09-07), not a reading of it: the article's last two glosses are in the wrong order, and the slash divides the word rather than one morpheme inside it. The corrected gloss 'unan-many-still/again-them' divides at its own slash exactly where the text does, giving 3+3 and 2+2. See README, 'A correction to the source'.",
+      "branches": [
+        {
+          "suffix": "",
+          "form": "yaru kařwan lu dewdew-em dy-aru-pa-sira a-ni-padi",
+          "words": [
+            "S11W1",
+            "S11W2",
+            "S11W3",
+            "S11W4",
+            "S11W5",
+            "S11W6"
+          ],
+          "overrides": {
+            "S11W6": {
+              "form": "a-ni-padi",
+              "gloss": "unan-many-still",
+              "morphemes": [
+                "S11W6M1",
+                "S11W6M2",
+                "S11W6M3"
+              ]
+            }
+          }
+        },
+        {
+          "suffix": "b",
+          "form": "yaru kařwan lu dewdew-em dy-aru-pa-sira machyura-rana",
+          "words": [
+            "S11W1",
+            "S11W2",
+            "S11W3",
+            "S11W4",
+            "S11W5",
+            "S11W6"
+          ],
+          "overrides": {
+            "S11W6": {
+              "form": "machyura-rana",
+              "gloss": "again-them",
+              "morphemes": [
+                "S11W6M4",
+                "S11W6M5"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "file": "Kalaku1",
+      "sentence": "S12",
+      "printed": "maluvut-neme/namen-rana-m",
+      "mode": "variant",
+      "carriers": [
+        "S12W1M2"
+      ],
+      "note": "1pl.excl pronoun, both glossed 'us'"
+    },
+    {
+      "file": "Kalaku1",
+      "sentence": "S13",
+      "printed": "katu-nem/namen-rana",
+      "mode": "variant",
+      "carriers": [
+        "S13W1M2"
+      ],
+      "note": "1pl.excl pronoun. The W-level alternate on S13W1 is defective (its FORM is truncated to 'katu'); the M carrier is used instead. See the source-discrepancy report."
+    },
+    {
+      "file": "Kalaku1",
+      "sentence": "S16",
+      "printed": "nipi/niripi",
+      "mode": "variant",
+      "carriers": [
+        "S16W3"
+      ],
+      "note": "same gloss 'money', ni(ri)pi"
+    },
+    {
+      "file": "Kalaku1",
+      "sentence": "S17",
+      "printed": "walem-nem/namen-a k-angay-nemn/namen-a-rana",
+      "mode": "variant",
+      "carriers": [
+        "S17W1M2",
+        "S17W2M3"
+      ],
+      "note": "the same pronoun alternation twice in one sentence"
+    },
+    {
+      "file": "Kalaku1",
+      "sentence": "S20",
+      "printed": "pipangn-epen/pipangungn-epen/pipangengne-eben",
+      "mode": "variant",
+      "carriers": [
+        "S20W1"
+      ],
+      "note": "three-way; all glossed 'shut-door(unctn)'"
+    },
+    {
+      "file": "Kalaku3",
+      "sentence": "S8",
+      "printed": "akak-aep-an/(mangday su aep)",
+      "mode": "split",
+      "kind": "membership",
+      "note": "one word vs a three-word phrase, and the glosses differ ('every-night-intrg' vs 'every CM night'). Parentheses are dropped from the published FORM (POL-027).",
+      "branches": [
+        {
+          "suffix": "",
+          "form": "puken-em marikna-namen-pa kwan-amen a-mangday su araw akak-aep-an",
+          "words": [
+            "S8W1",
+            "S8W2",
+            "S8W3",
+            "S8W4",
+            "S8W5",
+            "S8W6",
+            "S8W7"
+          ]
+        },
+        {
+          "suffix": "b",
+          "form": "puken-em marikna-namen-pa kwan-amen a-mangday su araw mangday su aep",
+          "words": [
+            "S8W1",
+            "S8W2",
+            "S8W3",
+            "S8W4",
+            "S8W5",
+            "S8W6",
+            "S8W8",
+            "S8W9",
+            "S8W10"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "Sunagu",
+      "sentence": "S2",
+      "printed": "(imurud nu tau)/(tau d-imurud)",
+      "mode": "split",
+      "kind": "membership",
+      "note": "two word orders of the same phrase, each printed in its own parentheses; parentheses dropped from the published FORMs (POL-027)",
+      "branches": [
+        {
+          "suffix": "",
+          "form": "ma-chita-da tu madegdeg imurud nu tau",
+          "words": [
+            "S2W1",
+            "S2W2",
+            "S2W3",
+            "S2W4",
+            "S2W5",
+            "S2W6"
+          ]
+        },
+        {
+          "suffix": "b",
+          "form": "ma-chita-da tu madegdeg tau d-imurud",
+          "words": [
+            "S2W1",
+            "S2W2",
+            "S2W3",
+            "S2W7",
+            "S2W8"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "Kangkang",
+      "sentence": "S18",
+      "printed": "kan(u)",
+      "mode": "variant",
+      "carriers": [
+        "S18W3"
+      ],
+      "note": "MAINTAINER RULING (2026-09-07): the article's optional-material parentheses here mark an alternation, `kan` ~ `kan-u`, so the word carries an alternate FORM like a slash case. The S FORM keeps the printed `kan(u)` notation (POL-017); the alternation is resolved on the word. This row carries no slash, so nothing is rewritten above the W."
+    },
+    {
+      "file": "Kangkang",
+      "sentence": "S33",
+      "printed": "simuskem/tanu-di-muskem",
+      "mode": "split",
+      "kind": "membership",
+      "note": "the two readings have different glosses ('kill-with-boiling-water' vs 'if-not-killed-with-boiling-water'), so they are different clauses, not spellings",
+      "branches": [
+        {
+          "suffix": "",
+          "form": "simuskem anak-u-imu kwan-a",
+          "words": [
+            "S33W1",
+            "S33W2",
+            "S33W3"
+          ],
+          "overrides": {
+            "S33W1": {
+              "form": "simuskem",
+              "gloss": "kill-with-boiling-water",
+              "morphemes": [
+                "S33W1M1"
+              ]
+            }
+          }
+        },
+        {
+          "suffix": "b",
+          "form": "tanu-di-muskem anak-u-imu kwan-a",
+          "words": [
+            "S33W1",
+            "S33W2",
+            "S33W3"
+          ],
+          "overrides": {
+            "S33W1": {
+              "form": "tanu-di-muskem",
+              "gloss": "if(unctn)-not-killed-with-boiling-water",
+              "morphemes": [
+                "S33W1M2",
+                "S33W1M3",
+                "S33W1M4"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "file": "Kwaway",
+      "sentence": "S2",
+      "printed": "kamakamay a/u uvay",
+      "mode": "variant",
+      "carriers": [
+        "S2W3"
+      ],
+      "note": "a single-vowel alternation in a function word; both glossed 'unan'. Confirmed a spelling variant by the maintainer, 2026-09-07: the alternation is one vowel, not one word, even though `a` and `u` share no letters."
+    },
+    {
+      "file": "Kwaway",
+      "sentence": "S4",
+      "printed": "tunanal-aep-an/nitelemna",
+      "mode": "split",
+      "kind": "substitution",
+      "carriers": [
+        "S4W2"
+      ],
+      "drop_morphemes": true,
+      "note": "two different lexemes with different glosses; 'nitelemna' carries no source segmentation"
+    },
+    {
+      "file": "Kwaway",
+      "sentence": "S9",
+      "printed": "varit/yaked",
+      "mode": "split",
+      "kind": "substitution",
+      "carriers": [
+        "S9W5"
+      ],
+      "note": "two different lexemes sharing one gloss. Neither is segmented in the text, so the gloss is a single two-word unit written 'bamboo.strips' in Leipzig dot notation (maintainer correction, 2026-09-07); it was 'bamboo-strips', which reads as two morphemes."
+    },
+    {
+      "file": "Kwaway",
+      "sentence": "S39",
+      "printed": "mi-kalakala/mi-karakara",
+      "mode": "variant",
+      "carriers": [
+        "S39W3"
+      ],
+      "note": "l ~ r in the same stem, same gloss"
+    },
+    {
+      "file": "Kwaway",
+      "sentence": "S48",
+      "printed": "pi-tulang-an-a/(tulang u ragaw)",
+      "mode": "split",
+      "kind": "membership",
+      "note": "one word vs a three-word phrase. Published as S48 + S48b, which is the shape already published; the snapshot no longer pre-materializes S48b (it also carried a malformed W id, S4bW2).",
+      "branches": [
+        {
+          "suffix": "",
+          "form": "k-ařima-raw i-k-teb-na pi-tulang-an-a",
+          "words": [
+            "S48W1",
+            "S48W2",
+            "S48W3"
+          ]
+        },
+        {
+          "suffix": "b",
+          "form": "k-ařima-raw i-k-teb-na tulang u ragaw",
+          "words": [
+            "S48W1",
+            "S48W2"
+          ],
+          "extra_words": [
+            {
+              "form": "tulang",
+              "gloss": "cut"
+            },
+            {
+              "form": "u",
+              "gloss": "unan"
+            },
+            {
+              "form": "ragaw",
+              "gloss": "neck"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "Kwaway",
+      "sentence": "S51",
+      "printed": "mikabak-abay-u/mikabakabayu",
+      "mode": "variant",
+      "carriers": [
+        "S51W1"
+      ],
+      "note": "pure hyphenation variant - the clearest spelling-variant case in the corpus. The snapshot now keeps the printed slash like every other alternation, so this needs no special handling."
+    }
+  ]
+}
