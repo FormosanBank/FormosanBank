@@ -67,6 +67,8 @@ def _write_tree(root: ET.Element, path: Path) -> None:
 LEDGER_PATH = SOURCE_DATA / "published_ids.csv"
 MODES = ("generate", "audit", "ledger")
 _SPLIT_SUFFIX = re.compile(r"_[a-z]$")
+_GUID_IN_ID = re.compile(
+    r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}")
 
 
 @dataclass
@@ -252,10 +254,23 @@ def run(mode: str, languages: list[str], write_ledger: bool = False) -> int:
             f"unused source-content exclusion: {key!r}" for key in unused_exclusions
         )
     if mode == "ledger":
-        rows = {
-            identifier: LedgerRow(identifier=identifier, source_guids=guids)
-            for identifier, guids in extracted.items()
-        }
+        # The ledger is a lockfile over the BUILT tree, not over extraction:
+        # it has to cover split children (…_a) and dictionary entries (…_d…),
+        # neither of which extract_sentences knows about. Its protection is
+        # that it is committed and reviewed by diff -- a rebuild whose ids
+        # differ from the committed ledger fails the audit.
+        rows: dict[str, LedgerRow] = {}
+        for path in sorted(XML_DIR.rglob("*.xml")):
+            for item in ET.parse(path).getroot().findall("S"):
+                identifier = item.get("id")
+                if not identifier:
+                    continue
+                guids = extracted.get(_base_id(identifier))
+                if guids is None:
+                    match = _GUID_IN_ID.search(identifier)
+                    guids = {match.group(0)} if match else set()
+                rows[identifier] = LedgerRow(
+                    identifier=identifier, source_guids=set(guids))
         if write_ledger:
             LEDGER_PATH.write_text(render_ledger(rows), encoding="utf-8")
             print(f"wrote {LEDGER_PATH} ({len(rows)} ids) — review the diff "
