@@ -8,7 +8,7 @@ PYTHON_BIN=${PAIWAN_PYTHON:-python3}
 MODE=${1:---write}
 
 if [[ "$MODE" != "--write" && "$MODE" != "--check" ]]; then
-    echo "usage: CodeAndDocs/make_xml.sh [--write|--check]" >&2
+    echo "usage: CodeAndDocs/generate_xml.sh [--write|--check]" >&2
     exit 2
 fi
 

@@ -2,14 +2,14 @@
 # Single entry point: rebuild the published XML/ from the committed source and
 # ledgers. Usage (from anywhere):
 #
-#   CodeAndDocs/scripts/make_xml.sh [/path/to/FormosanBank]
+#   CodeAndDocs/generate_xml.sh [/path/to/FormosanBank]
 #
 # The FormosanBank checkout supplying the shared QC utilities defaults to the
 # repository that contains this corpus; pass a path (or set FORMOSANBANK_PATH)
 # to use another one. PYTHON selects the interpreter.
 set -euo pipefail
 
-ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CORPUS="$(cd "$ROOT/.." && pwd)"
 XML_PATH="$CORPUS/XML"
 FORMOSANBANK_PATH="${1:-${FORMOSANBANK_PATH:-$CORPUS/../..}}"
@@ -24,9 +24,11 @@ else
 fi
 export PYTHONDONTWRITEBYTECODE=1
 
-# The published XML was last regenerated against this FormosanBank commit.
-# Informational: the shared utilities move on, and a different commit is fine.
-REFERENCE_FORMOSANBANK_COMMIT="3a3c47c220520113f747e6a2d441494000e13c4b"
+# The published XML was last regenerated against this FormosanBank commit
+# (POL-052). Informational: the shared utilities move on, a different commit is
+# fine, and the build never gates on it. Read from provenance.json so the SHA
+# lives in exactly one place.
+REFERENCE_FORMOSANBANK_COMMIT="$(sed -n 's/.*"formosanbank_commit"[[:space:]]*:[[:space:]]*"\([0-9a-f]\{40\}\)".*/\1/p' "$ROOT/provenance.json")"
 
 test -f "$FORMOSANBANK_PATH/QC/cleaning/clean_xml.py"
 head_commit="$(git -C "$FORMOSANBANK_PATH" rev-parse HEAD 2>/dev/null || echo unknown)"

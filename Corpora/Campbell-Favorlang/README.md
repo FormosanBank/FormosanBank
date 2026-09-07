@@ -21,7 +21,7 @@ Private source files are not included here. The tracked reviewed-record ledger i
 sufficient for a source-free rebuild:
 
 ```bash
-CodeAndDocs/make_xml.sh
+CodeAndDocs/generate_xml.sh
 ```
 
 Pass a FormosanBank root as the first argument, or set `FORMOSANBANK_PATH`, to

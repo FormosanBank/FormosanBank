@@ -46,7 +46,7 @@ rebuild does **not** re-scrape. One command rebuilds the published `XML/` from
 them:
 
 ```bash
-CodeAndDocs/scripts/make_xml.sh
+CodeAndDocs/generate_xml.sh
 ```
 
 That is the corpus's only entry point; it runs every step below in order and
@@ -65,7 +65,7 @@ CodeAndDocs/.venv/bin/pip install -r CodeAndDocs/requirements.txt
 page/candidate inventory, the reviewed-artifact hashes, the ledger counts, and
 continuous sentence IDs — so any drift in the source or the ledgers fails the
 build loudly. `CodeAndDocs/provenance.json` records the FormosanBank commit the published
-XML was last built against (POL-052), and `make_xml.sh` notes it when the
+XML was last built against (POL-052), and `generate_xml.sh` notes it when the
 checkout differs — a note, never a gate: rebuilds run with the current tools. The rebuild is
 deterministic: running it twice reproduces the same bytes.
 
@@ -93,7 +93,7 @@ and punctuation the text layer had dropped, and excluding non-sentences. The
 result is `source_ledger.csv` (699 included, 14 excluded). The full page-by-page
 log is `docs/extraction_review.md`.
 
-### Rebuild pipeline (`CodeAndDocs/scripts/make_xml.sh`)
+### Rebuild pipeline (`CodeAndDocs/generate_xml.sh`)
 
 1. **Extract the dictionary** — `extract_dictionary.py` reconstructs Appendix 2A
    from the positioned text, cross-checking barred vowels against the duplicate

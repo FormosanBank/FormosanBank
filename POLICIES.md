@@ -677,8 +677,20 @@ Four properties the entry point must have:
 a different order are all legitimate for real reasons — several corpora
 correctly have no `standard` tier and therefore no steps 4–5. The requirement is
 that the deviation is **stated in the corpus README and interrogated at merge**,
-not discovered later by an auditor. Reviewers: an unexplained departure from
-this shape is a review finding on its own.
+not discovered later by an auditor. State it with a line beginning
+`**POL-047 deviation:**` so it is findable; `Corpora/HundredPaiwanStories` is
+the worked example (its QC reports are published artifacts and its build gates
+on them, so its validators stay inside the build by design).
+
+**Enforced, in part**, by `tests/corpora/test_generate_xml.py`: the entry point
+exists under the canonical name and is executable, no older entry point survives
+beside it, it is self-contained (POL-048, no deviation clause), it runs no
+`QC/validation/`, and the shared steps it does call are in canonical relative
+order — all static, all cheap. Corpora that predate this entry are listed in
+`generate_xml_pending.txt` at the repo root; the list only shrinks, and a new or
+re-ported corpus is never added to it. **Idempotency is not covered** — that
+needs the build actually run, which is too expensive for every corpus on every
+pull request, so for now it is a reviewer's job.
 
 Raised by the 2026-09-05 pipeline audit: across 33 corpora on `main` and in open
 PRs there were eight entry-point conventions (`make_xml.sh` ×16,
