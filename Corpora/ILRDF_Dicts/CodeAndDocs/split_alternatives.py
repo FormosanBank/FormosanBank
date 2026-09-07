@@ -104,6 +104,25 @@ def _norm(word: str) -> str:
     return word.strip(_CORE).casefold()
 
 
+#: A phrase alternative must share a word with the term it replaces, at least
+#: this closely, for the substituted span to be unambiguous.
+ANCHOR_SIMILARITY = 0.60
+
+
+def _shares_a_word(options: list[str]) -> bool:
+    shortest = min(options, key=lambda o: len(o.split()))
+    others = [o for o in options if o is not shortest]
+    for other in others:
+        best = max(
+            (Levenshtein.normalized_similarity(_norm(a), _norm(b))
+             for a in shortest.split() for b in other.split()),
+            default=0.0,
+        )
+        if best < ANCHOR_SIMILARITY:
+            return False
+    return True
+
+
 def classify_site(options: list[str]) -> str | None:
     """'lexical', 'spelling', or None when neither reading is confident."""
     if len(options) < 2 or not all(o.strip(_CORE) for o in options):
@@ -111,12 +130,117 @@ def classify_site(options: list[str]) -> str | None:
     if any(not _balanced(o) for o in options):
         return None                    # a site may not straddle a bracket
     if len({len(o.split()) for o in options}) > 1:
+        # A multi-word option has to be anchored to what it replaces. The
+        # source writes 'tanux / (mnaw tay tanux)' and 'sinsiy / (sinsi pcbaq
+        # biruʼ)' -- the phrase shares a word with the single term, so the span
+        # it substitutes for is clear. Where it shares nothing, the span is a
+        # guess: in 'qani qu kinbahan / （laqi kneril na laqi） suʼ ga?' the
+        # phrase may replace 'kinbahan' or 'kinbahan suʼ' and the source does
+        # not say (maintainer ruling 3, 2026-09-07). Decline those.
+        if not _shares_a_word(options):
+            return None
         return "lexical"
     similarity = min(
         Levenshtein.normalized_similarity(_norm(options[0]), _norm(other))
         for other in options[1:]
     )
     return "spelling" if similarity >= SPELLING_SIMILARITY else None
+
+
+# --- bare parentheticals ------------------------------------------------------
+
+_CJK = re.compile(r"[㐀-䶿一-鿿]")
+_BARE_BRACKET = re.compile(r"\s*[（(]\s*([^（()）]*?)\s*[）)]")
+_ANNOTATIONS = Path(__file__).resolve().parent / "source_data" / "bracket_annotations.csv"
+
+
+def load_annotations(path: Path = _ANNOTATIONS) -> set[str]:
+    """Bracketed spans reviewed as annotation rather than alternation.
+
+    Latin-script loanwords glossing a Formosan term -- Japanese 'gocyo' for
+    校長, 'enpit' for 鉛筆 -- read as ordinary words to any regex, so they are
+    listed rather than detected (POL-039: data, not code).
+    """
+    if not path.exists():
+        return set()
+    with path.open(encoding="utf-8", newline="") as handle:
+        return {row["content"].strip().casefold()
+                for row in csv.DictReader(handle) if row.get("content")}
+
+
+def classify_bracket(content: str, preceding: str, annotations: set[str]) -> str:
+    """'retain', 'lexical', 'spelling', or 'decline'.
+
+    Maintainer ruling 2026-09-07: a bracket attached to a Formosan word is
+    annotation when it holds Chinese/Japanese characters, an English word or a
+    Japanese Romaji loan, and those are kept as written. Otherwise it is an
+    alternative -- resolved where a small edit distance makes the substituted
+    span clear, and declined otherwise. Proper-noun glosses are kept too, and
+    a leading capital is what marks them.
+    """
+    body = content.strip()
+    if not body:
+        return "decline"
+    if _CJK.search(body):
+        return "retain"
+    if body.casefold() in annotations:
+        return "retain"
+    if body[:1].isupper():
+        return "retain"                       # proper-noun gloss
+    if re.fullmatch(r"[\d\s.,-]+", body):
+        return "retain"                       # a number, e.g. luma' (101)
+    if not preceding:
+        return "decline"
+    if len(body.split()) != len(preceding.split()):
+        return "lexical" if _shares_a_word([preceding, body]) else "decline"
+    similarity = Levenshtein.normalized_similarity(_norm(preceding), _norm(body))
+    if similarity >= SPELLING_SIMILARITY:
+        return "spelling"
+    return "decline"
+
+
+def resolve_brackets(text: str,
+                     annotations: set[str]) -> list[Reading] | None:
+    """Resolve bare parentheticals in one already slash-free fragment.
+
+    A retained bracket is left as written. A lexical bracket yields two
+    readings — with and without the substitution. A spelling bracket yields
+    one reading carrying the other spelling as an alternate. Anything we
+    decline drops the fragment.
+    """
+    match = _BARE_BRACKET.search(text)
+    if match is None:
+        return [Reading(text)]
+    if _CJK.search(text[: match.start()]):
+        return [Reading(text)]        # already inside annotation territory
+
+    head = text[: match.start()].rstrip()
+    tail = text[match.end():]
+    words = head.split()
+    body = match.group(1).strip()
+    verdict = classify_bracket(body, words[-1] if words else "", annotations)
+
+    if verdict == "decline":
+        return None
+    if verdict == "retain":
+        rest = resolve_brackets(tail, annotations)
+        if rest is None:
+            return None
+        # Keep the source's own spacing around a retained bracket: this is the
+        # original tier, and 'mrhuw(gocyo)' is not ours to respace.
+        prefix = text[: match.end()]
+        return [Reading(prefix + r.text, r.alternates) for r in rest]
+
+    without = resolve_brackets(_tidy(head + " " + tail), annotations)
+    replaced = resolve_brackets(
+        _tidy(" ".join(words[:-1] + [body]) + " " + tail), annotations)
+    if without is None or replaced is None:
+        return None
+    if verdict == "spelling":
+        return [Reading(a.text, a.alternates + [b.text])
+                for a, b in zip(without, replaced)]
+    return without + [r for r in replaced
+                      if r.text not in [x.text for x in without]]
 
 
 def stage_a(text: str) -> list[str]:
@@ -167,7 +291,10 @@ def stage_b(text: str) -> list[Reading] | None:
     """Resolve one sentence's options, or None when not confident."""
     sites = _SITE.findall(text)
     if not sites:
-        return None if "/" in text else [Reading(text)]
+        if "/" in text:
+            return None
+        # No slash, but a bare parenthetical still has to be classified.
+        return resolve_brackets(text, load_annotations())
 
     spans, kinds, opts, tails = [], [], [], []
     cursor = 0
@@ -216,7 +343,18 @@ def stage_b(text: str) -> list[Reading] | None:
                 alternates.append(variant)
         if primary not in [r.text for r in readings]:
             readings.append(Reading(primary, alternates))
-    return readings or None
+
+    annotations = load_annotations()
+    resolved: list[Reading] = []
+    for reading in readings:
+        expanded = resolve_brackets(reading.text, annotations)
+        if expanded is None:
+            return None
+        for item in expanded:
+            merged = Reading(item.text, reading.alternates + item.alternates)
+            if merged.text not in [r.text for r in resolved]:
+                resolved.append(merged)
+    return resolved or None
 
 
 def resolve_equals(text: str) -> list[str]:

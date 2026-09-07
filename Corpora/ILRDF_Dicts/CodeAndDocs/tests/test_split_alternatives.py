@@ -145,16 +145,14 @@ class TestFragmentIndependence(unittest.TestCase):
         self.assertEqual(published(text), ["kinbahan suʼ knayril qani ga?"])
         self.assertEqual(len(dropped(text)), 1)
 
-    def test_a_numbered_example_with_a_bracketed_alternative_resolves(self):
-        """Record 3 of the maintainer's list. Under the general rule a
-        word-count difference is lexical, so this now resolves into two
-        readings rather than being dropped -- see the note in the report."""
+    def test_an_unanchored_phrase_alternative_is_declined(self):
+        """Maintainer ruling 3. 'laqi kneril na laqi' shares no word with
+        'kinbahan', so the span it replaces is a guess -- it could be
+        'kinbahan' or 'kinbahan suʼ'. Decline; the sibling still publishes."""
         text = ("1.qani qu kinbahan / （laqi kneril na laqi） suʼ ga? "
                 "2.kinbahan suʼ knayril qani ga?")
-        self.assertEqual(published(text),
-                         ["qani qu kinbahan suʼ ga?",
-                          "qani qu laqi kneril na laqi suʼ ga?",
-                          "kinbahan suʼ knayril qani ga?"])
+        self.assertEqual(published(text), ["kinbahan suʼ knayril qani ga?"])
+        self.assertEqual(len(dropped(text)), 1)
 
     def test_both_examples_publish_when_both_resolve(self):
         text = "1.bengun nya qbaʼ ni yaki. 2.cyux meng qbaʼ na yaki hya."
