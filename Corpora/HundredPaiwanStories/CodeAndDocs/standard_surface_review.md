@@ -31,6 +31,6 @@ Parenthesized question marks in the other cases are source uncertainty annotatio
 
 `normalize_sentence_standards.py` loads the exact decision table. It requires the expected file, sentence ID, source FORM, and a recorded pre-correction or corrected standard value. Unexpected source or tier text stops the run. PHON is treated as machine-owned output and must be complete and marker-free.
 
-`make_xml.sh` applies the decisions only after rebuilding from the checksum-pinned Word source and running the pinned FormosanBank cleaner, Ferrell conversion, and phonology tools. It then reruns normalization to prove idempotence and runs the full validator and test suite.
+`generate_xml.sh` applies the decisions only after rebuilding from the checksum-pinned Word source and running the pinned FormosanBank cleaner, Ferrell conversion, and phonology tools. It then reruns normalization to prove idempotence and runs the full validator and test suite.
 
 The final validator review confirms that V133 and G010 identify exactly these 153 source-supported sentence hyphens. No hard finding remains. Current authority, source checksums, generated finding CSVs, and the ready-to-port verdict are recorded under `data/` and `reports/`.
