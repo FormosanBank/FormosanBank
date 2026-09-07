@@ -117,6 +117,27 @@ Neither `varit` nor its alternate `yaked` is segmented in the text, so the gloss
 is a single two-word unit; written with a hyphen it reads as two morphemes.
 Leipzig dot notation says what is meant.
 
+## E. Gloss fragments left on a morpheme — both fixed
+
+The transcription twice split a parenthesised multi-word gloss across two
+morphemes, leaving half of it stranded. Both are corrected in the snapshot.
+
+**11. `Kalaku1/S4W1` — `(next-morning)` split as `(next` + `morning)`.**
+Printed p.14 gives one gloss, `unan-(next-morning)`, for a three-morpheme word.
+Now written `(next.morning)` and carried whole on `pneřek`, with the `-em`
+suffix taking its own gloss (see the README on the narration suffix).
+
+**12. `Kwaway/S43W2` — `(1st-person-imp)` split, leaving `imp)unan` on `a`.**
+Printed p.10 reads `43 tausya chi-kong-teb-a` / `don't-want-to
+negative-(lst-person-imp)-cut-unan`. The word gloss is right; the morpheme
+gloss for `a` had picked up the tail of the previous unit. Corrected to `unan`,
+the article's own "unanalyzed" marker, which the build then publishes as no
+gloss at all.
+
+Both words now align and keep their morpheme tiers. The build guards against the
+class: a morpheme gloss carrying an unmatched parenthesis drops the word's M
+tier rather than publishing half a gloss.
+
 ## Not a discrepancy, recorded so it is not re-raised
 
 - `Kwaway/S51` — printed p.10 reads `51 mikabak-abay-u/mikabakabayu u mwakay`.
