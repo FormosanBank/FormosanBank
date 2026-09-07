@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<TEXT id="ILRDF_Dicts_Atayal_dictionary" xml:lang="tay" source="Indigenous Languages Research and Development Foundation Dictionaries" audio="segmented" dialect="unknown" copyright="CC BY-NC" citation="Council of Indigenous Peoples, &amp; Indigenous Languages Research and Development Foundation. (n.d.). 原住民族語言線上辭典: 泰雅語 [Indigenous Languages Online Dictionary: Atayal language]. Retrieved 2026-05-04, from https://e-dictionary.ilrdf.org.tw/" BibTeX_citation="@misc{ILRDF_Atayal, author = {{Council of Indigenous Peoples} and {{Indigenous Languages Research and Development Foundation}}}, title = {原住民族語言線上辭典: 泰雅語 [Indigenous Languages Online Dictionary: Atayal language]}, note = {Retrieved 2026-05-04}, url = {https://e-dictionary.ilrdf.org.tw/}}">
+<TEXT id="ILRDF_Dicts_Atayal_dictionary" xml:lang="tay" source="Indigenous Languages Research and Development Foundation Dictionaries" audio="segmented" dialect="unknown" copyright="CC BY-NC 4.0" citation="Council of Indigenous Peoples, &amp; Indigenous Languages Research and Development Foundation. (n.d.). 原住民族語言線上辭典: 泰雅語 [Indigenous Languages Online Dictionary: Atayal language]. Retrieved 2026-05-04, from https://e-dictionary.ilrdf.org.tw/" BibTeX_citation="@misc{ILRDF_Atayal, author = {{Council of Indigenous Peoples} and {{Indigenous Languages Research and Development Foundation}}}, title = {原住民族語言線上辭典: 泰雅語 [Indigenous Languages Online Dictionary: Atayal language]}, note = {Retrieved 2026-05-04}, url = {https://e-dictionary.ilrdf.org.tw/}}">
     <S id="Atayal_d8d3ea89f-6709-f011-bd64-00155db40116">
         <FORM kindOf="original">Acung</FORM>
         <FORM kindOf="standard">Acung</FORM>
@@ -1096,9 +1096,10 @@
         <TRANSL xml:lang="zho" ver="alt">使;讓</TRANSL>
     </S>
     <S id="Atayal_d30f65adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">anonux / saynunux</FORM>
-        <FORM kindOf="standard">anonux / saynunux</FORM>
-        <PHON kindOf="standard">anonux  [s|ɕ]ajnunux</PHON>
+        <FORM kindOf="original" notes="source: anonux / saynunux">anonux</FORM>
+        <FORM kindOf="standard">anonux</FORM>
+        <PHON kindOf="standard">anonux</PHON>
+        <FORM kindOf="alternate">saynunux</FORM>
         <TRANSL xml:lang="zho">頭髮</TRANSL>
     </S>
     <S id="Atayal_d723ea89f-6709-f011-bd64-00155db40116">
@@ -2468,9 +2469,10 @@
         <TRANSL xml:lang="zho">山豬陷阱</TRANSL>
     </S>
     <S id="Atayal_d87b762d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">bruwan / brwan</FORM>
-        <FORM kindOf="standard">bruwan / brwan</FORM>
-        <PHON kindOf="standard">βruwan  βrwan</PHON>
+        <FORM kindOf="original" notes="source: bruwan / brwan">bruwan</FORM>
+        <FORM kindOf="standard">bruwan</FORM>
+        <PHON kindOf="standard">βruwan</PHON>
+        <FORM kindOf="alternate">brwan</FORM>
         <TRANSL xml:lang="zho">簿子 作業</TRANSL>
     </S>
     <S id="Atayal_dae87a0a5-6709-f011-bd64-00155db40116">
@@ -2792,9 +2794,10 @@
         <TRANSL xml:lang="zho">水果</TRANSL>
     </S>
     <S id="Atayal_d89b762d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">bwazyun / bwayun</FORM>
-        <FORM kindOf="standard">bwazyun / bwayun</FORM>
-        <PHON kindOf="standard">βwazjun  βwajun</PHON>
+        <FORM kindOf="original" notes="source: bwazyun / bwayun">bwazyun</FORM>
+        <FORM kindOf="standard">bwazyun</FORM>
+        <PHON kindOf="standard">βwazjun</PHON>
+        <FORM kindOf="alternate">bwayun</FORM>
         <TRANSL xml:lang="zho">大顆 結實纍纍</TRANSL>
     </S>
     <S id="Atayal_d238aa0a5-6709-f011-bd64-00155db40116">
@@ -2924,9 +2927,10 @@
         <TRANSL xml:lang="zho">山豬</TRANSL>
     </S>
     <S id="Atayal_d69f75adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">bzyok/bzyuwak</FORM>
-        <FORM kindOf="standard">bzyok/bzyuwak</FORM>
-        <PHON kindOf="standard">βzjokβzjuwak</PHON>
+        <FORM kindOf="original" notes="source: bzyok/bzyuwak">bzyok</FORM>
+        <FORM kindOf="standard">bzyok</FORM>
+        <PHON kindOf="standard">βzjok</PHON>
+        <FORM kindOf="alternate">bzyuwak</FORM>
         <TRANSL xml:lang="zho">豬</TRANSL>
     </S>
     <S id="Atayal_d2942a89f-6709-f011-bd64-00155db40116">
@@ -2936,9 +2940,10 @@
         <TRANSL xml:lang="zho" notes="名詞">無毒青竹絲</TRANSL>
     </S>
     <S id="Atayal_d8bb762d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">bzyuwak / bzyok</FORM>
-        <FORM kindOf="standard">bzyuwak / bzyok</FORM>
-        <PHON kindOf="standard">βzjuwak  βzjok</PHON>
+        <FORM kindOf="original" notes="source: bzyuwak / bzyok">bzyuwak</FORM>
+        <FORM kindOf="standard">bzyuwak</FORM>
+        <PHON kindOf="standard">βzjuwak</PHON>
+        <FORM kindOf="alternate">bzyok</FORM>
         <TRANSL xml:lang="zho">豬</TRANSL>
     </S>
     <S id="Atayal_dbd3fa89f-6709-f011-bd64-00155db40116">
@@ -6760,9 +6765,10 @@
         <TRANSL xml:lang="zho">慢慢的 輕輕的</TRANSL>
     </S>
     <S id="Atayal_d0db862d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">hwaziy / hhwazi</FORM>
-        <FORM kindOf="standard">hwaziy / hhwazi</FORM>
-        <PHON kindOf="standard">ħwazij  ħħwazi</PHON>
+        <FORM kindOf="original" notes="source: hwaziy / hhwazi">hwaziy</FORM>
+        <FORM kindOf="standard">hwaziy</FORM>
+        <PHON kindOf="standard">ħwazij</PHON>
+        <FORM kindOf="alternate">hhwazi</FORM>
         <TRANSL xml:lang="zho">輕輕的 便宜一點</TRANSL>
     </S>
     <S id="Atayal_d1b7fa0a5-6709-f011-bd64-00155db40116">
@@ -7437,9 +7443,10 @@
         <TRANSL xml:lang="zho" notes="名詞">李子</TRANSL>
     </S>
     <S id="Atayal_dbff85adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">kawbu'/ kobu</FORM>
-        <FORM kindOf="standard">kawbu'/ kobu</FORM>
-        <PHON kindOf="standard">kawβuʔ koβu</PHON>
+        <FORM kindOf="original" notes="source: kawbuʼ/ kobu">kawbu'</FORM>
+        <FORM kindOf="standard">kawbu'</FORM>
+        <PHON kindOf="standard">kawβuʔ</PHON>
+        <FORM kindOf="alternate">kobu</FORM>
         <TRANSL xml:lang="zho">魚床</TRANSL>
     </S>
     <S id="Atayal_d2241a89f-6709-f011-bd64-00155db40116">
@@ -7596,9 +7603,10 @@
         <TRANSL xml:lang="zho" ver="alt">一百</TRANSL>
     </S>
     <S id="Atayal_daef45adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">kbhul/qbhun</FORM>
-        <FORM kindOf="standard">kbhul/qbhun</FORM>
-        <PHON kindOf="standard">kβħulqβħun</PHON>
+        <FORM kindOf="original" notes="source: kbhul/qbhun">kbhul</FORM>
+        <FORM kindOf="standard">kbhul</FORM>
+        <PHON kindOf="standard">kβħul</PHON>
+        <FORM kindOf="alternate">qbhun</FORM>
         <TRANSL xml:lang="zho">百</TRANSL>
     </S>
     <S id="Atayal_d3c38a89f-6709-f011-bd64-00155db40116">
@@ -7674,9 +7682,10 @@
         <TRANSL xml:lang="zho">製作 修理</TRANSL>
     </S>
     <S id="Atayal_d9db962d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">kblayun / kbalayun</FORM>
-        <FORM kindOf="standard">kblayun / kbalayun</FORM>
-        <PHON kindOf="standard">kβlajun  kβalajun</PHON>
+        <FORM kindOf="original" notes="source: kblayun / kbalayun">kblayun</FORM>
+        <FORM kindOf="standard">kblayun</FORM>
+        <PHON kindOf="standard">kβlajun</PHON>
+        <FORM kindOf="alternate">kbalayun</FORM>
         <TRANSL xml:lang="zho">做成</TRANSL>
     </S>
     <S id="Atayal_d660d91b1-6709-f011-bd64-00155db40116">
@@ -8167,9 +8176,10 @@
         <TRANSL xml:lang="zho" ver="alt">美的程度</TRANSL>
     </S>
     <S id="Atayal_da2b962d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">kinbetunux / kinbaytnuxan</FORM>
-        <FORM kindOf="standard">kinbetunux / kinbaytnuxan</FORM>
-        <PHON kindOf="standard">kinβetunux  kinβajtnuxan</PHON>
+        <FORM kindOf="original" notes="source: kinbetunux / kinbaytnuxan">kinbetunux</FORM>
+        <FORM kindOf="standard">kinbetunux</FORM>
+        <PHON kindOf="standard">kinβetunux</PHON>
+        <FORM kindOf="alternate">kinbaytnuxan</FORM>
         <TRANSL xml:lang="zho">如此之美</TRANSL>
     </S>
     <S id="Atayal_d77656acf-6709-f011-bd64-00155db40116">
@@ -8185,9 +8195,10 @@
         <TRANSL xml:lang="zho">老人；老的</TRANSL>
     </S>
     <S id="Atayal_dc3f85adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">kinbkesan/kinbkaysan</FORM>
-        <FORM kindOf="standard">kinbkesan/kinbkaysan</FORM>
-        <PHON kindOf="standard">kinβke[s|ɕ]ankinβkaj[s|ɕ]an</PHON>
+        <FORM kindOf="original" notes="source: kinbkesan/kinbkaysan">kinbkesan</FORM>
+        <FORM kindOf="standard">kinbkesan</FORM>
+        <PHON kindOf="standard">kinβke[s|ɕ]an</PHON>
+        <FORM kindOf="alternate">kinbkaysan</FORM>
         <TRANSL xml:lang="zho">先祖</TRANSL>
     </S>
     <S id="Atayal_d4189a0a5-6709-f011-bd64-00155db40116">
@@ -8388,9 +8399,10 @@
         <TRANSL xml:lang="zho">非常寬</TRANSL>
     </S>
     <S id="Atayal_da1b962d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">kinlahang / kinahang</FORM>
-        <FORM kindOf="standard">kinlahang / kinahang</FORM>
-        <PHON kindOf="standard">kinlaħaŋ  kinaħaŋ</PHON>
+        <FORM kindOf="original" notes="source: kinlahang / kinahang">kinlahang</FORM>
+        <FORM kindOf="standard">kinlahang</FORM>
+        <PHON kindOf="standard">kinlaħaŋ</PHON>
+        <FORM kindOf="alternate">kinahang</FORM>
         <TRANSL xml:lang="zho">所管理的 執政的</TRANSL>
     </S>
     <S id="Atayal_df686a0a5-6709-f011-bd64-00155db40116">
@@ -9653,10 +9665,16 @@
         <TRANSL xml:lang="zho">砍、殺、割</TRANSL>
         <TRANSL xml:lang="zho" ver="alt">殺牲畜</TRANSL>
     </S>
-    <S id="Atayal_d2cba62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">kmut/sm'ung</FORM>
-        <FORM kindOf="standard">kmut/sm'ung</FORM>
-        <PHON kindOf="standard">kmut[s|ɕ]mʔuŋ</PHON>
+    <S id="Atayal_d2cba62d5-6709-f011-bd64-00155db40116_a">
+        <FORM kindOf="original" notes="source: kmut/smʼung">kmut</FORM>
+        <FORM kindOf="standard">kmut</FORM>
+        <PHON kindOf="standard">kmut</PHON>
+        <TRANSL xml:lang="zho">砍</TRANSL>
+    </S>
+    <S id="Atayal_d2cba62d5-6709-f011-bd64-00155db40116_b">
+        <FORM kindOf="original" notes="source: kmut/smʼung">sm'ung</FORM>
+        <FORM kindOf="standard">sm'ung</FORM>
+        <PHON kindOf="standard">[s|ɕ]mʔuŋ</PHON>
         <TRANSL xml:lang="zho">砍</TRANSL>
     </S>
     <S id="Atayal_dc887a0a5-6709-f011-bd64-00155db40116">
@@ -9794,15 +9812,17 @@
         <TRANSL xml:lang="zho">咬</TRANSL>
     </S>
     <S id="Atayal_d89ba62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">knayal/knazyal</FORM>
-        <FORM kindOf="standard">knayal/knazyal</FORM>
-        <PHON kindOf="standard">knajalknazjal</PHON>
+        <FORM kindOf="original" notes="source: knayal/knazyal">knayal</FORM>
+        <FORM kindOf="standard">knayal</FORM>
+        <PHON kindOf="standard">knajal</PHON>
+        <FORM kindOf="alternate">knazyal</FORM>
         <TRANSL xml:lang="zho">所說的 所傳達的</TRANSL>
     </S>
     <S id="Atayal_d1cf55adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">knayril/kneril</FORM>
-        <FORM kindOf="standard">knayril/kneril</FORM>
-        <PHON kindOf="standard">knajrilkneril</PHON>
+        <FORM kindOf="original" notes="source: knayril/kneril">knayril</FORM>
+        <FORM kindOf="standard">knayril</FORM>
+        <PHON kindOf="standard">knajril</PHON>
+        <FORM kindOf="alternate">kneril</FORM>
         <TRANSL xml:lang="zho">女生</TRANSL>
     </S>
     <S id="Atayal_d120d91b1-6709-f011-bd64-00155db40116">
@@ -9824,9 +9844,10 @@
         <TRANSL xml:lang="zho" notes="名詞">女生、女人、妻子</TRANSL>
     </S>
     <S id="Atayal_d2dba62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">kneril/knayril</FORM>
-        <FORM kindOf="standard">kneril/knayril</FORM>
-        <PHON kindOf="standard">knerilknajril</PHON>
+        <FORM kindOf="original" notes="source: kneril/knayril">kneril</FORM>
+        <FORM kindOf="standard">kneril</FORM>
+        <PHON kindOf="standard">kneril</PHON>
+        <FORM kindOf="alternate">knayril</FORM>
         <TRANSL xml:lang="zho">女子</TRANSL>
     </S>
     <S id="Atayal_d7684a0a5-6709-f011-bd64-00155db40116">
@@ -9902,9 +9923,10 @@
         <TRANSL xml:lang="zho">捏、夾</TRANSL>
     </S>
     <S id="Atayal_d8bba62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">knita/knita'</FORM>
-        <FORM kindOf="standard">knita/knita'</FORM>
-        <PHON kindOf="standard">knitaknitaʔ</PHON>
+        <FORM kindOf="original" notes="source: knita/knitaʼ">knita</FORM>
+        <FORM kindOf="standard">knita</FORM>
+        <PHON kindOf="standard">knita</PHON>
+        <FORM kindOf="alternate">knita'</FORM>
         <TRANSL xml:lang="zho">看法</TRANSL>
     </S>
     <S id="Atayal_dd91191b1-6709-f011-bd64-00155db40116">
@@ -11039,9 +11061,10 @@
         <TRANSL xml:lang="zho">負擔得起</TRANSL>
     </S>
     <S id="Atayal_d4ef55adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">kwa'un/qwa'un</FORM>
-        <FORM kindOf="standard">kwa'un/qwa'un</FORM>
-        <PHON kindOf="standard">kwaʔunqwaʔun</PHON>
+        <FORM kindOf="original" notes="source: kwaʼun/qwaʼun">kwa'un</FORM>
+        <FORM kindOf="standard">kwa'un</FORM>
+        <PHON kindOf="standard">kwaʔun</PHON>
+        <FORM kindOf="alternate">qwa'un</FORM>
         <TRANSL xml:lang="zho">承受不起</TRANSL>
     </S>
     <S id="Atayal_d1038a89f-6709-f011-bd64-00155db40116">
@@ -11810,9 +11833,10 @@
         <TRANSL xml:lang="zho" notes="名詞">疔瘡</TRANSL>
     </S>
     <S id="Atayal_d6fbb62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">linamu'/linamu</FORM>
-        <FORM kindOf="standard">linamu'/linamu</FORM>
-        <PHON kindOf="standard">linamuʔlinamu</PHON>
+        <FORM kindOf="original" notes="source: linamuʼ/linamu">linamu'</FORM>
+        <FORM kindOf="standard">linamu'</FORM>
+        <PHON kindOf="standard">linamuʔ</PHON>
+        <FORM kindOf="alternate">linamu</FORM>
         <TRANSL xml:lang="zho">所採摘的 所撿的</TRANSL>
     </S>
     <S id="Atayal_d225489b7-6709-f011-bd64-00155db40116">
@@ -11915,9 +11939,10 @@
         <TRANSL xml:lang="zho" notes="名詞">羌竹</TRANSL>
     </S>
     <S id="Atayal_d71bb62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">lk'aki'/lk'aki</FORM>
-        <FORM kindOf="standard">lk'aki'/lk'aki</FORM>
-        <PHON kindOf="standard">lkʔakiʔlkʔaki</PHON>
+        <FORM kindOf="original" notes="source: lkʼakiʼ/lkʼaki">lk'aki'</FORM>
+        <FORM kindOf="standard">lk'aki'</FORM>
+        <PHON kindOf="standard">lkʔakiʔ</PHON>
+        <FORM kindOf="alternate">lk'aki</FORM>
         <TRANSL xml:lang="zho">已過世的祖母輩</TRANSL>
     </S>
     <S id="Atayal_da441a89f-6709-f011-bd64-00155db40116">
@@ -12871,16 +12896,23 @@
         <PHON kindOf="standard">mawan</PHON>
         <TRANSL xml:lang="zho" notes="名詞">連襟</TRANSL>
     </S>
-    <S id="Atayal_dcebb62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">mawpu/mpuw</FORM>
-        <FORM kindOf="standard">mawpu/mpuw</FORM>
-        <PHON kindOf="standard">mawpumpuw</PHON>
+    <S id="Atayal_dcebb62d5-6709-f011-bd64-00155db40116_a">
+        <FORM kindOf="original" notes="source: mawpu/mpuw">mawpu</FORM>
+        <FORM kindOf="standard">mawpu</FORM>
+        <PHON kindOf="standard">mawpu</PHON>
+        <TRANSL xml:lang="zho">十</TRANSL>
+    </S>
+    <S id="Atayal_dcebb62d5-6709-f011-bd64-00155db40116_b">
+        <FORM kindOf="original" notes="source: mawpu/mpuw">mpuw</FORM>
+        <FORM kindOf="standard">mpuw</FORM>
+        <PHON kindOf="standard">mpuw</PHON>
         <TRANSL xml:lang="zho">十</TRANSL>
     </S>
     <S id="Atayal_dcfbb62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">mawsa'/mosa</FORM>
-        <FORM kindOf="standard">mawsa'/mosa</FORM>
-        <PHON kindOf="standard">maw[s|ɕ]aʔmo[s|ɕ]a</PHON>
+        <FORM kindOf="original" notes="source: mawsaʼ/mosa">mawsa'</FORM>
+        <FORM kindOf="standard">mawsa'</FORM>
+        <PHON kindOf="standard">maw[s|ɕ]aʔ</PHON>
+        <FORM kindOf="alternate">mosa</FORM>
         <TRANSL xml:lang="zho">將要去</TRANSL>
     </S>
     <S id="Atayal_ddf38a89f-6709-f011-bd64-00155db40116">
@@ -13096,9 +13128,10 @@
         <TRANSL xml:lang="zho">生蛋</TRANSL>
     </S>
     <S id="Atayal_dd4bb62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">mebkuw/mbkuw</FORM>
-        <FORM kindOf="standard">mebkuw/mbkuw</FORM>
-        <PHON kindOf="standard">meβkuwmβkuw</PHON>
+        <FORM kindOf="original" notes="source: mebkuw/mbkuw">mebkuw</FORM>
+        <FORM kindOf="standard">mebkuw</FORM>
+        <PHON kindOf="standard">meβkuw</PHON>
+        <FORM kindOf="alternate">mbkuw</FORM>
         <TRANSL xml:lang="zho">排列</TRANSL>
     </S>
     <S id="Atayal_dab5e89b7-6709-f011-bd64-00155db40116">
@@ -13120,9 +13153,10 @@
         <TRANSL xml:lang="zho">鎖起來</TRANSL>
     </S>
     <S id="Atayal_dd5bb62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">melahuy/mlahuy</FORM>
-        <FORM kindOf="standard">melahuy/mlahuy</FORM>
-        <PHON kindOf="standard">melaħujmlaħuj</PHON>
+        <FORM kindOf="original" notes="source: melahuy/mlahuy">melahuy</FORM>
+        <FORM kindOf="standard">melahuy</FORM>
+        <PHON kindOf="standard">melaħuj</PHON>
+        <FORM kindOf="alternate">mlahuy</FORM>
         <TRANSL xml:lang="zho">聚會 開會</TRANSL>
     </S>
     <S id="Atayal_ddc38a89f-6709-f011-bd64-00155db40116">
@@ -13189,9 +13223,10 @@
         <TRANSL xml:lang="zho" notes="名詞">蜈蚣</TRANSL>
     </S>
     <S id="Atayal_dd6bb62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">mesbu/msbu</FORM>
-        <FORM kindOf="standard">mesbu/msbu</FORM>
-        <PHON kindOf="standard">me[s|ɕ]βum[s|ɕ]βu</PHON>
+        <FORM kindOf="original" notes="source: mesbu/msbu">mesbu</FORM>
+        <FORM kindOf="standard">mesbu</FORM>
+        <PHON kindOf="standard">me[s|ɕ]βu</PHON>
+        <FORM kindOf="alternate">msbu</FORM>
         <TRANSL xml:lang="zho">突擊</TRANSL>
     </S>
     <S id="Atayal_d4786a0a5-6709-f011-bd64-00155db40116">
@@ -13207,9 +13242,10 @@
         <TRANSL xml:lang="zho">早上</TRANSL>
     </S>
     <S id="Atayal_dd3bb62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">me'a/mze'a</FORM>
-        <FORM kindOf="standard">me'a/mze'a</FORM>
-        <PHON kindOf="standard">meʔamzeʔa</PHON>
+        <FORM kindOf="original" notes="source: meʼa/mzeʼa">me'a</FORM>
+        <FORM kindOf="standard">me'a</FORM>
+        <PHON kindOf="standard">meʔa</PHON>
+        <FORM kindOf="alternate">mze'a</FORM>
         <TRANSL xml:lang="zho">像是 例如</TRANSL>
     </S>
     <S id="Atayal_d1a39a89f-6709-f011-bd64-00155db40116">
@@ -13513,9 +13549,10 @@
         <TRANSL xml:lang="zho" ver="alt">英俊</TRANSL>
     </S>
     <S id="Atayal_d0abc62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">mhyuci'/mhyuci</FORM>
-        <FORM kindOf="standard">mhyuci'/mhyuci</FORM>
-        <PHON kindOf="standard">mħju[ʦ|ʨ]iʔmħju[ʦ|ʨ]i</PHON>
+        <FORM kindOf="original" notes="source: mhyuciʼ/mhyuci">mhyuci'</FORM>
+        <FORM kindOf="standard">mhyuci'</FORM>
+        <PHON kindOf="standard">mħju[ʦ|ʨ]iʔ</PHON>
+        <FORM kindOf="alternate">mhyuci</FORM>
         <TRANSL xml:lang="zho">滑</TRANSL>
     </S>
     <S id="Atayal_d2dc698ab-6709-f011-bd64-00155db40116">
@@ -15590,9 +15627,10 @@
         <TRANSL xml:lang="zho">飛</TRANSL>
     </S>
     <S id="Atayal_d3abc62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">mlaka'/mlaka</FORM>
-        <FORM kindOf="standard">mlaka'/mlaka</FORM>
-        <PHON kindOf="standard">mlakaʔmlaka</PHON>
+        <FORM kindOf="original" notes="source: mlakaʼ/mlaka">mlaka'</FORM>
+        <FORM kindOf="standard">mlaka'</FORM>
+        <PHON kindOf="standard">mlakaʔ</PHON>
+        <FORM kindOf="alternate">mlaka</FORM>
         <TRANSL xml:lang="zho">飛</TRANSL>
     </S>
     <S id="Atayal_d629981bd-6709-f011-bd64-00155db40116">
@@ -15666,9 +15704,10 @@
         <TRANSL xml:lang="zho">堅持</TRANSL>
     </S>
     <S id="Atayal_d3bbc62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">mmawsa'/mmosa</FORM>
-        <FORM kindOf="standard">mmawsa'/mmosa</FORM>
-        <PHON kindOf="standard">mmaw[s|ɕ]aʔmmo[s|ɕ]a</PHON>
+        <FORM kindOf="original" notes="source: mmawsaʼ/mmosa">mmawsa'</FORM>
+        <FORM kindOf="standard">mmawsa'</FORM>
+        <PHON kindOf="standard">mmaw[s|ɕ]aʔ</PHON>
+        <FORM kindOf="alternate">mmosa</FORM>
         <TRANSL xml:lang="zho">去 將要去〈即刻型〉</TRANSL>
     </S>
     <S id="Atayal_dd541a89f-6709-f011-bd64-00155db40116">
@@ -15690,9 +15729,10 @@
         <TRANSL xml:lang="zho">等待</TRANSL>
     </S>
     <S id="Atayal_d3cbc62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">mnaga'/mnaga</FORM>
-        <FORM kindOf="standard">mnaga'/mnaga</FORM>
-        <PHON kindOf="standard">mnaɣaʔmnaɣa</PHON>
+        <FORM kindOf="original" notes="source: mnagaʼ/mnaga">mnaga'</FORM>
+        <FORM kindOf="standard">mnaga'</FORM>
+        <PHON kindOf="standard">mnaɣaʔ</PHON>
+        <FORM kindOf="alternate">mnaga</FORM>
         <TRANSL xml:lang="zho">等待</TRANSL>
     </S>
     <S id="Atayal_d629a81bd-6709-f011-bd64-00155db40116">
@@ -15738,10 +15778,16 @@
         <PHON kindOf="standard">mnara[s|ɕ]</PHON>
         <TRANSL xml:lang="zho">帶 曾帶過</TRANSL>
     </S>
-    <S id="Atayal_d40bc62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">mnaw'/mzwi</FORM>
-        <FORM kindOf="standard">mnaw'/mzwi</FORM>
-        <PHON kindOf="standard">mnawʔmzwi</PHON>
+    <S id="Atayal_d40bc62d5-6709-f011-bd64-00155db40116_a">
+        <FORM kindOf="original" notes="source: mnawʼ/mzwi">mnaw'</FORM>
+        <FORM kindOf="standard">mnaw'</FORM>
+        <PHON kindOf="standard">mnawʔ</PHON>
+        <TRANSL xml:lang="zho">玩 頑皮</TRANSL>
+    </S>
+    <S id="Atayal_d40bc62d5-6709-f011-bd64-00155db40116_b">
+        <FORM kindOf="original" notes="source: mnawʼ/mzwi">mzwi</FORM>
+        <FORM kindOf="standard">mzwi</FORM>
+        <PHON kindOf="standard">mzwi</PHON>
         <TRANSL xml:lang="zho">玩 頑皮</TRANSL>
     </S>
     <S id="Atayal_d532b72c9-6709-f011-bd64-00155db40116">
@@ -15833,9 +15879,10 @@
         <TRANSL xml:lang="zho">害怕</TRANSL>
     </S>
     <S id="Atayal_d41bc62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">mngungu'/mngungu</FORM>
-        <FORM kindOf="standard">mngungu'/mngungu</FORM>
-        <PHON kindOf="standard">mŋuŋuʔmŋuŋu</PHON>
+        <FORM kindOf="original" notes="source: mngunguʼ/mngungu">mngungu'</FORM>
+        <FORM kindOf="standard">mngungu'</FORM>
+        <PHON kindOf="standard">mŋuŋuʔ</PHON>
+        <FORM kindOf="alternate">mngungu</FORM>
         <TRANSL xml:lang="zho">懼怕</TRANSL>
     </S>
     <S id="Atayal_d591791b1-6709-f011-bd64-00155db40116">
@@ -15994,9 +16041,10 @@
         <TRANSL xml:lang="zho" ver="alt">可以</TRANSL>
     </S>
     <S id="Atayal_d43bc62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">mosa/mawsa'</FORM>
-        <FORM kindOf="standard">mosa/mawsa'</FORM>
-        <PHON kindOf="standard">mo[s|ɕ]amaw[s|ɕ]aʔ</PHON>
+        <FORM kindOf="original" notes="source: mosa/mawsaʼ">mosa</FORM>
+        <FORM kindOf="standard">mosa</FORM>
+        <PHON kindOf="standard">mo[s|ɕ]a</PHON>
+        <FORM kindOf="alternate">mawsa'</FORM>
         <TRANSL xml:lang="zho">去 將要去</TRANSL>
     </S>
     <S id="Atayal_dc138a89f-6709-f011-bd64-00155db40116">
@@ -16216,9 +16264,10 @@
         <TRANSL xml:lang="zho" ver="alt">相互認識</TRANSL>
     </S>
     <S id="Atayal_d44bc62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">mpqeway/mqeway</FORM>
-        <FORM kindOf="standard">mpqeway/mqeway</FORM>
-        <PHON kindOf="standard">mpqewajmqewaj</PHON>
+        <FORM kindOf="original" notes="source: mpqeway/mqeway">mpqeway</FORM>
+        <FORM kindOf="standard">mpqeway</FORM>
+        <PHON kindOf="standard">mpqewaj</PHON>
+        <FORM kindOf="alternate">mqeway</FORM>
         <TRANSL xml:lang="zho">遮蔽</TRANSL>
     </S>
     <S id="Atayal_dde41a89f-6709-f011-bd64-00155db40116">
@@ -16473,9 +16522,10 @@
         <TRANSL xml:lang="zho">懶惰</TRANSL>
     </S>
     <S id="Atayal_d63bc62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">mqinah/mqzinah</FORM>
-        <FORM kindOf="standard">mqinah/mqzinah</FORM>
-        <PHON kindOf="standard">mqinaħmqzinaħ</PHON>
+        <FORM kindOf="original" notes="source: mqinah/mqzinah">mqinah</FORM>
+        <FORM kindOf="standard">mqinah</FORM>
+        <PHON kindOf="standard">mqinaħ</PHON>
+        <FORM kindOf="alternate">mqzinah</FORM>
         <TRANSL xml:lang="zho">跑步</TRANSL>
     </S>
     <S id="Atayal_d623ca89f-6709-f011-bd64-00155db40116">
@@ -16551,9 +16601,10 @@
         <TRANSL xml:lang="zho" ver="alt">紫色的</TRANSL>
     </S>
     <S id="Atayal_d65bc62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">mquwas/mqwas</FORM>
-        <FORM kindOf="standard">mquwas/mqwas</FORM>
-        <PHON kindOf="standard">mquwa[s|ɕ]mqwa[s|ɕ]</PHON>
+        <FORM kindOf="original" notes="source: mquwas/mqwas">mquwas</FORM>
+        <FORM kindOf="standard">mquwas</FORM>
+        <PHON kindOf="standard">mquwa[s|ɕ]</PHON>
+        <FORM kindOf="alternate">mqwas</FORM>
         <TRANSL xml:lang="zho">讀書 唱</TRANSL>
     </S>
     <S id="Atayal_d453da89f-6709-f011-bd64-00155db40116">
@@ -16830,9 +16881,10 @@
         <TRANSL xml:lang="zho">破爛</TRANSL>
     </S>
     <S id="Atayal_d67bc62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">msgalu'/mggalu</FORM>
-        <FORM kindOf="standard">msgalu'/mggalu</FORM>
-        <PHON kindOf="standard">m[s|ɕ]ɣaluʔmɣɣalu</PHON>
+        <FORM kindOf="original" notes="source: msgaluʼ/mggalu">msgalu'</FORM>
+        <FORM kindOf="standard">msgalu'</FORM>
+        <PHON kindOf="standard">m[s|ɕ]ɣaluʔ</PHON>
+        <FORM kindOf="alternate">mggalu</FORM>
         <TRANSL xml:lang="zho">互相友愛</TRANSL>
     </S>
     <S id="Atayal_d5842a89f-6709-f011-bd64-00155db40116">
@@ -16866,9 +16918,10 @@
         <TRANSL xml:lang="zho">下雪</TRANSL>
     </S>
     <S id="Atayal_d69bc62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">mshlax/mshlah</FORM>
-        <FORM kindOf="standard">mshlax/mshlah</FORM>
-        <PHON kindOf="standard">m[s|ɕ]ħlaxm[s|ɕ]ħlaħ</PHON>
+        <FORM kindOf="original" notes="source: mshlax/mshlah">mshlax</FORM>
+        <FORM kindOf="standard">mshlax</FORM>
+        <PHON kindOf="standard">m[s|ɕ]ħlax</PHON>
+        <FORM kindOf="alternate">mshlah</FORM>
         <TRANSL xml:lang="zho">散開</TRANSL>
     </S>
     <S id="Atayal_db443a89f-6709-f011-bd64-00155db40116">
@@ -16935,9 +16988,10 @@
         <TRANSL xml:lang="zho">兔唇</TRANSL>
     </S>
     <S id="Atayal_d6bbc62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">mskawngat/mskongat</FORM>
-        <FORM kindOf="standard">mskawngat/mskongat</FORM>
-        <PHON kindOf="standard">m[s|ɕ]kawŋatm[s|ɕ]koŋat</PHON>
+        <FORM kindOf="original" notes="source: mskawngat/mskongat">mskawngat</FORM>
+        <FORM kindOf="standard">mskawngat</FORM>
+        <PHON kindOf="standard">m[s|ɕ]kawŋat</PHON>
+        <FORM kindOf="alternate">mskongat</FORM>
         <TRANSL xml:lang="zho">消失</TRANSL>
     </S>
     <S id="Atayal_dcb7da0a5-6709-f011-bd64-00155db40116">
@@ -17044,10 +17098,16 @@
         <PHON kindOf="standard">m[s|ɕ]mawan</PHON>
         <TRANSL xml:lang="zho">互當連襟</TRANSL>
     </S>
-    <S id="Atayal_d6cbc62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">msmi'/msl'uy</FORM>
-        <FORM kindOf="standard">msmi'/msl'uy</FORM>
-        <PHON kindOf="standard">m[s|ɕ]miʔm[s|ɕ]lʔuj</PHON>
+    <S id="Atayal_d6cbc62d5-6709-f011-bd64-00155db40116_a">
+        <FORM kindOf="original" notes="source: msmiʼ/mslʼuy">msmi'</FORM>
+        <FORM kindOf="standard">msmi'</FORM>
+        <PHON kindOf="standard">m[s|ɕ]miʔ</PHON>
+        <TRANSL xml:lang="zho">潮濕</TRANSL>
+    </S>
+    <S id="Atayal_d6cbc62d5-6709-f011-bd64-00155db40116_b">
+        <FORM kindOf="original" notes="source: msmiʼ/mslʼuy">msl'uy</FORM>
+        <FORM kindOf="standard">msl'uy</FORM>
+        <PHON kindOf="standard">m[s|ɕ]lʔuj</PHON>
         <TRANSL xml:lang="zho">潮濕</TRANSL>
     </S>
     <S id="Atayal_d7c7ea0a5-6709-f011-bd64-00155db40116">
@@ -17226,9 +17286,10 @@
         <TRANSL xml:lang="zho">仰躺</TRANSL>
     </S>
     <S id="Atayal_d6fbc62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">msrawin/mtrawin</FORM>
-        <FORM kindOf="standard">msrawin/mtrawin</FORM>
-        <PHON kindOf="standard">m[s|ɕ]rawinmtrawin</PHON>
+        <FORM kindOf="original" notes="source: msrawin/mtrawin">msrawin</FORM>
+        <FORM kindOf="standard">msrawin</FORM>
+        <PHON kindOf="standard">m[s|ɕ]rawin</PHON>
+        <FORM kindOf="alternate">mtrawin</FORM>
         <TRANSL xml:lang="zho">表兄弟</TRANSL>
     </S>
     <S id="Atayal_dc580a0a5-6709-f011-bd64-00155db40116">
@@ -17499,9 +17560,10 @@
         <TRANSL xml:lang="zho">地震</TRANSL>
     </S>
     <S id="Atayal_db7bc62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">ms'unuw / m'unu</FORM>
-        <FORM kindOf="standard">ms'unuw / m'unu</FORM>
-        <PHON kindOf="standard">m[s|ɕ]ʔunuw  mʔunu</PHON>
+        <FORM kindOf="original" notes="source: msʼunuw / mʼunu">ms'unuw</FORM>
+        <FORM kindOf="standard">ms'unuw</FORM>
+        <PHON kindOf="standard">m[s|ɕ]ʔunuw</PHON>
+        <FORM kindOf="alternate">m'unu</FORM>
         <TRANSL xml:lang="zho">地震</TRANSL>
     </S>
     <S id="Atayal_de883a0a5-6709-f011-bd64-00155db40116">
@@ -17768,9 +17830,10 @@
         <TRANSL xml:lang="zho" ver="alt">滑跤、溜滑（梯）</TRANSL>
     </S>
     <S id="Atayal_dafbc62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">mth'yuci'/mthyuci</FORM>
-        <FORM kindOf="standard">mth'yuci'/mthyuci</FORM>
-        <PHON kindOf="standard">mtħʔju[ʦ|ʨ]iʔmtħju[ʦ|ʨ]i</PHON>
+        <FORM kindOf="original" notes="source: mthʼyuciʼ/mthyuci">mth'yuci'</FORM>
+        <FORM kindOf="standard">mth'yuci'</FORM>
+        <PHON kindOf="standard">mtħʔju[ʦ|ʨ]iʔ</PHON>
+        <FORM kindOf="alternate">mthyuci</FORM>
         <TRANSL xml:lang="zho">滑腳</TRANSL>
     </S>
     <S id="Atayal_d5184a0a5-6709-f011-bd64-00155db40116">
@@ -17794,9 +17857,10 @@
         <TRANSL xml:lang="zho">頭暈</TRANSL>
     </S>
     <S id="Atayal_db0bc62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">mtkibuw/mtkzibuw</FORM>
-        <FORM kindOf="standard">mtkibuw/mtkzibuw</FORM>
-        <PHON kindOf="standard">mtkiβuwmtkziβuw</PHON>
+        <FORM kindOf="original" notes="source: mtkibuw/mtkzibuw">mtkibuw</FORM>
+        <FORM kindOf="standard">mtkibuw</FORM>
+        <PHON kindOf="standard">mtkiβuw</PHON>
+        <FORM kindOf="alternate">mtkzibuw</FORM>
         <TRANSL xml:lang="zho">黏人〈孩子黏人〉</TRANSL>
     </S>
     <S id="Atayal_d4ac798ab-6709-f011-bd64-00155db40116">
@@ -18187,10 +18251,22 @@
         <PHON kindOf="standard">mtʔa[s|ɕ]iʔ</PHON>
         <TRANSL xml:lang="zho">打噴嚏</TRANSL>
     </S>
-    <S id="Atayal_daebc62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">mt'asi'/t'asi / cbingut</FORM>
-        <FORM kindOf="standard">mt'asi'/t'asi / cbingut</FORM>
-        <PHON kindOf="standard">mtʔa[s|ɕ]iʔtʔa[s|ɕ]i  [ʦ|ʨ]βiŋut</PHON>
+    <S id="Atayal_daebc62d5-6709-f011-bd64-00155db40116_a">
+        <FORM kindOf="original" notes="source: mtʼasiʼ/tʼasi / cbingut">mt'asi'</FORM>
+        <FORM kindOf="standard">mt'asi'</FORM>
+        <PHON kindOf="standard">mtʔa[s|ɕ]iʔ</PHON>
+        <TRANSL xml:lang="zho">打噴嚏</TRANSL>
+    </S>
+    <S id="Atayal_daebc62d5-6709-f011-bd64-00155db40116_b">
+        <FORM kindOf="original" notes="source: mtʼasiʼ/tʼasi / cbingut">t'asi</FORM>
+        <FORM kindOf="standard">t'asi</FORM>
+        <PHON kindOf="standard">tʔa[s|ɕ]i</PHON>
+        <TRANSL xml:lang="zho">打噴嚏</TRANSL>
+    </S>
+    <S id="Atayal_daebc62d5-6709-f011-bd64-00155db40116_c">
+        <FORM kindOf="original" notes="source: mtʼasiʼ/tʼasi / cbingut">cbingut</FORM>
+        <FORM kindOf="standard">cbingut</FORM>
+        <PHON kindOf="standard">[ʦ|ʨ]βiŋut</PHON>
         <TRANSL xml:lang="zho">打噴嚏</TRANSL>
     </S>
     <S id="Atayal_d538ca0a5-6709-f011-bd64-00155db40116">
@@ -18252,15 +18328,22 @@
         <TRANSL xml:lang="zho">太陽出現了</TRANSL>
     </S>
     <S id="Atayal_db3bc62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">mu/maku</FORM>
-        <FORM kindOf="standard">mu/maku</FORM>
-        <PHON kindOf="standard">mumaku</PHON>
+        <FORM kindOf="original" notes="source: mu/maku">mu</FORM>
+        <FORM kindOf="standard">mu</FORM>
+        <PHON kindOf="standard">mu</PHON>
+        <FORM kindOf="alternate">maku</FORM>
         <TRANSL xml:lang="zho">我</TRANSL>
     </S>
-    <S id="Atayal_db5bc62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">mu/maku'</FORM>
-        <FORM kindOf="standard">mu/maku'</FORM>
-        <PHON kindOf="standard">mumakuʔ</PHON>
+    <S id="Atayal_db5bc62d5-6709-f011-bd64-00155db40116_a">
+        <FORM kindOf="original" notes="source: mu/makuʼ">mu</FORM>
+        <FORM kindOf="standard">mu</FORM>
+        <PHON kindOf="standard">mu</PHON>
+        <TRANSL xml:lang="zho">我</TRANSL>
+    </S>
+    <S id="Atayal_db5bc62d5-6709-f011-bd64-00155db40116_b">
+        <FORM kindOf="original" notes="source: mu/makuʼ">maku'</FORM>
+        <FORM kindOf="standard">maku'</FORM>
+        <PHON kindOf="standard">makuʔ</PHON>
         <TRANSL xml:lang="zho">我</TRANSL>
     </S>
     <S id="Atayal_d2f3aa89f-6709-f011-bd64-00155db40116">
@@ -18419,9 +18502,10 @@
         <TRANSL xml:lang="zho">來</TRANSL>
     </S>
     <S id="Atayal_db8bc62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">muya/muhi</FORM>
-        <FORM kindOf="standard">muya/muhi</FORM>
-        <PHON kindOf="standard">mujamuħi</PHON>
+        <FORM kindOf="original" notes="source: muya/muhi">muya</FORM>
+        <FORM kindOf="standard">muya</FORM>
+        <PHON kindOf="standard">muja</PHON>
+        <FORM kindOf="alternate">muhi</FORM>
         <TRANSL xml:lang="zho">種植</TRANSL>
     </S>
     <S id="Atayal_dd638a89f-6709-f011-bd64-00155db40116">
@@ -18642,9 +18726,10 @@
         <TRANSL xml:lang="zho" notes="名詞">流行性感冒</TRANSL>
     </S>
     <S id="Atayal_dd0bb62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">m'ba'/m'ba</FORM>
-        <FORM kindOf="standard">m'ba'/m'ba</FORM>
-        <PHON kindOf="standard">mʔβaʔmʔβa</PHON>
+        <FORM kindOf="original" notes="source: mʼbaʼ/mʼba">m'ba'</FORM>
+        <FORM kindOf="standard">m'ba'</FORM>
+        <PHON kindOf="standard">mʔβaʔ</PHON>
+        <FORM kindOf="alternate">m'ba</FORM>
         <TRANSL xml:lang="zho">腫</TRANSL>
     </S>
     <S id="Atayal_ddabb62d5-6709-f011-bd64-00155db40116">
@@ -18723,10 +18808,16 @@
         <PHON kindOf="standard">mʔujaj</PHON>
         <TRANSL xml:lang="zho">飢餓</TRANSL>
     </S>
-    <S id="Atayal_d05f95adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">m'uyay / k'yayan</FORM>
-        <FORM kindOf="standard">m'uyay / k'yayan</FORM>
-        <PHON kindOf="standard">mʔujaj  kʔjajan</PHON>
+    <S id="Atayal_d05f95adb-6709-f011-bd64-00155db40116_a">
+        <FORM kindOf="original" notes="source: mʼuyay / kʼyayan">m'uyay</FORM>
+        <FORM kindOf="standard">m'uyay</FORM>
+        <PHON kindOf="standard">mʔujaj</PHON>
+        <TRANSL xml:lang="zho">飢餓</TRANSL>
+    </S>
+    <S id="Atayal_d05f95adb-6709-f011-bd64-00155db40116_b">
+        <FORM kindOf="original" notes="source: mʼuyay / kʼyayan">k'yayan</FORM>
+        <FORM kindOf="standard">k'yayan</FORM>
+        <PHON kindOf="standard">kʔjajan</PHON>
         <TRANSL xml:lang="zho">飢餓</TRANSL>
     </S>
     <S id="Atayal_dc15189b7-6709-f011-bd64-00155db40116">
@@ -19191,9 +19282,10 @@
         <TRANSL xml:lang="zho" ver="alt">他們的</TRANSL>
     </S>
     <S id="Atayal_db7f05adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">nhi/nhay</FORM>
-        <FORM kindOf="standard">nhi/nhay</FORM>
-        <PHON kindOf="standard">nħinħaj</PHON>
+        <FORM kindOf="original" notes="source: nhi/nhay">nhi</FORM>
+        <FORM kindOf="standard">nhi</FORM>
+        <PHON kindOf="standard">nħi</PHON>
+        <FORM kindOf="alternate">nhay</FORM>
         <TRANSL xml:lang="zho">趕快</TRANSL>
     </S>
     <S id="Atayal_d8243a89f-6709-f011-bd64-00155db40116">
@@ -19490,9 +19582,10 @@
         <TRANSL xml:lang="zho" ver="alt">他的</TRANSL>
     </S>
     <S id="Atayal_d51f15adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">nya'/nya</FORM>
-        <FORM kindOf="standard">nya'/nya</FORM>
-        <PHON kindOf="standard">njaʔnja</PHON>
+        <FORM kindOf="original" notes="source: nyaʼ/nya">nya'</FORM>
+        <FORM kindOf="standard">nya'</FORM>
+        <PHON kindOf="standard">njaʔ</PHON>
+        <FORM kindOf="alternate">nya</FORM>
         <TRANSL xml:lang="zho">他 它</TRANSL>
     </S>
     <S id="Atayal_d3839a89f-6709-f011-bd64-00155db40116">
@@ -19712,9 +19805,10 @@
         <TRANSL xml:lang="zho" notes="動詞">詢問</TRANSL>
     </S>
     <S id="Atayal_d56f15adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">para/para'</FORM>
-        <FORM kindOf="standard">para/para'</FORM>
-        <PHON kindOf="standard">paraparaʔ</PHON>
+        <FORM kindOf="original" notes="source: para/paraʼ">para</FORM>
+        <FORM kindOf="standard">para</FORM>
+        <PHON kindOf="standard">para</PHON>
+        <FORM kindOf="alternate">para'</FORM>
         <TRANSL xml:lang="zho">山羌</TRANSL>
     </S>
     <S id="Atayal_da539a89f-6709-f011-bd64-00155db40116">
@@ -19767,10 +19861,16 @@
         <PHON kindOf="standard">pajat</PHON>
         <TRANSL xml:lang="zho">四</TRANSL>
     </S>
-    <S id="Atayal_d8543a89f-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">paypay/hokung</FORM>
-        <FORM kindOf="standard">paypay/hokung</FORM>
-        <PHON kindOf="standard">pajpajħokuŋ</PHON>
+    <S id="Atayal_d8543a89f-6709-f011-bd64-00155db40116_a">
+        <FORM kindOf="original" notes="source: paypay/hokung">paypay</FORM>
+        <FORM kindOf="standard">paypay</FORM>
+        <PHON kindOf="standard">pajpaj</PHON>
+        <TRANSL xml:lang="zho">拜拜</TRANSL>
+    </S>
+    <S id="Atayal_d8543a89f-6709-f011-bd64-00155db40116_b">
+        <FORM kindOf="original" notes="source: paypay/hokung">hokung</FORM>
+        <FORM kindOf="standard">hokung</FORM>
+        <PHON kindOf="standard">ħokuŋ</PHON>
         <TRANSL xml:lang="zho">拜拜</TRANSL>
     </S>
     <S id="Atayal_d9b39a89f-6709-f011-bd64-00155db40116">
@@ -20147,9 +20247,10 @@
         <TRANSL xml:lang="zho">北回歸線</TRANSL>
     </S>
     <S id="Atayal_df343a89f-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">pg_yax/pgiyax</FORM>
-        <FORM kindOf="standard">pg_yax/pgiyax</FORM>
-        <PHON kindOf="standard">pɣəjaxpɣijax</PHON>
+        <FORM kindOf="original" notes="source: pg_yax/pgiyax">pg_yax</FORM>
+        <FORM kindOf="standard">pg_yax</FORM>
+        <PHON kindOf="standard">pɣəjax</PHON>
+        <FORM kindOf="alternate">pgiyax</FORM>
         <TRANSL xml:lang="zho">摔落；掉落；跌落</TRANSL>
     </S>
     <S id="Atayal_db7c398ab-6709-f011-bd64-00155db40116">
@@ -20995,9 +21096,10 @@
         <TRANSL xml:lang="zho">釣</TRANSL>
     </S>
     <S id="Atayal_dabae62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">ping/pincyang</FORM>
-        <FORM kindOf="standard">ping/pincyang</FORM>
-        <PHON kindOf="standard">piŋpin[ʦ|ʨ]jaŋ</PHON>
+        <FORM kindOf="original" notes="source: ping/pincyang">ping</FORM>
+        <FORM kindOf="standard">ping</FORM>
+        <PHON kindOf="standard">piŋ</PHON>
+        <FORM kindOf="alternate">pincyang</FORM>
         <TRANSL xml:lang="zho">別針（胸花）</TRANSL>
     </S>
     <S id="Atayal_dfa9381bd-6709-f011-bd64-00155db40116">
@@ -21025,9 +21127,10 @@
         <TRANSL xml:lang="zho">砌石垣</TRANSL>
     </S>
     <S id="Atayal_dc7f15adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">pinhkngyan/pinhknyan</FORM>
-        <FORM kindOf="standard">pinhkngyan/pinhknyan</FORM>
-        <PHON kindOf="standard">pinħkŋjanpinħknjan</PHON>
+        <FORM kindOf="original" notes="source: pinhkngyan/pinhknyan">pinhkngyan</FORM>
+        <FORM kindOf="standard">pinhkngyan</FORM>
+        <PHON kindOf="standard">pinħkŋjan</PHON>
+        <FORM kindOf="alternate">pinhknyan</FORM>
         <TRANSL xml:lang="zho">所經歷的 所走的</TRANSL>
     </S>
     <S id="Atayal_dd09481bd-6709-f011-bd64-00155db40116">
@@ -21484,10 +21587,16 @@
         <PHON kindOf="standard">pinuħi</PHON>
         <TRANSL xml:lang="zho">栽種</TRANSL>
     </S>
-    <S id="Atayal_d4ff25adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">pinuhi / pnuya'</FORM>
-        <FORM kindOf="standard">pinuhi / pnuya'</FORM>
-        <PHON kindOf="standard">pinuħi  pnujaʔ</PHON>
+    <S id="Atayal_d4ff25adb-6709-f011-bd64-00155db40116_a">
+        <FORM kindOf="original" notes="source: pinuhi / pnuyaʼ">pinuhi</FORM>
+        <FORM kindOf="standard">pinuhi</FORM>
+        <PHON kindOf="standard">pinuħi</PHON>
+        <TRANSL xml:lang="zho">所種植</TRANSL>
+    </S>
+    <S id="Atayal_d4ff25adb-6709-f011-bd64-00155db40116_b">
+        <FORM kindOf="original" notes="source: pinuhi / pnuyaʼ">pnuya'</FORM>
+        <FORM kindOf="standard">pnuya'</FORM>
+        <PHON kindOf="standard">pnujaʔ</PHON>
         <TRANSL xml:lang="zho">所種植</TRANSL>
     </S>
     <S id="Atayal_d397da0a5-6709-f011-bd64-00155db40116">
@@ -22017,10 +22126,16 @@
         <TRANSL xml:lang="zho">將照顧</TRANSL>
         <TRANSL xml:lang="zho" ver="alt">使...照顧</TRANSL>
     </S>
-    <S id="Atayal_da4ac62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">pklahang uha/pklahang laqi hbku</FORM>
-        <FORM kindOf="standard">pklahang uha/pklahang laqi hbku</FORM>
-        <PHON kindOf="standard">pklaħaŋ uħapklaħaŋ laqi ħβku</PHON>
+    <S id="Atayal_da4ac62d5-6709-f011-bd64-00155db40116_a">
+        <FORM kindOf="original" notes="source: pklahang uha/pklahang laqi hbku">pklahang uha</FORM>
+        <FORM kindOf="standard">pklahang uha</FORM>
+        <PHON kindOf="standard">pklaħaŋ uħa</PHON>
+        <TRANSL xml:lang="zho">保母</TRANSL>
+    </S>
+    <S id="Atayal_da4ac62d5-6709-f011-bd64-00155db40116_b">
+        <FORM kindOf="original" notes="source: pklahang uha/pklahang laqi hbku">pklahang laqi hbku</FORM>
+        <FORM kindOf="standard">pklahang laqi hbku</FORM>
+        <PHON kindOf="standard">pklaħaŋ laqi ħβku</PHON>
         <TRANSL xml:lang="zho">保母</TRANSL>
     </S>
     <S id="Atayal_da43aa89f-6709-f011-bd64-00155db40116">
@@ -22346,9 +22461,10 @@
         <TRANSL xml:lang="zho">將炒</TRANSL>
     </S>
     <S id="Atayal_d55f25adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">pksos / pksyus</FORM>
-        <FORM kindOf="standard">pksos / pksyus</FORM>
-        <PHON kindOf="standard">pk[s|ɕ]o[s|ɕ]  pk[s|ɕ]ju[s|ɕ]</PHON>
+        <FORM kindOf="original" notes="source: pksos / pksyus">pksos</FORM>
+        <FORM kindOf="standard">pksos</FORM>
+        <PHON kindOf="standard">pk[s|ɕ]o[s|ɕ]</PHON>
+        <FORM kindOf="alternate">pksyus</FORM>
         <TRANSL xml:lang="zho">炒</TRANSL>
     </S>
     <S id="Atayal_d3e9981bd-6709-f011-bd64-00155db40116">
@@ -22950,9 +23066,10 @@
         <TRANSL xml:lang="zho">小心</TRANSL>
     </S>
     <S id="Atayal_d217ea0a5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">pn_gabaq/pinnbaq</FORM>
-        <FORM kindOf="standard">pn_gabaq/pinnbaq</FORM>
-        <PHON kindOf="standard">pnɣaβaqpinnβaq</PHON>
+        <FORM kindOf="original" notes="source: pn_gabaq/pinnbaq">pn_gabaq</FORM>
+        <FORM kindOf="standard">pn_gabaq</FORM>
+        <PHON kindOf="standard">pnɣaβaq</PHON>
+        <FORM kindOf="alternate">pinnbaq</FORM>
         <TRANSL xml:lang="zho">小心</TRANSL>
     </S>
     <S id="Atayal_d1f7ea0a5-6709-f011-bd64-00155db40116">
@@ -23034,9 +23151,10 @@
         <TRANSL xml:lang="zho" notes="名詞">箭</TRANSL>
     </S>
     <S id="Atayal_d5bf25adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">pneluq/pnayluq</FORM>
-        <FORM kindOf="standard">pneluq/pnayluq</FORM>
-        <PHON kindOf="standard">pneluqpnajluq</PHON>
+        <FORM kindOf="original" notes="source: pneluq/pnayluq">pneluq</FORM>
+        <FORM kindOf="standard">pneluq</FORM>
+        <PHON kindOf="standard">pneluq</PHON>
+        <FORM kindOf="alternate">pnayluq</FORM>
         <TRANSL xml:lang="zho">箭矢</TRANSL>
     </S>
     <S id="Atayal_d207ea0a5-6709-f011-bd64-00155db40116">
@@ -23053,9 +23171,10 @@
         <TRANSL xml:lang="zho">釣</TRANSL>
     </S>
     <S id="Atayal_d8df35adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">pnet/ptnep</FORM>
-        <FORM kindOf="standard">pnet/ptnep</FORM>
-        <PHON kindOf="standard">pnetptnep</PHON>
+        <FORM kindOf="original" notes="source: pnet/ptnep">pnet</FORM>
+        <FORM kindOf="standard">pnet</FORM>
+        <PHON kindOf="standard">pnet</PHON>
+        <FORM kindOf="alternate">ptnep</FORM>
         <TRANSL xml:lang="zho">釣 詐騙</TRANSL>
     </S>
     <S id="Atayal_d5cf25adb-6709-f011-bd64-00155db40116">
@@ -24062,10 +24181,16 @@
         <PHON kindOf="standard">pquzit</PHON>
         <TRANSL xml:lang="zho">將轉（扭、擰、捲）</TRANSL>
     </S>
-    <S id="Atayal_dc5726acf-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">pquzit xikoki/pquzit qasu plaka</FORM>
-        <FORM kindOf="standard">pquzit xikoki/pquzit qasu plaka</FORM>
-        <PHON kindOf="standard">pquzit xikokipquzit qa[s|ɕ]u plaka</PHON>
+    <S id="Atayal_dc5726acf-6709-f011-bd64-00155db40116_a">
+        <FORM kindOf="original" notes="source: pquzit xikoki/pquzit qasu plaka">pquzit xikoki</FORM>
+        <FORM kindOf="standard">pquzit xikoki</FORM>
+        <PHON kindOf="standard">pquzit xikoki</PHON>
+        <TRANSL xml:lang="zho">機師（飛機）</TRANSL>
+    </S>
+    <S id="Atayal_dc5726acf-6709-f011-bd64-00155db40116_b">
+        <FORM kindOf="original" notes="source: pquzit xikoki/pquzit qasu plaka">pquzit qasu plaka</FORM>
+        <FORM kindOf="standard">pquzit qasu plaka</FORM>
+        <PHON kindOf="standard">pquzit qa[s|ɕ]u plaka</PHON>
         <TRANSL xml:lang="zho">機師（飛機）</TRANSL>
     </S>
     <S id="Atayal_d483da89f-6709-f011-bd64-00155db40116">
@@ -24812,10 +24937,16 @@
         <TRANSL xml:lang="zho" ver="alt">使...聚集</TRANSL>
         <TRANSL xml:lang="zho" ver="alt">將要儲存</TRANSL>
     </S>
-    <S id="Atayal_dd2f25adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">pslkotas/Smyus</FORM>
-        <FORM kindOf="standard">pslkotas/Smyus</FORM>
-        <PHON kindOf="standard">p[s|ɕ]lkota[s|ɕ][s|ɕ]mju[s|ɕ]</PHON>
+    <S id="Atayal_dd2f25adb-6709-f011-bd64-00155db40116_a">
+        <FORM kindOf="original" notes="source: pslkotas/Smyus">pslkotas</FORM>
+        <FORM kindOf="standard">pslkotas</FORM>
+        <PHON kindOf="standard">p[s|ɕ]lkota[s|ɕ]</PHON>
+        <TRANSL xml:lang="zho">祖靈祭 收穫感恩祭</TRANSL>
+    </S>
+    <S id="Atayal_dd2f25adb-6709-f011-bd64-00155db40116_b">
+        <FORM kindOf="original" notes="source: pslkotas/Smyus">Smyus</FORM>
+        <FORM kindOf="standard">Smyus</FORM>
+        <PHON kindOf="standard">[s|ɕ]mju[s|ɕ]</PHON>
         <TRANSL xml:lang="zho">祖靈祭 收穫感恩祭</TRANSL>
     </S>
     <S id="Atayal_d777ea0a5-6709-f011-bd64-00155db40116">
@@ -25791,9 +25922,10 @@
         <TRANSL xml:lang="zho">將生氣</TRANSL>
     </S>
     <S id="Atayal_d8cf35adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">ptlun/ptlwan</FORM>
-        <FORM kindOf="standard">ptlun/ptlwan</FORM>
-        <PHON kindOf="standard">ptlunptlwan</PHON>
+        <FORM kindOf="original" notes="source: ptlun/ptlwan">ptlun</FORM>
+        <FORM kindOf="standard">ptlun</FORM>
+        <PHON kindOf="standard">ptlun</PHON>
+        <FORM kindOf="alternate">ptlwan</FORM>
         <TRANSL xml:lang="zho">找到 巧遇</TRANSL>
     </S>
     <S id="Atayal_d563aa89f-6709-f011-bd64-00155db40116">
@@ -26339,9 +26471,10 @@
         <TRANSL xml:lang="zho">使...來（去）</TRANSL>
     </S>
     <S id="Atayal_d91f35adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">pxan/'pxan</FORM>
-        <FORM kindOf="standard">pxan/'pxan</FORM>
-        <PHON kindOf="standard">pxanʔpxan</PHON>
+        <FORM kindOf="original" notes="source: pxan/ʼpxan">pxan</FORM>
+        <FORM kindOf="standard">pxan</FORM>
+        <PHON kindOf="standard">pxan</PHON>
+        <FORM kindOf="alternate">'pxan</FORM>
         <TRANSL xml:lang="zho">壓住</TRANSL>
     </S>
     <S id="Atayal_dad39a89f-6709-f011-bd64-00155db40116">
@@ -26551,10 +26684,16 @@
         <PHON kindOf="standard">pʔŋa</PHON>
         <TRANSL xml:lang="zho">種苗（動作）</TRANSL>
     </S>
-    <S id="Atayal_d5df25adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">p'nga/yong</FORM>
-        <FORM kindOf="standard">p'nga/yong</FORM>
-        <PHON kindOf="standard">pʔŋajoŋ</PHON>
+    <S id="Atayal_d5df25adb-6709-f011-bd64-00155db40116_a">
+        <FORM kindOf="original" notes="source: pʼnga/yong">p'nga</FORM>
+        <FORM kindOf="standard">p'nga</FORM>
+        <PHON kindOf="standard">pʔŋa</PHON>
+        <TRANSL xml:lang="zho">育秧苗</TRANSL>
+    </S>
+    <S id="Atayal_d5df25adb-6709-f011-bd64-00155db40116_b">
+        <FORM kindOf="original" notes="source: pʼnga/yong">yong</FORM>
+        <FORM kindOf="standard">yong</FORM>
+        <PHON kindOf="standard">joŋ</PHON>
         <TRANSL xml:lang="zho">育秧苗</TRANSL>
     </S>
     <S id="Atayal_d5fd098ab-6709-f011-bd64-00155db40116">
@@ -27056,9 +27195,10 @@
         <TRANSL xml:lang="zho" ver="alt">儘量</TRANSL>
     </S>
     <S id="Atayal_dacf45adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">qeri/qayri'</FORM>
-        <FORM kindOf="standard">qeri/qayri'</FORM>
-        <PHON kindOf="standard">qeriqajriʔ</PHON>
+        <FORM kindOf="original" notes="source: qeri/qayriʼ">qeri</FORM>
+        <FORM kindOf="standard">qeri</FORM>
+        <PHON kindOf="standard">qeri</PHON>
+        <FORM kindOf="alternate">qayri'</FORM>
         <TRANSL xml:lang="zho">盡量 多多</TRANSL>
     </S>
     <S id="Atayal_d173ba89f-6709-f011-bd64-00155db40116">
@@ -27161,9 +27301,11 @@
         <TRANSL xml:lang="zho">挖</TRANSL>
     </S>
     <S id="Atayal_db3f45adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">qhya/mqhya'/mhqya</FORM>
-        <FORM kindOf="standard">qhya/mqhya'/mhqya</FORM>
-        <PHON kindOf="standard">qħjamqħjaʔmħqja</PHON>
+        <FORM kindOf="original" notes="source: qhya/mqhyaʼ/mhqya">qhya</FORM>
+        <FORM kindOf="standard">qhya</FORM>
+        <PHON kindOf="standard">qħja</PHON>
+        <FORM kindOf="alternate">mqhya'</FORM>
+        <FORM kindOf="alternate">mhqya</FORM>
         <TRANSL xml:lang="zho">渴</TRANSL>
     </S>
     <S id="Atayal_dc73aa89f-6709-f011-bd64-00155db40116">
@@ -28835,9 +28977,10 @@
         <TRANSL xml:lang="zho" ver="alt">哥哥</TRANSL>
     </S>
     <S id="Atayal_d48f55adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">qsuzyan/qbsuyan</FORM>
-        <FORM kindOf="standard">qsuzyan/qbsuyan</FORM>
-        <PHON kindOf="standard">q[s|ɕ]uzjanqβ[s|ɕ]ujan</PHON>
+        <FORM kindOf="original" notes="source: qsuzyan/qbsuyan">qsuzyan</FORM>
+        <FORM kindOf="standard">qsuzyan</FORM>
+        <PHON kindOf="standard">q[s|ɕ]uzjan</PHON>
+        <FORM kindOf="alternate">qbsuyan</FORM>
         <TRANSL xml:lang="zho">兄 姊</TRANSL>
     </S>
     <S id="Atayal_da53ba89f-6709-f011-bd64-00155db40116">
@@ -28847,9 +28990,10 @@
         <TRANSL xml:lang="zho" notes="動詞">先、先前</TRANSL>
     </S>
     <S id="Atayal_d49f55adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">qsya/qsya'</FORM>
-        <FORM kindOf="standard">qsya/qsya'</FORM>
-        <PHON kindOf="standard">q[s|ɕ]jaq[s|ɕ]jaʔ</PHON>
+        <FORM kindOf="original" notes="source: qsya/qsyaʼ">qsya</FORM>
+        <FORM kindOf="standard">qsya</FORM>
+        <PHON kindOf="standard">q[s|ɕ]ja</PHON>
+        <FORM kindOf="alternate">qsya'</FORM>
         <TRANSL xml:lang="zho">水</TRANSL>
     </S>
     <S id="Atayal_dd23aa89f-6709-f011-bd64-00155db40116">
@@ -28914,9 +29058,10 @@
         <TRANSL xml:lang="zho" ver="alt">粗</TRANSL>
     </S>
     <S id="Atayal_d4bf55adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">qtmun/qtamun</FORM>
-        <FORM kindOf="standard">qtmun/qtamun</FORM>
-        <PHON kindOf="standard">qtmunqtamun</PHON>
+        <FORM kindOf="original" notes="source: qtmun/qtamun">qtmun</FORM>
+        <FORM kindOf="standard">qtmun</FORM>
+        <PHON kindOf="standard">qtmun</PHON>
+        <FORM kindOf="alternate">qtamun</FORM>
         <TRANSL xml:lang="zho">吞</TRANSL>
     </S>
     <S id="Atayal_d0f3ca89f-6709-f011-bd64-00155db40116">
@@ -29279,10 +29424,16 @@
         <PHON kindOf="standard">qzjaj</PHON>
         <TRANSL xml:lang="zho">掛、吊</TRANSL>
     </S>
-    <S id="Atayal_d51f55adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">qzyuhungun/tmaq</FORM>
-        <FORM kindOf="standard">qzyuhungun/tmaq</FORM>
-        <PHON kindOf="standard">qzjuħuŋuntmaq</PHON>
+    <S id="Atayal_d51f55adb-6709-f011-bd64-00155db40116_a">
+        <FORM kindOf="original" notes="source: qzyuhungun/tmaq">qzyuhungun</FORM>
+        <FORM kindOf="standard">qzyuhungun</FORM>
+        <PHON kindOf="standard">qzjuħuŋun</PHON>
+        <TRANSL xml:lang="zho">雕</TRANSL>
+    </S>
+    <S id="Atayal_d51f55adb-6709-f011-bd64-00155db40116_b">
+        <FORM kindOf="original" notes="source: qzyuhungun/tmaq">tmaq</FORM>
+        <FORM kindOf="standard">tmaq</FORM>
+        <PHON kindOf="standard">tmaq</PHON>
         <TRANSL xml:lang="zho">雕</TRANSL>
     </S>
     <S id="Atayal_d323ba89f-6709-f011-bd64-00155db40116">
@@ -30029,9 +30180,10 @@
         <TRANSL xml:lang="zho" ver="alt">並</TRANSL>
     </S>
     <S id="Atayal_de4f55adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">rugu / guru</FORM>
-        <FORM kindOf="standard">rugu / guru</FORM>
-        <PHON kindOf="standard">ruɣu  ɣuru</PHON>
+        <FORM kindOf="original" notes="source: rugu / guru">rugu</FORM>
+        <FORM kindOf="standard">rugu</FORM>
+        <PHON kindOf="standard">ruɣu</PHON>
+        <FORM kindOf="alternate">guru</FORM>
         <TRANSL xml:lang="zho">鴨子</TRANSL>
     </S>
     <S id="Atayal_d01f85adb-6709-f011-bd64-00155db40116">
@@ -30041,9 +30193,10 @@
         <TRANSL xml:lang="zho">雨傘</TRANSL>
     </S>
     <S id="Atayal_de5f55adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">ruku/ruku'</FORM>
-        <FORM kindOf="standard">ruku/ruku'</FORM>
-        <PHON kindOf="standard">rukurukuʔ</PHON>
+        <FORM kindOf="original" notes="source: ruku/rukuʼ">ruku</FORM>
+        <FORM kindOf="standard">ruku</FORM>
+        <PHON kindOf="standard">ruku</PHON>
+        <FORM kindOf="alternate">ruku'</FORM>
         <TRANSL xml:lang="zho">傘 竹圓篩</TRANSL>
     </S>
     <S id="Atayal_d353ca89f-6709-f011-bd64-00155db40116">
@@ -30330,10 +30483,22 @@
         <PHON kindOf="standard">[s|ɕ]akuʔ</PHON>
         <TRANSL xml:lang="zho" notes="名詞">我</TRANSL>
     </S>
-    <S id="Atayal_d2bf65adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">saku'/saku/ku</FORM>
-        <FORM kindOf="standard">saku'/saku/ku</FORM>
-        <PHON kindOf="standard">[s|ɕ]akuʔ[s|ɕ]akuku</PHON>
+    <S id="Atayal_d2bf65adb-6709-f011-bd64-00155db40116_a">
+        <FORM kindOf="original" notes="source: sakuʼ/saku/ku">saku'</FORM>
+        <FORM kindOf="standard">saku'</FORM>
+        <PHON kindOf="standard">[s|ɕ]akuʔ</PHON>
+        <TRANSL xml:lang="zho">我</TRANSL>
+    </S>
+    <S id="Atayal_d2bf65adb-6709-f011-bd64-00155db40116_b">
+        <FORM kindOf="original" notes="source: sakuʼ/saku/ku">saku</FORM>
+        <FORM kindOf="standard">saku</FORM>
+        <PHON kindOf="standard">[s|ɕ]aku</PHON>
+        <TRANSL xml:lang="zho">我</TRANSL>
+    </S>
+    <S id="Atayal_d2bf65adb-6709-f011-bd64-00155db40116_c">
+        <FORM kindOf="original" notes="source: sakuʼ/saku/ku">ku</FORM>
+        <FORM kindOf="standard">ku</FORM>
+        <PHON kindOf="standard">ku</PHON>
         <TRANSL xml:lang="zho">我</TRANSL>
     </S>
     <S id="Atayal_dcb3ca89f-6709-f011-bd64-00155db40116">
@@ -30896,9 +31061,10 @@
         <TRANSL xml:lang="zho" notes="名詞">芋頭</TRANSL>
     </S>
     <S id="Atayal_d2ff65adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">sehuy / sayhuy</FORM>
-        <FORM kindOf="standard">sehuy / sayhuy</FORM>
-        <PHON kindOf="standard">[s|ɕ]eħuj  [s|ɕ]ajħuj</PHON>
+        <FORM kindOf="original" notes="source: sehuy / sayhuy">sehuy</FORM>
+        <FORM kindOf="standard">sehuy</FORM>
+        <PHON kindOf="standard">[s|ɕ]eħuj</PHON>
+        <FORM kindOf="alternate">sayhuy</FORM>
         <TRANSL xml:lang="zho">芋頭</TRANSL>
     </S>
     <S id="Atayal_dd73ca89f-6709-f011-bd64-00155db40116">
@@ -30977,10 +31143,16 @@
         <TRANSL xml:lang="zho" ver="alt" notes="動詞">撕破</TRANSL>
         <TRANSL xml:lang="zho" ver="alt">破掉</TRANSL>
     </S>
-    <S id="Atayal_d36f75adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">sgas / sobus</FORM>
-        <FORM kindOf="standard">sgas / sobus</FORM>
-        <PHON kindOf="standard">[s|ɕ]ɣa[s|ɕ]  [s|ɕ]oβu[s|ɕ]</PHON>
+    <S id="Atayal_d36f75adb-6709-f011-bd64-00155db40116_a">
+        <FORM kindOf="original" notes="source: sgas / sobus">sgas</FORM>
+        <FORM kindOf="standard">sgas</FORM>
+        <PHON kindOf="standard">[s|ɕ]ɣa[s|ɕ]</PHON>
+        <TRANSL xml:lang="zho">棉花</TRANSL>
+    </S>
+    <S id="Atayal_d36f75adb-6709-f011-bd64-00155db40116_b">
+        <FORM kindOf="original" notes="source: sgas / sobus">sobus</FORM>
+        <FORM kindOf="standard">sobus</FORM>
+        <PHON kindOf="standard">[s|ɕ]oβu[s|ɕ]</PHON>
         <TRANSL xml:lang="zho">棉花</TRANSL>
     </S>
     <S id="Atayal_d7c42a89f-6709-f011-bd64-00155db40116">
@@ -31146,9 +31318,10 @@
         <TRANSL xml:lang="zho">殷情招待</TRANSL>
     </S>
     <S id="Atayal_d38f65adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">shera/shera'</FORM>
-        <FORM kindOf="standard">shera/shera'</FORM>
-        <PHON kindOf="standard">[s|ɕ]ħera[s|ɕ]ħeraʔ</PHON>
+        <FORM kindOf="original" notes="source: shera/sheraʼ">shera</FORM>
+        <FORM kindOf="standard">shera</FORM>
+        <PHON kindOf="standard">[s|ɕ]ħera</PHON>
+        <FORM kindOf="alternate">shera'</FORM>
         <TRANSL xml:lang="zho">昨天</TRANSL>
     </S>
     <S id="Atayal_dc73ca89f-6709-f011-bd64-00155db40116">
@@ -32527,10 +32700,16 @@
         <PHON kindOf="standard">[s|ɕ]lʔuj</PHON>
         <TRANSL xml:lang="zho" notes="動詞">潮濕</TRANSL>
     </S>
-    <S id="Atayal_df7f65adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">sl'uy/lngut</FORM>
-        <FORM kindOf="standard">sl'uy/lngut</FORM>
-        <PHON kindOf="standard">[s|ɕ]lʔujlŋut</PHON>
+    <S id="Atayal_df7f65adb-6709-f011-bd64-00155db40116_a">
+        <FORM kindOf="original" notes="source: slʼuy/lngut">sl'uy</FORM>
+        <FORM kindOf="standard">sl'uy</FORM>
+        <PHON kindOf="standard">[s|ɕ]lʔuj</PHON>
+        <TRANSL xml:lang="zho">潮濕</TRANSL>
+    </S>
+    <S id="Atayal_df7f65adb-6709-f011-bd64-00155db40116_b">
+        <FORM kindOf="original" notes="source: slʼuy/lngut">lngut</FORM>
+        <FORM kindOf="standard">lngut</FORM>
+        <PHON kindOf="standard">lŋut</PHON>
         <TRANSL xml:lang="zho">潮濕</TRANSL>
     </S>
     <S id="Atayal_d8f2672c9-6709-f011-bd64-00155db40116">
@@ -32652,9 +32831,10 @@
         <TRANSL xml:lang="zho" ver="alt">送（客人）</TRANSL>
     </S>
     <S id="Atayal_df9f65adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">smayu/smayu'</FORM>
-        <FORM kindOf="standard">smayu/smayu'</FORM>
-        <PHON kindOf="standard">[s|ɕ]maju[s|ɕ]majuʔ</PHON>
+        <FORM kindOf="original" notes="source: smayu/smayuʼ">smayu</FORM>
+        <FORM kindOf="standard">smayu</FORM>
+        <PHON kindOf="standard">[s|ɕ]maju</PHON>
+        <FORM kindOf="alternate">smayu'</FORM>
         <TRANSL xml:lang="zho">罵</TRANSL>
     </S>
     <S id="Atayal_d8841a89f-6709-f011-bd64-00155db40116">
@@ -33143,9 +33323,10 @@
         <TRANSL xml:lang="zho">送去、送回</TRANSL>
     </S>
     <S id="Atayal_d73f65adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">snawnux/snonux</FORM>
-        <FORM kindOf="standard">snawnux/snonux</FORM>
-        <PHON kindOf="standard">[s|ɕ]nawnux[s|ɕ]nonux</PHON>
+        <FORM kindOf="original" notes="source: snawnux/snonux">snawnux</FORM>
+        <FORM kindOf="standard">snawnux</FORM>
+        <PHON kindOf="standard">[s|ɕ]nawnux</PHON>
+        <FORM kindOf="alternate">snonux</FORM>
         <TRANSL xml:lang="zho">頭髮</TRANSL>
     </S>
     <S id="Atayal_d8c41a89f-6709-f011-bd64-00155db40116">
@@ -33314,9 +33495,10 @@
         <TRANSL xml:lang="zho" notes="名詞">頭髮</TRANSL>
     </S>
     <S id="Atayal_d32f75adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">snonux/snawnux</FORM>
-        <FORM kindOf="standard">snonux/snawnux</FORM>
-        <PHON kindOf="standard">[s|ɕ]nonux[s|ɕ]nawnux</PHON>
+        <FORM kindOf="original" notes="source: snonux/snawnux">snonux</FORM>
+        <FORM kindOf="standard">snonux</FORM>
+        <PHON kindOf="standard">[s|ɕ]nonux</PHON>
+        <FORM kindOf="alternate">snawnux</FORM>
         <TRANSL xml:lang="zho">頭髮</TRANSL>
     </S>
     <S id="Atayal_d2c7fa0a5-6709-f011-bd64-00155db40116">
@@ -33484,9 +33666,10 @@
         <TRANSL xml:lang="zho" ver="alt">怎樣</TRANSL>
     </S>
     <S id="Atayal_d37f75adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">soni/sawni'</FORM>
-        <FORM kindOf="standard">soni/sawni'</FORM>
-        <PHON kindOf="standard">[s|ɕ]oni[s|ɕ]awniʔ</PHON>
+        <FORM kindOf="original" notes="source: soni/sawniʼ">soni</FORM>
+        <FORM kindOf="standard">soni</FORM>
+        <PHON kindOf="standard">[s|ɕ]oni</PHON>
+        <FORM kindOf="alternate">sawni'</FORM>
         <TRANSL xml:lang="zho">剛才 現在</TRANSL>
     </S>
     <S id="Atayal_d7c3fa89f-6709-f011-bd64-00155db40116">
@@ -33520,9 +33703,10 @@
         <TRANSL xml:lang="zho" notes="名詞">鑰匙</TRANSL>
     </S>
     <S id="Atayal_d2df65adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">soya/sawya'</FORM>
-        <FORM kindOf="standard">soya/sawya'</FORM>
-        <PHON kindOf="standard">[s|ɕ]oja[s|ɕ]awjaʔ</PHON>
+        <FORM kindOf="original" notes="source: soya/sawyaʼ">soya</FORM>
+        <FORM kindOf="standard">soya</FORM>
+        <PHON kindOf="standard">[s|ɕ]oja</PHON>
+        <FORM kindOf="alternate">sawya'</FORM>
         <TRANSL xml:lang="zho">想要 喜歡</TRANSL>
     </S>
     <S id="Atayal_d307fa0a5-6709-f011-bd64-00155db40116">
@@ -33538,9 +33722,10 @@
         <TRANSL xml:lang="zho" notes="動詞">喜歡、喜好</TRANSL>
     </S>
     <S id="Atayal_dc1f75adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">sozyan / szyon</FORM>
-        <FORM kindOf="standard">sozyan / szyon</FORM>
-        <PHON kindOf="standard">[s|ɕ]ozjan  [s|ɕ]zjon</PHON>
+        <FORM kindOf="original" notes="source: sozyan / szyon">sozyan</FORM>
+        <FORM kindOf="standard">sozyan</FORM>
+        <PHON kindOf="standard">[s|ɕ]ozjan</PHON>
+        <FORM kindOf="alternate">szyon</FORM>
         <TRANSL xml:lang="zho">祈願 願望</TRANSL>
     </S>
     <S id="Atayal_d6d5b89b7-6709-f011-bd64-00155db40116">
@@ -33795,10 +33980,16 @@
         <TRANSL xml:lang="zho" ver="alt">點鐘</TRANSL>
         <TRANSL xml:lang="zho" ver="alt">點鐘；時間</TRANSL>
     </S>
-    <S id="Atayal_d04f95adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">spung ryax / toke</FORM>
-        <FORM kindOf="standard">spung ryax / toke</FORM>
-        <PHON kindOf="standard">[s|ɕ]puŋ rjax  toke</PHON>
+    <S id="Atayal_d04f95adb-6709-f011-bd64-00155db40116_a">
+        <FORM kindOf="original" notes="source: spung ryax / toke">spung ryax</FORM>
+        <FORM kindOf="standard">spung ryax</FORM>
+        <PHON kindOf="standard">[s|ɕ]puŋ rjax</PHON>
+        <TRANSL xml:lang="zho">計算時間</TRANSL>
+    </S>
+    <S id="Atayal_d04f95adb-6709-f011-bd64-00155db40116_b">
+        <FORM kindOf="original" notes="source: spung ryax / toke">toke</FORM>
+        <FORM kindOf="standard">toke</FORM>
+        <PHON kindOf="standard">toke</PHON>
         <TRANSL xml:lang="zho">計算時間</TRANSL>
     </S>
     <S id="Atayal_dcc3ca89f-6709-f011-bd64-00155db40116">
@@ -34661,9 +34852,10 @@
         <TRANSL xml:lang="zho">將放置...的地方、空間</TRANSL>
     </S>
     <S id="Atayal_d31f65adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">ssyaw / saysyaw</FORM>
-        <FORM kindOf="standard">ssyaw / saysyaw</FORM>
-        <PHON kindOf="standard">[s|ɕ][s|ɕ]jaw  [s|ɕ]aj[s|ɕ]jaw</PHON>
+        <FORM kindOf="original" notes="source: ssyaw / saysyaw">ssyaw</FORM>
+        <FORM kindOf="standard">ssyaw</FORM>
+        <PHON kindOf="standard">[s|ɕ][s|ɕ]jaw</PHON>
+        <FORM kindOf="alternate">saysyaw</FORM>
         <TRANSL xml:lang="zho">旁邊</TRANSL>
     </S>
     <S id="Atayal_df43fa89f-6709-f011-bd64-00155db40116">
@@ -35195,9 +35387,10 @@
         <TRANSL xml:lang="zho" ver="alt">為什麼</TRANSL>
     </S>
     <S id="Atayal_dcdf75adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">swa'/swa</FORM>
-        <FORM kindOf="standard">swa'/swa</FORM>
-        <PHON kindOf="standard">[s|ɕ]waʔ[s|ɕ]wa</PHON>
+        <FORM kindOf="original" notes="source: swaʼ/swa">swa'</FORM>
+        <FORM kindOf="standard">swa'</FORM>
+        <PHON kindOf="standard">[s|ɕ]waʔ</PHON>
+        <FORM kindOf="alternate">swa</FORM>
         <TRANSL xml:lang="zho">為何</TRANSL>
     </S>
     <S id="Atayal_dcff75adb-6709-f011-bd64-00155db40116">
@@ -35298,9 +35491,10 @@
         <TRANSL xml:lang="zho" notes="名詞">商店、雜貨店</TRANSL>
     </S>
     <S id="Atayal_d2ef65adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">syon / sawyan</FORM>
-        <FORM kindOf="standard">syon / sawyan</FORM>
-        <PHON kindOf="standard">[s|ɕ]jon  [s|ɕ]awjan</PHON>
+        <FORM kindOf="original" notes="source: syon / sawyan">syon</FORM>
+        <FORM kindOf="standard">syon</FORM>
+        <PHON kindOf="standard">[s|ɕ]jon</PHON>
+        <FORM kindOf="alternate">sawyan</FORM>
         <TRANSL xml:lang="zho">喜歡</TRANSL>
     </S>
     <S id="Atayal_d843fa89f-6709-f011-bd64-00155db40116">
@@ -35538,9 +35732,10 @@
         <TRANSL xml:lang="zho">緬懷、想念</TRANSL>
     </S>
     <S id="Atayal_d35f75adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">s'nun/sin'nun</FORM>
-        <FORM kindOf="standard">s'nun/sin'nun</FORM>
-        <PHON kindOf="standard">[s|ɕ]ʔnun[s|ɕ]inʔnun</PHON>
+        <FORM kindOf="original" notes="source: sʼnun/sinʼnun">s'nun</FORM>
+        <FORM kindOf="standard">s'nun</FORM>
+        <PHON kindOf="standard">[s|ɕ]ʔnun</PHON>
+        <FORM kindOf="alternate">sin'nun</FORM>
         <TRANSL xml:lang="zho">想念</TRANSL>
     </S>
     <S id="Atayal_de83ea89f-6709-f011-bd64-00155db40116">
@@ -36491,9 +36686,10 @@
         <TRANSL xml:lang="zho">保留</TRANSL>
     </S>
     <S id="Atayal_d07f85adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">thayluw/thiluw</FORM>
-        <FORM kindOf="standard">thayluw/thiluw</FORM>
-        <PHON kindOf="standard">tħajluwtħiluw</PHON>
+        <FORM kindOf="original" notes="source: thayluw/thiluw">thayluw</FORM>
+        <FORM kindOf="standard">thayluw</FORM>
+        <PHON kindOf="standard">tħajluw</PHON>
+        <FORM kindOf="alternate">thiluw</FORM>
         <TRANSL xml:lang="zho">外省人〈大陸〉</TRANSL>
     </S>
     <S id="Atayal_d64c598ab-6709-f011-bd64-00155db40116">
@@ -36875,9 +37071,10 @@
         <TRANSL xml:lang="zho">能</TRANSL>
     </S>
     <S id="Atayal_d0bf85adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">tka/tka'</FORM>
-        <FORM kindOf="standard">tka/tka'</FORM>
-        <PHON kindOf="standard">tkatkaʔ</PHON>
+        <FORM kindOf="original" notes="source: tka/tkaʼ">tka</FORM>
+        <FORM kindOf="standard">tka</FORM>
+        <PHON kindOf="standard">tka</PHON>
+        <FORM kindOf="alternate">tka'</FORM>
         <TRANSL xml:lang="zho">階梯</TRANSL>
     </S>
     <S id="Atayal_d1142a89f-6709-f011-bd64-00155db40116">
@@ -36895,9 +37092,10 @@
         <TRANSL xml:lang="zho" ver="alt">野鴿子</TRANSL>
     </S>
     <S id="Atayal_d2af85adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">tkara'/tkara</FORM>
-        <FORM kindOf="standard">tkara'/tkara</FORM>
-        <PHON kindOf="standard">tkaraʔtkara</PHON>
+        <FORM kindOf="original" notes="source: tkaraʼ/tkara">tkara'</FORM>
+        <FORM kindOf="standard">tkara'</FORM>
+        <PHON kindOf="standard">tkaraʔ</PHON>
+        <FORM kindOf="alternate">tkara</FORM>
         <TRANSL xml:lang="zho">鴿子 翻倒</TRANSL>
     </S>
     <S id="Atayal_d2bf85adb-6709-f011-bd64-00155db40116">
@@ -37259,9 +37457,10 @@
         <TRANSL xml:lang="zho" notes="動詞">冰冷</TRANSL>
     </S>
     <S id="Atayal_d30f85adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">tltu'/mtltu</FORM>
-        <FORM kindOf="standard">tltu'/mtltu</FORM>
-        <PHON kindOf="standard">tltuʔmtltu</PHON>
+        <FORM kindOf="original" notes="source: tltuʼ/mtltu">tltu'</FORM>
+        <FORM kindOf="standard">tltu'</FORM>
+        <PHON kindOf="standard">tltuʔ</PHON>
+        <FORM kindOf="alternate">mtltu</FORM>
         <TRANSL xml:lang="zho">冰冷 涼</TRANSL>
     </S>
     <S id="Atayal_d5dc898ab-6709-f011-bd64-00155db40116">
@@ -39464,9 +39663,10 @@
         <TRANSL xml:lang="zho">心臟</TRANSL>
     </S>
     <S id="Atayal_d81f85adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">yaba'/yaba</FORM>
-        <FORM kindOf="standard">yaba'/yaba</FORM>
-        <PHON kindOf="standard">jaβaʔjaβa</PHON>
+        <FORM kindOf="original" notes="source: yabaʼ/yaba">yaba'</FORM>
+        <FORM kindOf="standard">yaba'</FORM>
+        <PHON kindOf="standard">jaβaʔ</PHON>
+        <FORM kindOf="alternate">yaba</FORM>
         <TRANSL xml:lang="zho">父親 爸爸 大</TRANSL>
     </S>
     <S id="Atayal_da77fa0a5-6709-f011-bd64-00155db40116">
@@ -39514,9 +39714,10 @@
         <TRANSL xml:lang="zho" ver="alt">女性長輩（祖母；外婆；岳母）</TRANSL>
     </S>
     <S id="Atayal_d91f85adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">yaki'/yaki</FORM>
-        <FORM kindOf="standard">yaki'/yaki</FORM>
-        <PHON kindOf="standard">jakiʔjaki</PHON>
+        <FORM kindOf="original" notes="source: yakiʼ/yaki">yaki'</FORM>
+        <FORM kindOf="standard">yaki'</FORM>
+        <PHON kindOf="standard">jakiʔ</PHON>
+        <FORM kindOf="alternate">yaki</FORM>
         <TRANSL xml:lang="zho">祖母 奶奶</TRANSL>
     </S>
     <S id="Atayal_db62a72c9-6709-f011-bd64-00155db40116">
@@ -39597,9 +39798,10 @@
         <TRANSL xml:lang="zho" ver="alt">陷阱</TRANSL>
     </S>
     <S id="Atayal_d92f85adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">yaqani/yaqaniy</FORM>
-        <FORM kindOf="standard">yaqani/yaqaniy</FORM>
-        <PHON kindOf="standard">jaqanijaqanij</PHON>
+        <FORM kindOf="original" notes="source: yaqani/yaqaniy">yaqani</FORM>
+        <FORM kindOf="standard">yaqani</FORM>
+        <PHON kindOf="standard">jaqani</PHON>
+        <FORM kindOf="alternate">yaqaniy</FORM>
         <TRANSL xml:lang="zho">這個</TRANSL>
     </S>
     <S id="Atayal_d93f85adb-6709-f011-bd64-00155db40116">
@@ -39651,9 +39853,10 @@
         <TRANSL xml:lang="zho" ver="alt">圓形竹簍</TRANSL>
     </S>
     <S id="Atayal_d94f85adb-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">yawpun/yopun</FORM>
-        <FORM kindOf="standard">yawpun/yopun</FORM>
-        <PHON kindOf="standard">jawpunjopun</PHON>
+        <FORM kindOf="original" notes="source: yawpun/yopun">yawpun</FORM>
+        <FORM kindOf="standard">yawpun</FORM>
+        <PHON kindOf="standard">jawpun</PHON>
+        <FORM kindOf="alternate">yopun</FORM>
         <TRANSL xml:lang="zho">褲子 放入 裝入</TRANSL>
     </S>
     <S id="Atayal_d807fa0a5-6709-f011-bd64-00155db40116">
@@ -40387,9 +40590,10 @@
         <TRANSL xml:lang="zho" ver="alt">浸泡</TRANSL>
     </S>
     <S id="Atayal_d14bc62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">'mip/'myup</FORM>
-        <FORM kindOf="standard">'mip/'myup</FORM>
-        <PHON kindOf="standard">ʔmipʔmjup</PHON>
+        <FORM kindOf="original" notes="source: ʼmip/ʼmyup">'mip</FORM>
+        <FORM kindOf="standard">'mip</FORM>
+        <PHON kindOf="standard">ʔmip</PHON>
+        <FORM kindOf="alternate">'myup</FORM>
         <TRANSL xml:lang="zho">砍木頭</TRANSL>
     </S>
     <S id="Atayal_d0c0a91b1-6709-f011-bd64-00155db40116">
@@ -40417,9 +40621,10 @@
         <TRANSL xml:lang="zho">堆疊</TRANSL>
     </S>
     <S id="Atayal_db9bc62d5-6709-f011-bd64-00155db40116">
-        <FORM kindOf="original">'myuw/tksyuw</FORM>
-        <FORM kindOf="standard">'myuw/tksyuw</FORM>
-        <PHON kindOf="standard">ʔmjuwtk[s|ɕ]juw</PHON>
+        <FORM kindOf="original" notes="source: ʼmyuw/tksyuw">'myuw</FORM>
+        <FORM kindOf="standard">'myuw</FORM>
+        <PHON kindOf="standard">ʔmjuw</PHON>
+        <FORM kindOf="alternate">tksyuw</FORM>
         <TRANSL xml:lang="zho">換 交換</TRANSL>
     </S>
     <S id="Atayal_d0b5889b7-6709-f011-bd64-00155db40116">

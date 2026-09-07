@@ -186,7 +186,7 @@ class RightsTests(unittest.TestCase):
         terms allow research and teaching use, and RIGHTS.md records them."""
         from ilrdf_source import root_attributes
         self.assertEqual(root_attributes("Amis", "2026-08-21")["copyright"],
-                         "CC BY-NC")
+                         "CC BY-NC 4.0")
 
 
 class StandardTierOwnershipTests(unittest.TestCase):

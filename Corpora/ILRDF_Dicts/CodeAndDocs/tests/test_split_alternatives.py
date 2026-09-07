@@ -13,6 +13,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from split_alternatives import (  # noqa: E402
     classify_site,
+    split_headword,
     split_record,
     stage_a,
     stage_b,
@@ -158,6 +159,36 @@ class TestFragmentIndependence(unittest.TestCase):
         text = "1.bengun nya qbaʼ ni yaki. 2.cyux meng qbaʼ na yaki hya."
         self.assertEqual(len(published(text)), 2)
         self.assertEqual(dropped(text), [])
+
+
+class TestHeadwords(unittest.TestCase):
+    """A headword differs from a sentence in one way: the whole field is the
+    item, so nothing is ambiguous about what an alternative substitutes for.
+    A headword is therefore never deleted merely for carrying a slash."""
+
+    def test_dissimilar_forms_become_separate_entries(self):
+        readings, dropped = split_headword("kmut/smʼung")
+        self.assertEqual([r.text for r in readings], ["kmut", "smʼung"])
+        self.assertEqual(dropped, [])
+
+    def test_similar_forms_become_one_entry_with_an_alternate(self):
+        readings, _ = split_headword("matepa^/matama")
+        self.assertEqual([r.text for r in readings], ["matepa^"])
+        self.assertEqual(readings[0].alternates, ["matama"])
+
+    def test_a_spaced_trailing_bracket_is_a_second_form(self):
+        readings, _ = split_headword("masʉecʉ (tʼocngoyx)")
+        self.assertEqual([r.text for r in readings], ["masʉecʉ", "tʼocngoyx"])
+
+    def test_an_attached_bracket_is_the_append_idiom_and_is_declined(self):
+        """'uculru(wa)' means uculru/uculruwa; 'wa' is not an entry."""
+        readings, dropped = split_headword("uculru(wa)")
+        self.assertEqual(readings, [])
+        self.assertEqual(dropped, ["uculru(wa)"])
+
+    def test_annotation_is_retained(self):
+        readings, _ = split_headword("chaicxngpu (音譯)")
+        self.assertEqual([r.text for r in readings], ["chaicxngpu (音譯)"])
 
 
 class TestEquals(unittest.TestCase):

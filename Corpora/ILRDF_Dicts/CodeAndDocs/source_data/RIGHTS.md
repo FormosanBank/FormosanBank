@@ -1,6 +1,6 @@
 # Rights status
 
-FormosanBank publishes this corpus under **CC BY-NC**.
+FormosanBank publishes this corpus under **CC BY-NC 4.0**.
 
 The ILRDF online dictionary's own copyright statement allows quotation for
 research and teaching within a reasonable scope, with attribution, and
@@ -21,5 +21,5 @@ and for applicable law.
 The 2026-08-23 build replaced the corpus's `CC-BY-NC` label with
 `Copyrighted; permission required outside applicable fair use`, on the grounds
 that ILRDF grants no Creative Commons licence of its own. The FormosanBank
-maintainer ruled on 2026-09-05 that `CC BY-NC` is restored in the XML and that
+maintainer ruled on 2026-09-05 that `CC BY-NC 4.0` is restored in the XML and that
 the fair-use basis is documented here rather than encoded in the attribute.

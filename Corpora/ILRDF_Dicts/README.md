@@ -15,10 +15,13 @@ and Development Foundation online dictionary,
 
 ## Rights
 
-Published under **CC BY-NC**. The ILRDF copyright statement allows quotation
-for research and teaching within a reasonable scope, with attribution, and
-requires permission beyond that; this corpus is made under those terms, with
-attribution to the Council of Indigenous Peoples and to ILRDF. See
+**License:** CC BY-NC 4.0
+**Rights source:** Indigenous Languages Research and Development Foundation, 2026-09-07; evidence: ask maintainer
+
+The ILRDF copyright statement allows quotation for research and teaching
+within a reasonable scope, with attribution, and requires permission beyond
+that. This corpus is published under those terms, with attribution to the
+Council of Indigenous Peoples and to ILRDF. See
 [CodeAndDocs/source_data/RIGHTS.md](CodeAndDocs/source_data/RIGHTS.md) and the
 source's own statement, linked there.
 

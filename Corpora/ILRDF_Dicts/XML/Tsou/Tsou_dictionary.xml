@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<TEXT id="ILRDF_Dicts_Tsou_dictionary" xml:lang="tsu" source="Indigenous Languages Research and Development Foundation Dictionaries" audio="segmented" dialect="unknown" copyright="CC BY-NC" citation="Council of Indigenous Peoples, &amp; Indigenous Languages Research and Development Foundation. (n.d.). 原住民族語言線上辭典: 鄒語 [Indigenous Languages Online Dictionary: Tsou language]. Retrieved 2026-05-04, from https://e-dictionary.ilrdf.org.tw/" BibTeX_citation="@misc{ILRDF_Tsou, author = {{Council of Indigenous Peoples} and {{Indigenous Languages Research and Development Foundation}}}, title = {原住民族語言線上辭典: 鄒語 [Indigenous Languages Online Dictionary: Tsou language]}, note = {Retrieved 2026-05-04}, url = {https://e-dictionary.ilrdf.org.tw/}}">
+<TEXT id="ILRDF_Dicts_Tsou_dictionary" xml:lang="tsu" source="Indigenous Languages Research and Development Foundation Dictionaries" audio="segmented" dialect="unknown" copyright="CC BY-NC 4.0" citation="Council of Indigenous Peoples, &amp; Indigenous Languages Research and Development Foundation. (n.d.). 原住民族語言線上辭典: 鄒語 [Indigenous Languages Online Dictionary: Tsou language]. Retrieved 2026-05-04, from https://e-dictionary.ilrdf.org.tw/" BibTeX_citation="@misc{ILRDF_Tsou, author = {{Council of Indigenous Peoples} and {{Indigenous Languages Research and Development Foundation}}}, title = {原住民族語言線上辭典: 鄒語 [Indigenous Languages Online Dictionary: Tsou language]}, note = {Retrieved 2026-05-04}, url = {https://e-dictionary.ilrdf.org.tw/}}">
     <S id="Tsou_d6fb7e00e-df09-f011-bd64-00155db40116">
         <FORM kindOf="original">Tapangʉ</FORM>
         <FORM kindOf="standard">Tapangʉ</FORM>
@@ -211,9 +211,10 @@
         <TRANSL xml:lang="zho" notes="名詞">一直（靜止）</TRANSL>
     </S>
     <S id="Tsou_d4ab4e00e-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">acioyʉ/aczoyʉ</FORM>
-        <FORM kindOf="standard">acioyʉ/aczoyʉ</FORM>
-        <PHON kindOf="standard">aʦiojɨaʦzojɨ</PHON>
+        <FORM kindOf="original" notes="source: acioyʉ/aczoyʉ">acioyʉ</FORM>
+        <FORM kindOf="standard">acioyʉ</FORM>
+        <PHON kindOf="standard">aʦiojɨ</PHON>
+        <FORM kindOf="alternate">aczoyʉ</FORM>
         <TRANSL xml:lang="zho">裂開</TRANSL>
     </S>
     <S id="Tsou_d6efdd814-df09-f011-bd64-00155db40116">
@@ -247,9 +248,10 @@
         <TRANSL xml:lang="zho" notes="名詞">及時</TRANSL>
     </S>
     <S id="Tsou_d53b4e00e-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">aczoyʉ/acioyʉ</FORM>
-        <FORM kindOf="standard">aczoyʉ/acioyʉ</FORM>
-        <PHON kindOf="standard">aʦzojɨaʦiojɨ</PHON>
+        <FORM kindOf="original" notes="source: aczoyʉ/acioyʉ">aczoyʉ</FORM>
+        <FORM kindOf="standard">aczoyʉ</FORM>
+        <PHON kindOf="standard">aʦzojɨ</PHON>
+        <FORM kindOf="alternate">acioyʉ</FORM>
         <TRANSL xml:lang="zho">裂開</TRANSL>
     </S>
     <S id="Tsou_d4fb4e00e-df09-f011-bd64-00155db40116">
@@ -376,10 +378,16 @@
         <PHON kindOf="standard">aepepe</PHON>
         <TRANSL xml:lang="zho" notes="動詞">高海拔</TRANSL>
     </S>
-    <S id="Tsou_dd5bee00e-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">aepza/apeia</FORM>
-        <FORM kindOf="standard">aepza/apeia</FORM>
-        <PHON kindOf="standard">aepzaapeia</PHON>
+    <S id="Tsou_dd5bee00e-df09-f011-bd64-00155db40116_a">
+        <FORM kindOf="original" notes="source: aepza/apeia">aepza</FORM>
+        <FORM kindOf="standard">aepza</FORM>
+        <PHON kindOf="standard">aepza</PHON>
+        <TRANSL xml:lang="zho" notes="動詞">由下而上</TRANSL>
+    </S>
+    <S id="Tsou_dd5bee00e-df09-f011-bd64-00155db40116_b">
+        <FORM kindOf="original" notes="source: aepza/apeia">apeia</FORM>
+        <FORM kindOf="standard">apeia</FORM>
+        <PHON kindOf="standard">apeia</PHON>
         <TRANSL xml:lang="zho" notes="動詞">由下而上</TRANSL>
     </S>
     <S id="Tsou_dd6bee00e-df09-f011-bd64-00155db40116">
@@ -884,9 +892,10 @@
         <TRANSL xml:lang="zho">休息</TRANSL>
     </S>
     <S id="Tsou_d85fdd814-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">amiocni/amzocni</FORM>
-        <FORM kindOf="standard">amiocni/amzocni</FORM>
-        <PHON kindOf="standard">amioʦniamzoʦni</PHON>
+        <FORM kindOf="original" notes="source: amiocni/amzocni">amiocni</FORM>
+        <FORM kindOf="standard">amiocni</FORM>
+        <PHON kindOf="standard">amioʦni</PHON>
+        <FORM kindOf="alternate">amzocni</FORM>
         <TRANSL xml:lang="zho">休息</TRANSL>
     </S>
     <S id="Tsou_d6343d11a-df09-f011-bd64-00155db40116">
@@ -983,9 +992,10 @@
         <TRANSL xml:lang="zho">脫落</TRANSL>
     </S>
     <S id="Tsou_d62bfe00e-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">amza/amia</FORM>
-        <FORM kindOf="standard">amza/amia</FORM>
-        <PHON kindOf="standard">amzaamia</PHON>
+        <FORM kindOf="original" notes="source: amza/amia">amza</FORM>
+        <FORM kindOf="standard">amza</FORM>
+        <PHON kindOf="standard">amza</PHON>
+        <FORM kindOf="alternate">amia</FORM>
         <TRANSL xml:lang="zho" notes="動詞">界線到這裡</TRANSL>
     </S>
     <S id="Tsou_d8ab4e00e-df09-f011-bd64-00155db40116">
@@ -995,9 +1005,10 @@
         <TRANSL xml:lang="zho" notes="動詞">終究</TRANSL>
     </S>
     <S id="Tsou_d8bb4e00e-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">amzocni/amiocni</FORM>
-        <FORM kindOf="standard">amzocni/amiocni</FORM>
-        <PHON kindOf="standard">amzoʦniamioʦni</PHON>
+        <FORM kindOf="original" notes="source: amzocni/amiocni">amzocni</FORM>
+        <FORM kindOf="standard">amzocni</FORM>
+        <PHON kindOf="standard">amzoʦni</PHON>
+        <FORM kindOf="alternate">amiocni</FORM>
         <TRANSL xml:lang="zho" notes="動詞">靜下來；休息</TRANSL>
     </S>
     <S id="Tsou_d61bfe00e-df09-f011-bd64-00155db40116">
@@ -1059,9 +1070,10 @@
         <TRANSL xml:lang="zho">珍惜</TRANSL>
     </S>
     <S id="Tsou_d90b4e00e-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">angongohza/angongohia</FORM>
-        <FORM kindOf="standard">angongohza/angongohia</FORM>
-        <PHON kindOf="standard">aŋoŋohzaaŋoŋohia</PHON>
+        <FORM kindOf="original" notes="source: angongohza/angongohia">angongohza</FORM>
+        <FORM kindOf="standard">angongohza</FORM>
+        <PHON kindOf="standard">aŋoŋohza</PHON>
+        <FORM kindOf="alternate">angongohia</FORM>
         <TRANSL xml:lang="zho" notes="動詞">愛惜</TRANSL>
         <TRANSL xml:lang="zho" ver="alt">珍惜</TRANSL>
     </S>
@@ -1099,9 +1111,10 @@
         <TRANSL xml:lang="zho" notes="動詞">斷掉（軟的物件）</TRANSL>
     </S>
     <S id="Tsou_d97b4e00e-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">anzo'ʉ/anio'ʉ</FORM>
-        <FORM kindOf="standard">anzo'ʉ/anio'ʉ</FORM>
-        <PHON kindOf="standard">anzoʔɨanioʔɨ</PHON>
+        <FORM kindOf="original" notes="source: anzoʼʉ/anioʼʉ">anzo'ʉ</FORM>
+        <FORM kindOf="standard">anzo'ʉ</FORM>
+        <PHON kindOf="standard">anzoʔɨ</PHON>
+        <FORM kindOf="alternate">anio'ʉ</FORM>
         <TRANSL xml:lang="zho">破碎</TRANSL>
     </S>
     <S id="Tsou_d64bfe00e-df09-f011-bd64-00155db40116">
@@ -1157,13 +1170,6 @@
         <FORM kindOf="standard">aomotʉ'ʉ</FORM>
         <PHON kindOf="standard">aomotɨʔɨ</PHON>
         <TRANSL xml:lang="zho" notes="動詞">說話</TRANSL>
-    </S>
-    <S id="Tsou_d9db4e00e-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">aono(mamcino)</FORM>
-        <FORM kindOf="standard">aono(mamcino)</FORM>
-        <PHON kindOf="standard">aonomamʦino</PHON>
-        <TRANSL xml:lang="zho" notes="動詞">洗澡</TRANSL>
-        <TRANSL xml:lang="zho" ver="alt" notes="動詞">脫漆</TRANSL>
     </S>
     <S id="Tsou_d9eb4e00e-df09-f011-bd64-00155db40116">
         <FORM kindOf="original">aonoe'ʉcʉ</FORM>
@@ -1325,9 +1331,10 @@
         <TRANSL xml:lang="zho" notes="動詞">分一半</TRANSL>
     </S>
     <S id="Tsou_d9c41d11a-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">apemzo/apemio</FORM>
-        <FORM kindOf="standard">apemzo/apemio</FORM>
-        <PHON kindOf="standard">apemzoapemio</PHON>
+        <FORM kindOf="original" notes="source: apemzo/apemio">apemzo</FORM>
+        <FORM kindOf="standard">apemzo</FORM>
+        <PHON kindOf="standard">apemzo</PHON>
+        <FORM kindOf="alternate">apemio</FORM>
         <TRANSL xml:lang="zho">因為...而</TRANSL>
     </S>
     <S id="Tsou_d9d41d11a-df09-f011-bd64-00155db40116">
@@ -1439,9 +1446,10 @@
         <TRANSL xml:lang="zho" notes="動詞">盡全力</TRANSL>
     </S>
     <S id="Tsou_d3e41d11a-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">asno'zona/asno'iona</FORM>
-        <FORM kindOf="standard">asno'zona/asno'iona</FORM>
-        <PHON kindOf="standard">asnoʔzonaasnoʔiona</PHON>
+        <FORM kindOf="original" notes="source: asnoʼzona/asnoʼiona">asno'zona</FORM>
+        <FORM kindOf="standard">asno'zona</FORM>
+        <PHON kindOf="standard">asnoʔzona</PHON>
+        <FORM kindOf="alternate">asno'iona</FORM>
         <TRANSL xml:lang="zho">盡全力</TRANSL>
     </S>
     <S id="Tsou_d6a04d914-df09-f011-bd64-00155db40116">
@@ -1451,9 +1459,10 @@
         <TRANSL xml:lang="zho">盡全力；使盡</TRANSL>
     </S>
     <S id="Tsou_db4b4e00e-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">asno'zonʉ/asno'ionʉ</FORM>
-        <FORM kindOf="standard">asno'zonʉ/asno'ionʉ</FORM>
-        <PHON kindOf="standard">asnoʔzonɨasnoʔionɨ</PHON>
+        <FORM kindOf="original" notes="source: asnoʼzonʉ/asnoʼionʉ">asno'zonʉ</FORM>
+        <FORM kindOf="standard">asno'zonʉ</FORM>
+        <PHON kindOf="standard">asnoʔzonɨ</PHON>
+        <FORM kindOf="alternate">asno'ionʉ</FORM>
         <TRANSL xml:lang="zho" notes="動詞">盡全力</TRANSL>
     </S>
     <S id="Tsou_d79bfe00e-df09-f011-bd64-00155db40116">
@@ -1851,9 +1860,10 @@
         <TRANSL xml:lang="zho">安慰</TRANSL>
     </S>
     <S id="Tsou_de4b4e00e-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">avzovzo/aviovio</FORM>
-        <FORM kindOf="standard">avzovzo/aviovio</FORM>
-        <PHON kindOf="standard">avzovzoaviovio</PHON>
+        <FORM kindOf="original" notes="source: avzovzo/aviovio">avzovzo</FORM>
+        <FORM kindOf="standard">avzovzo</FORM>
+        <PHON kindOf="standard">avzovzo</PHON>
+        <FORM kindOf="alternate">aviovio</FORM>
         <TRANSL xml:lang="zho">缺乏</TRANSL>
     </S>
     <S id="Tsou_ddeb4e00e-df09-f011-bd64-00155db40116">
@@ -2167,9 +2177,10 @@
         <TRANSL xml:lang="zho">是有……</TRANSL>
     </S>
     <S id="Tsou_d85b4e00e-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">a'mi/a'mia</FORM>
-        <FORM kindOf="standard">a'mi/a'mia</FORM>
-        <PHON kindOf="standard">aʔmiaʔmia</PHON>
+        <FORM kindOf="original" notes="source: aʼmi/aʼmia">a'mi</FORM>
+        <FORM kindOf="standard">a'mi</FORM>
+        <PHON kindOf="standard">aʔmi</PHON>
+        <FORM kindOf="alternate">a'mia</FORM>
         <TRANSL xml:lang="zho" notes="代名詞">我們</TRANSL>
         <TRANSL xml:lang="zho" ver="alt">我們（排除式）</TRANSL>
     </S>
@@ -2273,9 +2284,10 @@
         <TRANSL xml:lang="zho">那真正的；正確的</TRANSL>
     </S>
     <S id="Tsou_da3bfe00e-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">baankake (babankake)</FORM>
-        <FORM kindOf="standard">baankake (babankake)</FORM>
-        <PHON kindOf="standard">ɓaankake ɓaɓankake</PHON>
+        <FORM kindOf="original" notes="source: baankake (babankake)">baankake</FORM>
+        <FORM kindOf="standard">baankake</FORM>
+        <PHON kindOf="standard">ɓaankake</PHON>
+        <FORM kindOf="alternate">babankake</FORM>
         <TRANSL xml:lang="zho" notes="動詞">高大</TRANSL>
     </S>
     <S id="Tsou_decb4e00e-df09-f011-bd64-00155db40116">
@@ -2619,9 +2631,10 @@
         <TRANSL xml:lang="zho" ver="alt" notes="動詞">切到</TRANSL>
     </S>
     <S id="Tsou_d15b5e00e-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">bohipeoe/bohipeoyʉ</FORM>
-        <FORM kindOf="standard">bohipeoe/bohipeoyʉ</FORM>
-        <PHON kindOf="standard">ɓohipeoeɓohipeojɨ</PHON>
+        <FORM kindOf="original" notes="source: bohipeoe/bohipeoyʉ">bohipeoe</FORM>
+        <FORM kindOf="standard">bohipeoe</FORM>
+        <PHON kindOf="standard">ɓohipeoe</PHON>
+        <FORM kindOf="alternate">bohipeoyʉ</FORM>
         <TRANSL xml:lang="zho" notes="動詞">搭橋</TRANSL>
     </S>
     <S id="Tsou_d16b5e00e-df09-f011-bd64-00155db40116">
@@ -2631,9 +2644,10 @@
         <TRANSL xml:lang="zho" notes="動詞">切成塊</TRANSL>
     </S>
     <S id="Tsou_d17b5e00e-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">bohituapzu/bohituapiu</FORM>
-        <FORM kindOf="standard">bohituapzu/bohituapiu</FORM>
-        <PHON kindOf="standard">ɓohituapzuɓohituapiu</PHON>
+        <FORM kindOf="original" notes="source: bohituapzu/bohituapiu">bohituapzu</FORM>
+        <FORM kindOf="standard">bohituapzu</FORM>
+        <PHON kindOf="standard">ɓohituapzu</PHON>
+        <FORM kindOf="alternate">bohituapiu</FORM>
         <TRANSL xml:lang="zho" notes="動詞">砍柴</TRANSL>
     </S>
     <S id="Tsou_d18b5e00e-df09-f011-bd64-00155db40116">
@@ -2786,9 +2800,10 @@
         <TRANSL xml:lang="zho" notes="動詞">吃醋</TRANSL>
     </S>
     <S id="Tsou_db8fdd814-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">buhkuzo (buhkuzkuzo)</FORM>
-        <FORM kindOf="standard">buhkuzo (buhkuzkuzo)</FORM>
-        <PHON kindOf="standard">ɓuhkuzo ɓuhkuzkuzo</PHON>
+        <FORM kindOf="original" notes="source: buhkuzo (buhkuzkuzo)">buhkuzo</FORM>
+        <FORM kindOf="standard">buhkuzo</FORM>
+        <PHON kindOf="standard">ɓuhkuzo</PHON>
+        <FORM kindOf="alternate">buhkuzkuzo</FORM>
         <TRANSL xml:lang="zho">看不順眼；看了就討厭</TRANSL>
     </S>
     <S id="Tsou_d2db5e00e-df09-f011-bd64-00155db40116">
@@ -2816,9 +2831,10 @@
         <TRANSL xml:lang="zho">小心 / 認真</TRANSL>
     </S>
     <S id="Tsou_d31b5e00e-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">bumemealʉ (buemealʉ)</FORM>
-        <FORM kindOf="standard">bumemealʉ (buemealʉ)</FORM>
-        <PHON kindOf="standard">ɓumemeaɗɨ ɓuemeaɗɨ</PHON>
+        <FORM kindOf="original" notes="source: bumemealʉ (buemealʉ)">bumemealʉ</FORM>
+        <FORM kindOf="standard">bumemealʉ</FORM>
+        <PHON kindOf="standard">ɓumemeaɗɨ</PHON>
+        <FORM kindOf="alternate">buemealʉ</FORM>
         <TRANSL xml:lang="zho" notes="動詞">保重；小心；認真；努力；謹慎</TRANSL>
     </S>
     <S id="Tsou_d37b5e00e-df09-f011-bd64-00155db40116">
@@ -2937,10 +2953,16 @@
         <PHON kindOf="standard">ɓɨnɨvhɨ</PHON>
         <TRANSL xml:lang="zho" notes="名詞">李子</TRANSL>
     </S>
-    <S id="Tsou_d35b5e00e-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">bʉnʉvhʉ no masʉecʉ (t'ocngoyx)</FORM>
-        <FORM kindOf="standard">bʉnʉvhʉ no masʉecʉ (t'ocngoyx)</FORM>
-        <PHON kindOf="standard">ɓɨnɨvhɨ no masɨeʦɨ tʔoʦŋoj*</PHON>
+    <S id="Tsou_d35b5e00e-df09-f011-bd64-00155db40116_a">
+        <FORM kindOf="original" notes="source: bʉnʉvhʉ no masʉecʉ (tʼocngoyx)">bʉnʉvhʉ no masʉecʉ</FORM>
+        <FORM kindOf="standard">bʉnʉvhʉ no masʉecʉ</FORM>
+        <PHON kindOf="standard">ɓɨnɨvhɨ no masɨeʦɨ</PHON>
+        <TRANSL xml:lang="zho">梅子 （t'ocngoyx鄒語專用梅子）</TRANSL>
+    </S>
+    <S id="Tsou_d35b5e00e-df09-f011-bd64-00155db40116_b">
+        <FORM kindOf="original" notes="source: bʉnʉvhʉ no masʉecʉ (tʼocngoyx)">t'ocngoyx</FORM>
+        <FORM kindOf="standard">t'ocngoyx</FORM>
+        <PHON kindOf="standard">tʔoʦŋoj*</PHON>
         <TRANSL xml:lang="zho">梅子 （t'ocngoyx鄒語專用梅子）</TRANSL>
     </S>
     <S id="Tsou_d36b5e00e-df09-f011-bd64-00155db40116">
@@ -2976,9 +2998,10 @@
         <TRANSL xml:lang="zho">我的肚子</TRANSL>
     </S>
     <S id="Tsou_d3cb5e00e-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">bʉʉlʉlʉ (biʉlʉlʉ)</FORM>
-        <FORM kindOf="standard">bʉʉlʉlʉ (biʉlʉlʉ)</FORM>
-        <PHON kindOf="standard">ɓɨɨɗɨɗɨ ɓiɨɗɨɗɨ</PHON>
+        <FORM kindOf="original" notes="source: bʉʉlʉlʉ (biʉlʉlʉ)">bʉʉlʉlʉ</FORM>
+        <FORM kindOf="standard">bʉʉlʉlʉ</FORM>
+        <PHON kindOf="standard">ɓɨɨɗɨɗɨ</PHON>
+        <FORM kindOf="alternate">biʉlʉlʉ</FORM>
         <TRANSL xml:lang="zho" notes="動詞">站得穩穩地</TRANSL>
     </S>
     <S id="Tsou_d3db5e00e-df09-f011-bd64-00155db40116">
@@ -3646,15 +3669,17 @@
         <TRANSL xml:lang="zho" ver="alt">冰冷</TRANSL>
     </S>
     <S id="Tsou_dca41d11a-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">cohiona / cohzona</FORM>
-        <FORM kindOf="standard">cohiona / cohzona</FORM>
-        <PHON kindOf="standard">ʦohiona  ʦohzona</PHON>
+        <FORM kindOf="original" notes="source: cohiona / cohzona">cohiona</FORM>
+        <FORM kindOf="standard">cohiona</FORM>
+        <PHON kindOf="standard">ʦohiona</PHON>
+        <FORM kindOf="alternate">cohzona</FORM>
         <TRANSL xml:lang="zho">中午</TRANSL>
     </S>
     <S id="Tsou_da500d914-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">cohiona/cohzona</FORM>
-        <FORM kindOf="standard">cohiona/cohzona</FORM>
-        <PHON kindOf="standard">ʦohionaʦohzona</PHON>
+        <FORM kindOf="original" notes="source: cohiona/cohzona">cohiona</FORM>
+        <FORM kindOf="standard">cohiona</FORM>
+        <PHON kindOf="standard">ʦohiona</PHON>
+        <FORM kindOf="alternate">cohzona</FORM>
         <TRANSL xml:lang="zho">中午</TRANSL>
     </S>
     <S id="Tsou_d3a41d11a-df09-f011-bd64-00155db40116">
@@ -3863,10 +3888,16 @@
         <PHON kindOf="standard">ʦuʦʔuhiʦu</PHON>
         <TRANSL xml:lang="zho">朝天椒</TRANSL>
     </S>
-    <S id="Tsou_dc441d11a-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">cukemono (chaemasʉecʉ)</FORM>
-        <FORM kindOf="standard">cukemono (chaemasʉecʉ)</FORM>
-        <PHON kindOf="standard">ʦukemono ʦhaemasɨeʦɨ</PHON>
+    <S id="Tsou_dc441d11a-df09-f011-bd64-00155db40116_a">
+        <FORM kindOf="original" notes="source: cukemono (chaemasʉecʉ)">cukemono</FORM>
+        <FORM kindOf="standard">cukemono</FORM>
+        <PHON kindOf="standard">ʦukemono</PHON>
+        <TRANSL xml:lang="zho">醬菜</TRANSL>
+    </S>
+    <S id="Tsou_dc441d11a-df09-f011-bd64-00155db40116_b">
+        <FORM kindOf="original" notes="source: cukemono (chaemasʉecʉ)">chaemasʉecʉ</FORM>
+        <FORM kindOf="standard">chaemasʉecʉ</FORM>
+        <PHON kindOf="standard">ʦhaemasɨeʦɨ</PHON>
         <TRANSL xml:lang="zho">醬菜</TRANSL>
     </S>
     <S id="Tsou_d8fb5e00e-df09-f011-bd64-00155db40116">
@@ -3928,9 +3959,10 @@
         <TRANSL xml:lang="zho" notes="名詞">節</TRANSL>
     </S>
     <S id="Tsou_d9004d914-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">czo'ʉ (cio'x)</FORM>
-        <FORM kindOf="standard">czo'ʉ (cio'x)</FORM>
-        <PHON kindOf="standard">ʦzoʔɨ ʦioʔ*</PHON>
+        <FORM kindOf="original" notes="source: czoʼʉ (cioʼx)">czo'ʉ</FORM>
+        <FORM kindOf="standard">czo'ʉ</FORM>
+        <PHON kindOf="standard">ʦzoʔɨ</PHON>
+        <FORM kindOf="alternate">cio'x</FORM>
         <TRANSL xml:lang="zho">痰</TRANSL>
     </S>
     <S id="Tsou_d8600d914-df09-f011-bd64-00155db40116">
@@ -8303,9 +8335,10 @@
         <TRANSL xml:lang="zho">木板</TRANSL>
     </S>
     <S id="Tsou_d9342d11a-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">ie'iya/i'iya</FORM>
-        <FORM kindOf="standard">ie'iya/i'iya</FORM>
-        <PHON kindOf="standard">ieʔijaiʔija</PHON>
+        <FORM kindOf="original" notes="source: ieʼiya/iʼiya">ie'iya</FORM>
+        <FORM kindOf="standard">ie'iya</FORM>
+        <PHON kindOf="standard">ieʔija</PHON>
+        <FORM kindOf="alternate">i'iya</FORM>
         <TRANSL xml:lang="zho">木板</TRANSL>
     </S>
     <S id="Tsou_d88fed814-df09-f011-bd64-00155db40116">
@@ -11202,9 +11235,10 @@
         <TRANSL xml:lang="zho" ver="alt" notes="名詞">上方</TRANSL>
     </S>
     <S id="Tsou_d9442d11a-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">mao'omza/mao'omia</FORM>
-        <FORM kindOf="standard">mao'omza/mao'omia</FORM>
-        <PHON kindOf="standard">maoʔomzamaoʔomia</PHON>
+        <FORM kindOf="original" notes="source: maoʼomza/maoʼomia">mao'omza</FORM>
+        <FORM kindOf="standard">mao'omza</FORM>
+        <PHON kindOf="standard">maoʔomza</PHON>
+        <FORM kindOf="alternate">mao'omia</FORM>
         <TRANSL xml:lang="zho">各個上方 / 各個上面</TRANSL>
     </S>
     <S id="Tsou_d88fad814-df09-f011-bd64-00155db40116">
@@ -13291,9 +13325,10 @@
         <TRANSL xml:lang="zho">你們已經…….</TRANSL>
     </S>
     <S id="Tsou_d3742d11a-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">mimzan'a/mimian'a</FORM>
-        <FORM kindOf="standard">mimzan'a/mimian'a</FORM>
-        <PHON kindOf="standard">mimzanʔamimianʔa</PHON>
+        <FORM kindOf="original" notes="source: mimzanʼa/mimianʼa">mimzan'a</FORM>
+        <FORM kindOf="standard">mimzan'a</FORM>
+        <PHON kindOf="standard">mimzanʔa</PHON>
+        <FORM kindOf="alternate">mimian'a</FORM>
         <TRANSL xml:lang="zho">我們正在</TRANSL>
     </S>
     <S id="Tsou_d0cffd814-df09-f011-bd64-00155db40116">
@@ -18646,9 +18681,10 @@
         <TRANSL xml:lang="zho" ver="alt">稻田</TRANSL>
     </S>
     <S id="Tsou_d1501d914-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">papaimza (papaimia)</FORM>
-        <FORM kindOf="standard">papaimza (papaimia)</FORM>
-        <PHON kindOf="standard">papaimza papaimia</PHON>
+        <FORM kindOf="original" notes="source: papaimza (papaimia)">papaimza</FORM>
+        <FORM kindOf="standard">papaimza</FORM>
+        <PHON kindOf="standard">papaimza</PHON>
+        <FORM kindOf="alternate">papaimia</FORM>
         <TRANSL xml:lang="zho">我們的稻田</TRANSL>
     </S>
     <S id="Tsou_d2f02d914-df09-f011-bd64-00155db40116">
@@ -18981,9 +19017,10 @@
         <TRANSL xml:lang="zho" notes="動詞">穿內衣</TRANSL>
     </S>
     <S id="Tsou_d1601d914-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">pateoyangia (pateoyangza)</FORM>
-        <FORM kindOf="standard">pateoyangia (pateoyangza)</FORM>
-        <PHON kindOf="standard">pateojaŋia pateojaŋza</PHON>
+        <FORM kindOf="original" notes="source: pateoyangia (pateoyangza)">pateoyangia</FORM>
+        <FORM kindOf="standard">pateoyangia</FORM>
+        <PHON kindOf="standard">pateojaŋia</PHON>
+        <FORM kindOf="alternate">pateoyangza</FORM>
         <TRANSL xml:lang="zho">排排放</TRANSL>
     </S>
     <S id="Tsou_d55bfe00e-df09-f011-bd64-00155db40116">
@@ -19343,9 +19380,10 @@
         <TRANSL xml:lang="zho" notes="動詞">往上躺著</TRANSL>
     </S>
     <S id="Tsou_d3542d11a-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">pa'hiteufza/pa'hiteufia</FORM>
-        <FORM kindOf="standard">pa'hiteufza/pa'hiteufia</FORM>
-        <PHON kindOf="standard">paʔhiteufzapaʔhiteufia</PHON>
+        <FORM kindOf="original" notes="source: paʼhiteufza/paʼhiteufia">pa'hiteufza</FORM>
+        <FORM kindOf="standard">pa'hiteufza</FORM>
+        <PHON kindOf="standard">paʔhiteufza</PHON>
+        <FORM kindOf="alternate">pa'hiteufia</FORM>
         <TRANSL xml:lang="zho">往上方 / 往上面</TRANSL>
     </S>
     <S id="Tsou_d70c0e00e-df09-f011-bd64-00155db40116">
@@ -24985,15 +25023,17 @@
         <TRANSL xml:lang="zho">陀螺</TRANSL>
     </S>
     <S id="Tsou_df801d914-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">suocania (suocanza)</FORM>
-        <FORM kindOf="standard">suocania (suocanza)</FORM>
-        <PHON kindOf="standard">suoʦania suoʦanza</PHON>
+        <FORM kindOf="original" notes="source: suocania (suocanza)">suocania</FORM>
+        <FORM kindOf="standard">suocania</FORM>
+        <PHON kindOf="standard">suoʦania</PHON>
+        <FORM kindOf="alternate">suocanza</FORM>
         <TRANSL xml:lang="zho">種植要分開</TRANSL>
     </S>
     <S id="Tsou_d8641d11a-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">suocania / suocanza</FORM>
-        <FORM kindOf="standard">suocania / suocanza</FORM>
-        <PHON kindOf="standard">suoʦania  suoʦanza</PHON>
+        <FORM kindOf="original" notes="source: suocania / suocanza">suocania</FORM>
+        <FORM kindOf="standard">suocania</FORM>
+        <PHON kindOf="standard">suoʦania</PHON>
+        <FORM kindOf="alternate">suocanza</FORM>
         <TRANSL xml:lang="zho">種的密度剛好</TRANSL>
     </S>
     <S id="Tsou_dedb6e00e-df09-f011-bd64-00155db40116">
@@ -25659,9 +25699,10 @@
         <TRANSL xml:lang="zho">他們會…….</TRANSL>
     </S>
     <S id="Tsou_dfc01d914-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">tahia (tahza)</FORM>
-        <FORM kindOf="standard">tahia (tahza)</FORM>
-        <PHON kindOf="standard">tahia tahza</PHON>
+        <FORM kindOf="original" notes="source: tahia (tahza)">tahia</FORM>
+        <FORM kindOf="standard">tahia</FORM>
+        <PHON kindOf="standard">tahia</PHON>
+        <FORM kindOf="alternate">tahza</FORM>
         <TRANSL xml:lang="zho">豆子</TRANSL>
     </S>
     <S id="Tsou_dac04d914-df09-f011-bd64-00155db40116">
@@ -25677,9 +25718,10 @@
         <TRANSL xml:lang="zho">綠豆</TRANSL>
     </S>
     <S id="Tsou_d3c00d914-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">tahia/tahza</FORM>
-        <FORM kindOf="standard">tahia/tahza</FORM>
-        <PHON kindOf="standard">tahiatahza</PHON>
+        <FORM kindOf="original" notes="source: tahia/tahza">tahia</FORM>
+        <FORM kindOf="standard">tahia</FORM>
+        <PHON kindOf="standard">tahia</PHON>
+        <FORM kindOf="alternate">tahza</FORM>
         <TRANSL xml:lang="zho">豆子</TRANSL>
     </S>
     <S id="Tsou_dfc06d914-df09-f011-bd64-00155db40116">
@@ -25689,9 +25731,10 @@
         <TRANSL xml:lang="zho">花生</TRANSL>
     </S>
     <S id="Tsou_df303d914-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">tahiapa'ea (tahzapa'ea)</FORM>
-        <FORM kindOf="standard">tahiapa'ea (tahzapa'ea)</FORM>
-        <PHON kindOf="standard">tahiapaʔea tahzapaʔea</PHON>
+        <FORM kindOf="original" notes="source: tahiapaʼea (tahzapaʼea)">tahiapa'ea</FORM>
+        <FORM kindOf="standard">tahiapa'ea</FORM>
+        <PHON kindOf="standard">tahiapaʔea</PHON>
+        <FORM kindOf="alternate">tahzapa'ea</FORM>
         <TRANSL xml:lang="zho">花生</TRANSL>
     </S>
     <S id="Tsou_dc703d914-df09-f011-bd64-00155db40116">
@@ -26100,9 +26143,10 @@
         <TRANSL xml:lang="zho" notes="動詞">聽煩</TRANSL>
     </S>
     <S id="Tsou_db604d914-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">tasucia (tasucza)</FORM>
-        <FORM kindOf="standard">tasucia (tasucza)</FORM>
-        <PHON kindOf="standard">tasuʦia tasuʦza</PHON>
+        <FORM kindOf="original" notes="source: tasucia (tasucza)">tasucia</FORM>
+        <FORM kindOf="standard">tasucia</FORM>
+        <PHON kindOf="standard">tasuʦia</PHON>
+        <FORM kindOf="alternate">tasucza</FORM>
         <TRANSL xml:lang="zho">整理排好</TRANSL>
     </S>
     <S id="Tsou_d0cfcd814-df09-f011-bd64-00155db40116">
@@ -26724,9 +26768,10 @@
         <TRANSL xml:lang="zho">為何事 ... / 為了什麼</TRANSL>
     </S>
     <S id="Tsou_d2542d11a-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">teesmizi / teesmii</FORM>
-        <FORM kindOf="standard">teesmizi / teesmii</FORM>
-        <PHON kindOf="standard">teesmizi  teesmii</PHON>
+        <FORM kindOf="original" notes="source: teesmizi / teesmii">teesmizi</FORM>
+        <FORM kindOf="standard">teesmizi</FORM>
+        <PHON kindOf="standard">teesmizi</PHON>
+        <FORM kindOf="alternate">teesmii</FORM>
         <TRANSL xml:lang="zho">因..而吵架；打架</TRANSL>
     </S>
     <S id="Tsou_d2243d11a-df09-f011-bd64-00155db40116">
@@ -26854,9 +26899,10 @@
         <TRANSL xml:lang="zho" notes="名詞">電視</TRANSL>
     </S>
     <S id="Tsou_dfe01d914-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">temia (temza)</FORM>
-        <FORM kindOf="standard">temia (temza)</FORM>
-        <PHON kindOf="standard">temia temza</PHON>
+        <FORM kindOf="original" notes="source: temia (temza)">temia</FORM>
+        <FORM kindOf="standard">temia</FORM>
+        <PHON kindOf="standard">temia</PHON>
+        <FORM kindOf="alternate">temza</FORM>
         <TRANSL xml:lang="zho">我們要</TRANSL>
     </S>
     <S id="Tsou_ddc03d914-df09-f011-bd64-00155db40116">
@@ -28638,9 +28684,10 @@
         <TRANSL xml:lang="zho" notes="動詞">參加祭典</TRANSL>
     </S>
     <S id="Tsou_d5402d914-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">toapiu (toapzu)</FORM>
-        <FORM kindOf="standard">toapiu (toapzu)</FORM>
-        <PHON kindOf="standard">toapiu toapzu</PHON>
+        <FORM kindOf="original" notes="source: toapiu (toapzu)">toapiu</FORM>
+        <FORM kindOf="standard">toapiu</FORM>
+        <PHON kindOf="standard">toapiu</PHON>
+        <FORM kindOf="alternate">toapzu</FORM>
         <TRANSL xml:lang="zho">材火</TRANSL>
     </S>
     <S id="Tsou_dfdb8e00e-df09-f011-bd64-00155db40116">
@@ -29312,9 +29359,10 @@
         <TRANSL xml:lang="zho">牆壁</TRANSL>
     </S>
     <S id="Tsou_d4042d11a-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">tonghifa (tonghifza)</FORM>
-        <FORM kindOf="standard">tonghifa (tonghifza)</FORM>
-        <PHON kindOf="standard">toŋhifa toŋhifza</PHON>
+        <FORM kindOf="original" notes="source: tonghifa (tonghifza)">tonghifa</FORM>
+        <FORM kindOf="standard">tonghifa</FORM>
+        <PHON kindOf="standard">toŋhifa</PHON>
+        <FORM kindOf="alternate">tonghifza</FORM>
         <TRANSL xml:lang="zho">牆壁</TRANSL>
     </S>
     <S id="Tsou_d4a44d11a-df09-f011-bd64-00155db40116">
@@ -29724,15 +29772,17 @@
         <TRANSL xml:lang="zho" notes="名詞">廁所</TRANSL>
     </S>
     <S id="Tsou_dc143d11a-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">tote'za (tote'ia)</FORM>
-        <FORM kindOf="standard">tote'za (tote'ia)</FORM>
-        <PHON kindOf="standard">toteʔza toteʔia</PHON>
+        <FORM kindOf="original" notes="source: toteʼza (toteʼia)">tote'za</FORM>
+        <FORM kindOf="standard">tote'za</FORM>
+        <PHON kindOf="standard">toteʔza</PHON>
+        <FORM kindOf="alternate">tote'ia</FORM>
         <TRANSL xml:lang="zho">廁所</TRANSL>
     </S>
     <S id="Tsou_d5502d914-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">tote'zamu (tote'iamu)</FORM>
-        <FORM kindOf="standard">tote'zamu (tote'iamu)</FORM>
-        <PHON kindOf="standard">toteʔzamu toteʔiamu</PHON>
+        <FORM kindOf="original" notes="source: toteʼzamu (toteʼiamu)">tote'zamu</FORM>
+        <FORM kindOf="standard">tote'zamu</FORM>
+        <PHON kindOf="standard">toteʔzamu</PHON>
+        <FORM kindOf="alternate">tote'iamu</FORM>
         <TRANSL xml:lang="zho">你們的廁所</TRANSL>
     </S>
     <S id="Tsou_dadb9e00e-df09-f011-bd64-00155db40116">
@@ -34931,9 +34981,10 @@
         <TRANSL xml:lang="zho">不客氣</TRANSL>
     </S>
     <S id="Tsou_d7affd814-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">'atutumio/'atutumzo</FORM>
-        <FORM kindOf="standard">'atutumio/'atutumzo</FORM>
-        <PHON kindOf="standard">ʔatutumioʔatutumzo</PHON>
+        <FORM kindOf="original" notes="source: ʼatutumio/ʼatutumzo">'atutumio</FORM>
+        <FORM kindOf="standard">'atutumio</FORM>
+        <PHON kindOf="standard">ʔatutumio</PHON>
+        <FORM kindOf="alternate">'atutumzo</FORM>
         <TRANSL xml:lang="zho">痛苦；不舒服；很難受</TRANSL>
     </S>
     <S id="Tsou_d8bbde00e-df09-f011-bd64-00155db40116">
@@ -34944,9 +34995,10 @@
         <TRANSL xml:lang="zho" ver="alt" notes="動詞">生活艱苦</TRANSL>
     </S>
     <S id="Tsou_d9042d11a-df09-f011-bd64-00155db40116">
-        <FORM kindOf="original">'atutumzo/'atutumio</FORM>
-        <FORM kindOf="standard">'atutumzo/'atutumio</FORM>
-        <PHON kindOf="standard">ʔatutumzoʔatutumio</PHON>
+        <FORM kindOf="original" notes="source: ʼatutumzo/ʼatutumio">'atutumzo</FORM>
+        <FORM kindOf="standard">'atutumzo</FORM>
+        <PHON kindOf="standard">ʔatutumzo</PHON>
+        <FORM kindOf="alternate">'atutumio</FORM>
         <TRANSL xml:lang="zho">痛苦 / 生病 / 不舒服</TRANSL>
     </S>
     <S id="Tsou_d9642d11a-df09-f011-bd64-00155db40116">

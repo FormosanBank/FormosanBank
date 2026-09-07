@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<TEXT id="ILRDF_Dicts_Paiwan_dictionary" xml:lang="pwn" source="Indigenous Languages Research and Development Foundation Dictionaries" audio="segmented" dialect="unknown" copyright="CC BY-NC" citation="Council of Indigenous Peoples, &amp; Indigenous Languages Research and Development Foundation. (n.d.). 原住民族語言線上辭典: 排灣語 [Indigenous Languages Online Dictionary: Paiwan language]. Retrieved 2026-05-04, from https://e-dictionary.ilrdf.org.tw/" BibTeX_citation="@misc{ILRDF_Paiwan, author = {{Council of Indigenous Peoples} and {{Indigenous Languages Research and Development Foundation}}}, title = {原住民族語言線上辭典: 排灣語 [Indigenous Languages Online Dictionary: Paiwan language]}, note = {Retrieved 2026-05-04}, url = {https://e-dictionary.ilrdf.org.tw/}}">
+<TEXT id="ILRDF_Dicts_Paiwan_dictionary" xml:lang="pwn" source="Indigenous Languages Research and Development Foundation Dictionaries" audio="segmented" dialect="unknown" copyright="CC BY-NC 4.0" citation="Council of Indigenous Peoples, &amp; Indigenous Languages Research and Development Foundation. (n.d.). 原住民族語言線上辭典: 排灣語 [Indigenous Languages Online Dictionary: Paiwan language]. Retrieved 2026-05-04, from https://e-dictionary.ilrdf.org.tw/" BibTeX_citation="@misc{ILRDF_Paiwan, author = {{Council of Indigenous Peoples} and {{Indigenous Languages Research and Development Foundation}}}, title = {原住民族語言線上辭典: 排灣語 [Indigenous Languages Online Dictionary: Paiwan language]}, note = {Retrieved 2026-05-04}, url = {https://e-dictionary.ilrdf.org.tw/}}">
     <S id="Paiwan_d0eece860-6909-f011-bd64-00155db40116">
         <FORM kindOf="original">-an</FORM>
         <FORM kindOf="standard">-an</FORM>
@@ -5727,10 +5727,16 @@
         <PHON kindOf="standard">i kaɭiŋku a caʎavəqəvəqan</PHON>
         <TRANSL xml:lang="zho">花蓮縣</TRANSL>
     </S>
-    <S id="Paiwan_d6161ca78-6909-f011-bd64-00155db40116">
-        <FORM kindOf="original">i ljavaran a cau / kingiin</FORM>
-        <FORM kindOf="standard">i ljavaran a cau / kingiin</FORM>
-        <PHON kindOf="standard">i ʎavaran a ʦau  kiŋiin</PHON>
+    <S id="Paiwan_d6161ca78-6909-f011-bd64-00155db40116_a">
+        <FORM kindOf="original" notes="source: i ljavaran a cau / kingiin">i ljavaran a cau</FORM>
+        <FORM kindOf="standard">i ljavaran a cau</FORM>
+        <PHON kindOf="standard">i ʎavaran a ʦau</PHON>
+        <TRANSL xml:lang="zho">議員</TRANSL>
+    </S>
+    <S id="Paiwan_d6161ca78-6909-f011-bd64-00155db40116_b">
+        <FORM kindOf="original" notes="source: i ljavaran a cau / kingiin">kingiin</FORM>
+        <FORM kindOf="standard">kingiin</FORM>
+        <PHON kindOf="standard">kiŋiin</PHON>
         <TRANSL xml:lang="zho">議員</TRANSL>
     </S>
     <S id="Paiwan_df3d8d96c-6909-f011-bd64-00155db40116">
@@ -8147,10 +8153,16 @@
         <PHON kindOf="standard">kəisaʦukiuku</PHON>
         <TRANSL xml:lang="zho">警察局</TRANSL>
     </S>
-    <S id="Paiwan_d2261ca78-6909-f011-bd64-00155db40116">
-        <FORM kindOf="original">keisacukiuku (借詞) / puqaqezeljanan</FORM>
-        <FORM kindOf="standard">keisacukiuku (借詞) / puqaqezeljanan</FORM>
-        <PHON kindOf="standard">kəisaʦukiuku **  puqaqəzəʎanan</PHON>
+    <S id="Paiwan_d2261ca78-6909-f011-bd64-00155db40116_a">
+        <FORM kindOf="original" notes="source: keisacukiuku (借詞) / puqaqezeljanan">keisacukiuku (借詞)</FORM>
+        <FORM kindOf="standard">keisacukiuku (借詞)</FORM>
+        <PHON kindOf="standard">kəisaʦukiuku **</PHON>
+        <TRANSL xml:lang="zho">警察局</TRANSL>
+    </S>
+    <S id="Paiwan_d2261ca78-6909-f011-bd64-00155db40116_b">
+        <FORM kindOf="original" notes="source: keisacukiuku (借詞) / puqaqezeljanan">puqaqezeljanan</FORM>
+        <FORM kindOf="standard">puqaqezeljanan</FORM>
+        <PHON kindOf="standard">puqaqəzəʎanan</PHON>
         <TRANSL xml:lang="zho">警察局</TRANSL>
     </S>
     <S id="Paiwan_d4defe860-6909-f011-bd64-00155db40116">

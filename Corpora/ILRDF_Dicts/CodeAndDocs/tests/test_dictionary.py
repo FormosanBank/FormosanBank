@@ -105,7 +105,7 @@ class TestTree(unittest.TestCase):
 
     def test_root_declares_the_language_and_rights(self):
         self.assertEqual(self.root.get(XML_LANG), "sxr")
-        self.assertEqual(self.root.get("copyright"), "CC BY-NC")
+        self.assertEqual(self.root.get("copyright"), "CC BY-NC 4.0")
 
 
 if __name__ == "__main__":

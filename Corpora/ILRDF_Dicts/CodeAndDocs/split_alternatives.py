@@ -45,6 +45,7 @@ import argparse
 import csv
 import itertools
 import re
+from functools import lru_cache
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -154,7 +155,8 @@ _BARE_BRACKET = re.compile(r"\s*[（(]\s*([^（()）]*?)\s*[）)]")
 _ANNOTATIONS = Path(__file__).resolve().parent / "source_data" / "bracket_annotations.csv"
 
 
-def load_annotations(path: Path = _ANNOTATIONS) -> set[str]:
+@lru_cache(maxsize=None)
+def load_annotations(path: Path = _ANNOTATIONS) -> frozenset[str]:
     """Bracketed spans reviewed as annotation rather than alternation.
 
     Latin-script loanwords glossing a Formosan term -- Japanese 'gocyo' for
@@ -162,10 +164,10 @@ def load_annotations(path: Path = _ANNOTATIONS) -> set[str]:
     listed rather than detected (POL-039: data, not code).
     """
     if not path.exists():
-        return set()
+        return frozenset()
     with path.open(encoding="utf-8", newline="") as handle:
-        return {row["content"].strip().casefold()
-                for row in csv.DictReader(handle) if row.get("content")}
+        return frozenset(row["content"].strip().casefold()
+                         for row in csv.DictReader(handle) if row.get("content"))
 
 
 def classify_bracket(content: str, preceding: str, annotations: set[str]) -> str:
@@ -373,6 +375,66 @@ def resolve_equals(text: str) -> list[str]:
     return [text]
 
 
+def split_headword(text: str) -> tuple[list[Reading], list[str]]:
+    """Resolve a dictionary headword.
+
+    A headword differs from a sentence in one way that matters: the whole
+    field IS the item, so a slash cannot be ambiguous about which span it
+    replaces. 'kmut/smʼung' is simply two words sharing one definition —
+    two entries, or one entry with an alternate spelling. It is never the
+    "we cannot tell what this substitutes for" case that makes a sentence
+    unresolvable, so a headword is not deleted for having a slash.
+
+    Brackets keep the sentence treatment: '(音譯)' is annotation there as
+    here, and 'seRay (seRi)' is a spelling variant either way.
+    """
+    annotations = load_annotations()
+
+    # A trailing bracket covering the rest of the field is another form of the
+    # entry, for the same reason a slash is: there is no surrounding sentence,
+    # so nothing is ambiguous about what it substitutes for. 'masʉecʉ
+    # (tʼocngoyx)' is two Tsou words sharing one definition. Annotation --
+    # '(音譯)', a Japanese loan, a proper noun, a number -- is left alone.
+    # The space matters: an ATTACHED bracket is the append idiom --
+    # 'uculru(wa)' means uculru/uculruwa, not uculru and 'wa' -- and 'wa' is
+    # not an entry. Only a spaced bracket reads as a second form.
+    trailing = re.search(r"\s+[（(]([^（()）]*)[）)]\s*$", text)
+    if trailing is not None:
+        body = trailing.group(1).strip()
+        head = text[: trailing.start()].strip()
+        words = head.split()
+        verdict = classify_bracket(body, words[-1] if words else "", annotations)
+        if verdict != "retain" and head and body:
+            text = f"{head} / {body}"
+
+    options = [o.strip() for o in re.split(r"\s*/\s*", text) if o.strip()]
+    if len(options) < 2:
+        return split_record(text)
+
+    readings: list[Reading] = []
+    dropped: list[str] = []
+    kind = classify_site(options)
+    if kind == "spelling":
+        expanded = resolve_brackets(options[0], annotations)
+        if expanded is None:
+            return [], [text]
+        alternates = []
+        for other in options[1:]:
+            more = resolve_brackets(other, annotations)
+            if more is not None:
+                alternates.extend(r.text for r in more)
+        return [Reading(expanded[0].text, alternates)], []
+    for option in options:
+        expanded = resolve_brackets(option, annotations)
+        if expanded is None:
+            dropped.append(option)
+            continue
+        for reading in expanded:
+            if reading.text not in [r.text for r in readings]:
+                readings.append(reading)
+    return readings, dropped
+
+
 def split_record(text: str) -> tuple[list[Reading], list[str]]:
     """Return (published readings, fragments dropped as unresolvable).
 
@@ -401,13 +463,7 @@ def process(xml_dir: Path, apply: bool, report: Path | None) -> dict[str, int]:
               "deleted": 0, "fragments_dropped": 0, "alternates": 0}
     rows: list[dict[str, object]] = []
     for path in sorted(xml_dir.rglob("*.xml")):
-        if path.name.endswith("_dictionary.xml"):
-            # Headwords are not sentences and carry their own notation:
-            # 'uculru(wa)' marks an optional ending, 'aono(mamcino)' a variant.
-            # Reading those as sentence annotation deleted 463 entries. Until
-            # headword notation has a ruling of its own, leave dictionaries as
-            # the source wrote them.
-            continue
+        is_dictionary = path.name.endswith("_dictionary.xml")
         tree = etree.parse(str(path))
         root = tree.getroot()
         changed = False
@@ -417,7 +473,8 @@ def process(xml_dir: Path, apply: bool, report: Path | None) -> dict[str, int]:
                 continue
             counts["records"] += 1
             source = form.text
-            readings, dropped = split_record(source)
+            resolve = split_headword if is_dictionary else split_record
+            readings, dropped = resolve(source)
             for fragment in dropped:
                 counts["fragments_dropped"] += 1
                 rows.append({"id": sentence.get("id"), "verdict": "dropped",
