@@ -37,6 +37,10 @@ They were collected on Orchid Island between 1955 and 1957. Every sentence has a
 * **Hyphens mark morpheme boundaries** and are kept exactly as printed, at every level.
 * An earlier release shipped a `standard` tier produced by `Yami_Wakelin_113.tsv`, a "conversion table" whose only rule deleted hyphens and which mapped no letters at all. That tier asserted nothing; both it and the table have been removed.
 
+### A renamed file
+
+**Text F's file and `TEXT/@id` were renamed `Kalaku4` → `Sunagu` on 7 September 2026.** The text was given by Saman Sunagu, not by Saman Kalaku, and the old name said otherwise. Published identifiers are normally stable, so this is a breaking change announced rather than a quiet cleanup: a citation of `WakelinTexts/Kalaku4` will no longer resolve, and should be read as `WakelinTexts/Sunagu`. The sentence, word and morpheme identifiers inside the file are unchanged.
+
 ### Corpus Processing
 
 The texts were transferred from the printed article to XML **by hand**, so the hand-typed XML is the corpus's source of record and is preserved in `CodeAndDocs/pre_correction_snapshot/`. The published XML is rebuilt from it by `CodeAndDocs/generate_xml.sh`, which runs a corpus-local parser and then the shared cleaner. There is deliberately no standardization and no phonology step.
