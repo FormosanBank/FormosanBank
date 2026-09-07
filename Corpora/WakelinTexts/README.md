@@ -42,9 +42,11 @@ Note that text F was given by Saman Sunagu, not by Saman Kalaku; the `Kalaku4` f
 
 **The orthography of these texts has not been identified, and no orthographic conversion is applied to them.** The article gives no statement of its writing system, and the transcription does not match any orthography currently profiled in [`Orthographies/`](../../Orthographies/): it uses `u` where modern Yami spelling uses `o`, `e` for a vowel the article describes only as fluctuating with `a`, and it has no `'`, `j`, or `z`.
 
-It does have one symbol worth knowing about before using the data:
+It does have two symbols worth knowing about before using the data:
 
 - **`?` is a letter, not punctuation.** There are **47 occurrences**, and they sit *inside* single words, word-internally and word-finally, on the word and morpheme tiers as well as the sentence tier — `tau?` 'person', `uvi?` 'potato', `lavi?` 'cry', `kayu?` 'tree', `ina?` 'mother'. They appear in plainly declarative sentences: `amyan su tau? nu-kakwa i-m-angay mang-aep su uvi?` = "A long time ago, there was a person who went to get some potatoes." On the evidence it writes a consonant that modern Yami spelling leaves unwritten, most plausibly a glottal stop — but **that identification is not confirmed**, and it is the single largest reason the writing system as a whole cannot be pinned down. Do not strip it as punctuation, and do not read a sentence containing it as a question.
+
+- **`ř` is a letter of the transcription**, in eight words: `kařwan` 'other', `vařit` 'bamboo strips', `pasavuřen-ku`, `pasamuřna`, `mi-kařakařa`, `k-ařima-raw` 'in five days', `a-pneřek-em`, `vařangyam` 'boat'. It is the corpus's only non-ASCII letter, and the reason `validate_text` reports two SOFT `V116 non_ascii_in_form` findings. The hand-typed XML originally lost the caron and spelled all of these with a plain `r`; the article prints `ř` and the transcription has been corrected to match. (The PDF's text layer renders the letter as `f'`, `fl`, `i'` or `:l'` depending on the word, which is how the loss went unnoticed.)
 
 ### Why there is no standard tier and no IPA
 
@@ -170,7 +172,7 @@ It rebuilds `XML/` from the snapshot using the QC scripts of the FormosanBank ch
    python QC/cleaning/clean_xml.py --corpora_path Corpora/WakelinTexts/XML
    ```
 
-   Removes empty elements, normalizes Unicode to NFC, decodes HTML escapes, and canonicalizes typographic look-alikes (curly quotes, dashes, tildes) and null-morpheme glyphs. The hand-typed text is plain ASCII, so this step currently changes nothing; it is the guarantee that it stays that way.
+   Removes empty elements, normalizes Unicode to NFC, decodes HTML escapes, and canonicalizes typographic look-alikes (curly quotes, dashes, tildes) and null-morpheme glyphs. The hand-typed text is near-ASCII — the only non-ASCII letter is `ř` — so this step currently changes nothing; it is the guarantee that it stays that way.
 
 **Steps 4 and 5 of the POL-047 shape — `standardize.py` and `add_phonology.py` — are deliberately absent**, and this is the deviation POL-047 requires a corpus to state. See "Why there is no standard tier and no IPA" above. There is also no `apply_manual_edits.py` step: this corpus has no `manual_edits.xml`, because hand corrections belong in the snapshot, which is its source.
 

@@ -276,7 +276,6 @@ def build_branch(sentence, spec, decision):
     sid = sentence.get("id")
     new_sid = sid + spec["suffix"]
     branch = ET.Element("S", {"id": new_sid})
-    set_form(branch, spec["form"])
     for t in sentence.findall("TRANSL"):
         branch.append(copy.deepcopy(t))
     by_id = {w.get("id"): w for w in sentence.findall("W")}
@@ -317,6 +316,24 @@ def build_branch(sentence, spec, decision):
         t = ET.SubElement(w, "TRANSL", {ENG: "eng"})
         t.text = extra["gloss"]
         branch.append(w)
+
+    # The sentence FORM is DERIVED from the words, never copied from the table.
+    # A hand-written branch FORM silently goes stale the moment the snapshot is
+    # corrected — a batch of `r` -> `ř` fixes left S48's sentence reading
+    # `k-arima-raw` under a word reading `k-ařima-raw`. The table still declares
+    # the expected string, and a mismatch is fatal rather than published.
+    derived = " ".join(text_of(w) for w in branch.findall("W"))
+    declared = spec.get("form")
+    if declared is not None and declared != derived:
+        raise SystemExit(
+            f"{new_sid}: alternative_decisions.json declares\n"
+            f"    {declared!r}\n"
+            f"  but the branch's words give\n"
+            f"    {derived!r}\n"
+            f"  Update the table, or the snapshot."
+        )
+    branch.insert(0, ET.Element("FORM", {"kindOf": "original"}))
+    branch[0].text = derived
     return branch
 
 
