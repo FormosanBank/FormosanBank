@@ -27,12 +27,12 @@ Six Yami (`xml:lang="tao"`, `dialect="Yami"`) narrative texts, collected on Orch
 
 | File | Text in the article | Informant | Sentences | Words | Morphemes |
 |---|---|---|---|---|---|
-| `XML/Yami/Kangkang.xml` | A. *Ji Kangkang* (The Rooster) | Samen Indosan, April 1955 | 44 | 219 | 204 |
-| `XML/Yami/Kwaway.xml` | B. *Kwaway* (The Spirit) | Sinan Dararyaw, May 1957 | 64 | 278 | 341 |
-| `XML/Yami/Kalaku1.xml` | C. | Saman Kalaku, 6 September 1956 | 22 | 97 | 111 |
-| `XML/Yami/Kalaku2.xml` | D. | Samen Kalaku, 6 September 1956 | 14 | 76 | 103 |
-| `XML/Yami/Kalaku3.xml` | E. | Saman Kalaku, 13 September 1956 | 11 | 56 | 68 |
-| `XML/Yami/Sunagu.xml` | F. | Saman Sunagu, January 1957 | 24 | 161 | 176 |
+| `XML/Yami/Kangkang.xml` | A. *Ji Kangkang* (The Rooster) | Samen Indosan, April 1955 | 44 | 219 | 241 |
+| `XML/Yami/Kwaway.xml` | B. *Kwaway* (The Spirit) | Sinan Dararyaw, May 1957 | 64 | 278 | 343 |
+| `XML/Yami/Kalaku1.xml` | C. | Saman Kalaku, 6 September 1956 | 22 | 97 | 126 |
+| `XML/Yami/Kalaku2.xml` | D. | Samen Kalaku, 6 September 1956 | 14 | 76 | 114 |
+| `XML/Yami/Kalaku3.xml` | E. | Saman Kalaku, 13 September 1956 | 11 | 56 | 92 |
+| `XML/Yami/Sunagu.xml` | F. | Saman Sunagu, January 1957 | 24 | 161 | 179 |
 
 Sentence counts exceed the article's printed sentence numbers because seven printed alternations are published as separate sentences — see [Alternations](#alternations-the-sources-slash-notation) below.
 
@@ -44,7 +44,9 @@ Text F was given by Saman Sunagu, not by Saman Kalaku. It was published as `Suna
 
 It does have three symbols worth knowing about before using the data:
 
-- **`?` is a letter, not punctuation.** There are **47 occurrences**, and they sit *inside* single words, word-internally and word-finally, on the word and morpheme tiers as well as the sentence tier — `tau?` 'person', `uvi?` 'potato', `lavi?` 'cry', `kayu?` 'tree', `ina?` 'mother'. They appear in plainly declarative sentences: `amyan su tau? nu-kakwa i-m-angay mang-aep su uvi?` = "A long time ago, there was a person who went to get some potatoes." On the evidence it writes a consonant that modern Yami spelling leaves unwritten, most plausibly a glottal stop — but **that identification is not confirmed**, and it is the single largest reason the writing system as a whole cannot be pinned down. Do not strip it as punctuation, and do not read a sentence containing it as a question.
+- **`?` is a letter, not punctuation.** There are **47 occurrences**, and they sit *inside* single words, word-internally and word-finally, on the word and morpheme tiers as well as the sentence tier — `tau?` 'person', `uvi?` 'potato', `lavi?` 'cry', `kayu?` 'tree', `ina?` 'mother'. They appear in plainly declarative sentences: `amyan su tau? nu-kakwa i-m-angay mang-aep su uvi?` = "A long time ago, there was a person who went to get some potatoes." **It is a glottal stop**, and two independent sources say so. The Ortho113 specification (pp. 21–23, §九 雅美) *removed* [ʔ] from the Yami consonant table and moved it to the notes, which state that the letter `’` marks the glottal stop, "a consonant that causes a pause or breaks a syllable", and that the community decided to **keep** it while leaving it out of the tables — so modern Yami has the phoneme and a letter for it. And the article's own errata delete `?` **exactly twice** (A42, A43), both times word-finally before the vowel-initial word `u`, which is the hiatus where a glottal transition is automatic and need not be written; everywhere else they leave it. Of the 21 surviving occurrences, 8 are sentence-final and 10 precede a consonant, so it is not merely a hiatus marker. Do not strip it as punctuation, and do not read a sentence containing it as a question.
+
+  ⚠️ Note for anyone converting this corpus: modern Yami writes `’` medially and initially but **essentially never word-finally** — 8 occurrences in 135,435 tokens of the bank's other Yami data, all apparent typos. Wakelin's `?` is word-final in every word that has it, so a conversion to the common orthography would have to drop it, losing a distinction the original tier records.
 
 - **`ř` is a letter of the transcription**, in twelve words: `kařwan` 'other', `vařit` 'bamboo strips', `pasavuřen-ku`, `pasamuřna`, `mi-kařakařa`, `k-ařima-raw` 'in five days', `a-pneřek-em`, `vařangyam` 'boat', `y-ařwa` 'two', `sipřutan`, `řerchip` 'cave', and `tiřarawa-kamu`. It is one of the corpus's two non-ASCII letters (the other is `ǥ` below), and part of the reason `validate_text` reports SOFT `V116 non_ascii_in_form` findings. The hand-typed XML originally lost the caron and spelled all of these with a plain `r`; the article prints `ř` and the transcription has been corrected to match. (The PDF's text layer renders the letter as `f'`, `fl`, `i'`, `:l'` or `~` depending on the word, which is how the loss went unnoticed.)
 
@@ -152,11 +154,12 @@ Both are recorded in [`CodeAndDocs/source_discrepancies.md`](CodeAndDocs/source_
 Two rules are applied corpus-wide when the XML is built (maintainer, 2026-09-06):
 
 - **`unan` is not a gloss.** It is the article's "unanalyzed" marker — it records that the transcriber supplied *nothing*. A `TRANSL` whose entire text is `unan` is therefore **not published**, at any level, rather than shipped as though it meant something. Composite glosses that merely contain it (`unan-past(unctn)-accompany-completely`) are untouched: there the `unan` marks one morpheme inside an analysis that does exist.
+- **The `-em`/`-m` narration suffix is glossed `PAR`.** The article's own NOTE says this suffix "occurs throughout without a translation given", and the hand transcription duplicated whatever gloss stood on the preceding morpheme onto it (`vanuad`/'wharf' followed by `em`/'wharf'). The build replaces that with `PAR` and appends `-PAR` to the word's gloss. This is the article's note applied to the tier rather than a correction to it, and it is **not** in the snapshot — it happens during processing, so the snapshot stays a record of what was typed. The gloss is not invented: Rau & Dong gloss the modern cognate `am` as 助 'particle' (423×) and 呢 (369×), the rest of FormosanBank's Yami data glosses `am` as `PAR` across 4,679 tokens, and `-em` ~ `am` is exactly the `e` ~ `a` correspondence the article's own "/e/ and /a/ fluctuate freely" note predicts. It applies only to a **word-final** suffix — `m` is a prefix elsewhere (`a-m-angay`) and is left alone. **37 words** are glossed this way, and because the suffix was the reason they carried one morpheme more than their gloss had units, **33 of them keep a morpheme tier they would otherwise have lost.**
 - **A word whose morphemes do not line up with its gloss gets no morphemes.** If the number of `M` children disagrees with the number of units in the word's gloss, the word keeps its word-level gloss and its `M` tier is dropped, rather than publishing a mis-aligned analysis. `Kangkang/S33` is the clear case: `simuskem` is one morpheme glossed `kill-with-boiling-water`, and splitting that gloss across morphemes would invent an analysis the article never gave. A word left with no gloss at all by the first rule likewise keeps no `M`.
 
-Gloss units are counted on hyphens *outside* parentheses, so `unan-(one-after-another)-us-completely` is four units and not six; and a gloss that carries the source's own slash alternation across the whole word (`unan-not-I-you(pl)/unan-curse-I-you(pl)`, `Kwaway/S25`) counts as aligned if either side matches.
+Gloss units are counted on hyphens *outside* parentheses, so `unan-(one-after-another)-us-completely` is four units and not six; and a gloss that carries the source's own slash alternation across the whole word (`unan-not-I-you(pl)/unan-curse-I-you(pl)`, `Kwaway/S25`) counts as aligned if either side matches. A word is also treated as unreliably segmented when a **morpheme gloss carries half a parenthesis** — the transcription split a parenthesised multi-word unit across two morphemes, writing `(next-morning)` as `(next` + `morning)` — since half a gloss is not a gloss.
 
-**54 words lose their `M` tier this way**, and every one is listed in [`CodeAndDocs/gloss_alignment_review.tsv`](CodeAndDocs/gloss_alignment_review.tsv), regenerated on every build. Two patterns dominate: the article's `-em`/`-m` "narration" suffix, which it says outright occurs "throughout without a translation given", and single morphemes whose English gloss is a hyphenated phrase (`kakwa` 'long-time-ago', `utwen` 'cold-food').
+**23 words lose their `M` tier this way** — down from 54 before the suffix was glossed — and every one is listed in [`CodeAndDocs/gloss_alignment_review.tsv`](CodeAndDocs/gloss_alignment_review.tsv), regenerated on every build. What remains is dominated by single morphemes whose English gloss is a hyphenated phrase (`kakwa` 'long-time-ago', `utwen` 'cold-food'), where the mismatch is an artifact of English and not of the analysis.
 
 Both rules make `validate_glosses` louder, on purpose: `V064 every_M_has_TRANSL` and `V065 every_W_has_TRANSL` now fire as SOFT findings wherever the article gave no gloss. That is the honest state of the data — the alternative is to publish `unan` as though it were a translation.
 
@@ -176,7 +179,7 @@ It rebuilds `XML/` from the snapshot using the QC scripts of the FormosanBank ch
    python Corpora/WakelinTexts/CodeAndDocs/generate_xml.py
    ```
 
-   Reads the snapshot, applies `alternative_decisions.json` and the two gloss rules above, and writes `XML/` plus `CodeAndDocs/gloss_alignment_review.tsv`. This is the corpus-local parsing step POL-046 exempts from "shared tools first": turning *this* hand-typed source into the original tier is inherently source-specific. It fails loudly if the snapshot ever acquires a derived tier, and if any published FORM still contains a slash.
+   Reads the snapshot, applies `alternative_decisions.json` and the gloss rules above — narration suffix first, then the alignment checks — and writes `XML/` plus `CodeAndDocs/gloss_alignment_review.tsv`. This is the corpus-local parsing step POL-046 exempts from "shared tools first": turning *this* hand-typed source into the original tier is inherently source-specific. It fails loudly if the snapshot ever acquires a derived tier, and if any published FORM still contains a slash.
 
 2. **Clean the XML**
 

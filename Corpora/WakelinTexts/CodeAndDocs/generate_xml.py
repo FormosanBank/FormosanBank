@@ -186,9 +186,62 @@ def gloss_units(value: str) -> list[str]:
     return [u for u in units if u]
 
 
+def _unbalanced(value: str) -> bool:
+    """True when parentheses do not pair up inside a single gloss."""
+    depth = 0
+    for char in value or "":
+        if char == "(":
+            depth += 1
+        elif char == ")":
+            depth -= 1
+            if depth < 0:
+                return True
+    return depth != 0
+
+
 def gloss_of(node):
     t = node.find("TRANSL")
     return (t.text or "") if t is not None else ""
+
+
+# The article's "narration suffix". Its own NOTE says -em/-m "occurs throughout
+# without a translation given", and the hand transcription duplicated whatever
+# gloss stood on the preceding morpheme onto it (`vanuad`/'wharf' + `em`/'wharf').
+NARRATION_SUFFIXES = ("em", "m")
+NARRATION_GLOSS = "PAR"
+
+
+def gloss_narration_suffix(sentence, report):
+    """Gloss the source's own unglossed -em/-m suffix as PAR.
+
+    This is not a correction to the article — it is the article's own NOTE
+    applied to the tier. Rau & Dong gloss the modern cognate `am` as 助
+    'particle' (423x) and 呢 (369x), and the rest of FormosanBank's Yami data
+    glosses `am` as PAR across 4,679 tokens; `-em` ~ `am` is the e ~ a
+    correspondence the article's "\u002fe\u002f and \u002fa\u002f fluctuate freely" note predicts.
+
+    Runs BEFORE tidy_glosses, so the words it repairs keep the morpheme tier
+    they would otherwise lose: the suffix is why 35 of them are one morpheme
+    longer than their gloss. Only a WORD-FINAL suffix qualifies — `m` is also a
+    prefix elsewhere (`a-m-angay`), and that one is left alone.
+    """
+    for w in sentence.findall("W"):
+        form = text_of(w)
+        morphemes = w.findall("M")
+        if not morphemes or not form.endswith(tuple("-" + s for s in NARRATION_SUFFIXES)):
+            continue
+        last = morphemes[-1]
+        if text_of(last) not in NARRATION_SUFFIXES:
+            continue
+        gloss = gloss_of(w)
+        if not gloss:
+            continue
+        for t in list(last.findall("TRANSL")):
+            last.remove(t)
+        t = ET.SubElement(last, "TRANSL", {ENG: "eng"})
+        t.text = NARRATION_GLOSS
+        w.find("TRANSL").text = gloss + "-" + NARRATION_GLOSS
+        report.append((sentence.get("id"), w.get("id"), form, gloss))
 
 
 def tidy_glosses(sentence, report):
@@ -225,9 +278,17 @@ def tidy_glosses(sentence, report):
         # aligns if ANY of its slash-separated glosses has the right unit count.
         # `still/again` is unaffected: it is one unit, and neither half of it
         # matches on its own.
+        # A morpheme gloss carrying half a parenthesis is half of a gloss: the
+        # transcription split a parenthesised multi-word unit across two
+        # morphemes (`(next-morning)` as `(next` + `morning)`). The word is not
+        # reliably segmented, so it keeps its own gloss and loses its M tier —
+        # the same principle as the count check below.
+        split_unit = any(
+            _unbalanced(gloss_of(m)) for m in morphemes if gloss_of(m)
+        )
         counts = {len(gloss_units(part)) for part in gloss.split("/")}
         counts.add(len(gloss_units(gloss)))
-        if len(morphemes) not in counts:
+        if split_unit or len(morphemes) not in counts:
             report.append((sid, w.get("id"), text_of(w), gloss,
                            len(morphemes), len(gloss_units(gloss))))
             for m in morphemes:
@@ -394,6 +455,7 @@ def main() -> int:
     out_root = Path(args.xml_dir)
     total = {"S": 0, "variant": 0, "split": 0}
     gloss_report: dict[str, list] = {}
+    narration_report: dict[str, list] = {}
     for src in sorted(snapshot.rglob("*.xml")):
         name = src.stem
         tree = ET.parse(src)
@@ -413,6 +475,8 @@ def main() -> int:
             else:
                 rebuilt.extend(apply_split(sentence, decision))
                 total["split"] += 1
+        for sentence in rebuilt:
+            gloss_narration_suffix(sentence, narration_report.setdefault(name, []))
         for sentence in rebuilt:
             tidy_glosses(sentence, gloss_report.setdefault(name, []))
         for sentence in root.findall("S"):
@@ -447,6 +511,8 @@ def main() -> int:
                         print(f"  !! {path.name} {m.get('id')}: {mf!r} "
                               f"is not in its word {readings}")
                         leftover += 1
+    narrated = sum(len(v) for v in narration_report.values())
+    print(f"  narration suffix -em/-m glossed {NARRATION_GLOSS} on {narrated} W")
     if args.gloss_report:
         with open(args.gloss_report, "w", encoding="utf-8") as fh:
             fh.write("file\tsentence\tword\tform\tgloss\tmorphemes\tgloss_units\n")

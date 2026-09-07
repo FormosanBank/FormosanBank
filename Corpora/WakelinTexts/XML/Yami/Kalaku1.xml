@@ -43,15 +43,7 @@
         </W>
         <W id="S1W4">
             <FORM kindOf="original">ilaud-em</FORM>
-            <TRANSL xml:lang="eng">foreign-country</TRANSL>
-            <M id="S1W4M1">
-                <FORM kindOf="original">ilaud</FORM>
-                <TRANSL xml:lang="eng">foreign</TRANSL>
-            </M>
-            <M id="S1W4M2">
-                <FORM kindOf="original">em</FORM>
-                <TRANSL xml:lang="eng">country</TRANSL>
-            </M>
+            <TRANSL xml:lang="eng">foreign-country-PAR</TRANSL>
         </W>
     </S>
     <S id="S2">
@@ -137,7 +129,7 @@
         <TRANSL xml:lang="eng">The next morning, we had one bowl of food each.</TRANSL>
         <W id="S4W1">
             <FORM kindOf="original">a-pneřek-em</FORM>
-            <TRANSL xml:lang="eng">unan-(next-morning)</TRANSL>
+            <TRANSL xml:lang="eng">unan-(next-morning)-PAR</TRANSL>
         </W>
         <W id="S4W2">
             <FORM kindOf="original">ty-asa-nemn-a-panay</FORM>
@@ -210,7 +202,15 @@
         </W>
         <W id="S5W3">
             <FORM kindOf="original">vanuad-em</FORM>
-            <TRANSL xml:lang="eng">wharf</TRANSL>
+            <TRANSL xml:lang="eng">wharf-PAR</TRANSL>
+            <M id="S5W3M1">
+                <FORM kindOf="original">vanuad</FORM>
+                <TRANSL xml:lang="eng">wharf</TRANSL>
+            </M>
+            <M id="S5W3M2">
+                <FORM kindOf="original">em</FORM>
+                <TRANSL xml:lang="eng">PAR</TRANSL>
+            </M>
         </W>
     </S>
     <S id="S6">
@@ -463,7 +463,15 @@
         </W>
         <W id="S11W4">
             <FORM kindOf="original">dewdew-em</FORM>
-            <TRANSL xml:lang="eng">foreigners</TRANSL>
+            <TRANSL xml:lang="eng">foreigners-PAR</TRANSL>
+            <M id="S11W4M1">
+                <FORM kindOf="original">dewdew</FORM>
+                <TRANSL xml:lang="eng">foreigners</TRANSL>
+            </M>
+            <M id="S11W4M2">
+                <FORM kindOf="original">em</FORM>
+                <TRANSL xml:lang="eng">PAR</TRANSL>
+            </M>
         </W>
         <W id="S11W5">
             <FORM kindOf="original">dy-aru-pa-sira</FORM>
@@ -517,7 +525,15 @@
         </W>
         <W id="S11bW4">
             <FORM kindOf="original">dewdew-em</FORM>
-            <TRANSL xml:lang="eng">foreigners</TRANSL>
+            <TRANSL xml:lang="eng">foreigners-PAR</TRANSL>
+            <M id="S11bW4M1">
+                <FORM kindOf="original">dewdew</FORM>
+                <TRANSL xml:lang="eng">foreigners</TRANSL>
+            </M>
+            <M id="S11bW4M2">
+                <FORM kindOf="original">em</FORM>
+                <TRANSL xml:lang="eng">PAR</TRANSL>
+            </M>
         </W>
         <W id="S11bW5">
             <FORM kindOf="original">dy-aru-pa-sira</FORM>
@@ -557,7 +573,24 @@
         <W id="S12W1">
             <FORM kindOf="original">maluvut-neme-rana-m</FORM>
             <FORM kindOf="alternate">maluvut-namen-rana-m</FORM>
-            <TRANSL xml:lang="eng">all-us-completely</TRANSL>
+            <TRANSL xml:lang="eng">all-us-completely-PAR</TRANSL>
+            <M id="S12W1M1">
+                <FORM kindOf="original">maluvut</FORM>
+                <TRANSL xml:lang="eng">all</TRANSL>
+            </M>
+            <M id="S12W1M2">
+                <FORM kindOf="original">neme</FORM>
+                <FORM kindOf="alternate">namen</FORM>
+                <TRANSL xml:lang="eng">us</TRANSL>
+            </M>
+            <M id="S12W1M3">
+                <FORM kindOf="original">rana</FORM>
+                <TRANSL xml:lang="eng">completely</TRANSL>
+            </M>
+            <M id="S12W1M4">
+                <FORM kindOf="original">m</FORM>
+                <TRANSL xml:lang="eng">PAR</TRANSL>
+            </M>
         </W>
         <W id="S12W2">
             <FORM kindOf="original">pasongayna-rana</FORM>
@@ -635,7 +668,15 @@
         </W>
         <W id="S14W2">
             <FORM kindOf="original">namen-em</FORM>
-            <TRANSL xml:lang="eng">we</TRANSL>
+            <TRANSL xml:lang="eng">we-PAR</TRANSL>
+            <M id="S14W2M1">
+                <FORM kindOf="original">namen</FORM>
+                <TRANSL xml:lang="eng">we</TRANSL>
+            </M>
+            <M id="S14W2M2">
+                <FORM kindOf="original">em</FORM>
+                <TRANSL xml:lang="eng">PAR</TRANSL>
+            </M>
         </W>
         <W id="S14W3">
             <FORM kindOf="original">nimi-namen</FORM>
@@ -693,7 +734,15 @@
         </W>
         <W id="S15W4">
             <FORM kindOf="original">araw-em</FORM>
-            <TRANSL xml:lang="eng">sun</TRANSL>
+            <TRANSL xml:lang="eng">sun-PAR</TRANSL>
+            <M id="S15W4M1">
+                <FORM kindOf="original">araw</FORM>
+                <TRANSL xml:lang="eng">sun</TRANSL>
+            </M>
+            <M id="S15W4M2">
+                <FORM kindOf="original">em</FORM>
+                <TRANSL xml:lang="eng">PAR</TRANSL>
+            </M>
         </W>
         <W id="S15W5">
             <FORM kindOf="original">ni-maligen</FORM>
@@ -877,7 +926,18 @@
         </W>
         <W id="S19W3">
             <FORM kindOf="original">di-taytu-em</FORM>
-            <TRANSL xml:lang="eng">unan-Taytu</TRANSL>
+            <TRANSL xml:lang="eng">unan-Taytu-PAR</TRANSL>
+            <M id="S19W3M1">
+                <FORM kindOf="original">di</FORM>
+            </M>
+            <M id="S19W3M2">
+                <FORM kindOf="original">taytu</FORM>
+                <TRANSL xml:lang="eng">Taytu</TRANSL>
+            </M>
+            <M id="S19W3M3">
+                <FORM kindOf="original">em</FORM>
+                <TRANSL xml:lang="eng">PAR</TRANSL>
+            </M>
         </W>
     </S>
     <S id="S20">
