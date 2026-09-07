@@ -6,6 +6,17 @@ The [**Indigenous Languages Research and Development Foundation**](https://www.i
 
 The **ILRDF Dictionaries Corpus** is an integral part of the FormosanBank project, providing a rich and structured dataset of the 16 officially recognized Formosan languages: **Amis**, **Atayal**, **Saisiyat**, **Thao**, **Seediq**, **Bunun**, **Paiwan**, **Rukai**, **Truku**, **Kavalan**, **Tsou**, **Kanakanavu**, **Saaroa**, **Puyuma**, **Yami**, and **Sakizaya**. These dictionaries are invaluable for documenting and preserving linguistic diversity. They include text, audio recordings, and translations, making them a comprehensive resource for research, education, and language revitalization.
 
+The corpus publishes two things per language:
+
+| | Sentences | Headword entries |
+| --- | ---: | ---: |
+| Files | 16 | 16 |
+| `S` records | 167,241 | 139,097 |
+| Translations | 169,364 | 164,359 |
+| Audio links | 132,281 | — |
+
+The **example sentences** carry the source's Chinese translation and, where the source has one, a link to its audio recording. The **headword entries**, in `XML/<Language>/<Language>_dictionary.xml`, give one `<S>` per headword and one `<TRANSL>` per sense, with each sense's part of speech on its own `TRANSL/@notes`. Neither has a word or morpheme tier: the source carries no morphological analysis.
+
 ***
 
 <!-- CORPUS STATS START -->
@@ -60,41 +71,48 @@ Recognizing the importance of sustainability, the ILRDF digitized these dictiona
 
 ### Processing the ILRDF Corpus
 
-Below, we outline the processing pipeline and quality control (QC) measures that were implemented to structure the data into a machine-readable format while ensuring its accuracy and usability.
+The corpus is rebuilt from committed snapshots of the ILRDF API, so anyone can reproduce it without network access:
 
-1. **Data Extraction from PDFs**
-   * The process began by extracting dictionary entries from PDF files provided by the ILRDF for each language. The entries were identified using specific markers (e.g., the symbol ★) to distinguish dictionary content from other text.
-   * Extracted entries were stored as word lists in the `words_list` directory for further processing.
-2. **API Integration for Word Data**
-   * The extracted words were used to query the ILRDF API, retrieving:
-     * **Definitions** of the words.
-     * **Example sentences** demonstrating their use in context.
-     * **Audio links** for pronunciation.
-   * The results of these API calls were saved in `.PickleScrapes` for each language, enabling streamlined access and reuse.
-3. **XML Conversion**
-   * The scraped data was structured into XML format following the FormosanBank XML standard, ensuring compatibility with other corpora in FormosanBank.
-   * Each dictionary entry was represented as an XML `<S>` element, containing:
-     * `<FORM>`: The original word or phrase.
-     * `<TRANSL>`: Chinese translations of the word or examples.
-     * `<AUDIO>`: Links to or paths for audio files.
-4. **Audio Download and Integration**
-   * Audio files are not committed to Git. The corpus's `download_audio_data.sh` script retrieves them from Hugging Face, and the XML records the corresponding filenames.
-5. **Cleaning and Standardization**
-   * XML files underwent further cleaning to remove empty elements and standardize punctuation and orthography.
-   * HTML escape codes were replaced with the corresponding characters, and a `kindOf="standard"` attribute was added to `<FORM>` elements. The original text would be `<FORM kindOf="original">`  and any text that will be standardized from this point will be in `<FORM kindOf="standard">`
-6. **Quality Control**
-   * Several QC steps were performed, including:
-     * **Cross-referencing word lists and API results** to ensure all entries were successfully processed.
-     * **Validation of XML structure** to confirm compliance with the FormosanBank schema.
-     * **Manual checks of random samples** to verify data integrity.
-     * **Character Frequency Analysis** to spot any abnormalities in the orthography with [the official orthography](https://yongfu.name/temp-data/pdf/writingsystemsdoc.pdf) as reference.
+```bash
+export FORMOSANBANK_AUTHORITY=/path/to/a/clean/FormosanBank/checkout
+CodeAndDocs/make_xml.sh
+```
+
+Re-scraping the API is a separate, deliberate step (`refresh_source.sh`), because it can add, remove or reword source records — and each of those moves a published identifier.
+
+**Identifiers.** Every sentence and entry id carries the source's own GUID: `Amis_20a69646-e70a-f011-bd65-00155db40116`, with a `d` before the GUID for dictionary entries. A published id therefore survives our later corrections to the text, which an id derived from the text itself would not. `CodeAndDocs/source_data/published_ids.csv` is a lockfile of all 306,338 of them, and the build fails if one disappears or changes meaning without being declared.
+
+**Derived tiers** come from the shared FormosanBank tools and nothing else: the `standard` FORM from `standardize.py`, the IPA `PHON` from `add_phonology.py`. The corpus's own scripts emit source tiers only.
+
+***
+
+### Changes we make to the source
+
+Everything below is reproducible from committed code and data; nothing was edited by hand.
+
+**Source-fidelity repairs — 15 records.** The API sometimes returns material that is not Formosan text: a part-of-speech label standing in for a word (`u數詞u paapuhla…` → `ʉnʉmʉ paapuhla…`, where 數詞 means "numeral"), or Chinese editorial text welded onto a sentence (`…mawtu zau.這` → `…mawtu zau.`). These are corrected on the **original** tier through FormosanBank's manual-edits mechanism, and each one is listed in [`CodeAndDocs/manual_edits.xml`](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/ILRDF_Dicts/CodeAndDocs/manual_edits.xml) with a readable changelog beside it.
+
+**Recovered `?` corruption — 61 tokens.** The source has lost the letter **ʉ** in places, leaving a literal `?`. Where the intended word can be confirmed it is restored automatically; where it cannot, the `?` is left visible rather than guessed at. The repair touches only Kanakanavu, Saaroa and Tsou, and only a `?` with a Formosan letter on *both* sides — so a sentence-final question mark is never affected (1,128 of those survive untouched). The candidate must already appear, intact, elsewhere in the same language, in a sentence containing no `?`, so a corruption cannot vouch for itself. Of 85 candidates, **61 were repaired — every one to ʉ** — with supporting evidence ranging from 2 to 54 other occurrences. **24 were left unrepaired** for want of an attested candidate.
+
+**Source-side alternatives.** The source packs alternative wordings into a single record using `=`, parentheses and slashes. Two different things hide under that, and they are treated differently:
+
+* a **spelling variant** — the same utterance written differently, `hiya` / `hiyaʼ` — stays one record, with the other spellings carried as `FORM[@kindOf="alternate"]`. There are **1,998** of these.
+* a **lexical alternative** — different wording, `tanux` / `(mnaw tay tanux)` — becomes separate `<S>` records.
+
+A parenthesis is kept as the source wrote it when it holds Chinese, a Japanese loanword in Romaji, a proper noun or a number: those are annotation, not alternation. Headword notation is left alone entirely — `uculru(wa)` marks an optional ending, not an annotation.
+
+**2,049 records were resolved into 2,146.** Where the reading was not clear we delete rather than guess: a phrase alternative that shares no word with the term it replaces could substitute for any span, and two options too dissimilar to be one word spelled two ways might be either. **718 fragments were dropped on those grounds, and every one is listed in [`CodeAndDocs/docs/split_report.csv`](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/ILRDF_Dicts/CodeAndDocs/docs/split_report.csv).**
+
+Every rewritten record keeps its source string in `FORM/@notes`, and a record split into several takes a letter suffix on its id (`…_a`, `…_b`).
+
+**Excluded content.** 820 all-zero audio ids, two confirmed transcript mismatches, both uses of 40 audio ids assigned to different forms in different languages, and three Kanakanavu lesson numbers that are not translations.
 
 ***
 
 ### Key Features of the Corpus
 
 1. **Comprehensive Data**
-   * The current corpus contains **658,447 words** and nearly **149 hours of transcribed audio**, offering a rich resource for the study of Formosan languages. The generated statistics table above provides the current breakdown by language.
+   * The corpus offers a rich resource for the study of Formosan languages: example sentences with audio for most of them, plus the full headword inventory of all sixteen dictionaries. The generated statistics table above gives the current breakdown by language.
 2. **Audio Integration**
    * High-quality audio files accompany most example sentences, providing an invaluable resource for analyzing pronunciation, phonology, and spoken language contexts.
 3. **Translation Availability**
@@ -128,7 +146,9 @@ This project is made possible through the collaboration of native speakers, ling
 
 ### **Copyright**
 
-The online dictionary's current [copyright statement](https://e-dictionary.ilrdf.org.tw/about?id=6c987092-47c7-ef11-bd58-00155db40116) says that ILRDF-authored works may be reproduced, publicly broadcast, or publicly transmitted within a reasonable scope when the source is identified. Other protected uses require permission unless an applicable fair-use provision applies. Users should consult the current statement and the source terms before reusing this corpus.
+FormosanBank publishes this corpus under **CC BY-NC**.
+
+The online dictionary's [copyright statement](https://e-dictionary.ilrdf.org.tw/about?id=6c987092-47c7-ef11-bd58-00155db40116) allows quotation for research and teaching within a reasonable scope when the source is identified, and requires permission beyond that. This corpus is made available under those terms, with attribution to the Council of Indigenous Peoples and to ILRDF. Downstream users remain responsible for the source's attribution requirements and for applicable law; see `CodeAndDocs/source_data/RIGHTS.md` in the repository.
 
 ***
 
