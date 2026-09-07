@@ -1,18 +1,25 @@
 # Rights status
 
-The ILRDF website copyright notice states that site text, images, audio, and
-other content are protected by copyright. It allows quotation for research and
-teaching within a reasonable scope with attribution, but says permission or
-authorization is required for uses outside reasonable use.
+FormosanBank publishes this corpus under **CC BY-NC**.
 
-No Creative Commons license was found for this dictionary content. The prior
-`CC-BY-NC` XML label was therefore removed.
+The ILRDF online dictionary's own copyright statement allows quotation for
+research and teaching within a reasonable scope, with attribution, and
+requires permission for uses beyond that. FormosanBank's use of the
+dictionary's example sentences and headword entries — non-commercial research
+and teaching, with attribution to the Council of Indigenous Peoples and the
+Indigenous Languages Research and Development Foundation — is made under those
+terms.
 
-On 2026-08-23, the FormosanBank maintainer authorized publication of this
-existing ILRDF corpus update in the public FormosanBank repository. This
-project authorization does not create a new license or replace the source
-terms. Downstream users remain responsible for following the current ILRDF
-copyright statement, attribution requirements, and applicable law.
+Source statement, reviewed 2026-08-21 and re-checked 2026-09-07:
+<https://e-dictionary.ilrdf.org.tw/about?id=6c987092-47c7-ef11-bd58-00155db40116>
 
-Source reviewed: `https://e-dictionary.ilrdf.org.tw/`, copyright page returned
-by `/api/app/about/about-content-by-id`, reviewed 2026-08-21.
+Downstream users remain responsible for the source's attribution requirements
+and for applicable law.
+
+## History
+
+The 2026-08-23 build replaced the corpus's `CC-BY-NC` label with
+`Copyrighted; permission required outside applicable fair use`, on the grounds
+that ILRDF grants no Creative Commons licence of its own. The FormosanBank
+maintainer ruled on 2026-09-05 that `CC BY-NC` is restored in the XML and that
+the fair-use basis is documented here rather than encoded in the attribute.

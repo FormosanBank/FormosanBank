@@ -180,6 +180,15 @@ class SourceExtractionTests(unittest.TestCase):
             sentence_id("Amis", "A.")
 
 
+class RightsTests(unittest.TestCase):
+    def test_root_declares_cc_by_nc(self):
+        """FormosanBank publishes this corpus under CC BY-NC; the source's own
+        terms allow research and teaching use, and RIGHTS.md records them."""
+        from ilrdf_source import root_attributes
+        self.assertEqual(root_attributes("Amis", "2026-08-21")["copyright"],
+                         "CC BY-NC")
+
+
 class StandardTierOwnershipTests(unittest.TestCase):
     """The standard tier belongs to standardize.py and the canonical
     Orthographies/ConversionTables/ -- never to a corpus-local table."""

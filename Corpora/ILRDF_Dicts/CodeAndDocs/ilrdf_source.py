@@ -21,7 +21,7 @@ from urllib.parse import urlparse
 XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
 SOURCE_NAME = "Indigenous Languages Research and Development Foundation Dictionaries"
 SOURCE_URL = "https://e-dictionary.ilrdf.org.tw/"
-RIGHTS_STATEMENT = "Copyrighted; permission required outside applicable fair use"
+RIGHTS_STATEMENT = "CC BY-NC"
 PLACEHOLDERS = {"", "-", "---"}
 RECOVERABLE_QUESTION_LANGUAGES = {"Kanakanavu", "Saaroa", "Tsou"}
 FORM_QUOTE_TRANSLATION = str.maketrans(
