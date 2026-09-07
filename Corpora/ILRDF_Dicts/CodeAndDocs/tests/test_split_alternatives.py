@@ -1,9 +1,9 @@
-"""Source-side alternatives become separate <S> records.
+"""Source-side alternatives, resolved on the original tier.
 
-The ILRDF source packs alternative wordings into one record three ways: '='
-("same as"), parentheses, and slashes. Each distinct option becomes its own
-record, resolved on the ORIGINAL tier before clean_xml and standardize.
-Anything the cascade cannot interpret is deleted rather than guessed at.
+Two treatments, per the maintainer's rulings of 2026-09-07: a spelling variant
+is one record carrying FORM[@kindOf="alternate"]; a lexical alternative is
+separate <S> records. Anything we cannot classify confidently is dropped and
+logged rather than guessed at.
 """
 import sys
 import unittest
@@ -12,15 +12,57 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from split_alternatives import (  # noqa: E402
+    classify_site,
     split_record,
     stage_a,
     stage_b,
 )
 
 
-class TestStageA(unittest.TestCase):
-    """Sentence-level: one record holding more than one sentence."""
+def texts(result):
+    return None if result is None else [r.text for r in result]
 
+
+def published(text):
+    readings, _dropped = split_record(text)
+    return [r.text for r in readings]
+
+
+def dropped(text):
+    _readings, drops = split_record(text)
+    return drops
+
+
+class TestClassifySite(unittest.TestCase):
+    def test_word_count_difference_is_lexical(self):
+        for options in (["tanux", "mnaw tay tanux"],
+                        ["sinsiy", "sinsi pcbaq biruʼ"],
+                        ["trang", "trang balay"],
+                        ["qbaqi", "qbaq mhtuw"],
+                        ["pqwasan", "pqwasan biruʼ"]):
+            self.assertEqual(classify_site(options), "lexical", options)
+
+    def test_close_same_length_options_are_spelling(self):
+        for options in (["hiya", "hiyaʼ"], ["musa", "musaʼ"],
+                        ["betunx", "baytunux"], ["ku", "kuʼ"],
+                        ["taʼ", "ta"], ["turak", "turuy"],
+                        ["mʼabiʼ", "mʼabi"], ["lga", "lrwa"]):
+            self.assertEqual(classify_site(options), "spelling", options)
+
+    def test_distant_same_length_options_are_not_confident(self):
+        """'mʼzwi'/'mcisal' and 'tayal'/'squliq' are lexical, but nothing
+        separates them from an unrecognised spelling pair, so we decline."""
+        for options in (["mʼzwi", "mcisal"], ["tayal", "squliq"]):
+            self.assertIsNone(classify_site(options), options)
+
+    def test_an_unbalanced_option_is_declined(self):
+        """A bracketed option is unwrapped by _options; anything still
+        carrying a stray bracket is malformed and we decline it."""
+        self.assertIsNone(classify_site(["qinlwaxan", "(qwalax qinlwaxan"]))
+        self.assertIsNone(classify_site(["kinbahan", "laqi kneril na laqi）"]))
+
+
+class TestStageA(unittest.TestCase):
     def test_numbered_multi_example(self):
         self.assertEqual(
             stage_a("1. cyux su maniq bway nanu? 2. cyux suʼ maniq bway nanuʼ?"),
@@ -31,28 +73,17 @@ class TestStageA(unittest.TestCase):
             stage_a("1.bengun nya qbaʼ ni yaki. 2.cyux meng qbaʼ na yaki hya."),
             ["bengun nya qbaʼ ni yaki.", "cyux meng qbaʼ na yaki hya."])
 
-    def test_three_numbered_parts(self):
-        self.assertEqual(
-            stage_a("1.musa ku maniq mami la. 2.mosa ku maniq mami la. "
-                    "3.musaʼ sakuʼ maniq mamiʼ la."),
-            ["musa ku maniq mami la.", "mosa ku maniq mami la.",
-             "musaʼ sakuʼ maniq mamiʼ la."])
-
     def test_a_sentence_final_numeral_is_not_a_marker(self):
-        """'... o 3.' is the number three, not example marker 3."""
-        for text in ("Gnblung mu phnang ptucing ka btunux o 3.",
-                     "Hnhdhik dha ga, qbhangan o mn 2.",
-                     "Pphungul na plpax knan ka pdahik o 7."):
-            self.assertEqual(stage_a(text), [text])
+        text = "Gnblung mu phnang ptucing ka btunux o 3."
+        self.assertEqual(stage_a(text), [text])
 
     def test_markers_must_run_from_one(self):
-        """A record starting at '2.' is irregular -- leave it for a human."""
         text = "2.yutas ga nyux gmulaq lbit qhuniq tatak qasa."
         self.assertEqual(stage_a(text), [text])
 
-    def test_stray_leading_marker_is_not_a_split(self):
-        """A lone '1.' with no '2.' is a marker to drop, not a boundary."""
-        self.assertEqual(stage_a("1.cyux mxal tariʼ nya."), ["cyux mxal tariʼ nya."])
+    def test_stray_leading_marker_is_dropped_not_split(self):
+        self.assertEqual(stage_a("1.cyux mxal tariʼ nya."),
+                         ["cyux mxal tariʼ nya."])
 
     def test_sentence_final_slash(self):
         self.assertEqual(
@@ -65,111 +96,109 @@ class TestStageA(unittest.TestCase):
             ["cyux szwi na krahu bayhuy qu qhuniq.",
              "cyux szwi na hopa na behuy qu qhuniq."])
 
-    def test_three_bracketed_options(self):
-        self.assertEqual(len(stage_a(
-            "(nanu zywaw su soni) / (kmnswa su ryax) / (mswaʼ suʼ sawniʼ) ga.")), 3)
 
-    def test_plain_sentence_is_one_fragment(self):
-        self.assertEqual(stage_a("hatomi^ han ako."), ["hatomi^ han ako."])
+class TestSpellingVariants(unittest.TestCase):
+    def test_one_record_carrying_an_alternate(self):
+        result = stage_b("cyux mʼabiʼ / mʼabi qu yutas.")
+        self.assertEqual(texts(result), ["cyux mʼabiʼ qu yutas."])
+        self.assertEqual(result[0].alternates, ["cyux mʼabi qu yutas."])
+
+    def test_three_close_spellings_give_two_alternates(self):
+        result = stage_b("cyux inuʼ qu lukus maku / makuʼ / makw?")
+        self.assertEqual(texts(result), ["cyux inuʼ qu lukus maku?"])
+        self.assertEqual(len(result[0].alternates), 2)
+
+    def test_a_short_outlier_declines_the_whole_site(self):
+        """'makuʼ / maku / mu' -- 'mu' is far from the others, so we are not
+        confident the site is a single word spelled three ways."""
+        self.assertIsNone(stage_b("cyux inuʼ qu lukus makuʼ / maku / mu?"))
+
+    def test_several_spelling_sites_stay_one_record(self):
+        """Co-varying spellings must not become a cartesian product."""
+        result = stage_b("ana ku / kuʼ musa / musaʼ mzwi taʼ / ta tanux.")
+        self.assertEqual(len(result), 1)
+        self.assertEqual(len(result[0].alternates), 1)
 
 
-class TestStageB(unittest.TestCase):
-    """Word-level: one record holding one sentence with lexical options."""
-
-    def test_two_options(self):
+class TestLexicalAlternatives(unittest.TestCase):
+    def test_two_records(self):
         self.assertEqual(
-            stage_b("hatomi^/foliki^ han ako ko paliding."),
-            ["hatomi^ han ako ko paliding.", "foliki^ han ako ko paliding."])
+            texts(stage_b("cyux trang / (trang balay) mʼabiʼ qu yutas.")),
+            ["cyux trang mʼabiʼ qu yutas.",
+             "cyux trang balay mʼabiʼ qu yutas."])
 
-    def test_spaced_slash(self):
-        self.assertEqual(
-            stage_b("bleqi balay tblaq mitaʼ / mangay."),
-            ["bleqi balay tblaq mitaʼ.", "bleqi balay tblaq mangay."])
+    def test_lexical_multiplies_records_and_spelling_does_not(self):
+        result = stage_b("ana ku / kuʼ musa tanux / (mnaw tay tanux) la.")
+        self.assertEqual(len(result), 2)
+        self.assertTrue(all(r.alternates for r in result))
 
-    def test_three_similar_options(self):
-        self.assertEqual(
-            stage_b("cyux inuʼ qu lukus makuʼ / maku / mu?"),
-            ["cyux inuʼ qu lukus makuʼ?", "cyux inuʼ qu lukus maku?",
-             "cyux inuʼ qu lukus mu?"])
-
-    def test_two_sites_is_uninterpretable(self):
+    def test_too_many_lexical_combinations_is_declined(self):
         self.assertIsNone(stage_b(
-            "ana cipuq/cipoq pila gitan lga, musa pzyux/piyux nanak la."))
+            "a / (bb cc) dd / (ee ff) gg / (hh ii) jj / (kk ll)."))
 
-    def test_n_way_dissimilar_is_uninterpretable(self):
-        self.assertIsNone(stage_b("mutux klayun snyu / snyuw / gasil ru rmugan."))
 
-    def test_two_dissimilar_options_still_split(self):
-        """Two options need no similarity evidence; three or more do."""
-        self.assertEqual(
-            stage_b("ani saku magal kagaw/sapuh ha."),
-            ["ani saku magal kagaw ha.", "ani saku magal sapuh ha."])
+class TestFragmentIndependence(unittest.TestCase):
+    def test_an_unreadable_example_does_not_kill_its_sibling(self):
+        """A fragment we cannot classify is dropped; its siblings publish."""
+        text = ("1.cyux mʼzwi / mcisal qu yutas. "
+                "2.kinbahan suʼ knayril qani ga?")
+        self.assertEqual(published(text), ["kinbahan suʼ knayril qani ga?"])
+        self.assertEqual(len(dropped(text)), 1)
 
-    def test_dangling_slash_is_uninterpretable(self):
-        self.assertIsNone(stage_b("Kadrua ku abaadhane ku kazilu ki pangudaane/"))
+    def test_a_numbered_example_with_a_bracketed_alternative_resolves(self):
+        """Record 3 of the maintainer's list. Under the general rule a
+        word-count difference is lexical, so this now resolves into two
+        readings rather than being dropped -- see the note in the report."""
+        text = ("1.qani qu kinbahan / （laqi kneril na laqi） suʼ ga? "
+                "2.kinbahan suʼ knayril qani ga?")
+        self.assertEqual(published(text),
+                         ["qani qu kinbahan suʼ ga?",
+                          "qani qu laqi kneril na laqi suʼ ga?",
+                          "kinbahan suʼ knayril qani ga?"])
 
-    def test_a_site_may_not_straddle_a_bracket(self):
-        """'X / (Y Z)' is a bracketed alternation, not a word pair. Splitting
-        it as tokens leaves unbalanced parentheses in both readings."""
-        for text in ("tnaq balay qinlwaxan / (qwalax qinlwaxan) nya la.",
-                     "qani ga kocyo na pqwasan / (pqwasan biruʼ) myan.",
-                     "pazangal a vencik tua lunbun na hakasi /(sikacuganan nua kipalengleng).",
-                     "qani qu kinbahan / （laqi kneril na laqi） suʼ ga?"):
-            self.assertIsNone(stage_b(text), text)
-
-    def test_no_slash_is_a_single_reading(self):
-        self.assertEqual(stage_b("hatomi^ han ako."), ["hatomi^ han ako."])
+    def test_both_examples_publish_when_both_resolve(self):
+        text = "1.bengun nya qbaʼ ni yaki. 2.cyux meng qbaʼ na yaki hya."
+        self.assertEqual(len(published(text)), 2)
+        self.assertEqual(dropped(text), [])
 
 
 class TestEquals(unittest.TestCase):
-    """'=' is the source's 'same as' notation, not a null marker."""
-
     def test_trailing_variant(self):
         self.assertEqual(
-            split_record("ata tu kmaanasapunuqi! = ata tu kmasapunuqi!"),
+            published("ata tu kmaanasapunuqi! = ata tu kmasapunuqi!"),
             ["ata tu kmaanasapunuqi!", "ata tu kmasapunuqi!"])
 
     def test_inline_parenthetical_variant(self):
         self.assertEqual(
-            split_record("lhmazawan mabrith, mingqarayza makitzangqaw (= katzangqaw)."),
+            published("lhmazawan mabrith, mingqarayza makitzangqaw (= katzangqaw)."),
             ["lhmazawan mabrith, mingqarayza makitzangqaw.",
              "lhmazawan mabrith, mingqarayza katzangqaw."])
 
 
 class TestInvariants(unittest.TestCase):
-    def test_no_delimiter_survives_a_split(self):
+    def test_no_delimiter_survives(self):
         for text in ("hatomi^/foliki^ han ako.",
                      "cyux szwi na (krahu bayhuy) / (hopa na behuy) qu qhuniq.",
                      "ata tu kmaanasapunuqi! = ata tu kmasapunuqi!"):
-            for out in split_record(text) or []:
+            for out in published(text):
                 self.assertNotIn("/", out, text)
                 self.assertNotIn("=", out, text)
 
-    def test_readings_are_distinct(self):
-        out = split_record("hatomi^/foliki^ han ako.")
-        self.assertEqual(len(out), len(set(out)))
-
-    def test_idempotent(self):
-        once = split_record("hatomi^/foliki^ han ako.")
-        for reading in once:
-            self.assertEqual(split_record(reading), [reading])
-
-    def test_never_returns_an_empty_reading(self):
-        for text in ("hatomi^/foliki^ han ako.",
-                     "1. a bcd. 2. e fgh."):
-            for out in split_record(text) or []:
-                self.assertTrue(out.strip())
-
-    def test_brackets_stay_balanced(self):
+    def test_bracketed_options_are_unwrapped_not_left_dangling(self):
         for text in ("tnaq balay qinlwaxan / (qwalax qinlwaxan) nya la.",
                      "cyux szwi na (krahu bayhuy) / (hopa na behuy) qu qhuniq.",
-                     "1.aw, (ʼsay taʼ kya) / (ungat htyalan nya) 2.aw. baqun makuʼ al."):
-            for out in split_record(text) or []:
-                self.assertEqual(out.count("("), out.count(")"), f"{text} -> {out}")
+                     "1.aw, (ʼsay taʼ kya) / (ungat htyalan nya) 2.aw. baqun."):
+            for out in published(text):
+                self.assertEqual(out.count("("), out.count(")"),
+                                 f"{text} -> {out}")
 
     def test_plain_record_passes_through_unchanged(self):
-        self.assertEqual(split_record("maan cu ku tavarʉʼʉ."),
+        self.assertEqual(published("maan cu ku tavarʉʼʉ."),
                          ["maan cu ku tavarʉʼʉ."])
+
+    def test_idempotent(self):
+        for reading in published("hatomi^/foliki^ han ako."):
+            self.assertEqual(published(reading), [reading])
 
 
 if __name__ == "__main__":

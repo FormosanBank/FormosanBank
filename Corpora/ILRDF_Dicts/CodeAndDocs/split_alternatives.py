@@ -1,122 +1,129 @@
 #!/usr/bin/env python3
-"""Split source-side alternatives into separate <S> records.
+"""Resolve source-side alternatives on the ORIGINAL tier.
 
 The ILRDF source packs alternative wordings into one record three ways:
 
     =   "same as"        ata tu kmaanasapunuqi! = ata tu kmasapunuqi!
-    ( ) bracketed phrase  cyux szwi na (krahu bayhuy) / (hopa na behuy) qu …
-    /   lexical options   hatomi^/foliki^ han ako ko paliding.
+    ( ) bracketed         cyux szwi na (krahu bayhuy) / (hopa na behuy) qu …
+    /   inline options    hatomi^/foliki^ han ako ko paliding.
 
-Each distinct option becomes its own record. This runs on the ORIGINAL tier,
-before clean_xml and standardize, so no published FORM ever carries a
-delimiter; the source string is preserved in FORM/@notes and split ids take a
-letter suffix (…_a, …_b, …_c).
+Two different things hide under "alternative", and they get different
+treatments (maintainer ruling 2026-09-07):
 
-The cascade runs in two stages, because a numbered record often also contains
-word alternations and a flat pass conflates them.
+    spelling variant    the same utterance written differently --
+                        'hiya' / 'hiyaʼ', 'musa' / 'musaʼ', 'betunx' /
+                        'baytunux'. One record; the other spellings ride
+                        along as FORM[@kindOf="alternate"].
 
-    Stage A, sentence-level  — a record holding more than one sentence
-      1. numbered multi-example, '1. … 2. …'
-      2. sentence alternation, a slash after '.', '!' or '?'
-      3. bracketed phrase alternation, '(A) / (B)', substituted into the frame
+    lexical alternative different wording -- 'mʼzwi' / 'mcisal',
+                        'tanux' / 'mnaw tay tanux', 'sinsiy' /
+                        'sinsi pcbaq biruʼ'. Separate <S> records.
 
-    Stage B, word-level      — a record holding one sentence with options
-      4. exactly one alternation site with exactly two options
-      5. exactly one site with N mutually similar options
-      6. ANYTHING ELSE -> delete
+Collapsing spelling variants into alternate FORMs is what keeps this
+tractable. Expanding every site cartesianly produced up to 768 combinations of
+a single Atayal sentence, most of them ungrammatical, because dialectal
+spellings co-vary rather than combining freely.
 
-Rule 6 is the important one. With two or more independent alternation sites
-you cannot know which combinations the source licenses: the variants are
-dialectal and co-vary, so a cartesian split would manufacture ungrammatical
-sentences. One Atayal record reaches 768 combinations. Such records are
-deleted, and the count is published in the README rather than buried.
+Classification, in order of confidence:
 
-Attestation plays no part: the cascade decides by structure alone.
+    1. options differ in word count         -> lexical    (high confidence)
+    2. same word count, similarity >= 0.50  -> spelling
+    3. anything else                        -> NOT CONFIDENT
+
+Rule 3 drops the fragment and logs it. The threshold is calibrated against the
+maintainer's own rulings: spellings ran 0.83 0.80 0.80 0.67 0.67 0.62 0.60
+0.50 0.33, lexical 0.17 and 0.00. At 0.50, eight of the nine spelling rulings
+are captured and both lexical ones excluded. 'tay' / 'te' at 0.33 is lost —
+the accepted cost of publishing only what we are confident of.
+
+A record split by numbering resolves each example INDEPENDENTLY: an example
+the cascade cannot read no longer takes its siblings with it.
 """
 from __future__ import annotations
 
 import argparse
 import csv
-import difflib
+import itertools
 import re
+from dataclasses import dataclass, field
 from pathlib import Path
 
 from lxml import etree
+from rapidfuzz.distance import Levenshtein
 
-# --- Stage A -----------------------------------------------------------------
+# --- stage A: one record holding more than one sentence ----------------------
 
-#: '1.' / '2.' at the start, or after whitespace or sentence punctuation.
-_NUMBERED = re.compile(r"(?:(?<=^)|(?<=[\s.!?]))([1-9])\s*\.\s*")
-#: A slash directly after sentence punctuation separates whole clauses.
+_NUMBERED = re.compile(r"(?:(?<=^)|(?<=[\s.!?]))([1-9])\s*[.．]\s*")
 _SENTENCE_SLASH = re.compile(r"(?<=[.!?])\s*/\s*")
-#: '(A) / (B)' — two or more bracketed phrases offered as alternatives.
-_BRACKET_ALT = re.compile(r"\(([^()]*)\)(?:\s*/\s*\(([^()]*)\))+")
-_BRACKET_OPTION = re.compile(r"\(([^()]*)\)")
+_BRACKET_ALT = re.compile(r"[（(]([^（()）]*)[）)](?:\s*/\s*[（(]([^（()）]*)[）)])+")
+_BRACKET_OPTION = re.compile(r"[（(]([^（()）]*)[）)]")
 
-# --- Stage B -----------------------------------------------------------------
+# --- stage B: one sentence holding lexical or spelling options ---------------
 
-#: One alternation site: tokens joined by slashes, no whitespace inside a token.
-_SITE = re.compile(r"[^\s/]+(?:\s*/\s*[^\s/]+)+")
-#: Trailing sentence punctuation carried by an option.
+#: An option is a bare token or a bracketed group. The source writes a
+#: multi-word alternative in brackets -- 'trang / (trang balay)',
+#: 'hakasi /(sikacuganan nua kipalengleng)' -- so without the bracketed form
+#: here a site would match only the bare tokens either side of the slash and
+#: silently lose the rest of the phrase.
+_OPTION = r"(?:[（(][^（()）]*[）)]|[^\s/（()）]+)"
+_SITE = re.compile(rf"{_OPTION}(?:\s*/\s*{_OPTION})+")
+_OUTER_BRACKET = re.compile(r"^[（(]\s*(.*?)\s*[）)]$", re.S)
 _TAIL = re.compile(r"^(.*?)([.,!?;:]*)$", re.S)
-#: Options are compared on their letters, not their punctuation.
 _CORE = "().,!?;:"
-#: Three or more options must look like variants of each other.
-_SIMILARITY = 0.5
+_BRACKETS = (("(", ")"), ("（", "）"), ("〔", "〕"))
 
-# --- '=' ---------------------------------------------------------------------
+#: Same-word-count options at or above this similarity are one word spelled
+#: two ways. See the module docstring for the calibration.
+SPELLING_SIMILARITY = 0.50
 
-_EQUALS_INLINE = re.compile(r"\s*\(\s*=\s*([^)]*)\)")
+#: A fragment whose lexical sites would yield more records than this is not
+#: something we can resolve with confidence either.
+MAX_READINGS = 4
+
+_EQUALS_INLINE = re.compile(r"\s*[（(]\s*=\s*([^）)]*)[）)]")
 _EQUALS_TRAILING = re.compile(r"\s*=\s*(.+)$", re.S)
 
 
-#: Bracket pairs the source uses -- ASCII and the CJK full-width forms, which
-#: appear in Atayal records typed on a Chinese keyboard.
-_BRACKETS = (("(", ")"), ("（", "）"), ("〔", "〕"))
+@dataclass
+class Reading:
+    """One published record: its text, plus other spellings of that text."""
+    text: str
+    alternates: list[str] = field(default_factory=list)
+
+
+def _tidy(text: str) -> str:
+    text = re.sub(r"\s+", " ", text).strip()
+    return re.sub(r"\s+([,.!?;:])", r"\1", text)
 
 
 def _balanced(text: str) -> bool:
     return all(text.count(a) == text.count(b) for a, b in _BRACKETS)
 
 
-def _tidy(text: str) -> str:
-    text = re.sub(r"\s+", " ", text).strip()
-    text = re.sub(r"\s+([,.!?;:])", r"\1", text)
-    return text
+def _norm(word: str) -> str:
+    return word.strip(_CORE).casefold()
 
 
-def resolve_equals(text: str) -> list[str]:
-    """Return the readings a '=' offers, or a single reading if it has none.
-
-    Inline '(= x)' replaces the preceding word; a trailing '= …' is a whole
-    second phrasing of the sentence.
-    """
-    match = _EQUALS_INLINE.search(text)
-    if match is not None:
-        head, tail = text[: match.start()], text[match.end():]
-        word = re.search(r"(\S+)\s*$", head)
-        if word is None:
-            return [_tidy(head + tail)]
-        replaced = head[: word.start(1)] + match.group(1) + tail
-        return [_tidy(head + tail), _tidy(replaced)]
-    match = _EQUALS_TRAILING.search(text)
-    if match is not None:
-        return [_tidy(text[: match.start()]), _tidy(match.group(1))]
-    # No '=': pass the source through untouched. Tidying here would silently
-    # edit the original tier of records this task has no business changing --
-    # whitespace and punctuation spacing belong to clean_xml.
-    return [text]
+def classify_site(options: list[str]) -> str | None:
+    """'lexical', 'spelling', or None when neither reading is confident."""
+    if len(options) < 2 or not all(o.strip(_CORE) for o in options):
+        return None
+    if any(not _balanced(o) for o in options):
+        return None                    # a site may not straddle a bracket
+    if len({len(o.split()) for o in options}) > 1:
+        return "lexical"
+    similarity = min(
+        Levenshtein.normalized_similarity(_norm(options[0]), _norm(other))
+        for other in options[1:]
+    )
+    return "spelling" if similarity >= SPELLING_SIMILARITY else None
 
 
 def stage_a(text: str) -> list[str]:
-    """Sentence-level split: a record holding more than one sentence."""
-    # A marker sequence must run 1, 2, 3 …  Without that test a sentence-final
-    # numeral is read as a marker and the sentence is silently truncated:
-    # "… ka btunux o 3." would lose its last two characters.
+    """Split a record that holds more than one sentence into fragments."""
     markers = list(_NUMBERED.finditer(text))
     digits = [m.group(1) for m in markers]
-    consecutive = digits == [str(i + 1) for i in range(len(digits))]
-    if len(markers) > 1 and consecutive:
+    if len(markers) > 1 and digits == [str(i + 1) for i in range(len(digits))]:
         parts = [p.strip() for p in _NUMBERED.split(text)
                  if p and not p.isdigit() and p.strip()]
         if len(parts) > 1:
@@ -124,7 +131,7 @@ def stage_a(text: str) -> list[str]:
     if len(markers) == 1 and digits == ["1"] and markers[0].start() == 0:
         stripped = text[markers[0].end():].strip()
         if stripped:
-            return [stripped]          # a lone leading '1.' is a marker to drop
+            return [stripped]
 
     if _SENTENCE_SLASH.search(text):
         parts = [p.strip() for p in _SENTENCE_SLASH.split(text) if p.strip()]
@@ -140,82 +147,120 @@ def stage_a(text: str) -> list[str]:
     return [text]
 
 
-def _options(site: str) -> tuple[list[str], list[str], str]:
-    """Split one site into (substitutable options, comparable cores, tail).
+def _options(site: str) -> tuple[list[str], str]:
+    """Options at a site, with sentence punctuation lifted out of the last.
 
-    Trailing sentence punctuation belongs to the sentence, not to the option
-    that happens to sit last, so it is lifted out and re-attached to every
-    reading. Without this, 'mitaʼ / mangay.' would yield 'mitaʼ' unpunctuated.
+    A bracketed option is unwrapped: the brackets delimit a multi-word
+    alternative, they are not part of it.
     """
     raw = [p for p in re.split(r"\s*/\s*", site) if p]
     tail = _TAIL.match(raw[-1]).group(2) if raw else ""
-    options = [_TAIL.match(p).group(1) for p in raw]
-    cores = [p.strip(_CORE) for p in options]
-    return options, cores, tail
+    options = []
+    for part in raw:
+        body = _TAIL.match(part).group(1)
+        unwrapped = _OUTER_BRACKET.match(body)
+        options.append(unwrapped.group(1) if unwrapped else body)
+    return options, tail
 
 
-def stage_b(text: str) -> list[str] | None:
-    """Word-level split, or None when the record cannot be interpreted."""
+def stage_b(text: str) -> list[Reading] | None:
+    """Resolve one sentence's options, or None when not confident."""
     sites = _SITE.findall(text)
     if not sites:
-        return None if "/" in text else [text]
-    if len(sites) > 1:
-        return None                        # cannot know which combinations hold
+        return None if "/" in text else [Reading(text)]
 
-    options, cores, tail = _options(sites[0])
-    if len(options) < 2 or not all(cores):
-        return None
-    # A site must not straddle a bracket. '_SITE' matches any run of
-    # non-space, non-slash characters, so 'qinlwaxan / (qwalax qinlwaxan)' is
-    # picked up as a word pair whose second option is '(qwalax' -- splitting it
-    # leaves an unbalanced parenthesis in both readings. That is the same flaw
-    # PR #63's TOKEN_ALT_RE had. Bracketed alternation written '(A) / (B)' is
-    # Stage A's job; anything else with a stray bracket is uninterpretable.
-    if any(not _balanced(o) for o in options):
-        return None
-    if len(options) > 2:
-        similarity = [
-            difflib.SequenceMatcher(None, cores[0].lower(), core.lower()).ratio()
-            for core in cores[1:]
-        ]
-        if not all(ratio >= _SIMILARITY for ratio in similarity):
+    spans, kinds, opts, tails = [], [], [], []
+    cursor = 0
+    for site in sites:
+        start = text.index(site, cursor)
+        cursor = start + len(site)
+        options, tail = _options(site)
+        kind = classify_site(options)
+        if kind is None:
             return None
+        spans.append((start, cursor))
+        kinds.append(kind)
+        opts.append(options)
+        tails.append(tail)
 
-    start = text.index(sites[0])
-    head, rest = text[:start], text[start + len(sites[0]):]
-    readings = [_tidy(head + option + tail + rest) for option in options]
-    if any("/" in r or not r.strip() for r in readings):
+    lexical = [i for i, k in enumerate(kinds) if k == "lexical"]
+    spelling = [i for i, k in enumerate(kinds) if k == "spelling"]
+    combinations = (
+        list(itertools.product(*(range(len(opts[i])) for i in lexical)))
+        if lexical else [()]
+    )
+    if len(combinations) > MAX_READINGS:
         return None
-    seen: list[str] = []
-    for reading in readings:
-        if reading not in seen:
-            seen.append(reading)
-    return seen
+    depth = max((len(opts[i]) for i in spelling), default=1)
+
+    def render(choice: dict[int, int]) -> str:
+        out, last = [], 0
+        for index, (start, end) in enumerate(spans):
+            out.append(text[last:start])
+            pick = min(choice.get(index, 0), len(opts[index]) - 1)
+            out.append(opts[index][pick] + tails[index])
+            last = end
+        out.append(text[last:])
+        return _tidy("".join(out))
+
+    readings: list[Reading] = []
+    for combo in combinations:
+        base = dict(zip(lexical, combo))
+        primary = render(base)
+        if not primary.strip() or "/" in primary or not _balanced(primary):
+            return None
+        alternates: list[str] = []
+        for level in range(1, depth):
+            variant = render({**base, **{i: level for i in spelling}})
+            if variant != primary and variant not in alternates:
+                alternates.append(variant)
+        if primary not in [r.text for r in readings]:
+            readings.append(Reading(primary, alternates))
+    return readings or None
 
 
-def split_record(text: str) -> list[str] | None:
-    """The whole cascade. None means the record is uninterpretable — delete it."""
-    readings: list[str] = []
+def resolve_equals(text: str) -> list[str]:
+    """The readings a '=' offers, or the text unchanged when it has none."""
+    match = _EQUALS_INLINE.search(text)
+    if match is not None:
+        head, tail = text[: match.start()], text[match.end():]
+        word = re.search(r"(\S+)\s*$", head)
+        if word is None:
+            return [_tidy(head + tail)]
+        return [_tidy(head + tail),
+                _tidy(head[: word.start(1)] + match.group(1) + tail)]
+    match = _EQUALS_TRAILING.search(text)
+    if match is not None:
+        return [_tidy(text[: match.start()]), _tidy(match.group(1))]
+    return [text]
+
+
+def split_record(text: str) -> tuple[list[Reading], list[str]]:
+    """Return (published readings, fragments dropped as unresolvable).
+
+    Fragments are independent: an example the cascade cannot read does not
+    take its siblings with it.
+    """
+    readings: list[Reading] = []
+    dropped: list[str] = []
     for after_equals in resolve_equals(text):
         for fragment in stage_a(after_equals):
             resolved = stage_b(fragment)
             if resolved is None:
-                return None
-            readings.extend(resolved)
-    out: list[str] = []
-    for reading in readings:
-        if reading and reading not in out:
-            out.append(reading)
-    return out or None
+                dropped.append(fragment)
+                continue
+            for reading in resolved:
+                if reading.text and reading.text not in [r.text for r in readings]:
+                    readings.append(reading)
+    return readings, dropped
 
-
-# --- corpus application ------------------------------------------------------
 
 _SUFFIX = "abcdefghijklmnopqrstuvwxyz"
 
 
 def process(xml_dir: Path, apply: bool, report: Path | None) -> dict[str, int]:
-    counts = {"records": 0, "split": 0, "deleted": 0, "produced": 0, "unchanged": 0}
+    counts = {"records": 0, "unchanged": 0, "rewritten": 0, "published": 0,
+              "deleted": 0, "fragments_dropped": 0, "alternates": 0}
     rows: list[dict[str, object]] = []
     for path in sorted(xml_dir.rglob("*.xml")):
         tree = etree.parse(str(path))
@@ -227,30 +272,37 @@ def process(xml_dir: Path, apply: bool, report: Path | None) -> dict[str, int]:
                 continue
             counts["records"] += 1
             source = form.text
-            readings = split_record(source)
-            if readings is None:
-                rows.append({"id": sentence.get("id"), "verdict": "deleted",
-                             "sites": len(_SITE.findall(source)), "source": source})
+            readings, dropped = split_record(source)
+            for fragment in dropped:
+                counts["fragments_dropped"] += 1
+                rows.append({"id": sentence.get("id"), "verdict": "dropped",
+                             "fragment": fragment, "source": source})
+            if not readings:
                 counts["deleted"] += 1
                 root.remove(sentence)
                 changed = True
                 continue
-            if readings == [source]:
+            if (len(readings) == 1 and readings[0].text == source
+                    and not readings[0].alternates):
                 counts["unchanged"] += 1
                 continue
-            if len(readings) > len(_SUFFIX):
-                raise ValueError(f"{sentence.get('id')}: {len(readings)} readings")
-            counts["split"] += 1
-            counts["produced"] += len(readings)
-            rows.append({"id": sentence.get("id"), "verdict": "split",
-                         "sites": len(_SITE.findall(source)), "source": source})
+            counts["rewritten"] += 1
+            counts["published"] += len(readings)
+            rows.append({"id": sentence.get("id"), "verdict": "resolved",
+                         "fragment": "", "source": source})
             index = list(root).index(sentence)
             for offset, reading in enumerate(readings):
                 clone = etree.fromstring(etree.tostring(sentence))
-                clone.set("id", f"{sentence.get('id')}_{_SUFFIX[offset]}")
-                clone_form = clone.find('FORM[@kindOf="original"]')
-                clone_form.text = reading
-                clone_form.set("notes", f"source: {source}")
+                if len(readings) > 1:
+                    clone.set("id", f"{sentence.get('id')}_{_SUFFIX[offset]}")
+                original = clone.find('FORM[@kindOf="original"]')
+                original.text = reading.text
+                original.set("notes", f"source: {source}")
+                for position, spelling in enumerate(reading.alternates, start=1):
+                    node = etree.Element("FORM", kindOf="alternate")
+                    node.text = spelling
+                    clone.insert(position, node)
+                    counts["alternates"] += 1
                 root.insert(index + offset, clone)
             root.remove(sentence)
             changed = True
@@ -259,7 +311,8 @@ def process(xml_dir: Path, apply: bool, report: Path | None) -> dict[str, int]:
     if report is not None and rows:
         report.parent.mkdir(parents=True, exist_ok=True)
         with report.open("w", encoding="utf-8", newline="") as handle:
-            writer = csv.DictWriter(handle, fieldnames=["id", "verdict", "sites", "source"])
+            writer = csv.DictWriter(
+                handle, fieldnames=["id", "verdict", "fragment", "source"])
             writer.writeheader()
             writer.writerows(rows)
     return counts
@@ -273,12 +326,13 @@ def main() -> int:
     parser.add_argument("--report", type=Path,
                         default=Path(__file__).resolve().parent / "docs" / "split_report.csv")
     args = parser.parse_args()
-    counts = process(args.xml_dir.resolve(), args.apply,
-                     args.report if args.apply else None)
-    mode = "applied" if args.apply else "would change"
-    print(f"{mode}: {counts['split']} records split into {counts['produced']}, "
-          f"{counts['deleted']} deleted, {counts['unchanged']} unchanged "
-          f"({counts['records']} examined)")
+    c = process(args.xml_dir.resolve(), args.apply,
+                args.report if args.apply else None)
+    print(f"{'applied' if args.apply else 'would change'}: "
+          f"{c['rewritten']} records rewritten into {c['published']} "
+          f"({c['alternates']} alternate spellings), {c['deleted']} deleted, "
+          f"{c['fragments_dropped']} fragments dropped, "
+          f"{c['unchanged']} unchanged ({c['records']} examined)")
     return 0
 
 
