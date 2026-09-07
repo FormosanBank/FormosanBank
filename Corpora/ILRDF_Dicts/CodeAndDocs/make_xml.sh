@@ -13,7 +13,7 @@
 # The corpus's own scripts emit source tiers only.
 set -euo pipefail
 
-EXPECTED_AUTHORITY_COMMIT="__SET_IN_TASK_12__"
+EXPECTED_AUTHORITY_COMMIT="b88146902f6a90ab2d73aca0e304d45f565c392e"
 
 CODEDOCS="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 CORPUS="$(dirname "$CODEDOCS")"
