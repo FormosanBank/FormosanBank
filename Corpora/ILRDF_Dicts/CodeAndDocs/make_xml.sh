@@ -45,15 +45,19 @@ step "1/8  source tiers from the snapshots — sentences"
 step "2/8  source tiers from the snapshots — headword dictionaries"
 "$PYTHON" "$CODEDOCS/generate_dictionary.py"
 
-step "3/8  split source-side alternatives into separate records"
-"$PYTHON" "$CODEDOCS/split_alternatives.py" --apply \
-    --xml-dir "$XML_PATH" --report "$CODEDOCS/docs/split_report.csv"
-
-step "4/8  render manual_edits.xml from the reviewed repair table"
+# Source-fidelity repairs come before the split, both because that is the
+# documented pipeline order and because splitting rewrites the very text the
+# repair table matches on: one Thao record is split into two readings, and a
+# repair keyed to the unsplit text would find no target.
+step "3/8  render manual_edits.xml from the reviewed repair table"
 "$PYTHON" "$CODEDOCS/build_manual_edits.py" --xml-dir "$XML_PATH"
 
-step "5/8  re-apply recorded manual edits (original tier, POL-030)"
+step "4/8  re-apply recorded manual edits (original tier, POL-030)"
 "$PYTHON" "$AUTHORITY/QC/cleaning/apply_manual_edits.py" --corpora_path "$XML_PATH"
+
+step "5/8  split source-side alternatives into separate records"
+"$PYTHON" "$CODEDOCS/split_alternatives.py" --apply \
+    --xml-dir "$XML_PATH" --report "$CODEDOCS/docs/split_report.csv"
 
 step "6/8  clean_xml — original tier, translations, metadata"
 "$PYTHON" "$AUTHORITY/QC/cleaning/clean_xml.py" \

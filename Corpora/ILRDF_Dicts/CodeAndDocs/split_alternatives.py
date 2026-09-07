@@ -401,6 +401,13 @@ def process(xml_dir: Path, apply: bool, report: Path | None) -> dict[str, int]:
               "deleted": 0, "fragments_dropped": 0, "alternates": 0}
     rows: list[dict[str, object]] = []
     for path in sorted(xml_dir.rglob("*.xml")):
+        if path.name.endswith("_dictionary.xml"):
+            # Headwords are not sentences and carry their own notation:
+            # 'uculru(wa)' marks an optional ending, 'aono(mamcino)' a variant.
+            # Reading those as sentence annotation deleted 463 entries. Until
+            # headword notation has a ruling of its own, leave dictionaries as
+            # the source wrote them.
+            continue
         tree = etree.parse(str(path))
         root = tree.getroot()
         changed = False
