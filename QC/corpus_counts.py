@@ -194,6 +194,31 @@ def collect_records(xml_dir) -> tuple[list[dict], list[dict]]:
 # can ever arrive at different file sets (maintainer ruling 2026-08-11).
 # ---------------------------------------------------------------------------
 
+def is_published_xml(path) -> bool:
+    """Is this path a published corpus XML file?
+
+    The one predicate every counter must agree on (maintainer ruling
+    2026-08-11). Two conditions, both load-bearing:
+
+    - a path segment `XML`, because some corpora nest folders between the
+      corpus root and `XML/`; and
+    - no path segment `CodeAndDocs`, because that folder holds reproduction
+      infrastructure -- scripts, raw scrapes, and POL-035 pre-correction
+      snapshots -- never published data. A snapshot is a byte-for-byte
+      ancestor of the corpus beside it, so counting one doubles that
+      corpus's apparent size.
+
+    Accepts a Path or a `/`-joined string, so callers walking the filesystem
+    and callers reading `git ls-tree` output can share it.
+    """
+    parts = Path(path).parts if not isinstance(path, str) else tuple(path.split("/"))
+    return (
+        str(path).endswith(".xml")
+        and "XML" in parts
+        and "CodeAndDocs" not in parts
+    )
+
+
 def corpus_xml_dirs(corpus_path) -> list[Path]:
     """Every XML/ directory of a corpus, at ANY depth (Corpora/.../XML —
     some corpora nest folders between the corpus root and XML/), skipping

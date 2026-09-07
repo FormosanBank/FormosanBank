@@ -84,7 +84,7 @@ Most validation/extraction scripts share a `search_by` positional with three mod
 
 When in doubt, `by_path` against a single corpus's `XML/` directory is the safest target. Many scripts accept `--verbose` and `--log_dir <path>` so logs don't get scattered next to scripts or inside corpora.
 
-The finding-based validators (`validate_xml`, `validate_text`, `validate_glosses`) print a compact per-rule **summary** with mnemonic names (e.g. `V060 W_count_matches_word_count: 1`) and write **one findings CSV** (path printed as `Details: …`); per-finding detail lives in the CSV, not the terminal. Flags: `--csv <path>` (`--soft-csv` is a deprecated alias); exit 1 on any HARD finding unless `--no-exit-on-hard`.
+The finding-based validators (`validate_xml`, `validate_text`, `validate_glosses`) print a compact per-rule **summary** with mnemonic names (e.g. `V060 W_count_matches_word_count: 1`) and write **one findings CSV** (path printed as `Details: …`); per-finding detail lives in the CSV, not the terminal. Every rule is catalogued in [QC/validation/RULES.md](QC/validation/RULES.md) — id, mnemonic, severity, what it checks — generated from the code by `QC/validation/rules_catalogue.py` and guarded by a test; regenerate it when you add a rule, never hand-edit. Flags: `--csv <path>` (`--soft-csv` is a deprecated alias); exit 1 on any HARD finding unless `--no-exit-on-hard`.
 
 The full pipeline is documented in [QC/README.md](QC/README.md). The typical order is:
 0. `QC/cleaning/apply_manual_edits.py` — re-apply recorded hand edits first, before any other cleaning (no-op if no `CodeAndDocs/manual_edits.xml`)

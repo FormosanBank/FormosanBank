@@ -155,6 +155,49 @@ def _orthography_allowed_chars(lang: str) -> frozenset[str]:
     return result
 
 
+# Cache: (lang, subdir or None) -> every character in the 'letter' column.
+# Unlike _orthography_allowed_chars this keeps ASCII, because the characters
+# it exists to protect are ASCII: '?' writes the glottal stop in the Ferrell
+# Paiwan, Montgomery Amis and Tsuchida Pazeh transcriptions.
+_ortho_letter_cache: dict[tuple[str, str | None], frozenset[str]] = {}
+
+
+def _orthography_letters(lang: str, subdir: str | None = None) -> frozenset[str]:
+    """Every character in the 'letter' column of the matching profiles.
+
+    `subdir` restricts the search to Orthographies/<subdir>/<Lang>.tsv;
+    None searches every Orthographies/*/<Lang>.tsv. Multi-character letters
+    are decomposed, following _orthography_allowed_chars.
+
+    The unrestricted form is deliberately broad: nothing in the XML records
+    which source orthography a corpus's original tier was written in, so a
+    letter of *any* profile for the language is treated as a letter. That is
+    the same trade-off V116 already takes. Callers that know the tier is in
+    FormosanBank's common orthography should pass subdir="Ortho113".
+    """
+    key = (lang, subdir)
+    if key in _ortho_letter_cache:
+        return _ortho_letter_cache[key]
+    name = _ISO_TO_ORTHO_NAME.get(lang)
+    if name is None or not _ORTHOGRAPHIES_ROOT.is_dir():
+        _ortho_letter_cache[key] = frozenset()
+        return _ortho_letter_cache[key]
+    chars: set[str] = set()
+    for tsv_path in _ORTHOGRAPHIES_ROOT.glob(f"{subdir or '*'}/{name}.tsv"):
+        try:
+            with tsv_path.open(encoding="utf-8") as fh:
+                next(fh, None)  # header
+                for line in fh:
+                    parts = line.split("\t")
+                    if parts:
+                        chars.update(parts[0].strip())
+        except OSError:
+            continue
+    result = frozenset(chars)
+    _ortho_letter_cache[key] = result
+    return result
+
+
 def _resolve_language(tree: etree._ElementTree) -> str:
     """Read xml:lang from the TEXT root, or empty string if absent."""
     root = tree.getroot()
@@ -1179,13 +1222,20 @@ def v134_angle_brackets_in_S_FORM(
 _TRAILING_PUNCT_CHARS: frozenset[str] = frozenset(".,!?;:" + "。，！？；：")
 
 
-def _trailing_punct(text: str) -> str:
+def _trailing_punct(text: str, letters: frozenset[str] = frozenset()) -> str:
     """Return the run of recognized trailing-punct chars at the end of text,
-    ignoring trailing whitespace. Returns '' if none."""
+    ignoring trailing whitespace. Returns '' if none.
+
+    `letters` are characters the tier's orthography spells words with, and
+    they are never punctuation however much they look like it. Without this
+    a Montgomery Amis sentence ending in `roma?` 'home' reads as ending in a
+    question mark.
+    """
+    punct = _TRAILING_PUNCT_CHARS - letters
     stripped = text.rstrip()
     end = len(stripped)
     i = end
-    while i > 0 and stripped[i - 1] in _TRAILING_PUNCT_CHARS:
+    while i > 0 and stripped[i - 1] in punct:
         i -= 1
     return stripped[i:end]
 
@@ -1199,6 +1249,11 @@ def v135_trailing_punct_mismatch(
 
     One finding per offending S."""
     lang = _resolve_language(tree)
+    # The two tiers are in different orthographies, so they get different
+    # letter sets: the original tier may be in any profiled source
+    # orthography, the standard tier is in Ortho113 by definition (POL-002).
+    original_letters = _orthography_letters(lang)
+    standard_letters = _orthography_letters(lang, "Ortho113")
     findings: list[Finding] = []
     for s in tree.iter("S"):
         orig = _s_original_form_text(s)
@@ -1206,7 +1261,8 @@ def v135_trailing_punct_mismatch(
         if orig is None or std is None:
             # Need both tiers to compare.
             continue
-        if _trailing_punct(orig) != _trailing_punct(std):
+        if (_trailing_punct(orig, original_letters)
+                != _trailing_punct(std, standard_letters)):
             findings.append(_soft_finding(
                 rule_id="V135",
                 message=(

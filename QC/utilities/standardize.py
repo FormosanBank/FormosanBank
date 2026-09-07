@@ -162,16 +162,31 @@ def _process_standard_hyphens(
 
 
 def _apply_standard_hyphens(element, lang_code, ortho_path, hard_remove,
-                            warnings, file_path):
+                            warnings, file_path, segmented_without_m=False):
     """Apply C012 to an S element's standard FORM. No-op for W/M (they keep
     segmentation) and for elements without a standard FORM.
+
+    The M tier is C012's proxy for "this sentence is morpheme-segmented", and
+    for almost every corpus it is the right one. It is a proxy, though, not the
+    property itself: a corpus can print segmentation hyphens in its FORMs and
+    publish no M analysis at all (MontgomeryTexts, Nowbucyang-Truku-Thesis),
+    and there C012 declines to fire on a sentence that plainly is segmented.
+
+    `segmented_without_m` (CLI `--segmented-without-m-tier`) is the opt-in for
+    exactly that shape. It is off by default and must stay off by default: an
+    S-level standard FORM can carry a hyphen for reasons that are not
+    segmentation -- hyphenated proper nouns in Wikipedias, the morpheme and
+    orthographic hyphens Siraya_Gospels deliberately keeps -- and 15,855
+    sentences across 12 corpora would be caught by a blanket widening of the
+    guard (measured 2026-09-07). Whether a corpus's hyphens are segmentation is
+    a per-corpus judgement, so it is a per-corpus flag.
 
     After C012, emits c022 for any '*' character found in the resulting
     standard FORM text.
     """
     if element.tag != "S":
         return
-    if element.find(".//M") is None:
+    if element.find(".//M") is None and not segmented_without_m:
         return  # C012 only on morpheme-segmented sentences (has an <M> tier)
     form = element.find("FORM[@kindOf='standard']")
     if form is None or not form.text:
@@ -406,7 +421,8 @@ def main(args):
                             apply_standard(element, [], keep=keep_accents)
                             _apply_standard_hyphens(
                                 element, lang_code, args.ortho_path,
-                                args.hard_remove_segmentation, warnings, file)
+                                args.hard_remove_segmentation, warnings, file,
+                                args.segmented_without_m_tier)
                     else:
                         # Normal standardization mode
                         assert available_columns is not None  # loaded in non-copy branch above
@@ -489,7 +505,8 @@ def main(args):
                             apply_standard(element, standard, keep=keep_accents)
                             _apply_standard_hyphens(
                                 element, lang_code, args.ortho_path,
-                                args.hard_remove_segmentation, warnings, file)
+                                args.hard_remove_segmentation, warnings, file,
+                                args.segmented_without_m_tier)
                         
                     try:
                         xml_string = prettify(root)
@@ -524,6 +541,11 @@ if __name__ == "__main__":
     parser.add_argument("--hard-remove-segmentation", dest="hard_remove_segmentation",
                         action="store_true", default=False,
                         help="strip '-' from standard even where it is a letter (Bunun/Thao)")
+    parser.add_argument("--segmented-without-m-tier", dest="segmented_without_m_tier",
+                        action="store_true", default=False,
+                        help="apply C012 hyphen handling to S-level standard FORMs in a "
+                             "corpus that is segmented but publishes no M tier "
+                             "(MontgomeryTexts, Nowbucyang-Truku-Thesis)")
     parser.add_argument("--ortho-path", dest="ortho_path", default=None,
                         help="orthography dir for the hyphen-is-letter check (default Ortho113)")
     args = parser.parse_args()
