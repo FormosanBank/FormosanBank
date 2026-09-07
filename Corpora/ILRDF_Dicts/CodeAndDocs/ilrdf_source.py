@@ -138,6 +138,82 @@ def sentence_id(language: str, guid: str) -> str:
     return f"{language}_{guid}"
 
 
+@dataclass(frozen=True)
+class Sense:
+    """One reading of a headword: its gloss, and its part of speech if given."""
+    gloss: str
+    part_of_speech: str | None = None
+
+
+@dataclass
+class Entry:
+    """A dictionary headword and its senses."""
+    headword: str
+    language: str
+    guids: list[str] = field(default_factory=list)
+    senses: list[Sense] = field(default_factory=list)
+
+    @property
+    def identifier(self) -> str:
+        if not self.guids:
+            raise ValueError(f"{self.headword!r}: no source GUID")
+        return entry_id(self.language, min(self.guids))
+
+
+def entry_id(language: str, guid: str) -> str:
+    """Headword-entry id, carrying the source's word GUID verbatim.
+
+    The 'd' prefix marks a dictionary entry at a glance. It is legibility, not
+    collision insurance: measured 2026-09-05, the sentence, word and
+    explanation GUID spaces are pairwise disjoint (210,502 / 144,029 /
+    169,859, zero overlap). The GUID still appears whole, so grepping a raw
+    GUID finds the entry.
+    """
+    if not isinstance(guid, str) or not _GUID.fullmatch(guid):
+        raise ValueError(f"{language}: unusable source GUID {guid!r}")
+    return f"{language}_d{guid}"
+
+
+def extract_entries(language: str, snapshot: dict) -> list[Entry]:
+    """One Entry per published headword, merged by normalized headword text.
+
+    Headwords repeat across queries (144,610 word records for 144,029 distinct
+    GUIDs), so entries merge the same way sentences do and take the lowest
+    GUID as their id.
+    """
+    grouped: dict[str, Entry] = {}
+    for response in snapshot.get("responses", []):
+        if not isinstance(response, dict):
+            continue
+        for word in response.get("words") or []:
+            if not isinstance(word, dict) or not is_published(word):
+                continue
+            headword = normalize_source_form(word.get("name"))
+            if headword in PLACEHOLDERS or not any(c.isalnum() for c in headword):
+                continue
+            guid = word.get("id")
+            if not guid:
+                raise ValueError(f"{language}: word without an id ({headword!r})")
+            entry = grouped.setdefault(
+                headword, Entry(headword=headword, language=language))
+            if guid not in entry.guids:
+                entry.guids.append(str(guid))
+            for explanation in word.get("explanationItems") or []:
+                if not isinstance(explanation, dict):
+                    continue
+                gloss = normalize_source_text(explanation.get("chineseExplanation"))
+                if not gloss or gloss in PLACEHOLDERS:
+                    continue
+                parts = explanation.get("partOfSpeech") or []
+                sense = Sense(
+                    gloss=gloss,
+                    part_of_speech="; ".join(parts) if parts else None,
+                )
+                if sense not in entry.senses:
+                    entry.senses.append(sense)
+    return [e for e in grouped.values() if e.senses]
+
+
 def is_published(word: dict[str, object]) -> bool:
     frequency = word.get("frequency", 0)
     return (isinstance(frequency, (int, float)) and frequency > 0) or bool(
