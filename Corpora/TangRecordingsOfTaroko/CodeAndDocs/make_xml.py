@@ -29,8 +29,10 @@ XML_DIR       = CORPUS_ROOT / "XML" / "Truku"
 # The licence every TEXT carries. A constant because the committed metadata
 # cannot supply it: its `license` is {"@id": "#license-3-a6e13b67"}, a reference
 # into a graph the extract does not include. The value rests on Prof. Apay
-# Tang's grant.
-COPYRIGHT = "CC BY-NC"
+# Tang's grant, recorded in the README's Rights block, and is written as the
+# exact rights_vocabulary.csv value POL-042 requires -- an unversioned Creative
+# Commons value means 4.0, so spelling out the version restates the same licence.
+COPYRIGHT = "CC BY-NC 4.0"
 
 # ── Citation formatter ────────────────────────────────────────────────────────
 def format_citation(credit_text):
