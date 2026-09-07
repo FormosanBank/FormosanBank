@@ -27,11 +27,25 @@ export FORMOSANBANK_AUTHORITY=/path/to/FormosanBank   # clean, at the pin
 CodeAndDocs/make_xml.sh
 ```
 
-The script refuses to run if the authority checkout is at a different commit
-or has uncommitted changes: a rebuild against different shared tooling is a
-different build, and silently producing one would defeat the point.
+The pin is **informational**. A rebuild uses whatever shared tooling the
+authority checkout has, and the script says so — it prints the commit it
+actually built against, and its digest, at the end. Pinning the tooling
+forever would mean the corpus could never be rebuilt with a fixed
+standardizer or cleaner without editing the script, and the pin would rot.
 
-When the authority is deliberately moved — because `standardize.py`,
-`clean_xml.py` or `add_phonology.py` has changed — update the pin, rebuild,
-and record the new digest here. A changed digest with an unchanged pin means
-something is not reproducible and wants investigating before it is committed.
+The pin still earns its keep, because it is recorded here beside the digest it
+produced. **Same pin, different digest** means something has stopped being
+reproducible and wants investigating. **Different pin, different digest** is
+ordinary: the shared tooling moved, and this file should be updated to the new
+pin and digest once the diff has been reviewed.
+
+To verify a published digest rather than rebuild, set
+`FORMOSANBANK_STRICT_AUTHORITY=1` and the mismatch becomes a hard failure.
+
+## Refreshing the source
+
+`refresh_source.sh` re-scrapes the ILRDF API into `source_data/snapshots/`
+and rewrites the manifest. `make_xml.sh` then builds from those new
+snapshots — the two are independent, and reproduction needs only the second.
+A refresh changes the source of truth, so review the snapshot diff and
+regenerate the id ledger afterwards.

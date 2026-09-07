@@ -52,6 +52,12 @@ That rebuilds everything from the committed snapshots in
 `CodeAndDocs/source_data/snapshots/` and needs no network access. The
 snapshots are the source boundary.
 
+The build uses whatever shared QC tooling the authority checkout has, and
+reports the commit and the resulting digest when it finishes.
+`CodeAndDocs/docs/reproduction.md` records the pair that produced the
+committed XML: same pin with a different digest means something has stopped
+being reproducible.
+
 **Full regeneration** re-scrapes the ILRDF API first:
 
 ```bash

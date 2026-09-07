@@ -21,14 +21,27 @@ XML_PATH="$CORPUS/XML"
 PYTHON="${FORMOSANBANK_PYTHON:-python3}"
 AUTHORITY="${FORMOSANBANK_AUTHORITY:?Set FORMOSANBANK_AUTHORITY to the pinned FormosanBank checkout}"
 
-if [[ "$EXPECTED_AUTHORITY_COMMIT" != "__SET_IN_TASK_12__" ]]; then
-    actual="$(git -C "$AUTHORITY" rev-parse HEAD)"
-    if [[ "$actual" != "$EXPECTED_AUTHORITY_COMMIT" ]]; then
-        echo "Authority commit mismatch: expected $EXPECTED_AUTHORITY_COMMIT, found $actual" >&2
-        exit 1
-    fi
-    if [[ -n "$(git -C "$AUTHORITY" status --porcelain)" ]]; then
-        echo "Authority checkout is dirty; reproduction needs a clean tree" >&2
+# The pin is INFORMATIONAL. A rebuild uses whatever shared tooling the
+# authority checkout has, and says so: pinning the tooling forever would mean
+# the corpus could never be rebuilt with a fixed standardizer or cleaner
+# without editing this script, and the pin would rot.
+#
+# It still earns its keep. docs/reproduction.md records the pin together with
+# the digest it produced, so "same pin, different digest" is a real signal
+# that something has stopped being reproducible. Set
+# FORMOSANBANK_STRICT_AUTHORITY=1 to turn the mismatch back into a hard
+# failure — which is what you want when verifying a published digest.
+AUTHORITY_HEAD="$(git -C "$AUTHORITY" rev-parse HEAD)"
+AUTHORITY_DIRTY=""
+[[ -n "$(git -C "$AUTHORITY" status --porcelain)" ]] && AUTHORITY_DIRTY=" (dirty)"
+
+if [[ "$AUTHORITY_HEAD" != "$EXPECTED_AUTHORITY_COMMIT" || -n "$AUTHORITY_DIRTY" ]]; then
+    echo "NOTE: building against ${AUTHORITY_HEAD}${AUTHORITY_DIRTY}," >&2
+    echo "      not the recorded ${EXPECTED_AUTHORITY_COMMIT}." >&2
+    echo "      Expect a different digest; update docs/reproduction.md if this" >&2
+    echo "      build is the new reference." >&2
+    if [[ -n "${FORMOSANBANK_STRICT_AUTHORITY:-}" ]]; then
+        echo "FORMOSANBANK_STRICT_AUTHORITY is set; refusing to continue." >&2
         exit 1
     fi
 fi
@@ -90,3 +103,5 @@ step "tests"
 
 echo
 echo "Rebuilt $XML_PATH"
+echo "  shared tooling: ${AUTHORITY_HEAD}${AUTHORITY_DIRTY}"
+echo "  digest:         $(find "$XML_PATH" -name '*.xml' | sort | xargs sha256sum | sha256sum | cut -d' ' -f1)"
