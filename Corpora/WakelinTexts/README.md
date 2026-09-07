@@ -32,11 +32,11 @@ Six Yami (`xml:lang="tao"`, `dialect="Yami"`) narrative texts, collected on Orch
 | `XML/Yami/Kalaku1.xml` | C. | Saman Kalaku, 6 September 1956 | 21 | 92 | 108 |
 | `XML/Yami/Kalaku2.xml` | D. | Samen Kalaku, 6 September 1956 | 14 | 76 | 103 |
 | `XML/Yami/Kalaku3.xml` | E. | Saman Kalaku, 13 September 1956 | 11 | 56 | 68 |
-| `XML/Yami/Kalaku4.xml` | F. | Saman Sunagu, January 1957 | 24 | 161 | 176 |
+| `XML/Yami/Sunagu.xml` | F. | Saman Sunagu, January 1957 | 24 | 161 | 176 |
 
 Sentence counts exceed the article's printed sentence numbers because seven printed alternations are published as separate sentences — see [Alternations](#alternations-the-sources-slash-notation) below.
 
-Note that text F was given by Saman Sunagu, not by Saman Kalaku; the `Kalaku4` file name and TEXT id are historical and are kept because published identifiers are stable, but the attribution above is the one to cite.
+Text F was given by Saman Sunagu, not by Saman Kalaku. It was published as `Sunagu` until 2026-09-07, when the file and its `TEXT/@id` were **renamed to `Sunagu`** to name the right speaker. POL-037 makes published identifiers stable, so this is a breaking change announced rather than a cleanup: an external citation of `WakelinTexts/Sunagu` will not resolve. The sentence, word and morpheme ids inside the file are unchanged.
 
 ## Orthography
 
@@ -46,7 +46,7 @@ It does have two symbols worth knowing about before using the data:
 
 - **`?` is a letter, not punctuation.** There are **47 occurrences**, and they sit *inside* single words, word-internally and word-finally, on the word and morpheme tiers as well as the sentence tier — `tau?` 'person', `uvi?` 'potato', `lavi?` 'cry', `kayu?` 'tree', `ina?` 'mother'. They appear in plainly declarative sentences: `amyan su tau? nu-kakwa i-m-angay mang-aep su uvi?` = "A long time ago, there was a person who went to get some potatoes." On the evidence it writes a consonant that modern Yami spelling leaves unwritten, most plausibly a glottal stop — but **that identification is not confirmed**, and it is the single largest reason the writing system as a whole cannot be pinned down. Do not strip it as punctuation, and do not read a sentence containing it as a question.
 
-- **`ř` is a letter of the transcription**, in eight words: `kařwan` 'other', `vařit` 'bamboo strips', `pasavuřen-ku`, `pasamuřna`, `mi-kařakařa`, `k-ařima-raw` 'in five days', `a-pneřek-em`, `vařangyam` 'boat'. It is the corpus's only non-ASCII letter, and the reason `validate_text` reports two SOFT `V116 non_ascii_in_form` findings. The hand-typed XML originally lost the caron and spelled all of these with a plain `r`; the article prints `ř` and the transcription has been corrected to match. (The PDF's text layer renders the letter as `f'`, `fl`, `i'` or `:l'` depending on the word, which is how the loss went unnoticed.)
+- **`ř` is a letter of the transcription**, in twelve words: `kařwan` 'other', `vařit` 'bamboo strips', `pasavuřen-ku`, `pasamuřna`, `mi-kařakařa`, `k-ařima-raw` 'in five days', `a-pneřek-em`, `vařangyam` 'boat', `y-ařwa` 'two', `sipřutan`, `řerchip` 'cave', and `tiřarawa-kamu`. It is the corpus's only non-ASCII letter, and the reason `validate_text` reports SOFT `V116 non_ascii_in_form` findings. The hand-typed XML originally lost the caron and spelled all of these with a plain `r`; the article prints `ř` and the transcription has been corrected to match. (The PDF's text layer renders the letter as `f'`, `fl`, `i'`, `:l'` or `~` depending on the word, which is how the loss went unnoticed.)
 
 ### Why there is no standard tier and no IPA
 
@@ -63,7 +63,7 @@ If the orthography is later identified — starting with a confirmation of what 
 
 Two notations from the printed article survive in the text and are faithful to it — they are not conversion artifacts:
 
-- **`( )` marks a probable discrepancy** in the data, per the article's own key: `(n)aku`, `ku(a)`, `puken-(en)`. In `Kalaku4.xml` sentence S2 the parentheses span several words in the article, so individual word FORMs there carry an unmatched `(` or `)`.
+- **`( )` marks a probable discrepancy** in the data, per the article's own key: `(n)aku`, `ku(a)`, `puken-(en)`. In `Sunagu.xml` sentence S2 the parentheses span several words in the article, so individual word FORMs there carry an unmatched `(` or `)`.
 - **`/` separated alternative readings** in the article: `am/namen`, `varit/yaked`, `pipangn-epen/pipangungn-epen/pipangengne-eben`. **No published FORM keeps a slash** — every one is resolved, either into `alternate` siblings or into separate sentences. See [Alternations](#alternations-the-sources-slash-notation) below.
 
 Hyphens mark morpheme boundaries, and are kept exactly as the article prints them, at every level. (In corpora that have a standard tier, sentence-level standard FORMs normally have these hyphens removed so that tier reads as running text. There is no standard tier here, so nothing is de-hyphenated: a sentence FORM reads `mang-anak-u-em`, as the article does.)

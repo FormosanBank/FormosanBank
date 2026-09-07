@@ -7,7 +7,7 @@ printed lines; and S/W/M FORM containment was checked internally. 42 tokens and
 19 count mismatches were flagged and reviewed by hand against the page images.
 
 Sentence inventory reconciles exactly against the article's own numbering:
-Kangkang 43, Kwaway 61, Kalaku1 20, Kalaku2 14, Kalaku3 10, Kalaku4 23 — no
+Kangkang 43, Kwaway 61, Kalaku1 20, Kalaku2 14, Kalaku3 10, Sunagu (published as `Kalaku4` until 2026-09-07) 23 — no
 sentence is missing or extra. Nearly all flagged tokens are OCR noise in the PDF's *text layer*
 (`vagay-ta` printed as `vaaay-ta` / `VasaY-ta` / `va,eay-ta`; `m.imama.yua.`
 for `mimamayua`; `pasavuf'en` for `pasavuren`) and are **not** discrepancies.
@@ -28,7 +28,7 @@ S30. The *other* A30 entry (`si-ina-ku-imu` → `s-ina-ku-imu`) was already appl
 Errata `A39 for "ana-ne-m mengep" read "ama-na-m mang-aep"`. The snapshot applied
 `-ne-`→`-na-` and `mengep`→`mang-aep` but kept `ana` where the errata prints
 `ama`. The gloss is `father-his`, and `ama` is `father` everywhere else in the
-corpus (`s-ama-na` Kwaway/S9, `nu ama-da` Kalaku4/S18, S20). Affects the S FORM
+corpus (`s-ama-na` Kwaway/S9, `nu ama-da` Sunagu/S18, S20). Affects the S FORM
 and `S39W3`.
 
 **3. ⏳ `Kalaku2/S8` — errata applied at S but not at W.** OPEN.
@@ -57,7 +57,7 @@ alternation on the word: `S18W3` is `kan` with `alternate` `kan-u`. This is the
 one place the article's optional-material parentheses are resolved rather than
 left as notation.
 
-**7. `Kalaku4/S16` — `S16W4M1` was `cbyaa?`, its W `chyaa?`.** ✅ FIXED
+**7. `Sunagu/S16` — `S16W4M1` was `cbyaa?`, its W `chyaa?`.** ✅ FIXED
 (ruled 2026-09-07). `cbyaa?` is the PDF's OCR of `chyaa?` (`b` for `h`); the
 morpheme now matches its word. The word is written as one morpheme but glossed
 `it-doesn't-matter`, so under the alignment rule it keeps the word-level gloss
