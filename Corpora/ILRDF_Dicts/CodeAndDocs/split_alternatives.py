@@ -70,6 +70,15 @@ _EQUALS_INLINE = re.compile(r"\s*\(\s*=\s*([^)]*)\)")
 _EQUALS_TRAILING = re.compile(r"\s*=\s*(.+)$", re.S)
 
 
+#: Bracket pairs the source uses -- ASCII and the CJK full-width forms, which
+#: appear in Atayal records typed on a Chinese keyboard.
+_BRACKETS = (("(", ")"), ("（", "）"), ("〔", "〕"))
+
+
+def _balanced(text: str) -> bool:
+    return all(text.count(a) == text.count(b) for a, b in _BRACKETS)
+
+
 def _tidy(text: str) -> str:
     text = re.sub(r"\s+", " ", text).strip()
     text = re.sub(r"\s+([,.!?;:])", r"\1", text)
@@ -155,6 +164,14 @@ def stage_b(text: str) -> list[str] | None:
 
     options, cores, tail = _options(sites[0])
     if len(options) < 2 or not all(cores):
+        return None
+    # A site must not straddle a bracket. '_SITE' matches any run of
+    # non-space, non-slash characters, so 'qinlwaxan / (qwalax qinlwaxan)' is
+    # picked up as a word pair whose second option is '(qwalax' -- splitting it
+    # leaves an unbalanced parenthesis in both readings. That is the same flaw
+    # PR #63's TOKEN_ALT_RE had. Bracketed alternation written '(A) / (B)' is
+    # Stage A's job; anything else with a stray bracket is uninterpretable.
+    if any(not _balanced(o) for o in options):
         return None
     if len(options) > 2:
         similarity = [

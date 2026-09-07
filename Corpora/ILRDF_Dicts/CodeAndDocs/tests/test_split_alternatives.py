@@ -108,6 +108,15 @@ class TestStageB(unittest.TestCase):
     def test_dangling_slash_is_uninterpretable(self):
         self.assertIsNone(stage_b("Kadrua ku abaadhane ku kazilu ki pangudaane/"))
 
+    def test_a_site_may_not_straddle_a_bracket(self):
+        """'X / (Y Z)' is a bracketed alternation, not a word pair. Splitting
+        it as tokens leaves unbalanced parentheses in both readings."""
+        for text in ("tnaq balay qinlwaxan / (qwalax qinlwaxan) nya la.",
+                     "qani ga kocyo na pqwasan / (pqwasan biruʼ) myan.",
+                     "pazangal a vencik tua lunbun na hakasi /(sikacuganan nua kipalengleng).",
+                     "qani qu kinbahan / （laqi kneril na laqi） suʼ ga?"):
+            self.assertIsNone(stage_b(text), text)
+
     def test_no_slash_is_a_single_reading(self):
         self.assertEqual(stage_b("hatomi^ han ako."), ["hatomi^ han ako."])
 
@@ -150,6 +159,13 @@ class TestInvariants(unittest.TestCase):
                      "1. a bcd. 2. e fgh."):
             for out in split_record(text) or []:
                 self.assertTrue(out.strip())
+
+    def test_brackets_stay_balanced(self):
+        for text in ("tnaq balay qinlwaxan / (qwalax qinlwaxan) nya la.",
+                     "cyux szwi na (krahu bayhuy) / (hopa na behuy) qu qhuniq.",
+                     "1.aw, (ʼsay taʼ kya) / (ungat htyalan nya) 2.aw. baqun makuʼ al."):
+            for out in split_record(text) or []:
+                self.assertEqual(out.count("("), out.count(")"), f"{text} -> {out}")
 
     def test_plain_record_passes_through_unchanged(self):
         self.assertEqual(split_record("maan cu ku tavarʉʼʉ."),
