@@ -97,7 +97,7 @@ The article also notes that the 'narration' suffix `-em`/`-m` occurs throughout 
 - **`XML/`** — the published FormosanBank XML.
 - **`CodeAndDocs/`**
   - `Original.pdf` — the 1958 article, the source of every sentence here.
-  - `pre_correction_snapshot/XML/` — the hand-typed XML: this corpus's source of record (see below).
+  - `pre_correction_snapshot/Yami/` — the hand-typed XML: this corpus's source of record (see below).
   - `generate_xml.sh` — the one entry point; regenerates `XML/` (POL-047).
   - `generate_xml.py` — step 1, the corpus-local parser.
   - `alternative_decisions.json` — how each printed alternation is published.
@@ -109,7 +109,7 @@ The article also notes that the 'narration' suffix `-em`/`-m` occurs throughout 
 
 **The article's own errata are applied.** The 1958 publication ends with an "Errata Addenda" (`Original.pdf` p. 22) listing about fifty corrections in `for X read Y` form. The published text is the **corrected** reading throughout — `amyan` not `amian`, `mang-aep` not `mengep`, `puken` not `buken`, `tusya` not `tausya` — because the errata are part of the same publication and represent its authors' final word. Where an erratum and another source signal conflict, the erratum wins: `Kwaway/S4W2M2` is printed with a barred g, but B4 removes the consonant, so it is published `aep`. Deviations from the article are confined to two deliberate corrections, listed under "A correction to the source" below.
 
-These texts were transferred from the printed article to XML **by hand**. There is no scraper and no OCR stage, so the hand-typed XML *is* this corpus's source data: `CodeAndDocs/pre_correction_snapshot/XML/` is its **source of record** (POL-035), and the published `XML/` is derived from it on every run.
+These texts were transferred from the printed article to XML **by hand**. There is no scraper and no OCR stage, so the hand-typed XML *is* this corpus's source data: `CodeAndDocs/pre_correction_snapshot/` is its **source of record** (POL-035), and the published `XML/` is derived from it on every run.
 
 Because it is the source and not a build artefact, the snapshot is where a *source* correction belongs — a misread letter, a missed erratum, a mis-segmented word. Such corrections are made in the snapshot, and each one is evidenced against `Original.pdf` in [`CodeAndDocs/source_discrepancies.md`](CodeAndDocs/source_discrepancies.md). Everything *downstream* of the snapshot — the alternation handling below — is done by committed code, never by hand (POL-038). The published `XML/` is never edited directly.
 

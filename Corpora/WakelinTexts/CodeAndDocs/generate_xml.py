@@ -3,7 +3,7 @@
 
 Step 1 of generate_xml.sh (POL-047). WakelinTexts was typed into XML by hand
 from the 1958 SIL Work Papers article; there is no scrape or OCR stage to
-re-run, so `CodeAndDocs/pre_correction_snapshot/XML/` is this corpus's source
+re-run, so `CodeAndDocs/pre_correction_snapshot/` is this corpus's source
 of record (POL-035) and this script is its parser.
 
 The one transformation it performs is resolving the source's slash notation.
@@ -377,7 +377,7 @@ def apply_split(sentence, decision):
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--snapshot", default=str(CODE_ROOT / "pre_correction_snapshot" / "XML"))
+    ap.add_argument("--snapshot", default=str(CODE_ROOT / "pre_correction_snapshot"))
     ap.add_argument("--decisions", default=str(CODE_ROOT / "alternative_decisions.json"))
     ap.add_argument("--xml-dir", default=str(CODE_ROOT.parent / "XML"))
     ap.add_argument("--gloss-report", default=None,

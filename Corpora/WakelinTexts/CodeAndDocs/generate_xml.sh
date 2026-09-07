@@ -41,7 +41,7 @@ CORPUS="$(dirname "$CODEDOCS")"
 BANK="${1:-${FORMOSANBANK_ROOT:-$(cd "$CORPUS/../.." && pwd)}}"
 BANK="$(cd "$BANK" && pwd)"
 XML="$CORPUS/XML"
-SNAPSHOT="$CODEDOCS/pre_correction_snapshot/XML"
+SNAPSHOT="$CODEDOCS/pre_correction_snapshot"
 
 PY="${PYTHON:-$BANK/.venv/bin/python}"
 [[ -x "$PY" ]] || PY="$(command -v python3)"
