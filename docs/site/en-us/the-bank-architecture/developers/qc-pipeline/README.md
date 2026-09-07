@@ -31,7 +31,7 @@ The finding-based validators — [validate_xml.py](validate-xml.md), [validate_t
 | **SOFT** | A candidate cleanup or review item. Reported and written to the findings CSV, but **never** changes the exit code. |
 | **WARN** | Advisory only. Reserved; rarely used. |
 
-These validators print a compact **per-rule summary** to the terminal and write **one findings CSV** whose path is announced as `Details: <path>` — per-finding detail lives in the CSV, not the terminal. Pass `--no-exit-on-hard` to inspect findings without failing your shell (useful during discovery; CI leaves it off so HARD findings gate).
+These validators print a compact **per-rule summary** to the terminal and write **one findings CSV** whose path is announced as `Details: <path>` — per-finding detail lives in the CSV, not the terminal. To look up an id you saw in either, see [The rule catalogue](rule-catalogue.md), which lists all 83 rules and is generated from the code. Pass `--no-exit-on-hard` to inspect findings without failing your shell (useful during discovery; CI leaves it off so HARD findings gate).
 
 {% hint style="warning" %}
 Not every validator uses this framework. [validate_dialect.py](validate-dialect.md), [validate_orthography.py](validate-orthography.md), [validate_vocabulary.py](validate-vocabulary.md), and [validate_duplicate_sentences.py](validate-duplicate-sentences.md) print their own reports and **always exit 0** — they are informational. Each page says which kind it is.
