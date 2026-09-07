@@ -55,7 +55,8 @@ rm -rf "$XML"
 "$PY" "$CODEDOCS/generate_xml.py" \
   --snapshot "$SNAPSHOT" \
   --decisions "$CODEDOCS/alternative_decisions.json" \
-  --xml-dir "$XML"
+  --xml-dir "$XML" \
+  --gloss-report "$CODEDOCS/gloss_alignment_review.tsv"
 
 step "2. clean_xml"
 "$PY" "$BANK/QC/cleaning/clean_xml.py" --corpora_path "$XML"

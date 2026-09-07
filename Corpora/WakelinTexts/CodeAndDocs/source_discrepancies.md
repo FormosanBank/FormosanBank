@@ -65,6 +65,49 @@ M was not; they should agree.
 Printed p.9: `29 mak-apia mi-tabaus k-angay-na`, glossed `unan-hat`. No errata
 entry touches D/B29. The snapshot reads `tubaus`; the source prints `tabaus`.
 
+## C2. Raised by the maintainer, and NOT applied — `Kalaku1/S11` gloss order
+
+**Proposed (2026-09-06):** that the last two glosses of `Kalaku1/S11` are in the
+wrong order — `a-ni-padi/machyura-rana` should take `unan-many-still/again-them`
+and `dy-aru-pa-sira` should take `unan-past(unctn)-accompany-completely`; and
+that the slash splits the word into `a-ni-padi` and `machyura-rana`.
+
+**Not applied.** Three independent lines of evidence say the snapshot is right:
+
+1. **Column positions on the printed page.** Extracting word boxes from p.14
+   shows the gloss sits directly under its word:
+
+   | printed token | x | gloss below it | x |
+   | --- | ---: | --- | ---: |
+   | `dy-aru•pa-sira` | 265.5 | `unan-many-still/again•them` | 265.7 |
+   | `a-ni-padi/machyura•rana` | 356.0 | `unan-past(unctn)-` (wraps to `accompany-completely`) | 428.9 |
+
+2. **The corpus's own morpheme glosses**, counted over the whole snapshot:
+   `rana` → 'completely' **39×**, `ni` → 'past(unctn)' **22×**, `sira` →
+   'they/them' **6×**, `aru` → 'many', `pa` → 'still/again'. The proposed swap
+   would make `rana` mean 'them' and `sira` mean 'completely'.
+
+3. **The free translation** is "Many, many other foreigners accompanied us." —
+   `aru` 'many' in one word, `padi`/`machyura` 'accompany' in the other. Errata
+   A38 independently gives `machyura` as a gloss-mate of 'accompany' in
+   `Kangkang/S38`.
+
+On the split shape, the maintainer's own criterion — that the morpheme counts
+should come out right — also favours the current reading. The gloss has four
+units, so:
+
+- `a-ni-padi-rana` / `a-ni-machyura-rana` — 4 morphemes each. ✅
+- `a-ni-padi` / `machyura-rana` — 3 and 2. ❌
+
+The corpus therefore keeps `S11` = `…a-ni-padi-rana` and `S11b` =
+`…a-ni-machyura-rana`, with `a-ni-` and `-rana` shared.
+
+**One real defect in this sentence is fixed** by the morpheme-alignment rule:
+`S11W4` `dewdew-em` (2 morphemes) is glossed `foreigners` (1 unit), and its
+morphemes were `dewdew`/'foreigners' and `em`/'foreigners'. The `-em` narration
+suffix carries no gloss in this article, so the M tier is dropped and the
+word-level gloss stands alone.
+
 ## D. Low confidence — flagged, not asserted
 
 **9. `Kangkang/S19` — `kalagen`.** Printed `kala~en`, glossed `to-hunt-for`.

@@ -143,14 +143,122 @@ def apply_variant(sentence, carriers):
         alts = alternates(carrier)
         if not alts:
             raise SystemExit(f"{carrier_id}: mode=variant but no alternate FORM")
-        # The carrier keeps its own alternates; ancestors gain one per reading.
+        # The carrier keeps its own alternates. Its containing W gains one per
+        # reading; the S does NOT (maintainer, 2026-09-06). A sentence-level
+        # alternate for a one-morpheme spelling difference is noise, and where
+        # a sentence carries two independent alternations — Kalaku1/S17 — an
+        # S-level alternate can only show one of them, which misreads as a
+        # claim that the other did not vary. The S FORM therefore carries the
+        # primary reading only; the variation is on the W and M that vary.
         readings = [original] + alts
         for ancestor in chain[:-1]:
             base = text_of(ancestor)
             drop_alternates(ancestor)   # e.g. Kalaku1/S13's defective W-level alternate
             set_form(ancestor, resolve(base, readings, original))
+            if ancestor.tag == "S":
+                continue
             for alt in alts:
                 add_alternate(ancestor, resolve(base, readings, alt))
+
+
+UNAN = "unan"
+
+
+def gloss_units(value: str) -> list[str]:
+    """Split a gloss on '-', but not on hyphens inside parentheses.
+
+    The article writes a multi-word gloss for a single morpheme in parentheses:
+    `unan-(one-after-another)-us-completely` is four units, not six.
+    """
+    units, depth, current = [], 0, []
+    for ch in value:
+        if ch == "(":
+            depth += 1
+        elif ch == ")":
+            depth = max(0, depth - 1)
+        if ch == "-" and depth == 0:
+            units.append("".join(current))
+            current = []
+        else:
+            current.append(ch)
+    units.append("".join(current))
+    return [u for u in units if u]
+
+
+def gloss_of(node):
+    t = node.find("TRANSL")
+    return (t.text or "") if t is not None else ""
+
+
+def tidy_glosses(sentence, report):
+    """Two rules the maintainer set on 2026-09-06, applied corpus-wide.
+
+    1. `unan` is the article's "unanalyzed" marker, not a gloss. A TRANSL whose
+       whole text is `unan` records that the transcriber supplied nothing, so
+       it is dropped rather than published as though it meant something.
+    2. A W whose morpheme count disagrees with its gloss's unit count is not
+       reliably segmented, so its M children are dropped and only the W-level
+       gloss is kept. A W left with no gloss at all (rule 1) likewise keeps no
+       M. Every drop is reported for review.
+    """
+    sid = sentence.get("id")
+    for w in sentence.findall("W"):
+        for node in [w] + w.findall("M"):
+            for t in list(node.findall("TRANSL")):
+                if (t.text or "").strip().lower() == UNAN:
+                    node.remove(t)
+        morphemes = w.findall("M")
+        if not morphemes:
+            continue
+        gloss = gloss_of(w)
+        if not gloss:
+            report.append((sid, w.get("id"), text_of(w), "<unan>", len(morphemes), 0))
+            for m in morphemes:
+                w.remove(m)
+            continue
+        # A gloss may itself carry the source's slash alternation across the
+        # whole word — Kwaway/S25W1 is `unan-not-I-you(pl)/unan-curse-I-you(pl)`,
+        # two complete 4-unit glosses for a 4-morpheme word. Counting the joined
+        # string would call that a mismatch and throw the morphemes away, taking
+        # the per-morpheme alternative glosses (POL-025) with them. So a word
+        # aligns if ANY of its slash-separated glosses has the right unit count.
+        # `still/again` is unaffected: it is one unit, and neither half of it
+        # matches on its own.
+        counts = {len(gloss_units(part)) for part in gloss.split("/")}
+        counts.add(len(gloss_units(gloss)))
+        if len(morphemes) not in counts:
+            report.append((sid, w.get("id"), text_of(w), gloss,
+                           len(morphemes), len(gloss_units(gloss))))
+            for m in morphemes:
+                w.remove(m)
+
+
+def take_reading(word, which):
+    """Keep one reading's glosses across a word being split into two sentences.
+
+    Where the source glosses the two readings differently it records the second
+    as TRANSL[@ver="alt"] beside the first (Kwaway/S4W2: `unan-take-unan` for
+    `tunanal-aep-an`, `unan` for `nitelemna`). Once the readings become separate
+    sentences neither is an "alternative" any more, so each branch keeps its own
+    gloss as the plain one. A node with no alt gloss keeps what it has — the two
+    readings simply share a gloss.
+
+    Only the split word and its morphemes are touched. An alt gloss elsewhere in
+    the sentence is a genuine second reading of the *same* text (POL-025,
+    e.g. Kwaway/S19W2 `kanu` = 'when' or 'and(unctn)') and must survive.
+    """
+    for node in [word] + word.findall("M"):
+        translations = node.findall("TRANSL")
+        alt = [t for t in translations if t.get("ver") == "alt"]
+        plain = [t for t in translations if t.get("ver") != "alt"]
+        if not alt:
+            continue
+        keep, drop = (plain, alt) if which == "primary" else (alt, plain)
+        for t in drop:
+            node.remove(t)
+        for t in keep:
+            if "ver" in t.attrib:
+                del t.attrib["ver"]
 
 
 def renumber(node, old_sid, new_sid):
@@ -229,15 +337,18 @@ def apply_split(sentence, decision):
 
     readings = [original, alternate]
     primary = copy.deepcopy(sentence)
-    for node in ancestors_of(primary, carrier_id):
+    primary_chain = ancestors_of(primary, carrier_id)
+    for node in primary_chain:
         drop_alternates(node)
         set_form(node, resolve(text_of(node), readings, original))
+    take_reading(primary_chain[1], "primary")
 
     other = copy.deepcopy(sentence)
     other_chain = ancestors_of(other, carrier_id)
     for node in other_chain:
         drop_alternates(node)
         set_form(node, resolve(text_of(node), readings, alternate))
+    take_reading(other_chain[1], "alternate")
     if decision.get("drop_morphemes"):
         holder = other_chain[1]
         for m in list(holder.findall("M")):
@@ -251,6 +362,8 @@ def main() -> int:
     ap.add_argument("--snapshot", default=str(CODE_ROOT / "pre_correction_snapshot" / "XML"))
     ap.add_argument("--decisions", default=str(CODE_ROOT / "alternative_decisions.json"))
     ap.add_argument("--xml-dir", default=str(CODE_ROOT.parent / "XML"))
+    ap.add_argument("--gloss-report", default=None,
+                    help="write the list of W whose M tier was dropped, for review")
     args = ap.parse_args()
 
     config = json.loads(Path(args.decisions).read_text(encoding="utf-8"))
@@ -265,6 +378,7 @@ def main() -> int:
     snapshot = Path(args.snapshot)
     out_root = Path(args.xml_dir)
     total = {"S": 0, "variant": 0, "split": 0}
+    gloss_report: dict[str, list] = {}
     for src in sorted(snapshot.rglob("*.xml")):
         name = src.stem
         tree = ET.parse(src)
@@ -296,6 +410,8 @@ def main() -> int:
             else:
                 rebuilt.extend(apply_split(sentence, decision))
                 total["split"] += 1
+        for sentence in rebuilt:
+            tidy_glosses(sentence, gloss_report.setdefault(name, []))
         for sentence in root.findall("S"):
             root.remove(sentence)
         for sentence in rebuilt:
@@ -313,6 +429,16 @@ def main() -> int:
             if "/" in (f.text or ""):
                 print(f"  !! slash survives in {path.name}: {f.text}")
                 leftover += 1
+    if args.gloss_report:
+        with open(args.gloss_report, "w", encoding="utf-8") as fh:
+            fh.write("file\tsentence\tword\tform\tgloss\tmorphemes\tgloss_units\n")
+            for name, rows in sorted(gloss_report.items()):
+                for row in rows:
+                    fh.write(name + "\t" + "\t".join(str(c) for c in row) + "\n")
+        print(f"  M-tier dropped for "
+              f"{sum(len(v) for v in gloss_report.values())} W "
+              f"-> {args.gloss_report}")
+
     print(f"\n{total['S']} S written "
           f"({total['variant']} variant, {total['split']} split alternations); "
           f"{leftover} unresolved slash FORMs")
