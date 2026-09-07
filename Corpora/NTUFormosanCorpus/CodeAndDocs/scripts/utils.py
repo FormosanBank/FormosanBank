@@ -229,7 +229,9 @@ def is_speaker_token(form: str, zh: str = '', en: str = '') -> bool:
     """
     if not _SPEAKER_TOKEN_RE.match(form):
         return False
-    if zh or en:
+    # '_' is the source's absent-gloss placeholder, not a gloss. Treating it as
+    # one lets a labelled turn such as ['D:', '_', '_'] escape suppression.
+    if (zh or "").strip() not in ("", "_") or (en or "").strip() not in ("", "_"):
         return False   # has a gloss → not a bare speaker label
     return True
 

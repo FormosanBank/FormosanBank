@@ -61,6 +61,22 @@ def is_source_unclear(form):
     return bool(_SOURCE_UNCLEAR_RE.fullmatch((form or "").strip()))
 
 
+# The source marks an absent gloss with a literal underscore, not an empty
+# string: a speaker turn is stored as ['D:', '_', '_']. A bare truthiness test
+# therefore reads the placeholder as a gloss and publishes the speaker label as
+# a word. The earlier ``len(gloss[1]) > 1`` test excluded '_' only as a side
+# effect of its length, and in doing so also discarded every word whose gloss
+# is a single real character -- single-character Chinese glosses (那, 人, 和)
+# are common in this source. Testing the placeholder explicitly keeps those
+# words and drops the labels.
+_EMPTY_GLOSS = {"", "_"}
+
+
+def has_gloss(gloss):
+    """Return whether a source gloss row carries an actual gloss."""
+    return (gloss[1] or "").strip() not in _EMPTY_GLOSS
+
+
 def surface_form(gloss):
     """Return a surface token, preserving source ``??`` as an XML sentinel."""
     if is_source_unclear(gloss[0]):
@@ -185,7 +201,7 @@ def get_story(data, src=""):
         tmp['ori'] = clean_punctuation(join_ori_tokens([
             surface_form(gloss)
             for gloss in s["gloss"]
-            if gloss[1] or is_source_unclear(gloss[0])
+            if has_gloss(gloss) or is_source_unclear(gloss[0])
         ]))
         tmp['ori_fallback'] = [strip_prosodic_markers(str(t)) for t in s.get('ori', [])]
         tmp['ori_id'] = [data[idx][0]]
@@ -195,7 +211,7 @@ def get_story(data, src=""):
             source_free.append(f"#n {_UNCLEAR_NOTE}")
         tmp['words'] = []
         for gloss in s["gloss"]:
-            if not gloss[1] and not is_source_unclear(gloss[0]):
+            if not has_gloss(gloss) and not is_source_unclear(gloss[0]):
                 continue
             tmp['words'].append([
                 _build_form(gloss),
@@ -217,7 +233,7 @@ def get_story(data, src=""):
             tmp['ori'] += " " + clean_punctuation(join_ori_tokens([
                 surface_form(gloss)
                 for gloss in s["gloss"]
-                if gloss[1] or is_source_unclear(gloss[0])
+                if has_gloss(gloss) or is_source_unclear(gloss[0])
             ]))
             tmp['ori_fallback'] += [strip_prosodic_markers(str(t)) for t in s.get('ori', [])]
             source_free.extend(s.get('free', []) or [])
@@ -225,7 +241,7 @@ def get_story(data, src=""):
                 source_free.append(f"#n {_UNCLEAR_NOTE}")
             continuation = []
             for gloss in s["gloss"]:
-                if not gloss[1] and not is_source_unclear(gloss[0]):
+                if not has_gloss(gloss) and not is_source_unclear(gloss[0]):
                     continue
                 continuation.append([
                     _build_form(gloss),
