@@ -153,6 +153,24 @@ def _row_starts(words: list[dict[str, str]]) -> dict[int, list[float]]:
     return starts_by_page
 
 
+def _page_top_orphans(
+    by_page: dict[int, list[dict[str, Any]]],
+    starts_by_page: dict[int, list[float]],
+    page: int,
+) -> list[dict[str, Any]]:
+    """Words above `page`'s first detected row start, which no band would claim.
+
+    They are the tail of an entry begun on the previous page: its column-1 cell
+    ended there, so the lines here start no row of their own and would otherwise
+    be discarded silently.
+    """
+    starts = starts_by_page.get(page) or []
+    if not starts:
+        return []
+    ceiling = starts[0] - 0.3
+    return [item for item in by_page.get(page, []) if item["top"] < ceiling]
+
+
 def extract_rows(tsv: str) -> list[dict[str, Any]]:
     words = list(csv.DictReader(io.StringIO(tsv), delimiter="\t"))
     starts_by_page = _row_starts(words)
@@ -184,6 +202,19 @@ def extract_rows(tsv: str) -> list[dict[str, Any]]:
             end = (
                 starts[page_index + 1] - 0.3 if page_index + 1 < len(starts) else 550.0
             )
+            # A row start is only ever recognised from a column-1 line, so a row
+            # whose continuation lines carry no column-1 word and fall at the top
+            # of the next page would lose them: they precede that page's first
+            # start and so belong to no band at all. The last row of a page
+            # therefore also claims the next page's leading orphan lines.
+            spill: list[dict[str, Any]] = []
+            spill_markers: list[dict[str, Any]] = []
+            if page_index + 1 == len(starts):
+                spill = _page_top_orphans(page_words, starts_by_page, page + 1)
+                spill_markers = _page_top_orphans(
+                    page_markers, starts_by_page, page + 1
+                )
+
             cells: dict[str, str] = {}
             for column, name in enumerate(COLUMN_NAMES, start=1):
                 items = sorted(
@@ -193,13 +224,16 @@ def extract_rows(tsv: str) -> list[dict[str, Any]]:
                         if item["column"] == column and top - 0.3 <= item["top"] < end
                     ),
                     key=lambda item: (round(item["top"], 1), item["left"]),
+                ) + sorted(
+                    (item for item in spill if item["column"] == column),
+                    key=lambda item: (round(item["top"], 1), item["left"]),
                 )
                 cells[name] = " ".join(item["text"] for item in items).strip()
 
             marker_items = sorted(
                 (item for item in page_markers[page] if top - 0.3 <= item["top"] < end),
                 key=lambda item: (item["top"], item["left"]),
-            )
+            ) + sorted(spill_markers, key=lambda item: (item["top"], item["left"]))
             records.append(
                 {
                     "source_row": len(records) + 1,
