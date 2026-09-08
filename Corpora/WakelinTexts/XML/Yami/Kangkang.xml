@@ -1398,7 +1398,11 @@
         <TRANSL xml:lang="eng">you won't be killed.</TRANSL>
         <W id="S33W1">
             <FORM kindOf="original">simuskem</FORM>
-            <TRANSL xml:lang="eng">kill-with-boiling-water</TRANSL>
+            <TRANSL xml:lang="eng">kill.with.boiling.water</TRANSL>
+            <M id="S33W1M1">
+                <FORM kindOf="original">simuskem</FORM>
+                <TRANSL xml:lang="eng">kill.with.boiling.water</TRANSL>
+            </M>
         </W>
         <W id="S33W2">
             <FORM kindOf="original">anak-u-imu</FORM>
@@ -1434,7 +1438,19 @@
         <TRANSL xml:lang="eng">you won't be killed.</TRANSL>
         <W id="S33bW1">
             <FORM kindOf="original">tanu-di-muskem</FORM>
-            <TRANSL xml:lang="eng">if(unctn)-not-killed-with-boiling-water</TRANSL>
+            <TRANSL xml:lang="eng">if(unctn)-not-killed.with.boiling.water</TRANSL>
+            <M id="S33bW1M1">
+                <FORM kindOf="original">tanu</FORM>
+                <TRANSL xml:lang="eng">if(unctn)</TRANSL>
+            </M>
+            <M id="S33bW1M2">
+                <FORM kindOf="original">di</FORM>
+                <TRANSL xml:lang="eng">not</TRANSL>
+            </M>
+            <M id="S33bW1M3">
+                <FORM kindOf="original">muskem</FORM>
+                <TRANSL xml:lang="eng">killed.with.boiling.water</TRANSL>
+            </M>
         </W>
         <W id="S33bW2">
             <FORM kindOf="original">anak-u-imu</FORM>
@@ -1513,7 +1529,15 @@
         </W>
         <W id="S35W5">
             <FORM kindOf="original">chinwat-em</FORM>
-            <TRANSL xml:lang="eng">boiling-water-PAR</TRANSL>
+            <TRANSL xml:lang="eng">boiling.water-PAR</TRANSL>
+            <M id="S35W5M1">
+                <FORM kindOf="original">chinwat</FORM>
+                <TRANSL xml:lang="eng">boiling.water</TRANSL>
+            </M>
+            <M id="S35W5M2">
+                <FORM kindOf="original">em</FORM>
+                <TRANSL xml:lang="eng">PAR</TRANSL>
+            </M>
         </W>
         <W id="S35W6">
             <FORM kindOf="original">tongwus</FORM>
@@ -1731,7 +1755,7 @@
             </M>
             <M id="S40W1M2">
                 <FORM kindOf="original">atey</FORM>
-                <TRANSL xml:lang="eng">stone-wall</TRANSL>
+                <TRANSL xml:lang="eng">stone.wall</TRANSL>
             </M>
             <M id="S40W1M3">
                 <FORM kindOf="original">ta</FORM>
@@ -1762,7 +1786,7 @@
             </M>
             <M id="S40W4M2">
                 <FORM kindOf="original">manginanawa</FORM>
-                <TRANSL xml:lang="eng">be-careful</TRANSL>
+                <TRANSL xml:lang="eng">be.careful</TRANSL>
             </M>
         </W>
         <W id="S40W5">
@@ -1822,7 +1846,11 @@
         </W>
         <W id="S41W4">
             <FORM kindOf="original">dinalulut</FORM>
-            <TRANSL xml:lang="eng">stick-weapons</TRANSL>
+            <TRANSL xml:lang="eng">stick.weapons</TRANSL>
+            <M id="S41W4M1">
+                <FORM kindOf="original">dinalulut</FORM>
+                <TRANSL xml:lang="eng">stick.weapons</TRANSL>
+            </M>
         </W>
         <W id="S41W5">
             <FORM kindOf="original">lu</FORM>
@@ -1874,7 +1902,11 @@
         </W>
         <W id="S42W4">
             <FORM kindOf="original">apwapwasena</FORM>
-            <TRANSL xml:lang="eng">pick-up-stones</TRANSL>
+            <TRANSL xml:lang="eng">pick.up.stones</TRANSL>
+            <M id="S42W4M1">
+                <FORM kindOf="original">apwapwasena</FORM>
+                <TRANSL xml:lang="eng">pick.up.stones</TRANSL>
+            </M>
         </W>
         <W id="S42W5">
             <FORM kindOf="original">u</FORM>
