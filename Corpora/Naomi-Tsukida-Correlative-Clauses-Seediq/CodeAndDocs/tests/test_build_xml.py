@@ -292,6 +292,20 @@ def test_original_phon_uses_the_documented_tsukida_profile():
     assert words[3].findtext("PHON[@kindOf='original']") == "ɣaɣa"
     assert words[1].findtext("FORM[@kindOf='original']") == "huliŋ"
     assert words[1].findtext("PHON[@kindOf='original']") == "ħuɮiŋ"
+
+
+def test_reviewed_source_apostrophe_is_pronounced():
+    # Madeline's August 7 review; Tsukida's Teruku inventory and source examples.
+    root = ET.parse(build_xml.XML_PATH).getroot()
+    expected = {
+        "tsukida2014_seediq_S003W2": ("'u", "ʔu"),
+        "tsukida2014_seediq_S018W4": ("se'diq", "səʔdiq"),
+        "tsukida2014_seediq_S002W4": ("gaga", "ɣaɣa"),
+    }
+    words = {word.get("id"): word for word in root.iter("W")}
+    for identity, (source, phon) in expected.items():
+        assert words[identity].findtext("FORM[@kindOf='original']") == source
+        assert words[identity].findtext("PHON[@kindOf='original']") == phon
     assert root.find("S[@id='tsukida2014_seediq_S018']/W[@id='tsukida2014_seediq_S018W2']/TRANSL").text == "AC.escape"
 
 
