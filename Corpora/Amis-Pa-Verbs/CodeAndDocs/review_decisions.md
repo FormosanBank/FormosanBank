@@ -16,3 +16,8 @@ The corresponding raw displays and locators remain in
 `direct_source_checks.tsv` and `rejected_source_examples.tsv`.
 The six records remain in `manual_edits.xml` as warned no-ops under POL-030;
 pruning has not been approved.
+
+September 2026 source review also restores obligatory `i/PREP` in 32c (POL-017),
+the 22 printed S endings, and the unglossed Pa/fli M boundary. The four affected
+manual S records carry those source endings; all six decisions and records survive.
+The corrected FILE path makes their application reachable in the canonical layout.
