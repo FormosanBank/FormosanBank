@@ -142,6 +142,31 @@ def test_inline_anonymous_enum_is_surfaced(tmp_path, monkeypatch):
     assert rows == [("ZZZ", "mode", "optional", "a | b", "inline enum test")]
 
 
+def test_every_row_has_same_delimiter_count_as_header():
+    """No table row may carry more unescaped '|' than its header.
+
+    GFM tables split on unescaped `|`; backticks do not protect one, so
+    a literal `|` in any cell — not just documentation, but also an
+    "Allowed values" cell built from an enum like `original | standard`
+    — must be escaped as `\\|` or it reads as extra column delimiters
+    and misaligns or spills the row. This checks every generated data
+    row against its section header's delimiter count, so it catches any
+    future column-splitting content, not just the enum case.
+    """
+    text = CATALOGUE.read_text(encoding="utf-8")
+    header_delimiters = None
+    for line in text.splitlines():
+        if line.startswith("| ---"):
+            header_delimiters = line.count("|")
+            continue
+        if line.startswith("| `") and header_delimiters is not None:
+            row_delimiters = line.count("|") - line.count("\\|")
+            assert row_delimiters == header_delimiters, (
+                f"row has {row_delimiters} unescaped '|' delimiters, "
+                f"expected {header_delimiters}: {line}"
+            )
+
+
 def test_pipe_in_documentation_does_not_break_table_row(monkeypatch):
     """A literal '|' in an xs:documentation string must not corrupt the
 

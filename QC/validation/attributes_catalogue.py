@@ -119,11 +119,12 @@ def collect() -> list[tuple[str, str, str, str, str]]:
 def _table_cell(text: str) -> str:
     """Escape a value for use inside a Markdown table cell.
 
-    Documentation text is free-form prose pulled from the XSD; a literal
-    `|` in it would otherwise be read as a column delimiter and misalign
-    or split the row. Enum-value cells are built separately and
-    deliberately use unescaped ` | ` as their own visual separator, so
-    this is applied only to the documentation column.
+    Any free-form text placed in a cell — documentation prose, or an
+    enum-values list rendered as `a | b | c` — can contain a literal
+    `|`. GFM tables split on unescaped `|` regardless of surrounding
+    backticks, so every such cell must go through this before being
+    written into a row, or the pipe is read as an extra column
+    delimiter and misaligns or splits the row.
     """
     return text.replace("|", "\\|")
 
@@ -156,7 +157,7 @@ def render() -> str:
                 "| Attribute | Use | Allowed values | Meaning |",
                 "| --- | --- | --- | --- |",
             ]
-        shown = f"`{values}`" if values else "—"
+        shown = f"`{_table_cell(values)}`" if values else "—"
         out.append(f"| `{attribute}` | {use} | {shown} | {_table_cell(doc)} |")
     out += ["", f"{len(rows)} attributes across {len(set(r[0] for r in rows))} elements.", ""]
     return "\n".join(out)

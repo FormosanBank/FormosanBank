@@ -1,5 +1,17 @@
 # GitBook XML-format doc patch (Task 8)
 
+**Fix round 1 (2026-09-08):** the patch below was regenerated after a
+rendering-defect fix in `QC/validation/attributes_catalogue.py`. The
+"Allowed values" cell for enumerated attributes (e.g. `FORM/@kindOf` →
+`` `original | standard | alternate` ``) contained unescaped `|`
+characters — backticks do not protect a pipe inside a GFM table cell, so
+those three rows (`FORM/@kindOf`, `PHON/@kindOf`, `TRANSL/@kindOf`) would
+have rendered with spilled/misaligned columns on GitHub and on the docs
+site. The generator now escapes that cell the same way it already escaped
+the documentation cell; `ATTRIBUTES.md` and this patch were regenerated
+from the fix. See `.superpowers/sdd/2026-09-08-alternate-form-standardization/task-8-report.md`
+for the full fix report (root-cause file, tests, commands run).
+
 This is a patch for a **different repository**,
 `../FormosanBankGitbook` (`en-us/the-bank-architecture/formosanbank-xml-format.md`,
 the canonical English page). It could not be committed directly here: that
