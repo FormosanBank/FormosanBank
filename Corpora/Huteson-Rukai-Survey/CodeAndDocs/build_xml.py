@@ -32,10 +32,7 @@ BIBTEX = (
     "title = {Sociolinguistic Survey Report for the Tona and Maga Dialects of "
     "the Rukai Language}, institution = {SIL International}, year = {2003}}"
 )
-COPYRIGHT = (
-    "CC BY-NC-SA 4.0 via SIL International terms screenshot attached to "
-    "Basecamp card 8255603132."
-)
+COPYRIGHT = "CC BY-NC-SA 4.0"
 
 UNGLOSSED_WORD_INDEXES = {
     ("maga", 7): frozenset({1}),
@@ -51,13 +48,6 @@ REVIEWED_WORD_ALIGNMENTS = {
     ("tona", 4): (
         ("saokwamamitə", "very fat"),
         ("valak-ili", "child-1S.GEN"),
-    ),
-    ("tona", 9): (
-        ("akakə", "1S.TOP"),
-        ("ka", "TOP"),
-        ("wakanə", "eat"),
-        ("na", None),
-        ("bələbələ", "banana"),
     ),
 }
 
@@ -354,8 +344,34 @@ def align_words(corpus: Corpus, example: Example) -> tuple[tuple[str, str | None
     return tuple(aligned)
 
 
+def add_gloss(node: ET.Element, gloss: str | None) -> None:
+    if gloss is None:
+        return
+    attributes = {f"{{{XML_NS}}}lang": "eng"}
+    if gloss == "very fat":
+        attributes["kindOf"] = "original"
+    ET.SubElement(node, "TRANSL", attributes).text = gloss
+    if gloss == "very fat":
+        ET.SubElement(
+            node, "TRANSL", {f"{{{XML_NS}}}lang": "eng", "kindOf": "standard", "ver": "alt"}
+        ).text = "very.fat"
+
+
+def natural_form(corpus: Corpus, example: Example) -> str:
+    """Read the separately reviewed natural line, including the Tona 4 correction."""
+    with (REPO_ROOT / "CodeAndDocs/manual_source_review.tsv").open(newline="") as handle:
+        rows = csv.DictReader(handle, delimiter="\t")
+        for row in rows:
+            if (row["dialect"], int(row["example_number"])) == (
+                corpus.dialect, example.number
+            ):
+                return row["source_natural_form"]
+    raise ValueError(f"Missing natural source line: {corpus.key} {example.number}")
+
+
 def add_word_tiers(sentence: ET.Element, corpus: Corpus, example: Example) -> None:
     aligned = align_words(corpus, example)
+    parsed = any("-" in form for form, _ in aligned)
     word_ids = REVIEWED_WORD_IDS.get(
         (corpus.key, example.number), tuple(range(1, len(aligned) + 1))
     )
@@ -364,68 +380,26 @@ def add_word_tiers(sentence: ET.Element, corpus: Corpus, example: Example) -> No
     for word_index, (word_form, word_gloss) in zip(word_ids, aligned, strict=True):
         word_id = f"{sentence.get('id')}_W_{word_index:03d}"
         word = ET.SubElement(sentence, "W", {"id": word_id})
-        form = ET.SubElement(word, "FORM", {"kindOf": "original"})
-        form.text = word_form
-        if word_gloss is not None:
-            translation = ET.SubElement(
-                word,
-                "TRANSL",
-                {f"{{{XML_NS}}}lang": "eng"},
-            )
-            translation.text = word_gloss
-        else:
-            translation = ET.SubElement(
-                word,
-                "TRANSL",
-                {
-                    f"{{{XML_NS}}}lang": "eng",
-                    "kindOf": "standard",
-                    "notes": "source gloss cell is blank",
-                },
-            )
-            translation.text = "?"
-
-        form_morphemes = word_form.split("-")
-        gloss_morphemes = word_gloss.split("-") if word_gloss is not None else []
-        aligned_glosses: list[str | None]
+        ET.SubElement(word, "FORM", {"kindOf": "original"}).text = word_form
+        add_gloss(word, word_gloss)
+        if not parsed:
+            continue
+        forms = word_form.split("-")
         if word_gloss is None:
-            aligned_glosses = [None] * len(form_morphemes)
-        elif len(form_morphemes) == len(gloss_morphemes):
-            aligned_glosses = gloss_morphemes
+            glosses = [None] * len(forms)
+        elif (corpus.key, example.number, word_index) == ("tona", 9, 1):
+            # Page 43 gives one fused W gloss, not separate meanings for a and kakə.
+            glosses = [None, None]
         else:
+            glosses = word_gloss.split("-")
+        if len(forms) != len(glosses):
             raise ValueError(
-                f"Unresolved morpheme alignment for {corpus.key} {example.number}: "
-                f"{word_form!r} / {word_gloss!r}"
+                f"Unresolved morpheme alignment for {word_id}: {word_form!r}/{word_gloss!r}"
             )
-        for morph_index, (morph_form, morph_gloss) in enumerate(
-            zip(form_morphemes, aligned_glosses, strict=True), start=1
-        ):
-            morph = ET.SubElement(word, "M", {"id": f"{word_id}_M_{morph_index:02d}"})
-            form = ET.SubElement(morph, "FORM", {"kindOf": "original"})
-            form.text = morph_form
-            if morph_gloss is not None:
-                translation = ET.SubElement(
-                    morph,
-                    "TRANSL",
-                    {f"{{{XML_NS}}}lang": "eng"},
-                )
-                translation.text = morph_gloss
-            else:
-                notes = (
-                    "source gloss cell is blank"
-                    if word_gloss is None
-                    else "source morpheme gloss is unresolved"
-                )
-                translation = ET.SubElement(
-                    morph,
-                    "TRANSL",
-                    {
-                        f"{{{XML_NS}}}lang": "eng",
-                        "kindOf": "standard",
-                        "notes": notes,
-                    },
-                )
-                translation.text = "?"
+        for index, (form, gloss) in enumerate(zip(forms, glosses, strict=True), 1):
+            morph = ET.SubElement(word, "M", {"id": f"{word_id}_M_{index:02d}"})
+            ET.SubElement(morph, "FORM", {"kindOf": "original"}).text = form
+            add_gloss(morph, gloss)
 
 
 def make_text(corpus: Corpus) -> ET.Element:
@@ -458,7 +432,7 @@ def make_text(corpus: Corpus) -> ET.Element:
             },
         )
         form = ET.SubElement(sentence, "FORM", {"kindOf": "original"})
-        form.text = example.form
+        form.text = natural_form(corpus, example)
         translations = example.expanded_translations or (example.translation,)
         for translation_index, translation_text in enumerate(translations):
             attributes = {f"{{{XML_NS}}}lang": "eng"}

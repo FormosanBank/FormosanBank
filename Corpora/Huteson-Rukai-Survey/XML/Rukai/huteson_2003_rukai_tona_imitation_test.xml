@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<TEXT id="huteson_2003_rukai_tona_imitation_test" citation="Huteson, Greg. 2003. Sociolinguistic Survey Report for the Tona and Maga Dialects of the Rukai Language. SIL International." BibTeX_citation="@techreport{huteson2003rukaiSurvey, author = {Huteson, Greg}, title = {Sociolinguistic Survey Report for the Tona and Maga Dialects of the Rukai Language}, institution = {SIL International}, year = {2003}}" copyright="CC BY-NC-SA 4.0 via SIL International terms screenshot attached to Basecamp card 8255603132." dialect="Dona" source="Huteson 2003 Appendix B, Tona Dialect Imitation Test; source label Tona; Basecamp card 8255603132." xml:lang="dru">
+<TEXT id="huteson_2003_rukai_tona_imitation_test" citation="Huteson, Greg. 2003. Sociolinguistic Survey Report for the Tona and Maga Dialects of the Rukai Language. SIL International." BibTeX_citation="@techreport{huteson2003rukaiSurvey, author = {Huteson, Greg}, title = {Sociolinguistic Survey Report for the Tona and Maga Dialects of the Rukai Language}, institution = {SIL International}, year = {2003}}" copyright="CC BY-NC-SA 4.0" dialect="Dona" source="Huteson 2003 Appendix B, Tona Dialect Imitation Test; source label Tona; Basecamp card 8255603132." xml:lang="dru">
     <S id="S_tona_001" source="Appendix B TONA 1; test list p. 41; translation p. 42">
         <FORM kindOf="original">abaili kakə.</FORM>
         <PHON kindOf="original">abaili kakə</PHON>
@@ -12,13 +12,6 @@
             <FORM kindOf="standard">abaili</FORM>
             <PHON kindOf="standard">abaili</PHON>
             <TRANSL xml:lang="eng">tired</TRANSL>
-            <M id="S_tona_001_W_001_M_01">
-                <FORM kindOf="original">abaili</FORM>
-                <PHON kindOf="original">abaili</PHON>
-                <FORM kindOf="standard">abaili</FORM>
-                <PHON kindOf="standard">abaili</PHON>
-                <TRANSL xml:lang="eng">tired</TRANSL>
-            </M>
         </W>
         <W id="S_tona_001_W_002">
             <FORM kindOf="original">kakə</FORM>
@@ -26,13 +19,6 @@
             <FORM kindOf="standard">kake</FORM>
             <PHON kindOf="standard">kakə</PHON>
             <TRANSL xml:lang="eng">1S.NOM</TRANSL>
-            <M id="S_tona_001_W_002_M_01">
-                <FORM kindOf="original">kakə</FORM>
-                <PHON kindOf="original">kakə</PHON>
-                <FORM kindOf="standard">kake</FORM>
-                <PHON kindOf="standard">kakə</PHON>
-                <TRANSL xml:lang="eng">1S.NOM</TRANSL>
-            </M>
         </W>
     </S>
     <S id="S_tona_002" source="Appendix B TONA 2; test list p. 41; translation p. 42">
@@ -47,13 +33,6 @@
             <FORM kindOf="standard">taomomoa</FORM>
             <PHON kindOf="standard">taomomoa</PHON>
             <TRANSL xml:lang="eng">grown.up</TRANSL>
-            <M id="S_tona_002_W_001_M_01">
-                <FORM kindOf="original">taomomoa</FORM>
-                <PHON kindOf="original">taomomoa</PHON>
-                <FORM kindOf="standard">taomomoa</FORM>
-                <PHON kindOf="standard">taomomoa</PHON>
-                <TRANSL xml:lang="eng">grown.up</TRANSL>
-            </M>
         </W>
         <W id="S_tona_002_W_002">
             <FORM kindOf="original">koso</FORM>
@@ -61,17 +40,10 @@
             <FORM kindOf="standard">koso</FORM>
             <PHON kindOf="standard">koso</PHON>
             <TRANSL xml:lang="eng">2S.NOM</TRANSL>
-            <M id="S_tona_002_W_002_M_01">
-                <FORM kindOf="original">koso</FORM>
-                <PHON kindOf="original">koso</PHON>
-                <FORM kindOf="standard">koso</FORM>
-                <PHON kindOf="standard">koso</PHON>
-                <TRANSL xml:lang="eng">2S.NOM</TRANSL>
-            </M>
         </W>
     </S>
     <S id="S_tona_003" source="Appendix B TONA 3; test list p. 41; translation p. 42">
-        <FORM kindOf="original">siakiaoɖo-ŋa tobi.</FORM>
+        <FORM kindOf="original">siakiaoɖoŋa tobi.</FORM>
         <PHON kindOf="original">siakiaoɖoŋa tobi</PHON>
         <FORM kindOf="standard">siakiaodronga tobi.</FORM>
         <PHON kindOf="standard">siakiaoɖoŋa tobi</PHON>
@@ -114,7 +86,7 @@
         </W>
     </S>
     <S id="S_tona_004" source="Appendix B TONA 4; test list p. 41; translation p. 42">
-        <FORM kindOf="original">saokwamamitə valak-ili.</FORM>
+        <FORM kindOf="original">saokwamamitə valakili.</FORM>
         <PHON kindOf="original">saokwamamitə valakili</PHON>
         <FORM kindOf="standard">saokwamamite valakili.</FORM>
         <PHON kindOf="standard">saokwamamitə valakili</PHON>
@@ -124,13 +96,15 @@
             <PHON kindOf="original">saokwamamitə</PHON>
             <FORM kindOf="standard">saokwamamite</FORM>
             <PHON kindOf="standard">saokwamamitə</PHON>
-            <TRANSL xml:lang="eng">very fat</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">very fat</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="standard" ver="alt">very.fat</TRANSL>
             <M id="S_tona_004_W_001_M_01">
                 <FORM kindOf="original">saokwamamitə</FORM>
                 <PHON kindOf="original">saokwamamitə</PHON>
                 <FORM kindOf="standard">saokwamamite</FORM>
                 <PHON kindOf="standard">saokwamamitə</PHON>
-                <TRANSL xml:lang="eng">very fat</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">very fat</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="standard" ver="alt">very.fat</TRANSL>
             </M>
         </W>
         <W id="S_tona_004_W_003">
@@ -168,13 +142,6 @@
             <FORM kindOf="standard">tyaiday</FORM>
             <PHON kindOf="standard">tjaidaj</PHON>
             <TRANSL xml:lang="eng">run</TRANSL>
-            <M id="S_tona_005_W_001_M_01">
-                <FORM kindOf="original">tyaiday</FORM>
-                <PHON kindOf="original">tjaidaj</PHON>
-                <FORM kindOf="standard">tyaiday</FORM>
-                <PHON kindOf="standard">tjaidaj</PHON>
-                <TRANSL xml:lang="eng">run</TRANSL>
-            </M>
         </W>
         <W id="S_tona_005_W_002">
             <FORM kindOf="original">koɖay</FORM>
@@ -182,13 +149,6 @@
             <FORM kindOf="standard">kodray</FORM>
             <PHON kindOf="standard">koɖaj</PHON>
             <TRANSL xml:lang="eng">that</TRANSL>
-            <M id="S_tona_005_W_002_M_01">
-                <FORM kindOf="original">koɖay</FORM>
-                <PHON kindOf="original">koɖaj</PHON>
-                <FORM kindOf="standard">kodray</FORM>
-                <PHON kindOf="standard">koɖaj</PHON>
-                <TRANSL xml:lang="eng">that</TRANSL>
-            </M>
         </W>
         <W id="S_tona_005_W_003">
             <FORM kindOf="original">maoɖaŋə</FORM>
@@ -196,17 +156,10 @@
             <FORM kindOf="standard">maodrange</FORM>
             <PHON kindOf="standard">maoɖaŋə</PHON>
             <TRANSL xml:lang="eng">old.person</TRANSL>
-            <M id="S_tona_005_W_003_M_01">
-                <FORM kindOf="original">maoɖaŋə</FORM>
-                <PHON kindOf="original">maoɖaŋə</PHON>
-                <FORM kindOf="standard">maodrange</FORM>
-                <PHON kindOf="standard">maoɖaŋə</PHON>
-                <TRANSL xml:lang="eng">old.person</TRANSL>
-            </M>
         </W>
     </S>
     <S id="S_tona_006" source="Appendix B TONA 6; test list p. 41; translation p. 42">
-        <FORM kindOf="original">ko-sya-tiapoy nakay ʔaŋato.</FORM>
+        <FORM kindOf="original">kosyatiapoy nakay ʔaŋato.</FORM>
         <PHON kindOf="original">kosjatiapoj nakaj ʔaŋato</PHON>
         <FORM kindOf="standard">kosyatiapoy nakay 'angato.</FORM>
         <PHON kindOf="standard">kosjatiapoj nakaj ʔaŋato</PHON>
@@ -269,7 +222,7 @@
         </W>
     </S>
     <S id="S_tona_007" source="Appendix B TONA 7; test list p. 41; translation p. 42">
-        <FORM kindOf="original">i-siaəkə ki tatava.</FORM>
+        <FORM kindOf="original">isiaəkə ki tatava.</FORM>
         <PHON kindOf="original">isiaəkə ki tatava</PHON>
         <FORM kindOf="standard">isiaeke ki tatava.</FORM>
         <PHON kindOf="standard">isiaəkə ki tatava</PHON>
@@ -325,7 +278,7 @@
         </W>
     </S>
     <S id="S_tona_008" source="Appendix B TONA 8; test list p. 41; translation p. 43">
-        <FORM kindOf="original">w-a-igoʔo ki takanaw loaŋolaŋoi.</FORM>
+        <FORM kindOf="original">waigoʔo ki takanaw loaŋolaŋoi.</FORM>
         <PHON kindOf="original">waigoʔo ki takanaw loaŋolaŋoi</PHON>
         <FORM kindOf="standard">waigo'o ki takanaw loangolangoi.</FORM>
         <PHON kindOf="standard">waigoʔo ki takanaw loaŋolaŋoi</PHON>
@@ -402,23 +355,28 @@
         </W>
     </S>
     <S id="S_tona_009" source="Appendix B TONA 9; test list p. 41; translation p. 43">
-        <FORM kindOf="original">a-kakə ka wakanə na bələbələ.</FORM>
+        <FORM kindOf="original">akakə ka wakanə na bələbələ.</FORM>
         <PHON kindOf="original">akakə ka wakanə na bələbələ</PHON>
         <FORM kindOf="standard">akake ka wakane na belebele.</FORM>
         <PHON kindOf="standard">akakə ka wakanə na bələbələ</PHON>
         <TRANSL xml:lang="eng">As for me, I ate a banana.</TRANSL>
         <W id="S_tona_009_W_001">
-            <FORM kindOf="original">akakə</FORM>
+            <FORM kindOf="original">a-kakə</FORM>
             <PHON kindOf="original">akakə</PHON>
-            <FORM kindOf="standard">akake</FORM>
+            <FORM kindOf="standard">a-kake</FORM>
             <PHON kindOf="standard">akakə</PHON>
             <TRANSL xml:lang="eng">1S.TOP</TRANSL>
             <M id="S_tona_009_W_001_M_01">
-                <FORM kindOf="original">akakə</FORM>
-                <PHON kindOf="original">akakə</PHON>
-                <FORM kindOf="standard">akake</FORM>
-                <PHON kindOf="standard">akakə</PHON>
-                <TRANSL xml:lang="eng">1S.TOP</TRANSL>
+                <FORM kindOf="original">a</FORM>
+                <PHON kindOf="original">a</PHON>
+                <FORM kindOf="standard">a</FORM>
+                <PHON kindOf="standard">a</PHON>
+            </M>
+            <M id="S_tona_009_W_001_M_02">
+                <FORM kindOf="original">kakə</FORM>
+                <PHON kindOf="original">kakə</PHON>
+                <FORM kindOf="standard">kake</FORM>
+                <PHON kindOf="standard">kakə</PHON>
             </M>
         </W>
         <W id="S_tona_009_W_002">
@@ -454,13 +412,11 @@
             <PHON kindOf="original">na</PHON>
             <FORM kindOf="standard">na</FORM>
             <PHON kindOf="standard">na</PHON>
-            <TRANSL xml:lang="eng" kindOf="standard" notes="source gloss cell is blank">?</TRANSL>
             <M id="S_tona_009_W_004_M_01">
                 <FORM kindOf="original">na</FORM>
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="eng" kindOf="standard" notes="source gloss cell is blank">?</TRANSL>
             </M>
         </W>
         <W id="S_tona_009_W_005">
@@ -490,13 +446,6 @@
             <FORM kindOf="standard">wakoposale</FORM>
             <PHON kindOf="standard">wakoposalə</PHON>
             <TRANSL xml:lang="eng">twice</TRANSL>
-            <M id="S_tona_010_W_001_M_01">
-                <FORM kindOf="original">wakoposalə</FORM>
-                <PHON kindOf="original">wakoposalə</PHON>
-                <FORM kindOf="standard">wakoposale</FORM>
-                <PHON kindOf="standard">wakoposalə</PHON>
-                <TRANSL xml:lang="eng">twice</TRANSL>
-            </M>
         </W>
         <W id="S_tona_010_W_002">
             <FORM kindOf="original">kakə</FORM>
@@ -504,13 +453,6 @@
             <FORM kindOf="standard">kake</FORM>
             <PHON kindOf="standard">kakə</PHON>
             <TRANSL xml:lang="eng">1S.NOM</TRANSL>
-            <M id="S_tona_010_W_002_M_01">
-                <FORM kindOf="original">kakə</FORM>
-                <PHON kindOf="original">kakə</PHON>
-                <FORM kindOf="standard">kake</FORM>
-                <PHON kindOf="standard">kakə</PHON>
-                <TRANSL xml:lang="eng">1S.NOM</TRANSL>
-            </M>
         </W>
         <W id="S_tona_010_W_003">
             <FORM kindOf="original">kwanə</FORM>
@@ -518,27 +460,12 @@
             <FORM kindOf="standard">kwane</FORM>
             <PHON kindOf="standard">kwanə</PHON>
             <TRANSL xml:lang="eng">eat</TRANSL>
-            <M id="S_tona_010_W_003_M_01">
-                <FORM kindOf="original">kwanə</FORM>
-                <PHON kindOf="original">kwanə</PHON>
-                <FORM kindOf="standard">kwane</FORM>
-                <PHON kindOf="standard">kwanə</PHON>
-                <TRANSL xml:lang="eng">eat</TRANSL>
-            </M>
         </W>
         <W id="S_tona_010_W_004">
             <FORM kindOf="original">na</FORM>
             <PHON kindOf="original">na</PHON>
             <FORM kindOf="standard">na</FORM>
             <PHON kindOf="standard">na</PHON>
-            <TRANSL xml:lang="eng" kindOf="standard" notes="source gloss cell is blank">?</TRANSL>
-            <M id="S_tona_010_W_004_M_01">
-                <FORM kindOf="original">na</FORM>
-                <PHON kindOf="original">na</PHON>
-                <FORM kindOf="standard">na</FORM>
-                <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="eng" kindOf="standard" notes="source gloss cell is blank">?</TRANSL>
-            </M>
         </W>
         <W id="S_tona_010_W_005">
             <FORM kindOf="original">doʔo</FORM>
@@ -546,17 +473,10 @@
             <FORM kindOf="standard">do'o</FORM>
             <PHON kindOf="standard">doʔo</PHON>
             <TRANSL xml:lang="eng">rice</TRANSL>
-            <M id="S_tona_010_W_005_M_01">
-                <FORM kindOf="original">doʔo</FORM>
-                <PHON kindOf="original">doʔo</PHON>
-                <FORM kindOf="standard">do'o</FORM>
-                <PHON kindOf="standard">doʔo</PHON>
-                <TRANSL xml:lang="eng">rice</TRANSL>
-            </M>
         </W>
     </S>
     <S id="S_tona_011" source="Appendix B TONA 11; test list p. 41; translation p. 43">
-        <FORM kindOf="original">i-kaʔacə nakoa naɖooay sosoaʔa.</FORM>
+        <FORM kindOf="original">ikaʔacə nakoa naɖooay sosoaʔa.</FORM>
         <PHON kindOf="original">ikaʔaʦə nakoa naɖooaj sosoaʔa</PHON>
         <FORM kindOf="standard">ika'ace nakoa nadrooay sosoa'a.</FORM>
         <PHON kindOf="standard">ikaʔaʦə nakoa naɖooaj sosoaʔa</PHON>
@@ -637,13 +557,6 @@
             <FORM kindOf="standard">yakai</FORM>
             <PHON kindOf="standard">jakai</PHON>
             <TRANSL xml:lang="eng">exist</TRANSL>
-            <M id="S_tona_012_W_001_M_01">
-                <FORM kindOf="original">yakai</FORM>
-                <PHON kindOf="original">jakai</PHON>
-                <FORM kindOf="standard">yakai</FORM>
-                <PHON kindOf="standard">jakai</PHON>
-                <TRANSL xml:lang="eng">exist</TRANSL>
-            </M>
         </W>
         <W id="S_tona_012_W_002">
             <FORM kindOf="original">balatə</FORM>
@@ -651,13 +564,6 @@
             <FORM kindOf="standard">balate</FORM>
             <PHON kindOf="standard">balatə</PHON>
             <TRANSL xml:lang="eng">outside</TRANSL>
-            <M id="S_tona_012_W_002_M_01">
-                <FORM kindOf="original">balatə</FORM>
-                <PHON kindOf="original">balatə</PHON>
-                <FORM kindOf="standard">balate</FORM>
-                <PHON kindOf="standard">balatə</PHON>
-                <TRANSL xml:lang="eng">outside</TRANSL>
-            </M>
         </W>
         <W id="S_tona_012_W_003">
             <FORM kindOf="original">ki</FORM>
@@ -665,13 +571,6 @@
             <FORM kindOf="standard">ki</FORM>
             <PHON kindOf="standard">ki</PHON>
             <TRANSL xml:lang="eng">NOM</TRANSL>
-            <M id="S_tona_012_W_003_M_01">
-                <FORM kindOf="original">ki</FORM>
-                <PHON kindOf="original">ki</PHON>
-                <FORM kindOf="standard">ki</FORM>
-                <PHON kindOf="standard">ki</PHON>
-                <TRANSL xml:lang="eng">NOM</TRANSL>
-            </M>
         </W>
         <W id="S_tona_012_W_004">
             <FORM kindOf="original">titina</FORM>
@@ -679,13 +578,6 @@
             <FORM kindOf="standard">titina</FORM>
             <PHON kindOf="standard">titina</PHON>
             <TRANSL xml:lang="eng">mother</TRANSL>
-            <M id="S_tona_012_W_004_M_01">
-                <FORM kindOf="original">titina</FORM>
-                <PHON kindOf="original">titina</PHON>
-                <FORM kindOf="standard">titina</FORM>
-                <PHON kindOf="standard">titina</PHON>
-                <TRANSL xml:lang="eng">mother</TRANSL>
-            </M>
         </W>
     </S>
     <S id="S_tona_013" source="Appendix B TONA 13; test list p. 41; translation p. 43">
@@ -700,13 +592,6 @@
             <FORM kindOf="standard">yakai</FORM>
             <PHON kindOf="standard">jakai</PHON>
             <TRANSL xml:lang="eng">exist</TRANSL>
-            <M id="S_tona_013_W_001_M_01">
-                <FORM kindOf="original">yakai</FORM>
-                <PHON kindOf="original">jakai</PHON>
-                <FORM kindOf="standard">yakai</FORM>
-                <PHON kindOf="standard">jakai</PHON>
-                <TRANSL xml:lang="eng">exist</TRANSL>
-            </M>
         </W>
         <W id="S_tona_013_W_002">
             <FORM kindOf="original">balatə</FORM>
@@ -714,13 +599,6 @@
             <FORM kindOf="standard">balate</FORM>
             <PHON kindOf="standard">balatə</PHON>
             <TRANSL xml:lang="eng">outside</TRANSL>
-            <M id="S_tona_013_W_002_M_01">
-                <FORM kindOf="original">balatə</FORM>
-                <PHON kindOf="original">balatə</PHON>
-                <FORM kindOf="standard">balate</FORM>
-                <PHON kindOf="standard">balatə</PHON>
-                <TRANSL xml:lang="eng">outside</TRANSL>
-            </M>
         </W>
         <W id="S_tona_013_W_003">
             <FORM kindOf="original">titina</FORM>
@@ -728,13 +606,6 @@
             <FORM kindOf="standard">titina</FORM>
             <PHON kindOf="standard">titina</PHON>
             <TRANSL xml:lang="eng">mother</TRANSL>
-            <M id="S_tona_013_W_003_M_01">
-                <FORM kindOf="original">titina</FORM>
-                <PHON kindOf="original">titina</PHON>
-                <FORM kindOf="standard">titina</FORM>
-                <PHON kindOf="standard">titina</PHON>
-                <TRANSL xml:lang="eng">mother</TRANSL>
-            </M>
         </W>
         <W id="S_tona_013_W_004">
             <FORM kindOf="original">doʔodoʔo</FORM>
@@ -742,13 +613,6 @@
             <FORM kindOf="standard">do'odo'o</FORM>
             <PHON kindOf="standard">doʔodoʔo</PHON>
             <TRANSL xml:lang="eng">cook</TRANSL>
-            <M id="S_tona_013_W_004_M_01">
-                <FORM kindOf="original">doʔodoʔo</FORM>
-                <PHON kindOf="original">doʔodoʔo</PHON>
-                <FORM kindOf="standard">do'odo'o</FORM>
-                <PHON kindOf="standard">doʔodoʔo</PHON>
-                <TRANSL xml:lang="eng">cook</TRANSL>
-            </M>
         </W>
     </S>
     <S id="S_tona_014" source="Appendix B TONA 14; test list p. 41; translation p. 43">
@@ -763,27 +627,12 @@
             <FORM kindOf="standard">amwa</FORM>
             <PHON kindOf="standard">amwa</PHON>
             <TRANSL xml:lang="eng">go</TRANSL>
-            <M id="S_tona_014_W_001_M_01">
-                <FORM kindOf="original">amwa</FORM>
-                <PHON kindOf="original">amwa</PHON>
-                <FORM kindOf="standard">amwa</FORM>
-                <PHON kindOf="standard">amwa</PHON>
-                <TRANSL xml:lang="eng">go</TRANSL>
-            </M>
         </W>
         <W id="S_tona_014_W_002">
             <FORM kindOf="original">ki</FORM>
             <PHON kindOf="original">ki</PHON>
             <FORM kindOf="standard">ki</FORM>
             <PHON kindOf="standard">ki</PHON>
-            <TRANSL xml:lang="eng" kindOf="standard" notes="source gloss cell is blank">?</TRANSL>
-            <M id="S_tona_014_W_002_M_01">
-                <FORM kindOf="original">ki</FORM>
-                <PHON kindOf="original">ki</PHON>
-                <FORM kindOf="standard">ki</FORM>
-                <PHON kindOf="standard">ki</PHON>
-                <TRANSL xml:lang="eng" kindOf="standard" notes="source gloss cell is blank">?</TRANSL>
-            </M>
         </W>
         <W id="S_tona_014_W_003">
             <FORM kindOf="original">takanaw</FORM>
@@ -791,13 +640,6 @@
             <FORM kindOf="standard">takanaw</FORM>
             <PHON kindOf="standard">takanaw</PHON>
             <TRANSL xml:lang="eng">Takanao</TRANSL>
-            <M id="S_tona_014_W_003_M_01">
-                <FORM kindOf="original">takanaw</FORM>
-                <PHON kindOf="original">takanaw</PHON>
-                <FORM kindOf="standard">takanaw</FORM>
-                <PHON kindOf="standard">takanaw</PHON>
-                <TRANSL xml:lang="eng">Takanao</TRANSL>
-            </M>
         </W>
         <W id="S_tona_014_W_004">
             <FORM kindOf="original">kwanə</FORM>
@@ -805,27 +647,12 @@
             <FORM kindOf="standard">kwane</FORM>
             <PHON kindOf="standard">kwanə</PHON>
             <TRANSL xml:lang="eng">eat</TRANSL>
-            <M id="S_tona_014_W_004_M_01">
-                <FORM kindOf="original">kwanə</FORM>
-                <PHON kindOf="original">kwanə</PHON>
-                <FORM kindOf="standard">kwane</FORM>
-                <PHON kindOf="standard">kwanə</PHON>
-                <TRANSL xml:lang="eng">eat</TRANSL>
-            </M>
         </W>
         <W id="S_tona_014_W_005">
             <FORM kindOf="original">na</FORM>
             <PHON kindOf="original">na</PHON>
             <FORM kindOf="standard">na</FORM>
             <PHON kindOf="standard">na</PHON>
-            <TRANSL xml:lang="eng" kindOf="standard" notes="source gloss cell is blank">?</TRANSL>
-            <M id="S_tona_014_W_005_M_01">
-                <FORM kindOf="original">na</FORM>
-                <PHON kindOf="original">na</PHON>
-                <FORM kindOf="standard">na</FORM>
-                <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="eng" kindOf="standard" notes="source gloss cell is blank">?</TRANSL>
-            </M>
         </W>
         <W id="S_tona_014_W_006">
             <FORM kindOf="original">bələbələ</FORM>
@@ -833,17 +660,10 @@
             <FORM kindOf="standard">belebele</FORM>
             <PHON kindOf="standard">bələbələ</PHON>
             <TRANSL xml:lang="eng">banana</TRANSL>
-            <M id="S_tona_014_W_006_M_01">
-                <FORM kindOf="original">bələbələ</FORM>
-                <PHON kindOf="original">bələbələ</PHON>
-                <FORM kindOf="standard">belebele</FORM>
-                <PHON kindOf="standard">bələbələ</PHON>
-                <TRANSL xml:lang="eng">banana</TRANSL>
-            </M>
         </W>
     </S>
     <S id="S_tona_015" source="Appendix B TONA 15; test list p. 42; translation p. 44">
-        <FORM kindOf="original">"ʔaokay-a nosiʔa" mi kakə ɖianə.</FORM>
+        <FORM kindOf="original">"ʔaokaya nosiʔa" mi kakə ɖianə.</FORM>
         <PHON kindOf="original">ʔaokaja nosiʔa mi kakə ɖianə</PHON>
         <FORM kindOf="standard">"'aokaya nosi'a" mi kake driane.</FORM>
         <PHON kindOf="standard">ʔaokaja nosiʔa mi kakə ɖianə</PHON>
