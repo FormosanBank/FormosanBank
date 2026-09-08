@@ -253,9 +253,19 @@ def extract_rows(tsv: str) -> list[dict[str, Any]]:
     return records
 
 
-def build_ledger(pdf_path: Path) -> dict[str, Any]:
-    verify_pdf(pdf_path)
-    rows = extract_rows(run_pdftotext(pdf_path))
+def build_ledger(pdf_path: Path, tsv_path: Path | None = None) -> dict[str, Any]:
+    """The pinned table as a deterministic ledger.
+
+    `tsv_path` is the saved output of `pdftotext -tsv` on the pinned PDF. It
+    exists so the corpus rebuilds from a FormosanBank checkout alone (POL-048):
+    the PDF is public but is not stored here, and poppler need not be installed
+    to regenerate from a committed extraction.
+    """
+    if tsv_path is not None:
+        rows = extract_rows(tsv_path.read_text(encoding="utf-8"))
+    else:
+        verify_pdf(pdf_path)
+        rows = extract_rows(run_pdftotext(pdf_path))
     row_payload = json.dumps(
         rows, ensure_ascii=False, separators=(",", ":"), sort_keys=True
     )
@@ -280,6 +290,12 @@ def parse_args() -> argparse.Namespace:
         "--pdf", type=Path, default=root / "Private" / "JobyUtrechtManuscript.pdf"
     )
     parser.add_argument(
+        "--tsv",
+        type=Path,
+        default=None,
+        help="saved `pdftotext -tsv` output; use instead of the PDF (POL-048)",
+    )
+    parser.add_argument(
         "--output",
         type=Path,
         default=root / "CodeAndDocs" / "source" / "source_records.json",
@@ -289,7 +305,12 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
-    ledger = build_ledger(args.pdf)
+    tsv = args.tsv
+    if tsv is None:
+        default_tsv = Path(__file__).resolve().parent / "source" / "pdftotext.tsv"
+        if default_tsv.exists() and not args.pdf.exists():
+            tsv = default_tsv
+    ledger = build_ledger(args.pdf, tsv)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(ledger, ensure_ascii=False, indent=2) + "\n")
     print(f"Extracted {ledger['row_count']} rows to {args.output}")
