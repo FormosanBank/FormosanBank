@@ -16,6 +16,15 @@ Read, in this order, and do not skip:
    conventions, the current pipeline, and the **concern → tool map**. This is the
    spine of the audit.
 2. `FormosanBank/CLAUDE.md` (auto-loaded) and `QC/README.md` — conventions + pipeline order.
+3. `POLICIES.md` — at minimum the **Highlights** table and sections **5 (Rights)**
+   and **6 (Development)**, which govern step 4b. Cite POL ids rather than
+   re-deciding settled questions; the file moves faster than this skill does, so
+   read it rather than trusting the summaries here.
+4. `claudeplans/sweep-qa-decision-log.md` — top two sections plus anything it
+   already records about this corpus or PR. Prior rulings and prior findings on
+   the same target are binding context, and re-raising a settled point wastes a
+   maintainer round-trip. Where your evidence **contradicts** a logged finding,
+   say so explicitly and show the check.
 
 **Audit scope: anything that touches the data.** Every transformation the assistant
 applies should make sense and look correct — scrutinize each one, not just a fixed
@@ -30,9 +39,19 @@ evidence.
 
 ## Inputs (gather via AskUserQuestion if missing)
 
-- `repo_path` — the dev repo, e.g. `../Formosan-<Name>/`. Must be a sibling dev
-  repo, not a published `Corpora/<Name>/` tree. Run this skill from `FormosanBank`
-  with the dev repo added (`--add-dir`), so the pipeline and references are in scope.
+- `repo_path` — **either** the sibling dev repo (`../Formosan-<Name>/`), run from
+  `FormosanBank` with the dev repo added (`--add-dir`), **or** a port / re-port
+  **pull request** against this repo. Dev repos are permanently private (POL-048)
+  and are frequently not on disk at all, so the PR is often the only artifact
+  there is; the audit works the same either way, over `Corpora/<Name>/CodeAndDocs/`
+  instead of the dev repo's scripts.
+  - For a PR target: fetch it (`git fetch origin refs/pull/<N>/head:refs/audit/pr/<N>`)
+    and check it out in **its own worktree** — the repo checkout is shared with
+    other sessions, so never audit on the shared working tree's branch. A sparse
+    checkout (`git sparse-checkout set Corpora/<Name> QC tests statistics`) is much
+    faster than a full one.
+  - Establish the **merge base**, not just `main`'s tip, and diff both sides. The
+    predecessor is what makes id changes, removals and rights changes legible.
 - `language` — the ISO 639-3 / language name, to pick the right
   `QC/validation/reference/<Language>/` and `Orthographies/Ortho113/<Language>.tsv`.
 - `xml_subdir` — where the built XML lives (auto-detect `XML/`, `Final_XML/`, root `*.xml`).
@@ -96,6 +115,30 @@ punctuation, POL-003). Re-flagging these wastes a maintainer round-trip.
 
 ▣ Present concrete before/after samples per concern; get the maintainer's call on
 each class (real bug vs acceptable vs needs source check).
+
+### 4b. Check the build and the rights against sections 5–6 of POLICIES.md
+Concerns (a)–(d) are about the data. These are about **the code that produced it
+and the licence it ships under** — the questions a port PR is now failed on at
+merge. Run them whenever the target is a corpus about to be published or a
+re-port PR; skip them only for a dev repo too early to have a build shape yet.
+
+| Check | Rule | How |
+|---|---|---|
+| Rebuilds from a FormosanBank checkout alone | POL-048 | Read every build entry point for `Private/`, a second clone, a pinned dev-repo commit, or `FORMOSANBANK_*`/`VALIDATOR_ROOT` env vars. **Then actually run it** from a clean checkout of the PR — a declared input can be missing from the tree even when the script is honest about needing it. |
+| One entry point, canonical order | POL-047 | `CodeAndDocs/generate_xml.sh` running generate → manual edits → clean → standardize → add_phonology. Deviations are legitimate but must be **stated in the README**; an unexplained departure is a finding on its own. Validators must **not** run inside the build ("build only"). Re-running on a clean checkout must leave `git status` empty. |
+| Shared tools, not forks | POL-046 | Corpus-local reimplementations of cleaning/standardizing/phonology are a finding: fold into the shared tool, or record in the README why it cannot serve. Initial parsing (`generate_xml.py`) is the standing exception. |
+| Build provenance | POL-052 | `CodeAndDocs/provenance.json` exists with a 40-char `formosanbank_commit`; the README **links** it rather than repeating the SHA in prose. A rebuild that leaves the old commit is a stale record. Corpora predating this are in `provenance_pending.txt`, a list that only shrinks. |
+| Licence value | POL-042 | `TEXT/@copyright` is an **exact** value from `rights_vocabulary.csv`. Enforced by V160/V161. |
+| Licence documentation | POL-044 | README `## Rights` section with `**License:**` and `**Rights source:** <grantor>, <YYYY-MM-DD>; evidence: ask maintainer`. Any licence change fails `rights-comparison.yaml` and needs a deliberate maintainer override — say so in the report rather than treating red CI as a defect. |
+| Never downgrade from absence | POL-043 | A rights claim replaced by bespoke prose because the reviewer could not find the evidence is a **finding against the PR**, not against the old claim. Escalate to the maintainer, who holds the correspondence. |
+| Published ids | POL-037 | Diff the published id set against the predecessor. Retirements, renumberings and reused-id reassignments are breaking changes to **announce**, not cleanups — check each is listed with a reason. |
+| Removals disclosed | POL-051 | Count removed S/W/M/TRANSL/AUDIO/PHON against the merge base. Silence is the finding, not the deletion. |
+| Reversals explicit | POL-050 | A change that undoes something previously merged must cite the commit or POL entry it supersedes. Re-adding a standard tier a merged ruling removed is the recurring case. |
+| PR scope | POL-049 | A corpus PR does not change `QC/`, `tests/`, `POLICIES.md`, root registries, `requirements.txt`, or `.github/workflows/`. Those belong in their own PR, merged first. |
+| W-tier completeness | POL-041 | No W tier anywhere is normal and never a finding; *some* sentences segmented and others not is an incomplete pass (V148, SOFT). |
+
+▣ Present the conformance table with a verdict per row; get the maintainer's call
+on which gaps block the merge and which are recorded and carried.
 
 ### 5. Record the report
 Only after sign-off, write `claudeplans/audit-<Repo>.md`: what the assistant did, findings
