@@ -164,12 +164,27 @@ def v060_W_count_matches_word_count(
     change word count between the S-level FORM (free text) and the W
     tier (tokenized). Reporting these is informational, not a corpus
     bug per se.
+
+    Scope (POL-041, 2026-09-03): this rule compares counts, so it only
+    applies where a W tier exists to count. A file with no W anywhere is
+    simply not word-segmented and is skipped outright; within a partially
+    segmented file, an S with no W is skipped too. Whether a sentence
+    *ought* to have a W tier is a presence question, owned by V148.
+    Without these guards the rule fired once per sentence on every
+    sentence-only corpus, with a "may be due to normalization or
+    spelling" message that did not describe the situation.
     """
+    if tree.find(".//W") is None:
+        return []
+
     findings: list[Finding] = []
     for s in tree.iter("S"):
         s_id = s.get("id")
         # No FORM at all -> V010/V013 handle that; we have nothing to compare.
         if s.find('./FORM') is None:
+            continue
+        # No W at all -> a presence question (V148), not a count mismatch.
+        if s.find('./W') is None:
             continue
         s_text = _extract_s_direct_text(s)
         word_count = _count_words(s_text)

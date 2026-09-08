@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<TEXT id="seediq_SEALS" xml:lang="trv" dialect="unknown" citation="SEALS 33 Organizing Committee. (2024). 國家語言專區. SEALS 33. https://sites.google.com/view/seals33/national-languages" BibTeX_citation="@misc{seals33, author = {SEALS 33 Organizing Committee}, title = {國家語言專區. SEALS 33}, year = {2024}, url = {https://sites.google.com/view/seals33/national-languages}}" copyright="© 2023-2024 SEALS 33 organizing committee. Used by FormosanBank with permission." source="https://sites.google.com/view/seals33/national-languages?authuser=0; structured snapshot retrieved 2026-08-23T00:32:50+00:00; permission recorded on Basecamp card 8570924312; source_orthography=Ortho94">
+<TEXT id="seediq_seals" xml:lang="trv" dialect="unknown" citation="SEALS 33 Organizing Committee. (2024). 國家語言專區. SEALS 33. https://sites.google.com/view/seals33/national-languages" BibTeX_citation="@misc{seals33, author = {SEALS 33 Organizing Committee}, title = {國家語言專區. SEALS 33}, year = {2024}, url = {https://sites.google.com/view/seals33/national-languages}}" copyright="CC BY-NC 4.0" source="https://sites.google.com/view/seals33/national-languages?authuser=0; structured snapshot retrieved 2026-08-23T00:32:50+00:00; source_orthography=Ortho94">
     <S id="1">
         <FORM kindOf="original">Patis sskari kari qnlhangan</FORM>
         <PHON kindOf="original">patis sskaɾi kaɾi qnlħaŋan</PHON>
@@ -149,7 +149,7 @@
         <TRANSL xml:lang="zho">卓社布農語中前接附著詞的韻律呈現：語料庫研究</TRANSL>
         <TRANSL xml:lang="eng">Prosodic realization of enclitics in Takituduh Bunun: A corpus study</TRANSL>
     </S>
-    <S id="21">
+    <S id="22">
         <FORM kindOf="original">Hengak chedil na kari Yami (Tao)</FORM>
         <PHON kindOf="original">ħəŋak ʦħədil na kaɾi jami tao</PHON>
         <FORM kindOf="standard">Hengak chedil na kari Yami (Tao)</FORM>
@@ -157,7 +157,7 @@
         <TRANSL xml:lang="zho">雅美（達悟）語的重音</TRANSL>
         <TRANSL xml:lang="eng">Word stress in Yami</TRANSL>
     </S>
-    <S id="22">
+    <S id="21">
         <FORM kindOf="original">Pnseengan hengak chedil kari Pinayuanan na alang Piuma</FORM>
         <PHON kindOf="original">pnsəəŋan ħəŋak ʦħədil kaɾi pinajuanan na alaŋ piuma</PHON>
         <FORM kindOf="standard">Pnseengan hengak chedil kari Pinayuanan na alang Piuma</FORM>
@@ -179,6 +179,14 @@
         <PHON kindOf="standard">bnɾaħan smalu ka tg* ħəŋak bubu snpəgan pəeaħ bukuj pɾotoatajal</PHON>
         <TRANSL xml:lang="zho">原始泰雅語的倒數第三音節母音之重建</TRANSL>
         <TRANSL xml:lang="eng">Reconstructing antepenultimate vowels in Proto-Atayal</TRANSL>
+    </S>
+    <S id="25">
+        <FORM kindOf="original">Bnrahan smalu ka hengak laqi tgbukuy *-ʔ, *-h, ma *-∅ Proto-Austronesian</FORM>
+        <PHON kindOf="original">bnɾaħan smalu ka ħəŋak laqi tgbukuj ** *ħ ma * pɾotoaustɾonəsian</PHON>
+        <FORM kindOf="standard">Bnrahan smalu ka hengak laqi tgbukuy *-ʔ, *-h, ma * Proto-Austronesian</FORM>
+        <PHON kindOf="standard">bnɾaħan smalu ka ħəŋak laqi tgbukuj ** *ħ ma * pɾotoaustɾonəsian</PHON>
+        <TRANSL xml:lang="zho">原始南島語的字尾子音*-ʔ、 *-h、以及*-∅之重建</TRANSL>
+        <TRANSL xml:lang="eng">The reconstruction of Proto-Austronesian final *-ʔ, *-h, and *-∅</TRANSL>
     </S>
     <S id="26">
         <FORM kindOf="original">Hyozyunka quri kari 'Tayal ma kari Seediq ga ddaun knbbrihan kari</FORM>

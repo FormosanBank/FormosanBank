@@ -63,9 +63,19 @@ jobs:
         run: |
           # Files added or modified (not deleted) under Corpora/*/XML/.
           # Excludes files outside the canonical XML/ subdir.
+          #
+          # The :(glob) magic is load-bearing. In a default pathspec '*'
+          # matches '/' too, so 'Corpora/**/XML/**' also picked up
+          # Corpora/<name>/CodeAndDocs/pre_correction_snapshot/XML/ --
+          # POL-035 baselines, which are inputs to a corpus build, not
+          # published data. Validating one as if it were published raises
+          # HARD V081 (duplicate TEXT/@id) against the corpus it is the
+          # baseline for. Under :(glob), '*' stops at '/' and '**' does not,
+          # so only the canonical Corpora/<name>/XML/ tree matches, which is
+          # what the comment above always claimed.
           git diff --name-only --diff-filter=AM \
             "origin/${{ github.base_ref }}...HEAD" \
-            -- 'Corpora/**/XML/**/*.xml' > changed_xml.txt
+            -- ':(glob)Corpora/*/XML/**/*.xml' > changed_xml.txt
           count=$(wc -l < changed_xml.txt)
           echo "count=$count" >> "$GITHUB_OUTPUT"
           echo "Changed canonical XML files: $count"

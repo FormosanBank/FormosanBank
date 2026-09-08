@@ -1,0 +1,78 @@
+name: Rights Delta
+
+on:
+  workflow_dispatch:
+    inputs:
+      base_ref:
+        description: Ref or SHA to compare against
+        required: false
+        default: origin/main
+  pull_request:
+    paths:
+      - "Corpora/**"
+      - "rights_vocabulary.csv"
+      - "QC/validation/_rights.py"
+      - "QC/validation/rights_delta.py"
+      - ".github/workflows/rights-comparison.yaml"
+  push:
+    branches:
+      - main
+    paths:
+      - "Corpora/**"
+      - "rights_vocabulary.csv"
+      - "QC/validation/_rights.py"
+      - "QC/validation/rights_delta.py"
+      - ".github/workflows/rights-comparison.yaml"
+
+jobs:
+  compare-rights:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+    - name: Checkout head
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.13'
+
+    - name: Install lxml
+      run: python3 -m pip install --upgrade pip lxml
+
+    - name: Resolve base ref
+      id: base
+      env:
+        EVENT_NAME: ${{ github.event_name }}
+        INPUT_BASE_REF: ${{ inputs.base_ref }}
+        PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        PUSH_BEFORE_SHA: ${{ github.event.before }}
+      run: |
+        if [[ "$EVENT_NAME" == "pull_request" && -n "$PR_BASE_SHA" ]]; then
+          BASE_REF="$PR_BASE_SHA"
+        elif [[ "$EVENT_NAME" == "push" && -n "$PUSH_BEFORE_SHA" && "$PUSH_BEFORE_SHA" != "0000000000000000000000000000000000000000" ]]; then
+          BASE_REF="$PUSH_BEFORE_SHA"
+        else
+          BASE_REF="${INPUT_BASE_REF:-origin/main}"
+        fi
+        if ! git rev-parse --verify "$BASE_REF^{commit}" >/dev/null 2>&1; then
+          git fetch --no-tags origin "$BASE_REF" || true
+        fi
+        if ! git rev-parse --verify "$BASE_REF^{commit}" >/dev/null 2>&1; then
+          echo "::warning::Base $BASE_REF unreachable; comparing with HEAD^."
+          BASE_REF="HEAD^"
+        fi
+        echo "base_ref=$BASE_REF" >> "$GITHUB_OUTPUT"
+
+    - name: Materialize the base tree
+      run: |
+        rm -rf /tmp/base && mkdir -p /tmp/base
+        git archive "${{ steps.base.outputs.base_ref }}" Corpora | tar -x -C /tmp/base
+
+    - name: Compare corpus licences
+      run: |
+        python3 QC/validation/rights_delta.py \
+          --base /tmp/base/Corpora --head Corpora

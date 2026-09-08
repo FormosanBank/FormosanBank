@@ -17,16 +17,16 @@ if __package__:
         DEFAULT_OUTPUT,
         DEFAULT_SNAPSHOT,
         LANGUAGES,
-        SOURCE_ROW_EXCLUSIONS,
         load_snapshot,
+        published_id,
     )
 else:
     from build_xml import (
         DEFAULT_OUTPUT,
         DEFAULT_SNAPSHOT,
         LANGUAGES,
-        SOURCE_ROW_EXCLUSIONS,
         load_snapshot,
+        published_id,
     )
 
 
@@ -67,7 +67,6 @@ def canonical_translation(value: str, lang: str) -> str:
 def audit(snapshot_path: Path = DEFAULT_SNAPSHOT, xml_dir: Path = DEFAULT_OUTPUT) -> dict[str, Any]:
     snapshot = load_snapshot(snapshot_path)
     rows = {row["source_row"]: row for row in snapshot["rows"]}
-    expected_ids = [row for row in range(1, 30) if row not in SOURCE_ROW_EXCLUSIONS]
     files = sorted(xml_dir.rglob("*.xml"))
     if len(files) != 2:
         raise AuditError(f"expected two XML files; found {len(files)}")
@@ -87,19 +86,21 @@ def audit(snapshot_path: Path = DEFAULT_SNAPSHOT, xml_dir: Path = DEFAULT_OUTPUT
             raise AuditError(f"unexpected dialect in {path}")
 
         sentences = root.findall("S")
+        expected_ids = [published_id(lang_code, row) for row in range(1, 30)]
+        sources_by_id = {published_id(lang_code, row): source for row, source in rows.items()}
         actual_ids = [int(sentence.get("id")) for sentence in sentences]
         if actual_ids != expected_ids:
             raise AuditError(f"unexpected S ids in {path}: {actual_ids}")
         for sentence in sentences:
             source_row = int(sentence.get("id"))
-            source = rows[source_row]
+            source = sources_by_id[source_row]
             original = sentence.findall('./FORM[@kindOf="original"]')
             if len(original) != 1:
                 raise AuditError(f"row {source_row} in {path} must have one original FORM")
-            if canonical_form(original[0].text or "") != canonical_form(source[lang_code]):
+            if (original[0].text or "") not in {
+                source[lang_code], canonical_form(source[lang_code])
+            }:
                 raise AuditError(f"source FORM mismatch at {path}:S={source_row}")
-            if "*" in (original[0].text or ""):
-                raise AuditError(f"POL-016 asterisk retained at {path}:S={source_row}")
 
             expected_translations = [("zho", source["zho"])]
             if "eng" in source:
@@ -116,9 +117,9 @@ def audit(snapshot_path: Path = DEFAULT_SNAPSHOT, xml_dir: Path = DEFAULT_OUTPUT
             for actual, expected in zip(actual_translations, expected_translations, strict=True):
                 actual_lang, actual_text = actual
                 expected_lang, expected_text = expected
-                if actual_lang != expected_lang or canonical_translation(
-                    actual_text, expected_lang
-                ) != canonical_translation(expected_text, expected_lang):
+                if actual_lang != expected_lang or actual_text not in {
+                    expected_text, canonical_translation(expected_text, expected_lang)
+                }:
                     raise AuditError(f"translation mismatch at {path}:S={source_row}")
             included_forms += 1
             included_translations += len(expected_translations)
@@ -130,8 +131,8 @@ def audit(snapshot_path: Path = DEFAULT_SNAPSHOT, xml_dir: Path = DEFAULT_OUTPUT
     return {
         "status": "pass",
         "source_rows": 29,
-        "included_rows_per_language": 28,
-        "policy_excluded_rows": sorted(SOURCE_ROW_EXCLUSIONS),
+        "included_rows_per_language": 29,
+        "policy_excluded_rows": [],
         "included_original_forms": included_forms,
         "included_translations": included_translations,
         "excluded_presenter_blocks": len(snapshot["excluded_presenter_blocks"]),
@@ -153,7 +154,7 @@ def main() -> int:
             "source audit passed: "
             f"{result['source_rows']} rows accounted for, "
             f"{result['included_rows_per_language']} included per language, "
-            "1 POL-016 exclusion"
+            "0 source-row exclusions"
         )
     return 0
 

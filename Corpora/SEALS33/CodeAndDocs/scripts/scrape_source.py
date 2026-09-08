@@ -18,8 +18,8 @@ from bs4 import BeautifulSoup, Tag
 
 
 SOURCE_URL = "https://sites.google.com/view/seals33/national-languages?authuser=0"
-CODEDOCS_ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_OUTPUT = CODEDOCS_ROOT / "data" / "source_snapshot.json"
+REPO_ROOT = Path(__file__).resolve().parents[2]
+DEFAULT_OUTPUT = REPO_ROOT / "CodeAndDocs" / "source_snapshot.json"
 USER_AGENT = "FormosanBank-SEALS33-source-audit/1.0"
 
 
