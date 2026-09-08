@@ -18,23 +18,18 @@ Deterministic keep rule:
   and Sakizaya ``Oro’raw``) the lowest counter is kept, i.e. ``(1)``.
 - A group with two or more counter-less files is an error (cannot choose).
 
-Every group in the corpus is byte-identical across its copies (verified),
-so nothing is lost. Should that ever stop holding, the script does not
-guess: it keeps the canonical file per the rule above and prints a
-``CONTENT DIFFERS`` block listing the FORM-level differences, so the
-divergence lands in the run log rather than being silently dropped.
+Every approved group is byte-identical across its copies. Check all groups
+before deleting anything; differing content needs source review.
 
 Idempotent: once each id has a single file, reruns delete nothing.
 """
 
 import argparse
-import difflib
 import hashlib
 import re
 import sys
 from collections import defaultdict
 from pathlib import Path
-from xml.etree import ElementTree as ET
 
 COUNTER_RE = re.compile(r" \((\d+)\)\.xml$")
 ID_RE = re.compile(r'(<TEXT\b[^>]*?\bid=")([^"]*)(")', re.DOTALL)
@@ -45,13 +40,6 @@ def text_id(path: Path) -> str:
     if not m:
         sys.exit(f"no TEXT id found in {path}")
     return m.group(2)
-
-
-def forms(path: Path) -> list[str]:
-    """Flat list of ``kindOf: text`` strings for every FORM in the file."""
-    root = ET.parse(path).getroot()
-    return [f"{e.get('kindOf')}: {(e.text or '').strip()}"
-            for e in root.iter("FORM")]
 
 
 def keeper(group: list[Path]) -> Path:
@@ -77,27 +65,19 @@ def main() -> None:
     for f in sorted(args.corpora_path.rglob("*.xml")):
         ids[text_id(f)].append(f)
 
-    groups = 0
-    deleted = 0
-    differing = 0
+    duplicates = []
     for tid, group in sorted(ids.items()):
         if len(group) < 2:
             continue
-        groups += 1
         keep = keeper(group)
         drop = [f for f in group if f != keep]
-
-        hashes = {hashlib.md5(f.read_bytes()).hexdigest() for f in group}
+        hashes = {hashlib.sha256(f.read_bytes()).hexdigest() for f in group}
         if len(hashes) > 1:
-            differing += 1
-            print(f"CONTENT DIFFERS in id {tid!r} (keeping {keep.name}):")
-            base = forms(keep)
-            for f in drop:
-                diff = list(difflib.unified_diff(
-                    base, forms(f), keep.name, f.name, lineterm="", n=0))
-                print("\n".join("  " + line for line in diff) or
-                      f"  {f.name}: FORMs identical, bytes differ")
+            sys.exit(f"CONTENT DIFFERS in id {tid!r}: {group}; no files deleted")
+        duplicates.append((tid, keep, drop))
 
+    deleted = 0
+    for tid, keep, drop in duplicates:
         for f in drop:
             print(f"delete {f}  (duplicate of {keep.name}; id {tid!r})")
             if not args.dry_run:
@@ -105,8 +85,7 @@ def main() -> None:
             deleted += 1
 
     verb = "would delete" if args.dry_run else "deleted"
-    print(f"{verb} {deleted} duplicate article files in {groups} id groups "
-          f"({differing} group(s) with differing content)")
+    print(f"{verb} {deleted} duplicate article files in {len(duplicates)} id groups")
 
 
 if __name__ == "__main__":
