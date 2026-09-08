@@ -47,6 +47,13 @@
     </xs:restriction>
   </xs:simpleType>
 
+  <xs:simpleType name="TRANSL_kindOf_Type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="original"/>
+      <xs:enumeration value="standard"/>
+    </xs:restriction>
+  </xs:simpleType>
+
   <!-- UNCLEAR: empty marker element used inline within FORM/PHON/TRANSL
        to indicate audio that was attempted but could not be transcribed
        (or, in TRANSL, text that could not be translated). Distinct from
@@ -68,8 +75,28 @@
     <xs:sequence>
       <xs:element name="UNCLEAR" type="UNCLEAR_Type" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
-    <xs:attribute name="kindOf" type="FORM_kindOf_Type" use="required"/>
-    <xs:attribute name="notes" type="xs:string"/>
+    <xs:attribute name="kindOf" type="FORM_kindOf_Type" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Which tier this FORM belongs to. `original` is the text as the
+          actual source prints it, preserving the source's orthographic
+          choices. `standard` is that content transliterated into
+          FormosanBank's common standard orthography. `alternate` is a
+          spelling variant of a sibling FORM on the same node (POL-028);
+          it requires a non-alternate sibling (V149) and must overlap it
+          or stay in proportion to it (V150).
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="notes" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>
+          Human-readable qualification of this FORM — a transcription
+          note, a review status, or what the source actually printed
+          where the tier departs from it.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:complexType>
 
   <!-- TRANSL: mixed content; xml:lang is optional at XSD level (V023 is a
@@ -80,10 +107,45 @@
     <xs:sequence>
       <xs:element name="UNCLEAR" type="UNCLEAR_Type" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
-    <xs:attribute ref="xml:lang"/>
-    <xs:attribute name="kindOf" type="xs:string"/>
-    <xs:attribute name="ver" type="xs:string"/>
-    <xs:attribute name="notes" type="xs:string"/>
+    <xs:attribute ref="xml:lang">
+      <xs:annotation>
+        <xs:documentation>
+          ISO 639-3 code for the language this translation is *into* —
+          not the language of the text (V023, V035).
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="kindOf" type="TRANSL_kindOf_Type">
+      <xs:annotation>
+        <xs:documentation>
+          Only meaningful at W and M level, where a TRANSL carries a
+          gloss: `original` is the source's own gloss, `standard` a
+          standardized one. Forbidden on an S-level TRANSL, which is a
+          free translation with no such axis (V151).
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="ver" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>
+          Discriminates multiple translations into the same language on
+          one parent (POL-025). When a parent has two or more
+          same-language TRANSLs, all but one must carry this (V085). The
+          allowed values are owned by V084's allowlist — currently
+          `{"alt"}` — deliberately not duplicated as an XSD enumeration,
+          so there is one place to update.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="notes" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>
+          Human-readable qualification of this translation — translator,
+          review status, or a literal reading kept out of the
+          translation text itself (POL-024).
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:complexType>
 
   <!-- PHON: mixed content; kindOf is optional but, when present, must be
@@ -93,18 +155,61 @@
     <xs:sequence>
       <xs:element name="UNCLEAR" type="UNCLEAR_Type" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
-    <xs:attribute name="kindOf" type="PHON_kindOf_Type"/>
+    <xs:attribute name="kindOf" type="PHON_kindOf_Type">
+      <xs:annotation>
+        <xs:documentation>
+          Which FORM tier this IPA representation was derived from,
+          `original` or `standard` (V071). A parent may carry at most
+          one PHON per value (V072).
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:complexType>
 
   <!-- AUDIO: empty element; start/end are optional but typed as xs:double
        so non-numeric values are rejected by the schema. -->
 
   <xs:complexType name="AUDIO_Type">
-    <xs:attribute name="start" type="xs:double"/>
-    <xs:attribute name="end" type="xs:double"/>
-    <xs:attribute name="file" type="xs:string"/>
-    <xs:attribute name="url" type="xs:string"/>
-    <xs:attribute name="source" type="xs:string"/>
+    <xs:attribute name="start" type="xs:double">
+      <xs:annotation>
+        <xs:documentation>
+          Start offset in seconds within the referenced audio file.
+          Typed `xs:double`, so non-numeric values fail at schema time.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="end" type="xs:double">
+      <xs:annotation>
+        <xs:documentation>
+          End offset in seconds within the referenced audio file. Must
+          be greater than `start` (V054).
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="file" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>
+          Name of the audio file this element refers to. Audio files are
+          gitignored and fetched per corpus by `download_audio_data.sh`.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="url" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>
+          URL the audio can be fetched from, where it is addressed
+          remotely rather than by filename.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="source" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>
+          Provenance of the recording — for example the video or
+          broadcast a clip was extracted from.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:complexType>
 
   <!-- M element: FORM, PHON, AUDIO, TRANSL may appear in ANY order via
@@ -125,9 +230,30 @@
         <xs:element name="TRANSL" type="TRANSL_Type"/>
       </xs:choice>
     </xs:sequence>
-    <xs:attribute name="id" type="xs:string" use="required"/>
-    <xs:attribute name="class" type="xs:string"/>
-    <xs:attribute name="sclass" type="xs:string"/>
+    <xs:attribute name="id" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Morpheme identifier, unique across all S, W and M within the
+          file (V039).
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="class" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>
+          Grammatical class label for the morpheme. The schema imposes
+          no controlled vocabulary.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="sclass" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>
+          Grammatical subclass label for the morpheme. The schema
+          imposes no controlled vocabulary.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:complexType>
 
   <!-- W element: sibling order of FORM/PHON/AUDIO/TRANSL/M is NOT
@@ -144,9 +270,30 @@
       <xs:element name="TRANSL" type="TRANSL_Type"/>
       <xs:element name="M" type="M_Type"/>
     </xs:choice>
-    <xs:attribute name="id" type="xs:string" use="required"/>
-    <xs:attribute name="class" type="xs:string"/>
-    <xs:attribute name="sclass" type="xs:string"/>
+    <xs:attribute name="id" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Word identifier, unique across all S, W and M within the file
+          (V039).
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="class" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>
+          Grammatical class label for the word. The schema imposes no
+          controlled vocabulary.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="sclass" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>
+          Grammatical subclass label for the word. The schema imposes no
+          controlled vocabulary.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:complexType>
 
   <!-- S element: sibling order of FORM/PHON/AUDIO/TRANSL/W is NOT
@@ -169,9 +316,32 @@
       <xs:element name="TRANSL" type="TRANSL_Type"/>
       <xs:element name="W" type="W_Type"/>
     </xs:choice>
-    <xs:attribute name="id" type="xs:string" use="required"/>
-    <xs:attribute name="audio_url" type="xs:string"/>
-    <xs:attribute name="source" type="xs:string"/>
+    <xs:attribute name="id" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Sentence identifier, unique across all S, W and M within the
+          file (V039). Part of the public identifier surface (POL-037).
+          A sentence split from another for optional material takes the
+          original's id plus `-opt` (POL-026).
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="audio_url" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>
+          Source URL for this sentence's audio, where the recording is
+          addressed by URL rather than by file.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="source" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>
+          Sentence-specific provenance — page, column, or editorial note
+          about where this particular sentence came from.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:complexType>
 
   <!-- TEXT element (root): AUDIO and S are both optional at the schema
@@ -202,15 +372,83 @@
         <xs:element name="AUDIO" type="AUDIO_Type" minOccurs="0" maxOccurs="unbounded"/>
         <xs:element name="S" type="S_Type" minOccurs="0" maxOccurs="unbounded"/>
       </xs:sequence>
-      <xs:attribute name="id" type="xs:string" use="required"/>
-      <xs:attribute name="citation" type="xs:string" use="required"/>
-      <xs:attribute name="BibTeX_citation" type="xs:string" use="required"/>
-      <xs:attribute name="copyright" type="xs:string" use="required"/>
-      <xs:attribute ref="xml:lang" use="required"/>
-      <xs:attribute name="source" type="xs:string"/>
-      <xs:attribute name="audio" type="xs:string"/>
-      <xs:attribute name="glottocode" type="xs:string"/>
-      <xs:attribute name="dialect" type="xs:string"/>
+      <xs:attribute name="id" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation>
+            Stable public identifier for this text, unique across the
+            published bank (V081). Renaming one breaks external
+            references — see POL-037.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="citation" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation>
+            Human-readable bibliographic citation for the source.
+            Required on every published TEXT (POL-042).
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="BibTeX_citation" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation>
+            The same source as a BibTeX entry, for machine reuse.
+            Required on every published TEXT.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="copyright" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation>
+            The rights statement under which this text is published.
+            Required on every published TEXT; POL-042 through POL-045
+            govern what may go here.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute ref="xml:lang" use="required">
+        <xs:annotation>
+          <xs:documentation>
+            ISO 639-3 code for the language of the Formosan-text tiers,
+            validated against `QC/validation/iso-639-3.txt` (V035). Note
+            `trv` covers the whole Seediq family: `trv` plus
+            `dialect="Truku"` is Truku, anything else is Seediq.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="source" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            Free-text provenance for the whole text — the publication,
+            page, URL or collection it came from.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="audio" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            Name or identifier of the audio collection this text's
+            recordings belong to. Present only for corpora with audio.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="glottocode" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            Glottolog code for the variety, where one is useful
+            alongside the ISO 639-3 code.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="dialect" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            Dialect label, from the canonical list in `dialects.csv`
+            (V036). Together with `xml:lang` this determines language
+            identity and which reference materials apply.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
     </xs:complexType>
 
     <xs:unique name="unique_id_within_file">

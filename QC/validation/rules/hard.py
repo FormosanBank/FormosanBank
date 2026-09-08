@@ -540,6 +540,12 @@ def v026_M_transl_kindof_enum(
 
     Free-form values (e.g., 'DeepL', 'freeform') are only valid at the
     sentence/text tier. M-level TRANSL kindOf is strictly enumerated.
+
+    Partly redundant since 2026-09-08: the XSD's TRANSL_kindOf_Type now
+    restricts this value at every level, so a bad value fails V000 first.
+    Kept because a named rule reports the offending element far more
+    legibly than an XSD error, and because V026 is M-scoped by design
+    while the schema type is shared by S, W and M.
     """
     _ALLOWED = {"original", "standard"}
     findings: list[Finding] = []
