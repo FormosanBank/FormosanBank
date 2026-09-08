@@ -9,16 +9,17 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parents[1]
-INPUT = ROOT / "raw_data" / "reviewed_examples.tsv"
-MORPHEME_INPUT = ROOT / "raw_data" / "reviewed_morpheme_alignments.tsv"
-VARIANT_INPUT = ROOT / "raw_data" / "reviewed_variants.tsv"
+CODE = Path(__file__).resolve().parent
+ROOT = CODE.parent
+INPUT = CODE / "raw_data" / "reviewed_examples.tsv"
+MORPHEME_INPUT = CODE / "raw_data" / "reviewed_morpheme_alignments.tsv"
+VARIANT_INPUT = CODE / "raw_data" / "reviewed_variants.tsv"
 XML_NAME = "tsukida_2014_correlative_clauses_in_seediq.xml"
 XML_PATH = ROOT / "XML" / "Seediq" / XML_NAME
-SOURCE_LEDGER = ROOT / "intermediate" / "source_ledger.csv"
-PAGE_INVENTORY = ROOT / "intermediate" / "page_inventory.csv"
-NOTATION_AUDIT = ROOT / "intermediate" / "source_notation_audit.csv"
-SOURCE_MAP = ROOT / "intermediate" / "xml_source_map.csv"
+SOURCE_LEDGER = CODE / "intermediate" / "source_ledger.csv"
+PAGE_INVENTORY = CODE / "intermediate" / "page_inventory.csv"
+NOTATION_AUDIT = CODE / "intermediate" / "source_notation_audit.csv"
+SOURCE_MAP = CODE / "intermediate" / "xml_source_map.csv"
 
 SOURCE_PDF_SHA256 = "fab9b60ce52e47530805204c1d5beed02e52e63972e8315d9a1996c8e79248f1"
 TEXT_ID = "tsukida_2014_correlative_clauses_in_seediq"
@@ -37,10 +38,7 @@ BIBTEX = (
     "url = {https://openresearch-repository.anu.edu.au/items/"
     "8bfb8bf0-2f58-4eae-947c-bf9af50faf9f}}"
 )
-COPYRIGHT = (
-    "Copyright held by the authors, released under Creative Commons Attribution "
-    "Licence (CC BY 4.0)."
-)
+COPYRIGHT = "CC BY 4.0"
 PAGE_ROWS = [
     (74, 69, "examples 1-2", "Hindi excluded; Seediq example 2 included"),
     (75, 70, "examples 3-8", "six Seediq examples included"),
@@ -299,6 +297,16 @@ def add_word_structure(
                 "TRANSL",
                 {"xml:lang": "eng"},
             ).text = gloss_part
+    # POL-023: examples 3 and 6 have no morpheme segmentation in the source.
+    parsed = any(
+        len(word.findall("M")) > 1
+        or any(m.findtext("FORM") != word.findtext("FORM") for m in word.findall("M"))
+        for word in sentence.findall("W")
+    )
+    if not parsed:
+        for word in sentence.findall("W"):
+            for morpheme in word.findall("M"):
+                word.remove(morpheme)
     return alignment_note
 
 
@@ -487,21 +495,9 @@ def write_notation_audit(rows: list[dict[str, str]]) -> None:
     write_csv(NOTATION_AUDIT, fields, output)
 
 
-def source_map_rows(
-    records: list[dict[str, str]], root: ET.Element | None = None
-) -> list[dict[str, str]]:
-    xml_by_id = (
-        {sentence.get("id", ""): sentence for sentence in root.findall("S")}
-        if root is not None
-        else {}
-    )
+def source_map_rows(records: list[dict[str, str]]) -> list[dict[str, str]]:
     output = []
     for record in records:
-        sentence = xml_by_id.get(record["id"])
-        standard = ""
-        if sentence is not None:
-            form = sentence.find("FORM[@kindOf='standard']")
-            standard = (form.text or "") if form is not None else ""
         output.append(
             {
                 "xml_id": record["id"],
@@ -511,7 +507,6 @@ def source_map_rows(
                 "example_label": record["example_label"],
                 "source_ref": record["source_ref"],
                 "source_original": record["original"],
-                "xml_standard": standard,
                 "source_gloss": record["gloss"],
                 "translation": record["translation"],
                 "translation_alt": record["translation_alt"],
@@ -525,9 +520,7 @@ def source_map_rows(
     return output
 
 
-def write_source_map(
-    records: list[dict[str, str]], root: ET.Element | None = None
-) -> None:
+def write_source_map(records: list[dict[str, str]]) -> None:
     fields = [
         "xml_id",
         "source_locator",
@@ -536,7 +529,6 @@ def write_source_map(
         "example_label",
         "source_ref",
         "source_original",
-        "xml_standard",
         "source_gloss",
         "translation",
         "translation_alt",
@@ -546,7 +538,7 @@ def write_source_map(
         "source_id",
         "variant_evidence",
     ]
-    write_csv(SOURCE_MAP, fields, source_map_rows(records, root))
+    write_csv(SOURCE_MAP, fields, source_map_rows(records))
 
 
 def main() -> None:

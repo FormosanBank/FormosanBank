@@ -1,26 +1,31 @@
-# Tsukida Seediq Correlative Clauses
+# Tsukida Seediq correlative clauses
 
-Truku Seediq (`trv`) examples from Naomi Tsukida's 2014 chapter, “Correlative
-clauses in Seediq,” pages 69-79. The chapter is available from
-[ANU Open Research](https://openresearch-repository.anu.edu.au/items/8bfb8bf0-2f58-4eae-947c-bf9af50faf9f)
-under CC BY 4.0.
+Truku Seediq (`trv`, dialect `Truku`) examples from Naomi Tsukida's 2014 chapter, “Correlative clauses in Seediq,” printed pages 69–79 in [Papers from 12-ICAL, Volume 2](https://openresearch-repository.anu.edu.au/items/8bfb8bf0-2f58-4eae-947c-bf9af50faf9f).
 
-The reviewed inventory accounts for all 39 source units. It includes 26
-Seediq units, excludes 13 comparison, duplicate, or source-starred units, and
-expands two optional constructions into four explicit variants. The result is
-28 sentences, 201 word elements, 268 morpheme elements, and 497 original plus
-497 standard PHON elements.
+The reviewed inventory accounts for all 39 numbered source units: 26 included, seven comparison-language examples, five starred examples and the explicitly repeated example 28a excluded. Optional constituents in examples 6 and 9 each produce two aligned variants. Final XML has 28 S, 201 W and 254 M, with 483 original and 483 standard FORM/PHON parents, 29 free translations and no audio.
 
-The published files were refreshed from private development commit
-`87149640de8d6a27e9c38bf1578e142319ea6b0e` and revalidated on 2026-08-22
-against FormosanBank tooling commit
-`3a3c47c220520113f747e6a2d441494000e13c4b`. Status: ready to port. Private
-source files are not included.
-Rebuild the XML from the committed reviewed tables with:
+All source words, glosses, clause brackets and translations from the expert-reviewed version are retained. The starred interpretation of grammatical example 13 remains excluded. Fourteen later-added mirror M elements from examples 3 and 6 are omitted under POL-023; their W forms and glosses remain. Reviewed infix roots, stacked infixes and clitics are preserved. IDs use immutable source/example keys, including stable optional-variant suffixes.
+
+## Rights
+
+**License:** CC BY 4.0
+
+**Rights source:** Naomi Tsukida / Asia-Pacific Linguistics, 2025-06-04; evidence: ask maintainer
+
+The chapter's first page explicitly grants CC BY 4.0. The date above records the maintainer's verification of that published grant, not a new grant date. Source transcriptions and article extracts used by the build retain this attribution.
+
+## Reproduce
+
+From a FormosanBank checkout with its documented Python dependencies:
 
 ```bash
-CodeAndDocs/make_xml.sh
+bash Corpora/Naomi-Tsukida-Correlative-Clauses-Seediq/CodeAndDocs/generate_xml.sh
 ```
 
-Pass a FormosanBank root as the first argument, or set `FORMOSANBANK_PATH`, to
-use a different checkout's current orthography and QC tools.
+In the development repository, set `FORMOSANBANK_ROOT` to a current FormosanBank checkout and run `bash CodeAndDocs/generate_xml.sh`. `PYTHON` selects the installed Python interpreter. No Git metadata, network request, private file or historical tooling checkout is required. The [provenance record](CodeAndDocs/provenance.json) identifies the tools used for the committed output and never gates a rebuild.
+
+**POL-047 deviation:** Seven source bracket values are restored after cleaning and before standardization, preserving the clause spans and translations in the source-reviewed version. Source refresh and validation are separate commands.
+
+Generation starts from the committed transcription tables in `CodeAndDocs/raw_data/`, applies recorded corrections, cleans, standardizes `ŋ` to `ng`, and generates both PHON tiers with shared tools. Original PHON uses the [source profile](CodeAndDocs/source_orthography/Seediq.tsv), supported by [Tsukida's Teruku phoneme description](https://lingdy.aa-ken.jp/wp-content/uploads/2012/01/120217_naomi_tsukida_h.pdf), page 2 footnote 1; standard PHON uses the registered standard. This corrects the old build's use of Ortho94 instead of the profile it validated.
+
+Validate existing output with `QC_REPORT_DIR=/outside/corpus/reports bash CodeAndDocs/validate.sh`, using the same environment. Review the CSVs and logs: command success alone is not a source or port-readiness verdict. [Source and review notes](CodeAndDocs/README.md) explain the exact scoped findings and reproduction inputs.
