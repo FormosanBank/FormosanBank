@@ -302,8 +302,13 @@ Next free id is V149.
 - **V151** — an S-level `TRANSL` must not carry `@kindOf`. W- and M-level
   TRANSLs may, since there it marks a source gloss against a standardized one.
 
-  Lands **SOFT**. Glosbe's 4,157 legacy attributes would otherwise fail CI the
-  moment the rule ships, blocking every unrelated branch in flight. The
+  Lands **SOFT**. A HARD rule firing 4,157 times would make `validate_xml.py`
+  exit 1 for every local Glosbe run and for the `run-qc-pipeline` skill, and
+  would poison the longitudinal finding baseline, until the data is
+  remediated. (It would *not* block unrelated PRs: `xml-validation.yaml`
+  validates only the files a PR touches and blocks only on HARD fingerprints
+  absent from the base, while the full-corpus job runs `--no-exit-on-hard`
+  and is non-blocking.) The
   promotion to HARD is a **numbered step inside the Glosbe worklist item**, not
   a step in this change — so this work stays invisible to other ongoing work.
 
@@ -334,8 +339,9 @@ items and the triage behind them.
 3. Confirm V151 reports zero repo-wide.
 4. **Move V151 from `soft.py` to `hard.py`** and regenerate `RULES.md`.
 
-Step 4 lives here, not in the change that introduces the rule, so that
-introducing V151 cannot fail CI on any branch already in flight.
+Step 4 lives here, not in the change that introduces the rule, so that V151
+only becomes HARD once the data it flags is clean — and `validate_xml.py`
+never exits 1 on a Glosbe run in the meantime.
 
 **Also recorded for the future:** W/M-level `TRANSL/@kindOf` is the axis a
 gloss-standardization pass will use — source gloss as `original`, standardized
