@@ -30,15 +30,15 @@ The current public corpus contains 105 aligned records from six GitBook sections
 
 ## **Corpus Processing**
 
-The published XML was produced from reviewed Paiwan, Mandarin, and English text ledgers with the corpus's `CodeAndDocs/process_raw.py` script. The source audit checks all 105 included records and every source-owned tier.
+Run `./CodeAndDocs/generate_xml.sh` from the corpus directory using the current FormosanBank environment. It generates source tiers from the reviewed Paiwan, Mandarin, and English ledgers, then runs shared cleaning, standardization with `--remove_accents`, and Ortho113 phonology. The [corpus README](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/FormosanBankGitBook/README.md) gives reproduction and validation commands; [build provenance](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/FormosanBankGitBook/CodeAndDocs/provenance.json) records the shared tools used.
 
-The reproduction wrapper builds into a temporary directory, runs the current cleaner, restores the reviewed source text, copies the standard form, derives Ortho113 phonology, runs the XML, text, and gloss validators, and compares all six outputs with the published XML byte-for-byte. The public repository retains the source PDF, reviewed ledgers, generator, source audit, unit tests, and resulting XML.
+The public package retains the nine-page source PDF, reviewed ledgers, stable source keys, parser, source audit, and focused tests. All 315 source fields were checked in their original column order. The three recovered lists have new IDs; all 102 earlier sentence IDs still identify the same source passages. Two builds reproduced all six XML files from the public inputs alone. Validation and source review are separate from generation.
 
 ***
 
 ## **Corpus Notes**
 
-This is a translation corpus, not a separate edition of the documentation. The English GitBook remains the canonical and most complete version.
+These translations preserve historical manual text. Use the current committed English GitBook documentation for project guidance; the translated source is not an authority for current policy. Source names, language lists, repeated citations, and the literal English/Chinese licence-link alternatives remain part of the corpus.
 
 ***
 
@@ -50,7 +50,7 @@ This is a translation corpus, not a separate edition of the documentation. The E
 
 ## **Copyright**
 
-CC-BY-NC
+CC BY-NC 4.0. Xuan Ruan's permission was recorded on 2025-02-11. The corpus README records the rights statement; FormosanBank's [Terms of Use](../../additional-resources/terms-of-use.md) also apply, including the commercial AI restriction. Historical licensing text inside the translated manual does not replace the corpus rights statement.
 
 ***
 
