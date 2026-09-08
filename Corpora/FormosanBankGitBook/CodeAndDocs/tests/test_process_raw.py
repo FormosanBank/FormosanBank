@@ -1,10 +1,12 @@
 from __future__ import annotations
 
 import tempfile
+import sys
 import unittest
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import process_raw
 
 
@@ -58,12 +60,54 @@ class ProcessRawTests(unittest.TestCase):
                 self.assertEqual(first_path.read_bytes(), second_path.read_bytes())
 
                 root = ET.parse(first_path).getroot()
-                for index, sentence in enumerate(root.findall("S")):
-                    self.assertEqual(sentence.get("id"), str(index))
+                for sentence in root.findall("S"):
                     self.assertEqual(len(sentence.findall("FORM[@kindOf='original']")), 1)
                     self.assertFalse(sentence.findall("FORM[@kindOf='standard']"))
                     self.assertFalse(sentence.findall("PHON"))
                     self.assertEqual(len(sentence.findall("TRANSL")), 2)
+
+    def test_published_ids_keep_their_passages(self) -> None:
+        for stem, sid, translation in (
+            ("Welcome", "8", "And our many contributors."),
+            ("Contributors", "6", "Funding"),
+            ("Formosan_Languages", "9", "A Legacy of Suppression and Revitalization"),
+        ):
+            root = process_raw.build_tree(stem, self.inventory[stem]).getroot()
+            self.assertEqual(root.findtext(f"S[@id='{sid}']/TRANSL[@{process_raw.XML_LANG}='eng']"), translation)
+
+    def test_new_source_lists_have_separate_keys(self) -> None:
+        for stem, sid, phrase in (
+            ("Welcome", "p1_people", "Principal Investigators Joshua Hartshorne"),
+            ("Formosan_Languages", "p5_languages", "Amis (Ami) Atayal (Tayal)"),
+            ("Contributors", "p6_contributors", "Li-May Sung Indigenous Languages"),
+        ):
+            root = process_raw.build_tree(stem, self.inventory[stem]).getroot()
+            self.assertTrue(root.findtext(f"S[@id='{sid}']/TRANSL[@{process_raw.XML_LANG}='eng']").startswith(phrase))
+
+    def test_text_corrections_do_not_change_identity(self) -> None:
+        records = list(self.inventory["Welcome"])
+        before = process_raw.build_tree("Welcome", records).getroot()
+        records[2] = process_raw.SourceRecord("Corrected translation", records[2].chinese, records[2].paiwan)
+        after = process_raw.build_tree("Welcome", records).getroot()
+        self.assertEqual([s.get("id") for s in before], [s.get("id") for s in after])
+
+    def test_missing_source_record_fails_before_renumbering(self) -> None:
+        with self.assertRaises(ValueError):
+            process_raw.build_tree("Welcome", self.inventory["Welcome"][:-1])
+
+    def test_page_continuation_and_source_punctuation(self) -> None:
+        self.assertEqual(self.inventory["Welcome"][-1].paiwan, "izuanan tjuruvu a caucau nakipusaladj tjanuamen.")
+        self.assertIn("(amilikan|ciniukukan)", self.inventory["Contributing_to_FormosanBank"][1].paiwan)
+        self.assertIn("open-source", self.inventory["Contributing_to_FormosanBank"][2].paiwan)
+        self.assertIn("pu’ui", self.inventory["Contributing_to_FormosanBank"][25].paiwan)
+
+    def test_malformed_or_empty_source_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "source.txt"
+            for value in ("", "English\nChinese\n", "English\n\nPaiwan"):
+                path.write_text(value)
+                with self.assertRaises(ValueError):
+                    process_raw.parse_source(path)
 
 
 if __name__ == "__main__":

@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import csv
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass
 from pathlib import Path
@@ -19,18 +20,25 @@ BIBTEX = (
     "note={Translation}}"
 )
 
-SOURCE_URLS = {
-    "Welcome": "https://ai4commsci.gitbook.io/formosanbank",
-    "FormosanBank": "https://ai4commsci.gitbook.io/formosanbank/background/formosanbank",
-    "Formosan_Languages": "https://ai4commsci.gitbook.io/formosanbank/background/quickstart",
-    "Contributors": "https://ai4commsci.gitbook.io/formosanbank/background/contributors",
-    "Terms_of_Use": "https://ai4commsci.gitbook.io/formosanbank/additional-resources/terms-of-use",
-    "Contributing_to_FormosanBank": (
-        "https://ai4commsci.gitbook.io/formosanbank/additional-resources/"
-        "contributing-to-formosanbank"
-    ),
-}
-SOURCE_FILES = tuple(f"{stem}.txt" for stem in SOURCE_URLS)
+CODE = Path(__file__).resolve().parent
+
+
+def read_table(name: str) -> list[dict[str, str]]:
+    with (CODE / name).open(encoding="utf-8", newline="") as handle:
+        return list(csv.DictReader(handle, delimiter="\t"))
+
+
+SECTIONS = {row["section"]: row for row in read_table("source_sections.tsv")}
+SOURCE_FILES = tuple(f"{stem}.txt" for stem in SECTIONS)
+
+
+def record_keys(stem: str, count: int) -> list[dict[str, str]]:
+    rows = [row for row in read_table("source_records.tsv") if row["section"] == stem]
+    if [int(row["record"]) for row in rows] != list(range(count)):
+        raise ValueError(f"{stem}: source records do not match the stable ID table")
+    if len({row["s_id"] for row in rows}) != count:
+        raise ValueError(f"{stem}: duplicate source IDs")
+    return rows
 
 
 @dataclass(frozen=True)
@@ -72,15 +80,15 @@ def build_tree(stem: str, records: list[SourceRecord]) -> ET.ElementTree:
         {
             "id": f"gitbook_{LANGUAGE}_{stem}",
             XML_LANG: LANGUAGE_CODE,
-            "source": SOURCE_URLS[stem],
-            "copyright": "CC-BY-NC",
+            "source": "translation of FormosanBank gitbook in Paiwan",
+            "copyright": "CC BY-NC 4.0",
             "citation": CITATION,
             "BibTeX_citation": BIBTEX,
             "dialect": DIALECT,
         },
     )
-    for index, record in enumerate(records):
-        sentence = ET.SubElement(root, "S", {"id": str(index)})
+    for key, record in zip(record_keys(stem, len(records)), records, strict=True):
+        sentence = ET.SubElement(root, "S", {"id": key["s_id"]})
         ET.SubElement(sentence, "FORM", {"kindOf": "original"}).text = record.paiwan
         ET.SubElement(sentence, "TRANSL", {XML_LANG: "zho"}).text = record.chinese
         ET.SubElement(sentence, "TRANSL", {XML_LANG: "eng"}).text = record.english
@@ -112,14 +120,10 @@ def generate(source_dir: Path, output_dir: Path) -> tuple[int, int]:
 
 
 def main() -> int:
-    code_dir = Path(__file__).resolve().parent
+    repo = Path(__file__).resolve().parent
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--source-dir", type=Path, default=code_dir / "raw_data" / "Paiwan"
-    )
-    parser.add_argument(
-        "--output", type=Path, default=code_dir / "Final_XML" / "Paiwan"
-    )
+    parser.add_argument("--source-dir", type=Path, default=repo / "raw_data" / "Paiwan")
+    parser.add_argument("--output", type=Path, default=repo.parent / "XML" / "Paiwan")
     args = parser.parse_args()
 
     files, records = generate(args.source_dir.resolve(), args.output.resolve())

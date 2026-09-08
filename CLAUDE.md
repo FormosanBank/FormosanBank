@@ -73,6 +73,8 @@ Two conventions that most QC code assumes:
 
 `xml:lang` uses ISO 639-3 codes (validated against [QC/validation/iso-639-3.txt](QC/validation/iso-639-3.txt)). The canonical code→language map is [languages.csv](languages.csv) at repo root (single source of truth per POL-039; loaded by `QC/corpus_counts.load_language_codes`, which every other consumer imports). Dialect labels come from the `dialect` attribute; the canonical list is in [dialects.csv](dialects.csv).
 
+**`trv` means Seediq-or-Truku, never just Truku.** ISO 639-3 has a single code `trv` for the whole Seediq family, so every Seediq *and* Truku text is tagged `xml:lang="trv"`; language identity comes from the `dialect` attribute: `trv` + `dialect="Truku"` → Truku, anything else (including no dialect) → Seediq. Never read `trv` as "Truku" from the code alone — e.g. [Corpora/Wikipedias/XML/Seediq/](Corpora/Wikipedias/XML/Seediq/) is `xml:lang="trv"` and is the *Seediq* Wikipedia (there is no Truku Wikipedia). This resolution also selects which reference materials apply (`QC/validation/reference/Truku/` vs `Seediq/`, conversion-table columns, attestation dictionaries).
+
 ## QC script conventions
 
 Most validation/extraction scripts share a `search_by` positional with three modes:
@@ -82,7 +84,7 @@ Most validation/extraction scripts share a `search_by` positional with three mod
 
 When in doubt, `by_path` against a single corpus's `XML/` directory is the safest target. Many scripts accept `--verbose` and `--log_dir <path>` so logs don't get scattered next to scripts or inside corpora.
 
-The finding-based validators (`validate_xml`, `validate_text`, `validate_glosses`) print a compact per-rule **summary** with mnemonic names (e.g. `V060 W_count_matches_word_count: 1`) and write **one findings CSV** (path printed as `Details: …`); per-finding detail lives in the CSV, not the terminal. Flags: `--csv <path>` (`--soft-csv` is a deprecated alias); exit 1 on any HARD finding unless `--no-exit-on-hard`.
+The finding-based validators (`validate_xml`, `validate_text`, `validate_glosses`) print a compact per-rule **summary** with mnemonic names (e.g. `V060 W_count_matches_word_count: 1`) and write **one findings CSV** (path printed as `Details: …`); per-finding detail lives in the CSV, not the terminal. Every rule is catalogued in [QC/validation/RULES.md](QC/validation/RULES.md) — id, mnemonic, severity, what it checks — generated from the code by `QC/validation/rules_catalogue.py` and guarded by a test; regenerate it when you add a rule, never hand-edit. Flags: `--csv <path>` (`--soft-csv` is a deprecated alias); exit 1 on any HARD finding unless `--no-exit-on-hard`.
 
 The full pipeline is documented in [QC/README.md](QC/README.md). The typical order is:
 0. `QC/cleaning/apply_manual_edits.py` — re-apply recorded hand edits first, before any other cleaning (no-op if no `CodeAndDocs/manual_edits.xml`)

@@ -1,219 +1,105 @@
 #!/usr/bin/env python3
-"""Verify canonical Paiwan GitBook XML against the reviewed source ledger."""
+"""Read-only PDF, source-key, and final source-tier consistency checks."""
 
 from __future__ import annotations
 
 import argparse
 import hashlib
+import html
 import json
+import os
+import re
+import sys
+import unicodedata
 import xml.etree.ElementTree as ET
-from collections import Counter
 from pathlib import Path
 
+import pdfplumber
 import process_raw
 
-EXPECTED_PDF_SHA256 = "5f7b960a9105f46a3216de6220664334b7d32763e8fc95d1519daadb4b84dd84"
-EXPECTED_PDF_PAGES = 9
-EXPECTED_RECORD_COUNTS = {
-    "Welcome": 10,
-    "FormosanBank": 29,
-    "Formosan_Languages": 16,
-    "Contributors": 9,
-    "Terms_of_Use": 13,
-    "Contributing_to_FormosanBank": 28,
-}
-EXPECTED_SOURCE_HASHES = {
-    "Contributing_to_FormosanBank.txt": "aa4d0fdcfec0bc96ce60bbdb70bcaa54f25ee2480a6cc8406c033239d2dbca53",
-    "Contributors.txt": "6e469f76634831d5617a9562c48f2374f022b5f3a223d744ae08ad7a43f21cfd",
-    "FormosanBank.txt": "b9126f021be7f0c5b2295e9116ee404b80414c60b5a92623fd96ee7c4036ba17",
-    "Formosan_Languages.txt": "74bd5f9a75e0e6155220f487e0832755f855588e40db63fdd52ac535f9855a58",
-    "Terms_of_Use.txt": "60c0a9aaa2ff47b83a19be2b6e8ee34a52d92bcc563e9290abf60727182517b9",
-    "Welcome.txt": "f4b2b025953d88f99475714d7bbc489129546872d1b0dbe1cef2be96b2a87e0f",
-}
-FORM_QUOTE_NORMALIZATION = str.maketrans({"‘": "'", "’": "'", "“": '"', "”": '"'})
+PDF_SHA256 = "5f7b960a9105f46a3216de6220664334b7d32763e8fc95d1519daadb4b84dd84"
 
 
-def sha256(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
-            digest.update(chunk)
-    return digest.hexdigest()
+def compact(text: str) -> str:
+    return re.sub(r"\s+", "", text)
 
 
-def direct(element: ET.Element, tag: str, attribute: str, value: str) -> list[ET.Element]:
-    return [child for child in element.findall(tag) if child.get(attribute) == value]
-
-
-def canonical_form(source_form: str) -> str:
-    """Apply the current validator's required FORM-only quote normalization."""
-    return source_form.translate(FORM_QUOTE_NORMALIZATION)
-
-
-def display_path(path: Path, repo: Path) -> str:
-    try:
-        return str(path.relative_to(repo))
-    except ValueError:
-        return str(path)
-
-
-def root_findings(root: ET.Element, stem: str) -> list[str]:
-    expected = {
-        "id": f"gitbook_{process_raw.LANGUAGE}_{stem}",
-        process_raw.XML_LANG: process_raw.LANGUAGE_CODE,
-        "source": process_raw.SOURCE_URLS[stem],
-        "copyright": "CC-BY-NC",
-        "citation": process_raw.CITATION,
-        "BibTeX_citation": process_raw.BIBTEX,
-        "dialect": process_raw.DIALECT,
-    }
-    return [
-        f"root {attribute}={root.get(attribute)!r}; expected {value!r}"
-        for attribute, value in expected.items()
-        if root.get(attribute) != value
-    ]
-
-
-def audit(
-    repo: Path,
-    xml_dir: Path,
-    *,
-    apply: bool,
-    require_generated: bool,
-) -> dict[str, object]:
-    source_dir = repo / "raw_data" / "Paiwan"
-    inventory = process_raw.source_inventory(source_dir)
-    findings: dict[str, list[str]] = {}
-    counts: Counter[str] = Counter()
-
-    if EXPECTED_SOURCE_HASHES:
-        for filename, expected_hash in EXPECTED_SOURCE_HASHES.items():
-            actual_hash = sha256(source_dir / filename)
-            if actual_hash != expected_hash:
-                findings.setdefault(filename, []).append(
-                    f"source ledger hash {actual_hash}; expected {expected_hash}"
+def audit(bank: Path, source_only: bool = False) -> dict[str, int]:
+    code = Path(__file__).resolve().parent
+    source = code / "raw_data" / "Paiwan"
+    pdf = source / "Website PWN-v1.2.pdf"
+    if hashlib.sha256(pdf.read_bytes()).hexdigest() != PDF_SHA256:
+        raise ValueError("The reviewed source PDF has changed")
+    columns: list[list[str]] = [[], [], []]
+    with pdfplumber.open(pdf) as document:
+        if len(document.pages) != 9:
+            raise ValueError("The source must contain nine pages")
+        for page in document.pages:
+            for index, (left, right) in enumerate([(88, 223), (230, 365), (372, 507)]):
+                text = page.crop((left, 70, right, 765)).extract_text(
+                    x_tolerance=1, y_tolerance=3
                 )
-
-    actual_xml = {path.name for path in xml_dir.glob("*.xml")}
-    expected_xml = {f"{stem}.xml" for stem in inventory}
-    if actual_xml != expected_xml:
-        findings["XML inventory"] = [
-            f"missing={sorted(expected_xml - actual_xml)}",
-            f"unexpected={sorted(actual_xml - expected_xml)}",
-        ]
-
+                if not text:
+                    raise ValueError("Unreadable source column")
+                columns[index].append(text)
+    streams = [compact("\n".join(pages)) for pages in columns]
+    cursors = [0, 0, 0]
+    inventory = process_raw.source_inventory(source)
+    matched = 0
     for stem, records in inventory.items():
-        expected_count = EXPECTED_RECORD_COUNTS[stem]
-        if len(records) != expected_count:
-            findings.setdefault(f"{stem}.txt", []).append(
-                f"source records={len(records)}; expected={expected_count}"
-            )
+        manifest = process_raw.SECTIONS[stem]
+        if hashlib.sha256((source / f"{stem}.txt").read_bytes()).hexdigest() != manifest["sha256"]:
+            raise ValueError(f"{stem}: reviewed source ledger changed")
+        if len(records) != int(manifest["records"]):
+            raise ValueError(f"{stem}: source coverage changed")
+        for key, record in zip(process_raw.record_keys(stem, len(records)), records, strict=True):
+            for index, value in enumerate((record.english, record.chinese, record.paiwan)):
+                needle = compact(value)
+                position = streams[index].find(needle, cursors[index])
+                if position < 0:
+                    raise ValueError(f"{stem}/{key['s_id']}: source field {index} absent or out of order")
+                cursors[index] = position + len(needle)
+                matched += 1
+    if source_only:
+        return {"pdf_pages": 9, "ordered_source_fields": matched, "records": matched // 3}
 
-        xml_path = xml_dir / f"{stem}.xml"
-        if not xml_path.exists():
-            continue
-        tree = ET.parse(xml_path)
-        root = tree.getroot()
-        file_findings = root_findings(root, stem)
+    sys.path.insert(0, str(bank))
+    from QC.cleaning.clean_xml import clean_text, clean_trans
+
+    count = 0
+    for stem, records in inventory.items():
+        root = ET.parse(code.parent / "XML" / "Paiwan" / f"{stem}.xml").getroot()
         sentences = root.findall("S")
-        if len(sentences) != len(records):
-            file_findings.append(f"sentences={len(sentences)}; source={len(records)}")
-            findings[display_path(xml_path, repo)] = file_findings
-            continue
-
-        for index, (sentence, record) in enumerate(zip(sentences, records, strict=True)):
-            locator = f"S={index}"
-            expected_form = canonical_form(record.paiwan)
-            if sentence.get("id") != str(index):
-                file_findings.append(f"{locator} id={sentence.get('id')!r}")
-
-            originals = direct(sentence, "FORM", "kindOf", "original")
-            chinese = direct(sentence, "TRANSL", process_raw.XML_LANG, "zho")
-            english = direct(sentence, "TRANSL", process_raw.XML_LANG, "eng")
-            if len(originals) != 1 or len(chinese) != 1 or len(english) != 1:
-                file_findings.append(
-                    f"{locator} source tier counts FORM={len(originals)} "
-                    f"zho={len(chinese)} eng={len(english)}"
-                )
-                continue
-
-            if apply:
-                originals[0].text = expected_form
-                chinese[0].text = record.chinese
-                english[0].text = record.english
-
-            expected_tiers = (
-                ("original FORM", originals[0].text or "", expected_form),
-                ("zho TRANSL", chinese[0].text or "", record.chinese),
-                ("eng TRANSL", english[0].text or "", record.english),
+        keys = process_raw.record_keys(stem, len(records))
+        if [s.get("id") for s in sentences] != [row["s_id"] for row in keys]:
+            raise ValueError(f"{stem}: source associations or order changed")
+        if root.findall(".//W") or root.findall(".//M") or root.findall(".//AUDIO"):
+            raise ValueError(f"{stem}: unsupported source tiers")
+        for sentence, record in zip(sentences, records, strict=True):
+            expected = (
+                ("FORM[@kindOf='original']", clean_text(html.unescape(unicodedata.normalize("NFC", record.paiwan)), "pwn")),
+                (f"TRANSL[@{process_raw.XML_LANG}='eng']", clean_trans(record.english, "eng")),
+                (f"TRANSL[@{process_raw.XML_LANG}='zho']", clean_trans(record.chinese, "zho")),
             )
-            for label, actual, expected in expected_tiers:
-                if actual != expected:
-                    file_findings.append(f"{locator} {label} differs from source")
-
-            if sentence.findall("W") or sentence.findall("M") or sentence.findall("AUDIO"):
-                file_findings.append(f"{locator} has unsupported W, M, or AUDIO tiers")
-
-            if require_generated:
-                standards = direct(sentence, "FORM", "kindOf", "standard")
-                original_phon = direct(sentence, "PHON", "kindOf", "original")
-                standard_phon = direct(sentence, "PHON", "kindOf", "standard")
-                if not all(len(tier) == 1 for tier in (standards, original_phon, standard_phon)):
-                    file_findings.append(
-                        f"{locator} generated tiers standard={len(standards)} "
-                        f"original-PHON={len(original_phon)} standard-PHON={len(standard_phon)}"
-                    )
-                elif standards[0].text != expected_form:
-                    file_findings.append(f"{locator} copied standard FORM differs from source")
-
-            counts["sentences"] += 1
-            counts["translations"] += 2
-
-        if apply and not file_findings:
-            ET.indent(root, space="  ")
-            tree.write(xml_path, encoding="utf-8", xml_declaration=True)
-            with xml_path.open("ab") as handle:
-                handle.write(b"\n")
-        if file_findings:
-            findings[display_path(xml_path, repo)] = file_findings
-
-    return {
-        "applied": apply,
-        "canonical_findings": findings,
-        "counts": dict(sorted(counts.items())),
-        "source": {
-            "files": len(inventory),
-            "included_records": sum(len(records) for records in inventory.values()),
-            "excluded_unaligned_headings": 2,
-            "reviewed_pdf_pages": EXPECTED_PDF_PAGES,
-            "reviewed_pdf_sha256": EXPECTED_PDF_SHA256,
-        },
-    }
+            for query, value in expected:
+                if sentence.findtext(query) != value:
+                    raise ValueError(f"{stem}/{sentence.get('id')}: {query} differs from cleaned source")
+            for query in ["FORM[@kindOf='standard']", "PHON[@kindOf='original']", "PHON[@kindOf='standard']"]:
+                if len(sentence.findall(query)) != 1:
+                    raise ValueError(f"{stem}/{sentence.get('id')}: missing or duplicate derived tier")
+            count += 1
+    return {"pdf_pages": 9, "ordered_source_fields": matched, "records": count, "final_source_fields": 3 * count}
 
 
 def main() -> int:
-    repo = Path(__file__).resolve().parent
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--repo", type=Path, default=repo)
-    parser.add_argument("--xml", type=Path)
-    parser.add_argument("--apply", action="store_true")
-    parser.add_argument("--require-generated", action="store_true")
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--formosanbank", type=Path, default=os.environ.get("FORMOSANBANK_ROOT"))
+    parser.add_argument("--source-only", action="store_true")
     args = parser.parse_args()
-
-    resolved_repo = args.repo.resolve()
-    xml_dir = (
-        args.xml.resolve()
-        if args.xml
-        else resolved_repo.parent / "XML" / "Paiwan"
-    )
-    result = audit(
-        resolved_repo,
-        xml_dir,
-        apply=args.apply,
-        require_generated=args.require_generated,
-    )
-    print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
-    return 1 if result["canonical_findings"] else 0
+    if not args.source_only and not args.formosanbank:
+        parser.error("Set FORMOSANBANK_ROOT or --formosanbank for final-tier checks")
+    print(json.dumps(audit(args.formosanbank, args.source_only), indent=2))
+    return 0
 
 
 if __name__ == "__main__":
