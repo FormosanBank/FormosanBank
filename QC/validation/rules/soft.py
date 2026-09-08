@@ -376,6 +376,50 @@ def v150_alternate_FORM_low_overlap(
     return findings
 
 
+def v151_S_TRANSL_has_no_kindOf(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V151 SOFT: an S-level TRANSL must not carry @kindOf.
+
+    `kindOf` on a TRANSL is a gloss-level distinction. At W and M level a
+    TRANSL carries a gloss, and `kindOf` separates the source's own gloss
+    (`original`) from a standardized one (`standard`) — the axis a future
+    gloss-standardization pass will use, and the reason
+    HundredPaiwanStories' 61,493 W/M uses are correct and must not be
+    stripped. At S level a TRANSL is a free translation: there is no
+    original-vs-standard axis and the attribute carries no information.
+
+    SOFT while Glosbe's 4,157 legacy S-level attributes remain in published
+    XML; shipping it HARD would fail CI on every branch in flight. It is
+    promoted to HARD by the Glosbe remediation, not here.
+
+    Aggregated per file — unlike V150, the population is in the thousands
+    and the fix is one scripted strip per file.
+    """
+    count = sum(
+        1 for s in tree.iter("S")
+        for child in s
+        if child.tag == "TRANSL" and child.get("kindOf") is not None
+    )
+    if count == 0:
+        return []
+    return [Finding(
+        rule_id="V151",
+        severity=Severity.SOFT,
+        message=(
+            f"{count} S-level TRANSL elements carry @kindOf; kindOf is a "
+            "gloss-level distinction and is meaningless on a free "
+            "translation (POL-025 amendment)"
+        ),
+        path=path,
+        count=count,
+        language=_tree_language(tree, path, index),
+        character="",
+    )]
+
+
 RULES: list = [
     v010_count_s_without_form,
     v014_count_missing_standard_form,
@@ -386,5 +430,7 @@ RULES: list = [
     v148_W_less_S_in_segmented_file,
     # POL-028 alternate FORMs (2026-09-08)
     v150_alternate_FORM_low_overlap,
+    # POL-025 S-level TRANSL @kindOf (2026-09-08)
+    v151_S_TRANSL_has_no_kindOf,
 ]
 CROSS_FILE_RULES: list = []
