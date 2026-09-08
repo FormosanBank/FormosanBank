@@ -12,6 +12,16 @@ the documentation cell; `ATTRIBUTES.md` and this patch were regenerated
 from the fix. See `.superpowers/sdd/2026-09-08-alternate-form-standardization/task-8-report.md`
 for the full fix report (root-cause file, tests, commands run).
 
+**Fix round 2 (2026-09-08, final review):** two wording fixes landed in
+`QC/validation/xml_template.xsd` — `S/@id`'s `-opt` suffix now cites
+POL-028 (POL-026 never mentions `-opt`; POL-028's scope clause does), and
+`FORM/@kindOf`'s V150 description now reads "overlap it **and** stay in
+proportion to it" (V150 flags if either condition fails, i.e. both must
+hold — the old "or" stated a disjunction that was never the rule).
+`ATTRIBUTES.md` and this patch were regenerated from those two fixes and
+reapplication against the live `formosanbank-xml-format.md` was reverified
+by the scratch-copy method.
+
 This is a patch for a **different repository**,
 `../FormosanBankGitbook` (`en-us/the-bank-architecture/formosanbank-xml-format.md`,
 the canonical English page). It could not be committed directly here: that
@@ -52,6 +62,32 @@ access to that repo) to apply.
 
 Only the English (`en-us`) canonical page is touched. Other language
 versions are out of scope per the task brief.
+
+## Second, separate change required: re-sync `policies.md`
+
+This branch also edits `POLICIES.md` (POL-028, POL-053, and an amendment
+to POL-025). `/workspace/FormosanBankGitbook/.github/workflows/tests.yaml`
+checks out FormosanBank@main and asserts that repo's synced
+`en-us/the-bank-architecture/policies.md` matches FormosanBank's canonical
+`POLICIES.md` byte-for-byte. Once this branch merges to FormosanBank main,
+that assertion starts failing — the GitBook repo's copy is stale — and it
+stays failing until someone re-syncs it. This is **unrelated to the patch
+above**: the patch touches `formosanbank-xml-format.md`, the policies sync
+touches `policies.md`, and they must be applied as two separate changes.
+
+To re-sync, in the GitBook repo:
+
+```bash
+cd /workspace/FormosanBankGitbook
+python sync_upstream_docs.py
+git status --short   # confirm only policies.md changed
+```
+
+Commit and push (or PR) the result the same way as any other GitBook
+change. Until this is done, `tests.yaml` in the GitBook repo will fail on
+every push/PR there, not because of anything wrong in that repo but
+because its copy of the policies page is out of date relative to
+FormosanBank@main.
 
 ## How to apply
 

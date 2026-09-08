@@ -281,13 +281,19 @@ Next free id is V149.
   wants a reviewer's eye; at ≤5 it would suppress `tâu`/`ratta`, a genuine
   Latham defect.
 
-  The proportion condition is what makes that exemption safe. On its own the
-  short-form exemption would wave through any short form paired with a long
-  one; `hi > 2 * lo` catches exactly that, independent of similarity, so a
+  The proportion condition catches *disproportionate* pairs specifically —
+  it does not close every hole the short-form exemption opens. On its own
+  the short-form exemption would wave through any short form paired with a
+  long one; `hi > 2 * lo` catches that case, independent of similarity, so a
   truncation or an expansion is flagged for being disproportionate even when it
   scores well on overlap. On current data it fires on two pairs —
   `tigp`/`tigpapahoang` (4 vs 12, where it gives the better reason: a
-  truncation) and `am`/`namen` (2 vs 5).
+  truncation) and `am`/`namen` (2 vs 5). It does not catch every pair the
+  short-form exemption admits: any pair with the shorter form ≤2 characters
+  and the longer at most twice that (every 1-1, 1-2, 2-2, 2-3, and 2-4 pair,
+  at any overlap) escapes both conditions by design. Formosan function words
+  are overwhelmingly 1–2 characters, so this residue is real; it is left to
+  review rather than to a threshold.
 
   **12 findings** repo-wide, 10 from overlap, 1 from proportion alone, 1 from
   both. Neither condition rescues `pipangn-epen`/`pipangengne-eben` (ratio 0.57,

@@ -538,8 +538,10 @@ def v026_M_transl_kindof_enum(
 ) -> list[Finding]:
     """V026: TRANSL/@kindOf at M level must be 'original' or 'standard' when set.
 
-    Free-form values (e.g., 'DeepL', 'freeform') are only valid at the
-    sentence/text tier. M-level TRANSL kindOf is strictly enumerated.
+    Free-form values (e.g., 'DeepL', 'freeform') are not valid anywhere as
+    of 2026-09-08 (TRANSL_kindOf_Type); S-level TRANSL/@kindOf is forbidden
+    outright (V151). M-level TRANSL kindOf is strictly enumerated, as it
+    always was.
 
     Partly redundant since 2026-09-08: the XSD's TRANSL_kindOf_Type now
     restricts this value at every level, so a bad value fails V000 first.

@@ -29,7 +29,7 @@ regenerated catalogue, and a policy entry (POL-053).
 | Attribute | Use | Allowed values | Meaning |
 | --- | --- | --- | --- |
 | `audio_url` | optional | `xs:string` | Source URL for this sentence's audio, where the recording is addressed by URL rather than by file. |
-| `id` | required | `xs:string` | Sentence identifier, unique across all S, W and M within the file (V039). Part of the public identifier surface (POL-037). A sentence split from another for optional material takes the original's id plus `-opt` (POL-026). |
+| `id` | required | `xs:string` | Sentence identifier, unique across all S, W and M within the file (V039). Part of the public identifier surface (POL-037). A sentence split from another for optional material takes the original's id plus `-opt` (POL-028). |
 | `source` | optional | `xs:string` | Sentence-specific provenance — page, column, or editorial note about where this particular sentence came from. |
 
 ## `<W>`
@@ -52,7 +52,7 @@ regenerated catalogue, and a policy entry (POL-053).
 
 | Attribute | Use | Allowed values | Meaning |
 | --- | --- | --- | --- |
-| `kindOf` | required | `original \| standard \| alternate` | Which tier this FORM belongs to. `original` is the text as the actual source prints it, preserving the source's orthographic choices. `standard` is that content transliterated into FormosanBank's common standard orthography. `alternate` is a spelling variant of a sibling FORM on the same node (POL-028); it requires a non-alternate sibling (V149) and must overlap it or stay in proportion to it (V150). |
+| `kindOf` | required | `original \| standard \| alternate` | Which tier this FORM belongs to. `original` is the text as the actual source prints it, preserving the source's orthographic choices. `standard` is that content transliterated into FormosanBank's common standard orthography. `alternate` is a spelling variant of a sibling FORM on the same node (POL-028); it requires a non-alternate sibling (V149) and must overlap it and stay in proportion to it (V150). |
 | `notes` | optional | `xs:string` | Human-readable qualification of this FORM — a transcription note, a review status, or what the source actually printed where the tier departs from it. |
 
 ## `<PHON>`

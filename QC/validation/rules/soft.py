@@ -312,10 +312,24 @@ def v150_alternate_FORM_low_overlap(
       sibling is below 0.6. Pairs whose *shorter* form is 2 characters or
       fewer are exempt, because a one- or two-letter form cannot produce a
       meaningful ratio (Wakelin's `a`/`u` scores 0.00 and is correct).
-    * **proportion** — the longer form is more than twice the shorter. This
-      is what makes the short-form exemption safe: on its own that exemption
-      would wave through any short form paired with a long one, and a
-      truncation or expansion is not a spelling variant however it scores.
+    * **proportion** — the longer form is more than twice the shorter.
+      Catches *disproportionate* pairs specifically: on its own the overlap
+      exemption above would wave through any short form paired with a long
+      one, and a truncation or expansion is not a spelling variant however
+      it scores. It does not close every hole that exemption opens — any
+      pair with the shorter form <=2 chars and the longer at most 2x that
+      escapes both conditions regardless of overlap; those are left to
+      review by design (see POL-028).
+
+    The two conditions are asymmetric on purpose, not by oversight: the
+    overlap condition has a short-form floor (`lo > _ALT_SHORT_EXEMPT`) so
+    a 1- or 2-character pair is never judged on an unmeasurable ratio, but
+    the proportion condition has no such floor. At length 1, doubling is a
+    difference of a single extra character, so `a`/`aya` (1 vs 3) fails
+    proportion while POL-028's own worked example `a`/`u` (1 vs 1) passes
+    both. This is deliberate — proportion is about the *ratio* of lengths,
+    which is genuinely more volatile at length 1 — and is not to be
+    "fixed" by adding a floor here without a re-ruling.
 
     SOFT, not HARD: legitimate pairs sit below the ratio and cannot be
     separated by any threshold (`pipangn-epen`/`pipangengne-eben`, 0.57).
@@ -339,7 +353,8 @@ def v150_alternate_FORM_low_overlap(
                 (
                     (
                         difflib.SequenceMatcher(
-                            None, _fold(alt_text), _fold(base.text)
+                            None, _fold(alt_text), _fold(base.text),
+                            autojunk=False,
                         ).ratio(),
                         (base.text or "").strip(),
                     )
@@ -392,8 +407,16 @@ def v151_S_TRANSL_has_no_kindOf(
     original-vs-standard axis and the attribute carries no information.
 
     SOFT while Glosbe's 4,157 legacy S-level attributes remain in published
-    XML; shipping it HARD would fail CI on every branch in flight. It is
-    promoted to HARD by the Glosbe remediation, not here.
+    XML. This is not about CI: `.github/workflows/xml-validation.yaml`'s
+    PR job only blocks HARD fingerprints newly introduced in files a PR
+    actually touches, and its full-corpus job runs with
+    --no-exit-on-hard, so a HARD V151 would block only PRs that themselves
+    touch Glosbe's three `_tmem.xml` files. The real cost is local and
+    tooling-wide: a HARD rule firing 4,157 times makes validate_xml.py
+    exit 1 on every local run over Glosbe (or the whole corpus) and on
+    every run-qc-pipeline invocation that includes it, and it poisons the
+    longitudinal finding baseline with 4,157 entries that never clear. It
+    is promoted to HARD by the Glosbe remediation, not here.
 
     Aggregated per file — unlike V150, the population is in the thousands
     and the fix is one scripted strip per file.

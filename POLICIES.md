@@ -334,7 +334,10 @@ WakelinTexts use it on W and M, which is correct.
 `ver`.** It is meaningful only at W and M level, where a TRANSL carries a
 gloss: `original` is the source's own gloss, `standard` a standardized one.
 On an S-level TRANSL — a free translation — there is no such axis and the
-attribute carries no information (V151). Amended 2026-09-08.
+attribute carries no information (V151). Glosbe currently carries 4,157
+such S-level `kindOf` attributes; V151 ships SOFT rather than HARD until
+they are remediated (see `claudeplans/2026-09-08-alternate-form-worklist.md`).
+Amended 2026-09-08.
 
 ### POL-026 · RULED · 2026-08-10 · optional material in examples
 A source sentence with optional words — `x y (z)` — becomes **two S
@@ -366,9 +369,14 @@ on the same node. It is the only marking for this: not `ver`, not
 
   Proportion is a separate test because overlap alone cannot catch it: a
   short form paired with a long one shares a short member, and a short-form
-  exemption written against the shorter string would wave it through. The
-  operative thresholds live in V150, deliberately not here, so they can be
-  tuned from evidence without a re-ruling.
+  exemption written against the shorter string would wave it through.
+  Proportion catches *disproportionate* pairs specifically — it does not
+  close every hole the short-form exemption opens. Very short pairs (the
+  shorter form at or under 2 characters, the longer at most twice that) are
+  exempt from both conditions by design and rely on review, not on either
+  test, to catch a mismatched pair. The operative thresholds live in V150,
+  deliberately not here, so they can be tuned from evidence without a
+  re-ruling.
 - **The variation may span the whole form.** A one-letter word alternating
   `a`/`u` (WakelinTexts `Kwaway/S2W3`) is as valid an alternate as a letter
   changing inside a longer word. Nothing requires the variation to be
@@ -881,16 +889,16 @@ between the tools and the bytes that no longer holds.
 
 ### POL-053 · RULED · 2026-09-08 · XML attributes are a closed, documented set
 Every attribute a FormosanBank XML file may carry is declared in
-[QC/validation/xml_template.xsd](QC/validation/xml_template.xsd) and carries
-an `xs:annotation/xs:documentation` stating its meaning and allowed values.
+`QC/validation/xml_template.xsd` and carries an `xs:annotation/xs:documentation`
+stating its meaning and allowed values.
 
 The schema declares no `anyAttribute`, so an undeclared attribute already
 fails `validate_xml.py`. This policy names that as a deliberate guarantee
 rather than an accident of the schema: **the attribute set is a whitelist.**
 
-[QC/validation/ATTRIBUTES.md](QC/validation/ATTRIBUTES.md) is generated from
-the XSD by `attributes_catalogue.py` and is never hand-edited, on the same
-terms as `RULES.md` (POL-039 — derived, not retyped).
+`QC/validation/ATTRIBUTES.md` is generated from the XSD by
+`attributes_catalogue.py` and is never hand-edited, on the same terms as
+`RULES.md` (POL-039 — derived, not retyped).
 
 **Adding an attribute requires four things:** an XSD declaration, an
 `xs:documentation` annotation, a regenerated catalogue, and a policy entry.

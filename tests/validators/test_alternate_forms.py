@@ -177,3 +177,23 @@ def test_v150_ignores_diacritics():
 def test_v150_no_base_sibling_is_left_to_v149():
     tree = _tree('<W id="W1"><FORM kindOf="alternate">soa</FORM></W>')
     assert _v150(tree) == []
+
+
+def test_v150_long_near_identical_pair_does_not_collapse():
+    """A >200-character pair differing by a single letter must score near
+    1.0, not be dragged down by difflib's default autojunk heuristic.
+
+    difflib.SequenceMatcher(autojunk=True) (the default) treats any element
+    occurring more than len(b)//100 + 1 times in a sequence of length >=200
+    as "popular" and excludes it from matching. Natural-language text is
+    mostly a small alphabet repeated often, so at this length nearly every
+    character gets marked junk and the ratio collapses even though only one
+    character actually differs. This reproduces that failure mode with
+    repeated phrase text (as opposed to a hand-picked pathological string)
+    and pins the fix: the rule must pass autojunk=False.
+    """
+    phrase = "sasavakan ku wawa i cireng no riyar "
+    base = (phrase * 10)[:220]
+    alt = base[:110] + ("q" if base[110] != "q" else "p") + base[111:]
+    assert len(base) >= 200
+    assert _v150(_pair("original", base, alt)) == []

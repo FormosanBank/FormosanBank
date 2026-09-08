@@ -4,8 +4,13 @@ Opened 2026-09-08 alongside POL-028, POL-053 and rules V149–V151.
 Spec: `docs/superpowers/specs/2026-09-08-alternate-form-standardization-design.md`
 
 The rules shipped without remediating the data they flag, deliberately: a
-HARD rule failing on published XML would block every branch in flight. This
-file is what closes that gap.
+HARD rule firing thousands of times on published XML (Glosbe's 4,157
+S-level `TRANSL/@kindOf`) would make `validate_xml.py` exit 1 on every
+local run that touches it — including every `run-qc-pipeline` invocation —
+and would poison the longitudinal finding baseline, not just block CI (the
+PR workflow only blocks HARD fingerprints newly introduced in files a PR
+touches, and the full-corpus job is non-blocking). This file is what closes
+that gap.
 
 ## Item 1 — Latham-1862 cross-lexeme alternates (V150)
 
@@ -54,7 +59,11 @@ Ordered; step 4 is what closes the item:
    docstring, and regenerate `RULES.md`.
 
 Step 4 lives here rather than in the change that introduced V151 so that
-introducing the rule could not fail CI on any branch already in flight.
+introducing the rule did not make `validate_xml.py` exit 1 on every local
+run over Glosbe (or the whole corpus) and did not poison the longitudinal
+finding baseline with 4,157 entries that would never clear. (It would not,
+on its own, have blocked CI beyond PRs that themselves touch Glosbe's three
+`_tmem.xml` files — see V151's docstring in `QC/validation/rules/soft.py`.)
 
 ## Confirmed fine — do not re-litigate
 

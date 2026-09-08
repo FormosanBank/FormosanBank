@@ -73,6 +73,21 @@ def test_schema_still_accepts_a_representative_document():
     schema.assertValid(doc)
 
 
+def test_schema_declares_no_any_attribute():
+    """POL-053's whitelist claim rests on there being no xs:anyAttribute
+    escape hatch anywhere in the schema, not just on FORM (the one element
+    test_schema_rejects_an_undeclared_attribute probes). Checked repo-wide
+    so the guarantee POL-053, attributes_catalogue.py's docstring,
+    ATTRIBUTES.md's preamble, and the GitBook page all assert is actually
+    tested, not just assumed."""
+    tree = etree.parse(str(XSD))
+    any_attrs = list(tree.iter(f"{XS}anyAttribute"))
+    assert not any_attrs, (
+        "POL-053: the schema must declare no xs:anyAttribute anywhere, "
+        f"found {len(any_attrs)}"
+    )
+
+
 def test_schema_rejects_an_undeclared_attribute():
     """The whitelist half of POL-053, asserted rather than assumed."""
     from io import BytesIO

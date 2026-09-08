@@ -84,7 +84,7 @@
           FormosanBank's common standard orthography. `alternate` is a
           spelling variant of a sibling FORM on the same node (POL-028);
           it requires a non-alternate sibling (V149) and must overlap it
-          or stay in proportion to it (V150).
+          and stay in proportion to it (V150).
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
@@ -322,7 +322,7 @@
           Sentence identifier, unique across all S, W and M within the
           file (V039). Part of the public identifier surface (POL-037).
           A sentence split from another for optional material takes the
-          original's id plus `-opt` (POL-026).
+          original's id plus `-opt` (POL-028).
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
