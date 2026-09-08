@@ -1,5 +1,25 @@
 # GitBook XML-format doc patch (Task 8)
 
+> **STATUS 2026-09-08: already applied — do not apply again.**
+>
+> Both changes described below are committed on the branch
+> **`docs/xml-attribute-inventory`** in the GitBook repository
+> (`/workspace/FormosanBankGitBook`, commit `17e84ec`), which was clean on
+> `main` when the branch was cut. Nothing has been pushed.
+>
+> That commit contains the patch below **and** the `policies.md` re-sync
+> that the rest of this file describes as a separate second step — both are
+> done. The instructions further down are retained as the record of how the
+> patch was produced and how to reapply it if the branch is ever discarded.
+>
+> **Sequencing still matters.** That branch must merge *after* FormosanBank's
+> `worktree-alternate-form-standardization`. Until then
+> `tests/test_upstream_doc_sync.py::test_synced_page_matches_canonical[policies]`
+> fails there, because the synced page carries POL-028 and POL-053 while
+> upstream `main` does not yet. This is an ordering artifact, not a defect:
+> `sync_upstream_docs.py --check --formosanbank <this worktree>` reports
+> both documents "in sync". The GitBook repo's other 29 tests pass.
+
 **Fix round 1 (2026-09-08):** the patch below was regenerated after a
 rendering-defect fix in `QC/validation/attributes_catalogue.py`. The
 "Allowed values" cell for enumerated attributes (e.g. `FORM/@kindOf` →
