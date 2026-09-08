@@ -51,7 +51,7 @@ def _element_name(complex_type: etree._Element) -> str | None:
 
 
 def _enumerations(schema: etree._ElementTree) -> dict[str, str]:
-    """simpleType name -> 'a | b | c' for every enumerated type."""
+    """simpleType name -> 'a | b | c' for every *named* enumerated type."""
     out: dict[str, str] = {}
     for simple in schema.iter(f"{XS}simpleType"):
         name = simple.get("name")
@@ -61,6 +61,21 @@ def _enumerations(schema: etree._ElementTree) -> dict[str, str]:
         if values:
             out[name] = " | ".join(values)
     return out
+
+
+def _inline_enum(attribute: etree._Element) -> str:
+    """'a | b | c' for an attribute whose enumeration is declared inline
+
+    (an `<xs:simpleType>` child under the attribute itself, rather than a
+    `type="SomeName"` reference to a named simpleType). Legal XSD, and
+    without this an attribute shaped this way would silently render '—'
+    despite having real enumerated values.
+    """
+    simple = attribute.find(f"{XS}simpleType")
+    if simple is None:
+        return ""
+    values = [e.get("value") for e in simple.iter(f"{XS}enumeration")]
+    return " | ".join(values)
 
 
 def _documentation(attribute: etree._Element) -> str:
@@ -87,7 +102,7 @@ def collect() -> list[tuple[str, str, str, str, str]]:
             name = attribute.get("name") or attribute.get("ref") or "?"
             use = attribute.get("use") or "optional"
             type_name = attribute.get("type") or ""
-            values = enums.get(type_name, "")
+            values = enums.get(type_name, "") or _inline_enum(attribute)
             if not values and type_name.startswith("xs:"):
                 values = type_name
             rows.append((element, name, use, values, _documentation(attribute)))
@@ -99,6 +114,18 @@ def collect() -> list[tuple[str, str, str, str, str]]:
         return (rank, element, attribute)
 
     return sorted(rows, key=sort_key)
+
+
+def _table_cell(text: str) -> str:
+    """Escape a value for use inside a Markdown table cell.
+
+    Documentation text is free-form prose pulled from the XSD; a literal
+    `|` in it would otherwise be read as a column delimiter and misalign
+    or split the row. Enum-value cells are built separately and
+    deliberately use unescaped ` | ` as their own visual separator, so
+    this is applied only to the documentation column.
+    """
+    return text.replace("|", "\\|")
 
 
 def render() -> str:
@@ -120,6 +147,8 @@ def render() -> str:
     current = None
     for element, attribute, use, values, doc in rows:
         if element != current:
+            if current is not None:
+                out.append("")
             current = element
             out += [
                 f"## `<{element}>`",
@@ -128,7 +157,7 @@ def render() -> str:
                 "| --- | --- | --- | --- |",
             ]
         shown = f"`{values}`" if values else "—"
-        out.append(f"| `{attribute}` | {use} | {shown} | {doc} |")
+        out.append(f"| `{attribute}` | {use} | {shown} | {_table_cell(doc)} |")
     out += ["", f"{len(rows)} attributes across {len(set(r[0] for r in rows))} elements.", ""]
     return "\n".join(out)
 
@@ -155,11 +184,14 @@ def main() -> int:
     if args.check:
         current = OUTPUT.read_text(encoding="utf-8") if OUTPUT.exists() else ""
         if current != rendered:
-            print(f"{OUTPUT.name} is stale — regenerate it.", file=sys.stderr)
+            print(f"{OUTPUT} is stale; run: python {Path(__file__).name}",
+                  file=sys.stderr)
             return 1
+        print(f"{OUTPUT} is current.")
         return 0
     OUTPUT.write_text(rendered, encoding="utf-8")
-    print(f"wrote {OUTPUT}")
+    rows = collect()
+    print(f"Wrote {OUTPUT} ({len(rows)} attributes)")
     return 0
 
 

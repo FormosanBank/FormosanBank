@@ -7,6 +7,7 @@ this test enforces the first three.
 """
 from __future__ import annotations
 
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -16,6 +17,27 @@ GENERATOR = REPO_ROOT / "QC/validation/attributes_catalogue.py"
 CATALOGUE = REPO_ROOT / "QC/validation/ATTRIBUTES.md"
 
 sys.path.insert(0, str(REPO_ROOT))
+
+_SECTION_HEADING = re.compile(r"^## `<(\w+)>`$")
+
+
+def _sections(text: str) -> dict[str, str]:
+    """element -> the text of its '## <ELEMENT>' section (its table)."""
+    sections: dict[str, str] = {}
+    current = None
+    buf: list[str] = []
+    for line in text.splitlines():
+        match = _SECTION_HEADING.match(line)
+        if match:
+            if current is not None:
+                sections[current] = "\n".join(buf)
+            current = match.group(1)
+            buf = []
+        elif current is not None:
+            buf.append(line)
+    if current is not None:
+        sections[current] = "\n".join(buf)
+    return sections
 
 
 def test_catalogue_is_current():
@@ -42,12 +64,26 @@ def test_every_attribute_is_documented():
 
 
 def test_catalogue_names_every_attribute():
+    """Every (element, attribute) pair has a row under its *own* section.
+
+    Several attribute names (id, source, class, sclass, kindOf) recur
+    across multiple elements. A bare substring search for an attribute's
+    table-row marker anywhere in the file would pass even if that
+    element's own row were dropped or corrupted, as long as some other
+    element's same-named row survived — so this scopes the check to the
+    matching '## <ELEMENT>' section, mirroring how test_rules_catalogue.py
+    pairs rule_id with mnemonic to make the key effectively unique.
+    """
     from QC.validation.attributes_catalogue import collect
 
-    text = CATALOGUE.read_text(encoding="utf-8")
+    sections = _sections(CATALOGUE.read_text(encoding="utf-8"))
     for element, attribute, _use, _values, _doc in collect():
-        assert f"| `{attribute}` |" in text, (
-            f"{element}/@{attribute} is not in {CATALOGUE.name}"
+        assert element in sections, (
+            f"no '## <{element}>' section in {CATALOGUE.name}"
+        )
+        assert f"| `{attribute}` |" in sections[element], (
+            f"{element}/@{attribute} row is missing from its own "
+            f"'## <{element}>' section in {CATALOGUE.name}"
         )
 
 
@@ -67,3 +103,67 @@ def test_required_attributes_are_marked():
     assert rows[("TEXT", "id")] == "required"
     assert rows[("FORM", "kindOf")] == "required"
     assert rows[("TEXT", "source")] == "optional"
+
+
+def test_inline_anonymous_enum_is_surfaced(tmp_path, monkeypatch):
+    """An attribute whose enumeration is an inline <xs:simpleType> child
+
+    (rather than a `type="Named_Type"` reference to a separately declared
+    simpleType) must still surface its allowed values. `_enumerations()`
+    only indexes *named* simpleTypes, so this exercises the `_inline_enum`
+    fallback in `collect()` against a real (if minimal) schema — the shape
+    the XSD legally permits and that the reviewer flagged as untested.
+    """
+    from QC.validation import attributes_catalogue as ac
+
+    schema = tmp_path / "mini.xsd"
+    schema.write_text(
+        '<?xml version="1.0"?>\n'
+        '<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">\n'
+        '  <xs:complexType name="ZZZ_Type">\n'
+        '    <xs:attribute name="mode">\n'
+        '      <xs:annotation><xs:documentation>inline enum test'
+        "</xs:documentation></xs:annotation>\n"
+        "      <xs:simpleType>\n"
+        '        <xs:restriction base="xs:string">\n'
+        '          <xs:enumeration value="a"/>\n'
+        '          <xs:enumeration value="b"/>\n'
+        "        </xs:restriction>\n"
+        "      </xs:simpleType>\n"
+        "    </xs:attribute>\n"
+        "  </xs:complexType>\n"
+        "</xs:schema>\n",
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(ac, "SCHEMA", schema)
+
+    rows = ac.collect()
+
+    assert rows == [("ZZZ", "mode", "optional", "a | b", "inline enum test")]
+
+
+def test_pipe_in_documentation_does_not_break_table_row(monkeypatch):
+    """A literal '|' in an xs:documentation string must not corrupt the
+
+    table: `render()` builds rows as
+    `| attribute | use | values | documentation |`, so an unescaped pipe
+    inside the documentation column would be read as an extra column
+    delimiter and misalign or split the row. No current attribute's
+    documentation contains one (nothing here fires against the real
+    schema), so this synthesizes a row via a monkeypatched `collect()` to
+    pin the escaping behavior the reviewer flagged as untested.
+    """
+    from QC.validation import attributes_catalogue as ac
+
+    fake_row = ("TEXT", "zzz", "optional", "", "has a | pipe | in it")
+    monkeypatch.setattr(ac, "collect", lambda: [fake_row])
+
+    rendered = ac.render()
+
+    lines = [line for line in rendered.splitlines() if line.startswith("| `zzz`")]
+    assert len(lines) == 1, rendered
+    row = lines[0]
+    # Exactly 4 columns -> 5 unescaped '|' delimiters. The 2 literal pipes
+    # in the documentation must be escaped, not counted as delimiters.
+    assert row.count("|") - row.count("\\|") == 5, row
+    assert "has a \\| pipe \\| in it" in row

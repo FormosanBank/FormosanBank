@@ -23,6 +23,7 @@ regenerated catalogue, and a policy entry (POL-053).
 | `id` | required | `xs:string` | Stable public identifier for this text, unique across the published bank (V081). Renaming one breaks external references — see POL-037. |
 | `source` | optional | `xs:string` | Free-text provenance for the whole text — the publication, page, URL or collection it came from. |
 | `xml:lang` | required | — | ISO 639-3 code for the language of the Formosan-text tiers, validated against `QC/validation/iso-639-3.txt` (V035). Note `trv` covers the whole Seediq family: `trv` plus `dialect="Truku"` is Truku, anything else is Seediq. |
+
 ## `<S>`
 
 | Attribute | Use | Allowed values | Meaning |
@@ -30,6 +31,7 @@ regenerated catalogue, and a policy entry (POL-053).
 | `audio_url` | optional | `xs:string` | Source URL for this sentence's audio, where the recording is addressed by URL rather than by file. |
 | `id` | required | `xs:string` | Sentence identifier, unique across all S, W and M within the file (V039). Part of the public identifier surface (POL-037). A sentence split from another for optional material takes the original's id plus `-opt` (POL-026). |
 | `source` | optional | `xs:string` | Sentence-specific provenance — page, column, or editorial note about where this particular sentence came from. |
+
 ## `<W>`
 
 | Attribute | Use | Allowed values | Meaning |
@@ -37,6 +39,7 @@ regenerated catalogue, and a policy entry (POL-053).
 | `class` | optional | `xs:string` | Grammatical class label for the word. The schema imposes no controlled vocabulary. |
 | `id` | required | `xs:string` | Word identifier, unique across all S, W and M within the file (V039). |
 | `sclass` | optional | `xs:string` | Grammatical subclass label for the word. The schema imposes no controlled vocabulary. |
+
 ## `<M>`
 
 | Attribute | Use | Allowed values | Meaning |
@@ -44,17 +47,20 @@ regenerated catalogue, and a policy entry (POL-053).
 | `class` | optional | `xs:string` | Grammatical class label for the morpheme. The schema imposes no controlled vocabulary. |
 | `id` | required | `xs:string` | Morpheme identifier, unique across all S, W and M within the file (V039). |
 | `sclass` | optional | `xs:string` | Grammatical subclass label for the morpheme. The schema imposes no controlled vocabulary. |
+
 ## `<FORM>`
 
 | Attribute | Use | Allowed values | Meaning |
 | --- | --- | --- | --- |
 | `kindOf` | required | `original | standard | alternate` | Which tier this FORM belongs to. `original` is the text as the actual source prints it, preserving the source's orthographic choices. `standard` is that content transliterated into FormosanBank's common standard orthography. `alternate` is a spelling variant of a sibling FORM on the same node (POL-028); it requires a non-alternate sibling (V149) and must overlap it or stay in proportion to it (V150). |
 | `notes` | optional | `xs:string` | Human-readable qualification of this FORM — a transcription note, a review status, or what the source actually printed where the tier departs from it. |
+
 ## `<PHON>`
 
 | Attribute | Use | Allowed values | Meaning |
 | --- | --- | --- | --- |
 | `kindOf` | optional | `original | standard` | Which FORM tier this IPA representation was derived from, `original` or `standard` (V071). A parent may carry at most one PHON per value (V072). |
+
 ## `<TRANSL>`
 
 | Attribute | Use | Allowed values | Meaning |
@@ -63,6 +69,7 @@ regenerated catalogue, and a policy entry (POL-053).
 | `notes` | optional | `xs:string` | Human-readable qualification of this translation — translator, review status, or a literal reading kept out of the translation text itself (POL-024). |
 | `ver` | optional | `xs:string` | Discriminates multiple translations into the same language on one parent (POL-025). When a parent has two or more same-language TRANSLs, all but one must carry this (V085). The allowed values are owned by V084's allowlist — currently `{"alt"}` — deliberately not duplicated as an XSD enumeration, so there is one place to update. |
 | `xml:lang` | optional | — | ISO 639-3 code for the language this translation is *into* — not the language of the text (V023, V035). |
+
 ## `<AUDIO>`
 
 | Attribute | Use | Allowed values | Meaning |
