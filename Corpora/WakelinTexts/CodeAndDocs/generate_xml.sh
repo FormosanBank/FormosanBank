@@ -71,7 +71,10 @@ step "4. apply_r_caron_words (standard tier only)"
 "$PY" "$CODEDOCS/apply_r_caron_words.py" \
   --xml-dir "$XML" --words "$CODEDOCS/r_caron_words.tsv"
 
-step "5. add_phonology (Wakelin profile for original, Ortho113 for standard)"
+step "5. resolve_standard_parentheses (standard tier only)"
+"$PY" "$CODEDOCS/resolve_standard_parentheses.py" --xml-dir "$XML"
+
+step "6. add_phonology (Wakelin profile for original, Ortho113 for standard)"
 "$PY" "$BANK/QC/utilities/add_phonology.py" \
   --corpora_path "$XML" --orthography Wakelin
 
