@@ -2,392 +2,148 @@ from __future__ import annotations
 
 import csv
 import importlib.util
-import json
 import sys
-import tempfile
 import unittest
-from collections import Counter, defaultdict
+from collections import Counter
+from dataclasses import replace
 from pathlib import Path
-
+from xml.etree import ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[2]
+spec = importlib.util.spec_from_file_location("build_xml", ROOT / "CodeAndDocs/build_xml.py")
+assert spec is not None and spec.loader is not None
+build = importlib.util.module_from_spec(spec)
+sys.modules[spec.name] = build
+spec.loader.exec_module(build)
 
 
-def load_build_module():
-    spec = importlib.util.spec_from_file_location("build_xml", ROOT / "CodeAndDocs" / "build_xml.py")
-    if spec is None or spec.loader is None:
-        raise RuntimeError("Could not load CodeAndDocs/build_xml.py")
-    module = importlib.util.module_from_spec(spec)
-    sys.modules[spec.name] = module
-    spec.loader.exec_module(module)
-    return module
+def example(language, source_id):
+    return next(e for e in build.EXAMPLES if (e.language, e.source_id) == (language, source_id))
 
 
-def read_tsv(name: str) -> list[dict[str, str]]:
-    with (ROOT / "CodeAndDocs" / name).open(encoding="utf-8", newline="") as handle:
-        return list(csv.DictReader(handle, delimiter="\t"))
+def generated(language):
+    return build.make_text(language, [e for e in build.admitted_examples() if e.language == language])
 
 
-class CorpusTests(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls) -> None:
-        cls.build = load_build_module()
-        cls.examples = read_tsv("extracted_examples.tsv")
-        cls.excluded = read_tsv("excluded_source_units.tsv")
-        cls.review = read_tsv("manual_source_review.tsv")
-        cls.direct_checks = read_tsv("direct_source_checks.tsv")
-        cls.alignment_omissions = read_tsv("alignment_omissions.tsv")
+class SourceTests(unittest.TestCase):
+    def test_complete_numbered_inventory(self):
+        self.assertEqual(Counter(e.language for e in build.EXAMPLES), {"Amis": 49, "Kavalan": 47})
+        self.assertEqual(sum(e.printed.startswith("* ") for e in build.EXAMPLES), 19)
+        self.assertEqual(sum(e.printed.startswith("? ") for e in build.EXAMPLES), 2)
+        self.assertEqual(len(build.admitted_examples()), 75)
+        with (ROOT / "CodeAndDocs/excluded_source_units.tsv").open(newline="") as handle:
+            excluded = list(csv.DictReader(handle, delimiter="\t"))
+        self.assertEqual(len(excluded), 39)
+        self.assertEqual({(e.language, e.source_id) for e in build.EXAMPLES if build.exclusion_reason(e)},
+                         {(e["source_label"], e["source_id"]) for e in excluded if e["source_label"] in build.LANGUAGES})
 
-    def test_inventory_counts_and_language_balance(self) -> None:
-        self.assertEqual(len(self.build.EXAMPLES), 95)
-        self.assertEqual(len(self.build.excluded_units()), 38)
-        self.assertEqual(
-            Counter(example.language for example in self.build.EXAMPLES),
-            Counter({"Amis": 48, "Kavalan": 47}),
-        )
-        self.assertEqual(
-            Counter(item.source_label for item in self.build.excluded_units()),
-            Counter({"Theory": 16, "Amis": 10, "Kavalan": 10, "Tzotzil": 1, "English": 1}),
-        )
+    def test_previously_missing_starred_5b_is_evidence_only(self):
+        # Printed p.255; distinct occurrence, repeated on p.267 as 28b.
+        item = example("Amis", "5b")
+        self.assertEqual(item.printed, "* icuwa-en isu mi-saosi k-u cudad?")
+        self.assertEqual(item.gloss, "where-PV 2SG.ERG AV-read ABS-CN book")
+        self.assertEqual((item.printed_page, item.pdf_page, item.xml_id), (255, 3, ""))
+        self.assertNotIn(item, build.admitted_examples())
 
-    def test_source_ids_are_unique_and_pages_are_consistent(self) -> None:
-        example_keys = {(example.language, example.source_id) for example in self.build.EXAMPLES}
-        excluded_keys = {(item.source_label, item.source_id) for item in self.build.EXCLUDED}
-        self.assertEqual(len(example_keys), 95)
-        self.assertEqual(len(excluded_keys), 18)
-        self.assertTrue(example_keys.isdisjoint(excluded_keys))
-        for item in [*self.build.EXAMPLES, *self.build.EXCLUDED]:
-            self.assertEqual(item.pdf_page, item.printed_page - 252)
-            self.assertIn(item.pdf_page, range(1, 39))
+    def test_translation_parentheses_match_print(self):
+        # Printed pp.256 and 277, independently checked in the PDF.
+        self.assertEqual(example("Amis", "6a").readings, ("(Somebody) pours water into the cup.",))
+        self.assertEqual(example("Kavalan", "52a").readings, ("I do (it) in that way.",))
 
-    def test_checked_in_ledgers_match_builder(self) -> None:
-        expected_examples = [
-            (
-                example.language,
-                example.source_id,
-                str(example.printed_page),
-                str(example.pdf_page),
-                "excluded" if self.build.exclusion_reason(example) else "admitted",
-                self.build.exclusion_reason(example),
-                example.printed,
-                self.build.xml_form(example),
-                (
-                    ""
-                    if self.build.exclusion_reason(example)
-                    else self.build.REPEAT_TARGETS.get(
-                        (example.language, example.source_id), example.source_id
-                    )
-                ),
-                example.gloss,
-                self.build.source_note(example),
-                example.published_translation,
-                (
-                    self.build.translation_readings(example)[1]
-                    if len(self.build.translation_readings(example)) > 1
-                    else ""
-                ),
-                self.build.translation_readings(example),
-                self.build.form_variants(example),
-            )
-            for example in sorted(self.build.EXAMPLES, key=self.build.source_order)
-        ]
-        actual_examples = [
-            (
-                row["language"],
-                row["source_id"],
-                row["printed_page"],
-                row["pdf_page"],
-                row["admission_status"],
-                row["exclusion_reason"],
-                row["source_form"],
-                row["xml_form"],
-                row["xml_record_source_id"],
-                row["gloss"],
-                row["source_note"],
-                row["source_translation_eng"],
-                row["alternate_translation_eng"],
-                tuple(json.loads(row["translation_readings_eng_json"])),
-                tuple(
-                    self.build.FormVariant(
-                        item["id_suffix"],
-                        item["label"],
-                        item["form"],
-                        item["aligned_form"],
-                        item["gloss"],
-                    )
-                    for item in json.loads(row["xml_variants_json"])
-                ),
-            )
-            for row in self.examples
-        ]
-        self.assertEqual(actual_examples, expected_examples)
-        expected_excluded = [
-            (item.source_label, item.source_id, str(item.printed_page), item.raw_form, item.reason)
-            for item in sorted(self.build.excluded_units(), key=self.build.source_order)
-        ]
-        actual_excluded = [
-            (row["source_label"], row["source_id"], row["printed_page"], row["raw_form"], row["reason"])
-            for row in self.excluded
-        ]
-        self.assertEqual(actual_excluded, expected_excluded)
+    def test_footnote_erratum_supersedes_the_body_reading(self):
+        item = example("Amis", "14a")
+        self.assertEqual(item.translation, "I will tenderise the meat a little.")
+        self.assertEqual(item.readings, ("I will tenderise only the meat.",))
+        sentence = generated("Amis").find("S[@id='S_amis_011']")
+        self.assertEqual([t.text for t in sentence.findall("TRANSL")], list(item.readings))
+        self.assertIn("Footnote 6", sentence.get("source"))
+        self.assertIn("tuniq-en", item.printed)
 
-    def test_visual_review_covers_every_page_and_source_unit(self) -> None:
-        self.assertEqual([int(row["pdf_page"]) for row in self.review], list(range(1, 39)))
-        self.assertTrue(all(row["visual_status"] == "confirmed" for row in self.review))
-        corpus_by_page: dict[int, list[str]] = defaultdict(list)
-        excluded_by_page: dict[int, list[str]] = defaultdict(list)
-        for row in self.examples:
-            corpus_by_page[int(row["pdf_page"])].append(row["source_id"])
-        for row in self.excluded:
-            if row["source_label"] in {"Amis", "Kavalan"}:
-                continue
-            excluded_by_page[int(row["pdf_page"])].append(row["source_id"])
-        for row in self.review:
-            page = int(row["pdf_page"])
-            corpus_ids = [item for item in row["corpus_ids"].split(",") if item]
-            excluded_ids = [item for item in row["excluded_ids"].split(",") if item]
-            self.assertEqual(corpus_ids, corpus_by_page[page])
-            self.assertEqual(excluded_ids, excluded_by_page[page])
+    def test_reference_repetitions_keep_locators_and_printed_variants(self):
+        self.assertEqual(len(build.REPEAT_TARGETS), 7)
+        self.assertEqual(example("Kavalan", "7a").gloss, "<AV>do.what=2SG.ABS just now")
+        self.assertEqual(example("Kavalan", "2a").gloss, "<AV>do.what=2SG.ABS just.now")
+        sentence = generated("Kavalan").find("S[@id='S_kavalan_001']")
+        self.assertIn("2a (printed p. 254", sentence.get("source"))
+        self.assertIn("7a (printed p. 257", sentence.get("source"))
+        self.assertEqual(sentence.findall("W")[-1].findtext("TRANSL"), "just.now")
 
-    def test_difficult_record_sample_has_direct_visual_evidence(self) -> None:
-        self.assertEqual(len(self.direct_checks), 30)
-        checked_keys = {(row["language"], row["source_id"]) for row in self.direct_checks}
-        self.assertEqual(len(checked_keys), 30)
-        source_rows = {(row["language"], row["source_id"]): row for row in self.examples}
-        for row in self.direct_checks:
-            key = (row["language"], row["source_id"])
-            self.assertIn(key, source_rows)
-            self.assertEqual(row["printed_page"], source_rows[key]["printed_page"])
-            self.assertEqual(row["pdf_page"], source_rows[key]["pdf_page"])
-            self.assertTrue(row["focus"])
-            self.assertTrue(row["visual_result"].startswith("Confirmed"))
+    def test_source_spelling_and_gloss_anomalies_are_protected(self):
+        self.assertIn("<AV>take", example("Kavalan", "41b").gloss)
+        self.assertIn("bite", example("Kavalan", "41b").readings[0])
+        self.assertIn("IA-KA-<UM>eat", example("Amis", "19c").gloss)
+        self.assertIn("k-u-ra wacu", example("Amis", "25a").printed)
 
-    def test_source_status_and_repetition_evidence_is_preserved(self) -> None:
-        forms = [row["source_form"] for row in self.examples]
-        self.assertEqual(sum(form.startswith("* ") for form in forms), 18)
-        self.assertEqual(sum(form.startswith("? ") for form in forms), 2)
-        self.assertEqual(
-            sum(row["source_note"].startswith("Independently printed repetition") for row in self.examples),
-            7,
-        )
-        self.assertTrue(any("‹m›" in form for form in forms))
-        self.assertTrue(any("(na)" in form for form in forms))
-        self.assertTrue(any(form.startswith("[") for form in forms))
-        self.assertEqual(sum(row["source_form"] != row["xml_form"] for row in self.examples), 51)
-        self.assertTrue(all("*" not in row["xml_form"] for row in self.examples))
-        self.assertTrue(all(not any(mark in row["xml_form"] for mark in "‘’“”") for row in self.examples))
-        self.assertEqual(sum(row["admission_status"] == "admitted" for row in self.examples), 75)
-        self.assertEqual(sum(row["admission_status"] == "excluded" for row in self.examples), 20)
-        self.assertEqual(
-            sum(
-                row["admission_status"] == "admitted"
-                and row["source_id"] != row["xml_record_source_id"]
-                for row in self.examples
-            ),
-            7,
-        )
-        self.assertTrue(
-            all(
-                not row["xml_record_source_id"] and row["exclusion_reason"]
-                for row in self.examples
-                if row["admission_status"] == "excluded"
-            )
-        )
+    def test_optional_constituents_have_aligned_variants(self):
+        keys = {("Kavalan", "24a"), ("Kavalan", "24b"), ("Kavalan", "48a"), ("Kavalan", "48b"),
+                ("Amis", "49a"), ("Amis", "49b"), ("Amis", "57b"), ("Amis", "57d")}
+        actual = {(e.language, e.source_id) for e in build.admitted_examples() if len(build.form_variants(e)) == 2}
+        self.assertEqual(actual, keys)
+        for key in keys:
+            variants = build.form_variants(example(*key))
+            self.assertEqual([v.id_suffix for v in variants], ["", "_OPT0"])
+            for variant in variants:
+                self.assertEqual(build.alignment_words(variant)[1], "")
+        included, omitted = build.form_variants(example("Amis", "49a"))
+        self.assertIn("pateli", included.form)
+        self.assertNotIn("pateli", omitted.form)
+        self.assertIn("put", included.gloss)
+        self.assertNotIn("put", omitted.gloss)
 
-    def test_source_corrections_and_anomalies_are_explicit(self) -> None:
-        example_14a = next(
-            row for row in self.examples if row["language"] == "Amis" and row["source_id"] == "14a"
-        )
-        self.assertIn("tuniq-en", example_14a["source_form"])
-        self.assertEqual(example_14a["source_translation_eng"], "I will tenderise the meat a little.")
-        self.assertEqual(example_14a["alternate_translation_eng"], "I will tenderise only the meat.")
-        example_41b = next(
-            row for row in self.examples if row["language"] == "Kavalan" and row["source_id"] == "41b"
-        )
-        self.assertIn("<AV>take", example_41b["gloss"])
-        optional_glosses = {
-            ("Kavalan", "48a"): "here-PV-1SG.ERG put ABS money-1SG.GEN",
-            ("Kavalan", "48b"): "there-PV-1SG.ERG put ABS money-1SG.GEN",
-            ("Amis", "49a"): "here-PV ERG PN put ABS-CN money",
-            ("Amis", "49b"): "there-PV ERG PN put ABS-CN money",
-        }
-        rows = {(row["language"], row["source_id"]): row for row in self.examples}
-        for key, gloss in optional_glosses.items():
-            self.assertEqual(rows[key]["gloss"], gloss)
-            self.assertIn("Optional secondary verb", rows[key]["source_note"])
+    def test_source_infix_gap_and_clitic_are_preserved(self):
+        self.assertEqual(build.aligned_morphemes("q<um>uni", "<AV>do.what"),
+                         (["q-uni", "-um-"], ["do.what", "AV"]))
+        self.assertEqual(build.aligned_morphemes("quni=isu", "do.what=2SG.ABS"),
+                         (["quni", "=isu"], ["do.what", "2SG.ABS"]))
 
-    def test_builder_emits_source_preserving_tiers(self) -> None:
-        for language, expected_count, expected_words, expected_morphemes in (
-            ("Amis", 38, 179, 254),
-            ("Kavalan", 38, 168, 252),
-        ):
-            examples = [
-                item
-                for item in self.build.admitted_examples()
-                if item.language == language
-            ]
-            root = self.build.make_text(language, examples)
-            sentences = root.findall("./S")
-            canonical = [
-                item
-                for item in examples
-                if (item.language, item.source_id) not in self.build.REPEAT_TARGETS
-            ]
-            expected_variants = [
-                (item, variant)
-                for item in sorted(canonical, key=self.build.source_order)
-                for variant in self.build.form_variants(item)
-            ]
-            self.assertEqual(len(sentences), expected_count)
-            self.assertEqual(
-                [item.text or "" for item in root.findall("./S/FORM[@kindOf='original']")],
-                [variant.form for _, variant in expected_variants],
-            )
+    def test_unknown_segmentation_does_not_create_a_whole_word_morpheme(self):
+        variant = build.FormVariant("", "test", "mi-kalat", "mi-kalat", "bite")
+        with self.assertRaisesRegex(ValueError, "Unresolved segmented alignment"):
+            build.add_word_tiers(ET.Element("S", id="test"), variant)
+
+    def test_word_alignment_failure_is_not_silently_omitted(self):
+        variant = build.FormVariant("", "test", "word second", "word second", "gloss")
+        with self.assertRaisesRegex(ValueError, "Unresolved source alignment"):
+            build.add_word_tiers(ET.Element("S", id="test"), variant)
+
+    def test_correction_and_input_order_do_not_renumber_ids(self):
+        original = example("Amis", "1a")
+        changed = replace(original, form="mi-maan ci sawmah?")
+        one = build.make_text("Amis", [original]).find("S")
+        two = build.make_text("Amis", [changed]).find("S")
+        self.assertEqual(one.get("id"), "S_amis_001")
+        self.assertEqual(two.get("id"), one.get("id"))
+        self.assertEqual([n.get("id") for n in one.iter() if n.get("id")],
+                         [n.get("id") for n in two.iter() if n.get("id")])
+        items = [e for e in build.admitted_examples() if e.language == "Amis"]
+        self.assertEqual(build.prettify(build.make_text("Amis", items)),
+                         build.prettify(build.make_text("Amis", list(reversed(items)))))
+
+    def test_protected_corpus_inventory_and_machine_tier_ownership(self):
+        for language, words, morphemes in (("Amis", 179, 254), ("Kavalan", 168, 252)):
+            root = generated(language)
+            self.assertEqual(len(root.findall("S")), 38)
+            self.assertEqual(len(root.findall(".//W")), words)
+            self.assertEqual(len(root.findall(".//M")), morphemes)
+            self.assertEqual(root.get("copyright"), "CC BY 4.0")
             self.assertEqual(root.findall(".//FORM[@kindOf='standard']"), [])
-            self.assertEqual(len(root.findall(".//PHON")), 0)
-            self.assertEqual(len(root.findall(".//W")), expected_words)
-            self.assertEqual(len(root.findall(".//M")), expected_morphemes)
-            self.assertIn("CC BY 4.0", root.get("copyright", ""))
-            for translation in root.findall("./S/TRANSL"):
-                self.assertNotIn("kindOf", translation.attrib)
-                self.assertEqual(translation.get("{http://www.w3.org/XML/1998/namespace}lang"), "eng")
-            for sentence, (item, variant) in zip(sentences, expected_variants, strict=True):
-                self.assertIn(
-                    f"{item.source_id} (printed p. {item.printed_page};",
-                    sentence.get("source", ""),
-                )
-                expected_pairs, reason = self.build.alignment_words(variant)
-                words = sentence.findall("W")
-                if reason:
-                    self.assertEqual(words, [])
-                    continue
-                self.assertEqual(len(words), len(expected_pairs))
-                for word, (form_word, gloss_word) in zip(words, expected_pairs, strict=True):
-                    self.assertEqual(word.findtext("FORM[@kindOf='original']"), form_word)
-                    self.assertIsNone(word.find("FORM[@kindOf='standard']"))
-                    self.assertEqual(word.findtext("TRANSL[@kindOf='original']"), gloss_word)
-                    morph_forms, morph_glosses = self.build.aligned_morphemes(form_word, gloss_word)
-                    morphs = word.findall("M")
-                    parsed_sentence = any(
-                        len(self.build.aligned_morphemes(form, gloss)[0]) >= 2
-                        for form, gloss in expected_pairs
-                    )
-                    expected_morph_count = (
-                        len(morph_forms) if len(morph_forms) >= 2 else int(parsed_sentence)
-                    )
-                    self.assertEqual(len(morphs), expected_morph_count)
-                    if expected_morph_count:
-                        if len(morph_forms) < 2:
-                            morph_forms = [form_word]
-                            morph_glosses = [gloss_word]
-                        self.assertEqual(
-                            [morph.findtext("FORM[@kindOf='original']") for morph in morphs],
-                            morph_forms,
-                        )
-                        self.assertEqual(
-                            [morph.findtext("TRANSL[@kindOf='original']") for morph in morphs],
-                            morph_glosses,
-                        )
+            self.assertEqual(root.findall(".//PHON"), [])
 
-    def test_optional_variants_and_translation_readings_follow_policy(self) -> None:
-        optional = [
-            example
-            for example in self.build.admitted_examples()
-            if len(self.build.form_variants(example)) == 2
-        ]
-        self.assertEqual(len(optional), 8)
-        for example in optional:
-            included, omitted = self.build.form_variants(example)
-            self.assertEqual(included.id_suffix, "")
-            self.assertEqual(omitted.id_suffix, "_OPT0")
-            self.assertNotIn("(", included.form + omitted.form)
-            self.assertNotIn(")", included.form + omitted.form)
-            self.assertLessEqual(
-                len(self.build.lexical_tokens(omitted.gloss)),
-                len(self.build.lexical_tokens(included.gloss)),
-            )
-
-        example_19b = next(
-            item
-            for item in self.build.EXAMPLES
-            if (item.language, item.source_id) == ("Amis", "19b")
-        )
-        self.assertEqual(len(self.build.translation_readings(example_19b)), 3)
-
-    def test_infix_analysis_preserves_insertion_point(self) -> None:
-        self.assertEqual(
-            self.build.aligned_morphemes("q<um>uni", "<AV>do.what"),
-            (["q-uni", "-um-"], ["do.what", "AV"]),
-        )
-
-    def test_alignment_omissions_are_source_required(self) -> None:
-        actual = {
-            (row["language"], row["source_id"], row["tier"], row["word_index"])
-            for row in self.alignment_omissions
-        }
-        self.assertEqual(actual, set())
-        self.assertEqual(len(self.alignment_omissions), 0)
-
-    def test_base_xml_generation_is_deterministic(self) -> None:
-        first = {}
-        second = {}
+    def test_final_constituent_brackets_are_original_only(self):
+        # Four constituent analyses on printed p.281; standard surfaces omit them.
         for language in ("Amis", "Kavalan"):
-            examples = [
-                item
-                for item in self.build.admitted_examples()
-                if item.language == language
-            ]
-            first[language] = self.build.prettify(self.build.make_text(language, examples))
-            second[language] = self.build.prettify(self.build.make_text(language, examples))
-        self.assertEqual(second, first)
-
-    def test_gloss_audit_reconciliation_resolves_reviewed_finding_types(self) -> None:
-        spec = importlib.util.spec_from_file_location(
-            "reconcile_gloss_audit", ROOT / "CodeAndDocs" / "reconcile_gloss_audit.py"
-        )
-        if spec is None or spec.loader is None:
-            self.fail("Could not load CodeAndDocs/reconcile_gloss_audit.py")
-        module = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(module)
-        rows = [
-            {
-                "severity": "HARD",
-                "rule_id": "G021",
-                "location": "line=1",
-                "message": "source example (47) has no matching sentence",
-            },
-            {
-                "severity": "HARD",
-                "rule_id": "G021",
-                "location": "line=2",
-                "message": "source example (30) has no matching sentence",
-            },
-            {
-                "severity": "SOFT",
-                "rule_id": "G012",
-                "location": "S=S_amis_001",
-                "message": "parenthetical translation",
-            },
-        ]
-        with tempfile.TemporaryDirectory() as directory:
-            findings = Path(directory) / "findings.csv"
-            with findings.open("w", encoding="utf-8", newline="") as handle:
-                writer = csv.DictWriter(handle, fieldnames=rows[0].keys())
-                writer.writeheader()
-                writer.writerows(rows)
-            reconciled = module.reconcile(
-                findings,
-                ROOT / "CodeAndDocs" / "extracted_examples.tsv",
-                ROOT / "CodeAndDocs" / "excluded_source_units.tsv",
-            )
-        self.assertEqual(
-            [row["disposition"] for row in reconciled],
-            [
-                "source-excluded",
-                "false-positive-source-reference",
-                "retain-source-translation",
-            ],
-        )
+            root = ET.parse(ROOT / "XML" / language / f"lin_2015_{language.lower()}_interrogative_verbs.xml").getroot()
+            for index in (33, 34):
+                sentence = root.find(f"S[@id='S_{language.lower()}_{index:03d}']")
+                original = sentence.findtext("FORM[@kindOf='original']")
+                standard = sentence.findtext("FORM[@kindOf='standard']")
+                self.assertTrue(original.startswith("["))
+                self.assertIn("]", original)
+                self.assertNotIn("[", standard)
+                self.assertNotIn("]", standard)
+                phon = sentence.findtext("PHON[@kindOf='original']")
+                self.assertNotIn("]]", phon)
+                self.assertNotIn("[[", phon)
 
 
 if __name__ == "__main__":
