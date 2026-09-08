@@ -13,7 +13,7 @@ Most QC scripts expect every `<S>` to carry two sentence-level `FORM`s: `kindOf=
 It has three modes:
 
 - **`--copy`** — duplicate the original text verbatim into a new standard tier. This does **not** normalize spelling; it just guarantees the tier exists.
-- **`--ortho113`** — like `--copy`, but **deletes accents** from the standard tier (no TSV, no dialectal letter conversion). Use this when the dialect is unknown or mixed so a dialect-specific conversion table can't be chosen, but you still want an Ortho113-compatible, accent-free standard tier. (No Formosan orthography uses accents phonemically, so accent removal is the one normalization that is safe regardless of dialect.)
+- **`--remove_accents`** — like `--copy`, but **deletes accents** from the standard tier (no TSV, no dialectal letter conversion). Use this when the dialect is unknown or mixed so a dialect-specific conversion table can't be chosen, but you still want an accent-free standard tier. Accent removal is dialect-independent, so it is safe without a conversion table — but it is **not** unconditional; see [Accents](#accents-are-stripped-unless-the-orthography-attests-them) below.
 - **`--tsv_path`** — create the standard tier *and* apply a find-and-replace transliteration map, producing genuinely standardized spelling.
 
 ## How it works
@@ -23,9 +23,26 @@ For every `<S>` (matched as any element containing a `FORM` child) the script ca
 - If the element has no `FORM[@kindOf='original']`, it errors out and exits — there must be an original tier to standardize from.
 - If a `FORM[@kindOf='standard']` already exists, its content is replaced; otherwise a new `FORM kindOf="standard"` element is inserted. Mixed content (notably inline `<UNCLEAR/>` markers) is deep-copied so it is not dropped.
 
-In `--copy` mode that is the whole operation. In `--ortho113` mode it additionally runs `apply_standard` with an **empty** mapping, which deletes accents but converts no letters. In TSV mode it runs `apply_standard` with the loaded map, doing ordered, global Python `str.replace` for each `(original → replacement)` pair on the standard tier's text (an empty replacement deletes the matched string).
+In `--copy` mode that is the whole operation. In `--remove_accents` mode it additionally runs `apply_standard` with an **empty** mapping, which deletes accents but converts no letters. In TSV mode it runs `apply_standard` with the loaded map, doing ordered, global Python `str.replace` for each `(original → replacement)` pair on the standard tier's text (an empty replacement deletes the matched string).
 
-**Accents are stripped before any mapping is applied** (in both `--ortho113` and TSV modes). No Formosan orthography uses accents phonemically, so an accented vowel in a source text (for example Glosbe marks stress: `máduk`, `dálix`) is just the plain vowel wearing a diacritic. `apply_standard` strips these accents from the **standard** tier — decomposing to NFD, removing the accent marks (currently the combining acute and breve; the set is easy to extend), then recomposing. In TSV mode this guarantees a mapping entry keyed on the bare vowel still matches: without it, a rule such as `us → os` would silently skip `ús`. The **original** tier is never touched — it keeps the source's exact spelling, accents and all. (`--copy` runs no `apply_standard`, so it preserves accents verbatim; use `--ortho113` when you want a copy *with* accents removed.)
+### Accents are stripped unless the orthography attests them
+
+**Accents are stripped before any mapping is applied** (in both `--remove_accents` and TSV modes). Most accents in a source text are prosody rather than spelling — Glosbe marks stress (`máduk`, `dálix`), and a Mandarin or Japanese word quoted inside a Formosan sentence brings its own diacritics with it. Those are the plain letter wearing a mark, and the standard tier drops the mark. `apply_standard` does this on the **standard** tier only: decompose to NFD, remove the marks in `_accents.ACCENTS_TO_STRIP` (the combining **acute**, **breve** and **macron**), recompose to NFC. In TSV mode this also guarantees a mapping entry keyed on the bare vowel still matches — without it a rule such as `us → os` would silently skip `ús`. The **original** tier is never touched; it keeps the source's exact spelling, accents and all. (`--copy` runs no `apply_standard` at all, so it preserves accents verbatim; use `--remove_accents` when you want a copy *with* accents removed.)
+
+**But some accented letters are real letters,** and stripping their mark would merge two distinct graphemes — the same class of damage as conflating `tj` with `c`. Three languages in the bank spell with a macron, each contrastive against its bare base:
+
+| Language | Letter | Where |
+| --- | --- | --- |
+| Puyuma (`pyu`) | `ē` | throughout; listed in `QC/validation/reference/Puyuma/` |
+| Siraya (`fos`) | `ǣ` | Siraya Gospels, beside plain `æ` |
+| Favorlang (`bzg`) | `ḡ` | Campbell Favorlang, beside plain `g` |
+
+So stripping is filtered through a **keep set** — accented letters that survive because the language attests them as spelling:
+
+- `standardize.py` builds the keep set per file from that language's (and, where given, that dialect's) reference orthography inventories under `QC/validation/reference/<Language>/`, the same data [validate_orthography.py](validate-orthography.md) scores against. It passes the set to `strip_accents` in **both** `--remove_accents` and TSV modes. This is what protects Puyuma's `ē` while still stripping the macron off a Mandarin loanword quoted in Paiwan.
+- Some languages have **no reference orthography directory at all** — Siraya and Favorlang are documentary languages outside the 16 living Formosan languages, so there is nothing to derive a keep set from. Their letters live in **`QC/utilities/_accents.ALWAYS_KEEP`**, a small frozenset unioned into `keep` on *every* call to `strip_accents`, by every caller, regardless of language. It currently holds `ǣ` and `ḡ`.
+
+**If you add a language, or hit a letter being flattened that shouldn't be:** first check whether the language has a reference orthography that lists the letter — that is the right fix, because it also feeds validation. Only if the language has no reference orthography at all does the letter belong in `ALWAYS_KEEP`, and it should be removed from there once one exists. Adding a mark to `ACCENTS_TO_STRIP` without checking which languages spell with it is how a real letter gets silently merged into its base.
 
 **Choosing the TSV column.** The mapping TSV has an `original` column plus one or more value columns. The target column is resolved as follows:
 
@@ -45,10 +62,10 @@ python QC/utilities/standardize.py \
   --copy \
   --corpora_path /path/to/corpus-or-Final_XML
 
-# Ortho113 mode: create the standard tier as a copy with accents deleted
+# Accent-removal mode: create the standard tier as a copy with accents deleted
 # (no TSV; for unknown/mixed-dialect corpora)
 python QC/utilities/standardize.py \
-  --ortho113 \
+  --remove_accents \
   --corpora_path /path/to/corpus-or-Final_XML
 
 # Transliteration mode: create + standardize via a TSV map
@@ -61,13 +78,15 @@ python QC/utilities/standardize.py \
 | Flag | Default | Notes |
 | --- | --- | --- |
 | `--copy` | off | Duplicate original → standard with no transformation. |
-| `--ortho113` | off | Duplicate original → standard, then delete accents (no TSV, no letter conversion). For unknown/mixed-dialect corpora. |
+| `--remove_accents` | off | Duplicate original → standard, then delete accents (no TSV, no letter conversion). For unknown/mixed-dialect corpora. |
 | `--tsv_path` | none | TSV with an `original` column and target column(s). |
-| _(mode)_ | — | Exactly one of `--copy`, `--ortho113`, or `--tsv_path` is required. |
+| _(mode)_ | — | Exactly one of `--copy`, `--remove_accents`, or `--tsv_path` is required. |
 | `--target_column` | auto | Force a specific TSV column; otherwise auto-detected from dialect/language. |
 | `--corpora_path` | (required) | Corpora root, a single corpus dir, or a single `.xml` file. |
 | `--corpus` | none | Restrict to one corpus under `--corpora_path`. |
 | `--language` | none | Restrict to files whose path matches this language name. |
+| `--hard-remove-segmentation` | off | C012: remove segmentation hyphens from the standard tier even where the language treats `-` as a letter. |
+| `--ortho-path` | `Orthographies/Ortho113/` | Orthography profile directory used to decide whether `-` is a letter for the language. |
 
 ### Single-file wrapper
 
@@ -79,7 +98,7 @@ python QC/utilities/standardize.py \
 
 ## When to run it
 
-Early in the pipeline, immediately after [validate_xml.py](validate-xml.md) and **before** text/orthography checks. Run `--copy` whenever a corpus has only one sentence-level `FORM` and its source spelling should be preserved as-is; run `--ortho113` when the dialect is unknown or mixed and you just want an accent-free standard tier; run the TSV mode when an actual per-dialect transliteration map is available. See [Running an Audit](../running-an-audit.md) and [Porting a Corpus In](../porting-a-corpus.md).
+Early in the pipeline, immediately after [validate_xml.py](validate-xml.md) and **before** text/orthography checks. Run `--copy` whenever a corpus has only one sentence-level `FORM` and its source spelling should be preserved as-is; run `--remove_accents` when the dialect is unknown or mixed and you just want an accent-free standard tier; run the TSV mode when an actual per-dialect transliteration map is available. See [Running an Audit](../running-an-audit.md) and [Porting a Corpus In](../porting-a-corpus.md).
 
 ## Related
 
