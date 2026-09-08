@@ -13,7 +13,11 @@
         </W>
         <W id="S1W3">
             <FORM kindOf="original">kakwa</FORM>
-            <TRANSL xml:lang="eng">long-time-ago</TRANSL>
+            <TRANSL xml:lang="eng">long.time.ago</TRANSL>
+            <M id="S1W3M1">
+                <FORM kindOf="original">kakwa</FORM>
+                <TRANSL xml:lang="eng">long.time.ago</TRANSL>
+            </M>
         </W>
         <W id="S1W4">
             <FORM kindOf="original">amyan</FORM>
@@ -72,7 +76,11 @@
         </W>
         <W id="S2W3">
             <FORM kindOf="original">madegdeg</FORM>
-            <TRANSL xml:lang="eng">early-morning</TRANSL>
+            <TRANSL xml:lang="eng">early.morning</TRANSL>
+            <M id="S2W3M1">
+                <FORM kindOf="original">madegdeg</FORM>
+                <TRANSL xml:lang="eng">early.morning</TRANSL>
+            </M>
         </W>
         <W id="S2W4">
             <FORM kindOf="original">imurud</FORM>
@@ -111,7 +119,11 @@
         </W>
         <W id="S2bW3">
             <FORM kindOf="original">madegdeg</FORM>
-            <TRANSL xml:lang="eng">early-morning</TRANSL>
+            <TRANSL xml:lang="eng">early.morning</TRANSL>
+            <M id="S2bW3M1">
+                <FORM kindOf="original">madegdeg</FORM>
+                <TRANSL xml:lang="eng">early.morning</TRANSL>
+            </M>
         </W>
         <W id="S2bW4">
             <FORM kindOf="original">tau</FORM>
@@ -119,7 +131,15 @@
         </W>
         <W id="S2bW5">
             <FORM kindOf="original">d-imurud</FORM>
-            <TRANSL xml:lang="eng">from</TRANSL>
+            <TRANSL xml:lang="eng">from-Imurud</TRANSL>
+            <M id="S2bW5M1">
+                <FORM kindOf="original">d</FORM>
+                <TRANSL xml:lang="eng">from</TRANSL>
+            </M>
+            <M id="S2bW5M2">
+                <FORM kindOf="original">imurud</FORM>
+                <TRANSL xml:lang="eng">Imurud</TRANSL>
+            </M>
         </W>
     </S>
     <S id="S3">
@@ -215,7 +235,11 @@
         </W>
         <W id="S4W6">
             <FORM kindOf="original">utwen</FORM>
-            <TRANSL xml:lang="eng">cold-food</TRANSL>
+            <TRANSL xml:lang="eng">cold.food</TRANSL>
+            <M id="S4W6M1">
+                <FORM kindOf="original">utwen</FORM>
+                <TRANSL xml:lang="eng">cold.food</TRANSL>
+            </M>
         </W>
         <W id="S4W7">
             <FORM kindOf="original">kwan-da</FORM>
@@ -382,7 +406,11 @@
         </W>
         <W id="S7W4">
             <FORM kindOf="original">nikumagat</FORM>
-            <TRANSL xml:lang="eng">ship-wreck</TRANSL>
+            <TRANSL xml:lang="eng">ship.wreck</TRANSL>
+            <M id="S7W4M1">
+                <FORM kindOf="original">nikumagat</FORM>
+                <TRANSL xml:lang="eng">ship.wreck</TRANSL>
+            </M>
         </W>
     </S>
     <S id="S8">
@@ -813,7 +841,11 @@
         </W>
         <W id="S15W3">
             <FORM kindOf="original">kari</FORM>
-            <TRANSL xml:lang="eng">get-out</TRANSL>
+            <TRANSL xml:lang="eng">get.out</TRANSL>
+            <M id="S15W3M1">
+                <FORM kindOf="original">kari</FORM>
+                <TRANSL xml:lang="eng">get.out</TRANSL>
+            </M>
         </W>
         <W id="S15W4">
             <FORM kindOf="original">ka-ma-kungu</FORM>
@@ -891,7 +923,11 @@
         </W>
         <W id="S16W4">
             <FORM kindOf="original">chyaa?</FORM>
-            <TRANSL xml:lang="eng">it-doesn't-matter</TRANSL>
+            <TRANSL xml:lang="eng">it.doesn't.matter</TRANSL>
+            <M id="S16W4M1">
+                <FORM kindOf="original">chyaa?</FORM>
+                <TRANSL xml:lang="eng">it.doesn't.matter</TRANSL>
+            </M>
         </W>
         <W id="S16W5">
             <FORM kindOf="original">di-kung-mi-lis</FORM>
@@ -1050,7 +1086,11 @@
         </W>
         <W id="S19W2">
             <FORM kindOf="original">kari</FORM>
-            <TRANSL xml:lang="eng">get-out</TRANSL>
+            <TRANSL xml:lang="eng">get.out</TRANSL>
+            <M id="S19W2M1">
+                <FORM kindOf="original">kari</FORM>
+                <TRANSL xml:lang="eng">get.out</TRANSL>
+            </M>
         </W>
         <W id="S19W3">
             <FORM kindOf="original">kwan-a</FORM>

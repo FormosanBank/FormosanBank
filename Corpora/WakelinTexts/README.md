@@ -27,12 +27,12 @@ Six Yami (`xml:lang="tao"`, `dialect="Yami"`) narrative texts, collected on Orch
 
 | File | Text in the article | Informant | Sentences | Words | Morphemes |
 |---|---|---|---|---|---|
-| `XML/Yami/Kangkang.xml` | A. *Ji Kangkang* (The Rooster) | Samen Indosan, April 1955 | 44 | 219 | 241 |
-| `XML/Yami/Kwaway.xml` | B. *Kwaway* (The Spirit) | Sinan Dararyaw, May 1957 | 64 | 278 | 347 |
-| `XML/Yami/Kalaku1.xml` | C. | Saman Kalaku, 6 September 1956 | 22 | 97 | 129 |
+| `XML/Yami/Kangkang.xml` | A. *Ji Kangkang* (The Rooster) | Samen Indosan, April 1955 | 44 | 219 | 249 |
+| `XML/Yami/Kwaway.xml` | B. *Kwaway* (The Spirit) | Sinan Dararyaw, May 1957 | 64 | 278 | 348 |
+| `XML/Yami/Kalaku1.xml` | C. | Saman Kalaku, 6 September 1956 | 22 | 97 | 131 |
 | `XML/Yami/Kalaku2.xml` | D. | Samen Kalaku, 6 September 1956 | 14 | 76 | 114 |
 | `XML/Yami/Kalaku3.xml` | E. | Saman Kalaku, 13 September 1956 | 11 | 56 | 92 |
-| `XML/Yami/Sunagu.xml` | F. | Saman Sunagu, January 1957 | 24 | 161 | 179 |
+| `XML/Yami/Sunagu.xml` | F. | Saman Sunagu, January 1957 | 24 | 161 | 189 |
 
 Sentence counts exceed the article's printed sentence numbers because seven printed alternations are published as separate sentences — see [Alternations](#alternations-the-sources-slash-notation) below.
 
@@ -147,11 +147,53 @@ The article prints `dy-aru-pa-sira` above `unan-many-still/again-them` and `a-ni
 
 A second, smaller correction: **`Kwaway/S9`'s gloss `bamboo-strips` is written `bamboo.strips`**.
 
-A third, applied across the corpus: **a multi-word gloss for a single morpheme is written with dots, not hyphens.** Under the Leipzig conventions a hyphen marks a morpheme boundary and a period joins the parts of one gloss, so the article's `(one-after-another)` reads as three morphemes when it is one. All **54** such glosses now use dots — `(one.after.another)`, `(long.time.ago)`, `(sit.with.legs.straight.out)`, `(1st.person.imp)`, `(next.morning)` — and the parentheses, which are the article's own notation, stay.
+A third, applied across the corpus: **a gloss for a single morpheme is written with dots, not hyphens.** Under the Leipzig conventions a hyphen marks a morpheme boundary and a period joins the parts of one gloss, so the article's `(one-after-another)` and `long-time-ago` both read as several morphemes where they are one.
 
-Only hyphens **inside** parentheses change. The 162 parenthesised abbreviation markers that contain no hyphen are untouched (`(unctn)`, `(pl)`, `(dual)`, `(sg)`, `(come)`), as are the hyphens outside them, which are real morpheme boundaries: `house-their(dual)` is unchanged, and `unan-(one.after.another)-us-completely` keeps its three outer hyphens. Sentence-level free translations are not glosses and are untouched.
+This was done in two passes and the second is what makes the morpheme tier usable, so both are listed in full below. **No word's alignment is changed by notation alone** — the build's unit counting was already parenthesis-aware — but where a hyphenated gloss sat on a *single* morpheme the count genuinely disagreed, and the word lost its morpheme tier for a reason that was an artifact of English. Repairing those took the count of words publishing no morphemes from **21 to 6**.
 
-This is notation, not analysis: the build already counted a parenthesised group as one unit, so **no word's alignment changes** and no morpheme tier is gained or lost by it. What it changes is what the data says to a reader, or to a tool that is not parenthesis-aware. Two of the 54 were also genuinely broken, with the parenthesised unit split across two morphemes, and those are recorded in [`CodeAndDocs/source_discrepancies.md`](CodeAndDocs/source_discrepancies.md) §E: `Kalaku1/S4W1` (`(next` + `morning)`) and `Kwaway/S43W2` (`imp)unan` stranded on the morpheme `a`). Neither `varit` nor its alternate `yaked` is segmented in the text, so the gloss is one two-word unit; a hyphen would read as two morphemes. Leipzig dot notation says what is meant.
+**Pass 1 — inside parentheses (54 glosses).** Every parenthesised multi-word gloss: `(one.after.another)`, `(long.time.ago)`, `(sit.with.legs.straight.out)`, `(1st.person.imp)`, `(next.morning)`, `(dear.little.one)`, `(spend.the.night)`, `(betel.nut.basket)`, and the rest. The 162 parenthesised abbreviation markers that contain no hyphen are untouched (`(unctn)`, `(pl)`, `(dual)`, `(sg)`, `(come)`), as are hyphens outside parentheses, which are real morpheme boundaries: `house-their(dual)` is unchanged and `unan-(one.after.another)-us-completely` keeps its three outer hyphens.
+
+**Pass 2 — outside parentheses, where the gloss belongs to one morpheme.** Every one:
+
+| where | word | was | now |
+|---|---|---|---|
+| `Sunagu/S1W3` | `kakwa` | `long-time-ago` | `long.time.ago` |
+| `Sunagu/S2W3` | `madegdeg` | `early-morning` | `early.morning` |
+| `Sunagu/S4W6` | `utwen` | `cold-food` | `cold.food` |
+| `Sunagu/S7W4` | `nikumagat` | `ship-wreck` | `ship.wreck` |
+| `Sunagu/S15W3` | `kari` | `get-out` | `get.out` |
+| `Sunagu/S19W2` | `kari` | `get-out` | `get.out` |
+| `Sunagu/S16W4` | `chyaa?` | `it-doesn't-matter` | `it.doesn't.matter` |
+| `Kangkang/S41W4` | `dinalulut` | `stick-weapons` | `stick.weapons` |
+| `Kangkang/S42W4` | `apwapwasena` | `pick-up-stones` | `pick.up.stones` |
+| `Kwaway/S33W8` | `vaunda` | `take-up(unctn)` | `take.up(unctn)` |
+
+Each of those ten is a one-morpheme word, so the word gloss and its morpheme gloss both change. Four more are morpheme glosses whose word gloss was already correct:
+
+| where | morpheme | was | now |
+|---|---|---|---|
+| `Kangkang/S33W1M1` | `simuskem` | `kill-with-boiling-water` | `kill.with.boiling.water` |
+| `Kangkang/S33W1M4` | `muskem` | `killed-with-boiling-water` | `killed.with.boiling.water` |
+| `Kangkang/S40W1M2` | `atey` | `stone-wall` | `stone.wall` |
+| `Kangkang/S40W4M2` | `manginanawa` | `be-careful` | `be.careful` |
+
+Two words needed the gloss put back together as well as dotted, because the transcription had split a single-morpheme gloss across the root and the `-em` narration suffix:
+
+| where | word | was | now |
+|---|---|---|---|
+| `Kalaku1/S1W4` | `ilaud-em` | word `foreign-country`; `ilaud` 'foreign', `em` 'country' | word `foreign.country`; `ilaud` 'foreign.country', `em` unglossed (then `PAR`) |
+| `Kangkang/S35W5` | `chinwat-em` | word `boiling-water`; `chinwat` 'boiling', `em` 'water' | word `boiling.water`; `chinwat` 'boiling.water', `em` unglossed (then `PAR`) |
+
+And two word glosses live in `CodeAndDocs/alternative_decisions.json` rather than the snapshot, because they belong to a split sentence's branch. They are now **derived from the branch's own morphemes** instead of being written out by hand, so they cannot drift again:
+
+| where | was | now |
+|---|---|---|
+| `Kangkang/S33` | `kill-with-boiling-water` | `kill.with.boiling.water` |
+| `Kangkang/S33b` | `if(unctn)-not-killed-with-boiling-water` | `if(unctn)-not-killed.with.boiling.water` |
+
+**Six words still publish no morpheme tier**, and all six are correct: `Kangkang/S34`'s three words, where the article gives three gloss units for two printed words so nothing can be aligned; `Kangkang/S39W5` and `S40W5` `ta-ka-mu`, three morphemes against the two-unit gloss `we-incl(EA)` because the source glosses only two of them; and `Sunagu/S2bW5` `d-imurud` glossed `from`, where the gloss has lost 'Imurud'.
+
+Two of the 54 in pass 1 were also genuinely broken, with the parenthesised unit split across two morphemes; those are recorded in [`CodeAndDocs/source_discrepancies.md`](CodeAndDocs/source_discrepancies.md) §E: `Kalaku1/S4W1` (`(next` + `morning)`) and `Kwaway/S43W2` (`imp)unan` stranded on the morpheme `a`).
 
 Both are recorded in [`CodeAndDocs/source_discrepancies.md`](CodeAndDocs/source_discrepancies.md), which also lists the corrections made *to* the hand-typed snapshot where it had departed from the article.
 
@@ -165,7 +207,7 @@ Two rules are applied corpus-wide when the XML is built (maintainer, 2026-09-06)
 
 Gloss units are counted on hyphens *outside* parentheses, so `unan-(one-after-another)-us-completely` is four units and not six; and a gloss that carries the source's own slash alternation across the whole word (`unan-not-I-you(pl)/unan-curse-I-you(pl)`, `Kwaway/S25`) counts as aligned if either side matches. A word is also treated as unreliably segmented when a **morpheme gloss carries half a parenthesis** — the transcription split a parenthesised multi-word unit across two morphemes, writing `(next-morning)` as `(next` + `morning)` — since half a gloss is not a gloss.
 
-**21 words lose their `M` tier this way** — down from 54 before the suffix was glossed — and every one is listed in [`CodeAndDocs/gloss_alignment_review.tsv`](CodeAndDocs/gloss_alignment_review.tsv), regenerated on every build. What remains is dominated by single morphemes whose English gloss is a hyphenated phrase (`kakwa` 'long-time-ago', `utwen` 'cold-food'), where the mismatch is an artifact of English and not of the analysis.
+**5 words lose their `M` tier this way** — down from 54 before the narration suffix was glossed, and from 21 before the dot convention reached unparenthesised glosses — and every one is listed in [`CodeAndDocs/gloss_alignment_review.tsv`](CodeAndDocs/gloss_alignment_review.tsv), regenerated on every build. What remains is listed word by word under "A correction to the source" above; all five are genuine, not artifacts.
 
 Both rules make `validate_glosses` louder, on purpose: `V064 every_M_has_TRANSL` and `V065 every_W_has_TRANSL` now fire as SOFT findings wherever the article gave no gloss. That is the honest state of the data — the alternative is to publish `unan` as though it were a translation.
 
