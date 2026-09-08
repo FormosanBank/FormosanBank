@@ -1776,6 +1776,75 @@ def test_V135_original_has_punct_standard_does_not_soft(tmp_path):
     )
 
 
+def test_V135_glottal_question_mark_is_a_letter_not_punct(tmp_path):
+    """V135 must not read '?' as punctuation where it writes the glottal stop.
+
+    Amis has a profile (Orthographies/Montgomery/Amis.tsv) whose letter
+    column contains '?'. Montgomery's `roma?` 'home' ends in a letter, and
+    its standard tier writes that letter `'`, which is a letter of Ortho113.
+    Neither tier ends in punctuation, so the two agree.
+    """
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">itini i roma?</FORM>'
+        + "<FORM kindOf=\"standard\">itini i loma'</FORM>"
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert "v135" not in combined_output(proc), (
+        f"V135 should not fire on '?' as a glottal letter; "
+        f"stdout={proc.stdout!r}"
+    )
+
+
+def test_V135_still_fires_on_real_mismatch_in_a_glottal_language(tmp_path):
+    """Exempting '?' must not disarm the rule for the language.
+
+    Same Amis file, a genuine period-vs-nothing mismatch: still flagged.
+    """
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">itini i roma?.</FORM>'
+        + "<FORM kindOf=\"standard\">itini i loma'</FORM>"
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v135", "trailing punct", "trailing-punct", "punct mismatch")
+    ), (
+        f"expected V135 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
+def test_V135_question_mark_is_punct_where_no_profile_makes_it_a_letter(tmp_path):
+    """The exemption is per-language, not global.
+
+    Thao (ssf) has no profile listing '?', so there a trailing '?' is a
+    question mark and a mismatch against a bare standard tier is a finding.
+    """
+    xml = (
+        _TEXT_OPEN.replace('xml:lang="ami"', 'xml:lang="ssf"')
+        + '<S id="S1">'
+        + '<FORM kindOf="original">hello?</FORM>'
+        + '<FORM kindOf="standard">hello</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v135", "trailing punct", "trailing-punct", "punct mismatch")
+    ), (
+        f"expected V135 finding; stdout={proc.stdout!r} stderr={proc.stderr!r}"
+    )
+
+
 def test_V135_matching_punct_OK(tmp_path):
     """V135: both tiers end with the same punctuation — no finding."""
     xml = (
