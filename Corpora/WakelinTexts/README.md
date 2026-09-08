@@ -32,7 +32,7 @@ Six Yami (`xml:lang="tao"`, `dialect="Yami"`) narrative texts, collected on Orch
 | `XML/Yami/Kalaku1.xml` | C. | Saman Kalaku, 6 September 1956 | 22 | 97 | 131 |
 | `XML/Yami/Kalaku2.xml` | D. | Samen Kalaku, 6 September 1956 | 14 | 76 | 114 |
 | `XML/Yami/Kalaku3.xml` | E. | Saman Kalaku, 13 September 1956 | 11 | 56 | 92 |
-| `XML/Yami/Sunagu.xml` | F. | Saman Sunagu, January 1957 | 24 | 161 | 187 |
+| `XML/Yami/Sunagu.xml` | F. | Saman Sunagu, January 1957 | 24 | 161 | 189 |
 
 Sentence counts exceed the article's printed sentence numbers because seven printed alternations are published as separate sentences — see [Alternations](#alternations-the-sources-slash-notation) below.
 
@@ -207,7 +207,7 @@ Two rules are applied corpus-wide when the XML is built (maintainer, 2026-09-06)
 
 Gloss units are counted on hyphens *outside* parentheses, so `unan-(one-after-another)-us-completely` is four units and not six; and a gloss that carries the source's own slash alternation across the whole word (`unan-not-I-you(pl)/unan-curse-I-you(pl)`, `Kwaway/S25`) counts as aligned if either side matches. A word is also treated as unreliably segmented when a **morpheme gloss carries half a parenthesis** — the transcription split a parenthesised multi-word unit across two morphemes, writing `(next-morning)` as `(next` + `morning)` — since half a gloss is not a gloss.
 
-**6 words lose their `M` tier this way** — down from 54 before the narration suffix was glossed, and from 21 before the dot convention reached unparenthesised glosses — and every one is listed in [`CodeAndDocs/gloss_alignment_review.tsv`](CodeAndDocs/gloss_alignment_review.tsv), regenerated on every build. What remains is listed word by word under "A correction to the source" above; all six are genuine, not artifacts.
+**5 words lose their `M` tier this way** — down from 54 before the narration suffix was glossed, and from 21 before the dot convention reached unparenthesised glosses — and every one is listed in [`CodeAndDocs/gloss_alignment_review.tsv`](CodeAndDocs/gloss_alignment_review.tsv), regenerated on every build. What remains is listed word by word under "A correction to the source" above; all five are genuine, not artifacts.
 
 Both rules make `validate_glosses` louder, on purpose: `V064 every_M_has_TRANSL` and `V065 every_W_has_TRANSL` now fire as SOFT findings wherever the article gave no gloss. That is the honest state of the data — the alternative is to publish `unan` as though it were a translation.
 

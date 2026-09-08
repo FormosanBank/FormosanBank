@@ -138,6 +138,37 @@ Both words now align and keep their morpheme tiers. The build guards against the
 class: a morpheme gloss carrying an unmatched parenthesis drops the word's M
 tier rather than publishing half a gloss.
 
+## F. Invented `unan` glosses — the transcription padded the morpheme tier
+
+The article's key defines `unan` as "unanalyzed". Where its printed gloss line
+has **fewer units than the word's segmentation**, the hand transcription filled
+the gap by writing `unan` on the leftover morphemes. **31 words** carry such a
+padded `unan`, and in **28** of them the padded morpheme is the `-em`/`-m`
+narration suffix, which the article's own NOTE says is left untranslated
+throughout — so there the annotation is defensible, and the build overwrites it
+with `PAR` anyway.
+
+**Three are not the suffix, and all three are corrected here.**
+
+**13. `Kangkang/S39W5` and `S40W5` — `mu` glossed `unan`.** ✅ FIXED
+(ruled 2026-09-07). Printed p.5: `39 … ta-ka-mu …` / `… we-incl(E.A) …`. The
+article gives **two** gloss units for a three-morpheme word and says nothing
+about the third; the `unan` on `mu` is the transcription's own padding and
+appears nowhere in the source. The gloss is deleted; `mu` now carries none.
+
+**14. `Sunagu/S2W8` — `imurud)` glossed `unan`, and the word gloss truncated.**
+✅ FIXED. Printed p.19: `2 ma-chita-da tu madegdeg (imurud nu tau)/(tau
+d-imurud)` / `unan-see-them in early-morning (Imurud CM persons)/(persons from
+Imurud)`. The article glosses this word **`from Imurud`**, not `from`. So the
+word gloss becomes `from-Imurud)` and the morpheme `imurud)` takes `Imurud)`
+instead of the invented `unan`. The word now aligns and keeps its morphemes.
+
+⏳ **The 28 suffix cases are left as they are**, pending a decision. They are the
+same mechanism — padding where the source's gloss line was short — but the
+article documents that the suffix is untranslated, so `unan` there records a
+real fact rather than inventing one, and nothing reaches the published data
+because the narration rule replaces it with `PAR`.
+
 ## Not a discrepancy, recorded so it is not re-raised
 
 - `Kwaway/S51` — printed p.10 reads `51 mikabak-abay-u/mikabakabayu u mwakay`.
