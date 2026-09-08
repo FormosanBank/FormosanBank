@@ -39,7 +39,7 @@ done
 run vocabulary "$PY" "$FB/QC/validation/validate_vocabulary.py" \
     --o_info "$REPORT/orthography-standard" --reference "$FB/QC/validation/reference" --language Amis
 run conversion-Coastal "$PY" "$FB/QC/validation/validate_conversion_table.py" \
-    "$FB/Orthographies/Ortho94/Amis.tsv" "$FB/Orthographies/Ortho113/Amis.tsv" \
+    "$HERE/source_orthography/Amis.tsv" "$FB/Orthographies/Ortho113/Amis.tsv" \
     "$HERE/wu_source_to_ortho113.tsv" --dialect Coastal \
     --output "$REPORT/conversion-Coastal.md"
 run dialect "$PY" "$FB/QC/validation/validate_dialect.py" --path "$ROOT/XML"

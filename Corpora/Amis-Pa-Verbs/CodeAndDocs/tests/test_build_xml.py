@@ -250,3 +250,29 @@ def test_final_null_and_original_phonology_are_preserved() -> None:
     assert root.findtext("S[@id='s32b']/W[@id='s32bw1']/PHON[@kindOf='original']") == "aku"
     assert root.findtext("S[@id='s18a']/W[@id='s18aw1']/PHON[@kindOf='original']") == "ʦi"
     assert root.findtext("S[@id='s18a']/W[@id='s18aw1']/M[@id='s18aw1m0']/PHON[@kindOf='original']") == "∅"
+
+
+def test_source_apostrophe_matches_wu_phonetic_key_and_repeated_example() -> None:
+    # Dissertation xviii and 5.27a (p.313) give /ʔ/ for the paper's Ma-na’ay.
+    root = ET.parse(BUILD_XML.XML_PATH).getroot()
+    expected = {
+        "s36a": ("Mana'ay kaku pananum tu sayta.", "Mana^ay kako pananom to sayta.", "manaʔaj kaku pananum tu sajta"),
+        "s36aalt": ("Mana'ay kaku pananum i sayta.", "Mana^ay kako pananom i sayta.", "manaʔaj kaku pananum i sajta"),
+        "s36aw0": ("Ma-na'ay", "Ma-na^ay", "manaʔaj"),
+        "s36aaltw0": ("Ma-na'ay", "Ma-na^ay", "manaʔaj"),
+        "s36aw0m1": ("na'ay", "na^ay", "naʔaj"),
+        "s36aaltw0m1": ("na'ay", "na^ay", "naʔaj"),
+    }
+    affected = {}
+    for parent in root.iter():
+        original = parent.findtext("FORM[@kindOf='original']")
+        if original and "'" in original:
+            affected[parent.get("id")] = parent
+    assert set(affected) == set(expected)
+    for identity, (original, standard, phon) in expected.items():
+        parent = affected[identity]
+        assert parent.findtext("FORM[@kindOf='original']") == original
+        assert parent.findtext("FORM[@kindOf='standard']") == standard
+        assert parent.findtext("PHON[@kindOf='original']") == phon
+        assert "ʔ" in parent.findtext("PHON[@kindOf='standard']")
+        assert "ʡ" not in parent.findtext("PHON[@kindOf='standard']")
