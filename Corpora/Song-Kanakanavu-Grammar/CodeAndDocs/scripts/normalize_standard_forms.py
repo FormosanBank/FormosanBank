@@ -6,11 +6,24 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import os
 import re
 import string
+import sys
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass
 from pathlib import Path
+
+# The reviewed decisions record the SOURCE surface, accents and all, because
+# they are also matched against the original tier. standardize.py --remove_accents
+# has already folded stress out of the standard tier by the time this runs, so
+# every comparison against (or write into) that tier folds the decision first.
+_FORMOSANBANK = Path(
+    os.environ.get("FORMOSANBANK_PATH", Path(__file__).resolve().parents[4])
+)
+if str(_FORMOSANBANK) not in sys.path:
+    sys.path.insert(0, str(_FORMOSANBANK))
+from QC.utilities._accents import strip_accents  # noqa: E402
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -63,18 +76,6 @@ LYRIC_NOTE = (
     "Source lyric layout resolved with independently attested word boundaries; "
     "exact decision recorded in intermediate/standard_surface_decisions.tsv."
 )
-ANALYSIS_TIER_NOTE = (
-    "Source analysis spelling standardized to the documented Ortho113 surface; "
-    "original tier preserves the printed form."
-)
-
-# Reader page 69 prints takananga in the sentence surface but takanaga in the
-# aligned analysis. Preserve the latter in original W/M tiers and resolve its
-# non-Ortho113 g only in the corresponding standard tiers.
-ANALYSIS_TIER_CORRECTIONS = {
-    "song-2018-kanakanavu-S0012-W004": ("takanaga=kasu", "takananga=kasu"),
-    "song-2018-kanakanavu-S0012-W004-M01": ("takanaga=", "takananga="),
-}
 
 
 @dataclass(frozen=True)
@@ -217,7 +218,7 @@ def apply_decision(sentence: ET.Element, decision: Decision) -> int:
             "never reach the XML"
         )
 
-    standard.text = decision.output_forms[0]
+    standard.text = strip_accents(decision.output_forms[0])
     standard.set("notes", decision.note)
     insert_at = list(sentence).index(standard) + 1
     for output in decision.output_forms[1:]:
@@ -309,7 +310,7 @@ def normalize_dictionary(
                     f"{entry_id} original lost its source-apparatus note"
                 )
             standard = one_form(sentence, "standard")
-            if (standard.text or "") != output:
+            if (standard.text or "") != strip_accents(output):
                 raise ValueError(
                     f"{entry_id} standard drifted from the reviewed output: "
                     f"{standard.text!r}; expected {output!r}"
@@ -338,35 +339,6 @@ def normalize_grammar(root: ET.Element, decisions: dict[str, Decision]) -> int:
     return len(decisions)
 
 
-def normalize_analysis_tiers(root: ET.Element) -> int:
-    by_id = {
-        element.get("id", ""): element
-        for element in root.iter()
-        if element.tag in {"W", "M"}
-    }
-    for record_id, (expected_original, output_standard) in (
-        ANALYSIS_TIER_CORRECTIONS.items()
-    ):
-        element = by_id.get(record_id)
-        if element is None:
-            raise ValueError(f"Missing analysis-tier correction target: {record_id}")
-        original = one_form(element, "original")
-        standard = one_form(element, "standard")
-        if (original.text or "") != expected_original:
-            raise ValueError(
-                f"Analysis-tier source changed for {record_id}: {original.text!r}; "
-                f"expected {expected_original!r}"
-            )
-        if (standard.text or "") != expected_original:
-            raise ValueError(
-                f"Analysis-tier standard changed before review for {record_id}: "
-                f"{standard.text!r}; expected {expected_original!r}"
-            )
-        standard.text = output_standard
-        standard.set("notes", ANALYSIS_TIER_NOTE)
-    return len(ANALYSIS_TIER_CORRECTIONS)
-
-
 def assert_marker_free(
     root: ET.Element, dictionary: bool, allowed: frozenset[str] = frozenset()
 ) -> None:
@@ -391,7 +363,7 @@ def assert_marker_free(
                 )
 
 
-def process_file(path: Path) -> tuple[int, int, int, int]:
+def process_file(path: Path) -> tuple[int, int, int]:
     tree = ET.parse(path)
     root = tree.getroot()
     decisions = load_decisions()
@@ -400,14 +372,12 @@ def process_file(path: Path) -> tuple[int, int, int, int]:
             root, decisions_for_scope(decisions, "dictionary")
         )
         assert_marker_free(root, dictionary=True)
-        tier_corrections = 0
     elif path.name == GRAMMAR_NAME:
         count = normalize_grammar(root, decisions_for_scope(decisions, "grammar"))
-        tier_corrections = normalize_analysis_tiers(root)
         split_entries = 0
         omissions = 0
         reviewed_dash_surfaces = frozenset(
-            decision.output_forms[0]
+            strip_accents(decision.output_forms[0])
             for decision in decisions.values()
             if decision.decision_class == "source_break_punctuation_single_dash"
         )
@@ -416,7 +386,7 @@ def process_file(path: Path) -> tuple[int, int, int, int]:
         raise ValueError(f"Unexpected Kanakanavu corpus XML: {path}")
     ET.indent(root, space="  ")
     tree.write(path, encoding="UTF-8", xml_declaration=True)
-    return count, split_entries, omissions, tier_corrections
+    return count, split_entries, omissions
 
 
 def main() -> None:
@@ -429,12 +399,11 @@ def main() -> None:
         else sorted(args.corpora_path.rglob("*.xml"))
     )
     for path in files:
-        count, split_entries, omissions, tier_corrections = process_file(path)
+        count, split_entries, omissions = process_file(path)
         print(
             f"Processed {count} exact decisions; verified {split_entries} "
             f"split variant entries and {omissions} bound entries excluded "
-            f"upstream; applied {tier_corrections} analysis-tier corrections "
-            f"in {path}"
+            f"upstream in {path}"
         )
 
 

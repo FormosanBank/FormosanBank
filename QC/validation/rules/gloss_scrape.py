@@ -14,7 +14,7 @@ audit entry point exits 0 regardless.
 Rules:
 - G001 HARD: marker skeleton of W FORM must match that of W TRANSL.
 - G002 SOFT: M-count vs. gloss-unit count implied by the W TRANSL.
-- G003 SOFT: internal '-' in an M FORM (segmentation leaked into the morpheme).
+- G003 SOFT: internal '-' in an M FORM, except a POL-014 infix gap root.
 - G004 HARD: infix root reconstruction — '<X>' in a W FORM implies a root M.
 - G005 WARN: gloss-label inventory; singletons near a frequent label.
 - G006 HARD: non-canonical null symbol (ø/Ø/0/NULL instead of ∅).
@@ -37,6 +37,11 @@ MARKERS = "-<>=~"
 _ANGLE = re.compile(r"<[^>]*>")
 _INFIX_FORM = re.compile(r"^-[^-]+-$")
 _SPLIT_UNITS = re.compile(r"[-=~]")
+_CJK_PLACEHOLDER_TILDE = re.compile(
+    r"(?<=[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff])"
+    r"~"
+    r"(?=[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff])"
+)
 # A dash with a non-dash character on BOTH sides, i.e. an internal boundary
 # rather than an affix-attachment dash ('pa-', '-en') or an infix ('-em-').
 _INTERNAL_DASH = re.compile(r"(?<=[^-])-(?=[^-])")
@@ -69,6 +74,17 @@ def marker_skeleton(text: str | None) -> str:
     if not text:
         return ""
     return "".join(ch for ch in text if ch in MARKERS)
+
+
+def _gloss_notation_text(text: str) -> str:
+    """Remove CJK object-placeholder tildes before parsing gloss notation.
+
+    Chinese teaching glosses sometimes use ``把~抓住`` to mean "catch ~".
+    The tilde marks an open semantic argument, not reduplication or a
+    morpheme boundary. Restricting this exception to a tilde between CJK
+    characters leaves ordinary Leipzig-style ``CAU~walk`` notation intact.
+    """
+    return _CJK_PLACEHOLDER_TILDE.sub("", text)
 
 
 def _form_text(elem: etree._Element, kind: str = "original") -> str:
@@ -110,6 +126,7 @@ def _gloss_units(text: str) -> int:
     """
     if not text:
         return 0
+    text = _gloss_notation_text(text)
     infixes = _ANGLE.findall(text)
     remainder = _ANGLE.sub("", text)
     segments = [s for s in _SPLIT_UNITS.split(remainder) if s.strip()]
@@ -162,6 +179,24 @@ def _edit_distance_le_1(a: str, b: str) -> bool:
     return True
 
 
+def _pol014_gap_root_forms(w_form: str) -> set[str]:
+    """Return exact hyphenated root spellings implied by inline infixes.
+
+    POL-014 preserves the infixation point as a gap hyphen in the root M:
+    ``t<um>a`` therefore licenses ``t-a``. Only an exact root derived from
+    the parent W is returned, so unrelated internal dashes remain visible to
+    G003.
+    """
+    roots: set[str] = set()
+    for unit in _SPLIT_UNITS.split(w_form):
+        if not _ANGLE.search(unit):
+            continue
+        root = re.sub(r"-{2,}", "-", _ANGLE.sub("-", unit)).strip("-").strip()
+        if root:
+            roots.add(root.casefold())
+    return roots
+
+
 # ---------------------------------------------------------------------------
 # G001 / G007: marker-skeleton parity between W FORM and W TRANSL
 # ---------------------------------------------------------------------------
@@ -186,7 +221,7 @@ def g001_marker_skeleton_parity(
         if not form or not transl:
             continue  # V011/V065 own missing FORM/TRANSL
         fs = marker_skeleton(form)
-        ts = marker_skeleton(transl)
+        ts = marker_skeleton(_gloss_notation_text(transl))
         if fs.replace("~", "-") == ts.replace("~", "-"):
             continue
         findings.append(Finding(
@@ -221,7 +256,7 @@ def g007_marker_type_mismatch(
         if not form or not transl:
             continue
         fs = marker_skeleton(form)
-        ts = marker_skeleton(transl)
+        ts = marker_skeleton(_gloss_notation_text(transl))
         if fs == ts:
             continue
         if fs.replace("~", "-") != ts.replace("~", "-"):
@@ -299,7 +334,8 @@ def g003_internal_dash_in_M_FORM(
     word (or two morphemes) was placed in one M — e.g. 'k-uda', 'm-angay',
     'chita-en', all real examples from published corpora.
 
-    Exempt: the canonical infix notation '-X-' (V067's convention), and
+    Exempt: the canonical infix notation '-X-' (V067's convention), an exact
+    POL-014 gap root derived from the parent W's inline infix notation, and
     leading- or trailing-only dashes marking affix attachment ('pa-', '-en'),
     which are harmless. '=' is not flagged at all: V066 *requires* the clitic
     boundary to propagate to the M tier.
@@ -311,12 +347,20 @@ def g003_internal_dash_in_M_FORM(
             continue
         if not _INTERNAL_DASH.search(form):
             continue
+        parent = m.getparent()
+        if (
+            parent is not None
+            and parent.tag == "W"
+            and form.casefold() in _pol014_gap_root_forms(_form_text(parent))
+        ):
+            continue
         findings.append(Finding(
             rule_id="G003",
             severity=Severity.SOFT,
             message=(
                 f"M FORM {form!r} contains an internal '-'; a morpheme should "
-                "not carry a segmentation boundary (infix '-X-' excepted)"
+                "not carry a segmentation boundary (infix '-X-' and an exact "
+                "POL-014 gap root excepted)"
             ),
             path=path,
             location=_m_loc(m),

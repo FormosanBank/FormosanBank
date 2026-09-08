@@ -1,0 +1,11 @@
+{
+  "policy": "POL-025 one tier down. The source prints two English equivalents for one Amis word, separated by '/'. The Amis word does not vary, so POL-027's 'one S block per option' does not apply: the split is in the gloss, not in the data. Each entry becomes a primary TRANSL plus a TRANSL[@ver=\"alt\"] on the same W. Ruled by the maintainer 2026-09-07; every entry read off the source scan before being listed here (POL-039: the table is data, not code).",
+  "language": "eng",
+  "alternations": [
+    {"file": "Amis/Day_I_Now.xml",      "w_id": "S4W8",  "page": 18, "example": 3,  "printed": "good/holy",  "primary": "good",  "alt": "holy"},
+    {"file": "Amis/Day_I_Now.xml",      "w_id": "S16W7", "page": 19, "example": 15, "printed": "noon/lunch", "primary": "noon",  "alt": "lunch"},
+    {"file": "Amis/Day_I_Now.xml",      "w_id": "S18W9", "page": 19, "example": 17, "printed": "trip/walk",  "primary": "trip",  "alt": "walk"},
+    {"file": "Amis/Silo.xml",           "w_id": "S3W3",  "page": 19, "example": 2,  "printed": "whole/all",  "primary": "whole", "alt": "all"},
+    {"file": "Amis/Silo.xml",           "w_id": "S5W8",  "page": 19, "example": 4,  "printed": "and/with",   "primary": "and",   "alt": "with"}
+  ]
+}
