@@ -1,0 +1,31 @@
+# POL-047: corpora that predate the single-entry-point requirement.
+#
+# Each line is a corpus whose CodeAndDocs/ has no generate_xml.sh yet. Most are
+# mid-flight in a re-port PR; conformance belongs in those PRs, not in a sweep
+# on main, because a rename here conflicts with every one of them.
+#
+# This list only shrinks. When a corpus is next ported or rebuilt, give it
+# CodeAndDocs/generate_xml.sh and delete its line. A new corpus is never added.
+#
+# A corpus that HAS migrated but departs from the shape on purpose does not
+# belong here — it declares the departure with a '**POL-047 deviation:**' line
+# in its README (see HundredPaiwanStories).
+FormosanBankGitBook
+Glosbe
+ILRDF_Dicts
+Latham-1862
+NTUFormosanCorpus
+NTU_Paiwan_ASR
+Nowbucyang-Truku-Thesis
+Paiwan_Stories
+Presidential_Apologies
+RauDong
+SEALS33
+Safolu-Amis-Dictionary
+Siraya_Gospels
+Virginia_Fey_Dictionary
+Whitehorn_Collection
+Wikipedias
+WilangYutasVideos
+YeddaPalemeqBlog
+ePark

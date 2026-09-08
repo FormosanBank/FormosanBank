@@ -8,11 +8,12 @@ import re
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-CODE_ROOT = Path(__file__).resolve().parents[1]
-CORPUS_ROOT = Path(__file__).resolve().parents[2]
-RECORDS = CODE_ROOT / "data" / "reviewed_examples.tsv"
-XML = CORPUS_ROOT / "XML" / "Thao" / "li_2014_conjunction_in_thao.xml"
-LEDGER = CODE_ROOT / "data" / "source_ledger.csv"
+ROOT = Path(__file__).resolve().parents[2]
+DOCS = ROOT / "CodeAndDocs"
+RECORDS = DOCS / "reviewed_examples.tsv"
+CORRECTIONS = DOCS / "source_corrections.tsv"
+XML = ROOT / "XML" / "Thao" / "li_2014_conjunction_in_thao.xml"
+LEDGER = DOCS / "source_ledger.csv"
 
 CITATION = ("Li, P. J.-K. (2014). Conjunction in Thao. In I Wayan Arka & N. L. K. "
             "Mas Indrawati (Eds.), Papers from 12-ICAL, Volume 2: Argument realisations "
@@ -24,9 +25,23 @@ BIBTEX = ("@incollection{li2014conjunctionthao, author={Li, Paul Jen-Kuei}, "
           "editor={Arka, I Wayan and Indrawati, N. L. K. Mas}, publisher={Asia-Pacific "
           "Linguistics}, year={2014}, pages={401--409}, url={https://openresearch-"
           "repository.anu.edu.au/items/8bfb8bf0-2f58-4eae-947c-bf9af50faf9f}}")
-COPYRIGHT = "Creative Commons Attribution 4.0 International (CC BY 4.0)."
+COPYRIGHT = "CC BY 4.0"
 EDGE_PUNCTUATION = ".,!?;:…"
 INFIX_SITE = "\x00"  # transient marker for an infix extraction site (see parse_morphemes)
+
+
+def corrected_record(record: dict[str, str]) -> dict[str, str]:
+    """Apply exact reviewed corrections while preserving the printed input."""
+    result = record.copy()
+    with CORRECTIONS.open(encoding="utf-8", newline="") as handle:
+        for correction in csv.DictReader(handle, delimiter="\t"):
+            if correction["id"] != result["id"]:
+                continue
+            field = correction["field"]
+            if result[field] != correction["before"]:
+                raise ValueError(f"Correction source changed: {result['id']} {field}")
+            result[field] = correction["after"]
+    return result
 
 
 def word_tokens(text: str) -> list[str]:
@@ -70,6 +85,10 @@ def parse_morphemes(form: str, gloss: str) -> list[tuple[str, str]]:
     )
     if len(form_values) != len(gloss_values):
         raise ValueError(f"morpheme mismatch: {form!r} / {gloss!r}")
+    # Preserve the published partial analysis until the specific M-coverage
+    # ruling requested in the merged corpus README is supplied.
+    if len(form_values) + len(form_infixes) == 1:
+        return []
     result: list[tuple[str, str]] = []
     for form_value, form_boundary, gloss_value, gloss_boundary in zip(
         form_values,
@@ -89,8 +108,9 @@ def parse_morphemes(form: str, gloss: str) -> list[tuple[str, str]]:
 def rows() -> list[dict[str, str]]:
     with RECORDS.open(encoding="utf-8", newline="") as handle:
         data = list(csv.DictReader(handle, delimiter="\t"))
-    if len(data) != 27 or any(r["included"] != "yes" for r in data):
-        raise SystemExit("Expected exactly 27 reviewed included examples")
+    if len(data) != 28 or any(r["included"] != "yes" for r in data):
+        raise SystemExit("Expected 24 numbered examples and four footnote examples")
+    data = [corrected_record(record) for record in data]
 
     expected_pages = {
         **{str(number): ("395", "402") for number in range(1, 6)},
@@ -101,6 +121,7 @@ def rows() -> list[dict[str, str]]:
         "fn7-1": ("399", "406"),
         "fn7-2": ("399", "406"),
         "fn7-3": ("399", "406"),
+        "fn5-1": ("396", "403"),
     }
     for r in data:
         expected_pdf, expected_printed = expected_pages[r["example_label"]]
@@ -153,7 +174,7 @@ def build(data: list[dict[str, str]]) -> ET.ElementTree:
             form = ET.SubElement(word, "FORM", {"kindOf": "original"})
             form.text = word_form
             gloss = ET.SubElement(
-                word, "TRANSL", {"kindOf": "original", "xml:lang": "eng"}
+                word, "TRANSL", {"xml:lang": "eng"}
             )
             gloss.text = word_gloss
             for morpheme_number, (m_form, m_gloss) in enumerate(
@@ -169,7 +190,7 @@ def build(data: list[dict[str, str]]) -> ET.ElementTree:
                 m_translation = ET.SubElement(
                     morpheme,
                     "TRANSL",
-                    {"kindOf": "original", "xml:lang": "eng"},
+                    {"xml:lang": "eng"},
                 )
                 m_translation.text = m_gloss
     ET.indent(root, space="    ")
