@@ -1,61 +1,50 @@
 # Wu (2006), The Analysis of Pa-Verbs in Amis
 
-This text corpus contains 29 Coastal Amis example variants from Joy Wu's 2006
-paper, “The Analysis of Pa-Verbs in Amis.” The examples have English
-translations and source-aligned word and morpheme glosses. Every word has a
-morpheme tier, for a total of 263 M elements. Seven printed nulls use canonical
-`∅` in original analysis tiers and are omitted from sentence-level standard
-forms. Source gloss `CaU` is retained with additive standard `CAU`.
+This corpus contains 29 Coastal Amis sentence variants from Joy Wu's 2006 paper, [The Analysis of Pa-Verbs in Amis](https://sil-philippines-languages.org/ical/papers/wu_joy-pa%20verbs.pdf). The paper identifies Haian/Coastal Amis from Changpin, Taitung. The XML has 154 W and 265 M, 33 sentence translations, and no audio.
 
-Source: [SIL Resource Archive](https://www.sil.org/resources/archives/25653).
-The corpus and publication metadata were revalidated on 22 August 2026 against
-the current FormosanBank tooling and source-review evidence.
-
-***
+All 13 source pages were reviewed. The corpus covers the sentence examples on pages 6–10; lexical tables and theory discussion are outside this sentence-example scope. The recorded exclusions cover repeated earlier examples, ungrammatical and questionable examples, forbidden alternatives and one starred translation. Person/car readings in 20c and both case forms of 36a remain separate, fully aligned variants.
 
 <!-- CORPUS STATS START -->
 ## Corpus Statistics
 
 | | Amis<br>Coastal |
 | --- | --- |
-| Word count | 153 |
+| Word count | 154 |
 | Total audio | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 |
 | Translated words |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 153 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 154 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 |
-| Morphologically segmented | 153 |
-| Glossed words | 153 |
+| Morphologically segmented | 154 |
+| Glossed words | 154 |
 
 ***
 
 <!-- CORPUS STATS END -->
 
+## Access Details
 
-## **Access Details**
+XML and reproducible build inputs are in the [Amis-Pa-Verbs directory](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/Amis-Pa-Verbs). Language is Amis (`ami`), dialect `Coastal`.
 
-The corpus is available as XML in the
-[FormosanBank repository](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/Amis-Pa-Verbs).
-It contains Amis (`ami`, dialect `Coastal`) text with English translations and
-word and morpheme glosses. No audio is included.
+## Corpus Processing
 
-***
+The committed transcription tables preserve source spelling, W glosses, translations, exclusions and stable source IDs. The current source review restores obligatory `i/PREP` in example 32c (`*(i)`), 22 printed sentence endings and the two printed parts of `Pa-fli`. The latter retains W gloss `give`; its M parts have no individually supplied gloss and remain unglossed. No sentence or free translation is removed. Source `payau`, `ni/GEN-NCM`, `ku/NOM-NCM` and source `CaU` with additive standard `CAU` remain.
 
-## **Copyright**
+Seven analytic nulls are retained as `∅` in original S/W/M tiers; shared standardization removes them from S standard. Nulls are silent in PHON, except a whole-null FORM receives PHON `∅`. The six earlier reviewed correction records are retained and their file path now reaches the generated XML.
 
-The Basecamp corpus card records the source license as Creative Commons
-Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0). The
-source PDF does not display that license statement. The corpus is also subject
-to the central FormosanBank [Terms of Use](../../additional-resources/terms-of-use.md)
-and [AI Use and Commercial Licensing](../../additional-resources/ai-use-and-commercial-licensing.md).
+Run `CodeAndDocs/generate_xml.sh` from the corpus package. It builds from committed inputs, applies corrections, cleans, standardizes and generates PHON with current shared tools, without a private PDF, network fetch or historical Git checkout. [provenance.json](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Amis-Pa-Verbs/CodeAndDocs/provenance.json) records the tools used for the committed output and does not pin future builds. Validation and source refresh are separate.
 
-***
+Original PHON uses the Ortho94 Coastal profile; standard PHON uses Ortho113. The existing `u→o` spelling conversion has a reviewed phoneme-level difference, not a claim of strict IPA equivalence. The unsupported validation-only profile was removed. [Source and conversion notes](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Amis-Pa-Verbs/CodeAndDocs/README.md) document these limitations and the exact source-inherent findings protected by tests.
+
+## Copyright
+
+**CC BY-NC-SA 4.0.** SIL International's published archive terms apply unless an item states otherwise; this paper has no conflicting terms. The maintainer verified the grant in January 2025. Credit Joy Wu and SIL International, retain the noncommercial/share-alike conditions, and identify the transcription and normalization changes. Rights evidence is available from the maintainer.
+
+The corpus is also subject to the central FormosanBank [Terms of Use](../../additional-resources/terms-of-use.md) and [AI Use and Commercial Licensing](../../additional-resources/ai-use-and-commercial-licensing.md).
 
 ## Citation
 
-In accordance with our [Terms of Use](../../additional-resources/terms-of-use.md), if you use this corpus or any product derived from this corpus in any publication, you must cite both FormosanBank and:
+In accordance with the Terms of Use, cite FormosanBank and:
 
-Wu, J. (2006). The analysis of pa- verbs in Amis. Paper presented at the Tenth
-International Conference on Austronesian Linguistics, Puerto Princesa City,
-Palawan, Philippines.
+Wu, Joy. 2006. The analysis of pa- verbs in Amis. Paper presented at the Tenth International Conference on Austronesian Linguistics, 17–20 January 2006, Puerto Princesa City, Palawan, Philippines.
