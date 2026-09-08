@@ -115,6 +115,7 @@ CSV_TO_MD = {
     'Song-Kanakanavu-Grammar_corpora_stats.csv': 'song-kanakanavu-grammar.md',
     'Li-Conjunction-Thao_corpora_stats.csv': 'li-conjunction-thao.md',
     'Campbell-Favorlang_corpora_stats.csv': 'campbell-favorlang.md',
+    'UtrechtManuscriptWordList_corpora_stats.csv': 'utrecht-manuscript-word-list.md',
 }
 
 # ---------------------------------------------------------------------------

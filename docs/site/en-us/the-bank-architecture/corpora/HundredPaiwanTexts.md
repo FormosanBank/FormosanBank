@@ -10,15 +10,15 @@
 
 | | Paiwan<br>Central | Paiwan<br>Eastern | Paiwan<br>Northern | Paiwan<br>Southern | Paiwan<br>unknown |
 | --- | --- | --- | --- | --- | --- |
-| Word count | 3,714 | 1,198 | 9,017 | 9,444 | 1,105 |
+| Word count | 3,719 | 1,198 | 9,021 | 9,496 | 1,122 |
 | Total audio | 0 | 0 | 0 | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 | 0 | 0 | 0 | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 | 0 | 0 | 0 | 0 |
 | Translated words |  |  |  |  |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 3,714 | 1,198 | 9,017 | 9,444 | 1,105 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 3,719 | 1,198 | 9,021 | 9,496 | 1,122 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 | 0 | 0 | 0 | 0 |
-| Morphologically segmented | 3,714 | 1,198 | 9,017 | 9,444 | 1,105 |
-| Glossed words | 3,714 | 1,198 | 9,017 | 9,444 | 1,105 |
+| Morphologically segmented | 3,719 | 1,198 | 9,021 | 9,496 | 1,122 |
+| Glossed words | 3,719 | 1,198 | 9,021 | 9,496 | 1,122 |
 
 ***
 
