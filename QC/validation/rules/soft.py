@@ -7,6 +7,8 @@ the CSV writer.
 
 Signature: same as HARD rules.
 """
+import difflib
+import unicodedata
 from pathlib import Path
 
 from lxml import etree
@@ -16,6 +18,19 @@ from QC.validation._finding import Finding, Severity
 
 
 _XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
+
+# POL-028 alternate-FORM thresholds. Deliberately here rather than in
+# POLICIES.md: the policy states the requirement in words so these can be
+# tuned from evidence without a re-ruling.
+_ALT_OVERLAP_RATIO = 0.6      # below this, the pair does not look related
+_ALT_SHORT_EXEMPT = 2         # shorter form <= this: ratio is meaningless
+_ALT_LENGTH_FACTOR = 2        # longer form may not exceed this * shorter
+
+
+def _fold(text: str | None) -> str:
+    """Casefold and drop combining marks, so 'tâu' compares as 'tau'."""
+    decomposed = unicodedata.normalize("NFD", (text or "").strip().lower())
+    return "".join(c for c in decomposed if not unicodedata.combining(c))
 
 
 def v010_count_s_without_form(
@@ -283,6 +298,84 @@ def v148_W_less_S_in_segmented_file(
     )]
 
 
+def v150_alternate_FORM_low_overlap(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V150 SOFT (POL-028): an alternate FORM that does not look like a
+    spelling variant of its sibling.
+
+    Two independent conditions, either of which flags:
+
+    * **overlap** — the similarity ratio against the closest non-alternate
+      sibling is below 0.6. Pairs whose *shorter* form is 2 characters or
+      fewer are exempt, because a one- or two-letter form cannot produce a
+      meaningful ratio (Wakelin's `a`/`u` scores 0.00 and is correct).
+    * **proportion** — the longer form is more than twice the shorter. This
+      is what makes the short-form exemption safe: on its own that exemption
+      would wave through any short form paired with a long one, and a
+      truncation or expansion is not a spelling variant however it scores.
+
+    SOFT, not HARD: legitimate pairs sit below the ratio and cannot be
+    separated by any threshold (`pipangn-epen`/`pipangengne-eben`, 0.57).
+    A reviewer resolves each; confirmed-fine pairs are recorded in the
+    worklist so they are not re-litigated.
+
+    Emits one Finding per offending alternate rather than aggregating: the
+    population is ~12 bank-wide, and an aggregate count tells a reviewer
+    nothing about which pair to look at.
+    """
+    findings: list[Finding] = []
+    for parent in tree.iter("S", "W", "M"):
+        forms = [child for child in parent if child.tag == "FORM"]
+        alternates = [f for f in forms if f.get("kindOf") == "alternate"]
+        bases = [f for f in forms if f.get("kindOf") != "alternate"]
+        if not alternates or not bases:
+            continue          # bare alternates are V149's business
+        for alt in alternates:
+            alt_text = (alt.text or "").strip()
+            ratio, base_text = max(
+                (
+                    (
+                        difflib.SequenceMatcher(
+                            None, _fold(alt_text), _fold(base.text)
+                        ).ratio(),
+                        (base.text or "").strip(),
+                    )
+                    for base in bases
+                ),
+                key=lambda pair: pair[0],
+            )
+            lo = min(len(alt_text), len(base_text))
+            hi = max(len(alt_text), len(base_text))
+            reasons: list[str] = []
+            if ratio < _ALT_OVERLAP_RATIO and lo > _ALT_SHORT_EXEMPT:
+                reasons.append(f"overlap {ratio:.2f} < {_ALT_OVERLAP_RATIO}")
+            if hi > _ALT_LENGTH_FACTOR * lo:
+                reasons.append(
+                    f"lengths {lo} vs {hi}, more than "
+                    f"{_ALT_LENGTH_FACTOR}x apart"
+                )
+            if not reasons:
+                continue
+            p_id = parent.get("id")
+            findings.append(Finding(
+                rule_id="V150",
+                severity=Severity.SOFT,
+                message=(
+                    f"{parent.tag} id={p_id!r}: alternate {alt_text!r} does "
+                    f"not look like a spelling variant of {base_text!r} "
+                    f"({'; '.join(reasons)}) — POL-028"
+                ),
+                path=path,
+                location=f"{parent.tag}={p_id}" if p_id else parent.tag,
+                language=_tree_language(tree, path, index),
+                character="",
+            ))
+    return findings
+
+
 RULES: list = [
     v010_count_s_without_form,
     v014_count_missing_standard_form,
@@ -291,5 +384,7 @@ RULES: list = [
     v145_degenerate_all_single_M_tier,
     # POL-041 W-tier presence (2026-09-03), file-scoped
     v148_W_less_S_in_segmented_file,
+    # POL-028 alternate FORMs (2026-09-08)
+    v150_alternate_FORM_low_overlap,
 ]
 CROSS_FILE_RULES: list = []

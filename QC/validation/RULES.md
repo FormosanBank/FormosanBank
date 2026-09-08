@@ -49,6 +49,7 @@ the validator names on its `Details:` line, never to the terminal.
 | V145 | `degenerate_all_single_M_tier` | SOFT | file | M level present but the file carries no parsing. |
 | V148 | `W_less_S_in_segmented_file` | SOFT | file | a partially word-segmented file. |
 | V149 | `alternate_FORM_requires_base_sibling` | HARD | file | a FORM[@kindOf='alternate'] must have a non-alternate FORM sibling on the same parent. |
+| V150 | `alternate_FORM_low_overlap` | SOFT | file | an alternate FORM that does not look like a spelling variant of its sibling. |
 
 ## `validate_text.py` — text and typography
 
@@ -119,4 +120,4 @@ the validator names on its `Details:` line, never to the terminal.
 | G011 | `unsplit_slash_alternate` | SOFT | file | '/' in an S-original whose W tier also carries '/'. |
 | G012 | `trailing_paren_note_in_TRANSL` | SOFT | file | a trailing '(...)' in a TRANSL belongs in the notes attribute. |
 
-84 rules.
+85 rules.
