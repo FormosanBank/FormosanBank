@@ -14,7 +14,7 @@ from QC.validation.rules.text import (
     v129_asterisk_in_standard_FORM,
     v146_phon_variant_group_malformed,
 )
-from normalize_seediq_quotes import normalize_text
+from normalize_seediq_quotes import normalize_text, process_file
 from drop_redirect_copies import remove_redirect_copies
 
 HERE = Path(__file__).resolve().parent
@@ -107,6 +107,66 @@ def test_recorded_question_mark_correction(articles):
     assert (HERE / "manual_edits.xml").is_file()
 
 
+def test_citation_repairs_preserve_published_text_and_source_notes(articles):
+    with (HERE / "citation_restorations.csv").open(encoding="utf-8") as stream:
+        records = list(csv.DictReader(stream))
+    assert Counter(row["kind"] for row in records) == {"body": 25, "credit": 5}
+    assert sum(int(row["blocks"]) for row in records) == 33
+    assert sum(int(row["section_annotations"]) for row in records) == 322
+    for row in records:
+        form = articles[row["file"]].find('S/FORM[@kindOf="original"]')
+        length = int(row["published_prefix_length"])
+        assert hashlib.sha256(form.text[:length].encode()).hexdigest() == row["published_prefix_sha256"]
+        assert hashlib.sha256(form.get("notes").encode()).hexdigest() == row["notes_sha256"]
+        if row["kind"] == "credit":
+            assert len(form.text) == length
+        else:
+            added = form.text[length:].strip()
+            assert added.startswith("Hangan alang")
+            assert "http" not in added
+            assert "內政部戶政司全球資訊網" not in added
+
+
+@pytest.mark.parametrize(("article", "credit"), [
+    ("Batul", "Matis alang Taiping nii we, hlidan na Aking Puhuk (桂素芳)"),
+    ("Cyocuy", "Matis Alang Niyawcue nii we, hlidan na Aking Puhuk (桂素芳)"),
+    ("Hbun_kramay", "Matis Alang Meyuin Cong nii we, hlidan na Aking Nawi(黃美玉)."),
+    ("Libu", "Matis alang Ripu nii we, hlidan na Aking Nawi(黃美玉)."),
+    ("Smangus", "Matis alang Smangus nii we, hlidan na Walis Pawan (郭明吉) daka Bakan Temu (梁秀珍)."),
+])
+def test_historical_source_author_credits(articles, article, credit):
+    # These source readings were checked against the archived article renderings.
+    form = articles[f"Seediq/{article}.xml"].find('S/FORM[@kindOf="original"]')
+    assert form.get("notes") == credit
+
+
+def test_restored_source_words_and_repeated_sections(articles):
+    with (HERE / "citation_restorations.csv").open(encoding="utf-8") as stream:
+        records = {row["file"]: row for row in csv.DictReader(stream)}
+    for name, count in (("Gluban", 3), ("Tkijig", 2)):
+        filename = f"Seediq/{name}.xml"
+        form = articles[filename].find('S/FORM[@kindOf="original"]')
+        added = form.text[int(records[filename]["published_prefix_length"]):]
+        assert added.count("Hangan alang") == count
+    nakahara = articles["Seediq/Nakahara.xml"].find('S/FORM[@kindOf="original"]').text
+    assert "Pnspuwan msupu alang sediq tgdaya paran, kacike, mi tacinan turu alang." in nakahara
+    thgahan = articles["Seediq/Thgahan.xml"].find('S/FORM[@kindOf="original"]').text
+    assert "Hangan alang9部落名稱)" in thgahan
+    kulu = articles["Seediq/Kulu.xml"].find('S/FORM[@kindOf="original"]').text
+    assert "Snlhayan snhiyan9宗教信仰)" in kulu
+
+
+def test_restored_seediq_source_quotes_follow_the_ruling(articles):
+    for name in ("Kulu", "Matanki"):
+        form = articles[f"Seediq/{name}.xml"].find('S/FORM[@kindOf="original"]').text
+        assert '"Patas Lntudan Marah Matas Nyusan Skangki"' in form
+        assert '"Ndanan Sediq Tnpusu Taiwan"' in form
+    tongan = articles["Seediq/Tongan.xml"].find('S/FORM[@kindOf="original"]').text
+    assert 'Tongan(baykei)"tuhunac deyn-cu-dan' in tongan
+    bala = articles["Seediq/Mb’ala.xml"].find('S/FORM[@kindOf="original"]').text
+    assert "Qalang B'ala" in bala
+
+
 @pytest.mark.parametrize(("source", "expected"), [
     ("''patas''", '"patas"'),
     ("'patas'", '"patas"'),
@@ -115,6 +175,31 @@ def test_recorded_question_mark_correction(articles):
 ])
 def test_reviewed_seediq_quote_boundaries(source, expected):
     assert normalize_text(source) == expected
+
+
+def test_seediq_quote_edits_preserve_notes_and_other_tiers(tmp_path):
+    root = etree.Element("TEXT")
+    sentence = etree.SubElement(root, "S", id="0")
+    form = etree.SubElement(sentence, "FORM", notes="source 'credit'", kindOf="original")
+    form.text = "''patas'' b'anux knita' "
+    etree.SubElement(form, "UNCLEAR").tail = " 'document' brbiru'."
+    standard = etree.SubElement(sentence, "FORM", kindOf="standard")
+    standard.text = "'unchanged'"
+    path = tmp_path / "article.xml"
+    before = etree.tostring(root, encoding="utf-8", xml_declaration=True)
+    path.write_bytes(before)
+    assert process_file(path, apply=False) == 1
+    assert path.read_bytes() == before
+    assert process_file(path, apply=True) == 1
+    updated = etree.parse(str(path))
+    original = updated.find('S/FORM[@kindOf="original"]')
+    assert original.text == '"patas" b\'anux knita\' '
+    assert original.find("UNCLEAR").tail == ' "document" brbiru\'.'
+    assert original.get("notes") == "source 'credit'"
+    assert updated.find('S/FORM[@kindOf="standard"]').text == "'unchanged'"
+    after = path.read_bytes()
+    assert process_file(path, apply=True) == 0
+    assert path.read_bytes() == after
 
 
 @pytest.mark.parametrize("differing", [False, True])

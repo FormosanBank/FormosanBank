@@ -107,6 +107,20 @@ result and subsequent manual corrections remain separate.
 
 ## Notes for data users
 
+- **Recovered source sections**: the historical citation cutter stopped at
+  an early reference heading in 25 Seediq articles and lost 28 later body
+  sections. The manual edits restore those sections from verified historical
+  revisions, preserving repeated sections in Gluban and Tkijig. Five other
+  articles recover their author credits in source FORM notes. The 322 Chinese
+  section labels also remain in notes beside their native headings; ten exact
+  URL strings are excluded without dropping adjacent text. Source revisions
+  and protected published readings are recorded in
+  [citation_restorations.csv](CodeAndDocs/citation_restorations.csv).
+  Existing article text and IDs are preserved. This covers the 30 identified
+  cases; the remaining historical citation cuts are still under review.
+  Restored punctuation follows the same shared cleaning and Seediq quotation
+  steps. Original forms with notes receive those corrections too; note text
+  and word-internal apostrophes remain unchanged.
 - **Language review remains open**: nine retained Amis-labeled biographies
   appear to contain substantial Ilocano passages: George Harrison, Joe Biden,
   Grover Cleveland, George Washington, Barack Obama, John Lennon, Ringo Starr,
