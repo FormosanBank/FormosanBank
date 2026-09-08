@@ -4,13 +4,13 @@ This review replaces the earlier marker-driven normalization with exact decision
 
 ## Source evidence
 
-- Reader pages 31 through 44 give the current inventory with `ʉ`, `r`, and no `l`, and explain that `r` covers the former `l` and `r` values. This supports the current shared Ortho113 mapping `r -> r~ɾ`.
+- Reader pages 31 through 44 give the current inventory with `ʉ`, `r`, and no `l`, and explain that `r` covers the former `l` and `r` values. This supports the current shared Ortho113 mapping `r -> [r|ɾ]`.
 - The same section identifies acute vowels as stress notation rather than separate segments and says stress should not be written in standard orthography. Original forms therefore preserve acute vowels, while standard and alternate forms fold them to their base vowels.
 - Reader page 193 defines `/` as separating pronunciation variants or forms whose roots vary under affixation. It defines `;` as separating related words or pronoun case forms. These are source-supplied lexical forms, not pieces to concatenate.
 - Reader pages 81, 109, and 225 attest both `'akia` and the two-word surface `'akia na`. The dictionary entry `'akia (na)` therefore has those two exact outputs.
 - Eleven Appendix 2A entries end in a hyphen. The source supplies bound citation forms, not unattached words. Per the reviewer decision of 2026-08-07, these entries are deleted from the published XML entirely: the dictionary ledger records each with `included=no` and an exclusion reason, and normalization verifies their absence. (An earlier revision retained them as original-only entries.)
 - Reader page 190 defines the song hyphens as lyric divisions for fitting text to music. It separately defines the double hyphen as break punctuation.
-- Reader page 69 prints `takananga` in sentence 4-9 but `takanaga=kasu` in its aligned analysis. Original tiers preserve both printed spellings. Only the analysis standard tiers resolve the non-Ortho113 `g` to `takananga=kasu` and `takananga=`.
+- Reader page 69 prints `takananga` in sentence 4-9 but `takanaga=kasu` in its aligned analysis. Original tiers preserve both printed spellings. Only the analysis standard tiers resolve the non-Ortho113 `g` to `takananga=kasu` at W level and `takananga` on its host M. The separate clitic M is `=kasu` under POL-015.
 - The song's word boundaries were not inferred by deleting every hyphen. `Formosan-LangShengSiQi-ALR` commit `40d89c1640f8cafec9576f3a748b13b07c770149`, raw HTML `data/raw/html/articles/year=108/mid=558/group=C_lang=15_no=1/col2.html`, independently attests `mati'ara'aravang`, `'aravang vatu`, and `tisa'ʉ ku 'apasʉ`. That file has SHA-256 `d5614078ea137b704a3f023cf589be26416266ee5ce0bba8e1ba35111ae8abc3`.
 
 ## Errors corrected
