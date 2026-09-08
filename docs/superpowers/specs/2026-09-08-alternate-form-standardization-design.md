@@ -69,9 +69,9 @@ worse — they rank Utrecht's obviously-fine `couva`/`cauwa` below Latham's
 
 A threshold of 0.6 yields 13 findings repo-wide: 6 Latham (real), 2 Utrecht
 (`tigpapahoang`/`tigp` likely real, `iit`/`jih` a judgment call), 5 Wakelin (all
-legitimate). Exempting pairs whose shorter form is ≤2 characters removes two of
-the Wakelin five (`u`/`a`, `namen`/`am`) and no real defect, giving **11**. This
-is the basis for a SOFT rule, not a HARD one.
+legitimate). Exempting pairs where **both** forms are ≤2 characters removes one
+of the Wakelin five (`a`/`u`) and no real defect, giving **12**. This is the
+basis for a SOFT rule, not a HARD one.
 
 ### Structural invariants are clean and worth locking in
 
@@ -91,13 +91,34 @@ same-language TRANSLs." This is false; XSD 1.0 cannot express it. V085 does.
 (W and M) and WakelinTexts (W and M) use it below S. 1,264 instances across 9
 corpora. This is correct usage and the policy should say so.
 
-### TRANSL/@kindOf is unenumerated and inconsistently applied
+### TRANSL/@kindOf is unenumerated, and wrong at the S level
 
-`TRANSL/@kindOf` is `xs:string` in the XSD — any value passes. In practice only
-`"original"` occurs, 65,650 times, in two corpora. Glosbe applies it to 4,157
-S-level translations and omits it from 3,452 others of the same kind, in the
-same corpus. HundredPaiwanStories applies it to every W and M gloss and never
-to S. Only V026 constrains it, and only at M level.
+`TRANSL/@kindOf` is `xs:string` in the XSD — any value passes. Only V026
+constrains it, and only at M level. GitBook licenses the looseness explicitly,
+calling it "the translation type, method, or provenance" — an open-ended
+description that is the reason anything got attached to it at all.
+
+In practice only `"original"` occurs, 65,650 times, and the two corpora split
+perfectly by level:
+
+| Corpus | S | W | M | Verdict |
+| --- | --- | --- | --- | --- |
+| Glosbe | 4,157 | 0 | 0 | **wrong** — remediate |
+| HundredPaiwanStories | 0 | 24,556 | 36,937 | correct — keep |
+
+The distinction is real. At W and M level a `TRANSL` carries a **gloss**, and
+`kindOf` distinguishes the source's own gloss from a standardized one — exactly
+the axis a future gloss-standardization pass will use, and already documented in
+GitBook ("Original source glosses should be preserved. A standardized gloss can
+be added as a separate `kindOf="standard"` translation"). At S level a `TRANSL`
+is a free translation, there is no original-vs-standard axis, and `kindOf` means
+nothing. Glosbe's 4,157 are therefore noise, not a convention.
+
+They sit in three files — `Glosbe_{ami,tay,xsy}_eng_tmem.xml` — and the current
+`glosbe_pipeline.py` does not emit them; it writes only `xml:lang` and `ver`.
+They are legacy. Glosbe's `make_xml.sh` operates in place on the published XML
+(its scrape is explicitly not reproducible), so a strip step added to that
+script both removes them and keeps them from returning, satisfying POL-038.
 
 ### The attribute whitelist mostly already exists
 
@@ -134,8 +155,8 @@ corpus script's docstring.
 | What may an `alternate` hold? | Spelling variants only. Competing lexemes become separate `S` blocks per POL-027. |
 | How is the overlap check enforced? | SOFT similarity flagging plus HARD structural invariants. |
 | Where does attribute documentation live? | Annotated XSD, with a generated `ATTRIBUTES.md`, mirroring `rules_catalogue.py` → `RULES.md`. |
-| What happens to `TRANSL/@kindOf`? | Enumerate, document, and SOFT-flag within-corpus inconsistency. |
-| Scope of this work | Tests and policy only. Latham remediation is a tracked worklist item; no published XML changes. |
+| What happens to `TRANSL/@kindOf`? | Enumerate and document. **Forbidden at S level; permitted at W/M**, where TRANSL carries a gloss. Glosbe's 4,157 S-level uses go on the remediation worklist. |
+| Scope of this work | Tests and policy only. Latham and Glosbe remediation are tracked worklist items; no published XML changes. **GitBook is in scope** (added 2026-09-08). |
 
 ## Design
 
@@ -148,11 +169,14 @@ which are all about alternatives.
   on the same node. It is the only marking for this: not `ver`, not
   `"alternative"`, not an `-opt` suffix.
 - Every alternate must have at least one non-alternate FORM sibling on the same
-  parent, and must **either overlap it highly or be very short** — short forms
-  being the case where overlap cannot be measured meaningfully. The policy
-  states this in words; the operative threshold and short-form cutoff live in
-  V150 and are deliberately not written into POLICIES, so they can be tuned
-  from evidence without a re-ruling.
+  parent, and must **either overlap it highly, or be short together with that
+  sibling** — the short case being where overlap cannot be measured
+  meaningfully. **Both forms must be short, not just one.** A short form paired
+  with a long one is not an alternate: `dog`/`supercalifragilisticexpialidocious`
+  shares a short member but is obviously two different words. The policy states
+  this in words; the operative threshold and length cutoff live in V150 and are
+  deliberately not written into POLICIES, so they can be tuned from evidence
+  without a re-ruling.
 - **The variation may span the whole form.** A one-letter word alternating
   `a`/`u` (WakelinTexts `Kwaway/S2W3`) is as valid an alternate as a letter
   changing inside a longer word. Nothing requires the variation to be
@@ -200,6 +224,8 @@ In `QC/validation/xml_template.xsd`:
   `original | standard`. This promotes V026's M-level check to every level at
   schema time. V026 stays — it produces a friendlier finding than a raw XSD
   error — and becomes partly redundant, which is noted in its docstring.
+  XSD 1.0 cannot also express "and not on an S-level TRANSL", because `S`, `W`
+  and `M` share one `TRANSL_Type`; that half is V151's job.
 - Leave `TRANSL/@ver` as `xs:string`. V084 owns that allowlist; duplicating it
   in the XSD would create two places to update. The annotation says so.
 
@@ -223,71 +249,125 @@ Next free id is V149.
 | id | severity | module | mnemonic | current findings |
 | --- | --- | --- | --- | --- |
 | V149 | HARD | `hard.py` | `alternate_FORM_requires_base_sibling` | 0 |
-| V150 | SOFT | `soft.py` | `alternate_FORM_low_overlap` | 11 |
-| V151 | SOFT | `soft.py` | `transl_kindof_inconsistent` | Glosbe's 4157/3452 split |
+| V150 | SOFT | `soft.py` | `alternate_FORM_low_overlap` | 12 |
+| V151 | SOFT → HARD | `soft.py` → `hard.py` | `S_TRANSL_has_no_kindOf` | 4,157 (Glosbe) |
 
 - **V149** — a `FORM[@kindOf="alternate"]` must have at least one non-alternate
   FORM sibling on the same parent. Locks in today's clean state; also covers
   "an alternate must not be a parent's only FORM."
 - **V150** — similarity between an alternate and its closest non-alternate
   sibling, below 0.6, using `SequenceMatcher` over NFD-stripped casefolded
-  text, **exempting pairs whose shorter form is 2 characters or fewer**.
-  Reports both strings, their lengths and the ratio so a reviewer can judge.
+  text, **exempting pairs where the LONGER form is 2 characters or fewer** —
+  that is, where both forms are short. Reports both strings, their lengths and
+  the ratio so a reviewer can judge.
 
-  The exemption encodes POL-028's "or very short" and is cut at 2 on evidence,
-  not taste. At ≤2 it suppresses exactly two pairs, both legitimate (`u`/`a`,
-  `namen`/`am`), and no real defect. At ≤3 it would also suppress
-  `ratta`/`tâu`, a genuine Latham cross-lexeme defect; at ≤4, three more
-  (`zido`/`arrabis`, `sjam`/`bahosa`, `tigp`/`tigpapahoang`). Anything above 2
-  hides real findings and must not be adopted without new evidence.
+  The exemption tests `max(len(a), len(b))`, never `min`. Testing the shorter
+  member would exempt any short form paired with any long one:
+  `dog`/`supercalifragilisticexpialidocious` has a shorter member of 3 and
+  would slip through a `min`-based cutoff of 3, while its longer member of 34
+  correctly fails a `max`-based one.
+
+  Cut at 2 on evidence. At ≤2 it suppresses exactly one pair, `a`/`u`, and no
+  real defect. At ≤3 and ≤4 it additionally suppresses `iit`/`jih`, an Utrecht
+  pair that wants a reviewer's eye rather than silence. At ≤5 it suppresses
+  `tâu`/`ratta`, a genuine Latham cross-lexeme defect, so 4 is the hard ceiling
+  and 2 is the recommended setting.
 
   No length rule rescues `pipangengne-eben`/`pipangn-epen` (ratio 0.57, both
-  long, legitimate). Such cases are irreducible, and are the reason V150 is
-  SOFT rather than HARD.
-- **V151** — within one file, some but not all `TRANSL` elements at a given
-  parent-element level carry `@kindOf`.
+  long, legitimate) or `am`/`namen` (0.57, longer member 5). Such cases are
+  irreducible, and are the reason V150 is SOFT rather than HARD.
+- **V151** — an S-level `TRANSL` must not carry `@kindOf`. W- and M-level
+  TRANSLs may, since there it marks a source gloss against a standardized one.
+
+  Lands **SOFT**, because Glosbe's 4,157 legacy attributes would otherwise fail
+  CI the moment the rule ships, and the earlier ruling keeps remediation out of
+  this change. It is **promoted to HARD in the same change that remediates
+  Glosbe** — that promotion is the worklist item's definition of done, not an
+  optional follow-up.
 
 Regenerate `RULES.md` afterwards.
 
 ### 5. Worklist, not remediation
 
-`claudeplans/2026-09-08-alternate-form-worklist.md` triages all 11 V150
-findings by element id:
+`claudeplans/2026-09-08-alternate-form-worklist.md` carries two remediation
+items and the triage behind them.
+
+**V150 — all 12 findings, by element id:**
 
 - 6 Latham-1862 cross-lexeme alternates — defects, to be fixed in a later
   change that rebuilds the corpus per POL-027 and POL-037.
 - 2 UtrechtManuscriptWordList — `tigpapahoang`/`tigp` (likely a truncation) and
   `iit`/`jih` (judgment).
-- 3 WakelinTexts — reviewed and confirmed legitimate (`namen`/`nem` twice and
-  `pipangengne-eben`/`pipangn-epen`); the other two are exempted by the
-  short-form cutoff and never reach the report.
+- 4 WakelinTexts — reviewed and confirmed legitimate (`nem`/`namen` twice,
+  `am`/`namen`, and `pipangn-epen`/`pipangengne-eben`). Recorded as
+  confirmed-fine so reviewers do not re-litigate them each sweep. Only `a`/`u`
+  is exempted by the length cutoff and never reaches the report.
+
+**V151 — Glosbe:** strip `@kindOf` from 4,157 S-level TRANSLs across
+`Glosbe_{ami,tay,xsy}_eng_tmem.xml`, via a step added to Glosbe's
+`make_xml.sh` (POL-038), then promote V151 to HARD.
+
+**Also recorded for the future:** W/M-level `TRANSL/@kindOf` is the axis a
+gloss-standardization pass will use — source gloss as `original`, standardized
+gloss added as `standard`. HundredPaiwanStories' 61,493 W/M uses are the
+existing precedent and must not be stripped.
 
 No published XML changes in this work.
+
+### 6. GitBook
+
+`../FormosanBankGitbook/en-us/the-bank-architecture/formosanbank-xml-format.md`
+is where a corpus author learns the format, so an attribute that is legal in
+the XSD but absent from that page becomes a validation surprise. Three edits,
+in the English canonical version:
+
+- **Remove the ad-hoc licence.** The page currently describes `TRANSL/@kindOf`
+  as "The translation type, method, or provenance. At morpheme level, the
+  validator limits this to `original` or `standard`." Read plainly, that invites
+  an author to put any provenance string on any TRANSL, and it is the reason
+  Glosbe's S-level uses exist. Replace with the closed enumeration
+  (`original | standard`), the S-level prohibition, and a pointer to V151.
+  This is the only permissive attribute language found: repo `POLICIES.md`
+  contains no attribute rule at all, and the "never ad hoc" phrasing in GitBook
+  `policies.md` is POL-038 about data files, unrelated.
+- **Publish the full attribute inventory** — one table per element, generated
+  from the same XSD annotations that produce `ATTRIBUTES.md`, so the public
+  documentation and the schema cannot drift apart.
+- **Sharpen `alternate`.** "A genuine alternate form retained alongside the
+  main tiers" becomes POL-028's definition: a spelling variant of a sibling
+  FORM, highly overlapping or short together with it, never a competing lexeme.
+
+The existing W/M gloss text ("Original source glosses should be preserved. A
+standardized gloss can be added as a separate `kindOf="standard"` translation")
+is already correct and stays.
+
+Sync mechanics follow the established path (`sync_upstream_docs.py`); the
+pending GitHub Pages migration does not block this, since the English pages
+carry over.
 
 ## Testing
 
 Test-driven, one rule at a time:
 
 - Unit tests per rule, covering the positive case and the clean case. V150
-  additionally pins the short-form behaviour in both directions: `u`/`a`
-  (minlen 1) must be **exempted**, and `nem`/`namen` (minlen 3, ratio 0.50)
-  must still **flag** — the pair that fixes the cutoff at 2 rather than 3.
-  A regression test asserts `ratta`/`tâu` stays flagged, since that is the
-  real defect a looser cutoff would hide.
+  additionally pins the length behaviour in three directions: `a`/`u`
+  (both length 1) must be **exempted**; `am`/`namen` (shorter 2, longer 5) must
+  still **flag**, which is the case that forces `max` rather than `min`; and a
+  synthetic `dog`/`supercalifragilisticexpialidocious` must **flag**, guarding
+  the same thing against a future refactor. A regression test asserts
+  `tâu`/`ratta` stays flagged, since that is the real defect a looser cutoff
+  would hide.
+- V151 tests both levels: `@kindOf` on an S-level TRANSL flags; the same
+  attribute on a W- or M-level TRANSL does not.
 - `test_attributes_catalogue.py` staleness and missing-documentation checks.
 - A full `validate_xml.py` sweep across all corpora, asserting **zero new HARD
-  findings** and exactly the expected SOFT counts (11 V150, plus V151 on
-  Glosbe).
+  findings** and exactly the expected SOFT counts: 12 V150, and 4,157 V151 all
+  in Glosbe's three `_tmem.xml` files.
 
 ## Out of scope
 
 - **Latham-1862 remediation** — worklist item, own change.
-- **GitBook sync.** `en-us/the-bank-architecture/formosanbank-xml-format.md`
-  describes `alternate` as "a genuine alternate form retained alongside the main
-  tiers", vaguer than POL-028, and documents no attribute inventory. That is a
-  separate repo and a follow-up, especially given the pending GitHub Pages
-  migration.
-- **Deprecating `TRANSL/@kindOf`** — considered and rejected; it would mean
-  65,650 edits across two published corpora and a POL-051 removal review.
+- **Deprecating `TRANSL/@kindOf` outright** — considered and rejected. At W/M
+  it is correct and forward-looking; only the S-level uses are wrong.
 - **Removing `class`/`sclass`** — declared, documented and unused; they get
   annotations like every other attribute and stay.
