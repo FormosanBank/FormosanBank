@@ -322,10 +322,19 @@ Two different things, treated differently:
 ### POL-025 · RULED · 2026-08-10 · alternative translations
 When a source gives more than one translation of a sentence into the same
 language, they all live **in the same `<S>` block** as multiple TRANSL
-elements, with all but one carrying `ver="alt"`. (The XSD already requires
-a `ver` when a parent has two same-language TRANSLs.) Do not drop the
-extra readings (Puyuma-Teng audit found 7 lost) and do not create
+elements, with all but one carrying `ver="alt"`. V085 enforces this and V084
+restricts the value; the XSD does not and cannot express either. Do not drop
+the extra readings (Puyuma-Teng audit found 7 lost) and do not create
 duplicate S blocks for them.
+
+`ver="alt"` is **not** confined to the S level — MontgomeryTexts, RauDong and
+WakelinTexts use it on W and M, which is correct.
+
+**`kindOf` on a TRANSL is a different axis and is not interchangeable with
+`ver`.** It is meaningful only at W and M level, where a TRANSL carries a
+gloss: `original` is the source's own gloss, `standard` a standardized one.
+On an S-level TRANSL — a free translation — there is no such axis and the
+attribute carries no information (V151). Amended 2026-09-08.
 
 ### POL-026 · RULED · 2026-08-10 · optional material in examples
 A source sentence with optional words — `x y (z)` — becomes **two S
@@ -340,6 +349,44 @@ retained. Same care as POL-026: each block's glosses, W/M tier, and
 translation reflect only its own option. (V121/V122 flag leftover
 parens/slashes; unresolved slash alternatives in published FORMs are the
 symptom of skipping this rule.)
+
+### POL-028 · RULED · 2026-09-08 · alternate FORMs
+
+`FORM[@kindOf="alternate"]` records a **spelling variant** of a sibling FORM
+on the same node. It is the only marking for this: not `ver`, not
+`"alternative"`, not an `-opt` suffix.
+
+- Every alternate must have at least one **non-alternate FORM sibling on the
+  same parent** (V149 HARD), and must satisfy two independent conditions
+  against it (V150 SOFT):
+  1. **Overlap** — it must overlap the sibling highly, or, where both forms
+     are too short for overlap to be measurable, simply be short.
+  2. **Proportion** — neither form may be more than twice the length of the
+     other. A spelling variant does not double a word's length.
+
+  Proportion is a separate test because overlap alone cannot catch it: a
+  short form paired with a long one shares a short member, and a short-form
+  exemption written against the shorter string would wave it through. The
+  operative thresholds live in V150, deliberately not here, so they can be
+  tuned from evidence without a re-ruling.
+- **The variation may span the whole form.** A one-letter word alternating
+  `a`/`u` (WakelinTexts `Kwaway/S2W3`) is as valid an alternate as a letter
+  changing inside a longer word. Nothing requires the variation to be
+  word-internal.
+- A competing **lexeme** for the same meaning, or a different gloss, is not
+  an alternate; per POL-027 it becomes its own `S` block. Latham-1862
+  currently carries 6 such cases; they are tracked for remediation.
+- Alternates may sit at S, W or M, and belong on the node that actually
+  varies. A word-list corpus whose `S` is a word is the S-level case.
+- **Optional material is resolved by scope.** What forces a separate `S`
+  block is not whether the variation sits inside a word, but whether the
+  **sentence's word inventory changes**. A whole optional *word* —
+  `x y (z)` — changes the W tier and the gloss alignment, so it becomes two
+  `S` blocks (POL-026), the second taking the first's id plus `-opt`.
+  Optional material that leaves the word count unchanged — `puken-(en)`,
+  `(u)m-lavi`, and equally a whole short word alternating `a`/`u` — becomes
+  an `alternate` FORM on the word that varies, never a second sentence.
+  Neither mechanism leaves parentheses in a published FORM.
 
 ---
 
@@ -831,3 +878,21 @@ with thirty-odd behaviours (POL-046).
 request that rebuilds the corpus. A rebuild that leaves the old commit in place
 is a stale record, which is worse than none — it asserts a correspondence
 between the tools and the bytes that no longer holds.
+
+### POL-053 · RULED · 2026-09-08 · XML attributes are a closed, documented set
+Every attribute a FormosanBank XML file may carry is declared in
+[QC/validation/xml_template.xsd](QC/validation/xml_template.xsd) and carries
+an `xs:annotation/xs:documentation` stating its meaning and allowed values.
+
+The schema declares no `anyAttribute`, so an undeclared attribute already
+fails `validate_xml.py`. This policy names that as a deliberate guarantee
+rather than an accident of the schema: **the attribute set is a whitelist.**
+
+[QC/validation/ATTRIBUTES.md](QC/validation/ATTRIBUTES.md) is generated from
+the XSD by `attributes_catalogue.py` and is never hand-edited, on the same
+terms as `RULES.md` (POL-039 — derived, not retyped).
+
+**Adding an attribute requires four things:** an XSD declaration, an
+`xs:documentation` annotation, a regenerated catalogue, and a policy entry.
+`tests/validators/test_attributes_catalogue.py` enforces the first three;
+review enforces the fourth. No attribute is added ad hoc.
