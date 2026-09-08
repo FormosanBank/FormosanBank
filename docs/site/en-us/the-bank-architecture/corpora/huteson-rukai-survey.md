@@ -1,14 +1,12 @@
 # Huteson (2003), Rukai Survey
 
-This text corpus contains the 29 Rukai imitation-test sentences in Appendix B
-of Greg Huteson's 2003 sociolinguistic survey: 14 from Maga and 15 from Tona.
-FormosanBank uses the canonical dialect labels Maolin for Maga and Dona for
-Tona. Each sentence includes source-faithful and Ortho113 forms, standard
-phonology, an English translation, and printed-page provenance. Every word has
-a morpheme tier under POL-023. Eight source-blank gloss cells are marked as
-reviewed unknowns rather than assigned invented analyses. No audio is included.
-The corpus and publication metadata were revalidated on 22 August 2026 against
-the current FormosanBank tooling and source-review evidence.
+This corpus contains the 29 Appendix B imitation-test sentences in Greg
+Huteson's 2003 survey: 14 Maga (`Maolin`) and 15 Tona (`Dona`) examples.
+Each has a natural source FORM, analyzed W forms, English translations,
+Ortho113 forms and generated phonology. Fifteen sentences have source
+morpheme analysis; fourteen have word glosses without an invented M tier.
+There are 102 W and 69 M. Eight word-gloss cells are blank in the source and
+remain unglossed. No audio is included.
 
 ***
 
@@ -24,37 +22,54 @@ the current FormosanBank tooling and source-review evidence.
 | Translated words |  |  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 54 | 48 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 | 0 |
-| Morphologically segmented | 54 | 48 |
-| Glossed words | 54 | 48 |
+| Morphologically segmented | 28 | 23 |
+| Glossed words | 28 | 23 |
 
 ***
 
 <!-- CORPUS STATS END -->
 
 
-## **Access Details**
+## Access Details
 
-The XML and reproduction files are available in the
+The XML and reproduction files are maintained in the
 [FormosanBank repository](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/Huteson-Rukai-Survey).
-The complete review history is in the
-[development repository](https://github.com/FormosanBank/Formosan-Huteson-Rukai-Survey).
+[The source archive](https://www.sil.org/resources/archives/9008) identifies
+Huteson's report. This corpus covers its Appendix B, with all 46 PDF pages
+accounted for in the source inventory.
 
-***
+## Corpus Processing
 
-## **Copyright**
+The reviewed transcription preserves natural and analyzed lines separately,
+with stable example/page identities. The PDF's legacy embedded fonts require
+visual source review. Expert corrections to `ɖ`, the joined word in Tona 4,
+and the literal alternate in Tona 15 remain. Tona 9 retains printed `a-kakə`
+and the combined word gloss `1S.TOP`; no meanings are invented for its two
+individual morphemes. Source `very fat` is preserved alongside standardized
+`very.fat`. Four translation shorthands become same-sentence alternatives.
 
-The source is available under Creative Commons
-Attribution-NonCommercial-ShareAlike 4.0 unless otherwise stated. Attribution
-to Greg Huteson, SIL International, and named rights holders is required. The
-corpus is also subject to the central FormosanBank
-[Terms of Use](../../additional-resources/terms-of-use.md) and [AI Use and
-Commercial Licensing](../../additional-resources/ai-use-and-commercial-licensing.md).
+The corpus's `CodeAndDocs/generate_xml.sh` rebuilds from committed
+transcription inputs and current shared cleaning, standardization and
+phonology tools. No private repository, source download or historical Git
+objects are needed. [Tool provenance](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Huteson-Rukai-Survey/CodeAndDocs/provenance.json)
+records the actual build, without pinning later runs.
+[Reproduction and validation instructions](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Huteson-Rukai-Survey/README.md)
+include the source-specific gloss findings and correction history.
 
-***
+## Copyright
+
+**License:** CC BY-NC-SA 4.0
+
+The SIL terms recorded for this source require attribution to Greg Huteson
+and SIL International, noncommercial use and ShareAlike distribution.
+The corpus is also subject to FormosanBank's
+[Terms of Use](../../additional-resources/terms-of-use.md) and
+[AI Use and Commercial Licensing](../../additional-resources/ai-use-and-commercial-licensing.md).
 
 ## Citation
 
-In accordance with our [Terms of Use](../../additional-resources/terms-of-use.md), if you use this corpus or any product derived from this corpus in any publication, you must cite both FormosanBank and:
+Under the [Terms of Use](../../additional-resources/terms-of-use.md), cite
+FormosanBank and:
 
-Huteson, G. (2003). *Sociolinguistic survey report for the Tona and Maga
-dialects of the Rukai language*. SIL International.
+Huteson, Greg. 2003. *Sociolinguistic Survey Report for the Tona and Maga
+Dialects of the Rukai Language*. SIL International.

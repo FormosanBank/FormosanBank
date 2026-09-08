@@ -13,13 +13,13 @@ This dictionary is a critical addition to FormosanBank, complementing other corp
 
 | | Amis<br>Xiuguluan |
 | --- | --- |
-| Word count | 9,078 |
+| Word count | 9,046 |
 | Total audio | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 |
 | Translated words |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 9,078 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 9,078 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 9,046 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 9,046 |
 | Morphologically segmented | 0 |
 | Glossed words | 0 |
 
@@ -58,10 +58,13 @@ The processing pipeline for converting the dictionary data into FormosanBank’s
    * Each dictionary entry was represented as an XML `<S>` element, containing
      * `<FORM>`: The original word or sentence.
      * `<TRANSL>`: For English and Chinese translations when available.
-3. **Cleaning and Standardization:**
-   * XML files underwent further cleaning to remove empty elements and standardize punctuation and orthography.
-   * HTML escape codes were replaced with the corresponding characters, and a `kindOf="standard"` attribute was added to `<FORM>` elements. The original text would be `<FORM kindOf="original">`  and any text that will be standardized from this point will be in `<FORM kindOf="standard">`
-4. **Quality Control:**
+3. **Cleaning, Standardization, and IPA:**
+   * The converted XML was then **cleaned by hand** to address parentheticals and other annotations. Because that hand-cleaning is not reproducible from the source CSV, the hand-cleaned XML (preserved as a pristine snapshot in `CodeAndDocs/pre_correction_snapshot/`) is the pipeline's input; `CodeAndDocs/make_xml.sh` regenerates the published XML from it.
+   * The pipeline ensures every sentence id is unique, then cleans the original tier (`clean_xml.py`: removes empty elements, decodes HTML escapes, normalizes punctuation and Unicode, and applies the Amis apostrophe/quote classifier, logging any corrections to `CodeAndDocs/quote_corrections.csv`), creates the `kindOf="standard"` FORM tier (`standardize.py --remove_accents`; no spelling conversion is applied because the dictionary's orthography already matches the reference orthography), and adds IPA `PHON` tiers for both FORMs (`add_phonology.py --orthography Ortho113`).
+4. **Duplicate Removal:**
+   * As a dictionary is a reference resource, it keeps no repeated sentences: the pipeline ends by removing every sentence whose standard FORM text repeats an earlier one, keeping the first occurrence. Alternative translations from removed duplicates are preserved on the surviving entries as `<TRANSL>` elements marked `ver="alt"`.
+   * The published file contains 2,040 sentences.
+5. **Quality Control:**
    * Several QC steps were performed, including:
      * **Cross-referencing word lists and API results** to ensure all entries were successfully processed.
      * **Validation of XML structure** to confirm compliance with the FormosanBank schema.
@@ -73,7 +76,7 @@ The processing pipeline for converting the dictionary data into FormosanBank’s
 ### **Corpus Notes**
 
 * According to Li et al. (2024), "Fey’s (1986) dictionary ... misses certain phonemic contrasts, such as the distinction between the glottal stop and the pharyngealized stop, for example, e.g., Central Amis ’op’op ‘frog’ vs. qopo ‘assemble’." However, the repo from which this corpus is derived states that "Thanks to Mr. Wu Ming-yi for rewriting the old Catholic spelling into the newer spelling of the original Minzu Kung Hui version." It is not clear whether this addressed the concerns raised by Li and colleagues, but the orthography seems to be a good match for our reference corpus.
-* There are often multiple translations into the same non-Formosan language for a particular sentence. Thus do not assume there is only one element per target language.
+* There are often multiple translations into the same non-Formosan language for a particular sentence — including alternative translations carried over from removed duplicate entries, which are marked `ver="alt"`. Thus do not assume there is only one `<TRANSL>` element per target language.
 
 ***
 
