@@ -30,7 +30,9 @@ The current public corpus contains six Eastern Paiwan pages, generously contribu
 
 ## **Corpus Processing**
 
-The published XML was produced from aligned Paiwan, Mandarin, and English page text with the corpus's `CodeAndDocs/process_raw.py` script. The script creates one sentence per aligned entry and records the language, Eastern dialect, citation, and copyright metadata. The public repository retains the conversion script and the six resulting XML files.
+The published XML was produced from aligned Paiwan, Mandarin, and English page text with the corpus's `CodeAndDocs/process_raw.py` script. The script creates one sentence per aligned entry and records the language, Eastern dialect, citation, and copyright metadata.
+
+The post-conversion pipeline is wrapped by `CodeAndDocs/make_xml.sh`, which runs three steps over `XML/`: `clean_xml.py` (punctuation and Unicode cleanup; currently a content no-op for this corpus), `standardize.py --remove_accents` (creates the `kindOf="standard"` FORM tier — here identical to the original, whose transcription is already in the standard orthography), and `add_phonology.py --orthography Ortho113` (adds a `PHON` tier with IPA for each FORM). Characters outside the Paiwan orthography — digits and Latin loanwords such as `XML` — surface as `*` in PHON. The public repository retains the conversion script, the pipeline script, and the six resulting XML files.
 
 ***
 
