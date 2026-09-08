@@ -39,7 +39,7 @@ omitted.
 - Every source cell is one lexical `S` record.
 - Comma-separated source variants are separate `FORM` elements;
   punctuation is not embedded in a FORM value.
-- Historical spelling is preserved in original and standard FORM
-  because the source supplies no supported modern normalization.
+- Historical spelling is preserved in original and alternate FORM.
+  No standard tier is generated under the corpus's August 12 ruling.
 - No W/M segmentation or PHON is inferred from this comparative table.
 - Sideia/Sida maps to Siraya (`fos`); Favorlang maps to Babuza-Favorlang (`bzg`).

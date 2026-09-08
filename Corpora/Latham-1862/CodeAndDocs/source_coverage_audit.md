@@ -28,8 +28,8 @@ visually checked and contain no target Formosan rows.
 
 - The PDF is a six-page image-only excerpt; rendered pages 1–6 were
   visually reviewed.
-- Historical diacritics are preserved exactly in original and standard
-  FORM tiers.
+- Historical diacritics are preserved exactly in original and alternate
+  FORM tiers; the standard tier is deliberately absent.
 - Comma-separated variants are separate original/alternate FORM tiers.
 - The layout hyphen in `arribórri-` / `bon` is removed when the source
   word is reconstructed as `arribórribon`.

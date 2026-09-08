@@ -2,6 +2,8 @@
 
 This folder contains lightweight scripts for checking FormosanBank XML corpora. The scripts are intentionally modular: run the checks that match the corpus state instead of treating every warning as an automatic data error.
 
+**Looking up a rule id?** [`validation/RULES.md`](validation/RULES.md) lists every rule — id, mnemonic, severity, and what it checks — grouped by the validator that runs it. It is generated from the code by `validation/rules_catalogue.py` and checked by a test, so it cannot drift; do not edit it by hand.
+
 ## Expected XML Tiers
 
 Most validation scripts inspect the standardized sentence tier:
@@ -194,7 +196,7 @@ python QC/validation/validate_glosses.py by_language \
   --output_dir /path/to/qc-output
 ```
 
-For verse-level or sentence-only corpora with no `W`/`M` segmentation, V060–V065 either no-op (no W/M to iterate) or surface SOFT findings that should be treated as "not applicable". The two legacy CSV artifacts (`validation_results.csv` for V060, `validation_m_mismatches.csv` for V061) are preserved for backward compatibility with prior callers.
+For verse-level or sentence-only corpora with no `W`/`M` segmentation, V060–V065 no-op: gloss-tier checks are not applicable where there is no gloss tier (POL-041). A file that segments *some* sentences and not others is reported instead by `validate_xml.py` as SOFT **V148** (W-tier presence), not by V060. The two legacy CSV artifacts (`validation_results.csv` for V060, `validation_m_mismatches.csv` for V061) are preserved for backward compatibility with prior callers.
 
 Detect duplicate `<S>` sentences within a corpus (within-file matches are HARD findings; cross-file matches in the same corpus are SOFT):
 

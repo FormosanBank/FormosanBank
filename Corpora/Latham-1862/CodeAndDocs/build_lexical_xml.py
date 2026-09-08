@@ -137,7 +137,7 @@ def write_xml_file(
         id=text_id,
         citation=TEXT_CITATION,
         BibTeX_citation=TEXT_BIBTEX,
-        copyright="Public domain.",
+        copyright="public domain",
         glottocode=glottocode,
         dialect=first.dialect,
         source=(
@@ -158,8 +158,6 @@ def write_xml_file(
         )
         original = etree.SubElement(sentence, "FORM", kindOf="original")
         original.text = entry.form
-        standard = etree.SubElement(sentence, "FORM", kindOf="standard")
-        standard.text = entry.form
         for alternate_form in entry.alternate_forms:
             alternate = etree.SubElement(
                 sentence,
@@ -291,8 +289,8 @@ def write_summary(entries: list[LexicalEntry]) -> None:
         "- Every source cell is one lexical `S` record.",
         "- Comma-separated source variants are separate `FORM` elements;",
         "  punctuation is not embedded in a FORM value.",
-        "- Historical spelling is preserved in original and standard FORM",
-        "  because the source supplies no supported modern normalization.",
+        "- Historical spelling is preserved in original and alternate FORM.",
+        "  No standard tier is generated under the corpus's August 12 ruling.",
         "- No W/M segmentation or PHON is inferred from this comparative table.",
         "- Sideia/Sida maps to Siraya (`fos`); Favorlang maps to Babuza-Favorlang (`bzg`).",
     ]

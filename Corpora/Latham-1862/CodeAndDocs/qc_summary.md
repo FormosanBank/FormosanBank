@@ -1,115 +1,46 @@
-# QC Summary
+# Latham source and QC notes
 
-## Reviewed Inputs
+The reviewed source is Latham 1862, printed pp. 315-318, within the six-page
+excerpt identified in the README. All 64 Formosan cells are accounted for:
+62 records, eight alternate readings and two source dashes. The source ledger,
+independent fixtures and reviewer-feedback ledger preserve the full July 25
+and July 27 review. Current source content matches the published readings.
 
-- Basecamp card:
-  `https://app.basecamp.com/3340659/buckets/31258415/card_tables/cards/9999151808`
-- Local ignored PDF: `Private/source/latham_1862_comparative_philology.pdf`
-- PDF SHA256:
-  `e7b34a4063c5f552b288f2e97568d13387ffad471713e3191c644a2ec40ead7b`
-- PDF size and extent: 1,195,720 bytes; 6 pages; printed pp. 314–319
-- Authoritative transcription: `CodeAndDocs/source_ledger.tsv`
-- Independent exact checks: `CodeAndDocs/source_checks.tsv`
-- Reviewer regression ledger: `CodeAndDocs/reviewer_feedback.tsv`
+## Required invariants
 
-The 64-cell target grid covers printed pp. 315–318. Sixty-two cells contain
-lexical data. Sida Forehead and Sida Beard are printed as dashes and are
-explicitly omitted. Printed pp. 314 and 319 contain no in-scope Formosan cells.
+- 38 Siraya and 24 Babuza-Favorlang records retain their published IDs and
+  source associations. A spelling correction does not create a new ID.
+- Preserve all 70 original/alternate readings and 62 English translations.
+- Preserve `motaus`, `chárrina`, `cháan`, `arribórribon`, and `so`/`soa`.
+- No standard FORM or PHON, under the merged August 12 ruling. No W/M or audio
+  is inferred from a lexical table.
+- The historical pre-correction snapshot remains unchanged. Generation reads
+  committed transcription, never previous output or a private PDF.
 
-## Reviewer Feedback
+## Finding dispositions
 
-All 12 July 25 attachment rows and the July 27 follow-up have explicit
-regression coverage:
-
-- Eight comma-separated source variants are separate original/alternate
-  `FORM` tiers.
-- Sida Mouth `motaus` is restored.
-- Favorlang Ear is `chárrina`.
-- Favorlang Belly is `cháan`.
-- The Favorlang Neck line wrap `arribórri-` / `bon` is represented as the
-  continuous alternate `arribórribon`.
-- Vander Vlis Sideia `so` has no parentheses; `soa` remains an alternate.
-
-## Reproducible Outputs
-
-- `XML/Siraya/latham_1862_sideia_sida.xml`: 38 records.
-- `XML/Babuza-Favorlang/latham_1862_favorlang.xml`: 24 records.
-- `CodeAndDocs/extraction_report.csv`: exact row-level mapping.
-- `CodeAndDocs/extraction_summary.md`: generated counts.
-- `CodeAndDocs/source_coverage_audit.csv`: all 64 reviewed decisions.
-- `CodeAndDocs/source_coverage_audit.md`: readable coverage summary.
-
-The builder reads the source ledger directly. The source auditor independently
-checks every report and XML field against that ledger and rejects missing,
-extra, or ambiguous records.
-
-## Current Authority QC
-
-`scripts/run_final_qc.sh` requires a clean validator checkout at commit
-`3a3c47c220520113f747e6a2d441494000e13c4b` and writes to a new absolute
-directory outside this repository. It does not mutate corpus XML.
-
-August 22 result:
-
-| Check | Result |
+| Check | Expected disposition |
 | --- | --- |
-| Source coverage | 62/62 pass; 2 dashes omitted; 0 unresolved |
-| Unit tests | 8 pass |
-| XML validator | 0 findings |
-| Text validator | 9 SOFT |
-| Gloss validator | 62 SOFT |
-| Duplicate validator, original | 2 SOFT source-authentic groups |
-| Duplicate validator, standard | 2 SOFT source-authentic groups |
-| Dialect inventory | `bzg/Favorlang`: 1; `fos/Siraya`: 1 |
-| Port readiness | 0 HARD; 0 WARN |
-| Exact adjudication | 75 accepted occurrences/groups; 0 unresolved |
+| XML V014 | 62 SOFT occurrences: deliberately absent standard FORM, 24 Babuza-Favorlang and 38 Siraya |
+| Text V116 | One SOFT occurrence: source `ó` in alternate `arribórribon`, `S_favorlang_neck` |
+| Glosses | No W/M analysis; current rules produce no findings |
+| Original duplicates | Two SOFT groups with distinct source provenance: `rahpal` across pp. 315/318, `rima` across Favorlang/Sida on p. 317 |
+| Orthography comparison | Unavailable: no reference for either historical variety |
+| Standard orthography/vocabulary | Inapplicable: the standard tier is deliberately absent |
+| Audio | Inapplicable: no source or XML audio |
 
-The XML check runs in update mode against the current public corpora while
-excluding the existing `Latham-1862` target. It reports zero findings, so the
-development XML has no structural, identifier, or new cross-corpus collision
-blocker under the pinned authority.
+Removing the unauthorized standard copies removes eight duplicate diacritic
+warnings and restores the 62 intended V014 occurrences. No source character
+is removed. The old 62 V060 findings disappeared when the shared rule stopped
+requiring W tiers in sources without analysis (POL-041).
 
-### Text findings
+`validate.sh` checks source consistency, regression fixtures, every applicable
+validator, registries and port readiness. Its adjudicator verifies exact
+finding scope and rejects any unexpected result. Reports stay outside Git.
+The shared orthography CLI currently omits Babuza-Favorlang; the existing
+wrapper calls its own extraction functions for both historical varieties.
 
-The 9 V116 findings are exact historical diacritics in reviewed source forms:
-`â`, `á`, `ó`, `é`, and `à`. `scripts/adjudicate_qc.py` requires the exact
-record, rule, character, multiplicity, XML path, source-ledger value, and XML
-value.
-
-### Gloss findings
-
-Every V060 finding is expected. The source is a lexical comparison table, not
-an interlinear text, and supplies no token-aligned morphology. The adjudicator
-requires exactly one V060 result for each of the 62 records and confirms that
-no `W` tier was inferred.
-
-### Duplicate findings
-
-- `rahpal`: two distinct source cells for Foot, Klaproth Formosan Sideia on
-  printed p. 315 and Sida on printed p. 318.
-- `rima`: two distinct source cells for Hand, Favorlang and Sida on printed
-  p. 317.
-
-`CodeAndDocs/duplicate_group_review.csv` records the exact IDs, source
-locators, severities, and rationale. Both original and standard outputs must
-match it exactly.
-
-### Orthography and vocabulary
-
-The pinned extractor produces profiles for `Babuza-Favorlang/Favorlang` and
-`Siraya/Siraya`. The public validator checkout has no reference profile for
-either, so the comparison tools report a missing reference and skip the
-comparison. The orthography detector's best matches are unrelated modern
-profiles and are not used to alter the historical spellings.
-
-## Reproduction
-
-`scripts/reproduce.sh` verifies the PDF checksum, byte count, type, and page
-count; rebuilds twice in a fresh work directory; reruns source checks and
-pinned QC; and byte-compares the XML plus all generated reports with the
-checked-in outputs.
-
-`Private/` is ignored and absent from the tracked tree. The repository records
-the public scan URL, exact local filename, size, page count, and SHA256 needed
-to restore and verify the source without risking publication of local source
-material.
+Rights vocabulary spelling and README/GitBook agreement also require direct
+review because current automated rights coverage is incomplete. The existing
+public-domain claim is normalized to `public domain`; its textual delta must
+receive maintainer review at merge. Technical QC is not merge authorization.

@@ -507,22 +507,74 @@ def test_unknown_characters_star_marks_survive_punctuation_dropped(
     unmapped punctuation — ASCII and Unicode P* alike — is dropped (the
     2026-08-09 null-morpheme/punctuation spec; previously punctuation was
     copied through to PHON)."""
+    # Kanakanavu, not Yami: Yami's reference orthography attests 'á', so its
+    # acute is orthographic and is deliberately NOT folded (see
+    # test_reference_orthography_accents_are_kept). This test is about
+    # unknown-character starring, so it needs a language that attests none.
     scheme = _write_profile(
         monkeypatch,
         tmp_path,
-        language="Yami",
+        language="Kanakanavu",
         tsv="letter\tIPA\na\tɑ\n",
     )
-    profile = load_profile(scheme, "Yami", "Yami")
+    profile = load_profile(scheme, "Kanakanavu", "Kanakanavu")
 
     # a -> ɑ; `…` (Po) dropped; space survives; `卐` (Lo) and `◇` (So) -> `*`.
     assert phonologize("a… 卐◇", profile) == "ɑ **"
-    # a combining acute (Mn, U+0301) rides through rather than being starred,
-    # whereas a precomposed accented letter (a base Ll not in the table) is
-    # unknown and becomes `*`. (Use the escape sequences verbatim — NFC
-    # á and NFD a+combining are visually identical in source code.)
-    assert phonologize("a\u0301", profile) == "\u0251\u0301"
-    assert phonologize("\u00e1", profile) == "*"
+    # A stress acute is prosody, not a segment (POL-003), and no profile maps a
+    # stressed vowel, so it is folded to its base letter before mapping — in
+    # both the NFD and the precomposed spelling. (Use the escape sequences
+    # verbatim — NFC á and NFD a+combining are visually identical in source.)
+    assert phonologize("a\u0301", profile) == "\u0251"
+    assert phonologize("\u00e1", profile) == "\u0251"
+    # A combining mark that is NOT a stress accent still rides through.
+    assert phonologize("a\u0303", profile) == "\u0251\u0303"
+
+
+def test_keep_set_comes_from_the_designated_standard_orthography():
+    """The accent keep set is the language's designated standard orthography
+    (standards.csv -> Orthographies/<scheme>/<Language>.tsv), NOT the generated
+    reference character inventories.
+
+    Those inventories list every character observed in sample text — digits and
+    punctuation included — so they cannot tell an orthographic letter from a
+    prosodic diacritic that merely occurs. Rukai's 'e-acute' is a real letter
+    with a table row and is kept; Puyuma, Yami and Thao carry accents in their
+    reference samples but their standard tables list none, so those fold."""
+    from QC.utilities._accents import standard_orthography_accents
+
+    assert standard_orthography_accents("Rukai") == frozenset({"\u00e9"})
+    for language in ("Puyuma", "Yami", "Thao", "Kanakanavu", "Amis"):
+        assert standard_orthography_accents(language) == frozenset(), language
+    # Blank standards.csv entry -> nothing derivable, so every accent folds.
+    # Verified safe: neither corpus runs standardize.py or has any PHON.
+    for language in ("Siraya", "Babuza-Favorlang"):
+        assert standard_orthography_accents(language) == frozenset(), language
+    assert standard_orthography_accents("NotALanguage") == frozenset()
+
+
+def test_unmapped_accents_fold_instead_of_starring():
+    """A kept letter is always a mappable one, so folding can never be why a
+    PHON tier shows '*'. Puyuma 'e-macron' and Yami 'a-acute' used to star."""
+    from QC.utilities.add_phonology import load_profile, phonologize
+
+    assert phonologize("\u0113", load_profile("Ortho113", "Puyuma", "Nanwang")) == "\u0259"
+    assert "*" not in phonologize("m\u00e1duk", load_profile("Ortho113", "Yami", "Yami"))
+
+
+def test_profile_attested_accented_letter_is_not_folded(tmp_path, monkeypatch):
+    """An accented letter the language's own profile attests (Rukai 'é') is a
+    real grapheme, so it survives folding and maps normally — only unattested
+    stress accents are folded (QC/utilities/_accents.strip_accents `keep`)."""
+    scheme = _write_profile(
+        monkeypatch,
+        tmp_path,
+        language="Rukai",
+        tsv="letter\tIPA\ne\tɛ\né\te\n",
+    )
+    profile = load_profile(scheme, "Rukai", "Rukai")
+    assert phonologize("\u00e9", profile) == "e"   # attested é -> its own IPA
+    assert phonologize("e", profile) == "\u025b"    # plain e unaffected
 
 
 def test_unmapped_punctuation_dropped_from_phon(tmp_path, monkeypatch):

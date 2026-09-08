@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import argparse
 import csv
 import sys
 from collections import Counter
@@ -74,14 +75,13 @@ def read_xml() -> dict[str, dict[str, object]]:
                 not record_id
                 or record_id in records
                 or len(originals) != 1
-                or len(standards) != 1
+                or standards
                 or len(translations) != 1
             ):
                 raise ValueError(f"Ambiguous XML record: {record_id}")
             records[record_id] = {
                 "xml_path": relative_path,
                 "original": originals[0].text or "",
-                "standard": standards[0].text or "",
                 "alternates": tuple(form.text or "" for form in alternates),
                 "translation": translations[0].text or "",
                 "translation_language": translations[0].get(
@@ -131,7 +131,6 @@ def audit_included(
         expected_xml = {
             "xml_path": EXPECTED_XML_PATHS[entry.language_code],
             "original": entry.form,
-            "standard": entry.form,
             "alternates": entry.alternate_forms,
             "translation": entry.english.lower(),
             "translation_language": "eng",
@@ -302,8 +301,8 @@ def write_markdown(counts: Counter[str]) -> None:
         "",
         "- The PDF is a six-page image-only excerpt; rendered pages 1–6 were",
         "  visually reviewed.",
-        "- Historical diacritics are preserved exactly in original and standard",
-        "  FORM tiers.",
+        "- Historical diacritics are preserved exactly in original and alternate",
+        "  FORM tiers; the standard tier is deliberately absent.",
         "- Comma-separated variants are separate original/alternate FORM tiers.",
         "- The layout hyphen in `arribórri-` / `bon` is removed when the source",
         "  word is reconstructed as `arribórribon`.",
@@ -314,9 +313,16 @@ def write_markdown(counts: Counter[str]) -> None:
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--write-reports", action="store_true",
+        help="Refresh the committed source-coverage summaries.",
+    )
+    args = parser.parse_args()
     rows, counts = audit_rows()
-    write_csv(rows)
-    write_markdown(counts)
+    if args.write_reports:
+        write_csv(rows)
+        write_markdown(counts)
     unresolved = sum(
         count
         for status, count in counts.items()
@@ -325,8 +331,9 @@ def main() -> int:
     print(f"PASS source cells: {counts['PASS']}/62")
     print(f"OMITTED blank/dash cells: {counts['OMITTED_BLANK_OR_DASH']}")
     print(f"Unresolved mismatches/extras: {unresolved}")
-    print(f"Wrote {AUDIT_CSV.relative_to(ROOT)}")
-    print(f"Wrote {AUDIT_MD.relative_to(ROOT)}")
+    if args.write_reports:
+        print(f"Wrote {AUDIT_CSV.relative_to(ROOT)}")
+        print(f"Wrote {AUDIT_MD.relative_to(ROOT)}")
     return 1 if unresolved else 0
 
 

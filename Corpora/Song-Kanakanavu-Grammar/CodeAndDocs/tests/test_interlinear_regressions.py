@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import csv
+import re
 import sys
 import xml.etree.ElementTree as ET
 from functools import lru_cache
@@ -16,8 +17,8 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import extract_dictionary  # noqa: E402
 import extract_interlinear  # noqa: E402
 import build_xml  # noqa: E402
-import fold_standard_stress  # noqa: E402
 import normalize_standard_forms  # noqa: E402
+from normalize_standard_forms import strip_accents  # noqa: E402
 
 
 BOUND_CITATION_IDS = {
@@ -62,7 +63,7 @@ def test_interlinear_counts_and_positioned_text_boundaries() -> None:
 
     assert len(analyses) == 650
     assert len(words) == 3_477
-    assert sum(len(word.get("morphemes", [])) for word in words) == 5_034
+    assert sum(len(word.get("morphemes", [])) for word in words) == 5_048
 
     assert word_pairs(
         analyses, "song-2018-kanakanavu-S0029"
@@ -115,9 +116,9 @@ def test_dot_separated_source_glosses_still_build_morphemes() -> None:
         for morpheme in words[0]["morphemes"]
     ] == [
         ("ma", "主事焦點."),
-        ("cangcangarʉ=", "開心="),
-        ("kara=", "是非疑問詞="),
-        ("kasu", "你.主格"),
+        ("cangcangarʉ", "開心"),
+        ("=kara", "=是非疑問詞"),
+        ("=kasu", "=你.主格"),
     ]
 
 
@@ -129,12 +130,75 @@ def test_source_explicit_infix_builds_validator_safe_morphemes() -> None:
         (morpheme["form"], morpheme["gloss"])
         for morpheme in infixed["morphemes"]
     ] == [
-        ("in", "<完成貌>"),
-        ("tituru", "告知-"),
-        ("ʉn=", "受事焦點="),
-        ("cu=", "狀態改變="),
-        ("kee", "他.屬格"),
+        ("t-ituru", "告知-"),
+        ("-in-", "<完成貌>"),
+        ("ʉn", "受事焦點"),
+        ("=cu", "=狀態改變"),
+        ("=kee", "=他.屬格"),
     ]
+
+
+def test_infix_and_clitic_unit_boundaries_follow_current_policy() -> None:
+    assert extract_interlinear.split_morphemes("host=clitic=last") == [
+        "host",
+        "=clitic",
+        "=last",
+    ]
+    assert extract_interlinear.split_clitics("host-part=clitic=last") == [
+        "host-part",
+        "=clitic",
+        "=last",
+    ]
+
+    stacked = extract_interlinear.add_morphemes(
+        {
+            "form": "t<in><Vm>angʉ",
+            "gloss": "<完成貌><主事焦點>哭",
+        }
+    )
+    assert stacked["morphemes"] == [
+        {"form": "t-angʉ", "gloss": "哭"},
+        {"form": "-in-", "gloss": "<完成貌>"},
+        {"form": "-Vm-", "gloss": "<主事焦點>"},
+    ]
+
+
+def test_page_image_morpheme_overrides_are_exact_and_fail_closed() -> None:
+    analyses = analyses_by_id()
+    expected = {
+        ("song-2018-kanakanavu-S0318", 2): [
+            {"form": "t-i", "gloss": "重疊"},
+            {"form": "-in-", "gloss": "<完成貌>"},
+            {"form": "taini", "gloss": "丟"},
+        ],
+        ("song-2018-kanakanavu-S0422", 1): [
+            {"form": "m", "gloss": None},
+            {"form": "ukʉrʉ", "gloss": None},
+        ],
+        ("song-2018-kanakanavu-S0609", 14): [
+            {"form": "ka", "gloss": "處在-"},
+            {"form": "cangcangarʉ", "gloss": "重疊-快樂-"},
+            {"form": "a", "gloss": "關係詞"},
+        ],
+        ("song-2018-kanakanavu-S0636", 4): [
+            {"form": "pa", "gloss": "使動-"},
+            {"form": "arivivini", "gloss": "跟隨在後"},
+            {"form": "ʉn", "gloss": None},
+        ],
+        ("song-2018-kanakanavu-S0678", 5): [
+            {"form": "t-a", "gloss": None},
+            {"form": "-um-", "gloss": "<主事焦點>-"},
+            {"form": "túturu", "gloss": "告知"},
+        ],
+    }
+    for (sentence_id, word_index), morphemes in expected.items():
+        assert analyses[sentence_id]["words"][word_index]["morphemes"] == morphemes
+
+    with pytest.raises(ValueError, match="Morpheme override"):
+        extract_interlinear.apply_morpheme_overrides(
+            "song-2018-kanakanavu-S0422",
+            [{"form": "changed", "gloss": "拿著"}, {"form": "x", "gloss": "x"}],
+        )
 
 
 def test_page_225_translation_matches_the_printed_source() -> None:
@@ -195,7 +259,7 @@ def test_short_cross_page_and_optional_examples_are_not_skipped() -> None:
     ]["words"]] == ["mara’an", "sua", "Riau", "arapana’ʉ"]
 
 
-def test_morpheme_forms_preserve_only_clitic_boundaries() -> None:
+def test_morpheme_forms_preserve_infix_gaps_and_clitic_boundaries() -> None:
     analyses = analyses_by_id()
     words = [
         word
@@ -207,17 +271,46 @@ def test_morpheme_forms_preserve_only_clitic_boundaries() -> None:
         for word in words
         for morpheme in word.get("morphemes", [])
     ]
-    assert all("-" not in morpheme["form"] for morpheme in morphemes)
     assert all("(" not in morpheme["form"] for morpheme in morphemes)
     assert all(")" not in morpheme["form"] for morpheme in morphemes)
     assert all("<" not in morpheme["form"] for morpheme in morphemes)
     assert all(">" not in morpheme["form"] for morpheme in morphemes)
 
+    for word in words:
+        morph_forms = [str(morpheme["form"]) for morpheme in word.get("morphemes", [])]
+        if "<" not in str(word["form"]):
+            assert all("-" not in form for form in morph_forms)
+            continue
+        infixes = re.findall(r"<([^>]+)>", str(word["form"]))
+        assert all(f"-{infix}-" in morph_forms for infix in infixes)
+        gap_form = re.sub(
+            r"<[^>]+>",
+            extract_interlinear.INFIX_GAP,
+            str(word["form"]),
+        )
+        gap_form = re.sub(
+            f"{extract_interlinear.INFIX_GAP}+",
+            extract_interlinear.INFIX_GAP,
+            gap_form,
+        )
+        expected_roots = [
+            extract_interlinear.morpheme_form(form)
+            for form in extract_interlinear.split_morphemes(gap_form)
+            if extract_interlinear.INFIX_GAP in form
+        ]
+        assert len(expected_roots) == 1
+        assert expected_roots[0] in morph_forms
+
     clitic_words = [word for word in words if "=" in str(word["form"])]
     assert clitic_words
     assert all(
-        any("=" in str(morpheme["form"]) for morpheme in word["morphemes"])
+        any(str(morpheme["form"]).startswith("=") for morpheme in word["morphemes"])
         for word in clitic_words
+    )
+    assert all(
+        not str(morpheme["form"]).endswith("=")
+        for word in clitic_words
+        for morpheme in word["morphemes"]
     )
 
     unsegmented = [
@@ -272,18 +365,23 @@ def test_generated_xml_respects_shared_segmentation_policy() -> None:
     morphemes = tree.findall(".//M")
 
     assert len(words) == 3_477
-    assert len(morphemes) == 5_034
+    assert len(morphemes) == 5_048
     assert any(
         "=" in (form.text or "")
         for word in words
         for form in word.findall("FORM")
     )
-    assert all(
-        not any(marker in (form.text or "") for marker in "-()<>")
-        for morpheme in morphemes
-        for form in morpheme.findall("FORM")
-    )
     for word in words:
+        original_word = word.find("./FORM[@kindOf='original']")
+        original_text = original_word.text if original_word is not None else ""
+        for morpheme in word.findall("./M"):
+            for form in morpheme.findall("FORM"):
+                form_text = form.text or ""
+                assert not any(marker in form_text for marker in "()<>")
+                if "-" in form_text:
+                    assert "<" in original_text
+                if "=" in form_text:
+                    assert form_text.startswith("=")
         for kind in ("original", "standard"):
             word_form = word.find(f"./FORM[@kindOf='{kind}']")
             if word_form is None or "=" not in (word_form.text or ""):
@@ -295,7 +393,42 @@ def test_generated_xml_respects_shared_segmentation_policy() -> None:
             )
 
 
-def test_page_69_preserves_printed_sentence_analysis_distinction() -> None:
+def test_analytic_translation_parentheticals_are_preserved_as_notes() -> None:
+    tree = ET.parse(
+        XML_ROOT
+        / "Kanakanavu"
+        / "Song_2018_Kanakanavu_Grammar.xml"
+    )
+    expected = {
+        "song-2018-kanakanavu-S0143": (
+            "我有錢。",
+            "我有錢。（=我的錢存在）",
+        ),
+        "song-2018-kanakanavu-S0149": (
+            "我沒有錢。",
+            "我沒有錢。（=我的錢沒有）",
+        ),
+    }
+    for sentence_id, (primary, source_translation) in expected.items():
+        translation = tree.find(
+            f"./S[@id='{sentence_id}']/TRANSL[@xml:lang='zho']",
+            {"xml": "http://www.w3.org/XML/1998/namespace"},
+        )
+        assert translation is not None
+        assert translation.text == primary
+        assert translation.get("notes") == source_translation
+
+
+def test_page_69_analysis_typo_is_repaired_in_the_original_tier() -> None:
+    """Reader p.69 prints 'takananga' in the sentence line of example 4-9 and
+    'takanaga' in its own aligned analysis line — a typesetting slip, since the
+    corpus attests 'takananga' 22x and 'takanaga' only in that one analysis.
+
+    The extraction ledger still records exactly what the page prints; the
+    repair is a recorded manual edit (CodeAndDocs/manual_edits.xml) applied to
+    the ORIGINAL tier, from which the standard tier and PHON regenerate. Before
+    the repair, the bare 'g' had no Ortho113 mapping and surfaced as '*' in the
+    original PHON."""
     analyses = analyses_by_id()
     assert analyses["song-2018-kanakanavu-S0012"]["words"][3]["form"] == (
         "takanaga=kasu"
@@ -318,12 +451,17 @@ def test_page_69_preserves_printed_sentence_analysis_distinction() -> None:
     ).getroot()
     word = root.find(".//W[@id='song-2018-kanakanavu-S0012-W004']")
     assert word is not None
-    assert word.findtext("./FORM[@kindOf='original']") == "takanaga=kasu"
+    assert word.findtext("./FORM[@kindOf='original']") == "takananga=kasu"
     assert word.findtext("./FORM[@kindOf='standard']") == "takananga=kasu"
+    assert word.findtext("./PHON[@kindOf='original']") == "takanaŋakasu"
     morpheme = word.find("./M[@id='song-2018-kanakanavu-S0012-W004-M01']")
     assert morpheme is not None
-    assert morpheme.findtext("./FORM[@kindOf='original']") == "takanaga="
-    assert morpheme.findtext("./FORM[@kindOf='standard']") == "takananga="
+    assert morpheme.findtext("./FORM[@kindOf='original']") == "takananga"
+    assert morpheme.findtext("./FORM[@kindOf='standard']") == "takananga"
+    clitic = word.find("./M[@id='song-2018-kanakanavu-S0012-W004-M02']")
+    assert clitic is not None
+    assert clitic.findtext("./FORM[@kindOf='original']") == "=kasu"
+    assert clitic.findtext("./FORM[@kindOf='standard']") == "=kasu"
 
 
 def test_review_gate_rejects_reordered_positioned_text(
@@ -423,7 +561,7 @@ def test_generated_direct_standard_surfaces_are_marker_free() -> None:
     # punctuation; exempt their exact accent-folded texts, nothing else.
     decisions = normalize_standard_forms.load_decisions()
     reviewed_dash_surfaces = frozenset(
-        decision.output_forms[0].translate(fold_standard_stress.ACCENT_MAP)
+        strip_accents(decision.output_forms[0])
         for decision in decisions.values()
         if decision.decision_class == "source_break_punctuation_single_dash"
     )
@@ -553,9 +691,9 @@ def test_stress_and_shared_phonology_tiers() -> None:
         form
         for root in roots
         for form in root.findall(".//FORM")
-        if form.get("kindOf") in fold_standard_stress.STANDARD_KINDS
+        if form.get("kindOf") in {"standard", "alternate"}
     ]
-    accents = fold_standard_stress.ACCENT_CHARACTERS
+    accents = "áéíóúÁÉÍÓÚ"
     assert any(any(character in (form.text or "") for character in accents) for form in original_forms)
     assert all(
         not any(character in (form.text or "") for character in accents)
@@ -579,7 +717,6 @@ def test_stress_and_shared_phonology_tiers() -> None:
         for form in root.findall(".//FORM[@kindOf='standard']")
     )
     assert any("[r|ɾ]" in (phon.text or "") for phon in standard_phon)
-    assert all("~" not in (phon.text or "") for phon in standard_phon + original_phon)
 
     grammar = roots[0]
     sentence = grammar.find(".//S[@id='song-2018-kanakanavu-S0009']")

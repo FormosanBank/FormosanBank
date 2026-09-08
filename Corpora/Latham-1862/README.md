@@ -1,102 +1,100 @@
-# Latham 1862 Comparative Philology (Formosan lexical tables)
+# Latham 1862 comparative wordlist
 
-FormosanBank corpus of the Formosan lexical tables in Robert Gordon Latham's
-1862 *Elements of comparative philology* (London: Walton and Maberly),
-printed pp. 315–318.
+The Formosan lexical tables in Robert Gordon Latham's *Elements of comparative
+philology* (London: Walton and Maberly, 1862), printed pp. 315-318.
 
-## Repository At A Glance
+| Language | Source varieties | Records | XML |
+| --- | --- | ---: | --- |
+| Siraya (`fos`) | Klaproth Sideia, Vander Vlis Sideia, Sida | 38 | `XML/Siraya/latham_1862_sideia_sida.xml` |
+| Babuza-Favorlang (`bzg`, dialect `Favorlang`) | Favorlang | 24 | `XML/Babuza-Favorlang/latham_1862_favorlang.xml` |
 
-| Field | Value |
-| --- | --- |
-| Type | Historical comparative wordlist |
-| Languages | Siraya (`fos`, glottocode `sira1267`); Babuza-Favorlang (`bzg`, dialect `Favorlang`, glottocode `favo1235`) |
-| Source | Latham 1862, printed pp. 314–319 |
-| Size | 62 lexical `S` records; 70 source `FORM` tiers |
-| Copyright | Public domain |
-| Tiers | `original` and source-identical `standard`; optional `alternate`; no `PHON` |
-| XML | `XML/Siraya/latham_1862_sideia_sida.xml`; `XML/Babuza-Favorlang/latham_1862_favorlang.xml` |
+The 64 source cells contain 62 lexical records and two dashes (Sida Forehead
+and Beard). Eight alternate readings bring the source FORM count to 70.
+English headings supply the translations. Neighboring comparison languages
+are outside this corpus.
 
-## Tiers
+## Rights
 
-Each record has `FORM kindOf="original"` and a source-identical
-`FORM kindOf="standard"`. The source supplies no modern conversion, so the
-standard tier is an explicit searchable copy rather than a transliteration.
-Comma-separated source variants use `FORM kindOf="alternate"`. Historical
-spelling and diacritics are preserved. No pronunciation source exists, so the
-corpus does not infer `PHON`, `W`, or `M` tiers.
+**License:** public domain
 
-## Source And Scope
+**Rights source:** Internet Archive / Mark Graves (status confirmation), 2008-07-23; evidence: ask maintainer
 
-The source is the six-page scan of Latham 1862 (public scan:
-https://archive.org/details/elementsofcompar00lathrich). The scan has no text
-layer, so the lexical table was transcribed by hand from the page renders into
-`CodeAndDocs/source_ledger.tsv`, the authoritative, page-addressed
-transcription.
+This is the existing public-domain work, not a new permission grant. The
+[public scan record](https://archive.org/details/elementsofcompar00lathrich)
+records the 1862 publication and its public-domain status. The normalized XML
+value `public domain` preserves the prior `Public domain.` claim; the exact
+spelling change remains subject to maintainer merge review.
 
-The extraction covers the Formosan cells on printed pp. 315–318:
+## Source and preserved corrections
 
-- Sideia and Sida are represented as Siraya (`fos`).
-- Favorlang is represented as Babuza-Favorlang (`bzg`), dialect `Favorlang`.
-- Philippine, Bashi, Malay, and Micronesian comparison data are out of scope.
-- The 64-cell target grid contains 62 lexical cells and two printed dashes
-  (Sida Forehead and Beard), which are terminally omitted.
+[The source ledger](CodeAndDocs/source_ledger.tsv) is the reviewed manual
+transcription and build input. It preserves historical spelling, including
+`â á ó é à`, source-variety and page locators, and distinct repeated
+attestations of `rahpal` and `rima`. Comma-separated readings occupy original
+and alternate FORM elements in the same record.
 
-## Extraction Decisions
+[The review record](CodeAndDocs/reviewer_feedback.tsv) preserves Madeline
+Boese's July 25 and 27 corrections: the omitted Sida `motaus`, corrected
+accents, the wrapped word `arribórribon`, and `(so)` corrected to `so` with
+alternate `soa`. [Independent fixtures](CodeAndDocs/source_checks.tsv) and
+[tests](CodeAndDocs/tests/test_source_ledger.py) protect these readings.
+The published [pre-correction snapshot](CodeAndDocs/pre_correction_snapshot/)
+is retained unchanged as historical evidence; current generation reads the
+ledger, not the final XML.
 
-- Each source cell becomes one lexical `S` record.
-- A comma-separated source variant becomes a separate `FORM kindOf="alternate"`
-  in the same record.
-- `FORM kindOf="original"` and `FORM kindOf="standard"` both preserve the
-  reviewed historical spelling, including Latham's diacritics (`â á ó é à`).
-  No unsubstantiated modern conversion is applied.
-- Lexical meanings are given as `TRANSL xml:lang="eng"`.
-- No `PHON`, `W`, or `M` content is inferred: this is a lexical table with no
-  phonology, segmentation, or morphology in the source.
+The six-page review excerpt covers printed pp. 314-319. SHA-256:
+`e7b34a4063c5f552b288f2e97568d13387ffad471713e3191c644a2ec40ead7b`
+(1,195,720 bytes). It can be reviewed against the public scan; it is not a build
+dependency. The book's Addenda and Corrigenda, pp. 753-757, contain no correction
+to these Formosan tables.
 
-## Reproduce
+## Reproduction
 
-Requires Python 3 with `lxml` and `openpyxl` (FormosanBank's `.venv` has both).
-The build reads `CodeAndDocs/source_ledger.tsv`; the original source PDF is
-**not** required.
+Use the Python environment installed for the current FormosanBank checkout:
 
 ```bash
-# Rebuild the XML from the reviewed source ledger.
-python CodeAndDocs/build_lexical_xml.py
-
-# Independently verify every emitted XML field against the ledger
-# (62/62 source cells; 2 dash cells omitted; 0 unresolved).
-python CodeAndDocs/audit_source_coverage.py
+./CodeAndDocs/generate_xml.sh
 ```
 
-`CodeAndDocs/make_xml.sh` runs both commands with `python3` or the interpreter
-provided through `PYTHON`. The build writes canonical `XML/` directly and is
-deterministic.
+For a standalone development clone, set `FORMOSANBANK_ROOT` to the current
+FormosanBank checkout and, if needed, `PYTHON` to its Python executable. In the
+public corpus layout the surrounding checkout is used automatically. No
+network fetch, private source, or historical tool checkout is required.
 
-## Maintenance pipeline
+The build regenerates XML from the ledger and runs shared `clean_xml.py`.
+[Build provenance](CodeAndDocs/provenance.json) records the tools used for the
+reviewed output; it does not select or constrain future tools. Repeating a
+build with unchanged inputs must leave the XML and extraction summaries
+unchanged.
 
-The reviewed source ledger is the only build input. The generator writes the
-two XML files, then the source audit checks every emitted record, form,
-translation, source locator, and omission against that ledger. No cleaner,
-orthography converter, or phonology generator runs on this historical source.
+**POL-047 deviation:** No manual-edits file exists. Standard FORM and PHON are
+omitted under the [August 12 corpus ruling](https://github.com/FormosanBank/FormosanBank/commit/be579c6b0fb4818ae90bedbbf7c0dc4d58145ac6): neither historical variety has an
+approved standardization or pronunciation profile. No W/M analysis is
+inferred. Query original FORM; token counting falls back to that tier.
 
-## QC Notes
+## Validation
 
-- Structural XML validation: 0 findings.
-- Text: 9 SOFT V116 findings for source-authentic historical diacritics.
-- Gloss: 62 SOFT V060 findings, expected because a lexical table has no
-  source-supported `W` or `M` tiers.
-- Port readiness: 0 HARD and 0 WARN.
-- Duplicates: `rahpal` (Foot) and `rima` (Hand) are genuine, distinct source
-  attestations across varieties and pages. Both original and standard checks
-  report them as SOFT and they are retained (see
-  `CodeAndDocs/duplicate_group_review.csv`).
-- No orthography/vocabulary reference profile exists for these historical
-  varieties, so those comparisons are unavailable; verification here is
-  fidelity of the XML to the transcribed source (`CodeAndDocs/source_checks.tsv`,
-  `CodeAndDocs/source_coverage_audit.md`).
+After building, write checks to a new directory outside the corpus:
 
-## Citation
+```bash
+OUTPUT_DIR=/path/to/new/review ./CodeAndDocs/validate.sh
+```
 
-Latham, Robert Gordon. 1862. *Elements of comparative philology*. London:
-Walton and Maberly. Public scan:
-https://archive.org/details/elementsofcompar00lathrich
+The source audit is read-only by default. After an authorized ledger change,
+`python CodeAndDocs/audit_source_coverage.py --write-reports` refreshes its
+committed summaries. The validator runs every applicable check and rejects
+unreviewed findings; [QC notes](CodeAndDocs/qc_summary.md) explain accepted
+findings and unavailable comparisons.
+
+The existing extraction wrapper calls the shared orthography API because its
+CLI omits registered Babuza-Favorlang. Neither historical variety has a
+reference inventory for automatic comparison. No shared code is changed here.
+
+## Publication packaging
+
+The complete public file set is `README.md`, `CodeAndDocs/` and `XML/` from one
+verified private commit. Export those paths with `git archive` and install them
+at `Corpora/Latham-1862/`; paths inside the corpus and all file bytes remain
+unchanged. Replace superseded build files rather than overlaying competing
+entry points. Both XML files are included; there are no private-only XML
+exclusions. The preserved snapshot is a build-history input, not published XML.
