@@ -2554,7 +2554,7 @@
         <FORM kindOf="original">ha-min han mu-kan kiya hemay.</FORM>
         <FORM kindOf="standard">hamin han mukan kiya hemay.</FORM>
         <PHON kindOf="standard">ħamin ħan mukan kija ħəmaj</PHON>
-        <TRANSL xml:lang="zho">（飯）全部都吃掉。</TRANSL>
+        <TRANSL xml:lang="zho">飯全部都吃掉。</TRANSL>
         <W id="AKIW_SZY_2012_EX_023CW1">
             <FORM kindOf="original">ha-min</FORM>
             <FORM kindOf="standard">ha-min</FORM>
@@ -2625,6 +2625,60 @@
                 <FORM kindOf="standard">hemay</FORM>
                 <PHON kindOf="standard">ħəmaj</PHON>
                 <TRANSL xml:lang="zho">飯</TRANSL>
+            </M>
+        </W>
+    </S>
+    <S id="AKIW_SZY_2012_EX_023C_SHORT" source="PDF page 55; example 23c, without optional kiya hemay">
+        <FORM kindOf="original">ha-min han mu-kan.</FORM>
+        <FORM kindOf="standard">hamin han mukan.</FORM>
+        <PHON kindOf="standard">ħamin ħan mukan</PHON>
+        <TRANSL xml:lang="zho">全部都吃掉。</TRANSL>
+        <W id="AKIW_SZY_2012_EX_023C_SHORTW1">
+            <FORM kindOf="original">ha-min</FORM>
+            <FORM kindOf="standard">ha-min</FORM>
+            <PHON kindOf="standard">ħamin</PHON>
+            <TRANSL xml:lang="zho">HA-全部的</TRANSL>
+            <M id="AKIW_SZY_2012_EX_023C_SHORTW1M1">
+                <FORM kindOf="original">ha</FORM>
+                <FORM kindOf="standard">ha</FORM>
+                <PHON kindOf="standard">ħa</PHON>
+                <TRANSL xml:lang="zho">HA</TRANSL>
+            </M>
+            <M id="AKIW_SZY_2012_EX_023C_SHORTW1M2">
+                <FORM kindOf="original">min</FORM>
+                <FORM kindOf="standard">min</FORM>
+                <PHON kindOf="standard">min</PHON>
+                <TRANSL xml:lang="zho">全部的</TRANSL>
+            </M>
+        </W>
+        <W id="AKIW_SZY_2012_EX_023C_SHORTW2">
+            <FORM kindOf="original">han</FORM>
+            <FORM kindOf="standard">han</FORM>
+            <PHON kindOf="standard">ħan</PHON>
+            <TRANSL xml:lang="zho">助詞</TRANSL>
+            <M id="AKIW_SZY_2012_EX_023C_SHORTW2M1">
+                <FORM kindOf="original">han</FORM>
+                <FORM kindOf="standard">han</FORM>
+                <PHON kindOf="standard">ħan</PHON>
+                <TRANSL xml:lang="zho">助詞</TRANSL>
+            </M>
+        </W>
+        <W id="AKIW_SZY_2012_EX_023C_SHORTW3">
+            <FORM kindOf="original">mu-kan</FORM>
+            <FORM kindOf="standard">mu-kan</FORM>
+            <PHON kindOf="standard">mukan</PHON>
+            <TRANSL xml:lang="zho">主焦-吃</TRANSL>
+            <M id="AKIW_SZY_2012_EX_023C_SHORTW3M1">
+                <FORM kindOf="original">mu</FORM>
+                <FORM kindOf="standard">mu</FORM>
+                <PHON kindOf="standard">mu</PHON>
+                <TRANSL xml:lang="zho">主焦</TRANSL>
+            </M>
+            <M id="AKIW_SZY_2012_EX_023C_SHORTW3M2">
+                <FORM kindOf="original">kan</FORM>
+                <FORM kindOf="standard">kan</FORM>
+                <PHON kindOf="standard">kan</PHON>
+                <TRANSL xml:lang="zho">吃</TRANSL>
             </M>
         </W>
     </S>

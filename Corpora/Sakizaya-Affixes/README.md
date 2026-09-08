@@ -8,8 +8,9 @@ translations and source analyses from the numbered examples and affix tables.
 
 **Not ready to port.** The licence decision and final source-coverage/gloss
 review remain open. The former ready-to-merge claims predate the current review.
-The current repair restores example 17d's source null prefix on original S/W
-and its two M units. Standard S omits the silent prefix; the null M is unglossed.
+The repair restores example 17d's source null prefix on original S/W and its
+two M units, and expands example 23c's optional object into two aligned S.
+Standard S omits the silent prefix; the null M is unglossed.
 
 Madeline Boese's August 14 review supplies the corrected Chinese, alternative
 meanings, notes, morpheme analyses and exclusions. Regeneration preserves that
@@ -18,9 +19,9 @@ retain their different source analyses even though their standard forms agree.
 
 ## Corpus
 
-Two TEXT files contain 670 S: 238 numbered examples and 432 affix entries,
-with 1,749 W, 2,539 M, 9,916 FORM, 4,958 standard PHON and 5,096 TRANSL.
-There are 720 S translations and 4,376 untiered W/M source glosses. No audio
+Two TEXT files contain 671 S: 239 numbered-example variants and 432 affix entries,
+with 1,752 W, 2,544 M, 9,934 FORM, 4,967 standard PHON and 5,105 TRANSL.
+There are 721 S translations and 4,384 untiered W/M source glosses. No audio
 or source-supplied phonetic transcription is included.
 
 The committed inventories account for 808 units: 261 numbered occurrences,
@@ -29,6 +30,8 @@ source-starred examples, two additional expert exclusions and every summary
 row are excluded. This inventory count is not a claim that every linguistic
 item in the 174-page thesis has been included; unnumbered/background material
 and footnotes still need final coverage accounting.
+The 238 included numbered occurrences produce 239 S because 23c permits both
+`ha-min han mu-kan` and `ha-min han mu-kan kiya hemay` (scan p. 55, POL-026).
 
 ## Reproduce
 
@@ -42,7 +45,8 @@ python -m unittest discover -s Corpora/Sakizaya-Affixes/CodeAndDocs -p test_sour
 
 The build uses the committed source inventories and TEXT metadata for fresh
 pre-manual S records, applies all 670 expert correction records through the
-shared manual-edit tool, then cleans, standardizes and generates standard PHON.
+shared manual-edit tool, expands 23c, then cleans, standardizes and generates
+standard PHON.
 The inventories plus complete manual transcription are the documented source
 baseline (POL-035); no private scan, OCR cache, download or historical Git object
 is needed. All manual records are retained, including no-ops (POL-030).
@@ -51,6 +55,9 @@ is needed. All manual records are retained, including no-ops (POL-030).
 decision because the source supplies no phonetic transcription. The reviewed
 TSV removes circumfix ellipses only from derived standard forms, preserving
 original M such as `ma-...-ay` and producing standard `ma--ay`.
+The source-specific 23c expansion follows manual transcription and precedes
+cleaning; it preserves the longer reading's IDs and gives the shorter reading
+stable `_SHORT` IDs, with only its own W/M and Chinese translation.
 
 [Build provenance](CodeAndDocs/provenance.json) records the actual tools after a
 successful build. It never selects or pins tools. A Gitless export retains its

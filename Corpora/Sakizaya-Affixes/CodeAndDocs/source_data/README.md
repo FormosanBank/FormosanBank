@@ -10,6 +10,14 @@ TSV. The other CSVs document the earlier extraction and remain source evidence.
 
 - `numbered_source_decisions.csv`: seeded examples, OCR corrections, reviewed gloss alignments, and numbered-example exclusions.
 - `gloss_cell_replacements.csv`: verified recurrent OCR substitutions in interlinear gloss cells.
+- `gloss_exceptions.csv`: exact G001 word IDs and readings from the independent
+  August 14 expert submission. Joshua's August 10 corpus ruling covers whole-word
+  meanings beside affix/root columns and the thesis's unsegmented pronouns,
+  case analyses and composite affixes. There are 403 table and 47 example cases;
+  tests require those exact readings and reject any newly unreviewed G001 case.
+  Physical scan pages 33, 37–39, 61, 73, 120, 128, 135 and 140–141 verify the
+  distinct example conventions, including the restored null. This fixture does
+  not waive other rules or establish complete source coverage.
 - `affix_analyses.csv`: source table ranges, affix forms, functions, and table numbers.
 - `table_row_fixes.csv`: page-image-verified inventory-row corrections and the documented row 313 form mismatch.
 - `late_table_rows.csv`: complete rows 435 through 547 with source pages, table numbers, forms, meanings, and unique linguistic fields where no earlier inventory row supplies them.

@@ -7,6 +7,7 @@ PY="${PYTHON:-python3}"
 test -f "$FB/QC/cleaning/clean_xml.py"
 "$PY" "$HERE/generate_xml.py"
 "$PY" "$FB/QC/cleaning/apply_manual_edits.py" --corpora_path "$ROOT/XML"
+"$PY" "$HERE/generate_xml.py" --expand-optionals
 "$PY" "$FB/QC/cleaning/clean_xml.py" --corpora_path "$ROOT/XML"
 "$PY" "$FB/QC/utilities/standardize.py" --corpora_path "$ROOT/XML" \
     --tsv_path "$HERE/source_data/sakizaya_affixes_standardization.tsv" --target_column standard
