@@ -69,7 +69,9 @@ worse — they rank Utrecht's obviously-fine `couva`/`cauwa` below Latham's
 
 A threshold of 0.6 yields 13 findings repo-wide: 6 Latham (real), 2 Utrecht
 (`tigpapahoang`/`tigp` likely real, `iit`/`jih` a judgment call), 5 Wakelin (all
-legitimate). This is the basis for a SOFT rule, not a HARD one.
+legitimate). Exempting pairs whose shorter form is ≤2 characters removes two of
+the Wakelin five (`u`/`a`, `namen`/`am`) and no real defect, giving **11**. This
+is the basis for a SOFT rule, not a HARD one.
 
 ### Structural invariants are clean and worth locking in
 
@@ -146,18 +148,28 @@ which are all about alternatives.
   on the same node. It is the only marking for this: not `ver`, not
   `"alternative"`, not an `-opt` suffix.
 - Every alternate must have at least one non-alternate FORM sibling on the same
-  parent, and must overlap it substantially. The policy states the requirement
-  in words; the operative threshold lives in V150 and is deliberately not
-  written into POLICIES, so it can be tuned from evidence without a re-ruling.
-- A competing **lexeme** for the same meaning is not an alternate; per POL-027
-  it becomes its own `S` block.
+  parent, and must **either overlap it highly or be very short** — short forms
+  being the case where overlap cannot be measured meaningfully. The policy
+  states this in words; the operative threshold and short-form cutoff live in
+  V150 and are deliberately not written into POLICIES, so they can be tuned
+  from evidence without a re-ruling.
+- **The variation may span the whole form.** A one-letter word alternating
+  `a`/`u` (WakelinTexts `Kwaway/S2W3`) is as valid an alternate as a letter
+  changing inside a longer word. Nothing requires the variation to be
+  word-internal.
+- A competing **lexeme** for the same meaning, or a different gloss, is not an
+  alternate; per POL-027 it becomes its own `S` block.
 - Alternates may sit at S, W or M, and belong on the node that actually varies.
   A word-list corpus whose `S` is a word is the S-level case.
-- **Scope clause for optional material.** A whole optional *word* — `x y (z)` —
-  becomes two `S` blocks (POL-026); the second takes the first's id plus
-  `-opt`. Optional material *inside* a word — `puken-(en)`, `(u)m-lavi` —
-  becomes an `alternate` FORM on the word that varies, never a second sentence.
-  Neither mechanism leaves parentheses in a published FORM.
+- **Scope clause for optional material.** What forces a separate `S` block is
+  not whether the variation sits inside a word, but whether the **sentence's
+  word inventory changes**. A whole optional *word* — `x y (z)` — changes the
+  W tier and the gloss alignment, so it becomes two `S` blocks (POL-026), the
+  second taking the first's id plus `-opt`. Optional material that leaves the
+  word count unchanged — `puken-(en)`, `(u)m-lavi`, and equally a whole short
+  word alternating `a`/`u` — becomes an `alternate` FORM on the word that
+  varies, never a second sentence. Neither mechanism leaves parentheses in a
+  published FORM.
 
 **POL-053 (new, §6 Development)** — XML attributes are a closed, documented set.
 
@@ -211,7 +223,7 @@ Next free id is V149.
 | id | severity | module | mnemonic | current findings |
 | --- | --- | --- | --- | --- |
 | V149 | HARD | `hard.py` | `alternate_FORM_requires_base_sibling` | 0 |
-| V150 | SOFT | `soft.py` | `alternate_FORM_low_overlap` | 13 |
+| V150 | SOFT | `soft.py` | `alternate_FORM_low_overlap` | 11 |
 | V151 | SOFT | `soft.py` | `transl_kindof_inconsistent` | Glosbe's 4157/3452 split |
 
 - **V149** — a `FORM[@kindOf="alternate"]` must have at least one non-alternate
@@ -219,7 +231,19 @@ Next free id is V149.
   "an alternate must not be a parent's only FORM."
 - **V150** — similarity between an alternate and its closest non-alternate
   sibling, below 0.6, using `SequenceMatcher` over NFD-stripped casefolded
-  text. Reports both strings and the ratio so a reviewer can judge.
+  text, **exempting pairs whose shorter form is 2 characters or fewer**.
+  Reports both strings, their lengths and the ratio so a reviewer can judge.
+
+  The exemption encodes POL-028's "or very short" and is cut at 2 on evidence,
+  not taste. At ≤2 it suppresses exactly two pairs, both legitimate (`u`/`a`,
+  `namen`/`am`), and no real defect. At ≤3 it would also suppress
+  `ratta`/`tâu`, a genuine Latham cross-lexeme defect; at ≤4, three more
+  (`zido`/`arrabis`, `sjam`/`bahosa`, `tigp`/`tigpapahoang`). Anything above 2
+  hides real findings and must not be adopted without new evidence.
+
+  No length rule rescues `pipangengne-eben`/`pipangn-epen` (ratio 0.57, both
+  long, legitimate). Such cases are irreducible, and are the reason V150 is
+  SOFT rather than HARD.
 - **V151** — within one file, some but not all `TRANSL` elements at a given
   parent-element level carry `@kindOf`.
 
@@ -227,14 +251,16 @@ Regenerate `RULES.md` afterwards.
 
 ### 5. Worklist, not remediation
 
-`claudeplans/2026-09-08-alternate-form-worklist.md` triages all 13 V150
+`claudeplans/2026-09-08-alternate-form-worklist.md` triages all 11 V150
 findings by element id:
 
 - 6 Latham-1862 cross-lexeme alternates — defects, to be fixed in a later
   change that rebuilds the corpus per POL-027 and POL-037.
 - 2 UtrechtManuscriptWordList — `tigpapahoang`/`tigp` (likely a truncation) and
   `iit`/`jih` (judgment).
-- 5 WakelinTexts — reviewed and confirmed legitimate.
+- 3 WakelinTexts — reviewed and confirmed legitimate (`namen`/`nem` twice and
+  `pipangengne-eben`/`pipangn-epen`); the other two are exempted by the
+  short-form cutoff and never reach the report.
 
 No published XML changes in this work.
 
@@ -242,12 +268,15 @@ No published XML changes in this work.
 
 Test-driven, one rule at a time:
 
-- Unit tests per rule, covering the positive case, the clean case, and the
-  short-string false-positive cases that motivated SOFT severity (`a`/`u`,
-  `nem`/`namen`).
+- Unit tests per rule, covering the positive case and the clean case. V150
+  additionally pins the short-form behaviour in both directions: `u`/`a`
+  (minlen 1) must be **exempted**, and `nem`/`namen` (minlen 3, ratio 0.50)
+  must still **flag** — the pair that fixes the cutoff at 2 rather than 3.
+  A regression test asserts `ratta`/`tâu` stays flagged, since that is the
+  real defect a looser cutoff would hide.
 - `test_attributes_catalogue.py` staleness and missing-documentation checks.
 - A full `validate_xml.py` sweep across all corpora, asserting **zero new HARD
-  findings** and exactly the expected SOFT counts (13 V150, plus V151 on
+  findings** and exactly the expected SOFT counts (11 V150, plus V151 on
   Glosbe).
 
 ## Out of scope
