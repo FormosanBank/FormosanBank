@@ -69,9 +69,11 @@ worse — they rank Utrecht's obviously-fine `couva`/`cauwa` below Latham's
 
 A threshold of 0.6 yields 13 findings repo-wide: 6 Latham (real), 2 Utrecht
 (`tigpapahoang`/`tigp` likely real, `iit`/`jih` a judgment call), 5 Wakelin (all
-legitimate). Exempting pairs where **both** forms are ≤2 characters removes one
-of the Wakelin five (`a`/`u`) and no real defect, giving **12**. This is the
-basis for a SOFT rule, not a HARD one.
+legitimate). Exempting pairs whose shorter form is ≤2 characters removes two of
+the Wakelin five and no real defect; adding a separate length-proportion test
+(`hi > 2 * lo`) brings `am`/`namen` back and catches `tigp`/`tigpapahoang` on
+better grounds. Net **12**. This is the basis for a SOFT rule, not a HARD one —
+see V150 for the composite form.
 
 ### Structural invariants are clean and worth locking in
 
@@ -169,14 +171,18 @@ which are all about alternatives.
   on the same node. It is the only marking for this: not `ver`, not
   `"alternative"`, not an `-opt` suffix.
 - Every alternate must have at least one non-alternate FORM sibling on the same
-  parent, and must **either overlap it highly, or be short together with that
-  sibling** — the short case being where overlap cannot be measured
-  meaningfully. **Both forms must be short, not just one.** A short form paired
-  with a long one is not an alternate: `dog`/`supercalifragilisticexpialidocious`
-  shares a short member but is obviously two different words. The policy states
-  this in words; the operative threshold and length cutoff live in V150 and are
-  deliberately not written into POLICIES, so they can be tuned from evidence
-  without a re-ruling.
+  parent, and must satisfy **two independent conditions** against it:
+  1. **Overlap** — it must overlap the sibling highly, or, where both forms are
+     too short for overlap to be measurable, simply be short.
+  2. **Proportion** — neither form may be more than twice the length of the
+     other. A spelling variant does not double a word's length.
+
+  Proportion is a separate test because overlap alone cannot catch it:
+  `dog`/`supercalifragilisticexpialidocious` shares a short member, and a
+  short-form exemption written against the *shorter* string would wave it
+  through. The policy states both conditions in words; the operative thresholds
+  live in V150 and are deliberately not written into POLICIES, so they can be
+  tuned from evidence without a re-ruling.
 - **The variation may span the whole form.** A one-letter word alternating
   `a`/`u` (WakelinTexts `Kwaway/S2W3`) is as valid an alternate as a letter
   changing inside a longer word. Nothing requires the variation to be
@@ -255,35 +261,45 @@ Next free id is V149.
 - **V149** — a `FORM[@kindOf="alternate"]` must have at least one non-alternate
   FORM sibling on the same parent. Locks in today's clean state; also covers
   "an alternate must not be a parent's only FORM."
-- **V150** — similarity between an alternate and its closest non-alternate
-  sibling, below 0.6, using `SequenceMatcher` over NFD-stripped casefolded
-  text, **exempting pairs where the LONGER form is 2 characters or fewer** —
-  that is, where both forms are short. Reports both strings, their lengths and
-  the ratio so a reviewer can judge.
+- **V150** — flags an alternate that fails either of POL-028's two conditions
+  against its closest non-alternate sibling. Reports both strings, their
+  lengths and the ratio so a reviewer can judge.
 
-  The exemption tests `max(len(a), len(b))`, never `min`. Testing the shorter
-  member would exempt any short form paired with any long one:
-  `dog`/`supercalifragilisticexpialidocious` has a shorter member of 3 and
-  would slip through a `min`-based cutoff of 3, while its longer member of 34
-  correctly fails a `max`-based one.
+  ```
+  lo, hi = min(len(a), len(b)), max(len(a), len(b))
+  overlap_fails   = ratio < 0.6 and lo > 2
+  proportion_fails = hi > 2 * lo
+  flag = overlap_fails or proportion_fails
+  ```
 
-  Cut at 2 on evidence. At ≤2 it suppresses exactly one pair, `a`/`u`, and no
-  real defect. At ≤3 and ≤4 it additionally suppresses `iit`/`jih`, an Utrecht
-  pair that wants a reviewer's eye rather than silence. At ≤5 it suppresses
-  `tâu`/`ratta`, a genuine Latham cross-lexeme defect, so 4 is the hard ceiling
-  and 2 is the recommended setting.
+  `ratio` is `difflib.SequenceMatcher` over NFD-stripped, casefolded text.
 
-  No length rule rescues `pipangengne-eben`/`pipangn-epen` (ratio 0.57, both
-  long, legitimate) or `am`/`namen` (0.57, longer member 5). Such cases are
-  irreducible, and are the reason V150 is SOFT rather than HARD.
+  The overlap condition exempts pairs whose shorter form is ≤2 characters,
+  because a one- or two-letter form cannot produce a meaningful ratio —
+  `a`/`u` scores 0.00 and is a correct variant. Cut at 2 on evidence: at ≤2 it
+  suppresses only `a`/`u`; at ≤3 it would also suppress `iit`/`jih`, which
+  wants a reviewer's eye; at ≤5 it would suppress `tâu`/`ratta`, a genuine
+  Latham defect.
+
+  The proportion condition is what makes that exemption safe. On its own the
+  short-form exemption would wave through any short form paired with a long
+  one; `hi > 2 * lo` catches exactly that, independent of similarity, so a
+  truncation or an expansion is flagged for being disproportionate even when it
+  scores well on overlap. On current data it fires on two pairs —
+  `tigp`/`tigpapahoang` (4 vs 12, where it gives the better reason: a
+  truncation) and `am`/`namen` (2 vs 5).
+
+  **12 findings** repo-wide, 10 from overlap, 1 from proportion alone, 1 from
+  both. Neither condition rescues `pipangn-epen`/`pipangengne-eben` (ratio 0.57,
+  12 vs 16, legitimate). Such cases are irreducible, and are the reason V150 is
+  SOFT rather than HARD.
 - **V151** — an S-level `TRANSL` must not carry `@kindOf`. W- and M-level
   TRANSLs may, since there it marks a source gloss against a standardized one.
 
-  Lands **SOFT**, because Glosbe's 4,157 legacy attributes would otherwise fail
-  CI the moment the rule ships, and the earlier ruling keeps remediation out of
-  this change. It is **promoted to HARD in the same change that remediates
-  Glosbe** — that promotion is the worklist item's definition of done, not an
-  optional follow-up.
+  Lands **SOFT**. Glosbe's 4,157 legacy attributes would otherwise fail CI the
+  moment the rule ships, blocking every unrelated branch in flight. The
+  promotion to HARD is a **numbered step inside the Glosbe worklist item**, not
+  a step in this change — so this work stays invisible to other ongoing work.
 
 Regenerate `RULES.md` afterwards.
 
@@ -303,9 +319,17 @@ items and the triage behind them.
   confirmed-fine so reviewers do not re-litigate them each sweep. Only `a`/`u`
   is exempted by the length cutoff and never reaches the report.
 
-**V151 — Glosbe:** strip `@kindOf` from 4,157 S-level TRANSLs across
-`Glosbe_{ami,tay,xsy}_eng_tmem.xml`, via a step added to Glosbe's
-`make_xml.sh` (POL-038), then promote V151 to HARD.
+**V151 — Glosbe.** An ordered item; the last step is what closes it:
+
+1. Add a strip step to Glosbe's `make_xml.sh` removing `@kindOf` from S-level
+   TRANSLs (POL-038 — the change is in code, not by hand).
+2. Run it; confirm 4,157 attributes gone across
+   `Glosbe_{ami,tay,xsy}_eng_tmem.xml` and no W/M TRANSL touched.
+3. Confirm V151 reports zero repo-wide.
+4. **Move V151 from `soft.py` to `hard.py`** and regenerate `RULES.md`.
+
+Step 4 lives here, not in the change that introduces the rule, so that
+introducing V151 cannot fail CI on any branch already in flight.
 
 **Also recorded for the future:** W/M-level `TRANSL/@kindOf` is the axis a
 gloss-standardization pass will use — source gloss as `original`, standardized
@@ -350,13 +374,15 @@ carry over.
 Test-driven, one rule at a time:
 
 - Unit tests per rule, covering the positive case and the clean case. V150
-  additionally pins the length behaviour in three directions: `a`/`u`
-  (both length 1) must be **exempted**; `am`/`namen` (shorter 2, longer 5) must
-  still **flag**, which is the case that forces `max` rather than `min`; and a
-  synthetic `dog`/`supercalifragilisticexpialidocious` must **flag**, guarding
-  the same thing against a future refactor. A regression test asserts
-  `tâu`/`ratta` stays flagged, since that is the real defect a looser cutoff
-  would hide.
+  tests each of its two conditions in isolation and together:
+  - `a`/`u` — passes both; must **not** flag.
+  - `tâu`/`ratta` — overlap fails, proportion passes; must flag. The real
+    defect a looser overlap cutoff would hide.
+  - `am`/`namen` — overlap is exempt (shorter form 2), proportion fails; must
+    flag. This is the case that proves the proportion condition is load-bearing:
+    delete it and this test goes green wrongly.
+  - synthetic `dog`/`supercalifragilisticexpialidocious` — both fail; must
+    flag, guarding the pair against a future refactor of either condition.
 - V151 tests both levels: `@kindOf` on an S-level TRANSL flags; the same
   attribute on a W- or M-level TRANSL does not.
 - `test_attributes_catalogue.py` staleness and missing-documentation checks.
