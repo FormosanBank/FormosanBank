@@ -28,17 +28,15 @@ Standard FORMs and PHON are machine-derived and regenerate downstream
 """
 
 import argparse
-import re
 import sys
 from pathlib import Path
+
+from lxml import etree
 
 WHITELIST = {"knita'", "brbiru'"}
 # Punctuation strippable around a token when matching the whitelist — the
 # apostrophe itself is deliberately NOT in this set.
 EDGE_PUNCT = '.,;:?!"()[]{}<>«»“”‘’—–…~'
-
-FORM_RE = re.compile(r'(<FORM kindOf="original">)(.*?)(</FORM>)', re.DOTALL)
-
 
 def _convert_token(tok: str) -> str:
     chars = list(tok)
@@ -65,19 +63,22 @@ def normalize_text(text: str) -> str:
 
 
 def process_file(path: Path, apply: bool) -> int:
-    raw = path.read_text(encoding='utf-8')
+    tree = etree.parse(str(path))
     changed = 0
-
-    def repl(m):
-        nonlocal changed
-        new = normalize_text(m.group(2))
-        if new != m.group(2):
-            changed += 1
-        return m.group(1) + new + m.group(3)
-
-    new_raw = FORM_RE.sub(repl, raw)
-    if apply and new_raw != raw:
-        path.write_text(new_raw, encoding='utf-8')
+    for form in tree.iterfind('.//FORM[@kindOf="original"]'):
+        changed_form = False
+        # Notes and attribute order must not change which original text is read.
+        for text in form.xpath('.//text()'):
+            new = normalize_text(str(text))
+            if new != text:
+                if text.is_text:
+                    text.getparent().text = new
+                else:
+                    text.getparent().tail = new
+                changed_form = True
+        changed += changed_form
+    if apply and changed:
+        tree.write(str(path), encoding='utf-8', xml_declaration=True)
     return changed
 
 
