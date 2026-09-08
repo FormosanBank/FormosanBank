@@ -35,7 +35,7 @@ Seven analytic nulls are retained as `∅` in original S/W/M tiers; shared stand
 
 Run `CodeAndDocs/generate_xml.sh` from the corpus package. It builds from committed inputs, applies corrections, cleans, standardizes and generates PHON with current shared tools, without a private PDF, network fetch or historical Git checkout. [provenance.json](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Amis-Pa-Verbs/CodeAndDocs/provenance.json) records the tools used for the committed output and does not pin future builds. Validation and source refresh are separate.
 
-Original PHON uses the Ortho94 Coastal profile; standard PHON uses Ortho113. The existing `u→o` spelling conversion has a reviewed phoneme-level difference, not a claim of strict IPA equivalence. The unsupported validation-only profile was removed. [Source and conversion notes](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Amis-Pa-Verbs/CodeAndDocs/README.md) document these limitations and the exact source-inherent findings protected by tests.
+Original PHON uses Coastal Ortho94 values with Wu's explicit apostrophe /ʔ/ and q /ʡ/ spellings; standard PHON uses Ortho113. Wu's dissertation phonetic key and its repeated version of example 36a establish the distinction in `Ma-na’ay`. The source form is preserved, standard apostrophe becomes `^`, and both PHON tiers give /ʔ/. The existing `u→o` spelling conversion retains its reviewed phoneme-level difference. [Source and conversion notes](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/Amis-Pa-Verbs/CodeAndDocs/README.md) document these limitations and the exact source-inherent findings protected by tests.
 
 ## Copyright
 
