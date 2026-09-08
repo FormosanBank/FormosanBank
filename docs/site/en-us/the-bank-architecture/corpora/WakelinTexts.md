@@ -15,15 +15,15 @@ They were collected on Orchid Island between 1955 and 1957. Every sentence has a
 
 | | Yami |
 | --- | --- |
-| Word count | 852 |
+| Word count | 886 |
 | Total audio | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 |
 | Translated words |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 852 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 886 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 |
-| Morphologically segmented | 840 |
-| Glossed words | 840 |
+| Morphologically segmented | 872 |
+| Glossed words | 871 |
 
 ***
 

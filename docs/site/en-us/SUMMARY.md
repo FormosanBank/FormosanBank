@@ -43,6 +43,7 @@
   * [Song (2018) Kanakanavu Grammar](the-bank-architecture/corpora/song-kanakanavu-grammar.md)
   * [Li (2014) Conjunction in Thao](the-bank-architecture/corpora/li-conjunction-thao.md)
   * [Campbell-Favorlang](the-bank-architecture/corpora/campbell-favorlang.md)
+  * [Utrecht Manuscript Word List](the-bank-architecture/corpora/utrecht-manuscript-word-list.md)
 * [Developers](the-bank-architecture/developers/README.md)
   * [🤗 HuggingFace](the-bank-architecture/developers/huggingface.md)
   * [Formosan MT Toolkit](the-bank-architecture/developers/formosan-mt-toolkit.md)
