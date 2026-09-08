@@ -1,7 +1,28 @@
-# Reproducibility
+# Reproduction inputs
 
-`CodeAndDocs/reproduce.sh` requires both checksum-verified private PDFs and a clean FormosanBank checkout at commit `3a3c47c220520113f747e6a2d441494000e13c4b`.
+The canonical entry point is `CodeAndDocs/generate_xml.sh`. It runs with current
+FormosanBank tools and records [provenance](../provenance.json); the former
+historical-tools pin and combined download/build/QC wrappers are retired.
 
-The workflow loads source-derived mappings from `CodeAndDocs/source_data/`, rebuilds the numbered-example and affix-inventory XML files twice, and never regenerates the expert-rejected summary XML. It applies `manual_edits.xml`, cleans the output, derives standard FORM with `sakizaya_affixes_standardization.tsv`, and generates standard PHON without claiming source phonetics. It then compares hashes and runs the source, XML, privacy, and port-readiness gates.
+The 670 retained source IDs and locations come from `extraction_report.csv`
+and `table_extraction_report.csv`. `source_data/text_metadata.json` preserves
+the two existing TEXT headers. `manual_edits.xml` is the complete expert
+transcription of those S records, including all W/M and alternative readings.
+Every build reconstructs fresh S records before applying the shared manual
+edits, cleaner, standardizer and standard phonology tool. The baseline does not
+read previous final XML. This transcription-based reconstruction implements
+POL-035/POL-047/POL-048 without redistributing the private scan.
 
-The workflow does not install packages, modify the shared checkout, or write to Basecamp.
+The transcription originated in Madeline's expert submission at commit
+`45d58b084295a9800a809502976c23a0f400e93a`, integrated by `85abf3b`.
+The integration repaired two malformed XML tags but also removed 17d W1's
+source-backed null prefix. The current manual record restores that prefix
+from physical scan pages 37–38 and adds null/root M under POL-012. Original S
+also retains the printed prefix, correcting the expert file's omission and
+satisfying null propagation (V124/V125). Standard S omits the silent prefix.
+The null M receives no invented translation.
+
+Summary rows remain source evidence, never build inputs. The source PDF and
+OCR cache are required only for renewed source inspection. Older scripts are
+historical source-research utilities, not alternate release entry points.
+The current README states outstanding review and licence decisions.

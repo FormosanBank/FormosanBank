@@ -1,6 +1,12 @@
 # Source-derived build data
 
-These CSV files contain page-image-verified transcriptions and extraction decisions from Akiw (2012). The build scripts load them directly so linguistic mappings and source corrections remain reviewable data rather than Python constants.
+These files preserve source transcriptions, extraction decisions and mappings
+from Akiw (2012). The final build reads `text_metadata.json`, the two main
+inventories one directory above, `manual_edits.xml`, and the standardization
+TSV. The other CSVs document the earlier extraction and remain source evidence.
+
+- `text_metadata.json`: the two existing TEXT headers and output paths; the
+  permission prose remains unresolved under POL-042.
 
 - `numbered_source_decisions.csv`: seeded examples, OCR corrections, reviewed gloss alignments, and numbered-example exclusions.
 - `gloss_cell_replacements.csv`: verified recurrent OCR substitutions in interlinear gloss cells.

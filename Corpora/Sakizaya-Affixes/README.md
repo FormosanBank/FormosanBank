@@ -1,68 +1,70 @@
-# Akiw (2012) Sakizaya Affixes
-
-**Languages:** Sakizaya (`szy`)
-**Dialects:** Sakizaya
-**Source:** Akiw, Chung-Wen Hsu's 2012 master's thesis, *The Study of Affixes in Sakizaya*
-**License:** Included with the author's permission, recorded on Basecamp card `8176965975` on 2026-04-01
-**Source orthography:** Ortho113
-**FormosanBank tooling commit:** `3a3c47c220520113f747e6a2d441494000e13c4b`
-
-This corpus contains the thesis's numbered examples and affix-inventory rows. It
-has 670 sentence records with source-aligned word and morpheme analyses. All 113
-late summary-table units remain in the extraction ledger but are excluded from
-release XML after expert review. Nine source-starred examples and two additional
-expert-identified ungrammatical examples are also excluded.
-
-## Citation
+# Akiw (2012): Sakizaya affixes
 
 Akiw, Chung-Wen Hsu. 2012. *The Study of Affixes in Sakizaya*. Master's thesis,
-National Dong Hwa University.
+National Dong Hwa University. The corpus contains Sakizaya forms, Chinese
+translations and source analyses from the numbered examples and affix tables.
 
-## Reproducibility
+## Review status
 
-`CodeAndDocs/` contains the generators, reviewed source-decision tables, audit
-scripts, and deterministic reproduction wrapper used to produce `XML/`. The
-source scan and OCR comparison copy are not published. They are installed into
-an ignored `Private/source/` directory from authenticated Basecamp access or an
-exact local copy.
+**Not ready to port.** The licence decision and final source-coverage/gloss
+review remain open. The former ready-to-merge claims predate the current review.
+The current repair restores example 17d's source null prefix on original S/W
+and its two M units. Standard S omits the silent prefix; the null M is unglossed.
 
-To rebuild from source:
+Madeline Boese's August 14 review supplies the corrected Chinese, alternative
+meanings, notes, morpheme analyses and exclusions. Regeneration preserves that
+complete transcription; a new OCR pass does not replace it. Examples 69a/82a
+retain their different source analyses even though their standard forms agree.
 
-1. Prepare a clean FormosanBank checkout at commit
-   `3a3c47c220520113f747e6a2d441494000e13c4b`.
-2. Set `SOURCE_DIR` to a directory containing the two checksum-verified source
-   files, or authenticate the Basecamp CLI.
-3. Run:
+## Corpus
 
-   ```bash
-   SOURCE_DIR=/path/to/source-files \
-   FORMOSANBANK_QC_ROOT=/path/to/pinned/FormosanBank \
-   FORMOSANBANK_QC_PYTHON=/path/to/pinned/FormosanBank/.venv/bin/python \
-   ./CodeAndDocs/reproduce.sh
-   ```
+Two TEXT files contain 670 S: 238 numbered examples and 432 affix entries,
+with 1,749 W, 2,539 M, 9,916 FORM, 4,958 standard PHON and 5,096 TRANSL.
+There are 720 S translations and 4,376 untiered W/M source glosses. No audio
+or source-supplied phonetic transcription is included.
 
-**Stable ID scheme:** The two `TEXT` IDs identify numbered examples and
-affix-inventory rows. Sentence, word, and morpheme IDs derive from stable source
-example or table-row identifiers and remain fixed across regeneration.
+The committed inventories account for 808 units: 261 numbered occurrences,
+434 main-table rows and 113 late summary rows. Fourteen exact repeats, nine
+source-starred examples, two additional expert exclusions and every summary
+row are excluded. This inventory count is not a claim that every linguistic
+item in the 174-page thesis has been included; unnumbered/background material
+and footnotes still need final coverage accounting.
 
-**POL-035 baseline evidence:** The regenerable pipeline verifies the 174-page
-source scan at SHA-256
-`fab787faf0e32cd087ba3dc222734132ad4213ca0804b8d5b32a318e66fbbbee` and
-accounts for all 808 reviewed source units.
+## Reproduce
 
-**POL-030 correction mechanism:** Source decisions are committed under
-`CodeAndDocs/source_data/`, and Madeline Boese's 2026-08-14 reviewed tier
-corrections are recorded in `CodeAndDocs/manual_edits.xml`.
+From a FormosanBank checkout, with its Python dependencies installed:
 
-## QC status
+```bash
+source .venv/bin/activate
+./Corpora/Sakizaya-Affixes/CodeAndDocs/generate_xml.sh
+python -m unittest discover -s Corpora/Sakizaya-Affixes/CodeAndDocs -p test_source.py
+```
 
-- Last QC run: 2026-08-22
-- Status: ready to port
-- Development source: `Formosan-Sakizaya-Affixes` commit
-  `42585ef108a916a1c9f3226129fbb21c766deae7`
-- Development audit: complete source review and current-authority refresh passed with verdict `ready to port`
-- Gloss audit: 57 focused and 36 seeded checks passed
-- Residual warning dispositions: source-attested partial morphology, composite
-  table analyses, one expert-reviewed unglossed affix M, one standard-tier
-  convergence group, and source-provenanced overlap with existing Sakizaya corpora
-- Audio: none
+The build uses the committed source inventories and TEXT metadata for fresh
+pre-manual S records, applies all 670 expert correction records through the
+shared manual-edit tool, then cleans, standardizes and generates standard PHON.
+The inventories plus complete manual transcription are the documented source
+baseline (POL-035); no private scan, OCR cache, download or historical Git object
+is needed. All manual records are retained, including no-ops (POL-030).
+
+**POL-047 deviation:** Original PHON is omitted under Madeline's August 13–14
+decision because the source supplies no phonetic transcription. The reviewed
+TSV removes circumfix ellipses only from derived standard forms, preserving
+original M such as `ma-...-ay` and producing standard `ma--ay`.
+
+[Build provenance](CodeAndDocs/provenance.json) records the actual tools after a
+successful build. It never selects or pins tools. A Gitless export retains its
+record and reports that its tools revision needs separate verification.
+Source acquisition and validation run separately from generation.
+
+## Rights
+
+**License:** Unresolved; author permission has not yet been mapped to an
+evidenced value in FormosanBank's rights vocabulary.
+
+**Rights source:** Akiw, Chung-Wen Hsu, 2026-04-01; evidence: ask maintainer
+
+The author permits thesis data in FormosanBank but the available grant names
+no Creative Commons licence. The existing permission statement is preserved
+in XML pending a maintainer decision. It is not a compliant POL-042 licence,
+and publication remains blocked. The source PDF is not distributed here.

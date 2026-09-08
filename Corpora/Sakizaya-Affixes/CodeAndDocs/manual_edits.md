@@ -80,7 +80,7 @@
 
 ### AKIW_SZY_2012_EX_017D — changed
 - before: ∅-imelang ci Taymu kiyu si-dinget. / [zho] Taymu 生病所以流鼻涕。
-- after:  imelang ci Taymu kiyu si-dinget. / [zho] Taymu 生病所以流鼻涕。
+- after:  ∅-imelang ci Taymu kiyu si-dinget. / [zho] Taymu 生病所以流鼻涕。
 
 ### AKIW_SZY_2012_EX_018A — changed
 - before: ma-ideng nu cilal ku mata. / [zho] 陽光刺眼。
@@ -1681,7 +1681,7 @@
 - after:  sa-langec / [zho] 要割的稻子
 
 ### AKIW_SZY_2012_TABLE_ROW_182 — changed
-- before: sa-aledah / [zho] 很辣 / [zho] 講話很刺耳
+- before: sa-aledah / [zho] 很辣
 - after:  sa-aledah / [zho] 很辣 / [zho] 講話很刺耳
 
 ### AKIW_SZY_2012_TABLE_ROW_184 — changed
@@ -2069,7 +2069,7 @@
 - after:  tunu-pidadiki / [zho] 很多蝙蝠
 
 ### AKIW_SZY_2012_TABLE_ROW_280 — changed
-- before: lekal-a / [zho] 起床！ / [zho] 起來！
+- before: lekal-a / [zho] 起床！
 - after:  lekal-a / [zho] 起床！ / [zho] 起來！
 
 ### AKIW_SZY_2012_TABLE_ROW_282 — changed
