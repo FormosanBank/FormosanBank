@@ -865,6 +865,284 @@ def v070_gloss_code_as_FORM(
     return findings
 
 
+
+# ---------------------------------------------------------------------------
+# V153-V155: glossing quality for corpora that actually carry glosses.
+#
+# The rules above ask whether a gloss is PRESENT (V064/V065) and whether the
+# form's own structure is coherent (V061/V066/V068). These three ask whether the
+# gloss AGREES with the form, sits in the language it claims, and is complete
+# against whatever gloss inventory this corpus uses.
+#
+# The last point is why none of them hardcodes a language. A corpus may gloss in
+# one language (NTU Grammar: Mandarin only) or two (NTU Sentences and Stories:
+# Mandarin and English), and a rule that assumed "both" would be wrong for the
+# first while a rule that assumed "at least one" is too weak for the second. So
+# the inventory is inferred from the file and conformance is measured against it.
+# ---------------------------------------------------------------------------
+
+from QC.validation.rules.soft import _tree_language  # noqa: E402
+
+_XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
+_HAN = re.compile(r"[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]")
+_LATIN = re.compile(r"[A-Za-z]")
+_INFIX_GLOSS = re.compile(r"<[^>]+>")
+# Languages whose glosses are written in Han script. Everything else is assumed
+# Latin-script; a corpus that glosses into a third script should be added here
+# rather than have the rule guess.
+_HAN_SCRIPT_LANGS = {"zho", "yue", "nan", "hak"}
+# A gloss made only of grammatical-category codes and their punctuation:
+# 'NOM', '3SG.GEN', 'RED-really=COS', '<AV>throw', 'XXXX'.
+_PROPER_NAME = re.compile(r"[A-Z][A-Za-z'\u2019\-]*")
+_LEIPZIG_ONLY = re.compile(r"[A-Z0-9<>.\-=\u2205/\s]+")
+
+
+def _pref_form_text(el) -> str:
+    node = el.find("FORM[@kindOf='original']")
+    if node is None:
+        node = el.find("FORM")
+    return "".join(node.itertext()).strip() if node is not None else ""
+
+
+def _morphemes_implied(form: str) -> int:
+    """Morphemes a form's own markers imply: 'ka-kaun-un' -> 3, 'h<m>uwa' -> 2."""
+    stripped = (form or "").strip()
+    if not stripped:
+        return 0
+    infixes = len(_INFIX_GLOSS.findall(stripped))
+    rest = _INFIX_GLOSS.sub("", stripped)
+    pieces = [p for p in re.split(r"[-=]", rest)
+              if p and (_LATIN.search(p) or _HAN.search(p) or any(c.isdigit() for c in p)
+                        or "\u2205" in p)]
+    return max(1, len(pieces)) + infixes
+
+
+def _gloss_pieces(gloss: str) -> int:
+    """Morphemes a gloss claims: [-=] pieces plus one per angle-bracket infix."""
+    return (len([p for p in re.split(r"[-=]", gloss or "") if p.strip()])
+            + len(_INFIX_GLOSS.findall(gloss or "")))
+
+
+def gloss_languages(tree: etree._ElementTree) -> set:
+    """The gloss languages this file actually uses at W or M level.
+
+    Inferred, never assumed: it is the set of xml:lang values on W/M TRANSLs.
+    A one-gloss corpus yields {'zho'}; a two-gloss corpus yields {'zho','eng'}.
+    """
+    counts: Counter = Counter()
+    glossed = 0
+    for w in tree.iter("W"):
+        present = {t.get(_XML_LANG) for t in w.findall("TRANSL")
+                   if (t.text or "").strip()}
+        present = {l for l in present if l}
+        if not present:
+            continue
+        glossed += 1
+        counts.update(present)
+    if not glossed:
+        return set()
+    # A language counts as part of the inventory only if most glossed words use
+    # it. Mere presence is not enough: NTU Grammar carries a single English
+    # gloss against 10,263 Mandarin ones, and treating that as a second gloss
+    # language would report every other word as half-glossed.
+    return {lang for lang, n in counts.items() if n >= 0.5 * glossed}
+
+
+def v153_gloss_pieces_match_morphemes(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V153 SOFT: a word's gloss should claim as many morphemes as its form does.
+
+    'ka-kaun-un' is three morphemes, so a gloss of two pieces has lost one --
+    usually a separator written '.' where the source meant '-', or an infix
+    glossed inside a piece rather than as its own. Counting both sides the same
+    way is the whole point: splitting only on '-'/'=' counts '<um>' on the form
+    side but not '<AV>' on the gloss side, which makes every infixed word look
+    broken.
+
+    Aggregated per file. SOFT: some sources legitimately gloss a portmanteau as
+    one unit.
+    """
+    bad = 0
+    example = ""
+    for w in tree.iter("W"):
+        form = _pref_form_text(w)
+        if not re.search(r"[-=<]", form):
+            continue
+        n = _morphemes_implied(form)
+        for t in w.findall("TRANSL"):
+            gloss = (t.text or "").strip()
+            if not gloss:
+                continue
+            if _gloss_pieces(gloss) != n:
+                bad += 1
+                if not example:
+                    example = f"{form!r} ({n}) vs {gloss!r} ({_gloss_pieces(gloss)})"
+                break
+    if not bad:
+        return []
+    return [Finding(
+        rule_id="V153",
+        severity=Severity.SOFT,
+        message=(
+            f"V153 SOFT: {bad} words whose gloss claims a different number of "
+            f"morphemes than the form implies, e.g. {example}"
+        ),
+        path=path,
+        count=bad,
+        language=_tree_language(tree, path, index),
+        character="",
+    )]
+
+
+def v154_gloss_script_matches_language(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V154 SOFT (POL-036): a gloss whose script its neighbours agree is wrong.
+
+    A gloss written in the wrong script for its declared language is usually a
+    swapped gloss column, and every language-keyed query then silently returns
+    the wrong text. But a wrong-script gloss ON ITS OWN is weak evidence -- an
+    untranslated word is not the same defect -- so corroboration is required.
+
+    What counts as wrong-script, after two exemptions that carry no evidence:
+
+    * a single capitalised token is a proper name and stays in Latin script in
+      any gloss language ('Kanakanavu', "Mu'u");
+    * a bare category code ('FIL', '3SG.GEN') is written identically in any
+      language -- but ONLY when the other language slot carries that very same
+      label, which makes it one shared transcription category rather than a
+      translation. A code standing where the other language says something else
+      is an untranslated gloss, and this corpus writes its Mandarin glosses in
+      Chinese (89-99% of them carry Han), so it stands out.
+
+    Corroboration, cheapest first:
+
+    * the other language slot on the same element is also wrong-script -- a
+      cross-slot swap; or
+    * two or more of the word's neighbours in the same sentence look the same
+      way -- one odd gloss is a stray, a run of them is a shifted column.
+
+    Aggregated per file. SOFT: this is evidence, not proof.
+    """
+    def odd(text: str, lang: str, siblings: dict | None = None) -> bool:
+        if not text or not lang or _PROPER_NAME.fullmatch(text):
+            return False
+        if _LEIPZIG_ONLY.fullmatch(text):
+            # In a Latin-script gloss language a bare category code IS the
+            # convention ('3SG.GEN' is what an English gloss looks like), so it
+            # is never evidence there. In a Han-script language it is: this
+            # corpus writes its Mandarin glosses in Chinese (89-99% carry Han).
+            # Even there it is uninformative when the other slot carries the
+            # very same label ('FIL'/'FIL') -- one shared transcription
+            # category, not a translation.
+            if lang not in _HAN_SCRIPT_LANGS:
+                return False
+            return not (siblings and text in siblings.values())
+        han, latin = bool(_HAN.search(text)), bool(_LATIN.search(text))
+        if lang in _HAN_SCRIPT_LANGS:
+            return latin and not han
+        return han and not latin
+
+    bad = 0
+    example = ""
+    for parent in list(tree.iter("W")) + list(tree.iter("M")):
+        for t in parent.findall("TRANSL"):
+            lang, text = t.get(_XML_LANG), (t.text or "").strip()
+            others = {o.get(_XML_LANG): (o.text or "").strip()
+                      for o in parent.findall("TRANSL") if o is not t}
+            if not odd(text, lang, others):
+                continue
+            corroborated = any(odd(v, k, {lang: text}) for k, v in others.items())
+            if not corroborated:
+                sentence = parent
+                while sentence is not None and sentence.tag != "S":
+                    sentence = sentence.getparent()
+                neighbours = 0
+                if sentence is not None:
+                    for w in sentence.findall("W"):
+                        if w is parent:
+                            continue
+                        sib = {o.get(_XML_LANG): (o.text or "").strip()
+                               for o in w.findall("TRANSL")}
+                        if odd(sib.get(lang, ""), lang,
+                               {k: v for k, v in sib.items() if k != lang}):
+                            neighbours += 1
+                corroborated = neighbours >= 2
+            if not corroborated:
+                continue
+            bad += 1
+            if not example:
+                example = f"xml:lang={lang!r}: {text[:40]!r}"
+    if not bad:
+        return []
+    return [Finding(
+        rule_id="V154",
+        severity=Severity.SOFT,
+        message=(
+            f"V154 SOFT: {bad} glosses whose script does not match their "
+            f"declared language and whose neighbours agree -- the signature of "
+            f"a shifted gloss column, e.g. {example}"
+        ),
+        path=path,
+        count=bad,
+        language=_tree_language(tree, path, index),
+        character="",
+    )]
+
+
+def v155_gloss_language_set_incomplete(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V155 SOFT: a glossed word should carry every gloss language the file uses.
+
+    V065 only asks for *a* gloss. That is right for a corpus glossing in one
+    language and too weak for one glossing in two: a word with Mandarin but no
+    English passes V065 while being half-glossed. The inventory is inferred from
+    the file (see gloss_languages), so a one-language corpus can never trip this
+    and a two-language corpus is held to both.
+
+    Only words that carry at least one gloss are examined -- a wholly unglossed
+    word is V065's business, and per POL-054 may be perfectly legitimate.
+    """
+    langs = gloss_languages(tree)
+    if len(langs) < 2:
+        return []
+    bad = 0
+    example = ""
+    for w in tree.iter("W"):
+        present = {t.get(_XML_LANG) for t in w.findall("TRANSL")
+                   if (t.text or "").strip()}
+        present = {l for l in present if l}
+        if not present or present >= langs:
+            continue
+        bad += 1
+        if not example:
+            example = (f"W id={w.get('id')!r} has {sorted(present)}, "
+                       f"file uses {sorted(langs)}")
+    if not bad:
+        return []
+    return [Finding(
+        rule_id="V155",
+        severity=Severity.SOFT,
+        message=(
+            f"V155 SOFT: {bad} partly glossed words -- this file glosses in "
+            f"{sorted(langs)}, but these carry only some of that set, e.g. "
+            f"{example}"
+        ),
+        path=path,
+        count=bad,
+        language=_tree_language(tree, path, index),
+        character="",
+    )]
+
+
 RULES: list = [
     v060_W_count_matches_word_count,
     v061_M_count_matches_form_segmentation,
@@ -877,5 +1155,9 @@ RULES: list = [
     v068_M_reconstructs_W,
     v069_null_morpheme_in_W_requires_null_M,
     v070_gloss_code_as_FORM,
+    # glossing quality for corpora that carry glosses (2026-09-09)
+    v153_gloss_pieces_match_morphemes,
+    v154_gloss_script_matches_language,
+    v155_gloss_language_set_incomplete,
 ]
 CROSS_FILE_RULES: list = []

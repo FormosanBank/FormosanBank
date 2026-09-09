@@ -537,6 +537,15 @@ def v116_non_ascii_in_form(
 # W4: TR1 — null symbol in S-level standard FORM (SOFT)
 # ---------------------------------------------------------------------------
 
+# An asterisked Neogrammarian reconstruction label: the '∅' names the
+# reconstructed segment, so it is the label's content, not an absent morpheme.
+# standardize.remove_null_units keeps these; V120 must not then flag them.
+# Kept in step with QC/utilities/standardize.py's _NULL_UNIT_RE, which carries
+# the same alternative first — duplicated rather than imported for the same
+# reason hard.py duplicates the null glyph itself (no cross-package import
+# between rules and utilities).
+_RECONSTRUCTION_NULL_RE = re.compile(r"\*-?∅")
+
 def v120_null_in_S_standard(
     tree: etree._ElementTree,
     path: Path,
@@ -556,10 +565,19 @@ def v120_null_in_S_standard(
     Downgraded HARD → SOFT on 2026-08-09 so that ``--copy`` corpora
     (e.g. NTUFormosanCorpus) do not newly fail QC after null-marker
     normalization lands in clean_xml.
+
+    An asterisked reconstruction label (``*-∅``) is exempt: there the ``∅``
+    names a reconstructed segment rather than marking an absent morpheme, and
+    ``standardize.remove_null_units`` keeps it on purpose (2026-09-09). Without
+    the exemption V120 would fire on every rebuild of such a sentence and never
+    clear, which is the standing-finding antipattern this file already warns
+    about elsewhere.
     """
     findings: list[Finding] = []
     for s in tree.iter("S"):
         text = _s_standard_form_text(s)
+        if text is not None:
+            text = _RECONSTRUCTION_NULL_RE.sub("", text)
         if text is None or NULL_SYMBOL not in text:
             continue
         s_id = s.get("id") or ""
