@@ -842,7 +842,11 @@ def _merge(group: list, stats: dict) -> list:
         if body.get("free"):
             merged["free"] = list(body["free"])
         span = body.get("iu_a_span") or []
-        if len(span) == 2 and span[0] is not None and span[1] is not None:
+        # 18 source units give only one endpoint ([18.56, None] or
+        # [None, 20.94]). Requiring both would discard them, and with them
+        # the sentence's true start: it is the first unit that carries the
+        # start, half-specified or not.
+        if len(span) == 2:
             spans.append((span[0], span[1]))
         if body.get("meta") and "meta" not in merged:
             merged["meta"] = body["meta"]
@@ -861,7 +865,10 @@ def _merge(group: list, stats: dict) -> list:
         # extra words. Seven sentences reduce to end <= start under this
         # rule; all seven are single-unit sentences whose own span is
         # degenerate, and the guard at the AUDIO emit drops them.
-        merged["iu_a_span"] = [spans[0][0], spans[-1][1]]
+        starts = [a for a, _ in spans if a is not None]
+        ends = [b for _, b in spans if b is not None]
+        if starts and ends:
+            merged["iu_a_span"] = [starts[0], ends[-1]]
     if len(group) > 1:
         stats["16 intonation units merged into a sentence"] = stats.get(
             "16 intonation units merged into a sentence", 0) + len(group) - 1
