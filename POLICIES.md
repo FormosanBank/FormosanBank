@@ -966,3 +966,31 @@ Implemented by: `QC/validation/_waivers.py` (applied in `_report.py`, so all
 finding-based validators get it), `QC/validation/waivers.py`,
 `tests/validators/test_waivers.py`. First user: `Corpora/SEALS33`, whose
 corpus-local `check_hard_findings.py` this replaces (POL-046).
+
+### POL-055 · RULED · 2026-09-09 · corpus documentation
+Every corpus README and every GitBook corpus page carries a
+**`Notes and Issues`** section: the known limitations, source defects,
+unresolved data problems and caveats a user needs *before* using the corpus —
+OCR artifacts left in place, missing audio, hand edits, orthography assumptions.
+Write `None known.` when there are none; the section is never simply absent.
+
+**One name.** The section is `Notes and Issues` in both places. Seven GitBook
+pages currently say `Corpus Notes`, one says `Notes` and one `Minor notes`;
+those are legacy spellings to migrate, not alternatives. Nothing lints the name
+today, which is why fixing it needs an entry rather than a convention.
+
+**Where it goes.** On a GitBook page, immediately after the statistics block and
+before `Access Details` — a caveat a reader meets after the numbers and before
+the download link. In a corpus README, after `Audio`.
+
+**What it is not.** Not process history, not a changelog, not the QC findings
+list. It is the short set of things that would mislead someone who compared this
+corpus with another without knowing them. `Corpora/Huteson-Rukai-Survey` is the
+worked example: a dialect whose source does not record schwa, a source that
+writes word-final vowels double, an unglossed particle, and one gloss inferred
+rather than transcribed.
+
+Implemented by: the `port-corpus-in` templates
+(`README.template.md`, `corpus_page.template.md`) and their `{{NOTES_AND_ISSUES}}`
+placeholder. Not yet linted; `manage_corpus_pages.py check` verifies the four
+integration points and not page structure.
