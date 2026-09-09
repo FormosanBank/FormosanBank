@@ -30,3 +30,12 @@ To rebuild from source:
 ## Audio
 
 {{AUDIO_STATUS}}
+
+## Notes and Issues
+
+<!-- Known limitations, source defects, unresolved data problems, and caveats a user
+     should know before using this corpus (e.g. OCR artifacts left in place, missing
+     audio for some entries, hand-made edits, orthography assumptions). Write
+     "None known." if there are none. -->
+
+{{NOTES_AND_ISSUES}}
