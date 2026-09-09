@@ -44,15 +44,17 @@ UNGLOSSED_WORD_INDEXES = {
     ("tona", 14): frozenset({1, 4}),
 }
 
-REVIEWED_WORD_ALIGNMENTS = {
-    ("tona", 4): (
-        ("saokwamamitə", "very fat"),
-        ("valak-ili", "child-1S.GEN"),
+# Glosses the source leaves blank that are supplied from this corpus's own
+# consistent usage. Keyed by (corpus, example number, W id number). Each carries
+# the reasoning, which is repeated for readers in the README's Notes and Issues.
+# An inferred gloss is marked with @notes in the XML and never propagates to M.
+INFERRED_GLOSSES = {
+    ("tona", 14, 2): (
+        "NOM",
+        "gloss inferred: the source leaves this column blank; all 6 other "
+        "instances of 'ki' in this corpus are glossed NOM and none is glossed "
+        "anything else",
     ),
-}
-
-REVIEWED_WORD_IDS = {
-    ("tona", 4): (1, 3),
 }
 
 WORD_EDGE_PUNCTUATION = '.,!?"“”'
@@ -217,7 +219,7 @@ TONA = Corpus(
         ),
         Example(
             4,
-            "saokwamamitə valak-ili.",
+            "saokwa mamitə valak-ili.",
             "very fat child-1S.GEN",
             "My child is very fat.",
             41,
@@ -322,10 +324,7 @@ TONA = Corpus(
 
 
 def align_words(corpus: Corpus, example: Example) -> tuple[tuple[str, str | None], ...]:
-    """Return the visually reviewed word and gloss columns for one example."""
-    reviewed = REVIEWED_WORD_ALIGNMENTS.get((corpus.key, example.number))
-    if reviewed is not None:
-        return reviewed
+    """Align the source form's words with the source gloss columns."""
     words = tuple(word.strip(WORD_EDGE_PUNCTUATION) for word in example.form.split())
     glosses = iter(example.gloss.split())
     unglossed = UNGLOSSED_WORD_INDEXES.get((corpus.key, example.number), frozenset())
@@ -344,17 +343,13 @@ def align_words(corpus: Corpus, example: Example) -> tuple[tuple[str, str | None
     return tuple(aligned)
 
 
-def add_gloss(node: ET.Element, gloss: str | None) -> None:
+def add_gloss(node: ET.Element, gloss: str | None, notes: str | None = None) -> None:
     if gloss is None:
         return
     attributes = {f"{{{XML_NS}}}lang": "eng"}
-    if gloss == "very fat":
-        attributes["kindOf"] = "original"
+    if notes:
+        attributes["notes"] = notes
     ET.SubElement(node, "TRANSL", attributes).text = gloss
-    if gloss == "very fat":
-        ET.SubElement(
-            node, "TRANSL", {f"{{{XML_NS}}}lang": "eng", "kindOf": "standard", "ver": "alt"}
-        ).text = "very.fat"
 
 
 def natural_form(corpus: Corpus, example: Example) -> str:
@@ -372,16 +367,16 @@ def natural_form(corpus: Corpus, example: Example) -> str:
 def add_word_tiers(sentence: ET.Element, corpus: Corpus, example: Example) -> None:
     aligned = align_words(corpus, example)
     parsed = any("-" in form for form, _ in aligned)
-    word_ids = REVIEWED_WORD_IDS.get(
-        (corpus.key, example.number), tuple(range(1, len(aligned) + 1))
-    )
-    if len(word_ids) != len(aligned):
-        raise ValueError(f"Incomplete word IDs for {corpus.key} {example.number}")
+    word_ids = tuple(range(1, len(aligned) + 1))
     for word_index, (word_form, word_gloss) in zip(word_ids, aligned, strict=True):
         word_id = f"{sentence.get('id')}_W_{word_index:03d}"
         word = ET.SubElement(sentence, "W", {"id": word_id})
         ET.SubElement(word, "FORM", {"kindOf": "original"}).text = word_form
-        add_gloss(word, word_gloss)
+        inferred = INFERRED_GLOSSES.get((corpus.key, example.number, word_index))
+        if word_gloss is None and inferred is not None:
+            add_gloss(word, inferred[0], notes=inferred[1])
+        else:
+            add_gloss(word, word_gloss)
         if not parsed:
             continue
         forms = word_form.split("-")
@@ -413,7 +408,8 @@ def make_text(corpus: Corpus) -> ET.Element:
             "dialect": corpus.dialect,
             "source": (
                 f"Huteson 2003 Appendix B, {corpus.title}; source label "
-                f"{corpus.source_label}; Basecamp card 8255603132."
+                f"{corpus.source_label}; "
+                "https://www.sil.org/resources/archives/9008"
             ),
             f"{{{XML_NS}}}lang": "dru",
         },

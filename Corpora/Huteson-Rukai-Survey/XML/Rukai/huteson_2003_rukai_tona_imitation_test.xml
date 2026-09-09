@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<TEXT id="huteson_2003_rukai_tona_imitation_test" citation="Huteson, Greg. 2003. Sociolinguistic Survey Report for the Tona and Maga Dialects of the Rukai Language. SIL International." BibTeX_citation="@techreport{huteson2003rukaiSurvey, author = {Huteson, Greg}, title = {Sociolinguistic Survey Report for the Tona and Maga Dialects of the Rukai Language}, institution = {SIL International}, year = {2003}}" copyright="CC BY-NC-SA 4.0" dialect="Dona" source="Huteson 2003 Appendix B, Tona Dialect Imitation Test; source label Tona; Basecamp card 8255603132." xml:lang="dru">
+<TEXT id="huteson_2003_rukai_tona_imitation_test" citation="Huteson, Greg. 2003. Sociolinguistic Survey Report for the Tona and Maga Dialects of the Rukai Language. SIL International." BibTeX_citation="@techreport{huteson2003rukaiSurvey, author = {Huteson, Greg}, title = {Sociolinguistic Survey Report for the Tona and Maga Dialects of the Rukai Language}, institution = {SIL International}, year = {2003}}" copyright="CC BY-NC-SA 4.0" dialect="Dona" source="Huteson 2003 Appendix B, Tona Dialect Imitation Test; source label Tona; https://www.sil.org/resources/archives/9008" xml:lang="dru">
     <S id="S_tona_001" source="Appendix B TONA 1; test list p. 41; translation p. 42">
         <FORM kindOf="original">abaili kakə.</FORM>
         <PHON kindOf="original">abaili kakə</PHON>
@@ -86,25 +86,37 @@
         </W>
     </S>
     <S id="S_tona_004" source="Appendix B TONA 4; test list p. 41; translation p. 42">
-        <FORM kindOf="original">saokwamamitə valakili.</FORM>
-        <PHON kindOf="original">saokwamamitə valakili</PHON>
-        <FORM kindOf="standard">saokwamamite valakili.</FORM>
-        <PHON kindOf="standard">saokwamamitə valakili</PHON>
+        <FORM kindOf="original">saokwa mamitə valakili.</FORM>
+        <PHON kindOf="original">saokwa mamitə valakili</PHON>
+        <FORM kindOf="standard">saokwa mamite valakili.</FORM>
+        <PHON kindOf="standard">saokwa mamitə valakili</PHON>
         <TRANSL xml:lang="eng">My child is very fat.</TRANSL>
         <W id="S_tona_004_W_001">
-            <FORM kindOf="original">saokwamamitə</FORM>
-            <PHON kindOf="original">saokwamamitə</PHON>
-            <FORM kindOf="standard">saokwamamite</FORM>
-            <PHON kindOf="standard">saokwamamitə</PHON>
-            <TRANSL xml:lang="eng" kindOf="original">very fat</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="standard" ver="alt">very.fat</TRANSL>
+            <FORM kindOf="original">saokwa</FORM>
+            <PHON kindOf="original">saokwa</PHON>
+            <FORM kindOf="standard">saokwa</FORM>
+            <PHON kindOf="standard">saokwa</PHON>
+            <TRANSL xml:lang="eng">very</TRANSL>
             <M id="S_tona_004_W_001_M_01">
-                <FORM kindOf="original">saokwamamitə</FORM>
-                <PHON kindOf="original">saokwamamitə</PHON>
-                <FORM kindOf="standard">saokwamamite</FORM>
-                <PHON kindOf="standard">saokwamamitə</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">very fat</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="standard" ver="alt">very.fat</TRANSL>
+                <FORM kindOf="original">saokwa</FORM>
+                <PHON kindOf="original">saokwa</PHON>
+                <FORM kindOf="standard">saokwa</FORM>
+                <PHON kindOf="standard">saokwa</PHON>
+                <TRANSL xml:lang="eng">very</TRANSL>
+            </M>
+        </W>
+        <W id="S_tona_004_W_002">
+            <FORM kindOf="original">mamitə</FORM>
+            <PHON kindOf="original">mamitə</PHON>
+            <FORM kindOf="standard">mamite</FORM>
+            <PHON kindOf="standard">mamitə</PHON>
+            <TRANSL xml:lang="eng">fat</TRANSL>
+            <M id="S_tona_004_W_002_M_01">
+                <FORM kindOf="original">mamitə</FORM>
+                <PHON kindOf="original">mamitə</PHON>
+                <FORM kindOf="standard">mamite</FORM>
+                <PHON kindOf="standard">mamitə</PHON>
+                <TRANSL xml:lang="eng">fat</TRANSL>
             </M>
         </W>
         <W id="S_tona_004_W_003">
@@ -633,6 +645,7 @@
             <PHON kindOf="original">ki</PHON>
             <FORM kindOf="standard">ki</FORM>
             <PHON kindOf="standard">ki</PHON>
+            <TRANSL xml:lang="eng" notes="gloss inferred: the source leaves this column blank; all 6 other instances of 'ki' in this corpus are glossed NOM and none is glossed anything else">NOM</TRANSL>
         </W>
         <W id="S_tona_014_W_003">
             <FORM kindOf="original">takanaw</FORM>
