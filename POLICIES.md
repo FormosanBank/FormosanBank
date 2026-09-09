@@ -991,3 +991,44 @@ Implemented by: `QC/validation/_waivers.py` (applied in `_report.py`, so all
 finding-based validators get it), `QC/validation/waivers.py`,
 `tests/validators/test_waivers.py`. First user: `Corpora/SEALS33`, whose
 corpus-local `check_hard_findings.py` this replaces (POL-046).
+
+### POL-056 · RULED · 2026-09-09 · conversion tables
+A conversion table (`Orthographies/ConversionTables/<Language>_<Scheme>_113.tsv`)
+is a **set** of rules, not a sequence. `standardize.py` stages every rule through
+a placeholder, longest source first, so **the order of rows does not matter** and
+**a rule's output is never matched by another rule.**
+
+This is what makes the digraph-first idiom hold: `Puyuma_MinEd` writes
+`ll → ll` to shield `ll` from `l → lr`, and that now works whichever row comes
+first. Before, sequential replacement re-scanned the output and produced
+`lrlr`. Generalizing the placeholder corrected **12 misconversions across four tables**
+(`Puyuma_Cauquelin` `L`/`ɭ`, `Puyuma_MinEd` `ll`, `Rukai_Church` `lh`,
+`Rukai_Li` `ə:`); none was in use by a published corpus, so no published data
+changed.
+
+**The escape-and-restore idiom is retired.** A table that wanted `g → ng`
+without turning `ng` into `nng` used to hop through a spare symbol —
+`ng → ɟ`, `g → ng`, `ɟ → ng` — because ordering was the only tool it had.
+`Amis_Church_113` did exactly that. Shielding says it directly (`ng → ng`
+ahead of `g → ng`) and the hop is neither needed nor available, since a rule's
+output is never revisited. That table was migrated with the change and its
+output is unchanged; a future table must use the shield.
+
+**Two cell values are read specially and mean different things.** `NA` means the
+letter does not occur in that dialect and is **not a rule**; an **empty** cell is
+a rule that **deletes** the matched string (Bunun `w`/`j`, Sakizaya `x`,
+Saisiyat `’`, Tsou `w`, Wakelin `?`). `standardize.py` previously read `NA` as
+the literal replacement text "NA", which was harmless only for as long as the
+NA'd letter never occurred; eight cells across two Rukai tables would have
+spliced `NA` into a word.
+
+⚠️ **The two consumers still disagree about an empty cell.**
+`validate_conversion_table.py` treats empty and `NA` alike as "no rule", so the
+six deletion rules above are not audited. Reconciling that is a separate
+question — either the validator learns the deletion reading, or deletions get
+their own notation.
+
+Enforced by `tests/utilities/test_standardize_rule_application.py`, which asserts
+that **every rule in every committed table produces exactly its own
+replacement** — the sweep that found the 17. Documented for users on the GitBook
+`standardize` page under "How rules are applied".
