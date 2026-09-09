@@ -63,27 +63,32 @@ Per POL-039, item-specific corrections live in data files, not in code:
 - `audio_overrides.tsv` — AUDIO suppression beyond the `沒有音檔` sentinel
 - `p2_source_repairs.xml` — recorded whole-record source repairs, each pinned to
   a SHA-256 of the record it replaces so a drifting source fails the build
-- `gloss_restorations.tsv` — 1,320 gloss cells that the audited source output
-  blanked to the `_` absent-gloss placeholder but which the previously published
-  source carries as real glossing (978 lexical/grammatical, 342 discourse codes;
-  96% of them in three Saisiyat story files). Restored at load time, each keyed
-  by source file, record, row and cell and carrying the wordform as a witness,
-  so the corpus keeps the audited source's row realignments *and* this glossing.
+- `p2_source_repairs.xml` — recorded whole-record source repairs, each pinned to
+  a SHA-256 of the record it replaces so a drifting source fails the build
 
-  Measured on the Stories subcorpus, this hybrid beats both alternatives:
+## Which source JSONs
 
-  | | W FORM + both glosses | M with both glosses | morpheme count matches |
-  |---|---|---|---|
-  | audited source as-is | 99.1% | 99.1% | 98.9% |
-  | previously published source | 99.3% | 98.3% | 98.4% |
-  | **hybrid (this table)** | **99.7%** | **99.2%** | **98.9%** |
+The JSONs under `../grammar`, `../sentence` and `../story` are the ones this
+corpus has always published. An "audited source output" revision of 207 of them
+exists on the `fix/ntu-gloss-placeholder` branch, but **no script in the
+repository produces it**: every `json.dumps` in `../scripts/` computes a SHA-256
+digest, and nothing reads a source JSON and writes it back. That revision is
+therefore unauditable and unreproducible, and this build does not use it.
 
-  Restoring the 342 discourse codes (`BC`, `FIL`, `DM`, `FS`) along with the 978
-  lexical glosses scores better than leaving them blanked, so they are restored
-  too. Blanking them at source is not a policy the corpus follows anywhere else:
-  ~16,000 such glosses exist corpus-wide and the audited source zeroed only 672
-  of them (93% of `BC`, but 0.3% of `FIL`). If they should go, that belongs in
-  the cleaning stage as a rule applied to all of them, not in the source.
+It also is not simply better. Adjudicating the contested gloss rows against
+glosses from records both versions agree on (a lexicon of 32,417 wordforms drawn
+only from uncontested records), the published source carries the attested gloss
+1,154 times against that revision's 682, with a larger margin (84,140 vs 56,165).
+Its characteristic error is an off-by-one gloss shift: `ila` PFV (attested 363x)
+becomes empty, `a` FIL (305x) becomes `IRR` (0x), `yau` EXIST (256x) becomes
+`one` (0x).
+
+Note that the QA suite in [`../qa/`](../qa/) **cannot detect this**. Its tests
+measure structural completeness — both glosses present, morpheme counts matching
+— so a gloss shifted onto the wrong word passes all of them. A higher QA score
+is not evidence of better glossing.
+
+
 
 ## Environment
 

@@ -335,15 +335,15 @@
             <PHON kindOf="original">taʨini</PHON>
             <FORM kindOf="standard">tacini</FORM>
             <PHON kindOf="standard">taʨini</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">一.量詞.人</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">一.人量詞</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">one.CLF.HUM</TRANSL>
             <M id="bnNr-pear_Laniahu_S_7_W2M0">
                 <FORM kindOf="original">tacini</FORM>
                 <PHON kindOf="original">taʨini</PHON>
                 <FORM kindOf="standard">tacini</FORM>
                 <PHON kindOf="standard">taʨini</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">一.量詞.人</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">one.CLF.HUM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">人量詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">CLF.HUM</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_7_W3">
@@ -382,8 +382,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">受格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">ACC</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_7_W5">
@@ -391,8 +391,8 @@
             <PHON kindOf="original">bunun</PHON>
             <FORM kindOf="standard">bunun</FORM>
             <PHON kindOf="standard">bunun</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">人</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">person</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">3SG.中距=遠距.斜格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">3SG.MED=DIST.OBL</TRANSL>
             <M id="bnNr-pear_Laniahu_S_7_W5M0">
                 <FORM kindOf="original">bunun</FORM>
                 <PHON kindOf="original">bunun</PHON>
@@ -407,23 +407,17 @@
             <PHON kindOf="original">isainʨia</PHON>
             <FORM kindOf="standard">isain=cia.</FORM>
             <PHON kindOf="standard">isainʨia</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">3SG.中距=遠距.斜格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">3SG.MED=DIST.OBL</TRANSL>
             <M id="bnNr-pear_Laniahu_S_7_W6M0">
                 <FORM kindOf="original">isain</FORM>
                 <PHON kindOf="original">isain</PHON>
                 <FORM kindOf="standard">isain</FORM>
                 <PHON kindOf="standard">isain</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">3SG.中距</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">3SG.MED</TRANSL>
             </M>
             <M id="bnNr-pear_Laniahu_S_7_W6M1">
-                <FORM kindOf="original">=cia.</FORM>
+                <FORM kindOf="original">cia.</FORM>
                 <PHON kindOf="original">ʨia</PHON>
-                <FORM kindOf="standard">=cia.</FORM>
+                <FORM kindOf="standard">cia.</FORM>
                 <PHON kindOf="standard">ʨia</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">遠距.斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">DIST.OBL</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_7_W7">
@@ -433,21 +427,17 @@
             <PHON kindOf="standard">matatapu[l|ɬ]</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦&lt;重疊&gt;採</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF&lt;RED&gt;pluck</TRANSL>
-            <M id="bnNr-pear_Laniahu_S_7_W7M0_0">
+            <M id="bnNr-pear_Laniahu_S_7_W7M0">
                 <FORM kindOf="original">-ta-</FORM>
                 <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">-ta-</FORM>
                 <PHON kindOf="standard">ta</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;</TRANSL>
             </M>
-            <M id="bnNr-pear_Laniahu_S_7_W7M0_1">
-                <FORM kindOf="original">ma-tapul</FORM>
+            <M id="bnNr-pear_Laniahu_S_7_W7M1">
+                <FORM kindOf="original">matapul</FORM>
                 <PHON kindOf="original">matapu[l|ɬ]</PHON>
-                <FORM kindOf="standard">ma-tapul</FORM>
+                <FORM kindOf="standard">matapul</FORM>
                 <PHON kindOf="standard">matapu[l|ɬ]</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主焦採</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AFpluck</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_7_W8">
@@ -879,9 +869,9 @@
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_15_W4">
-            <FORM kindOf="original">nasi=a</FORM>
+            <FORM kindOf="original">nasi-a</FORM>
             <PHON kindOf="original">nasia</PHON>
-            <FORM kindOf="standard">nasi=a</FORM>
+            <FORM kindOf="standard">nasi-a</FORM>
             <PHON kindOf="standard">naɕia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">梨子=遠距.主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">pear=DIST.NOM</TRANSL>
@@ -894,9 +884,9 @@
                 <TRANSL xml:lang="eng" kindOf="original">pear</TRANSL>
             </M>
             <M id="bnNr-pear_Laniahu_S_15_W4M1">
-                <FORM kindOf="original">=a</FORM>
+                <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
-                <FORM kindOf="standard">=a</FORM>
+                <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
@@ -3103,27 +3093,23 @@
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_52_W1">
-            <FORM kindOf="original">maz-maz</FORM>
+            <FORM kindOf="original">maz&lt;maz&gt;</FORM>
             <PHON kindOf="original">maðmað</PHON>
-            <FORM kindOf="standard">maz-maz</FORM>
+            <FORM kindOf="standard">maz&lt;maz&gt;</FORM>
             <PHON kindOf="standard">maðmað</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">重疊-任何</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">RED-any</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">任何-受格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">REDany-PF</TRANSL>
             <M id="bnNr-pear_Laniahu_S_52_W1M0">
-                <FORM kindOf="original">maz</FORM>
+                <FORM kindOf="original">-maz-</FORM>
                 <PHON kindOf="original">mað</PHON>
-                <FORM kindOf="standard">maz</FORM>
+                <FORM kindOf="standard">-maz-</FORM>
                 <PHON kindOf="standard">mað</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">重疊</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
             </M>
             <M id="bnNr-pear_Laniahu_S_52_W1M1">
                 <FORM kindOf="original">maz</FORM>
                 <PHON kindOf="original">mað</PHON>
                 <FORM kindOf="standard">maz</FORM>
                 <PHON kindOf="standard">mað</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">任何</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">any</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_52_W2">
@@ -3131,15 +3117,15 @@
             <PHON kindOf="original">tu</PHON>
             <FORM kindOf="standard">tu</FORM>
             <PHON kindOf="standard">tu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">連繫詞</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">東西</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">stuff</TRANSL>
             <M id="bnNr-pear_Laniahu_S_52_W2M0">
                 <FORM kindOf="original">tu</FORM>
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">連繫詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_52_W3">
@@ -3147,16 +3133,6 @@
             <PHON kindOf="original">sinkusa</PHON>
             <FORM kindOf="standard">sinkusa,</FORM>
             <PHON kindOf="standard">ɕinkusa</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">東西</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">stuff</TRANSL>
-            <M id="bnNr-pear_Laniahu_S_52_W3M0">
-                <FORM kindOf="original">sinkusa,</FORM>
-                <PHON kindOf="original">sinkusa</PHON>
-                <FORM kindOf="standard">sinkusa,</FORM>
-                <PHON kindOf="standard">ɕinkusa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">東西</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">stuff</TRANSL>
-            </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_52_W4">
             <FORM kindOf="original">s&lt;in&gt;kuzakuza.</FORM>
@@ -3165,21 +3141,17 @@
             <PHON kindOf="standard">ɕinkuðakuða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">工焦&lt;完成貌&gt;做</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">IF&lt;PFV&gt;work</TRANSL>
-            <M id="bnNr-pear_Laniahu_S_52_W4M0_0">
+            <M id="bnNr-pear_Laniahu_S_52_W4M0">
                 <FORM kindOf="original">-in-</FORM>
                 <PHON kindOf="original">in</PHON>
                 <FORM kindOf="standard">-in-</FORM>
                 <PHON kindOf="standard">in</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">&lt;完成貌&gt;</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;PFV&gt;</TRANSL>
             </M>
-            <M id="bnNr-pear_Laniahu_S_52_W4M0_1">
-                <FORM kindOf="original">s-kuzakuza.</FORM>
+            <M id="bnNr-pear_Laniahu_S_52_W4M1">
+                <FORM kindOf="original">skuzakuza.</FORM>
                 <PHON kindOf="original">skuðakuða</PHON>
-                <FORM kindOf="standard">s-kuzakuza.</FORM>
+                <FORM kindOf="standard">skuzakuza.</FORM>
                 <PHON kindOf="standard">skuðakuða</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">工焦做</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">IFwork</TRANSL>
             </M>
         </W>
     </S>
@@ -3578,10 +3550,10 @@
         </W>
     </S>
     <S id="bnNr-pear_Laniahu_S_62">
-        <FORM kindOf="original">ai, nii tu haiapun tu na, namapikuabin sain tu.</FORM>
-        <PHON kindOf="original">ai nii tu [x|χ]aiapun tu na namapikuabin sain tu</PHON>
-        <FORM kindOf="standard">ai, nii tu haiapun tu na, namapikuabin sain tu.</FORM>
-        <PHON kindOf="standard">ai nii tu [x|χ]aiapun tu na namapikuabin sain tu</PHON>
+        <FORM kindOf="original">ai, nii tu haiapun tu na, namapikua bis sain tu.</FORM>
+        <PHON kindOf="original">ai nii tu [x|χ]aiapun tu na namapikua bis sain tu</PHON>
+        <FORM kindOf="standard">ai, nii tu haiapun tu na, namapikua bis sain tu.</FORM>
+        <PHON kindOf="standard">ai nii tu [x|χ]aiapun tu na namapikua bis sain tu</PHON>
         <TRANSL xml:lang="zho">我不知道他會做什麼。</TRANSL>
         <TRANSL xml:lang="eng">I don't know what he will do.</TRANSL>
         <AUDIO file="bnNr-pear_Laniahu_S62.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Laniahu.mp3" start="123.16" end="129.28"/>
@@ -3682,53 +3654,47 @@
             <TRANSL xml:lang="eng" kindOf="original">IRR=</TRANSL>
         </W>
         <W id="bnNr-pear_Laniahu_S_62_W6">
-            <FORM kindOf="original">na=ma-pikua-bin</FORM>
-            <PHON kindOf="original">namapikuabin</PHON>
-            <FORM kindOf="standard">na=ma-pikua-bin</FORM>
-            <PHON kindOf="standard">namapikuabin</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">非實現=主焦-做什麼-完成貌</TRANSL>
+            <FORM kindOf="original">na=ma-pikua</FORM>
+            <PHON kindOf="original">namapikua</PHON>
+            <FORM kindOf="standard">na=ma-pikua</FORM>
+            <PHON kindOf="standard">namapikua</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">非實現=主焦-做什麼-受格-完成貌</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">IRR=AF-do.what-PFV</TRANSL>
             <M id="bnNr-pear_Laniahu_S_62_W6M0">
                 <FORM kindOf="original">na</FORM>
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">IRR</TRANSL>
             </M>
             <M id="bnNr-pear_Laniahu_S_62_W6M1">
-                <FORM kindOf="original">=ma</FORM>
+                <FORM kindOf="original">ma</FORM>
                 <PHON kindOf="original">ma</PHON>
-                <FORM kindOf="standard">=ma</FORM>
+                <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
             </M>
             <M id="bnNr-pear_Laniahu_S_62_W6M2">
                 <FORM kindOf="original">pikua</FORM>
                 <PHON kindOf="original">pikua</PHON>
                 <FORM kindOf="standard">pikua</FORM>
                 <PHON kindOf="standard">pikua</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">做什麼</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">do.what</TRANSL>
-            </M>
-            <M id="bnNr-pear_Laniahu_S_62_W6M3">
-                <FORM kindOf="original">bin</FORM>
-                <PHON kindOf="original">bin</PHON>
-                <FORM kindOf="standard">bin</FORM>
-                <PHON kindOf="standard">bin</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">完成貌</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_62_W7">
+            <FORM kindOf="original">bis</FORM>
+            <PHON kindOf="original">bis</PHON>
+            <FORM kindOf="standard">bis</FORM>
+            <PHON kindOf="standard">bis</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">處格-處格.中距</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">LOC-LOC.MED</TRANSL>
+        </W>
+        <W id="bnNr-pear_Laniahu_S_62_W8">
             <FORM kindOf="original">sain</FORM>
             <PHON kindOf="original">sain</PHON>
             <FORM kindOf="standard">sain</FORM>
             <PHON kindOf="standard">sain</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">處格.中距</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">LOC.MED</TRANSL>
-            <M id="bnNr-pear_Laniahu_S_62_W7M0">
+            <TRANSL xml:lang="zho" kindOf="original">補語詞</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">COMP</TRANSL>
+            <M id="bnNr-pear_Laniahu_S_62_W8M0">
                 <FORM kindOf="original">sain</FORM>
                 <PHON kindOf="original">sain</PHON>
                 <FORM kindOf="standard">sain</FORM>
@@ -3737,14 +3703,12 @@
                 <TRANSL xml:lang="eng" kindOf="original">LOC.PROX</TRANSL>
             </M>
         </W>
-        <W id="bnNr-pear_Laniahu_S_62_W8">
+        <W id="bnNr-pear_Laniahu_S_62_W9">
             <FORM kindOf="original">tu.</FORM>
             <PHON kindOf="original">tu</PHON>
             <FORM kindOf="standard">tu.</FORM>
             <PHON kindOf="standard">tu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">補語詞</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">COMP</TRANSL>
-            <M id="bnNr-pear_Laniahu_S_62_W8M0">
+            <M id="bnNr-pear_Laniahu_S_62_W9M0">
                 <FORM kindOf="original">tu.</FORM>
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu.</FORM>
@@ -3960,7 +3924,7 @@
                 <PHON kindOf="original">at</PHON>
                 <FORM kindOf="standard">at</FORM>
                 <PHON kindOf="standard">at</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">就</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
             </M>
         </W>
@@ -3969,14 +3933,14 @@
             <PHON kindOf="original">nasaduan</PHON>
             <FORM kindOf="standard">na=sadu-an</FORM>
             <PHON kindOf="standard">nasaduan</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">非實現=看到-處焦</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">看到</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">IRR=see-LF</TRANSL>
             <M id="bnNr-pear_Laniahu_S_68_W1M0">
                 <FORM kindOf="original">na</FORM>
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">看到</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">IRR</TRANSL>
             </M>
             <M id="bnNr-pear_Laniahu_S_68_W1M1">
@@ -3984,7 +3948,6 @@
                 <PHON kindOf="original">sadu</PHON>
                 <FORM kindOf="standard">=sadu</FORM>
                 <PHON kindOf="standard">sadu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">看到</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">see</TRANSL>
             </M>
             <M id="bnNr-pear_Laniahu_S_68_W1M2">
@@ -3992,7 +3955,6 @@
                 <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處焦</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">LF</TRANSL>
             </M>
         </W>
@@ -4008,8 +3970,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">補語詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">COMP</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_68_W3">
@@ -4017,39 +3979,31 @@
             <PHON kindOf="original">namapikuabin</PHON>
             <FORM kindOf="standard">na=ma-pikua-bin</FORM>
             <PHON kindOf="standard">namapikuabin</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">非實現=主焦-做什麼-完成貌</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">非實現=主焦-做什麼-受格-完成貌</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">IRR=AF-do.what-PFV</TRANSL>
             <M id="bnNr-pear_Laniahu_S_68_W3M0">
                 <FORM kindOf="original">na</FORM>
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">IRR</TRANSL>
             </M>
             <M id="bnNr-pear_Laniahu_S_68_W3M1">
-                <FORM kindOf="original">=ma</FORM>
+                <FORM kindOf="original">ma</FORM>
                 <PHON kindOf="original">ma</PHON>
-                <FORM kindOf="standard">=ma</FORM>
+                <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
             </M>
             <M id="bnNr-pear_Laniahu_S_68_W3M2">
                 <FORM kindOf="original">pikua</FORM>
                 <PHON kindOf="original">pikua</PHON>
                 <FORM kindOf="standard">pikua</FORM>
                 <PHON kindOf="standard">pikua</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">做什麼</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">do.what</TRANSL>
             </M>
             <M id="bnNr-pear_Laniahu_S_68_W3M3">
                 <FORM kindOf="original">bin</FORM>
                 <PHON kindOf="original">bin</PHON>
                 <FORM kindOf="standard">bin</FORM>
                 <PHON kindOf="standard">bin</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">完成貌</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_68_W4">
@@ -4057,15 +4011,15 @@
             <PHON kindOf="original">sain</PHON>
             <FORM kindOf="standard">sain</FORM>
             <PHON kindOf="standard">sain</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">處格.中距</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">LOC.MED</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">處格-處格.中距</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">LOC-LOC.MED</TRANSL>
             <M id="bnNr-pear_Laniahu_S_68_W4M0">
                 <FORM kindOf="original">sain</FORM>
                 <PHON kindOf="original">sain</PHON>
                 <FORM kindOf="standard">sain</FORM>
                 <PHON kindOf="standard">sain</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處格.中距</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LOC.MED</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">處格.近距</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC.PROX</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_68_W5">
@@ -4073,8 +4027,8 @@
             <PHON kindOf="original">tu</PHON>
             <FORM kindOf="standard">tu.</FORM>
             <PHON kindOf="standard">tu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">補語詞</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">COMP</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">?</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">?</TRANSL>
             <M id="bnNr-pear_Laniahu_S_68_W5M0">
                 <FORM kindOf="original">tu.</FORM>
                 <PHON kindOf="original">tu</PHON>
@@ -4392,9 +4346,9 @@
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_71_W5">
-            <FORM kindOf="original">maz=a,</FORM>
+            <FORM kindOf="original">maz-a,</FORM>
             <PHON kindOf="original">maða</PHON>
-            <FORM kindOf="standard">maz=a,</FORM>
+            <FORM kindOf="standard">maz-a,</FORM>
             <PHON kindOf="standard">maða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
@@ -4407,9 +4361,9 @@
                 <TRANSL xml:lang="eng" kindOf="original">what</TRANSL>
             </M>
             <M id="bnNr-pear_Laniahu_S_71_W5M1">
-                <FORM kindOf="original">=a,</FORM>
+                <FORM kindOf="original">a,</FORM>
                 <PHON kindOf="original">a</PHON>
-                <FORM kindOf="standard">=a,</FORM>
+                <FORM kindOf="standard">a,</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
@@ -6155,7 +6109,7 @@
                 <PHON kindOf="original">at</PHON>
                 <FORM kindOf="standard">at</FORM>
                 <PHON kindOf="standard">at</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">就</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
             </M>
         </W>
@@ -6171,8 +6125,8 @@
                 <PHON kindOf="original">**[x|χ]</PHON>
                 <FORM kindOf="standard">ooh</FORM>
                 <PHON kindOf="standard">**[x|χ]</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">喔</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">ooh,</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_95_W3">
@@ -6243,8 +6197,8 @@
                 <PHON kindOf="original">ai</PHON>
                 <FORM kindOf="standard">ai.</FORM>
                 <PHON kindOf="standard">ai</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">嗯</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">uhm</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_95_W7">
@@ -6323,8 +6277,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">連繫詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_95_W10">
@@ -6332,15 +6286,15 @@
             <PHON kindOf="original">na</PHON>
             <FORM kindOf="standard">na</FORM>
             <PHON kindOf="standard">na</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">?</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">?</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">男</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">male</TRANSL>
             <M id="bnNr-pear_Laniahu_S_95_W10M0">
                 <FORM kindOf="original">na</FORM>
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">?</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">?</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PAST</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_95_W11">
@@ -6348,15 +6302,15 @@
             <PHON kindOf="original">mabananað</PHON>
             <FORM kindOf="standard">mabananaz</FORM>
             <PHON kindOf="standard">mabananað</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">男</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">male</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">連繫詞</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             <M id="bnNr-pear_Laniahu_S_95_W11M0">
                 <FORM kindOf="original">mabananaz</FORM>
                 <PHON kindOf="original">mabananað</PHON>
                 <FORM kindOf="standard">mabananaz</FORM>
                 <PHON kindOf="standard">mabananað</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">男</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">male</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連繫詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_95_W12">
@@ -6364,15 +6318,15 @@
             <PHON kindOf="original">tu</PHON>
             <FORM kindOf="standard">tu</FORM>
             <PHON kindOf="standard">tu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">連繫詞</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">孩子=中距.主格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">child=MED.NOM</TRANSL>
             <M id="bnNr-pear_Laniahu_S_95_W12M0">
                 <FORM kindOf="original">tu</FORM>
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">連繫詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_95_W13">
@@ -6380,23 +6334,17 @@
             <PHON kindOf="original">uvaðan</PHON>
             <FORM kindOf="standard">uvaz=an.</FORM>
             <PHON kindOf="standard">uvaðan</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">孩子=中距.主格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">child=MED.NOM</TRANSL>
             <M id="bnNr-pear_Laniahu_S_95_W13M0">
                 <FORM kindOf="original">uvaz</FORM>
                 <PHON kindOf="original">uvað</PHON>
                 <FORM kindOf="standard">uvaz</FORM>
                 <PHON kindOf="standard">uvað</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">孩子</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">child</TRANSL>
             </M>
             <M id="bnNr-pear_Laniahu_S_95_W13M1">
-                <FORM kindOf="original">=an.</FORM>
+                <FORM kindOf="original">an.</FORM>
                 <PHON kindOf="original">an</PHON>
-                <FORM kindOf="standard">=an.</FORM>
+                <FORM kindOf="standard">an.</FORM>
                 <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">中距.主格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">MED.NOM</TRANSL>
             </M>
         </W>
     </S>
@@ -6820,27 +6768,27 @@
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_103_W10">
-            <FORM kindOf="original">sia-n</FORM>
+            <FORM kindOf="original">sia=n</FORM>
             <PHON kindOf="original">sian</PHON>
-            <FORM kindOf="standard">sia-n</FORM>
+            <FORM kindOf="standard">sia=n</FORM>
             <PHON kindOf="standard">ɕian</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">這-中距.主格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">this-MED.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">處格-中距</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">LOC-MED</TRANSL>
             <M id="bnNr-pear_Laniahu_S_103_W10M0">
                 <FORM kindOf="original">sia</FORM>
                 <PHON kindOf="original">sia</PHON>
                 <FORM kindOf="standard">sia</FORM>
                 <PHON kindOf="standard">ɕia</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">這</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">this</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             </M>
             <M id="bnNr-pear_Laniahu_S_103_W10M1">
-                <FORM kindOf="original">n</FORM>
+                <FORM kindOf="original">=n</FORM>
                 <PHON kindOf="original">n</PHON>
-                <FORM kindOf="standard">n</FORM>
+                <FORM kindOf="standard">=n</FORM>
                 <PHON kindOf="standard">n</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">中距.主格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">MED.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">中距</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">MED</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_103_W11">
@@ -7106,8 +7054,8 @@
             <PHON kindOf="original">maða</PHON>
             <FORM kindOf="standard">maz=a</FORM>
             <PHON kindOf="standard">maða</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">??</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">?</TRANSL>
             <M id="bnNr-pear_Laniahu_S_106_W11M0">
                 <FORM kindOf="original">maz</FORM>
                 <PHON kindOf="original">mað</PHON>
@@ -7514,8 +7462,8 @@
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">補語詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">COMP</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PAST</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_111_W2">
@@ -7594,7 +7542,7 @@
                 <PHON kindOf="original">sadu</PHON>
                 <FORM kindOf="standard">sadu</FORM>
                 <PHON kindOf="standard">sadu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">見</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">看</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">see</TRANSL>
             </M>
         </W>
@@ -7650,8 +7598,8 @@
                 <PHON kindOf="original">ai</PHON>
                 <FORM kindOf="standard">ai,</FORM>
                 <PHON kindOf="standard">ai</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">嗯</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">uhm</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_111_W9">
@@ -7682,8 +7630,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">補語詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">COMP</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_111_W11">
@@ -7698,8 +7646,8 @@
                 <PHON kindOf="original">[x|χ]aiap</PHON>
                 <FORM kindOf="standard">haiap</FORM>
                 <PHON kindOf="standard">[x|χ]aiap</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">知道</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">know</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主焦.知道</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AF.know</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_111_W12">
@@ -7714,8 +7662,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">補語詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">COMP</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_111_W13">
@@ -7770,8 +7718,8 @@
                 <PHON kindOf="original">sia</PHON>
                 <FORM kindOf="standard">sia</FORM>
                 <PHON kindOf="standard">ɕia</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">在</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">be.at</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_111_W16">
@@ -7795,23 +7743,23 @@
             <PHON kindOf="original">panuni</PHON>
             <FORM kindOf="standard">pan-'uni</FORM>
             <PHON kindOf="standard">panʔuni</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">撞到-?</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">hit-?</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">撞到</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">hit</TRANSL>
             <M id="bnNr-pear_Laniahu_S_111_W17M0">
                 <FORM kindOf="original">pan</FORM>
                 <PHON kindOf="original">pan</PHON>
                 <FORM kindOf="standard">pan</FORM>
                 <PHON kindOf="standard">pan</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">撞到</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">hit</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">碰</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">touch</TRANSL>
             </M>
             <M id="bnNr-pear_Laniahu_S_111_W17M1">
                 <FORM kindOf="original">'uni</FORM>
                 <PHON kindOf="original">uni</PHON>
                 <FORM kindOf="standard">'uni</FORM>
                 <PHON kindOf="standard">ʔuni</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">?</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">?</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">UNI</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">UNIhurt</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_111_W18">
@@ -7826,8 +7774,8 @@
                 <PHON kindOf="original">sia</PHON>
                 <FORM kindOf="standard">sia</FORM>
                 <PHON kindOf="standard">ɕia</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">存在</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">EXIST</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_111_W19">
@@ -7882,7 +7830,7 @@
                 <PHON kindOf="original">at</PHON>
                 <FORM kindOf="standard">at.</FORM>
                 <PHON kindOf="standard">at</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">就</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
             </M>
         </W>
@@ -8445,14 +8393,14 @@
             <PHON kindOf="original">minututu</PHON>
             <FORM kindOf="standard">min-ututu</FORM>
             <PHON kindOf="standard">minututu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">反身-倒</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">工焦&lt;完成貌&gt;倒</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">REFL-fall</TRANSL>
             <M id="bnNr-pear_Laniahu_S_119_W6M0">
                 <FORM kindOf="original">min</FORM>
                 <PHON kindOf="original">min</PHON>
                 <FORM kindOf="standard">min</FORM>
                 <PHON kindOf="standard">min</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">反身</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">工焦&lt;完成貌&gt;倒</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">REFL</TRANSL>
             </M>
             <M id="bnNr-pear_Laniahu_S_119_W6M1">
@@ -8460,7 +8408,6 @@
                 <PHON kindOf="original">ututu</PHON>
                 <FORM kindOf="standard">ututu</FORM>
                 <PHON kindOf="standard">ututu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">倒</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">fall</TRANSL>
             </M>
         </W>
@@ -8525,8 +8472,8 @@
                 <PHON kindOf="original">uŋat</PHON>
                 <FORM kindOf="standard">ungat</FORM>
                 <PHON kindOf="standard">uŋat</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">後來</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">afterwards</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_122_W1">
@@ -8541,8 +8488,8 @@
                 <PHON kindOf="original">aupa</PHON>
                 <FORM kindOf="standard">aupa</FORM>
                 <PHON kindOf="standard">aupa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">Q</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">Q</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_122_W2">
@@ -8573,8 +8520,8 @@
                 <PHON kindOf="original">ai</PHON>
                 <FORM kindOf="standard">ai</FORM>
                 <PHON kindOf="standard">ai</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">嗯</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">uhm</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_122_W4">
@@ -8589,8 +8536,8 @@
                 <PHON kindOf="original">aupa</PHON>
                 <FORM kindOf="standard">aupa</FORM>
                 <PHON kindOf="standard">aupa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">Q</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">Q</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_122_W5">
@@ -8606,13 +8553,13 @@
                 <FORM kindOf="standard">kaz,</FORM>
                 <PHON kindOf="standard">kað</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">就</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">just</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_122_W6">
-            <FORM kindOf="original">p-udaan-un</FORM>
+            <FORM kindOf="original">p-u-daan-un</FORM>
             <PHON kindOf="original">pudaanun</PHON>
-            <FORM kindOf="standard">p-udaan-un</FORM>
+            <FORM kindOf="standard">p-u-daan-un</FORM>
             <PHON kindOf="standard">pudaanun</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使役-行道-受焦</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">CAU-walk-PF</TRANSL>
@@ -8621,24 +8568,24 @@
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">使役</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">CAU</TRANSL>
             </M>
             <M id="bnNr-pear_Laniahu_S_122_W6M1">
-                <FORM kindOf="original">udaan</FORM>
-                <PHON kindOf="original">udaan</PHON>
-                <FORM kindOf="standard">udaan</FORM>
-                <PHON kindOf="standard">udaan</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">行道</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">walk</TRANSL>
+                <FORM kindOf="original">u</FORM>
+                <PHON kindOf="original">u</PHON>
+                <FORM kindOf="standard">u</FORM>
+                <PHON kindOf="standard">u</PHON>
             </M>
             <M id="bnNr-pear_Laniahu_S_122_W6M2">
+                <FORM kindOf="original">daan</FORM>
+                <PHON kindOf="original">daan</PHON>
+                <FORM kindOf="standard">daan</FORM>
+                <PHON kindOf="standard">daan</PHON>
+            </M>
+            <M id="bnNr-pear_Laniahu_S_122_W6M3">
                 <FORM kindOf="original">un</FORM>
                 <PHON kindOf="original">un</PHON>
                 <FORM kindOf="standard">un</FORM>
                 <PHON kindOf="standard">un</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">受焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PF</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_122_W7">
@@ -8653,8 +8600,8 @@
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">?</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">?</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PAST</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_122_W8">
@@ -8693,7 +8640,7 @@
                 <PHON kindOf="original">at</PHON>
                 <FORM kindOf="standard">at.</FORM>
                 <PHON kindOf="standard">at</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">就</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
             </M>
         </W>
@@ -8731,75 +8678,51 @@
         <TRANSL xml:lang="zho">他們走的時候</TRANSL>
         <AUDIO file="bnNr-pear_Laniahu_S126.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Laniahu.mp3" start="262.15" end="264.71"/>
         <W id="bnNr-pear_Laniahu_S_126_W0">
-            <FORM kindOf="original">mas=a</FORM>
+            <FORM kindOf="original">masa</FORM>
             <PHON kindOf="original">masa</PHON>
-            <FORM kindOf="standard">mas=a</FORM>
+            <FORM kindOf="standard">masa</FORM>
             <PHON kindOf="standard">masa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <M id="bnNr-pear_Laniahu_S_126_W0M0">
-                <FORM kindOf="original">mas</FORM>
-                <PHON kindOf="original">mas</PHON>
-                <FORM kindOf="standard">mas</FORM>
-                <PHON kindOf="standard">mas</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">什麼</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">what</TRANSL>
-            </M>
-            <M id="bnNr-pear_Laniahu_S_126_W0M1">
-                <FORM kindOf="original">=a</FORM>
-                <PHON kindOf="original">a</PHON>
-                <FORM kindOf="standard">=a</FORM>
-                <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
+                <FORM kindOf="original">masa</FORM>
+                <PHON kindOf="original">masa</PHON>
+                <FORM kindOf="standard">masa</FORM>
+                <PHON kindOf="standard">masa</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">當</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">when</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_126_W1">
-            <FORM kindOf="original">mas=a</FORM>
+            <FORM kindOf="original">masa</FORM>
             <PHON kindOf="original">masa</PHON>
-            <FORM kindOf="standard">mas=a</FORM>
+            <FORM kindOf="standard">masa</FORM>
             <PHON kindOf="standard">masa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <M id="bnNr-pear_Laniahu_S_126_W1M0">
-                <FORM kindOf="original">mas</FORM>
-                <PHON kindOf="original">mas</PHON>
-                <FORM kindOf="standard">mas</FORM>
-                <PHON kindOf="standard">mas</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">什麼</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">what</TRANSL>
-            </M>
-            <M id="bnNr-pear_Laniahu_S_126_W1M1">
-                <FORM kindOf="original">=a</FORM>
-                <PHON kindOf="original">a</PHON>
-                <FORM kindOf="standard">=a</FORM>
-                <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
+                <FORM kindOf="original">masa</FORM>
+                <PHON kindOf="original">masa</PHON>
+                <FORM kindOf="standard">masa</FORM>
+                <PHON kindOf="standard">masa</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">當</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">when</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_126_W2">
-            <FORM kindOf="original">mas=a</FORM>
+            <FORM kindOf="original">masa</FORM>
             <PHON kindOf="original">masa</PHON>
-            <FORM kindOf="standard">mas=a</FORM>
+            <FORM kindOf="standard">masa</FORM>
             <PHON kindOf="standard">masa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">什麼=遠距.主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">what=DIST.NOM</TRANSL>
             <M id="bnNr-pear_Laniahu_S_126_W2M0">
-                <FORM kindOf="original">mas</FORM>
-                <PHON kindOf="original">mas</PHON>
-                <FORM kindOf="standard">mas</FORM>
-                <PHON kindOf="standard">mas</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">什麼</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">what</TRANSL>
-            </M>
-            <M id="bnNr-pear_Laniahu_S_126_W2M1">
-                <FORM kindOf="original">=a</FORM>
-                <PHON kindOf="original">a</PHON>
-                <FORM kindOf="standard">=a</FORM>
-                <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
+                <FORM kindOf="original">masa</FORM>
+                <PHON kindOf="original">masa</PHON>
+                <FORM kindOf="standard">masa</FORM>
+                <PHON kindOf="standard">masa</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">當</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">when</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_126_W3">
@@ -8814,16 +8737,16 @@
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主焦.去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AF.go</TRANSL>
             </M>
             <M id="bnNr-pear_Laniahu_S_126_W3M1">
                 <FORM kindOf="original">udaan</FORM>
                 <PHON kindOf="original">udaan</PHON>
                 <FORM kindOf="standard">udaan</FORM>
                 <PHON kindOf="standard">udaan</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">行道</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">walk</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">路</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">road</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_126_W4">
@@ -8862,16 +8785,16 @@
                 <PHON kindOf="original">[x|χ]ai</PHON>
                 <FORM kindOf="standard">hai,</FORM>
                 <PHON kindOf="standard">[x|χ]ai</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
             </M>
         </W>
     </S>
     <S id="bnNr-pear_Laniahu_S_127">
-        <FORM kindOf="original">maza itu cinacia dii, maza mabananaz tu uvaza hai sadu tu hai. maza isaicia tamung hai kaungaan, at.</FORM>
-        <PHON kindOf="original">maða itu ʨinaʨia dii maða mabananað tu uvaða [x|χ]ai sadu tu [x|χ]ai maða isaiʨia tamuŋ [x|χ]ai kauŋaan at</PHON>
-        <FORM kindOf="standard">maza itu cinacia dii, maza mabananaz tu uvaza hai sadu tu hai. maza isaicia tamung hai kaungaan, at.</FORM>
-        <PHON kindOf="standard">maða itu ʨinaʨia dii maða mabananað tu uvaða [x|χ]ai sadu tu [x|χ]ai maða isaiʨia tamuŋ [x|χ]ai kauŋaan at</PHON>
+        <FORM kindOf="original">maza itu cinacia dii, maza mabananaz tu uvaza hai sadu tu hai. maza isaicia tamung hai kaungan, at.</FORM>
+        <PHON kindOf="original">maða itu ʨinaʨia dii maða mabananað tu uvaða [x|χ]ai sadu tu [x|χ]ai maða isaiʨia tamuŋ [x|χ]ai kauŋan at</PHON>
+        <FORM kindOf="standard">maza itu cinacia dii, maza mabananaz tu uvaza hai sadu tu hai. maza isaicia tamung hai kaungan, at.</FORM>
+        <PHON kindOf="standard">maða itu ʨinaʨia dii maða mabananað tu uvaða [x|χ]ai sadu tu [x|χ]ai maða isaiʨia tamuŋ [x|χ]ai kauŋan at</PHON>
         <TRANSL xml:lang="zho">可是，當他們走的時候，那個女生看到那個男生丟了他的帽子。</TRANSL>
         <TRANSL xml:lang="eng">But when they are going, the woman sees that he lost his hat.</TRANSL>
         <AUDIO file="bnNr-pear_Laniahu_S127.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Laniahu.mp3" start="264.71" end="272.55"/>
@@ -8935,8 +8858,8 @@
                 <PHON kindOf="original">ʨina</PHON>
                 <FORM kindOf="standard">cina</FORM>
                 <PHON kindOf="standard">ʨina</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">女生</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">woman</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">媽媽</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">mother</TRANSL>
             </M>
             <M id="bnNr-pear_Laniahu_S_127_W2M1">
                 <FORM kindOf="original">=cia</FORM>
@@ -8959,8 +8882,8 @@
                 <PHON kindOf="original">dii</PHON>
                 <FORM kindOf="standard">dii,</FORM>
                 <PHON kindOf="standard">dii</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">那</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">那裡</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">there</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_127_W4">
@@ -8999,8 +8922,8 @@
                 <PHON kindOf="original">mabananað</PHON>
                 <FORM kindOf="standard">mabananaz</FORM>
                 <PHON kindOf="standard">mabananað</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">男</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">male</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連繫詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_127_W6">
@@ -9015,8 +8938,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">連繫詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_127_W7">
@@ -9055,8 +8978,8 @@
                 <PHON kindOf="original">[x|χ]ai</PHON>
                 <FORM kindOf="standard">hai</FORM>
                 <PHON kindOf="standard">[x|χ]ai</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">是</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">yes</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_127_W9">
@@ -9071,7 +8994,7 @@
                 <PHON kindOf="original">sadu</PHON>
                 <FORM kindOf="standard">sadu</FORM>
                 <PHON kindOf="standard">sadu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">見</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">看</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">see</TRANSL>
             </M>
         </W>
@@ -9087,8 +9010,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">補語詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">COMP</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_127_W11">
@@ -9103,8 +9026,8 @@
                 <PHON kindOf="original">[x|χ]ai</PHON>
                 <FORM kindOf="standard">hai.</FORM>
                 <PHON kindOf="standard">[x|χ]ai</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">是</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">yes</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_127_W12">
@@ -9191,33 +9114,17 @@
                 <PHON kindOf="original">[x|χ]ai</PHON>
                 <FORM kindOf="standard">hai</FORM>
                 <PHON kindOf="standard">[x|χ]ai</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">是</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">yes</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_127_W16">
-            <FORM kindOf="original">kaunga-an,</FORM>
-            <PHON kindOf="original">kauŋaan</PHON>
-            <FORM kindOf="standard">kaunga-an,</FORM>
-            <PHON kindOf="standard">kauŋaan</PHON>
+            <FORM kindOf="original">kaungan,</FORM>
+            <PHON kindOf="original">kauŋan</PHON>
+            <FORM kindOf="standard">kaungan,</FORM>
+            <PHON kindOf="standard">kauŋan</PHON>
             <TRANSL xml:lang="zho" kindOf="original">遺失-處焦</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">lose-LF</TRANSL>
-            <M id="bnNr-pear_Laniahu_S_127_W16M0">
-                <FORM kindOf="original">kaunga</FORM>
-                <PHON kindOf="original">kauŋa</PHON>
-                <FORM kindOf="standard">kaunga</FORM>
-                <PHON kindOf="standard">kauŋa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">遺失</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">lose</TRANSL>
-            </M>
-            <M id="bnNr-pear_Laniahu_S_127_W16M1">
-                <FORM kindOf="original">an,</FORM>
-                <PHON kindOf="original">an</PHON>
-                <FORM kindOf="standard">an,</FORM>
-                <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LF</TRANSL>
-            </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_127_W17">
             <FORM kindOf="original">at.</FORM>
@@ -9231,7 +9138,7 @@
                 <PHON kindOf="original">at</PHON>
                 <FORM kindOf="standard">at.</FORM>
                 <PHON kindOf="standard">at</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">就</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
             </M>
         </W>
@@ -9281,7 +9188,7 @@
             <PHON kindOf="original">[l|ɬ]a[l|ɬ]aun</PHON>
             <FORM kindOf="standard">la'la-un</FORM>
             <PHON kindOf="standard">[l|ɬ]aʔ[l|ɬ]aun</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">叫-受焦</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">叫</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">call-PF</TRANSL>
             <M id="bnNr-pear_Laniahu_S_131_W2M0">
                 <FORM kindOf="original">la'la</FORM>
@@ -9312,8 +9219,8 @@
                 <PHON kindOf="original">sai</PHON>
                 <FORM kindOf="standard">sai</FORM>
                 <PHON kindOf="standard">sai</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">3PL</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">3PL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">3S</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">3S</TRANSL>
             </M>
             <M id="bnNr-pear_Laniahu_S_131_W3M1">
                 <FORM kindOf="original">=cia</FORM>
@@ -10302,9 +10209,9 @@
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_143_W8">
-            <FORM kindOf="original">sai=a</FORM>
+            <FORM kindOf="original">sai-a</FORM>
             <PHON kindOf="original">saia</PHON>
-            <FORM kindOf="standard">sai=a</FORM>
+            <FORM kindOf="standard">sai-a</FORM>
             <PHON kindOf="standard">saia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">3PL=遠距.主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">3PL=DIST.NOM</TRANSL>
@@ -10317,9 +10224,9 @@
                 <TRANSL xml:lang="eng" kindOf="original">3PL</TRANSL>
             </M>
             <M id="bnNr-pear_Laniahu_S_143_W8M1">
-                <FORM kindOf="original">=a</FORM>
+                <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
-                <FORM kindOf="standard">=a</FORM>
+                <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
@@ -10755,11 +10662,11 @@
         </W>
     </S>
     <S id="bnNr-pear_Laniahu_S_148">
-        <FORM kindOf="original" notes="si’aminun (with a glottal stop)">at aupa, ma=dii ma-daingaz ma-&lt;ta&gt;tapul nasi=an hai. nadadu si-'amin-un&lt;in&gt; at aupa ku-nastu sai=a sadu ai, viatu ma-l&lt;da&gt;dauk kalala=an tu, ka ai nii tu matmuz tu.</FORM>
+        <FORM kindOf="original" notes="si’aminun (with a glottal stop)">at aupa, ma=dii ma-daingaz ma-&lt;ta&gt;tapul nasi=an hai. nadadu si-'aminun&lt;in&gt; at aupa ku-nastu sai=a sadu ai, viatu ma-l&lt;da&gt;dauk kalala=an tu, ka ai nii tu matmuz tu.</FORM>
         <PHON kindOf="original">at aupa madii madaiŋað matatapu[l|ɬ] nasian [x|χ]ai nadadu siaminunin at aupa kunastu saia sadu ai viatu ma[l|ɬ]dadauk ka[l|ɬ]a[l|ɬ]aan tu ka ai nii tu matmuð tu</PHON>
-        <FORM kindOf="standard">at aupa, madii ma-daingaz ma-&lt;ta&gt;tapul nasian hai. nadadu si-'amin-un&lt;in&gt; at aupa ku-nastu saia sadu ai, viatu ma-l&lt;da&gt;dauk kalalaan tu, ka ai nii tu matmuz tu.</FORM>
+        <FORM kindOf="standard">at aupa, madii ma-daingaz ma-&lt;ta&gt;tapul nasian hai. nadadu si-'aminun&lt;in&gt; at aupa ku-nastu saia sadu ai, viatu ma-l&lt;da&gt;dauk kalalaan tu, ka ai nii tu matmuz tu.</FORM>
         <PHON kindOf="standard">at aupa madii madaiŋað matatapu[l|ɬ] naɕian [x|χ]ai nadadu ɕiʔaminunin at aupa kunastu saia sadu ai viatu ma[l|ɬ]dadauk ka[l|ɬ]a[l|ɬ]aan tu ka ai nii tu matmuð tu</PHON>
-        <FORM kindOf="alternate">at aupa, ma=dii ma-daingaz ma-&lt;ta&gt;tapul nasi=an hai. nadadu si-'amin-un&lt;in&gt; at aupa ku-nastu sai=a sadu ai, maviatu ma-l&lt;da&gt;dauk kalala=an tu, ka ai nii tu matmuz tu.</FORM>
+        <FORM kindOf="alternate">at aupa, ma=dii ma-daingaz ma-&lt;ta&gt;tapul nasi=an hai. nadadu si-'aminun&lt;in&gt; at aupa ku-nastu sai=a sadu ai, maviatu ma-l&lt;da&gt;dauk kalala=an tu, ka ai nii tu matmuz tu.</FORM>
         <TRANSL xml:lang="zho">那個老人，一直採著例子，也許全部都放在裡面，但看見，為什麼籃子還是沒滿？</TRANSL>
         <TRANSL xml:lang="eng">That old man, who is plucking pears, taking maybe all of them and putting them in there, sees that, why is the basket still not full?</TRANSL>
         <AUDIO file="bnNr-pear_Laniahu_S148.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-pear_Laniahu.mp3" start="315.79" end="329.23"/>
@@ -10928,12 +10835,12 @@
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_148_W8">
-            <FORM kindOf="original">si-'amin-un&lt;in&gt;</FORM>
+            <FORM kindOf="original">si-'aminun&lt;in&gt;</FORM>
             <PHON kindOf="original">siaminunin</PHON>
-            <FORM kindOf="standard">si-'amin-un&lt;in&gt;</FORM>
+            <FORM kindOf="standard">si-'aminun&lt;in&gt;</FORM>
             <PHON kindOf="standard">ɕiʔaminunin</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">工焦-&lt;完成貌&gt;全部-受焦</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">IF-&lt;PFV&gt;all-PF</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">工焦&lt;完成貌&gt;全部&lt;完成貌&gt;</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">IF&lt;PFV&gt;all&lt;PFV&gt;</TRANSL>
             <M id="bnNr-pear_Laniahu_S_148_W8M0">
                 <FORM kindOf="original">-in-</FORM>
                 <PHON kindOf="original">in</PHON>
@@ -10947,16 +10854,10 @@
                 <PHON kindOf="standard">ɕi</PHON>
             </M>
             <M id="bnNr-pear_Laniahu_S_148_W8M2">
-                <FORM kindOf="original">'amin</FORM>
-                <PHON kindOf="original">amin</PHON>
-                <FORM kindOf="standard">'amin</FORM>
-                <PHON kindOf="standard">ʔamin</PHON>
-            </M>
-            <M id="bnNr-pear_Laniahu_S_148_W8M3">
-                <FORM kindOf="original">un</FORM>
-                <PHON kindOf="original">un</PHON>
-                <FORM kindOf="standard">un</FORM>
-                <PHON kindOf="standard">un</PHON>
+                <FORM kindOf="original">'aminun</FORM>
+                <PHON kindOf="original">aminun</PHON>
+                <FORM kindOf="standard">'aminun</FORM>
+                <PHON kindOf="standard">ʔaminun</PHON>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_148_W9">
@@ -11303,7 +11204,7 @@
                 <PHON kindOf="original">saŋan</PHON>
                 <FORM kindOf="standard">sangan</FORM>
                 <PHON kindOf="standard">saŋan</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">剛剛</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">剛才</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">just.now</TRANSL>
             </M>
         </W>
@@ -11319,8 +11220,8 @@
                 <PHON kindOf="original">[x|χ]ai</PHON>
                 <FORM kindOf="standard">hai</FORM>
                 <PHON kindOf="standard">[x|χ]ai</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">是</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">yes</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_153_W4">
@@ -11351,8 +11252,8 @@
                 <PHON kindOf="original">aupa</PHON>
                 <FORM kindOf="standard">aupa</FORM>
                 <PHON kindOf="standard">aupa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">不是嗎</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">isnt.it</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">Q</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">Q</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_153_W6">
@@ -11367,8 +11268,8 @@
                 <PHON kindOf="original">mað</PHON>
                 <FORM kindOf="standard">maz</FORM>
                 <PHON kindOf="standard">mað</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">那</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">什麼</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">what</TRANSL>
             </M>
             <M id="bnNr-pear_Laniahu_S_153_W6M1">
                 <FORM kindOf="original">=a</FORM>
@@ -11386,53 +11287,37 @@
             <PHON kindOf="standard">ɕintapu[l|ɬ]</PHON>
             <TRANSL xml:lang="zho" kindOf="original">工焦&lt;完成貌&gt;採</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">IF&lt;PFV&gt;pluck</TRANSL>
-            <M id="bnNr-pear_Laniahu_S_153_W7M0_0">
+            <M id="bnNr-pear_Laniahu_S_153_W7M0">
                 <FORM kindOf="original">-in-</FORM>
                 <PHON kindOf="original">in</PHON>
                 <FORM kindOf="standard">-in-</FORM>
                 <PHON kindOf="standard">in</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">&lt;完成貌&gt;</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;PFV&gt;</TRANSL>
             </M>
-            <M id="bnNr-pear_Laniahu_S_153_W7M0_1">
-                <FORM kindOf="original">s-tapul</FORM>
+            <M id="bnNr-pear_Laniahu_S_153_W7M1">
+                <FORM kindOf="original">stapul</FORM>
                 <PHON kindOf="original">stapu[l|ɬ]</PHON>
-                <FORM kindOf="standard">s-tapul</FORM>
+                <FORM kindOf="standard">stapul</FORM>
                 <PHON kindOf="standard">stapu[l|ɬ]</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">工焦採</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">IFpluck</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_153_W8">
-            <FORM kindOf="original">m-atmuz=a</FORM>
+            <FORM kindOf="original">matmuz=a</FORM>
             <PHON kindOf="original">matmuða</PHON>
-            <FORM kindOf="standard">m-atmuz=a</FORM>
+            <FORM kindOf="standard">matmuz=a</FORM>
             <PHON kindOf="standard">matmuða</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦-滿=遠距.主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-full=DIST.NOM</TRANSL>
             <M id="bnNr-pear_Laniahu_S_153_W8M0">
-                <FORM kindOf="original">m</FORM>
-                <PHON kindOf="original">m</PHON>
-                <FORM kindOf="standard">m</FORM>
-                <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
+                <FORM kindOf="original">matmuz</FORM>
+                <PHON kindOf="original">matmuð</PHON>
+                <FORM kindOf="standard">matmuz</FORM>
+                <PHON kindOf="standard">matmuð</PHON>
             </M>
             <M id="bnNr-pear_Laniahu_S_153_W8M1">
-                <FORM kindOf="original">atmuz</FORM>
-                <PHON kindOf="original">atmuð</PHON>
-                <FORM kindOf="standard">atmuz</FORM>
-                <PHON kindOf="standard">atmuð</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">滿</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">full</TRANSL>
-            </M>
-            <M id="bnNr-pear_Laniahu_S_153_W8M2">
-                <FORM kindOf="original">=a</FORM>
+                <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
-                <FORM kindOf="standard">=a</FORM>
+                <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_153_W9">
@@ -11463,8 +11348,8 @@
                 <PHON kindOf="original">[x|χ]ai</PHON>
                 <FORM kindOf="standard">hai.</FORM>
                 <PHON kindOf="standard">[x|χ]ai</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">是</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">yes</TRANSL>
             </M>
         </W>
     </S>
@@ -11488,7 +11373,7 @@
                 <PHON kindOf="original">at</PHON>
                 <FORM kindOf="standard">at,</FORM>
                 <PHON kindOf="standard">at</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">就</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
             </M>
         </W>
@@ -11504,7 +11389,7 @@
                 <PHON kindOf="original">at</PHON>
                 <FORM kindOf="standard">at</FORM>
                 <PHON kindOf="standard">at</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">就</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
             </M>
         </W>
@@ -11520,7 +11405,7 @@
                 <PHON kindOf="original">sadu</PHON>
                 <FORM kindOf="standard">sadu</FORM>
                 <PHON kindOf="standard">sadu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">見</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">看</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">see</TRANSL>
             </M>
         </W>
@@ -11536,8 +11421,8 @@
                 <PHON kindOf="original">sai</PHON>
                 <FORM kindOf="standard">sai</FORM>
                 <PHON kindOf="standard">sai</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">3SG</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">3SG</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">3S</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">3S</TRANSL>
             </M>
             <M id="bnNr-pear_Laniahu_S_154_W3M1">
                 <FORM kindOf="original">=a</FORM>
@@ -11560,8 +11445,8 @@
                 <PHON kindOf="original">mas</PHON>
                 <FORM kindOf="standard">mas</FORM>
                 <PHON kindOf="standard">mas</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_154_W5">
@@ -11569,21 +11454,29 @@
             <PHON kindOf="original">ai</PHON>
             <FORM kindOf="standard">ai,</FORM>
             <PHON kindOf="standard">ai</PHON>
+            <M id="bnNr-pear_Laniahu_S_154_W5M0">
+                <FORM kindOf="original">ai,</FORM>
+                <PHON kindOf="original">ai</PHON>
+                <FORM kindOf="standard">ai,</FORM>
+                <PHON kindOf="standard">ai</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+            </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_154_W6">
             <FORM kindOf="original">tantatau</FORM>
             <PHON kindOf="original">tantatau</PHON>
             <FORM kindOf="standard">tantatau</FORM>
             <PHON kindOf="standard">tantatau</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">3.量詞</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">3.CLF</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">量詞</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">CLF</TRANSL>
             <M id="bnNr-pear_Laniahu_S_154_W6M0">
                 <FORM kindOf="original">tantatau</FORM>
                 <PHON kindOf="original">tantatau</PHON>
                 <FORM kindOf="standard">tantatau</FORM>
                 <PHON kindOf="standard">tantatau</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">3.量詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">3.CLF</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">量詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">CLF</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_154_W7">
@@ -11591,8 +11484,8 @@
             <PHON kindOf="original">daan</PHON>
             <FORM kindOf="standard">daan</FORM>
             <PHON kindOf="standard">daan</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">路</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">road</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">3.量詞</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">3.CLF</TRANSL>
             <M id="bnNr-pear_Laniahu_S_154_W7M0">
                 <FORM kindOf="original">daan</FORM>
                 <PHON kindOf="original">daan</PHON>
@@ -11607,15 +11500,15 @@
             <PHON kindOf="original">tu</PHON>
             <FORM kindOf="standard">tu</FORM>
             <PHON kindOf="standard">tu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">連繫詞</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">路</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">road</TRANSL>
             <M id="bnNr-pear_Laniahu_S_154_W8M0">
                 <FORM kindOf="original">tu</FORM>
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">連繫詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_154_W9">
@@ -11623,23 +11516,19 @@
             <PHON kindOf="original">bununtan</PHON>
             <FORM kindOf="standard">bunun=tan</FORM>
             <PHON kindOf="standard">bununtan</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">人=中距.斜格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">person=MED.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">連繫詞</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             <M id="bnNr-pear_Laniahu_S_154_W9M0">
                 <FORM kindOf="original">bunun</FORM>
                 <PHON kindOf="original">bunun</PHON>
                 <FORM kindOf="standard">bunun</FORM>
                 <PHON kindOf="standard">bunun</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">人</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">person</TRANSL>
             </M>
             <M id="bnNr-pear_Laniahu_S_154_W9M1">
-                <FORM kindOf="original">=tan</FORM>
+                <FORM kindOf="original">tan</FORM>
                 <PHON kindOf="original">tan</PHON>
-                <FORM kindOf="standard">=tan</FORM>
+                <FORM kindOf="standard">tan</FORM>
                 <PHON kindOf="standard">tan</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">中距.斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">MED.OBL</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_154_W10">
@@ -11647,15 +11536,15 @@
             <PHON kindOf="original">tu</PHON>
             <FORM kindOf="standard">tu,</FORM>
             <PHON kindOf="standard">tu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">補語詞</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">COMP</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">人=中距.斜格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">person=MED.OBL</TRANSL>
             <M id="bnNr-pear_Laniahu_S_154_W10M0">
                 <FORM kindOf="original">tu,</FORM>
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu,</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">補語詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">COMP</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
     </S>
@@ -11761,8 +11650,8 @@
             <PHON kindOf="original">masan</PHON>
             <FORM kindOf="standard">masan</FORM>
             <PHON kindOf="standard">masan</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">全部</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">all</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">全部-?-&lt;重疊&gt;拿</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">all-?-&lt;RED&gt;taking</TRANSL>
             <M id="bnNr-pear_Laniahu_S_159_W0M0">
                 <FORM kindOf="original">masan</FORM>
                 <PHON kindOf="original">masan</PHON>
@@ -11773,35 +11662,29 @@
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_159_W1">
-            <FORM kindOf="original">ki-di-dikus</FORM>
+            <FORM kindOf="original">ki-&lt;di&gt;dikus</FORM>
             <PHON kindOf="original">kididikus</PHON>
-            <FORM kindOf="standard">ki-di-dikus</FORM>
+            <FORM kindOf="standard">ki-&lt;di&gt;dikus</FORM>
             <PHON kindOf="standard">kididikus</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">?-重疊-拿</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">?-RED-taking</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">受格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">ACC</TRANSL>
             <M id="bnNr-pear_Laniahu_S_159_W1M0">
+                <FORM kindOf="original">-di-</FORM>
+                <PHON kindOf="original">di</PHON>
+                <FORM kindOf="standard">-di-</FORM>
+                <PHON kindOf="standard">di</PHON>
+            </M>
+            <M id="bnNr-pear_Laniahu_S_159_W1M1">
                 <FORM kindOf="original">ki</FORM>
                 <PHON kindOf="original">ki</PHON>
                 <FORM kindOf="standard">ki</FORM>
                 <PHON kindOf="standard">ki</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">?</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">?</TRANSL>
-            </M>
-            <M id="bnNr-pear_Laniahu_S_159_W1M1">
-                <FORM kindOf="original">di</FORM>
-                <PHON kindOf="original">di</PHON>
-                <FORM kindOf="standard">di</FORM>
-                <PHON kindOf="standard">di</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">重疊</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
             </M>
             <M id="bnNr-pear_Laniahu_S_159_W1M2">
                 <FORM kindOf="original">dikus</FORM>
                 <PHON kindOf="original">dikus</PHON>
                 <FORM kindOf="standard">dikus</FORM>
                 <PHON kindOf="standard">dikus</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">拿</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">taking</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_159_W2">
@@ -11809,15 +11692,15 @@
             <PHON kindOf="original">mas</PHON>
             <FORM kindOf="standard">mas</FORM>
             <PHON kindOf="standard">mas</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">受格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">ACC</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">梨子</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">pear</TRANSL>
             <M id="bnNr-pear_Laniahu_S_159_W2M0">
                 <FORM kindOf="original">mas</FORM>
                 <PHON kindOf="original">mas</PHON>
                 <FORM kindOf="standard">mas</FORM>
                 <PHON kindOf="standard">mas</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">受格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">ACC</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
         <W id="bnNr-pear_Laniahu_S_159_W3">
@@ -11825,8 +11708,6 @@
             <PHON kindOf="original">nasi</PHON>
             <FORM kindOf="standard">nasi.</FORM>
             <PHON kindOf="standard">naɕi</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">梨子</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">pear</TRANSL>
             <M id="bnNr-pear_Laniahu_S_159_W3M0">
                 <FORM kindOf="original">nasi.</FORM>
                 <PHON kindOf="original">nasi</PHON>
@@ -13597,7 +13478,7 @@
             <PHON kindOf="original">maðmaaðdau</PHON>
             <FORM kindOf="standard">mazmaaz=dau.</FORM>
             <PHON kindOf="standard">maðmaaðdau</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">什麼東西=據說</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">什麼東西-?</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">all.things=EVID</TRANSL>
             <M id="bnNr-pear_Laniahu_S_176_W12M0">
                 <FORM kindOf="original">mazmaaz</FORM>
@@ -13612,7 +13493,7 @@
                 <PHON kindOf="original">dau</PHON>
                 <FORM kindOf="standard">=dau.</FORM>
                 <PHON kindOf="standard">dau</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">據說</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">?</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">EVID</TRANSL>
             </M>
         </W>

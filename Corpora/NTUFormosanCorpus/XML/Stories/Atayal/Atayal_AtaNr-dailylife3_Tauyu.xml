@@ -2802,14 +2802,14 @@
             <PHON kindOf="original">kaukas</PHON>
             <FORM kindOf="standard">ka-ukas</FORM>
             <PHON kindOf="standard">kauka[s|ɕ]</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">KA-否定</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">否定</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">KA-NEG</TRANSL>
             <M id="AtaNr-dailylife3_Tauyu_S_32_W9M0">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">KA</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">否定</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">KA</TRANSL>
             </M>
             <M id="AtaNr-dailylife3_Tauyu_S_32_W9M1">
@@ -2817,7 +2817,6 @@
                 <PHON kindOf="original">ukas</PHON>
                 <FORM kindOf="standard">ukas</FORM>
                 <PHON kindOf="standard">uka[s|ɕ]</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">否定</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">NEG</TRANSL>
             </M>
         </W>
@@ -4043,10 +4042,10 @@
         </W>
     </S>
     <S id="AtaNr-dailylife3_Tauyu_S_47">
-        <FORM kindOf="original" notes="vurak為日文詞彙，汶水&quot;部落&quot;講法為tinqalangan。">hiya' ku alanniam su tumuk, malahang suku sami ka, vurak na mavatu'an.</FORM>
-        <PHON kindOf="original">ħijaʔ ku alanniam su tumuk malaħaŋ suku sami ka vurak na mavatuʔan</PHON>
-        <FORM kindOf="standard">hiya' ku alanniam su tumuk, malahang suku sami ka, vurak na mavatu'an.</FORM>
-        <PHON kindOf="standard">ħijaʔ ku alanniam [s|ɕ]u tumuk malaħaŋ [s|ɕ]uku [s|ɕ]ami ka *urak na ma*atuʔan</PHON>
+        <FORM kindOf="original" notes="vurak為日文詞彙，汶水&quot;部落&quot;講法為tinqalangan。">hiya' ku alan niam su tumuk, malahang suku sami ka, vurak na mavatu'an.</FORM>
+        <PHON kindOf="original">ħijaʔ ku alan niam su tumuk malaħaŋ suku sami ka vurak na mavatuʔan</PHON>
+        <FORM kindOf="standard">hiya' ku alan niam su tumuk, malahang suku sami ka, vurak na mavatu'an.</FORM>
+        <PHON kindOf="standard">ħijaʔ ku alan niam [s|ɕ]u tumuk malaħaŋ [s|ɕ]uku [s|ɕ]ami ka *urak na ma*atuʔan</PHON>
         <TRANSL xml:lang="zho">我們選擇他當頭目來照顧在馬都安部落的我們。</TRANSL>
         <TRANSL xml:lang="eng">We picked him to be the chief to take care of us in the tribe of Mavatu'an.</TRANSL>
         <AUDIO file="AtaNr-dailylife3_Tauyu_S47.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-dailylife3_Tauyu.mp3" start="131.88" end="140.31"/>
@@ -4083,10 +4082,10 @@
             </M>
         </W>
         <W id="AtaNr-dailylife3_Tauyu_S_47_W2">
-            <FORM kindOf="original">al-an=niam</FORM>
-            <PHON kindOf="original">alanniam</PHON>
-            <FORM kindOf="standard">al-an=niam</FORM>
-            <PHON kindOf="standard">alanniam</PHON>
+            <FORM kindOf="original">al-an</FORM>
+            <PHON kindOf="original">alan</PHON>
+            <FORM kindOf="standard">al-an</FORM>
+            <PHON kindOf="standard">alan</PHON>
             <TRANSL xml:lang="zho" kindOf="original">拿-處焦=1EPL.屬格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">take-LF=1EPL.GEN</TRANSL>
             <M id="AtaNr-dailylife3_Tauyu_S_47_W2M0">
@@ -4094,7 +4093,7 @@
                 <PHON kindOf="original">al</PHON>
                 <FORM kindOf="standard">al</FORM>
                 <PHON kindOf="standard">al</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">拿</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">拿/採</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">take</TRANSL>
             </M>
             <M id="AtaNr-dailylife3_Tauyu_S_47_W2M1">
@@ -4105,23 +4104,31 @@
                 <TRANSL xml:lang="zho" kindOf="original">處焦</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">LF</TRANSL>
             </M>
-            <M id="AtaNr-dailylife3_Tauyu_S_47_W2M2">
-                <FORM kindOf="original">=niam</FORM>
-                <PHON kindOf="original">niam</PHON>
-                <FORM kindOf="standard">=niam</FORM>
-                <PHON kindOf="standard">niam</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">1EPL.屬格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">1EPL.GEN</TRANSL>
-            </M>
         </W>
         <W id="AtaNr-dailylife3_Tauyu_S_47_W3">
+            <FORM kindOf="original">niam</FORM>
+            <PHON kindOf="original">niam</PHON>
+            <FORM kindOf="standard">niam</FORM>
+            <PHON kindOf="standard">niam</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">受格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">ACC</TRANSL>
+            <M id="AtaNr-dailylife3_Tauyu_S_47_W3M0">
+                <FORM kindOf="original">niam</FORM>
+                <PHON kindOf="original">niam</PHON>
+                <FORM kindOf="standard">niam</FORM>
+                <PHON kindOf="standard">niam</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">1EPL.所有格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1EPL.POSS</TRANSL>
+            </M>
+        </W>
+        <W id="AtaNr-dailylife3_Tauyu_S_47_W4">
             <FORM kindOf="original">su</FORM>
             <PHON kindOf="original">su</PHON>
             <FORM kindOf="standard">su</FORM>
             <PHON kindOf="standard">[s|ɕ]u</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">受格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">ACC</TRANSL>
-            <M id="AtaNr-dailylife3_Tauyu_S_47_W3M0">
+            <TRANSL xml:lang="zho" kindOf="original">頭目</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">chief</TRANSL>
+            <M id="AtaNr-dailylife3_Tauyu_S_47_W4M0">
                 <FORM kindOf="original">su</FORM>
                 <PHON kindOf="original">su</PHON>
                 <FORM kindOf="standard">su</FORM>
@@ -4130,30 +4137,20 @@
                 <TRANSL xml:lang="eng" kindOf="original">ACC</TRANSL>
             </M>
         </W>
-        <W id="AtaNr-dailylife3_Tauyu_S_47_W4">
+        <W id="AtaNr-dailylife3_Tauyu_S_47_W5">
             <FORM kindOf="original">tumuk,</FORM>
             <PHON kindOf="original">tumuk</PHON>
             <FORM kindOf="standard">tumuk,</FORM>
             <PHON kindOf="standard">tumuk</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">頭目</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">chief</TRANSL>
-            <M id="AtaNr-dailylife3_Tauyu_S_47_W4M0">
-                <FORM kindOf="original">tumuk,</FORM>
-                <PHON kindOf="original">tumuk</PHON>
-                <FORM kindOf="standard">tumuk,</FORM>
-                <PHON kindOf="standard">tumuk</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">頭目</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">chief</TRANSL>
-            </M>
         </W>
-        <W id="AtaNr-dailylife3_Tauyu_S_47_W5">
+        <W id="AtaNr-dailylife3_Tauyu_S_47_W6">
             <FORM kindOf="original">ma-lahang</FORM>
             <PHON kindOf="original">malaħaŋ</PHON>
             <FORM kindOf="standard">ma-lahang</FORM>
             <PHON kindOf="standard">malaħaŋ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦-照顧</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-take.care</TRANSL>
-            <M id="AtaNr-dailylife3_Tauyu_S_47_W5M0">
+            <M id="AtaNr-dailylife3_Tauyu_S_47_W6M0">
                 <FORM kindOf="original">ma</FORM>
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
@@ -4161,23 +4158,23 @@
                 <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
             </M>
-            <M id="AtaNr-dailylife3_Tauyu_S_47_W5M1">
+            <M id="AtaNr-dailylife3_Tauyu_S_47_W6M1">
                 <FORM kindOf="original">lahang</FORM>
                 <PHON kindOf="original">laħaŋ</PHON>
                 <FORM kindOf="standard">lahang</FORM>
                 <PHON kindOf="standard">laħaŋ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">照顧</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">take.care</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">care</TRANSL>
             </M>
         </W>
-        <W id="AtaNr-dailylife3_Tauyu_S_47_W6">
+        <W id="AtaNr-dailylife3_Tauyu_S_47_W7">
             <FORM kindOf="original">suku</FORM>
             <PHON kindOf="original">suku</PHON>
             <FORM kindOf="standard">suku</FORM>
             <PHON kindOf="standard">[s|ɕ]uku</PHON>
             <TRANSL xml:lang="zho" kindOf="original">受格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">ACC</TRANSL>
-            <M id="AtaNr-dailylife3_Tauyu_S_47_W6M0">
+            <M id="AtaNr-dailylife3_Tauyu_S_47_W7M0">
                 <FORM kindOf="original">suku</FORM>
                 <PHON kindOf="original">suku</PHON>
                 <FORM kindOf="standard">suku</FORM>
@@ -4186,46 +4183,46 @@
                 <TRANSL xml:lang="eng" kindOf="original">ACC</TRANSL>
             </M>
         </W>
-        <W id="AtaNr-dailylife3_Tauyu_S_47_W7">
+        <W id="AtaNr-dailylife3_Tauyu_S_47_W8">
             <FORM kindOf="original">sami</FORM>
             <PHON kindOf="original">sami</PHON>
             <FORM kindOf="standard">sami</FORM>
             <PHON kindOf="standard">[s|ɕ]ami</PHON>
             <TRANSL xml:lang="zho" kindOf="original">1EPL.主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">1EPL.NOM</TRANSL>
-            <M id="AtaNr-dailylife3_Tauyu_S_47_W7M0">
+            <M id="AtaNr-dailylife3_Tauyu_S_47_W8M0">
                 <FORM kindOf="original">sami</FORM>
                 <PHON kindOf="original">sami</PHON>
                 <FORM kindOf="standard">sami</FORM>
                 <PHON kindOf="standard">[s|ɕ]ami</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">1EPL.主格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">1EPL.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1PL.主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1PL.NOM</TRANSL>
             </M>
         </W>
-        <W id="AtaNr-dailylife3_Tauyu_S_47_W8">
+        <W id="AtaNr-dailylife3_Tauyu_S_47_W9">
             <FORM kindOf="original">ka,</FORM>
             <PHON kindOf="original">ka</PHON>
             <FORM kindOf="standard">ka,</FORM>
             <PHON kindOf="standard">ka</PHON>
             <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
-            <M id="AtaNr-dailylife3_Tauyu_S_47_W8M0">
+            <M id="AtaNr-dailylife3_Tauyu_S_47_W9M0">
                 <FORM kindOf="original">ka,</FORM>
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka,</FORM>
                 <PHON kindOf="standard">ka</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">KA</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">KA</TRANSL>
             </M>
         </W>
-        <W id="AtaNr-dailylife3_Tauyu_S_47_W9">
+        <W id="AtaNr-dailylife3_Tauyu_S_47_W10">
             <FORM kindOf="original">vurak</FORM>
             <PHON kindOf="original">vurak</PHON>
             <FORM kindOf="standard">vurak</FORM>
             <PHON kindOf="standard">*urak</PHON>
             <TRANSL xml:lang="zho" kindOf="original">部落</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">tribe</TRANSL>
-            <M id="AtaNr-dailylife3_Tauyu_S_47_W9M0">
+            <M id="AtaNr-dailylife3_Tauyu_S_47_W10M0">
                 <FORM kindOf="original">vurak</FORM>
                 <PHON kindOf="original">vurak</PHON>
                 <FORM kindOf="standard">vurak</FORM>
@@ -4234,30 +4231,30 @@
                 <TRANSL xml:lang="eng" kindOf="original">tribe</TRANSL>
             </M>
         </W>
-        <W id="AtaNr-dailylife3_Tauyu_S_47_W10">
+        <W id="AtaNr-dailylife3_Tauyu_S_47_W11">
             <FORM kindOf="original">na</FORM>
             <PHON kindOf="original">na</PHON>
             <FORM kindOf="standard">na</FORM>
             <PHON kindOf="standard">na</PHON>
             <TRANSL xml:lang="zho" kindOf="original">屬格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">GEN</TRANSL>
-            <M id="AtaNr-dailylife3_Tauyu_S_47_W10M0">
+            <M id="AtaNr-dailylife3_Tauyu_S_47_W11M0">
                 <FORM kindOf="original">na</FORM>
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">屬格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">GEN</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PAST</TRANSL>
             </M>
         </W>
-        <W id="AtaNr-dailylife3_Tauyu_S_47_W11">
+        <W id="AtaNr-dailylife3_Tauyu_S_47_W12">
             <FORM kindOf="original">mavatu'an.</FORM>
             <PHON kindOf="original">mavatuʔan</PHON>
             <FORM kindOf="standard">mavatu'an.</FORM>
             <PHON kindOf="standard">ma*atuʔan</PHON>
             <TRANSL xml:lang="zho" kindOf="original">地名</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">PN</TRANSL>
-            <M id="AtaNr-dailylife3_Tauyu_S_47_W11M0">
+            <M id="AtaNr-dailylife3_Tauyu_S_47_W12M0">
                 <FORM kindOf="original">mavatu'an.</FORM>
                 <PHON kindOf="original">mavatuʔan</PHON>
                 <FORM kindOf="standard">mavatu'an.</FORM>
@@ -4618,7 +4615,7 @@
             <PHON kindOf="original">nanuʔ</PHON>
             <FORM kindOf="standard">nanu'</FORM>
             <PHON kindOf="standard">nanuʔ</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">DM全部</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
             <M id="AtaNr-dailylife3_Tauyu_S_56_W0M0">
                 <FORM kindOf="original">nanu'</FORM>
@@ -4634,7 +4631,7 @@
             <PHON kindOf="original">kuaraʔ</PHON>
             <FORM kindOf="standard">kuara'</FORM>
             <PHON kindOf="standard">kuaraʔ</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">全部</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">all</TRANSL>
             <M id="AtaNr-dailylife3_Tauyu_S_56_W1M0">
                 <FORM kindOf="original">kuara'</FORM>
@@ -4650,7 +4647,7 @@
             <PHON kindOf="original">ku</PHON>
             <FORM kindOf="standard">ku</FORM>
             <PHON kindOf="standard">ku</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">重複-婦女=1EPL.屬格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
             <M id="AtaNr-dailylife3_Tauyu_S_56_W2M0">
                 <FORM kindOf="original">ku</FORM>
@@ -4666,7 +4663,7 @@
             <PHON kindOf="original">kakanajrinmian</PHON>
             <FORM kindOf="standard">ka-kanayrin=mian</FORM>
             <PHON kindOf="standard">kakanajrinmian</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">重複-婦女=1EPL.屬格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">我們</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">RED-woman=1EPL.GEN</TRANSL>
             <M id="AtaNr-dailylife3_Tauyu_S_56_W3M0">
                 <FORM kindOf="original">ka</FORM>
@@ -4681,7 +4678,7 @@
                 <PHON kindOf="original">kanajrin</PHON>
                 <FORM kindOf="standard">kanayrin</FORM>
                 <PHON kindOf="standard">kanajrin</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">婦女</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">女人</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">woman</TRANSL>
             </M>
             <M id="AtaNr-dailylife3_Tauyu_S_56_W3M2">
@@ -4809,7 +4806,7 @@
                 <PHON kindOf="original">ana</PHON>
                 <FORM kindOf="standard">ana</FORM>
                 <PHON kindOf="standard">ana</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">即使</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">縱然</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">even.though</TRANSL>
             </M>
         </W>
@@ -7648,7 +7645,7 @@
                 <PHON kindOf="original">lawkaħ</PHON>
                 <FORM kindOf="standard">lawkah</FORM>
                 <PHON kindOf="standard">lawkaħ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">強壯</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">強</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">strong</TRANSL>
             </M>
         </W>
@@ -7680,7 +7677,7 @@
                 <PHON kindOf="original">kaħavaw</PHON>
                 <FORM kindOf="standard">kahavaw</FORM>
                 <PHON kindOf="standard">kaħa*aw</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">所有</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">全部</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">all</TRANSL>
             </M>
         </W>
@@ -7689,23 +7686,19 @@
             <PHON kindOf="original">matawaw</PHON>
             <FORM kindOf="standard">ma-tawaw.</FORM>
             <PHON kindOf="standard">matawaw</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主焦-工作</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">AF-work</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">工作</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">work</TRANSL>
             <M id="AtaNr-dailylife3_Tauyu_S_88_W8M0">
                 <FORM kindOf="original">ma</FORM>
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
             </M>
             <M id="AtaNr-dailylife3_Tauyu_S_88_W8M1">
                 <FORM kindOf="original">tawaw.</FORM>
                 <PHON kindOf="original">tawaw</PHON>
                 <FORM kindOf="standard">tawaw.</FORM>
                 <PHON kindOf="standard">tawaw</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">工作</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">work</TRANSL>
             </M>
         </W>
     </S>

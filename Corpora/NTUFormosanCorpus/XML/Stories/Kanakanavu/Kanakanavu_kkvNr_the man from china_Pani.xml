@@ -1131,7 +1131,7 @@
                 <FORM kindOf="standard">cau</FORM>
                 <PHON kindOf="standard">ʦau</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">人</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">person</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">people</TRANSL>
             </M>
         </W>
         <W id="kkvNr_the man from china_Pani_S_43_W2">
@@ -1146,8 +1146,8 @@
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na,</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">屬格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">GEN</TRANSL>
             </M>
         </W>
         <W id="kkvNr_the man from china_Pani_S_43_W3">
@@ -1178,7 +1178,7 @@
                 <PHON kindOf="original">kanakanavu</PHON>
                 <FORM kindOf="standard">Kanakanavu</FORM>
                 <PHON kindOf="standard">kanakanavu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">卡那卡那富人</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">卡那卡那富</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">Kanakanavu</TRANSL>
             </M>
         </W>
@@ -1199,27 +1199,29 @@
             </M>
         </W>
         <W id="kkvNr_the man from china_Pani_S_43_W6">
-            <FORM kindOf="original">ma&lt;tʉ&gt;tʉa</FORM>
+            <FORM kindOf="original">ma-tʉ-tʉa</FORM>
             <PHON kindOf="original">mat*t*a</PHON>
-            <FORM kindOf="standard">ma&lt;tʉ&gt;tʉa</FORM>
+            <FORM kindOf="standard">ma-tʉ-tʉa</FORM>
             <PHON kindOf="standard">matɨtɨa</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;一樣.主焦</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;be.the.same.AF</TRANSL>
-            <M id="kkvNr_the man from china_Pani_S_43_W6M0_0">
-                <FORM kindOf="original">-tʉ-</FORM>
-                <PHON kindOf="original">t*</PHON>
-                <FORM kindOf="standard">-tʉ-</FORM>
-                <PHON kindOf="standard">tɨ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">重疊-一樣.主焦</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">RED-be.the.same.AF</TRANSL>
+            <M id="kkvNr_the man from china_Pani_S_43_W6M0">
+                <FORM kindOf="original">ma</FORM>
+                <PHON kindOf="original">ma</PHON>
+                <FORM kindOf="standard">ma</FORM>
+                <PHON kindOf="standard">ma</PHON>
             </M>
-            <M id="kkvNr_the man from china_Pani_S_43_W6M0_1">
-                <FORM kindOf="original">ma-tʉa</FORM>
-                <PHON kindOf="original">mat*a</PHON>
-                <FORM kindOf="standard">ma-tʉa</FORM>
-                <PHON kindOf="standard">matɨa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">一樣.主焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">be.the.same.AF</TRANSL>
+            <M id="kkvNr_the man from china_Pani_S_43_W6M1">
+                <FORM kindOf="original">tʉ</FORM>
+                <PHON kindOf="original">t*</PHON>
+                <FORM kindOf="standard">tʉ</FORM>
+                <PHON kindOf="standard">tɨ</PHON>
+            </M>
+            <M id="kkvNr_the man from china_Pani_S_43_W6M2">
+                <FORM kindOf="original">tʉa</FORM>
+                <PHON kindOf="original">t*a</PHON>
+                <FORM kindOf="standard">tʉa</FORM>
+                <PHON kindOf="standard">tɨa</PHON>
             </M>
         </W>
         <W id="kkvNr_the man from china_Pani_S_43_W7">
@@ -1525,7 +1527,7 @@
             <PHON kindOf="original">mokusa</PHON>
             <FORM kindOf="standard">m-o-kusa</FORM>
             <PHON kindOf="standard">mokusa</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主焦-去-朝向</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">主焦-去</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-go-toward</TRANSL>
             <M id="kkvNr_the man from china_Pani_S_55_W6M0">
                 <FORM kindOf="original">m</FORM>
@@ -1548,7 +1550,6 @@
                 <PHON kindOf="original">kusa</PHON>
                 <FORM kindOf="standard">kusa</FORM>
                 <PHON kindOf="standard">kusa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">朝向</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">toward</TRANSL>
             </M>
         </W>
@@ -2371,14 +2372,14 @@
             <PHON kindOf="original">niaranaiku</PHON>
             <FORM kindOf="standard">ni-aranai=ku,</FORM>
             <PHON kindOf="standard">nia[r|ɾ]anaiku</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">過去-從.主焦=1SG.主格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">從.主焦=1SG.主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">PFV-from.AF=1SG.NOM</TRANSL>
             <M id="kkvNr_the man from china_Pani_S_81_W3M0">
                 <FORM kindOf="original">ni</FORM>
                 <PHON kindOf="original">ni</PHON>
                 <FORM kindOf="standard">ni</FORM>
                 <PHON kindOf="standard">ni</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">從.主焦</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
             </M>
             <M id="kkvNr_the man from china_Pani_S_81_W3M1">
@@ -2386,7 +2387,7 @@
                 <PHON kindOf="original">aranai</PHON>
                 <FORM kindOf="standard">aranai</FORM>
                 <PHON kindOf="standard">a[r|ɾ]anai</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">從.主焦</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1SG.主格</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">from.AF</TRANSL>
             </M>
             <M id="kkvNr_the man from china_Pani_S_81_W3M2">
@@ -2394,7 +2395,6 @@
                 <PHON kindOf="original">ku</PHON>
                 <FORM kindOf="standard">=ku,</FORM>
                 <PHON kindOf="standard">ku</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">1SG.主格</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">1SG.NOM</TRANSL>
             </M>
         </W>
@@ -2660,14 +2660,14 @@
             <PHON kindOf="original">us*pat*</PHON>
             <FORM kindOf="standard">u-sʉpatʉ.</FORM>
             <PHON kindOf="standard">usɨpatɨ</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">非人-四</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">四</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">NHUM-four</TRANSL>
             <M id="kkvNr_the man from china_Pani_S_86_W12M0">
                 <FORM kindOf="original">u</FORM>
                 <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">u</FORM>
                 <PHON kindOf="standard">u</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">非人</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">四</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">NHUM</TRANSL>
             </M>
             <M id="kkvNr_the man from china_Pani_S_86_W12M1">
@@ -2675,7 +2675,6 @@
                 <PHON kindOf="original">s*pat*</PHON>
                 <FORM kindOf="standard">sʉpatʉ.</FORM>
                 <PHON kindOf="standard">sɨpatɨ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">四</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">four</TRANSL>
             </M>
         </W>
@@ -3548,29 +3547,21 @@
             </M>
         </W>
         <W id="kkvNr_the man from china_Pani_S_104_W11">
-            <FORM kindOf="original">m-ari-sinatʉ</FORM>
+            <FORM kindOf="original">mari-sinatʉ</FORM>
             <PHON kindOf="original">marisinat*</PHON>
-            <FORM kindOf="standard">m-ari-sinatʉ</FORM>
+            <FORM kindOf="standard">mari-sinatʉ</FORM>
             <PHON kindOf="standard">ma[r|ɾ]isinatɨ</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主焦-拿-紙張</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">AF-take-paper</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">主焦.拿-紙張</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">AF.take-paper</TRANSL>
             <M id="kkvNr_the man from china_Pani_S_104_W11M0">
-                <FORM kindOf="original">m</FORM>
-                <PHON kindOf="original">m</PHON>
-                <FORM kindOf="standard">m</FORM>
-                <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
+                <FORM kindOf="original">mari</FORM>
+                <PHON kindOf="original">mari</PHON>
+                <FORM kindOf="standard">mari</FORM>
+                <PHON kindOf="standard">ma[r|ɾ]i</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">主焦.拿</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AF.take</TRANSL>
             </M>
             <M id="kkvNr_the man from china_Pani_S_104_W11M1">
-                <FORM kindOf="original">ari</FORM>
-                <PHON kindOf="original">ari</PHON>
-                <FORM kindOf="standard">ari</FORM>
-                <PHON kindOf="standard">a[r|ɾ]i</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">拿</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">take</TRANSL>
-            </M>
-            <M id="kkvNr_the man from china_Pani_S_104_W11M2">
                 <FORM kindOf="original">sinatʉ</FORM>
                 <PHON kindOf="original">sinat*</PHON>
                 <FORM kindOf="standard">sinatʉ</FORM>
@@ -4521,35 +4512,26 @@
             </M>
         </W>
         <W id="kkvNr_the man from china_Pani_S_128_W2">
-            <FORM kindOf="original">m-ari-siki,</FORM>
+            <FORM kindOf="original">mari-siki,</FORM>
             <PHON kindOf="original">marisiki</PHON>
-            <FORM kindOf="standard">m-ari-siki,</FORM>
+            <FORM kindOf="standard">mari-siki,</FORM>
             <PHON kindOf="standard">ma[r|ɾ]isiki</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主焦-拿-打掃</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">AF-take-clean</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">打掃.主焦</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">take-clean.AF</TRANSL>
             <M id="kkvNr_the man from china_Pani_S_128_W2M0">
-                <FORM kindOf="original">m</FORM>
-                <PHON kindOf="original">m</PHON>
-                <FORM kindOf="standard">m</FORM>
-                <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
-            </M>
-            <M id="kkvNr_the man from china_Pani_S_128_W2M1">
-                <FORM kindOf="original">ari</FORM>
-                <PHON kindOf="original">ari</PHON>
-                <FORM kindOf="standard">ari</FORM>
-                <PHON kindOf="standard">a[r|ɾ]i</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">拿</TRANSL>
+                <FORM kindOf="original">mari</FORM>
+                <PHON kindOf="original">mari</PHON>
+                <FORM kindOf="standard">mari</FORM>
+                <PHON kindOf="standard">ma[r|ɾ]i</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">打掃.主焦</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">take</TRANSL>
             </M>
-            <M id="kkvNr_the man from china_Pani_S_128_W2M2">
+            <M id="kkvNr_the man from china_Pani_S_128_W2M1">
                 <FORM kindOf="original">siki,</FORM>
                 <PHON kindOf="original">siki</PHON>
                 <FORM kindOf="standard">siki,</FORM>
                 <PHON kindOf="standard">siki</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">打掃</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">clean</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">clean.AF</TRANSL>
             </M>
         </W>
         <W id="kkvNr_the man from china_Pani_S_128_W3">
@@ -4618,7 +4600,7 @@
             <PHON kindOf="original">patiman*ŋ*nk[e|ə][e|ə]</PHON>
             <FORM kindOf="standard">pati-manʉng-ʉn=kee,</FORM>
             <PHON kindOf="standard">patimanɨŋɨnkee</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">致使-好-受焦=3SG.屬格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">致使-好.受焦=3SG.屬格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">CAU-good-PF=3SG.GEN</TRANSL>
             <M id="kkvNr_the man from china_Pani_S_131_W0M0">
                 <FORM kindOf="original">pati</FORM>
@@ -4633,7 +4615,7 @@
                 <PHON kindOf="original">man*ŋ</PHON>
                 <FORM kindOf="standard">manʉng</FORM>
                 <PHON kindOf="standard">manɨŋ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">好</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">好.受焦</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">good</TRANSL>
             </M>
             <M id="kkvNr_the man from china_Pani_S_131_W0M2">
@@ -4641,7 +4623,7 @@
                 <PHON kindOf="original">*n</PHON>
                 <FORM kindOf="standard">ʉn</FORM>
                 <PHON kindOf="standard">ɨn</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">受焦</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">3SG.屬格</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">PF</TRANSL>
             </M>
             <M id="kkvNr_the man from china_Pani_S_131_W0M3">
@@ -4649,7 +4631,6 @@
                 <PHON kindOf="original">k[e|ə][e|ə]</PHON>
                 <FORM kindOf="standard">=kee,</FORM>
                 <PHON kindOf="standard">kee</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">3SG.屬格</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">3SG.GEN</TRANSL>
             </M>
         </W>
@@ -4843,7 +4824,7 @@
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AVAF</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
             </M>
             <M id="kkvNr_the man from china_Pani_S_137_W2M1">
                 <FORM kindOf="original">okusa</FORM>
@@ -4851,7 +4832,7 @@
                 <FORM kindOf="standard">okusa</FORM>
                 <PHON kindOf="standard">okusa</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">去</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">go.toward</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">go</TRANSL>
             </M>
         </W>
         <W id="kkvNr_the man from china_Pani_S_137_W3">
@@ -4859,8 +4840,6 @@
             <PHON kindOf="original">**</PHON>
             <FORM kindOf="standard">XX</FORM>
             <PHON kindOf="standard">**</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
             <M id="kkvNr_the man from china_Pani_S_137_W3M0">
                 <FORM kindOf="original">XX</FORM>
                 <PHON kindOf="original">**</PHON>
@@ -4882,8 +4861,8 @@
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na,</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">屬格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">GEN</TRANSL>
             </M>
         </W>
         <W id="kkvNr_the man from china_Pani_S_137_W5">
@@ -4907,31 +4886,25 @@
             <PHON kindOf="original">tarisinat*</PHON>
             <FORM kindOf="standard">ta-ri-sinatʉ,</FORM>
             <PHON kindOf="standard">ta[r|ɾ]isinatɨ</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">TA-拿-書</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">TA-take-book</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">TA-拿-書-A學校</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">TA-take-book-Aschool</TRANSL>
             <M id="kkvNr_the man from china_Pani_S_137_W6M0">
                 <FORM kindOf="original">ta</FORM>
                 <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">TA</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">TA</TRANSL>
             </M>
             <M id="kkvNr_the man from china_Pani_S_137_W6M1">
                 <FORM kindOf="original">ri</FORM>
                 <PHON kindOf="original">ri</PHON>
                 <FORM kindOf="standard">ri</FORM>
                 <PHON kindOf="standard">[r|ɾ]i</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">拿</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">take</TRANSL>
             </M>
             <M id="kkvNr_the man from china_Pani_S_137_W6M2">
                 <FORM kindOf="original">sinatʉ,</FORM>
                 <PHON kindOf="original">sinat*</PHON>
                 <FORM kindOf="standard">sinatʉ,</FORM>
                 <PHON kindOf="standard">sinatɨ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">書</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">book</TRANSL>
             </M>
         </W>
         <W id="kkvNr_the man from china_Pani_S_137_W7">
@@ -4962,7 +4935,7 @@
                 <PHON kindOf="original">t[e|ə]</PHON>
                 <FORM kindOf="standard">te</FORM>
                 <PHON kindOf="standard">te</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">未實現</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">IRR</TRANSL>
             </M>
             <M id="kkvNr_the man from china_Pani_S_137_W8M1">
@@ -4970,7 +4943,7 @@
                 <PHON kindOf="original">ʦu</PHON>
                 <FORM kindOf="standard">=cu</FORM>
                 <PHON kindOf="standard">ʦu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">COS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">狀態改變</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             </M>
         </W>
@@ -4986,8 +4959,8 @@
                 <PHON kindOf="original">iovutu</PHON>
                 <FORM kindOf="standard">iovutu</FORM>
                 <PHON kindOf="standard">iovutu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">來.主焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">come.AF</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">來</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">come</TRANSL>
             </M>
         </W>
         <W id="kkvNr_the man from china_Pani_S_137_W10">
@@ -5458,19 +5431,23 @@
         <TRANSL xml:lang="eng" notes="If you say “Good morning,” how (can I) say it?">If you say "Good morning," how say it?</TRANSL>
         <AUDIO file="kkvNr_the man from china_Pani_S151.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_the man from china_Pani.mp3" start="340.99" end="347.62"/>
         <W id="kkvNr_the man from china_Pani_S_151_W0">
-            <FORM kindOf="original">ketuturu</FORM>
+            <FORM kindOf="original">ke-tuturu</FORM>
             <PHON kindOf="original">k[e|ə]tuturu</PHON>
-            <FORM kindOf="standard">ketuturu</FORM>
+            <FORM kindOf="standard">ke-tuturu</FORM>
             <PHON kindOf="standard">ketutu[r|ɾ]u</PHON>
             <TRANSL xml:lang="zho" kindOf="original">學習</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">learn</TRANSL>
             <M id="kkvNr_the man from china_Pani_S_151_W0M0">
-                <FORM kindOf="original">ketuturu</FORM>
-                <PHON kindOf="original">k[e|ə]tuturu</PHON>
-                <FORM kindOf="standard">ketuturu</FORM>
-                <PHON kindOf="standard">ketutu[r|ɾ]u</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">學習</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">learn</TRANSL>
+                <FORM kindOf="original">ke</FORM>
+                <PHON kindOf="original">k[e|ə]</PHON>
+                <FORM kindOf="standard">ke</FORM>
+                <PHON kindOf="standard">ke</PHON>
+            </M>
+            <M id="kkvNr_the man from china_Pani_S_151_W0M1">
+                <FORM kindOf="original">tuturu</FORM>
+                <PHON kindOf="original">tuturu</PHON>
+                <FORM kindOf="standard">tuturu</FORM>
+                <PHON kindOf="standard">tutu[r|ɾ]u</PHON>
             </M>
         </W>
         <W id="kkvNr_the man from china_Pani_S_151_W1">
@@ -5557,8 +5534,8 @@
                 <PHON kindOf="original">mis[e|ə][e|ə]</PHON>
                 <FORM kindOf="standard">misee.</FORM>
                 <PHON kindOf="standard">misee</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">說.主焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">say.AF</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">說</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">say</TRANSL>
             </M>
         </W>
     </S>
@@ -7025,60 +7002,47 @@
         </W>
     </S>
     <S id="kkvNr_the man from china_Pani_S_186">
-        <FORM kindOf="original" notes="tarisinita一詞由ta-ari-sinitʉ-a所組成。">matisa'ʉ kimia ah, avicin, mavici ʉngcoo oh manu tati'ing, umavici na, taarisinita.</FORM>
-        <PHON kindOf="original">matisaʔ* kimia a* aviʦin maviʦi *ŋʦoo o* manu tatiʔiŋ umaviʦi na taarisinita</PHON>
-        <FORM kindOf="standard">matisa'ʉ kimia ah, avicin, mavici ʉngcoo oh manu tati'ing, umavici na, taarisinita.</FORM>
-        <PHON kindOf="standard">matisaʔɨ kimia ah aviʦin maviʦi ɨŋʦoo oh manu tatiʔiŋ umaviʦi na taa[r|ɾ]isinita</PHON>
+        <FORM kindOf="original" notes="tarisinita一詞由ta-ari-sinitʉ-a所組成。">matisa'ʉkimia ah, avicin, mavici ʉngcoo oh manu tati'ing, umavici na, taarisinita.</FORM>
+        <PHON kindOf="original">matisaʔ*kimia a* aviʦin maviʦi *ŋʦoo o* manu tatiʔiŋ umaviʦi na taarisinita</PHON>
+        <FORM kindOf="standard">matisa'ʉkimia ah, avicin, mavici ʉngcoo oh manu tati'ing, umavici na, taarisinita.</FORM>
+        <PHON kindOf="standard">matisaʔɨkimia ah aviʦin maviʦi ɨŋʦoo oh manu tatiʔiŋ umaviʦi na taa[r|ɾ]isinita</PHON>
         <TRANSL xml:lang="zho">抓著我們喔，帶著小朋友到學校。</TRANSL>
         <TRANSL xml:lang="eng" notes="grabbing us (the little kids), he brought the little kids to school.">grabbing us , he brought the little kids to school.</TRANSL>
         <AUDIO file="kkvNr_the man from china_Pani_S186.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_the man from china_Pani.mp3" start="415.56" end="426.36"/>
         <W id="kkvNr_the man from china_Pani_S_186_W0">
-            <FORM kindOf="original">m-atisa'ʉ</FORM>
-            <PHON kindOf="original">matisaʔ*</PHON>
-            <FORM kindOf="standard">m-atisa'ʉ</FORM>
-            <PHON kindOf="standard">matisaʔɨ</PHON>
+            <FORM kindOf="original">m-atisa'ʉ=kimia</FORM>
+            <PHON kindOf="original">matisaʔ*kimia</PHON>
+            <FORM kindOf="standard">m-atisa'ʉ=kimia</FORM>
+            <PHON kindOf="standard">matisaʔɨkimia</PHON>
             <TRANSL xml:lang="zho" kindOf="original">抓.主焦</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">AF-grab</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">AF-grab.</TRANSL>
             <M id="kkvNr_the man from china_Pani_S_186_W0M0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">抓.主焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
             </M>
             <M id="kkvNr_the man from china_Pani_S_186_W0M1">
                 <FORM kindOf="original">atisa'ʉ</FORM>
                 <PHON kindOf="original">atisaʔ*</PHON>
                 <FORM kindOf="standard">atisa'ʉ</FORM>
                 <PHON kindOf="standard">atisaʔɨ</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">grab</TRANSL>
             </M>
-        </W>
-        <W id="kkvNr_the man from china_Pani_S_186_W1">
-            <FORM kindOf="original">kimia</FORM>
-            <PHON kindOf="original">kimia</PHON>
-            <FORM kindOf="standard">kimia</FORM>
-            <PHON kindOf="standard">kimia</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">1PL.斜格.排除</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">1PL.OBL.EXCL</TRANSL>
-            <M id="kkvNr_the man from china_Pani_S_186_W1M0">
+            <M id="kkvNr_the man from china_Pani_S_186_W0M2">
                 <FORM kindOf="original">kimia</FORM>
                 <PHON kindOf="original">kimia</PHON>
                 <FORM kindOf="standard">kimia</FORM>
                 <PHON kindOf="standard">kimia</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">1PL.斜格.排除</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">1PL.OBL.EXCL</TRANSL>
             </M>
         </W>
-        <W id="kkvNr_the man from china_Pani_S_186_W2">
+        <W id="kkvNr_the man from china_Pani_S_186_W1">
             <FORM kindOf="original">ah,</FORM>
             <PHON kindOf="original">a*</PHON>
             <FORM kindOf="standard">ah,</FORM>
             <PHON kindOf="standard">ah</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
-            <M id="kkvNr_the man from china_Pani_S_186_W2M0">
+            <TRANSL xml:lang="zho" kindOf="original">1PL.斜格.排除</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">1PL.OBL.EXCL</TRANSL>
+            <M id="kkvNr_the man from china_Pani_S_186_W1M0">
                 <FORM kindOf="original">ah,</FORM>
                 <PHON kindOf="original">a*</PHON>
                 <FORM kindOf="standard">ah,</FORM>
@@ -7087,14 +7051,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             </M>
         </W>
-        <W id="kkvNr_the man from china_Pani_S_186_W3">
+        <W id="kkvNr_the man from china_Pani_S_186_W2">
             <FORM kindOf="original">avic-in,</FORM>
             <PHON kindOf="original">aviʦin</PHON>
             <FORM kindOf="standard">avic-in,</FORM>
             <PHON kindOf="standard">aviʦin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">帶-受焦.過去</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">bring-PF.PAST</TRANSL>
-            <M id="kkvNr_the man from china_Pani_S_186_W3M0">
+            <M id="kkvNr_the man from china_Pani_S_186_W2M0">
                 <FORM kindOf="original">avic</FORM>
                 <PHON kindOf="original">aviʦ</PHON>
                 <FORM kindOf="standard">avic</FORM>
@@ -7102,7 +7066,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">帶</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">bring</TRANSL>
             </M>
-            <M id="kkvNr_the man from china_Pani_S_186_W3M1">
+            <M id="kkvNr_the man from china_Pani_S_186_W2M1">
                 <FORM kindOf="original">in,</FORM>
                 <PHON kindOf="original">in</PHON>
                 <FORM kindOf="standard">in,</FORM>
@@ -7111,54 +7075,54 @@
                 <TRANSL xml:lang="eng" kindOf="original">PF.PAST</TRANSL>
             </M>
         </W>
-        <W id="kkvNr_the man from china_Pani_S_186_W4">
+        <W id="kkvNr_the man from china_Pani_S_186_W3">
             <FORM kindOf="original">m-avici</FORM>
             <PHON kindOf="original">maviʦi</PHON>
             <FORM kindOf="standard">m-avici</FORM>
             <PHON kindOf="standard">maviʦi</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦-帶</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-bring</TRANSL>
-            <M id="kkvNr_the man from china_Pani_S_186_W4M0">
+            <M id="kkvNr_the man from china_Pani_S_186_W3M0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
             </M>
-            <M id="kkvNr_the man from china_Pani_S_186_W4M1">
+            <M id="kkvNr_the man from china_Pani_S_186_W3M1">
                 <FORM kindOf="original">avici</FORM>
                 <PHON kindOf="original">aviʦi</PHON>
                 <FORM kindOf="standard">avici</FORM>
                 <PHON kindOf="standard">aviʦi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">帶</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">攜帶</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">bring</TRANSL>
             </M>
         </W>
-        <W id="kkvNr_the man from china_Pani_S_186_W5">
+        <W id="kkvNr_the man from china_Pani_S_186_W4">
             <FORM kindOf="original">ʉngcoo</FORM>
             <PHON kindOf="original">*ŋʦoo</PHON>
             <FORM kindOf="standard">ʉngcoo</FORM>
             <PHON kindOf="standard">ɨŋʦoo</PHON>
             <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
-            <M id="kkvNr_the man from china_Pani_S_186_W5M0">
+            <M id="kkvNr_the man from china_Pani_S_186_W4M0">
                 <FORM kindOf="original">ʉngcoo</FORM>
                 <PHON kindOf="original">*ŋʦoo</PHON>
                 <FORM kindOf="standard">ʉngcoo</FORM>
                 <PHON kindOf="standard">ɨŋʦoo</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
             </M>
         </W>
-        <W id="kkvNr_the man from china_Pani_S_186_W6">
+        <W id="kkvNr_the man from china_Pani_S_186_W5">
             <FORM kindOf="original">oh</FORM>
             <PHON kindOf="original">o*</PHON>
             <FORM kindOf="standard">oh</FORM>
             <PHON kindOf="standard">oh</PHON>
             <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
-            <M id="kkvNr_the man from china_Pani_S_186_W6M0">
+            <M id="kkvNr_the man from china_Pani_S_186_W5M0">
                 <FORM kindOf="original">oh</FORM>
                 <PHON kindOf="original">o*</PHON>
                 <FORM kindOf="standard">oh</FORM>
@@ -7167,54 +7131,54 @@
                 <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             </M>
         </W>
-        <W id="kkvNr_the man from china_Pani_S_186_W7">
+        <W id="kkvNr_the man from china_Pani_S_186_W6">
             <FORM kindOf="original">manu</FORM>
             <PHON kindOf="original">manu</PHON>
             <FORM kindOf="standard">manu</FORM>
             <PHON kindOf="standard">manu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">小孩</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">kid</TRANSL>
-            <M id="kkvNr_the man from china_Pani_S_186_W7M0">
+            <M id="kkvNr_the man from china_Pani_S_186_W6M0">
                 <FORM kindOf="original">manu</FORM>
                 <PHON kindOf="original">manu</PHON>
                 <FORM kindOf="standard">manu</FORM>
                 <PHON kindOf="standard">manu</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">小孩</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">kid</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">child</TRANSL>
             </M>
         </W>
-        <W id="kkvNr_the man from china_Pani_S_186_W8">
+        <W id="kkvNr_the man from china_Pani_S_186_W7">
             <FORM kindOf="original">ta-ti'ing,</FORM>
             <PHON kindOf="original">tatiʔiŋ</PHON>
             <FORM kindOf="standard">ta-ti'ing,</FORM>
             <PHON kindOf="standard">tatiʔiŋ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">Ca重疊-小的</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">Ca-little</TRANSL>
-            <M id="kkvNr_the man from china_Pani_S_186_W8M0">
+            <M id="kkvNr_the man from china_Pani_S_186_W7M0">
                 <FORM kindOf="original">ta</FORM>
                 <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">Ca重疊</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">Ca</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">重疊</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
             </M>
-            <M id="kkvNr_the man from china_Pani_S_186_W8M1">
+            <M id="kkvNr_the man from china_Pani_S_186_W7M1">
                 <FORM kindOf="original">ti'ing,</FORM>
                 <PHON kindOf="original">tiʔiŋ</PHON>
                 <FORM kindOf="standard">ti'ing,</FORM>
                 <PHON kindOf="standard">tiʔiŋ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">小的</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">小</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">little</TRANSL>
             </M>
         </W>
-        <W id="kkvNr_the man from china_Pani_S_186_W9">
+        <W id="kkvNr_the man from china_Pani_S_186_W8">
             <FORM kindOf="original">u-mavici</FORM>
             <PHON kindOf="original">umaviʦi</PHON>
             <FORM kindOf="standard">u-mavici</FORM>
             <PHON kindOf="standard">umaviʦi</PHON>
             <TRANSL xml:lang="zho" kindOf="original">PROG-帶.主焦</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">PROG-bring.AF</TRANSL>
-            <M id="kkvNr_the man from china_Pani_S_186_W9M0">
+            <M id="kkvNr_the man from china_Pani_S_186_W8M0">
                 <FORM kindOf="original">u</FORM>
                 <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">u</FORM>
@@ -7222,7 +7186,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">PROG</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">PROG</TRANSL>
             </M>
-            <M id="kkvNr_the man from china_Pani_S_186_W9M1">
+            <M id="kkvNr_the man from china_Pani_S_186_W8M1">
                 <FORM kindOf="original">mavici</FORM>
                 <PHON kindOf="original">maviʦi</PHON>
                 <FORM kindOf="standard">mavici</FORM>
@@ -7231,30 +7195,30 @@
                 <TRANSL xml:lang="eng" kindOf="original">bring.AF</TRANSL>
             </M>
         </W>
-        <W id="kkvNr_the man from china_Pani_S_186_W10">
+        <W id="kkvNr_the man from china_Pani_S_186_W9">
             <FORM kindOf="original">na,</FORM>
             <PHON kindOf="original">na</PHON>
             <FORM kindOf="standard">na,</FORM>
             <PHON kindOf="standard">na</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
-            <M id="kkvNr_the man from china_Pani_S_186_W10M0">
+            <M id="kkvNr_the man from china_Pani_S_186_W9M0">
                 <FORM kindOf="original">na,</FORM>
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na,</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">屬格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">GEN</TRANSL>
             </M>
         </W>
-        <W id="kkvNr_the man from china_Pani_S_186_W11">
+        <W id="kkvNr_the man from china_Pani_S_186_W10">
             <FORM kindOf="original">ta-ari-sinit-a.</FORM>
             <PHON kindOf="original">taarisinita</PHON>
             <FORM kindOf="standard">ta-ari-sinit-a.</FORM>
             <PHON kindOf="standard">taa[r|ɾ]isinita</PHON>
             <TRANSL xml:lang="zho" kindOf="original">TA-拿-書-A</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">TA-take-book-A</TRANSL>
-            <M id="kkvNr_the man from china_Pani_S_186_W11M0">
+            <M id="kkvNr_the man from china_Pani_S_186_W10M0">
                 <FORM kindOf="original">ta</FORM>
                 <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">ta</FORM>
@@ -7262,7 +7226,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">TA</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">TA</TRANSL>
             </M>
-            <M id="kkvNr_the man from china_Pani_S_186_W11M1">
+            <M id="kkvNr_the man from china_Pani_S_186_W10M1">
                 <FORM kindOf="original">ari</FORM>
                 <PHON kindOf="original">ari</PHON>
                 <FORM kindOf="standard">ari</FORM>
@@ -7270,7 +7234,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">拿</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">take</TRANSL>
             </M>
-            <M id="kkvNr_the man from china_Pani_S_186_W11M2">
+            <M id="kkvNr_the man from china_Pani_S_186_W10M2">
                 <FORM kindOf="original">sinit</FORM>
                 <PHON kindOf="original">sinit</PHON>
                 <FORM kindOf="standard">sinit</FORM>
@@ -7278,7 +7242,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">書</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">book</TRANSL>
             </M>
-            <M id="kkvNr_the man from china_Pani_S_186_W11M3">
+            <M id="kkvNr_the man from china_Pani_S_186_W10M3">
                 <FORM kindOf="original">a.</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a.</FORM>
@@ -8097,16 +8061,6 @@
             <PHON kindOf="original">**</PHON>
             <FORM kindOf="standard">XX</FORM>
             <PHON kindOf="standard">**</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
-            <M id="kkvNr_the man from china_Pani_S_204_W2M0">
-                <FORM kindOf="original">XX</FORM>
-                <PHON kindOf="original">**</PHON>
-                <FORM kindOf="standard">XX</FORM>
-                <PHON kindOf="standard">**</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
-            </M>
         </W>
         <W id="kkvNr_the man from china_Pani_S_204_W3">
             <FORM kindOf="original">ni-arakukun=mia,</FORM>
@@ -8662,12 +8616,12 @@
             </M>
         </W>
         <W id="kkvNr_the man from china_Pani_S_213_W5">
-            <FORM kindOf="original">m-o-kusa</FORM>
+            <FORM kindOf="original">m-okusa</FORM>
             <PHON kindOf="original">mokusa</PHON>
-            <FORM kindOf="standard">m-o-kusa</FORM>
+            <FORM kindOf="standard">m-okusa</FORM>
             <PHON kindOf="standard">mokusa</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主焦-去-朝向</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">AF-go-toward</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">主焦-去</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">AF-go.toward</TRANSL>
             <M id="kkvNr_the man from china_Pani_S_213_W5M0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
@@ -8677,20 +8631,12 @@
                 <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
             </M>
             <M id="kkvNr_the man from china_Pani_S_213_W5M1">
-                <FORM kindOf="original">o</FORM>
-                <PHON kindOf="original">o</PHON>
-                <FORM kindOf="standard">o</FORM>
-                <PHON kindOf="standard">o</PHON>
+                <FORM kindOf="original">okusa</FORM>
+                <PHON kindOf="original">okusa</PHON>
+                <FORM kindOf="standard">okusa</FORM>
+                <PHON kindOf="standard">okusa</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">去</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">go</TRANSL>
-            </M>
-            <M id="kkvNr_the man from china_Pani_S_213_W5M2">
-                <FORM kindOf="original">kusa</FORM>
-                <PHON kindOf="original">kusa</PHON>
-                <FORM kindOf="standard">kusa</FORM>
-                <PHON kindOf="standard">kusa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">朝向</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">toward</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">go.toward</TRANSL>
             </M>
         </W>
         <W id="kkvNr_the man from china_Pani_S_213_W6">

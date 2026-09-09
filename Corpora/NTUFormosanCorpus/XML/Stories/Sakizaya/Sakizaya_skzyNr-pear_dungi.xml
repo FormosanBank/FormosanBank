@@ -195,28 +195,12 @@
         <TRANSL xml:lang="eng">Two baskets were full of guavas he picked.</TRANSL>
         <AUDIO file="skzyNr-pear_dungi_S3.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/skzyNr-pear_dungi.mp3" start="5.4" end="10.29"/>
         <W id="skzyNr-pear_dungi_S_3_W0">
-            <FORM kindOf="original">tusa=tu,</FORM>
+            <FORM kindOf="original">tusatu,</FORM>
             <PHON kindOf="original">tusatu</PHON>
-            <FORM kindOf="standard">tusa=tu,</FORM>
+            <FORM kindOf="standard">tusatu,</FORM>
             <PHON kindOf="standard">tusatu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">二=完成貌</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">two=PFV</TRANSL>
-            <M id="skzyNr-pear_dungi_S_3_W0M0">
-                <FORM kindOf="original">tusa</FORM>
-                <PHON kindOf="original">tusa</PHON>
-                <FORM kindOf="standard">tusa</FORM>
-                <PHON kindOf="standard">tusa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">二</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">two</TRANSL>
-            </M>
-            <M id="skzyNr-pear_dungi_S_3_W0M1">
-                <FORM kindOf="original">=tu,</FORM>
-                <PHON kindOf="original">tu</PHON>
-                <FORM kindOf="standard">=tu,</FORM>
-                <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">完成貌</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
-            </M>
         </W>
         <W id="skzyNr-pear_dungi_S_3_W1">
             <FORM kindOf="original">ku</FORM>
@@ -262,8 +246,8 @@
                 <PHON kindOf="original">aj</PHON>
                 <FORM kindOf="standard">ay</FORM>
                 <PHON kindOf="standard">aj</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">名物化</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">NMZ</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">AY</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AY</TRANSL>
             </M>
         </W>
         <W id="skzyNr-pear_dungi_S_3_W3">
@@ -310,8 +294,8 @@
                 <PHON kindOf="original">kuni</PHON>
                 <FORM kindOf="standard">kuni</FORM>
                 <PHON kindOf="standard">kuni</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主格.這個</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">NOM.this</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">這個.主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">this.NOM</TRANSL>
             </M>
         </W>
         <W id="skzyNr-pear_dungi_S_3_W6">
@@ -350,8 +334,8 @@
                 <PHON kindOf="original">niza</PHON>
                 <FORM kindOf="standard">niza.</FORM>
                 <PHON kindOf="standard">niza</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">3SG屬格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">3SGGEN</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">3SG.屬格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">3SG.GEN</TRANSL>
             </M>
         </W>
     </S>
@@ -1425,12 +1409,12 @@
             </M>
         </W>
         <W id="skzyNr-pear_dungi_S_18_W9">
-            <FORM kindOf="original">a-mumul</FORM>
+            <FORM kindOf="original">a=mumul</FORM>
             <PHON kindOf="original">amumu[r|ɾ]</PHON>
-            <FORM kindOf="standard">a-mumul</FORM>
+            <FORM kindOf="standard">a=mumul</FORM>
             <PHON kindOf="standard">amumu[r|ɾ]</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">表未來-走</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">FUT-walk</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">表未來=走</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FUT=walk</TRANSL>
             <M id="skzyNr-pear_dungi_S_18_W9M0">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
@@ -1440,9 +1424,9 @@
                 <TRANSL xml:lang="eng" kindOf="original">FUT</TRANSL>
             </M>
             <M id="skzyNr-pear_dungi_S_18_W9M1">
-                <FORM kindOf="original">mumul</FORM>
+                <FORM kindOf="original">=mumul</FORM>
                 <PHON kindOf="original">mumu[r|ɾ]</PHON>
-                <FORM kindOf="standard">mumul</FORM>
+                <FORM kindOf="standard">=mumul</FORM>
                 <PHON kindOf="standard">mumu[r|ɾ]</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">走</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">walk</TRANSL>
@@ -4058,7 +4042,7 @@
             <PHON kindOf="original">makabatika[r|ɾ]aj</PHON>
             <FORM kindOf="standard">ma-ka-batikal-ay</FORM>
             <PHON kindOf="standard">makabatika[r|ɾ]aj</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主焦-KA-腳踏車-名物化</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">主焦-KA腳踏車-名物化</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-KA-bicycle-NMZ</TRANSL>
             <M id="skzyNr-pear_dungi_S_52_W4M0">
                 <FORM kindOf="original">ma</FORM>
@@ -4073,7 +4057,7 @@
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">KA</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">KA腳踏車</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">KA</TRANSL>
             </M>
             <M id="skzyNr-pear_dungi_S_52_W4M2">
@@ -4081,7 +4065,7 @@
                 <PHON kindOf="original">batika[r|ɾ]</PHON>
                 <FORM kindOf="standard">batikal</FORM>
                 <PHON kindOf="standard">batika[r|ɾ]</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">腳踏車</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">名物化</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">bicycle</TRANSL>
             </M>
             <M id="skzyNr-pear_dungi_S_52_W4M3">
@@ -4089,7 +4073,6 @@
                 <PHON kindOf="original">aj</PHON>
                 <FORM kindOf="standard">ay</FORM>
                 <PHON kindOf="standard">aj</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">名物化</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">NMZ</TRANSL>
             </M>
         </W>
@@ -4524,8 +4507,8 @@
                 <PHON kindOf="original">sa</PHON>
                 <FORM kindOf="standard">sa</FORM>
                 <PHON kindOf="standard">sa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">說</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">say</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">SA</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">SA</TRANSL>
             </M>
         </W>
         <W id="skzyNr-pear_dungi_S_58_W1">
@@ -4564,48 +4547,34 @@
                 <PHON kindOf="original">kja</PHON>
                 <FORM kindOf="standard">kya</FORM>
                 <PHON kindOf="standard">kja</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主格.那個</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">NOM.that</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">存在</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">EXIST</TRANSL>
             </M>
         </W>
         <W id="skzyNr-pear_dungi_S_58_W3">
-            <FORM kindOf="original">ma-ka-batikal-ay</FORM>
+            <FORM kindOf="original">maka-batikal-ay</FORM>
             <PHON kindOf="original">makabatika[r|ɾ]aj</PHON>
-            <FORM kindOf="standard">ma-ka-batikal-ay</FORM>
+            <FORM kindOf="standard">maka-batikal-ay</FORM>
             <PHON kindOf="standard">makabatika[r|ɾ]aj</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦-KA-腳踏車-名物化</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-KA-bicycle-NMZ</TRANSL>
             <M id="skzyNr-pear_dungi_S_58_W3M0">
-                <FORM kindOf="original">ma</FORM>
-                <PHON kindOf="original">ma</PHON>
-                <FORM kindOf="standard">ma</FORM>
-                <PHON kindOf="standard">ma</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
+                <FORM kindOf="original">maka</FORM>
+                <PHON kindOf="original">maka</PHON>
+                <FORM kindOf="standard">maka</FORM>
+                <PHON kindOf="standard">maka</PHON>
             </M>
             <M id="skzyNr-pear_dungi_S_58_W3M1">
-                <FORM kindOf="original">ka</FORM>
-                <PHON kindOf="original">ka</PHON>
-                <FORM kindOf="standard">ka</FORM>
-                <PHON kindOf="standard">ka</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">KA</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">KA</TRANSL>
-            </M>
-            <M id="skzyNr-pear_dungi_S_58_W3M2">
                 <FORM kindOf="original">batikal</FORM>
                 <PHON kindOf="original">batika[r|ɾ]</PHON>
                 <FORM kindOf="standard">batikal</FORM>
                 <PHON kindOf="standard">batika[r|ɾ]</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">腳踏車</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">bicycle</TRANSL>
             </M>
-            <M id="skzyNr-pear_dungi_S_58_W3M3">
+            <M id="skzyNr-pear_dungi_S_58_W3M2">
                 <FORM kindOf="original">ay</FORM>
                 <PHON kindOf="original">aj</PHON>
                 <FORM kindOf="standard">ay</FORM>
                 <PHON kindOf="standard">aj</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">名物化</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">NMZ</TRANSL>
             </M>
         </W>
         <W id="skzyNr-pear_dungi_S_58_W4">
@@ -4620,7 +4589,7 @@
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">連繫詞</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
@@ -4652,8 +4621,8 @@
                 <PHON kindOf="original">i</PHON>
                 <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">介系詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PREP</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             </M>
         </W>
         <W id="skzyNr-pear_dungi_S_58_W7">
@@ -4684,8 +4653,8 @@
                 <PHON kindOf="original">sa</PHON>
                 <FORM kindOf="standard">sa.</FORM>
                 <PHON kindOf="standard">sa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">SA</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">SA</TRANSL>
             </M>
         </W>
     </S>
@@ -5228,12 +5197,12 @@
             </M>
         </W>
         <W id="skzyNr-pear_dungi_S_63_W12">
-            <FORM kindOf="original">a-mumul</FORM>
+            <FORM kindOf="original">a=mumul</FORM>
             <PHON kindOf="original">amumu[r|ɾ]</PHON>
-            <FORM kindOf="standard">a-mumul</FORM>
+            <FORM kindOf="standard">a=mumul</FORM>
             <PHON kindOf="standard">amumu[r|ɾ]</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">表未來-走</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">FUT-walk</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">表未來=走</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FUT=walk</TRANSL>
             <M id="skzyNr-pear_dungi_S_63_W12M0">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
@@ -5243,9 +5212,9 @@
                 <TRANSL xml:lang="eng" kindOf="original">FUT</TRANSL>
             </M>
             <M id="skzyNr-pear_dungi_S_63_W12M1">
-                <FORM kindOf="original">mumul</FORM>
+                <FORM kindOf="original">=mumul</FORM>
                 <PHON kindOf="original">mumu[r|ɾ]</PHON>
-                <FORM kindOf="standard">mumul</FORM>
+                <FORM kindOf="standard">=mumul</FORM>
                 <PHON kindOf="standard">mumu[r|ɾ]</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">走</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">walk</TRANSL>
@@ -5614,12 +5583,12 @@
         <TRANSL xml:lang="eng">Three people who were walking passed the place where the old man was.</TRANSL>
         <AUDIO file="skzyNr-pear_dungi_S69.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/skzyNr-pear_dungi.mp3" start="131.78" end="135.65"/>
         <W id="skzyNr-pear_dungi_S_69_W0">
-            <FORM kindOf="original">a-mi-caliw-ay</FORM>
+            <FORM kindOf="original">a=mi-caliw-ay</FORM>
             <PHON kindOf="original">amiʦa[r|ɾ]iwaj</PHON>
-            <FORM kindOf="standard">a-mi-caliw-ay</FORM>
+            <FORM kindOf="standard">a=mi-caliw-ay</FORM>
             <PHON kindOf="standard">amiʦa[r|ɾ]iwaj</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">表未來-主焦-經過-名物化</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">FUT-AF-pass-NMZ</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">表未來=主焦-經過-名物化</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FUT=AF-pass-NMZ</TRANSL>
             <M id="skzyNr-pear_dungi_S_69_W0M0">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
@@ -5629,9 +5598,9 @@
                 <TRANSL xml:lang="eng" kindOf="original">FUT</TRANSL>
             </M>
             <M id="skzyNr-pear_dungi_S_69_W0M1">
-                <FORM kindOf="original">mi</FORM>
+                <FORM kindOf="original">=mi</FORM>
                 <PHON kindOf="original">mi</PHON>
-                <FORM kindOf="standard">mi</FORM>
+                <FORM kindOf="standard">=mi</FORM>
                 <PHON kindOf="standard">mi</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
@@ -6049,12 +6018,12 @@
         <TRANSL xml:lang="eng">I had three baskets, didn't I?</TRANSL>
         <AUDIO file="skzyNr-pear_dungi_S75.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/skzyNr-pear_dungi.mp3" start="142.65" end="144.8"/>
         <W id="skzyNr-pear_dungi_S_75_W0">
-            <FORM kindOf="original">na-tulu</FORM>
+            <FORM kindOf="original">na=tulu</FORM>
             <PHON kindOf="original">natu[r|ɾ]u</PHON>
-            <FORM kindOf="standard">na-tulu</FORM>
+            <FORM kindOf="standard">na=tulu</FORM>
             <PHON kindOf="standard">natu[r|ɾ]u</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">表過去-三</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">PAST-three</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">表過去=三</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">PAST=three</TRANSL>
             <M id="skzyNr-pear_dungi_S_75_W0M0">
                 <FORM kindOf="original">na</FORM>
                 <PHON kindOf="original">na</PHON>
@@ -6064,9 +6033,9 @@
                 <TRANSL xml:lang="eng" kindOf="original">PAST</TRANSL>
             </M>
             <M id="skzyNr-pear_dungi_S_75_W0M1">
-                <FORM kindOf="original">tulu</FORM>
+                <FORM kindOf="original">=tulu</FORM>
                 <PHON kindOf="original">tu[r|ɾ]u</PHON>
-                <FORM kindOf="standard">tulu</FORM>
+                <FORM kindOf="standard">=tulu</FORM>
                 <PHON kindOf="standard">tu[r|ɾ]u</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">三</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">three</TRANSL>
@@ -6146,12 +6115,12 @@
         <TRANSL xml:lang="eng">There were two baskets which were full.</TRANSL>
         <AUDIO file="skzyNr-pear_dungi_S76.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/skzyNr-pear_dungi.mp3" start="144.8" end="147.35"/>
         <W id="skzyNr-pear_dungi_S_76_W0">
-            <FORM kindOf="original">na-tusa=tu</FORM>
+            <FORM kindOf="original">na=tusa=tu</FORM>
             <PHON kindOf="original">natusatu</PHON>
-            <FORM kindOf="standard">na-tusa=tu</FORM>
+            <FORM kindOf="standard">na=tusa=tu</FORM>
             <PHON kindOf="standard">natusatu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">表過去-二=完成貌</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">PAST-two=PFV</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">表過去=二=完成貌</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">PAST=two=PFV</TRANSL>
             <M id="skzyNr-pear_dungi_S_76_W0M0">
                 <FORM kindOf="original">na</FORM>
                 <PHON kindOf="original">na</PHON>
@@ -6161,9 +6130,9 @@
                 <TRANSL xml:lang="eng" kindOf="original">PAST</TRANSL>
             </M>
             <M id="skzyNr-pear_dungi_S_76_W0M1">
-                <FORM kindOf="original">tusa</FORM>
+                <FORM kindOf="original">=tusa</FORM>
                 <PHON kindOf="original">tusa</PHON>
-                <FORM kindOf="standard">tusa</FORM>
+                <FORM kindOf="standard">=tusa</FORM>
                 <PHON kindOf="standard">tusa</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">二</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">two</TRANSL>
@@ -7208,12 +7177,12 @@
         <TRANSL xml:lang="eng" notes="(He thought) it is those children who stole my guavas.">it is those children who stole my guavas.</TRANSL>
         <AUDIO file="skzyNr-pear_dungi_S89.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/skzyNr-pear_dungi.mp3" start="165.6" end="169.04"/>
         <W id="skzyNr-pear_dungi_S_89_W0">
-            <FORM kindOf="original">na-atiwawa</FORM>
+            <FORM kindOf="original">na=atiwawa</FORM>
             <PHON kindOf="original">naatiwawa</PHON>
-            <FORM kindOf="standard">na-atiwawa</FORM>
+            <FORM kindOf="standard">na=atiwawa</FORM>
             <PHON kindOf="standard">naatiwawa</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">表過去-小孩</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">PAST-children</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">表過去=小孩</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">PAST=children</TRANSL>
             <M id="skzyNr-pear_dungi_S_89_W0M0">
                 <FORM kindOf="original">na</FORM>
                 <PHON kindOf="original">na</PHON>
@@ -7223,9 +7192,9 @@
                 <TRANSL xml:lang="eng" kindOf="original">PAST</TRANSL>
             </M>
             <M id="skzyNr-pear_dungi_S_89_W0M1">
-                <FORM kindOf="original">atiwawa</FORM>
+                <FORM kindOf="original">=atiwawa</FORM>
                 <PHON kindOf="original">atiwawa</PHON>
-                <FORM kindOf="standard">atiwawa</FORM>
+                <FORM kindOf="standard">=atiwawa</FORM>
                 <PHON kindOf="standard">atiwawa</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">小孩</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">children</TRANSL>

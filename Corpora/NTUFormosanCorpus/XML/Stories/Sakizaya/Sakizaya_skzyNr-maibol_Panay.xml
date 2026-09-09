@@ -41,12 +41,12 @@
             </M>
         </W>
         <W id="skzyNr-maibol_Panay_S_1_W2">
-            <FORM kindOf="original">a-mi-sa-kamu</FORM>
+            <FORM kindOf="original">a=mi-sa-kamu</FORM>
             <PHON kindOf="original">amisakamu</PHON>
-            <FORM kindOf="standard">a-mi-sa-kamu</FORM>
+            <FORM kindOf="standard">a=mi-sa-kamu</FORM>
             <PHON kindOf="standard">amisakamu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">未來貌-主焦-做-話</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">FUT-AF-do-word</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">未來貌=主焦-做-話</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FUT=AF-do-word</TRANSL>
             <M id="skzyNr-maibol_Panay_S_1_W2M0">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
@@ -56,9 +56,9 @@
                 <TRANSL xml:lang="eng" kindOf="original">FUT</TRANSL>
             </M>
             <M id="skzyNr-maibol_Panay_S_1_W2M1">
-                <FORM kindOf="original">mi</FORM>
+                <FORM kindOf="original">=mi</FORM>
                 <PHON kindOf="original">mi</PHON>
-                <FORM kindOf="standard">mi</FORM>
+                <FORM kindOf="standard">=mi</FORM>
                 <PHON kindOf="standard">mi</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
@@ -347,37 +347,21 @@
         </W>
     </S>
     <S id="skzyNr-maibol_Panay_S_5">
-        <FORM kindOf="original">E mahini ku kamu nu babalaki i takuanan.</FORM>
-        <PHON kindOf="original">ə maħini ku kamu nu baba[r|ɾ]aki i takuanan</PHON>
-        <FORM kindOf="standard">E mahini ku kamu nu babalaki i takuanan.</FORM>
-        <PHON kindOf="standard">ə maħini ku kamu nu baba[r|ɾ]aki i takuanan</PHON>
+        <FORM kindOf="original">mahini ku kamu nu babalaki i takuanan.</FORM>
+        <PHON kindOf="original">maħini ku kamu nu baba[r|ɾ]aki i takuanan</PHON>
+        <FORM kindOf="standard">mahini ku kamu nu babalaki i takuanan.</FORM>
+        <PHON kindOf="standard">maħini ku kamu nu baba[r|ɾ]aki i takuanan</PHON>
         <TRANSL xml:lang="zho">老人這樣對我說。</TRANSL>
         <TRANSL xml:lang="eng">The old man told me this.</TRANSL>
         <AUDIO file="skzyNr-maibol_Panay_S5.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/skzyNr-maibol_Panay.mp3" start="9.7" end="13.45"/>
         <W id="skzyNr-maibol_Panay_S_5_W0">
-            <FORM kindOf="original">E</FORM>
-            <PHON kindOf="original">ə</PHON>
-            <FORM kindOf="standard">E</FORM>
-            <PHON kindOf="standard">ə</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
-            <M id="skzyNr-maibol_Panay_S_5_W0M0">
-                <FORM kindOf="original">E</FORM>
-                <PHON kindOf="original">ə</PHON>
-                <FORM kindOf="standard">E</FORM>
-                <PHON kindOf="standard">ə</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
-            </M>
-        </W>
-        <W id="skzyNr-maibol_Panay_S_5_W1">
             <FORM kindOf="original">ma-hini</FORM>
             <PHON kindOf="original">maħini</PHON>
             <FORM kindOf="standard">ma-hini</FORM>
             <PHON kindOf="standard">maħini</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主焦-這樣</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">AF-this.way</TRANSL>
-            <M id="skzyNr-maibol_Panay_S_5_W1M0">
+            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+            <M id="skzyNr-maibol_Panay_S_5_W0M0">
                 <FORM kindOf="original">ma</FORM>
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
@@ -385,7 +369,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
             </M>
-            <M id="skzyNr-maibol_Panay_S_5_W1M1">
+            <M id="skzyNr-maibol_Panay_S_5_W0M1">
                 <FORM kindOf="original">hini</FORM>
                 <PHON kindOf="original">ħini</PHON>
                 <FORM kindOf="standard">hini</FORM>
@@ -394,14 +378,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">this.way</TRANSL>
             </M>
         </W>
-        <W id="skzyNr-maibol_Panay_S_5_W2">
+        <W id="skzyNr-maibol_Panay_S_5_W1">
             <FORM kindOf="original">ku</FORM>
             <PHON kindOf="original">ku</PHON>
             <FORM kindOf="standard">ku</FORM>
             <PHON kindOf="standard">ku</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
-            <M id="skzyNr-maibol_Panay_S_5_W2M0">
+            <TRANSL xml:lang="zho" kindOf="original">主焦-這樣</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">AF-this.way</TRANSL>
+            <M id="skzyNr-maibol_Panay_S_5_W1M0">
                 <FORM kindOf="original">ku</FORM>
                 <PHON kindOf="original">ku</PHON>
                 <FORM kindOf="standard">ku</FORM>
@@ -410,30 +394,30 @@
                 <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
             </M>
         </W>
-        <W id="skzyNr-maibol_Panay_S_5_W3">
+        <W id="skzyNr-maibol_Panay_S_5_W2">
             <FORM kindOf="original">kamu</FORM>
             <PHON kindOf="original">kamu</PHON>
             <FORM kindOf="standard">kamu</FORM>
             <PHON kindOf="standard">kamu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">話</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">word</TRANSL>
-            <M id="skzyNr-maibol_Panay_S_5_W3M0">
+            <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+            <M id="skzyNr-maibol_Panay_S_5_W2M0">
                 <FORM kindOf="original">kamu</FORM>
                 <PHON kindOf="original">kamu</PHON>
                 <FORM kindOf="standard">kamu</FORM>
                 <PHON kindOf="standard">kamu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">話</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">word</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">2PL.主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">2PL.NOM</TRANSL>
             </M>
         </W>
-        <W id="skzyNr-maibol_Panay_S_5_W4">
+        <W id="skzyNr-maibol_Panay_S_5_W3">
             <FORM kindOf="original">nu</FORM>
             <PHON kindOf="original">nu</PHON>
             <FORM kindOf="standard">nu</FORM>
             <PHON kindOf="standard">nu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">屬格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">GEN</TRANSL>
-            <M id="skzyNr-maibol_Panay_S_5_W4M0">
+            <TRANSL xml:lang="zho" kindOf="original">話</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">word</TRANSL>
+            <M id="skzyNr-maibol_Panay_S_5_W3M0">
                 <FORM kindOf="original">nu</FORM>
                 <PHON kindOf="original">nu</PHON>
                 <FORM kindOf="standard">nu</FORM>
@@ -442,52 +426,52 @@
                 <TRANSL xml:lang="eng" kindOf="original">GEN</TRANSL>
             </M>
         </W>
-        <W id="skzyNr-maibol_Panay_S_5_W5">
+        <W id="skzyNr-maibol_Panay_S_5_W4">
             <FORM kindOf="original">babalaki</FORM>
             <PHON kindOf="original">baba[r|ɾ]aki</PHON>
             <FORM kindOf="standard">babalaki</FORM>
             <PHON kindOf="standard">baba[r|ɾ]aki</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">老人</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">old.man</TRANSL>
-            <M id="skzyNr-maibol_Panay_S_5_W5M0">
+            <TRANSL xml:lang="zho" kindOf="original">屬格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">GEN</TRANSL>
+            <M id="skzyNr-maibol_Panay_S_5_W4M0">
                 <FORM kindOf="original">babalaki</FORM>
                 <PHON kindOf="original">baba[r|ɾ]aki</PHON>
                 <FORM kindOf="standard">babalaki</FORM>
                 <PHON kindOf="standard">baba[r|ɾ]aki</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">老人</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">old.man</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">elder.people</TRANSL>
             </M>
         </W>
-        <W id="skzyNr-maibol_Panay_S_5_W6">
+        <W id="skzyNr-maibol_Panay_S_5_W5">
             <FORM kindOf="original">i</FORM>
             <PHON kindOf="original">i</PHON>
             <FORM kindOf="standard">i</FORM>
             <PHON kindOf="standard">i</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">介系詞</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">PREP</TRANSL>
-            <M id="skzyNr-maibol_Panay_S_5_W6M0">
+            <TRANSL xml:lang="zho" kindOf="original">老人</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">old.man</TRANSL>
+            <M id="skzyNr-maibol_Panay_S_5_W5M0">
                 <FORM kindOf="original">i</FORM>
                 <PHON kindOf="original">i</PHON>
                 <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">介系詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PREP</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             </M>
         </W>
-        <W id="skzyNr-maibol_Panay_S_5_W7">
+        <W id="skzyNr-maibol_Panay_S_5_W6">
             <FORM kindOf="original">takuanan.</FORM>
             <PHON kindOf="original">takuanan</PHON>
             <FORM kindOf="standard">takuanan.</FORM>
             <PHON kindOf="standard">takuanan</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">1SG.斜格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">1SG.OBL</TRANSL>
-            <M id="skzyNr-maibol_Panay_S_5_W7M0">
+            <TRANSL xml:lang="zho" kindOf="original">介系詞</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">PREP</TRANSL>
+            <M id="skzyNr-maibol_Panay_S_5_W6M0">
                 <FORM kindOf="original">takuanan.</FORM>
                 <PHON kindOf="original">takuanan</PHON>
                 <FORM kindOf="standard">takuanan.</FORM>
                 <PHON kindOf="standard">takuanan</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">1SG.斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">1SG.OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">介系詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PREP</TRANSL>
             </M>
         </W>
     </S>
@@ -1694,10 +1678,10 @@
         </W>
     </S>
     <S id="skzyNr-maibol_Panay_S_23">
-        <FORM kindOf="original" notes="Maibuk在此與Maibul為諧音關係。IU24中 tya比較合乎語法。IU24中的lipun為台語借詞，漢字寫成日本。">i, sakamu sa kya babalaki ya ya lipun sa, E Maibuk, Maibul, han nya Maibuk han nya hi han nya, nya babalaki sa.</FORM>
-        <PHON kindOf="original">i sakamu sa kja baba[r|ɾ]aki ja ja [r|ɾ]ipun sa ə maibuk maibu[r|ɾ] ħan nja maibuk ħan nja ħi ħan nja nja baba[r|ɾ]aki sa</PHON>
-        <FORM kindOf="standard">i, sakamu sa kya babalaki ya ya lipun sa, E Maibuk, Maibul, han nya Maibuk han nya hi han nya, nya babalaki sa.</FORM>
-        <PHON kindOf="standard">i sakamu sa kja baba[r|ɾ]aki ja ja [r|ɾ]ipun sa ə maibuk maibu[r|ɾ] ħan nja maibuk ħan nja ħi ħan nja nja baba[r|ɾ]aki sa</PHON>
+        <FORM kindOf="original" notes="Maibuk在此與Maibul為諧音關係。IU24中 tya比較合乎語法。IU24中的lipun為台語借詞，漢字寫成日本。">i, sakamu sa kya babalaki ya ya lipun sa, Maibuk, Maibul, han nya Maibuk han nya hi han nya, nya babalaki sa.</FORM>
+        <PHON kindOf="original">i sakamu sa kja baba[r|ɾ]aki ja ja [r|ɾ]ipun sa maibuk maibu[r|ɾ] ħan nja maibuk ħan nja ħi ħan nja nja baba[r|ɾ]aki sa</PHON>
+        <FORM kindOf="standard">i, sakamu sa kya babalaki ya ya lipun sa, Maibuk, Maibul, han nya Maibuk han nya hi han nya, nya babalaki sa.</FORM>
+        <PHON kindOf="standard">i sakamu sa kja baba[r|ɾ]aki ja ja [r|ɾ]ipun sa maibuk maibu[r|ɾ] ħan nja maibuk ħan nja ħi ħan nja nja baba[r|ɾ]aki sa</PHON>
         <TRANSL xml:lang="zho" notes="那老人說日本人是Maibuk (Maibul)。">那老人說日本人是Maibuk 。</TRANSL>
         <TRANSL xml:lang="eng" notes="That old man told Japanese (that it was) Maibuk (Maibul).">That old man told Japanese Maibuk .</TRANSL>
         <AUDIO file="skzyNr-maibol_Panay_S23.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/skzyNr-maibol_Panay.mp3" start="49.62" end="63.97"/>
@@ -1854,45 +1838,29 @@
             </M>
         </W>
         <W id="skzyNr-maibol_Panay_S_23_W9">
-            <FORM kindOf="original">E</FORM>
-            <PHON kindOf="original">ə</PHON>
-            <FORM kindOf="standard">E</FORM>
-            <PHON kindOf="standard">ə</PHON>
+            <FORM kindOf="original">Maibuk,</FORM>
+            <PHON kindOf="original">maibuk</PHON>
+            <FORM kindOf="standard">Maibuk,</FORM>
+            <PHON kindOf="standard">maibuk</PHON>
             <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             <M id="skzyNr-maibol_Panay_S_23_W9M0">
-                <FORM kindOf="original">E</FORM>
-                <PHON kindOf="original">ə</PHON>
-                <FORM kindOf="standard">E</FORM>
-                <PHON kindOf="standard">ə</PHON>
+                <FORM kindOf="original">Maibuk,</FORM>
+                <PHON kindOf="original">maibuk</PHON>
+                <FORM kindOf="standard">Maibuk,</FORM>
+                <PHON kindOf="standard">maibuk</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="skzyNr-maibol_Panay_S_23_W10">
-            <FORM kindOf="original">Maibuk,</FORM>
-            <PHON kindOf="original">maibuk</PHON>
-            <FORM kindOf="standard">Maibuk,</FORM>
-            <PHON kindOf="standard">maibuk</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">專名</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">PN</TRANSL>
-            <M id="skzyNr-maibol_Panay_S_23_W10M0">
-                <FORM kindOf="original">Maibuk,</FORM>
-                <PHON kindOf="original">maibuk</PHON>
-                <FORM kindOf="standard">Maibuk,</FORM>
-                <PHON kindOf="standard">maibuk</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">專名</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PN</TRANSL>
-            </M>
-        </W>
-        <W id="skzyNr-maibol_Panay_S_23_W11">
             <FORM kindOf="original">Maibul,</FORM>
             <PHON kindOf="original">maibu[r|ɾ]</PHON>
             <FORM kindOf="standard">Maibul,</FORM>
             <PHON kindOf="standard">maibu[r|ɾ]</PHON>
             <TRANSL xml:lang="zho" kindOf="original">地名</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">PN</TRANSL>
-            <M id="skzyNr-maibol_Panay_S_23_W11M0">
+            <M id="skzyNr-maibol_Panay_S_23_W10M0">
                 <FORM kindOf="original">Maibul,</FORM>
                 <PHON kindOf="original">maibu[r|ɾ]</PHON>
                 <FORM kindOf="standard">Maibul,</FORM>
@@ -1901,14 +1869,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">PN</TRANSL>
             </M>
         </W>
-        <W id="skzyNr-maibol_Panay_S_23_W12">
+        <W id="skzyNr-maibol_Panay_S_23_W11">
             <FORM kindOf="original">han</FORM>
             <PHON kindOf="original">ħan</PHON>
             <FORM kindOf="standard">han</FORM>
             <PHON kindOf="standard">ħan</PHON>
             <TRANSL xml:lang="zho" kindOf="original">被說</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">be.said</TRANSL>
-            <M id="skzyNr-maibol_Panay_S_23_W12M0">
+            <M id="skzyNr-maibol_Panay_S_23_W11M0">
                 <FORM kindOf="original">han</FORM>
                 <PHON kindOf="original">ħan</PHON>
                 <FORM kindOf="standard">han</FORM>
@@ -1917,14 +1885,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">be.said</TRANSL>
             </M>
         </W>
-        <W id="skzyNr-maibol_Panay_S_23_W13">
+        <W id="skzyNr-maibol_Panay_S_23_W12">
             <FORM kindOf="original">nya</FORM>
             <PHON kindOf="original">nja</PHON>
             <FORM kindOf="standard">nya</FORM>
             <PHON kindOf="standard">nja</PHON>
             <TRANSL xml:lang="zho" kindOf="original">屬格.那個</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">GEN.that</TRANSL>
-            <M id="skzyNr-maibol_Panay_S_23_W13M0">
+            <M id="skzyNr-maibol_Panay_S_23_W12M0">
                 <FORM kindOf="original">nya</FORM>
                 <PHON kindOf="original">nja</PHON>
                 <FORM kindOf="standard">nya</FORM>
@@ -1933,14 +1901,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">GEN.that</TRANSL>
             </M>
         </W>
-        <W id="skzyNr-maibol_Panay_S_23_W14">
+        <W id="skzyNr-maibol_Panay_S_23_W13">
             <FORM kindOf="original">Maibuk</FORM>
             <PHON kindOf="original">maibuk</PHON>
             <FORM kindOf="standard">Maibuk</FORM>
             <PHON kindOf="standard">maibuk</PHON>
             <TRANSL xml:lang="zho" kindOf="original">專名</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">PN</TRANSL>
-            <M id="skzyNr-maibol_Panay_S_23_W14M0">
+            <M id="skzyNr-maibol_Panay_S_23_W13M0">
                 <FORM kindOf="original">Maibuk</FORM>
                 <PHON kindOf="original">maibuk</PHON>
                 <FORM kindOf="standard">Maibuk</FORM>
@@ -1949,14 +1917,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">PN</TRANSL>
             </M>
         </W>
-        <W id="skzyNr-maibol_Panay_S_23_W15">
+        <W id="skzyNr-maibol_Panay_S_23_W14">
             <FORM kindOf="original">han</FORM>
             <PHON kindOf="original">ħan</PHON>
             <FORM kindOf="standard">han</FORM>
             <PHON kindOf="standard">ħan</PHON>
             <TRANSL xml:lang="zho" kindOf="original">HAN</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">HAN</TRANSL>
-            <M id="skzyNr-maibol_Panay_S_23_W15M0">
+            <M id="skzyNr-maibol_Panay_S_23_W14M0">
                 <FORM kindOf="original">han</FORM>
                 <PHON kindOf="original">ħan</PHON>
                 <FORM kindOf="standard">han</FORM>
@@ -1965,14 +1933,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">HAN</TRANSL>
             </M>
         </W>
-        <W id="skzyNr-maibol_Panay_S_23_W16">
+        <W id="skzyNr-maibol_Panay_S_23_W15">
             <FORM kindOf="original">nya</FORM>
             <PHON kindOf="original">nja</PHON>
             <FORM kindOf="standard">nya</FORM>
             <PHON kindOf="standard">nja</PHON>
             <TRANSL xml:lang="zho" kindOf="original">屬格.那個</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">GEN.that</TRANSL>
-            <M id="skzyNr-maibol_Panay_S_23_W16M0">
+            <M id="skzyNr-maibol_Panay_S_23_W15M0">
                 <FORM kindOf="original">nya</FORM>
                 <PHON kindOf="original">nja</PHON>
                 <FORM kindOf="standard">nya</FORM>
@@ -1981,14 +1949,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">GEN.that</TRANSL>
             </M>
         </W>
-        <W id="skzyNr-maibol_Panay_S_23_W17">
+        <W id="skzyNr-maibol_Panay_S_23_W16">
             <FORM kindOf="original">hi</FORM>
             <PHON kindOf="original">ħi</PHON>
             <FORM kindOf="standard">hi</FORM>
             <PHON kindOf="standard">ħi</PHON>
             <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
-            <M id="skzyNr-maibol_Panay_S_23_W17M0">
+            <M id="skzyNr-maibol_Panay_S_23_W16M0">
                 <FORM kindOf="original">hi</FORM>
                 <PHON kindOf="original">ħi</PHON>
                 <FORM kindOf="standard">hi</FORM>
@@ -1997,14 +1965,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
             </M>
         </W>
-        <W id="skzyNr-maibol_Panay_S_23_W18">
+        <W id="skzyNr-maibol_Panay_S_23_W17">
             <FORM kindOf="original">han</FORM>
             <PHON kindOf="original">ħan</PHON>
             <FORM kindOf="standard">han</FORM>
             <PHON kindOf="standard">ħan</PHON>
             <TRANSL xml:lang="zho" kindOf="original">被說</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">be.said</TRANSL>
-            <M id="skzyNr-maibol_Panay_S_23_W18M0">
+            <M id="skzyNr-maibol_Panay_S_23_W17M0">
                 <FORM kindOf="original">han</FORM>
                 <PHON kindOf="original">ħan</PHON>
                 <FORM kindOf="standard">han</FORM>
@@ -2013,14 +1981,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">be.said</TRANSL>
             </M>
         </W>
-        <W id="skzyNr-maibol_Panay_S_23_W19">
+        <W id="skzyNr-maibol_Panay_S_23_W18">
             <FORM kindOf="original">nya,</FORM>
             <PHON kindOf="original">nja</PHON>
             <FORM kindOf="standard">nya,</FORM>
             <PHON kindOf="standard">nja</PHON>
             <TRANSL xml:lang="zho" kindOf="original">屬格.那個</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">GEN.that</TRANSL>
-            <M id="skzyNr-maibol_Panay_S_23_W19M0">
+            <M id="skzyNr-maibol_Panay_S_23_W18M0">
                 <FORM kindOf="original">nya,</FORM>
                 <PHON kindOf="original">nja</PHON>
                 <FORM kindOf="standard">nya,</FORM>
@@ -2029,14 +1997,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">GEN.that</TRANSL>
             </M>
         </W>
-        <W id="skzyNr-maibol_Panay_S_23_W20">
+        <W id="skzyNr-maibol_Panay_S_23_W19">
             <FORM kindOf="original">nya</FORM>
             <PHON kindOf="original">nja</PHON>
             <FORM kindOf="standard">nya</FORM>
             <PHON kindOf="standard">nja</PHON>
             <TRANSL xml:lang="zho" kindOf="original">屬格.那個</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">GEN.that</TRANSL>
-            <M id="skzyNr-maibol_Panay_S_23_W20M0">
+            <M id="skzyNr-maibol_Panay_S_23_W19M0">
                 <FORM kindOf="original">nya</FORM>
                 <PHON kindOf="original">nja</PHON>
                 <FORM kindOf="standard">nya</FORM>
@@ -2045,14 +2013,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">GEN.that</TRANSL>
             </M>
         </W>
-        <W id="skzyNr-maibol_Panay_S_23_W21">
+        <W id="skzyNr-maibol_Panay_S_23_W20">
             <FORM kindOf="original">babalaki</FORM>
             <PHON kindOf="original">baba[r|ɾ]aki</PHON>
             <FORM kindOf="standard">babalaki</FORM>
             <PHON kindOf="standard">baba[r|ɾ]aki</PHON>
             <TRANSL xml:lang="zho" kindOf="original">老人</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">old.man</TRANSL>
-            <M id="skzyNr-maibol_Panay_S_23_W21M0">
+            <M id="skzyNr-maibol_Panay_S_23_W20M0">
                 <FORM kindOf="original">babalaki</FORM>
                 <PHON kindOf="original">baba[r|ɾ]aki</PHON>
                 <FORM kindOf="standard">babalaki</FORM>
@@ -2061,14 +2029,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">old.man</TRANSL>
             </M>
         </W>
-        <W id="skzyNr-maibol_Panay_S_23_W22">
+        <W id="skzyNr-maibol_Panay_S_23_W21">
             <FORM kindOf="original">sa.</FORM>
             <PHON kindOf="original">sa</PHON>
             <FORM kindOf="standard">sa.</FORM>
             <PHON kindOf="standard">sa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
-            <M id="skzyNr-maibol_Panay_S_23_W22M0">
+            <M id="skzyNr-maibol_Panay_S_23_W21M0">
                 <FORM kindOf="original">sa.</FORM>
                 <PHON kindOf="original">sa</PHON>
                 <FORM kindOf="standard">sa.</FORM>

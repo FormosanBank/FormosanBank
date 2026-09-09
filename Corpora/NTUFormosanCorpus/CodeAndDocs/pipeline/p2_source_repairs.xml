@@ -14,7 +14,7 @@
 -->
 <P2_SOURCE_REPAIRS>
   <RECORD_REPAIRS>
-    <CASE sourceFile="grammar/Kanakanavu_Kanakanavu/05.json" recordId="4" sourceDigest="f001895a989605ffd02740327542932e2a805e6a1f34acc37987bfaf77d87ddd">
+    <CASE sourceFile="grammar/Kanakanavu_Kanakanavu/05.json" recordId="4" sourceDigest="acc114c5c373a9e1f2084ec83328ba17e22f24097a534c535728fd8d79dde37f">
       <NOTE>The scraped table put the Chinese free translation in the gloss-form
       column, left the gloss empty, and carried a grammatical note about "na" in
       the translation slot. It also split the parenthetical annotation across the
@@ -31,7 +31,7 @@
       <NOTE>The sentence opens with a bare 'e.' that has no counterpart anywhere in the word tier, which begins at 'u'. Remove it from the sentence form.</NOTE>
       <REPLACEMENT_JSON>[1,{"ori":["u","kuwang","ku","sapipatay","ni","ama","tu","pabuy."],"gloss":[["u","非人名標記","_"],["kuwang","槍","_"],["ku","主格","_"],["sa-pi-patay","工具焦點-PI-死","_"],["ni","屬格.人名標記","_"],["ama","爸爸","_"],["tu","斜格","_"],["pabuy","豬","_"]],"free":["#c 爸爸用槍打死山豬。","#n 《撒奇萊雅語語法概論》 第五章　格位標記與代名詞系統"],"s_end":true,"iu_a_span":[null,null],"meta":{"type":"GrammarBook","topic":"第五章 格位標記與代名詞系統","language":"撒奇萊雅語, Sakizaya, Sakizaya"},"audio_url":"https://formosanbank.linguistics.ntu.edu.tw/files/audio/Sakizaya_5-1-1.mp3"}]</REPLACEMENT_JSON>
     </CASE>
-    <CASE sourceFile="grammar/Kanakanavu_Kanakanavu/ap1.json" recordId="78" sourceDigest="eff203495d937da465457ab2229c0557fe9a87f917d2d7c47121529cf7082196">
+    <CASE sourceFile="grammar/Kanakanavu_Kanakanavu/ap1.json" recordId="78" sourceDigest="14839dc336edfdbaead72e64a2ffe1809bbae85aebd26e04a53264f6d6ab9d46">
       <NOTE>The scraped table split one infixed word across two rows and shifted each following gloss one row downward. Rejoin the word and restore the source gloss alignment. Adopted verbatim from the corpus's own source_repairs.xml.</NOTE>
       <REPLACEMENT_JSON>[78,{"ori":["matisapsapʉ","naParumaci","mukʉrʉ","tarisi","pui’i","na","tanasa."],"gloss":[["mati&lt;sap&gt;sapʉ","用手&lt;重疊&gt;摸索","_"],["naParumaci","已故-人名","_"],["m-ukʉrʉ","主事焦點-握著","_"],["tarisi","繩子","_"],["pui’i","主事焦點.回","_"],["na","處格","_"],["tanasa.","家","_"]],"free":["#c naParumaci握著繩子摸索回家。","#n 《卡那卡那富語語法概論》 長篇語料一　射日"],"s_end":true,"iu_a_span":[null,null],"meta":{"type":"GrammarBook","topic":"長篇語料一 射日","language":"卡那卡那富語, Kanakanavu, Kanakanavu"},"audio_url":"https://formosanbank.linguistics.ntu.edu.tw/files/audio/Kanakanavu_A3-5-23.wav"}]</REPLACEMENT_JSON>
     </CASE>

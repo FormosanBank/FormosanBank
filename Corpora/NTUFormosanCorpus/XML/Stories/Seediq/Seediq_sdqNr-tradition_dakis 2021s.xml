@@ -3132,7 +3132,7 @@
             <PHON kindOf="original">kaɾita</PHON>
             <FORM kindOf="standard">kari=ta</FORM>
             <PHON kindOf="standard">kaɾita</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">故事=1IPL.屬格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">故事-1IPL.屬格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">word=1IPL.GEN</TRANSL>
             <M id="sdqNr-tradition_dakis 2021s_S_45_W8M0">
                 <FORM kindOf="original">kari</FORM>
@@ -5109,7 +5109,7 @@
             <PHON kindOf="original">pqitaunsu</PHON>
             <FORM kindOf="standard">p-qita-un=su</FORM>
             <PHON kindOf="standard">pqitaunsu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">使役-看-受焦=2SG.主格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">使役-看-受焦-2SG.主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">CAU-see-PF=2SG.NOM</TRANSL>
             <M id="sdqNr-tradition_dakis 2021s_S_73_W3M0">
                 <FORM kindOf="original">p</FORM>
@@ -5622,7 +5622,7 @@
             <PHON kindOf="original">podaunsuna</PHON>
             <FORM kindOf="standard">p-oda-un=su=na</FORM>
             <PHON kindOf="standard">podaunsuna</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">使役-通過-受焦=2SG.屬格=3SG.主格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">使役-通過-受焦-2SG.屬格-3SG.主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">CAU-pass-PF=2SG.GEN=3SG.NOM</TRANSL>
             <M id="sdqNr-tradition_dakis 2021s_S_76_W16M0">
                 <FORM kindOf="original">p</FORM>
@@ -7511,31 +7511,25 @@
             <PHON kindOf="original">mkmħemuʦta</PHON>
             <FORM kindOf="standard">mk&lt;m&gt;hemuc=ta</FORM>
             <PHON kindOf="standard">mkmħemuʦta</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">想要&lt;主焦&gt;隨便=1IPL.屬格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">想要.主焦-隨便=1IPL.屬格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">want&lt;AF&gt;improper=1IPL.GEN</TRANSL>
-            <M id="sdqNr-tradition_dakis 2021s_S_115_W2M0_0">
+            <M id="sdqNr-tradition_dakis 2021s_S_115_W2M0">
                 <FORM kindOf="original">-m-</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
-            </M>
-            <M id="sdqNr-tradition_dakis 2021s_S_115_W2M0_1">
-                <FORM kindOf="original">mk-hemuc</FORM>
-                <PHON kindOf="original">mkħemuʦ</PHON>
-                <FORM kindOf="standard">mk-hemuc</FORM>
-                <PHON kindOf="standard">mkħemuʦ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">想要隨便</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">wantimproper</TRANSL>
             </M>
             <M id="sdqNr-tradition_dakis 2021s_S_115_W2M1">
-                <FORM kindOf="original">=ta</FORM>
+                <FORM kindOf="original">mkhemuc</FORM>
+                <PHON kindOf="original">mkħemuʦ</PHON>
+                <FORM kindOf="standard">mkhemuc</FORM>
+                <PHON kindOf="standard">mkħemuʦ</PHON>
+            </M>
+            <M id="sdqNr-tradition_dakis 2021s_S_115_W2M2">
+                <FORM kindOf="original">ta</FORM>
                 <PHON kindOf="original">ta</PHON>
-                <FORM kindOf="standard">=ta</FORM>
+                <FORM kindOf="standard">ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">1IPL.屬格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">1IPL.GEN</TRANSL>
             </M>
         </W>
         <W id="sdqNr-tradition_dakis 2021s_S_115_W3">
@@ -7550,7 +7544,7 @@
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
             </M>
             <M id="sdqNr-tradition_dakis 2021s_S_115_W3M1">
@@ -7670,7 +7664,7 @@
                 <PHON kindOf="original">di</PHON>
                 <FORM kindOf="standard">di</FORM>
                 <PHON kindOf="standard">di</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">完成.PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">完成.語助詞</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">PFV.PART</TRANSL>
             </M>
         </W>
@@ -7681,21 +7675,17 @@
             <PHON kindOf="standard">smipaq</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;主格&gt;砍</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;chop</TRANSL>
-            <M id="sdqNr-tradition_dakis 2021s_S_115_W10M0_0">
+            <M id="sdqNr-tradition_dakis 2021s_S_115_W10M0">
                 <FORM kindOf="original">-m-</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">&lt;主格&gt;</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
             </M>
-            <M id="sdqNr-tradition_dakis 2021s_S_115_W10M0_1">
-                <FORM kindOf="original">s-ipaq</FORM>
+            <M id="sdqNr-tradition_dakis 2021s_S_115_W10M1">
+                <FORM kindOf="original">sipaq</FORM>
                 <PHON kindOf="original">sipaq</PHON>
-                <FORM kindOf="standard">s-ipaq</FORM>
+                <FORM kindOf="standard">sipaq</FORM>
                 <PHON kindOf="standard">sipaq</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">砍</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">chop</TRANSL>
             </M>
         </W>
         <W id="sdqNr-tradition_dakis 2021s_S_115_W11">
@@ -7872,14 +7862,14 @@
             <PHON kindOf="original">mejaħ</PHON>
             <FORM kindOf="standard">m-eyah</FORM>
             <PHON kindOf="standard">mejaħ</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主焦-來</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;來</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-come</TRANSL>
             <M id="sdqNr-tradition_dakis 2021s_S_117_W9M0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;來</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
             </M>
             <M id="sdqNr-tradition_dakis 2021s_S_117_W9M1">
@@ -7887,7 +7877,6 @@
                 <PHON kindOf="original">ejaħ</PHON>
                 <FORM kindOf="standard">eyah</FORM>
                 <PHON kindOf="standard">ejaħ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">來</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">come</TRANSL>
             </M>
         </W>
@@ -9582,8 +9571,8 @@
             <PHON kindOf="original">ɾneŋoanmu</PHON>
             <FORM kindOf="standard">r&lt;n&gt;engo-an=mu</FORM>
             <PHON kindOf="standard">ɾneŋoanmu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">&lt;完成&gt;說-處焦=1SG.屬格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">&lt;PFV&gt;speak-LF=1SG.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">&lt;完成&gt;說-處焦-1SG.屬格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">&lt;PFV&gt;speak-LF-1SG.GEN</TRANSL>
             <M id="sdqNr-tradition_dakis 2021s_S_142_W5M0_0">
                 <FORM kindOf="original">-n-</FORM>
                 <PHON kindOf="original">n</PHON>
@@ -14480,8 +14469,8 @@
             <PHON kindOf="original">tŋesaankuna</PHON>
             <FORM kindOf="standard">t&lt;n&gt;gesa-an=ku=na</FORM>
             <PHON kindOf="standard">tŋesaankuna</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">&lt;完成&gt;教-處焦=1SG.主格=3SG.屬格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">&lt;PFV&gt;teach-LF=1SG.NOM=3SG.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">&lt;完成&gt;教-處焦-1SG.主格-3SG.屬格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">&lt;PFV&gt;teach-LF-1SG.NOM-3SG.GEN</TRANSL>
             <M id="sdqNr-tradition_dakis 2021s_S_211_W4M0_0">
                 <FORM kindOf="original">-n-</FORM>
                 <PHON kindOf="original">n</PHON>
@@ -15123,8 +15112,8 @@
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka,</FORM>
                 <PHON kindOf="standard">ka</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">KA</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">KA</TRANSL>
             </M>
         </W>
         <W id="sdqNr-tradition_dakis 2021s_S_220_W2">
@@ -15139,8 +15128,8 @@
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
         <W id="sdqNr-tradition_dakis 2021s_S_220_W3">
@@ -15171,8 +15160,8 @@
                 <PHON kindOf="original">di</PHON>
                 <FORM kindOf="standard">di,</FORM>
                 <PHON kindOf="standard">di</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">完成.PART</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PFV.PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">X</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">X</TRANSL>
             </M>
         </W>
         <W id="sdqNr-tradition_dakis 2021s_S_220_W5">
@@ -15195,32 +15184,34 @@
                 <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">=ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">1PL.屬格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">1PL.GEN</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1IPL.主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1IPL.NOM</TRANSL>
             </M>
         </W>
         <W id="sdqNr-tradition_dakis 2021s_S_220_W6">
-            <FORM kindOf="original">supu-un</FORM>
+            <FORM kindOf="original">s-upu-un</FORM>
             <PHON kindOf="original">supuun</PHON>
-            <FORM kindOf="standard">supu-un</FORM>
+            <FORM kindOf="standard">s-upu-un</FORM>
             <PHON kindOf="standard">supuun</PHON>
             <TRANSL xml:lang="zho" kindOf="original">一起-受焦</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">together-PF</TRANSL>
             <M id="sdqNr-tradition_dakis 2021s_S_220_W6M0">
-                <FORM kindOf="original">supu</FORM>
-                <PHON kindOf="original">supu</PHON>
-                <FORM kindOf="standard">supu</FORM>
-                <PHON kindOf="standard">supu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">一起</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">together</TRANSL>
+                <FORM kindOf="original">s</FORM>
+                <PHON kindOf="original">s</PHON>
+                <FORM kindOf="standard">s</FORM>
+                <PHON kindOf="standard">s</PHON>
             </M>
             <M id="sdqNr-tradition_dakis 2021s_S_220_W6M1">
+                <FORM kindOf="original">upu</FORM>
+                <PHON kindOf="original">upu</PHON>
+                <FORM kindOf="standard">upu</FORM>
+                <PHON kindOf="standard">upu</PHON>
+            </M>
+            <M id="sdqNr-tradition_dakis 2021s_S_220_W6M2">
                 <FORM kindOf="original">un</FORM>
                 <PHON kindOf="original">un</PHON>
                 <FORM kindOf="standard">un</FORM>
                 <PHON kindOf="standard">un</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">受焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PF</TRANSL>
             </M>
         </W>
         <W id="sdqNr-tradition_dakis 2021s_S_220_W7">
@@ -15230,21 +15221,17 @@
             <PHON kindOf="standard">lmŋeluŋ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;想</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;think</TRANSL>
-            <M id="sdqNr-tradition_dakis 2021s_S_220_W7M0_0">
+            <M id="sdqNr-tradition_dakis 2021s_S_220_W7M0">
                 <FORM kindOf="original">-m-</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
             </M>
-            <M id="sdqNr-tradition_dakis 2021s_S_220_W7M0_1">
-                <FORM kindOf="original">l-ngelung</FORM>
+            <M id="sdqNr-tradition_dakis 2021s_S_220_W7M1">
+                <FORM kindOf="original">lngelung</FORM>
                 <PHON kindOf="original">lŋeluŋ</PHON>
-                <FORM kindOf="standard">l-ngelung</FORM>
+                <FORM kindOf="standard">lngelung</FORM>
                 <PHON kindOf="standard">lŋeluŋ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">想</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">think</TRANSL>
             </M>
         </W>
         <W id="sdqNr-tradition_dakis 2021s_S_220_W8">
@@ -15275,8 +15262,8 @@
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na,</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">屬格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">GEN</TRANSL>
             </M>
         </W>
         <W id="sdqNr-tradition_dakis 2021s_S_220_W10">
@@ -15315,8 +15302,8 @@
                 <PHON kindOf="original">so</PHON>
                 <FORM kindOf="standard">so</FORM>
                 <PHON kindOf="standard">so</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">像這樣</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">be.like.this</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">條件詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">COND</TRANSL>
             </M>
         </W>
         <W id="sdqNr-tradition_dakis 2021s_S_220_W12">
@@ -15331,8 +15318,8 @@
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a,</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
     </S>

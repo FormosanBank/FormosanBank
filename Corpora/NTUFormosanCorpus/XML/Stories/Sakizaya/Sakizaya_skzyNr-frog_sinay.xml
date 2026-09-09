@@ -957,12 +957,12 @@
         <TRANSL xml:lang="eng" notes="(We) were born by (our) mother.">were born by mother.</TRANSL>
         <AUDIO file="skzyNr-frog_sinay_S18.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/skzyNr-frog_sinay.mp3" start="34.31" end="40.87"/>
         <W id="skzyNr-frog_sinay_S_18_W0">
-            <FORM kindOf="original">na-maka-ini,</FORM>
+            <FORM kindOf="original">na=maka-ini,</FORM>
             <PHON kindOf="original">namakaini</PHON>
-            <FORM kindOf="standard">na-maka-ini,</FORM>
+            <FORM kindOf="standard">na=maka-ini,</FORM>
             <PHON kindOf="standard">namakaini</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">過去貌-從-這裡</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">PAST-from-here</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">過去貌=從-這裡</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">PAST=from-here</TRANSL>
             <M id="skzyNr-frog_sinay_S_18_W0M0">
                 <FORM kindOf="original">na</FORM>
                 <PHON kindOf="original">na</PHON>
@@ -972,9 +972,9 @@
                 <TRANSL xml:lang="eng" kindOf="original">PAST</TRANSL>
             </M>
             <M id="skzyNr-frog_sinay_S_18_W0M1">
-                <FORM kindOf="original">maka</FORM>
+                <FORM kindOf="original">=maka</FORM>
                 <PHON kindOf="original">maka</PHON>
-                <FORM kindOf="standard">maka</FORM>
+                <FORM kindOf="standard">=maka</FORM>
                 <PHON kindOf="standard">maka</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">從</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">from</TRANSL>
@@ -3440,14 +3440,14 @@
             <FORM kindOf="standard">pa-pa-mul-en</FORM>
             <PHON kindOf="standard">papamu[r|ɾ]ən</PHON>
             <TRANSL xml:lang="zho" kindOf="original">Ca重疊-使動-離開-受焦</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">CaRED-CAU-leave-PF</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">Ca-CAU-leave-PF</TRANSL>
             <M id="skzyNr-frog_sinay_S_51_W13M0">
                 <FORM kindOf="original">pa</FORM>
                 <PHON kindOf="original">pa</PHON>
                 <FORM kindOf="standard">pa</FORM>
                 <PHON kindOf="standard">pa</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">Ca重疊</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">CaRED</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">Ca</TRANSL>
             </M>
             <M id="skzyNr-frog_sinay_S_51_W13M1">
                 <FORM kindOf="original">pa</FORM>
@@ -3516,12 +3516,12 @@
         <TRANSL xml:lang="eng">We could not forget children.</TRANSL>
         <AUDIO file="skzyNr-frog_sinay_S57.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/skzyNr-frog_sinay.mp3" start="119.71" end="124.08"/>
         <W id="skzyNr-frog_sinay_S_57_W0">
-            <FORM kindOf="original">a-ca'ay</FORM>
+            <FORM kindOf="original">a=ca'ay</FORM>
             <PHON kindOf="original">aʦaʡaj</PHON>
-            <FORM kindOf="standard">a-ca'ay</FORM>
+            <FORM kindOf="standard">a=ca'ay</FORM>
             <PHON kindOf="standard">aʦa[ʔ|ʡ]aj</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">未來貌-否定詞</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">FUT-NEG</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">未來貌=否定詞</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FUT=NEG</TRANSL>
             <M id="skzyNr-frog_sinay_S_57_W0M0">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
@@ -3531,9 +3531,9 @@
                 <TRANSL xml:lang="eng" kindOf="original">FUT</TRANSL>
             </M>
             <M id="skzyNr-frog_sinay_S_57_W0M1">
-                <FORM kindOf="original">ca'ay</FORM>
+                <FORM kindOf="original">=ca'ay</FORM>
                 <PHON kindOf="original">ʦaʡaj</PHON>
-                <FORM kindOf="standard">ca'ay</FORM>
+                <FORM kindOf="standard">=ca'ay</FORM>
                 <PHON kindOf="standard">ʦa[ʔ|ʡ]aj</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">否定詞</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">NEG</TRANSL>
@@ -3898,31 +3898,25 @@
             <PHON kindOf="original">matəpadtəpad</PHON>
             <FORM kindOf="standard">ma-tepad-tepad</FORM>
             <PHON kindOf="standard">matəpadtəpad</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">AV-重疊-懸涯</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">AV-RED-cliff</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">??</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">??</TRANSL>
             <M id="skzyNr-frog_sinay_S_65_W1M0">
                 <FORM kindOf="original">ma</FORM>
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">AV</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AV</TRANSL>
             </M>
             <M id="skzyNr-frog_sinay_S_65_W1M1">
                 <FORM kindOf="original">tepad</FORM>
                 <PHON kindOf="original">təpad</PHON>
                 <FORM kindOf="standard">tepad</FORM>
                 <PHON kindOf="standard">təpad</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">重疊</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
             </M>
             <M id="skzyNr-frog_sinay_S_65_W1M2">
                 <FORM kindOf="original">tepad</FORM>
                 <PHON kindOf="original">təpad</PHON>
                 <FORM kindOf="standard">tepad</FORM>
                 <PHON kindOf="standard">təpad</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">懸涯</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">cliff</TRANSL>
             </M>
         </W>
         <W id="skzyNr-frog_sinay_S_65_W2">
@@ -3937,8 +3931,8 @@
                 <PHON kindOf="original">sa</PHON>
                 <FORM kindOf="standard">sa,</FORM>
                 <PHON kindOf="standard">sa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">SA</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">SA</TRANSL>
             </M>
         </W>
         <W id="skzyNr-frog_sinay_S_65_W3">
@@ -4001,8 +3995,8 @@
                 <PHON kindOf="original">kuni</PHON>
                 <FORM kindOf="standard">kuni</FORM>
                 <PHON kindOf="standard">kuni</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主格.這個</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">NOM.this</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">這個.主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">this.NOM</TRANSL>
             </M>
         </W>
         <W id="skzyNr-frog_sinay_S_65_W5">
@@ -4079,12 +4073,12 @@
         <TRANSL xml:lang="eng">Other people would say so.</TRANSL>
         <AUDIO file="skzyNr-frog_sinay_S67.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/skzyNr-frog_sinay.mp3" start="138.07" end="139.92"/>
         <W id="skzyNr-frog_sinay_S_67_W0">
-            <FORM kindOf="original">a-sa=tu</FORM>
+            <FORM kindOf="original">a=sa=tu</FORM>
             <PHON kindOf="original">asatu</PHON>
-            <FORM kindOf="standard">a-sa=tu</FORM>
+            <FORM kindOf="standard">a=sa=tu</FORM>
             <PHON kindOf="standard">asatu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">未來貌-說=完成貌</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">FUT-say=PFV</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">未來貌=說=完成貌</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FUT=say=PFV</TRANSL>
             <M id="skzyNr-frog_sinay_S_67_W0M0">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
@@ -4094,9 +4088,9 @@
                 <TRANSL xml:lang="eng" kindOf="original">FUT</TRANSL>
             </M>
             <M id="skzyNr-frog_sinay_S_67_W0M1">
-                <FORM kindOf="original">sa</FORM>
+                <FORM kindOf="original">=sa</FORM>
                 <PHON kindOf="original">sa</PHON>
-                <FORM kindOf="standard">sa</FORM>
+                <FORM kindOf="standard">=sa</FORM>
                 <PHON kindOf="standard">sa</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">說</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">say</TRANSL>
@@ -4189,14 +4183,14 @@
             <FORM kindOf="standard">ka-ka-libut-an</FORM>
             <PHON kindOf="standard">kaka[r|ɾ]ibutan</PHON>
             <TRANSL xml:lang="zho" kindOf="original">Ca重疊-KA-煩-處焦</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">CaRED-KA-annoy-LF</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">Ca-KA-annoy-LF</TRANSL>
             <M id="skzyNr-frog_sinay_S_68_W1M0">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">Ca重疊</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">CaRED</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">Ca</TRANSL>
             </M>
             <M id="skzyNr-frog_sinay_S_68_W1M1">
                 <FORM kindOf="original">ka</FORM>
@@ -5270,12 +5264,12 @@
             </M>
         </W>
         <W id="skzyNr-frog_sinay_S_80_W13">
-            <FORM kindOf="original">a-adup-en,</FORM>
+            <FORM kindOf="original">a=adup-en,</FORM>
             <PHON kindOf="original">aadupən</PHON>
-            <FORM kindOf="standard">a-adup-en,</FORM>
+            <FORM kindOf="standard">a=adup-en,</FORM>
             <PHON kindOf="standard">aadupən</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">未來貌-打獵-受焦</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">FUT-hunt-PF</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">未來貌=打獵-受焦</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FUT=hunt-PF</TRANSL>
             <M id="skzyNr-frog_sinay_S_80_W13M0">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
@@ -5285,9 +5279,9 @@
                 <TRANSL xml:lang="eng" kindOf="original">FUT</TRANSL>
             </M>
             <M id="skzyNr-frog_sinay_S_80_W13M1">
-                <FORM kindOf="original">adup</FORM>
+                <FORM kindOf="original">=adup</FORM>
                 <PHON kindOf="original">adup</PHON>
-                <FORM kindOf="standard">adup</FORM>
+                <FORM kindOf="standard">=adup</FORM>
                 <PHON kindOf="standard">adup</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">打獵</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">hunt</TRANSL>
@@ -6569,14 +6563,14 @@
             <FORM kindOf="standard">ca-cudad-an</FORM>
             <PHON kindOf="standard">ʦaʦudadan</PHON>
             <TRANSL xml:lang="zho" kindOf="original">Ca重疊-書-處焦</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">CaRED-book-LF</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">Ca-book-LF</TRANSL>
             <M id="skzyNr-frog_sinay_S_102_W4M0">
                 <FORM kindOf="original">ca</FORM>
                 <PHON kindOf="original">ʦa</PHON>
                 <FORM kindOf="standard">ca</FORM>
                 <PHON kindOf="standard">ʦa</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">Ca重疊</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">CaRED</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">Ca</TRANSL>
             </M>
             <M id="skzyNr-frog_sinay_S_102_W4M1">
                 <FORM kindOf="original">cudad</FORM>

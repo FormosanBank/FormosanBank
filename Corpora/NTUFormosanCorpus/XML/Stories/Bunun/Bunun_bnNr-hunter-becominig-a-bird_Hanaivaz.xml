@@ -367,7 +367,7 @@
             <PHON kindOf="original">tupaun</PHON>
             <FORM kindOf="standard">tupa-un</FORM>
             <PHON kindOf="standard">tupaun</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">說-受焦</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">說=受焦</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">say-PF</TRANSL>
             <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_7_W5M0">
                 <FORM kindOf="original">tupa</FORM>
@@ -3032,7 +3032,7 @@
             <PHON kindOf="original">kudiidau</PHON>
             <FORM kindOf="standard">ku-dii=dau</FORM>
             <PHON kindOf="standard">kudiidau</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">去-那裡=知識詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">去-那裡-知識詞</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">go-there=EVI</TRANSL>
             <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_50_W14M0">
                 <FORM kindOf="original">ku</FORM>
@@ -4788,8 +4788,8 @@
             <PHON kindOf="original">na</PHON>
             <FORM kindOf="standard">na,</FORM>
             <PHON kindOf="standard">na</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">IRR</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">非實現=</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">IRR=</TRANSL>
             <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_71_W17M0">
                 <FORM kindOf="original">na,</FORM>
                 <PHON kindOf="original">na</PHON>
@@ -5679,14 +5679,14 @@
             <PHON kindOf="original">minsumain</PHON>
             <FORM kindOf="standard">m-insuma=in</FORM>
             <PHON kindOf="standard">minsumain</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主焦-來=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">來=改變狀態</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-come=COS</TRANSL>
             <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_90_W1M0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">來</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
             </M>
             <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_90_W1M1">
@@ -5694,7 +5694,7 @@
                 <PHON kindOf="original">insuma</PHON>
                 <FORM kindOf="standard">insuma</FORM>
                 <PHON kindOf="standard">insuma</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">來</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">come</TRANSL>
             </M>
             <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_90_W1M2">
@@ -5702,7 +5702,6 @@
                 <PHON kindOf="original">in</PHON>
                 <FORM kindOf="standard">=in</FORM>
                 <PHON kindOf="standard">in</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             </M>
         </W>
@@ -6635,8 +6634,8 @@
             <PHON kindOf="original">ŋausin</PHON>
             <FORM kindOf="standard">ngaus=in</FORM>
             <PHON kindOf="standard">ŋauɕin</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">先=改變狀態</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">precedent=COS</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">先-改變狀態</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">precedent-COS</TRANSL>
             <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_116_W11M0">
                 <FORM kindOf="original">ngaus</FORM>
                 <PHON kindOf="original">ŋaus</PHON>
@@ -8129,8 +8128,8 @@
                 <PHON kindOf="original">aupa</PHON>
                 <FORM kindOf="standard">aupa</FORM>
                 <PHON kindOf="standard">aupa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">因為</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">because</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">Q</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">Q</TRANSL>
             </M>
         </W>
         <W id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_152_W1">
@@ -8138,23 +8137,19 @@
             <PHON kindOf="original">masmuatu</PHON>
             <FORM kindOf="standard">masmua=tu,</FORM>
             <PHON kindOf="standard">masmuatu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">過度=補語詞</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">be.over=COMP</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">過度</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">be.over</TRANSL>
             <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_152_W1M0">
                 <FORM kindOf="original">masmua</FORM>
                 <PHON kindOf="original">masmua</PHON>
                 <FORM kindOf="standard">masmua</FORM>
                 <PHON kindOf="standard">masmua</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">過度</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">be.over</TRANSL>
             </M>
             <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_152_W1M1">
-                <FORM kindOf="original">=tu,</FORM>
+                <FORM kindOf="original">tu,</FORM>
                 <PHON kindOf="original">tu</PHON>
-                <FORM kindOf="standard">=tu,</FORM>
+                <FORM kindOf="standard">tu,</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">補語詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">COMP</TRANSL>
             </M>
         </W>
         <W id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_152_W2">
@@ -8170,7 +8165,7 @@
                 <FORM kindOf="standard">kadiman</FORM>
                 <PHON kindOf="standard">kadiman</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">珍惜</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">treasure</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">precious</TRANSL>
             </M>
             <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_152_W2M1">
                 <FORM kindOf="original">un</FORM>
@@ -8209,8 +8204,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu,</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">補語詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">COMP</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
         <W id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_152_W5">
@@ -8241,8 +8236,8 @@
                 <PHON kindOf="original">i</PHON>
                 <FORM kindOf="standard">i,</FORM>
                 <PHON kindOf="standard">i</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">I</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">I</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             </M>
         </W>
         <W id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_152_W7">
@@ -8281,8 +8276,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu,</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">連繫詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
         <W id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_152_W9">
@@ -9238,8 +9233,8 @@
             <PHON kindOf="original">kusianʨia</PHON>
             <FORM kindOf="standard">ku-sian=cia.</FORM>
             <PHON kindOf="standard">kuɕianʨia</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">去-處格.中距=遠距.斜格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">go-LOC.MED=DIST.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">去=處格.中距=遠距.斜格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">go=LOC.MED=DIST.OBL</TRANSL>
             <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_177_W7M0">
                 <FORM kindOf="original">ku</FORM>
                 <PHON kindOf="original">ku</PHON>
@@ -10210,8 +10205,8 @@
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">連繫詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
         <W id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_192_W3">
@@ -10295,28 +10290,12 @@
             </M>
         </W>
         <W id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_192_W7">
-            <FORM kindOf="original">m-uhna,</FORM>
+            <FORM kindOf="original">muhna,</FORM>
             <PHON kindOf="original">mu[x|χ]na</PHON>
-            <FORM kindOf="standard">m-uhna,</FORM>
+            <FORM kindOf="standard">muhna,</FORM>
             <PHON kindOf="standard">mu[x|χ]na</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦-再</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-again</TRANSL>
-            <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_192_W7M0">
-                <FORM kindOf="original">m</FORM>
-                <PHON kindOf="original">m</PHON>
-                <FORM kindOf="standard">m</FORM>
-                <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
-            </M>
-            <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_192_W7M1">
-                <FORM kindOf="original">uhna,</FORM>
-                <PHON kindOf="original">u[x|χ]na</PHON>
-                <FORM kindOf="standard">uhna,</FORM>
-                <PHON kindOf="standard">u[x|χ]na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">再</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">again</TRANSL>
-            </M>
         </W>
         <W id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_192_W8">
             <FORM kindOf="original">i-sia</FORM>
@@ -13571,10 +13550,10 @@
         </W>
     </S>
     <S id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250">
-        <FORM kindOf="original">idii amin naia bunun, amin a pingaz a uvaaza, malala'la amin tu, isa kasu Talum, isa kasu Talummamangan.</FORM>
-        <PHON kindOf="original">idii amin naia bunun amin a piŋað a uvaaða ma[l|ɬ]a[l|ɬ]a[l|ɬ]a amin tu isa kasu ta[l|ɬ]um isa kasu ta[l|ɬ]ummamaŋan</PHON>
-        <FORM kindOf="standard">idii amin naia bunun, amin a pingaz a uvaaza, malala'la amin tu, isa kasu Talum, isa kasu Talummamangan.</FORM>
-        <PHON kindOf="standard">idii amin naia bunun amin a piŋað a uvaaða ma[l|ɬ]a[l|ɬ]aʔ[l|ɬ]a amin tu isa kasu ta[l|ɬ]um isa kasu ta[l|ɬ]ummamaŋan</PHON>
+        <FORM kindOf="original">idii amin naia bunun, amin a pingaz a uvaaz a, malala'la amin tu, isa kasu Talum, isa kasu Talummamangan.</FORM>
+        <PHON kindOf="original">idii amin naia bunun amin a piŋað a uvaað a ma[l|ɬ]a[l|ɬ]a[l|ɬ]a amin tu isa kasu ta[l|ɬ]um isa kasu ta[l|ɬ]ummamaŋan</PHON>
+        <FORM kindOf="standard">idii amin naia bunun, amin a pingaz a uvaaz a, malala'la amin tu, isa kasu Talum, isa kasu Talummamangan.</FORM>
+        <PHON kindOf="standard">idii amin naia bunun amin a piŋað a uvaað a ma[l|ɬ]a[l|ɬ]aʔ[l|ɬ]a amin tu isa kasu ta[l|ɬ]um isa kasu ta[l|ɬ]ummamaŋan</PHON>
         <TRANSL xml:lang="zho">他們那些人、太太和孩子也在那邊一直叫：＂Talum你在哪裡？勇敢的Talum你在哪？＂</TRANSL>
         <TRANSL xml:lang="eng">Those people and his wife and children were also there and kept calling: 'Talum, where are you? Talum the brave, where are you?'</TRANSL>
         <AUDIO file="bnNr-hunter-becominig-a-bird_Hanaivaz_S250.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/bnNr-hunter-becominig-a-bird_Hanaivaz.mp3" start="400.27" end="409.85"/>
@@ -13591,7 +13570,7 @@
                 <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">在</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">be.at</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             </M>
             <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W0M1">
                 <FORM kindOf="original">dii</FORM>
@@ -13647,7 +13626,7 @@
                 <FORM kindOf="standard">bunun,</FORM>
                 <PHON kindOf="standard">bunun</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">人</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">people</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">peopple</TRANSL>
             </M>
         </W>
         <W id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W4">
@@ -13678,8 +13657,8 @@
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
         <W id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W6">
@@ -13710,15 +13689,15 @@
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
         <W id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W8">
-            <FORM kindOf="original">uvaaz=a,</FORM>
-            <PHON kindOf="original">uvaaða</PHON>
-            <FORM kindOf="standard">uvaaz=a,</FORM>
-            <PHON kindOf="standard">uvaaða</PHON>
+            <FORM kindOf="original">uvaaz</FORM>
+            <PHON kindOf="original">uvaað</PHON>
+            <FORM kindOf="standard">uvaaz</FORM>
+            <PHON kindOf="standard">uvaað</PHON>
             <TRANSL xml:lang="zho" kindOf="original">孩子=遠距.主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">child=DIST.NOM</TRANSL>
             <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W8M0">
@@ -13729,47 +13708,49 @@
                 <TRANSL xml:lang="zho" kindOf="original">孩子</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">child</TRANSL>
             </M>
-            <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W8M1">
-                <FORM kindOf="original">=a,</FORM>
-                <PHON kindOf="original">a</PHON>
-                <FORM kindOf="standard">=a,</FORM>
-                <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">遠距.主格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">DIST.NOM</TRANSL>
-            </M>
         </W>
         <W id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W9">
+            <FORM kindOf="original">a,</FORM>
+            <PHON kindOf="original">a</PHON>
+            <FORM kindOf="standard">a,</FORM>
+            <PHON kindOf="standard">a</PHON>
+            <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W9M0">
+                <FORM kindOf="original">a,</FORM>
+                <PHON kindOf="original">a</PHON>
+                <FORM kindOf="standard">a,</FORM>
+                <PHON kindOf="standard">a</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
+            </M>
+        </W>
+        <W id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W10">
             <FORM kindOf="original">ma&lt;la&gt;la'la</FORM>
             <PHON kindOf="original">ma[l|ɬ]a[l|ɬ]a[l|ɬ]a</PHON>
             <FORM kindOf="standard">ma&lt;la&gt;la'la</FORM>
             <PHON kindOf="standard">ma[l|ɬ]a[l|ɬ]aʔ[l|ɬ]a</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦&lt;重疊&gt;叫喊</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF&lt;RED&gt;call</TRANSL>
-            <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W9M0_0">
+            <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W10M0">
                 <FORM kindOf="original">-la-</FORM>
                 <PHON kindOf="original">[l|ɬ]a</PHON>
                 <FORM kindOf="standard">-la-</FORM>
                 <PHON kindOf="standard">[l|ɬ]a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;</TRANSL>
             </M>
-            <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W9M0_1">
-                <FORM kindOf="original">ma-la'la</FORM>
+            <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W10M1">
+                <FORM kindOf="original">mala'la</FORM>
                 <PHON kindOf="original">ma[l|ɬ]a[l|ɬ]a</PHON>
-                <FORM kindOf="standard">ma-la'la</FORM>
+                <FORM kindOf="standard">mala'la</FORM>
                 <PHON kindOf="standard">ma[l|ɬ]aʔ[l|ɬ]a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主焦叫喊</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AFcall</TRANSL>
             </M>
         </W>
-        <W id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W10">
+        <W id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W11">
             <FORM kindOf="original">amin</FORM>
             <PHON kindOf="original">amin</PHON>
             <FORM kindOf="standard">amin</FORM>
             <PHON kindOf="standard">amin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">也</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">also</TRANSL>
-            <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W10M0">
+            <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W11M0">
                 <FORM kindOf="original">amin</FORM>
                 <PHON kindOf="original">amin</PHON>
                 <FORM kindOf="standard">amin</FORM>
@@ -13778,30 +13759,30 @@
                 <TRANSL xml:lang="eng" kindOf="original">also</TRANSL>
             </M>
         </W>
-        <W id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W11">
+        <W id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W12">
             <FORM kindOf="original">tu,</FORM>
             <PHON kindOf="original">tu</PHON>
             <FORM kindOf="standard">tu,</FORM>
             <PHON kindOf="standard">tu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">補語詞</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">COMP</TRANSL>
-            <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W11M0">
+            <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W12M0">
                 <FORM kindOf="original">tu,</FORM>
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu,</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">補語詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">COMP</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
-        <W id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W12">
+        <W id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W13">
             <FORM kindOf="original">isa</FORM>
             <PHON kindOf="original">isa</PHON>
             <FORM kindOf="standard">isa</FORM>
             <PHON kindOf="standard">isa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">哪裡</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">where</TRANSL>
-            <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W12M0">
+            <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W13M0">
                 <FORM kindOf="original">isa</FORM>
                 <PHON kindOf="original">isa</PHON>
                 <FORM kindOf="standard">isa</FORM>
@@ -13810,14 +13791,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">where</TRANSL>
             </M>
         </W>
-        <W id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W13">
+        <W id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W14">
             <FORM kindOf="original">kasu</FORM>
             <PHON kindOf="original">kasu</PHON>
             <FORM kindOf="standard">kasu</FORM>
             <PHON kindOf="standard">kasu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">2SG.主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">2SG.NOM</TRANSL>
-            <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W13M0">
+            <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W14M0">
                 <FORM kindOf="original">kasu</FORM>
                 <PHON kindOf="original">kasu</PHON>
                 <FORM kindOf="standard">kasu</FORM>
@@ -13826,14 +13807,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">2SG.NOM</TRANSL>
             </M>
         </W>
-        <W id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W14">
+        <W id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W15">
             <FORM kindOf="original">Talum,</FORM>
             <PHON kindOf="original">ta[l|ɬ]um</PHON>
             <FORM kindOf="standard">Talum,</FORM>
             <PHON kindOf="standard">ta[l|ɬ]um</PHON>
             <TRANSL xml:lang="zho" kindOf="original">人名</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">PN</TRANSL>
-            <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W14M0">
+            <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W15M0">
                 <FORM kindOf="original">Talum,</FORM>
                 <PHON kindOf="original">ta[l|ɬ]um</PHON>
                 <FORM kindOf="standard">Talum,</FORM>
@@ -13842,14 +13823,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">PN</TRANSL>
             </M>
         </W>
-        <W id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W15">
+        <W id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W16">
             <FORM kindOf="original">isa</FORM>
             <PHON kindOf="original">isa</PHON>
             <FORM kindOf="standard">isa</FORM>
             <PHON kindOf="standard">isa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">哪裡</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">where</TRANSL>
-            <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W15M0">
+            <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W16M0">
                 <FORM kindOf="original">isa</FORM>
                 <PHON kindOf="original">isa</PHON>
                 <FORM kindOf="standard">isa</FORM>
@@ -13858,14 +13839,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">where</TRANSL>
             </M>
         </W>
-        <W id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W16">
+        <W id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W17">
             <FORM kindOf="original">kasu</FORM>
             <PHON kindOf="original">kasu</PHON>
             <FORM kindOf="standard">kasu</FORM>
             <PHON kindOf="standard">kasu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">2SG.主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">2SG.NOM</TRANSL>
-            <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W16M0">
+            <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W17M0">
                 <FORM kindOf="original">kasu</FORM>
                 <PHON kindOf="original">kasu</PHON>
                 <FORM kindOf="standard">kasu</FORM>
@@ -13874,14 +13855,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">2SG.NOM</TRANSL>
             </M>
         </W>
-        <W id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W17">
+        <W id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W18">
             <FORM kindOf="original">Talum=ma-mangan.</FORM>
             <PHON kindOf="original">ta[l|ɬ]ummamaŋan</PHON>
             <FORM kindOf="standard">Talum=ma-mangan.</FORM>
             <PHON kindOf="standard">ta[l|ɬ]ummamaŋan</PHON>
             <TRANSL xml:lang="zho" kindOf="original">人名=主焦-刀鋒</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">PN=AF-blade</TRANSL>
-            <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W17M0">
+            <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W18M0">
                 <FORM kindOf="original">Talum</FORM>
                 <PHON kindOf="original">ta[l|ɬ]um</PHON>
                 <FORM kindOf="standard">Talum</FORM>
@@ -13889,7 +13870,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">人名</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">PN</TRANSL>
             </M>
-            <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W17M1">
+            <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W18M1">
                 <FORM kindOf="original">=ma</FORM>
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">=ma</FORM>
@@ -13897,7 +13878,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
             </M>
-            <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W17M2">
+            <M id="bnNr-hunter-becominig-a-bird_Hanaivaz_S_250_W18M2">
                 <FORM kindOf="original">mangan.</FORM>
                 <PHON kindOf="original">maŋan</PHON>
                 <FORM kindOf="standard">mangan.</FORM>

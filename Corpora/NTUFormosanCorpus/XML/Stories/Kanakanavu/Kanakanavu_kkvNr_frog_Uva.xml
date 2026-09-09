@@ -213,7 +213,7 @@
             <PHON kindOf="original">tamtituin</PHON>
             <FORM kindOf="standard">tamtitu=in,</FORM>
             <PHON kindOf="standard">tamtituin</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">小狗=3SG.屬格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">小狗-3SG.屬格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">puppy=3SG.GEN</TRANSL>
             <M id="kkvNr_frog_Uva_S_1_W11M0">
                 <FORM kindOf="original">tamtitu</FORM>
@@ -1058,23 +1058,19 @@
             <PHON kindOf="original">nimusika</PHON>
             <FORM kindOf="standard">ni-musika,</FORM>
             <PHON kindOf="standard">nimusika</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">FS-FS</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">FS-FS</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
             <M id="kkvNr_frog_Uva_S_25_W0M0">
                 <FORM kindOf="original">ni</FORM>
                 <PHON kindOf="original">ni</PHON>
                 <FORM kindOf="standard">ni</FORM>
                 <PHON kindOf="standard">ni</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
             </M>
             <M id="kkvNr_frog_Uva_S_25_W0M1">
                 <FORM kindOf="original">musika,</FORM>
                 <PHON kindOf="original">musika</PHON>
                 <FORM kindOf="standard">musika,</FORM>
                 <PHON kindOf="standard">musika</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_25_W1">
@@ -1113,8 +1109,8 @@
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PAST</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_25_W3">
@@ -1649,9 +1645,9 @@
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_34_W8">
-            <FORM kindOf="original">ta'an=in</FORM>
+            <FORM kindOf="original">ta'an-in</FORM>
             <PHON kindOf="original">taʔanin</PHON>
-            <FORM kindOf="standard">ta'an=in</FORM>
+            <FORM kindOf="standard">ta'an-in</FORM>
             <PHON kindOf="standard">taʔanin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">椅子=3SG.屬格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">chair=3SG.GEN</TRANSL>
@@ -1664,9 +1660,9 @@
                 <TRANSL xml:lang="eng" kindOf="original">chair</TRANSL>
             </M>
             <M id="kkvNr_frog_Uva_S_34_W8M1">
-                <FORM kindOf="original">=in</FORM>
+                <FORM kindOf="original">in</FORM>
                 <PHON kindOf="original">in</PHON>
-                <FORM kindOf="standard">=in</FORM>
+                <FORM kindOf="standard">in</FORM>
                 <PHON kindOf="standard">in</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">3SG.屬格</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">3SG.GEN</TRANSL>
@@ -2338,14 +2334,14 @@
             <PHON kindOf="original">ʔ[e|ə]nia</PHON>
             <FORM kindOf="standard">'e=nia</FORM>
             <PHON kindOf="standard">ʔenia</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">存在=那裡</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">存在.那裡</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">EXIST=there</TRANSL>
             <M id="kkvNr_frog_Uva_S_51_W0M0">
                 <FORM kindOf="original">'e</FORM>
                 <PHON kindOf="original">ʔ[e|ə]</PHON>
                 <FORM kindOf="standard">'e</FORM>
                 <PHON kindOf="standard">ʔe</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">存在</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">存在.那裡</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">EXIST</TRANSL>
             </M>
             <M id="kkvNr_frog_Uva_S_51_W0M1">
@@ -2353,7 +2349,6 @@
                 <PHON kindOf="original">nia</PHON>
                 <FORM kindOf="standard">=nia</FORM>
                 <PHON kindOf="standard">nia</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">那裡</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">there</TRANSL>
             </M>
         </W>
@@ -2637,27 +2632,29 @@
         <TRANSL xml:lang="eng">He kept walking with his doggy.</TRANSL>
         <AUDIO file="kkvNr_frog_Uva_S56.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_frog_Uva.mp3" start="87.79" end="90.16"/>
         <W id="kkvNr_frog_Uva_S_56_W0">
-            <FORM kindOf="original">mara&lt;co&gt;cocua</FORM>
+            <FORM kindOf="original">mara-co-cocua</FORM>
             <PHON kindOf="original">maraʦoʦoʦua</PHON>
-            <FORM kindOf="standard">mara&lt;co&gt;cocua</FORM>
+            <FORM kindOf="standard">mara-co-cocua</FORM>
             <PHON kindOf="standard">ma[r|ɾ]aʦoʦoʦua</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;兩個人一起走</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;two.people.walk.together</TRANSL>
-            <M id="kkvNr_frog_Uva_S_56_W0M0_0">
-                <FORM kindOf="original">-co-</FORM>
-                <PHON kindOf="original">ʦo</PHON>
-                <FORM kindOf="standard">-co-</FORM>
-                <PHON kindOf="standard">ʦo</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">重疊-兩個人一起走</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">RED-two.people.walk.together</TRANSL>
+            <M id="kkvNr_frog_Uva_S_56_W0M0">
+                <FORM kindOf="original">mara</FORM>
+                <PHON kindOf="original">mara</PHON>
+                <FORM kindOf="standard">mara</FORM>
+                <PHON kindOf="standard">ma[r|ɾ]a</PHON>
             </M>
-            <M id="kkvNr_frog_Uva_S_56_W0M0_1">
-                <FORM kindOf="original">mara-cocua</FORM>
-                <PHON kindOf="original">maraʦoʦua</PHON>
-                <FORM kindOf="standard">mara-cocua</FORM>
-                <PHON kindOf="standard">ma[r|ɾ]aʦoʦua</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">兩個人一起走</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">two.people.walk.together</TRANSL>
+            <M id="kkvNr_frog_Uva_S_56_W0M1">
+                <FORM kindOf="original">co</FORM>
+                <PHON kindOf="original">ʦo</PHON>
+                <FORM kindOf="standard">co</FORM>
+                <PHON kindOf="standard">ʦo</PHON>
+            </M>
+            <M id="kkvNr_frog_Uva_S_56_W0M2">
+                <FORM kindOf="original">cocua</FORM>
+                <PHON kindOf="original">ʦoʦua</PHON>
+                <FORM kindOf="standard">cocua</FORM>
+                <PHON kindOf="standard">ʦoʦua</PHON>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_56_W1">
@@ -3044,39 +3041,31 @@
             <PHON kindOf="original">mononaŋʦu</PHON>
             <FORM kindOf="standard">mo-no-nang=cu</FORM>
             <PHON kindOf="standard">mononaŋʦu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主焦-重疊-靜止不動=改變狀態</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">AF-RED-stay.still=COS</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">重疊-靜止不動</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">RED-stay.still</TRANSL>
             <M id="kkvNr_frog_Uva_S_63_W0M0">
                 <FORM kindOf="original">mo</FORM>
                 <PHON kindOf="original">mo</PHON>
                 <FORM kindOf="standard">mo</FORM>
                 <PHON kindOf="standard">mo</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
             </M>
             <M id="kkvNr_frog_Uva_S_63_W0M1">
                 <FORM kindOf="original">no</FORM>
                 <PHON kindOf="original">no</PHON>
                 <FORM kindOf="standard">no</FORM>
                 <PHON kindOf="standard">no</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">重疊</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
             </M>
             <M id="kkvNr_frog_Uva_S_63_W0M2">
                 <FORM kindOf="original">nang</FORM>
                 <PHON kindOf="original">naŋ</PHON>
                 <FORM kindOf="standard">nang</FORM>
                 <PHON kindOf="standard">naŋ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">靜止不動</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">stay.still</TRANSL>
             </M>
             <M id="kkvNr_frog_Uva_S_63_W0M3">
-                <FORM kindOf="original">=cu</FORM>
+                <FORM kindOf="original">cu</FORM>
                 <PHON kindOf="original">ʦu</PHON>
-                <FORM kindOf="standard">=cu</FORM>
+                <FORM kindOf="standard">cu</FORM>
                 <PHON kindOf="standard">ʦu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_63_W1">
@@ -3091,8 +3080,8 @@
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PAST</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_63_W2">
@@ -3735,31 +3724,21 @@
             <PHON kindOf="original">*ʔ*</PHON>
             <FORM kindOf="standard">ʉ'ʉ</FORM>
             <PHON kindOf="standard">ɨʔɨ</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">是的</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">yes</TRANSL>
-            <M id="kkvNr_frog_Uva_S_74_W8M0">
-                <FORM kindOf="original">ʉ'ʉ</FORM>
-                <PHON kindOf="original">*ʔ*</PHON>
-                <FORM kindOf="standard">ʉ'ʉ</FORM>
-                <PHON kindOf="standard">ɨʔɨ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">是的</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">yes</TRANSL>
-            </M>
         </W>
         <W id="kkvNr_frog_Uva_S_74_W9">
             <FORM kindOf="original">satu'u,</FORM>
             <PHON kindOf="original">satuʔu</PHON>
             <FORM kindOf="standard">satu'u,</FORM>
             <PHON kindOf="standard">satuʔu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">箱子</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">box</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">是的</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">yes</TRANSL>
             <M id="kkvNr_frog_Uva_S_74_W9M0">
                 <FORM kindOf="original">satu'u,</FORM>
                 <PHON kindOf="original">satuʔu</PHON>
                 <FORM kindOf="standard">satu'u,</FORM>
                 <PHON kindOf="standard">satuʔu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">箱子</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">box</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">是的</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">yes</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_74_W10">
@@ -5199,8 +5178,8 @@
                 <PHON kindOf="original">makasua</PHON>
                 <FORM kindOf="standard">makasua</FORM>
                 <PHON kindOf="standard">makasua</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主焦.那樣</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AF.that.way</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">那樣.主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">in.that.way.AF</TRANSL>
             </M>
             <M id="kkvNr_frog_Uva_S_95_W0M1">
                 <FORM kindOf="original">=cu</FORM>
@@ -5320,23 +5299,19 @@
             <PHON kindOf="original">monia</PHON>
             <FORM kindOf="standard">mo=nia</FORM>
             <PHON kindOf="standard">monia</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">待在=那裡</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">stay=there</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">待在.那裡</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">stay.there</TRANSL>
             <M id="kkvNr_frog_Uva_S_95_W7M0">
                 <FORM kindOf="original">mo</FORM>
                 <PHON kindOf="original">mo</PHON>
                 <FORM kindOf="standard">mo</FORM>
                 <PHON kindOf="standard">mo</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">待在</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">stay</TRANSL>
             </M>
             <M id="kkvNr_frog_Uva_S_95_W7M1">
-                <FORM kindOf="original">=nia</FORM>
+                <FORM kindOf="original">nia</FORM>
                 <PHON kindOf="original">nia</PHON>
-                <FORM kindOf="standard">=nia</FORM>
+                <FORM kindOf="standard">nia</FORM>
                 <PHON kindOf="standard">nia</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">那裡</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">there</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_95_W8">
@@ -5367,8 +5342,8 @@
                 <PHON kindOf="original">ia</PHON>
                 <FORM kindOf="standard">ia</FORM>
                 <PHON kindOf="standard">ia</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_95_W10">
@@ -5431,8 +5406,8 @@
                 <PHON kindOf="original">ʔa</PHON>
                 <FORM kindOf="standard">'a</FORM>
                 <PHON kindOf="standard">ʔa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">X</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">X</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_95_W14">
@@ -5447,8 +5422,8 @@
                 <PHON kindOf="original">is</PHON>
                 <FORM kindOf="standard">is.</FORM>
                 <PHON kindOf="standard">is</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">X</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">X</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">Q</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">Q</TRANSL>
             </M>
         </W>
     </S>
@@ -7348,7 +7323,7 @@
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主事焦點</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
             </M>
             <M id="kkvNr_frog_Uva_S_114_W0M1">
@@ -7356,7 +7331,7 @@
                 <PHON kindOf="original">aŋuru</PHON>
                 <FORM kindOf="standard">anguru</FORM>
                 <PHON kindOf="standard">aŋu[r|ɾ]u</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">逃走</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">逃跑</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">escape</TRANSL>
             </M>
         </W>
@@ -7388,7 +7363,7 @@
                 <PHON kindOf="original">tamna</PHON>
                 <FORM kindOf="standard">tamna</FORM>
                 <PHON kindOf="standard">tamna</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">屬於</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">所有格</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">POSS</TRANSL>
             </M>
         </W>
@@ -7404,8 +7379,8 @@
                 <PHON kindOf="original">tamtitu</PHON>
                 <FORM kindOf="standard">tamtitu</FORM>
                 <PHON kindOf="standard">tamtitu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">小狗</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">doggy</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">幼狗</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">puppy</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_114_W4">
@@ -7436,32 +7411,34 @@
                 <PHON kindOf="original">anu</PHON>
                 <FORM kindOf="standard">anu</FORM>
                 <PHON kindOf="standard">anu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">蜜蜂</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">bee</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">條件詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">COND</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_114_W6">
-            <FORM kindOf="original">kecan&lt;can&gt;can</FORM>
+            <FORM kindOf="original">kecan-can-can</FORM>
             <PHON kindOf="original">k[e|ə]ʦanʦanʦan</PHON>
-            <FORM kindOf="standard">kecan&lt;can&gt;can</FORM>
+            <FORM kindOf="standard">kecan-can-can</FORM>
             <PHON kindOf="standard">keʦanʦanʦan</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;一起</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;together</TRANSL>
-            <M id="kkvNr_frog_Uva_S_114_W6M0_0">
-                <FORM kindOf="original">-can-</FORM>
-                <PHON kindOf="original">ʦan</PHON>
-                <FORM kindOf="standard">-can-</FORM>
-                <PHON kindOf="standard">ʦan</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;一群</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;swarm</TRANSL>
+            <M id="kkvNr_frog_Uva_S_114_W6M0">
+                <FORM kindOf="original">kecan</FORM>
+                <PHON kindOf="original">k[e|ə]ʦan</PHON>
+                <FORM kindOf="standard">kecan</FORM>
+                <PHON kindOf="standard">keʦan</PHON>
             </M>
-            <M id="kkvNr_frog_Uva_S_114_W6M0_1">
-                <FORM kindOf="original">kecan-can</FORM>
-                <PHON kindOf="original">k[e|ə]ʦanʦan</PHON>
-                <FORM kindOf="standard">kecan-can</FORM>
-                <PHON kindOf="standard">keʦanʦan</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">一起</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">together</TRANSL>
+            <M id="kkvNr_frog_Uva_S_114_W6M1">
+                <FORM kindOf="original">can</FORM>
+                <PHON kindOf="original">ʦan</PHON>
+                <FORM kindOf="standard">can</FORM>
+                <PHON kindOf="standard">ʦan</PHON>
+            </M>
+            <M id="kkvNr_frog_Uva_S_114_W6M2">
+                <FORM kindOf="original">can</FORM>
+                <PHON kindOf="original">ʦan</PHON>
+                <FORM kindOf="standard">can</FORM>
+                <PHON kindOf="standard">ʦan</PHON>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_114_W7">
@@ -7492,8 +7469,8 @@
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PAST</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_114_W9">
@@ -7508,8 +7485,8 @@
                 <PHON kindOf="original">tamtitu</PHON>
                 <FORM kindOf="standard">tamtitu</FORM>
                 <PHON kindOf="standard">tamtitu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">小狗</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">doggy</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">幼狗</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">puppy</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_114_W10">
@@ -7524,8 +7501,8 @@
                 <PHON kindOf="original">isi</PHON>
                 <FORM kindOf="standard">isi.</FORM>
                 <PHON kindOf="standard">isi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">這個</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">this</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">青蛙</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">frog</TRANSL>
             </M>
         </W>
     </S>
@@ -7557,7 +7534,7 @@
                 <PHON kindOf="original">kari</PHON>
                 <FORM kindOf="standard">kari</FORM>
                 <PHON kindOf="standard">ka[r|ɾ]i</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">話語.主事焦點</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">話.主焦</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">word.AF</TRANSL>
             </M>
         </W>
@@ -7566,24 +7543,14 @@
             <PHON kindOf="original">*</PHON>
             <FORM kindOf="standard">ʉ</FORM>
             <PHON kindOf="standard">ɨ</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
-            <M id="kkvNr_frog_Uva_S_115_W1M0">
-                <FORM kindOf="original">ʉ</FORM>
-                <PHON kindOf="original">*</PHON>
-                <FORM kindOf="standard">ʉ</FORM>
-                <PHON kindOf="standard">ɨ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
-            </M>
         </W>
         <W id="kkvNr_frog_Uva_S_115_W2">
             <FORM kindOf="original">ara-pa-pining</FORM>
             <PHON kindOf="original">arapapiniŋ</PHON>
             <FORM kindOf="standard">ara-pa-pining</FORM>
             <PHON kindOf="standard">a[r|ɾ]apapiniŋ</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">變成-重疊-戶外</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">become-RED-outdoor</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             <M id="kkvNr_frog_Uva_S_115_W2M0">
                 <FORM kindOf="original">ara</FORM>
                 <PHON kindOf="original">ara</PHON>
@@ -7605,8 +7572,8 @@
                 <PHON kindOf="original">piniŋ</PHON>
                 <FORM kindOf="standard">pining</FORM>
                 <PHON kindOf="standard">piniŋ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">戶外</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">outdoor</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">廣場</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">plaza</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_115_W3">
@@ -7614,8 +7581,8 @@
             <PHON kindOf="original">ʔuna</PHON>
             <FORM kindOf="standard">'una</FORM>
             <PHON kindOf="standard">ʔuna</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">存在</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">EXIST</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">變成-重疊-戶外</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">become-RED-outdoor</TRANSL>
             <M id="kkvNr_frog_Uva_S_115_W3M0">
                 <FORM kindOf="original">'una</FORM>
                 <PHON kindOf="original">ʔuna</PHON>
@@ -7630,8 +7597,8 @@
             <PHON kindOf="original">puka</PHON>
             <FORM kindOf="standard">puka.</FORM>
             <PHON kindOf="standard">puka</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">貓頭鷹</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">owl</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">存在</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">EXIST</TRANSL>
             <M id="kkvNr_frog_Uva_S_115_W4M0">
                 <FORM kindOf="original">puka.</FORM>
                 <PHON kindOf="original">puka</PHON>
@@ -7662,15 +7629,15 @@
                 <PHON kindOf="original">maka*ua</PHON>
                 <FORM kindOf="standard">makahua</FORM>
                 <PHON kindOf="standard">makahua</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">就那樣</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">do.like.that</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主焦.那樣</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AF.that.way</TRANSL>
             </M>
             <M id="kkvNr_frog_Uva_S_116_W0M1">
                 <FORM kindOf="original">=cu</FORM>
                 <PHON kindOf="original">ʦu</PHON>
                 <FORM kindOf="standard">=cu</FORM>
                 <PHON kindOf="standard">ʦu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             </M>
         </W>
@@ -7686,8 +7653,8 @@
                 <PHON kindOf="original">manu</PHON>
                 <FORM kindOf="standard">manu</FORM>
                 <PHON kindOf="standard">manu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">孩子</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">kid</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">小孩</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">child</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_116_W2">
@@ -7702,7 +7669,7 @@
                 <PHON kindOf="original">isi</PHON>
                 <FORM kindOf="standard">isi</FORM>
                 <PHON kindOf="standard">isi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">這個</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">這</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">this</TRANSL>
             </M>
         </W>
@@ -7742,8 +7709,8 @@
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PAST</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_116_W5">
@@ -7767,23 +7734,19 @@
             <PHON kindOf="original">aŋ*ʦo</PHON>
             <FORM kindOf="standard">a-ngʉco</FORM>
             <PHON kindOf="standard">aŋɨʦo</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">FIL-FIL</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">FIL-FIL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             <M id="kkvNr_frog_Uva_S_116_W6M0">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             </M>
             <M id="kkvNr_frog_Uva_S_116_W6M1">
                 <FORM kindOf="original">ngʉco</FORM>
                 <PHON kindOf="original">ŋ*ʦo</PHON>
                 <FORM kindOf="standard">ngʉco</FORM>
                 <PHON kindOf="standard">ŋɨʦo</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_116_W7">
@@ -7798,8 +7761,8 @@
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PAST</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_116_W8">
@@ -8218,15 +8181,15 @@
                 <PHON kindOf="original">maka*ua</PHON>
                 <FORM kindOf="standard">makahua</FORM>
                 <PHON kindOf="standard">makahua</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">就那樣</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">do.like.that</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主焦.那樣</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AF.that.way</TRANSL>
             </M>
             <M id="kkvNr_frog_Uva_S_120_W0M1">
                 <FORM kindOf="original">=cu</FORM>
                 <PHON kindOf="original">ʦu</PHON>
                 <FORM kindOf="standard">=cu</FORM>
                 <PHON kindOf="standard">ʦu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             </M>
         </W>
@@ -8274,8 +8237,8 @@
                 <PHON kindOf="original">ʔ[e|ə]si</PHON>
                 <FORM kindOf="standard">'esi</FORM>
                 <PHON kindOf="standard">ʔesi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">進行</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PROG</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_120_W4">
@@ -8290,31 +8253,23 @@
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PAST</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_120_W5">
-            <FORM kindOf="original">'ʉnʉ'-ʉnai</FORM>
+            <FORM kindOf="original">'ʉnʉ'ʉnai</FORM>
             <PHON kindOf="original">ʔ*n*ʔ*nai</PHON>
-            <FORM kindOf="standard">'ʉnʉ'-ʉnai</FORM>
+            <FORM kindOf="standard">'ʉnʉ'ʉnai</FORM>
             <PHON kindOf="standard">ʔɨnɨʔɨnai</PHON>
             <TRANSL xml:lang="zho" kindOf="original">RED-土地</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">RED-earth</TRANSL>
             <M id="kkvNr_frog_Uva_S_120_W5M0">
-                <FORM kindOf="original">'ʉnʉ'</FORM>
-                <PHON kindOf="original">ʔ*n*ʔ</PHON>
-                <FORM kindOf="standard">'ʉnʉ'</FORM>
-                <PHON kindOf="standard">ʔɨnɨʔ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">RED</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
-            </M>
-            <M id="kkvNr_frog_Uva_S_120_W5M1">
-                <FORM kindOf="original">ʉnai</FORM>
-                <PHON kindOf="original">*nai</PHON>
-                <FORM kindOf="standard">ʉnai</FORM>
-                <PHON kindOf="standard">ɨnai</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">土地</TRANSL>
+                <FORM kindOf="original">'ʉnʉ'ʉnai</FORM>
+                <PHON kindOf="original">ʔ*n*ʔ*nai</PHON>
+                <FORM kindOf="standard">'ʉnʉ'ʉnai</FORM>
+                <PHON kindOf="standard">ʔɨnɨʔɨnai</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">地上</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">earth</TRANSL>
             </M>
         </W>
@@ -8330,7 +8285,7 @@
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主事焦點</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
             </M>
             <M id="kkvNr_frog_Uva_S_120_W6M1">
@@ -8338,7 +8293,7 @@
                 <PHON kindOf="original">on</PHON>
                 <FORM kindOf="standard">on</FORM>
                 <PHON kindOf="standard">on</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">待在</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">待</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">stay</TRANSL>
             </M>
         </W>
@@ -8354,8 +8309,8 @@
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PAST</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_120_W8">
@@ -8370,7 +8325,7 @@
                 <PHON kindOf="original">ʔinia</PHON>
                 <FORM kindOf="standard">'inia</FORM>
                 <PHON kindOf="standard">ʔinia</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">那裏</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">那裡</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">there</TRANSL>
             </M>
         </W>
@@ -8444,23 +8399,19 @@
             <PHON kindOf="original">itar*n</PHON>
             <FORM kindOf="standard">itarʉ-n</FORM>
             <PHON kindOf="standard">ita[r|ɾ]ɨn</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">等待-受焦</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">wait-PF</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">等待-受焦=3SG.屬格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">wait-PF=3SG.GEN</TRANSL>
             <M id="kkvNr_frog_Uva_S_121_W1M0">
                 <FORM kindOf="original">itarʉ</FORM>
                 <PHON kindOf="original">itar*</PHON>
                 <FORM kindOf="standard">itarʉ</FORM>
                 <PHON kindOf="standard">ita[r|ɾ]ɨ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">等待</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">wait</TRANSL>
             </M>
             <M id="kkvNr_frog_Uva_S_121_W1M1">
                 <FORM kindOf="original">n</FORM>
                 <PHON kindOf="original">n</PHON>
                 <FORM kindOf="standard">n</FORM>
                 <PHON kindOf="standard">n</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">受焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PF</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_121_W2">
@@ -8475,8 +8426,8 @@
                 <PHON kindOf="original">k[e|ə][e|ə]</PHON>
                 <FORM kindOf="standard">kee</FORM>
                 <PHON kindOf="standard">kee</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">3SG.屬格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">3SG.GEN</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_121_W3">
@@ -8491,8 +8442,8 @@
                 <PHON kindOf="original">sua</PHON>
                 <FORM kindOf="standard">sua</FORM>
                 <PHON kindOf="standard">sua</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">3SG.主焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">3SG.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_121_W4">
@@ -8507,8 +8458,8 @@
                 <PHON kindOf="original">ŋuain</PHON>
                 <FORM kindOf="standard">nguain</FORM>
                 <PHON kindOf="standard">ŋuain</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">屬於</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">POSS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">3SG.主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">3SG.NOM</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_121_W5">
@@ -8523,8 +8474,8 @@
                 <PHON kindOf="original">tamna</PHON>
                 <FORM kindOf="standard">tamna</FORM>
                 <PHON kindOf="standard">tamna</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">狗</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">dog</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">所有格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">POSS</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_121_W6">
@@ -8532,6 +8483,14 @@
             <PHON kindOf="original">taʦau</PHON>
             <FORM kindOf="standard">tacau.</FORM>
             <PHON kindOf="standard">taʦau</PHON>
+            <M id="kkvNr_frog_Uva_S_121_W6M0">
+                <FORM kindOf="original">tacau.</FORM>
+                <PHON kindOf="original">taʦau</PHON>
+                <FORM kindOf="standard">tacau.</FORM>
+                <PHON kindOf="standard">taʦau</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">所有</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">POSS</TRANSL>
+            </M>
         </W>
     </S>
     <S id="kkvNr_frog_Uva_S_122">
@@ -9066,27 +9025,19 @@
         <TRANSL xml:lang="eng">It fell on the ground, where was the edge of water. The deer came out.</TRANSL>
         <AUDIO file="kkvNr_frog_Uva_S125.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_frog_Uva.mp3" start="308.54" end="314.5"/>
         <W id="kkvNr_frog_Uva_S_125_W0">
-            <FORM kindOf="original">m-atapari'i</FORM>
+            <FORM kindOf="original">matapari'i</FORM>
             <PHON kindOf="original">matapariʔi</PHON>
-            <FORM kindOf="standard">m-atapari'i</FORM>
+            <FORM kindOf="standard">matapari'i</FORM>
             <PHON kindOf="standard">matapa[r|ɾ]iʔi</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主焦-跌倒</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">AF-fall</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">主焦.跌倒</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">AF.fall</TRANSL>
             <M id="kkvNr_frog_Uva_S_125_W0M0">
-                <FORM kindOf="original">m</FORM>
-                <PHON kindOf="original">m</PHON>
-                <FORM kindOf="standard">m</FORM>
-                <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
-            </M>
-            <M id="kkvNr_frog_Uva_S_125_W0M1">
-                <FORM kindOf="original">atapari'i</FORM>
-                <PHON kindOf="original">atapariʔi</PHON>
-                <FORM kindOf="standard">atapari'i</FORM>
-                <PHON kindOf="standard">atapa[r|ɾ]iʔi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">跌倒</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">fall</TRANSL>
+                <FORM kindOf="original">matapari'i</FORM>
+                <PHON kindOf="original">matapariʔi</PHON>
+                <FORM kindOf="standard">matapari'i</FORM>
+                <PHON kindOf="standard">matapa[r|ɾ]iʔi</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">掉落.主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">drop.AV</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_125_W1">
@@ -9246,15 +9197,15 @@
                 <PHON kindOf="original">maka*ua</PHON>
                 <FORM kindOf="standard">makahua</FORM>
                 <PHON kindOf="standard">makahua</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">就這樣</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">do.like.that</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主焦.那樣</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AF.that.way</TRANSL>
             </M>
             <M id="kkvNr_frog_Uva_S_126_W0M1">
                 <FORM kindOf="original">=cu</FORM>
                 <PHON kindOf="original">ʦu</PHON>
                 <FORM kindOf="standard">=cu</FORM>
                 <PHON kindOf="standard">ʦu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">COS</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             </M>
         </W>
@@ -9358,8 +9309,8 @@
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PAST</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_126_W7">
@@ -9430,8 +9381,8 @@
                 <PHON kindOf="original">maŋuru</PHON>
                 <FORM kindOf="standard">manguru</FORM>
                 <PHON kindOf="standard">maŋu[r|ɾ]u</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">逃跑</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">escape</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">逃.主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">flee.AF</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_126_W11">
@@ -9451,19 +9402,23 @@
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_126_W12">
-            <FORM kindOf="original">aiyo.</FORM>
+            <FORM kindOf="original">ai-yo.</FORM>
             <PHON kindOf="original">ai*o</PHON>
-            <FORM kindOf="standard">aiyo.</FORM>
+            <FORM kindOf="standard">ai-yo.</FORM>
             <PHON kindOf="standard">aijo</PHON>
             <TRANSL xml:lang="zho" kindOf="original">驚嚇音</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">INT</TRANSL>
             <M id="kkvNr_frog_Uva_S_126_W12M0">
-                <FORM kindOf="original">aiyo.</FORM>
-                <PHON kindOf="original">ai*o</PHON>
-                <FORM kindOf="standard">aiyo.</FORM>
-                <PHON kindOf="standard">aijo</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">驚嚇音</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">INT</TRANSL>
+                <FORM kindOf="original">ai</FORM>
+                <PHON kindOf="original">ai</PHON>
+                <FORM kindOf="standard">ai</FORM>
+                <PHON kindOf="standard">ai</PHON>
+            </M>
+            <M id="kkvNr_frog_Uva_S_126_W12M1">
+                <FORM kindOf="original">yo.</FORM>
+                <PHON kindOf="original">*o</PHON>
+                <FORM kindOf="standard">yo.</FORM>
+                <PHON kindOf="standard">jo</PHON>
             </M>
         </W>
     </S>
@@ -9824,16 +9779,12 @@
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
             </M>
             <M id="kkvNr_frog_Uva_S_129_W11M1">
                 <FORM kindOf="original">atapari'i</FORM>
                 <PHON kindOf="original">atapariʔi</PHON>
                 <FORM kindOf="standard">atapari'i</FORM>
                 <PHON kindOf="standard">atapa[r|ɾ]iʔi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">跌倒</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">fall</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_129_W12">
@@ -10039,27 +9990,19 @@
         <TRANSL xml:lang="eng">They fell on a pool of water.</TRANSL>
         <AUDIO file="kkvNr_frog_Uva_S131.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_frog_Uva.mp3" start="343.55" end="345.95"/>
         <W id="kkvNr_frog_Uva_S_131_W0">
-            <FORM kindOf="original">m-atapari'i</FORM>
+            <FORM kindOf="original">matapari'i</FORM>
             <PHON kindOf="original">matapariʔi</PHON>
-            <FORM kindOf="standard">m-atapari'i</FORM>
+            <FORM kindOf="standard">matapari'i</FORM>
             <PHON kindOf="standard">matapa[r|ɾ]iʔi</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦-跌</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">AF-fall</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">AF.fall</TRANSL>
             <M id="kkvNr_frog_Uva_S_131_W0M0">
-                <FORM kindOf="original">m</FORM>
-                <PHON kindOf="original">m</PHON>
-                <FORM kindOf="standard">m</FORM>
-                <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
-            </M>
-            <M id="kkvNr_frog_Uva_S_131_W0M1">
-                <FORM kindOf="original">atapari'i</FORM>
-                <PHON kindOf="original">atapariʔi</PHON>
-                <FORM kindOf="standard">atapari'i</FORM>
-                <PHON kindOf="standard">atapa[r|ɾ]iʔi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">跌</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">fall</TRANSL>
+                <FORM kindOf="original">matapari'i</FORM>
+                <PHON kindOf="original">matapariʔi</PHON>
+                <FORM kindOf="standard">matapari'i</FORM>
+                <PHON kindOf="standard">matapa[r|ɾ]iʔi</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">掉落.主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">drop.AV</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_131_W1">
@@ -10074,7 +10017,7 @@
                 <PHON kindOf="original">n[e|ə]si</PHON>
                 <FORM kindOf="standard">nesi</FORM>
                 <PHON kindOf="standard">nesi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">這裏</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">這裡</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">here</TRANSL>
             </M>
         </W>
@@ -10090,8 +10033,8 @@
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PAST</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_131_W3">
@@ -11169,31 +11112,21 @@
             <PHON kindOf="original">*</PHON>
             <FORM kindOf="standard">ʉ</FORM>
             <PHON kindOf="standard">ɨ</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
-            <M id="kkvNr_frog_Uva_S_138_W6M0">
-                <FORM kindOf="original">ʉ</FORM>
-                <PHON kindOf="original">*</PHON>
-                <FORM kindOf="standard">ʉ</FORM>
-                <PHON kindOf="standard">ɨ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
-            </M>
         </W>
         <W id="kkvNr_frog_Uva_S_138_W7">
             <FORM kindOf="original">karu</FORM>
             <PHON kindOf="original">karu</PHON>
             <FORM kindOf="standard">karu</FORM>
             <PHON kindOf="standard">ka[r|ɾ]u</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">樹</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">tree</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             <M id="kkvNr_frog_Uva_S_138_W7M0">
                 <FORM kindOf="original">karu</FORM>
                 <PHON kindOf="original">karu</PHON>
                 <FORM kindOf="standard">karu</FORM>
                 <PHON kindOf="standard">ka[r|ɾ]u</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">樹</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">tree</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_138_W8">
@@ -11201,15 +11134,15 @@
             <PHON kindOf="original">tarako</PHON>
             <FORM kindOf="standard">tarako</FORM>
             <PHON kindOf="standard">ta[r|ɾ]ako</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">洞</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">hole</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">樹</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">tree</TRANSL>
             <M id="kkvNr_frog_Uva_S_138_W8M0">
                 <FORM kindOf="original">tarako</FORM>
                 <PHON kindOf="original">tarako</PHON>
                 <FORM kindOf="standard">tarako</FORM>
                 <PHON kindOf="standard">ta[r|ɾ]ako</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">洞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">hole</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">樹</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">tree</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_138_W9">
@@ -11217,15 +11150,15 @@
             <PHON kindOf="original">isi</PHON>
             <FORM kindOf="standard">isi</FORM>
             <PHON kindOf="standard">isi</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">這個</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">this</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">洞</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">hole</TRANSL>
             <M id="kkvNr_frog_Uva_S_138_W9M0">
                 <FORM kindOf="original">isi</FORM>
                 <PHON kindOf="original">isi</PHON>
                 <FORM kindOf="standard">isi</FORM>
                 <PHON kindOf="standard">isi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">這個</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">this</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">洞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">hole</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_138_W10">
@@ -11233,15 +11166,15 @@
             <PHON kindOf="original">mata</PHON>
             <FORM kindOf="standard">mata</FORM>
             <PHON kindOf="standard">mata</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">和</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">and</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">這個</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">this</TRANSL>
             <M id="kkvNr_frog_Uva_S_138_W10M0">
                 <FORM kindOf="original">mata</FORM>
                 <PHON kindOf="original">mata</PHON>
                 <FORM kindOf="standard">mata</FORM>
                 <PHON kindOf="standard">mata</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">和</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">and</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">這個</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">this</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_138_W11">
@@ -11249,15 +11182,15 @@
             <PHON kindOf="original">manu</PHON>
             <FORM kindOf="standard">manu</FORM>
             <PHON kindOf="standard">manu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">小孩</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">kid</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">和</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">and</TRANSL>
             <M id="kkvNr_frog_Uva_S_138_W11M0">
                 <FORM kindOf="original">manu</FORM>
                 <PHON kindOf="original">manu</PHON>
                 <FORM kindOf="standard">manu</FORM>
                 <PHON kindOf="standard">manu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">小孩</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">kid</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">和</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">and</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_138_W12">
@@ -11265,15 +11198,15 @@
             <PHON kindOf="original">i*i</PHON>
             <FORM kindOf="standard">ihi</FORM>
             <PHON kindOf="standard">ihi</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">這個</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">this</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">小孩</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">kid</TRANSL>
             <M id="kkvNr_frog_Uva_S_138_W12M0">
                 <FORM kindOf="original">ihi</FORM>
                 <PHON kindOf="original">i*i</PHON>
                 <FORM kindOf="standard">ihi</FORM>
                 <PHON kindOf="standard">ihi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">這個</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">this</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">小孩</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">kid</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_138_W13">
@@ -11281,15 +11214,15 @@
             <PHON kindOf="original">tu</PHON>
             <FORM kindOf="standard">tu.</FORM>
             <PHON kindOf="standard">tu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">tu</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">tu</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">這個</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">this</TRANSL>
             <M id="kkvNr_frog_Uva_S_138_W13M0">
                 <FORM kindOf="original">tu.</FORM>
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu.</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">tu</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">tu</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">這個</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">this</TRANSL>
             </M>
         </W>
     </S>
@@ -11426,56 +11359,54 @@
                 <PHON kindOf="original">makasi</PHON>
                 <FORM kindOf="standard">makasi</FORM>
                 <PHON kindOf="standard">makasi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">這樣做</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">do.like.this</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主焦.說</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AF.say</TRANSL>
             </M>
             <M id="kkvNr_frog_Uva_S_140_W0M1">
                 <FORM kindOf="original">=cu</FORM>
                 <PHON kindOf="original">ʦu</PHON>
                 <FORM kindOf="standard">=cu</FORM>
                 <PHON kindOf="standard">ʦu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">狀態改變</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_140_W1">
-            <FORM kindOf="original">te&lt;kiri&gt;kirim-in=kee</FORM>
+            <FORM kindOf="original">te-kiri-kirim-in=kee</FORM>
             <PHON kindOf="original">t[e|ə]kirikirimink[e|ə][e|ə]</PHON>
-            <FORM kindOf="standard">te&lt;kiri&gt;kirim-in=kee</FORM>
+            <FORM kindOf="standard">te-kiri-kirim-in=kee</FORM>
             <PHON kindOf="standard">teki[r|ɾ]iki[r|ɾ]iminkee</PHON>
             <TRANSL xml:lang="zho" kindOf="original">尋找&lt;重疊&gt;-受焦=3SG.屬格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">find&lt;RED&gt;-PF=3SG.GEN</TRANSL>
-            <M id="kkvNr_frog_Uva_S_140_W1M0_0">
-                <FORM kindOf="original">-kiri-</FORM>
-                <PHON kindOf="original">kiri</PHON>
-                <FORM kindOf="standard">-kiri-</FORM>
-                <PHON kindOf="standard">ki[r|ɾ]i</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;</TRANSL>
-            </M>
-            <M id="kkvNr_frog_Uva_S_140_W1M0_1">
-                <FORM kindOf="original">te-kirim</FORM>
-                <PHON kindOf="original">t[e|ə]kirim</PHON>
-                <FORM kindOf="standard">te-kirim</FORM>
-                <PHON kindOf="standard">teki[r|ɾ]im</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">尋找</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">find</TRANSL>
+            <M id="kkvNr_frog_Uva_S_140_W1M0">
+                <FORM kindOf="original">te</FORM>
+                <PHON kindOf="original">t[e|ə]</PHON>
+                <FORM kindOf="standard">te</FORM>
+                <PHON kindOf="standard">te</PHON>
             </M>
             <M id="kkvNr_frog_Uva_S_140_W1M1">
+                <FORM kindOf="original">kiri</FORM>
+                <PHON kindOf="original">kiri</PHON>
+                <FORM kindOf="standard">kiri</FORM>
+                <PHON kindOf="standard">ki[r|ɾ]i</PHON>
+            </M>
+            <M id="kkvNr_frog_Uva_S_140_W1M2">
+                <FORM kindOf="original">kirim</FORM>
+                <PHON kindOf="original">kirim</PHON>
+                <FORM kindOf="standard">kirim</FORM>
+                <PHON kindOf="standard">ki[r|ɾ]im</PHON>
+            </M>
+            <M id="kkvNr_frog_Uva_S_140_W1M3">
                 <FORM kindOf="original">in</FORM>
                 <PHON kindOf="original">in</PHON>
                 <FORM kindOf="standard">in</FORM>
                 <PHON kindOf="standard">in</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">受焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PF</TRANSL>
             </M>
-            <M id="kkvNr_frog_Uva_S_140_W1M2">
-                <FORM kindOf="original">=kee</FORM>
+            <M id="kkvNr_frog_Uva_S_140_W1M4">
+                <FORM kindOf="original">kee</FORM>
                 <PHON kindOf="original">k[e|ə][e|ə]</PHON>
-                <FORM kindOf="standard">=kee</FORM>
+                <FORM kindOf="standard">kee</FORM>
                 <PHON kindOf="standard">kee</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">3SG.屬格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">3SG.GEN</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_140_W2">
@@ -11485,21 +11416,17 @@
             <PHON kindOf="standard">kipapapa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">順著&lt;重疊&gt;</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">along&lt;RED&gt;</TRANSL>
-            <M id="kkvNr_frog_Uva_S_140_W2M0_0">
+            <M id="kkvNr_frog_Uva_S_140_W2M0">
                 <FORM kindOf="original">-pa-</FORM>
                 <PHON kindOf="original">pa</PHON>
                 <FORM kindOf="standard">-pa-</FORM>
                 <PHON kindOf="standard">pa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;</TRANSL>
             </M>
-            <M id="kkvNr_frog_Uva_S_140_W2M0_1">
-                <FORM kindOf="original">kipa-pa</FORM>
+            <M id="kkvNr_frog_Uva_S_140_W2M1">
+                <FORM kindOf="original">kipapa</FORM>
                 <PHON kindOf="original">kipapa</PHON>
-                <FORM kindOf="standard">kipa-pa</FORM>
+                <FORM kindOf="standard">kipapa</FORM>
                 <PHON kindOf="standard">kipapa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">順著</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">along</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_140_W3">
@@ -11514,8 +11441,8 @@
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PAST</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_140_W4">
@@ -11530,7 +11457,7 @@
                 <PHON kindOf="original">karu</PHON>
                 <FORM kindOf="standard">karu</FORM>
                 <PHON kindOf="standard">ka[r|ɾ]u</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">樹木</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">樹</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">tree</TRANSL>
             </M>
         </W>
@@ -11546,8 +11473,8 @@
                 <PHON kindOf="original">mariŋuna</PHON>
                 <FORM kindOf="standard">maringuna</FORM>
                 <PHON kindOf="standard">ma[r|ɾ]iŋuna</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">乾</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">dry</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">乾的.主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">dry.AF</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_140_W6">
@@ -11562,7 +11489,7 @@
                 <PHON kindOf="original">i*i</PHON>
                 <FORM kindOf="standard">ihi.</FORM>
                 <PHON kindOf="standard">ihi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">這</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">這個</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">this</TRANSL>
             </M>
         </W>
@@ -11796,7 +11723,7 @@
             <PHON kindOf="original">arapapiniŋaʦu</PHON>
             <FORM kindOf="standard">ara-papining-a=cu.</FORM>
             <PHON kindOf="standard">a[r|ɾ]apapiniŋaʦu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">變成-外面-使役.主焦=改變狀態</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">變成-外面=改變狀態</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">become-out-IMP.AF=COS</TRANSL>
             <M id="kkvNr_frog_Uva_S_141_W12M0">
                 <FORM kindOf="original">ara</FORM>
@@ -11819,7 +11746,7 @@
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">使役.主焦</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">IMP.AF</TRANSL>
             </M>
             <M id="kkvNr_frog_Uva_S_141_W12M3">
@@ -11827,7 +11754,6 @@
                 <PHON kindOf="original">ʦu</PHON>
                 <FORM kindOf="standard">=cu.</FORM>
                 <PHON kindOf="standard">ʦu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             </M>
         </W>
@@ -12203,28 +12129,32 @@
         </W>
     </S>
     <S id="kkvNr_frog_Uva_S_145">
-        <FORM kindOf="original">aiyo itumuru karʉ=en cʉrʉ-ʉn itumuru ma-cang-cangarʉ manu isi i na vatu mata tamtitu.</FORM>
+        <FORM kindOf="original">ai-yo itumuru karʉ=en cʉrʉ-ʉn itumuru ma-cang-cangarʉ manu isi i na vatu mata tamtitu.</FORM>
         <PHON kindOf="original">ai*o itumuru kar*[e|ə]n ʦ*r**n itumuru maʦaŋʦaŋar* manu isi i na vatu mata tamtitu</PHON>
         <FORM kindOf="standard">aiyo itumuru karʉen cʉrʉʉn itumuru macangcangarʉ manu isi i na vatu mata tamtitu.</FORM>
         <PHON kindOf="standard">aijo itumu[r|ɾ]u ka[r|ɾ]ɨen ʦɨ[r|ɾ]ɨɨn itumu[r|ɾ]u maʦaŋʦaŋa[r|ɾ]ɨ manu isi i na vatu mata tamtitu</PHON>
-        <FORM kindOf="alternate">aiyo itumuru karʉ=en cʉrʉ-ʉn itumuru ma-cang-cangarʉ manu isi 'esi na vatu mata tamtitu.</FORM>
+        <FORM kindOf="alternate">ai-yo itumuru karʉ=en cʉrʉ-ʉn itumuru ma-cang-cangarʉ manu isi 'esi na vatu mata tamtitu.</FORM>
         <TRANSL xml:lang="zho">真的，原來這個青蛙在離開我們的時候，認識了很多他的朋友，兩位很高興地站在石頭上。</TRANSL>
         <TRANSL xml:lang="eng">Oops, so many lovers were seen by the boy and his doggy who were happy standing on the rock.</TRANSL>
         <AUDIO file="kkvNr_frog_Uva_S145.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_frog_Uva.mp3" start="410.09" end="417.78"/>
         <W id="kkvNr_frog_Uva_S_145_W0">
-            <FORM kindOf="original">aiyo</FORM>
+            <FORM kindOf="original">ai-yo</FORM>
             <PHON kindOf="original">ai*o</PHON>
-            <FORM kindOf="standard">aiyo</FORM>
+            <FORM kindOf="standard">ai-yo</FORM>
             <PHON kindOf="standard">aijo</PHON>
             <TRANSL xml:lang="zho" kindOf="original">INT</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">INT</TRANSL>
             <M id="kkvNr_frog_Uva_S_145_W0M0">
-                <FORM kindOf="original">aiyo</FORM>
-                <PHON kindOf="original">ai*o</PHON>
-                <FORM kindOf="standard">aiyo</FORM>
-                <PHON kindOf="standard">aijo</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">INT</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">INT</TRANSL>
+                <FORM kindOf="original">ai</FORM>
+                <PHON kindOf="original">ai</PHON>
+                <FORM kindOf="standard">ai</FORM>
+                <PHON kindOf="standard">ai</PHON>
+            </M>
+            <M id="kkvNr_frog_Uva_S_145_W0M1">
+                <FORM kindOf="original">yo</FORM>
+                <PHON kindOf="original">*o</PHON>
+                <FORM kindOf="standard">yo</FORM>
+                <PHON kindOf="standard">jo</PHON>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_145_W1">
@@ -12239,8 +12169,8 @@
                 <PHON kindOf="original">itumuru</PHON>
                 <FORM kindOf="standard">itumuru</FORM>
                 <PHON kindOf="standard">itumu[r|ɾ]u</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">多</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">a.lot</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">很多</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">much</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_145_W2">
@@ -12280,7 +12210,7 @@
                 <FORM kindOf="standard">cʉrʉ</FORM>
                 <PHON kindOf="standard">ʦɨ[r|ɾ]ɨ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">看</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">see</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">look.at</TRANSL>
             </M>
             <M id="kkvNr_frog_Uva_S_145_W3M1">
                 <FORM kindOf="original">ʉn</FORM>
@@ -12303,8 +12233,8 @@
                 <PHON kindOf="original">itumuru</PHON>
                 <FORM kindOf="standard">itumuru</FORM>
                 <PHON kindOf="standard">itumu[r|ɾ]u</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">多</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">a.lot</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">很多</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">much</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_145_W5">
@@ -12335,7 +12265,7 @@
                 <PHON kindOf="original">ʦaŋar*</PHON>
                 <FORM kindOf="standard">cangarʉ</FORM>
                 <PHON kindOf="standard">ʦaŋa[r|ɾ]ɨ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">開心</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">高興</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">happy</TRANSL>
             </M>
         </W>
@@ -12351,8 +12281,8 @@
                 <PHON kindOf="original">manu</PHON>
                 <FORM kindOf="standard">manu</FORM>
                 <PHON kindOf="standard">manu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">孩子</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">kid</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">小孩</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">child</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_145_W7">
@@ -12367,7 +12297,7 @@
                 <PHON kindOf="original">isi</PHON>
                 <FORM kindOf="standard">isi</FORM>
                 <PHON kindOf="standard">isi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">這個</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">這</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">this</TRANSL>
             </M>
         </W>
@@ -12384,8 +12314,8 @@
                 <PHON kindOf="original">i</PHON>
                 <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">進行</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PROG</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_145_W9">
@@ -12400,8 +12330,8 @@
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PAST</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_145_W10">
@@ -12417,7 +12347,7 @@
                 <FORM kindOf="standard">vatu</FORM>
                 <PHON kindOf="standard">vatu</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">石頭</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">rock</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">stone</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_145_W11">
@@ -12448,8 +12378,8 @@
                 <PHON kindOf="original">tamtitu</PHON>
                 <FORM kindOf="standard">tamtitu.</FORM>
                 <PHON kindOf="standard">tamtitu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">小狗</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">doggy</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">幼狗</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">puppy</TRANSL>
             </M>
         </W>
     </S>
@@ -13230,31 +13160,25 @@
             <PHON kindOf="original">moʦaʦukita</PHON>
             <FORM kindOf="standard">moca=cu=kita</FORM>
             <PHON kindOf="standard">moʦaʦukita</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主焦.走=改變狀態=1PL.主格.排除</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">AF.walk=COS=1PL.NOM.EXCL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">主焦-走=改變狀態=1PL.主格.排除</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">AF-walk=COS=1PL.NOM.EXCL</TRANSL>
             <M id="kkvNr_frog_Uva_S_151_W1M0">
                 <FORM kindOf="original">moca</FORM>
                 <PHON kindOf="original">moʦa</PHON>
                 <FORM kindOf="standard">moca</FORM>
                 <PHON kindOf="standard">moʦa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主焦.走</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AF.walk</TRANSL>
             </M>
             <M id="kkvNr_frog_Uva_S_151_W1M1">
-                <FORM kindOf="original">=cu</FORM>
+                <FORM kindOf="original">cu</FORM>
                 <PHON kindOf="original">ʦu</PHON>
-                <FORM kindOf="standard">=cu</FORM>
+                <FORM kindOf="standard">cu</FORM>
                 <PHON kindOf="standard">ʦu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">改變狀態</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
             </M>
             <M id="kkvNr_frog_Uva_S_151_W1M2">
-                <FORM kindOf="original">=kita</FORM>
+                <FORM kindOf="original">kita</FORM>
                 <PHON kindOf="original">kita</PHON>
-                <FORM kindOf="standard">=kita</FORM>
+                <FORM kindOf="standard">kita</FORM>
                 <PHON kindOf="standard">kita</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">1PL.主格.排除</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">1PL.NOM.EXCL</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_151_W2">
@@ -13371,51 +13295,43 @@
         </W>
     </S>
     <S id="kkvNr_frog_Uva_S_153">
-        <FORM kindOf="original">makahuaci sosomanpe sosomanpe karʉa takarura sosomanpe.</FORM>
-        <PHON kindOf="original">maka*uaʦi sosomanp[e|ə] sosomanp[e|ə] kar*a takarura sosomanp[e|ə]</PHON>
-        <FORM kindOf="standard">makahuaci sosomanpe sosomanpe karʉa takarura sosomanpe.</FORM>
-        <PHON kindOf="standard">makahuaʦi sosomanpe sosomanpe ka[r|ɾ]ɨa taka[r|ɾ]u[r|ɾ]a sosomanpe</PHON>
+        <FORM kindOf="original">makahua ci sosomanpe sosomanpe karʉa takarura sosomanpe.</FORM>
+        <PHON kindOf="original">maka*ua ʦi sosomanp[e|ə] sosomanp[e|ə] kar*a takarura sosomanp[e|ə]</PHON>
+        <FORM kindOf="standard">makahua ci sosomanpe sosomanpe karʉa takarura sosomanpe.</FORM>
+        <PHON kindOf="standard">makahua ʦi sosomanpe sosomanpe ka[r|ɾ]ɨa taka[r|ɾ]u[r|ɾ]a sosomanpe</PHON>
         <TRANSL xml:lang="zho">就這樣，他們就說謝謝。</TRANSL>
         <TRANSL xml:lang="eng">Then, they just thanked his frog's lover.</TRANSL>
         <AUDIO file="kkvNr_frog_Uva_S153.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/kkvNr_frog_Uva.mp3" start="457.82" end="466.45"/>
         <W id="kkvNr_frog_Uva_S_153_W0">
-            <FORM kindOf="original">makahua=ci</FORM>
-            <PHON kindOf="original">maka*uaʦi</PHON>
-            <FORM kindOf="standard">makahua=ci</FORM>
-            <PHON kindOf="standard">makahuaʦi</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">就這樣=COS</TRANSL>
+            <FORM kindOf="original">makahua</FORM>
+            <PHON kindOf="original">maka*ua</PHON>
+            <FORM kindOf="standard">makahua</FORM>
+            <PHON kindOf="standard">makahua</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">就這樣=改變狀態</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">do.like.that=COS</TRANSL>
             <M id="kkvNr_frog_Uva_S_153_W0M0">
                 <FORM kindOf="original">makahua</FORM>
                 <PHON kindOf="original">maka*ua</PHON>
                 <FORM kindOf="standard">makahua</FORM>
                 <PHON kindOf="standard">makahua</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">就這樣</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">do.like.that</TRANSL>
-            </M>
-            <M id="kkvNr_frog_Uva_S_153_W0M1">
-                <FORM kindOf="original">=ci</FORM>
-                <PHON kindOf="original">ʦi</PHON>
-                <FORM kindOf="standard">=ci</FORM>
-                <PHON kindOf="standard">ʦi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">COS</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">COS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">那樣.主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">in.that.way.AF</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_153_W1">
-            <FORM kindOf="original">sosomanpe</FORM>
-            <PHON kindOf="original">sosomanp[e|ə]</PHON>
-            <FORM kindOf="standard">sosomanpe</FORM>
-            <PHON kindOf="standard">sosomanpe</PHON>
+            <FORM kindOf="original">ci</FORM>
+            <PHON kindOf="original">ʦi</PHON>
+            <FORM kindOf="standard">ci</FORM>
+            <PHON kindOf="standard">ʦi</PHON>
             <TRANSL xml:lang="zho" kindOf="original">謝謝</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">thank</TRANSL>
             <M id="kkvNr_frog_Uva_S_153_W1M0">
-                <FORM kindOf="original">sosomanpe</FORM>
-                <PHON kindOf="original">sosomanp[e|ə]</PHON>
-                <FORM kindOf="standard">sosomanpe</FORM>
-                <PHON kindOf="standard">sosomanpe</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">謝謝</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">thank</TRANSL>
+                <FORM kindOf="original">ci</FORM>
+                <PHON kindOf="original">ʦi</PHON>
+                <FORM kindOf="standard">ci</FORM>
+                <PHON kindOf="standard">ʦi</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">NCM.SG</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NCM.SG</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_153_W2">
@@ -13430,42 +13346,54 @@
                 <PHON kindOf="original">sosomanp[e|ə]</PHON>
                 <FORM kindOf="standard">sosomanpe</FORM>
                 <PHON kindOf="standard">sosomanpe</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">謝謝</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">感謝</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">thank</TRANSL>
             </M>
         </W>
         <W id="kkvNr_frog_Uva_S_153_W3">
+            <FORM kindOf="original">sosomanpe</FORM>
+            <PHON kindOf="original">sosomanp[e|ə]</PHON>
+            <FORM kindOf="standard">sosomanpe</FORM>
+            <PHON kindOf="standard">sosomanpe</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">愛-關係詞</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">love-REL</TRANSL>
+            <M id="kkvNr_frog_Uva_S_153_W3M0">
+                <FORM kindOf="original">sosomanpe</FORM>
+                <PHON kindOf="original">sosomanp[e|ə]</PHON>
+                <FORM kindOf="standard">sosomanpe</FORM>
+                <PHON kindOf="standard">sosomanpe</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">感謝</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">thank</TRANSL>
+            </M>
+        </W>
+        <W id="kkvNr_frog_Uva_S_153_W4">
             <FORM kindOf="original">karʉ-a</FORM>
             <PHON kindOf="original">kar*a</PHON>
             <FORM kindOf="standard">karʉ-a</FORM>
             <PHON kindOf="standard">ka[r|ɾ]ɨa</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">愛-關係詞</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">love-REL</TRANSL>
-            <M id="kkvNr_frog_Uva_S_153_W3M0">
+            <TRANSL xml:lang="zho" kindOf="original">青蛙</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">frog</TRANSL>
+            <M id="kkvNr_frog_Uva_S_153_W4M0">
                 <FORM kindOf="original">karʉ</FORM>
                 <PHON kindOf="original">kar*</PHON>
                 <FORM kindOf="standard">karʉ</FORM>
                 <PHON kindOf="standard">ka[r|ɾ]ɨ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">愛</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">love</TRANSL>
             </M>
-            <M id="kkvNr_frog_Uva_S_153_W3M1">
+            <M id="kkvNr_frog_Uva_S_153_W4M1">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">關係詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">REL</TRANSL>
             </M>
         </W>
-        <W id="kkvNr_frog_Uva_S_153_W4">
+        <W id="kkvNr_frog_Uva_S_153_W5">
             <FORM kindOf="original">takarura</FORM>
             <PHON kindOf="original">takarura</PHON>
             <FORM kindOf="standard">takarura</FORM>
             <PHON kindOf="standard">taka[r|ɾ]u[r|ɾ]a</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">青蛙</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">frog</TRANSL>
-            <M id="kkvNr_frog_Uva_S_153_W4M0">
+            <TRANSL xml:lang="zho" kindOf="original">謝謝</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">thank</TRANSL>
+            <M id="kkvNr_frog_Uva_S_153_W5M0">
                 <FORM kindOf="original">takarura</FORM>
                 <PHON kindOf="original">takarura</PHON>
                 <FORM kindOf="standard">takarura</FORM>
@@ -13474,14 +13402,12 @@
                 <TRANSL xml:lang="eng" kindOf="original">frog</TRANSL>
             </M>
         </W>
-        <W id="kkvNr_frog_Uva_S_153_W5">
+        <W id="kkvNr_frog_Uva_S_153_W6">
             <FORM kindOf="original">sosomanpe.</FORM>
             <PHON kindOf="original">sosomanp[e|ə]</PHON>
             <FORM kindOf="standard">sosomanpe.</FORM>
             <PHON kindOf="standard">sosomanpe</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">謝謝</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">thank</TRANSL>
-            <M id="kkvNr_frog_Uva_S_153_W5M0">
+            <M id="kkvNr_frog_Uva_S_153_W6M0">
                 <FORM kindOf="original">sosomanpe.</FORM>
                 <PHON kindOf="original">sosomanp[e|ə]</PHON>
                 <FORM kindOf="standard">sosomanpe.</FORM>

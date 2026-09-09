@@ -13,7 +13,7 @@
             <PHON kindOf="original">raluʔmu</PHON>
             <FORM kindOf="standard">ralu'=mu</FORM>
             <PHON kindOf="standard">raluʔmu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">名字=1SG.屬格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">名字-受焦-1SG.屬格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">name=1SG.GEN</TRANSL>
             <M id="AtaNr-hunting2_Buyung_S_1_W0M0">
                 <FORM kindOf="original">ralu'</FORM>
@@ -76,8 +76,8 @@
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">屬格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">GEN</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PAST</TRANSL>
             </M>
         </W>
         <W id="AtaNr-hunting2_Buyung_S_1_W4">
@@ -1218,7 +1218,7 @@
             <PHON kindOf="original">sipalawaʔnijaʔ</PHON>
             <FORM kindOf="standard">sipalawa'=niya'</FORM>
             <PHON kindOf="standard">[s|ɕ]ipalawaʔnijaʔ</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">招呼=1SG.屬格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">招呼-1SG.屬格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">beckon=1SG.GEN</TRANSL>
             <M id="AtaNr-hunting2_Buyung_S_20_W8M0">
                 <FORM kindOf="original">sipalawa'</FORM>
@@ -1363,7 +1363,7 @@
                 <FORM kindOf="standard">vawwak</FORM>
                 <PHON kindOf="standard">*awwak</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">山豬</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">hog</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">boar</TRANSL>
             </M>
         </W>
         <W id="AtaNr-hunting2_Buyung_S_22_W3">
@@ -1378,8 +1378,8 @@
                 <PHON kindOf="original">la</PHON>
                 <FORM kindOf="standard">la.</FORM>
                 <PHON kindOf="standard">la</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">PART</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">Part</TRANSL>
             </M>
         </W>
         <W id="AtaNr-hunting2_Buyung_S_22_W4">
@@ -1399,27 +1399,29 @@
             </M>
         </W>
         <W id="AtaNr-hunting2_Buyung_S_22_W5">
-            <FORM kindOf="original">r&lt;um&gt;ag</FORM>
+            <FORM kindOf="original">r-um-ag</FORM>
             <PHON kindOf="original">rumaɣ</PHON>
-            <FORM kindOf="standard">r&lt;um&gt;ag</FORM>
+            <FORM kindOf="standard">r-um-ag</FORM>
             <PHON kindOf="standard">rumaɣ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;幫</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;help</TRANSL>
-            <M id="AtaNr-hunting2_Buyung_S_22_W5M0_0">
-                <FORM kindOf="original">-um-</FORM>
-                <PHON kindOf="original">um</PHON>
-                <FORM kindOf="standard">-um-</FORM>
-                <PHON kindOf="standard">um</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
+            <M id="AtaNr-hunting2_Buyung_S_22_W5M0">
+                <FORM kindOf="original">r</FORM>
+                <PHON kindOf="original">r</PHON>
+                <FORM kindOf="standard">r</FORM>
+                <PHON kindOf="standard">r</PHON>
             </M>
-            <M id="AtaNr-hunting2_Buyung_S_22_W5M0_1">
-                <FORM kindOf="original">r-ag</FORM>
-                <PHON kindOf="original">raɣ</PHON>
-                <FORM kindOf="standard">r-ag</FORM>
-                <PHON kindOf="standard">raɣ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">幫</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">help</TRANSL>
+            <M id="AtaNr-hunting2_Buyung_S_22_W5M1">
+                <FORM kindOf="original">um</FORM>
+                <PHON kindOf="original">um</PHON>
+                <FORM kindOf="standard">um</FORM>
+                <PHON kindOf="standard">um</PHON>
+            </M>
+            <M id="AtaNr-hunting2_Buyung_S_22_W5M2">
+                <FORM kindOf="original">ag</FORM>
+                <PHON kindOf="original">aɣ</PHON>
+                <FORM kindOf="standard">ag</FORM>
+                <PHON kindOf="standard">aɣ</PHON>
             </M>
         </W>
         <W id="AtaNr-hunting2_Buyung_S_22_W6">
@@ -1660,8 +1662,8 @@
                 <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LF</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             </M>
         </W>
         <W id="AtaNr-hunting2_Buyung_S_28_W1">
@@ -1708,7 +1710,7 @@
                 <PHON kindOf="original">ru</PHON>
                 <FORM kindOf="standard">ru,</FORM>
                 <PHON kindOf="standard">ru</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">連接詞</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">且</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">CONJ</TRANSL>
             </M>
         </W>
@@ -1729,27 +1731,29 @@
             </M>
         </W>
         <W id="AtaNr-hunting2_Buyung_S_28_W5">
-            <FORM kindOf="original">s&lt;um&gt;ayuk</FORM>
+            <FORM kindOf="original">s-um-ayuk</FORM>
             <PHON kindOf="original">sumajuk</PHON>
-            <FORM kindOf="standard">s&lt;um&gt;ayuk</FORM>
+            <FORM kindOf="standard">s-um-ayuk</FORM>
             <PHON kindOf="standard">[s|ɕ]umajuk</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;燒毛</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;burn.fur</TRANSL>
-            <M id="AtaNr-hunting2_Buyung_S_28_W5M0_0">
-                <FORM kindOf="original">-um-</FORM>
-                <PHON kindOf="original">um</PHON>
-                <FORM kindOf="standard">-um-</FORM>
-                <PHON kindOf="standard">um</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">燒毛-主焦</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">burn.fur-AF</TRANSL>
+            <M id="AtaNr-hunting2_Buyung_S_28_W5M0">
+                <FORM kindOf="original">s</FORM>
+                <PHON kindOf="original">s</PHON>
+                <FORM kindOf="standard">s</FORM>
+                <PHON kindOf="standard">[s|ɕ]</PHON>
             </M>
-            <M id="AtaNr-hunting2_Buyung_S_28_W5M0_1">
-                <FORM kindOf="original">s-ayuk</FORM>
-                <PHON kindOf="original">sajuk</PHON>
-                <FORM kindOf="standard">s-ayuk</FORM>
-                <PHON kindOf="standard">[s|ɕ]ajuk</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">燒毛</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">burn.fur</TRANSL>
+            <M id="AtaNr-hunting2_Buyung_S_28_W5M1">
+                <FORM kindOf="original">um</FORM>
+                <PHON kindOf="original">um</PHON>
+                <FORM kindOf="standard">um</FORM>
+                <PHON kindOf="standard">um</PHON>
+            </M>
+            <M id="AtaNr-hunting2_Buyung_S_28_W5M2">
+                <FORM kindOf="original">ayuk</FORM>
+                <PHON kindOf="original">ajuk</PHON>
+                <FORM kindOf="standard">ayuk</FORM>
+                <PHON kindOf="standard">ajuk</PHON>
             </M>
         </W>
         <W id="AtaNr-hunting2_Buyung_S_28_W6">
@@ -1796,8 +1800,8 @@
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
         <W id="AtaNr-hunting2_Buyung_S_28_W9">
@@ -1868,7 +1872,7 @@
                 <PHON kindOf="original">ru</PHON>
                 <FORM kindOf="standard">ru</FORM>
                 <PHON kindOf="standard">ru</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">連接詞</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">且</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">CONJ</TRANSL>
             </M>
         </W>
@@ -2323,10 +2327,10 @@
         </W>
     </S>
     <S id="AtaNr-hunting2_Buyung_S_39">
-        <FORM kindOf="original" notes="45中的miyan是發音人自己的用法，意思和niyam一樣都是我們。">tiku nanabakismiyan ga, yava'miyan yutasmiyan ru' mama'miyan X ga, musa' qumbuwang su yapit la. musa' qumbuwang su yapit la ru,</FORM>
-        <PHON kindOf="original">tiku nana[β|v]akismijan ɣa javaʔmijan jutasmijan ruʔ mamaʔmijan x ɣa musaʔ qum[β|v]uwaŋ su japit la musaʔ qum[β|v]uwaŋ su japit la ru</PHON>
-        <FORM kindOf="standard">tiku nanabakismiyan ga, yava'miyan yutasmiyan ru' mama'miyan X ga, musa' qumbuwang su yapit la. musa' qumbuwang su yapit la ru,</FORM>
-        <PHON kindOf="standard">tiku nanaβaki[s|ɕ]mijan ɣa ja*aʔmijan juta[s|ɕ]mijan ruʔ mamaʔmijan x ɣa mu[s|ɕ]aʔ qumβuwaŋ [s|ɕ]u japit la mu[s|ɕ]aʔ qumβuwaŋ [s|ɕ]u japit la ru</PHON>
+        <FORM kindOf="original" notes="45中的miyan是發音人自己的用法，意思和niyam一樣都是我們。">tiku nanabakismiyan ga, yava'miyan yutasmiyan ru' mama'miyan ga, musa' qumbuwang su yapit la. musa' qumbuwang su yapit la ru,</FORM>
+        <PHON kindOf="original">tiku nana[β|v]akismijan ɣa javaʔmijan jutasmijan ruʔ mamaʔmijan ɣa musaʔ qum[β|v]uwaŋ su japit la musaʔ qum[β|v]uwaŋ su japit la ru</PHON>
+        <FORM kindOf="standard">tiku nanabakismiyan ga, yava'miyan yutasmiyan ru' mama'miyan ga, musa' qumbuwang su yapit la. musa' qumbuwang su yapit la ru,</FORM>
+        <PHON kindOf="standard">tiku nanaβaki[s|ɕ]mijan ɣa ja*aʔmijan juta[s|ɕ]mijan ruʔ mamaʔmijan ɣa mu[s|ɕ]aʔ qumβuwaŋ [s|ɕ]u japit la mu[s|ɕ]aʔ qumβuwaŋ [s|ɕ]u japit la ru</PHON>
         <TRANSL xml:lang="zho">這個…我們的老人們，我們的爸爸爺爺叔伯們，躲在樹叢中找飛鼠…一面躲著一面找飛鼠。</TRANSL>
         <TRANSL xml:lang="eng">Well, our elders- our father, grandfather, and uncles, hid in the bush to look for flying squirrels.</TRANSL>
         <AUDIO file="AtaNr-hunting2_Buyung_S39.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/AtaNr-hunting2_Buyung.mp3" start="87.22" end="97.94"/>
@@ -2483,45 +2487,29 @@
             </M>
         </W>
         <W id="AtaNr-hunting2_Buyung_S_39_W7">
-            <FORM kindOf="original">X</FORM>
-            <PHON kindOf="original">x</PHON>
-            <FORM kindOf="standard">X</FORM>
-            <PHON kindOf="standard">x</PHON>
+            <FORM kindOf="original">ga,</FORM>
+            <PHON kindOf="original">ɣa</PHON>
+            <FORM kindOf="standard">ga,</FORM>
+            <PHON kindOf="standard">ɣa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">x</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">x</TRANSL>
             <M id="AtaNr-hunting2_Buyung_S_39_W7M0">
-                <FORM kindOf="original">X</FORM>
-                <PHON kindOf="original">x</PHON>
-                <FORM kindOf="standard">X</FORM>
-                <PHON kindOf="standard">x</PHON>
+                <FORM kindOf="original">ga,</FORM>
+                <PHON kindOf="original">ɣa</PHON>
+                <FORM kindOf="standard">ga,</FORM>
+                <PHON kindOf="standard">ɣa</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">x</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">x</TRANSL>
             </M>
         </W>
         <W id="AtaNr-hunting2_Buyung_S_39_W8">
-            <FORM kindOf="original">ga,</FORM>
-            <PHON kindOf="original">ɣa</PHON>
-            <FORM kindOf="standard">ga,</FORM>
-            <PHON kindOf="standard">ɣa</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
-            <M id="AtaNr-hunting2_Buyung_S_39_W8M0">
-                <FORM kindOf="original">ga,</FORM>
-                <PHON kindOf="original">ɣa</PHON>
-                <FORM kindOf="standard">ga,</FORM>
-                <PHON kindOf="standard">ɣa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
-            </M>
-        </W>
-        <W id="AtaNr-hunting2_Buyung_S_39_W9">
             <FORM kindOf="original">m-usa'</FORM>
             <PHON kindOf="original">musaʔ</PHON>
             <FORM kindOf="standard">m-usa'</FORM>
             <PHON kindOf="standard">mu[s|ɕ]aʔ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦-去</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-go</TRANSL>
-            <M id="AtaNr-hunting2_Buyung_S_39_W9M0">
+            <M id="AtaNr-hunting2_Buyung_S_39_W8M0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
@@ -2529,7 +2517,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
             </M>
-            <M id="AtaNr-hunting2_Buyung_S_39_W9M1">
+            <M id="AtaNr-hunting2_Buyung_S_39_W8M1">
                 <FORM kindOf="original">usa'</FORM>
                 <PHON kindOf="original">usaʔ</PHON>
                 <FORM kindOf="standard">usa'</FORM>
@@ -2538,14 +2526,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">go</TRANSL>
             </M>
         </W>
-        <W id="AtaNr-hunting2_Buyung_S_39_W10">
+        <W id="AtaNr-hunting2_Buyung_S_39_W9">
             <FORM kindOf="original">q&lt;um&gt;buwang</FORM>
             <PHON kindOf="original">qum[β|v]uwaŋ</PHON>
             <FORM kindOf="standard">q&lt;um&gt;buwang</FORM>
             <PHON kindOf="standard">qumβuwaŋ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;躲找</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;hide.hunt</TRANSL>
-            <M id="AtaNr-hunting2_Buyung_S_39_W10M0_0">
+            <M id="AtaNr-hunting2_Buyung_S_39_W9M0_0">
                 <FORM kindOf="original">-um-</FORM>
                 <PHON kindOf="original">um</PHON>
                 <FORM kindOf="standard">-um-</FORM>
@@ -2553,7 +2541,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
             </M>
-            <M id="AtaNr-hunting2_Buyung_S_39_W10M0_1">
+            <M id="AtaNr-hunting2_Buyung_S_39_W9M0_1">
                 <FORM kindOf="original">q-buwang</FORM>
                 <PHON kindOf="original">q[β|v]uwaŋ</PHON>
                 <FORM kindOf="standard">q-buwang</FORM>
@@ -2562,14 +2550,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">hide.hunt</TRANSL>
             </M>
         </W>
-        <W id="AtaNr-hunting2_Buyung_S_39_W11">
+        <W id="AtaNr-hunting2_Buyung_S_39_W10">
             <FORM kindOf="original">su</FORM>
             <PHON kindOf="original">su</PHON>
             <FORM kindOf="standard">su</FORM>
             <PHON kindOf="standard">[s|ɕ]u</PHON>
             <TRANSL xml:lang="zho" kindOf="original">受格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">ACC</TRANSL>
-            <M id="AtaNr-hunting2_Buyung_S_39_W11M0">
+            <M id="AtaNr-hunting2_Buyung_S_39_W10M0">
                 <FORM kindOf="original">su</FORM>
                 <PHON kindOf="original">su</PHON>
                 <FORM kindOf="standard">su</FORM>
@@ -2578,14 +2566,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">ACC</TRANSL>
             </M>
         </W>
-        <W id="AtaNr-hunting2_Buyung_S_39_W12">
+        <W id="AtaNr-hunting2_Buyung_S_39_W11">
             <FORM kindOf="original">yapit</FORM>
             <PHON kindOf="original">japit</PHON>
             <FORM kindOf="standard">yapit</FORM>
             <PHON kindOf="standard">japit</PHON>
             <TRANSL xml:lang="zho" kindOf="original">飛鼠</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">flying.squirrel</TRANSL>
-            <M id="AtaNr-hunting2_Buyung_S_39_W12M0">
+            <M id="AtaNr-hunting2_Buyung_S_39_W11M0">
                 <FORM kindOf="original">yapit</FORM>
                 <PHON kindOf="original">japit</PHON>
                 <FORM kindOf="standard">yapit</FORM>
@@ -2594,14 +2582,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">flying.squirrel</TRANSL>
             </M>
         </W>
-        <W id="AtaNr-hunting2_Buyung_S_39_W13">
+        <W id="AtaNr-hunting2_Buyung_S_39_W12">
             <FORM kindOf="original">la.</FORM>
             <PHON kindOf="original">la</PHON>
             <FORM kindOf="standard">la.</FORM>
             <PHON kindOf="standard">la</PHON>
             <TRANSL xml:lang="zho" kindOf="original">PART</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
-            <M id="AtaNr-hunting2_Buyung_S_39_W13M0">
+            <M id="AtaNr-hunting2_Buyung_S_39_W12M0">
                 <FORM kindOf="original">la.</FORM>
                 <PHON kindOf="original">la</PHON>
                 <FORM kindOf="standard">la.</FORM>
@@ -2610,14 +2598,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
             </M>
         </W>
-        <W id="AtaNr-hunting2_Buyung_S_39_W14">
+        <W id="AtaNr-hunting2_Buyung_S_39_W13">
             <FORM kindOf="original">m-usa'</FORM>
             <PHON kindOf="original">musaʔ</PHON>
             <FORM kindOf="standard">m-usa'</FORM>
             <PHON kindOf="standard">mu[s|ɕ]aʔ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦-去</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-go</TRANSL>
-            <M id="AtaNr-hunting2_Buyung_S_39_W14M0">
+            <M id="AtaNr-hunting2_Buyung_S_39_W13M0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
@@ -2625,7 +2613,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
             </M>
-            <M id="AtaNr-hunting2_Buyung_S_39_W14M1">
+            <M id="AtaNr-hunting2_Buyung_S_39_W13M1">
                 <FORM kindOf="original">usa'</FORM>
                 <PHON kindOf="original">usaʔ</PHON>
                 <FORM kindOf="standard">usa'</FORM>
@@ -2634,14 +2622,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">go</TRANSL>
             </M>
         </W>
-        <W id="AtaNr-hunting2_Buyung_S_39_W15">
+        <W id="AtaNr-hunting2_Buyung_S_39_W14">
             <FORM kindOf="original">q&lt;um&gt;buwang</FORM>
             <PHON kindOf="original">qum[β|v]uwaŋ</PHON>
             <FORM kindOf="standard">q&lt;um&gt;buwang</FORM>
             <PHON kindOf="standard">qumβuwaŋ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;躲找</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;AV&gt;hide.hunt</TRANSL>
-            <M id="AtaNr-hunting2_Buyung_S_39_W15M0_0">
+            <M id="AtaNr-hunting2_Buyung_S_39_W14M0_0">
                 <FORM kindOf="original">-um-</FORM>
                 <PHON kindOf="original">um</PHON>
                 <FORM kindOf="standard">-um-</FORM>
@@ -2649,7 +2637,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">&lt;AV&gt;</TRANSL>
             </M>
-            <M id="AtaNr-hunting2_Buyung_S_39_W15M0_1">
+            <M id="AtaNr-hunting2_Buyung_S_39_W14M0_1">
                 <FORM kindOf="original">q-buwang</FORM>
                 <PHON kindOf="original">q[β|v]uwaŋ</PHON>
                 <FORM kindOf="standard">q-buwang</FORM>
@@ -2658,14 +2646,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">hide.hunt</TRANSL>
             </M>
         </W>
-        <W id="AtaNr-hunting2_Buyung_S_39_W16">
+        <W id="AtaNr-hunting2_Buyung_S_39_W15">
             <FORM kindOf="original">su</FORM>
             <PHON kindOf="original">su</PHON>
             <FORM kindOf="standard">su</FORM>
             <PHON kindOf="standard">[s|ɕ]u</PHON>
             <TRANSL xml:lang="zho" kindOf="original">受格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">ACC</TRANSL>
-            <M id="AtaNr-hunting2_Buyung_S_39_W16M0">
+            <M id="AtaNr-hunting2_Buyung_S_39_W15M0">
                 <FORM kindOf="original">su</FORM>
                 <PHON kindOf="original">su</PHON>
                 <FORM kindOf="standard">su</FORM>
@@ -2674,14 +2662,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">ACC</TRANSL>
             </M>
         </W>
-        <W id="AtaNr-hunting2_Buyung_S_39_W17">
+        <W id="AtaNr-hunting2_Buyung_S_39_W16">
             <FORM kindOf="original">yapit</FORM>
             <PHON kindOf="original">japit</PHON>
             <FORM kindOf="standard">yapit</FORM>
             <PHON kindOf="standard">japit</PHON>
             <TRANSL xml:lang="zho" kindOf="original">飛鼠</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">flying.squirrel</TRANSL>
-            <M id="AtaNr-hunting2_Buyung_S_39_W17M0">
+            <M id="AtaNr-hunting2_Buyung_S_39_W16M0">
                 <FORM kindOf="original">yapit</FORM>
                 <PHON kindOf="original">japit</PHON>
                 <FORM kindOf="standard">yapit</FORM>
@@ -2690,14 +2678,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">flying.squirrel</TRANSL>
             </M>
         </W>
-        <W id="AtaNr-hunting2_Buyung_S_39_W18">
+        <W id="AtaNr-hunting2_Buyung_S_39_W17">
             <FORM kindOf="original">la</FORM>
             <PHON kindOf="original">la</PHON>
             <FORM kindOf="standard">la</FORM>
             <PHON kindOf="standard">la</PHON>
             <TRANSL xml:lang="zho" kindOf="original">PART</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
-            <M id="AtaNr-hunting2_Buyung_S_39_W18M0">
+            <M id="AtaNr-hunting2_Buyung_S_39_W17M0">
                 <FORM kindOf="original">la</FORM>
                 <PHON kindOf="original">la</PHON>
                 <FORM kindOf="standard">la</FORM>
@@ -2706,14 +2694,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
             </M>
         </W>
-        <W id="AtaNr-hunting2_Buyung_S_39_W19">
+        <W id="AtaNr-hunting2_Buyung_S_39_W18">
             <FORM kindOf="original">ru,</FORM>
             <PHON kindOf="original">ru</PHON>
             <FORM kindOf="standard">ru,</FORM>
             <PHON kindOf="standard">ru</PHON>
             <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">CONJ</TRANSL>
-            <M id="AtaNr-hunting2_Buyung_S_39_W19M0">
+            <M id="AtaNr-hunting2_Buyung_S_39_W18M0">
                 <FORM kindOf="original">ru,</FORM>
                 <PHON kindOf="original">ru</PHON>
                 <FORM kindOf="standard">ru,</FORM>
@@ -3740,14 +3728,14 @@
             <FORM kindOf="standard">maha</FORM>
             <PHON kindOf="standard">maħa</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦.說</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">AF.say</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">say</TRANSL>
             <M id="AtaNr-hunting2_Buyung_S_54_W8M0">
                 <FORM kindOf="original">maha</FORM>
                 <PHON kindOf="original">maħa</PHON>
                 <FORM kindOf="standard">maha</FORM>
                 <PHON kindOf="standard">maħa</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">主焦.說</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AF.say</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">say</TRANSL>
             </M>
         </W>
         <W id="AtaNr-hunting2_Buyung_S_54_W9">
@@ -3835,23 +3823,23 @@
             <PHON kindOf="original">qumuvuwaŋ</PHON>
             <FORM kindOf="standard">q&lt;um&gt;uvuwang</FORM>
             <PHON kindOf="standard">qumu*uwaŋ</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;獵</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;hide.hunt</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;hide.hunt</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">&lt;主焦&gt;獵</TRANSL>
             <M id="AtaNr-hunting2_Buyung_S_54_W13M0_0">
                 <FORM kindOf="original">-um-</FORM>
                 <PHON kindOf="original">um</PHON>
                 <FORM kindOf="standard">-um-</FORM>
                 <PHON kindOf="standard">um</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;主焦&gt;</TRANSL>
             </M>
             <M id="AtaNr-hunting2_Buyung_S_54_W13M0_1">
                 <FORM kindOf="original">q-uvuwang</FORM>
                 <PHON kindOf="original">quvuwaŋ</PHON>
                 <FORM kindOf="standard">q-uvuwang</FORM>
                 <PHON kindOf="standard">qu*uwaŋ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">獵</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">hide.hunt</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">hide.hunt</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">獵</TRANSL>
             </M>
         </W>
         <W id="AtaNr-hunting2_Buyung_S_54_W14">
@@ -4992,8 +4980,8 @@
             <PHON kindOf="original">musaʔtaʔ</PHON>
             <FORM kindOf="standard">m-usa'=ta'</FORM>
             <PHON kindOf="standard">mu[s|ɕ]aʔtaʔ</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主焦-去=1PL.主格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">AF-go=1PL.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">主焦-去-1PL.主格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">AF-go-1PL.NOM</TRANSL>
             <M id="AtaNr-hunting2_Buyung_S_80_W0M0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>

@@ -851,7 +851,7 @@
                 <FORM kindOf="standard">pameng</FORM>
                 <PHON kindOf="standard">paməŋ</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">只好</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">no.other.choice</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">cannot.but</TRANSL>
             </M>
             <M id="KavNr-frog_buya_S_21_W0M1">
                 <FORM kindOf="original">=ti</FORM>
@@ -867,39 +867,31 @@
             <PHON kindOf="original">kmikikirim</PHON>
             <FORM kindOf="standard">k&lt;m&gt;i-ki-kilim,</FORM>
             <PHON kindOf="standard">kmikikirim</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">重疊&lt;主焦&gt;-重疊-找</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">RED&lt;AF&gt;-RED-look.for</TRANSL>
-            <M id="KavNr-frog_buya_S_21_W1M0_0">
+            <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;重疊-找</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;RED-look.for</TRANSL>
+            <M id="KavNr-frog_buya_S_21_W1M0">
                 <FORM kindOf="original">-m-</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
-            </M>
-            <M id="KavNr-frog_buya_S_21_W1M0_1">
-                <FORM kindOf="original">k-i</FORM>
-                <PHON kindOf="original">ki</PHON>
-                <FORM kindOf="standard">k-i</FORM>
-                <PHON kindOf="standard">ki</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">重疊</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
             </M>
             <M id="KavNr-frog_buya_S_21_W1M1">
                 <FORM kindOf="original">ki</FORM>
                 <PHON kindOf="original">ki</PHON>
                 <FORM kindOf="standard">ki</FORM>
                 <PHON kindOf="standard">ki</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">重疊</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
             </M>
             <M id="KavNr-frog_buya_S_21_W1M2">
+                <FORM kindOf="original">ki</FORM>
+                <PHON kindOf="original">ki</PHON>
+                <FORM kindOf="standard">ki</FORM>
+                <PHON kindOf="standard">ki</PHON>
+            </M>
+            <M id="KavNr-frog_buya_S_21_W1M3">
                 <FORM kindOf="original">kilim,</FORM>
                 <PHON kindOf="original">kirim</PHON>
                 <FORM kindOf="standard">kilim,</FORM>
                 <PHON kindOf="standard">kirim</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">找</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">look.for</TRANSL>
             </M>
         </W>
         <W id="KavNr-frog_buya_S_21_W2">
@@ -2929,16 +2921,6 @@
             <PHON kindOf="original">**</PHON>
             <FORM kindOf="standard">XX.</FORM>
             <PHON kindOf="standard">**</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
-            <M id="KavNr-frog_buya_S_69_W9M0">
-                <FORM kindOf="original">XX.</FORM>
-                <PHON kindOf="original">**</PHON>
-                <FORM kindOf="standard">XX.</FORM>
-                <PHON kindOf="standard">**</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
-            </M>
         </W>
     </S>
     <S id="KavNr-frog_buya_S_73">
@@ -4797,7 +4779,7 @@
             <PHON kindOf="original">tuqazannati</PHON>
             <FORM kindOf="standard">tuqaz-an-na=ti</FORM>
             <PHON kindOf="standard">tuqa[z|r]annati</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">上去-處焦-3SG.屬格=完成</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">上去-處焦-3SG.屬格-完成</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">go.up-LF-3SG.GEN=PFV</TRANSL>
             <M id="KavNr-frog_buya_S_113_W4M0">
                 <FORM kindOf="original">tuqaz</FORM>
@@ -5472,7 +5454,7 @@
             <PHON kindOf="original">wijati</PHON>
             <FORM kindOf="standard">wiya=ti</FORM>
             <PHON kindOf="standard">wijati</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">離開=完成</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">離開-完成</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">leave=PFV</TRANSL>
             <M id="KavNr-frog_buya_S_126_W6M0">
                 <FORM kindOf="original">wiya</FORM>
@@ -6524,7 +6506,7 @@
         </W>
     </S>
     <S id="KavNr-frog_buya_S_154">
-        <FORM kindOf="original" notes="ta-kinil-an-ku 我的旁邊 my side #n t&lt;m&gt;ita=iku yau biat ’nay ta-kinil-an 我看到旁邊有青蛙 I saw a frog on the side.">titaanna, yau biat 'nay takinilan, muazmun tayan zinna nani.</FORM>
+        <FORM kindOf="original" notes="ta-kinil-an-ku 我的旁邊 my side #n t&lt;m&gt;ita=iku yau biat ‘nay ta-kinil-an 我看到旁邊有青蛙 I saw a frog on the side.">titaanna, yau biat 'nay takinilan, muazmun tayan zinna nani.</FORM>
         <PHON kindOf="original">titaanna jau βiat ʔnaj takiniran muazmun tajan zinna nani</PHON>
         <FORM kindOf="standard">titaanna, yau biat 'nay takinilan, muazmun tayan zinna nani.</FORM>
         <PHON kindOf="standard">titaanna jau βiat ʔnaj takiniran mua[z|r]mun tajan [z|r]inna nani</PHON>
@@ -7571,7 +7553,7 @@
         </W>
     </S>
     <S id="KavNr-frog_buya_S_176">
-        <FORM kindOf="original" notes="nayau ma kelisiw ’nay 錢就這麼多 (而已) There's (only) this much money. nayau ma kelisiw-ku 我的錢就只有這麼多而已 My money is only this much. nayau ma qawqa 要這麼多才對; 要做到這樣才對 Should be this much; Should be like this.">nayau ma, 'nay.</FORM>
+        <FORM kindOf="original" notes="nayau ma kelisiw ‘nay 錢就這麼多 (而已) There's (only) this much money. nayau ma kelisiw-ku 我的錢就只有這麼多而已 My money is only this much. nayau ma qawqa 要這麼多才對; 要做到這樣才對 Should be this much; Should be like this.">nayau ma, 'nay.</FORM>
         <PHON kindOf="original">najau ma ʔnaj</PHON>
         <FORM kindOf="standard">nayau ma, 'nay.</FORM>
         <PHON kindOf="standard">najau ma ʔnaj</PHON>
@@ -7782,7 +7764,7 @@
         </W>
     </S>
     <S id="KavNr-frog_buya_S_181">
-        <FORM kindOf="original" notes="qa-nengi-an-ku sunis ’nay 我對那個小孩好 treat that child nicely. qa-nengi-an-ka q&lt;m&gt;udu sunis a yau 我會好好照顧小孩 I will take good care of the child. qa-nengi-ka=ti sunis a yau 我會好好的照顧小孩 I will take good care of the child. qa-nengi-ka=ti q&lt;m&gt;udu tu sunis 你要好好的照顧小孩You must take good care of the child.">qanengiannati 'nay, ni, quduanna tu, biat 'nay, zinku nayau ma, sikawmaanku.</FORM>
+        <FORM kindOf="original" notes="qa-nengi-an-ku sunis ‘nay 我對那個小孩好 treat that child nicely. qa-nengi-an-ka q&lt;m&gt;udu sunis a yau 我會好好照顧小孩 I will take good care of the child. qa-nengi-ka=ti sunis a yau 我會好好的照顧小孩 I will take good care of the child. qa-nengi-ka=ti q&lt;m&gt;udu tu sunis 你要好好的照顧小孩You must take good care of the child.">qanengiannati 'nay, ni, quduanna tu, biat 'nay, zinku nayau ma, sikawmaanku.</FORM>
         <PHON kindOf="original">qanəŋiannati ʔnaj ni quɮuanna tu βiat ʔnaj zinku najau ma sikawmaanku</PHON>
         <FORM kindOf="standard">qanengiannati 'nay, ni, quduanna tu, biat 'nay, zinku nayau ma, sikawmaanku.</FORM>
         <PHON kindOf="standard">qanəŋiannati ʔnaj ni quɮuanna tu βiat ʔnaj [z|r]inku najau ma sikawmaanku</PHON>

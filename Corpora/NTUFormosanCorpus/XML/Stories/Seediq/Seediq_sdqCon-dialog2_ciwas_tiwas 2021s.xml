@@ -838,7 +838,7 @@
             <PHON kindOf="original">iniku</PHON>
             <FORM kindOf="standard">ini=ku</FORM>
             <PHON kindOf="standard">iniku</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">否定=SG.主格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">否定-=SG.主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">NEG=1SG.NOM</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_10_W1M0">
                 <FORM kindOf="original">ini</FORM>
@@ -2480,16 +2480,6 @@
             <PHON kindOf="original">xx</PHON>
             <FORM kindOf="standard">XX.</FORM>
             <PHON kindOf="standard">xx</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
-            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_23_W1M0">
-                <FORM kindOf="original">XX.</FORM>
-                <PHON kindOf="original">xx</PHON>
-                <FORM kindOf="standard">XX.</FORM>
-                <PHON kindOf="standard">xx</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
-            </M>
         </W>
     </S>
     <S id="sdqCon-dialog2_ciwas_tiwas 2021s_S_24">
@@ -3045,8 +3035,8 @@
                 <PHON kindOf="original">da</PHON>
                 <FORM kindOf="standard">da</FORM>
                 <PHON kindOf="standard">da</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_31_W4">
@@ -3061,8 +3051,8 @@
                 <PHON kindOf="original">maħa</PHON>
                 <FORM kindOf="standard">maha</FORM>
                 <PHON kindOf="standard">maħa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">助動詞.未來</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AUX.FUT</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">說</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">say</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_31_W5">
@@ -3077,26 +3067,34 @@
                 <PHON kindOf="original">kii</PHON>
                 <FORM kindOf="standard">kii</FORM>
                 <PHON kindOf="standard">kii</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">這個</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">this</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_31_W6">
-            <FORM kindOf="original">maha=su</FORM>
+            <FORM kindOf="original">m-aha=su</FORM>
             <PHON kindOf="original">maħasu</PHON>
-            <FORM kindOf="standard">maha=su</FORM>
+            <FORM kindOf="standard">m-aha=su</FORM>
             <PHON kindOf="standard">maħasu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">助動詞.未來=2SG.主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AUX.FUT=2SG.NOM</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_31_W6M0">
-                <FORM kindOf="original">maha</FORM>
-                <PHON kindOf="original">maħa</PHON>
-                <FORM kindOf="standard">maha</FORM>
-                <PHON kindOf="standard">maħa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">助動詞.未來</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AUX.FUT</TRANSL>
+                <FORM kindOf="original">m</FORM>
+                <PHON kindOf="original">m</PHON>
+                <FORM kindOf="standard">m</FORM>
+                <PHON kindOf="standard">m</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
             </M>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_31_W6M1">
+                <FORM kindOf="original">aha</FORM>
+                <PHON kindOf="original">aħa</PHON>
+                <FORM kindOf="standard">aha</FORM>
+                <PHON kindOf="standard">aħa</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">go</TRANSL>
+            </M>
+            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_31_W6M2">
                 <FORM kindOf="original">=su</FORM>
                 <PHON kindOf="original">su</PHON>
                 <FORM kindOf="standard">=su</FORM>
@@ -4040,16 +4038,6 @@
             <PHON kindOf="original">xxxxx</PHON>
             <FORM kindOf="standard">XXXXX</FORM>
             <PHON kindOf="standard">xxxxx</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XXXXX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XXXXX</TRANSL>
-            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_46_W0M0">
-                <FORM kindOf="original">XXXXX</FORM>
-                <PHON kindOf="original">xxxxx</PHON>
-                <FORM kindOf="standard">XXXXX</FORM>
-                <PHON kindOf="standard">xxxxx</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">XXXXX</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">XXXXX</TRANSL>
-            </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_46_W1">
             <FORM kindOf="original">mona</FORM>
@@ -4305,14 +4293,14 @@
             <PHON kindOf="original">tsipaqun</PHON>
             <FORM kindOf="standard">t-sipaq-un</FORM>
             <PHON kindOf="standard">tsipaqun</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">T-砍-受焦</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">砍-受焦</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">T-chop-PF</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_48_W5M0">
                 <FORM kindOf="original">t</FORM>
                 <PHON kindOf="original">t</PHON>
                 <FORM kindOf="standard">t</FORM>
                 <PHON kindOf="standard">t</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">T</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">砍</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">T</TRANSL>
             </M>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_48_W5M1">
@@ -4320,7 +4308,7 @@
                 <PHON kindOf="original">sipaq</PHON>
                 <FORM kindOf="standard">sipaq</FORM>
                 <PHON kindOf="standard">sipaq</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">砍</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">受焦</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">chop</TRANSL>
             </M>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_48_W5M2">
@@ -4328,7 +4316,6 @@
                 <PHON kindOf="original">un</PHON>
                 <FORM kindOf="standard">un</FORM>
                 <PHON kindOf="standard">un</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">受焦</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">PF</TRANSL>
             </M>
         </W>
@@ -5291,8 +5278,8 @@
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_61_W6">
@@ -5307,8 +5294,8 @@
                 <PHON kindOf="original">so</PHON>
                 <FORM kindOf="standard">so</FORM>
                 <PHON kindOf="standard">so</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">像這樣</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">be.like.this</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">條件詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">COND</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_61_W7">
@@ -5323,8 +5310,8 @@
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a.</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_61_W8">
@@ -5372,15 +5359,15 @@
             <PHON kindOf="original">a</PHON>
             <FORM kindOf="standard">a</FORM>
             <PHON kindOf="standard">a</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_61_W10M0">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_61_W11">
@@ -5388,8 +5375,8 @@
             <PHON kindOf="original">meniq</PHON>
             <FORM kindOf="standard">m-eniq</FORM>
             <PHON kindOf="standard">meniq</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主焦-在</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">AF-be.at</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_61_W11M0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
@@ -5412,15 +5399,15 @@
             <PHON kindOf="original">a</PHON>
             <FORM kindOf="standard">a.</FORM>
             <PHON kindOf="standard">a</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">主焦.在</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">AF.be.at</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_61_W12M0">
                 <FORM kindOf="original">a.</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a.</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
     </S>
@@ -6469,8 +6456,8 @@
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma.</FORM>
                 <PHON kindOf="standard">ma</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主焦.說</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AF.say</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_78_W1">
@@ -6478,8 +6465,6 @@
             <PHON kindOf="original">xxx</PHON>
             <FORM kindOf="standard">XXX</FORM>
             <PHON kindOf="standard">xxx</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XXX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XXX</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_78_W1M0">
                 <FORM kindOf="original">XXX</FORM>
                 <PHON kindOf="original">xxx</PHON>
@@ -6506,35 +6491,23 @@
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_78_W3">
-            <FORM kindOf="original">m-&lt;n&gt;beyan</FORM>
+            <FORM kindOf="original">m&lt;n&gt;beyan</FORM>
             <PHON kindOf="original">mnbejan</PHON>
-            <FORM kindOf="standard">m-&lt;n&gt;beyan</FORM>
+            <FORM kindOf="standard">m&lt;n&gt;beyan</FORM>
             <PHON kindOf="standard">mnbejan</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主焦-&lt;完成&gt;打</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">AF-&lt;PFV&gt;beat</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">&lt;完成&gt;主焦-打</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">&lt;PFV&gt;AF-beat</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_78_W3M0">
-                <FORM kindOf="original">m</FORM>
-                <PHON kindOf="original">m</PHON>
-                <FORM kindOf="standard">m</FORM>
-                <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
-            </M>
-            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_78_W3M1_0">
                 <FORM kindOf="original">-n-</FORM>
                 <PHON kindOf="original">n</PHON>
                 <FORM kindOf="standard">-n-</FORM>
                 <PHON kindOf="standard">n</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">&lt;完成&gt;</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;PFV&gt;</TRANSL>
             </M>
-            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_78_W3M1_1">
-                <FORM kindOf="original">beyan</FORM>
-                <PHON kindOf="original">bejan</PHON>
-                <FORM kindOf="standard">beyan</FORM>
-                <PHON kindOf="standard">bejan</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">打</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">beat</TRANSL>
+            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_78_W3M1">
+                <FORM kindOf="original">mbeyan</FORM>
+                <PHON kindOf="original">mbejan</PHON>
+                <FORM kindOf="standard">mbeyan</FORM>
+                <PHON kindOf="standard">mbejan</PHON>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_78_W4">
@@ -6549,8 +6522,8 @@
                 <PHON kindOf="original">kii</PHON>
                 <FORM kindOf="standard">kii</FORM>
                 <PHON kindOf="standard">kii</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">這個</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">this</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_78_W5">
@@ -6573,8 +6546,8 @@
                 <PHON kindOf="original">su</PHON>
                 <FORM kindOf="standard">=su</FORM>
                 <PHON kindOf="standard">su</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">2SG.主格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">2SG.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">2SG.屬格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">2SG.GEN</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_78_W6">
@@ -6589,8 +6562,8 @@
                 <PHON kindOf="original">de</PHON>
                 <FORM kindOf="standard">de</FORM>
                 <PHON kindOf="standard">de</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">的</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">of</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_78_W7">
@@ -6605,8 +6578,8 @@
                 <PHON kindOf="original">bsijaq</PHON>
                 <FORM kindOf="standard">bsiyaq</FORM>
                 <PHON kindOf="standard">bsijaq</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">久</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">long.time</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主焦.久</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AF.long</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_78_W8">
@@ -6925,9 +6898,9 @@
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_83_W5">
-            <FORM kindOf="original">tnkan-an</FORM>
+            <FORM kindOf="original">tnkan=an</FORM>
             <PHON kindOf="original">tnkanan</PHON>
-            <FORM kindOf="standard">tnkan-an</FORM>
+            <FORM kindOf="standard">tnkan=an</FORM>
             <PHON kindOf="standard">tnkanan</PHON>
             <TRANSL xml:lang="zho" kindOf="original">撞-處焦</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">thrust-LF</TRANSL>
@@ -6940,9 +6913,9 @@
                 <TRANSL xml:lang="eng" kindOf="original">thrust</TRANSL>
             </M>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_83_W5M1">
-                <FORM kindOf="original">an</FORM>
+                <FORM kindOf="original">=an</FORM>
                 <PHON kindOf="original">an</PHON>
-                <FORM kindOf="standard">an</FORM>
+                <FORM kindOf="standard">=an</FORM>
                 <PHON kindOf="standard">an</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">處焦</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">LF</TRANSL>
@@ -7131,31 +7104,21 @@
             <PHON kindOf="original">xx</PHON>
             <FORM kindOf="standard">XX</FORM>
             <PHON kindOf="standard">xx</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">NOM</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
-            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_87_W2M0">
-                <FORM kindOf="original">XX</FORM>
-                <PHON kindOf="original">xx</PHON>
-                <FORM kindOf="standard">XX</FORM>
-                <PHON kindOf="standard">xx</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">NOM</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
-            </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_87_W3">
             <FORM kindOf="original">deh.</FORM>
             <PHON kindOf="original">deħ</PHON>
             <FORM kindOf="standard">deh.</FORM>
             <PHON kindOf="standard">deħ</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">NOM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_87_W3M0">
                 <FORM kindOf="original">deh.</FORM>
                 <PHON kindOf="original">deħ</PHON>
                 <FORM kindOf="standard">deh.</FORM>
                 <PHON kindOf="standard">deħ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">NOM</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_87_W4">
@@ -7646,16 +7609,6 @@
             <PHON kindOf="original">xxx</PHON>
             <FORM kindOf="standard">XXX</FORM>
             <PHON kindOf="standard">xxx</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XXX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XXX</TRANSL>
-            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_94_W5M0">
-                <FORM kindOf="original">XXX</FORM>
-                <PHON kindOf="original">xxx</PHON>
-                <FORM kindOf="standard">XXX</FORM>
-                <PHON kindOf="standard">xxx</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">XXX</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">XXX</TRANSL>
-            </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_94_W6">
             <FORM kindOf="original" notes="code-switch">jyunanneng</FORM>
@@ -8618,8 +8571,6 @@
             <PHON kindOf="original">xxxxxx</PHON>
             <FORM kindOf="standard">XXXXXX.</FORM>
             <PHON kindOf="standard">xxxxxx</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XXXXXX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XXXXXX</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_110_W0M0">
                 <FORM kindOf="original">XXXXXX.</FORM>
                 <PHON kindOf="original">xxxxxx</PHON>
@@ -8652,21 +8603,17 @@
             <PHON kindOf="standard">qmapi</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;放陷阱</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;put.trap</TRANSL>
-            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_110_W2M0_0">
+            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_110_W2M0">
                 <FORM kindOf="original">-m-</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
             </M>
-            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_110_W2M0_1">
-                <FORM kindOf="original">q-api</FORM>
+            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_110_W2M1">
+                <FORM kindOf="original">qapi</FORM>
                 <PHON kindOf="original">qapi</PHON>
-                <FORM kindOf="standard">q-api</FORM>
+                <FORM kindOf="standard">qapi</FORM>
                 <PHON kindOf="standard">qapi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">放陷阱</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">put.trap</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_110_W3">
@@ -8722,39 +8669,31 @@
             <PHON kindOf="original">puqiunmijan</PHON>
             <FORM kindOf="standard">p-uqi-un=miyan.</FORM>
             <PHON kindOf="standard">puqiunmijan</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">使役-吃-受焦=1EPL.屬格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">CAU-eat-PF=1EPL.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">吃-受焦=1EPL.屬格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">eat-PF=1EPL.GEN</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_110_W6M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">使役</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">CAU</TRANSL>
             </M>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_110_W6M1">
                 <FORM kindOf="original">uqi</FORM>
                 <PHON kindOf="original">uqi</PHON>
                 <FORM kindOf="standard">uqi</FORM>
                 <PHON kindOf="standard">uqi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">吃</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">eat</TRANSL>
             </M>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_110_W6M2">
                 <FORM kindOf="original">un</FORM>
                 <PHON kindOf="original">un</PHON>
                 <FORM kindOf="standard">un</FORM>
                 <PHON kindOf="standard">un</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">受焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PF</TRANSL>
             </M>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_110_W6M3">
-                <FORM kindOf="original">=miyan.</FORM>
+                <FORM kindOf="original">miyan.</FORM>
                 <PHON kindOf="original">mijan</PHON>
-                <FORM kindOf="standard">=miyan.</FORM>
+                <FORM kindOf="standard">miyan.</FORM>
                 <PHON kindOf="standard">mijan</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">1EPL.屬格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">1EPL.GEN</TRANSL>
             </M>
         </W>
     </S>
@@ -9403,27 +9342,34 @@
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_118_W1">
-            <FORM kindOf="original">posa-i</FORM>
+            <FORM kindOf="original">p-osa-i</FORM>
             <PHON kindOf="original">posai</PHON>
-            <FORM kindOf="standard">posa-i</FORM>
+            <FORM kindOf="standard">p-osa-i</FORM>
             <PHON kindOf="standard">posai</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">讓-受焦.非實現</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">讓-受焦-非實現</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">allow-PF.IRR</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_118_W1M0">
-                <FORM kindOf="original">posa</FORM>
-                <PHON kindOf="original">posa</PHON>
-                <FORM kindOf="standard">posa</FORM>
-                <PHON kindOf="standard">posa</PHON>
+                <FORM kindOf="original">p</FORM>
+                <PHON kindOf="original">p</PHON>
+                <FORM kindOf="standard">p</FORM>
+                <PHON kindOf="standard">p</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">讓</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">allow</TRANSL>
             </M>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_118_W1M1">
+                <FORM kindOf="original">osa</FORM>
+                <PHON kindOf="original">osa</PHON>
+                <FORM kindOf="standard">osa</FORM>
+                <PHON kindOf="standard">osa</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">受焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PF.IRR</TRANSL>
+            </M>
+            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_118_W1M2">
                 <FORM kindOf="original">i</FORM>
                 <PHON kindOf="original">i</PHON>
                 <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">受焦.非實現</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PF.IRR</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_118_W2">
@@ -11199,16 +11145,6 @@
             <PHON kindOf="original">xx</PHON>
             <FORM kindOf="standard">XX</FORM>
             <PHON kindOf="standard">xx</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
-            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_141_W0M0">
-                <FORM kindOf="original">XX</FORM>
-                <PHON kindOf="original">xx</PHON>
-                <FORM kindOf="standard">XX</FORM>
-                <PHON kindOf="standard">xx</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
-            </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_141_W1">
             <FORM kindOf="original" notes="code-switch">jyuusang</FORM>
@@ -11651,8 +11587,6 @@
             <PHON kindOf="original">xxxxx</PHON>
             <FORM kindOf="standard">XXXXX</FORM>
             <PHON kindOf="standard">xxxxx</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XXXXX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XXXXX</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_146_W0M0">
                 <FORM kindOf="original">XXXXX</FORM>
                 <PHON kindOf="original">xxxxx</PHON>
@@ -11667,8 +11601,8 @@
             <PHON kindOf="original">labuan</PHON>
             <FORM kindOf="standard">labu-an</FORM>
             <PHON kindOf="standard">labuan</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">裹-處焦</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">wrap-LF</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">XXXXX</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">XXXXX</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_146_W1M0">
                 <FORM kindOf="original">labu</FORM>
                 <PHON kindOf="original">labu</PHON>
@@ -11691,8 +11625,8 @@
             <PHON kindOf="original">pala</PHON>
             <FORM kindOf="standard">pala.</FORM>
             <PHON kindOf="standard">pala</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">布匹</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">cloth</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">裹-處焦</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">wrap-LF</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_146_W2M0">
                 <FORM kindOf="original">pala.</FORM>
                 <PHON kindOf="original">pala</PHON>
@@ -11765,16 +11699,6 @@
             <PHON kindOf="original">xx</PHON>
             <FORM kindOf="standard">XX.</FORM>
             <PHON kindOf="standard">xx</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
-            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_148_W0M0">
-                <FORM kindOf="original">XX.</FORM>
-                <PHON kindOf="original">xx</PHON>
-                <FORM kindOf="standard">XX.</FORM>
-                <PHON kindOf="standard">xx</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
-            </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_148_W1">
             <FORM kindOf="original">labu-an</FORM>
@@ -11952,8 +11876,6 @@
             <PHON kindOf="original">xx</PHON>
             <FORM kindOf="standard">XX</FORM>
             <PHON kindOf="standard">xx</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_150_W6M0">
                 <FORM kindOf="original">XX</FORM>
                 <PHON kindOf="original">xx</PHON>
@@ -11968,8 +11890,8 @@
             <PHON kindOf="original">ini</PHON>
             <FORM kindOf="standard">ini</FORM>
             <PHON kindOf="standard">ini</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">否定</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">NEG</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_150_W7M0">
                 <FORM kindOf="original">ini</FORM>
                 <PHON kindOf="original">ini</PHON>
@@ -11984,8 +11906,8 @@
             <PHON kindOf="original">ptaqii</PHON>
             <FORM kindOf="standard">p-taqi-i</FORM>
             <PHON kindOf="standard">ptaqii</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">躺平-受焦.祈使</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">flat-PF.IMP</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">否定</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">NEG</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_150_W8M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
@@ -12010,8 +11932,8 @@
             <PHON kindOf="original">na</PHON>
             <FORM kindOf="standard">na.</FORM>
             <PHON kindOf="standard">na</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">躺平-受焦.祈使</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">flat-PF.IMP</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_150_W9M0">
                 <FORM kindOf="original">na.</FORM>
                 <PHON kindOf="original">na</PHON>
@@ -12035,32 +11957,12 @@
             <PHON kindOf="original">xx</PHON>
             <FORM kindOf="standard">XX</FORM>
             <PHON kindOf="standard">xx</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
-            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_151_W0M0">
-                <FORM kindOf="original">XX</FORM>
-                <PHON kindOf="original">xx</PHON>
-                <FORM kindOf="standard">XX</FORM>
-                <PHON kindOf="standard">xx</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
-            </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_151_W1">
             <FORM kindOf="original">XX.</FORM>
             <PHON kindOf="original">xx</PHON>
             <FORM kindOf="standard">XX.</FORM>
             <PHON kindOf="standard">xx</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
-            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_151_W1M0">
-                <FORM kindOf="original">XX.</FORM>
-                <PHON kindOf="original">xx</PHON>
-                <FORM kindOf="standard">XX.</FORM>
-                <PHON kindOf="standard">xx</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
-            </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_151_W2">
             <FORM kindOf="original">ini.</FORM>
@@ -12165,16 +12067,6 @@
             <PHON kindOf="original">xx</PHON>
             <FORM kindOf="standard">XX</FORM>
             <PHON kindOf="standard">xx</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
-            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_154_W0M0">
-                <FORM kindOf="original">XX</FORM>
-                <PHON kindOf="original">xx</PHON>
-                <FORM kindOf="standard">XX</FORM>
-                <PHON kindOf="standard">xx</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
-            </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_154_W1">
             <FORM kindOf="original">a</FORM>
@@ -12495,16 +12387,6 @@
             <PHON kindOf="original">xxx</PHON>
             <FORM kindOf="standard">XXX.</FORM>
             <PHON kindOf="standard">xxx</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XXX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XXX</TRANSL>
-            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_156_W7M0">
-                <FORM kindOf="original">XXX.</FORM>
-                <PHON kindOf="original">xxx</PHON>
-                <FORM kindOf="standard">XXX.</FORM>
-                <PHON kindOf="standard">xxx</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">XXX</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">XXX</TRANSL>
-            </M>
         </W>
     </S>
     <S id="sdqCon-dialog2_ciwas_tiwas 2021s_S_158">
@@ -13071,7 +12953,7 @@
         <FORM kindOf="standard">ini. XXXX. qmnita su rmeus sapah.</FORM>
         <PHON kindOf="standard">ini xxxx qmnita su ɾmeus sapaħ</PHON>
         <TRANSL xml:lang="zho" notes="妳看過（本族）有屋內葬嗎？">妳看過 有屋內葬嗎？</TRANSL>
-        <TRANSL xml:lang="eng">Did you see our people buried in house?</TRANSL>
+        <TRANSL xml:lang="eng">Did you seeour people buried in house?</TRANSL>
         <AUDIO file="sdqCon-dialog2_ciwas_tiwas 2021s_S166.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/sdqCon-dialog2_ciwas_tiwas.mp3" start="257.55" end="259.75"/>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_166_W0">
             <FORM kindOf="original">ini.</FORM>
@@ -13094,8 +12976,6 @@
             <PHON kindOf="original">xxxx</PHON>
             <FORM kindOf="standard">XXXX.</FORM>
             <PHON kindOf="standard">xxxx</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XXXX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XXXX</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_166_W1M0">
                 <FORM kindOf="original">XXXX.</FORM>
                 <PHON kindOf="original">xxxx</PHON>
@@ -13243,16 +13123,6 @@
             <PHON kindOf="original">xx</PHON>
             <FORM kindOf="standard">XX</FORM>
             <PHON kindOf="standard">xx</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
-            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_169_W3M0">
-                <FORM kindOf="original">XX</FORM>
-                <PHON kindOf="original">xx</PHON>
-                <FORM kindOf="standard">XX</FORM>
-                <PHON kindOf="standard">xx</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
-            </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_169_W4">
             <FORM kindOf="original">a</FORM>
@@ -13687,16 +13557,6 @@
             <PHON kindOf="original">xxx</PHON>
             <FORM kindOf="standard">XXX</FORM>
             <PHON kindOf="standard">xxx</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XXX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XXX</TRANSL>
-            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_176_W0M0">
-                <FORM kindOf="original">XXX</FORM>
-                <PHON kindOf="original">xxx</PHON>
-                <FORM kindOf="standard">XXX</FORM>
-                <PHON kindOf="standard">xxx</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">XXX</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">XXX</TRANSL>
-            </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_176_W1">
             <FORM kindOf="original">tahtunux</FORM>
@@ -13719,16 +13579,6 @@
             <PHON kindOf="original">xxx</PHON>
             <FORM kindOf="standard">XXX.</FORM>
             <PHON kindOf="standard">xxx</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XXX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XXX</TRANSL>
-            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_176_W2M0">
-                <FORM kindOf="original">XXX.</FORM>
-                <PHON kindOf="original">xxx</PHON>
-                <FORM kindOf="standard">XXX.</FORM>
-                <PHON kindOf="standard">xxx</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">XXX</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">XXX</TRANSL>
-            </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_176_W3">
             <FORM kindOf="original">o.</FORM>
@@ -13962,29 +13812,23 @@
             <PHON kindOf="standard">ɾneŋona</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;受焦.完成&gt;說=3SG.屬格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;PF.PFV&gt;speak=3SG.GEN</TRANSL>
-            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_180_W1M0_0">
+            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_180_W1M0">
                 <FORM kindOf="original">-n-</FORM>
                 <PHON kindOf="original">n</PHON>
                 <FORM kindOf="standard">-n-</FORM>
                 <PHON kindOf="standard">n</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">&lt;受焦.完成&gt;</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;PF.PFV&gt;</TRANSL>
-            </M>
-            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_180_W1M0_1">
-                <FORM kindOf="original">r-engo</FORM>
-                <PHON kindOf="original">ɾeŋo</PHON>
-                <FORM kindOf="standard">r-engo</FORM>
-                <PHON kindOf="standard">ɾeŋo</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">說</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">speak</TRANSL>
             </M>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_180_W1M1">
-                <FORM kindOf="original">=na</FORM>
+                <FORM kindOf="original">rengo</FORM>
+                <PHON kindOf="original">ɾeŋo</PHON>
+                <FORM kindOf="standard">rengo</FORM>
+                <PHON kindOf="standard">ɾeŋo</PHON>
+            </M>
+            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_180_W1M2">
+                <FORM kindOf="original">na</FORM>
                 <PHON kindOf="original">na</PHON>
-                <FORM kindOf="standard">=na</FORM>
+                <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">3SG.屬格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">3SG.GEN</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_180_W2">
@@ -13992,14 +13836,22 @@
             <PHON kindOf="original">xxxx</PHON>
             <FORM kindOf="standard">XXXX</FORM>
             <PHON kindOf="standard">xxxx</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">在.處焦</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">be.at.LF</TRANSL>
+            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_180_W2M0">
+                <FORM kindOf="original">XXXX</FORM>
+                <PHON kindOf="original">xxxx</PHON>
+                <FORM kindOf="standard">XXXX</FORM>
+                <PHON kindOf="standard">xxxx</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">XXXX</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">XXXX</TRANSL>
+            </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_180_W3">
             <FORM kindOf="original">XX</FORM>
             <PHON kindOf="original">xx</PHON>
             <FORM kindOf="standard">XX</FORM>
             <PHON kindOf="standard">xx</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_180_W3M0">
                 <FORM kindOf="original">XX</FORM>
                 <PHON kindOf="original">xx</PHON>
@@ -14014,8 +13866,8 @@
             <PHON kindOf="original">eniqan</PHON>
             <FORM kindOf="standard">eniq-an</FORM>
             <PHON kindOf="standard">eniqan</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">在-處焦</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">be.at-LF</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">家</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">house</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_180_W4M0">
                 <FORM kindOf="original">eniq</FORM>
                 <PHON kindOf="original">eniq</PHON>
@@ -14038,14 +13890,14 @@
             <PHON kindOf="original">sapaħ</PHON>
             <FORM kindOf="standard">sapah</FORM>
             <PHON kindOf="standard">sapaħ</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">家</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">house</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">製作</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">make</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_180_W5M0">
                 <FORM kindOf="original">sapah</FORM>
                 <PHON kindOf="original">sapaħ</PHON>
                 <FORM kindOf="standard">sapah</FORM>
                 <PHON kindOf="standard">sapaħ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">家</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">房子</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">house</TRANSL>
             </M>
         </W>
@@ -14054,15 +13906,15 @@
             <PHON kindOf="original">slmejun</PHON>
             <FORM kindOf="standard">slmeyun</FORM>
             <PHON kindOf="standard">slmejun</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">製作</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">make</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_180_W6M0">
                 <FORM kindOf="original">slmeyun</FORM>
                 <PHON kindOf="original">slmejun</PHON>
                 <FORM kindOf="standard">slmeyun</FORM>
                 <PHON kindOf="standard">slmejun</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">製作</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">make</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_180_W7">
@@ -14070,15 +13922,15 @@
             <PHON kindOf="original">ħenu</PHON>
             <FORM kindOf="standard">henu</FORM>
             <PHON kindOf="standard">ħenu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">先</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">first</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_180_W7M0">
                 <FORM kindOf="original">henu</FORM>
                 <PHON kindOf="original">ħenu</PHON>
                 <FORM kindOf="standard">henu</FORM>
                 <PHON kindOf="standard">ħenu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_180_W8">
@@ -14086,15 +13938,13 @@
             <PHON kindOf="original">ħan</PHON>
             <FORM kindOf="standard">han.</FORM>
             <PHON kindOf="standard">ħan</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">先</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">first</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_180_W8M0">
                 <FORM kindOf="original">han.</FORM>
                 <PHON kindOf="original">ħan</PHON>
                 <FORM kindOf="standard">han.</FORM>
                 <PHON kindOf="standard">ħan</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">先</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">first</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">如此說</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">say.so</TRANSL>
             </M>
         </W>
     </S>
@@ -14641,32 +14491,12 @@
             <PHON kindOf="original">xxx</PHON>
             <FORM kindOf="standard">XXX</FORM>
             <PHON kindOf="standard">xxx</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XXX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XXX</TRANSL>
-            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_184_W7M0">
-                <FORM kindOf="original">XXX</FORM>
-                <PHON kindOf="original">xxx</PHON>
-                <FORM kindOf="standard">XXX</FORM>
-                <PHON kindOf="standard">xxx</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">XXX</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">XXX</TRANSL>
-            </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_184_W8">
             <FORM kindOf="original">XXX</FORM>
             <PHON kindOf="original">xxx</PHON>
             <FORM kindOf="standard">XXX</FORM>
             <PHON kindOf="standard">xxx</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XXX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XXX</TRANSL>
-            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_184_W8M0">
-                <FORM kindOf="original">XXX</FORM>
-                <PHON kindOf="original">xxx</PHON>
-                <FORM kindOf="standard">XXX</FORM>
-                <PHON kindOf="standard">xxx</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">XXX</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">XXX</TRANSL>
-            </M>
         </W>
     </S>
     <S id="sdqCon-dialog2_ciwas_tiwas 2021s_S_186">
@@ -14689,27 +14519,19 @@
         <TRANSL xml:lang="eng">We had to climb.</TRANSL>
         <AUDIO file="sdqCon-dialog2_ciwas_tiwas 2021s_S188.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/sdqCon-dialog2_ciwas_tiwas.mp3" start="287.95" end="291.74"/>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_188_W0">
-            <FORM kindOf="original">m-uda,</FORM>
+            <FORM kindOf="original">muda,</FORM>
             <PHON kindOf="original">muda</PHON>
-            <FORM kindOf="standard">m-uda,</FORM>
+            <FORM kindOf="standard">muda,</FORM>
             <PHON kindOf="standard">muda</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主焦-經過</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">AF-pass</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">主焦.經過</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">AF.pass</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_188_W0M0">
-                <FORM kindOf="original">m</FORM>
-                <PHON kindOf="original">m</PHON>
-                <FORM kindOf="standard">m</FORM>
-                <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
-            </M>
-            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_188_W0M1">
-                <FORM kindOf="original">uda,</FORM>
-                <PHON kindOf="original">uda</PHON>
-                <FORM kindOf="standard">uda,</FORM>
-                <PHON kindOf="standard">uda</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">經過</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">pass</TRANSL>
+                <FORM kindOf="original">muda,</FORM>
+                <PHON kindOf="original">muda</PHON>
+                <FORM kindOf="standard">muda,</FORM>
+                <PHON kindOf="standard">muda</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">主焦.經過</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AF.pass</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_188_W1">
@@ -15247,16 +15069,6 @@
             <PHON kindOf="original">xxxxx</PHON>
             <FORM kindOf="standard">XXXXX</FORM>
             <PHON kindOf="standard">xxxxx</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XXX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XXX</TRANSL>
-            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_193_W3M0">
-                <FORM kindOf="original">XXXXX</FORM>
-                <PHON kindOf="original">xxxxx</PHON>
-                <FORM kindOf="standard">XXXXX</FORM>
-                <PHON kindOf="standard">xxxxx</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">XXX</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">XXX</TRANSL>
-            </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_193_W4">
             <FORM kindOf="original">o.</FORM>
@@ -15911,16 +15723,6 @@
             <PHON kindOf="original">xxxxxx</PHON>
             <FORM kindOf="standard">XXXXXX.</FORM>
             <PHON kindOf="standard">xxxxxx</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XXXXXX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XXXXXX</TRANSL>
-            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_206_W0M0">
-                <FORM kindOf="original">XXXXXX.</FORM>
-                <PHON kindOf="original">xxxxxx</PHON>
-                <FORM kindOf="standard">XXXXXX.</FORM>
-                <PHON kindOf="standard">xxxxxx</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">XXXXXX</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">XXXXXX</TRANSL>
-            </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_206_W1">
             <FORM kindOf="original">o</FORM>
@@ -17390,9 +17192,9 @@
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_226_W7">
-            <FORM kindOf="original">sapah=na.</FORM>
+            <FORM kindOf="original">sapah-na.</FORM>
             <PHON kindOf="original">sapaħna</PHON>
-            <FORM kindOf="standard">sapah=na.</FORM>
+            <FORM kindOf="standard">sapah-na.</FORM>
             <PHON kindOf="standard">sapaħna</PHON>
             <TRANSL xml:lang="zho" kindOf="original">房子=3SG.屬格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">house=3SG.GEN</TRANSL>
@@ -17405,9 +17207,9 @@
                 <TRANSL xml:lang="eng" kindOf="original">house</TRANSL>
             </M>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_226_W7M1">
-                <FORM kindOf="original">=na.</FORM>
+                <FORM kindOf="original">na.</FORM>
                 <PHON kindOf="original">na</PHON>
-                <FORM kindOf="standard">=na.</FORM>
+                <FORM kindOf="standard">na.</FORM>
                 <PHON kindOf="standard">na</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">3SG.屬格</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">3SG.GEN</TRANSL>
@@ -17787,8 +17589,8 @@
                 <PHON kindOf="original">wada</PHON>
                 <FORM kindOf="standard">wada</FORM>
                 <PHON kindOf="standard">wada</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">助動詞.過去</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AUX.PST</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">去.過去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">go.PST</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_235_W1">
@@ -17796,31 +17598,25 @@
             <PHON kindOf="original">posaan</PHON>
             <FORM kindOf="standard">p-osa-an</FORM>
             <PHON kindOf="standard">posaan</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">使役-去-處焦</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">CAU-go-LF</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">放-處焦</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">put-LF</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_235_W1M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">使役</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">CAU</TRANSL>
             </M>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_235_W1M1">
                 <FORM kindOf="original">osa</FORM>
                 <PHON kindOf="original">osa</PHON>
                 <FORM kindOf="standard">osa</FORM>
                 <PHON kindOf="standard">osa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">去</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">go</TRANSL>
             </M>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_235_W1M2">
                 <FORM kindOf="original">an</FORM>
                 <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LF</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_235_W2">
@@ -17835,8 +17631,8 @@
                 <PHON kindOf="original">tuki</PHON>
                 <FORM kindOf="standard">tuki</FORM>
                 <PHON kindOf="standard">tuki</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">甕</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">pot</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_235_W3">
@@ -17900,8 +17696,8 @@
                 <PHON kindOf="original">um</PHON>
                 <FORM kindOf="standard">um</FORM>
                 <PHON kindOf="standard">um</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_236_W1">
@@ -17956,8 +17752,8 @@
                 <PHON kindOf="original">kija</PHON>
                 <FORM kindOf="standard">kiya</FORM>
                 <PHON kindOf="standard">kija</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">那個.主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">that.NOM</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_236_W4">
@@ -17972,8 +17768,8 @@
                 <PHON kindOf="original">wada</PHON>
                 <FORM kindOf="standard">wada</FORM>
                 <PHON kindOf="standard">wada</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">助動詞.過去</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AUX.PST</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">去.過去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">go.PST</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_236_W5">
@@ -17981,31 +17777,25 @@
             <PHON kindOf="original">posaan</PHON>
             <FORM kindOf="standard">p-osa-an</FORM>
             <PHON kindOf="standard">posaan</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">使役-去-處焦</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">CAU-go-LF</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">放-處焦</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">put-LF</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_236_W5M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">使役</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">CAU</TRANSL>
             </M>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_236_W5M1">
                 <FORM kindOf="original">osa</FORM>
                 <PHON kindOf="original">osa</PHON>
                 <FORM kindOf="standard">osa</FORM>
                 <PHON kindOf="standard">osa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">去</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">go</TRANSL>
             </M>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_236_W5M2">
                 <FORM kindOf="original">an</FORM>
                 <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LF</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_236_W6">
@@ -18086,8 +17876,8 @@
                 <PHON kindOf="original">wa</PHON>
                 <FORM kindOf="standard">wa</FORM>
                 <PHON kindOf="standard">wa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">進行</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PROG</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_239_W1">
@@ -18095,31 +17885,25 @@
             <PHON kindOf="original">posaan</PHON>
             <FORM kindOf="standard">p-osa-an</FORM>
             <PHON kindOf="standard">posaan</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">使役-去-處焦</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">CAU-go-LF</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">放-處焦</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">put-LF</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_239_W1M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">使役</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">CAU</TRANSL>
             </M>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_239_W1M1">
                 <FORM kindOf="original">osa</FORM>
                 <PHON kindOf="original">osa</PHON>
                 <FORM kindOf="standard">osa</FORM>
                 <PHON kindOf="standard">osa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">去</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">go</TRANSL>
             </M>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_239_W1M2">
                 <FORM kindOf="original">an</FORM>
                 <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LF</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_239_W2">
@@ -18555,8 +18339,8 @@
             <PHON kindOf="original">eniqan</PHON>
             <FORM kindOf="standard">eniq-an</FORM>
             <PHON kindOf="standard">eniqan</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">在-處焦</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">be.at-LF</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_245_W0M0">
                 <FORM kindOf="original">eniq</FORM>
                 <PHON kindOf="original">eniq</PHON>
@@ -18579,15 +18363,15 @@
             <PHON kindOf="original">naq</PHON>
             <FORM kindOf="standard">naq</FORM>
             <PHON kindOf="standard">naq</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">自己</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">self</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">在.處焦</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">be.at.LF</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_245_W1M0">
                 <FORM kindOf="original">naq</FORM>
                 <PHON kindOf="original">naq</PHON>
                 <FORM kindOf="standard">naq</FORM>
                 <PHON kindOf="standard">naq</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">自己</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">self</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">seld</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_245_W2">
@@ -18595,8 +18379,8 @@
             <PHON kindOf="original">seediq</PHON>
             <FORM kindOf="standard">seediq</FORM>
             <PHON kindOf="standard">seediq</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">人</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">people</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">自己</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">self</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_245_W2M0">
                 <FORM kindOf="original">seediq</FORM>
                 <PHON kindOf="original">seediq</PHON>
@@ -18611,15 +18395,15 @@
             <PHON kindOf="original">a</PHON>
             <FORM kindOf="standard">a</FORM>
             <PHON kindOf="standard">a</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">人</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">people</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_245_W3M0">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_245_W4">
@@ -18627,15 +18411,15 @@
             <PHON kindOf="original">*umbi</PHON>
             <FORM kindOf="standard">zumbi</FORM>
             <PHON kindOf="standard">*umbi</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">準備</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">prepare</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_245_W4M0">
                 <FORM kindOf="original">zumbi</FORM>
                 <PHON kindOf="original">*umbi</PHON>
                 <FORM kindOf="standard">zumbi</FORM>
                 <PHON kindOf="standard">*umbi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">準備</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">prepare</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_245_W5">
@@ -18643,15 +18427,15 @@
             <PHON kindOf="original">kii</PHON>
             <FORM kindOf="standard">kii</FORM>
             <PHON kindOf="standard">kii</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">準備</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">prepare</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_245_W5M0">
                 <FORM kindOf="original">kii</FORM>
                 <PHON kindOf="original">kii</PHON>
                 <FORM kindOf="standard">kii</FORM>
                 <PHON kindOf="standard">kii</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">這個</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">this</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_245_W6">
@@ -18659,15 +18443,15 @@
             <PHON kindOf="original">duɾi</PHON>
             <FORM kindOf="standard">duri.</FORM>
             <PHON kindOf="standard">duɾi</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">也</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">also</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_245_W6M0">
                 <FORM kindOf="original">duri.</FORM>
                 <PHON kindOf="original">duɾi</PHON>
                 <FORM kindOf="standard">duri.</FORM>
                 <PHON kindOf="standard">duɾi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">也</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">also</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
             </M>
         </W>
     </S>
@@ -20018,9 +19802,9 @@
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_261_W12">
-            <FORM kindOf="original">baga=na</FORM>
+            <FORM kindOf="original">baga-na</FORM>
             <PHON kindOf="original">bagana</PHON>
-            <FORM kindOf="standard">baga=na</FORM>
+            <FORM kindOf="standard">baga-na</FORM>
             <PHON kindOf="standard">bagana</PHON>
             <TRANSL xml:lang="zho" kindOf="original">手=3SG.屬格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">hand=3SG.GEN</TRANSL>
@@ -20033,9 +19817,9 @@
                 <TRANSL xml:lang="eng" kindOf="original">hand</TRANSL>
             </M>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_261_W12M1">
-                <FORM kindOf="original">=na</FORM>
+                <FORM kindOf="original">na</FORM>
                 <PHON kindOf="original">na</PHON>
-                <FORM kindOf="standard">=na</FORM>
+                <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">3SG.屬格</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">3SG.GEN</TRANSL>
@@ -20585,39 +20369,31 @@
             <PHON kindOf="original">posaundaħa</PHON>
             <FORM kindOf="standard">p-osa-un=daha</FORM>
             <PHON kindOf="standard">posaundaħa</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">使役-去-受焦=3PL.屬格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">CAU-go-PF=3PL.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">放-受焦=3PL.屬格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">put-PF=3PL.GEN</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_269_W1M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">使役</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">CAU</TRANSL>
             </M>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_269_W1M1">
                 <FORM kindOf="original">osa</FORM>
                 <PHON kindOf="original">osa</PHON>
                 <FORM kindOf="standard">osa</FORM>
                 <PHON kindOf="standard">osa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">去</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">go</TRANSL>
             </M>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_269_W1M2">
                 <FORM kindOf="original">un</FORM>
                 <PHON kindOf="original">un</PHON>
                 <FORM kindOf="standard">un</FORM>
                 <PHON kindOf="standard">un</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">受焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PF</TRANSL>
             </M>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_269_W1M3">
-                <FORM kindOf="original">=daha</FORM>
+                <FORM kindOf="original">daha</FORM>
                 <PHON kindOf="original">daħa</PHON>
-                <FORM kindOf="standard">=daha</FORM>
+                <FORM kindOf="standard">daha</FORM>
                 <PHON kindOf="standard">daħa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">3PL.屬格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">3PL.GEN</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_269_W2">
@@ -20664,8 +20440,8 @@
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma,</FORM>
                 <PHON kindOf="standard">ma</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_269_W5">
@@ -20680,8 +20456,8 @@
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma,</FORM>
                 <PHON kindOf="standard">ma</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
             </M>
         </W>
     </S>
@@ -20954,8 +20730,8 @@
                 <PHON kindOf="original">ini</PHON>
                 <FORM kindOf="standard">ini</FORM>
                 <PHON kindOf="standard">ini</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">否定</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">NEG</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">這裡</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">here</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_273_W1">
@@ -20963,31 +20739,30 @@
             <PHON kindOf="original">posai</PHON>
             <FORM kindOf="standard">p-osa-i</FORM>
             <PHON kindOf="standard">posai</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">使役-去-受焦.非實現</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">CAU-go-PF.IRR</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">放-受焦-非實現</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">put-PF.IRR</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_273_W1M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">使役</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">CAU</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">讓</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">allow</TRANSL>
             </M>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_273_W1M1">
                 <FORM kindOf="original">osa</FORM>
                 <PHON kindOf="original">osa</PHON>
                 <FORM kindOf="standard">osa</FORM>
                 <PHON kindOf="standard">osa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">去</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">go</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">受焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PF.IRR</TRANSL>
             </M>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_273_W1M2">
                 <FORM kindOf="original">i</FORM>
                 <PHON kindOf="original">i</PHON>
                 <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">受焦.非實現</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PF.IRR</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_273_W2">
@@ -21018,7 +20793,7 @@
                 <PHON kindOf="original">un</PHON>
                 <FORM kindOf="standard">un.</FORM>
                 <PHON kindOf="standard">un</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">是</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">對</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">yes</TRANSL>
             </M>
         </W>
@@ -21067,8 +20842,8 @@
             <PHON kindOf="original">posaun</PHON>
             <FORM kindOf="standard">p-osa-un</FORM>
             <PHON kindOf="standard">posaun</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">使役-去-受焦</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">CAU-go-PF</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">放-受焦</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">put-PF</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_273_W6M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
@@ -21147,8 +20922,8 @@
                 <PHON kindOf="original">ki</PHON>
                 <FORM kindOf="standard">ki</FORM>
                 <PHON kindOf="standard">ki</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_276_W2">
@@ -21163,8 +20938,8 @@
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_276_W3">
@@ -21179,8 +20954,8 @@
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_276_W4">
@@ -21195,8 +20970,8 @@
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_276_W5">
@@ -21204,8 +20979,6 @@
             <PHON kindOf="original">xx</PHON>
             <FORM kindOf="standard">XX</FORM>
             <PHON kindOf="standard">xx</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_276_W5M0">
                 <FORM kindOf="original">XX</FORM>
                 <PHON kindOf="original">xx</PHON>
@@ -21227,8 +21000,8 @@
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na.</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_276_W7">
@@ -21238,21 +21011,17 @@
             <PHON kindOf="standard">qbbliʦ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;木炭</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;charcoal</TRANSL>
-            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_276_W7M0_0">
+            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_276_W7M0">
                 <FORM kindOf="original">-b-</FORM>
                 <PHON kindOf="original">b</PHON>
                 <FORM kindOf="standard">-b-</FORM>
                 <PHON kindOf="standard">b</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">&lt;重疊&gt;</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;RED&gt;</TRANSL>
             </M>
-            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_276_W7M0_1">
-                <FORM kindOf="original">q-blic</FORM>
+            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_276_W7M1">
+                <FORM kindOf="original">qblic</FORM>
                 <PHON kindOf="original">qbliʦ</PHON>
-                <FORM kindOf="standard">q-blic</FORM>
+                <FORM kindOf="standard">qblic</FORM>
                 <PHON kindOf="standard">qbliʦ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">木炭</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">charcoal</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_276_W8">
@@ -21276,39 +21045,31 @@
             <PHON kindOf="original">posaunta</PHON>
             <FORM kindOf="standard">p-osa-un=ta</FORM>
             <PHON kindOf="standard">posaunta</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">使役-去-受焦=1IPL.屬格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">CAU-go-PF=1IPL.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">放-受焦=1IPL.屬格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">put-PF=1IPL.GEN</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_276_W9M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
                 <FORM kindOf="standard">p</FORM>
                 <PHON kindOf="standard">p</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">使役</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">CAU</TRANSL>
             </M>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_276_W9M1">
                 <FORM kindOf="original">osa</FORM>
                 <PHON kindOf="original">osa</PHON>
                 <FORM kindOf="standard">osa</FORM>
                 <PHON kindOf="standard">osa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">去</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">go</TRANSL>
             </M>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_276_W9M2">
                 <FORM kindOf="original">un</FORM>
                 <PHON kindOf="original">un</PHON>
                 <FORM kindOf="standard">un</FORM>
                 <PHON kindOf="standard">un</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">受焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PF</TRANSL>
             </M>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_276_W9M3">
-                <FORM kindOf="original">=ta</FORM>
+                <FORM kindOf="original">ta</FORM>
                 <PHON kindOf="original">ta</PHON>
-                <FORM kindOf="standard">=ta</FORM>
+                <FORM kindOf="standard">ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">1IPL.屬格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">1IPL.GEN</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_276_W10">
@@ -21357,8 +21118,8 @@
             <PHON kindOf="original">posaun</PHON>
             <FORM kindOf="standard">p-osa-un</FORM>
             <PHON kindOf="standard">posaun</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">使役-去-受焦</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">CAU-go-PF</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">放-受焦</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">put-PF</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_278_W0M0">
                 <FORM kindOf="original">p</FORM>
                 <PHON kindOf="original">p</PHON>
@@ -21542,8 +21303,8 @@
                 <PHON kindOf="original">wada</PHON>
                 <FORM kindOf="standard">wada</FORM>
                 <PHON kindOf="standard">wada</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">助動詞.過去</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AUX.PST</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">去.過去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">go.PST</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_280_W1">
@@ -21598,8 +21359,8 @@
                 <PHON kindOf="original">wada</PHON>
                 <FORM kindOf="standard">wada</FORM>
                 <PHON kindOf="standard">wada</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">助動詞.過去</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AUX.PST</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">去.過去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">go.PST</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_280_W4">
@@ -21609,21 +21370,17 @@
             <PHON kindOf="standard">smdeħu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;埋</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;bury</TRANSL>
-            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_280_W4M0_0">
+            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_280_W4M0">
                 <FORM kindOf="original">-m-</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
             </M>
-            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_280_W4M0_1">
-                <FORM kindOf="original">s-dehu</FORM>
+            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_280_W4M1">
+                <FORM kindOf="original">sdehu</FORM>
                 <PHON kindOf="original">sdeħu</PHON>
-                <FORM kindOf="standard">s-dehu</FORM>
+                <FORM kindOf="standard">sdehu</FORM>
                 <PHON kindOf="standard">sdeħu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">埋</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">bury</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_280_W5">
@@ -21638,8 +21395,8 @@
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na.</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_280_W6">
@@ -21654,8 +21411,8 @@
                 <PHON kindOf="original">un</PHON>
                 <FORM kindOf="standard">un.</FORM>
                 <PHON kindOf="standard">un</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">對</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">yes</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_280_W7">
@@ -21670,8 +21427,8 @@
                 <PHON kindOf="original">ma</PHON>
                 <FORM kindOf="standard">ma</FORM>
                 <PHON kindOf="standard">ma</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_280_W8">
@@ -21679,8 +21436,8 @@
             <PHON kindOf="original">mħiti</PHON>
             <FORM kindOf="standard">m-hiti</FORM>
             <PHON kindOf="standard">mħiti</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主焦-在後面</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">AF-back</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;在後面</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;back</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_280_W8M0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
@@ -21758,8 +21515,8 @@
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">KA</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">KA</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_280_W13">
@@ -21767,8 +21524,6 @@
             <PHON kindOf="original">xxx</PHON>
             <FORM kindOf="standard">XXX</FORM>
             <PHON kindOf="standard">xxx</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XXX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XXX</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_280_W13M0">
                 <FORM kindOf="original">XXX</FORM>
                 <PHON kindOf="original">xxx</PHON>
@@ -21807,8 +21562,6 @@
             <PHON kindOf="original">xx</PHON>
             <FORM kindOf="standard">XX</FORM>
             <PHON kindOf="standard">xx</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_280_W15M0">
                 <FORM kindOf="original">XX</FORM>
                 <PHON kindOf="original">xx</PHON>
@@ -21823,23 +21576,19 @@
             <PHON kindOf="original">ɾmeħak</PHON>
             <FORM kindOf="standard">r&lt;m&gt;ehak</FORM>
             <PHON kindOf="standard">ɾmeħak</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;撒</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;scatter</TRANSL>
-            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_280_W16M0_0">
+            <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
+            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_280_W16M0">
                 <FORM kindOf="original">-m-</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
             </M>
-            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_280_W16M0_1">
-                <FORM kindOf="original">r-ehak</FORM>
+            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_280_W16M1">
+                <FORM kindOf="original">rehak</FORM>
                 <PHON kindOf="original">ɾeħak</PHON>
-                <FORM kindOf="standard">r-ehak</FORM>
+                <FORM kindOf="standard">rehak</FORM>
                 <PHON kindOf="standard">ɾeħak</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">撒</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">scatter</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_280_W17">
@@ -21849,21 +21598,17 @@
             <PHON kindOf="standard">ɾmeħak</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;撒</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;scatter</TRANSL>
-            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_280_W17M0_0">
+            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_280_W17M0">
                 <FORM kindOf="original">-m-</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
             </M>
-            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_280_W17M0_1">
-                <FORM kindOf="original">r-ehak</FORM>
+            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_280_W17M1">
+                <FORM kindOf="original">rehak</FORM>
                 <PHON kindOf="original">ɾeħak</PHON>
-                <FORM kindOf="standard">r-ehak</FORM>
+                <FORM kindOf="standard">rehak</FORM>
                 <PHON kindOf="standard">ɾeħak</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">撒</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">scatter</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_280_W18">
@@ -21871,8 +21616,8 @@
             <PHON kindOf="original">um</PHON>
             <FORM kindOf="standard">um.</FORM>
             <PHON kindOf="standard">um</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;撒</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;scatter</TRANSL>
             <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_280_W18M0">
                 <FORM kindOf="original">um.</FORM>
                 <PHON kindOf="original">um</PHON>
@@ -21910,8 +21655,8 @@
                 <PHON kindOf="original">wada</PHON>
                 <FORM kindOf="standard">wada</FORM>
                 <PHON kindOf="standard">wada</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">助動詞.過去</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AUX.PST</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">去.過去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">go.PST</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_280_W21">
@@ -21950,8 +21695,8 @@
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">KA</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">KA</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_280_W23">
@@ -22088,16 +21833,6 @@
             <PHON kindOf="original">xxx</PHON>
             <FORM kindOf="standard">XXX</FORM>
             <PHON kindOf="standard">xxx</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XXX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XXX</TRANSL>
-            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_287_W4M0">
-                <FORM kindOf="original">XXX</FORM>
-                <PHON kindOf="original">xxx</PHON>
-                <FORM kindOf="standard">XXX</FORM>
-                <PHON kindOf="standard">xxx</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">XXX</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">XXX</TRANSL>
-            </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_287_W5">
             <FORM kindOf="original">um.</FORM>
@@ -22896,16 +22631,6 @@
             <PHON kindOf="original">xxx</PHON>
             <FORM kindOf="standard">XXX</FORM>
             <PHON kindOf="standard">xxx</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XXX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XXXX</TRANSL>
-            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_303_W3M0">
-                <FORM kindOf="original">XXX</FORM>
-                <PHON kindOf="original">xxx</PHON>
-                <FORM kindOf="standard">XXX</FORM>
-                <PHON kindOf="standard">xxx</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">XXX</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">XXXX</TRANSL>
-            </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_303_W4">
             <FORM kindOf="original">ita</FORM>
@@ -23894,16 +23619,6 @@
             <PHON kindOf="original">xxx</PHON>
             <FORM kindOf="standard">XXX</FORM>
             <PHON kindOf="standard">xxx</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XXX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XXX</TRANSL>
-            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_316_W14M0">
-                <FORM kindOf="original">XXX</FORM>
-                <PHON kindOf="original">xxx</PHON>
-                <FORM kindOf="standard">XXX</FORM>
-                <PHON kindOf="standard">xxx</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">XXX</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">XXX</TRANSL>
-            </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_316_W15">
             <FORM kindOf="original">m-angan</FORM>
@@ -24899,16 +24614,6 @@
             <PHON kindOf="original">xxx</PHON>
             <FORM kindOf="standard">XXX</FORM>
             <PHON kindOf="standard">xxx</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XXX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XXX</TRANSL>
-            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_327_W7M0">
-                <FORM kindOf="original">XXX</FORM>
-                <PHON kindOf="original">xxx</PHON>
-                <FORM kindOf="standard">XXX</FORM>
-                <PHON kindOf="standard">xxx</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">XXX</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">XXX</TRANSL>
-            </M>
         </W>
         <W id="sdqCon-dialog2_ciwas_tiwas 2021s_S_327_W8">
             <FORM kindOf="original">m-tahu=ta</FORM>
@@ -25711,16 +25416,6 @@
             <PHON kindOf="original">xxx</PHON>
             <FORM kindOf="standard">XXX</FORM>
             <PHON kindOf="standard">xxx</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XXX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XXX</TRANSL>
-            <M id="sdqCon-dialog2_ciwas_tiwas 2021s_S_339_W0M0">
-                <FORM kindOf="original">XXX</FORM>
-                <PHON kindOf="original">xxx</PHON>
-                <FORM kindOf="standard">XXX</FORM>
-                <PHON kindOf="standard">xxx</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">XXX</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">XXX</TRANSL>
-            </M>
         </W>
     </S>
 </TEXT>

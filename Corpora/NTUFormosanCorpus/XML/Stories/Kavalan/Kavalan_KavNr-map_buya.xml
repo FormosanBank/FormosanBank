@@ -1661,41 +1661,37 @@
             <PHON kindOf="original">a</PHON>
             <FORM kindOf="standard">&lt;A</FORM>
             <PHON kindOf="standard">a</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">處所-人名-處所</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">LOC-PN-LOC</TRANSL>
-            <M id="KavNr-map_buya_S_24_W2M0">
-                <FORM kindOf="original">&lt;A</FORM>
-                <PHON kindOf="original">a</PHON>
-                <FORM kindOf="standard">&lt;A</FORM>
-                <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
-            </M>
         </W>
         <W id="KavNr-map_buya_S_24_W3">
             <FORM kindOf="original">ta-utay-an</FORM>
             <PHON kindOf="original">tautajan</PHON>
             <FORM kindOf="standard">ta-utay-an</FORM>
             <PHON kindOf="standard">tautajan</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">吃</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">eat</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">處所-人名-處所</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">LOC-PN-LOC</TRANSL>
             <M id="KavNr-map_buya_S_24_W3M0">
                 <FORM kindOf="original">ta</FORM>
                 <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             </M>
             <M id="KavNr-map_buya_S_24_W3M1">
                 <FORM kindOf="original">utay</FORM>
                 <PHON kindOf="original">utaj</PHON>
                 <FORM kindOf="standard">utay</FORM>
                 <PHON kindOf="standard">utaj</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">人名</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PN</TRANSL>
             </M>
             <M id="KavNr-map_buya_S_24_W3M2">
                 <FORM kindOf="original">an</FORM>
                 <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">處所</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             </M>
         </W>
         <W id="KavNr-map_buya_S_24_W4">
@@ -1703,8 +1699,8 @@
             <PHON kindOf="original">man</PHON>
             <FORM kindOf="standard">man</FORM>
             <PHON kindOf="standard">man</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">ZA</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">ZA</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">吃</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">eat</TRANSL>
             <M id="KavNr-map_buya_S_24_W4M0">
                 <FORM kindOf="original">man</FORM>
                 <PHON kindOf="original">man</PHON>
@@ -1719,15 +1715,15 @@
             <PHON kindOf="original">za</PHON>
             <FORM kindOf="standard">za</FORM>
             <PHON kindOf="standard">[z|r]a</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">那</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">ZA</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">ZA</TRANSL>
             <M id="KavNr-map_buya_S_24_W5M0">
                 <FORM kindOf="original">za</FORM>
                 <PHON kindOf="original">za</PHON>
                 <FORM kindOf="standard">za</FORM>
                 <PHON kindOf="standard">[z|r]a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">那</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">ZA</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">ZA</TRANSL>
             </M>
         </W>
         <W id="KavNr-map_buya_S_24_W6">
@@ -1735,6 +1731,16 @@
             <PHON kindOf="original">ʔnaja</PHON>
             <FORM kindOf="standard">'nayA&gt;,</FORM>
             <PHON kindOf="standard">ʔnaja</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">那</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
+            <M id="KavNr-map_buya_S_24_W6M0">
+                <FORM kindOf="original">'nayA&gt;,</FORM>
+                <PHON kindOf="original">ʔnaja</PHON>
+                <FORM kindOf="standard">'nayA&gt;,</FORM>
+                <PHON kindOf="standard">ʔnaja</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">那</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
+            </M>
         </W>
     </S>
     <S id="KavNr-map_buya_S_26">
@@ -2012,24 +2018,14 @@
             <PHON kindOf="original">a</PHON>
             <FORM kindOf="standard">&lt;A</FORM>
             <PHON kindOf="standard">a</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">看-處焦-3SG.屬格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">see-LF-3SG.GEN</TRANSL>
-            <M id="KavNr-map_buya_S_30_W3M0">
-                <FORM kindOf="original">&lt;A</FORM>
-                <PHON kindOf="original">a</PHON>
-                <FORM kindOf="standard">&lt;A</FORM>
-                <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
-            </M>
         </W>
         <W id="KavNr-map_buya_S_30_W4">
             <FORM kindOf="original">tita-an-na</FORM>
             <PHON kindOf="original">titaanna</PHON>
             <FORM kindOf="standard">tita-an-na</FORM>
             <PHON kindOf="standard">titaanna</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">往</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">toward</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">看-處焦-3SG.屬格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">see-LF-3SG.GEN</TRANSL>
             <M id="KavNr-map_buya_S_30_W4M0">
                 <FORM kindOf="original">tita</FORM>
                 <PHON kindOf="original">tita</PHON>
@@ -2060,8 +2056,8 @@
             <PHON kindOf="original">pasa</PHON>
             <FORM kindOf="standard">pasa</FORM>
             <PHON kindOf="standard">pasa</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">右-處所</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">right-LOC</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">往</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">toward</TRANSL>
             <M id="KavNr-map_buya_S_30_W5M0">
                 <FORM kindOf="original">pasa</FORM>
                 <PHON kindOf="original">pasa</PHON>
@@ -2076,8 +2072,8 @@
             <PHON kindOf="original">kawanan</PHON>
             <FORM kindOf="standard">kawan-an</FORM>
             <PHON kindOf="standard">kawanan</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">存在</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">EXIST</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">右-處所</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">right-LOC</TRANSL>
             <M id="KavNr-map_buya_S_30_W6M0">
                 <FORM kindOf="original">kawan</FORM>
                 <PHON kindOf="original">kawan</PHON>
@@ -2100,8 +2096,8 @@
             <PHON kindOf="original">jau</PHON>
             <FORM kindOf="standard">yau</FORM>
             <PHON kindOf="standard">jau</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">一</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">one</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">存在</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">EXIST</TRANSL>
             <M id="KavNr-map_buya_S_30_W7M0">
                 <FORM kindOf="original">yau</FORM>
                 <PHON kindOf="original">jau</PHON>
@@ -2116,8 +2112,8 @@
             <PHON kindOf="original">usiq</PHON>
             <FORM kindOf="standard">usiq</FORM>
             <PHON kindOf="standard">usiq</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">小</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">small</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">一</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">one</TRANSL>
             <M id="KavNr-map_buya_S_30_W8M0">
                 <FORM kindOf="original">usiq</FORM>
                 <PHON kindOf="original">usiq</PHON>
@@ -2132,15 +2128,15 @@
             <PHON kindOf="original">kitut</PHON>
             <FORM kindOf="standard">kitut</FORM>
             <PHON kindOf="standard">kitut</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">關係詞</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">REL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">小</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">small</TRANSL>
             <M id="KavNr-map_buya_S_30_W9M0">
                 <FORM kindOf="original">kitut</FORM>
                 <PHON kindOf="original">kitut</PHON>
                 <FORM kindOf="standard">kitut</FORM>
                 <PHON kindOf="standard">kitut</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">關係詞</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">REL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">小</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">small</TRANSL>
             </M>
         </W>
         <W id="KavNr-map_buya_S_30_W10">
@@ -2148,8 +2144,8 @@
             <PHON kindOf="original">aj</PHON>
             <FORM kindOf="standard">ay</FORM>
             <PHON kindOf="standard">aj</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">路</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">road</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">關係詞</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">REL</TRANSL>
             <M id="KavNr-map_buya_S_30_W10M0">
                 <FORM kindOf="original">ay</FORM>
                 <PHON kindOf="original">aj</PHON>
@@ -2164,6 +2160,8 @@
             <PHON kindOf="original">razan</PHON>
             <FORM kindOf="standard">lazan</FORM>
             <PHON kindOf="standard">ra[z|r]an</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">路</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">road</TRANSL>
             <M id="KavNr-map_buya_S_30_W11M0">
                 <FORM kindOf="original">lazan</FORM>
                 <PHON kindOf="original">razan</PHON>
@@ -2193,24 +2191,14 @@
             <PHON kindOf="original">a</PHON>
             <FORM kindOf="standard">&lt;A</FORM>
             <PHON kindOf="standard">a</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
-            <M id="KavNr-map_buya_S_32_W0M0">
-                <FORM kindOf="original">&lt;A</FORM>
-                <PHON kindOf="original">a</PHON>
-                <FORM kindOf="standard">&lt;A</FORM>
-                <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
-            </M>
         </W>
         <W id="KavNr-map_buya_S_32_W1">
             <FORM kindOf="original">nani</FORM>
             <PHON kindOf="original">nani</PHON>
             <FORM kindOf="standard">nani</FORM>
             <PHON kindOf="standard">nani</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">過去=完成</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">toward.there=PFV</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
             <M id="KavNr-map_buya_S_32_W1M0">
                 <FORM kindOf="original">nani</FORM>
                 <PHON kindOf="original">nani</PHON>
@@ -2225,19 +2213,23 @@
             <PHON kindOf="original">pasazuiti</PHON>
             <FORM kindOf="standard">pasazui=ti</FORM>
             <PHON kindOf="standard">pasa[z|r]uiti</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">&lt;EN&gt;走</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">&lt;EN&gt;walk</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">過去=完成</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">toward.there=PFV</TRANSL>
             <M id="KavNr-map_buya_S_32_W2M0">
                 <FORM kindOf="original">pasazui</FORM>
                 <PHON kindOf="original">pasazui</PHON>
                 <FORM kindOf="standard">pasazui</FORM>
                 <PHON kindOf="standard">pasa[z|r]ui</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">toward.there</TRANSL>
             </M>
             <M id="KavNr-map_buya_S_32_W2M1">
-                <FORM kindOf="original">ti</FORM>
+                <FORM kindOf="original">=ti</FORM>
                 <PHON kindOf="original">ti</PHON>
-                <FORM kindOf="standard">ti</FORM>
+                <FORM kindOf="standard">=ti</FORM>
                 <PHON kindOf="standard">ti</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">完成</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
             </M>
         </W>
         <W id="KavNr-map_buya_S_32_W3">
@@ -2245,8 +2237,8 @@
             <PHON kindOf="original">sənaqaj</PHON>
             <FORM kindOf="standard">s&lt;en&gt;aqay</FORM>
             <PHON kindOf="standard">sənaqaj</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">NI-走-AN-3SG.屬格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">NI-walk-AN-3SG.GEN</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">&lt;EN&gt;走</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">&lt;EN&gt;walk</TRANSL>
             <M id="KavNr-map_buya_S_32_W3M0">
                 <FORM kindOf="original">-en-</FORM>
                 <PHON kindOf="original">ən</PHON>
@@ -2265,29 +2257,39 @@
             <PHON kindOf="original">nisaqajanna</PHON>
             <FORM kindOf="standard">ni-saqay-an-na,</FORM>
             <PHON kindOf="standard">nisaqajanna</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">NI-走-AN-3SG.屬格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">NI-walk-AN-3SG.GEN</TRANSL>
             <M id="KavNr-map_buya_S_32_W4M0">
                 <FORM kindOf="original">ni</FORM>
                 <PHON kindOf="original">ni</PHON>
                 <FORM kindOf="standard">ni</FORM>
                 <PHON kindOf="standard">ni</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">NI</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NI</TRANSL>
             </M>
             <M id="KavNr-map_buya_S_32_W4M1">
                 <FORM kindOf="original">saqay</FORM>
                 <PHON kindOf="original">saqaj</PHON>
                 <FORM kindOf="standard">saqay</FORM>
                 <PHON kindOf="standard">saqaj</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">走</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">walk</TRANSL>
             </M>
             <M id="KavNr-map_buya_S_32_W4M2">
                 <FORM kindOf="original">an</FORM>
                 <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">AN</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AN</TRANSL>
             </M>
             <M id="KavNr-map_buya_S_32_W4M3">
                 <FORM kindOf="original">na,</FORM>
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na,</FORM>
                 <PHON kindOf="standard">na</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">3SG.屬格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">3SG.GEN</TRANSL>
             </M>
         </W>
     </S>

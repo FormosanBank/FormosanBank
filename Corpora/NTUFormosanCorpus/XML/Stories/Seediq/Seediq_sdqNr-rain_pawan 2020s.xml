@@ -532,27 +532,34 @@
             </M>
         </W>
         <W id="sdqNr-rain_pawan 2020s_S_9_W1">
-            <FORM kindOf="original">mhemuc-i</FORM>
+            <FORM kindOf="original">m-hemuc-i</FORM>
             <PHON kindOf="original">mħemuʦi</PHON>
-            <FORM kindOf="standard">mhemuc-i</FORM>
+            <FORM kindOf="standard">m-hemuc-i</FORM>
             <PHON kindOf="standard">mħemuʦi</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">隨便-受焦.非實現</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">隨便-受焦-非實現</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">improperly-PF.IRR</TRANSL>
             <M id="sdqNr-rain_pawan 2020s_S_9_W1M0">
-                <FORM kindOf="original">mhemuc</FORM>
-                <PHON kindOf="original">mħemuʦ</PHON>
-                <FORM kindOf="standard">mhemuc</FORM>
-                <PHON kindOf="standard">mħemuʦ</PHON>
+                <FORM kindOf="original">m</FORM>
+                <PHON kindOf="original">m</PHON>
+                <FORM kindOf="standard">m</FORM>
+                <PHON kindOf="standard">m</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">隨便</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">improperly</TRANSL>
             </M>
             <M id="sdqNr-rain_pawan 2020s_S_9_W1M1">
+                <FORM kindOf="original">hemuc</FORM>
+                <PHON kindOf="original">ħemuʦ</PHON>
+                <FORM kindOf="standard">hemuc</FORM>
+                <PHON kindOf="standard">ħemuʦ</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">受焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PF.IRR</TRANSL>
+            </M>
+            <M id="sdqNr-rain_pawan 2020s_S_9_W1M2">
                 <FORM kindOf="original">i</FORM>
                 <PHON kindOf="original">i</PHON>
                 <FORM kindOf="standard">i</FORM>
                 <PHON kindOf="standard">i</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">受焦.非實現</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PF.IRR</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">非實現</TRANSL>
             </M>
         </W>
         <W id="sdqNr-rain_pawan 2020s_S_9_W2">
@@ -746,7 +753,7 @@
             <PHON kindOf="original">naɾaħta</PHON>
             <FORM kindOf="standard">narah=ta</FORM>
             <PHON kindOf="standard">naɾaħta</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主焦.猶如=1IPL.主格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">主焦.猶如-1IPL.主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF.seem=1IPL.NOM</TRANSL>
             <M id="sdqNr-rain_pawan 2020s_S_11_W1M0">
                 <FORM kindOf="original">narah</FORM>
@@ -2484,40 +2491,28 @@
                 <PHON kindOf="original">um</PHON>
                 <FORM kindOf="standard">um</FORM>
                 <PHON kindOf="standard">um</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
             </M>
         </W>
         <W id="sdqNr-rain_pawan 2020s_S_30_W3">
-            <FORM kindOf="original">m-&lt;n&gt;osa</FORM>
+            <FORM kindOf="original">m&lt;n&gt;osa</FORM>
             <PHON kindOf="original">mnosa</PHON>
-            <FORM kindOf="standard">m-&lt;n&gt;osa</FORM>
+            <FORM kindOf="standard">m&lt;n&gt;osa</FORM>
             <PHON kindOf="standard">mnosa</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主焦-&lt;完成&gt;去</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">AF-&lt;PFV&gt;go</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">&lt;完成&gt;主焦-去</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">&lt;PFV&gt;AF-go</TRANSL>
             <M id="sdqNr-rain_pawan 2020s_S_30_W3M0">
-                <FORM kindOf="original">m</FORM>
-                <PHON kindOf="original">m</PHON>
-                <FORM kindOf="standard">m</FORM>
-                <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
-            </M>
-            <M id="sdqNr-rain_pawan 2020s_S_30_W3M1_0">
                 <FORM kindOf="original">-n-</FORM>
                 <PHON kindOf="original">n</PHON>
                 <FORM kindOf="standard">-n-</FORM>
                 <PHON kindOf="standard">n</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">&lt;完成&gt;</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;PFV&gt;</TRANSL>
             </M>
-            <M id="sdqNr-rain_pawan 2020s_S_30_W3M1_1">
-                <FORM kindOf="original">osa</FORM>
-                <PHON kindOf="original">osa</PHON>
-                <FORM kindOf="standard">osa</FORM>
-                <PHON kindOf="standard">osa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">去</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">go</TRANSL>
+            <M id="sdqNr-rain_pawan 2020s_S_30_W3M1">
+                <FORM kindOf="original">mosa</FORM>
+                <PHON kindOf="original">mosa</PHON>
+                <FORM kindOf="standard">mosa</FORM>
+                <PHON kindOf="standard">mosa</PHON>
             </M>
         </W>
         <W id="sdqNr-rain_pawan 2020s_S_30_W4">
@@ -2532,8 +2527,8 @@
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a.</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
         <W id="sdqNr-rain_pawan 2020s_S_30_W5">
@@ -2564,8 +2559,8 @@
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">FIL</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">FIL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
         <W id="sdqNr-rain_pawan 2020s_S_30_W7">
@@ -2575,21 +2570,17 @@
             <PHON kindOf="standard">smkagun</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;派遣</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;dispatch</TRANSL>
-            <M id="sdqNr-rain_pawan 2020s_S_30_W7M0_0">
+            <M id="sdqNr-rain_pawan 2020s_S_30_W7M0">
                 <FORM kindOf="original">-m-</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
             </M>
-            <M id="sdqNr-rain_pawan 2020s_S_30_W7M0_1">
-                <FORM kindOf="original">s-kagun.</FORM>
+            <M id="sdqNr-rain_pawan 2020s_S_30_W7M1">
+                <FORM kindOf="original">skagun.</FORM>
                 <PHON kindOf="original">skagun</PHON>
-                <FORM kindOf="standard">s-kagun.</FORM>
+                <FORM kindOf="standard">skagun.</FORM>
                 <PHON kindOf="standard">skagun</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">派遣</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">dispatch</TRANSL>
             </M>
         </W>
     </S>

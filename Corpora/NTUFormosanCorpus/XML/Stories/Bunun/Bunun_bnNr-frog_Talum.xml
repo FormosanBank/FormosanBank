@@ -111,8 +111,8 @@
             <FORM kindOf="standard">m-usku=s</FORM>
             <PHON kindOf="standard">muskus</PHON>
             <FORM kindOf="alternate">m-uskun=mas</FORM>
-            <TRANSL xml:lang="zho" kindOf="original">主焦-一起=連接詞</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">AF-together=CONJ</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">主焦-一起-連接詞</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">AF-together-CONJ</TRANSL>
             <M id="bnNr-frog_Talum_S_1_W5M0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
@@ -3653,7 +3653,7 @@
             <PHON kindOf="original">uŋtu</PHON>
             <FORM kindOf="standard">ung=tu,</FORM>
             <PHON kindOf="standard">uŋtu</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">是=補語詞</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">是-補語詞</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">yes=COMP</TRANSL>
             <M id="bnNr-frog_Talum_S_36_W6M0">
                 <FORM kindOf="original">ung</FORM>
@@ -4552,8 +4552,8 @@
             <PHON kindOf="original">matus[x|χ]uŋ</PHON>
             <FORM kindOf="standard">ma-tushung.</FORM>
             <PHON kindOf="standard">matus[x|χ]uŋ</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主焦-頑皮</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">AF-naughty</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">主焦=頑皮</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">AF=naughty</TRANSL>
             <M id="bnNr-frog_Talum_S_45_W9M0">
                 <FORM kindOf="original">ma</FORM>
                 <PHON kindOf="original">ma</PHON>
@@ -4907,14 +4907,14 @@
             <PHON kindOf="original">uŋat</PHON>
             <FORM kindOf="standard">ung=at</FORM>
             <PHON kindOf="standard">uŋat</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">是=然後</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">是然後</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">yes=then</TRANSL>
             <M id="bnNr-frog_Talum_S_54_W0M0">
                 <FORM kindOf="original">ung</FORM>
                 <PHON kindOf="original">uŋ</PHON>
                 <FORM kindOf="standard">ung</FORM>
                 <PHON kindOf="standard">uŋ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">是</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">是然後</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">yes</TRANSL>
             </M>
             <M id="bnNr-frog_Talum_S_54_W0M1">
@@ -4922,7 +4922,6 @@
                 <PHON kindOf="original">at</PHON>
                 <FORM kindOf="standard">=at</FORM>
                 <PHON kindOf="standard">at</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
             </M>
         </W>
@@ -5162,7 +5161,7 @@
             <PHON kindOf="original">isainʨia</PHON>
             <FORM kindOf="standard">i-sain=cia</FORM>
             <PHON kindOf="standard">isainʨia</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">在-處格.近距=遠距.斜格</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">在-處格-近距遠距斜格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">be.at-LOC.PROX=DIST.OBL</TRANSL>
             <M id="bnNr-frog_Talum_S_56_W1M0">
                 <FORM kindOf="original">i</FORM>
@@ -5177,7 +5176,7 @@
                 <PHON kindOf="original">sain</PHON>
                 <FORM kindOf="standard">sain</FORM>
                 <PHON kindOf="standard">sain</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處格.近距</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">處格.新距</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">LOC.PROX</TRANSL>
             </M>
             <M id="bnNr-frog_Talum_S_56_W1M2">
@@ -5190,35 +5189,23 @@
             </M>
         </W>
         <W id="bnNr-frog_Talum_S_56_W2">
-            <FORM kindOf="original">mapa-ha-hainan</FORM>
+            <FORM kindOf="original">mapa&lt;ha&gt;hainan</FORM>
             <PHON kindOf="original">mapa[x|χ]a[x|χ]ainan</PHON>
-            <FORM kindOf="standard">mapa-ha-hainan</FORM>
+            <FORM kindOf="standard">mapa&lt;ha&gt;hainan</FORM>
             <PHON kindOf="standard">mapa[x|χ]a[x|χ]ainan</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">交互-重疊-笑</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">REC-RED-laugh</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">交互重疊-笑</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">REC&lt;RED&gt;laugh</TRANSL>
             <M id="bnNr-frog_Talum_S_56_W2M0">
-                <FORM kindOf="original">mapa</FORM>
-                <PHON kindOf="original">mapa</PHON>
-                <FORM kindOf="standard">mapa</FORM>
-                <PHON kindOf="standard">mapa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">交互</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">REC</TRANSL>
+                <FORM kindOf="original">-ha-</FORM>
+                <PHON kindOf="original">[x|χ]a</PHON>
+                <FORM kindOf="standard">-ha-</FORM>
+                <PHON kindOf="standard">[x|χ]a</PHON>
             </M>
             <M id="bnNr-frog_Talum_S_56_W2M1">
-                <FORM kindOf="original">ha</FORM>
-                <PHON kindOf="original">[x|χ]a</PHON>
-                <FORM kindOf="standard">ha</FORM>
-                <PHON kindOf="standard">[x|χ]a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">重疊</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
-            </M>
-            <M id="bnNr-frog_Talum_S_56_W2M2">
-                <FORM kindOf="original">hainan</FORM>
-                <PHON kindOf="original">[x|χ]ainan</PHON>
-                <FORM kindOf="standard">hainan</FORM>
-                <PHON kindOf="standard">[x|χ]ainan</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">笑</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">laugh</TRANSL>
+                <FORM kindOf="original">mapahainan</FORM>
+                <PHON kindOf="original">mapa[x|χ]ainan</PHON>
+                <FORM kindOf="standard">mapahainan</FORM>
+                <PHON kindOf="standard">mapa[x|χ]ainan</PHON>
             </M>
         </W>
         <W id="bnNr-frog_Talum_S_56_W3">
@@ -5233,8 +5220,8 @@
                 <PHON kindOf="original">[x|χ]ai</PHON>
                 <FORM kindOf="standard">hai,</FORM>
                 <PHON kindOf="standard">[x|χ]ai</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
             </M>
         </W>
     </S>
@@ -5857,14 +5844,14 @@
             <PHON kindOf="original">uŋat</PHON>
             <FORM kindOf="standard">ung=at</FORM>
             <PHON kindOf="standard">uŋat</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">是=然後</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">是然後</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">yes=then</TRANSL>
             <M id="bnNr-frog_Talum_S_65_W0M0">
                 <FORM kindOf="original">ung</FORM>
                 <PHON kindOf="original">uŋ</PHON>
                 <FORM kindOf="standard">ung</FORM>
                 <PHON kindOf="standard">uŋ</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">是</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">是然後</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">yes</TRANSL>
             </M>
             <M id="bnNr-frog_Talum_S_65_W0M1">
@@ -5872,7 +5859,6 @@
                 <PHON kindOf="original">at</PHON>
                 <FORM kindOf="standard">=at</FORM>
                 <PHON kindOf="standard">at</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
             </M>
         </W>
@@ -8749,8 +8735,8 @@
             <PHON kindOf="original">minnasia</PHON>
             <FORM kindOf="standard">min-na-sia</FORM>
             <PHON kindOf="standard">minnaɕia</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">變成-到-處格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">become-to-LOC</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">變成-到=處格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">become-to=LOC</TRANSL>
             <M id="bnNr-frog_Talum_S_93_W2M0">
                 <FORM kindOf="original">min</FORM>
                 <PHON kindOf="original">min</PHON>
@@ -9416,8 +9402,8 @@
             <PHON kindOf="original">isainʨia</PHON>
             <FORM kindOf="standard">i-sain=cia</FORM>
             <PHON kindOf="standard">isainʨia</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">在-處格.中距=遠距.斜格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">be.at-LOC.MED=DIST.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">在-處格-中距</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">be.at-LOC-MED</TRANSL>
             <M id="bnNr-frog_Talum_S_101_W0M0">
                 <FORM kindOf="original">i</FORM>
                 <PHON kindOf="original">i</PHON>
@@ -9431,16 +9417,16 @@
                 <PHON kindOf="original">sain</PHON>
                 <FORM kindOf="standard">sain</FORM>
                 <PHON kindOf="standard">sain</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">處格.中距</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">LOC.MED</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             </M>
             <M id="bnNr-frog_Talum_S_101_W0M2">
                 <FORM kindOf="original">=cia</FORM>
                 <PHON kindOf="original">ʨia</PHON>
                 <FORM kindOf="standard">=cia</FORM>
                 <PHON kindOf="standard">ʨia</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">遠距.斜格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">DIST.OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">中距</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">MED</TRANSL>
             </M>
         </W>
         <W id="bnNr-frog_Talum_S_101_W1">

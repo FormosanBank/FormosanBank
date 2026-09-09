@@ -29,7 +29,7 @@
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">實現</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">REAL</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">RLS</TRANSL>
             </M>
             <M id="RukaiNr-pear_ba ching-i_S_1_W0M2">
                 <FORM kindOf="original">kay</FORM>
@@ -57,9 +57,9 @@
             </M>
         </W>
         <W id="RukaiNr-pear_ba ching-i_S_1_W2">
-            <FORM kindOf="original">ta-t-ama</FORM>
+            <FORM kindOf="original">ta-tama</FORM>
             <PHON kindOf="original">tatama</PHON>
-            <FORM kindOf="standard">ta-t-ama</FORM>
+            <FORM kindOf="standard">ta-tama</FORM>
             <PHON kindOf="standard">tatama</PHON>
             <TRANSL xml:lang="zho" kindOf="original">重疊-T-爸爸</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">RED-T-father</TRANSL>
@@ -68,24 +68,12 @@
                 <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">重疊</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
             </M>
             <M id="RukaiNr-pear_ba ching-i_S_1_W2M1">
-                <FORM kindOf="original">t</FORM>
-                <PHON kindOf="original">t</PHON>
-                <FORM kindOf="standard">t</FORM>
-                <PHON kindOf="standard">t</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">T</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">T</TRANSL>
-            </M>
-            <M id="RukaiNr-pear_ba ching-i_S_1_W2M2">
-                <FORM kindOf="original">ama</FORM>
-                <PHON kindOf="original">ama</PHON>
-                <FORM kindOf="standard">ama</FORM>
-                <PHON kindOf="standard">ama</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">爸爸</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">father</TRANSL>
+                <FORM kindOf="original">tama</FORM>
+                <PHON kindOf="original">tama</PHON>
+                <FORM kindOf="standard">tama</FORM>
+                <PHON kindOf="standard">tama</PHON>
             </M>
         </W>
         <W id="RukaiNr-pear_ba ching-i_S_1_W3">
@@ -100,8 +88,8 @@
                 <PHON kindOf="original">si</PHON>
                 <FORM kindOf="standard">si.</FORM>
                 <PHON kindOf="standard">si</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">和</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">and</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">條件詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">COND</TRANSL>
             </M>
         </W>
     </S>
@@ -1161,35 +1149,23 @@
             </M>
         </W>
         <W id="RukaiNr-pear_ba ching-i_S_14_W1">
-            <FORM kindOf="original">mane-mane=li</FORM>
+            <FORM kindOf="original">manemane=li</FORM>
             <PHON kindOf="original">manəmanəli</PHON>
-            <FORM kindOf="standard">mane-mane=li</FORM>
+            <FORM kindOf="standard">manemane=li</FORM>
             <PHON kindOf="standard">manəmanəli</PHON>
             <TRANSL xml:lang="zho" kindOf="original">重疊-甚麼=第一人稱單數.附著屬格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">RED-what=1S.BG</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">what=1S.BG</TRANSL>
             <M id="RukaiNr-pear_ba ching-i_S_14_W1M0">
-                <FORM kindOf="original">mane</FORM>
-                <PHON kindOf="original">manə</PHON>
-                <FORM kindOf="standard">mane</FORM>
-                <PHON kindOf="standard">manə</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">重疊</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
+                <FORM kindOf="original">manemane</FORM>
+                <PHON kindOf="original">manəmanə</PHON>
+                <FORM kindOf="standard">manemane</FORM>
+                <PHON kindOf="standard">manəmanə</PHON>
             </M>
             <M id="RukaiNr-pear_ba ching-i_S_14_W1M1">
-                <FORM kindOf="original">mane</FORM>
-                <PHON kindOf="original">manə</PHON>
-                <FORM kindOf="standard">mane</FORM>
-                <PHON kindOf="standard">manə</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">甚麼</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">what</TRANSL>
-            </M>
-            <M id="RukaiNr-pear_ba ching-i_S_14_W1M2">
-                <FORM kindOf="original">=li</FORM>
+                <FORM kindOf="original">li</FORM>
                 <PHON kindOf="original">li</PHON>
-                <FORM kindOf="standard">=li</FORM>
+                <FORM kindOf="standard">li</FORM>
                 <PHON kindOf="standard">li</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">第一人稱單數.附著屬格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">1S.BG</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-pear_ba ching-i_S_14_W2">
@@ -1204,8 +1180,8 @@
                 <PHON kindOf="original">la</PHON>
                 <FORM kindOf="standard">la</FORM>
                 <PHON kindOf="standard">la</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-pear_ba ching-i_S_14_W3">
@@ -1220,8 +1196,8 @@
                 <PHON kindOf="original">ija</PHON>
                 <FORM kindOf="standard">iya</FORM>
                 <PHON kindOf="standard">ija</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">說</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">say</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-pear_ba ching-i_S_14_W4">
@@ -1236,8 +1212,8 @@
                 <PHON kindOf="original">si</PHON>
                 <FORM kindOf="standard">si.</FORM>
                 <PHON kindOf="standard">si</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">和</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">and</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">條件詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">COND</TRANSL>
             </M>
         </W>
     </S>
@@ -2322,8 +2298,8 @@
                 <PHON kindOf="original">sa</PHON>
                 <FORM kindOf="standard">sa</FORM>
                 <PHON kindOf="standard">sa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">當</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">when</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">SA</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">SA</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-pear_ba ching-i_S_29_W1">
@@ -2338,8 +2314,8 @@
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">KA</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">KA</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-pear_ba ching-i_S_29_W2">
@@ -2355,7 +2331,7 @@
                 <FORM kindOf="standard">bilrilane</FORM>
                 <PHON kindOf="standard">biɭilanə</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">最後</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">final</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">finally</TRANSL>
             </M>
             <M id="RukaiNr-pear_ba ching-i_S_29_W2M1">
                 <FORM kindOf="original">=nga</FORM>
@@ -2383,35 +2359,19 @@
             </M>
         </W>
         <W id="RukaiNr-pear_ba ching-i_S_29_W4">
-            <FORM kindOf="original">ta-t-ama</FORM>
+            <FORM kindOf="original">tatama</FORM>
             <PHON kindOf="original">tatama</PHON>
-            <FORM kindOf="standard">ta-t-ama</FORM>
+            <FORM kindOf="standard">tatama</FORM>
             <PHON kindOf="standard">tatama</PHON>
             <TRANSL xml:lang="zho" kindOf="original">重疊-T-爸爸</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">RED-T-father</TRANSL>
             <M id="RukaiNr-pear_ba ching-i_S_29_W4M0">
-                <FORM kindOf="original">ta</FORM>
-                <PHON kindOf="original">ta</PHON>
-                <FORM kindOf="standard">ta</FORM>
-                <PHON kindOf="standard">ta</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">重疊</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
-            </M>
-            <M id="RukaiNr-pear_ba ching-i_S_29_W4M1">
-                <FORM kindOf="original">t</FORM>
-                <PHON kindOf="original">t</PHON>
-                <FORM kindOf="standard">t</FORM>
-                <PHON kindOf="standard">t</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">T</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">T</TRANSL>
-            </M>
-            <M id="RukaiNr-pear_ba ching-i_S_29_W4M2">
-                <FORM kindOf="original">ama</FORM>
-                <PHON kindOf="original">ama</PHON>
-                <FORM kindOf="standard">ama</FORM>
-                <PHON kindOf="standard">ama</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">爸爸</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">father</TRANSL>
+                <FORM kindOf="original">tatama</FORM>
+                <PHON kindOf="original">tatama</PHON>
+                <FORM kindOf="standard">tatama</FORM>
+                <PHON kindOf="standard">tatama</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">男性</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">male</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-pear_ba ching-i_S_29_W5">
@@ -2426,8 +2386,8 @@
                 <PHON kindOf="original">ala</PHON>
                 <FORM kindOf="standard">ala</FORM>
                 <PHON kindOf="standard">ala</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">拿</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">take</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-pear_ba ching-i_S_29_W6">
@@ -2458,8 +2418,8 @@
                 <PHON kindOf="original">si</PHON>
                 <FORM kindOf="standard">si,</FORM>
                 <PHON kindOf="standard">si</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">和</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">and</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">因此</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">therefore</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-pear_ba ching-i_S_29_W8">
@@ -2506,8 +2466,8 @@
                 <PHON kindOf="original">si</PHON>
                 <FORM kindOf="standard">si.</FORM>
                 <PHON kindOf="standard">si</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">和</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">and</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">條件詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">COND</TRANSL>
             </M>
         </W>
     </S>
@@ -2596,7 +2556,7 @@
             <PHON kindOf="original">kirimuŋa</PHON>
             <FORM kindOf="standard">kirimu=nga,</FORM>
             <PHON kindOf="standard">kirimuŋa</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">變成=完成</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">變成=-完成</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">become=PFV</TRANSL>
             <M id="RukaiNr-pear_ba ching-i_S_31_W4M0">
                 <FORM kindOf="original">kirimu</FORM>
@@ -2740,48 +2700,40 @@
                 <PHON kindOf="original">ala</PHON>
                 <FORM kindOf="standard">ala</FORM>
                 <PHON kindOf="standard">ala</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">拿</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">take</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-pear_ba ching-i_S_33_W1">
-            <FORM kindOf="original">ki-raga-ragai=nga</FORM>
+            <FORM kindOf="original">ki-raga-ragai-nga</FORM>
             <PHON kindOf="original">kiragaragaiŋa</PHON>
-            <FORM kindOf="standard">ki-raga-ragai=nga</FORM>
+            <FORM kindOf="standard">ki-raga-ragai-nga</FORM>
             <PHON kindOf="standard">kiragaragaiŋa</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">KI-重疊-快樂=完成</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">KI-RED-happy=PFV</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">KI-重疊-快樂</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">KI-RED-happy</TRANSL>
             <M id="RukaiNr-pear_ba ching-i_S_33_W1M0">
                 <FORM kindOf="original">ki</FORM>
                 <PHON kindOf="original">ki</PHON>
                 <FORM kindOf="standard">ki</FORM>
                 <PHON kindOf="standard">ki</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">KI</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">KI</TRANSL>
             </M>
             <M id="RukaiNr-pear_ba ching-i_S_33_W1M1">
                 <FORM kindOf="original">raga</FORM>
                 <PHON kindOf="original">raga</PHON>
                 <FORM kindOf="standard">raga</FORM>
                 <PHON kindOf="standard">raga</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">重疊</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">RED</TRANSL>
             </M>
             <M id="RukaiNr-pear_ba ching-i_S_33_W1M2">
                 <FORM kindOf="original">ragai</FORM>
                 <PHON kindOf="original">ragai</PHON>
                 <FORM kindOf="standard">ragai</FORM>
                 <PHON kindOf="standard">ragai</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">快樂</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">happy</TRANSL>
             </M>
             <M id="RukaiNr-pear_ba ching-i_S_33_W1M3">
-                <FORM kindOf="original">=nga</FORM>
+                <FORM kindOf="original">nga</FORM>
                 <PHON kindOf="original">ŋa</PHON>
-                <FORM kindOf="standard">=nga</FORM>
+                <FORM kindOf="standard">nga</FORM>
                 <PHON kindOf="standard">ŋa</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">完成</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-pear_ba ching-i_S_33_W2">
@@ -2796,8 +2748,8 @@
                 <PHON kindOf="original">si</PHON>
                 <FORM kindOf="standard">si,</FORM>
                 <PHON kindOf="standard">si</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">和</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">and</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">因此</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">therefore</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-pear_ba ching-i_S_33_W3">
@@ -2812,8 +2764,8 @@
                 <PHON kindOf="original">la</PHON>
                 <FORM kindOf="standard">la</FORM>
                 <PHON kindOf="standard">la</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">然後</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">then</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-pear_ba ching-i_S_33_W4">
@@ -2907,8 +2859,8 @@
                 <PHON kindOf="original">kai</PHON>
                 <FORM kindOf="standard">kai</FORM>
                 <PHON kindOf="standard">kai</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">否定</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">NEG</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">話</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">word</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-pear_ba ching-i_S_33_W8">
@@ -2923,8 +2875,8 @@
                 <PHON kindOf="original">kiɭimu</PHON>
                 <FORM kindOf="standard">kilrimu</FORM>
                 <PHON kindOf="standard">kiɭimu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">變成</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">become</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">突然</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">suddenly</TRANSL>
             </M>
         </W>
         <W id="RukaiNr-pear_ba ching-i_S_33_W9">

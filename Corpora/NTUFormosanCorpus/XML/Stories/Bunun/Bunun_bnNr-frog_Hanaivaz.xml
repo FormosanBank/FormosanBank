@@ -17860,8 +17860,8 @@
                 <PHON kindOf="original">sadu</PHON>
                 <FORM kindOf="standard">sadu</FORM>
                 <PHON kindOf="standard">sadu</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">看</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">see</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主焦.看</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AF.see</TRANSL>
             </M>
         </W>
         <W id="bnNr-frog_Hanaivaz_S_277_W2">
@@ -17892,8 +17892,8 @@
                 <PHON kindOf="original">[x|χ]ai</PHON>
                 <FORM kindOf="standard">hai,</FORM>
                 <PHON kindOf="standard">[x|χ]ai</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主題</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">TOP</TRANSL>
             </M>
         </W>
         <W id="bnNr-frog_Hanaivaz_S_277_W4">
@@ -17901,23 +17901,23 @@
             <PHON kindOf="original">avadii</PHON>
             <FORM kindOf="standard">av-a-dii</FORM>
             <PHON kindOf="standard">avadii</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">-可見.遠距-那裡</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">-可見-遠距-那裡</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">-VIS.DIST-there</TRANSL>
             <M id="bnNr-frog_Hanaivaz_S_277_W4M0">
                 <FORM kindOf="original">av</FORM>
                 <PHON kindOf="original">av</PHON>
                 <FORM kindOf="standard">av</FORM>
                 <PHON kindOf="standard">av</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">AV</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AV</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">可見</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">VIS.DIST</TRANSL>
             </M>
             <M id="bnNr-frog_Hanaivaz_S_277_W4M1">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">可見.遠距</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">VIS.DIST</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">遠距</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">there</TRANSL>
             </M>
             <M id="bnNr-frog_Hanaivaz_S_277_W4M2">
                 <FORM kindOf="original">dii</FORM>
@@ -17925,7 +17925,6 @@
                 <FORM kindOf="standard">dii</FORM>
                 <PHON kindOf="standard">dii</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">那裡</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">there</TRANSL>
             </M>
         </W>
         <W id="bnNr-frog_Hanaivaz_S_277_W5">
@@ -17940,8 +17939,8 @@
                 <PHON kindOf="original">saiʨia</PHON>
                 <FORM kindOf="standard">saicia</FORM>
                 <PHON kindOf="standard">saiʨia</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">3SG.屬格</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">3SG.GEN</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">3SG.斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">3SG.OBL</TRANSL>
             </M>
         </W>
         <W id="bnNr-frog_Hanaivaz_S_277_W6">
@@ -17975,17 +17974,21 @@
             <PHON kindOf="standard">dinamu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;完成貌&gt;抓</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;PFV&gt;catch</TRANSL>
-            <M id="bnNr-frog_Hanaivaz_S_277_W7M0">
+            <M id="bnNr-frog_Hanaivaz_S_277_W7M0_0">
                 <FORM kindOf="original">-in-</FORM>
                 <PHON kindOf="original">in</PHON>
                 <FORM kindOf="standard">-in-</FORM>
                 <PHON kindOf="standard">in</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">&lt;完成貌&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;PFV&gt;</TRANSL>
             </M>
-            <M id="bnNr-frog_Hanaivaz_S_277_W7M1">
-                <FORM kindOf="original">damu</FORM>
+            <M id="bnNr-frog_Hanaivaz_S_277_W7M0_1">
+                <FORM kindOf="original">d-amu</FORM>
                 <PHON kindOf="original">damu</PHON>
-                <FORM kindOf="standard">damu</FORM>
+                <FORM kindOf="standard">d-amu</FORM>
                 <PHON kindOf="standard">damu</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">抓</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">catch</TRANSL>
             </M>
         </W>
         <W id="bnNr-frog_Hanaivaz_S_277_W8">

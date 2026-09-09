@@ -101,16 +101,6 @@
             <PHON kindOf="original">***</PHON>
             <FORM kindOf="standard">XXX</FORM>
             <PHON kindOf="standard">***</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XXX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XXX</TRANSL>
-            <M id="KavNr-ancestor_ngengi_S_1_W4M0">
-                <FORM kindOf="original">XXX</FORM>
-                <PHON kindOf="original">***</PHON>
-                <FORM kindOf="standard">XXX</FORM>
-                <PHON kindOf="standard">***</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">XXX</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">XXX</TRANSL>
-            </M>
         </W>
         <W id="KavNr-ancestor_ngengi_S_1_W5">
             <FORM kindOf="original">aimu</FORM>
@@ -1742,16 +1732,6 @@
             <PHON kindOf="original">**</PHON>
             <FORM kindOf="standard">XX</FORM>
             <PHON kindOf="standard">**</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
-            <M id="KavNr-ancestor_ngengi_S_14_W2M0">
-                <FORM kindOf="original">XX</FORM>
-                <PHON kindOf="original">**</PHON>
-                <FORM kindOf="standard">XX</FORM>
-                <PHON kindOf="standard">**</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
-            </M>
         </W>
         <W id="KavNr-ancestor_ngengi_S_14_W3">
             <FORM kindOf="original">Ru-pun=pa=ti</FORM>
@@ -1911,16 +1891,6 @@
             <PHON kindOf="original">***</PHON>
             <FORM kindOf="standard">XXX</FORM>
             <PHON kindOf="standard">***</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XXX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XXX</TRANSL>
-            <M id="KavNr-ancestor_ngengi_S_15_W0M0">
-                <FORM kindOf="original">XXX</FORM>
-                <PHON kindOf="original">***</PHON>
-                <FORM kindOf="standard">XXX</FORM>
-                <PHON kindOf="standard">***</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">XXX</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">XXX</TRANSL>
-            </M>
         </W>
         <W id="KavNr-ancestor_ngengi_S_15_W1">
             <FORM kindOf="original">masang</FORM>
@@ -2473,7 +2443,7 @@
             <PHON kindOf="original">jauti</PHON>
             <FORM kindOf="standard">yau=ti</FORM>
             <PHON kindOf="standard">jauti</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">存在=完成</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">存在</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">EXIST=PFV</TRANSL>
             <M id="KavNr-ancestor_ngengi_S_20_W4M0">
                 <FORM kindOf="original">yau</FORM>
@@ -2488,7 +2458,6 @@
                 <PHON kindOf="original">ti</PHON>
                 <FORM kindOf="standard">=ti</FORM>
                 <PHON kindOf="standard">ti</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">完成</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
             </M>
         </W>
@@ -3604,10 +3573,10 @@
         </W>
     </S>
     <S id="KavNr-ancestor_ngengi_S_34">
-        <FORM kindOf="original">matiwti izau. sa salazinpaita zinna sazpu' matiw baqian. tu qatiwan Ribawut.</FORM>
-        <PHON kindOf="original">matiwti izau sa sarazinpaita zinna sazpuʔ matiw βaqian tu qatiwan ʁiβawut</PHON>
-        <FORM kindOf="standard">matiwti izau. sa salazinpaita zinna sazpu' matiw baqian. tu qatiwan Ribawut.</FORM>
-        <PHON kindOf="standard">matiwti i[z|r]au sa sara[z|r]inpaita [z|r]inna sa[z|r]puʔ matiw βaqian tu qatiwan ʁiβawut</PHON>
+        <FORM kindOf="original">matiwti izau. sa salazinpaita zinna sazpu'matiw baqian. tu qatiwan Ribawut.</FORM>
+        <PHON kindOf="original">matiwti izau sa sarazinpaita zinna sazpuʔmatiw βaqian tu qatiwan ʁiβawut</PHON>
+        <FORM kindOf="standard">matiwti izau. sa salazinpaita zinna sazpu'matiw baqian. tu qatiwan Ribawut.</FORM>
+        <PHON kindOf="standard">matiwti i[z|r]au sa sara[z|r]inpaita [z|r]inna sa[z|r]puʔmatiw βaqian tu qatiwan ʁiβawut</PHON>
         <TRANSL xml:lang="zho">祖先說＂我們要去海邊＂, 然後就捕魚去了。</TRANSL>
         <TRANSL xml:lang="eng">Our ancestors said 'We are going to the seashore.' And they went fishing.</TRANSL>
         <AUDIO file="KavNr-ancestor_ngengi_S34.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-ancestor_ngengi.mp3" start="139.17" end="149.96"/>
@@ -3732,69 +3701,53 @@
             </M>
         </W>
         <W id="KavNr-ancestor_ngengi_S_34_W5">
-            <FORM kindOf="original">sazpu'</FORM>
-            <PHON kindOf="original">sazpuʔ</PHON>
-            <FORM kindOf="standard">sazpu'</FORM>
-            <PHON kindOf="standard">sa[z|r]puʔ</PHON>
+            <FORM kindOf="original">sazpu'matiw</FORM>
+            <PHON kindOf="original">sazpuʔmatiw</PHON>
+            <FORM kindOf="standard">sazpu'matiw</FORM>
+            <PHON kindOf="standard">sa[z|r]puʔmatiw</PHON>
             <TRANSL xml:lang="zho" kindOf="original">??</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">??</TRANSL>
             <M id="KavNr-ancestor_ngengi_S_34_W5M0">
-                <FORM kindOf="original">sazpu'</FORM>
-                <PHON kindOf="original">sazpuʔ</PHON>
-                <FORM kindOf="standard">sazpu'</FORM>
-                <PHON kindOf="standard">sa[z|r]puʔ</PHON>
+                <FORM kindOf="original">sazpu'matiw</FORM>
+                <PHON kindOf="original">sazpuʔmatiw</PHON>
+                <FORM kindOf="standard">sazpu'matiw</FORM>
+                <PHON kindOf="standard">sa[z|r]puʔmatiw</PHON>
                 <TRANSL xml:lang="zho" kindOf="original">??</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">??</TRANSL>
             </M>
         </W>
         <W id="KavNr-ancestor_ngengi_S_34_W6">
-            <FORM kindOf="original">matiw</FORM>
-            <PHON kindOf="original">matiw</PHON>
-            <FORM kindOf="standard">matiw</FORM>
-            <PHON kindOf="standard">matiw</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">主焦.去</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">AF.go</TRANSL>
-            <M id="KavNr-ancestor_ngengi_S_34_W6M0">
-                <FORM kindOf="original">matiw</FORM>
-                <PHON kindOf="original">matiw</PHON>
-                <FORM kindOf="standard">matiw</FORM>
-                <PHON kindOf="standard">matiw</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">主焦.去</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AF.go</TRANSL>
-            </M>
-        </W>
-        <W id="KavNr-ancestor_ngengi_S_34_W7">
             <FORM kindOf="original">baqi-an.</FORM>
             <PHON kindOf="original">βaqian</PHON>
             <FORM kindOf="standard">baqi-an.</FORM>
             <PHON kindOf="standard">βaqian</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">男祖先-AN</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">male.ancestor-AN</TRANSL>
-            <M id="KavNr-ancestor_ngengi_S_34_W7M0">
+            <TRANSL xml:lang="zho" kindOf="original">主焦-去</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">AF-go</TRANSL>
+            <M id="KavNr-ancestor_ngengi_S_34_W6M0">
                 <FORM kindOf="original">baqi</FORM>
                 <PHON kindOf="original">βaqi</PHON>
                 <FORM kindOf="standard">baqi</FORM>
                 <PHON kindOf="standard">βaqi</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">男祖先</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">male.ancestor</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
             </M>
-            <M id="KavNr-ancestor_ngengi_S_34_W7M1">
+            <M id="KavNr-ancestor_ngengi_S_34_W6M1">
                 <FORM kindOf="original">an.</FORM>
                 <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an.</FORM>
                 <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">AN</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">AN</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">go</TRANSL>
             </M>
         </W>
-        <W id="KavNr-ancestor_ngengi_S_34_W8">
+        <W id="KavNr-ancestor_ngengi_S_34_W7">
             <FORM kindOf="original">tu</FORM>
             <PHON kindOf="original">tu</PHON>
             <FORM kindOf="standard">tu</FORM>
             <PHON kindOf="standard">tu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
-            <M id="KavNr-ancestor_ngengi_S_34_W8M0">
+            <M id="KavNr-ancestor_ngengi_S_34_W7M0">
                 <FORM kindOf="original">tu</FORM>
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
@@ -3803,14 +3756,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
             </M>
         </W>
-        <W id="KavNr-ancestor_ngengi_S_34_W9">
+        <W id="KavNr-ancestor_ngengi_S_34_W8">
             <FORM kindOf="original">qatiw-an</FORM>
             <PHON kindOf="original">qatiwan</PHON>
             <FORM kindOf="standard">qatiw-an</FORM>
             <PHON kindOf="standard">qatiwan</PHON>
             <TRANSL xml:lang="zho" kindOf="original">去-處焦</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">go-LF</TRANSL>
-            <M id="KavNr-ancestor_ngengi_S_34_W9M0">
+            <M id="KavNr-ancestor_ngengi_S_34_W8M0">
                 <FORM kindOf="original">qatiw</FORM>
                 <PHON kindOf="original">qatiw</PHON>
                 <FORM kindOf="standard">qatiw</FORM>
@@ -3818,7 +3771,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">去</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">go</TRANSL>
             </M>
-            <M id="KavNr-ancestor_ngengi_S_34_W9M1">
+            <M id="KavNr-ancestor_ngengi_S_34_W8M1">
                 <FORM kindOf="original">an</FORM>
                 <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
@@ -3827,14 +3780,14 @@
                 <TRANSL xml:lang="eng" kindOf="original">LF</TRANSL>
             </M>
         </W>
-        <W id="KavNr-ancestor_ngengi_S_34_W10">
+        <W id="KavNr-ancestor_ngengi_S_34_W9">
             <FORM kindOf="original">Ri-bawut.</FORM>
             <PHON kindOf="original">ʁiβawut</PHON>
             <FORM kindOf="standard">Ri-bawut.</FORM>
             <PHON kindOf="standard">ʁiβawut</PHON>
             <TRANSL xml:lang="zho" kindOf="original">抓-魚</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">catch-fish</TRANSL>
-            <M id="KavNr-ancestor_ngengi_S_34_W10M0">
+            <M id="KavNr-ancestor_ngengi_S_34_W9M0">
                 <FORM kindOf="original">Ri</FORM>
                 <PHON kindOf="original">ʁi</PHON>
                 <FORM kindOf="standard">Ri</FORM>
@@ -3842,7 +3795,7 @@
                 <TRANSL xml:lang="zho" kindOf="original">抓</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">catch</TRANSL>
             </M>
-            <M id="KavNr-ancestor_ngengi_S_34_W10M1">
+            <M id="KavNr-ancestor_ngengi_S_34_W9M1">
                 <FORM kindOf="original">bawut.</FORM>
                 <PHON kindOf="original">βawut</PHON>
                 <FORM kindOf="standard">bawut.</FORM>
@@ -4130,16 +4083,6 @@
             <PHON kindOf="original">***</PHON>
             <FORM kindOf="standard">XXX</FORM>
             <PHON kindOf="standard">***</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XXX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XXX</TRANSL>
-            <M id="KavNr-ancestor_ngengi_S_40_W0M0">
-                <FORM kindOf="original">XXX</FORM>
-                <PHON kindOf="original">***</PHON>
-                <FORM kindOf="standard">XXX</FORM>
-                <PHON kindOf="standard">***</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">XXX</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">XXX</TRANSL>
-            </M>
         </W>
         <W id="KavNr-ancestor_ngengi_S_40_W1">
             <FORM kindOf="original">s&lt;m&gt;angi=ti</FORM>
@@ -5642,16 +5585,6 @@
             <PHON kindOf="original">**</PHON>
             <FORM kindOf="standard">XX.</FORM>
             <PHON kindOf="standard">**</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
-            <M id="KavNr-ancestor_ngengi_S_54_W5M0">
-                <FORM kindOf="original">XX.</FORM>
-                <PHON kindOf="original">**</PHON>
-                <FORM kindOf="standard">XX.</FORM>
-                <PHON kindOf="standard">**</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
-            </M>
         </W>
     </S>
     <S id="KavNr-ancestor_ngengi_S_55">
@@ -7104,16 +7037,6 @@
             <PHON kindOf="original">***</PHON>
             <FORM kindOf="standard">XXX</FORM>
             <PHON kindOf="standard">***</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XXX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XXX</TRANSL>
-            <M id="KavNr-ancestor_ngengi_S_65_W6M0">
-                <FORM kindOf="original">XXX</FORM>
-                <PHON kindOf="original">***</PHON>
-                <FORM kindOf="standard">XXX</FORM>
-                <PHON kindOf="standard">***</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">XXX</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">XXX</TRANSL>
-            </M>
         </W>
         <W id="KavNr-ancestor_ngengi_S_65_W7">
             <FORM kindOf="original">qi-qabus</FORM>
@@ -8142,16 +8065,6 @@
             <PHON kindOf="original">**</PHON>
             <FORM kindOf="standard">XX</FORM>
             <PHON kindOf="standard">**</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
-            <M id="KavNr-ancestor_ngengi_S_76_W7M0">
-                <FORM kindOf="original">XX</FORM>
-                <PHON kindOf="original">**</PHON>
-                <FORM kindOf="standard">XX</FORM>
-                <PHON kindOf="standard">**</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">XX</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">XX</TRANSL>
-            </M>
         </W>
         <W id="KavNr-ancestor_ngengi_S_76_W8">
             <FORM kindOf="original">na</FORM>
@@ -9807,16 +9720,6 @@
             <PHON kindOf="original">***</PHON>
             <FORM kindOf="standard">XXX</FORM>
             <PHON kindOf="standard">***</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XXX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XXX</TRANSL>
-            <M id="KavNr-ancestor_ngengi_S_97_W0M0">
-                <FORM kindOf="original">XXX</FORM>
-                <PHON kindOf="original">***</PHON>
-                <FORM kindOf="standard">XXX</FORM>
-                <PHON kindOf="standard">***</PHON>
-                <TRANSL xml:lang="zho" kindOf="original">XXX</TRANSL>
-                <TRANSL xml:lang="eng" kindOf="original">XXX</TRANSL>
-            </M>
         </W>
         <W id="KavNr-ancestor_ngengi_S_97_W1">
             <FORM kindOf="original">masang,</FORM>
