@@ -355,13 +355,34 @@ symptom of skipping this rule.)
 
 ### POL-028 · RULED · 2026-09-08 · alternate FORMs
 
-`FORM[@kindOf="alternate"]` records a **spelling variant** of a sibling FORM
-on the same node. It is the only marking for this: not `ver`, not
-`"alternative"`, not an `-opt` suffix.
+**Revised 2026-09-09.** A **variant reading** is written `ver="alt"` on a FORM
+whose `kindOf` names its tier — `kindOf="original" ver="alt"` is a variant of
+the original tier, `kindOf="standard" ver="alt"` of the standard. This is the
+same shape TRANSL has used since POL-025, and the allowed values share one
+allowlist (V084 for TRANSL, V156 for FORM).
 
-- Every alternate must have at least one **non-alternate FORM sibling on the
-  same parent** (V149 HARD), and must satisfy two independent conditions
-  against it (V150 SOFT):
+**This supersedes two earlier rulings** (POL-050):
+
+1. This entry's own original text, which said a variant was
+   `kindOf="alternate"` and "the only marking for this: **not `ver`**". That
+   spelling names no tier, so a node carrying two variants could not say which
+   base each varied from, and a variant could not be transliterated because
+   nothing knew which tier it belonged to. `alternate` is deprecated: still
+   schema-valid, flagged by V157 (SOFT), removed from the enumeration once the
+   published FORMs using it are migrated.
+2. The ruling recorded in commit `694bbc903` (2026-09-07) — *"the optional
+   material is handled with the alternative FORM mechanism, in the standard
+   tier only… The original tier keeps all of this notation untouched."* That
+   left WakelinTexts' original tier carrying source parentheses, which
+   contradicts this entry's closing rule that no published FORM keeps them.
+   Variants exist for both tiers; the original tier is resolved like the
+   standard one.
+
+- A tier carrying any variant must carry **exactly one FORM of that `kindOf`
+  without `ver`** — the base the variants vary from (V149 HARD). **A tier may
+  carry several variants**; it may not carry several bases, because then no
+  variant knows what it varies from. Each variant must satisfy two independent
+  conditions against its own tier's base (V150 SOFT):
   1. **Overlap** — it must overlap the sibling highly, or, where both forms
      are too short for overlap to be measurable, simply be short.
   2. **Proportion** — neither form may be more than twice the length of the
@@ -377,6 +398,10 @@ on the same node. It is the only marking for this: not `ver`, not
   test, to catch a mismatched pair. The operative thresholds live in V150,
   deliberately not here, so they can be tuned from evidence without a
   re-ruling.
+- **Variants are derived along with their tier.** `standardize.py` produces the
+  standard tier's base from the original tier's base and each standard variant
+  from the corresponding original variant, so a variant is machine-owned on the
+  standard side exactly as the base is (POL-002).
 - **The variation may span the whole form.** A one-letter word alternating
   `a`/`u` (WakelinTexts `Kwaway/S2W3`) is as valid an alternate as a letter
   changing inside a longer word. Nothing requires the variation to be

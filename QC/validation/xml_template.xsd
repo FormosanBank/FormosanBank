@@ -36,6 +36,13 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="original"/>
       <xs:enumeration value="standard"/>
+      <!--
+        DEPRECATED 2026-09-09 (POL-028). A variant reading is now written
+        kindOf="<tier>" ver="alt", so the tier it varies from is explicit
+        and a tier may carry several variants. This value stays valid only
+        while the 116 published FORMs still using it are migrated; V157
+        flags each one. Do not emit it in new data.
+      -->
       <xs:enumeration value="alternate"/>
     </xs:restriction>
   </xs:simpleType>
@@ -81,10 +88,27 @@
           Which tier this FORM belongs to. `original` is the text as the
           actual source prints it, preserving the source's orthographic
           choices. `standard` is that content transliterated into
-          FormosanBank's common standard orthography. `alternate` is a
-          spelling variant of a sibling FORM on the same node (POL-028);
-          it requires a non-alternate sibling (V149) and must overlap it
-          and stay in proportion to it (V150).
+          FormosanBank's common standard orthography. A variant reading
+          within a tier is that tier's value plus ver="alt" (POL-028).
+          `alternate` is the deprecated pre-2026-09-09 spelling of a
+          variant, kept valid only until the published FORMs using it are
+          migrated (V157); it carries no tier, which is why it is going.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="ver" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>
+          Marks this FORM as a variant reading within its tier (POL-028).
+          The tier is named by kindOf; ver="alt" says "one of several
+          readings of that tier", exactly as it does for TRANSL (POL-025).
+          A tier carrying any ver FORM must carry exactly one FORM of the
+          same kindOf without ver — the reading the variants vary from
+          (V149) — and each variant must look like a spelling variant of
+          it (V150). Several variants may share one base. Allowed values
+          are owned by V156's allowlist, currently {"alt"}, deliberately
+          not an XSD enumeration so there is one place to update; this
+          mirrors TRANSL/@ver and V084.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>

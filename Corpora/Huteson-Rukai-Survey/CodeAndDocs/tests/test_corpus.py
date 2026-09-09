@@ -45,8 +45,8 @@ class CorpusRegressionTests(unittest.TestCase):
     def test_identity_counts_and_languages(self):
         self.assertEqual([(r.get("dialect"), len(r.findall("S"))) for r in self.roots],
                          [("Maolin", 14), ("Dona", 15)])
-        self.assertEqual(sum(len(s.findall("W")) for s in self.sentences.values()), 102)
-        self.assertEqual(sum(len(s.findall("W/M")) for s in self.sentences.values()), 69)
+        self.assertEqual(sum(len(s.findall("W")) for s in self.sentences.values()), 103)
+        self.assertEqual(sum(len(s.findall("W/M")) for s in self.sentences.values()), 70)
         self.assertEqual(sum(len(s.findall("TRANSL")) for s in self.sentences.values()), 34)
         for r in self.roots:
             self.assertEqual(r.get("{http://www.w3.org/XML/1998/namespace}lang"), "dru")
@@ -64,10 +64,30 @@ class CorpusRegressionTests(unittest.TestCase):
 
     def test_source_blank_words_have_no_invented_gloss(self):
         words = {w.get("id"): w for s in self.sentences.values() for w in s.findall("W")}
-        self.assertEqual({wid for wid, w in words.items() if not w.findall("TRANSL")}, audit.BLANKS)
+        for wid, w in words.items():
+            transl = w.findall("TRANSL")
+            if wid in audit.BLANKS:
+                # No gloss, or an inferred one that says so. Never an unmarked gloss.
+                self.assertTrue(not transl or transl[0].get("notes"), wid)
+            else:
+                self.assertTrue(transl, wid)
         for wid in audit.BLANKS:
             self.assertFalse(words[wid].findall("M/TRANSL"))
         self.assertFalse(any(t.text == "?" for r in self.roots for t in r.iter("TRANSL")))
+
+    def test_tona_fourteen_ki_gloss_is_inferred_and_marked(self):
+        """The source leaves Tona 14's 'ki' column blank. All 6 other 'ki' in the
+        corpus are glossed NOM and none is glossed anything else, so NOM is
+        supplied — marked @notes, and only at W level."""
+        kis = [w for s in self.sentences.values() for w in s.findall("W")
+               if w.findtext("FORM[@kindOf='original']") == "ki"]
+        glossed = [t.text for w in kis for t in w.findall("TRANSL")]
+        self.assertEqual(sorted(set(glossed)), ["NOM"])
+        self.assertEqual(len(glossed), 7)
+        marked = [w for w in kis
+                  if any(t.get("notes") for t in w.findall("TRANSL"))]
+        self.assertEqual([w.get("id") for w in marked], ["S_tona_014_W_002"])
+        self.assertIn("inferred", marked[0].find("TRANSL").get("notes"))
 
     def test_tona_nine_preserves_boundary_without_guessing_morpheme_meanings(self):
         s = self.sentences["S_tona_009"]
@@ -78,15 +98,22 @@ class CorpusRegressionTests(unittest.TestCase):
         self.assertEqual([m.findtext("FORM[@kindOf='original']") for m in w.findall("M")], ["a", "kakə"])
         self.assertFalse(w.findall("M/TRANSL"))
 
-    def test_tona_four_keeps_expert_join_and_multiword_gloss(self):
+    def test_tona_four_follows_the_two_column_gloss(self):
+        """The page 42 gloss line has two columns, very and fat, so the source
+        prints two words. The earlier join is reversed and no gloss is coined."""
         s = self.sentences["S_tona_004"]
-        self.assertEqual(s.findtext("FORM[@kindOf='original']"), "saokwamamitə valakili.")
-        self.assertEqual([w.get("id") for w in s.findall("W")], ["S_tona_004_W_001", "S_tona_004_W_003"])
-        w = s.find("W")
-        self.assertEqual(w.findtext("FORM[@kindOf='original']"), "saokwamamitə")
-        for node in (w, w.find("M")):
-            self.assertEqual([(t.get("kindOf"), t.text) for t in node.findall("TRANSL")],
-                             [("original", "very fat"), ("standard", "very.fat")])
+        self.assertEqual(s.findtext("FORM[@kindOf='original']"), "saokwa mamitə valakili.")
+        self.assertEqual([w.get("id") for w in s.findall("W")],
+                         ["S_tona_004_W_001", "S_tona_004_W_002", "S_tona_004_W_003"])
+        self.assertEqual([w.findtext("FORM[@kindOf='original']") for w in s.findall("W")],
+                         ["saokwa", "mamitə", "valak-ili"])
+        self.assertEqual([w.findtext("TRANSL") for w in s.findall("W")],
+                         ["very", "fat", "child-1S.GEN"])
+
+    def test_no_coined_glosses_anywhere(self):
+        """Every gloss in the corpus is a source gloss; none is standardized."""
+        for root in self.roots:
+            self.assertEqual(root.findall(".//TRANSL[@kindOf='standard']"), [])
 
     def test_expert_retroflex_and_literal_translation_survive(self):
         forms = [s.findtext("FORM[@kindOf='original']") for s in self.sentences.values()]

@@ -343,11 +343,27 @@ def v150_alternate_FORM_low_overlap(
     findings: list[Finding] = []
     for parent in tree.iter("S", "W", "M"):
         forms = [child for child in parent if child.tag == "FORM"]
-        alternates = [f for f in forms if f.get("kindOf") == "alternate"]
-        bases = [f for f in forms if f.get("kindOf") != "alternate"]
-        if not alternates or not bases:
-            continue          # bare alternates are V149's business
-        for alt in alternates:
+        # (variant, candidate bases) pairs. Since POL-028's 2026-09-09
+        # revision a variant is kindOf="<tier>" ver="alt" and varies from
+        # that tier's own base, so the comparison is within the tier rather
+        # than against whichever sibling happens to score best. The
+        # deprecated kindOf="alternate" spelling names no tier, so it keeps
+        # the old any-sibling behaviour until it is migrated out (V157).
+        pairs: list[tuple[etree._Element, list[etree._Element]]] = []
+        for form in forms:
+            if form.get("kindOf") == "alternate":
+                bases = [f for f in forms if f.get("kindOf") != "alternate"]
+                if bases:
+                    pairs.append((form, bases))
+            elif form.get("ver") is not None:
+                bases = [
+                    f for f in forms
+                    if f.get("kindOf") == form.get("kindOf")
+                    and f.get("ver") is None
+                ]
+                if bases:
+                    pairs.append((form, bases))
+        for alt, bases in pairs:          # baseless variants are V149's business
             alt_text = (alt.text or "").strip()
             ratio, base_text = max(
                 (
@@ -379,7 +395,7 @@ def v150_alternate_FORM_low_overlap(
                 rule_id="V150",
                 severity=Severity.SOFT,
                 message=(
-                    f"{parent.tag} id={p_id!r}: alternate {alt_text!r} does "
+                    f"{parent.tag} id={p_id!r}: variant {alt_text!r} does "
                     f"not look like a spelling variant of {base_text!r} "
                     f"({'; '.join(reasons)}) — POL-028"
                 ),
@@ -388,6 +404,48 @@ def v150_alternate_FORM_low_overlap(
                 language=_tree_language(tree, path, index),
                 character="",
             ))
+    return findings
+
+
+def v157_legacy_alternate_kindOf(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V157 SOFT: FORM[@kindOf='alternate'] is the deprecated variant spelling.
+
+    POL-028 was revised on 2026-09-09 so a variant reading names the tier it
+    varies from: `kindOf="<tier>" ver="alt"`. The old `alternate` value names
+    no tier, which is why a node could carry two variants with nothing saying
+    which base each belonged to.
+
+    SOFT, not HARD, because the published data still uses it: this is the
+    migration worklist, not a defect in the corpora. It goes away — rule and
+    enumeration value together — once the count reaches zero.
+    """
+    findings: list[Finding] = []
+    for parent in tree.iter("S", "W", "M"):
+        legacy = [
+            child for child in parent
+            if child.tag == "FORM" and child.get("kindOf") == "alternate"
+        ]
+        if not legacy:
+            continue
+        p_id = parent.get("id")
+        findings.append(Finding(
+            rule_id="V157",
+            severity=Severity.SOFT,
+            message=(
+                f"{parent.tag} id={p_id!r} has {len(legacy)} "
+                "FORM[@kindOf='alternate']; the current spelling is "
+                'kindOf="<tier>" ver="alt" (POL-028, 2026-09-09)'
+            ),
+            path=path,
+            location=f"{parent.tag}={p_id}" if p_id else parent.tag,
+            count=len(legacy),
+            language=_tree_language(tree, path, index),
+            character="",
+        ))
     return findings
 
 
@@ -453,6 +511,7 @@ RULES: list = [
     v148_W_less_S_in_segmented_file,
     # POL-028 alternate FORMs (2026-09-08)
     v150_alternate_FORM_low_overlap,
+    v157_legacy_alternate_kindOf,
     # POL-025 S-level TRANSL @kindOf (2026-09-08)
     v151_S_TRANSL_has_no_kindOf,
 ]

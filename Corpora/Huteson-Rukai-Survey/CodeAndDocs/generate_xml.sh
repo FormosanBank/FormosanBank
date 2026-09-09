@@ -10,6 +10,6 @@ test -f "$FB/QC/cleaning/clean_xml.py"
 "$PY" "$HERE/build_xml.py"
 "$PY" "$FB/QC/cleaning/clean_xml.py" --corpora_path "$ROOT/XML"
 "$PY" "$FB/QC/utilities/standardize.py" --corpora_path "$ROOT/XML" \
-    --tsv_path "$HERE/huteson_source_to_ortho113.tsv"
+    --tsv_path "$FB/Orthographies/ConversionTables/Rukai_Huteson_113.tsv"
 "$PY" "$FB/QC/utilities/add_phonology.py" --corpora_path "$ROOT/XML" \
-    --orthography "$HERE/source_orthography"
+    --orthography Huteson

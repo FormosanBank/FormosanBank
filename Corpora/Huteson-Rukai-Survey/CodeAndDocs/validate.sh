@@ -45,8 +45,8 @@ run vocabulary "$PY" "$FB/QC/validation/validate_vocabulary.py" \
     --o_info "$REPORT/orthography-standard" --reference "$FB/QC/validation/reference" --language Rukai
 for dialect in Maolin Dona; do
     run "conversion-$dialect" "$PY" "$FB/QC/validation/validate_conversion_table.py" \
-        "$HERE/source_orthography/Rukai.tsv" "$FB/Orthographies/Ortho113/Rukai.tsv" \
-        "$HERE/huteson_source_to_ortho113.tsv" --dialect "$dialect" \
+        "$FB/Orthographies/Huteson/Rukai.tsv" "$FB/Orthographies/Ortho113/Rukai.tsv" \
+        "$FB/Orthographies/ConversionTables/Rukai_Huteson_113.tsv" --dialect "$dialect" \
         --output "$REPORT/conversion-$dialect.md"
 done
 run dialect "$PY" "$FB/QC/validation/validate_dialect.py" --path "$ROOT/XML"

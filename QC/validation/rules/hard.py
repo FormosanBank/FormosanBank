@@ -432,15 +432,23 @@ def v015_S_at_most_one_original_FORM(
     path: Path,
     index: CorpusIndex | None,
 ) -> list[Finding]:
-    """V015: each S must have at most one direct-child FORM with kindOf='original'.
+    """V015: each S must have at most one direct-child *base* FORM kindOf='original'.
 
-    Duplicate kindOf on sibling FORMs under the same S is forbidden.
+    Duplicate kindOf on sibling FORMs under the same S is forbidden — but
+    since POL-028's 2026-09-09 revision a tier may legitimately carry variant
+    readings alongside its base, all sharing that tier's ``kindOf`` and
+    discriminated by ``ver="alt"``. So the count is of FORMs *without* ``ver``,
+    exactly as V085 lets several same-language TRANSLs coexist when all but
+    one carry ``ver``. That there is exactly one base per tier is V149's job;
+    this rule is the "no two bases" half of it for the original tier.
     """
     findings: list[Finding] = []
     for s in tree.iter("S"):
         originals = [
             child for child in s
-            if child.tag == "FORM" and child.get("kindOf") == "original"
+            if child.tag == "FORM"
+            and child.get("kindOf") == "original"
+            and child.get("ver") is None
         ]
         if len(originals) > 1:
             s_id = s.get("id")
@@ -975,37 +983,102 @@ def v149_alternate_FORM_requires_base_sibling(
     path: Path,
     index: CorpusIndex | None,
 ) -> list[Finding]:
-    """V149: a FORM[@kindOf='alternate'] must have a non-alternate FORM
-    sibling on the same parent.
+    """V149: a variant FORM must have exactly one base FORM in its own tier.
 
-    Per POL-028 an alternate is a spelling variant *of something*: it is
-    read against the parent's unmarked FORM. An alternate with nothing to
-    vary from asserts a variant of no known base, and no downstream tool
-    can interpret it. This also covers "an alternate must not be a
-    parent's only FORM".
+    Per POL-028 a variant is a spelling variant *of something*, and since
+    2026-09-09 it says which tier it varies from: `kindOf` names the tier
+    and `ver="alt"` marks the variant, so `kindOf="original" ver="alt"`
+    varies from the tier's one FORM without `ver`. A tier may carry several
+    variants; it may not carry several bases, because then no variant knows
+    what it varies from.
 
-    Clean across the whole bank at the time of writing (116 alternates,
-    zero violations); the rule locks that state in.
+    The deprecated pre-2026-09-09 spelling, `kindOf="alternate"`, carries no
+    tier at all. It is still checked the old way — it needs some
+    non-alternate sibling — until the published FORMs using it are migrated
+    (V157 counts them).
     """
     findings: list[Finding] = []
     for parent in tree.iter("S", "W", "M"):
         forms = [child for child in parent if child.tag == "FORM"]
-        alternates = [f for f in forms if f.get("kindOf") == "alternate"]
-        if not alternates:
-            continue
-        if any(f.get("kindOf") != "alternate" for f in forms):
+        if not forms:
             continue
         p_id = parent.get("id")
+        location = f"{parent.tag}={p_id}" if p_id else parent.tag
+
+        # Current spelling: ver="alt" on a tier value.
+        tiers: dict[str, list[etree._Element]] = {}
+        for form in forms:
+            kind = form.get("kindOf")
+            if kind == "alternate":
+                continue                      # legacy, handled below
+            tiers.setdefault(kind, []).append(form)
+        for kind, group in sorted(tiers.items()):
+            variants = [f for f in group if f.get("ver") is not None]
+            bases = [f for f in group if f.get("ver") is None]
+            if not variants:
+                continue
+            if len(bases) == 1:
+                continue
+            findings.append(Finding(
+                rule_id="V149",
+                severity=Severity.HARD,
+                message=(
+                    f"{parent.tag} id={p_id!r}: kindOf={kind!r} has "
+                    f"{len(variants)} variant FORM(s) with @ver but "
+                    f"{len(bases)} base FORM(s) without it; a tier carrying "
+                    "variants must carry exactly one base for them to vary "
+                    "from (POL-028)"
+                ),
+                path=path,
+                location=location,
+            ))
+
+        # Deprecated spelling: kindOf="alternate", which names no tier.
+        alternates = [f for f in forms if f.get("kindOf") == "alternate"]
+        if alternates and all(f.get("kindOf") == "alternate" for f in forms):
+            findings.append(Finding(
+                rule_id="V149",
+                severity=Severity.HARD,
+                message=(
+                    f"{parent.tag} id={p_id!r} has {len(alternates)} "
+                    "FORM[@kindOf='alternate'] but no non-alternate FORM to "
+                    "vary from (POL-028)"
+                ),
+                path=path,
+                location=location,
+            ))
+    return findings
+
+
+def v156_form_ver_value_in_allowlist(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V156: when FORM/@ver is set, its value must be in the project allowlist.
+
+    The FORM counterpart of V084, sharing `_ALLOWED_VER_VALUES` so the two
+    elements cannot drift apart on what a version marker may say. POL-028
+    adopted TRANSL's `ver="alt"` shape for FORM on 2026-09-09; the allowlist
+    is the same one place to update.
+    """
+    findings: list[Finding] = []
+    for form in tree.iter("FORM"):
+        ver = form.get("ver")
+        if ver is None or ver in _ALLOWED_VER_VALUES:
+            continue
+        parent = form.getparent()
+        p_id = parent.get("id") if parent is not None else None
+        p_tag = parent.tag if parent is not None else "?"
         findings.append(Finding(
-            rule_id="V149",
+            rule_id="V156",
             severity=Severity.HARD,
             message=(
-                f"{parent.tag} id={p_id!r} has {len(alternates)} "
-                "FORM[@kindOf='alternate'] but no non-alternate FORM to vary "
-                "from (POL-028)"
+                f"FORM has ver={ver!r}; not in the allowed set "
+                f"{sorted(_ALLOWED_VER_VALUES)!r}"
             ),
             path=path,
-            location=f"{parent.tag}={p_id}" if p_id else parent.tag,
+            location=f"{p_tag}={p_id}" if p_id else p_tag,
         ))
     return findings
 
@@ -1070,5 +1143,6 @@ RULES: list = [
     v085_multi_same_lang_transl_requires_ver,
     # POL-028 alternate FORMs (2026-09-08)
     v149_alternate_FORM_requires_base_sibling,
+    v156_form_ver_value_in_allowlist,
 ]
 CROSS_FILE_RULES: list = [v081_text_id_unique_across_published_corpora]
