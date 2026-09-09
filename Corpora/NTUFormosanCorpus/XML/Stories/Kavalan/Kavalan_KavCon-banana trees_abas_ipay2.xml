@@ -1,291 +1,305 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <TEXT id="NTU_Stry_Kavalan_KavCon-banana trees_abas_ipay2" xml:lang="ckv" source="NTU Corpus stories for Kavalan, story: KavCon-banana trees_abas_ipay2" audio="diarized" copyright="CC BY-NC" citation="Sung, L. M., Lily, I., Hsieh, F., &amp; Lin, Z. (2008). Developing an online corpus of Formosan languages. Taiwan Journal of Linguistics, 6(2.)." BibTeX_citation="@article{sung2008developing,title={Developing an online corpus of Formosan languages.},author={Sung, Li-May and Lily, I and Hsieh, Fuhui and Lin, Zhemin and others},journal={Taiwan Journal of Linguistics},volume={6},number={2},year={2008}}" dialect="Kavalan">
     <S id="KavCon-banana trees_abas_ipay2_S_0">
-        <FORM kindOf="original">XXXX temawaR si a anu qumni yau dawadsu si sanisika ya peninaku yau peninaku mwaza.</FORM>
-        <PHON kindOf="original">**** təmawaʁ si a anu qumni jau ɮawaɮsu si sanisika ja pəninaku jau pəninaku mwaz~ra.</PHON>
-        <FORM kindOf="standard">XXXX temawaR si a anu qumni yau dawadsu si sanisika ya peninaku yau peninaku mwaza.</FORM>
-        <PHON kindOf="standard">**** təmawaʁ si a anu qumni jau ɮawaɮsu si sanisika ja pəninaku jau pəninaku mwaz~ra.</PHON>
+        <FORM kindOf="original" notes="source note: s&lt;m&gt;anis=iku tu penina: 我削香蕉樹皮">A XXXX temawaR si a anu qumni yau dawadsu si sanisika ya peninaku yau peninaku mwaza.</FORM>
+        <PHON kindOf="original">a **** təmawaʁ si a anu qumni jau ɮawaɮsu si sanisika ja pəninaku jau pəninaku mwa[z|r]a</PHON>
+        <FORM kindOf="standard">A XXXX temawaR si a anu qumni yau dawadsu si sanisika ya peninaku yau peninaku mwaza.</FORM>
+        <PHON kindOf="standard">a **** təmawaʁ si a anu qumni jau ɮawaɮsu si sanisika ja pəninaku jau pəninaku mwa[z|r]a</PHON>
         <TRANSL xml:lang="zho">如果你明天有空的話,來削我的香蕉樹皮.我有很多香蕉樹皮.</TRANSL>
         <TRANSL xml:lang="eng">If you have time tomorrow, bark my banana trees. I have much banana bark.</TRANSL>
         <AUDIO file="KavCon-banana trees_abas_ipay2_S0.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavCon-banana trees_abas_ipay2.mp3" start="0.0" end="9.1"/>
         <W id="KavCon-banana trees_abas_ipay2_S_0_W0">
+            <FORM kindOf="original">A</FORM>
+            <PHON kindOf="original">a</PHON>
+            <FORM kindOf="standard">A</FORM>
+            <PHON kindOf="standard">a</PHON>
+            <M id="KavCon-banana trees_abas_ipay2_S_0_W0M1">
+                <FORM kindOf="original">A</FORM>
+                <PHON kindOf="original">a</PHON>
+                <FORM kindOf="standard">A</FORM>
+                <PHON kindOf="standard">a</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">_</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">_</TRANSL>
+            </M>
+        </W>
+        <W id="KavCon-banana trees_abas_ipay2_S_0_W1">
             <FORM kindOf="original">XXXX</FORM>
             <PHON kindOf="original">****</PHON>
             <FORM kindOf="standard">XXXX</FORM>
             <PHON kindOf="standard">****</PHON>
-            <TRANSL xml:lang="zho">XXXX</TRANSL>
-            <TRANSL xml:lang="eng">XXXX</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_0_W0M1">
+            <TRANSL xml:lang="zho" kindOf="original">XXXX</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">XXXX</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_0_W1M1">
                 <FORM kindOf="original">XXXX</FORM>
                 <PHON kindOf="original">****</PHON>
                 <FORM kindOf="standard">XXXX</FORM>
                 <PHON kindOf="standard">****</PHON>
-                <TRANSL xml:lang="eng">XXXX</TRANSL>
-                <TRANSL xml:lang="zho">XXXX</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">XXXX</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">XXXX</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_0_W1">
+        <W id="KavCon-banana trees_abas_ipay2_S_0_W2">
             <FORM kindOf="original">temawaR</FORM>
             <PHON kindOf="original">təmawaʁ</PHON>
             <FORM kindOf="standard">temawaR</FORM>
             <PHON kindOf="standard">təmawaʁ</PHON>
-            <TRANSL xml:lang="zho">明天</TRANSL>
-            <TRANSL xml:lang="eng">tomorrow</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_0_W1M1">
+            <TRANSL xml:lang="zho" kindOf="original">明天</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">tomorrow</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_0_W2M1">
                 <FORM kindOf="original">temawaR</FORM>
                 <PHON kindOf="original">təmawaʁ</PHON>
                 <FORM kindOf="standard">temawaR</FORM>
                 <PHON kindOf="standard">təmawaʁ</PHON>
-                <TRANSL xml:lang="eng">tomorrow</TRANSL>
-                <TRANSL xml:lang="zho">明天</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">tomorrow</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">明天</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_0_W2">
+        <W id="KavCon-banana trees_abas_ipay2_S_0_W3">
             <FORM kindOf="original">si</FORM>
             <PHON kindOf="original">si</PHON>
             <FORM kindOf="standard">si</FORM>
             <PHON kindOf="standard">si</PHON>
-            <TRANSL xml:lang="zho">條件詞</TRANSL>
-            <TRANSL xml:lang="eng">COND</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_0_W2M1">
+            <TRANSL xml:lang="zho" kindOf="original">條件詞</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">COND</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_0_W3M1">
                 <FORM kindOf="original">si</FORM>
                 <PHON kindOf="original">si</PHON>
                 <FORM kindOf="standard">si</FORM>
                 <PHON kindOf="standard">si</PHON>
-                <TRANSL xml:lang="eng">COND</TRANSL>
-                <TRANSL xml:lang="zho">條件詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">COND</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">條件詞</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_0_W3">
+        <W id="KavCon-banana trees_abas_ipay2_S_0_W4">
             <FORM kindOf="original">a</FORM>
             <PHON kindOf="original">a</PHON>
             <FORM kindOf="standard">a</FORM>
             <PHON kindOf="standard">a</PHON>
-            <TRANSL xml:lang="zho">感嘆</TRANSL>
-            <TRANSL xml:lang="eng">INT</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_0_W3M1">
+            <TRANSL xml:lang="zho" kindOf="original">感嘆</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">INT</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_0_W4M1">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="eng">INT</TRANSL>
-                <TRANSL xml:lang="zho">感嘆</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">INT</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">感嘆</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_0_W4">
+        <W id="KavCon-banana trees_abas_ipay2_S_0_W5">
             <FORM kindOf="original">anu</FORM>
             <PHON kindOf="original">anu</PHON>
             <FORM kindOf="standard">anu</FORM>
             <PHON kindOf="standard">anu</PHON>
-            <TRANSL xml:lang="zho">如果</TRANSL>
-            <TRANSL xml:lang="eng">if</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_0_W4M1">
+            <TRANSL xml:lang="zho" kindOf="original">如果</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">if</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_0_W5M1">
                 <FORM kindOf="original">anu</FORM>
                 <PHON kindOf="original">anu</PHON>
                 <FORM kindOf="standard">anu</FORM>
                 <PHON kindOf="standard">anu</PHON>
-                <TRANSL xml:lang="eng">if</TRANSL>
-                <TRANSL xml:lang="zho">如果</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">if</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">如果</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_0_W5">
+        <W id="KavCon-banana trees_abas_ipay2_S_0_W6">
             <FORM kindOf="original">qumni</FORM>
             <PHON kindOf="original">qumni</PHON>
             <FORM kindOf="standard">qumni</FORM>
             <PHON kindOf="standard">qumni</PHON>
-            <TRANSL xml:lang="zho">當</TRANSL>
-            <TRANSL xml:lang="eng">when</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_0_W5M1">
+            <TRANSL xml:lang="zho" kindOf="original">當</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">when</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_0_W6M1">
                 <FORM kindOf="original">qumni</FORM>
                 <PHON kindOf="original">qumni</PHON>
                 <FORM kindOf="standard">qumni</FORM>
                 <PHON kindOf="standard">qumni</PHON>
-                <TRANSL xml:lang="eng">when</TRANSL>
-                <TRANSL xml:lang="zho">當</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">when</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">當</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_0_W6">
+        <W id="KavCon-banana trees_abas_ipay2_S_0_W7">
             <FORM kindOf="original">yau</FORM>
             <PHON kindOf="original">jau</PHON>
             <FORM kindOf="standard">yau</FORM>
             <PHON kindOf="standard">jau</PHON>
-            <TRANSL xml:lang="zho">存在</TRANSL>
-            <TRANSL xml:lang="eng">EXIST</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_0_W6M1">
+            <TRANSL xml:lang="zho" kindOf="original">存在</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">EXIST</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_0_W7M1">
                 <FORM kindOf="original">yau</FORM>
                 <PHON kindOf="original">jau</PHON>
                 <FORM kindOf="standard">yau</FORM>
                 <PHON kindOf="standard">jau</PHON>
-                <TRANSL xml:lang="eng">EXIST</TRANSL>
-                <TRANSL xml:lang="zho">存在</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">EXIST</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">存在</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_0_W7">
+        <W id="KavCon-banana trees_abas_ipay2_S_0_W8">
             <FORM kindOf="original">dawad-su</FORM>
-            <PHON kindOf="original">ɮawaɮ-su</PHON>
+            <PHON kindOf="original">ɮawaɮsu</PHON>
             <FORM kindOf="standard">dawad-su</FORM>
-            <PHON kindOf="standard">ɮawaɮ-su</PHON>
-            <TRANSL xml:lang="zho">時間-2SG.屬格</TRANSL>
-            <TRANSL xml:lang="eng">time-2SG.GEN</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_0_W7M1">
+            <PHON kindOf="standard">ɮawaɮsu</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">時間-2SG.屬格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">time-2SG.GEN</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_0_W8M1">
                 <FORM kindOf="original">dawad</FORM>
                 <PHON kindOf="original">ɮawaɮ</PHON>
                 <FORM kindOf="standard">dawad</FORM>
                 <PHON kindOf="standard">ɮawaɮ</PHON>
-                <TRANSL xml:lang="eng">time</TRANSL>
-                <TRANSL xml:lang="zho">時間</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">time</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">時間</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_0_W7M2">
+            <M id="KavCon-banana trees_abas_ipay2_S_0_W8M2">
                 <FORM kindOf="original">su</FORM>
                 <PHON kindOf="original">su</PHON>
                 <FORM kindOf="standard">su</FORM>
                 <PHON kindOf="standard">su</PHON>
-                <TRANSL xml:lang="eng">2SG.GEN</TRANSL>
-                <TRANSL xml:lang="zho">2SG.屬格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">2SG.GEN</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">2SG.屬格</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_0_W8">
+        <W id="KavCon-banana trees_abas_ipay2_S_0_W9">
             <FORM kindOf="original">si</FORM>
             <PHON kindOf="original">si</PHON>
             <FORM kindOf="standard">si</FORM>
             <PHON kindOf="standard">si</PHON>
-            <TRANSL xml:lang="zho">條件詞</TRANSL>
-            <TRANSL xml:lang="eng">COND</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_0_W8M1">
+            <TRANSL xml:lang="zho" kindOf="original">條件詞</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">COND</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_0_W9M1">
                 <FORM kindOf="original">si</FORM>
                 <PHON kindOf="original">si</PHON>
                 <FORM kindOf="standard">si</FORM>
                 <PHON kindOf="standard">si</PHON>
-                <TRANSL xml:lang="eng">COND</TRANSL>
-                <TRANSL xml:lang="zho">條件詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">COND</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">條件詞</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_0_W9">
+        <W id="KavCon-banana trees_abas_ipay2_S_0_W10">
             <FORM kindOf="original">sanis-ika</FORM>
-            <PHON kindOf="original">sanis-ika</PHON>
+            <PHON kindOf="original">sanisika</PHON>
             <FORM kindOf="standard">sanis-ika</FORM>
-            <PHON kindOf="standard">sanis-ika</PHON>
-            <TRANSL xml:lang="zho">削樹皮-處焦.祈使</TRANSL>
-            <TRANSL xml:lang="eng">bark-LF.IMP</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_0_W9M1">
+            <PHON kindOf="standard">sanisika</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">削樹皮-處焦.祈使</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">bark-LF.IMP</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_0_W10M1">
                 <FORM kindOf="original">sanis</FORM>
                 <PHON kindOf="original">sanis</PHON>
                 <FORM kindOf="standard">sanis</FORM>
                 <PHON kindOf="standard">sanis</PHON>
-                <TRANSL xml:lang="eng">bark</TRANSL>
-                <TRANSL xml:lang="zho">削樹皮</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">bark</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">削樹皮</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_0_W9M2">
+            <M id="KavCon-banana trees_abas_ipay2_S_0_W10M2">
                 <FORM kindOf="original">ika</FORM>
                 <PHON kindOf="original">ika</PHON>
                 <FORM kindOf="standard">ika</FORM>
                 <PHON kindOf="standard">ika</PHON>
-                <TRANSL xml:lang="eng">LF.IMP</TRANSL>
-                <TRANSL xml:lang="zho">處焦.祈使</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LF.IMP</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">處焦.祈使</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_0_W10">
+        <W id="KavCon-banana trees_abas_ipay2_S_0_W11">
             <FORM kindOf="original">ya</FORM>
             <PHON kindOf="original">ja</PHON>
             <FORM kindOf="standard">ya</FORM>
             <PHON kindOf="standard">ja</PHON>
-            <TRANSL xml:lang="zho">主格</TRANSL>
-            <TRANSL xml:lang="eng">NOM</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_0_W10M1">
+            <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_0_W11M1">
                 <FORM kindOf="original">ya</FORM>
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
-                <TRANSL xml:lang="eng">NOM</TRANSL>
-                <TRANSL xml:lang="zho">主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_0_W11">
+        <W id="KavCon-banana trees_abas_ipay2_S_0_W12">
             <FORM kindOf="original">penina-ku</FORM>
-            <PHON kindOf="original">pənina-ku</PHON>
+            <PHON kindOf="original">pəninaku</PHON>
             <FORM kindOf="standard">penina-ku</FORM>
-            <PHON kindOf="standard">pənina-ku</PHON>
-            <TRANSL xml:lang="zho">香蕉-1SG.屬格</TRANSL>
-            <TRANSL xml:lang="eng">banana-1SG.GEN</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_0_W11M1">
+            <PHON kindOf="standard">pəninaku</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">香蕉-1SG.屬格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">banana-1SG.GEN</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_0_W12M1">
                 <FORM kindOf="original">penina</FORM>
                 <PHON kindOf="original">pənina</PHON>
                 <FORM kindOf="standard">penina</FORM>
                 <PHON kindOf="standard">pənina</PHON>
-                <TRANSL xml:lang="eng">banana</TRANSL>
-                <TRANSL xml:lang="zho">香蕉</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">banana</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">香蕉</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_0_W11M2">
+            <M id="KavCon-banana trees_abas_ipay2_S_0_W12M2">
                 <FORM kindOf="original">ku</FORM>
                 <PHON kindOf="original">ku</PHON>
                 <FORM kindOf="standard">ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
-                <TRANSL xml:lang="eng">1SG.GEN</TRANSL>
-                <TRANSL xml:lang="zho">1SG.屬格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1SG.GEN</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1SG.屬格</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_0_W12">
+        <W id="KavCon-banana trees_abas_ipay2_S_0_W13">
             <FORM kindOf="original">yau</FORM>
             <PHON kindOf="original">jau</PHON>
             <FORM kindOf="standard">yau</FORM>
             <PHON kindOf="standard">jau</PHON>
-            <TRANSL xml:lang="zho">存在</TRANSL>
-            <TRANSL xml:lang="eng">EXIST</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_0_W12M1">
+            <TRANSL xml:lang="zho" kindOf="original">存在</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">EXIST</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_0_W13M1">
                 <FORM kindOf="original">yau</FORM>
                 <PHON kindOf="original">jau</PHON>
                 <FORM kindOf="standard">yau</FORM>
                 <PHON kindOf="standard">jau</PHON>
-                <TRANSL xml:lang="eng">EXIST</TRANSL>
-                <TRANSL xml:lang="zho">存在</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">EXIST</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">存在</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_0_W13">
+        <W id="KavCon-banana trees_abas_ipay2_S_0_W14">
             <FORM kindOf="original">penina-ku</FORM>
-            <PHON kindOf="original">pənina-ku</PHON>
+            <PHON kindOf="original">pəninaku</PHON>
             <FORM kindOf="standard">penina-ku</FORM>
-            <PHON kindOf="standard">pənina-ku</PHON>
-            <TRANSL xml:lang="zho">香蕉-1SG.屬格</TRANSL>
-            <TRANSL xml:lang="eng">banana-1SG.GEN</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_0_W13M1">
+            <PHON kindOf="standard">pəninaku</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">香蕉-1SG.屬格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">banana-1SG.GEN</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_0_W14M1">
                 <FORM kindOf="original">penina</FORM>
                 <PHON kindOf="original">pənina</PHON>
                 <FORM kindOf="standard">penina</FORM>
                 <PHON kindOf="standard">pənina</PHON>
-                <TRANSL xml:lang="eng">banana</TRANSL>
-                <TRANSL xml:lang="zho">香蕉</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">banana</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">香蕉</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_0_W13M2">
+            <M id="KavCon-banana trees_abas_ipay2_S_0_W14M2">
                 <FORM kindOf="original">ku</FORM>
                 <PHON kindOf="original">ku</PHON>
                 <FORM kindOf="standard">ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
-                <TRANSL xml:lang="eng">1SG.GEN</TRANSL>
-                <TRANSL xml:lang="zho">1SG.屬格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1SG.GEN</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1SG.屬格</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_0_W14">
+        <W id="KavCon-banana trees_abas_ipay2_S_0_W15">
             <FORM kindOf="original">mwaza</FORM>
-            <PHON kindOf="original">mwaz~ra</PHON>
+            <PHON kindOf="original">mwa[z|r]a</PHON>
             <FORM kindOf="standard">mwaza</FORM>
-            <PHON kindOf="standard">mwaz~ra</PHON>
-            <TRANSL xml:lang="zho">多.非人</TRANSL>
-            <TRANSL xml:lang="eng">many.NHUM</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_0_W14M1">
+            <PHON kindOf="standard">mwa[z|r]a</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">多.非人</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">many.NHUM</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_0_W15M1">
                 <FORM kindOf="original">mwaza</FORM>
-                <PHON kindOf="original">mwaz~ra</PHON>
+                <PHON kindOf="original">mwa[z|r]a</PHON>
                 <FORM kindOf="standard">mwaza</FORM>
-                <PHON kindOf="standard">mwaz~ra</PHON>
-                <TRANSL xml:lang="eng">many.NHUM</TRANSL>
-                <TRANSL xml:lang="zho">多.非人</TRANSL>
+                <PHON kindOf="standard">mwa[z|r]a</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">many.NHUM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">多.非人</TRANSL>
             </M>
         </W>
     </S>
     <S id="KavCon-banana trees_abas_ipay2_S_1">
         <FORM kindOf="original">aiku m mai tu lazat.</FORM>
-        <PHON kindOf="original">aiku m mai tu raz~rat.</PHON>
+        <PHON kindOf="original">aiku m mai tu ra[z|r]at</PHON>
         <FORM kindOf="standard">aiku m mai tu lazat.</FORM>
-        <PHON kindOf="standard">aiku m mai tu raz~rat.</PHON>
+        <PHON kindOf="standard">aiku m mai tu ra[z|r]at</PHON>
         <TRANSL xml:lang="zho">我沒有人.</TRANSL>
         <TRANSL xml:lang="eng">I am short-handed.</TRANSL>
         <AUDIO file="KavCon-banana trees_abas_ipay2_S1.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavCon-banana trees_abas_ipay2.mp3" start="9.1" end="10.41"/>
@@ -294,15 +308,15 @@
             <PHON kindOf="original">aiku</PHON>
             <FORM kindOf="standard">aiku</FORM>
             <PHON kindOf="standard">aiku</PHON>
-            <TRANSL xml:lang="zho">1SG.主格</TRANSL>
-            <TRANSL xml:lang="eng">1SG.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">1SG.主格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">1SG.NOM</TRANSL>
             <M id="KavCon-banana trees_abas_ipay2_S_1_W0M1">
                 <FORM kindOf="original">aiku</FORM>
                 <PHON kindOf="original">aiku</PHON>
                 <FORM kindOf="standard">aiku</FORM>
                 <PHON kindOf="standard">aiku</PHON>
-                <TRANSL xml:lang="eng">1SG.NOM</TRANSL>
-                <TRANSL xml:lang="zho">1SG.主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1SG.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1SG.主格</TRANSL>
             </M>
         </W>
         <W id="KavCon-banana trees_abas_ipay2_S_1_W1">
@@ -310,15 +324,15 @@
             <PHON kindOf="original">m</PHON>
             <FORM kindOf="standard">m</FORM>
             <PHON kindOf="standard">m</PHON>
-            <TRANSL xml:lang="zho">FS</TRANSL>
-            <TRANSL xml:lang="eng">FS</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
             <M id="KavCon-banana trees_abas_ipay2_S_1_W1M1">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="eng">FS</TRANSL>
-                <TRANSL xml:lang="zho">FS</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
             </M>
         </W>
         <W id="KavCon-banana trees_abas_ipay2_S_1_W2">
@@ -326,15 +340,15 @@
             <PHON kindOf="original">mai</PHON>
             <FORM kindOf="standard">mai</FORM>
             <PHON kindOf="standard">mai</PHON>
-            <TRANSL xml:lang="zho">否定</TRANSL>
-            <TRANSL xml:lang="eng">NEG</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">否定</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">NEG</TRANSL>
             <M id="KavCon-banana trees_abas_ipay2_S_1_W2M1">
                 <FORM kindOf="original">mai</FORM>
                 <PHON kindOf="original">mai</PHON>
                 <FORM kindOf="standard">mai</FORM>
                 <PHON kindOf="standard">mai</PHON>
-                <TRANSL xml:lang="eng">NEG</TRANSL>
-                <TRANSL xml:lang="zho">否定</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NEG</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">否定</TRANSL>
             </M>
         </W>
         <W id="KavCon-banana trees_abas_ipay2_S_1_W3">
@@ -342,56 +356,54 @@
             <PHON kindOf="original">tu</PHON>
             <FORM kindOf="standard">tu</FORM>
             <PHON kindOf="standard">tu</PHON>
-            <TRANSL xml:lang="zho">斜格</TRANSL>
-            <TRANSL xml:lang="eng">OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             <M id="KavCon-banana trees_abas_ipay2_S_1_W3M1">
                 <FORM kindOf="original">tu</FORM>
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="eng">OBL</TRANSL>
-                <TRANSL xml:lang="zho">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
             </M>
         </W>
         <W id="KavCon-banana trees_abas_ipay2_S_1_W4">
             <FORM kindOf="original">lazat</FORM>
-            <PHON kindOf="original">raz~rat</PHON>
+            <PHON kindOf="original">ra[z|r]at</PHON>
             <FORM kindOf="standard">lazat</FORM>
-            <PHON kindOf="standard">raz~rat</PHON>
-            <TRANSL xml:lang="zho">人</TRANSL>
-            <TRANSL xml:lang="eng">person</TRANSL>
+            <PHON kindOf="standard">ra[z|r]at</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">人</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">person</TRANSL>
             <M id="KavCon-banana trees_abas_ipay2_S_1_W4M1">
                 <FORM kindOf="original">lazat</FORM>
-                <PHON kindOf="original">raz~rat</PHON>
+                <PHON kindOf="original">ra[z|r]at</PHON>
                 <FORM kindOf="standard">lazat</FORM>
-                <PHON kindOf="standard">raz~rat</PHON>
-                <TRANSL xml:lang="eng">person</TRANSL>
-                <TRANSL xml:lang="zho">人</TRANSL>
+                <PHON kindOf="standard">ra[z|r]at</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">person</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">人</TRANSL>
             </M>
         </W>
     </S>
     <S id="KavCon-banana trees_abas_ipay2_S_2">
-        <FORM kindOf="original">XXXX XXXX nengi nayaupaita XXXX nayawpaita.</FORM>
-        <PHON kindOf="original">**** **** nəŋi najaupaita **** najawpaita.</PHON>
-        <FORM kindOf="standard">XXXX XXXX nengi nayaupaita XXXX nayawpaita.</FORM>
-        <PHON kindOf="standard">**** **** nəŋi najaupaita **** najawpaita.</PHON>
+        <FORM kindOf="original">I XXXX XXXX A nengi nayaupaita I XXXX A nayawpaita.</FORM>
+        <PHON kindOf="original">i **** **** a nəŋi najaupaita i **** a najawpaita</PHON>
+        <FORM kindOf="standard">I XXXX XXXX A nengi nayaupaita I XXXX A nayawpaita.</FORM>
+        <PHON kindOf="standard">i **** **** a nəŋi najaupaita i **** a najawpaita</PHON>
         <TRANSL xml:lang="zho">好,我們那樣做.</TRANSL>
         <TRANSL xml:lang="eng">Okay, let's do so.</TRANSL>
         <AUDIO file="KavCon-banana trees_abas_ipay2_S2.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavCon-banana trees_abas_ipay2.mp3" start="10.41" end="14.18"/>
         <W id="KavCon-banana trees_abas_ipay2_S_2_W0">
-            <FORM kindOf="original">XXXX</FORM>
-            <PHON kindOf="original">****</PHON>
-            <FORM kindOf="standard">XXXX</FORM>
-            <PHON kindOf="standard">****</PHON>
-            <TRANSL xml:lang="zho">XXXX</TRANSL>
-            <TRANSL xml:lang="eng">XXXX</TRANSL>
+            <FORM kindOf="original">I</FORM>
+            <PHON kindOf="original">i</PHON>
+            <FORM kindOf="standard">I</FORM>
+            <PHON kindOf="standard">i</PHON>
             <M id="KavCon-banana trees_abas_ipay2_S_2_W0M1">
-                <FORM kindOf="original">XXXX</FORM>
-                <PHON kindOf="original">****</PHON>
-                <FORM kindOf="standard">XXXX</FORM>
-                <PHON kindOf="standard">****</PHON>
-                <TRANSL xml:lang="eng">XXXX</TRANSL>
-                <TRANSL xml:lang="zho">XXXX</TRANSL>
+                <FORM kindOf="original">I</FORM>
+                <PHON kindOf="original">i</PHON>
+                <FORM kindOf="standard">I</FORM>
+                <PHON kindOf="standard">i</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">_</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">_</TRANSL>
             </M>
         </W>
         <W id="KavCon-banana trees_abas_ipay2_S_2_W1">
@@ -399,631 +411,801 @@
             <PHON kindOf="original">****</PHON>
             <FORM kindOf="standard">XXXX</FORM>
             <PHON kindOf="standard">****</PHON>
-            <TRANSL xml:lang="zho">XXXX</TRANSL>
-            <TRANSL xml:lang="eng">XXXX</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">XXXX</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">XXXX</TRANSL>
             <M id="KavCon-banana trees_abas_ipay2_S_2_W1M1">
                 <FORM kindOf="original">XXXX</FORM>
                 <PHON kindOf="original">****</PHON>
                 <FORM kindOf="standard">XXXX</FORM>
                 <PHON kindOf="standard">****</PHON>
-                <TRANSL xml:lang="eng">XXXX</TRANSL>
-                <TRANSL xml:lang="zho">XXXX</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">XXXX</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">XXXX</TRANSL>
             </M>
         </W>
         <W id="KavCon-banana trees_abas_ipay2_S_2_W2">
+            <FORM kindOf="original">XXXX</FORM>
+            <PHON kindOf="original">****</PHON>
+            <FORM kindOf="standard">XXXX</FORM>
+            <PHON kindOf="standard">****</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">XXXX</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">XXXX</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_2_W2M1">
+                <FORM kindOf="original">XXXX</FORM>
+                <PHON kindOf="original">****</PHON>
+                <FORM kindOf="standard">XXXX</FORM>
+                <PHON kindOf="standard">****</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">XXXX</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">XXXX</TRANSL>
+            </M>
+        </W>
+        <W id="KavCon-banana trees_abas_ipay2_S_2_W3">
+            <FORM kindOf="original">A</FORM>
+            <PHON kindOf="original">a</PHON>
+            <FORM kindOf="standard">A</FORM>
+            <PHON kindOf="standard">a</PHON>
+            <M id="KavCon-banana trees_abas_ipay2_S_2_W3M1">
+                <FORM kindOf="original">A</FORM>
+                <PHON kindOf="original">a</PHON>
+                <FORM kindOf="standard">A</FORM>
+                <PHON kindOf="standard">a</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">_</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">_</TRANSL>
+            </M>
+        </W>
+        <W id="KavCon-banana trees_abas_ipay2_S_2_W4">
             <FORM kindOf="original">nengi</FORM>
             <PHON kindOf="original">nəŋi</PHON>
             <FORM kindOf="standard">nengi</FORM>
             <PHON kindOf="standard">nəŋi</PHON>
-            <TRANSL xml:lang="zho">好</TRANSL>
-            <TRANSL xml:lang="eng">good</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_2_W2M1">
+            <TRANSL xml:lang="zho" kindOf="original">好</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">good</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_2_W4M1">
                 <FORM kindOf="original">nengi</FORM>
                 <PHON kindOf="original">nəŋi</PHON>
                 <FORM kindOf="standard">nengi</FORM>
                 <PHON kindOf="standard">nəŋi</PHON>
-                <TRANSL xml:lang="eng">good</TRANSL>
-                <TRANSL xml:lang="zho">好</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">good</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">好</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_2_W3">
+        <W id="KavCon-banana trees_abas_ipay2_S_2_W5">
             <FORM kindOf="original">nayau=pa=ita</FORM>
-            <PHON kindOf="original">najau=pa=ita</PHON>
+            <PHON kindOf="original">najaupaita</PHON>
             <FORM kindOf="standard">nayau=pa=ita</FORM>
-            <PHON kindOf="standard">najau=pa=ita</PHON>
-            <TRANSL xml:lang="zho">那樣=未來=1IPL.主格</TRANSL>
-            <TRANSL xml:lang="eng">that.way=FUT=1IPL.NOM</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_2_W3M1">
+            <PHON kindOf="standard">najaupaita</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">那樣=未來=1IPL.主格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">that.way=FUT=1IPL.NOM</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_2_W5M1">
                 <FORM kindOf="original">nayau</FORM>
                 <PHON kindOf="original">najau</PHON>
                 <FORM kindOf="standard">nayau</FORM>
                 <PHON kindOf="standard">najau</PHON>
-                <TRANSL xml:lang="eng">that.way</TRANSL>
-                <TRANSL xml:lang="zho">那樣</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">that.way</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">那樣</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_2_W3M2">
-                <FORM kindOf="original">pa</FORM>
+            <M id="KavCon-banana trees_abas_ipay2_S_2_W5M2">
+                <FORM kindOf="original">=pa</FORM>
                 <PHON kindOf="original">pa</PHON>
-                <FORM kindOf="standard">pa</FORM>
+                <FORM kindOf="standard">=pa</FORM>
                 <PHON kindOf="standard">pa</PHON>
-                <TRANSL xml:lang="eng">FUT</TRANSL>
-                <TRANSL xml:lang="zho">未來</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FUT</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">未來</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_2_W3M3">
-                <FORM kindOf="original">ita</FORM>
+            <M id="KavCon-banana trees_abas_ipay2_S_2_W5M3">
+                <FORM kindOf="original">=ita</FORM>
                 <PHON kindOf="original">ita</PHON>
-                <FORM kindOf="standard">ita</FORM>
+                <FORM kindOf="standard">=ita</FORM>
                 <PHON kindOf="standard">ita</PHON>
-                <TRANSL xml:lang="eng">1IPL.NOM</TRANSL>
-                <TRANSL xml:lang="zho">1IPL.主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1IPL.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1IPL.主格</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_2_W4">
+        <W id="KavCon-banana trees_abas_ipay2_S_2_W6">
+            <FORM kindOf="original">I</FORM>
+            <PHON kindOf="original">i</PHON>
+            <FORM kindOf="standard">I</FORM>
+            <PHON kindOf="standard">i</PHON>
+            <M id="KavCon-banana trees_abas_ipay2_S_2_W6M1">
+                <FORM kindOf="original">I</FORM>
+                <PHON kindOf="original">i</PHON>
+                <FORM kindOf="standard">I</FORM>
+                <PHON kindOf="standard">i</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">_</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">_</TRANSL>
+            </M>
+        </W>
+        <W id="KavCon-banana trees_abas_ipay2_S_2_W7">
             <FORM kindOf="original">XXXX</FORM>
             <PHON kindOf="original">****</PHON>
             <FORM kindOf="standard">XXXX</FORM>
             <PHON kindOf="standard">****</PHON>
-            <TRANSL xml:lang="zho">XXXX</TRANSL>
-            <TRANSL xml:lang="eng">XXXX</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_2_W4M1">
+            <TRANSL xml:lang="zho" kindOf="original">XXXX</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">XXXX</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_2_W7M1">
                 <FORM kindOf="original">XXXX</FORM>
                 <PHON kindOf="original">****</PHON>
                 <FORM kindOf="standard">XXXX</FORM>
                 <PHON kindOf="standard">****</PHON>
-                <TRANSL xml:lang="eng">XXXX</TRANSL>
-                <TRANSL xml:lang="zho">XXXX</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">XXXX</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">XXXX</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_2_W5">
+        <W id="KavCon-banana trees_abas_ipay2_S_2_W8">
+            <FORM kindOf="original">A</FORM>
+            <PHON kindOf="original">a</PHON>
+            <FORM kindOf="standard">A</FORM>
+            <PHON kindOf="standard">a</PHON>
+            <M id="KavCon-banana trees_abas_ipay2_S_2_W8M1">
+                <FORM kindOf="original">A</FORM>
+                <PHON kindOf="original">a</PHON>
+                <FORM kindOf="standard">A</FORM>
+                <PHON kindOf="standard">a</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">_</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">_</TRANSL>
+            </M>
+        </W>
+        <W id="KavCon-banana trees_abas_ipay2_S_2_W9">
             <FORM kindOf="original">nayaw=pa=ita</FORM>
-            <PHON kindOf="original">najaw=pa=ita</PHON>
+            <PHON kindOf="original">najawpaita</PHON>
             <FORM kindOf="standard">nayaw=pa=ita</FORM>
-            <PHON kindOf="standard">najaw=pa=ita</PHON>
-            <TRANSL xml:lang="zho">那樣=未來=1IPL.主格</TRANSL>
-            <TRANSL xml:lang="eng">that.way=FUT=1IPL.NOM</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_2_W5M1">
+            <PHON kindOf="standard">najawpaita</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">那樣=未來=1IPL.主格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">that.way=FUT=1IPL.NOM</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_2_W9M1">
                 <FORM kindOf="original">nayaw</FORM>
                 <PHON kindOf="original">najaw</PHON>
                 <FORM kindOf="standard">nayaw</FORM>
                 <PHON kindOf="standard">najaw</PHON>
-                <TRANSL xml:lang="eng">that.way</TRANSL>
-                <TRANSL xml:lang="zho">那樣</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">that.way</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">那樣</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_2_W5M2">
-                <FORM kindOf="original">pa</FORM>
+            <M id="KavCon-banana trees_abas_ipay2_S_2_W9M2">
+                <FORM kindOf="original">=pa</FORM>
                 <PHON kindOf="original">pa</PHON>
-                <FORM kindOf="standard">pa</FORM>
+                <FORM kindOf="standard">=pa</FORM>
                 <PHON kindOf="standard">pa</PHON>
-                <TRANSL xml:lang="eng">FUT</TRANSL>
-                <TRANSL xml:lang="zho">未來</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FUT</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">未來</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_2_W5M3">
-                <FORM kindOf="original">ita</FORM>
+            <M id="KavCon-banana trees_abas_ipay2_S_2_W9M3">
+                <FORM kindOf="original">=ita</FORM>
                 <PHON kindOf="original">ita</PHON>
-                <FORM kindOf="standard">ita</FORM>
+                <FORM kindOf="standard">=ita</FORM>
                 <PHON kindOf="standard">ita</PHON>
-                <TRANSL xml:lang="eng">1IPL.NOM</TRANSL>
-                <TRANSL xml:lang="zho">1IPL.主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1IPL.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1IPL.主格</TRANSL>
             </M>
         </W>
     </S>
     <S id="KavCon-banana trees_abas_ipay2_S_3">
-        <FORM kindOf="original">XXXX tateman ka.</FORM>
-        <PHON kindOf="original">**** tatəman ka.</PHON>
-        <FORM kindOf="standard">XXXX tateman ka.</FORM>
-        <PHON kindOf="standard">**** tatəman ka.</PHON>
+        <FORM kindOf="original">I XXXX tateman ka.</FORM>
+        <PHON kindOf="original">i **** tatəman ka</PHON>
+        <FORM kindOf="standard">I XXXX tateman ka.</FORM>
+        <PHON kindOf="standard">i **** tatəman ka</PHON>
         <TRANSL xml:lang="zho">很小.</TRANSL>
         <TRANSL xml:lang="eng">so small</TRANSL>
         <AUDIO file="KavCon-banana trees_abas_ipay2_S3.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavCon-banana trees_abas_ipay2.mp3" start="14.18" end="16.16"/>
         <W id="KavCon-banana trees_abas_ipay2_S_3_W0">
+            <FORM kindOf="original">I</FORM>
+            <PHON kindOf="original">i</PHON>
+            <FORM kindOf="standard">I</FORM>
+            <PHON kindOf="standard">i</PHON>
+            <M id="KavCon-banana trees_abas_ipay2_S_3_W0M1">
+                <FORM kindOf="original">I</FORM>
+                <PHON kindOf="original">i</PHON>
+                <FORM kindOf="standard">I</FORM>
+                <PHON kindOf="standard">i</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">_</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">_</TRANSL>
+            </M>
+        </W>
+        <W id="KavCon-banana trees_abas_ipay2_S_3_W1">
             <FORM kindOf="original">XXXX</FORM>
             <PHON kindOf="original">****</PHON>
             <FORM kindOf="standard">XXXX</FORM>
             <PHON kindOf="standard">****</PHON>
-            <TRANSL xml:lang="zho">XXXX</TRANSL>
-            <TRANSL xml:lang="eng">XXXX</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_3_W0M1">
+            <TRANSL xml:lang="zho" kindOf="original">XXXX</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">XXXX</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_3_W1M1">
                 <FORM kindOf="original">XXXX</FORM>
                 <PHON kindOf="original">****</PHON>
                 <FORM kindOf="standard">XXXX</FORM>
                 <PHON kindOf="standard">****</PHON>
-                <TRANSL xml:lang="eng">XXXX</TRANSL>
-                <TRANSL xml:lang="zho">XXXX</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">XXXX</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">XXXX</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_3_W1">
+        <W id="KavCon-banana trees_abas_ipay2_S_3_W2">
             <FORM kindOf="original">tateman</FORM>
             <PHON kindOf="original">tatəman</PHON>
             <FORM kindOf="standard">tateman</FORM>
             <PHON kindOf="standard">tatəman</PHON>
-            <TRANSL xml:lang="zho">小</TRANSL>
-            <TRANSL xml:lang="eng">small</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_3_W1M1">
+            <TRANSL xml:lang="zho" kindOf="original">小</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">small</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_3_W2M1">
                 <FORM kindOf="original">tateman</FORM>
                 <PHON kindOf="original">tatəman</PHON>
                 <FORM kindOf="standard">tateman</FORM>
                 <PHON kindOf="standard">tatəman</PHON>
-                <TRANSL xml:lang="eng">small</TRANSL>
-                <TRANSL xml:lang="zho">小</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">small</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">小</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_3_W2">
+        <W id="KavCon-banana trees_abas_ipay2_S_3_W3">
             <FORM kindOf="original">ka</FORM>
             <PHON kindOf="original">ka</PHON>
             <FORM kindOf="standard">ka</FORM>
             <PHON kindOf="standard">ka</PHON>
-            <TRANSL xml:lang="zho">感嘆</TRANSL>
-            <TRANSL xml:lang="eng">INT</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_3_W2M1">
+            <TRANSL xml:lang="zho" kindOf="original">感嘆</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">INT</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_3_W3M1">
                 <FORM kindOf="original">ka</FORM>
                 <PHON kindOf="original">ka</PHON>
                 <FORM kindOf="standard">ka</FORM>
                 <PHON kindOf="standard">ka</PHON>
-                <TRANSL xml:lang="eng">INT</TRANSL>
-                <TRANSL xml:lang="zho">感嘆</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">INT</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">感嘆</TRANSL>
             </M>
         </W>
     </S>
     <S id="KavCon-banana trees_abas_ipay2_S_4">
-        <FORM kindOf="original">Ralis tateman nani.</FORM>
-        <PHON kindOf="original">ʁaris tatəman nani.</PHON>
-        <FORM kindOf="standard">Ralis tateman nani.</FORM>
-        <PHON kindOf="standard">ʁaris tatəman nani.</PHON>
-        <TRANSL xml:lang="zho" notes="(香蕉樹)很小.">很小.</TRANSL>
-        <TRANSL xml:lang="eng" notes="(Banana trees) are small.">are small.</TRANSL>
+        <FORM kindOf="original">A Ralis tateman nani.</FORM>
+        <PHON kindOf="original">a ʁaris tatəman nani</PHON>
+        <FORM kindOf="standard">A Ralis tateman nani.</FORM>
+        <PHON kindOf="standard">a ʁaris tatəman nani</PHON>
+        <TRANSL xml:lang="zho">(香蕉樹)很小.</TRANSL>
+        <TRANSL xml:lang="eng">(Banana trees) are small.</TRANSL>
         <AUDIO file="KavCon-banana trees_abas_ipay2_S4.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavCon-banana trees_abas_ipay2.mp3" start="16.16" end="16.19"/>
         <W id="KavCon-banana trees_abas_ipay2_S_4_W0">
+            <FORM kindOf="original">A</FORM>
+            <PHON kindOf="original">a</PHON>
+            <FORM kindOf="standard">A</FORM>
+            <PHON kindOf="standard">a</PHON>
+            <M id="KavCon-banana trees_abas_ipay2_S_4_W0M1">
+                <FORM kindOf="original">A</FORM>
+                <PHON kindOf="original">a</PHON>
+                <FORM kindOf="standard">A</FORM>
+                <PHON kindOf="standard">a</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">_</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">_</TRANSL>
+            </M>
+        </W>
+        <W id="KavCon-banana trees_abas_ipay2_S_4_W1">
             <FORM kindOf="original">Ralis</FORM>
             <PHON kindOf="original">ʁaris</PHON>
             <FORM kindOf="standard">Ralis</FORM>
             <PHON kindOf="standard">ʁaris</PHON>
-            <TRANSL xml:lang="zho">小</TRANSL>
-            <TRANSL xml:lang="eng">small</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_4_W0M1">
+            <TRANSL xml:lang="zho" kindOf="original">小</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">small</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_4_W1M1">
                 <FORM kindOf="original">Ralis</FORM>
                 <PHON kindOf="original">ʁaris</PHON>
                 <FORM kindOf="standard">Ralis</FORM>
                 <PHON kindOf="standard">ʁaris</PHON>
-                <TRANSL xml:lang="eng">small</TRANSL>
-                <TRANSL xml:lang="zho">小</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">small</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">小</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_4_W1">
+        <W id="KavCon-banana trees_abas_ipay2_S_4_W2">
             <FORM kindOf="original">tateman</FORM>
             <PHON kindOf="original">tatəman</PHON>
             <FORM kindOf="standard">tateman</FORM>
             <PHON kindOf="standard">tatəman</PHON>
-            <TRANSL xml:lang="zho">小</TRANSL>
-            <TRANSL xml:lang="eng">small</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_4_W1M1">
+            <TRANSL xml:lang="zho" kindOf="original">小</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">small</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_4_W2M1">
                 <FORM kindOf="original">tateman</FORM>
                 <PHON kindOf="original">tatəman</PHON>
                 <FORM kindOf="standard">tateman</FORM>
                 <PHON kindOf="standard">tatəman</PHON>
-                <TRANSL xml:lang="eng">small</TRANSL>
-                <TRANSL xml:lang="zho">小</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">small</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">小</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_4_W2">
+        <W id="KavCon-banana trees_abas_ipay2_S_4_W3">
             <FORM kindOf="original">nani</FORM>
             <PHON kindOf="original">nani</PHON>
             <FORM kindOf="standard">nani</FORM>
             <PHON kindOf="standard">nani</PHON>
-            <TRANSL xml:lang="zho">DM</TRANSL>
-            <TRANSL xml:lang="eng">DM</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_4_W2M1">
+            <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_4_W3M1">
                 <FORM kindOf="original">nani</FORM>
                 <PHON kindOf="original">nani</PHON>
                 <FORM kindOf="standard">nani</FORM>
                 <PHON kindOf="standard">nani</PHON>
-                <TRANSL xml:lang="eng">DM</TRANSL>
-                <TRANSL xml:lang="zho">DM</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
             </M>
         </W>
     </S>
     <S id="KavCon-banana trees_abas_ipay2_S_5">
-        <FORM kindOf="original">nayauakita sikawma si mana azu.</FORM>
-        <PHON kindOf="original">najauakita sikawma si mana az~ru.</PHON>
-        <FORM kindOf="standard">nayauakita sikawma si mana azu.</FORM>
-        <PHON kindOf="standard">najauakita sikawma si mana az~ru.</PHON>
+        <FORM kindOf="original">I nayauakita sikawma si mana azu.</FORM>
+        <PHON kindOf="original">i najauakita sikawma si mana a[z|r]u</PHON>
+        <FORM kindOf="standard">I nayauakita sikawma si mana azu.</FORM>
+        <PHON kindOf="standard">i najauakita sikawma si mana a[z|r]u</PHON>
         <TRANSL xml:lang="zho">我們這樣講,不好嗎?</TRANSL>
         <TRANSL xml:lang="eng">We say so, why…</TRANSL>
         <AUDIO file="KavCon-banana trees_abas_ipay2_S5.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavCon-banana trees_abas_ipay2.mp3" start="16.19" end="20.21"/>
         <W id="KavCon-banana trees_abas_ipay2_S_5_W0">
-            <FORM kindOf="original">nayau-a-kita</FORM>
-            <PHON kindOf="original">najau-a-kita</PHON>
-            <FORM kindOf="standard">nayau-a-kita</FORM>
-            <PHON kindOf="standard">najau-a-kita</PHON>
-            <TRANSL xml:lang="zho">那樣-非主焦-1IPL.屬格</TRANSL>
-            <TRANSL xml:lang="eng">that.way-NAF-1IPL.GEN</TRANSL>
+            <FORM kindOf="original">I</FORM>
+            <PHON kindOf="original">i</PHON>
+            <FORM kindOf="standard">I</FORM>
+            <PHON kindOf="standard">i</PHON>
             <M id="KavCon-banana trees_abas_ipay2_S_5_W0M1">
+                <FORM kindOf="original">I</FORM>
+                <PHON kindOf="original">i</PHON>
+                <FORM kindOf="standard">I</FORM>
+                <PHON kindOf="standard">i</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">_</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">_</TRANSL>
+            </M>
+        </W>
+        <W id="KavCon-banana trees_abas_ipay2_S_5_W1">
+            <FORM kindOf="original">nayau-a-kita</FORM>
+            <PHON kindOf="original">najauakita</PHON>
+            <FORM kindOf="standard">nayau-a-kita</FORM>
+            <PHON kindOf="standard">najauakita</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">那樣-非主焦-1IPL.屬格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">that.way-NAF-1IPL.GEN</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_5_W1M1">
                 <FORM kindOf="original">nayau</FORM>
                 <PHON kindOf="original">najau</PHON>
                 <FORM kindOf="standard">nayau</FORM>
                 <PHON kindOf="standard">najau</PHON>
-                <TRANSL xml:lang="eng">that.way</TRANSL>
-                <TRANSL xml:lang="zho">那樣</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">that.way</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">那樣</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_5_W0M2">
+            <M id="KavCon-banana trees_abas_ipay2_S_5_W1M2">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="eng">NAF</TRANSL>
-                <TRANSL xml:lang="zho">非主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NAF</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">非主焦</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_5_W0M3">
+            <M id="KavCon-banana trees_abas_ipay2_S_5_W1M3">
                 <FORM kindOf="original">kita</FORM>
                 <PHON kindOf="original">kita</PHON>
                 <FORM kindOf="standard">kita</FORM>
                 <PHON kindOf="standard">kita</PHON>
-                <TRANSL xml:lang="eng">1IPL.GEN</TRANSL>
-                <TRANSL xml:lang="zho">1IPL.屬格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1IPL.GEN</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1IPL.屬格</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_5_W1">
+        <W id="KavCon-banana trees_abas_ipay2_S_5_W2">
             <FORM kindOf="original">sikawma</FORM>
             <PHON kindOf="original">sikawma</PHON>
             <FORM kindOf="standard">sikawma</FORM>
             <PHON kindOf="standard">sikawma</PHON>
-            <TRANSL xml:lang="zho">說</TRANSL>
-            <TRANSL xml:lang="eng">speak</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_5_W1M1">
+            <TRANSL xml:lang="zho" kindOf="original">說</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">speak</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_5_W2M1">
                 <FORM kindOf="original">sikawma</FORM>
                 <PHON kindOf="original">sikawma</PHON>
                 <FORM kindOf="standard">sikawma</FORM>
                 <PHON kindOf="standard">sikawma</PHON>
-                <TRANSL xml:lang="eng">speak</TRANSL>
-                <TRANSL xml:lang="zho">說</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">speak</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">說</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_5_W2">
+        <W id="KavCon-banana trees_abas_ipay2_S_5_W3">
             <FORM kindOf="original">si</FORM>
             <PHON kindOf="original">si</PHON>
             <FORM kindOf="standard">si</FORM>
             <PHON kindOf="standard">si</PHON>
-            <TRANSL xml:lang="zho">條件詞</TRANSL>
-            <TRANSL xml:lang="eng">COND</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_5_W2M1">
+            <TRANSL xml:lang="zho" kindOf="original">條件詞</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">COND</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_5_W3M1">
                 <FORM kindOf="original">si</FORM>
                 <PHON kindOf="original">si</PHON>
                 <FORM kindOf="standard">si</FORM>
                 <PHON kindOf="standard">si</PHON>
-                <TRANSL xml:lang="eng">COND</TRANSL>
-                <TRANSL xml:lang="zho">條件詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">COND</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">條件詞</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_5_W3">
+        <W id="KavCon-banana trees_abas_ipay2_S_5_W4">
             <FORM kindOf="original">mana</FORM>
             <PHON kindOf="original">mana</PHON>
             <FORM kindOf="standard">mana</FORM>
             <PHON kindOf="standard">mana</PHON>
-            <TRANSL xml:lang="zho">為什麼</TRANSL>
-            <TRANSL xml:lang="eng">why</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_5_W3M1">
+            <TRANSL xml:lang="zho" kindOf="original">為什麼</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">why</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_5_W4M1">
                 <FORM kindOf="original">mana</FORM>
                 <PHON kindOf="original">mana</PHON>
                 <FORM kindOf="standard">mana</FORM>
                 <PHON kindOf="standard">mana</PHON>
-                <TRANSL xml:lang="eng">why</TRANSL>
-                <TRANSL xml:lang="zho">為什麼</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">why</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">為什麼</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_5_W4">
+        <W id="KavCon-banana trees_abas_ipay2_S_5_W5">
             <FORM kindOf="original">azu</FORM>
-            <PHON kindOf="original">az~ru</PHON>
+            <PHON kindOf="original">a[z|r]u</PHON>
             <FORM kindOf="standard">azu</FORM>
-            <PHON kindOf="standard">az~ru</PHON>
-            <TRANSL xml:lang="zho">像</TRANSL>
-            <TRANSL xml:lang="eng">like</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_5_W4M1">
+            <PHON kindOf="standard">a[z|r]u</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">像</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">like</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_5_W5M1">
                 <FORM kindOf="original">azu</FORM>
-                <PHON kindOf="original">az~ru</PHON>
+                <PHON kindOf="original">a[z|r]u</PHON>
                 <FORM kindOf="standard">azu</FORM>
-                <PHON kindOf="standard">az~ru</PHON>
-                <TRANSL xml:lang="eng">like</TRANSL>
-                <TRANSL xml:lang="zho">像</TRANSL>
+                <PHON kindOf="standard">a[z|r]u</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">like</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">像</TRANSL>
             </M>
         </W>
     </S>
     <S id="KavCon-banana trees_abas_ipay2_S_6">
-        <FORM kindOf="original">sanisika zinkuisu.</FORM>
-        <PHON kindOf="original">sanisika z~rinkuisu.</PHON>
-        <FORM kindOf="standard">sanisika zinkuisu.</FORM>
-        <PHON kindOf="standard">sanisika z~rinkuisu.</PHON>
-        <TRANSL xml:lang="zho" notes="我說讓你削樹皮,(你要做也可以不要做也可以).">我說讓你削樹皮, .</TRANSL>
-        <TRANSL xml:lang="eng" notes="'Bark (the banana trees),' said I. (It's up to you.)">'Bark ,' said I.</TRANSL>
+        <FORM kindOf="original">A sanisika zinkuisu.</FORM>
+        <PHON kindOf="original">a sanisika [z|r]inkuisu</PHON>
+        <FORM kindOf="standard">A sanisika zinkuisu.</FORM>
+        <PHON kindOf="standard">a sanisika [z|r]inkuisu</PHON>
+        <TRANSL xml:lang="zho">我說讓你削樹皮,(你要做也可以不要做也可以).</TRANSL>
+        <TRANSL xml:lang="eng">'Bark (the banana trees),' said I. (It's up to you.)</TRANSL>
         <AUDIO file="KavCon-banana trees_abas_ipay2_S6.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavCon-banana trees_abas_ipay2.mp3" start="20.21" end="21.78"/>
         <W id="KavCon-banana trees_abas_ipay2_S_6_W0">
-            <FORM kindOf="original">sanis-ika</FORM>
-            <PHON kindOf="original">sanis-ika</PHON>
-            <FORM kindOf="standard">sanis-ika</FORM>
-            <PHON kindOf="standard">sanis-ika</PHON>
-            <TRANSL xml:lang="zho">削樹皮-處焦.祈使</TRANSL>
-            <TRANSL xml:lang="eng">bark-LF.IMP</TRANSL>
+            <FORM kindOf="original">A</FORM>
+            <PHON kindOf="original">a</PHON>
+            <FORM kindOf="standard">A</FORM>
+            <PHON kindOf="standard">a</PHON>
             <M id="KavCon-banana trees_abas_ipay2_S_6_W0M1">
+                <FORM kindOf="original">A</FORM>
+                <PHON kindOf="original">a</PHON>
+                <FORM kindOf="standard">A</FORM>
+                <PHON kindOf="standard">a</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">_</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">_</TRANSL>
+            </M>
+        </W>
+        <W id="KavCon-banana trees_abas_ipay2_S_6_W1">
+            <FORM kindOf="original">sanis-ika</FORM>
+            <PHON kindOf="original">sanisika</PHON>
+            <FORM kindOf="standard">sanis-ika</FORM>
+            <PHON kindOf="standard">sanisika</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">削樹皮-處焦.祈使</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">bark-LF.IMP</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_6_W1M1">
                 <FORM kindOf="original">sanis</FORM>
                 <PHON kindOf="original">sanis</PHON>
                 <FORM kindOf="standard">sanis</FORM>
                 <PHON kindOf="standard">sanis</PHON>
-                <TRANSL xml:lang="eng">bark</TRANSL>
-                <TRANSL xml:lang="zho">削樹皮</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">bark</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">削樹皮</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_6_W0M2">
+            <M id="KavCon-banana trees_abas_ipay2_S_6_W1M2">
                 <FORM kindOf="original">ika</FORM>
                 <PHON kindOf="original">ika</PHON>
                 <FORM kindOf="standard">ika</FORM>
                 <PHON kindOf="standard">ika</PHON>
-                <TRANSL xml:lang="eng">LF.IMP</TRANSL>
-                <TRANSL xml:lang="zho">處焦.祈使</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LF.IMP</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">處焦.祈使</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_6_W1">
+        <W id="KavCon-banana trees_abas_ipay2_S_6_W2">
             <FORM kindOf="original">zin-ku=isu</FORM>
-            <PHON kindOf="original">z~rin-ku=isu</PHON>
+            <PHON kindOf="original">[z|r]inkuisu</PHON>
             <FORM kindOf="standard">zin-ku=isu</FORM>
-            <PHON kindOf="standard">z~rin-ku=isu</PHON>
-            <TRANSL xml:lang="zho">說-1SG.屬格=2SG.主格</TRANSL>
-            <TRANSL xml:lang="eng">say-1SG.GEN=2SG.NOM</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_6_W1M1">
+            <PHON kindOf="standard">[z|r]inkuisu</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">說-1SG.屬格=2SG.主格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">say-1SG.GEN=2SG.NOM</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_6_W2M1">
                 <FORM kindOf="original">zin</FORM>
-                <PHON kindOf="original">z~rin</PHON>
+                <PHON kindOf="original">[z|r]in</PHON>
                 <FORM kindOf="standard">zin</FORM>
-                <PHON kindOf="standard">z~rin</PHON>
-                <TRANSL xml:lang="eng">say</TRANSL>
-                <TRANSL xml:lang="zho">說</TRANSL>
+                <PHON kindOf="standard">[z|r]in</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">say</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">說</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_6_W1M2">
+            <M id="KavCon-banana trees_abas_ipay2_S_6_W2M2">
                 <FORM kindOf="original">ku</FORM>
                 <PHON kindOf="original">ku</PHON>
                 <FORM kindOf="standard">ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
-                <TRANSL xml:lang="eng">1SG.GEN</TRANSL>
-                <TRANSL xml:lang="zho">1SG.屬格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1SG.GEN</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1SG.屬格</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_6_W1M3">
-                <FORM kindOf="original">isu</FORM>
+            <M id="KavCon-banana trees_abas_ipay2_S_6_W2M3">
+                <FORM kindOf="original">=isu</FORM>
                 <PHON kindOf="original">isu</PHON>
-                <FORM kindOf="standard">isu</FORM>
+                <FORM kindOf="standard">=isu</FORM>
                 <PHON kindOf="standard">isu</PHON>
-                <TRANSL xml:lang="eng">2SG.NOM</TRANSL>
-                <TRANSL xml:lang="zho">2SG.主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">2SG.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">2SG.主格</TRANSL>
             </M>
         </W>
     </S>
     <S id="KavCon-banana trees_abas_ipay2_S_7">
-        <FORM kindOf="original">sanisakita ya.</FORM>
-        <PHON kindOf="original">sanisakita ja.</PHON>
-        <FORM kindOf="standard">sanisakita ya.</FORM>
-        <PHON kindOf="standard">sanisakita ja.</PHON>
+        <FORM kindOf="original">I sanisakita ya.</FORM>
+        <PHON kindOf="original">i sanisakita ja</PHON>
+        <FORM kindOf="standard">I sanisakita ya.</FORM>
+        <PHON kindOf="standard">i sanisakita ja</PHON>
         <TRANSL xml:lang="zho">好啊,我們來削樹皮.</TRANSL>
-        <TRANSL xml:lang="eng" notes="Let's bark (the banana trees).">Let's bark .</TRANSL>
+        <TRANSL xml:lang="eng">Let's bark (the banana trees).</TRANSL>
         <AUDIO file="KavCon-banana trees_abas_ipay2_S7.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavCon-banana trees_abas_ipay2.mp3" start="21.78" end="23.45"/>
         <W id="KavCon-banana trees_abas_ipay2_S_7_W0">
-            <FORM kindOf="original">sanis-a-kita</FORM>
-            <PHON kindOf="original">sanis-a-kita</PHON>
-            <FORM kindOf="standard">sanis-a-kita</FORM>
-            <PHON kindOf="standard">sanis-a-kita</PHON>
-            <TRANSL xml:lang="zho">削樹皮-非主焦-1IPL.屬格</TRANSL>
-            <TRANSL xml:lang="eng">bark-NAF-1IPL.GEN</TRANSL>
+            <FORM kindOf="original">I</FORM>
+            <PHON kindOf="original">i</PHON>
+            <FORM kindOf="standard">I</FORM>
+            <PHON kindOf="standard">i</PHON>
             <M id="KavCon-banana trees_abas_ipay2_S_7_W0M1">
+                <FORM kindOf="original">I</FORM>
+                <PHON kindOf="original">i</PHON>
+                <FORM kindOf="standard">I</FORM>
+                <PHON kindOf="standard">i</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">_</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">_</TRANSL>
+            </M>
+        </W>
+        <W id="KavCon-banana trees_abas_ipay2_S_7_W1">
+            <FORM kindOf="original">sanis-a-kita</FORM>
+            <PHON kindOf="original">sanisakita</PHON>
+            <FORM kindOf="standard">sanis-a-kita</FORM>
+            <PHON kindOf="standard">sanisakita</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">削樹皮-非主焦-1IPL.屬格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">bark-NAF-1IPL.GEN</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_7_W1M1">
                 <FORM kindOf="original">sanis</FORM>
                 <PHON kindOf="original">sanis</PHON>
                 <FORM kindOf="standard">sanis</FORM>
                 <PHON kindOf="standard">sanis</PHON>
-                <TRANSL xml:lang="eng">bark</TRANSL>
-                <TRANSL xml:lang="zho">削樹皮</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">bark</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">削樹皮</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_7_W0M2">
+            <M id="KavCon-banana trees_abas_ipay2_S_7_W1M2">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="eng">NAF</TRANSL>
-                <TRANSL xml:lang="zho">非主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NAF</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">非主焦</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_7_W0M3">
+            <M id="KavCon-banana trees_abas_ipay2_S_7_W1M3">
                 <FORM kindOf="original">kita</FORM>
                 <PHON kindOf="original">kita</PHON>
                 <FORM kindOf="standard">kita</FORM>
                 <PHON kindOf="standard">kita</PHON>
-                <TRANSL xml:lang="eng">1IPL.GEN</TRANSL>
-                <TRANSL xml:lang="zho">1IPL.屬格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1IPL.GEN</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1IPL.屬格</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_7_W1">
+        <W id="KavCon-banana trees_abas_ipay2_S_7_W2">
             <FORM kindOf="original">ya</FORM>
             <PHON kindOf="original">ja</PHON>
             <FORM kindOf="standard">ya</FORM>
             <PHON kindOf="standard">ja</PHON>
-            <TRANSL xml:lang="zho">語助詞</TRANSL>
-            <TRANSL xml:lang="eng">PART</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_7_W1M1">
+            <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_7_W2M1">
                 <FORM kindOf="original">ya</FORM>
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
-                <TRANSL xml:lang="eng">PART</TRANSL>
-                <TRANSL xml:lang="zho">語助詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
             </M>
         </W>
     </S>
     <S id="KavCon-banana trees_abas_ipay2_S_8">
-        <FORM kindOf="original">m nayau nengipaisu qaya.</FORM>
-        <PHON kindOf="original">m najau nəŋipaisu qaja.</PHON>
-        <FORM kindOf="standard">m nayau nengipaisu qaya.</FORM>
-        <PHON kindOf="standard">m najau nəŋipaisu qaja.</PHON>
+        <FORM kindOf="original">A m nayau I nengipaisu qaya.</FORM>
+        <PHON kindOf="original">a m najau i nəŋipaisu qaja</PHON>
+        <FORM kindOf="standard">A m nayau I nengipaisu qaya.</FORM>
+        <PHON kindOf="standard">a m najau i nəŋipaisu qaja</PHON>
         <TRANSL xml:lang="zho">是,好.你也要做.</TRANSL>
         <TRANSL xml:lang="eng">Yes, good. You will also do so.</TRANSL>
         <AUDIO file="KavCon-banana trees_abas_ipay2_S8.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavCon-banana trees_abas_ipay2.mp3" start="23.45" end="24.11"/>
         <W id="KavCon-banana trees_abas_ipay2_S_8_W0">
+            <FORM kindOf="original">A</FORM>
+            <PHON kindOf="original">a</PHON>
+            <FORM kindOf="standard">A</FORM>
+            <PHON kindOf="standard">a</PHON>
+            <M id="KavCon-banana trees_abas_ipay2_S_8_W0M1">
+                <FORM kindOf="original">A</FORM>
+                <PHON kindOf="original">a</PHON>
+                <FORM kindOf="standard">A</FORM>
+                <PHON kindOf="standard">a</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">_</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">_</TRANSL>
+            </M>
+        </W>
+        <W id="KavCon-banana trees_abas_ipay2_S_8_W1">
             <FORM kindOf="original">m</FORM>
             <PHON kindOf="original">m</PHON>
             <FORM kindOf="standard">m</FORM>
             <PHON kindOf="standard">m</PHON>
-            <TRANSL xml:lang="zho">BC</TRANSL>
-            <TRANSL xml:lang="eng">BC</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_8_W0M1">
+            <TRANSL xml:lang="zho" kindOf="original">M</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">M</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_8_W1M1">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="eng">BC</TRANSL>
-                <TRANSL xml:lang="zho">BC</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">M</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">M</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_8_W1">
+        <W id="KavCon-banana trees_abas_ipay2_S_8_W2">
             <FORM kindOf="original">nayau</FORM>
             <PHON kindOf="original">najau</PHON>
             <FORM kindOf="standard">nayau</FORM>
             <PHON kindOf="standard">najau</PHON>
-            <TRANSL xml:lang="zho">那樣</TRANSL>
-            <TRANSL xml:lang="eng">that.way</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_8_W1M1">
+            <TRANSL xml:lang="zho" kindOf="original">那樣</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">that.way</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_8_W2M1">
                 <FORM kindOf="original">nayau</FORM>
                 <PHON kindOf="original">najau</PHON>
                 <FORM kindOf="standard">nayau</FORM>
                 <PHON kindOf="standard">najau</PHON>
-                <TRANSL xml:lang="eng">that.way</TRANSL>
-                <TRANSL xml:lang="zho">那樣</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">that.way</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">那樣</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_8_W2">
+        <W id="KavCon-banana trees_abas_ipay2_S_8_W3">
+            <FORM kindOf="original">I</FORM>
+            <PHON kindOf="original">i</PHON>
+            <FORM kindOf="standard">I</FORM>
+            <PHON kindOf="standard">i</PHON>
+            <M id="KavCon-banana trees_abas_ipay2_S_8_W3M1">
+                <FORM kindOf="original">I</FORM>
+                <PHON kindOf="original">i</PHON>
+                <FORM kindOf="standard">I</FORM>
+                <PHON kindOf="standard">i</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">_</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">_</TRANSL>
+            </M>
+        </W>
+        <W id="KavCon-banana trees_abas_ipay2_S_8_W4">
             <FORM kindOf="original">nengi=pa=isu</FORM>
-            <PHON kindOf="original">nəŋi=pa=isu</PHON>
+            <PHON kindOf="original">nəŋipaisu</PHON>
             <FORM kindOf="standard">nengi=pa=isu</FORM>
-            <PHON kindOf="standard">nəŋi=pa=isu</PHON>
-            <TRANSL xml:lang="zho">好=未來=2SG.主格</TRANSL>
-            <TRANSL xml:lang="eng">good=FUT=2SG.NOM</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_8_W2M1">
+            <PHON kindOf="standard">nəŋipaisu</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">好=未來=2SG.主格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">good=FUT=2SG.NOM</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_8_W4M1">
                 <FORM kindOf="original">nengi</FORM>
                 <PHON kindOf="original">nəŋi</PHON>
                 <FORM kindOf="standard">nengi</FORM>
                 <PHON kindOf="standard">nəŋi</PHON>
-                <TRANSL xml:lang="eng">good</TRANSL>
-                <TRANSL xml:lang="zho">好</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">good</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">好</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_8_W2M2">
-                <FORM kindOf="original">pa</FORM>
+            <M id="KavCon-banana trees_abas_ipay2_S_8_W4M2">
+                <FORM kindOf="original">=pa</FORM>
                 <PHON kindOf="original">pa</PHON>
-                <FORM kindOf="standard">pa</FORM>
+                <FORM kindOf="standard">=pa</FORM>
                 <PHON kindOf="standard">pa</PHON>
-                <TRANSL xml:lang="eng">FUT</TRANSL>
-                <TRANSL xml:lang="zho">未來</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FUT</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">未來</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_8_W2M3">
-                <FORM kindOf="original">isu</FORM>
+            <M id="KavCon-banana trees_abas_ipay2_S_8_W4M3">
+                <FORM kindOf="original">=isu</FORM>
                 <PHON kindOf="original">isu</PHON>
-                <FORM kindOf="standard">isu</FORM>
+                <FORM kindOf="standard">=isu</FORM>
                 <PHON kindOf="standard">isu</PHON>
-                <TRANSL xml:lang="eng">2SG.NOM</TRANSL>
-                <TRANSL xml:lang="zho">2SG.主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">2SG.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">2SG.主格</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_8_W3">
+        <W id="KavCon-banana trees_abas_ipay2_S_8_W5">
             <FORM kindOf="original">qaya</FORM>
             <PHON kindOf="original">qaja</PHON>
             <FORM kindOf="standard">qaya</FORM>
             <PHON kindOf="standard">qaja</PHON>
-            <TRANSL xml:lang="zho">也</TRANSL>
-            <TRANSL xml:lang="eng">also</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_8_W3M1">
+            <TRANSL xml:lang="zho" kindOf="original">也</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">also</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_8_W5M1">
                 <FORM kindOf="original">qaya</FORM>
                 <PHON kindOf="original">qaja</PHON>
                 <FORM kindOf="standard">qaya</FORM>
                 <PHON kindOf="standard">qaja</PHON>
-                <TRANSL xml:lang="eng">also</TRANSL>
-                <TRANSL xml:lang="zho">也</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">also</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">也</TRANSL>
             </M>
         </W>
     </S>
     <S id="KavCon-banana trees_abas_ipay2_S_9">
-        <FORM kindOf="original">usa maipama.</FORM>
-        <PHON kindOf="original">usa maipama.</PHON>
-        <FORM kindOf="standard">usa maipama.</FORM>
-        <PHON kindOf="standard">usa maipama.</PHON>
+        <FORM kindOf="original">A usa maipama.</FORM>
+        <PHON kindOf="original">a usa maipama</PHON>
+        <FORM kindOf="standard">A usa maipama.</FORM>
+        <PHON kindOf="standard">a usa maipama</PHON>
         <TRANSL xml:lang="zho">還沒有.</TRANSL>
         <TRANSL xml:lang="eng">Not yet.</TRANSL>
         <AUDIO file="KavCon-banana trees_abas_ipay2_S9.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavCon-banana trees_abas_ipay2.mp3" start="24.11" end="25.15"/>
         <W id="KavCon-banana trees_abas_ipay2_S_9_W0">
+            <FORM kindOf="original">A</FORM>
+            <PHON kindOf="original">a</PHON>
+            <FORM kindOf="standard">A</FORM>
+            <PHON kindOf="standard">a</PHON>
+            <M id="KavCon-banana trees_abas_ipay2_S_9_W0M1">
+                <FORM kindOf="original">A</FORM>
+                <PHON kindOf="original">a</PHON>
+                <FORM kindOf="standard">A</FORM>
+                <PHON kindOf="standard">a</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">_</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">_</TRANSL>
+            </M>
+        </W>
+        <W id="KavCon-banana trees_abas_ipay2_S_9_W1">
             <FORM kindOf="original">usa</FORM>
             <PHON kindOf="original">usa</PHON>
             <FORM kindOf="standard">usa</FORM>
             <PHON kindOf="standard">usa</PHON>
-            <TRANSL xml:lang="zho">否定</TRANSL>
-            <TRANSL xml:lang="eng">NEG</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_9_W0M1">
+            <TRANSL xml:lang="zho" kindOf="original">否定</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">NEG</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_9_W1M1">
                 <FORM kindOf="original">usa</FORM>
                 <PHON kindOf="original">usa</PHON>
                 <FORM kindOf="standard">usa</FORM>
                 <PHON kindOf="standard">usa</PHON>
-                <TRANSL xml:lang="eng">NEG</TRANSL>
-                <TRANSL xml:lang="zho">否定</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NEG</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">否定</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_9_W1">
+        <W id="KavCon-banana trees_abas_ipay2_S_9_W2">
             <FORM kindOf="original">mai=pama</FORM>
-            <PHON kindOf="original">mai=pama</PHON>
+            <PHON kindOf="original">maipama</PHON>
             <FORM kindOf="standard">mai=pama</FORM>
-            <PHON kindOf="standard">mai=pama</PHON>
-            <TRANSL xml:lang="zho">否定=還</TRANSL>
-            <TRANSL xml:lang="eng">NEG=yet</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_9_W1M1">
+            <PHON kindOf="standard">maipama</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">否定=還</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">NEG=yet</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_9_W2M1">
                 <FORM kindOf="original">mai</FORM>
                 <PHON kindOf="original">mai</PHON>
                 <FORM kindOf="standard">mai</FORM>
                 <PHON kindOf="standard">mai</PHON>
-                <TRANSL xml:lang="eng">NEG</TRANSL>
-                <TRANSL xml:lang="zho">否定</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NEG</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">否定</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_9_W1M2">
-                <FORM kindOf="original">pama</FORM>
+            <M id="KavCon-banana trees_abas_ipay2_S_9_W2M2">
+                <FORM kindOf="original">=pama</FORM>
                 <PHON kindOf="original">pama</PHON>
-                <FORM kindOf="standard">pama</FORM>
+                <FORM kindOf="standard">=pama</FORM>
                 <PHON kindOf="standard">pama</PHON>
-                <TRANSL xml:lang="eng">yet</TRANSL>
-                <TRANSL xml:lang="zho">還</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">yet</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">還</TRANSL>
             </M>
         </W>
     </S>
     <S id="KavCon-banana trees_abas_ipay2_S_10">
         <FORM kindOf="original">nayauanta antangi.</FORM>
-        <PHON kindOf="original">najauanta antaŋi.</PHON>
+        <PHON kindOf="original">najauanta antaŋi</PHON>
         <FORM kindOf="standard">nayauanta antangi.</FORM>
-        <PHON kindOf="standard">najauanta antaŋi.</PHON>
+        <PHON kindOf="standard">najauanta antaŋi</PHON>
         <TRANSL xml:lang="zho">我們等一下這樣做.</TRANSL>
         <TRANSL xml:lang="eng">Let's do so later.</TRANSL>
         <AUDIO file="KavCon-banana trees_abas_ipay2_S10.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavCon-banana trees_abas_ipay2.mp3" start="25.15" end="28.02"/>
         <W id="KavCon-banana trees_abas_ipay2_S_10_W0">
             <FORM kindOf="original">nayau-an-ta</FORM>
-            <PHON kindOf="original">najau-an-ta</PHON>
+            <PHON kindOf="original">najauanta</PHON>
             <FORM kindOf="standard">nayau-an-ta</FORM>
-            <PHON kindOf="standard">najau-an-ta</PHON>
-            <TRANSL xml:lang="zho">那樣-處焦-1IPL.屬格</TRANSL>
-            <TRANSL xml:lang="eng">that.way-LF-1IPL.GEN</TRANSL>
+            <PHON kindOf="standard">najauanta</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">那樣-處焦-1IPL.屬格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">that.way-LF-1IPL.GEN</TRANSL>
             <M id="KavCon-banana trees_abas_ipay2_S_10_W0M1">
                 <FORM kindOf="original">nayau</FORM>
                 <PHON kindOf="original">najau</PHON>
                 <FORM kindOf="standard">nayau</FORM>
                 <PHON kindOf="standard">najau</PHON>
-                <TRANSL xml:lang="eng">that.way</TRANSL>
-                <TRANSL xml:lang="zho">那樣</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">that.way</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">那樣</TRANSL>
             </M>
             <M id="KavCon-banana trees_abas_ipay2_S_10_W0M2">
                 <FORM kindOf="original">an</FORM>
                 <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="eng">LF</TRANSL>
-                <TRANSL xml:lang="zho">處焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LF</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">處焦</TRANSL>
             </M>
             <M id="KavCon-banana trees_abas_ipay2_S_10_W0M3">
                 <FORM kindOf="original">ta</FORM>
                 <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
-                <TRANSL xml:lang="eng">1IPL.GEN</TRANSL>
-                <TRANSL xml:lang="zho">1IPL.屬格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1IPL.GEN</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1IPL.屬格</TRANSL>
             </M>
         </W>
         <W id="KavCon-banana trees_abas_ipay2_S_10_W1">
@@ -1031,161 +1213,219 @@
             <PHON kindOf="original">antaŋi</PHON>
             <FORM kindOf="standard">antangi</FORM>
             <PHON kindOf="standard">antaŋi</PHON>
-            <TRANSL xml:lang="zho">等一下</TRANSL>
-            <TRANSL xml:lang="eng">later</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">等一下</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">later</TRANSL>
             <M id="KavCon-banana trees_abas_ipay2_S_10_W1M1">
                 <FORM kindOf="original">antangi</FORM>
                 <PHON kindOf="original">antaŋi</PHON>
                 <FORM kindOf="standard">antangi</FORM>
                 <PHON kindOf="standard">antaŋi</PHON>
-                <TRANSL xml:lang="eng">later</TRANSL>
-                <TRANSL xml:lang="zho">等一下</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">later</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">等一下</TRANSL>
             </M>
         </W>
     </S>
     <S id="KavCon-banana trees_abas_ipay2_S_11">
-        <FORM kindOf="original">punti wuntukay qawqa.</FORM>
-        <PHON kindOf="original">punti wuntukaj qawqa.</PHON>
-        <FORM kindOf="standard">punti wuntukay qawqa.</FORM>
-        <PHON kindOf="standard">punti wuntukaj qawqa.</PHON>
+        <FORM kindOf="original">I punti wuntukay qawqa.</FORM>
+        <PHON kindOf="original">i punti wuntukaj qawqa</PHON>
+        <FORM kindOf="standard">I punti wuntukay qawqa.</FORM>
+        <PHON kindOf="standard">i punti wuntukaj qawqa</PHON>
         <TRANSL xml:lang="zho">運動會結束後再做.</TRANSL>
-        <TRANSL xml:lang="eng" notes="It would be better (if we wait till) the athletic meet is over.">It would be better the athletic meet is over.</TRANSL>
+        <TRANSL xml:lang="eng">It would be better (if we wait till) the athletic meet is over.</TRANSL>
         <AUDIO file="KavCon-banana trees_abas_ipay2_S11.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavCon-banana trees_abas_ipay2.mp3" start="28.02" end="29.97"/>
         <W id="KavCon-banana trees_abas_ipay2_S_11_W0">
-            <FORM kindOf="original">pun=ti</FORM>
-            <PHON kindOf="original">pun=ti</PHON>
-            <FORM kindOf="standard">pun=ti</FORM>
-            <PHON kindOf="standard">pun=ti</PHON>
-            <TRANSL xml:lang="zho">結束=完成</TRANSL>
-            <TRANSL xml:lang="eng">finish=PFV</TRANSL>
+            <FORM kindOf="original">I</FORM>
+            <PHON kindOf="original">i</PHON>
+            <FORM kindOf="standard">I</FORM>
+            <PHON kindOf="standard">i</PHON>
             <M id="KavCon-banana trees_abas_ipay2_S_11_W0M1">
+                <FORM kindOf="original">I</FORM>
+                <PHON kindOf="original">i</PHON>
+                <FORM kindOf="standard">I</FORM>
+                <PHON kindOf="standard">i</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">_</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">_</TRANSL>
+            </M>
+        </W>
+        <W id="KavCon-banana trees_abas_ipay2_S_11_W1">
+            <FORM kindOf="original">pun=ti</FORM>
+            <PHON kindOf="original">punti</PHON>
+            <FORM kindOf="standard">pun=ti</FORM>
+            <PHON kindOf="standard">punti</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">結束=完成</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">finish=PFV</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_11_W1M1">
                 <FORM kindOf="original">pun</FORM>
                 <PHON kindOf="original">pun</PHON>
                 <FORM kindOf="standard">pun</FORM>
                 <PHON kindOf="standard">pun</PHON>
-                <TRANSL xml:lang="eng">finish</TRANSL>
-                <TRANSL xml:lang="zho">結束</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">finish</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">結束</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_11_W0M2">
-                <FORM kindOf="original">ti</FORM>
+            <M id="KavCon-banana trees_abas_ipay2_S_11_W1M2">
+                <FORM kindOf="original">=ti</FORM>
                 <PHON kindOf="original">ti</PHON>
-                <FORM kindOf="standard">ti</FORM>
+                <FORM kindOf="standard">=ti</FORM>
                 <PHON kindOf="standard">ti</PHON>
-                <TRANSL xml:lang="eng">PFV</TRANSL>
-                <TRANSL xml:lang="zho">完成</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">完成</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_11_W1">
+        <W id="KavCon-banana trees_abas_ipay2_S_11_W2">
             <FORM kindOf="original">wuntukay</FORM>
             <PHON kindOf="original">wuntukaj</PHON>
             <FORM kindOf="standard">wuntukay</FORM>
             <PHON kindOf="standard">wuntukaj</PHON>
-            <TRANSL xml:lang="zho">運動會</TRANSL>
-            <TRANSL xml:lang="eng">athletic.meet</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_11_W1M1">
+            <TRANSL xml:lang="zho" kindOf="original">運動會</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">athletic.meet</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_11_W2M1">
                 <FORM kindOf="original">wuntukay</FORM>
                 <PHON kindOf="original">wuntukaj</PHON>
                 <FORM kindOf="standard">wuntukay</FORM>
                 <PHON kindOf="standard">wuntukaj</PHON>
-                <TRANSL xml:lang="eng">athletic.meet</TRANSL>
-                <TRANSL xml:lang="zho">運動會</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">athletic.meet</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">運動會</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_11_W2">
+        <W id="KavCon-banana trees_abas_ipay2_S_11_W3">
             <FORM kindOf="original">qawqa</FORM>
             <PHON kindOf="original">qawqa</PHON>
             <FORM kindOf="standard">qawqa</FORM>
             <PHON kindOf="standard">qawqa</PHON>
-            <TRANSL xml:lang="zho">才好</TRANSL>
-            <TRANSL xml:lang="eng">better</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_11_W2M1">
+            <TRANSL xml:lang="zho" kindOf="original">才好</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">better</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_11_W3M1">
                 <FORM kindOf="original">qawqa</FORM>
                 <PHON kindOf="original">qawqa</PHON>
                 <FORM kindOf="standard">qawqa</FORM>
                 <PHON kindOf="standard">qawqa</PHON>
-                <TRANSL xml:lang="eng">better</TRANSL>
-                <TRANSL xml:lang="zho">才好</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">better</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">才好</TRANSL>
             </M>
         </W>
     </S>
     <S id="KavCon-banana trees_abas_ipay2_S_12">
-        <FORM kindOf="original">nayauikati ya sanis.</FORM>
-        <PHON kindOf="original">najauikati ja sanis.</PHON>
-        <FORM kindOf="standard">nayauikati ya sanis.</FORM>
-        <PHON kindOf="standard">najauikati ja sanis.</PHON>
+        <FORM kindOf="original">A nayauikati ya I XXXX sanis.</FORM>
+        <PHON kindOf="original">a najauikati ja i **** sanis</PHON>
+        <FORM kindOf="standard">A nayauikati ya I XXXX sanis.</FORM>
+        <PHON kindOf="standard">a najauikati ja i **** sanis</PHON>
         <TRANSL xml:lang="zho">我們就這樣做.</TRANSL>
         <TRANSL xml:lang="eng">Let's do so.</TRANSL>
         <AUDIO file="KavCon-banana trees_abas_ipay2_S12.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavCon-banana trees_abas_ipay2.mp3" start="29.97" end="30.5"/>
         <W id="KavCon-banana trees_abas_ipay2_S_12_W0">
-            <FORM kindOf="original">nayau-ika=ti</FORM>
-            <PHON kindOf="original">najau-ika=ti</PHON>
-            <FORM kindOf="standard">nayau-ika=ti</FORM>
-            <PHON kindOf="standard">najau-ika=ti</PHON>
-            <TRANSL xml:lang="zho">那樣-處焦.祈使=完成</TRANSL>
-            <TRANSL xml:lang="eng">that.way-LF.IMP=PFV</TRANSL>
+            <FORM kindOf="original">A</FORM>
+            <PHON kindOf="original">a</PHON>
+            <FORM kindOf="standard">A</FORM>
+            <PHON kindOf="standard">a</PHON>
             <M id="KavCon-banana trees_abas_ipay2_S_12_W0M1">
+                <FORM kindOf="original">A</FORM>
+                <PHON kindOf="original">a</PHON>
+                <FORM kindOf="standard">A</FORM>
+                <PHON kindOf="standard">a</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">_</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">_</TRANSL>
+            </M>
+        </W>
+        <W id="KavCon-banana trees_abas_ipay2_S_12_W1">
+            <FORM kindOf="original">nayau-ika=ti</FORM>
+            <PHON kindOf="original">najauikati</PHON>
+            <FORM kindOf="standard">nayau-ika=ti</FORM>
+            <PHON kindOf="standard">najauikati</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">那樣-處焦.祈使=完成</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">that.way-LF.IMP=PFV</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_12_W1M1">
                 <FORM kindOf="original">nayau</FORM>
                 <PHON kindOf="original">najau</PHON>
                 <FORM kindOf="standard">nayau</FORM>
                 <PHON kindOf="standard">najau</PHON>
-                <TRANSL xml:lang="eng">that.way</TRANSL>
-                <TRANSL xml:lang="zho">那樣</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">that.way</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">那樣</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_12_W0M2">
+            <M id="KavCon-banana trees_abas_ipay2_S_12_W1M2">
                 <FORM kindOf="original">ika</FORM>
                 <PHON kindOf="original">ika</PHON>
                 <FORM kindOf="standard">ika</FORM>
                 <PHON kindOf="standard">ika</PHON>
-                <TRANSL xml:lang="eng">LF.IMP</TRANSL>
-                <TRANSL xml:lang="zho">處焦.祈使</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LF.IMP</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">處焦.祈使</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_12_W0M3">
-                <FORM kindOf="original">ti</FORM>
+            <M id="KavCon-banana trees_abas_ipay2_S_12_W1M3">
+                <FORM kindOf="original">=ti</FORM>
                 <PHON kindOf="original">ti</PHON>
-                <FORM kindOf="standard">ti</FORM>
+                <FORM kindOf="standard">=ti</FORM>
                 <PHON kindOf="standard">ti</PHON>
-                <TRANSL xml:lang="eng">PFV</TRANSL>
-                <TRANSL xml:lang="zho">完成</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">完成</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_12_W1">
+        <W id="KavCon-banana trees_abas_ipay2_S_12_W2">
             <FORM kindOf="original">ya</FORM>
             <PHON kindOf="original">ja</PHON>
             <FORM kindOf="standard">ya</FORM>
             <PHON kindOf="standard">ja</PHON>
-            <TRANSL xml:lang="zho">語助詞</TRANSL>
-            <TRANSL xml:lang="eng">PART</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_12_W1M1">
+            <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_12_W2M1">
                 <FORM kindOf="original">ya</FORM>
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
-                <TRANSL xml:lang="eng">PART</TRANSL>
-                <TRANSL xml:lang="zho">語助詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_12_W2">
+        <W id="KavCon-banana trees_abas_ipay2_S_12_W3">
+            <FORM kindOf="original">I</FORM>
+            <PHON kindOf="original">i</PHON>
+            <FORM kindOf="standard">I</FORM>
+            <PHON kindOf="standard">i</PHON>
+            <M id="KavCon-banana trees_abas_ipay2_S_12_W3M1">
+                <FORM kindOf="original">I</FORM>
+                <PHON kindOf="original">i</PHON>
+                <FORM kindOf="standard">I</FORM>
+                <PHON kindOf="standard">i</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">_</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">_</TRANSL>
+            </M>
+        </W>
+        <W id="KavCon-banana trees_abas_ipay2_S_12_W4">
+            <FORM kindOf="original">XXXX</FORM>
+            <PHON kindOf="original">****</PHON>
+            <FORM kindOf="standard">XXXX</FORM>
+            <PHON kindOf="standard">****</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">XXXX</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">XXXX</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_12_W4M1">
+                <FORM kindOf="original">XXXX</FORM>
+                <PHON kindOf="original">****</PHON>
+                <FORM kindOf="standard">XXXX</FORM>
+                <PHON kindOf="standard">****</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">XXXX</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">XXXX</TRANSL>
+            </M>
+        </W>
+        <W id="KavCon-banana trees_abas_ipay2_S_12_W5">
             <FORM kindOf="original">sanis</FORM>
             <PHON kindOf="original">sanis</PHON>
             <FORM kindOf="standard">sanis</FORM>
             <PHON kindOf="standard">sanis</PHON>
-            <TRANSL xml:lang="zho">XXXX</TRANSL>
-            <TRANSL xml:lang="eng">XXXX</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_12_W2M1">
+            <TRANSL xml:lang="zho" kindOf="original">削樹皮</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">bark</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_12_W5M1">
                 <FORM kindOf="original">sanis</FORM>
                 <PHON kindOf="original">sanis</PHON>
                 <FORM kindOf="standard">sanis</FORM>
                 <PHON kindOf="standard">sanis</PHON>
-                <TRANSL xml:lang="eng">XXXX</TRANSL>
-                <TRANSL xml:lang="zho">XXXX</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">bark</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">削樹皮</TRANSL>
             </M>
         </W>
     </S>
     <S id="KavCon-banana trees_abas_ipay2_S_13">
-        <FORM kindOf="original">XXXX naquni si yau dawadsu si sanisika ya peninaku haw.</FORM>
-        <PHON kindOf="original">**** naquni si jau ɮawaɮsu si sanisika ja pəninaku haw.</PHON>
-        <FORM kindOf="standard">XXXX naquni si yau dawadsu si sanisika ya peninaku haw.</FORM>
-        <PHON kindOf="standard">**** naquni si jau ɮawaɮsu si sanisika ja pəninaku haw.</PHON>
+        <FORM kindOf="original">XXXX A naquni si yau dawadsu si sanisika ya peninaku haw.</FORM>
+        <PHON kindOf="original">**** a naquni si jau ɮawaɮsu si sanisika ja pəninaku haw</PHON>
+        <FORM kindOf="standard">XXXX A naquni si yau dawadsu si sanisika ya peninaku haw.</FORM>
+        <PHON kindOf="standard">**** a naquni si jau ɮawaɮsu si sanisika ja pəninaku haw</PHON>
         <TRANSL xml:lang="zho">這樣的話,你有空的話,來削我的香蕉樹皮.</TRANSL>
         <TRANSL xml:lang="eng">If so, if you have time, bark my banana trees.</TRANSL>
         <AUDIO file="KavCon-banana trees_abas_ipay2_S13.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavCon-banana trees_abas_ipay2.mp3" start="30.5" end="37.64"/>
@@ -1194,434 +1434,476 @@
             <PHON kindOf="original">****</PHON>
             <FORM kindOf="standard">XXXX</FORM>
             <PHON kindOf="standard">****</PHON>
-            <TRANSL xml:lang="zho">XXXX</TRANSL>
-            <TRANSL xml:lang="eng">XXXX</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">XXXX</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">XXXX</TRANSL>
             <M id="KavCon-banana trees_abas_ipay2_S_13_W0M1">
                 <FORM kindOf="original">XXXX</FORM>
                 <PHON kindOf="original">****</PHON>
                 <FORM kindOf="standard">XXXX</FORM>
                 <PHON kindOf="standard">****</PHON>
-                <TRANSL xml:lang="eng">XXXX</TRANSL>
-                <TRANSL xml:lang="zho">XXXX</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">XXXX</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">XXXX</TRANSL>
             </M>
         </W>
         <W id="KavCon-banana trees_abas_ipay2_S_13_W1">
+            <FORM kindOf="original">A</FORM>
+            <PHON kindOf="original">a</PHON>
+            <FORM kindOf="standard">A</FORM>
+            <PHON kindOf="standard">a</PHON>
+            <M id="KavCon-banana trees_abas_ipay2_S_13_W1M1">
+                <FORM kindOf="original">A</FORM>
+                <PHON kindOf="original">a</PHON>
+                <FORM kindOf="standard">A</FORM>
+                <PHON kindOf="standard">a</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">_</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">_</TRANSL>
+            </M>
+        </W>
+        <W id="KavCon-banana trees_abas_ipay2_S_13_W2">
             <FORM kindOf="original">naquni</FORM>
             <PHON kindOf="original">naquni</PHON>
             <FORM kindOf="standard">naquni</FORM>
             <PHON kindOf="standard">naquni</PHON>
-            <TRANSL xml:lang="zho">怎樣</TRANSL>
-            <TRANSL xml:lang="eng">how</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_13_W1M1">
+            <TRANSL xml:lang="zho" kindOf="original">怎樣</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">how</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_13_W2M1">
                 <FORM kindOf="original">naquni</FORM>
                 <PHON kindOf="original">naquni</PHON>
                 <FORM kindOf="standard">naquni</FORM>
                 <PHON kindOf="standard">naquni</PHON>
-                <TRANSL xml:lang="eng">how</TRANSL>
-                <TRANSL xml:lang="zho">怎樣</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">how</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">怎樣</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_13_W2">
+        <W id="KavCon-banana trees_abas_ipay2_S_13_W3">
             <FORM kindOf="original">si</FORM>
             <PHON kindOf="original">si</PHON>
             <FORM kindOf="standard">si</FORM>
             <PHON kindOf="standard">si</PHON>
-            <TRANSL xml:lang="zho">條件詞</TRANSL>
-            <TRANSL xml:lang="eng">COND</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_13_W2M1">
+            <TRANSL xml:lang="zho" kindOf="original">條件詞</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">COND</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_13_W3M1">
                 <FORM kindOf="original">si</FORM>
                 <PHON kindOf="original">si</PHON>
                 <FORM kindOf="standard">si</FORM>
                 <PHON kindOf="standard">si</PHON>
-                <TRANSL xml:lang="eng">COND</TRANSL>
-                <TRANSL xml:lang="zho">條件詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">COND</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">條件詞</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_13_W3">
+        <W id="KavCon-banana trees_abas_ipay2_S_13_W4">
             <FORM kindOf="original">yau</FORM>
             <PHON kindOf="original">jau</PHON>
             <FORM kindOf="standard">yau</FORM>
             <PHON kindOf="standard">jau</PHON>
-            <TRANSL xml:lang="zho">存在</TRANSL>
-            <TRANSL xml:lang="eng">EXIST</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_13_W3M1">
+            <TRANSL xml:lang="zho" kindOf="original">存在</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">EXIST</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_13_W4M1">
                 <FORM kindOf="original">yau</FORM>
                 <PHON kindOf="original">jau</PHON>
                 <FORM kindOf="standard">yau</FORM>
                 <PHON kindOf="standard">jau</PHON>
-                <TRANSL xml:lang="eng">EXIST</TRANSL>
-                <TRANSL xml:lang="zho">存在</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">EXIST</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">存在</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_13_W4">
+        <W id="KavCon-banana trees_abas_ipay2_S_13_W5">
             <FORM kindOf="original">dawad-su</FORM>
-            <PHON kindOf="original">ɮawaɮ-su</PHON>
+            <PHON kindOf="original">ɮawaɮsu</PHON>
             <FORM kindOf="standard">dawad-su</FORM>
-            <PHON kindOf="standard">ɮawaɮ-su</PHON>
-            <TRANSL xml:lang="zho">時間-2SG.屬格</TRANSL>
-            <TRANSL xml:lang="eng">time-2SG.GEN</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_13_W4M1">
+            <PHON kindOf="standard">ɮawaɮsu</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">時間-2SG.屬格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">time-2SG.GEN</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_13_W5M1">
                 <FORM kindOf="original">dawad</FORM>
                 <PHON kindOf="original">ɮawaɮ</PHON>
                 <FORM kindOf="standard">dawad</FORM>
                 <PHON kindOf="standard">ɮawaɮ</PHON>
-                <TRANSL xml:lang="eng">time</TRANSL>
-                <TRANSL xml:lang="zho">時間</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">time</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">時間</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_13_W4M2">
+            <M id="KavCon-banana trees_abas_ipay2_S_13_W5M2">
                 <FORM kindOf="original">su</FORM>
                 <PHON kindOf="original">su</PHON>
                 <FORM kindOf="standard">su</FORM>
                 <PHON kindOf="standard">su</PHON>
-                <TRANSL xml:lang="eng">2SG.GEN</TRANSL>
-                <TRANSL xml:lang="zho">2SG.屬格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">2SG.GEN</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">2SG.屬格</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_13_W5">
+        <W id="KavCon-banana trees_abas_ipay2_S_13_W6">
             <FORM kindOf="original">si</FORM>
             <PHON kindOf="original">si</PHON>
             <FORM kindOf="standard">si</FORM>
             <PHON kindOf="standard">si</PHON>
-            <TRANSL xml:lang="zho">條件詞</TRANSL>
-            <TRANSL xml:lang="eng">COND</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_13_W5M1">
+            <TRANSL xml:lang="zho" kindOf="original">條件詞</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">COND</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_13_W6M1">
                 <FORM kindOf="original">si</FORM>
                 <PHON kindOf="original">si</PHON>
                 <FORM kindOf="standard">si</FORM>
                 <PHON kindOf="standard">si</PHON>
-                <TRANSL xml:lang="eng">COND</TRANSL>
-                <TRANSL xml:lang="zho">條件詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">COND</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">條件詞</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_13_W6">
+        <W id="KavCon-banana trees_abas_ipay2_S_13_W7">
             <FORM kindOf="original">sanis-ika</FORM>
-            <PHON kindOf="original">sanis-ika</PHON>
+            <PHON kindOf="original">sanisika</PHON>
             <FORM kindOf="standard">sanis-ika</FORM>
-            <PHON kindOf="standard">sanis-ika</PHON>
-            <TRANSL xml:lang="zho">削樹皮-處焦.祈使</TRANSL>
-            <TRANSL xml:lang="eng">bark-LF.IMP</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_13_W6M1">
+            <PHON kindOf="standard">sanisika</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">削樹皮-處焦.祈使</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">bark-LF.IMP</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_13_W7M1">
                 <FORM kindOf="original">sanis</FORM>
                 <PHON kindOf="original">sanis</PHON>
                 <FORM kindOf="standard">sanis</FORM>
                 <PHON kindOf="standard">sanis</PHON>
-                <TRANSL xml:lang="eng">bark</TRANSL>
-                <TRANSL xml:lang="zho">削樹皮</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">bark</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">削樹皮</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_13_W6M2">
+            <M id="KavCon-banana trees_abas_ipay2_S_13_W7M2">
                 <FORM kindOf="original">ika</FORM>
                 <PHON kindOf="original">ika</PHON>
                 <FORM kindOf="standard">ika</FORM>
                 <PHON kindOf="standard">ika</PHON>
-                <TRANSL xml:lang="eng">LF.IMP</TRANSL>
-                <TRANSL xml:lang="zho">處焦.祈使</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LF.IMP</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">處焦.祈使</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_13_W7">
+        <W id="KavCon-banana trees_abas_ipay2_S_13_W8">
             <FORM kindOf="original">ya</FORM>
             <PHON kindOf="original">ja</PHON>
             <FORM kindOf="standard">ya</FORM>
             <PHON kindOf="standard">ja</PHON>
-            <TRANSL xml:lang="zho">主格</TRANSL>
-            <TRANSL xml:lang="eng">NOM</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_13_W7M1">
+            <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_13_W8M1">
                 <FORM kindOf="original">ya</FORM>
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
-                <TRANSL xml:lang="eng">NOM</TRANSL>
-                <TRANSL xml:lang="zho">主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_13_W8">
+        <W id="KavCon-banana trees_abas_ipay2_S_13_W9">
             <FORM kindOf="original">penina-ku</FORM>
-            <PHON kindOf="original">pənina-ku</PHON>
+            <PHON kindOf="original">pəninaku</PHON>
             <FORM kindOf="standard">penina-ku</FORM>
-            <PHON kindOf="standard">pənina-ku</PHON>
-            <TRANSL xml:lang="zho">香蕉-1SG.屬格</TRANSL>
-            <TRANSL xml:lang="eng">banana-1SG.GEN</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_13_W8M1">
+            <PHON kindOf="standard">pəninaku</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">香蕉-1SG.屬格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">banana-1SG.GEN</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_13_W9M1">
                 <FORM kindOf="original">penina</FORM>
                 <PHON kindOf="original">pənina</PHON>
                 <FORM kindOf="standard">penina</FORM>
                 <PHON kindOf="standard">pənina</PHON>
-                <TRANSL xml:lang="eng">banana</TRANSL>
-                <TRANSL xml:lang="zho">香蕉</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">banana</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">香蕉</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_13_W8M2">
+            <M id="KavCon-banana trees_abas_ipay2_S_13_W9M2">
                 <FORM kindOf="original">ku</FORM>
                 <PHON kindOf="original">ku</PHON>
                 <FORM kindOf="standard">ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
-                <TRANSL xml:lang="eng">1SG.GEN</TRANSL>
-                <TRANSL xml:lang="zho">1SG.屬格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1SG.GEN</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1SG.屬格</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_13_W9">
+        <W id="KavCon-banana trees_abas_ipay2_S_13_W10">
             <FORM kindOf="original">haw</FORM>
             <PHON kindOf="original">haw</PHON>
             <FORM kindOf="standard">haw</FORM>
             <PHON kindOf="standard">haw</PHON>
-            <TRANSL xml:lang="zho">語助詞</TRANSL>
-            <TRANSL xml:lang="eng">PART</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_13_W9M1">
+            <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_13_W10M1">
                 <FORM kindOf="original">haw</FORM>
                 <PHON kindOf="original">haw</PHON>
                 <FORM kindOf="standard">haw</FORM>
                 <PHON kindOf="standard">haw</PHON>
-                <TRANSL xml:lang="eng">PART</TRANSL>
-                <TRANSL xml:lang="zho">語助詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
             </M>
         </W>
     </S>
     <S id="KavCon-banana trees_abas_ipay2_S_14">
-        <FORM kindOf="original">kinausapaita ya.</FORM>
-        <PHON kindOf="original">kinausapaita ja.</PHON>
-        <FORM kindOf="standard">kinausapaita ya.</FORM>
-        <PHON kindOf="standard">kinausapaita ja.</PHON>
-        <TRANSL xml:lang="zho" notes="我們兩個(一起)啊.">我們兩個 啊.</TRANSL>
-        <TRANSL xml:lang="eng" notes="Let's do it (together).">Let's do it .</TRANSL>
+        <FORM kindOf="original">I kinausapaita ya.</FORM>
+        <PHON kindOf="original">i kinausapaita ja</PHON>
+        <FORM kindOf="standard">I kinausapaita ya.</FORM>
+        <PHON kindOf="standard">i kinausapaita ja</PHON>
+        <TRANSL xml:lang="zho">我們兩個(一起)啊.</TRANSL>
+        <TRANSL xml:lang="eng">Let's do it (together).</TRANSL>
         <AUDIO file="KavCon-banana trees_abas_ipay2_S14.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavCon-banana trees_abas_ipay2.mp3" start="37.64" end="39.13"/>
         <W id="KavCon-banana trees_abas_ipay2_S_14_W0">
-            <FORM kindOf="original">kin-ausa=pa=ita</FORM>
-            <PHON kindOf="original">kin-ausa=pa=ita</PHON>
-            <FORM kindOf="standard">kin-ausa=pa=ita</FORM>
-            <PHON kindOf="standard">kin-ausa=pa=ita</PHON>
-            <TRANSL xml:lang="zho">人量詞-二=未來=1IPL.主格</TRANSL>
-            <TRANSL xml:lang="eng">CLF.HUM-two=FUT=1IPL.NOM</TRANSL>
+            <FORM kindOf="original">I</FORM>
+            <PHON kindOf="original">i</PHON>
+            <FORM kindOf="standard">I</FORM>
+            <PHON kindOf="standard">i</PHON>
             <M id="KavCon-banana trees_abas_ipay2_S_14_W0M1">
+                <FORM kindOf="original">I</FORM>
+                <PHON kindOf="original">i</PHON>
+                <FORM kindOf="standard">I</FORM>
+                <PHON kindOf="standard">i</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">_</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">_</TRANSL>
+            </M>
+        </W>
+        <W id="KavCon-banana trees_abas_ipay2_S_14_W1">
+            <FORM kindOf="original">kin-ausa=pa=ita</FORM>
+            <PHON kindOf="original">kinausapaita</PHON>
+            <FORM kindOf="standard">kin-ausa=pa=ita</FORM>
+            <PHON kindOf="standard">kinausapaita</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">人量詞-二=未來=1IPL.主格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">CLF.HUM-two=FUT=1IPL.NOM</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_14_W1M1">
                 <FORM kindOf="original">kin</FORM>
                 <PHON kindOf="original">kin</PHON>
                 <FORM kindOf="standard">kin</FORM>
                 <PHON kindOf="standard">kin</PHON>
-                <TRANSL xml:lang="eng">CLF.HUM</TRANSL>
-                <TRANSL xml:lang="zho">人量詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">CLF.HUM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">人量詞</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_14_W0M2">
+            <M id="KavCon-banana trees_abas_ipay2_S_14_W1M2">
                 <FORM kindOf="original">ausa</FORM>
                 <PHON kindOf="original">ausa</PHON>
                 <FORM kindOf="standard">ausa</FORM>
                 <PHON kindOf="standard">ausa</PHON>
-                <TRANSL xml:lang="eng">two</TRANSL>
-                <TRANSL xml:lang="zho">二</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">two</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">二</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_14_W0M3">
-                <FORM kindOf="original">pa</FORM>
+            <M id="KavCon-banana trees_abas_ipay2_S_14_W1M3">
+                <FORM kindOf="original">=pa</FORM>
                 <PHON kindOf="original">pa</PHON>
-                <FORM kindOf="standard">pa</FORM>
+                <FORM kindOf="standard">=pa</FORM>
                 <PHON kindOf="standard">pa</PHON>
-                <TRANSL xml:lang="eng">FUT</TRANSL>
-                <TRANSL xml:lang="zho">未來</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FUT</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">未來</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_14_W0M4">
-                <FORM kindOf="original">ita</FORM>
+            <M id="KavCon-banana trees_abas_ipay2_S_14_W1M4">
+                <FORM kindOf="original">=ita</FORM>
                 <PHON kindOf="original">ita</PHON>
-                <FORM kindOf="standard">ita</FORM>
+                <FORM kindOf="standard">=ita</FORM>
                 <PHON kindOf="standard">ita</PHON>
-                <TRANSL xml:lang="eng">1IPL.NOM</TRANSL>
-                <TRANSL xml:lang="zho">1IPL.主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1IPL.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1IPL.主格</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_14_W1">
+        <W id="KavCon-banana trees_abas_ipay2_S_14_W2">
             <FORM kindOf="original">ya</FORM>
             <PHON kindOf="original">ja</PHON>
             <FORM kindOf="standard">ya</FORM>
             <PHON kindOf="standard">ja</PHON>
-            <TRANSL xml:lang="zho">語助詞</TRANSL>
-            <TRANSL xml:lang="eng">PART</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_14_W1M1">
+            <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_14_W2M1">
                 <FORM kindOf="original">ya</FORM>
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
-                <TRANSL xml:lang="eng">PART</TRANSL>
-                <TRANSL xml:lang="zho">語助詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
             </M>
         </W>
     </S>
     <S id="KavCon-banana trees_abas_ipay2_S_15">
-        <FORM kindOf="original">n nayauantati sanisika zinkuisu nani.</FORM>
-        <PHON kindOf="original">n najauantati sanisika z~rinkuisu nani.</PHON>
-        <FORM kindOf="standard">n nayauantati sanisika zinkuisu nani.</FORM>
-        <PHON kindOf="standard">n najauantati sanisika z~rinkuisu nani.</PHON>
+        <FORM kindOf="original">A n nayauantati sanisika zinkuisu nani.</FORM>
+        <PHON kindOf="original">a n najauantati sanisika [z|r]inkuisu nani</PHON>
+        <FORM kindOf="standard">A n nayauantati sanisika zinkuisu nani.</FORM>
+        <PHON kindOf="standard">a n najauantati sanisika [z|r]inkuisu nani</PHON>
         <TRANSL xml:lang="zho">嗯,那我們就那樣做,我跟你說,'削樹皮'.</TRANSL>
         <TRANSL xml:lang="eng">Okay, let's do so. 'Bark banana trees,' I said to you.</TRANSL>
         <AUDIO file="KavCon-banana trees_abas_ipay2_S15.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavCon-banana trees_abas_ipay2.mp3" start="39.13" end="42.69"/>
         <W id="KavCon-banana trees_abas_ipay2_S_15_W0">
+            <FORM kindOf="original">A</FORM>
+            <PHON kindOf="original">a</PHON>
+            <FORM kindOf="standard">A</FORM>
+            <PHON kindOf="standard">a</PHON>
+            <M id="KavCon-banana trees_abas_ipay2_S_15_W0M1">
+                <FORM kindOf="original">A</FORM>
+                <PHON kindOf="original">a</PHON>
+                <FORM kindOf="standard">A</FORM>
+                <PHON kindOf="standard">a</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">_</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">_</TRANSL>
+            </M>
+        </W>
+        <W id="KavCon-banana trees_abas_ipay2_S_15_W1">
             <FORM kindOf="original">n</FORM>
             <PHON kindOf="original">n</PHON>
             <FORM kindOf="standard">n</FORM>
             <PHON kindOf="standard">n</PHON>
-            <TRANSL xml:lang="zho">嗯</TRANSL>
-            <TRANSL xml:lang="eng">okay</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_15_W0M1">
+            <TRANSL xml:lang="zho" kindOf="original">嗯</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">okay</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_15_W1M1">
                 <FORM kindOf="original">n</FORM>
                 <PHON kindOf="original">n</PHON>
                 <FORM kindOf="standard">n</FORM>
                 <PHON kindOf="standard">n</PHON>
-                <TRANSL xml:lang="eng">okay</TRANSL>
-                <TRANSL xml:lang="zho">嗯</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">okay</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">嗯</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_15_W1">
+        <W id="KavCon-banana trees_abas_ipay2_S_15_W2">
             <FORM kindOf="original">nayau-an-ta=ti</FORM>
-            <PHON kindOf="original">najau-an-ta=ti</PHON>
+            <PHON kindOf="original">najauantati</PHON>
             <FORM kindOf="standard">nayau-an-ta=ti</FORM>
-            <PHON kindOf="standard">najau-an-ta=ti</PHON>
-            <TRANSL xml:lang="zho">那樣-處焦-1IPL.屬格=完成</TRANSL>
-            <TRANSL xml:lang="eng">that.way-LF-1IPL.GEN=PFV</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_15_W1M1">
+            <PHON kindOf="standard">najauantati</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">那樣-處焦-1IPL.屬格=完成</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">that.way-LF-1IPL.GEN=PFV</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_15_W2M1">
                 <FORM kindOf="original">nayau</FORM>
                 <PHON kindOf="original">najau</PHON>
                 <FORM kindOf="standard">nayau</FORM>
                 <PHON kindOf="standard">najau</PHON>
-                <TRANSL xml:lang="eng">that.way</TRANSL>
-                <TRANSL xml:lang="zho">那樣</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">that.way</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">那樣</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_15_W1M2">
+            <M id="KavCon-banana trees_abas_ipay2_S_15_W2M2">
                 <FORM kindOf="original">an</FORM>
                 <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="eng">LF</TRANSL>
-                <TRANSL xml:lang="zho">處焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LF</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">處焦</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_15_W1M3">
+            <M id="KavCon-banana trees_abas_ipay2_S_15_W2M3">
                 <FORM kindOf="original">ta</FORM>
                 <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
-                <TRANSL xml:lang="eng">1IPL.GEN</TRANSL>
-                <TRANSL xml:lang="zho">1IPL.屬格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1IPL.GEN</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1IPL.屬格</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_15_W1M4">
-                <FORM kindOf="original">ti</FORM>
+            <M id="KavCon-banana trees_abas_ipay2_S_15_W2M4">
+                <FORM kindOf="original">=ti</FORM>
                 <PHON kindOf="original">ti</PHON>
-                <FORM kindOf="standard">ti</FORM>
+                <FORM kindOf="standard">=ti</FORM>
                 <PHON kindOf="standard">ti</PHON>
-                <TRANSL xml:lang="eng">PFV</TRANSL>
-                <TRANSL xml:lang="zho">完成</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">完成</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_15_W2">
+        <W id="KavCon-banana trees_abas_ipay2_S_15_W3">
             <FORM kindOf="original">sanis-ika</FORM>
-            <PHON kindOf="original">sanis-ika</PHON>
+            <PHON kindOf="original">sanisika</PHON>
             <FORM kindOf="standard">sanis-ika</FORM>
-            <PHON kindOf="standard">sanis-ika</PHON>
-            <TRANSL xml:lang="zho">削樹皮-處焦.祈使</TRANSL>
-            <TRANSL xml:lang="eng">bark-LF.IMP</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_15_W2M1">
+            <PHON kindOf="standard">sanisika</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">削樹皮-處焦.祈使</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">bark-LF.IMP</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_15_W3M1">
                 <FORM kindOf="original">sanis</FORM>
                 <PHON kindOf="original">sanis</PHON>
                 <FORM kindOf="standard">sanis</FORM>
                 <PHON kindOf="standard">sanis</PHON>
-                <TRANSL xml:lang="eng">bark</TRANSL>
-                <TRANSL xml:lang="zho">削樹皮</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">bark</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">削樹皮</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_15_W2M2">
+            <M id="KavCon-banana trees_abas_ipay2_S_15_W3M2">
                 <FORM kindOf="original">ika</FORM>
                 <PHON kindOf="original">ika</PHON>
                 <FORM kindOf="standard">ika</FORM>
                 <PHON kindOf="standard">ika</PHON>
-                <TRANSL xml:lang="eng">LF.IMP</TRANSL>
-                <TRANSL xml:lang="zho">處焦.祈使</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LF.IMP</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">處焦.祈使</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_15_W3">
+        <W id="KavCon-banana trees_abas_ipay2_S_15_W4">
             <FORM kindOf="original">zin-ku=isu</FORM>
-            <PHON kindOf="original">z~rin-ku=isu</PHON>
+            <PHON kindOf="original">[z|r]inkuisu</PHON>
             <FORM kindOf="standard">zin-ku=isu</FORM>
-            <PHON kindOf="standard">z~rin-ku=isu</PHON>
-            <TRANSL xml:lang="zho">說-1SG.屬格=2SG.主格</TRANSL>
-            <TRANSL xml:lang="eng">say-1SG.GEN=2SG.NOM</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_15_W3M1">
+            <PHON kindOf="standard">[z|r]inkuisu</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">說-1SG.屬格=2SG.主格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">say-1SG.GEN=2SG.NOM</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_15_W4M1">
                 <FORM kindOf="original">zin</FORM>
-                <PHON kindOf="original">z~rin</PHON>
+                <PHON kindOf="original">[z|r]in</PHON>
                 <FORM kindOf="standard">zin</FORM>
-                <PHON kindOf="standard">z~rin</PHON>
-                <TRANSL xml:lang="eng">say</TRANSL>
-                <TRANSL xml:lang="zho">說</TRANSL>
+                <PHON kindOf="standard">[z|r]in</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">say</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">說</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_15_W3M2">
+            <M id="KavCon-banana trees_abas_ipay2_S_15_W4M2">
                 <FORM kindOf="original">ku</FORM>
                 <PHON kindOf="original">ku</PHON>
                 <FORM kindOf="standard">ku</FORM>
                 <PHON kindOf="standard">ku</PHON>
-                <TRANSL xml:lang="eng">1SG.GEN</TRANSL>
-                <TRANSL xml:lang="zho">1SG.屬格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1SG.GEN</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1SG.屬格</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_15_W3M3">
-                <FORM kindOf="original">isu</FORM>
+            <M id="KavCon-banana trees_abas_ipay2_S_15_W4M3">
+                <FORM kindOf="original">=isu</FORM>
                 <PHON kindOf="original">isu</PHON>
-                <FORM kindOf="standard">isu</FORM>
+                <FORM kindOf="standard">=isu</FORM>
                 <PHON kindOf="standard">isu</PHON>
-                <TRANSL xml:lang="eng">2SG.NOM</TRANSL>
-                <TRANSL xml:lang="zho">2SG.主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">2SG.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">2SG.主格</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_15_W4">
+        <W id="KavCon-banana trees_abas_ipay2_S_15_W5">
             <FORM kindOf="original">nani</FORM>
             <PHON kindOf="original">nani</PHON>
             <FORM kindOf="standard">nani</FORM>
             <PHON kindOf="standard">nani</PHON>
-            <TRANSL xml:lang="zho">DM</TRANSL>
-            <TRANSL xml:lang="eng">DM</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_15_W4M1">
+            <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_15_W5M1">
                 <FORM kindOf="original">nani</FORM>
                 <PHON kindOf="original">nani</PHON>
                 <FORM kindOf="standard">nani</FORM>
                 <PHON kindOf="standard">nani</PHON>
-                <TRANSL xml:lang="eng">DM</TRANSL>
-                <TRANSL xml:lang="zho">DM</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
             </M>
         </W>
     </S>
     <S id="KavCon-banana trees_abas_ipay2_S_16">
         <FORM kindOf="original">kinausapaita ya.</FORM>
-        <PHON kindOf="original">kinausapaita ja.</PHON>
+        <PHON kindOf="original">kinausapaita ja</PHON>
         <FORM kindOf="standard">kinausapaita ya.</FORM>
-        <PHON kindOf="standard">kinausapaita ja.</PHON>
-        <TRANSL xml:lang="zho" notes="我們兩個(一起)啊.">我們兩個 啊.</TRANSL>
-        <TRANSL xml:lang="eng" notes="Let's both do it (together).">Let's both do it .</TRANSL>
+        <PHON kindOf="standard">kinausapaita ja</PHON>
+        <TRANSL xml:lang="zho">我們兩個(一起)啊.</TRANSL>
+        <TRANSL xml:lang="eng">Let's both do it (together).</TRANSL>
         <AUDIO file="KavCon-banana trees_abas_ipay2_S16.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavCon-banana trees_abas_ipay2.mp3" start="42.69" end="44.32"/>
         <W id="KavCon-banana trees_abas_ipay2_S_16_W0">
             <FORM kindOf="original">kin-ausa=pa=ita</FORM>
-            <PHON kindOf="original">kin-ausa=pa=ita</PHON>
+            <PHON kindOf="original">kinausapaita</PHON>
             <FORM kindOf="standard">kin-ausa=pa=ita</FORM>
-            <PHON kindOf="standard">kin-ausa=pa=ita</PHON>
-            <TRANSL xml:lang="zho">人量詞-二=未來=1IPL.主格</TRANSL>
-            <TRANSL xml:lang="eng">CLF.HUM-two=FUT=1IPL.NOM</TRANSL>
+            <PHON kindOf="standard">kinausapaita</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">人量詞-二=未來=1IPL.主格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">CLF.HUM-two=FUT=1IPL.NOM</TRANSL>
             <M id="KavCon-banana trees_abas_ipay2_S_16_W0M1">
                 <FORM kindOf="original">kin</FORM>
                 <PHON kindOf="original">kin</PHON>
                 <FORM kindOf="standard">kin</FORM>
                 <PHON kindOf="standard">kin</PHON>
-                <TRANSL xml:lang="eng">CLF.HUM</TRANSL>
-                <TRANSL xml:lang="zho">人量詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">CLF.HUM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">人量詞</TRANSL>
             </M>
             <M id="KavCon-banana trees_abas_ipay2_S_16_W0M2">
                 <FORM kindOf="original">ausa</FORM>
                 <PHON kindOf="original">ausa</PHON>
                 <FORM kindOf="standard">ausa</FORM>
                 <PHON kindOf="standard">ausa</PHON>
-                <TRANSL xml:lang="eng">two</TRANSL>
-                <TRANSL xml:lang="zho">二</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">two</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">二</TRANSL>
             </M>
             <M id="KavCon-banana trees_abas_ipay2_S_16_W0M3">
-                <FORM kindOf="original">pa</FORM>
+                <FORM kindOf="original">=pa</FORM>
                 <PHON kindOf="original">pa</PHON>
-                <FORM kindOf="standard">pa</FORM>
+                <FORM kindOf="standard">=pa</FORM>
                 <PHON kindOf="standard">pa</PHON>
-                <TRANSL xml:lang="eng">FUT</TRANSL>
-                <TRANSL xml:lang="zho">未來</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FUT</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">未來</TRANSL>
             </M>
             <M id="KavCon-banana trees_abas_ipay2_S_16_W0M4">
-                <FORM kindOf="original">ita</FORM>
+                <FORM kindOf="original">=ita</FORM>
                 <PHON kindOf="original">ita</PHON>
-                <FORM kindOf="standard">ita</FORM>
+                <FORM kindOf="standard">=ita</FORM>
                 <PHON kindOf="standard">ita</PHON>
-                <TRANSL xml:lang="eng">1IPL.NOM</TRANSL>
-                <TRANSL xml:lang="zho">1IPL.主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1IPL.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1IPL.主格</TRANSL>
             </M>
         </W>
         <W id="KavCon-banana trees_abas_ipay2_S_16_W1">
@@ -1629,48 +1911,48 @@
             <PHON kindOf="original">ja</PHON>
             <FORM kindOf="standard">ya</FORM>
             <PHON kindOf="standard">ja</PHON>
-            <TRANSL xml:lang="zho">語助詞</TRANSL>
-            <TRANSL xml:lang="eng">PART</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
             <M id="KavCon-banana trees_abas_ipay2_S_16_W1M1">
                 <FORM kindOf="original">ya</FORM>
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
-                <TRANSL xml:lang="eng">PART</TRANSL>
-                <TRANSL xml:lang="zho">語助詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
             </M>
         </W>
     </S>
     <S id="KavCon-banana trees_abas_ipay2_S_17">
         <FORM kindOf="original">zikati aisu pibud timaiku.</FORM>
-        <PHON kindOf="original">z~rikati aisu piβuɮ timaiku.</PHON>
+        <PHON kindOf="original">[z|r]ikati aisu piβuɮ timaiku</PHON>
         <FORM kindOf="standard">zikati aisu pibud timaiku.</FORM>
-        <PHON kindOf="standard">z~rikati aisu piβuɮ timaiku.</PHON>
+        <PHON kindOf="standard">[z|r]ikati aisu piβuɮ timaiku</PHON>
         <TRANSL xml:lang="zho">你要這樣給我回答.</TRANSL>
         <TRANSL xml:lang="eng">You have to respond to me in this way.</TRANSL>
         <AUDIO file="KavCon-banana trees_abas_ipay2_S17.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavCon-banana trees_abas_ipay2.mp3" start="44.32" end="46.69"/>
         <W id="KavCon-banana trees_abas_ipay2_S_17_W0">
             <FORM kindOf="original">zika=ti</FORM>
-            <PHON kindOf="original">z~rika=ti</PHON>
+            <PHON kindOf="original">[z|r]ikati</PHON>
             <FORM kindOf="standard">zika=ti</FORM>
-            <PHON kindOf="standard">z~rika=ti</PHON>
-            <TRANSL xml:lang="zho">這樣=完成</TRANSL>
-            <TRANSL xml:lang="eng">this.way=PFV</TRANSL>
+            <PHON kindOf="standard">[z|r]ikati</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">這樣=完成</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">this.way=PFV</TRANSL>
             <M id="KavCon-banana trees_abas_ipay2_S_17_W0M1">
                 <FORM kindOf="original">zika</FORM>
-                <PHON kindOf="original">z~rika</PHON>
+                <PHON kindOf="original">[z|r]ika</PHON>
                 <FORM kindOf="standard">zika</FORM>
-                <PHON kindOf="standard">z~rika</PHON>
-                <TRANSL xml:lang="eng">this.way</TRANSL>
-                <TRANSL xml:lang="zho">這樣</TRANSL>
+                <PHON kindOf="standard">[z|r]ika</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">this.way</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">這樣</TRANSL>
             </M>
             <M id="KavCon-banana trees_abas_ipay2_S_17_W0M2">
-                <FORM kindOf="original">ti</FORM>
+                <FORM kindOf="original">=ti</FORM>
                 <PHON kindOf="original">ti</PHON>
-                <FORM kindOf="standard">ti</FORM>
+                <FORM kindOf="standard">=ti</FORM>
                 <PHON kindOf="standard">ti</PHON>
-                <TRANSL xml:lang="eng">PFV</TRANSL>
-                <TRANSL xml:lang="zho">完成</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">完成</TRANSL>
             </M>
         </W>
         <W id="KavCon-banana trees_abas_ipay2_S_17_W1">
@@ -1678,15 +1960,15 @@
             <PHON kindOf="original">aisu</PHON>
             <FORM kindOf="standard">aisu</FORM>
             <PHON kindOf="standard">aisu</PHON>
-            <TRANSL xml:lang="zho">2SG.主格</TRANSL>
-            <TRANSL xml:lang="eng">2SG.NOM</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">2SG.主格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">2SG.NOM</TRANSL>
             <M id="KavCon-banana trees_abas_ipay2_S_17_W1M1">
                 <FORM kindOf="original">aisu</FORM>
                 <PHON kindOf="original">aisu</PHON>
                 <FORM kindOf="standard">aisu</FORM>
                 <PHON kindOf="standard">aisu</PHON>
-                <TRANSL xml:lang="eng">2SG.NOM</TRANSL>
-                <TRANSL xml:lang="zho">2SG.主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">2SG.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">2SG.主格</TRANSL>
             </M>
         </W>
         <W id="KavCon-banana trees_abas_ipay2_S_17_W2">
@@ -1694,15 +1976,15 @@
             <PHON kindOf="original">piβuɮ</PHON>
             <FORM kindOf="standard">pibud</FORM>
             <PHON kindOf="standard">piβuɮ</PHON>
-            <TRANSL xml:lang="zho">回答</TRANSL>
-            <TRANSL xml:lang="eng">reply</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">回答</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">reply</TRANSL>
             <M id="KavCon-banana trees_abas_ipay2_S_17_W2M1">
                 <FORM kindOf="original">pibud</FORM>
                 <PHON kindOf="original">piβuɮ</PHON>
                 <FORM kindOf="standard">pibud</FORM>
                 <PHON kindOf="standard">piβuɮ</PHON>
-                <TRANSL xml:lang="eng">reply</TRANSL>
-                <TRANSL xml:lang="zho">回答</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">reply</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">回答</TRANSL>
             </M>
         </W>
         <W id="KavCon-banana trees_abas_ipay2_S_17_W3">
@@ -1710,186 +1992,228 @@
             <PHON kindOf="original">timaiku</PHON>
             <FORM kindOf="standard">timaiku</FORM>
             <PHON kindOf="standard">timaiku</PHON>
-            <TRANSL xml:lang="zho">1SG.斜格</TRANSL>
-            <TRANSL xml:lang="eng">1SG.OBL</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">1SG.斜格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">1SG.OBL</TRANSL>
             <M id="KavCon-banana trees_abas_ipay2_S_17_W3M1">
                 <FORM kindOf="original">timaiku</FORM>
                 <PHON kindOf="original">timaiku</PHON>
                 <FORM kindOf="standard">timaiku</FORM>
                 <PHON kindOf="standard">timaiku</PHON>
-                <TRANSL xml:lang="eng">1SG.OBL</TRANSL>
-                <TRANSL xml:lang="zho">1SG.斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1SG.OBL</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1SG.斜格</TRANSL>
             </M>
         </W>
     </S>
     <S id="KavCon-banana trees_abas_ipay2_S_18">
-        <FORM kindOf="original">n ya.</FORM>
-        <PHON kindOf="original">n ja.</PHON>
-        <FORM kindOf="standard">n ya.</FORM>
-        <PHON kindOf="standard">n ja.</PHON>
+        <FORM kindOf="original">I n ya.</FORM>
+        <PHON kindOf="original">i n ja</PHON>
+        <FORM kindOf="standard">I n ya.</FORM>
+        <PHON kindOf="standard">i n ja</PHON>
         <TRANSL xml:lang="zho">嗯.</TRANSL>
         <TRANSL xml:lang="eng">Okay.</TRANSL>
         <AUDIO file="KavCon-banana trees_abas_ipay2_S18.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavCon-banana trees_abas_ipay2.mp3" start="46.69" end="47.41"/>
         <W id="KavCon-banana trees_abas_ipay2_S_18_W0">
+            <FORM kindOf="original">I</FORM>
+            <PHON kindOf="original">i</PHON>
+            <FORM kindOf="standard">I</FORM>
+            <PHON kindOf="standard">i</PHON>
+            <M id="KavCon-banana trees_abas_ipay2_S_18_W0M1">
+                <FORM kindOf="original">I</FORM>
+                <PHON kindOf="original">i</PHON>
+                <FORM kindOf="standard">I</FORM>
+                <PHON kindOf="standard">i</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">_</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">_</TRANSL>
+            </M>
+        </W>
+        <W id="KavCon-banana trees_abas_ipay2_S_18_W1">
             <FORM kindOf="original">n</FORM>
             <PHON kindOf="original">n</PHON>
             <FORM kindOf="standard">n</FORM>
             <PHON kindOf="standard">n</PHON>
-            <TRANSL xml:lang="zho">嗯</TRANSL>
-            <TRANSL xml:lang="eng">okay</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_18_W0M1">
+            <TRANSL xml:lang="zho" kindOf="original">嗯</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">okay</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_18_W1M1">
                 <FORM kindOf="original">n</FORM>
                 <PHON kindOf="original">n</PHON>
                 <FORM kindOf="standard">n</FORM>
                 <PHON kindOf="standard">n</PHON>
-                <TRANSL xml:lang="eng">okay</TRANSL>
-                <TRANSL xml:lang="zho">嗯</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">okay</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">嗯</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_18_W1">
+        <W id="KavCon-banana trees_abas_ipay2_S_18_W2">
             <FORM kindOf="original">ya</FORM>
             <PHON kindOf="original">ja</PHON>
             <FORM kindOf="standard">ya</FORM>
             <PHON kindOf="standard">ja</PHON>
-            <TRANSL xml:lang="zho">語助詞</TRANSL>
-            <TRANSL xml:lang="eng">PART</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_18_W1M1">
+            <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_18_W2M1">
                 <FORM kindOf="original">ya</FORM>
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
-                <TRANSL xml:lang="eng">PART</TRANSL>
-                <TRANSL xml:lang="zho">語助詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PART</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">語助詞</TRANSL>
             </M>
         </W>
     </S>
     <S id="KavCon-banana trees_abas_ipay2_S_19">
-        <FORM kindOf="original">n maiti yaupama mgaysyawholi.</FORM>
-        <PHON kindOf="original">n maiti jaupama mgajsjawh*ri.</PHON>
-        <FORM kindOf="standard">n maiti yaupama mgaysyawholi.</FORM>
-        <PHON kindOf="standard">n maiti jaupama mgajsjawh*ri.</PHON>
+        <FORM kindOf="original">A n I maiti yaupama mgaysyawholi.</FORM>
+        <PHON kindOf="original">a n i maiti jaupama mgajsjawh*ri</PHON>
+        <FORM kindOf="standard">A n I maiti yaupama mgaysyawholi.</FORM>
+        <PHON kindOf="standard">a n i maiti jaupama mgajsjawh*ri</PHON>
         <TRANSL xml:lang="zho">沒有了嗎?還有沒有?介紹給你.</TRANSL>
         <TRANSL xml:lang="eng">Finished? Anything else? Let me introduce to you.</TRANSL>
         <AUDIO file="KavCon-banana trees_abas_ipay2_S19.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavCon-banana trees_abas_ipay2.mp3" start="47.41" end="53.13"/>
         <W id="KavCon-banana trees_abas_ipay2_S_19_W0">
+            <FORM kindOf="original">A</FORM>
+            <PHON kindOf="original">a</PHON>
+            <FORM kindOf="standard">A</FORM>
+            <PHON kindOf="standard">a</PHON>
+            <M id="KavCon-banana trees_abas_ipay2_S_19_W0M1">
+                <FORM kindOf="original">A</FORM>
+                <PHON kindOf="original">a</PHON>
+                <FORM kindOf="standard">A</FORM>
+                <PHON kindOf="standard">a</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">_</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">_</TRANSL>
+            </M>
+        </W>
+        <W id="KavCon-banana trees_abas_ipay2_S_19_W1">
             <FORM kindOf="original">n</FORM>
             <PHON kindOf="original">n</PHON>
             <FORM kindOf="standard">n</FORM>
             <PHON kindOf="standard">n</PHON>
-            <TRANSL xml:lang="zho">嗯</TRANSL>
-            <TRANSL xml:lang="eng">okay</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_19_W0M1">
+            <TRANSL xml:lang="zho" kindOf="original">嗯</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">okay</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_19_W1M1">
                 <FORM kindOf="original">n</FORM>
                 <PHON kindOf="original">n</PHON>
                 <FORM kindOf="standard">n</FORM>
                 <PHON kindOf="standard">n</PHON>
-                <TRANSL xml:lang="eng">okay</TRANSL>
-                <TRANSL xml:lang="zho">嗯</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">okay</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">嗯</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_19_W1">
+        <W id="KavCon-banana trees_abas_ipay2_S_19_W2">
+            <FORM kindOf="original">I</FORM>
+            <PHON kindOf="original">i</PHON>
+            <FORM kindOf="standard">I</FORM>
+            <PHON kindOf="standard">i</PHON>
+            <M id="KavCon-banana trees_abas_ipay2_S_19_W2M1">
+                <FORM kindOf="original">I</FORM>
+                <PHON kindOf="original">i</PHON>
+                <FORM kindOf="standard">I</FORM>
+                <PHON kindOf="standard">i</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">_</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">_</TRANSL>
+            </M>
+        </W>
+        <W id="KavCon-banana trees_abas_ipay2_S_19_W3">
             <FORM kindOf="original">mai=ti</FORM>
-            <PHON kindOf="original">mai=ti</PHON>
+            <PHON kindOf="original">maiti</PHON>
             <FORM kindOf="standard">mai=ti</FORM>
-            <PHON kindOf="standard">mai=ti</PHON>
-            <TRANSL xml:lang="zho">否定=完成</TRANSL>
-            <TRANSL xml:lang="eng">NEG=PFV</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_19_W1M1">
+            <PHON kindOf="standard">maiti</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">否定=完成</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">NEG=PFV</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_19_W3M1">
                 <FORM kindOf="original">mai</FORM>
                 <PHON kindOf="original">mai</PHON>
                 <FORM kindOf="standard">mai</FORM>
                 <PHON kindOf="standard">mai</PHON>
-                <TRANSL xml:lang="eng">NEG</TRANSL>
-                <TRANSL xml:lang="zho">否定</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NEG</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">否定</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_19_W1M2">
-                <FORM kindOf="original">ti</FORM>
+            <M id="KavCon-banana trees_abas_ipay2_S_19_W3M2">
+                <FORM kindOf="original">=ti</FORM>
                 <PHON kindOf="original">ti</PHON>
-                <FORM kindOf="standard">ti</FORM>
+                <FORM kindOf="standard">=ti</FORM>
                 <PHON kindOf="standard">ti</PHON>
-                <TRANSL xml:lang="eng">PFV</TRANSL>
-                <TRANSL xml:lang="zho">完成</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">完成</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_19_W2">
+        <W id="KavCon-banana trees_abas_ipay2_S_19_W4">
             <FORM kindOf="original">yau=pama</FORM>
-            <PHON kindOf="original">jau=pama</PHON>
+            <PHON kindOf="original">jaupama</PHON>
             <FORM kindOf="standard">yau=pama</FORM>
-            <PHON kindOf="standard">jau=pama</PHON>
-            <TRANSL xml:lang="zho">存在=還</TRANSL>
-            <TRANSL xml:lang="eng">EXIST=still</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_19_W2M1">
+            <PHON kindOf="standard">jaupama</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">存在=還</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">EXIST=still</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_19_W4M1">
                 <FORM kindOf="original">yau</FORM>
                 <PHON kindOf="original">jau</PHON>
                 <FORM kindOf="standard">yau</FORM>
                 <PHON kindOf="standard">jau</PHON>
-                <TRANSL xml:lang="eng">EXIST</TRANSL>
-                <TRANSL xml:lang="zho">存在</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">EXIST</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">存在</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_19_W2M2">
-                <FORM kindOf="original">pama</FORM>
+            <M id="KavCon-banana trees_abas_ipay2_S_19_W4M2">
+                <FORM kindOf="original">=pama</FORM>
                 <PHON kindOf="original">pama</PHON>
-                <FORM kindOf="standard">pama</FORM>
+                <FORM kindOf="standard">=pama</FORM>
                 <PHON kindOf="standard">pama</PHON>
-                <TRANSL xml:lang="eng">still</TRANSL>
-                <TRANSL xml:lang="zho">還</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">still</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">還</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_19_W3">
+        <W id="KavCon-banana trees_abas_ipay2_S_19_W5">
             <FORM kindOf="original" notes="code-switch">m-gaysyawholi</FORM>
-            <PHON kindOf="original">m-gajsjawh*ri</PHON>
+            <PHON kindOf="original">mgajsjawh*ri</PHON>
             <FORM kindOf="standard">m-gaysyawholi</FORM>
-            <PHON kindOf="standard">m-gajsjawh*ri</PHON>
-            <TRANSL xml:lang="zho">主焦-介紹給你</TRANSL>
-            <TRANSL xml:lang="eng">AF-introduce.to.you</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_19_W3M1">
+            <PHON kindOf="standard">mgajsjawh*ri</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">主焦-介紹給你</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">AF-introduce.to.you</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_19_W5M1">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="eng">AF</TRANSL>
-                <TRANSL xml:lang="zho">主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_19_W3M2">
+            <M id="KavCon-banana trees_abas_ipay2_S_19_W5M2">
                 <FORM kindOf="original">gaysyawholi</FORM>
                 <PHON kindOf="original">gajsjawh*ri</PHON>
                 <FORM kindOf="standard">gaysyawholi</FORM>
                 <PHON kindOf="standard">gajsjawh*ri</PHON>
-                <TRANSL xml:lang="eng">introduce.to.you</TRANSL>
-                <TRANSL xml:lang="zho">介紹給你</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">introduce.to.you</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">介紹給你</TRANSL>
             </M>
         </W>
     </S>
     <S id="KavCon-banana trees_abas_ipay2_S_20">
-        <FORM kindOf="original">maiti a o siangatupaisu.</FORM>
-        <PHON kindOf="original">maiti a * siaŋatupaisu.</PHON>
+        <FORM kindOf="original" notes="source note: IU47為發音人回覆錄音者的話,非對話本身的內容">maiti a o siangatupaisu.</FORM>
+        <PHON kindOf="original">maiti a * siaŋatupaisu</PHON>
         <FORM kindOf="standard">maiti a o siangatupaisu.</FORM>
-        <PHON kindOf="standard">maiti a * siaŋatupaisu.</PHON>
-        <TRANSL xml:lang="zho" notes="你開始(削香蕉樹皮)了嗎?">你開始 了嗎?</TRANSL>
-        <TRANSL xml:lang="eng" notes="Have you started (barking the banana trees)?">Have you started ?</TRANSL>
+        <PHON kindOf="standard">maiti a * siaŋatupaisu</PHON>
+        <TRANSL xml:lang="zho">你開始(削香蕉樹皮)了嗎?</TRANSL>
+        <TRANSL xml:lang="eng">Have you started (barking the banana trees)?</TRANSL>
         <AUDIO file="KavCon-banana trees_abas_ipay2_S20.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavCon-banana trees_abas_ipay2.mp3" start="53.13" end="56.6"/>
         <W id="KavCon-banana trees_abas_ipay2_S_20_W0">
             <FORM kindOf="original">mai=ti</FORM>
-            <PHON kindOf="original">mai=ti</PHON>
+            <PHON kindOf="original">maiti</PHON>
             <FORM kindOf="standard">mai=ti</FORM>
-            <PHON kindOf="standard">mai=ti</PHON>
-            <TRANSL xml:lang="zho">否定=完成</TRANSL>
-            <TRANSL xml:lang="eng">NEG=PFV</TRANSL>
+            <PHON kindOf="standard">maiti</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">否定=完成</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">NEG=PFV</TRANSL>
             <M id="KavCon-banana trees_abas_ipay2_S_20_W0M1">
                 <FORM kindOf="original">mai</FORM>
                 <PHON kindOf="original">mai</PHON>
                 <FORM kindOf="standard">mai</FORM>
                 <PHON kindOf="standard">mai</PHON>
-                <TRANSL xml:lang="eng">NEG</TRANSL>
-                <TRANSL xml:lang="zho">否定</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NEG</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">否定</TRANSL>
             </M>
             <M id="KavCon-banana trees_abas_ipay2_S_20_W0M2">
-                <FORM kindOf="original">ti</FORM>
+                <FORM kindOf="original">=ti</FORM>
                 <PHON kindOf="original">ti</PHON>
-                <FORM kindOf="standard">ti</FORM>
+                <FORM kindOf="standard">=ti</FORM>
                 <PHON kindOf="standard">ti</PHON>
-                <TRANSL xml:lang="eng">PFV</TRANSL>
-                <TRANSL xml:lang="zho">完成</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">完成</TRANSL>
             </M>
         </W>
         <W id="KavCon-banana trees_abas_ipay2_S_20_W1">
@@ -1897,15 +2221,15 @@
             <PHON kindOf="original">a</PHON>
             <FORM kindOf="standard">a</FORM>
             <PHON kindOf="standard">a</PHON>
-            <TRANSL xml:lang="zho">感嘆</TRANSL>
-            <TRANSL xml:lang="eng">INT</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">感嘆</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">INT</TRANSL>
             <M id="KavCon-banana trees_abas_ipay2_S_20_W1M1">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="eng">INT</TRANSL>
-                <TRANSL xml:lang="zho">感嘆</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">INT</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">感嘆</TRANSL>
             </M>
         </W>
         <W id="KavCon-banana trees_abas_ipay2_S_20_W2">
@@ -1913,161 +2237,189 @@
             <PHON kindOf="original">*</PHON>
             <FORM kindOf="standard">o</FORM>
             <PHON kindOf="standard">*</PHON>
-            <TRANSL xml:lang="zho">感嘆</TRANSL>
-            <TRANSL xml:lang="eng">INT</TRANSL>
+            <TRANSL xml:lang="zho" kindOf="original">感嘆</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">INT</TRANSL>
             <M id="KavCon-banana trees_abas_ipay2_S_20_W2M1">
                 <FORM kindOf="original">o</FORM>
                 <PHON kindOf="original">*</PHON>
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">*</PHON>
-                <TRANSL xml:lang="eng">INT</TRANSL>
-                <TRANSL xml:lang="zho">感嘆</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">INT</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">感嘆</TRANSL>
             </M>
         </W>
         <W id="KavCon-banana trees_abas_ipay2_S_20_W3">
             <FORM kindOf="original">siangatu=pa=isu</FORM>
-            <PHON kindOf="original">siaŋatu=pa=isu</PHON>
+            <PHON kindOf="original">siaŋatupaisu</PHON>
             <FORM kindOf="standard">siangatu=pa=isu</FORM>
-            <PHON kindOf="standard">siaŋatu=pa=isu</PHON>
-            <TRANSL xml:lang="zho">開始=未來=2SG.主格</TRANSL>
-            <TRANSL xml:lang="eng">begin=FUT=2SG.NOM</TRANSL>
+            <PHON kindOf="standard">siaŋatupaisu</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">開始=未來=2SG.主格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">begin=FUT=2SG.NOM</TRANSL>
             <M id="KavCon-banana trees_abas_ipay2_S_20_W3M1">
                 <FORM kindOf="original">siangatu</FORM>
                 <PHON kindOf="original">siaŋatu</PHON>
                 <FORM kindOf="standard">siangatu</FORM>
                 <PHON kindOf="standard">siaŋatu</PHON>
-                <TRANSL xml:lang="eng">begin</TRANSL>
-                <TRANSL xml:lang="zho">開始</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">begin</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">開始</TRANSL>
             </M>
             <M id="KavCon-banana trees_abas_ipay2_S_20_W3M2">
-                <FORM kindOf="original">pa</FORM>
+                <FORM kindOf="original">=pa</FORM>
                 <PHON kindOf="original">pa</PHON>
-                <FORM kindOf="standard">pa</FORM>
+                <FORM kindOf="standard">=pa</FORM>
                 <PHON kindOf="standard">pa</PHON>
-                <TRANSL xml:lang="eng">FUT</TRANSL>
-                <TRANSL xml:lang="zho">未來</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FUT</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">未來</TRANSL>
             </M>
             <M id="KavCon-banana trees_abas_ipay2_S_20_W3M3">
-                <FORM kindOf="original">isu</FORM>
+                <FORM kindOf="original">=isu</FORM>
                 <PHON kindOf="original">isu</PHON>
-                <FORM kindOf="standard">isu</FORM>
+                <FORM kindOf="standard">=isu</FORM>
                 <PHON kindOf="standard">isu</PHON>
-                <TRANSL xml:lang="eng">2SG.NOM</TRANSL>
-                <TRANSL xml:lang="zho">2SG.主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">2SG.NOM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">2SG.主格</TRANSL>
             </M>
         </W>
     </S>
     <S id="KavCon-banana trees_abas_ipay2_S_21">
-        <FORM kindOf="original">maipama si maipama siangatu.</FORM>
-        <PHON kindOf="original">maipama si maipama siaŋatu.</PHON>
-        <FORM kindOf="standard">maipama si maipama siangatu.</FORM>
-        <PHON kindOf="standard">maipama si maipama siaŋatu.</PHON>
-        <TRANSL xml:lang="zho" notes="還沒,還沒有開始(削香蕉樹皮).">還沒,還沒有開始 .</TRANSL>
-        <TRANSL xml:lang="eng" notes="Not yet. (I) haven't begun (barking the banana trees).">Not yet. haven't begun .</TRANSL>
+        <FORM kindOf="original">A maipama si maipama siangatu.</FORM>
+        <PHON kindOf="original">a maipama si maipama siaŋatu</PHON>
+        <FORM kindOf="standard">A maipama si maipama siangatu.</FORM>
+        <PHON kindOf="standard">a maipama si maipama siaŋatu</PHON>
+        <TRANSL xml:lang="zho">還沒,還沒有開始(削香蕉樹皮).</TRANSL>
+        <TRANSL xml:lang="eng">Not yet. (I) haven't begun (barking the banana trees).</TRANSL>
         <AUDIO file="KavCon-banana trees_abas_ipay2_S21.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavCon-banana trees_abas_ipay2.mp3" start="56.6" end="58.96"/>
         <W id="KavCon-banana trees_abas_ipay2_S_21_W0">
-            <FORM kindOf="original">mai=pama</FORM>
-            <PHON kindOf="original">mai=pama</PHON>
-            <FORM kindOf="standard">mai=pama</FORM>
-            <PHON kindOf="standard">mai=pama</PHON>
-            <TRANSL xml:lang="zho">否定=還</TRANSL>
-            <TRANSL xml:lang="eng">NEG=yet</TRANSL>
+            <FORM kindOf="original">A</FORM>
+            <PHON kindOf="original">a</PHON>
+            <FORM kindOf="standard">A</FORM>
+            <PHON kindOf="standard">a</PHON>
             <M id="KavCon-banana trees_abas_ipay2_S_21_W0M1">
+                <FORM kindOf="original">A</FORM>
+                <PHON kindOf="original">a</PHON>
+                <FORM kindOf="standard">A</FORM>
+                <PHON kindOf="standard">a</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">_</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">_</TRANSL>
+            </M>
+        </W>
+        <W id="KavCon-banana trees_abas_ipay2_S_21_W1">
+            <FORM kindOf="original">mai=pama</FORM>
+            <PHON kindOf="original">maipama</PHON>
+            <FORM kindOf="standard">mai=pama</FORM>
+            <PHON kindOf="standard">maipama</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">否定=還</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">NEG=yet</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_21_W1M1">
                 <FORM kindOf="original">mai</FORM>
                 <PHON kindOf="original">mai</PHON>
                 <FORM kindOf="standard">mai</FORM>
                 <PHON kindOf="standard">mai</PHON>
-                <TRANSL xml:lang="eng">NEG</TRANSL>
-                <TRANSL xml:lang="zho">否定</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NEG</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">否定</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_21_W0M2">
-                <FORM kindOf="original">pama</FORM>
+            <M id="KavCon-banana trees_abas_ipay2_S_21_W1M2">
+                <FORM kindOf="original">=pama</FORM>
                 <PHON kindOf="original">pama</PHON>
-                <FORM kindOf="standard">pama</FORM>
+                <FORM kindOf="standard">=pama</FORM>
                 <PHON kindOf="standard">pama</PHON>
-                <TRANSL xml:lang="eng">yet</TRANSL>
-                <TRANSL xml:lang="zho">還</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">yet</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">還</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_21_W1">
+        <W id="KavCon-banana trees_abas_ipay2_S_21_W2">
             <FORM kindOf="original">si</FORM>
             <PHON kindOf="original">si</PHON>
             <FORM kindOf="standard">si</FORM>
             <PHON kindOf="standard">si</PHON>
-            <TRANSL xml:lang="zho">FS</TRANSL>
-            <TRANSL xml:lang="eng">FS</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_21_W1M1">
+            <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_21_W2M1">
                 <FORM kindOf="original">si</FORM>
                 <PHON kindOf="original">si</PHON>
                 <FORM kindOf="standard">si</FORM>
                 <PHON kindOf="standard">si</PHON>
-                <TRANSL xml:lang="eng">FS</TRANSL>
-                <TRANSL xml:lang="zho">FS</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_21_W2">
+        <W id="KavCon-banana trees_abas_ipay2_S_21_W3">
             <FORM kindOf="original">mai=pama</FORM>
-            <PHON kindOf="original">mai=pama</PHON>
+            <PHON kindOf="original">maipama</PHON>
             <FORM kindOf="standard">mai=pama</FORM>
-            <PHON kindOf="standard">mai=pama</PHON>
-            <TRANSL xml:lang="zho">否定=還</TRANSL>
-            <TRANSL xml:lang="eng">NEG=yet</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_21_W2M1">
+            <PHON kindOf="standard">maipama</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">否定=還</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">NEG=yet</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_21_W3M1">
                 <FORM kindOf="original">mai</FORM>
                 <PHON kindOf="original">mai</PHON>
                 <FORM kindOf="standard">mai</FORM>
                 <PHON kindOf="standard">mai</PHON>
-                <TRANSL xml:lang="eng">NEG</TRANSL>
-                <TRANSL xml:lang="zho">否定</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NEG</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">否定</TRANSL>
             </M>
-            <M id="KavCon-banana trees_abas_ipay2_S_21_W2M2">
-                <FORM kindOf="original">pama</FORM>
+            <M id="KavCon-banana trees_abas_ipay2_S_21_W3M2">
+                <FORM kindOf="original">=pama</FORM>
                 <PHON kindOf="original">pama</PHON>
-                <FORM kindOf="standard">pama</FORM>
+                <FORM kindOf="standard">=pama</FORM>
                 <PHON kindOf="standard">pama</PHON>
-                <TRANSL xml:lang="eng">yet</TRANSL>
-                <TRANSL xml:lang="zho">還</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">yet</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">還</TRANSL>
             </M>
         </W>
-        <W id="KavCon-banana trees_abas_ipay2_S_21_W3">
+        <W id="KavCon-banana trees_abas_ipay2_S_21_W4">
             <FORM kindOf="original">siangatu</FORM>
             <PHON kindOf="original">siaŋatu</PHON>
             <FORM kindOf="standard">siangatu</FORM>
             <PHON kindOf="standard">siaŋatu</PHON>
-            <TRANSL xml:lang="zho">開始</TRANSL>
-            <TRANSL xml:lang="eng">begin</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_21_W3M1">
+            <TRANSL xml:lang="zho" kindOf="original">開始</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">begin</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_21_W4M1">
                 <FORM kindOf="original">siangatu</FORM>
                 <PHON kindOf="original">siaŋatu</PHON>
                 <FORM kindOf="standard">siangatu</FORM>
                 <PHON kindOf="standard">siaŋatu</PHON>
-                <TRANSL xml:lang="eng">begin</TRANSL>
-                <TRANSL xml:lang="zho">開始</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">begin</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">開始</TRANSL>
             </M>
         </W>
     </S>
     <S id="KavCon-banana trees_abas_ipay2_S_22">
-        <FORM kindOf="original">a.</FORM>
-        <PHON kindOf="original">a.</PHON>
-        <FORM kindOf="standard">a.</FORM>
-        <PHON kindOf="standard">a.</PHON>
+        <FORM kindOf="original">I a.</FORM>
+        <PHON kindOf="original">i a</PHON>
+        <FORM kindOf="standard">I a.</FORM>
+        <PHON kindOf="standard">i a</PHON>
         <TRANSL xml:lang="zho">A.</TRANSL>
         <TRANSL xml:lang="eng">A.</TRANSL>
         <AUDIO file="KavCon-banana trees_abas_ipay2_S22.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavCon-banana trees_abas_ipay2.mp3" start="58.96" end="59.36"/>
         <W id="KavCon-banana trees_abas_ipay2_S_22_W0">
+            <FORM kindOf="original">I</FORM>
+            <PHON kindOf="original">i</PHON>
+            <FORM kindOf="standard">I</FORM>
+            <PHON kindOf="standard">i</PHON>
+            <M id="KavCon-banana trees_abas_ipay2_S_22_W0M1">
+                <FORM kindOf="original">I</FORM>
+                <PHON kindOf="original">i</PHON>
+                <FORM kindOf="standard">I</FORM>
+                <PHON kindOf="standard">i</PHON>
+                <TRANSL xml:lang="eng" kindOf="original">_</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">_</TRANSL>
+            </M>
+        </W>
+        <W id="KavCon-banana trees_abas_ipay2_S_22_W1">
             <FORM kindOf="original">a</FORM>
             <PHON kindOf="original">a</PHON>
             <FORM kindOf="standard">a</FORM>
             <PHON kindOf="standard">a</PHON>
-            <TRANSL xml:lang="zho">BC</TRANSL>
-            <TRANSL xml:lang="eng">BC</TRANSL>
-            <M id="KavCon-banana trees_abas_ipay2_S_22_W0M1">
+            <TRANSL xml:lang="zho" kindOf="original">A</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">A</TRANSL>
+            <M id="KavCon-banana trees_abas_ipay2_S_22_W1M1">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="eng">BC</TRANSL>
-                <TRANSL xml:lang="zho">BC</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">A</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">A</TRANSL>
             </M>
         </W>
     </S>

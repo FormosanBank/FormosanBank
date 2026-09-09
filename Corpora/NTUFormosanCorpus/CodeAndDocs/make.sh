@@ -4,7 +4,7 @@
 # Executable form of the "Processing" section in ../readme.md: parses the
 # source JSONs into CodeAndDocs/Final_XML, runs the shared FormosanBank
 # cleaning/standardization/phonology pipeline, installs the result into the
-# corpus XML/ directory, then applies the post-processing repair steps 4-20
+# corpus XML/ directory, then applies the recorded post-processing repairs
 # in order. Ends with a corpus-wide add_phonology refresh (so PHON is
 # canonical even where a repair step's witness-gated regeneration skipped),
 # re-application of recorded hand edits (CodeAndDocs/manual_edits.xml, if
@@ -45,18 +45,35 @@ for arg in "$@"; do
 done
 
 CODEDOCS="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"   # .../CodeAndDocs
-CORPUS="$(dirname "$CODEDOCS")"                            # corpus root
-BANK="$(cd "$CORPUS/../.." && pwd)"                        # FormosanBank root
+CORPUS="$(dirname "$CODEDOCS")"                            # published corpus root
+DEFAULT_BANK="$(cd "$CORPUS/../.." && pwd)"
+BANK="${FORMOSANBANK_ROOT:-$DEFAULT_BANK}"
 SCRIPTS="$CODEDOCS/scripts"
 FINAL="$CODEDOCS/Final_XML"                                # parser output
 
 PY="${PYTHON:-$BANK/.venv/bin/python}"
 [[ -x "$PY" ]] || PY="$(command -v python3)"
 
+if [[ ! -f "$BANK/QC/cleaning/clean_xml.py" ]]; then
+  echo "FormosanBank checkout not found at $BANK; set FORMOSANBANK_ROOT" >&2
+  exit 2
+fi
+export FORMOSANBANK_ROOT="$BANK"
+
 step() { printf '\n=== %s ===\n' "$*"; }
 
-step "1. Parse original files -> Final_XML/"
+step "0. Verify pinned JSON source snapshot"
+"$PY" "$SCRIPTS/verify_source_snapshot.py" --repo-root "$CODEDOCS"
+
+step "1. Reset generated staging and parse original files -> Final_XML/"
+rm -rf "$FINAL"
 (cd "$CODEDOCS" && "$PY" scripts/run_parsers.py)
+
+step "1b. Repair reviewed source-field extraction defects"
+"$PY" "$SCRIPTS/repair_source_fields.py" --xml_dir "$FINAL"
+
+step "1c. Audit emitted source-note preservation"
+"$PY" "$SCRIPTS/audit_source_notes.py" --xml_dir "$FINAL"
 
 if [[ "$WITH_AUDIO" -eq 1 ]]; then
   step "2. Download audio"
@@ -70,7 +87,11 @@ step "2b. Remove no-audio sentinel AUDIO elements"
 (cd "$CODEDOCS" && "$PY" scripts/remove_no_audio_elements.py)
 
 step "3a. clean_xml (original-tier cleaning + null-glyph canonicalization)"
-"$PY" "$BANK/QC/cleaning/clean_xml.py" --corpora_path "$FINAL"
+(cd "$CODEDOCS" && "$PY" "$BANK/QC/cleaning/clean_xml.py" --corpora_path Final_XML)
+# POL-036 makes quote corrections durable evidence. Running clean_xml with a
+# relative input path keeps this tracked CSV free of workstation-local paths.
+[[ -f "$FINAL/quote_corrections.csv" ]] && \
+    mv "$FINAL/quote_corrections.csv" "$CODEDOCS/quote_corrections.csv"
 
 step "3b. standardize --remove_accents (standard tier: accents, S-level null units, C012)"
 "$PY" "$BANK/QC/utilities/standardize.py" --remove_accents --corpora_path "$FINAL"
@@ -83,23 +104,27 @@ step "3c. add_phonology (Ortho113)"
 
 run_step() { local label="$1"; shift; step "$label"; "$PY" "$@"; }
 
-# Serialization boundaries (see normalize_serialization.py): step 4's
-# round-trip guard expects the parsers' minidom style, steps 5-20 expect
+# Serialization boundaries (see normalize_serialization.py): steps 3e-4
+# expect the parsers' minidom style, steps 5-22 expect
 # the published lxml style. Convert at each boundary so no guard skips.
 run_step "3d. normalize serialization (minidom, for step 4)" \
     "$SCRIPTS/normalize_serialization.py" --style minidom "$FINAL"
+run_step "3e. repair source-specific M structures" \
+    "$SCRIPTS/repair_source_morpheme_structures.py" --xml_dir "$FINAL"
 run_step "4. repair_empty_morphemes"            "$SCRIPTS/repair_empty_morphemes.py" --xml_dir "$FINAL"
 run_step "4b. normalize serialization (lxml, for steps 5-20)" \
     "$SCRIPTS/normalize_serialization.py" --style lxml "$FINAL"
 
-step "4c. Install Final_XML/ -> XML/"
-# No --delete: XML/ also holds per-language failed_audio.csv logs that are
-# only regenerated when --with-audio is used. Remove XML/ manually first if
-# a file has been renamed away in the parsers.
-rsync -a "$FINAL"/ "$CORPUS/XML"/
+step "4c. Install legacy Final_XML/ sections -> XML/"
+for section in Grammar Sentences Stories; do
+  mkdir -p "$CORPUS/XML/$section"
+  rsync -a --delete --delete-excluded \
+    --include '*/' --include '*.xml' --exclude '*' \
+    "$FINAL/$section"/ "$CORPUS/XML/$section"/
+done
 
 run_step "5. borrow_segmentation"               "$SCRIPTS/borrow_segmentation.py"
-run_step "6. dedupe_sentence_ids"               "$SCRIPTS/dedupe_sentence_ids.py"
+run_step "6. uniquify_sentence_ids"             "$SCRIPTS/uniquify_sentence_ids.py"
 step "7. remove_null_symbols — RETIRED (handled by steps 3a-3c; see readme.md)"
 step "8. manual V121 review — nothing scripted (hand edits go in manual_edits.xml)"
 run_step "9. remove_annotation_codes"           "$SCRIPTS/remove_annotation_codes.py"
@@ -122,6 +147,39 @@ run_step "17. strip_trailing_slash"             "$SCRIPTS/strip_trailing_slash.p
 run_step "18. expand_word_level_alternatives"   "$SCRIPTS/expand_word_level_alternatives.py"
 run_step "19. collapse_gloss_only_alternations" "$SCRIPTS/collapse_gloss_only_alternations.py"
 run_step "20. resolve_residual_optional_parens" "$SCRIPTS/resolve_residual_optional_parens.py"
+run_step "21. resolve_inline_parentheticals"    "$SCRIPTS/resolve_inline_parentheticals.py"
+run_step "21b. normalize serialization for late repairs" \
+    "$SCRIPTS/normalize_serialization.py" --style lxml "$CORPUS/XML"
+run_step "22. repair_null_propagation"          "$SCRIPTS/repair_null_propagation.py"
+run_step "22b. propagate clitic boundaries"     "$SCRIPTS/propagate_clitic_boundaries.py"
+
+run_step "23. Remove content-free TRANSL tiers" \
+    "$SCRIPTS/remove_empty_translations.py" --xml-dir "$CORPUS/XML"
+
+run_step "23a. Normalize serialization before gloss ownership" \
+    "$SCRIPTS/normalize_serialization.py" --style lxml "$CORPUS/XML"
+
+run_step "23b. Mark source-owned W/M glosses as original" \
+    "$SCRIPTS/mark_original_glosses.py" --xml-dir "$CORPUS/XML"
+
+if [[ -f "$CODEDOCS/manual_edits.xml" ]]; then
+  step "Re-apply recorded hand edits (manual_edits.xml)"
+  "$PY" "$BANK/QC/cleaning/apply_manual_edits.py" --corpora_path "$CORPUS/XML"
+else
+  step "No CodeAndDocs/manual_edits.xml: skipping hand-edit re-application"
+fi
+
+run_step "23c. Apply reviewed POL-024 translation-parenthetical decisions" \
+    "$SCRIPTS/repair_translation_parentheticals.py" --xml-dir "$CORPUS/XML"
+
+step "Final standard tier refresh after all original-tier repairs"
+(cd "$CORPUS" && \
+    "$PY" "$BANK/QC/utilities/standardize.py" --remove_accents --corpora_path XML)
+[[ -f "$CORPUS/XML/standardize_warnings.csv" ]] && \
+    mv "$CORPUS/XML/standardize_warnings.csv" "$CODEDOCS/standardize_warnings.csv"
+
+run_step "Apply shared C012 to guarded W-only Bunun sentence" \
+    "$SCRIPTS/repair_unsegmented_standard_clitic.py" --xml-dir "$CORPUS/XML"
 
 step "Final PHON refresh (canonical add_phonology over the repaired XML)"
 "$PY" "$BANK/QC/utilities/add_phonology.py" --corpora_path "$CORPUS/XML" --orthography Ortho113
@@ -130,12 +188,8 @@ step "Final PHON refresh (canonical add_phonology over the repaired XML)"
 run_step "Normalize serialization (lxml, published convention)" \
     "$SCRIPTS/normalize_serialization.py" --style lxml "$CORPUS/XML"
 
-if [[ -f "$CODEDOCS/manual_edits.xml" ]]; then
-  step "Re-apply recorded hand edits (manual_edits.xml)"
-  "$PY" "$BANK/QC/cleaning/apply_manual_edits.py" --corpora_path "$CORPUS/XML"
-else
-  step "No CodeAndDocs/manual_edits.xml — skipping hand-edit re-application"
-fi
+step "Source coverage audit"
+"$PY" "$SCRIPTS/audit_source_coverage.py" --repo-root "$CORPUS"
 
 step "Validation summary (validate_text; HARD findings do not abort)"
 "$PY" "$BANK/QC/validation/validate_text.py" by_path --path "$CORPUS/XML" \

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""dedupe_sentence_ids.py
+"""uniquify_sentence_ids.py
 
 Disambiguate duplicate <S> ids caused by record-id collisions in the
 NTU source JSONs.
@@ -29,8 +29,8 @@ byte-identically (lxml, xml declaration, UTF-8). Idempotent.
 
 Usage
 -----
-    python dedupe_sentence_ids.py            # corpus XML/ by default
-    python dedupe_sentence_ids.py --dry-run
+    python uniquify_sentence_ids.py            # corpus XML/ by default
+    python uniquify_sentence_ids.py --dry-run
 """
 
 import argparse
@@ -45,7 +45,7 @@ def serialize(tree):
     return etree.tostring(tree, xml_declaration=True, encoding="UTF-8")
 
 
-def dedupe_file(path, dry_run=False):
+def uniquify_file(path, dry_run=False):
     original = open(path, "rb").read()
     tree = etree.parse(path)
     if serialize(tree) != original:
@@ -98,7 +98,7 @@ def main():
             if not fn.endswith(".xml"):
                 continue
             path = os.path.join(dirpath, fn)
-            result = dedupe_file(path, dry_run=args.dry_run)
+            result = uniquify_file(path, dry_run=args.dry_run)
             if result is None:
                 skipped.append(path)
             else:

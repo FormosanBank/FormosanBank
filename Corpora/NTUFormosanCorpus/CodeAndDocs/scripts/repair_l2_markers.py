@@ -70,6 +70,14 @@ TOKEN_MAP = {
     '<JapwaJap>': 'wa',
     '>嗯>': '嗯',
     '>ciuru>': 'ciuru',
+    '>明天>': '明天',
+    '<L2這是鹿角嗎?': '這是鹿角嗎?',
+    '<MpijiaoM>': 'pijiao',
+    'LaoJiaML2>': 'LaoJia',
+    'zolushanglaiaML2>': 'zolushanglaia',
+    'yuanlaishiML2>': 'yuanlaishi',
+    'zheliangtianL2>': 'zheliangtian',
+    '<T2mijio': 'mijio',
     "'nayA>": "'nay",
     '<HIGHPITCHtayta-an-na': 'tayta-an-na',
     '<HIGHPITCHtayta': 'tayta',
@@ -81,6 +89,7 @@ TOKEN_MAP = {
     # S-tier spellings of the same residue (the ori rows lack the brackets
     # and boundary dashes of the gloss rows):
     'MpijiaoM': 'pijiao',
+    'L2這是鹿角嗎?': '這是鹿角嗎?',
     'JgekiJ': 'geki',
     'LMJnazua': 'nazua',
     'HIGHPITCHtaytaanna': 'taytaanna',
