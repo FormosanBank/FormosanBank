@@ -318,65 +318,6 @@ def apply_standard(s_element, standard, keep=frozenset()):
             form.text = form.text.replace(marker, replacement)
 
 
-def _marker(index):
-    codepoint = _PUA_FIRST + index
-    if codepoint > _PUA_LAST:
-        raise ValueError(
-            f"conversion table needs {index + 1} placeholders; only "
-            f"{_PUA_LAST - _PUA_FIRST + 1} are available"
-        )
-    return chr(codepoint)
-
-
-def apply_standard(s_element, standard, keep=frozenset()):
-    """Apply a conversion table to one standard FORM.
-
-    Every rule is staged through a placeholder, longest source first, so a
-    rule's *output* is never matched by another rule. Without that, a table
-    written in the usual digraph-first idiom silently misconverts: with
-    ``ll -> ll`` guarding ``l -> lr``, sequential replacement turns ``ll``
-    into ``lrlr``. Longest-first is what makes the idiom hold even when the
-    table lists the short rule first.
-
-    Diacritic-bearing sources are staged in a first pass, before the general
-    stress-mark cleanup, so a table can distinguish a real orthographic letter
-    such as ä from an otherwise unlisted stressed á. Everything else is staged
-    after that cleanup, because a rule source is bare by definition and must
-    see the text the cleanup produced.
-    """
-    form = s_element.find("FORM[@kindOf='standard']")
-    if not form.text:
-        return
-    if any(_PUA_FIRST <= ord(char) <= _PUA_LAST for char in form.text):
-        raise ValueError(
-            f"{s_element.get('id')}: standard FORM contains a Private Use Area "
-            f"character, which collides with conversion placeholders"
-        )
-
-    staged = []
-    deferred = []
-    for original, replacement in standard:
-        decomposed = unicodedata.normalize("NFD", original)
-        if any(unicodedata.category(char).startswith("M") for char in decomposed):
-            marker = _marker(len(staged))
-            form.text = form.text.replace(original, marker)
-            staged.append((marker, replacement))
-        else:
-            deferred.append((original, replacement))
-
-    # The original tier is never touched here. Unprotected diacritics are
-    # treated as source stress/prosody and removed from the standard tier.
-    form.text = strip_accents(form.text, keep=keep)
-
-    for original, replacement in sorted(deferred, key=lambda rule: -len(rule[0])):
-        if original and original in form.text:
-            marker = _marker(len(staged))
-            form.text = form.text.replace(original, marker)
-            staged.append((marker, replacement))
-
-    for marker, replacement in staged:
-        form.text = form.text.replace(marker, replacement)
-
 # Null-morpheme units in an S-level standard FORM: the canonical marker
 # '∅' (U+2205) plus one bridging segmentation hyphen. Removed as a unit
 # so no dangling hyphen is left (matters where '-' is a letter: Bunun,
