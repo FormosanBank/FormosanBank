@@ -61,18 +61,18 @@ rm -rf "$XML"
 step "2. clean_xml"
 "$PY" "$BANK/QC/cleaning/clean_xml.py" --corpora_path "$XML"
 
-step "3. standardize (Wakelin -> Ortho113)"
+step "3. resolve_parentheses (original tier; standardize derives the rest)"
+"$PY" "$CODEDOCS/resolve_parentheses.py" --xml-dir "$XML"
+
+step "4. standardize (Wakelin -> Ortho113)"
 "$PY" "$BANK/QC/utilities/standardize.py" \
   --corpora_path "$XML" \
   --tsv_path "$BANK/Orthographies/ConversionTables/Yami_Wakelin_113.tsv" \
   --segmented-without-m-tier
 
-step "4. apply_r_caron_words (standard tier only)"
+step "5. apply_r_caron_words (standard tier only)"
 "$PY" "$CODEDOCS/apply_r_caron_words.py" \
   --xml-dir "$XML" --words "$CODEDOCS/r_caron_words.tsv"
-
-step "5. resolve_standard_parentheses (standard tier only)"
-"$PY" "$CODEDOCS/resolve_standard_parentheses.py" --xml-dir "$XML"
 
 step "6. add_phonology (Wakelin profile for original, Ortho113 for standard)"
 "$PY" "$BANK/QC/utilities/add_phonology.py" \

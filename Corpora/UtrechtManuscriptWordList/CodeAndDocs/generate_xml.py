@@ -7,7 +7,7 @@ The source is a ten-column comparative table. Five columns are published:
     2  um_belgica     the manuscript's Dutch    -> TRANSL nld ver="alt", where it
                                                    differs from column 3
     3  vdv_dutch      van der Vlis's Dutch      -> TRANSL nld
-    4  vdv_siraya     van der Vlis 1842         -> FORM kindOf="alternate"
+    4  vdv_siraya     van der Vlis 1842         -> FORM kindOf="original" ver="alt"
     5  english        Joby's own English        -> TRANSL eng
 
 Columns 6 to 10 are not published; see `xml.columns.reason` in
@@ -226,7 +226,8 @@ def build_tree(decisions: dict[str, Any], source: dict[str, Any],
             form.set("notes", decision["notes"])
 
         for extra in (decision or {}).get("alternate_forms", []):
-            node = etree.SubElement(sentence, "FORM", kindOf="alternate")
+            node = etree.SubElement(
+                sentence, "FORM", kindOf="original", ver="alt")
             node.text = extra["form"]
             node.set("notes", extra["notes"])
 
@@ -238,7 +239,8 @@ def build_tree(decisions: dict[str, Any], source: dict[str, Any],
         alternate = strip_alternate_form(row[columns["alternate_form"]], plain,
                                          decisions, source_row)
         if alternate:
-            node = etree.SubElement(sentence, "FORM", kindOf="alternate")
+            node = etree.SubElement(
+                sentence, "FORM", kindOf="original", ver="alt")
             node.text = alternate
             node.set("notes", "van der Vlis 1842.")
 
