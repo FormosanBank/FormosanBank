@@ -31,7 +31,7 @@ marked as inferred in the data. No audio is included.
 <!-- CORPUS STATS END -->
 
 
-## **Corpus Notes**
+## **Notes and Issues**
 
 Four things a user should know before comparing this corpus with FormosanBank's
 other Rukai data. All are properties of the 2003 source, not defects in the
