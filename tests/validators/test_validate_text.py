@@ -531,6 +531,48 @@ def test_V120_null_in_S_standard_FORM_negative(tmp_path):
     )
 
 
+def test_V120_reconstruction_label_does_not_trigger(tmp_path):
+    """V120: '*-∅' is a reconstruction label, not a null morpheme.
+
+    standardize.remove_null_units keeps asterisked labels on purpose
+    (2026-09-09), so flagging them would leave a finding that can never
+    clear. A real '∅' elsewhere in the same FORM must still fire.
+    """
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">tgbukuy *-ʔ, *-h, ma *-∅ Proto-Austronesian</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    combined = combined_output(proc)
+    assert "v120" not in combined, (
+        f"V120 should not flag a reconstruction label; stdout={proc.stdout!r}"
+    )
+
+
+def test_V120_still_fires_beside_a_reconstruction_label(tmp_path):
+    """The exemption is scoped to the label, not to the whole sentence."""
+    xml = (
+        _TEXT_OPEN
+        + '<S id="S1">'
+        + '<FORM kindOf="original">orig</FORM>'
+        + '<FORM kindOf="standard">ma *-∅ and a stray ∅ here</FORM>'
+        + '</S>'
+        + _TEXT_CLOSE
+    )
+    _write_xml(tmp_path, xml)
+    proc = _run_validate_text(tmp_path)
+    assert _has_text_finding(
+        proc, ("v120", "null symbol", "null in s-level", "null in s standard")
+    ), (
+        f"expected V120 for the stray null; stdout={proc.stdout!r}"
+    )
+
+
 def test_V120_null_in_original_tier_does_not_trigger(tmp_path):
     """V120: null in original tier is allowed (rule targets standard only)."""
     xml = (
