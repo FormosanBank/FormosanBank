@@ -25,9 +25,9 @@ reversible from here, so `--apply` is required to touch the Hub at all.
     python QC/utilities/sync_hf_audio.py --repo FormosanBank/NTUFormosanCorpus_Stories \
         --xml Corpora/NTUFormosanCorpus/XML/Stories --apply
 
-Requirements: huggingface_hub (in requirements.txt), plus `pydub` and a
-working `ffmpeg` on PATH for the slicing. Neither is needed for a dry run
-that only reports counts (`--no-slice`).
+Requirements: huggingface_hub (in requirements.txt) and `ffmpeg` on PATH for
+the slicing. ffmpeg is checked for before anything is downloaded, and is not
+needed for a dry run.
 """
 
 from __future__ import annotations
@@ -35,6 +35,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -132,12 +133,35 @@ def fetch_source(url: str, cache: Path) -> Path:
     return target
 
 
-def slice_clip(source: Path, start: float, end: float, target: Path) -> None:
-    from pydub import AudioSegment
+def require_ffmpeg() -> str:
+    """Locate ffmpeg, failing before anything is downloaded."""
+    ffmpeg = shutil.which("ffmpeg")
+    if not ffmpeg:
+        raise SystemExit(
+            "ffmpeg is required to slice clips and was not found on PATH.\n"
+            "    macOS:  brew install ffmpeg\n"
+            "    Debian: sudo apt install ffmpeg")
+    return ffmpeg
 
+
+def slice_clip(ffmpeg: str, source: Path, start: float, end: float,
+               target: Path) -> None:
+    """Cut [start, end) out of *source* into *target*, re-encoding to mp3.
+
+    ffmpeg is called directly rather than through pydub: pydub needs the
+    stdlib `audioop`, which Python 3.13 removed (PEP 594), and it is
+    unmaintained. Placing -ss and -to AFTER -i makes the seek sample-accurate
+    rather than snapping to the nearest keyframe.
+    """
     target.parent.mkdir(parents=True, exist_ok=True)
-    audio = AudioSegment.from_file(source)
-    audio[int(start * 1000):int(end * 1000)].export(target, format="mp3")
+    result = subprocess.run(
+        [ffmpeg, "-nostdin", "-loglevel", "error", "-y",
+         "-i", str(source), "-ss", f"{start:.3f}", "-to", f"{end:.3f}",
+         "-vn", "-c:a", "libmp3lame", "-q:a", "2", str(target)],
+        capture_output=True, text=True)
+    if result.returncode or not target.exists() or not target.stat().st_size:
+        raise SystemExit(
+            f"ffmpeg failed on {target.name} [{start}-{end}]:\n{result.stderr.strip()}")
 
 
 def main() -> int:
@@ -223,6 +247,7 @@ def main() -> int:
     work.mkdir(parents=True, exist_ok=True)
     cache = work / "recordings"
 
+    ffmpeg = require_ffmpeg() if missing else ""
     operations = []
     try:
         by_source: dict[str, list[str]] = defaultdict(list)
@@ -235,7 +260,7 @@ def main() -> int:
             for name in names:
                 _, start, end = wanted[name]
                 target = work / "clips" / name
-                slice_clip(source, start, end, target)
+                slice_clip(ffmpeg, source, start, end, target)
                 operations.append(
                     CommitOperationAdd(path_in_repo=name, path_or_fileobj=str(target)))
         operations.extend(CommitOperationDelete(path_in_repo=name) for name in extras)
