@@ -113,9 +113,11 @@ OUTPUT_DIR=/path/to/new/review ./CodeAndDocs/validate.sh
 
 The source audit checks every original FORM and translation, including the
 preserved IDs. The focused fixtures protect reconstruction notation, source
-coverage and the two stress titles. The validator runs all applicable checks
-and verifies that the only HARD exception is the four recorded V129 findings
-on original/standard FORM in S25 of the two files. Expect four V116 SOFT
+coverage and the two stress titles. The validator runs all applicable checks.
+The four V129 findings on original/standard FORM in S25 of the two files are
+waived in [`CodeAndDocs/qc_waivers.tsv`](CodeAndDocs/qc_waivers.tsv) (POL-054)
+and reported as `WAIVED` rather than `HARD`; any other HARD finding, or a
+waiver that no longer matches a finding, fails the run. Expect four V116 SOFT
 findings too (non-ASCII in FORM): the two `∅` in the original tier and, since
 the reconstruction labels now survive standardization, the two in the standard
 tier. Review every SOFT finding,

@@ -26,9 +26,12 @@ from QC.validation._finding import (
     write_findings_csv,
 )
 from QC.validation._rule_titles import RULE_TITLES
+from QC.validation._waivers import WaiverError, apply_waivers
 
-# Order severities appear in the summary.
-_SECTION_ORDER = (Severity.HARD, Severity.SOFT, Severity.WARN)
+# Order severities appear in the summary. WAIVED sits directly under HARD:
+# it is the "a human already looked at these" bucket, and burying it below
+# SOFT would hide the thing a reviewer most needs to see.
+_SECTION_ORDER = (Severity.HARD, Severity.WAIVED, Severity.SOFT, Severity.WARN)
 
 
 def report_findings(
@@ -48,10 +51,24 @@ def report_findings(
       header line. Files-with-issues is derived from the findings.
     - ``out``: stream to print the summary to (default stderr).
 
-    Returns True if any HARD finding was present.
+    Returns True if the run should fail: any HARD finding survived, or a
+    corpus's waiver file lists a waiver that matched nothing (the anti-drift
+    rule -- see QC/validation/_waivers.py).
+
+    HARD findings dispositioned in a corpus's CodeAndDocs/qc_waivers.tsv are
+    rewritten to WAIVED before the summary is built, so they stay in the CSV
+    and in the printed summary but stop failing the build.
     """
     if titles is None:
         titles = RULE_TITLES
+
+    try:
+        findings, stale_waivers = apply_waivers(findings)
+    except WaiverError as exc:
+        # A malformed or unjustified waiver file is a failure of the run, not
+        # a crash: print it the way a finding is printed and exit non-zero.
+        print(f"=== Waiver file rejected ===\n{exc}", file=out)
+        return True
 
     files_with_issues = len({str(f.path) for f in findings})
     print(
@@ -64,7 +81,7 @@ def report_findings(
     # — CI artifact uploads, the run-qc-pipeline skill — always has a file.
     write_findings_csv(csv_path, findings, titles)
 
-    if not findings:
+    if not findings and not stale_waivers:
         print("No issues found.", file=out)
         return False
 
@@ -82,4 +99,17 @@ def report_findings(
 
     print(f"Details: {csv_path}", file=out)
 
-    return bool(counts[Severity.HARD])
+    if stale_waivers:
+        # Anti-drift (QC/validation/_waivers.py): a waiver that matches no
+        # current finding has outlived what it dispositioned, and would
+        # silently cover whatever turns up at that key next. Fail, and name
+        # the rows to delete.
+        print(
+            f"\nSTALE WAIVERS — {len(stale_waivers)}: these match no current "
+            "finding. The finding was fixed or moved; delete the row.",
+            file=out,
+        )
+        for waiver in stale_waivers:
+            print(f"  {waiver.source}:{waiver.line}: {waiver.describe()}", file=out)
+
+    return bool(counts[Severity.HARD]) or bool(stale_waivers)

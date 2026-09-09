@@ -904,3 +904,53 @@ rather than an accident of the schema: **the attribute set is a whitelist.**
 `xs:documentation` annotation, a regenerated catalogue, and a policy entry.
 `tests/validators/test_attributes_catalogue.py` enforces the first three;
 review enforces the fourth. No attribute is added ad hoc.
+
+### POL-054 · RULED · 2026-09-09 · waiving a HARD finding
+A HARD finding that a human has read and accepted is recorded in the
+corpus's **`CodeAndDocs/qc_waivers.tsv`** — one fixed path, tab-separated,
+columns `rule_id`, `file` (relative to the corpus `XML/`), `location`,
+`reason`. A waiver reclassifies the finding HARD → **WAIVED**: it stays in
+the findings CSV and in the printed summary, and stops failing the build.
+Nothing is ever hidden.
+
+Four constraints, and they are the entry:
+
+- **A reason is mandatory.** Empty, whitespace, or a leftover `TODO` is
+  rejected. The reason is the only part a tool cannot generate, which is
+  exactly why it is the part that counts.
+- **A waiver that matches no current finding fails the run** (anti-drift).
+  A waiver may not outlive what it dispositioned, or it silently covers
+  whatever appears at that key next. Same discipline as POL-030's `--prune`.
+- **No wildcards.** Exact `(rule_id, file, location)` only.
+- **Only judgement rules may be waived** — `WAIVABLE_RULES` in
+  `QC/validation/_waivers.py`, today `{V129}`. A structural finding (schema,
+  ids, tier relationships) states a fact about the XML that is fixable by
+  definition, so a waiver there is always the wrong tool. Adding an id to
+  that set is a policy decision made in its own pull request.
+
+`python QC/validation/waivers.py propose --csv <findings.csv>` appends the
+mechanical half (rule, file, location) as `TODO` rows for a human to justify;
+there is deliberately no flag that supplies a reason. `waivers.py report`
+prints every waiver in the bank, because waivers scattered across thirty
+`CodeAndDocs/` directories are invisible in aggregate.
+
+**Why this rather than a smarter rule.** The founding case is V129: POL-016
+excludes source-ungrammatical examples at intake, so a `*` surviving into a
+published FORM is notation — usually a Neogrammarian reconstruction label.
+Teaching the validator to tell the two apart was considered and rejected: the
+only available signal is position, and a reconstructed *word* (`*qaCay`) is
+shaped exactly like the ungrammaticality marker in the NTU Rukai `*(malra)`
+incident (POL-017). Only a human reading the source can separate them, so the
+mechanism records the human's decision instead of guessing at it.
+
+**Relationship to `compare_findings.py`.** That gate is relative — on a pull
+request it blocks only HARD fingerprints absent from the changed file's base
+version, so a pre-existing finding is invisible forever with no record that
+anyone looked. Waivers are the absolute complement: they say *why* a finding
+is accepted. As corpora adopt them, the "block only new" scoping can give way
+to "block anything unwaived", which is the goal stated in that workflow's own
+header.
+Implemented by: `QC/validation/_waivers.py` (applied in `_report.py`, so all
+finding-based validators get it), `QC/validation/waivers.py`,
+`tests/validators/test_waivers.py`. First user: `Corpora/SEALS33`, whose
+corpus-local `check_hard_findings.py` this replaces (POL-046).
