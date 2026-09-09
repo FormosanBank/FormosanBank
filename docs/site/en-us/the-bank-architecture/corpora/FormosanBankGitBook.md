@@ -28,23 +28,23 @@ The current public corpus contains 105 aligned records from six GitBook sections
 <!-- CORPUS STATS END -->
 
 
-## **Corpus Processing**
+## Notes and Issues
 
-Run `./CodeAndDocs/generate_xml.sh` from the corpus directory using the current FormosanBank environment. It generates source tiers from the reviewed Paiwan, Mandarin, and English ledgers, then runs shared cleaning, standardization with `--remove_accents`, and Ortho113 phonology. The [corpus README](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/FormosanBankGitBook/README.md) gives reproduction and validation commands; [build provenance](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/FormosanBankGitBook/CodeAndDocs/provenance.json) records the shared tools used.
-
-The public package retains the nine-page source PDF, reviewed ledgers, stable source keys, parser, source audit, and focused tests. All 315 source fields were checked in their original column order. The three recovered lists have new IDs; all 102 earlier sentence IDs still identify the same source passages. Two builds reproduced all six XML files from the public inputs alone. Validation and source review are separate from generation.
-
-***
-
-## **Corpus Notes**
-
-These translations preserve historical manual text. Use the current committed English GitBook documentation for project guidance; the translated source is not an authority for current policy. Source names, language lists, repeated citations, and the literal English/Chinese licence-link alternatives remain part of the corpus.
+These translations preserve historical manual text. Use current POLICIES.md and the committed English GitBook documentation for project guidance. Source names, language lists, repeated citations, and the literal English/Chinese licence-link labels remain part of the corpus. Generated PHON may contain uncertainty stars for unsupported borrowed letters. This written source supplies no audio.
 
 ***
 
 ## **Access Details**
 
 * The corpus XML and retained processing code are available [in FormosanBank](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/FormosanBankGitBook).
+
+***
+
+## **Corpus Processing**
+
+Run `./CodeAndDocs/generate_xml.sh` from the corpus directory using the current FormosanBank environment. It generates source tiers from the reviewed Paiwan, Mandarin, and English ledgers, then runs shared cleaning, standardization with `--remove_accents`, and Ortho113 phonology. The [corpus README](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/FormosanBankGitBook/README.md) gives reproduction and validation commands; [build provenance](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/FormosanBankGitBook/CodeAndDocs/provenance.json) records the shared tools used.
+
+The public package retains the nine-page source PDF, reviewed ledgers, stable source keys, parser, source audit, and focused tests. All 315 source fields were checked in their original column order. The three recovered lists have new IDs; all 102 earlier sentence IDs still identify the same source passages. Two builds reproduced all six XML files from the public inputs alone. Validation and source review are separate from generation.
 
 ***
 
