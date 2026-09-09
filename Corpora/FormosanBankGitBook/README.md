@@ -75,6 +75,17 @@ Names, Chinese code-switching, parenthesized language labels, numbers, and
 source punctuation remain intact even where validators flag them. PHON uses
 Ortho113 for both tiers; unmapped loan characters may yield uncertainty stars.
 
+## Audio
+
+This written source supplies no audio.
+
+## Notes and Issues
+
+Records include headings and lists as well as prose. The manual reflects its
+2025 source, including historical licence wording. Names, English/Chinese
+code-switching and licence-link labels are retained; generated PHON may contain
+uncertainty stars for unsupported borrowed letters.
+
 ## Reproduce
 
 XML is regenerable from the committed reviewed ledgers. The original PDF,
