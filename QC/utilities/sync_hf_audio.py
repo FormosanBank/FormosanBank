@@ -96,7 +96,18 @@ def referenced_clips(xml_dir: Path, ref: str | None = None) -> dict[str, tuple[s
 
 
 def hub_files(api, repo_id: str) -> set[str]:
-    from huggingface_hub.utils import EntryNotFoundError, RepositoryNotFoundError
+    # The error classes live in huggingface_hub.errors from 1.0 and in
+    # huggingface_hub.utils before it; this repo pins 0.29.1 but the script is
+    # run wherever the token is, so accept either and fall back to Exception.
+    try:
+        from huggingface_hub.errors import (  # type: ignore[attr-defined]
+            EntryNotFoundError, RepositoryNotFoundError)
+    except ImportError:  # huggingface_hub < 1.0
+        try:
+            from huggingface_hub.utils import (  # type: ignore[attr-defined]
+                EntryNotFoundError, RepositoryNotFoundError)
+        except ImportError:
+            EntryNotFoundError = RepositoryNotFoundError = Exception
 
     try:
         listing = api.list_repo_files(repo_id=repo_id, repo_type="dataset")
