@@ -113,15 +113,42 @@ An `<S>` may be empty when an utterance has not yet been transcribed, although t
 
 ### The `<FORM>` Element
 
-`<FORM>` contains the linguistic form at sentence, word, or morpheme level. Its required `kindOf` attribute accepts:
+`<FORM>` contains the linguistic form at sentence, word, or morpheme level. Its required `kindOf` attribute names the **tier**:
 
 * `original`: The source form, preserving the source's orthographic choices after limited punctuation, entity, and Unicode cleanup.
 * `standard`: The same content converted as far as possible to FormosanBank's common standard orthography.
-* `alternate`: A **spelling variant** of a sibling FORM on the same node — for example a second witness's reading, or a source cell offering two spellings. It must have a non-alternate sibling to vary from, and must either overlap it closely or be short along with it; neither form may be more than twice the length of the other. A competing *word* for the same meaning is not an alternate: per POL-027 that becomes its own `<S>` block. The variation may span the whole form — a one-letter word alternating `a`/`u` is a perfectly good alternate. (Policy POL-028; validator rules V149 HARD and V150 SOFT.)
 
-An optional `notes` attribute can record a transcription note, review status, or other human-readable qualification.
+An optional `notes` attribute can record a transcription note, review status, or other human-readable qualification — including what the source actually printed where the tier departs from it.
 
-If an `<S>` has any FORM, exactly one must be `kindOf="original"`. A standard FORM is expected by much of the downstream tooling, but its absence is a soft validation finding. W and M elements also require a FORM, although their tier combinations can vary with the source annotation.
+#### Variant readings
+
+Where a source offers more than one reading of the same form — a second witness's spelling, a cell giving two spellings, material the source brackets as optional — the extra readings are published as **variant FORMs**: `ver="alt"` on a FORM whose `kindOf` names the tier it varies from.
+
+```xml
+<W id="sample_S7_W6">
+    <FORM kindOf="original">naku-yakuyab-yab</FORM>
+    <FORM kindOf="original" ver="alt">aku-yakuyab-yab</FORM>
+    <FORM kindOf="standard">nako-yakoyab-yab</FORM>
+    <FORM kindOf="standard" ver="alt">ako-yakoyab-yab</FORM>
+</W>
+```
+
+This is the same shape `<TRANSL>` uses for several translations into one language, and the two share an allowed-value list.
+
+The rules are:
+
+* **Exactly one base per tier.** A tier carrying any `ver` FORM must carry exactly one FORM of that `kindOf` *without* `ver` — the reading the variants vary from. Two bases in one tier is an error, because then no variant says what it varies from. (V149 HARD.)
+* **Several variants may share one base.** A word list whose source gives three readings publishes one base and two variants.
+* **A variant must look like a spelling variant of its own tier's base** — overlapping it closely, or short along with it, and neither more than twice the other's length. (V150 SOFT.)
+* **A competing *word* for the same meaning is not a variant**: per POL-027 that becomes its own `<S>` block.
+* **The variation may span the whole form** — a one-letter word alternating `a`/`u` is a perfectly good variant.
+* **Variants are derived like their tier.** `standardize.py` builds each standard variant from the corresponding original one, so a variant is machine-owned on the standard side exactly as the base is.
+
+(Policy POL-028; validator rules V149 and V156 HARD, V150 SOFT.)
+
+> **Deprecated:** before September 2026 a variant was written `kindOf="alternate"`. That value named no tier, so a node with two variants could not say which base each belonged to and nothing could transliterate a variant. It remains schema-valid only until the last published FORMs using it are migrated — V157 (SOFT) counts them — and must not be used in new data.
+
+If an `<S>` has any FORM, exactly one must be `kindOf="original"` without `ver`. A standard FORM is expected by much of the downstream tooling, but its absence is a soft validation finding. W and M elements also require a FORM, although their tier combinations can vary with the source annotation.
 
 ```xml
 <S id="sample_S1">
