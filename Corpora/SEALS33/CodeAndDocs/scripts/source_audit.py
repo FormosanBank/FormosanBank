@@ -18,7 +18,6 @@ if __package__:
         DEFAULT_SNAPSHOT,
         LANGUAGES,
         load_snapshot,
-        published_id,
     )
 else:
     from build_xml import (
@@ -26,7 +25,6 @@ else:
         DEFAULT_SNAPSHOT,
         LANGUAGES,
         load_snapshot,
-        published_id,
     )
 
 
@@ -67,6 +65,9 @@ def canonical_translation(value: str, lang: str) -> str:
 def audit(snapshot_path: Path = DEFAULT_SNAPSHOT, xml_dir: Path = DEFAULT_OUTPUT) -> dict[str, Any]:
     snapshot = load_snapshot(snapshot_path)
     rows = {row["source_row"]: row for row in snapshot["rows"]}
+    # One id scheme for both languages: S id == source row number, so the two
+    # files line up row-for-row (maintainer ruling 2026-09-09; see build_xml).
+    expected_ids = list(range(1, 30))
     files = sorted(xml_dir.rglob("*.xml"))
     if len(files) != 2:
         raise AuditError(f"expected two XML files; found {len(files)}")
@@ -86,14 +87,12 @@ def audit(snapshot_path: Path = DEFAULT_SNAPSHOT, xml_dir: Path = DEFAULT_OUTPUT
             raise AuditError(f"unexpected dialect in {path}")
 
         sentences = root.findall("S")
-        expected_ids = [published_id(lang_code, row) for row in range(1, 30)]
-        sources_by_id = {published_id(lang_code, row): source for row, source in rows.items()}
         actual_ids = [int(sentence.get("id")) for sentence in sentences]
         if actual_ids != expected_ids:
             raise AuditError(f"unexpected S ids in {path}: {actual_ids}")
         for sentence in sentences:
             source_row = int(sentence.get("id"))
-            source = sources_by_id[source_row]
+            source = rows[source_row]
             original = sentence.findall('./FORM[@kindOf="original"]')
             if len(original) != 1:
                 raise AuditError(f"row {source_row} in {path} must have one original FORM")

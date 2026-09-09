@@ -1,4 +1,5 @@
 {
-  "_note": "FormosanBank tools used for the reviewed build. Informational; no executable tools pin.",
-  "formosanbank_commit": "c07574888a60efe82b2e603b29e043e28a30faaf"
+  "_note": "The FormosanBank commit this corpus's published XML was built against (POL-052). Provenance only; the build never reads it to decide anything. MUST BE UPDATED to the merge commit of the standardize.py reconstruction-null fix before this PR merges - the published standard tier of S25 depends on it.",
+  "formosanbank_commit": "cd0c297e9674f718de5460cada263f4f8fd0829d",
+  "built": "2026-09-09"
 }

@@ -41,13 +41,32 @@ reconstructions, not ungrammaticality judgments. The
 [merged corpus ruling](https://github.com/FormosanBank/FormosanBank/commit/b0f882702e52a9d9aa7eafe0197f4570743810f1)
 explicitly retained the title and its source-inherent validation exception.
 
-Both published TEXT IDs and all S identities are preserved. Seediq source row
-21 (Yami stress) retains published S ID 22; source row 22 (Piuma Paiwan stress)
-retains ID 21. Their output order follows the page. The remaining IDs equal
-the source-row numbers. The Mandarin conference abbreviation, row-9 paragraph
-boundary and Saisiyat word boundary follow the source. Row-9 Mandarin
-punctuation is restored after an older pass processed that translation under
-an incorrect language code; current Chinese quote normalization still applies.
+### Two Seediq S IDs change (POL-037 exception)
+
+Both published TEXT IDs are preserved. **Two published S IDs are not.** The
+hand-built Seediq file had source rows 21 and 22 transposed, so published
+Seediq S21 carried the Piuma Paiwan stress title while Saisiyat S21 carried
+the Yami one — the two parallel files described different talks under the
+same ID. The maintainer ruled on 2026-09-09 that matching content across the
+two languages is worth breaking ID stability here:
+
+| ID | Seediq, as published | Seediq, now | Saisiyat (unchanged) |
+| --- | --- | --- | --- |
+| S21 | Piuma Paiwan stress in directional evaluation | **Word stress in Yami** | Word stress in Yami |
+| S22 | Word stress in Yami | **Piuma Paiwan stress in directional evaluation** | Piuma Paiwan stress in directional evaluation |
+
+No other ID in either file moves, and every remaining ID equals its source-row
+number. Anyone citing SEALS33 Seediq S21 or S22 from a release before this one
+must remap. This is the only POL-037 break in the corpus; it supersedes the
+earlier revision of this branch, which held both IDs in place with a
+`published_id()` mapping and accepted the cross-language mismatch instead.
+
+The Mandarin conference abbreviation, row-9 paragraph boundary and Saisiyat
+word boundary follow the source. Row-9 Mandarin punctuation is restored after
+an older pass processed that translation under an incorrect language code;
+current Chinese quote normalization still applies. The two files now carry one
+BibTeX string: the published Saisiyat value had a stray period after
+`SEALS 33` that the Seediq value lacked.
 
 [The pre-correction XML snapshot](CodeAndDocs/pre_correction_snapshot/) is
 preserved byte-for-byte as historical evidence. It sits outside any `XML/`
@@ -70,12 +89,21 @@ it never selects an old checkout.
 The build writes source XML, runs shared cleaning, standardizes with
 `--remove_accents`, then generates PHON with source orthography `Ortho94`.
 These are the merged corpus's processing choices. No spelling conversion table
-is required; shared standardization removes the S25 null unit only from the
-standard tier. Original source labels remain intact. The unknown Seediq dialect
-uses the registered fallback. Source `ey` and standard `ey` have different
-registered pronunciations. Saisiyat `:` remains vowel length in PHON.
+is required. Original source labels remain intact **in both tiers**: S25's
+`*-ʔ`, `*-h` and `*-∅` are Neogrammarian reconstruction labels, and shared
+standardization no longer mistakes the `∅` of `*-∅` for a null morpheme — an
+earlier build left `ma *`, a bare asterisk naming nothing. That exemption lives
+in `QC/utilities/standardize.py`, not here (POL-046); this corpus's XML cannot
+be reproduced against a FormosanBank checkout that predates it. The unknown
+Seediq dialect uses the registered fallback. Source `ey` and standard `ey` have
+different registered pronunciations. Saisiyat `:` remains vowel length in PHON.
 
 **POL-047 deviation:** There is no manual-edits file, so that step is omitted.
+
+`generate_xml.sh` reads `provenance.json` and notes to stderr when the
+surrounding checkout is at a different commit. That is a note, never a gate: the
+build runs with the tools it finds and never goes looking for another checkout
+(POL-052).
 
 ## Review and validation
 
@@ -87,7 +115,10 @@ The source audit checks every original FORM and translation, including the
 preserved IDs. The focused fixtures protect reconstruction notation, source
 coverage and the two stress titles. The validator runs all applicable checks
 and verifies that the only HARD exception is the four recorded V129 findings
-on original/standard FORM in S25 of the two files. Review every SOFT finding,
+on original/standard FORM in S25 of the two files. Expect four V116 SOFT
+findings too (non-ASCII in FORM): the two `∅` in the original tier and, since
+the reconstruction labels now survive standardization, the two in the standard
+tier. Review every SOFT finding,
 orthography/vocabulary comparison and warning sidecar before a readiness
 verdict. Warnings are retained for review rather than deleted by the build.
 
@@ -97,13 +128,18 @@ for the corpus's registered dialect labels. The Seediq comparison remains a
 generic, low-quality reference because the source dialect is unknown; this
 does not assign a named dialect or alter the shared reference files.
 
-To check the source without changing the snapshot:
+Source acquisition is a separate entry point from the build (POL-047), and
+`generate_xml.sh` never invokes it — a rebuild must not depend on the page
+still being up, or still being the page that was reviewed. To check the live
+page against the committed snapshot without changing anything:
 
 ```bash
-python CodeAndDocs/scripts/scrape_source.py --check
+./CodeAndDocs/refresh_source.sh --check
 ```
 
-A deliberate source refresh omits `--check` and requires a new source review.
+Dropping `--check` overwrites `source_snapshot.json` from the live page. That
+is a source change, not a build step: review the diff, then re-run
+`generate_xml.sh` and `validate.sh` before committing anything.
 Optional scraper/test dependencies are in `CodeAndDocs/requirements.txt`.
 The complete public package is `README.md`, `CodeAndDocs/` and `XML/` from one
 verified dev commit, exported with `git archive`; all XML is included unchanged.

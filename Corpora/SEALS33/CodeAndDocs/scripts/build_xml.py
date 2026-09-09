@@ -32,27 +32,40 @@ LANGUAGES = {
         "text_id": "saisiyat_seals",
         "filename": "saisiyat_seals.xml",
         "dialect": "Saisiyat",
-        "bibtex": BIBTEX.replace("SEALS 33}", "SEALS 33.}"),
     },
     "trv": {
         "name": "Seediq",
+        # Published TEXT id is lower-case; the filename is not. Both stay as
+        # published (POL-037) — only the two S ids below change.
         "text_id": "seediq_seals",
         "filename": "seediq_SEALS.xml",
         "dialect": "unknown",
-        "bibtex": BIBTEX,
     },
 }
+
+# S id == source row number, in both languages. This is a deliberate,
+# maintainer-approved break of POL-037 for two Seediq sentences (2026-09-09).
+#
+# The hand-built Seediq file had rows 21 and 22 transposed relative to the
+# page and relative to the Saisiyat file, so published Seediq S21 carried the
+# Piuma Paiwan title while Saisiyat S21 carried the Yami one. Holding those
+# ids in place (as an earlier revision of this build did, via a published_id()
+# mapping) kept the ids stable but left the two "parallel" files describing
+# different source rows under the same id, and forced a non-monotonic id
+# sequence in the Seediq output. The maintainer ruled that matching content
+# across the two languages is worth the id break:
+#
+#     "we do want to change the IDs so the two S21s match on content, and
+#      same for the S22s. That does mean the ID isn't stable, but this is a
+#      fix worth doing."  (maintainer, 2026-09-09)
+#
+# Consequence to announce with the release: Seediq S21 now means the Yami
+# stress title (was Piuma Paiwan) and Seediq S22 the Piuma Paiwan title (was
+# Yami). No other id in either file moves.
 
 
 class SnapshotError(ValueError):
     """Raised when structured source data violates the corpus contract."""
-
-
-def published_id(language: str, source_row: int) -> int:
-    """Keep the two Seediq stress titles attached to their published IDs."""
-    if language == "trv":
-        return {21: 22, 22: 21}.get(source_row, source_row)
-    return source_row
 
 
 def load_snapshot(path: Path) -> dict[str, Any]:
@@ -103,13 +116,13 @@ def build(snapshot_path: Path = DEFAULT_SNAPSHOT, output_dir: Path = DEFAULT_OUT
         root.set("{http://www.w3.org/XML/1998/namespace}lang", lang_code)
         root.set("dialect", config["dialect"])
         root.set("citation", CITATION)
-        root.set("BibTeX_citation", config["bibtex"])
+        root.set("BibTeX_citation", BIBTEX)
         root.set("copyright", COPYRIGHT)
         root.set("source", source_attribute(snapshot))
 
         for row in snapshot["rows"]:
             source_row = row["source_row"]
-            sentence = etree.SubElement(root, "S", id=str(published_id(lang_code, source_row)))
+            sentence = etree.SubElement(root, "S", id=str(source_row))
             form = etree.SubElement(sentence, "FORM", kindOf="original")
             form.text = row[lang_code]
             zho = etree.SubElement(sentence, "TRANSL")

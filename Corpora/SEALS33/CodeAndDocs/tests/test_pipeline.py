@@ -7,7 +7,7 @@ from pathlib import Path
 import pytest
 from lxml import etree
 
-from scripts.build_xml import DEFAULT_SNAPSHOT, SnapshotError, build, load_snapshot
+from scripts.build_xml import BIBTEX, DEFAULT_SNAPSHOT, SnapshotError, build, load_snapshot
 from scripts.source_audit import AuditError, audit
 from scripts.check_hard_findings import check
 
@@ -22,11 +22,20 @@ def test_snapshot_has_complete_parallel_coverage() -> None:
     assert "). ’isahini" in rows[8]["xsy"]
     assert rows[24]["xsy"].startswith("pinaskayzaeh naehan")
     assert "*-ʔ" in rows[24]["xsy"]
+    # Source order: row 21 is the Yami title, row 22 the Piuma Paiwan one.
     assert rows[20]["trv"] == "Hengak chedil na kari Yami (Tao)"
     assert rows[21]["trv"].startswith("Pnseengan hengak")
 
 
-def test_build_preserves_reconstruction_titles_and_published_ids(tmp_path: Path) -> None:
+def test_build_aligns_s_ids_with_source_rows_in_both_languages(tmp_path: Path) -> None:
+    """S id == source row number, identically in both files.
+
+    The published Seediq file had rows 21/22 transposed, so Seediq S21 and
+    Saisiyat S21 described different talks. The maintainer ruled on
+    2026-09-09 that matching content across the two languages is worth the
+    POL-037 id break, so both files now key straight off the source row and
+    the ids run monotonically.
+    """
     first = tmp_path / "first"
     second = tmp_path / "second"
     first_files = build(output_dir=first)
@@ -34,23 +43,32 @@ def test_build_preserves_reconstruction_titles_and_published_ids(tmp_path: Path)
     assert [path.relative_to(first) for path in first_files] == [
         path.relative_to(second) for path in second_files
     ]
+    titles_by_id: dict[str, dict[int, str]] = {}
     for left, right in zip(first_files, second_files, strict=True):
         assert left.read_bytes() == right.read_bytes()
         root = etree.parse(str(left)).getroot()
+        text_id = root.get("id")
+        assert text_id in {"saisiyat_seals", "seediq_seals"}
         ids = [int(sentence.get("id")) for sentence in root.findall("S")]
-        expected = list(range(1, 30))
-        if root.get("id") == "seediq_seals":
-            expected[20:22] = [22, 21]
-            assert root.findtext("S[@id='22']/FORM") == "Hengak chedil na kari Yami (Tao)"
-            assert root.findtext("S[@id='21']/FORM").startswith("Pnseengan hengak")
-        else:
-            assert root.get("id") == "saisiyat_seals"
-        assert ids == expected
+        assert ids == list(range(1, 30))
+        if text_id == "seediq_seals":
+            assert root.findtext("S[@id='21']/FORM") == "Hengak chedil na kari Yami (Tao)"
+            assert root.findtext("S[@id='22']/FORM").startswith("Pnseengan hengak")
         title = root.findtext("S[@id='25']/FORM")
-        if root.get("id") == "saisiyat_seals":
+        if text_id == "saisiyat_seals":
             assert title.startswith("pinaskayzaeh naehan noka ka:i’ ka hikor")
         assert all(marker in title for marker in ("*-ʔ", "*-h", "*-∅"))
         assert root.get("copyright") == "CC BY-NC 4.0"
+        # One BibTeX string for the corpus: the published Saisiyat value had a
+        # stray period after "SEALS 33" that the Seediq one lacked.
+        assert root.get("BibTeX_citation") == BIBTEX
+        assert "SEALS 33.}" not in root.get("BibTeX_citation")
+        titles_by_id[text_id] = {
+            int(s.get("id")): (s.findtext("TRANSL[@{http://www.w3.org/XML/1998/namespace}lang='eng']") or "")
+            for s in root.findall("S")
+        }
+    # The point of the id change: the same id names the same talk in both files.
+    assert titles_by_id["saisiyat_seals"] == titles_by_id["seediq_seals"]
 
 
 def test_source_audit_accepts_raw_build(tmp_path: Path) -> None:
