@@ -353,7 +353,7 @@ translation reflect only its own option. (V121/V122 flag leftover
 parens/slashes; unresolved slash alternatives in published FORMs are the
 symptom of skipping this rule.)
 
-### POL-028 · RULED · 2026-09-08 · alternate FORMs
+### POL-028 · RULED · 2026-09-08 · variant FORMs
 
 **Revised 2026-09-09.** A **variant reading** is written `ver="alt"` on a FORM
 whose `kindOf` names its tier — `kindOf="original" ver="alt"` is a variant of
@@ -403,13 +403,13 @@ allowlist (V084 for TRANSL, V156 for FORM).
   from the corresponding original variant, so a variant is machine-owned on the
   standard side exactly as the base is (POL-002).
 - **The variation may span the whole form.** A one-letter word alternating
-  `a`/`u` (WakelinTexts `Kwaway/S2W3`) is as valid an alternate as a letter
+  `a`/`u` (WakelinTexts `Kwaway/S2W3`) is as valid a variant as a letter
   changing inside a longer word. Nothing requires the variation to be
   word-internal.
 - A competing **lexeme** for the same meaning, or a different gloss, is not
-  an alternate; per POL-027 it becomes its own `S` block. Latham-1862
+  a variant; per POL-027 it becomes its own `S` block. Latham-1862
   currently carries 6 such cases; they are tracked for remediation.
-- Alternates may sit at S, W or M, and belong on the node that actually
+- Variants may sit at S, W or M, and belong on the node that actually
   varies. A word-list corpus whose `S` is a word is the S-level case.
 - **Optional material is resolved by scope.** What forces a separate `S`
   block is not whether the variation sits inside a word, but whether the
@@ -418,7 +418,8 @@ allowlist (V084 for TRANSL, V156 for FORM).
   `S` blocks (POL-026), the second taking the first's id plus `-opt`.
   Optional material that leaves the word count unchanged — `puken-(en)`,
   `(u)m-lavi`, and equally a whole short word alternating `a`/`u` — becomes
-  an `alternate` FORM on the word that varies, never a second sentence.
+  a `ver="alt"` variant FORM on the word that varies, never a second
+  sentence.
   Neither mechanism leaves parentheses in a published FORM.
 
 ---
