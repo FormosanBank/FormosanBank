@@ -366,13 +366,34 @@ symptom of skipping this rule.)
 
 ### POL-028 · RULED · 2026-09-08 · alternate FORMs
 
-`FORM[@kindOf="alternate"]` records a **spelling variant** of a sibling FORM
-on the same node. It is the only marking for this: not `ver`, not
-`"alternative"`, not an `-opt` suffix.
+**Revised 2026-09-09.** A **variant reading** is written `ver="alt"` on a FORM
+whose `kindOf` names its tier — `kindOf="original" ver="alt"` is a variant of
+the original tier, `kindOf="standard" ver="alt"` of the standard. This is the
+same shape TRANSL has used since POL-025, and the allowed values share one
+allowlist (V084 for TRANSL, V156 for FORM).
 
-- Every alternate must have at least one **non-alternate FORM sibling on the
-  same parent** (V149 HARD), and must satisfy two independent conditions
-  against it (V150 SOFT):
+**This supersedes two earlier rulings** (POL-050):
+
+1. This entry's own original text, which said a variant was
+   `kindOf="alternate"` and "the only marking for this: **not `ver`**". That
+   spelling names no tier, so a node carrying two variants could not say which
+   base each varied from, and a variant could not be transliterated because
+   nothing knew which tier it belonged to. `alternate` is deprecated: still
+   schema-valid, flagged by V157 (SOFT), removed from the enumeration once the
+   published FORMs using it are migrated.
+2. The ruling recorded in commit `694bbc903` (2026-09-07) — *"the optional
+   material is handled with the alternative FORM mechanism, in the standard
+   tier only… The original tier keeps all of this notation untouched."* That
+   left WakelinTexts' original tier carrying source parentheses, which
+   contradicts this entry's closing rule that no published FORM keeps them.
+   Variants exist for both tiers; the original tier is resolved like the
+   standard one.
+
+- A tier carrying any variant must carry **exactly one FORM of that `kindOf`
+  without `ver`** — the base the variants vary from (V149 HARD). **A tier may
+  carry several variants**; it may not carry several bases, because then no
+  variant knows what it varies from. Each variant must satisfy two independent
+  conditions against its own tier's base (V150 SOFT):
   1. **Overlap** — it must overlap the sibling highly, or, where both forms
      are too short for overlap to be measurable, simply be short.
   2. **Proportion** — neither form may be more than twice the length of the
@@ -388,6 +409,10 @@ on the same node. It is the only marking for this: not `ver`, not
   test, to catch a mismatched pair. The operative thresholds live in V150,
   deliberately not here, so they can be tuned from evidence without a
   re-ruling.
+- **Variants are derived along with their tier.** `standardize.py` produces the
+  standard tier's base from the original tier's base and each standard variant
+  from the corresponding original variant, so a variant is machine-owned on the
+  standard side exactly as the base is (POL-002).
 - **The variation may span the whole form.** A one-letter word alternating
   `a`/`u` (WakelinTexts `Kwaway/S2W3`) is as valid an alternate as a letter
   changing inside a longer word. Nothing requires the variation to be
@@ -915,3 +940,65 @@ rather than an accident of the schema: **the attribute set is a whitelist.**
 `xs:documentation` annotation, a regenerated catalogue, and a policy entry.
 `tests/validators/test_attributes_catalogue.py` enforces the first three;
 review enforces the fourth. No attribute is added ad hoc.
+
+### POL-054 · RULED · 2026-09-09 · waiving a HARD finding
+A HARD finding that a human has read and accepted is recorded in the
+corpus's **`CodeAndDocs/qc_waivers.tsv`** — one fixed path, tab-separated,
+columns `rule_id`, `file` (relative to the corpus `XML/`), `location`,
+`reason`. A waiver reclassifies the finding HARD → **WAIVED**: it stays in
+the findings CSV and in the printed summary, and stops failing the build.
+Nothing is ever hidden.
+
+Four constraints, and they are the entry:
+
+- **A reason is mandatory.** Empty, whitespace, or a leftover `TODO` is
+  rejected. The reason is the only part a tool cannot generate, which is
+  exactly why it is the part that counts.
+- **A waiver that matches nothing does not fail the run.** Fixing a finding
+  must never cost a second edit to the waiver file: the risk this mechanism
+  guards against is a *new* HARD finding, not a disappearing one, and a check
+  that fails the build when you repair data is a barrier pointed the wrong
+  way (maintainer, 2026-09-09). Spent rows are tidied on request with
+  `waivers.py prune`, the POL-030 `--prune` shape — an explicit human action,
+  never a gate. The residual risk is narrow and accepted: a spent waiver
+  would silently cover a *different* finding arriving later at the same
+  `(rule, file, location)`.
+- **No wildcards.** Exact `(rule_id, file, location)` only.
+- **Only judgement rules may be waived** — `WAIVABLE_RULES` in
+  `QC/validation/_waivers.py`, today `{V129}`. A structural finding (schema,
+  ids, tier relationships) states a fact about the XML that is fixable by
+  definition, so a waiver there is always the wrong tool. Adding an id to
+  that set is a policy decision made in its own pull request.
+
+`python QC/validation/waivers.py propose --csv <findings.csv>` appends the
+mechanical half (rule, file, location) as `TODO` rows for a human to justify;
+there is deliberately no flag that supplies a reason. `waivers.py prune`
+drops rows whose finding is gone, scoped to the files the run covered.
+`waivers.py report` prints every waiver in the bank, because waivers scattered
+across thirty `CodeAndDocs/` directories are invisible in aggregate.
+
+**Adopting waivers blocks nothing.** A corpus with no `qc_waivers.tsv` is
+untouched: same findings, same severities, same exit code. Waivers are opt-in
+per corpus and only ever move a finding *out* of HARD, so merging the
+mechanism cannot turn an existing pull request red.
+
+**Why this rather than a smarter rule.** The founding case is V129: POL-016
+excludes source-ungrammatical examples at intake, so a `*` surviving into a
+published FORM is notation — usually a Neogrammarian reconstruction label.
+Teaching the validator to tell the two apart was considered and rejected: the
+only available signal is position, and a reconstructed *word* (`*qaCay`) is
+shaped exactly like the ungrammaticality marker in the NTU Rukai `*(malra)`
+incident (POL-017). Only a human reading the source can separate them, so the
+mechanism records the human's decision instead of guessing at it.
+
+**Relationship to `compare_findings.py`.** That gate is relative — on a pull
+request it blocks only HARD fingerprints absent from the changed file's base
+version, so a pre-existing finding is invisible forever with no record that
+anyone looked. Waivers are the absolute complement: they say *why* a finding
+is accepted. As corpora adopt them, the "block only new" scoping can give way
+to "block anything unwaived", which is the goal stated in that workflow's own
+header.
+Implemented by: `QC/validation/_waivers.py` (applied in `_report.py`, so all
+finding-based validators get it), `QC/validation/waivers.py`,
+`tests/validators/test_waivers.py`. First user: `Corpora/SEALS33`, whose
+corpus-local `check_hard_findings.py` this replaces (POL-046).
