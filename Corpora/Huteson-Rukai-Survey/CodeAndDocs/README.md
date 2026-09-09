@@ -54,6 +54,28 @@ skipping `002`; the standardized `very.fat` gloss the join required is gone, so
 the corpus carries no `TRANSL[@kindOf="standard"]`; and both restored words are
 independently attested in the bank's Dona data.
 
+## Published-identifier change (POL-037)
+
+This corpus was published in PR #149 before the Tona 4 join was reversed, so the
+split is a change to already-published identifiers and is announced here rather
+than treated as a cleanup.
+
+* **No id is removed, reused or renumbered.**
+* **Two ids are added:** `S_tona_004_W_002` and `S_tona_004_W_002_M_01`, the
+  second word of that sentence.
+* **Three ids keep their number but denote a shorter word:** `S_tona_004`,
+  `S_tona_004_W_001` and `S_tona_004_W_001_M_01` were `saokwamamitə` and are now
+  `saokwa`. An external citation of `S_tona_004_W_001` made against the first
+  published version resolves to the first half of what it used to name.
+* Twenty-three ids change only their derived `standard` FORM, from the `e`/`é`
+  correction; their `original` FORMs are untouched.
+
+Removed published content (POL-051): **four `TRANSL`** — the `very fat` source
+gloss and the standardized `very.fat` beside it, at both `S_tona_004_W_001` and
+its morpheme. Both belonged to a word the source does not print. Five are added
+in their place: `very` and `fat` at word and morpheme level, and Tona 14's
+inferred `NOM`. Net translations +1; word count for Dona 54 -> 55.
+
 ## Source-derived findings retained for review
 
 `S_tona_009_W_001` is source `a-kakə` with source gloss `1S.TOP`: the printed
