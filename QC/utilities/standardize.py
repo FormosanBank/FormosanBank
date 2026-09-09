@@ -377,15 +377,21 @@ def _copy_mixed_content(src, dst):
 
 
 def create_standard(element, file_path=None):
-    # Find the <FORM> child within each <S> element
-    original_form = element.find("FORM[@kindOf='original']")
-    standard_form = element.find("FORM[@kindOf='standard']")
+    # Bases lack ver; _sync_standard_variants handles the variant FORMs.
+    original_form = next(
+        (f for f in element.findall("FORM[@kindOf='original']") if f.get("ver") is None),
+        None,
+    )
+    standard_form = next(
+        (f for f in element.findall("FORM[@kindOf='standard']") if f.get("ver") is None),
+        None,
+    )
 
     if original_form is None:
         s_id = element.get('id', '<unknown>')
         location = f" in {file_path}" if file_path else ""
         print(
-            f"Error: S id={s_id!r}{location} has no original tier (kindOf='original'). "
+            f"Error: S id={s_id!r}{location} has no original base (kindOf='original' without ver). "
             f"Cannot create standard tier.",
             file=sys.stderr,
         )

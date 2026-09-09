@@ -876,22 +876,56 @@ def _forms(work):
     ]
 
 
-def test_standard_variant_is_derived_from_the_original_variant(tmp_path):
+@pytest.mark.parametrize("original_variant_first", [False, True])
+@pytest.mark.parametrize("standard_order", ["missing", "base-first", "variant-first"])
+def test_standard_variant_is_derived_from_the_original_variant(
+    tmp_path, original_variant_first, standard_order
+):
     """A ver="alt" original gets a ver="alt" standard, transliterated.
 
     POL-028 (revised 2026-09-09): variants exist for both tiers, and the
     standard tier is derived (POL-002), so its variants are derived too.
     """
+    root = ET.fromstring(_VARIANT_XML)
+    sentence = root.find("S")
+    if original_variant_first:
+        base = sentence[0]
+        sentence.remove(base)
+        sentence.append(base)
+    if standard_order != "missing":
+        versions = [None, "alt"] if standard_order == "base-first" else ["alt", None]
+        for version in versions:
+            form = ET.SubElement(sentence, "FORM", kindOf="standard")
+            if version is not None:
+                form.set("ver", version)
+            form.text = "stale"
     corpus = tmp_path / "corpus"
-    work = _write_corpus_xml(corpus, "v.xml", _VARIANT_XML)
-    proc = _run_standardize(["--remove_accents", "--corpora_path", str(corpus)])
-    assert proc.returncode == 0, proc.stderr
-    assert _forms(work) == [
+    work = _write_corpus_xml(corpus, "v.xml", ET.tostring(root, encoding="unicode"))
+    originals = _original_forms(work)
+    expected = [
         ("original", None, "náku-yakuyab"),
         ("original", "alt", "áku-yakuyab"),
         ("standard", None, "naku-yakuyab"),
         ("standard", "alt", "aku-yakuyab"),
     ]
+    for _ in range(2):
+        proc = _run_standardize(["--remove_accents", "--corpora_path", str(corpus)])
+        assert proc.returncode == 0, proc.stderr
+        assert _original_forms(work) == originals
+        assert sorted(_forms(work), key=lambda f: (f[0], f[1] or "")) == expected
+
+
+def test_variant_without_original_base_cannot_supply_the_standard_base(tmp_path):
+    root = ET.fromstring(_VARIANT_XML)
+    sentence = root.find("S")
+    sentence.remove(sentence[0])
+    corpus = tmp_path / "corpus"
+    work = _write_corpus_xml(corpus, "v.xml", ET.tostring(root, encoding="unicode"))
+    before = work.read_bytes()
+    proc = _run_standardize(["--copy", "--corpora_path", str(corpus)])
+    assert proc.returncode == 1
+    assert "no original" in proc.stderr
+    assert work.read_bytes() == before
 
 
 def test_standard_variants_are_regenerated_not_accumulated(tmp_path):
