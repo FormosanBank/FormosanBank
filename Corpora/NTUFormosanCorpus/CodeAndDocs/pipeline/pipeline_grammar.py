@@ -202,7 +202,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 # the builders reuse them rather than carrying a second copy.
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "qa"))
 from utils import (resolve_ungrammatical_parens, expand_infixes,
-                   strip_l2m, strip_prosodic_markers)
+                   strip_l2m, strip_prosodic_markers, extract_notes)
 from grammar_xml_tests import clitic_alignment, morpheme_count, MARKERS
 
 XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
@@ -646,9 +646,25 @@ def has_han(text: str | None) -> bool:
 
 
 def add_transl(parent, lang: str, text: str):
+    """Append a TRANSL to *parent*.
+
+    At sentence level the source writes transcriber and translator commentary
+    inline, in parentheses: '他那隻白色（羽毛）公雞'. POL-024 keeps that out of
+    the translation text and preserves the source string in @notes, which is
+    what utils.extract_notes does -- every parenthetical span, ASCII or
+    fullwidth, anywhere in the string, innermost-first so nested commentary is
+    removed whole. Word- and morpheme-level glosses are NOT commentary, so
+    they are left exactly as the source wrote them.
+    """
     el = ET.SubElement(parent, "TRANSL")
     el.set(XML_LANG, lang)
-    el.text = text
+    if parent.tag == "S":
+        cleaned, notes = extract_notes(text or "")
+        el.text = cleaned if cleaned else (text or "")
+        if notes:
+            el.set("notes", notes)
+    else:
+        el.text = text
     return el
 
 
@@ -701,6 +717,57 @@ def load_free_repairs(path=None) -> dict:
             stem, rec, lang, action = parts
             out[(stem, rec, lang)] = action
     return out
+
+
+def load_gloss_restorations(path=None) -> dict:
+    """{source_file: [(record_id, row, cell, wordform, value), ...]}.
+
+    The audited source output blanked some real gloss cells to the '_'
+    absent-gloss placeholder. gloss_restorations.tsv puts them back at load
+    time, so the corpus keeps that source's row realignments *and* this
+    glossing. Each row carries the wordform as a witness; a restoration whose
+    witness no longer matches is skipped rather than applied blindly.
+    """
+    p = Path(path) if path else Path(__file__).with_name("gloss_restorations.tsv")
+    out: dict = {}
+    if not p.exists():
+        return out
+    for line in p.read_text(encoding="utf-8").splitlines():
+        if not line.strip() or line.lstrip().startswith("#"):
+            continue
+        parts = line.split("\t")
+        if len(parts) != 6 or parts[0] == "source_file":
+            continue
+        src, rid, row, cell, wordform, value = parts
+        out.setdefault(src, []).append((rid, int(row), int(cell), wordform, value))
+    return out
+
+
+def apply_gloss_restorations(records: list, src_key: str, table: dict, stats: dict) -> None:
+    """Restore blanked gloss cells in *records*, in place."""
+    entries = None
+    for src, rows in table.items():
+        if src_key.endswith(src) or src.endswith(src_key):
+            entries = rows
+            break
+    if not entries:
+        return
+    by_id = {str(r[0]): r[1] for r in records if r}
+    for rid, row, cell, wordform, value in entries:
+        rec = by_id.get(str(rid))
+        gloss = (rec or {}).get("gloss") or []
+        if row >= len(gloss):
+            stats["gloss restorations skipped (row gone)"] = stats.get(
+                "gloss restorations skipped (row gone)", 0) + 1
+            continue
+        cells = gloss[row]
+        if cell >= len(cells) or (cells[0] or "") != wordform:
+            stats["gloss restorations skipped (witness changed)"] = stats.get(
+                "gloss restorations skipped (witness changed)", 0) + 1
+            continue
+        if cells[cell] == "_":
+            cells[cell] = value
+            stats["gloss cells restored"] = stats.get("gloss cells restored", 0) + 1
 
 
 def free_entries(free: list, stem: str, rid: str, repairs: dict) -> list:

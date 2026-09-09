@@ -2557,7 +2557,7 @@
         <FORM kindOf="standard">luvluvan tu hanian.</FORM>
         <PHON kindOf="standard">[l|ɬ]uv[l|ɬ]uvan tu [x|χ]anian</PHON>
         <TRANSL xml:lang="zho">有風的一天。</TRANSL>
-        <TRANSL xml:lang="eng">It's a windy day. (This refers to tomorrow or days afterwards.)</TRANSL>
+        <TRANSL xml:lang="eng" notes="It’s a windy day. (This refers to tomorrow or days afterwards.)">It's a windy day.</TRANSL>
         <W id="01-3_S_3_W0">
             <FORM kindOf="original">luv-luv-an</FORM>
             <PHON kindOf="original">[l|ɬ]uv[l|ɬ]uvan</PHON>
@@ -2745,7 +2745,7 @@
         <FORM kindOf="standard">sian hai dangianta lihai.</FORM>
         <PHON kindOf="standard">ɕian [x|χ]ai daŋianta [l|ɬ]i[x|χ]ai</PHON>
         <TRANSL xml:lang="zho">這是做禮拜的地方。</TRANSL>
-        <TRANSL xml:lang="eng">Here is where the (Christian) service takes place.</TRANSL>
+        <TRANSL xml:lang="eng" notes="Here is where the (Christian) service takes place.">Here is where the service takes place.</TRANSL>
         <W id="01-3_S_5_W0">
             <FORM kindOf="original">sia-n</FORM>
             <PHON kindOf="original">sian</PHON>
@@ -3368,7 +3368,7 @@
         <PHON kindOf="original">niiik asa kudii muampuk pisvaŋdu</PHON>
         <FORM kindOf="standard">niiik asa kudii muampuk pisvangdu.</FORM>
         <PHON kindOf="standard">niiik asa kudii muampuk pisvaŋdu</PHON>
-        <TRANSL xml:lang="zho">我不想去(參加)禱告會。</TRANSL>
+        <TRANSL xml:lang="zho" notes="我不想去(參加)禱告會。">我不想去 禱告會。</TRANSL>
         <TRANSL xml:lang="eng">I do not want to go to the the praying gathering.</TRANSL>
         <W id="01-3_S_10_W0">
             <FORM kindOf="original">nii-ik</FORM>
@@ -3688,7 +3688,7 @@
         <PHON kindOf="original">niiik asa kudii masumsuman</PHON>
         <FORM kindOf="standard">niiik asa kudii masumsuman.</FORM>
         <PHON kindOf="standard">niiik asa kudii masumsuman</PHON>
-        <TRANSL xml:lang="zho">我不想去(參加)拜拜大會。</TRANSL>
+        <TRANSL xml:lang="zho" notes="我不想去(參加)拜拜大會。">我不想去 拜拜大會。</TRANSL>
         <TRANSL xml:lang="eng">I don't want to go to the place where many people worship.</TRANSL>
         <W id="01-3_S_13_W0">
             <FORM kindOf="original">nii-ik</FORM>
@@ -3792,8 +3792,8 @@
         <PHON kindOf="original">susumsumanan [x|χ]ai imita</PHON>
         <FORM kindOf="standard">susumsumanan hai imita.</FORM>
         <PHON kindOf="standard">susumsumanan [x|χ]ai imita</PHON>
-        <TRANSL xml:lang="zho">這是我們拜拜(拜神)的地方。</TRANSL>
-        <TRANSL xml:lang="eng">This is where we worship (god).</TRANSL>
+        <TRANSL xml:lang="zho" notes="這是我們拜拜(拜神)的地方。">這是我們拜拜 的地方。</TRANSL>
+        <TRANSL xml:lang="eng" notes="This is where we worship (god).">This is where we worship .</TRANSL>
         <W id="01-3_S_14_W0">
             <FORM kindOf="original">su-sumsum-an-an</FORM>
             <PHON kindOf="original">susumsumanan</PHON>
@@ -3873,7 +3873,7 @@
         <FORM kindOf="standard">dangianan hai imita.</FORM>
         <PHON kindOf="standard">daŋianan [x|χ]ai imita</PHON>
         <TRANSL xml:lang="zho">這個住的地方是我們的。</TRANSL>
-        <TRANSL xml:lang="eng">This (place) is where we live.</TRANSL>
+        <TRANSL xml:lang="eng" notes="This (place) is where we live.">This is where we live.</TRANSL>
         <W id="01-3_S_15_W0">
             <FORM kindOf="original">dangi-an-an</FORM>
             <PHON kindOf="original">daŋianan</PHON>
@@ -3945,8 +3945,8 @@
         <FORM kindOf="standard">an-diian hai inak.</FORM>
         <PHON kindOf="standard">andiian [x|χ]ai inak</PHON>
         <FORM kindOf="alternate">an-diip=an hai inak.</FORM>
-        <TRANSL xml:lang="zho">那個(東西) 是我的。</TRANSL>
-        <TRANSL xml:lang="eng">That (thing) is mine.</TRANSL>
+        <TRANSL xml:lang="zho" notes="那個(東西) 是我的。">那個 是我的。</TRANSL>
+        <TRANSL xml:lang="eng" notes="That (thing) is mine.">That is mine.</TRANSL>
         <W id="01-4_S_1_W0">
             <FORM kindOf="original">an-dii=an</FORM>
             <PHON kindOf="original">andiian</PHON>
@@ -4020,7 +4020,7 @@
         <PHON kindOf="standard">andiitan inak</PHON>
         <FORM kindOf="alternate">an-diip=tan inak.</FORM>
         <TRANSL xml:lang="zho">我的是這個。</TRANSL>
-        <TRANSL xml:lang="eng">That (thing) is (specifically) mine.</TRANSL>
+        <TRANSL xml:lang="eng" notes="That (thing) is (specifically) mine.">That is mine.</TRANSL>
         <W id="01-4_S_2_W0">
             <FORM kindOf="original">an-dii=tan</FORM>
             <PHON kindOf="original">andiitan</PHON>
@@ -4860,7 +4860,7 @@
         <PHON kindOf="original">[x|χ]animu[l|ɬ]mu[l|ɬ]an [x|χ]ai isia inak tu isaaŋ</PHON>
         <FORM kindOf="standard">hanimulmulan hai isia inak tu is'aang.</FORM>
         <PHON kindOf="standard">[x|χ]animu[l|ɬ]mu[l|ɬ]an [x|χ]ai iɕia inak tu isʔaaŋ</PHON>
-        <TRANSL xml:lang="zho">難過(的事)在我心(裡) 。</TRANSL>
+        <TRANSL xml:lang="zho" notes="難過(的事)在我心(裡) 。">難過 在我心 。</TRANSL>
         <TRANSL xml:lang="eng">The sad thing is in my heart.</TRANSL>
         <W id="01-4_S_11_W0">
             <FORM kindOf="original">hanimulmul-an</FORM>
@@ -4980,7 +4980,7 @@
         <PHON kindOf="original">[x|χ]animu[l|ɬ]mu[l|ɬ]an [x|χ]ai inak a isaaŋ</PHON>
         <FORM kindOf="standard">hanimulmulan hai inak a is'aang.</FORM>
         <PHON kindOf="standard">[x|χ]animu[l|ɬ]mu[l|ɬ]an [x|χ]ai inak a isʔaaŋ</PHON>
-        <TRANSL xml:lang="zho">我的心(裡)難過。</TRANSL>
+        <TRANSL xml:lang="zho" notes="我的心(裡)難過。">我的心 難過。</TRANSL>
         <TRANSL xml:lang="eng">My heart is sad.</TRANSL>
         <W id="01-4_S_12_W0">
             <FORM kindOf="original">hanimulmul-an</FORM>
@@ -5300,7 +5300,7 @@
         <PHON kindOf="original">niiik asa kudii minamu [l|ɬ]usan min[x|χ]amisan</PHON>
         <FORM kindOf="standard">niiik asa kudii min'amu lus'an minhamisan.</FORM>
         <PHON kindOf="standard">niiik asa kudii minʔamu [l|ɬ]usʔan min[x|χ]amisan</PHON>
-        <TRANSL xml:lang="zho">我不想去參加新年祭 (Minhamisan)。</TRANSL>
+        <TRANSL xml:lang="zho" notes="我不想去參加新年祭 (Minhamisan)。">我不想去參加新年祭 。</TRANSL>
         <TRANSL xml:lang="eng">I don't want to participate in the festival of Minhamisan.</TRANSL>
         <W id="01-5_S_3_W0">
             <FORM kindOf="original">nii-ik</FORM>
@@ -5428,7 +5428,7 @@
         <PHON kindOf="original">supa[x|χ] bunun [x|χ]ai isia pasinapan</PHON>
         <FORM kindOf="standard">supah bunun hai isia pasinapan.</FORM>
         <PHON kindOf="standard">supa[x|χ] bunun [x|χ]ai iɕia paɕinapan</PHON>
-        <TRANSL xml:lang="zho">很多人在(操場)跑道那邊。</TRANSL>
+        <TRANSL xml:lang="zho" notes="很多人在(操場)跑道那邊。">很多人在 跑道那邊。</TRANSL>
         <TRANSL xml:lang="eng">Many people are at the running tracks.</TRANSL>
         <W id="01-5_S_4_W0">
             <FORM kindOf="original">supah</FORM>
@@ -6012,8 +6012,8 @@
         <PHON kindOf="original">vanu [x|χ]ai pisainun sia patʨi[l|ɬ]asan</PHON>
         <FORM kindOf="standard">vanu hai pisainun sia patcilasan.</FORM>
         <PHON kindOf="standard">vanu [x|χ]ai pisainun ɕia patʨi[l|ɬ]asan</PHON>
-        <TRANSL xml:lang="zho">蜂蜜(目前)放在儲藏室。</TRANSL>
-        <TRANSL xml:lang="eng">The honey is (currently) stored in the pantry.</TRANSL>
+        <TRANSL xml:lang="zho" notes="蜂蜜(目前)放在儲藏室。">蜂蜜 放在儲藏室。</TRANSL>
+        <TRANSL xml:lang="eng" notes="The honey is (currently) stored in the pantry.">The honey is stored in the pantry.</TRANSL>
         <W id="01_S_1_W0">
             <FORM kindOf="original">vanu</FORM>
             <PHON kindOf="original">vanu</PHON>
@@ -17996,8 +17996,8 @@
         <PHON kindOf="original">makusisia aituaŋ ʨina mas ŋu[l|ɬ]aʨia</PHON>
         <FORM kindOf="standard">makusisia aituang cina mas ngul'acia.</FORM>
         <PHON kindOf="standard">makuɕiɕia aituaŋ ʨina mas ŋu[l|ɬ]ʔaʨia</PHON>
-        <TRANSL xml:lang="zho">媽媽過去常用那個鍋子（炒菜）。</TRANSL>
-        <TRANSL xml:lang="eng">Mother used to use that pan (to cook food).</TRANSL>
+        <TRANSL xml:lang="zho" notes="媽媽過去常用那個鍋子（炒菜）。">媽媽過去常用那個鍋子 。</TRANSL>
+        <TRANSL xml:lang="eng" notes="Mother used to use that pan (to cook food).">Mother used to use that pan .</TRANSL>
         <W id="03-3_S_14_W0">
             <FORM kindOf="original">ma-ku&lt;si&gt;sia</FORM>
             <PHON kindOf="original">makusisia</PHON>
@@ -19411,7 +19411,7 @@
         <PHON kindOf="original">niiik maimaðima maun maibabu</PHON>
         <FORM kindOf="standard">niiik mai-m-azima maun maibabu.</FORM>
         <PHON kindOf="standard">niiik maimaðima maun maibabu</PHON>
-        <TRANSL xml:lang="zho">我不曾喜歡吃豬肉(到現在還是不喜歡)。</TRANSL>
+        <TRANSL xml:lang="zho" notes="我不曾喜歡吃豬肉(到現在還是不喜歡)。">我不曾喜歡吃豬肉 。</TRANSL>
         <TRANSL xml:lang="eng">I have never liked eating pork.</TRANSL>
         <W id="03-4_S_14_W0">
             <FORM kindOf="original">nii=ik</FORM>
@@ -20851,7 +20851,7 @@
         <PHON kindOf="original">saikin tu kai[l|ɬ]atun mas [l|ɬ]aŋkitað [x|χ]ai nii tu maʨistak</PHON>
         <FORM kindOf="standard">saikin tu kailatun mas langkitaz hai nii tu macistak.</FORM>
         <PHON kindOf="standard">saikin tu kai[l|ɬ]atun mas [l|ɬ]aŋkitað [x|χ]ai nii tu maʨistak</PHON>
-        <TRANSL xml:lang="zho">我被蚊子咬過不會腫起來。#n (lit.) Even if mosquitoes bite me, I won’t get swollen.</TRANSL>
+        <TRANSL xml:lang="zho" notes="我被蚊子咬過不會腫起來。#n (lit.) Even if mosquitoes bite me[u1], I won’t get swollen[TVH2].">我被蚊子咬過不會腫起來。#n Even if mosquitoes bite me, I won’t get swollen.</TRANSL>
         <TRANSL xml:lang="eng">Even if getting bitten by mosquitos, the place where the mosquito bit me doesn't swell.</TRANSL>
         <W id="03-5_S_6_W0">
             <FORM kindOf="original">saikin</FORM>
@@ -31454,7 +31454,7 @@
         <FORM kindOf="standard">mais munapav sia sapalan hai kaa tu sipungul masahdil mas ilav.</FORM>
         <PHON kindOf="standard">mais munapav ɕia sapa[l|ɬ]an [x|χ]ai kaa tu ɕipuŋu[l|ɬ] masa[x|χ]di[l|ɬ] mas i[l|ɬ]av</PHON>
         <TRANSL xml:lang="zho">從那個臥室出來以後, 不要忘記把門鎖上.</TRANSL>
-        <TRANSL xml:lang="eng">Don't forget to lock the door when you want to come out (of the bedroom).</TRANSL>
+        <TRANSL xml:lang="eng" notes="Don’t forget to lock the door when you want to come out (of the bedroom).">Don't forget to lock the door when you want to come out .</TRANSL>
         <W id="06_S_6_W0">
             <FORM kindOf="original">mais</FORM>
             <PHON kindOf="original">mais</PHON>
@@ -32902,7 +32902,7 @@
         <FORM kindOf="standard">kanahtungin kata paliuni masnanava mas saitaan tu mundai.</FORM>
         <PHON kindOf="standard">kana[x|χ]tuŋin kata pa[l|ɬ]iuni masnanava mas saitaan tu mundai</PHON>
         <TRANSL xml:lang="zho">我們已經跟老師談論完了這個問題.</TRANSL>
-        <TRANSL xml:lang="eng">We and the teacher have already discussed these issues (before).</TRANSL>
+        <TRANSL xml:lang="eng" notes="We and the teacher have already discussed these issues (before).">We and the teacher have already discussed these issues .</TRANSL>
         <W id="08_S_2_W0">
             <FORM kindOf="original">ka-nahtung=in</FORM>
             <PHON kindOf="original">kana[x|χ]tuŋin</PHON>
@@ -46853,7 +46853,7 @@
         <PHON kindOf="original">muskunta mapasnava at musasu mapatas mas sinpasnava</PHON>
         <FORM kindOf="standard">muskunta mapasnava at musasu mapatas mas sinpasnava.</FORM>
         <PHON kindOf="standard">muskunta mapasnava at musasu mapatas mas ɕinpasnava</PHON>
-        <TRANSL xml:lang="zho">我們一起學習然後同時記下所教的（所學的）。</TRANSL>
+        <TRANSL xml:lang="zho" notes="我們一起學習然後同時記下所教的（所學的）。">我們一起學習然後同時記下所教的 。</TRANSL>
         <TRANSL xml:lang="eng">We learned together and then at the same time wrote down what was taught.</TRANSL>
         <W id="13_S_8_W0">
             <FORM kindOf="original">mu-skun=ta</FORM>
@@ -58397,7 +58397,7 @@
         <PHON kindOf="original">naiia [x|χ]ai maisnatakau kuŋada[x|χ]tan</PHON>
         <FORM kindOf="standard">naiia hai maisnaTakau kungadahtan.</FORM>
         <PHON kindOf="standard">naiia [x|χ]ai maisnatakau kuŋada[x|χ]tan</PHON>
-        <TRANSL xml:lang="zho">他們從高雄進（來）這裡。</TRANSL>
+        <TRANSL xml:lang="zho" notes="他們從高雄進（來）這裡。">他們從高雄進 這裡。</TRANSL>
         <TRANSL xml:lang="eng">They come here from Kaohsiung.</TRANSL>
         <W id="18_S_3_W0">
             <FORM kindOf="original">naiia</FORM>
@@ -58493,8 +58493,8 @@
         <PHON kindOf="original">naiia [x|χ]ai maisnasainʨin kutakau</PHON>
         <FORM kindOf="standard">naiia hai maisnasaincin kuTakau.</FORM>
         <PHON kindOf="standard">naiia [x|χ]ai maisnasainʨin kutakau</PHON>
-        <TRANSL xml:lang="zho">他們從這（去）到高雄。</TRANSL>
-        <TRANSL xml:lang="eng">They are going to Kaohsiung from this (place).</TRANSL>
+        <TRANSL xml:lang="zho" notes="他們從這（去）到高雄。">他們從這 到高雄。</TRANSL>
+        <TRANSL xml:lang="eng" notes="They are going to Kaohsiung from this (place).">They are going to Kaohsiung from this .</TRANSL>
         <W id="18_S_4_W0">
             <FORM kindOf="original">naiia</FORM>
             <PHON kindOf="original">naiia</PHON>
@@ -58854,7 +58854,7 @@
         <FORM kindOf="standard">saiciin tu siasiing mais saduan hai cinliskin mas nasSubali.</FORM>
         <PHON kindOf="standard">saiʨiin tu ɕiaɕiiŋ mais saduan [x|χ]ai ʨin[l|ɬ]iskin mas nassuba[l|ɬ]i</PHON>
         <TRANSL xml:lang="zho">這個相片，看的話會想起已故的Subali。</TRANSL>
-        <TRANSL xml:lang="eng">Upon seeing this photo, (I) think of the deceased Subali.</TRANSL>
+        <TRANSL xml:lang="eng" notes="Upon seeing this photo, (I) think of the deceased Subali.">Upon seeing this photo, think of the deceased Subali.</TRANSL>
         <W id="18_S_7_W0">
             <FORM kindOf="original">sai-ciin</FORM>
             <PHON kindOf="original">saiʨiin</PHON>
@@ -59286,7 +59286,7 @@
         <FORM kindOf="standard">maz sain? ispapatas.</FORM>
         <PHON kindOf="standard">mað sain ispapatas</PHON>
         <TRANSL xml:lang="zho">這是什麼？筆。</TRANSL>
-        <TRANSL xml:lang="eng">What is this (near me)? A pen.</TRANSL>
+        <TRANSL xml:lang="eng" notes="What is this (near me)? A pen.">What is this ? A pen.</TRANSL>
         <W id="19_S_3_W0">
             <FORM kindOf="original">maz</FORM>
             <PHON kindOf="original">mað</PHON>
@@ -59358,7 +59358,7 @@
         <FORM kindOf="standard">maz sian? huhudan tu danum.</FORM>
         <PHON kindOf="standard">mað ɕian [x|χ]u[x|χ]udan tu danum</PHON>
         <TRANSL xml:lang="zho">這是什麼？飲用水。</TRANSL>
-        <TRANSL xml:lang="eng">What is this (near you)? Drinking water.</TRANSL>
+        <TRANSL xml:lang="eng" notes="What is this (near you)? Drinking water.">What is this ? Drinking water.</TRANSL>
         <W id="19_S_4_W0">
             <FORM kindOf="original">maz</FORM>
             <PHON kindOf="original">mað</PHON>
@@ -60866,7 +60866,7 @@
         <FORM kindOf="standard">minaunin saikin saitaan tu bunbun.</FORM>
         <PHON kindOf="standard">minaunin saikin saitaan tu bunbun</PHON>
         <TRANSL xml:lang="zho">我吃過這個香蕉。</TRANSL>
-        <TRANSL xml:lang="eng">I have eaten this banana (around the speaker).</TRANSL>
+        <TRANSL xml:lang="eng" notes="I have eaten this banana (around the speaker).">I have eaten this banana .</TRANSL>
         <W id="20_S_9_W0">
             <FORM kindOf="original">m&lt;in&gt;aun=in</FORM>
             <PHON kindOf="original">minaunin</PHON>
@@ -60978,7 +60978,7 @@
         <FORM kindOf="standard">minaunin saikin saiciin tu bunbun.</FORM>
         <PHON kindOf="standard">minaunin saikin saiʨiin tu bunbun</PHON>
         <TRANSL xml:lang="zho">我有吃過這個香蕉。</TRANSL>
-        <TRANSL xml:lang="eng">I have eaten this banana (near the speaker).</TRANSL>
+        <TRANSL xml:lang="eng" notes="I have eaten this banana (near the speaker).">I have eaten this banana .</TRANSL>
         <W id="20_S_10_W0">
             <FORM kindOf="original">m&lt;in&gt;aun=in</FORM>
             <PHON kindOf="original">minaunin</PHON>
@@ -61873,8 +61873,8 @@
         <PHON kindOf="original">mapasitda tu tas tu kinu[l|ɬ]ut naissia[x|χ]tu tamata[l|ɬ]umʨia davus</PHON>
         <FORM kindOf="standard">mapasitda tu tas tu kinulut naissiahtu tamaTalumcia davus.</FORM>
         <PHON kindOf="standard">mapaɕitda tu tas tu kinu[l|ɬ]ut naisɕia[x|χ]tu tamata[l|ɬ]umʨia davus</PHON>
-        <TRANSL xml:lang="zho">（那個）留一塊（些）給Talum叔叔配酒。</TRANSL>
-        <TRANSL xml:lang="eng">I kept a piece (of meat) for Uncle Talum's wine drinking.</TRANSL>
+        <TRANSL xml:lang="zho" notes="（那個）留一塊（些）給Talum叔叔配酒。">留一塊 給Talum叔叔配酒。</TRANSL>
+        <TRANSL xml:lang="eng" notes="I kept a piece (of meat) for Uncle Talum’s wine drinking.">I kept a piece for Uncle Talum's wine drinking.</TRANSL>
         <W id="21_S_2_W0">
             <FORM kindOf="original">ma-pa-sitda</FORM>
             <PHON kindOf="original">mapasitda</PHON>
@@ -63481,7 +63481,7 @@
         <PHON kindOf="original">saia tu daidiŋian [x|χ]ai naissaiv tas tu mapadaŋiʨia</PHON>
         <FORM kindOf="standard">saia tu daidingian hai naissaiv tas tu mapadangicia.</FORM>
         <PHON kindOf="standard">saia tu daidiŋian [x|χ]ai naissaiv tas tu mapadaŋiʨia</PHON>
-        <TRANSL xml:lang="zho">那裡就給（買了那隻山羌的）那夫婦住。</TRANSL>
+        <TRANSL xml:lang="zho" notes="那裡就給（買了那隻山羌的）那夫婦住。">那裡就給 那夫婦住。</TRANSL>
         <TRANSL xml:lang="eng">The husband and wife wanted to live where I lived before.</TRANSL>
         <W id="22_S_7_W0">
             <FORM kindOf="original">sai-a</FORM>
@@ -64529,7 +64529,7 @@
         <PHON kindOf="original">ana tupa tu kauman [x|χ]inudan davusʨia [x|χ]aitu misbusuk saikin</PHON>
         <FORM kindOf="standard">ana tupa tu kauman hinudan davuscia haitu misbusuk saikin.</FORM>
         <PHON kindOf="standard">ana tupa tu kauman [x|χ]inudan davusʨia [x|χ]aitu misbusuk saikin</PHON>
-        <TRANSL xml:lang="zho">雖然那個（打翻的）酒喝很少，但我還是醉了。</TRANSL>
+        <TRANSL xml:lang="zho" notes="雖然那個（打翻的）酒喝很少，但我還是醉了。">雖然那個 酒喝很少，但我還是醉了。</TRANSL>
         <TRANSL xml:lang="eng">I drank a little of that wine, but I got drunk.</TRANSL>
         <W id="23_S_6_W0">
             <FORM kindOf="original">ana</FORM>
@@ -64713,7 +64713,7 @@
         <PHON kindOf="original">ana tupa tu saunkauman [x|χ]uud davustan [x|χ]aitu misbusuk saikin</PHON>
         <FORM kindOf="standard">ana tupa tu saunkauman huud davustan haitu misbusuk saikin.</FORM>
         <PHON kindOf="standard">ana tupa tu saunkauman [x|χ]uud davustan [x|χ]aitu misbusuk saikin</PHON>
-        <TRANSL xml:lang="zho">雖然那個（打翻的）酒喝很少，但我還是醉了。</TRANSL>
+        <TRANSL xml:lang="zho" notes="雖然那個（打翻的）酒喝很少，但我還是醉了。">雖然那個 酒喝很少，但我還是醉了。</TRANSL>
         <TRANSL xml:lang="eng">I drank a little of that wine, but I got drunk.</TRANSL>
         <W id="23_S_7_W0">
             <FORM kindOf="original">ana</FORM>
@@ -65889,7 +65889,7 @@
         <PHON kindOf="original">ta aða tu masu[x|χ]anvaŋtakismuut saia</PHON>
         <FORM kindOf="standard">ta' aza tu masuhanvangtakismuut saia.</FORM>
         <PHON kindOf="standard">taʔ aða tu masu[x|χ]anvaŋtakismuut saia</PHON>
-        <TRANSL xml:lang="zho">聽說（翻過玉山的另一邊）那裡有很多的梅花鹿。</TRANSL>
+        <TRANSL xml:lang="zho" notes="聽說（翻過玉山的另一邊）那裡有很多的梅花鹿。">聽說 那裡有很多的梅花鹿。</TRANSL>
         <TRANSL xml:lang="eng">I heard that over there are lots of deers.</TRANSL>
         <W id="24_S_8_W0">
             <FORM kindOf="original">ta'</FORM>
@@ -66007,7 +66007,7 @@
         <PHON kindOf="original">taaða tu saia [x|χ]ai masu[x|χ]anvaŋtakismuut</PHON>
         <FORM kindOf="standard">ta'aza tu saia hai masuhanvangtakismuut.</FORM>
         <PHON kindOf="standard">taʔaða tu saia [x|χ]ai masu[x|χ]anvaŋtakismuut</PHON>
-        <TRANSL xml:lang="zho">聽說（翻過玉山的另一邊）那裡有很多的梅花鹿。</TRANSL>
+        <TRANSL xml:lang="zho" notes="聽說（翻過玉山的另一邊）那裡有很多的梅花鹿。">聽說 那裡有很多的梅花鹿。</TRANSL>
         <TRANSL xml:lang="eng">I heard that over there are lots of deers.</TRANSL>
         <W id="24_S_9_W0">
             <FORM kindOf="original">ta'aza</FORM>
@@ -69203,8 +69203,8 @@
         <PHON kindOf="original">nanu kasu [x|χ]ai nanii tu [x|χ]aiap ma[l|ɬ]asbunun</PHON>
         <FORM kindOf="standard">nanu kasu hai nanii tu haiap malasbunun.</FORM>
         <PHON kindOf="standard">nanu kasu [x|χ]ai nanii tu [x|χ]aiap ma[l|ɬ]asbunun</PHON>
-        <TRANSL xml:lang="zho">你不應該本來會講布農語(質疑語氣)。</TRANSL>
-        <TRANSL xml:lang="eng">You shouldn't know how to speak Bunun (suspected).</TRANSL>
+        <TRANSL xml:lang="zho" notes="你不應該本來會講布農語(質疑語氣)。">你不應該本來會講布農語 。</TRANSL>
+        <TRANSL xml:lang="eng" notes="You shouldn't know how to speak Bunun (suspected).">You shouldn't know how to speak Bunun .</TRANSL>
         <W id="26_S_7_W0">
             <FORM kindOf="original">nanu</FORM>
             <PHON kindOf="original">nanu</PHON>
@@ -73237,7 +73237,7 @@
         <PHON kindOf="original">ʨina [x|χ]ai maðima mapasnava at [x|χ]aiap saia maimasan tu [x|χ]a[l|ɬ]iŋa</PHON>
         <FORM kindOf="standard">cina hai mazima mapasnava at haiap saia maimas'an tu halinga.</FORM>
         <PHON kindOf="standard">ʨina [x|χ]ai maðima mapasnava at [x|χ]aiap saia maimasʔan tu [x|χ]a[l|ɬ]iŋa</PHON>
-        <TRANSL xml:lang="zho">媽媽喜歡學習, 所以他會講十種語言 (一般語氣)。</TRANSL>
+        <TRANSL xml:lang="zho" notes="媽媽喜歡學習, 所以他會講十種語言 (一般語氣)。">媽媽喜歡學習, 所以他會講十種語言 。</TRANSL>
         <TRANSL xml:lang="eng">Since mother likes to study, she can speak ten languages.</TRANSL>
         <W id="29_S_1_W0">
             <FORM kindOf="original">cina</FORM>
@@ -73437,7 +73437,7 @@
         <PHON kindOf="original">ʨina [x|χ]ai maðima mapasnava at ma[x|χ]tu tupa maimasan tu [x|χ]a[l|ɬ]iŋ</PHON>
         <FORM kindOf="standard">cina hai mazima mapasnava at mahtu tupa maimasan tu haling.</FORM>
         <PHON kindOf="standard">ʨina [x|χ]ai maðima mapasnava at ma[x|χ]tu tupa maimasan tu [x|χ]a[l|ɬ]iŋ</PHON>
-        <TRANSL xml:lang="zho">媽媽喜歡學習, 所以他會講十種語言 (一般語氣)。</TRANSL>
+        <TRANSL xml:lang="zho" notes="媽媽喜歡學習, 所以他會講十種語言 (一般語氣)。">媽媽喜歡學習, 所以他會講十種語言 。</TRANSL>
         <TRANSL xml:lang="eng">Since mother likes to study, she can speak ten languages.</TRANSL>
         <W id="29_S_2_W0">
             <FORM kindOf="original">cina</FORM>
@@ -73629,7 +73629,7 @@
         <PHON kindOf="original">ʨina [x|χ]ai maðima mapasnava at ma[x|χ]ansiap saia maimasan tu [x|χ]a[l|ɬ]iŋa</PHON>
         <FORM kindOf="standard">cina hai mazima mapasnava at mahansiap saia maimas'an tu halinga.</FORM>
         <PHON kindOf="standard">ʨina [x|χ]ai maðima mapasnava at ma[x|χ]anɕiap saia maimasʔan tu [x|χ]a[l|ɬ]iŋa</PHON>
-        <TRANSL xml:lang="zho">媽媽喜歡學習, 所以他確定會講十種語言 (強調語氣).</TRANSL>
+        <TRANSL xml:lang="zho" notes="媽媽喜歡學習, 所以他確定會講十種語言 (強調語氣).">媽媽喜歡學習, 所以他確定會講十種語言 .</TRANSL>
         <TRANSL xml:lang="eng">Since mother likes to study, she can really speak ten languages.</TRANSL>
         <W id="29_S_3_W0">
             <FORM kindOf="original">cina</FORM>
@@ -73838,7 +73838,7 @@
         <FORM kindOf="standard">au mahtuin maun kangavastan?</FORM>
         <PHON kindOf="standard">au ma[x|χ]tuin maun kaŋavastan</PHON>
         <TRANSL xml:lang="zho">可以吃芒果了嗎?</TRANSL>
-        <TRANSL xml:lang="eng">Can (I) eat the mango?</TRANSL>
+        <TRANSL xml:lang="eng" notes="Can (I) eat the mango?">Can eat the mango?</TRANSL>
         <W id="29_S_4_W0">
             <FORM kindOf="original">au</FORM>
             <PHON kindOf="original">au</PHON>
@@ -73934,7 +73934,7 @@
         <FORM kindOf="standard">adu mahtuin kangavasan kaunun?</FORM>
         <PHON kindOf="standard">adu ma[x|χ]tuin kaŋavasan kaunun</PHON>
         <TRANSL xml:lang="zho">芒果可以吃了嗎。</TRANSL>
-        <TRANSL xml:lang="eng">The mangos, can (I) eat them?</TRANSL>
+        <TRANSL xml:lang="eng" notes="The mangos, can (I) eat them?">The mangos, can eat them?</TRANSL>
         <W id="29_S_5_W0">
             <FORM kindOf="original">adu</FORM>
             <PHON kindOf="original">adu</PHON>
@@ -74030,7 +74030,7 @@
         <FORM kindOf="standard">isia pangkaka tu kangavasan hai mahtu kaunun.</FORM>
         <PHON kindOf="standard">iɕia paŋkaka tu kaŋavasan [x|χ]ai ma[x|χ]tu kaunun</PHON>
         <TRANSL xml:lang="zho">桌上的芒果是可以吃的。</TRANSL>
-        <TRANSL xml:lang="eng">(One) can eat the mangos on the desk.</TRANSL>
+        <TRANSL xml:lang="eng" notes="(One) can eat the mangos on the desk.">can eat the mangos on the desk.</TRANSL>
         <W id="29_S_6_W0">
             <FORM kindOf="original">i-sia</FORM>
             <PHON kindOf="original">isia</PHON>
@@ -74174,7 +74174,7 @@
         <FORM kindOf="standard">haiapin uvaaza maun kangavas.</FORM>
         <PHON kindOf="standard">[x|χ]aiapin uvaaða maun kaŋavas</PHON>
         <TRANSL xml:lang="zho">那個孩子會吃芒果了。</TRANSL>
-        <TRANSL xml:lang="eng">(The child) can already eat mango.</TRANSL>
+        <TRANSL xml:lang="eng" notes="(The child) can already eat mango.">can already eat mango.</TRANSL>
         <W id="29_S_7_W0">
             <FORM kindOf="original">haiap=in</FORM>
             <PHON kindOf="original">[x|χ]aiapin</PHON>
@@ -74917,7 +74917,7 @@
         <PHON kindOf="original">saia [x|χ]ai nau tu namapinkai[l|ɬ]as naiʨia</PHON>
         <FORM kindOf="standard">saia hai nau tu namapinkailas naicia.</FORM>
         <PHON kindOf="standard">saia [x|χ]ai nau tu namapinkai[l|ɬ]as naiʨia</PHON>
-        <TRANSL xml:lang="zho">他本來就要叫他們起床(有責任)。</TRANSL>
+        <TRANSL xml:lang="zho" notes="他本來就要叫他們起床(有責任)。">他本來就要叫他們起床 。</TRANSL>
         <TRANSL xml:lang="eng">He originally was going to wake them up.</TRANSL>
         <W id="30_S_2_W0">
             <FORM kindOf="original">saia</FORM>
@@ -78515,7 +78515,7 @@
         <PHON kindOf="original">andii maibabuan [x|χ]ai masia[l|ɬ] kaunun</PHON>
         <FORM kindOf="standard">andii maibabuan hai masial kaunun.</FORM>
         <PHON kindOf="standard">andii maibabuan [x|χ]ai maɕia[l|ɬ] kaunun</PHON>
-        <TRANSL xml:lang="zho">這塊豬肉很好吃(對照組)。族語譯中文：這塊豬肉很好吃。</TRANSL>
+        <TRANSL xml:lang="zho" notes="這塊豬肉很好吃(對照組)。族語譯中文：這塊豬肉很好吃。">這塊豬肉很好吃 。族語譯中文：這塊豬肉很好吃。</TRANSL>
         <TRANSL xml:lang="eng">This piece of pork is delicious.</TRANSL>
         <W id="32_S_9_W0">
             <FORM kindOf="original">an-dii</FORM>
@@ -78643,7 +78643,7 @@
         <PHON kindOf="original">andii maibabuan mais tanamun [x|χ]ai masia[l|ɬ] kaunun</PHON>
         <FORM kindOf="standard">andii maibabuan mais tanamun hai masial kaunun.</FORM>
         <PHON kindOf="standard">andii maibabuan mais tanamun [x|χ]ai maɕia[l|ɬ] kaunun</PHON>
-        <TRANSL xml:lang="zho">這塊豬肉嚐起來很好吃。(lit.) 這塊豬肉試(吃)起來很好吃。</TRANSL>
+        <TRANSL xml:lang="zho" notes="這塊豬肉嚐起來很好吃。(lit.) 這塊豬肉試(吃)起來很好吃。">這塊豬肉嚐起來很好吃。 這塊豬肉試 起來很好吃。</TRANSL>
         <TRANSL xml:lang="eng">This piece of pork tastes delicious.</TRANSL>
         <W id="32_S_10_W0">
             <FORM kindOf="original">an-dii</FORM>
@@ -78812,7 +78812,7 @@
         <FORM kindOf="standard">andii maibabuan mais tanamun maun hai masial kaunun.</FORM>
         <PHON kindOf="standard">andii maibabuan mais tanamun maun [x|χ]ai maɕia[l|ɬ] kaunun</PHON>
         <TRANSL xml:lang="eng">This piece of pork tastes delicious.</TRANSL>
-        <TRANSL xml:lang="zho">這塊豬肉嚐起來很好吃。(lit.) 這塊豬肉試(吃)起來很好吃。</TRANSL>
+        <TRANSL xml:lang="zho" notes="這塊豬肉嚐起來很好吃。(lit.) 這塊豬肉試(吃)起來很好吃。">這塊豬肉嚐起來很好吃。 這塊豬肉試 起來很好吃。</TRANSL>
     </S>
     <S id="32_S_11">
         <FORM kindOf="original" notes="ma’ansum指「入味/調味好」 masmuh指「人或動物(體型)很肥(沒有特別褒貶之意)」；mabuniskil指「豬(不論大小)很肥」；mahatba指「(人)壯」，不能用於形容動植物上。">andii maibabuan hai manambuh kaunun.</FORM>
@@ -78947,7 +78947,7 @@
         <PHON kindOf="original">saduanku saia [x|χ]ai ma[l|ɬ]minatað mani mada[x|χ]pa</PHON>
         <FORM kindOf="standard">saduanku saia hai malminataz mani madahpa.</FORM>
         <PHON kindOf="standard">saduanku saia [x|χ]ai ma[l|ɬ]minatað mani mada[x|χ]pa</PHON>
-        <TRANSL xml:lang="zho">他的精神不太好，看起來像生病了。(lit.) 我看他好像要死不活，好像生病一樣。</TRANSL>
+        <TRANSL xml:lang="zho" notes="他的精神不太好，看起來像生病了。(lit.) 我看他好像要死不活，好像生病一樣。">他的精神不太好，看起來像生病了。 我看他好像要死不活，好像生病一樣。</TRANSL>
         <TRANSL xml:lang="eng">He is under the weather and looks sick.</TRANSL>
         <W id="33_S_1_W0">
             <FORM kindOf="original">sadu-an=ku</FORM>
@@ -80618,7 +80618,7 @@
         <PHON kindOf="original">iviv [x|χ]ai ku[l|ɬ]uma[x|χ]</PHON>
         <FORM kindOf="standard">iv'iv hai kulumah.</FORM>
         <PHON kindOf="standard">ivʔiv [x|χ]ai ku[l|ɬ]uma[x|χ]</PHON>
-        <TRANSL xml:lang="zho">風吹進來屋子裡面(對照組)。</TRANSL>
+        <TRANSL xml:lang="zho" notes="風吹進來屋子裡面(對照組)。">風吹進來屋子裡面 。</TRANSL>
         <TRANSL xml:lang="eng">The wind is blowing into this house.</TRANSL>
         <W id="34_S_6_W0">
             <FORM kindOf="original">iv'iv</FORM>
@@ -87647,7 +87647,7 @@
         <FORM kindOf="standard">ka tu bazangbazang, sima cinupasuu maupa cintuhalinga.</FORM>
         <PHON kindOf="standard">ka tu baðaŋbaðaŋ ɕima ʨinupasuu maupa ʨintu[x|χ]a[l|ɬ]iŋa</PHON>
         <TRANSL xml:lang="zho">不要亂說囉, 這句話你是聽誰說的。</TRANSL>
-        <TRANSL xml:lang="eng">Do not say rubbish, who told you that (rubbish)?</TRANSL>
+        <TRANSL xml:lang="eng" notes="Do not say rubbish, who told you that (rubbish)?">Do not say rubbish, who told you that ?</TRANSL>
         <W id="37_S_2_W0">
             <FORM kindOf="original">ka</FORM>
             <PHON kindOf="original">ka</PHON>
@@ -91510,7 +91510,7 @@
         <PHON kindOf="original">andii tatau bununa [x|χ]ai sima kaðimaun naiʨia</PHON>
         <FORM kindOf="standard">andii tatau bununa hai sima kazimaun naicia.</FORM>
         <PHON kindOf="standard">andii tatau bununa [x|χ]ai ɕima kaðimaun naiʨia</PHON>
-        <TRANSL xml:lang="zho">這三個人是喜歡誰? (三個人喜歡某一個人)</TRANSL>
+        <TRANSL xml:lang="zho" notes="這三個人是喜歡誰? (三個人喜歡某一個人)">這三個人是喜歡誰?</TRANSL>
         <TRANSL xml:lang="eng">Which of the three people do they like?</TRANSL>
         <W id="39_S_9_W0">
             <FORM kindOf="original">an-dii</FORM>
@@ -91663,7 +91663,7 @@
         <FORM kindOf="standard">katavinang tu unhazavan hai minsunab luduna.</FORM>
         <PHON kindOf="standard">katavinaŋ tu un[x|χ]aðavan [x|χ]ai minsunab [l|ɬ]uduna</PHON>
         <TRANSL xml:lang="zho">去年的乾旱的時候山上失火。</TRANSL>
-        <TRANSL xml:lang="eng">There was a (big) fire on the mountain last summer.</TRANSL>
+        <TRANSL xml:lang="eng" notes="There was a (big) fire on the mountain last summer.">There was a fire on the mountain last summer.</TRANSL>
         <W id="39_S_10_W0">
             <FORM kindOf="original">katavin=ang</FORM>
             <PHON kindOf="original">katavinaŋ</PHON>
@@ -92270,7 +92270,7 @@
         <PHON kindOf="original">ʨismað saia mistaba</PHON>
         <FORM kindOf="standard">cismaz saia mistaba?</FORM>
         <PHON kindOf="standard">ʨismað saia mistaba</PHON>
-        <TRANSL xml:lang="zho">那個著火(zhao huo)是什麼原因?</TRANSL>
+        <TRANSL xml:lang="zho" notes="那個著火(zhao huo)是什麼原因?">那個著火 是什麼原因?</TRANSL>
         <TRANSL xml:lang="eng">Why did that burn?</TRANSL>
         <W id="39_S_14_W0">
             <FORM kindOf="original">cis-maz</FORM>
@@ -92350,7 +92350,7 @@
         <PHON kindOf="original">saia tu mistaba [x|χ]ai ʨisuni mas maʨipʨia[x|χ]</PHON>
         <FORM kindOf="standard">saia tu mistaba hai cis'uni mas macipciah.</FORM>
         <PHON kindOf="standard">saia tu mistaba [x|χ]ai ʨisʔuni mas maʨipʨia[x|χ]</PHON>
-        <TRANSL xml:lang="zho">那個著火(會燒起來)是因為那個爆炸。</TRANSL>
+        <TRANSL xml:lang="zho" notes="那個著火(會燒起來)是因為那個爆炸。">那個著火 是因為那個爆炸。</TRANSL>
         <TRANSL xml:lang="eng">That fire was due to the explosion.</TRANSL>
         <W id="39_S_15_W0">
             <FORM kindOf="original">sai-a</FORM>
@@ -92502,7 +92502,7 @@
         <PHON kindOf="original">saia tu mistaba [x|χ]ai ʨismað</PHON>
         <FORM kindOf="standard">saia tu mistaba hai cismaz?</FORM>
         <PHON kindOf="standard">saia tu mistaba [x|χ]ai ʨismað</PHON>
-        <TRANSL xml:lang="zho">它(或那個地方)為什麼會燒起來?</TRANSL>
+        <TRANSL xml:lang="zho" notes="它(或那個地方)為什麼會燒起來?">它 為什麼會燒起來?</TRANSL>
         <TRANSL xml:lang="eng">That fire was due to what?</TRANSL>
         <W id="39_S_16_W0">
             <FORM kindOf="original">sai-a</FORM>
@@ -92846,7 +92846,7 @@
         <PHON kindOf="original">[l|ɬ]akua suba[l|ɬ]ia madamu kaka[l|ɬ]aŋʨia</PHON>
         <FORM kindOf="standard">lakua Subalia madamu kakalangcia.</FORM>
         <PHON kindOf="standard">[l|ɬ]akua suba[l|ɬ]ia madamu kaka[l|ɬ]aŋʨia</PHON>
-        <TRANSL xml:lang="zho">Subali什麼時候抓(到)那隻螃蟹?</TRANSL>
+        <TRANSL xml:lang="zho" notes="Subali什麼時候抓(到)那隻螃蟹?">Subali什麼時候抓 那隻螃蟹?</TRANSL>
         <TRANSL xml:lang="eng">When did Subali catch the carb?</TRANSL>
         <W id="39_S_19_W0">
             <FORM kindOf="original">lakua</FORM>
@@ -92942,7 +92942,7 @@
         <PHON kindOf="original">[l|ɬ]akua suba[l|ɬ]ia madamu mas kaka[l|ɬ]aŋʨia</PHON>
         <FORM kindOf="standard">lakua Subalia madamu mas kakalangcia.</FORM>
         <PHON kindOf="standard">[l|ɬ]akua suba[l|ɬ]ia madamu mas kaka[l|ɬ]aŋʨia</PHON>
-        <TRANSL xml:lang="zho">Subali什麼時候抓(到)那隻螃蟹?</TRANSL>
+        <TRANSL xml:lang="zho" notes="Subali什麼時候抓(到)那隻螃蟹?">Subali什麼時候抓 那隻螃蟹?</TRANSL>
         <TRANSL xml:lang="eng">When did Subali catch the carb?</TRANSL>
         <W id="39_S_19-opt_W0">
             <FORM kindOf="original">lakua</FORM>
@@ -96230,8 +96230,8 @@
         <PHON kindOf="original">suba[l|ɬ]i [x|χ]ai aiðaan tu tatau mas uvaað</PHON>
         <FORM kindOf="standard">Subali hai aizaan tu tatau mas 'uvaaz.</FORM>
         <PHON kindOf="standard">suba[l|ɬ]i [x|χ]ai aiðaan tu tatau mas ʔuvaað</PHON>
-        <TRANSL xml:lang="zho">Subali(已經)有三個孩子。</TRANSL>
-        <TRANSL xml:lang="eng">Subali (already) has three children.</TRANSL>
+        <TRANSL xml:lang="zho" notes="Subali(已經)有三個孩子。">Subali 有三個孩子。</TRANSL>
+        <TRANSL xml:lang="eng" notes="Subali (already) has three children.">Subali has three children.</TRANSL>
         <W id="39_S_41_W0">
             <FORM kindOf="original">Subali</FORM>
             <PHON kindOf="original">suba[l|ɬ]i</PHON>
@@ -96528,7 +96528,7 @@
         <PHON kindOf="original">tatau uvaað ka[x|χ]u[x|χ]uðas</PHON>
         <FORM kindOf="standard">tatau 'uvaaz kahuhuzas.</FORM>
         <PHON kindOf="standard">tatau ʔuvaað ka[x|χ]u[x|χ]uðas</PHON>
-        <TRANSL xml:lang="zho">有三個孩子(正)在唱歌。</TRANSL>
+        <TRANSL xml:lang="zho" notes="有三個孩子(正)在唱歌。">有三個孩子 在唱歌。</TRANSL>
         <TRANSL xml:lang="eng">Three children are singing.</TRANSL>
         <W id="39_S_44_W0">
             <FORM kindOf="original">ta-tau</FORM>
@@ -96800,7 +96800,7 @@
         <PHON kindOf="original">papia uvaaða ka[x|χ]u[x|χ]uðas</PHON>
         <FORM kindOf="standard">papia 'uvaaza kahuhuzas?</FORM>
         <PHON kindOf="standard">papia ʔuvaaða ka[x|χ]u[x|χ]uðas</PHON>
-        <TRANSL xml:lang="zho">有幾個孩子(正)在唱歌?</TRANSL>
+        <TRANSL xml:lang="zho" notes="有幾個孩子(正)在唱歌?">有幾個孩子 在唱歌?</TRANSL>
         <TRANSL xml:lang="eng">How many children are singing?</TRANSL>
         <W id="39_S_47_W0">
             <FORM kindOf="original">papia</FORM>
@@ -98188,7 +98188,7 @@
         <PHON kindOf="original">adu minauninas [x|χ]a</PHON>
         <FORM kindOf="standard">adu minauninas ha?</FORM>
         <PHON kindOf="standard">adu minauninas [x|χ]a</PHON>
-        <TRANSL xml:lang="zho">你是否吃過了嗎? (特別強調?)</TRANSL>
+        <TRANSL xml:lang="zho" notes="你是否吃過了嗎? (特別強調?)">你是否吃過了嗎?</TRANSL>
         <TRANSL xml:lang="eng">Have you eaten yet?</TRANSL>
         <W id="39_S_57_W0">
             <FORM kindOf="original">adu</FORM>
@@ -99948,8 +99948,8 @@
         <PHON kindOf="original">vanu tu madavusan [x|χ]ai pisainun patʨi[l|ɬ]asan</PHON>
         <FORM kindOf="standard">vanu tu madavusan hai pisainun patcilasan.</FORM>
         <PHON kindOf="standard">vanu tu madavusan [x|χ]ai pisainun patʨi[l|ɬ]asan</PHON>
-        <TRANSL xml:lang="zho">蜂蜜(是我)放在米倉的。</TRANSL>
-        <TRANSL xml:lang="eng">The honey is stored in the pantry (by me).</TRANSL>
+        <TRANSL xml:lang="zho" notes="蜂蜜(是我)放在米倉的。">蜂蜜 放在米倉的。</TRANSL>
+        <TRANSL xml:lang="eng" notes="The honey is stored in the pantry (by me).">The honey is stored in the pantry .</TRANSL>
         <W id="40_S_7_W0">
             <FORM kindOf="original">vanu</FORM>
             <PHON kindOf="original">vanu</PHON>
@@ -104732,7 +104732,7 @@
         <PHON kindOf="original">niiik maðima udu[l|ɬ]i at naka[x|χ]uðasik</PHON>
         <FORM kindOf="standard">niiik mazima uduli at nakahuzasik.</FORM>
         <PHON kindOf="standard">niiik maðima udu[l|ɬ]i at naka[x|χ]uðaɕik</PHON>
-        <TRANSL xml:lang="zho">(因為)跳舞我不喜歡，(所以)我要唱歌。</TRANSL>
+        <TRANSL xml:lang="zho" notes="(因為)跳舞我不喜歡，(所以)我要唱歌。">跳舞我不喜歡， 我要唱歌。</TRANSL>
         <TRANSL xml:lang="eng">Because I don't like to dance, I'd like to sing.</TRANSL>
         <W id="43_S_7_W0">
             <FORM kindOf="original">nii=ik</FORM>
@@ -104860,7 +104860,7 @@
         <PHON kindOf="original">niiik maðima mas udu[l|ɬ]i at naka[x|χ]uðasik</PHON>
         <FORM kindOf="standard">niiik mazima mas uduli at nakahuzasik.</FORM>
         <PHON kindOf="standard">niiik maðima mas udu[l|ɬ]i at naka[x|χ]uðaɕik</PHON>
-        <TRANSL xml:lang="zho">(因為)跳舞我不喜歡，(所以)我要唱歌。</TRANSL>
+        <TRANSL xml:lang="zho" notes="(因為)跳舞我不喜歡，(所以)我要唱歌。">跳舞我不喜歡， 我要唱歌。</TRANSL>
         <TRANSL xml:lang="eng">Because I don't like to dance, I'd like to sing.</TRANSL>
         <W id="43_S_7-opt_W0">
             <FORM kindOf="original">nii=ik</FORM>
@@ -105533,7 +105533,7 @@
         <FORM kindOf="standard">maza isia aluszangan isnanavaan hai mapahaungun hai mapisubnuh masnanavacia.</FORM>
         <PHON kindOf="standard">maða iɕia a[l|ɬ]usðaŋan isnanavaan [x|χ]ai mapa[x|χ]auŋun [x|χ]ai mapisubnu[x|χ] masnanavaʨia</PHON>
         <TRANSL xml:lang="zho">在班上的學生打架讓老師生氣。</TRANSL>
-        <TRANSL xml:lang="eng">The students in the class fight each other, (it) makes the teacher angry.</TRANSL>
+        <TRANSL xml:lang="eng" notes="The students in the class fight each other, (it) makes the teacher angry.">The students in the class fight each other, makes the teacher angry.</TRANSL>
         <W id="44_S_2_W0">
             <FORM kindOf="original">maza</FORM>
             <PHON kindOf="original">maða</PHON>
@@ -105781,7 +105781,7 @@
         <FORM kindOf="standard">maza isia aluszangan isnanavaan hai mapahaungun hai mapisubnuh mas masnanavacia.</FORM>
         <PHON kindOf="standard">maða iɕia a[l|ɬ]usðaŋan isnanavaan [x|χ]ai mapa[x|χ]auŋun [x|χ]ai mapisubnu[x|χ] mas masnanavaʨia</PHON>
         <TRANSL xml:lang="zho">在班上的學生打架讓老師生氣。</TRANSL>
-        <TRANSL xml:lang="eng">The students in the class fight each other, (it) makes the teacher angry.</TRANSL>
+        <TRANSL xml:lang="eng" notes="The students in the class fight each other, (it) makes the teacher angry.">The students in the class fight each other, makes the teacher angry.</TRANSL>
         <W id="44_S_2-opt_W0">
             <FORM kindOf="original">maza</FORM>
             <PHON kindOf="original">maða</PHON>
@@ -106044,7 +106044,7 @@
         <PHON kindOf="original">pa[l|ɬ]anduanku takna aiðaan aapnum tu uvaað tu ma[l|ɬ]uspiŋað [x|χ]ai isia pasnanavaanʨia masnanava uvaað</PHON>
         <FORM kindOf="standard">palanduanku takna aizaan 'a'apnum tu uvaaz tu maluspingaz hai isia pasnanavaancia masnanava uvaaz.</FORM>
         <PHON kindOf="standard">pa[l|ɬ]anduanku takna aiðaan ʔaʔapnum tu uvaað tu ma[l|ɬ]uspiŋað [x|χ]ai iɕia pasnanavaanʨia masnanava uvaað</PHON>
-        <TRANSL xml:lang="zho">昨天我碰到的那個有著六個孩子的女人在學校教書(教學生)。</TRANSL>
+        <TRANSL xml:lang="zho" notes="昨天我碰到的那個有著六個孩子的女人在學校教書(教學生)。">昨天我碰到的那個有著六個孩子的女人在學校教書 。</TRANSL>
         <TRANSL xml:lang="eng">The woman with six children I ran into yesterday teaches in the school.</TRANSL>
         <W id="44_S_3_W0">
             <FORM kindOf="original">palandu-an=ku</FORM>
@@ -106356,7 +106356,7 @@
         <PHON kindOf="original">pa[l|ɬ]anduanku takna aiðaan mas aapnum tu uvaað tu ma[l|ɬ]uspiŋað [x|χ]ai isia pasnanavaanʨia masnanava uvaað</PHON>
         <FORM kindOf="standard">palanduanku takna aizaan mas 'a'apnum tu uvaaz tu maluspingaz hai isia pasnanavaancia masnanava uvaaz.</FORM>
         <PHON kindOf="standard">pa[l|ɬ]anduanku takna aiðaan mas ʔaʔapnum tu uvaað tu ma[l|ɬ]uspiŋað [x|χ]ai iɕia pasnanavaanʨia masnanava uvaað</PHON>
-        <TRANSL xml:lang="zho">昨天我碰到的那個有著六個孩子的女人在學校教書(教學生)。</TRANSL>
+        <TRANSL xml:lang="zho" notes="昨天我碰到的那個有著六個孩子的女人在學校教書(教學生)。">昨天我碰到的那個有著六個孩子的女人在學校教書 。</TRANSL>
         <TRANSL xml:lang="eng">The woman with six children I ran into yesterday teaches in the school.</TRANSL>
         <W id="44_S_3-opt_W0">
             <FORM kindOf="original">palandu-an=ku</FORM>
@@ -110989,8 +110989,8 @@
         <PHON kindOf="original">naminsumain tu[x|χ]aspiŋað</PHON>
         <FORM kindOf="standard">naminsumain tuhaspingaz.</FORM>
         <PHON kindOf="standard">naminsumain tu[x|χ]aspiŋað</PHON>
-        <TRANSL xml:lang="zho">姐姐要(回)來了。</TRANSL>
-        <TRANSL xml:lang="eng">(My) older sister will come back.</TRANSL>
+        <TRANSL xml:lang="zho" notes="姐姐要(回)來了。">姐姐要 來了。</TRANSL>
+        <TRANSL xml:lang="eng" notes="(My) older sister will come back.">older sister will come back.</TRANSL>
         <W id="47_S_15_W0">
             <FORM kindOf="original">na=m-insuma=in</FORM>
             <PHON kindOf="original">naminsumain</PHON>
@@ -111420,7 +111420,7 @@
         <FORM kindOf="standard">isludahku andii lukisan mas asucia.</FORM>
         <PHON kindOf="standard">is[l|ɬ]uda[x|χ]ku andii [l|ɬ]ukisan mas asuʨia</PHON>
         <TRANSL xml:lang="zho">我用這個木頭打狗。</TRANSL>
-        <TRANSL xml:lang="eng">I beat the dog with the wooden stick (or "the piece of wood").</TRANSL>
+        <TRANSL xml:lang="eng" notes="I beat the dog with the wooden stick (or “the piece of wood”).">I beat the dog with the wooden stick .</TRANSL>
         <W id="48_S_5_W0">
             <FORM kindOf="original">is-ludah=ku</FORM>
             <PHON kindOf="original">is[l|ɬ]uda[x|χ]ku</PHON>
@@ -111667,7 +111667,7 @@
         <PHON kindOf="original">mapatað saikin mautuŋʨia</PHON>
         <FORM kindOf="standard">mapataz saikin ma'utungcia.</FORM>
         <PHON kindOf="standard">mapatað saikin maʔutuŋʨia</PHON>
-        <TRANSL xml:lang="zho">我殺死那個小偷。(lit.) 我殺死那個偷東西的</TRANSL>
+        <TRANSL xml:lang="zho" notes="我殺死那個小偷。(lit.) 我殺死那個偷東西的">我殺死那個小偷。 我殺死那個偷東西的</TRANSL>
         <TRANSL xml:lang="eng">I killed that thief.</TRANSL>
         <W id="48_S_7_W0">
             <FORM kindOf="original">ma-pataz</FORM>
@@ -112180,7 +112180,7 @@
         <FORM kindOf="standard">andii ahilan hai binalivku masaiv saicia.</FORM>
         <PHON kindOf="standard">andii a[x|χ]i[l|ɬ]an [x|χ]ai bina[l|ɬ]ivku masaiv saiʨia</PHON>
         <TRANSL xml:lang="zho">這本書是我買給他的。</TRANSL>
-        <TRANSL xml:lang="eng">This book is what I bought (for) her.</TRANSL>
+        <TRANSL xml:lang="eng" notes="This book is what I bought (for) her.">This book is what I bought her.</TRANSL>
         <W id="48_S_11_W0">
             <FORM kindOf="original">an-dii</FORM>
             <PHON kindOf="original">andii</PHON>
@@ -113691,7 +113691,7 @@
         <FORM kindOf="standard">cismuu saikin haungunun masnanavacia.</FORM>
         <PHON kindOf="standard">ʨismuu saikin [x|χ]auŋunun masnanavaʨia</PHON>
         <TRANSL xml:lang="zho">你們讓我被老師罵。</TRANSL>
-        <TRANSL xml:lang="eng">For (or "because of") you (guys), I was scolded by the teacher.</TRANSL>
+        <TRANSL xml:lang="eng" notes="For (or “because of”) you (guys), I was scolded by the teacher.">For you , I was scolded by the teacher.</TRANSL>
         <W id="48_S_19_W0">
             <FORM kindOf="original">cis-muu</FORM>
             <PHON kindOf="original">ʨismuu</PHON>
@@ -114538,7 +114538,7 @@
         <FORM kindOf="standard">mahtu saukanahtung maluskun mazaku hai kaupa zaku ana'anak.</FORM>
         <PHON kindOf="standard">ma[x|χ]tu saukana[x|χ]tuŋ ma[l|ɬ]uskun maðaku [x|χ]ai kaupa ðaku anaʔanak</PHON>
         <TRANSL xml:lang="zho">所有人在我們的生命中都只是過客，唯一能陪自己到最後的也只有自己。</TRANSL>
-        <TRANSL xml:lang="eng">All the people in our life are passers-by, (and) you are the only one to accompany yourself till the end (of your life).</TRANSL>
+        <TRANSL xml:lang="eng" notes="All the people in our life are passers-by, (and) you are the only one to accompany yourself till the end (of your life).">All the people in our life are passers-by, you are the only one to accompany yourself till the end .</TRANSL>
         <W id="49_S_2_W0">
             <FORM kindOf="original">mahtu</FORM>
             <PHON kindOf="original">ma[x|χ]tu</PHON>
@@ -115225,7 +115225,7 @@
         <FORM kindOf="standard">muskun Subali mas isaicia tu kaviaz malusapuz at manaskal mapahainan kahuzas uduli mankakauk.</FORM>
         <PHON kindOf="standard">muskun suba[l|ɬ]i mas isaiʨia tu kaviað ma[l|ɬ]usapuð at manaska[l|ɬ] mapa[x|χ]ainan ka[x|χ]uðas udu[l|ɬ]i mankakauk</PHON>
         <TRANSL xml:lang="zho">Subali和朋友在營火旁邊又唱, 又跳, 又笑, 又叫。</TRANSL>
-        <TRANSL xml:lang="eng">Subali and his friend set up the bonfire, (then) happily laughing, singing, dancing and shouting.</TRANSL>
+        <TRANSL xml:lang="eng" notes="Subali and his friend set up the bonfire, (then) happily laughing, singing, dancing and shouting.">Subali and his friend set up the bonfire, happily laughing, singing, dancing and shouting.</TRANSL>
         <W id="49_S_6_W0">
             <FORM kindOf="original">m-uskun</FORM>
             <PHON kindOf="original">muskun</PHON>
@@ -115785,7 +115785,7 @@
         <FORM kindOf="standard">mais unulan at muntunuh lumah hai naukin inaam lumah mahtu dangian.</FORM>
         <PHON kindOf="standard">mais unu[l|ɬ]an at muntunu[x|χ] [l|ɬ]uma[x|χ] [x|χ]ai naukin inaam [l|ɬ]uma[x|χ] ma[x|χ]tu daŋian</PHON>
         <TRANSL xml:lang="zho">如果發生地震房子倒塌，我們將沒有房子可以住。</TRANSL>
-        <TRANSL xml:lang="eng">If the earthquake strikes causing the house to collapse, we'll have no place (or house) to live in.</TRANSL>
+        <TRANSL xml:lang="eng" notes="If the earthquake strikes causing the house to collapse, we’ll have no place (or house) to live in.">If the earthquake strikes causing the house to collapse, we'll have no place to live in.</TRANSL>
         <W id="49_S_8_W0">
             <FORM kindOf="original">mais</FORM>
             <PHON kindOf="original">mais</PHON>
@@ -118352,7 +118352,7 @@
         <PHON kindOf="original">tukua tama [x|χ]aisu[l|ɬ]a</PHON>
         <FORM kindOf="standard">tukua tama Haisula?</FORM>
         <PHON kindOf="standard">tukua tama [x|χ]aisu[l|ɬ]a</PHON>
-        <TRANSL xml:lang="zho">Haisul叔叔說了甚麼？ (lit.) Haisul叔叔怎麼說？</TRANSL>
+        <TRANSL xml:lang="zho" notes="Haisul叔叔說了甚麼？ (lit.) Haisul叔叔怎麼說？">Haisul叔叔說了甚麼？ Haisul叔叔怎麼說？</TRANSL>
         <TRANSL xml:lang="eng">What did uncle Haisul say?</TRANSL>
         <W id="50_S_15_W0">
             <FORM kindOf="original">tu-kua</FORM>
@@ -121422,7 +121422,7 @@
         <FORM kindOf="standard">haitu tupa Subali tu nii tu saicia mapataz.</FORM>
         <PHON kindOf="standard">[x|χ]aitu tupa suba[l|ɬ]i tu nii tu saiʨia mapatað</PHON>
         <TRANSL xml:lang="zho">老師覺得Subali有錯，但是Subali說他沒有殺人。</TRANSL>
-        <TRANSL xml:lang="eng">The teacher thinks that Subali made a mistake but Subali says that he did not kill (anybody).</TRANSL>
+        <TRANSL xml:lang="eng" notes="The teacher thinks that Subali made a mistake but Subali says that he did not kill (anybody).">The teacher thinks that Subali made a mistake but Subali says that he did not kill .</TRANSL>
         <W id="51_S_21_W0">
             <FORM kindOf="original">haitu</FORM>
             <PHON kindOf="original">[x|χ]aitu</PHON>
@@ -123025,7 +123025,7 @@
         <PHON kindOf="original">adu tuða tu tausdusa isaiʨia ma[l|ɬ]uspiŋað tausuvað masa taŋusaŋ tu is[l|ɬ]uŋ[x|χ]uan</PHON>
         <FORM kindOf="standard">adu tuza tu tausdusa isaicia maluspingaz tausuvaz masa tangusang tu islunghuan?</FORM>
         <PHON kindOf="standard">adu tuða tu tausdusa isaiʨia ma[l|ɬ]uspiŋað tausuvað masa taŋusaŋ tu is[l|ɬ]uŋ[x|χ]uan</PHON>
-        <TRANSL xml:lang="zho">他的妻子上禮拜生了兩個小孩(這件事)是真的嗎?</TRANSL>
+        <TRANSL xml:lang="zho" notes="他的妻子上禮拜生了兩個小孩(這件事)是真的嗎?">他的妻子上禮拜生了兩個小孩 是真的嗎?</TRANSL>
         <TRANSL xml:lang="eng">Is it true that his wife gave birth to two children last week?</TRANSL>
         <W id="52_S_7_W0">
             <FORM kindOf="original">adu</FORM>
@@ -123625,7 +123625,7 @@
         <PHON kindOf="original">adu madu[l|ɬ]u itu andiŋa[l|ɬ]an ðakuanʨia binanauað [x|χ]u[l|ɬ]bua</PHON>
         <FORM kindOf="standard">adu madulu itu andingalan zakuancia binanauaz hulbua?</FORM>
         <PHON kindOf="standard">adu madu[l|ɬ]u itu andiŋa[l|ɬ]an ðakuanʨia binanauað [x|χ]u[l|ɬ]bua</PHON>
-        <TRANSL xml:lang="zho">隔壁的小姐(留)長頭髮嗎?</TRANSL>
+        <TRANSL xml:lang="zho" notes="隔壁的小姐(留)長頭髮嗎?">隔壁的小姐 長頭髮嗎?</TRANSL>
         <TRANSL xml:lang="eng">Does the girl next door have long hair?</TRANSL>
         <W id="52_S_10_W0">
             <FORM kindOf="original">adu</FORM>
@@ -125989,7 +125989,7 @@
         <FORM kindOf="standard">kahuhuzas naia laupakadau sia libus.</FORM>
         <PHON kindOf="standard">ka[x|χ]u[x|χ]uðas naia [l|ɬ]aupakadau ɕia [l|ɬ]ibus</PHON>
         <TRANSL xml:lang="zho">他們正在森林裡唱歌。</TRANSL>
-        <TRANSL xml:lang="eng">They are singing in the forest (right now).</TRANSL>
+        <TRANSL xml:lang="eng" notes="They are singing in the forest (right now).">They are singing in the forest .</TRANSL>
         <W id="53_S_4_W0">
             <FORM kindOf="original">ka-hu-huzas</FORM>
             <PHON kindOf="original">ka[x|χ]u[x|χ]uðas</PHON>
@@ -126101,7 +126101,7 @@
         <FORM kindOf="standard">maza libusa hai itu uvaaz tu pishasibangan.</FORM>
         <PHON kindOf="standard">maða [l|ɬ]ibusa [x|χ]ai itu uvaað tu pis[x|χ]aɕibaŋan</PHON>
         <TRANSL xml:lang="zho">森林是孩子玩遊戲的地方。</TRANSL>
-        <TRANSL xml:lang="eng">That forest is the place where children play (&lt; About that forest, it is the children's play-game place).</TRANSL>
+        <TRANSL xml:lang="eng" notes="That forest is the place where children play (&lt; About that forest, it is the children’s play-game place).">That forest is the place where children play .</TRANSL>
         <W id="53_S_5_W0">
             <FORM kindOf="original">maza</FORM>
             <PHON kindOf="original">maða</PHON>
@@ -128341,7 +128341,7 @@
         <FORM kindOf="standard">maza taintungu tu bununa hai mapaskaku tas tu haku tu davus.</FORM>
         <PHON kindOf="standard">maða taintuŋu tu bununa [x|χ]ai mapaskaku tas tu [x|χ]aku tu davus</PHON>
         <TRANSL xml:lang="zho">客人送我一箱酒。</TRANSL>
-        <TRANSL xml:lang="eng">The person who comes to be my guest (i.e. my guest) gives me a box of wine.</TRANSL>
+        <TRANSL xml:lang="eng" notes="The person who comes to be my guest (i.e. my guest) gives me a box of wine.">The person who comes to be my guest gives me a box of wine.</TRANSL>
         <W id="54_S_3_W0">
             <FORM kindOf="original">maza</FORM>
             <PHON kindOf="original">maða</PHON>
@@ -130908,7 +130908,7 @@
         <FORM kindOf="standard">tupa masnanavaa mas Subalicia tu maliskahnaa.</FORM>
         <PHON kindOf="standard">tupa masnanavaa mas suba[l|ɬ]iʨia tu ma[l|ɬ]iska[x|χ]naa</PHON>
         <TRANSL xml:lang="zho">老師要Subali反省他的錯。</TRANSL>
-        <TRANSL xml:lang="eng">The teacher wants Subali to reflect (on his mistakes).</TRANSL>
+        <TRANSL xml:lang="eng" notes="The teacher wants Subali to reflect (on his mistakes).">The teacher wants Subali to reflect .</TRANSL>
         <W id="54_S_23_W0">
             <FORM kindOf="original">tupa</FORM>
             <PHON kindOf="original">tupa</PHON>
@@ -135638,7 +135638,7 @@
         <PHON kindOf="original">maaasikaŋ ʨina sapa[l|ɬ]an</PHON>
         <FORM kindOf="standard">ma'a'asikang cina sapalan.</FORM>
         <PHON kindOf="standard">maʔaʔaɕikaŋ ʨina sapa[l|ɬ]an</PHON>
-        <TRANSL xml:lang="eng">Mother is cleaning the bedroom (now).</TRANSL>
+        <TRANSL xml:lang="eng" notes="Mother is cleaning the bedroom (now).">Mother is cleaning the bedroom .</TRANSL>
         <W id="55_S_28_W0">
             <FORM kindOf="original">ma-'a-'asik=ang</FORM>
             <PHON kindOf="original">maaasikaŋ</PHON>
@@ -136436,7 +136436,7 @@
         <FORM kindOf="standard">mais miahanin hai uka inaak bakadan, aupa namalmananu saikin masipul patasan sausiasanavan.</FORM>
         <PHON kindOf="standard">mais mia[x|χ]anin [x|χ]ai uka inaak bakadan aupa nama[l|ɬ]mananu saikin maɕipu[l|ɬ] patasan sauɕiasanavan</PHON>
         <TRANSL xml:lang="zho">後天我沒空，因為我要一直讀書到晚上。</TRANSL>
-        <TRANSL xml:lang="eng">The day after tomorrow, I won't have time, because I will try hard to read books (=study) until the evening.</TRANSL>
+        <TRANSL xml:lang="eng" notes="The day after tomorrow, I won’t have time, because I will try hard to read books (=study) until the evening.">The day after tomorrow, I won't have time, because I will try hard to read books until the evening.</TRANSL>
         <W id="55_S_33_W0">
             <FORM kindOf="original">mais</FORM>
             <PHON kindOf="original">mais</PHON>
@@ -139046,7 +139046,7 @@
         <FORM kindOf="standard">tuhasnanaz hai kusia Taoyuancia isnavaan.</FORM>
         <PHON kindOf="standard">tu[x|χ]asnanað [x|χ]ai kuɕia ta**uanʨia isnavaan</PHON>
         <TRANSL xml:lang="zho">哥哥去桃源那邊讀書。</TRANSL>
-        <TRANSL xml:lang="eng">As for (my) older brother, he goes to Taoyuan to study.</TRANSL>
+        <TRANSL xml:lang="eng" notes="As for (my) older brother, he goes to Taoyuan to study.">As for older brother, he goes to Taoyuan to study.</TRANSL>
         <W id="56_S_15_W0">
             <FORM kindOf="original">tuhas-nanaz</FORM>
             <PHON kindOf="original">tu[x|χ]asnanað</PHON>
@@ -139813,7 +139813,7 @@
         <PHON kindOf="original">sa[x|χ]aa[l|ɬ] saikin kuðakuða tu bununʨia</PHON>
         <FORM kindOf="standard">sahaal saikin kuzakuza tu bununcia.</FORM>
         <PHON kindOf="standard">sa[x|χ]aa[l|ɬ] saikin kuðakuða tu bununʨia</PHON>
-        <TRANSL xml:lang="zho">我認識那個工作的人。 (/工作人員)</TRANSL>
+        <TRANSL xml:lang="zho" notes="我認識那個工作的人。 (/工作人員)">我認識那個工作的人。</TRANSL>
         <TRANSL xml:lang="eng">I know that worker.</TRANSL>
         <W id="57_S_3_W0">
             <FORM kindOf="original">sa-haal</FORM>
@@ -141374,7 +141374,7 @@
         <FORM kindOf="standard">andii uciaan hai mapais.</FORM>
         <PHON kindOf="standard">andii uʨiaan [x|χ]ai mapais</PHON>
         <TRANSL xml:lang="zho">這個茶很苦</TRANSL>
-        <TRANSL xml:lang="eng">This tea is bitter (or sugarless)</TRANSL>
+        <TRANSL xml:lang="eng" notes="This tea is bitter (or sugarless)">This tea is bitter</TRANSL>
         <W id="57_S_16_W0">
             <FORM kindOf="original">an-dii</FORM>
             <PHON kindOf="original">andii</PHON>
@@ -142972,7 +142972,7 @@
         <PHON kindOf="original">pa[l|ɬ]kapataðan</PHON>
         <FORM kindOf="standard">palkapatazan.</FORM>
         <PHON kindOf="standard">pa[l|ɬ]kapataðan</PHON>
-        <TRANSL xml:lang="zho">戰場 (打殺殺的地方)</TRANSL>
+        <TRANSL xml:lang="zho" notes="戰場 (打殺殺的地方)">戰場</TRANSL>
         <TRANSL xml:lang="eng">battlefield</TRANSL>
         <W id="57_S_28_W0">
             <FORM kindOf="original">p-al-ka-pataz-an</FORM>
@@ -143028,8 +143028,8 @@
         <PHON kindOf="original">pasampana[x|χ]an</PHON>
         <FORM kindOf="standard">pasampanahan.</FORM>
         <PHON kindOf="standard">pasampana[x|χ]an</PHON>
-        <TRANSL xml:lang="zho">戰場 (互相用武器戰爭的地方)</TRANSL>
-        <TRANSL xml:lang="eng">battlefield (long time)</TRANSL>
+        <TRANSL xml:lang="zho" notes="戰場 (互相用武器戰爭的地方)">戰場</TRANSL>
+        <TRANSL xml:lang="eng" notes="battlefield (long time)">battlefield</TRANSL>
         <W id="57_S_29_W0">
             <FORM kindOf="original">pasampanah-an</FORM>
             <PHON kindOf="original">pasampana[x|χ]an</PHON>
@@ -143229,7 +143229,7 @@
         <FORM kindOf="standard">inaak tuhaspingaz isia Taihuku kuzakuza hai manauaz.</FORM>
         <PHON kindOf="standard">inaak tu[x|χ]aspiŋað iɕia tai[x|χ]uku kuðakuða [x|χ]ai manauað</PHON>
         <TRANSL xml:lang="zho">我在台北工作的姊姊很漂亮。</TRANSL>
-        <TRANSL xml:lang="eng">My elder sister who works in Taipei, is beautiful (two or more sisters).</TRANSL>
+        <TRANSL xml:lang="eng" notes="My elder sister who works in Taipei, is beautiful (two or more sisters).">My elder sister who works in Taipei, is beautiful .</TRANSL>
         <W id="59_S_4_W0">
             <FORM kindOf="original">inaak</FORM>
             <PHON kindOf="original">inaak</PHON>
@@ -143373,7 +143373,7 @@
         <FORM kindOf="standard">manauaz inaak tuhaspingaz isia Taihuku kuzakuza.</FORM>
         <PHON kindOf="standard">manauað inaak tu[x|χ]aspiŋað iɕia tai[x|χ]uku kuðakuða</PHON>
         <TRANSL xml:lang="zho">我在台北工作的姊姊很漂亮。</TRANSL>
-        <TRANSL xml:lang="eng">My elder sister who works in Taipei, is beautiful (two or more sisters).</TRANSL>
+        <TRANSL xml:lang="eng" notes="My elder sister who works in Taipei, is beautiful (two or more sisters).">My elder sister who works in Taipei, is beautiful .</TRANSL>
         <W id="59_S_5_W0">
             <FORM kindOf="original">ma-nauaz</FORM>
             <PHON kindOf="original">manauað</PHON>
@@ -143501,7 +143501,7 @@
         <FORM kindOf="standard">inaak tacini tuhaspingaza isia Taihuku kuzakuza hai manauaz.</FORM>
         <PHON kindOf="standard">inaak taʨini tu[x|χ]aspiŋaða iɕia tai[x|χ]uku kuðakuða [x|χ]ai manauað</PHON>
         <TRANSL xml:lang="zho">我的一個姊姊，在台北工作，很漂亮。</TRANSL>
-        <TRANSL xml:lang="eng">My older sister, who works in Taipei, is beautiful. (only 1 sister)</TRANSL>
+        <TRANSL xml:lang="eng" notes="My older sister, who works in Taipei, is beautiful. (only 1 sister)">My older sister, who works in Taipei, is beautiful.</TRANSL>
         <W id="59_S_6_W0">
             <FORM kindOf="original">inaak</FORM>
             <PHON kindOf="original">inaak</PHON>
@@ -144815,8 +144815,8 @@
         <PHON kindOf="original">pisaukanik mas suba[l|ɬ]iʨia tu [l|ɬ]aduaðavaŋdau  at saivanik saiʨia mas sui</PHON>
         <FORM kindOf="standard">pisaukanik mas Subalicia tu laduazavangdau , at saivanik saicia mas sui.</FORM>
         <PHON kindOf="standard">pisaukanik mas suba[l|ɬ]iʨia tu [l|ɬ]aduaðavaŋdau  at saivanik saiʨia mas sui</PHON>
-        <TRANSL xml:lang="zho">Subali向我求饒恕 (求我原諒他), 並且給我錢。</TRANSL>
-        <TRANSL xml:lang="eng">Subali excuses himself (&lt; salutes and asks for forgiveness) and then pays.</TRANSL>
+        <TRANSL xml:lang="zho" notes="Subali向我求饒恕 (求我原諒他) &lt; 敬禮請原諒), 並且給我錢。">Subali向我求饒恕 &lt; 敬禮請原諒), 並且給我錢。</TRANSL>
+        <TRANSL xml:lang="eng" notes="Subali excuses himself (&lt; salutes and asks for forgiveness) and then pays.">Subali excuses himself and then pays.</TRANSL>
         <W id="59_S_12_W0">
             <FORM kindOf="original">pisauk-an=ik</FORM>
             <PHON kindOf="original">pisaukanik</PHON>
@@ -145463,8 +145463,8 @@
         <PHON kindOf="original">maða itu taiuanʨin tu insumasva[l|ɬ]i [x|χ]ai maiaupasia niŋav taipiŋ</PHON>
         <FORM kindOf="standard">maza itu Taiuancin tu insumasvali hai mai'aupasia ning'av Taiping.</FORM>
         <PHON kindOf="standard">maða itu taiuanʨin tu insumasva[l|ɬ]i [x|χ]ai maiʔaupaɕia niŋʔav taipiŋ</PHON>
-        <TRANSL xml:lang="zho">台灣的東邊(太陽出來的地方)是靠著太平洋.</TRANSL>
-        <TRANSL xml:lang="eng">On Taiwan's east side, there is the (Pacific) ocean.</TRANSL>
+        <TRANSL xml:lang="zho" notes="台灣的東邊(太陽出來的地方)是靠著太平洋.">台灣的東邊 是靠著太平洋.</TRANSL>
+        <TRANSL xml:lang="eng" notes="On Taiwan’s east side, there is the (Pacific) ocean.">On Taiwan's east side, there is the ocean.</TRANSL>
         <W id="59_S_16_W0">
             <FORM kindOf="original">maza</FORM>
             <PHON kindOf="original">maða</PHON>
@@ -147355,7 +147355,7 @@
         <PHON kindOf="original">makuuni mas kuku[l|ɬ]ut maku[l|ɬ]ut [l|ɬ]ukis</PHON>
         <FORM kindOf="standard">maku'uni mas kukulut makulut lukis.</FORM>
         <PHON kindOf="standard">makuʔuni mas kuku[l|ɬ]ut maku[l|ɬ]ut [l|ɬ]ukis</PHON>
-        <TRANSL xml:lang="zho">我們用鋸子鋸木頭 (木材)。</TRANSL>
+        <TRANSL xml:lang="zho" notes="我們用鋸子鋸木頭 (木材)。">我們用鋸子鋸木頭 。</TRANSL>
         <TRANSL xml:lang="eng">We use a saw to saw wood.</TRANSL>
         <W id="60_S_13_W0">
             <FORM kindOf="original">ma-ku'uni</FORM>
@@ -147468,7 +147468,7 @@
         <FORM kindOf="standard">nakusianik sia mansia Taihuku.</FORM>
         <PHON kindOf="standard">nakuɕianik ɕia manɕia tai[x|χ]uku</PHON>
         <TRANSL xml:lang="zho">我要去靠在台北的地方.。</TRANSL>
-        <TRANSL xml:lang="eng">I want to go to the northward (&lt; Taipei).</TRANSL>
+        <TRANSL xml:lang="eng" notes="I want to go to the northward (&lt; Taipei).">I want to go to the northward .</TRANSL>
         <W id="60_S_14_W0">
             <FORM kindOf="original">na=ku-sian=ik</FORM>
             <PHON kindOf="original">nakusianik</PHON>
@@ -147571,8 +147571,8 @@
         <PHON kindOf="original">mansia taitu [x|χ]ai aiða tu tasa va[x|χ][l|ɬ]as</PHON>
         <FORM kindOf="standard">mansia Taitu hai aiza tu tasa vahlas.</FORM>
         <PHON kindOf="standard">manɕia taitu [x|χ]ai aiða tu tasa va[x|χ][l|ɬ]as</PHON>
-        <TRANSL xml:lang="zho">靠在東邊 (&lt; 台東) 有一條河。</TRANSL>
-        <TRANSL xml:lang="eng">There is a river in the eastward (&lt; Taitung).</TRANSL>
+        <TRANSL xml:lang="zho" notes="靠在東邊 (&lt; 台東) 有一條河。">靠在東邊 有一條河。</TRANSL>
+        <TRANSL xml:lang="eng" notes="There is a river in the eastward (&lt; Taitung).">There is a river in the eastward .</TRANSL>
         <W id="60_S_15_W0">
             <FORM kindOf="original">man-sia</FORM>
             <PHON kindOf="original">mansia</PHON>
@@ -147699,7 +147699,7 @@
         <PHON kindOf="original">mansia tainanʨia [x|χ]ai naunau unku tu asaŋ</PHON>
         <FORM kindOf="standard">mansia Tainancia hai naunau unku tu asang.</FORM>
         <PHON kindOf="standard">manɕia tainanʨia [x|χ]ai naunau unku tu asaŋ</PHON>
-        <TRANSL xml:lang="zho">西南方是我要去的方向 (地方)。</TRANSL>
+        <TRANSL xml:lang="zho" notes="西南方是我要去的方向 (地方)。">西南方是我要去的方向 。</TRANSL>
         <TRANSL xml:lang="eng">The westward is the direction I want to go.</TRANSL>
         <W id="60_S_16_W0">
             <FORM kindOf="original">man-sia</FORM>
@@ -147842,7 +147842,7 @@
         <FORM kindOf="standard">maisisianik mansia Takaucia tu asang minsuma.</FORM>
         <PHON kindOf="standard">maiɕiɕianik manɕia takauʨia tu asaŋ minsuma</PHON>
         <TRANSL xml:lang="zho">我是從靠近高雄的地方來的。</TRANSL>
-        <TRANSL xml:lang="eng">I'm coming from the south (&lt; Kaohsiung).</TRANSL>
+        <TRANSL xml:lang="eng" notes="I’m coming from the south (&lt; Kaohsiung).">I'm coming from the south .</TRANSL>
         <W id="60_S_17_W0">
             <FORM kindOf="original">maisi-sian=ik</FORM>
             <PHON kindOf="original">maisisianik</PHON>
@@ -148488,7 +148488,7 @@
         <FORM kindOf="standard">iskusiaku matuhtuh tu tutungtung hai mahusbu.</FORM>
         <PHON kindOf="standard">iskuɕiaku matu[x|χ]tu[x|χ] tu tutuŋtuŋ [x|χ]ai ma[x|χ]usbu</PHON>
         <TRANSL xml:lang="zho">我用釘釘子的錘子是很重的。</TRANSL>
-        <TRANSL xml:lang="eng">The hammer (&lt; thing used to hit nails) I use is heavy.</TRANSL>
+        <TRANSL xml:lang="eng" notes="The hammer (&lt; thing used to hit nails) I use is heavy.">The hammer I use is heavy.</TRANSL>
         <W id="60_S_21_W0">
             <FORM kindOf="original">is-kusia=ku</FORM>
             <PHON kindOf="original">iskusiaku</PHON>
@@ -148912,7 +148912,7 @@
         <FORM kindOf="standard">nii＝ik haiap tu punpia mabananaz mais mahtuin min'amu malahtangia.</FORM>
         <PHON kindOf="standard">nii*ik [x|χ]aiap tu punpia mabananað mais ma[x|χ]tuin minʔamu ma[l|ɬ]a[x|χ]taŋia</PHON>
         <TRANSL xml:lang="zho">我不知道男生要幾歲才可以參與射耳祭。</TRANSL>
-        <TRANSL xml:lang="eng">I don't know how many (years) will Bunun boys have to have when they can participate in the Ear-Shooting ceremony.</TRANSL>
+        <TRANSL xml:lang="eng" notes="I don’t know how many (years) will Bunun boys have to have when they can participate in the Ear-Shooting ceremony.">I don't know how many will Bunun boys have to have when they can participate in the Ear-Shooting ceremony.</TRANSL>
         <W id="61_S_2_W0">
             <FORM kindOf="original">nii＝ik</FORM>
             <PHON kindOf="original">nii*ik</PHON>
@@ -150702,7 +150702,7 @@
         <PHON kindOf="original">mun[x|χ]u[x|χ]uma</PHON>
         <FORM kindOf="standard">munhuhuma.</FORM>
         <PHON kindOf="standard">mun[x|χ]u[x|χ]uma</PHON>
-        <TRANSL xml:lang="zho">一直耕田的人 (農夫)</TRANSL>
+        <TRANSL xml:lang="zho" notes="一直耕田的人 (農夫)">一直耕田的人</TRANSL>
         <TRANSL xml:lang="eng">farmer</TRANSL>
         <W id="62_S_2_W0">
             <FORM kindOf="original">m-un-hu-huma</FORM>
@@ -151749,7 +151749,7 @@
         <PHON kindOf="original">da[x|χ]u [x|χ]ai niiin maðima mas ibu aupa namapadaŋiin mas a[l|ɬ]iʨia</PHON>
         <FORM kindOf="standard">Dahu hai niiin mazima mas Ibu aupa namapadangiin mas Alicia.</FORM>
         <PHON kindOf="standard">da[x|χ]u [x|χ]ai niiin maðima mas ibu aupa namapadaŋiin mas a[l|ɬ]iʨia</PHON>
-        <TRANSL xml:lang="zho">Dahu不喜歡Ibu了，因為(他)要跟Ali結婚了。</TRANSL>
+        <TRANSL xml:lang="zho" notes="Dahu不喜歡Ibu了，因為(他)要跟Ali結婚了。">Dahu不喜歡Ibu了，因為 要跟Ali結婚了。</TRANSL>
         <TRANSL xml:lang="eng">Dahu doesn't like Ibu, because he's planning to marry Ali.</TRANSL>
         <W id="62_S_10_W0">
             <FORM kindOf="original">Dahu</FORM>
@@ -152945,7 +152945,7 @@
         <FORM kindOf="standard">um'um hinudan tu miluku hai tasbanin hanian.</FORM>
         <PHON kindOf="standard">umʔum [x|χ]inudan tu mi[l|ɬ]uku [x|χ]ai tasbanin [x|χ]anian</PHON>
         <TRANSL xml:lang="zho">早上喝的牛奶是過期了。</TRANSL>
-        <TRANSL xml:lang="eng">The milk (I) drank in the morning had turned bad.</TRANSL>
+        <TRANSL xml:lang="eng" notes="The milk (I) drank in the morning had turned bad.">The milk drank in the morning had turned bad.</TRANSL>
         <W id="62_S_20_W0">
             <FORM kindOf="original">um'um</FORM>
             <PHON kindOf="original">umum</PHON>
@@ -153144,7 +153144,7 @@
         <PHON kindOf="original">[x|χ]anvaŋ tu mi[l|ɬ]uku</PHON>
         <FORM kindOf="standard">hanvang tu miluku.</FORM>
         <PHON kindOf="standard">[x|χ]anvaŋ tu mi[l|ɬ]uku</PHON>
-        <TRANSL xml:lang="zho">牛奶 (飲料)</TRANSL>
+        <TRANSL xml:lang="zho" notes="牛奶 (飲料)">牛奶</TRANSL>
         <TRANSL xml:lang="eng">cow milk</TRANSL>
         <W id="62_S_22_W0">
             <FORM kindOf="original">hanvang</FORM>
@@ -153697,7 +153697,7 @@
         <FORM kindOf="standard">takna tu sanavan ta'azaik tamahudas tu tu'ia.</FORM>
         <PHON kindOf="standard">takna tu sanavan taʔaðaik tama[x|χ]udas tu tuʔia</PHON>
         <TRANSL xml:lang="zho">昨天晚上我聽到打雷的聲音。</TRANSL>
-        <TRANSL xml:lang="eng">Yesterday evening I heard the sound of thunder (and storm).</TRANSL>
+        <TRANSL xml:lang="eng" notes="Yesterday evening I heard the sound of thunder (and storm).">Yesterday evening I heard the sound of thunder .</TRANSL>
         <W id="62_S_27_W0">
             <FORM kindOf="original">takna</FORM>
             <PHON kindOf="original">takna</PHON>
@@ -155894,8 +155894,8 @@
         <PHON kindOf="original">vanu [x|χ]ai pisainun sia patʨi[l|ɬ]asan</PHON>
         <FORM kindOf="standard">vanu hai pisainun sia patcilasan.</FORM>
         <PHON kindOf="standard">vanu [x|χ]ai pisainun ɕia patʨi[l|ɬ]asan</PHON>
-        <TRANSL xml:lang="zho">蜂蜜(目前)放在儲藏室。</TRANSL>
-        <TRANSL xml:lang="eng">The honey is (currently) stored in the pantry.</TRANSL>
+        <TRANSL xml:lang="zho" notes="蜂蜜(目前)放在儲藏室。">蜂蜜 放在儲藏室。</TRANSL>
+        <TRANSL xml:lang="eng" notes="The honey is (currently) stored in the pantry.">The honey is stored in the pantry.</TRANSL>
         <W id="63_S_1_W0">
             <FORM kindOf="original">vanu</FORM>
             <PHON kindOf="original">vanu</PHON>
@@ -159356,7 +159356,7 @@
         <FORM kindOf="standard">luvluvan tu hanian.</FORM>
         <PHON kindOf="standard">[l|ɬ]uv[l|ɬ]uvan tu [x|χ]anian</PHON>
         <TRANSL xml:lang="zho">有風的一天。</TRANSL>
-        <TRANSL xml:lang="eng">It's a windy day. (This refers to tomorrow or days afterwards.)</TRANSL>
+        <TRANSL xml:lang="eng" notes="It’s a windy day. (This refers to tomorrow or days afterwards.)">It's a windy day.</TRANSL>
         <W id="63_S_28_W0">
             <FORM kindOf="original">luv-luv-an</FORM>
             <PHON kindOf="original">[l|ɬ]uv[l|ɬ]uvan</PHON>
@@ -159544,7 +159544,7 @@
         <FORM kindOf="standard">sian hai dangianta lihai.</FORM>
         <PHON kindOf="standard">ɕian [x|χ]ai daŋianta [l|ɬ]i[x|χ]ai</PHON>
         <TRANSL xml:lang="zho">這是做禮拜的地方。</TRANSL>
-        <TRANSL xml:lang="eng">Here is where the (Christian) service takes place.</TRANSL>
+        <TRANSL xml:lang="eng" notes="Here is where the (Christian) service takes place.">Here is where the service takes place.</TRANSL>
         <W id="63_S_30_W0">
             <FORM kindOf="original">sia-n</FORM>
             <PHON kindOf="original">sian</PHON>
@@ -160167,7 +160167,7 @@
         <PHON kindOf="original">niiik asa kudii muampuk pisvaŋdu</PHON>
         <FORM kindOf="standard">niiik asa kudii muampuk pisvangdu.</FORM>
         <PHON kindOf="standard">niiik asa kudii muampuk pisvaŋdu</PHON>
-        <TRANSL xml:lang="zho">我不想去(參加)禱告會。</TRANSL>
+        <TRANSL xml:lang="zho" notes="我不想去(參加)禱告會。">我不想去 禱告會。</TRANSL>
         <TRANSL xml:lang="eng">I do not want to go to the the praying gathering.</TRANSL>
         <W id="63_S_35_W0">
             <FORM kindOf="original">nii-ik</FORM>
@@ -160487,7 +160487,7 @@
         <PHON kindOf="original">niiik asa kudii masumsuman</PHON>
         <FORM kindOf="standard">niiik asa kudii masumsuman.</FORM>
         <PHON kindOf="standard">niiik asa kudii masumsuman</PHON>
-        <TRANSL xml:lang="zho">我不想去(參加)拜拜大會。</TRANSL>
+        <TRANSL xml:lang="zho" notes="我不想去(參加)拜拜大會。">我不想去 拜拜大會。</TRANSL>
         <TRANSL xml:lang="eng">I don't want to go to the place where many people worship.</TRANSL>
         <W id="63_S_38_W0">
             <FORM kindOf="original">nii-ik</FORM>
@@ -160591,8 +160591,8 @@
         <PHON kindOf="original">susumsumanan [x|χ]ai imita</PHON>
         <FORM kindOf="standard">susumsumanan hai imita.</FORM>
         <PHON kindOf="standard">susumsumanan [x|χ]ai imita</PHON>
-        <TRANSL xml:lang="zho">這是我們拜拜(拜神)的地方。</TRANSL>
-        <TRANSL xml:lang="eng">This is where we worship (god).</TRANSL>
+        <TRANSL xml:lang="zho" notes="這是我們拜拜(拜神)的地方。">這是我們拜拜 的地方。</TRANSL>
+        <TRANSL xml:lang="eng" notes="This is where we worship (god).">This is where we worship .</TRANSL>
         <W id="63_S_39_W0">
             <FORM kindOf="original">su-sumsum-an-an</FORM>
             <PHON kindOf="original">susumsumanan</PHON>
@@ -160672,7 +160672,7 @@
         <FORM kindOf="standard">dangianan hai imita.</FORM>
         <PHON kindOf="standard">daŋianan [x|χ]ai imita</PHON>
         <TRANSL xml:lang="zho">這個住的地方是我們的。</TRANSL>
-        <TRANSL xml:lang="eng">This (place) is where we live.</TRANSL>
+        <TRANSL xml:lang="eng" notes="This (place) is where we live.">This is where we live.</TRANSL>
         <W id="63_S_40_W0">
             <FORM kindOf="original">dangi-an-an</FORM>
             <PHON kindOf="original">daŋianan</PHON>
@@ -160744,8 +160744,8 @@
         <FORM kindOf="standard">an-diian hai inak.</FORM>
         <PHON kindOf="standard">andiian [x|χ]ai inak</PHON>
         <FORM kindOf="alternate">an-diip=an hai inak.</FORM>
-        <TRANSL xml:lang="zho">那個(東西) 是我的。</TRANSL>
-        <TRANSL xml:lang="eng">That (thing) is mine.</TRANSL>
+        <TRANSL xml:lang="zho" notes="那個(東西) 是我的。">那個 是我的。</TRANSL>
+        <TRANSL xml:lang="eng" notes="That (thing) is mine.">That is mine.</TRANSL>
         <W id="63_S_41_W0">
             <FORM kindOf="original">an-dii=an</FORM>
             <PHON kindOf="original">andiian</PHON>
@@ -160819,7 +160819,7 @@
         <PHON kindOf="standard">andiitan inak</PHON>
         <FORM kindOf="alternate">an-diip=tan inak.</FORM>
         <TRANSL xml:lang="zho">我的是這個。</TRANSL>
-        <TRANSL xml:lang="eng">That (thing) is (specifically) mine.</TRANSL>
+        <TRANSL xml:lang="eng" notes="That (thing) is (specifically) mine.">That is mine.</TRANSL>
         <W id="63_S_42_W0">
             <FORM kindOf="original">an-dii=tan</FORM>
             <PHON kindOf="original">andiitan</PHON>
@@ -161659,7 +161659,7 @@
         <PHON kindOf="original">[x|χ]animu[l|ɬ]mu[l|ɬ]an [x|χ]ai isia inak tu isaaŋ</PHON>
         <FORM kindOf="standard">hanimulmulan hai isia inak tu is'aang.</FORM>
         <PHON kindOf="standard">[x|χ]animu[l|ɬ]mu[l|ɬ]an [x|χ]ai iɕia inak tu isʔaaŋ</PHON>
-        <TRANSL xml:lang="zho">難過(的事)在我心(裡)。</TRANSL>
+        <TRANSL xml:lang="zho" notes="難過(的事)在我心(裡)。">難過 在我心 。</TRANSL>
         <TRANSL xml:lang="eng">The sad thing is in my heart.</TRANSL>
         <W id="63_S_51_W0">
             <FORM kindOf="original">hanimulmul-an</FORM>
@@ -161779,7 +161779,7 @@
         <PHON kindOf="original">[x|χ]animu[l|ɬ]mu[l|ɬ]an [x|χ]ai inak a isaaŋ</PHON>
         <FORM kindOf="standard">hanimulmulan hai inak a is'aang.</FORM>
         <PHON kindOf="standard">[x|χ]animu[l|ɬ]mu[l|ɬ]an [x|χ]ai inak a isʔaaŋ</PHON>
-        <TRANSL xml:lang="zho">我的心(裡)難過。</TRANSL>
+        <TRANSL xml:lang="zho" notes="我的心(裡)難過。">我的心 難過。</TRANSL>
         <TRANSL xml:lang="eng">My heart is sad.</TRANSL>
         <W id="63_S_52_W0">
             <FORM kindOf="original">hanimulmul-an</FORM>
@@ -162099,7 +162099,7 @@
         <PHON kindOf="original">niiik asa kudii minamu [l|ɬ]usan min[x|χ]amisan</PHON>
         <FORM kindOf="standard">niiik asa kudii min'amu lus'an minhamisan.</FORM>
         <PHON kindOf="standard">niiik asa kudii minʔamu [l|ɬ]usʔan min[x|χ]amisan</PHON>
-        <TRANSL xml:lang="zho">我不想去參加新年祭 (Minhamisan)。</TRANSL>
+        <TRANSL xml:lang="zho" notes="我不想去參加新年祭 (Minhamisan)。">我不想去參加新年祭 。</TRANSL>
         <TRANSL xml:lang="eng">I don't want to participate in the festival of Minhamisan.</TRANSL>
         <W id="63_S_55_W0">
             <FORM kindOf="original">nii-ik</FORM>
@@ -162227,7 +162227,7 @@
         <PHON kindOf="original">supa[x|χ] bunun [x|χ]ai isia pasinapan</PHON>
         <FORM kindOf="standard">supah bunun hai isia pasinapan.</FORM>
         <PHON kindOf="standard">supa[x|χ] bunun [x|χ]ai iɕia paɕinapan</PHON>
-        <TRANSL xml:lang="zho">很多人在(操場)跑道那邊。</TRANSL>
+        <TRANSL xml:lang="zho" notes="很多人在(操場)跑道那邊。">很多人在 跑道那邊。</TRANSL>
         <TRANSL xml:lang="eng">Many people are at the running tracks.</TRANSL>
         <W id="63_S_56_W0">
             <FORM kindOf="original">supah</FORM>
@@ -174188,8 +174188,8 @@
         <PHON kindOf="original">makusisia aituaŋ ʨina mas ŋu[l|ɬ]aʨia</PHON>
         <FORM kindOf="standard">makusisia aituang cina mas ngul'acia.</FORM>
         <PHON kindOf="standard">makuɕiɕia aituaŋ ʨina mas ŋu[l|ɬ]ʔaʨia</PHON>
-        <TRANSL xml:lang="zho">媽媽過去常用那個鍋子（炒菜）。</TRANSL>
-        <TRANSL xml:lang="eng">Mother used to use that pan (to cook food).</TRANSL>
+        <TRANSL xml:lang="zho" notes="媽媽過去常用那個鍋子（炒菜）。">媽媽過去常用那個鍋子 。</TRANSL>
+        <TRANSL xml:lang="eng" notes="Mother used to use that pan (to cook food).">Mother used to use that pan .</TRANSL>
         <W id="63_S_124_W0">
             <FORM kindOf="original">ma-ku&lt;si&gt;sia</FORM>
             <PHON kindOf="original">makusisia</PHON>
@@ -175308,7 +175308,7 @@
         <PHON kindOf="original">niiik maimaðima maun maibabu</PHON>
         <FORM kindOf="standard">niiik maimazima maun maibabu.</FORM>
         <PHON kindOf="standard">niiik maimaðima maun maibabu</PHON>
-        <TRANSL xml:lang="zho">我不曾喜歡吃豬肉(到現在還是不喜歡) 。</TRANSL>
+        <TRANSL xml:lang="zho" notes="我不曾喜歡吃豬肉(到現在還是不喜歡) 。">我不曾喜歡吃豬肉 。</TRANSL>
         <TRANSL xml:lang="eng">I have never like to eat pork.</TRANSL>
         <W id="63_S_135_W0">
             <FORM kindOf="original">nii=ik</FORM>
@@ -175420,7 +175420,7 @@
         <PHON kindOf="original">niiik maimaðima maun maibabu</PHON>
         <FORM kindOf="standard">niiik maimazima maun maibabu.</FORM>
         <PHON kindOf="standard">niiik maimaðima maun maibabu</PHON>
-        <TRANSL xml:lang="zho">我不曾喜歡吃豬肉(到現在還是不喜歡) 。</TRANSL>
+        <TRANSL xml:lang="zho" notes="我不曾喜歡吃豬肉(到現在還是不喜歡) 。">我不曾喜歡吃豬肉 。</TRANSL>
         <TRANSL xml:lang="eng">I have never like to eat pork.</TRANSL>
         <W id="63_S_136_W0">
             <FORM kindOf="original">nii=ik</FORM>
@@ -184997,7 +184997,7 @@
         <FORM kindOf="standard">mais munapav sia sapalan hai kaa tu sipungul masahdil mas ilav.</FORM>
         <PHON kindOf="standard">mais munapav ɕia sapa[l|ɬ]an [x|χ]ai kaa tu ɕipuŋu[l|ɬ] masa[x|χ]di[l|ɬ] mas i[l|ɬ]av</PHON>
         <TRANSL xml:lang="zho">從那個臥室出來以後, 不要忘記把門鎖上.</TRANSL>
-        <TRANSL xml:lang="eng">Don't forget to lock the door when you want to come out (of the bedroom).</TRANSL>
+        <TRANSL xml:lang="eng" notes="Don’t forget to lock the door when you want to come out (of the bedroom).">Don't forget to lock the door when you want to come out .</TRANSL>
         <W id="63_S_204_W0">
             <FORM kindOf="original">mais</FORM>
             <PHON kindOf="original">mais</PHON>
@@ -186445,7 +186445,7 @@
         <FORM kindOf="standard">kanahtungin kata paliuni masnanava mas saitaan tu mundai.</FORM>
         <PHON kindOf="standard">kana[x|χ]tuŋin kata pa[l|ɬ]iuni masnanava mas saitaan tu mundai</PHON>
         <TRANSL xml:lang="zho">我們已經跟老師談論完了這個問題.</TRANSL>
-        <TRANSL xml:lang="eng">We and the teacher have already discussed these issues (before).</TRANSL>
+        <TRANSL xml:lang="eng" notes="We and the teacher have already discussed these issues (before).">We and the teacher have already discussed these issues .</TRANSL>
         <W id="63_S_213_W0">
             <FORM kindOf="original">ka-nahtung=in</FORM>
             <PHON kindOf="original">kana[x|χ]tuŋin</PHON>
@@ -200363,7 +200363,7 @@
         <PHON kindOf="original">muskunta mapasnava at musasu mapatas mas sinpasnava</PHON>
         <FORM kindOf="standard">muskunta mapasnava at musasu mapatas mas sinpasnava.</FORM>
         <PHON kindOf="standard">muskunta mapasnava at musasu mapatas mas ɕinpasnava</PHON>
-        <TRANSL xml:lang="zho">我們一起學習然後同時記下所教的（所學的）。</TRANSL>
+        <TRANSL xml:lang="zho" notes="我們一起學習然後同時記下所教的（所學的）。">我們一起學習然後同時記下所教的 。</TRANSL>
         <TRANSL xml:lang="eng">We learned together and then at the same time wrote down what was taught.</TRANSL>
         <W id="63_S_317_W0">
             <FORM kindOf="original">mu-skun=ta</FORM>
@@ -211907,7 +211907,7 @@
         <PHON kindOf="original">naiia [x|χ]ai maisnatakau kuŋada[x|χ]tan</PHON>
         <FORM kindOf="standard">naiia hai maisnaTakau kungadahtan.</FORM>
         <PHON kindOf="standard">naiia [x|χ]ai maisnatakau kuŋada[x|χ]tan</PHON>
-        <TRANSL xml:lang="zho">他們從高雄進（來）這裡。</TRANSL>
+        <TRANSL xml:lang="zho" notes="他們從高雄進（來）這裡。">他們從高雄進 這裡。</TRANSL>
         <TRANSL xml:lang="eng">They come here from Kaohsiung.</TRANSL>
         <W id="63_S_396_W0">
             <FORM kindOf="original">naiia</FORM>
@@ -212003,8 +212003,8 @@
         <PHON kindOf="original">naiia [x|χ]ai maisnasainʨin kutakau</PHON>
         <FORM kindOf="standard">naiia hai maisnasaincin kuTakau.</FORM>
         <PHON kindOf="standard">naiia [x|χ]ai maisnasainʨin kutakau</PHON>
-        <TRANSL xml:lang="zho">他們從這（去）到高雄。</TRANSL>
-        <TRANSL xml:lang="eng">They are going to Kaohsiung from this (place).</TRANSL>
+        <TRANSL xml:lang="zho" notes="他們從這（去）到高雄。">他們從這 到高雄。</TRANSL>
+        <TRANSL xml:lang="eng" notes="They are going to Kaohsiung from this (place).">They are going to Kaohsiung from this .</TRANSL>
         <W id="63_S_397_W0">
             <FORM kindOf="original">naiia</FORM>
             <PHON kindOf="original">naiia</PHON>
@@ -212364,7 +212364,7 @@
         <FORM kindOf="standard">saiciin tu siasiing mais saduan hai cinliskin mas nasSubali.</FORM>
         <PHON kindOf="standard">saiʨiin tu ɕiaɕiiŋ mais saduan [x|χ]ai ʨin[l|ɬ]iskin mas nassuba[l|ɬ]i</PHON>
         <TRANSL xml:lang="zho">這個相片，看的話會想起已故的Subali。</TRANSL>
-        <TRANSL xml:lang="eng">Upon seeing this photo, (I) think of the deceased Subali.</TRANSL>
+        <TRANSL xml:lang="eng" notes="Upon seeing this photo, (I) think of the deceased Subali.">Upon seeing this photo, think of the deceased Subali.</TRANSL>
         <W id="63_S_400_W0">
             <FORM kindOf="original">sai-ciin</FORM>
             <PHON kindOf="original">saiʨiin</PHON>
@@ -212796,7 +212796,7 @@
         <FORM kindOf="standard">maz sain? ispapatas.</FORM>
         <PHON kindOf="standard">mað sain ispapatas</PHON>
         <TRANSL xml:lang="zho">這是什麼？筆。</TRANSL>
-        <TRANSL xml:lang="eng">What is this (near me)? A pen.</TRANSL>
+        <TRANSL xml:lang="eng" notes="What is this (near me)? A pen.">What is this ? A pen.</TRANSL>
         <W id="63_S_403_W0">
             <FORM kindOf="original">maz</FORM>
             <PHON kindOf="original">mað</PHON>
@@ -212868,7 +212868,7 @@
         <FORM kindOf="standard">maz sian? huhudan tu danum.</FORM>
         <PHON kindOf="standard">mað ɕian [x|χ]u[x|χ]udan tu danum</PHON>
         <TRANSL xml:lang="zho">這是什麼？飲用水。</TRANSL>
-        <TRANSL xml:lang="eng">What is this (near you)? Drinking water.</TRANSL>
+        <TRANSL xml:lang="eng" notes="What is this (near you)? Drinking water.">What is this ? Drinking water.</TRANSL>
         <W id="63_S_404_W0">
             <FORM kindOf="original">maz</FORM>
             <PHON kindOf="original">mað</PHON>
@@ -214376,7 +214376,7 @@
         <FORM kindOf="standard">minaunin saikin saitaan tu bunbun.</FORM>
         <PHON kindOf="standard">minaunin saikin saitaan tu bunbun</PHON>
         <TRANSL xml:lang="zho">我吃過這個香蕉。</TRANSL>
-        <TRANSL xml:lang="eng">I have eaten this banana (around the speaker).</TRANSL>
+        <TRANSL xml:lang="eng" notes="I have eaten this banana (around the speaker).">I have eaten this banana .</TRANSL>
         <W id="63_S_414_W0">
             <FORM kindOf="original">m&lt;in&gt;aun=in</FORM>
             <PHON kindOf="original">minaunin</PHON>
@@ -214488,7 +214488,7 @@
         <FORM kindOf="standard">minaunin saikin saiciin tu bunbun.</FORM>
         <PHON kindOf="standard">minaunin saikin saiʨiin tu bunbun</PHON>
         <TRANSL xml:lang="zho">我有吃過這個香蕉。</TRANSL>
-        <TRANSL xml:lang="eng">I have eaten this banana (near the speaker).</TRANSL>
+        <TRANSL xml:lang="eng" notes="I have eaten this banana (near the speaker).">I have eaten this banana .</TRANSL>
         <W id="63_S_415_W0">
             <FORM kindOf="original">m&lt;in&gt;aun=in</FORM>
             <PHON kindOf="original">minaunin</PHON>
@@ -215383,8 +215383,8 @@
         <PHON kindOf="original">mapasitda tu tas tu kinu[l|ɬ]ut naissia[x|χ]tu tamata[l|ɬ]umʨia davus</PHON>
         <FORM kindOf="standard">mapasitda tu tas tu kinulut naissiahtu tamaTalumcia davus.</FORM>
         <PHON kindOf="standard">mapaɕitda tu tas tu kinu[l|ɬ]ut naisɕia[x|χ]tu tamata[l|ɬ]umʨia davus</PHON>
-        <TRANSL xml:lang="zho">（那個）留一塊（些）給Talum叔叔配酒。</TRANSL>
-        <TRANSL xml:lang="eng">I kept a piece (of meat) for Uncle Talum's wine drinking.</TRANSL>
+        <TRANSL xml:lang="zho" notes="（那個）留一塊（些）給Talum叔叔配酒。">留一塊 給Talum叔叔配酒。</TRANSL>
+        <TRANSL xml:lang="eng" notes="I kept a piece (of meat) for Uncle Talum’s wine drinking.">I kept a piece for Uncle Talum's wine drinking.</TRANSL>
         <W id="63_S_422_W0">
             <FORM kindOf="original">ma-pa-sitda</FORM>
             <PHON kindOf="original">mapasitda</PHON>
@@ -216991,7 +216991,7 @@
         <PHON kindOf="original">saia tu daidiŋian [x|χ]ai naissaiv tas tu mapadaŋiʨia</PHON>
         <FORM kindOf="standard">saia tu daidingian hai naissaiv tas tu mapadangicia.</FORM>
         <PHON kindOf="standard">saia tu daidiŋian [x|χ]ai naissaiv tas tu mapadaŋiʨia</PHON>
-        <TRANSL xml:lang="zho">那裡就給（買了那隻山羌的）那夫婦住。</TRANSL>
+        <TRANSL xml:lang="zho" notes="那裡就給（買了那隻山羌的）那夫婦住。">那裡就給 那夫婦住。</TRANSL>
         <TRANSL xml:lang="eng">The husband and wife wanted to live where I lived before.</TRANSL>
         <W id="63_S_432_W0">
             <FORM kindOf="original">sai-a</FORM>
@@ -218039,7 +218039,7 @@
         <PHON kindOf="original">ana tupa tu kauman [x|χ]inudan davusʨia [x|χ]aitu misbusuk saikin</PHON>
         <FORM kindOf="standard">ana tupa tu kauman hinudan davuscia haitu misbusuk saikin.</FORM>
         <PHON kindOf="standard">ana tupa tu kauman [x|χ]inudan davusʨia [x|χ]aitu misbusuk saikin</PHON>
-        <TRANSL xml:lang="zho">雖然那個（打翻的）酒喝很少，但我還是醉了。</TRANSL>
+        <TRANSL xml:lang="zho" notes="雖然那個（打翻的）酒喝很少，但我還是醉了。">雖然那個 酒喝很少，但我還是醉了。</TRANSL>
         <TRANSL xml:lang="eng">I drank a little of that wine, but I got drunk.</TRANSL>
         <W id="63_S_438_W0">
             <FORM kindOf="original">ana</FORM>
@@ -218223,7 +218223,7 @@
         <PHON kindOf="original">ana tupa tu saunkauman [x|χ]uud davustan [x|χ]aitu misbusuk saikin</PHON>
         <FORM kindOf="standard">ana tupa tu saunkauman huud davustan haitu misbusuk saikin.</FORM>
         <PHON kindOf="standard">ana tupa tu saunkauman [x|χ]uud davustan [x|χ]aitu misbusuk saikin</PHON>
-        <TRANSL xml:lang="zho">雖然那個（打翻的）酒喝很少，但我還是醉了。</TRANSL>
+        <TRANSL xml:lang="zho" notes="雖然那個（打翻的）酒喝很少，但我還是醉了。">雖然那個 酒喝很少，但我還是醉了。</TRANSL>
         <TRANSL xml:lang="eng">I drank a little of that wine, but I got drunk.</TRANSL>
         <W id="63_S_439_W0">
             <FORM kindOf="original">ana</FORM>
@@ -219399,7 +219399,7 @@
         <PHON kindOf="original">taaða tu masu[x|χ]anvaŋtakismuut saia</PHON>
         <FORM kindOf="standard">ta'aza tu masuhanvangtakismuut saia.</FORM>
         <PHON kindOf="standard">taʔaða tu masu[x|χ]anvaŋtakismuut saia</PHON>
-        <TRANSL xml:lang="zho">聽說（翻過玉山的另一邊）那裡有很多的梅花鹿。</TRANSL>
+        <TRANSL xml:lang="zho" notes="聽說（翻過玉山的另一邊）那裡有很多的梅花鹿。">聽說 那裡有很多的梅花鹿。</TRANSL>
         <TRANSL xml:lang="eng">I heard that over there are lots of deers.</TRANSL>
         <W id="63_S_447_W0">
             <FORM kindOf="original">ta'aza</FORM>
@@ -219503,7 +219503,7 @@
         <PHON kindOf="original">taaða tu saia [x|χ]ai masu[x|χ]anvaŋtakismuut</PHON>
         <FORM kindOf="standard">ta'aza tu saia hai masuhanvangtakismuut.</FORM>
         <PHON kindOf="standard">taʔaða tu saia [x|χ]ai masu[x|χ]anvaŋtakismuut</PHON>
-        <TRANSL xml:lang="zho">聽說（翻過玉山的另一邊）那裡有很多的梅花鹿。</TRANSL>
+        <TRANSL xml:lang="zho" notes="聽說（翻過玉山的另一邊）那裡有很多的梅花鹿。">聽說 那裡有很多的梅花鹿。</TRANSL>
         <TRANSL xml:lang="eng">I heard that over there are lots of deers.</TRANSL>
         <W id="63_S_448_W0">
             <FORM kindOf="original">ta'aza</FORM>
@@ -222697,8 +222697,8 @@
         <PHON kindOf="original">nanu kasu [x|χ]ai nanii tu [x|χ]aiap ma[l|ɬ]asbunun</PHON>
         <FORM kindOf="standard">nanu kasu hai nanii tu haiap malasbunun.</FORM>
         <PHON kindOf="standard">nanu kasu [x|χ]ai nanii tu [x|χ]aiap ma[l|ɬ]asbunun</PHON>
-        <TRANSL xml:lang="zho">你不應該本來會講布農語(質疑語氣)。</TRANSL>
-        <TRANSL xml:lang="eng">You shouldn't know how to speak Bunun (suspected).</TRANSL>
+        <TRANSL xml:lang="zho" notes="你不應該本來會講布農語(質疑語氣)。">你不應該本來會講布農語 。</TRANSL>
+        <TRANSL xml:lang="eng" notes="You shouldn't know how to speak Bunun (suspected).">You shouldn't know how to speak Bunun .</TRANSL>
         <W id="63_S_463_W0">
             <FORM kindOf="original">nanu</FORM>
             <PHON kindOf="original">nanu</PHON>
@@ -226733,7 +226733,7 @@
         <PHON kindOf="original">ʨina [x|χ]ai maðima mapasnava at [x|χ]aiap saia maimasan tu [x|χ]a[l|ɬ]iŋa</PHON>
         <FORM kindOf="standard">cina hai mazima mapasnava at haiap saia maimas'an tu halinga.</FORM>
         <PHON kindOf="standard">ʨina [x|χ]ai maðima mapasnava at [x|χ]aiap saia maimasʔan tu [x|χ]a[l|ɬ]iŋa</PHON>
-        <TRANSL xml:lang="zho">媽媽喜歡學習, 所以他會講十種語言 (一般語氣)。</TRANSL>
+        <TRANSL xml:lang="zho" notes="媽媽喜歡學習, 所以他會講十種語言 (一般語氣)。">媽媽喜歡學習, 所以他會講十種語言 。</TRANSL>
         <TRANSL xml:lang="eng">Since mother likes to study, she can speak ten languages.</TRANSL>
         <W id="63_S_486_W0">
             <FORM kindOf="original">cina</FORM>
@@ -226933,7 +226933,7 @@
         <PHON kindOf="original">ʨina [x|χ]ai maðima mapasnava at ma[x|χ]tu tupa maimasan tu [x|χ]a[l|ɬ]iŋ</PHON>
         <FORM kindOf="standard">cina hai mazima mapasnava at mahtu tupa maimasan tu haling.</FORM>
         <PHON kindOf="standard">ʨina [x|χ]ai maðima mapasnava at ma[x|χ]tu tupa maimasan tu [x|χ]a[l|ɬ]iŋ</PHON>
-        <TRANSL xml:lang="zho">媽媽喜歡學習, 所以他會講十種語言 (一般語氣)。</TRANSL>
+        <TRANSL xml:lang="zho" notes="媽媽喜歡學習, 所以他會講十種語言 (一般語氣)。">媽媽喜歡學習, 所以他會講十種語言 。</TRANSL>
         <TRANSL xml:lang="eng">Since mother likes to study, she can speak ten languages.</TRANSL>
         <W id="63_S_487_W0">
             <FORM kindOf="original">cina</FORM>
@@ -227125,7 +227125,7 @@
         <PHON kindOf="original">ʨina [x|χ]ai maðima mapasnava at ma[x|χ]ansiap saia maimasan tu [x|χ]a[l|ɬ]iŋa</PHON>
         <FORM kindOf="standard">cina hai mazima mapasnava at mahansiap saia maimas'an tu halinga.</FORM>
         <PHON kindOf="standard">ʨina [x|χ]ai maðima mapasnava at ma[x|χ]anɕiap saia maimasʔan tu [x|χ]a[l|ɬ]iŋa</PHON>
-        <TRANSL xml:lang="zho">媽媽喜歡學習, 所以他確定會講十種語言 (強調語氣).</TRANSL>
+        <TRANSL xml:lang="zho" notes="媽媽喜歡學習, 所以他確定會講十種語言 (強調語氣).">媽媽喜歡學習, 所以他確定會講十種語言 .</TRANSL>
         <TRANSL xml:lang="eng">Since mother likes to study, she can really speak ten languages.</TRANSL>
         <W id="63_S_488_W0">
             <FORM kindOf="original">cina</FORM>
@@ -227334,7 +227334,7 @@
         <FORM kindOf="standard">au mahtuin maun kangavastan?</FORM>
         <PHON kindOf="standard">au ma[x|χ]tuin maun kaŋavastan</PHON>
         <TRANSL xml:lang="zho">可以吃芒果了嗎?</TRANSL>
-        <TRANSL xml:lang="eng">Can (I) eat the mango?</TRANSL>
+        <TRANSL xml:lang="eng" notes="Can (I) eat the mango?">Can eat the mango?</TRANSL>
         <W id="63_S_489_W0">
             <FORM kindOf="original">au</FORM>
             <PHON kindOf="original">au</PHON>
@@ -227430,7 +227430,7 @@
         <FORM kindOf="standard">adu mahtuin kangavasan kaunun?</FORM>
         <PHON kindOf="standard">adu ma[x|χ]tuin kaŋavasan kaunun</PHON>
         <TRANSL xml:lang="zho">芒果可以吃了嗎。</TRANSL>
-        <TRANSL xml:lang="eng">The mangos, can (I) eat them?</TRANSL>
+        <TRANSL xml:lang="eng" notes="The mangos, can (I) eat them?">The mangos, can eat them?</TRANSL>
         <W id="63_S_490_W0">
             <FORM kindOf="original">adu</FORM>
             <PHON kindOf="original">adu</PHON>
@@ -227526,7 +227526,7 @@
         <FORM kindOf="standard">isia pangkaka tu kangavasan hai mahtu kaunun.</FORM>
         <PHON kindOf="standard">iɕia paŋkaka tu kaŋavasan [x|χ]ai ma[x|χ]tu kaunun</PHON>
         <TRANSL xml:lang="zho">桌上的芒果是可以吃的。</TRANSL>
-        <TRANSL xml:lang="eng">(One) can eat the mangos on the desk.</TRANSL>
+        <TRANSL xml:lang="eng" notes="(One) can eat the mangos on the desk.">can eat the mangos on the desk.</TRANSL>
         <W id="63_S_491_W0">
             <FORM kindOf="original">i-sia</FORM>
             <PHON kindOf="original">isia</PHON>
@@ -227670,7 +227670,7 @@
         <FORM kindOf="standard">haiapin uvaaza maun kangavas.</FORM>
         <PHON kindOf="standard">[x|χ]aiapin uvaaða maun kaŋavas</PHON>
         <TRANSL xml:lang="zho">那個孩子會吃芒果了。</TRANSL>
-        <TRANSL xml:lang="eng">(The child) can already eat mango.</TRANSL>
+        <TRANSL xml:lang="eng" notes="(The child) can already eat mango.">can already eat mango.</TRANSL>
         <W id="63_S_492_W0">
             <FORM kindOf="original">haiap=in</FORM>
             <PHON kindOf="original">[x|χ]aiapin</PHON>
@@ -228413,7 +228413,7 @@
         <PHON kindOf="original">saia [x|χ]ai nau tu namapinkai[l|ɬ]as naiʨia</PHON>
         <FORM kindOf="standard">saia hai nau tu namapinkailas naicia.</FORM>
         <PHON kindOf="standard">saia [x|χ]ai nau tu namapinkai[l|ɬ]as naiʨia</PHON>
-        <TRANSL xml:lang="zho">他本來就要叫他們起床(有責任)。</TRANSL>
+        <TRANSL xml:lang="zho" notes="他本來就要叫他們起床(有責任)。">他本來就要叫他們起床 。</TRANSL>
         <TRANSL xml:lang="eng">He originally was going to wake them up.</TRANSL>
         <W id="63_S_496_W0">
             <FORM kindOf="original">saia</FORM>
@@ -232011,7 +232011,7 @@
         <PHON kindOf="original">andii maibabuan [x|χ]ai masia[l|ɬ] kaunun</PHON>
         <FORM kindOf="standard">andii maibabuan hai masial kaunun.</FORM>
         <PHON kindOf="standard">andii maibabuan [x|χ]ai maɕia[l|ɬ] kaunun</PHON>
-        <TRANSL xml:lang="zho">這塊豬肉很好吃(對照組)。族語譯中文：這塊豬肉很好吃。</TRANSL>
+        <TRANSL xml:lang="zho" notes="這塊豬肉很好吃(對照組)。族語譯中文：這塊豬肉很好吃。">這塊豬肉很好吃 。族語譯中文：這塊豬肉很好吃。</TRANSL>
         <TRANSL xml:lang="eng">This piece of pork is delicious.</TRANSL>
         <W id="63_S_523_W0">
             <FORM kindOf="original">an-dii</FORM>
@@ -232139,7 +232139,7 @@
         <PHON kindOf="original">andii maibabuan mais tanamun [x|χ]ai masia[l|ɬ] kaunun</PHON>
         <FORM kindOf="standard">andii maibabuan mais tanamun hai masial kaunun.</FORM>
         <PHON kindOf="standard">andii maibabuan mais tanamun [x|χ]ai maɕia[l|ɬ] kaunun</PHON>
-        <TRANSL xml:lang="zho">這塊豬肉嚐起來很好吃。(lit.) 這塊豬肉試(吃)起來很好吃。</TRANSL>
+        <TRANSL xml:lang="zho" notes="這塊豬肉嚐起來很好吃。(lit.) 這塊豬肉試(吃)起來很好吃。">這塊豬肉嚐起來很好吃。 這塊豬肉試 起來很好吃。</TRANSL>
         <TRANSL xml:lang="eng">This piece of pork tastes delicious.</TRANSL>
         <W id="63_S_524_W0">
             <FORM kindOf="original">an-dii</FORM>
@@ -232307,7 +232307,7 @@
         <PHON kindOf="original">andii maibabuan mais tanamun maun [x|χ]ai masia[l|ɬ] kaunun</PHON>
         <FORM kindOf="standard">andii maibabuan mais tanamun maun hai masial kaunun.</FORM>
         <PHON kindOf="standard">andii maibabuan mais tanamun maun [x|χ]ai maɕia[l|ɬ] kaunun</PHON>
-        <TRANSL xml:lang="zho">這塊豬肉嚐起來很好吃。(lit.) 這塊豬肉試(吃)起來很好吃。</TRANSL>
+        <TRANSL xml:lang="zho" notes="這塊豬肉嚐起來很好吃。(lit.) 這塊豬肉試(吃)起來很好吃。">這塊豬肉嚐起來很好吃。 這塊豬肉試 起來很好吃。</TRANSL>
         <TRANSL xml:lang="eng">This piece of pork tastes delicious.</TRANSL>
     </S>
     <S id="63_S_525">
@@ -232443,7 +232443,7 @@
         <PHON kindOf="original">saduanku saia [x|χ]ai ma[l|ɬ]minatað mani mada[x|χ]pa</PHON>
         <FORM kindOf="standard">saduanku saia hai malminataz mani madahpa.</FORM>
         <PHON kindOf="standard">saduanku saia [x|χ]ai ma[l|ɬ]minatað mani mada[x|χ]pa</PHON>
-        <TRANSL xml:lang="zho">他的精神不太好，看起來像生病了。(lit.) 我看他好像要死不活，好像生病一樣。</TRANSL>
+        <TRANSL xml:lang="zho" notes="他的精神不太好，看起來像生病了。(lit.) 我看他好像要死不活，好像生病一樣。">他的精神不太好，看起來像生病了。 我看他好像要死不活，好像生病一樣。</TRANSL>
         <TRANSL xml:lang="eng">He is under the weather and looks sick.</TRANSL>
         <W id="63_S_526_W0">
             <FORM kindOf="original">sadu-an=ku</FORM>
@@ -234114,7 +234114,7 @@
         <PHON kindOf="original">iviv [x|χ]ai ku[l|ɬ]uma[x|χ]</PHON>
         <FORM kindOf="standard">iv'iv hai kulumah.</FORM>
         <PHON kindOf="standard">ivʔiv [x|χ]ai ku[l|ɬ]uma[x|χ]</PHON>
-        <TRANSL xml:lang="zho">風吹進來屋子裡面(對照組)。</TRANSL>
+        <TRANSL xml:lang="zho" notes="風吹進來屋子裡面(對照組)。">風吹進來屋子裡面 。</TRANSL>
         <TRANSL xml:lang="eng">The wind is blowing into this house.</TRANSL>
         <W id="63_S_536_W0">
             <FORM kindOf="original">iv'iv</FORM>
@@ -241143,7 +241143,7 @@
         <FORM kindOf="standard">ka tu bazangbazang, sima cinupasuu maupa cintuhalinga.</FORM>
         <PHON kindOf="standard">ka tu baðaŋbaðaŋ ɕima ʨinupasuu maupa ʨintu[x|χ]a[l|ɬ]iŋa</PHON>
         <TRANSL xml:lang="zho">不要亂說囉, 這句話你是聽誰說的。</TRANSL>
-        <TRANSL xml:lang="eng">Do not say rubbish, who told you that (rubbish)?</TRANSL>
+        <TRANSL xml:lang="eng" notes="Do not say rubbish, who told you that (rubbish)?">Do not say rubbish, who told you that ?</TRANSL>
         <W id="63_S_569_W0">
             <FORM kindOf="original">ka</FORM>
             <PHON kindOf="original">ka</PHON>
@@ -245006,7 +245006,7 @@
         <PHON kindOf="original">andii tatau bununa [x|χ]ai sima kaðimaun naiʨia</PHON>
         <FORM kindOf="standard">andii tatau bununa hai sima kazimaun naicia.</FORM>
         <PHON kindOf="standard">andii tatau bununa [x|χ]ai ɕima kaðimaun naiʨia</PHON>
-        <TRANSL xml:lang="zho">這三個人是喜歡誰? (三個人喜歡某一個人)</TRANSL>
+        <TRANSL xml:lang="zho" notes="這三個人是喜歡誰? (三個人喜歡某一個人)">這三個人是喜歡誰?</TRANSL>
         <TRANSL xml:lang="eng">Which of the three people do they like?</TRANSL>
         <W id="63_S_592_W0">
             <FORM kindOf="original">an-dii</FORM>
@@ -245159,7 +245159,7 @@
         <FORM kindOf="standard">katavinang tu unhazavan hai minsunab luduna.</FORM>
         <PHON kindOf="standard">katavinaŋ tu un[x|χ]aðavan [x|χ]ai minsunab [l|ɬ]uduna</PHON>
         <TRANSL xml:lang="zho">去年的乾旱的時候山上失火。</TRANSL>
-        <TRANSL xml:lang="eng">There was a (big) fire on the mountain last summer.</TRANSL>
+        <TRANSL xml:lang="eng" notes="There was a (big) fire on the mountain last summer.">There was a fire on the mountain last summer.</TRANSL>
         <W id="63_S_593_W0">
             <FORM kindOf="original">katavin=ang</FORM>
             <PHON kindOf="original">katavinaŋ</PHON>
@@ -245766,7 +245766,7 @@
         <PHON kindOf="original">ʨismað saia mistaba</PHON>
         <FORM kindOf="standard">cismaz saia mistaba?</FORM>
         <PHON kindOf="standard">ʨismað saia mistaba</PHON>
-        <TRANSL xml:lang="zho">那個著火(zhao huo)是什麼原因?</TRANSL>
+        <TRANSL xml:lang="zho" notes="那個著火(zhao huo)是什麼原因?">那個著火 是什麼原因?</TRANSL>
         <TRANSL xml:lang="eng">Why did that burn?</TRANSL>
         <W id="63_S_597_W0">
             <FORM kindOf="original">cis-maz</FORM>
@@ -245846,7 +245846,7 @@
         <PHON kindOf="original">saia tu mistaba [x|χ]ai ʨisuni mas maʨipʨia[x|χ]</PHON>
         <FORM kindOf="standard">saia tu mistaba hai cis'uni mas macipciah.</FORM>
         <PHON kindOf="standard">saia tu mistaba [x|χ]ai ʨisʔuni mas maʨipʨia[x|χ]</PHON>
-        <TRANSL xml:lang="zho">那個著火(會燒起來)是因為那個爆炸。</TRANSL>
+        <TRANSL xml:lang="zho" notes="那個著火(會燒起來)是因為那個爆炸。">那個著火 是因為那個爆炸。</TRANSL>
         <TRANSL xml:lang="eng">That fire was due to the explosion.</TRANSL>
         <W id="63_S_598_W0">
             <FORM kindOf="original">sai-a</FORM>
@@ -245998,7 +245998,7 @@
         <PHON kindOf="original">saia tu mistaba [x|χ]ai ʨismað</PHON>
         <FORM kindOf="standard">saia tu mistaba hai cismaz?</FORM>
         <PHON kindOf="standard">saia tu mistaba [x|χ]ai ʨismað</PHON>
-        <TRANSL xml:lang="zho">它(或那個地方)為什麼會燒起來?</TRANSL>
+        <TRANSL xml:lang="zho" notes="它(或那個地方)為什麼會燒起來?">它 為什麼會燒起來?</TRANSL>
         <TRANSL xml:lang="eng">That fire was due to what?</TRANSL>
         <W id="63_S_599_W0">
             <FORM kindOf="original">sai-a</FORM>
@@ -246342,7 +246342,7 @@
         <PHON kindOf="original">[l|ɬ]akua suba[l|ɬ]ia madamu kaka[l|ɬ]aŋʨia</PHON>
         <FORM kindOf="standard">lakua Subalia madamu kakalangcia.</FORM>
         <PHON kindOf="standard">[l|ɬ]akua suba[l|ɬ]ia madamu kaka[l|ɬ]aŋʨia</PHON>
-        <TRANSL xml:lang="zho">Subali什麼時候抓(到)那隻螃蟹?</TRANSL>
+        <TRANSL xml:lang="zho" notes="Subali什麼時候抓(到)那隻螃蟹?">Subali什麼時候抓 那隻螃蟹?</TRANSL>
         <TRANSL xml:lang="eng">When did Subali catch the carb?</TRANSL>
         <W id="63_S_602_W0">
             <FORM kindOf="original">lakua</FORM>
@@ -246438,7 +246438,7 @@
         <PHON kindOf="original">[l|ɬ]akua suba[l|ɬ]ia madamu mas kaka[l|ɬ]aŋʨia</PHON>
         <FORM kindOf="standard">lakua Subalia madamu mas kakalangcia.</FORM>
         <PHON kindOf="standard">[l|ɬ]akua suba[l|ɬ]ia madamu mas kaka[l|ɬ]aŋʨia</PHON>
-        <TRANSL xml:lang="zho">Subali什麼時候抓(到)那隻螃蟹?</TRANSL>
+        <TRANSL xml:lang="zho" notes="Subali什麼時候抓(到)那隻螃蟹?">Subali什麼時候抓 那隻螃蟹?</TRANSL>
         <TRANSL xml:lang="eng">When did Subali catch the carb?</TRANSL>
         <W id="63_S_602-opt_W0">
             <FORM kindOf="original">lakua</FORM>
@@ -249723,8 +249723,8 @@
         <PHON kindOf="original">suba[l|ɬ]i [x|χ]ai aiðaan tu tatau mas uvaað</PHON>
         <FORM kindOf="standard">Subali hai aizaan tu tatau mas 'uvaaz.</FORM>
         <PHON kindOf="standard">suba[l|ɬ]i [x|χ]ai aiðaan tu tatau mas ʔuvaað</PHON>
-        <TRANSL xml:lang="zho">Subali(已經)有三個孩子。</TRANSL>
-        <TRANSL xml:lang="eng">Subali (already) has three children.</TRANSL>
+        <TRANSL xml:lang="zho" notes="Subali(已經)有三個孩子。">Subali 有三個孩子。</TRANSL>
+        <TRANSL xml:lang="eng" notes="Subali (already) has three children.">Subali has three children.</TRANSL>
         <W id="63_S_624_W0">
             <FORM kindOf="original">Subali</FORM>
             <PHON kindOf="original">suba[l|ɬ]i</PHON>
@@ -250021,7 +250021,7 @@
         <PHON kindOf="original">tatau uvaað ka[x|χ]u[x|χ]uðas</PHON>
         <FORM kindOf="standard">tatau 'uvaaz kahuhuzas.</FORM>
         <PHON kindOf="standard">tatau ʔuvaað ka[x|χ]u[x|χ]uðas</PHON>
-        <TRANSL xml:lang="zho">有三個孩子(正)在唱歌。</TRANSL>
+        <TRANSL xml:lang="zho" notes="有三個孩子(正)在唱歌。">有三個孩子 在唱歌。</TRANSL>
         <TRANSL xml:lang="eng">Three children are singing.</TRANSL>
         <W id="63_S_627_W0">
             <FORM kindOf="original">ta-tau</FORM>
@@ -250290,7 +250290,7 @@
         <PHON kindOf="original">papia uvaaða ka[x|χ]u[x|χ]uðas</PHON>
         <FORM kindOf="standard">papia 'uvaaza kahuhuzas?</FORM>
         <PHON kindOf="standard">papia ʔuvaaða ka[x|χ]u[x|χ]uðas</PHON>
-        <TRANSL xml:lang="zho">有幾個孩子(正)在唱歌?</TRANSL>
+        <TRANSL xml:lang="zho" notes="有幾個孩子(正)在唱歌?">有幾個孩子 在唱歌?</TRANSL>
         <TRANSL xml:lang="eng">How many children are singing?</TRANSL>
         <W id="63_S_630_W0">
             <FORM kindOf="original">papia</FORM>
@@ -251678,7 +251678,7 @@
         <PHON kindOf="original">adu minauninas [x|χ]a</PHON>
         <FORM kindOf="standard">adu minauninas ha?</FORM>
         <PHON kindOf="standard">adu minauninas [x|χ]a</PHON>
-        <TRANSL xml:lang="zho">你是否吃過了嗎? (特別強調?)</TRANSL>
+        <TRANSL xml:lang="zho" notes="你是否吃過了嗎? (特別強調?)">你是否吃過了嗎?</TRANSL>
         <TRANSL xml:lang="eng">Have you eaten yet?</TRANSL>
         <W id="63_S_640_W0">
             <FORM kindOf="original">adu</FORM>
@@ -253605,8 +253605,8 @@
         <PHON kindOf="original">naminsumain tu[x|χ]aspiŋað</PHON>
         <FORM kindOf="standard">naminsumain tuhaspingaz.</FORM>
         <PHON kindOf="standard">naminsumain tu[x|χ]aspiŋað</PHON>
-        <TRANSL xml:lang="zho">姐姐要(回)來了。</TRANSL>
-        <TRANSL xml:lang="eng">(My) sister will come back.</TRANSL>
+        <TRANSL xml:lang="zho" notes="姐姐要(回)來了。">姐姐要 來了。</TRANSL>
+        <TRANSL xml:lang="eng" notes="(My) sister will come back.">sister will come back.</TRANSL>
         <W id="63_S_664_W0">
             <FORM kindOf="original">na=m-insuma=in</FORM>
             <PHON kindOf="original">naminsumain</PHON>
@@ -254046,7 +254046,7 @@
         <FORM kindOf="standard">isludahku andii lukisan mas asucia.</FORM>
         <PHON kindOf="standard">is[l|ɬ]uda[x|χ]ku andii [l|ɬ]ukisan mas asuʨia</PHON>
         <TRANSL xml:lang="zho">我用這個木頭打狗。</TRANSL>
-        <TRANSL xml:lang="eng">I hit/beat the dog with the wood stick/plank (or "the piece of wood").</TRANSL>
+        <TRANSL xml:lang="eng" notes="I hit/beat the dog with the wood stick/plank (or “the piece of wood”).">I hit/beat the dog with the wood stick/plank .</TRANSL>
         <W id="63_S_669_W0">
             <FORM kindOf="original">is-ludah=ku</FORM>
             <PHON kindOf="original">is[l|ɬ]uda[x|χ]ku</PHON>
@@ -254776,7 +254776,7 @@
         <FORM kindOf="standard">andii ahilan hai binalivku masaiv saicia.</FORM>
         <PHON kindOf="standard">andii a[x|χ]i[l|ɬ]an [x|χ]ai bina[l|ɬ]ivku masaiv saiʨia</PHON>
         <TRANSL xml:lang="zho">這本書是我買給他的。</TRANSL>
-        <TRANSL xml:lang="eng">This book is what I bought (for) her.</TRANSL>
+        <TRANSL xml:lang="eng" notes="This book is what I bought (for) her.">This book is what I bought her.</TRANSL>
         <W id="63_S_675_W0">
             <FORM kindOf="original">an-dii</FORM>
             <PHON kindOf="original">andii</PHON>
@@ -254919,7 +254919,7 @@
         <FORM kindOf="standard">mais uka itu cina zikang hai mahtu amin tama kusia pit'i'ian mindangaz mapit'ia haising.</FORM>
         <PHON kindOf="standard">mais uka itu ʨina ðikaŋ [x|χ]ai ma[x|χ]tu amin tama kuɕia pitʔiʔian mindaŋað mapitʔia [x|χ]aiɕiŋ</PHON>
         <TRANSL xml:lang="zho">如果媽媽沒有時間，爸爸也可以去廚房幫忙煮飯。</TRANSL>
-        <TRANSL xml:lang="eng">If Mom did not have time, Dad, too, could go to the kitchen to help cook the meal(s).</TRANSL>
+        <TRANSL xml:lang="eng" notes="If Mom did not have time, Dad, too, could go to the kitchen to help cook the meal(s).">If Mom did not have time, Dad, too, could go to the kitchen to help cook the meal .</TRANSL>
         <W id="63_S_676_W0">
             <FORM kindOf="original">mais</FORM>
             <PHON kindOf="original">mais</PHON>
@@ -256270,7 +256270,7 @@
         <FORM kindOf="standard">cismuu saikin haungunun masnanavacia.</FORM>
         <PHON kindOf="standard">ʨismuu saikin [x|χ]auŋunun masnanavaʨia</PHON>
         <TRANSL xml:lang="zho">你們讓我被老師罵。</TRANSL>
-        <TRANSL xml:lang="eng">For (or "because of") you (guys), I was scolded by the teacher.</TRANSL>
+        <TRANSL xml:lang="eng" notes="For (or “because of”) you (guys), I was scolded by the teacher.">For you , I was scolded by the teacher.</TRANSL>
         <W id="63_S_683_W0">
             <FORM kindOf="original">cis-muu</FORM>
             <PHON kindOf="original">ʨismuu</PHON>
@@ -256366,7 +256366,7 @@
         <FORM kindOf="standard">mais kusian kaimin kutun sia babalivan hai naniiin inak pantamaun siza mas kaununkaunun.</FORM>
         <PHON kindOf="standard">mais kuɕian kaimin kutun ɕia baba[l|ɬ]ivan [x|χ]ai naniiin inak pantamaun ɕiða mas kaununkaunun</PHON>
         <TRANSL xml:lang="zho">如果明天我們去了市場，叔叔就不會去採水果。</TRANSL>
-        <TRANSL xml:lang="eng">If we went to the market tomorrow, uncle wouldn't need to fetch (other) food/fruit.</TRANSL>
+        <TRANSL xml:lang="eng" notes="If we went to the market tomorrow, uncle wouldn’t need to fetch (other) food/fruit.">If we went to the market tomorrow, uncle wouldn't need to fetch food/fruit.</TRANSL>
         <W id="63_S_684_W0">
             <FORM kindOf="original">mais</FORM>
             <PHON kindOf="original">mais</PHON>
@@ -256848,7 +256848,7 @@
         <FORM kindOf="standard">sikaupa bunun isia imita tu sinihumis hai maszang amin mas dinulap, mahtu sau kanahtung maluskun mazaku hai kaupa zaku ana'anak.</FORM>
         <PHON kindOf="standard">ɕikaupa bunun iɕia imita tu ɕini[x|χ]umis [x|χ]ai masðaŋ amin mas dinu[l|ɬ]ap ma[x|χ]tu sau kana[x|χ]tuŋ ma[l|ɬ]uskun maðaku [x|χ]ai kaupa ðaku anaʔanak</PHON>
         <TRANSL xml:lang="zho">所有人在我們的生命中都只是過客，唯一能陪自己到最後的也只有自己。</TRANSL>
-        <TRANSL xml:lang="eng">All the people in our life are passers-by, (and) you are the only one to accompany yourself till the end (of your life).</TRANSL>
+        <TRANSL xml:lang="eng" notes="All the people in our life are passers-by, (and) you are the only one to accompany yourself till the end (of your life).">All the people in our life are passers-by, you are the only one to accompany yourself till the end .</TRANSL>
         <W id="63_S_688_W0">
             <FORM kindOf="original">sikaupa</FORM>
             <PHON kindOf="original">sikaupa</PHON>
@@ -257552,7 +257552,7 @@
         <FORM kindOf="standard">itu masnanava aikas'aangan hai naasa mapalmananu mas uvavaz.</FORM>
         <PHON kindOf="standard">itu masnanava aikasʔaaŋan [x|χ]ai naasa mapa[l|ɬ]mananu mas uvavað</PHON>
         <TRANSL xml:lang="zho">老師希望小孩們努力學習。</TRANSL>
-        <TRANSL xml:lang="eng">The teacher hopes that the children (will/can) study hard.</TRANSL>
+        <TRANSL xml:lang="eng" notes="The teacher hopes that the children (will/can) study hard.">The teacher hopes that the children study hard.</TRANSL>
         <W id="63_S_691_W0">
             <FORM kindOf="original">itu</FORM>
             <PHON kindOf="original">itu</PHON>
@@ -257736,7 +257736,7 @@
         <FORM kindOf="standard">muskun Subali mas isaicia tu kaviaz malusapuz at manaskal mapahainan kahuzas uduli mankakauk.</FORM>
         <PHON kindOf="standard">muskun suba[l|ɬ]i mas isaiʨia tu kaviað ma[l|ɬ]usapuð at manaska[l|ɬ] mapa[x|χ]ainan ka[x|χ]uðas udu[l|ɬ]i mankakauk</PHON>
         <TRANSL xml:lang="zho">Subali和朋友在營火旁邊又唱, 又跳, 又笑, 又叫。</TRANSL>
-        <TRANSL xml:lang="eng">Subali and his friend set up the bonfire, (then) happily laughing, singing, dancing and shouting.</TRANSL>
+        <TRANSL xml:lang="eng" notes="Subali and his friend set up the bonfire, (then) happily laughing, singing, dancing and shouting.">Subali and his friend set up the bonfire, happily laughing, singing, dancing and shouting.</TRANSL>
         <W id="63_S_692_W0">
             <FORM kindOf="original">m-uskun</FORM>
             <PHON kindOf="original">muskun</PHON>
@@ -258000,7 +258000,7 @@
         <FORM kindOf="standard">cis'uni mas ana'anak tu sinihumis mihdi kasui at kaupahanian saikin saipuk itu bunun tu uvaz.</FORM>
         <PHON kindOf="standard">ʨisʔuni mas anaʔanak tu ɕini[x|χ]umis mi[x|χ]di kasui at kaupa[x|χ]anian saikin saipuk itu bunun tu uvað</PHON>
         <TRANSL xml:lang="zho">為了賺取自己的生活費, 我每天都會替人照顧小孩</TRANSL>
-        <TRANSL xml:lang="eng">To earn my own living expenses, I babysit (kids/children) (for other people) every day.</TRANSL>
+        <TRANSL xml:lang="eng" notes="To earn my own living expenses, I babysit (kids/children) (for other people) every day.">To earn my own living expenses, I babysit every day.</TRANSL>
         <W id="63_S_693_W0">
             <FORM kindOf="original">cis'uni</FORM>
             <PHON kindOf="original">ʨisuni</PHON>
@@ -258288,7 +258288,7 @@
         <FORM kindOf="standard">mais unulan at muntunuh lumah hai naukin inam lumah mahtu dangian.</FORM>
         <PHON kindOf="standard">mais unu[l|ɬ]an at muntunu[x|χ] [l|ɬ]uma[x|χ] [x|χ]ai naukin inam [l|ɬ]uma[x|χ] ma[x|χ]tu daŋian</PHON>
         <TRANSL xml:lang="zho">如果發生地震房子倒塌，我們將沒有房子可以住。</TRANSL>
-        <TRANSL xml:lang="eng">If the earthquake strikes causing the house to collapse, we'll have no place (or house) to live in.</TRANSL>
+        <TRANSL xml:lang="eng" notes="If the earthquake strikes causing the house to collapse, we’ll have no place (or house) to live in.">If the earthquake strikes causing the house to collapse, we'll have no place to live in.</TRANSL>
         <W id="63_S_694_W0">
             <FORM kindOf="original">mais</FORM>
             <PHON kindOf="original">mais</PHON>
@@ -259527,7 +259527,7 @@
         <PHON kindOf="original">upana[x|χ]an inak tama takna tasa tu vanis</PHON>
         <FORM kindOf="standard">upanahan inak tama takna tasa tu vanis.</FORM>
         <PHON kindOf="standard">upana[x|χ]an inak tama takna tasa tu vanis</PHON>
-        <TRANSL xml:lang="zho">爸爸昨天(用槍)獵到一頭山豬。</TRANSL>
+        <TRANSL xml:lang="zho" notes="爸爸昨天(用槍)獵到一頭山豬。">爸爸昨天 獵到一頭山豬。</TRANSL>
         <TRANSL xml:lang="eng">My father shot a wild boar yesterday.</TRANSL>
         <W id="63_S_701_W0">
             <FORM kindOf="original">u-panah-an</FORM>
@@ -260855,7 +260855,7 @@
         <PHON kindOf="original">tukua tama [x|χ]aisu[l|ɬ]a</PHON>
         <FORM kindOf="standard">tukua tama Haisula?</FORM>
         <PHON kindOf="standard">tukua tama [x|χ]aisu[l|ɬ]a</PHON>
-        <TRANSL xml:lang="zho">Haisul叔叔說了甚麼？ (lit.) Haisul叔叔怎麼說？</TRANSL>
+        <TRANSL xml:lang="zho" notes="Haisul叔叔說了甚麼？ (lit.) Haisul叔叔怎麼說？">Haisul叔叔說了甚麼？ Haisul叔叔怎麼說？</TRANSL>
         <TRANSL xml:lang="eng">What did uncle Haisul say?</TRANSL>
         <W id="63_S_712_W0">
             <FORM kindOf="original">tu-kua</FORM>
@@ -263784,7 +263784,7 @@
         <FORM kindOf="standard">tupa masnanava tu muliva Subalia, haitu tupa Subali tu nii tu saicia mapataz.</FORM>
         <PHON kindOf="standard">tupa masnanava tu mu[l|ɬ]iva suba[l|ɬ]ia [x|χ]aitu tupa suba[l|ɬ]i tu nii tu saiʨia mapatað</PHON>
         <TRANSL xml:lang="zho">老師覺得Subali有錯，但是Subali說他沒有殺人。</TRANSL>
-        <TRANSL xml:lang="eng">The teacher thinks that Subali made a mistake but Subali says that he did not kill (anybody).</TRANSL>
+        <TRANSL xml:lang="eng" notes="The teacher thinks that Subali made a mistake but Subali says that he did not kill (anybody).">The teacher thinks that Subali made a mistake but Subali says that he did not kill .</TRANSL>
         <W id="63_S_734_W0">
             <FORM kindOf="original">tupa</FORM>
             <PHON kindOf="original">tupa</PHON>
@@ -265407,7 +265407,7 @@
         <PHON kindOf="original">adu tuða tu tausdusa isaiʨia ma[l|ɬ]uspiŋað tausuvað masa taŋusaŋ tu is[l|ɬ]uŋ[x|χ]uan</PHON>
         <FORM kindOf="standard">adu tuza tu tausdusa isaicia maluspingaz tausuvaz masa tangusang tu islunghuan?</FORM>
         <PHON kindOf="standard">adu tuða tu tausdusa isaiʨia ma[l|ɬ]uspiŋað tausuvað masa taŋusaŋ tu is[l|ɬ]uŋ[x|χ]uan</PHON>
-        <TRANSL xml:lang="zho">他的妻子上禮拜生了兩個小孩(這件事)是真的嗎?</TRANSL>
+        <TRANSL xml:lang="zho" notes="他的妻子上禮拜生了兩個小孩(這件事)是真的嗎?">他的妻子上禮拜生了兩個小孩 是真的嗎?</TRANSL>
         <TRANSL xml:lang="eng">Is it true that his wife gave birth to two children last week?</TRANSL>
         <W id="63_S_744_W0">
             <FORM kindOf="original">adu</FORM>
@@ -265991,7 +265991,7 @@
         <PHON kindOf="original">adu madu[l|ɬ]u itu andiiŋa[l|ɬ]an ðakuanʨia binanauað [x|χ]u[l|ɬ]bua</PHON>
         <FORM kindOf="standard">adu madulu itu andiingalan zakuancia binanauaz hulbua?</FORM>
         <PHON kindOf="standard">adu madu[l|ɬ]u itu andiiŋa[l|ɬ]an ðakuanʨia binanauað [x|χ]u[l|ɬ]bua</PHON>
-        <TRANSL xml:lang="zho">隔壁的小姐(留)長頭髮嗎?</TRANSL>
+        <TRANSL xml:lang="zho" notes="隔壁的小姐(留)長頭髮嗎?">隔壁的小姐 長頭髮嗎?</TRANSL>
         <TRANSL xml:lang="eng">Does the girl/miss next door have long hair?</TRANSL>
         <W id="63_S_747_W0">
             <FORM kindOf="original">adu</FORM>
@@ -268300,7 +268300,7 @@
         <FORM kindOf="standard">kahuhuzas naiia laupakadau sia libus.</FORM>
         <PHON kindOf="standard">ka[x|χ]u[x|χ]uðas naiia [l|ɬ]aupakadau ɕia [l|ɬ]ibus</PHON>
         <TRANSL xml:lang="zho">他們正在森林裡唱歌。</TRANSL>
-        <TRANSL xml:lang="eng">They are singing in the forest (right now).</TRANSL>
+        <TRANSL xml:lang="eng" notes="They are singing in the forest (right now).">They are singing in the forest .</TRANSL>
         <W id="63_S_758_W0">
             <FORM kindOf="original">ka-&lt;hu&gt;huzas</FORM>
             <PHON kindOf="original">ka[x|χ]u[x|χ]uðas</PHON>
@@ -268404,7 +268404,7 @@
         <FORM kindOf="standard">maza libusa hai itu uvaz tu pishasibangan.</FORM>
         <PHON kindOf="standard">maða [l|ɬ]ibusa [x|χ]ai itu uvað tu pis[x|χ]aɕibaŋan</PHON>
         <TRANSL xml:lang="zho">森林是孩子玩遊戲的地方。</TRANSL>
-        <TRANSL xml:lang="eng">That forest is the place where children play (&lt; About that forest, it is the children's play-game place).</TRANSL>
+        <TRANSL xml:lang="eng" notes="That forest is the place where children play (&lt; About that forest, it is the children’s play-game place).">That forest is the place where children play .</TRANSL>
         <W id="63_S_759_W0">
             <FORM kindOf="original">maza</FORM>
             <PHON kindOf="original">maða</PHON>
@@ -270623,7 +270623,7 @@
         <FORM kindOf="standard">maza taintungu tu bununa hai mapaskaku tas tu haku tu davus.</FORM>
         <PHON kindOf="standard">maða taintuŋu tu bununa [x|χ]ai mapaskaku tas tu [x|χ]aku tu davus</PHON>
         <TRANSL xml:lang="zho">客人送我一箱酒。</TRANSL>
-        <TRANSL xml:lang="eng">The person who comes to be my guest (i.e. my guest) gives me a box of wine.</TRANSL>
+        <TRANSL xml:lang="eng" notes="The person who comes to be my guest (i.e. my guest) gives me a box of wine.">The person who comes to be my guest gives me a box of wine.</TRANSL>
         <W id="63_S_772_W0">
             <FORM kindOf="original">maza</FORM>
             <PHON kindOf="original">maða</PHON>
@@ -273106,7 +273106,7 @@
         <FORM kindOf="standard">tupa masnanavaa mas Subalicia tu maliskahnaa.</FORM>
         <PHON kindOf="standard">tupa masnanavaa mas suba[l|ɬ]iʨia tu ma[l|ɬ]iska[x|χ]naa</PHON>
         <TRANSL xml:lang="zho">老師要Subali反省他的錯。</TRANSL>
-        <TRANSL xml:lang="eng">The teacher wants Subali to reflect (on his mistakes).</TRANSL>
+        <TRANSL xml:lang="eng" notes="The teacher wants Subali to reflect (on his mistakes).">The teacher wants Subali to reflect .</TRANSL>
         <W id="63_S_792_W0">
             <FORM kindOf="original">tupa</FORM>
             <PHON kindOf="original">tupa</PHON>
@@ -277728,7 +277728,7 @@
         <FORM kindOf="standard">ma'a'asikang cina sapalan.</FORM>
         <PHON kindOf="standard">maʔaʔaɕikaŋ ʨina sapa[l|ɬ]an</PHON>
         <TRANSL xml:lang="zho">媽媽正在打掃臥室。</TRANSL>
-        <TRANSL xml:lang="eng">Mother is cleaning the bedroom (now).</TRANSL>
+        <TRANSL xml:lang="eng" notes="Mother is cleaning the bedroom (now).">Mother is cleaning the bedroom .</TRANSL>
         <W id="63_S_826_W0">
             <FORM kindOf="original">ma-&lt;'a&gt;'asik=ang</FORM>
             <PHON kindOf="original">maaasikaŋ</PHON>
@@ -278528,7 +278528,7 @@
         <FORM kindOf="standard">mais miahanin hai uka inak bakadan, aupa namalmananu saikin masipul patasan sausiasanavan.</FORM>
         <PHON kindOf="standard">mais mia[x|χ]anin [x|χ]ai uka inak bakadan aupa nama[l|ɬ]mananu saikin maɕipu[l|ɬ] patasan sauɕiasanavan</PHON>
         <TRANSL xml:lang="zho">後天我沒空，因為我要一直讀書到晚上。</TRANSL>
-        <TRANSL xml:lang="eng">The day after tomorrow, I won't have time, because I will try hard to read books (=study) until the evening.</TRANSL>
+        <TRANSL xml:lang="eng" notes="The day after tomorrow, I won’t have time, because I will try hard to read books (=study) until the evening.">The day after tomorrow, I won't have time, because I will try hard to read books until the evening.</TRANSL>
         <W id="63_S_831_W0">
             <FORM kindOf="original">mais</FORM>
             <PHON kindOf="original">mais</PHON>
@@ -279599,7 +279599,7 @@
         <FORM kindOf="standard">saiin hai mahansiap mapit'ia tu tuhaspingaz,</FORM>
         <PHON kindOf="standard">saiin [x|χ]ai ma[x|χ]anɕiap mapitʔia tu tu[x|χ]aspiŋað</PHON>
         <TRANSL xml:lang="zho">這位是很會煮飯的姊姊,</TRANSL>
-        <TRANSL xml:lang="eng">This is (the) sister who is skillful at cooking,</TRANSL>
+        <TRANSL xml:lang="eng" notes="This is (the) sister who is skillful at cooking,">This is sister who is skillful at cooking,</TRANSL>
         <W id="63_S_839_W0">
             <FORM kindOf="original">saiin</FORM>
             <PHON kindOf="original">saiin</PHON>
@@ -279719,7 +279719,7 @@
         <FORM kindOf="standard">saiia hai mahansiap cindun tu tuhaspingaz.</FORM>
         <PHON kindOf="standard">saiia [x|χ]ai ma[x|χ]anɕiap ʨindun tu tu[x|χ]aspiŋað</PHON>
         <TRANSL xml:lang="zho">他是很會編織的姊姊。</TRANSL>
-        <TRANSL xml:lang="eng">She is (the) sister who is skillful at weaving.</TRANSL>
+        <TRANSL xml:lang="eng" notes="She is (the) sister who is skillful at weaving.">She is sister who is skillful at weaving.</TRANSL>
         <W id="63_S_840_W0">
             <FORM kindOf="original">saiia</FORM>
             <PHON kindOf="original">saiia</PHON>
@@ -281572,7 +281572,7 @@
         <PHON kindOf="original">sa[x|χ]a[l|ɬ] saikin kuðakuða tu bununʨia</PHON>
         <FORM kindOf="standard">sahal saikin kuzakuza tu bununcia.</FORM>
         <PHON kindOf="standard">sa[x|χ]a[l|ɬ] saikin kuðakuða tu bununʨia</PHON>
-        <TRANSL xml:lang="zho">我認識那個工作的人 (或工作人員) 。</TRANSL>
+        <TRANSL xml:lang="zho" notes="我認識那個工作的人 (或工作人員) 。">我認識那個工作的人 。</TRANSL>
         <TRANSL xml:lang="eng">I know that worker.</TRANSL>
         <W id="63_S_855_W0">
             <FORM kindOf="original">sahal</FORM>
@@ -283100,7 +283100,7 @@
         <FORM kindOf="standard">andii uciaan hai mapais.</FORM>
         <PHON kindOf="standard">andii uʨiaan [x|χ]ai mapais</PHON>
         <TRANSL xml:lang="zho">這個茶很苦。</TRANSL>
-        <TRANSL xml:lang="eng">This tea is bitter (or sugarless).</TRANSL>
+        <TRANSL xml:lang="eng" notes="This tea is bitter (or sugarless).">This tea is bitter .</TRANSL>
         <W id="63_S_868_W0">
             <FORM kindOf="original">an-dii</FORM>
             <PHON kindOf="original">andii</PHON>
@@ -284650,7 +284650,7 @@
         <PHON kindOf="original">pa[l|ɬ]kapataðan</PHON>
         <FORM kindOf="standard">palkapatazan.</FORM>
         <PHON kindOf="standard">pa[l|ɬ]kapataðan</PHON>
-        <TRANSL xml:lang="zho">戰場 (打殺殺的地方)。</TRANSL>
+        <TRANSL xml:lang="zho" notes="戰場 (打殺殺的地方)。">戰場 。</TRANSL>
         <TRANSL xml:lang="eng">battlefield.</TRANSL>
         <W id="63_S_880_W0">
             <FORM kindOf="original">pal-ka-pataz-an.</FORM>
@@ -284698,8 +284698,8 @@
         <PHON kindOf="original">pasampana[x|χ]an</PHON>
         <FORM kindOf="standard">pasampanahan.</FORM>
         <PHON kindOf="standard">pasampana[x|χ]an</PHON>
-        <TRANSL xml:lang="zho">戰場 (互相用武器戰爭的地方)。</TRANSL>
-        <TRANSL xml:lang="eng">battlefield (long time).</TRANSL>
+        <TRANSL xml:lang="zho" notes="戰場 (互相用武器戰爭的地方)。">戰場 。</TRANSL>
+        <TRANSL xml:lang="eng" notes="battlefield (long time).">battlefield .</TRANSL>
         <W id="63_S_881_W0">
             <FORM kindOf="original">pasampanah-an.</FORM>
             <PHON kindOf="original">pasampana[x|χ]an</PHON>
@@ -285393,8 +285393,8 @@
         <PHON kindOf="original">niiaŋ sinkusia saiʨia tu kupu [x|χ]ai mupu[l|ɬ]aðin</PHON>
         <FORM kindOf="standard">niiang sinkusia saicia tu kupu hai mupulazin.</FORM>
         <PHON kindOf="standard">niiaŋ ɕinkuɕia saiʨia tu kupu [x|χ]ai mupu[l|ɬ]aðin</PHON>
-        <TRANSL xml:lang="zho">我還沒用的杯子(已經)破裂了。</TRANSL>
-        <TRANSL xml:lang="eng">The cup that I haven't used yet is (already) broken.</TRANSL>
+        <TRANSL xml:lang="zho" notes="我還沒用的杯子(已經)破裂了。">我還沒用的杯子 破裂了。</TRANSL>
+        <TRANSL xml:lang="eng" notes="The cup that I haven’t used yet is (already) broken.">The cup that I haven't used yet is broken.</TRANSL>
         <W id="63_S_886_W0">
             <FORM kindOf="original">nii=ang</FORM>
             <PHON kindOf="original">niiaŋ</PHON>
@@ -285825,7 +285825,7 @@
         <PHON kindOf="original">sinsaivku suba[l|ɬ]i tu kupu [x|χ]ai piŋkuaŋun saiʨia</PHON>
         <FORM kindOf="standard">sinsaivku Subali tu kupu hai pingkuangun saicia.</FORM>
         <PHON kindOf="standard">ɕinsaivku suba[l|ɬ]i tu kupu [x|χ]ai piŋkuaŋun saiʨia</PHON>
-        <TRANSL xml:lang="zho">我所送給Subali的杯子被他(Subali)破壞了。</TRANSL>
+        <TRANSL xml:lang="zho" notes="我所送給Subali的杯子被他(Subali)破壞了。">我所送給Subali的杯子被他 破壞了。</TRANSL>
         <TRANSL xml:lang="eng">Subali broke the cup he got from me.</TRANSL>
         <W id="63_S_889_W0">
             <FORM kindOf="original">s&lt;in&gt;-saiv=ku</FORM>
@@ -286082,7 +286082,7 @@
         <FORM kindOf="standard">saikin hai maisnasia Kalavung tu bunun.</FORM>
         <PHON kindOf="standard">saikin [x|χ]ai maisnaɕia ka[l|ɬ]avuŋ tu bunun</PHON>
         <TRANSL xml:lang="zho">我是桃源的布農人。</TRANSL>
-        <TRANSL xml:lang="eng">I'm a Bunun from Taoyuan (Kalavung).</TRANSL>
+        <TRANSL xml:lang="eng" notes="I’m a Bunun from Taoyuan (Kalavung).">I'm a Bunun from Taoyuan .</TRANSL>
         <W id="63_S_891_W0">
             <FORM kindOf="original">saikin</FORM>
             <PHON kindOf="original">saikin</PHON>
@@ -287139,7 +287139,7 @@
         <PHON kindOf="original">saiia [x|χ]ai ma[x|χ]ansiap mapatas patasan tu bunun</PHON>
         <FORM kindOf="standard">saiia hai mahansiap mapatas patasan tu bunun.</FORM>
         <PHON kindOf="standard">saiia [x|χ]ai ma[x|χ]anɕiap mapatas patasan tu bunun</PHON>
-        <TRANSL xml:lang="zho">他是一個很會寫書的人 (作者)。</TRANSL>
+        <TRANSL xml:lang="zho" notes="他是一個很會寫書的人 (作者)。">他是一個很會寫書的人 。</TRANSL>
         <TRANSL xml:lang="eng">He is a good writer</TRANSL>
         <W id="63_S_899_W0">
             <FORM kindOf="original">saiia</FORM>
@@ -287587,7 +287587,7 @@
         <PHON kindOf="original">saiia [x|χ]ai mastaan ma[x|χ]ansiap tu ka[x|χ]u[x|χ]uðas</PHON>
         <FORM kindOf="standard">saiia hai mastaan mahansiap tu kahuhuzas.</FORM>
         <PHON kindOf="standard">saiia [x|χ]ai mastaan ma[x|χ]anɕiap tu ka[x|χ]u[x|χ]uðas</PHON>
-        <TRANSL xml:lang="zho">他是一個很會唱歌的人 (歌手)</TRANSL>
+        <TRANSL xml:lang="zho" notes="他是一個很會唱歌的人 (歌手)">他是一個很會唱歌的人</TRANSL>
         <TRANSL xml:lang="eng">He is a very good singer.</TRANSL>
         <W id="63_S_902_W0">
             <FORM kindOf="original">saiia</FORM>
@@ -288230,7 +288230,7 @@
         <FORM kindOf="standard">inak tuhaspingaz isia Taihuku kuzakuza hai manauaz.</FORM>
         <PHON kindOf="standard">inak tu[x|χ]aspiŋað iɕia tai[x|χ]uku kuðakuða [x|χ]ai manauað</PHON>
         <TRANSL xml:lang="zho">我在台北工作的姊姊很漂亮。</TRANSL>
-        <TRANSL xml:lang="eng">My elder sister, who works in Taipei, is beautiful (2 or more sisters).</TRANSL>
+        <TRANSL xml:lang="eng" notes="My elder sister, who works in Taipei, is beautiful (2 or more sisters).">My elder sister, who works in Taipei, is beautiful .</TRANSL>
         <W id="63_S_909_W0">
             <FORM kindOf="original">inak</FORM>
             <PHON kindOf="original">inak</PHON>
@@ -288366,7 +288366,7 @@
         <FORM kindOf="standard">inak tacini tuhaspingaza isia Taihuku kuzakuza hai manauaz.</FORM>
         <PHON kindOf="standard">inak taʨini tu[x|χ]aspiŋaða iɕia tai[x|χ]uku kuðakuða [x|χ]ai manauað</PHON>
         <TRANSL xml:lang="zho">我的一個姊姊，在台北工作，很漂亮。</TRANSL>
-        <TRANSL xml:lang="eng">My older sister, who works in Taipei, is beautiful. (only 1 sister)</TRANSL>
+        <TRANSL xml:lang="eng" notes="My older sister, who works in Taipei, is beautiful. (only 1 sister)">My older sister, who works in Taipei, is beautiful.</TRANSL>
         <W id="63_S_910_W0">
             <FORM kindOf="original">inak</FORM>
             <PHON kindOf="original">inak</PHON>
@@ -289557,8 +289557,8 @@
         <PHON kindOf="original">pisaukanik mas suba[l|ɬ]iʨia tu [l|ɬ]aduaðavaŋ dau at saivanik saiʨia mas sui</PHON>
         <FORM kindOf="standard">pisaukanik mas Subalicia tu laduazavang dau at saivanik saicia mas sui.</FORM>
         <PHON kindOf="standard">pisaukanik mas suba[l|ɬ]iʨia tu [l|ɬ]aduaðavaŋ dau at saivanik saiʨia mas sui</PHON>
-        <TRANSL xml:lang="zho">Subali向我求饒恕 (求我原諒他), 並且給我錢了。</TRANSL>
-        <TRANSL xml:lang="eng">Subali excuses himself (&lt; salutes and asks for forgiveness) and then pays.</TRANSL>
+        <TRANSL xml:lang="zho" notes="Subali向我求饒恕 (求我原諒他) &lt; 敬禮請原諒), 並且給我錢了。">Subali向我求饒恕 &lt; 敬禮請原諒), 並且給我錢了。</TRANSL>
+        <TRANSL xml:lang="eng" notes="Subali excuses himself (&lt; salutes and asks for forgiveness) and then pays.">Subali excuses himself and then pays.</TRANSL>
         <W id="63_S_916_W0">
             <FORM kindOf="original">pisauk-an=ik</FORM>
             <PHON kindOf="original">pisaukanik</PHON>
@@ -290205,7 +290205,7 @@
         <PHON kindOf="original">maða itu taiuanʨin tu insumasva[l|ɬ]i [x|χ]ai maiaupasia niŋav taipiŋ</PHON>
         <FORM kindOf="standard">maza itu Taiuancin tu insumasvali hai maiaupasia ning'av Taiping.</FORM>
         <PHON kindOf="standard">maða itu taiuanʨin tu insumasva[l|ɬ]i [x|χ]ai maiaupaɕia niŋʔav taipiŋ</PHON>
-        <TRANSL xml:lang="zho">台灣的東邊(太陽出來的地方)是靠著太平洋.</TRANSL>
+        <TRANSL xml:lang="zho" notes="台灣的東邊(太陽出來的地方)是靠著太平洋.">台灣的東邊 是靠著太平洋.</TRANSL>
         <TRANSL xml:lang="eng">On Taiwan's east side, there is the Pacific ocean.</TRANSL>
         <W id="63_S_920_W0">
             <FORM kindOf="original">maza</FORM>
@@ -290985,7 +290985,7 @@
         <PHON kindOf="original">takna nii tu minsumaa [x|χ]ai puna[x|χ]tuŋanku sainʨin maun [x|χ]aisiŋ</PHON>
         <FORM kindOf="standard">takna nii tu minsumaa hai punahtunganku saincin maun haising.</FORM>
         <PHON kindOf="standard">takna nii tu minsumaa [x|χ]ai puna[x|χ]tuŋanku sainʨin maun [x|χ]aiɕiŋ</PHON>
-        <TRANSL xml:lang="zho">昨天沒有來的（那個）在這個餐廳吃飯。</TRANSL>
+        <TRANSL xml:lang="zho" notes="昨天沒有來的（那個）在這個餐廳吃飯。">昨天沒有來的 在這個餐廳吃飯。</TRANSL>
         <TRANSL xml:lang="eng">The one that did not come yesterday is eating in this restaurant.</TRANSL>
         <W id="64_S_8_W0">
             <FORM kindOf="original">takna</FORM>
@@ -291409,7 +291409,7 @@
         <PHON kindOf="original">[x|χ]aiap saiia mapitia maansum kaunun</PHON>
         <FORM kindOf="standard">haiap saiia mapit'ia maansum kaunun.</FORM>
         <PHON kindOf="standard">[x|χ]aiap saiia mapitʔia maansum kaunun</PHON>
-        <TRANSL xml:lang="zho">他會所煮的（那個）應該很好吃。</TRANSL>
+        <TRANSL xml:lang="zho" notes="他會所煮的（那個）應該很好吃。">他會所煮的 應該很好吃。</TRANSL>
         <TRANSL xml:lang="eng">What he is good at cooking tastes great.</TRANSL>
         <W id="64_S_10_W0">
             <FORM kindOf="original">haiap</FORM>
@@ -292049,8 +292049,8 @@
         <PHON kindOf="original">nakusianik sia mansia tai[x|χ]uku</PHON>
         <FORM kindOf="standard">nakusianik sia mansia taihuku.</FORM>
         <PHON kindOf="standard">nakuɕianik ɕia manɕia tai[x|χ]uku</PHON>
-        <TRANSL xml:lang="zho">我要去北方 (&lt; 台北)。</TRANSL>
-        <TRANSL xml:lang="eng">I want to go north (&lt; Taipei).</TRANSL>
+        <TRANSL xml:lang="zho" notes="我要去北方 (&lt; 台北)。">我要去北方 。</TRANSL>
+        <TRANSL xml:lang="eng" notes="I want to go north (&lt; Taipei).">I want to go north .</TRANSL>
         <W id="64_S_15_W0">
             <FORM kindOf="original">na=ku-sian=ik</FORM>
             <PHON kindOf="original">nakusianik</PHON>
@@ -292145,8 +292145,8 @@
         <PHON kindOf="original">mansia taitu [x|χ]ai aiða tu tasa va[x|χ][l|ɬ]as</PHON>
         <FORM kindOf="standard">mansia taitu hai aiza tu tasa vahlas.</FORM>
         <PHON kindOf="standard">manɕia taitu [x|χ]ai aiða tu tasa va[x|χ][l|ɬ]as</PHON>
-        <TRANSL xml:lang="zho">東邊 (&lt; 台東) 有一條河。</TRANSL>
-        <TRANSL xml:lang="eng">Eastward (&lt; Taitung) there is a river.</TRANSL>
+        <TRANSL xml:lang="zho" notes="東邊 (&lt; 台東) 有一條河。">東邊 有一條河。</TRANSL>
+        <TRANSL xml:lang="eng" notes="Eastward (&lt; Taitung) there is a river.">Eastward there is a river.</TRANSL>
         <W id="64_S_16_W0">
             <FORM kindOf="original">mansia</FORM>
             <PHON kindOf="original">mansia</PHON>
@@ -292394,7 +292394,7 @@
         <FORM kindOf="standard">maisisianik mansia takau cia tu asang minsuma.</FORM>
         <PHON kindOf="standard">maiɕiɕianik manɕia takau ʨia tu asaŋ minsuma</PHON>
         <TRANSL xml:lang="zho">我是從南邊來的。</TRANSL>
-        <TRANSL xml:lang="eng">#e I'm coming from the south (&lt; Kaohsiung).</TRANSL>
+        <TRANSL xml:lang="eng" notes="#e I’m coming from the south (&lt; Kaohsiung).">#e I'm coming from the south .</TRANSL>
         <W id="64_S_18_W0">
             <FORM kindOf="original">maisisian=ik</FORM>
             <PHON kindOf="original">maisisianik</PHON>
@@ -292882,7 +292882,7 @@
         <FORM kindOf="standard">iskusiaku tutungtung hai mahuspu.</FORM>
         <PHON kindOf="standard">iskuɕiaku tutuŋtuŋ [x|χ]ai ma[x|χ]uspu</PHON>
         <TRANSL xml:lang="zho">我用來釘釘子的錘子很重。</TRANSL>
-        <TRANSL xml:lang="eng">The hammer (&lt; thing used to hit nails) I use is heavy.</TRANSL>
+        <TRANSL xml:lang="eng" notes="The hammer (&lt; thing used to hit nails) I use is heavy.">The hammer I use is heavy.</TRANSL>
         <W id="64_S_21_W0">
             <FORM kindOf="original">is-kusia=ku</FORM>
             <PHON kindOf="original">iskusiaku</PHON>
@@ -292985,7 +292985,7 @@
         <PHON kindOf="original">takna nii tu minsumaa [x|χ]ai puna[x|χ]tuŋanku sainʨin maun [x|χ]aisiŋ</PHON>
         <FORM kindOf="standard">takna nii tu minsumaa hai punahtunganku saincin maun haising.</FORM>
         <PHON kindOf="standard">takna nii tu minsumaa [x|χ]ai puna[x|χ]tuŋanku sainʨin maun [x|χ]aiɕiŋ</PHON>
-        <TRANSL xml:lang="zho">昨天沒有來的（那個）在這個餐廳吃飯。</TRANSL>
+        <TRANSL xml:lang="zho" notes="昨天沒有來的（那個）在這個餐廳吃飯。">昨天沒有來的 在這個餐廳吃飯。</TRANSL>
         <TRANSL xml:lang="eng">The one that did not come yesterday is eating in this restaurant.</TRANSL>
         <W id="64_S_22_W0">
             <FORM kindOf="original">takna</FORM>
@@ -293178,7 +293178,7 @@
         <FORM kindOf="standard">niiik haiap tu punpia itu bunun mabananaz zas mahtuin minamu malahtangia.</FORM>
         <PHON kindOf="standard">niiik [x|χ]aiap tu punpia itu bunun mabananað ðas ma[x|χ]tuin minamu ma[l|ɬ]a[x|χ]taŋia</PHON>
         <TRANSL xml:lang="zho">我不知道男生要幾歲就可以參與射耳祭。</TRANSL>
-        <TRANSL xml:lang="eng">I don't know how many (years) Bunun boys have to have when they can participate in the Ear-Shooting ceremony.</TRANSL>
+        <TRANSL xml:lang="eng" notes="I don’t know how many (years) Bunun boys have to have when they can participate in the Ear-Shooting ceremony.">I don't know how many Bunun boys have to have when they can participate in the Ear-Shooting ceremony.</TRANSL>
         <W id="64_S_23_W0">
             <FORM kindOf="original">nii=ik</FORM>
             <PHON kindOf="original">niiik</PHON>
@@ -297515,7 +297515,7 @@
         <FORM kindOf="standard">takna tu sanavan ta'azaik tamahudas tu tu'ia sing'av.</FORM>
         <PHON kindOf="standard">takna tu sanavan taʔaðaik tama[x|χ]udas tu tuʔia ɕiŋʔav</PHON>
         <TRANSL xml:lang="zho">昨天晚上我聽到打雷的聲音。</TRANSL>
-        <TRANSL xml:lang="eng">Yesterday evening I heard the sound of thunder (and storm).</TRANSL>
+        <TRANSL xml:lang="eng" notes="Yesterday evening I heard the sound of thunder (and storm).">Yesterday evening I heard the sound of thunder .</TRANSL>
         <W id="64_S_59_W0">
             <FORM kindOf="original">takna</FORM>
             <PHON kindOf="original">takna</PHON>

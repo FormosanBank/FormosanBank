@@ -1095,7 +1095,7 @@
         <PHON kindOf="original">puɾe ta oju puɾe ta ido t a tɾima ta laqi</PHON>
         <FORM kindOf="standard">pure ta oyu. pure ta ido. t a trima ta laqi.</FORM>
         <PHON kindOf="standard">puɾe ta oju puɾe ta ido t a tɾima ta laqi</PHON>
-        <TRANSL xml:lang="zho">(然後)我們煮洗澡水和煮飯。我們給小孩洗澡。</TRANSL>
+        <TRANSL xml:lang="zho" notes="(然後)我們煮洗澡水和煮飯。我們給小孩洗澡。">我們煮洗澡水和煮飯。我們給小孩洗澡。</TRANSL>
         <TRANSL xml:lang="eng">And then we boil water and cooked rice. We bathed the children.</TRANSL>
         <AUDIO file="sdqCon-dialog4_robo_bakan_ape 2020s_S12.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/sdqCon-dialog4_robo_bakan_ape.mp3" start="24.03" end="28.95"/>
         <W id="sdqCon-dialog4_robo_bakan_ape 2020s_S_12_W0">
@@ -4112,7 +4112,7 @@
         <FORM kindOf="standard">wada ta riyun icineng bale di na.</FORM>
         <PHON kindOf="standard">wada ta ɾijun iʦineŋ bale di na</PHON>
         <TRANSL xml:lang="zho">真的我們沒有錢。為了讓小孩去學校讀書，我們一年就挖了。</TRANSL>
-        <TRANSL xml:lang="eng">We really had no money. To let children study at school, we dug (the cassavas) in only one year.</TRANSL>
+        <TRANSL xml:lang="eng" notes="We really had no money. To let children study at school, we dug (the cassavas) in only one year.">We really had no money. To let children study at school, we dug in only one year.</TRANSL>
         <AUDIO file="sdqCon-dialog4_robo_bakan_ape 2020s_S53.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/sdqCon-dialog4_robo_bakan_ape.mp3" start="90.0" end="93.06"/>
         <W id="sdqCon-dialog4_robo_bakan_ape 2020s_S_53_W0">
             <FORM kindOf="original">wada=ta</FORM>
@@ -9666,17 +9666,23 @@
             <PHON kindOf="original">doojuŋmu</PHON>
             <FORM kindOf="standard">dooyung=mu</FORM>
             <PHON kindOf="standard">doojuŋmu</PHON>
+            <TRANSL xml:lang="zho" kindOf="original">抓=1SG.屬格</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">grab=1SG.GEN</TRANSL>
             <M id="sdqCon-dialog4_robo_bakan_ape 2020s_S_134_W15M0">
                 <FORM kindOf="original">dooyung</FORM>
                 <PHON kindOf="original">doojuŋ</PHON>
                 <FORM kindOf="standard">dooyung</FORM>
                 <PHON kindOf="standard">doojuŋ</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">抓</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">grab</TRANSL>
             </M>
             <M id="sdqCon-dialog4_robo_bakan_ape 2020s_S_134_W15M1">
-                <FORM kindOf="original">mu</FORM>
+                <FORM kindOf="original">=mu</FORM>
                 <PHON kindOf="original">mu</PHON>
-                <FORM kindOf="standard">mu</FORM>
+                <FORM kindOf="standard">=mu</FORM>
                 <PHON kindOf="standard">mu</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">1SG.屬格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1SG.GEN</TRANSL>
             </M>
         </W>
         <W id="sdqCon-dialog4_robo_bakan_ape 2020s_S_134_W16">

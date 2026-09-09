@@ -68,10 +68,8 @@ finish_tiers() {     # $1 = work dir
   "$PIPE/run_standard_and_phon.sh" "$W" "$CTABLES" 2>&1 | tail -4
 }
 
-# Some repair scripts are fail-closed against a whole-corpus witness manifest
-# and cannot pass when handed a single subcorpus. They were tolerated the same
-# way in the audit runs, i.e. they are currently no-ops here; see the "Known
-# no-ops" section of README.md before changing this.
+# mark_original_glosses is witness-gated and conservatively skips files whose
+# tier vintage it cannot confirm; a skip is not an error here.
 run_opt() { step "$1 (tolerated)"; shift; "$PY" "$@" 2>&1 | tail -1 || true; }
 
 install_into() {     # $1 = work dir, $2 = XML subdir name
@@ -96,7 +94,6 @@ build_grammar() {
   run "split_optional_parentheticals"   "$SCR/split_optional_parentheticals.py" --xml_dir "$W"
   run "resolve_inline_parentheticals"   "$SCR/resolve_inline_parentheticals.py" --xml_dir "$W"
   run "remove_empty_translations"       "$SCR/remove_empty_translations.py" --xml-dir "$W"
-  run_opt "repair_translation_parentheticals" "$SCR/repair_translation_parentheticals.py" --xml-dir "$W"
   run "propagate_clitic_boundaries"     "$SCR/propagate_clitic_boundaries.py" --xml_dir "$W"
   finish_tiers "$W"
   install_into "$W" Grammar
@@ -127,8 +124,7 @@ build_flat() {       # $1 = sentences|stories
   run "resolve_residual_optional_parens" "$SCR/resolve_residual_optional_parens.py" --xml_dir "$W"
   run "split_optional_parentheticals"   "$SCR/split_optional_parentheticals.py" --xml_dir "$W"
   run "remove_empty_translations"       "$SCR/remove_empty_translations.py" --xml-dir "$W"
-  run_opt "propagate_clitic_boundaries"   "$SCR/propagate_clitic_boundaries.py" --xml_dir "$W"
-  run_opt "repair_translation_parentheticals" "$SCR/repair_translation_parentheticals.py" --xml-dir "$W"
+  run "propagate_clitic_boundaries"      "$SCR/propagate_clitic_boundaries.py" --xml_dir "$W"
   finish_tiers "$W"
   install_into "$W" "$out"
 }

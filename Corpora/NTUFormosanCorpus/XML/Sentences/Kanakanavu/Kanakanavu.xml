@@ -918,7 +918,7 @@
         <FORM kindOf="standard">'una tassa sasaronai na pipining.</FORM>
         <PHON kindOf="standard">ʔuna tassa sasa[r|ɾ]onai na pipiniŋ</PHON>
         <TRANSL xml:lang="zho">有兩個人在外面。</TRANSL>
-        <TRANSL xml:lang="eng">There are two men outside. (lit. There are two men in the yard.)</TRANSL>
+        <TRANSL xml:lang="eng" notes="There are two men outside. (lit. There are two men in the yard.)">There are two men outside.</TRANSL>
         <W id="1_S_13_W0">
             <FORM kindOf="original">'una</FORM>
             <PHON kindOf="original">ʔuna</PHON>
@@ -1150,7 +1150,7 @@
         <FORM kindOf="standard">sua Pani ia, nikʉmʉʉn tammi.</FORM>
         <PHON kindOf="standard">sua pani ia nikɨmɨɨn tammi</PHON>
         <TRANSL xml:lang="zho">Pani吃了地瓜。</TRANSL>
-        <TRANSL xml:lang="eng">Pani ate sweet potatoes. (lit. As for Pani, he ate sweet potatoes.)</TRANSL>
+        <TRANSL xml:lang="eng" notes="Pani ate sweet potatoes. (lit. As for Pani, he ate sweet potatoes.)">Pani ate sweet potatoes.</TRANSL>
         <W id="1_S_15_W0">
             <FORM kindOf="original">sua</FORM>
             <PHON kindOf="original">sua</PHON>
@@ -1254,7 +1254,7 @@
         <FORM kindOf="standard">sua tammi ia, nikʉʉn Pani.</FORM>
         <PHON kindOf="standard">sua tammi ia nikɨɨn pani</PHON>
         <TRANSL xml:lang="zho">Pani吃了地瓜。</TRANSL>
-        <TRANSL xml:lang="eng">Pani ate the sweet potatoes (lit. As for the sweet potatoes, Pani ate them.)</TRANSL>
+        <TRANSL xml:lang="eng" notes="Pani ate the sweet potatoes (lit. As for the sweet potatoes, Pani ate them.)">Pani ate the sweet potatoes</TRANSL>
         <W id="1_S_16_W0">
             <FORM kindOf="original">sua</FORM>
             <PHON kindOf="original">sua</PHON>
@@ -1350,7 +1350,7 @@
         <FORM kindOf="standard">sua cumamaku ia, Mu'u.</FORM>
         <PHON kindOf="standard">sua ʦumamaku ia muʔu</PHON>
         <TRANSL xml:lang="zho">我爸爸是Mu'u。</TRANSL>
-        <TRANSL xml:lang="eng">My father is Mu'u. (lit. As for my father, (it is) Mu'u.)</TRANSL>
+        <TRANSL xml:lang="eng" notes="My father is Mu'u. (lit. As for my father, (it is) Mu'u.)">My father is Mu'u.</TRANSL>
         <W id="1_S_17_W0">
             <FORM kindOf="original">sua</FORM>
             <PHON kindOf="original">sua</PHON>
@@ -1429,8 +1429,8 @@
         <PHON kindOf="original">maʦaŋʦaŋar*ku ŋuain</PHON>
         <FORM kindOf="standard">macangcangarʉku nguain.</FORM>
         <PHON kindOf="standard">maʦaŋʦaŋa[r|ɾ]ɨku ŋuain</PHON>
-        <TRANSL xml:lang="zho">我/你/他（她）很快樂。</TRANSL>
-        <TRANSL xml:lang="eng">I am/You are/(S)He is happy.</TRANSL>
+        <TRANSL xml:lang="zho" notes="我/你/他（她）很快樂。">我/你/他 很快樂。</TRANSL>
+        <TRANSL xml:lang="eng" notes="I am/You are/(S)He is happy.">I am/You are/ He is happy.</TRANSL>
         <W id="1_S_18_W0">
             <FORM kindOf="original" notes="competing readings (POL-027, pending split): =kasu">ma-cangcangarʉ=ku</FORM>
             <PHON kindOf="original">maʦaŋʦaŋar*ku</PHON>
@@ -1479,8 +1479,8 @@
         <PHON kindOf="original">putukikiokita ŋuani</PHON>
         <FORM kindOf="standard">putukikiokita nguani.</FORM>
         <PHON kindOf="standard">putukikiokita ŋuani</PHON>
-        <TRANSL xml:lang="zho">我們（包含）/我們（排除）/你們/他們工作。</TRANSL>
-        <TRANSL xml:lang="eng">We(INCL)/We(EXCL)/You/They work.</TRANSL>
+        <TRANSL xml:lang="zho" notes="我們（包含）/我們（排除）/你們/他們工作。">我們 /我們 /你們/他們工作。</TRANSL>
+        <TRANSL xml:lang="eng" notes="We(INCL)/We(EXCL)/You/They work.">We /We /You/They work.</TRANSL>
         <W id="1_S_19_W0">
             <FORM kindOf="original" notes="competing readings (POL-027, pending split): kiim / kamu">putukikio=kita</FORM>
             <PHON kindOf="original">putukikiokita</PHON>
@@ -1523,8 +1523,8 @@
         <PHON kindOf="original">tarakanaŋ pani ʔikua</PHON>
         <FORM kindOf="standard">tarakanang Pani 'ikua</FORM>
         <PHON kindOf="standard">ta[r|ɾ]akanaŋ pani ʔikua</PHON>
-        <TRANSL xml:lang="zho">Pani認識我/你/他（她）。</TRANSL>
-        <TRANSL xml:lang="eng">Pani knows me/you/him(/her).</TRANSL>
+        <TRANSL xml:lang="zho" notes="Pani認識我/你/他（她）。">Pani認識我/你/他 。</TRANSL>
+        <TRANSL xml:lang="eng" notes="Pani knows me/you/him(/her).">Pani knows me/you/him .</TRANSL>
         <W id="1_S_20_W0">
             <FORM kindOf="original">tarakanang</FORM>
             <PHON kindOf="original">tarakanaŋ</PHON>
@@ -1573,8 +1573,8 @@
         <PHON kindOf="original">manmaan muʔu kitana</PHON>
         <FORM kindOf="standard">manmaan Mu'u kitana</FORM>
         <PHON kindOf="standard">manmaan muʔu kitana</PHON>
-        <TRANSL xml:lang="zho">Mu'u喜歡我們（包含）/我們（排除）/你們/他們。</TRANSL>
-        <TRANSL xml:lang="eng">Mu'u likes us(INCL)/us(EXCL)/you/them.</TRANSL>
+        <TRANSL xml:lang="zho" notes="Mu'u喜歡我們（包含）/我們（排除）/你們/他們。">Mu'u喜歡我們 /我們 /你們/他們。</TRANSL>
+        <TRANSL xml:lang="eng" notes="Mu'u likes us(INCL)/us(EXCL)/you/them.">Mu'u likes us /us /you/them.</TRANSL>
         <W id="1_S_21_W0">
             <FORM kindOf="original">manmaan</FORM>
             <PHON kindOf="original">manmaan</PHON>
@@ -1621,8 +1621,8 @@
         <PHON kindOf="original">tarakanaŋku ŋuain pani</PHON>
         <FORM kindOf="standard">tarakanangku nguain Pani.</FORM>
         <PHON kindOf="standard">ta[r|ɾ]akanaŋku ŋuain pani</PHON>
-        <TRANSL xml:lang="zho">我/你/他（她）認識Pani。</TRANSL>
-        <TRANSL xml:lang="eng">I/You/(S)He know(s) Pani.</TRANSL>
+        <TRANSL xml:lang="zho" notes="我/你/他（她）認識Pani。">我/你/他 認識Pani。</TRANSL>
+        <TRANSL xml:lang="eng" notes="I/You/(S)He know(s) Pani.">I/You/ He know Pani.</TRANSL>
         <W id="1_S_22_W0">
             <FORM kindOf="original" notes="competing readings (POL-027, pending split): kasu">tarakanang=ku</FORM>
             <PHON kindOf="original">tarakanaŋku</PHON>
@@ -1681,8 +1681,8 @@
         <PHON kindOf="original">manmaankita ŋuani muʔu</PHON>
         <FORM kindOf="standard">manmaankita nguani Mu'u.</FORM>
         <PHON kindOf="standard">manmaankita ŋuani muʔu</PHON>
-        <TRANSL xml:lang="zho">我們（包含）/我們（排除）/你們/他們喜歡Mu'u。</TRANSL>
-        <TRANSL xml:lang="eng">We(INCL)/We(EXCL)/You/They like Mu'u.</TRANSL>
+        <TRANSL xml:lang="zho" notes="我們（包含）/我們（排除）/你們/他們喜歡Mu'u。">我們 /我們 /你們/他們喜歡Mu'u。</TRANSL>
+        <TRANSL xml:lang="eng" notes="We(INCL)/We(EXCL)/You/They like Mu'u.">We /We /You/They like Mu'u.</TRANSL>
         <W id="1_S_23_W0">
             <FORM kindOf="original" notes="competing readings (POL-027, pending split): =kiim / =kamu">manmaan=kita</FORM>
             <PHON kindOf="original">manmaankita</PHON>
@@ -1741,8 +1741,8 @@
         <PHON kindOf="original">nik**nmaku ʦunuku</PHON>
         <FORM kindOf="standard">nikʉʉnmaku cunuku.</FORM>
         <PHON kindOf="standard">nikɨɨnmaku ʦunuku</PHON>
-        <TRANSL xml:lang="zho">我/你/他（她）吃了麻糬。</TRANSL>
-        <TRANSL xml:lang="eng">I/You/(S)He ate rice cakes.</TRANSL>
+        <TRANSL xml:lang="zho" notes="我/你/他（她）吃了麻糬。">我/你/他 吃了麻糬。</TRANSL>
+        <TRANSL xml:lang="eng" notes="I/You/(S)He ate rice cakes.">I/You/ He ate rice cakes.</TRANSL>
         <W id="1_S_24_W0">
             <FORM kindOf="original" notes="competing readings (POL-027, pending split): musu / kee">ni-kʉʉn=maku</FORM>
             <PHON kindOf="original">nik**nmaku</PHON>
@@ -1791,8 +1791,8 @@
         <PHON kindOf="original">niaramita ʦanumu</PHON>
         <FORM kindOf="standard">niaramita canumu.</FORM>
         <PHON kindOf="standard">nia[r|ɾ]amita ʦanumu</PHON>
-        <TRANSL xml:lang="zho">我們（包含）/我們（排除）/你們/他們拿了水。</TRANSL>
-        <TRANSL xml:lang="eng">We(INCL)/We(EXCL)/You/They took the water.</TRANSL>
+        <TRANSL xml:lang="zho" notes="我們（包含）/我們（排除）/你們/他們拿了水。">我們 /我們 /你們/他們拿了水。</TRANSL>
+        <TRANSL xml:lang="eng" notes="We(INCL)/We(EXCL)/You/They took the water.">We /We /You/They took the water.</TRANSL>
         <W id="1_S_25_W0">
             <FORM kindOf="original" notes="competing readings (POL-027, pending split): mia / mu / kee">ni-ara=mita</FORM>
             <PHON kindOf="original">niaramita</PHON>
@@ -1841,8 +1841,8 @@
         <PHON kindOf="original">ʦanumumaku iisi</PHON>
         <FORM kindOf="standard">canumumaku iisi.</FORM>
         <PHON kindOf="standard">ʦanumumaku iisi</PHON>
-        <TRANSL xml:lang="zho">這是我的/你的/他(她)的水。</TRANSL>
-        <TRANSL xml:lang="eng">This is my/your/his(/her) water.</TRANSL>
+        <TRANSL xml:lang="zho" notes="這是我的/你的/他(她)的水。">這是我的/你的/他 的水。</TRANSL>
+        <TRANSL xml:lang="eng" notes="This is my/your/his(/her) water.">This is my/your/his water.</TRANSL>
         <W id="1_S_26_W0">
             <FORM kindOf="original" notes="competing readings (POL-027, pending split): =musu / =in">canumu=maku</FORM>
             <PHON kindOf="original">ʦanumumaku</PHON>
@@ -1885,8 +1885,8 @@
         <PHON kindOf="original">taʦaumita iisa</PHON>
         <FORM kindOf="standard">tacaumita iisa.</FORM>
         <PHON kindOf="standard">taʦaumita iisa</PHON>
-        <TRANSL xml:lang="zho">那是我們的（包含）/我們的（排除）/你們的/他們的狗。</TRANSL>
-        <TRANSL xml:lang="eng">That is our(INCL)/our(EXCL)/your/their dog.</TRANSL>
+        <TRANSL xml:lang="zho" notes="那是我們的（包含）/我們的（排除）/你們的/他們的狗。">那是我們的 /我們的 /你們的/他們的狗。</TRANSL>
+        <TRANSL xml:lang="eng" notes="That is our(INCL)/our(EXCL)/your/their dog.">That is our /our /your/their dog.</TRANSL>
         <W id="1_S_27_W0">
             <FORM kindOf="original" notes="competing readings (POL-027, pending split): mia / mu / ni">tacau=mita</FORM>
             <PHON kindOf="original">taʦaumita</PHON>
@@ -1929,8 +1929,8 @@
         <PHON kindOf="original">sua iiku ia kumak**n tammi</PHON>
         <FORM kindOf="standard">sua iiku ia, kumakʉʉn tammi.</FORM>
         <PHON kindOf="standard">sua iiku ia kumakɨɨn tammi</PHON>
-        <TRANSL xml:lang="zho">我/你/他（她）吃地瓜。</TRANSL>
-        <TRANSL xml:lang="eng">I/You/(S)He eat(s) sweet potatoes. (lit. As for me/you/him(/her), I/you/s(he) eat(s) potatoes.)</TRANSL>
+        <TRANSL xml:lang="zho" notes="我/你/他（她）吃地瓜。">我/你/他 吃地瓜。</TRANSL>
+        <TRANSL xml:lang="eng" notes="I/You/(S)He eat(s) sweet potatoes. (lit. As for me/you/him(/her), I/you/s(he) eat(s) potatoes.)">I/You/ He eat sweet potatoes.</TRANSL>
         <W id="1_S_28_W0">
             <FORM kindOf="original">sua</FORM>
             <PHON kindOf="original">sua</PHON>
@@ -2025,8 +2025,8 @@
         <PHON kindOf="original">sua iikita ia niarivuraʔ* ʔaŋai</PHON>
         <FORM kindOf="standard">sua iikita ia, niarivura'ʉ 'angai.</FORM>
         <PHON kindOf="standard">sua iikita ia nia[r|ɾ]ivu[r|ɾ]aʔɨ ʔaŋai</PHON>
-        <TRANSL xml:lang="zho">'angai打了我們（包含）/我們（排除）/你們/他們。</TRANSL>
-        <TRANSL xml:lang="eng">'angai hit us(INCL)/us(EXCL)/you/them. (lit. As for us(EXCL)/us(EXCL)/you/them, 'angai hit us/us/you/them.)</TRANSL>
+        <TRANSL xml:lang="zho" notes="'angai打了我們（包含）/我們（排除）/你們/他們。">'angai打了我們 /我們 /你們/他們。</TRANSL>
+        <TRANSL xml:lang="eng" notes="'angai hit us(INCL)/us(EXCL)/you/them. (lit. As for us(EXCL)/us(EXCL)/you/them, 'angai hit us/us/you/them.)">'angai hit us /us /you/them.</TRANSL>
         <W id="1_S_29_W0">
             <FORM kindOf="original">sua</FORM>
             <PHON kindOf="original">sua</PHON>
@@ -2354,7 +2354,7 @@
         <FORM kindOf="standard">mara vutukuru sua mamanu.</FORM>
         <PHON kindOf="standard">ma[r|ɾ]a vutuku[r|ɾ]u sua mamanu</PHON>
         <TRANSL xml:lang="zho">小孩子拿魚。</TRANSL>
-        <TRANSL xml:lang="eng">(The) children take (the) fish.</TRANSL>
+        <TRANSL xml:lang="eng" notes="(The) children take (the) fish.">children take fish.</TRANSL>
         <W id="1_S_34_W0">
             <FORM kindOf="original">m-ara</FORM>
             <PHON kindOf="original">mara</PHON>
@@ -2545,8 +2545,8 @@
         <PHON kindOf="original">nik*m**nku ʦunuku iisi</PHON>
         <FORM kindOf="standard">nikʉmʉʉnku cunuku iisi</FORM>
         <PHON kindOf="standard">nikɨmɨɨnku ʦunuku iisi</PHON>
-        <TRANSL xml:lang="zho">我吃這個（這些）/那個（那些）麻糬。</TRANSL>
-        <TRANSL xml:lang="eng">I eat this(these)/that(those) rice cakes.</TRANSL>
+        <TRANSL xml:lang="zho" notes="我吃這個（這些）/那個（那些）麻糬。">我吃這個 /那個 麻糬。</TRANSL>
+        <TRANSL xml:lang="eng" notes="I eat this(these)/that(those) rice cakes.">I eat this /that rice cakes.</TRANSL>
         <W id="1_S_36_W0">
             <FORM kindOf="original">ni-k&lt;ʉm&gt;ʉʉn=ku</FORM>
             <PHON kindOf="original">nik*m**nku</PHON>
@@ -2787,7 +2787,7 @@
         <FORM kindOf="standard">tatia iiku tamna karavung.</FORM>
         <PHON kindOf="standard">tatia iiku tamna ka[r|ɾ]avuŋ</PHON>
         <TRANSL xml:lang="zho">我的牛很大。</TRANSL>
-        <TRANSL xml:lang="eng">My ox(en) is/are big.</TRANSL>
+        <TRANSL xml:lang="eng" notes="My ox(en) is/are big.">My ox is/are big.</TRANSL>
         <W id="1_S_39_W0">
             <FORM kindOf="original">tatia</FORM>
             <PHON kindOf="original">tatia</PHON>
@@ -3209,7 +3209,7 @@
         <FORM kindOf="standard">'akia tammimaku.</FORM>
         <PHON kindOf="standard">ʔakia tammimaku</PHON>
         <TRANSL xml:lang="zho">我沒有地瓜。</TRANSL>
-        <TRANSL xml:lang="eng">I don't have sweet potatoes. (lit. My sweet potatoes don't exist.)</TRANSL>
+        <TRANSL xml:lang="eng" notes="I don't have sweet potatoes. (lit. My sweet potatoes don't exist.)">I don't have sweet potatoes.</TRANSL>
         <W id="1_S_45_W0">
             <FORM kindOf="original">'akia</FORM>
             <PHON kindOf="original">ʔakia</PHON>
@@ -4185,7 +4185,7 @@
         <FORM kindOf="standard">'angaicu.</FORM>
         <PHON kindOf="standard">ʔaŋaiʦu</PHON>
         <TRANSL xml:lang="zho">換'angai了。</TRANSL>
-        <TRANSL xml:lang="eng">It's 'angai's turn. (lit. (It's) already 'angai.)</TRANSL>
+        <TRANSL xml:lang="eng" notes="It's 'angai's turn. (lit. (It's) already 'angai.)">It's 'angai's turn.</TRANSL>
         <W id="1_S_59_W0">
             <FORM kindOf="original">'angai=cu</FORM>
             <PHON kindOf="original">ʔaŋaiʦu</PHON>
@@ -4848,7 +4848,7 @@
         <PHON kindOf="original">nivatuʦu sua nimova pani sinat*</PHON>
         <FORM kindOf="standard">nivatucu sua nimova Pani sinatʉ.</FORM>
         <PHON kindOf="standard">nivatuʦu sua nimova pani sinatɨ</PHON>
-        <TRANSL xml:lang="zho">給我書的（人）來了。</TRANSL>
+        <TRANSL xml:lang="zho" notes="給我書的（人）來了。">給我書的 來了。</TRANSL>
         <TRANSL xml:lang="eng">Those who gave me books came.</TRANSL>
         <W id="1_S_66_W0">
             <FORM kindOf="original">ni-vatu=cu</FORM>
@@ -4976,7 +4976,7 @@
         <PHON kindOf="original">ʦinim*ʔ*raku niarisinat*k[e|ə][e|ə]</PHON>
         <FORM kindOf="standard">cinimʉ'ʉraku niarisinatʉkee.</FORM>
         <PHON kindOf="standard">ʦinimɨʔɨ[r|ɾ]aku nia[r|ɾ]isinatɨkee</PHON>
-        <TRANSL xml:lang="zho">我讀了他寫的（東西）。</TRANSL>
+        <TRANSL xml:lang="zho" notes="我讀了他寫的（東西）。">我讀了他寫的 。</TRANSL>
         <TRANSL xml:lang="eng">I read those he wrote.</TRANSL>
         <W id="1_S_67_W0">
             <FORM kindOf="original">c&lt;in&gt;imʉ'ʉra=ku</FORM>
@@ -5057,7 +5057,7 @@
         <FORM kindOf="standard">nivatucu sua nimova Pani sinatʉ cau.</FORM>
         <PHON kindOf="standard">nivatuʦu sua nimova pani sinatɨ ʦau</PHON>
         <TRANSL xml:lang="zho">給我書的人來了。</TRANSL>
-        <TRANSL xml:lang="eng">The person(s) who gave me books came.</TRANSL>
+        <TRANSL xml:lang="eng" notes="The person(s) who gave me books came.">The person who gave me books came.</TRANSL>
         <W id="1_S_68_W0">
             <FORM kindOf="original">ni-vatu=cu</FORM>
             <PHON kindOf="original">nivatuʦu</PHON>
@@ -5201,7 +5201,7 @@
         <FORM kindOf="standard">nivatucu sua cau nimova Pani sinatʉ.</FORM>
         <PHON kindOf="standard">nivatuʦu sua ʦau nimova pani sinatɨ</PHON>
         <TRANSL xml:lang="zho">給我書的人來了。</TRANSL>
-        <TRANSL xml:lang="eng">The person(s) who gave me books came.</TRANSL>
+        <TRANSL xml:lang="eng" notes="The person(s) who gave me books came.">The person who gave me books came.</TRANSL>
         <W id="1_S_69_W0">
             <FORM kindOf="original">ni-vatu=cu</FORM>
             <PHON kindOf="original">nivatuʦu</PHON>
@@ -5345,7 +5345,7 @@
         <FORM kindOf="standard">cinimʉ'ʉraku niarisinatʉkee tingami.</FORM>
         <PHON kindOf="standard">ʦinimɨʔɨ[r|ɾ]aku nia[r|ɾ]isinatɨkee tiŋami</PHON>
         <TRANSL xml:lang="zho">我讀了他寫的信。</TRANSL>
-        <TRANSL xml:lang="eng">I read the letter(s) which he wrote.</TRANSL>
+        <TRANSL xml:lang="eng" notes="I read the letter(s) which he wrote.">I read the letter which he wrote.</TRANSL>
         <W id="1_S_70_W0">
             <FORM kindOf="original">c&lt;in&gt;imʉ'ʉra=ku</FORM>
             <PHON kindOf="original">ʦinim*ʔ*raku</PHON>
@@ -5441,7 +5441,7 @@
         <FORM kindOf="standard">cinimʉ'ʉraku tingami niarisinatʉkee.</FORM>
         <PHON kindOf="standard">ʦinimɨʔɨ[r|ɾ]aku tiŋami nia[r|ɾ]isinatɨkee</PHON>
         <TRANSL xml:lang="zho">我讀了他寫的信。</TRANSL>
-        <TRANSL xml:lang="eng">I read the letter(s) which he wrote.</TRANSL>
+        <TRANSL xml:lang="eng" notes="I read the letter(s) which he wrote.">I read the letter which he wrote.</TRANSL>
         <W id="1_S_71_W0">
             <FORM kindOf="original">c&lt;in&gt;imʉ'ʉra=ku</FORM>
             <PHON kindOf="original">ʦinim*ʔ*raku</PHON>
@@ -5800,8 +5800,8 @@
         <PHON kindOf="original">tuturo tasusa iisi masi kanakanavu</PHON>
         <FORM kindOf="standard">tuturo tasusa iisi masi Kanakanavu.</FORM>
         <PHON kindOf="standard">tutu[r|ɾ]o tasusa iisi masi kanakanavu</PHON>
-        <TRANSL xml:lang="zho">教那兩個（人）講卡那卡那富語！</TRANSL>
-        <TRANSL xml:lang="eng">Tell the two (people) how to say Kanakanavu!</TRANSL>
+        <TRANSL xml:lang="zho" notes="教那兩個（人）講卡那卡那富語！">教那兩個 講卡那卡那富語！</TRANSL>
+        <TRANSL xml:lang="eng" notes="Tell the two (people) how to say Kanakanavu!">Tell the two how to say Kanakanavu!</TRANSL>
         <W id="1_S_75_W0">
             <FORM kindOf="original">tutur-o</FORM>
             <PHON kindOf="original">tuturo</PHON>
@@ -6024,7 +6024,7 @@
         <PHON kindOf="original">rumaravisan uʦani</PHON>
         <FORM kindOf="standard">rumaravisan ucani.</FORM>
         <PHON kindOf="standard">[r|ɾ]uma[r|ɾ]avisan uʦani</PHON>
-        <TRANSL xml:lang="zho">拔一（根）看看。</TRANSL>
+        <TRANSL xml:lang="zho" notes="拔一（根）看看。">拔一 看看。</TRANSL>
         <TRANSL xml:lang="eng">Try to pull one!</TRANSL>
         <W id="1_S_77_W0">
             <FORM kindOf="original">r&lt;um&gt;a-ravis-an</FORM>
@@ -7089,7 +7089,7 @@
         <PHON kindOf="original">manas* uruʦin *m**na sua nivatu</PHON>
         <FORM kindOf="standard">manasʉ urucin ʉmʉʉna sua nivatu.</FORM>
         <PHON kindOf="standard">manasɨ u[r|ɾ]uʦin ɨmɨɨna sua nivatu</PHON>
-        <TRANSL xml:lang="zho">來的（人）大約兩百。</TRANSL>
+        <TRANSL xml:lang="zho" notes="來的（人）大約兩百。">來的 大約兩百。</TRANSL>
         <TRANSL xml:lang="eng">Those that came are about two hundred.</TRANSL>
         <W id="1_S_89_W0">
             <FORM kindOf="original">manasʉ</FORM>
@@ -7329,7 +7329,7 @@
         <PHON kindOf="original">rarima vaŋata sua nivatu</PHON>
         <FORM kindOf="standard">rarima vangata sua nivatu.</FORM>
         <PHON kindOf="standard">[r|ɾ]a[r|ɾ]ima vaŋata sua nivatu</PHON>
-        <TRANSL xml:lang="zho">來的（人）多於五個。</TRANSL>
+        <TRANSL xml:lang="zho" notes="來的（人）多於五個。">來的 多於五個。</TRANSL>
         <TRANSL xml:lang="eng">Those who came were more than five.</TRANSL>
         <W id="1_S_91_W0">
             <FORM kindOf="original">ra-rima</FORM>
@@ -8319,7 +8319,7 @@
         <FORM kindOf="standard">uturucu cupiina sinatʉ sua cinʉʉ'ʉramaku.</FORM>
         <PHON kindOf="standard">utu[r|ɾ]uʦu ʦupiina sinatɨ sua ʦinɨɨʔɨ[r|ɾ]amaku</PHON>
         <TRANSL xml:lang="zho">我已經讀了三本書了。</TRANSL>
-        <TRANSL xml:lang="eng">I already read three volumes of books. (lit. Those were read by me were already three volumes of books.)</TRANSL>
+        <TRANSL xml:lang="eng" notes="I already read three volumes of books. (lit. Those were read by me were already three volumes of books.)">I already read three volumes of books.</TRANSL>
         <W id="1_S_102_W0">
             <FORM kindOf="original">u-turu=cu</FORM>
             <PHON kindOf="original">uturuʦu</PHON>
@@ -8575,7 +8575,7 @@
         <FORM kindOf="standard">masiin ia, upitucu takananga.</FORM>
         <PHON kindOf="standard">masiin ia upituʦu takanaŋa</PHON>
         <TRANSL xml:lang="zho">現在已經七點了。</TRANSL>
-        <TRANSL xml:lang="eng">(It) is already seven o'clock now.</TRANSL>
+        <TRANSL xml:lang="eng" notes="(It) is already seven o'clock now.">is already seven o'clock now.</TRANSL>
         <W id="1_S_105_W0">
             <FORM kindOf="original">masiin</FORM>
             <PHON kindOf="original">masiin</PHON>
@@ -9495,8 +9495,8 @@
         <PHON kindOf="original">ʦumaʦ*ʔ*raku kaʦaua</PHON>
         <FORM kindOf="standard">cumacʉ'ʉraku kacaua</FORM>
         <PHON kindOf="standard">ʦumaʦɨʔɨ[r|ɾ]aku kaʦaua</PHON>
-        <TRANSL xml:lang="zho">我看到很多/很少（人）。</TRANSL>
-        <TRANSL xml:lang="eng">I see many/few (persons).</TRANSL>
+        <TRANSL xml:lang="zho" notes="我看到很多/很少（人）。">我看到很多/很少 。</TRANSL>
+        <TRANSL xml:lang="eng" notes="I see many/few (persons).">I see many/few .</TRANSL>
         <W id="1_S_114_W0">
             <FORM kindOf="original">c&lt;um&gt;a-cʉ'ʉra=ku</FORM>
             <PHON kindOf="original">ʦumaʦ*ʔ*raku</PHON>
@@ -10072,7 +10072,7 @@
         <PHON kindOf="original">maʦakuar* sua nipoʔoʦipimaku ʔuru</PHON>
         <FORM kindOf="standard">macakuarʉ sua nipo'ocipimaku 'uru.</FORM>
         <PHON kindOf="standard">maʦakua[r|ɾ]ɨ sua nipoʔoʦipimaku ʔu[r|ɾ]u</PHON>
-        <TRANSL xml:lang="zho">我煮的飯很多/（只有）一點點。</TRANSL>
+        <TRANSL xml:lang="zho" notes="我煮的飯很多/（只有）一點點。">我煮的飯很多/ 一點點。</TRANSL>
         <TRANSL xml:lang="eng">The rice I cooked was much/little.</TRANSL>
         <W id="1_S_120_W0">
             <FORM kindOf="original" notes="competing readings (POL-027, pending split): ti'ing">macakuarʉ</FORM>
@@ -10177,7 +10177,7 @@
         <FORM kindOf="standard">'itumuroo nguain tamna, makangʉcoo iiku tamna.</FORM>
         <PHON kindOf="standard">ʔitumu[r|ɾ]oo ŋuain tamna makaŋɨʦoo iiku tamna</PHON>
         <TRANSL xml:lang="zho">讓他的多一點，讓我的少一點。</TRANSL>
-        <TRANSL xml:lang="eng">Let his be more, (and) let mine be less. (lit. Let his be much, let mine be little.)</TRANSL>
+        <TRANSL xml:lang="eng" notes="Let his be more, (and) let mine be less. (lit. Let his be much, let mine be little.)">Let his be more, let mine be less.</TRANSL>
         <W id="1_S_123_W0">
             <FORM kindOf="original">'itumur-oo</FORM>
             <PHON kindOf="original">ʔitumuroo</PHON>
@@ -10297,7 +10297,7 @@
         <FORM kindOf="standard">meecu'ukan Pani, miri'oo nguain tamna canumu.</FORM>
         <PHON kindOf="standard">meeʦuʔukan pani mi[r|ɾ]iʔoo ŋuain tamna ʦanumu</PHON>
         <TRANSL xml:lang="zho">Pani很渴，給他多一點水。</TRANSL>
-        <TRANSL xml:lang="eng">Pani is thirsty, (so) give him more water. (lit. Pani is thirsty, let his water be much.)</TRANSL>
+        <TRANSL xml:lang="eng" notes="Pani is thirsty, (so) give him more water. (lit. Pani is thirsty, let his water be much.)">Pani is thirsty, give him more water.</TRANSL>
         <W id="1_S_124_W0">
             <FORM kindOf="original">meecu'u=kan</FORM>
             <PHON kindOf="original">m[e|ə][e|ə]ʦuʔukan</PHON>
@@ -10416,8 +10416,8 @@
         <PHON kindOf="original">pasatumuroopa tapi moʦaʦu</PHON>
         <FORM kindOf="standard">pasatumuroopa tapi, mocacu.</FORM>
         <PHON kindOf="standard">pasatumu[r|ɾ]oopa tapi moʦaʦu</PHON>
-        <TRANSL xml:lang="zho">離開（之前）把簍子裝滿吧。</TRANSL>
-        <TRANSL xml:lang="eng">Fill your basket (before) going. (lit. Let your basket be full (before) going.)</TRANSL>
+        <TRANSL xml:lang="zho" notes="離開（之前）把簍子裝滿吧。">離開 把簍子裝滿吧。</TRANSL>
+        <TRANSL xml:lang="eng" notes="Fill your basket (before) going. (lit. Let your basket be full (before) going.)">Fill your basket going.</TRANSL>
         <W id="1_S_125_W0">
             <FORM kindOf="original">pa-sa-tumur-oo=pa</FORM>
             <PHON kindOf="original">pasatumuroopa</PHON>
@@ -10521,7 +10521,7 @@
         <FORM kindOf="standard">kipatʉsʉ mo'uma, kamʉcʉ pacakuarʉ araanuari.</FORM>
         <PHON kindOf="standard">kipatɨsɨ moʔuma kamɨʦɨ paʦakua[r|ɾ]ɨ a[r|ɾ]aanua[r|ɾ]i</PHON>
         <TRANSL xml:lang="zho">勤勞地做工，但願豐收。</TRANSL>
-        <TRANSL xml:lang="eng">(I would) do the farming diligently; if only the harvest could be much.</TRANSL>
+        <TRANSL xml:lang="eng" notes="(I would) do the farming diligently; if only the harvest could be much.">do the farming diligently; if only the harvest could be much.</TRANSL>
         <W id="1_S_126_W0">
             <FORM kindOf="original">kipatʉsʉ</FORM>
             <PHON kindOf="original">kipat*s*</PHON>
@@ -10632,8 +10632,8 @@
         <PHON kindOf="original">kaʦaua sun ʦau ʔaanku mokusa ʔinia</PHON>
         <FORM kindOf="standard">kacaua sun cau 'aanku mokusa 'inia.</FORM>
         <PHON kindOf="standard">kaʦaua sun ʦau ʔaanku mokusa ʔinia</PHON>
-        <TRANSL xml:lang="zho">那裡有（太）多人了，我不會去那裡。</TRANSL>
-        <TRANSL xml:lang="eng">There are (too) many people there, so I will not go there.</TRANSL>
+        <TRANSL xml:lang="zho" notes="那裡有（太）多人了，我不會去那裡。">那裡有 多人了，我不會去那裡。</TRANSL>
+        <TRANSL xml:lang="eng" notes="There are (too) many people there, so I will not go there.">There are many people there, so I will not go there.</TRANSL>
         <W id="1_S_127_W0">
             <FORM kindOf="original">kacaua</FORM>
             <PHON kindOf="original">kaʦaua</PHON>
@@ -10896,8 +10896,8 @@
         <PHON kindOf="original">kaʦaua aʦu ʔinia</PHON>
         <FORM kindOf="standard">kacaua acu 'inia.</FORM>
         <PHON kindOf="standard">kaʦaua aʦu ʔinia</PHON>
-        <TRANSL xml:lang="zho">很多（人）去了那裡。</TRANSL>
-        <TRANSL xml:lang="eng">Many (people) went there. (Intended: Most (people) went there.)</TRANSL>
+        <TRANSL xml:lang="zho" notes="很多（人）去了那裡。">很多 去了那裡。</TRANSL>
+        <TRANSL xml:lang="eng" notes="Many (people) went there. (Intended: Most (people) went there.)">Many went there.</TRANSL>
         <W id="1_S_130_W0">
             <FORM kindOf="original">kacaua</FORM>
             <PHON kindOf="original">kaʦaua</PHON>
@@ -10953,7 +10953,7 @@
         <FORM kindOf="standard">manu ia, 'itumuru nikʉʉnkee cunuku.</FORM>
         <PHON kindOf="standard">manu ia ʔitumu[r|ɾ]u nikɨɨnkee ʦunuku</PHON>
         <TRANSL xml:lang="zho">孩子吃了很多麻糬。</TRANSL>
-        <TRANSL xml:lang="eng">Children ate many rice cakes. (Intended: Children ate most rice cakes.)</TRANSL>
+        <TRANSL xml:lang="eng" notes="Children ate many rice cakes. (Intended: Children ate most rice cakes.)">Children ate many rice cakes.</TRANSL>
         <W id="1_S_131_W0">
             <FORM kindOf="original">manu</FORM>
             <PHON kindOf="original">manu</PHON>
@@ -11225,7 +11225,7 @@
         <FORM kindOf="standard">'una kanarua nanakʉmaku.</FORM>
         <PHON kindOf="standard">ʔuna kana[r|ɾ]ua nanakɨmaku</PHON>
         <TRANSL xml:lang="zho">我有妹妹。</TRANSL>
-        <TRANSL xml:lang="eng">I have (a) younger sister(s). (lit. My younger sister(s) exist(s).)</TRANSL>
+        <TRANSL xml:lang="eng" notes="I have (a) younger sister(s). (lit. My younger sister(s) exist(s).)">I have younger sister .</TRANSL>
         <W id="1_S_134_W0">
             <FORM kindOf="original">'una</FORM>
             <PHON kindOf="original">ʔuna</PHON>
@@ -11289,7 +11289,7 @@
         <FORM kindOf="standard">'unaku kanarua nanakʉ.</FORM>
         <PHON kindOf="standard">ʔunaku kana[r|ɾ]ua nanakɨ</PHON>
         <TRANSL xml:lang="zho">我有妹妹。</TRANSL>
-        <TRANSL xml:lang="eng">I have (a) younger sister(s).</TRANSL>
+        <TRANSL xml:lang="eng" notes="I have (a) younger sister(s).">I have younger sister .</TRANSL>
         <W id="1_S_135_W0">
             <FORM kindOf="original">'una=ku</FORM>
             <PHON kindOf="original">ʔunaku</PHON>
@@ -11353,7 +11353,7 @@
         <FORM kindOf="standard">'akia kanarua nanakʉmaku.</FORM>
         <PHON kindOf="standard">ʔakia kana[r|ɾ]ua nanakɨmaku</PHON>
         <TRANSL xml:lang="zho">我沒有妹妹。</TRANSL>
-        <TRANSL xml:lang="eng">I have no younger sister. (lit. My younger sister doesn't exist.)</TRANSL>
+        <TRANSL xml:lang="eng" notes="I have no younger sister. (lit. My younger sister doesn't exist.)">I have no younger sister.</TRANSL>
         <W id="1_S_136_W0">
             <FORM kindOf="original">'akia</FORM>
             <PHON kindOf="original">ʔakia</PHON>
@@ -12305,7 +12305,7 @@
         <FORM kindOf="standard">nimarivura'ʉ takituturua na kavangvang mamanu.</FORM>
         <PHON kindOf="standard">nima[r|ɾ]ivu[r|ɾ]aʔɨ takitutu[r|ɾ]ua na kavaŋvaŋ mamanu</PHON>
         <TRANSL xml:lang="zho">老師打所有的學生。</TRANSL>
-        <TRANSL xml:lang="eng">Teacher(s) hit all students..)</TRANSL>
+        <TRANSL xml:lang="eng" notes="Teacher(s) hit all students..)">Teacher hit all students..)</TRANSL>
         <W id="1_S_145_W0">
             <FORM kindOf="original">ni-m-ari-vura'ʉ</FORM>
             <PHON kindOf="original">nimarivuraʔ*</PHON>
@@ -12768,7 +12768,7 @@
         <PHON kindOf="original">niaraʦakan kavaŋvaŋ ʦau uʦani karavuŋ</PHON>
         <FORM kindOf="standard">niaracakan kavangvang cau ucani karavung.</FORM>
         <PHON kindOf="standard">nia[r|ɾ]aʦakan kavaŋvaŋ ʦau uʦani ka[r|ɾ]avuŋ</PHON>
-        <TRANSL xml:lang="zho">所有的人（一起）獵一頭牛。</TRANSL>
+        <TRANSL xml:lang="zho" notes="所有的人（一起）獵一頭牛。">所有的人 獵一頭牛。</TRANSL>
         <TRANSL xml:lang="eng">All the people hunted one ox.</TRANSL>
         <W id="1_S_149_W0">
             <FORM kindOf="original">ni-aracakan</FORM>
@@ -13105,7 +13105,7 @@
         <FORM kindOf="standard">masikaranana tacin tacin tamna nganai.</FORM>
         <PHON kindOf="standard">masika[r|ɾ]anana taʦin taʦin tamna ŋanai</PHON>
         <TRANSL xml:lang="zho">每一個人的名字都不同。</TRANSL>
-        <TRANSL xml:lang="eng">The names of each (person) are different.</TRANSL>
+        <TRANSL xml:lang="eng" notes="The names of each (person) are different.">The names of each are different.</TRANSL>
         <W id="1_S_152_W0">
             <FORM kindOf="original">masikaranana</FORM>
             <PHON kindOf="original">masikaranana</PHON>
@@ -15041,7 +15041,7 @@
         <FORM kindOf="standard">'apanapʉʉnmaku 'aparisinatʉ vai.</FORM>
         <PHON kindOf="standard">ʔapanapɨɨnmaku ʔapa[r|ɾ]isinatɨ vai</PHON>
         <TRANSL xml:lang="zho">我有時候/很少叫我弟弟念書。</TRANSL>
-        <TRANSL xml:lang="eng">I sometimes/seldom make (my) younger brother study.</TRANSL>
+        <TRANSL xml:lang="eng" notes="I sometimes/seldom make (my) younger brother study.">I sometimes/seldom make younger brother study.</TRANSL>
         <W id="1_S_168_W0">
             <FORM kindOf="original">'apanapʉ-ʉn=maku</FORM>
             <PHON kindOf="original">ʔapanap**nmaku</PHON>
@@ -15217,7 +15217,7 @@
         <FORM kindOf="standard">ka'aan Pani kumakʉʉn tammi.</FORM>
         <PHON kindOf="standard">kaʔaan pani kumakɨɨn tammi</PHON>
         <TRANSL xml:lang="zho">Pani不吃地瓜。</TRANSL>
-        <TRANSL xml:lang="eng">Pani doesn't eat sweet potatoes. (Pani never eats sweet potatoes.)</TRANSL>
+        <TRANSL xml:lang="eng" notes="Pani doesn't eat sweet potatoes. (Pani never eats sweet potatoes.)">Pani doesn't eat sweet potatoes.</TRANSL>
         <W id="1_S_170_W0">
             <FORM kindOf="original">ka'aan</FORM>
             <PHON kindOf="original">kaʔaan</PHON>
@@ -15625,7 +15625,7 @@
         <FORM kindOf="standard">macici taniarʉ soni, teku makacarapung.</FORM>
         <PHON kindOf="standard">maʦiʦi tania[r|ɾ]ɨ soni teku makaʦa[r|ɾ]apuŋ</PHON>
         <TRANSL xml:lang="zho">今天很熱，所以我要戴帽子。</TRANSL>
-        <TRANSL xml:lang="eng">It is hot today, (so) I will wear a hat.</TRANSL>
+        <TRANSL xml:lang="eng" notes="It is hot today, (so) I will wear a hat.">It is hot today, I will wear a hat.</TRANSL>
         <W id="1_S_174_W0">
             <FORM kindOf="original">macici</FORM>
             <PHON kindOf="original">maʦiʦi</PHON>
@@ -15921,7 +15921,7 @@
         <FORM kindOf="standard">marisuusuna kasua cina Pi'i, makai 'esi mapinipini.</FORM>
         <PHON kindOf="standard">ma[r|ɾ]isuusuna kasua ʦina piʔi makai ʔesi mapinipini</PHON>
         <TRANSL xml:lang="zho">Pi'i阿姨在叫你，好像很緊張。</TRANSL>
-        <TRANSL xml:lang="eng">Aunt Pi'i is calling you; (she) seems to be nervous.</TRANSL>
+        <TRANSL xml:lang="eng" notes="Aunt Pi'i is calling you; (she) seems to be nervous.">Aunt Pi'i is calling you; seems to be nervous.</TRANSL>
         <W id="1_S_177_W0">
             <FORM kindOf="original">marisuusuna</FORM>
             <PHON kindOf="original">marisuusuna</PHON>
@@ -16456,8 +16456,8 @@
         <PHON kindOf="original">makapusanku maaʦina manmaanku tapunia</PHON>
         <FORM kindOf="standard">makapusanku maacina, manmaanku tapunia.</FORM>
         <PHON kindOf="standard">makapusanku maaʦina manmaanku tapunia</PHON>
-        <TRANSL xml:lang="zho">我一天洗兩次早，因為我喜歡白白的（乾淨）。</TRANSL>
-        <TRANSL xml:lang="eng">I take a bath twice (a day), (because) I like cleanness.</TRANSL>
+        <TRANSL xml:lang="zho" notes="我一天洗兩次早，因為我喜歡白白的（乾淨）。">我一天洗兩次早，因為我喜歡白白的 。</TRANSL>
+        <TRANSL xml:lang="eng" notes="I take a bath twice (a day), (because) I like cleanness.">I take a bath twice , I like cleanness.</TRANSL>
         <W id="1_S_182_W0">
             <FORM kindOf="original">ma-ka-pusa-n=ku</FORM>
             <PHON kindOf="original">makapusanku</PHON>
@@ -18201,7 +18201,7 @@
         <FORM kindOf="standard">temaku piraciinin seritung sua 'avia.</FORM>
         <PHON kindOf="standard">temaku pi[r|ɾ]aʦiinin se[r|ɾ]ituŋ sua ʔavia</PHON>
         <TRANSL xml:lang="zho">我要分木瓜給'avia一個人。</TRANSL>
-        <TRANSL xml:lang="eng">I want to allot papayas to (one person,) 'avia.</TRANSL>
+        <TRANSL xml:lang="eng" notes="I want to allot papayas to (one person,) 'avia.">I want to allot papayas to 'avia.</TRANSL>
         <W id="1_S_197_W0">
             <FORM kindOf="original">te=maku</FORM>
             <PHON kindOf="original">t[e|ə]maku</PHON>
@@ -18665,8 +18665,8 @@
         <PHON kindOf="original">piramiiriʔoo tanuku ʔavia</PHON>
         <FORM kindOf="standard">piramiiri'oo tanuku 'avia.</FORM>
         <PHON kindOf="standard">pi[r|ɾ]amii[r|ɾ]iʔoo tanuku ʔavia</PHON>
-        <TRANSL xml:lang="zho">把'avia的杯子裝滿（酒）！</TRANSL>
-        <TRANSL xml:lang="eng">Fill 'avia's glass (with wine)! (lit. Allot (full wine) to 'avia's glass!)</TRANSL>
+        <TRANSL xml:lang="zho" notes="把'avia的杯子裝滿（酒）！">把'avia的杯子裝滿 ！</TRANSL>
+        <TRANSL xml:lang="eng" notes="Fill 'avia's glass (with wine)! (lit. Allot (full wine) to 'avia's glass!)">Fill 'avia's glass !</TRANSL>
         <W id="1_S_203_W0">
             <FORM kindOf="original">pira-miiri'-oo</FORM>
             <PHON kindOf="original">piramiiriʔoo</PHON>
@@ -18738,7 +18738,7 @@
         <FORM kindOf="standard">nikaramacikarʉcumaku canumu.</FORM>
         <PHON kindOf="standard">nika[r|ɾ]amaʦika[r|ɾ]ɨʦumaku ʦanumu</PHON>
         <TRANSL xml:lang="zho">我喝水到剩下一點點。</TRANSL>
-        <TRANSL xml:lang="eng">I drank water to (leave) a little.</TRANSL>
+        <TRANSL xml:lang="eng" notes="I drank water to (leave) a little.">I drank water to a little.</TRANSL>
         <W id="1_S_204_W0">
             <FORM kindOf="original">ni-kara-macikarʉ=cu=maku</FORM>
             <PHON kindOf="original">nikaramaʦikar*ʦumaku</PHON>
@@ -18809,7 +18809,7 @@
         <PHON kindOf="original">t[e|ə]kita araturuturu arat*k**n</PHON>
         <FORM kindOf="standard">tekita araturuturu aratʉkʉʉn.</FORM>
         <PHON kindOf="standard">tekita a[r|ɾ]atu[r|ɾ]utu[r|ɾ]u a[r|ɾ]atɨkɨɨn</PHON>
-        <TRANSL xml:lang="zho">我們要三個三個離開。（a. 每次三個 b. 三個三個一組，一起離開）</TRANSL>
+        <TRANSL xml:lang="zho" notes="我們要三個三個離開。（a. 每次三個 b. 三個三個一組，一起離開）">我們要三個三個離開。</TRANSL>
         <TRANSL xml:lang="eng">a. We will leave, three persons each time. b. We will leave, three persons in a group, in each location.</TRANSL>
         <W id="1_S_205_W0">
             <FORM kindOf="original">te=kita</FORM>
@@ -18889,7 +18889,7 @@
         <PHON kindOf="original">nimuturuʦiruʦin s[e|ə]rituŋ mamaʦai</PHON>
         <FORM kindOf="standard">nimuturucirucin seritung mamacai.</FORM>
         <PHON kindOf="standard">nimutu[r|ɾ]uʦi[r|ɾ]uʦin se[r|ɾ]ituŋ mamaʦai</PHON>
-        <TRANSL xml:lang="zho">木瓜兩個兩個死了（每次兩個）。</TRANSL>
+        <TRANSL xml:lang="zho" notes="木瓜兩個兩個死了（每次兩個）。">木瓜兩個兩個死了 。</TRANSL>
         <TRANSL xml:lang="eng">Papayas died, two each time.</TRANSL>
         <W id="1_S_206_W0">
             <FORM kindOf="original">ni-mutu-ruci-rucin</FORM>
@@ -19097,7 +19097,7 @@
         <PHON kindOf="original">mis[e|ə][e|ə]nikamu koʦiniʦini kumak**n arukariki</PHON>
         <FORM kindOf="standard">miseenikamu kocinicini kumakʉʉn arukariki.</FORM>
         <PHON kindOf="standard">miseenikamu koʦiniʦini kumakɨɨn a[r|ɾ]uka[r|ɾ]iki</PHON>
-        <TRANSL xml:lang="zho">為什麼你們一個一個（在不同地方）吃番茄？</TRANSL>
+        <TRANSL xml:lang="zho" notes="為什麼你們一個一個（在不同地方）吃番茄？">為什麼你們一個一個 吃番茄？</TRANSL>
         <TRANSL xml:lang="eng">Why does one person of you eat tomatoes at each location?</TRANSL>
         <W id="1_S_208_W0">
             <FORM kindOf="original">miseeni=kamu</FORM>
@@ -19210,7 +19210,7 @@
         <FORM kindOf="standard">temaku pirarucirucinin nivatu cau seritung sovuung.</FORM>
         <PHON kindOf="standard">temaku pi[r|ɾ]a[r|ɾ]uʦi[r|ɾ]uʦinin nivatu ʦau se[r|ɾ]ituŋ sovuuŋ</PHON>
         <TRANSL xml:lang="zho">我要分給來的人每一個人兩個木瓜。</TRANSL>
-        <TRANSL xml:lang="eng">I will make two papayas allotted to every person who came. (lit. Two papayas are going to be allotted to every person who came by me.)</TRANSL>
+        <TRANSL xml:lang="eng" notes="I will make two papayas allotted to every person who came. (lit. Two papayas are going to be allotted to every person who came by me.)">I will make two papayas allotted to every person who came.</TRANSL>
         <W id="1_S_209_W0">
             <FORM kindOf="original">te=maku</FORM>
             <PHON kindOf="original">t[e|ə]maku</PHON>
@@ -19361,8 +19361,8 @@
         <PHON kindOf="original">t[e|ə]maku piraʦoʦoʦ**n nivatu ʦau s[e|ə]rituŋ sovuuŋ</PHON>
         <FORM kindOf="standard">temaku piracococʉʉn nivatu cau seritung sovuung.</FORM>
         <PHON kindOf="standard">temaku pi[r|ɾ]aʦoʦoʦɨɨn nivatu ʦau se[r|ɾ]ituŋ sovuuŋ</PHON>
-        <TRANSL xml:lang="zho">我要分給來的人每兩個人（一個）木瓜。</TRANSL>
-        <TRANSL xml:lang="eng">I will make each two of the persons coming allotted one papaya. (lit. Two persons are going to be allotted to every papaya that came by me.)</TRANSL>
+        <TRANSL xml:lang="zho" notes="我要分給來的人每兩個人（一個）木瓜。">我要分給來的人每兩個人 木瓜。</TRANSL>
+        <TRANSL xml:lang="eng" notes="I will make each two of the persons coming allotted one papaya. (lit. Two persons are going to be allotted to every papaya that came by me.)">I will make each two of the persons coming allotted one papaya.</TRANSL>
         <W id="1_S_210_W0">
             <FORM kindOf="original">te=maku</FORM>
             <PHON kindOf="original">t[e|ə]maku</PHON>
@@ -19514,7 +19514,7 @@
         <FORM kindOf="standard">temita pirarucirucinin nivatu cau seritung sovuung.</FORM>
         <PHON kindOf="standard">temita pi[r|ɾ]a[r|ɾ]uʦi[r|ɾ]uʦinin nivatu ʦau se[r|ɾ]ituŋ sovuuŋ</PHON>
         <TRANSL xml:lang="zho">我們要分給來的人每個人兩個木瓜。</TRANSL>
-        <TRANSL xml:lang="eng">We will make two papayas allotted to every person who came. (lit. Two papayas are going to be allotted to every person who came by us.)</TRANSL>
+        <TRANSL xml:lang="eng" notes="We will make two papayas allotted to every person who came. (lit. Two papayas are going to be allotted to every person who came by us.)">We will make two papayas allotted to every person who came.</TRANSL>
         <W id="1_S_211_W0">
             <FORM kindOf="original">te=mita</FORM>
             <PHON kindOf="original">t[e|ə]mita</PHON>
@@ -19665,8 +19665,8 @@
         <PHON kindOf="original">t[e|ə]mita piraʦoʦoʦ**n nivatu ʦau s[e|ə]rituŋ sovuuŋ</PHON>
         <FORM kindOf="standard">temita piracococʉʉn nivatu cau seritung sovuung.</FORM>
         <PHON kindOf="standard">temita pi[r|ɾ]aʦoʦoʦɨɨn nivatu ʦau se[r|ɾ]ituŋ sovuuŋ</PHON>
-        <TRANSL xml:lang="zho">我們要分來的人每兩個人（一個）木瓜。</TRANSL>
-        <TRANSL xml:lang="eng">We will make each two of the persons coming allotted one papaya. (lit. Two persons are going to be allotted to every papaya that came by us.)</TRANSL>
+        <TRANSL xml:lang="zho" notes="我們要分來的人每兩個人（一個）木瓜。">我們要分來的人每兩個人 木瓜。</TRANSL>
+        <TRANSL xml:lang="eng" notes="We will make each two of the persons coming allotted one papaya. (lit. Two persons are going to be allotted to every papaya that came by us.)">We will make each two of the persons coming allotted one papaya.</TRANSL>
         <W id="1_S_212_W0">
             <FORM kindOf="original">te=mita</FORM>
             <PHON kindOf="original">t[e|ə]mita</PHON>
@@ -19962,7 +19962,7 @@
         <FORM kindOf="standard">marucirucinkita cunuku.</FORM>
         <PHON kindOf="standard">ma[r|ɾ]uʦi[r|ɾ]uʦinkita ʦunuku</PHON>
         <TRANSL xml:lang="zho">我們一人兩個麻糬。</TRANSL>
-        <TRANSL xml:lang="eng">(There are) Two rice cakes for each of us.</TRANSL>
+        <TRANSL xml:lang="eng" notes="(There are) Two rice cakes for each of us.">Two rice cakes for each of us.</TRANSL>
         <W id="1_S_214_W0">
             <FORM kindOf="original">ma-ruci-rucin=kita</FORM>
             <PHON kindOf="original">maruʦiruʦinkita</PHON>
@@ -20026,7 +20026,7 @@
         <FORM kindOf="standard">macococuakamu ucani seritung.</FORM>
         <PHON kindOf="standard">maʦoʦoʦuakamu uʦani se[r|ɾ]ituŋ</PHON>
         <TRANSL xml:lang="zho">你們兩個人一個木瓜。</TRANSL>
-        <TRANSL xml:lang="eng">(There is) One papaya for every two of you. (lit. (There are) Two of you for each papaya.)</TRANSL>
+        <TRANSL xml:lang="eng" notes="(There is) One papaya for every two of you. (lit. (There are) Two of you for each papaya.)">One papaya for every two of you.</TRANSL>
         <W id="1_S_215_W0">
             <FORM kindOf="original">ma-co-cocua=kamu</FORM>
             <PHON kindOf="original">maʦoʦoʦuakamu</PHON>
@@ -20906,7 +20906,7 @@
         <FORM kindOf="standard">tacin niarivura'a 'angai cau miʉra.</FORM>
         <PHON kindOf="standard">taʦin nia[r|ɾ]ivu[r|ɾ]aʔa ʔaŋai ʦau miɨ[r|ɾ]a</PHON>
         <TRANSL xml:lang="zho">'angai打了一個人。</TRANSL>
-        <TRANSL xml:lang="eng">'angai hit one person. (lit. The person who was hit by 'angai was one.)</TRANSL>
+        <TRANSL xml:lang="eng" notes="'angai hit one person. (lit. The person who was hit by 'angai was one.)">'angai hit one person.</TRANSL>
         <W id="1_S_226_W0">
             <FORM kindOf="original">ta-cin</FORM>
             <PHON kindOf="original">taʦin</PHON>
@@ -21026,7 +21026,7 @@
         <FORM kindOf="standard">urucin nipinarupukee vutukuru miʉra.</FORM>
         <PHON kindOf="standard">u[r|ɾ]uʦin nipina[r|ɾ]upukee vutuku[r|ɾ]u miɨ[r|ɾ]a</PHON>
         <TRANSL xml:lang="zho">他/她昨天釣了兩條魚。</TRANSL>
-        <TRANSL xml:lang="eng">He/She fished two fish yesterday. (lit. The fish which were fished by him/her yesterday were two.)</TRANSL>
+        <TRANSL xml:lang="eng" notes="He/She fished two fish yesterday. (lit. The fish which were fished by him/her yesterday were two.)">He/She fished two fish yesterday.</TRANSL>
         <W id="1_S_227_W0">
             <FORM kindOf="original">u-rucin</FORM>
             <PHON kindOf="original">uruʦin</PHON>
@@ -21130,7 +21130,7 @@
         <FORM kindOf="standard">usia nikorumaku tammi.</FORM>
         <PHON kindOf="standard">usia niko[r|ɾ]umaku tammi</PHON>
         <TRANSL xml:lang="zho">我煮了九個地瓜。</TRANSL>
-        <TRANSL xml:lang="eng">I cooked nine sweet potatoes. (lit. The sweet potatoes cooked by me were nine.)</TRANSL>
+        <TRANSL xml:lang="eng" notes="I cooked nine sweet potatoes. (lit. The sweet potatoes cooked by me were nine.)">I cooked nine sweet potatoes.</TRANSL>
         <W id="1_S_228_W0">
             <FORM kindOf="original">u-sia</FORM>
             <PHON kindOf="original">usia</PHON>
@@ -21218,7 +21218,7 @@
         <FORM kindOf="standard">sasʉpatʉkara nukai lalimakara cau sua nivatu.</FORM>
         <PHON kindOf="standard">sasɨpatɨka[r|ɾ]a nukai *a*imaka[r|ɾ]a ʦau sua nivatu</PHON>
         <TRANSL xml:lang="zho">四或五個人來了。</TRANSL>
-        <TRANSL xml:lang="eng">Four or five persons came. (lit. The persons who came were four or five.)</TRANSL>
+        <TRANSL xml:lang="eng" notes="Four or five persons came. (lit. The persons who came were four or five.)">Four or five persons came.</TRANSL>
         <W id="1_S_229_W0">
             <FORM kindOf="original">sa-sʉpatʉ=kara</FORM>
             <PHON kindOf="original">sas*pat*kara</PHON>
@@ -21537,8 +21537,8 @@
         <PHON kindOf="original">kaʔaan k*m*ʦ* kumak**n ʦunuku</PHON>
         <FORM kindOf="standard">ka'aan kʉmʉcʉ kumakʉʉn cunuku.</FORM>
         <PHON kindOf="standard">kaʔaan kɨmɨʦɨ kumakɨɨn ʦunuku</PHON>
-        <TRANSL xml:lang="zho">（我）連一個麻糬都不吃。</TRANSL>
-        <TRANSL xml:lang="eng">(I) don't even eat one rice cake.</TRANSL>
+        <TRANSL xml:lang="zho" notes="（我）連一個麻糬都不吃。">連一個麻糬都不吃。</TRANSL>
+        <TRANSL xml:lang="eng" notes="(I) don't even eat one rice cake.">don't even eat one rice cake.</TRANSL>
         <W id="1_S_232_W0">
             <FORM kindOf="original">ka'aan</FORM>
             <PHON kindOf="original">kaʔaan</PHON>
@@ -21762,7 +21762,7 @@
         <FORM kindOf="standard">miiri'icu sua pai'ci, teku karatanam.</FORM>
         <PHON kindOf="standard">mii[r|ɾ]iʔiʦu sua paiʔʦi teku ka[r|ɾ]atanam</PHON>
         <TRANSL xml:lang="zho">酒很滿，我要試喝。</TRANSL>
-        <TRANSL xml:lang="eng">The wine is full, (and) I will try drinking (it).</TRANSL>
+        <TRANSL xml:lang="eng" notes="The wine is full, (and) I will try drinking (it).">The wine is full, I will try drinking .</TRANSL>
         <W id="1_S_235_W0">
             <FORM kindOf="original">miiri'i=cu</FORM>
             <PHON kindOf="original">miiriʔiʦu</PHON>
@@ -21874,7 +21874,7 @@
         <FORM kindOf="standard">temaku kutanamʉn.</FORM>
         <PHON kindOf="standard">temaku kutanamɨn</PHON>
         <TRANSL xml:lang="zho">我會試吃看看。</TRANSL>
-        <TRANSL xml:lang="eng">I will try eating (it).</TRANSL>
+        <TRANSL xml:lang="eng" notes="I will try eating (it).">I will try eating .</TRANSL>
         <W id="1_S_236_W0">
             <FORM kindOf="original">te=maku</FORM>
             <PHON kindOf="original">t[e|ə]maku</PHON>
@@ -21938,7 +21938,7 @@
         <FORM kindOf="standard">niaratʉʉncu sua viaru mimʉkaku.</FORM>
         <PHON kindOf="standard">nia[r|ɾ]atɨɨnʦu sua via[r|ɾ]u mimɨkaku</PHON>
         <TRANSL xml:lang="zho">玉米很滿了；我種的。</TRANSL>
-        <TRANSL xml:lang="eng">The corns were full; I grow (them).</TRANSL>
+        <TRANSL xml:lang="eng" notes="The corns were full; I grow (them).">The corns were full; I grow .</TRANSL>
         <W id="1_S_237_W0">
             <FORM kindOf="original">ni-aratʉʉn=cu</FORM>
             <PHON kindOf="original">niarat**nʦu</PHON>
@@ -22042,7 +22042,7 @@
         <FORM kindOf="standard">papeen sua mamanu 'esi marisinatʉ.</FORM>
         <PHON kindOf="standard">papeen sua mamanu ʔesi ma[r|ɾ]isinatɨ</PHON>
         <TRANSL xml:lang="zho">有幾個孩子在念書？</TRANSL>
-        <TRANSL xml:lang="eng">How many children are studying? (lit. How many are the students who are studying?)</TRANSL>
+        <TRANSL xml:lang="eng" notes="How many children are studying? (lit. How many are the students who are studying?)">How many children are studying?</TRANSL>
         <W id="1_S_238_W0">
             <FORM kindOf="original">pa-peen</FORM>
             <PHON kindOf="original">pap[e|ə][e|ə]n</PHON>
@@ -22258,7 +22258,7 @@
         <FORM kindOf="standard">makisavaang tassa ka'aanpa mataarava lalima cau nivatu.</FORM>
         <PHON kindOf="standard">makisavaaŋ tassa kaʔaanpa mataa[r|ɾ]ava *a*ima ʦau nivatu</PHON>
         <TRANSL xml:lang="zho">多於兩個、少於五個學生來了。</TRANSL>
-        <TRANSL xml:lang="eng">More than two but fewer than five students came. (lit. The persons who came were more than two but fewer than five.)</TRANSL>
+        <TRANSL xml:lang="eng" notes="More than two but fewer than five students came. (lit. The persons who came were more than two but fewer than five.)">More than two but fewer than five students came.</TRANSL>
         <W id="1_S_240_W0">
             <FORM kindOf="original">makisavaang</FORM>
             <PHON kindOf="original">makisavaaŋ</PHON>
@@ -22657,8 +22657,8 @@
         <PHON kindOf="original">nimakaan mamia paraʦaan</PHON>
         <FORM kindOf="standard">nimakaan mamia paracaan.</FORM>
         <PHON kindOf="standard">nimakaan mamia pa[r|ɾ]aʦaan</PHON>
-        <TRANSL xml:lang="zho">（我）只唱一次。</TRANSL>
-        <TRANSL xml:lang="eng">(I) only sang once.</TRANSL>
+        <TRANSL xml:lang="zho" notes="（我）只唱一次。">只唱一次。</TRANSL>
+        <TRANSL xml:lang="eng" notes="(I) only sang once.">only sang once.</TRANSL>
         <W id="1_S_243_W0">
             <FORM kindOf="original">ni-ma-ka-a-n</FORM>
             <PHON kindOf="original">nimakaan</PHON>
@@ -22882,7 +22882,7 @@
         <FORM kindOf="standard">nimakapusanku paracani karanana, ka'aan matʉa.</FORM>
         <PHON kindOf="standard">nimakapusanku pa[r|ɾ]aʦani ka[r|ɾ]anana kaʔaan matɨa</PHON>
         <TRANSL xml:lang="zho">我唱兩首不同的歌，不是相同的。</TRANSL>
-        <TRANSL xml:lang="eng">I sang two different songs, not the same. (lit. I sang twice; the songs were different, not the same.)</TRANSL>
+        <TRANSL xml:lang="eng" notes="I sang two different songs, not the same. (lit. I sang twice; the songs were different, not the same.)">I sang two different songs, not the same.</TRANSL>
         <W id="1_S_246_W0">
             <FORM kindOf="original">ni-ma-ka-pusa-n=ku</FORM>
             <PHON kindOf="original">nimakapusanku</PHON>
@@ -23114,7 +23114,7 @@
         <FORM kindOf="standard">'apo'iara tumana.</FORM>
         <PHON kindOf="standard">ʔapoʔia[r|ɾ]a tumana</PHON>
         <TRANSL xml:lang="zho">慢慢聽！</TRANSL>
-        <TRANSL xml:lang="eng">Listen carefully! (lit. Listen slowly!)</TRANSL>
+        <TRANSL xml:lang="eng" notes="Listen carefully! (lit. Listen slowly!)">Listen carefully!</TRANSL>
         <W id="1_S_248_W0">
             <FORM kindOf="original">'apo'iar-a</FORM>
             <PHON kindOf="original">ʔapoʔiara</PHON>
@@ -23465,8 +23465,8 @@
         <PHON kindOf="original">nipivaŋvaŋmaku paraʦaan</PHON>
         <FORM kindOf="standard">nipivangvangmaku paracaan.</FORM>
         <PHON kindOf="standard">nipivaŋvaŋmaku pa[r|ɾ]aʦaan</PHON>
-        <TRANSL xml:lang="zho">我唱全部（的歌）。</TRANSL>
-        <TRANSL xml:lang="eng">I sang all (the songs).</TRANSL>
+        <TRANSL xml:lang="zho" notes="我唱全部（的歌）。">我唱全部 。</TRANSL>
+        <TRANSL xml:lang="eng" notes="I sang all (the songs).">I sang all .</TRANSL>
         <W id="1_S_253_W0">
             <FORM kindOf="original">ni-pi-vangvang=maku</FORM>
             <PHON kindOf="original">nipivaŋvaŋmaku</PHON>
@@ -23714,7 +23714,7 @@
         <FORM kindOf="standard">avara'e taniara tavarʉ'ʉ kangvang pinarupu.</FORM>
         <PHON kindOf="standard">ava[r|ɾ]aʔe tania[r|ɾ]a tava[r|ɾ]ɨʔɨ kaŋvaŋ pina[r|ɾ]upu</PHON>
         <TRANSL xml:lang="zho">任何日子都可以去釣魚。</TRANSL>
-        <TRANSL xml:lang="eng">(We) can go fishing on any day.</TRANSL>
+        <TRANSL xml:lang="eng" notes="(We) can go fishing on any day.">can go fishing on any day.</TRANSL>
         <W id="1_S_256_W0">
             <FORM kindOf="original">avara'e</FORM>
             <PHON kindOf="original">avaraʔ[e|ə]</PHON>
@@ -24378,7 +24378,7 @@
         <FORM kindOf="standard">koo kʉmʉʉn cau.</FORM>
         <PHON kindOf="standard">koo kɨmɨɨn ʦau</PHON>
         <TRANSL xml:lang="zho">人們沒有吃。</TRANSL>
-        <TRANSL xml:lang="eng">Persons haven't eaten (it).</TRANSL>
+        <TRANSL xml:lang="eng" notes="Persons haven't eaten (it).">Persons haven't eaten .</TRANSL>
         <W id="1_S_262_W0">
             <FORM kindOf="original">koo</FORM>
             <PHON kindOf="original">koo</PHON>
@@ -24658,7 +24658,7 @@
         <FORM kindOf="standard">sua nimova 'ikua vutukuru ia, 'inmamia 'angai.</FORM>
         <PHON kindOf="standard">sua nimova ʔikua vutuku[r|ɾ]u ia ʔinmamia ʔaŋai</PHON>
         <TRANSL xml:lang="zho">只有'angai給我魚。</TRANSL>
-        <TRANSL xml:lang="eng">Only 'angai gave me fish. (lit. The persons who gave me fish were only 'angai.)</TRANSL>
+        <TRANSL xml:lang="eng" notes="Only 'angai gave me fish. (lit. The persons who gave me fish were only 'angai.)">Only 'angai gave me fish.</TRANSL>
         <W id="1_S_265_W0">
             <FORM kindOf="original">sua</FORM>
             <PHON kindOf="original">sua</PHON>
@@ -24914,7 +24914,7 @@
         <FORM kindOf="standard">taturu i sian mamanu 'acecu tacin manu.</FORM>
         <PHON kindOf="standard">tatu[r|ɾ]u i sian mamanu ʔaʦeʦu taʦin manu</PHON>
         <TRANSL xml:lang="zho">三個孩子本來在這裡，一個離開了。</TRANSL>
-        <TRANSL xml:lang="eng">Three children had been here, (but) one left.</TRANSL>
+        <TRANSL xml:lang="eng" notes="Three children had been here, (but) one left.">Three children had been here, one left.</TRANSL>
         <W id="1_S_267_W0">
             <FORM kindOf="original">ta-turu</FORM>
             <PHON kindOf="original">taturu</PHON>
@@ -25066,7 +25066,7 @@
         <FORM kindOf="standard">'inmamia 'angai sua nimova 'ikua vutukuru.</FORM>
         <PHON kindOf="standard">ʔinmamia ʔaŋai sua nimova ʔikua vutuku[r|ɾ]u</PHON>
         <TRANSL xml:lang="zho">只有'angai給我魚。</TRANSL>
-        <TRANSL xml:lang="eng">Only 'angai gave me fish. (lit. Those who gave me fish were only 'angai.)</TRANSL>
+        <TRANSL xml:lang="eng" notes="Only 'angai gave me fish. (lit. Those who gave me fish were only 'angai.)">Only 'angai gave me fish.</TRANSL>
         <W id="1_S_268_W0">
             <FORM kindOf="original">'inmamia</FORM>
             <PHON kindOf="original">ʔinmamia</PHON>
@@ -25898,7 +25898,7 @@
         <FORM kindOf="standard">lalimakara sua nivatu.</FORM>
         <PHON kindOf="standard">*a*imaka[r|ɾ]a sua nivatu</PHON>
         <TRANSL xml:lang="zho">五個人來了嗎？</TRANSL>
-        <TRANSL xml:lang="eng">Are five persons coming? (lit. Are those who came five persons?)</TRANSL>
+        <TRANSL xml:lang="eng" notes="Are five persons coming? (lit. Are those who came five persons?)">Are five persons coming?</TRANSL>
         <W id="1_S_275_W0">
             <FORM kindOf="original">la-lima=kara</FORM>
             <PHON kindOf="original">ɾaɾimakara</PHON>
@@ -25986,7 +25986,7 @@
         <FORM kindOf="standard">lalima vangata sua nivatu.</FORM>
         <PHON kindOf="standard">*a*ima vaŋata sua nivatu</PHON>
         <TRANSL xml:lang="zho">多於五個人來了。</TRANSL>
-        <TRANSL xml:lang="eng">More than five persons came. (lit. Those who came were a little more than five.)</TRANSL>
+        <TRANSL xml:lang="eng" notes="More than five persons came. (lit. Those who came were a little more than five.)">More than five persons came.</TRANSL>
         <W id="1_S_276_W0">
             <FORM kindOf="original">la-lima</FORM>
             <PHON kindOf="original">ɾaɾima</PHON>
@@ -26082,7 +26082,7 @@
         <FORM kindOf="standard">musutaanpʉ sua tasusa nivatu putukikio.</FORM>
         <PHON kindOf="standard">musutaanpɨ sua tasusa nivatu putukikio</PHON>
         <TRANSL xml:lang="zho">兩個人做這工作足夠了。</TRANSL>
-        <TRANSL xml:lang="eng">Two persons are just good for this work. (lit. Two persons coming to work (on this) are enough.)</TRANSL>
+        <TRANSL xml:lang="eng" notes="Two persons are just good for this work. (lit. Two persons coming to work (on this) are enough.)">Two persons are just good for this work.</TRANSL>
         <W id="1_S_277_W0">
             <FORM kindOf="original">musutaanpʉ</FORM>
             <PHON kindOf="original">musutaanp*</PHON>
@@ -26506,7 +26506,7 @@
         <FORM kindOf="standard">niarakacauacu sua cau iovatu na Namasia.</FORM>
         <PHON kindOf="standard">nia[r|ɾ]akaʦauaʦu sua ʦau iovatu na namasia</PHON>
         <TRANSL xml:lang="zho">來到那瑪夏的人愈來愈多。</TRANSL>
-        <TRANSL xml:lang="eng">There are more and more persons coming to Namasia. (lit. The persons who come to Namasia have become many.)</TRANSL>
+        <TRANSL xml:lang="eng" notes="There are more and more persons coming to Namasia. (lit. The persons who come to Namasia have become many.)">There are more and more persons coming to Namasia.</TRANSL>
         <W id="1_S_282_W0">
             <FORM kindOf="original">ni-ara-kacaua=cu</FORM>
             <PHON kindOf="original">niarakaʦauaʦu</PHON>
@@ -26642,7 +26642,7 @@
         <FORM kindOf="standard">niarivura'ʉ takiaturua kangvang mamanu canipininga.</FORM>
         <PHON kindOf="standard">nia[r|ɾ]ivu[r|ɾ]aʔɨ takiatu[r|ɾ]ua kaŋvaŋ mamanu ʦanipiniŋa</PHON>
         <TRANSL xml:lang="zho">一整家的小孩都被老師打了。</TRANSL>
-        <TRANSL xml:lang="eng">All children of the whole family were hit by the teacher(s).</TRANSL>
+        <TRANSL xml:lang="eng" notes="All children of the whole family were hit by the teacher(s).">All children of the whole family were hit by the teacher .</TRANSL>
         <W id="1_S_283_W0">
             <FORM kindOf="original">ni-ari-vura'ʉ</FORM>
             <PHON kindOf="original">niarivuraʔ*</PHON>
@@ -26906,7 +26906,7 @@
         <FORM kindOf="standard">'una tasusa mamanu nimuciri cʉmʉ'ʉra cau.</FORM>
         <PHON kindOf="standard">ʔuna tasusa mamanu nimuʦi[r|ɾ]i ʦɨmɨʔɨ[r|ɾ]a ʦau</PHON>
         <TRANSL xml:lang="zho">有兩個人站起來看人。</TRANSL>
-        <TRANSL xml:lang="eng">There are two persons who tood up to see (other) persons.</TRANSL>
+        <TRANSL xml:lang="eng" notes="There are two persons who tood up to see (other) persons.">There are two persons who tood up to see persons.</TRANSL>
         <W id="1_S_285_W0">
             <FORM kindOf="original">'una</FORM>
             <PHON kindOf="original">ʔuna</PHON>
@@ -27354,7 +27354,7 @@
         <FORM kindOf="standard">ucan tarasangara upitu taniara.</FORM>
         <PHON kindOf="standard">uʦan ta[r|ɾ]asaŋa[r|ɾ]a upitu tania[r|ɾ]a</PHON>
         <TRANSL xml:lang="zho">一個禮拜七天。</TRANSL>
-        <TRANSL xml:lang="eng">(There are) seven days in a week.</TRANSL>
+        <TRANSL xml:lang="eng" notes="(There are) seven days in a week.">seven days in a week.</TRANSL>
         <W id="1_S_289_W0">
             <FORM kindOf="original">u-can</FORM>
             <PHON kindOf="original">uʦan</PHON>
@@ -27791,8 +27791,8 @@
         <PHON kindOf="original">makamumuan kumak**n</PHON>
         <FORM kindOf="standard">makamumuan kumakʉʉn.</FORM>
         <PHON kindOf="standard">makamumuan kumakɨɨn</PHON>
-        <TRANSL xml:lang="zho">（我）吃很多次。</TRANSL>
-        <TRANSL xml:lang="eng">(I) eat many times.</TRANSL>
+        <TRANSL xml:lang="zho" notes="（我）吃很多次。">吃很多次。</TRANSL>
+        <TRANSL xml:lang="eng" notes="(I) eat many times.">eat many times.</TRANSL>
         <W id="1_S_293_W0">
             <FORM kindOf="original">ma-ka-mumuan</FORM>
             <PHON kindOf="original">makamumuan</PHON>
@@ -28576,7 +28576,7 @@
         <FORM kindOf="standard">'akiapa cau timana mioori tamu kakangʉca, iiku ia, timanacuku, ka'aanpa cucumen.</FORM>
         <PHON kindOf="standard">ʔakiapa ʦau timana mioo[r|ɾ]i tamu kakaŋɨʦa iiku ia timanaʦuku kaʔaanpa ʦuʦumen</PHON>
         <TRANSL xml:lang="zho">沒有人曾經見過神；只有我見過，別人沒有。</TRANSL>
-        <TRANSL xml:lang="eng">No one has ever heard from God; I have heard (from Him), but not others.</TRANSL>
+        <TRANSL xml:lang="eng" notes="No one has ever heard from God; I have heard (from Him), but not others.">No one has ever heard from God; I have heard , but not others.</TRANSL>
         <W id="1_S_301_W0">
             <FORM kindOf="original">'akia=pa</FORM>
             <PHON kindOf="original">ʔakiapa</PHON>
@@ -28791,8 +28791,8 @@
         <PHON kindOf="original">ɾaɾima mamia mamanu ia ʔ[e|ə]si kaisisi ʦak*r*</PHON>
         <FORM kindOf="standard">lalima mamia mamanu ia, 'esi kaisisi cakʉrʉ.</FORM>
         <PHON kindOf="standard">*a*ima mamia mamanu ia ʔesi kaisisi ʦakɨ[r|ɾ]ɨ</PHON>
-        <TRANSL xml:lang="zho">只有五個小孩在（參加）米貢。</TRANSL>
-        <TRANSL xml:lang="eng">Only give children are (participating) in the Mikoong.</TRANSL>
+        <TRANSL xml:lang="zho" notes="只有五個小孩在（參加）米貢。">只有五個小孩在 米貢。</TRANSL>
+        <TRANSL xml:lang="eng" notes="Only give children are (participating) in the Mikoong.">Only give children are in the Mikoong.</TRANSL>
         <W id="1_S_302_W0">
             <FORM kindOf="original">la-lima</FORM>
             <PHON kindOf="original">ɾaɾima</PHON>
@@ -29639,8 +29639,8 @@
         <PHON kindOf="original">pairakia mokusa tas*ʔ*va nakai kaʔaan paira</PHON>
         <FORM kindOf="standard">pairakia mokusa tasʉ'ʉva nakai ka'aan paira.</FORM>
         <PHON kindOf="standard">pai[r|ɾ]akia mokusa tasɨʔɨva nakai kaʔaan pai[r|ɾ]a</PHON>
-        <TRANSL xml:lang="zho">(有時候)我常常去教會，(有時候)不那麼常。</TRANSL>
-        <TRANSL xml:lang="eng">(Sometimes) I go to church often, (sometimes) not so often.</TRANSL>
+        <TRANSL xml:lang="zho" notes="(有時候)我常常去教會，(有時候)不那麼常。">我常常去教會， 不那麼常。</TRANSL>
+        <TRANSL xml:lang="eng" notes="(Sometimes) I go to church often, (sometimes) not so often.">I go to church often, not so often.</TRANSL>
         <W id="1_S_309_W0">
             <FORM kindOf="original">paira=kia</FORM>
             <PHON kindOf="original">pairakia</PHON>
@@ -30559,8 +30559,8 @@
         <PHON kindOf="original">iiku ia matuun un**m ʦ[e|ə]nana aaru vuan maan usia taniara</PHON>
         <FORM kindOf="standard">iiku ia, matuun unʉʉm cenana aaru vuan maan usia taniara.</FORM>
         <PHON kindOf="standard">iiku ia matuun unɨɨm ʦenana aa[r|ɾ]u vuan maan usia tania[r|ɾ]a</PHON>
-        <TRANSL xml:lang="zho">我（民國）36年8月19日（出生）。</TRANSL>
-        <TRANSL xml:lang="eng">I (was born on) August 19th, the 36th year (of the Republic Era).</TRANSL>
+        <TRANSL xml:lang="zho" notes="我（民國）36年8月19日（出生）。">我 36年8月19日 。</TRANSL>
+        <TRANSL xml:lang="eng" notes="I (was born on) August 19th, the 36th year (of the Republic Era).">I August 19th, the 36th year .</TRANSL>
         <W id="1_S_317_W0">
             <FORM kindOf="original">iiku</FORM>
             <PHON kindOf="original">iiku</PHON>
@@ -32104,7 +32104,7 @@
         <FORM kindOf="standard">mikoongkiim ia, cumacʉ'ʉra mamia manu, koo matipa simasima'ʉ.</FORM>
         <PHON kindOf="standard">mikooŋkiim ia ʦumaʦɨʔɨ[r|ɾ]a mamia manu koo matipa simasimaʔɨ</PHON>
         <TRANSL xml:lang="zho">我們在米貢祭的時候，只有看小孩子，沒有參加玩。</TRANSL>
-        <TRANSL xml:lang="eng">When we (are holding) the Millet Ceremony, we only look at the children but don't play with them.</TRANSL>
+        <TRANSL xml:lang="eng" notes="When we (are holding) the Millet Ceremony, we only look at the children but don't play with them.">When we the Millet Ceremony, we only look at the children but don't play with them.</TRANSL>
         <W id="1_S_329_W0">
             <FORM kindOf="original">mikoong=kiim</FORM>
             <PHON kindOf="original">mikooŋkiim</PHON>
@@ -32280,7 +32280,7 @@
         <FORM kindOf="standard">'inmamiacu kʉʉna iisi.</FORM>
         <PHON kindOf="standard">ʔinmamiaʦu kɨɨna iisi</PHON>
         <TRANSL xml:lang="zho">只有這個吃的。</TRANSL>
-        <TRANSL xml:lang="eng">Only this food (is left).</TRANSL>
+        <TRANSL xml:lang="eng" notes="Only this food (is left).">Only this food .</TRANSL>
         <W id="1_S_330_W0">
             <FORM kindOf="original">'inmamia=cu</FORM>
             <PHON kindOf="original">ʔinmamiaʦu</PHON>
@@ -32589,7 +32589,7 @@
         <FORM kindOf="standard">'una taturu tia mara vutukuru, cucumen ia, ka'aan tia mara.</FORM>
         <PHON kindOf="standard">ʔuna tatu[r|ɾ]u tia ma[r|ɾ]a vutuku[r|ɾ]u ʦuʦumen ia kaʔaan tia ma[r|ɾ]a</PHON>
         <TRANSL xml:lang="zho">有三個人要拿魚，但其他人不想拿。</TRANSL>
-        <TRANSL xml:lang="eng">There are three (persons) wanting to take fish, while others don't want to take (fish).</TRANSL>
+        <TRANSL xml:lang="eng" notes="There are three (persons) wanting to take fish, while others don't want to take (fish).">There are three wanting to take fish, while others don't want to take .</TRANSL>
         <W id="1_S_334_W0">
             <FORM kindOf="original">'una</FORM>
             <PHON kindOf="original">ʔuna</PHON>
@@ -33301,7 +33301,7 @@
         <FORM kindOf="standard">kacareen.</FORM>
         <PHON kindOf="standard">kaʦa[r|ɾ]een</PHON>
         <TRANSL xml:lang="zho">真可憐！</TRANSL>
-        <TRANSL xml:lang="eng">How pitiful (it is!)</TRANSL>
+        <TRANSL xml:lang="eng" notes="How pitiful (it is!)">How pitiful</TRANSL>
         <W id="1_S_339_W0">
             <FORM kindOf="original">kacareen</FORM>
             <PHON kindOf="original">kaʦar[e|ə][e|ə]n</PHON>
@@ -33573,7 +33573,7 @@
         <FORM kindOf="standard">neni sua nipo'ocipimusu isua tia kʉʉnamaku.</FORM>
         <PHON kindOf="standard">neni sua nipoʔoʦipimusu isua tia kɨɨnamaku</PHON>
         <TRANSL xml:lang="zho">你煮什麼我就吃什麼。</TRANSL>
-        <TRANSL xml:lang="eng">I will eat whatever you cooked. (lit. What did you cook? I want to eat that.)</TRANSL>
+        <TRANSL xml:lang="eng" notes="I will eat whatever you cooked. (lit. What did you cook? I want to eat that.)">I will eat whatever you cooked.</TRANSL>
         <W id="1_S_343_W0">
             <FORM kindOf="original">neni</FORM>
             <PHON kindOf="original">n[e|ə]ni</PHON>
@@ -33717,7 +33717,7 @@
         <FORM kindOf="standard">avara'e nipo'ocipimusu, teku kumakʉʉn.</FORM>
         <PHON kindOf="standard">ava[r|ɾ]aʔe nipoʔoʦipimusu teku kumakɨɨn</PHON>
         <TRANSL xml:lang="zho">隨便你煮什麼，我都吃。</TRANSL>
-        <TRANSL xml:lang="eng">Whatever you cooked, I will eat (it).</TRANSL>
+        <TRANSL xml:lang="eng" notes="Whatever you cooked, I will eat (it).">Whatever you cooked, I will eat .</TRANSL>
         <W id="1_S_344_W0">
             <FORM kindOf="original">avara'e</FORM>
             <PHON kindOf="original">avaraʔ[e|ə]</PHON>
@@ -35464,8 +35464,8 @@
         <PHON kindOf="original">paira sua tasusa manu m[e|ə]r*k**r* ʦunuku</PHON>
         <FORM kindOf="standard">paira sua tasusa manu merʉkʉʉrʉ cunuku.</FORM>
         <PHON kindOf="standard">pai[r|ɾ]a sua tasusa manu me[r|ɾ]ɨkɨɨ[r|ɾ]ɨ ʦunuku</PHON>
-        <TRANSL xml:lang="zho">每次都（有）兩個小孩在搗麻糬。</TRANSL>
-        <TRANSL xml:lang="eng">(There are) Two children always pounding rice cakes.</TRANSL>
+        <TRANSL xml:lang="zho" notes="每次都（有）兩個小孩在搗麻糬。">每次都 兩個小孩在搗麻糬。</TRANSL>
+        <TRANSL xml:lang="eng" notes="(There are) Two children always pounding rice cakes.">Two children always pounding rice cakes.</TRANSL>
         <W id="1_S_360_W0">
             <FORM kindOf="original">paira</FORM>
             <PHON kindOf="original">paira</PHON>
@@ -38368,8 +38368,8 @@
         <PHON kindOf="original">manmaan paraʦani kaʔaan manmaan musutatuun</PHON>
         <FORM kindOf="standard">manmaan paracani, ka'aan manmaan musutatuun.</FORM>
         <PHON kindOf="standard">manmaan pa[r|ɾ]aʦani kaʔaan manmaan musutatuun</PHON>
-        <TRANSL xml:lang="zho">（他）喜歡唱歌，不喜歡跳舞。</TRANSL>
-        <TRANSL xml:lang="eng">(He) likes to sing, but doesn't like to dance.</TRANSL>
+        <TRANSL xml:lang="zho" notes="（他）喜歡唱歌，不喜歡跳舞。">喜歡唱歌，不喜歡跳舞。</TRANSL>
+        <TRANSL xml:lang="eng" notes="(He) likes to sing, but doesn't like to dance.">likes to sing, but doesn't like to dance.</TRANSL>
         <W id="1_S_387_W0">
             <FORM kindOf="original">manmaan</FORM>
             <PHON kindOf="original">manmaan</PHON>
@@ -38464,8 +38464,8 @@
         <PHON kindOf="original">manmaan mamia paraʦaan</PHON>
         <FORM kindOf="standard">manmaan mamia paracaan.</FORM>
         <PHON kindOf="standard">manmaan mamia pa[r|ɾ]aʦaan</PHON>
-        <TRANSL xml:lang="zho">（他）只喜歡唱歌。</TRANSL>
-        <TRANSL xml:lang="eng">(He) only likes to sing.</TRANSL>
+        <TRANSL xml:lang="zho" notes="（他）只喜歡唱歌。">只喜歡唱歌。</TRANSL>
+        <TRANSL xml:lang="eng" notes="(He) only likes to sing.">only likes to sing.</TRANSL>
         <W id="1_S_388_W0">
             <FORM kindOf="original">manmaan</FORM>
             <PHON kindOf="original">manmaan</PHON>
@@ -38776,8 +38776,8 @@
         <PHON kindOf="original">kavaŋvaŋ sipotokikiio ia ʔurupaʦ**nk[e|ə][e|ə] ʦ*p**ŋ</PHON>
         <FORM kindOf="standard">kavangvang sipotokikiio ia, 'urupacʉʉnkee cʉpʉʉng.</FORM>
         <PHON kindOf="standard">kavaŋvaŋ sipotokikiio ia ʔu[r|ɾ]upaʦɨɨnkee ʦɨpɨɨŋ</PHON>
-        <TRANSL xml:lang="zho">他用心（做）每一件工作。</TRANSL>
-        <TRANSL xml:lang="eng">He (does) every piece of work with his heart.</TRANSL>
+        <TRANSL xml:lang="zho" notes="他用心（做）每一件工作。">他用心 每一件工作。</TRANSL>
+        <TRANSL xml:lang="eng" notes="He (does) every piece of work with his heart.">He every piece of work with his heart.</TRANSL>
         <W id="1_S_391_W0">
             <FORM kindOf="original">kavangvang</FORM>
             <PHON kindOf="original">kavaŋvaŋ</PHON>
@@ -38975,7 +38975,7 @@
         <FORM kindOf="standard">noo makaankamu mara cunuku ia, ucani mamia.</FORM>
         <PHON kindOf="standard">noo makaankamu ma[r|ɾ]a ʦunuku ia uʦani mamia</PHON>
         <TRANSL xml:lang="zho">你們每次只能拿一個麻糬。</TRANSL>
-        <TRANSL xml:lang="eng">You can only take one rice cake each time. (lit. When you take rice cake each time, only one.)</TRANSL>
+        <TRANSL xml:lang="eng" notes="You can only take one rice cake each time. (lit. When you take rice cake each time, only one.)">You can only take one rice cake each time.</TRANSL>
         <W id="1_S_393_W0">
             <FORM kindOf="original">noo</FORM>
             <PHON kindOf="original">noo</PHON>
@@ -39142,8 +39142,8 @@
         <PHON kindOf="original">soni ia makaan mamia mara uʦani</PHON>
         <FORM kindOf="standard">soni ia, makaan mamia mara ucani.</FORM>
         <PHON kindOf="standard">soni ia makaan mamia ma[r|ɾ]a uʦani</PHON>
-        <TRANSL xml:lang="zho">今天，（我）只拿一個。</TRANSL>
-        <TRANSL xml:lang="eng">Today, (I) only take one.</TRANSL>
+        <TRANSL xml:lang="zho" notes="今天，（我）只拿一個。">今天， 只拿一個。</TRANSL>
+        <TRANSL xml:lang="eng" notes="Today, (I) only take one.">Today, only take one.</TRANSL>
         <W id="1_S_394_W0">
             <FORM kindOf="original">soni</FORM>
             <PHON kindOf="original">soni</PHON>
@@ -39626,12 +39626,12 @@
         </W>
     </S>
     <S id="1_S_397">
-        <FORM kindOf="original" notes="annotation codes removed; consult the NTU Formosan Corpus source">tacin tacin cau manmaan kangvang nguain takacicin.</FORM>
+        <FORM kindOf="original">tacin tacin cau manmaan kangvang nguain takacicin.</FORM>
         <PHON kindOf="original">taʦin taʦin ʦau manmaan kaŋvaŋ ŋuain takaʦiʦin</PHON>
         <FORM kindOf="standard">tacin tacin cau manmaan kangvang nguain takacicin.</FORM>
         <PHON kindOf="standard">taʦin taʦin ʦau manmaan kaŋvaŋ ŋuain takaʦiʦin</PHON>
-        <TRANSL xml:lang="zho">每個人都喜歡自己。 餒個人都喜歡自己（做）。</TRANSL>
-        <TRANSL xml:lang="eng">Everyone likes himself. Everyone likes (to do something) by himself.</TRANSL>
+        <TRANSL xml:lang="zho" notes="(1) 每個人都喜歡自己。 (2) 餒個人都喜歡自己（做）。">每個人都喜歡自己。 餒個人都喜歡自己 。</TRANSL>
+        <TRANSL xml:lang="eng" notes="(1) Everyone likes himself. (2) Everyone likes (to do something) by himself.">Everyone likes himself. Everyone likes by himself.</TRANSL>
         <W id="1_S_397_W0">
             <FORM kindOf="original">ta-cin</FORM>
             <PHON kindOf="original">taʦin</PHON>
@@ -40390,8 +40390,8 @@
         <PHON kindOf="original">k[e|ə]ʦanʦan kasua moʦaʦa</PHON>
         <FORM kindOf="standard">kecancan kasua mocaca.</FORM>
         <PHON kindOf="standard">keʦanʦan kasua moʦaʦa</PHON>
-        <TRANSL xml:lang="zho">我（要）跟你一起走。</TRANSL>
-        <TRANSL xml:lang="eng">I (will) with you.</TRANSL>
+        <TRANSL xml:lang="zho" notes="我（要）跟你一起走。">我 跟你一起走。</TRANSL>
+        <TRANSL xml:lang="eng" notes="I (will) with you.">I with you.</TRANSL>
         <W id="1_S_403_W0">
             <FORM kindOf="original">ke-can-can</FORM>
             <PHON kindOf="original">k[e|ə]ʦanʦan</PHON>
@@ -41814,8 +41814,8 @@
         <PHON kindOf="original">tavar*ʔ*nʦumusu kavaŋvaŋ</PHON>
         <FORM kindOf="standard">tavarʉ'ʉncumusu kavangvang.</FORM>
         <PHON kindOf="standard">tava[r|ɾ]ɨʔɨnʦumusu kavaŋvaŋ</PHON>
-        <TRANSL xml:lang="zho">你很厲害！（字面：你知道所有的事。）</TRANSL>
-        <TRANSL xml:lang="eng">You are capable! (lit. You know everything!)</TRANSL>
+        <TRANSL xml:lang="zho" notes="你很厲害！（字面：你知道所有的事。）">你很厲害！</TRANSL>
+        <TRANSL xml:lang="eng" notes="You are capable! (lit. You know everything!)">You are capable!</TRANSL>
         <W id="1_S_417_W0">
             <FORM kindOf="original">tavarʉ'-ʉn=cu=musu</FORM>
             <PHON kindOf="original">tavar*ʔ*nʦumusu</PHON>
@@ -42060,8 +42060,8 @@
         <PHON kindOf="original">nipanaʔ*ʦumaku</PHON>
         <FORM kindOf="standard">nipana'ʉcumaku.</FORM>
         <PHON kindOf="standard">nipanaʔɨʦumaku</PHON>
-        <TRANSL xml:lang="zho">我已經（吃了）一半。</TRANSL>
-        <TRANSL xml:lang="eng">I have (eaten) half (of it).</TRANSL>
+        <TRANSL xml:lang="zho" notes="我已經（吃了）一半。">我已經 一半。</TRANSL>
+        <TRANSL xml:lang="eng" notes="I have (eaten) half (of it).">I have half .</TRANSL>
         <W id="1_S_421_W0">
             <FORM kindOf="original">ni-pana'ʉ=cu=maku</FORM>
             <PHON kindOf="original">nipanaʔ*ʦumaku</PHON>
@@ -42588,8 +42588,8 @@
         <PHON kindOf="original">kaʔaan tavar**ʔ*</PHON>
         <FORM kindOf="standard">ka'aan tavarʉʉ'ʉ.</FORM>
         <PHON kindOf="standard">kaʔaan tava[r|ɾ]ɨɨʔɨ</PHON>
-        <TRANSL xml:lang="zho">（我）不知道。</TRANSL>
-        <TRANSL xml:lang="eng">(I) don't know.</TRANSL>
+        <TRANSL xml:lang="zho" notes="（我）不知道。">不知道。</TRANSL>
+        <TRANSL xml:lang="eng" notes="(I) don't know.">don't know.</TRANSL>
         <W id="1_S_427_W0">
             <FORM kindOf="original">ka'aan</FORM>
             <PHON kindOf="original">kaʔaan</PHON>
@@ -42844,8 +42844,8 @@
         <PHON kindOf="original">naman[e|ə]ʔ[e|ə] takaʦiʦinku t[e|ə]kiriim k**na</PHON>
         <FORM kindOf="standard">namane'e, takacicinku tekiriim kʉʉna.</FORM>
         <PHON kindOf="standard">namaneʔe takaʦiʦinku teki[r|ɾ]iim kɨɨna</PHON>
-        <TRANSL xml:lang="zho">不用了，我會自己找東西（吃）。</TRANSL>
-        <TRANSL xml:lang="eng">No thanks, I (will) find food (to eat) by myself.</TRANSL>
+        <TRANSL xml:lang="zho" notes="不用了，我會自己找東西（吃）。">不用了，我會自己找東西 。</TRANSL>
+        <TRANSL xml:lang="eng" notes="No thanks, I (will) find food (to eat) by myself.">No thanks, I find food by myself.</TRANSL>
         <W id="1_S_430_W0">
             <FORM kindOf="original">namane'e,</FORM>
             <PHON kindOf="original">naman[e|ə]ʔ[e|ə]</PHON>
@@ -43437,7 +43437,7 @@
         <FORM kindOf="standard">arikʉpo kavangvang cʉʉn nomanamaarʉ.</FORM>
         <PHON kindOf="standard">a[r|ɾ]ikɨpo kavaŋvaŋ ʦɨɨn nomanamaa[r|ɾ]ɨ</PHON>
         <TRANSL xml:lang="zho">把全部的草堆起來然後燒掉！</TRANSL>
-        <TRANSL xml:lang="eng">Pile up the grass and burn (it)!</TRANSL>
+        <TRANSL xml:lang="eng" notes="Pile up the grass and burn (it)!">Pile up the grass and burn !</TRANSL>
         <W id="1_S_436_W0">
             <FORM kindOf="original">arikʉp-o</FORM>
             <PHON kindOf="original">arik*po</PHON>
@@ -43517,7 +43517,7 @@
         <FORM kindOf="standard">mariikʉpʉku kavangvang cʉʉn nomanamaarʉ.</FORM>
         <PHON kindOf="standard">ma[r|ɾ]iikɨpɨku kavaŋvaŋ ʦɨɨn nomanamaa[r|ɾ]ɨ</PHON>
         <TRANSL xml:lang="zho">我把全部的草堆起來然後燒掉。</TRANSL>
-        <TRANSL xml:lang="eng">I pile up all the grass and burn (it).</TRANSL>
+        <TRANSL xml:lang="eng" notes="I pile up all the grass and burn (it).">I pile up all the grass and burn .</TRANSL>
         <W id="1_S_437_W0">
             <FORM kindOf="original">m-ariikʉpʉ=ku</FORM>
             <PHON kindOf="original">mariik*p*ku</PHON>
@@ -44484,8 +44484,8 @@
         <PHON kindOf="original">ʔitumuru paiʔʦi ʔakia kam*ʦ* taʦin ʦau nimima ʦanpania paiʔʦi</PHON>
         <FORM kindOf="standard">'itumuru pai'ci, 'akia kamʉcʉ tacin cau nimima canpania pai'ci.</FORM>
         <PHON kindOf="standard">ʔitumu[r|ɾ]u paiʔʦi ʔakia kamɨʦɨ taʦin ʦau nimima ʦanpania paiʔʦi</PHON>
-        <TRANSL xml:lang="zho">酒很多，（但）一瓶酒都沒有人喝。</TRANSL>
-        <TRANSL xml:lang="eng">Wine is a lot, (yet) there are no people who drank even one bottle of wine.</TRANSL>
+        <TRANSL xml:lang="zho" notes="酒很多，（但）一瓶酒都沒有人喝。">酒很多， 一瓶酒都沒有人喝。</TRANSL>
+        <TRANSL xml:lang="eng" notes="Wine is a lot, (yet) there are no people who drank even one bottle of wine.">Wine is a lot, there are no people who drank even one bottle of wine.</TRANSL>
         <W id="1_S_446_W0">
             <FORM kindOf="original">'itumuru</FORM>
             <PHON kindOf="original">ʔitumuru</PHON>
@@ -44708,8 +44708,8 @@
         <PHON kindOf="original">kam*ʦ*pa iovatu</PHON>
         <FORM kindOf="standard">kamʉcʉpa iovatu.</FORM>
         <PHON kindOf="standard">kamɨʦɨpa iovatu</PHON>
-        <TRANSL xml:lang="zho">希望（他/她）能夠來。</TRANSL>
-        <TRANSL xml:lang="eng">Hope (he/she) can come.</TRANSL>
+        <TRANSL xml:lang="zho" notes="希望（他/她）能夠來。">希望 能夠來。</TRANSL>
+        <TRANSL xml:lang="eng" notes="Hope (he/she) can come.">Hope can come.</TRANSL>
         <W id="1_S_448_W0">
             <FORM kindOf="original">kamʉcʉ=pa</FORM>
             <PHON kindOf="original">kam*ʦ*pa</PHON>
@@ -45029,7 +45029,7 @@
         <FORM kindOf="standard">paracinio 'apaara.</FORM>
         <PHON kindOf="standard">pa[r|ɾ]aʦinio ʔapaa[r|ɾ]a</PHON>
         <TRANSL xml:lang="zho">讓他一個人去拿。</TRANSL>
-        <TRANSL xml:lang="eng">Make him take (something) alone.</TRANSL>
+        <TRANSL xml:lang="eng" notes="Make him take (something) alone.">Make him take alone.</TRANSL>
         <W id="1_S_453_W0">
             <FORM kindOf="original">p-ara-cini-o</FORM>
             <PHON kindOf="original">paraʦinio</PHON>
@@ -45100,7 +45100,7 @@
         <PHON kindOf="original">koʦaniinmaku s[e|ə]rituŋ iisi</PHON>
         <FORM kindOf="standard">kocaniinmaku seritung iisi.</FORM>
         <PHON kindOf="standard">koʦaniinmaku se[r|ɾ]ituŋ iisi</PHON>
-        <TRANSL xml:lang="zho">這一顆木瓜我（一個人）吃。</TRANSL>
+        <TRANSL xml:lang="zho" notes="這一顆木瓜我（一個人）吃。">這一顆木瓜我 吃。</TRANSL>
         <TRANSL xml:lang="eng">I eat this one papaya.</TRANSL>
         <W id="1_S_454_W0">
             <FORM kindOf="original">ko-cani-in=maku</FORM>
@@ -45756,8 +45756,8 @@
         <PHON kindOf="original">makaʦaniʦani ivatu si[e|ə][e|ə]n pokari kitana</PHON>
         <FORM kindOf="standard">makacanicani ivatu sieen pokari kitana.</FORM>
         <PHON kindOf="standard">makaʦaniʦani ivatu sieen poka[r|ɾ]i kitana</PHON>
-        <TRANSL xml:lang="zho">（他）一次又一次來這裡叫我。</TRANSL>
-        <TRANSL xml:lang="eng">(He) comes here to notify us again and again.</TRANSL>
+        <TRANSL xml:lang="zho" notes="（他）一次又一次來這裡叫我。">一次又一次來這裡叫我。</TRANSL>
+        <TRANSL xml:lang="eng" notes="(He) comes here to notify us again and again.">comes here to notify us again and again.</TRANSL>
         <W id="1_S_461_W0">
             <FORM kindOf="original">ma-ka-cani-cani</FORM>
             <PHON kindOf="original">makaʦaniʦani</PHON>
@@ -46324,8 +46324,8 @@
         <PHON kindOf="original">maraturuturukim atioma</PHON>
         <FORM kindOf="standard">maraturuturukim atioma.</FORM>
         <PHON kindOf="standard">ma[r|ɾ]atu[r|ɾ]utu[r|ɾ]ukim atioma</PHON>
-        <TRANSL xml:lang="zho">我們三個三個去領（獎）。</TRANSL>
-        <TRANSL xml:lang="eng">We go to accept (the award) three after three.</TRANSL>
+        <TRANSL xml:lang="zho" notes="我們三個三個去領（獎）。">我們三個三個去領 。</TRANSL>
+        <TRANSL xml:lang="eng" notes="We go to accept (the award) three after three.">We go to accept three after three.</TRANSL>
         <W id="1_S_467_W0">
             <FORM kindOf="original">mara-turu-turu=kim</FORM>
             <PHON kindOf="original">maraturuturukim</PHON>
@@ -47125,7 +47125,7 @@
         <FORM kindOf="standard">pacancaniinmita pepe.</FORM>
         <PHON kindOf="standard">paʦanʦaniinmita pepe</PHON>
         <TRANSL xml:lang="zho">我們自己分一人一個。</TRANSL>
-        <TRANSL xml:lang="eng">Each of us (takes) one by ourselves.</TRANSL>
+        <TRANSL xml:lang="eng" notes="Each of us (takes) one by ourselves.">Each of us one by ourselves.</TRANSL>
         <W id="1_S_474_W0">
             <FORM kindOf="original">pa-can-cani-in=mita</FORM>
             <PHON kindOf="original">paʦanʦaniinmita</PHON>
@@ -47196,8 +47196,8 @@
         <PHON kindOf="original">paʦanʦanio iikamu p[e|ə]p[e|ə]</PHON>
         <FORM kindOf="standard">pacancanio iikamu pepe.</FORM>
         <PHON kindOf="standard">paʦanʦanio iikamu pepe</PHON>
-        <TRANSL xml:lang="zho">（有人交代說，讓）你們一個人一個！</TRANSL>
-        <TRANSL xml:lang="eng">Allot you(rselves) one each person!</TRANSL>
+        <TRANSL xml:lang="zho" notes="（有人交代說，讓）你們一個人一個！">你們一個人一個！</TRANSL>
+        <TRANSL xml:lang="eng" notes="Allot you(rselves) one each person!">Allot you one each person!</TRANSL>
         <W id="1_S_475_W0">
             <FORM kindOf="original">pa-can-cani-o</FORM>
             <PHON kindOf="original">paʦanʦanio</PHON>
@@ -47589,7 +47589,7 @@
         <FORM kindOf="standard">teku tupuru na cau kacaua.</FORM>
         <PHON kindOf="standard">teku tupu[r|ɾ]u na ʦau kaʦaua</PHON>
         <TRANSL xml:lang="zho">我要坐在人多的地方。</TRANSL>
-        <TRANSL xml:lang="eng">I will sit at (the place where) people are many.</TRANSL>
+        <TRANSL xml:lang="eng" notes="I will sit at (the place where) people are many.">I will sit at people are many.</TRANSL>
         <W id="1_S_479_W0">
             <FORM kindOf="original">te=ku</FORM>
             <PHON kindOf="original">t[e|ə]ku</PHON>
@@ -48629,7 +48629,7 @@
         <FORM kindOf="standard">upeen karua karumusu.</FORM>
         <PHON kindOf="standard">upeen ka[r|ɾ]ua ka[r|ɾ]umusu</PHON>
         <TRANSL xml:lang="zho">你的木材有幾根？</TRANSL>
-        <TRANSL xml:lang="eng">How many wood sticks do you have? (lit. How many are your wood sticks?)</TRANSL>
+        <TRANSL xml:lang="eng" notes="How many wood sticks do you have? (lit. How many are your wood sticks?)">How many wood sticks do you have?</TRANSL>
         <W id="1_S_488_W0">
             <FORM kindOf="original">u-peen</FORM>
             <PHON kindOf="original">up[e|ə][e|ə]n</PHON>
@@ -48829,7 +48829,7 @@
         <FORM kindOf="standard">mee upitu takananga veroovana miʉra 'esiku kumakʉʉn.</FORM>
         <PHON kindOf="standard">mee upitu takanaŋa ve[r|ɾ]oovana miɨ[r|ɾ]a ʔesiku kumakɨɨn</PHON>
         <TRANSL xml:lang="zho">昨天七點的時候，我正在吃飯。</TRANSL>
-        <TRANSL xml:lang="eng">At seven o'clock yesterday, I was eating (dinner).</TRANSL>
+        <TRANSL xml:lang="eng" notes="At seven o'clock yesterday, I was eating (dinner).">At seven o'clock yesterday, I was eating .</TRANSL>
         <W id="1_S_490_W0">
             <FORM kindOf="original">mee</FORM>
             <PHON kindOf="original">m[e|ə][e|ə]</PHON>
@@ -48981,7 +48981,7 @@
         <FORM kindOf="standard">urucincu taniara koopaku kumakʉʉn.</FORM>
         <PHON kindOf="standard">u[r|ɾ]uʦinʦu tania[r|ɾ]a koopaku kumakɨɨn</PHON>
         <TRANSL xml:lang="zho">我已經兩天沒吃東西了。</TRANSL>
-        <TRANSL xml:lang="eng">I haven't eaten (anything) for already two days.</TRANSL>
+        <TRANSL xml:lang="eng" notes="I haven't eaten (anything) for already two days.">I haven't eaten for already two days.</TRANSL>
         <W id="1_S_491_W0">
             <FORM kindOf="original">u-rucin=cu</FORM>
             <PHON kindOf="original">uruʦinʦu</PHON>
@@ -49101,7 +49101,7 @@
         <FORM kindOf="standard">'itumurucu taniara koopaku kumakʉʉn 'uru.</FORM>
         <PHON kindOf="standard">ʔitumu[r|ɾ]uʦu tania[r|ɾ]a koopaku kumakɨɨn ʔu[r|ɾ]u</PHON>
         <TRANSL xml:lang="zho">我已經很多天沒吃東西了。</TRANSL>
-        <TRANSL xml:lang="eng">I haven't eaten (anything) for already many days.</TRANSL>
+        <TRANSL xml:lang="eng" notes="I haven't eaten (anything) for already many days.">I haven't eaten for already many days.</TRANSL>
         <W id="1_S_492_W0">
             <FORM kindOf="original">'itumuru=cu</FORM>
             <PHON kindOf="original">ʔitumuruʦu</PHON>
@@ -49228,8 +49228,8 @@
         <PHON kindOf="original">*s*ʔ**nmaku na takuaʦapa paiʦi ʦuma tia iimaa ʦuma</PHON>
         <FORM kindOf="standard">ʉsʉ'ʉʉnmaku na takuacapa paici cuma (tia iimaa cuma).</FORM>
         <PHON kindOf="standard">ɨsɨʔɨɨnmaku na takuaʦapa paiʦi ʦuma tia iimaa ʦuma</PHON>
-        <TRANSL xml:lang="zho">我把爸爸的酒放在飯桌上(爸爸要喝)</TRANSL>
-        <TRANSL xml:lang="eng">I put Father's wine on the table (for Father to drink).</TRANSL>
+        <TRANSL xml:lang="zho" notes="我把爸爸的酒放在飯桌上(爸爸要喝)">我把爸爸的酒放在飯桌上</TRANSL>
+        <TRANSL xml:lang="eng" notes="I put Father's wine on the table (for Father to drink).">I put Father's wine on the table .</TRANSL>
         <W id="2_S_1_W0">
             <FORM kindOf="original">ʉsʉ'ʉ-ʉn=maku</FORM>
             <PHON kindOf="original">*s*ʔ**nmaku</PHON>
@@ -49504,8 +49504,8 @@
         <PHON kindOf="original">av**n manu ʦumaʦanʦu</PHON>
         <FORM kindOf="standard">avʉʉn manu cumacancu.</FORM>
         <PHON kindOf="standard">avɨɨn manu ʦumaʦanʦu</PHON>
-        <TRANSL xml:lang="zho">(我)背著小孩插秧。</TRANSL>
-        <TRANSL xml:lang="eng">(I) transplanted seedlings,child being carried on the back.'</TRANSL>
+        <TRANSL xml:lang="zho" notes="(我)背著小孩插秧。">背著小孩插秧。</TRANSL>
+        <TRANSL xml:lang="eng" notes="(I) transplanted seedlings,child being carried on the back.’">transplanted seedlings,child being carried on the back.'</TRANSL>
         <W id="2_S_3_W0">
             <FORM kindOf="original">avʉ-ʉn</FORM>
             <PHON kindOf="original">av**n</PHON>
@@ -49857,7 +49857,7 @@
         <FORM kindOf="standard">nuu nimuringeeci ia, muacacu mosa tutunuvu taru'anni.</FORM>
         <PHON kindOf="standard">nuu nimu[r|ɾ]iŋeeʦi ia muaʦaʦu mosa tutunuvu ta[r|ɾ]uʔanni</PHON>
         <TRANSL xml:lang="zho">如果他們已經設好陷阱了，他們就會走到他們的獵寮。</TRANSL>
-        <TRANSL xml:lang="eng">If (they) have already set up the trap, they would rush to their hunting shed.</TRANSL>
+        <TRANSL xml:lang="eng" notes="If (they) have already set up the trap, they would rush to their hunting shed.">If have already set up the trap, they would rush to their hunting shed.</TRANSL>
         <W id="2_S_6_W0">
             <FORM kindOf="original">nuu</FORM>
             <PHON kindOf="original">nuu</PHON>
@@ -50200,8 +50200,8 @@
         <PHON kindOf="original">nuura ia muaʦaʦu rumiŋ[e|ə][e|ə]</PHON>
         <FORM kindOf="standard">nuura ia, muacacu rumingee.</FORM>
         <PHON kindOf="standard">nuu[r|ɾ]a ia muaʦaʦu [r|ɾ]umiŋee</PHON>
-        <TRANSL xml:lang="zho">明天(獵人們)會去設陷阱。</TRANSL>
-        <TRANSL xml:lang="eng">Tomorrow, (the hunters) will go and set up traps.</TRANSL>
+        <TRANSL xml:lang="zho" notes="明天(獵人們)會去設陷阱。">明天 會去設陷阱。</TRANSL>
+        <TRANSL xml:lang="eng" notes="Tomorrow, (the hunters) will go and set up traps.">Tomorrow, will go and set up traps.</TRANSL>
         <W id="2_S_8_W0">
             <FORM kindOf="original">nuura</FORM>
             <PHON kindOf="original">nuura</PHON>
@@ -50560,8 +50560,8 @@
         <PHON kindOf="original">iimo maka*i iikua poʔisuapa vinaʔ*</PHON>
         <FORM kindOf="standard">iimo makahi iikua po'isuapa vina'ʉ.</FORM>
         <PHON kindOf="standard">iimo makahi iikua poʔisuapa vinaʔɨ</PHON>
-        <TRANSL xml:lang="zho">所以(她)叫我再說一遍小米的事。</TRANSL>
-        <TRANSL xml:lang="eng">So (she) told me to talk about the millet again.</TRANSL>
+        <TRANSL xml:lang="zho" notes="所以(她)叫我再說一遍小米的事。">所以 叫我再說一遍小米的事。</TRANSL>
+        <TRANSL xml:lang="eng" notes="So (she) told me to talk about the millet again.">So told me to talk about the millet again.</TRANSL>
         <W id="2_S_12_W0">
             <FORM kindOf="original">iimo</FORM>
             <PHON kindOf="original">iimo</PHON>
@@ -50664,8 +50664,8 @@
         <PHON kindOf="original">mumuku mamaraŋ miana tanuku tammi</PHON>
         <FORM kindOf="standard">mumuku mamarang miana tanuku tammi.</FORM>
         <PHON kindOf="standard">mumuku mama[r|ɾ]aŋ miana tanuku tammi</PHON>
-        <TRANSL xml:lang="zho">(我們的)長輩們以前種芋頭和地瓜。</TRANSL>
-        <TRANSL xml:lang="eng">(Our) parents used to grow taro and sweet potatoes.</TRANSL>
+        <TRANSL xml:lang="zho" notes="(我們的)長輩們以前種芋頭和地瓜。">長輩們以前種芋頭和地瓜。</TRANSL>
+        <TRANSL xml:lang="eng" notes="(Our) parents used to grow taro and sweet potatoes.">parents used to grow taro and sweet potatoes.</TRANSL>
         <W id="2_S_13_W0">
             <FORM kindOf="original">m-umuku</FORM>
             <PHON kindOf="original">mumuku</PHON>
@@ -50768,8 +50768,8 @@
         <PHON kindOf="original">mumuku mamaraŋ miana tanuku mataa tammi</PHON>
         <FORM kindOf="standard">mumuku mamarang miana tanuku mataa tammi.</FORM>
         <PHON kindOf="standard">mumuku mama[r|ɾ]aŋ miana tanuku mataa tammi</PHON>
-        <TRANSL xml:lang="zho">(我們的)長輩們以前種芋頭和地瓜。</TRANSL>
-        <TRANSL xml:lang="eng">(Our) parents used to grow taro and sweet potatoes.</TRANSL>
+        <TRANSL xml:lang="zho" notes="(我們的)長輩們以前種芋頭和地瓜。">長輩們以前種芋頭和地瓜。</TRANSL>
+        <TRANSL xml:lang="eng" notes="(Our) parents used to grow taro and sweet potatoes.">parents used to grow taro and sweet potatoes.</TRANSL>
         <W id="2_S_13-opt_W0">
             <FORM kindOf="original">m-umuku</FORM>
             <PHON kindOf="original">mumuku</PHON>
@@ -50944,8 +50944,8 @@
         <PHON kindOf="original">kaman**ŋkia tiŋiŋai kumarai</PHON>
         <FORM kindOf="standard">kamanʉʉngkia tingingai kumarai.</FORM>
         <PHON kindOf="standard">kamanɨɨŋkia tiŋiŋai kuma[r|ɾ]ai</PHON>
-        <TRANSL xml:lang="zho">我耕作(在)小田地。</TRANSL>
-        <TRANSL xml:lang="eng">I did (it) on a small field.</TRANSL>
+        <TRANSL xml:lang="zho" notes="我耕作(在)小田地。">我耕作 小田地。</TRANSL>
+        <TRANSL xml:lang="eng" notes="I did (it) on a small field.">I did on a small field.</TRANSL>
         <W id="2_S_15_W0">
             <FORM kindOf="original">kamanʉʉng=kia</FORM>
             <PHON kindOf="original">kaman**ŋkia</PHON>
@@ -54008,7 +54008,7 @@
         <FORM kindOf="standard">cakʉran ia tocanumamaku canumu.</FORM>
         <PHON kindOf="standard">ʦakɨ[r|ɾ]an ia toʦanumamaku ʦanumu</PHON>
         <TRANSL xml:lang="zho">河是我經常挑水的地方。</TRANSL>
-        <TRANSL xml:lang="eng">The river is the place (that) I often get water.</TRANSL>
+        <TRANSL xml:lang="eng" notes="The river is the place (that) I often get water.">The river is the place I often get water.</TRANSL>
         <W id="3_S_34_W1">
             <FORM kindOf="original">cakʉran</FORM>
             <PHON kindOf="original">ʦak*ran</PHON>
@@ -54104,7 +54104,7 @@
         <FORM kindOf="standard">sua cakʉran ia tocanumamaku canumu.</FORM>
         <PHON kindOf="standard">sua ʦakɨ[r|ɾ]an ia toʦanumamaku ʦanumu</PHON>
         <TRANSL xml:lang="zho">河是我經常挑水的地方。</TRANSL>
-        <TRANSL xml:lang="eng">The river is the place (that) I often get water.</TRANSL>
+        <TRANSL xml:lang="eng" notes="The river is the place (that) I often get water.">The river is the place I often get water.</TRANSL>
         <W id="3_S_34-opt_W0">
             <FORM kindOf="original">sua</FORM>
             <PHON kindOf="original">sua</PHON>
@@ -54825,7 +54825,7 @@
         <PHON kindOf="original">arivura**nmita ʦau iisua</PHON>
         <FORM kindOf="standard">Arivuraʉʉnmita cau iisua.</FORM>
         <PHON kindOf="standard">a[r|ɾ]ivu[r|ɾ]aɨɨnmita ʦau iisua</PHON>
-        <TRANSL xml:lang="zho">我們要打了那個人(有計畫)。</TRANSL>
+        <TRANSL xml:lang="zho" notes="我們要打了那個人(有計畫)。">我們要打了那個人 。</TRANSL>
         <TRANSL xml:lang="eng">We are planning to beat that person.</TRANSL>
         <W id="3_S_41_W0">
             <FORM kindOf="original">Ari-vuraʉ-ʉn=mita</FORM>
@@ -56297,7 +56297,7 @@
         <PHON kindOf="original">iikasu ia v**nmaku sinat*</PHON>
         <FORM kindOf="standard">iikasu ia vʉʉnmaku sinatʉ.</FORM>
         <PHON kindOf="standard">iikasu ia vɨɨnmaku sinatɨ</PHON>
-        <TRANSL xml:lang="zho">你呢我要給(你)書</TRANSL>
+        <TRANSL xml:lang="zho" notes="你呢我要給(你)書">你呢我要給 書</TRANSL>
         <TRANSL xml:lang="eng">You, I am going to give a book to.</TRANSL>
         <W id="3_S_57_W0">
             <FORM kindOf="original">iikasu</FORM>
@@ -56457,8 +56457,8 @@
         <PHON kindOf="original">kaman**ŋ*nk[e|ə][e|ə] sua riŋ[e|ə][e|ə]</PHON>
         <FORM kindOf="standard">kamanʉʉngʉnkee sua ringee.</FORM>
         <PHON kindOf="standard">kamanɨɨŋɨnkee sua [r|ɾ]iŋee</PHON>
-        <TRANSL xml:lang="zho">他(正在)做那個套(陷阱)。</TRANSL>
-        <TRANSL xml:lang="eng">He is donig that sheath (trap).</TRANSL>
+        <TRANSL xml:lang="zho" notes="他(正在)做那個套(陷阱)。">他 做那個套 。</TRANSL>
+        <TRANSL xml:lang="eng" notes="He is donig that sheath (trap).">He is donig that sheath .</TRANSL>
         <W id="3_S_59_W0">
             <FORM kindOf="original">kamanʉʉng-ʉn=kee</FORM>
             <PHON kindOf="original">kaman**ŋ*nk[e|ə][e|ə]</PHON>
@@ -56529,8 +56529,8 @@
         <PHON kindOf="original">kaman**ŋ*n ŋuain sua riŋ[e|ə][e|ə]</PHON>
         <FORM kindOf="standard">kamanʉʉngʉn nguain sua ringee.</FORM>
         <PHON kindOf="standard">kamanɨɨŋɨn ŋuain sua [r|ɾ]iŋee</PHON>
-        <TRANSL xml:lang="zho">他(正在)做那個套(陷阱)。</TRANSL>
-        <TRANSL xml:lang="eng">He is doing that sheath (trap).</TRANSL>
+        <TRANSL xml:lang="zho" notes="他(正在)做那個套(陷阱)。">他 做那個套 。</TRANSL>
+        <TRANSL xml:lang="eng" notes="He is doing that sheath (trap).">He is doing that sheath .</TRANSL>
         <W id="3_S_60_W0">
             <FORM kindOf="original">kamanʉʉng-ʉn</FORM>
             <PHON kindOf="original">kaman**ŋ*n</PHON>
@@ -57010,7 +57010,7 @@
         <FORM kindOf="standard">kumakʉʉn nguain tammi.</FORM>
         <PHON kindOf="standard">kumakɨɨn ŋuain tammi</PHON>
         <TRANSL xml:lang="zho">他/他們吃地瓜。</TRANSL>
-        <TRANSL xml:lang="eng">He/They eat(s) sweet potatoes.</TRANSL>
+        <TRANSL xml:lang="eng" notes="He/They eat(s) sweet potatoes.">He/They eat sweet potatoes.</TRANSL>
         <W id="3_S_66_W0">
             <FORM kindOf="original">k&lt;um&gt;a-kʉʉn</FORM>
             <PHON kindOf="original">kumak**n</PHON>
@@ -57903,7 +57903,7 @@
         <PHON kindOf="original">k**n[e|ə][e|ə] pani sua tammi</PHON>
         <FORM kindOf="standard">kʉʉnee Pani sua tammi.</FORM>
         <PHON kindOf="standard">kɨɨnee pani sua tammi</PHON>
-        <TRANSL xml:lang="zho">Pani吃了那個地瓜。 (註 : 不能兩個sua同時出現)</TRANSL>
+        <TRANSL xml:lang="zho" notes="Pani吃了那個地瓜。 (註 : 不能兩個sua同時出現)">Pani吃了那個地瓜。</TRANSL>
         <TRANSL xml:lang="eng">Pani ate that sweet patato.</TRANSL>
         <W id="3_S_75_W0">
             <FORM kindOf="original">kʉʉn-ee</FORM>
@@ -58489,7 +58489,7 @@
         <PHON kindOf="original">manmaan ʔinia pani</PHON>
         <FORM kindOf="standard">manmaan 'inia Pani.</FORM>
         <PHON kindOf="standard">manmaan ʔinia pani</PHON>
-        <TRANSL xml:lang="zho">Pani喜歡他(也通)。</TRANSL>
+        <TRANSL xml:lang="zho" notes="Pani喜歡他(也通)。">Pani喜歡他 。</TRANSL>
         <TRANSL xml:lang="eng">Pani likes him.</TRANSL>
         <W id="3_S_82_W0">
             <FORM kindOf="original">manmaan</FORM>
@@ -58545,8 +58545,8 @@
         <PHON kindOf="original">nik*n**nku ʔinia</PHON>
         <FORM kindOf="standard">nikʉnʉʉnku 'inia.</FORM>
         <PHON kindOf="standard">nikɨnɨɨnku ʔinia</PHON>
-        <TRANSL xml:lang="zho">我吃過了(那個菜)。</TRANSL>
-        <TRANSL xml:lang="eng">I have eaten (that vegetables).</TRANSL>
+        <TRANSL xml:lang="zho" notes="我吃過了(那個菜)。">我吃過了 。</TRANSL>
+        <TRANSL xml:lang="eng" notes="I have eaten (that vegetables).">I have eaten .</TRANSL>
         <W id="3_S_83_W0">
             <FORM kindOf="original">ni-kʉnʉ-ʉn=ku</FORM>
             <PHON kindOf="original">nik*n**nku</PHON>
@@ -58665,7 +58665,7 @@
         <PHON kindOf="original">t[e|ə]ku umaropaʦa</PHON>
         <FORM kindOf="standard">teku umaropaca.</FORM>
         <PHON kindOf="standard">teku uma[r|ɾ]opaʦa</PHON>
-        <TRANSL xml:lang="zho">我要用 。(註 : 等於te=ku urupaca)</TRANSL>
+        <TRANSL xml:lang="zho" notes="我要用 。(註 : 等於te=ku urupaca)">我要用 。</TRANSL>
         <TRANSL xml:lang="eng">I want to use.</TRANSL>
         <W id="3_S_85_W0">
             <FORM kindOf="original">te=ku</FORM>
@@ -58849,7 +58849,7 @@
         <PHON kindOf="original">kaman**ŋ iisa riŋ[e|ə][e|ə]</PHON>
         <FORM kindOf="standard">kamanʉʉng iisa ringee.</FORM>
         <PHON kindOf="standard">kamanɨɨŋ iisa [r|ɾ]iŋee</PHON>
-        <TRANSL xml:lang="zho">他做套 (註 : 可能說話者不知道他名字)。</TRANSL>
+        <TRANSL xml:lang="zho" notes="他做套 (註 : 可能說話者不知道他名字)。">他做套 。</TRANSL>
         <TRANSL xml:lang="eng">He makes sheath.</TRANSL>
         <W id="3_S_88_W0">
             <FORM kindOf="original">kamanʉʉng</FORM>
@@ -61251,8 +61251,8 @@
         <PHON kindOf="original">sua ʦak*r* ia kanakanavu tamna toʔunaa kaisisi ʔinmaamia sasarunai mupara ʦak*r*</PHON>
         <FORM kindOf="standard">sua cakʉrʉ ia Kanakanavu tamna to'unaa kaisisi, 'inmaamia sasarunai mupara cakʉrʉ.</FORM>
         <PHON kindOf="standard">sua ʦakɨ[r|ɾ]ɨ ia kanakanavu tamna toʔunaa kaisisi ʔinmaamia sasa[r|ɾ]unai mupa[r|ɾ]a ʦakɨ[r|ɾ]ɨ</PHON>
-        <TRANSL xml:lang="zho">Cakʉrʉ(聚會所)是卡族人專門祭祀的地方, 只有男性才能進去。</TRANSL>
-        <TRANSL xml:lang="eng">Cakʉrʉ(meeting place) is place specifically for worshiping, and only men can enter it.</TRANSL>
+        <TRANSL xml:lang="zho" notes="Cakʉrʉ(聚會所)是卡族人專門祭祀的地方, 只有男性才能進去。">Cakʉrʉ 是卡族人專門祭祀的地方, 只有男性才能進去。</TRANSL>
+        <TRANSL xml:lang="eng" notes="Cakʉrʉ(meeting place) is place specifically for worshiping, and only men can enter it.">Cakʉrʉ is place specifically for worshiping, and only men can enter it.</TRANSL>
         <W id="3_S_115_W0">
             <FORM kindOf="original">sua</FORM>
             <PHON kindOf="original">sua</PHON>
@@ -61539,8 +61539,8 @@
         <PHON kindOf="original">sua ʔ**na iisi ia ʔuna vanai mataa pani</PHON>
         <FORM kindOf="standard">sua 'ʉʉna iisi ia 'una vanai mataa Pani.</FORM>
         <PHON kindOf="standard">sua ʔɨɨna iisi ia ʔuna vanai mataa pani</PHON>
-        <TRANSL xml:lang="zho">這個故事跟Pani有關係 (註 : 改為vanaraku意即‘和我有關’)</TRANSL>
-        <TRANSL xml:lang="eng">This story has something to do with Pani. (note: change to vanaraku means "have sth. to do with me")</TRANSL>
+        <TRANSL xml:lang="zho" notes="這個故事跟Pani有關係 (註 : 改為vanaraku意即‘和我有關’)">這個故事跟Pani有關係</TRANSL>
+        <TRANSL xml:lang="eng" notes="This story has something to do with Pani. (note: change to vanaraku means &quot;have sth. to do with me&quot;)">This story has something to do with Pani.</TRANSL>
         <W id="3_S_117_W0">
             <FORM kindOf="original">sua</FORM>
             <PHON kindOf="original">sua</PHON>
@@ -61667,8 +61667,8 @@
         <PHON kindOf="original">ʔ[e|ə]si na karu ŋuain tamna tapinaŋ[e|ə]</PHON>
         <FORM kindOf="standard">'esi na karu nguain tamna tapinange.</FORM>
         <PHON kindOf="standard">ʔesi na ka[r|ɾ]u ŋuain tamna tapinaŋe</PHON>
-        <TRANSL xml:lang="zho">他的鳥在樹上 。(註: 或可改為tapinangeen ‘他的鳥’)</TRANSL>
-        <TRANSL xml:lang="eng">His bird is on the tree. (note: or change to tapinangeen "his bird")</TRANSL>
+        <TRANSL xml:lang="zho" notes="他的鳥在樹上 。(註: 或可改為tapinangeen ‘他的鳥’)">他的鳥在樹上 。</TRANSL>
+        <TRANSL xml:lang="eng" notes="His bird is on the tree. (note: or change to tapinangeen &quot;his bird&quot;)">His bird is on the tree.</TRANSL>
         <W id="3_S_118_W0">
             <FORM kindOf="original">'esi</FORM>
             <PHON kindOf="original">ʔ[e|ə]si</PHON>
@@ -61899,8 +61899,8 @@
         <PHON kindOf="original">ʔ[e|ə]si ʦak*ran sua vutukuru iisa</PHON>
         <FORM kindOf="standard">'esi cakʉran sua vutukuru iisa.</FORM>
         <PHON kindOf="standard">ʔesi ʦakɨ[r|ɾ]an sua vutuku[r|ɾ]u iisa</PHON>
-        <TRANSL xml:lang="zho">那隻魚在河裡。 (註: iisia ‘那些’)</TRANSL>
-        <TRANSL xml:lang="eng">That fish is in the river. (note: iissia "those" )</TRANSL>
+        <TRANSL xml:lang="zho" notes="那隻魚在河裡。 (註: iisia ‘那些’)">那隻魚在河裡。</TRANSL>
+        <TRANSL xml:lang="eng" notes="That fish is in the river. (note: iissia &quot;those&quot; )">That fish is in the river.</TRANSL>
         <W id="3_S_120_W0">
             <FORM kindOf="original">'esi</FORM>
             <PHON kindOf="original">ʔ[e|ə]si</PHON>
@@ -61987,8 +61987,8 @@
         <PHON kindOf="original">ʔ[e|ə]si na ʦak*ran sua vutukuru iisa</PHON>
         <FORM kindOf="standard">'esi na cakʉran sua vutukuru iisa.</FORM>
         <PHON kindOf="standard">ʔesi na ʦakɨ[r|ɾ]an sua vutuku[r|ɾ]u iisa</PHON>
-        <TRANSL xml:lang="zho">那隻魚在河裡。 (註: iisia ‘那些’)</TRANSL>
-        <TRANSL xml:lang="eng">That fish is in the river. (note: iissia "those" )</TRANSL>
+        <TRANSL xml:lang="zho" notes="那隻魚在河裡。 (註: iisia ‘那些’)">那隻魚在河裡。</TRANSL>
+        <TRANSL xml:lang="eng" notes="That fish is in the river. (note: iissia &quot;those&quot; )">That fish is in the river.</TRANSL>
         <W id="3_S_120-opt_W0">
             <FORM kindOf="original">'esi</FORM>
             <PHON kindOf="original">ʔ[e|ə]si</PHON>
@@ -62443,8 +62443,8 @@
         <PHON kindOf="original">koopa k*m**n pani uru</PHON>
         <FORM kindOf="standard">koopa kʉmʉʉn Pani uru.</FORM>
         <PHON kindOf="standard">koopa kɨmɨɨn pani u[r|ɾ]u</PHON>
-        <TRANSL xml:lang="zho">Pani還沒吃飯。(註: 是在對別人說明事件)</TRANSL>
-        <TRANSL xml:lang="eng">Pani haven't eaten. (note: is for explaining to others.)</TRANSL>
+        <TRANSL xml:lang="zho" notes="Pani還沒吃飯。(註: 是在對別人說明事件)">Pani還沒吃飯。</TRANSL>
+        <TRANSL xml:lang="eng" notes="Pani haven’t eaten. (note: is for explaining to others.)">Pani haven't eaten.</TRANSL>
         <W id="3_S_124_W0">
             <FORM kindOf="original">koo=pa</FORM>
             <PHON kindOf="original">koopa</PHON>
@@ -62531,8 +62531,8 @@
         <PHON kindOf="original">koopa k*m**n sua pani uru</PHON>
         <FORM kindOf="standard">koopa kʉmʉʉn sua Pani uru.</FORM>
         <PHON kindOf="standard">koopa kɨmɨɨn sua pani u[r|ɾ]u</PHON>
-        <TRANSL xml:lang="zho">Pani還沒吃飯。(註: 是在對別人說明事件)</TRANSL>
-        <TRANSL xml:lang="eng">Pani haven't eaten. (note: is for explaining to others.)</TRANSL>
+        <TRANSL xml:lang="zho" notes="Pani還沒吃飯。(註: 是在對別人說明事件)">Pani還沒吃飯。</TRANSL>
+        <TRANSL xml:lang="eng" notes="Pani haven’t eaten. (note: is for explaining to others.)">Pani haven't eaten.</TRANSL>
         <W id="3_S_124-opt_W0">
             <FORM kindOf="original">koo=pa</FORM>
             <PHON kindOf="original">koopa</PHON>
@@ -63155,8 +63155,8 @@
         <PHON kindOf="original">pani ia ʔaan kumak**n tammi</PHON>
         <FORM kindOf="standard">Pani ia 'aan kumakʉʉn tammi.</FORM>
         <PHON kindOf="standard">pani ia ʔaan kumakɨɨn tammi</PHON>
-        <TRANSL xml:lang="zho">Pani(原本)不吃地瓜, 現在吃了。</TRANSL>
-        <TRANSL xml:lang="eng">Pani (oringinally) doesn't eat sweet patatoes, but now he eats.</TRANSL>
+        <TRANSL xml:lang="zho" notes="Pani(原本)不吃地瓜, 現在吃了。">Pani 不吃地瓜, 現在吃了。</TRANSL>
+        <TRANSL xml:lang="eng" notes="Pani (oringinally) doesn't eat sweet patatoes, but now he eats.">Pani doesn't eat sweet patatoes, but now he eats.</TRANSL>
         <W id="3_S_132_W0">
             <FORM kindOf="original">Pani</FORM>
             <PHON kindOf="original">pani</PHON>
@@ -63259,8 +63259,8 @@
         <PHON kindOf="original">masiin ia kumak**n tammi m[e|ə]ranauʦu ʔaan kumak**n</PHON>
         <FORM kindOf="standard">masiin ia kumakʉʉn tammi, meranaucu 'aan kumakʉʉn.</FORM>
         <PHON kindOf="standard">masiin ia kumakɨɨn tammi me[r|ɾ]anauʦu ʔaan kumakɨɨn</PHON>
-        <TRANSL xml:lang="zho">(Pani)現在吃地瓜, (但)之後不吃了</TRANSL>
-        <TRANSL xml:lang="eng">(Pani) eats sweet potatoes now, (but) doesn't eat afterward.</TRANSL>
+        <TRANSL xml:lang="zho" notes="(Pani)現在吃地瓜, (但)之後不吃了">現在吃地瓜, 之後不吃了</TRANSL>
+        <TRANSL xml:lang="eng" notes="(Pani) eats sweet potatoes now, (but) doesn't eat afterward.">eats sweet potatoes now, doesn't eat afterward.</TRANSL>
         <W id="3_S_133_W1">
             <FORM kindOf="original">masiin</FORM>
             <PHON kindOf="original">masiin</PHON>
@@ -63419,8 +63419,8 @@
         <PHON kindOf="original">pani masiin ia kumak**n tammi m[e|ə]ranauʦu ʔaan kumak**n</PHON>
         <FORM kindOf="standard">Pani masiin ia kumakʉʉn tammi, meranaucu 'aan kumakʉʉn.</FORM>
         <PHON kindOf="standard">pani masiin ia kumakɨɨn tammi me[r|ɾ]anauʦu ʔaan kumakɨɨn</PHON>
-        <TRANSL xml:lang="zho">(Pani)現在吃地瓜, (但)之後不吃了</TRANSL>
-        <TRANSL xml:lang="eng">(Pani) eats sweet potatoes now, (but) doesn't eat afterward.</TRANSL>
+        <TRANSL xml:lang="zho" notes="(Pani)現在吃地瓜, (但)之後不吃了">現在吃地瓜, 之後不吃了</TRANSL>
+        <TRANSL xml:lang="eng" notes="(Pani) eats sweet potatoes now, (but) doesn't eat afterward.">eats sweet potatoes now, doesn't eat afterward.</TRANSL>
         <W id="3_S_133-opt_W0">
             <FORM kindOf="original">Pani</FORM>
             <PHON kindOf="original">pani</PHON>
@@ -64267,8 +64267,8 @@
         <PHON kindOf="original">nik**nʦumaku sua tammi</PHON>
         <FORM kindOf="standard">nikʉʉncumaku sua tammi.</FORM>
         <PHON kindOf="standard">nikɨɨnʦumaku sua tammi</PHON>
-        <TRANSL xml:lang="zho">我吃了地瓜 (註 : 在和別人說明事件)。</TRANSL>
-        <TRANSL xml:lang="eng">I ate sweet potatoes. (note: is for explaining to others)</TRANSL>
+        <TRANSL xml:lang="zho" notes="我吃了地瓜 (註 : 在和別人說明事件)。">我吃了地瓜 。</TRANSL>
+        <TRANSL xml:lang="eng" notes="I ate sweet potatoes. (note: is for explaining to others)">I ate sweet potatoes.</TRANSL>
         <W id="3_S_141_W0">
             <FORM kindOf="original">ni-kʉʉn=cu=maku</FORM>
             <PHON kindOf="original">nik**nʦumaku</PHON>
@@ -67519,8 +67519,8 @@
         <PHON kindOf="original">kam*ʦ[e|ə][e|ə]pa marivuraʔ* taʦau iisi</PHON>
         <FORM kindOf="standard">kamʉceepa marivura'ʉ tacau iisi.</FORM>
         <PHON kindOf="standard">kamɨʦeepa ma[r|ɾ]ivu[r|ɾ]aʔɨ taʦau iisi</PHON>
-        <TRANSL xml:lang="zho">(我)想打這個狗。</TRANSL>
-        <TRANSL xml:lang="eng">I (want to) beat this dog.</TRANSL>
+        <TRANSL xml:lang="zho" notes="(我)想打這個狗。">想打這個狗。</TRANSL>
+        <TRANSL xml:lang="eng" notes="I (want to) beat this dog.">I beat this dog.</TRANSL>
         <W id="3_S_174_W0">
             <FORM kindOf="original">kamʉc-ee=pa</FORM>
             <PHON kindOf="original">kam*ʦ[e|ə][e|ə]pa</PHON>
@@ -67959,7 +67959,7 @@
         <PHON kindOf="original">sua paʦ*p*ŋ*a maku ia maʦaŋʦaŋar*kasu</PHON>
         <FORM kindOf="standard">sua pacʉpʉngʉa maku ia macangcangarʉkasu.</FORM>
         <PHON kindOf="standard">sua paʦɨpɨŋɨa maku ia maʦaŋʦaŋa[r|ɾ]ɨkasu</PHON>
-        <TRANSL xml:lang="zho">我判斷你是高興的。(Lit.以我所想的，你很高興。)</TRANSL>
+        <TRANSL xml:lang="zho" notes="我判斷你是高興的。(Lit.以我所想的，你很高興。)">我判斷你是高興的。</TRANSL>
         <TRANSL xml:lang="eng">As for what I think, you are happy.</TRANSL>
         <W id="3_S_178_W0">
             <FORM kindOf="original">sua</FORM>
@@ -69311,8 +69311,8 @@
         <PHON kindOf="original">arivur[e|ə][e|ə]maku pani sii kaʔaan tumatimana</PHON>
         <FORM kindOf="standard">arivureemaku Pani sii ka'aan tumatimana.</FORM>
         <PHON kindOf="standard">a[r|ɾ]ivu[r|ɾ]eemaku pani sii kaʔaan tumatimana</PHON>
-        <TRANSL xml:lang="zho">我打Pani因為(他)不聽話。</TRANSL>
-        <TRANSL xml:lang="eng">I beat Pani because (he) isn't obedient.</TRANSL>
+        <TRANSL xml:lang="zho" notes="我打Pani因為(他)不聽話。">我打Pani因為 不聽話。</TRANSL>
+        <TRANSL xml:lang="eng" notes="I beat Pani because (he) isn’t obedient.">I beat Pani because isn't obedient.</TRANSL>
         <W id="3_S_190_W0">
             <FORM kindOf="original">arivuree=maku</FORM>
             <PHON kindOf="original">arivur[e|ə][e|ə]maku</PHON>
@@ -69413,8 +69413,8 @@
         <PHON kindOf="original">arivur[e|ə][e|ə]maku sua pani sii kaʔaan tumatimana</PHON>
         <FORM kindOf="standard">arivureemaku sua Pani sii ka'aan tumatimana.</FORM>
         <PHON kindOf="standard">a[r|ɾ]ivu[r|ɾ]eemaku sua pani sii kaʔaan tumatimana</PHON>
-        <TRANSL xml:lang="zho">我打Pani因為(他)不聽話。</TRANSL>
-        <TRANSL xml:lang="eng">I beat Pani because (he) isn't obedient.</TRANSL>
+        <TRANSL xml:lang="zho" notes="我打Pani因為(他)不聽話。">我打Pani因為 不聽話。</TRANSL>
+        <TRANSL xml:lang="eng" notes="I beat Pani because (he) isn’t obedient.">I beat Pani because isn't obedient.</TRANSL>
         <W id="3_S_190-opt_W0">
             <FORM kindOf="original">arivuree=maku</FORM>
             <PHON kindOf="original">arivur[e|ə][e|ə]maku</PHON>
@@ -70235,8 +70235,8 @@
         <PHON kindOf="original">ukus**nmaku siʔiʦ*p* tatar*</PHON>
         <FORM kindOf="standard">ukusʉʉnmaku si'icʉpʉ tatarʉ.</FORM>
         <PHON kindOf="standard">ukusɨɨnmaku siʔiʦɨpɨ tata[r|ɾ]ɨ</PHON>
-        <TRANSL xml:lang="zho">(那張)床由我來睡。</TRANSL>
-        <TRANSL xml:lang="eng">(That) bed is the place I sleep on.</TRANSL>
+        <TRANSL xml:lang="zho" notes="(那張)床由我來睡。">床由我來睡。</TRANSL>
+        <TRANSL xml:lang="eng" notes="(That) bed is the place I sleep on.">bed is the place I sleep on.</TRANSL>
         <W id="3_S_197_W0">
             <FORM kindOf="original">ukusʉ-ʉn=maku</FORM>
             <PHON kindOf="original">ukus**nmaku</PHON>
@@ -74533,7 +74533,7 @@
         <FORM kindOf="standard">tia vʉʉn nomani sinatʉ iisi?</FORM>
         <PHON kindOf="standard">tia vɨɨn nomani sinatɨ iisi</PHON>
         <TRANSL xml:lang="zho">要把書給誰?</TRANSL>
-        <TRANSL xml:lang="eng">'You will give book to whom? (lit: whom will (you) give this book to?)'</TRANSL>
+        <TRANSL xml:lang="eng" notes="‘You will give book to whom? (lit: whom will (you) give this book to?)’">'You will give book to whom? '</TRANSL>
         <W id="3_S_232_W0">
             <FORM kindOf="original">tia</FORM>
             <PHON kindOf="original">tia</PHON>
@@ -74725,7 +74725,7 @@
         <FORM kindOf="standard">Nirupaca nomani kamanʉʉng pepe isi?</FORM>
         <PHON kindOf="standard">ni[r|ɾ]upaʦa nomani kamanɨɨŋ pepe isi</PHON>
         <TRANSL xml:lang="zho">你用什麼做年糕?</TRANSL>
-        <TRANSL xml:lang="eng">What do (you) use to make the rice cake?</TRANSL>
+        <TRANSL xml:lang="eng" notes="What do (you) use to make the rice cake?">What do use to make the rice cake?</TRANSL>
         <W id="3_S_234_W0">
             <FORM kindOf="original">Ni-rupaca</FORM>
             <PHON kindOf="original">nirupaʦa</PHON>
@@ -75988,7 +75988,7 @@
         <PHON kindOf="original">pap[e|ə][e|ə]n tia apak*nasu rorovana</PHON>
         <FORM kindOf="standard">Papeen tia apakʉnasu rorovana.</FORM>
         <PHON kindOf="standard">papeen tia apakɨnasu [r|ɾ]o[r|ɾ]ovana</PHON>
-        <TRANSL xml:lang="zho">今晚你要煮飯給多少(人)吃?</TRANSL>
+        <TRANSL xml:lang="zho" notes="今晚你要煮飯給多少(人)吃?">今晚你要煮飯給多少 吃?</TRANSL>
         <TRANSL xml:lang="eng">'How many people will you cook for tonight?'</TRANSL>
         <W id="3_S_246_W0">
             <FORM kindOf="original">Pa-peen</FORM>
@@ -76100,7 +76100,7 @@
         <PHON kindOf="original">pap[e|ə][e|ə]n sua tia apak*nasu rorovana</PHON>
         <FORM kindOf="standard">Papeen sua tia apakʉnasu rorovana.</FORM>
         <PHON kindOf="standard">papeen sua tia apakɨnasu [r|ɾ]o[r|ɾ]ovana</PHON>
-        <TRANSL xml:lang="zho">今晚你要煮飯給多少(人)吃?</TRANSL>
+        <TRANSL xml:lang="zho" notes="今晚你要煮飯給多少(人)吃?">今晚你要煮飯給多少 吃?</TRANSL>
         <TRANSL xml:lang="eng">'How many people will you cook for tonight?'</TRANSL>
         <W id="3_S_246-opt_W0">
             <FORM kindOf="original">Pa-peen</FORM>
@@ -76341,7 +76341,7 @@
         <FORM kindOf="standard">Rarima tia apakʉnamaku rovana.</FORM>
         <PHON kindOf="standard">[r|ɾ]a[r|ɾ]ima tia apakɨnamaku [r|ɾ]ovana</PHON>
         <TRANSL xml:lang="zho">今晚有五人我要為他們煮飯</TRANSL>
-        <TRANSL xml:lang="eng">'Those I will cook for tonight are five (people).'</TRANSL>
+        <TRANSL xml:lang="eng" notes="‘Those I will cook for tonight are five (people).’">'Those I will cook for tonight are five .'</TRANSL>
         <W id="3_S_248_W0">
             <FORM kindOf="original">Ra-rima</FORM>
             <PHON kindOf="original">rarima</PHON>
@@ -76445,7 +76445,7 @@
         <FORM kindOf="standard">Rarima sua tia apakʉnamaku rovana.</FORM>
         <PHON kindOf="standard">[r|ɾ]a[r|ɾ]ima sua tia apakɨnamaku [r|ɾ]ovana</PHON>
         <TRANSL xml:lang="zho">今晚有五人我要為他們煮飯</TRANSL>
-        <TRANSL xml:lang="eng">'Those I will cook for tonight are five (people).'</TRANSL>
+        <TRANSL xml:lang="eng" notes="‘Those I will cook for tonight are five (people).’">'Those I will cook for tonight are five .'</TRANSL>
         <W id="3_S_248-opt_W0">
             <FORM kindOf="original">Ra-rima</FORM>
             <PHON kindOf="original">rarima</PHON>
@@ -80265,7 +80265,7 @@
         <FORM kindOf="standard">Amuseen sua pangka?</FORM>
         <PHON kindOf="standard">amuseen sua paŋka</PHON>
         <TRANSL xml:lang="zho">桌子怎麼了?</TRANSL>
-        <TRANSL xml:lang="eng">'Lit. How does the desk say? (What happen to the desk?)'</TRANSL>
+        <TRANSL xml:lang="eng" notes="‘Lit. How does the desk say? (What happen to the desk?)’">'Lit. How does the desk say? '</TRANSL>
         <W id="3_S_289_W0">
             <FORM kindOf="original">Amuseen</FORM>
             <PHON kindOf="original">amus[e|ə][e|ə]n</PHON>
@@ -80321,7 +80321,7 @@
         <FORM kindOf="standard">Amuseen mokusa 'inia?</FORM>
         <PHON kindOf="standard">amuseen mokusa ʔinia</PHON>
         <TRANSL xml:lang="zho">為什麼去那邊?</TRANSL>
-        <TRANSL xml:lang="eng">'Lit. How to say about (your) going there? (Why go there?)'</TRANSL>
+        <TRANSL xml:lang="eng" notes="‘Lit. How to say about (your) going there? (Why go there?)’">'Lit. How to say about going there? '</TRANSL>
         <W id="3_S_290_W0">
             <FORM kindOf="original">Amuseen</FORM>
             <PHON kindOf="original">amus[e|ə][e|ə]n</PHON>
@@ -80537,7 +80537,7 @@
         <FORM kindOf="standard">Neen vanaisu mokusa 'inia?</FORM>
         <PHON kindOf="standard">neen vanaisu mokusa ʔinia</PHON>
         <TRANSL xml:lang="zho">你為什麼要去那邊?</TRANSL>
-        <TRANSL xml:lang="eng">'Why did you go there? (lit: what is the reason you go there?)'</TRANSL>
+        <TRANSL xml:lang="eng" notes="‘Why did you go there? (lit: what is the reason you go there?)’">'Why did you go there? '</TRANSL>
         <W id="3_S_293_W0">
             <FORM kindOf="original">Neen</FORM>
             <PHON kindOf="original">n[e|ə][e|ə]n</PHON>
@@ -80633,7 +80633,7 @@
         <FORM kindOf="standard">Neen sua vanaisu mokusa 'inia?</FORM>
         <PHON kindOf="standard">neen sua vanaisu mokusa ʔinia</PHON>
         <TRANSL xml:lang="zho">你為什麼要去那邊?</TRANSL>
-        <TRANSL xml:lang="eng">'Why did you go there? (lit: what is the reason you go there?)'</TRANSL>
+        <TRANSL xml:lang="eng" notes="‘Why did you go there? (lit: what is the reason you go there?)’">'Why did you go there? '</TRANSL>
         <W id="3_S_293-opt_W0">
             <FORM kindOf="original">Neen</FORM>
             <PHON kindOf="original">n[e|ə][e|ə]n</PHON>
@@ -81299,7 +81299,7 @@
         <FORM kindOf="standard">cau mamanʉng.</FORM>
         <PHON kindOf="standard">ʦau mamanɨŋ</PHON>
         <TRANSL xml:lang="zho">好人</TRANSL>
-        <TRANSL xml:lang="eng">'(He is) a good guy'.</TRANSL>
+        <TRANSL xml:lang="eng" notes="‘(He is) a good guy’.">' a good guy'.</TRANSL>
         <W id="3_S_300_W0">
             <FORM kindOf="original">cau</FORM>
             <PHON kindOf="original">ʦau</PHON>
@@ -81778,7 +81778,7 @@
         <PHON kindOf="original">t[e|ə]maku ʔapoiʔin na ʔuva</PHON>
         <FORM kindOf="standard">temaku 'apoi'in na 'uva.</FORM>
         <PHON kindOf="standard">temaku ʔapoiʔin na ʔuva</PHON>
-        <TRANSL xml:lang="zho">我會把(它)還給'uva</TRANSL>
+        <TRANSL xml:lang="zho" notes="我會把(它)還給'uva">我會把 還給'uva</TRANSL>
         <TRANSL xml:lang="eng">'I will return it to 'uva.'</TRANSL>
         <W id="3_S_306_W0">
             <FORM kindOf="original">te=maku</FORM>
@@ -82035,7 +82035,7 @@
         <FORM kindOf="standard">nikonomanikasu? amiseen mavucʉrʉkʉcukasu?</FORM>
         <PHON kindOf="standard">nikonomanikasu amiseen mavuʦɨ[r|ɾ]ɨkɨʦukasu</PHON>
         <TRANSL xml:lang="zho">你吃了什麼? 為什麼你已經飽了?</TRANSL>
-        <TRANSL xml:lang="eng">'What (dish) have you eaten? Why you are full?'</TRANSL>
+        <TRANSL xml:lang="eng" notes="‘What (dish) have you eaten? Why you are full?’">'What have you eaten? Why you are full?'</TRANSL>
         <W id="3_S_309_W0">
             <FORM kindOf="original">ni-ko-nomani=kasu?</FORM>
             <PHON kindOf="original">nikonomanikasu</PHON>
@@ -82235,7 +82235,7 @@
         <FORM kindOf="standard">tekasu kanomani nuari?</FORM>
         <PHON kindOf="standard">tekasu kanomani nua[r|ɾ]i</PHON>
         <TRANSL xml:lang="zho">你以後想做什麼?</TRANSL>
-        <TRANSL xml:lang="eng">'What will you do in the future (career)?'</TRANSL>
+        <TRANSL xml:lang="eng" notes="‘What will you do in the future (career)?’">'What will you do in the future ?'</TRANSL>
         <W id="3_S_312_W0">
             <FORM kindOf="original">te=kasu</FORM>
             <PHON kindOf="original">t[e|ə]kasu</PHON>
@@ -82451,7 +82451,7 @@
         <FORM kindOf="standard">'urupeenkasu.</FORM>
         <PHON kindOf="standard">ʔu[r|ɾ]upeenkasu</PHON>
         <TRANSL xml:lang="zho">你用了多少次?</TRANSL>
-        <TRANSL xml:lang="eng">'How many times do you use (it)?'</TRANSL>
+        <TRANSL xml:lang="eng" notes="‘How many times do you use (it)?’">'How many times do you use ?'</TRANSL>
         <W id="3_S_315_W0">
             <FORM kindOf="original">'uru-peen=kasu</FORM>
             <PHON kindOf="original">ʔurup[e|ə][e|ə]nkasu</PHON>
@@ -83171,7 +83171,7 @@
         <FORM kindOf="standard">inanuin ka'anmanamusu.</FORM>
         <PHON kindOf="standard">inanuin kaʔanmanamusu</PHON>
         <TRANSL xml:lang="zho">在這麼多個東西之中,你喜歡哪一個?</TRANSL>
-        <TRANSL xml:lang="eng">(Among so many ones), which one do you like?</TRANSL>
+        <TRANSL xml:lang="eng" notes="(Among so many ones), which one do you like?">, which one do you like?</TRANSL>
         <W id="3_S_325_W0">
             <FORM kindOf="original">i-nanu-in</FORM>
             <PHON kindOf="original">inanuin</PHON>
@@ -83250,8 +83250,8 @@
         <PHON kindOf="original">ʔinanuin sua vantuku</PHON>
         <FORM kindOf="standard">'inanuin sua vantuku.</FORM>
         <PHON kindOf="standard">ʔinanuin sua vantuku</PHON>
-        <TRANSL xml:lang="zho">那個錢幣是(這堆錢幣中的)哪一個?</TRANSL>
-        <TRANSL xml:lang="eng">'Which one is the coin (among this pile of money)?'</TRANSL>
+        <TRANSL xml:lang="zho" notes="那個錢幣是(這堆錢幣中的)哪一個?">那個錢幣是 哪一個?</TRANSL>
+        <TRANSL xml:lang="eng" notes="‘Which one is the coin (among this pile of money)?’">'Which one is the coin ?'</TRANSL>
         <W id="3_S_326_W0">
             <FORM kindOf="original">'i-nanu-in</FORM>
             <PHON kindOf="original">ʔinanuin</PHON>
@@ -83322,8 +83322,8 @@
         <PHON kindOf="original">t[e|ə]ku ʔurunanuin sua tapi</PHON>
         <FORM kindOf="standard">Teku 'urunanuin sua tapi?</FORM>
         <PHON kindOf="standard">teku ʔu[r|ɾ]unanuin sua tapi</PHON>
-        <TRANSL xml:lang="zho">(在這些籃子中),我要用哪一個?</TRANSL>
-        <TRANSL xml:lang="eng">'(Among many baskets), which one shall I use?</TRANSL>
+        <TRANSL xml:lang="zho" notes="(在這些籃子中),我要用哪一個?">,我要用哪一個?</TRANSL>
+        <TRANSL xml:lang="eng" notes="‘(Among many baskets), which one shall I use?">' , which one shall I use?</TRANSL>
         <W id="3_S_327_W0">
             <FORM kindOf="original">Te=ku</FORM>
             <PHON kindOf="original">t[e|ə]ku</PHON>
@@ -83739,7 +83739,7 @@
         <FORM kindOf="standard">tenomaninmusu sinatu.</FORM>
         <PHON kindOf="standard">tenomaninmusu sinatu</PHON>
         <TRANSL xml:lang="zho">你用書做什麼用?</TRANSL>
-        <TRANSL xml:lang="eng">'What is the book used for? (lit: What's the use of this book?)'</TRANSL>
+        <TRANSL xml:lang="eng" notes="‘What is the book used for? (lit: What’s the use of this book?)’">'What is the book used for? '</TRANSL>
         <W id="3_S_331_W0">
             <FORM kindOf="original">te-nomani-n=musu</FORM>
             <PHON kindOf="original">t[e|ə]nomaninmusu</PHON>
@@ -83803,7 +83803,7 @@
         <FORM kindOf="standard">tenomanicu mima pai'ici? 'aparaka tina'an.</FORM>
         <PHON kindOf="standard">tenomaniʦu mima paiʔiʦi ʔapa[r|ɾ]aka tinaʔan</PHON>
         <TRANSL xml:lang="zho">幹什麼喝酒? 傷害身體!</TRANSL>
-        <TRANSL xml:lang="eng">'What is the purpose of drinking wine? It hurts (our) bodies.</TRANSL>
+        <TRANSL xml:lang="eng" notes="‘What is the purpose of drinking wine? It hurts (our) bodies.">'What is the purpose of drinking wine? It hurts bodies.</TRANSL>
         <W id="3_S_332_W0">
             <FORM kindOf="original">te-nomani=cu</FORM>
             <PHON kindOf="original">t[e|ə]nomaniʦu</PHON>
@@ -87796,10 +87796,10 @@
         <TRANSL xml:lang="zho">他將瓠瓜四處放</TRANSL>
         <TRANSL xml:lang="eng">He tried to put the gourd here and there.</TRANSL>
         <W id="3_S_375_W0">
-            <FORM kindOf="original">pa-to-va-vali=Ø</FORM>
-            <PHON kindOf="original">patovavaɾi*</PHON>
-            <FORM kindOf="standard">pa-to-va-vali=Ø</FORM>
-            <PHON kindOf="standard">patovava*i*</PHON>
+            <FORM kindOf="original">pa-to-va-vali=∅</FORM>
+            <PHON kindOf="original">patovavaɾi</PHON>
+            <FORM kindOf="standard">pa-to-va-vali=∅</FORM>
+            <PHON kindOf="standard">patovava*i</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使役-坐-重疊-四處</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">CAU-sit-around</TRANSL>
             <M id="3_S_375_W0M0">
@@ -87827,10 +87827,10 @@
                 <PHON kindOf="standard">va*i</PHON>
             </M>
             <M id="3_S_375_W0M4">
-                <FORM kindOf="original">Ø</FORM>
-                <PHON kindOf="original">*</PHON>
-                <FORM kindOf="standard">Ø</FORM>
-                <PHON kindOf="standard">*</PHON>
+                <FORM kindOf="original">∅</FORM>
+                <PHON kindOf="original">∅</PHON>
+                <FORM kindOf="standard">∅</FORM>
+                <PHON kindOf="standard">∅</PHON>
             </M>
         </W>
         <W id="3_S_375_W1">
@@ -87882,10 +87882,10 @@
         <TRANSL xml:lang="zho">他將瓠瓜四處放</TRANSL>
         <TRANSL xml:lang="eng">He tried to put the gourd here and there.</TRANSL>
         <W id="3_S_375-opt_W0">
-            <FORM kindOf="original">pa-to-va-vali=Ø</FORM>
-            <PHON kindOf="original">patovavaɾi*</PHON>
-            <FORM kindOf="standard">pa-to-va-vali=Ø</FORM>
-            <PHON kindOf="standard">patovava*i*</PHON>
+            <FORM kindOf="original">pa-to-va-vali=∅</FORM>
+            <PHON kindOf="original">patovavaɾi</PHON>
+            <FORM kindOf="standard">pa-to-va-vali=∅</FORM>
+            <PHON kindOf="standard">patovava*i</PHON>
             <TRANSL xml:lang="zho" kindOf="original">使役-坐-重疊-四處</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">CAU-sit-around</TRANSL>
             <M id="3_S_375-opt_W0M0">
@@ -87913,10 +87913,10 @@
                 <PHON kindOf="standard">va*i</PHON>
             </M>
             <M id="3_S_375-opt_W0M4">
-                <FORM kindOf="original">Ø</FORM>
-                <PHON kindOf="original">*</PHON>
-                <FORM kindOf="standard">Ø</FORM>
-                <PHON kindOf="standard">*</PHON>
+                <FORM kindOf="original">∅</FORM>
+                <PHON kindOf="original">∅</PHON>
+                <FORM kindOf="standard">∅</FORM>
+                <PHON kindOf="standard">∅</PHON>
             </M>
         </W>
         <W id="3_S_375-opt_W1">
@@ -95277,7 +95277,7 @@
         <PHON kindOf="original">tia kop[e|ə]ninmusu sua tammi ʦan taniara</PHON>
         <FORM kindOf="standard">tia kopeninmusu sua tammi can taniara?</FORM>
         <PHON kindOf="standard">tia kopeninmusu sua tammi ʦan tania[r|ɾ]a</PHON>
-        <TRANSL xml:lang="zho">(地上地瓜一堆) 你一天要吃幾次?</TRANSL>
+        <TRANSL xml:lang="zho" notes="(地上地瓜一堆) 你一天要吃幾次?">你一天要吃幾次?</TRANSL>
         <TRANSL xml:lang="eng">How often do you eat sweet potatoes a day?</TRANSL>
         <W id="3_S_453_W0">
             <FORM kindOf="original">tia</FORM>
@@ -96158,7 +96158,7 @@
         <FORM kindOf="standard">tekasu tumapeen toparaa?</FORM>
         <PHON kindOf="standard">tekasu tumapeen topa[r|ɾ]aa</PHON>
         <TRANSL xml:lang="zho">妳要坐機車幾次?</TRANSL>
-        <TRANSL xml:lang="eng">How often will you ride (the scooter)?</TRANSL>
+        <TRANSL xml:lang="eng" notes="How often will you ride (the scooter)?">How often will you ride ?</TRANSL>
         <W id="3_S_461_W0">
             <FORM kindOf="original">te=kasu</FORM>
             <PHON kindOf="original">t[e|ə]kasu</PHON>
@@ -96766,7 +96766,7 @@
         <FORM kindOf="standard">Tia pirapeenkasu suvung kitana?</FORM>
         <PHON kindOf="standard">tia pi[r|ɾ]apeenkasu suvuŋ kitana</PHON>
         <TRANSL xml:lang="zho">你要分我們幾次?</TRANSL>
-        <TRANSL xml:lang="eng">How often will you allocate (these things) to us?</TRANSL>
+        <TRANSL xml:lang="eng" notes="How often will you allocate (these things) to us?">How often will you allocate to us?</TRANSL>
         <W id="3_S_469_W0">
             <FORM kindOf="original">Tia</FORM>
             <PHON kindOf="original">tia</PHON>
@@ -96854,7 +96854,7 @@
         <FORM kindOf="standard">tia pirapeen 'angai suvung kitana?</FORM>
         <PHON kindOf="standard">tia pi[r|ɾ]apeen ʔaŋai suvuŋ kitana</PHON>
         <TRANSL xml:lang="zho">'angai要分我們幾次?</TRANSL>
-        <TRANSL xml:lang="eng">How often will 'angai allocate (the things) to us?</TRANSL>
+        <TRANSL xml:lang="eng" notes="How often will 'angai allocate (the things) to us?">How often will 'angai allocate to us?</TRANSL>
         <W id="3_S_470_W0">
             <FORM kindOf="original">tia</FORM>
             <PHON kindOf="original">tia</PHON>
@@ -96950,7 +96950,7 @@
         <FORM kindOf="standard">nipirapeen nguain suvung manman?</FORM>
         <PHON kindOf="standard">nipi[r|ɾ]apeen ŋuain suvuŋ manman</PHON>
         <TRANSL xml:lang="zho">他幾次分給小孩?</TRANSL>
-        <TRANSL xml:lang="eng">How many times has he allocated (theses things) to kids?</TRANSL>
+        <TRANSL xml:lang="eng" notes="How many times has he allocated (theses things) to kids?">How many times has he allocated to kids?</TRANSL>
         <W id="3_S_471_W0">
             <FORM kindOf="original">ni-pira-peen</FORM>
             <PHON kindOf="original">nipirap[e|ə][e|ə]n</PHON>
@@ -98314,7 +98314,7 @@
         <FORM kindOf="standard">Nimakapeenkasu 'urupaca tarisi tumating?</FORM>
         <PHON kindOf="standard">nimakapeenkasu ʔu[r|ɾ]upaʦa ta[r|ɾ]isi tumatiŋ</PHON>
         <TRANSL xml:lang="zho">用繩子掛幾次?</TRANSL>
-        <TRANSL xml:lang="eng">How many times have you used the rope to hang (it)?</TRANSL>
+        <TRANSL xml:lang="eng" notes="How many times have you used the rope to hang (it)?">How many times have you used the rope to hang ?</TRANSL>
         <W id="3_S_486_W0">
             <FORM kindOf="original">Ni-ma-ka-peen=kasu</FORM>
             <PHON kindOf="original">nimakap[e|ə][e|ə]nkasu</PHON>
@@ -98514,7 +98514,7 @@
         <FORM kindOf="standard">Tinupeenkasu 'urupaca tarisi tumating?</FORM>
         <PHON kindOf="standard">tinupeenkasu ʔu[r|ɾ]upaʦa ta[r|ɾ]isi tumatiŋ</PHON>
         <TRANSL xml:lang="zho">用繩子掛幾次？</TRANSL>
-        <TRANSL xml:lang="eng">How many times do you use the rope to hang (it)?</TRANSL>
+        <TRANSL xml:lang="eng" notes="How many times do you use the rope to hang (it)?">How many times do you use the rope to hang ?</TRANSL>
         <W id="3_S_488_W0">
             <FORM kindOf="original">T&lt;in&gt;u-peen=kasu</FORM>
             <PHON kindOf="original">tinup[e|ə][e|ə]nkasu</PHON>
@@ -99073,7 +99073,7 @@
         <PHON kindOf="original">t[e|ə]ku tonanuin toparaa tanasa moʦaʦa</PHON>
         <FORM kindOf="standard">Teku tonanuin toparaa tanasa mocaca.</FORM>
         <PHON kindOf="standard">teku tonanuin topa[r|ɾ]aa tanasa moʦaʦa</PHON>
-        <TRANSL xml:lang="zho">(這麼多車)我要坐哪一台?</TRANSL>
+        <TRANSL xml:lang="zho" notes="(這麼多車)我要坐哪一台?">我要坐哪一台?</TRANSL>
         <TRANSL xml:lang="eng">Which car shall I get on?</TRANSL>
         <W id="3_S_495_W0">
             <FORM kindOf="original">Te=ku</FORM>
@@ -99185,7 +99185,7 @@
         <PHON kindOf="original">t[e|ə]maku ʔurunanuin sua tapi</PHON>
         <FORM kindOf="standard">Temaku 'urunanuin sua tapi?</FORM>
         <PHON kindOf="standard">temaku ʔu[r|ɾ]unanuin sua tapi</PHON>
-        <TRANSL xml:lang="zho">我要用哪一個籃子?(很多籃子,指定一個)</TRANSL>
+        <TRANSL xml:lang="zho" notes="我要用哪一個籃子?(很多籃子,指定一個)">我要用哪一個籃子?</TRANSL>
         <TRANSL xml:lang="eng">Which basket shall I use?</TRANSL>
         <W id="3_S_496_W0">
             <FORM kindOf="original">Te=maku</FORM>
@@ -99666,7 +99666,7 @@
         <FORM kindOf="standard">Nimo'una 'umo'uma pirakusa akua.</FORM>
         <PHON kindOf="standard">nimoʔuna ʔumoʔuma pi[r|ɾ]akusa akua</PHON>
         <TRANSL xml:lang="zho">在田裡交給我。</TRANSL>
-        <TRANSL xml:lang="eng">(Someone) gave me (something) at the field.</TRANSL>
+        <TRANSL xml:lang="eng" notes="(Someone) gave me (something) at the field.">gave me at the field.</TRANSL>
         <W id="3_S_501_W0">
             <FORM kindOf="original">Ni-mo-'una</FORM>
             <PHON kindOf="original">nimoʔuna</PHON>
@@ -99762,7 +99762,7 @@
         <FORM kindOf="standard">tia poon naan movakasua?</FORM>
         <PHON kindOf="standard">tia poon naan movakasua</PHON>
         <TRANSL xml:lang="zho">要在哪裡給你？</TRANSL>
-        <TRANSL xml:lang="eng">Where to give you (the things)</TRANSL>
+        <TRANSL xml:lang="eng" notes="Where to give you (the things)">Where to give you</TRANSL>
         <W id="3_S_502_W0">
             <FORM kindOf="original">tia</FORM>
             <PHON kindOf="original">tia</PHON>
@@ -100425,7 +100425,7 @@
         <PHON kindOf="original">t[e|ə]ku matinanu maʦaʔ* manasi manaturu</PHON>
         <FORM kindOf="standard">Teku matinanu maca'ʉ, manasi manaturu?</FORM>
         <PHON kindOf="standard">teku matinanu maʦaʔɨ manasi manatu[r|ɾ]u</PHON>
-        <TRANSL xml:lang="zho">(爬樹,爬坡,山壁)我要抓哪裡,才會穩固?</TRANSL>
+        <TRANSL xml:lang="zho" notes="(爬樹,爬坡,山壁)我要抓哪裡,才會穩固?">我要抓哪裡,才會穩固?</TRANSL>
         <TRANSL xml:lang="eng">Which part of the cliff shall I grip so that I can be firm?</TRANSL>
         <W id="3_S_511_W0">
             <FORM kindOf="original">Te=ku</FORM>
@@ -101026,7 +101026,7 @@
         <FORM kindOf="standard">Po'unkasu naan kumakʉn?</FORM>
         <PHON kindOf="standard">poʔunkasu naan kumakɨn</PHON>
         <TRANSL xml:lang="zho">你在哪裡吃?</TRANSL>
-        <TRANSL xml:lang="eng">'Where do you eat (your food)?'</TRANSL>
+        <TRANSL xml:lang="eng" notes="'Where do you eat (your food)?'">'Where do you eat ?'</TRANSL>
         <W id="3_S_517_W0">
             <FORM kindOf="original">Po'un=kasu</FORM>
             <PHON kindOf="original">poʔunkasu</PHON>
@@ -101850,7 +101850,7 @@
         <FORM kindOf="standard">vanai macangcaangrʉ Pori sii nikamanuumanu Na'u.</FORM>
         <PHON kindOf="standard">vanai maʦaŋʦaaŋ[r|ɾ]ɨ po[r|ɾ]i sii nikamanuumanu naʔu</PHON>
         <TRANSL xml:lang="zho">因為Na’u生了小孩，Pori很開心。</TRANSL>
-        <TRANSL xml:lang="eng">Because Na'u gave birth to (a) child, Pani was happy.</TRANSL>
+        <TRANSL xml:lang="eng" notes="Because Na’u gave birth to (a) child, Pani was happy.">Because Na'u gave birth to child, Pani was happy.</TRANSL>
         <W id="4_S_3_W0">
             <FORM kindOf="original">vanai</FORM>
             <PHON kindOf="original">vanai</PHON>
@@ -102377,8 +102377,8 @@
         <PHON kindOf="original">vanaia iikasu takaʦiʦin paʦ*p*ʦ*p*ŋ*</PHON>
         <FORM kindOf="standard">vanaia iikasu takacicin pacʉpʉcʉpʉngʉ.</FORM>
         <PHON kindOf="standard">vanaia iikasu takaʦiʦin paʦɨpɨʦɨpɨŋɨ</PHON>
-        <TRANSL xml:lang="zho">(你)要為你自己想!</TRANSL>
-        <TRANSL xml:lang="eng">(You) think for yourself!</TRANSL>
+        <TRANSL xml:lang="zho" notes="(你)要為你自己想!">要為你自己想!</TRANSL>
+        <TRANSL xml:lang="eng" notes="(You) think for yourself!">think for yourself!</TRANSL>
         <W id="4_S_8_W0">
             <FORM kindOf="original">vanai-a</FORM>
             <PHON kindOf="original">vanaia</PHON>
@@ -103211,8 +103211,8 @@
         <PHON kindOf="original">tia v**n vaantuku sua manu</PHON>
         <FORM kindOf="standard">tia vʉʉn vaantuku sua manu.</FORM>
         <PHON kindOf="standard">tia vɨɨn vaantuku sua manu</PHON>
-        <TRANSL xml:lang="zho">(某人)要給小孩錢。</TRANSL>
-        <TRANSL xml:lang="eng">(Someone) is to give the child money.</TRANSL>
+        <TRANSL xml:lang="zho" notes="(某人)要給小孩錢。">要給小孩錢。</TRANSL>
+        <TRANSL xml:lang="eng" notes="(Someone) is to give the child money.">is to give the child money.</TRANSL>
         <W id="4_S_17_W0">
             <FORM kindOf="original">tia</FORM>
             <PHON kindOf="original">tia</PHON>
@@ -108204,7 +108204,7 @@
         <FORM kindOf="standard">sumasuruve Na'u na Uva taarisi po'ocipi camai.</FORM>
         <PHON kindOf="standard">sumasu[r|ɾ]uve naʔu na uva taa[r|ɾ]isi poʔoʦipi ʦamai</PHON>
         <TRANSL xml:lang="zho">Na’u向Uva借鍋子煮菜。</TRANSL>
-        <TRANSL xml:lang="eng">Na'u borrows (a) pot from Uva to cook the vegetables.</TRANSL>
+        <TRANSL xml:lang="eng" notes="Na’u borrows (a) pot from Uva to cook the vegetables.">Na'u borrows pot from Uva to cook the vegetables.</TRANSL>
         <W id="4_S_59_W0">
             <FORM kindOf="original">s&lt;um&gt;a-suruve</FORM>
             <PHON kindOf="original">sumasuruv[e|ə]</PHON>
@@ -108340,7 +108340,7 @@
         <FORM kindOf="standard">sumasuruve Na'u na Uva taarisi 'apapo'ocipi cina camai.</FORM>
         <PHON kindOf="standard">sumasu[r|ɾ]uve naʔu na uva taa[r|ɾ]isi ʔapapoʔoʦipi ʦina ʦamai</PHON>
         <TRANSL xml:lang="zho">Na’u向Uva借鍋子給媽媽煮菜。</TRANSL>
-        <TRANSL xml:lang="eng">Na'u borrows (a) pot from Uva for the mother to cook the vegetables.</TRANSL>
+        <TRANSL xml:lang="eng" notes="Na’u borrows (a) pot from Uva for the mother to cook the vegetables.">Na'u borrows pot from Uva for the mother to cook the vegetables.</TRANSL>
         <W id="4_S_60_W0">
             <FORM kindOf="original">s&lt;um&gt;a-suruve</FORM>
             <PHON kindOf="original">sumasuruv[e|ə]</PHON>
@@ -108877,8 +108877,8 @@
         <PHON kindOf="original">manas* kaŋanink[e|ə][e|ə] im[e|ə][e|ə] akua sua ʦanumu isi panaan sii m[e|ə][e|ə]ʦuʔuku</PHON>
         <FORM kindOf="standard">manasʉ kanganinkee, imee akua sua canumu isi panaan sii meecu'uku.</FORM>
         <PHON kindOf="standard">manasɨ kaŋaninkee imee akua sua ʦanumu isi panaan sii meeʦuʔuku</PHON>
-        <TRANSL xml:lang="zho">也許他很珍惜，我卻(狠狠地)把水給喝了，因為我很渴。</TRANSL>
-        <TRANSL xml:lang="eng">Maybe he cherishes (the water), but I drink the water (to my content) because I'm thirsty.</TRANSL>
+        <TRANSL xml:lang="zho" notes="也許他很珍惜，我卻(狠狠地)把水給喝了，因為我很渴。">也許他很珍惜，我卻 把水給喝了，因為我很渴。</TRANSL>
+        <TRANSL xml:lang="eng" notes="Maybe he cherishes (the water), but I drink the water (to my content) because I’m thirsty.">Maybe he cherishes , but I drink the water because I'm thirsty.</TRANSL>
         <W id="4_S_64_W0">
             <FORM kindOf="original">manasʉ</FORM>
             <PHON kindOf="original">manas*</PHON>
@@ -112960,7 +112960,7 @@
         <FORM kindOf="standard">noo 'unapa cinapa cau isa 'aramʉ vavuru ia, teku kumakʉnʉ.</FORM>
         <PHON kindOf="standard">noo ʔunapa ʦinapa ʦau isa ʔa[r|ɾ]amɨ vavu[r|ɾ]u ia teku kumakɨnɨ</PHON>
         <TRANSL xml:lang="zho">如果那個人烤的山豬肉還有的話 我要吃。</TRANSL>
-        <TRANSL xml:lang="eng">If there is still the boar meat he roasted left, I want to eat (it).</TRANSL>
+        <TRANSL xml:lang="eng" notes="If there is still the boar meat he roasted left, I want to eat (it).">If there is still the boar meat he roasted left, I want to eat .</TRANSL>
         <W id="4_S_100_W0">
             <FORM kindOf="original">noo</FORM>
             <PHON kindOf="original">noo</PHON>
@@ -113291,7 +113291,7 @@
         <PHON kindOf="original">nakai pani sua tiŋnumukuʦu siʔinuva isi ia t[e|ə]kita tavar*ʔ* kavaŋvaŋ mosikaru tanasa isi</PHON>
         <FORM kindOf="standard">nakai Pani sua tingnumukucu si'inuva isi ia tekita tavarʉ'ʉ kavangvang mosikaru tanasa isi.</FORM>
         <PHON kindOf="standard">nakai pani sua tiŋnumukuʦu siʔinuva isi ia tekita tava[r|ɾ]ɨʔɨ kavaŋvaŋ mosika[r|ɾ]u tanasa isi</PHON>
-        <TRANSL xml:lang="zho">要不是Pani鎖了這個門, 不然我們全部(=大家)都可以進去這個房子。</TRANSL>
+        <TRANSL xml:lang="zho" notes="要不是Pani鎖了這個門, 不然我們全部(=大家)都可以進去這個房子。">要不是Pani鎖了這個門, 不然我們全部 都可以進去這個房子。</TRANSL>
         <TRANSL xml:lang="eng">Were it not for Pani who locked the door, everybody could go inside the house.</TRANSL>
         <W id="4_S_102_W0">
             <FORM kindOf="original">nakai</FORM>
@@ -113532,7 +113532,7 @@
         <FORM kindOf="standard">noo' una.pe cinapa 'avia 'aramu vavuru ia teku kumakʉʉn.</FORM>
         <PHON kindOf="standard">nooʔ unape ʦinapa ʔavia ʔa[r|ɾ]amu vavu[r|ɾ]u ia teku kumakɨɨn</PHON>
         <TRANSL xml:lang="zho">假如’Avia烤的山豬肉還有剩的話, 我要吃。</TRANSL>
-        <TRANSL xml:lang="eng">If there's still the wild boar that 'avia roasted left, I want to eat (it).</TRANSL>
+        <TRANSL xml:lang="eng" notes="If there’s still the wild boar that ’avia roasted left, I want to eat (it).">If there's still the wild boar that 'avia roasted left, I want to eat .</TRANSL>
         <W id="4_S_103_W0">
             <FORM kindOf="original">noo'</FORM>
             <PHON kindOf="original">nooʔ</PHON>
@@ -113714,8 +113714,8 @@
         <PHON kindOf="original">marisika makasiin tia mova ʦina rusoni vaantuku</PHON>
         <FORM kindOf="standard">marisika makasiin tia mova cina rusoni vaantuku.</FORM>
         <PHON kindOf="standard">ma[r|ɾ]isika makasiin tia mova ʦina [r|ɾ]usoni vaantuku</PHON>
-        <TRANSL xml:lang="zho">現在請掃地, 媽媽等一下就會給(你)錢。</TRANSL>
-        <TRANSL xml:lang="eng">Sweep the floor now, and mother will give (you) money later.</TRANSL>
+        <TRANSL xml:lang="zho" notes="現在請掃地, 媽媽等一下就會給(你)錢。">現在請掃地, 媽媽等一下就會給 錢。</TRANSL>
+        <TRANSL xml:lang="eng" notes="Sweep the floor now, and mother will give (you) money later.">Sweep the floor now, and mother will give money later.</TRANSL>
         <W id="4_S_104_W0">
             <FORM kindOf="original">marisik-a</FORM>
             <PHON kindOf="original">marisika</PHON>
@@ -115875,7 +115875,7 @@
         <FORM kindOf="standard">sua vutuukuru isi ia, iku nipinarupu.</FORM>
         <PHON kindOf="standard">sua vutuuku[r|ɾ]u isi ia iku nipina[r|ɾ]upu</PHON>
         <TRANSL xml:lang="zho">這條魚是我釣的。</TRANSL>
-        <TRANSL xml:lang="eng">As for this fish, I fished (it).</TRANSL>
+        <TRANSL xml:lang="eng" notes="As for this fish, I fished (it).">As for this fish, I fished .</TRANSL>
         <W id="4_S_125_W0">
             <FORM kindOf="original">sua</FORM>
             <PHON kindOf="original">sua</PHON>
@@ -117003,7 +117003,7 @@
         <FORM kindOf="standard">musuvakʉrʉ Pani sii, niarivura'ʉ Mu'u.</FORM>
         <PHON kindOf="standard">musuvakɨ[r|ɾ]ɨ pani sii nia[r|ɾ]ivu[r|ɾ]aʔɨ muʔu</PHON>
         <TRANSL xml:lang="zho">Pani受傷是因為被Mu’u打。</TRANSL>
-        <TRANSL xml:lang="eng">Pani gets hurt because Mu'u hit (him).</TRANSL>
+        <TRANSL xml:lang="eng" notes="Pani gets hurt because Mu’u hit (him).">Pani gets hurt because Mu'u hit .</TRANSL>
         <W id="4_S_135_W0">
             <FORM kindOf="original">musu-vakʉrʉ</FORM>
             <PHON kindOf="original">musuvak*r*</PHON>
@@ -117267,7 +117267,7 @@
         <FORM kindOf="standard">pacʉpʉcʉpʉngʉ nguain, tia 'apakoo'ua kasua, tanasa Pani tamna tarukuka.</FORM>
         <PHON kindOf="standard">paʦɨpɨʦɨpɨŋɨ ŋuain tia ʔapakooʔua kasua tanasa pani tamna ta[r|ɾ]ukuka</PHON>
         <TRANSL xml:lang="zho">他想要你去偷Pani家的雞。</TRANSL>
-        <TRANSL xml:lang="eng">He is thinking that (he) makes you steal the chicken of Pani's family.</TRANSL>
+        <TRANSL xml:lang="eng" notes="He is thinking that (he) makes you steal the chicken of Pani’s family.">He is thinking that makes you steal the chicken of Pani's family.</TRANSL>
         <W id="4_S_137_W0">
             <FORM kindOf="original">pa&lt;cʉpʉ&gt;cʉpʉngʉ</FORM>
             <PHON kindOf="original">paʦ*p*ʦ*p*ŋ*</PHON>
@@ -118313,7 +118313,7 @@
         <PHON kindOf="original">kaʔaan pani tavar*ʔ* nitumaŋamusu</PHON>
         <FORM kindOf="standard">ka'aan Pani tavarʉ'ʉ nitumangamusu.</FORM>
         <PHON kindOf="standard">kaʔaan pani tava[r|ɾ]ɨʔɨ nitumaŋamusu</PHON>
-        <TRANSL xml:lang="zho">Pani不知道你所哭的(原因)。</TRANSL>
+        <TRANSL xml:lang="zho" notes="Pani不知道你所哭的(原因)。">Pani不知道你所哭的 。</TRANSL>
         <TRANSL xml:lang="eng">Pani doesn't know the reason you cried.</TRANSL>
         <W id="4_S_143_W0">
             <FORM kindOf="original">ka'aan</FORM>
@@ -118945,7 +118945,7 @@
         <PHON kindOf="original">kaʔaan pani tavar*ʔ* sua tia aka ʦ*p*ŋamusu</PHON>
         <FORM kindOf="standard">ka'aan Pani tavarʉ'ʉ sua tia aka cʉpʉngamusu.</FORM>
         <PHON kindOf="standard">kaʔaan pani tava[r|ɾ]ɨʔɨ sua tia aka ʦɨpɨŋamusu</PHON>
-        <TRANSL xml:lang="zho">Pani不知道你所難過的(原因)。</TRANSL>
+        <TRANSL xml:lang="zho" notes="Pani不知道你所難過的(原因)。">Pani不知道你所難過的 。</TRANSL>
         <TRANSL xml:lang="eng">Pani doesn't know what you feel sad for.</TRANSL>
         <W id="4_S_149_W0">
             <FORM kindOf="original">ka'aan</FORM>
@@ -119313,8 +119313,8 @@
         <PHON kindOf="original">manmaan pani sua tia tatoopuruamusu</PHON>
         <FORM kindOf="standard">manmaan Pani sua tia tatoopuruamusu.</FORM>
         <PHON kindOf="standard">manmaan pani sua tia tatoopu[r|ɾ]uamusu</PHON>
-        <TRANSL xml:lang="zho">Pani 喜歡那個你要坐的（東西）。</TRANSL>
-        <TRANSL xml:lang="eng">Pani likes (the thing) that you are going to sit on.</TRANSL>
+        <TRANSL xml:lang="zho" notes="Pani 喜歡那個你要坐的（東西）。">Pani 喜歡那個你要坐的 。</TRANSL>
+        <TRANSL xml:lang="eng" notes="Pani likes (the thing) that you are going to sit on.">Pani likes that you are going to sit on.</TRANSL>
         <W id="4_S_152_W0">
             <FORM kindOf="original">manmaan</FORM>
             <PHON kindOf="original">manmaan</PHON>
@@ -119713,7 +119713,7 @@
         <PHON kindOf="original">puaka pani nonoman tia ʔapaʦ*v*ramusu</PHON>
         <FORM kindOf="standard">puaka Pani nonoman tia 'apacʉvʉramusu.</FORM>
         <PHON kindOf="standard">puaka pani nonoman tia ʔapaʦɨvɨ[r|ɾ]amusu</PHON>
-        <TRANSL xml:lang="zho">Pani討厭那個你要養的(東西)。</TRANSL>
+        <TRANSL xml:lang="zho" notes="Pani討厭那個你要養的(東西)。">Pani討厭那個你要養的 。</TRANSL>
         <TRANSL xml:lang="eng">Pani hates the thing you are going to raise.</TRANSL>
         <W id="4_S_156_W0">
             <FORM kindOf="original">puaka</FORM>
@@ -120362,7 +120362,7 @@
         <FORM kindOf="standard">noo ka'aaniin nguain marisinatu ia, tia kuracuun takituturua.</FORM>
         <PHON kindOf="standard">noo kaʔaaniin ŋuain ma[r|ɾ]isinatu ia tia ku[r|ɾ]aʦuun takitutu[r|ɾ]ua</PHON>
         <TRANSL xml:lang="zho">如果他沒有寫的話, 將會被老師責備。</TRANSL>
-        <TRANSL xml:lang="eng">If he didn't write (the homework), he would be scolded by the teacher.</TRANSL>
+        <TRANSL xml:lang="eng" notes="If he didn’t write (the homework), he would be scolded by the teacher.">If he didn't write , he would be scolded by the teacher.</TRANSL>
         <W id="4_S_161_W0">
             <FORM kindOf="original">noo</FORM>
             <PHON kindOf="original">noo</PHON>
@@ -121153,7 +121153,7 @@
         <PHON kindOf="original">noo nanak*ku ia tiarakasu manmaan ʔakua</PHON>
         <FORM kindOf="standard">noo nanakʉku ia, tiarakasu manmaan 'akua?</FORM>
         <PHON kindOf="standard">noo nanakɨku ia tia[r|ɾ]akasu manmaan ʔakua</PHON>
-        <TRANSL xml:lang="zho">如果我是女生, 你(就)會喜歡我嗎?</TRANSL>
+        <TRANSL xml:lang="zho" notes="如果我是女生, 你(就)會喜歡我嗎?">如果我是女生, 你 會喜歡我嗎?</TRANSL>
         <TRANSL xml:lang="eng">If I were a girl, would you like me?</TRANSL>
         <W id="4_S_167_W0">
             <FORM kindOf="original">noo</FORM>
@@ -121928,7 +121928,7 @@
         <FORM kindOf="standard">putu'ʉnʉvoo tenki.</FORM>
         <PHON kindOf="standard">putuʔɨnɨvoo tenki</PHON>
         <TRANSL xml:lang="zho">幫我開燈!</TRANSL>
-        <TRANSL xml:lang="eng">Turn the lights on (for me).</TRANSL>
+        <TRANSL xml:lang="eng" notes="Turn the lights on (for me).">Turn the lights on .</TRANSL>
         <W id="4_S_173_W0">
             <FORM kindOf="original">putu'ʉnʉv-oo</FORM>
             <PHON kindOf="original">putuʔ*n*voo</PHON>
@@ -122368,7 +122368,7 @@
         <FORM kindOf="standard">tecu arapitʉ'ʉ tepa arapipining nguani tamna tacau sumasima'ʉ.</FORM>
         <PHON kindOf="standard">teʦu a[r|ɾ]apitɨʔɨ tepa a[r|ɾ]apipiniŋ ŋuani tamna taʦau sumasimaʔɨ</PHON>
         <TRANSL xml:lang="zho">天就要黑了，他們的狗還要出去玩耍。</TRANSL>
-        <TRANSL xml:lang="eng">It's turning dark, (but) their dog still wants to go out and play.</TRANSL>
+        <TRANSL xml:lang="eng" notes="It’s turning dark, (but) their dog still wants to go out and play.">It's turning dark, their dog still wants to go out and play.</TRANSL>
         <W id="4_S_177_W0">
             <FORM kindOf="original">te=cu</FORM>
             <PHON kindOf="original">t[e|ə]ʦu</PHON>
@@ -125718,7 +125718,7 @@
         <PHON kindOf="original">kaʔaan pani tavar*ʔ* nitumaŋamusu</PHON>
         <FORM kindOf="standard">ka'aan Pani tavarʉ'ʉ nitumangamusu.</FORM>
         <PHON kindOf="standard">kaʔaan pani tava[r|ɾ]ɨʔɨ nitumaŋamusu</PHON>
-        <TRANSL xml:lang="zho">Pani 不知道你所哭的(原因)。</TRANSL>
+        <TRANSL xml:lang="zho" notes="Pani 不知道你所哭的(原因)。">Pani 不知道你所哭的 。</TRANSL>
         <TRANSL xml:lang="eng">Pani doesn't know the reason you cried.</TRANSL>
         <W id="5_S_31_W0">
             <FORM kindOf="original">ka'aan</FORM>
@@ -126864,7 +126864,7 @@
         <FORM kindOf="standard">vanai musuvakurʉ Pani sii, niarivura'ʉ Mu'u.</FORM>
         <PHON kindOf="standard">vanai musuvaku[r|ɾ]ɨ pani sii nia[r|ɾ]ivu[r|ɾ]aʔɨ muʔu</PHON>
         <TRANSL xml:lang="zho">Pani受傷的原因是因為被Mu’u打.</TRANSL>
-        <TRANSL xml:lang="eng">Pani gets hurt because Mu'u hit (him).</TRANSL>
+        <TRANSL xml:lang="eng" notes="Pani gets hurt because Mu’u hit (him).">Pani gets hurt because Mu'u hit .</TRANSL>
         <W id="5_S_39_W0">
             <FORM kindOf="original">vanai</FORM>
             <PHON kindOf="original">vanai</PHON>
@@ -126976,7 +126976,7 @@
         <FORM kindOf="standard">musuvakurʉ Pani, vanai sii niarivura'ʉ Mu'u.</FORM>
         <PHON kindOf="standard">musuvaku[r|ɾ]ɨ pani vanai sii nia[r|ɾ]ivu[r|ɾ]aʔɨ muʔu</PHON>
         <TRANSL xml:lang="zho">Pani受傷是因為被Mu’u打了</TRANSL>
-        <TRANSL xml:lang="eng">Pani gets hurt because Mu'u hit (him).</TRANSL>
+        <TRANSL xml:lang="eng" notes="Pani gets hurt because Mu’u hit (him).">Pani gets hurt because Mu'u hit .</TRANSL>
         <W id="5_S_40_W0">
             <FORM kindOf="original">musuvakurʉ</FORM>
             <PHON kindOf="original">musuvakur*</PHON>
@@ -127087,7 +127087,7 @@
         <PHON kindOf="original">vur*ŋana ŋuain muʦikiriŋa parakiʦaʦ* pani</PHON>
         <FORM kindOf="standard">vurʉngana nguain mucikiringa parakicacʉ Pani.</FORM>
         <PHON kindOf="standard">vu[r|ɾ]ɨŋana ŋuain muʦiki[r|ɾ]iŋa pa[r|ɾ]akiʦaʦɨ pani</PHON>
-        <TRANSL xml:lang="zho">他深夜去邊邊角落(上廁所)的地方嚇到Pani</TRANSL>
+        <TRANSL xml:lang="zho" notes="他深夜去邊邊角落(上廁所)的地方嚇到Pani">他深夜去邊邊角落 的地方嚇到Pani</TRANSL>
         <TRANSL xml:lang="eng">At midnight, he goes to the toilet and shocks Pani.</TRANSL>
         <W id="5_S_41_W0">
             <FORM kindOf="original">vurʉngana</FORM>
@@ -129127,7 +129127,7 @@
         <PHON kindOf="original">noo ʔ[e|ə]siin siʔiʦ*p* pani ia kaʔaankita tia maramiaʔ* ʔinia</PHON>
         <FORM kindOf="standard">noo 'esiin si'icʉpʉ Pani ia, ka'aankita tia maramia'ʉ 'inia.</FORM>
         <PHON kindOf="standard">noo ʔesiin siʔiʦɨpɨ pani ia kaʔaankita tia ma[r|ɾ]amiaʔɨ ʔinia</PHON>
-        <TRANSL xml:lang="zho">如果巴尼正在睡覺的話, 我們將不會叫醒他 (不會讓他起來)。</TRANSL>
+        <TRANSL xml:lang="zho" notes="如果巴尼正在睡覺的話, 我們將不會叫醒他 (不會讓他起來)。">如果巴尼正在睡覺的話, 我們將不會叫醒他 。</TRANSL>
         <TRANSL xml:lang="eng">If Pani is sleeping, we won't wake him up.</TRANSL>
         <W id="5_S_56_W0">
             <FORM kindOf="original">noo</FORM>
@@ -129487,7 +129487,7 @@
         <PHON kindOf="original">tiaku muʦa sii ʔuna taŋsua iavatu</PHON>
         <FORM kindOf="standard">tiaku muca sii, 'una tangsua iavatu.</FORM>
         <PHON kindOf="standard">tiaku muʦa sii ʔuna taŋsua iavatu</PHON>
-        <TRANSL xml:lang="zho">我要離開的時候, 她就打來了 (我要走, 電話來了)</TRANSL>
+        <TRANSL xml:lang="zho" notes="我要離開的時候, 她就打來了 (我要走, 電話來了)">我要離開的時候, 她就打來了</TRANSL>
         <TRANSL xml:lang="eng">She called me, as I was leaving.</TRANSL>
         <W id="5_S_58_W0">
             <FORM kindOf="original">tia=ku</FORM>
@@ -129871,7 +129871,7 @@
         <PHON kindOf="original">noo ʔ[e|ə]si pokarikari pani ia ʔakunikasu pokarikari ʔinia</PHON>
         <FORM kindOf="standard">noo 'esi pokarikari Pani ia, 'akunikasu pokarikari 'inia.</FORM>
         <PHON kindOf="standard">noo ʔesi poka[r|ɾ]ika[r|ɾ]i pani ia ʔakunikasu poka[r|ɾ]ika[r|ɾ]i ʔinia</PHON>
-        <TRANSL xml:lang="zho">如果Pani在說話, 你不要打斷/ 干擾他 (=Pani)。</TRANSL>
+        <TRANSL xml:lang="zho" notes="如果Pani在說話, 你不要打斷/ 干擾他 (=Pani)。">如果Pani在說話, 你不要打斷/ 干擾他 。</TRANSL>
         <TRANSL xml:lang="eng">If Pani was speaking, then you don't interrupt him.</TRANSL>
         <W id="5_S_61_W0">
             <FORM kindOf="original">noo</FORM>

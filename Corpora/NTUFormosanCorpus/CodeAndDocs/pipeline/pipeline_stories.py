@@ -39,7 +39,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 _REPO_ROOT = Path(__file__).resolve().parents[4]   # <bank>/Corpora/<C>/CodeAndDocs/pipeline/
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
-from pipeline_grammar import (SPLIT, XML_LANG, add_transl as _add_transl,  # noqa: E402
+from pipeline_grammar import (SPLIT, XML_LANG, add_transl as _add_transl,
+                              apply_gloss_restorations, load_gloss_restorations,  # noqa: E402
                        step1_brackets, step7_align_separator, drop_starred_alternatives, drop_starred_readings, free_entries,
                    load_free_repairs,
                    conform_sentence,
@@ -888,11 +889,14 @@ def main() -> int:
         shutil.rmtree(args.out)
     args.out.mkdir(parents=True, exist_ok=True)
     count = 0
+    restorations = load_gloss_restorations()
     for path in sorted(args.json.rglob("*.json")):
         data = json.loads(path.read_text(encoding="utf-8"))
         recs = data if isinstance(data, list) else (list(data.values())[0] if data else [])
         if not isinstance(recs, list):
             continue
+        apply_gloss_restorations(
+            recs, path.relative_to(args.json.parent).as_posix(), restorations, stats)
         if 16 in steps:
             recs = merge_groups(recs, stats)
         root = build(recs, path.stem, steps, stats, attested, malformed, language=language_for(path), dialect=dialect_for(path),

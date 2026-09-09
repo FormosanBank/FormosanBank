@@ -27,7 +27,7 @@ grammar	9 M FORM has no Han	100.0
 sentences	0 JSON record has an S block	100.0
 sentences	1 S FORM non-empty	100.0
 sentences	10 English free translation non-empty	99.7
-sentences	11 Mandarin free translation has no English	77.7
+sentences	11 Mandarin free translation has no English	78.2
 sentences	12 English free translation has no Han	99.8
 sentences	13 M with a FORM has both glosses	99.0
 sentences	14 M has content in its FORM	100.0
@@ -36,7 +36,7 @@ sentences	17 every implied morpheme has an M	99.9
 sentences	2 W FORM and both TRANSLs non-empty	99.9
 sentences	3 #W accounts for S FORM words	98.8
 sentences	4 W FORM has no Han	100.0
-sentences	5 W FORMs reconstitute S FORM	91.2
+sentences	5 W FORMs reconstitute S FORM	91.1
 sentences	6 morpheme count matches both glosses	98.9
 sentences	7 W English gloss has no Han	99.9
 sentences	8 W Mandarin gloss has no lower-case Latin	97.3
@@ -44,13 +44,13 @@ sentences	9 Mandarin free translation non-empty	99.5
 stories	0 JSON record has an S block	98.4
 stories	1 S FORM non-empty	100.0
 stories	10 English free translation non-empty	99.8
-stories	11 Mandarin free translation has no English	92.8
+stories	11 Mandarin free translation has no English	93.2
 stories	12 English free translation has no Han	99.9
-stories	13 M with a FORM has both glosses	99.1
+stories	13 M with a FORM has both glosses	99.2
 stories	14 M has content in its FORM	100.0
 stories	15 S has a W tier	98.8
 stories	17 every implied morpheme has an M	98.7
-stories	2 W FORM and both TRANSLs non-empty	99.1
+stories	2 W FORM and both TRANSLs non-empty	99.7
 stories	3 #W accounts for S FORM words	98.8
 stories	4 W FORM has no Han	100.0
 stories	5 W FORMs reconstitute S FORM	90.5
