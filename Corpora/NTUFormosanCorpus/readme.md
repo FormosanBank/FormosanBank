@@ -71,6 +71,53 @@ were removed and remain documented in `missing_audio.csv` and the per-language
 
 ***
 
+## Orthography: the source is Ortho94
+
+The NTU source documentation states its orthography, and it is **Ortho94** —
+the standard released in ROC year 94, which Ortho113 later revised. The corpus
+is therefore processed as Ortho94 throughout:
+
+- `add_phonology.py --orthography Ortho94` generates the **original** PHON from
+  Ortho94's letter-to-sound rules. The **standard** PHON continues to use
+  Ortho113, which is FormosanBank's common orthography.
+- `standardize.py --tsv_path Orthographies/ConversionTables/<Language>_94_113.tsv`
+  produces the standard tier by converting 94 → 113 per language.
+
+**This is a change.** Earlier processing declared the original tier to be
+Ortho113 and produced the standard tier with `--remove_accents` — a copy with
+accents stripped and no letter conversion. That mis-described the source: the
+phonology generated for the original tier used the rules of an orthography the
+source was not written in.
+
+Three of the corpus's ten languages have an **empty** conversion table
+(headers only): **Bunun**, **Kanakanavu** and **Tsou**. Bunun and Tsou need no
+letter conversion — their 94 and 113 spellings agree. Kanakanavu genuinely
+differs, but is not convertible in this direction: Ortho113 introduced letters
+Ortho94 did not have, so no mapping exists. An empty table is not a no-op:
+`standardize` still resolves the source profile through the naming convention
+(`<Language>_<Scheme>_113.tsv` → `Orthographies/Ortho94/<Language>.tsv`), so
+**accents are still removed and capital variants still derived** in every case.
+
+## Quality checks and regressions
+
+The validators in `QC/validation/` decide whether this corpus's XML is *legal*.
+A separate suite in [CodeAndDocs/qa/](CodeAndDocs/qa/) measures how well it holds
+together as a **glossed** corpus — whether the word tier accounts for the
+sentence, whether every morpheme a form implies has an `M`, whether the glosses
+sit in the right language slots. A file can be perfectly valid and still score
+badly there.
+
+Because almost none of those tests can honestly reach 100% (the source has
+sentences nobody segmented and words nobody glossed), the recorded score is the
+specification: [CodeAndDocs/qa/baseline.tsv](CodeAndDocs/qa/baseline.tsv) holds
+what each test achieves on the corpus as published, and a rebuild is compared
+against it. See [CodeAndDocs/qa/README.md](CodeAndDocs/qa/README.md).
+
+```bash
+python CodeAndDocs/qa/check_regressions.py --subcorpus stories \
+    --xml XML/Stories --json CodeAndDocs/story
+```
+
 ## Processing
 
 All steps below are wrapped by [CodeAndDocs/make.sh](CodeAndDocs/make.sh), which runs
