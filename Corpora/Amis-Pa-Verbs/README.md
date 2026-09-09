@@ -14,6 +14,16 @@ Final XML has 29 S, 154 W, 265 M, 448 original and 448 standard FORM/PHON parent
 
 The date records the maintainer's verification of SIL's published archive terms, including the retained January 24 screenshot. Those terms apply unless an item states otherwise; this paper contains no conflicting grant. Credit Joy Wu and SIL International, retain the noncommercial/share-alike conditions, and identify the transcription and normalization changes. The optional PDF verification copy is not a required build input.
 
+## Audio
+
+The source paper supplies no audio.
+
+## Notes and Issues
+
+The paper segments `Pa-fli` but gives only the whole-word gloss `give`. Its two morphemes therefore have no individual glosses. Other source form/gloss mismatches and analytic nulls are preserved; the source notes explain the reviewed cases.
+
+Original and standard PHON use different inventories, including the source's narrower vowel and lateral values. The conversion report records these differences; the tiers do not imply strict phonemic equivalence.
+
 ## Reproduce
 
 With FormosanBank's documented Python dependencies installed:
