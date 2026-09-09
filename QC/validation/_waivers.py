@@ -20,10 +20,13 @@ Three constraints keep the file from rotting into a blindfold:
 
 1. **No wildcards.** Explicit keys only. ``V129 * *`` is how a whitelist
    becomes a way to stop looking.
-2. **A waiver that matches nothing is an error** (the anti-drift rule). A
-   waiver may not outlive the finding it dispositioned, or it silently
-   covers whatever appears at that key next. Same discipline as POL-030's
-   ``--prune`` for no-op manual edits.
+2. **A waiver that matches nothing is not an error.** Fixing a finding must
+   never cost a second edit to the waiver file: the risk here is a *new*
+   HARD finding, not a disappearing one, and a rule that fails the build
+   when you repair data is a barrier pointed the wrong way (maintainer,
+   2026-09-09). ``apply_waivers`` still reports which waivers matched
+   nothing so ``waivers.py prune`` can drop them on request -- the POL-030
+   ``--prune`` shape, an explicit human action rather than a gate.
 3. **A reason is mandatory.** Empty, whitespace, or a leftover ``TODO``
    placeholder is rejected. The reason is the only part of a waiver that a
    tool cannot generate, which is exactly why it is the part that counts.
@@ -193,7 +196,13 @@ def apply_waivers(findings: list[Finding]) -> tuple[list[Finding], list[Waiver]]
 
     Returns ``(findings, stale)`` where ``findings`` has every waived HARD
     finding rewritten to ``Severity.WAIVED`` (nothing is dropped) and
-    ``stale`` lists waivers with no matching finding — the anti-drift rule.
+    ``stale`` lists waivers that matched no finding in this run.
+
+    ``stale`` is informational: the reporter does not fail on it. It exists
+    so ``waivers.py prune`` can offer to delete rows whose findings are gone.
+    Note a waiver is "stale" only relative to the files this run covered — a
+    run scoped to one language says nothing about another's waivers, which
+    is why pruning is a deliberate command and never automatic.
 
     Waiver files are loaded once per corpus touched by the findings. A corpus
     with no waiver file contributes nothing and cannot go stale.

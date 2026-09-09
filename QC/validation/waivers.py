@@ -16,6 +16,16 @@ writes why — the mechanical half is automated, the judgement half cannot be.
 There is deliberately no flag that supplies a reason. The moment waiving is
 one command with no typing, it stops being a decision.
 
+**prune** — drop waiver rows whose finding is gone:
+
+    python QC/validation/validate_text.py by_path --path Corpora/X/XML --csv /tmp/t.csv
+    python QC/validation/waivers.py prune --csv /tmp/t.csv
+
+Fixing a finding never fails the build over a now-unused waiver — the risk is
+a *new* HARD finding, not a disappearing one — so leftover rows are tidied on
+request, never as a gate. Only rows for files the run actually covered are
+considered, so a language-scoped run cannot delete another language's waivers.
+
 **report** — every waiver in the bank, in one table:
 
     python QC/validation/waivers.py report
@@ -131,6 +141,67 @@ def propose(findings_csv: Path) -> int:
     return 0
 
 
+def prune(findings_csv: Path) -> int:
+    """Remove waiver rows that matched no finding in the given run.
+
+    Scoped to the corpora and files the findings CSV covers: a waiver for a
+    file the run never looked at is left alone, because absence of a finding
+    for an unexamined file is not evidence the waiver is spent.
+    """
+    with findings_csv.open(encoding="utf-8-sig", newline="") as handle:
+        findings = list(csv.DictReader(handle))
+
+    seen_files: dict[Path, set[str]] = defaultdict(set)
+    live: dict[Path, set[tuple[str, str, str]]] = defaultdict(set)
+    for row in findings:
+        xml_path = Path(row["file"])
+        corpus_dir = corpus_root_for(xml_path)
+        if corpus_dir is None:
+            continue
+        name = relative_xml_name(xml_path, corpus_dir)
+        seen_files[corpus_dir].add(name)
+        if row.get("severity") in {"HARD", "WAIVED"}:
+            live[corpus_dir].add(
+                ((row.get("rule_id") or "").strip(), name,
+                 (row.get("location") or "").strip())
+            )
+
+    removed = 0
+    for corpus_dir, covered in sorted(seen_files.items()):
+        path = waiver_path(corpus_dir)
+        if not path.is_file():
+            continue
+        with path.open(encoding="utf-8-sig", newline="") as handle:
+            reader = csv.DictReader(handle, delimiter="\t")
+            rows = list(reader)
+            fields = reader.fieldnames or list(COLUMNS)
+
+        keep, drop = [], []
+        for row in rows:
+            key = ((row.get("rule_id") or "").strip(),
+                   (row.get("file") or "").strip(),
+                   (row.get("location") or "").strip())
+            # Only judge a waiver whose file this run actually examined.
+            if key[1] in covered and key not in live[corpus_dir]:
+                drop.append(row)
+            else:
+                keep.append(row)
+        if not drop:
+            continue
+        with path.open("w", encoding="utf-8", newline="") as handle:
+            writer = csv.DictWriter(handle, fieldnames=fields, delimiter="\t",
+                                    lineterminator="\n")
+            writer.writeheader()
+            writer.writerows(keep)
+        removed += len(drop)
+        print(f"{path}: -{len(drop)} row(s)")
+        for row in drop:
+            print(f"    {row.get('rule_id')}\t{row.get('file')}\t{row.get('location')}")
+
+    print("No spent waivers." if not removed else f"\n{removed} row(s) removed.")
+    return 0
+
+
 def report(repo_root: Path) -> int:
     corpora = repo_root / "Corpora"
     if not corpora.is_dir():
@@ -179,6 +250,11 @@ def main(argv: list[str] | None = None) -> int:
     p_propose.add_argument("--csv", type=Path, required=True,
                            help="a validator's findings CSV")
 
+    p_prune = sub.add_parser(
+        "prune", help="drop waiver rows whose finding is gone")
+    p_prune.add_argument("--csv", type=Path, required=True,
+                         help="a validator's findings CSV")
+
     p_report = sub.add_parser("report", help="every waiver in the bank")
     p_report.add_argument("--repo-root", type=Path, default=REPO_ROOT)
 
@@ -186,6 +262,8 @@ def main(argv: list[str] | None = None) -> int:
     try:
         if args.command == "propose":
             return propose(args.csv)
+        if args.command == "prune":
+            return prune(args.csv)
         return report(args.repo_root)
     except WaiverError as exc:
         print(f"waiver error: {exc}", file=sys.stderr)

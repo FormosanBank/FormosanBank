@@ -34,9 +34,8 @@ run tests "$PY" -m pytest -c "$HERE/pyproject.toml" "$HERE/tests" -q
 run source "$PY" "$HERE/scripts/source_audit.py" --json
 # No --no-exit-on-hard: the S25 reconstruction-title findings are waived in
 # CodeAndDocs/qc_waivers.tsv (POL-054) and reported as WAIVED, so these runs
-# are genuinely clean. An unwaived HARD finding, or a waiver that matches no
-# current finding, now fails here — which is what the corpus-local
-# check_hard_findings.py used to do by hand.
+# are genuinely clean and an unwaived HARD finding now fails here — which is
+# what the corpus-local check_hard_findings.py used to do by hand.
 run xml "$PY" "$FB/QC/validation/validate_xml.py" by_path --path "$ROOT/XML" \
     --published-corpora "$VIEW" --csv "$OUTPUT_DIR/xml.csv"
 run text "$PY" "$FB/QC/validation/validate_text.py" by_path --path "$ROOT/XML" \

@@ -918,9 +918,15 @@ Four constraints, and they are the entry:
 - **A reason is mandatory.** Empty, whitespace, or a leftover `TODO` is
   rejected. The reason is the only part a tool cannot generate, which is
   exactly why it is the part that counts.
-- **A waiver that matches no current finding fails the run** (anti-drift).
-  A waiver may not outlive what it dispositioned, or it silently covers
-  whatever appears at that key next. Same discipline as POL-030's `--prune`.
+- **A waiver that matches nothing does not fail the run.** Fixing a finding
+  must never cost a second edit to the waiver file: the risk this mechanism
+  guards against is a *new* HARD finding, not a disappearing one, and a check
+  that fails the build when you repair data is a barrier pointed the wrong
+  way (maintainer, 2026-09-09). Spent rows are tidied on request with
+  `waivers.py prune`, the POL-030 `--prune` shape — an explicit human action,
+  never a gate. The residual risk is narrow and accepted: a spent waiver
+  would silently cover a *different* finding arriving later at the same
+  `(rule, file, location)`.
 - **No wildcards.** Exact `(rule_id, file, location)` only.
 - **Only judgement rules may be waived** — `WAIVABLE_RULES` in
   `QC/validation/_waivers.py`, today `{V129}`. A structural finding (schema,
@@ -930,9 +936,15 @@ Four constraints, and they are the entry:
 
 `python QC/validation/waivers.py propose --csv <findings.csv>` appends the
 mechanical half (rule, file, location) as `TODO` rows for a human to justify;
-there is deliberately no flag that supplies a reason. `waivers.py report`
-prints every waiver in the bank, because waivers scattered across thirty
-`CodeAndDocs/` directories are invisible in aggregate.
+there is deliberately no flag that supplies a reason. `waivers.py prune`
+drops rows whose finding is gone, scoped to the files the run covered.
+`waivers.py report` prints every waiver in the bank, because waivers scattered
+across thirty `CodeAndDocs/` directories are invisible in aggregate.
+
+**Adopting waivers blocks nothing.** A corpus with no `qc_waivers.tsv` is
+untouched: same findings, same severities, same exit code. Waivers are opt-in
+per corpus and only ever move a finding *out* of HARD, so merging the
+mechanism cannot turn an existing pull request red.
 
 **Why this rather than a smarter rule.** The founding case is V129: POL-016
 excludes source-ungrammatical examples at intake, so a `*` surviving into a

@@ -116,25 +116,32 @@ def test_no_waiver_file_leaves_findings_alone(tmp_path):
     assert stale == []
 
 
-# --- the anti-drift rule ----------------------------------------------------
+# --- spent waivers are reported, never fatal --------------------------------
 
-def test_waiver_matching_nothing_is_stale(tmp_path):
+def test_spent_waiver_is_reported_but_does_not_fail(tmp_path):
+    """Fixing a finding must not cost a second edit to the waiver file.
+
+    The risk this mechanism guards against is a *new* HARD finding, not a
+    disappearing one (maintainer, 2026-09-09), so a waiver that matches
+    nothing is surfaced for ``waivers.py prune`` and nothing more.
+    """
     corpus = _corpus(tmp_path, [(WAIVABLE, "Lang/d.xml", "S=99", "outlived it")])
     out, stale = apply_waivers([_hard(corpus, location="S=1")])
-    assert [f.severity for f in out] == [Severity.HARD]
-    assert len(stale) == 1
-    assert stale[0].location == "S=99"
+    assert [f.severity for f in out] == [Severity.HARD]  # unrelated, still hard
+    assert [w.location for w in stale] == ["S=99"]
 
 
-def test_stale_waiver_is_detected_even_when_the_run_is_otherwise_clean(tmp_path):
-    """The case that matters: nothing else is wrong, so nothing else fails."""
-    corpus = _corpus(tmp_path, [(WAIVABLE, "Lang/d.xml", "S=1", "outlived it")])
+def test_report_does_not_fail_on_a_spent_waiver(tmp_path, capsys):
+    """The whole run is clean apart from a leftover row: it must pass."""
+    from QC.validation._report import report_findings
+
+    corpus = _corpus(tmp_path, [(WAIVABLE, "Lang/d.xml", "S=1", "spent")])
     clean = Finding(
         rule_id="V999", severity=Severity.SOFT, message="soft",
         path=corpus / "XML" / "Lang" / "d.xml", location="S=1",
     )
-    _, stale = apply_waivers([clean])
-    assert len(stale) == 1
+    has_hard = report_findings([clean], tmp_path / "out.csv", file_count=1)
+    assert has_hard is False
 
 
 # --- refusals ---------------------------------------------------------------
@@ -261,6 +268,37 @@ def test_propose_is_idempotent(tmp_path):
     proc = _run_cli("propose", "--csv", str(csv_path))
     assert proc.returncode == 0, proc.stderr
     assert waiver_path(corpus).read_text(encoding="utf-8") == first
+
+
+def test_prune_drops_a_spent_waiver(tmp_path):
+    corpus = _corpus(tmp_path, [
+        (WAIVABLE, "Lang/d.xml", "S=1", "still fires"),
+        (WAIVABLE, "Lang/d.xml", "S=99", "fixed, now spent"),
+    ])
+    xml = corpus / "XML" / "Lang" / "d.xml"
+    csv_path = _findings_csv(tmp_path / "f.csv", [
+        {"file": str(xml), "severity": "WAIVED", "rule_id": WAIVABLE,
+         "location": "S=1", "count": "1", "message": "m"},
+    ])
+    proc = _run_cli("prune", "--csv", str(csv_path))
+    assert proc.returncode == 0, proc.stderr
+    remaining = load_waivers(corpus)
+    assert [w.location for w in remaining] == ["S=1"]
+
+
+def test_prune_leaves_waivers_for_files_the_run_never_examined(tmp_path):
+    """A language-scoped run must not delete another language's waivers."""
+    corpus = _corpus(tmp_path, [(WAIVABLE, "Other/x.xml", "S=1", "untouched")])
+    (corpus / "XML" / "Other").mkdir()
+    (corpus / "XML" / "Other" / "x.xml").write_text("<TEXT/>", encoding="utf-8")
+    xml = corpus / "XML" / "Lang" / "d.xml"
+    csv_path = _findings_csv(tmp_path / "f.csv", [
+        {"file": str(xml), "severity": "SOFT", "rule_id": "V999",
+         "location": "S=1", "count": "1", "message": "m"},
+    ])
+    proc = _run_cli("prune", "--csv", str(csv_path))
+    assert proc.returncode == 0, proc.stderr
+    assert [w.file for w in load_waivers(corpus)] == ["Other/x.xml"]
 
 
 def test_report_lists_the_banks_waivers(tmp_path):

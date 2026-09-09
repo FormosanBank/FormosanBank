@@ -51,19 +51,23 @@ def report_findings(
       header line. Files-with-issues is derived from the findings.
     - ``out``: stream to print the summary to (default stderr).
 
-    Returns True if the run should fail: any HARD finding survived, or a
-    corpus's waiver file lists a waiver that matched nothing (the anti-drift
-    rule -- see QC/validation/_waivers.py).
+    Returns True if any HARD finding survived.
 
     HARD findings dispositioned in a corpus's CodeAndDocs/qc_waivers.tsv are
     rewritten to WAIVED before the summary is built, so they stay in the CSV
     and in the printed summary but stop failing the build.
+
+    A waiver that matches nothing does NOT fail: fixing a finding must never
+    cost you a second edit to the waiver file (maintainer, 2026-09-09). The
+    risk this mechanism guards against is a *new* HARD finding, not a
+    disappearing one. Clean the leftover rows when convenient with
+    ``waivers.py prune``.
     """
     if titles is None:
         titles = RULE_TITLES
 
     try:
-        findings, stale_waivers = apply_waivers(findings)
+        findings, _stale = apply_waivers(findings)
     except WaiverError as exc:
         # A malformed or unjustified waiver file is a failure of the run, not
         # a crash: print it the way a finding is printed and exit non-zero.
@@ -81,7 +85,7 @@ def report_findings(
     # — CI artifact uploads, the run-qc-pipeline skill — always has a file.
     write_findings_csv(csv_path, findings, titles)
 
-    if not findings and not stale_waivers:
+    if not findings:
         print("No issues found.", file=out)
         return False
 
@@ -99,17 +103,4 @@ def report_findings(
 
     print(f"Details: {csv_path}", file=out)
 
-    if stale_waivers:
-        # Anti-drift (QC/validation/_waivers.py): a waiver that matches no
-        # current finding has outlived what it dispositioned, and would
-        # silently cover whatever turns up at that key next. Fail, and name
-        # the rows to delete.
-        print(
-            f"\nSTALE WAIVERS — {len(stale_waivers)}: these match no current "
-            "finding. The finding was fixed or moved; delete the row.",
-            file=out,
-        )
-        for waiver in stale_waivers:
-            print(f"  {waiver.source}:{waiver.line}: {waiver.describe()}", file=out)
-
-    return bool(counts[Severity.HARD]) or bool(stale_waivers)
+    return bool(counts[Severity.HARD])
