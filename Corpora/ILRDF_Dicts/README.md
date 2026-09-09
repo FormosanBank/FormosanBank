@@ -1,207 +1,165 @@
-# ILRDF Data
-
-## License and AI Use
-
-This corpus is subject to its source license and the central FormosanBank terms in [LICENSE.md](../../LICENSE.md) and [AI-USE-ADDENDUM.md](../../AI-USE-ADDENDUM.md). Commercial AI Use is prohibited without prior written permission.
-
-
-This repository contains code and data for processing and structuring Formosan language dictionaries provided by the Indigenous Languages Research and Development Foundation ([ILRDF](https://www.ilrdf.org.tw/)). The project includes handling dictionary data, downloading audio for words, and organizing the data into structured XML format.
-
-## Project Structure
-
-- **dicts**: Contains PDF dictionaries for 16 Formosan languages provided by the ILRDF.
-
-- **.PickleScrapes**: Stores results from API calls on the words within the dictionaries. Each API call returns the definition, example sentences, and audio links.
-
-- **words_list**: Contains pickled lists of words extracted from the `dicts` PDFs. These lists were processed using `scrape.py`.
-
-- **Final_XML**: Directory containing the processed XML data, similar to the ePark repository. This data is structured into XML format using `xmlify.py`.
-
-- **audioDL.py**: Script used to download audio files linked to words in the dictionaries.
-
-- **scrape.py**: Script to process words from the dictionaries and store them in `words_list`. It them make the API calls to retrieve definitions, example sentences, and audio links.
-
-- **xmlify.py**: Script to convert data into XML format, structured in the FormosanBank XML format.
-
-- **requirements.txt**: Lists the Python libraries required to run the scripts in this repository.
-
-## Installation
-
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/yourusername/ILRDF.git
-   cd ILRDF
-   ```
-
-2. Set up a virtual environment (optional but recommended):
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate
-   ```
-
-3. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-## Usage
-
-1. **Scrape Definitions and Examples**:
-   Run `scrape.py` to retrieve lists of words from the pdf dictionaries then make the API calls to retrieve definitions, example sentences, and audio links via API calls, and store results in `.PickleScrapes`.
-
-   ```bash
-   python scrape.py
-   ```
-
-2. **Convert Data to XML**:
-   Run `xmlify.py` to process the scraped data and convert it into structured XML format saved in the `Final_XML` directory.
-
-   ```bash
-   python xmlify.py
-   ```
-
-   Examples with an empty source-language or Chinese sentence are skipped. Their numerical sequence slots remain reserved so later sentence IDs stay stable.
-
-3. **Download Audio**:
-   Run `audioDL.py` to download audio files linked to words in the dictionaries. The audio will be stored in the audio directory in the folder of the language it belongs to in Final_XML.
-
-   ```bash
-   python audioDL.py
-   ```
-
-3. **Download Audio**:
-   Run `audioDL.py` to download audio files linked to words in the dictionaries. The audio will be stored in the audio directory in the folder of the language it belongs to in Final_XML.
-
-   ```bash
-   python audioDL.py
-   ```
-
-4. **Clean XML and standardize punctuation**
-
-   ```bash
-   python path/to/FormosanBankRepo/QC/cleaning/clean_xml.py --corpora_path path/to/repo/Final_XML
-   ```
-
-**Outputs**
-   - This will update the XML files.
-
-**Notes**
-   - This removes empty XML elements
-   - It also standardizes orthography (more-or-less), though a lot of this was done in previous steps (not documented above)
-   - Unicode is flattened so that diacritics are merged with the characters they modify
-   - HTML escape codes are replaced with the corresponding characters
-
-5. **Standardize orthography**
-
-   ```bash
-   python path/to/FormosanBankRepo/QC/utilities/add_original.py --corpora_path path/to/repo/Final_XML
-   ```
-
-**Outputs**
-   - Updates XML files
-
-**Notes**
-   - Adds kindOf="original" attribute to all <FORM> elements. (This should normally be done in an earlier step, but wasn't for this corpus.)
-
-6. **Standardize orthography**
-
-   ```bash
-   python path/to/FormosanBankRepo/QC/utilities/standardize.py --corpora_path path/to/repo/Final_XML
-   ```
-
-**Outputs**
-   - Updates XML files
-
-**Notes**
-   - Creates a copy of every <FORM> element with kindOf="standard" attribute
-   - All u's are converted to o's.
-
-## Code Breakdown
-
-This document provides an in-depth code breakdown for three main Python scripts in the ILRDF project: **scrape.py**, **xmlify.py**, and **audioDL.py**.
-
----
-
-## Script 1: scrape.py
-
-This script extracts words from PDF dictionaries, makes API requests to retrieve definitions and example sentences, and organizes the results in pickle files.
-
-### Functions
-
-1. **getWords(lang)**: Extracts words from a PDF dictionary for a specified language.
-   - Reads the PDF content page by page and extracts text containing a specific symbol (★) to identify dictionary entries.
-   - Returns a list of words after filtering and processing the text.
-
-2. **getData(lang, qw, TRIBES, URL)**: Sends an API request to retrieve definitions and example sentences for a given word.
-   - Constructs a payload with language and word parameters, then sends a POST request to the specified API.
-   - Returns the data received or logs errors if the request fails.
-
-3. **processWords(lang, words, TRIBES, URL)**: Processes a list of words by making concurrent API requests.
-   - Uses a ThreadPoolExecutor to handle multiple requests in parallel.
-   - Organizes successful responses and failed queries into separate lists.
-
-4. **main()**: Main function to set up the environment, process each language, and save results.
-   - Reads or generates word lists, organizes directory structure, and initiates API requests.
-   - Saves processed data as pickles for later use.
-
----
-
-## Script 2: xmlify.py
-
-This script structures the processed data into XML format following the FormosanBank XML standard.
-
-### Functions
-
-1. **prettify(elem)**: Converts an XML element into a pretty-printed string for readability.
-
-2. **getPickles(lang)**: Loads processed data for a specified language from pickle files.
-   - Returns the data for words that succeeded and failed API requests.
-
-3. **handleHelper(sent)**: Checks if a sentence contains the required keys and extracts necessary components.
-   - Returns the sentence text, translation, and audio link if valid.
-
-4. **createElemHelp(lang, count, r)**: Creates XML elements for a sentence entry.
-   - Sets attributes for the sentence ID, original text, translation, and audio link.
-
-5. **wrapperXML(sent, root, count, seen, lang)**: Processes a sentence and adds it to the XML root if it’s not a duplicate.
-
-6. **handleExplanation(expl, root, lang, count, seen)**: Handles sentence explanations and manages single or multiple sentence entries.
-
-7. **makeLists(lang)**: Categorizes sentences based on pickle data for easier processing.
-
-8. **xmlify_main()**: Main function to generate XML files for each language.
-   - Initializes XML structure, processes sentences, and saves the XML file to the `Final_XML` directory.
-
----
-
-## Script 3: audioDL.py
-
-This script manages audio file downloads for each language, including retry mechanisms for failed downloads.
-
-### Functions
-
-1. **dlAudio(url, audioPath, dlRate, maxRetries, retryDelay)**: Downloads an audio file with a retry mechanism.
-   - Handles network issues by retrying a maximum number of times with a specified delay between attempts.
-
-2. **dlHelper(urls)**: Manages parallel downloading of multiple audio files.
-   - Uses a ThreadPoolExecutor to handle concurrent downloads, logging errors if any occur.
-
-3. **download_audios(xml_path, toDo)**: Parses XML files and initiates audio downloads for each sentence.
-   - Updates XML files with the local paths of downloaded audio files.
-
-4. **main()**: Main function to set up directories and initiate the download process for each language.
-   - Ensures necessary directories exist, then calls `download_audios` to process each language’s XML.
-
----
-
-### Key Components
-
-- **PDF Extraction**: The `scrape.py` script uses PyPDF2 to extract text from PDFs, filtering dictionary entries by a symbol (★).
-- **API Requests**: Concurrent API requests are managed in `scrape.py` to retrieve definitions, examples, and audio links.
-- **XML Conversion**: Processed data is structured into XML in `xmlify.py`, following a specific format for consistency.
-- **Audio Download**: `audioDL.py` handles downloading and updating XML files with local audio paths, utilizing retry mechanisms for robustness.
-
-
-## Output Explaination
-
-All the output will be in the Final_XML folder. in the folder, there will be a subfolder for each of the Formosan languages. Inside each of these folders, there will be an XML file for the language content and an audio folder for the audio files associated with the XML files.
+# ILRDF Dictionaries
+
+Example sentences and headword entries for all sixteen Formosan languages,
+drawn from the Council of Indigenous Peoples / Indigenous Languages Research
+and Development Foundation online dictionary,
+<https://e-dictionary.ilrdf.org.tw/>.
+
+| | Sentences | Dictionaries |
+|---|---:|---:|
+| Files | 16 | 16 |
+| `S` records | 167,241 | 139,097 |
+| Translations | 169,364 | 164,359 |
+| Audio links | 132,281 | — |
+| Alternate spellings | 1,998 | — |
+
+## Rights
+
+**License:** CC BY-NC 4.0
+**Rights source:** Indigenous Languages Research and Development Foundation, 2026-09-07; evidence: ask maintainer
+
+The ILRDF copyright statement allows quotation for research and teaching
+within a reasonable scope, with attribution, and requires permission beyond
+that. This corpus is published under those terms, with attribution to the
+Council of Indigenous Peoples and to ILRDF. See
+[CodeAndDocs/source_data/RIGHTS.md](CodeAndDocs/source_data/RIGHTS.md) and the
+source's own statement, linked there.
+
+## What is in it
+
+**Sentences** — one `<S>` per example sentence, with the source's Chinese
+translation and, where the source has one, a link to its audio recording.
+
+**Dictionaries** — `XML/<Language>/<Language>_dictionary.xml`, one `<S>` per
+headword and one `<TRANSL>` per sense. A sense's part of speech rides on that
+sense's `TRANSL/@notes`. There is no `W` or `M` tier: the source carries no
+morphological analysis.
+
+Sentence and entry ids carry the source's own GUID —
+`Amis_20a69646-e70a-f011-bd65-00155db40116`, entries with a `d` before the
+GUID. This means a published id survives our corrections to the text, which a
+hash of the text would not, and it is what lets `manual_edits.xml` work at
+all. See [CodeAndDocs/docs/id_scheme.md](CodeAndDocs/docs/id_scheme.md).
+
+## Reproducing the XML
+
+```bash
+export FORMOSANBANK_AUTHORITY=/path/to/a/clean/FormosanBank/checkout
+CodeAndDocs/make_xml.sh
+```
+
+That rebuilds everything from the committed snapshots in
+`CodeAndDocs/source_data/snapshots/` and needs no network access. The
+snapshots are the source boundary.
+
+The build uses whatever shared QC tooling the authority checkout has, and
+reports the commit and the resulting digest when it finishes.
+`CodeAndDocs/docs/reproduction.md` records the pair that produced the
+committed XML: same pin with a different digest means something has stopped
+being reproducible.
+
+**Full regeneration** re-scrapes the ILRDF API first:
+
+```bash
+CodeAndDocs/refresh_source.sh     # changes the source of truth
+CodeAndDocs/make_xml.sh
+python CodeAndDocs/generate_xml.py ledger --write   # then review the id diff
+```
+
+`refresh_source.sh` is deliberately not part of reproduction: it can add,
+remove or reword source records, and each of those moves published ids.
+
+## Changes we make to the source
+
+Everything below is reproducible from committed code and data. Nothing was
+edited by hand.
+
+### Source-fidelity repairs — 15 records
+
+The ILRDF API sometimes returns material that is not Formosan text. These are
+corrected on the **original** tier through the repo's manual-edits mechanism
+(POL-030), and every one is recorded in
+[CodeAndDocs/manual_edits.xml](CodeAndDocs/manual_edits.xml) with a readable
+changelog in [CodeAndDocs/manual_edits.md](CodeAndDocs/manual_edits.md). The
+reviewed table behind them is
+[CodeAndDocs/source_data/source_repairs.json](CodeAndDocs/source_data/source_repairs.json).
+
+| Class | Records | Example |
+|---|---:|---|
+| Part-of-speech label standing in for a word | 6 | `u數詞u paapuhla…` → `ʉnʉmʉ paapuhla…` (數詞 = "numeral") |
+| Chinese editorial text welded onto a sentence | 9 | `…mawtu zau.這` → `…mawtu zau.` |
+
+### Recovered `?` corruption — 61 tokens
+
+The source has lost the letter **ʉ** in places, leaving a literal `?`. Where
+the intended word can be confirmed, it is restored automatically; where it
+cannot, the `?` is left visible rather than guessed at.
+
+The repair applies only to Kanakanavu, Saaroa and Tsou, and only to a `?`
+with a Formosan letter on **both** sides — so a sentence-final question mark
+is never touched (1,128 of those survive). The candidate must already occur,
+intact, elsewhere in the same language's snapshot, in a sentence containing no
+`?`, so a corruption cannot vouch for itself. Of 85 candidates, **61 were
+repaired — every one to ʉ, none to ɨ** — with attestation counts from 2 to 54
+(`cim?r?` → `cimʉrʉ`, attested 54 times). **24 were left unrepaired** for want
+of an attested candidate.
+
+### Source-side alternatives
+
+The source packs alternative wordings into one record three ways: `=` ("same
+as"), parentheses, and slashes. Two different things hide under that, and they
+are treated differently:
+
+- a **spelling variant** — the same utterance written differently, `hiya` /
+  `hiyaʼ` — stays one record, with the other spellings carried as
+  `FORM[@kindOf="alternate"]`. **1,998** of these.
+- a **lexical alternative** — different wording, `tanux` /
+  `(mnaw tay tanux)` — becomes separate `<S>` records.
+
+A parenthesis is kept as written when it holds Chinese, a Japanese loanword in
+Romaji (listed in
+[CodeAndDocs/source_data/bracket_annotations.csv](CodeAndDocs/source_data/bracket_annotations.csv)),
+a proper noun or a number — those are annotation, not alternation.
+
+**2,049 records were resolved into 2,146.** Where the reading was not clear we
+delete rather than guess: a phrase alternative that shares no word with the
+term it replaces could substitute for any span, and options too dissimilar to
+be one word spelled two ways might be either. **718 fragments were dropped on
+those grounds, every one listed in
+[CodeAndDocs/docs/split_report.csv](CodeAndDocs/docs/split_report.csv).**
+
+Headword notation is left alone — `uculru(wa)` marks an optional ending, not
+an annotation — so the dictionaries are as the source wrote them.
+
+Each rewritten record keeps its source string in `FORM/@notes`, and records
+split into several take a letter suffix on their id (`…_a`, `…_b`).
+
+### Excluded content
+
+- 820 all-zero audio ids, two confirmed transcript mismatches, and both uses
+  of 40 audio ids assigned to different forms in different languages
+  ([source_data/audio_exclusions.json](CodeAndDocs/source_data/audio_exclusions.json)).
+- Three Kanakanavu lesson numbers that are not translations
+  ([source_data/source_content_exclusions.json](CodeAndDocs/source_data/source_content_exclusions.json)).
+
+## Code
+
+| | |
+|---|---|
+| `refresh_source.py` / `.sh` | re-scrape the API into snapshots |
+| `generate_xml.py` | sentences; also the `ledger` and `audit` modes |
+| `generate_dictionary.py` | headword entries |
+| `split_alternatives.py` | source-side alternatives |
+| `build_manual_edits.py` | renders `manual_edits.xml` from the repair table |
+| `make_xml.sh` | the reproduction pipeline |
+| `tests/` | 70 tests; `python -m unittest discover -s CodeAndDocs/tests` |
+
+Every derived tier is produced by the shared QC tools and by nothing else: the
+standard `FORM` comes from `standardize.py`, `PHON` from `add_phonology.py`.
+The corpus's own scripts emit source tiers only.
+
+`source_data/published_ids.csv` is a lockfile of every published id.
+`generate_xml.py audit` fails if an id disappears without being marked
+suppressed, if the XML carries an id the ledger does not declare, or if an
+id's source GUIDs change — which is how a correction that silently merged two
+records would be caught.
