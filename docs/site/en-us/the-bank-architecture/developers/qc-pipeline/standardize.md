@@ -23,7 +23,7 @@ For every `<S>` (matched as any element containing a `FORM` child) the script ca
 - If the element has no `FORM[@kindOf='original']`, it errors out and exits — there must be an original tier to standardize from.
 - If a `FORM[@kindOf='standard']` already exists, its content is replaced; otherwise a new `FORM kindOf="standard"` element is inserted. Mixed content (notably inline `<UNCLEAR/>` markers) is deep-copied so it is not dropped.
 
-In `--copy` mode that is the whole operation. In `--remove_accents` mode it additionally runs `apply_standard` with an **empty** mapping, which deletes accents but converts no letters. In TSV mode it runs `apply_standard` with the loaded map, doing ordered, global Python `str.replace` for each `(original → replacement)` pair on the standard tier's text (an empty replacement deletes the matched string).
+In `--copy` mode that is the whole operation. In `--remove_accents` mode it additionally runs `apply_standard` with an **empty** mapping, which deletes accents but converts no letters. In TSV mode it runs `apply_standard` with the loaded map, converting the standard tier's text a rule at a time (an empty replacement deletes the matched string; see [How rules are applied](#how-rules-are-applied) for why order in the TSV does not matter).
 
 ### Accents are stripped unless the orthography attests them
 
@@ -50,7 +50,37 @@ So stripping is filtered through a **keep set** — accented letters that surviv
 - Otherwise, for **multi-dialect** languages (per `dialects.csv`), the file's `TEXT/@dialect` selects the column, falling back to a `standard` column (with a warning) or erroring if neither exists.
 - For **single-dialect** languages, a `dialect`-named column is used if present, else the sole non-`original` column, else `standard`.
 
-Replacements are literal and sequential, so order in the TSV matters — review the diff.
+### How rules are applied
+
+Replacements are literal — no regex, no word boundaries — but they are **not**
+naively sequential, and **the order of rows in the TSV does not matter.**
+
+Every rule is staged through a placeholder before any replacement text is
+written back, longest source first. Two consequences, and they are the point:
+
+- **A rule's output is never matched by another rule.** `Rukai_Church`'s
+  `lh → l` used to become `lrh`, because the `l` it produced was then caught by
+  `l → lr`. It now yields `l`.
+- **A digraph beats a single letter regardless of row order.** `Puyuma_MinEd`
+  writes `ll → ll` precisely to shield `ll` from `l → lr`; that idiom used to
+  fail (`ll` came out `lrlr`) and now holds even though the short rule is listed
+  first.
+
+Generalizing the placeholder corrected **17 rules across five tables** —
+`Amis_Church` `ng`, `Puyuma_Cauquelin` `L`/`ɭ`, `Puyuma_MinEd` `ll`,
+`Rukai_Church` `lh`, and `Rukai_Li` `ə:`. None was in use by a published corpus,
+so no published data changed. `tests/utilities/test_standardize_rule_application.py`
+now asserts that every rule in every committed table produces exactly its own
+replacement.
+
+Two cell values are read specially, and they mean different things:
+
+| cell | meaning |
+| --- | --- |
+| `NA` | the letter does not occur in this dialect — **not a rule at all** |
+| empty | a rule that **deletes** the matched string (Bunun `w`, Sakizaya `x`, Wakelin `?`) |
+
+Review the diff anyway.
 
 ## Usage
 
