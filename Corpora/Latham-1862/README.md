@@ -5,11 +5,12 @@ philology* (London: Walton and Maberly, 1862), printed pp. 315-318.
 
 | Language | Source varieties | Records | XML |
 | --- | --- | ---: | --- |
-| Siraya (`fos`) | Klaproth Sideia, Vander Vlis Sideia, Sida | 38 | `XML/Siraya/latham_1862_sideia_sida.xml` |
-| Babuza-Favorlang (`bzg`, dialect `Favorlang`) | Favorlang | 24 | `XML/Babuza-Favorlang/latham_1862_favorlang.xml` |
+| Siraya (`fos`) | Klaproth Sideia, Vander Vlis Sideia, Sida | 39 | `XML/Siraya/latham_1862_sideia_sida.xml` |
+| Babuza-Favorlang (`bzg`, dialect `Favorlang`) | Favorlang | 29 | `XML/Babuza-Favorlang/latham_1862_favorlang.xml` |
 
-The 64 source cells contain 62 lexical records and two dashes (Sida Forehead
-and Beard). Eight alternate readings bring the source FORM count to 70.
+The 64 source cells contain 62 occupied cells and two dashes (Sida Forehead
+and Beard). Six cells supply two competing lexemes, producing 68 records;
+two spelling variants bring the source FORM count to 70.
 English headings supply the translations. Neighboring comparison languages
 are outside this corpus.
 
@@ -30,8 +31,13 @@ spelling change remains subject to maintainer merge review.
 [The source ledger](CodeAndDocs/source_ledger.tsv) is the reviewed manual
 transcription and build input. It preserves historical spelling, including
 `â á ó é à`, source-variety and page locators, and distinct repeated
-attestations of `rahpal` and `rima`. Comma-separated readings occupy original
-and alternate FORM elements in the same record.
+attestations of `rahpal` and `rima`. Its `reading_type` column distinguishes
+competing lexemes from spelling variants under revised POL-028 (2026-09-09).
+Favorlang Man, Hair, Mouth, Neck and Breast, and Sida Foot each have two S
+records. The first keeps its published ID; the second adds `-lex2`. The pairs
+`so`/`soa` and `totto`/`tutta` remain original FORMs with `ver="alt"` on the
+second reading. This explicitly supersedes the former all-FORM grouping and
+`kindOf="alternate"` spelling (POL-050), preserving every source reading.
 
 [The review record](CodeAndDocs/reviewer_feedback.tsv) preserves Madeline
 Boese's July 25 and 27 corrections: the omitted Sida `motaus`, corrected
@@ -89,6 +95,16 @@ findings and unavailable comparisons.
 The existing extraction wrapper calls the shared orthography API because its
 CLI omits registered Babuza-Favorlang. Neither historical variety has a
 reference inventory for automatic comparison. No shared code is changed here.
+
+## Audio
+
+This written source supplies no audio.
+
+## Notes and Issues
+
+Historical spellings have no approved standardization or pronunciation profile;
+use original FORM. English headings are lexical glosses, not sentence translations.
+Repeated `rahpal` and `rima` entries are distinct source attestations.
 
 ## Publication packaging
 

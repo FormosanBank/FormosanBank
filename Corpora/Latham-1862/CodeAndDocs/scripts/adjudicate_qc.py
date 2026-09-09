@@ -5,29 +5,24 @@ from __future__ import annotations
 
 import argparse
 import csv
-import re
+import sys
 import xml.etree.ElementTree as ET
 from collections import Counter, defaultdict
+from dataclasses import asdict
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from build_lexical_xml import included_entries, load_ledger, xml_entries  # noqa: E402
 
 EXPECTED_XML_PATHS = {
     "bzg": "Babuza-Favorlang/latham_1862_favorlang.xml",
     "fos": "Siraya/latham_1862_sideia_sida.xml",
 }
-EXPECTED_TEXT = Counter({("S_favorlang_neck", "V116", "ó"): 1})
 
 
 def read_csv(path: Path, *, delimiter: str = ",") -> list[dict[str, str]]:
     with path.open(encoding="utf-8-sig", newline="") as handle:
         return list(csv.DictReader(handle, delimiter=delimiter))
-
-
-def sentence_id(row: dict[str, str]) -> str:
-    match = re.search(r"(?:^|[,;])S=([^,;]+)", row.get("location", ""))
-    if not match:
-        raise ValueError(f"Finding has no S locator: {row}")
-    return match.group(1)
 
 
 def canonical_file(value: str, xml_root: Path) -> str:
@@ -57,16 +52,11 @@ def main() -> None:
     run_dir = args.run_dir.resolve()
     xml_root = args.xml_root.resolve()
 
-    ledger_rows = read_csv(args.source_ledger, delimiter="\t")
-    included = [row for row in ledger_rows if row["status"] == "included"]
-    if len(ledger_rows) != 64 or len(included) != 62:
-        raise SystemExit("Source ledger must contain 62 included and 2 omitted cells")
-
     source_map: dict[str, dict[str, str]] = {}
-    for row in included:
-        slug = re.sub(r"[^a-z0-9]+", "_", row["source_variety"].lower()).strip("_")
-        word = re.sub(r"[^a-z0-9]+", "_", row["english"].lower()).strip("_")
-        record_id = f"S_{slug}_{word}"
+    for entry in xml_entries(included_entries(load_ledger(args.source_ledger))):
+        row = {key: str(value) for key, value in asdict(entry).items()}
+        row["alternate_forms"] = " | ".join(entry.alternate_forms)
+        record_id = entry.s_id
         if record_id in source_map:
             raise SystemExit(f"Duplicate source-ledger XML ID: {record_id}")
         source_map[record_id] = row
@@ -139,57 +129,21 @@ def main() -> None:
         unresolved += sum((actual_xml - expected_xml).values())
         unresolved += sum((expected_xml - actual_xml).values())
 
-    actual_text: Counter[tuple[str, str, str]] = Counter()
-    text_rows = read_csv(run_dir / "validate_text_findings.csv")
-    for row in text_rows:
-        count = int(row.get("count") or 1)
-        record_id = sentence_id(row)
-        key = (record_id, row.get("rule_id", ""), row.get("character", ""))
-        actual_text[key] += count
-        source = source_map.get(record_id, {})
-        is_accepted = (
-            row.get("severity", "").upper() == "SOFT"
-            and key in EXPECTED_TEXT
-            and canonical_file(row["file"], xml_root) == xml[record_id]["file"]
-            and row.get("character", "")
-            in " ".join(str(form) for form in xml[record_id]["forms"])
-            and row.get("character", "")
-            in f"{source.get('form', '')} {source.get('alternate_forms', '')}"
-        )
-        accepted += count if is_accepted else 0
-        unresolved += 0 if is_accepted else count
-        review_rows.append(
-            {
-                "validator": "validate_text_findings.csv",
+    # With all source readings correctly tiered, neither validator has an
+    # accepted finding. Keep any new result visible and require source review.
+    for filename in ("validate_text_findings.csv", "validate_glosses_findings.csv"):
+        for row in read_csv(run_dir / filename):
+            count = int(row.get("count") or 1)
+            unresolved += count
+            review_rows.append({
+                "validator": filename,
                 "severity": row.get("severity", ""),
                 "rule_or_tier": row.get("rule_id", ""),
-                "evidence": f"{record_id};{source_locator(source)}",
+                "evidence": row.get("location", ""),
                 "finding_count": str(count),
-                "resolution": "accepted" if is_accepted else "unresolved",
-                "rationale": (
-                    "The flagged character is present in the reviewed source "
-                    "cell and exact XML FORM."
-                    if is_accepted
-                    else "Text finding did not match exact source evidence."
-                ),
-            }
-        )
-    if actual_text != EXPECTED_TEXT:
-        unresolved += sum((actual_text - EXPECTED_TEXT).values())
-        unresolved += sum((EXPECTED_TEXT - actual_text).values())
-
-    for row in read_csv(run_dir / "validate_glosses_findings.csv"):
-        count = int(row.get("count") or 1)
-        unresolved += count
-        review_rows.append({
-            "validator": "validate_glosses_findings.csv",
-            "severity": row.get("severity", ""),
-            "rule_or_tier": row.get("rule_id", ""),
-            "evidence": row.get("location", ""),
-            "finding_count": str(count),
-            "resolution": "unresolved",
-            "rationale": "No W/M analysis exists; current POL-041 yields no gloss findings.",
-        })
+                "resolution": "unresolved",
+                "rationale": "Unexpected finding; inspect the XML and source.",
+            })
 
     duplicate_review = read_csv(args.duplicate_review)
     if len(duplicate_review) != 2:

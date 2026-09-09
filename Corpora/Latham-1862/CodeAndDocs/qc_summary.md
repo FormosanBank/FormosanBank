@@ -2,7 +2,8 @@
 
 The reviewed source is Latham 1862, printed pp. 315-318, within the six-page
 excerpt identified in the README. All 64 Formosan cells are accounted for:
-62 records, eight alternate readings and two source dashes. The source ledger,
+62 occupied cells and two source dashes, yielding 68 records and two spelling
+variants under revised POL-028. The source ledger,
 independent fixtures and reviewer-feedback ledger preserve the full July 25
 and July 27 review. Current source content matches the published readings.
 
@@ -10,7 +11,10 @@ and July 27 review. Current source content matches the published readings.
 
 - 38 Siraya and 24 Babuza-Favorlang records retain their published IDs and
   source associations. A spelling correction does not create a new ID.
-- Preserve all 70 original/alternate readings and 62 English translations.
+- Six competing lexemes get separate records with stable `-lex2` IDs: Favorlang
+  Man, Hair, Mouth, Neck and Breast, and Sida Foot. Final counts are 39 Siraya
+  and 29 Babuza-Favorlang records, 70 original FORM readings and 68 translations.
+- Preserve `so`/`soa` and `totto`/`tutta` as original base and `ver="alt"`.
 - Preserve `motaus`, `chárrina`, `cháan`, `arribórribon`, and `so`/`soa`.
 - No standard FORM or PHON, under the merged August 12 ruling. No W/M or audio
   is inferred from a lexical table.
@@ -21,18 +25,19 @@ and July 27 review. Current source content matches the published readings.
 
 | Check | Expected disposition |
 | --- | --- |
-| XML V014 | 62 SOFT occurrences: deliberately absent standard FORM, 24 Babuza-Favorlang and 38 Siraya |
-| Text V116 | One SOFT occurrence: source `ó` in alternate `arribórribon`, `S_favorlang_neck` |
+| XML V014 | 68 SOFT occurrences: deliberately absent standard FORM, 29 Babuza-Favorlang and 39 Siraya |
+| Text | No findings; all historical source accents remain |
 | Glosses | No W/M analysis; current rules produce no findings |
 | Original duplicates | Two SOFT groups with distinct source provenance: `rahpal` across pp. 315/318, `rima` across Favorlang/Sida on p. 317 |
 | Orthography comparison | Unavailable: no reference for either historical variety |
 | Standard orthography/vocabulary | Inapplicable: the standard tier is deliberately absent |
 | Audio | Inapplicable: no source or XML audio |
 
-Removing the unauthorized standard copies removes eight duplicate diacritic
-warnings and restores the 62 intended V014 occurrences. No source character
-is removed. The old 62 V060 findings disappeared when the shared rule stopped
-requiring W tiers in sources without analysis (POL-041).
+The POL-028 migration removes six V150 and eight V157 findings by correcting
+representation, not by dropping readings. Six added lexical records raise
+V014 by six. The former V116 on `arribórribon` disappears because original-tier
+accents are allowed; its `ó` is unchanged. The August 12 standard/PHON omission
+and the POL-041 acceptance of an unparsed wordlist remain in force.
 
 `validate.sh` checks source consistency, regression fixtures, every applicable
 validator, registries and port readiness. Its adjudicator verifies exact

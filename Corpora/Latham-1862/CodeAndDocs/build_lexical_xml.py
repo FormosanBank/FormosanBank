@@ -6,7 +6,7 @@ from __future__ import annotations
 import csv
 import re
 from collections import Counter
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from pathlib import Path
 
 from lxml import etree
@@ -47,12 +47,15 @@ class LexicalEntry:
     english: str
     form: str
     alternate_forms: tuple[str, ...]
+    reading_type: str
     status: str
     note: str
+    reading_number: int = 1
 
     @property
     def s_id(self) -> str:
-        return f"S_{slug(self.source_variety)}_{slug(self.english)}"
+        base = f"S_{slug(self.source_variety)}_{slug(self.english)}"
+        return base if self.reading_number == 1 else f"{base}-lex{self.reading_number}"
 
     @property
     def source_attr(self) -> str:
@@ -90,6 +93,7 @@ def load_ledger(path: Path = LEDGER_PATH) -> list[LexicalEntry]:
                 for form in row["alternate_forms"].split(" | ")
                 if form
             ),
+            reading_type=row["reading_type"],
             status=row["status"],
             note=row["note"],
         )
@@ -111,6 +115,10 @@ def load_ledger(path: Path = LEDGER_PATH) -> list[LexicalEntry]:
         raise ValueError("Included source cells must have a FORM")
     if any(entry.form or entry.alternate_forms for entry in omitted):
         raise ValueError("Omitted source cells cannot contain FORM data")
+    for entry in entries:
+        allowed = {"variant", "lexeme"} if entry.alternate_forms else {""}
+        if entry.reading_type not in allowed:
+            raise ValueError(f"Unclassified source readings: {entry.s_id}")
     if len({entry.s_id for entry in included}) != len(included):
         raise ValueError("Included source cells produce duplicate XML IDs")
     if Counter(entry.printed_page for entry in entries) != Counter(
@@ -122,6 +130,20 @@ def load_ledger(path: Path = LEDGER_PATH) -> list[LexicalEntry]:
 
 def included_entries(entries: list[LexicalEntry]) -> list[LexicalEntry]:
     return [entry for entry in entries if entry.status == "included"]
+
+
+def xml_entries(entries: list[LexicalEntry]) -> list[LexicalEntry]:
+    """Split source-classified lexemes while preserving each cell's base ID."""
+    records = []
+    for entry in entries:
+        if entry.reading_type == "lexeme":
+            for number, form in enumerate((entry.form, *entry.alternate_forms), 1):
+                records.append(replace(
+                    entry, form=form, alternate_forms=(), reading_number=number,
+                ))
+        else:
+            records.append(entry)
+    return records
 
 
 def write_xml_file(
@@ -162,7 +184,8 @@ def write_xml_file(
             alternate = etree.SubElement(
                 sentence,
                 "FORM",
-                kindOf="alternate",
+                kindOf="original",
+                ver="alt",
             )
             alternate.text = alternate_form
         translation = etree.SubElement(sentence, "TRANSL")
@@ -180,13 +203,14 @@ def write_xml_file(
 
 
 def write_xml(entries: list[LexicalEntry]) -> None:
+    entries = xml_entries(entries)
     siraya_entries = [
         entry for entry in entries if entry.language_code == "fos"
     ]
     babuza_entries = [
         entry for entry in entries if entry.language_code == "bzg"
     ]
-    if len(siraya_entries) != 38 or len(babuza_entries) != 24:
+    if len(siraya_entries) != 39 or len(babuza_entries) != 29:
         raise ValueError("Unexpected language split in included source ledger")
     write_xml_file(
         XML_ROOT / "Siraya/latham_1862_sideia_sida.xml",
@@ -212,6 +236,7 @@ def write_report(entries: list[LexicalEntry]) -> None:
         "english",
         "form",
         "alternate_forms",
+        "reading_type",
         "printed_page",
         "pdf_page",
         "table",
@@ -235,6 +260,7 @@ def write_report(entries: list[LexicalEntry]) -> None:
                     "english": entry.english,
                     "form": entry.form,
                     "alternate_forms": " | ".join(entry.alternate_forms),
+                    "reading_type": entry.reading_type,
                     "printed_page": entry.printed_page,
                     "pdf_page": entry.pdf_page,
                     "table": entry.table,
@@ -244,8 +270,9 @@ def write_report(entries: list[LexicalEntry]) -> None:
 
 
 def write_summary(entries: list[LexicalEntry]) -> None:
-    by_variety = Counter(entry.source_variety for entry in entries)
-    by_language = Counter(entry.language_label for entry in entries)
+    records = xml_entries(entries)
+    by_variety = Counter(entry.source_variety for entry in records)
+    by_language = Counter(entry.language_label for entry in records)
     source_form_count = sum(
         1 + len(entry.alternate_forms) for entry in entries
     )
@@ -272,8 +299,8 @@ def write_summary(entries: list[LexicalEntry]) -> None:
         "",
         "## Counts",
         "",
-        f"- Lexical records emitted: {len(entries)}",
-        f"- Source FORM variants emitted: {source_form_count}",
+        f"- Lexical records emitted: {len(records)}",
+        f"- Source FORM readings emitted: {source_form_count}",
         f"- Source varieties represented: {len(by_variety)}",
         "",
         "## Counts By Source Variety",
@@ -286,10 +313,10 @@ def write_summary(entries: list[LexicalEntry]) -> None:
         "",
         "## Representation Decisions",
         "",
-        "- Every source cell is one lexical `S` record.",
-        "- Comma-separated source variants are separate `FORM` elements;",
-        "  punctuation is not embedded in a FORM value.",
-        "- Historical spelling is preserved in original and alternate FORM.",
+        "- Six cells contain competing lexemes, split into separate `S` records",
+        "  under revised POL-028; added records use the source ID plus `-lex2`.",
+        "- Two spelling pairs stay together as original FORM plus `ver=\"alt\"`.",
+        "- Historical spelling and all source readings are preserved.",
         "  No standard tier is generated under the corpus's August 12 ruling.",
         "- No W/M segmentation or PHON is inferred from this comparative table.",
         "- Sideia/Sida maps to Siraya (`fos`); Favorlang maps to Babuza-Favorlang (`bzg`).",
@@ -305,7 +332,7 @@ def main() -> None:
     write_summary(entries)
     print("Wrote XML/Siraya/latham_1862_sideia_sida.xml")
     print("Wrote XML/Babuza-Favorlang/latham_1862_favorlang.xml")
-    print(f"Records: {len(entries)}; source FORM variants: 70")
+    print(f"Records: {len(xml_entries(entries))}; source FORM readings: 70")
 
 
 if __name__ == "__main__":

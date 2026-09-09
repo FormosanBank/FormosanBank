@@ -28,9 +28,9 @@ visually checked and contain no target Formosan rows.
 
 - The PDF is a six-page image-only excerpt; rendered pages 1–6 were
   visually reviewed.
-- Historical diacritics are preserved exactly in original and alternate
-  FORM tiers; the standard tier is deliberately absent.
-- Comma-separated variants are separate original/alternate FORM tiers.
+- Historical diacritics are preserved in original FORM; standard is absent.
+- Revised POL-028 splits six competing lexemes into separate S records
+  and marks two spelling variants with original FORM ver="alt".
 - The layout hyphen in `arribórri-` / `bon` is removed when the source
   word is reconstructed as `arribórribon`.
 - Sida Forehead and Beard are dash cells and are not emitted.

@@ -2,7 +2,10 @@
 <TEXT id="latham_1862_favorlang" citation="Latham, R. G. (1862). Elements of comparative philology. London: Walton and Maberly." BibTeX_citation="@book{latham1862comparativephilology, author = {Latham, Robert Gordon}, title = {Elements of comparative philology}, publisher = {Walton and Maberly}, address = {London}, year = {1862}}" copyright="public domain" glottocode="favo1235" dialect="Favorlang" source="Basecamp card https://app.basecamp.com/3340659/buckets/31258415/card_tables/cards/9999151808; Latham 1862 Formosan lexical tables; manual transcription; public scan: https://archive.org/details/elementsofcompar00lathrich" xml:lang="bzg">
   <S id="S_favorlang_man" source="Latham 1862 printed p. 316; PDF p. 3; Gabelentz lexical table; source variety: Favorlang; English gloss: Man">
     <FORM kindOf="original">bahosa</FORM>
-    <FORM kindOf="alternate">sjam</FORM>
+    <TRANSL xml:lang="eng">man</TRANSL>
+  </S>
+  <S id="S_favorlang_man-lex2" source="Latham 1862 printed p. 316; PDF p. 3; Gabelentz lexical table; source variety: Favorlang; English gloss: Man">
+    <FORM kindOf="original">sjam</FORM>
     <TRANSL xml:lang="eng">man</TRANSL>
   </S>
   <S id="S_favorlang_head" source="Latham 1862 printed p. 316; PDF p. 3; Gabelentz lexical table; source variety: Favorlang; English gloss: Head">
@@ -11,7 +14,10 @@
   </S>
   <S id="S_favorlang_hair" source="Latham 1862 printed p. 316; PDF p. 3; Gabelentz lexical table; source variety: Favorlang; English gloss: Hair">
     <FORM kindOf="original">tâu</FORM>
-    <FORM kindOf="alternate">ratta</FORM>
+    <TRANSL xml:lang="eng">hair</TRANSL>
+  </S>
+  <S id="S_favorlang_hair-lex2" source="Latham 1862 printed p. 316; PDF p. 3; Gabelentz lexical table; source variety: Favorlang; English gloss: Hair">
+    <FORM kindOf="original">ratta</FORM>
     <TRANSL xml:lang="eng">hair</TRANSL>
   </S>
   <S id="S_favorlang_forehead" source="Latham 1862 printed p. 316; PDF p. 3; Gabelentz lexical table; source variety: Favorlang; English gloss: Forehead">
@@ -32,7 +38,10 @@
   </S>
   <S id="S_favorlang_mouth" source="Latham 1862 printed p. 316; PDF p. 3; Gabelentz lexical table; source variety: Favorlang; English gloss: Mouth">
     <FORM kindOf="original">ranied</FORM>
-    <FORM kindOf="alternate">sabbacha</FORM>
+    <TRANSL xml:lang="eng">mouth</TRANSL>
+  </S>
+  <S id="S_favorlang_mouth-lex2" source="Latham 1862 printed p. 316; PDF p. 3; Gabelentz lexical table; source variety: Favorlang; English gloss: Mouth">
+    <FORM kindOf="original">sabbacha</FORM>
     <TRANSL xml:lang="eng">mouth</TRANSL>
   </S>
   <S id="S_favorlang_tooth" source="Latham 1862 printed p. 317; PDF p. 4; Gabelentz lexical table; source variety: Favorlang; English gloss: Tooth">
@@ -49,12 +58,18 @@
   </S>
   <S id="S_favorlang_neck" source="Latham 1862 printed p. 317; PDF p. 4; Gabelentz lexical table; source variety: Favorlang; English gloss: Neck">
     <FORM kindOf="original">bokkir</FORM>
-    <FORM kindOf="alternate">arribórribon</FORM>
+    <TRANSL xml:lang="eng">neck</TRANSL>
+  </S>
+  <S id="S_favorlang_neck-lex2" source="Latham 1862 printed p. 317; PDF p. 4; Gabelentz lexical table; source variety: Favorlang; English gloss: Neck">
+    <FORM kindOf="original">arribórribon</FORM>
     <TRANSL xml:lang="eng">neck</TRANSL>
   </S>
   <S id="S_favorlang_breast" source="Latham 1862 printed p. 317; PDF p. 4; Gabelentz lexical table; source variety: Favorlang; English gloss: Breast">
     <FORM kindOf="original">arrabis</FORM>
-    <FORM kindOf="alternate">zido</FORM>
+    <TRANSL xml:lang="eng">breast</TRANSL>
+  </S>
+  <S id="S_favorlang_breast-lex2" source="Latham 1862 printed p. 317; PDF p. 4; Gabelentz lexical table; source variety: Favorlang; English gloss: Breast">
+    <FORM kindOf="original">zido</FORM>
     <TRANSL xml:lang="eng">breast</TRANSL>
   </S>
   <S id="S_favorlang_belly" source="Latham 1862 printed p. 317; PDF p. 4; Gabelentz lexical table; source variety: Favorlang; English gloss: Belly">
@@ -79,7 +94,7 @@
   </S>
   <S id="S_favorlang_heart" source="Latham 1862 printed p. 318; PDF p. 5; Gabelentz lexical table; source variety: Favorlang; English gloss: Heart">
     <FORM kindOf="original">totto</FORM>
-    <FORM kindOf="alternate">tutta</FORM>
+    <FORM kindOf="original" ver="alt">tutta</FORM>
     <TRANSL xml:lang="eng">heart</TRANSL>
   </S>
   <S id="S_favorlang_blood" source="Latham 1862 printed p. 318; PDF p. 5; Gabelentz lexical table; source variety: Favorlang; English gloss: Blood">

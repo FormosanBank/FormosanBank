@@ -11,7 +11,7 @@ from pathlib import Path
 
 from lxml import etree
 
-from build_lexical_xml import LexicalEntry, included_entries, load_ledger
+from build_lexical_xml import LexicalEntry, included_entries, load_ledger, xml_entries
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -67,14 +67,18 @@ def read_xml() -> dict[str, dict[str, object]]:
         root = etree.parse(path).getroot()
         for sentence in root.findall("S"):
             record_id = sentence.get("id", "")
-            originals = sentence.findall("FORM[@kindOf='original']")
+            originals = [
+                form for form in sentence.findall("FORM[@kindOf='original']")
+                if form.get("ver") is None
+            ]
             standards = sentence.findall("FORM[@kindOf='standard']")
-            alternates = sentence.findall("FORM[@kindOf='alternate']")
+            alternates = sentence.findall("FORM[@kindOf='original'][@ver='alt']")
             translations = sentence.findall("TRANSL")
             if (
                 not record_id
                 or record_id in records
                 or len(originals) != 1
+                or len(sentence.findall("FORM")) != 1 + len(alternates)
                 or standards
                 or len(translations) != 1
             ):
@@ -115,6 +119,7 @@ def audit_included(
             "english": entry.english,
             "form": entry.form,
             "alternate_forms": " | ".join(entry.alternate_forms),
+            "reading_type": entry.reading_type,
             "printed_page": entry.printed_page,
             "pdf_page": entry.pdf_page,
             "table": entry.table,
@@ -125,22 +130,27 @@ def audit_included(
                 issues.append(
                     f"report {field} mismatch: {report_row.get(field)!r}"
                 )
-    if xml_row is None:
-        issues.append("missing XML S")
-    else:
+    readings = xml_entries([entry])
+    observed = []
+    for reading in readings:
+        record = xml.get(reading.s_id)
+        if record is None:
+            issues.append(f"missing XML S: {reading.s_id}")
+            continue
+        observed.extend((record["original"], *record["alternates"]))
         expected_xml = {
             "xml_path": EXPECTED_XML_PATHS[entry.language_code],
-            "original": entry.form,
-            "alternates": entry.alternate_forms,
+            "original": reading.form,
+            "alternates": reading.alternate_forms,
             "translation": entry.english.lower(),
             "translation_language": "eng",
             "source": entry.source_attr,
             "has_inferred_tiers": False,
         }
         for field, expected in expected_xml.items():
-            if xml_row.get(field) != expected:
+            if record.get(field) != expected:
                 issues.append(
-                    f"XML {field} mismatch: {xml_row.get(field)!r}"
+                    f"XML {reading.s_id} {field} mismatch: {record.get(field)!r}"
                 )
     return {
         "printed_page": entry.printed_page,
@@ -150,10 +160,10 @@ def audit_included(
         "english": entry.english,
         "expected_form": entry.form,
         "expected_alternate_forms": " | ".join(entry.alternate_forms),
-        "xml_s_id": entry.s_id,
+        "xml_s_id": " | ".join(reading.s_id for reading in readings),
         "xml_form": str(xml_row.get("original", "")) if xml_row else "",
         "xml_alternate_forms": (
-            " | ".join(xml_row.get("alternates", ())) if xml_row else ""
+            " | ".join(observed[1:])
         ),
         "status": "PASS" if not issues else "FAIL",
         "note": "; ".join(issues),
@@ -220,7 +230,8 @@ def audit_rows() -> tuple[list[dict[str, str]], Counter[str]]:
                 "note": "Report row is absent from the source ledger.",
             }
         )
-    for record_id in sorted(set(xml) - expected_ids):
+    expected_xml_ids = {entry.s_id for entry in xml_entries(included)}
+    for record_id in sorted(set(xml) - expected_xml_ids):
         counts["EXTRA_XML_S"] += 1
         rows.append(
             {
@@ -285,12 +296,12 @@ def write_markdown(counts: Counter[str]) -> None:
         "",
         "## Result",
         "",
-        f"- Expected included Formosan cells: 62",
+        "- Expected included Formosan cells: 62",
         f"- Included cells matching ledger, report, and XML: {counts['PASS']}",
         "- Blank/dash Formosan cells intentionally omitted: "
         f"{counts['OMITTED_BLANK_OR_DASH']}",
         f"- Unresolved mismatches or extras: {unresolved}",
-        f"- Exact independent spot checks: 12 in `source_checks.tsv`",
+        "- Exact independent spot checks: 12 in `source_checks.tsv`",
         f"- CSV detail: `{AUDIT_CSV.relative_to(ROOT)}`",
         "",
         "## Page Decisions",
@@ -301,9 +312,9 @@ def write_markdown(counts: Counter[str]) -> None:
         "",
         "- The PDF is a six-page image-only excerpt; rendered pages 1–6 were",
         "  visually reviewed.",
-        "- Historical diacritics are preserved exactly in original and alternate",
-        "  FORM tiers; the standard tier is deliberately absent.",
-        "- Comma-separated variants are separate original/alternate FORM tiers.",
+        "- Historical diacritics are preserved in original FORM; standard is absent.",
+        "- Revised POL-028 splits six competing lexemes into separate S records",
+        "  and marks two spelling variants with original FORM ver=\"alt\".",
         "- The layout hyphen in `arribórri-` / `bon` is removed when the source",
         "  word is reconstructed as `arribórribon`.",
         "- Sida Forehead and Beard are dash cells and are not emitted.",
