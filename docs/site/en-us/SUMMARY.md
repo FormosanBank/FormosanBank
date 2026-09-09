@@ -44,6 +44,7 @@
   * [Li (2014) Conjunction in Thao](the-bank-architecture/corpora/li-conjunction-thao.md)
   * [Campbell-Favorlang](the-bank-architecture/corpora/campbell-favorlang.md)
   * [Utrecht Manuscript Word List](the-bank-architecture/corpora/utrecht-manuscript-word-list.md)
+  * [Huteson (2003) Rukai Survey](the-bank-architecture/corpora/huteson-rukai-survey.md)
   * [Wu: Amis Pa-Verbs](the-bank-architecture/corpora/wu-amis-pa-verbs.md)
 * [Developers](the-bank-architecture/developers/README.md)
   * [🤗 HuggingFace](the-bank-architecture/developers/huggingface.md)
