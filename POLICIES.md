@@ -1051,11 +1051,16 @@ the literal replacement text "NA", which was harmless only for as long as the
 NA'd letter never occurred; eight cells across two Rukai tables would have
 spliced `NA` into a word.
 
-⚠️ **The two consumers still disagree about an empty cell.**
-`validate_conversion_table.py` treats empty and `NA` alike as "no rule", so the
-six deletion rules above are not audited. Reconciling that is a separate
-question — either the validator learns the deletion reading, or deletions get
-their own notation.
+**Both consumers now read an empty cell the same way** (ruled 2026-09-09).
+`validate_conversion_table.py` used to treat empty and `NA` alike as "no rule",
+so the six rules in the bank that delete a letter were the only ones nothing
+audited. It now reports each as a `deletion`, and distinguishes the two cases
+that matter: a deletion the target orthography **cannot** write is the only
+answer available, while one it **could** have written is a real loss to review.
+The distinction found one — `Yami_Wakelin_113` deletes `?`, and Ortho113 Yami
+writes that phoneme as `'`. Deletions never block, and
+`run_conversion_table_checks.py` surfaces the reviewable ones in its
+phoneme-level section so a deletion is not invisible in aggregate.
 
 Enforced by `tests/utilities/test_standardize_rule_application.py`, which asserts
 that **every rule in every committed table produces exactly its own
