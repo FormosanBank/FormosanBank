@@ -148,6 +148,26 @@ The original corpus has a great deal of discourse coding for Sentences and Stori
 
 ***
 
+## Orthography
+
+The NTU source is written in **Ortho94**, the orthography released in ROC year 94 which Ortho113 later revised. The corpus is processed as Ortho94 throughout: the original phonemic tier is generated from Ortho94's letter-to-sound rules, and the standard tier is produced by converting 94 → 113 per language, since Ortho113 is FormosanBank's common orthography.
+
+This is a change from earlier processing, which declared the original tier to be Ortho113 and produced the standard tier by stripping accents without any letter conversion — describing the source as an orthography it was not written in.
+
+Three of the corpus's ten languages carry an empty conversion table. Bunun and Tsou need no letter conversion, their Ortho94 and Ortho113 spellings agreeing; Kanakanavu genuinely differs but cannot be converted in this direction, because Ortho113 introduced letters Ortho94 did not have. Accents are removed and capital variants derived in all cases regardless.
+
+***
+
+## Quality checks
+
+FormosanBank's validators decide whether a corpus's XML is *legal*. This corpus additionally carries a suite that measures how well it holds together as a **glossed** corpus — whether the word tier accounts for the sentence, whether every morpheme a word's form implies actually has a morpheme element, and whether the glosses sit in the right language slots. A file can be perfectly valid and still score poorly on these.
+
+Almost none of those tests can honestly reach 100%: the source contains sentences nobody segmented and words nobody glossed, and suppressing that fact would be worse than reporting it. So the recorded score is the specification — a baseline file holds what each test achieves on the corpus as published, and any rebuild is compared against it, with drops reported as regressions and rises reported so the baseline can be moved deliberately.
+
+The suite and its baseline live in the corpus's `CodeAndDocs/qa/` directory in the [FormosanBank repository](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/NTUFormosanCorpus/CodeAndDocs/qa).
+
+***
+
 ## Copyright
 
 CC BY-NC
