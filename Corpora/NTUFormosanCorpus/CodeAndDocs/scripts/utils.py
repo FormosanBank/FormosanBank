@@ -40,7 +40,29 @@ _XML10_INVALID_RE = re.compile(
 # Matches code-switching bracket markers used in the NTU corpus:
 #   <L2M  – opening tag (sometimes <L2E, <L2J, etc.)
 #   L2M>  – closing tag
-_L2M_RE = re.compile(r'<L2[A-Za-z]|L2[A-Za-z]>')
+# NTU code-switch markers. The language letter is always upper case (M
+# Mandarin, J Japanese, T Taiwanese, C Chinese) and is sometimes absent, so
+# matching it case-sensitively is what keeps a word-initial letter safe:
+# '<L2haiya' is a bare '<L2' plus the word, not '<L2h' plus 'aiya'.
+# The source writes the pair several ways, all attested:
+#   <L2Mword   wordL2M>    fully bracketed, letter after L2
+#   <L2word    wordL2>     no language letter
+#   <L2Tword   wordTL2>    closing transposed, letter before L2
+#   L2M<word   >L2M        brackets on the inside
+#   <L2M>word<L2M>         both tags fully bracketed
+# Where the language letter sits between 'L2' and a bracket it cannot be
+# confused with word material, so any case is accepted there -- the source
+# has at least one lower-case typo, '<L2JyakubaL2j>'. Where the letter abuts
+# the word it must be upper case, or a word-initial/final letter would be
+# eaten ('<L2haiya' is '<L2' + 'haiya', not '<L2h' + 'aiya').
+_L2M_RE = re.compile(
+    r'<L2[A-Za-z]?>'   # fully bracketed marker, no content: <L2M>, <L2>
+    r'|L2[A-Za-z]?>'   # closing: L2M>, L2j>, L2>
+    r'|L2[A-Za-z]?<'   # bracket-outside opening: L2M<
+    r'|<L2[A-Z]?'      # opening: <L2M, <L2J, or bare <L2
+    r'|[A-Z]L2>'       # transposed closing: ML2>, TL2>
+    r'|>L2[A-Z]?'      # bracket-outside closing: >L2M
+)
 
 # Matches infix morpheme notation: <n>, <m>, <PF.PFV>, etc.
 # Angle-bracket spans whose content is NOT an L2 code-switch marker.
