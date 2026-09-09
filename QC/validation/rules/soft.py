@@ -7,6 +7,8 @@ the CSV writer.
 
 Signature: same as HARD rules.
 """
+import difflib
+import unicodedata
 from pathlib import Path
 
 from lxml import etree
@@ -16,6 +18,19 @@ from QC.validation._finding import Finding, Severity
 
 
 _XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
+
+# POL-028 alternate-FORM thresholds. Deliberately here rather than in
+# POLICIES.md: the policy states the requirement in words so these can be
+# tuned from evidence without a re-ruling.
+_ALT_OVERLAP_RATIO = 0.6      # below this, the pair does not look related
+_ALT_SHORT_EXEMPT = 2         # shorter form <= this: ratio is meaningless
+_ALT_LENGTH_FACTOR = 2        # longer form may not exceed this * shorter
+
+
+def _fold(text: str | None) -> str:
+    """Casefold and drop combining marks, so 'tâu' compares as 'tau'."""
+    decomposed = unicodedata.normalize("NFD", (text or "").strip().lower())
+    return "".join(c for c in decomposed if not unicodedata.combining(c))
 
 
 def v010_count_s_without_form(
@@ -283,6 +298,151 @@ def v148_W_less_S_in_segmented_file(
     )]
 
 
+def v150_alternate_FORM_low_overlap(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V150 SOFT (POL-028): an alternate FORM that does not look like a
+    spelling variant of its sibling.
+
+    Two independent conditions, either of which flags:
+
+    * **overlap** — the similarity ratio against the closest non-alternate
+      sibling is below 0.6. Pairs whose *shorter* form is 2 characters or
+      fewer are exempt, because a one- or two-letter form cannot produce a
+      meaningful ratio (Wakelin's `a`/`u` scores 0.00 and is correct).
+    * **proportion** — the longer form is more than twice the shorter.
+      Catches *disproportionate* pairs specifically: on its own the overlap
+      exemption above would wave through any short form paired with a long
+      one, and a truncation or expansion is not a spelling variant however
+      it scores. It does not close every hole that exemption opens — any
+      pair with the shorter form <=2 chars and the longer at most 2x that
+      escapes both conditions regardless of overlap; those are left to
+      review by design (see POL-028).
+
+    The two conditions are asymmetric on purpose, not by oversight: the
+    overlap condition has a short-form floor (`lo > _ALT_SHORT_EXEMPT`) so
+    a 1- or 2-character pair is never judged on an unmeasurable ratio, but
+    the proportion condition has no such floor. At length 1, doubling is a
+    difference of a single extra character, so `a`/`aya` (1 vs 3) fails
+    proportion while POL-028's own worked example `a`/`u` (1 vs 1) passes
+    both. This is deliberate — proportion is about the *ratio* of lengths,
+    which is genuinely more volatile at length 1 — and is not to be
+    "fixed" by adding a floor here without a re-ruling.
+
+    SOFT, not HARD: legitimate pairs sit below the ratio and cannot be
+    separated by any threshold (`pipangn-epen`/`pipangengne-eben`, 0.57).
+    A reviewer resolves each; confirmed-fine pairs are recorded in the
+    worklist so they are not re-litigated.
+
+    Emits one Finding per offending alternate rather than aggregating: the
+    population is ~12 bank-wide, and an aggregate count tells a reviewer
+    nothing about which pair to look at.
+    """
+    findings: list[Finding] = []
+    for parent in tree.iter("S", "W", "M"):
+        forms = [child for child in parent if child.tag == "FORM"]
+        alternates = [f for f in forms if f.get("kindOf") == "alternate"]
+        bases = [f for f in forms if f.get("kindOf") != "alternate"]
+        if not alternates or not bases:
+            continue          # bare alternates are V149's business
+        for alt in alternates:
+            alt_text = (alt.text or "").strip()
+            ratio, base_text = max(
+                (
+                    (
+                        difflib.SequenceMatcher(
+                            None, _fold(alt_text), _fold(base.text),
+                            autojunk=False,
+                        ).ratio(),
+                        (base.text or "").strip(),
+                    )
+                    for base in bases
+                ),
+                key=lambda pair: pair[0],
+            )
+            lo = min(len(alt_text), len(base_text))
+            hi = max(len(alt_text), len(base_text))
+            reasons: list[str] = []
+            if ratio < _ALT_OVERLAP_RATIO and lo > _ALT_SHORT_EXEMPT:
+                reasons.append(f"overlap {ratio:.2f} < {_ALT_OVERLAP_RATIO}")
+            if hi > _ALT_LENGTH_FACTOR * lo:
+                reasons.append(
+                    f"lengths {lo} vs {hi}, more than "
+                    f"{_ALT_LENGTH_FACTOR}x apart"
+                )
+            if not reasons:
+                continue
+            p_id = parent.get("id")
+            findings.append(Finding(
+                rule_id="V150",
+                severity=Severity.SOFT,
+                message=(
+                    f"{parent.tag} id={p_id!r}: alternate {alt_text!r} does "
+                    f"not look like a spelling variant of {base_text!r} "
+                    f"({'; '.join(reasons)}) — POL-028"
+                ),
+                path=path,
+                location=f"{parent.tag}={p_id}" if p_id else parent.tag,
+                language=_tree_language(tree, path, index),
+                character="",
+            ))
+    return findings
+
+
+def v151_S_TRANSL_has_no_kindOf(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V151 SOFT: an S-level TRANSL must not carry @kindOf.
+
+    `kindOf` on a TRANSL is a gloss-level distinction. At W and M level a
+    TRANSL carries a gloss, and `kindOf` separates the source's own gloss
+    (`original`) from a standardized one (`standard`) — the axis a future
+    gloss-standardization pass will use, and the reason
+    HundredPaiwanStories' 61,493 W/M uses are correct and must not be
+    stripped. At S level a TRANSL is a free translation: there is no
+    original-vs-standard axis and the attribute carries no information.
+
+    SOFT while Glosbe's 4,157 legacy S-level attributes remain in published
+    XML. This is not about CI: `.github/workflows/xml-validation.yaml`'s
+    PR job only blocks HARD fingerprints newly introduced in files a PR
+    actually touches, and its full-corpus job runs with
+    --no-exit-on-hard, so a HARD V151 would block only PRs that themselves
+    touch Glosbe's three `_tmem.xml` files. The real cost is local and
+    tooling-wide: a HARD rule firing 4,157 times makes validate_xml.py
+    exit 1 on every local run over Glosbe (or the whole corpus) and on
+    every run-qc-pipeline invocation that includes it, and it poisons the
+    longitudinal finding baseline with 4,157 entries that never clear. It
+    is promoted to HARD by the Glosbe remediation, not here.
+
+    Aggregated per file — unlike V150, the population is in the thousands
+    and the fix is one scripted strip per file.
+    """
+    count = sum(
+        1 for s in tree.iter("S")
+        for child in s
+        if child.tag == "TRANSL" and child.get("kindOf") is not None
+    )
+    if count == 0:
+        return []
+    return [Finding(
+        rule_id="V151",
+        severity=Severity.SOFT,
+        message=(
+            f"{count} S-level TRANSL elements carry @kindOf; kindOf is a "
+            "gloss-level distinction and is meaningless on a free "
+            "translation (POL-025 amendment)"
+        ),
+        path=path,
+        count=count,
+        language=_tree_language(tree, path, index),
+        character="",
+    )]
+
+
 RULES: list = [
     v010_count_s_without_form,
     v014_count_missing_standard_form,
@@ -291,5 +451,9 @@ RULES: list = [
     v145_degenerate_all_single_M_tier,
     # POL-041 W-tier presence (2026-09-03), file-scoped
     v148_W_less_S_in_segmented_file,
+    # POL-028 alternate FORMs (2026-09-08)
+    v150_alternate_FORM_low_overlap,
+    # POL-025 S-level TRANSL @kindOf (2026-09-08)
+    v151_S_TRANSL_has_no_kindOf,
 ]
 CROSS_FILE_RULES: list = []

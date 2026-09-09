@@ -608,6 +608,49 @@ def test_copy_mode_retains_null_units_in_S_standard(tmp_path):
     assert (
         root.findtext("./S/FORM[@kindOf='standard']") == "∅-sitangah kero-∅ ∅ misa"
     )
+
+
+_RECONSTRUCTION_XML = (
+    '<TEXT id="T_RECON" citation="t" BibTeX_citation="@t{t}" copyright="t" '
+    'xml:lang="trv" dialect="unknown">'
+    '<S id="1"><FORM kindOf="original">tgbukuy *-ʔ, *-h, ma *-∅ kero-∅</FORM>'
+    "</S></TEXT>"
+)
+
+
+def test_remove_null_units_keeps_asterisked_reconstruction_labels(tmp_path):
+    """'*-∅' is a reconstruction label, not a null morpheme.
+
+    The asterisk marks a Neogrammarian reconstruction and the '∅' names the
+    reconstructed segment, so the pair is the label's content. Stripping it
+    left a bare '*' that means nothing (SEALS33 S25). A real null unit in
+    the same sentence must still go, and the reconstruction hyphen must
+    survive C012, which skips '∅'-adjacent hyphens.
+    """
+    corpus = tmp_path / "corpus"
+    work = _write_corpus_xml(corpus, "r.xml", _RECONSTRUCTION_XML)
+    proc = _run_standardize(["--remove_accents", "--corpora_path", str(corpus)])
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    root = ET.parse(work).getroot()
+    assert (
+        root.findtext("./S/FORM[@kindOf='standard']")
+        == "tgbukuy *-ʔ, *-h, ma *-∅ kero"
+    )
+
+
+def test_remove_null_units_keeps_asterisked_null_without_hyphen(tmp_path):
+    """The guard covers '*∅' as well as '*-∅'."""
+    corpus = tmp_path / "corpus"
+    xml = (
+        '<TEXT id="T_RECON2" citation="t" BibTeX_citation="@t{t}" copyright="t" '
+        'xml:lang="trv" dialect="unknown">'
+        '<S id="1"><FORM kindOf="original">*∅ ∅ x</FORM></S></TEXT>'
+    )
+    work = _write_corpus_xml(corpus, "r2.xml", xml)
+    proc = _run_standardize(["--remove_accents", "--corpora_path", str(corpus)])
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    root = ET.parse(work).getroot()
+    assert root.findtext("./S/FORM[@kindOf='standard']") == "*∅ x"
 # --- C012: hyphen handling in S-level standard FORM ---------------------------
 #
 # standardize.py applies C012 to the S-level standard FORM in all modes EXCEPT

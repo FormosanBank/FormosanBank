@@ -48,6 +48,9 @@ the validator names on its `Details:` line, never to the terminal.
 | V144 | `M_less_W_in_parsed_sentence` | SOFT | file | a morphologically parsed sentence with M-less Ws. |
 | V145 | `degenerate_all_single_M_tier` | SOFT | file | M level present but the file carries no parsing. |
 | V148 | `W_less_S_in_segmented_file` | SOFT | file | a partially word-segmented file. |
+| V149 | `alternate_FORM_requires_base_sibling` | HARD | file | a FORM[@kindOf='alternate'] must have a non-alternate FORM sibling on the same parent. |
+| V150 | `alternate_FORM_low_overlap` | SOFT | file | an alternate FORM that does not look like a spelling variant of its sibling. |
+| V151 | `S_TRANSL_has_no_kindOf` | SOFT | file | an S-level TRANSL must not carry @kindOf. |
 
 ## `validate_text.py` — text and typography
 
@@ -102,6 +105,9 @@ the validator names on its `Details:` line, never to the terminal.
 | V068 | `M_reconstructs_W` | SOFT | file | the M FORMs of a W should spell the W FORM. |
 | V069 | `null_morpheme_in_W_requires_null_M` | HARD | file | if a W's preferred FORM contains a standalone null-morpheme marker '∅' (bordered by string edges, whitespace, or segmentation '-') and the W has at least one child M, then at least one child M FORM (any kindOf) must be exactly '∅'. |
 | V070 | `gloss_code_as_FORM` | WARN | file | a W- or M-level FORM that is a bare gloss code. |
+| V153 | `gloss_pieces_match_morphemes` | SOFT | file | a word's gloss should claim as many morphemes as its form does. |
+| V154 | `gloss_script_matches_language` | SOFT | file | a gloss whose script its neighbours agree is wrong. |
+| V155 | `gloss_language_set_incomplete` | SOFT | file | a glossed word should carry every gloss language the file uses. |
 
 ## `audit_gloss_scrape.py` — scrape-vs-source audit
 
@@ -118,4 +124,4 @@ the validator names on its `Details:` line, never to the terminal.
 | G011 | `unsplit_slash_alternate` | SOFT | file | '/' in an S-original whose W tier also carries '/'. |
 | G012 | `trailing_paren_note_in_TRANSL` | SOFT | file | a trailing '(...)' in a TRANSL belongs in the notes attribute. |
 
-83 rules.
+89 rules.

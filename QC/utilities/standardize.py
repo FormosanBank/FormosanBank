@@ -272,7 +272,25 @@ def apply_standard(s_element, standard, keep=frozenset()):
 # so no dangling hyphen is left (matters where '-' is a letter: Bunun,
 # Thao). Must run BEFORE any hyphen stripping elsewhere in the pipeline,
 # while units are still recognizable.
-_NULL_UNIT_RE = re.compile(r"∅-|-∅|∅")
+#
+# A '∅' introduced by an asterisk is a *reconstruction label*, not a null
+# morpheme: in '*-∅' the asterisk marks a Neogrammarian reconstruction and
+# the '∅' names the reconstructed segment — it is the content of the label,
+# not the absence of a morpheme. Stripping it leaves a bare '*' that means
+# nothing (SEALS33 S25, 'tgbukuy *-ʔ, *-h, ma *-∅', where the third label
+# became 'ma *'). The reconstruction alternative is listed first so an
+# asterisked label is consumed whole and kept, before the plain null-unit
+# alternatives can match its '∅'.
+#
+# This is the only reading of '*' that survives into a published FORM:
+# POL-016 excludes source-ungrammatical examples at intake, so a '*' left
+# in the bank is notation, not a grammaticality judgement.
+_NULL_UNIT_RE = re.compile(r"\*-?∅|∅-|-∅|∅")
+
+
+def _drop_unless_reconstruction(match):
+    """Keep an asterisked reconstruction label; drop a real null unit."""
+    return match.group(0) if match.group(0).startswith("*") else ""
 
 
 def remove_null_units(element):
@@ -280,11 +298,12 @@ def remove_null_units(element):
 
     Called for S elements only (never W/M — the morpheme tier is where a
     null is meaningful) and never in --copy mode (pure duplication).
+    Asterisked reconstruction labels ('*-∅') are left intact.
     """
     form = element.find("FORM[@kindOf='standard']")
     if form is None or not form.text:
         return
-    stripped = _NULL_UNIT_RE.sub("", form.text)
+    stripped = _NULL_UNIT_RE.sub(_drop_unless_reconstruction, form.text)
     if stripped != form.text:
         form.text = re.sub(r" {2,}", " ", stripped).strip()
 
