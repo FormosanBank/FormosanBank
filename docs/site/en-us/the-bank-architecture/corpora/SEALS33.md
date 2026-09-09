@@ -41,7 +41,7 @@ The source audit checks every original FORM and translation. Focused tests prote
 * The Seediq file does not identify a dialect, so its dialect is reported as unknown.
 * S25 is a title containing reconstructed proto-forms (`*-ʔ, *-h, *-∅`), not an ungrammatical example. Both titles remain included under the merged corpus ruling. The Saisiyat FORM now follows the actual Saisiyat source title instead of the earlier English copy. The four source-inherent V129 HARD findings remain visible and are checked by a corpus-owned exception test.
 * The Saisiyat file uses `:` for vowel length; it is retained in PHON for Saisiyat but treated as punctuation for Seediq.
-* Published TEXT and S identities are preserved. Seediq source row 21 (Yami stress) keeps S22 and row 22 (Piuma Paiwan stress) keeps S21; their order follows the source.
+* Published TEXT identities are preserved, and so is every sentence identity except two. The Seediq file previously had source rows 21 and 22 transposed, so Seediq S21 and Saisiyat S21 named different talks. The two languages are now aligned on content: **Seediq S21 is “Word stress in Yami” (previously S22), and Seediq S22 is “Piuma Paiwan stress in directional evaluation” (previously S21).** If you have cited Seediq S21 or S22 from an earlier release, remap those two references; no other identity in either file has changed.
 * The source conference abbreviation and paragraph boundaries are retained. Mandarin punctuation follows the source with current Chinese quote normalization.
 * There is no audio or word/morpheme analysis.
 
