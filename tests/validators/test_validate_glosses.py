@@ -1506,11 +1506,26 @@ def test_V153_infix_gloss_counts_as_its_own_morpheme(tmp_path):
     assert "V153" not in proc.stdout + proc.stderr
 
 
-def test_V154_english_prose_in_the_mandarin_slot_flagged(tmp_path):
-    body = ('<S id="S1"><FORM kindOf="original">kaen</FORM>'
-            + _w("W1", "kaen", {"zho": "then"}) + "</S>")
+def test_V154_a_run_of_english_in_the_mandarin_slot_is_flagged(tmp_path):
+    """A shifted gloss column shows up as several neighbouring words all
+    carrying the wrong script -- that agreement is the evidence."""
+    body = ('<S id="S1"><FORM kindOf="original">a b c</FORM>'
+            + _w("W1", "a", {"zho": "then"})
+            + _w("W2", "b", {"zho": "say"})
+            + _w("W3", "c", {"zho": "this"}) + "</S>")
     proc = _run_validate_glosses(_write_xml(tmp_path, "a.xml", body).parent)
     assert "V154" in proc.stdout + proc.stderr
+
+
+def test_V154_one_isolated_untranslated_word_is_not_flagged(tmp_path):
+    """A single wrong-script gloss among well-formed neighbours is an
+    untranslated word, not a swapped column, and reporting it is noise."""
+    body = ('<S id="S1"><FORM kindOf="original">a b c</FORM>'
+            + _w("W1", "a", {"zho": "然後"})
+            + _w("W2", "b", {"zho": "then"})
+            + _w("W3", "c", {"zho": "這個"}) + "</S>")
+    proc = _run_validate_glosses(_write_xml(tmp_path, "a.xml", body).parent)
+    assert "V154" not in proc.stdout + proc.stderr
 
 
 def test_V154_leipzig_code_and_proper_name_are_not_wrong_script(tmp_path):
@@ -1542,3 +1557,28 @@ def test_V155_single_language_corpus_never_trips(tmp_path):
             + _w("W3", "c", {"zho": "三", "eng": "three"}) + "</S>")
     proc = _run_validate_glosses(_write_xml(tmp_path, "a.xml", body).parent)
     assert "V155" not in proc.stdout + proc.stderr
+
+
+def test_V154_leipzig_code_is_normal_in_an_english_gloss(tmp_path):
+    """A bare category code IS what an English gloss looks like, so it is never
+    evidence of a swap there -- even when the Mandarin slot says something
+    different, which it always does ('3SG.GEN' vs '3SG.屬格')."""
+    body = ('<S id="S1"><FORM kindOf="original">a b c</FORM>'
+            + _w("W1", "a", {"zho": "3SG.屬格", "eng": "3SG.GEN"})
+            + _w("W2", "b", {"zho": "1SG.主格", "eng": "1SG.NOM"})
+            + _w("W3", "c", {"zho": "遠距.主格", "eng": "DIST.NOM"}) + "</S>")
+    proc = _run_validate_glosses(_write_xml(tmp_path, "a.xml", body).parent)
+    assert "V154" not in proc.stdout + proc.stderr
+
+
+def test_V154_leipzig_code_in_the_mandarin_slot_is_suspicious(tmp_path):
+    """This corpus writes Mandarin glosses in Chinese, so a bare code there is
+    an untranslated gloss -- unless the English slot carries the very same
+    label, which makes it one shared transcription category."""
+    body = ('<S id="S1"><FORM kindOf="original">a b c d</FORM>'
+            + _w("W1", "a", {"zho": "3SG.GEN", "eng": "3SG.GEN"})   # shared label: fine
+            + _w("W2", "b", {"zho": "1SG.NOM", "eng": "one"})       # untranslated
+            + _w("W3", "c", {"zho": "DIST.NOM", "eng": "that"})
+            + _w("W4", "d", {"zho": "AUX.AF", "eng": "aux"}) + "</S>")
+    proc = _run_validate_glosses(_write_xml(tmp_path, "a.xml", body).parent)
+    assert "V154" in proc.stdout + proc.stderr

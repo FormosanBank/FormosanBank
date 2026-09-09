@@ -1002,44 +1002,78 @@ def v154_gloss_script_matches_language(
     path: Path,
     index: CorpusIndex | None,
 ) -> list[Finding]:
-    """V154 SOFT: a gloss should be written in the script its language uses.
+    """V154 SOFT (POL-036): a gloss whose script its neighbours agree is wrong.
 
-    A TRANSL declaring xml:lang='eng' whose text is Han, or 'zho' whose text
-    carries no Han at all, is nearly always a swapped column rather than an
-    unusual gloss -- the source's gloss columns are not always in a fixed order.
-    Catching it matters because every downstream language-keyed query silently
-    returns the wrong text.
+    A gloss written in the wrong script for its declared language is usually a
+    swapped gloss column, and every language-keyed query then silently returns
+    the wrong text. But a wrong-script gloss ON ITS OWN is weak evidence -- an
+    untranslated word is not the same defect -- so corroboration is required.
 
-    Aggregated per file. SOFT: a legitimate gloss can be a bare Leipzig code
-    ('NOM'), which carries no Han even in a Mandarin gloss, so this is evidence
-    rather than proof -- the rule only fires when the text has letters of the
-    WRONG script and none of the right one.
+    What counts as wrong-script, after two exemptions that carry no evidence:
+
+    * a single capitalised token is a proper name and stays in Latin script in
+      any gloss language ('Kanakanavu', "Mu'u");
+    * a bare category code ('FIL', '3SG.GEN') is written identically in any
+      language -- but ONLY when the other language slot carries that very same
+      label, which makes it one shared transcription category rather than a
+      translation. A code standing where the other language says something else
+      is an untranslated gloss, and this corpus writes its Mandarin glosses in
+      Chinese (89-99% of them carry Han), so it stands out.
+
+    Corroboration, cheapest first:
+
+    * the other language slot on the same element is also wrong-script -- a
+      cross-slot swap; or
+    * two or more of the word's neighbours in the same sentence look the same
+      way -- one odd gloss is a stray, a run of them is a shifted column.
+
+    Aggregated per file. SOFT: this is evidence, not proof.
     """
+    def odd(text: str, lang: str, siblings: dict | None = None) -> bool:
+        if not text or not lang or _PROPER_NAME.fullmatch(text):
+            return False
+        if _LEIPZIG_ONLY.fullmatch(text):
+            # In a Latin-script gloss language a bare category code IS the
+            # convention ('3SG.GEN' is what an English gloss looks like), so it
+            # is never evidence there. In a Han-script language it is: this
+            # corpus writes its Mandarin glosses in Chinese (89-99% carry Han).
+            # Even there it is uninformative when the other slot carries the
+            # very same label ('FIL'/'FIL') -- one shared transcription
+            # category, not a translation.
+            if lang not in _HAN_SCRIPT_LANGS:
+                return False
+            return not (siblings and text in siblings.values())
+        han, latin = bool(_HAN.search(text)), bool(_LATIN.search(text))
+        if lang in _HAN_SCRIPT_LANGS:
+            return latin and not han
+        return han and not latin
+
     bad = 0
     example = ""
     for parent in list(tree.iter("W")) + list(tree.iter("M")):
         for t in parent.findall("TRANSL"):
             lang, text = t.get(_XML_LANG), (t.text or "").strip()
-            if not lang or not text:
+            others = {o.get(_XML_LANG): (o.text or "").strip()
+                      for o in parent.findall("TRANSL") if o is not t}
+            if not odd(text, lang, others):
                 continue
-            han, latin = bool(_HAN.search(text)), bool(_LATIN.search(text))
-            if _PROPER_NAME.fullmatch(text):
-                # A single capitalised token is a proper name, which stays in
-                # Latin script whatever the gloss language: 'Kanakanavu',
-                # "Mu'u", 'Puratu'. Lower-case English in a Mandarin slot
-                # ('then', 'say', 'this') is what this rule is actually for.
-                continue
-            if _LEIPZIG_ONLY.fullmatch(text):
-                # 'NOM', 'DM', 'FIL', '3SG.GEN': a grammatical category code is
-                # written the same way whatever language the gloss is in, so it
-                # is no evidence of a swapped column. In NTU Stories alone these
-                # account for ~25,000 of the naive matches.
-                continue
-            if lang in _HAN_SCRIPT_LANGS and latin and not han:
-                pass
-            elif lang not in _HAN_SCRIPT_LANGS and han and not latin:
-                pass
-            else:
+            corroborated = any(odd(v, k, {lang: text}) for k, v in others.items())
+            if not corroborated:
+                sentence = parent
+                while sentence is not None and sentence.tag != "S":
+                    sentence = sentence.getparent()
+                neighbours = 0
+                if sentence is not None:
+                    for w in sentence.findall("W"):
+                        if w is parent:
+                            continue
+                        sib = {o.get(_XML_LANG): (o.text or "").strip()
+                               for o in w.findall("TRANSL")}
+                        if odd(sib.get(lang, ""), lang,
+                               {k: v for k, v in sib.items() if k != lang}):
+                            neighbours += 1
+                corroborated = neighbours >= 2
+            if not corroborated:
                 continue
             bad += 1
             if not example:
@@ -1050,9 +1084,9 @@ def v154_gloss_script_matches_language(
         rule_id="V154",
         severity=Severity.SOFT,
         message=(
-            f"V154 SOFT: {bad} glosses written in the wrong script for their "
-            f"declared language (a swapped gloss column looks exactly like "
-            f"this), e.g. {example}"
+            f"V154 SOFT: {bad} glosses whose script does not match their "
+            f"declared language and whose neighbours agree -- the signature of "
+            f"a shifted gloss column, e.g. {example}"
         ),
         path=path,
         count=bad,
