@@ -916,7 +916,12 @@ together supersede POL-023's presence requirement:
   same from outside, and neither should be papered over.
 - **A W with exactly one M asserts that the word is analyzed as
   monomorphemic.** That is a claim about the language, so it may only be
-  written where the analysis supports it.
+  written where the analysis supports it -- and for a word that carries a
+  gloss and no segmentation markers, it *is* supported: the source analysed
+  it, as one morpheme with that gloss. Recording the M there states what the
+  source says, and withholding it would erase the very distinction this
+  policy protects, in the other direction. Of the 15,703 such words in the
+  published NTU Sentences, 15,699 are glossed.
 - **M elements without `TRANSL` mean there is no confirmed morphosyntactic
   glossing for that word.** This is a legitimate, common state: the W may
   itself be unglossed, the W's TRANSL may be a *semantic* gloss rather than a
@@ -924,11 +929,12 @@ together supersede POL-023's presence requirement:
   without glossing is real data and must be preserved --
   YeddaPalemeqBlog publishes it for 3,906 glossed words.
 
-**Mirroring is therefore forbidden.** Creating an `M` that merely repeats its
-parent `W`'s FORM and TRANSLs manufactures an analysis the source does not
-contain, and destroys the distinction between "analyzed as monomorphemic" and
-"not analyzed". Any pipeline step that adds a mirror morpheme to satisfy tier
-presence is removed.
+**Mirroring an UNGLOSSED word is therefore forbidden.** Creating an `M` that
+repeats a parent `W` carrying no gloss manufactures an analysis the source does
+not contain: the M states nothing the W did not already state, and its presence
+destroys the distinction between "analyzed as monomorphemic" and "not
+analyzed". A *glossed*, unsegmented word is the opposite case and keeps its
+single M. No pipeline step may add an M merely to satisfy tier presence.
 
 **Amends POL-023.** POL-023's rule that *within a parsed sentence every W gets
 at least one M* is withdrawn: it is precisely the requirement that motivated

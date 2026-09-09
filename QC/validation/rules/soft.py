@@ -403,11 +403,19 @@ def v152_mirrored_M_tier(
 ) -> list[Finding]:
     """V152 SOFT (POL-054): an M that merely mirrors its parent W.
 
-    A single M asserts "this word is analyzed as monomorphemic". When that M
-    simply repeats the W's FORM and its TRANSLs, no such analysis was made --
-    the tier was manufactured to satisfy a presence requirement POL-054 has
-    since withdrawn. Reported so the deferred remediation sweep has a
-    worklist; SOFT because the corpora carrying these predate the ruling.
+    A single M asserts "this word is analyzed as monomorphemic". That is a real
+    claim, and for a word carrying a gloss it is the RIGHT one: the source did
+    analyse it, as one morpheme with that gloss, and recording the M states
+    what the source says.
+
+    What this rule is for is the case where there is nothing to record -- an
+    UNGLOSSED word given a single M that repeats its empty-glossed parent. That
+    M carries no information at all, and its presence erases the difference
+    between "analysed as monomorphemic" and "never analysed".
+
+    Measured on the published NTU Sentences: 15,699 mirrored words are glossed
+    (and so conforming) against 4 that are not. A rule that flagged all of them
+    would report the corpus's normal, correct shape.
     """
     mirrored = 0
     for w in tree.iter("W"):
@@ -423,6 +431,9 @@ def v152_mirrored_M_tier(
                          (t.text or "").strip())
         if sorted(map(key, _children(w, "TRANSL"))) != sorted(map(key, _children(m, "TRANSL"))):
             continue
+        if any((t.text or "").strip() for t in _children(w, "TRANSL")):
+            # Glossed: the M records a real analysis, not a manufactured one.
+            continue
         mirrored += 1
     if not mirrored:
         return []
@@ -430,9 +441,9 @@ def v152_mirrored_M_tier(
         rule_id="V152",
         severity=Severity.SOFT,
         message=(
-            f"V152 SOFT: {mirrored} W elements carry a single M that repeats "
-            f"the W's FORM and TRANSLs (POL-054: an M records an analysis that "
-            f"was made; a mirror manufactures one)"
+            f"V152 SOFT: {mirrored} UNGLOSSED W elements carry a single M that "
+            f"repeats them (POL-054: an M records an analysis that was made; "
+            f"here there is no analysis to record)"
         ),
         path=path,
         count=mirrored,
