@@ -92,10 +92,13 @@ def normalize_translation_language_metadata(
 # Null-morpheme markers attested in source data: 'ø' (U+00F8, NTU Grammar
 # Sakizaya/Kanakanavu), 'Ø' (U+00D8, legacy), and the canonical '∅'
 # (U+2205 EMPTY SET). A glyph counts as a null morpheme ONLY in morpheme
-# position — both neighbors are a string edge, whitespace, or the ASCII
-# segmentation hyphen — so the same letters inside foreign proper nouns
-# (Danish 'Grønland', 'Børn' in the Wikipedia corpora) are never touched.
-_NULL_MORPHEME_RE = re.compile(r"(^|[\s\-])[øØ∅](?=[\s\-]|$)")
+# position — both neighbors are a string edge, whitespace, or a morpheme
+# boundary marker (the ASCII segmentation hyphen or the clitic '=') — so the
+# same letters inside foreign proper nouns (Danish 'Grønland', 'Børn' in the
+# Wikipedia corpora) are never touched. '=' belongs here because a zero clitic
+# is written 'pa-to-va-vali=Ø': without it the glyph stays uncanonicalized and
+# downstream rules that test for '∅' silently miss it.
+_NULL_MORPHEME_RE = re.compile(r"(^|[\s\-=])[øØ∅](?=[\s\-=]|$)")
 
 
 def normalize_null_morphemes(text: str) -> str:

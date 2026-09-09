@@ -608,6 +608,49 @@ def test_copy_mode_retains_null_units_in_S_standard(tmp_path):
     assert (
         root.findtext("./S/FORM[@kindOf='standard']") == "∅-sitangah kero-∅ ∅ misa"
     )
+
+
+_RECONSTRUCTION_XML = (
+    '<TEXT id="T_RECON" citation="t" BibTeX_citation="@t{t}" copyright="t" '
+    'xml:lang="trv" dialect="unknown">'
+    '<S id="1"><FORM kindOf="original">tgbukuy *-ʔ, *-h, ma *-∅ kero-∅</FORM>'
+    "</S></TEXT>"
+)
+
+
+def test_remove_null_units_keeps_asterisked_reconstruction_labels(tmp_path):
+    """'*-∅' is a reconstruction label, not a null morpheme.
+
+    The asterisk marks a Neogrammarian reconstruction and the '∅' names the
+    reconstructed segment, so the pair is the label's content. Stripping it
+    left a bare '*' that means nothing (SEALS33 S25). A real null unit in
+    the same sentence must still go, and the reconstruction hyphen must
+    survive C012, which skips '∅'-adjacent hyphens.
+    """
+    corpus = tmp_path / "corpus"
+    work = _write_corpus_xml(corpus, "r.xml", _RECONSTRUCTION_XML)
+    proc = _run_standardize(["--remove_accents", "--corpora_path", str(corpus)])
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    root = ET.parse(work).getroot()
+    assert (
+        root.findtext("./S/FORM[@kindOf='standard']")
+        == "tgbukuy *-ʔ, *-h, ma *-∅ kero"
+    )
+
+
+def test_remove_null_units_keeps_asterisked_null_without_hyphen(tmp_path):
+    """The guard covers '*∅' as well as '*-∅'."""
+    corpus = tmp_path / "corpus"
+    xml = (
+        '<TEXT id="T_RECON2" citation="t" BibTeX_citation="@t{t}" copyright="t" '
+        'xml:lang="trv" dialect="unknown">'
+        '<S id="1"><FORM kindOf="original">*∅ ∅ x</FORM></S></TEXT>'
+    )
+    work = _write_corpus_xml(corpus, "r2.xml", xml)
+    proc = _run_standardize(["--remove_accents", "--corpora_path", str(corpus)])
+    assert proc.returncode == 0, f"stderr: {proc.stderr}"
+    root = ET.parse(work).getroot()
+    assert root.findtext("./S/FORM[@kindOf='standard']") == "*∅ x"
 # --- C012: hyphen handling in S-level standard FORM ---------------------------
 #
 # standardize.py applies C012 to the S-level standard FORM in all modes EXCEPT
@@ -811,3 +854,87 @@ def test_copy_mode_is_pure_duplication_no_C012(tmp_path):
     assert proc.returncode == 0, proc.stderr
     assert _std_text(root) == "mkan-ku-nhapuy"
 
+
+
+# --- POL-028 variants: the standard tier derives its own (2026-09-09) --------
+
+_VARIANT_XML = (
+    '<TEXT id="T_VAR" citation="t" BibTeX_citation="@t{t}" copyright="t" '
+    'xml:lang="tay" dialect="unknown">'
+    '<S id="1">'
+    '<FORM kindOf="original">náku-yakuyab</FORM>'
+    '<FORM kindOf="original" ver="alt">áku-yakuyab</FORM>'
+    "</S></TEXT>"
+)
+
+
+def _forms(work):
+    root = ET.parse(work).getroot()
+    return [
+        (f.get("kindOf"), f.get("ver"), f.text)
+        for f in root.find("./S").findall("FORM")
+    ]
+
+
+def test_standard_variant_is_derived_from_the_original_variant(tmp_path):
+    """A ver="alt" original gets a ver="alt" standard, transliterated.
+
+    POL-028 (revised 2026-09-09): variants exist for both tiers, and the
+    standard tier is derived (POL-002), so its variants are derived too.
+    """
+    corpus = tmp_path / "corpus"
+    work = _write_corpus_xml(corpus, "v.xml", _VARIANT_XML)
+    proc = _run_standardize(["--remove_accents", "--corpora_path", str(corpus)])
+    assert proc.returncode == 0, proc.stderr
+    assert _forms(work) == [
+        ("original", None, "náku-yakuyab"),
+        ("original", "alt", "áku-yakuyab"),
+        ("standard", None, "naku-yakuyab"),
+        ("standard", "alt", "aku-yakuyab"),
+    ]
+
+
+def test_standard_variants_are_regenerated_not_accumulated(tmp_path):
+    corpus = tmp_path / "corpus"
+    work = _write_corpus_xml(corpus, "v.xml", _VARIANT_XML)
+    for _ in range(3):
+        proc = _run_standardize(
+            ["--remove_accents", "--corpora_path", str(corpus)])
+        assert proc.returncode == 0, proc.stderr
+    kinds = [(k, v) for k, v, _ in _forms(work)]
+    assert kinds.count(("standard", "alt")) == 1
+
+
+def test_surplus_standard_variant_is_removed(tmp_path):
+    """A standard variant the original no longer has varies from nothing."""
+    xml = (
+        '<TEXT id="T_VAR2" citation="t" BibTeX_citation="@t{t}" copyright="t" '
+        'xml:lang="tay" dialect="unknown">'
+        '<S id="1">'
+        '<FORM kindOf="original">naku</FORM>'
+        '<FORM kindOf="standard">naku</FORM>'
+        '<FORM kindOf="standard" ver="alt">stale</FORM>'
+        "</S></TEXT>"
+    )
+    corpus = tmp_path / "corpus"
+    work = _write_corpus_xml(corpus, "v.xml", xml)
+    proc = _run_standardize(["--remove_accents", "--corpora_path", str(corpus)])
+    assert proc.returncode == 0, proc.stderr
+    assert ("standard", "alt") not in [(k, v) for k, v, _ in _forms(work)]
+
+
+def test_legacy_alternate_kindOf_is_left_alone(tmp_path):
+    """The deprecated spelling is migration's business, not standardize's."""
+    xml = (
+        '<TEXT id="T_VAR3" citation="t" BibTeX_citation="@t{t}" copyright="t" '
+        'xml:lang="tay" dialect="unknown">'
+        '<S id="1">'
+        '<FORM kindOf="original">naku</FORM>'
+        '<FORM kindOf="alternate">aku</FORM>'
+        "</S></TEXT>"
+    )
+    corpus = tmp_path / "corpus"
+    work = _write_corpus_xml(corpus, "v.xml", xml)
+    proc = _run_standardize(["--remove_accents", "--corpora_path", str(corpus)])
+    assert proc.returncode == 0, proc.stderr
+    assert ("alternate", None, "aku") in _forms(work)
