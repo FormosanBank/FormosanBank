@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-import json
 import csv
+import json
 from pathlib import Path
 
 import pytest
@@ -9,7 +9,8 @@ from lxml import etree
 
 from scripts.build_xml import BIBTEX, DEFAULT_SNAPSHOT, SnapshotError, build, load_snapshot
 from scripts.source_audit import AuditError, audit
-from scripts.check_hard_findings import check
+
+CORPUS_ROOT = Path(__file__).resolve().parents[2]
 
 
 def test_snapshot_has_complete_parallel_coverage() -> None:
@@ -99,32 +100,22 @@ def test_build_cannot_remove_its_source_snapshot(tmp_path: Path) -> None:
     assert snapshot.read_bytes() == before
 
 
-def test_hard_exception_rejects_another_sentence(tmp_path: Path) -> None:
-    fields = ["file", "severity", "rule_id", "location", "message", "count"]
-    rows = [
-        [name, "HARD", "V129", "S=25", f"kindOf='{tier}'", "1"]
-        for name in ("saisiyat_seals.xml", "seediq_SEALS.xml")
-        for tier in ("original", "standard")
-    ]
-    with (tmp_path / "xml.csv").open("w", newline="") as handle:
-        csv.writer(handle).writerow(fields)
+def test_waivers_cover_the_reconstruction_title_only() -> None:
+    """The S25 asterisks are waived; nothing else is.
 
-    def write_text_findings() -> None:
-        with (tmp_path / "text.csv").open("w", newline="") as handle:
-            writer = csv.writer(handle)
-            writer.writerow(fields)
-            writer.writerows(rows)
-
-    write_text_findings()
-    check(tmp_path)
-    rows[0][3] = "S=24"
-    write_text_findings()
-    with pytest.raises(ValueError, match="Unreviewed HARD"):
-        check(tmp_path)
-    rows.clear()
-    write_text_findings()
-    with pytest.raises(ValueError, match="Expected four scoped"):
-        check(tmp_path)
+    Replaces the corpus-owned check_hard_findings.py guard, folded into the
+    shared mechanism in QC/validation/_waivers.py (POL-054). The validators
+    enforce the rest: an unwaived HARD finding fails, and a waiver matching
+    no current finding fails as stale.
+    """
+    path = CORPUS_ROOT / "CodeAndDocs" / "qc_waivers.tsv"
+    with path.open(encoding="utf-8-sig", newline="") as handle:
+        rows = list(csv.DictReader(handle, delimiter="\t"))
+    assert {(r["rule_id"], r["file"], r["location"]) for r in rows} == {
+        ("V129", "Saisiyat/saisiyat_seals.xml", "S=25"),
+        ("V129", "Seediq/seediq_SEALS.xml", "S=25"),
+    }
+    assert all("reconstruction" in r["reason"].lower() for r in rows)
 
 
 def test_snapshot_validation_rejects_missing_source_row(tmp_path: Path) -> None:
