@@ -188,19 +188,22 @@ def _apply_standard_hyphens(element, lang_code, ortho_path, hard_remove,
         return
     if element.find(".//M") is None and not segmented_without_m:
         return  # C012 only on morpheme-segmented sentences (has an <M> tier)
-    form = element.find("FORM[@kindOf='standard']")
-    if form is None or not form.text:
-        return
-    new_text = _process_standard_hyphens(
-        form.text, file_path, element.get("id"), lang_code,
-        warnings, hard_remove, ortho_path,
-    )
-    if new_text != form.text:
-        form.text = new_text
-    if warnings is not None and form.text and "*" in form.text:
-        for i, ch in enumerate(form.text):
-            if ch == "*":
-                warnings.add("c022", file_path, element.get("id"), ch, i)
+    # Every standard-tier FORM: the tier's base and each ver="alt" variant
+    # (POL-028). findall returns one element for data without variants, so
+    # this is a no-op change for a corpus that has none.
+    for form in element.findall("FORM[@kindOf='standard']"):
+        if not form.text:
+            continue
+        new_text = _process_standard_hyphens(
+            form.text, file_path, element.get("id"), lang_code,
+            warnings, hard_remove, ortho_path,
+        )
+        if new_text != form.text:
+            form.text = new_text
+        if warnings is not None and form.text and "*" in form.text:
+            for i, ch in enumerate(form.text):
+                if ch == "*":
+                    warnings.add("c022", file_path, element.get("id"), ch, i)
 
 
 from QC.utilities._prettify import prettify  # noqa: E402,F401  (shared, mixed-content-safe, idempotent)
@@ -243,8 +246,16 @@ def _attested_accents(lang_code, dialect=None):
 
 
 def apply_standard(s_element, standard, keep=frozenset()):
-    form = s_element.find("FORM[@kindOf='standard']")
-    if form.text:
+    """Transliterate every standard-tier FORM on this node.
+
+    Covers the tier's base and each ver="alt" variant (POL-028): a variant is
+    a reading of the standard tier and is transliterated like one, so the pair
+    stays in the same orthography. Before variants existed this was a single
+    FORM, and findall still returns exactly one for data without them.
+    """
+    for form in s_element.findall("FORM[@kindOf='standard']"):
+        if not form.text:
+            continue
         # Protect explicitly mapped diacritic-bearing letters before the
         # general stress-mark cleanup. This lets a table distinguish a true
         # orthographic letter such as ä from an otherwise unlisted stressed á.
@@ -300,12 +311,12 @@ def remove_null_units(element):
     null is meaningful) and never in --copy mode (pure duplication).
     Asterisked reconstruction labels ('*-∅') are left intact.
     """
-    form = element.find("FORM[@kindOf='standard']")
-    if form is None or not form.text:
-        return
-    stripped = _NULL_UNIT_RE.sub(_drop_unless_reconstruction, form.text)
-    if stripped != form.text:
-        form.text = re.sub(r" {2,}", " ", stripped).strip()
+    for form in element.findall("FORM[@kindOf='standard']"):
+        if not form.text:
+            continue
+        stripped = _NULL_UNIT_RE.sub(_drop_unless_reconstruction, form.text)
+        if stripped != form.text:
+            form.text = re.sub(r" {2,}", " ", stripped).strip()
 
 
 def _copy_mixed_content(src, dst):
@@ -343,15 +354,65 @@ def create_standard(element, file_path=None):
     if standard_form is not None:
         # Standard form exists, replace its content with original's
         _copy_mixed_content(original_form, standard_form)
-        return
+    else:
+        # No standard form exists, create one
+        original_form.set("kindOf", "original")
 
-    # No standard form exists, create one
-    original_form.set("kindOf", "original")
+        new_form = ET.Element("FORM")
+        new_form.set("kindOf", "standard")
+        _copy_mixed_content(original_form, new_form)
+        # Directly after the last original-tier FORM, so the tiers stay
+        # grouped once variants exist (POL-028). For a node with a single
+        # original FORM — every node in every corpus that has not migrated —
+        # that index is 1, exactly where this always inserted.
+        last_original = element.findall("FORM[@kindOf='original']")[-1]
+        element.insert(list(element).index(last_original) + 1, new_form)
 
-    new_form = ET.Element("FORM")
-    new_form.set("kindOf", "standard")
-    _copy_mixed_content(original_form, new_form)
-    element.insert(1, new_form)
+    _sync_standard_variants(element)
+
+
+def _sync_standard_variants(element):
+    """Mirror the original tier's ver="alt" variants into the standard tier.
+
+    POL-028 (revised 2026-09-09): a variant reading is a FORM whose ``kindOf``
+    names its tier plus ``ver="alt"``, and variants exist for both tiers. The
+    standard tier is derived (POL-002), so its variants are derived too — one
+    standard variant per original variant, in the original's order, seeded
+    with the original's text for the caller's transliteration pass to rewrite.
+
+    Surplus standard variants are deleted rather than left: a variant the
+    original no longer has is a variant of nothing, and leaving it would make
+    the standard tier something other than a function of the original.
+
+    A corpus with no ``ver`` FORMs has no original variants and no standard
+    ones, so both loops are empty and the element is untouched — which is why
+    this is a no-op for every corpus that has not migrated yet.
+    """
+    originals = [
+        f for f in element.findall("FORM[@kindOf='original']")
+        if f.get("ver") is not None
+    ]
+    standards = [
+        f for f in element.findall("FORM[@kindOf='standard']")
+        if f.get("ver") is not None
+    ]
+
+    for surplus in standards[len(originals):]:
+        element.remove(surplus)
+
+    for index, source in enumerate(originals):
+        if index < len(standards):
+            target = standards[index]
+            target.set("ver", source.get("ver"))
+            _copy_mixed_content(source, target)
+            continue
+        target = ET.Element("FORM")
+        target.set("kindOf", "standard")
+        target.set("ver", source.get("ver"))
+        _copy_mixed_content(source, target)
+        # After the last standard-tier FORM, so the tier stays contiguous.
+        anchor = element.findall("FORM[@kindOf='standard']")[-1]
+        element.insert(list(element).index(anchor) + 1, target)
 
 def main(args):
     # Handle copy mode vs normal standardization mode
