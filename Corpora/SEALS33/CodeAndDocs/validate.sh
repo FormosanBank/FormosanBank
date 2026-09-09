@@ -32,10 +32,14 @@ run() {
 }
 run tests "$PY" -m pytest -c "$HERE/pyproject.toml" "$HERE/tests" -q
 run source "$PY" "$HERE/scripts/source_audit.py" --json
+# No --no-exit-on-hard: the S25 reconstruction-title findings are waived in
+# CodeAndDocs/qc_waivers.tsv (POL-054) and reported as WAIVED, so these runs
+# are genuinely clean and an unwaived HARD finding now fails here — which is
+# what the corpus-local check_hard_findings.py used to do by hand.
 run xml "$PY" "$FB/QC/validation/validate_xml.py" by_path --path "$ROOT/XML" \
-    --published-corpora "$VIEW" --no-exit-on-hard --csv "$OUTPUT_DIR/xml.csv"
+    --published-corpora "$VIEW" --csv "$OUTPUT_DIR/xml.csv"
 run text "$PY" "$FB/QC/validation/validate_text.py" by_path --path "$ROOT/XML" \
-    --no-exit-on-hard --csv "$OUTPUT_DIR/text.csv"
+    --csv "$OUTPUT_DIR/text.csv"
 run dialect "$PY" "$FB/QC/validation/validate_dialect.py" --path "$ROOT/XML"
 run duplicates "$PY" "$FB/QC/validation/validate_duplicate_sentences.py" by_path \
     --path "$ROOT/XML" --tier standard --output "$OUTPUT_DIR/duplicates.csv"
@@ -51,5 +55,4 @@ run vocabulary "$PY" "$FB/QC/validation/validate_vocabulary.py" \
 run registries "$PY" "$FB/QC/validation/validate_registries.py" \
     --repo-root "$FB" --csv "$OUTPUT_DIR/registries.csv"
 run port "$PY" "$FB/QC/validation/validate_port_readiness.py" --corpus_path "$ROOT" --repo-root "$FB"
-run hard-findings "$PY" "$HERE/scripts/check_hard_findings.py" "$OUTPUT_DIR"
 exit "$failed"
