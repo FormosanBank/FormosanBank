@@ -23,6 +23,10 @@ All 13 source pages were reviewed. The corpus covers the sentence examples on pa
 
 <!-- CORPUS STATS END -->
 
+## Notes and Issues
+
+The source segments `Pa-fli` but gives only the whole-word gloss `give`; its two morphemes therefore have no individual glosses. Source form/gloss mismatches and analytic nulls are preserved. Original and standard PHON use different vowel and lateral inventories, so the tiers do not imply strict phonemic equivalence. The source paper supplies no audio.
+
 ## Access Details
 
 XML and reproducible build inputs are in the [Amis-Pa-Verbs directory](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/Amis-Pa-Verbs). Language is Amis (`ami`), dialect `Coastal`.
