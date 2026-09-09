@@ -20,7 +20,7 @@ from xml.dom import minidom
 import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from source_repair_registry import load_story_gloss_repairs
-from utils import clean_punctuation, add_transl_element, strip_speaker_labels_from_translation, filter_punct_words, is_punct_only, join_ori_tokens, insert_xxxx_tokens, strip_l2m, strip_prosodic_markers, expand_infixes, merge_notes, source_notes_from_free, UNCLEAR_SENTINEL
+from utils import clean_punctuation, add_transl_element, strip_speaker_labels_from_translation, filter_punct_words, is_punct_only, join_ori_tokens, insert_xxxx_tokens, strip_l2m, strip_prosodic_markers, expand_infixes, merge_notes, source_notes_from_free, UNCLEAR_SENTINEL, gloss_echoes_label
 
 
 # ---------------------------------------------------------------------------
@@ -73,8 +73,14 @@ _EMPTY_GLOSS = {"", "_"}
 
 
 def has_gloss(gloss):
-    """Return whether a source gloss row carries an actual gloss."""
-    return (gloss[1] or "").strip() not in _EMPTY_GLOSS
+    """Return whether a source gloss row carries an actual gloss.
+
+    A cell that merely echoes a speaker label ('D:' glossed 'D:...') is not a
+    gloss; the row is a labelled turn, not a word.
+    """
+    if (gloss[1] or "").strip() in _EMPTY_GLOSS:
+        return False
+    return not gloss_echoes_label(gloss[0], gloss[1])
 
 
 def surface_form(gloss):

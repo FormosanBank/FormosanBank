@@ -1,1895 +1,1831 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<TEXT id="NTU_Stry_Kavalan_KavNr-map_imuy" xml:lang="ckv" source="NTU Corpus stories for Kavalan, story: KavNr-map_imuy" audio="diarized" copyright="CC BY-NC" citation="Sung, L. M., Lily, I., Hsieh, F., &amp; Lin, Z. (2008). Developing an online corpus of Formosan languages. Taiwan Journal of Linguistics, 6(2.)." BibTeX_citation="@article{sung2008developing,title={Developing an online corpus of Formosan languages.},author={Sung, Li-May and Lily, I and Hsieh, Fuhui and Lin, Zhemin and others},journal={Taiwan Journal of Linguistics},volume={6},number={2},year={2008}}" dialect="Kavalan">
-    <S id="KavNr-map_imuy_S_0">
-        <FORM kindOf="original">mzukat tibuya matiw tmalawma tu naung.</FORM>
-        <PHON kindOf="original">m[z|r]ukat tiβuja matiw tmarawma tu nauŋ</PHON>
-        <FORM kindOf="standard">mzukat tibuya matiw tmalawma tu naung.</FORM>
+<?xml version="1.0" ?>
+<TEXT id="NTU_Stry_Kavalan_KavNr-map_imuy" citation="NTU Corpus of Formosan Languages" BibTeX_citation="" copyright="CC BY-NC 4.0" xml:lang="ckv" dialect="Kavalan">
+    <S id="KavNr-map_imuy_S_1">
+        <FORM kindOf="original">mzukat tibuya, matiw, tmalawma tu, naung.</FORM>
+        <PHON kindOf="original">mzukat tiβuja matiw tmarawma tu nauŋ</PHON>
+        <FORM kindOf="standard">mzukat tibuya, matiw, tmalawma tu, naung.</FORM>
         <PHON kindOf="standard">m[z|r]ukat tiβuja matiw tmarawma tu nauŋ</PHON>
-        <TRANSL xml:lang="zho">Buya出來,穿過山.</TRANSL>
+        <TRANSL xml:lang="zho">Buya出來，穿過山。</TRANSL>
         <TRANSL xml:lang="eng">Buya went out and went across the mountain.</TRANSL>
-        <AUDIO file="KavNr-map_imuy_S0.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_imuy.mp3" start="0.0" end="5.43"/>
-        <W id="KavNr-map_imuy_S_0_W0">
+        <AUDIO file="KavNr-map_imuy_S1.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_imuy.mp3" start="0.0" end="5.43"/>
+        <W id="KavNr-map_imuy_S_1_W0">
             <FORM kindOf="original">m-zukat</FORM>
-            <PHON kindOf="original">m[z|r]ukat</PHON>
+            <PHON kindOf="original">mzukat</PHON>
             <FORM kindOf="standard">m-zukat</FORM>
             <PHON kindOf="standard">m[z|r]ukat</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦-出去</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-go.out</TRANSL>
-            <M id="KavNr-map_imuy_S_0_W0M1">
+            <M id="KavNr-map_imuy_S_1_W0M0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">主焦</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AF</TRANSL>
             </M>
-            <M id="KavNr-map_imuy_S_0_W0M2">
+            <M id="KavNr-map_imuy_S_1_W0M1">
                 <FORM kindOf="original">zukat</FORM>
-                <PHON kindOf="original">[z|r]ukat</PHON>
+                <PHON kindOf="original">zukat</PHON>
                 <FORM kindOf="standard">zukat</FORM>
                 <PHON kindOf="standard">[z|r]ukat</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">go.out</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">出去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">go.out</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_0_W1">
-            <FORM kindOf="original">ti-buya</FORM>
+        <W id="KavNr-map_imuy_S_1_W1">
+            <FORM kindOf="original">ti-buya,</FORM>
             <PHON kindOf="original">tiβuja</PHON>
-            <FORM kindOf="standard">ti-buya</FORM>
+            <FORM kindOf="standard">ti-buya,</FORM>
             <PHON kindOf="standard">tiβuja</PHON>
             <TRANSL xml:lang="zho" kindOf="original">NCM-人名</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">NCM-PN</TRANSL>
-            <M id="KavNr-map_imuy_S_0_W1M1">
+            <M id="KavNr-map_imuy_S_1_W1M0">
                 <FORM kindOf="original">ti</FORM>
                 <PHON kindOf="original">ti</PHON>
                 <FORM kindOf="standard">ti</FORM>
                 <PHON kindOf="standard">ti</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">NCM</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">NCM</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NCM</TRANSL>
             </M>
-            <M id="KavNr-map_imuy_S_0_W1M2">
-                <FORM kindOf="original">buya</FORM>
+            <M id="KavNr-map_imuy_S_1_W1M1">
+                <FORM kindOf="original">buya,</FORM>
                 <PHON kindOf="original">βuja</PHON>
-                <FORM kindOf="standard">buya</FORM>
+                <FORM kindOf="standard">buya,</FORM>
                 <PHON kindOf="standard">βuja</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">PN</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">人名</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PN</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_0_W2">
-            <FORM kindOf="original">matiw</FORM>
+        <W id="KavNr-map_imuy_S_1_W2">
+            <FORM kindOf="original">matiw,</FORM>
             <PHON kindOf="original">matiw</PHON>
-            <FORM kindOf="standard">matiw</FORM>
+            <FORM kindOf="standard">matiw,</FORM>
             <PHON kindOf="standard">matiw</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦.去</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF.go</TRANSL>
-            <M id="KavNr-map_imuy_S_0_W2M1">
-                <FORM kindOf="original">matiw</FORM>
+            <M id="KavNr-map_imuy_S_1_W2M0">
+                <FORM kindOf="original">matiw,</FORM>
                 <PHON kindOf="original">matiw</PHON>
-                <FORM kindOf="standard">matiw</FORM>
+                <FORM kindOf="standard">matiw,</FORM>
                 <PHON kindOf="standard">matiw</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">AF.go</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">主焦.去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AF.go</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_0_W3">
+        <W id="KavNr-map_imuy_S_1_W3">
             <FORM kindOf="original">t&lt;m&gt;alawma</FORM>
             <PHON kindOf="original">tmarawma</PHON>
             <FORM kindOf="standard">t&lt;m&gt;alawma</FORM>
             <PHON kindOf="standard">tmarawma</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;穿越</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;cross</TRANSL>
-            <M id="KavNr-map_imuy_S_0_W3M1">
+            <M id="KavNr-map_imuy_S_1_W3M0_0">
                 <FORM kindOf="original">-m-</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
             </M>
-            <M id="KavNr-map_imuy_S_0_W3M2">
+            <M id="KavNr-map_imuy_S_1_W3M0_1">
                 <FORM kindOf="original">t-alawma</FORM>
                 <PHON kindOf="original">tarawma</PHON>
                 <FORM kindOf="standard">t-alawma</FORM>
                 <PHON kindOf="standard">tarawma</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">cross</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">穿越</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">cross</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_0_W4">
-            <FORM kindOf="original">tu</FORM>
+        <W id="KavNr-map_imuy_S_1_W4">
+            <FORM kindOf="original">tu,</FORM>
             <PHON kindOf="original">tu</PHON>
-            <FORM kindOf="standard">tu</FORM>
+            <FORM kindOf="standard">tu,</FORM>
             <PHON kindOf="standard">tu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
-            <M id="KavNr-map_imuy_S_0_W4M1">
-                <FORM kindOf="original">tu</FORM>
+            <M id="KavNr-map_imuy_S_1_W4M0">
+                <FORM kindOf="original">tu,</FORM>
                 <PHON kindOf="original">tu</PHON>
-                <FORM kindOf="standard">tu</FORM>
+                <FORM kindOf="standard">tu,</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_0_W5">
-            <FORM kindOf="original">naung</FORM>
+        <W id="KavNr-map_imuy_S_1_W5">
+            <FORM kindOf="original">naung.</FORM>
             <PHON kindOf="original">nauŋ</PHON>
-            <FORM kindOf="standard">naung</FORM>
+            <FORM kindOf="standard">naung.</FORM>
             <PHON kindOf="standard">nauŋ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">山</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">mountain</TRANSL>
-            <M id="KavNr-map_imuy_S_0_W5M1">
-                <FORM kindOf="original">naung</FORM>
+            <M id="KavNr-map_imuy_S_1_W5M0">
+                <FORM kindOf="original">naung.</FORM>
                 <PHON kindOf="original">nauŋ</PHON>
-                <FORM kindOf="standard">naung</FORM>
+                <FORM kindOf="standard">naung.</FORM>
                 <PHON kindOf="standard">nauŋ</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">mountain</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">山</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">mountain</TRANSL>
             </M>
         </W>
     </S>
-    <S id="KavNr-map_imuy_S_1">
-        <FORM kindOf="original">utulu naungan nitalawmaan ni buya tu naung nani.</FORM>
+    <S id="KavNr-map_imuy_S_5">
+        <FORM kindOf="original">utulu, naungan nitalawmaan ni, buya tu naung nani.</FORM>
         <PHON kindOf="original">uturu nauŋan nitarawmaan ni βuja tu nauŋ nani</PHON>
-        <FORM kindOf="standard">utulu naungan nitalawmaan ni buya tu naung nani.</FORM>
+        <FORM kindOf="standard">utulu, naungan nitalawmaan ni, buya tu naung nani.</FORM>
         <PHON kindOf="standard">uturu nauŋan nitarawmaan ni βuja tu nauŋ nani</PHON>
-        <TRANSL xml:lang="zho">Buya穿過了三座山.</TRANSL>
+        <TRANSL xml:lang="zho">Buya穿過了三座山。</TRANSL>
         <TRANSL xml:lang="eng">Buya went across three mountains.</TRANSL>
-        <AUDIO file="KavNr-map_imuy_S1.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_imuy.mp3" start="5.43" end="9.78"/>
-        <W id="KavNr-map_imuy_S_1_W0">
-            <FORM kindOf="original">u-tulu</FORM>
+        <AUDIO file="KavNr-map_imuy_S5.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_imuy.mp3" start="5.43" end="9.78"/>
+        <W id="KavNr-map_imuy_S_5_W0">
+            <FORM kindOf="original">u-tulu,</FORM>
             <PHON kindOf="original">uturu</PHON>
-            <FORM kindOf="standard">u-tulu</FORM>
+            <FORM kindOf="standard">u-tulu,</FORM>
             <PHON kindOf="standard">uturu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">非人量詞-三</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">CLF.NHUM-three</TRANSL>
-            <M id="KavNr-map_imuy_S_1_W0M1">
+            <M id="KavNr-map_imuy_S_5_W0M0">
                 <FORM kindOf="original">u</FORM>
                 <PHON kindOf="original">u</PHON>
                 <FORM kindOf="standard">u</FORM>
                 <PHON kindOf="standard">u</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">CLF.NHUM</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">非人量詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">CLF.NHUM</TRANSL>
             </M>
-            <M id="KavNr-map_imuy_S_1_W0M2">
-                <FORM kindOf="original">tulu</FORM>
+            <M id="KavNr-map_imuy_S_5_W0M1">
+                <FORM kindOf="original">tulu,</FORM>
                 <PHON kindOf="original">turu</PHON>
-                <FORM kindOf="standard">tulu</FORM>
+                <FORM kindOf="standard">tulu,</FORM>
                 <PHON kindOf="standard">turu</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">three</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">三</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">three</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_1_W1">
+        <W id="KavNr-map_imuy_S_5_W1">
             <FORM kindOf="original">naung-an</FORM>
             <PHON kindOf="original">nauŋan</PHON>
             <FORM kindOf="standard">naung-an</FORM>
             <PHON kindOf="standard">nauŋan</PHON>
             <TRANSL xml:lang="zho" kindOf="original">山-AN</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">mountain-AN</TRANSL>
-            <M id="KavNr-map_imuy_S_1_W1M1">
+            <M id="KavNr-map_imuy_S_5_W1M0">
                 <FORM kindOf="original">naung</FORM>
                 <PHON kindOf="original">nauŋ</PHON>
                 <FORM kindOf="standard">naung</FORM>
                 <PHON kindOf="standard">nauŋ</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">mountain</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">山</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">mountain</TRANSL>
             </M>
-            <M id="KavNr-map_imuy_S_1_W1M2">
+            <M id="KavNr-map_imuy_S_5_W1M1">
                 <FORM kindOf="original">an</FORM>
                 <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">AN</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">AN</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AN</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_1_W2">
+        <W id="KavNr-map_imuy_S_5_W2">
             <FORM kindOf="original">ni-talawma-an</FORM>
             <PHON kindOf="original">nitarawmaan</PHON>
             <FORM kindOf="standard">ni-talawma-an</FORM>
             <PHON kindOf="standard">nitarawmaan</PHON>
             <TRANSL xml:lang="zho" kindOf="original">完成-穿越-名物化</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">PFV-cross-NMZ</TRANSL>
-            <M id="KavNr-map_imuy_S_1_W2M1">
+            <M id="KavNr-map_imuy_S_5_W2M0">
                 <FORM kindOf="original">ni</FORM>
                 <PHON kindOf="original">ni</PHON>
                 <FORM kindOf="standard">ni</FORM>
                 <PHON kindOf="standard">ni</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">完成</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
             </M>
-            <M id="KavNr-map_imuy_S_1_W2M2">
+            <M id="KavNr-map_imuy_S_5_W2M1">
                 <FORM kindOf="original">talawma</FORM>
                 <PHON kindOf="original">tarawma</PHON>
                 <FORM kindOf="standard">talawma</FORM>
                 <PHON kindOf="standard">tarawma</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">cross</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">穿越</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">cross</TRANSL>
             </M>
-            <M id="KavNr-map_imuy_S_1_W2M3">
+            <M id="KavNr-map_imuy_S_5_W2M2">
                 <FORM kindOf="original">an</FORM>
                 <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">NMZ</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">名物化</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NMZ</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_1_W3">
-            <FORM kindOf="original">ni</FORM>
+        <W id="KavNr-map_imuy_S_5_W3">
+            <FORM kindOf="original">ni,</FORM>
             <PHON kindOf="original">ni</PHON>
-            <FORM kindOf="standard">ni</FORM>
+            <FORM kindOf="standard">ni,</FORM>
             <PHON kindOf="standard">ni</PHON>
             <TRANSL xml:lang="zho" kindOf="original">屬格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">GEN</TRANSL>
-            <M id="KavNr-map_imuy_S_1_W3M1">
-                <FORM kindOf="original">ni</FORM>
+            <M id="KavNr-map_imuy_S_5_W3M0">
+                <FORM kindOf="original">ni,</FORM>
                 <PHON kindOf="original">ni</PHON>
-                <FORM kindOf="standard">ni</FORM>
+                <FORM kindOf="standard">ni,</FORM>
                 <PHON kindOf="standard">ni</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">GEN</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">屬格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">GEN</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_1_W4">
+        <W id="KavNr-map_imuy_S_5_W4">
             <FORM kindOf="original">buya</FORM>
             <PHON kindOf="original">βuja</PHON>
             <FORM kindOf="standard">buya</FORM>
             <PHON kindOf="standard">βuja</PHON>
             <TRANSL xml:lang="zho" kindOf="original">人名</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">PN</TRANSL>
-            <M id="KavNr-map_imuy_S_1_W4M1">
+            <M id="KavNr-map_imuy_S_5_W4M0">
                 <FORM kindOf="original">buya</FORM>
                 <PHON kindOf="original">βuja</PHON>
                 <FORM kindOf="standard">buya</FORM>
                 <PHON kindOf="standard">βuja</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">PN</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">人名</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PN</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_1_W5">
+        <W id="KavNr-map_imuy_S_5_W5">
             <FORM kindOf="original">tu</FORM>
             <PHON kindOf="original">tu</PHON>
             <FORM kindOf="standard">tu</FORM>
             <PHON kindOf="standard">tu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
-            <M id="KavNr-map_imuy_S_1_W5M1">
+            <M id="KavNr-map_imuy_S_5_W5M0">
                 <FORM kindOf="original">tu</FORM>
                 <PHON kindOf="original">tu</PHON>
                 <FORM kindOf="standard">tu</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_1_W6">
+        <W id="KavNr-map_imuy_S_5_W6">
             <FORM kindOf="original">naung</FORM>
             <PHON kindOf="original">nauŋ</PHON>
             <FORM kindOf="standard">naung</FORM>
             <PHON kindOf="standard">nauŋ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">山</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">mountain</TRANSL>
-            <M id="KavNr-map_imuy_S_1_W6M1">
+            <M id="KavNr-map_imuy_S_5_W6M0">
                 <FORM kindOf="original">naung</FORM>
                 <PHON kindOf="original">nauŋ</PHON>
                 <FORM kindOf="standard">naung</FORM>
                 <PHON kindOf="standard">nauŋ</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">mountain</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">山</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">mountain</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_1_W7">
-            <FORM kindOf="original">nani</FORM>
+        <W id="KavNr-map_imuy_S_5_W7">
+            <FORM kindOf="original">nani.</FORM>
             <PHON kindOf="original">nani</PHON>
-            <FORM kindOf="standard">nani</FORM>
+            <FORM kindOf="standard">nani.</FORM>
             <PHON kindOf="standard">nani</PHON>
             <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
-            <M id="KavNr-map_imuy_S_1_W7M1">
-                <FORM kindOf="original">nani</FORM>
+            <M id="KavNr-map_imuy_S_5_W7M0">
+                <FORM kindOf="original">nani.</FORM>
                 <PHON kindOf="original">nani</PHON>
-                <FORM kindOf="standard">nani</FORM>
+                <FORM kindOf="standard">nani.</FORM>
                 <PHON kindOf="standard">nani</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
             </M>
         </W>
     </S>
-    <S id="KavNr-map_imuy_S_2">
-        <FORM kindOf="original">tmayta tu usiq babuy na naung.</FORM>
+    <S id="KavNr-map_imuy_S_8">
+        <FORM kindOf="original">tmayta tu, usiq, babuy na naung.</FORM>
         <PHON kindOf="original">tmajta tu usiq βaβuj na nauŋ</PHON>
-        <FORM kindOf="standard">tmayta tu usiq babuy na naung.</FORM>
+        <FORM kindOf="standard">tmayta tu, usiq, babuy na naung.</FORM>
         <PHON kindOf="standard">tmajta tu usiq βaβuj na nauŋ</PHON>
         <TRANSL xml:lang="zho">看到一隻山豬</TRANSL>
         <TRANSL xml:lang="eng">(He) saw a boar.</TRANSL>
-        <AUDIO file="KavNr-map_imuy_S2.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_imuy.mp3" start="9.78" end="13.09"/>
-        <W id="KavNr-map_imuy_S_2_W0">
+        <AUDIO file="KavNr-map_imuy_S8.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_imuy.mp3" start="9.78" end="13.09"/>
+        <W id="KavNr-map_imuy_S_8_W0">
             <FORM kindOf="original">t&lt;m&gt;ayta</FORM>
             <PHON kindOf="original">tmajta</PHON>
             <FORM kindOf="standard">t&lt;m&gt;ayta</FORM>
             <PHON kindOf="standard">tmajta</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;看</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;see</TRANSL>
-            <M id="KavNr-map_imuy_S_2_W0M1">
+            <M id="KavNr-map_imuy_S_8_W0M0_0">
                 <FORM kindOf="original">-m-</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
             </M>
-            <M id="KavNr-map_imuy_S_2_W0M2">
+            <M id="KavNr-map_imuy_S_8_W0M0_1">
                 <FORM kindOf="original">t-ayta</FORM>
                 <PHON kindOf="original">tajta</PHON>
                 <FORM kindOf="standard">t-ayta</FORM>
                 <PHON kindOf="standard">tajta</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">see</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">看</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">see</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_2_W1">
-            <FORM kindOf="original">tu</FORM>
+        <W id="KavNr-map_imuy_S_8_W1">
+            <FORM kindOf="original">tu,</FORM>
             <PHON kindOf="original">tu</PHON>
-            <FORM kindOf="standard">tu</FORM>
+            <FORM kindOf="standard">tu,</FORM>
             <PHON kindOf="standard">tu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
-            <M id="KavNr-map_imuy_S_2_W1M1">
-                <FORM kindOf="original">tu</FORM>
+            <M id="KavNr-map_imuy_S_8_W1M0">
+                <FORM kindOf="original">tu,</FORM>
                 <PHON kindOf="original">tu</PHON>
-                <FORM kindOf="standard">tu</FORM>
+                <FORM kindOf="standard">tu,</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_2_W2">
-            <FORM kindOf="original">usiq</FORM>
+        <W id="KavNr-map_imuy_S_8_W2">
+            <FORM kindOf="original">usiq,</FORM>
             <PHON kindOf="original">usiq</PHON>
-            <FORM kindOf="standard">usiq</FORM>
+            <FORM kindOf="standard">usiq,</FORM>
             <PHON kindOf="standard">usiq</PHON>
             <TRANSL xml:lang="zho" kindOf="original">一</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">one</TRANSL>
-            <M id="KavNr-map_imuy_S_2_W2M1">
-                <FORM kindOf="original">usiq</FORM>
+            <M id="KavNr-map_imuy_S_8_W2M0">
+                <FORM kindOf="original">usiq,</FORM>
                 <PHON kindOf="original">usiq</PHON>
-                <FORM kindOf="standard">usiq</FORM>
+                <FORM kindOf="standard">usiq,</FORM>
                 <PHON kindOf="standard">usiq</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">one</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">一</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">one</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_2_W3">
+        <W id="KavNr-map_imuy_S_8_W3">
             <FORM kindOf="original">babuy</FORM>
             <PHON kindOf="original">βaβuj</PHON>
             <FORM kindOf="standard">babuy</FORM>
             <PHON kindOf="standard">βaβuj</PHON>
             <TRANSL xml:lang="zho" kindOf="original">豬</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">pig</TRANSL>
-            <M id="KavNr-map_imuy_S_2_W3M1">
+            <M id="KavNr-map_imuy_S_8_W3M0">
                 <FORM kindOf="original">babuy</FORM>
                 <PHON kindOf="original">βaβuj</PHON>
                 <FORM kindOf="standard">babuy</FORM>
                 <PHON kindOf="standard">βaβuj</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">pig</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">豬</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">pig</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_2_W4">
+        <W id="KavNr-map_imuy_S_8_W4">
             <FORM kindOf="original">na</FORM>
             <PHON kindOf="original">na</PHON>
             <FORM kindOf="standard">na</FORM>
             <PHON kindOf="standard">na</PHON>
             <TRANSL xml:lang="zho" kindOf="original">屬格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">GEN</TRANSL>
-            <M id="KavNr-map_imuy_S_2_W4M1">
+            <M id="KavNr-map_imuy_S_8_W4M0">
                 <FORM kindOf="original">na</FORM>
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">GEN</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">屬格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">GEN</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_2_W5">
-            <FORM kindOf="original">naung</FORM>
+        <W id="KavNr-map_imuy_S_8_W5">
+            <FORM kindOf="original">naung.</FORM>
             <PHON kindOf="original">nauŋ</PHON>
-            <FORM kindOf="standard">naung</FORM>
+            <FORM kindOf="standard">naung.</FORM>
             <PHON kindOf="standard">nauŋ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">山</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">mountain</TRANSL>
-            <M id="KavNr-map_imuy_S_2_W5M1">
-                <FORM kindOf="original">naung</FORM>
+            <M id="KavNr-map_imuy_S_8_W5M0">
+                <FORM kindOf="original">naung.</FORM>
                 <PHON kindOf="original">nauŋ</PHON>
-                <FORM kindOf="standard">naung</FORM>
+                <FORM kindOf="standard">naung.</FORM>
                 <PHON kindOf="standard">nauŋ</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">mountain</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">山</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">mountain</TRANSL>
             </M>
         </W>
     </S>
-    <S id="KavNr-map_imuy_S_3">
-        <FORM kindOf="original">sumnizti pasazi ta lepawanna ni utay.</FORM>
-        <PHON kindOf="original">sumni[z|r]ti pasa[z|r]i ta rəpawanna ni utaj</PHON>
-        <FORM kindOf="standard">sumnizti pasazi ta lepawanna ni utay.</FORM>
+    <S id="KavNr-map_imuy_S_11">
+        <FORM kindOf="original">sumnizti, pasazi ta, lepawanna ni, utay.</FORM>
+        <PHON kindOf="original">sumnizti pasazi ta rəpawanna ni utaj</PHON>
+        <FORM kindOf="standard">sumnizti, pasazi ta, lepawanna ni, utay.</FORM>
         <PHON kindOf="standard">sumni[z|r]ti pasa[z|r]i ta rəpawanna ni utaj</PHON>
-        <TRANSL xml:lang="zho">下來後,往Utay的家去.</TRANSL>
+        <TRANSL xml:lang="zho">下來後，往Utay的家去。</TRANSL>
         <TRANSL xml:lang="eng">(He) came down and went towards Utay's house.</TRANSL>
-        <AUDIO file="KavNr-map_imuy_S3.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_imuy.mp3" start="13.09" end="18.58"/>
-        <W id="KavNr-map_imuy_S_3_W0">
-            <FORM kindOf="original">sumniz=ti</FORM>
-            <PHON kindOf="original">sumni[z|r]ti</PHON>
-            <FORM kindOf="standard">sumniz=ti</FORM>
+        <AUDIO file="KavNr-map_imuy_S11.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_imuy.mp3" start="13.09" end="18.58"/>
+        <W id="KavNr-map_imuy_S_11_W0">
+            <FORM kindOf="original">sumniz=ti,</FORM>
+            <PHON kindOf="original">sumnizti</PHON>
+            <FORM kindOf="standard">sumniz=ti,</FORM>
             <PHON kindOf="standard">sumni[z|r]ti</PHON>
             <TRANSL xml:lang="zho" kindOf="original">下來=完成</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">come.down=PFV</TRANSL>
-            <M id="KavNr-map_imuy_S_3_W0M1">
+            <M id="KavNr-map_imuy_S_11_W0M0">
                 <FORM kindOf="original">sumniz</FORM>
-                <PHON kindOf="original">sumni[z|r]</PHON>
+                <PHON kindOf="original">sumniz</PHON>
                 <FORM kindOf="standard">sumniz</FORM>
                 <PHON kindOf="standard">sumni[z|r]</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">come.down</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">下來</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">come.down</TRANSL>
             </M>
-            <M id="KavNr-map_imuy_S_3_W0M2">
-                <FORM kindOf="original">=ti</FORM>
+            <M id="KavNr-map_imuy_S_11_W0M1">
+                <FORM kindOf="original">=ti,</FORM>
                 <PHON kindOf="original">ti</PHON>
-                <FORM kindOf="standard">=ti</FORM>
+                <FORM kindOf="standard">=ti,</FORM>
                 <PHON kindOf="standard">ti</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">完成</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_3_W1">
+        <W id="KavNr-map_imuy_S_11_W1">
             <FORM kindOf="original">pasazi</FORM>
-            <PHON kindOf="original">pasa[z|r]i</PHON>
+            <PHON kindOf="original">pasazi</PHON>
             <FORM kindOf="standard">pasazi</FORM>
             <PHON kindOf="standard">pasa[z|r]i</PHON>
             <TRANSL xml:lang="zho" kindOf="original">過來</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">toward.here</TRANSL>
-            <M id="KavNr-map_imuy_S_3_W1M1">
+            <M id="KavNr-map_imuy_S_11_W1M0">
                 <FORM kindOf="original">pasazi</FORM>
-                <PHON kindOf="original">pasa[z|r]i</PHON>
+                <PHON kindOf="original">pasazi</PHON>
                 <FORM kindOf="standard">pasazi</FORM>
                 <PHON kindOf="standard">pasa[z|r]i</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">往這裡</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">toward.here</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="original">過來</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_3_W2">
-            <FORM kindOf="original">ta-</FORM>
+        <W id="KavNr-map_imuy_S_11_W2">
+            <FORM kindOf="original">ta-,</FORM>
             <PHON kindOf="original">ta</PHON>
-            <FORM kindOf="standard">ta-</FORM>
+            <FORM kindOf="standard">ta-,</FORM>
             <PHON kindOf="standard">ta</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
-            <M id="KavNr-map_imuy_S_3_W2M1">
-                <FORM kindOf="original">ta</FORM>
-                <PHON kindOf="original">ta</PHON>
-                <FORM kindOf="standard">ta</FORM>
-                <PHON kindOf="standard">ta</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
-            </M>
+            <TRANSL xml:lang="zho" kindOf="original">處格-</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">LOC-</TRANSL>
         </W>
-        <W id="KavNr-map_imuy_S_3_W3">
+        <W id="KavNr-map_imuy_S_11_W3">
             <FORM kindOf="original">lepaw-an-na</FORM>
             <PHON kindOf="original">rəpawanna</PHON>
             <FORM kindOf="standard">lepaw-an-na</FORM>
             <PHON kindOf="standard">rəpawanna</PHON>
             <TRANSL xml:lang="zho" kindOf="original">家-處格-3SG.屬格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">house-LOC-3SG.GEN</TRANSL>
-            <M id="KavNr-map_imuy_S_3_W3M1">
+            <M id="KavNr-map_imuy_S_11_W3M0">
                 <FORM kindOf="original">lepaw</FORM>
                 <PHON kindOf="original">rəpaw</PHON>
                 <FORM kindOf="standard">lepaw</FORM>
                 <PHON kindOf="standard">rəpaw</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">house</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">家</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">house</TRANSL>
             </M>
-            <M id="KavNr-map_imuy_S_3_W3M2">
+            <M id="KavNr-map_imuy_S_11_W3M1">
                 <FORM kindOf="original">an</FORM>
                 <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             </M>
-            <M id="KavNr-map_imuy_S_3_W3M3">
+            <M id="KavNr-map_imuy_S_11_W3M2">
                 <FORM kindOf="original">na</FORM>
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">3SG.GEN</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">3SG.屬格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">3SG.GEN</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_3_W4">
-            <FORM kindOf="original">ni</FORM>
+        <W id="KavNr-map_imuy_S_11_W4">
+            <FORM kindOf="original">ni,</FORM>
             <PHON kindOf="original">ni</PHON>
-            <FORM kindOf="standard">ni</FORM>
+            <FORM kindOf="standard">ni,</FORM>
             <PHON kindOf="standard">ni</PHON>
             <TRANSL xml:lang="zho" kindOf="original">屬格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">GEN</TRANSL>
-            <M id="KavNr-map_imuy_S_3_W4M1">
-                <FORM kindOf="original">ni</FORM>
+            <M id="KavNr-map_imuy_S_11_W4M0">
+                <FORM kindOf="original">ni,</FORM>
                 <PHON kindOf="original">ni</PHON>
-                <FORM kindOf="standard">ni</FORM>
+                <FORM kindOf="standard">ni,</FORM>
                 <PHON kindOf="standard">ni</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">GEN</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="original">屬格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_3_W5">
-            <FORM kindOf="original">utay</FORM>
+        <W id="KavNr-map_imuy_S_11_W5">
+            <FORM kindOf="original">utay.</FORM>
             <PHON kindOf="original">utaj</PHON>
-            <FORM kindOf="standard">utay</FORM>
+            <FORM kindOf="standard">utay.</FORM>
             <PHON kindOf="standard">utaj</PHON>
             <TRANSL xml:lang="zho" kindOf="original">人名</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">PN</TRANSL>
-            <M id="KavNr-map_imuy_S_3_W5M1">
-                <FORM kindOf="original">utay</FORM>
+            <M id="KavNr-map_imuy_S_11_W5M0">
+                <FORM kindOf="original">utay.</FORM>
                 <PHON kindOf="original">utaj</PHON>
-                <FORM kindOf="standard">utay</FORM>
+                <FORM kindOf="standard">utay.</FORM>
                 <PHON kindOf="standard">utaj</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">PN</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">人名</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PN</TRANSL>
             </M>
         </W>
     </S>
-    <S id="KavNr-map_imuy_S_4">
-        <FORM kindOf="original">nani matiw pasazi talepawan ni utay.</FORM>
-        <PHON kindOf="original">nani matiw pasa[z|r]i tarəpawan ni utaj</PHON>
-        <FORM kindOf="standard">nani matiw pasazi talepawan ni utay.</FORM>
+    <S id="KavNr-map_imuy_S_15">
+        <FORM kindOf="original">nani, matiw, pasazi talepawan ni utay.</FORM>
+        <PHON kindOf="original">nani matiw pasazi tarəpawan ni utaj</PHON>
+        <FORM kindOf="standard">nani, matiw, pasazi talepawan ni utay.</FORM>
         <PHON kindOf="standard">nani matiw pasa[z|r]i tarəpawan ni utaj</PHON>
-        <TRANSL xml:lang="zho">(他)往UTAY家去.</TRANSL>
+        <TRANSL xml:lang="zho">(他)往UTAY家去。</TRANSL>
         <TRANSL xml:lang="eng">(He) came towards Utay's house.</TRANSL>
-        <AUDIO file="KavNr-map_imuy_S4.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_imuy.mp3" start="18.58" end="22.51"/>
-        <W id="KavNr-map_imuy_S_4_W0">
-            <FORM kindOf="original">nani</FORM>
+        <AUDIO file="KavNr-map_imuy_S15.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_imuy.mp3" start="18.58" end="22.51"/>
+        <W id="KavNr-map_imuy_S_15_W0">
+            <FORM kindOf="original">nani,</FORM>
             <PHON kindOf="original">nani</PHON>
-            <FORM kindOf="standard">nani</FORM>
+            <FORM kindOf="standard">nani,</FORM>
             <PHON kindOf="standard">nani</PHON>
             <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
-            <M id="KavNr-map_imuy_S_4_W0M1">
-                <FORM kindOf="original">nani</FORM>
+            <M id="KavNr-map_imuy_S_15_W0M0">
+                <FORM kindOf="original">nani,</FORM>
                 <PHON kindOf="original">nani</PHON>
-                <FORM kindOf="standard">nani</FORM>
+                <FORM kindOf="standard">nani,</FORM>
                 <PHON kindOf="standard">nani</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_4_W1">
-            <FORM kindOf="original">matiw</FORM>
+        <W id="KavNr-map_imuy_S_15_W1">
+            <FORM kindOf="original">matiw,</FORM>
             <PHON kindOf="original">matiw</PHON>
-            <FORM kindOf="standard">matiw</FORM>
+            <FORM kindOf="standard">matiw,</FORM>
             <PHON kindOf="standard">matiw</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主焦.去</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF.go</TRANSL>
-            <M id="KavNr-map_imuy_S_4_W1M1">
-                <FORM kindOf="original">matiw</FORM>
+            <M id="KavNr-map_imuy_S_15_W1M0">
+                <FORM kindOf="original">matiw,</FORM>
                 <PHON kindOf="original">matiw</PHON>
-                <FORM kindOf="standard">matiw</FORM>
+                <FORM kindOf="standard">matiw,</FORM>
                 <PHON kindOf="standard">matiw</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">AF.go</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">主焦.去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AF.go</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_4_W2">
+        <W id="KavNr-map_imuy_S_15_W2">
             <FORM kindOf="original">pasazi</FORM>
-            <PHON kindOf="original">pasa[z|r]i</PHON>
+            <PHON kindOf="original">pasazi</PHON>
             <FORM kindOf="standard">pasazi</FORM>
             <PHON kindOf="standard">pasa[z|r]i</PHON>
             <TRANSL xml:lang="zho" kindOf="original">過來</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">toward.here</TRANSL>
-            <M id="KavNr-map_imuy_S_4_W2M1">
+            <M id="KavNr-map_imuy_S_15_W2M0">
                 <FORM kindOf="original">pasazi</FORM>
-                <PHON kindOf="original">pasa[z|r]i</PHON>
+                <PHON kindOf="original">pasazi</PHON>
                 <FORM kindOf="standard">pasazi</FORM>
                 <PHON kindOf="standard">pasa[z|r]i</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">toward.here</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">過來</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">toward.here</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_4_W3">
+        <W id="KavNr-map_imuy_S_15_W3">
             <FORM kindOf="original">ta-lepaw-an</FORM>
             <PHON kindOf="original">tarəpawan</PHON>
             <FORM kindOf="standard">ta-lepaw-an</FORM>
             <PHON kindOf="standard">tarəpawan</PHON>
             <TRANSL xml:lang="zho" kindOf="original">處格-家-處格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LOC-house-LOC</TRANSL>
-            <M id="KavNr-map_imuy_S_4_W3M1">
+            <M id="KavNr-map_imuy_S_15_W3M0">
                 <FORM kindOf="original">ta</FORM>
                 <PHON kindOf="original">ta</PHON>
                 <FORM kindOf="standard">ta</FORM>
                 <PHON kindOf="standard">ta</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             </M>
-            <M id="KavNr-map_imuy_S_4_W3M2">
+            <M id="KavNr-map_imuy_S_15_W3M1">
                 <FORM kindOf="original">lepaw</FORM>
                 <PHON kindOf="original">rəpaw</PHON>
                 <FORM kindOf="standard">lepaw</FORM>
                 <PHON kindOf="standard">rəpaw</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">house</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">家</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">house</TRANSL>
             </M>
-            <M id="KavNr-map_imuy_S_4_W3M3">
+            <M id="KavNr-map_imuy_S_15_W3M2">
                 <FORM kindOf="original">an</FORM>
                 <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_4_W4">
+        <W id="KavNr-map_imuy_S_15_W4">
             <FORM kindOf="original">ni</FORM>
             <PHON kindOf="original">ni</PHON>
             <FORM kindOf="standard">ni</FORM>
             <PHON kindOf="standard">ni</PHON>
             <TRANSL xml:lang="zho" kindOf="original">屬格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">GEN</TRANSL>
-            <M id="KavNr-map_imuy_S_4_W4M1">
+            <M id="KavNr-map_imuy_S_15_W4M0">
                 <FORM kindOf="original">ni</FORM>
                 <PHON kindOf="original">ni</PHON>
                 <FORM kindOf="standard">ni</FORM>
                 <PHON kindOf="standard">ni</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">GEN</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">屬格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">GEN</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_4_W5">
-            <FORM kindOf="original">utay</FORM>
+        <W id="KavNr-map_imuy_S_15_W5">
+            <FORM kindOf="original">utay.</FORM>
             <PHON kindOf="original">utaj</PHON>
-            <FORM kindOf="standard">utay</FORM>
+            <FORM kindOf="standard">utay.</FORM>
             <PHON kindOf="standard">utaj</PHON>
             <TRANSL xml:lang="zho" kindOf="original">人名</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">PN</TRANSL>
-            <M id="KavNr-map_imuy_S_4_W5M1">
-                <FORM kindOf="original">utay</FORM>
+            <M id="KavNr-map_imuy_S_15_W5M0">
+                <FORM kindOf="original">utay.</FORM>
                 <PHON kindOf="original">utaj</PHON>
-                <FORM kindOf="standard">utay</FORM>
+                <FORM kindOf="standard">utay.</FORM>
                 <PHON kindOf="standard">utaj</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">PN</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">人名</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PN</TRANSL>
             </M>
         </W>
     </S>
-    <S id="KavNr-map_imuy_S_5">
-        <FORM kindOf="original">tu sumnis nani pasazi ta kawilian.</FORM>
-        <PHON kindOf="original">tu sumnis nani pasa[z|r]i ta kawirian</PHON>
-        <FORM kindOf="standard">tu sumnis nani pasazi ta kawilian.</FORM>
+    <S id="KavNr-map_imuy_S_18">
+        <FORM kindOf="original">tu, sumnis nani. pasazi ta, kawilian.</FORM>
+        <PHON kindOf="original">tu sumnis nani pasazi ta kawirian</PHON>
+        <FORM kindOf="standard">tu, sumnis nani. pasazi ta, kawilian.</FORM>
         <PHON kindOf="standard">tu sumnis nani pasa[z|r]i ta kawirian</PHON>
-        <TRANSL xml:lang="zho">下來後往左邊.</TRANSL>
+        <TRANSL xml:lang="zho">下來後往左邊。</TRANSL>
         <TRANSL xml:lang="eng">(He) came down and then went towards the left.</TRANSL>
-        <AUDIO file="KavNr-map_imuy_S5.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_imuy.mp3" start="22.51" end="26.96"/>
-        <W id="KavNr-map_imuy_S_5_W0">
-            <FORM kindOf="original">tu</FORM>
+        <AUDIO file="KavNr-map_imuy_S18.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_imuy.mp3" start="22.51" end="26.96"/>
+        <W id="KavNr-map_imuy_S_18_W0">
+            <FORM kindOf="original">tu,</FORM>
             <PHON kindOf="original">tu</PHON>
-            <FORM kindOf="standard">tu</FORM>
+            <FORM kindOf="standard">tu,</FORM>
             <PHON kindOf="standard">tu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
-            <M id="KavNr-map_imuy_S_5_W0M1">
-                <FORM kindOf="original">tu</FORM>
+            <M id="KavNr-map_imuy_S_18_W0M0">
+                <FORM kindOf="original">tu,</FORM>
                 <PHON kindOf="original">tu</PHON>
-                <FORM kindOf="standard">tu</FORM>
+                <FORM kindOf="standard">tu,</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_5_W1">
+        <W id="KavNr-map_imuy_S_18_W1">
             <FORM kindOf="original">sumnis</FORM>
             <PHON kindOf="original">sumnis</PHON>
             <FORM kindOf="standard">sumnis</FORM>
             <PHON kindOf="standard">sumnis</PHON>
             <TRANSL xml:lang="zho" kindOf="original">下來</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">come.down</TRANSL>
-            <M id="KavNr-map_imuy_S_5_W1M1">
+            <M id="KavNr-map_imuy_S_18_W1M0">
                 <FORM kindOf="original">sumnis</FORM>
                 <PHON kindOf="original">sumnis</PHON>
                 <FORM kindOf="standard">sumnis</FORM>
                 <PHON kindOf="standard">sumnis</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">come.down</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">下來</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">come.down</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_5_W2">
-            <FORM kindOf="original">nani</FORM>
+        <W id="KavNr-map_imuy_S_18_W2">
+            <FORM kindOf="original">nani.</FORM>
             <PHON kindOf="original">nani</PHON>
-            <FORM kindOf="standard">nani</FORM>
+            <FORM kindOf="standard">nani.</FORM>
             <PHON kindOf="standard">nani</PHON>
             <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
-            <M id="KavNr-map_imuy_S_5_W2M1">
-                <FORM kindOf="original">nani</FORM>
+            <M id="KavNr-map_imuy_S_18_W2M0">
+                <FORM kindOf="original">nani.</FORM>
                 <PHON kindOf="original">nani</PHON>
-                <FORM kindOf="standard">nani</FORM>
+                <FORM kindOf="standard">nani.</FORM>
                 <PHON kindOf="standard">nani</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_5_W3">
+        <W id="KavNr-map_imuy_S_18_W3">
             <FORM kindOf="original">pasazi</FORM>
-            <PHON kindOf="original">pasa[z|r]i</PHON>
+            <PHON kindOf="original">pasazi</PHON>
             <FORM kindOf="standard">pasazi</FORM>
             <PHON kindOf="standard">pasa[z|r]i</PHON>
             <TRANSL xml:lang="zho" kindOf="original">過來</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">toward.here</TRANSL>
-            <M id="KavNr-map_imuy_S_5_W3M1">
+            <M id="KavNr-map_imuy_S_18_W3M0">
                 <FORM kindOf="original">pasazi</FORM>
-                <PHON kindOf="original">pasa[z|r]i</PHON>
+                <PHON kindOf="original">pasazi</PHON>
                 <FORM kindOf="standard">pasazi</FORM>
                 <PHON kindOf="standard">pasa[z|r]i</PHON>
+                <TRANSL xml:lang="zho" kindOf="original">往這裡</TRANSL>
                 <TRANSL xml:lang="eng" kindOf="original">toward.here</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="original">過來</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_5_W4">
-            <FORM kindOf="original">ta-</FORM>
+        <W id="KavNr-map_imuy_S_18_W4">
+            <FORM kindOf="original">ta-,</FORM>
             <PHON kindOf="original">ta</PHON>
-            <FORM kindOf="standard">ta-</FORM>
+            <FORM kindOf="standard">ta-,</FORM>
             <PHON kindOf="standard">ta</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
-            <M id="KavNr-map_imuy_S_5_W4M1">
-                <FORM kindOf="original">ta</FORM>
-                <PHON kindOf="original">ta</PHON>
-                <FORM kindOf="standard">ta</FORM>
-                <PHON kindOf="standard">ta</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
-            </M>
+            <TRANSL xml:lang="zho" kindOf="original">處格-</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">LOC-</TRANSL>
         </W>
-        <W id="KavNr-map_imuy_S_5_W5">
-            <FORM kindOf="original">kawili-an</FORM>
+        <W id="KavNr-map_imuy_S_18_W5">
+            <FORM kindOf="original">kawili-an.</FORM>
             <PHON kindOf="original">kawirian</PHON>
-            <FORM kindOf="standard">kawili-an</FORM>
+            <FORM kindOf="standard">kawili-an.</FORM>
             <PHON kindOf="standard">kawirian</PHON>
             <TRANSL xml:lang="zho" kindOf="original">左邊-處格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">left-LOC</TRANSL>
-            <M id="KavNr-map_imuy_S_5_W5M1">
+            <M id="KavNr-map_imuy_S_18_W5M0">
                 <FORM kindOf="original">kawili</FORM>
                 <PHON kindOf="original">kawiri</PHON>
                 <FORM kindOf="standard">kawili</FORM>
                 <PHON kindOf="standard">kawiri</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">left</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">左邊</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">left</TRANSL>
             </M>
-            <M id="KavNr-map_imuy_S_5_W5M2">
-                <FORM kindOf="original">an</FORM>
+            <M id="KavNr-map_imuy_S_18_W5M1">
+                <FORM kindOf="original">an.</FORM>
                 <PHON kindOf="original">an</PHON>
-                <FORM kindOf="standard">an</FORM>
+                <FORM kindOf="standard">an.</FORM>
                 <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             </M>
         </W>
     </S>
-    <S id="KavNr-map_imuy_S_6">
-        <FORM kindOf="original">tu tmayta tu 'nay usiq yau a iki 'nay ta kinilan na lazan.</FORM>
-        <PHON kindOf="original">tu tmajta tu ʔnaj usiq jau a iki ʔnaj ta kiniran na ra[z|r]an</PHON>
-        <FORM kindOf="standard">tu tmayta tu 'nay usiq yau a iki 'nay ta kinilan na lazan.</FORM>
+    <S id="KavNr-map_imuy_S_22">
+        <FORM kindOf="original">tu, tmayta tu, 'nay, usiq, yau a, iki 'nay ta, kinilan na lazan.</FORM>
+        <PHON kindOf="original">tu tmajta tu ʔnaj usiq jau a iki ʔnaj ta kiniran na razan</PHON>
+        <FORM kindOf="standard">tu, tmayta tu, 'nay, usiq, yau a, iki 'nay ta, kinilan na lazan.</FORM>
         <PHON kindOf="standard">tu tmajta tu ʔnaj usiq jau a iki ʔnaj ta kiniran na ra[z|r]an</PHON>
-        <TRANSL xml:lang="zho">看到有一個池塘在路的旁邊.</TRANSL>
+        <TRANSL xml:lang="zho">看到有一個池塘在路的旁邊。</TRANSL>
         <TRANSL xml:lang="eng">(He) saw that there was a pond by the road.</TRANSL>
-        <AUDIO file="KavNr-map_imuy_S6.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_imuy.mp3" start="26.96" end="35.72"/>
-        <W id="KavNr-map_imuy_S_6_W0">
-            <FORM kindOf="original">tu</FORM>
+        <AUDIO file="KavNr-map_imuy_S22.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_imuy.mp3" start="26.96" end="35.72"/>
+        <W id="KavNr-map_imuy_S_22_W0">
+            <FORM kindOf="original">tu,</FORM>
             <PHON kindOf="original">tu</PHON>
-            <FORM kindOf="standard">tu</FORM>
+            <FORM kindOf="standard">tu,</FORM>
             <PHON kindOf="standard">tu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
-            <M id="KavNr-map_imuy_S_6_W0M1">
-                <FORM kindOf="original">tu</FORM>
+            <M id="KavNr-map_imuy_S_22_W0M0">
+                <FORM kindOf="original">tu,</FORM>
                 <PHON kindOf="original">tu</PHON>
-                <FORM kindOf="standard">tu</FORM>
+                <FORM kindOf="standard">tu,</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_6_W1">
+        <W id="KavNr-map_imuy_S_22_W1">
             <FORM kindOf="original">t&lt;m&gt;ayta</FORM>
             <PHON kindOf="original">tmajta</PHON>
             <FORM kindOf="standard">t&lt;m&gt;ayta</FORM>
             <PHON kindOf="standard">tmajta</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;看</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;see</TRANSL>
-            <M id="KavNr-map_imuy_S_6_W1M1">
+            <M id="KavNr-map_imuy_S_22_W1M0">
                 <FORM kindOf="original">-m-</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
             </M>
-            <M id="KavNr-map_imuy_S_6_W1M2">
-                <FORM kindOf="original">t-ayta</FORM>
+            <M id="KavNr-map_imuy_S_22_W1M1">
+                <FORM kindOf="original">tayta</FORM>
                 <PHON kindOf="original">tajta</PHON>
-                <FORM kindOf="standard">t-ayta</FORM>
+                <FORM kindOf="standard">tayta</FORM>
                 <PHON kindOf="standard">tajta</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">see</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="original">看</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_6_W2">
-            <FORM kindOf="original">tu</FORM>
+        <W id="KavNr-map_imuy_S_22_W2">
+            <FORM kindOf="original">tu,</FORM>
             <PHON kindOf="original">tu</PHON>
-            <FORM kindOf="standard">tu</FORM>
+            <FORM kindOf="standard">tu,</FORM>
             <PHON kindOf="standard">tu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
-            <M id="KavNr-map_imuy_S_6_W2M1">
-                <FORM kindOf="original">tu</FORM>
+            <M id="KavNr-map_imuy_S_22_W2M0">
+                <FORM kindOf="original">tu,</FORM>
                 <PHON kindOf="original">tu</PHON>
-                <FORM kindOf="standard">tu</FORM>
+                <FORM kindOf="standard">tu,</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_6_W3">
-            <FORM kindOf="original">'nay</FORM>
+        <W id="KavNr-map_imuy_S_22_W3">
+            <FORM kindOf="original">'nay,</FORM>
             <PHON kindOf="original">ʔnaj</PHON>
-            <FORM kindOf="standard">'nay</FORM>
+            <FORM kindOf="standard">'nay,</FORM>
             <PHON kindOf="standard">ʔnaj</PHON>
             <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
-            <M id="KavNr-map_imuy_S_6_W3M1">
-                <FORM kindOf="original">'nay</FORM>
+            <M id="KavNr-map_imuy_S_22_W3M0">
+                <FORM kindOf="original">'nay,</FORM>
                 <PHON kindOf="original">ʔnaj</PHON>
-                <FORM kindOf="standard">'nay</FORM>
+                <FORM kindOf="standard">'nay,</FORM>
                 <PHON kindOf="standard">ʔnaj</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_6_W4">
-            <FORM kindOf="original">usiq</FORM>
+        <W id="KavNr-map_imuy_S_22_W4">
+            <FORM kindOf="original">usiq,</FORM>
             <PHON kindOf="original">usiq</PHON>
-            <FORM kindOf="standard">usiq</FORM>
+            <FORM kindOf="standard">usiq,</FORM>
             <PHON kindOf="standard">usiq</PHON>
             <TRANSL xml:lang="zho" kindOf="original">一</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">one</TRANSL>
-            <M id="KavNr-map_imuy_S_6_W4M1">
-                <FORM kindOf="original">usiq</FORM>
+            <M id="KavNr-map_imuy_S_22_W4M0">
+                <FORM kindOf="original">usiq,</FORM>
                 <PHON kindOf="original">usiq</PHON>
-                <FORM kindOf="standard">usiq</FORM>
+                <FORM kindOf="standard">usiq,</FORM>
                 <PHON kindOf="standard">usiq</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">one</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">一</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">one</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_6_W5">
+        <W id="KavNr-map_imuy_S_22_W5">
             <FORM kindOf="original">yau</FORM>
             <PHON kindOf="original">jau</PHON>
             <FORM kindOf="standard">yau</FORM>
             <PHON kindOf="standard">jau</PHON>
             <TRANSL xml:lang="zho" kindOf="original">存在</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">EXIST</TRANSL>
-            <M id="KavNr-map_imuy_S_6_W5M1">
+            <M id="KavNr-map_imuy_S_22_W5M0">
                 <FORM kindOf="original">yau</FORM>
                 <PHON kindOf="original">jau</PHON>
                 <FORM kindOf="standard">yau</FORM>
                 <PHON kindOf="standard">jau</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">EXIST</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="original">存在</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_6_W6">
-            <FORM kindOf="original">a</FORM>
+        <W id="KavNr-map_imuy_S_22_W6">
+            <FORM kindOf="original">a,</FORM>
             <PHON kindOf="original">a</PHON>
-            <FORM kindOf="standard">a</FORM>
+            <FORM kindOf="standard">a,</FORM>
             <PHON kindOf="standard">a</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
-            <M id="KavNr-map_imuy_S_6_W6M1">
-                <FORM kindOf="original">a</FORM>
+            <M id="KavNr-map_imuy_S_22_W6M0">
+                <FORM kindOf="original">a,</FORM>
                 <PHON kindOf="original">a</PHON>
-                <FORM kindOf="standard">a</FORM>
+                <FORM kindOf="standard">a,</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_6_W7">
+        <W id="KavNr-map_imuy_S_22_W7">
             <FORM kindOf="original">iki</FORM>
             <PHON kindOf="original">iki</PHON>
             <FORM kindOf="standard">iki</FORM>
             <PHON kindOf="standard">iki</PHON>
             <TRANSL xml:lang="zho" kindOf="original">池塘</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">pond</TRANSL>
-            <M id="KavNr-map_imuy_S_6_W7M1">
+            <M id="KavNr-map_imuy_S_22_W7M0">
                 <FORM kindOf="original">iki</FORM>
                 <PHON kindOf="original">iki</PHON>
                 <FORM kindOf="standard">iki</FORM>
                 <PHON kindOf="standard">iki</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">pond</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="original">池塘</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">1SG.主格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">1SG.NOM</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_6_W8">
+        <W id="KavNr-map_imuy_S_22_W8">
             <FORM kindOf="original">'nay</FORM>
             <PHON kindOf="original">ʔnaj</PHON>
             <FORM kindOf="standard">'nay</FORM>
             <PHON kindOf="standard">ʔnaj</PHON>
             <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
-            <M id="KavNr-map_imuy_S_6_W8M1">
+            <M id="KavNr-map_imuy_S_22_W8M0">
                 <FORM kindOf="original">'nay</FORM>
                 <PHON kindOf="original">ʔnaj</PHON>
                 <FORM kindOf="standard">'nay</FORM>
                 <PHON kindOf="standard">ʔnaj</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_6_W9">
-            <FORM kindOf="original">ta-</FORM>
+        <W id="KavNr-map_imuy_S_22_W9">
+            <FORM kindOf="original">ta-,</FORM>
             <PHON kindOf="original">ta</PHON>
-            <FORM kindOf="standard">ta-</FORM>
+            <FORM kindOf="standard">ta-,</FORM>
             <PHON kindOf="standard">ta</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
-            <M id="KavNr-map_imuy_S_6_W9M1">
-                <FORM kindOf="original">ta</FORM>
-                <PHON kindOf="original">ta</PHON>
-                <FORM kindOf="standard">ta</FORM>
-                <PHON kindOf="standard">ta</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
-            </M>
+            <TRANSL xml:lang="zho" kindOf="original">處格-</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">LOC-</TRANSL>
         </W>
-        <W id="KavNr-map_imuy_S_6_W10">
+        <W id="KavNr-map_imuy_S_22_W10">
             <FORM kindOf="original">kinil-an</FORM>
             <PHON kindOf="original">kiniran</PHON>
             <FORM kindOf="standard">kinil-an</FORM>
             <PHON kindOf="standard">kiniran</PHON>
             <TRANSL xml:lang="zho" kindOf="original">旁邊-處格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">side-LOC</TRANSL>
-            <M id="KavNr-map_imuy_S_6_W10M1">
+            <M id="KavNr-map_imuy_S_22_W10M0">
                 <FORM kindOf="original">kinil</FORM>
                 <PHON kindOf="original">kinir</PHON>
                 <FORM kindOf="standard">kinil</FORM>
                 <PHON kindOf="standard">kinir</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">side</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">旁邊</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">side</TRANSL>
             </M>
-            <M id="KavNr-map_imuy_S_6_W10M2">
+            <M id="KavNr-map_imuy_S_22_W10M1">
                 <FORM kindOf="original">an</FORM>
                 <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_6_W11">
+        <W id="KavNr-map_imuy_S_22_W11">
             <FORM kindOf="original">na</FORM>
             <PHON kindOf="original">na</PHON>
             <FORM kindOf="standard">na</FORM>
             <PHON kindOf="standard">na</PHON>
             <TRANSL xml:lang="zho" kindOf="original">屬格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">GEN</TRANSL>
-            <M id="KavNr-map_imuy_S_6_W11M1">
+            <M id="KavNr-map_imuy_S_22_W11M0">
                 <FORM kindOf="original">na</FORM>
                 <PHON kindOf="original">na</PHON>
                 <FORM kindOf="standard">na</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">GEN</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="original">屬格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">過去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PAST</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_6_W12">
-            <FORM kindOf="original">lazan</FORM>
-            <PHON kindOf="original">ra[z|r]an</PHON>
-            <FORM kindOf="standard">lazan</FORM>
+        <W id="KavNr-map_imuy_S_22_W12">
+            <FORM kindOf="original">lazan.</FORM>
+            <PHON kindOf="original">razan</PHON>
+            <FORM kindOf="standard">lazan.</FORM>
             <PHON kindOf="standard">ra[z|r]an</PHON>
             <TRANSL xml:lang="zho" kindOf="original">路</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">road</TRANSL>
-            <M id="KavNr-map_imuy_S_6_W12M1">
-                <FORM kindOf="original">lazan</FORM>
-                <PHON kindOf="original">ra[z|r]an</PHON>
-                <FORM kindOf="standard">lazan</FORM>
+            <M id="KavNr-map_imuy_S_22_W12M0">
+                <FORM kindOf="original">lazan.</FORM>
+                <PHON kindOf="original">razan</PHON>
+                <FORM kindOf="standard">lazan.</FORM>
                 <PHON kindOf="standard">ra[z|r]an</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">road</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">路</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">road</TRANSL>
             </M>
         </W>
     </S>
-    <S id="KavNr-map_imuy_S_7">
-        <FORM kindOf="original" notes="source note: wiya=ti m-RaRiw 繼續跑，wiya=ti只能和行進有關的動詞連用。 | source note: wiya=ti 離開了，qukawi剛剛走，qukawi-ma剛剛走而已。">nani wiyati smaqay tmalawma tu iRuR.</FORM>
+    <S id="KavNr-map_imuy_S_29">
+        <FORM kindOf="original" notes="wiya=ti m-RaRiw 繼續跑，wiya=ti只能和行進有關的動詞連用。 wiya=ti 離開了，qukawi剛剛走，qukawi-ma剛剛走而已。">nani, wiyati, smaqay. tmalawma tu, iRuR.</FORM>
         <PHON kindOf="original">nani wijati smaqaj tmarawma tu iʁuʁ</PHON>
-        <FORM kindOf="standard">nani wiyati smaqay tmalawma tu iRuR.</FORM>
+        <FORM kindOf="standard">nani, wiyati, smaqay. tmalawma tu, iRuR.</FORM>
         <PHON kindOf="standard">nani wijati smaqaj tmarawma tu iʁuʁ</PHON>
-        <TRANSL xml:lang="zho">(他)繼續走,穿過河流.</TRANSL>
+        <TRANSL xml:lang="zho">(他)繼續走，穿過河流。</TRANSL>
         <TRANSL xml:lang="eng">(He) continued walking and crossed the river.</TRANSL>
-        <AUDIO file="KavNr-map_imuy_S7.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_imuy.mp3" start="35.72" end="40.82"/>
-        <W id="KavNr-map_imuy_S_7_W0">
-            <FORM kindOf="original">nani</FORM>
+        <AUDIO file="KavNr-map_imuy_S29.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_imuy.mp3" start="35.72" end="40.82"/>
+        <W id="KavNr-map_imuy_S_29_W0">
+            <FORM kindOf="original">nani,</FORM>
             <PHON kindOf="original">nani</PHON>
-            <FORM kindOf="standard">nani</FORM>
+            <FORM kindOf="standard">nani,</FORM>
             <PHON kindOf="standard">nani</PHON>
             <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
-            <M id="KavNr-map_imuy_S_7_W0M1">
-                <FORM kindOf="original">nani</FORM>
+            <M id="KavNr-map_imuy_S_29_W0M0">
+                <FORM kindOf="original">nani,</FORM>
                 <PHON kindOf="original">nani</PHON>
-                <FORM kindOf="standard">nani</FORM>
+                <FORM kindOf="standard">nani,</FORM>
                 <PHON kindOf="standard">nani</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_7_W1">
-            <FORM kindOf="original">wiya=ti</FORM>
+        <W id="KavNr-map_imuy_S_29_W1">
+            <FORM kindOf="original">wiya=ti,</FORM>
             <PHON kindOf="original">wijati</PHON>
-            <FORM kindOf="standard">wiya=ti</FORM>
+            <FORM kindOf="standard">wiya=ti,</FORM>
             <PHON kindOf="standard">wijati</PHON>
             <TRANSL xml:lang="zho" kindOf="original">離開=完成</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">leave=PFV</TRANSL>
-            <M id="KavNr-map_imuy_S_7_W1M1">
+            <M id="KavNr-map_imuy_S_29_W1M0">
                 <FORM kindOf="original">wiya</FORM>
                 <PHON kindOf="original">wija</PHON>
                 <FORM kindOf="standard">wiya</FORM>
                 <PHON kindOf="standard">wija</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">leave</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">離開</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">leave</TRANSL>
             </M>
-            <M id="KavNr-map_imuy_S_7_W1M2">
-                <FORM kindOf="original">=ti</FORM>
+            <M id="KavNr-map_imuy_S_29_W1M1">
+                <FORM kindOf="original">=ti,</FORM>
                 <PHON kindOf="original">ti</PHON>
-                <FORM kindOf="standard">=ti</FORM>
+                <FORM kindOf="standard">=ti,</FORM>
                 <PHON kindOf="standard">ti</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">完成</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_7_W2">
-            <FORM kindOf="original">s&lt;m&gt;aqay</FORM>
+        <W id="KavNr-map_imuy_S_29_W2">
+            <FORM kindOf="original">s&lt;m&gt;aqay.</FORM>
             <PHON kindOf="original">smaqaj</PHON>
-            <FORM kindOf="standard">s&lt;m&gt;aqay</FORM>
+            <FORM kindOf="standard">s&lt;m&gt;aqay.</FORM>
             <PHON kindOf="standard">smaqaj</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;走</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;walk</TRANSL>
-            <M id="KavNr-map_imuy_S_7_W2M1">
+            <M id="KavNr-map_imuy_S_29_W2M0_0">
                 <FORM kindOf="original">-m-</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
             </M>
-            <M id="KavNr-map_imuy_S_7_W2M2">
-                <FORM kindOf="original">s-aqay</FORM>
+            <M id="KavNr-map_imuy_S_29_W2M0_1">
+                <FORM kindOf="original">s-aqay.</FORM>
                 <PHON kindOf="original">saqaj</PHON>
-                <FORM kindOf="standard">s-aqay</FORM>
+                <FORM kindOf="standard">s-aqay.</FORM>
                 <PHON kindOf="standard">saqaj</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">walk</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">走</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">walk</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_7_W3">
+        <W id="KavNr-map_imuy_S_29_W3">
             <FORM kindOf="original">t&lt;m&gt;alawma</FORM>
             <PHON kindOf="original">tmarawma</PHON>
             <FORM kindOf="standard">t&lt;m&gt;alawma</FORM>
             <PHON kindOf="standard">tmarawma</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;穿越</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;cross</TRANSL>
-            <M id="KavNr-map_imuy_S_7_W3M1">
+            <M id="KavNr-map_imuy_S_29_W3M0_0">
                 <FORM kindOf="original">-m-</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
             </M>
-            <M id="KavNr-map_imuy_S_7_W3M2">
+            <M id="KavNr-map_imuy_S_29_W3M0_1">
                 <FORM kindOf="original">t-alawma</FORM>
                 <PHON kindOf="original">tarawma</PHON>
                 <FORM kindOf="standard">t-alawma</FORM>
                 <PHON kindOf="standard">tarawma</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">cross</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">穿越</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">cross</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_7_W4">
-            <FORM kindOf="original">tu</FORM>
+        <W id="KavNr-map_imuy_S_29_W4">
+            <FORM kindOf="original">tu,</FORM>
             <PHON kindOf="original">tu</PHON>
-            <FORM kindOf="standard">tu</FORM>
+            <FORM kindOf="standard">tu,</FORM>
             <PHON kindOf="standard">tu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
-            <M id="KavNr-map_imuy_S_7_W4M1">
-                <FORM kindOf="original">tu</FORM>
+            <M id="KavNr-map_imuy_S_29_W4M0">
+                <FORM kindOf="original">tu,</FORM>
                 <PHON kindOf="original">tu</PHON>
-                <FORM kindOf="standard">tu</FORM>
+                <FORM kindOf="standard">tu,</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_7_W5">
-            <FORM kindOf="original">iRuR</FORM>
+        <W id="KavNr-map_imuy_S_29_W5">
+            <FORM kindOf="original">iRuR.</FORM>
             <PHON kindOf="original">iʁuʁ</PHON>
-            <FORM kindOf="standard">iRuR</FORM>
+            <FORM kindOf="standard">iRuR.</FORM>
             <PHON kindOf="standard">iʁuʁ</PHON>
             <TRANSL xml:lang="zho" kindOf="original">河</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">river</TRANSL>
-            <M id="KavNr-map_imuy_S_7_W5M1">
-                <FORM kindOf="original">iRuR</FORM>
+            <M id="KavNr-map_imuy_S_29_W5M0">
+                <FORM kindOf="original">iRuR.</FORM>
                 <PHON kindOf="original">iʁuʁ</PHON>
-                <FORM kindOf="standard">iRuR</FORM>
+                <FORM kindOf="standard">iRuR.</FORM>
                 <PHON kindOf="standard">iʁuʁ</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">river</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">河</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">river</TRANSL>
             </M>
         </W>
     </S>
-    <S id="KavNr-map_imuy_S_8">
-        <FORM kindOf="original" notes="source note: tuqaz上坡，往上走。">nani wiyati smaqay tmuqaz nani.</FORM>
-        <PHON kindOf="original">nani wijati smaqaj tmuqa[z|r] nani</PHON>
-        <FORM kindOf="standard">nani wiyati smaqay tmuqaz nani.</FORM>
+    <S id="KavNr-map_imuy_S_34">
+        <FORM kindOf="original" notes="tuqaz上坡，往上走。">nani, wiyati smaqay, tmuqaz nani.</FORM>
+        <PHON kindOf="original">nani wijati smaqaj tmuqaz nani</PHON>
+        <FORM kindOf="standard">nani, wiyati smaqay, tmuqaz nani.</FORM>
         <PHON kindOf="standard">nani wijati smaqaj tmuqa[z|r] nani</PHON>
-        <TRANSL xml:lang="zho">(他)繼續往上走.</TRANSL>
+        <TRANSL xml:lang="zho">(他)繼續往上走。</TRANSL>
         <TRANSL xml:lang="eng">(He) continued walking upwards.</TRANSL>
-        <AUDIO file="KavNr-map_imuy_S8.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_imuy.mp3" start="40.82" end="44.53"/>
-        <W id="KavNr-map_imuy_S_8_W0">
-            <FORM kindOf="original">nani</FORM>
+        <AUDIO file="KavNr-map_imuy_S34.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_imuy.mp3" start="40.82" end="44.53"/>
+        <W id="KavNr-map_imuy_S_34_W0">
+            <FORM kindOf="original">nani,</FORM>
             <PHON kindOf="original">nani</PHON>
-            <FORM kindOf="standard">nani</FORM>
+            <FORM kindOf="standard">nani,</FORM>
             <PHON kindOf="standard">nani</PHON>
             <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
-            <M id="KavNr-map_imuy_S_8_W0M1">
-                <FORM kindOf="original">nani</FORM>
+            <M id="KavNr-map_imuy_S_34_W0M0">
+                <FORM kindOf="original">nani,</FORM>
                 <PHON kindOf="original">nani</PHON>
-                <FORM kindOf="standard">nani</FORM>
+                <FORM kindOf="standard">nani,</FORM>
                 <PHON kindOf="standard">nani</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_8_W1">
+        <W id="KavNr-map_imuy_S_34_W1">
             <FORM kindOf="original">wiya=ti</FORM>
             <PHON kindOf="original">wijati</PHON>
             <FORM kindOf="standard">wiya=ti</FORM>
             <PHON kindOf="standard">wijati</PHON>
             <TRANSL xml:lang="zho" kindOf="original">離開=完成</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">leave=PFV</TRANSL>
-            <M id="KavNr-map_imuy_S_8_W1M1">
+            <M id="KavNr-map_imuy_S_34_W1M0">
                 <FORM kindOf="original">wiya</FORM>
                 <PHON kindOf="original">wija</PHON>
                 <FORM kindOf="standard">wiya</FORM>
                 <PHON kindOf="standard">wija</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">leave</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">離開</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">leave</TRANSL>
             </M>
-            <M id="KavNr-map_imuy_S_8_W1M2">
+            <M id="KavNr-map_imuy_S_34_W1M1">
                 <FORM kindOf="original">=ti</FORM>
                 <PHON kindOf="original">ti</PHON>
                 <FORM kindOf="standard">=ti</FORM>
                 <PHON kindOf="standard">ti</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">完成</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_8_W2">
-            <FORM kindOf="original">s&lt;m&gt;aqay</FORM>
+        <W id="KavNr-map_imuy_S_34_W2">
+            <FORM kindOf="original">s&lt;m&gt;aqay,</FORM>
             <PHON kindOf="original">smaqaj</PHON>
-            <FORM kindOf="standard">s&lt;m&gt;aqay</FORM>
+            <FORM kindOf="standard">s&lt;m&gt;aqay,</FORM>
             <PHON kindOf="standard">smaqaj</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;走</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;walk</TRANSL>
-            <M id="KavNr-map_imuy_S_8_W2M1">
+            <M id="KavNr-map_imuy_S_34_W2M0_0">
                 <FORM kindOf="original">-m-</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
             </M>
-            <M id="KavNr-map_imuy_S_8_W2M2">
-                <FORM kindOf="original">s-aqay</FORM>
+            <M id="KavNr-map_imuy_S_34_W2M0_1">
+                <FORM kindOf="original">s-aqay,</FORM>
                 <PHON kindOf="original">saqaj</PHON>
-                <FORM kindOf="standard">s-aqay</FORM>
+                <FORM kindOf="standard">s-aqay,</FORM>
                 <PHON kindOf="standard">saqaj</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">walk</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">走</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">walk</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_8_W3">
+        <W id="KavNr-map_imuy_S_34_W3">
             <FORM kindOf="original">t&lt;m&gt;uqaz</FORM>
-            <PHON kindOf="original">tmuqa[z|r]</PHON>
+            <PHON kindOf="original">tmuqaz</PHON>
             <FORM kindOf="standard">t&lt;m&gt;uqaz</FORM>
             <PHON kindOf="standard">tmuqa[z|r]</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;上去</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;go.up</TRANSL>
-            <M id="KavNr-map_imuy_S_8_W3M1">
+            <M id="KavNr-map_imuy_S_34_W3M0_0">
                 <FORM kindOf="original">-m-</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
             </M>
-            <M id="KavNr-map_imuy_S_8_W3M2">
+            <M id="KavNr-map_imuy_S_34_W3M0_1">
                 <FORM kindOf="original">t-uqaz</FORM>
-                <PHON kindOf="original">tuqa[z|r]</PHON>
+                <PHON kindOf="original">tuqaz</PHON>
                 <FORM kindOf="standard">t-uqaz</FORM>
                 <PHON kindOf="standard">tuqa[z|r]</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">go.up</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">上去</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">go.up</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_8_W4">
-            <FORM kindOf="original">nani</FORM>
+        <W id="KavNr-map_imuy_S_34_W4">
+            <FORM kindOf="original">nani.</FORM>
             <PHON kindOf="original">nani</PHON>
-            <FORM kindOf="standard">nani</FORM>
+            <FORM kindOf="standard">nani.</FORM>
             <PHON kindOf="standard">nani</PHON>
             <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
-            <M id="KavNr-map_imuy_S_8_W4M1">
-                <FORM kindOf="original">nani</FORM>
+            <M id="KavNr-map_imuy_S_34_W4M0">
+                <FORM kindOf="original">nani.</FORM>
                 <PHON kindOf="original">nani</PHON>
-                <FORM kindOf="standard">nani</FORM>
+                <FORM kindOf="standard">nani.</FORM>
                 <PHON kindOf="standard">nani</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
             </M>
         </W>
     </S>
-    <S id="KavNr-map_imuy_S_9">
-        <FORM kindOf="original">tmayta tu usiq yau a zena ta nilaziwanna.</FORM>
-        <PHON kindOf="original">tmajta tu usiq jau a [z|r]əna ta nira[z|r]iwanna</PHON>
-        <FORM kindOf="standard">tmayta tu usiq yau a zena ta nilaziwanna.</FORM>
+    <S id="KavNr-map_imuy_S_37">
+        <FORM kindOf="original">tmayta tu, usiq, yau a zena, ta, nilaziwanna.</FORM>
+        <PHON kindOf="original">tmajta tu usiq jau a zəna ta niraziwanna</PHON>
+        <FORM kindOf="standard">tmayta tu, usiq, yau a zena, ta, nilaziwanna.</FORM>
         <PHON kindOf="standard">tmajta tu usiq jau a [z|r]əna ta nira[z|r]iwanna</PHON>
-        <TRANSL xml:lang="zho">看到有一片水田在他經過的地方.</TRANSL>
+        <TRANSL xml:lang="zho">看到有一片水田在他經過的地方。</TRANSL>
         <TRANSL xml:lang="eng">And (he) saw that there was a paddy field in the place he passed by.</TRANSL>
-        <AUDIO file="KavNr-map_imuy_S9.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_imuy.mp3" start="44.53" end="49.97"/>
-        <W id="KavNr-map_imuy_S_9_W0">
+        <AUDIO file="KavNr-map_imuy_S37.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_imuy.mp3" start="44.53" end="49.97"/>
+        <W id="KavNr-map_imuy_S_37_W0">
             <FORM kindOf="original">t&lt;m&gt;ayta</FORM>
             <PHON kindOf="original">tmajta</PHON>
             <FORM kindOf="standard">t&lt;m&gt;ayta</FORM>
             <PHON kindOf="standard">tmajta</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;看</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;see</TRANSL>
-            <M id="KavNr-map_imuy_S_9_W0M1">
+            <M id="KavNr-map_imuy_S_37_W0M0">
                 <FORM kindOf="original">-m-</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
             </M>
-            <M id="KavNr-map_imuy_S_9_W0M2">
-                <FORM kindOf="original">t-ayta</FORM>
+            <M id="KavNr-map_imuy_S_37_W0M1">
+                <FORM kindOf="original">tayta</FORM>
                 <PHON kindOf="original">tajta</PHON>
-                <FORM kindOf="standard">t-ayta</FORM>
+                <FORM kindOf="standard">tayta</FORM>
                 <PHON kindOf="standard">tajta</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">see</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="original">看</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_9_W1">
-            <FORM kindOf="original">tu</FORM>
+        <W id="KavNr-map_imuy_S_37_W1">
+            <FORM kindOf="original">tu,</FORM>
             <PHON kindOf="original">tu</PHON>
-            <FORM kindOf="standard">tu</FORM>
+            <FORM kindOf="standard">tu,</FORM>
             <PHON kindOf="standard">tu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
-            <M id="KavNr-map_imuy_S_9_W1M1">
-                <FORM kindOf="original">tu</FORM>
+            <M id="KavNr-map_imuy_S_37_W1M0">
+                <FORM kindOf="original">tu,</FORM>
                 <PHON kindOf="original">tu</PHON>
-                <FORM kindOf="standard">tu</FORM>
+                <FORM kindOf="standard">tu,</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_9_W2">
-            <FORM kindOf="original">usiq</FORM>
+        <W id="KavNr-map_imuy_S_37_W2">
+            <FORM kindOf="original">usiq,</FORM>
             <PHON kindOf="original">usiq</PHON>
-            <FORM kindOf="standard">usiq</FORM>
+            <FORM kindOf="standard">usiq,</FORM>
             <PHON kindOf="standard">usiq</PHON>
             <TRANSL xml:lang="zho" kindOf="original">一</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">one</TRANSL>
-            <M id="KavNr-map_imuy_S_9_W2M1">
-                <FORM kindOf="original">usiq</FORM>
+            <M id="KavNr-map_imuy_S_37_W2M0">
+                <FORM kindOf="original">usiq,</FORM>
                 <PHON kindOf="original">usiq</PHON>
-                <FORM kindOf="standard">usiq</FORM>
+                <FORM kindOf="standard">usiq,</FORM>
                 <PHON kindOf="standard">usiq</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">one</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">一</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">one</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_9_W3">
+        <W id="KavNr-map_imuy_S_37_W3">
             <FORM kindOf="original">yau</FORM>
             <PHON kindOf="original">jau</PHON>
             <FORM kindOf="standard">yau</FORM>
             <PHON kindOf="standard">jau</PHON>
             <TRANSL xml:lang="zho" kindOf="original">存在</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">EXIST</TRANSL>
-            <M id="KavNr-map_imuy_S_9_W3M1">
+            <M id="KavNr-map_imuy_S_37_W3M0">
                 <FORM kindOf="original">yau</FORM>
                 <PHON kindOf="original">jau</PHON>
                 <FORM kindOf="standard">yau</FORM>
                 <PHON kindOf="standard">jau</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">EXIST</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="original">存在</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_9_W4">
+        <W id="KavNr-map_imuy_S_37_W4">
             <FORM kindOf="original">a</FORM>
             <PHON kindOf="original">a</PHON>
             <FORM kindOf="standard">a</FORM>
             <PHON kindOf="standard">a</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
-            <M id="KavNr-map_imuy_S_9_W4M1">
+            <M id="KavNr-map_imuy_S_37_W4M0">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_9_W5">
-            <FORM kindOf="original">zena</FORM>
-            <PHON kindOf="original">[z|r]əna</PHON>
-            <FORM kindOf="standard">zena</FORM>
+        <W id="KavNr-map_imuy_S_37_W5">
+            <FORM kindOf="original">zena,</FORM>
+            <PHON kindOf="original">zəna</PHON>
+            <FORM kindOf="standard">zena,</FORM>
             <PHON kindOf="standard">[z|r]əna</PHON>
             <TRANSL xml:lang="zho" kindOf="original">水田</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">paddy.field</TRANSL>
-            <M id="KavNr-map_imuy_S_9_W5M1">
-                <FORM kindOf="original">zena</FORM>
-                <PHON kindOf="original">[z|r]əna</PHON>
-                <FORM kindOf="standard">zena</FORM>
+            <M id="KavNr-map_imuy_S_37_W5M0">
+                <FORM kindOf="original">zena,</FORM>
+                <PHON kindOf="original">zəna</PHON>
+                <FORM kindOf="standard">zena,</FORM>
                 <PHON kindOf="standard">[z|r]əna</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">paddy.field</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">水田</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">paddy.field</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_9_W6">
-            <FORM kindOf="original">ta-</FORM>
+        <W id="KavNr-map_imuy_S_37_W6">
+            <FORM kindOf="original">ta-,</FORM>
             <PHON kindOf="original">ta</PHON>
-            <FORM kindOf="standard">ta-</FORM>
+            <FORM kindOf="standard">ta-,</FORM>
             <PHON kindOf="standard">ta</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
-            <M id="KavNr-map_imuy_S_9_W6M1">
-                <FORM kindOf="original">ta</FORM>
-                <PHON kindOf="original">ta</PHON>
-                <FORM kindOf="standard">ta</FORM>
-                <PHON kindOf="standard">ta</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">LOC</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="original">處格</TRANSL>
-            </M>
+            <TRANSL xml:lang="zho" kindOf="original">處格-</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">LOC-</TRANSL>
         </W>
-        <W id="KavNr-map_imuy_S_9_W7">
-            <FORM kindOf="original">ni-laziw-an-na</FORM>
-            <PHON kindOf="original">nira[z|r]iwanna</PHON>
-            <FORM kindOf="standard">ni-laziw-an-na</FORM>
+        <W id="KavNr-map_imuy_S_37_W7">
+            <FORM kindOf="original">ni-laziw-an-na.</FORM>
+            <PHON kindOf="original">niraziwanna</PHON>
+            <FORM kindOf="standard">ni-laziw-an-na.</FORM>
             <PHON kindOf="standard">nira[z|r]iwanna</PHON>
             <TRANSL xml:lang="zho" kindOf="original">完成-穿過-名物化-3SG.屬格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">PFV-cross-NMZ-3SG.GEN</TRANSL>
-            <M id="KavNr-map_imuy_S_9_W7M1">
+            <M id="KavNr-map_imuy_S_37_W7M0">
                 <FORM kindOf="original">ni</FORM>
                 <PHON kindOf="original">ni</PHON>
                 <FORM kindOf="standard">ni</FORM>
                 <PHON kindOf="standard">ni</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">完成</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
             </M>
-            <M id="KavNr-map_imuy_S_9_W7M2">
+            <M id="KavNr-map_imuy_S_37_W7M1">
                 <FORM kindOf="original">laziw</FORM>
-                <PHON kindOf="original">ra[z|r]iw</PHON>
+                <PHON kindOf="original">raziw</PHON>
                 <FORM kindOf="standard">laziw</FORM>
                 <PHON kindOf="standard">ra[z|r]iw</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">cross</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">穿過</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">cross</TRANSL>
             </M>
-            <M id="KavNr-map_imuy_S_9_W7M3">
+            <M id="KavNr-map_imuy_S_37_W7M2">
                 <FORM kindOf="original">an</FORM>
                 <PHON kindOf="original">an</PHON>
                 <FORM kindOf="standard">an</FORM>
                 <PHON kindOf="standard">an</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">NMZ</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">名物化</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">NMZ</TRANSL>
             </M>
-            <M id="KavNr-map_imuy_S_9_W7M4">
-                <FORM kindOf="original">na</FORM>
+            <M id="KavNr-map_imuy_S_37_W7M3">
+                <FORM kindOf="original">na.</FORM>
                 <PHON kindOf="original">na</PHON>
-                <FORM kindOf="standard">na</FORM>
+                <FORM kindOf="standard">na.</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">3SG.GEN</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">3SG.屬格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">3SG.GEN</TRANSL>
             </M>
         </W>
     </S>
-    <S id="KavNr-map_imuy_S_10">
-        <FORM kindOf="original">tu wiyati tmanan tema wiyati smaqay nani.</FORM>
+    <S id="KavNr-map_imuy_S_42">
+        <FORM kindOf="original">tu, wiyati tmanan, tema wiyati smaqay nani.</FORM>
         <PHON kindOf="original">tu wijati tmanan təma wijati smaqaj nani</PHON>
-        <FORM kindOf="standard">tu wiyati tmanan tema wiyati smaqay nani.</FORM>
+        <FORM kindOf="standard">tu, wiyati tmanan, tema wiyati smaqay nani.</FORM>
         <PHON kindOf="standard">tu wijati tmanan təma wijati smaqaj nani</PHON>
-        <TRANSL xml:lang="zho">繼續走.</TRANSL>
+        <TRANSL xml:lang="zho">繼續走。</TRANSL>
         <TRANSL xml:lang="eng">(He) continued walking.</TRANSL>
-        <AUDIO file="KavNr-map_imuy_S10.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_imuy.mp3" start="49.97" end="53.51"/>
-        <W id="KavNr-map_imuy_S_10_W0">
-            <FORM kindOf="original">tu</FORM>
+        <AUDIO file="KavNr-map_imuy_S42.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_imuy.mp3" start="49.97" end="53.51"/>
+        <W id="KavNr-map_imuy_S_42_W0">
+            <FORM kindOf="original">tu,</FORM>
             <PHON kindOf="original">tu</PHON>
-            <FORM kindOf="standard">tu</FORM>
+            <FORM kindOf="standard">tu,</FORM>
             <PHON kindOf="standard">tu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
-            <M id="KavNr-map_imuy_S_10_W0M1">
-                <FORM kindOf="original">tu</FORM>
+            <M id="KavNr-map_imuy_S_42_W0M0">
+                <FORM kindOf="original">tu,</FORM>
                 <PHON kindOf="original">tu</PHON>
-                <FORM kindOf="standard">tu</FORM>
+                <FORM kindOf="standard">tu,</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_10_W1">
+        <W id="KavNr-map_imuy_S_42_W1">
             <FORM kindOf="original">wiya=ti</FORM>
             <PHON kindOf="original">wijati</PHON>
             <FORM kindOf="standard">wiya=ti</FORM>
             <PHON kindOf="standard">wijati</PHON>
             <TRANSL xml:lang="zho" kindOf="original">離開=完成</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">leave=PFV</TRANSL>
-            <M id="KavNr-map_imuy_S_10_W1M1">
+            <M id="KavNr-map_imuy_S_42_W1M0">
                 <FORM kindOf="original">wiya</FORM>
                 <PHON kindOf="original">wija</PHON>
                 <FORM kindOf="standard">wiya</FORM>
                 <PHON kindOf="standard">wija</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">leave</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">離開</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">leave</TRANSL>
             </M>
-            <M id="KavNr-map_imuy_S_10_W1M2">
+            <M id="KavNr-map_imuy_S_42_W1M1">
                 <FORM kindOf="original">=ti</FORM>
                 <PHON kindOf="original">ti</PHON>
                 <FORM kindOf="standard">=ti</FORM>
                 <PHON kindOf="standard">ti</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">完成</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_10_W2">
-            <FORM kindOf="original">t&lt;m&gt;anan</FORM>
+        <W id="KavNr-map_imuy_S_42_W2">
+            <FORM kindOf="original">t&lt;m&gt;anan,</FORM>
             <PHON kindOf="original">tmanan</PHON>
-            <FORM kindOf="standard">t&lt;m&gt;anan</FORM>
+            <FORM kindOf="standard">t&lt;m&gt;anan,</FORM>
             <PHON kindOf="standard">tmanan</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;回</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;return</TRANSL>
-            <M id="KavNr-map_imuy_S_10_W2M1">
+            <M id="KavNr-map_imuy_S_42_W2M0_0">
                 <FORM kindOf="original">-m-</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
             </M>
-            <M id="KavNr-map_imuy_S_10_W2M2">
-                <FORM kindOf="original">t-anan</FORM>
+            <M id="KavNr-map_imuy_S_42_W2M0_1">
+                <FORM kindOf="original">t-anan,</FORM>
                 <PHON kindOf="original">tanan</PHON>
-                <FORM kindOf="standard">t-anan</FORM>
+                <FORM kindOf="standard">t-anan,</FORM>
                 <PHON kindOf="standard">tanan</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">return</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">回</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">return</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_10_W3">
+        <W id="KavNr-map_imuy_S_42_W3">
             <FORM kindOf="original">tema</FORM>
             <PHON kindOf="original">təma</PHON>
             <FORM kindOf="standard">tema</FORM>
             <PHON kindOf="standard">təma</PHON>
             <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
-            <M id="KavNr-map_imuy_S_10_W3M1">
+            <M id="KavNr-map_imuy_S_42_W3M0">
                 <FORM kindOf="original">tema</FORM>
                 <PHON kindOf="original">təma</PHON>
                 <FORM kindOf="standard">tema</FORM>
                 <PHON kindOf="standard">təma</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_10_W4">
+        <W id="KavNr-map_imuy_S_42_W4">
             <FORM kindOf="original">wiya=ti</FORM>
             <PHON kindOf="original">wijati</PHON>
             <FORM kindOf="standard">wiya=ti</FORM>
             <PHON kindOf="standard">wijati</PHON>
             <TRANSL xml:lang="zho" kindOf="original">離開=完成</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">leave=PFV</TRANSL>
-            <M id="KavNr-map_imuy_S_10_W4M1">
+            <M id="KavNr-map_imuy_S_42_W4M0">
                 <FORM kindOf="original">wiya</FORM>
                 <PHON kindOf="original">wija</PHON>
                 <FORM kindOf="standard">wiya</FORM>
                 <PHON kindOf="standard">wija</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">leave</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">離開</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">leave</TRANSL>
             </M>
-            <M id="KavNr-map_imuy_S_10_W4M2">
+            <M id="KavNr-map_imuy_S_42_W4M1">
                 <FORM kindOf="original">=ti</FORM>
                 <PHON kindOf="original">ti</PHON>
                 <FORM kindOf="standard">=ti</FORM>
                 <PHON kindOf="standard">ti</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">完成</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_10_W5">
+        <W id="KavNr-map_imuy_S_42_W5">
             <FORM kindOf="original">s&lt;m&gt;aqay</FORM>
             <PHON kindOf="original">smaqaj</PHON>
             <FORM kindOf="standard">s&lt;m&gt;aqay</FORM>
             <PHON kindOf="standard">smaqaj</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;走</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;walk</TRANSL>
-            <M id="KavNr-map_imuy_S_10_W5M1">
+            <M id="KavNr-map_imuy_S_42_W5M0_0">
                 <FORM kindOf="original">-m-</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
             </M>
-            <M id="KavNr-map_imuy_S_10_W5M2">
+            <M id="KavNr-map_imuy_S_42_W5M0_1">
                 <FORM kindOf="original">s-aqay</FORM>
                 <PHON kindOf="original">saqaj</PHON>
                 <FORM kindOf="standard">s-aqay</FORM>
                 <PHON kindOf="standard">saqaj</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">walk</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">走</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">walk</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_10_W6">
-            <FORM kindOf="original">nani</FORM>
+        <W id="KavNr-map_imuy_S_42_W6">
+            <FORM kindOf="original">nani.</FORM>
             <PHON kindOf="original">nani</PHON>
-            <FORM kindOf="standard">nani</FORM>
+            <FORM kindOf="standard">nani.</FORM>
             <PHON kindOf="standard">nani</PHON>
             <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
-            <M id="KavNr-map_imuy_S_10_W6M1">
-                <FORM kindOf="original">nani</FORM>
+            <M id="KavNr-map_imuy_S_42_W6M0">
+                <FORM kindOf="original">nani.</FORM>
                 <PHON kindOf="original">nani</PHON>
-                <FORM kindOf="standard">nani</FORM>
+                <FORM kindOf="standard">nani.</FORM>
                 <PHON kindOf="standard">nani</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">DM</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">DM</TRANSL>
             </M>
         </W>
     </S>
-    <S id="KavNr-map_imuy_S_11">
-        <FORM kindOf="original">tmalawma m XXXX pasazi tmalawmati tu 'nay paRin a yau.</FORM>
-        <PHON kindOf="original">tmarawma m **** pasa[z|r]i tmarawmati tu ʔnaj paʁin a jau</PHON>
-        <FORM kindOf="standard">tmalawma m XXXX pasazi tmalawmati tu 'nay paRin a yau.</FORM>
-        <PHON kindOf="standard">tmarawma m **** pasa[z|r]i tmarawmati tu ʔnaj paʁin a jau</PHON>
-        <TRANSL xml:lang="zho">穿越那邊的樹.</TRANSL>
+    <S id="KavNr-map_imuy_S_45">
+        <FORM kindOf="original">tmalawma, m pasazi, tmalawmati tu, 'nay paRin a yau,</FORM>
+        <PHON kindOf="original">tmarawma m pasazi tmarawmati tu ʔnaj paʁin a jau</PHON>
+        <FORM kindOf="standard">tmalawma, m pasazi, tmalawmati tu, 'nay paRin a yau,</FORM>
+        <PHON kindOf="standard">tmarawma m pasa[z|r]i tmarawmati tu ʔnaj paʁin a jau</PHON>
+        <TRANSL xml:lang="zho">穿越那邊的樹。</TRANSL>
         <TRANSL xml:lang="eng">(He) passed by the tree over there.</TRANSL>
-        <AUDIO file="KavNr-map_imuy_S11.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_imuy.mp3" start="53.51" end="59.49"/>
-        <W id="KavNr-map_imuy_S_11_W0">
-            <FORM kindOf="original">t&lt;m&gt;alawma</FORM>
+        <AUDIO file="KavNr-map_imuy_S45.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_imuy.mp3" start="53.51" end="59.49"/>
+        <W id="KavNr-map_imuy_S_45_W0">
+            <FORM kindOf="original">t&lt;m&gt;alawma,</FORM>
             <PHON kindOf="original">tmarawma</PHON>
-            <FORM kindOf="standard">t&lt;m&gt;alawma</FORM>
+            <FORM kindOf="standard">t&lt;m&gt;alawma,</FORM>
             <PHON kindOf="standard">tmarawma</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;穿越</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;cross</TRANSL>
-            <M id="KavNr-map_imuy_S_11_W0M1">
+            <M id="KavNr-map_imuy_S_45_W0M0_0">
                 <FORM kindOf="original">-m-</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
             </M>
-            <M id="KavNr-map_imuy_S_11_W0M2">
-                <FORM kindOf="original">t-alawma</FORM>
+            <M id="KavNr-map_imuy_S_45_W0M0_1">
+                <FORM kindOf="original">t-alawma,</FORM>
                 <PHON kindOf="original">tarawma</PHON>
-                <FORM kindOf="standard">t-alawma</FORM>
+                <FORM kindOf="standard">t-alawma,</FORM>
                 <PHON kindOf="standard">tarawma</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">cross</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">穿越</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">cross</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_11_W1">
+        <W id="KavNr-map_imuy_S_45_W1">
             <FORM kindOf="original">m</FORM>
             <PHON kindOf="original">m</PHON>
             <FORM kindOf="standard">m</FORM>
             <PHON kindOf="standard">m</PHON>
             <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
-            <M id="KavNr-map_imuy_S_11_W1M1">
+            <M id="KavNr-map_imuy_S_45_W1M0">
                 <FORM kindOf="original">m</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">m</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">FS</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">FS</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_11_W2">
-            <FORM kindOf="original">XXXX</FORM>
-            <PHON kindOf="original">****</PHON>
-            <FORM kindOf="standard">XXXX</FORM>
-            <PHON kindOf="standard">****</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">XXXX</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">XXXX</TRANSL>
-            <M id="KavNr-map_imuy_S_11_W2M1">
-                <FORM kindOf="original">XXXX</FORM>
-                <PHON kindOf="original">****</PHON>
-                <FORM kindOf="standard">XXXX</FORM>
-                <PHON kindOf="standard">****</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">XXXX</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="original">XXXX</TRANSL>
-            </M>
-        </W>
-        <W id="KavNr-map_imuy_S_11_W3">
-            <FORM kindOf="original">pasazi</FORM>
-            <PHON kindOf="original">pasa[z|r]i</PHON>
-            <FORM kindOf="standard">pasazi</FORM>
+        <W id="KavNr-map_imuy_S_45_W2">
+            <FORM kindOf="original">pasazi,</FORM>
+            <PHON kindOf="original">pasazi</PHON>
+            <FORM kindOf="standard">pasazi,</FORM>
             <PHON kindOf="standard">pasa[z|r]i</PHON>
             <TRANSL xml:lang="zho" kindOf="original">過來</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">toward.here</TRANSL>
-            <M id="KavNr-map_imuy_S_11_W3M1">
-                <FORM kindOf="original">pasazi</FORM>
-                <PHON kindOf="original">pasa[z|r]i</PHON>
-                <FORM kindOf="standard">pasazi</FORM>
+            <M id="KavNr-map_imuy_S_45_W2M0">
+                <FORM kindOf="original">pasazi,</FORM>
+                <PHON kindOf="original">pasazi</PHON>
+                <FORM kindOf="standard">pasazi,</FORM>
                 <PHON kindOf="standard">pasa[z|r]i</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">toward.here</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">過來</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">toward.here</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_11_W4">
+        <W id="KavNr-map_imuy_S_45_W3">
             <FORM kindOf="original">t&lt;m&gt;alawma=ti</FORM>
             <PHON kindOf="original">tmarawmati</PHON>
             <FORM kindOf="standard">t&lt;m&gt;alawma=ti</FORM>
             <PHON kindOf="standard">tmarawmati</PHON>
             <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;穿越=完成</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;cross=PFV</TRANSL>
-            <M id="KavNr-map_imuy_S_11_W4M1">
+            <M id="KavNr-map_imuy_S_45_W3M0_0">
                 <FORM kindOf="original">-m-</FORM>
                 <PHON kindOf="original">m</PHON>
                 <FORM kindOf="standard">-m-</FORM>
                 <PHON kindOf="standard">m</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">&lt;主焦&gt;</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">&lt;AF&gt;</TRANSL>
             </M>
-            <M id="KavNr-map_imuy_S_11_W4M2">
+            <M id="KavNr-map_imuy_S_45_W3M0_1">
                 <FORM kindOf="original">t-alawma</FORM>
                 <PHON kindOf="original">tarawma</PHON>
                 <FORM kindOf="standard">t-alawma</FORM>
                 <PHON kindOf="standard">tarawma</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">cross</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">穿越</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">cross</TRANSL>
             </M>
-            <M id="KavNr-map_imuy_S_11_W4M3">
+            <M id="KavNr-map_imuy_S_45_W3M1">
                 <FORM kindOf="original">=ti</FORM>
                 <PHON kindOf="original">ti</PHON>
                 <FORM kindOf="standard">=ti</FORM>
                 <PHON kindOf="standard">ti</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">完成</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PFV</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_11_W5">
-            <FORM kindOf="original">tu</FORM>
+        <W id="KavNr-map_imuy_S_45_W4">
+            <FORM kindOf="original">tu,</FORM>
             <PHON kindOf="original">tu</PHON>
-            <FORM kindOf="standard">tu</FORM>
+            <FORM kindOf="standard">tu,</FORM>
             <PHON kindOf="standard">tu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
-            <M id="KavNr-map_imuy_S_11_W5M1">
-                <FORM kindOf="original">tu</FORM>
+            <M id="KavNr-map_imuy_S_45_W4M0">
+                <FORM kindOf="original">tu,</FORM>
                 <PHON kindOf="original">tu</PHON>
-                <FORM kindOf="standard">tu</FORM>
+                <FORM kindOf="standard">tu,</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_11_W6">
+        <W id="KavNr-map_imuy_S_45_W5">
             <FORM kindOf="original">'nay</FORM>
             <PHON kindOf="original">ʔnaj</PHON>
             <FORM kindOf="standard">'nay</FORM>
             <PHON kindOf="standard">ʔnaj</PHON>
             <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
-            <M id="KavNr-map_imuy_S_11_W6M1">
+            <M id="KavNr-map_imuy_S_45_W5M0">
                 <FORM kindOf="original">'nay</FORM>
                 <PHON kindOf="original">ʔnaj</PHON>
                 <FORM kindOf="standard">'nay</FORM>
                 <PHON kindOf="standard">ʔnaj</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_11_W7">
+        <W id="KavNr-map_imuy_S_45_W6">
             <FORM kindOf="original">paRin</FORM>
             <PHON kindOf="original">paʁin</PHON>
             <FORM kindOf="standard">paRin</FORM>
             <PHON kindOf="standard">paʁin</PHON>
             <TRANSL xml:lang="zho" kindOf="original">樹</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">tree</TRANSL>
-            <M id="KavNr-map_imuy_S_11_W7M1">
+            <M id="KavNr-map_imuy_S_45_W6M0">
                 <FORM kindOf="original">paRin</FORM>
                 <PHON kindOf="original">paʁin</PHON>
                 <FORM kindOf="standard">paRin</FORM>
                 <PHON kindOf="standard">paʁin</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">tree</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">樹</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">tree</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_11_W8">
+        <W id="KavNr-map_imuy_S_45_W7">
             <FORM kindOf="original">a</FORM>
             <PHON kindOf="original">a</PHON>
             <FORM kindOf="standard">a</FORM>
             <PHON kindOf="standard">a</PHON>
             <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
-            <M id="KavNr-map_imuy_S_11_W8M1">
+            <M id="KavNr-map_imuy_S_45_W7M0">
                 <FORM kindOf="original">a</FORM>
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">連詞</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">LNK</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_11_W9">
-            <FORM kindOf="original">yau</FORM>
+        <W id="KavNr-map_imuy_S_45_W8">
+            <FORM kindOf="original">yau,</FORM>
             <PHON kindOf="original">jau</PHON>
-            <FORM kindOf="standard">yau</FORM>
+            <FORM kindOf="standard">yau,</FORM>
             <PHON kindOf="standard">jau</PHON>
             <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
-            <M id="KavNr-map_imuy_S_11_W9M1">
-                <FORM kindOf="original">yau</FORM>
+            <M id="KavNr-map_imuy_S_45_W8M0">
+                <FORM kindOf="original">yau,</FORM>
                 <PHON kindOf="original">jau</PHON>
-                <FORM kindOf="standard">yau</FORM>
+                <FORM kindOf="standard">yau,</FORM>
                 <PHON kindOf="standard">jau</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
             </M>
         </W>
     </S>
-    <S id="KavNr-map_imuy_S_12">
-        <FORM kindOf="original">awka maseq tu lepawna ya ti buya.</FORM>
+    <S id="KavNr-map_imuy_S_49">
+        <FORM kindOf="original">awka, maseq tu, lepawna, ya ti, buya.</FORM>
         <PHON kindOf="original">awka masəq tu rəpawna ja ti βuja</PHON>
-        <FORM kindOf="standard">awka maseq tu lepawna ya ti buya.</FORM>
+        <FORM kindOf="standard">awka, maseq tu, lepawna, ya ti, buya.</FORM>
         <PHON kindOf="standard">awka masəq tu rəpawna ja ti βuja</PHON>
-        <TRANSL xml:lang="zho">Buya才到他的家裡.</TRANSL>
+        <TRANSL xml:lang="zho">Buya才到他的家裡。</TRANSL>
         <TRANSL xml:lang="eng">Then Buya arrived at his house.</TRANSL>
-        <AUDIO file="KavNr-map_imuy_S12.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_imuy.mp3" start="59.49" end="63.11"/>
-        <W id="KavNr-map_imuy_S_12_W0">
-            <FORM kindOf="original">awka</FORM>
+        <AUDIO file="KavNr-map_imuy_S49.mp3" url="https://formosanbank.linguistics.ntu.edu.tw/files/audio/KavNr-map_imuy.mp3" start="59.49" end="63.11"/>
+        <W id="KavNr-map_imuy_S_49_W0">
+            <FORM kindOf="original">awka,</FORM>
             <PHON kindOf="original">awka</PHON>
-            <FORM kindOf="standard">awka</FORM>
+            <FORM kindOf="standard">awka,</FORM>
             <PHON kindOf="standard">awka</PHON>
             <TRANSL xml:lang="zho" kindOf="original">才</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">then.only</TRANSL>
-            <M id="KavNr-map_imuy_S_12_W0M1">
-                <FORM kindOf="original">awka</FORM>
+            <M id="KavNr-map_imuy_S_49_W0M0">
+                <FORM kindOf="original">awka,</FORM>
                 <PHON kindOf="original">awka</PHON>
-                <FORM kindOf="standard">awka</FORM>
+                <FORM kindOf="standard">awka,</FORM>
                 <PHON kindOf="standard">awka</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">then.only</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">才</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">so.that</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_12_W1">
+        <W id="KavNr-map_imuy_S_49_W1">
             <FORM kindOf="original">maseq</FORM>
             <PHON kindOf="original">masəq</PHON>
             <FORM kindOf="standard">maseq</FORM>
             <PHON kindOf="standard">masəq</PHON>
             <TRANSL xml:lang="zho" kindOf="original">到達</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">arrive</TRANSL>
-            <M id="KavNr-map_imuy_S_12_W1M1">
+            <M id="KavNr-map_imuy_S_49_W1M0">
                 <FORM kindOf="original">maseq</FORM>
                 <PHON kindOf="original">masəq</PHON>
                 <FORM kindOf="standard">maseq</FORM>
                 <PHON kindOf="standard">masəq</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">arrive</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="original">到達</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">主焦.到達</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">AF.arrive</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_12_W2">
-            <FORM kindOf="original">tu</FORM>
+        <W id="KavNr-map_imuy_S_49_W2">
+            <FORM kindOf="original">tu,</FORM>
             <PHON kindOf="original">tu</PHON>
-            <FORM kindOf="standard">tu</FORM>
+            <FORM kindOf="standard">tu,</FORM>
             <PHON kindOf="standard">tu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
-            <M id="KavNr-map_imuy_S_12_W2M1">
-                <FORM kindOf="original">tu</FORM>
+            <M id="KavNr-map_imuy_S_49_W2M0">
+                <FORM kindOf="original">tu,</FORM>
                 <PHON kindOf="original">tu</PHON>
-                <FORM kindOf="standard">tu</FORM>
+                <FORM kindOf="standard">tu,</FORM>
                 <PHON kindOf="standard">tu</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">斜格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">OBL</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_12_W3">
-            <FORM kindOf="original">lepaw-na</FORM>
+        <W id="KavNr-map_imuy_S_49_W3">
+            <FORM kindOf="original">lepaw-na,</FORM>
             <PHON kindOf="original">rəpawna</PHON>
-            <FORM kindOf="standard">lepaw-na</FORM>
+            <FORM kindOf="standard">lepaw-na,</FORM>
             <PHON kindOf="standard">rəpawna</PHON>
             <TRANSL xml:lang="zho" kindOf="original">家-3SG.屬格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">house-3SG.GEN</TRANSL>
-            <M id="KavNr-map_imuy_S_12_W3M1">
+            <M id="KavNr-map_imuy_S_49_W3M0">
                 <FORM kindOf="original">lepaw</FORM>
                 <PHON kindOf="original">rəpaw</PHON>
                 <FORM kindOf="standard">lepaw</FORM>
                 <PHON kindOf="standard">rəpaw</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">house</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">家</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">house</TRANSL>
             </M>
-            <M id="KavNr-map_imuy_S_12_W3M2">
-                <FORM kindOf="original">na</FORM>
+            <M id="KavNr-map_imuy_S_49_W3M1">
+                <FORM kindOf="original">na,</FORM>
                 <PHON kindOf="original">na</PHON>
-                <FORM kindOf="standard">na</FORM>
+                <FORM kindOf="standard">na,</FORM>
                 <PHON kindOf="standard">na</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">3SG.GEN</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">3SG.屬格</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">3SG.GEN</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_12_W4">
+        <W id="KavNr-map_imuy_S_49_W4">
             <FORM kindOf="original">ya</FORM>
             <PHON kindOf="original">ja</PHON>
             <FORM kindOf="standard">ya</FORM>
             <PHON kindOf="standard">ja</PHON>
             <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
-            <M id="KavNr-map_imuy_S_12_W4M1">
+            <M id="KavNr-map_imuy_S_49_W4M0">
                 <FORM kindOf="original">ya</FORM>
                 <PHON kindOf="original">ja</PHON>
                 <FORM kindOf="standard">ya</FORM>
                 <PHON kindOf="standard">ja</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">NOM</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="original">主格</TRANSL>
+                <TRANSL xml:lang="zho" kindOf="original">那個</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">that</TRANSL>
             </M>
         </W>
-        <W id="KavNr-map_imuy_S_12_W5">
-            <FORM kindOf="original">ti-</FORM>
+        <W id="KavNr-map_imuy_S_49_W5">
+            <FORM kindOf="original">ti-,</FORM>
             <PHON kindOf="original">ti</PHON>
-            <FORM kindOf="standard">ti-</FORM>
+            <FORM kindOf="standard">ti-,</FORM>
             <PHON kindOf="standard">ti</PHON>
-            <TRANSL xml:lang="zho" kindOf="original">NCM</TRANSL>
-            <TRANSL xml:lang="eng" kindOf="original">NCM</TRANSL>
-            <M id="KavNr-map_imuy_S_12_W5M1">
-                <FORM kindOf="original">ti</FORM>
-                <PHON kindOf="original">ti</PHON>
-                <FORM kindOf="standard">ti</FORM>
-                <PHON kindOf="standard">ti</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">NCM</TRANSL>
-                <TRANSL xml:lang="zho" kindOf="original">NCM</TRANSL>
-            </M>
+            <TRANSL xml:lang="zho" kindOf="original">NCM-</TRANSL>
+            <TRANSL xml:lang="eng" kindOf="original">NCM-</TRANSL>
         </W>
-        <W id="KavNr-map_imuy_S_12_W6">
-            <FORM kindOf="original">buya</FORM>
+        <W id="KavNr-map_imuy_S_49_W6">
+            <FORM kindOf="original">buya.</FORM>
             <PHON kindOf="original">βuja</PHON>
-            <FORM kindOf="standard">buya</FORM>
+            <FORM kindOf="standard">buya.</FORM>
             <PHON kindOf="standard">βuja</PHON>
             <TRANSL xml:lang="zho" kindOf="original">人名</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">PN</TRANSL>
-            <M id="KavNr-map_imuy_S_12_W6M1">
-                <FORM kindOf="original">buya</FORM>
+            <M id="KavNr-map_imuy_S_49_W6M0">
+                <FORM kindOf="original">buya.</FORM>
                 <PHON kindOf="original">βuja</PHON>
-                <FORM kindOf="standard">buya</FORM>
+                <FORM kindOf="standard">buya.</FORM>
                 <PHON kindOf="standard">βuja</PHON>
-                <TRANSL xml:lang="eng" kindOf="original">PN</TRANSL>
                 <TRANSL xml:lang="zho" kindOf="original">人名</TRANSL>
+                <TRANSL xml:lang="eng" kindOf="original">PN</TRANSL>
             </M>
         </W>
     </S>

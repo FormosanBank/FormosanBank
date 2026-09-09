@@ -109,17 +109,17 @@ GLOSS_SHIFT = [
     ("Stories/Tsou/Tsou_TsouConv-informants.xml", "TsouConv-informants_S_19",
      "FORM", None, "hia how teachPF.", "hia ma'cohioa.", None),
     ("Stories/Tsou/Tsou_TsouConv-informants.xml", "TsouConv-informants_S_19",
-     "FORM", None, "how", "ma'cohioa.", "TsouConv-informants_S_19_W6"),
+     "FORM", None, "how", "ma'cohioa.", "TsouConv-informants_S_19_W5"),
     ("Stories/Tsou/Tsou_TsouConv-informants.xml", "TsouConv-informants_S_19",
-     "FORM", None, "how", "ma'cohioa.", "TsouConv-informants_S_19_W6M1"),
+     "FORM", None, "how", "ma'cohioa.", "TsouConv-informants_S_19_W5M1"),
     ("Stories/Tsou/Tsou_TsouConv-informants.xml", "TsouConv-informants_S_19",
-     "TRANSL", "eng", "如何", "teach.PF", "TsouConv-informants_S_19_W6"),
+     "TRANSL", "eng", "如何", "teach.PF", "TsouConv-informants_S_19_W5"),
     ("Stories/Tsou/Tsou_TsouConv-informants.xml", "TsouConv-informants_S_19",
-     "TRANSL", "zho", "但是這裡出現的是ma'cohioa", "教.受焦", "TsouConv-informants_S_19_W6"),
+     "TRANSL", "zho", "但是這裡出現的是ma'cohioa", "教.受焦", "TsouConv-informants_S_19_W5"),
     ("Stories/Tsou/Tsou_TsouConv-informants.xml", "TsouConv-informants_S_19",
-     "TRANSL", "eng", "如何", "teach.PF", "TsouConv-informants_S_19_W6M1"),
+     "TRANSL", "eng", "如何", "teach.PF", "TsouConv-informants_S_19_W5M1"),
     ("Stories/Tsou/Tsou_TsouConv-informants.xml", "TsouConv-informants_S_19",
-     "TRANSL", "zho", "但是這裡出現的是ma'cohioa", "教.受焦", "TsouConv-informants_S_19_W6M1"),
+     "TRANSL", "zho", "但是這裡出現的是ma'cohioa", "教.受焦", "TsouConv-informants_S_19_W5M1"),
 ]
 
 # 4b. Two more column-shifted rows found by the 2026-06-11 source sweep
@@ -130,24 +130,24 @@ GLOSS_SHIFT.extend([
     ("Stories/Kavalan/Kavalan_KavCon-home_buya_imuy.xml", "KavCon-home_buya_imuy_S_69",
      "FORM", None, " how ", " qumuni ", None),
     ("Stories/Kavalan/Kavalan_KavCon-home_buya_imuy.xml", "KavCon-home_buya_imuy_S_69",
-     "FORM", None, "how", "qumuni,", "KavCon-home_buya_imuy_S_69_W6"),
+     "FORM", None, "how", "qumuni,", "KavCon-home_buya_imuy_S_69_W4"),
     ("Stories/Kavalan/Kavalan_KavCon-home_buya_imuy.xml", "KavCon-home_buya_imuy_S_69",
-     "FORM", None, "how", "qumuni,", "KavCon-home_buya_imuy_S_69_W6M1"),
+     "FORM", None, "how", "qumuni,", "KavCon-home_buya_imuy_S_69_W4M1"),
     ("Stories/Kavalan/Kavalan_KavCon-home_buya_imuy.xml", "KavCon-home_buya_imuy_S_69",
-     "TRANSL", "eng", "212", "how", "KavCon-home_buya_imuy_S_69_W6"),
+     "TRANSL", "eng", "212", "how", "KavCon-home_buya_imuy_S_69_W4"),
     ("Stories/Kavalan/Kavalan_KavCon-home_buya_imuy.xml", "KavCon-home_buya_imuy_S_69",
-     "TRANSL", "eng", "212", "how", "KavCon-home_buya_imuy_S_69_W6M1"),
+     "TRANSL", "eng", "212", "how", "KavCon-home_buya_imuy_S_69_W4M1"),
     # KavCon-relatives rec 225: ['that', '那個', '205']; ori: 'nay==,
     ("Stories/Kavalan/Kavalan_KavCon-relatives_buya_ngengi.xml", "KavCon-relatives_buya_ngengi_S_70",
      "FORM", None, " that ", " 'nay ", None),
     ("Stories/Kavalan/Kavalan_KavCon-relatives_buya_ngengi.xml", "KavCon-relatives_buya_ngengi_S_70",
-     "FORM", None, "that", "'nay,", "KavCon-relatives_buya_ngengi_S_70_W2"),
+     "FORM", None, "that", "'nay,", "KavCon-relatives_buya_ngengi_S_70_W1"),
     ("Stories/Kavalan/Kavalan_KavCon-relatives_buya_ngengi.xml", "KavCon-relatives_buya_ngengi_S_70",
-     "FORM", None, "that", "'nay,", "KavCon-relatives_buya_ngengi_S_70_W2M1"),
+     "FORM", None, "that", "'nay,", "KavCon-relatives_buya_ngengi_S_70_W1M1"),
     ("Stories/Kavalan/Kavalan_KavCon-relatives_buya_ngengi.xml", "KavCon-relatives_buya_ngengi_S_70",
-     "TRANSL", "eng", "205", "that", "KavCon-relatives_buya_ngengi_S_70_W2"),
+     "TRANSL", "eng", "205", "that", "KavCon-relatives_buya_ngengi_S_70_W1"),
     ("Stories/Kavalan/Kavalan_KavCon-relatives_buya_ngengi.xml", "KavCon-relatives_buya_ngengi_S_70",
-     "TRANSL", "eng", "205", "that", "KavCon-relatives_buya_ngengi_S_70_W2M1"),
+     "TRANSL", "eng", "205", "that", "KavCon-relatives_buya_ngengi_S_70_W1M1"),
 ])
 # 4c. Source echo rows and a diagonally-slid grid (2026-06-11 review of
 #     gloss_anomalies_review.csv). In sdqCon-dialog2 record 187 the gloss
@@ -186,15 +186,15 @@ FILLS = [
     ("Stories/Kavalan/Kavalan_KavCon-earthquake_abas_haciang.xml", "KavCon-earthquake_abas_haciang_S_194",
      "KavCon-earthquake_abas_haciang_S_194_W1M3", "TRANSL", "eng", "3PL.GEN"),
     ("Stories/Seediq/Seediq_sdqCon-dialog2_ciwas_tiwas 2021s.xml", "sdqCon-dialog2_ciwas_tiwas 2021s_S_128",
-     "sdqCon-dialog2_ciwas_tiwas 2021s_S_128_W8M2", "TRANSL", "eng", "pass"),
+     "sdqCon-dialog2_ciwas_tiwas 2021s_S_128_W6M2", "TRANSL", "eng", "pass"),
 ]
 _S128b="sdqCon-dialog2_ciwas_tiwas 2021s_S_128"
 _S32b="sdqNr-mother_iwan 2020s_S_32"
 GLOSS_SHIFT.extend([
     # S_128 W5: split the whole-word gloss across the morphemes
-    (_DLG2, _S128b, "TRANSL", "eng", "AF-pass", "AF", _S128b+"_W8M1"),
-    (_DLG2, _S128b, "TRANSL", "zho", "m", "主焦", _S128b+"_W8M1"),
-    (_DLG2, _S128b, "TRANSL", "zho", "u[da", "經過", _S128b+"_W8M2"),
+    (_DLG2, _S128b, "TRANSL", "eng", "AF-pass", "AF", _S128b+"_W6M1"),
+    (_DLG2, _S128b, "TRANSL", "zho", "m", "主焦", _S128b+"_W6M1"),
+    (_DLG2, _S128b, "TRANSL", "zho", "u[da", "經過", _S128b+"_W6M2"),
     # S_32 W17-W20: the source grid's second column contains segmented
     # forms and its third column contains English glosses; Chinese glosses
     # survive in the following four orphan rows.
@@ -217,7 +217,7 @@ GLOSS_SHIFT.extend([
 # (relative file, S id, W id to delete) — impostor words with no source word
 DELETE_W = [
     ("Stories/Tsou/Tsou_TsouConv-informants.xml", "TsouConv-informants_S_19",
-     "TsouConv-informants_S_19_W7"),
+     "TsouConv-informants_S_19_W6"),
 ]
 
 GLOSS_SHIFT_NOTES = [
@@ -545,7 +545,11 @@ def main():
                 print(f"  PHON left (witness failed): {rel} "
                       f"{parent.tag} id={parent.get('id')!r}")
                 continue
-            for kind in ("original", "standard"):
+            # Original tier only: the standard tier is regenerated from the original by
+            # standardize.py, and standard PHON by add_phonology.py, so writing them here
+            # edits derived tiers for no gain. The project minimises edits to the standard
+            # tier once generated.
+            for kind in ("original",):
                 fe, pe = _tier(parent, "FORM", kind), _tier(parent, "PHON", kind)
                 if fe is not None and pe is not None and (fe.text or "").strip():
                     newp = convert(fe.text, mp)

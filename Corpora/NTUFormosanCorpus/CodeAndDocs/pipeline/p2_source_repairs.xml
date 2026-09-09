@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Source-record repairs for pipeline2.
+
+  A separate list from the published Corpora/NTUFormosanCorpus/CodeAndDocs/
+  source_repairs.xml: pipeline2 is being rebuilt step by step, so it accumulates
+  its own repairs as they are found rather than inheriting a finished set.
+
+  Same contract as the published mechanism. A CASE names the source file and
+  record id, pins the pre-repair record with a SHA-256 over
+  json.dumps(record, ensure_ascii=False, separators=(",", ":")), and supplies
+  the whole replacement record. If the source drifts the digest stops matching
+  and the build fails rather than silently repairing the wrong thing.
+-->
+<P2_SOURCE_REPAIRS>
+  <RECORD_REPAIRS>
+    <CASE sourceFile="grammar/Kanakanavu_Kanakanavu/05.json" recordId="4" sourceDigest="f001895a989605ffd02740327542932e2a805e6a1f34acc37987bfaf77d87ddd">
+      <NOTE>The scraped table put the Chinese free translation in the gloss-form
+      column, left the gloss empty, and carried a grammatical note about "na" in
+      the translation slot. It also split the parenthetical annotation across the
+      last two FORM tokens, gluing its opening bracket to "cau". Restore the
+      sentence: the headword tokens become the FORM, the Chinese becomes the free
+      translation, and both source annotations are retained as notes.</NOTE>
+      <REPLACEMENT_JSON>[4,{"ori":["mima","sua","pa’ici","sua","cau"],"gloss":[],"free":["#c 人們在喝酒。","#n na 標示名詞組中的處所、目標或方向論元。如sua 一樣，na 適用於所有類","#n （很少使用兩個sua）","#n 《卡那卡那富語語法概論》 第五章　格位標記與代名詞系統"],"s_end":true,"iu_a_span":[null,null],"meta":{"type":"GrammarBook","topic":"第五章 格位標記與代名詞系統","language":"卡那卡那富語, Kanakanavu, Kanakanavu"},"audio_url":"https://formosanbank.linguistics.ntu.edu.tw/files/audio/Kanakanavu_5-2-1.wav"}]</REPLACEMENT_JSON>
+    </CASE>
+    <CASE sourceFile="grammar/Sakizaya_Sakizaya/14.json" recordId="8" sourceDigest="6a8b8da9dda67ce61c5b0f509dddbfc9cbd323825115a10c711e549039c8feae">
+      <NOTE>A footnote reference (35) is printed against 'matai’' mid-sentence, so the end-anchored footnote rule cannot see it. The word tier glosses the token as 'ma-tai’', with no digits, and 35 continues the Sakizaya footnote sequence (ch04 19, ch05 23/24, ch13 32). Remove the digits only.</NOTE>
+      <REPLACEMENT_JSON>[8,{"ori":["matai’","tu","ku","sapiletek","ni","Ofad","tu","kilang","a","pulung工具","."],"gloss":[["ma-tai’=tu","主事焦點-大便=完成貌","_"],["ku","那.主格","_"],["sa-pi-letek","工具焦點-PI-砍","_"],["ni","屬格.人名標記","_"],["ofad","人名","_"],["tu","斜格","_"],["kilang","樹","_"],["a","連繫詞","_"],["pulung","斧頭","_"]],"free":["#c Ofad 要用來砍樹的斧頭生鏽了。","#n 《撒奇萊雅語語法概論》 第十四章　修飾結構"],"s_end":true,"iu_a_span":[null,null],"meta":{"type":"GrammarBook","topic":"第十四章 修飾結構","language":"撒奇萊雅語, Sakizaya, Sakizaya"},"audio_url":"https://formosanbank.linguistics.ntu.edu.tw/files/audio/Sakizaya_14-3-3.mp3"}]</REPLACEMENT_JSON>
+    </CASE>
+    <CASE sourceFile="grammar/Sakizaya_Sakizaya/05.json" recordId="1" sourceDigest="6da96b261cbe70b7b85a258886703c8bf5f6dac55d72a560d11304aed9f2e502">
+      <NOTE>The sentence opens with a bare 'e.' that has no counterpart anywhere in the word tier, which begins at 'u'. Remove it from the sentence form.</NOTE>
+      <REPLACEMENT_JSON>[1,{"ori":["u","kuwang","ku","sapipatay","ni","ama","tu","pabuy."],"gloss":[["u","非人名標記","_"],["kuwang","槍","_"],["ku","主格","_"],["sa-pi-patay","工具焦點-PI-死","_"],["ni","屬格.人名標記","_"],["ama","爸爸","_"],["tu","斜格","_"],["pabuy","豬","_"]],"free":["#c 爸爸用槍打死山豬。","#n 《撒奇萊雅語語法概論》 第五章　格位標記與代名詞系統"],"s_end":true,"iu_a_span":[null,null],"meta":{"type":"GrammarBook","topic":"第五章 格位標記與代名詞系統","language":"撒奇萊雅語, Sakizaya, Sakizaya"},"audio_url":"https://formosanbank.linguistics.ntu.edu.tw/files/audio/Sakizaya_5-1-1.mp3"}]</REPLACEMENT_JSON>
+    </CASE>
+    <CASE sourceFile="grammar/Kanakanavu_Kanakanavu/ap1.json" recordId="78" sourceDigest="eff203495d937da465457ab2229c0557fe9a87f917d2d7c47121529cf7082196">
+      <NOTE>The scraped table split one infixed word across two rows and shifted each following gloss one row downward. Rejoin the word and restore the source gloss alignment. Adopted verbatim from the corpus's own source_repairs.xml.</NOTE>
+      <REPLACEMENT_JSON>[78,{"ori":["matisapsapʉ","naParumaci","mukʉrʉ","tarisi","pui’i","na","tanasa."],"gloss":[["mati&lt;sap&gt;sapʉ","用手&lt;重疊&gt;摸索","_"],["naParumaci","已故-人名","_"],["m-ukʉrʉ","主事焦點-握著","_"],["tarisi","繩子","_"],["pui’i","主事焦點.回","_"],["na","處格","_"],["tanasa.","家","_"]],"free":["#c naParumaci握著繩子摸索回家。","#n 《卡那卡那富語語法概論》 長篇語料一　射日"],"s_end":true,"iu_a_span":[null,null],"meta":{"type":"GrammarBook","topic":"長篇語料一 射日","language":"卡那卡那富語, Kanakanavu, Kanakanavu"},"audio_url":"https://formosanbank.linguistics.ntu.edu.tw/files/audio/Kanakanavu_A3-5-23.wav"}]</REPLACEMENT_JSON>
+    </CASE>
+    <CASE sourceFile="grammar/Kanakanavu_Kanakanavu/12.json" recordId="5" sourceDigest="d052bb3135ffdceb3d27f141dbdd1ce39d0e44d5588622e75ccd524db456a433">
+      <NOTE>The gloss table writes the wordform as 'na33' where the sentence has 'na'; 33 is a footnote reference fused to the word, and the bare form appears in the sentence, corroborating it. Same phenomenon as matai'35 and soni!15 but in the word tier, where the end-anchored sentence rule never looks. It is the only such case in grammar, so it is pinned rather than generalised.</NOTE>
+      <REPLACEMENT_JSON>[5,{"ori":["nimuranʉ","cu","’apio","na","Kuatʉ","marisiki."],"gloss":[["ni-m-uranʉ=cu","完成貌-主事焦點-幫忙=狀態改變","_"],["’apio","人名","_"],["na","處格","_"],["Kuatʉ","人名","_"],["m-arisiki","主事焦點-打掃","_"]],"free":["#c ’apio 幫過Kuatʉ 打掃。","#n 《卡那卡那富語語法概論》 第十二章　連動結構"],"s_end":true,"iu_a_span":[null,null],"meta":{"type":"GrammarBook","topic":"第十二章 連動結構","language":"卡那卡那富語, Kanakanavu, Kanakanavu"},"audio_url":"https://formosanbank.linguistics.ntu.edu.tw/files/audio/Kanakanavu_12-3-1.wav"}]</REPLACEMENT_JSON>
+    </CASE>
+  </RECORD_REPAIRS>
+</P2_SOURCE_REPAIRS>

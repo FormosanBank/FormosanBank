@@ -114,7 +114,11 @@ def _original_form(elem):
 
 def _make_m(w_id, index, form_text, eng, zho):
     m = ET.Element("M", {"id": f"{w_id}M{index}"})
-    for kind in ("original", "standard"):
+    # Original tier only: the standard tier is regenerated from the original by
+    # standardize.py, and standard PHON by add_phonology.py, so writing them here
+    # edits derived tiers for no gain. The project minimises edits to the standard
+    # tier once generated.
+    for kind in ("original",):
         form = ET.SubElement(m, "FORM", {"kindOf": kind})
         form.text = form_text
     for lang, gloss in (("eng", eng), ("zho", zho)):

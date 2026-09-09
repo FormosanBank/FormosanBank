@@ -220,6 +220,22 @@ def strip_speaker_labels_from_translation(text: str) -> str:
     return _INLINE_SPEAKER_LABEL_RE.sub('', text).strip()
 
 
+# A speaker label whose gloss cell merely repeats the label is still a label:
+# the source writes rows such as ['D:', 'D:...', 'D:...'] or ['E', 'E', 'E'].
+# The echo may carry punctuation (colon, period, ellipsis) and a parenthesised
+# transcription annotation such as a pause duration, e.g. 'P:...(1.1)'.
+_LABEL_ECHO_RE = re.compile(r"^\s*([A-Z])\s*[:.\u2026]*\s*(?:\([^)]*\))?\s*[.\u2026]*\s*$")
+
+
+def gloss_echoes_label(form: str, gloss: str) -> bool:
+    """Return True when *gloss* merely restates the speaker label in *form*."""
+    letter = (form or "").strip().rstrip(":.\u2026 ")
+    if len(letter) != 1 or not letter.isupper():
+        return False
+    match = _LABEL_ECHO_RE.match((gloss or "").strip())
+    return bool(match) and match.group(1) == letter
+
+
 def is_speaker_token(form: str, zh: str = '', en: str = '') -> bool:
     """Return True when *form* is a speaker-role label that should be suppressed.
 
@@ -231,7 +247,10 @@ def is_speaker_token(form: str, zh: str = '', en: str = '') -> bool:
         return False
     # '_' is the source's absent-gloss placeholder, not a gloss. Treating it as
     # one lets a labelled turn such as ['D:', '_', '_'] escape suppression.
-    if (zh or "").strip() not in ("", "_") or (en or "").strip() not in ("", "_"):
+    def _absent(value: str) -> bool:
+        return (value or "").strip() in ("", "_") or gloss_echoes_label(form, value)
+
+    if not _absent(zh) or not _absent(en):
         return False   # has a gloss → not a bare speaker label
     return True
 

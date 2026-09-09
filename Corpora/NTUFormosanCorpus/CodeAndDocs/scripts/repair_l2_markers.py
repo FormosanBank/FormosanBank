@@ -305,7 +305,11 @@ def process_file(path, dry_run, stats):
                     stats[f"FORM tokens fixed ({el.tag})"] += n
                     modified = True
             if witness:
-                for kind in ("original", "standard"):
+                # Original tier only: the standard tier is regenerated from the original by
+                # standardize.py, and standard PHON by add_phonology.py, so writing them here
+                # edits derived tiers for no gain. The project minimises edits to the standard
+                # tier once generated.
+                for kind in ("original",):
                     f, p = _tier(el, "FORM", kind), _tier(el, "PHON", kind)
                     if f is not None and p is not None and (f.text or "").strip():
                         newp = convert(f.text, mp)

@@ -136,10 +136,14 @@ def _strip_sentence_notation(sentence, note):
 
 
 def _set_form(parent, value):
-    for kind in ("original", "standard"):
-        form = _tier(parent, "FORM", kind)
-        if form is not None:
-            form.text = value
+    # Original tier only. The standard tier is regenerated from the original
+    # by standardize.py (create_standard overwrites an existing standard FORM
+    # from the original), so a repair that writes both tiers is editing the
+    # standard tier for no gain -- and the project minimises edits to the
+    # standard tier once it has been generated.
+    form = _tier(parent, "FORM", "original")
+    if form is not None:
+        form.text = value
 
 
 def _set_primary_translation(parent, lang, value):
@@ -357,10 +361,14 @@ def _original_word_forms(sentence):
 
 
 def _set_sentence_form(sentence, value):
-    for kind in ("original", "standard"):
-        form = _tier(sentence, "FORM", kind)
-        if form is not None:
-            form.text = value
+    # Original tier only. The standard tier is regenerated from the original
+    # by standardize.py (create_standard overwrites an existing standard FORM
+    # from the original), so a repair that writes both tiers is editing the
+    # standard tier for no gain -- and the project minimises edits to the
+    # standard tier once it has been generated.
+    form = _tier(sentence, "FORM", "original")
+    if form is not None:
+        form.text = value
 
 
 def _drop_all_words(sentence):
@@ -747,6 +755,14 @@ def _contentless(text):
 
 
 def _transform_tier(elements, choices, groups, *, sentence_level=False):
+    elements = [element for element in elements if element is not None]
+    if not elements:
+        # The tier is absent from this sentence. A corpus that carries only the
+        # original tier is not malformed -- standardization runs later, or not
+        # at all for an audit build -- so there is simply nothing to transform
+        # here. Asserting a paren count against an empty element list would
+        # reject that corpus for a tier it never claimed to have.
+        return
     values = _transform_texts(
         [element.text or "" for element in elements], choices, groups
     )
@@ -755,7 +771,12 @@ def _transform_tier(elements, choices, groups, *, sentence_level=False):
 
 
 def _transform_variant(sentence, choices, groups, source_form):
-    for kind in ("original", "standard"):
+    # Original tier only. The standard tier is regenerated from the original
+    # by standardize.py (create_standard overwrites an existing standard FORM
+    # from the original), so a repair that writes both tiers is editing the
+    # standard tier for no gain -- and the project minimises edits to the
+    # standard tier once it has been generated.
+    for kind in ("original",):
         element = _tier(sentence, "FORM", kind)
         if element is not None:
             _transform_tier([element], choices, groups, sentence_level=True)
@@ -770,7 +791,13 @@ def _transform_variant(sentence, choices, groups, source_form):
 
         morphs = [m for m in sentence.xpath("./W/M")
                   if _tier(m, "FORM", kind) is not None]
-        if morphs:
+        # Transform the morpheme tier only when it covers every word. A tier
+        # analysed only in part does not carry the sentence's parentheses, so
+        # rewriting it would assert a group count it never had. Mirroring runs
+        # at the end of the pipeline and copies the word form as transformed
+        # here, so the partial tier still ends up consistent.
+        all_words = sentence.findall("W")
+        if morphs and all_words and all(w.findall("M") for w in all_words):
             _transform_tier(
                 [_tier(morph, "FORM", kind) for morph in morphs],
                 choices,
@@ -857,7 +884,16 @@ def _materialize_sentence(sentence, existing_ids, stats):
     if groups == 0:
         return False
 
-    for label, text in (("W", word_text), ("M", morph_text)):
+    tiers = [("W", word_text)]
+    words = sentence.findall("W")
+    if words and all(word.findall("M") for word in words):
+        # Check the morpheme tier only when it is complete. A sentence whose
+        # words carry no morphological analysis is not malformed, and neither is
+        # one analysed only in part -- mirroring runs at the very end of the
+        # pipeline, so an unsegmented word legitimately has no M yet. Only a
+        # tier that covers every word can be expected to repeat the parentheses.
+        tiers.append(("M", morph_text))
+    for label, text in tiers:
         count, ok = _scan(text)
         if not ok or count != groups:
             raise AssertionError(
