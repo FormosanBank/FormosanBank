@@ -166,10 +166,11 @@
         </W>
         <W id="S2W3">
             <FORM kindOf="original">a</FORM>
-            <PHON kindOf="original">a</PHON>
+            <PHON kindOf="original">o</PHON>
+            <FORM kindOf="original" ver="alt">u</FORM>
             <FORM kindOf="standard">a</FORM>
-            <PHON kindOf="standard">a</PHON>
-            <FORM kindOf="alternate">u</FORM>
+            <PHON kindOf="standard">[o|u]</PHON>
+            <FORM kindOf="standard" ver="alt">o</FORM>
         </W>
         <W id="S2W4">
             <FORM kindOf="original">uvay</FORM>
@@ -689,7 +690,7 @@
             <PHON kindOf="original">naniʂaləp</PHON>
             <FORM kindOf="standard">na-ni-salep</FORM>
             <PHON kindOf="standard">naniʂaləp</PHON>
-            <TRANSL xml:lang="eng">unan-past(unctn)-fly</TRANSL>
+            <TRANSL xml:lang="eng" notes="source annotation: (unctn)">unan-past-fly</TRANSL>
             <M id="S8W2M1">
                 <FORM kindOf="original">na</FORM>
                 <PHON kindOf="original">na</PHON>
@@ -701,7 +702,7 @@
                 <PHON kindOf="original">ni</PHON>
                 <FORM kindOf="standard">ni</FORM>
                 <PHON kindOf="standard">ni</PHON>
-                <TRANSL xml:lang="eng">past(unctn)</TRANSL>
+                <TRANSL xml:lang="eng" notes="source annotation: (unctn)">past</TRANSL>
             </M>
             <M id="S8W2M3">
                 <FORM kindOf="original">salep</FORM>
@@ -1176,7 +1177,7 @@
             <PHON kindOf="original">jananiʨita</PHON>
             <FORM kindOf="standard">yana-ni-cita</FORM>
             <PHON kindOf="standard">jananiʨita</PHON>
-            <TRANSL xml:lang="eng">unan-past(unctn)-see</TRANSL>
+            <TRANSL xml:lang="eng" notes="source annotation: (unctn)">unan-past-see</TRANSL>
             <M id="S13W1M1">
                 <FORM kindOf="original">yana</FORM>
                 <PHON kindOf="original">jana</PHON>
@@ -1188,7 +1189,7 @@
                 <PHON kindOf="original">ni</PHON>
                 <FORM kindOf="standard">ni</FORM>
                 <PHON kindOf="standard">ni</PHON>
-                <TRANSL xml:lang="eng">past(unctn)</TRANSL>
+                <TRANSL xml:lang="eng" notes="source annotation: (unctn)">past</TRANSL>
             </M>
             <M id="S13W1M3">
                 <FORM kindOf="original">chita</FORM>
@@ -1664,7 +1665,7 @@
             <FORM kindOf="standard">kano</FORM>
             <PHON kindOf="standard">kan[o|u]</PHON>
             <TRANSL xml:lang="eng">when</TRANSL>
-            <TRANSL xml:lang="eng" ver="alt">and(unctn)</TRANSL>
+            <TRANSL xml:lang="eng" ver="alt" notes="source annotation: (unctn)">and</TRANSL>
         </W>
         <W id="S19W3">
             <FORM kindOf="original">mi-chita-en</FORM>
@@ -1779,17 +1780,18 @@
         </W>
     </S>
     <S id="S21">
-        <FORM kindOf="original">manuyung-(e) anak-u inyu-n mang-anak-u-en</FORM>
+        <FORM kindOf="original">manuyung-e anak-u inyu-n mang-anak-u-en</FORM>
         <PHON kindOf="original">manojoŋə anako injon maŋanakoən</PHON>
         <FORM kindOf="standard">manoyonge anako inion manganakoen</FORM>
         <PHON kindOf="standard">man[o|u]j[o|u]ŋə anak[o|u] ini[o|u]n maŋanak[o|u]ən</PHON>
         <TRANSL xml:lang="eng">I wonder if you are really our child, dear.</TRANSL>
         <W id="S21W1">
-            <FORM kindOf="original">manuyung-(e)</FORM>
-            <PHON kindOf="original">manojoŋə</PHON>
+            <FORM kindOf="original">manuyung-e</FORM>
+            <PHON kindOf="original">manojoŋ</PHON>
+            <FORM kindOf="original" ver="alt">manuyung</FORM>
             <FORM kindOf="standard">manoyong-e</FORM>
-            <PHON kindOf="standard">man[o|u]j[o|u]ŋə</PHON>
-            <FORM kindOf="alternate">manoyong</FORM>
+            <PHON kindOf="standard">man[o|u]j[o|u]ŋ</PHON>
+            <FORM kindOf="standard" ver="alt">manoyong</FORM>
             <TRANSL xml:lang="eng">true-unan</TRANSL>
             <M id="S21W1M1">
                 <FORM kindOf="original">manuyung</FORM>
@@ -1799,7 +1801,7 @@
                 <TRANSL xml:lang="eng">true</TRANSL>
             </M>
             <M id="S21W1M2">
-                <FORM kindOf="original">(e)</FORM>
+                <FORM kindOf="original">e</FORM>
                 <PHON kindOf="original">ə</PHON>
                 <FORM kindOf="standard">e</FORM>
                 <PHON kindOf="standard">ə</PHON>
@@ -1831,7 +1833,7 @@
             <PHON kindOf="original">injon</PHON>
             <FORM kindOf="standard">inio-n</FORM>
             <PHON kindOf="standard">ini[o|u]n</PHON>
-            <TRANSL xml:lang="eng">you(pl)-intrg(unctn)</TRANSL>
+            <TRANSL xml:lang="eng" notes="source annotation: (unctn)">you(pl)-intrg</TRANSL>
             <M id="S21W3M1">
                 <FORM kindOf="original">inyu</FORM>
                 <PHON kindOf="original">injo</PHON>
@@ -1844,7 +1846,7 @@
                 <PHON kindOf="original">n</PHON>
                 <FORM kindOf="standard">n</FORM>
                 <PHON kindOf="standard">n</PHON>
-                <TRANSL xml:lang="eng">intrg(unctn)</TRANSL>
+                <TRANSL xml:lang="eng" notes="source annotation: (unctn)">intrg</TRANSL>
             </M>
         </W>
         <W id="S21W4">
@@ -1852,7 +1854,7 @@
             <PHON kindOf="original">maŋanakoən</PHON>
             <FORM kindOf="standard">mang-anak-o-en</FORM>
             <PHON kindOf="standard">maŋanak[o|u]ən</PHON>
-            <TRANSL xml:lang="eng">dear-child-my-intrg(unctn)</TRANSL>
+            <TRANSL xml:lang="eng" notes="source annotation: (unctn)">dear-child-my-intrg</TRANSL>
             <M id="S21W4M1">
                 <FORM kindOf="original">mang</FORM>
                 <PHON kindOf="original">maŋ</PHON>
@@ -1879,7 +1881,7 @@
                 <PHON kindOf="original">ən</PHON>
                 <FORM kindOf="standard">en</FORM>
                 <PHON kindOf="standard">ən</PHON>
-                <TRANSL xml:lang="eng">intrg(unctn)</TRANSL>
+                <TRANSL xml:lang="eng" notes="source annotation: (unctn)">intrg</TRANSL>
             </M>
         </W>
     </S>
@@ -1949,13 +1951,13 @@
             <PHON kindOf="original">paʂafo*ənko</PHON>
             <FORM kindOf="standard">pasavořen-ko</FORM>
             <PHON kindOf="standard">paʂaf[o|u]*ənk[o|u]</PHON>
-            <TRANSL xml:lang="eng">wash(unctn)-I</TRANSL>
+            <TRANSL xml:lang="eng" notes="source annotation: (unctn)">wash-I</TRANSL>
             <M id="S23W2M1">
                 <FORM kindOf="original">pasavuřen</FORM>
                 <PHON kindOf="original">paʂafo*ən</PHON>
                 <FORM kindOf="standard">pasavořen</FORM>
                 <PHON kindOf="standard">paʂaf[o|u]*ən</PHON>
-                <TRANSL xml:lang="eng">wash(unctn)</TRANSL>
+                <TRANSL xml:lang="eng" notes="source annotation: (unctn)">wash</TRANSL>
             </M>
             <M id="S23W2M2">
                 <FORM kindOf="original">ku</FORM>
@@ -2122,7 +2124,7 @@
             <PHON kindOf="original">paʂamo*na</PHON>
             <FORM kindOf="standard">pasamořna</FORM>
             <PHON kindOf="standard">paʂam[o|u]*na</PHON>
-            <TRANSL xml:lang="eng">wash(unctn)</TRANSL>
+            <TRANSL xml:lang="eng" notes="source annotation: (unctn)">wash</TRANSL>
         </W>
         <W id="S26W2">
             <FORM kindOf="original">am-pia</FORM>
@@ -2711,13 +2713,13 @@
             <PHON kindOf="original">faonɖa</PHON>
             <FORM kindOf="standard">vaonda</FORM>
             <PHON kindOf="standard">fa[o|u]nɖa</PHON>
-            <TRANSL xml:lang="eng">take.up(unctn)</TRANSL>
+            <TRANSL xml:lang="eng" notes="source annotation: (unctn)">take.up</TRANSL>
             <M id="S33W8M1">
                 <FORM kindOf="original">vaunda</FORM>
                 <PHON kindOf="original">faonɖa</PHON>
                 <FORM kindOf="standard">vaonda</FORM>
                 <PHON kindOf="standard">fa[o|u]nɖa</PHON>
-                <TRANSL xml:lang="eng">take.up(unctn)</TRANSL>
+                <TRANSL xml:lang="eng" notes="source annotation: (unctn)">take.up</TRANSL>
             </M>
         </W>
     </S>
@@ -2726,7 +2728,7 @@
         <PHON kindOf="original">amlafi o kanakan makaɻakaɻaŋmo</PHON>
         <FORM kindOf="standard">amlavi o kanakan makarakarangmo</FORM>
         <PHON kindOf="standard">amlafi [o|u] kanakan makaɻakaɻaŋm[o|u]</PHON>
-        <TRANSL xml:lang="eng">The child cries, "You are so very tall. (unctn)</TRANSL>
+        <TRANSL xml:lang="eng" notes="source annotation: (unctn)">The child cries, "You are so very tall.</TRANSL>
         <W id="S34W1">
             <FORM kindOf="original">am-lavi</FORM>
             <PHON kindOf="original">amlafi</PHON>
@@ -2806,7 +2808,7 @@
         <PHON kindOf="original">a lalaboŋən takomanjaɰaj</PHON>
         <FORM kindOf="standard">a lalabongen takomaniahay</FORM>
         <PHON kindOf="standard">a lalab[o|u]ŋən tak[o|u]maniaɰaj</PHON>
-        <TRANSL xml:lang="eng">I'm afraid, because I'm just little."(unctn)</TRANSL>
+        <TRANSL xml:lang="eng" notes="source annotation: (unctn)">I'm afraid, because I'm just little."</TRANSL>
         <W id="S35W1">
             <FORM kindOf="original">a</FORM>
             <PHON kindOf="original">a</PHON>
@@ -3097,7 +3099,7 @@
             <PHON kindOf="original">koŋjan</PHON>
             <FORM kindOf="standard">kongian</FORM>
             <PHON kindOf="standard">k[o|u]ŋian</PHON>
-            <TRANSL xml:lang="eng">mountain(unctn)</TRANSL>
+            <TRANSL xml:lang="eng" notes="source annotation: (unctn)">mountain</TRANSL>
         </W>
         <W id="S38W6">
             <FORM kindOf="original">avay-aken</FORM>
@@ -3150,11 +3152,12 @@
         </W>
         <W id="S39W3">
             <FORM kindOf="original">mi-kalakala</FORM>
-            <PHON kindOf="original">mikalakala</PHON>
+            <PHON kindOf="original">mika*aka*a</PHON>
+            <FORM kindOf="original" ver="alt">mi-kařakařa</FORM>
             <FORM kindOf="standard">mi-kalakala</FORM>
-            <PHON kindOf="standard">mikalakala</PHON>
-            <FORM kindOf="alternate">mi-kařakařa</FORM>
-            <TRANSL xml:lang="eng">unan-hunt(unctn)</TRANSL>
+            <PHON kindOf="standard">mika*aka*a</PHON>
+            <FORM kindOf="standard" ver="alt">mi-kařakařa</FORM>
+            <TRANSL xml:lang="eng" notes="source annotation: (unctn)">unan-hunt</TRANSL>
             <M id="S39W3M1">
                 <FORM kindOf="original">mi</FORM>
                 <PHON kindOf="original">mi</PHON>
@@ -3166,7 +3169,7 @@
                 <PHON kindOf="original">kalakala</PHON>
                 <FORM kindOf="standard">kalakala</FORM>
                 <PHON kindOf="standard">kalakala</PHON>
-                <TRANSL xml:lang="eng">hunt(unctn)</TRANSL>
+                <TRANSL xml:lang="eng" notes="source annotation: (unctn)">hunt</TRANSL>
             </M>
         </W>
         <W id="S39W4">
@@ -3487,7 +3490,7 @@
         </W>
     </S>
     <S id="S45">
-        <FORM kindOf="original">chi-chya-rana (n)u-kipung</FORM>
+        <FORM kindOf="original">chi-chya-rana nu-kipung</FORM>
         <PHON kindOf="original">ʨiʨjaɻana nokipoŋ</PHON>
         <FORM kindOf="standard">ciciarana nokipong</FORM>
         <PHON kindOf="standard">ʨiʨiaɻana n[o|u]kip[o|u]ŋ</PHON>
@@ -3521,14 +3524,15 @@
             </M>
         </W>
         <W id="S45W2">
-            <FORM kindOf="original">(n)u-kipung</FORM>
-            <PHON kindOf="original">nokipoŋ</PHON>
+            <FORM kindOf="original">nu-kipung</FORM>
+            <PHON kindOf="original">okipoŋ</PHON>
+            <FORM kindOf="original" ver="alt">u-kipung</FORM>
             <FORM kindOf="standard">no-kipong</FORM>
-            <PHON kindOf="standard">n[o|u]kip[o|u]ŋ</PHON>
-            <FORM kindOf="alternate">o-kipong</FORM>
+            <PHON kindOf="standard">[o|u]kip[o|u]ŋ</PHON>
+            <FORM kindOf="standard" ver="alt">o-kipong</FORM>
             <TRANSL xml:lang="eng">you-(dear.little.one)</TRANSL>
             <M id="S45W2M1">
-                <FORM kindOf="original">(n)u</FORM>
+                <FORM kindOf="original">nu</FORM>
                 <PHON kindOf="original">no</PHON>
                 <FORM kindOf="standard">no</FORM>
                 <PHON kindOf="standard">n[o|u]</PHON>
@@ -3554,7 +3558,7 @@
             <PHON kindOf="original">tajakoniktəbɻana</PHON>
             <FORM kindOf="standard">ta-yako-ni-k-teb-rana</FORM>
             <PHON kindOf="standard">tajak[o|u]niktəbɻana</PHON>
-            <TRANSL xml:lang="eng">unan-I-past(unctn)-unan-cut-completely</TRANSL>
+            <TRANSL xml:lang="eng" notes="source annotation: (unctn)">unan-I-past-unan-cut-completely</TRANSL>
             <M id="S46W1M1">
                 <FORM kindOf="original">ta</FORM>
                 <PHON kindOf="original">ta</PHON>
@@ -3573,7 +3577,7 @@
                 <PHON kindOf="original">ni</PHON>
                 <FORM kindOf="standard">ni</FORM>
                 <PHON kindOf="standard">ni</PHON>
-                <TRANSL xml:lang="eng">past(unctn)</TRANSL>
+                <TRANSL xml:lang="eng" notes="source annotation: (unctn)">past</TRANSL>
             </M>
             <M id="S46W1M4">
                 <FORM kindOf="original">k</FORM>
@@ -3780,7 +3784,7 @@
             <PHON kindOf="original">pitolaŋana</PHON>
             <FORM kindOf="standard">pi-tolang-an-a</FORM>
             <PHON kindOf="standard">pit[o|u]laŋana</PHON>
-            <TRANSL xml:lang="eng">unan-behead-unan-her(unctn)</TRANSL>
+            <TRANSL xml:lang="eng" notes="source annotation: (unctn)">unan-behead-unan-her</TRANSL>
             <M id="S48W3M1">
                 <FORM kindOf="original">pi</FORM>
                 <PHON kindOf="original">pi</PHON>
@@ -3805,7 +3809,7 @@
                 <PHON kindOf="original">a</PHON>
                 <FORM kindOf="standard">a</FORM>
                 <PHON kindOf="standard">a</PHON>
-                <TRANSL xml:lang="eng">her(unctn)</TRANSL>
+                <TRANSL xml:lang="eng" notes="source annotation: (unctn)">her</TRANSL>
             </M>
         </W>
     </S>
@@ -4007,10 +4011,11 @@
         <W id="S51W1">
             <FORM kindOf="original">mikabak-abay-u</FORM>
             <PHON kindOf="original">mikabakabajo</PHON>
+            <FORM kindOf="original" ver="alt">mikabakabayu</FORM>
             <FORM kindOf="standard">mikabak-abay-o</FORM>
             <PHON kindOf="standard">mikabakabaj[o|u]</PHON>
-            <FORM kindOf="alternate">mikabakabayu</FORM>
-            <TRANSL xml:lang="eng">unan-waste-unan(unctn)</TRANSL>
+            <FORM kindOf="standard" ver="alt">mikabakabayo</FORM>
+            <TRANSL xml:lang="eng" notes="source annotation: (unctn)">unan-waste-unan</TRANSL>
             <TRANSL xml:lang="eng" ver="alt">wails</TRANSL>
             <M id="S51W1M1">
                 <FORM kindOf="original">mikabak</FORM>
@@ -4030,7 +4035,7 @@
                 <PHON kindOf="original">o</PHON>
                 <FORM kindOf="standard">o</FORM>
                 <PHON kindOf="standard">[o|u]</PHON>
-                <TRANSL xml:lang="eng">unan(unctn)</TRANSL>
+                <TRANSL xml:lang="eng" notes="source annotation: (unctn)">unan</TRANSL>
             </M>
         </W>
         <W id="S51W2">
@@ -4048,20 +4053,21 @@
         </W>
     </S>
     <S id="S52">
-        <FORM kindOf="original">(u)m-lavi u mwakay ra-ralaw-napa ni-ina-mu</FORM>
+        <FORM kindOf="original">um-lavi u mwakay ra-ralaw-napa ni-ina-mu</FORM>
         <PHON kindOf="original">omlafi o mwakaj ɻaɻalawnapa niinamo</PHON>
         <FORM kindOf="standard">omlavi o moakay raralawnapa niinamo</FORM>
         <PHON kindOf="standard">[o|u]mlafi [o|u] m[o|u]akaj ɻaɻalawnapa niinam[o|u]</PHON>
         <TRANSL xml:lang="eng">and cried, "Your mother's blood is flowing down.</TRANSL>
         <W id="S52W1">
-            <FORM kindOf="original">(u)m-lavi</FORM>
-            <PHON kindOf="original">omlafi</PHON>
+            <FORM kindOf="original">um-lavi</FORM>
+            <PHON kindOf="original">mlafi</PHON>
+            <FORM kindOf="original" ver="alt">m-lavi</FORM>
             <FORM kindOf="standard">om-lavi</FORM>
-            <PHON kindOf="standard">[o|u]mlafi</PHON>
-            <FORM kindOf="alternate">m-lavi</FORM>
+            <PHON kindOf="standard">mlafi</PHON>
+            <FORM kindOf="standard" ver="alt">m-lavi</FORM>
             <TRANSL xml:lang="eng">unan-cries</TRANSL>
             <M id="S52W1M1">
-                <FORM kindOf="original">(u)m</FORM>
+                <FORM kindOf="original">um</FORM>
                 <PHON kindOf="original">om</PHON>
                 <FORM kindOf="standard">om</FORM>
                 <PHON kindOf="standard">[o|u]m</PHON>
@@ -4144,17 +4150,18 @@
         </W>
     </S>
     <S id="S53">
-        <FORM kindOf="original">chi-ka-(y)bubu</FORM>
+        <FORM kindOf="original">chi-ka-ybubu</FORM>
         <PHON kindOf="original">ʨikajbobo</PHON>
         <FORM kindOf="standard">cikaybobo</FORM>
         <PHON kindOf="standard">ʨikajb[o|u]b[o|u]</PHON>
         <TRANSL xml:lang="eng">Don't bury her."</TRANSL>
         <W id="S53W1">
-            <FORM kindOf="original">chi-ka-(y)bubu</FORM>
-            <PHON kindOf="original">ʨikajbobo</PHON>
+            <FORM kindOf="original">chi-ka-ybubu</FORM>
+            <PHON kindOf="original">ʨikabobo</PHON>
+            <FORM kindOf="original" ver="alt">chi-ka-bubu</FORM>
             <FORM kindOf="standard">ci-ka-ybobo</FORM>
-            <PHON kindOf="standard">ʨikajb[o|u]b[o|u]</PHON>
-            <FORM kindOf="alternate">ci-ka-bobo</FORM>
+            <PHON kindOf="standard">ʨikab[o|u]b[o|u]</PHON>
+            <FORM kindOf="standard" ver="alt">ci-ka-bobo</FORM>
             <TRANSL xml:lang="eng">negative-(2nd.person.singular.imp)-bury</TRANSL>
             <M id="S53W1M1">
                 <FORM kindOf="original">chi</FORM>
@@ -4171,7 +4178,7 @@
                 <TRANSL xml:lang="eng">(2nd.person.singular.imp)</TRANSL>
             </M>
             <M id="S53W1M3">
-                <FORM kindOf="original">(y)bubu</FORM>
+                <FORM kindOf="original">ybubu</FORM>
                 <PHON kindOf="original">jbobo</PHON>
                 <FORM kindOf="standard">ybobo</FORM>
                 <PHON kindOf="standard">jb[o|u]b[o|u]</PHON>
@@ -4371,7 +4378,7 @@
             <PHON kindOf="original">ɖilaɰətkaʂiw</PHON>
             <FORM kindOf="standard">di-lahet-ka-siw</FORM>
             <PHON kindOf="standard">ɖilaɰətkaɕiw</PHON>
-            <TRANSL xml:lang="eng">negative-bad-you-formerly(unctn)</TRANSL>
+            <TRANSL xml:lang="eng" notes="source annotation: (unctn)">negative-bad-you-formerly</TRANSL>
             <M id="S57W2M1">
                 <FORM kindOf="original">di</FORM>
                 <PHON kindOf="original">ɖi</PHON>
@@ -4398,7 +4405,7 @@
                 <PHON kindOf="original">ʂiw</PHON>
                 <FORM kindOf="standard">siw</FORM>
                 <PHON kindOf="standard">ɕiw</PHON>
-                <TRANSL xml:lang="eng">formerly(unctn)</TRANSL>
+                <TRANSL xml:lang="eng" notes="source annotation: (unctn)">formerly</TRANSL>
             </M>
         </W>
     </S>
