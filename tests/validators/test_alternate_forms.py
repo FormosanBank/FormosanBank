@@ -197,3 +197,166 @@ def test_v150_long_near_identical_pair_does_not_collapse():
     alt = base[:110] + ("q" if base[110] != "q" else "p") + base[111:]
     assert len(base) >= 200
     assert _v150(_pair("original", base, alt)) == []
+
+
+# --- POL-028 as revised 2026-09-09: kindOf names the tier, ver="alt" the variant
+
+
+def _v149(tree):
+    return hard_rules.v149_alternate_FORM_requires_base_sibling(
+        tree, Path("test.xml"), None
+    )
+
+
+def test_v149_variant_with_one_base_in_its_own_tier_passes():
+    tree = _tree(
+        '<S id="S1">'
+        '<FORM kindOf="original">naku</FORM>'
+        '<FORM kindOf="original" ver="alt">aku</FORM>'
+        '<FORM kindOf="standard">nako</FORM>'
+        '<FORM kindOf="standard" ver="alt">ako</FORM>'
+        '</S>'
+    )
+    assert _v149(tree) == []
+
+
+def test_v149_several_variants_may_share_one_base():
+    """A tier may carry many variants — only the base must be unique."""
+    tree = _tree(
+        '<S id="S1">'
+        '<FORM kindOf="original">ratta kivadoch</FORM>'
+        '<FORM kindOf="original" ver="alt">ratta ki vadoch</FORM>'
+        '<FORM kindOf="original" ver="alt">ratta kwadoch</FORM>'
+        '</S>'
+    )
+    assert _v149(tree) == []
+
+
+def test_v149_variant_without_a_base_in_its_tier_is_hard():
+    """A standard-tier base does not serve an original-tier variant."""
+    tree = _tree(
+        '<S id="S1">'
+        '<FORM kindOf="standard">nako</FORM>'
+        '<FORM kindOf="original" ver="alt">aku</FORM>'
+        '</S>'
+    )
+    findings = _v149(tree)
+    assert [f.rule_id for f in findings] == ["V149"]
+    assert "kindOf='original'" in findings[0].message
+
+
+def test_v149_two_bases_in_one_tier_is_hard():
+    """With two bases, no variant knows which it varies from."""
+    tree = _tree(
+        '<S id="S1">'
+        '<FORM kindOf="original">naku</FORM>'
+        '<FORM kindOf="original">nakw</FORM>'
+        '<FORM kindOf="original" ver="alt">aku</FORM>'
+        '</S>'
+    )
+    assert [f.rule_id for f in _v149(tree)] == ["V149"]
+
+
+def test_v149_two_bases_without_variants_is_not_its_business():
+    tree = _tree(
+        '<S id="S1">'
+        '<FORM kindOf="original">naku</FORM>'
+        '<FORM kindOf="original">nakw</FORM>'
+        '</S>'
+    )
+    assert _v149(tree) == []
+
+
+def test_v150_compares_a_variant_against_its_own_tier():
+    """The old rule scored against whichever sibling matched best.
+
+    Here the original-tier variant is a plausible variant of the original
+    base and nothing like the standard one; scoring it against the standard
+    base would raise a spurious finding.
+    """
+    tree = _tree(
+        '<S id="S1">'
+        '<FORM kindOf="original">tyasanemnapanay</FORM>'
+        '<FORM kindOf="original" ver="alt">tyasanamenapanay</FORM>'
+        '<FORM kindOf="standard">q</FORM>'
+        '</S>'
+    )
+    assert soft_rules.v150_alternate_FORM_low_overlap(
+        tree, Path("test.xml"), None
+    ) == []
+
+
+def test_v156_allows_alt_and_rejects_anything_else():
+    ok = _tree(
+        '<S id="S1">'
+        '<FORM kindOf="original">a</FORM>'
+        '<FORM kindOf="original" ver="alt">b</FORM>'
+        '</S>'
+    )
+    assert hard_rules.v156_form_ver_value_in_allowlist(
+        ok, Path("test.xml"), None
+    ) == []
+    bad = _tree(
+        '<S id="S1">'
+        '<FORM kindOf="original">a</FORM>'
+        '<FORM kindOf="original" ver="variant">b</FORM>'
+        '</S>'
+    )
+    findings = hard_rules.v156_form_ver_value_in_allowlist(
+        bad, Path("test.xml"), None
+    )
+    assert [f.rule_id for f in findings] == ["V156"]
+
+
+def test_v157_flags_the_deprecated_spelling_with_a_count():
+    tree = _tree(
+        '<S id="S1">'
+        '<FORM kindOf="original">so</FORM>'
+        '<FORM kindOf="alternate">soa</FORM>'
+        '<FORM kindOf="alternate">sua</FORM>'
+        '</S>'
+    )
+    findings = soft_rules.v157_legacy_alternate_kindOf(
+        tree, Path("test.xml"), None
+    )
+    assert [f.rule_id for f in findings] == ["V157"]
+    assert findings[0].count == 2
+
+
+def test_v157_silent_on_the_current_spelling():
+    tree = _tree(
+        '<S id="S1">'
+        '<FORM kindOf="original">so</FORM>'
+        '<FORM kindOf="original" ver="alt">soa</FORM>'
+        '</S>'
+    )
+    assert soft_rules.v157_legacy_alternate_kindOf(
+        tree, Path("test.xml"), None
+    ) == []
+
+
+def test_v015_counts_bases_not_variants():
+    """A tier's base plus its variants is not a duplicate kindOf.
+
+    Variants share the tier's kindOf and are discriminated by ver (POL-028,
+    2026-09-09), the same way V085 lets same-language TRANSLs coexist.
+    """
+    ok = _tree(
+        '<S id="S1">'
+        '<FORM kindOf="original">ratta kivadoch</FORM>'
+        '<FORM kindOf="original" ver="alt">ratta ki vadoch</FORM>'
+        '<FORM kindOf="original" ver="alt">ratta kwadoch</FORM>'
+        '</S>'
+    )
+    assert hard_rules.v015_S_at_most_one_original_FORM(
+        ok, Path("test.xml"), None
+    ) == []
+    two_bases = _tree(
+        '<S id="S1">'
+        '<FORM kindOf="original">a</FORM>'
+        '<FORM kindOf="original">b</FORM>'
+        '</S>'
+    )
+    assert [f.rule_id for f in hard_rules.v015_S_at_most_one_original_FORM(
+        two_bases, Path("test.xml"), None
+    )] == ["V015"]

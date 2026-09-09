@@ -52,8 +52,9 @@ regenerated catalogue, and a policy entry (POL-053).
 
 | Attribute | Use | Allowed values | Meaning |
 | --- | --- | --- | --- |
-| `kindOf` | required | `original \| standard \| alternate` | Which tier this FORM belongs to. `original` is the text as the actual source prints it, preserving the source's orthographic choices. `standard` is that content transliterated into FormosanBank's common standard orthography. `alternate` is a spelling variant of a sibling FORM on the same node (POL-028); it requires a non-alternate sibling (V149) and must overlap it and stay in proportion to it (V150). |
+| `kindOf` | required | `original \| standard \| alternate` | Which tier this FORM belongs to. `original` is the text as the actual source prints it, preserving the source's orthographic choices. `standard` is that content transliterated into FormosanBank's common standard orthography. A variant reading within a tier is that tier's value plus ver="alt" (POL-028). `alternate` is the deprecated pre-2026-09-09 spelling of a variant, kept valid only until the published FORMs using it are migrated (V157); it carries no tier, which is why it is going. |
 | `notes` | optional | `xs:string` | Human-readable qualification of this FORM — a transcription note, a review status, or what the source actually printed where the tier departs from it. |
+| `ver` | optional | `xs:string` | Marks this FORM as a variant reading within its tier (POL-028). The tier is named by kindOf; ver="alt" says "one of several readings of that tier", exactly as it does for TRANSL (POL-025). A tier carrying any ver FORM must carry exactly one FORM of the same kindOf without ver — the reading the variants vary from (V149) — and each variant must look like a spelling variant of it (V150). Several variants may share one base. Allowed values are owned by V156's allowlist, currently {"alt"}, deliberately not an XSD enumeration so there is one place to update; this mirrors TRANSL/@ver and V084. |
 
 ## `<PHON>`
 
@@ -80,4 +81,4 @@ regenerated catalogue, and a policy entry (POL-053).
 | `start` | optional | `xs:double` | Start offset in seconds within the referenced audio file. Typed `xs:double`, so non-numeric values fail at schema time. |
 | `url` | optional | `xs:string` | URL the audio can be fetched from, where it is addressed remotely rather than by filename. |
 
-30 attributes across 8 elements.
+31 attributes across 8 elements.
