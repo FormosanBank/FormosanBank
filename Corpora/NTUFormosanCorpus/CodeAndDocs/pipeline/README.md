@@ -98,6 +98,59 @@ is not evidence of better glossing.
 | `CTABLES` | `<bank>/Orthographies/ConversionTables` | testing an unmerged conversion table |
 | `FB_DIALECTS` | `<bank>/dialects.csv` | testing an unmerged dialect/alias row |
 
+## Audio clip names are keyed by span, not by sentence id
+
+Stories `AUDIO/@url` names the whole-story recording and `@start`/`@end` give
+the sentence's span within it; `@file` names the per-sentence clip that
+[`../scripts/download_stories_audio.py`](../scripts/download_stories_audio.py)
+slices out of that recording and that is published on Hugging Face.
+
+A clip is identified by the span it covers, **not** by the sentence that
+happens to contain it. Naming it after the sentence id — which this build did
+at first — means that renumbering sentences renames every clip, invalidating
+thousands of already-published files for no reason: reusing the id-based names
+would have left 6,806 references pointing at clips that do not exist and 6,758
+published clips unreferenced, when 99.1% of the audio had not changed at all.
+
+So `clip_name()` looks the span up in
+[`audio_clip_names.tsv`](audio_clip_names.tsv), which records every clip name
+already published together with the span it covers. A span that is already
+published keeps its name whatever the sentence is now called. A span that is
+new gets a name built from the span itself
+(`<story>_<start>-<end>.mp3`), which cannot collide with the id-based names
+already in use — 28 of the 96 new spans in this build would have collided had
+they been named after their sentence — and which stays stable if the sentences
+are renumbered again.
+
+The result is that a rebuild only ever needs the audio it actually changed.
+This build: **10,796 clips keep their published name, 96 spans are new and need
+slicing, 49 published clips are no longer referenced.**
+
+### What still needs doing by hand
+
+The 96 new clips must be sliced and uploaded before `hf-audio-parity` passes;
+nothing in this repository can publish to Hugging Face. Run
+`../scripts/download_stories_audio.py` against the rebuilt XML and publish the
+96, then optionally delete the 49 orphans.
+
+### Why any span moves at all
+
+Of 187 story files, 162 have an identical span sequence to the published
+corpus. The 25 that differ break down as:
+
+- **12 files** where this build keeps (or drops) an audio-bearing sentence the
+  earlier one did not. The spans themselves are unchanged; only which sentences
+  exist differs.
+- **13 files** where a boundary genuinely differs, always with the same
+  signature — same end, earlier start. The cause is in the source: 40 of its
+  31,756 intonation units carry an **inverted** `iu_a_span`, the end before the
+  start (e.g. `[217.3, 215.84]`). A sentence's span is reduced from the spans of
+  the units it contains; this build takes `[min, max]` while the earlier one
+  took the first unit's start and the last unit's end in document order. Those
+  agree on every well-formed unit and disagree on an inverted one. `[min, max]`
+  is the safer reduction: it cannot emit `end <= start`, which V054 rejects as
+  HARD.
+
 ## Checking a rebuild
 
 [`../qa/`](../qa/) holds the regression harness: it re-scores a rebuilt tree

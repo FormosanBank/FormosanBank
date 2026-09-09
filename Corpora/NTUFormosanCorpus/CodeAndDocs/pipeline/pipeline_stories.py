@@ -608,14 +608,18 @@ def emit_sentence(root, text_id, sid, body, rows, ori, steps, stats,
         if (video and len(span) == 2 and all(x is not None for x in span)
                 and float(span[1]) > float(span[0])):
             audio = ET.SubElement(s, "AUDIO")
-            audio.set("file", f"{text_id}_S{sid}.mp3")
             audio.set("url", f"https://formosanbank.linguistics.ntu.edu.tw/files/audio/{video}")
             # Timestamps are normalised so the story starts at 0.0, which is
             # what the published corpus does and what its slicer expects. Bunun
             # is the exception: its stamps are already absolute.
             shift = 0.0 if language == "Bunun" else float(audio_shift or 0.0)
-            audio.set("start", str(round(float(span[0]) - shift, 3)))
-            audio.set("end", str(round(float(span[1]) - shift, 3)))
+            start_s = str(round(float(span[0]) - shift, 3))
+            end_s = str(round(float(span[1]) - shift, 3))
+            audio.set("start", start_s)
+            audio.set("end", end_s)
+            # The clip name is looked up by span, after normalisation, so that
+            # renumbering sentences never renames an unchanged clip.
+            audio.set("file", clip_name(text_id, start_s, end_s))
             stats["AUDIO elements written"] = stats.get("AUDIO elements written", 0) + 1
 
         if 11 in steps:
@@ -854,6 +858,54 @@ def _attestation_clean(cell: str) -> str:
     """Normalize a gloss cell exactly as the pipeline does before the flip."""
     text, _ = strip_l2m(strip_prosodic_markers(cell or ""))
     return swap_punctuation(text)
+
+
+
+def load_clip_names(path=None) -> dict:
+    """{(story_stem, start, end, occurrence): clip filename} from
+    audio_clip_names.tsv.
+
+    A per-sentence clip is sliced out of the whole-story recording, so the
+    span identifies it, not the sentence id. Naming the clip after the id
+    means renumbering sentences renames every clip and invalidates what is
+    already published; keying on the span means a clip whose audio has not
+    changed keeps its name.
+    """
+    p = Path(path) if path else Path(__file__).with_name("audio_clip_names.tsv")
+    out: dict = {}
+    if not p.exists():
+        return out
+    for line in p.read_text(encoding="utf-8").splitlines():
+        if not line.strip() or line.lstrip().startswith("#"):
+            continue
+        parts = line.split("\t")
+        if len(parts) != 5 or parts[0] == "story_stem":
+            continue
+        stem, start, end, occ, clip = parts
+        out[(stem, start, end, int(occ))] = clip
+    return out
+
+
+_CLIP_NAMES = None
+_CLIP_USED: dict = {}
+
+
+def clip_name(stem, start, end) -> str:
+    """The published name for this span, or a new span-derived one.
+
+    A span with no published clip gets a name built from the span itself.
+    That cannot collide with the id-based names already in use -- 28 of the
+    96 new spans in this build would have, had they been named after their
+    sentence -- and it stays stable if the sentences are renumbered again.
+    """
+    global _CLIP_NAMES
+    if _CLIP_NAMES is None:
+        _CLIP_NAMES = load_clip_names()
+    key = (stem, start, end)
+    n = _CLIP_USED.get(key, 0)
+    _CLIP_USED[key] = n + 1
+    published = _CLIP_NAMES.get((stem, start, end, n))
+    return published if published else f"{stem}_{start}-{end}.mp3"
 
 
 def main() -> int:
