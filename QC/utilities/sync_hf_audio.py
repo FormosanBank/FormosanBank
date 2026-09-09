@@ -35,6 +35,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import subprocess
 import sys
 import tempfile
 import xml.etree.ElementTree as ET
@@ -44,16 +45,43 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
 
-def referenced_clips(xml_dir: Path) -> dict[str, tuple[str, float, float]]:
+def _iter_xml(xml_dir: Path, ref: str | None):
+    """Yield (language directory, parsed tree) for every XML under *xml_dir*.
+
+    With *ref*, the files are read out of that git revision instead of the
+    working tree, so the dataset can be synced against a branch without
+    checking it out -- which matters when the branch is already held by a
+    worktree, and when the checkout is shared.
+    """
+    if ref is None:
+        for path in sorted(xml_dir.rglob("*.xml")):
+            yield path.parent.name, ET.parse(path)
+        return
+    rel = xml_dir.resolve().relative_to(REPO_ROOT).as_posix()
+    listing = subprocess.run(
+        ["git", "-C", str(REPO_ROOT), "ls-tree", "-r", "--name-only", ref, "--", rel],
+        capture_output=True, text=True)
+    if listing.returncode:
+        raise SystemExit(f"cannot read {ref}: {listing.stderr.strip()}")
+    names = [n for n in listing.stdout.splitlines() if n.endswith(".xml")]
+    if not names:
+        raise SystemExit(f"{ref} has no XML under {rel}")
+    for name in sorted(names):
+        blob = subprocess.run(["git", "-C", str(REPO_ROOT), "show", f"{ref}:{name}"],
+                              capture_output=True)
+        if blob.returncode:
+            raise SystemExit(f"cannot read {ref}:{name}")
+        yield Path(name).parent.name, ET.ElementTree(ET.fromstring(blob.stdout))
+
+
+def referenced_clips(xml_dir: Path, ref: str | None = None) -> dict[str, tuple[str, float, float]]:
     """{clip filename: (source recording url, start seconds, end seconds)}.
 
     The clip's directory on the Hub mirrors the XML's language directory, so
     the key is returned as the Hub path, e.g. 'Amis/Amis_..._S0.mp3'.
     """
     out: dict[str, tuple[str, float, float]] = {}
-    for path in sorted(xml_dir.rglob("*.xml")):
-        language = path.parent.name
-        tree = ET.parse(path)
+    for language, tree in _iter_xml(xml_dir, ref):
         for audio in tree.getroot().iter("AUDIO"):
             name = audio.get("file")
             url = audio.get("url")
@@ -108,6 +136,11 @@ def main() -> int:
                         help="dataset repo id, e.g. FormosanBank/NTUFormosanCorpus_Stories")
     parser.add_argument("--xml", required=True, type=Path,
                         help="XML directory whose AUDIO elements are the contract")
+    parser.add_argument("--from-ref", default=None,
+                        help="read the XML out of this git revision instead of "
+                             "the working tree, e.g. "
+                             "origin/corpus/ntu-reproducible-pipeline. Lets you "
+                             "sync against a branch without checking it out.")
     parser.add_argument("--apply", action="store_true",
                         help="actually slice, upload and delete (default: report only)")
     parser.add_argument("--no-slice", action="store_true",
@@ -116,24 +149,29 @@ def main() -> int:
                         help="where to cache recordings and write clips "
                              "(default: a temporary directory)")
     parser.add_argument("--token", default=os.environ.get("HF_TOKEN"),
-                        help="Hugging Face token with write access "
-                             "(default: $HF_TOKEN)")
+                        help="Hugging Face token with write access. Defaults "
+                             "to $HF_TOKEN, then to a stored "
+                             "`huggingface-cli login`.")
     parser.add_argument("--message", default=None, help="commit message")
     args = parser.parse_args()
 
-    if not args.xml.is_dir():
+    if args.from_ref is None and not args.xml.is_dir():
         raise SystemExit(f"no such XML directory: {args.xml}")
 
     from huggingface_hub import HfApi
 
-    api = HfApi(token=args.token or False)
-    wanted = referenced_clips(args.xml)
+    # token=None lets huggingface_hub use a stored `huggingface-cli login`;
+    # token=False would refuse it, which is wrong for anyone already logged in.
+    api = HfApi(token=args.token or None)
+    wanted = referenced_clips(args.xml, args.from_ref)
     have = hub_files(api, args.repo)
 
     missing = sorted(set(wanted) - have)
     extras = sorted(have - set(wanted))
 
     print(f"{args.repo}")
+    if args.from_ref:
+        print(f"  XML read from   : {args.from_ref}")
     print(f"  referenced by the XML : {len(wanted)}")
     print(f"  present on the Hub    : {len(have)}")
     print(f"  to slice and upload   : {len(missing)}")
@@ -156,8 +194,15 @@ def main() -> int:
         return 0
     if missing and args.no_slice:
         raise SystemExit("--no-slice cannot be combined with --apply when clips are missing")
-    if not args.token:
-        raise SystemExit("--apply needs a write token: pass --token or set HF_TOKEN")
+    try:
+        whoami = api.whoami()
+    except Exception:
+        raise SystemExit(
+            "--apply needs write access. Either run `huggingface-cli login`, "
+            "or set HF_TOKEN to a token with write permission on the dataset:\n"
+            "    export HF_TOKEN=hf_xxxxxxxx\n"
+            "    python QC/utilities/sync_hf_audio.py ... --apply")
+    print(f"  authenticated as: {whoami.get('name', '?')}")
 
     from huggingface_hub import CommitOperationAdd, CommitOperationDelete
 
