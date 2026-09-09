@@ -538,8 +538,16 @@ def v026_M_transl_kindof_enum(
 ) -> list[Finding]:
     """V026: TRANSL/@kindOf at M level must be 'original' or 'standard' when set.
 
-    Free-form values (e.g., 'DeepL', 'freeform') are only valid at the
-    sentence/text tier. M-level TRANSL kindOf is strictly enumerated.
+    Free-form values (e.g., 'DeepL', 'freeform') are not valid anywhere as
+    of 2026-09-08 (TRANSL_kindOf_Type); S-level TRANSL/@kindOf is forbidden
+    outright (V151). M-level TRANSL kindOf is strictly enumerated, as it
+    always was.
+
+    Partly redundant since 2026-09-08: the XSD's TRANSL_kindOf_Type now
+    restricts this value at every level, so a bad value fails V000 first.
+    Kept because a named rule reports the offending element far more
+    legibly than an XSD error, and because V026 is M-scoped by design
+    while the schema type is shared by S, W and M.
     """
     _ALLOWED = {"original", "standard"}
     findings: list[Finding] = []
@@ -962,6 +970,46 @@ def v085_multi_same_lang_transl_requires_ver(
     return findings
 
 
+def v149_alternate_FORM_requires_base_sibling(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V149: a FORM[@kindOf='alternate'] must have a non-alternate FORM
+    sibling on the same parent.
+
+    Per POL-028 an alternate is a spelling variant *of something*: it is
+    read against the parent's unmarked FORM. An alternate with nothing to
+    vary from asserts a variant of no known base, and no downstream tool
+    can interpret it. This also covers "an alternate must not be a
+    parent's only FORM".
+
+    Clean across the whole bank at the time of writing (116 alternates,
+    zero violations); the rule locks that state in.
+    """
+    findings: list[Finding] = []
+    for parent in tree.iter("S", "W", "M"):
+        forms = [child for child in parent if child.tag == "FORM"]
+        alternates = [f for f in forms if f.get("kindOf") == "alternate"]
+        if not alternates:
+            continue
+        if any(f.get("kindOf") != "alternate" for f in forms):
+            continue
+        p_id = parent.get("id")
+        findings.append(Finding(
+            rule_id="V149",
+            severity=Severity.HARD,
+            message=(
+                f"{parent.tag} id={p_id!r} has {len(alternates)} "
+                "FORM[@kindOf='alternate'] but no non-alternate FORM to vary "
+                "from (POL-028)"
+            ),
+            path=path,
+            location=f"{parent.tag}={p_id}" if p_id else parent.tag,
+        ))
+    return findings
+
+
 def v081_text_id_unique_across_published_corpora(
     tree: etree._ElementTree,
     path: Path,
@@ -1020,5 +1068,7 @@ RULES: list = [
     v073_phon_non_empty,
     v084_transl_ver_value_in_allowlist,
     v085_multi_same_lang_transl_requires_ver,
+    # POL-028 alternate FORMs (2026-09-08)
+    v149_alternate_FORM_requires_base_sibling,
 ]
 CROSS_FILE_RULES: list = [v081_text_id_unique_across_published_corpora]
