@@ -80,6 +80,14 @@ Two cell values are read specially, and they mean different things:
 | `NA` | the letter does not occur in this dialect — **not a rule at all** |
 | empty | a rule that **deletes** the matched string (Bunun `w`, Sakizaya `x`, Wakelin `?`) |
 
+Deletions are audited like any other rule. `validate_conversion_table.py` reports
+each as a `deletion` and separates the two cases that decide whether it is
+acceptable: a phoneme the target orthography **cannot** write has nowhere else to
+go, while one it **could** have written is a real loss. `Yami_Wakelin_113` is the
+live example — it deletes `?`, and Ortho113 Yami writes that phoneme as `'`.
+Deletions never fail a run; they surface in the phoneme-level section of
+`run_conversion_table_checks.py` for a human to judge.
+
 Review the diff anyway.
 
 ## Usage
