@@ -62,6 +62,12 @@ _L2M_RE = re.compile(
     r'|<L2[A-Z]?'      # opening: <L2M, <L2J, or bare <L2
     r'|[A-Z]L2>'       # transposed closing: ML2>, TL2>
     r'|>L2[A-Z]?'      # bracket-outside closing: >L2M
+    # The `ori` stream drops the brackets altogether and leaves the tag
+    # glued to the word: 'hikokiL2J', 'jidenshaL2J', 'ke.yi.maML2'. Only an
+    # upper-case tag at a word edge qualifies, so ordinary text is safe.
+    r'|[A-Z]L2(?![A-Za-z])'   # bare transposed: maML2
+    r'|(?<![A-Za-z])L2[A-Z](?=[A-Za-z])'  # bare opener: L2Jmaemotte
+    r'|L2[A-Z]?(?![A-Za-z])'  # bare closing: hikokiL2J, luL2M
 )
 
 # Matches infix morpheme notation: <n>, <m>, <PF.PFV>, etc.
@@ -78,12 +84,16 @@ _PROSODIC_MARKER_RE = re.compile(
     r'|\\/'                  # \/  prosodic boundary
     r'|<[@Y|X]'              # <@  <Y  <|  <X   annotation span openers
     r'|[@Y|X]>'              # @>  Y>  |>  X>   annotation span closers
-    r'|<WH'                  # <WH  whisper span opener
-    r'|WH>'                  # WH>  whisper span closer
+    # Named delivery spans. The content is language and is kept; only the
+    # tags go. Spelled out rather than matched as any <UPPERCASE> span, so
+    # that infix notation such as <PF.PFV> is never mistaken for one.
+    r'|<(?:WH|HIGH\.PITCH|LOW\.VOLUME)'   # span openers
+    r'|(?:WH|HIGH\.PITCH|LOW\.VOLUME)>'   # span closers
     r'|--'                   # --  double-dash break marker
     r'|[\\^@`;_|&:\[\]]'    # single-char markers: \ ^ @ ` ; _ | & : [ ]
     r'|…'                   # U+2026 HORIZONTAL ELLIPSIS
-    r'|\((?:CAUGH(?:ING)?|COUGH(?:ING|S)?|THROAT|THRAOT|TSK|IHI|HICCUPING)\)'  # vocal noises
+    r'|[(<]?\b(?:CAUGH(?:ING)?|COUGH(?:ING|S)?|THROAT|THRAOT|TSK|IHI'
+    r'|HICCUPING|BREATH)\b[)>]?'   # vocal noises, bracketed or bare
 )
 
 
@@ -105,7 +115,9 @@ def strip_prosodic_markers(text):
     ``<|`` ``|>``                   annotation span
     ``<X`` ``X>``                   uncertain-text span (content is kept)
     ``<WH`` ``WH>``                 whisper span (content is kept)
-    ``(COUGH)`` ``(THROAT)`` etc.   vocal-noise tokens (whole token removed)
+    ``<HIGH.PITCH`` ``HIGH.PITCH>`` pitch span (content is kept)
+    ``<LOW.VOLUME`` ``LOW.VOLUME>`` volume span (content is kept)
+    ``(COUGH)`` ``<BREATH>`` etc.   vocal-noise tokens (whole token removed)
     ``--``                          double-dash break marker
     ``\\ ^ @ ` ; _ | & : [ ]``     individual annotation characters
     """
