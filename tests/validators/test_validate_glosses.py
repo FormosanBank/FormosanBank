@@ -1474,3 +1474,71 @@ def test_V070_ordinary_and_lookalike_forms_stay_silent():
       </S>""")
     findings = _findings_for(gloss_rules.v070_gloss_code_as_FORM, xml)
     assert findings == [], f"expected silence; got {findings!r}"
+
+
+# ---------------------------------------------------------------------------
+# V153/V154/V155 — glossing quality for corpora that carry glosses (2026-09-09)
+# ---------------------------------------------------------------------------
+
+def _w(w_id: str, form: str, glosses: dict) -> str:
+    """A W with a FORM and one TRANSL per language in `glosses`."""
+    tr = "".join(
+        f'<TRANSL xml:lang="{lang}">{text}</TRANSL>'
+        for lang, text in glosses.items()
+    )
+    return f'<W id="{w_id}"><FORM kindOf="original">{form}</FORM>{tr}</W>'
+
+
+def test_V153_gloss_with_too_few_pieces_flagged(tmp_path):
+    """'ka-kaun-un' is three morphemes; a two-piece gloss has lost one."""
+    body = ('<S id="S1"><FORM kindOf="original">ka-kaun-un</FORM>'
+            + _w("W1", "ka-kaun-un", {"zho": "使動-吃"}) + "</S>")
+    proc = _run_validate_glosses(_write_xml(tmp_path, "a.xml", body).parent)
+    assert "V153" in proc.stdout + proc.stderr
+
+
+def test_V153_infix_gloss_counts_as_its_own_morpheme(tmp_path):
+    """The form side counts '<um>' as a morpheme, so the gloss side must count
+    '<AV>' the same way -- otherwise every infixed word looks broken."""
+    body = ('<S id="S1"><FORM kindOf="original">t&lt;um&gt;a-tang</FORM>'
+            + _w("W1", "t&lt;um&gt;a-tang", {"zho": "重疊&lt;主事焦點&gt;-哭"}) + "</S>")
+    proc = _run_validate_glosses(_write_xml(tmp_path, "a.xml", body).parent)
+    assert "V153" not in proc.stdout + proc.stderr
+
+
+def test_V154_english_prose_in_the_mandarin_slot_flagged(tmp_path):
+    body = ('<S id="S1"><FORM kindOf="original">kaen</FORM>'
+            + _w("W1", "kaen", {"zho": "then"}) + "</S>")
+    proc = _run_validate_glosses(_write_xml(tmp_path, "a.xml", body).parent)
+    assert "V154" in proc.stdout + proc.stderr
+
+
+def test_V154_leipzig_code_and_proper_name_are_not_wrong_script(tmp_path):
+    """A category code is written the same way in any gloss language, and a
+    proper name stays in Latin script. Neither is evidence of a swap."""
+    body = ('<S id="S1"><FORM kindOf="original">kaen kako</FORM>'
+            + _w("W1", "kaen", {"zho": "3SG.GEN"})
+            + _w("W2", "kako", {"zho": "Kanakanavu"}) + "</S>")
+    proc = _run_validate_glosses(_write_xml(tmp_path, "a.xml", body).parent)
+    assert "V154" not in proc.stdout + proc.stderr
+
+
+def test_V155_half_glossed_word_in_a_two_language_file_flagged(tmp_path):
+    body = ('<S id="S1"><FORM kindOf="original">a b c d</FORM>'
+            + _w("W1", "a", {"zho": "一", "eng": "one"})
+            + _w("W2", "b", {"zho": "二", "eng": "two"})
+            + _w("W3", "c", {"zho": "三", "eng": "three"})
+            + _w("W4", "d", {"zho": "四"}) + "</S>")
+    proc = _run_validate_glosses(_write_xml(tmp_path, "a.xml", body).parent)
+    assert "V155" in proc.stdout + proc.stderr
+
+
+def test_V155_single_language_corpus_never_trips(tmp_path):
+    """A file glossing only in Mandarin must not be asked for English -- and one
+    stray English gloss must not make it a two-language file."""
+    body = ('<S id="S1"><FORM kindOf="original">a b c</FORM>'
+            + _w("W1", "a", {"zho": "一"})
+            + _w("W2", "b", {"zho": "二"})
+            + _w("W3", "c", {"zho": "三", "eng": "three"}) + "</S>")
+    proc = _run_validate_glosses(_write_xml(tmp_path, "a.xml", body).parent)
+    assert "V155" not in proc.stdout + proc.stderr
