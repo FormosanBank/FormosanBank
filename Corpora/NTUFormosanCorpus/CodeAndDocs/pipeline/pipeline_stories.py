@@ -842,11 +842,26 @@ def _merge(group: list, stats: dict) -> list:
         if body.get("free"):
             merged["free"] = list(body["free"])
         span = body.get("iu_a_span") or []
-        spans.extend([x for x in span if x is not None])
+        if len(span) == 2 and span[0] is not None and span[1] is not None:
+            spans.append((span[0], span[1]))
         if body.get("meta") and "meta" not in merged:
             merged["meta"] = body["meta"]
     if spans:
-        merged["iu_a_span"] = [min(spans), max(spans)]
+        # The sentence runs from the FIRST intonation unit's start to the
+        # LAST one's end, in document order -- not [min, max] over all the
+        # endpoints. The source's units form a contiguous chain, each unit's
+        # end being the next one's start, so document order is what carves
+        # the recording into non-overlapping sentences.
+        #
+        # [min, max] looks safer and is not: 40 of the source's 31,756 units
+        # carry an inverted span (end before start, e.g. [217.3, 215.84]),
+        # and on those the minimum reaches back behind the previous
+        # sentence's end. That produced 28 sentences whose clip re-covered
+        # audio already published as the preceding sentence, capturing no
+        # extra words. Seven sentences reduce to end <= start under this
+        # rule; all seven are single-unit sentences whose own span is
+        # degenerate, and the guard at the AUDIO emit drops them.
+        merged["iu_a_span"] = [spans[0][0], spans[-1][1]]
     if len(group) > 1:
         stats["16 intonation units merged into a sentence"] = stats.get(
             "16 intonation units merged into a sentence", 0) + len(group) - 1
@@ -945,10 +960,14 @@ def main() -> int:
         recs = data if isinstance(data, list) else (list(data.values())[0] if data else [])
         if not isinstance(recs, list):
             continue
+        # The story's zero point is taken from the SOURCE units, before any
+        # merging: it must not depend on how a sentence reduces its units'
+        # spans, or changing that reduction silently re-times whole stories.
+        shift = _first_span(recs)
         if 16 in steps:
             recs = merge_groups(recs, stats)
         root = build(recs, path.stem, steps, stats, attested, malformed, language=language_for(path), dialect=dialect_for(path),
-                     audio_shift=_first_span(recs))
+                     audio_shift=shift)
         language = path.parent.name.split("_")[0]
         # main publishes the TEXT id as NTU_Stry_<Language>_<story stem>, which
         # is the output file stem. Keeping its spelling keeps every downstream

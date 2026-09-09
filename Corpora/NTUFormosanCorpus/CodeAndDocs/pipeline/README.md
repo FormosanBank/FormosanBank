@@ -141,15 +141,22 @@ corpus. The 25 that differ break down as:
 - **12 files** where this build keeps (or drops) an audio-bearing sentence the
   earlier one did not. The spans themselves are unchanged; only which sentences
   exist differs.
-- **13 files** where a boundary genuinely differs, always with the same
-  signature — same end, earlier start. The cause is in the source: 40 of its
-  31,756 intonation units carry an **inverted** `iu_a_span`, the end before the
-  start (e.g. `[217.3, 215.84]`). A sentence's span is reduced from the spans of
-  the units it contains; this build takes `[min, max]` while the earlier one
-  took the first unit's start and the last unit's end in document order. Those
-  agree on every well-formed unit and disagree on an inverted one. `[min, max]`
-  is the safer reduction: it cannot emit `end <= start`, which V054 rejects as
-  HARD.
+- **the rest** are single spans that genuinely differ. A sentence's span runs
+  from the first intonation unit's start to the last one's end, in document
+  order. It is tempting to take `[min, max]` over all the endpoints instead,
+  and that is wrong: 40 of the source's 31,756 units carry an **inverted**
+  span, the end before the start (e.g. `[217.3, 215.84]`), and on those the
+  minimum reaches back behind the previous sentence's end. That widens the clip
+  without capturing a single extra word — the extra audio is the preceding
+  sentence's, and 28 sentences overlapped their predecessor that way. Seven
+  sentences reduce to `end <= start` in document order; all seven are
+  single-unit sentences whose own span is degenerate, and the AUDIO guard
+  already drops them.
+
+  The story's zero point is taken from the source units **before** merging, for
+  the same reason: computing it from the merged sentences makes it depend on
+  the reduction rule, and changing the rule silently re-timed ten Kavalan
+  stories by up to 7.8 seconds.
 
 ## Checking a rebuild
 
