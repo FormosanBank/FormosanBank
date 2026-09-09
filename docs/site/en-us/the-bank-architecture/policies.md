@@ -333,10 +333,22 @@ Two different things, treated differently:
 ### POL-025 · RULED · 2026-08-10 · alternative translations
 When a source gives more than one translation of a sentence into the same
 language, they all live **in the same `<S>` block** as multiple TRANSL
-elements, with all but one carrying `ver="alt"`. (The XSD already requires
-a `ver` when a parent has two same-language TRANSLs.) Do not drop the
-extra readings (Puyuma-Teng audit found 7 lost) and do not create
+elements, with all but one carrying `ver="alt"`. V085 enforces this and V084
+restricts the value; the XSD does not and cannot express either. Do not drop
+the extra readings (Puyuma-Teng audit found 7 lost) and do not create
 duplicate S blocks for them.
+
+`ver="alt"` is **not** confined to the S level — MontgomeryTexts, RauDong and
+WakelinTexts use it on W and M, which is correct.
+
+**`kindOf` on a TRANSL is a different axis and is not interchangeable with
+`ver`.** It is meaningful only at W and M level, where a TRANSL carries a
+gloss: `original` is the source's own gloss, `standard` a standardized one.
+On an S-level TRANSL — a free translation — there is no such axis and the
+attribute carries no information (V151). Glosbe currently carries 4,157
+such S-level `kindOf` attributes; V151 ships SOFT rather than HARD until
+they are remediated (see `claudeplans/2026-09-08-alternate-form-worklist.md`).
+Amended 2026-09-08.
 
 ### POL-026 · RULED · 2026-08-10 · optional material in examples
 A source sentence with optional words — `x y (z)` — becomes **two S
@@ -351,6 +363,49 @@ retained. Same care as POL-026: each block's glosses, W/M tier, and
 translation reflect only its own option. (V121/V122 flag leftover
 parens/slashes; unresolved slash alternatives in published FORMs are the
 symptom of skipping this rule.)
+
+### POL-028 · RULED · 2026-09-08 · alternate FORMs
+
+`FORM[@kindOf="alternate"]` records a **spelling variant** of a sibling FORM
+on the same node. It is the only marking for this: not `ver`, not
+`"alternative"`, not an `-opt` suffix.
+
+- Every alternate must have at least one **non-alternate FORM sibling on the
+  same parent** (V149 HARD), and must satisfy two independent conditions
+  against it (V150 SOFT):
+  1. **Overlap** — it must overlap the sibling highly, or, where both forms
+     are too short for overlap to be measurable, simply be short.
+  2. **Proportion** — neither form may be more than twice the length of the
+     other. A spelling variant does not double a word's length.
+
+  Proportion is a separate test because overlap alone cannot catch it: a
+  short form paired with a long one shares a short member, and a short-form
+  exemption written against the shorter string would wave it through.
+  Proportion catches *disproportionate* pairs specifically — it does not
+  close every hole the short-form exemption opens. Very short pairs (the
+  shorter form at or under 2 characters, the longer at most twice that) are
+  exempt from both conditions by design and rely on review, not on either
+  test, to catch a mismatched pair. The operative thresholds live in V150,
+  deliberately not here, so they can be tuned from evidence without a
+  re-ruling.
+- **The variation may span the whole form.** A one-letter word alternating
+  `a`/`u` (WakelinTexts `Kwaway/S2W3`) is as valid an alternate as a letter
+  changing inside a longer word. Nothing requires the variation to be
+  word-internal.
+- A competing **lexeme** for the same meaning, or a different gloss, is not
+  an alternate; per POL-027 it becomes its own `S` block. Latham-1862
+  currently carries 6 such cases; they are tracked for remediation.
+- Alternates may sit at S, W or M, and belong on the node that actually
+  varies. A word-list corpus whose `S` is a word is the S-level case.
+- **Optional material is resolved by scope.** What forces a separate `S`
+  block is not whether the variation sits inside a word, but whether the
+  **sentence's word inventory changes**. A whole optional *word* —
+  `x y (z)` — changes the W tier and the gloss alignment, so it becomes two
+  `S` blocks (POL-026), the second taking the first's id plus `-opt`.
+  Optional material that leaves the word count unchanged — `puken-(en)`,
+  `(u)m-lavi`, and equally a whole short word alternating `a`/`u` — becomes
+  an `alternate` FORM on the word that varies, never a second sentence.
+  Neither mechanism leaves parentheses in a published FORM.
 
 ---
 
@@ -842,3 +897,83 @@ with thirty-odd behaviours (POL-046).
 request that rebuilds the corpus. A rebuild that leaves the old commit in place
 is a stale record, which is worse than none — it asserts a correspondence
 between the tools and the bytes that no longer holds.
+
+### POL-053 · RULED · 2026-09-08 · XML attributes are a closed, documented set
+Every attribute a FormosanBank XML file may carry is declared in
+`QC/validation/xml_template.xsd` and carries an `xs:annotation/xs:documentation`
+stating its meaning and allowed values.
+
+The schema declares no `anyAttribute`, so an undeclared attribute already
+fails `validate_xml.py`. This policy names that as a deliberate guarantee
+rather than an accident of the schema: **the attribute set is a whitelist.**
+
+`QC/validation/ATTRIBUTES.md` is generated from the XSD by
+`attributes_catalogue.py` and is never hand-edited, on the same terms as
+`RULES.md` (POL-039 — derived, not retyped).
+
+**Adding an attribute requires four things:** an XSD declaration, an
+`xs:documentation` annotation, a regenerated catalogue, and a policy entry.
+`tests/validators/test_attributes_catalogue.py` enforces the first three;
+review enforces the fourth. No attribute is added ad hoc.
+
+### POL-054 · RULED · 2026-09-09 · waiving a HARD finding
+A HARD finding that a human has read and accepted is recorded in the
+corpus's **`CodeAndDocs/qc_waivers.tsv`** — one fixed path, tab-separated,
+columns `rule_id`, `file` (relative to the corpus `XML/`), `location`,
+`reason`. A waiver reclassifies the finding HARD → **WAIVED**: it stays in
+the findings CSV and in the printed summary, and stops failing the build.
+Nothing is ever hidden.
+
+Four constraints, and they are the entry:
+
+- **A reason is mandatory.** Empty, whitespace, or a leftover `TODO` is
+  rejected. The reason is the only part a tool cannot generate, which is
+  exactly why it is the part that counts.
+- **A waiver that matches nothing does not fail the run.** Fixing a finding
+  must never cost a second edit to the waiver file: the risk this mechanism
+  guards against is a *new* HARD finding, not a disappearing one, and a check
+  that fails the build when you repair data is a barrier pointed the wrong
+  way (maintainer, 2026-09-09). Spent rows are tidied on request with
+  `waivers.py prune`, the POL-030 `--prune` shape — an explicit human action,
+  never a gate. The residual risk is narrow and accepted: a spent waiver
+  would silently cover a *different* finding arriving later at the same
+  `(rule, file, location)`.
+- **No wildcards.** Exact `(rule_id, file, location)` only.
+- **Only judgement rules may be waived** — `WAIVABLE_RULES` in
+  `QC/validation/_waivers.py`, today `{V129}`. A structural finding (schema,
+  ids, tier relationships) states a fact about the XML that is fixable by
+  definition, so a waiver there is always the wrong tool. Adding an id to
+  that set is a policy decision made in its own pull request.
+
+`python QC/validation/waivers.py propose --csv <findings.csv>` appends the
+mechanical half (rule, file, location) as `TODO` rows for a human to justify;
+there is deliberately no flag that supplies a reason. `waivers.py prune`
+drops rows whose finding is gone, scoped to the files the run covered.
+`waivers.py report` prints every waiver in the bank, because waivers scattered
+across thirty `CodeAndDocs/` directories are invisible in aggregate.
+
+**Adopting waivers blocks nothing.** A corpus with no `qc_waivers.tsv` is
+untouched: same findings, same severities, same exit code. Waivers are opt-in
+per corpus and only ever move a finding *out* of HARD, so merging the
+mechanism cannot turn an existing pull request red.
+
+**Why this rather than a smarter rule.** The founding case is V129: POL-016
+excludes source-ungrammatical examples at intake, so a `*` surviving into a
+published FORM is notation — usually a Neogrammarian reconstruction label.
+Teaching the validator to tell the two apart was considered and rejected: the
+only available signal is position, and a reconstructed *word* (`*qaCay`) is
+shaped exactly like the ungrammaticality marker in the NTU Rukai `*(malra)`
+incident (POL-017). Only a human reading the source can separate them, so the
+mechanism records the human's decision instead of guessing at it.
+
+**Relationship to `compare_findings.py`.** That gate is relative — on a pull
+request it blocks only HARD fingerprints absent from the changed file's base
+version, so a pre-existing finding is invisible forever with no record that
+anyone looked. Waivers are the absolute complement: they say *why* a finding
+is accepted. As corpora adopt them, the "block only new" scoping can give way
+to "block anything unwaived", which is the goal stated in that workflow's own
+header.
+Implemented by: `QC/validation/_waivers.py` (applied in `_report.py`, so all
+finding-based validators get it), `QC/validation/waivers.py`,
+`tests/validators/test_waivers.py`. First user: `Corpora/SEALS33`, whose
+corpus-local `check_hard_findings.py` this replaces (POL-046).
