@@ -48,8 +48,9 @@ def load_language_codes(path: Path | None = None) -> dict[str, str]:
 
 LANG_CODE_TO_NAME = load_language_codes()
 
-# All display names a record can resolve to (the 16 codes plus Truku,
-# which is distinguished from Seediq by dialect rather than ISO code).
+# All display names a record can resolve to (every code in
+# languages.csv, plus Truku, which is distinguished from Seediq by
+# dialect rather than by ISO code).
 LANGUAGE_NAMES = sorted(set(LANG_CODE_TO_NAME.values()) | {"Truku"})
 
 ENG_CODES = {"eng", "en"}

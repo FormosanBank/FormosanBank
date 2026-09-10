@@ -8,6 +8,7 @@ from pathlib import Path as _Path
 _REPO_ROOT = _Path(__file__).resolve().parents[2]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
+from QC.corpus_counts import LANGUAGE_NAMES  # noqa: E402
 from QC.xml_forms import find_base_form  # noqa: E402
 import collections
 import regex as re
@@ -484,9 +485,13 @@ def main(args, langs):
     
 if __name__ == "__main__":
 
-    langs = ['Amis', 'Atayal', 'Paiwan', 'Bunun', 'Puyuma', 'Rukai', 'Tsou', 'Saisiyat', 'Yami',
-             'Thao', 'Kavalan', 'Truku', 'Sakizaya', 'Seediq', 'Saaroa', 'Siraya', 'Kanakanavu']
-    
+    # Every language a published record can resolve to, from the
+    # languages.csv registry (POL-039/POL-040) rather than a copy kept
+    # here. The hardcoded list this replaces had gone stale: it was
+    # missing Babuza-Favorlang and Pazeh, so the CLI rejected two
+    # registered languages that have published corpora.
+    langs = LANGUAGE_NAMES
+
     parser = argparse.ArgumentParser(description="Extract orthographic info")
     #parser.add_argument('--verbose', action='store_true', help='increase output verbosity')
     parser.add_argument('--corpora_path', help='the path to the corpus')
