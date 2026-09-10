@@ -295,11 +295,27 @@ def v150_alternate_FORM_low_overlap(
     findings: list[Finding] = []
     for parent in tree.iter("S", "W", "M"):
         forms = [child for child in parent if child.tag == "FORM"]
-        alternates = [f for f in forms if f.get("kindOf") == "alternate"]
-        bases = [f for f in forms if f.get("kindOf") != "alternate"]
-        if not alternates or not bases:
-            continue          # bare alternates are V149's business
-        for alt in alternates:
+        # (variant, candidate bases) pairs. Since POL-028's 2026-09-09
+        # revision a variant is kindOf="<tier>" ver="alt" and varies from
+        # that tier's own base, so the comparison is within the tier rather
+        # than against whichever sibling happens to score best. The
+        # deprecated kindOf="alternate" spelling names no tier, so it keeps
+        # the old any-sibling behaviour until it is migrated out (V157).
+        pairs: list[tuple[etree._Element, list[etree._Element]]] = []
+        for form in forms:
+            if form.get("kindOf") == "alternate":
+                bases = [f for f in forms if f.get("kindOf") != "alternate"]
+                if bases:
+                    pairs.append((form, bases))
+            elif form.get("ver") is not None:
+                bases = [
+                    f for f in forms
+                    if f.get("kindOf") == form.get("kindOf")
+                    and f.get("ver") is None
+                ]
+                if bases:
+                    pairs.append((form, bases))
+        for alt, bases in pairs:          # baseless variants are V149's business
             alt_text = (alt.text or "").strip()
             ratio, base_text = max(
                 (
@@ -331,7 +347,7 @@ def v150_alternate_FORM_low_overlap(
                 rule_id="V150",
                 severity=Severity.SOFT,
                 message=(
-                    f"{parent.tag} id={p_id!r}: alternate {alt_text!r} does "
+                    f"{parent.tag} id={p_id!r}: variant {alt_text!r} does "
                     f"not look like a spelling variant of {base_text!r} "
                     f"({'; '.join(reasons)}) — POL-028"
                 ),
@@ -340,6 +356,48 @@ def v150_alternate_FORM_low_overlap(
                 language=_tree_language(tree, path, index),
                 character="",
             ))
+    return findings
+
+
+def v157_legacy_alternate_kindOf(
+    tree: etree._ElementTree,
+    path: Path,
+    index: CorpusIndex | None,
+) -> list[Finding]:
+    """V157 SOFT: FORM[@kindOf='alternate'] is the deprecated variant spelling.
+
+    POL-028 was revised on 2026-09-09 so a variant reading names the tier it
+    varies from: `kindOf="<tier>" ver="alt"`. The old `alternate` value names
+    no tier, which is why a node could carry two variants with nothing saying
+    which base each belonged to.
+
+    SOFT, not HARD, because the published data still uses it: this is the
+    migration worklist, not a defect in the corpora. It goes away — rule and
+    enumeration value together — once the count reaches zero.
+    """
+    findings: list[Finding] = []
+    for parent in tree.iter("S", "W", "M"):
+        legacy = [
+            child for child in parent
+            if child.tag == "FORM" and child.get("kindOf") == "alternate"
+        ]
+        if not legacy:
+            continue
+        p_id = parent.get("id")
+        findings.append(Finding(
+            rule_id="V157",
+            severity=Severity.SOFT,
+            message=(
+                f"{parent.tag} id={p_id!r} has {len(legacy)} "
+                "FORM[@kindOf='alternate']; the current spelling is "
+                'kindOf="<tier>" ver="alt" (POL-028, 2026-09-09)'
+            ),
+            path=path,
+            location=f"{parent.tag}={p_id}" if p_id else parent.tag,
+            count=len(legacy),
+            language=_tree_language(tree, path, index),
+            character="",
+        ))
     return findings
 
 
@@ -401,7 +459,7 @@ def v152_mirrored_M_tier(
     path: Path,
     index: CorpusIndex | None,
 ) -> list[Finding]:
-    """V152 SOFT (POL-054): an M that merely mirrors its parent W.
+    """V152 SOFT (POL-057): an M that merely mirrors its parent W.
 
     A single M asserts "this word is analyzed as monomorphemic". That is a real
     claim, and for a word carrying a gloss it is the RIGHT one: the source did
@@ -442,7 +500,7 @@ def v152_mirrored_M_tier(
         severity=Severity.SOFT,
         message=(
             f"V152 SOFT: {mirrored} UNGLOSSED W elements carry a single M that "
-            f"repeats them (POL-054: an M records an analysis that was made; "
+            f"repeats them (POL-057: an M records an analysis that was made; "
             f"here there is no analysis to record)"
         ),
         path=path,
@@ -456,16 +514,17 @@ RULES: list = [
     v010_count_s_without_form,
     v014_count_missing_standard_form,
     # POL-023 M-tier consistency (2026-08-10; V144 per-sentence 2026-08-12).
-    # V144 RETIRED 2026-09-09 by POL-054: an M-less W is not a defect, it
+    # V144 RETIRED 2026-09-09 by POL-057: an M-less W is not a defect, it
     # records that the segmentation is not known. The id is not reused.
     v145_degenerate_all_single_M_tier,
     # POL-041 W-tier presence (2026-09-03), file-scoped
     v148_W_less_S_in_segmented_file,
     # POL-028 alternate FORMs (2026-09-08)
     v150_alternate_FORM_low_overlap,
+    v157_legacy_alternate_kindOf,
     # POL-025 S-level TRANSL @kindOf (2026-09-08)
     v151_S_TRANSL_has_no_kindOf,
-    # POL-054 the M tier is evidence, never manufactured (2026-09-09)
+    # POL-057 the M tier is evidence, never manufactured (2026-09-09)
     v152_mirrored_M_tier,
 ]
 CROSS_FILE_RULES: list = []

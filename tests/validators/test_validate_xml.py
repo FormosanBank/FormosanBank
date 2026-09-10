@@ -1056,7 +1056,7 @@ def test_V144_single_M_in_parsed_sentence_is_fine(tmp_path):
 
 
 def test_V152_mirror_M_tier_flagged(tmp_path):
-    """POL-054: a single M repeating its W's FORM and TRANSLs manufactures an
+    """POL-057: a single M repeating its W's FORM and TRANSLs manufactures an
     analysis. The sentence carries real parsing (W1), so this is not V145."""
     body = (
         '<S id="S1"><FORM kindOf="original">ma-kaen kako</FORM>'
@@ -1083,7 +1083,7 @@ def test_V152_M_that_shows_a_segmentation_is_not_a_mirror(tmp_path):
 
 
 def test_V152_M_less_W_is_not_a_finding(tmp_path):
-    """POL-054 withdrew POL-023's presence requirement and retired V144: an
+    """POL-057 withdrew POL-023's presence requirement and retired V144: an
     M-less W records that the segmentation is not known, and is never a
     finding -- not even beside a parsed word in the same sentence."""
     body = (
@@ -1093,7 +1093,7 @@ def test_V152_M_less_W_is_not_a_finding(tmp_path):
         + "</S>"
     )
     _run_validate(_write_mtier(tmp_path, body))
-    assert not _soft_rows(tmp_path, "V144"), "V144 was retired by POL-054"
+    assert not _soft_rows(tmp_path, "V144"), "V144 was retired by POL-057"
     assert not _soft_rows(tmp_path, "V152"), "an M-less W is not a mirror tier"
 
 
