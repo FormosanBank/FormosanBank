@@ -837,9 +837,25 @@ def _quote_log_path(corpora_path) -> Path:
     return p / "quote_corrections.csv"
 
 
+def _warnings_path(corpora_path, warnings_dir) -> Path:
+    """Where the per-run cleaner_warnings.csv goes (POL-033).
+
+    Defaults to <corpora_path>/cleaner_warnings.csv, which for a corpus built
+    with --corpora_path <corpus>/XML lands the report inside published data.
+    --warnings_dir moves it out without changing any existing caller: a corpus
+    passes its CodeAndDocs, and the file never touches XML/.
+    """
+    if warnings_dir:
+        directory = Path(warnings_dir)
+        directory.mkdir(parents=True, exist_ok=True)
+        return directory / "cleaner_warnings.csv"
+    return Path(corpora_path) / "cleaner_warnings.csv"
+
+
 def main(args):
     print(f"Processing XML files in directory: {args.corpora_path}")
-    warnings_path = Path(args.corpora_path) / "cleaner_warnings.csv"
+    warnings_path = _warnings_path(args.corpora_path,
+                                   getattr(args, "warnings_dir", None))
     warnings = CleanerWarnings(warnings_path)
     # Durable quote-correction log (POL-035): append-mode, committed.
     corrections = CleanerWarnings(_quote_log_path(args.corpora_path),
@@ -870,6 +886,11 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Extract orthographic info")
     #parser.add_argument('--verbose', action='store_true', help='increase output verbosity')
     parser.add_argument('--corpora_path', help='the path to the corpus')
+    parser.add_argument('--warnings_dir', default=None,
+                        help='directory for the per-run cleaner_warnings.csv '
+                             '(POL-033). Default: --corpora_path itself, which '
+                             'writes the report into published XML/ when that '
+                             'is the target; pass a CodeAndDocs to keep it out.')
     parser.add_argument('--reference_dir', default=None,
                         help='dir holding <Language>/attestation.txt '
                              '(default: QC/validation/reference)')

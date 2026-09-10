@@ -145,6 +145,7 @@ class TestAnalyzeFile:
         assert rec["eng_transl_count"] == 5  # two eng TRANSLs in s2 count once
         assert rec["zho_transl_count"] == 3
         assert rec["jpn_transl_count"] == 0  # no jpn TRANSL in this fixture
+        assert rec["nld_transl_count"] == 0  # nor nld
         assert rec["word_elements"] == 3
         assert rec["morpheme_elements"] == 1
         assert rec["translation_elements"] == 5
@@ -237,3 +238,46 @@ class TestJapaneseTranslationCount:
 
     def test_jpn_transl_count_is_a_declared_field(self):
         assert "jpn_transl_count" in corpus_counts.COUNT_FIELDS
+
+
+class TestDutchTranslationCount:
+    """nld TRANSL tiers count like eng, zho and jpn (2026-09-10).
+
+    The same two-language assumption that hid Japanese had been hiding Dutch
+    for far longer: Siraya_Gospels and UtrechtManuscriptWordList carry 3,130
+    nld TRANSL elements between them and reported none of them.
+    """
+
+    XML = (
+        '<TEXT id="T" citation="c" BibTeX_citation="b" copyright="CC BY-NC 4.0"'
+        ' xml:lang="fos" dialect="Siraya">'
+        '<S id="s1"><FORM kindOf="original">ka tu-ni-ey</FORM>'
+        '<TRANSL xml:lang="nld">ende het geschiedde</TRANSL></S>'
+        '<S id="s2"><FORM kindOf="original">ta ka-ligich-an</FORM>'
+        '<TRANSL xml:lang="nl">de heiligheid</TRANSL>'
+        '<TRANSL xml:lang="eng">the holiness</TRANSL></S>'
+        '<S id="s3"><FORM kindOf="original">ta mattiukapaey</FORM></S>'
+        '</TEXT>'
+    )
+
+    def _record(self, tmp_path):
+        path = tmp_path / "fos.xml"
+        path.write_text(self.XML, encoding="utf-8")
+        return corpus_counts.analyze_file(path)
+
+    def test_nld_and_nl_both_count_the_sentence_word_count(self, tmp_path):
+        rec = self._record(tmp_path)
+        # s1, s2 and s3 have 2 words each; s3 carries no TRANSL, so it counts
+        # toward word_count but not toward the Dutch column.
+        assert rec["nld_transl_count"] == 4
+        assert rec["word_count"] == 6
+
+    def test_a_sentence_translated_twice_counts_under_both(self, tmp_path):
+        rec = self._record(tmp_path)
+        # s2 has both nl and eng: the columns are independent, not exclusive.
+        assert rec["eng_transl_count"] == 2
+        assert rec["zho_transl_count"] == 0
+        assert rec["jpn_transl_count"] == 0
+
+    def test_nld_transl_count_is_a_declared_field(self):
+        assert "nld_transl_count" in corpus_counts.COUNT_FIELDS
