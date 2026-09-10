@@ -47,6 +47,7 @@ LANGUAGE_NAMES = sorted(set(LANG_CODE_TO_NAME.values()) | {"Truku"})
 ENG_CODES = {"eng", "en"}
 ZHO_CODES = {"zho", "zh", "zh-hant", "zh-hans"}
 JPN_CODES = {"jpn", "ja"}
+NLD_CODES = {"nld", "nl"}
 
 
 def count_words(text: str | None) -> int:
@@ -98,6 +99,9 @@ COUNT_FIELDS = (
     # Appended 2026-09-10: the bank's first Japanese material (Sato-Pazeh-Songs)
     # was reported as untranslated because only eng and zho were counted.
     "jpn_transl_count",
+    # Appended 2026-09-10: same gap, older. Siraya_Gospels and
+    # UtrechtManuscriptWordList have carried Dutch translations all along.
+    "nld_transl_count",
 )
 
 
@@ -148,6 +152,8 @@ def analyze_root(root) -> dict:
             record["zho_transl_count"] += n
         if transl_langs & JPN_CODES:
             record["jpn_transl_count"] += n
+        if transl_langs & NLD_CODES:
+            record["nld_transl_count"] += n
         if sentence.find(".//M") is not None:
             record["segmented_words"] += n
         if sentence.find(".//M/TRANSL") is not None:
