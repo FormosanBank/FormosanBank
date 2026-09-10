@@ -109,3 +109,58 @@ def test_ver_values_are_in_the_allowlist(nodes):
         if form.get("ver") not in (None, "alt")
     }
     assert bad == set(), f"unexpected FORM/@ver values: {bad}"
+
+
+# ---------------------------------------------------------------------------
+# Step 14 must not record a variant across an unresolved slash alternation
+# ---------------------------------------------------------------------------
+
+def test_no_wm_variant_carries_a_paren_or_slash(nodes):
+    """V121 (HARD) forbids a paren or slash in a W/M FORM.
+
+    The source writes `ngu-/mu-(a-)drusa`: a slash alternation whose SECOND
+    reading carries optional material. Step 14 of the builder records optional
+    material as a variant, but it runs long before
+    `resolve_slash_alternatives`, so it produced base `ngu-/mu-drusa` and
+    variant `ngu-/mu-a-drusa`. Only the base was ever de-slashed; the variant
+    kept the slash and, once POL-028 derivation gave it a standard-tier
+    counterpart, the same V121 finding was reported twice.
+    """
+    import re
+    offenders = [
+        (path.name, node.get("id"), form.get("kindOf"), form.text)
+        for path, node in nodes
+        if node.tag in ("W", "M")
+        for form in node.findall("FORM")
+        if form.get("ver") is not None and re.search(r"[()/]", form.text or "")
+    ]
+    assert offenders == [], (
+        f"{len(offenders)} variant FORM(s) carry a paren or slash: {offenders[:4]}"
+    )
+
+
+def test_step14_skips_a_word_whose_form_is_a_slash_alternation():
+    """The predicate that gates step 14.
+
+    Optional material inside a real alternation belongs to ONE reading, and
+    which reading survives is not settled until resolve_slash_alternatives
+    runs. A trailing or empty slash is not an alternation — one real reading —
+    so optional material there is unambiguous and step 14 still applies.
+    """
+    import sys
+    pipeline = (
+        Path(__file__).resolve().parents[2]
+        / "Corpora" / "NTUFormosanCorpus" / "CodeAndDocs" / "pipeline"
+    )
+    if str(pipeline) not in sys.path:
+        sys.path.insert(0, str(pipeline))
+    from pipeline_sentences import spans_slash_alternation
+
+    # Real alternation: the '(a-)' sits inside the reading that is discarded.
+    assert spans_slash_alternation("ngu-/mu-(a-)drusa") is True
+    # Trailing slash: one real reading, optional material unambiguous.
+    assert spans_slash_alternation("hinolaong(-an),/") is False
+    assert spans_slash_alternation("(Hx),/") is False
+    # No slash at all: the ordinary step-14 case.
+    assert spans_slash_alternation("ka(z)") is False
+    assert spans_slash_alternation("kangavas(=an)") is False
