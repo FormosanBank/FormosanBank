@@ -25,6 +25,7 @@ XML_LANG_ATTR = "{http://www.w3.org/XML/1998/namespace}lang"
 _CHINESE_LANGS = frozenset({
     "zho", "zh", "cmn", "yue", "wuu", "hak", "nan",
 })
+_JAPANESE_LANGS = frozenset({"jpn", "ja"})
 _TRANSL_LANG_ALIASES = {
     "en": "eng",
     "zh": "zho",
@@ -59,6 +60,13 @@ def _is_chinese(lang: str | None) -> bool:
     if lang is None:
         return False
     return lang.lower() in _CHINESE_LANGS or lang.lower().startswith("zh")
+
+
+def _is_japanese(lang: str | None) -> bool:
+    """Return True when lang matches a known Japanese variant."""
+    if lang is None:
+        return False
+    return lang.lower() in _JAPANESE_LANGS
 
 
 def normalize_translation_language_metadata(
@@ -591,6 +599,10 @@ def clean_trans(
            double-quote variants to U+FF02 (full-width straight double quote)
            and emits c002 warning rows for single-quote variants and ASCII
            apostrophes (left unchanged).
+         - Japanese (C002 Branch C): punctuation is left untouched. Japanese
+           uses the same CJK punctuation Branch B protects, but 「」 are its
+           real quotation marks, so Branch B's collapse to U+FF02 does not
+           apply either.
       3. normalize_whitespace — collapse runs of whitespace.
       4. trim_repeated_punctuation — !! → !, ??? → ?, --- → -.
 
@@ -605,6 +617,15 @@ def clean_trans(
     text = normalize_caret_variants(text)
     if _is_chinese(lang):
         text = _clean_trans_chinese(text, xml_file, s_id, warnings)
+    elif _is_japanese(lang):
+        # C002 Branch C: leave the punctuation alone. Japanese shares the CJK
+        # repertoire that Branch B exists to protect — 、 is the ideographic
+        # comma and （） the full-width parens — so swap_punctuation would
+        # ASCII-ify real source punctuation exactly as it would in Chinese.
+        # Branch B's own quote canonicalization is NOT applied: 「」 are
+        # Japanese quotation marks in their own right, not variants to
+        # collapse onto U+FF02.
+        pass
     else:
         # Emit c002b warning for U+02C8 before swap.
         if warnings is not None:
