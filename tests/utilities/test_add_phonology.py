@@ -762,3 +762,55 @@ def test_escaped_bracket_rule_resolves_variant_contextually(
     profile = load_profile(scheme, "Bunun", "Zhuoqun")
     assert phonologize("ci", profile) == "ʨi"
     assert phonologize("ca", profile) == "ʦa"
+
+
+def test_phonology_is_generated_from_the_base_form_not_a_variant(tmp_path):
+    """POL-028: a tier has one base plus ver="alt" variants, but PHON_Type
+    carries no @ver — so a tier has exactly one PHON, and it must spell the
+    BASE. Before the fix, add_phonology looped over every FORM of the kind
+    and each wrote into that one PHON, so the last one in document order —
+    the variant — silently overwrote the base's phonology.
+    """
+    corpus = tmp_path / "corpus"
+    xml_path = _write_corpus(
+        corpus,
+        "Yami",
+        "y.xml",
+        '<TEXT xml:lang="tao" dialect="Yami">'
+        '<S id="1">'
+        '<FORM kindOf="original">ngaro</FORM>'
+        '<FORM kindOf="original" ver="alt">rakep</FORM>'
+        '<FORM kindOf="standard">ngaro</FORM>'
+        '<FORM kindOf="standard" ver="alt">rakep</FORM>'
+        "</S></TEXT>",
+    )
+    proc = _run(corpus)
+    combined = proc.stdout + proc.stderr
+    assert "Error" not in combined, f"unexpected error: {combined!r}"
+
+    for kind in ("original", "standard"):
+        phons = _phon_texts(xml_path, kind)
+        assert len(phons) == 1, f"{kind}: expected one PHON, got {phons!r}"
+        # 'ngaro' -> ŋ...; the variant 'rakep' contains no ng at all.
+        assert "ŋ" in phons[0], (
+            f"{kind} PHON {phons[0]!r} does not spell the base 'ngaro' "
+            "— it was overwritten by the ver='alt' variant"
+        )
+
+
+def test_a_variant_form_gets_no_phon_of_its_own(tmp_path):
+    """PHON_Type has no @ver, so a variant cannot carry its own PHON."""
+    corpus = tmp_path / "corpus"
+    xml_path = _write_corpus(
+        corpus,
+        "Yami",
+        "y.xml",
+        '<TEXT xml:lang="tao" dialect="Yami">'
+        '<S id="1">'
+        '<FORM kindOf="original">ngaro</FORM>'
+        '<FORM kindOf="original" ver="alt">rakep</FORM>'
+        "</S></TEXT>",
+    )
+    _run(corpus)
+    root = ET.parse(xml_path).getroot()
+    assert [p.get("ver") for p in root.findall(".//PHON")] == [None]
