@@ -1,7 +1,14 @@
 import xml.etree.ElementTree as ET
 import html
 import os
+import sys
 import unicodedata
+from pathlib import Path as _Path
+
+_REPO_ROOT = _Path(__file__).resolve().parents[2]
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+from QC.xml_forms import find_base_form  # noqa: E402
 import collections
 import regex as re
 import string
@@ -51,7 +58,11 @@ def generate_corpus(language_to_process, to_check_path, kindOf, by_dialect=False
                 for s in root_to_read.findall('.//S'):
                     # Find the <FORM> element within the <S> element
                     if kindOf:
-                        form = s.find(f"FORM[@kindOf='{kindOf}']")
+                        # The tier's base FORM. A POL-028 ver="alt" variant
+                        # would otherwise stand in for the base whenever it
+                        # is written first, inventorying the orthography of
+                        # a secondary reading instead of the sentence's own.
+                        form = find_base_form(s, kindOf)
                         if form is not None:
                             if form.text:
                                 text += " " + form.text

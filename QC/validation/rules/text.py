@@ -100,6 +100,7 @@ _QC_ROOT = Path(__file__).resolve().parents[3]
 if str(_QC_ROOT) not in _sys.path:
     _sys.path.insert(0, str(_QC_ROOT))
 from QC.corpus_counts import LANG_CODE_TO_NAME as _ISO_TO_ORTHO_NAME  # noqa: E402  (languages.csv, POL-039)
+from QC.xml_forms import find_base_form  # noqa: E402
 
 
 _ORTHOGRAPHIES_ROOT = Path(__file__).resolve().parents[3] / "Orthographies"
@@ -207,27 +208,28 @@ def _resolve_language(tree: etree._ElementTree) -> str:
 
 
 def _s_standard_form_text(s: etree._Element) -> str | None:
-    """Return text of the S element's direct-child kindOf='standard' FORM, or None."""
-    for child in s:
-        if child.tag == "FORM" and child.get("kindOf") == "standard":
-            return child.text or ""
-    return None
+    """Text of the S's direct-child standard *base* FORM, or None.
+
+    Base, not a POL-028 ver="alt" variant: these helpers answer "what does
+    this sentence say", and a variant is a second reading of it.
+    """
+    return _direct_form_by_kind(s, "standard")
 
 
 def _s_original_form_text(s: etree._Element) -> str | None:
-    """Return text of the S element's direct-child kindOf='original' FORM, or None."""
-    for child in s:
-        if child.tag == "FORM" and child.get("kindOf") == "original":
-            return child.text or ""
-    return None
+    """Text of the S's direct-child original *base* FORM, or None."""
+    return _direct_form_by_kind(s, "original")
 
 
 def _direct_form_by_kind(elem: etree._Element, kind: str) -> str | None:
-    """Return the text of a direct-child FORM with the given kindOf, or None."""
-    for child in elem:
-        if child.tag == "FORM" and child.get("kindOf") == kind:
-            return child.text or ""
-    return None
+    """Text of the direct-child *base* FORM of the given kindOf, or None.
+
+    None also covers "this tier has only variants" — V149 (HARD) owns that
+    shape, and no other rule should reason about a variant as if it were
+    the base (maintainer ruling 2026-09-10).
+    """
+    form = find_base_form(elem, kind)
+    return (form.text or "") if form is not None else None
 
 
 def _s_standard_pairs(tree: etree._ElementTree):
@@ -1593,7 +1595,7 @@ def v141_W_reconstructs_S(
         ws = [child for child in s if child.tag == "W"]
         if not ws:
             continue  # unsegmented; nothing to reconstruct
-        s_form = s.find('./FORM[@kindOf="original"]')
+        s_form = find_base_form(s, "original")
         if s_form is None:
             continue
         s_skel = letter_skeleton(s_form.text)
@@ -1602,7 +1604,7 @@ def v141_W_reconstructs_S(
         w_skel: Counter = Counter()
         saw_w_form = False
         for w in ws:
-            w_form = w.find('./FORM[@kindOf="original"]')
+            w_form = find_base_form(w, "original")
             if w_form is not None and (w_form.text or "").strip():
                 saw_w_form = True
                 w_skel += letter_skeleton(w_form.text)

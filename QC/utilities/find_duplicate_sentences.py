@@ -18,6 +18,11 @@ import xml.etree.ElementTree as ET
 from collections import defaultdict
 from pathlib import Path
 
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+from QC.xml_forms import find_base_form  # noqa: E402
+
 
 def extract_forms(xml_path: str, kind_of: str = "standard") -> list[tuple[str, str]]:
     """
@@ -30,12 +35,13 @@ def extract_forms(xml_path: str, kind_of: str = "standard") -> list[tuple[str, s
         root = tree.getroot()
         for s in root.iter("S"):
             sid = s.get("id", "")
-            for form in s:          # only direct children
-                if form.tag == "FORM" and form.get("kindOf") == kind_of:
-                    text = (form.text or "").strip()
-                    if text:
-                        results.append((sid, text))
-                    break           # at most one matching FORM per S
+            # The tier's BASE form, never a ver="alt" variant: two
+            # sentences whose variants coincide are not duplicates.
+            form = find_base_form(s, kind_of)
+            if form is not None:
+                text = (form.text or "").strip()
+                if text:
+                    results.append((sid, text))
     except ET.ParseError as e:
         print(f"  WARNING: could not parse {xml_path}: {e}", file=sys.stderr)
     return results

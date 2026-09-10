@@ -45,6 +45,9 @@ from lxml import etree
 # Reuse the validator's normalize + extract logic so equivalence stays in sync.
 _THIS = Path(__file__).resolve()
 sys.path.insert(0, str(_THIS.parents[1] / "validation"))
+if str(_THIS.parents[2]) not in sys.path:
+    sys.path.insert(0, str(_THIS.parents[2]))
+from QC.xml_forms import find_base_form  # noqa: E402
 from validate_duplicate_sentences import normalize_for_comparison  # noqa: E402
 
 
@@ -63,12 +66,13 @@ def _extract_sentences_lxml(xml_path: str, kind_of: str):
         return out
     for s in root.iter("S"):
         sid = s.get("id", "")
-        for child in s:
-            if child.tag == "FORM" and child.get("kindOf") == kind_of:
-                norm = normalize_for_comparison(child.text or "")
-                if norm:
-                    out.append((sid, norm))
-                break
+        # The tier's BASE form, never a ver="alt" variant: two sentences
+        # whose variants coincide are not duplicates of each other.
+        child = find_base_form(s, kind_of)
+        if child is not None:
+            norm = normalize_for_comparison(child.text or "")
+            if norm:
+                out.append((sid, norm))
     return out
 
 

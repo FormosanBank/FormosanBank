@@ -39,10 +39,13 @@ class TestCountWords:
 
 
 def _sentence(*forms):
-    """Build an <S> with (kindOf, text) FORM children."""
+    """Build an <S> with (kindOf, text) or (kindOf, ver, text) FORM children."""
     s = ET.Element("S")
-    for kind, text in forms:
+    for spec in forms:
+        kind, ver, text = spec if len(spec) == 3 else (spec[0], None, spec[1])
         f = ET.SubElement(s, "FORM", {"kindOf": kind})
+        if ver is not None:
+            f.set("ver", ver)
         f.text = text
     return s
 
@@ -70,6 +73,38 @@ class TestSelectSentenceForm:
         w = ET.SubElement(s, "W")
         f = ET.SubElement(w, "FORM", {"kindOf": "standard"})
         f.text = "word-level"
+        assert corpus_counts.select_sentence_form(s) is None
+
+    # -- POL-028 variants -------------------------------------------------
+    # Counting is CI-coupled (statistics/, the token-comparison gate), so a
+    # variant must never be what gets counted.
+
+    def test_counts_the_standard_base_not_a_preceding_standard_variant(self):
+        s = _sentence(
+            ("original", "orig text"),
+            ("standard", "alt", "variant text"),
+            ("standard", "std text"),
+        )
+        assert corpus_counts.select_sentence_form(s) == "std text"
+
+    def test_counts_the_original_base_not_a_preceding_original_variant(self):
+        s = _sentence(
+            ("original", "alt", "variant text"),
+            ("original", "orig text"),
+        )
+        assert corpus_counts.select_sentence_form(s) == "orig text"
+
+    def test_a_standard_variant_does_not_outrank_the_original_base(self):
+        """No standard *base* exists, so the original tier owns the count."""
+        s = _sentence(
+            ("standard", "alt", "variant text"),
+            ("original", "orig text"),
+        )
+        assert corpus_counts.select_sentence_form(s) == "orig text"
+
+    def test_variants_alone_are_not_countable(self):
+        """Maintainer ruling 2026-09-10: strict. V149 HARD owns this shape."""
+        s = _sentence(("original", "alt", "variant text"))
         assert corpus_counts.select_sentence_form(s) is None
 
 
@@ -117,6 +152,19 @@ class TestAnalyzeFile:
         assert rec["audio_elements"] == 0
         assert rec["file_count"] == 1
         # s3 has W-level FORMs but no S-level FORM: contributes 0, warned.
+        assert any("no countable FORM" in w for w in rec["warnings"])
+
+    def test_a_variant_only_sentence_counts_zero_and_warns(self):
+        """Strict selection (maintainer ruling 2026-09-10) must still be
+        visible: the sentence contributes nothing *and* says so, rather
+        than silently counting a secondary reading."""
+        root = ET.fromstring(
+            '<TEXT xml:lang="ami" dialect="Haian">'
+            '<S id="s1"><FORM kindOf="original" ver="alt">ina kaen wawa</FORM></S>'
+            "</TEXT>"
+        )
+        rec = corpus_counts.analyze_root(root)
+        assert rec["word_count"] == 0
         assert any("no countable FORM" in w for w in rec["warnings"])
 
     def test_truku_record_and_audio_counts(self):

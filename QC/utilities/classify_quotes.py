@@ -31,7 +31,13 @@ import os
 import re
 import sys
 from collections import Counter, defaultdict
+from pathlib import Path
 from xml.etree import ElementTree as ET
+
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+from QC.xml_forms import find_base_form  # noqa: E402
 
 QUOTE = "'"
 
@@ -536,13 +542,13 @@ def _sentence_records(path, lang):
         return []
     out = []
     for s in root.findall("S"):
-        form_text = None
-        for form in s.findall("FORM"):
-            if form.get("kindOf") == "original" and form.text:
-                form_text = " ".join("".join(form.itertext()).split())
-                break
-        if form_text is None:
+        # The original tier's BASE: a POL-028 ver="alt" variant is a second
+        # reading, and classifying its quotes would attribute them to the
+        # sentence as though the base had said them.
+        form = find_base_form(s, "original")
+        if form is None or not form.text:
             continue
+        form_text = " ".join("".join(form.itertext()).split())
         transls = []
         for tr in s.findall("TRANSL"):
             txt = "".join(tr.itertext())
