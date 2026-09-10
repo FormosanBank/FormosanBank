@@ -80,7 +80,8 @@ LANG_NAMES = {
     'tsu': 'Tsou',
     'xnb': 'Kanakanavu',
     'xsy': 'Saisiyat',
-    'fos': 'Siraya'
+    'fos': 'Siraya',
+    'pzh': 'Pazeh',
 }
 
 # HTML markers so the section can be cleanly replaced on subsequent runs
@@ -117,6 +118,7 @@ CSV_TO_MD = {
     'Campbell-Favorlang_corpora_stats.csv': 'campbell-favorlang.md',
     'UtrechtManuscriptWordList_corpora_stats.csv': 'utrecht-manuscript-word-list.md',
     'Huteson-Rukai-Survey_corpora_stats.csv': 'huteson-rukai-survey.md',
+    'Sato-Pazeh-Songs_corpora_stats.csv': 'sato-pazeh-songs.md',
 }
 
 # ---------------------------------------------------------------------------
@@ -184,7 +186,8 @@ def row_has_data(row: dict) -> bool:
     """Return True if at least one displayed numeric field is non-zero."""
     fields = ('word_count', 'transcribed_audio_count', 'transcribed_audio_seconds',
               'untranscribed_audio_count', 'untranscribed_audio_seconds',
-              'eng_transl_count', 'zho_transl_count', 'segmented_words')
+              'eng_transl_count', 'zho_transl_count', 'jpn_transl_count',
+              'segmented_words')
     try:
         return any(float(row.get(f) or 0) != 0 for f in fields)
     except (ValueError, TypeError):
@@ -230,6 +233,7 @@ ROW_DEFS = [
     ('Translated words',                    None,                        None),
     (f'{INDENT}English',                   'eng_transl_count',           fmt_count),
     (f'{INDENT}Mandarin',                  'zho_transl_count',           fmt_count),
+    (f'{INDENT}Japanese',                  'jpn_transl_count',           fmt_count),
     ('Morphologically segmented',           'segmented_words',           fmt_count),
     ('Glossed words',                       'glossed_words',             fmt_count),
 ]
@@ -378,6 +382,7 @@ def _empty_stats() -> dict:
         'untranscribed_audio_seconds': 0.0,
         'eng_transl_count':            0,
         'zho_transl_count':            0,
+        'jpn_transl_count':            0,
         'segmented_words':             0,
         'glossed_words':               0,
     }
@@ -390,6 +395,7 @@ def _accumulate(bucket: dict, row: dict) -> None:
         bucket['untranscribed_audio_seconds'] += float(row.get('untranscribed_audio_seconds')     or 0)
         bucket['eng_transl_count']            += int(float(row.get('eng_transl_count')            or 0))
         bucket['zho_transl_count']            += int(float(row.get('zho_transl_count')            or 0))
+        bucket['jpn_transl_count']            += int(float(row.get('jpn_transl_count')            or 0))
         bucket['segmented_words']             += int(float(row.get('segmented_words')             or 0))
         bucket['glossed_words']               += int(float(row.get('glossed_words')               or 0))
     except (ValueError, TypeError):
@@ -457,6 +463,7 @@ def _make_table_from_buckets(keys: list, buckets: dict, header_fn) -> str:
         '| Translated words | '                    + ' | '.join('' for _ in keys)                                              + ' |',
         f'| {INDENT}English | '                   + ' | '.join(col(k, 'eng_transl_count',            fmt_count) for k in keys) + ' |',
         f'| {INDENT}Mandarin | '                  + ' | '.join(col(k, 'zho_transl_count',            fmt_count) for k in keys) + ' |',
+        f'| {INDENT}Japanese | '                  + ' | '.join(col(k, 'jpn_transl_count',            fmt_count) for k in keys) + ' |',
         '| Morphologically segmented | '           + ' | '.join(col(k, 'segmented_words',              fmt_count) for k in keys) + ' |',
         '| Glossed words | '                       + ' | '.join(glossed(k)                                        for k in keys) + ' |',
     ]

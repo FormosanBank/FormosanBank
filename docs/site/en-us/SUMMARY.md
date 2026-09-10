@@ -45,6 +45,7 @@
   * [Campbell-Favorlang](the-bank-architecture/corpora/campbell-favorlang.md)
   * [Utrecht Manuscript Word List](the-bank-architecture/corpora/utrecht-manuscript-word-list.md)
   * [Huteson (2003) Rukai Survey](the-bank-architecture/corpora/huteson-rukai-survey.md)
+  * [Sato Pazeh Songs](the-bank-architecture/corpora/sato-pazeh-songs.md)
 * [Developers](the-bank-architecture/developers/README.md)
   * [🤗 HuggingFace](the-bank-architecture/developers/huggingface.md)
   * [Formosan MT Toolkit](the-bank-architecture/developers/formosan-mt-toolkit.md)

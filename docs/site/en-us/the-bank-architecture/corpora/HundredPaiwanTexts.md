@@ -4,6 +4,7 @@
 
 [The 100 Paiwan Texts](https://github.com/FormosanBank/FormosanBank/tree/main/Corpora/HundredPaiwanStories) corpus contains 100 morphologically analyzed and glossed Paiwan texts from Early and Whitehorn (2003). The published XML has 2,921 sentence elements, including 2,916 source sentences and 5 complete variants for optional source tokens.
 
+
 <!-- CORPUS STATS START -->
 ### Corpus Statistics
 
@@ -16,6 +17,7 @@
 | Translated words |  |  |  |  |  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 3,719 | 1,198 | 9,021 | 9,496 | 1,122 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 | 0 | 0 | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese | 0 | 0 | 0 | 0 | 0 |
 | Morphologically segmented | 3,719 | 1,198 | 9,021 | 9,496 | 1,122 |
 | Glossed words | 3,719 | 1,198 | 9,021 | 9,496 | 1,122 |
 
