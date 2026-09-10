@@ -32,6 +32,8 @@ FIELDNAMES = [
     # Appended 2026-06 (pipeline unification); safe for DictReader consumers.
     "sentences", "word_elements", "morpheme_elements",
     "translation_elements", "audio_elements", "parse_errors",
+    # Appended 2026-09-10; safe for DictReader consumers, same as the 2026-06 batch.
+    "jpn_transl_count",
 ]
 
 SUM_FIELDS = [f for f in FIELDNAMES if f not in
