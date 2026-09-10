@@ -100,6 +100,7 @@ _QC_ROOT = Path(__file__).resolve().parents[3]
 if str(_QC_ROOT) not in _sys.path:
     _sys.path.insert(0, str(_QC_ROOT))
 from QC.corpus_counts import LANG_CODE_TO_NAME as _ISO_TO_ORTHO_NAME  # noqa: E402  (languages.csv, POL-039)
+from QC.xml_forms import find_base_form  # noqa: E402
 
 
 _ORTHOGRAPHIES_ROOT = Path(__file__).resolve().parents[3] / "Orthographies"
@@ -1593,7 +1594,7 @@ def v141_W_reconstructs_S(
         ws = [child for child in s if child.tag == "W"]
         if not ws:
             continue  # unsegmented; nothing to reconstruct
-        s_form = s.find('./FORM[@kindOf="original"]')
+        s_form = find_base_form(s, "original")
         if s_form is None:
             continue
         s_skel = letter_skeleton(s_form.text)
@@ -1602,7 +1603,7 @@ def v141_W_reconstructs_S(
         w_skel: Counter = Counter()
         saw_w_form = False
         for w in ws:
-            w_form = w.find('./FORM[@kindOf="original"]')
+            w_form = find_base_form(w, "original")
             if w_form is not None and (w_form.text or "").strip():
                 saw_w_form = True
                 w_skel += letter_skeleton(w_form.text)

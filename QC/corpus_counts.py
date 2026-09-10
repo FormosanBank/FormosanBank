@@ -16,6 +16,7 @@ Rules (decided 2026-06-10):
 from __future__ import annotations
 
 import csv
+import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
 from typing import Any
@@ -23,6 +24,13 @@ from typing import Any
 XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
 
 _REPO_ROOT = Path(__file__).resolve().parents[1]
+
+# This module is imported both as `QC.corpus_counts` and, by callers that
+# put QC/ itself on sys.path, as bare `corpus_counts`. Make the repo root
+# importable so the shared FORM selector resolves either way.
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+from QC.xml_forms import find_base_form, iter_base_forms  # noqa: E402
 
 
 def load_language_codes(path: Path | None = None) -> dict[str, str]:
@@ -58,10 +66,15 @@ def count_words(text: str | None) -> int:
 def select_sentence_form(sentence) -> str | None:
     """Return the text to count for one <S>: standard tier, else original.
 
-    Only direct FORM children of S are considered (S-tier rule)."""
+    Only direct FORM children of S are considered (S-tier rule), and only
+    each tier's *base* FORM — a POL-028 ``ver="alt"`` variant is a second
+    reading of the same sentence, so counting one would double-count a
+    reading the corpus never asserts as primary. A tier with variants but
+    no base counts as absent (maintainer ruling 2026-09-10); V149 (HARD)
+    reports that shape."""
     for kind in ("standard", "original"):
-        for form in sentence.findall("FORM"):
-            if form.get("kindOf") == kind and form.text and form.text.strip():
+        for form in iter_base_forms(sentence, kind):
+            if form.text and form.text.strip():
                 return form.text
     return None
 
@@ -124,7 +137,7 @@ def analyze_root(root) -> dict:
         record["sentences"] += 1
         text = select_sentence_form(sentence)
         if text is None:
-            if sentence.find("FORM") is None:
+            if find_base_form(sentence) is None:
                 warnings.append(
                     f"sentence {sentence.get('id', '?')} has no countable FORM at the S level"
                 )
