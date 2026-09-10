@@ -54,6 +54,7 @@ LANGUAGE_NAMES = sorted(set(LANG_CODE_TO_NAME.values()) | {"Truku"})
 
 ENG_CODES = {"eng", "en"}
 ZHO_CODES = {"zho", "zh", "zh-hant", "zh-hans"}
+JPN_CODES = {"jpn", "ja"}
 
 
 def count_words(text: str | None) -> int:
@@ -107,6 +108,9 @@ COUNT_FIELDS = (
     "translation_elements",
     "audio_elements",
     "file_count",
+    # Appended 2026-09-10: the bank's first Japanese material (Sato-Pazeh-Songs)
+    # was reported as untranslated because only eng and zho were counted.
+    "jpn_transl_count",
 )
 
 
@@ -155,6 +159,8 @@ def analyze_root(root) -> dict:
             record["eng_transl_count"] += n
         if transl_langs & ZHO_CODES:
             record["zho_transl_count"] += n
+        if transl_langs & JPN_CODES:
+            record["jpn_transl_count"] += n
         if sentence.find(".//M") is not None:
             record["segmented_words"] += n
         if sentence.find(".//M/TRANSL") is not None:
