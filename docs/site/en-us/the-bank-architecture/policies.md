@@ -364,7 +364,7 @@ translation reflect only its own option. (V121/V122 flag leftover
 parens/slashes; unresolved slash alternatives in published FORMs are the
 symptom of skipping this rule.)
 
-### POL-028 · RULED · 2026-09-08 · alternate FORMs
+### POL-028 · RULED · 2026-09-08 · variant FORMs
 
 **Revised 2026-09-09.** A **variant reading** is written `ver="alt"` on a FORM
 whose `kindOf` names its tier — `kindOf="original" ver="alt"` is a variant of
@@ -414,13 +414,13 @@ allowlist (V084 for TRANSL, V156 for FORM).
   from the corresponding original variant, so a variant is machine-owned on the
   standard side exactly as the base is (POL-002).
 - **The variation may span the whole form.** A one-letter word alternating
-  `a`/`u` (WakelinTexts `Kwaway/S2W3`) is as valid an alternate as a letter
+  `a`/`u` (WakelinTexts `Kwaway/S2W3`) is as valid a variant as a letter
   changing inside a longer word. Nothing requires the variation to be
   word-internal.
 - A competing **lexeme** for the same meaning, or a different gloss, is not
-  an alternate; per POL-027 it becomes its own `S` block. Latham-1862
+  a variant; per POL-027 it becomes its own `S` block. Latham-1862
   currently carries 6 such cases; they are tracked for remediation.
-- Alternates may sit at S, W or M, and belong on the node that actually
+- Variants may sit at S, W or M, and belong on the node that actually
   varies. A word-list corpus whose `S` is a word is the S-level case.
 - **Optional material is resolved by scope.** What forces a separate `S`
   block is not whether the variation sits inside a word, but whether the
@@ -429,7 +429,8 @@ allowlist (V084 for TRANSL, V156 for FORM).
   `S` blocks (POL-026), the second taking the first's id plus `-opt`.
   Optional material that leaves the word count unchanged — `puken-(en)`,
   `(u)m-lavi`, and equally a whole short word alternating `a`/`u` — becomes
-  an `alternate` FORM on the word that varies, never a second sentence.
+  a `ver="alt"` variant FORM on the word that varies, never a second
+  sentence.
   Neither mechanism leaves parentheses in a published FORM.
 
 ---
@@ -1003,6 +1004,34 @@ finding-based validators get it), `QC/validation/waivers.py`,
 `tests/validators/test_waivers.py`. First user: `Corpora/SEALS33`, whose
 corpus-local `check_hard_findings.py` this replaces (POL-046).
 
+### POL-055 · RULED · 2026-09-09 · corpus documentation
+Every corpus README and every GitBook corpus page carries a
+**`Notes and Issues`** section: the known limitations, source defects,
+unresolved data problems and caveats a user needs *before* using the corpus —
+OCR artifacts left in place, missing audio, hand edits, orthography assumptions.
+Write `None known.` when there are none; the section is never simply absent.
+
+**One name.** The section is `Notes and Issues` in both places. Seven GitBook
+pages currently say `Corpus Notes`, one says `Notes` and one `Minor notes`;
+those are legacy spellings to migrate, not alternatives. Nothing lints the name
+today, which is why fixing it needs an entry rather than a convention.
+
+**Where it goes.** On a GitBook page, immediately after the statistics block and
+before `Access Details` — a caveat a reader meets after the numbers and before
+the download link. In a corpus README, after `Audio`.
+
+**What it is not.** Not process history, not a changelog, not the QC findings
+list. It is the short set of things that would mislead someone who compared this
+corpus with another without knowing them. `Corpora/Huteson-Rukai-Survey` is the
+worked example: a dialect whose source does not record schwa, a source that
+writes word-final vowels double, an unglossed particle, and one gloss inferred
+rather than transcribed.
+
+Implemented by: the `port-corpus-in` templates
+(`README.template.md`, `corpus_page.template.md`) and their `{{NOTES_AND_ISSUES}}`
+placeholder. Not yet linted; `manage_corpus_pages.py check` verifies the four
+integration points and not page structure.
+
 ### POL-056 · RULED · 2026-09-09 · conversion tables
 A conversion table (`Orthographies/ConversionTables/<Language>_<Scheme>_113.tsv`)
 is a **set** of rules, not a sequence. `standardize.py` stages every rule through
@@ -1033,11 +1062,16 @@ the literal replacement text "NA", which was harmless only for as long as the
 NA'd letter never occurred; eight cells across two Rukai tables would have
 spliced `NA` into a word.
 
-⚠️ **The two consumers still disagree about an empty cell.**
-`validate_conversion_table.py` treats empty and `NA` alike as "no rule", so the
-six deletion rules above are not audited. Reconciling that is a separate
-question — either the validator learns the deletion reading, or deletions get
-their own notation.
+**Both consumers now read an empty cell the same way** (ruled 2026-09-09).
+`validate_conversion_table.py` used to treat empty and `NA` alike as "no rule",
+so the six rules in the bank that delete a letter were the only ones nothing
+audited. It now reports each as a `deletion`, and distinguishes the two cases
+that matter: a deletion the target orthography **cannot** write is the only
+answer available, while one it **could** have written is a real loss to review.
+The distinction found one — `Yami_Wakelin_113` deletes `?`, and Ortho113 Yami
+writes that phoneme as `'`. Deletions never block, and
+`run_conversion_table_checks.py` surfaces the reviewable ones in its
+phoneme-level section so a deletion is not invisible in aggregate.
 
 Enforced by `tests/utilities/test_standardize_rule_application.py`, which asserts
 that **every rule in every committed table produces exactly its own
