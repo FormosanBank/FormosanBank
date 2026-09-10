@@ -35,9 +35,12 @@ Joshua supplied the citation on 2025-02-25:
 All nine pages and their continuations were reviewed against the six preserved
 three-column text ledgers. Each blank-line-separated record contains English,
 Chinese, then Paiwan. The 315 fields match the PDF's corresponding columns in
-source order after layout whitespace removal. Two standalone titles have no
-separate Paiwan counterpart and are excluded: FormosanBank (p. 2) and
-Contributing to FormosanBank (p. 8). Column labels, URLs, and page numbers are
+source order after layout whitespace removal. Two English/Chinese headings have
+no Paiwan counterpart and are excluded: the standalone title FormosanBank (p. 2),
+and the heading What must you do? / 您必須做什麼？ (p. 8). Page 8 sets two
+headings against a single Paiwan line, `kemuda itjen a pusaladj tua
+FormosanBank?`, which is the Paiwan page title and is published as S 0 of
+`Contributing_to_FormosanBank.xml`. Column labels, URLs, and page numbers are
 layout metadata. Source headings with Paiwan text, names, language lists, and
 both repeated bibliographic citations remain data.
 
@@ -84,7 +87,20 @@ This written source supplies no audio.
 Records include headings and lists as well as prose. The manual reflects its
 2025 source, including historical licence wording. Names, English/Chinese
 code-switching and licence-link labels are retained; generated PHON may contain
-uncertainty stars for unsupported borrowed letters.
+uncertainty stars for unsupported borrowed letters, including where it is
+applied to non-Paiwan names.
+
+Two records carry known defects, left in place rather than corrected:
+
+- `Welcome` S `p1_people` runs the roster as one line, so the group heading
+  `Advisory Board` sits inline among the personal names. The source sets the
+  Principal Investigators and Advisory Board lists in one column.
+- `Formosan_Languages` S `p5_languages` has a `TRANSL xml:lang="zho"` holding
+  the source's untranslated Latin language list rather than Mandarin. The
+  source document's Mandarin translator left that list in Latin; the Mandarin
+  edition of the FormosanBank manual does translate the names.
+
+Records that are lists of names count toward this corpus's word totals.
 
 ## Reproduce
 
