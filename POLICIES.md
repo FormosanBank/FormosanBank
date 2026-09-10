@@ -273,7 +273,7 @@ the corpus's CodeAndDocs declares a dedup step* — a leftover duplicate
 then signals a pipeline defect, not a content question. The within-file
 vs cross-file distinction survives as the finding's `scope`.
 
-### POL-023 · RULED · 2026-08-10 · M-tier presence (scope amended 2026-08-12; **presence requirement withdrawn 2026-09-09 by POL-054**)
+### POL-023 · RULED · 2026-08-10 · M-tier presence (scope amended 2026-08-12; **presence requirement withdrawn 2026-09-09 by POL-057**)
 **The unit of morphological analysis is the sentence, not the file.** In a
 sentence that carries *some* morphological parsing, **every W gets at least
 one M**; a W with exactly one M there is read as "analyzed as
