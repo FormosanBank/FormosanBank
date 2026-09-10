@@ -69,6 +69,24 @@ were removed and remain documented in `missing_audio.csv` and the per-language
 
 * Six source JSONs in the sentence subcorpus assign the same record id to two *different* sentences (e.g. `sentence/Bunun_Isbukun/46.json` numbers its records 1,2,3,3,4,...). Because S ids embed the record id, both sentences would receive the same S id (and identical W/M ids below it). The second occurrence (in document order) is disambiguated with a `-2` suffix: `46_S_3` and `46_S_3-2`. For those sentences the NTU line-number provenance is inherently ambiguous — the collision is in the NTU backend itself. Affected: `46_S_3`, `03-4_S_15`, `43_S_2` (Bunun); `3_S_201` (Kanakanavu); `20200530-FW-Andrea-1_S_6`, `20200530-FW-Yongfu-1_S_13` (Rukai).
 
+* **Variant readings use the POL-028 `ver="alt"` spelling.** Where the source
+records a second acceptable reading of a word or sentence — word-internal
+optional material (`ka(z)`, `kangavas(=an)`) or a slash alternation the readings
+of which are spelling variants of one another — the node carries its tier's base
+FORM plus a sibling `FORM[@kindOf="original" ver="alt"]`, and `standardize.py`
+derives the matching `FORM[@kindOf="standard" ver="alt"]`. **191 variants**, in
+21 files across all three subcorpora.
+
+  Until 2026-09-10 these were written `kindOf="alternate"`, the spelling POL-028
+  deprecated on 2026-09-09 (one day after this corpus was first published here).
+  That spelling names no tier, so a variant could not say which base it varied
+  from and `standardize.py` could not derive its standard counterpart — which is
+  why the standard tier previously had no variants at all. The migration changed
+  attributes only: no FORM text, PHON, TRANSL or W/M structure differs from the
+  previously published XML, and all 55 tests in `CodeAndDocs/qa` scored
+  identically to their baseline. Competing *lexemes* are not variants; they keep
+  the first reading and record the rest in `@notes` for a POL-027 pass.
+
 ***
 
 ## Orthography: the source is Ortho94

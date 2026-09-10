@@ -54,11 +54,14 @@ STEPS
      with five optional groups becomes 32 near-identical readings. That is not
      a useful corpus.
 
-     Instead each affected word keeps ONE main FORM (kindOf="original", the
-     reading WITHOUT the optional material) and one FORM kindOf="alternate"
-     (WITH it). The sentence gets the same pair, built from the same choice, so
-     the main forms agree across the two tiers and the alternates agree too --
-     one extra form per word and per sentence, never 2^n sentences.
+     Instead each affected word keeps ONE base FORM (kindOf="original", the
+     reading WITHOUT the optional material) and one variant FORM of the same
+     tier, kindOf="original" ver="alt" (WITH it) -- the POL-028 spelling as
+     revised 2026-09-09. The sentence gets the same pair, built from the same
+     choice, so the base forms agree across the two tiers and the variants
+     agree too -- one extra form per word and per sentence, never 2^n
+     sentences. standardize.py then derives the matching standard-tier
+     variants, because a variant names the tier it varies from.
 
   15 drop rows that are transcription apparatus, not words
      ORDERING: runs AFTER step 5. A pause marker still carrying its timing
@@ -646,7 +649,8 @@ def emit_sentence(root, text_id, sid, body, rows, ori, steps, stats,
         form.text = clean_text(s_form)
         if alt_s_form and alt_s_form != s_form:
             alt = ET.SubElement(s, "FORM")
-            alt.set("kindOf", "alternate")
+            alt.set("kindOf", "original")
+            alt.set("ver", "alt")
             alt.text = swap_punctuation(alt_s_form) if 8 in steps else alt_s_form
 
         # emit_sentence sees the id with any split suffix ('12a'); the repair
@@ -761,7 +765,8 @@ def emit_sentence(root, text_id, sid, body, rows, ori, steps, stats,
             wf.text = clean_text(w_form)
             if w_alt and w_alt != w_form:
                 wa = ET.SubElement(w, "FORM")
-                wa.set("kindOf", "alternate")
+                wa.set("kindOf", "original")
+                wa.set("ver", "alt")
                 wa.text = w_alt
             if w_form in code_switch:
                 wf.set("notes", "code-switch")

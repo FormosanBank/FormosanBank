@@ -1559,12 +1559,14 @@
         <W id="1_S_20_W2">
             <FORM kindOf="original">'ikua</FORM>
             <PHON kindOf="original">ʔikua</PHON>
-            <FORM kindOf="standard">'ikua</FORM>
-            <PHON kindOf="standard">ʔikua</PHON>
             <TRANSL xml:lang="zho" kindOf="original">1SG.斜格/2SG.斜格/3SG.斜格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">1SG.OBL/2SG.OBL/3SG.OBL</TRANSL>
-            <FORM kindOf="alternate">kasua</FORM>
-            <FORM kindOf="alternate">'inia</FORM>
+            <FORM kindOf="original" ver="alt">kasua</FORM>
+            <FORM kindOf="original" ver="alt">'inia</FORM>
+            <FORM kindOf="standard">'ikua</FORM>
+            <PHON kindOf="standard">ʔikua</PHON>
+            <FORM kindOf="standard" ver="alt">kasua</FORM>
+            <FORM kindOf="standard" ver="alt">'inia</FORM>
         </W>
     </S>
     <S id="1_S_21">
@@ -2605,11 +2607,12 @@
         <W id="1_S_36_W2">
             <FORM kindOf="original">iisi</FORM>
             <PHON kindOf="original">iisi</PHON>
-            <FORM kindOf="standard">iisi</FORM>
-            <PHON kindOf="standard">iisi</PHON>
             <TRANSL xml:lang="zho" kindOf="original">這個/那個</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">this/that</TRANSL>
-            <FORM kindOf="alternate">iisa</FORM>
+            <FORM kindOf="original" ver="alt">iisa</FORM>
+            <FORM kindOf="standard">iisi</FORM>
+            <PHON kindOf="standard">iisi</PHON>
+            <FORM kindOf="standard" ver="alt">iisa</FORM>
         </W>
     </S>
     <S id="1_S_37">
@@ -6226,11 +6229,12 @@
         <W id="1_S_79_W2">
             <FORM kindOf="original">cau</FORM>
             <PHON kindOf="original">ʦau</PHON>
-            <FORM kindOf="standard">cau</FORM>
-            <PHON kindOf="standard">ʦau</PHON>
             <TRANSL xml:lang="zho" kindOf="original">人/狗</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">person/dog</TRANSL>
-            <FORM kindOf="alternate">tacau</FORM>
+            <FORM kindOf="original" ver="alt">tacau</FORM>
+            <FORM kindOf="standard">cau</FORM>
+            <PHON kindOf="standard">ʦau</PHON>
+            <FORM kindOf="standard" ver="alt">tacau</FORM>
         </W>
         <W id="1_S_79_W3">
             <FORM kindOf="original">iisi</FORM>
@@ -7955,11 +7959,12 @@
         <W id="1_S_97_W0">
             <FORM kindOf="original">u-cani</FORM>
             <PHON kindOf="original">uʦani</PHON>
-            <FORM kindOf="standard">u-cani</FORM>
-            <PHON kindOf="standard">uʦani</PHON>
             <TRANSL xml:lang="zho" kindOf="original">一/非人-一</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">one/NHUM-one</TRANSL>
-            <FORM kindOf="alternate">can-cani</FORM>
+            <FORM kindOf="original" ver="alt">can-cani</FORM>
+            <FORM kindOf="standard">u-cani</FORM>
+            <PHON kindOf="standard">uʦani</PHON>
+            <FORM kindOf="standard" ver="alt">can-cani</FORM>
             <M id="1_S_97_W0M0">
                 <FORM kindOf="original">u</FORM>
                 <PHON kindOf="original">u</PHON>
@@ -9088,11 +9093,12 @@
         <W id="1_S_109_W2">
             <FORM kindOf="original">kacaua</FORM>
             <PHON kindOf="original">kaʦaua</PHON>
-            <FORM kindOf="standard">kacaua</FORM>
-            <PHON kindOf="standard">kaʦaua</PHON>
             <TRANSL xml:lang="zho" kindOf="original">多.有生命/少.有生命</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">many.ANIM/few.ANIM</TRANSL>
-            <FORM kindOf="alternate">kanaira</FORM>
+            <FORM kindOf="original" ver="alt">kanaira</FORM>
+            <FORM kindOf="standard">kacaua</FORM>
+            <PHON kindOf="standard">kaʦaua</PHON>
+            <FORM kindOf="standard" ver="alt">kanaira</FORM>
         </W>
         <W id="1_S_109_W3">
             <FORM kindOf="original">cau</FORM>
@@ -9536,11 +9542,12 @@
         <W id="1_S_114_W1">
             <FORM kindOf="original">kacaua</FORM>
             <PHON kindOf="original">kaʦaua</PHON>
-            <FORM kindOf="standard">kacaua</FORM>
-            <PHON kindOf="standard">kaʦaua</PHON>
             <TRANSL xml:lang="zho" kindOf="original">多.有生命/少.有生命</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">many.ANIM/few.ANIM</TRANSL>
-            <FORM kindOf="alternate">kanaira</FORM>
+            <FORM kindOf="original" ver="alt">kanaira</FORM>
+            <FORM kindOf="standard">kacaua</FORM>
+            <PHON kindOf="standard">kaʦaua</PHON>
+            <FORM kindOf="standard" ver="alt">kanaira</FORM>
         </W>
     </S>
     <S id="1_S_115">
@@ -32232,11 +32239,12 @@
         <W id="1_S_330_W0">
             <FORM kindOf="original">'inmamia=cu</FORM>
             <PHON kindOf="original">ʔinmamiaʦu</PHON>
-            <FORM kindOf="standard">'inmamia=cu</FORM>
-            <PHON kindOf="standard">ʔinmamiaʦu</PHON>
             <TRANSL xml:lang="zho" kindOf="original">僅=狀態改變/僅=狀態改變</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">only=COS/only=COS</TRANSL>
-            <FORM kindOf="alternate">mamia=cu</FORM>
+            <FORM kindOf="original" ver="alt">mamia=cu</FORM>
+            <FORM kindOf="standard">'inmamia=cu</FORM>
+            <PHON kindOf="standard">ʔinmamiaʦu</PHON>
+            <FORM kindOf="standard" ver="alt">mamia=cu</FORM>
             <M id="1_S_330_W0M0">
                 <FORM kindOf="original">'inmamia</FORM>
                 <PHON kindOf="original">ʔinmamia</PHON>
@@ -35296,17 +35304,19 @@
     <S id="1_S_359">
         <FORM kindOf="original">can tanaasʉ ia, ka'aan ʉtʉ-ʉn nguain</FORM>
         <PHON kindOf="original">ʦan tanaas* ia kaʔaan *t**n ŋuain</PHON>
+        <FORM kindOf="original" ver="alt">cani tanaasʉ ia, ka'aan ʉtʉ-ʉn nguain</FORM>
         <FORM kindOf="standard">can tanaasʉ ia, ka'aan ʉtʉʉn nguain</FORM>
         <PHON kindOf="standard">ʦan tanaasɨ ia kaʔaan ɨtɨɨn ŋuain</PHON>
-        <FORM kindOf="alternate">cani tanaasʉ ia, ka'aan ʉtʉ-ʉn nguain</FORM>
+        <FORM kindOf="standard" ver="alt">cani tanaasʉ ia, ka'aan ʉtʉʉn nguain</FORM>
         <TRANSL xml:lang="zho">整個部落都找不到他。</TRANSL>
         <TRANSL xml:lang="eng">He cannot be found in the whole tribe.</TRANSL>
         <W id="1_S_359_W0">
             <FORM kindOf="original">can</FORM>
             <PHON kindOf="original">ʦan</PHON>
+            <FORM kindOf="original" ver="alt">cani</FORM>
             <FORM kindOf="standard">can</FORM>
             <PHON kindOf="standard">ʦan</PHON>
-            <FORM kindOf="alternate">cani</FORM>
+            <FORM kindOf="standard" ver="alt">cani</FORM>
             <TRANSL xml:lang="zho" kindOf="original">一整個</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">one.as.a.whole</TRANSL>
             <M id="1_S_359_W0M0">
@@ -50968,9 +50978,10 @@
     <S id="3_S_1">
         <FORM kindOf="original">ʉsʉ'ʉ-ʉn na takuacapa paici Cuma (tia iima cuma).</FORM>
         <PHON kindOf="original">*s*ʔ**n na takuaʦapa paiʦi ʦuma tia iima ʦuma</PHON>
+        <FORM kindOf="original" ver="alt">ʉsʉ'ʉ-ʉn=maku na takuacapa paici Cuma (tia iima cuma).</FORM>
         <FORM kindOf="standard">ʉsʉ'ʉ-ʉn na takuacapa paici Cuma (tia iima cuma).</FORM>
         <PHON kindOf="standard">ɨsɨʔɨɨn na takuaʦapa paiʦi ʦuma tia iima ʦuma</PHON>
-        <FORM kindOf="alternate">ʉsʉ'ʉ-ʉn=maku na takuacapa paici Cuma (tia iima cuma).</FORM>
+        <FORM kindOf="standard" ver="alt">ʉsʉ'ʉ-ʉn=maku na takuacapa paici Cuma (tia iima cuma).</FORM>
         <TRANSL xml:lang="zho">把爸爸的酒放在飯桌上。</TRANSL>
         <TRANSL xml:lang="eng">Put father's wine on the table.</TRANSL>
     </S>
@@ -54327,9 +54338,10 @@
     <S id="3_S_38">
         <FORM kindOf="original">cʉ'ʉrʉ-ʉn nguain vuanʉ, 'acuu ara-vavuru</FORM>
         <PHON kindOf="original">ʦ*ʔ*r**n ŋuain vuan* ʔaʦuu aravavuru</PHON>
+        <FORM kindOf="original" ver="alt">cʉ'ʉrʉ-ʉn nguain=kee vuanʉ, 'acuu ara-vavuru</FORM>
         <FORM kindOf="standard">cʉ'ʉrʉʉn nguain vuanʉ, 'acuu aravavuru</FORM>
         <PHON kindOf="standard">ʦɨʔɨ[r|ɾ]ɨɨn ŋuain vuanɨ ʔaʦuu a[r|ɾ]avavu[r|ɾ]u</PHON>
-        <FORM kindOf="alternate">cʉ'ʉrʉ-ʉn nguain=kee vuanʉ, 'acuu ara-vavuru</FORM>
+        <FORM kindOf="standard" ver="alt">cʉ'ʉrʉʉn nguainkee vuanʉ, 'acuu aravavuru</FORM>
         <TRANSL xml:lang="zho">他看了月亮，就變成山豬了。</TRANSL>
         <TRANSL xml:lang="eng">After he saw the moon, he turned into a boar.</TRANSL>
         <W id="3_S_38_W0">
@@ -54359,9 +54371,10 @@
         <W id="3_S_38_W1">
             <FORM kindOf="original">nguain</FORM>
             <PHON kindOf="original">ŋuain</PHON>
+            <FORM kindOf="original" ver="alt">nguain=kee</FORM>
             <FORM kindOf="standard">nguain</FORM>
             <PHON kindOf="standard">ŋuain</PHON>
-            <FORM kindOf="alternate">nguain=kee</FORM>
+            <FORM kindOf="standard" ver="alt">nguain=kee</FORM>
             <TRANSL xml:lang="zho" kindOf="original">3SG.主格(=3SG.屬格)</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">3SG.NOM(=3SG.GEN)</TRANSL>
             <M id="3_S_38_W1M0">
@@ -56884,11 +56897,12 @@
         <W id="3_S_66_W1">
             <FORM kindOf="original">nguain</FORM>
             <PHON kindOf="original">ŋuain</PHON>
-            <FORM kindOf="standard">nguain</FORM>
-            <PHON kindOf="standard">ŋuain</PHON>
             <TRANSL xml:lang="zho" kindOf="original">3SG.主格/3PL.主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">3SG.NOM/3PL.NOM</TRANSL>
-            <FORM kindOf="alternate">nguani</FORM>
+            <FORM kindOf="original" ver="alt">nguani</FORM>
+            <FORM kindOf="standard">nguain</FORM>
+            <PHON kindOf="standard">ŋuain</PHON>
+            <FORM kindOf="standard" ver="alt">nguani</FORM>
             <M id="3_S_66_W1M0">
                 <FORM kindOf="original">nguain</FORM>
                 <PHON kindOf="original">ŋuain</PHON>
@@ -56967,11 +56981,12 @@
         <W id="3_S_67_W2">
             <FORM kindOf="original">nguain</FORM>
             <PHON kindOf="original">ŋuain</PHON>
-            <FORM kindOf="standard">nguain</FORM>
-            <PHON kindOf="standard">ŋuain</PHON>
             <TRANSL xml:lang="zho" kindOf="original">3SG.主格</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">3SG.NOM</TRANSL>
-            <FORM kindOf="alternate">nguani</FORM>
+            <FORM kindOf="original" ver="alt">nguani</FORM>
+            <FORM kindOf="standard">nguain</FORM>
+            <PHON kindOf="standard">ŋuain</PHON>
+            <FORM kindOf="standard" ver="alt">nguani</FORM>
             <M id="3_S_67_W2M0">
                 <FORM kindOf="original">nguain</FORM>
                 <PHON kindOf="original">ŋuain</PHON>
@@ -58121,9 +58136,10 @@
     <S id="3_S_79">
         <FORM kindOf="original">te=ku moo-va 'inia sinatʉ</FORM>
         <PHON kindOf="original">t[e|ə]ku moova ʔinia sinat*</PHON>
+        <FORM kindOf="original" ver="alt">te=ku moo-vua 'inia sinatʉ</FORM>
         <FORM kindOf="standard">teku moova 'inia sinatʉ</FORM>
         <PHON kindOf="standard">teku moova ʔinia sinatɨ</PHON>
-        <FORM kindOf="alternate">te=ku moo-vua 'inia sinatʉ</FORM>
+        <FORM kindOf="standard" ver="alt">teku moovua 'inia sinatʉ</FORM>
         <TRANSL xml:lang="zho">我要給他書本。</TRANSL>
         <TRANSL xml:lang="eng">I want to give him books.</TRANSL>
         <W id="3_S_79_W0">
@@ -58153,9 +58169,10 @@
         <W id="3_S_79_W1">
             <FORM kindOf="original">moo-va</FORM>
             <PHON kindOf="original">moova</PHON>
+            <FORM kindOf="original" ver="alt">moo-vua</FORM>
             <FORM kindOf="standard">moo-va</FORM>
             <PHON kindOf="standard">moova</PHON>
-            <FORM kindOf="alternate">moo-vua</FORM>
+            <FORM kindOf="standard" ver="alt">moo-vua</FORM>
             <TRANSL xml:lang="zho" kindOf="original">主焦-給</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-give</TRANSL>
             <M id="3_S_79_W1M0">
@@ -59203,9 +59220,10 @@
     <S id="3_S_96">
         <FORM kindOf="original">'esi=cu kaisisi masiin</FORM>
         <PHON kindOf="original">ʔ[e|ə]siʦu kaisisi masiin</PHON>
+        <FORM kindOf="original" ver="alt">'esi=cu kaisisi masiini</FORM>
         <FORM kindOf="standard">'esicu kaisisi masiin</FORM>
         <PHON kindOf="standard">ʔesiʦu kaisisi masiin</PHON>
-        <FORM kindOf="alternate">'esi=cu kaisisi masiini</FORM>
+        <FORM kindOf="standard" ver="alt">'esicu kaisisi masiini</FORM>
         <TRANSL xml:lang="zho">祭典已正在進行中。</TRANSL>
         <TRANSL xml:lang="eng">Religious ceremony have been in progress.</TRANSL>
         <W id="3_S_96_W0">
@@ -59251,9 +59269,10 @@
         <W id="3_S_96_W2">
             <FORM kindOf="original">masiin</FORM>
             <PHON kindOf="original">masiin</PHON>
+            <FORM kindOf="original" ver="alt">masiini</FORM>
             <FORM kindOf="standard">masiin</FORM>
             <PHON kindOf="standard">masiin</PHON>
-            <FORM kindOf="alternate">masiini</FORM>
+            <FORM kindOf="standard" ver="alt">masiini</FORM>
             <TRANSL xml:lang="zho" kindOf="original">現在</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">now</TRANSL>
             <M id="3_S_96_W2M0">
@@ -80777,9 +80796,10 @@
     <S id="3_S_299">
         <FORM kindOf="original">cau mananu sua nanmarua iisi?</FORM>
         <PHON kindOf="original">ʦau mananu sua nanmarua iisi</PHON>
+        <FORM kindOf="original" ver="alt">cau makananu sua nanmarua iisi?</FORM>
         <FORM kindOf="standard">cau mananu sua nanmarua iisi?</FORM>
         <PHON kindOf="standard">ʦau mananu sua nanma[r|ɾ]ua iisi</PHON>
-        <FORM kindOf="alternate">cau makananu sua nanmarua iisi?</FORM>
+        <FORM kindOf="standard" ver="alt">cau makananu sua nanmarua iisi?</FORM>
         <TRANSL xml:lang="zho">這個年輕人是怎麼樣的人?</TRANSL>
         <TRANSL xml:lang="eng">'What kind of the person is this youth?'</TRANSL>
         <W id="3_S_299_W0">
@@ -80801,9 +80821,10 @@
         <W id="3_S_299_W1">
             <FORM kindOf="original">mananu</FORM>
             <PHON kindOf="original">mananu</PHON>
+            <FORM kindOf="original" ver="alt">makananu</FORM>
             <FORM kindOf="standard">mananu</FORM>
             <PHON kindOf="standard">mananu</PHON>
-            <FORM kindOf="alternate">makananu</FORM>
+            <FORM kindOf="standard" ver="alt">makananu</FORM>
             <TRANSL xml:lang="zho" kindOf="original">如何</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">how</TRANSL>
             <M id="3_S_299_W1M0">
@@ -95091,9 +95112,10 @@
     <S id="3_S_458">
         <FORM kindOf="original">Te=musu sekarapeen tanuku mima pai'ici?</FORM>
         <PHON kindOf="original">t[e|ə]musu s[e|ə]karap[e|ə][e|ə]n tanuku mima paiʔiʦi</PHON>
+        <FORM kindOf="original" ver="alt">Te=musu sekarapeen tanuku mima pai'ici?少用</FORM>
         <FORM kindOf="standard">Temusu sekarapeen tanuku mima pai'ici?</FORM>
         <PHON kindOf="standard">temusu seka[r|ɾ]apeen tanuku mima paiʔiʦi</PHON>
-        <FORM kindOf="alternate">Te=musu sekarapeen tanuku mima pai'ici?少用</FORM>
+        <FORM kindOf="standard" ver="alt">Temusu sekarapeen tanuku mima pai'ici?少用</FORM>
         <TRANSL xml:lang="zho">這個杯子你要用幾次來喝酒?</TRANSL>
         <TRANSL xml:lang="eng">How often do you use the cup to drink the wine?</TRANSL>
         <W id="3_S_458_W0">
@@ -95163,9 +95185,10 @@
         <W id="3_S_458_W4">
             <FORM kindOf="original">pai'ici?</FORM>
             <PHON kindOf="original">paiʔiʦi</PHON>
+            <FORM kindOf="original" ver="alt">pai'ici?少用</FORM>
             <FORM kindOf="standard">pai'ici?</FORM>
             <PHON kindOf="standard">paiʔiʦi</PHON>
-            <FORM kindOf="alternate">pai'ici?少用</FORM>
+            <FORM kindOf="standard" ver="alt">pai'ici?少用</FORM>
             <TRANSL xml:lang="zho" kindOf="original">酒</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">wine</TRANSL>
             <M id="3_S_458_W4M0">
@@ -102035,17 +102058,19 @@
     <S id="4_S_15">
         <FORM kindOf="original">moo-va cuma vaantuku na manu.</FORM>
         <PHON kindOf="original">moova ʦuma vaantuku na manu</PHON>
+        <FORM kindOf="original" ver="alt">moo-vua cuma vaantuku na manu.</FORM>
         <FORM kindOf="standard">moova cuma vaantuku na manu.</FORM>
         <PHON kindOf="standard">moova ʦuma vaantuku na manu</PHON>
-        <FORM kindOf="alternate">moo-vua cuma vaantuku na manu.</FORM>
+        <FORM kindOf="standard" ver="alt">moovua cuma vaantuku na manu.</FORM>
         <TRANSL xml:lang="zho">爸爸給小孩錢。</TRANSL>
         <TRANSL xml:lang="eng">The father gives the child money.</TRANSL>
         <W id="4_S_15_W0">
             <FORM kindOf="original">moo-va</FORM>
             <PHON kindOf="original">moova</PHON>
+            <FORM kindOf="original" ver="alt">moo-vua</FORM>
             <FORM kindOf="standard">moo-va</FORM>
             <PHON kindOf="standard">moova</PHON>
-            <FORM kindOf="alternate">moo-vua</FORM>
+            <FORM kindOf="standard" ver="alt">moo-vua</FORM>
             <TRANSL xml:lang="zho" kindOf="original">主焦-給</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-give</TRANSL>
             <M id="4_S_15_W0M0">
@@ -105846,9 +105871,10 @@
     <S id="4_S_50">
         <FORM kindOf="original">ni-kianai Mu'u na Pori mara canumu moo-va na Pani.</FORM>
         <PHON kindOf="original">nikianai muʔu na pori mara ʦanumu moova na pani</PHON>
+        <FORM kindOf="original" ver="alt">ni-kianai Mu'u na Pori mara canumu moo-vua na Pani.</FORM>
         <FORM kindOf="standard">nikianai Mu'u na Pori mara canumu moova na Pani.</FORM>
         <PHON kindOf="standard">nikianai muʔu na po[r|ɾ]i ma[r|ɾ]a ʦanumu moova na pani</PHON>
-        <FORM kindOf="alternate">ni-kianai Mu'u na Pori mara canumu moo-vua na Pani.</FORM>
+        <FORM kindOf="standard" ver="alt">nikianai Mu'u na Pori mara canumu moovua na Pani.</FORM>
         <TRANSL xml:lang="zho">Mu’u從Pori那拿水給Pani。</TRANSL>
         <TRANSL xml:lang="eng">Mu'u took water from Pori to Pani.</TRANSL>
         <W id="4_S_50_W0">
@@ -105958,9 +105984,10 @@
         <W id="4_S_50_W6">
             <FORM kindOf="original">moo-va</FORM>
             <PHON kindOf="original">moova</PHON>
+            <FORM kindOf="original" ver="alt">moo-vua</FORM>
             <FORM kindOf="standard">moo-va</FORM>
             <PHON kindOf="standard">moova</PHON>
-            <FORM kindOf="alternate">moo-vua</FORM>
+            <FORM kindOf="standard" ver="alt">moo-vua</FORM>
             <TRANSL xml:lang="zho" kindOf="original">主焦-給</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-give</TRANSL>
             <M id="4_S_50_W6M0">
@@ -106016,17 +106043,19 @@
     <S id="4_S_51">
         <FORM kindOf="original">moo-va cina na Na'u tapining 'apaa'ura natʉngʉ.</FORM>
         <PHON kindOf="original">moova ʦina na naʔu tapiniŋ ʔapaaʔura nat*ŋ*</PHON>
+        <FORM kindOf="original" ver="alt">moo-vua cina na Na'u tapining 'apaa'ura natʉngʉ.</FORM>
         <FORM kindOf="standard">moova cina na Na'u tapining 'apaa'ura natʉngʉ.</FORM>
         <PHON kindOf="standard">moova ʦina na naʔu tapiniŋ ʔapaaʔu[r|ɾ]a natɨŋɨ</PHON>
-        <FORM kindOf="alternate">moo-vua cina na Na'u tapining 'apaa'ura natʉngʉ.</FORM>
+        <FORM kindOf="standard" ver="alt">moovua cina na Na'u tapining 'apaa'ura natʉngʉ.</FORM>
         <TRANSL xml:lang="zho">媽媽給Na’u菜刀切菜。</TRANSL>
         <TRANSL xml:lang="eng">The mother gives a chopper to Na'u for her to chop vegetables.</TRANSL>
         <W id="4_S_51_W0">
             <FORM kindOf="original">moo-va</FORM>
             <PHON kindOf="original">moova</PHON>
+            <FORM kindOf="original" ver="alt">moo-vua</FORM>
             <FORM kindOf="standard">moo-va</FORM>
             <PHON kindOf="standard">moova</PHON>
-            <FORM kindOf="alternate">moo-vua</FORM>
+            <FORM kindOf="standard" ver="alt">moo-vua</FORM>
             <TRANSL xml:lang="zho" kindOf="original">主焦-給</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-give</TRANSL>
             <M id="4_S_51_W0M0">
@@ -106146,9 +106175,10 @@
     <S id="4_S_52">
         <FORM kindOf="original">ni-pu'a Pori 'ʉnai moo-va Pani 'apa-mʉkʉ vina'ʉ.</FORM>
         <PHON kindOf="original">nipuʔa pori ʔ*nai moova pani ʔapam*k* vinaʔ*</PHON>
+        <FORM kindOf="original" ver="alt">ni-pu'a Pori 'ʉnai moo-vua Pani 'apa-mʉkʉ vina'ʉ.</FORM>
         <FORM kindOf="standard">nipu'a Pori 'ʉnai moova Pani 'apamʉkʉ vina'ʉ.</FORM>
         <PHON kindOf="standard">nipuʔa po[r|ɾ]i ʔɨnai moova pani ʔapamɨkɨ vinaʔɨ</PHON>
-        <FORM kindOf="alternate">ni-pu'a Pori 'ʉnai moo-vua Pani 'apa-mʉkʉ vina'ʉ.</FORM>
+        <FORM kindOf="standard" ver="alt">nipu'a Pori 'ʉnai moovua Pani 'apamʉkʉ vina'ʉ.</FORM>
         <TRANSL xml:lang="zho">Pori賣土地給Pani種小米。</TRANSL>
         <TRANSL xml:lang="eng">Pori sold the field to Pani for him to grow millet.</TRANSL>
         <W id="4_S_52_W0">
@@ -106210,9 +106240,10 @@
         <W id="4_S_52_W3">
             <FORM kindOf="original">moo-va</FORM>
             <PHON kindOf="original">moova</PHON>
+            <FORM kindOf="original" ver="alt">moo-vua</FORM>
             <FORM kindOf="standard">moo-va</FORM>
             <PHON kindOf="standard">moova</PHON>
-            <FORM kindOf="alternate">moo-vua</FORM>
+            <FORM kindOf="standard" ver="alt">moo-vua</FORM>
             <TRANSL xml:lang="zho" kindOf="original">主焦-給</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-give</TRANSL>
             <M id="4_S_52_W3M0">
@@ -106292,9 +106323,10 @@
     <S id="4_S_53">
         <FORM kindOf="original">ni-pu'a Pori 'ʉnai moo-va Pani mu-mʉkʉ vina'ʉ.</FORM>
         <PHON kindOf="original">nipuʔa pori ʔ*nai moova pani mum*k* vinaʔ*</PHON>
+        <FORM kindOf="original" ver="alt">ni-pu'a Pori 'ʉnai moo-vua Pani mu-mʉkʉ vina'ʉ.</FORM>
         <FORM kindOf="standard">nipu'a Pori 'ʉnai moova Pani mumʉkʉ vina'ʉ.</FORM>
         <PHON kindOf="standard">nipuʔa po[r|ɾ]i ʔɨnai moova pani mumɨkɨ vinaʔɨ</PHON>
-        <FORM kindOf="alternate">ni-pu'a Pori 'ʉnai moo-vua Pani mu-mʉkʉ vina'ʉ.</FORM>
+        <FORM kindOf="standard" ver="alt">nipu'a Pori 'ʉnai moovua Pani mumʉkʉ vina'ʉ.</FORM>
         <TRANSL xml:lang="zho">Pori買土地給Pani種小米。</TRANSL>
         <TRANSL xml:lang="eng">Pori bought the field for Pani to grow millet.</TRANSL>
         <W id="4_S_53_W0">
@@ -106356,9 +106388,10 @@
         <W id="4_S_53_W3">
             <FORM kindOf="original">moo-va</FORM>
             <PHON kindOf="original">moova</PHON>
+            <FORM kindOf="original" ver="alt">moo-vua</FORM>
             <FORM kindOf="standard">moo-va</FORM>
             <PHON kindOf="standard">moova</PHON>
-            <FORM kindOf="alternate">moo-vua</FORM>
+            <FORM kindOf="standard" ver="alt">moo-vua</FORM>
             <TRANSL xml:lang="zho" kindOf="original">主焦-給</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-give</TRANSL>
             <M id="4_S_53_W3M0">
@@ -107722,9 +107755,10 @@
     <S id="4_S_63">
         <FORM kindOf="original">rowai Pani wee moo-va tamu nanakʉ 'apa-kamanʉʉng tapi.</FORM>
         <PHON kindOf="original">ro*ai pani *[e|ə][e|ə] moova tamu nanak* ʔapakaman**ŋ tapi</PHON>
+        <FORM kindOf="original" ver="alt">rowai Pani wee moo-vua tamu nanakʉ 'apa-kamanʉʉng tapi.</FORM>
         <FORM kindOf="standard">rowai Pani wee moova tamu nanakʉ 'apakamanʉʉng tapi.</FORM>
         <PHON kindOf="standard">[r|ɾ]owai pani wee moova tamu nanakɨ ʔapakamanɨɨŋ tapi</PHON>
-        <FORM kindOf="alternate">rowai Pani wee moo-vua tamu nanakʉ 'apa-kamanʉʉng tapi.</FORM>
+        <FORM kindOf="standard" ver="alt">rowai Pani wee moovua tamu nanakʉ 'apakamanʉʉng tapi.</FORM>
         <TRANSL xml:lang="zho">Pani砍藤蔓給奶奶編織竹簍。</TRANSL>
         <TRANSL xml:lang="eng">Pani peels veins for the grandmother to make baskets.</TRANSL>
         <W id="4_S_63_W0">
@@ -107778,9 +107812,10 @@
         <W id="4_S_63_W3">
             <FORM kindOf="original">moo-va</FORM>
             <PHON kindOf="original">moova</PHON>
+            <FORM kindOf="original" ver="alt">moo-vua</FORM>
             <FORM kindOf="standard">moo-va</FORM>
             <PHON kindOf="standard">moova</PHON>
-            <FORM kindOf="alternate">moo-vua</FORM>
+            <FORM kindOf="standard" ver="alt">moo-vua</FORM>
             <TRANSL xml:lang="zho" kindOf="original">主焦-給</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-give</TRANSL>
             <M id="4_S_63_W3M0">
@@ -109200,9 +109235,10 @@
     <S id="4_S_75">
         <FORM kindOf="original">pu'a Na'u kaamsia moo-va kanaarua.</FORM>
         <PHON kindOf="original">puʔa naʔu kaamsia moova kanaarua</PHON>
+        <FORM kindOf="original" ver="alt">pu'a Na'u kaamsia moo-vua kanaarua.</FORM>
         <FORM kindOf="standard">pu'a Na'u kaamsia moova kanaarua.</FORM>
         <PHON kindOf="standard">puʔa naʔu kaamsia moova kanaa[r|ɾ]ua</PHON>
-        <FORM kindOf="alternate">pu'a Na'u kaamsia moo-vua kanaarua.</FORM>
+        <FORM kindOf="standard" ver="alt">pu'a Na'u kaamsia moovua kanaarua.</FORM>
         <TRANSL xml:lang="zho">Na'u買糖果給妹妹。</TRANSL>
         <TRANSL xml:lang="eng">Na'u buys candy for the younger sister.</TRANSL>
         <W id="4_S_75_W0">
@@ -109256,9 +109292,10 @@
         <W id="4_S_75_W3">
             <FORM kindOf="original">moo-va</FORM>
             <PHON kindOf="original">moova</PHON>
+            <FORM kindOf="original" ver="alt">moo-vua</FORM>
             <FORM kindOf="standard">moo-va</FORM>
             <PHON kindOf="standard">moova</PHON>
-            <FORM kindOf="alternate">moo-vua</FORM>
+            <FORM kindOf="standard" ver="alt">moo-vua</FORM>
             <TRANSL xml:lang="zho" kindOf="original">主焦-給</TRANSL>
             <TRANSL xml:lang="eng" kindOf="original">AF-give</TRANSL>
             <M id="4_S_75_W3M0">
@@ -125054,9 +125091,10 @@
     <S id="5_S_34">
         <FORM kindOf="original">noo 'esi-in marivina'ʉ , sua ka'aan m-ookusa 'umoo'uma putukikio ia, tia ara-kuracʉ-ʉn.</FORM>
         <PHON kindOf="original">noo ʔ[e|ə]siin marivinaʔ*  sua kaʔaan mookusa ʔumooʔuma putukikio ia tia arakuraʦ**n</PHON>
+        <FORM kindOf="original" ver="alt">noo 'esi-in marivina'ʉ ia, sua ka'aan m-ookusa 'umoo'uma putukikio ia, tia ara-kuracʉ-ʉn.</FORM>
         <FORM kindOf="standard">noo 'esi-in marivina'ʉ , sua ka'aan m-ookusa 'umoo'uma putukikio ia, tia ara-kuracʉ-ʉn.</FORM>
         <PHON kindOf="standard">noo ʔesiin ma[r|ɾ]ivinaʔɨ  sua kaʔaan mookusa ʔumooʔuma putukikio ia tia a[r|ɾ]aku[r|ɾ]aʦɨɨn</PHON>
-        <FORM kindOf="alternate">noo 'esi-in marivina'ʉ ia, sua ka'aan m-ookusa 'umoo'uma putukikio ia, tia ara-kuracʉ-ʉn.</FORM>
+        <FORM kindOf="standard" ver="alt">noo 'esi-in marivina'ʉ ia, sua ka'aan m-ookusa 'umoo'uma putukikio ia, tia ara-kuracʉ-ʉn.</FORM>
         <TRANSL xml:lang="zho">在收割小米的時候，沒有去田裡工作的，要被責罵。</TRANSL>
         <TRANSL xml:lang="eng">When cropping the millets,those who don't go to the field to work will be scolded.</TRANSL>
     </S>

@@ -575,7 +575,8 @@ def emit_sentence(root, text_id, sid, body, rows, ori, steps, stats,
         form.text = clean_text(s_form)
         if alt_s_form and alt_s_form != s_form:
             alt = ET.SubElement(s, "FORM")
-            alt.set("kindOf", "alternate")
+            alt.set("kindOf", "original")
+            alt.set("ver", "alt")
             alt.text = swap_punctuation(alt_s_form) if 8 in steps else alt_s_form
 
         # emit_sentence sees the id with any split suffix ('12a'); the repair
@@ -720,7 +721,8 @@ def emit_sentence(root, text_id, sid, body, rows, ori, steps, stats,
             wf.text = clean_text(w_form)
             if w_alt and w_alt != w_form:
                 wa = ET.SubElement(w, "FORM")
-                wa.set("kindOf", "alternate")
+                wa.set("kindOf", "original")
+                wa.set("ver", "alt")
                 wa.text = w_alt
             if w_form in code_switch:
                 wf.set("notes", "code-switch")
