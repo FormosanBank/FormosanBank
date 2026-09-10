@@ -20,6 +20,7 @@ The current public corpus contains 105 aligned records from six GitBook sections
 | Translated words |  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 2,007 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 2,007 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese | 0 |
 | Morphologically segmented | 0 |
 | Glossed words | 0 |
 
@@ -30,7 +31,7 @@ The current public corpus contains 105 aligned records from six GitBook sections
 
 ## Notes and Issues
 
-These translations preserve historical manual text. Use current POLICIES.md and the committed English GitBook documentation for project guidance. Source names, language lists, repeated citations, and the literal English/Chinese licence-link labels remain part of the corpus. Generated PHON may contain uncertainty stars for unsupported borrowed letters. This written source supplies no audio.
+These translations preserve historical manual text. Use current POLICIES.md and the committed English GitBook documentation for project guidance. Source names, language lists, repeated citations, and the literal English/Chinese licence-link labels remain part of the corpus. Generated PHON may contain uncertainty stars for unsupported borrowed letters, including where it is applied to non-Paiwan names. Two records carry known defects: in the Welcome roster the group heading `Advisory Board` sits inline among the personal names, because the source sets the two lists in one column; and the language-list record's Mandarin tier reproduces the source's untranslated Latin list rather than Mandarin. Records that are lists of names count toward this corpus's word totals. This written source supplies no audio.
 
 ***
 
@@ -44,7 +45,7 @@ These translations preserve historical manual text. Use current POLICIES.md and 
 
 Run `./CodeAndDocs/generate_xml.sh` from the corpus directory using the current FormosanBank environment. It generates source tiers from the reviewed Paiwan, Mandarin, and English ledgers, then runs shared cleaning, standardization with `--remove_accents`, and Ortho113 phonology. The [corpus README](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/FormosanBankGitBook/README.md) gives reproduction and validation commands; [build provenance](https://github.com/FormosanBank/FormosanBank/blob/main/Corpora/FormosanBankGitBook/CodeAndDocs/provenance.json) records the shared tools used.
 
-The public package retains the nine-page source PDF, reviewed ledgers, stable source keys, parser, source audit, and focused tests. All 315 source fields were checked in their original column order. The three recovered lists have new IDs; all 102 earlier sentence IDs still identify the same source passages. Two builds reproduced all six XML files from the public inputs alone. Validation and source review are separate from generation.
+The source is a nine-page trilingual PDF rather than the GitBook pages it mirrors, because only the PDF aligns Paiwan, Mandarin and English record by record. Its Mandarin is a distinct translation, segmented to parallel the English; the Mandarin edition of this site words the same content differently, and has no counterpart page for one of the six sections. The public package retains that PDF, the reviewed ledgers, stable source keys, parser, source audit, and focused tests. All 315 source fields were checked in their original column order. The three recovered lists have new IDs; all 102 earlier sentence IDs still identify the same source passages. Two builds reproduced all six XML files from the public inputs alone. Validation and source review are separate from generation.
 
 ***
 
