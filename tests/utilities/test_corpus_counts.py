@@ -144,6 +144,7 @@ class TestAnalyzeFile:
         assert rec["glossed_words"] == 3
         assert rec["eng_transl_count"] == 5  # two eng TRANSLs in s2 count once
         assert rec["zho_transl_count"] == 3
+        assert rec["jpn_transl_count"] == 0  # no jpn TRANSL in this fixture
         assert rec["word_elements"] == 3
         assert rec["morpheme_elements"] == 1
         assert rec["translation_elements"] == 5
@@ -197,3 +198,42 @@ class TestCollectRecords:
         assert len(errors) == 1
         assert errors[0]["path"].endswith("bad.xml")
         assert sum(r["word_count"] for r in records) == 11  # 5 + 2 + 3 + 1
+
+
+class TestJapaneseTranslationCount:
+    """jpn TRANSL tiers count like eng and zho (2026-09-10).
+
+    Before this, Sato-Pazeh-Songs — the bank's first Japanese material, 83
+    sentences with 82 Japanese translations — reported 0 translated words,
+    because only ENG_CODES and ZHO_CODES were counted.
+    """
+
+    XML = (
+        '<TEXT id="T" citation="c" BibTeX_citation="b" copyright="CC BY-NC 4.0"'
+        ' xml:lang="pzh" dialect="unknown">'
+        '<S id="s1"><FORM kindOf="original">Aiyan nu aiyan</FORM>'
+        '<TRANSL xml:lang="jpn">\u8981\u8ad6\u53e4\u4ee3</TRANSL></S>'
+        '<S id="s2"><FORM kindOf="original">rubuh rubh a kauwas</FORM>'
+        '<TRANSL xml:lang="ja">\u5730\u4e0b</TRANSL></S>'
+        '<S id="s3"><FORM kindOf="original">mahah dudul luwai</FORM></S>'
+        '</TEXT>'
+    )
+
+    def _record(self, tmp_path):
+        path = tmp_path / "pzh.xml"
+        path.write_text(self.XML, encoding="utf-8")
+        return corpus_counts.analyze_file(path)
+
+    def test_jpn_and_ja_both_count_the_sentence_word_count(self, tmp_path):
+        rec = self._record(tmp_path)
+        # s1 has 3 words, s2 has 4; s3 carries no TRANSL and contributes none.
+        assert rec["jpn_transl_count"] == 7
+        assert rec["word_count"] == 10
+
+    def test_jpn_does_not_leak_into_the_other_columns(self, tmp_path):
+        rec = self._record(tmp_path)
+        assert rec["eng_transl_count"] == 0
+        assert rec["zho_transl_count"] == 0
+
+    def test_jpn_transl_count_is_a_declared_field(self):
+        assert "jpn_transl_count" in corpus_counts.COUNT_FIELDS
