@@ -80,7 +80,8 @@ LANG_NAMES = {
     'tsu': 'Tsou',
     'xnb': 'Kanakanavu',
     'xsy': 'Saisiyat',
-    'fos': 'Siraya'
+    'fos': 'Siraya',
+    'pzh': 'Pazeh',
 }
 
 # HTML markers so the section can be cleanly replaced on subsequent runs

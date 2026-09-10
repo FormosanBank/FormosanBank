@@ -15,13 +15,36 @@ Notes and Issues. No audio is included.
 ***
 
 <!-- CORPUS STATS START -->
+## Corpus Statistics
+
+| | Pazeh<br>unknown |
+| --- | --- |
+| Word count | 356 |
+| Total audio | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transcribed | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Untranscribed | 0 |
+| Translated words |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 0 |
+| Morphologically segmented | 0 |
+| Glossed words | 0 |
+
+***
+
 <!-- CORPUS STATS END -->
+
 
 ## **Notes and Issues**
 
 Six things a user should know before comparing this corpus with FormosanBank's
 other material. All are properties of the 1931 source or of the state of Pazeh
 documentation, not defects in the port.
+
+**The statistics table above does not count this corpus's translations.** All
+82 translations are Japanese, and the bank's per-corpus statistics record only
+English and Mandarin translation counts, so both rows read 0. The corpus is
+translated throughout; the schema simply has no Japanese column yet. This is
+the first Japanese material in FormosanBank.
 
 **Sato's philological notes are not extracted.** Each of the three sections is
 followed by a block of line-by-line notes (試註) — notes 1–21 for section I,
