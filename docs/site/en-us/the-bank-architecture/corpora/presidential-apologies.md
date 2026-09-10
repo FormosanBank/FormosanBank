@@ -21,6 +21,7 @@ This apology text, as part of the effort to promote **historical justice**, has 
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;English | 1,929 | 1,548 | 2,209 | 1,948 | 2,378 | 2,091 | 1,854 | 1,114 | 1,735 | 1,640 | 2,445 | 1,508 | 1,853 | 2,070 | 1,543 | 1,639 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandarin | 1,929 | 1,548 | 2,209 | 1,948 | 2,378 | 2,091 | 1,854 | 1,114 | 1,735 | 1,640 | 2,445 | 1,508 | 1,853 | 2,070 | 1,543 | 1,639 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dutch | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | Morphologically segmented | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | Glossed words | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 

@@ -187,6 +187,7 @@ def row_has_data(row: dict) -> bool:
     fields = ('word_count', 'transcribed_audio_count', 'transcribed_audio_seconds',
               'untranscribed_audio_count', 'untranscribed_audio_seconds',
               'eng_transl_count', 'zho_transl_count', 'jpn_transl_count',
+              'nld_transl_count',
               'segmented_words')
     try:
         return any(float(row.get(f) or 0) != 0 for f in fields)
@@ -234,6 +235,7 @@ ROW_DEFS = [
     (f'{INDENT}English',                   'eng_transl_count',           fmt_count),
     (f'{INDENT}Mandarin',                  'zho_transl_count',           fmt_count),
     (f'{INDENT}Japanese',                  'jpn_transl_count',           fmt_count),
+    (f'{INDENT}Dutch',                     'nld_transl_count',           fmt_count),
     ('Morphologically segmented',           'segmented_words',           fmt_count),
     ('Glossed words',                       'glossed_words',             fmt_count),
 ]
@@ -383,6 +385,7 @@ def _empty_stats() -> dict:
         'eng_transl_count':            0,
         'zho_transl_count':            0,
         'jpn_transl_count':            0,
+        'nld_transl_count':            0,
         'segmented_words':             0,
         'glossed_words':               0,
     }
@@ -396,6 +399,7 @@ def _accumulate(bucket: dict, row: dict) -> None:
         bucket['eng_transl_count']            += int(float(row.get('eng_transl_count')            or 0))
         bucket['zho_transl_count']            += int(float(row.get('zho_transl_count')            or 0))
         bucket['jpn_transl_count']            += int(float(row.get('jpn_transl_count')            or 0))
+        bucket['nld_transl_count']            += int(float(row.get('nld_transl_count')            or 0))
         bucket['segmented_words']             += int(float(row.get('segmented_words')             or 0))
         bucket['glossed_words']               += int(float(row.get('glossed_words')               or 0))
     except (ValueError, TypeError):
@@ -464,6 +468,7 @@ def _make_table_from_buckets(keys: list, buckets: dict, header_fn) -> str:
         f'| {INDENT}English | '                   + ' | '.join(col(k, 'eng_transl_count',            fmt_count) for k in keys) + ' |',
         f'| {INDENT}Mandarin | '                  + ' | '.join(col(k, 'zho_transl_count',            fmt_count) for k in keys) + ' |',
         f'| {INDENT}Japanese | '                  + ' | '.join(col(k, 'jpn_transl_count',            fmt_count) for k in keys) + ' |',
+        f'| {INDENT}Dutch | '                     + ' | '.join(col(k, 'nld_transl_count',            fmt_count) for k in keys) + ' |',
         '| Morphologically segmented | '           + ' | '.join(col(k, 'segmented_words',              fmt_count) for k in keys) + ' |',
         '| Glossed words | '                       + ' | '.join(glossed(k)                                        for k in keys) + ' |',
     ]
