@@ -1,5 +1,7 @@
-Wrote /tmp/claude-1000/-workspace-FormosanBank/f7c21112-7392-4bac-8bf9-f97b2753559c/scratchpad/wt-mtier/QC/validation/RULES.md (91 rules)
-— add the rule
+# Validation rules
+
+Every rule the validators run, generated from the code by
+`QC/validation/rules_catalogue.py`. **Do not edit by hand** — add the rule
 to its module's `RULES` list and regenerate.
 
 **HARD** fails the run (exit 1 unless `--no-exit-on-hard`); **SOFT** and
