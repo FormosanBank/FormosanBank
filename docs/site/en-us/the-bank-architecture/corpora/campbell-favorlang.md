@@ -18,7 +18,7 @@ the current FormosanBank tooling and completed sermon-review evidence.
 <!-- CORPUS STATS START -->
 ## Corpus Statistics
 
-| | bzg<br>Favorlang |
+| | Babuza-Favorlang<br>Favorlang |
 | --- | --- |
 | Word count | 22,081 |
 | Total audio | 0 |
