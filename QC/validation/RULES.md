@@ -53,6 +53,8 @@ the validator names on its `Details:` line, never to the terminal.
 | V151 | `S_TRANSL_has_no_kindOf` | SOFT | file | an S-level TRANSL must not carry @kindOf. |
 | V156 | `form_ver_value_in_allowlist` | HARD | file | when FORM/@ver is set, its value must be in the project allowlist. |
 | V157 | `legacy_alternate_kindOf` | SOFT | file | FORM[@kindOf='alternate'] is the deprecated variant spelling. |
+| V160 | `copyright_present` | HARD | file | TEXT/@copyright must be present and non-empty (POL-042). |
+| V161 | `copyright_in_vocabulary` | HARD | file | TEXT/@copyright must equal a rights_vocabulary.csv value exactly. |
 
 ## `validate_text.py` — text and typography
 
@@ -126,4 +128,4 @@ the validator names on its `Details:` line, never to the terminal.
 | G011 | `unsplit_slash_alternate` | SOFT | file | '/' in an S-original whose W tier also carries '/'. |
 | G012 | `trailing_paren_note_in_TRANSL` | SOFT | file | a trailing '(...)' in a TRANSL belongs in the notes attribute. |
 
-91 rules.
+93 rules.
